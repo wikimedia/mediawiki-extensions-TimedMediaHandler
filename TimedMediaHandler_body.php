@@ -384,11 +384,11 @@ class TimedMediaHandler extends MediaHandler {
 		}
 		if ( array_intersect( $streamTypes, $wgOggVideoTypes ) ) {
 			// Count multiplexed audio/video as video for short descriptions
-			$msg = 'ogg-short-video';
+			$msg = 'tmh-short-video';
 		} elseif ( array_intersect( $streamTypes, $wgOggAudioTypes ) ) {
-			$msg = 'ogg-short-audio';
+			$msg = 'tmh-short-audio';
 		} else {
-			$msg = 'ogg-short-general';
+			$msg = 'tmh-short-general';
 		}
 		return wfMsg( $msg, implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
@@ -400,18 +400,18 @@ class TimedMediaHandler extends MediaHandler {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
-			return wfMsg( 'ogg-long-error', $unpacked['error']['message'] );
+			return wfMsg( 'tmh-long-error', $unpacked['error']['message'] );
 		}
 		if ( array_intersect( $streamTypes,$wgOggVideoTypes  ) ) {
 			if ( array_intersect( $streamTypes, $wgOggAudioTypes ) ) {
-				$msg = 'ogg-long-multiplexed';
+				$msg = 'tmh-long-multiplexed';
 			} else {
-				$msg = 'ogg-long-video';
+				$msg = 'tmh-long-video';
 			}
 		} elseif ( array_intersect( $streamTypes, $wgOggAudioTypes ) ) {
-			$msg = 'ogg-long-audio';
+			$msg = 'tmh-long-audio';
 		} else {
-			$msg = 'ogg-long-general';
+			$msg = 'tmh-long-general';
 		}
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
@@ -454,81 +454,23 @@ class TimedMediaHandler extends MediaHandler {
 		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath,
 				$wgEnablePlayTracking, $wgPlayTrackingRate,  $wgVideoTagOut;
 
-		if( $wgVideoTagOut ){
-			// We could add "video" tag javascript
-			// If we wanted to block on mwEmbed player js, instead of loading the js onDomReady
+		// We could add "video" tag javascript
+		// If we wanted to block on mwEmbed player js, instead of loading the js onDomReady
 
-			// embedPlayer classes include: $j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText
-			//<link rel="stylesheet" href="js/mwEmbed/skins/kskin/playerSkin.css" type="text/css" media="screen" />
+		// embedPlayer classes include: $j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText
+		//<link rel="stylesheet" href="js/mwEmbed/skins/kskin/playerSkin.css" type="text/css" media="screen" />
 
-			// Loading dynamically lets us avoid unnecessary code
-			// ie firefox does not need "JSON.js" and IE ~maybe~ needs cortado embed etc.
+		// Loading dynamically lets us avoid unnecessary code
+		// ie firefox does not need "JSON.js" and IE ~maybe~ needs cortado embed etc.
 
-			if( $wgEnablePlayTracking ) {
-				$encPlayTracking = Xml::encodeJsVar( $wgPlayTrackingRate );
-				// Should replace with a standard way to send configuration to mw core js
-				$out->addHeadItem( 'TimedMediaHandler', <<<EOT
+		if( $wgEnablePlayTracking ) {
+			$encPlayTracking = Xml::encodeJsVar( $wgPlayTrackingRate );
+			// Should replace with a standard way to send configuration to mw core js
+			$out->addHeadItem( 'TimedMediaHandler', <<<EOT
 <script type="text/javascript">
 mw.setConfig('playTracking', 'true');
 mw.setConfig('playTrackingRate', $encPlayTracking );
 </script>
-EOT
-);
-			}
-
-		}else{
-			if ( $out->hasHeadItem( 'TimedMediaHandler' ) ) {
-				return;
-			}
-
-			wfLoadExtensionMessages( 'TimedMediaHandler' );
-
-			$msgNames = array( 'ogg-play', 'ogg-pause', 'ogg-stop', 'ogg-no-player',
-				'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlc-mozilla',
-				'ogg-player-vlc-activex', 'ogg-player-quicktime-mozilla', 'ogg-player-quicktime-activex',
-				'ogg-player-totem', 'ogg-player-kaffeine', 'ogg-player-kmplayer', 'ogg-player-mplayerplug-in',
-				'ogg-player-thumbnail', 'ogg-player-selected', 'ogg-use-player', 'ogg-more', 'ogg-download',
-				'ogg-desc-link', 'ogg-dismiss', 'ogg-player-soundthumb', 'ogg-no-xiphqt' );
-			$msgValues = array_map( 'wfMsg', $msgNames );
-			$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
-			$cortadoUrl = $wgCortadoJarFile;
-			$scriptPath = self::getMyScriptPath();
-			if( substr( $cortadoUrl, 0, 1 ) != '/'
-				&& substr( $cortadoUrl, 0, 4 ) != 'http' ) {
-				$cortadoUrl = "$wgServer$scriptPath/$cortadoUrl";
-			}
-			$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
-			$encExtPathUrl = Xml::encodeJsVar( $scriptPath );
-
-
-			$playTrackingJs = '';
-			//Check for play tracking and output vars
-			if( $wgEnablePlayTracking ) {
-				$encPlayTracking = Xml::encodeJsVar( $wgPlayTrackingRate );
-				$playTrackingJs = <<<EOT
-wgOggPlayer.playTracking = true;
-wgOggPlayer.playTrackingRate = $encPlayTracking
-EOT
-;
-			}
-
-
-			$out->addHeadItem( 'TimedMediaHandler', <<<EOT
-<script type="text/javascript" src="$scriptPath/OggPlayer.js?$wgOggScriptVersion"></script>
-<script type="text/javascript">
-wgOggPlayer.msg = $jsMsgs;
-wgOggPlayer.cortadoUrl = $encCortadoUrl;
-wgOggPlayer.extPathUrl = $encExtPathUrl;
-$playTrackingJs;
-</script>
-<style type="text/css">
-.ogg-player-options {
-	border: solid 1px #ccc;
-	padding: 2pt;
-	text-align: left;
-	font-size: 10pt;
-}
-</style>
 EOT
 );
 		}
@@ -620,7 +562,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		}else{
 			//TimedMediaHandler output:
 			if ( $this->isVideo ) {
-				$msgStartPlayer = wfMsg( 'ogg-play-video' );
+				$msgStartPlayer = wfMsg( 'tmh-play-video' );
 				$imgAttribs = array(
 					'src' => $this->url,
 					'width' => $width,
@@ -644,7 +586,7 @@ class OggTransformOutput extends MediaTransformOutput {
 					$showDescIcon = !$this->noIcon;
 					//$thumbDivAttribs = array( 'style' => 'text-align: right;' );
 				}
-				$msgStartPlayer = wfMsg( 'ogg-play-sound' );
+				$msgStartPlayer = wfMsg( 'tmh-play-sound' );
 				$playerHeight = 35;
 			}
 
@@ -661,7 +603,7 @@ class OggTransformOutput extends MediaTransformOutput {
 						'height' => 22,
 						'alt' => $alt,
 					);
-					$linkAttribs['title'] = wfMsg( 'ogg-desc-link' );
+					$linkAttribs['title'] = wfMsg( 'tmh-desc-link' );
 					$descIcon = Xml::tags( 'a', $linkAttribs,
 						Xml::element( 'img', $imgAttribs ) );
 					$thumb = '';
@@ -825,7 +767,7 @@ class OggTransformOutput extends MediaTransformOutput {
 							"width:{$width}px;height:{$playerHeight}px;".
 							"border:solid thin black;padding:5px;"
 					),
-					wfMsg('ogg-no-player-js', $url)
+					wfMsg('tmh-no-player-js', $url)
 				) .
 				$timedTextSources
 			);

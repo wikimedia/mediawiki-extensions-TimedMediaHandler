@@ -45,11 +45,11 @@ $wgExtensionCredits['media'][] = array(
 	'author'         => 'Tim Starling, Michael Dale',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'description'    => 'Handler for Timed Media ( video, audio, timedText ) with transcoding to Ogg Theora/Vorbis',
-	'descriptionmsg' => 'ogg-desc',
+	'descriptionmsg' => 'tmh-desc',
 );
 
 
-// Add the javascript loader for "EmbedPlayer module" 
+// Add the javascript loader for "EmbedPlayer module"
 $wgExtensionJavascriptLoader[] = "{$oggDir}/EmbedPlayer/loader.js";
 
 // Add the javascript loader for "TimedText module"
@@ -76,7 +76,7 @@ $wgEnableTimedText = false;
 // Location of oggThumb binary ( used instead of ffmpeg )
 $wgOggThumbLocation = '/usr/bin/oggThumb';
 
-// The location of ffmpeg2theora ( for metadata and transcoding ) 
+// The location of ffmpeg2theora ( for metadata and transcoding )
 $wgffmpeg2theoraPath = '/usr/bin/ffmpeg2theora';
 
 // Location of the FFmpeg binary
