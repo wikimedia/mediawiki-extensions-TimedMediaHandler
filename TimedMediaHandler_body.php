@@ -384,11 +384,11 @@ class TimedMediaHandler extends MediaHandler {
 		}
 		if ( array_intersect( $streamTypes, $wgOggVideoTypes ) ) {
 			// Count multiplexed audio/video as video for short descriptions
-			$msg = 'tmh-short-video';
+			$msg = 'timedmedia-short-video';
 		} elseif ( array_intersect( $streamTypes, $wgOggAudioTypes ) ) {
-			$msg = 'tmh-short-audio';
+			$msg = 'timedmedia-short-audio';
 		} else {
-			$msg = 'tmh-short-general';
+			$msg = 'timedmedia-short-general';
 		}
 		return wfMsg( $msg, implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
@@ -400,18 +400,18 @@ class TimedMediaHandler extends MediaHandler {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
-			return wfMsg( 'tmh-long-error', $unpacked['error']['message'] );
+			return wfMsg( 'timedmedia-long-error', $unpacked['error']['message'] );
 		}
 		if ( array_intersect( $streamTypes,$wgOggVideoTypes  ) ) {
 			if ( array_intersect( $streamTypes, $wgOggAudioTypes ) ) {
-				$msg = 'tmh-long-multiplexed';
+				$msg = 'timedmedia-long-multiplexed';
 			} else {
-				$msg = 'tmh-long-video';
+				$msg = 'timedmedia-long-video';
 			}
 		} elseif ( array_intersect( $streamTypes, $wgOggAudioTypes ) ) {
-			$msg = 'tmh-long-audio';
+			$msg = 'timedmedia-long-audio';
 		} else {
-			$msg = 'tmh-long-general';
+			$msg = 'timedmedia-long-general';
 		}
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
@@ -556,112 +556,8 @@ class OggTransformOutput extends MediaTransformOutput {
 		$thumbDivAttribs = array();
 		$showDescIcon = false;
 
-		// Check for video tag output
-		if( $wgVideoTagOut ){
-			return $this->outputVideoTag($url, $width, $height, $length, $offset, $alt);
-		}else{
-			//TimedMediaHandler output:
-			if ( $this->isVideo ) {
-				$msgStartPlayer = wfMsg( 'tmh-play-video' );
-				$imgAttribs = array(
-					'src' => $this->url,
-					'width' => $width,
-					'height' => $height,
-					'alt' => $alt );
-				$playerHeight = $height;
-			} else {
-				// Sound file
-				if ( $height > 100 ) {
-					// Use a big file icon
-					global $wgStylePath;
-					$imgAttribs = array(
-						'src' => "$wgStylePath/common/images/icons/fileicon-ogg.png",
-						'width' => 125,
-						'height' => 125,
-						'alt' => $alt,
-					);
-				} else {
-					 // Make an icon later if necessary
-					$imgAttribs = false;
-					$showDescIcon = !$this->noIcon;
-					//$thumbDivAttribs = array( 'style' => 'text-align: right;' );
-				}
-				$msgStartPlayer = wfMsg( 'tmh-play-sound' );
-				$playerHeight = 35;
-			}
-
-			// Set $thumb to the thumbnail img tag, or the thing that goes where
-			// the thumbnail usually goes
-			$descIcon = false;
-			if ( !empty( $options['desc-link'] ) ) {
-				$linkAttribs = $this->getDescLinkAttribs( $alt );
-				if ( $showDescIcon ) {
-					// Make image description icon link
-					$imgAttribs = array(
-						'src' => "$scriptPath/info.png",
-						'width' => 22,
-						'height' => 22,
-						'alt' => $alt,
-					);
-					$linkAttribs['title'] = wfMsg( 'tmh-desc-link' );
-					$descIcon = Xml::tags( 'a', $linkAttribs,
-						Xml::element( 'img', $imgAttribs ) );
-					$thumb = '';
-				} elseif ( $imgAttribs ) {
-					$thumb = Xml::tags( 'a', $linkAttribs,
-						Xml::element( 'img', $imgAttribs ) );
-				} else {
-					$thumb = '';
-				}
-				$linkUrl = $linkAttribs['href'];
-			} else {
-				// We don't respect the file-link option, click-through to download is not appropriate
-				$linkUrl = false;
-				if ( $imgAttribs ) {
-					$thumb = Xml::element( 'img', $imgAttribs );
-				} else {
-					$thumb = '';
-				}
-			}
-
-			$id = "ogg_player_" . OggTransformOutput::$serial;
-
-			$playerParams = Xml::encodeJsVar( (object)array(
-				'id' => $id,
-				'videoUrl' => $url,
-				'width' => $width,
-				'height' => $playerHeight,
-				'length' => $length,
-				'offset' => $offset,
-				'linkUrl' => $linkUrl,
-				'isVideo' => $this->isVideo ) );
-
-			$s = Xml::tags( 'div',
-				array(
-					'id' => $id,
-					'style' => "width: {$width}px;" ),
-				( $thumb ? Xml::tags( 'div', array(), $thumb ) : '' ) .
-				Xml::tags( 'div', array(),
-					Xml::tags( 'button',
-						array(
-							'onclick' => "if (typeof(wgOggPlayer) != 'undefined') wgOggPlayer.init(false, $playerParams);",
-							'style' => "width: {$width}px; text-align: center",
-							'title' => $msgStartPlayer,
-						),
-						Xml::element( 'img',
-							array(
-								'src' => "$scriptPath/play.png",
-								'width' => 22,
-								'height' => 22,
-								'alt' => $msgStartPlayer
-							)
-						)
-					)
-				) .
-				( $descIcon ? Xml::tags( 'div', array(), $descIcon ) : '' )
-			);
-			return $s;
-		}
+		// Output video tag
+		return $this->outputVideoTag($url, $width, $height, $length, $offset, $alt);
 	}
 	/*
 	 * Output the inline video tag output
@@ -766,8 +662,7 @@ class OggTransformOutput extends MediaTransformOutput {
 						'style'=>"overflow:hidden;".
 							"width:{$width}px;height:{$playerHeight}px;".
 							"border:solid thin black;padding:5px;"
-					),
-					wfMsg('tmh-no-player-js', $url)
+					)
 				) .
 				$timedTextSources
 			);
