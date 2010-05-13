@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'timedmedia-desc'             => 'Handler for timed media ( video, audio, timedText ) with transcoding to Ogg Theora/Vorbis',
+	'timedmedia-desc'             => 'Handler for timed media (video, audio, timedText) with transcoding to Ogg Theora/Vorbis',
 	'timedmedia-short-audio'      => 'Ogg $1 sound file, $2',
 	'timedmedia-short-video'      => 'Ogg $1 video file, $2',
 	'timedmedia-short-general'    => 'Ogg $1 media file, $2',
