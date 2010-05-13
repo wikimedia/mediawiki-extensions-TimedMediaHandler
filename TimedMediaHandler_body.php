@@ -12,7 +12,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	static function registerMagicWords( &$magicData, $code ) {
-		wfLoadExtensionMessages( 'TimedMediaHandler' );
+		wfLoadExtensionMessages( 'TimedMediaHandlerMagic' );
 		return true;
 	}
 
@@ -662,7 +662,8 @@ class OggTransformOutput extends MediaTransformOutput {
 						'style'=>"overflow:hidden;".
 							"width:{$width}px;height:{$playerHeight}px;".
 							"border:solid thin black;padding:5px;"
-					)
+					),
+					wfMsg('timedmedia-no-player-js', $url)
 				) .
 				$timedTextSources
 			);
