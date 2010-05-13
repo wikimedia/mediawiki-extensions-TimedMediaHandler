@@ -341,7 +341,8 @@ EmbedPlayerManager.prototype = {
 		var _this = this;
 			
 		if ( !element.id || element.id == '' ) {
-			mw.log("Error: element is missing id ");
+			// give the element an id: 
+			element.id = 'vid' + ( this.playerList.length + 1 ); 
 		}					
 		mw.log('EmbedPlayerManager: addElement:: ' + element.id );
 				
@@ -947,7 +948,7 @@ mediaElement.prototype = {
 	* @param {String} start_npt Start time in npt format
 	* @param {String} end_npt End time in npt format
 	*/
-	updateSourceTimes:function( start_npt, end_npt ) {
+	updateSourceTimes: function( start_npt, end_npt ) {
 		var _this = this;
 		$j.each( this.sources, function( inx, mediaSource ) {
 			mediaSource.updateSrcTime( start_npt, end_npt );

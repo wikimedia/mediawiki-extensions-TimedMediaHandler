@@ -79,7 +79,6 @@ mw.addClassFilePaths( {
 	"vlcEmbed"			: "vlcEmbed.js",
 	
 	"ctrlBuilder"		: "skins/ctrlBuilder.js",
-  "mw.style.EmbedPlayer" : "mw.style.EmbedPlayer.css",
 	
 	"mw.style.kskin" 	: "skins/kskin/EmbedPlayer.css",	
 	"kskinConfig"		: "skins/kskin/kskinConfig.js",
@@ -174,8 +173,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			'ctrlBuilder',
 			'$j.cookie',
 			// Add JSON lib if browsers does not define "JSON" natively 			
-			'JSON',
-      'mw.style.EmbedPlayer'
+			'JSON'
 		],
 		[
 			'$j.fn.menu',			

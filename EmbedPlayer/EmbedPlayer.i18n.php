@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'mwe-share' => 'Share',
 	'mwe-credits' => 'Credits',
 	'mwe-clip_linkback' => 'Clip source page',
-	'mwe-chose_player' => 'Chose video player',
+	'mwe-chose_player' => 'Choose video player',
 	'mwe-no-player' => 'No player available for $1',
 	'mwe-share_this_video' => 'Share this video',
 	'mwe-video_credits' => 'Video credits',
@@ -50,7 +50,7 @@ $messages['en'] = array(
 	'mwe-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-ogg-player-cortado' => 'Java Cortado',
 	'mwe-ogg-player-flowplayer' => 'Flowplayer',
-	'mwe-ogg-player-kplayer' => 'Kaltura flash player',
+	'mwe-ogg-player-kplayer' => 'Kaltura player',
 	'mwe-ogg-player-selected' => '(selected)',
 	'mwe-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-generic_missing_plugin' => 'You browser does not appear to support the following playback type: <b>$1</b><br />Visit the <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> page to download a player.<br />',
@@ -66,6 +66,7 @@ $messages['en'] = array(
 	'mwe-video-flv' => 'Flash video',
 	'mwe-video-ogg' => 'Ogg video',
 	'mwe-video-audio' => 'Ogg audio',
+	'mwe-missing-source' => 'No source video was found, check that your embed code includes a source or api key',
 );
 $messages['af'] = array(
 	'mwe-credit-title' => 'Naam: $1',
