@@ -865,7 +865,7 @@ ctrlBuilder.prototype = {
 		// Player select menu item
 		'playerSelect': function( ctrlObj ){
 			return $j.getLineItem( 					
-				gM( 'mwe-embedplayer-chose_player' ),
+				gM( 'mwe-embedplayer-choose_player' ),
 				'gear',
 				function( ) {
 					ctrlObj.displayOverlay(  

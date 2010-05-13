@@ -35,7 +35,7 @@ mw.addMessages( {
 	"mwe-embedplayer-share" : "Share",
 	"mwe-embedplayer-credits" : "Credits",
 	"mwe-embedplayer-clip_linkback" : "Clip source page",
-	"mwe-embedplayer-chose_player" : "Choose video player",
+	"mwe-embedplayer-choose_player" : "Choose video player",
 	"mwe-embedplayer-no-player" : "No player available for $1", 
 	"mwe-embedplayer-share_this_video" : "Share this video",
 	"mwe-embedplayer-video_credits" : "Video credits",
