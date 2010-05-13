@@ -8,9 +8,9 @@
 $magicWords = array();
 
 $magicWords['en'] = array(
-	'ogg_noplayer'  => array( 0, 'noplayer' ),
-	'ogg_noicon'    => array( 0, 'noicon' ),
-	'ogg_thumbtime' => array( 0, 'thumbtime=$1' ),
+	'ogg_noplayer'  => array( 0, 'noplayer' ), // FIXME: conflicts with magic word in OggHandler
+	'ogg_noicon'    => array( 0, 'noicon' ), // FIXME: conflicts with magic word in OggHandler
+	'ogg_thumbtime' => array( 0, 'thumbtime=$1' ), // FIXME: conflicts with magic word in OggHandler
 	'ogg_starttime' => array( 0, 'start=$1'),
 	'ogg_endtime'   => array( 0, 'end=$1'),
 );
