@@ -163,7 +163,7 @@ mw.addSetupHook( function( callback ) {
 mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	var _this = this;		
 	// Set module specific class videonojs to loading:
-	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );
+	$j( '.videonojs' ).html( gM( 'mwe-embedplayer-loading_txt' ) );
 	
 	// Set up the embed video player class request: (include the skin js as well)
 	var dependencyRequest = [

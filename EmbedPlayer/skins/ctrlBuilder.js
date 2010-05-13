@@ -696,7 +696,7 @@ ctrlBuilder.prototype = {
 							'left' : '10px',
 							'right' : '10px'
 						})
-						.html( gM( 'mwe-for_best_experience' ) )
+						.html( gM( 'mwe-embedplayer-for_best_experience' ) )
 					)
 					
 					$target_warning = $j( '#gnp_' + embedPlayer.id );			
@@ -728,7 +728,7 @@ ctrlBuilder.prototype = {
 					);
 					$target_warning.append( 
 						$j('<span />')
-						.text( gM( 'mwe-do_not_warn_again' ) )
+						.text( gM( 'mwe-embedplayer-do_not_warn_again' ) )
 					)
 				}				
 															
@@ -841,7 +841,7 @@ ctrlBuilder.prototype = {
 	 */
 	onSeek: function(){
 		// Update the interface: 
-		this.setStatus( gM( 'mwe-seeking' ) );
+		this.setStatus( gM( 'mwe-embedplayer-seeking' ) );
 		// Run the seeking hook
 		$j( this.embedPlayer ).trigger( 'onSeek' );
 	},
@@ -865,7 +865,7 @@ ctrlBuilder.prototype = {
 		// Player select menu item
 		'playerSelect': function( ctrlObj ){
 			return $j.getLineItem( 					
-				gM( 'mwe-chose_player' ),
+				gM( 'mwe-embedplayer-chose_player' ),
 				'gear',
 				function( ) {
 					ctrlObj.displayOverlay(  
@@ -878,10 +878,10 @@ ctrlBuilder.prototype = {
 		// Download the file menu
 		'download': function( ctrlObj ) {
 			return $j.getLineItem( 					
-				 gM( 'mwe-download' ),
+				 gM( 'mwe-embedplayer-download' ),
 				'disk',
 				function( ) {
-					ctrlObj.displayOverlay( gM('mwe-loading_txt' ) );					
+					ctrlObj.displayOverlay( gM('mwe-embedplayer-loading_txt' ) );					
 					// Call show download with the target to be populated
 					ctrlObj.showDownload(  		
 						ctrlObj.embedPlayer.$interface.find( '.overlay-content' ) 
@@ -893,7 +893,7 @@ ctrlBuilder.prototype = {
 		// Share the video menu
 		'share': function( ctrlObj ) {
 			return $j.getLineItem( 					
-				gM( 'mwe-share' ),
+				gM( 'mwe-embedplayer-share' ),
 				'mail-closed',
 				function( ) {
 					ctrlObj.displayOverlay( 
@@ -1035,14 +1035,14 @@ ctrlBuilder.prototype = {
 	        	.attr('href', '#')
 	        	.addClass( 'active' )
 	        	.text(
-	        		gM( 'mwe-embed_site_or_blog' )
+	        		gM( 'mwe-embedplayer-embed_site_or_blog' )
 	        	)
 	        )
 	    )
         
        $shareInterface.append(
         	$j( '<h2 />' )
-        	.text( gM( 'mwe-share_this_video' ) )      	
+        	.text( gM( 'mwe-embedplayer-share_this_video' ) )      	
         	.append(
         		$shareList
         	)
@@ -1065,7 +1065,7 @@ ctrlBuilder.prototype = {
 				
       		$j('<button />')
       		.addClass( 'ui-state-default ui-corner-all copycode' )
-      		.text( gM( 'mwe-copy-code' ) )
+      		.text( gM( 'mwe-embedplayer-copy-code' ) )
       		.click(function() {
 				$target.find( 'textarea' ).focus().select();
 				// Copy the text if supported:
@@ -1094,7 +1094,7 @@ ctrlBuilder.prototype = {
 		$playerSelect = $j('<div />')
 		.append( 
 			$j( '<h2 />' )
-			.text( gM( 'mwe-chose_player' )  )
+			.text( gM( 'mwe-embedplayer-chose_player' )  )
 		);
 		 		
 		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( source_id, source ) {
@@ -1181,7 +1181,7 @@ ctrlBuilder.prototype = {
 				
 			} else {
 				// No player available: 
-				$playerSelect.append( gM( 'mwe-no-player',  source.getTitle() ) ) 
+				$playerSelect.append( gM( 'mwe-embedplayer-no-player',  source.getTitle() ) ) 
 			}
 		} );
 		
@@ -1241,7 +1241,7 @@ ctrlBuilder.prototype = {
 		// Load the roe if available (to populate out download options:		
 		// mw.log('f:showDownload '+ this.roe + ' ' + this.mediaElement.addedROEData);
 		if ( embedPlayer.roe && embedPlayer.mediaElement.addedROEData == false ) {
-			$target.html( gM( 'mwe-loading_txt' ) );
+			$target.html( gM( 'mwe-embedplayer-loading_txt' ) );
 			embedPlayer.getMvJsonUrl( this.roe, function( data ) {
 			   embedPlayer.mediaElement.addROE( data );
 			   _this.showDownloadWithSources( $target );
@@ -1290,7 +1290,7 @@ ctrlBuilder.prototype = {
 		if( $mediaList.find('li').length != 0 ) {
 			$target.append(
 				$j('<h2 />')
-				.text( gM( 'mwe-download_full' ) ),
+				.text( gM( 'mwe-embedplayer-download_full' ) ),
 				$mediaList
 			)
 		}
@@ -1298,7 +1298,7 @@ ctrlBuilder.prototype = {
 		if( $textList.find('li').length != 0 ) {
 			$target.append(
 				$j('<h2 />')
-				.text( gM( 'mwe-download_text' ) ),
+				.text( gM( 'mwe-embedplayer-download_text' ) ),
 				$textList
 			)
 		}		
@@ -1369,7 +1369,7 @@ ctrlBuilder.prototype = {
 						
 				return $j( '<div/>' )
 					.attr( {
-						'title'	: gM( 'mwe-play_clip' ),
+						'title'	: gM( 'mwe-embedplayer-play_clip' ),
 						'class'	: "ui-state-default play-btn-large"
 					} )
 					// Get dynamic position for big play button
@@ -1393,7 +1393,7 @@ ctrlBuilder.prototype = {
 				return $j('<a />')
 					.attr({
 						'href': 'http://kaltura.com',
-						'title' : gM( 'mwe-kaltura-platform-title' ),
+						'title' : gM( 'mwe-embedplayer-kaltura-platform-title' ),
 						'target' : '_new'
 					})
 					.append(
@@ -1418,7 +1418,7 @@ ctrlBuilder.prototype = {
 			'w': 28,
 			'o': function( ctrlObj ) {
 				return $j( '<div />' )
-						.attr( 'title',  gM( 'mwe-player_options' ) )						
+						.attr( 'title',  gM( 'mwe-embedplayer-player_options' ) )						
 						.addClass( 'ui-state-default ui-corner-all ui-icon_link rButton options-btn' )
 						.append( 
 							$j('<span />')
@@ -1452,7 +1452,7 @@ ctrlBuilder.prototype = {
 				});			
 				
 				return $j( '<div />' )
-						.attr( 'title', gM( 'mwe-player_fullscreen' ) )
+						.attr( 'title', gM( 'mwe-embedplayer-player_fullscreen' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton fullscreen-btn" )
 						.append(
 							$j( '<span />' )
@@ -1473,7 +1473,7 @@ ctrlBuilder.prototype = {
 			'w': 28,
 			'o': function( ctrlObj ) {
 				return $j( '<div />' )
-						.attr( 'title', gM( 'mwe-play_clip' ) )
+						.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) )
 						.addClass ( "ui-state-default ui-corner-all ui-icon_link lButton play-btn" )
 						.append( 
 							$j( '<span />' )
@@ -1494,7 +1494,7 @@ ctrlBuilder.prototype = {
 			'w': 28,
 			'o': function( ctrlObj ) {
 				return $j( '<div />' )
-						.attr( 'title', gM( 'mwe-timed_text' ) )
+						.attr( 'title', gM( 'mwe-embedplayer-timed_text' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton timed-text" )
 						.append( 
 							$j( '<span />' )
@@ -1526,7 +1526,7 @@ ctrlBuilder.prototype = {
 				// Add the volume control icon
 				$volumeOut.append( 	
 				 	$j('<div />')
-				 	.attr( 'title', gM( 'mwe-volume_control' ) )
+				 	.attr( 'title', gM( 'mwe-embedplayer-volume_control' ) )
 				 	.addClass( "ui-state-default ui-corner-all ui-icon_link rButton volume_control" )
 				 	.append( 
 				 		$j( '<span />' )
@@ -1604,7 +1604,7 @@ ctrlBuilder.prototype = {
 							embedPlayer.jump_time = mw.seconds2npt( parseFloat( parseFloat( embedPlayer.getDuration() ) * perc ) + embedPlayer.start_time_sec );
 							// mw.log('perc:' + perc + ' * ' + embedPlayer.getDuration() + ' jt:'+  this.jump_time);
 							if ( _this.longTimeDisp ) {
-								ctrlObj.setStatus( gM( 'mwe-seek_to', embedPlayer.jump_time ) );
+								ctrlObj.setStatus( gM( 'mwe-embedplayer-seek_to', embedPlayer.jump_time ) );
 							} else {
 								ctrlObj.setStatus( embedPlayer.jump_time );
 							}
@@ -1624,7 +1624,7 @@ ctrlBuilder.prototype = {
 								// set seek time (in case we have to do a url seek)
 								embedPlayer.seek_time_sec = mw.npt2seconds( embedPlayer.jump_time, true );
 								mw.log( 'do jump to: ' + embedPlayer.jump_time + ' perc:' + perc + ' sts:' + embedPlayer.seek_time_sec );
-								ctrlObj.setStatus( gM( 'mwe-seeking' ) );
+								ctrlObj.setStatus( gM( 'mwe-embedplayer-seeking' ) );
 								embedPlayer.doSeek( perc );
 							}
 						}

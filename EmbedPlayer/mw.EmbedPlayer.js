@@ -9,64 +9,64 @@
 */
 
 mw.addMessages( {
-	"mwe-loading_plugin" : "loading plugin ...",
-	"mwe-select_playback" : "Set playback preference",
-	"mwe-link_back" : "Link back",
-	"mwe-error_swap_vid" : "Error: mwEmbed was unable to swap the video tag for the mwEmbed interface",
-	"mwe-add_to_end_of_sequence" : "Add to end of sequence",
-	"mwe-missing_video_stream" : "The video file for this stream is missing",
-	"mwe-play_clip" : "Play clip",
-	"mwe-pause_clip" : "Pause clip",
-	"mwe-volume_control" : "Volume control",
-	"mwe-player_options" : "Player options",
-	"mwe-timed_text" : "Timed text",
-	"mwe-player_fullscreen" : "Fullscreen",
-	"mwe-next_clip_msg" : "Play next clip",
-	"mwe-prev_clip_msg" : "Play previous clip",
-	"mwe-current_clip_msg" : "Continue playing this clip",
-	"mwe-seek_to" : "Seek $1",
-	"mwe-paused" : "paused",
-	"mwe-download_segment" : "Download selection:",
-	"mwe-download_full" : "Download full video file:",
-	"mwe-download_right_click" : "To download, right click and select <i>Save link as...<\/i>",
-	"mwe-download_clip" : "Download video",
-	"mwe-download_text" : "Download text (<a style=\"color:white\" title=\"cmml\" href=\"http:\/\/wiki.xiph.org\/index.php\/CMML\">CMML<\/a> xml):",
-	"mwe-download" : "Download",
-	"mwe-share" : "Share",
-	"mwe-credits" : "Credits",
-	"mwe-clip_linkback" : "Clip source page",
-	"mwe-chose_player" : "Choose video player",
-	"mwe-no-player" : "No player available for $1", 
-	"mwe-share_this_video" : "Share this video",
-	"mwe-video_credits" : "Video credits",
-	"mwe-kaltura-platform-title" : "Kaltura open source video platform",
-	"mwe-menu_btn" : "Menu",
-	"mwe-close_btn" : "Close",
-	"mwe-ogg-player-vlc-player" : "VLC player",
-	"mwe-ogg-player-oggNative" : "HTML5 ogg player",
-	"mwe-ogg-player-h264Native" : "HTML5 h.264 player",
-	"mwe-ogg-player-oggPlugin" : "Generic Ogg plugin",
-	"mwe-ogg-player-quicktime-mozilla" : "QuickTime plugin",
-	"mwe-ogg-player-quicktime-activex" : "QuickTime ActiveX",
-	"mwe-ogg-player-cortado" : "Java Cortado",
-	"mwe-ogg-player-flowplayer" : "Flowplayer",
-	"mwe-ogg-player-kplayer" : "Kaltura player",
-	"mwe-ogg-player-selected" : "(selected)",
-	"mwe-ogg-player-omtkplayer" : "OMTK Flash Vorbis",
-	"mwe-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback Methods<\/a> page to download a player.<br \/>",
-	"mwe-missing-source" : "No source video was found, check that your embed code includes a source or api key",
-	"mwe-for_best_experience" : "For a better video playback experience we recommend the <b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">latest firefox<\/a>.<\/b>",
-	"mwe-do_not_warn_again" : "Dismiss for now.",
-	"mwe-playerSelect" : "Players",
-	"mwe-read_before_embed" : "<a href=\"http:\/\/mediawiki.org\/wiki\/Security_Notes_on_Remote_Embedding\" target=\"_new\">Read this<\/a> before embedding.",
-	"mwe-embed_site_or_blog" : "Embed on a page",
-	"mwe-related_videos" : "Related videos",
-	"mwe-seeking" : "seeking",
-	"mwe-copy-code" : "Copy code",	
-	"mwe-video-h264" : "H.264 video",
-	"mwe-video-flv" : "Flash video",
-	"mwe-video-ogg" : "Ogg video",
-	"mwe-video-audio" : "Ogg audio"
+	"mwe-embedplayer-loading_plugin" : "Loading plugin ...",
+	"mwe-embedplayer-select_playback" : "Set playback preference",
+	"mwe-embedplayer-link_back" : "Link back",
+	"mwe-embedplayer-error_swap_vid" : "Error: mwEmbed was unable to swap the video tag for the mwEmbed interface",
+	"mwe-embedplayer-add_to_end_of_sequence" : "Add to end of sequence",
+	"mwe-embedplayer-missing_video_stream" : "The video file for this stream is missing",
+	"mwe-embedplayer-play_clip" : "Play clip",
+	"mwe-embedplayer-pause_clip" : "Pause clip",
+	"mwe-embedplayer-volume_control" : "Volume control",
+	"mwe-embedplayer-player_options" : "Player options",
+	"mwe-embedplayer-timed_text" : "Timed text",
+	"mwe-embedplayer-player_fullscreen" : "Fullscreen",
+	"mwe-embedplayer-next_clip_msg" : "Play next clip",
+	"mwe-embedplayer-prev_clip_msg" : "Play previous clip",
+	"mwe-embedplayer-current_clip_msg" : "Continue playing this clip",
+	"mwe-embedplayer-seek_to" : "Seek $1",
+	"mwe-embedplayer-paused" : "paused",
+	"mwe-embedplayer-download_segment" : "Download selection:",
+	"mwe-embedplayer-download_full" : "Download full video file:",
+	"mwe-embedplayer-download_right_click" : "To download, right click and select <i>Save link as...<\/i>",
+	"mwe-embedplayer-download_clip" : "Download video",
+	"mwe-embedplayer-download_text" : "Download text (<a style=\"color:white\" title=\"cmml\" href=\"http:\/\/wiki.xiph.org\/index.php\/CMML\">CMML<\/a> xml):",
+	"mwe-embedplayer-download" : "Download",
+	"mwe-embedplayer-share" : "Share",
+	"mwe-embedplayer-credits" : "Credits",
+	"mwe-embedplayer-clip_linkback" : "Clip source page",
+	"mwe-embedplayer-chose_player" : "Choose video player",
+	"mwe-embedplayer-no-player" : "No player available for $1", 
+	"mwe-embedplayer-share_this_video" : "Share this video",
+	"mwe-embedplayer-video_credits" : "Video credits",
+	"mwe-embedplayer-kaltura-platform-title" : "Kaltura open source video platform",
+	"mwe-embedplayer-menu_btn" : "Menu",
+	"mwe-embedplayer-close_btn" : "Close",
+	"mwe-embedplayer-ogg-player-vlc-player" : "VLC player",
+	"mwe-embedplayer-ogg-player-oggNative" : "HTML5 Ogg player",
+	"mwe-embedplayer-ogg-player-h264Native" : "HTML5 H.264 player",
+	"mwe-embedplayer-ogg-player-oggPlugin" : "Generic Ogg plugin",
+	"mwe-embedplayer-ogg-player-quicktime-mozilla" : "QuickTime plugin",
+	"mwe-embedplayer-ogg-player-quicktime-activex" : "QuickTime ActiveX",
+	"mwe-embedplayer-ogg-player-cortado" : "Java Cortado",
+	"mwe-embedplayer-ogg-player-flowplayer" : "Flowplayer",
+	"mwe-embedplayer-ogg-player-kplayer" : "Kaltura player",
+	"mwe-embedplayer-ogg-player-selected" : "(selected)",
+	"mwe-embedplayer-ogg-player-omtkplayer" : "OMTK Flash Vorbis",
+	"mwe-embedplayer-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback methods<\/a> page to download a player.<br \/>",
+	"mwe-embedplayer-missing-source" : "No source video was found, check that your embed code includes a source or API key",
+	"mwe-embedplayer-for_best_experience" : "For a better video playback experience we recommend the <b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">latest Firefox<\/a>.<\/b>",
+	"mwe-embedplayer-do_not_warn_again" : "Dismiss for now.",
+	"mwe-embedplayer-playerSelect" : "Players",
+	"mwe-embedplayer-read_before_embed" : "<a href=\"http:\/\/mediawiki.org\/wiki\/Security_Notes_on_Remote_Embedding\" target=\"_new\">Read this<\/a> before embedding.",
+	"mwe-embedplayer-embed_site_or_blog" : "Embed on a page",
+	"mwe-embedplayer-related_videos" : "Related videos",
+	"mwe-embedplayer-seeking" : "seeking",
+	"mwe-embedplayer-copy-code" : "Copy code",	
+	"mwe-embedplayer-video-h264" : "H.264 video",
+	"mwe-embedplayer-video-flv" : "Flash video",
+	"mwe-embedplayer-video-ogg" : "Ogg video",
+	"mwe-embedplayer-video-audio" : "Ogg audio"
 } );
 
 /*
@@ -790,16 +790,16 @@ mediaSource.prototype = {
 		// Return a Title based on mime type: 
 		switch( this.getMIMEType() ) {
 			case 'video/h264' :
-				return gM( 'mwe-video-h264' );
+				return gM( 'mwe-embedplayer-video-h264' );
 			break;
 			case 'video/x-flv' :
-				return gM( 'mwe-video-flv' );
+				return gM( 'mwe-embedplayer-video-flv' );
 			break;
 			case 'video/ogg' :
-				return gM( 'mwe-video-ogg' );
+				return gM( 'mwe-embedplayer-video-ogg' );
 			break;
 			case 'audio/ogg' :
-				return gM( 'mwe-video-audio' );
+				return gM( 'mwe-embedplayer-video-audio' );
 			break;
 		} 
 		
@@ -1817,7 +1817,7 @@ mw.EmbedPlayer.prototype = {
 				'height' : this.height + 'px'
 			})
 			.text(
-				gM( 'mwe-loading_plugin' ) 
+				gM( 'mwe-embedplayer-loading_plugin' ) 
 			)
 		);
 		
@@ -1965,7 +1965,7 @@ mw.EmbedPlayer.prototype = {
 		if( this.mediaElement.sources.length == 0 ){
 			$j( this ).html(
 				$j('<span />').text( 
-					gM('mwe-missing-source')
+					gM('mwe-embedplayer-missing-source')
 				)
 			);
 			return ;
@@ -1980,14 +1980,14 @@ mw.EmbedPlayer.prototype = {
 		  }		   		 
 		  $j( this ).html(
 		  	$j('<div />').append(
-		  		gM( 'mwe-generic_missing_plugin', misssingType ),
+		  		gM( 'mwe-embedplayer-generic_missing_plugin', misssingType ),
 		  		$j( '<br />' ),
 		  		$j( '<a />' )
 		  		.attr( {
-		  			'title' : gM( 'mwe-download_clip' ),
+		  			'title' : gM( 'mwe-embedplayer-download_clip' ),
 		  			'href' : source.src
 		  		})
-		  		.text( gM( 'mwe-download_clip' ) )
+		  		.text( gM( 'mwe-embedplayer-download_clip' ) )
 		  	)
 		  )
 		}
@@ -2430,7 +2430,7 @@ mw.EmbedPlayer.prototype = {
 	doLinkBack: function() {
 		if ( ! this.linkback && this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
-			this.displayOverlay( gM( 'mwe-loading_txt' ) );
+			this.displayOverlay( gM( 'mwe-embedplayer-loading_txt' ) );
 			this.getMvJsonUrl( this.roe, function( data ) {
 				_this.mediaElement.addROE( data );
 				_this.doLinkBack();
@@ -2441,7 +2441,7 @@ mw.EmbedPlayer.prototype = {
 			} else if ( this.mediaElement.linkback ) {
 				window.location = this.mediaElement.linkback;
 			} else {
-				this.displayOverlay( gM( 'mwe-could_not_find_linkback' ) );
+				this.displayOverlay( gM( 'mwe-embedplayer-could_not_find_linkback' ) );
 			}
 		}
 	},		
@@ -2490,7 +2490,7 @@ mw.EmbedPlayer.prototype = {
 		.click( function( ) {
 		 	_this.pause();
 	   	 } )
-	   	 .attr( 'title', gM( 'mwe-pause_clip' ) );
+	   	 .attr( 'title', gM( 'mwe-embedplayer-pause_clip' ) );
 	   	 
 	   	 // Do play tracking if enabled
 	   	 if( mw.getConfig( 'playTracking' ) ) {
@@ -2540,7 +2540,7 @@ mw.EmbedPlayer.prototype = {
 		.click( function() {
 			_this.play();
 		} )
-		.attr( 'title', gM( 'mwe-play_clip' ) );
+		.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) );
 	},
 	
 	/**
@@ -2720,7 +2720,7 @@ mw.EmbedPlayer.prototype = {
 			if ( this.isStoped() ) {
 				this.ctrlBuilder.setStatus( this.getTimeRange() );
 			} else if ( this.isPaused() ) {
-				this.ctrlBuilder.setStatus( gM( 'mwe-paused' ) );
+				this.ctrlBuilder.setStatus( gM( 'mwe-embedplayer-paused' ) );
 			} else if ( this.isPlaying() ) {
 				if ( this.currentTime && ! this.duration )
 					this.ctrlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + ' /' );
@@ -2841,7 +2841,7 @@ mw.EmbedPlayer.prototype = {
 		this.jump_time =  options['start'];
 		this.seek_time_sec = mw.npt2seconds( options['start'] );
 		// trim output to 
-		this.ctrlBuilder.setStatus( gM( 'mwe-seek_to', mw.seconds2npt( this.seek_time_sec ) ) );
+		this.ctrlBuilder.setStatus( gM( 'mwe-embedplayer-seek_to', mw.seconds2npt( this.seek_time_sec ) ) );
 		mw.log( 'DO update: ' +  this.jump_time );
 		this.updateThumbTime( rel_start_sec );
 	},
@@ -2937,7 +2937,7 @@ mediaPlayer.prototype = {
 	* Get the "name" of the player from a predictable msg key
 	*/
 	getName: function() {
-		return gM( 'mwe-ogg-player-' + this.id );
+		return gM( 'mwe-embedplayer-ogg-player-' + this.id );
 	},
 	
 	/**

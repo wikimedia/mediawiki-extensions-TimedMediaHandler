@@ -3,7 +3,7 @@
 */
 
 mw.addMessages( {
-	"mwe-credit-title" : "Title: $1"
+	"mwe-embedplayer-credit-title" : "Title: $1"
 } );
 
 var kskinConfig = {
@@ -35,11 +35,11 @@ var kskinConfig = {
 			'w':50,
 			'o':function() {
 				return $j( '<div />' )
-					.attr( 'title',  gM( 'mwe-player_options' ) )
+					.attr( 'title',  gM( 'mwe-embedplayer-player_options' ) )
 					.addClass( "ui-state-default ui-corner-bl rButton k-options" )
 					.append( 
 						$j( '<span />' )
-						.text(  gM( 'mwe-menu_btn' ) )
+						.text(  gM( 'mwe-embedplayer-menu_btn' ) )
 					)
 			}
 		},
@@ -98,7 +98,7 @@ var kskinConfig = {
 						.append(
 							$j( '<a />' )
 							.attr( {  
-								'title' : gM( 'mwe-' + menuItem ),
+								'title' : gM( 'mwe-embedplayer-' + menuItem ),
 								'href' : '#'
 							})
 						)							
@@ -199,7 +199,7 @@ var kskinConfig = {
 		var $kmenu = this.$playerTarget.find( '.k-menu' );
 		$kmenu.fadeOut( "fast", function() {
 			$optionsMenu.find( 'span' )
-				.text ( gM( 'mwe-menu_btn' ) );
+				.text ( gM( 'mwe-embedplayer-menu_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
 	},
@@ -212,7 +212,7 @@ var kskinConfig = {
 		var $kmenu = this.$playerTarget.find( '.k-menu' );
 		$kmenu.fadeIn( "fast", function() {
 			$optionsMenu.find( 'span' )
-				.text ( gM( 'mwe-close_btn' ) );
+				.text ( gM( 'mwe-embedplayer-close_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 	},
@@ -299,7 +299,7 @@ var kskinConfig = {
 			break; 
 			case 'download' :
 				embedPlayer.$interface.find( '.menu-download').text( 
-					gM('mwe-loading_txt' ) 
+					gM('mwe-embedplayer-loading_txt' ) 
 				);
 				// Call show download with the target to be populated
 				this.showDownload(
@@ -325,7 +325,7 @@ var kskinConfig = {
 
 		$target.empty().append( 
 			$j('<h2 />')
-			.text( gM( 'mwe-credits' ) ),
+			.text( gM( 'mwe-embedplayer-credits' ) ),
 			$j('<div />')
 			.addClass( "credits_box ui-corner-all" )
 			.loadingSpinner()
@@ -336,7 +336,7 @@ var kskinConfig = {
 				$j( '<div />' )
 				.addClass( 'k-attribution' )
 				.attr({
-					'title': gM('mwe-kaltura-platform-title')
+					'title': gM('mwe-embedplayer-kaltura-platform-title')
 				})
 				.click( function( ) {
 					window.location = 'http://kaltura.com';
@@ -426,7 +426,7 @@ var kskinConfig = {
 			)
 			.append(			
 				$j('<span>').html( 
-					gM( 'mwe-credit-title' ,  
+					gM( 'mwe-embedplayer-credit-title' ,  
 						// We use a div container to easialy get at the built out link
 						$j('<div>').html( 
 							$j('<a/>').attr({
