@@ -2,30 +2,30 @@
 * Timed text edit interface based off of participatory culture foundation timed text mockups. 
 */
 mw.addMessages( {
-	"mew-timedtext-editor" : "Timed text editor",
-	"mwe-stage-transcribe" : "Transcribe",
-	"mwe-stage-sync"	: "Sync",
-	"mwe-stage-translate" : "Translate",
-	"mwe-stage-upload" : "Upload from local file",
+	"mwe-timedtext-editor" : "Timed text editor",
+	"mwe-timedtext-stage-transcribe" : "Transcribe",
+	"mwe-timedtext-stage-sync" : "Sync",
+	"mwe-timedtext-stage-translate" : "Translate",
+	"mwe-timedtext-stage-upload" : "Upload from local file",
 	
-	"mwe-select-language": "Select language",
-	"mwe-file-language": "Subtitle file language",
+	"mwe-timedtext-select-language": "Select language",
+	"mwe-timedtext-file-language": "Subtitle file language",
 	
-	"mwe-upload-text": "Upload text file",
-	"mwe-uploading-text": "Uploading text file",
-	"mwe-upload-text-desc-title": "Upload a text file",
-	"mwe-upload-text-desc-help": "The upload text file interface accepts .srt files",
-	"mwe-upload-text-desc-help-browse": "Browse your local computer for the srt file you want to upload",
-	"mwe-upload-text-desc-help-select" : "Select the language of the file",
-	"mwe-upload-text-desc-help-review" : "Review / edit the text content and then press upload to add the text",
-	"mwe-upload-text-preview" : "Review text",
+	"mwe-timedtext-upload-text": "Upload text file",
+	"mwe-timedtext-uploading-text": "Uploading text file",
+	"mwe-timedtext-upload-text-desc-title": "Upload a text file",
+	"mwe-timedtext-upload-text-desc-help": "The upload text file interface accepts .srt files",
+	"mwe-timedtext-upload-text-desc-help-browse": "Browse your local computer for the srt file you want to upload",
+	"mwe-timedtext-upload-text-desc-help-select" : "Select the language of the file",
+	"mwe-timedtext-upload-text-desc-help-review" : "Review / edit the text content and then press upload to add the text",
+	"mwe-timedtext-upload-text-preview" : "Review text",
 	
-	"mwe-upload-text-success" : "Upload of timed text was successful", 
-	"mwe-upload-text-done"	: "Upload done",
-	"mwe-upload-text-fail-desc" : "Upload was unsuccessful", 
-	"mwe-upload-text-fail-title"	: "Upload failed",
-	"mwe-upload-text-another" : "Upload another",
-	"mwe-upload-text-done-uploading" : "Done uploading"
+	"mwe-timedtext-upload-text-success" : "Upload of timed text was successful", 
+	"mwe-timedtext-upload-text-done" : "Upload done",
+	"mwe-timedtext-upload-text-fail-desc" : "Upload was unsuccessful", 
+	"mwe-timedtext-upload-text-fail-title" : "Upload failed",
+	"mwe-timedtext-upload-text-another" : "Upload another",
+	"mwe-timedtext-upload-text-done-uploading" : "Done uploading"
 } );
 
 mw.TimedTextEdit = function( parentTimedText ) {
@@ -99,7 +99,7 @@ mw.TimedTextEdit.prototype = {
 						.addClass( 'ui-icon ui-icon-' + editStage.icon )
 						,
 						$j('<span>')
-						.text( gM('mwe-stage-' + edit_stage_id) ) 
+						.text( gM('mwe-timedtext-stage-' + edit_stage_id) ) 
 					)
 				)
 			);
@@ -159,7 +159,7 @@ mw.TimedTextEdit.prototype = {
 			$j('<div />')
 			.addClass( "leftcolumn" )
 			.append('<h4>')
-			.text( gM('mwe-upload-text') ),
+			.text( gM('mwe-timedtext-upload-text') ),
 			$j('<div />')
 			.addClass( 'rightcolumn' )
 			.append(
@@ -167,17 +167,17 @@ mw.TimedTextEdit.prototype = {
 				.attr('id', "timed-text-rightcolum-desc")
 				.append( 
 					$j('<h4>')
-						.text( gM('mwe-upload-text-desc-title') ),
-					$j('<i>').text ( gM( 'mwe-upload-text-desc-help' ) ),
+						.text( gM('mwe-timedtext-upload-text-desc-title') ),
+					$j('<i>').text ( gM( 'mwe-timedtext-upload-text-desc-help' ) ),
 					$j('<ul>').append( 
-						$j('<li>').text( gM('mwe-upload-text-desc-help-browse') ),
-						$j('<li>').text( gM('mwe-upload-text-desc-help-select') ),
-						$j('<li>').text( gM('mwe-upload-text-desc-help-review') ) 
+						$j('<li>').text( gM('mwe-timedtext-upload-text-desc-help-browse') ),
+						$j('<li>').text( gM('mwe-timedtext-upload-text-desc-help-select') ),
+						$j('<li>').text( gM('mwe-timedtext-upload-text-desc-help-review') ) 
 					)
 				),
 				//The text preview
 				$j('<h3>')
-					.text( gM( 'mwe-upload-text-preview' ) ),
+					.text( gM( 'mwe-timedtext-upload-text-preview' ) ),
 				$j('<textarea id="timed-text-file-preview"></textarea>')
 			)			
 		)
@@ -226,7 +226,7 @@ mw.TimedTextEdit.prototype = {
 			$j.button( {
 				'style': { 'float' : 'left' },
 				'class': 'language-select-btn',
-				'text': gM('mwe-select-language'),
+				'text': gM('mwe-timedtext-select-language'),
 				'icon_id': 'triangle-1-e'
 			} ).attr('id', 'language-select')
 			.unbind()
@@ -258,7 +258,7 @@ mw.TimedTextEdit.prototype = {
 		// Add menu binding to button target
 		$buttonTarget.menu( {
 			'content'	: _this.getLanguageList(),		
-			'backLinkText' : gM( 'mwe-back-btn' ),
+			'backLinkText' : gM( 'mwe-timedtext-back-btn' ),
 			'targetMenuContainer': '#upload-language-select'							
 		} );
 		
@@ -299,7 +299,7 @@ mw.TimedTextEdit.prototype = {
 			$j('<br />'),
 			$j.button( {
 				'style': { 'float' : 'left' },
-				'text': gM('mwe-upload-text'),
+				'text': gM('mwe-timedtext-upload-text'),
 				'icon_id': 'disk'
 			} )
 			.unbind()
@@ -315,7 +315,7 @@ mw.TimedTextEdit.prototype = {
 	 */
 	uploadTextFile: function() {
 		// Put a dialog ontop
-		mw.addLoaderDialog( gM( 'mwe-uploading-text') );
+		mw.addLoaderDialog( gM( 'mwe-timedtext-uploading-text') );
 		
 		// Get timed text target title
 		// NOTE: this should be cleaned up with accessors
@@ -339,23 +339,23 @@ mw.TimedTextEdit.prototype = {
 						
 				if( data.edit && data.edit.result == 'Success' ) {
 					var buttons = { };
-					buttons[ gM("mwe-upload-text-another")] = function() {
+					buttons[ gM("mwe-timedtext-upload-text-another")] = function() {
 						// just close the current dialog: 
 						$j( this ).dialog('close');
 					}
-					buttons[ gM( "mwe-upload-text-done-uploading" ) ] = function() {
+					buttons[ gM( "mwe-timedtext-upload-text-done-uploading" ) ] = function() {
 						window.location.reload();
 					}
 					//Edit success
 					mw.addDialog( 
-						gM( "mwe-upload-text-done"), 
-						gM("mwe-upload-text-success"), 
+						gM( "mwe-timedtext-upload-text-done"), 
+						gM("mwe-timedtext-upload-text-success"), 
 						buttons
 					)	
 				}else{
 					mw.addDialog(
-						gM( "mwe-upload-text-fail-title"),
-						gM( "mwe-upload-text-fail-desc"),
+						gM( "mwe-timedtext-upload-text-fail-title"),
+						gM( "mwe-timedtext-upload-text-fail-desc"),
 						'ok'
 					)
 				}
@@ -419,14 +419,14 @@ mw.TimedTextEdit.prototype = {
 			$j('<div>')
 				.attr({
 					'id' : 'timedTextEdit_target',
-					'title' : gM( 'mew-timedtext-editor' ) 
+					'title' : gM( 'mwe-timedtext-editor' ) 
 				})	
 				.addClass('TimedTextEdit')
 		);
 		
 		// Build cancel button 
 		var cancelButton = {};
-		var cancelText = gM( 'mwe-cancel' );
+		var cancelText = gM( 'mwe-timedtext-cancel' );
 		cancelButton[ cancelText ] = function() {
 			_this.onCancelClipEdit();
 		};

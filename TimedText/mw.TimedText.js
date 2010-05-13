@@ -17,34 +17,34 @@
  */ 
 
 mw.addMessages( {
-	"mwe-back-btn" : "Back",
-	"mwe-chose-text" : "Chose text",
-	"mwe-add-timed-text" : "Add timed text",
-	"mwe-loading-text-edit" : "Loading timed text editor", 
+	"mwe-timedtext-back-btn" : "Back",
+	"mwe-timedtext-choose-text" : "Chose text",
+	"mwe-timedtext-add-timed-text" : "Add timed text",
+	"mwe-timedtext-loading-text-edit" : "Loading timed text editor", 
 	
-	"mwe-search" : "Search clip",
+	"mwe-timedtext-search" : "Search clip",
 	
-	"mwe-layout" : "Layout", 
-	"mwe-layout-ontop" : "Ontop of video",
-	"mwe-layout-below": "Below video", 
-	"mwe-layout-off" : "Hide subtitles",
+	"mwe-timedtext-layout" : "Layout", 
+	"mwe-timedtext-layout-ontop" : "Ontop of video",
+	"mwe-timedtext-layout-below": "Below video", 
+	"mwe-timedtext-layout-off" : "Hide subtitles",
 	
-	"mwe-loading-text" : "Loading text ...",
+	"mwe-timedtext-loading-text" : "Loading text ...",
 	
-	"mwe-key-language": "$1, $2",
+	"mwe-timedtext-key-language": "$1, $2",
 	
-	"mwe-textcat-cc" : "Captions",
-	"mwe-textcat-sub" : "Subtitles",
-	"mwe-textcat-tad" : "Audio description",
-	"mwe-textcat-ktv" : "Karaoke",
-	"mwe-textcat-tik" : "Ticker text",
-	"mwe-textcat-ar" : "Active regions",
-	"mwe-textcat-nb" : "Annotation",
-	"mwe-textcat-meta" : "Timed metadata",
-	"mwe-textcat-trx" : "Transcript",
-	"mwe-textcat-lrc" : "Lyrics",
-	"mwe-textcat-lin" : "Linguistic markup",
-	"mwe-textcat-cue" : "Cue points"
+	"mwe-timedtext-textcat-cc" : "Captions",
+	"mwe-timedtext-textcat-sub" : "Subtitles",
+	"mwe-timedtext-textcat-tad" : "Audio description",
+	"mwe-timedtext-textcat-ktv" : "Karaoke",
+	"mwe-timedtext-textcat-tik" : "Ticker text",
+	"mwe-timedtext-textcat-ar" : "Active regions",
+	"mwe-timedtext-textcat-nb" : "Annotation",
+	"mwe-timedtext-textcat-meta" : "Timed metadata",
+	"mwe-timedtext-textcat-trx" : "Transcript",
+	"mwe-timedtext-textcat-lrc" : "Lyrics",
+	"mwe-timedtext-textcat-lin" : "Linguistic markup",
+	"mwe-timedtext-textcat-cue" : "Cue points"
 } );
 
 // Bind to mw ( for uncluttered global namespace ) 
@@ -235,7 +235,7 @@ mw.addMessages( {
 					'autoShow': autoShow,
 					'targetMenuContainer' : _this.menuTarget,
 					'positionOpts' : positionOpts,
-					'backLinkText' : gM( 'mwe-back-btn' )
+					'backLinkText' : gM( 'mwe-timedtext-back-btn' )
 				} )
 			});
 		},
@@ -458,16 +458,16 @@ mw.addMessages( {
 			// Chouse text menu item ( if there are sources)
 			if( _this.textSources.length != 0 ) {
 				$menu.append( 
-					$j.getLineItem( gM( 'mwe-chose-text'), 'comment' ).append(
+					$j.getLineItem( gM( 'mwe-timedtext-choose-text'), 'comment' ).append(
 						_this.getLanguageMenu()
 					),
 						// Layout Menu option
-					$j.getLineItem( gM( 'mwe-layout' ), 'image' ).append(
+					$j.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
 						_this.getLayoutMenu()
 					)
 					
 					// Search Menu option
-					//$j.getLineItem( gM('mwe-search'),  'search')
+					//$j.getLineItem( gM('mwe-timedtext-search'),  'search')
 				);
 			}
 			// Put in the "Make Transcript" link
@@ -487,7 +487,7 @@ mw.addMessages( {
 		showTimedTextEditUI: function( mode ) {
 			var _this = this;
 			// Show a loader:
-			mw.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
+			mw.addLoaderDialog( gM( 'mwe-timedtext-loading-text-edit' ));
 			// Load the timedText edit interface
 			mw.load( 'TimedText.Edit', function() {
 				if( ! _this.editText ) {
@@ -511,7 +511,7 @@ mw.addMessages( {
 		 */		
 		getLiAddText: function() {
 			var _this = this;
-			return $j.getLineItem( gM( 'mwe-add-timed-text'), 'script', function() {
+			return $j.getLineItem( gM( 'mwe-timedtext-add-timed-text'), 'script', function() {
 				_this.showTimedTextEditUI( 'add' );
 			} )
 		},
@@ -536,7 +536,7 @@ mw.addMessages( {
 				var langKey = source.lang.toLowerCase();
 				_this.getLanguageName ( langKey );
 				return $j.getLineItem( 
-					gM('mwe-key-language', [langKey, unescape( mw.Language.names[ source.lang ] )	] ), 
+					gM('mwe-timedtext-key-language', [langKey, unescape( mw.Language.names[ source.lang ] )	] ), 
 					source_icon,
 					function() {
 						mw.log(" call selectTextSource");
@@ -579,7 +579,7 @@ mw.addMessages( {
 				var icon = ( _this.config.layout == layoutMode ) ? 'bullet' : 'radio-on';
 				$ul.append( 
 					$j.getLineItem( 
-						gM( 'mwe-layout-' + layoutMode), 
+						gM( 'mwe-timedtext-layout-' + layoutMode), 
 						icon,
 						function() {
 							_this.selectLayout( layoutMode );
@@ -641,7 +641,7 @@ mw.addMessages( {
 			//Set any existing text target to "loading"
 			if( !source.loaded ) {
 				var $playerTarget = this.embedPlayer.$interface; 			
-				$playerTarget.find('.itext').text( gM('mwe-loading-text') );
+				$playerTarget.find('.itext').text( gM('mwe-timedtext-loading-text') );
 			}
 			// Load the text:
 			source.load( function() {
@@ -706,7 +706,7 @@ mw.addMessages( {
 					}
 					// Append a cat menu item for each category list
 					$langMenu.append(
-						$j.getLineItem( gM( 'mwe-textcat-' + catKey.toLowerCase() ) ).append(
+						$j.getLineItem( gM( 'mwe-timedtext-textcat-' + catKey.toLowerCase() ) ).append(
 							$catChildren
 						)
 					);
