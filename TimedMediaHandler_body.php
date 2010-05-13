@@ -11,20 +11,15 @@ class TimedMediaHandler extends MediaHandler {
 		return true;
 	}
 
-	static function registerMagicWords( &$magicData, $code ) {
-		wfLoadExtensionMessages( 'TimedMediaHandlerMagic' );
-		return true;
-	}
-
 	function getParamMap() {
 		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		return array(
 			'img_width' => 'width',
-			'ogg_noplayer' => 'noplayer',
-			'ogg_noicon' => 'noicon',
-			'ogg_thumbtime' => 'thumbtime',
-			'ogg_starttime'	=> 'start',
-			'ogg_endtime'	=> 'end',
+			'timedmedia_noplayer' => 'noplayer',
+			'timedmedia_noicon' => 'noicon',
+			'timedmedia_thumbtime' => 'thumbtime',
+			'timedmedia_starttime'	=> 'start',
+			'timedmedia_endtime'	=> 'end',
 		);
 	}
 

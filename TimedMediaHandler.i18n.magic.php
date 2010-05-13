@@ -9,8 +9,8 @@ $magicWords = array();
 
 $magicWords['en'] = array(
 	'timedmedia_noplayer'  => array( 0, 'noplayer' ),
-	'timedmedia_noicon'    => array( 0, 'noicon' ), // FIXME: conflicts with magic word in OggHandler
-	'timedmedia_thumbtime' => array( 0, 'thumbtime=$1' ), // FIXME: conflicts with magic word in OggHandler
+	'timedmedia_noicon'    => array( 0, 'noicon' ),
+	'timedmedia_thumbtime' => array( 0, 'thumbtime=$1' ),
 	'timedmedia_starttime' => array( 0, 'start=$1'),
 	'timedmedia_endtime'   => array( 0, 'end=$1'),
 );

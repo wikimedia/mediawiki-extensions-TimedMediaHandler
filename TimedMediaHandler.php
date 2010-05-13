@@ -29,7 +29,6 @@ $wgOggScriptVersion = '11';
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$oggDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$oggDir/TimedMediaHandler.i18n.magic.php";
 $wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
-$wgHooks['LanguageGetMagic'][] = 'TimedMediaHandler::registerMagicWords';
 
 
 // Setup a hook for iframe=true (will strip the interface and only output the player)

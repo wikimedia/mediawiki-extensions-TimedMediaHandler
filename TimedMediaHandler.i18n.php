@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'timedmedia-long-general'     => '(Ogg media file, length $2, $3)',
 	'timedmedia-long-error'       => '(Invalid Ogg file: $1)',
 	'timedmedia-no-player-js' 	  => 'Sorry, your browser either has JavaScript disabled or does not have any supported player.<br />
-28 	You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a> to play the clip in your browser.',
+You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a> to play the clip in your browser.',
 
 	'timedmedia-more'             => 'More…',
 	'timedmedia-dismiss'          => 'Close',
