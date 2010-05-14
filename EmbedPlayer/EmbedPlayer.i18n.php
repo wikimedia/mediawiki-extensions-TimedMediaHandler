@@ -239,10 +239,14 @@ $messages['cs'] = array(
 	'mwe-embedplayer-copy-code' => 'Kopírovat kód',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
+	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'lade Plugin …',
 	'mwe-embedplayer-select_playback' => 'Wiedergabeeinstellungen ändern',
+	'mwe-embedplayer-link_back' => 'Link zurück',
 	'mwe-embedplayer-error_swap_vid' => 'Fehler: mv_embed konnte nicht das Videotag für die mv_embed-Oberfläche auslagern',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Zum Ende der Sequenz hinzufügen',
 	'mwe-embedplayer-missing_video_stream' => 'Die Videodatei für diesen Stream fehlt',
@@ -250,6 +254,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-pause_clip' => 'Clip pausieren',
 	'mwe-embedplayer-volume_control' => 'Lautstärkensteuerung',
 	'mwe-embedplayer-player_options' => 'Playeroptionen',
+	'mwe-embedplayer-timed_text' => 'Als nächstes eingereiht',
 	'mwe-embedplayer-player_fullscreen' => 'Vollbild',
 	'mwe-embedplayer-next_clip_msg' => 'Nächsten Clip wiedergeben',
 	'mwe-embedplayer-prev_clip_msg' => 'Vorherigen Clip wiedergeben',
@@ -266,20 +271,27 @@ $messages['de'] = array(
 	'mwe-embedplayer-credits' => 'Credits',
 	'mwe-embedplayer-clip_linkback' => 'Clip-Quellseite',
 	'mwe-embedplayer-choose_player' => 'Videoplayer auswählen',
+	'mwe-embedplayer-no-player' => 'Es ist für $1 kein Player verfügbar',
 	'mwe-embedplayer-share_this_video' => 'Dieses Video teilen',
 	'mwe-embedplayer-video_credits' => 'Videocredits',
+	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura Open-Source-Video-Plattform',
 	'mwe-embedplayer-menu_btn' => 'Menü',
 	'mwe-embedplayer-close_btn' => 'Schließen',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-Player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-Player',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-Player',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Allgemeines Ogg-Plugin',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-Plugin',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-embedplayer-ogg-player-cortado' => 'Java Cortado',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-Player',
 	'mwe-embedplayer-ogg-player-selected' => '(ausgewählt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-generic_missing_plugin' => 'Dein Browser scheint folgenden Wiedergabetyp nicht zu unterstützen: <b>$1</b><br />Besuche die <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Multimediahilfe</a>, um einen Player herunterzuladen.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Für eine bessere Videowiedergabe wird empfohlen:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Dieses Mal ignorieren.',
+	'mwe-embedplayer-playerSelect' => 'Player',
 	'mwe-embedplayer-read_before_embed' => 'Bitte lies vor dem Einbinden die <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Sicherheitsanmerkungen</a>!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Auf deiner Seite einbinden',
 	'mwe-embedplayer-related_videos' => 'Ähnliche Videos',
@@ -289,6 +301,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
+	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfe ob der von dir eingebettete Code eine Quelle und/ oder einen API-Schlüssel enthält',
 );
 
 /** Zazaki (Zazaki) */
@@ -518,7 +531,9 @@ $messages['fi'] = array(
 	'mwe-embedplayer-copy-code' => 'Kopioi koodi',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author IAlex
+ */
 $messages['fr'] = array(
 	'mwe-embedplayer-credit-title' => 'Titre : $1',
 	'mwe-embedplayer-loading_plugin' => 'chargement du greffon ...',
@@ -531,6 +546,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-pause_clip' => 'Mettre le clip en pause',
 	'mwe-embedplayer-volume_control' => 'Contrôle du volume',
 	'mwe-embedplayer-player_options' => 'Options du lecteur',
+	'mwe-embedplayer-timed_text' => 'Texte défilant',
 	'mwe-embedplayer-player_fullscreen' => 'Plein écran',
 	'mwe-embedplayer-next_clip_msg' => 'Lire le clip suivant',
 	'mwe-embedplayer-prev_clip_msg' => 'Lire le clip précédent',
@@ -547,11 +563,15 @@ $messages['fr'] = array(
 	'mwe-embedplayer-credits' => 'Crédits',
 	'mwe-embedplayer-clip_linkback' => 'Page source du clip',
 	'mwe-embedplayer-choose_player' => 'Choisir le lecteur vidéo',
+	'mwe-embedplayer-no-player' => 'Aucun lecteur disponible pour $1',
 	'mwe-embedplayer-share_this_video' => 'Partager cette vidéo',
 	'mwe-embedplayer-video_credits' => 'Crédits de la vidéo',
+	'mwe-embedplayer-kaltura-platform-title' => 'Plateforme vidéo en source ouverte Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Fermer',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Lecteur VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Lecteur Ogg HTML5',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Lecteur H.264 HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Module générique Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Module QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -563,6 +583,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Votre navigateur ne semble pas compatible avec le type de lecture suivant : <b>$1</b><br />Visitez la page des <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">méthodes de visionnage</a> pour télécharger un lecteur.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage nous recommandons :<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Interrompre pour le moment.',
+	'mwe-embedplayer-playerSelect' => 'Lecteurs',
 	'mwe-embedplayer-read_before_embed' => 'Veuillez <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">lire ceci</a> avant de procéder !',
 	'mwe-embedplayer-embed_site_or_blog' => 'Intégrer dans une page',
 	'mwe-embedplayer-related_videos' => 'Vidéos associées',
@@ -572,6 +593,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-video-flv' => 'vidéo Flash',
 	'mwe-embedplayer-video-ogg' => 'vidéo Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-missing-source' => "Aucune source vidéo n'a été trouvée. Vérifiez que votre code d'intégration comprend une source ou clé API",
 );
 
 /** Galician (Galego)
@@ -724,7 +746,9 @@ $messages['he'] = array(
 	'mwe-embedplayer-related_videos' => 'סרטונים קשורים',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'mwe-embedplayer-credit-title' => 'Titul: $1',
 	'mwe-embedplayer-loading_plugin' => 'tykač so začituje ...',
@@ -737,6 +761,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-pause_clip' => 'Klip zastajić',
 	'mwe-embedplayer-volume_control' => 'Regulowanje sylnosće zwuka',
 	'mwe-embedplayer-player_options' => 'Opcije wothrawaka',
+	'mwe-embedplayer-timed_text' => 'Synchronizowany tekst',
 	'mwe-embedplayer-player_fullscreen' => 'Połna wobrazowka',
 	'mwe-embedplayer-next_clip_msg' => 'Přichodny klip wothrać',
 	'mwe-embedplayer-prev_clip_msg' => 'Předchadny klip wothrać',
@@ -753,11 +778,15 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-credits' => 'Dźakprajenje',
 	'mwe-embedplayer-clip_linkback' => 'Žórłow strona klipa',
 	'mwe-embedplayer-choose_player' => 'Widejowy wothrawak wubrać',
+	'mwe-embedplayer-no-player' => 'Žadyn wothrawak za $1 k dispoziciji',
 	'mwe-embedplayer-share_this_video' => 'Tute widejo zhromadnje wužiwać',
 	'mwe-embedplayer-video_credits' => 'Dźakprajenja za wutworjenje wideja',
+	'mwe-embedplayer-kaltura-platform-title' => 'Widejoplatforma Kaltura ze zjawneho žórła',
 	'mwe-embedplayer-menu_btn' => 'Meni',
 	'mwe-embedplayer-close_btn' => 'Začinić',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Wothrawak VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Wothrawak HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Wothrawak HTML5 H.264',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Tykač Generic Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Tykač QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -769,6 +798,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Zda so, zo twój wobhladowak slědowacy typ playbacka njepodpěruje: <b>$1</b><br />Wopytaj stronu <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">metodow playbacka</a>, zo by wothrawak sćahnył.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Za lěpše wideodožiwjenje playbacka poručamy:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Za nětko wotpokazać.',
+	'mwe-embedplayer-playerSelect' => 'Wothrawaki',
 	'mwe-embedplayer-read_before_embed' => 'Prošu <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">čitaj to</a> do zasadźenja!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Na stronje zasadźić',
 	'mwe-embedplayer-related_videos' => 'Přiwuzne wideja',
@@ -778,6 +808,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-video-flv' => 'Widejo Flash',
 	'mwe-embedplayer-video-ogg' => 'Ogg-widejo',
 	'mwe-embedplayer-video-audio' => 'Ogg-awdio',
+	'mwe-embedplayer-missing-source' => 'Žane widejo namakane. Kontroluj, hač twój zasadźeny kod žórło abo API-kluč wobsahuje',
 );
 
 /** Hungarian (Magyar) */
@@ -1110,6 +1141,70 @@ $messages['lb'] = array(
 	'mwe-embedplayer-copy-code' => 'Code kopéieren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mwe-embedplayer-credit-title' => 'Наслов: $1',
+	'mwe-embedplayer-loading_plugin' => 'Го вчитувам приклучокот...',
+	'mwe-embedplayer-select_playback' => 'Постави изведбени нагодувања',
+	'mwe-embedplayer-link_back' => 'Обратна врска',
+	'mwe-embedplayer-error_swap_vid' => 'Грешка: mwEmbed не можеше да ја смени видео-ознаката за mwEmbed интерфејсот',
+	'mwe-embedplayer-add_to_end_of_sequence' => 'Додај на крајот од низата',
+	'mwe-embedplayer-missing_video_stream' => 'Видео-податотеката за овој канал недостасува',
+	'mwe-embedplayer-play_clip' => 'Пушти снимка',
+	'mwe-embedplayer-pause_clip' => 'Паузирај снимка',
+	'mwe-embedplayer-volume_control' => 'Регулирање гласност',
+	'mwe-embedplayer-player_options' => 'Нагодувања на изведувачот',
+	'mwe-embedplayer-timed_text' => 'Синхронизиран текст',
+	'mwe-embedplayer-player_fullscreen' => 'На цел екран',
+	'mwe-embedplayer-next_clip_msg' => 'Пушти следна снимка',
+	'mwe-embedplayer-prev_clip_msg' => 'Пушти претходна снимка',
+	'mwe-embedplayer-current_clip_msg' => 'Продолжи со изведба на снимкава',
+	'mwe-embedplayer-seek_to' => 'Прејди на $1',
+	'mwe-embedplayer-paused' => 'паузирано',
+	'mwe-embedplayer-download_segment' => 'Преземи избрано:',
+	'mwe-embedplayer-download_full' => 'Преземете ја полната видео-податотека:',
+	'mwe-embedplayer-download_right_click' => 'За да преземете, стиснете го десното копче и одберете „Сними ја врската како...“',
+	'mwe-embedplayer-download_clip' => 'Преземи видео',
+	'mwe-embedplayer-download_text' => 'Преземи текст (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
+	'mwe-embedplayer-download' => 'Преземи',
+	'mwe-embedplayer-share' => 'Сподели',
+	'mwe-embedplayer-credits' => 'Создавачи',
+	'mwe-embedplayer-clip_linkback' => 'Изворна страница на снимката',
+	'mwe-embedplayer-choose_player' => 'Одберете видео-изведувач',
+	'mwe-embedplayer-no-player' => 'Нема допстапен изведувач за $1',
+	'mwe-embedplayer-share_this_video' => 'Сподели ја снимкава',
+	'mwe-embedplayer-video_credits' => 'За авторите на снимката',
+	'mwe-embedplayer-kaltura-platform-title' => 'Отворена видео-платформа Kaltura',
+	'mwe-embedplayer-menu_btn' => 'Мени',
+	'mwe-embedplayer-close_btn' => 'Затвори',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC изведувач',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg изведувач',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 изведувач',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Општ Ogg приклучок',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime приклучок',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura изведувач',
+	'mwe-embedplayer-ogg-player-selected' => '(избрано)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-generic_missing_plugin' => 'Вашиот прелистувач изгледа не го поддржува следниов тип на изведба: <b>$1</b><br />Посетете ја страницата<a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Начини на изведба</a> за да преземете изведувач.<br />',
+	'mwe-embedplayer-for_best_experience' => 'За поквалитетно прегледување на снимките ви го препорачуваме <b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">најновиот Firefox</a>.</b>',
+	'mwe-embedplayer-do_not_warn_again' => 'Засега отфрли.',
+	'mwe-embedplayer-playerSelect' => 'Изведувач',
+	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Прочитајте го ова</a> пред да вметнувате.',
+	'mwe-embedplayer-embed_site_or_blog' => 'Вметни во страница',
+	'mwe-embedplayer-related_videos' => 'Поврзани снимки',
+	'mwe-embedplayer-seeking' => 'барам',
+	'mwe-embedplayer-copy-code' => 'Копирај код',
+	'mwe-embedplayer-video-h264' => 'H.264 видео',
+	'mwe-embedplayer-video-flv' => 'Flash видео',
+	'mwe-embedplayer-video-ogg' => 'Ogg видео',
+	'mwe-embedplayer-video-audio' => 'Ogg аудио',
+	'mwe-embedplayer-missing-source' => 'Не е пронајден извор на снимката. Проверете дали вашиот вметнат код содржи извор или клуч',
+);
+
 /** Malayalam (മലയാളം) */
 $messages['ml'] = array(
 	'mwe-embedplayer-credit-title' => 'തലക്കെട്ട്: $1',
@@ -1319,7 +1414,9 @@ $messages['pl'] = array(
 	'mwe-embedplayer-related_videos' => 'Podobne filmy',
 );
 
-/** Portuguese (Português) */
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
 $messages['pt'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
 	'mwe-embedplayer-loading_plugin' => "a carregar o ''plugin'' ...",
@@ -1332,27 +1429,32 @@ $messages['pt'] = array(
 	'mwe-embedplayer-pause_clip' => 'Pausar clipe',
 	'mwe-embedplayer-volume_control' => 'Controlo de volume',
 	'mwe-embedplayer-player_options' => 'Opções do leitor',
+	'mwe-embedplayer-timed_text' => 'Legendas',
 	'mwe-embedplayer-player_fullscreen' => 'Ecrã inteiro',
 	'mwe-embedplayer-next_clip_msg' => 'Reproduzir clipe seguinte',
 	'mwe-embedplayer-prev_clip_msg' => 'Reproduzir clipe anterior',
 	'mwe-embedplayer-current_clip_msg' => 'Continuar a reproduzir este clipe',
 	'mwe-embedplayer-seek_to' => 'Procurar $1',
 	'mwe-embedplayer-paused' => 'em pausa',
-	'mwe-embedplayer-download_segment' => 'Descarregar selecção:',
-	'mwe-embedplayer-download_full' => 'Descarregar todo o ficheiro vídeo:',
+	'mwe-embedplayer-download_segment' => 'Download da selecção:',
+	'mwe-embedplayer-download_full' => 'Donwnload do ficheiro vídeo completo:',
 	'mwe-embedplayer-download_right_click' => 'Para descarregar, clique com o botão direito do rato e seleccione <i>Guardar ligação como...</i>',
-	'mwe-embedplayer-download_clip' => 'Descarregar vídeo',
-	'mwe-embedplayer-download_text' => 'Descarregar texto (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
-	'mwe-embedplayer-download' => 'Descarregar',
+	'mwe-embedplayer-download_clip' => 'Download do vídeo',
+	'mwe-embedplayer-download_text' => 'Download do texto (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
+	'mwe-embedplayer-download' => 'Download',
 	'mwe-embedplayer-share' => 'Partilhar',
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-clip_linkback' => 'Página fonte do clipe',
 	'mwe-embedplayer-choose_player' => 'Escolher leitor de vídeo',
+	'mwe-embedplayer-no-player' => 'Não há nenhum leitor disponível para $1',
 	'mwe-embedplayer-share_this_video' => 'Partilhar este vídeo',
 	'mwe-embedplayer-video_credits' => 'Créditos do vídeo',
+	'mwe-embedplayer-kaltura-platform-title' => 'Plataforma de vídeo em código aberto Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Fechar',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Leitor VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Leitor Ogg HTML5',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Leitor H.264 HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin Ogg genérico',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plugin QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -1361,9 +1463,10 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-generic_missing_plugin' => 'O seu navegador não parece suportar o seguinte tipo de reprodução: <b>$1</b><br />Visite a página <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> para descarregar um leitor.<br />',
+	'mwe-embedplayer-generic_missing_plugin' => 'O seu browser não parece suportar o seguinte tipo de reprodução: <b>$1</b><br />Visite a página <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> para fazer o download de um leitor.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos::<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Ignorar por agora.',
+	'mwe-embedplayer-playerSelect' => 'Leitores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Leia isto</a> antes de incorporar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar numa página',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
@@ -1373,6 +1476,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Áudio Ogg',
+	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo. Verifique que o seu código inclui a fonte ou uma chave API',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -1459,11 +1563,21 @@ $messages['sk'] = array(
 	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
 );
 
-/** Swedish (Svenska) */
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
 $messages['sv'] = array(
+	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'laddar plugin...',
 	'mwe-embedplayer-volume_control' => 'Volymkontroll',
 	'mwe-embedplayer-player_fullscreen' => 'Fullskärm',
+	'mwe-embedplayer-prev_clip_msg' => 'Spela föregående klipp',
+	'mwe-embedplayer-current_clip_msg' => 'Fortsätt spela detta klipp',
+	'mwe-embedplayer-paused' => 'pausad',
+	'mwe-embedplayer-download_segment' => 'Hämta urval:',
+	'mwe-embedplayer-download_full' => 'Ladda ner den fullständiga videofilen:',
+	'mwe-embedplayer-download_right_click' => 'För att ladda ner, högerklicka och välj <i>Spara länk som ...</i>',
+	'mwe-embedplayer-download_clip' => 'Ladda ner video',
 	'mwe-embedplayer-download' => 'Ladda ner',
 	'mwe-embedplayer-share' => 'Dela',
 	'mwe-embedplayer-choose_player' => 'Välj videouppspelare',
