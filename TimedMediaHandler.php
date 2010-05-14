@@ -41,10 +41,10 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'OggTranscode::schema';
 $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TimedMediaHandler',
-	'author'         => 'Tim Starling, Michael Dale',
+	'author'         => array( 'Tim Starling', 'Michael Dale' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
-	'description'    => 'Handler for Timed Media ( video, audio, timedText ) with transcoding to Ogg Theora/Vorbis',
-	'descriptionmsg' => 'tmh-desc',
+	'description'    => 'Handler for Timed Media (video, audio, timedText) with transcoding to Ogg Theora/Vorbis',
+	'descriptionmsg' => 'timedmedia-desc',
 );
 
 
