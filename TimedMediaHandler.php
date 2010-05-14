@@ -49,10 +49,10 @@ $wgExtensionCredits['media'][] = array(
 
 
 // Add the javascript loader for "EmbedPlayer module"
-$wgExtensionJavascriptLoader[] = "extensions/TimedMediaHandler/EmbedPlayer/loader.js";
+$wgExtensionJavascriptModules[ 'EmbedPlayer' ] = "extensions/TimedMediaHandler/EmbedPlayer";
 
 // Add the javascript loader for "TimedText module"
-$wgExtensionJavascriptLoader[] = "extensions/TimedMediaHandler/TimedText/loader.js";
+$wgExtensionJavascriptModules[ 'TimedText' ] = "extensions/TimedMediaHandler/TimedText";
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
