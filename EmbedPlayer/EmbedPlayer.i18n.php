@@ -167,11 +167,19 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-video-audio' => 'Ogg-аўдыё',
 );
 
-/** Breton (Brezhoneg) */
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
 $messages['br'] = array(
+	'mwe-embedplayer-credit-title' => 'Titl : $1',
+	'mwe-embedplayer-loading_plugin' => 'O kargañ ar plugin...',
+	'mwe-embedplayer-select_playback' => 'Termeniñ ar penndibaboù lenn',
+	'mwe-embedplayer-link_back' => 'Liamm distreiñ',
 	'mwe-embedplayer-play_clip' => "Lenn ar c'hlip",
 	'mwe-embedplayer-pause_clip' => "Ehanañ ar c'hlip",
+	'mwe-embedplayer-volume_control' => 'Kontrol an tregern',
 	'mwe-embedplayer-player_options' => 'Dibarzhioù al lenner',
+	'mwe-embedplayer-timed_text' => 'Testenn o tibunañ',
 	'mwe-embedplayer-player_fullscreen' => 'Skramm leun',
 	'mwe-embedplayer-next_clip_msg' => "Lenn ar c'hlip da-heul",
 	'mwe-embedplayer-prev_clip_msg' => "Lenn ar c'hlip kent",
@@ -186,14 +194,30 @@ $messages['br'] = array(
 	'mwe-embedplayer-credits' => 'Kredoù',
 	'mwe-embedplayer-choose_player' => 'Dibab al lenner video',
 	'mwe-embedplayer-share_this_video' => 'Rannañ ar video-mañ',
+	'mwe-embedplayer-kaltura-platform-title' => 'Savenn video e mammenn digor Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Lañser',
 	'mwe-embedplayer-close_btn' => 'Serriñ',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'Lenner VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Lenner Ogg HTML5',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Lenner H.264 HTML5',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin hollek Ogg',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plugin QuickTime',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-embedplayer-ogg-player-cortado' => 'Java Cortado',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Lenner Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(diuzet)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-do_not_warn_again' => 'Ehanañ evit ar poent.',
+	'mwe-embedplayer-playerSelect' => 'Lennerien',
+	'mwe-embedplayer-related_videos' => 'Videoioù liammet',
 	'mwe-embedplayer-seeking' => 'o klask',
+	'mwe-embedplayer-copy-code' => "Kopiañ ar c'hod",
+	'mwe-embedplayer-video-h264' => 'video H.264',
+	'mwe-embedplayer-video-flv' => 'video Flash',
+	'mwe-embedplayer-video-ogg' => 'video Ogg',
+	'mwe-embedplayer-video-audio' => 'Son Ogg',
+	'mwe-embedplayer-missing-source' => "N'eus bet kavet mammenn video ebet. Gwiriekait en deus ho kod enframmañ ur vammenn pe un alc'hwez API.",
 );
 
 /** Bosnian (Bosanski) */
@@ -301,7 +325,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
-	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfe ob der von dir eingebettete Code eine Quelle und/ oder einen API-Schlüssel enthält',
+	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfe, ob der von dir eingebettete Code eine Quelle und/oder einen API-Schlüssel enthält',
 );
 
 /** Zazaki (Zazaki) */
@@ -356,7 +380,9 @@ $messages['diq'] = array(
 	'mwe-embedplayer-copy-code' => 'Kodê kopya',
 );
 
-/** Lower Sorbian (Dolnoserbski) */
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
 $messages['dsb'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'Tykac se zacytujo ...',
@@ -369,6 +395,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-pause_clip' => 'Klip zastajiś',
 	'mwe-embedplayer-volume_control' => 'Regulěrowanje głosnosći',
 	'mwe-embedplayer-player_options' => 'Opcije wótegrawaka',
+	'mwe-embedplayer-timed_text' => 'Synchronizěrowany tekst',
 	'mwe-embedplayer-player_fullscreen' => 'Połna wobrazowka',
 	'mwe-embedplayer-next_clip_msg' => 'Pśiducy klip wótegraś',
 	'mwe-embedplayer-prev_clip_msg' => 'Pjerwjejšny klip wótegraś',
@@ -385,11 +412,15 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-credits' => 'Źěkowanje',
 	'mwe-embedplayer-clip_linkback' => 'Žrědłowy bok klipow',
 	'mwe-embedplayer-choose_player' => 'Wideowótegrawak wubraś',
+	'mwe-embedplayer-no-player' => 'Za $1 žeden wótgrawak k dispoziciji',
 	'mwe-embedplayer-share_this_video' => 'Toś to wideo źěliś',
 	'mwe-embedplayer-video_credits' => 'Źěkowanja za napóranje wideo',
+	'mwe-embedplayer-kaltura-platform-title' => 'Wideowa platforma zjawnego žrědła Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Meni',
 	'mwe-embedplayer-close_btn' => 'Zacyniś',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Grajadło VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Wótgrawak HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Wótgrawak HTML5 H.264',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Tykac Generic Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Tykac QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -401,6 +432,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Zda se, až twój wobglědowak njepódpěra slědujucy playbackowy typ: <b>$1</b><br />Wóglědaj se bok wó <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">metodach playbacka</a>, aby ześěgnuł wótegrajadło.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Za lěpše dožywjenje wideoplaybacka pórucujomy:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Tenraz zachyśiś.',
+	'mwe-embedplayer-playerSelect' => 'Wótgrawaki',
 	'mwe-embedplayer-read_before_embed' => 'Pšosym cytaj <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">wěstotne pśipiski wó zdalonem zasajźenju</a>, nježli až napšawdu zasajźujoš!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Na boku zasajźiś',
 	'mwe-embedplayer-related_videos' => 'Pśiwuzne wideo',
@@ -410,6 +442,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-video-flv' => 'Wideo Flash',
 	'mwe-embedplayer-video-ogg' => 'Ogg-wideo',
 	'mwe-embedplayer-video-audio' => 'Ogg-awdio',
+	'mwe-embedplayer-missing-source' => 'Žedno žrědłowe wideo namakane. Pśekontrolěruj, lěc twój zasajźony kod wopśimujo žrědło abo API-kluc',
 );
 
 /** Greek (Ελληνικά) */
@@ -863,7 +896,9 @@ $messages['hu'] = array(
 	'mwe-embedplayer-copy-code' => 'Kód másolása',
 );
 
-/** Interlingua (Interlingua) */
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
 $messages['ia'] = array(
 	'mwe-embedplayer-credit-title' => 'Titulo: $1',
 	'mwe-embedplayer-loading_plugin' => 'cargamento del plug-in ...',
@@ -876,6 +911,7 @@ $messages['ia'] = array(
 	'mwe-embedplayer-pause_clip' => 'Pausar clip',
 	'mwe-embedplayer-volume_control' => 'Controlo de volumine',
 	'mwe-embedplayer-player_options' => 'Optiones de reproductor',
+	'mwe-embedplayer-timed_text' => 'Subtitulos',
 	'mwe-embedplayer-player_fullscreen' => 'Plen schermo',
 	'mwe-embedplayer-next_clip_msg' => 'Reproducer sequente clip',
 	'mwe-embedplayer-prev_clip_msg' => 'Reproducer precedente clip',
@@ -892,11 +928,15 @@ $messages['ia'] = array(
 	'mwe-embedplayer-credits' => 'Creditos',
 	'mwe-embedplayer-clip_linkback' => 'Pagina de fonte del clip',
 	'mwe-embedplayer-choose_player' => 'Seliger reproductor de video',
+	'mwe-embedplayer-no-player' => 'Nulle reproductor disponibile pro $1',
 	'mwe-embedplayer-share_this_video' => 'Condivider iste video',
 	'mwe-embedplayer-video_credits' => 'Creditos de video',
+	'mwe-embedplayer-kaltura-platform-title' => 'Platteforma video a codice aperte Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Clauder',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Reproductor VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Reproductor Ogg HTML5',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Reproductor H.264 HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plug-in generic pro Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plug-in de QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -908,6 +948,7 @@ $messages['ia'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Tu navigator non pare supportar le sequente typo de reproduction: <b>$1</b><br />Visita le pagina super <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">methodos de reproduction</a> pro discargar un reproductor.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Pro un melior experientia de reproduction de video, nos recommenda:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Dimitter pro le momento.',
+	'mwe-embedplayer-playerSelect' => 'Reproductores',
 	'mwe-embedplayer-read_before_embed' => 'Per favor lege le <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">notas de securitate super incastramento remote</a> ante de incastrar un cosa!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Incastrar in un pagina',
 	'mwe-embedplayer-related_videos' => 'Videos connexe',
@@ -917,6 +958,7 @@ $messages['ia'] = array(
 	'mwe-embedplayer-video-flv' => 'Video Flash',
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-missing-source' => 'Nulle video de origine ha essite trovate. Verifica que tu codice de incorporation include un origine o clave API',
 );
 
 /** Indonesian (Bahasa Indonesia) */
@@ -1569,6 +1611,8 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'laddar plugin...',
+	'mwe-embedplayer-play_clip' => 'Spela klipp',
+	'mwe-embedplayer-pause_clip' => 'Pausa klipp',
 	'mwe-embedplayer-volume_control' => 'Volymkontroll',
 	'mwe-embedplayer-player_fullscreen' => 'Fullskärm',
 	'mwe-embedplayer-prev_clip_msg' => 'Spela föregående klipp',

@@ -57,10 +57,24 @@ $messages['en'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'No $1 subtitles where found for clip: $2',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'mwe-timedtext-editor' => 'Рэдактар сынхранізаванага тэксту',
+	'mwe-timedtext-stage-transcribe' => 'Пераўтвараць',
+	'mwe-timedtext-stage-sync' => 'Сынхранізаваць',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
 $messages['br'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Treuzskrivañ',
+	'mwe-timedtext-stage-translate' => 'Treiñ',
+	'mwe-timedtext-back-btn' => 'Distreiñ',
+	'mwe-timedtext-textcat-cc' => "Alc'hwezioù",
+	'mwe-timedtext-textcat-sub' => 'Istitloù',
 	'mwe-timedtext-textcat-lrc' => 'Komzoù',
 );
 
@@ -74,6 +88,58 @@ $messages['es'] = array(
 	'mwe-timedtext-upload-text' => 'Subir archivo de texto',
 	'mwe-timedtext-uploading-text' => 'Subiendo archivo de texto',
 	'mwe-timedtext-upload-text-desc-title' => 'Subir un archivo de texto',
+	'mwe-timedtext-upload-text-preview' => 'Revisar texto',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mwe-timedtext-editor' => 'Editor de subtitulos',
+	'mwe-timedtext-stage-transcribe' => 'Transcriber',
+	'mwe-timedtext-stage-sync' => 'Sync',
+	'mwe-timedtext-stage-translate' => 'Traducer',
+	'mwe-timedtext-stage-upload' => 'Incargar ex un file local',
+	'mwe-timedtext-select-language' => 'Selige lingua',
+	'mwe-timedtext-file-language' => 'Lingua del file de subtitulos',
+	'mwe-timedtext-upload-text' => 'Incargar file de texto',
+	'mwe-timedtext-uploading-text' => 'Incarga file de texto…',
+	'mwe-timedtext-upload-text-desc-title' => 'Incargar un file de texto',
+	'mwe-timedtext-upload-text-desc-help' => 'Le interfacie pro incargamento de files de texto accepta le files .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Cerca in tu computator local le file .srt que tu vole incargar',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Selige le lingua del file',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Revide / modifica le contento del texto e postea preme incargar pro adder le texto',
+	'mwe-timedtext-upload-text-preview' => 'Revider texto',
+	'mwe-timedtext-upload-text-success' => 'Le incargamento del subtitulos ha succedite',
+	'mwe-timedtext-upload-text-done' => 'Incargamento finite',
+	'mwe-timedtext-upload-text-fail-desc' => 'Le incargamento non ha succedite',
+	'mwe-timedtext-upload-text-fail-title' => 'Incargamento fallite',
+	'mwe-timedtext-upload-text-another' => 'Incargar un altere',
+	'mwe-timedtext-upload-text-done-uploading' => 'Finite incargar',
+	'mwe-timedtext-back-btn' => 'Retornar',
+	'mwe-timedtext-choose-text' => 'Selige texto',
+	'mwe-timedtext-add-timed-text' => 'Adder subtitulos',
+	'mwe-timedtext-loading-text-edit' => 'Carga le editor de subtitulos…',
+	'mwe-timedtext-search' => 'Cercar clip',
+	'mwe-timedtext-layout' => 'Disposition',
+	'mwe-timedtext-layout-ontop' => 'Super le video',
+	'mwe-timedtext-layout-below' => 'Sub le video',
+	'mwe-timedtext-layout-off' => 'Celar subtitulos',
+	'mwe-timedtext-loading-text' => 'Carga texto…',
+	'mwe-timedtext-textcat-cc' => 'Subtitulos',
+	'mwe-timedtext-textcat-sub' => 'Subtitulos',
+	'mwe-timedtext-textcat-tad' => 'Description audio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Barra de information',
+	'mwe-timedtext-textcat-ar' => 'Regiones active',
+	'mwe-timedtext-textcat-nb' => 'Annotation',
+	'mwe-timedtext-textcat-meta' => 'Metadatos de synchronisation',
+	'mwe-timedtext-textcat-trx' => 'Transcription',
+	'mwe-timedtext-textcat-lrc' => 'Lyricos',
+	'mwe-timedtext-textcat-lin' => 'Marcation lingusitic',
+	'mwe-timedtext-textcat-cue' => 'Punctos de entrata',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Subtitulos in $1 pro le clip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nulle subtitulos in $1 ha essite trovate pro le clip: $2',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -82,10 +148,16 @@ $messages['es'] = array(
 $messages['lb'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwwersetzen',
 	'mwe-timedtext-select-language' => 'Sprooch eraussichen',
+	'mwe-timedtext-upload-text' => 'Text-Fichier eroplueden',
+	'mwe-timedtext-upload-text-desc-title' => 'En Text-Fichier eroplueden',
 	'mwe-timedtext-upload-text-desc-help-select' => "D'Sprooch vum Fichier eraussichen",
 	'mwe-timedtext-upload-text-preview' => 'Text nokucken',
+	'mwe-timedtext-upload-text-done' => 'Eroplueden ofgeschloss',
 	'mwe-timedtext-back-btn' => 'Zréck',
+	'mwe-timedtext-choose-text' => 'Text eraussichen',
 	'mwe-timedtext-layout' => 'Layout',
+	'mwe-timedtext-layout-off' => 'Ënnertitele verstoppen',
+	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
 );
 
 /** Macedonian (Македонски)
