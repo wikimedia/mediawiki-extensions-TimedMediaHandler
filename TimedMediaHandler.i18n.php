@@ -905,7 +905,7 @@ $messages['fi'] = array(
 	'timedmedia-long-audio' => '(Ogg $1 -äänitiedosto, $2, $3)',
 	'timedmedia-long-video' => '(Ogg $1 -videotiedosto, $2, $4×$5, $3)',
 	'timedmedia-long-multiplexed' => '(Ogg-tiedosto (limitetty kuva ja ääni), $1, $2, $4×$5, $3)',
-	'timedmedia-long-general' => '(tmh-tiedosto, $2, $3)',
+	'timedmedia-long-general' => '(Ogg-tiedosto, $2, $3)',
 	'timedmedia-long-error' => '(Kelvoton Ogg-tiedosto: $1)',
 	'timedmedia-more' => 'Lisää…',
 	'timedmedia-dismiss' => 'Sulje',
@@ -1245,6 +1245,7 @@ $messages['ht'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -1257,23 +1258,14 @@ $messages['hu'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg egyesített audió- és videófájl, $1, hossz: $2, $4×$5 képpont, $3 összesen)',
 	'timedmedia-long-general' => '(Ogg médiafájl, hossza: $2, $3)',
 	'timedmedia-long-error' => '(Érvénytelen ogg fájl: $1)',
-	'timedmedia-play' => 'Lejátszás',
-	'timedmedia-pause' => 'Szüneteltetés',
-	'timedmedia-stop' => 'Állj',
-	'timedmedia-play-video' => 'Videó lejátszása',
-	'timedmedia-play-sound' => 'Hang lejátszása',
-	'timedmedia-no-player' => 'Sajnáljuk, de úgy tűnik, hogy nem rendelkezel a megfelelő lejátszóval. Amennyiben le szeretnéd játszani, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">tölts le egyet</a>.',
-	'timedmedia-no-xiphqt' => 'Úgy tűnik, nem rendelkezel a QuickTime-hoz való XiphQT összetevővel. Enélkül a QuickTime nem tudja lejátszani az Ogg fájlokat. A lejátszáshoz tölts le egyet <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">innen</a>, vagy válassz másik lejátszót.',
-	'timedmedia-player-videoElement' => 'A böngésző támogatja',
-	'timedmedia-player-oggPlugin' => 'Beépülő modul böngészőhöz',
-	'timedmedia-player-thumbnail' => 'Csak állókép',
-	'timedmedia-player-soundthumb' => 'Nincs lejátszó',
-	'timedmedia-player-selected' => '(kiválasztott)',
-	'timedmedia-use-player' => 'Lejátszó:',
+	'timedmedia-no-player-js' => 'Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />
+<a href="$1">Letöltheted a klipet</a>, vagy <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.',
 	'timedmedia-more' => 'Tovább...',
 	'timedmedia-dismiss' => 'Bezárás',
 	'timedmedia-download' => 'Fájl letöltése',
 	'timedmedia-desc-link' => 'Fájlinformációk',
+	'timedmedia-oggThumb-version' => 'Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.',
+	'timedmedia-oggThumb-failed' => 'Az oggThumb nem tudta elkészíteni a bélyegképet.',
 );
 
 /** Interlingua (Interlingua)
@@ -2218,23 +2210,14 @@ $messages['pms'] = array(
 	'timedmedia-long-multiplexed' => "(Archivi audio/video multiplessà Ogg, $1, ch'a dura $2, formà $4×$5 px, $3 an tut)",
 	'timedmedia-long-general' => "(Archivi multimojen Ogg, ch'a dura $2, $3)",
 	'timedmedia-long-error' => '(Archivi ogg nen bon: $1)',
-	'timedmedia-play' => 'Smon',
-	'timedmedia-pause' => 'Pàusa',
-	'timedmedia-stop' => 'Fërma',
-	'timedmedia-play-video' => 'Smon ël film',
-	'timedmedia-play-sound' => 'Smon ël sonòr',
-	'timedmedia-no-player' => "Darmagi, ma sò calcolator a smija ch'a l'abia pa gnun programa ch'a peul smon-e dj'archivi multi-mojen. Për piasì <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">ch'as në dëscaria un</a>.",
-	'timedmedia-no-xiphqt' => "A smija che ansima a sò calcolator a-i sia nen ël component XiphQT dël programa QuickTime. QuickTime a-i la fa pa a dovré dj'archivi an forma Ogg files s'a l'ha nen ës component-lì. Për piasì <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">ch'as dëscaria XiphQT</a> ò pura ch'as sërna n'àotr programa për dovré j'archivi multi-mojen.",
-	'timedmedia-player-videoElement' => 'Apògg browser nativ',
-	'timedmedia-player-oggPlugin' => 'Spinòt (plugin) për browser',
-	'timedmedia-player-thumbnail' => 'Mach na figurin-a fissa',
-	'timedmedia-player-soundthumb' => 'Gnun programa për vardé/scoté',
-	'timedmedia-player-selected' => '(selessionà)',
-	'timedmedia-use-player' => 'Dovré ël programa:',
+	'timedmedia-no-player-js' => 'Spiasent, ël tò browser a l\'ha JavaScript disabilità o a supòrta pa ël riprodotor.<br />
+It peule <a href="$1">dëscarié ël clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">dëscarié un riprodotor</a> për visualisé ël clip ant tò browser.',
 	'timedmedia-more' => 'Dë pì...',
 	'timedmedia-dismiss' => 'sëré',
 	'timedmedia-download' => "Dëscarié l'archivi",
 	'timedmedia-desc-link' => "Rësgoard a st'archivi",
+	'timedmedia-oggThumb-version' => "OggHandler a ciama la vërsion $1 d'oggThumb o pi agiornà.",
+	'timedmedia-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
 );
 
 /** Pashto (پښتو)
@@ -2276,8 +2259,8 @@ $messages['pt'] = array(
 	'timedmedia-long-multiplexed' => '(Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo)',
 	'timedmedia-long-general' => '(Multimédia Ogg, $2 de duração, $3)',
 	'timedmedia-long-error' => '(Ficheiro ogg inválido: $1)',
-	'timedmedia-no-player-js' => 'Desculpe, mas o seu navegador está com o JavaScript desactivado ou não possui um leitor de média suportado.<br />
-Pode fazer o <a href="$1">descarregar o vídeo</a> ou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar um leitor</a> para assistir o vídeo em seu navegador.',
+	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desactivado ou não tem qualquer leitor  suportado.<br />
+Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download de um leitor</a> para assistir ao vídeo no seu browser.',
 	'timedmedia-more' => 'Mais...',
 	'timedmedia-dismiss' => 'Fechar',
 	'timedmedia-download' => 'Fazer download do ficheiro',
