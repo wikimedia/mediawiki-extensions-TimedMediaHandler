@@ -111,7 +111,9 @@ $messages['ar'] = array(
 	'mwe-embedplayer-close_btn' => 'إغلاق',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца)) */
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Wizardist
+ */
 $messages['be-tarask'] = array(
 	'mwe-embedplayer-credit-title' => 'Назва: $1',
 	'mwe-embedplayer-loading_plugin' => 'Загружаецца дапаўненьне …',
@@ -124,6 +126,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-pause_clip' => 'Прыпыніць частку файла',
 	'mwe-embedplayer-volume_control' => 'Рэгуляваньне гучнасьці',
 	'mwe-embedplayer-player_options' => 'Устаноўкі прайгравальніка',
+	'mwe-embedplayer-timed_text' => 'Сынхранізаваны тэкст',
 	'mwe-embedplayer-player_fullscreen' => 'На ўвесь экран',
 	'mwe-embedplayer-next_clip_msg' => 'Прайграць наступную частку файла',
 	'mwe-embedplayer-prev_clip_msg' => 'Прайграць папярэднюю частку файла',
@@ -217,6 +220,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(diuzet)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-generic_missing_plugin' => 'Evit doare ez eo digenglotus ho merdeer gant an doare lenner da-heul : <b>$1</b><br />Gweladennit pajenn an  <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">an doareoù dewelet</a> evit pellgargañ ul lenner.<br />',
+	'mwe-embedplayer-for_best_experience' => 'Evit gwelet gwelloc\'h e erbedadomp deoc\'h : <br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Ehanañ evit ar poent.',
 	'mwe-embedplayer-playerSelect' => 'Lennerien',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Lennit an dra-mañ</a> a-raok ober.',
@@ -590,7 +594,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-pause_clip' => 'Mettre le clip en pause',
 	'mwe-embedplayer-volume_control' => 'Contrôle du volume',
 	'mwe-embedplayer-player_options' => 'Options du lecteur',
-	'mwe-embedplayer-timed_text' => 'Texte défilant',
+	'mwe-embedplayer-timed_text' => 'Texte synchronisé',
 	'mwe-embedplayer-player_fullscreen' => 'Plein écran',
 	'mwe-embedplayer-next_clip_msg' => 'Lire le clip suivant',
 	'mwe-embedplayer-prev_clip_msg' => 'Lire le clip précédent',
@@ -645,16 +649,17 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
-	'mwe-embedplayer-loading_plugin' => 'cargando o complemento...',
+	'mwe-embedplayer-loading_plugin' => 'Cargando o complemento...',
 	'mwe-embedplayer-select_playback' => 'Configurar as preferencias de reprodución',
 	'mwe-embedplayer-link_back' => 'Ligazón de volta',
-	'mwe-embedplayer-error_swap_vid' => 'Erro: mv_embed foi incapaz de cambiar a etiqueta do vídeo para a interface mv_embed',
+	'mwe-embedplayer-error_swap_vid' => 'Erro: mwEmbed foi incapaz de cambiar a etiqueta do vídeo para a interface mwEmbed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Engadir ao final da secuencia',
 	'mwe-embedplayer-missing_video_stream' => 'Falta o ficheiro de vídeo para ese fluxo',
 	'mwe-embedplayer-play_clip' => 'Reproducir o vídeo',
 	'mwe-embedplayer-pause_clip' => 'Pór o vídeo en pausa',
 	'mwe-embedplayer-volume_control' => 'Control do volume',
 	'mwe-embedplayer-player_options' => 'Opcións do reprodutor',
+	'mwe-embedplayer-timed_text' => 'Texto sincronizado',
 	'mwe-embedplayer-player_fullscreen' => 'Pantalla completa',
 	'mwe-embedplayer-next_clip_msg' => 'Reproducir o seguinte vídeo',
 	'mwe-embedplayer-prev_clip_msg' => 'Reproducir o vídeo anterior',
@@ -674,11 +679,12 @@ $messages['gl'] = array(
 	'mwe-embedplayer-no-player' => 'Non hai ningún reprodutor dispoñible para $1',
 	'mwe-embedplayer-share_this_video' => 'Compartir este vídeo',
 	'mwe-embedplayer-video_credits' => 'Créditos do vídeo',
+	'mwe-embedplayer-kaltura-platform-title' => 'Plataforma de vídeo de código aberto Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menú',
 	'mwe-embedplayer-close_btn' => 'Pechar',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Reprodutor VLC',
-	'mwe-embedplayer-ogg-player-oggNative' => 'Reprodutor HTML5 Ogg',
-	'mwe-embedplayer-ogg-player-h264Native' => 'Reprodutor HTML5 H.264',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Reprodutor Ogg HTML5',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Reprodutor H.264 HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Complemento xenérico Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Complemento QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -688,10 +694,10 @@ $messages['gl'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-generic_missing_plugin' => 'Parece que o seu navegador non é compatible co tipo de reprodución: <b>$1</b><br />Visite a páxina de <a href="http://commons.wikimedia.org/wiki/Commons:Axuda multimedia">métodos de reprodución</a> para descargar un reprodutor.<br />',
-	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo, recomendamos:<br /><b><a href="http://gl.www.mozilla.com/gl">Firefox 3.5</a>.</b>',
+	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos a <b><a href="http://www.mozilla.com/gl/">última versión do Firefox</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Agochar polo de agora.',
 	'mwe-embedplayer-playerSelect' => 'Reprodutores',
-	'mwe-embedplayer-read_before_embed' => 'Por favor, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">olle isto</a> antes da incrustación!',
+	'mwe-embedplayer-read_before_embed' => 'Por favor, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">olle isto</a> antes da incrustación.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar nunha páxina',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'procurando',

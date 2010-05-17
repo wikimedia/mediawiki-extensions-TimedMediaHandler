@@ -932,7 +932,7 @@ $messages['fo'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'timedmedia-desc' => 'Support pour les médias défilant (vidéo, audio, texte défilant) avec transcodage en Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Support pour les médias défilant (vidéo, audio, texte synchronisé) avec transcodage en Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Fichier son Ogg $1, $2',
 	'timedmedia-short-video' => 'Fichier vidéo Ogg $1, $2',
 	'timedmedia-short-general' => 'Fichier média Ogg $1, $2',
@@ -1033,29 +1033,15 @@ $messages['ga'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'timedmedia-desc' => 'Manipulador dos ficheiros Ogg Theora e mais dos ficheiros Vorbis co reprodutor JavaScript',
+	'timedmedia-desc' => 'Manipulador dos ficheiros sincronizados (vídeo, son, texto sincronizado) con transcodificación en Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Ficheiro de son Ogg $1, $2',
 	'timedmedia-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
 	'timedmedia-short-general' => 'Ficheiro multimedia Ogg $1, $2',
-	'timedmedia-long-audio' => '(Ficheiro de son Ogg $1, duración $2, $3)',
-	'timedmedia-long-video' => '(Ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3)',
-	'timedmedia-long-multiplexed' => '(Ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
-	'timedmedia-long-general' => '(Ficheiro multimedia Ogg, duración $2, $3)',
-	'timedmedia-long-error' => '(Ficheiro Ogg non válido: $1)',
-	'timedmedia-play' => 'Reproducir',
-	'timedmedia-pause' => 'Pausar',
-	'timedmedia-stop' => 'Deter',
-	'timedmedia-play-video' => 'Reproducir o vídeo',
-	'timedmedia-play-sound' => 'Reproducir o son',
-	'timedmedia-no-player' => 'Parece que o seu sistema non dispón do software de reprodución axeitado.
-<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Instale un reprodutor</a>.',
-	'timedmedia-no-xiphqt' => 'Parece que non dispón do compoñente XiphQT para QuickTime. QuickTime non pode reproducir ficheiros Ogg sen este componente. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Instale XiphQT</a> ou escolla outro reprodutor.',
-	'timedmedia-player-videoElement' => 'Soporte do navegador nativo',
-	'timedmedia-player-oggPlugin' => 'Complemento do navegador',
-	'timedmedia-player-thumbnail' => 'Só instantánea',
-	'timedmedia-player-soundthumb' => 'Ningún reprodutor',
-	'timedmedia-player-selected' => '(seleccionado)',
-	'timedmedia-use-player' => 'Usar o reprodutor:',
+	'timedmedia-long-audio' => '(ficheiro de son Ogg $1, duración $2, $3)',
+	'timedmedia-long-video' => '(ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3)',
+	'timedmedia-long-multiplexed' => '(ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
+	'timedmedia-long-general' => '(ficheiro multimedia Ogg, duración $2, $3)',
+	'timedmedia-long-error' => '(ficheiro Ogg non válido: $1)',
 	'timedmedia-more' => 'Máis...',
 	'timedmedia-dismiss' => 'Fechar',
 	'timedmedia-download' => 'Descargar o ficheiro',
@@ -2197,11 +2183,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'timedmedia-desc' => 'Gestor për ij file Ogg Theora e Vorbis, con riprodotor JavaScript',
+	'timedmedia-desc' => "Gestor për ij mojen ch'a dësfilo (filmà, sonor, test sincronisà), con riprodussion an Ogg Theora/Vorbis",
 	'timedmedia-short-audio' => 'Registrassion Ogg $1, $2',
 	'timedmedia-short-video' => 'Film Ogg $1, $2',
 	'timedmedia-short-general' => 'Archivi Multimojen Ogg $1, $2',
@@ -2210,13 +2197,13 @@ $messages['pms'] = array(
 	'timedmedia-long-multiplexed' => "(Archivi audio/video multiplessà Ogg, $1, ch'a dura $2, formà $4×$5 px, $3 an tut)",
 	'timedmedia-long-general' => "(Archivi multimojen Ogg, ch'a dura $2, $3)",
 	'timedmedia-long-error' => '(Archivi ogg nen bon: $1)',
-	'timedmedia-no-player-js' => 'Spiasent, ël tò browser a l\'ha JavaScript disabilità o a supòrta pa ël riprodotor.<br />
-It peule <a href="$1">dëscarié ël clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">dëscarié un riprodotor</a> për visualisé ël clip ant tò browser.',
+	'timedmedia-no-player-js' => 'Darmagi, sò navigador a l\'ha JavaScript disabilità o a supòrta pa ël riprodutor.<br />
+A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.',
 	'timedmedia-more' => 'Dë pì...',
 	'timedmedia-dismiss' => 'sëré',
 	'timedmedia-download' => "Dëscarié l'archivi",
 	'timedmedia-desc-link' => "Rësgoard a st'archivi",
-	'timedmedia-oggThumb-version' => "OggHandler a ciama la vërsion $1 d'oggThumb o pi agiornà.",
+	'timedmedia-oggThumb-version' => "OggHandler a ciama la version $1 d'oggThumb o pi agiornà.",
 	'timedmedia-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
 );
 

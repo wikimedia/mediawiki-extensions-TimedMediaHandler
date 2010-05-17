@@ -57,13 +57,57 @@ $messages['en'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'No $1 subtitles where found for clip: $2',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'mwe-timedtext-stage-translate' => '{{Identical|Translate}}',
+	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
+	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'mwe-timedtext-editor' => 'Рэдактар сынхранізаванага тэксту',
 	'mwe-timedtext-stage-transcribe' => 'Пераўтвараць',
 	'mwe-timedtext-stage-sync' => 'Сынхранізаваць',
+	'mwe-timedtext-stage-translate' => 'Перакласьці',
+	'mwe-timedtext-stage-upload' => 'Загрузіць з лякальнага файла',
+	'mwe-timedtext-select-language' => 'Выберыце мову',
+	'mwe-timedtext-file-language' => 'Мова файла субтытраў',
+	'mwe-timedtext-upload-text' => 'Загрузіць тэкставы файл',
+	'mwe-timedtext-uploading-text' => 'Загрузка тэкставага файла',
+	'mwe-timedtext-upload-text-desc-title' => 'Загрузіць тэкставы файл',
+	'mwe-timedtext-upload-text-desc-help' => 'Інтэрфэйс загрузкі тэкставых файлаў прымае файлы з пашырэньнем .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Знайдзіце на Вашым лякальным кампутары файл з пашырэньнем .srt, які Вы жадаеце загрузіць',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Выберыце мову файла',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Праверце / адрэдагуйце зьмест тэксту і потым націсьніце «Загрузіць», каб дадаць тэкст',
+	'mwe-timedtext-upload-text-preview' => 'Праверыць тэкст',
+	'mwe-timedtext-upload-text-success' => 'Загрузка сынхранізаванага тэксту адбылася пасьпяхова',
+	'mwe-timedtext-upload-text-done' => 'Загрузка выкананая',
+	'mwe-timedtext-upload-text-fail-desc' => 'Загрузка не атрымалася',
+	'mwe-timedtext-upload-text-fail-title' => 'Памылка загрузкі',
+	'mwe-timedtext-upload-text-another' => 'Дадаць іншы',
+	'mwe-timedtext-upload-text-done-uploading' => 'Загрузка выкананая',
+	'mwe-timedtext-back-btn' => 'Вярнуцца',
+	'mwe-timedtext-choose-text' => 'Выберыце тэкст',
+	'mwe-timedtext-add-timed-text' => 'Дадаць сынхранізаваны тэкст',
+	'mwe-timedtext-loading-text-edit' => 'Загрузка рэдактара сынхранізаванага тэксту',
+	'mwe-timedtext-search' => 'Пошук кліпу',
+	'mwe-timedtext-layout' => 'Разьмяшчэньне',
+	'mwe-timedtext-layout-ontop' => 'На версе відэа',
+	'mwe-timedtext-layout-below' => 'Унізе відэа',
+	'mwe-timedtext-layout-off' => 'Схаваць субтытры',
+	'mwe-timedtext-loading-text' => 'Загрузка тэксту…',
+	'mwe-timedtext-textcat-cc' => 'Субтытры',
+	'mwe-timedtext-textcat-sub' => 'Субтытры:',
+	'mwe-timedtext-textcat-tad' => 'Аўдыя-апісаньне',
+	'mwe-timedtext-textcat-ktv' => 'Караоке',
+	'mwe-timedtext-textcat-lrc' => 'Словы',
 );
 
 /** Breton (Brezhoneg)
@@ -164,6 +208,68 @@ $messages['es'] = array(
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'mwe-timedtext-editor' => 'Éditeur de texte synchronisé',
+	'mwe-timedtext-stage-transcribe' => 'Transcrire',
+	'mwe-timedtext-stage-sync' => 'Synchroniser',
+	'mwe-timedtext-stage-translate' => 'Traduire',
+	'mwe-timedtext-stage-upload' => 'Téléverser un fichier local',
+	'mwe-timedtext-select-language' => 'Sélectionner la langue',
+	'mwe-timedtext-file-language' => 'Langue du fichier de sous-titres',
+	'mwe-timedtext-upload-text' => 'Téléverser un fichier texte',
+	'mwe-timedtext-uploading-text' => 'Téléversement du fichier texte',
+	'mwe-timedtext-upload-text-desc-title' => 'Téléverser un fichier texte',
+	'mwe-timedtext-upload-text-desc-help' => "L'interface de téléversement de fichiers texte accepte les fichiers .srt",
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Parcourez votre ordinateur local pour trouver le fichier .srt que vous souhaitez téléverser',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Sélectionner la langue du fichier',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Vérifiez / modifiez le contenu du texte et appuyez ensuite sur téléverser pour ajouter le texte',
+	'mwe-timedtext-upload-text-preview' => 'Vérifier le texte',
+	'mwe-timedtext-upload-text-success' => 'Téléversement du texte synchronisé effectué avec succès',
+	'mwe-timedtext-upload-text-done' => 'Téléversement terminé',
+	'mwe-timedtext-upload-text-fail-desc' => 'Le téléversement a échoué',
+	'mwe-timedtext-upload-text-fail-title' => 'Échec du téléversement',
+	'mwe-timedtext-upload-text-another' => 'Téléverser un autre',
+	'mwe-timedtext-upload-text-done-uploading' => 'Téléversement effectué',
+	'mwe-timedtext-back-btn' => 'Revenir',
+	'mwe-timedtext-choose-text' => 'Choisissez le texte',
+	'mwe-timedtext-add-timed-text' => 'Ajouter du texte synchronisé',
+	'mwe-timedtext-loading-text-edit' => "Chargement de l'éditeur de texte synchronisé",
+	'mwe-timedtext-search' => 'Recherche un clip',
+	'mwe-timedtext-layout' => 'Disposition',
+	'mwe-timedtext-layout-ontop' => 'En haut de la vidéo',
+	'mwe-timedtext-layout-below' => 'En dessous de la vidéo',
+	'mwe-timedtext-layout-off' => 'Masquer les sous-titres',
+	'mwe-timedtext-loading-text' => 'Chargement du texte ...',
+	'mwe-timedtext-textcat-cc' => 'Légendes',
+	'mwe-timedtext-textcat-sub' => 'Sous-titres',
+	'mwe-timedtext-textcat-tad' => 'Description audio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoké',
+	'mwe-timedtext-textcat-tik' => "Barre d'informations",
+	'mwe-timedtext-textcat-ar' => 'Régions actives',
+	'mwe-timedtext-textcat-nb' => 'Annotation',
+	'mwe-timedtext-textcat-meta' => 'métadonnées synchronisées',
+	'mwe-timedtext-textcat-trx' => 'Transcription',
+	'mwe-timedtext-textcat-lrc' => 'Paroles',
+	'mwe-timedtext-textcat-lin' => 'Balisage linguistique',
+	'mwe-timedtext-textcat-cue' => 'Points de repère',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 sous-titres pour clip : $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'mwe-timedtext-editor' => 'Editor za synchronizowany tekst',
+	'mwe-timedtext-stage-transcribe' => 'Přepisać',
+	'mwe-timedtext-stage-sync' => 'Synchronizować',
+	'mwe-timedtext-stage-translate' => 'Přełožić',
+	'mwe-timedtext-stage-upload' => 'Z lokalneje dataje nahrać',
+);
+
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */
@@ -255,6 +361,9 @@ $messages['lb'] = array(
 	'mwe-timedtext-upload-text-desc-help-select' => "D'Sprooch vum Fichier eraussichen",
 	'mwe-timedtext-upload-text-preview' => 'Text nokucken',
 	'mwe-timedtext-upload-text-done' => 'Eroplueden ofgeschloss',
+	'mwe-timedtext-upload-text-fail-desc' => "D'Eroplueden huet net fonctionnéiert",
+	'mwe-timedtext-upload-text-fail-title' => "D'Eroplueden huet net fonctionnéiert",
+	'mwe-timedtext-upload-text-another' => 'Nach een eroplueden',
 	'mwe-timedtext-upload-text-done-uploading' => "D'Eroplueden ass fäerdeg",
 	'mwe-timedtext-back-btn' => 'Zréck',
 	'mwe-timedtext-choose-text' => 'Text eraussichen',
@@ -263,6 +372,9 @@ $messages['lb'] = array(
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-ar' => 'Aktiv Regiounen',
+	'mwe-timedtext-textcat-nb' => 'Notiz',
+	'mwe-timedtext-textcat-lrc' => 'Liddertext',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 Ënnertitele fir de Clip: $2',
 );
 
 /** Macedonian (Македонски)
