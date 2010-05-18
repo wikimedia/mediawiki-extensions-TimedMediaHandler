@@ -69,6 +69,13 @@ $messages['en'] = array(
 	'mwe-embedplayer-missing-source' => 'No source video was found. Check that your embed code includes a source or API key',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
+);
+
 /** Afrikaans (Afrikaans) */
 $messages['af'] = array(
 	'mwe-embedplayer-credit-title' => 'Naam: $1',
@@ -112,6 +119,8 @@ $messages['ar'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
@@ -143,11 +152,15 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-credits' => 'Стваральнікі',
 	'mwe-embedplayer-clip_linkback' => 'Крынічная старонка часткі файла',
 	'mwe-embedplayer-choose_player' => 'Выберыце відэа-прайгравальнік',
+	'mwe-embedplayer-no-player' => 'Няма прайгравальніка для $1',
 	'mwe-embedplayer-share_this_video' => 'Зрабіць гэтае відэа агульным',
 	'mwe-embedplayer-video_credits' => 'Стваральнікі відэа',
+	'mwe-embedplayer-kaltura-platform-title' => 'Відэа-плятформа з вольным крынічным кодам Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Мэню',
 	'mwe-embedplayer-close_btn' => 'Зачыніць',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Прайгравальнік VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Прайгравальнік HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Прайгравальнік HTML5 H.264',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Агульнае дапаўненьне Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Дапаўненьне QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -159,6 +172,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Ваш браўзэр, хутчэй за ўсё, не падтрымлівае наступны тып прайграваньня: <b>$1</b><br />Наведайце старонку <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Мэтады прайграваньня</a> для загрузкі прайгравальніка.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Для лепшага прайграваньня відэа, мы рэкамэндуем: <br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Пакуль адхіліць.',
+	'mwe-embedplayer-playerSelect' => 'Прагравальнікі',
 	'mwe-embedplayer-read_before_embed' => 'Калі ласка, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">прачытайце гэта</a> перад устаўкай!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Уставіць на старонку',
 	'mwe-embedplayer-related_videos' => 'Зьвязаныя відэа',
@@ -168,6 +182,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-відэа',
 	'mwe-embedplayer-video-ogg' => 'Ogg-відэа',
 	'mwe-embedplayer-video-audio' => 'Ogg-аўдыё',
+	'mwe-embedplayer-missing-source' => 'Ня знойдзена крынічнае відэа. Праверце, ці ўтрымлівае Ваш убудаваны код крыніцу ці ключ API',
 );
 
 /** Breton (Brezhoneg)
@@ -505,8 +520,11 @@ $messages['eo'] = array(
 	'mwe-embedplayer-read_before_embed' => 'Bonvolu legi la <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">sekurecajn notojn pri ekstera enkorpigado</a> antaŭ fakte enkorpigado!',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
 $messages['es'] = array(
+	'mwe-embedplayer-credit-title' => 'Título: $1',
 	'mwe-embedplayer-loading_plugin' => 'Cargando plugin ...',
 	'mwe-embedplayer-select_playback' => 'Configurar preferencia de reproducción',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Agregar al final de la secuencia',
@@ -535,20 +553,29 @@ $messages['es'] = array(
 	'mwe-embedplayer-menu_btn' => 'Menú',
 	'mwe-embedplayer-close_btn' => 'Cerrar',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Reproductor de VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Reproductor HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Reproductor HTML5 H.264',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin Ogg genérico',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plugin QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-embedplayer-ogg-player-cortado' => 'Java Cortado',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Reproductor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-generic_missing_plugin' => 'Tu navegador parece no soportar el siguiente tipo de reproducción: <b>$1</b><br />Visite pa página <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback Methods</a> para descargar un reproductor.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Para una mejor experiencia de reproducción de video, recomendamos: <br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Descartar por ahora.',
+	'mwe-embedplayer-playerSelect' => 'Reproductores',
+	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Leer esto</a> antes de insertar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Insertar en una página',
 	'mwe-embedplayer-related_videos' => 'Videos relacionados',
 	'mwe-embedplayer-seeking' => 'buscando',
 	'mwe-embedplayer-copy-code' => 'Copiar código',
+	'mwe-embedplayer-video-h264' => 'Video H.264',
+	'mwe-embedplayer-video-flv' => 'Video Flash',
+	'mwe-embedplayer-video-ogg' => 'Video Ogg',
+	'mwe-embedplayer-video-audio' => 'Audio Ogg',
 );
 
 /** Basque (Euskara) */

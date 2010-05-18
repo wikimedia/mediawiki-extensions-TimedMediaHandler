@@ -64,6 +64,7 @@ $messages['qqq'] = array(
 	'mwe-timedtext-stage-translate' => '{{Identical|Translate}}',
 	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
+	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -107,7 +108,16 @@ $messages['be-tarask'] = array(
 	'mwe-timedtext-textcat-sub' => 'Субтытры:',
 	'mwe-timedtext-textcat-tad' => 'Аўдыя-апісаньне',
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
+	'mwe-timedtext-textcat-tik' => 'Тэкставыя карткі',
+	'mwe-timedtext-textcat-ar' => 'Актыўныя рэгіёны',
+	'mwe-timedtext-textcat-nb' => 'Анатацыя',
+	'mwe-timedtext-textcat-meta' => 'Сынхранізаваныя мета-зьвесткі',
+	'mwe-timedtext-textcat-trx' => 'Стэнаграма',
 	'mwe-timedtext-textcat-lrc' => 'Словы',
+	'mwe-timedtext-textcat-lin' => 'Лінгвістычная разьметка',
+	'mwe-timedtext-textcat-cue' => 'Сыгнальныя кропкі',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 субтытры для кліпу: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Субтытры $1 для кліпу ня знойдзеныя: $2',
 );
 
 /** Breton (Brezhoneg)
@@ -189,15 +199,22 @@ $messages['de'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Pertile
  */
 $messages['es'] = array(
+	'mwe-timedtext-editor' => 'Editor de texto temporizado',
 	'mwe-timedtext-stage-transcribe' => 'Transcribir',
+	'mwe-timedtext-stage-sync' => 'Sincronizar',
 	'mwe-timedtext-stage-translate' => 'Traducir',
 	'mwe-timedtext-stage-upload' => 'Subir desde un archivo local',
 	'mwe-timedtext-select-language' => 'Seleccionar idioma',
+	'mwe-timedtext-file-language' => 'Idioma del archivo de subtítulo',
 	'mwe-timedtext-upload-text' => 'Subir archivo de texto',
 	'mwe-timedtext-uploading-text' => 'Subiendo archivo de texto',
 	'mwe-timedtext-upload-text-desc-title' => 'Subir un archivo de texto',
+	'mwe-timedtext-upload-text-desc-help' => 'La interfaz de carga de archivo de texto acepta archivos .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Examine su computadora local para encontrar el archivo .srt que desea subir',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Seleccione el idioma del archivo',
 	'mwe-timedtext-upload-text-preview' => 'Revisar texto',
 	'mwe-timedtext-upload-text-done' => 'Carga hecha',
 	'mwe-timedtext-upload-text-fail-desc' => 'La carga no fue exitosa',
@@ -205,7 +222,14 @@ $messages['es'] = array(
 	'mwe-timedtext-upload-text-another' => 'Subir otro',
 	'mwe-timedtext-back-btn' => 'Atrás',
 	'mwe-timedtext-choose-text' => 'Escoger texto',
+	'mwe-timedtext-textcat-cc' => 'Leyendas',
+	'mwe-timedtext-textcat-sub' => 'Subtítulos',
+	'mwe-timedtext-textcat-tad' => 'Descripción de audio',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-ar' => 'Regiones activas',
+	'mwe-timedtext-textcat-nb' => 'Anotación',
+	'mwe-timedtext-textcat-trx' => 'Transcribir',
+	'mwe-timedtext-textcat-lrc' => 'Letra',
 );
 
 /** French (Français)

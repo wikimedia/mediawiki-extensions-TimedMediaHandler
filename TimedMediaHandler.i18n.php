@@ -347,21 +347,8 @@ $messages['be-tarask'] = array(
 	'timedmedia-long-multiplexed' => '(мультыплексны аўдыё/відэа-файл Ogg, $1, даўжыня $2, $4×$5 піксэляў, усяго $3)',
 	'timedmedia-long-general' => '(мэдыя-файл Ogg, даўжыня $2, $3)',
 	'timedmedia-long-error' => '(Няслушны файл у фармаце Ogg: $1)',
-	'timedmedia-play' => 'Прайграць',
-	'timedmedia-pause' => 'Паўза',
-	'timedmedia-stop' => 'Спыніць',
-	'timedmedia-play-video' => 'Прайграць відэа',
-	'timedmedia-play-sound' => 'Прайграць аўдыё',
-	'timedmedia-no-player' => 'Прабачце, Ваша сыстэма ня мае неабходнага праграмнага забесьпячэньня для прайграваньня файлаў. Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце прайгравальнік</a>.',
-	'timedmedia-no-xiphqt' => 'Адсутнічае кампанэнт  XiphQT для QuickTime.
-QuickTime ня можа прайграваць файлы ў фармаце Ogg бяз гэтага кампанэнта.
-Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце XiphQT</a> альбо выберыце іншы прайгравальнік.',
-	'timedmedia-player-videoElement' => 'Убудаваная падтрымка браўзэра',
-	'timedmedia-player-oggPlugin' => 'Плагін для браўзэра',
-	'timedmedia-player-thumbnail' => 'Толькі нерухомая выява',
-	'timedmedia-player-soundthumb' => 'Няма прайгравальніка',
-	'timedmedia-player-selected' => '(выбраны)',
-	'timedmedia-use-player' => 'Выкарыстоўваць прайгравальнік:',
+	'timedmedia-no-player-js' => 'Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />
+Вы можаце <a href="$1">загрузіць кліп</a> ці <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'timedmedia-more' => 'Болей…',
 	'timedmedia-dismiss' => 'Зачыніць',
 	'timedmedia-download' => 'Загрузіць файл',
@@ -774,6 +761,7 @@ $messages['eo'] = array(
  * @author Remember the dot
  * @author Sanbec
  * @author Spacebirdy
+ * @author Translationista
  */
 $messages['es'] = array(
 	'timedmedia-desc' => 'Manejador de archivos de Ogg Thedora y Vorbis, con reproductor de JavaScript',
@@ -785,22 +773,8 @@ $messages['es'] = array(
 	'timedmedia-long-multiplexed' => '(Archivo Ogg de audio/video multiplexado, $1, tamaño $2, $4×$5 píxeles, $3 en todo)',
 	'timedmedia-long-general' => '(Archivo Ogg. tamaño $2, $3)',
 	'timedmedia-long-error' => '(Archivo ogg no válido: $1)',
-	'timedmedia-play' => 'Reproducir',
-	'timedmedia-pause' => 'Pausar',
-	'timedmedia-stop' => 'Detener',
-	'timedmedia-play-video' => 'Reproducir vídeo',
-	'timedmedia-play-sound' => 'Reproducir sonido',
-	'timedmedia-no-player' => 'Lo sentimos, su sistema parece no tener disponible un programa para reproducción de archivos multimedia.
-Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargue un reproductor</a>.',
-	'timedmedia-no-xiphqt' => 'Parece que Ud. no tiene el componente XiphQT de QuickTime.
-QuckTime no puede reproducir archivos en formato Ogg sin este componente.
-Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargue XiphQT</a> o elija otro reproductor de archivos multimedia.',
-	'timedmedia-player-videoElement' => 'Apoyo nativo de navegador',
-	'timedmedia-player-oggPlugin' => 'Complemento de navegador',
-	'timedmedia-player-thumbnail' => 'Únicamente imagen',
-	'timedmedia-player-soundthumb' => 'Ningún reproductor',
-	'timedmedia-player-selected' => '(seleccionado)',
-	'timedmedia-use-player' => 'Usar reproductor:',
+	'timedmedia-no-player-js' => 'Lo sentimos, pero tu navegador tiene JavaScript inhabilitado o no tiene ningún reproductor compatible instalado.<br />
+Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargar un reproductor</a> para poder ver el vídeo en tu navegador.',
 	'timedmedia-more' => 'Opciones...',
 	'timedmedia-dismiss' => 'Cerrar',
 	'timedmedia-download' => 'Bajar archivo',
@@ -1042,6 +1016,8 @@ $messages['gl'] = array(
 	'timedmedia-long-multiplexed' => '(ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
 	'timedmedia-long-general' => '(ficheiro multimedia Ogg, duración $2, $3)',
 	'timedmedia-long-error' => '(ficheiro Ogg non válido: $1)',
+	'timedmedia-no-player-js' => 'O seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
+Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">un reprodutor</a> para reproducir o vídeo no seu navegador.',
 	'timedmedia-more' => 'Máis...',
 	'timedmedia-dismiss' => 'Fechar',
 	'timedmedia-download' => 'Descargar o ficheiro',
