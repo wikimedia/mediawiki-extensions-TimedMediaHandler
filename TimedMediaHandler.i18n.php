@@ -1357,6 +1357,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  * @author JtFuruhata
  * @author Kahusi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'timedmedia-desc' => 'Theora および Vorbis 形式の Ogg ファイルハンドラーと JavaScript プレイヤー',
@@ -1368,19 +1369,8 @@ $messages['ja'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg 多重音声/動画ファイル、$1、長さ $2、$4×$5 ピクセル、$3)',
 	'timedmedia-long-general' => '(Ogg メディアファイル、長さ $2、$3)',
 	'timedmedia-long-error' => '(無効な Ogg ファイル: $1)',
-	'timedmedia-play' => '再生',
-	'timedmedia-pause' => '一時停止',
-	'timedmedia-stop' => '停止',
-	'timedmedia-play-video' => '動画を再生',
-	'timedmedia-play-sound' => '音声を再生',
-	'timedmedia-no-player' => '申し訳ありません、あなたのシステムには対応する再生ソフトウェアがインストールされていないようです。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここからダウンロードしてください</a>。',
-	'timedmedia-no-xiphqt' => 'QuickTime 用 XiphQT コンポーネントがインストールされていないようです。QuickTime で Ogg ファイルを再生するには、このコンポーネントが必要です。<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ここから XiphQT をダウンロードする</a>か、別の再生ソフトをインストールしてください。',
-	'timedmedia-player-videoElement' => 'ネイティヴ・ブラウザをサポート',
-	'timedmedia-player-oggPlugin' => 'ブラウザ・プラグイン',
-	'timedmedia-player-thumbnail' => '静止画像のみ',
-	'timedmedia-player-soundthumb' => 'プレーヤー無し',
-	'timedmedia-player-selected' => '(選択)',
-	'timedmedia-use-player' => '利用するプレーヤー:',
+	'timedmedia-no-player-js' => '申し訳ありません。あなたのブラウザはJavaScriptが有効でないか、プレイヤーをサポートしていません。<br />
+再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">プレイヤーをダウンロード</a>する必要があります。',
 	'timedmedia-more' => 'その他……',
 	'timedmedia-dismiss' => '閉じる',
 	'timedmedia-download' => 'ファイルをダウンロード',
@@ -2278,31 +2268,18 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'timedmedia-short-audio' => 'Fişier de sunet ogg $1, $2',
-	'timedmedia-short-video' => 'Fişier video ogg $1, $2',
-	'timedmedia-short-general' => 'Fişier media ogg $1, $2',
-	'timedmedia-long-audio' => '(Fişier de sunet ogg $1, lungime $2, $3)',
-	'timedmedia-long-video' => '(Fişier video ogg $1, lungime $2, $4×$5 pixeli, $3)',
-	'timedmedia-long-multiplexed' => '(Fişier multiplexat audio/video ogg, $1, lungime $2, $4×$5 pixeli, $3)',
-	'timedmedia-long-general' => '(Fişier media ogg, lungime $2, $3)',
-	'timedmedia-long-error' => '(Fişier ogg incorect: $1)',
-	'timedmedia-play' => 'Redă',
-	'timedmedia-pause' => 'Pauză',
-	'timedmedia-stop' => 'Stop',
-	'timedmedia-play-video' => 'Redă video',
-	'timedmedia-play-sound' => 'Redă sunet',
-	'timedmedia-no-player' => 'Îmi pare rău, sistemul tău nu pare să aibă vreun program de redare suportat.
-Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarcă un program de redare</a>.',
-	'timedmedia-player-videoElement' => 'Navigator cu suport nativ',
-	'timedmedia-player-oggPlugin' => 'Insert navigator',
-	'timedmedia-player-thumbnail' => 'Încă imaginea doar',
-	'timedmedia-player-soundthumb' => 'Niciun program de redare',
-	'timedmedia-player-selected' => '(selectat)',
-	'timedmedia-use-player' => 'Foloseşte programul de redare:',
+	'timedmedia-short-audio' => 'Fișier de sunet ogg $1, $2',
+	'timedmedia-short-video' => 'Fișier video ogg $1, $2',
+	'timedmedia-short-general' => 'Fișier media ogg $1, $2',
+	'timedmedia-long-audio' => '(Fișier de sunet ogg $1, lungime $2, $3)',
+	'timedmedia-long-video' => '(Fișier video ogg $1, lungime $2, $4×$5 pixeli, $3)',
+	'timedmedia-long-multiplexed' => '(Fișier multiplexat audio/video ogg, $1, lungime $2, $4×$5 pixeli, $3)',
+	'timedmedia-long-general' => '(Fișier media ogg, lungime $2, $3)',
+	'timedmedia-long-error' => '(Fișier ogg incorect: $1)',
 	'timedmedia-more' => 'Mai mult…',
 	'timedmedia-dismiss' => 'Închide',
-	'timedmedia-download' => 'Descarcă fişier',
-	'timedmedia-desc-link' => 'Despre acest fişier',
+	'timedmedia-download' => 'Descarcă fișier',
+	'timedmedia-desc-link' => 'Despre acest fișier',
 );
 
 /** Tarandíne (Tarandíne)

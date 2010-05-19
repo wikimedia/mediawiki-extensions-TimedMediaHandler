@@ -283,6 +283,57 @@ $messages['fr'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mwe-timedtext-editor' => 'Editor de textos sincronizados',
+	'mwe-timedtext-stage-transcribe' => 'Transcribir',
+	'mwe-timedtext-stage-sync' => 'Sincronizar',
+	'mwe-timedtext-stage-translate' => 'Traducir',
+	'mwe-timedtext-stage-upload' => 'Cargar un ficheiro local',
+	'mwe-timedtext-select-language' => 'Seleccionar a lingua',
+	'mwe-timedtext-file-language' => 'Lingua do ficheiro de subtítulos',
+	'mwe-timedtext-upload-text' => 'Cargar un ficheiro de texto',
+	'mwe-timedtext-uploading-text' => 'Cargando o ficheiro de texto',
+	'mwe-timedtext-upload-text-desc-title' => 'Cargar un ficheiro de texto',
+	'mwe-timedtext-upload-text-desc-help' => 'A interface de carga de ficheiros de texto admite ficheiros .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Buscar no seu ordenador o ficheiro .srt que quere cargar',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Seleccionar a lingua do ficheiro',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Revise ou edite os contidos e logo prema en cargar para engadir o texto',
+	'mwe-timedtext-upload-text-preview' => 'Revisar o texto',
+	'mwe-timedtext-upload-text-success' => 'Cargouse correctamente o texto sincronizado',
+	'mwe-timedtext-upload-text-done' => 'Carga completada',
+	'mwe-timedtext-upload-text-fail-desc' => 'A carga non se completou correctamente',
+	'mwe-timedtext-upload-text-fail-title' => 'Houbo un erro durante a carga',
+	'mwe-timedtext-upload-text-another' => 'Cargar outro',
+	'mwe-timedtext-upload-text-done-uploading' => 'Non cargar máis',
+	'mwe-timedtext-back-btn' => 'Volver',
+	'mwe-timedtext-choose-text' => 'Escolla o texto',
+	'mwe-timedtext-add-timed-text' => 'Engadir texto sincronizado',
+	'mwe-timedtext-loading-text-edit' => 'Cargando o editor de texto sincronizado',
+	'mwe-timedtext-search' => 'Buscar un vídeo',
+	'mwe-timedtext-layout' => 'Disposición',
+	'mwe-timedtext-layout-ontop' => 'Na parte superior do vídeo',
+	'mwe-timedtext-layout-below' => 'Na parte inferior do vídeo',
+	'mwe-timedtext-layout-off' => 'Agochar os subtítulos',
+	'mwe-timedtext-loading-text' => 'Cargando o texto...',
+	'mwe-timedtext-textcat-cc' => 'Pés de foto',
+	'mwe-timedtext-textcat-sub' => 'Subtítulos',
+	'mwe-timedtext-textcat-tad' => 'Descrición do son',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Barra de información',
+	'mwe-timedtext-textcat-ar' => 'Rexións activas',
+	'mwe-timedtext-textcat-nb' => 'Anotación',
+	'mwe-timedtext-textcat-meta' => 'Metadatos sincronizados',
+	'mwe-timedtext-textcat-trx' => 'Transcrición',
+	'mwe-timedtext-textcat-lrc' => 'Letra',
+	'mwe-timedtext-textcat-lin' => 'Formato lingüístico',
+	'mwe-timedtext-textcat-cue' => 'Puntos de sinal',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Subtítulos en $1 para o vídeo: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Non se atoparon os subtítulos en $1 para o vídeo: $2',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -370,6 +421,34 @@ $messages['ia'] = array(
 	'mwe-timedtext-textcat-cue' => 'Punctos de entrata',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Subtitulos in $1 pro le clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nulle subtitulos in $1 ha essite trovate pro le clip: $2',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'mwe-timedtext-stage-translate' => '翻訳',
+	'mwe-timedtext-stage-upload' => 'ローカルファイルからアップロード',
+	'mwe-timedtext-select-language' => '言語を選択',
+	'mwe-timedtext-file-language' => '字幕ファイルの言語',
+	'mwe-timedtext-upload-text' => 'テキストファイルをアップロード',
+	'mwe-timedtext-uploading-text' => 'テキストファイルのアップロード',
+	'mwe-timedtext-upload-text-desc-title' => 'テキストファイルをアップロード',
+	'mwe-timedtext-upload-text-desc-help-select' => 'ファイルの言語を選択',
+	'mwe-timedtext-upload-text-done' => 'アップロード完了',
+	'mwe-timedtext-upload-text-fail-desc' => 'アップロードが失敗しました',
+	'mwe-timedtext-upload-text-fail-title' => 'アップロードに失敗',
+	'mwe-timedtext-back-btn' => '戻る',
+	'mwe-timedtext-choose-text' => 'テキストを選択',
+	'mwe-timedtext-layout-ontop' => '動画の冒頭',
+	'mwe-timedtext-layout-below' => '以下の動画',
+	'mwe-timedtext-loading-text' => 'テキストを読み込み中・・・',
+	'mwe-timedtext-textcat-sub' => '字幕',
+	'mwe-timedtext-textcat-tad' => '音声の説明',
+	'mwe-timedtext-textcat-ktv' => 'カラオケ',
+	'mwe-timedtext-textcat-nb' => '注釈',
+	'mwe-timedtext-textcat-trx' => '複写',
+	'mwe-timedtext-textcat-lrc' => '歌詞',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
