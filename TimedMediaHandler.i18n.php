@@ -98,6 +98,28 @@ $messages['af'] = array(
 	'timedmedia-desc-link' => 'Aangaande die lêer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'timedmedia-desc' => 'Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis',
+	'timedmedia-short-audio' => 'Ogg tingull $1 fotografi, $2',
+	'timedmedia-short-video' => 'video file Ogg $1, $2',
+	'timedmedia-short-general' => 'Ogg $1 media file, $2',
+	'timedmedia-long-audio' => '(ZQM file $1 shëndoshë, gjatë $2, $3)',
+	'timedmedia-long-video' => '(Ogg $1 video file, gjatë $2, $4 × $5 pixels, $3)',
+	'timedmedia-long-multiplexed' => '(ZQM multiplexed audio / video file, $1, gjatë $2, $4 × $5 pixels, $3 e përgjithshme)',
+	'timedmedia-long-general' => '(Ogg media file, gjatë $2, $3)',
+	'timedmedia-long-error' => '(E pavlefshme Ogg file: $1)',
+	'timedmedia-no-player-js' => 'Na vjen keq, browser-i juaj ose ka JavaScript paaftë ose nuk ka asnjë lojtar të mbështetur. <br /> Ju mund të <a href="$1">shkarkoni clip</a> ose <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">shkarkoni një lojtar</a> për të luajtur clip në shfletuesin tuaj.',
+	'timedmedia-more' => 'Më shumë ...',
+	'timedmedia-dismiss' => 'Afër',
+	'timedmedia-download' => 'Shkarko file',
+	'timedmedia-desc-link' => 'Për këtë fotografi',
+	'timedmedia-oggThumb-version' => 'OggHandler kërkon version oggThumb $1 ose më vonë.',
+	'timedmedia-oggThumb-failed' => 'oggThumb dështuar për të krijuar tablo.',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

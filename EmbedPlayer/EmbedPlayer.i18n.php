@@ -96,6 +96,41 @@ $messages['af'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Voeg by jou webblad of webjoernaal',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'mwe-embedplayer-share_this_video' => 'Share this video',
+	'mwe-embedplayer-video_credits' => 'kreditë Video',
+	'mwe-embedplayer-kaltura-platform-title' => 'video Kaltura me burim të hapur platformën',
+	'mwe-embedplayer-menu_btn' => 'Menu',
+	'mwe-embedplayer-close_btn' => 'Afër',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 lojtar ZQM',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 lojtar H.264',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generic Ogg plugin',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime plugin',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'lojtar Kaltura',
+	'mwe-embedplayer-ogg-player-selected' => '(Zgjedhur)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'Flash Vorbis OMTK',
+	'mwe-embedplayer-generic_missing_plugin' => 'Ju browser nuk duket për të mbështetur rishikim llojin e mëposhtme: <b>$1</b> <br /> Vizitoni <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">metodat Playback</a> faqe për ta shkarkuar një lojtar. <br />',
+	'mwe-embedplayer-for_best_experience' => 'Për një përvojë më të mirë video rishikim të këshillojmë <b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox fundit</a> .</b>',
+	'mwe-embedplayer-do_not_warn_again' => 'Shkarkojë tani për tani.',
+	'mwe-embedplayer-playerSelect' => 'Lojtaret',
+	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Lexoni kete</a> para se embedding.',
+	'mwe-embedplayer-embed_site_or_blog' => 'Embed në një faqe',
+	'mwe-embedplayer-related_videos' => 'Related videos',
+	'mwe-embedplayer-seeking' => 'kërkojnë',
+	'mwe-embedplayer-copy-code' => 'Copy kodin',
+	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-flv' => 'Flash video',
+	'mwe-embedplayer-video-ogg' => 'video Ogg',
+	'mwe-embedplayer-video-audio' => 'Ogg audio',
+	'mwe-embedplayer-missing-source' => 'Nuk ka video burim u gjet. Kontrolloni që kodi juaj embed përfshin një burim apo API kryesore',
+);
+
 /** Arabic (العربية) */
 $messages['ar'] = array(
 	'mwe-embedplayer-loading_plugin' => 'تحميل ملحق...',
