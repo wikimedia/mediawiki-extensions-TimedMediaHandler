@@ -764,7 +764,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'timedmedia-desc' => 'Manejador de archivos de Ogg Thedora y Vorbis, con reproductor de JavaScript',
+	'timedmedia-desc' => 'Herramienta de control de elementos multimedia sincronizados (vídeo, sonido y texto sincronizado) con transcodificación Ogg Theora y Vorbis',
 	'timedmedia-short-audio' => 'Archivo de sonido Ogg $1, $2',
 	'timedmedia-short-video' => 'Archivo de video Ogg $1, $2',
 	'timedmedia-short-general' => 'Archivo Ogg $1, $2',
@@ -772,12 +772,12 @@ $messages['es'] = array(
 	'timedmedia-long-video' => '(Archivo de video Ogg $1, tamaño $2, $4×$5 píxeles, $3)',
 	'timedmedia-long-multiplexed' => '(Archivo Ogg de audio/video multiplexado, $1, tamaño $2, $4×$5 píxeles, $3 en todo)',
 	'timedmedia-long-general' => '(Archivo Ogg. tamaño $2, $3)',
-	'timedmedia-long-error' => '(Archivo ogg no válido: $1)',
+	'timedmedia-long-error' => '(Archivo Ogg no válido: $1)',
 	'timedmedia-no-player-js' => 'Lo sentimos, pero tu navegador tiene JavaScript inhabilitado o no tiene ningún reproductor compatible instalado.<br />
 Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargar un reproductor</a> para poder ver el vídeo en tu navegador.',
 	'timedmedia-more' => 'Opciones...',
 	'timedmedia-dismiss' => 'Cerrar',
-	'timedmedia-download' => 'Bajar archivo',
+	'timedmedia-download' => 'Descargar archivo',
 	'timedmedia-desc-link' => 'Sobre este archivo',
 	'timedmedia-oggThumb-version' => 'OggHandler requiere una versión oggThumb $1 o posterior.',
 	'timedmedia-oggThumb-failed' => 'oggThumb no pudo crear la imagen miniatura.',

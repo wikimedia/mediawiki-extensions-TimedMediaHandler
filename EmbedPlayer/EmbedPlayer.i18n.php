@@ -522,16 +522,21 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
 	'mwe-embedplayer-loading_plugin' => 'Cargando plugin ...',
 	'mwe-embedplayer-select_playback' => 'Configurar preferencia de reproducción',
+	'mwe-embedplayer-link_back' => 'Referir a enlace',
+	'mwe-embedplayer-error_swap_vid' => 'Error: mwEmbed no pudo sustituír la etiqueta de vídeo por la interfaz mwEmbed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Agregar al final de la secuencia',
+	'mwe-embedplayer-missing_video_stream' => 'Falta el archivo de vídeo de esta transmisión',
 	'mwe-embedplayer-play_clip' => 'Reproducir clip',
 	'mwe-embedplayer-pause_clip' => 'Pausar clip',
 	'mwe-embedplayer-volume_control' => 'Control de volumen',
 	'mwe-embedplayer-player_options' => 'Opciones de reproductor',
+	'mwe-embedplayer-timed_text' => 'Texto sincronizado',
 	'mwe-embedplayer-player_fullscreen' => 'Pantalla completa',
 	'mwe-embedplayer-next_clip_msg' => 'Reproducir siguiente clip',
 	'mwe-embedplayer-prev_clip_msg' => 'Reproducir clip anterior',
@@ -548,8 +553,10 @@ $messages['es'] = array(
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-clip_linkback' => 'Página fuente de clip',
 	'mwe-embedplayer-choose_player' => 'Elegir reproductor de video',
+	'mwe-embedplayer-no-player' => 'No hay ningún reproductor disponible para $1',
 	'mwe-embedplayer-share_this_video' => 'Compartir este video',
 	'mwe-embedplayer-video_credits' => 'Créditos de video',
+	'mwe-embedplayer-kaltura-platform-title' => 'Plataforma de vídeo de código abierto Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menú',
 	'mwe-embedplayer-close_btn' => 'Cerrar',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Reproductor de VLC',
@@ -576,6 +583,7 @@ $messages['es'] = array(
 	'mwe-embedplayer-video-flv' => 'Video Flash',
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-missing-source' => 'No se encontró ningún vídeo de origen. Compruebe que el código insertado incluye el origen o la clave API',
 );
 
 /** Basque (Euskara) */
