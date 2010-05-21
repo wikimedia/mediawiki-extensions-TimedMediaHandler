@@ -1507,6 +1507,14 @@ $messages['oc'] = array(
 	'mwe-embedplayer-copy-code' => 'Copiar lo còde',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'mwe-embedplayer-credit-title' => 'Titel: $1',
+	'mwe-embedplayer-seek_to' => 'Guck uff $1',
+);
+
 /** Polish (Polski) */
 $messages['pl'] = array(
 	'mwe-embedplayer-loading_plugin' => 'trwa ładowanie wtyczki...',

@@ -640,6 +640,14 @@ $messages['nl'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen $1ondertitels gevonden voor clip: $2',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'mwe-timedtext-stage-translate' => 'Iwwersetze',
+	'mwe-timedtext-back-btn' => 'Zerrick',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
