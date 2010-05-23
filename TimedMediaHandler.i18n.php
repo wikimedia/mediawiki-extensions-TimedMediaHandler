@@ -452,6 +452,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'timedmedia-desc' => 'Benveg kontrolliñ elfennoù liesmedia sinkronek (video, son, ha testenn sinkronekaet) gant treuzkodiñ da Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Restr son Ogg $1, $2',
 	'timedmedia-short-video' => 'Restr video Ogg $1, $2',
 	'timedmedia-short-general' => 'Restr media Ogg $1, $2',
@@ -460,21 +461,14 @@ $messages['br'] = array(
 	'timedmedia-long-multiplexed' => '(Restr Ogg klevet/video liesplezhet $1, pad $2, $4×$5 piksel, $3 hollad)',
 	'timedmedia-long-general' => '(Restr media Ogg, pad $2, $3)',
 	'timedmedia-long-error' => '(Restr ogg direizh : $1)',
-	'timedmedia-play' => 'Lenn',
-	'timedmedia-pause' => 'Ehan',
-	'timedmedia-stop' => 'Paouez',
-	'timedmedia-play-video' => 'Lenn ar video',
-	'timedmedia-play-sound' => 'Lenn ar son',
-	'timedmedia-player-videoElement' => 'Skor ar merdeer orin',
-	'timedmedia-player-oggPlugin' => 'Adveziant ar merdeer',
-	'timedmedia-player-thumbnail' => 'Skeudenn statek hepken',
-	'timedmedia-player-soundthumb' => 'Lenner ebet',
-	'timedmedia-player-selected' => '(diuzet)',
-	'timedmedia-use-player' => 'Ober gant al lenner :',
+	'timedmedia-no-player-js' => 'Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n\'eo ket skoret lenner ebet gantañ.<br />
+<a href="$1">Pellgargañ ar c\'hlip</a> a c\'hallit pe <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">pellgargañ ul lenner</a> da lenn ar c\'hlip gant ho merdeer.',
 	'timedmedia-more' => "Muioc'h...",
 	'timedmedia-dismiss' => 'Serriñ',
 	'timedmedia-download' => 'Pellgargañ ar restr',
 	'timedmedia-desc-link' => 'Diwar-benn ar restr-mañ',
+	'timedmedia-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
+	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 );
 
 /** Bosnian (Bosanski)

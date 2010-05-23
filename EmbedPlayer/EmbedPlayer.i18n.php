@@ -1731,6 +1731,7 @@ $messages['sv'] = array(
 	'mwe-embedplayer-close_btn' => 'Stäng',
 	'mwe-embedplayer-ogg-player-selected' => '(vald)',
 	'mwe-embedplayer-related_videos' => 'Relaterade videos',
+	'mwe-embedplayer-seeking' => 'söker',
 );
 
 /** Telugu (తెలుగు) */
