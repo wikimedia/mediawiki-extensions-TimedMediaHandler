@@ -2799,35 +2799,14 @@ $messages['tl'] = array(
 	'timedmedia-long-multiplexed' => '(magkasanib at nagsasabayang talaksang nadirinig o audio/palabas ng Ogg, $1, haba $2, $4×$5 mga piksel, $3 sa kalahatan)',
 	'timedmedia-long-general' => "(Talaksang pangmidya ng ''Ogg'', haba $2, $3)",
 	'timedmedia-long-error' => "(Hindi tanggap na talaksang ''ogg'': $1)",
-	'timedmedia-play' => 'Paandarin',
-	'timedmedia-pause' => 'Pansamantalang pahintuin',
-	'timedmedia-stop' => 'Ihinto/itigil',
-	'timedmedia-play-video' => "Paandarin ang palabas (''video'')",
-	'timedmedia-play-sound' => 'Patugtugin ang tunog',
-	'timedmedia-no-player' => 'Paumanhin, tila parang walang anumang sinusuportahang pamapatugtog/pampaandar na sopwer ang sistema mo.
-<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Magkarga lamang po muna ng isang panugtog/pampaandar</a>.',
-	'timedmedia-no-xiphqt' => 'Tila parang wala ka pang sangkap (komponente) na XiphQT para sa QuickTime.
-Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganitong sangkap.
-<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Magkarga muna po ng XiphQT</a> o pumili ng iba pang panugtog/pampaandar.',
-	'timedmedia-player-videoElement' => "Katutubong tagapagtangkilik/pangsuporta ng pantingin-tingin (''browser'')",
-	'timedmedia-player-oggPlugin' => "Pampasak sa pantingin-tingin (''browser'')",
-	'timedmedia-player-cortado' => 'Cortado (Java)',
-	'timedmedia-player-vlc-mozilla' => 'VLC',
-	'timedmedia-player-vlc-activex' => 'VLC (ActiveX)',
-	'timedmedia-player-quicktime-mozilla' => 'QuickTime',
-	'timedmedia-player-quicktime-activex' => 'QuickTime (ActiveX)',
-	'timedmedia-player-totem' => 'Totem',
-	'timedmedia-player-kmplayer' => 'KMPlayer',
-	'timedmedia-player-kaffeine' => 'Kaffeine',
-	'timedmedia-player-mplayerplug-in' => "pampasak na pampatugtog/pampaandar ng tunog (''mplayerplug-in'')",
-	'timedmedia-player-thumbnail' => 'Larawang hindi gumagalaw lamang',
-	'timedmedia-player-soundthumb' => 'Walang pampatugtog/pampaandar',
-	'timedmedia-player-selected' => '(napili na)',
-	'timedmedia-use-player' => 'Gamitin ang pampaandar:',
+	'timedmedia-no-player-js' => 'Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />
+Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.',
 	'timedmedia-more' => 'Marami pa…',
 	'timedmedia-dismiss' => 'Isara',
 	'timedmedia-download' => 'Ikarga ang talaksan',
 	'timedmedia-desc-link' => 'Tungkol sa talaksang ito',
+	'timedmedia-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma ng oggThumb.',
+	'timedmedia-oggThumb-failed' => 'Nabigong lumikha ang oggThumb ng munting larawan.',
 );
 
 /** Turkish (Türkçe)
