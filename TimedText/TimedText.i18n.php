@@ -67,6 +67,21 @@ $messages['qqq'] = array(
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'mwe-timedtext-stage-translate' => 'Vertaal',
+	'mwe-timedtext-select-language' => 'Kies taal',
+	'mwe-timedtext-upload-text-preview' => 'Hersien teks',
+	'mwe-timedtext-back-btn' => 'Terug',
+	'mwe-timedtext-choose-text' => 'Kies teks',
+	'mwe-timedtext-layout' => 'Uitleg',
+	'mwe-timedtext-textcat-cc' => 'Onderskrifte',
+	'mwe-timedtext-textcat-nb' => '',
+	'mwe-timedtext-textcat-lrc' => 'Lirieke',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
