@@ -232,6 +232,37 @@ $messages['de'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kein $1 Untertitel für den Videoclip gefunden: $2',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mwe-timedtext-stage-sync' => 'Synchronizěrowaś',
+	'mwe-timedtext-stage-translate' => 'Pśełožyś',
+	'mwe-timedtext-stage-upload' => 'Z lokalneje dataje nagraś',
+	'mwe-timedtext-select-language' => 'Rěc wubraś',
+	'mwe-timedtext-file-language' => 'Rěc dataje pódtitela',
+	'mwe-timedtext-upload-text' => 'Tekstowu dataju nagraś',
+	'mwe-timedtext-uploading-text' => 'Tekstowa dataja se nagrawa',
+	'mwe-timedtext-upload-text-desc-title' => 'Tekstowu dataju nagraś',
+	'mwe-timedtext-upload-text-desc-help' => 'Pówjerch za nagrawanje tekstowych datajow akceptěrujo .srt-dataje',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Pśepytaj swój lokalny kompjuter za .srt-dataju, kótaruž coš nagraś',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Rěc dataje wubraś',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Pśeglědaj abo wobźěłaj tekstowe wopśimjeśe a klikni pótom na Nagraś, aby tekst pśidał',
+	'mwe-timedtext-upload-text-preview' => 'Tekst pśeglědaś',
+	'mwe-timedtext-upload-text-success' => 'Nagraśe synchronizowanego teksta jo wuspěšne było',
+	'mwe-timedtext-upload-text-done' => 'Nagraśe skóńcone',
+	'mwe-timedtext-upload-text-fail-desc' => 'Nagraśe jo se njeraźiło',
+	'mwe-timedtext-upload-text-fail-title' => 'Nagraśe jo se njeraźiło',
+	'mwe-timedtext-upload-text-another' => 'Dalšnu nagraś',
+	'mwe-timedtext-upload-text-done-uploading' => 'Nagraśe skóńcone',
+	'mwe-timedtext-back-btn' => 'Slědk',
+	'mwe-timedtext-choose-text' => 'Tekst wubraś',
+	'mwe-timedtext-add-timed-text' => 'Snychronizěrowany tekst pśidaś',
+	'mwe-timedtext-textcat-sub' => 'Pódtitele',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-ar' => 'Aktiwne regiony',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Pertile
