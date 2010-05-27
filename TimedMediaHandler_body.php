@@ -12,6 +12,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	function getParamMap() {
+		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		return array(
 			'img_width' => 'width',
 			'timedmedia_noplayer' => 'noplayer',
@@ -371,6 +372,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	function getShortDesc( $file ) {
 		global $wgLang, $wgOggAudioTypes, $wgOggVideoTypes;
+		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
@@ -389,6 +391,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	function getLongDesc( $file ) {
 		global $wgLang, $wgOggVideoTypes, $wgOggAudioTypes;
+		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
@@ -427,6 +430,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	function getDimensionsString( $file ) {
 		global $wgLang;
+		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		if ( $file->getWidth() ) {
 			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
 				$wgLang->formatNum( $file->getWidth() ),
@@ -523,6 +527,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		global $wgEnableTemporalOggUrls, $wgVideoTagOut,
 			$wgScriptPath, $wgEnableTimedText;
 
+		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		if ( count( func_get_args() ) == 2 ) {
 			throw new MWException( __METHOD__ .' called in the old style' );
 		}
