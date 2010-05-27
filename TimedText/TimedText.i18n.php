@@ -548,9 +548,11 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'mwe-timedtext-stage-sync' => '同期',
 	'mwe-timedtext-stage-translate' => '翻訳',
 	'mwe-timedtext-stage-upload' => 'ローカルファイルからアップロード',
 	'mwe-timedtext-select-language' => '言語を選択',
@@ -558,7 +560,11 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text' => 'テキストファイルをアップロード',
 	'mwe-timedtext-uploading-text' => 'テキストファイルのアップロード',
 	'mwe-timedtext-upload-text-desc-title' => 'テキストファイルをアップロード',
+	'mwe-timedtext-upload-text-desc-help' => 'アップロードするテキストファイルのインターフェースは .srt ファイルを受け付けます',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'ローカルのコンピューターの上からアップロードする .srt ファイルを探す',
 	'mwe-timedtext-upload-text-desc-help-select' => 'ファイルの言語を選択',
+	'mwe-timedtext-upload-text-desc-help-review' => 'テキストの内容を確認・編集してからアップロードを推してテキストを追加してください',
+	'mwe-timedtext-upload-text-preview' => 'テキストを確認',
 	'mwe-timedtext-upload-text-done' => 'アップロード完了',
 	'mwe-timedtext-upload-text-fail-desc' => 'アップロードが失敗しました',
 	'mwe-timedtext-upload-text-fail-title' => 'アップロードに失敗',
