@@ -236,6 +236,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Pśepisaś',
 	'mwe-timedtext-stage-sync' => 'Synchronizěrowaś',
 	'mwe-timedtext-stage-translate' => 'Pśełožyś',
 	'mwe-timedtext-stage-upload' => 'Z lokalneje dataje nagraś',
@@ -258,9 +259,19 @@ $messages['dsb'] = array(
 	'mwe-timedtext-back-btn' => 'Slědk',
 	'mwe-timedtext-choose-text' => 'Tekst wubraś',
 	'mwe-timedtext-add-timed-text' => 'Snychronizěrowany tekst pśidaś',
+	'mwe-timedtext-search' => 'Klip pytaś',
+	'mwe-timedtext-layout' => 'Wusměrjenje',
+	'mwe-timedtext-layout-ontop' => 'Nad wideo',
+	'mwe-timedtext-layout-below' => 'Pód wideo',
+	'mwe-timedtext-layout-off' => 'Pódtitele schowaś',
+	'mwe-timedtext-loading-text' => 'Tekst se zacytujo...',
+	'mwe-timedtext-textcat-cc' => 'Wopisanja',
 	'mwe-timedtext-textcat-sub' => 'Pódtitele',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-ar' => 'Aktiwne regiony',
+	'mwe-timedtext-textcat-meta' => 'Synchronizěrowane metadaty',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
 );
 
 /** Spanish (Español)
