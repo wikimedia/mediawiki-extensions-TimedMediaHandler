@@ -135,7 +135,15 @@ $messages['be-tarask'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Субтытры $1 для кліпу ня знойдзеныя: $2',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'mwe-timedtext-stage-translate' => 'অনুবাদ',
+);
+
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -152,8 +160,12 @@ $messages['br'] = array(
 	'mwe-timedtext-upload-text-desc-help' => 'An etrefas kargañ restroù testenn a aotre ar restroù .srt',
 	'mwe-timedtext-upload-text-desc-help-browse' => "Furchit en ho urzhiataer lec'hel evit kavout ar restr .srt hoc'h eus c'hoant da gargañ",
 	'mwe-timedtext-upload-text-desc-help-select' => 'Dibabit yezh ar restr',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Gwiriañ / Kemmañ danvez ar skrid ha pouezañ war enporzhiañ evit ouzhpennañ an destenn.',
 	'mwe-timedtext-upload-text-preview' => 'Gwiriekaat an destenn',
+	'mwe-timedtext-upload-text-success' => 'Enporzhiet eo bet an destenn sinkronelaet ervat.',
 	'mwe-timedtext-upload-text-done' => 'Graet eo ar gargadenn',
+	'mwe-timedtext-upload-text-fail-desc' => "C'hwitet eo bet an enporzhiañ",
+	'mwe-timedtext-upload-text-fail-title' => "Enporzhiadenn c'hwitet",
 	'mwe-timedtext-upload-text-another' => 'Kargañ unan all',
 	'mwe-timedtext-upload-text-done-uploading' => 'Kargadenn graet',
 	'mwe-timedtext-back-btn' => 'Distreiñ',
@@ -173,6 +185,7 @@ $messages['br'] = array(
 	'mwe-timedtext-textcat-tik' => 'Barenn titouroù',
 	'mwe-timedtext-textcat-ar' => 'Rannvroioù oberiant',
 	'mwe-timedtext-textcat-nb' => 'Notennadur',
+	'mwe-timedtext-textcat-meta' => 'Metaroadennoù sinkronelaet',
 	'mwe-timedtext-textcat-trx' => 'Treuzskrivañ',
 	'mwe-timedtext-textcat-lrc' => 'Komzoù',
 	'mwe-timedtext-textcat-lin' => 'Balizennoù yezhel',
@@ -637,7 +650,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-upload-text' => 'Подигни податотека со текст',
 	'mwe-timedtext-uploading-text' => 'Подигање на податотека со текст',
 	'mwe-timedtext-upload-text-desc-title' => 'Подигни податотека со текст',
-	'mwe-timedtext-upload-text-desc-help' => 'Интерфејсот за подигање текстуални податотеки прифаќа .srt податотеки',
+	'mwe-timedtext-upload-text-desc-help' => 'Посредникот за подигање текстуални податотеки прифаќа .srt податотеки',
 	'mwe-timedtext-upload-text-desc-help-browse' => 'Одберете ја од вашиот компјутер .srt податотеката што сакате да ја подигнете',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Одберете го јазикот на податотеката',
 	'mwe-timedtext-upload-text-desc-help-review' => 'Проверете / исправете го текстот и потоа притиснете на „Подигни“ за да го додадете текстот',
