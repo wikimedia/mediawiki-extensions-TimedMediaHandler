@@ -93,6 +93,7 @@ $messages['af'] = array(
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-selected' => '(gekies)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-playerSelect' => '',
 	'mwe-embedplayer-embed_site_or_blog' => 'Voeg by jou webblad of webjoernaal',
 );
 
@@ -391,6 +392,13 @@ $messages['de'] = array(
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
 	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfe, ob der von dir eingebettete Code eine Quelle und/oder einen API-Schlüssel enthält',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfen Sie ob der von Ihnen eingebettete Code eine Quelle und/ oder einen API-Schlüssel enthält',
 );
 
 /** Zazaki (Zazaki) */
@@ -1555,6 +1563,14 @@ $messages['pl'] = array(
 	'mwe-embedplayer-do_not_warn_again' => 'Od teraz ignoruj.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Umieść na swojej stronie lub blogu',
 	'mwe-embedplayer-related_videos' => 'Podobne filmy',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-embedplayer-download' => 'ښکته کول',
+	'mwe-embedplayer-close_btn' => 'تړل',
 );
 
 /** Portuguese (Português)

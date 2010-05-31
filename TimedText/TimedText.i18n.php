@@ -245,6 +245,15 @@ $messages['de'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kein $1 Untertitel für den Videoclip gefunden: $2',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Durchsuchen Sie Ihren lokalen Computer nach der SRT-Datei, die Sie hochladen möchten',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Wählen Sie die Sprache der Datei',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Sehen Sie den Text durch und bearbeiten Sie ihn gegebenenfalls, bevor Sie ihn mit einem Klick auf Hochladen hinzufügen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -744,6 +753,13 @@ $messages['nl'] = array(
 $messages['pdc'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwwersetze',
 	'mwe-timedtext-back-btn' => 'Zerrick',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-timedtext-stage-translate' => 'ژباړل',
 );
 
 /** Portuguese (Português)
