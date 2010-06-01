@@ -1758,6 +1758,11 @@ $messages['te'] = array(
 	'mwe-embedplayer-related_videos' => 'సంబంధిత దృశ్యకాలు',
 );
 
+/** Tagalog (Tagalog) */
+$messages['tl'] = array(
+	'mwe-embedplayer-ogg-player-selected' => '(napili na)',
+);
+
 /** Turkish (Türkçe) */
 $messages['tr'] = array(
 	'mwe-embedplayer-credit-title' => 'Başlık: $1',
