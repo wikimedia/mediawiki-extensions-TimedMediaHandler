@@ -258,6 +258,7 @@ $messages['de-formal'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'mwe-timedtext-editor' => 'Editor za synchronizěrowany tekst',
 	'mwe-timedtext-stage-transcribe' => 'Pśepisaś',
 	'mwe-timedtext-stage-sync' => 'Synchronizěrowaś',
 	'mwe-timedtext-stage-translate' => 'Pśełožyś',
@@ -281,6 +282,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-back-btn' => 'Slědk',
 	'mwe-timedtext-choose-text' => 'Tekst wubraś',
 	'mwe-timedtext-add-timed-text' => 'Snychronizěrowany tekst pśidaś',
+	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizěrowany tekst se startujo',
 	'mwe-timedtext-search' => 'Klip pytaś',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
 	'mwe-timedtext-layout-ontop' => 'Nad wideo',
@@ -289,9 +291,16 @@ $messages['dsb'] = array(
 	'mwe-timedtext-loading-text' => 'Tekst se zacytujo...',
 	'mwe-timedtext-textcat-cc' => 'Wopisanja',
 	'mwe-timedtext-textcat-sub' => 'Pódtitele',
+	'mwe-timedtext-textcat-tad' => 'Awdiowopisanje',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Běžecy tekst',
 	'mwe-timedtext-textcat-ar' => 'Aktiwne regiony',
+	'mwe-timedtext-textcat-nb' => 'Anotacija',
 	'mwe-timedtext-textcat-meta' => 'Synchronizěrowane metadaty',
+	'mwe-timedtext-textcat-trx' => 'Pśepisaś',
+	'mwe-timedtext-textcat-lrc' => 'Spiwny tekst',
+	'mwe-timedtext-textcat-lin' => 'Rěcywědne wopisanje',
+	'mwe-timedtext-textcat-cue' => 'Zastupne dypki',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
 );
@@ -497,7 +506,7 @@ $messages['hsb'] = array(
 	'mwe-timedtext-textcat-trx' => 'Přepis',
 	'mwe-timedtext-textcat-lrc' => 'Spěwowy tekst',
 	'mwe-timedtext-textcat-lin' => 'Rěčespytne wopisanje',
-	'mwe-timedtext-textcat-cue' => 'Wuwabjace dypki',
+	'mwe-timedtext-textcat-cue' => 'Zastupne dypki',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žane podtitule $1 za klip namakane: $2',
 );
