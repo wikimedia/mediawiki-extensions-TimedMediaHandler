@@ -1466,6 +1466,45 @@ Via <a href="http://commons.wikimedia.org/wiki/Commons:Hulp_voor_mediabestanden"
 	'mwe-embedplayer-missing-source' => 'Er is geen bronvideo gevonden. Controleer uw of inbeddingdcode een API-sleutel bevat',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mwe-embedplayer-credit-title' => 'Tittel: $1',
+	'mwe-embedplayer-play_clip' => 'Spill av klipp',
+	'mwe-embedplayer-pause_clip' => 'Paus klipp',
+	'mwe-embedplayer-volume_control' => 'Volumkontroll',
+	'mwe-embedplayer-player_fullscreen' => 'Fullskjerm',
+	'mwe-embedplayer-next_clip_msg' => 'Spill av neste klipp',
+	'mwe-embedplayer-prev_clip_msg' => 'Spill av forrige klipp',
+	'mwe-embedplayer-current_clip_msg' => 'Fortsett å spille av dette klippet',
+	'mwe-embedplayer-seek_to' => 'Søk $1',
+	'mwe-embedplayer-paused' => 'pauset',
+	'mwe-embedplayer-download_right_click' => 'For å laste ned, høyreklikk og velg <i>Lagre lenke som...</i>',
+	'mwe-embedplayer-download_clip' => 'Last ned video',
+	'mwe-embedplayer-download_text' => 'Last ned tekst (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
+	'mwe-embedplayer-download' => 'Last ned',
+	'mwe-embedplayer-share' => 'Del',
+	'mwe-embedplayer-choose_player' => 'Velg videospiller',
+	'mwe-embedplayer-no-player' => 'Ingen spiller tilgjengelig for $1',
+	'mwe-embedplayer-share_this_video' => 'Del denne videoen',
+	'mwe-embedplayer-menu_btn' => 'Meny',
+	'mwe-embedplayer-close_btn' => 'Lukk',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-spiller',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-spiller',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-spiller',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-for_best_experience' => 'For en bedre opplevelse av videoavspillingen anbefaler vi <b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">den nyeste Firefox</a>.</b>',
+	'mwe-embedplayer-playerSelect' => 'Spillere',
+	'mwe-embedplayer-copy-code' => 'Kopier kode',
+	'mwe-embedplayer-video-h264' => 'H.264-video',
+	'mwe-embedplayer-video-flv' => 'Flash-video',
+	'mwe-embedplayer-video-ogg' => 'Ogg-video',
+	'mwe-embedplayer-video-audio' => 'Ogg-audio',
+);
+
 /** Occitan (Occitan) */
 $messages['oc'] = array(
 	'mwe-embedplayer-loading_plugin' => 'cargament del plugin ...',
@@ -1720,6 +1759,22 @@ $messages['sk'] = array(
 	'mwe-embedplayer-download' => 'Stiahnuť',
 	'mwe-embedplayer-close_btn' => 'Zavrieť',
 	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC плејер',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg плејер',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 плејер',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Генерички Ogg плагин',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime плагин',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-video-h264' => 'H.264 видео',
+	'mwe-embedplayer-video-flv' => 'Флеш видео',
+	'mwe-embedplayer-video-ogg' => 'Ogg видео',
+	'mwe-embedplayer-video-audio' => 'Ogg аудио',
 );
 
 /** Swedish (Svenska)

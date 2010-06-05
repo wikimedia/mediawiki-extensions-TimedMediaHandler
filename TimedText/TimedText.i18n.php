@@ -758,6 +758,29 @@ $messages['nl'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen $1ondertitels gevonden voor clip: $2',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mwe-timedtext-stage-sync' => 'Synkroniser',
+	'mwe-timedtext-stage-translate' => 'Oversett',
+	'mwe-timedtext-upload-text' => 'Last opp tekstfil',
+	'mwe-timedtext-uploading-text' => 'Laster opp tekstfil',
+	'mwe-timedtext-upload-text-desc-title' => 'Last opp en tekstfil',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Velg filens språk',
+	'mwe-timedtext-back-btn' => 'Tilbake',
+	'mwe-timedtext-choose-text' => 'Velg tekst',
+	'mwe-timedtext-layout-ontop' => 'Over video',
+	'mwe-timedtext-layout-below' => 'Under video',
+	'mwe-timedtext-layout-off' => 'Gjem undertekster',
+	'mwe-timedtext-loading-text' => 'Laster tekst ...',
+	'mwe-timedtext-textcat-sub' => 'Undertekster',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-lrc' => 'Tekster',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertekster for klipp: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ingen $1-undertekster ble funnet for klipp: $2',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

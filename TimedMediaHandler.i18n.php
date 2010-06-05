@@ -1170,9 +1170,10 @@ $messages['ksh'] = array(
 
 /** Latin (Latina)
  * @author SPQRobin
+ * @author UV
  */
 $messages['la'] = array(
-	'timedmedia-more' => 'Plus...',
+	'timedmedia-more' => 'Plus…',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1436,6 +1437,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'timedmedia-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
@@ -1447,10 +1449,14 @@ $messages['no'] = array(
 	'timedmedia-long-multiplexed' => '(Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen)',
 	'timedmedia-long-general' => '(Ogg mediefil, lengde $2, $3)',
 	'timedmedia-long-error' => '(Ugyldig Ogg-fil: $1)',
+	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
+Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
 	'timedmedia-more' => 'Mer …',
 	'timedmedia-dismiss' => 'Lukk',
 	'timedmedia-download' => 'Last ned fil',
 	'timedmedia-desc-link' => 'Om denne filen',
+	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
+	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
 );
 
 /** Occitan (Occitan)
