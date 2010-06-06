@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension OggPlayer.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

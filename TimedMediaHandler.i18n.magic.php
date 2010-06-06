@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension TimedMediaHandler.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $magicWords = array();
