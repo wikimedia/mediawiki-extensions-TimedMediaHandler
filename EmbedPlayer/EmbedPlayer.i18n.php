@@ -1765,6 +1765,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'mwe-embedplayer-credit-title' => 'Наслов: $1',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC плејер',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg плејер',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 плејер',

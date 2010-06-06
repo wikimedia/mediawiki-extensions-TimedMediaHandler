@@ -1517,6 +1517,8 @@ $messages['pl'] = array(
 	'timedmedia-long-multiplexed' => '(plik audio/wideo Ogg, $1, długość $2, rozdzielczość $4×$5, ogółem $3)',
 	'timedmedia-long-general' => '(plik multimedialny Ogg, długość $2, $3)',
 	'timedmedia-long-error' => '(niepoprawny plik Ogg: $1)',
+	'timedmedia-no-player-js' => 'Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />
+Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.',
 	'timedmedia-more' => 'Więcej...',
 	'timedmedia-dismiss' => 'Zamknij',
 	'timedmedia-download' => 'Pobierz plik',
