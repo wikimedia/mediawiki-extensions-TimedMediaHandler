@@ -460,6 +460,16 @@ $messages['gl'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Non se atoparon os subtítulos en $1 para o vídeo: $2',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mwe-timedtext-editor' => 'Timed Text-Editor',
+	'mwe-timedtext-stage-transcribe' => 'Abschrift mache',
+	'mwe-timedtext-stage-sync' => 'Synchronisiere',
+	'mwe-timedtext-stage-translate' => 'Ibersetze',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
