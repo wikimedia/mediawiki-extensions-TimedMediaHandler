@@ -109,19 +109,19 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'timedmedia-desc' => 'Manullador ta archibos Ogg Theora and Vorbis, con un reproductor JavaScript',
-	'timedmedia-short-audio' => 'Archibo de son ogg $1, $2',
-	'timedmedia-short-video' => 'Archibo de bidio ogg $1, $2',
-	'timedmedia-short-general' => 'Archibo multimedia ogg $1, $2',
-	'timedmedia-long-audio' => '(Archibo de son ogg $1, durada $2, $3)',
-	'timedmedia-long-video' => '(Archibo de bidio ogg $1, durada $2, $4×$5 píxels, $3)',
-	'timedmedia-long-multiplexed' => '(archibo ogg multiplexato audio/bidio, $1, durada $2, $4×$5 píxels, $3 total)',
-	'timedmedia-long-general' => '(archibo ogg multimedia durada $2, $3)',
-	'timedmedia-long-error' => '(Archibo ogg no conforme: $1)',
+	'timedmedia-desc' => 'Maneyador de fichers sincronizatos (vidio, son y texto sincronizato) con transcodificación Ogg Theora/Vorbis',
+	'timedmedia-short-audio' => 'Fichero de son ogg $1, $2',
+	'timedmedia-short-video' => 'Fichero de vidio ogg $1, $2',
+	'timedmedia-short-general' => 'Fichero multimedia ogg $1, $2',
+	'timedmedia-long-audio' => '(Fichero de son ogg $1, durada $2, $3)',
+	'timedmedia-long-video' => '(Fichero de vidio ogg $1, durada $2, $4×$5 píxels, $3)',
+	'timedmedia-long-multiplexed' => '(fichero ogg multiplexato audio/vidio, $1, durada $2, $4×$5 píxels, $3 total)',
+	'timedmedia-long-general' => '(fichero ogg multimedia durada $2, $3)',
+	'timedmedia-long-error' => '(Fichero ogg no conforme: $1)',
 	'timedmedia-more' => 'Más…',
 	'timedmedia-dismiss' => 'Zarrar',
-	'timedmedia-download' => 'Escargar archibo',
-	'timedmedia-desc-link' => 'Informazión sobre este archibo',
+	'timedmedia-download' => 'Escargar fichero',
+	'timedmedia-desc-link' => 'Información sobre este fichero',
 );
 
 /** Arabic (العربية)
