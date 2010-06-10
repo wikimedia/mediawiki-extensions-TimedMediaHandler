@@ -1778,6 +1778,21 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-video-audio' => 'Ogg аудио',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwe-embedplayer-credit-title' => 'Naslov: $1',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC plejer',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg plejer',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 plejer',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generički Ogg plagin',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime plagin',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-flv' => 'Fleš video',
+	'mwe-embedplayer-video-ogg' => 'Ogg video',
+	'mwe-embedplayer-video-audio' => 'Ogg audio',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
