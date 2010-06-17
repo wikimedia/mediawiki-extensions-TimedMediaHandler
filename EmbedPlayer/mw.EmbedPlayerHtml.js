@@ -1,13 +1,18 @@
 /*
  * Used to embed HTML as a movie clip
  * for use with mv_playlist SMIL additions
+ * 
+ * NOTE:  will likely be depricated 
  */
 var pcHtmlEmbedDefaults = {
 	// default duration of 4 seconds	
 	'dur':4 
 }
 
-var htmlEmbed = {
+mw.EmbedPlayerHtml = {
+	
+	// Instance name: 
+	instanceOf: 'Html',	
 
 	// List of supported features
 	supports: {
@@ -17,10 +22,7 @@ var htmlEmbed = {
 		'timeDisplay':true,
 		'volumeControl':true,
 
-		'overlays':true,
-		
-		// if the object supports playlist functions
-		'playlist_swap_loader':true 
+		'overlays':true,		
 	},
 	
 	// If the player is "ready to play"
@@ -77,7 +79,7 @@ var htmlEmbed = {
 	/**
 	* Seeks to a given percent and updates the pauseTime
 	*
-	* @param {Float} perc Pecentage to seek into the virtual player
+	* @param {Float} perc Percentage to seek into the virtual player
 	*/
 	doSeek:function( perc ) {
 		this.pauseTime = perc * this.getDuration();
@@ -87,7 +89,7 @@ var htmlEmbed = {
 	/** 
 	* Sets the current Time 
 	*
-	* @param {Float} perc Pecentage to seek into the virtual player
+	* @param {Float} perc Percentage to seek into the virtual player
 	* @param {Function} callback Function called once time has been updated
 	*/
 	setCurrentTime:function( perc, callback ) {
@@ -97,16 +99,13 @@ var htmlEmbed = {
 	},
 	
 	/**
-	* Monitor tracks of virtual player time
-	*/ 
-	monitor:function() {
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function() {
 		//mw.log('html:monitor: '+ this.currentTime);		
 		var ct = new Date();
-		this.currentTime = ( ( ct.getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;
-		var ct = new Date();
-		
-		// Once currentTime is updated call parent_monitor
-		this.parent_monitor();
+		var currentTime = ( ( ct.getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;		
+		return currentTime;
 	},
 	
 	/**
@@ -141,8 +140,8 @@ var htmlEmbed = {
 	*/	
 	renderTimelineThumbnail:function( options ) {
 		mw.log( "HTMLembed req w, height: " + options.width + ' ' + options.height );
-		// generate a scaled down version _that_ we can clone if nessisary
-		// add a not vissiable container to the body:
+		// generate a scaled down version _that_ we can clone if necessary 
+		// add a not visible container to the body:
 		var do_refresh = ( typeof options['refresh'] != 'undefined' ) ? true:false;
 
 		var thumb_render_id =   this.id + '_thumb_render_' + options.height;
@@ -188,7 +187,7 @@ var htmlEmbed = {
 	},
 	/*
 	* Updates the thumb time
-	* (does nothings since we display a single frame renderd html page)
+	* (does nothings since we display a single frame rendered  html page)
 	*
 	* @param {Float} float_time Ignored 	
 	*/

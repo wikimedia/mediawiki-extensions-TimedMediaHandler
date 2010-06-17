@@ -8,11 +8,6 @@
  * 	timed text search & seek interface ( version 2 ) 
  *
  * @author: Michael Dale
- * 	
- * Some code borrowed from: http://www.annodex.net/~silvia/itext/elephant_no_skin_v2.html
- * ( Licensed under: MPL 1.1/GPL 2.0/LGPL 2.1 )
- * Contributor(s):
- *  Silvia Pfeiffer <silvia@siliva-pfeiffer.de>
  *
  */ 
 
@@ -104,7 +99,7 @@ mw.addMessages( {
 		textProviderId : 'commons',
 		
 		/**
-		* Valid "iText" categories
+		* Valid "Track" categories
 		*/
 		validCategoriesKeys: [
 			"CC",
@@ -217,7 +212,7 @@ mw.addMessages( {
 			if( this.embedPlayer.supports[ 'overlays' ] ){
 				var positionOpts = {
 					'directionV' : 'up',								
-					'offsetY' : this.embedPlayer.ctrlBuilder.getHeight(),
+					'offsetY' : this.embedPlayer.controlBuilder.getHeight(),
 					'directionH' : 'left',
 					'offsetX' : -28
 				};		
@@ -230,7 +225,7 @@ mw.addMessages( {
 				// NOTE: Button target should be an option or config
 				$menuButton.unbind().menu( {
 					'content'	: _this.getMainMenu(),
-					'zindex' : mw.getConfig( 'fullScreenIndex' ),
+					'zindex' : mw.getConfig( 'fullScreenIndex' )+2,
 					'crumbDefaultText' : ' ',
 					'autoShow': autoShow,
 					'targetMenuContainer' : _this.menuTarget,
@@ -290,8 +285,8 @@ mw.addMessages( {
 				mw.log("Error: loading source without apiProvider or apiTitleKey");
 				return ;
 			}
-			//For now only support mediaWikiText provider library
-			this.textProvider = new mw.MediaWikiTextProvider( {
+			//For now only support mediaWikTrack provider library
+			this.textProvider = new mw.MediaWikTrackProvider( {
 				'provider_id' : provider_id,
 				'apiUrl': apiUrl,
 				'embedPlayer': this.embedPlayer
@@ -301,11 +296,11 @@ mw.addMessages( {
 			this.textProvider.loadSources( assetKey,  function( textSources ) {
 				for( var i in textSources ) {
 					var textSource = textSources[ i ];
-					// Try to insert the itext source: 
-					var textElm = document.createElement( 'itext' );
+					// Try to insert the track source: 
+					var textElm = document.createElement( 'track' );
 					$j( textElm ).attr( {
 						'category' : 'SUB',
-						'lang' 	: textSource.lang,
+						'srclang' 	: textSource.srclang,
 						'type' 	: _this.timedTextExtMime[ textSource.extension ],
 						'titleKey' 	: textSource.titleKey
 					} );
@@ -350,7 +345,7 @@ mw.addMessages( {
 			for( var i in this.textSources ) {
 				var source = this.textSources[ i ];		
 				if( this.config.userLanugage  &&
-					this.config.userLanugage == source.lang.toLowerCase() ) {
+					this.config.userLanugage == source.srclang.toLowerCase() ) {
 					// Check for category if available  
 					this.enabledSources.push( source );
 					return ;
@@ -360,7 +355,7 @@ mw.addMessages( {
 			if( this.enabledSources.length == 0 ) {
 				for( var i in this.textSources ) {
 					var source = this.textSources[ i ];
-					if( source.lang.toLowerCase() == 'en' ) {
+					if( source.srclang.toLowerCase() == 'en' ) {
 						this.enabledSources.push( source );
 						return ;
 					}
@@ -399,10 +394,9 @@ mw.addMessages( {
 		
 		/**
 		* Checks if a source is "on"
-		* @return 
+		* @return {Boolean}
 		* 	true if source is on
 		* 	false if source is off
-		* @type {Boolean}
 		*/		
 		isSourceEnabled: function( source ) {
 			for(var i in this.enabledSources ) {
@@ -411,8 +405,8 @@ mw.addMessages( {
 					if( source.id == enabledSource.id )
 						return true;
 				}
-				if( source.lang ) {
-					if( source.lang == enabledSource.lang )
+				if( source.srclang ) {
+					if( source.srclang == enabledSource.srclang )
 						return true;
 				}
 			}	
@@ -425,7 +419,7 @@ mw.addMessages( {
 		getSourceByLanguage: function ( langKey ) {
 			for(var i in this.textSources) {
 				var source = this.textSources[ i ];
-				if( source.lang == langKey )
+				if( source.srclang == langKey )
 					return source;
 			}
 			return false;
@@ -532,11 +526,11 @@ mw.addMessages( {
 				});
 			}
 			
-			if( source.lang ) {
-				var langKey = source.lang.toLowerCase();
+			if( source.srclang ) {
+				var langKey = source.srclang.toLowerCase();
 				_this.getLanguageName ( langKey );
 				return $j.getLineItem( 
-					gM('mwe-timedtext-key-language', [langKey, unescape( mw.Language.names[ source.lang ] )	] ), 
+					gM('mwe-timedtext-key-language', [langKey, unescape( mw.Language.names[ source.srclang ] )	] ), 
 					source_icon,
 					function() {
 						mw.log(" call selectTextSource");
@@ -612,7 +606,7 @@ mw.addMessages( {
 		*/
 		updateLayout: function() {
 			var $playerTarget =  this.embedPlayer.$interface;	
-			$playerTarget.find('.itext').remove();
+			$playerTarget.find('.track').remove();
 			this.refreshDisplay();
 		},
 		
@@ -623,11 +617,11 @@ mw.addMessages( {
 		*/
 		selectTextSource: function( source ) {
 			var _this = this;
-			mw.log(" select source: " + source.lang );			
+			mw.log(" select source: " + source.srclang );			
 			
 			// Update the config language if the source includes language
-			if( source.lang )
-				this.config.userLanugage =  source.lang;
+			if( source.srclang )
+				this.config.userLanugage =  source.srclang;
 				
 			if( source.category )
 				this.config.userCategory = source.category;
@@ -641,7 +635,7 @@ mw.addMessages( {
 			//Set any existing text target to "loading"
 			if( !source.loaded ) {
 				var $playerTarget = this.embedPlayer.$interface; 			
-				$playerTarget.find('.itext').text( gM('mwe-timedtext-loading-text') );
+				$playerTarget.find('.track').text( gM('mwe-timedtext-loading-text') );
 			}
 			// Load the text:
 			source.load( function() {
@@ -748,12 +742,12 @@ mw.addMessages( {
 			//mw.log( 'updateTextDisplay: ' + text );	
 					
 			var $playerTarget =  this.embedPlayer.$interface;
-			var $textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );
+			var $textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
 			// If we are missing the target add it: 
 			if( $textTarget.length == 0) {
 				this.addItextDiv( source.category )
 				// Re-grab the textTarget:
-				$textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );
+				$textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
 			}
 			
 			
@@ -775,24 +769,24 @@ mw.addMessages( {
 		
 		
 		/**
-		 * Add an itext div to the embedPlayer
+		 * Add an track div to the embedPlayer
 		 */
 		addItextDiv: function( category ) {
 			mw.log(" addItextDiv: " +  category )
-			// Get the relative positioned player class from the ctrlBuilder:
+			// Get the relative positioned player class from the controlBuilder:
 			var $playerTarget =  this.embedPlayer.$interface;
 			
-			//Remove any existing itext divs for this player;
-			$playerTarget.find('.itext_' + category ).remove();
+			//Remove any existing track divs for this player;
+			$playerTarget.find('.track_' + category ).remove();
 			
 			// Setup the display text div: 
 			var layoutMode = this.getLayoutMode();
 			if( layoutMode == 'ontop' ) {
-				var $itext = $j('<div>')
-					.addClass( 'itext' + ' ' + 'itext_' + category )
+				var $track = $j('<div>')
+					.addClass( 'track' + ' ' + 'track_' + category )
 					.css( {							
 						'position':'absolute',
-						'bottom': ( this.embedPlayer.ctrlBuilder.getHeight() + 10 ),
+						'bottom': ( this.embedPlayer.controlBuilder.getHeight() + 10 ),
 						'width': '100%',
 						'display': 'block',
 						'opacity': .8,
@@ -803,19 +797,19 @@ mw.addMessages( {
 					)									
 				
 				// If in fullscreen mode update the text size: 
-				if( this.embedPlayer.ctrlBuilder.fullscreenMode ){
-					$itext.css(
-						this.embedPlayer.ctrlBuilder.getFullscreenTextCss()
+				if( this.embedPlayer.controlBuilder.fullscreenMode ){
+					$track.css(
+						this.embedPlayer.controlBuilder.getFullscreenTextCss()
 					);					
 				}
-				$playerTarget.append( $itext );
+				$playerTarget.append( $track );
 				// Resize the interface for layoutMode == 'ontop' ( if not in fullscreen )  
-				// NOTE this shoudl be a call to ctrlBuilder not handled here inline
-				if( ! this.embedPlayer.ctrlBuilder.fullscreenMode ){
-					if( this.embedPlayer.ctrlBuilder.checkOverlayControls() ){
+				// NOTE this shoudl be a call to controlBuilder not handled here inline
+				if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
+					if( this.embedPlayer.controlBuilder.checkOverlayControls() ){
 						var playerHeight = this.embedPlayer.getHeight();
 					} else {
-						var playerHeight = this.embedPlayer.getHeight() + this.embedPlayer.ctrlBuilder.getHeight();
+						var playerHeight = this.embedPlayer.getHeight() + this.embedPlayer.controlBuilder.getHeight();
 					}
 					// Restore the player height	
 					this.embedPlayer.$interface.animate({
@@ -827,7 +821,7 @@ mw.addMessages( {
 				var belowBarHeight = 60; 
 				// Append before controls: 
 				$playerTarget.find( '.control-bar' ).before(
-					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
+					$j('<div>').addClass( 'track' + ' ' + 'track_' + category )
 						.css({
 							'display' : 'block',
 							'width' : '100%',
@@ -842,16 +836,16 @@ mw.addMessages( {
 						) 
 				);		
 				// Add some height for the bar and interface
-				var height = ( belowBarHeight + 8 )  + this.embedPlayer.getHeight() + this.embedPlayer.ctrlBuilder.getHeight();				
+				var height = ( belowBarHeight + 8 )  + this.embedPlayer.getHeight() + this.embedPlayer.controlBuilder.getHeight();				
 				// Resize the interface for layoutMode == 'below' ( if not in full screen)
-				if( ! this.embedPlayer.ctrlBuilder.fullscreenMode ){
+				if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
 					this.embedPlayer.$interface.animate({
 						'height': height
 					})
 				}
 				mw.log( ' height of ' + this.embedPlayer.id + ' is now: ' + $j( '#' + this.embedPlayer.id ).height() );
 			}
-			mw.log( 'should have been appended: ' + $playerTarget.find('.itext').length );
+			mw.log( 'should have been appended: ' + $playerTarget.find('.track').length );
 		}
 	}
 		
@@ -860,7 +854,7 @@ mw.addMessages( {
 	 *  with some timedText features
 	 *
 	 * @param {Object} source Source object to extend
-	 * @param {Object} {Optional} textProvider The text provider interface ( to load source from api ) 
+	 * @param {Object} textProvider [Optional] The text provider interface ( to load source from api ) 
 	 */
 	TextSource = function( source , textProvider) {
 		return this.init( source, textProvider );
@@ -1167,10 +1161,10 @@ mw.addMessages( {
 		'embedPlayer'
 	];
 		
-	mw.MediaWikiTextProvider = function( options ) {
+	mw.MediaWikTrackProvider = function( options ) {
 		this.init( options )
 	}	
-	mw.MediaWikiTextProvider.prototype = {
+	mw.MediaWikTrackProvider.prototype = {
 		
 		// The api url:
 		apiUrl: null,
@@ -1193,7 +1187,7 @@ mw.addMessages( {
 		
 		/**
 		 * Loads a single text source by titleKey
-		 * @param {titleKey}  
+		 * @param {Object} titleKey  
 		 */
 		loadTitleKey: function( titleKey, callback ) {
 			var request = {
@@ -1287,7 +1281,7 @@ mw.addMessages( {
 				} else {
 					sources.push( {
 						'extension': extension,
-						'lang': langKey,
+						'srclang': langKey,
 						'titleKey': subPage.title
 					} );
 				}

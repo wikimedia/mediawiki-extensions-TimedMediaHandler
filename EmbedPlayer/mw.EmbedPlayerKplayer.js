@@ -1,21 +1,31 @@
 /*
 * The "kaltura player" embedPlayer interface for fallback h.264 and flv video format support
 */
-var kplayerEmbed = {
+
+// Called from the kdp.swf
+function jsInterfaceReadyFunc(){
+	return true;
+}
+
+					
+mw.EmbedPlayerKplayer = {
 	
 	// Instance name: 
-	instanceOf:'kplayerEmbed',
+	instanceOf:'Kplayer',
 	
 	// List of supported features: 
 	supports: {
 		'playHead' : true,
-		'pause' : true,
+		'pause' : true,		
 		'stop' : true,
 		'timeDisplay' : true,
 		'volumeControl' : true,
 		'overlays' : true,
-		'fullscreen' : false
+		'fullscreen' : true
 	},
+	
+	// Stores the current time as set from flash
+	flashCurrentTime : 0,
 	
 	/*
 	* Write the Embed html to the target 
@@ -24,6 +34,7 @@ var kplayerEmbed = {
 		var _this = this;
 		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';				
 		
+		mw.log("kPlayer:: embed src::" + _this.getSrc() );
 		var flashvars = {};
 		flashvars.autoPlay = "true";
 		flashvars.entryId = mw.absoluteUrl( _this.getSrc() );
@@ -55,13 +66,14 @@ var kplayerEmbed = {
 			$j('<div />')
 			.attr( 'id', this.pid + '_container' )
 		);
-		
-		// Do the flash embedding with embedSWF
+		// call swm dom loaded function: 
+		swfobject.callDomLoadFunctions();
+		// Do the flash embedding with embedSWF		
 		swfobject.embedSWF( 
 			playerPath + "/kdp3.swf", 
 			this.pid + '_container', 
-			this.getWidth(), 
-			this.getHeight(), 
+			'100%', 
+			'100%', 
 			"10.0.0", 
 			playerPath + "/expressInstall.swf", 
 			flashvars, 
@@ -69,9 +81,32 @@ var kplayerEmbed = {
 			attributes
 		);
 		
+		// Direct object embed
+		/*$j( this ).html(
+		 '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="780" height="420">'+
+	        '<param name="movie" value="myContent.swf" />'+
+	        '<!--[if !IE]>-->'+
+	        '<object type="application/x-shockwave-flash" data="myContent.swf" width="780" height="420">'+
+	        '<!--<![endif]-->'+
+	          '<p> error with flash embed</p>'
+	        '<!--[if !IE]>-->'+
+	        '</object>'+
+	        '<!--<![endif]-->'+
+	      '</object>'
+	   )*/
+
+		
 		setTimeout( function() {
-			_this.postEmbedJS();
+			_this.postEmbedJS();							
 		}, 100 );
+		
+		// Flash player loses its bindings once it changes sizes::
+		$j( _this ).bind ( 'closeFullScreenEvent', function(){
+			_this.postEmbedJS();
+		});
+		$j( _this ).bind ( 'openFullScreenEvent', function(){
+			_this.postEmbedJS();
+		})
 						
 	},	
 	
@@ -80,10 +115,9 @@ var kplayerEmbed = {
 	*/
 	postEmbedJS:function() {
 		var _this = this;
-		this.getPlayerElement();	
+		this.getPlayerElement();		
 								
-		if( this.playerElement && this.playerElement.addJsListener ) {
-			mw.log( 'flash:postEmbedJS::');
+		if( this.playerElement && this.playerElement.addJsListener ) {			
 			
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
@@ -184,11 +218,9 @@ var kplayerEmbed = {
 		} else {
 			// try to do a play then seek: 
 			this.doPlayThenSeek( percentage )
-		}
-		this.monitor();
-		
+		}				
 		// Run the onSeeking interface update
-		this.ctrlBuilder.onSeek(); 
+		this.controlBuilder.onSeek(); 
 	},
 	
 	/**
@@ -230,7 +262,7 @@ var kplayerEmbed = {
 	* Issues a volume update to the playerElement
 	* @param {Float} percentage Percentage to update volume to
 	*/
-	updateVolumen: function( percentage ) {				
+	setPlayerElementVolume: function( percentage ) {				
 		if( this.playerElement && this.playerElement.sendNotification ){			
 			this.playerElement.sendNotification('changeVolume', percentage);
 		}
@@ -239,8 +271,8 @@ var kplayerEmbed = {
 	/**
 	 * function called by flash at set interval to update the playhead. 
 	 */
-	onUpdatePlayhead : function ( playheadValue ){		
-		this.currentTime = playheadValue;
+	onUpdatePlayhead : function ( playheadValue ){			
+		this.flashCurrentTime = playheadValue;
 	},
 	
 	/**
@@ -266,9 +298,12 @@ var kplayerEmbed = {
 	},
 	
 	/**
-	* currentTime updated via playback hook no need for monitor function
-	* monitor: function(){}
-	*/	
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function(){
+		// update currentTime
+		return this.flashCurrentTime;
+	},
 	
 	/**
 	* Get the embed fla object player Element
@@ -290,12 +325,8 @@ function onKdpReady( playerId ) {
 
 
 
-
 /*!	SWFObject v2.2 <http://code.google.com/p/swfobject/> 
 	is released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
-* 
-*  NOTE: we should seperate this out into a seperate file. It requires some minor
-*  	refactoring in how embedPlayer[s] are loaded.
 */
 
 var swfobject = function() {
@@ -332,15 +363,12 @@ var swfobject = function() {
 		- Is executed directly for optimal performance
 	*/	
 	ua = function() {
-		var w3cdom = typeof doc.getElementById != UNDEF && 
-					 typeof doc.getElementsByTagName != UNDEF && 
-					 typeof doc.createElement != UNDEF,
+		var w3cdom = typeof doc.getElementById != UNDEF && typeof doc.getElementsByTagName != UNDEF && typeof doc.createElement != UNDEF,
 			u = nav.userAgent.toLowerCase(),
 			p = nav.platform.toLowerCase(),
 			windows = p ? /win/.test(p) : /win/.test(u),
 			mac = p ? /mac/.test(p) : /mac/.test(u),
-			
-			webkit = /webkit/.test(u) ? parseFloat(u.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")) : false, 
+			webkit = /webkit/.test(u) ? parseFloat(u.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")) : false, // returns either the webkit version or false if not webkit
 			ie = !+"\v1", // feature detection based on Andrea Giammarchi's solution: http://webreflection.blogspot.com/2009/01/32-bytes-to-know-if-your-browser-is-ie.html
 			playerVersion = [0,0,0],
 			d = null;
@@ -370,56 +398,8 @@ var swfobject = function() {
 			catch(e) {}
 		}
 		return { w3:w3cdom, pv:playerVersion, wk:webkit, ie:ie, win:windows, mac:mac };
-	}(),
-	
-	/* Cross-browser onDomLoad
-		- Will fire an event as soon as the DOM of a web page is loaded
-		- Internet Explorer workaround based on Diego Perini's solution: http://javascript.nwbox.com/IEContentLoaded/
-		- Regular onload serves as fallback
-	*/ 
-	onDomLoad = function() {
-		if (!ua.w3) { return; }
-		if ((typeof doc.readyState != UNDEF && doc.readyState == "complete") || (typeof doc.readyState == UNDEF && (doc.getElementsByTagName("body")[0] || doc.body))) { // function is fired after onload, e.g. when script is inserted dynamically 
-			callDomLoadFunctions();
-		}
-		if (!isDomLoaded) {
-			if (typeof doc.addEventListener != UNDEF) {
-				doc.addEventListener("DOMContentLoaded", callDomLoadFunctions, false);
-			}		
-			if (ua.ie && ua.win) {
-				doc.attachEvent(ON_READY_STATE_CHANGE, function() {
-					if (doc.readyState == "complete") {
-						doc.detachEvent(ON_READY_STATE_CHANGE, arguments.callee);
-						callDomLoadFunctions();
-					}
-				});
-				if (win == top) { // if not inside an iframe
-					(function(){
-						if (isDomLoaded) { return; }
-						try {
-							doc.documentElement.doScroll("left");
-						}
-						catch(e) {
-							setTimeout(arguments.callee, 0);
-							return;
-						}
-						callDomLoadFunctions();
-					})();
-				}
-			}
-			if (ua.wk) {
-				(function(){
-					if (isDomLoaded) { return; }
-					if (!/loaded|complete/.test(doc.readyState)) {
-						setTimeout(arguments.callee, 0);
-						return;
-					}
-					callDomLoadFunctions();
-				})();
-			}
-			addLoadEvent(callDomLoadFunctions);
-		}
 	}();
+		
 	
 	function callDomLoadFunctions() {
 		if (isDomLoaded) { return; }
@@ -498,10 +478,14 @@ var swfobject = function() {
 			var counter = 0;
 			(function(){
 				if (typeof t.GetVariable != UNDEF) {
-					var d = t.GetVariable("$version");
-					if (d) {
-						d = d.split(" ")[1].split(",");
-						ua.pv = [parseInt(d[0], 10), parseInt(d[1], 10), parseInt(d[2], 10)];
+					try{
+						var d = t.GetVariable("$version");
+						if (d) {
+							d = d.split(" ")[1].split(",");
+							ua.pv = [parseInt(d[0], 10), parseInt(d[1], 10), parseInt(d[2], 10)];
+						}
+					} catch( e ){
+						// error in grabbing flash version 
 					}
 				}
 				else if (counter < 10) {
@@ -942,6 +926,11 @@ var swfobject = function() {
 				return getObjectById(objectIdStr);
 			}
 		},
+		// XXX added by mdale ( since we know the dom is ready,
+		// this works better. 
+		callDomLoadFunctions: function(){
+			callDomLoadFunctions();	
+		},
 		
 		embedSWF: function(swfUrlStr, replaceElemIdStr, widthStr, heightStr, swfVersionStr, xiSwfUrlStr, flashvarsObj, parObj, attObj, callbackFn) {
 			var callbackObj = {success:false, id:replaceElemIdStr};
@@ -1074,4 +1063,3 @@ var swfobject = function() {
 		}
 	};
 }();
-

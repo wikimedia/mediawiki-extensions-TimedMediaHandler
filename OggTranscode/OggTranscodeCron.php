@@ -13,8 +13,10 @@
 *
 * 2) Query the db for jobSets ( find a job that is not processed or > wgTranscodeJobTimeOut )
 *
-* 3) Does a incomplete transcode to temporary location
-* 	 	once done moves file into place.
+* 3) Does a transcode to temporary location
+* 	 once done moves file into pre-defined location
+*
+* Now when the asset is visited by php it automatically knows about transcodes
 *
 */
 require_once(  dirname(__FILE__) . '/../../../maintenance/Maintenance.php' );

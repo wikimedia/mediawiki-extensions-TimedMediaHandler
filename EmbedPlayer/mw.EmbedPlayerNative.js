@@ -3,10 +3,10 @@
 * 
 * Enables embedPlayer support for native html5 browser playback system
 */
-var nativeEmbed = {
+mw.EmbedPlayerNative = {
 
 	//Instance Name
-	instanceOf:'nativeEmbed',
+	instanceOf: 'Native',
 	
 	// Counts the number of times we tried to access the video element 
 	grab_try_count:0,
@@ -28,17 +28,17 @@ var nativeEmbed = {
 	// Store the progress event ( updated durring monitor )
 	progressEventData: null,
 	
+	// If the media loaded event has been fired  
+	mediaLoadedFlag: null,
+	
 	// Native player supported feature set
 	supports: {
 		'playHead' : true,
 		'pause' : true,
 		'fullscreen' : true,
 		'timeDisplay' : true,
-		'volumeControl' : true,
-		
-		'overlays' : true,
-		// if the object supports playlist functions
-		'playlist_swap_loader' : true 		
+		'volumeControl' : true,		
+		'overlays' : true
 	},	
 	/** 
 	 * updates the supported features given the "type of player" 
@@ -65,21 +65,55 @@ var nativeEmbed = {
 			_this.postEmbedJS();
 			return ;
 		}
+				
 		$j( this ).html(
-			$j( '<video />' )
-			.attr( {
-				'id' : this.pid,				
-				'src' : this.getSrc()
-			} )
-			.css( {
-				'width' : '100%',
-				'height' : '100%'				
-			} )			
-		)		
-		mw.log( "Embed code: " + $j( this ).html() );		
-		// directly run postEmbedJS ( if playerElement is not avaliable it will retry ) 
+			_this.getNativePlayerHtml()
+		);
+					
+		// Directly run postEmbedJS ( if playerElement is not available it will retry ) 
 		_this.postEmbedJS();
 	},
+	
+	/**
+	 * Get the native player embed code.
+	 * 
+	 * @param {object} playerAttribtues Attributes to be override in function call
+	 * @return {object} jQuery player code object 
+	 */
+	getNativePlayerHtml: function( playerAttribtues, cssSet ){
+		if( !playerAttribtues) {
+			playerAttribtues = {};
+		}
+		// Update required attributes
+		if( !playerAttribtues[ 'id'] ) playerAttribtues['id'] = this.pid;		
+		if( !playerAttribtues['src'] ) playerAttribtues['src'] = this.getSrc();
+		
+		// If autoplay pass along to attribute ( needed for iPad / iPod no js autoplay support
+		if( this.autoplay ) {
+			playerAttribtues['autoplay'] = 'true';
+		}
+		
+		
+		if( !cssSet ){
+			cssSet = {};
+		}
+		// Set default width height to 100% of parent container
+		if( !cssSet['width'] ) cssSet['width'] = '100%';
+		if( !cssSet['height'] ) cssSet['height'] = '100%';
+		
+		// Also need to set the loop param directly for iPad / iPod
+		if( this.loop ) {
+			playerAttribtues['loop'] = 'true';
+		}
+		
+		var tagName = ( this.isAudio() ) ? 'audio' : 'video';
+			
+		return	$j( '<' + tagName + ' />' )
+			// Add the special nativeEmbedPlayer to avoid any rewrites of of this video tag. 
+			.addClass( 'nativeEmbedPlayerPid' )
+			.attr( playerAttribtues )
+			.css( cssSet );
+	},		
 	
 	/**
 	* Post element javascript, binds event listeners and starts monitor 
@@ -91,15 +125,9 @@ var nativeEmbed = {
 		// Setup local pointer: 
 		var vid = this.getPlayerElement();
 		if ( typeof this.playerElement != 'undefined' ) {					
-			// Setup some bindings: 			
-			// Bind events to local js methods:			
-			vid.addEventListener( 'canplaythrogh',  function() { _this.canplaythrough }, true);			 
-			vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
-			vid.addEventListener( 'progress', function( e ) { _this.onprogress( e );  }, true);
-			vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
-			vid.addEventListener( 'seeking', function() { _this.onSeeking() }, true);
-			vid.addEventListener( 'seeked', function() { _this.onSeeked() }, true);			
-		
+			// Apply media element bindings: 			
+			this.applyMediaElementBindings();
+			
 			// Check for load flag
 			if ( this.onlyLoadFlag ) {
 				vid.pause();
@@ -129,12 +157,56 @@ var nativeEmbed = {
 	},
 	
 	/**
+	 * Apply media element bindings 
+	 */
+	applyMediaElementBindings: function(){
+		var _this = this;
+		var vid = this.getPlayerElement();
+		if( ! vid ){
+			mw.log( " Error: applyMediaElementBindings without player elemnet");
+			return ;
+		}
+		// Bind events to local js methods:			
+		vid.addEventListener( 'canplaythrogh',  function() { $j( _this ).trigger('canplaythrough'); }, true);			 
+		vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
+		vid.addEventListener( 'progress', function( e ) { _this.onprogress( e );  }, true);
+		vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
+		vid.addEventListener( 'seeking', function() { _this.onSeeking() }, true);
+		vid.addEventListener( 'seeked', function() { _this.onSeeked() }, true);			
+		
+		vid.addEventListener( 'pause', function() { _this.onPaused() }, true );
+		vid.addEventListener( 'play', function(){ _this.onPlay() }, true );			
+		vid.addEventListener( 'volumechange', function(){ _this.onVolumeChange() } , true );
+	},
+	
+	// basic monitor function to update buffer
+	monitor: function(){
+		var _this = this;
+		var vid = _this.getPlayerElement();
+		
+		// Update the bufferedPercent
+		if( vid && vid.buffered && vid.buffered.end && vid.duration ) {		
+			this.bufferedPercent = (vid.buffered.end(0) / vid.duration);
+		}		
+		_this.parent_monitor();
+	},
+	
+	
+	/**
 	* Issue a seeking request. 
 	*
 	* @param {Float} percentage
 	*/
 	doSeek: function( percentage ) {
-		mw.log( 'native:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		mw.log( 'Native::doSeek p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		this.seeking = true;
+		// Run the seeking hook
+		$j( this.embedPlayer ).trigger( 'onSeek' );
+		
+		
+		// Run the onSeeking interface update
+		this.controlBuilder.onSeek();
+		
 		// @@todo check if the clip is loaded here (if so we can do a local seek)
 		if ( this.supportsURLTimeEncoding() ) {
 			// Make sure we could not do a local seek instead:
@@ -152,19 +224,22 @@ var nativeEmbed = {
 			// try to do a play then seek: 
 			this.doPlayThenSeek( percentage )
 		}
-		
-		// Run the onSeeking interface update
-		this.ctrlBuilder.onSeek(); 
 	},
 	
 	/**
 	* Do a native seek by updating the currentTime
+	* @param {float} percentage Percent to seek to of full time
 	*/
-	doNativeSeek:function( percentage ) {
+	doNativeSeek: function( percentage ) {
+		var _this = this;
 		mw.log( 'native::doNativeSeek::' + percentage );
-		this.seek_time_sec = 0;
-		this.playerElement.currentTime = percentage * this.duration;
-		this.monitor();
+		this.seeking = true;
+		this.seek_time_sec = 0;		
+		this.doSeekedCallback( ( percentage * this.duration ) , function(){
+			_this.seeking = false;
+			_this.monitor();
+		})
+		
 	},
 	
 	/**
@@ -172,22 +247,22 @@ var nativeEmbed = {
 	*
 	* @param {Float} percentage Percentage of the stream to seek to between 0 and 1
 	*/
-	doPlayThenSeek:function( percentage ) {
+	doPlayThenSeek: function( percentage ) {
 		mw.log( 'native::doPlayThenSeek::' );
 		var _this = this;
 		this.play();
-		var rfsCount = 0;
+		var retryCount = 0;
 		var readyForSeek = function() {
 			_this.getPlayerElement();			
-			// if we have duration then we are ready to do the seek
+			// If we have duration then we are ready to do the seek
 			if ( _this.playerElement && _this.playerElement.duration ) {
 				_this.doNativeSeek( percentage );
 			} else {
 				// Try to get player for 40 seconds: 
 				// (it would be nice if the onmetadata type callbacks where fired consistently)
-				if ( rfsCount < 800 ) {
+				if ( retryCount < 800 ) {
 					setTimeout( readyForSeek, 50 );
-					rfsCount++;
+					retryCount++;
 				} else {
 					mw.log( 'error:doPlayThenSeek failed' );
 				}
@@ -234,26 +309,19 @@ var nativeEmbed = {
 	},
 	
 	/**
-	* Monitor the video playback & update the currentTime
+	* Get the embed player time
 	*/
-	monitor: function() {		
-		var _this = this;
-		this.getPlayerElement(); // make sure we have .vid obj
+	getPlayerElementTime: function() {		
+		var _this = this;		
+		// Make sure we have .vid obj
+		this.getPlayerElement(); 
 		
 		if ( !this.playerElement ) {
 			mw.log( 'could not find video embed: ' + this.id + ' stop monitor' );
 			return false;
-		}					
-				
-		// update currentTime				
-		this.currentTime = this.playerElement.currentTime;
-					
-		
-		//mw.log( 'ns: ' + this.playerElement.networkState + ' error:' + this.playerElement.error);		
-		//mw.log('currentTime:' + this.currentTime);		
-		// once currentTime is updated call parent_monitor
-		this.parent_monitor();
-							
+		}									
+		// Return the playerElement currentTime				
+		return this.playerElement.currentTime;
 	},
 	
 	/**
@@ -305,21 +373,16 @@ var nativeEmbed = {
 	},
 	
 	/**
-	* Fullscreen for "video" with control overlays:  
-	*/
-	fullscreen: function(){
-		this.ctrlBuilder.toggleFullscreen();
-		this.parent_fullscreen();
-	},
-	
-	/**
 	* Update Volume
 	*
 	* @param {Float} percentage Value between 0 and 1 to set audio volume
 	*/	
-	updateVolumen: function( percentage ) {
-		this.getPlayerElement();
-		if ( this.playerElement ) {
+	setPlayerElementVolume : function( percentage ) {
+		if ( this.getPlayerElement() ) {
+			// Disable mute if positive volume			
+			if( percentage != 0 ) {
+				this.playerElement.muted = false;
+			}
 			this.playerElement.volume = percentage;
 		}
 	},
@@ -330,18 +393,35 @@ var nativeEmbed = {
 	* @return {Float} 
 	* 	Audio volume between 0 and 1.
 	*/	
-    getVolumen: function() {
-		this.getPlayerElement();
-		if ( this.playerElement )
+    getPlayerElementVolume: function() {
+		if ( this.getPlayerElement() ) {
 			return this.playerElement.volume;
+		}
+	},
+	/**
+	* get the native muted state
+	*/ 
+	getPlayerElementMuted: function(){
+		if ( this.getPlayerElement() ) {
+			return this.playerElement.muted;
+		}
+	},
+			
+	/**
+	* Handle volume change are handled via "monitor" as to not do too many binding triggers per seconds.
+	*/
+	onVolumeChange: function(){
+		//mw.log( "native::volumechange::trigger" );
+		//this.volume = this.playerElement.volume;
 	},
 	
 	/**
 	* Get the native media duration
 	*/
 	getNativeDuration: function() {
-		if ( this.playerElement )
+		if ( this.playerElement ) {
 			return this.playerElement.duration;
+		}
 	},
 	
 	/**
@@ -381,13 +461,22 @@ var nativeEmbed = {
 	* Local method for seeking event
 	*  fired when "seeking" 
 	*/
-	onSeeking: function() {					
-		// Run the onSeeking interface update
-		this.ctrlBuilder.onSeek(); 
-		
-		// Trigger the html5 seeking event
-		mw.log("native:seeking:trigger");
-		$j( this ).trigger( 'seeking' ); 
+	onSeeking: function() {	
+		mw.log( "native:onSeeking");
+		// Trigger the html5 seeking event 
+		//( if not already set from interface )
+		if( !this.seeking ) {	
+			this.seeking = true;
+			// Run the seeking hook (somewhat redundant )
+			$j( this ).trigger( 'onSeek' );
+			
+			// Run the onSeeking interface update
+			this.controlBuilder.onSeek();			
+			
+			// Trigger the html5 "seeking" trigger
+			mw.log("native:seeking:trigger:: " + this.seeking);			
+			$j( this ).trigger( 'seeking' );
+		}
 	},
 	
 	/**
@@ -395,14 +484,33 @@ var nativeEmbed = {
 	*  fired when done seeking 
 	*/
 	onSeeked: function() {
-		//mw.log("onseeked");
+		mw.log("native:onSeeked");
 		this.seeking = false;
-		mw.log("native:seeked:trigger");
-		// trigger the html5 action on the parent 
+		mw.log("native:onSeeked:trigger");
+		// Trigger the html5 action on the parent 
 		$j( this ).trigger( 'seeked' );
 	},
 	
 	/**
+	* Handle the native paused event
+	*/ 
+	onPaused: function(){
+		mw.log("native:paused:trigger");
+		this.pause();
+		$j( this ).trigger( 'pause' );
+	},
+	
+	/**
+	* Handle the native play event 
+	*/
+	onPlay: function(){
+		mw.log("native::play::trigger");
+		if( !this.isPlaying () ){
+			this.play();
+		}
+	},
+	
+	/**	
 	* Local method for metadata ready
 	*  fired when metadata becomes available
 	*
@@ -420,6 +528,12 @@ var nativeEmbed = {
 		if( typeof this.onLoadedCallback == 'function' ) {
 			this.onLoadedCallback();
 		}
+		
+		// Tigger "media loaded"
+		if( ! this.mediaLoadedFlag ){
+			$j( this ).trigger( 'mediaLoaded' );
+			this.mediaLoadedFlag = true;
+		}
 	},
 	
 	/**
@@ -428,11 +542,11 @@ var nativeEmbed = {
 	*
 	*  Used to update the bufferedPercent
 	*/
-	onprogress: function( e ) {		
+	onprogress: function( e ) {			
 		if( e.loaded && e.total ) {
 			this.bufferedPercent =   e.loaded / e.total;				
 			this.progressEventData = e.loaded;
-		}	
+		}		
 	},
 	
 	/**
@@ -442,22 +556,11 @@ var nativeEmbed = {
 	*  Used to update the bufferedPercent
 	*/	
 	onended: function() {
-		var _this = this
-		this.getPlayerElement();
-		mw.log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );
-		// if we just started (under 1 second played) & duration is much longer.. don't run onClipDone just yet . 
-		// (bug in firefox native sending onended event early) 
-		if ( this.playerElement.currentTime  < 1 && this.getDuration() > 1 && this.grab_try_count < 5 ) {
-			mw.log( 'native on ended called with time:' + this.playerElement.currentTime + 
-				' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
-			var doRetry = function() {
-				_this.urlAppend = 'retry_src=' + _this.grab_try_count;
-				_this.doEmbedPlayer();
-				_this.grab_try_count++;
-			}
-			setTimeout( doRetry, 100 );
-		} else {
-			mw.log( 'native onClipDone done call' );
+		var _this = this;
+		//mw.log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );							
+		// run abstract player onEned if the abstract player still things we are playing
+		
+		if( this.isPlaying() ){
 			this.onClipDone();
 		}
 	}

@@ -3,10 +3,10 @@
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html
 *  assume version > 0.8.5.1
 */
-var vlcEmbed = {
+mw.EmbedPlayerVlc = {
 
 	//Instance Name: 
-	instanceOf : 'vlcEmbed',
+	instanceOf : 'Vlc',
 	
 	//What the vlc player / plug-in supports: 
 	supports : { 
@@ -25,7 +25,10 @@ var vlcEmbed = {
 	prevState : 0,
 	
 	// Counter for waiting for vlc embed to be ready
-	waitForVlcCount:0, 
+	waitForVlcCount:0,
+	
+	// Store the current play time for vlc
+	vlcCurrentTime: 0,
 	
 	/**
 	* Get embed HTML
@@ -51,7 +54,8 @@ var vlcEmbed = {
 					'>' +
 			'</object>'
 		)
-		/*$j( this ).html(
+		/*
+			$j( this ).html(
 			'<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" '+
 			    'width="' + this.width +'" ' +
 			    'height="' + this.height + '" ' +
@@ -244,8 +248,16 @@ var vlcEmbed = {
 			// mw.log('setting duration to ' + this.playerElement.input.length /1000);			
 			this.duration = this.playerElement.input.length / 1000;
 		}
-		this.currentTime = this.playerElement.input.time / 1000;
+		this.vlcCurrentTime = this.playerElement.input.time / 1000;
 	},
+	
+	/**
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function(){
+		return this.vlcCurrentTime;
+	},
+	
 	onPause: function() {
 		this.parent_pause(); // update the inteface if paused via native control
 	},
@@ -306,15 +318,15 @@ var vlcEmbed = {
 	* Update the player volume
 	* @pram {Float} percent Percent of total volume
 	*/ 
-	updateVolumen:function( percent ) {
-		if ( this.getPlayerElement() )
+	setPlayerElementVolume: function ( percent ) {
+		if ( this.getPlayerElement() ) {
 			this.playerElement.audio.volume = percent * 100;
+		}
 	},
 	
 	/**
 	* Gets the current volume
-	* @return percent percent of total volume
-	* @type {Float} 
+	* @return {Float} percent percent of total volume
 	*/  
 	getVolumen:function() {		
 		if ( this.getPlayerElement() )

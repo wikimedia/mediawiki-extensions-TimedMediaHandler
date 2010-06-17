@@ -188,7 +188,7 @@ class OggTranscode {
 		// Reset the pointer to start:
 		reset( $derivativeSet );
 
-		// Handle special case where source is closes to target:
+		// Handle special case where source is close to target:
 		if( key( $derivativeSet ) == 'SOURCE' ){
 			return $srcFile->getURL();
 		}

@@ -3,20 +3,18 @@
  */
 
 /*Video player*/
-.mv-player {
-	color: #FFF;
-}
  
 /* large play button: */
 .mv-player .play-btn-large { 
-	width:130px; 
-	height:96px; 
-	background: url(images/player_big_play_button.png) !important; 
-	position:absolute; 
-	cursor:pointer; 
-	border:none !important;
-	z-index:1; 
-}/*.ui-state-default */
+	width : 130px; 
+	height : 96px; 
+	background : url(images/player_big_play_button.png) !important; 
+	position : absolute; 
+	cursor : pointer; 
+	border : none !important;
+	z-index : 1; 
+}
+/*.ui-state-default */
 
 
 .mv-player a:link {color: #2060c1; text-decoration: underline;}
@@ -77,22 +75,6 @@
 	
 }
 
-.mv-player .volume_on {	
-	background: url(images/player_volume_tag.png) 0 8px no-repeat;
-}
-.mv-player .volume_off{
-	background: url(images/player_volume_tag_off.png) 0 8px no-repeat;
-}
-
-.mv-player .volume_knob {
-	background: url(images/player_slider.png) 0 0 no-repeat;
-	width: 14px;
-	height: 14px;
-	position: absolute;
-	z-index: 2;
-	margin: -1px 0 0 3px;
-	cursor: pointer;
-}
 .mv-player .vol_container{
 	z-index:99;
 	width:23px;
@@ -146,7 +128,7 @@
 	height:15px;
 	margin-left:-5px;
 	margin-top: -1px;	
-	z-index: 4;
+	z-index: 2;
 }
 
 .mv-player .inOutSlider .ui-slider-handle{
