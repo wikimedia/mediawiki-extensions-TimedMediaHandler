@@ -1613,6 +1613,7 @@ Você pode <a href="$1">descarregar o clipe</a> ou <a href="http://www.mediawiki
 	'timedmedia-download' => 'Descarregar arquivo',
 	'timedmedia-desc-link' => 'Sobre este arquivo',
 	'timedmedia-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
+	'timedmedia-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
 );
 
 /** Quechua (Runa Simi)
