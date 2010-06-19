@@ -194,6 +194,34 @@ $messages['br'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'mwe-timedtext-editor' => 'Editor titulků',
+	'mwe-timedtext-stage-transcribe' => 'Přepis',
+	'mwe-timedtext-stage-sync' => 'Synchronizace',
+	'mwe-timedtext-stage-translate' => 'Překlad',
+	'mwe-timedtext-stage-upload' => 'Načtení místního souboru',
+	'mwe-timedtext-select-language' => 'Vyberte jazyk',
+	'mwe-timedtext-file-language' => 'Jazyk titulků',
+	'mwe-timedtext-upload-text' => 'Načíst textový soubor',
+	'mwe-timedtext-uploading-text' => 'Načítá se textový soubor',
+	'mwe-timedtext-upload-text-desc-title' => 'Načíst textový soubor',
+	'mwe-timedtext-upload-text-preview' => 'Kontrola textu',
+	'mwe-timedtext-back-btn' => 'Zpět',
+	'mwe-timedtext-choose-text' => 'Zvolit text',
+	'mwe-timedtext-add-timed-text' => 'Přidat titulky',
+	'mwe-timedtext-loading-text-edit' => 'Načítá se editor titulků',
+	'mwe-timedtext-layout' => 'Vzhled',
+	'mwe-timedtext-layout-ontop' => 'Přes obraz',
+	'mwe-timedtext-layout-below' => 'Pod obrazem',
+	'mwe-timedtext-layout-off' => 'Skrýt titulky',
+	'mwe-timedtext-loading-text' => 'Načítá se text…',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Titulky ke klipu $2 v jazyce $1',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ke klipu $2 nebyly nalezeny titulky v jazyce $1',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

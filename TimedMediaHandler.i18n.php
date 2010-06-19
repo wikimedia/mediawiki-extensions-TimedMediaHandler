@@ -370,15 +370,17 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'timedmedia-desc' => 'Obsluha souborů Ogg Theora a Vorbis s JavaScriptovým přehrávačem',
+	'timedmedia-desc' => 'Obsluha časovaných souborů (video, audio, titulky) s převodem do Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Zvukový soubor ogg $1, $2',
 	'timedmedia-short-video' => 'Videosoubor ogg $1, $2',
-	'timedmedia-short-general' => 'Soubor média ogg $1, $2',
+	'timedmedia-short-general' => 'Multimediální soubor ogg $1, $2',
 	'timedmedia-long-audio' => '(Zvukový soubor ogg $1, délka $2, $3)',
 	'timedmedia-long-video' => '(Videosoubor $1, délka $2, $4×$5 pixelů, $3)',
 	'timedmedia-long-multiplexed' => '(Audio/video soubor ogg, $1, délka $2, $4×$5 pixelů, $3)',
 	'timedmedia-long-general' => '(Soubor média ogg, délka $2, $3)',
 	'timedmedia-long-error' => '(Chybný soubor ogg: $1)',
+	'timedmedia-no-player-js' => 'Je mi líto, ale váš prohlížeč má buď vypnutý JavaScript, nebo nemáte žádný podporovaný přehrávač.<br />
+Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/cs">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.',
 	'timedmedia-more' => 'Více...',
 	'timedmedia-dismiss' => 'Zavřít',
 	'timedmedia-download' => 'Stáhnout soubor',
