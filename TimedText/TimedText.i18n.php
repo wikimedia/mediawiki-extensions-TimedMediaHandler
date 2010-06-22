@@ -648,6 +648,7 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text-done' => 'アップロード完了',
 	'mwe-timedtext-upload-text-fail-desc' => 'アップロードが失敗しました',
 	'mwe-timedtext-upload-text-fail-title' => 'アップロードに失敗',
+	'mwe-timedtext-upload-text-another' => '他にアップロード',
 	'mwe-timedtext-upload-text-done-uploading' => 'アップロード完了',
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
@@ -884,6 +885,20 @@ $messages['pt'] = array(
 	'mwe-timedtext-textcat-cue' => 'Pontos de entrada',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Legendas em $1 para o clipe: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Não foram encontradas legendas em $1 para o clipe: $2',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'mwe-timedtext-stage-translate' => 'Traduzir',
+	'mwe-timedtext-select-language' => 'Selecionar língua',
+	'mwe-timedtext-uploading-text' => 'Carregando um arquivo de texto',
+	'mwe-timedtext-upload-text-desc-title' => 'Carregar um arquivo de texto',
+	'mwe-timedtext-back-btn' => 'Voltar',
+	'mwe-timedtext-layout-off' => 'Esconder legendas',
+	'mwe-timedtext-loading-text' => 'Carregando o texto ...',
+	'mwe-timedtext-textcat-sub' => 'Legendas',
 );
 
 /** Russian (Русский)
