@@ -669,6 +669,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwwersetzen',
+	'mwe-timedtext-stage-upload' => 'E lokale Fichier eroplueden',
 	'mwe-timedtext-select-language' => 'Sprooch eraussichen',
 	'mwe-timedtext-file-language' => 'Sprooch vum Fichier mat den Ënnertitelen',
 	'mwe-timedtext-upload-text' => 'Text-Fichier eroplueden',
@@ -683,15 +684,19 @@ $messages['lb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => "D'Eroplueden ass fäerdeg",
 	'mwe-timedtext-back-btn' => 'Zréck',
 	'mwe-timedtext-choose-text' => 'Text eraussichen',
+	'mwe-timedtext-add-timed-text' => 'Sychroniséierten Text derbäisetzen',
+	'mwe-timedtext-search' => 'Clip sichen',
 	'mwe-timedtext-layout' => 'Layout',
 	'mwe-timedtext-layout-ontop' => 'Iwwert dem Video',
 	'mwe-timedtext-layout-below' => 'Ënnert dem Video',
 	'mwe-timedtext-layout-off' => 'Ënnertitele verstoppen',
+	'mwe-timedtext-loading-text' => 'Text gëtt gelueden ...',
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-ar' => 'Aktiv Regiounen',
 	'mwe-timedtext-textcat-nb' => 'Notiz',
 	'mwe-timedtext-textcat-lrc' => 'Liddertext',
+	'mwe-timedtext-textcat-cue' => 'Referenz-Punkten',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Ënnertitele fir de Clip: $2',
 );
 
