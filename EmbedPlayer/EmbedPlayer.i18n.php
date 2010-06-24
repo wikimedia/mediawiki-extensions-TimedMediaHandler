@@ -1496,7 +1496,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-loading_plugin' => "a carregar o ''plugin'' ...",
 	'mwe-embedplayer-select_playback' => 'Definir a preferência de reprodução',
 	'mwe-embedplayer-link_back' => 'Ligar atrás',
-	'mwe-embedplayer-error_swap_vid' => "Erro: o mv_embed não conseguiu trocar a marca ''(tag)'' vídeo pela interface mv_embed",
+	'mwe-embedplayer-error_swap_vid' => 'Erro: o mv_embed não conseguiu trocar o elemento de vídeo pela interface mv_embed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Adicionar ao fim da sequência',
 	'mwe-embedplayer-missing_video_stream' => "Ficheiro vídeo para esta ''stream'' em falta",
 	'mwe-embedplayer-play_clip' => 'Reproduzir clipe',
@@ -1553,16 +1553,36 @@ $messages['pt'] = array(
 	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo. Verifique que o seu código inclui a fonte ou uma chave API',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
 $messages['pt-br'] = array(
+	'mwe-embedplayer-credit-title' => 'Título: $1',
+	'mwe-embedplayer-loading_plugin' => 'Carregando plugin ...',
 	'mwe-embedplayer-play_clip' => 'Tocar videoclipe',
+	'mwe-embedplayer-pause_clip' => 'Pausar clipe',
+	'mwe-embedplayer-volume_control' => 'Controle de volume',
 	'mwe-embedplayer-player_fullscreen' => 'Tela inteira',
 	'mwe-embedplayer-next_clip_msg' => 'Tocar próximo videoclipe',
 	'mwe-embedplayer-prev_clip_msg' => 'Tocar anterior videoclipe',
 	'mwe-embedplayer-current_clip_msg' => 'Continue a tocar este videoclipe',
+	'mwe-embedplayer-paused' => 'pausado',
+	'mwe-embedplayer-download_right_click' => 'Para baixar, clique com o botão direito e selecione <i>Salvar link como...</i>',
 	'mwe-embedplayer-download_clip' => 'Baixar vídeo',
 	'mwe-embedplayer-download' => 'Baixar',
+	'mwe-embedplayer-credits' => 'Créditos',
+	'mwe-embedplayer-video_credits' => 'Créditos do vídeo',
+	'mwe-embedplayer-menu_btn' => 'Menu',
+	'mwe-embedplayer-close_btn' => 'Fechar',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin Ogg genérico',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
+	'mwe-embedplayer-copy-code' => 'Copiar código',
+	'mwe-embedplayer-video-h264' => 'Vídeo H.264',
+	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
+	'mwe-embedplayer-video-audio' => 'Áudio Ogg',
 );
 
 /** Russian (Русский)
