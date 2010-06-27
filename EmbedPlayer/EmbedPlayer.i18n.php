@@ -1486,6 +1486,7 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'mwe-embedplayer-download' => 'ښکته کول',
 	'mwe-embedplayer-close_btn' => 'تړل',
+	'mwe-embedplayer-ogg-player-selected' => '(ټاکل شوی)',
 );
 
 /** Portuguese (Português)

@@ -1263,11 +1263,11 @@ $messages['mk'] = array(
 	'timedmedia-desc' => 'Обработувач на синхронизирани снимки (видео, аудио, timedText) со транскодирање во Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'timedmedia-short-video' => 'Ogg $1 видео податотека, $2',
-	'timedmedia-short-general' => 'Ogg $1 медија податотека, $2',
+	'timedmedia-short-general' => 'Мултимедијална податотека Ogg $1, $2',
 	'timedmedia-long-audio' => '(Ogg $1 звучна податотека, должина $2, $3)',
 	'timedmedia-long-video' => '(Ogg $1 видео податотека, должина $2, $4×$5 пиксели, $3)',
 	'timedmedia-long-multiplexed' => '(Ogg мултиплексирана аудио/видео податотека, $1, должина $2, $4×$5 пиксели, $3 вкупно)',
-	'timedmedia-long-general' => '(Ogg медија податотека, должина $2, $3)',
+	'timedmedia-long-general' => '(мултимедијална податотека Ogg, должина $2, $3)',
 	'timedmedia-long-error' => '(Оштетена ogg податотека: $1)',
 	'timedmedia-no-player-js' => 'Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />
 Можете да го <a href="$1">преземете клипот</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.',
