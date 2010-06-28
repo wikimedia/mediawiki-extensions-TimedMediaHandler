@@ -1692,6 +1692,14 @@ $messages['ru'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb не удалось создать миниатюру.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'timedmedia-more' => 'Веце...',
+	'timedmedia-dismiss' => 'Заперти',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

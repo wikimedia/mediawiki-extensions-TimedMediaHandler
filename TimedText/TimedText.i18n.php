@@ -957,6 +957,13 @@ $messages['ru'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Не найдено субтитров на $1 для клипа: $2',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwe-timedtext-back-btn' => 'Назад',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

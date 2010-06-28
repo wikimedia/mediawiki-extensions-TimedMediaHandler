@@ -1651,6 +1651,14 @@ $messages['ru'] = array(
 	'mwe-embedplayer-missing-source' => 'Не найден источник видео. Проверьте, что ваш встроенный код содержит источник или ключ API.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwe-embedplayer-close_btn' => 'Заперти',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'Перегравач VLC',
+);
+
 /** Slovak (Slovenčina) */
 $messages['sk'] = array(
 	'mwe-embedplayer-download' => 'Stiahnuť',
