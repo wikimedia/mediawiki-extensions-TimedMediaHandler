@@ -758,10 +758,14 @@ $messages['gsw'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg-Audio-/Video-Datei, $1, Längi: $2, $4×$5 Pixel, $3)',
 	'timedmedia-long-general' => '(Ogg-Mediadatei, Längi: $2, $3)',
 	'timedmedia-long-error' => '(Uugiltigi Ogg-Datei: $1)',
+	'timedmedia-no-player-js' => 'Excusez, aber Dyy Browser het entwäder JavaScript deaktiviert oder kei unterstitzti Abspilsoftware.<br />
+Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.',
 	'timedmedia-more' => 'Meh …',
 	'timedmedia-dismiss' => 'Zuemache',
 	'timedmedia-download' => 'Datei spychere',
 	'timedmedia-desc-link' => 'Iber die Datei',
+	'timedmedia-oggThumb-version' => 'OggHandler brucht oggThumb in dr Version $1 oder hecher.',
+	'timedmedia-oggThumb-failed' => 'oggThumb het kei Miniaturbild chenne aalege.',
 );
 
 /** Manx (Gaelg)

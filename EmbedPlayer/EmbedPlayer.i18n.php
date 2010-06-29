@@ -686,7 +686,9 @@ $messages['gl'] = array(
 	'mwe-embedplayer-missing-source' => 'Non se atopou o vídeo de orixe. Comprobe que o código inclúe a orixe ou a clave API',
 );
 
-/** Swiss German (Alemannisch) */
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
 $messages['gsw'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'Am Lade vum Plugin ...',
@@ -699,6 +701,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-pause_clip' => 'Clip aahalte',
 	'mwe-embedplayer-volume_control' => 'Yystellig fir d Lutsterki',
 	'mwe-embedplayer-player_options' => 'Yystellige fir s Abspilprogramm',
+	'mwe-embedplayer-timed_text' => 'Ächtzyt-Text',
 	'mwe-embedplayer-player_fullscreen' => 'Vollbildschrim',
 	'mwe-embedplayer-next_clip_msg' => 'Dr negscht Clip abspile',
 	'mwe-embedplayer-prev_clip_msg' => 'Dr vorig Clip abspile',
@@ -715,11 +718,15 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-credits' => 'Anerkännige',
 	'mwe-embedplayer-clip_linkback' => 'Clip-Quällsyte',
 	'mwe-embedplayer-choose_player' => 'Videospiler uuswehle',
+	'mwe-embedplayer-no-player' => 'Fir $1 isch kei Player verfiegbar',
 	'mwe-embedplayer-share_this_video' => 'Des Video teile',
 	'mwe-embedplayer-video_credits' => 'Videokredit',
+	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura Open-Source-Video-Plattform',
 	'mwe-embedplayer-menu_btn' => 'Uuswahl',
 	'mwe-embedplayer-close_btn' => 'Zuemache',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-Player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-Player',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-Player',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generisch Ogg-Plugin',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-Plugin',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -731,6 +738,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Dyy Browser unterstitzt schyns dää Abspiltyp nit: <b>$1</b><br />Gang uf d <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Abspil-Methode</a>-Syte go ne Abpilprogramm abelede.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Fir e besseri Abspilqualitet vu däm Video empfähle mir:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Fir desmol ablähne.',
+	'mwe-embedplayer-playerSelect' => 'Player',
 	'mwe-embedplayer-read_before_embed' => 'Bitte lis d <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Sicherheitsnotize iber s Yyfiege</a> voreb Du s wirkli yyfiege tuesch!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Yybunde in e Syte',
 	'mwe-embedplayer-related_videos' => 'Verwandti Video',
@@ -740,6 +748,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
+	'mwe-embedplayer-missing-source' => 'S isch kei Videoclip gfunde wore. Lue, eb s im Code, wu vu Dir yybettet woren isch, e Quälle oder e API-Schlissel het',
 );
 
 /** Hebrew (עברית) */
