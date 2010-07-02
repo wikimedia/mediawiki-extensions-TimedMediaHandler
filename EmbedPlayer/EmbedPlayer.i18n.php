@@ -1680,6 +1680,15 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'mwe-embedplayer-credit-title' => 'Наслов: $1',
+	'mwe-embedplayer-play_clip' => 'Пусти клип',
+	'mwe-embedplayer-pause_clip' => 'Паузирај клип',
+	'mwe-embedplayer-volume_control' => 'Контрола јачине звука',
+	'mwe-embedplayer-player_fullscreen' => 'Цели екран',
+	'mwe-embedplayer-next_clip_msg' => 'Пусти следећи клип',
+	'mwe-embedplayer-prev_clip_msg' => 'Пусти претходни клип',
+	'mwe-embedplayer-seek_to' => 'Скочи на $1',
+	'mwe-embedplayer-paused' => 'паузирано',
+	'mwe-embedplayer-download_segment' => 'Избор за преузимање:',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC плејер',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg плејер',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 плејер',

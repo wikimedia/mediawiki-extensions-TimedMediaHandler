@@ -1005,6 +1005,24 @@ $messages['rue'] = array(
 	'mwe-timedtext-back-btn' => 'Назад',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mwe-timedtext-select-language' => 'Изабери језик',
+	'mwe-timedtext-upload-text-done' => 'Слање је завршено',
+	'mwe-timedtext-upload-text-fail-desc' => 'Слање је било неуспешно',
+	'mwe-timedtext-upload-text-fail-title' => 'Слање није прошло',
+	'mwe-timedtext-upload-text-another' => 'Пошаљи дурги',
+	'mwe-timedtext-upload-text-done-uploading' => 'Слање је завршено',
+	'mwe-timedtext-back-btn' => 'Назад',
+	'mwe-timedtext-layout-off' => 'Сакриј сабтајтлове',
+	'mwe-timedtext-loading-text' => 'Учитава се текст ...',
+	'mwe-timedtext-textcat-cc' => 'Ознаке',
+	'mwe-timedtext-textcat-sub' => 'Сабтајтлови',
+	'mwe-timedtext-textcat-trx' => 'Транскрипт',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
