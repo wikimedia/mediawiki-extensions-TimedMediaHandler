@@ -1674,6 +1674,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ahonc
  * @author Kv75
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1681,10 +1682,10 @@ $messages['ru'] = array(
 	'timedmedia-short-audio' => 'Звуковой файл Ogg $1, $2',
 	'timedmedia-short-video' => 'Видео-файл Ogg $1, $2',
 	'timedmedia-short-general' => 'Медиа-файл Ogg $1, $2',
-	'timedmedia-long-audio' => '(звуковой файл Ogg $1, длина $2, $3)',
-	'timedmedia-long-video' => '(видео-файл Ogg $1, длина $2, $4×$5 пикселов, $3)',
-	'timedmedia-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длина $2, $4×$5 пикселов, $3 всего)',
-	'timedmedia-long-general' => '(медиа-файл Ogg, длина $2, $3)',
+	'timedmedia-long-audio' => '(звуковой файл Ogg $1, длительность $2, $3)',
+	'timedmedia-long-video' => '(видео-файл Ogg $1, длительность $2, $4×$5 пикселов, $3)',
+	'timedmedia-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4×$5 пикселов, $3 всего)',
+	'timedmedia-long-general' => '(медиа-файл Ogg, длительность $2, $3)',
 	'timedmedia-long-error' => '(неправильный Ogg-файл: $1)',
 	'timedmedia-no-player-js' => 'К сожалению, в вашем браузере отключён JavaScript, или не имеется требуемого проигрывателя.<br />
 Вы можете <a href="$1">загрузить ролик</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузить проигрыватель</a> для воспроизведения ролика в браузере.',

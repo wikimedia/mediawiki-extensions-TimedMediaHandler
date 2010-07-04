@@ -386,6 +386,14 @@ $messages['es'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'No se ha encontrado subtítulos $1 para el clip: $2',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'mwe-timedtext-select-language' => 'Valitse kieli',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+);
+
 /** French (Français)
  * @author IAlex
  */
