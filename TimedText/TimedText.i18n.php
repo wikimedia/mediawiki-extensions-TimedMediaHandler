@@ -390,7 +390,10 @@ $messages['es'] = array(
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'mwe-timedtext-stage-translate' => 'Käännä',
 	'mwe-timedtext-select-language' => 'Valitse kieli',
+	'mwe-timedtext-back-btn' => 'Takaisin',
+	'mwe-timedtext-textcat-cc' => 'Kuvatekstit',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 );
 
