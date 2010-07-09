@@ -767,7 +767,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-uploading-text' => 'Подигање на податотека со текст',
 	'mwe-timedtext-upload-text-desc-title' => 'Подигни податотека со текст',
 	'mwe-timedtext-upload-text-desc-help' => 'Посредникот за подигање текстуални податотеки прифаќа .srt податотеки',
-	'mwe-timedtext-upload-text-desc-help-browse' => 'Одберете ја од вашиот компјутер .srt податотеката што сакате да ја подигнете',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Одберете ја од вашиот сметач .srt податотеката што сакате да ја подигнете',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Одберете го јазикот на податотеката',
 	'mwe-timedtext-upload-text-desc-help-review' => 'Проверете / исправете го текстот и потоа притиснете на „Подигни“ за да го додадете текстот',
 	'mwe-timedtext-upload-text-preview' => 'Провери текст',
@@ -1032,6 +1032,22 @@ $messages['sr-ec'] = array(
 	'mwe-timedtext-textcat-cc' => 'Ознаке',
 	'mwe-timedtext-textcat-sub' => 'Сабтајтлови',
 	'mwe-timedtext-textcat-trx' => 'Транскрипт',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwe-timedtext-select-language' => 'Izaberi jezik',
+	'mwe-timedtext-upload-text-done' => 'Slanje je završeno',
+	'mwe-timedtext-upload-text-fail-desc' => 'Slanje je bilo neuspešno',
+	'mwe-timedtext-upload-text-fail-title' => 'Slanje nije prošlo',
+	'mwe-timedtext-upload-text-another' => 'Pošalji durgi',
+	'mwe-timedtext-upload-text-done-uploading' => 'Slanje je završeno',
+	'mwe-timedtext-back-btn' => 'Nazad',
+	'mwe-timedtext-layout-off' => 'Sakrij sabtajtlove',
+	'mwe-timedtext-loading-text' => 'Učitava se tekst ...',
+	'mwe-timedtext-textcat-cc' => 'Oznake',
+	'mwe-timedtext-textcat-sub' => 'Sabtajtlovi',
+	'mwe-timedtext-textcat-trx' => 'Transkript',
 );
 
 /** Swedish (Svenska)

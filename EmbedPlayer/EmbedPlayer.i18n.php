@@ -1704,6 +1704,15 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
 	'mwe-embedplayer-credit-title' => 'Naslov: $1',
+	'mwe-embedplayer-play_clip' => 'Pusti klip',
+	'mwe-embedplayer-pause_clip' => 'Pauziraj klip',
+	'mwe-embedplayer-volume_control' => 'Kontrola jačine zvuka',
+	'mwe-embedplayer-player_fullscreen' => 'Celi ekran',
+	'mwe-embedplayer-next_clip_msg' => 'Pusti sledeći klip',
+	'mwe-embedplayer-prev_clip_msg' => 'Pusti prethodni klip',
+	'mwe-embedplayer-seek_to' => 'Skoči na $1',
+	'mwe-embedplayer-paused' => 'pauzirano',
+	'mwe-embedplayer-download_segment' => 'Izbor za preuzimanje:',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC plejer',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg plejer',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 plejer',
