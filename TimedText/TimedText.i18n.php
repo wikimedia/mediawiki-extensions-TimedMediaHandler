@@ -860,6 +860,7 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'mwe-timedtext-stage-sync' => 'Synkroniser',
 	'mwe-timedtext-stage-translate' => 'Oversett',
+	'mwe-timedtext-select-language' => 'Velg språk',
 	'mwe-timedtext-upload-text' => 'Last opp tekstfil',
 	'mwe-timedtext-uploading-text' => 'Laster opp tekstfil',
 	'mwe-timedtext-upload-text-desc-title' => 'Last opp en tekstfil',
