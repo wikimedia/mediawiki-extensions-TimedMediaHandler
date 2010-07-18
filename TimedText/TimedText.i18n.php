@@ -946,6 +946,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -954,9 +955,19 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-uploading-text' => 'Carregando um arquivo de texto',
 	'mwe-timedtext-upload-text-desc-title' => 'Carregar um arquivo de texto',
 	'mwe-timedtext-back-btn' => 'Voltar',
+	'mwe-timedtext-add-timed-text' => 'Adicionar legendas',
+	'mwe-timedtext-loading-text-edit' => 'Carregando editor de legendas',
+	'mwe-timedtext-search' => 'Procurar clipe',
+	'mwe-timedtext-layout' => 'Posição',
+	'mwe-timedtext-layout-ontop' => 'Sobre o vídeo',
+	'mwe-timedtext-layout-below' => 'Abaixo do vídeo',
 	'mwe-timedtext-layout-off' => 'Esconder legendas',
 	'mwe-timedtext-loading-text' => 'Carregando o texto ...',
+	'mwe-timedtext-textcat-cc' => 'Títulos',
 	'mwe-timedtext-textcat-sub' => 'Legendas',
+	'mwe-timedtext-textcat-tad' => 'Descrição áudio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Não foram encontradas legendas em $1 para o clipe: $2',
 );
 
 /** Russian (Русский)

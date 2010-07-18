@@ -1566,22 +1566,31 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
 	'mwe-embedplayer-loading_plugin' => 'Carregando plugin ...',
+	'mwe-embedplayer-select_playback' => 'Definir as preferências de reprodução',
+	'mwe-embedplayer-error_swap_vid' => 'Erro: o mv_embed não conseguiu trocar o elemento de vídeo pela interface mv_embed',
+	'mwe-embedplayer-add_to_end_of_sequence' => 'Adicionar ao fim da sequência',
+	'mwe-embedplayer-missing_video_stream' => 'O arquivo de vídeo para esta transmissão está em falta',
 	'mwe-embedplayer-play_clip' => 'Tocar videoclipe',
 	'mwe-embedplayer-pause_clip' => 'Pausar clipe',
 	'mwe-embedplayer-volume_control' => 'Controle de volume',
+	'mwe-embedplayer-player_options' => 'Opções do leitor',
+	'mwe-embedplayer-timed_text' => 'Legendas',
 	'mwe-embedplayer-player_fullscreen' => 'Tela inteira',
 	'mwe-embedplayer-next_clip_msg' => 'Tocar próximo videoclipe',
 	'mwe-embedplayer-prev_clip_msg' => 'Tocar anterior videoclipe',
 	'mwe-embedplayer-current_clip_msg' => 'Continue a tocar este videoclipe',
+	'mwe-embedplayer-seek_to' => 'Procurar $1',
 	'mwe-embedplayer-paused' => 'pausado',
 	'mwe-embedplayer-download_right_click' => 'Para baixar, clique com o botão direito e selecione <i>Salvar link como...</i>',
 	'mwe-embedplayer-download_clip' => 'Baixar vídeo',
 	'mwe-embedplayer-download' => 'Baixar',
+	'mwe-embedplayer-share' => 'Compartilhar',
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-video_credits' => 'Créditos do vídeo',
 	'mwe-embedplayer-menu_btn' => 'Menu',
