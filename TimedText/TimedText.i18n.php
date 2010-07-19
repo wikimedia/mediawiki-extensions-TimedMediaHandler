@@ -681,6 +681,7 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Hosiryuhosi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -704,6 +705,7 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'アップロード完了',
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
+	'mwe-timedtext-layout' => 'レイアウト',
 	'mwe-timedtext-layout-ontop' => '動画の冒頭',
 	'mwe-timedtext-layout-below' => '以下の動画',
 	'mwe-timedtext-layout-off' => '字幕を隠す',
