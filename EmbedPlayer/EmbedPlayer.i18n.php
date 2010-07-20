@@ -1138,7 +1138,9 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-copy-code' => 'Kood kopeere',
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
 $messages['lb'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'Plugin lueden ...',
@@ -1148,6 +1150,7 @@ $messages['lb'] = array(
 	'mwe-embedplayer-missing_video_stream' => 'De Video-Fichier fir dëse Stream feelt',
 	'mwe-embedplayer-play_clip' => 'Clip spillen',
 	'mwe-embedplayer-pause_clip' => 'Clip ënnerbriechen',
+	'mwe-embedplayer-player_options' => 'Optioune vum Player',
 	'mwe-embedplayer-player_fullscreen' => 'Ganzen Ecran',
 	'mwe-embedplayer-next_clip_msg' => 'Nächste Clip spillen',
 	'mwe-embedplayer-prev_clip_msg' => 'Virege Clip spillen',
@@ -1161,6 +1164,7 @@ $messages['lb'] = array(
 	'mwe-embedplayer-download_text' => 'Text eroflueden (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">CMML</a> xml):',
 	'mwe-embedplayer-download' => 'Eroflueden',
 	'mwe-embedplayer-share' => 'Deelen',
+	'mwe-embedplayer-clip_linkback' => 'Quellsäit vum Clip',
 	'mwe-embedplayer-share_this_video' => 'Dëse Video deelen',
 	'mwe-embedplayer-menu_btn' => 'Menü',
 	'mwe-embedplayer-close_btn' => 'Zoumaachen',
@@ -1170,6 +1174,7 @@ $messages['lb'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(erausgesicht)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-do_not_warn_again' => 'Fir den Ament ophalen.',
+	'mwe-embedplayer-playerSelect' => 'Player',
 	'mwe-embedplayer-read_before_embed' => 'Liest w.e.g. virum Abannen d\'<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Sécherheetsinformatiounen iwwert d\'Abannen iwwer Remote</a> ier Dir mam Abanne weidermaacht!',
 	'mwe-embedplayer-embed_site_or_blog' => 'An Är Säit abauen',
 	'mwe-embedplayer-related_videos' => 'Ähnlech Videoen',

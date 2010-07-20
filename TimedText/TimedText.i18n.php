@@ -952,11 +952,18 @@ $messages['pt'] = array(
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'mwe-timedtext-editor' => 'Editor de legendas',
+	'mwe-timedtext-stage-transcribe' => 'Transcrever',
+	'mwe-timedtext-stage-sync' => 'Sincronizar',
 	'mwe-timedtext-stage-translate' => 'Traduzir',
+	'mwe-timedtext-stage-upload' => 'Carregar a partir de arquivo local',
 	'mwe-timedtext-select-language' => 'Selecionar língua',
 	'mwe-timedtext-uploading-text' => 'Carregando um arquivo de texto',
 	'mwe-timedtext-upload-text-desc-title' => 'Carregar um arquivo de texto',
+	'mwe-timedtext-upload-text-another' => 'Carregar outro',
+	'mwe-timedtext-upload-text-done-uploading' => 'Carregamento feito',
 	'mwe-timedtext-back-btn' => 'Voltar',
+	'mwe-timedtext-choose-text' => 'Escolher texto',
 	'mwe-timedtext-add-timed-text' => 'Adicionar legendas',
 	'mwe-timedtext-loading-text-edit' => 'Carregando editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
