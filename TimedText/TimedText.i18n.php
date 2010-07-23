@@ -752,6 +752,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Liddertext',
 	'mwe-timedtext-textcat-cue' => 'Referenz-Punkten',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Ënnertitele fir de Clip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keng $1 Ënnertitele goufe fonnt fir de Clip: $2',
 );
 
 /** Macedonian (Македонски)
