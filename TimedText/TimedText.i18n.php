@@ -1123,3 +1123,10 @@ $messages['sv'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertexter för klipp: $2',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mwe-timedtext-layout' => 'అమరిక',
+);
+
