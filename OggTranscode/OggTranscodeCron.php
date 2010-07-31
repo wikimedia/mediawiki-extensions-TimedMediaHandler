@@ -321,4 +321,4 @@ class OggTranscodeCron extends Maintenance {
 
 $maintClass = "OggTranscodeCron";
 require_once( DO_MAINTENANCE );
-?>
+
