@@ -894,6 +894,9 @@ $messages['pdc'] = array(
  */
 $messages['ps'] = array(
 	'mwe-timedtext-stage-translate' => 'ژباړل',
+	'mwe-timedtext-select-language' => 'ژبه ټاکل',
+	'mwe-timedtext-choose-text' => 'متن ټاکل',
+	'mwe-timedtext-textcat-ktv' => 'کارااوکه',
 );
 
 /** Portuguese (Português)

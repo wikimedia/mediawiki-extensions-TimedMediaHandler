@@ -912,6 +912,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Rex
@@ -926,10 +927,14 @@ $messages['id'] = array(
 	'timedmedia-long-multiplexed' => '(Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan)',
 	'timedmedia-long-general' => '(Berkas media ogg, panjang $2, $3)',
 	'timedmedia-long-error' => '(Berkas ogg tak valid: $1)',
+	'timedmedia-no-player-js' => 'Maaf, peramban Anda memiliki JavaScript yang dinonaktifkan atau tidak memiliki pemutar media apapun.<br />
+Anda dapat <a href="$1">mengunduh klip</a> atau <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mengunduh pemutar</a> untuk memutar klip di peramban Anda.',
 	'timedmedia-more' => 'Lainnya...',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Unduh berkas',
 	'timedmedia-desc-link' => 'Mengenai berkas ini',
+	'timedmedia-oggThumb-version' => 'OggHandler membutuhkan oggThumb versi $1 atau terbaru.',
+	'timedmedia-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
 );
 
 /** Ido (Ido)

@@ -955,7 +955,9 @@ $messages['ia'] = array(
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
 $messages['id'] = array(
 	'mwe-embedplayer-credit-title' => 'Judul: $1',
 	'mwe-embedplayer-loading_plugin' => 'memuat pengaya ...',
@@ -968,6 +970,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-pause_clip' => 'Jeda klip',
 	'mwe-embedplayer-volume_control' => 'Kontrol volume',
 	'mwe-embedplayer-player_options' => 'Pilihan pemutar',
+	'mwe-embedplayer-timed_text' => 'Teks berjangka waktu',
 	'mwe-embedplayer-player_fullscreen' => 'Layar penuh',
 	'mwe-embedplayer-next_clip_msg' => 'Putar klip berikut',
 	'mwe-embedplayer-prev_clip_msg' => 'Putar klip sebelumnya',
@@ -984,11 +987,15 @@ $messages['id'] = array(
 	'mwe-embedplayer-credits' => 'Kredit',
 	'mwe-embedplayer-clip_linkback' => 'Halaman sumber klip',
 	'mwe-embedplayer-choose_player' => 'Pilih pemutar video',
+	'mwe-embedplayer-no-player' => 'Tidak ada pemutar yang tersedia untuk $1',
 	'mwe-embedplayer-share_this_video' => 'Bagikan video ini',
 	'mwe-embedplayer-video_credits' => 'Kredit video',
+	'mwe-embedplayer-kaltura-platform-title' => 'Platform video terbuka Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Tutup',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Pemutar VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Pemutar Ogg HTML5',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Pemutar H.264 HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Pengaya generik Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Pengaya QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -1000,6 +1007,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'Peramban Anda tampaknya tidak mendukung tipe pemutar berikut: <b>$1</b><br />Kunjungi halaman <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Metode Pemutar</a> untuk mengunduh pemutar.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Untuk pengalaman pemutaran video yang lebih baik kami menyarankan: <br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Selesai untuk saat ini.',
+	'mwe-embedplayer-playerSelect' => 'Pemutar',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Baca ini</a> sebelum mengikutkan.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Sertakan pada suatu halaman',
 	'mwe-embedplayer-related_videos' => 'Video yang berhubungan',
@@ -1009,6 +1017,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-video-flv' => 'Video flash',
 	'mwe-embedplayer-video-ogg' => 'Video ogg',
 	'mwe-embedplayer-video-audio' => 'Audio ogg',
+	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan. Cek apabila kode tempel Anda berisi sumber atau kunci API',
 );
 
 /** Italian (Italiano) */
@@ -1502,6 +1511,7 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mwe-embedplayer-credit-title' => 'سرليک: $1',
 	'mwe-embedplayer-download' => 'ښکته کول',
 	'mwe-embedplayer-close_btn' => 'تړل',
 	'mwe-embedplayer-ogg-player-selected' => '(ټاکل شوی)',
