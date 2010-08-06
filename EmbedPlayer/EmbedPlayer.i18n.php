@@ -1026,7 +1026,9 @@ $messages['it'] = array(
 	'mwe-embedplayer-close_btn' => 'Chiudi',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
 $messages['ja'] = array(
 	'mwe-embedplayer-credit-title' => 'タイトル: $1',
 	'mwe-embedplayer-loading_plugin' => 'プラグインを読み込み中 ...',
@@ -1039,6 +1041,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-pause_clip' => 'クリップを一時停止',
 	'mwe-embedplayer-volume_control' => '音量調節',
 	'mwe-embedplayer-player_options' => 'プレイヤーの設定',
+	'mwe-embedplayer-timed_text' => '字幕',
 	'mwe-embedplayer-player_fullscreen' => '全画面表示',
 	'mwe-embedplayer-next_clip_msg' => '次のクリップを再生',
 	'mwe-embedplayer-prev_clip_msg' => '前のクリップを再生',
@@ -1055,11 +1058,14 @@ $messages['ja'] = array(
 	'mwe-embedplayer-credits' => 'クレジット',
 	'mwe-embedplayer-clip_linkback' => 'クリップの情報ページ',
 	'mwe-embedplayer-choose_player' => 'ビデオの再生プレイヤーを選択',
+	'mwe-embedplayer-no-player' => '$1に利用できるプレイヤーはありません',
 	'mwe-embedplayer-share_this_video' => 'この動画を共有する',
 	'mwe-embedplayer-video_credits' => '動画のクレジット',
 	'mwe-embedplayer-menu_btn' => 'メニュー',
 	'mwe-embedplayer-close_btn' => '閉じる',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC プレイヤー',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5のOggプレイヤー',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5のH.264プレイヤー',
 	'mwe-embedplayer-ogg-player-oggPlugin' => '汎用の Ogg プラグイン',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTimeプラグイン',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -1071,6 +1077,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'ご使用中のブラウザは以下の再生形式をサポートしていないようです。<b>$1</b><br />プレイヤーをダウンロードするには <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">再生方法の解説</a>ページをご覧ください。<br />',
 	'mwe-embedplayer-for_best_experience' => '動画再生品質をあげるためには <br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a></b>の使用をお勧めします。',
 	'mwe-embedplayer-do_not_warn_again' => '今のところは無視する',
+	'mwe-embedplayer-playerSelect' => 'プレイヤー',
 	'mwe-embedplayer-read_before_embed' => '埋め込む前に<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">注意事項</a>をお読みください。',
 	'mwe-embedplayer-embed_site_or_blog' => 'ページに埋め込む',
 	'mwe-embedplayer-related_videos' => '関連する動画',
@@ -1080,6 +1087,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash ビデオ',
 	'mwe-embedplayer-video-ogg' => 'Ogg ビデオ',
 	'mwe-embedplayer-video-audio' => 'Ogg オーディオ',
+	'mwe-embedplayer-missing-source' => 'ソースとなる動画が見つかりませんでした。組み込んだコードがソースあるいはAPI鍵を含むことを確認して下さい。',
 );
 
 /** Korean (한국어) */
