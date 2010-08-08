@@ -238,9 +238,10 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'timedmedia-desc' => 'Апрацоўшчык файлаў Ogg Theora і Vorbis з прайгравальнікам JavaScript',
+	'timedmedia-desc' => 'Апрацоўнік сынхранізаваных файлаў зь перакадаваньнем у Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'timedmedia-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
 	'timedmedia-short-general' => 'Мэдыя-файл Ogg $1, $2',
