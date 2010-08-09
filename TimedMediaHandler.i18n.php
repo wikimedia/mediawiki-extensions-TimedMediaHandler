@@ -241,7 +241,7 @@ $messages['bcl'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'timedmedia-desc' => 'Апрацоўнік сынхранізаваных файлаў зь перакадаваньнем у Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Апрацоўшчык сынхранізаваных файлаў (відэа, аўдыя, timedText) зь перакадаваньнем у Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'timedmedia-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
 	'timedmedia-short-general' => 'Мэдыя-файл Ogg $1, $2',
