@@ -669,7 +669,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'timedmedia-desc' => 'Assistance por los fichiérs Ogg Theora et Vorbis, avouéc un liésor JavaScript.',
+	'timedmedia-desc' => 'Assistance por los fichiérs multimèdia que dèfilont (vidèô, ôdiô, tèxto sincronisâ) avouéc transcodâjo en Ogg Theora / Vorbis.',
 	'timedmedia-short-audio' => 'Fichiér son Ogg $1, $2',
 	'timedmedia-short-video' => 'Fichiér vidèô Ogg $1, $2',
 	'timedmedia-short-general' => 'Fichiér multimèdia Ogg $1, $2',
