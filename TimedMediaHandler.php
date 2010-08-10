@@ -43,7 +43,6 @@ $wgExtensionCredits['media'][] = array(
 	'name'           => 'TimedMediaHandler',
 	'author'         => array( 'Tim Starling', 'Michael Dale' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
-	'description'    => 'Handler for Timed Media (video, audio, timedText) with transcoding to Ogg Theora/Vorbis',
 	'descriptionmsg' => 'timedmedia-desc',
 );
 
