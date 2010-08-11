@@ -1203,6 +1203,8 @@ $messages['lb'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg-Toun-/Video-Fichier, $1, Dauer: $2, $4×$5 Pixel, $3)',
 	'timedmedia-long-general' => '(Ogg Media-Fichier, Dauer $2, $3)',
 	'timedmedia-long-error' => '(Ongëltegen Ogg-Fichier: $1)',
+	'timedmedia-no-player-js' => 'Pardon, Äre Browser huet entweder JavaScript ausgeschalt oder en huet kee Player-Programm deen ënnerstëtzt gëtt.<br />
+Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Player-Programm erofluede</a> fir de Clip an Ärem Browser ze spillen.',
 	'timedmedia-more' => 'Méi ...',
 	'timedmedia-dismiss' => 'Zoumaachen',
 	'timedmedia-download' => 'Fichier eroflueden',
