@@ -69,6 +69,13 @@ $messages['en'] = array(
 	'mwe-embedplayer-missing-source' => 'No source video was found. Check that your embed code includes a source or API key',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
+);
+
 /** Afrikaans (Afrikaans) */
 $messages['af'] = array(
 	'mwe-embedplayer-credit-title' => 'Naam: $1',
@@ -88,6 +95,41 @@ $messages['af'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-playerSelect' => '',
 	'mwe-embedplayer-embed_site_or_blog' => 'Voeg by jou webblad of webjoernaal',
+);
+
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'mwe-embedplayer-share_this_video' => 'Share this video',
+	'mwe-embedplayer-video_credits' => 'kreditë Video',
+	'mwe-embedplayer-kaltura-platform-title' => 'video Kaltura me burim të hapur platformën',
+	'mwe-embedplayer-menu_btn' => 'Menu',
+	'mwe-embedplayer-close_btn' => 'Afër',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 lojtar ZQM',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 lojtar H.264',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generic Ogg plugin',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime plugin',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'lojtar Kaltura',
+	'mwe-embedplayer-ogg-player-selected' => '(Zgjedhur)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'Flash Vorbis OMTK',
+	'mwe-embedplayer-generic_missing_plugin' => 'Ju browser nuk duket për të mbështetur rishikim llojin e mëposhtme: <b>$1</b> <br /> Vizitoni <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">metodat Playback</a> faqe për ta shkarkuar një lojtar. <br />',
+	'mwe-embedplayer-for_best_experience' => 'Për një përvojë më të mirë video rishikim të këshillojmë <b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox fundit</a> .</b>',
+	'mwe-embedplayer-do_not_warn_again' => 'Shkarkojë tani për tani.',
+	'mwe-embedplayer-playerSelect' => 'Lojtaret',
+	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Lexoni kete</a> para se embedding.',
+	'mwe-embedplayer-embed_site_or_blog' => 'Embed në një faqe',
+	'mwe-embedplayer-related_videos' => 'Related videos',
+	'mwe-embedplayer-seeking' => 'kërkojnë',
+	'mwe-embedplayer-copy-code' => 'Copy kodin',
+	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-flv' => 'Flash video',
+	'mwe-embedplayer-video-ogg' => 'video Ogg',
+	'mwe-embedplayer-video-audio' => 'Ogg audio',
+	'mwe-embedplayer-missing-source' => 'Nuk ka video burim u gjet. Kontrolloni që kodi juaj embed përfshin një burim apo API kryesore',
 );
 
 /** Arabic (العربية) */
@@ -1148,6 +1190,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-no-player' => '$1に利用できるプレイヤーはありません',
 	'mwe-embedplayer-share_this_video' => 'この動画を共有する',
 	'mwe-embedplayer-video_credits' => '動画のクレジット',
+	'mwe-embedplayer-kaltura-platform-title' => 'Kalturaオープンソース・ビデオ・プラットフォーム',
 	'mwe-embedplayer-menu_btn' => 'メニュー',
 	'mwe-embedplayer-close_btn' => '閉じる',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC プレイヤー',
@@ -1560,6 +1603,14 @@ $messages['oc'] = array(
 	'mwe-embedplayer-copy-code' => 'Copiar lo còde',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'mwe-embedplayer-credit-title' => 'Titel: $1',
+	'mwe-embedplayer-seek_to' => 'Guck uff $1',
+);
+
 /** Polish (Polski) */
 $messages['pl'] = array(
 	'mwe-embedplayer-loading_plugin' => 'trwa ładowanie wtyczki...',
@@ -1877,6 +1928,8 @@ $messages['sr-el'] = array(
 $messages['sv'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-loading_plugin' => 'laddar plugin...',
+	'mwe-embedplayer-play_clip' => 'Spela klipp',
+	'mwe-embedplayer-pause_clip' => 'Pausa klipp',
 	'mwe-embedplayer-volume_control' => 'Volymkontroll',
 	'mwe-embedplayer-player_fullscreen' => 'Fullskärm',
 	'mwe-embedplayer-prev_clip_msg' => 'Spela föregående klipp',

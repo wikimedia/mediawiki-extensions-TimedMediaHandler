@@ -1677,6 +1677,7 @@ $messages['roa-tara'] = array(
 	'timedmedia-dismiss' => 'Chiude',
 	'timedmedia-download' => 'Scareche stu file',
 	'timedmedia-desc-link' => "'Mbormaziune sus a stu file",
+	'timedmedia-oggThumb-failed' => 'oggThumn ha fallite a ccrejà le miniature.',
 );
 
 /** Russian (Русский)
