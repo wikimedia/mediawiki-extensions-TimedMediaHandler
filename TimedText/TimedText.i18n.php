@@ -679,6 +679,57 @@ $messages['ia'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nulle subtitulos in $1 ha essite trovate pro le clip: $2',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'mwe-timedtext-editor' => 'Penyunting teks berjangka waktu',
+	'mwe-timedtext-stage-transcribe' => 'Transkripsikan',
+	'mwe-timedtext-stage-sync' => 'Sinkronisasikan',
+	'mwe-timedtext-stage-translate' => 'Terjemahkan',
+	'mwe-timedtext-stage-upload' => 'Unggah dari berkas lokal',
+	'mwe-timedtext-select-language' => 'Pilih bahasa',
+	'mwe-timedtext-file-language' => 'Bahasa berkas subjudul',
+	'mwe-timedtext-upload-text' => 'Unggah berkas teks',
+	'mwe-timedtext-uploading-text' => 'Mengunggah berkas teks',
+	'mwe-timedtext-upload-text-desc-title' => 'Unggah berkas teks',
+	'mwe-timedtext-upload-text-desc-help' => 'Antarmuka berkas teks unggahan menerima berkas .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Ramban komputer Anda untuk berkas .srt yang ingin Anda unggah',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Pilih bahasa berkas',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Tinjau / sunting isi teks dan tekan unggah untuk menambahkan teks',
+	'mwe-timedtext-upload-text-preview' => 'Tinjau teks',
+	'mwe-timedtext-upload-text-success' => 'Pengunggahan teks berjangka waktu berhasil',
+	'mwe-timedtext-upload-text-done' => 'Pengunggahan selesai',
+	'mwe-timedtext-upload-text-fail-desc' => 'Pengunggahan tidak berhasil',
+	'mwe-timedtext-upload-text-fail-title' => 'Gagal mengunggah',
+	'mwe-timedtext-upload-text-another' => 'Unggah berkas lain',
+	'mwe-timedtext-upload-text-done-uploading' => 'Selesai mengunggah',
+	'mwe-timedtext-back-btn' => 'Kembali',
+	'mwe-timedtext-choose-text' => 'Pilih teks',
+	'mwe-timedtext-add-timed-text' => 'Tambahkan teks berjangka waktu',
+	'mwe-timedtext-loading-text-edit' => 'Memuat penyunting teks berjangka waktu',
+	'mwe-timedtext-search' => 'Cari klip',
+	'mwe-timedtext-layout' => 'Tampilan',
+	'mwe-timedtext-layout-ontop' => 'Di atas video',
+	'mwe-timedtext-layout-below' => 'Di bawah video',
+	'mwe-timedtext-layout-off' => 'Sembunyikan subjudul',
+	'mwe-timedtext-loading-text' => 'Memuat teks ...',
+	'mwe-timedtext-textcat-cc' => 'Keterangan',
+	'mwe-timedtext-textcat-sub' => 'Subjudul',
+	'mwe-timedtext-textcat-tad' => 'Deskripsi audio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Teks tik',
+	'mwe-timedtext-textcat-ar' => 'Wilayah aktif',
+	'mwe-timedtext-textcat-nb' => 'Anotasi',
+	'mwe-timedtext-textcat-meta' => 'Data meta berjangka waktu',
+	'mwe-timedtext-textcat-trx' => 'Transkrip',
+	'mwe-timedtext-textcat-lrc' => 'Lirik',
+	'mwe-timedtext-textcat-lin' => 'Ubahan linguistik',
+	'mwe-timedtext-textcat-cue' => 'Titik acuan',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Subjudul $1 untuk klip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Tidak ada subjudul $1 yang ditemukan untuk klip: $2',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi
@@ -1138,5 +1189,33 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'mwe-timedtext-layout' => 'అమరిక',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'mwe-timedtext-stage-transcribe' => '字幕',
+	'mwe-timedtext-stage-sync' => '同步',
+	'mwe-timedtext-stage-translate' => '翻译',
+	'mwe-timedtext-stage-upload' => '从本地上传',
+	'mwe-timedtext-select-language' => '选择语言',
+	'mwe-timedtext-file-language' => '字幕语言',
+	'mwe-timedtext-upload-text' => '上传文本文件',
+	'mwe-timedtext-uploading-text' => '正在上传文本文件',
+	'mwe-timedtext-upload-text-desc-help-browse' => '浏览本机以查阅您想要上传的.srt文件',
+	'mwe-timedtext-upload-text-desc-help-select' => '选择文件的语言',
+	'mwe-timedtext-upload-text-done' => '上传完成',
+	'mwe-timedtext-upload-text-fail-desc' => '未能成功上传',
+	'mwe-timedtext-upload-text-fail-title' => '上传失败',
+	'mwe-timedtext-upload-text-done-uploading' => '上传完成',
+	'mwe-timedtext-back-btn' => '返回',
+	'mwe-timedtext-choose-text' => '选择文字',
+	'mwe-timedtext-search' => '搜索剪辑',
+	'mwe-timedtext-layout' => '布局',
+	'mwe-timedtext-layout-off' => '隐藏字幕',
+	'mwe-timedtext-loading-text' => '正在读取文本……',
+	'mwe-timedtext-textcat-cc' => '标题',
+	'mwe-timedtext-textcat-sub' => '副标题',
 );
 
