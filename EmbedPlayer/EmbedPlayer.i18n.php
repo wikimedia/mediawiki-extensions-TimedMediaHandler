@@ -1736,6 +1736,7 @@ $messages['pt-br'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
 	'mwe-embedplayer-loading_plugin' => 'Carregando plugin ...',
 	'mwe-embedplayer-select_playback' => 'Definir as preferências de reprodução',
+	'mwe-embedplayer-link_back' => 'Ligar atrás',
 	'mwe-embedplayer-error_swap_vid' => 'Erro: o mv_embed não conseguiu trocar o elemento de vídeo pela interface mv_embed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Adicionar ao fim da sequência',
 	'mwe-embedplayer-missing_video_stream' => 'O arquivo de vídeo para esta transmissão está em falta',
