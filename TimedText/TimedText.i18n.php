@@ -448,6 +448,57 @@ $messages['fr'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mwe-timedtext-editor' => 'Èditor de tèxto sincronisâ',
+	'mwe-timedtext-stage-transcribe' => 'Transcrire',
+	'mwe-timedtext-stage-sync' => 'Sincronisar',
+	'mwe-timedtext-stage-translate' => 'Traduire',
+	'mwe-timedtext-stage-upload' => 'Tèlèchargiér un fichiér local',
+	'mwe-timedtext-select-language' => 'Chouèsir la lengoua',
+	'mwe-timedtext-file-language' => 'Lengoua du fichiér de sot-titros',
+	'mwe-timedtext-upload-text' => 'Tèlèchargiér un fichiér tèxto',
+	'mwe-timedtext-uploading-text' => 'Tèlèchargement du fichiér tèxto',
+	'mwe-timedtext-upload-text-desc-title' => 'Tèlèchargiér un fichiér tèxto',
+	'mwe-timedtext-upload-text-desc-help' => 'L’entèrface de tèlèchargement de fichiérs tèxto accèpte los fichiérs .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Parcoréd voutron ordenator local por trovar lo fichiér .srt que vos souhètâd tèlèchargiér',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Chouèsir la lengoua du fichiér',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Revêde / changiéd lo contegnu du tèxto et pués apoyéd aprés dessus tèlèchargiér por apondre lo tèxto',
+	'mwe-timedtext-upload-text-preview' => 'Revêre lo tèxto',
+	'mwe-timedtext-upload-text-success' => 'Tèlèchargement du tèxto sincronisâ fêt avouéc reusséta',
+	'mwe-timedtext-upload-text-done' => 'Tèlèchargement chavonâ',
+	'mwe-timedtext-upload-text-fail-desc' => 'Lo tèlèchargement at pas reussi',
+	'mwe-timedtext-upload-text-fail-title' => 'Falyita du tèlèchargement',
+	'mwe-timedtext-upload-text-another' => 'Tèlèchargiér un ôtro',
+	'mwe-timedtext-upload-text-done-uploading' => 'Tèlèchargement fêt',
+	'mwe-timedtext-back-btn' => 'Tornar',
+	'mwe-timedtext-choose-text' => 'Chouèsésséd lo tèxto',
+	'mwe-timedtext-add-timed-text' => 'Apondre de tèxto sincronisâ',
+	'mwe-timedtext-loading-text-edit' => 'Chargement de l’èditor de tèxto sincronisâ',
+	'mwe-timedtext-search' => 'Rechèrche un clipe',
+	'mwe-timedtext-layout' => 'Disposicion',
+	'mwe-timedtext-layout-ontop' => 'D’amont la vidèô',
+	'mwe-timedtext-layout-below' => 'En-desot de la vidèô',
+	'mwe-timedtext-layout-off' => 'Cachiér los sot-titros',
+	'mwe-timedtext-loading-text' => 'Chargement du tèxto ...',
+	'mwe-timedtext-textcat-cc' => 'Lègendes',
+	'mwe-timedtext-textcat-sub' => 'Sot-titros',
+	'mwe-timedtext-textcat-tad' => 'Dèscripcion ôdiô',
+	'mwe-timedtext-textcat-ktv' => 'Caraoquè',
+	'mwe-timedtext-textcat-tik' => 'Bârra d’enformacions',
+	'mwe-timedtext-textcat-ar' => 'Règ·ions actives',
+	'mwe-timedtext-textcat-nb' => 'Nota',
+	'mwe-timedtext-textcat-meta' => 'Mètabalyês sincronisâs',
+	'mwe-timedtext-textcat-trx' => 'Transcripcion',
+	'mwe-timedtext-textcat-lrc' => 'Paroles',
+	'mwe-timedtext-textcat-lin' => 'Balisâjo linguistico',
+	'mwe-timedtext-textcat-cue' => 'Pouents de repèro',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 sot-titros por clipe : $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nion sot-titro $1 at étâ trovâ por lo clipe : $2',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -945,6 +996,15 @@ $messages['no'] = array(
 $messages['pdc'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwwersetze',
 	'mwe-timedtext-back-btn' => 'Zerrick',
+);
+
+/** Polish (Polski)
+ * @author Shadown
+ */
+$messages['pl'] = array(
+	'mwe-timedtext-upload-text-fail-desc' => '↓ Przesyłanie nie powiodło się',
+	'mwe-timedtext-back-btn' => '↓ Cofnij',
+	'mwe-timedtext-choose-text' => '↓ Wybierz tekst',
 );
 
 /** Pashto (پښتو)

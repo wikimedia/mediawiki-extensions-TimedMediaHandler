@@ -682,6 +682,8 @@ $messages['frp'] = array(
 	'timedmedia-dismiss' => 'Cllôre',
 	'timedmedia-download' => 'Tèlèchargiér lo fichiér',
 	'timedmedia-desc-link' => 'A propôs de ceti fichiér',
+	'timedmedia-oggThumb-version' => 'OggHandler at fôta d’oggThumb, vèrsion $1 ou ben ples novèla.',
+	'timedmedia-oggThumb-failed' => 'oggThumb at pas reussi a fâre la figura.',
 );
 
 /** Friulian (Furlan)
@@ -1775,10 +1777,20 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'timedmedia-short-audio' => 'Zvočna datoteka Ogg $1, $2',
+	'timedmedia-short-video' => 'Videodatoteka Ogg $1, $2',
+	'timedmedia-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
+	'timedmedia-long-audio' => '(zvočna datoteka ogg $1, dolžine $2, $3)',
+	'timedmedia-long-video' => '(videodatoteka ogg $1, dolžine $2, $4 × $5 pik, $3)',
+	'timedmedia-long-multiplexed' => '(multipleksna zvočna/videodatoteka ogg, $1, dolžina $2, $4 × $5 pik, $3 skupno)',
+	'timedmedia-long-general' => '(predstavnostna datoteka Ogg, dolžina $2, $3)',
+	'timedmedia-long-error' => '(Neveljavna datoteka Ogg: $1)',
 	'timedmedia-more' => 'Več ...',
 	'timedmedia-dismiss' => 'Zapri',
 	'timedmedia-download' => 'Prenesi datoteko',
 	'timedmedia-desc-link' => 'O datoteki',
+	'timedmedia-oggThumb-version' => 'OggHandler potrebuje oggThumb različice $1 ali višje.',
+	'timedmedia-oggThumb-failed' => 'oggThumb ni uspel ustvariti predogledne sličice.',
 );
 
 /** Albanian (Shqip)
