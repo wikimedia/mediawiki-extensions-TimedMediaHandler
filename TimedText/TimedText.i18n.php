@@ -1000,11 +1000,12 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Shadown
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'mwe-timedtext-upload-text-fail-desc' => '↓ Przesyłanie nie powiodło się',
-	'mwe-timedtext-back-btn' => '↓ Cofnij',
-	'mwe-timedtext-choose-text' => '↓ Wybierz tekst',
+	'mwe-timedtext-upload-text-fail-desc' => 'Przesyłanie nie powiodło się',
+	'mwe-timedtext-back-btn' => 'Wstecz',
+	'mwe-timedtext-choose-text' => 'Wybierz tekst',
 );
 
 /** Pashto (پښتو)
