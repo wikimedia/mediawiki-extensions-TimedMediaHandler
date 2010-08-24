@@ -2038,6 +2038,14 @@ $messages['ts'] = array(
 	'timedmedia-dismiss' => 'Pfala',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'timedmedia-more' => 'Тулырак...',
+	'timedmedia-dismiss' => 'Ябу',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

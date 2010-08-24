@@ -1008,6 +1008,58 @@ $messages['pl'] = array(
 	'mwe-timedtext-choose-text' => 'Wybierz tekst',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mwe-timedtext-editor' => 'Editor ëd test temporisà',
+	'mwe-timedtext-stage-transcribe' => 'Trascriv',
+	'mwe-timedtext-stage-sync' => 'Sincronisa',
+	'mwe-timedtext-stage-translate' => 'Volté',
+	'mwe-timedtext-stage-upload' => "Carié da n'archivi local",
+	'mwe-timedtext-select-language' => 'Serne la lenga',
+	'mwe-timedtext-file-language' => 'Lenga dël file ëd sottìtol',
+	'mwe-timedtext-upload-text' => 'Caria file ëd test',
+	'mwe-timedtext-uploading-text' => 'Carié file ëd test',
+	'mwe-timedtext-upload-text-desc-title' => 'Caria un file ëd test',
+	'mwe-timedtext-upload-text-desc-help' => "L'antërfacia dël file ëd test carià a aceta ij file .srt",
+	'mwe-timedtext-upload-text-desc-help-browse' => "Serca an tò computer local ël file .srt ch'it veule carié",
+	'mwe-timedtext-upload-text-desc-help-select' => 'Selession-a la lenga dël file',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Revision-a/modìfica ël contnù dël test e peui sgnaca caria për gionté ël test',
+	'mwe-timedtext-upload-text-preview' => 'Revision-a test',
+	'mwe-timedtext-upload-text-success' => "La caria ëd test temporisà a l'é andàita bin",
+	'mwe-timedtext-upload-text-done' => 'Caria fàita',
+	'mwe-timedtext-upload-text-fail-desc' => "Caria a l'é andàita mal",
+	'mwe-timedtext-upload-text-fail-title' => 'Caria falìa',
+	'mwe-timedtext-upload-text-another' => 'Carié nàutr',
+	'mwe-timedtext-upload-text-done-uploading' => 'Fàit caria',
+	'mwe-timedtext-back-btn' => 'André',
+	'mwe-timedtext-choose-text' => 'Sern test',
+	'mwe-timedtext-add-timed-text' => 'Gionta test temporisà',
+	'mwe-timedtext-loading-text-edit' => 'Carié editor ëd test temporisà',
+	'mwe-timedtext-search' => 'Serca grafëtta',
+	'mwe-timedtext-layout' => 'Presentassion',
+	'mwe-timedtext-layout-ontop' => 'An testa al video',
+	'mwe-timedtext-layout-below' => 'Sota ël video',
+	'mwe-timedtext-layout-off' => 'Stërma sottìtoj',
+	'mwe-timedtext-loading-text' => 'Carié test...',
+	'mwe-timedtext-textcat-cc' => 'Legende',
+	'mwe-timedtext-textcat-sub' => 'Sottìtoj',
+	'mwe-timedtext-textcat-tad' => 'Descrission audio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Test ëd la telescrivent',
+	'mwe-timedtext-textcat-ar' => 'Region ative',
+	'mwe-timedtext-textcat-nb' => 'Nòta',
+	'mwe-timedtext-textcat-meta' => 'Metadat temporisà',
+	'mwe-timedtext-textcat-trx' => 'Trascrission',
+	'mwe-timedtext-textcat-lrc' => 'Lìriche',
+	'mwe-timedtext-textcat-lin' => 'Marcador lenghìstich',
+	'mwe-timedtext-textcat-cue' => 'Pont dë stëcca',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 sottìtoj për grafëtta: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Pa gnun sottìtoj ëd $1 a son ëstàit trovà per grafëtta: $2',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -1178,6 +1230,13 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'mwe-timedtext-back-btn' => 'Назад',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'mwe-timedtext-back-btn' => 'Nazaj',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
