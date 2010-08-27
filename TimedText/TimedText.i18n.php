@@ -781,6 +781,18 @@ $messages['id'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Tidak ada subjudul $1 yang ditemukan untuk klip: $2',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'mwe-timedtext-upload-text-done' => 'Caricamento completato',
+	'mwe-timedtext-upload-text-fail-desc' => 'Caricamento fallito',
+	'mwe-timedtext-upload-text-fail-title' => 'Caricamento non riuscito',
+	'mwe-timedtext-upload-text-another' => 'Carica un altro',
+	'mwe-timedtext-upload-text-done-uploading' => 'Completato caricamento',
+	'mwe-timedtext-back-btn' => 'Indietro',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi

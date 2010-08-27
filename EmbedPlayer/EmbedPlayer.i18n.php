@@ -1210,10 +1210,13 @@ $messages['id'] = array(
 	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan. Cek apabila kode tempel Anda berisi sumber atau kunci API',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
 $messages['it'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'Schermo intero',
 	'mwe-embedplayer-close_btn' => 'Chiudi',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC media player',
 );
 
 /** Japanese (日本語)
@@ -1715,42 +1718,43 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'mwe-embedplayer-credit-title' => 'Tìtol: $1',
 	'mwe-embedplayer-loading_plugin' => 'Carié plugin...',
-	'mwe-embedplayer-select_playback' => 'Ampòsta gust ëd playback',
-	'mwe-embedplayer-link_back' => 'Colegament andré',
-	'mwe-embedplayer-error_swap_vid' => "Eror: mwEmbed a l'é pa stàit bon a cangé la tichëtta dël video për l'antërfacia mwEmbed",
-	'mwe-embedplayer-add_to_end_of_sequence' => 'Gionta la fin ëd sequensa',
-	'mwe-embedplayer-missing_video_stream' => 'Ël file dël video për sto stream a manca',
+	'mwe-embedplayer-select_playback' => 'Amposté gust ëd letura',
+	'mwe-embedplayer-link_back' => 'Anliura andré',
+	'mwe-embedplayer-error_swap_vid' => "Eror: mwEmbed a l'é pa stàit bon a cangé la tichëtta dël filmà për l'antërfacia mwEmbed",
+	'mwe-embedplayer-add_to_end_of_sequence' => 'Gionté a la fin ëd la sequensa',
+	'mwe-embedplayer-missing_video_stream' => "L'archivi dël filmà pr'ës fluss a manca",
 	'mwe-embedplayer-play_clip' => 'Fà parte ël curtmetragi',
 	'mwe-embedplayer-pause_clip' => 'Ferma ël curtmetragi',
 	'mwe-embedplayer-volume_control' => 'Contròl dël volum',
 	'mwe-embedplayer-player_options' => 'Opsion dël letor',
-	'mwe-embedplayer-timed_text' => 'Test temporisà',
-	'mwe-embedplayer-player_fullscreen' => 'A video pien',
+	'mwe-embedplayer-timed_text' => 'Test sincronisà',
+	'mwe-embedplayer-player_fullscreen' => 'A scren pien',
 	'mwe-embedplayer-next_clip_msg' => "Fà parte ël curtmetragi ch'a ven",
 	'mwe-embedplayer-prev_clip_msg' => 'Fà parte ël curtmetragi prima',
 	'mwe-embedplayer-current_clip_msg' => 'Continua a fé giré sto curtmetragi',
 	'mwe-embedplayer-seek_to' => 'Serca $1',
-	'mwe-embedplayer-paused' => 'pausà',
-	'mwe-embedplayer-download_segment' => 'Dëscaria selession:',
-	'mwe-embedplayer-download_full' => 'Dëscaria ël file anter dël video:',
+	'mwe-embedplayer-paused' => 'an pàusa',
+	'mwe-embedplayer-download_segment' => 'Dëscarié la selession:',
+	'mwe-embedplayer-download_full' => "Dëscarié l'archivi antregh dël filmà:",
 	'mwe-embedplayer-download_right_click' => 'Për dëscarié, sgnaca con ël tast drit dël rat e selession-a <i>Salva ël colegament com...</i>',
-	'mwe-embedplayer-download_clip' => 'Dëscaria video',
-	'mwe-embedplayer-download_text' => 'Dëscaria test',
+	'mwe-embedplayer-download_clip' => 'Dëscarié ël filmà',
+	'mwe-embedplayer-download_text' => 'Dëscarié ël test',
 	'mwe-embedplayer-download' => 'Dëscaria',
 	'mwe-embedplayer-share' => 'Condivid',
-	'mwe-embedplayer-credits' => 'Crédit',
-	'mwe-embedplayer-clip_linkback' => 'Pàgina sorziss dël curtmetragi',
-	'mwe-embedplayer-choose_player' => 'Sern letor dël video',
+	'mwe-embedplayer-credits' => 'Arconossiment',
+	'mwe-embedplayer-clip_linkback' => 'Pàgina sorgiss dël curt-metragi',
+	'mwe-embedplayer-choose_player' => 'Serne ël letor dij filmà',
 	'mwe-embedplayer-no-player' => 'Pa gnun letor disponìbij për $1',
-	'mwe-embedplayer-share_this_video' => 'Condivid sto video',
-	'mwe-embedplayer-video_credits' => 'Crédit dël video',
-	'mwe-embedplayer-kaltura-platform-title' => 'Piataforma video a sorziss doverta Kaltura',
-	'mwe-embedplayer-menu_btn' => 'Menu',
+	'mwe-embedplayer-share_this_video' => 'Partagé ës filmà',
+	'mwe-embedplayer-video_credits' => 'Arconossiment dël filmà',
+	'mwe-embedplayer-kaltura-platform-title' => 'Piataforma për filmà a sorgiss duverta Kaltura',
+	'mwe-embedplayer-menu_btn' => 'Lista',
 	'mwe-embedplayer-close_btn' => 'Sara',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Letor VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Letor HTML5 Ogg',
@@ -1762,20 +1766,20 @@ $messages['pms'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Letor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selessionà)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-generic_missing_plugin' => 'Tò browser a smija pa apogé costa sòrt ëd playback: <b>$1</b><br />Vìsita la pàgina <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Métod ëd Playback</a> për dëscarié un letor.<br />',
-	'mwe-embedplayer-for_best_experience' => 'Per n\'esperiensa ëd playback video pi bon-a i arcomandoma l\'<b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">ùltim Firefox</a>.</b>',
-	'mwe-embedplayer-do_not_warn_again' => 'Scartà për adess.',
+	'mwe-embedplayer-generic_missing_plugin' => 'Sò navigador a smija pa compatìbil con costa sòrt ëd letor: <b>$1</b><br />Ch\'a vìsita la pàgina <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Métod ëd vision</a> për dëscarié un letor.<br />',
+	'mwe-embedplayer-for_best_experience' => 'Per na vision pi bon-a i arcomandoma l\'<b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">ùltim Firefox</a>.</b>',
+	'mwe-embedplayer-do_not_warn_again' => 'Anterompe për adess.',
 	'mwe-embedplayer-playerSelect' => 'Letor',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Les sossì</a> prima d\'ancorporé.',
-	'mwe-embedplayer-embed_site_or_blog' => 'Ancorporà su na pàgina',
-	'mwe-embedplayer-related_videos' => 'Video corelà',
-	'mwe-embedplayer-seeking' => 'Serché',
-	'mwe-embedplayer-copy-code' => 'Còpia còdes',
-	'mwe-embedplayer-video-h264' => 'Video H.264',
-	'mwe-embedplayer-video-flv' => 'Video Flash',
-	'mwe-embedplayer-video-ogg' => 'Video Ogg',
-	'mwe-embedplayer-video-audio' => 'Audio Ogg',
-	'mwe-embedplayer-missing-source' => 'Pa gnun video sorziss trovà. Contròla che tò còdes ancorporà a conten-a na sorziss o na ciav API',
+	'mwe-embedplayer-embed_site_or_blog' => 'Ancorporé an sna pàgina',
+	'mwe-embedplayer-related_videos' => 'Filmà assossià',
+	'mwe-embedplayer-seeking' => 'arserca',
+	'mwe-embedplayer-copy-code' => 'Copié ël còdes',
+	'mwe-embedplayer-video-h264' => 'filmà H.264',
+	'mwe-embedplayer-video-flv' => 'filmà Flash',
+	'mwe-embedplayer-video-ogg' => 'filmà Ogg',
+	'mwe-embedplayer-video-audio' => 'Àudio Ogg',
+	'mwe-embedplayer-missing-source' => "Gnun filmà sorgiss a l'é syàit trovà. Ch'a contròla che sò còdes d'ancorporassion a conten-a na sorgiss o na ciav API",
 );
 
 /** Pashto (پښتو)
