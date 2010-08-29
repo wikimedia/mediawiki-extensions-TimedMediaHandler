@@ -1015,6 +1015,18 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'mwe-timedtext-editor' => 'Edytor list dialogowych',
+	'mwe-timedtext-stage-sync' => 'Synchronizacja',
+	'mwe-timedtext-stage-translate' => 'Przetłumacz',
+	'mwe-timedtext-stage-upload' => 'Prześlij z lokalnego pliku',
+	'mwe-timedtext-select-language' => 'Wybierz język',
+	'mwe-timedtext-file-language' => 'Język pliku listy dialogowej',
+	'mwe-timedtext-upload-text' => 'Prześlij plik tekstowy',
+	'mwe-timedtext-uploading-text' => 'Przesyłanie pliku tekstowego',
+	'mwe-timedtext-upload-text-desc-title' => 'Prześlij plik tekstowy',
+	'mwe-timedtext-upload-text-desc-help' => 'Interfejs przesyłania plików tekstowych akceptuje pliki w formacie .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Odnajdź na swoim komputerze plik .srt, który chcesz przesłać',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Wybierz język pliku',
 	'mwe-timedtext-upload-text-fail-desc' => 'Przesyłanie nie powiodło się',
 	'mwe-timedtext-back-btn' => 'Wstecz',
 	'mwe-timedtext-choose-text' => 'Wybierz tekst',
