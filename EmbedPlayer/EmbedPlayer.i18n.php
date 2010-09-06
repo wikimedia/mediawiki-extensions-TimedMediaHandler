@@ -1677,8 +1677,11 @@ $messages['pdc'] = array(
 	'mwe-embedplayer-seek_to' => 'Guck uff $1',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
+	'mwe-embedplayer-credit-title' => 'Tytuł – $1',
 	'mwe-embedplayer-loading_plugin' => 'trwa ładowanie wtyczki...',
 	'mwe-embedplayer-select_playback' => 'Ustaw preferencje odtwarzania',
 	'mwe-embedplayer-link_back' => 'Link powrotny',
@@ -1689,22 +1692,32 @@ $messages['pl'] = array(
 	'mwe-embedplayer-pause_clip' => 'Wstrzymaj odtwarzanie klipu',
 	'mwe-embedplayer-volume_control' => 'Regulacja głośności',
 	'mwe-embedplayer-player_options' => 'Opcje odtwarzacza',
+	'mwe-embedplayer-timed_text' => 'Lista dialogowa',
 	'mwe-embedplayer-player_fullscreen' => 'Pełny ekran',
 	'mwe-embedplayer-next_clip_msg' => 'Odtwórz następny klip',
 	'mwe-embedplayer-prev_clip_msg' => 'Odtwórz poprzedni klip',
 	'mwe-embedplayer-current_clip_msg' => 'Kontynuuj odtwarzanie tego klipu',
 	'mwe-embedplayer-seek_to' => 'Przewiń $1',
+	'mwe-embedplayer-paused' => 'wstrzymane',
+	'mwe-embedplayer-download_segment' => 'Wybór pobierania',
+	'mwe-embedplayer-download_full' => 'Pobierz pełny plik z filmem',
+	'mwe-embedplayer-download_right_click' => 'Aby pobrać, kliknij prawym przyciskiem myszy i wybierz <i>Zapisz link jako...</i>',
 	'mwe-embedplayer-download_clip' => 'Pobierz film',
+	'mwe-embedplayer-download_text' => 'Pobierz tekst',
 	'mwe-embedplayer-download' => 'Pobierz',
 	'mwe-embedplayer-share' => 'Udostępnij',
 	'mwe-embedplayer-credits' => 'Twórcy',
 	'mwe-embedplayer-clip_linkback' => 'Strona źródłowa klipu',
 	'mwe-embedplayer-choose_player' => 'Wybierz odtwarzacz wideo',
+	'mwe-embedplayer-no-player' => 'Brak dostępnych odtwarzaczy dla $1',
 	'mwe-embedplayer-share_this_video' => 'Udostępnij ten film',
 	'mwe-embedplayer-video_credits' => 'Twórcy filmu',
+	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura – platforma filmów z otwartym kodem',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Zamknij',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Odtwarzacz VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Odtwarzacz HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Odtwarzacz HTML5 H.264',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Pierwotna wtyczka Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Wtyczka QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -1714,9 +1727,19 @@ $messages['pl'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(zaznaczone)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-generic_missing_plugin' => 'Twoja przeglądarka nie obsługuje odtwarzania następujących formatów: <b>$1</b><br />Odwiedź stronę opisującą <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">sposoby odtwarzania</a>, aby pobrać odpowiednie oprogramowanie.<br />',
+	'mwe-embedplayer-for_best_experience' => 'Dla lepszego odtwarzania filmów polecamy <b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">najnowszy Firefox</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Od teraz ignoruj.',
+	'mwe-embedplayer-playerSelect' => 'Odtwarzacze',
+	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Przeczytaj to</a> przed wstawieniem.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Umieść na swojej stronie lub blogu',
 	'mwe-embedplayer-related_videos' => 'Podobne filmy',
+	'mwe-embedplayer-seeking' => 'przewijanie',
+	'mwe-embedplayer-copy-code' => 'Skopiuj kod',
+	'mwe-embedplayer-video-h264' => 'Wideo w H.264',
+	'mwe-embedplayer-video-flv' => 'Wideo we Flash',
+	'mwe-embedplayer-video-ogg' => 'Wideo w Ogg',
+	'mwe-embedplayer-video-audio' => 'Dźwięk w Ogg',
+	'mwe-embedplayer-missing-source' => 'Nie ustalono źródła obrazu. Sprawdź czy wstawiony kod HTML zawiera źródło i klucz API',
 );
 
 /** Piedmontese (Piemontèis)
