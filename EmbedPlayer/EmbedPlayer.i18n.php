@@ -2326,3 +2326,10 @@ $messages['vi'] = array(
 	'mwe-embedplayer-copy-code' => 'Chép mã',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'mwe-embedplayer-download' => '下载',
+	'mwe-embedplayer-close_btn' => '关闭',
+	'mwe-embedplayer-ogg-player-selected' => '（已选取）',
+);
+
