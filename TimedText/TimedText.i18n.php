@@ -796,6 +796,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi
+ * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -834,9 +835,12 @@ $messages['ja'] = array(
 	'mwe-timedtext-textcat-sub' => '字幕',
 	'mwe-timedtext-textcat-tad' => '音声の説明',
 	'mwe-timedtext-textcat-ktv' => 'カラオケ',
+	'mwe-timedtext-textcat-ar' => 'アクティブな領域',
 	'mwe-timedtext-textcat-nb' => '注釈',
 	'mwe-timedtext-textcat-trx' => '複写',
 	'mwe-timedtext-textcat-lrc' => '歌詞',
+	'mwe-timedtext-textcat-lin' => '言語マーク',
+	'mwe-timedtext-textcat-cue' => 'キューポイント',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -868,6 +872,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-loading-text' => 'Text gëtt gelueden ...',
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Text-Ticker',
 	'mwe-timedtext-textcat-ar' => 'Aktiv Regiounen',
 	'mwe-timedtext-textcat-nb' => 'Notiz',
 	'mwe-timedtext-textcat-lrc' => 'Liddertext',
