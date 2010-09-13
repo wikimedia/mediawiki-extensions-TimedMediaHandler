@@ -2044,6 +2044,10 @@ $messages['ts'] = array(
 $messages['tt-cyrl'] = array(
 	'timedmedia-more' => 'Тулырак...',
 	'timedmedia-dismiss' => 'Ябу',
+	'timedmedia-download' => 'Файлны алу',
+	'timedmedia-desc-link' => 'Файл турында мәгълүмат',
+	'timedmedia-oggThumb-version' => 'OggHandler $1 юрамасыннан да югарырак oggThumb тәэминатын сорый.',
+	'timedmedia-oggThumb-failed' => 'oggThumb нигезендә миниатюраны ясап булмады.',
 );
 
 /** Ukrainian (Українська)
