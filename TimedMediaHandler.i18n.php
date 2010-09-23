@@ -336,10 +336,14 @@ $messages['bs'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg multipleksna zvučna/video datoteka, $1, dužina $2, $4×$5 piksela, $3 sveukupno)',
 	'timedmedia-long-general' => '(Ogg medijalna datoteka, dužina $2, $3)',
 	'timedmedia-long-error' => '(Nevaljana ogg datoteka: $1)',
+	'timedmedia-no-player-js' => 'Žao nam je, vaš preglednik ili je onemogućio JavaScript ili nema nijednog podržanog playera.<br />
+Možete <a href="$1">učitati klip</a> ili <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">učitati player</a> za reproduciranje klipa u vašem pregledniku.',
 	'timedmedia-more' => 'Više...',
 	'timedmedia-dismiss' => 'Zatvori',
 	'timedmedia-download' => 'Učitaj datoteku',
 	'timedmedia-desc-link' => 'O ovoj datoteci',
+	'timedmedia-oggThumb-version' => 'OggHandler zahtijeva oggThumb verziju $1 ili kasniju.',
+	'timedmedia-oggThumb-failed' => 'oggThumb nije uspio napraviti smanjeni pregled.',
 );
 
 /** Catalan (Català)
