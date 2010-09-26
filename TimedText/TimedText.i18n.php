@@ -1034,17 +1034,18 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Shadown
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'mwe-timedtext-editor' => 'Edytor list dialogowych',
+	'mwe-timedtext-editor' => 'Edytor napisów do filmu',
 	'mwe-timedtext-stage-transcribe' => 'Rozpisz',
 	'mwe-timedtext-stage-sync' => 'Synchronizacja',
 	'mwe-timedtext-stage-translate' => 'Przetłumacz',
 	'mwe-timedtext-stage-upload' => 'Prześlij z lokalnego pliku',
 	'mwe-timedtext-select-language' => 'Wybierz język',
-	'mwe-timedtext-file-language' => 'Język pliku listy dialogowej',
+	'mwe-timedtext-file-language' => 'Język pliku z napisami do filmu',
 	'mwe-timedtext-upload-text' => 'Prześlij plik tekstowy',
 	'mwe-timedtext-uploading-text' => 'Przesyłanie pliku tekstowego',
 	'mwe-timedtext-upload-text-desc-title' => 'Prześlij plik tekstowy',
@@ -1067,10 +1068,10 @@ $messages['pl'] = array(
 	'mwe-timedtext-layout' => 'Układ',
 	'mwe-timedtext-layout-ontop' => 'Na górze filmu',
 	'mwe-timedtext-layout-below' => 'Poniżej obrazu',
-	'mwe-timedtext-layout-off' => 'Ukryj listę dialogową',
+	'mwe-timedtext-layout-off' => 'Ukryj napisy',
 	'mwe-timedtext-loading-text' => 'Ładowanie tekstu...',
 	'mwe-timedtext-textcat-cc' => 'Podpisy',
-	'mwe-timedtext-textcat-sub' => 'Lista dialogowa',
+	'mwe-timedtext-textcat-sub' => 'Napisy do filmu',
 	'mwe-timedtext-textcat-tad' => 'Opis ścieżki dźwiękowej',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-tik' => 'Notatka',
@@ -1081,8 +1082,8 @@ $messages['pl'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Teksty piosenek',
 	'mwe-timedtext-textcat-lin' => 'Znaczniki językowe',
 	'mwe-timedtext-textcat-cue' => 'Punkty kontrolne',
-	'mwe-timedtext-language-subtitles-for-clip' => 'Lista dialogowa $1 dla klipu $2',
-	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nie odnaleziono listy dialogowej $1 dla klipu $2',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 napisy do filmu: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nie odnaleziono $1 napisów do filmu: $2',
 );
 
 /** Piedmontese (Piemontèis)
