@@ -333,6 +333,57 @@ $messages['dsb'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
 );
 
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'mwe-timedtext-editor' => 'Επεξεργαστής χρονισμένου κειμένου',
+	'mwe-timedtext-stage-transcribe' => 'Μεταγραφή',
+	'mwe-timedtext-stage-sync' => 'Συγχρονισμός',
+	'mwe-timedtext-stage-translate' => 'Μετάφραση',
+	'mwe-timedtext-stage-upload' => 'Φορτώστε από τοπικό αρχείο',
+	'mwe-timedtext-select-language' => 'Επιλογή γλώσσας',
+	'mwe-timedtext-file-language' => 'Όνομα αρχείου γλώσσας',
+	'mwe-timedtext-upload-text' => 'Φορτώστε αρχείο κειμένου',
+	'mwe-timedtext-uploading-text' => 'Μεταφόρτωση αρχείου κειμένου',
+	'mwe-timedtext-upload-text-desc-title' => 'Φορτώστε αρχείο κειμένου',
+	'mwe-timedtext-upload-text-desc-help' => 'Η διεπαφή μεταφόρτωσης αρχείου κειμένου αποδέχεται .srt αρχεία',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Περιήγηση στον τοπικό υπολογιστή σας για το αρχείο .srt που θέλετε να ανεβάσετε',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Επιλέξτε τη γλώσσα του αρχείου',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Επανεξεταστε / επεξεργαστείτε το περιεχόμενο του κειμένου και στη συνέχεια πατήστε επιφόρτωση για να προσθέσετε το κείμενο',
+	'mwe-timedtext-upload-text-preview' => 'Επανεξέταση κείμενου',
+	'mwe-timedtext-upload-text-success' => 'Το ανέβασμα του χρονισμένου κειμένου ολοκληρώθηκε με επιτυχία',
+	'mwe-timedtext-upload-text-done' => 'Η επιφόρτωση έγινε',
+	'mwe-timedtext-upload-text-fail-desc' => 'Η επιφόρτωση ήταν ανεπιτυχής',
+	'mwe-timedtext-upload-text-fail-title' => 'Η επιφόρτωση απέτυχε',
+	'mwe-timedtext-upload-text-another' => 'Ανεβάστε ένα άλλο',
+	'mwe-timedtext-upload-text-done-uploading' => 'Έγινε επιφόρτωση',
+	'mwe-timedtext-back-btn' => 'Επιστροφή',
+	'mwe-timedtext-choose-text' => 'Επιλέξτε το κείμενο',
+	'mwe-timedtext-add-timed-text' => 'Προσθήκη χρονισμένου κείμενου',
+	'mwe-timedtext-loading-text-edit' => 'Φόρτωση επεξεργαστή χρονισμένου κειμένου',
+	'mwe-timedtext-search' => 'Αναζήτηση βίντεο',
+	'mwe-timedtext-layout' => 'Διάταξη',
+	'mwe-timedtext-layout-ontop' => 'Στην κορυφή του βίντεο',
+	'mwe-timedtext-layout-below' => 'Κάτω από το βίντεο',
+	'mwe-timedtext-layout-off' => 'Απόκρυψη υπότιτλων',
+	'mwe-timedtext-loading-text' => 'Φόρτωση κείμενου...',
+	'mwe-timedtext-textcat-cc' => 'Λεζάντες',
+	'mwe-timedtext-textcat-sub' => 'Υπότιτλοι',
+	'mwe-timedtext-textcat-tad' => 'Ακουστική περιγραφή',
+	'mwe-timedtext-textcat-ktv' => 'Καραόκε',
+	'mwe-timedtext-textcat-tik' => 'Κυλιόμενο κείμενο',
+	'mwe-timedtext-textcat-ar' => 'Ενεργές περιοχές',
+	'mwe-timedtext-textcat-nb' => 'Σχόλιο',
+	'mwe-timedtext-textcat-meta' => 'Χρονισμένα μεταδεδομένα',
+	'mwe-timedtext-textcat-trx' => 'Μεταγραφή',
+	'mwe-timedtext-textcat-lrc' => 'Στίχοι',
+	'mwe-timedtext-textcat-lin' => 'Γλωσσολογική σύνταξη',
+	'mwe-timedtext-textcat-cue' => 'Cue points',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 υπότιτλοι για το βίντεο: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Pertile
