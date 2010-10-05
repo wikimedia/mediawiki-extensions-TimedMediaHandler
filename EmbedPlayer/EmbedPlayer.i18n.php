@@ -3,7 +3,7 @@
  * Internationalisation for EmbedPlayer
  *
  * @file
- * @ingroup Extensions
+ * @ingroup Extensions 
  */
 
 $messages = array();
@@ -34,6 +34,8 @@ $messages['en'] = array(
 	'mwe-embedplayer-download' => 'Download',
 	'mwe-embedplayer-share' => 'Share',
 	'mwe-embedplayer-credits' => 'Credits',
+	'mwe-embedplayer-about-library'=> 'About kaltura player',
+	'mwe-embedplayer-about-library-desc' => 'Kaltura\'s HTML5 Media Library enables you to take advantage of the html5 &lt;video&gt; and &lt;audio&gt; tags today with a consistent player interface across all major browsers. <br> <br> [$1 More about the kaltura player library].',
 	'mwe-embedplayer-clip_linkback' => 'Clip source page',
 	'mwe-embedplayer-choose_player' => 'Choose video player',
 	'mwe-embedplayer-no-player' => 'No player available for $1',
@@ -61,12 +63,13 @@ $messages['en'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Embed on a page',
 	'mwe-embedplayer-related_videos' => 'Related videos',
 	'mwe-embedplayer-seeking' => 'seeking',
+	'mwe-embedplayer-buffering' => 'buffering',
 	'mwe-embedplayer-copy-code' => 'Copy code',
 	'mwe-embedplayer-video-h264' => 'H.264 video',
 	'mwe-embedplayer-video-flv' => 'Flash video',
 	'mwe-embedplayer-video-ogg' => 'Ogg video',
 	'mwe-embedplayer-video-audio' => 'Ogg audio',
-	'mwe-embedplayer-missing-source' => 'No source video was found. Check that your embed code includes a source or API key',
+	'mwe-embedplayer-missing-source' => 'No source video was found',
 );
 
 /** Message documentation (Message documentation)

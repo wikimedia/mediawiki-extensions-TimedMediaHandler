@@ -188,7 +188,7 @@
 	opacity: 0.9;
 	position: absolute;
 	top: 0;	
-	z-index: 999;
+	z-index: 2;
 }
 
 .k-player .k-menu-bar li a {
@@ -319,7 +319,7 @@
 	height: 15px;
 	overflow: hidden;
 	padding-left: 2px;
-	width: 100%;
+	width: 95%;
 }
 
 .menu-screen.menu-share button {
@@ -334,8 +334,11 @@
 }
 
 .k-player .menu-screen {
-	height: 100%;	
+	height: 100%;
+	overflow-y: auto;	
+	overflow-x: hide;
 }
+	
 
 .k-player .menu-screen.menu-share div.ui-state-highlight {
 	background: none repeat scroll 0 0 transparent;

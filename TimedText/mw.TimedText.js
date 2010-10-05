@@ -11,36 +11,7 @@
  *
  */ 
 
-mw.addMessages( {
-	"mwe-timedtext-back-btn" : "Back",
-	"mwe-timedtext-choose-text" : "Chose text",
-	"mwe-timedtext-add-timed-text" : "Add timed text",
-	"mwe-timedtext-loading-text-edit" : "Loading timed text editor", 
-	
-	"mwe-timedtext-search" : "Search clip",
-	
-	"mwe-timedtext-layout" : "Layout", 
-	"mwe-timedtext-layout-ontop" : "Ontop of video",
-	"mwe-timedtext-layout-below": "Below video", 
-	"mwe-timedtext-layout-off" : "Hide subtitles",
-	
-	"mwe-timedtext-loading-text" : "Loading text ...",
-	
-	"mwe-timedtext-key-language": "$1, $2",
-	
-	"mwe-timedtext-textcat-cc" : "Captions",
-	"mwe-timedtext-textcat-sub" : "Subtitles",
-	"mwe-timedtext-textcat-tad" : "Audio description",
-	"mwe-timedtext-textcat-ktv" : "Karaoke",
-	"mwe-timedtext-textcat-tik" : "Ticker text",
-	"mwe-timedtext-textcat-ar" : "Active regions",
-	"mwe-timedtext-textcat-nb" : "Annotation",
-	"mwe-timedtext-textcat-meta" : "Timed metadata",
-	"mwe-timedtext-textcat-trx" : "Transcript",
-	"mwe-timedtext-textcat-lrc" : "Lyrics",
-	"mwe-timedtext-textcat-lin" : "Linguistic markup",
-	"mwe-timedtext-textcat-cue" : "Cue points"
-} );
+mw.includeAllModuleMessages();
 
 // Bind to mw ( for uncluttered global namespace ) 
 ( function( $ ) {
@@ -51,7 +22,7 @@ mw.addMessages( {
 	 */
 	mw.TimedText = function( embedPlayer, options ) {
 		return this.init( embedPlayer, options);
-	}
+	};
 	mw.TimedText.prototype = {
 		
 		/** 
@@ -131,7 +102,7 @@ mw.addMessages( {
 		 */
 		init: function( embedPlayer, options ) {
 			var _this = this;
-			mw.log("TimedText: init() ")
+			mw.log("TimedText: init() ");
 			this.embedPlayer = embedPlayer;	
 			this.options = options;
 			
@@ -225,7 +196,7 @@ mw.addMessages( {
 				// NOTE: Button target should be an option or config
 				$menuButton.unbind().menu( {
 					'content'	: _this.getMainMenu(),
-					'zindex' : mw.getConfig( 'fullScreenIndex' )+2,
+					'zindex' : mw.getConfig( 'EmbedPlayer.fullScreenZIndex' ) + 2,
 					'crumbDefaultText' : ' ',
 					'autoShow': autoShow,
 					'targetMenuContainer' : _this.menuTarget,
@@ -492,7 +463,7 @@ mw.addMessages( {
 				// Close the loader:
 				mw.closeLoaderDialog();
 				_this.editText.showUI();
-			})
+			});
 		},
 		
 		/**
@@ -509,7 +480,7 @@ mw.addMessages( {
 			var _this = this;
 			return $j.getLineItem( gM( 'mwe-timedtext-add-timed-text'), 'script', function() {
 				_this.showTimedTextEditUI( 'add' );
-			} )
+			} );
 		},
 		
 		/**
@@ -550,7 +521,7 @@ mw.addMessages( {
 	 		if( mw.Language.names[ lang_key ]) {
 	 			return mw.Language.names[ lang_key ];
 	 		}
-	 		return false
+	 		return false;
 	 	},
 		
 		/** 
@@ -580,7 +551,7 @@ mw.addMessages( {
 						function() {
 							_this.selectLayout( layoutMode );
 						} ) 
-					)
+					);
 			});
 			return $ul;
 		},
@@ -643,7 +614,7 @@ mw.addMessages( {
 			source.load( function() {
 				// Refresh the interface: 
 				_this.refreshDisplay();
-			})
+			});
 		},
 		
 		/**
@@ -655,7 +626,7 @@ mw.addMessages( {
 			// Refresh the Menu (if it has a target to refresh) 
 			if( this.menuTarget ) {
 				mw.log('bind menu refresh display');
-				this.bindMenu(  this.menuTarget, false )
+				this.bindMenu(  this.menuTarget, false );
 			}
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
@@ -798,12 +769,11 @@ mw.addMessages( {
 						$j('<span \>')
 					)									
 				
-				// If in fullscreen mode update the text size: 
-				if( this.embedPlayer.controlBuilder.fullscreenMode ){
-					$track.css(
-						this.embedPlayer.controlBuilder.getFullscreenTextCss()
-					);					
-				}
+				// Scale the text Relative to player size:  			
+				$track.css(
+					this.embedPlayer.controlBuilder.getInterfaceSizeTextCss()
+				);					
+				
 				$playerTarget.append( $track );
 				// Resize the interface for layoutMode == 'ontop' ( if not in fullscreen )  
 				// NOTE this shoudl be a call to controlBuilder not handled here inline
@@ -979,6 +949,7 @@ mw.addMessages( {
 				if( time >= caption.start  && 
 					time <= caption.end ) {
 					this.prevIndex = i;
+					//mw.log("Start cap time: " + caption.start + ' End time: ' + caption.end );
 					return caption.content;
 				}
 			}
@@ -1194,7 +1165,9 @@ mw.addMessages( {
 		loadTitleKey: function( titleKey, callback ) {
 			var request = {
 				'action': 'parse',
-				'page': titleKey
+				'page': titleKey,
+				'smaxage' : 300, 
+				'maxage' : 300
 			};
 			mw.getJSON( this.apiUrl, request, function( data ) {
 				if ( data && data.parse && data.parse.text['*'] ) {
@@ -1238,7 +1211,9 @@ mw.addMessages( {
 				'apprefix' : titleKey,
 				'apnamespace' : this.getTimedTextNS(),
 				'aplimit' : 200,
-				'prop':'revisions'
+				'prop':'revisions',
+				'smaxage' : 300, 
+				'maxage' : 300
 			};
 			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
 				// If "timedText" is not a valid namespace try "just" with prefix: 

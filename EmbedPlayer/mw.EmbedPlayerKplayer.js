@@ -31,13 +31,20 @@ mw.EmbedPlayerKplayer = {
 	* Write the Embed html to the target 
 	*/
 	doEmbedHTML : function () {
-		var _this = this;
-		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';				
+		var _this = this;		
 		
 		mw.log("kPlayer:: embed src::" + _this.getSrc() );
 		var flashvars = {};
 		flashvars.autoPlay = "true";
+		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';		
 		flashvars.entryId = mw.absoluteUrl( _this.getSrc() );
+		
+		// Use a relative url if the protocal is file://		
+		if( mw.parseUri( document.URL).protocol == 'file' ) {
+			playerPath = mw.getRelativeMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';				
+			flashvars.entryId  =  _this.getSrc();			
+		}
+		
 		flashvars.debugMode = "true";
 		flashvars.fileSystemMode = "true";
 		flashvars.widgetId = "_7463";
@@ -49,10 +56,10 @@ mw.EmbedPlayerKplayer = {
 		
 		//flashvars.host = "www.kaltura.com";
 		flashvars.externalInterfaceDisabled = 'false';
-		//flashvars.skinPath = playerPath + '/skin.swf';
+		flashvars.skinPath = playerPath + '/skin.swf';
 		
 		flashvars["full.skinPath"] = playerPath + '/LightDoodleskin.swf';
-		
+			
 		var params = { };
 		params.quality = "best";
 		params.wmode = "opaque";
@@ -207,9 +214,18 @@ mw.EmbedPlayerKplayer = {
 	*/ 
 	doSeek: function( percentage ) {
 		var _this = this;
-		if( this.playerElement ) {
-			var seekTime = percentage * this.getDuration(); 
+		if ( this.supportsURLTimeEncoding() ){
 			
+			// 	Make sure we could not do a local seek instead:
+			if ( !( percentage <  this.bufferedPercent &&  this.playerElement.duration &&  !this.didSeekJump )) {
+			// We support URLTimeEncoding call parent seek:
+				this.parent_doSeek( percentage );
+				return;
+			}
+		} 
+
+		if( this.playerElement ) {
+			var seekTime = percentage * this.getDuration();			
 			// Issue the seek to the flash player:
 			this.playerElement.sendNotification('doSeek',  seekTime);
 			

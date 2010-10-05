@@ -2,10 +2,6 @@
 * Skin js allows you to override contrlBuilder html/class output
 */
 
-mw.addMessages( {
-	"mwe-embedplayer-credit-title" : "Title: $1"
-} );
-
 mw.PlayerSkinKskin = {
 
 	// The parent class for all kskin css: 
@@ -46,8 +42,8 @@ mw.PlayerSkinKskin = {
 		'volumeControl': {
 			'w':40
 		},		
-		// No kalturaAttribution component for kSkin ( its integrated into the credits screen ) 
-		'kalturaAttribution' : false,
+		// No attributionButton component for kSkin ( its integrated into the credits screen ) 
+		'attributionButton' : false,
 		
 		// Time display: 
 		'timeDisplay': {
@@ -88,6 +84,9 @@ mw.PlayerSkinKskin = {
 				$menuBar = $j( '<ul />' )
 					.addClass( 'k-menu-bar' );
 					
+				// dont include about player menu item ( FIXME should be moved to a init function )
+				delete ctrlObj.supportedMenuItems['aboutPlayerLibrary'];
+				
 				// Output menu item containers: 
 				for ( var menuItem in ctrlObj.supportedMenuItems ) {
 					$menuBar.append( 
@@ -115,7 +114,8 @@ mw.PlayerSkinKskin = {
 						'top' : '0px',
 						'left' : '0px',
 						'bottom' : '0px',
-						'right' : '45px'			
+						'right' : '45px',
+						'overflow' : 'hidden'
 					} )
 				for ( var menuItem in ctrlObj.supportedMenuItems ) {
 					$menuScreens.append(
@@ -203,6 +203,9 @@ mw.PlayerSkinKskin = {
 				.text ( gM( 'mwe-embedplayer-menu_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
+
+		// re display the control bar if hidden: 
+		this.showControlBar();
 		
 		// Set close overlay menu flag: 
 		this.displayOptionsMenuFlag = false;
@@ -220,6 +223,8 @@ mw.PlayerSkinKskin = {
 				.text ( gM( 'mwe-embedplayer-close_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
+		
+		$j(this.embedPlayer).trigger( 'displayMenuOverlay' );
 		
 		// Set the Options Menu display flag to true:
 		this.displayOptionsMenuFlag = true;
@@ -315,7 +320,7 @@ mw.PlayerSkinKskin = {
 				);
 			break;
 			case 'share':
-				embedPlayer.$interface.find( '.menu-share').html(
+				embedPlayer.$interface.find( '.menu-share' ).html(
 					this.getShare()
 				);
 			break;				
@@ -323,7 +328,7 @@ mw.PlayerSkinKskin = {
 	},
 	
 	/**
-	* Show the credit screen (presently specific to kaltura skin )
+	* Show the credit screen ( presently specific to kaltura skin )
 	*/  
 	showCredits: function() {
 		// Set up the shortcuts:	
@@ -339,7 +344,7 @@ mw.PlayerSkinKskin = {
 			.loadingSpinner()
 		);
 
-		if( mw.getConfig( 'kalturaAttribution' ) == true ){
+		if( mw.getConfig( 'EmbedPlayer.KalturaAttribution' ) == true ){			
 			$target.append( 
 				$j( '<div />' )
 				.addClass( 'k-attribution' )

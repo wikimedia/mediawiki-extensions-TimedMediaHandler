@@ -2,7 +2,7 @@
  * Used to embed HTML as a movie clip
  * for use with mv_playlist SMIL additions
  * 
- * NOTE:  will likely be depricated 
+ * NOTE:  will be deprecated 
  */
 var pcHtmlEmbedDefaults = {
 	// default duration of 4 seconds	
@@ -22,7 +22,7 @@ mw.EmbedPlayerHtml = {
 		'timeDisplay':true,
 		'volumeControl':true,
 
-		'overlays':true,		
+		'overlays':true
 	},
 	
 	// If the player is "ready to play"
@@ -92,8 +92,8 @@ mw.EmbedPlayerHtml = {
 	* @param {Float} perc Percentage to seek into the virtual player
 	* @param {Function} callback Function called once time has been updated
 	*/
-	setCurrentTime:function( perc, callback ) {
-		this.pauseTime = perc * this.getDuration();
+	setCurrentTime:function( time, callback ) {
+		this.pauseTime = time;
 		if( callback )
 			callback();
 	},
