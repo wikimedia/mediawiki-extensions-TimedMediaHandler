@@ -176,7 +176,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgFFmpegLocation, $wgEnableTemporalOggUrls, $wgEnabledDerivatives;
+		global $wgFFmpegLocation, $wgEnabledDerivatives;
 
 		$width = $params['width'];
 		$srcWidth = $file->getWidth();
@@ -198,13 +198,6 @@ class TimedMediaHandler extends MediaHandler {
 			// Get the derivative via embed width
 			//( will return $file->getURL() if no derivative is found )
 			$targetFileUrl = OggTranscode::getWidthDerivativeURL( $file, $width);
-		}
-
-		// Add temporal request parameter if $wgEnableTemporalOggUrls is on:
-		if( $wgEnableTemporalOggUrls && isset( $params['start'] ) ){
-			$targetFileUrl .= '?t=' . seconds2npt( $this->parseTimeString( $params['start'], $length ) );
-			if(isset( $params[ 'end' ] ) && $params['end'] )
-				$targetFileUrl.='/'. seconds2npt( $this->parseTimeString( $params['end'], $length) );
 		}
 
 
@@ -524,7 +517,7 @@ class OggTransformOutput extends MediaTransformOutput {
 	}
 
 	function toHtml( $options = array() ) {
-		global $wgEnableTemporalOggUrls, $wgVideoTagOut,
+		global $wgVideoTagOut,
 			$wgScriptPath, $wgEnableTimedText;
 
 		wfLoadExtensionMessages( 'TimedMediaHandler' );
@@ -558,7 +551,7 @@ class OggTransformOutput extends MediaTransformOutput {
 	 * Output the inline video tag output
 	 */
 	function outputVideoTag($url, $width, $height, $length, $offset, $alt){
-		global $wgVideoPlayerSkin, $wgEnableTemporalOggUrls, $wgEnableTimedText;
+		global $wgVideoPlayerSkin, $wgEnableTimedText;
 		// Video tag output:
 		if ( $this->isVideo ) {
 			$playerHeight = $this->height;
@@ -642,10 +635,6 @@ class OggTransformOutput extends MediaTransformOutput {
 			}
 		}
 
-		if( $wgEnableTemporalOggUrls ){
-			$videoAttr['URLTimeEncoding'] = 'true';
-		}
-
 		// Set player skin:
 		if( $wgVideoPlayerSkin ){
 			$videoAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
@@ -685,19 +674,13 @@ class OggAudioDisplay extends OggTransformOutput {
 * Output a minimal iframe for remote embedding (with mv_embed loaded via the script-loader if enabled)
 */
 function output_iframe_page( $title ) {
-	global $wgEnableIframeEmbed, $wgEnableTemporalOggUrls, $wgOut, $wgUser,
+	global $wgEnableIframeEmbed, $wgOut, $wgUser,
 		$wgEnableScriptLoader;
 
 	if(!$wgEnableIframeEmbed){
 		throw new MWException( __METHOD__ .' is not enabled' );
 		return false;
-	}
-
-	// Check for start end if temporal urls are enabled:
-	if( $wgEnableTemporalOggUrls ){
-		$videoParam[ 'start' ] 	= ( isset( $_GET['starttime'] ) ) ? $_GET['starttime']: '';
-		$videoParam[ 'end' ]	= ( isset( $_GET['endtime'] ) ) ? $_GET['endtime']: '';
-	}
+	}	
 
 	$videoParam['width'] 	=  ( isset( $_GET['width'] )  ) ? intval( $_GET['width'] ) 	: '400';
 	$videoParam['height'] 	=  ( isset( $_GET['height'] ) ) ? intval( $_GET['height'] ) : '300';

@@ -1,7 +1,7 @@
-This will eventually include enhancments to oggHandler in order to enabled: 
+This will eventually include enhancements to oggHandler in order to enabled: 
 * more broad support for input file formats
 * include a transcoder to make ogg video at web resolutions when embedding clips in a page
-* include support for timed Text per the w3c "track" recomentation
+* include support for timed Text per the w3c "track" recommendation
 * use embedPlayer mwEmbed javascript module for playback
 
 

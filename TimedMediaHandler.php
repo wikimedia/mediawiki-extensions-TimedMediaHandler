@@ -5,8 +5,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-$oggDir = dirname(__FILE__);
-$wgAutoloadClasses['TimedMediaHandler'] = "$oggDir/TimedMediaHandler_body.php";
+$extensionDir = dirname(__FILE__);
+$wgAutoloadClasses['TimedMediaHandler'] = "$extensionDir/TimedMediaHandler_body.php";
 
 $wgMediaHandlers['application/ogg'] = 'TimedMediaHandler';
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
@@ -23,8 +23,6 @@ ini_set( 'include_path',
 	PATH_SEPARATOR .
 	ini_get( 'include_path' ) );
 
-// Bump this when updating OggPlayer.js to help update caches
-$wgOggScriptVersion = '11';
 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$oggDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$oggDir/TimedMediaHandler.i18n.magic.php";
@@ -79,13 +77,6 @@ $wgffmpeg2theoraPath = '/usr/bin/ffmpeg2theora';
 
 // Location of the FFmpeg binary
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
-
-/**
- * enable oggz_chop support
- * if enabled the mwEmbed player will use temporal urls
- * for helping with seeking with some plugin types
- */
-$wgEnableTemporalOggUrls = false;
 
 // Enabled derivatives array
 // If set to false no derivatives will be used
