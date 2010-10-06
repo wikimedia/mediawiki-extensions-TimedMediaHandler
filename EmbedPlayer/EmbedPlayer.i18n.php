@@ -134,7 +134,7 @@ $messages['aln'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash video',
 	'mwe-embedplayer-video-ogg' => 'video Ogg',
 	'mwe-embedplayer-video-audio' => 'Ogg audio',
-	'mwe-embedplayer-missing-source' => 'Nuk ka video burim u gjet. Kontrolloni që kodi juaj embed përfshin një burim apo API kryesore',
+	'mwe-embedplayer-missing-source' => 'Nuk ka video burim u gjet.',
 );
 
 /** Arabic (العربية) */
@@ -223,7 +223,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-відэа',
 	'mwe-embedplayer-video-ogg' => 'Ogg-відэа',
 	'mwe-embedplayer-video-audio' => 'Ogg-аўдыё',
-	'mwe-embedplayer-missing-source' => 'Ня знойдзена крынічнае відэа. Праверце, ці ўтрымлівае Ваш убудаваны код крыніцу ці ключ API',
+	'mwe-embedplayer-missing-source' => 'Ня знойдзена крынічнае відэа.',
 );
 
 /** Breton (Brezhoneg)
@@ -288,7 +288,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-video-flv' => 'video Flash',
 	'mwe-embedplayer-video-ogg' => 'video Ogg',
 	'mwe-embedplayer-video-audio' => 'Son Ogg',
-	'mwe-embedplayer-missing-source' => "N'eus bet kavet mammenn video ebet. Gwiriekait en deus ho kod enframmañ ur vammenn pe un alc'hwez API.",
+	'mwe-embedplayer-missing-source' => "N'eus bet kavet mammenn video ebet.",
 );
 
 /** Bosnian (Bosanski) */
@@ -383,6 +383,10 @@ $messages['de'] = array(
 	'mwe-embedplayer-download' => 'Herunterladen',
 	'mwe-embedplayer-share' => 'Teilen',
 	'mwe-embedplayer-credits' => 'Credits',
+	'mwe-embedplayer-about-library' => 'Über den Kaltura-Player',
+	'mwe-embedplayer-about-library-desc' => 'Kalturas HTML5-Medienbibliothek ermöglicht es die Vorteile der beiden HTML5-Tags <code><nowiki><video></nowiki></code> und  <code><nowiki><audio></nowiki></code> mit einem einheitlichen Player-Interface bei allen führenden Webbrowsern nutzen zu können.
+
+[$1 Weitere Informationen zu Kalturas HTML5-Medienbibliothek].',
 	'mwe-embedplayer-clip_linkback' => 'Clip-Quellseite',
 	'mwe-embedplayer-choose_player' => 'Videoplayer auswählen',
 	'mwe-embedplayer-no-player' => 'Es ist für $1 kein Player verfügbar',
@@ -410,19 +414,13 @@ $messages['de'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Auf deiner Seite einbinden',
 	'mwe-embedplayer-related_videos' => 'Ähnliche Videos',
 	'mwe-embedplayer-seeking' => 'suchen',
+	'mwe-embedplayer-buffering' => 'puffert',
 	'mwe-embedplayer-copy-code' => 'Code kopieren',
 	'mwe-embedplayer-video-h264' => 'H.264-Video',
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
-	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfe, ob der von dir eingebettete Code eine Quelle und/oder einen API-Schlüssel enthält',
-);
-
-/** German (formal address) (Deutsch (Sie-Form))
- * @author Kghbln
- */
-$messages['de-formal'] = array(
-	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden. Prüfen Sie ob der von Ihnen eingebettete Code eine Quelle und/ oder einen API-Schlüssel enthält',
+	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden.',
 );
 
 /** Zazaki (Zazaki) */
@@ -539,7 +537,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-video-flv' => 'Wideo Flash',
 	'mwe-embedplayer-video-ogg' => 'Ogg-wideo',
 	'mwe-embedplayer-video-audio' => 'Ogg-awdio',
-	'mwe-embedplayer-missing-source' => 'Žedno žrědłowe wideo namakane. Pśekontrolěruj, lěc twój zasajźony kod wopśimujo žrědło abo API-kluc',
+	'mwe-embedplayer-missing-source' => 'Žedno žrědłowe wideo namakane.',
 );
 
 /** Greek (Ελληνικά)
@@ -684,7 +682,7 @@ $messages['es'] = array(
 	'mwe-embedplayer-video-flv' => 'Video Flash',
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
-	'mwe-embedplayer-missing-source' => 'No se encontró ningún vídeo de origen. Compruebe que el código insertado incluye el origen o la clave API',
+	'mwe-embedplayer-missing-source' => 'No se encontró ningún vídeo de origen.',
 );
 
 /** Basque (Euskara) */
@@ -777,7 +775,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-video-flv' => 'vidéo Flash',
 	'mwe-embedplayer-video-ogg' => 'vidéo Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
-	'mwe-embedplayer-missing-source' => "Aucune source vidéo n'a été trouvée. Vérifiez que votre code d'intégration comprend une source ou clé API",
+	'mwe-embedplayer-missing-source' => "Aucune source vidéo n'a été trouvée.",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -903,7 +901,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Son Ogg',
-	'mwe-embedplayer-missing-source' => 'Non se atopou o vídeo de orixe. Comprobe que o código inclúe a orixe ou a clave API',
+	'mwe-embedplayer-missing-source' => 'Non se atopou o vídeo de orixe.',
 );
 
 /** Swiss German (Alemannisch)
@@ -968,7 +966,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
-	'mwe-embedplayer-missing-source' => 'S isch kei Videoclip gfunde wore. Lue, eb s im Code, wu vu Dir yybettet woren isch, e Quälle oder e API-Schlissel het',
+	'mwe-embedplayer-missing-source' => 'S isch kei Videoclip gfunde wore.',
 );
 
 /** Hebrew (עברית) */
@@ -1064,7 +1062,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-video-flv' => 'Widejo Flash',
 	'mwe-embedplayer-video-ogg' => 'Ogg-widejo',
 	'mwe-embedplayer-video-audio' => 'Ogg-awdio',
-	'mwe-embedplayer-missing-source' => 'Žane widejo namakane. Kontroluj, hač twój zasadźeny kod žórło abo API-kluč wobsahuje',
+	'mwe-embedplayer-missing-source' => 'Žane widejo namakane.',
 );
 
 /** Hungarian (Magyar) */
@@ -1149,6 +1147,10 @@ $messages['ia'] = array(
 	'mwe-embedplayer-download' => 'Discargar',
 	'mwe-embedplayer-share' => 'Condivider',
 	'mwe-embedplayer-credits' => 'Creditos',
+	'mwe-embedplayer-about-library' => 'A proposito del reproductor Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'Le bibliotheca multimedia HTML5 de Kaltura te permitte traher avantage del etiquettas HTML5 <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> jam hodie con un interfacie de reproductor consistente trans tote le major navigatores.
+	
+[$1 Plus a proposito del bibliotheca reproductor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Pagina de fonte del clip',
 	'mwe-embedplayer-choose_player' => 'Seliger reproductor de video',
 	'mwe-embedplayer-no-player' => 'Nulle reproductor disponibile pro $1',
@@ -1176,12 +1178,13 @@ $messages['ia'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Incastrar in un pagina',
 	'mwe-embedplayer-related_videos' => 'Videos connexe',
 	'mwe-embedplayer-seeking' => 'cercante',
+	'mwe-embedplayer-buffering' => 'precargamento',
 	'mwe-embedplayer-copy-code' => 'Copiar codice',
 	'mwe-embedplayer-video-h264' => 'Video H.264',
 	'mwe-embedplayer-video-flv' => 'Video Flash',
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
-	'mwe-embedplayer-missing-source' => 'Nulle video de origine ha essite trovate. Verifica que tu codice de incorporation include un origine o clave API',
+	'mwe-embedplayer-missing-source' => 'Nulle video de origine ha essite trovate.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1246,7 +1249,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-video-flv' => 'Video flash',
 	'mwe-embedplayer-video-ogg' => 'Video ogg',
 	'mwe-embedplayer-video-audio' => 'Audio ogg',
-	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan. Cek apabila kode tempel Anda berisi sumber atau kunci API',
+	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan.',
 );
 
 /** Italian (Italiano)
@@ -1320,7 +1323,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash ビデオ',
 	'mwe-embedplayer-video-ogg' => 'Ogg ビデオ',
 	'mwe-embedplayer-video-audio' => 'Ogg オーディオ',
-	'mwe-embedplayer-missing-source' => 'ソースとなる動画が見つかりませんでした。組み込んだコードがソースあるいはAPI鍵を含むことを確認して下さい。',
+	'mwe-embedplayer-missing-source' => 'ソースとなる動画が見つかりませんでした。',
 );
 
 /** Korean (한국어) */
@@ -1495,7 +1498,7 @@ $messages['mk'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash видео',
 	'mwe-embedplayer-video-ogg' => 'Ogg видео',
 	'mwe-embedplayer-video-audio' => 'Ogg аудио',
-	'mwe-embedplayer-missing-source' => 'Не е пронајден извор на снимката. Проверете дали вашиот вметнат код содржи извор или клуч',
+	'mwe-embedplayer-missing-source' => 'Не е пронајден извор на снимката.',
 );
 
 /** Malayalam (മലയാളം) */
@@ -1613,7 +1616,7 @@ Via <a href="http://commons.wikimedia.org/wiki/Commons:Hulp_voor_mediabestanden"
 	'mwe-embedplayer-video-flv' => 'Flash-video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-video',
 	'mwe-embedplayer-video-audio' => 'Ogg-audio',
-	'mwe-embedplayer-missing-source' => 'Er is geen bronvideo gevonden. Controleer uw of inbeddingdcode een API-sleutel bevat',
+	'mwe-embedplayer-missing-source' => 'Er is geen bronvideo gevonden.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1778,7 +1781,7 @@ $messages['pl'] = array(
 	'mwe-embedplayer-video-flv' => 'Wideo we Flash',
 	'mwe-embedplayer-video-ogg' => 'Wideo w Ogg',
 	'mwe-embedplayer-video-audio' => 'Dźwięk w Ogg',
-	'mwe-embedplayer-missing-source' => 'Nie ustalono źródła obrazu. Sprawdź czy wstawiony kod HTML zawiera źródło i klucz API',
+	'mwe-embedplayer-missing-source' => 'Nie ustalono źródła obrazu.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1812,6 +1815,10 @@ $messages['pms'] = array(
 	'mwe-embedplayer-download' => 'Dëscaria',
 	'mwe-embedplayer-share' => 'Condivid',
 	'mwe-embedplayer-credits' => 'Arconossiment',
+	'mwe-embedplayer-about-library' => 'A propòsit dël riprodutor Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'La librerìa dël mojen HTML5 ëd Kaltura at abìlita a pijé vantagi ancheuj dle tichëtte HTML5 <code><nowiki><video></nowiki></code>  e <code><nowiki><audio></nowiki></code> con na antërfacia ëd riprodussion consistenta an tùit ij browser prinsipaj.
+
+[$1 ëd pi a propòsit ëd la librerìa dël riprodutor Kaltura]',
 	'mwe-embedplayer-clip_linkback' => 'Pàgina sorgiss dël curt-metragi',
 	'mwe-embedplayer-choose_player' => 'Serne ël letor dij filmà',
 	'mwe-embedplayer-no-player' => 'Pa gnun letor disponìbij për $1',
@@ -1838,12 +1845,13 @@ $messages['pms'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Ancorporé an sna pàgina',
 	'mwe-embedplayer-related_videos' => 'Filmà assossià',
 	'mwe-embedplayer-seeking' => 'arserca',
+	'mwe-embedplayer-buffering' => 'bufferisé',
 	'mwe-embedplayer-copy-code' => 'Copié ël còdes',
 	'mwe-embedplayer-video-h264' => 'filmà H.264',
 	'mwe-embedplayer-video-flv' => 'filmà Flash',
 	'mwe-embedplayer-video-ogg' => 'filmà Ogg',
 	'mwe-embedplayer-video-audio' => 'Àudio Ogg',
-	'mwe-embedplayer-missing-source' => "Gnun filmà sorgiss a l'é syàit trovà. Ch'a contròla che sò còdes d'ancorporassion a conten-a na sorgiss o na ciav API",
+	'mwe-embedplayer-missing-source' => "Gnun filmà sorgiss a l'é stàit trovà.",
 );
 
 /** Pashto (پښتو)
@@ -1918,7 +1926,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Áudio Ogg',
-	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo. Verifique que o seu código inclui a fonte ou uma chave API',
+	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1983,7 +1991,7 @@ $messages['pt-br'] = array(
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Áudio Ogg',
-	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo. Verifique que o seu código inclui a fonte ou uma chave API',
+	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo.',
 );
 
 /** Russian (Русский)
@@ -2016,6 +2024,10 @@ $messages['ru'] = array(
 	'mwe-embedplayer-download' => 'Загрузить',
 	'mwe-embedplayer-share' => 'Поделиться',
 	'mwe-embedplayer-credits' => 'Создатели',
+	'mwe-embedplayer-about-library' => 'О проигрывателе Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'HTML5 медиа-библиотека Kaltura позволяет вам уже сейчас пользоваться тегами HTML5 <code><nowiki><video></nowiki></code> и <code><nowiki><audio></nowiki></code> со стандартным интерфейсом воспроизведения во всех основных браузерах.
+
+[$1 Подробнее о библиотеке проигрывателя Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Исходная страница клипа',
 	'mwe-embedplayer-choose_player' => 'Выбор проигрывателя',
 	'mwe-embedplayer-no-player' => 'Нет проигрывателя для $1',
@@ -2043,12 +2055,13 @@ $messages['ru'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Вставить на страницу',
 	'mwe-embedplayer-related_videos' => 'Связанные видео',
 	'mwe-embedplayer-seeking' => 'поиск',
+	'mwe-embedplayer-buffering' => 'буферизация',
 	'mwe-embedplayer-copy-code' => 'Копировать код',
 	'mwe-embedplayer-video-h264' => 'Видео H.264',
 	'mwe-embedplayer-video-flv' => 'Flash-видео',
 	'mwe-embedplayer-video-ogg' => 'Ogg-видео',
 	'mwe-embedplayer-video-audio' => 'Ogg-аудио',
-	'mwe-embedplayer-missing-source' => 'Не найден источник видео. Проверьте, что ваш встроенный код содержит источник или ключ API.',
+	'mwe-embedplayer-missing-source' => 'Не найден источник видео',
 );
 
 /** Rusyn (Русиньскый)
@@ -2213,7 +2226,7 @@ $messages['tl'] = array(
 	'mwe-embedplayer-video-flv' => 'Bidyong kisap',
 	'mwe-embedplayer-video-ogg' => 'Bidyong Ogg',
 	'mwe-embedplayer-video-audio' => 'Tunog na Ogg',
-	'mwe-embedplayer-missing-source' => 'Walang natagpuang pinagmulang bidyo.  Suriin kung ang iyong kodigo ng pagbaon ay may isang pinagmulan o susing API',
+	'mwe-embedplayer-missing-source' => 'Walang natagpuang pinagmulang bidyo.',
 );
 
 /** Turkish (Türkçe) */
