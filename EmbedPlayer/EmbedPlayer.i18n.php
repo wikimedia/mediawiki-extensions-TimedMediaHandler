@@ -934,6 +934,10 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-download' => 'Abelade',
 	'mwe-embedplayer-share' => 'Ufteile',
 	'mwe-embedplayer-credits' => 'Anerkännige',
+	'mwe-embedplayer-about-library' => 'Iber dr Kaltura-Player',
+	'mwe-embedplayer-about-library-desc' => 'D HTML5-Mediebibliothek vu Kaltura macht s megli d Vorteil vu dr beide HTML5-Tags <code><nowiki><video></nowiki></code> un  <code><nowiki><audio></nowiki></code> mit eim eiheitlige Player-Interface bi allne fierende Webbrowser z bruche.
+
+[$1 Meh Informatione zue dr HTML5-Mediebibliothek vu Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Clip-Quällsyte',
 	'mwe-embedplayer-choose_player' => 'Videospiler uuswehle',
 	'mwe-embedplayer-no-player' => 'Fir $1 isch kei Player verfiegbar',
@@ -961,6 +965,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Yybunde in e Syte',
 	'mwe-embedplayer-related_videos' => 'Verwandti Video',
 	'mwe-embedplayer-seeking' => 'Am Sueche',
+	'mwe-embedplayer-buffering' => 'pufferet',
 	'mwe-embedplayer-copy-code' => 'Code kopiere',
 	'mwe-embedplayer-video-h264' => 'H.264-Video',
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
@@ -1467,6 +1472,10 @@ $messages['mk'] = array(
 	'mwe-embedplayer-download' => 'Преземи',
 	'mwe-embedplayer-share' => 'Сподели',
 	'mwe-embedplayer-credits' => 'Автори',
+	'mwe-embedplayer-about-library' => 'За изведувачот Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'HTML5-мултимедијалната библиотека на Kaltura ви овозможува уште веднаш да користите HTML5-ознаки <code><nowiki><video></nowiki></code> и <code><nowiki><audio></nowiki></code> со еднообразен и стандарден посредник за изведувачот кај сите најзастапени прелистувачи.
+
+[$1 Повеќе за библиотеката на изведувачот Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Изворна страница на снимката',
 	'mwe-embedplayer-choose_player' => 'Одберете видео-изведувач',
 	'mwe-embedplayer-no-player' => 'Нема допстапен изведувач за $1',
@@ -1493,6 +1502,7 @@ $messages['mk'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Вметни во страница',
 	'mwe-embedplayer-related_videos' => 'Поврзани снимки',
 	'mwe-embedplayer-seeking' => 'барам',
+	'mwe-embedplayer-buffering' => 'меѓускладирање',
 	'mwe-embedplayer-copy-code' => 'Копирај код',
 	'mwe-embedplayer-video-h264' => 'H.264 видео',
 	'mwe-embedplayer-video-flv' => 'Flash видео',
@@ -1583,6 +1593,10 @@ $messages['nl'] = array(
 	'mwe-embedplayer-download' => 'Downloaden',
 	'mwe-embedplayer-share' => 'Delen',
 	'mwe-embedplayer-credits' => 'Vermeldingen',
+	'mwe-embedplayer-about-library' => 'Over de Kaltura-speler',
+	'mwe-embedplayer-about-library-desc' => 'De HTML5-bibliotheek van Kaltura zorgt dat u nu kunt profiteren van de HTML5-labels <nowiki><video></nowiki> en <nowiki><audio></nowiki> met een consistent uiterlijk van de speler in alle veelgebruikte browsers.
+
+[$1 Meer over de bibliotheek van de Kaltura-speler].',
 	'mwe-embedplayer-clip_linkback' => 'Bronpagina van de clip',
 	'mwe-embedplayer-choose_player' => 'Mediaspeler kiezen',
 	'mwe-embedplayer-no-player' => 'Geen speler beschikbaar voor $1',
@@ -1611,6 +1625,7 @@ Via <a href="http://commons.wikimedia.org/wiki/Commons:Hulp_voor_mediabestanden"
 	'mwe-embedplayer-embed_site_or_blog' => 'Toevoegen aan een pagina',
 	'mwe-embedplayer-related_videos' => "Gerelateerde video's",
 	'mwe-embedplayer-seeking' => 'bezig met zoeken',
+	'mwe-embedplayer-buffering' => 'bufferen',
 	'mwe-embedplayer-copy-code' => 'Code kopiëren',
 	'mwe-embedplayer-video-h264' => 'H.264-video',
 	'mwe-embedplayer-video-flv' => 'Flash-video',
@@ -1894,6 +1909,10 @@ $messages['pt'] = array(
 	'mwe-embedplayer-download' => 'Download',
 	'mwe-embedplayer-share' => 'Partilhar',
 	'mwe-embedplayer-credits' => 'Créditos',
+	'mwe-embedplayer-about-library' => 'Sobre o leitor Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'A biblioteca multimédia HTML5 do Kaltura permite-lhe utilizar já hoje os elementos <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> do HTML5 com uma interface consistente do leitor em todos os browsers principais.
+	
+[$1 Mais sobre a biblioteca do leitor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Página fonte do clipe',
 	'mwe-embedplayer-choose_player' => 'Escolher leitor de vídeo',
 	'mwe-embedplayer-no-player' => 'Não há nenhum leitor disponível para $1',
@@ -1921,6 +1940,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar numa página',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'a procurar',
+	'mwe-embedplayer-buffering' => 'a preencher a buffer',
 	'mwe-embedplayer-copy-code' => 'Copiar código',
 	'mwe-embedplayer-video-h264' => 'Vídeo H.264',
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
@@ -1960,6 +1980,14 @@ $messages['pt-br'] = array(
 	'mwe-embedplayer-download' => 'Baixar',
 	'mwe-embedplayer-share' => 'Compartilhar',
 	'mwe-embedplayer-credits' => 'Créditos',
+	'mwe-embedplayer-about-library' => 'Sobre o reprodutor Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'A biblioteca de mídia HTML5 da Kaltura permite que você tira vantagem hoje das marcações HTML5 <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> com uma interface de reprodutor consistente em todos os principais navegadores.
+
+[$1 Mais sobre a biblioteca de reprodução Kaltura].
+
+enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code> and <code><nowiki><audio></nowiki></code> tags today with a consistent player interface across all major browsers.
+	
+[$1 More about the Kaltura player library].',
 	'mwe-embedplayer-clip_linkback' => 'Página fonte do clipe',
 	'mwe-embedplayer-choose_player' => 'Escolher leitor de vídeo',
 	'mwe-embedplayer-no-player' => 'Não há nenhum leitor disponível para $1',
@@ -1986,6 +2014,7 @@ $messages['pt-br'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar numa página',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'procurando',
+	'mwe-embedplayer-buffering' => 'buffering',
 	'mwe-embedplayer-copy-code' => 'Copiar código',
 	'mwe-embedplayer-video-h264' => 'Vídeo H.264',
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
