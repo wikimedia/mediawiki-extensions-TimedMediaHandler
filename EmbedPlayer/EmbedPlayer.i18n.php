@@ -191,6 +191,10 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-download' => 'Загрузіць',
 	'mwe-embedplayer-share' => 'Зрабіць агульным',
 	'mwe-embedplayer-credits' => 'Стваральнікі',
+	'mwe-embedplayer-about-library' => 'Пра прайгравальнік Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'HTML5 мэдыя-бібліятэка Kaltura дазваляе Вам выкарыстоўваць перавагамі HTML5 <code><nowiki><video></nowiki></code> і <code><nowiki><audio></nowiki></code> тэгаў ужо зараз, з аднолькавым інтэрфэйсам прайграваньня ва ўсіх асноўных браўзэрах.
+	
+[$1 даведацца болей пра бібліятэку прайгравальніка Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Крынічная старонка часткі файла',
 	'mwe-embedplayer-choose_player' => 'Выберыце відэа-прайгравальнік',
 	'mwe-embedplayer-no-player' => 'Няма прайгравальніка для $1',
@@ -218,6 +222,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Уставіць на старонку',
 	'mwe-embedplayer-related_videos' => 'Зьвязаныя відэа',
 	'mwe-embedplayer-seeking' => 'пошук',
+	'mwe-embedplayer-buffering' => 'буфэрызацыя',
 	'mwe-embedplayer-copy-code' => 'Капіяваць код',
 	'mwe-embedplayer-video-h264' => 'H.264 відэа',
 	'mwe-embedplayer-video-flv' => 'Flash-відэа',
@@ -715,6 +720,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'mwe-embedplayer-credit-title' => 'Titre : $1',
@@ -743,6 +749,10 @@ $messages['fr'] = array(
 	'mwe-embedplayer-download' => 'Télécharger',
 	'mwe-embedplayer-share' => 'Partager',
 	'mwe-embedplayer-credits' => 'Crédits',
+	'mwe-embedplayer-about-library' => 'À propos du lecteur Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'La bibliothèque HTML5 de Kaltura vous permet de profiter des balises HTML5 <code><nowiki><video></nowiki></code> et <code><nowiki><audio></nowiki></code> dès à présent avec un lecteur et une interface compatibles avec tous les principaux navigateurs.
+	
+[$1 Pour en savoir plus sur la bibliothèque de lecture Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Page source du clip',
 	'mwe-embedplayer-choose_player' => 'Choisir le lecteur vidéo',
 	'mwe-embedplayer-no-player' => 'Aucun lecteur disponible pour $1',
@@ -770,6 +780,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Intégrer dans une page',
 	'mwe-embedplayer-related_videos' => 'Vidéos associées',
 	'mwe-embedplayer-seeking' => 'recherche',
+	'mwe-embedplayer-buffering' => 'mise en mémoire tampon',
 	'mwe-embedplayer-copy-code' => 'Copier le code',
 	'mwe-embedplayer-video-h264' => 'vidéo H.264',
 	'mwe-embedplayer-video-flv' => 'vidéo Flash',
@@ -1328,7 +1339,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash ビデオ',
 	'mwe-embedplayer-video-ogg' => 'Ogg ビデオ',
 	'mwe-embedplayer-video-audio' => 'Ogg オーディオ',
-	'mwe-embedplayer-missing-source' => 'ソースとなる動画が見つかりませんでした。',
+	'mwe-embedplayer-missing-source' => 'ソースとなる動画が見つかりませんでした',
 );
 
 /** Korean (한국어) */
@@ -1764,6 +1775,10 @@ $messages['pl'] = array(
 	'mwe-embedplayer-download' => 'Pobierz',
 	'mwe-embedplayer-share' => 'Udostępnij',
 	'mwe-embedplayer-credits' => 'Twórcy',
+	'mwe-embedplayer-about-library' => 'O odtwarzaczu Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'Biblioteka Kaltura obsługi mediów dla HTML5 pozwala na użycie znaczników HTML5 <code><nowiki><video></nowiki></code> i <code><nowiki><audio></nowiki></code> ze spójnym interfejsem odtwarzacza we wszystkich najpopularniejszych przeglądarkach.
+
+[$1 Więcej na temat biblioteki odtwarzacza Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Strona źródłowa klipu',
 	'mwe-embedplayer-choose_player' => 'Wybierz odtwarzacz wideo',
 	'mwe-embedplayer-no-player' => 'Brak dostępnych odtwarzaczy dla $1',
@@ -1791,6 +1806,7 @@ $messages['pl'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Umieść na swojej stronie lub blogu',
 	'mwe-embedplayer-related_videos' => 'Podobne filmy',
 	'mwe-embedplayer-seeking' => 'przewijanie',
+	'mwe-embedplayer-buffering' => 'buforowanie',
 	'mwe-embedplayer-copy-code' => 'Skopiuj kod',
 	'mwe-embedplayer-video-h264' => 'Wideo w H.264',
 	'mwe-embedplayer-video-flv' => 'Wideo we Flash',
