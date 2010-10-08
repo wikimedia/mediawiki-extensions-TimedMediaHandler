@@ -1,18 +1,20 @@
 <?php
 
 /*
- * OggTranscode provides:
+ * WebVideoTranscode provides:
  *  encode keys
  *  encode settings
  *  db schema
  *  and getWidthDerivativeURL function to grab url for a derivative
+ * 	extends api to return all the streams
+ *  extends video tag output to provide all the available sources
  */
 
 
 /*
- * Main OggTranscode Class hold some constants and config values
+ * Main WebVideoTranscode Class hold some constants and config values
  */
-class OggTranscode {
+class WebVideoTranscode {
 	/**
 	* Key constants for the derivatives,
 	* this key is appended to the derivative file name
@@ -21,10 +23,14 @@ class OggTranscode {
 	* and want to re-generate the video you should also update the
 	* key constant.
 	*/
-	const ENC_WEB_2MBS = '200_200kbs';
-	const ENC_WEB_4MBS = '360_400kbs';
-	const ENC_WEB_6MBS = '480_600kbs';
-	const ENC_HQ_VBR = '720_VBR';
+	const ENC_OGV_2MBS = '200_200kbs.ogv';
+	const ENC_OGV_4MBS = '360_400kbs.ogv';
+	const ENC_OGV_6MBS = '480_600kbs.ogv';
+	const ENC_OGV_HQ_VBR = '720_VBR.ogv';
+	
+	// WebM profiles: 	
+	const ENC_WEBM_6MBS = '480_600kbs.webm';
+	const ENC_WEBM_HQ_VBR = '720_VBR.webm';
 
 	/**
 	* Encoding parameters are set via firefogg encode api
@@ -35,7 +41,7 @@ class OggTranscode {
 	* http://firefogg.org/dev/index.html
 	*/
 	public static $derivativeSettings = array(
-	OggTranscode::ENC_WEB_2MBS =>
+	WebVideoTranscode::ENC_WEB_2MBS =>
 		array(
 			'maxSize'			=> '200',
 			'videoBitrate'		=> '128',
@@ -48,7 +54,7 @@ class OggTranscode {
 			'keyframeInterval'	=> '64',
 			'bufDelay'			=> '128'
 		),
-   OggTranscode::ENC_WEB_4MBS =>
+   WebVideoTranscode::ENC_OGV_4MBS =>
 		array(
 			'maxSize'			=> '360',
 			'videoBitrate'		=> '368',
@@ -58,7 +64,7 @@ class OggTranscode {
 			'keyframeInterval'	=> '128',
 			'bufDelay'			=> '256'
 		),
-	OggTranscode::ENC_WEB_6MBS =>
+	WebVideoTranscode::ENC_OGV_6MBS =>
 		array(
 			'maxSize'			=> '480',
 			'videoBitrate'		=> '512',
@@ -68,7 +74,19 @@ class OggTranscode {
 			'keyframeInterval'	=> '128',
 			'bufDelay'			=> '256'
 		),
-	OggTranscode::ENC_HQ_VBR =>
+		
+	WebVideoTranscode::ENC_WEBM_6MBS =>
+		array(
+		 	'maxSize'			=> '512',
+			'videoBitrate'		=> '512',
+			'audioBitrate'		=> '96',
+			'noUpscaling'		=> 'true',
+			'twopass'			=> 'true',
+			'keyframeInterval'	=> '128',
+			'bufDelay'			=> '256',
+			'codec' 			=> 'vp8',
+		),
+	WebVideoTranscode::ENC_OGV_HQ_VBR =>
 		 array(
 			'maxSize'			=> '720',
 			'videoQuality'		=> 7,
@@ -79,7 +97,7 @@ class OggTranscode {
 	 /**
 	 * Mapping between firefogg api and ffmpeg2theora command line
 	 *
-	 * This lets us share a common api between firefogg and oggTranscode
+	 * This lets us share a common api between firefogg and WebVideoTranscode
 	 * also see: http://firefogg.org/dev/index.html
 	 */
 	 public static $foggMap = array(
@@ -121,14 +139,14 @@ class OggTranscode {
 	);
 
 	/**
-	* Setup the OggTranscode tables
+	* Setup the WebVideoTranscode tables
 	*/
 	public static function schema() {
 		global $wgExtNewTables, $wgExtNewIndexes;
 
 		$wgExtNewTables[] = array(
 			'transcode_job',
-			dirname( __FILE__ ) . '/OggTranscode.sql'
+			dirname( __FILE__ ) . '/WebVideoTranscode.sql'
 		);
 
 		$wgExtNewIndexes[] = array(

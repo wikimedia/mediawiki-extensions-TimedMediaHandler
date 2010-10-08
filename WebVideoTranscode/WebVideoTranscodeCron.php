@@ -1,7 +1,7 @@
 <?php
 
 /*
-* OggTranscodeCron.php
+* WebVideoTranscodeCron.php
 *
 * Maintenance script overview:
 *
@@ -16,12 +16,12 @@
 * 3) Does a transcode to temporary location
 * 	 once done moves file into pre-defined location
 *
-* Now when the asset is visited by php it automatically knows about transcodes
+* Now when the asset is visited by php it automatically knows about transcodes per pre-defined file locations
 *
 */
 require_once(  dirname(__FILE__) . '/../../../maintenance/Maintenance.php' );
 
-class OggTranscodeCron extends Maintenance {
+class WebVideoTranscodeCron extends Maintenance {
 
 	// The max number of threads ( can also be set when called via the command line )
 	private $maxThreads = 2;
@@ -268,8 +268,8 @@ class OggTranscodeCron extends Maintenance {
 		// Get the list of processes:
 		$pslist = wfShellExec( "ps aux", $out);
 
-		// Return the count of php OggTranscodeCron.php found
-		$threadCount = preg_match_all( '/php\sOggTranscodeCron\.php/', $pslist, $matches);
+		// Return the count of php WebVideoTranscodeCron.php found
+		$threadCount = preg_match_all( '/php\sWebVideoTranscodeCron\.php/', $pslist, $matches);
 		if( $threadCount === false ){
 			print "Error in preg_match";
 			exit( 1 );
@@ -319,6 +319,6 @@ class OggTranscodeCron extends Maintenance {
 	}
 }
 
-$maintClass = "OggTranscodeCron";
+$maintClass = "WebVideoTranscodeCron";
 require_once( DO_MAINTENANCE );
 

@@ -190,17 +190,6 @@ class TimedMediaHandler extends MediaHandler {
 		// Set up the default targetUrl:
 		$targetFileUrl = $file->getURL();
 
-		// Check for $wgEnabledDerivatives
-		if ( isset( $wgEnabledDerivatives ) &&
-			 is_array( $wgEnabledDerivatives ) &&
-			 count( $wgEnabledDerivatives ) != 0
-		){
-			// Get the derivative via embed width
-			//( will return $file->getURL() if no derivative is found )
-			$targetFileUrl = OggTranscode::getWidthDerivativeURL( $file, $width);
-		}
-
-
 		if ( !$noPlayer ) {
 			// Hack for miscellaneous callers
 			global $wgOut;
@@ -439,30 +428,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath,
-				$wgEnablePlayTracking, $wgPlayTrackingRate,  $wgVideoTagOut;
-
-		// We could add "video" tag javascript
-		// If we wanted to block on mwEmbed player js, instead of loading the js onDomReady
-
-		// embedPlayer classes include: $j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText
-		//<link rel="stylesheet" href="js/mwEmbed/skins/kskin/playerSkin.css" type="text/css" media="screen" />
-
-		// Loading dynamically lets us avoid unnecessary code
-		// ie firefox does not need "JSON.js" and IE ~maybe~ needs cortado embed etc.
-
-		if( $wgEnablePlayTracking ) {
-			$encPlayTracking = Xml::encodeJsVar( $wgPlayTrackingRate );
-			// Should replace with a standard way to send configuration to mw core js
-			$out->addHeadItem( 'TimedMediaHandler', <<<EOT
-<script type="text/javascript">
-mw.setConfig('playTracking', 'true');
-mw.setConfig('playTrackingRate', $encPlayTracking );
-</script>
-EOT
-);
-		}
-
+		
 	}
 
 	function parserTransformHook( $parser, $file ) {
@@ -533,6 +499,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		} else {
 			$url = $this->videoUrl;
 		}
+		
 		// Normalize values
 		$length = floatval( $this->length );
 		$offset = floatval( $this->offset );
@@ -565,6 +532,7 @@ class OggTransformOutput extends MediaTransformOutput {
 			else
 				$playerHeight = $height;
 		}
+		
 		$id = "ogg_player_" . OggTransformOutput::$serial;
 		$linkAttribs = $this->getDescLinkAttribs( $alt );
 		$videoAttr = array(
@@ -719,11 +687,12 @@ function output_iframe_page( $title ) {
 	</html>
 <?php
 }
-/*
+
+/**
 * Converts seconds duration to npt format:
 * hh:mm:ss.ms
 */
-if(!function_exists('seconds2npt')){
+if( !function_exists('seconds2npt') ){
 	function seconds2npt( $seconds, $short = false ) {
 		$dur = time_duration_2array( $seconds );
 		if( ! $dur )
@@ -736,7 +705,8 @@ if(!function_exists('seconds2npt')){
 		}
 	}
 }
-/*
+
+/**
  * Convert seconds to time unit array
  */
 if(!function_exists('time_duration_2array')){
