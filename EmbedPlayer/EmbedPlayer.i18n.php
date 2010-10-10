@@ -232,6 +232,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -261,6 +262,10 @@ $messages['br'] = array(
 	'mwe-embedplayer-download' => 'Pellgargañ',
 	'mwe-embedplayer-share' => 'Eskemm',
 	'mwe-embedplayer-credits' => 'Kredoù',
+	'mwe-embedplayer-about-library' => 'Diwar-benn al lenner Kaltura',
+	'mwe-embedplayer-about-library-desc' => "Talvezout a ra al levraoueg Kaltura deoc'h d'ober ho mad eus ar balizennoù HTML5 <code><nowiki><video></nowiki></code> ha <code><nowiki><klevet></nowiki></code> diouzhtu gant ul lenner hag un etrefas kenglotus gant ar merdeerioù pennañ.
+	
+[$1 Evit gouzout hiroc'h diwar-benn al levraoueg lenn Kaltura].",
 	'mwe-embedplayer-clip_linkback' => "Pajenn mammenn ar c'hlip",
 	'mwe-embedplayer-choose_player' => 'Dibab al lenner video',
 	'mwe-embedplayer-no-player' => "N'eus lenner ebet hag a zo dieub evit $1",
@@ -288,6 +293,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Enframmañ en ur bajenn',
 	'mwe-embedplayer-related_videos' => 'Videoioù liammet',
 	'mwe-embedplayer-seeking' => 'o klask',
+	'mwe-embedplayer-buffering' => 'o krubuilhañ',
 	'mwe-embedplayer-copy-code' => "Kopiañ ar c'hod",
 	'mwe-embedplayer-video-h264' => 'video H.264',
 	'mwe-embedplayer-video-flv' => 'video Flash',
