@@ -886,12 +886,16 @@ $messages['ja'] = array(
 	'mwe-timedtext-textcat-sub' => '字幕',
 	'mwe-timedtext-textcat-tad' => '音声の説明',
 	'mwe-timedtext-textcat-ktv' => 'カラオケ',
+	'mwe-timedtext-textcat-tik' => 'ティッカー文章',
 	'mwe-timedtext-textcat-ar' => 'アクティブな領域',
 	'mwe-timedtext-textcat-nb' => '注釈',
+	'mwe-timedtext-textcat-meta' => '時間メタデータ',
 	'mwe-timedtext-textcat-trx' => '複写',
 	'mwe-timedtext-textcat-lrc' => '歌詞',
 	'mwe-timedtext-textcat-lin' => '言語マーク',
 	'mwe-timedtext-textcat-cue' => 'キューポイント',
+	'mwe-timedtext-language-subtitles-for-clip' => 'クリップ$2のための$1字幕',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'クリップ$2には$1字幕が見つかりませんでした。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1438,6 +1442,26 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'mwe-timedtext-layout' => 'అమరిక',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mwe-timedtext-editor' => 'Inoorasang patnugot ng teksto',
+	'mwe-timedtext-stage-transcribe' => 'Ilapat upang mabasa',
+	'mwe-timedtext-stage-sync' => 'Isabay',
+	'mwe-timedtext-stage-translate' => 'Isalinwika',
+	'mwe-timedtext-stage-upload' => 'Ikargang paitaas mula sa katutubong talaksan',
+	'mwe-timedtext-select-language' => 'Piliin ang wika',
+	'mwe-timedtext-file-language' => 'Wika ng talaksan ng kabahaging pamagat',
+	'mwe-timedtext-upload-text' => 'Ikargang paitaas ang talaksan ng teksto',
+	'mwe-timedtext-uploading-text' => 'Ikinakargang paitaas ang talaksan ng teksto',
+	'mwe-timedtext-upload-text-desc-title' => 'Magkargang paitaas ng isang talaksan ng teksto',
+	'mwe-timedtext-upload-text-desc-help' => 'Ang ugnayang-mukha ng talaksan ng pagkakargang-paitaas na teksto ay tumatanggap ng mga talaksang .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Tumingin-tingin sa iyong lokal na kompyuter para sa talaksang .srt na nais mong ikargang paitaas',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Piliin ang wika ng talaksan',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Suriing muli / baguhin ang nilalaman ng teksto at pagkaraan ay pindutin ang ikargang paitaas upang maidagdag ang teksto',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

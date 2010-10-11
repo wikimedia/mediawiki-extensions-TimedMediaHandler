@@ -886,6 +886,10 @@ $messages['gl'] = array(
 	'mwe-embedplayer-download' => 'Descargar',
 	'mwe-embedplayer-share' => 'Compartir',
 	'mwe-embedplayer-credits' => 'Créditos',
+	'mwe-embedplayer-about-library' => 'Acerca do reprodutor Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'A biblioteca HTML5 do Kaltura permite sacar proveito das etiquetas <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> do HTML5 cun reprodutor e unha interface compatibles cos principais navegadores.
+	
+[$1 Máis información sobre a biblioteca do reprodutor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Páxina de orixe do vídeo',
 	'mwe-embedplayer-choose_player' => 'Escolla o reprodutor de vídeo',
 	'mwe-embedplayer-no-player' => 'Non hai ningún reprodutor dispoñible para $1',
@@ -913,6 +917,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar nunha páxina',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'procurando',
+	'mwe-embedplayer-buffering' => 'cargando no búfer',
 	'mwe-embedplayer-copy-code' => 'Copiar o código',
 	'mwe-embedplayer-video-h264' => 'Vídeo H.264',
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
@@ -1313,6 +1318,10 @@ $messages['ja'] = array(
 	'mwe-embedplayer-download' => 'ダウンロード',
 	'mwe-embedplayer-share' => '共有',
 	'mwe-embedplayer-credits' => 'クレジット',
+	'mwe-embedplayer-about-library' => 'Kalturaプレイヤーについて',
+	'mwe-embedplayer-about-library-desc' => 'KalturaのHTML5メディアライブラリーは、すべての主要ブラウザー間で一貫性のある再生インターフェースをHTML5の<code><nowiki><video></nowiki></code>と<code><nowiki><audio></nowiki></code>タグで活用することができます。
+
+[$1 Kalturaプレイヤーライブラリーについての詳細情報]。',
 	'mwe-embedplayer-clip_linkback' => 'クリップの情報ページ',
 	'mwe-embedplayer-choose_player' => 'ビデオの再生プレイヤーを選択',
 	'mwe-embedplayer-no-player' => '$1に利用できるプレイヤーはありません',
@@ -1340,6 +1349,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'ページに埋め込む',
 	'mwe-embedplayer-related_videos' => '関連する動画',
 	'mwe-embedplayer-seeking' => 'シーク中',
+	'mwe-embedplayer-buffering' => 'バッファリング',
 	'mwe-embedplayer-copy-code' => 'コピーコード',
 	'mwe-embedplayer-video-h264' => 'H.264 ビデオ',
 	'mwe-embedplayer-video-flv' => 'Flash ビデオ',
@@ -1457,6 +1467,7 @@ $messages['lb'] = array(
 	'mwe-embedplayer-related_videos' => 'Ähnlech Videoen',
 	'mwe-embedplayer-seeking' => 'sichen',
 	'mwe-embedplayer-copy-code' => 'Code kopéieren',
+	'mwe-embedplayer-missing-source' => 'Et gouf kee Video fonnt',
 );
 
 /** Macedonian (Македонски)
@@ -1853,9 +1864,9 @@ $messages['pms'] = array(
 	'mwe-embedplayer-share' => 'Condivid',
 	'mwe-embedplayer-credits' => 'Arconossiment',
 	'mwe-embedplayer-about-library' => 'A propòsit dël riprodutor Kaltura',
-	'mwe-embedplayer-about-library-desc' => 'La librerìa dël mojen HTML5 ëd Kaltura at abìlita a pijé vantagi ancheuj dle tichëtte HTML5 <code><nowiki><video></nowiki></code>  e <code><nowiki><audio></nowiki></code> con na antërfacia ëd riprodussion consistenta an tùit ij browser prinsipaj.
+	'mwe-embedplayer-about-library-desc' => "La librarìa dël mojen HTML5 ëd Kaltura a lo abìlita a sfruté ancheuj le tichëtte HTML5 <code><nowiki><video></nowiki></code>  e <code><nowiki><audio></nowiki></code> con n'antërfacia ëd riprodussion coerenta con tùit ij navigador prinsipaj.
 
-[$1 ëd pi a propòsit ëd la librerìa dël riprodutor Kaltura]',
+[$1 Për savèjne ëd pi a propòsit ëd la librarìa dël riprodutor Kaltura]",
 	'mwe-embedplayer-clip_linkback' => 'Pàgina sorgiss dël curt-metragi',
 	'mwe-embedplayer-choose_player' => 'Serne ël letor dij filmà',
 	'mwe-embedplayer-no-player' => 'Pa gnun letor disponìbij për $1',
@@ -1882,7 +1893,7 @@ $messages['pms'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Ancorporé an sna pàgina',
 	'mwe-embedplayer-related_videos' => 'Filmà assossià',
 	'mwe-embedplayer-seeking' => 'arserca',
-	'mwe-embedplayer-buffering' => 'bufferisé',
+	'mwe-embedplayer-buffering' => 'an camin a buté ant la memòria tampon',
 	'mwe-embedplayer-copy-code' => 'Copié ël còdes',
 	'mwe-embedplayer-video-h264' => 'filmà H.264',
 	'mwe-embedplayer-video-flv' => 'filmà Flash',
@@ -2246,6 +2257,7 @@ $messages['tl'] = array(
 	'mwe-embedplayer-download' => 'Ikargang pababa',
 	'mwe-embedplayer-share' => 'Ipamahagi',
 	'mwe-embedplayer-credits' => 'Mga banggit-pagkilala',
+	'mwe-embedplayer-about-library' => 'Tungkol sa pampaandar na Kaltura',
 	'mwe-embedplayer-clip_linkback' => 'Pahina ng pinagmulan ng putol',
 	'mwe-embedplayer-choose_player' => 'Piliin ang pampaandar ng bidyo',
 	'mwe-embedplayer-no-player' => 'Walang makuhang pampaandar para sa $1',
@@ -2272,6 +2284,7 @@ $messages['tl'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Ibaon sa isang pahina',
 	'mwe-embedplayer-related_videos' => 'Kaugnay na mga bidyo',
 	'mwe-embedplayer-seeking' => 'hinahanap',
+	'mwe-embedplayer-buffering' => 'pinapakinis',
 	'mwe-embedplayer-copy-code' => 'Kopyahin ang kodigo',
 	'mwe-embedplayer-video-h264' => 'Bidyong H.264',
 	'mwe-embedplayer-video-flv' => 'Bidyong kisap',
