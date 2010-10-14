@@ -2258,6 +2258,9 @@ $messages['tl'] = array(
 	'mwe-embedplayer-share' => 'Ipamahagi',
 	'mwe-embedplayer-credits' => 'Mga banggit-pagkilala',
 	'mwe-embedplayer-about-library' => 'Tungkol sa pampaandar na Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'Ang aklatan ng midyang HTML5 ng Kaltura ay nagpapahintulot sa iyong samantalahin ang mga tatak na <code><nowiki><bidyo></nowiki></code> na HTML5 at <code><nowiki><audio></nowiki></code> ngayon ng isang ugnayang-mukha ng palagiang pampaandar sa kahabaan ng lahat ng pangunahing mga pantingin-tingin.
+
+[$1 Marami pang hinggil sa aklatan ng pampaandar ng Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Pahina ng pinagmulan ng putol',
 	'mwe-embedplayer-choose_player' => 'Piliin ang pampaandar ng bidyo',
 	'mwe-embedplayer-no-player' => 'Walang makuhang pampaandar para sa $1',
