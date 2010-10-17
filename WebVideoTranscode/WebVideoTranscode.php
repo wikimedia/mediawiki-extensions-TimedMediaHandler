@@ -216,6 +216,3 @@ class WebVideoTranscode {
 	 }
 }
 
-
-
-?>

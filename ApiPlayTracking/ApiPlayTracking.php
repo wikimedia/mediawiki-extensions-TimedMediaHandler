@@ -89,5 +89,3 @@ class ApiPlayTracking extends ApiBase {
 		return __CLASS__ . ': $Id: ApiPlayTracking.php 59374 2009-11-24 01:06:56Z dale $';
 	}
 }
-
-?>
