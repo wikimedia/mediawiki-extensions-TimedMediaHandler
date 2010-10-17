@@ -1662,11 +1662,31 @@ Via <a href="http://commons.wikimedia.org/wiki/Commons:Hulp_voor_mediabestanden"
 	'mwe-embedplayer-missing-source' => 'Er is geen bronvideo gevonden.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'mwe-embedplayer-credit-title' => 'Tittel: $1',
+	'mwe-embedplayer-close_btn' => 'Steng',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-spelar',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-spelar',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-spelar',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generisk Ogg-utviding',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-utviding',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-playerSelect' => 'Avspelarar',
+	'mwe-embedplayer-video-h264' => 'H.264-video',
+	'mwe-embedplayer-video-flv' => 'Flash-video',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'mwe-embedplayer-credit-title' => 'Tittel: $1',
+	'mwe-embedplayer-loading_plugin' => 'Laster utvidelse ...',
 	'mwe-embedplayer-play_clip' => 'Spill av klipp',
 	'mwe-embedplayer-pause_clip' => 'Paus klipp',
 	'mwe-embedplayer-volume_control' => 'Volumkontroll',
@@ -1690,6 +1710,8 @@ $messages['no'] = array(
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-spiller',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-spiller',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-spiller',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generisk Ogg-utvidelse',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-utvidelse',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
@@ -1703,6 +1725,7 @@ $messages['no'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-video',
 	'mwe-embedplayer-video-audio' => 'Ogg-audio',
+	'mwe-embedplayer-missing-source' => 'Ingen kildevideo ble funnet',
 );
 
 /** Occitan (Occitan) */
