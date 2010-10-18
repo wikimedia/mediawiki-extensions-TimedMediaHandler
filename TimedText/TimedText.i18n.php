@@ -652,6 +652,29 @@ $messages['gsw'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kei $1 Untertitel gfunde fir dr Videoclip: $2',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'mwe-timedtext-stage-sync' => 'סנכרון',
+	'mwe-timedtext-stage-translate' => 'תרגום',
+	'mwe-timedtext-stage-upload' => 'העלאה מקובץ מקומי',
+	'mwe-timedtext-select-language' => 'בחירת שפה',
+	'mwe-timedtext-file-language' => 'שפת כתובת הכתוביות',
+	'mwe-timedtext-back-btn' => 'חזרה',
+	'mwe-timedtext-layout' => 'פריסה',
+	'mwe-timedtext-layout-ontop' => 'על גבי הווידאו',
+	'mwe-timedtext-layout-below' => 'מתחת לווידאו',
+	'mwe-timedtext-layout-off' => 'הסתרת כתוביות',
+	'mwe-timedtext-textcat-sub' => 'כתוביות',
+	'mwe-timedtext-textcat-tad' => 'תיאור השמע',
+	'mwe-timedtext-textcat-ktv' => 'קריוקי',
+	'mwe-timedtext-textcat-ar' => 'אזורים פעילים',
+	'mwe-timedtext-textcat-nb' => 'פרשנות',
+	'mwe-timedtext-textcat-lrc' => 'מילות השיר',
+	'mwe-timedtext-textcat-lin' => 'סימון בלשני',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

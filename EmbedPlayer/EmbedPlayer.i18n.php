@@ -661,6 +661,10 @@ $messages['es'] = array(
 	'mwe-embedplayer-download' => 'Descargar',
 	'mwe-embedplayer-share' => 'Compartir',
 	'mwe-embedplayer-credits' => 'Créditos',
+	'mwe-embedplayer-about-library' => 'Acerca del reproductor Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'La biblioteca HTMl5 de Kaltura permite utilizar etiquetas de <code><nowiki><video></nowiki></code> y <code><nowiki><audio></nowiki></code> ahora con una interfaz de reproductor consistente en los navegadores más usados.
+	
+[$1 Más acerca de la biblioteca del reproductor Kalltura].',
 	'mwe-embedplayer-clip_linkback' => 'Página fuente de clip',
 	'mwe-embedplayer-choose_player' => 'Elegir reproductor de video',
 	'mwe-embedplayer-no-player' => 'No hay ningún reproductor disponible para $1',
@@ -688,6 +692,7 @@ $messages['es'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Insertar en una página',
 	'mwe-embedplayer-related_videos' => 'Videos relacionados',
 	'mwe-embedplayer-seeking' => 'buscando',
+	'mwe-embedplayer-buffering' => 'cargando en el búfer',
 	'mwe-embedplayer-copy-code' => 'Copiar código',
 	'mwe-embedplayer-video-h264' => 'Video H.264',
 	'mwe-embedplayer-video-flv' => 'Video Flash',
@@ -996,8 +1001,11 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-missing-source' => 'S isch kei Videoclip gfunde wore.',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
 $messages['he'] = array(
+	'mwe-embedplayer-credit-title' => 'כותרת: $1',
 	'mwe-embedplayer-link_back' => 'קישור חזרה',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'בסוף הרצף',
 	'mwe-embedplayer-missing_video_stream' => 'קובץ הווידאו עבור זרם זה חסר',
@@ -1014,17 +1022,25 @@ $messages['he'] = array(
 	'mwe-embedplayer-download' => 'הורדה',
 	'mwe-embedplayer-share' => 'שיתוף',
 	'mwe-embedplayer-credits' => 'תודות',
+	'mwe-embedplayer-about-library' => 'על אודות הנגן Kaltura',
 	'mwe-embedplayer-clip_linkback' => 'דף המקור של הסרטון',
 	'mwe-embedplayer-choose_player' => 'בחירת נגן וידאו',
 	'mwe-embedplayer-share_this_video' => 'שיתוף וידאו זה',
 	'mwe-embedplayer-menu_btn' => 'תפריט',
 	'mwe-embedplayer-close_btn' => 'סגירה',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC נגן',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'תוסף Ogg גנרי',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'תוסף QuickTime',
+	'mwe-embedplayer-ogg-player-kplayer' => 'נגן Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(נבחר)',
 	'mwe-embedplayer-do_not_warn_again' => 'התעלמות לעת עתה.',
+	'mwe-embedplayer-playerSelect' => 'נגנים',
 	'mwe-embedplayer-embed_site_or_blog' => 'הטמעה באתר או בבלוג שלכם',
 	'mwe-embedplayer-related_videos' => 'סרטונים קשורים',
+	'mwe-embedplayer-video-h264' => 'וידאו H.264',
+	'mwe-embedplayer-video-flv' => 'וידאו ב־Flash',
+	'mwe-embedplayer-video-ogg' => 'וידאו Ogg',
+	'mwe-embedplayer-video-audio' => 'שמע Ogg',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
