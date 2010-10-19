@@ -2,17 +2,7 @@
 * TimedText loader.    
 */
 // Scope everything in "mw"  ( keeps the global namespace clean ) 
-( function( mw ) {
-	
-	mw.addResourcePaths( {
-		"mw.TimedText" : "mw.TimedText.js",
-		"mw.style.TimedText" : "css/mw.style.TimedText.css",
-			
-		"mw.TimedTextEdit" : "mw.TimedTextEdit.js",
-		"mw.style.TimedTextEdit" : "css/mw.style.TimedTextEdit.css",
-		
-		"RemoteMwTimedText" : "remotes/RemoteMwTimedText.js"
-	} );
+( function( mw ) {	
 	
 	mw.setDefaultConfig( {
 			// If the Timed Text interface should be displayed: 

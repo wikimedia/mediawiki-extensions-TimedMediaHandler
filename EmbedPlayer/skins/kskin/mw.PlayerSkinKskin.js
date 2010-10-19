@@ -312,7 +312,7 @@ mw.PlayerSkinKskin = {
 			break; 
 			case 'download' :
 				embedPlayer.$interface.find( '.menu-download').text( 
-					gM('mwe-embedplayer-loading_txt' ) 
+					gM('mwe-loading_txt' ) 
 				);
 				// Call show download with the target to be populated
 				this.showDownload(
@@ -390,7 +390,7 @@ mw.PlayerSkinKskin = {
 			if ( data.query.pages ) {
 				for ( var i in data.query.pages ) {
 					var imageProps = data.query.pages[i];
-					// Check properites for "missing" 
+					// Check properties for "missing" 
 					if( imageProps.imageinfo && imageProps.imageinfo[0] && imageProps.imageinfo[0].descriptionurl ){					
 						// Found page 
 						$target.find( '.credits_box' ).html(

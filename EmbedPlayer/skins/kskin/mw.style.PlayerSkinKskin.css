@@ -166,6 +166,7 @@
 .k-player .k-menu-screens {
 	float: left;
 	font-size: 11px;
+	text-align: left;
 	padding: 13px 10px 15px 15px;
 }
 

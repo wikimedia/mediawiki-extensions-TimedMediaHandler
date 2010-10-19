@@ -7,11 +7,7 @@
 *  mw.PlayerControlBuilder Handles skinning of the player controls
 */
 
-/**
- * Add the messages text: 
- */
- 
-mw.includeAllModuleMessages();
+
 /*
 * The default video attributes supported by embedPlayer
 */ 
@@ -134,7 +130,71 @@ mw.setDefaultConfig( 'EmbedPlayer.Attributes', {
 	"type" : null
 });
 
+mw.setDefaultConfig( {		
+	// If the player controls should be overlaid on top of the video ( if supported by playback method)
+	// can be set to false per embed player via overlayControls attribute 
+	'EmbedPlayer.OverlayControls' : true,
+	
+	'EmbedPlayer.LibraryPage':  'http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library',
+	
+	// A default apiProvider ( ie where to lookup subtitles, video properties etc )
+	// NOTE: Each player instance can also specify a specific provider  
+	"EmbedPlayer.ApiProvider" : "local",
+	
+	// Default video size ( if no size provided )	
+	"EmbedPlayer.DefaultSize" : "400x300",
 
+	// If the video player should attribute kaltura	
+	"EmbedPlayer.KalturaAttribution" : true,
+
+	// The attribution button
+	'EmbedPlayer.AttributionButton' :{
+		'title' : 'Kaltura html5 video library',
+	    'href' :  'http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library',
+	    // Style icon to be applied 
+	    'class' : 'kaltura-icon',
+	    // An icon image url ( should be a 12x12 image or data url )  
+	    'iconurl' : false
+	},
+
+	 
+	// Set the browser player warning flag displays warning for non optimal playback 
+	"EmbedPlayer.ShowNativeWarning" : true,
+	
+	// If fullscreen is global enabled. 
+	"EmbedPlayer.EnableFullscreen" : true,
+	
+	// If mwEmbed should use the Native player controls
+	// this will prevent video tag rewriting and skinning
+	// useful for devices such as iPad / iPod that
+	// don't fully support DOM overlays or don't expose full-screen 
+	// functionality to javascript  
+	"EmbedPlayer.NativeControls" : false,
+	
+	// If mwEmbed should use native controls on mobile safari
+	"EmbedPlayer.NativeControlsMobileSafari" : true,
+	
+	
+	// The z-index given to the player interface during full screen ( high z-index )  
+	"EmbedPlayer.fullScreenZIndex" : 999998,
+	
+	// The default share embed mode ( can be "object" or "videojs" )
+	//
+	// "object" will provide a <object tag pointing to mwEmbedFrame.php
+	// 		Object embedding should be much more compatible with sites that
+	//		let users embed flash applets
+	// "videojs" will include the source javascript and video tag to
+	//	 	rewrite the player on the remote page DOM  
+	//		Video tag embedding is much more mash-up friendly but exposes
+	//		the remote site to the mwEmbed javascript and can be a xss issue. 
+	"EmbedPlayer.ShareEmbedMode" : 'object',
+	
+	// Default player skin name
+	"EmbedPlayer.SkinName" : "mvpcf",	
+	
+	// Number of milliseconds between interface updates 		
+	'EmbedPlayer.MonitorRate' : 250
+}
 /**
  * The base source attribute checks
  * also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
@@ -261,7 +321,7 @@ mw.setDefaultConfig( 'embedPlayerSourceAttributes', [
 						'width' : width,
 						'height' : height
 					})
-				)				
+				);				
 			}
 		});
 		
@@ -302,7 +362,7 @@ mw.setDefaultConfig( 'embedPlayerSourceAttributes', [
 				callback();
 			}
 				
-		})
+		});
 	};
 
 } )( jQuery );
@@ -434,7 +494,7 @@ EmbedPlayerManager.prototype = {
 				
 				// Copy over any data attributes from the playerElement 
 				if( mw.getConfig( 'EmbedPlayer.DataAttributes' ) ) {
-					var dataAttr = mw.getConfig( 'EmbedPlayer.DataAttributes' )
+					var dataAttr = mw.getConfig( 'EmbedPlayer.DataAttributes' );
 					for( var i in dataAttr ){
 						if( $j( playerElement ).data( i ) ){
 							$j( '#' + playerInterface.id ).data( i, $j( playerElement ).data( i ) );
@@ -444,7 +504,7 @@ EmbedPlayerManager.prototype = {
 				
 				// Pass the id to any hook that needs to interface prior to checkPlayerSources
 				mw.log("EmbedPlayer::addElement :trigger " + playerInterface.id );
-				$j( mw ).trigger ( 'newEmbedPlayerEvent',  playerInterface.id );
+				$j( mw ).trigger ( 'newEmbedPlayerEvent', $j( '#' + playerInterface.id ).get(0) );
 				
 				// Issue the checkPlayerSources call to the new player interface:
 				// make sure to use the element that is in the DOM:						
@@ -572,7 +632,7 @@ EmbedPlayerManager.prototype = {
 			.show()
 			.after( 
 				$j( swapPlayerElement ).css( 'display', 'none' )
-			)
+			);
 		} else {
 			$j( targetElement ).replaceWith( swapPlayerElement );
 		}
@@ -589,7 +649,7 @@ EmbedPlayerManager.prototype = {
 			if( playerInterface.useNativePlayerControls() ) {
 				$j( targetElement )
 					.getAbsoluteOverlaySpinner()
-					.attr('id', 'loadingSpinner_' + playerInterface.id ) 
+					.attr('id', 'loadingSpinner_' + playerInterface.id );
 			}else{
 				$j( swapPlayerElement ).append( 
 					$j('<div />')
@@ -642,7 +702,7 @@ EmbedPlayerManager.prototype = {
 			}
 		}
 	}
-}
+};
 
 /**
   * mediaSource class represents a source for a media element.
@@ -1130,7 +1190,7 @@ mediaElement.prototype = {
 			var mimeType = playableSources[source].mimeType;
 			var player =  mw.EmbedTypes.players.defaultPlayer( mimeType );
 			if ( player && player.library == 'Native'	) {
-				mw.log('Set native playback');
+				mw.log('EmbedPlayer::Set native playback');
 				this.selectedSource = playableSources[ source ];
 				return true;
 			}			
@@ -1193,9 +1253,9 @@ mediaElement.prototype = {
 	*/
 	hasStreamOfMIMEType: function( mimeType )
 	{
-		for ( source in this.sources )
+		for ( var i = 0; i < this.sources.length; i++ )
 		{
-			if ( this.sources[source].getMIMEType() == mimeType ){
+			if ( this.sources[i].getMIMEType() == mimeType ){
 				return true;
 			}
 		}
@@ -1472,7 +1532,7 @@ mw.EmbedPlayer.prototype = {
 						.attr( 'src', customSource.src );	
 					// xxx todo pull list of valid source attributes from mediaSource prototype
 					if( customSource.type ){
-						$source.attr('type', customSource.type )
+						$source.attr('type', customSource.type );
 					}
 					if( customSource.title ){
 						$source.attr('title', customSource.title );
@@ -1618,6 +1678,7 @@ mw.EmbedPlayer.prototype = {
 			finishCheckPlayerSources();
 		}
 	},
+	
 	/**
 	 * Insert and play a video source ( useful for ads or bumper videos )
 	 * 
@@ -1722,7 +1783,6 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* Check for timed Text support 
 	* and load necessary libraries
-	* 
 	*/
 	checkForTimedText: function( ) {
 		var _this = this;
@@ -1766,8 +1826,6 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		if ( this.selectedPlayer ) {
-			mw.log( "Playback system: " + this.selectedPlayer.library );					
-						
 			// Inherit the playback system of the selected player:			
 			this.inheritEmbedPlayer();
 		} else {
@@ -2141,7 +2199,7 @@ mw.EmbedPlayer.prototype = {
 		  		})
 		  		.text( gM( 'mwe-embedplayer-download_clip' ) )
 		  	)
-		  )
+		  );
 		}
 		// hide
 	},
@@ -2415,8 +2473,10 @@ mw.EmbedPlayer.prototype = {
 		// so we have to do a full replace ( if controls are not included initially ) 		
 		if( mw.isMobileHTML5() && mobileSafariNeedsRefresh ) {
 			var source = this.mediaElement.getSources( 'video/h264' )[0];
-			if( source && ! source.src ){
-				mw.log( 'Error: should have caught no playable sources for mobile safari earlier' );
+			// XXX note this should be updated once mobile supports h.264  
+			if( !source || !source.src ){
+				mw.log( 'Warning: Your probably fakeing the iPhone userAgent ( no h.264 source )' );
+				source = this.mediaElement.getSources( 'video/ogg' )[0];
 			}
 			
 			var videoAttribues = {
@@ -2637,7 +2697,7 @@ mw.EmbedPlayer.prototype = {
 	doLinkBack: function() {
 		if ( ! this.linkback && this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
-			this.displayMenuOverlay( gM( 'mwe-embedplayer-loading_txt' ) );
+			this.displayMenuOverlay( gM( 'mwe-loading_txt' ) );
 			this.getMvJsonUrl( this.roe, function( data ) {
 				_this.mediaElement.addROE( data );
 				_this.doLinkBack();

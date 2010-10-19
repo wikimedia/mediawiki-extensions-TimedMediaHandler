@@ -202,7 +202,7 @@ mw.includeAllModuleMessages();
 					'targetMenuContainer' : _this.menuTarget,
 					'positionOpts' : positionOpts,
 					'backLinkText' : gM( 'mwe-timedtext-back-btn' )
-				} )
+				} );
 			});
 		},
 		
@@ -429,10 +429,7 @@ mw.includeAllModuleMessages();
 						// Layout Menu option
 					$j.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
 						_this.getLayoutMenu()
-					)
-					
-					// Search Menu option
-					//$j.getLineItem( gM('mwe-timedtext-search'),  'search')
+					)								
 				);
 			}
 			// Put in the "Make Transcript" link if config enabled and we have an api key
@@ -442,7 +439,8 @@ mw.includeAllModuleMessages();
 				); 
 			}
 			
-										
+			$j( _this.embedPlayer ).trigger( 'TimedText.BuildCCMenu', $menu ) ;
+			
 			return $menu;
 		},
 		
@@ -466,6 +464,10 @@ mw.includeAllModuleMessages();
 			});
 		},
 		
+		showMiroSubs: function(){
+			
+		},
+		
 		/**
 		* Utility function to assist in menu build out:
 		* Get menu line item (li) html:  <li><a> msgKey </a></li> 
@@ -478,9 +480,9 @@ mw.includeAllModuleMessages();
 		 */		
 		getLiAddText: function() {
 			var _this = this;
-			return $j.getLineItem( gM( 'mwe-timedtext-add-timed-text'), 'script', function() {
-				_this.showTimedTextEditUI( 'add' );
-			} );
+			return $j.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
+						_this.showTimedTextEditUI( 'add' );
+					} );
 		},
 		
 		/**
@@ -651,12 +653,12 @@ mw.includeAllModuleMessages();
 					// Init Category menu item if it does not already exist: 
 					if( !catSourceList[ catKey ] ) {
 						// Set up catList pointer: 
-						catSourceList[ catKey ] = [ ]
+						catSourceList[ catKey ] = [ ];
 					}
 					// Append to the source category key menu item:
 					catSourceList[ catKey ].push(
 						_this.getLiSource( source )
-					)		
+					);	
 				}else{
 					sourcesWithoutCategory.push( _this.getLiSource( source ) );
 				}
@@ -669,7 +671,7 @@ mw.includeAllModuleMessages();
 					for(var i in catSourceList[ catKey ]) {
 						$catChildren.append(
 							catSourceList[ catKey ][i]
-						) 
+						);
 					}
 					// Append a cat menu item for each category list
 					$langMenu.append(
@@ -683,7 +685,7 @@ mw.includeAllModuleMessages();
 					for(var i in catSourceList[ catKey ]) {
 						$langMenu.append(
 							catSourceList[ catKey ][i]
-						) 
+						);
 					}
 				}
 			}		
@@ -696,7 +698,7 @@ mw.includeAllModuleMessages();
 			$langMenu.append( 
 				_this.getLiAddText() 
 			);
-			
+
 			return $langMenu; 
 		},
 		
@@ -745,7 +747,7 @@ mw.includeAllModuleMessages();
 		 * Add an track div to the embedPlayer
 		 */
 		addItextDiv: function( category ) {
-			mw.log(" addItextDiv: " +  category )
+			mw.log(" addItextDiv: " +  category );
 			// Get the relative positioned player class from the controlBuilder:
 			var $playerTarget =  this.embedPlayer.$interface;
 			
@@ -767,7 +769,7 @@ mw.includeAllModuleMessages();
 					})
 					.append(
 						$j('<span \>')
-					)									
+					);								
 				
 				// Scale the text Relative to player size:  			
 				$track.css(

@@ -28,12 +28,18 @@ $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandl
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 $wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 
+// Load all the mwEmbed modules: 
+MwEmbedResourceManager::registerModulePath( 'extensions/TimedMediaHandler/EmbedPlayer' );
+MwEmbedResourceManager::registerModulePath( 'extensions/TimedMediaHandler/TimedText' );
+
 
 // Setup a hook for iframe=true (will strip the interface and only output the player)
 $wgHooks['ArticleFromTitle'][] = 'TimedMediaHandler::iframeOutputHook';
 
-// OggTranscode setup
+// AutoLoad Classes:
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
+$wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";
+
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'WebVideoTranscode::schema';
 
 $wgExtensionCredits['media'][] = array(
@@ -44,8 +50,7 @@ $wgExtensionCredits['media'][] = array(
 	'descriptionmsg' => 'timedmedia-desc',
 );
 
-// Include javascript resource registration:
-include( "$timedMediaDir/TimedMediaHandler.modules.hooks.php" ); 
+
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
@@ -73,7 +78,7 @@ $wgOggThumbLocation = '/usr/bin/oggThumb';
 // The location of ffmpeg2theora ( for metadata and transcoding )
 $wgffmpeg2theoraPath = '/usr/bin/ffmpeg2theora';
 
-// Location of the FFmpeg binary
+// Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
 
