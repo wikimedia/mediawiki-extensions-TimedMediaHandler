@@ -226,7 +226,7 @@ $messages['cs'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'mwe-timedtext-editor' => 'Editor für <i>Timed Text</i>',
+	'mwe-timedtext-editor' => 'Ermöglicht die Nutzung des „Timed Text“-Editors',
 	'mwe-timedtext-stage-transcribe' => 'Abschrift anfertigen',
 	'mwe-timedtext-stage-sync' => 'Synchronisieren',
 	'mwe-timedtext-stage-translate' => 'Übersetzen',
@@ -239,9 +239,9 @@ $messages['de'] = array(
 	'mwe-timedtext-upload-text-desc-help' => 'Das Interface zum Hochladen von Textdateien akzeptiert SRT-Dateien',
 	'mwe-timedtext-upload-text-desc-help-browse' => 'Durchsuche deinen lokalen Computer nach der SRT-Datei, die du hochladen möchtest',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Wähle die Sprache der Datei',
-	'mwe-timedtext-upload-text-desc-help-review' => 'Sehe den Text durch und bearbeite ihn gegebenenfalls, bevor du ihn mit einem Klick auf Hochladen hinzufügst',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Sehe den Text durch und bearbeite ihn gegebenenfalls, bevor du ihn mit einem Klick auf „Hochladen“ hinzufügst',
 	'mwe-timedtext-upload-text-preview' => 'Text durchsehen',
-	'mwe-timedtext-upload-text-success' => 'Das Hochladen des <i>Timed Text</i> war erfolgreich',
+	'mwe-timedtext-upload-text-success' => 'Das Hochladen des „Timed Text“ war erfolgreich',
 	'mwe-timedtext-upload-text-done' => 'Das Hochladen ist abgeschlossen',
 	'mwe-timedtext-upload-text-fail-desc' => 'Das Hochladen war nicht erfolgreich',
 	'mwe-timedtext-upload-text-fail-title' => 'Das Hochladen ist fehlgeschlagen',
@@ -249,8 +249,8 @@ $messages['de'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Hochladen ist abgeschlossen',
 	'mwe-timedtext-back-btn' => 'Zurück',
 	'mwe-timedtext-choose-text' => 'Text auswählen',
-	'mwe-timedtext-add-timed-text' => '<i>Timed Text</i> hinzufügen',
-	'mwe-timedtext-loading-text-edit' => 'Lade den Editor für <i>Timed Text</i>',
+	'mwe-timedtext-upload-timed-text' => 'Untertitel hochladen',
+	'mwe-timedtext-loading-text-edit' => 'Lade den Editor für „Timed Text“',
 	'mwe-timedtext-search' => 'Suche den Videoclip',
 	'mwe-timedtext-layout' => 'Ausrichtung',
 	'mwe-timedtext-layout-ontop' => 'Oberhalb des Videoclips',
@@ -264,7 +264,7 @@ $messages['de'] = array(
 	'mwe-timedtext-textcat-tik' => 'Text-Ticker',
 	'mwe-timedtext-textcat-ar' => 'Aktive Regionen',
 	'mwe-timedtext-textcat-nb' => 'Anmerkung',
-	'mwe-timedtext-textcat-meta' => '<i>Timed Text</i> Metadaten',
+	'mwe-timedtext-textcat-meta' => '„Timed Text“-Metadaten',
 	'mwe-timedtext-textcat-trx' => 'Abschrift',
 	'mwe-timedtext-textcat-lrc' => 'Liedtext',
 	'mwe-timedtext-textcat-lin' => 'Sprachliche Beschreibung',
@@ -386,6 +386,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  * @author Pertile
  * @author Translationista
  */
@@ -413,7 +414,7 @@ $messages['es'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Carga finalizada',
 	'mwe-timedtext-back-btn' => 'Atrás',
 	'mwe-timedtext-choose-text' => 'Escoger texto',
-	'mwe-timedtext-add-timed-text' => 'Añadir texto sincronizado',
+	'mwe-timedtext-upload-timed-text' => 'Subir subtítulos',
 	'mwe-timedtext-loading-text-edit' => 'Cargando el editor de texto sincronizado',
 	'mwe-timedtext-search' => 'Buscar clip',
 	'mwe-timedtext-layout' => 'Composición:',
@@ -727,6 +728,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -744,11 +746,13 @@ $messages['hu'] = array(
 	'mwe-timedtext-upload-text-another' => 'Másik feltöltése',
 	'mwe-timedtext-upload-text-done-uploading' => 'A feltöltés befejeződött',
 	'mwe-timedtext-back-btn' => 'Vissza',
+	'mwe-timedtext-upload-timed-text' => 'Felirat feltöltése',
 	'mwe-timedtext-layout' => 'Elrendezés',
 	'mwe-timedtext-layout-ontop' => 'A videó felett',
 	'mwe-timedtext-layout-below' => 'A videó alatt',
 	'mwe-timedtext-layout-off' => 'Feliratok elrejtése',
 	'mwe-timedtext-loading-text' => 'Szöveg betöltése…',
+	'mwe-timedtext-textcat-sub' => 'Felirat',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-lrc' => 'Dalszöveg',
 );
@@ -897,7 +901,7 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'アップロード完了',
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
-	'mwe-timedtext-add-timed-text' => '字幕の追加',
+	'mwe-timedtext-upload-timed-text' => '字幕のアップロード',
 	'mwe-timedtext-loading-text-edit' => '字幕エディタの読み込み中',
 	'mwe-timedtext-search' => 'クリップの検索',
 	'mwe-timedtext-layout' => 'レイアウト',
@@ -941,7 +945,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => "D'Eroplueden ass fäerdeg",
 	'mwe-timedtext-back-btn' => 'Zréck',
 	'mwe-timedtext-choose-text' => 'Text eraussichen',
-	'mwe-timedtext-add-timed-text' => 'Sychroniséierten Text derbäisetzen',
+	'mwe-timedtext-upload-timed-text' => 'Ënnertitelen eroplueden',
 	'mwe-timedtext-search' => 'Clip sichen',
 	'mwe-timedtext-layout' => 'Layout',
 	'mwe-timedtext-layout-ontop' => 'Iwwert dem Video',
@@ -949,11 +953,13 @@ $messages['lb'] = array(
 	'mwe-timedtext-layout-off' => 'Ënnertitele verstoppen',
 	'mwe-timedtext-loading-text' => 'Text gëtt gelueden ...',
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
+	'mwe-timedtext-textcat-tad' => 'Audio-Beschreiwung',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-tik' => 'Text-Ticker',
 	'mwe-timedtext-textcat-ar' => 'Aktiv Regiounen',
 	'mwe-timedtext-textcat-nb' => 'Notiz',
 	'mwe-timedtext-textcat-lrc' => 'Liddertext',
+	'mwe-timedtext-textcat-lin' => 'Linguistesch Markéierung',
 	'mwe-timedtext-textcat-cue' => 'Referenz-Punkten',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Ënnertitele fir de Clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keng $1 Ënnertitele goufe fonnt fir de Clip: $2',
@@ -986,7 +992,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Готово со подигање',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-choose-text' => 'Одберете текст',
-	'mwe-timedtext-add-timed-text' => 'Додај синхронизиран текст',
+	'mwe-timedtext-upload-timed-text' => 'Подигни титлови',
 	'mwe-timedtext-loading-text-edit' => 'Ги вчитувам уредникот на синхронизиран текст',
 	'mwe-timedtext-search' => 'Пребарај снимка',
 	'mwe-timedtext-layout' => 'Распоред',
@@ -1142,7 +1148,7 @@ $messages['pl'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Przesyłanie zakończone',
 	'mwe-timedtext-back-btn' => 'Wstecz',
 	'mwe-timedtext-choose-text' => 'Wybierz tekst',
-	'mwe-timedtext-add-timed-text' => 'Dodaj tekst ze znacznikami czasu',
+	'mwe-timedtext-upload-timed-text' => 'Prześlij listę dialogową',
 	'mwe-timedtext-loading-text-edit' => 'Ładowanie edytora tekstu ze znacznikami czasu',
 	'mwe-timedtext-search' => 'Szukaj klipu',
 	'mwe-timedtext-layout' => 'Układ',
@@ -1194,7 +1200,7 @@ $messages['pms'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Cariament fàit',
 	'mwe-timedtext-back-btn' => 'André',
 	'mwe-timedtext-choose-text' => 'Serne ël test',
-	'mwe-timedtext-add-timed-text' => 'Gionté dël test sincronisà',
+	'mwe-timedtext-upload-timed-text' => 'Caria sottìtol',
 	'mwe-timedtext-loading-text-edit' => "Cariament ëd l'editor ëd test sincronisà",
 	'mwe-timedtext-search' => 'Sërché un tòch filmà',
 	'mwe-timedtext-layout' => 'Presentassion',
