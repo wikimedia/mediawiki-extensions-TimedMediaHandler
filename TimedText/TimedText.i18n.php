@@ -451,6 +451,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'mwe-timedtext-editor' => 'Éditeur de texte synchronisé',
@@ -476,7 +477,7 @@ $messages['fr'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Téléversement effectué',
 	'mwe-timedtext-back-btn' => 'Revenir',
 	'mwe-timedtext-choose-text' => 'Choisissez le texte',
-	'mwe-timedtext-add-timed-text' => 'Ajouter du texte synchronisé',
+	'mwe-timedtext-upload-timed-text' => 'Importer des sous-titres',
 	'mwe-timedtext-loading-text-edit' => "Chargement de l'éditeur de texte synchronisé",
 	'mwe-timedtext-search' => 'Recherche un clip',
 	'mwe-timedtext-layout' => 'Disposition',
@@ -784,7 +785,7 @@ $messages['ia'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Finite incargar',
 	'mwe-timedtext-back-btn' => 'Retornar',
 	'mwe-timedtext-choose-text' => 'Selige texto',
-	'mwe-timedtext-add-timed-text' => 'Adder subtitulos',
+	'mwe-timedtext-upload-timed-text' => 'Incargar subtitulos',
 	'mwe-timedtext-loading-text-edit' => 'Carga le editor de subtitulos…',
 	'mwe-timedtext-search' => 'Cercar clip',
 	'mwe-timedtext-layout' => 'Disposition',
@@ -1043,7 +1044,7 @@ $messages['nl'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Upload afgerond',
 	'mwe-timedtext-back-btn' => 'Terug',
 	'mwe-timedtext-choose-text' => 'Tekst kiezen',
-	'mwe-timedtext-add-timed-text' => 'Ondertitels toevoegen',
+	'mwe-timedtext-upload-timed-text' => 'Ondertitels uploaden',
 	'mwe-timedtext-loading-text-edit' => 'Bezig met het laden van de tekstverwerker voor ondertitels',
 	'mwe-timedtext-search' => 'Clip zoeken',
 	'mwe-timedtext-layout' => 'Vormgeving',
@@ -1262,7 +1263,7 @@ $messages['pt'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Não carregar mais',
 	'mwe-timedtext-back-btn' => 'Voltar',
 	'mwe-timedtext-choose-text' => 'Escolher texto',
-	'mwe-timedtext-add-timed-text' => 'Adicionar legendas',
+	'mwe-timedtext-upload-timed-text' => 'Upload das legendas',
 	'mwe-timedtext-loading-text-edit' => 'A carregar o editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
 	'mwe-timedtext-layout' => 'Posição',
@@ -1314,7 +1315,7 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Carregamento feito',
 	'mwe-timedtext-back-btn' => 'Voltar',
 	'mwe-timedtext-choose-text' => 'Escolher texto',
-	'mwe-timedtext-add-timed-text' => 'Adicionar legendas',
+	'mwe-timedtext-upload-timed-text' => 'Carregar legendas',
 	'mwe-timedtext-loading-text-edit' => 'Carregando editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
 	'mwe-timedtext-layout' => 'Posição',
@@ -1339,6 +1340,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1365,7 +1367,7 @@ $messages['ru'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Загрузка завершена',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-choose-text' => 'Выберите текст',
-	'mwe-timedtext-add-timed-text' => 'Добавить синхронизированный текст',
+	'mwe-timedtext-upload-timed-text' => 'Загрузить субтитры',
 	'mwe-timedtext-loading-text-edit' => 'Загрузка редактора синхронизированного текста',
 	'mwe-timedtext-search' => 'Поиск клипа',
 	'mwe-timedtext-layout' => 'Положение',
@@ -1400,6 +1402,7 @@ $messages['rue'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'mwe-timedtext-stage-translate' => 'Prevedi',
 	'mwe-timedtext-back-btn' => 'Nazaj',
 );
 
@@ -1493,6 +1496,13 @@ $messages['tl'] = array(
 	'mwe-timedtext-upload-text-desc-help-browse' => 'Tumingin-tingin sa iyong lokal na kompyuter para sa talaksang .srt na nais mong ikargang paitaas',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Piliin ang wika ng talaksan',
 	'mwe-timedtext-upload-text-desc-help-review' => 'Suriing muli / baguhin ang nilalaman ng teksto at pagkaraan ay pindutin ang ikargang paitaas upang maidagdag ang teksto',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'mwe-timedtext-back-btn' => 'Назад',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
