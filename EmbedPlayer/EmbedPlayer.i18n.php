@@ -1108,7 +1108,9 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-missing-source' => 'Žane widejo namakane.',
 );
 
-/** Hungarian (Magyar) */
+/** Hungarian (Magyar)
+ * @author Dani
+ */
 $messages['hu'] = array(
 	'mwe-embedplayer-credit-title' => 'Cím: $1',
 	'mwe-embedplayer-loading_plugin' => 'bővítmény betöltése…',
@@ -1121,6 +1123,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-pause_clip' => 'Klip pillanatállj',
 	'mwe-embedplayer-volume_control' => 'Hangerőszabályzó',
 	'mwe-embedplayer-player_options' => 'Lejátszó beállításai',
+	'mwe-embedplayer-timed_text' => 'Időzített szöveg',
 	'mwe-embedplayer-player_fullscreen' => 'Teljes képernyő',
 	'mwe-embedplayer-next_clip_msg' => 'Következő klip lejátszása',
 	'mwe-embedplayer-prev_clip_msg' => 'Előző klip lejátszása',
@@ -1135,13 +1138,20 @@ $messages['hu'] = array(
 	'mwe-embedplayer-download' => 'Letöltés',
 	'mwe-embedplayer-share' => 'Megosztás',
 	'mwe-embedplayer-credits' => 'Készítők',
+	'mwe-embedplayer-about-library' => 'A Kaltura lejátszó névjegye',
+	'mwe-embedplayer-about-library-desc' => 'A Kaltura HTML5-ös médialejátszó lehetővé teszi, hogy kihasználd a HTML5 <code><nowiki><video></nowiki></code> és <code><nowiki><audio></nowiki></code> elemeit azonos felületet biztonsítva az összes lényeges böngésző esetén.
+	
+[$1 További információ a Kaltura lejátszóról].',
 	'mwe-embedplayer-clip_linkback' => 'Klip forráslapja',
 	'mwe-embedplayer-choose_player' => 'Videolejátszó választása',
+	'mwe-embedplayer-no-player' => 'Nincs megfelelő lejátszó a következőhöz: $1',
 	'mwe-embedplayer-share_this_video' => 'Videó megosztása',
 	'mwe-embedplayer-video_credits' => 'A videó készítői',
 	'mwe-embedplayer-menu_btn' => 'Menü',
 	'mwe-embedplayer-close_btn' => 'Bezárás',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg lejátszó',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 lejátszó',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Általános Ogg bővítmény',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-bővítmény',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -1153,11 +1163,18 @@ $messages['hu'] = array(
 	'mwe-embedplayer-generic_missing_plugin' => 'A böngésző nem támogatja a következő lejátszási típust: <b>$1</b><br />Látogasd meg a <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Lejátszási módszerek</a> lapot egy lejátszó letöltéséhez.<br />',
 	'mwe-embedplayer-for_best_experience' => 'Jobb videolejátszási élményhez ajánljuk:<br /><b><a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed">Firefox 3.5</a>.</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Eltüntetés egyelőre.',
+	'mwe-embedplayer-playerSelect' => 'Lejátszók',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Olvasd el ezt</a>, mielőtt beillesztenéd.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Beágyazás egy lapra',
 	'mwe-embedplayer-related_videos' => 'Kapcsolódó videók',
 	'mwe-embedplayer-seeking' => 'keresés',
+	'mwe-embedplayer-buffering' => 'pufferelés',
 	'mwe-embedplayer-copy-code' => 'Kód másolása',
+	'mwe-embedplayer-video-h264' => 'H.264 videó',
+	'mwe-embedplayer-video-flv' => 'Flash videó',
+	'mwe-embedplayer-video-ogg' => 'Ogg videó',
+	'mwe-embedplayer-video-audio' => 'Ogg hangfájl',
+	'mwe-embedplayer-missing-source' => 'Nem található forrásvideó',
 );
 
 /** Interlingua (Interlingua)

@@ -1781,6 +1781,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'timedmedia-desc' => 'Upravljavec časovnih predstavnosti (video, audio, timedText) s prekodiranjem v Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Zvočna datoteka Ogg $1, $2',
 	'timedmedia-short-video' => 'Videodatoteka Ogg $1, $2',
 	'timedmedia-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
