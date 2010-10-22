@@ -2275,9 +2275,13 @@ $messages['sv'] = array(
 	'mwe-embedplayer-seeking' => 'söker',
 );
 
-/** Telugu (తెలుగు) */
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
 $messages['te'] = array(
+	'mwe-embedplayer-credit-title' => 'శీర్షిక: $1',
 	'mwe-embedplayer-player_fullscreen' => 'నిండుతెర',
+	'mwe-embedplayer-download' => 'దింపుకోలు',
 	'mwe-embedplayer-menu_btn' => 'మెనూ',
 	'mwe-embedplayer-close_btn' => 'మూసివేయి',
 	'mwe-embedplayer-related_videos' => 'సంబంధిత దృశ్యకాలు',

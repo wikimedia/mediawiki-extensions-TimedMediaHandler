@@ -1216,7 +1216,7 @@ $messages['pms'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Cariament fàit',
 	'mwe-timedtext-back-btn' => 'André',
 	'mwe-timedtext-choose-text' => 'Serne ël test',
-	'mwe-timedtext-upload-timed-text' => 'Caria sottìtol',
+	'mwe-timedtext-upload-timed-text' => 'Carié dij sot-tìtoj',
 	'mwe-timedtext-loading-text-edit' => "Cariament ëd l'editor ëd test sincronisà",
 	'mwe-timedtext-search' => 'Sërché un tòch filmà',
 	'mwe-timedtext-layout' => 'Presentassion',
@@ -1490,7 +1490,11 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'mwe-timedtext-stage-translate' => 'అనువదించండి',
+	'mwe-timedtext-select-language' => 'భాషని ఎంచుకోండి',
+	'mwe-timedtext-back-btn' => 'వెనక్కి',
 	'mwe-timedtext-layout' => 'అమరిక',
+	'mwe-timedtext-textcat-sub' => 'ఉపశీర్షికలు',
 );
 
 /** Tagalog (Tagalog)
