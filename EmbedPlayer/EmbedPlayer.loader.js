@@ -10,7 +10,7 @@
 	mw.setDefaultConfig( {
 		// What tags will be re-written to video player by default
 		// Set to empty string or null to avoid automatic video tag rewrites to embedPlayer 	
-		"EmbedPlayer.RewriteTags" : "video,audio,playlist"		
+		"EmbedPlayer.RewriteTags" : "video,audio"		
 	} );
 	
 	/**
@@ -44,7 +44,7 @@
 	mw.rewritePagePlayerTags = function() {
 		mw.log( 'EmbedPlayer:: Document::' + mw.documentHasPlayerTags() );
 		if( mw.documentHasPlayerTags() ) {
-			var  rewriteElementCount = 0;
+			var rewriteElementCount = 0;
 			
 			// Set each player to loading ( as early on as possible ) 
 			$j( mw.getConfig( 'EmbedPlayer.RewriteTags' ) ).each( function( index, element ){

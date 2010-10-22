@@ -194,7 +194,8 @@ mw.setDefaultConfig( {
 	
 	// Number of milliseconds between interface updates 		
 	'EmbedPlayer.MonitorRate' : 250
-}
+});
+
 /**
  * The base source attribute checks
  * also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
@@ -2390,7 +2391,7 @@ mw.EmbedPlayer.prototype = {
 						mw.getConfig( 'imagesPath' ) + 'vid_default_thumb.jpg';				
 		
 		// Poster support is not very consistent in browsers
-		// use a jpg poster image:  
+		// use a jpeg poster image:  
 		$j( this ).html(
 			$j( '<img />' )
 			.css({
