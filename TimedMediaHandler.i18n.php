@@ -203,7 +203,7 @@ $messages['avk'] = array(
 /** Samogitian (Žemaitėška)
  * @author Hugo.arg
  */
-$messages['bat-smg'] = array(
+$messages['sgs'] = array(
 	'timedmedia-download' => 'Atsėsiōstė faila',
 );
 
