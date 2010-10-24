@@ -200,13 +200,6 @@ $messages['avk'] = array(
 	'timedmedia-desc-link' => 'Icde bat iyeltak',
 );
 
-/** Samogitian (Žemaitėška)
- * @author Hugo.arg
- */
-$messages['sgs'] = array(
-	'timedmedia-download' => 'Atsėsiōstė faila',
-);
-
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -1739,6 +1732,13 @@ $messages['sah'] = array(
 	'timedmedia-desc-link' => 'Бу билэ туһунан',
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['sgs'] = array(
+	'timedmedia-download' => 'Atsėsiōstė faila',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */
@@ -1790,6 +1790,8 @@ $messages['sl'] = array(
 	'timedmedia-long-multiplexed' => '(multipleksna zvočna/videodatoteka ogg, $1, dolžina $2, $4 × $5 pik, $3 skupno)',
 	'timedmedia-long-general' => '(predstavnostna datoteka Ogg, dolžina $2, $3)',
 	'timedmedia-long-error' => '(Neveljavna datoteka Ogg: $1)',
+	'timedmedia-no-player-js' => 'Oprostite, vaš brskalnik ima ali onemogočen JavaScript ali pa nima podprtega predvajalnika.<br />
+Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">prenesete predvajalnik</a> za predvajanje posnetka v vašem brskalniku.',
 	'timedmedia-more' => 'Več ...',
 	'timedmedia-dismiss' => 'Zapri',
 	'timedmedia-download' => 'Prenesi datoteko',

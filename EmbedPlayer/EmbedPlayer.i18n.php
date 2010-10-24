@@ -615,7 +615,9 @@ $messages['el'] = array(
 	'mwe-embedplayer-video-audio' => 'Ogg audio',
 );
 
-/** Esperanto (Esperanto) */
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
 $messages['eo'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'Plenekrana',
 	'mwe-embedplayer-download_full' => 'Elŝuti kompletan filmetan dosieron:',
@@ -627,7 +629,18 @@ $messages['eo'] = array(
 	'mwe-embedplayer-close_btn' => 'Fermi',
 	'mwe-embedplayer-ogg-player-selected' => '(elektita)',
 	'mwe-embedplayer-generic_missing_plugin' => 'Via retumilo ne verŝajne subtenas la jenan aŭdvidean dosiertipon: <b>$1</b><br />Vizitu la paĝon pri <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Aŭdvideaj MetodojMethods</a> por elŝuti la taŭgan kromprogramon..<br />',
+	'mwe-embedplayer-playerSelect' => 'Ludantoj',
 	'mwe-embedplayer-read_before_embed' => 'Bonvolu legi la <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">sekurecajn notojn pri ekstera enkorpigado</a> antaŭ fakte enkorpigado!',
+	'mwe-embedplayer-embed_site_or_blog' => 'Enmeti en paĝo',
+	'mwe-embedplayer-related_videos' => 'Rilataj videoj',
+	'mwe-embedplayer-seeking' => 'serĉante',
+	'mwe-embedplayer-buffering' => 'bufrante',
+	'mwe-embedplayer-copy-code' => 'Kopii kodon',
+	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-flv' => 'Flash video',
+	'mwe-embedplayer-video-ogg' => 'Ogg video',
+	'mwe-embedplayer-video-audio' => 'Ogg aŭdiaĵo',
+	'mwe-embedplayer-missing-source' => 'Neniu fonta video estis trovita',
 );
 
 /** Spanish (Español)
@@ -2282,8 +2295,10 @@ $messages['te'] = array(
 	'mwe-embedplayer-credit-title' => 'శీర్షిక: $1',
 	'mwe-embedplayer-player_fullscreen' => 'నిండుతెర',
 	'mwe-embedplayer-download' => 'దింపుకోలు',
+	'mwe-embedplayer-share_this_video' => 'ఈ వీడియోని పంచుకోండి',
 	'mwe-embedplayer-menu_btn' => 'మెనూ',
 	'mwe-embedplayer-close_btn' => 'మూసివేయి',
+	'mwe-embedplayer-ogg-player-selected' => '(ఎంచుకున్నారు)',
 	'mwe-embedplayer-related_videos' => 'సంబంధిత దృశ్యకాలు',
 );
 

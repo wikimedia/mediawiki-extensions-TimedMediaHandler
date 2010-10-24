@@ -384,6 +384,15 @@ $messages['el'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mwe-timedtext-upload-text-fail-title' => 'Alŝutado malsukcesis',
+	'mwe-timedtext-upload-text-another' => 'Alŝuti alian',
+	'mwe-timedtext-upload-text-done-uploading' => 'Finiĝis alŝutado',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
@@ -1492,6 +1501,8 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'mwe-timedtext-stage-translate' => 'అనువదించండి',
 	'mwe-timedtext-select-language' => 'భాషని ఎంచుకోండి',
+	'mwe-timedtext-upload-text-done' => 'ఎక్కింపు పూర్తయ్యింది',
+	'mwe-timedtext-upload-text-fail-title' => 'ఎక్కింపు విఫలమైంది',
 	'mwe-timedtext-back-btn' => 'వెనక్కి',
 	'mwe-timedtext-layout' => 'అమరిక',
 	'mwe-timedtext-textcat-sub' => 'ఉపశీర్షికలు',
@@ -1521,7 +1532,11 @@ $messages['tl'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'mwe-timedtext-stage-upload' => 'Завантажити з локального файлу',
+	'mwe-timedtext-select-language' => 'Оберіть мову',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Оберіть мову файлу',
 	'mwe-timedtext-back-btn' => 'Назад',
+	'mwe-timedtext-textcat-ktv' => 'Караоке',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
