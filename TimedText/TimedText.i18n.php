@@ -194,6 +194,14 @@ $messages['br'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mwe-timedtext-stage-translate' => 'Prevedi',
+	'mwe-timedtext-back-btn' => 'Nazad',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
