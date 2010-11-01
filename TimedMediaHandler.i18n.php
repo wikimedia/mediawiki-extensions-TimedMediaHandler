@@ -1676,6 +1676,7 @@ $messages['roa-tara'] = array(
 	'timedmedia-dismiss' => 'Chiude',
 	'timedmedia-download' => 'Scareche stu file',
 	'timedmedia-desc-link' => "'Mbormaziune sus a stu file",
+	'timedmedia-oggThumb-version' => "OggHandler vole 'a versine de oggThumb $1 o cchiù ierte.",
 	'timedmedia-oggThumb-failed' => 'oggThumn ha fallite a ccrejà le miniature.',
 );
 
