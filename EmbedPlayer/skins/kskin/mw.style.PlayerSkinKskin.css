@@ -155,12 +155,12 @@
 	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
 	font-size: 11px;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 .k-player .k-options span {
 	position: relative;
 	top: 4px;
-	left: 7px;
 }
 
 .k-player .k-menu-screens {
