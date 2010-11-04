@@ -37,7 +37,8 @@
 	background-position: -16px -32px;
 }
 
-.k-player .ui-state-hover .ui-icon-volume-on{	
+/* volume icon */
+.k-player .ui-state-hover .ui-icon-volume-on {	
 	background-position: -16px -48px;
 }
 
@@ -85,7 +86,7 @@
 	margin-left: 10px;
 	border: 1px solid #EEEEEE;
 	height: 8px;
-	margin: 6px 2px 0 0px;
+	margin: 5px 2px 0 0px;
 	position: relative;
 }
 
