@@ -458,7 +458,6 @@ class TimedMediaHandler extends MediaHandler {
 			$doOutput ){
 				output_iframe_page( $title );
 				exit();
-				return false;
 		}
 		return true;
 	}
@@ -647,7 +646,6 @@ function output_iframe_page( $title ) {
 
 	if(!$wgEnableIframeEmbed){
 		throw new MWException( __METHOD__ .' is not enabled' );
-		return false;
 	}	
 
 	$videoParam['width'] 	=  ( isset( $_GET['width'] )  ) ? intval( $_GET['width'] ) 	: '400';
