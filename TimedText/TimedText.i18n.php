@@ -716,6 +716,7 @@ $messages['hsb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Nahraće skónčene',
 	'mwe-timedtext-back-btn' => 'Wróćo',
 	'mwe-timedtext-choose-text' => 'Tekst wubrać',
+	'mwe-timedtext-upload-timed-text' => 'Podtitule nahrać',
 	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizowany tekst so startuje',
 	'mwe-timedtext-search' => 'Klip pytać',
 	'mwe-timedtext-layout' => 'Wusměrjenje',

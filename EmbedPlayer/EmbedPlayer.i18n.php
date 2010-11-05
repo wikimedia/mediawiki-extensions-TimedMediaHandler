@@ -1086,6 +1086,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-download' => 'Sćahnyć',
 	'mwe-embedplayer-share' => 'Dźělić',
 	'mwe-embedplayer-credits' => 'Dźakprajenje',
+	'mwe-embedplayer-about-library' => 'Wo wothrawaku Kaltura',
 	'mwe-embedplayer-clip_linkback' => 'Žórłow strona klipa',
 	'mwe-embedplayer-choose_player' => 'Widejowy wothrawak wubrać',
 	'mwe-embedplayer-no-player' => 'Žadyn wothrawak za $1 k dispoziciji',

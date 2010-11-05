@@ -841,6 +841,7 @@ $messages['hr'] = array(
 /** Upper Sorbian (Hornjoserbsce)
  * @author Dundak
  * @author Michawiki
+ * @author Reedy
  */
 $messages['hsb'] = array(
 	'timedmedia-desc' => 'Wodźenski program za Timed Media (widejo, awdio, timedText) z překodowanjom do Ogg Theora/Vorbis',
@@ -853,7 +854,7 @@ $messages['hsb'] = array(
 	'timedmedia-long-general' => '(Ogg medijowa dataja, dołhosć: $2, $3)',
 	'timedmedia-long-error' => '(Njepłaćiwa Ogg-dataja: $1)',
 	'timedmedia-no-player-js' => 'Twój wobhladowak je pak JavaScript znjemóžnił pak nima podpěrowany wothrawak.<br />
-Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wothrawak sćahnyć</a, zo by klip w swojim wobhladowaku wothrawał.',
+Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.',
 	'timedmedia-more' => 'Wjace ...',
 	'timedmedia-dismiss' => 'Začinić',
 	'timedmedia-download' => 'Dataju sćahnyć',
