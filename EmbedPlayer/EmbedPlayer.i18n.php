@@ -1087,6 +1087,9 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-share' => 'Dźělić',
 	'mwe-embedplayer-credits' => 'Dźakprajenje',
 	'mwe-embedplayer-about-library' => 'Wo wothrawaku Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'Medijowa HTML5-biblioteka Kaltury zmóžnja lěpšiny tafličkow <code><nowiki><video></code> a <code><nowiki><audio></code> dźensa z jednotnym powjerchom wothrawaka ze wšěmi načolnymi wobhladowakami wužiwać.
+
+[$1 Wjace wo bibliotece wothrawaka Kaltura]',
 	'mwe-embedplayer-clip_linkback' => 'Žórłow strona klipa',
 	'mwe-embedplayer-choose_player' => 'Widejowy wothrawak wubrać',
 	'mwe-embedplayer-no-player' => 'Žadyn wothrawak za $1 k dispoziciji',
@@ -1114,6 +1117,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Na stronje zasadźić',
 	'mwe-embedplayer-related_videos' => 'Přiwuzne wideja',
 	'mwe-embedplayer-seeking' => 'pyta so',
+	'mwe-embedplayer-buffering' => 'pufruje so',
 	'mwe-embedplayer-copy-code' => 'Kod kopěrować',
 	'mwe-embedplayer-video-h264' => 'Wideo H.264',
 	'mwe-embedplayer-video-flv' => 'Widejo Flash',
