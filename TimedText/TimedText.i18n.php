@@ -315,6 +315,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Nagraśe skóńcone',
 	'mwe-timedtext-back-btn' => 'Slědk',
 	'mwe-timedtext-choose-text' => 'Tekst wubraś',
+	'mwe-timedtext-upload-timed-text' => 'Pódtitele nagraś',
 	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizěrowany tekst se startujo',
 	'mwe-timedtext-search' => 'Klip pytaś',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
