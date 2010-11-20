@@ -1267,6 +1267,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'mwe-embedplayer-credit-title' => 'Judul: $1',
@@ -1295,6 +1296,10 @@ $messages['id'] = array(
 	'mwe-embedplayer-download' => 'Unduh',
 	'mwe-embedplayer-share' => 'Bagikan',
 	'mwe-embedplayer-credits' => 'Kredit',
+	'mwe-embedplayer-about-library' => 'About pemutar Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'Pustaka media HTML5 Kaltura memungkinkan Anda untuk mengambil keuntungan dari tag HTML5 <nowiki><video></nowiki> dan <nowiki><audio></nowiki> dengan antarmuka pemutar yang konsisten di semua peramban utama. 
+
+ [$1 Selengkapnya tentang pustaka pemutar Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Halaman sumber klip',
 	'mwe-embedplayer-choose_player' => 'Pilih pemutar video',
 	'mwe-embedplayer-no-player' => 'Tidak ada pemutar yang tersedia untuk $1',
@@ -1322,6 +1327,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Sertakan pada suatu halaman',
 	'mwe-embedplayer-related_videos' => 'Video yang berhubungan',
 	'mwe-embedplayer-seeking' => 'mencari',
+	'mwe-embedplayer-buffering' => 'menyinggahkan',
 	'mwe-embedplayer-copy-code' => 'Salin kode',
 	'mwe-embedplayer-video-h264' => 'Video H.264',
 	'mwe-embedplayer-video-flv' => 'Video flash',

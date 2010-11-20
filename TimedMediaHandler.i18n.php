@@ -320,7 +320,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'timedmedia-desc' => 'Upravljač za Ogg Theora i Vorbis datotekem sa JavaScript preglednikom',
+	'timedmedia-desc' => 'Upravljač za vremenske medije (video, zvuk, timedText) sa kodiranjem na Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 	'timedmedia-short-video' => 'Ogg $1 video datoteka, $2',
 	'timedmedia-short-general' => 'Ogg $1 medijalna datoteka, $2',
