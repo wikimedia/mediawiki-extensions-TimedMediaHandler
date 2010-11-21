@@ -170,6 +170,7 @@ $messages['br'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Kargadenn graet',
 	'mwe-timedtext-back-btn' => 'Distreiñ',
 	'mwe-timedtext-choose-text' => 'Dibab an destenn',
+	'mwe-timedtext-upload-timed-text' => 'Enporzhiañ istitloù',
 	'mwe-timedtext-loading-text-edit' => 'O kargañ an embanner testennoù sinkronelaet',
 	'mwe-timedtext-search' => "Klask ar c'hlip",
 	'mwe-timedtext-layout' => "Lec'hiadur",
@@ -198,7 +199,11 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'mwe-timedtext-stage-translate' => 'Prevedi',
+	'mwe-timedtext-stage-upload' => 'Postavljanje iz lokalne datoteke',
+	'mwe-timedtext-select-language' => 'Odaberi jezik',
 	'mwe-timedtext-back-btn' => 'Nazad',
+	'mwe-timedtext-textcat-sub' => 'Podnaslovi',
+	'mwe-timedtext-textcat-tad' => 'Opis zvuka',
 );
 
 /** Czech (Česky)
