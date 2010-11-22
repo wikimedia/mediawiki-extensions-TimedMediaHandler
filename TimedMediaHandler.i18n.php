@@ -1285,7 +1285,7 @@ $messages['mk'] = array(
 Можете да го <a href="$1">преземете клипот</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.',
 	'timedmedia-more' => 'Повеќе...',
 	'timedmedia-dismiss' => 'Затвори',
-	'timedmedia-download' => 'Симни податотека',
+	'timedmedia-download' => 'Преземи податотека',
 	'timedmedia-desc-link' => 'Информации за оваа податотека',
 	'timedmedia-oggThumb-version' => 'OggHandler бара oggThumb верзија $1 или понова.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не успеа да ја создаде минијатурата.',
