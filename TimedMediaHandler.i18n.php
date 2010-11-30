@@ -417,7 +417,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'timedmedia-desc' => 'Steuerungsprogramm für Ogg Theora- und Vorbis-Dateien, inklusive einer JavaScript-Abspielsoftware',
+	'timedmedia-desc' => 'Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) einschließlich Codeumwandlung nach Ogg Theora/Vorbis zur Verfügung',
 	'timedmedia-short-audio' => 'Ogg-$1-Audiodatei, $2',
 	'timedmedia-short-video' => 'Ogg-$1-Videodatei, $2',
 	'timedmedia-short-general' => 'Ogg-$1-Mediadatei, $2',
@@ -919,7 +919,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
  * @author Rex
  */
 $messages['id'] = array(
-	'timedmedia-desc' => 'Menangani berkas Ogg Theora dan Vorbis dengan pemutar JavaScript',
+	'timedmedia-desc' => 'Pemroses media berwaktu (video, audio, timedText) dengan transkode ke Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Berkas suara $1 ogg, $2',
 	'timedmedia-short-video' => 'Berkas video $1 ogg, $2',
 	'timedmedia-short-general' => 'Berkas media $1 ogg, $2',
