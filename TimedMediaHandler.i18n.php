@@ -892,7 +892,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'timedmedia-desc' => 'Gestor pro le files Ogg Theora e Vorbis, con reproductor JavaScript',
+	'timedmedia-desc' => 'Gestor pro multimedia synchronisate (video, audio, texto synchronisate) con transcodification in Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'File audio Ogg $1, $2',
 	'timedmedia-short-video' => 'File video Ogg $1, $2',
 	'timedmedia-short-general' => 'File media Ogg $1, $2',
