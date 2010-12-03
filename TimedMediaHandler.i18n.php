@@ -460,7 +460,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'timedmedia-desc' => 'Wóźeński program za dataje Ogg Theora a Vprbis z JavaScriptowym wótegrawakom',
+	'timedmedia-desc' => 'Wóźeński program za Timed Media (widejo, awdio, timedText) z pśekoděrowanim do Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Ogg $1 awdiodataja, $2',
 	'timedmedia-short-video' => 'Ogg $1 wideodataja, $2',
 	'timedmedia-short-general' => 'Ogg $1 medijowa dataja, $2',
