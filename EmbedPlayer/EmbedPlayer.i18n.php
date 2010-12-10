@@ -725,8 +725,11 @@ $messages['eu'] = array(
 	'mwe-embedplayer-close_btn' => 'Itxi',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Tofu II
+ */
 $messages['fi'] = array(
+	'mwe-embedplayer-loading_plugin' => 'Ladataan plugin...',
 	'mwe-embedplayer-player_options' => 'Soittimen asetukset',
 	'mwe-embedplayer-player_fullscreen' => 'Koko näyttö',
 	'mwe-embedplayer-download_full' => 'Lataa koko videotiedosto:',
