@@ -726,10 +726,11 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Tofu II
  */
 $messages['fi'] = array(
-	'mwe-embedplayer-loading_plugin' => 'Ladataan plugin...',
+	'mwe-embedplayer-loading_plugin' => 'Ladataan liitännäistä...',
 	'mwe-embedplayer-player_options' => 'Soittimen asetukset',
 	'mwe-embedplayer-player_fullscreen' => 'Koko näyttö',
 	'mwe-embedplayer-download_full' => 'Lataa koko videotiedosto:',
