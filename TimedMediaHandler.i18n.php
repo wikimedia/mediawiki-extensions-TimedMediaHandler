@@ -749,7 +749,7 @@ $messages['grc'] = array(
  * @author Melancholie
  */
 $messages['gsw'] = array(
-	'timedmedia-desc' => 'Styyrigsprogramm fir Ogg Theora- un Vorbis-Dateie, mit ere JavaScript-Abspiilsoftware',
+	'timedmedia-desc' => 'Stellt e Styyrigsprogramm fir zytgstyyrti Medie (Video, Audio, timedText) mit dr Codeumwandlig no Ogg Theora/Vorbis z Verfiegig',
 	'timedmedia-short-audio' => 'Ogg-$1-Audiodatei, $2',
 	'timedmedia-short-video' => 'Ogg-$1-Videodatei, $2',
 	'timedmedia-short-general' => 'Ogg-$1-Mediadatei, $2',
