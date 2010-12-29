@@ -656,7 +656,6 @@ function output_iframe_page( $title ) {
 	$thumb = $file->transform( $videoParam );
 	$out = new OutputPage();
 	$file->getHandler()->setHeaders( $out );
-	$out->addCoreScripts2Top();
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
