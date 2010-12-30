@@ -1272,7 +1272,7 @@ $messages['lv'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'timedmedia-desc' => 'Обработувач на синхронизирани снимки (видео, аудио, timedText) со транскодирање во Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Обработувач на синхронизирани снимки (видео, аудио, timedText) со прекодирање во Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'timedmedia-short-video' => 'Ogg $1 видео податотека, $2',
 	'timedmedia-short-general' => 'Мултимедијална податотека Ogg $1, $2',
