@@ -517,6 +517,9 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-share' => 'Źěliś',
 	'mwe-embedplayer-credits' => 'Źěkowanje',
 	'mwe-embedplayer-about-library' => 'Wó wótegrawaku Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'Medijowa biblioteka HTML 5 wótgrawaka Kaltury zmóžnja lěpšyny HTML 5-elementowu code><nowiki><video></nowiki></code> a <code><nowiki><audio></nowiki></code> z jadnotnym powjerchom wótgrawaka pśi wjeducych wótglědowakach.
+
+[$1 Dalšne informacije wó bibliotece wótgrawaka Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Žrědłowy bok klipow',
 	'mwe-embedplayer-choose_player' => 'Wideowótegrawak wubraś',
 	'mwe-embedplayer-no-player' => 'Za $1 žeden wótgrawak k dispoziciji',
