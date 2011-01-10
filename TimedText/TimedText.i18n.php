@@ -673,26 +673,54 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'mwe-timedtext-editor' => 'עורך טקסט מתוזמן',
+	'mwe-timedtext-stage-transcribe' => 'לתמלל',
 	'mwe-timedtext-stage-sync' => 'סנכרון',
 	'mwe-timedtext-stage-translate' => 'תרגום',
 	'mwe-timedtext-stage-upload' => 'העלאה מקובץ מקומי',
 	'mwe-timedtext-select-language' => 'בחירת שפה',
-	'mwe-timedtext-file-language' => 'שפת כתובת הכתוביות',
+	'mwe-timedtext-file-language' => 'שפת קובץ הכתוביות',
+	'mwe-timedtext-upload-text' => 'העלאת קובץ טקסט',
+	'mwe-timedtext-uploading-text' => 'מתבצעת העלאת קובץ טקסט',
+	'mwe-timedtext-upload-text-desc-title' => 'העלאת קובץ טקסט',
+	'mwe-timedtext-upload-text-desc-help' => 'ממשק העלאת טקסט מקבל קובצי <span dir="ltr">.srt</span>',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'עיון במחשב המקומי שלכם כדי למצוא קובץ <span dir="ltr">.srt</span> להעלאה',
+	'mwe-timedtext-upload-text-desc-help-select' => 'בחרו את שפת הקובץ',
+	'mwe-timedtext-upload-text-desc-help-review' => 'סקרו או ערכו את הטקסט ואז לחצו "העלאה" כדי להוסיף את הטקסט',
+	'mwe-timedtext-upload-text-preview' => 'סקירת טקסט',
+	'mwe-timedtext-upload-text-success' => 'העלאת טקסט מתוזמן הצליחה',
+	'mwe-timedtext-upload-text-done' => 'ההעלאה הסתיימה',
+	'mwe-timedtext-upload-text-fail-desc' => 'ההעלאה נכשלה',
+	'mwe-timedtext-upload-text-fail-title' => 'ההעלאה נכשלה',
+	'mwe-timedtext-upload-text-another' => 'להעלות עוד',
+	'mwe-timedtext-upload-text-done-uploading' => 'ההעלאה הסתיימה',
 	'mwe-timedtext-back-btn' => 'חזרה',
+	'mwe-timedtext-choose-text' => 'בחירת טקסט',
+	'mwe-timedtext-upload-timed-text' => 'העלאת כתוביות',
+	'mwe-timedtext-loading-text-edit' => 'טעינת עורך טקסט מתוזמן',
+	'mwe-timedtext-search' => 'חיפוש סרטון',
 	'mwe-timedtext-layout' => 'פריסה',
 	'mwe-timedtext-layout-ontop' => 'על גבי הווידאו',
 	'mwe-timedtext-layout-below' => 'מתחת לווידאו',
 	'mwe-timedtext-layout-off' => 'הסתרת כתוביות',
+	'mwe-timedtext-loading-text' => 'טעינת טקסט...',
+	'mwe-timedtext-textcat-cc' => 'כותרות',
 	'mwe-timedtext-textcat-sub' => 'כתוביות',
 	'mwe-timedtext-textcat-tad' => 'תיאור השמע',
 	'mwe-timedtext-textcat-ktv' => 'קריוקי',
+	'mwe-timedtext-textcat-tik' => 'שפת השורה הרצה',
 	'mwe-timedtext-textcat-ar' => 'אזורים פעילים',
 	'mwe-timedtext-textcat-nb' => 'פרשנות',
+	'mwe-timedtext-textcat-meta' => 'מטא־מתונים מתוזמנים',
+	'mwe-timedtext-textcat-trx' => 'תמליל',
 	'mwe-timedtext-textcat-lrc' => 'מילות השיר',
 	'mwe-timedtext-textcat-lin' => 'סימון בלשני',
+	'mwe-timedtext-textcat-cue' => 'נקודות סימנית',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 כתוביות עבור הסרטון: $2',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

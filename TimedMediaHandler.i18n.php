@@ -776,12 +776,13 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'timedmedia-desc' => 'מציג מדיה לקובצי Ogg Theora ו־Vorbis, עם נגן JavaScript',
+	'timedmedia-desc' => 'מציג מדיה למדיה מתוזמנת – וידאו, שמע, טקסט מתוזמן – עם קידוד מחדש ל־Ogg Theora או Vorbis',
 	'timedmedia-short-audio' => 'קובץ שמע $1 של Ogg, $2',
 	'timedmedia-short-video' => 'קובץ וידאו $1 של Ogg, $2',
 	'timedmedia-short-general' => 'קובץ מדיה $1 של Ogg, $2',
@@ -790,10 +791,14 @@ $messages['he'] = array(
 	'timedmedia-long-multiplexed' => '(קובץ מורכב של שמע/וידאו בפורמט Ogg, $1, באורך $2, $4×$5 פיקסלים, $3 בסך הכל)',
 	'timedmedia-long-general' => '(קובץ מדיה של Ogg, באורך $2, $3)',
 	'timedmedia-long-error' => '(קובץ ogg בלתי תקין: $1)',
+	'timedmedia-no-player-js' => 'סליחה, בדפדפן שלכם לא מופעלת תמיכה ב־JavaScript או שאין לכם נגן נתמך.<br />
+אתם יכולים <a href="$1">להוריד למחשב את הסרטון</a> או <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">להוריד למחשב שלכם נגן</a> שינגן את הסרטון בדפדפן שלכם.',
 	'timedmedia-more' => 'עוד…',
 	'timedmedia-dismiss' => 'סגירה',
 	'timedmedia-download' => 'הורדת הקובץ',
 	'timedmedia-desc-link' => 'אודות הקובץ',
+	'timedmedia-oggThumb-version' => 'OggHandler דורש oggThumb מגרסה $1 או גרסה חדשה יותר.',
+	'timedmedia-oggThumb-failed' => 'oggThumb לא הצליח ליצור תמונה מוקטנת.',
 );
 
 /** Hindi (हिन्दी)
