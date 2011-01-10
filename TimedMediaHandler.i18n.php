@@ -13,11 +13,11 @@ $messages['en'] = array(
 	'timedmedia-short-audio'      => 'Ogg $1 sound file, $2',
 	'timedmedia-short-video'      => 'Ogg $1 video file, $2',
 	'timedmedia-short-general'    => 'Ogg $1 media file, $2',
-	'timedmedia-long-audio'       => '(Ogg $1 sound file, length $2, $3)',
-	'timedmedia-long-video'       => '(Ogg $1 video file, length $2, $4×$5 pixels, $3)',
-	'timedmedia-long-multiplexed' => '(Ogg multiplexed audio/video file, $1, length $2, $4×$5 pixels, $3 overall)',
-	'timedmedia-long-general'     => '(Ogg media file, length $2, $3)',
-	'timedmedia-long-error'       => '(Invalid Ogg file: $1)',
+	'timedmedia-long-audio'       => 'Ogg $1 sound file, length $2, $3',
+	'timedmedia-long-video'       => 'Ogg $1 video file, length $2, $4×$5 pixels, $3',
+	'timedmedia-long-multiplexed' => 'Ogg multiplexed audio/video file, $1, length $2, $4×$5 pixels, $3 overall',
+	'timedmedia-long-general'     => 'Ogg media file, length $2, $3',
+	'timedmedia-long-error'       => 'Invalid Ogg file: $1',
 	'timedmedia-no-player-js' 	  => 'Sorry, your browser either has JavaScript disabled or does not have any supported player.<br />
 You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a> to play the clip in your browser.',
 
