@@ -315,6 +315,13 @@ $messages['bs'] = array(
 	'mwe-embedplayer-related_videos' => 'Povezani snimci',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'mwe-embedplayer-seeking' => 'лаха',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

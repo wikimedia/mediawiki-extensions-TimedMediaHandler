@@ -362,6 +362,13 @@ $messages['ca'] = array(
 	'timedmedia-desc-link' => 'Informació del fitxer',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'timedmedia-download' => 'Чуйаккха хlум',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

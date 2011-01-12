@@ -59,12 +59,16 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'mwe-timedtext-stage-translate' => '{{Identical|Translate}}',
 	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Parameters:
+* $1 is a language name.
+* $2 is a file link with a file name as link description.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -720,7 +724,7 @@ $messages['he'] = array(
 	'mwe-timedtext-textcat-lrc' => 'מילות השיר',
 	'mwe-timedtext-textcat-lin' => 'סימון בלשני',
 	'mwe-timedtext-textcat-cue' => 'נקודות סימנית',
-	'mwe-timedtext-language-subtitles-for-clip' => '$1 כתוביות עבור הסרטון: $2',
+	'mwe-timedtext-language-subtitles-for-clip' => 'כתוביות ב$1 עבור הסרטון $2',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1126,7 +1130,7 @@ $messages['nl'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Songteksten',
 	'mwe-timedtext-textcat-lin' => 'Taalkundige markup',
 	'mwe-timedtext-textcat-cue' => 'Richtpunten',
-	'mwe-timedtext-language-subtitles-for-clip' => '$1 ondertitels voor clip: $2',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Ondertitels in het $1 voor clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen $1ondertitels gevonden voor clip: $2',
 );
 
