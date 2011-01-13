@@ -1061,7 +1061,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-download' => 'הורדה',
 	'mwe-embedplayer-share' => 'שיתוף',
 	'mwe-embedplayer-credits' => 'תודות',
-	'mwe-embedplayer-about-library' => 'על אודות הנגן Kaltura',
+	'mwe-embedplayer-about-library' => 'על אודות הנגן קלטורה',
 	'mwe-embedplayer-about-library-desc' => 'ספריית לנגינת מדיה בתקן HTML5 של קלטורה מאפשרת לכם להשתמש בפקודות <code><nowiki><video></nowiki></code> ו־<code><nowiki><audio></nowiki></code> של HTML5 היום עם ממשק קבוע בכל הדפדפנים הנפוצים.
 
 [$1 מידע נוסף על ספריית נגן המדיה של קלטורה]',
@@ -1072,7 +1072,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-video_credits' => 'יוצרי הווידאו',
 	'mwe-embedplayer-kaltura-platform-title' => 'פלטפורמת וידאו בקוד פתוח של קלטורה',
 	'mwe-embedplayer-menu_btn' => 'תפריט',
-	'mwe-embedplayer-close_btn' => 'סגירה',
+	'mwe-embedplayer-close_btn' => 'לסגור',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC נגן',
 	'mwe-embedplayer-ogg-player-oggNative' => 'נגן HTML5 Ogg',
 	'mwe-embedplayer-ogg-player-h264Native' => 'נגן HTML5 H.264',
@@ -1080,7 +1080,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'תוסף QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
-	'mwe-embedplayer-ogg-player-kplayer' => 'נגן Kaltura',
+	'mwe-embedplayer-ogg-player-kplayer' => 'נגן קלטורה',
 	'mwe-embedplayer-ogg-player-selected' => '(נבחר)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-generic_missing_plugin' => 'נראה שהדפדפן שלכם אינו תומך בנגינת מדיה מהסוג <b>$1</b><br />בקרו בדף <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Playback methods</a> כדי להוריד נגן מתאים.<br />',
