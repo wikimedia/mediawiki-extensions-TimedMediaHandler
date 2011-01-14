@@ -1471,7 +1471,8 @@ $messages['sl'] = array(
 	'mwe-timedtext-back-btn' => 'Nazaj',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1485,7 +1486,7 @@ $messages['sr-ec'] = array(
 	'mwe-timedtext-layout-off' => 'Сакриј сабтајтлове',
 	'mwe-timedtext-loading-text' => 'Учитава се текст ...',
 	'mwe-timedtext-textcat-cc' => 'Ознаке',
-	'mwe-timedtext-textcat-sub' => 'Сабтајтлови',
+	'mwe-timedtext-textcat-sub' => 'Поднаслови',
 	'mwe-timedtext-textcat-trx' => 'Транскрипт',
 );
 
