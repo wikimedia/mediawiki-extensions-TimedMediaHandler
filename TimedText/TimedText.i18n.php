@@ -1490,7 +1490,9 @@ $messages['sr-ec'] = array(
 	'mwe-timedtext-textcat-trx' => 'Транскрипт',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'mwe-timedtext-select-language' => 'Izaberi jezik',
 	'mwe-timedtext-upload-text-done' => 'Slanje je završeno',
@@ -1502,7 +1504,7 @@ $messages['sr-el'] = array(
 	'mwe-timedtext-layout-off' => 'Sakrij sabtajtlove',
 	'mwe-timedtext-loading-text' => 'Učitava se tekst ...',
 	'mwe-timedtext-textcat-cc' => 'Oznake',
-	'mwe-timedtext-textcat-sub' => 'Sabtajtlovi',
+	'mwe-timedtext-textcat-sub' => 'Podnaslovi',
 	'mwe-timedtext-textcat-trx' => 'Transkript',
 );
 
