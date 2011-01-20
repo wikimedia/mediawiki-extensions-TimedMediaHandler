@@ -2582,3 +2582,17 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '（已选取）',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'mwe-embedplayer-missing_video_stream' => '此串流的影片檔案已遺失',
+	'mwe-embedplayer-volume_control' => '音量控制',
+	'mwe-embedplayer-player_options' => '播放器選項',
+	'mwe-embedplayer-player_fullscreen' => '全螢幕',
+	'mwe-embedplayer-paused' => '暫停',
+	'mwe-embedplayer-download' => '下載',
+	'mwe-embedplayer-share' => '分享',
+	'mwe-embedplayer-close_btn' => '關閉',
+);
+

@@ -1611,3 +1611,15 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-textcat-sub' => '副标题',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Mark85296341
+ */
+$messages['zh-hant'] = array(
+	'mwe-timedtext-stage-sync' => '同步',
+	'mwe-timedtext-stage-translate' => '翻譯',
+	'mwe-timedtext-upload-text-fail-title' => '上傳失敗',
+	'mwe-timedtext-upload-timed-text' => '上傳字幕',
+	'mwe-timedtext-layout-off' => '隱藏字幕',
+	'mwe-timedtext-textcat-cc' => '標題',
+);
+
