@@ -1065,7 +1065,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-layout' => 'Распоред',
 	'mwe-timedtext-layout-ontop' => 'Над снимката',
 	'mwe-timedtext-layout-below' => 'Под снимката',
-	'mwe-timedtext-layout-off' => 'Сокриј титлови',
+	'mwe-timedtext-layout-off' => 'Скриј титлови',
 	'mwe-timedtext-loading-text' => 'Го вчитувам текстот...',
 	'mwe-timedtext-textcat-cc' => 'Опис',
 	'mwe-timedtext-textcat-sub' => 'Титлови',
@@ -1576,6 +1576,8 @@ $messages['tl'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'mwe-timedtext-editor' => 'Редактор субтитрів',
+	'mwe-timedtext-stage-translate' => 'Перекласти',
 	'mwe-timedtext-stage-upload' => 'Завантажити з локального файлу',
 	'mwe-timedtext-select-language' => 'Оберіть мову',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Оберіть мову файлу',

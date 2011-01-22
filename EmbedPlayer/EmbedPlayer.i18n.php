@@ -2478,6 +2478,30 @@ $messages['tr'] = array(
 	'mwe-embedplayer-copy-code' => 'Kodu kopyala',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'mwe-embedplayer-credit-title' => 'Назва: $1',
+	'mwe-embedplayer-loading_plugin' => 'Завантаження додатка ...',
+	'mwe-embedplayer-play_clip' => 'Відтворити кліп',
+	'mwe-embedplayer-timed_text' => 'Субтитри',
+	'mwe-embedplayer-choose_player' => 'Виберіть відео плеєр',
+	'mwe-embedplayer-menu_btn' => 'Меню',
+	'mwe-embedplayer-close_btn' => 'Закрити',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC програвач',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg програвач',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 програвач',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Додаток QuickTime',
+	'mwe-embedplayer-playerSelect' => 'Програвачі',
+	'mwe-embedplayer-seeking' => 'пошук',
+	'mwe-embedplayer-buffering' => 'буферизація',
+	'mwe-embedplayer-video-h264' => 'H.264 відео',
+	'mwe-embedplayer-video-flv' => 'Флеш відео',
+	'mwe-embedplayer-video-ogg' => 'Ogg відео',
+	'mwe-embedplayer-video-audio' => 'Ogg аудіо',
+);
+
 /** Vèneto (Vèneto) */
 $messages['vec'] = array(
 	'mwe-embedplayer-credit-title' => 'Titolo: $1',
