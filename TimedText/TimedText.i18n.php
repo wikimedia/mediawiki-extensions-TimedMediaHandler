@@ -86,7 +86,7 @@ $messages['af'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Lirieke',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -288,7 +288,7 @@ $messages['de'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kein $1 Untertitel für den Videoclip gefunden: $2',
 );
 
-/** German (formal address) (Deutsch (Sie-Form))
+/** German (formal address) (‪Deutsch (Sie-Form)‬)
  * @author Kghbln
  */
 $messages['de-formal'] = array(

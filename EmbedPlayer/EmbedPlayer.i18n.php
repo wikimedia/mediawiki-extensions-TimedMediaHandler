@@ -159,7 +159,7 @@ $messages['ar'] = array(
 	'mwe-embedplayer-close_btn' => 'إغلاق',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -2265,7 +2265,7 @@ $messages['sk'] = array(
 	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2291,7 +2291,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-video-audio' => 'Ogg аудио',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'mwe-embedplayer-credit-title' => 'Naslov: $1',
 	'mwe-embedplayer-play_clip' => 'Pusti klip',
