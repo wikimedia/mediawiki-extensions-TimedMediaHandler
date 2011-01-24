@@ -137,7 +137,9 @@ $messages['aln'] = array(
 	'mwe-embedplayer-missing-source' => 'Nuk ka video burim u gjet.',
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
 	'mwe-embedplayer-loading_plugin' => 'تحميل ملحق...',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'أضف إلى نهاية السلسلة',
@@ -157,6 +159,7 @@ $messages['ar'] = array(
 	'mwe-embedplayer-share_this_video' => 'شارك هذا الفيديو',
 	'mwe-embedplayer-menu_btn' => 'قائمة',
 	'mwe-embedplayer-close_btn' => 'إغلاق',
+	'mwe-embedplayer-ogg-player-cortado' => 'جافا كورتادو',
 );
 
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
