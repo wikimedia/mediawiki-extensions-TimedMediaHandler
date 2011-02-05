@@ -141,18 +141,19 @@ class WebVideoTranscode {
 	/**
 	* Setup the WebVideoTranscode tables
 	*/
-	public static function schema() {
-		global $wgExtNewTables, $wgExtNewIndexes;
+	public static function schema( $updater = null ) {
+		$base = dirname( __FILE__ );
 
-		$wgExtNewTables[] = array(
-			'transcode_job',
-			dirname( __FILE__ ) . '/WebVideoTranscode.sql'
-		);
-
-		$wgExtNewIndexes[] = array(
-			'image', 'image_media_type',
-			dirname( __FILE__ ) . '/patch-image-index.sql'
-		);
+		if ( $updater === null ) {
+			global $wgExtNewTables, $wgExtNewIndexes;
+			$wgExtNewTables[] = array( 'transcode_job', "$base/WebVideoTranscode.sql" );
+			$wgExtNewIndexes[] = array( 'image', 'image_media_type', "$base/patch-image-index.sql" );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'transcode_job',
+				"$base/WebVideoTranscode.sql", true ) );
+			$updater->addExtensionUpdate( array( 'addIndex', 'image',
+				'image_media_type', "$base/patch-image-index.sql", true ) );
+		}
 
 		return true;
 	}
