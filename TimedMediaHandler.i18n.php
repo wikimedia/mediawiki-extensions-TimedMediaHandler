@@ -1187,10 +1187,13 @@ $messages['ksh'] = array(
 	'timedmedia-long-multiplexed' => '<i lang="en">Ogg</i> jemultipex Ton- un Viddejodatei, $1, fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3 ennsjesammp',
 	'timedmedia-long-general' => '<i lang="en">Ogg</i> Medijedatei fum Ömfang $2, $3',
 	'timedmedia-long-error' => 'ene kapodde <i lang="en">Ogg</i> Datei: $1',
+	'timedmedia-no-player-js' => 'Schad, Dinge Brauser hät entweder JavaSkrepp ußjeschalldt udder kein passend Projramm zom Afschpelle.<br />Do kanns jäz <a href="$1">dä Ußschnedd eronger laade</a> udder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Afschpellprojramm eronger laade</a>, öm dat Schtöck en Dingem Brauser afzeschpelle.',
 	'timedmedia-more' => 'Enshtelle&nbsp;…',
 	'timedmedia-dismiss' => 'Zomaache!',
 	'timedmedia-download' => 'Datei erunger lade',
 	'timedmedia-desc-link' => 'Övver di Datei',
+	'timedmedia-oggThumb-version' => 'Dä <code lang="en">OggHandler</code> bruch <code lang="en">oggThumb</code> in dä Version $1 udder hüüter.',
+	'timedmedia-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
 );
 
 /** Latin (Latina)
