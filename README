@@ -6,15 +6,16 @@
 * use embedPlayer mwEmbed javascript module for playback
 
 
-== Old oggHandler Readme == 
-
-This extension provides a media handler for the Ogg container format. When
+This extension provides a media handler for the Ogg and WebM container format. When
 enabled, a player will be automatically embedded in the image description page, 
 or any wiki page using the same syntax as for images. 
 
 To install this extension, add the following to the end of your LocalSettings.php:
 
-    require( "$IP/extensions/OggHandler/OggHandler.php" );
+	// TimedMediaHandler is dependent on mwEmbedSupport 
+	require( "$IP/extensions/
+
+    require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
 oggThumb
 ------

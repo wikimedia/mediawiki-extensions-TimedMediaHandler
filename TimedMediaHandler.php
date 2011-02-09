@@ -28,9 +28,9 @@ $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandl
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 $wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 
-// Load all the mwEmbed modules: 
-MwEmbedResourceManager::registerModulePath( 'extensions/TimedMediaHandler/EmbedPlayer' );
-MwEmbedResourceManager::registerModulePath( 'extensions/TimedMediaHandler/TimedText' );
+// Load all the MwEmbed modules: 
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/EmbedPlayer' );
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/TimedText' );
 
 
 // Setup a hook for iframe=true (will strip the interface and only output the player)
