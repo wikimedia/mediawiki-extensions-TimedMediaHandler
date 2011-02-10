@@ -9,6 +9,8 @@ $timedMediaDir = dirname(__FILE__);
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
 
 $wgMediaHandlers['application/ogg'] = 'TimedMediaHandler';
+$wgMediaHandlers['application/webm'] = 'TimedMediaHandler';
+
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'ogg';
 }
@@ -18,6 +20,10 @@ if ( !in_array( 'ogv', $wgFileExtensions ) ) {
 if ( !in_array( 'oga', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'oga';
 }
+if ( !in_array( 'webm', $wgFileExtensions ) ) {
+	$wgFileExtensions[] = 'webm';
+}
+
 ini_set( 'include_path',
 	"$timedMediaDir/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
@@ -28,8 +34,9 @@ $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandl
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 $wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 
-// Load all the MwEmbed modules: 
+// Register the MwEmbed EmbedPlayer module: 
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/EmbedPlayer' );
+// Register the MwEmbed TimedText module:
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/TimedText' );
 
 
