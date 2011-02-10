@@ -101,7 +101,7 @@ class WebVideoTranscode {
 	 * also see: http://firefogg.org/dev/index.html
 	 */
 	 public static $foggMap = array(
-		//video
+		// video
 		'width'			=> "--width",
 		'height'		=> "--height",
 		'maxSize'		=> "--max_size",
@@ -121,13 +121,13 @@ class WebVideoTranscode {
 		'denoise'		=> array("--pp", "de"),
 		'novideo'		=> array("--novideo", "--no-skeleton"),
 		'bufDelay'		=> "--buf-delay",
-		 //audio
+		 // audio
 		'audioQuality'	=> "-a",
 		'audioBitrate'	=> "-A",
 		'samplerate'	=> "-H",
 		'channels'		=> "-c",
 		'noaudio'		=> "--noaudio",
-		 //metadata
+		 // metadata
 		'artist'		=> "--artist",
 		'title'			=> "--title",
 		'date'			=> "--date",

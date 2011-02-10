@@ -39,13 +39,6 @@ MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/EmbedP
 // Register the MwEmbed TimedText module:
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/TimedText' );
 
-// Register traditional resource loader resources:
-$wgResourceModules += array(
-	'MediaWikiPlayerSupport' => array(
-		'scripts' => 'resources/MediaWikiPlayerSupport.js'
-	)
-);
-
 // Setup a hook for iframe=true (will strip the interface and only output the player)
 $wgHooks['ArticleFromTitle'][] = 'TimedMediaHandler::iframeOutputHook';
 

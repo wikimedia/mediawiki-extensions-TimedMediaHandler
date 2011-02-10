@@ -106,6 +106,9 @@
 			$( mw ).trigger( 'EmbedPlayerUpdateDependencies',
 					[ playerElement, dependencySet ] );
 		});
+		// Remove duplicates in the dependencySet
+		dependencySet = $.unique( dependencySet );
+		
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){
 			setTimeout(function(){
