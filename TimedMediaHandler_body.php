@@ -540,10 +540,9 @@ class OggTransformOutput extends MediaTransformOutput {
 			'style' => "width:{$width}px;height:{$playerHeight}px",
 			'poster' => $thumb_url,
 			'controls'=> 'true',
-			'durationHint' => $length,
-			'startOffset' => $offset,
-			'linkback' => $linkAttribs['href'],
-			'apiTitleKey' => $this->file->getTitle()->getDBKey()
+			'data-durationhint' => $length,
+			'data-startoffset' => $offset,
+			'data-mwtitle' => $this->file->getTitle()->getDBKey()
 		);
 
 		/*

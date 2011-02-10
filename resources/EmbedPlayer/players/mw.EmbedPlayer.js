@@ -27,7 +27,7 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 
 	// Media has a startOffset ( used for plugins that
 	// display ogg page time rather than presentation time
-	'startOffset',
+	'data-startoffset',
 
 	// A hint to the duration of the media file so that duration
 	// can be displayed in the player without loading the media file
@@ -40,10 +40,7 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	'end',
 
 	// If the source is the default source
-	'default',
-
-	// titleKey ( used for api lookups )
-	'titleKey'
+	'default'
 ] );
 
 /** 
@@ -143,21 +140,10 @@ mw.mergeConfig('EmbedPlayer.Attributes', {
 	// If the player should include an attribution button:
 	'attributionbutton' : true,
 
-	// ROE url ( for xml based metadata )
-	// also see: http://wiki.xiph.org/ROE
-	"roe" : null,
-
 	// If serving an ogg_chop segment use this to offset the presentation time
 	// ( for some plugins that use ogg page time rather than presentation time )
 	"startOffset" : 0,
-
-	// Thumbnail (same as poster)
-	"thumbnail" : null,
-
-	// Source page for media asset ( used for linkbacks in remote embedding
-	// )
-	"linkback" : null,
-
+	
 	// If the download link should be shown
 	"download_link" : true,
 
@@ -829,12 +815,6 @@ mediaElement.prototype = {
 	// Selected mediaSource element.
 	selectedSource: null,
 
-	// Media element thumbnail
-	thumbnail: null,
-
-	// Media element linkback
-	linkback: null,
-
 	/**
 	 * Media Element constructor
 	 *
@@ -1150,45 +1130,7 @@ mediaElement.prototype = {
 			 }
 		 };
 		 return playableSources;
-	},
-
-	/**
-	 * Imports media sources from ROE data.
-	 *
-	 * @param roe_data
-	 *      ROE data.
-	 */
-	addROE: function( roe_data ) {
-		mw.log( 'EmbedPlayer::mediaElement:addROE' );
-		this.addedROEData = true;
-		var _this = this;
-		if ( roe_data ) {
-			var $roeParsed = $( roe_data.pay_load );
-
-			// Add media sources:
-			$roeParsed.find("mediaSource").each( function( inx, source ) {
-				_this.tryAddSource( source );
-			} );
-
-			// Set the thumbnail:
-			$roeParsed.find( 'img' ).each( function( inx, n ) {
-				if ( $( n ).attr( "id" ) == "stream_thumb" ) {
-					mw.log( 'roe:set thumb to ' + $( n ).attr( "src" ) );
-					_this.poster = $( n ).attr( "src" );
-				}
-			} );
-
-			// Set the linkback:
-			$roeParsed.find( 'link' ).each( function( inx, n ) {
-				if ( $( n ).attr( 'id' ) == 'html_linkback' ) {
-					mw.log( 'roe:set linkback to ' + $( n ).attr( "href" ) );
-					_this.linkback = $( n ).attr( 'href' );
-				}
-			} );
-		} else {
-			mw.log( 'ROE data empty.' );
-		}
-	}
+	}	
 };
 
 
@@ -1298,11 +1240,6 @@ mw.EmbedPlayer.prototype = {
 		// Hide "controls" if using native player controls:
 		if( this.useNativePlayerControls() ){
 			_this.controls = false;
-		}
-
-		// Set the poster:
-		if ( $( element ).attr( 'thumbnail' ) ) {
-			_this.poster = $( element ).attr( 'thumbnail' );
 		}
 		if ( $( element ).attr( 'poster' ) ) {
 			_this.poster = $( element ).attr( 'poster' );

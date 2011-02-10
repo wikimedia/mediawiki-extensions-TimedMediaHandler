@@ -35,10 +35,16 @@ $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMedia
 $wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 
 // Register the MwEmbed EmbedPlayer module: 
-MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/EmbedPlayer' );
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/EmbedPlayer' );
 // Register the MwEmbed TimedText module:
-MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/TimedText' );
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/TimedText' );
 
+// Register traditional resource loader resources:
+$wgResourceModules += array(
+	'MediaWikiPlayerSupport' => array(
+		'scripts' => 'resources/MediaWikiPlayerSupport.js'
+	)
+);
 
 // Setup a hook for iframe=true (will strip the interface and only output the player)
 $wgHooks['ArticleFromTitle'][] = 'TimedMediaHandler::iframeOutputHook';
