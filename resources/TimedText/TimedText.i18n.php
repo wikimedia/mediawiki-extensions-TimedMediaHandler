@@ -773,7 +773,7 @@ $messages['ia'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Finite incargar',
 	'mwe-timedtext-back-btn' => 'Retornar',
 	'mwe-timedtext-choose-text' => 'Selige texto',
-	'mwe-timedtext-add-timed-text' => 'Adder subtitulos',
+	'mwe-timedtext-upload-timed-text' => 'Incargar subtitulos',
 	'mwe-timedtext-loading-text-edit' => 'Carga le editor de subtitulos…',
 	'mwe-timedtext-search' => 'Cercar clip',
 	'mwe-timedtext-layout' => 'Disposition',
@@ -795,6 +795,11 @@ $messages['ia'] = array(
 	'mwe-timedtext-textcat-cue' => 'Punctos de entrata',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Subtitulos in $1 pro le clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nulle subtitulos in $1 ha essite trovate pro le clip: $2',
+	'mwe-timedtext-request-subs' => 'Requestar transcription',
+	'mwe-timedtext-request-subs-desc' => 'Adder un requesta que iste file video sia transcribite',
+	'mwe-timedtext-request-subs-done' => 'Requesta de transcription addite. [$1 Vide tote le requestas de transcriber]',
+	'mwe-timedtext-request-subs-fail' => 'Addition del requesta de transcription fallite. Ha tu aperite session?',
+	'mwe-timedtext-request-already-done' => 'Un transcription de iste video ha jam essite requestate. [$1 Vide tote le requestas de transcriber]',
 );
 
 /** Indonesian (Bahasa Indonesia)
