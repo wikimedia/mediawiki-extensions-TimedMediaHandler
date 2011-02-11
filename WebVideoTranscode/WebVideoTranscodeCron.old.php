@@ -152,13 +152,13 @@ class WebVideoTranscodeCron extends Maintenance {
 
 				$file = wfFindFile( $fileTitle );
 				if( !$file ){
-					$this->output( "File not found: {$name} (not adding to jobQueue\n" );
+					$maintenance->output( "File not found: {$name} (not adding to jobQueue\n" );
 					continue;
 				}
 				$targetSize =  OggTranscode::$derivativeSettings[ $derivativeKey ]['maxSize'];
 				$sourceSize = $file->getWidth();
 				if( $targetSize > $sourceSize ){
-					$this->output( "File:{$name} is too small for {$derivativeKey} ::\n" .
+					$maintenance->output( "File:{$name} is too small for {$derivativeKey} ::\n" .
 					 "target: {$targetSize} > source: {$sourceSize} \n\n" );
 					continue;
 				}
@@ -285,7 +285,7 @@ class WebVideoTranscodeCron extends Maintenance {
 	 * @param {Array} $encodeSettings Settings to encode the file with
 	 */
 	function doEncode( $source, $target, $encodeSettings ){
-		global $wgffmpeg2theoraPath;
+		global $wgffmpeg2theoraPath, $maintenance;
 
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgffmpeg2theoraPath ) . ' ' . wfEscapeShellArg( $source );
@@ -307,7 +307,7 @@ class WebVideoTranscodeCron extends Maintenance {
 		}
 		// Add the output target:
 		$cmd.= ' -o ' . wfEscapeShellArg ( $target );
-		$this->output( "Running cmd: \n\n" .$cmd . "\n\n" );
+		$maintenance->output( "Running cmd: \n\n" .$cmd . "\n\n" );
 		wfProfileIn( 'ffmpeg2theora_encode' );
 		wfShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg2theora_encode' );

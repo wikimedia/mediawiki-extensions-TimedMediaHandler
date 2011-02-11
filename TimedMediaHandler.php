@@ -36,6 +36,7 @@ $wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler
 $wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
 $wgAutoloadClasses['TimedMediaIframeOutput' ] = "$timedMediaDir/TimedMediaIframeOutput.php";
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
+$wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 
 // Register the Timed Media Handler javascript resources ( mwEmbed modules )  
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/EmbedPlayer' );
@@ -74,7 +75,7 @@ $wgEnableIframeEmbed = true;
 $wgOggThumbLocation = '/usr/bin/oggThumb';
 
 // The location of ffmpeg2theora ( for metadata and transcoding )
-$wgffmpeg2theoraPath = '/usr/bin/ffmpeg2theora';
+$wgffmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 
 $wgFFmpegLocation = '/usr/bin/ffmpeg';

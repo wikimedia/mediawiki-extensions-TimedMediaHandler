@@ -10,7 +10,7 @@
 class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
-		global $wgParserOutputHooks, $wgHooks;
+		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes;
 		
 		// Parser hook for TimedMediaHandler output
 		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
@@ -18,7 +18,15 @@ class TimedMediaHandlerHooks {
 		// Setup a hook for iframe embed handling:  
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
 		
-		
+		// Add transcode job class:
+		$wgJobClasses+= array(
+			'webVideoTranscode' => 'WebVideoTranscodeJob'
+		);
+		// Transcode jobs must be explicitly requested from the job queue: 
+		$wgJobExplitRequestTypes+= array(
+			'webVideoTranscode'
+		);
+				
 		/**
 		 * Add support for the "timedText" NameSpace
 		 */

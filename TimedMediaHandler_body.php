@@ -199,16 +199,14 @@ class TimedMediaHandler extends MediaHandler {
 	
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
-
 		$baseConfig = array(
 			'file' => $file,
 			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : $params['width']* $srcHeight / $srcWidth,
-			'isVideo' => ( $srcHeight == 0 || $srcWidth == 0 ),
+			'isVideo' => ( $srcHeight != 0 && $srcWidth != 0 )
 		);
-
 		// No thumbs for audio
 		if( $baseConfig['isVideo'] === false ){			
 			return new TimedMediaTransformOutput( $baseConfig );

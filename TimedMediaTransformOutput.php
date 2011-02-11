@@ -37,7 +37,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 	}
 	
-	function getTagName(){
+	function getTagName(){		
 		return ( $this->isVideo )? 'video' : 'audio';
 	}
 	
@@ -71,18 +71,24 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * supplied arrays
 	 */
 	function getXmlTagOutput( $mediaAttr, $mediaSources, $textSources ){
-		// Build the video tag output: 
+		// Try to get the first source src attribute ( usually this should be the source file )
+		$firstSource = current( reset( $mediaSources ) );
+		if( !$firstSource['url']){
+			// XXX media handlers don't seem to work with exceptions..
+			return 'Error missing media source';
+		}
+		// Build the video tag output:		
 		$s = Xml::tags( $this->getTagName(), $mediaAttr,
 	
 			// The set of media sources: 
 			self::xmlTagSet( 'source', $mediaSources ) .
 			
 			// Timed text: 
-			self::xmlTagSet( 'track', $textAttr ) .		
+			self::xmlTagSet( 'track', $textSources ) .		
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
-			wfMsg('timedmedia-no-player-js', $url)				
+			wfMsg('timedmedia-no-player-js', $firstSource['src'])				
 		);
 		return $s;
 	}
@@ -103,11 +109,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
 			// it updates the controls attribute of the embed video
 			'controls'=> 'true',
-		
-			// Custom data-attributes
-			'data-durationhint' => $length,
-			'data-startoffset' => $offset,
-			'data-mwtitle' => $this->file->getTitle()->getDBKey()
 		);
 		
 		// Set player skin:
@@ -115,7 +116,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
 		}
 		
-		// xxx Note when on the same cluster we should be able to look up sources
+		// Custom data-attributes
+		$mediaAttr += array(			
+			'data-durationhint' => $length,
+			'data-startoffset' => $offset,
+			'data-mwtitle' => $this->file->getTitle()->getDBKey()
+		);
+		
+		// Add api provider:		
 		if( $this->file->getRepoName() != 'local' ){			
 			// Set the api provider name to "commons" for shared ( instant commons convention ) 
 			// ( provider names should have identified the provider
@@ -126,6 +134,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		// XXX Note: will probably migrate mwprovider to an escaped api url.
 		$mediaAttr[ 'data-mwprovider' ] = $apiProviderName;
+		
 		return $mediaAttr;
 	}
 	
@@ -138,7 +147,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->sources;
 	}
 	
-	function getTimedTextSources(){
+	function getTextSources(){
 		// Check local cache: 		
 		if( $this->textTracks ){
 			return $this->textTracks;
@@ -155,7 +164,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		));
 		$api = new ApiMain( $params );
 		$api->execute();
-		$data = & $api->getResultData();			
+		$data = $api->getResultData();			
 		// Get the list of language Names
 		$langNames = Language::getLanguageNames();
 		

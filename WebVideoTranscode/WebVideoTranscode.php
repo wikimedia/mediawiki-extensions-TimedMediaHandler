@@ -48,7 +48,7 @@ class WebVideoTranscode {
 	* http://firefogg.org/dev/index.html
 	*/
 	public static $derivativeSettings = array(
-		WebVideoTranscode::ENC_WEB_2MBS =>
+		WebVideoTranscode::ENC_OGV_2MBS =>
 			array(
 				'maxSize'			=> '200',
 				'videoBitrate'		=> '128',
@@ -59,7 +59,8 @@ class WebVideoTranscode {
 				'noUpscaling'		=> 'true',
 				'twopass' 			=> 'true',
 				'keyframeInterval'	=> '64',
-				'bufDelay'			=> '128'
+				'bufDelay'			=> '128',
+				'codec' 			=> 'theora',
 			),
 	   WebVideoTranscode::ENC_OGV_4MBS =>
 			array(
@@ -69,7 +70,8 @@ class WebVideoTranscode {
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
-				'bufDelay'			=> '256'
+				'bufDelay'			=> '256',
+				'codec' 			=> 'theora',
 			),
 		WebVideoTranscode::ENC_OGV_6MBS =>
 			array(
@@ -79,9 +81,11 @@ class WebVideoTranscode {
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
-				'bufDelay'			=> '256'
+				'bufDelay'			=> '256',
+				'codec' 			=> 'theora',
 			),
 			
+		// WebM transcode:
 		WebVideoTranscode::ENC_WEBM_6MBS =>
 			array(
 			 	'maxSize'			=> '512',
@@ -93,12 +97,13 @@ class WebVideoTranscode {
 				'bufDelay'			=> '256',
 				'codec' 			=> 'vp8',
 			),
-		WebVideoTranscode::ENC_OGV_HQ_VBR =>
+		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
 			 array(
 				'maxSize'			=> '720',
 				'videoQuality'		=> 7,
 				'audioQuality'		=> 3,
-				'noUpscaling'		=> 'true'
+				'noUpscaling'		=> 'true',
+				'codec' 			=> 'vp8',
 			)
 		);
 	 /**
@@ -126,6 +131,7 @@ class WebVideoTranscode {
 		'cropRight'		=> "--cropright",
 		'keyframeInterval'=> "--key",
 		'denoise'		=> array("--pp", "de"),
+	 	'deinterlace'	=> "--deinterlace",
 		'novideo'		=> array("--novideo", "--no-skeleton"),
 		'bufDelay'		=> "--buf-delay",
 		 // audio
@@ -145,16 +151,30 @@ class WebVideoTranscode {
 		'contact'		=> "--contact"
 	);
 	
+	static public function getDerivativeFilePath($file, $transcodeKey){
+		return dirname( 
+					$file->getThumbPath(
+						$file->thumbName( array() )
+					)
+				) . '/' . 
+				$file->getName() . '.' .
+				$transcodeKey ;
+	}
+	static public function getTargetEncodePath( $file, $transcodeKey ){
+		return self::getDerivativeFilePath( $file, $transcodeKey ) . '.tmp';
+	}
+	
 	/** 
 	 * Static function to get the set of video assets 
 	 * 
 	 * Based on the $wgEnabledTranscodeSet set of enabled derivatives 
 	 * 
 	 * In progress assets have .tmp extension and we don't add jobQueue for them. 
-	 * 	This lets us do relatively cheap stat calls and avoid costly jobQueue sql queries
+	 * 	This assumes "cheap" stat calls and "costly" jobQueue sql queries
 	 * 	
 	 * If no transcode is in progress or ready add the job to the jobQueue
 	 * 
+	 * @param {Object} File object
 	 * @returns an associative array of sources suitable for <source> tag output
 	 */
 	static public function getSources( $file ){
@@ -163,35 +183,79 @@ class WebVideoTranscode {
 		
 		// Setup local variables 
 		$fileName = $file->getName();
+		
 		// Add the source file: 
 		$sources[] = array(
 			'src' => $file->getUrl()
 		);
 		
-		$thumbName = $file->thumbName( array() );
-		$thumbPath = $file->getThumbPath( $thumbName );
-		$thumbDir = dirname( $thumbPath );
+		$thumbName = $file->thumbName( array() );		
 		$thumbUrl = $file->getThumbUrl( $thumbName );
-		$thumbUrlDir = dirname( $thumbUrl );
-				
+		$thumbUrlDir = dirname( $thumbUrl );		
+		
+		$hasOggFlag = false;
+		$hasWebMFlag = false;
+		// Check the source file for .webm extension 
+		if( preg_match( "/$.webm/i", $fileName ) ) {
+			$hasWebMFlag = true;
+		} else {
+			// we only support ogg and webm so assume oky if we have .webm
+			$hasOggFlag = true;
+		}
+		
 		foreach($wgEnabledTranscodeSet as $transcodeKey){
-			$derivativeFile = $thumbPath . '/' . $fileName . '.' . $transcodeKey ;
+			$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
 			if( is_file( $derivativeFile ) ){
-				$sources[] = array( 
+				$sources[] = array(
 					'src' => $thumbUrlDir . '/' .$fileName . '.' . $transcodeKey
 				);
 			} else {
+				// Skip if transcode is smaller than source 
+				// And we have at least one ogg and one WebM encode for this source
+				$codec = self::$derivativeSettings[$transcodeKey]['codec'];
+				if( ! self::isTranscodeSmallerThanSource( $file,  $transcodeKey )
+					&& 
+					// Check if we need to process the $transcodeKey because we don't
+					// have an ogg or webm source yet:
+					! ( 
+						( !$hasOggFlag && $codec == 'theora' )
+						|| 
+						( !$hasWebMFlag && $codec == 'vp8' )
+					)
+				){							
+					continue;
+				}
 				// TranscodeKey not found ( check if the file is in progress ) ( tmp transcode location ) 
-				if( is_file( $derivativeFile . '.tmp' ) ){
+				//if( is_file( self::getEncodeTargetFilePath( $file, $transcodeKey ) ){
 					// file in progress / in queue
 					// XXX Note we could check date and flag as failure somewhere
-				} else {
+				//} else {
 					// no in-progress file add to job queue and touch the target
-					//touch( $derivativeFile . '.tmp' ); 
-				}
+					$job = new WebVideoTranscodeJob( $file->getTitle(), array(
+						'transcodeMode' => 'derivative',
+						'transcodeKey' => $transcodeKey,
+					) );					
+					$jobId = $job->insert();
+					if( $jobId ){
+						// If the job was inserted: 
+						touch( self::getTargetEncodePath( $file, $transcodeKey ) ); 
+					}
+				//}
 			}
 		}
 		return $sources;
+	}
+	/**
+	 * Test if a given transcode target is smaller than the source file
+	 * 
+	 * @param $transcodeKey The static transcode key
+	 * @param $file {Object} File object
+	 */
+	public static function isTranscodeSmallerThanSource( $file, $transcodeKey){
+		return ( self::$derivativeSettings[$transcodeKey]['maxSize'] < $file->getWidth() 
+					&&
+				self::$derivativeSettings[$transcodeKey]['maxSize'] < $file->getHeight()
+			);
 	}
 }
 
