@@ -29,19 +29,19 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 
 	'timedmedia-derivative-200_200kbs_ogv' => 'Ogg 200',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Low bandwith ogg video ( 200kbs )',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Low bandwith Ogg video (200 kbs)',
 	'timedmedia-derivative-360_400kbs.ogv' => 'Ogg 360P',
-	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Web streamable ogg video ( 360P )',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Web streamable Ogg video (360P)',
 	'timedmedia-derivative-480_600kbs.ogv' => 'Ogg 480P',
-	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Web streamable ogg video ( 480P )',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Web streamable Ogg video (480P)',
 	'timedmedia-derivative-720_VBR.ogv' => 'Ogg HQ',
-	'timedmedia-derivative-desc-720_VBR.ogv' => 'High quality downloadable ogg video ( 720P )',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'High quality downloadable Ogg video (720P)',
 	
 	// WebM profiles: 	
 	'timedmedia-derivative-480_600kbs.webm' => 'WebM 480P',
-	'timedmedia-derivative-480_600kbs.webm' => 'Web stremable WebM ( 480P )',
+	'timedmedia-derivative-480_600kbs.webm' => 'Web stremable WebM (480P)',
 	'timedmedia-derivative-720_VBR.webm' => 'WebM HQ',
-	'timedmedia-derivative-480_600kbs.webm' => 'High quality downloadable WebM ( 720P )',
+	'timedmedia-derivative-480_600kbs.webm' => 'High quality downloadable WebM (720P)',
 
 );
 
