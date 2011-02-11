@@ -20,6 +20,10 @@ class WebVideoTranscodeJob extends Job {
 	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'webVideoTranscode', $title, $params, $id );
 	}
+	// local function to debug output
+	private function output( $msg ){
+		print $msg . "\n";
+	}
 	// Run the transcode request
 	public function run() {
 		// Get the file object
@@ -28,9 +32,10 @@ class WebVideoTranscodeJob extends Job {
 		
 		// Build the destination target
 		$destinationFile = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
-		
-		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];		
-	
+
+		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
+				
+		$this->output( "Encoding to codec: " . $options['codec'] );
 		// Check the codec see which encode method to call;
 		if( $options['codec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $file, $destinationFile, $options );
@@ -50,6 +55,12 @@ class WebVideoTranscodeJob extends Job {
 			$status = false;
 		}
 		
+		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 
+		// XXX would be nice to clear the cache for the pages where the title in use
+		if( $status ){
+			$status = @rename($destinationFile, WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey) );
+		}
+		
 		return $status;
 	}
 	
@@ -59,6 +70,7 @@ class WebVideoTranscodeJob extends Job {
 		global $wgFFmpegLocation;	
 		// Get the source
 		$source = $file->getFullPath();
+		$this->output( "Encode:\n source:$source\n target:$target\n" );
 		
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' ' . wfEscapeShellArg( $source );
@@ -72,13 +84,14 @@ class WebVideoTranscodeJob extends Job {
 				$cmd.= " -vpre libvpx-1080p";
 			}
 		}
-				
+		$this->output( "novideo::$cmd" );	
 		if ( isset( $options['novideo'] )  ) {
 			$cmd.= " -vn ";
 		} else {
 			$cmd.= $this->ffmpegAddVideoOptions( $file, $target, $options, $pass );
 			
 		}
+			$this->output( "add starty optiosn$cmd" );	
 							   
 	    // Check for start time
 		if( isset( $options['starttime'] ) ){
@@ -90,14 +103,14 @@ class WebVideoTranscodeJob extends Job {
 	    if( isset( $options['endtime'] ) ){
 	    	$cmd.= ' -t ' . intval( $options['endtime'] )  - intval($options['starttime'] ) ;
 	    }
-	    
+	    $this->output( "add audio optiosn$cmd" );	
 	    
 	    if ( $pass == 1 || $options['noaudio'] ) {
 	    	$cmd.= ' -an';
 	    } else {
 	    	$cmd.= $this->ffmpegAddAudioOptions( $file, $target, $options, $pass );
 	    }	    	    
-	  
+	  	$this->output( "add webmn$cmd" );	
       	// Output WebM
 		$cmd.=" -f webm";
 		
@@ -112,7 +125,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd.= $target;
 		}
 		
-		print "Running cmd: \n\n" .$cmd . "\n\n" ;
+		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
 		wfProfileIn( 'ffmpeg_encode' );
 		wfShellExec( $cmd, $retval );
@@ -233,26 +246,24 @@ class WebVideoTranscodeJob extends Job {
 		
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgffmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $source );
-		
 		// Add in the encode settings
-		foreach( $options as $key => $val){
-			if( isset( WebVideoTranscode::$foggMap[$key] ) ){
-				if( is_array(  WebVideoTranscode::$foggMap[$key] ) ){
+		foreach( $options as $key => $val ){
+			if( isset( self::$foggMap[$key] ) ){
+				if( is_array(  self::$foggMap[$key] ) ){
 					$cmd.= ' '. implode(' ', WebVideoTranscode::$foggMap[$key] );
 				}else if($val == 'true' || $val === true){
-			 		$cmd.= ' '. WebVideoTranscode::$foggMap[$key];
+			 		$cmd.= ' '. self::$foggMap[$key];
 				}else if( $val === false){
 					//ignore "false" flags
 				}else{
 					//normal get/set value
-					$cmd.= ' '. WebVideoTranscode::$foggMap[$key] . ' ' . wfEscapeShellArg( $val );
+					$cmd.= ' '. self::$foggMap[$key] . ' ' . wfEscapeShellArg( $val );
 				}
 			}
-		}
-		die( "run\n\n" . $cmd. "\n");
+		}		
 		// Add the output target:
 		$cmd.= ' -o ' . wfEscapeShellArg ( $target );
-		print "Running cmd: \n\n" .$cmd . "\n\n" ;
+		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
 		wfProfileIn( 'ffmpeg2theora_encode' );
 		wfShellExec( $cmd, $retval );
@@ -263,4 +274,49 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
+	 /**
+	 * Mapping between firefogg api and ffmpeg2theora command line
+	 *
+	 * This lets us share a common api between firefogg and WebVideoTranscode
+	 * also see: http://firefogg.org/dev/index.html
+	 */
+	 public static $foggMap = array(
+		// video
+		'width'			=> "--width",
+		'height'		=> "--height",
+		'maxSize'		=> "--max_size",
+		'noUpscaling'	=> "--no-upscaling",
+		'videoQuality'=> "-v",
+		'videoBitrate'	=> "-V",
+		'twopass'		=> "--two-pass",
+		'framerate'		=> "-F",
+		'aspect'		=> "--aspect",
+		'starttime'		=> "--starttime",
+		'endtime'		=> "--endtime",
+		'cropTop'		=> "--croptop",
+		'cropBottom'	=> "--cropbottom",
+		'cropLeft'		=> "--cropleft",
+		'cropRight'		=> "--cropright",
+		'keyframeInterval'=> "--key",
+		'denoise'		=> array("--pp", "de"),
+	 	'deinterlace'	=> "--deinterlace",
+		'novideo'		=> array("--novideo", "--no-skeleton"),
+		'bufDelay'		=> "--buf-delay",
+		 // audio
+		'audioQuality'	=> "-a",
+		'audioBitrate'	=> "-A",
+		'samplerate'	=> "-H",
+		'channels'		=> "-c",
+		'noaudio'		=> "--noaudio",
+		 // metadata
+		'artist'		=> "--artist",
+		'title'			=> "--title",
+		'date'			=> "--date",
+		'location'		=> "--location",
+		'organization'	=> "--organization",
+		'copyright'		=> "--copyright",
+		'license'		=> "--license",
+		'contact'		=> "--contact"
+	);
+	
 }

@@ -105,52 +105,7 @@ class WebVideoTranscode {
 				'noUpscaling'		=> 'true',
 				'codec' 			=> 'vp8',
 			)
-		);
-	 /**
-	 * Mapping between firefogg api and ffmpeg2theora command line
-	 *
-	 * This lets us share a common api between firefogg and WebVideoTranscode
-	 * also see: http://firefogg.org/dev/index.html
-	 */
-	 public static $foggMap = array(
-		// video
-		'width'			=> "--width",
-		'height'		=> "--height",
-		'maxSize'		=> "--max_size",
-		'noUpscaling'	=> "--no-upscaling",
-		'videoQuality'=> "-v",
-		'videoBitrate'	=> "-V",
-		'twopass'		=> "--two-pass",
-		'framerate'		=> "-F",
-		'aspect'		=> "--aspect",
-		'starttime'		=> "--starttime",
-		'endtime'		=> "--endtime",
-		'cropTop'		=> "--croptop",
-		'cropBottom'	=> "--cropbottom",
-		'cropLeft'		=> "--cropleft",
-		'cropRight'		=> "--cropright",
-		'keyframeInterval'=> "--key",
-		'denoise'		=> array("--pp", "de"),
-	 	'deinterlace'	=> "--deinterlace",
-		'novideo'		=> array("--novideo", "--no-skeleton"),
-		'bufDelay'		=> "--buf-delay",
-		 // audio
-		'audioQuality'	=> "-a",
-		'audioBitrate'	=> "-A",
-		'samplerate'	=> "-H",
-		'channels'		=> "-c",
-		'noaudio'		=> "--noaudio",
-		 // metadata
-		'artist'		=> "--artist",
-		'title'			=> "--title",
-		'date'			=> "--date",
-		'location'		=> "--location",
-		'organization'	=> "--organization",
-		'copyright'		=> "--copyright",
-		'license'		=> "--license",
-		'contact'		=> "--contact"
-	);
-	
+	);	
 	static public function getDerivativeFilePath($file, $transcodeKey){
 		return dirname( 
 					$file->getThumbPath(
