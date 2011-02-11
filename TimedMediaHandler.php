@@ -4,9 +4,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "This is the TimedMediaHandler extension. Please see the README file for installation instructions.\n";
 	exit( 1 );
 }
+
 // Set up the timed media handler dir: 
 $timedMediaDir = dirname(__FILE__);
-$wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
 
 $wgMediaHandlers['application/ogg'] = 'TimedMediaHandler';
 $wgMediaHandlers['application/webm'] = 'TimedMediaHandler';
@@ -30,24 +30,25 @@ ini_set( 'include_path',
 	ini_get( 'include_path' ) );
 
 
-$wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
-$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
-$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
+// Timed Media Handler AutoLoad Classes:  
+$wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
+$wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";
+$wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
+$wgAutoloadClasses['TimedMediaIframeOutput' ] = "$timedMediaDir/TimedMediaIframeOutput.php";
+$wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 
-// Register the MwEmbed EmbedPlayer module: 
+// Register the Timed Media Handler javascript resources ( mwEmbed modules )  
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/EmbedPlayer' );
-// Register the MwEmbed TimedText module:
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/TimedText' );
 
-// Setup a hook for iframe=true (will strip the interface and only output the player)
-$wgHooks['ArticleFromTitle'][] = 'TimedMediaHandler::iframeOutputHook';
+// Localization 
+$wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
+$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 
-// AutoLoad Classes:
-$wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
-$wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";
+// Register all Timed Media Handler hooks: 
+TimedMediaHandlerHooks::register();
 
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'WebVideoTranscode::schema';
-
+// Extension Credits
 $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TimedMediaHandler',
@@ -57,26 +58,17 @@ $wgExtensionCredits['media'][] = array(
 );
 
 
-
 /******************* CONFIGURATION STARTS HERE **********************/
 
 // Set the supported ogg codecs:
-$wgOggVideoTypes = array( 'Theora' );
-$wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
+$wgMediaVideoTypes = array( 'Theora', 'WebM' );
+$wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
-// Default skin for mwEmbed player
-// Skins presently available:
-// 	"kskin" kaltura skin
-// 	"mvpcf" a jquery ui like skin
+// Default skin for mwEmbed player ( class attribute of video tag ) 
 $wgVideoPlayerSkin = 'kskin';
 
-// Support striped player iframe output for remote embedding
-$wgEnableIframeEmbed = false;
-
-// Inline timedText reference url output
-if( ! isset( $wgEnableTimedText ) ){
-	$wgEnableTimedText = false;
-}
+// Support iframe for remote embedding 
+$wgEnableIframeEmbed = true;
 
 // Location of oggThumb binary ( used instead of ffmpeg )
 $wgOggThumbLocation = '/usr/bin/oggThumb';
@@ -88,72 +80,26 @@ $wgffmpeg2theoraPath = '/usr/bin/ffmpeg2theora';
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
 
-// Enabled derivatives array
-// If set to false no derivatives will be used
-//
-// Only derivatives with less width than the
-// source asset size will be created
-//
-// Derivative jobs are added to the mediaWiki JobQueue the first time the asset is displayed
-//
-// Derivative keys encode settings are defined in WebVideoTranscode.php
-//
-if( !isset( $wgEnabledTranscodeSet )){
-	$wgEnabledTranscodeSet = array(
+/** 
+ * Default enabled transcodes 
+ * 
+ * -If set to false no derivatives will be used
+ * -These transcodes are *in addition to* the source file. 
+ * -Only derivatives with smaller width than the source asset size will be created
+ * -Derivative jobs are added to the mediaWiki JobQueue the first time the asset is displayed
+ * -Derivative keys encode settings are defined in WebVideoTranscode.php
+ */
+$wgEnabledTranscodeSet = array(
+	// Cover accessibility for low bandwidth / low resources clients: 
+	WebVideoTranscode::ENC_OGV_2MBS,
 	
-		// Cover accessibility for low bandwidth / not running most up-to-date browsers environments: 
-		WebVideoTranscode::ENC_OGV_2MBS,
-		
-		// A standard web streamable ogg video 
-		WebVideoTranscode::ENC_OGV_6MBS,
-		
-		// A standard web streamable WebM video	
-		WebVideoTranscode::ENC_WEBM_6MBS,	
-		
-		// A high quality WebM stream 
-		WebVideoTranscode::ENC_WEBM_HQ_VBR,
-		
-		// If the source asset is in a free format it will also be made available to the players
-	);
-}
+	// A standard web streamable ogg video 
+	WebVideoTranscode::ENC_OGV_6MBS,
+	
+	// A standard web streamable WebM video	
+	WebVideoTranscode::ENC_WEBM_6MBS,	
+	
+	// A high quality WebM stream 
+	WebVideoTranscode::ENC_WEBM_HQ_VBR,
+);
 
-
-/******************* CONFIGURATION ENDS HERE **********************/
-
-// NOTE: normally configuration based code would go into extension setup function
-// These configuration variables setup hooks and autoloaders that need to happen at
-// initial config time
-
-
-// Enable timed text
-if( $wgEnableTimedText ){
-	/**
-	 * Handle Adding of "timedText" NameSpace
-	 */
-	$wgTimedTextNS = null;
-
-	// Make sure $wgExtraNamespaces in an array (set to NULL by default) :
-	if ( !is_array( $wgExtraNamespaces ) ) {
-		$wgExtraNamespaces = array();
-	}
-	// Check for "TimedText" NS
-	$maxNS = 101; // content pages need "even" namespaces
-	foreach($wgExtraNamespaces as $ns => $nsTitle ){
-		if( $nsTitle == 'TimedText' ){
-			$wgTimedTextNS = $ns;
-		}
-		if( $ns > $maxNS ){
-			$maxNs = $ns;
-		}
-	}
-	// If not found add Add a custom timedText NS
-	if( !$wgTimedTextNS ){
-		$wgTimedTextNS = ( $maxNS + 1 );
-		$wgExtraNamespaces[	$wgTimedTextNS ] = 'TimedText';
-		$wgExtraNamespaces[ $wgTimedTextNS +1 ] =  'TimedText_talk';
-	}
-	define( "NS_TIMEDTEXT", $wgTimedTextNS);
-	// Assume $wgTimedTextNS +1 for talk
-	define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
-
-} // end of handling timedText
