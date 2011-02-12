@@ -457,6 +457,10 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-desc-link' => 'Über diese Datei',
 	'timedmedia-oggThumb-version' => 'OggHandler erfordert oggThumb in der Version $1 oder höher.',
 	'timedmedia-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Ogg-Videodatei mit niedriger Datenübertragungsrate (200 kbit/s)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (360p)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
 );
 
 /** Zazaki (Zazaki)
@@ -683,6 +687,10 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'À propos de ce fichier',
 	'timedmedia-oggThumb-version' => 'OggHandler nécessite oggThumb, version $1 ou supérieure.',
 	'timedmedia-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Vidéo Ogg bas débit (200 kbps)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vidéo Ogg lisible en continu sur le Web (360p)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vidéo Ogg lisible en continu sur le web (480p)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vidéo Ogg téléchargeable de grande qualité (720p)',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -937,6 +945,10 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-desc-link' => 'A proposito de iste file',
 	'timedmedia-oggThumb-version' => 'OggHandler require oggThumb version $1 o plus recente.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ha fallite de crear le miniatura.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Video Ogg a basse largor de banda (200 kbs)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Video Ogg fluibile per web (360P)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg fluibile per web (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Video Ogg discargabile de alte qualitate (720P)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1320,6 +1332,10 @@ $messages['mk'] = array(
 	'timedmedia-desc-link' => 'Информации за оваа податотека',
 	'timedmedia-oggThumb-version' => 'OggHandler бара oggThumb верзија $1 или понова.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не успеа да ја создаде минијатурата.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Нископропусно Ogg-видео (200 кб/с)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Ogg-видео за емитување (360 пиксели)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Ogg-видео за емитување (480 пиксели)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Висококвалитетно Ogg-видео (720 пиксели)',
 );
 
 /** Malayalam (മലയാളം)
@@ -1635,6 +1651,10 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'Sobre este ficheiro',
 	'timedmedia-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
 	'timedmedia-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Vídeo Ogg de baixa largura de banda (200 kbs)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vídeo Ogg para web streaming (360P)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vídeo Ogg para web streaming (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vídeo Ogg de alta qualidade para download (720 P)',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
