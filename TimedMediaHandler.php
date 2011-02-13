@@ -32,15 +32,15 @@ $wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeO
 $wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
 
 // Ogg Handler
-$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/OggHandler/OggHandler.php";
+$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
 ini_set( 'include_path',
-	"$timedMediaDir/OggHandler/PEAR/File_Ogg" .
+	"$timedMediaDir/handlers/OggHandler/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
 	ini_get( 'include_path' ) );
 
 // WebM Handler
-$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/WebMHandler/WebMHandler.php";
-$wgAutoloadClasses['getID3' ] = "$timedMediaDir/WebMHandler/getid3.php"; 
+$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
+$wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3.php"; 
 
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
