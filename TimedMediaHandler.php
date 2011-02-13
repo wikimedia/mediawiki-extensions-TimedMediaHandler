@@ -20,14 +20,9 @@ if ( !in_array( 'oga', $wgFileExtensions ) ) {
 if ( !in_array( 'webm', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'webm';
 }
-// Pear based OGG parsing:
-ini_set( 'include_path',
-	"$timedMediaDir/PEAR/File_Ogg" .
-	PATH_SEPARATOR .
-	ini_get( 'include_path' ) );
 
-// Getid3 WebM parsing: 
-$wgAutoloadClasses['getID3' ] = "$timedMediaDir/getid3/getid3.php"; 
+
+
 
 // Timed Media Handler AutoLoad Classes:  
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
@@ -36,9 +31,16 @@ $wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTran
 $wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeOutput.php";
 $wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
 
+// Ogg Handler
+$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/OggHandler/OggHandler.php";
+ini_set( 'include_path',
+	"$timedMediaDir/OggHandler/PEAR/File_Ogg" .
+	PATH_SEPARATOR .
+	ini_get( 'include_path' ) );
 
-$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/handlers/OggHandler.php";
-$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler.php";
+// WebM Handler
+$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/WebMHandler/WebMHandler.php";
+$wgAutoloadClasses['getID3' ] = "$timedMediaDir/WebMHandler/getid3.php"; 
 
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
