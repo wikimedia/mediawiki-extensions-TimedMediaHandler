@@ -267,6 +267,10 @@ $messages['be-tarask'] = array(
 	'timedmedia-desc-link' => 'Інфармацыя пра гэты файл',
 	'timedmedia-oggThumb-version' => 'OggHandler патрабуе oggThumb вэрсіі $1 ці больш позьняй.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не атрымалася стварыць мініятуру.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Нізкапаточнае Ogg-відэа (200 кб/с)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Паточнае Ogg-відэа (360 пкс)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Паточнае Ogg-відэа (480 пкс)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Высакаякаснае Ogg-відэа для загрузкі (720 пкс)',
 );
 
 /** Bulgarian (Български)
@@ -1206,7 +1210,9 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'timedmedia-desc' => 'En Projamm (<i lang="en">handler</i>) för <i lang="en">Ogg Theora</i> un <i lang="en">Ogg Vorbis</i> Dateie, met enem Javaskrip Afspiller.',
+	'timedmedia-desc' => 'En Projamm (<i lang="en">handler</i>) för Meedije met Zickaandeil
+— Viddejos, Tondatteieje, <i lang="en">timedText</i> (Ongertittelle) —
+med Ömsetzung noh em <i lang="en">Ogg Theora</i> un em <i lang="en">Ogg Vorbis</i>-Fommaat.',
 	'timedmedia-short-audio' => '<i lang="en">Ogg $1</i> Tondatei, $2',
 	'timedmedia-short-video' => '<i lang="en">Ogg $1</i> Viddejodatei, $2',
 	'timedmedia-short-general' => '<i lang="en">Ogg $1</i> Medijedatei, $2',
@@ -1215,13 +1221,17 @@ $messages['ksh'] = array(
 	'timedmedia-long-multiplexed' => '<i lang="en">Ogg</i> jemultipex Ton- un Viddejodatei, $1, fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3 ennsjesammp',
 	'timedmedia-long-general' => '<i lang="en">Ogg</i> Medijedatei fum Ömfang $2, $3',
 	'timedmedia-long-error' => 'ene kapodde <i lang="en">Ogg</i> Datei: $1',
-	'timedmedia-no-player-js' => 'Schad, Dinge Brauser hät entweder JavaSkrepp ußjeschalldt udder kein passend Projramm zom Afschpelle.<br />Do kanns jäz <a href="$1">dä Ußschnedd eronger laade</a> udder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Afschpellprojramm eronger laade</a>, öm dat Schtöck en Dingem Brauser afzeschpelle.',
+	'timedmedia-no-player-js' => 'Schad, Dinge Brauser hät entweder JavaSkrepp ußjeschalldt udder kein zopaß Projramm zom Afschpelle.<br />Do kanns jäz <a href="$1">dat Stöck eronger laade</a> udder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Afspeller-Projramm eronger laade</a>, öm dat Schtöck en Dingem Brauser afzeschpelle.',
 	'timedmedia-more' => 'Enshtelle&nbsp;…',
 	'timedmedia-dismiss' => 'Zomaache!',
 	'timedmedia-download' => 'Datei erunger lade',
 	'timedmedia-desc-link' => 'Övver di Datei',
 	'timedmedia-oggThumb-version' => 'Dä <code lang="en">OggHandler</code> bruch <code lang="en">oggThumb</code> in dä Version $1 udder hüüter.',
 	'timedmedia-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'En Viddejo-Dattei met winnesch Bandbreide (200 kbs) em <i lang="en">Ogg</i>-Fommaat',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för övver et Web ze striime',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
 );
 
 /** Latin (Latina)
