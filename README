@@ -12,9 +12,10 @@ or any wiki page using the same syntax as for images.
 
 To install this extension, add the following to the end of your LocalSettings.php:
 
-	// TimedMediaHandler is dependent on mwEmbedSupport 
-	require( "$IP/extensions/
-
+	// You need mwEmbedSupport ( if not already added )
+	require( "$IP/extensions/MwEmbedSupport/MwEmbedSupport.php" );
+	
+	// TimedMediaHandler
     require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
 oggThumb

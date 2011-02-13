@@ -10,7 +10,11 @@
 class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
-		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes;
+		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, $wgMediaHandlers;
+
+		// Setup media Handlers: 
+		$wgMediaHandlers['application/ogg'] = 'OggHandler';
+		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 		
 		// Parser hook for TimedMediaHandler output
 		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
@@ -28,7 +32,7 @@ class TimedMediaHandlerHooks {
 		);
 				
 		/**
-		 * Add support for the "timedText" NameSpace
+		 * Add support for the "TimedText" NameSpace
 		 */
 		global $wgExtraNamespaces;
 		$timedTextNS = null;

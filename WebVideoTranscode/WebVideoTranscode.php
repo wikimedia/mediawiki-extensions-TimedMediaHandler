@@ -181,10 +181,10 @@ class WebVideoTranscode {
 					continue;
 				}
 				// TranscodeKey not found ( check if the file is in progress ) ( tmp transcode location ) 
-				//if( is_file( self::getEncodeTargetFilePath( $file, $transcodeKey ) ){
+				if( is_file( self::getTargetEncodePath( $file, $transcodeKey ) ) ) {
 					// file in progress / in queue
 					// XXX Note we could check date and flag as failure somewhere
-				//} else {
+				} else {
 					// no in-progress file add to job queue and touch the target
 					$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 						'transcodeMode' => 'derivative',
@@ -192,10 +192,13 @@ class WebVideoTranscode {
 					) );					
 					$jobId = $job->insert();
 					if( $jobId ){
-						// If the job was inserted: 
-						touch( self::getTargetEncodePath( $file, $transcodeKey ) ); 
+						// Make the thumb target directory:
+						wfMkdirParents( dirname( self::getTargetEncodePath( $file, $transcodeKey ) ) );
+						// If the job was inserted touch the file ( so we don't add the job again )
+						// ONCE REAADY UNCOMMENT HERE: 
+						//touch( self::getTargetEncodePath( $file, $transcodeKey ) ); 
 					}
-				//}
+				}
 			}
 		}
 		return $sources;

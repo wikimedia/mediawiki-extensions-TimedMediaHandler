@@ -8,9 +8,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Set up the timed media handler dir: 
 $timedMediaDir = dirname(__FILE__);
 
-$wgMediaHandlers['application/ogg'] = 'TimedMediaHandler';
-$wgMediaHandlers['application/webm'] = 'TimedMediaHandler';
-
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'ogg';
 }
@@ -23,18 +20,26 @@ if ( !in_array( 'oga', $wgFileExtensions ) ) {
 if ( !in_array( 'webm', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'webm';
 }
-
+// Pear based OGG parsing:
 ini_set( 'include_path',
 	"$timedMediaDir/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
 	ini_get( 'include_path' ) );
 
+// Getid3 WebM parsing: 
+$wgAutoloadClasses['getID3' ] = "$timedMediaDir/getid3/getid3.php"; 
 
 // Timed Media Handler AutoLoad Classes:  
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
 $wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";
 $wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
-$wgAutoloadClasses['TimedMediaIframeOutput' ] = "$timedMediaDir/TimedMediaIframeOutput.php";
+$wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeOutput.php";
+$wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
+
+
+$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/handlers/OggHandler.php";
+$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler.php";
+
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 
@@ -45,6 +50,17 @@ MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/TimedT
 // Localization 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
+
+// Setup globals
+
+/**
+ * Setup a metadata cache :(
+ * 
+ * Its very costly to generate metadata! I am not sure who or why the file repos don't get
+ * instantiated with a path, and then could lazy init things like other normal objects and 
+ * have a local cache of their metadata! 
+ */ 
+$wgMediaHandlerMetadataCache = array();
 
 // Register all Timed Media Handler hooks: 
 TimedMediaHandlerHooks::register();
@@ -62,7 +78,7 @@ $wgExtensionCredits['media'][] = array(
 /******************* CONFIGURATION STARTS HERE **********************/
 
 // Set the supported ogg codecs:
-$wgMediaVideoTypes = array( 'Theora', 'WebM' );
+$wgMediaVideoTypes = array( 'Theora', 'Vp8' );
 $wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
 // Default skin for mwEmbed player ( class attribute of video tag ) 

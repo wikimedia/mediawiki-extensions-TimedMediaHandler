@@ -3,12 +3,15 @@
 // TODO: Fix core printable stylesheet. Descendant selectors suck.
 
 class TimedMediaHandler extends MediaHandler {
-	const OGG_METADATA_VERSION = 2;
 
 	static $magicDone = false;
 
 	function isEnabled() {
 		return true;
+	}
+	
+	function getImageSize( $file, $path, $metadata = false ) {
+		/* override by handler */	
 	}
 	
 	/**
@@ -85,8 +88,6 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Utility functions
 	 */
-	
-	
 	public static function parseTimeString( $seekString, $length = false ) {
 		$parts = explode( ':', $seekString );
 		$time = 0;
@@ -105,86 +106,7 @@ class TimedMediaHandler extends MediaHandler {
 			$time = $length - 1;
 		}
 		return $time;
-	}
-	/**
-	 * Get the "media size" 
-	 *
-	 */	 
-	function getImageSize( $file, $path, $metadata = false ) {
-		global $wgMediaVideoTypes;
-		// Just return the size of the first video stream
-		if ( $metadata === false ) {
-			$metadata = $file->getMetadata();
-		}
-		$metadata = $this->unpackMetadata( $metadata );
-		if ( isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
-			return false;
-		}
-		foreach ( $metadata['streams'] as $stream ) {
-			if ( in_array( $stream['type'], $wgMediaVideoTypes ) ) {
-				return array(
-					$stream['header']['PICW'],
-					$stream['header']['PICH']
-				);
-			}
-		}
-		return array( false, false );
-	}
-
-	function getMetadata( $image, $path ) {
-		// Get the $image type: 
-		print_r( $image );
-		die();
-		
-		$metadata = array( 'version' => self::OGG_METADATA_VERSION );
-
-		if ( !class_exists( 'File_Ogg' ) ) {
-			require( 'File/Ogg.php' );
-		}
-		try {
-			$f = new File_Ogg( $path );
-			$streams = array();
-			foreach ( $f->listStreams() as $streamType => $streamIDs ) {
-				foreach ( $streamIDs as $streamID ) {
-					$stream = $f->getStream( $streamID );
-					$streams[$streamID] = array(
-						'serial' => $stream->getSerial(),
-						'group' => $stream->getGroup(),
-						'type' => $stream->getType(),
-						'vendor' => $stream->getVendor(),
-						'length' => $stream->getLength(),
-						'size' => $stream->getSize(),
-						'header' => $stream->getHeader(),
-						'comments' => $stream->getComments()
-					);
-				}
-			}
-			$metadata['streams'] = $streams;
-			$metadata['length'] = $f->getLength();
-			// Get the offset of the file (in cases where the file is a segment copy)
-			$metadata['offset'] = $f->getStartOffset();
-		} catch ( PEAR_Exception $e ) {
-			// File not found, invalid stream, etc.
-			$metadata['error'] = array(
-				'message' => $e->getMessage(),
-				'code' => $e->getCode()
-			);
-		}
-		return serialize( $metadata );
-	}
-
-	function unpackMetadata( $metadata ) {
-		$unser = @unserialize( $metadata );
-		if ( isset( $unser['version'] ) && $unser['version'] == self::OGG_METADATA_VERSION ) {
-			return $unser;
-		} else {
-			return false;
-		}
-	}
-
-	function getMetadataType( $image ) {
-		return 'ogg';
-	}
+	}	
 
 	function isMetadataValid( $image, $metadata ) {
 		return $this->unpackMetadata( $metadata ) !== false;
@@ -221,49 +143,25 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		// Generate thumb:
-		$thumbStatus = TimedMediaThumbnail::gennerateThumb( $file, $dstPath, $params, $width, $height );
+		$thumbStatus = TimedMediaThumbnail::get( $file, $dstPath, $params, $width, $height );
 		if( $thumbStatus !== true ){
 			return $thumbStatus;
 		}
 	
 		return new TimedMediaTransformOutput( $baseConfig );
 	}
-		
+
 	function canRender( $file ) { return true; }
 	function mustRender( $file ) { return true; }
 
-	function getLength( $file ) {
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) ) {
-			return 0;
-		} else {
-			return $metadata['length'];
-		}
-	}
+	// Get a stream offset time
 	function getOffset( $file ){
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['offset']) ) {
-			return 0;
-		} else {
-			return $metadata['offset'];
-		}
-	}
-
-	function getStreamTypes( $file ) {
-		$streamTypes = '';
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) ) {
-			return false;
-		}
-		foreach ( $metadata['streams'] as $stream ) {
-			$streamTypes[$stream['type']] = true;
-		}
-		return array_keys( $streamTypes );
+		return 0;
 	}
 
 	function getShortDesc( $file ) {
 		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
-		wfLoadExtensionMessages( 'TimedMediaHandler' );
+
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
@@ -282,7 +180,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	function getLongDesc( $file ) {
 		global $wgLang, $wgMediaVideoTypes, $wgMediaAudioTypes;
-		wfLoadExtensionMessages( 'TimedMediaHandler' );
+
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
@@ -321,7 +219,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	function getDimensionsString( $file ) {
 		global $wgLang;
-		wfLoadExtensionMessages( 'TimedMediaHandler' );
+
 		if ( $file->getWidth() ) {
 			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
 				$wgLang->formatNum( $file->getWidth() ),
@@ -329,15 +227,6 @@ class TimedMediaHandler extends MediaHandler {
 		} else {
 			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}
-	}
-
-	static function getMyScriptPath() {
-		global $wgScriptPath;
-		return "$wgScriptPath/extensions/TimedMediaHandler";
-	}
-
-	function setHeaders( $out ) {
-		
 	}
 
 	function parserTransformHook( $parser, $file ) {
@@ -354,4 +243,8 @@ class TimedMediaHandler extends MediaHandler {
 			$instance->setHeaders( $outputPage );
 		}
 	}	
+}
+// Setup named Timed Media handlers 
+class TimedMediaHandlerOgg extends TimedMediaHandler {
+
 }
