@@ -160,48 +160,55 @@ class WebVideoTranscode {
 		
 		foreach($wgEnabledTranscodeSet as $transcodeKey){
 			$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
+			$codec =  self::$derivativeSettings[$transcodeKey]['codec'];
 			if( is_file( $derivativeFile ) ){
+				$messageKey = str_replace('.','_',$transcodeKey );
 				$sources[] = array(
-					'src' => $thumbUrlDir . '/' .$fileName . '.' . $transcodeKey
+					'src' => $thumbUrlDir . '/' .$fileName . '.' . $transcodeKey,
+					'title' => wfMsg('timedmedia-derivative-desc-' . $messageKey ),
+					'data-shorttitle' => wfMsg('timedmedia-derivative-' . $messageKey)
 				);
 			} else {
-				// Skip if transcode is smaller than source 
-				// And we have at least one ogg and one WebM encode for this source
-				$codec = self::$derivativeSettings[$transcodeKey]['codec'];
-				if( ! self::isTranscodeSmallerThanSource( $file,  $transcodeKey )
-					&& 
-					// Check if we need to process the $transcodeKey because we don't
-					// have an ogg or webm source yet:
-					! ( 
-						( !$hasOggFlag && $codec == 'theora' )
-						|| 
-						( !$hasWebMFlag && $codec == 'vp8' )
-					)
-				){							
+				// Check if we should derivative to job queue 
+				// Skip if we have both ogg and one WebM and target is too small:
+				if( $hasOggFlag && $hasWebMFlag && 
+					!self::isTranscodeSmallerThanSource( $file,  $transcodeKey ) ){
 					continue;
 				}
-				// TranscodeKey not found ( check if the file is in progress ) ( tmp transcode location ) 
-				if( is_file( self::getTargetEncodePath( $file, $transcodeKey ) ) ) {
-					// file in progress / in queue
-					// XXX Note we could check date and flag as failure somewhere
-				} else {
-					// no in-progress file add to job queue and touch the target
-					$job = new WebVideoTranscodeJob( $file->getTitle(), array(
-						'transcodeMode' => 'derivative',
-						'transcodeKey' => $transcodeKey,
-					) );					
-					$jobId = $job->insert();
-					if( $jobId ){
-						// Make the thumb target directory:
-						wfMkdirParents( dirname( self::getTargetEncodePath( $file, $transcodeKey ) ) );
-						// If the job was inserted touch the file ( so we don't add the job again )
-						// ONCE REAADY UNCOMMENT HERE: 
-						//touch( self::getTargetEncodePath( $file, $transcodeKey ) ); 
-					}
+				// Update Flags: 
+				if( $codec == 'theora' ){
+					$hasOggFlag = true;
 				}
+				if( $codec == 'vp8' ){
+					$hasWebMFlag = true;
+				}				
+				self::updateJobQueue($file, $transcodeKey); 				
 			}
 		}
 		return $sources;
+	}
+	/**
+	 * Update the job queue if the file is not already in the job queue:
+	 */	
+	public static function updateJobQueue( $file, $transcodeKey ){
+		$target =  self::getTargetEncodePath( $file, $transcodeKey );
+		// TranscodeKey not found ( check if the file is in progress ) ( tmp transcode location ) 
+		if( is_file( $target ) ) {
+			// file in progress / in queue
+			// XXX Note we could check date and flag as failure 
+		} else {
+			// no in-progress file add to job queue and touch the target
+			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
+				'transcodeMode' => 'derivative',
+				'transcodeKey' => $transcodeKey,
+			) );					
+			$jobId = $job->insert();
+			if( $jobId ){
+				// Make the thumb target directory and touch the file ( so we don't add the job again )
+				wfMkdirParents( dirname( $target ) );
+				touch( $target ); 
+			}
+		}
 	}
 	/**
 	 * Test if a given transcode target is smaller than the source file

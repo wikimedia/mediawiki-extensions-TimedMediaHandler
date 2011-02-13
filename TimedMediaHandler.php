@@ -40,7 +40,7 @@ ini_set( 'include_path',
 
 // WebM Handler
 $wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
-$wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3.php"; 
+$wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/getid3.php"; 
 
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
@@ -48,6 +48,10 @@ $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/W
 // Register the Timed Media Handler javascript resources ( mwEmbed modules )  
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/EmbedPlayer' );
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/TimedText' );
+
+// MwEmbed module configuration:
+$wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true; 
+
 
 // Localization 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
@@ -80,7 +84,7 @@ $wgExtensionCredits['media'][] = array(
 /******************* CONFIGURATION STARTS HERE **********************/
 
 // Set the supported ogg codecs:
-$wgMediaVideoTypes = array( 'Theora', 'Vp8' );
+$wgMediaVideoTypes = array( 'Theora', 'VP8' );
 $wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
 // Default skin for mwEmbed player ( class attribute of video tag ) 

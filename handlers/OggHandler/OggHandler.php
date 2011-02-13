@@ -110,4 +110,62 @@ class OggHandler extends TimedMediaHandler {
 		}
 	}
 	
+	function getShortDesc( $file ) {
+		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
+
+		$streamTypes = $this->getStreamTypes( $file );
+		if ( !$streamTypes ) {
+			return parent::getShortDesc( $file );
+		}
+		if ( array_intersect( $streamTypes, $wgMediaVideoTypes ) ) {
+			// Count multiplexed audio/video as video for short descriptions
+			$msg = 'timedmedia-ogg-short-video';
+		} elseif ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
+			$msg = 'timedmedia-ogg-short-audio';
+		} else {
+			$msg = 'timedmedia-ogg-short-general';
+		}
+		return wfMsg( $msg, implode( '/', $streamTypes ),
+			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
+	}
+
+	function getLongDesc( $file ) {
+		global $wgLang, $wgMediaVideoTypes, $wgMediaAudioTypes;
+
+		$streamTypes = $this->getStreamTypes( $file );
+		if ( !$streamTypes ) {
+			$unpacked = $this->unpackMetadata( $file->getMetadata() );
+			return wfMsg( 'timedmedia-ogg-long-error', $unpacked['error']['message'] );
+		}
+		if ( array_intersect( $streamTypes,$wgMediaVideoTypes  ) ) {
+			if ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
+				$msg = 'timedmedia-ogg-long-multiplexed';
+			} else {
+				$msg = 'timedmedia-ogg-long-video';
+			}
+		} elseif ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
+			$msg = 'timedmedia-ogg-long-audio';
+		} else {
+			$msg = 'timedmedia-ogg-long-general';
+		}
+		$size = 0;
+		$unpacked = $this->unpackMetadata( $file->getMetadata() );
+		if ( !$unpacked || isset( $metadata['error'] ) ) {
+			$length = 0;
+		} else {
+			$length = $this->getLength( $file );
+			foreach ( $unpacked['streams'] as $stream ) {
+				if( isset( $stream['size'] ) )
+					$size += $stream['size'];
+			}
+		}
+		$bitrate = $length == 0 ? 0 : $size / $length * 8;
+		return wfMsg( $msg, implode( '/', $streamTypes ),
+			$wgLang->formatTimePeriod( $length ),
+			$wgLang->formatBitrate( $bitrate ),
+			$wgLang->formatNum( $file->getWidth() ),
+			$wgLang->formatNum( $file->getHeight() )
+	   	);
+	}
+	
 }

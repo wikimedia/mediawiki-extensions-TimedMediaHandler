@@ -1919,10 +1919,17 @@ mw.EmbedPlayer.prototype = {
 	showPluginMissingHTML: function( ) {
 		mw.log("EmbedPlayer::showPluginMissingHTML");
 		// Control builder ( for play button )
-		this.controlBuilder = new mw.PlayerControlBuilder( this );			
+		this.controlBuilder = new mw.PlayerControlBuilder( this );					
+		
+		this.controlBuilder.doWarningBindinng( 'EmbedPlayer.DirectFileLinkWarning',
+			gM( 'mwe-embedplayer-download-warn', mw.getConfig('EmbedPlayer.FirefoxLink') )
+		);
+		// Hide loader
+		$('#loadingSpinner_' + this.id ).remove();
+		$(this).css('position', 'relative');
 		
 		// Get mime type for un-supported formats:
-		this.updatePosterHTML();
+		this.updatePosterHTML();		
 		
 		// Set the play button to the first available source: 
 		$(this).find('.play-btn-large')

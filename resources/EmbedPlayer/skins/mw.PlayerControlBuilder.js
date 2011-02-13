@@ -164,7 +164,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Build the supportedComponets list
 		this.supportedComponets = $j.extend( this.supportedComponets, embedPlayer.supports );
 		
-		$(embedPlayer).trigger( 'addControlBarComponent', this);
+		$( embedPlayer ).trigger( 'addControlBarComponent', this);
 			
 		// Check for Attribution button
 		if( mw.getConfig( 'EmbedPlayer.AttributionButton' ) && embedPlayer.attributionbutton ){
@@ -694,7 +694,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.checkNativeWarning( ) ) {
 			_this.doWarningBindinng( 'EmbedPlayer.ShowNativeWarning',
-				gM( 'mwe-embedplayer-for_best_experience' )
+				gM( 'mwe-embedplayer-for_best_experience', mw.getConfig('EmbedPlayer.FirefoxLink') )
 			);
 		}
 
@@ -863,7 +863,10 @@ mw.PlayerControlBuilder.prototype = {
 		var embedPlayer = this.embedPlayer;
 		var _this = this;
 
-		// make sure the
+		// make sure the player is large enough 
+		if( embedPlayer.getWidth() < 200 ){
+			return false;
+		}
 
 		$( embedPlayer ).hoverIntent({
 			'timeout': 2000,
@@ -873,7 +876,6 @@ mw.PlayerControlBuilder.prototype = {
 					return ;
 				}
 				if ( $( '#warningOverlay_' + embedPlayer.id ).length == 0 ) {
-
 					$( this ).append(
 						$('<div />')
 						.attr( {

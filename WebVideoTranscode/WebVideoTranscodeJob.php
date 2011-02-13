@@ -20,10 +20,12 @@ class WebVideoTranscodeJob extends Job {
 	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'webVideoTranscode', $title, $params, $id );
 	}
-	// local function to debug output
+	
+	// Local function to debug output ( jobs don't have access to the maintenance class )
 	private function output( $msg ){
 		print $msg . "\n";
 	}
+	
 	// Run the transcode request
 	public function run() {
 		// Get the file object
