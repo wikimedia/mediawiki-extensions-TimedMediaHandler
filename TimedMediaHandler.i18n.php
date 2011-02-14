@@ -449,15 +449,17 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'timedmedia-desc' => 'Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) einschließlich Codeumwandlung nach Ogg Theora/Vorbis zur Verfügung',
+	'timedmedia-desc' => 'Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) bereit, welches die Formate WebM, Ogg Theora, Ogg Vorbis und SubRip unterstützt',
 	'timedmedia-ogg-short-audio' => 'Ogg-$1-Audiodatei, $2',
 	'timedmedia-ogg-short-video' => 'Ogg-$1-Videodatei, $2',
 	'timedmedia-ogg-short-general' => 'Ogg-$1-Mediadatei, $2',
 	'timedmedia-ogg-long-audio' => 'Ogg-$1-Audiodatei, Länge: $2, $3',
-	'timedmedia-ogg-long-video' => 'Ogg-$1-Videodatei, Länge: $2, $4×$5 Pixel, $3',
-	'timedmedia-ogg-long-multiplexed' => 'Ogg-Audio-/Video-Datei, $1, Länge: $2, $4×$5 Pixel, $3',
+	'timedmedia-ogg-long-video' => 'Ogg-$1-Videodatei, Länge: $2, $4×$5 Pixel, $3 insgesamt',
+	'timedmedia-ogg-long-multiplexed' => 'Ogg-Audio-/Video-Datei, $1, Länge: $2, $4×$5 Pixel, $3 insgesamt',
 	'timedmedia-ogg-long-general' => 'Ogg-Mediadatei, Länge: $2, $3',
 	'timedmedia-ogg-long-error' => 'Ungültige Ogg-Datei: $1',
+	'timedmedia-webm-short-video' => 'WebM-$1-Videodatei, $2',
+	'timedmedia-webm-long-video' => 'WebM-Audio-/Video-Datei, $1, Länge: $2, $4×$5 Pixel, $3 insgesamt',
 	'timedmedia-no-player-js' => 'Entschuldige, aber dein Browser hat entweder JavaScript deaktiviert oder keine unterstützte Abspielsoftware.<br />
 Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'timedmedia-more' => 'Optionen …',
@@ -889,7 +891,7 @@ $messages['hr'] = array(
  * @author Reedy
  */
 $messages['hsb'] = array(
-	'timedmedia-desc' => 'Wodźenski program za Timed Media (widejo, awdio, timedText) z překodowanjom do Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Wodźenski program za awdio, widejo a timedText z podpěru za formaty WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Awdiodataja Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Widejodataja Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Ogg medijowa dataja $1, $2',
@@ -1330,7 +1332,7 @@ $messages['lv'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'timedmedia-desc' => 'Обработувач на синхронизирани снимки (видео, аудио, timedText) со прекодирање во Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Обработувач за аудио, видео и синхронизиран текст, со поддршка за форматите WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 видео податотека, $2',
 	'timedmedia-ogg-short-general' => 'Мултимедијална податотека Ogg $1, $2',
@@ -1339,6 +1341,8 @@ $messages['mk'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg мултиплексирана аудио/видео податотека, $1, должина $2, $4×$5 пиксели, $3 вкупно',
 	'timedmedia-ogg-long-general' => 'мултимедијална податотека Ogg, должина $2, $3',
 	'timedmedia-ogg-long-error' => 'Оштетена ogg податотека: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 видеоснимка, $2',
+	'timedmedia-webm-long-video' => 'WebM аудио/видео снимка, $1, должина: $2, $4 × $5 пиксели, вкупно $3',
 	'timedmedia-no-player-js' => 'Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />
 Можете да го <a href="$1">преземете клипот</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.',
 	'timedmedia-more' => 'Повеќе...',
@@ -1348,9 +1352,12 @@ $messages['mk'] = array(
 	'timedmedia-oggThumb-version' => 'OggHandler бара oggThumb верзија $1 или понова.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не успеа да ја создаде минијатурата.',
 	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Нископропусно Ogg-видео (200 кб/с)',
+	'timedmedia-derivative-360_400kbs.ogv' => 'Ogg 360п',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Ogg-видео за емитување (360 пиксели)',
+	'timedmedia-derivative-480_600kbs.ogv' => 'Ogg 480п',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Ogg-видео за емитување (480 пиксели)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Висококвалитетно Ogg-видео (720 пиксели)',
+	'timedmedia-derivative-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
 );
 
 /** Malayalam (മലയാളം)
@@ -1472,7 +1479,7 @@ $messages['nds-nl'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'timedmedia-desc' => 'Handelt Timed Media af (video, audio timedText) en codeert naar Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Handelt audio, video en ondertitels af met ondersteuning voor WebM, Ogg Theora, Vorbis en srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 geluidsbestand, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videobestand, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediabestand, $2',
@@ -1489,6 +1496,10 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-desc-link' => 'Over dit bestand',
 	'timedmedia-oggThumb-version' => 'OggHandler vereist oggThumb versie $1 of hoger.',
 	'timedmedia-oggThumb-failed' => 'oggThumb kon geen miniatuur aanmaken.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Lage bandbreedte Ogg video (200 kbps)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Te webstreamen Off video (360P)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Te webstreamen Ogg video (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Hoge kwaliteit downloadbare Ogg video (720P)',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1584,7 +1595,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'timedmedia-desc' => 'Obsługa plików w formacie Ogg Theora i Vorbis z odtwarzaczem w JavaScripcie',
+	'timedmedia-desc' => 'Obsługa plików audio, wideo i napisów filmowych w formatach WebM, Ogg Theora, Vorbis i srt',
 	'timedmedia-ogg-short-audio' => 'Plik dźwiękowy Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Plik wideo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Plik multimedialny Ogg $1, $2',
@@ -1713,7 +1724,7 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'timedmedia-ogg-short-audio' => 'Fișier de sunet ogg $1, $2',
+	'timedmedia-ogg-short-audio' => 'Fișier audio ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Fișier video ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Fișier media ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'Fișier audio ogg $1, lungime $2, $3',
@@ -1850,7 +1861,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'timedmedia-desc' => 'Upravljavec časovnih predstavnosti (video, audio, timedText) s prekodiranjem v Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Upravljavec zvoka, videa in časovnega besedila s podporo oblikam WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Zvočna datoteka Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Videodatoteka Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
@@ -1859,6 +1870,8 @@ $messages['sl'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'multipleksna zvočna/videodatoteka ogg, $1, dolžina $2, $4 × $5 pik, $3 skupno',
 	'timedmedia-ogg-long-general' => 'predstavnostna datoteka Ogg, dolžina $2, $3',
 	'timedmedia-ogg-long-error' => 'Neveljavna datoteka Ogg: $1',
+	'timedmedia-webm-short-video' => 'Videodatoteka WebM $1, $2',
+	'timedmedia-webm-long-video' => 'zvočna/videodatoteka WebM, $1, dolžina $2, $4 × $5 pik, $3 skupno',
 	'timedmedia-no-player-js' => 'Oprostite, vaš brskalnik ima ali onemogočen JavaScript ali pa nima podprtega predvajalnika.<br />
 Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">prenesete predvajalnik</a> za predvajanje posnetka v vašem brskalniku.',
 	'timedmedia-more' => 'Več ...',
@@ -1867,6 +1880,10 @@ Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/
 	'timedmedia-desc-link' => 'O datoteki',
 	'timedmedia-oggThumb-version' => 'OggHandler potrebuje oggThumb različice $1 ali višje.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ni uspel ustvariti predogledne sličice.',
+	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Video Ogg za majhno pasovno širino (200 kb/s)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Video Ogg za pretakanje preko spleta (360P)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg za pretakanje preko spleta (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Visoko ločljivostni video Ogg za prenos (720P)',
 );
 
 /** Albanian (Shqip)
@@ -2211,6 +2228,13 @@ $messages['vo'] = array(
 /** Walloon (Walon) */
 $messages['wa'] = array(
 	'timedmedia-dismiss' => 'Clôre',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'timedmedia-download' => 'אראָפלאָדן טעקע',
 );
 
 /** Cantonese (粵語) */
