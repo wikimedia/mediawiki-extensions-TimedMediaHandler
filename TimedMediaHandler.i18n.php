@@ -9,18 +9,18 @@
 $messages = array();
 
 $messages['en'] = array(
-	'timedmedia-desc'             => 'Handler for audio video and timed text, with format support for WebM, Ogg Theora, Vorbis, srt',
+	'timedmedia-desc'             => 'Handler for audio, video and timed text, with format support for WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio'  => 'Ogg $1 sound file, $2',
 	'timedmedia-ogg-short-video'      => 'Ogg $1 video file, $2',
 	'timedmedia-ogg-short-general'    => 'Ogg $1 media file, $2',
 	'timedmedia-ogg-long-audio'       => 'Ogg $1 sound file, length $2, $3',
-	'timedmedia-ogg-long-video'       => 'Ogg $1 video file, length $2, $4×$5 pixels, $3',
-	'timedmedia-ogg-long-multiplexed' => 'Ogg multiplexed audio/video file, $1, length $2, $4×$5 pixels, $3 overall',
+	'timedmedia-ogg-long-video'       => 'Ogg $1 video file, length $2, $4 × $5 pixels, $3',
+	'timedmedia-ogg-long-multiplexed' => 'Ogg multiplexed audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
 	'timedmedia-ogg-long-general'     => 'Ogg media file, length $2, $3',
 	'timedmedia-ogg-long-error'       => 'Invalid Ogg file: $1',
 
 	'timedmedia-webm-short-video' => 'WebM $1 video file, $2',
-	'timedmedia-webm-long-video' => 'WebM audio/video file, $1 length $2, $4x$5 pixles, $3 overall',
+	'timedmedia-webm-long-video' => 'WebM audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
 	
 	'timedmedia-no-player-js' 	  => 'Sorry, your browser either has JavaScript disabled or does not have any supported player.<br />
 You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a> to play the clip in your browser.',
