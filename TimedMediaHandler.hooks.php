@@ -16,9 +16,6 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 		
-		// Parser hook for TimedMediaHandler output
-		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
-
 		// Setup a hook for iframe embed handling:  
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
 		

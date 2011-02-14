@@ -1,34 +1,23 @@
 <?php 
 class TimedMediaThumbnail {
 	
-	function get( $file, $dstPath, $params, $width, $height){
+	static function get( $options ){
 		global $wgFFmpegLocation, $wgOggThumbLocation;
-		$thumbtime = self::getThumbTime($file, $params );
+		$thumbtime = self::getThumbTime( $options );
 		
-		wfMkdirParents( dirname( $dstPath ) );
+		// Set up lodal pointer to file
+		$file = $options['file'];
+		
+		wfMkdirParents( dirname( $options['dstPath'] ) );
 
-		wfDebug( "Creating video thumbnail at $dstPath\n" );
-		
-		$width = ( isset( $params['width'] ) 
-					&& 
-				 $params['width'] > 0 
-				 	&& 
-				 $params['width'] < $file->getWidth() 
-		) ? $params['width'] : $file->getWidth();
-		
-		$height = ( isset( $params['height'] ) 
-					&&
-				  $params['height'] > 0 
-					&& 
-		 		  $params['height'] < $file->getHeight() 
-		 ) ? $params['height'] : $file->getHeight();
+		wfDebug( "Creating video thumbnail at" .  $options['dstPath']  . "\n" );
 		
 		// If ogg try OggThumb: 
-		if( self::tryOggThumb($file, $dstPath, $width, $height, $thumbtime ) ){
+		if( self::tryOggThumb( $options) ){
 			return true;
 		}
 		// Else try and return the ffmpeg thumbnail attempt:
-		return self::tryFfmpegThumb($file, $dstPath, $width, $height, $thumbtime );
+		return self::tryFfmpegThumb( $options );
 	}
 	/**
 	 * Try to render a thumbnail using oggThumb:
@@ -37,11 +26,11 @@ class TimedMediaThumbnail {
 	 * @param $dstPath {string} Destination path for the rendered thumbnail
 	 * @param $dstPath {array} Thumb rendering parameters ( like size and time )
 	 */
-	function tryOggThumb($file, $dstPath, $width, $height, $thumbtime ){
+	static function tryOggThumb( $options ){
 		global $wgOggThumbLocation;
 		
 		// Check for ogg format file and $wgOggThumbLocation 
-		if( !$file->getHandler()->getMetadataType() == 'ogg' 
+		if( !$options['file']->getHandler()->getMetadataType() == 'ogg' 
 			|| !$wgOggThumbLocation 
 			|| !is_file( $wgOggThumbLocation ) 
 		){
@@ -49,37 +38,37 @@ class TimedMediaThumbnail {
 		}
 		
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
-			' -t '. intval( $thumbtime ) . ' ' .
-			' -n ' . wfEscapeShellArg( $dstPath ) . ' ' .
-			' ' . wfEscapeShellArg( $file->getPath() ) . ' 2>&1';
+			' -t '. intval( $options['thumbtime'] ) . ' ' .
+			' -n ' . wfEscapeShellArg( $options['dstPath'] ) . ' ' .
+			' ' . wfEscapeShellArg( $options['file']->getPath() ) . ' 2>&1';
 		$returnText = wfShellExec( $cmd, $retval );
 		
 		// Check if it was successful
-		if ( !$file->getHandler()->removeBadFile( $dstPath, $retval ) ) {
+		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;
 		}
 		return false;
 	}
 	
-	function tryFfmpegThumb($file, $dstPath, $width, $height, $thumbtime ){
+	static function tryFfmpegThumb( $options ){
 		global $wgFFmpegLocation;
 		if( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ){
 			return false;
 		}
 	
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -ss ' . intval( $thumbtime ) . ' ' .
-			' -i ' . wfEscapeShellArg( $file->getPath() ) .
+			' -ss ' . intval( $options['thumbtime'] ) . ' ' .
+			' -i ' . wfEscapeShellArg( $options['file']->getPath() ) .
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .
-			wfEscapeShellArg( $dstPath ) . ' 2>&1';
+			wfEscapeShellArg( $options['dstPath'] ) . ' 2>&1';
 
 		$retval = 0;
 		$returnText = wfShellExec( $cmd, $retval );
 		
 		// Check if it was successful
-		if ( !$file->getHandler()->removeBadFile( $dstPath, $retval ) ) {
+		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;
 		}
 		// Filter nonsense
@@ -93,25 +82,21 @@ class TimedMediaThumbnail {
 			$lines = array_slice( $lines, $i );
 		}
 		// Return error box
-		return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
+		return new MediaTransformError( 'thumbnail_error', $options['width'], $options['height'], implode( "\n", $lines ) );
 	}
 
-	function getThumbTime( $file, $params ){
-		
-		$length = $file->getLength();
+	static function getThumbTime( $options ){		
+		$length = $options['file']->getLength();
 		$thumbtime = false;
-		if ( isset( $params['thumbtime'] ) ) {
-			$thumbtime = TimedMediaHandler::parseTimeString( $params['thumbtime'], $length );
+		if ( $options['thumbtime'] ) {
+		 	return TimedMediaHandler::parseTimeString( $options['thumbtime'], $length );
 		}
-		if ( $thumbtime === false ) {
-			// If start time param isset use that for the thumb:
-			if( isset( $params['start'] ) ){
-				$thumbtime = TimedMediaHandler::parseTimeString( $params['start'], $length );
-			}else{
-				# Seek to midpoint by default, it tends to be more interesting than the start
-				$thumbtime = $length / 2;
-			}
-		}
-		return $thumbtime;
+		// If start time param isset use that for the thumb:
+		if( $options['start'] ) {
+			return TimedMediaHandler::parseTimeString( $options['start'], $length );
+		}else{
+			// Seek to midpoint by default, it tends to be more interesting than the start
+			return $length / 2;
+		}		
 	}
 }

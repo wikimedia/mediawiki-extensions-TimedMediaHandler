@@ -128,15 +128,19 @@ class TimedMediaHandler extends MediaHandler {
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : $params['width']* $srcHeight / $srcWidth,
-			'isVideo' => ( $srcHeight != 0 && $srcWidth != 0 )
+			'isVideo' => ( $srcHeight != 0 && $srcWidth != 0 ),
+			'thumbtime' => ( isset( $params['thumbtime'] ) )? $params['thumbtime'] : false,
+			'start' => ( isset( $params['start'] ) )? $params['start'] : false,
+			'end' => ( isset( $params['end'] ) )? $params['end'] : false
 		);
 		// No thumbs for audio
 		if( $baseConfig['isVideo'] === false ){			
 			return new TimedMediaTransformOutput( $baseConfig );
 		}
 
-		// Setup pointer to thumb url: 
+		// Setup pointer to thumb arguments
 		$baseConfig['thumbUrl'] = $dstUrl;
+		$baseConfig['dstPath'] = $dstPath;
 		
 		// Check if transform is deferred:
 		if ( $flags & self::TRANSFORM_LATER ) {
@@ -144,7 +148,7 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		// Generate thumb:
-		$thumbStatus = TimedMediaThumbnail::get( $file, $dstPath, $params, $width, $height );
+		$thumbStatus = TimedMediaThumbnail::get( $baseConfig );
 		if( $thumbStatus !== true ){
 			return $thumbStatus;
 		}
@@ -171,21 +175,6 @@ class TimedMediaHandler extends MediaHandler {
 			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}
 	}
-
-	function parserTransformHook( $parser, $file ) {
-		if ( isset( $parser->mOutput->hasOggTransform ) ) {
-			return;
-		}
-		$parser->mOutput->hasOggTransform = true;
-		$parser->mOutput->addOutputHook( 'TimedMediaHandler' );
-	}
-
-	static function outputHook( $outputPage, $parserOutput, $data ) {
-		$instance = MediaHandler::getHandler( 'application/ogg' );
-		if ( $instance ) {
-			$instance->setHeaders( $outputPage );
-		}
-	}	
 }
 // Setup named Timed Media handlers 
 class TimedMediaHandlerOgg extends TimedMediaHandler {

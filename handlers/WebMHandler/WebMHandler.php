@@ -18,8 +18,9 @@ class WebMHandler extends TimedMediaHandler {
 		$getID3->option_tags_process      = false;  // Copy tags to root key 'tags' and encode to $this->encoding
 		$getID3->option_tags_html         = false;  // Copy tags to root key 'tags_html' properly translated from various encodings to HTML entities
 	
-		// Analyze file and store returned data in $ThisFileInfo
+		// Analyze file to get metadata structure:
 		$id3 = $getID3->analyze( $path );
+		
 		// Unset some parts of id3 that are too detailed and matroska specific:
 		unset( $id3['matroska'] ); 
 		// remove file paths
@@ -32,6 +33,7 @@ class WebMHandler extends TimedMediaHandler {
 		
 		return serialize( $id3 );
 	}	
+	
 	/**
 	 * Get the "media size" 
 	 */	 
