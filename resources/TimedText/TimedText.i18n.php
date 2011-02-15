@@ -1036,7 +1036,7 @@ $messages['nl'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Upload afgerond',
 	'mwe-timedtext-back-btn' => 'Terug',
 	'mwe-timedtext-choose-text' => 'Tekst kiezen',
-	'mwe-timedtext-add-timed-text' => 'Ondertitels toevoegen',
+	'mwe-timedtext-upload-timed-text' => 'Ondertitels uploaden',
 	'mwe-timedtext-loading-text-edit' => 'Bezig met het laden van de tekstverwerker voor ondertitels',
 	'mwe-timedtext-search' => 'Clip zoeken',
 	'mwe-timedtext-layout' => 'Vormgeving',
@@ -1056,8 +1056,13 @@ $messages['nl'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Songteksten',
 	'mwe-timedtext-textcat-lin' => 'Taalkundige markup',
 	'mwe-timedtext-textcat-cue' => 'Richtpunten',
-	'mwe-timedtext-language-subtitles-for-clip' => '$1 ondertitels voor clip: $2',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Ondertitels in het $1 voor clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen $1ondertitels gevonden voor clip: $2',
+	'mwe-timedtext-request-subs' => 'Transscriptieverzoek doen',
+	'mwe-timedtext-request-subs-desc' => 'Voerzoek toevoegen voor transscriptie van dit videobestand',
+	'mwe-timedtext-request-subs-done' => 'Het transscriptieverzoek is toegevoegd. U kunt [$1 alle transscriptieverzoeken bekijken].',
+	'mwe-timedtext-request-subs-fail' => 'Het toevoegen van het transscriptieverzoek is mislukt. Bent u wel aangemeld?',
+	'mwe-timedtext-request-already-done' => 'Er bestaat al een transscriptieverzoek voor dit videobestand. U kunt [$1 alle transscriptieverzoeken bekijken].',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

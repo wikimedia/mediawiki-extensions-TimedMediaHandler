@@ -1745,6 +1745,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(geselecteerd)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Voor een betere kwaliteitsbeleving adviseren we:<br /><b>[$1 Firefox 3.5]</b>',
+	'mwe-embedplayer-download-warn' => 'Er is geen compatibele speler in de browser aangetroffen. Download de [$1 meest recente versie van Firefox] om dit bestand in de browser af te kunnen spelen.',
 	'mwe-embedplayer-do_not_warn_again' => 'Niet waarschuwen',
 	'mwe-embedplayer-playerSelect' => 'Spelers',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Lees dit</a> voordat u gaat embedden (Engels)!',

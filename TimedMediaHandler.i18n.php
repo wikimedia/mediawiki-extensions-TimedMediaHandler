@@ -1254,7 +1254,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'timedmedia-desc' => 'Steierungsprogramm fir Ogg Theora a Vorbis Fichieren, mat enger JavaScript-Player-Software',
+	'timedmedia-desc' => "Steierungsprogramm fir Audio, Video an 'timed text', mat Ënnerstëtzung vun de Formater WebM, Ogg Theora, Vorbis, srt",
 	'timedmedia-ogg-short-audio' => 'Ogg-$1-Tounfichier, $2',
 	'timedmedia-ogg-short-video' => 'Ogg-$1-Videofichier, $2',
 	'timedmedia-ogg-short-general' => 'Ogg-$1-Mediefichier, $2',
@@ -1488,6 +1488,8 @@ $messages['nl'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg gemultiplexed geluids/videobestand, $1, lengte $2, $4×$5 pixels, $3 totaal',
 	'timedmedia-ogg-long-general' => 'Ogg mediabestand, lengte $2, $3',
 	'timedmedia-ogg-long-error' => 'Ongeldig Ogg-bestand: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 videobestand, $2',
+	'timedmedia-webm-long-video' => 'WebM audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal',
 	'timedmedia-no-player-js' => 'Uw systeem heeft JavaScript uitgeschakeld of er is geen ondersteunde mediaspeler.<br />
 U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.',
 	'timedmedia-more' => 'Meer…',
@@ -1660,7 +1662,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'timedmedia-desc' => 'Manuseador para ficheiros Ogg Theora e Vorbis, com reprodutor JavaScript',
+	'timedmedia-desc' => 'Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Áudio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Vídeo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Multimédia Ogg $1, $2',
@@ -1669,7 +1671,9 @@ $messages['pt'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo',
 	'timedmedia-ogg-long-general' => 'Multimédia Ogg, $2 de duração, $3',
 	'timedmedia-ogg-long-error' => 'Ficheiro ogg inválido: $1',
-	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desactivado ou não tem qualquer leitor  suportado.<br />
+	'timedmedia-webm-short-video' => 'Vídeo WebM $1, $2',
+	'timedmedia-webm-long-video' => 'Áudio/vídeo WebM, $1, $2 de duração, $4 × $5 pixels, $3 no todo',
+	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desactivado ou não tem nenhum dos leitores suportados.<br />
 Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download de um leitor</a> para assistir ao vídeo no seu browser.',
 	'timedmedia-more' => 'Mais...',
 	'timedmedia-dismiss' => 'Fechar',
