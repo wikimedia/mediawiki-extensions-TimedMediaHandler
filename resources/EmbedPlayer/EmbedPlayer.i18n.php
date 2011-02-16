@@ -739,6 +739,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Tofu II
  */
@@ -754,7 +755,7 @@ $messages['fi'] = array(
 	'mwe-embedplayer-close_btn' => 'Sulje',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-selected' => '(valittu)',
-	'mwe-embedplayer-for_best_experience' => 'Suosituksena parempaa videotoistokokemusta varten:<br /><b>[$1 Firefox 3.5].</b>',
+	'mwe-embedplayer-for_best_experience' => 'Parempaa videotoistokokemusta varten suosituksena on <b>[$1 viimeisin Firefox]</b>.',
 	'mwe-embedplayer-copy-code' => 'Kopioi koodi',
 );
 
@@ -815,6 +816,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(sélectionné)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage nous recommandons :<br /><b>[$1 Firefox 3.5].</b>',
+	'mwe-embedplayer-download-warn' => 'Navigateur web non compatible détecté, pour une lecteur dans le navigateur veuillez télécharger la [$1 dernière version de Firefox].',
 	'mwe-embedplayer-do_not_warn_again' => 'Interrompre pour le moment.',
 	'mwe-embedplayer-playerSelect' => 'Lecteurs',
 	'mwe-embedplayer-read_before_embed' => 'Veuillez <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">lire ceci</a> avant de procéder !',
@@ -2426,7 +2428,9 @@ $messages['tl'] = array(
 	'mwe-embedplayer-missing-source' => 'Walang natagpuang pinagmulang bidyo.',
 );
 
-/** Turkish (Türkçe) */
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
 $messages['tr'] = array(
 	'mwe-embedplayer-credit-title' => 'Başlık: $1',
 	'mwe-embedplayer-loading_plugin' => 'eklenti yükleniyor ...',
@@ -2468,7 +2472,7 @@ $messages['tr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura oynatıcısı',
 	'mwe-embedplayer-ogg-player-selected' => '(seçili)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için tavsiyemiz:<br /><b>[$1 Firefox 3.5].</b>',
+	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için önerimiz:<br /><b>[$1 Firefox 3.5].</b>',
 	'mwe-embedplayer-do_not_warn_again' => 'Şimdilik bırakın.',
 	'mwe-embedplayer-read_before_embed' => 'Lütfen gerçekten gömmeden <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">uzaktan gömme hakkındaki güvenlik notlarını</a> okuyun!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Bir sayfaya gömün',

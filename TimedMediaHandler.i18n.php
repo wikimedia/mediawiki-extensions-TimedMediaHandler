@@ -681,7 +681,7 @@ $messages['fo'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'timedmedia-desc' => 'Support pour les médias défilant (vidéo, audio, texte synchronisé) avec transcodage en Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Support pour les vidéo, audio et texte synchronisé avec support des formats WebM, Ogg Theora, Vorbis et srt',
 	'timedmedia-ogg-short-audio' => 'Fichier son Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Fichier vidéo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Fichier média Ogg $1, $2',
@@ -690,6 +690,8 @@ $messages['fr'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Fichier multiplexé audio/vidéo Ogg, $1, durée $2, $4×$5 pixels, $3',
 	'timedmedia-ogg-long-general' => 'Fichier média Ogg, durée $2, $3',
 	'timedmedia-ogg-long-error' => 'Fichier Ogg invalide : $1',
+	'timedmedia-webm-short-video' => 'Fichier vidéo WebM $1, $2',
+	'timedmedia-webm-long-video' => "Fichier audio/vidéo WebM, $1, longueur $2, $4 x $5 pixels, $3 l'ensemble",
 	'timedmedia-no-player-js' => 'Désolé, votre navigateur doit soit avoir JavaScript désactivé ou n\'a pas un lecteur pris en charge.<br />
 Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">télécharger un lecteur</a> pour lire le clip dans votre navigateur.',
 	'timedmedia-more' => 'Plus…',
