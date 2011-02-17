@@ -34,7 +34,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 
 	// source
 	'timedmedia-source-file' => 'Source',
-	'timedmedia-source-file-desc' => 'Source $1, $2 x $3 ($4)',
+	'timedmedia-source-file-desc' => 'Source $1, $2 × $3 ($4)',
 
 	// derivative timedmedia-derivative-desc-220_200kbs.ogv
 	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200',
@@ -51,10 +51,9 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	
 	// WebM profiles: 	
 	'timedmedia-derivative-480_600kbs.webm' => 'WebM 480P',
-	'timedmedia-derivative-desc-480_600kbs.webm' => 'Web stremable WebM (480P)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'Web streamable WebM (480P)',
 	'timedmedia-derivative-720_VBR.webm' => 'WebM HQ',
 	'timedmedia-derivative-desc720_VBR.webm' => 'High quality downloadable WebM (720P)',
-
 );
 
 /** Message documentation (Message documentation)
