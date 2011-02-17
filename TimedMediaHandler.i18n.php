@@ -32,21 +32,28 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 
-	// derivative
-	'timedmedia-derivative-200_200kbs_ogv' => 'Ogg 200',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Low bandwith Ogg video (200 kbs)',
+	// source
+	'timedmedia-source-file' => 'Source',
+	'timedmedia-source-file-desc' => 'Source $1, $2 x $3 ($4)',
+
+	// derivative timedmedia-derivative-desc-220_200kbs.ogv
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Low bandwith Ogg video (200 kbs)',
+
 	'timedmedia-derivative-360_400kbs.ogv' => 'Ogg 360P',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Web streamable Ogg video (360P)',
+	
 	'timedmedia-derivative-480_600kbs.ogv' => 'Ogg 480P',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Web streamable Ogg video (480P)',
+
 	'timedmedia-derivative-720_VBR.ogv' => 'Ogg HQ',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'High quality downloadable Ogg video (720P)',
 	
 	// WebM profiles: 	
 	'timedmedia-derivative-480_600kbs.webm' => 'WebM 480P',
-	'timedmedia-derivative-480_600kbs.webm' => 'Web stremable WebM (480P)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'Web stremable WebM (480P)',
 	'timedmedia-derivative-720_VBR.webm' => 'WebM HQ',
-	'timedmedia-derivative-480_600kbs.webm' => 'High quality downloadable WebM (720P)',
+	'timedmedia-derivative-desc720_VBR.webm' => 'High quality downloadable WebM (720P)',
 
 );
 
@@ -64,6 +71,13 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
  */
 $messages['qqq'] = array(
 	'timedmedia-desc' => '{{desc}}',
+	'timedmedia-source-file-desc' => 'Source file description
+Paramaters are:
+* $1 file type ie webm or ogg
+* $2 resolution width
+* $3 resolution height
+* $3 human readable bitrate',
+
 	'timedmedia-ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
 Parameters are:
 * $1 file type, e.g. Vorbis, Speex
@@ -272,7 +286,7 @@ $messages['be-tarask'] = array(
 	'timedmedia-desc-link' => 'Інфармацыя пра гэты файл',
 	'timedmedia-oggThumb-version' => 'OggHandler патрабуе oggThumb вэрсіі $1 ці больш позьняй.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не атрымалася стварыць мініятуру.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Нізкапаточнае Ogg-відэа (200 кб/с)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Нізкапаточнае Ogg-відэа (200 кб/с)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Паточнае Ogg-відэа (360 пкс)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Паточнае Ogg-відэа (480 пкс)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Высакаякаснае Ogg-відэа для загрузкі (720 пкс)',
@@ -468,7 +482,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-desc-link' => 'Über diese Datei',
 	'timedmedia-oggThumb-version' => 'OggHandler erfordert oggThumb in der Version $1 oder höher.',
 	'timedmedia-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Ogg-Videodatei mit niedriger Datenübertragungsrate (200 kbit/s)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Ogg-Videodatei mit niedriger Datenübertragungsrate (200 kbit/s)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (360p)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
@@ -700,7 +714,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'À propos de ce fichier',
 	'timedmedia-oggThumb-version' => 'OggHandler nécessite oggThumb, version $1 ou supérieure.',
 	'timedmedia-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Vidéo Ogg bas débit (200 kbps)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Vidéo Ogg bas débit (200 kbps)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vidéo Ogg lisible en continu sur le Web (360p)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vidéo Ogg lisible en continu sur le web (480p)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vidéo Ogg téléchargeable de grande qualité (720p)',
@@ -958,7 +972,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-desc-link' => 'A proposito de iste file',
 	'timedmedia-oggThumb-version' => 'OggHandler require oggThumb version $1 o plus recente.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ha fallite de crear le miniatura.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Video Ogg a basse largor de banda (200 kbs)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Video Ogg a basse largor de banda (200 kbs)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Video Ogg fluibile per web (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg fluibile per web (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Video Ogg discargabile de alte qualitate (720P)',
@@ -1237,7 +1251,7 @@ med Ömsetzung noh em <i lang="en">Ogg Theora</i> un em <i lang="en">Ogg Vorbis<
 	'timedmedia-desc-link' => 'Övver di Datei',
 	'timedmedia-oggThumb-version' => 'Dä <code lang="en">OggHandler</code> bruch <code lang="en">oggThumb</code> in dä Version $1 udder hüüter.',
 	'timedmedia-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'En Viddejo-Dattei met winnesch Bandbreide (200 kbs) em <i lang="en">Ogg</i>-Fommaat',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'En Viddejo-Dattei met winnesch Bandbreide (200 kbs) em <i lang="en">Ogg</i>-Fommaat',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för övver et Web ze striime',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
@@ -1353,7 +1367,7 @@ $messages['mk'] = array(
 	'timedmedia-desc-link' => 'Информации за оваа податотека',
 	'timedmedia-oggThumb-version' => 'OggHandler бара oggThumb верзија $1 или понова.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не успеа да ја создаде минијатурата.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Нископропусно Ogg-видео (200 кб/с)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Нископропусно Ogg-видео (200 кб/с)',
 	'timedmedia-derivative-360_400kbs.ogv' => 'Ogg 360п',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Ogg-видео за емитување (360 пиксели)',
 	'timedmedia-derivative-480_600kbs.ogv' => 'Ogg 480п',
@@ -1500,7 +1514,7 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-desc-link' => 'Over dit bestand',
 	'timedmedia-oggThumb-version' => 'OggHandler vereist oggThumb versie $1 of hoger.',
 	'timedmedia-oggThumb-failed' => 'oggThumb kon geen miniatuur aanmaken.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Lage bandbreedte Ogg video (200 kbps)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Lage bandbreedte Ogg video (200 kbps)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Te webstreamen Off video (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Te webstreamen Ogg video (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Hoge kwaliteit downloadbare Ogg video (720P)',
@@ -1683,7 +1697,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'Sobre este ficheiro',
 	'timedmedia-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
 	'timedmedia-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Vídeo Ogg de baixa largura de banda (200 kbs)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Vídeo Ogg de baixa largura de banda (200 kbs)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vídeo Ogg para web streaming (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vídeo Ogg para web streaming (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vídeo Ogg de alta qualidade para download (720 P)',
@@ -1886,7 +1900,7 @@ Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/
 	'timedmedia-desc-link' => 'O datoteki',
 	'timedmedia-oggThumb-version' => 'OggHandler potrebuje oggThumb različice $1 ali višje.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ni uspel ustvariti predogledne sličice.',
-	'timedmedia-derivative-desc-200_200kbs_ogv' => 'Video Ogg za majhno pasovno širino (200 kb/s)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Video Ogg za majhno pasovno širino (200 kb/s)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Video Ogg za pretakanje preko spleta (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg za pretakanje preko spleta (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Visoko ločljivostni video Ogg za prenos (720P)',

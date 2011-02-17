@@ -8,21 +8,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Set up the timed media handler dir: 
 $timedMediaDir = dirname(__FILE__);
 
-if ( !in_array( 'ogg', $wgFileExtensions ) ) {
-	$wgFileExtensions[] = 'ogg';
-}
-if ( !in_array( 'ogv', $wgFileExtensions ) ) {
-	$wgFileExtensions[] = 'ogv';
-}
-if ( !in_array( 'oga', $wgFileExtensions ) ) {
-	$wgFileExtensions[] = 'oga';
-}
-if ( !in_array( 'webm', $wgFileExtensions ) ) {
-	$wgFileExtensions[] = 'webm';
-}
+$wgTimedMediaHandlerFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
 
-
-
+foreach($wgTimedMediaHandlerFileExtensions as $ext ){
+	if ( !in_array( $ext, $wgFileExtensions ) ) {
+		$wgFileExtensions[] = $ext;
+	}
+}
 
 // Timed Media Handler AutoLoad Classes:  
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
@@ -111,6 +103,7 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
  * -Only derivatives with smaller width than the source asset size will be created
  * -Derivative jobs are added to the mediaWiki JobQueue the first time the asset is displayed
  * -Derivative keys encode settings are defined in WebVideoTranscode.php
+ * -List Derivative from min to max
  */
 $wgEnabledTranscodeSet = array(
 	// Cover accessibility for low bandwidth / low resources clients: 

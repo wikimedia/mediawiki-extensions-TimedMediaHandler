@@ -7,16 +7,19 @@ class TimedMediaThumbnail {
 		
 		// Set up lodal pointer to file
 		$file = $options['file'];
-		
-		wfMkdirParents( dirname( $options['dstPath'] ) );
+		if( !is_dir( dirname( $options['dstPath'] ) ) ){
+			wfMkdirParents( dirname( $options['dstPath'] ) );
+		}
 
 		wfDebug( "Creating video thumbnail at" .  $options['dstPath']  . "\n" );
 		
-		// If ogg try OggThumb: 
-		if( self::tryOggThumb( $options) ){
-			return true;
+		// If ogg try OggThumb:
+		if( $options['file']->getHandler()->getMetadataType() == 'ogg' ){ 
+			if( self::tryOggThumb( $options) ){
+				return true;
+			}
 		}
-		// Else try and return the ffmpeg thumbnail attempt:
+		// Else try ffmpeg and return result:
 		return self::tryFfmpegThumb( $options );
 	}
 	/**
@@ -30,8 +33,7 @@ class TimedMediaThumbnail {
 		global $wgOggThumbLocation;
 		
 		// Check for ogg format file and $wgOggThumbLocation 
-		if( !$options['file']->getHandler()->getMetadataType() == 'ogg' 
-			|| !$wgOggThumbLocation 
+		if( !$wgOggThumbLocation 
 			|| !is_file( $wgOggThumbLocation ) 
 		){
 			return false;
@@ -57,8 +59,8 @@ class TimedMediaThumbnail {
 		}
 	
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -ss ' . intval( $options['thumbtime'] ) . ' ' .
 			' -i ' . wfEscapeShellArg( $options['file']->getPath() ) .
+			' -ss ' . intval( $options['thumbtime'] ) .
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .
@@ -66,7 +68,6 @@ class TimedMediaThumbnail {
 
 		$retval = 0;
 		$returnText = wfShellExec( $cmd, $retval );
-		
 		// Check if it was successful
 		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;

@@ -88,7 +88,10 @@ class WebMHandler extends TimedMediaHandler {
 		
 		return $streamTypes;
 	}
-	
+	function getBitrate($file ){
+		$metadata = self::unpackMetadata( $file->getMetadata() );
+		return $metadata['bitrate'];		
+	}
 	function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -110,7 +113,15 @@ class WebMHandler extends TimedMediaHandler {
 	}
 
 	function getLongDesc( $file ) {
-		return 'long desc';
+		global $wgLang;
+		return wfMsg('timedmedia-webm-long-video',
+			implode( '/', $this->getStreamTypes( $file ) ),
+			$wgLang->formatTimePeriod( $this->getLength($file) ),
+			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
+			$wgLang->formatNum( $file->getWidth() ),
+			$wgLang->formatNum( $file->getHeight() )
+	   	);
+		
 	}
 
 }

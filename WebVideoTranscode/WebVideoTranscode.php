@@ -30,7 +30,7 @@ class WebVideoTranscode {
 	*/
 	
 	// Ogg Profiles
-	const ENC_OGV_2MBS = '200_200kbs.ogv';
+	const ENC_OGV_2MBS = '220_200kbs.ogv';
 	const ENC_OGV_4MBS = '360_400kbs.ogv';
 	const ENC_OGV_6MBS = '480_600kbs.ogv';
 	const ENC_OGV_HQ_VBR = '720_VBR.ogv';
@@ -50,11 +50,11 @@ class WebVideoTranscode {
 	public static $derivativeSettings = array(
 		WebVideoTranscode::ENC_OGV_2MBS =>
 			array(
-				'maxSize'			=> '200',
-				'videoBitrate'		=> '128',
+				'maxSize'			=> '220',
+				'videoBitrate'		=> '160',
 				'audioBitrate'		=> '32',
 				'samplerate'		=> '22050',
-				'framerate'			=> '15',
+				//'framerate'			=> '15',
 				'channels'			=> '1',
 				'noUpscaling'		=> 'true',
 				'twopass' 			=> 'true',
@@ -105,18 +105,24 @@ class WebVideoTranscode {
 				'noUpscaling'		=> 'true',
 				'codec' 			=> 'vp8',
 			)
-	);	
-	static public function getDerivativeFilePath($file, $transcodeKey){
+	);
+	
+	static public function getDerivativeFilePath( &$file, $transcodeKey){
 		return dirname( 
-					$file->getThumbPath(
-						$file->thumbName( array() )
-					)
-				) . '/' . 
-				$file->getName() . '.' .
-				$transcodeKey ;
-	}
-	static public function getTargetEncodePath( $file, $transcodeKey ){
-		return self::getDerivativeFilePath( $file, $transcodeKey ) . '.tmp';
+				$file->getThumbPath(
+					$file->thumbName( array() )
+				)
+			) . '/' . 
+			$file->getName() . '.' .
+			$transcodeKey ;
+}
+	
+	static public function getTargetEncodePath( &$file, $transcodeKey ){
+		// TODO probably should use some other temporary non-web accessible location for 
+		// in-progress encodes.
+		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
+		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
+		return "{$filePath}.queue.{$ext}";
 	}
 	
 	/** 
@@ -132,71 +138,109 @@ class WebVideoTranscode {
 	 * @param {Object} File object
 	 * @returns an associative array of sources suitable for <source> tag output
 	 */
-	static public function getSources( $file ){
-		global $wgEnabledTranscodeSet;
+	static public function getSources( &$file ){
+		global $wgEnabledTranscodeSet, $wgLang;
 		$sources = array();
+		
+		// Add the original file: 
+		$sources[] = array(
+			'src' => $file->getUrl(),
+			'title' => wfMsg('timedmedia-source-file-desc',  
+								$file->getHandler()->getMetadataType(),
+								$wgLang->formatNum( $file->getWidth() ),
+								$wgLang->formatNum( $file->getHeight() ),
+								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
+							),
+			'data-shorttitle' => wfMsg('timedmedia-source-file')
+			// TODO add some title and data about the file
+		);
+		
+		// Just directly return audio sources ( for now no transcoding for audio ) 
+		if( $file->getHandler()->isAudio( $file ) ){
+			return $sources;
+		}
 		
 		// Setup local variables 
 		$fileName = $file->getName();
 		
-		// Add the source file: 
-		$sources[] = array(
-			'src' => $file->getUrl()
-		);
+		$addOggFlag = false;
+		$addWebMFlag = false;
 		
-		$thumbName = $file->thumbName( array() );		
-		$thumbUrl = $file->getThumbUrl( $thumbName );
-		$thumbUrlDir = dirname( $thumbUrl );		
-		
-		$hasOggFlag = false;
-		$hasWebMFlag = false;
+		$ext = pathinfo("$fileName", PATHINFO_EXTENSION);
 		// Check the source file for .webm extension 
-		if( preg_match( "/$.webm/i", $fileName ) ) {
-			$hasWebMFlag = true;
+		if( strtolower( $ext )== 'webm' ) {
+			$addWebMFlag = true;
 		} else {
-			// we only support ogg and webm so assume oky if we have .webm
-			$hasOggFlag = true;
+			// If not webm assume ogg as the source file 	
+			$addOggFlag = true;
 		}
 		
-		foreach($wgEnabledTranscodeSet as $transcodeKey){
+		foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 			$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
 			$codec =  self::$derivativeSettings[$transcodeKey]['codec'];
-			if( is_file( $derivativeFile ) ){
-				$messageKey = str_replace('.','_',$transcodeKey );
-				$sources[] = array(
-					'src' => $thumbUrlDir . '/' .$fileName . '.' . $transcodeKey,
-					'title' => wfMsg('timedmedia-derivative-desc-' . $messageKey ),
-					'data-shorttitle' => wfMsg('timedmedia-derivative-' . $messageKey)
-				);
-			} else {
-				// Check if we should derivative to job queue 
-				// Skip if we have both ogg and one WebM and target is too small:
-				if( $hasOggFlag && $hasWebMFlag && 
-					!self::isTranscodeSmallerThanSource( $file,  $transcodeKey ) ){
-					continue;
+			// Check if we should add derivative to job queue 
+			// Skip if we have both an Ogg & WebM and if target encode larger than source
+			if( self::isTargetLargerThanFile( self::$derivativeSettings[$transcodeKey]['maxSize'], $file) ){				
+				continue;
+			}			
+			// if we are checking for this derivative, update codec flags: 
+			if( $codec == 'theora' ){
+				$addOggFlag = true;
+			}
+			if( $codec == 'vp8' ){
+				$addWebMFlag = true;
+			}
+			// Try and add the source
+			self::tryAddSource( $file, $sources,$transcodeKey );
+		}
+		// Make sure we got at least one ogg and webm encode 
+		if( !$addOggFlag || !$addWebMFlag){
+			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
+				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['codec'] == 'theora' ){
+					self::tryAddSource( $file, $sources,$transcodeKey );
+					$addOggFlag = true;
 				}
-				// Update Flags: 
-				if( $codec == 'theora' ){
-					$hasOggFlag = true;
+				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['codec'] == 'vp8' ){
+					self::tryAddSource( $file, $sources, $transcodeKey );
+					$addWebMFlag = true;
 				}
-				if( $codec == 'vp8' ){
-					$hasWebMFlag = true;
-				}				
-				self::updateJobQueue($file, $transcodeKey); 				
 			}
 		}
 		return $sources;
 	}
+	
+	/**
+	 * Try to add a source to the sources param
+	 * if the source is not found update the job queue 
+	 */
+	public static function tryAddSource( &$file, &$sources, $transcodeKey){
+		$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
+		
+		$thumbName = $file->thumbName( array() );		
+		$thumbUrl = $file->getThumbUrl( $thumbName );
+		$thumbUrlDir = dirname( $thumbUrl );
+		
+		if( is_file( $derivativeFile ) ){
+			$sources[] = array(
+				'src' => $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey,
+				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
+				'data-shorttitle' => wfMsg('timedmedia-derivative-' . $transcodeKey)
+			);
+		} else {			
+			self::updateJobQueue($file, $transcodeKey); 				
+		}
+	}
+	
 	/**
 	 * Update the job queue if the file is not already in the job queue:
 	 */	
-	public static function updateJobQueue( $file, $transcodeKey ){
+	public static function updateJobQueue( &$file, $transcodeKey ){
 		$target =  self::getTargetEncodePath( $file, $transcodeKey );
 		// TranscodeKey not found ( check if the file is in progress ) ( tmp transcode location ) 
 		if( is_file( $target ) ) {
 			// file in progress / in queue
-			// XXX Note we could check date and flag as failure 
-		} else {
+			// TODO We could check date and flag as failure somewhere
+		} else {		
 			// no in-progress file add to job queue and touch the target
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',
@@ -204,23 +248,24 @@ class WebVideoTranscode {
 			) );					
 			$jobId = $job->insert();
 			if( $jobId ){
-				// Make the thumb target directory and touch the file ( so we don't add the job again )
-				wfMkdirParents( dirname( $target ) );
-				touch( $target ); 
+				// Make the thumb target directory 
+				if( ! is_dir( dirname( $target ) )){
+					wfMkdirParents( dirname( $target ) );
+				}
+				// Touch the target file
+				touch( $target );
 			}
 		}
 	}
 	/**
-	 * Test if a given transcode target is smaller than the source file
+	 * Test if a given transcode target is larger than the source file
 	 * 
 	 * @param $transcodeKey The static transcode key
 	 * @param $file {Object} File object
 	 */
-	public static function isTranscodeSmallerThanSource( $file, $transcodeKey){
-		return ( self::$derivativeSettings[$transcodeKey]['maxSize'] < $file->getWidth() 
-					&&
-				self::$derivativeSettings[$transcodeKey]['maxSize'] < $file->getHeight()
-			);
+	public static function isTargetLargerThanFile( $targetMaxSize, &$file){
+		$largerSize = ( $file->getWidth() > $file->getHeight() )?$file->getWidth(): $file->getHeight();		
+		return ( $targetMaxSize > $largerSize );
 	}
 }
 

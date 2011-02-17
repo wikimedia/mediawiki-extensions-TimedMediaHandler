@@ -21,7 +21,7 @@ class WebVideoTranscodeJob extends Job {
 		parent::__construct( 'webVideoTranscode', $title, $params, $id );
 	}
 	
-	// Local function to debug output ( jobs don't have access to the maintenance class )
+	// Local function to debug output ( jobs don't have access to the maintenance output class )
 	private function output( $msg ){
 		print $msg . "\n";
 	}
@@ -30,11 +30,21 @@ class WebVideoTranscodeJob extends Job {
 	public function run() {
 		// Get the file object
 		$file = wfLocalFile( $this->title );		
+		
+		$source = $file->getFullPath();
+		if( !is_file($source ) ){
+			$this->output( 'File not found: ' . $this->title );
+			return false;
+		}
 		$transcodeKey = $this->params['transcodeKey'];
 		
 		// Build the destination target
 		$destinationFile = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
-
+		
+		if( ! isset(  WebVideoTranscode::$derivativeSettings[ $transcodeKey ] )){
+			$this->output("Transcode key $transcodeKey not found, skipping");
+			return false;
+		}
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 				
 		$this->output( "Encoding to codec: " . $options['codec'] );
@@ -44,14 +54,17 @@ class WebVideoTranscodeJob extends Job {
 		} else if( $options['codec'] == 'vp8' ){			
 			// Check for twopass:
 			if( isset( $options['twopass'] ) ){
+				// ffmpeg requires manual two pass
 				$status = $this->ffmpegEncode( $file, $destinationFile, $options, 1 );
 				if( $status ){
 					$status = $this->ffmpegEncode( $file, $destinationFile, $options, 2 );
-				}	
+				}
+				// remove any log files
+				$this->removeFffmpgeLogFiles( dirname( $destinationFile) );
+				
 			} else {
-				$this->ffmpegEncode( $file, $destinationFile, $options );
+				$status = $this->ffmpegEncode( $file, $destinationFile, $options );
 			}
-			
 		} else {
 			wfDebug( 'Error unknown codec:' . $options['codec'] );
 			$status = false;
@@ -60,12 +73,27 @@ class WebVideoTranscodeJob extends Job {
 		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 
 		// XXX would be nice to clear the cache for the pages where the title in use
 		if( $status ){
-			$status = @rename($destinationFile, WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey) );
+			wfSuppressWarnings();
+			$status = rename($destinationFile, WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey) );
+			wfRestoreWarnings();
 		}
-		
 		return $status;
 	}
-	
+	function removeFffmpgeLogFiles( $dir ){
+		if (is_dir($dir)) {
+			if ($dh = opendir($dir)) {
+				while (($file = readdir($dh)) !== false) {
+					$ext = strtolower( pathinfo("$dir/$file", PATHINFO_EXTENSION) );
+					if( $ext == '.log' ){
+						wfSuppressWarnings();
+						unlink( "$dir/$file");
+						wfRestoreWarnings();
+					}
+				}
+		        closedir($dh);
+		    }
+		}
+	}
 	/** Utility helper for ffmpeg and ffmpeg2theora mapping **/
 	
 	function ffmpegEncode( $file, $target, $options, $pass=0 ){
@@ -75,7 +103,7 @@ class WebVideoTranscodeJob extends Job {
 		$this->output( "Encode:\n source:$source\n target:$target\n" );
 		
 		// Set up the base command
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' ' . wfEscapeShellArg( $source );
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -i ' . wfEscapeShellArg( $source );
 		
 		if( isset($options['preset']) ){
 			if ($options['preset'] == "360p") {
@@ -86,14 +114,11 @@ class WebVideoTranscodeJob extends Job {
 				$cmd.= " -vpre libvpx-1080p";
 			}
 		}
-		$this->output( "novideo::$cmd" );	
 		if ( isset( $options['novideo'] )  ) {
 			$cmd.= " -vn ";
 		} else {
 			$cmd.= $this->ffmpegAddVideoOptions( $file, $target, $options, $pass );
-			
 		}
-			$this->output( "add starty optiosn$cmd" );	
 							   
 	    // Check for start time
 		if( isset( $options['starttime'] ) ){
@@ -105,15 +130,14 @@ class WebVideoTranscodeJob extends Job {
 	    if( isset( $options['endtime'] ) ){
 	    	$cmd.= ' -t ' . intval( $options['endtime'] )  - intval($options['starttime'] ) ;
 	    }
-	    $this->output( "add audio optiosn$cmd" );	
 	    
-	    if ( $pass == 1 || $options['noaudio'] ) {
+	    if ( $pass == 1 || isset( $options['noaudio'] ) ) {
 	    	$cmd.= ' -an';
 	    } else {
 	    	$cmd.= $this->ffmpegAddAudioOptions( $file, $target, $options, $pass );
 	    }	    	    
-	  	$this->output( "add webmn$cmd" );	
-      	// Output WebM
+
+	    // Output WebM
 		$cmd.=" -f webm";
 		
 		if ( $pass != 0 ) {
@@ -124,11 +148,15 @@ class WebVideoTranscodeJob extends Job {
 		if ($pass==1) {
 			$cmd.= ' /dev/null';
 		} else{
-			$cmd.= $target;
-		}
+			$cmd.= " $target";
+		}	
+		
+		// Don't display shell output
+		$cmd .= ' 2>&1';
 		
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
+		// Right before we output remove the old file
 		wfProfileIn( 'ffmpeg_encode' );
 		wfShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg_encode' );
@@ -141,7 +169,7 @@ class WebVideoTranscodeJob extends Job {
 	function ffmpegAddVideoOptions( $file, $target, $options, $pass){
 		$cmd ='';
 		// Add the boiler plate vp8 ffmpeg command: 
-		$cmd.="-y -skip_threshold 0 -rc_buf_aggressivity 0 -bufsize 6000k -rc_init_occupancy 4000 -threads 4";
+		$cmd.=" -y -skip_threshold 0 -rc_buf_aggressivity 0 -bufsize 6000k -rc_init_occupancy 4000 -threads 4";
 		
 		// Check for video quality: 
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
@@ -154,35 +182,35 @@ class WebVideoTranscodeJob extends Job {
 		// Check for video bitrate: 
 		if ( isset( $options['videoBitrate'] ) ) {
 			$cmd.= " -qmin 1 -qmax 51";
-			$cmd.= " -vp " . wfEscapeShellArg( $options['videoBitrate'] );
+			$cmd.= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
 		}		
 		// Set the codec:
 		$cmd.= " -vcodec libvpx";
 		
-		die( $file->getWidth() + ':' + $file->getHeight() );
-		
 		// Check for aspect ratio		
-		if ($options['aspect']) {
+		if ( isset( $options['aspect'] ) ) {
 			$aspectRatio = $options['aspect'];
 		} else {
-			$aspectRatio = $file->getWidth() + ':' + $file->getHeight();
+			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
 		}
-		
-		$dar = $aspectRatio.split(':');
-		$dar = intval( $aspectRatio[0] ) /  intval( $aspectRatio[1] );
+		$dar = explode(':', $aspectRatio);
+		$dar = intval( $dar[0] ) / intval( $dar[1] );
 		
 		// Check maxSize
 		if (isset( $options['maxSize'] ) && intval( $options['maxSize'] ) > 0) {
-			$sourceWidth = $file->getWidth();
-			$sourceHeight =$file->getHeight();
-			if ($sourceWidth > $options['maxSize'] ) {
-				$width = intval( $options['maxSize'] );
-				$height = intval( $width / $dar);				
-			} else {
-				$height = intval( $options['maxSize'] );
-				$width = intval( $height * $dar);
-	      	}
-			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
+			// Check if source is smaller than maxSize
+			if( !WebVideoTranscode::isTargetLargerThanFile( $options['maxSize'], $file ) ){
+				$sourceWidth = $file->getWidth();
+				$sourceHeight = $file->getHeight();
+				if ($sourceWidth > $options['maxSize'] ) {
+					$width = intval( $options['maxSize'] );
+					$height = intval( $width / $dar);				
+				} else {
+					$height = intval( $options['maxSize'] );
+					$width = intval( $height * $dar);
+		      	}		      	
+				$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
+			}
 	    } else if ( 
 	    	(isset( $options['width'] ) && $options['width'] > 0 ) 
 			&&
@@ -253,18 +281,23 @@ class WebVideoTranscodeJob extends Job {
 			if( isset( self::$foggMap[$key] ) ){
 				if( is_array(  self::$foggMap[$key] ) ){
 					$cmd.= ' '. implode(' ', WebVideoTranscode::$foggMap[$key] );
-				}else if($val == 'true' || $val === true){
+				} else if ($val == 'true' || $val === true){
 			 		$cmd.= ' '. self::$foggMap[$key];
-				}else if( $val === false){
+				} else if ( $val === false){
 					//ignore "false" flags
-				}else{
+				} else {
 					//normal get/set value
 					$cmd.= ' '. self::$foggMap[$key] . ' ' . wfEscapeShellArg( $val );
 				}
 			}
 		}		
+		
 		// Add the output target:
 		$cmd.= ' -o ' . wfEscapeShellArg ( $target );
+		
+		// Don't display shell output
+		$cmd.=' 2>&1';
+		
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
 		wfProfileIn( 'ffmpeg2theora_encode' );
@@ -276,6 +309,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
+	
 	 /**
 	 * Mapping between firefogg api and ffmpeg2theora command line
 	 *

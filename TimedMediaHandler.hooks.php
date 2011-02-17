@@ -10,7 +10,8 @@
 class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
-		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, $wgMediaHandlers;
+		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, 
+			$wgMediaHandlers, $wgExcludeFromThumbnailPurge, $wgTimedMediaHandlerFileExtensions;
 
 		// Setup media Handlers: 
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
@@ -27,7 +28,12 @@ class TimedMediaHandlerHooks {
 		$wgJobExplitRequestTypes+= array(
 			'webVideoTranscode'
 		);
-				
+		// Exclude transcoded assets from normal thumbnail purging 
+		// ( a mantaince script could handle transcode asset purging) 
+		$wgExcludeFromThumbnailPurge += $wgTimedMediaHandlerFileExtensions;
+		// Also add the .log file ( used in two pass encoding ) 
+		// ( probably should move in-progress encodes out of web accessible directory )
+		$wgExcludeFromThumbnailPurge+= array( 'log');
 		/**
 		 * Add support for the "TimedText" NameSpace
 		 */

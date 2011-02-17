@@ -111,11 +111,13 @@ class TimedMediaHandler extends MediaHandler {
 	function isMetadataValid( $image, $metadata ) {
 		return $this->unpackMetadata( $metadata ) !== false;
 	}
-
 	function getThumbType( $ext, $mime, $params = null ) {
 		return array( 'jpg', 'image/jpeg' );
 	}
-
+	// checks if a given file is an audio file
+	function isAudio( $file ){
+		return ( $file->getWidth() == 0 && $file->getHeight() == 0 );
+	}
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgFFmpegLocation, $wgEnabledDerivatives;
 	
@@ -128,11 +130,12 @@ class TimedMediaHandler extends MediaHandler {
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : $params['width']* $srcHeight / $srcWidth,
-			'isVideo' => ( $srcHeight != 0 && $srcWidth != 0 ),
+			'isVideo' => !$this->isAudio( $file ),
 			'thumbtime' => ( isset( $params['thumbtime'] ) )? $params['thumbtime'] : false,
 			'start' => ( isset( $params['start'] ) )? $params['start'] : false,
 			'end' => ( isset( $params['end'] ) )? $params['end'] : false
 		);
+		
 		// No thumbs for audio
 		if( $baseConfig['isVideo'] === false ){			
 			return new TimedMediaTransformOutput( $baseConfig );

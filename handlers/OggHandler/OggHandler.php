@@ -159,13 +159,27 @@ class OggHandler extends TimedMediaHandler {
 					$size += $stream['size'];
 			}
 		}
-		$bitrate = $length == 0 ? 0 : $size / $length * 8;
 		return wfMsg( $msg, implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $length ),
-			$wgLang->formatBitrate( $bitrate ),
+			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
 			$wgLang->formatNum( $file->getWidth() ),
 			$wgLang->formatNum( $file->getHeight() )
 	   	);
+	}
+	
+	function getBitRate( &$file ){ 
+		$size = 0;
+		$unpacked = $this->unpackMetadata( $file->getMetadata() );
+		if ( !$unpacked || isset( $metadata['error'] ) ) {
+			$length = 0;
+		} else {
+			$length = $this->getLength( $file );
+			foreach ( $unpacked['streams'] as $stream ) {
+				if( isset( $stream['size'] ) )
+					$size += $stream['size'];
+			}
+		}
+		return $length == 0 ? 0 : $size / $length * 8;
 	}
 	
 }
