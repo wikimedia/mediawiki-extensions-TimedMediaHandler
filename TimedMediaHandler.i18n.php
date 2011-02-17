@@ -482,10 +482,15 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-desc-link' => 'Über diese Datei',
 	'timedmedia-oggThumb-version' => 'OggHandler erfordert oggThumb in der Version $1 oder höher.',
 	'timedmedia-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
+	'timedmedia-source-file' => 'Quelle',
+	'timedmedia-source-file-desc' => 'Quelle $1, $2 x $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Ogg-Videodatei mit niedriger Datenübertragungsrate (200 kbit/s)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (360p)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
+	'timedmedia-derivative-desc720_VBR.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
 );
 
 /** Zazaki (Zazaki)
@@ -955,7 +960,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'timedmedia-desc' => 'Gestor pro multimedia synchronisate (video, audio, texto synchronisate) con transcodification in Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Gestor pro audio, video e texto synchronisate, con supporto del formatos WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'File audio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'File video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'File media Ogg $1, $2',
@@ -964,6 +969,8 @@ $messages['ia'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'File multiplexate audio/video Ogg, $1, duration $2, $4×$5 pixel, $3 in total',
 	'timedmedia-ogg-long-general' => 'File media Ogg, duration $2, $3',
 	'timedmedia-ogg-long-error' => 'File Ogg invalide: $1',
+	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
+	'timedmedia-webm-long-video' => 'File audio/video WebM, $1, longitude $2, $4 × $5 pixels, $3 in total',
 	'timedmedia-no-player-js' => 'Pardono, tu systema o ha JavaScript disactivate o non ha un reproductor supportate.<br />
 Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discargar un reproductor</a> pro reproducer le clip in tu navigator.',
 	'timedmedia-more' => 'Plus…',
@@ -972,10 +979,15 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-desc-link' => 'A proposito de iste file',
 	'timedmedia-oggThumb-version' => 'OggHandler require oggThumb version $1 o plus recente.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ha fallite de crear le miniatura.',
+	'timedmedia-source-file' => 'Origine',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Video Ogg a basse largor de banda (200 kbs)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Video Ogg fluibile per web (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg fluibile per web (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Video Ogg discargabile de alte qualitate (720P)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM fluibile per web (480P)',
+	'timedmedia-derivative-desc720_VBR.webm' => 'WebM discargabile de alte qualitate (720P)',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1374,6 +1386,7 @@ $messages['mk'] = array(
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Ogg-видео за емитување (480 пиксели)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Висококвалитетно Ogg-видео (720 пиксели)',
 	'timedmedia-derivative-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
 );
 
 /** Malayalam (മലയാളം)
