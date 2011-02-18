@@ -179,7 +179,3 @@ class TimedMediaHandler extends MediaHandler {
 		}
 	}
 }
-// Setup named Timed Media handlers 
-class TimedMediaHandlerOgg extends TimedMediaHandler {
-
-}

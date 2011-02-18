@@ -214,6 +214,7 @@ class WebVideoTranscode {
 	 * if the source is not found update the job queue 
 	 */
 	public static function tryAddSource( &$file, &$sources, $transcodeKey){
+		global $wgLang;
 		$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
 		
 		$thumbName = $file->thumbName( array() );		

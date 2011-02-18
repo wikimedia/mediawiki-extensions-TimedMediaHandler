@@ -943,6 +943,10 @@ mw.PlayerControlBuilder.prototype = {
 	doVolumeBinding: function( ) {
 		var embedPlayer = this.embedPlayer;
 		var _this = this;
+		$volumeSlider = embedPlayer.$interface.find( '.volume-slider' );
+		if( $volumeSlider.length == 0 ){
+			return false;
+		}			
 		embedPlayer.$interface.find( '.volume_control' ).unbind().buttonHover().click( function() {
 			mw.log( 'Volume control toggle' );
 			embedPlayer.toggleMute();
@@ -1000,8 +1004,8 @@ mw.PlayerControlBuilder.prototype = {
 		if ( this.volume_layout == 'vertical' ) {
 			sliderConf[ 'orientation' ] = "vertical";
 		}
-
-		embedPlayer.$interface.find( '.volume-slider' ).slider( sliderConf );
+	
+		$volumeSlider.slider( sliderConf );
 	},
 
 	/**

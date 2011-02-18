@@ -3,15 +3,17 @@
 	// Register all the timedText modules 
 	return array(			
 		"mw.TimedText" => array(
-			'scripts' => "mw.TimedText.js",
-			'styles' => "css/mw.style.TimedText.css",
+			'scripts' => "resources/mw.TimedText.js",
+			'styles' => "resources/mw.style.TimedText.css",
 			'dependencies' => array(
-				'mw.EmbedPlayer'
-			)
+				'mw.EmbedPlayer',
+				'mw.Language.names'			
+			),
+			'messageFile' => 'TimedText.i18n.php',
 		),
 		"mw.TimedTextEdit" => array(
-			'scripts' => "mw.TimedTextEdit.js",
-			'styles' => "css/mw.style.TimedTextEdit.css",
+			'scripts' => "resources/mw.TimedTextEdit.js",
+			'styles' => "resources/mw.style.TimedTextEdit.css",
 			'dependencies' => array(
 				'mw.TimedText',
 				'jquery.ui.dialog',

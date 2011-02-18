@@ -38,23 +38,23 @@ $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebV
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 
 // Register the Timed Media Handler javascript resources ( mwEmbed modules )  
-MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/EmbedPlayer' );
-MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/resources/TimedText' );
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
 
 // MwEmbed module configuration:
 $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true; 
+$wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
 
 
 // Localization 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 
-// Setup globals
 
 /**
  * Setup a metadata cache :(
  * 
- * Its very costly to generate metadata! I am not sure who or why the file repos don't get
+ * Its very costly to generate metadata! I am not sure why the file repos don't get
  * instantiated with a path, and then could lazy init things like other normal objects and 
  * have a local cache of their metadata! 
  */ 
@@ -98,11 +98,13 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
 /** 
  * Default enabled transcodes 
  * 
- * -If set to false no derivatives will be used
+ * -If set to empty array, no derivatives will be created
+ * -Derivative keys encode settings are defined in WebVideoTranscode.php
+ * 
  * -These transcodes are *in addition to* the source file. 
  * -Only derivatives with smaller width than the source asset size will be created
+ * -At least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet
  * -Derivative jobs are added to the mediaWiki JobQueue the first time the asset is displayed
- * -Derivative keys encode settings are defined in WebVideoTranscode.php
  * -List Derivative from min to max
  */
 $wgEnabledTranscodeSet = array(

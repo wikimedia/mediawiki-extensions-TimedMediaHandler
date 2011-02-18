@@ -17,7 +17,8 @@
 	// Merge in timed text related attributes:
 	mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
   	   'srclang',
-	   'category'
+	   'category',
+	   'label'
 	]);
 	
 	/**
@@ -120,18 +121,16 @@
 			this.prevText = '';
 			this.textSources = [];
 			this.textSourceSetupFlag = false;
-
-			//Set default language via wgUserLanguage if set
-			if( typeof wgUserLanguage != 'undefined') {
+			// Set default language via wgUserLanguage if set
+			if( typeof wgUserLanguage == 'object' ) {
 				this.config.userLanugage = wgUserLanguage;
 			}
 
 			// Load user preferences config:
-			preferenceConfig = mw.getUserConfig( 'timedTextConfig' );
-			if( typeof preferenceConfig == 'object' ) {
+			var preferenceConfig = $.cookie( 'TimedText.Prefrences' );
+			if( preferenceConfig !== null ) {
 				this.config = preferenceConfig;
 			}
-
 			// Set up embedPlayer hooks:
 			
 			// Check for timed text support:
@@ -398,16 +397,17 @@
 			// Add all the sources to textSources
 			for( var i = 0 ; i < inlineSources.length ; i++ ) {
 				// Make a new textSource:
-				var source = new TextSource( inlineSources[i] );
+				var source = new TextSource( inlineSources[i] );				
 				this.textSources.push( source );
 			}
 
-			//If there are no inline sources check & apiTitleKey
-			if( !this.embedPlayer.apiTitleKey ) {
+			// If there are no inline sources check & apiTitleKey
+			if( this.textSources.length == 0 || !this.embedPlayer.apiTitleKey ) {
 				//no other sources just issue the callback:
 				callback();
 				return ;
 			}
+			
 			// Try to get sources from text provider:
 			var provider_id = ( this.embedPlayer.apiProvider ) ? this.embedPlayer.apiProvider : 'local';
 			var apiUrl = mw.getApiProviderURL( provider_id );
@@ -923,8 +923,14 @@
 
 		/**
 		* Refresh the display, updates the timedText layout, menu, and text display
+		* also updates the cookie preference. 
+		* 
+		* Called after a user option change
 		*/
 		refreshDisplay: function() {
+			// Update the configuration object
+			$.cookie( 'TimedText.Prefrences', this.config );
+			
 			// Empty out previous text to force an interface update:
 			this.prevText = [];
 			// Refresh the Menu (if it has a target to refresh)

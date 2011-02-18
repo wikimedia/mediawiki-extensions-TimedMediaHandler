@@ -148,6 +148,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 	
 	function getTextSources(){
+		global $wgServer, $wgScriptPath;
 		// Check local cache: 		
 		if( $this->textTracks ){
 			return $this->textTracks;
@@ -170,24 +171,33 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
-				$pageTitle = $page['title'];
-				$tileParts = explode( '.', $pageTitle );
+				$pageTitle = Title::newFromText( $page['title'] ) ;
+				$tileParts = explode( '.', $page['title'] );
 				if( count( $tileParts) >= 3 ){
 					$subtitle_extension = array_pop( $tileParts );
 					$languageKey = array_pop( $tileParts );
+				} else {
+					continue;
 				}
 				// If there is no valid language continue:
 				if( !isset( $langNames[ $languageKey ] ) ){
 					continue;
 				}
-				$this->textTracks[] = array(
-					// We link to the parsed output ( instead of raw page because 
-					// the subtitles can include links
-					'src' => "{$wgServer}{$wgScriptPath}/api.php?" .
-						'action=parse&format=json&page=' . $pageTitle,
-					'lang' =>  $languageKey,
-					'type' => 'text/mw-srt'
-				);				
+				$this->textTracks[] = array(					
+					'kind' => 'subtitles',
+					'data-mwtitle' => $pageTitle->getNsText() . ':' . $pageTitle->getDBkey(),
+					'type' => 'text/mw-srt',
+					// TODO Should add a special entry point and output proper WebVTT format:
+					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
+					'src' => $pageTitle->getFullURL( array( 
+						'action' => 'raw',
+						'ctype' => 'text/plain'
+					)),
+					'srclang' =>  $languageKey,
+					'label' => wfMsg('timedmedia-subtitle-language', 
+						$langNames[ $languageKey ], 
+						$languageKey )
+				);
 			}
 		}
 		return $this->textTracks;
