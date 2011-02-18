@@ -186,7 +186,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$this->textTracks[] = array(					
 					'kind' => 'subtitles',
 					'data-mwtitle' => $subTitle->getNsText() . ':' . $subTitle->getDBkey(),
-					'type' => 'text/mw-srt',
+					'type' => 'text/x-srt',
 					// TODO Should add a special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
 					'src' => $subTitle->getFullURL( array( 

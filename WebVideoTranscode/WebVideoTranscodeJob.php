@@ -187,30 +187,17 @@ class WebVideoTranscodeJob extends Job {
 		// Set the codec:
 		$cmd.= " -vcodec libvpx";
 		
-		// Check for aspect ratio		
+		// Check for aspect ratio ( we don't do anything with this right now) 
 		if ( isset( $options['aspect'] ) ) {
 			$aspectRatio = $options['aspect'];
 		} else {
 			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
-		}
-		$dar = explode(':', $aspectRatio);
-		$dar = intval( $dar[0] ) / intval( $dar[1] );
-		
+		}		
 		// Check maxSize
 		if (isset( $options['maxSize'] ) && intval( $options['maxSize'] ) > 0) {
-			// Check if source is smaller than maxSize
-			if( !WebVideoTranscode::isTargetLargerThanFile( $options['maxSize'], $file ) ){
-				$sourceWidth = $file->getWidth();
-				$sourceHeight = $file->getHeight();
-				if ($sourceWidth > $options['maxSize'] ) {
-					$width = intval( $options['maxSize'] );
-					$height = intval( $width / $dar);				
-				} else {
-					$height = intval( $options['maxSize'] );
-					$width = intval( $height * $dar);
-		      	}		      	
-				$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
-			}
+			// Get size transform ( if maxSize is > file, file size is used:
+			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] )			      	
+			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
 	    } else if ( 
 	    	(isset( $options['width'] ) && $options['width'] > 0 ) 
 			&&

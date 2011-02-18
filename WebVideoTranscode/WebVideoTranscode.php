@@ -151,7 +151,8 @@ class WebVideoTranscode {
 								$wgLang->formatNum( $file->getHeight() ),
 								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
 							),
-			'data-shorttitle' => wfMsg('timedmedia-source-file')
+			'data-shorttitle' => wfMsg('timedmedia-source-file'),
+			'data-size' => $file->getWidth() . 'x' . $file->getHeight()
 			// TODO add some title and data about the file
 		);
 		
@@ -180,7 +181,7 @@ class WebVideoTranscode {
 			$codec =  self::$derivativeSettings[$transcodeKey]['codec'];
 			// Check if we should add derivative to job queue 
 			// Skip if we have both an Ogg & WebM and if target encode larger than source
-			if( self::isTargetLargerThanFile( self::$derivativeSettings[$transcodeKey]['maxSize'], $file) ){				
+			if( self::isTargetLargerThanFile( $file, self::$derivativeSettings[$transcodeKey]['maxSize']) ){				
 				continue;
 			}			
 			// if we are checking for this derivative, update codec flags: 
@@ -221,11 +222,18 @@ class WebVideoTranscode {
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );
 		
+		// if the source size is < $transcodeKey assume source size: 
 		if( is_file( $derivativeFile ) ){
 			$sources[] = array(
 				'src' => $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey,
 				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
-				'data-shorttitle' => wfMsg('timedmedia-derivative-' . $transcodeKey)
+				'data-shorttitle' => wfMsg('timedmedia-derivative-' . $transcodeKey),
+				'data-size' => implode( 'x',
+					WebVideoTranscode::getMaxSizeTransform( 
+						$file, 
+						self::$derivativeSettings[$transcodeKey]['maxSize'] 
+					)
+				)
 			);
 		} else {			
 			self::updateJobQueue($file, $transcodeKey); 				
@@ -258,13 +266,41 @@ class WebVideoTranscode {
 			}
 		}
 	}
+	
+	/**
+	 * Transforms the size per a given "maxSize" 
+	 *  if maxSize is > file, file size is used
+	 */
+	public static function getMaxSizeTransform( &$file, $targetMaxSize ){		
+		$sourceWidth = $file->getWidth();
+		$sourceHeight = $file->getHeight();
+		if( WebVideoTranscode::isTargetLargerThanFile( $file, $targetMaxSize) ){
+			return array(
+				$sourceWidth,
+				$sourceHeight
+			);
+		}
+		// Get the aspect ratio percentage
+		$ar = intval( $sourceWidth ) / intval( $sourceHeight );
+		if ( $sourceWidth > $targetMaxSize ) {
+			return array(
+				intval( $targetMaxSize ),
+				intval( $targetMaxSize / $ar)
+			);
+		} else {
+			return array(
+				intval( $targetMaxSize ),
+				intval( $targetMaxSize * $ar)
+			);
+      	}
+	}
 	/**
 	 * Test if a given transcode target is larger than the source file
 	 * 
 	 * @param $transcodeKey The static transcode key
 	 * @param $file {Object} File object
 	 */
-	public static function isTargetLargerThanFile( $targetMaxSize, &$file){
+	public static function isTargetLargerThanFile( &$file, $targetMaxSize ){
 		$largerSize = ( $file->getWidth() > $file->getHeight() )?$file->getWidth(): $file->getHeight();		
 		return ( $targetMaxSize > $largerSize );
 	}
