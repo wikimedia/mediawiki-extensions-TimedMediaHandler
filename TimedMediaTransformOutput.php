@@ -171,7 +171,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
-				$pageTitle = Title::newFromText( $page['title'] ) ;
+				$subTitle = Title::newFromText( $page['title'] ) ;
 				$tileParts = explode( '.', $page['title'] );
 				if( count( $tileParts) >= 3 ){
 					$subtitle_extension = array_pop( $tileParts );
@@ -185,11 +185,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				}
 				$this->textTracks[] = array(					
 					'kind' => 'subtitles',
-					'data-mwtitle' => $pageTitle->getNsText() . ':' . $pageTitle->getDBkey(),
+					'data-mwtitle' => $subTitle->getNsText() . ':' . $subTitle->getDBkey(),
 					'type' => 'text/mw-srt',
 					// TODO Should add a special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-					'src' => $pageTitle->getFullURL( array( 
+					'src' => $subTitle->getFullURL( array( 
 						'action' => 'raw',
 						'ctype' => 'text/plain'
 					)),

@@ -70,9 +70,10 @@ $messages['en'] = array(
 	'mwe-embedplayer-buffering' => 'buffering',
 	'mwe-embedplayer-copy-code' => 'Copy code',
 	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-webm' => 'WebM video',
 	'mwe-embedplayer-video-flv' => 'Flash video',
 	'mwe-embedplayer-video-ogg' => 'Ogg video',
-	'mwe-embedplayer-video-audio' => 'Ogg audio',
+	'mwe-embedplayer-video-audio' => 'Ogg audio',	
 	'mwe-embedplayer-missing-source' => 'No source video was found',
 );
 

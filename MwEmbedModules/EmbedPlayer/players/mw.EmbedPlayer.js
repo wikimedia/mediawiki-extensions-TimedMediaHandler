@@ -518,7 +518,6 @@ mediaSource.prototype = {
 		}
 
 		var sourceAttr = mw.getConfig( 'EmbedPlayer.SourceAttributes' );
-
 		for ( var i = 0; i < sourceAttr.length; i++ ) { // array loop:
 			var attr = sourceAttr[ i ];
 			var attr_value = element.getAttribute( attr );
