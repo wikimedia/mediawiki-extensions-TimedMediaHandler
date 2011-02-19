@@ -53,6 +53,9 @@
 	
 			// If fullscreen is global enabled.
 			"EmbedPlayer.EnableFullscreen" => true,
+			
+			// If the options control bar menu item should be enabled: 
+			'EmbedPlayer.EnableOptionsMenu' => true,
 	
 			// If mwEmbed should use the Native player controls
 			// this will prevent video tag rewriting and skinning

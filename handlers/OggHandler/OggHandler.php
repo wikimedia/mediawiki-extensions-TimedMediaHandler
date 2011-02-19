@@ -109,7 +109,20 @@ class OggHandler extends TimedMediaHandler {
 			return $metadata['length'];
 		}
 	}
-	
+	function getFramerate( $file ){
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
+		if ( !$metadata || isset( $metadata['error'] ) ) {
+			return 0;
+		} else {
+			// Return the first found theora stream framerate: 
+			foreach ( $metadata['streams'] as $stream ) {
+				if( $stream['type'] == 'Theora' ){
+					return  $stream['header']['FRN'] / $stream['header']['FRD'];
+				}
+			}			
+			return 0;
+		}
+	}
 	function getShortDesc( $file ) {
 		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
 

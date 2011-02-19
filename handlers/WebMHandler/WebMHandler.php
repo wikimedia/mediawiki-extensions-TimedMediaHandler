@@ -100,6 +100,16 @@ class WebMHandler extends TimedMediaHandler {
 			return $metadata['playtime_seconds'];
 		}
 	}
+	function getFramerate( $file ){
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
+		if ( !$metadata || isset( $metadata['error'] ) ) {
+			return 0;
+		} else {
+			print_r($metadata);
+			die();
+			return $metadata['framerate'];
+		}
+	}
 	
 	function getShortDesc( $file ) {
 		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;

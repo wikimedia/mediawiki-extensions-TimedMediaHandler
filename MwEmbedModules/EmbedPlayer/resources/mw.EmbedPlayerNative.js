@@ -56,6 +56,7 @@ mw.EmbedPlayerNative = {
 	// Native player supported feature set
 	supports: {
 		'playHead' : true,
+		'sourceSwitch': true,
 		'pause' : true,
 		'fullscreen' : true,
 		'timeDisplay' : true,

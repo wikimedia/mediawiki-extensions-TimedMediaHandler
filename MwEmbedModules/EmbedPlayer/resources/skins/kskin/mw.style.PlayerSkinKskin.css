@@ -118,9 +118,22 @@
 	font: 11px arial, sans-serif;
 	line-height: 20px;
 	overflow: hidden;
-	width: 39px;
+	width: 48px;
 	float: right;
 }
+
+.k-player .source-switch{
+	border: medium none;
+	display: inline;
+	color: #555555;
+	font: 11px arial, sans-serif;
+	line-height: 20px;
+	overflow: hidden;
+	width: 50px;
+	cursor: pointer;
+	float: right;
+}
+
 
 .k-player .lButton {
 	cursor: pointer;
@@ -141,7 +154,7 @@
 	list-style: none outside none;
 	margin-top: 2px;
 	padding: 0px 0;
-	width: 23px;
+	width: 22px;
 	height: 16px;
 	position: relative;
 	background: none repeat scroll 0 0 transparent;
@@ -296,7 +309,6 @@
 }
 
 .k-menu-screens li {
-	height: 14px;
 	margin-bottom: 6px;
 }
 

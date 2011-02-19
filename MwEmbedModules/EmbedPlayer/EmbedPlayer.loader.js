@@ -113,9 +113,9 @@
 		mediaWiki.loader.using( dependencySet, function(){
 			setTimeout(function(){
 				mw.processEmbedPlayers( playerSelect, readyCallback );
-			},500);
-		}, function(){
-			throw new Error( 'Error loading EmbedPlayer dependency set' );
+			},1000);
+		}, function( e ){
+			//throw new Error( 'Error loading EmbedPlayer dependency set' );
 		});
 	};
 

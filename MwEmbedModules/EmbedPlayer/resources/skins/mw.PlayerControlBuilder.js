@@ -57,7 +57,7 @@ mw.PlayerControlBuilder.prototype = {
 	addWarningFlag: false,
 
 	// Flag to store state of overlay on player
-	displayOptionsMenuFlag: false,
+	keepControlBarOnScreen: false,
 
 	/**
 	* Initialization Object for the control builder
@@ -102,7 +102,7 @@ mw.PlayerControlBuilder.prototype = {
 		embedPlayer.$interface.find( '.control-bar,.overlay-win' ).remove();
 
 		// Reset flag:
-		_this.displayOptionsMenuFlag = false;
+		_this.keepControlBarOnScreen = false;
 
 
 		// Setup the controlBar container ( starts hidden ) 
@@ -208,7 +208,7 @@ mw.PlayerControlBuilder.prototype = {
 			}
 
 			// Skip "fullscreen" button for assets or where height is 0px ( audio )
-			if( component_id == 'fullscreen' && this.embedPlayer.height == 0 ){
+			if( component_id == 'fullscreen' && this.embedPlayer.isAudio() ){
 				continue;
 			}
 			addComponent( component_id );
@@ -717,13 +717,16 @@ mw.PlayerControlBuilder.prototype = {
 	/**
 	* Hide the control bar.
 	*/
-	hideControlBar : function(){
+	hideControlBar : function( forceClose ){
 		var animateDuration = 'fast';
 		var _this = this;
 
+		if( forceClose ){
+			_this.keepControlBarOnScreen = false;
+		}
+		
 		// Do not hide control bar if overlay menu item is being displayed:
-		if( _this.displayOptionsMenuFlag ||
-			$( '#timedTextMenu_' + this.embedPlayer.id ).is( ':visible' ) ) {
+		if( _this.keepControlBarOnScreen ) {
 			setTimeout( function(){
 				_this.hideControlBar();
 			}, 200 );
@@ -743,10 +746,14 @@ mw.PlayerControlBuilder.prototype = {
 	/**
 	* Show the control bar
 	*/
-	showControlBar: function(){
+	showControlBar: function( keepOnScreen ){
 		var animateDuration = 'fast';
 		if(! this.embedPlayer )
 			return ;
+		if( keepOnScreen ){
+			this.keepControlBarOnScreen = true;
+		}
+		
 		if( this.embedPlayer.getPlayerElement && ! this.embedPlayer.isPersistentNativePlayer() ){
 			$( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
 		}
@@ -1124,8 +1131,8 @@ mw.PlayerControlBuilder.prototype = {
 		var embedPlayer = this.embedPlayer;
 		var $overlay = embedPlayer.$interface.find( '.overlay-win,.ui-widget-overlay,.ui-widget-shadow' );
 
-		this.displayOptionsMenuFlag = false;
-		//mw.log(' closeMenuOverlay: ' + this.displayOptionsMenuFlag);
+		this.keepControlBarOnScreen = false;
+		//mw.log(' closeMenuOverlay: ' + this.keepControlBarOnScreen);
 
 		$overlay.fadeOut( "slow", function() {
 			$overlay.remove();
@@ -1150,8 +1157,8 @@ mw.PlayerControlBuilder.prototype = {
 		var embedPlayer = this.embedPlayer;
 		mw.log( 'displayMenuOverlay::' );
 		//	set the overlay display flag to true:
-		this.displayOptionsMenuFlag = true;
-		mw.log(" set displayOptionsMenuFlag:: " + this.displayOptionsMenuFlag);
+		this.keepControlBarOnScreen = true;
+		mw.log(" set keepControlBarOnScreen:: " + this.keepControlBarOnScreen);
 
 		if ( !this.supportedComponets[ 'overlays' ] ) {
 			embedPlayer.stop();
@@ -1516,7 +1523,25 @@ mw.PlayerControlBuilder.prototype = {
 			);
 		}
 	},
-
+	getSwichSourceMenu: function(){
+		// for each source with "native playback" 
+		$sourceMenu = $j('<ul />');
+		$j.each( this.embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
+			//var isSelected = ( source.getSrc() == this.embedPlayer.mediaElement.selectedSource.getSrc() );
+			// Output the player select code:
+			var supportingPlayers = mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( source.getMIMEType() );
+			for ( var i = 0; i < supportingPlayers.length ; i++ ) {
+				if( supportingPlayers[i].library == 'Native' ){
+					$sourceMenu.append( 
+						$.getLineItem( source.shorttitle, 'video', function(){
+							mw.log("Selected source");
+						})
+					)
+				}
+			}
+		});
+		return $sourceMenu;
+	},
 
 	/**
 	* Get component
@@ -1601,7 +1626,7 @@ mw.PlayerControlBuilder.prototype = {
 		* The Attribution button ( by default this is kaltura-icon
 		*/
 		'attributionButton' : {
-			'w' : 28,
+			'w' : 24,
 			'o' : function( ctrlObj ){
 				var buttonConfig = mw.getConfig( 'EmbedPlayer.AttributionButton');
 				// Check for source ( by configuration convention this is a 16x16 image
@@ -1642,7 +1667,7 @@ mw.PlayerControlBuilder.prototype = {
 		* The options button, invokes display of the options menu
 		*/
 		'options': {
-			'w': 28,
+			'w': 50,
 			'o': function( ctrlObj ) {
 				return $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-player_options' ) )
@@ -1670,7 +1695,7 @@ mw.PlayerControlBuilder.prototype = {
 		* The fullscreen button for displaying the video fullscreen
 		*/
 		'fullscreen': {
-			'w': 28,
+			'w': 24,
 			'o': function( ctrlObj ) {
 
 				// Setup "dobuleclick" fullscreen binding to embedPlayer
@@ -1697,7 +1722,7 @@ mw.PlayerControlBuilder.prototype = {
 		* The pause / play button
 		*/
 		'pause': {
-			'w': 28,
+			'w': 24,
 			'o': function( ctrlObj ) {
 				return $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) )
@@ -1719,7 +1744,7 @@ mw.PlayerControlBuilder.prototype = {
 		* The volume control interface html
 		*/
 		'volumeControl': {
-			'w' : 28,
+			'w' : 36,
 			'o' : function( ctrlObj ) {
 				mw.log( 'PlayerControlBuilder::Set up volume control for: ' + ctrlObj.embedPlayer.id );
 				$volumeOut = $( '<span />' );
@@ -1760,11 +1785,38 @@ mw.PlayerControlBuilder.prototype = {
 			}
 		},
 
+		'sourceSwitch' : {
+			'w' : 50,
+			'o' : function( ctrlObj ){
+				// Stream switching widget ( display the current selected stream text )
+				return $( '<div />' )
+					.addClass('ui-widget source-switch')
+					.append(
+						ctrlObj.embedPlayer.mediaElement.selectedSource.shorttitle
+					).menu( {
+						'content' : ctrlObj.getSwichSourceMenu(),
+						'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+						'width' : 75,
+						'positionOpts' : {
+							'posY' : 'top',
+							'directionV' : 'up',
+							'offsetY' : 23
+						},
+						'createMenuCallback' : function(){
+							ctrlObj.showControlBar( true );
+						},
+						'closeMenuCallback' : function(){
+							ctrlObj.hideControlBar( true );
+						}
+					} );
+			}
+		},
+		
 		/*
 		* The time display area
 		*/
 		'timeDisplay': {
-			'w' : 100,
+			'w' : 50,
 			'o' : function( ctrlObj ) {
 				return $( '<div />' )
 				.addClass( "ui-widget time-disp" )
@@ -1842,7 +1894,7 @@ mw.PlayerControlBuilder.prototype = {
 					.css({
 						"position" : 'absolute',
 						"left" : '33px',
-						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 33) + 'px'
+						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 10) + 'px'
 					})
 					// Playhead binding
 					.slider( sliderConfig );

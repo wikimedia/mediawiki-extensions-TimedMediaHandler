@@ -54,7 +54,7 @@ class WebVideoTranscode {
 				'videoBitrate'		=> '160',
 				'audioBitrate'		=> '32',
 				'samplerate'		=> '22050',
-				//'framerate'			=> '15',
+				'framerate'			=> '18',
 				'channels'			=> '1',
 				'noUpscaling'		=> 'true',
 				'twopass' 			=> 'true',
@@ -221,21 +221,33 @@ class WebVideoTranscode {
 		$thumbName = $file->thumbName( array() );		
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );
-		
+	
 		// if the source size is < $transcodeKey assume source size: 
 		if( is_file( $derivativeFile ) ){
+			// Estimate bandwith: 
+			$bandwith = intval( filesize( $derivativeFile ) /  $file->getLength() ) * 8;
+			
+			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( 
+						$file, 
+						self::$derivativeSettings[$transcodeKey]['maxSize'] 
+					);
+					
+			$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) )? 
+						self::$derivativeSettings[$transcodeKey]['framerate'] :
+						$file->getHandler()->getFramerate( $file );
 			$sources[] = array(
 				'src' => $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey,
 				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
 				'data-shorttitle' => wfMsg('timedmedia-derivative-' . $transcodeKey),
-				'data-size' => implode( 'x',
-					WebVideoTranscode::getMaxSizeTransform( 
-						$file, 
-						self::$derivativeSettings[$transcodeKey]['maxSize'] 
-					)
-				)
+				
+				// Add data attributes per emerging DASH / webTV adaptive streaming attributes
+				// eventually we will define a manifest xml entry point.
+				'data-width' => $width,
+				'data-height' => $height,
+				'data-bandwith' => $bandwith,
+				'data-framerate' => $framerate,					
 			);
-		} else {			
+		} else {
 			self::updateJobQueue($file, $transcodeKey); 				
 		}
 	}

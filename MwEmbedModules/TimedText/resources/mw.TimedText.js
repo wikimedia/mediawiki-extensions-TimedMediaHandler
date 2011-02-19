@@ -361,7 +361,13 @@
 					'autoShow': autoShow,
 					'targetMenuContainer' : _this.menuTarget,
 					'positionOpts' : positionOpts,
-					'backLinkText' : gM( 'mwe-timedtext-back-btn' )
+					'backLinkText' : gM( 'mwe-timedtext-back-btn' ),
+					'createMenuCallback' : function(){
+						_this.embedPlayer.controlBuilder.showControlBar( true );
+					},
+					'closeMenuCallback' : function(){
+						_this.embedPlayer.controlBuilder.hideControlBar( true );
+					}
 				} );
 			});
 		},
@@ -394,6 +400,7 @@
 			this.textSources = [ ];
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )
 			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
+			
 			// Add all the sources to textSources
 			for( var i = 0 ; i < inlineSources.length ; i++ ) {
 				// Make a new textSource:
@@ -401,9 +408,9 @@
 				this.textSources.push( source );
 			}
 
-			// If there are no inline sources check & apiTitleKey
-			if( this.textSources.length == 0 || !this.embedPlayer.apiTitleKey ) {
-				//no other sources just issue the callback:
+			// If there are inline sources or no apiTitleKey we are done loading 
+			if( this.textSources.length != 0 || !this.embedPlayer.apiTitleKey ) {
+				// No other sources just issue the callback:
 				callback();
 				return ;
 			}
@@ -416,6 +423,7 @@
 				mw.log("Error: loading source without apiProvider or apiTitleKey");
 				return ;
 			}
+			
 			//For now only support mediaWikTrack provider library
 			this.textProvider = new mw.MediaWikTrackProvider( {
 				'provider_id' : provider_id,
@@ -444,7 +452,7 @@
 
 					// Add a title
 					$( textElm ).attr('title',
-						gM('mwe-timedtext-key-language', [textSource.srclang, mw.Language.names[ textSource.srclang ] ] )
+						gM('mwe-timedtext-key-language', textSource.srclang, mw.Language.names[ textSource.srclang ] )
 					);
 
 					// Add the sources to the parent embedPlayer
@@ -794,13 +802,12 @@
 				return $j.getLineItem( source.title, source_icon, function() {
 					_this.selectTextSource( source );
 				});
-			}
-
+			}						
 			if( source.srclang ) {
 				var langKey = source.srclang.toLowerCase();
-				_this.getLanguageName ( langKey );
+				var cat = gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) );
 				return $j.getLineItem(
-					gM('mwe-timedtext-key-language', [langKey, mw.Language.names[ source.srclang ]	] ),
+					gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) ),
 					source_icon,
 					function() {
 						_this.selectTextSource( source );
@@ -861,9 +868,6 @@
 			if( layoutMode != _this.config.layout ) {
 				// Update the config and redraw layout
 				_this.config.layout = layoutMode;
-
-				// Update the user config:
-				mw.setUserConfig( 'timedTextConfig', _this.config);
 
 				// Update the display:
 				_this.updateLayout();
@@ -1074,7 +1078,7 @@
 			// Setup the display text div:
 			var layoutMode = this.getLayoutMode();
 			if( layoutMode == 'ontop' ) {
-				this.embedPlayer.controlBuilder.displayOptionsMenuFlag = false;
+				this.embedPlayer.controlBuilder.keepControlBarOnScreen = false;
 				var $track = $('<div>')
 					.addClass( 'track' + ' ' + 'track_' + category )
 					.css( {
@@ -1100,7 +1104,7 @@
 				$playerTarget.append( $track );
 				
 			} else if ( layoutMode == 'below') {
-				this.embedPlayer.controlBuilder.displayOptionsMenuFlag = true;
+				this.embedPlayer.controlBuilder.keepControlBarOnScreen = true;
 				// Set the belowBar size to 60 pixels:
 				var belowBarHeight = 60;
 				// Append before controls:
@@ -1191,7 +1195,7 @@
 				}
 			};
 			_this.loaded = true;
-
+			
 			// Set parser handler:
 			switch( this.getMIMEType() ) {
 				//Special mediaWiki srt format ( support wiki-text in srt's )
@@ -1212,6 +1216,7 @@
 				mw.log("Error: no handler for type: " + this.getMIMEType() );
 				return ;
 			}
+
 			// Try to load src via textProvider:
 			if( this.textProvider && this.titleKey ) {
 				this.textProvider.loadTitleKey( this.titleKey, function( data ) {

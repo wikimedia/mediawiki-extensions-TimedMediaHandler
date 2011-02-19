@@ -52,7 +52,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->getXmlTagOutput( 
 			$this->getMediaAttr(), 
 			$this->getMediaSources(), 
-			$this->getTextSources()
+			$this->getLocalTextSources()
 		);				
 	}
 	// XXX migrate this to the mediawiki XML class as 'tagSet' helper function
@@ -66,6 +66,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		return $s;
 	}
+	
 	/**
 	 * Call mediaWiki xml helper class to build media tag output from 
 	 * supplied arrays
@@ -124,7 +125,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		);
 		
 		// Add api provider:		
-		if( $this->file->getRepoName() != 'local' ){			
+		if( !$this->file->isLocal() ){			
 			// Set the api provider name to "commons" for shared ( instant commons convention ) 
 			// ( provider names should have identified the provider
 			// instead of the provider type "shared" )
@@ -147,8 +148,15 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->sources;
 	}
 	
-	function getTextSources(){
+	function getLocalTextSources(){
 		global $wgServer, $wgScriptPath;
+		
+		// Don't do lookup if non-local path: 
+		// TODO integrate with repo api and do remote lookup
+		if( !$this->file->isLocal() ){
+			return array();
+		}
+		
 		// Check local cache: 		
 		if( $this->textTracks ){
 			return $this->textTracks;
@@ -183,7 +191,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				if( !isset( $langNames[ $languageKey ] ) ){
 					continue;
 				}
-				$this->textTracks[] = array(					
+				$this->textTracks[] = array(		
 					'kind' => 'subtitles',
 					'data-mwtitle' => $subTitle->getNsText() . ':' . $subTitle->getDBkey(),
 					'type' => 'text/x-srt',
@@ -191,7 +199,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
 					'src' => $subTitle->getFullURL( array( 
 						'action' => 'raw',
-						'ctype' => 'text/plain'
+						'ctype' => 'text/x-srt'
 					)),
 					'srclang' =>  $languageKey,
 					'label' => wfMsg('timedmedia-subtitle-language', 

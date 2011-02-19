@@ -6,8 +6,9 @@
 			'scripts' => "resources/mw.TimedText.js",
 			'styles' => "resources/mw.style.TimedText.css",
 			'dependencies' => array(
-				'mw.EmbedPlayer',
-				'mw.Language.names'			
+				'mw.EmbedPlayer',	
+				'mw.Language.names',
+				'jquery.ui.dialog',			
 			),
 			'messageFile' => 'TimedText.i18n.php',
 		),
@@ -15,8 +16,7 @@
 			'scripts' => "resources/mw.TimedTextEdit.js",
 			'styles' => "resources/mw.style.TimedTextEdit.css",
 			'dependencies' => array(
-				'mw.TimedText',
-				'jquery.ui.dialog',
+				'mw.TimedText',				
 				'jquery.ui.tabs'
 			)
 		),
