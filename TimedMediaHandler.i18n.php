@@ -729,10 +729,16 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'À propos de ce fichier',
 	'timedmedia-oggThumb-version' => 'OggHandler nécessite oggThumb, version $1 ou supérieure.',
 	'timedmedia-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
+	'timedmedia-source-file' => 'Source',
+	'timedmedia-source-file-desc' => 'Source $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200p',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Vidéo Ogg bas débit (200P)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vidéo Ogg lisible en continu sur le Web (360p)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vidéo Ogg lisible en continu sur le web (480p)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vidéo Ogg téléchargeable de grande qualité (720p)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM lisible en continu depuis le web (480p)',
+	'timedmedia-derivative-desc720_VBR.webm' => 'Vidéo WebM téléchargeable de grande qualité (720p)',
+	'timedmedia-subtitle-language' => 'soustitres en $1 ($2)',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -787,15 +793,17 @@ $messages['ga'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'timedmedia-desc' => 'Manipulador dos ficheiros sincronizados (vídeo, son, texto sincronizado) con transcodificación en Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Manipulador de son, vídeo e texto sincronizado, con soporte para os formatos WebM, Ogg Theora, Vorbis e srt',
 	'timedmedia-ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Ficheiro multimedia Ogg $1, $2',
-	'timedmedia-ogg-long-audio' => 'ficheiro de son Ogg $1, duración $2, $3',
-	'timedmedia-ogg-long-video' => 'ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3',
-	'timedmedia-ogg-long-multiplexed' => 'ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total',
-	'timedmedia-ogg-long-general' => 'ficheiro multimedia Ogg, duración $2, $3',
-	'timedmedia-ogg-long-error' => 'ficheiro Ogg non válido: $1',
+	'timedmedia-ogg-long-audio' => 'Ficheiro de son Ogg $1, duración $2, $3',
+	'timedmedia-ogg-long-video' => 'Ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3',
+	'timedmedia-ogg-long-multiplexed' => 'Ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total',
+	'timedmedia-ogg-long-general' => 'Ficheiro multimedia Ogg, duración $2, $3',
+	'timedmedia-ogg-long-error' => 'Ficheiro Ogg non válido: $1',
+	'timedmedia-webm-short-video' => 'Ficheiro de vídeo WebM $1, $2',
+	'timedmedia-webm-long-video' => 'Ficheiro WebM de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total',
 	'timedmedia-no-player-js' => 'O seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
 Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">un reprodutor</a> para reproducir o vídeo no seu navegador.',
 	'timedmedia-more' => 'Máis...',
@@ -804,6 +812,16 @@ Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wi
 	'timedmedia-desc-link' => 'Acerca deste ficheiro',
 	'timedmedia-oggThumb-version' => 'O OggHandler necesita a versión $1 ou unha posterior do oggThumb.',
 	'timedmedia-oggThumb-failed' => 'Houbo un erro por parte do oggThumb ao crear a miniatura.',
+	'timedmedia-source-file' => 'Fonte',
+	'timedmedia-source-file-desc' => 'Fonte $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Vídeo Ogg de baixo ancho de banda (200P)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vídeo Ogg para a web (360P)',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vídeo Ogg para a web (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vídeo Ogg de alta calidade que se pode descargar (720P)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM para a web (480P)',
+	'timedmedia-derivative-desc720_VBR.webm' => 'WebM de alta calidade que se pode descargar (720P)',
+	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1728,10 +1746,16 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'Sobre este ficheiro',
 	'timedmedia-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
 	'timedmedia-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
+	'timedmedia-source-file' => 'Fonte',
+	'timedmedia-source-file-desc' => 'Fonte $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Vídeo Ogg de baixa largura de banda (200P)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Vídeo Ogg para web streaming (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vídeo Ogg para web streaming (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vídeo Ogg de alta qualidade para download (720 P)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM para web streaming (480P)',
+	'timedmedia-derivative-desc720_VBR.webm' => 'WebM de alta qualidade para download (720P)',
+	'timedmedia-subtitle-language' => 'Legendas em $1 ($2)',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
