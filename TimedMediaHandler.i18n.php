@@ -32,9 +32,11 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 
-	// source
-	'timedmedia-source-file' => 'Source',
-	'timedmedia-source-file-desc' => 'Source $1, $2 × $3 ($4)',
+	// Original uploaded asset
+	'timedmedia-ogg' => 'Ogg',
+	'timedmedia-webm' => 'WebM',
+	'timedmedia-source-file' => '$1 source',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 
 	// derivative timedmedia-derivative-desc-220_200kbs.ogv
 	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
@@ -84,6 +86,8 @@ Parameters are:
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
+	'timedmedia-source-file' => 'The source file 
+* $1 file type webm or ogg',
 	'timedmedia-source-file-desc' => 'Source file description. Paramaters:
 * $1 file type ie webm or ogg
 * $2 resolution width

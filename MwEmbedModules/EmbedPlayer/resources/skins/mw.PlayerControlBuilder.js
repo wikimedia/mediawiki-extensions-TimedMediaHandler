@@ -637,27 +637,11 @@ mw.PlayerControlBuilder.prototype = {
 			});		
 		});
 		
-		var bindSpaceUp = function(){
-			$(window).bind('keyup.mwPlayer', function(e) {
-				if(e.keyCode == 32) {
-					if(embedPlayer.paused) {
-						embedPlayer.play();
-					} else {
-						embedPlayer.pause();
-					}
-					return false;
-				}
-			});
-		};
-		
-		var bindSpaceDown = function() {
-			$(window).unbind('keyup.mwPlayer');
-		};
 		// Add hide show bindings for control overlay (if overlay is enabled )
 		if( ! _this.checkOverlayControls() ) {
 			$interface
 				.show()
-				.hover( bindSpaceUp, bindSpaceDown );
+				.hover( _this.bindSpaceUp, _this.bindSpaceDown );
 			
 		} else { // hide show controls:
 			
@@ -673,22 +657,8 @@ mw.PlayerControlBuilder.prototype = {
 				// ( once the user touched the video "don't hide" )
 			} );
 
-			// Add a special absolute overlay for hover ( to keep menu displayed
-			
-			$interface.hoverIntent({
-				'sensitivity': 100,
-				'timeout' : 1000,
-				'over' : function(){
-					// Show controls with a set timeout ( avoid fade in fade out on short mouse over )
-					_this.showControlBar();
-					bindSpaceUp();
-				},
-				'out' : function(){
-					_this.hideControlBar();
-					bindSpaceDown();
-				}
-			});
-			
+			// Add a special absolute overlay for hover 
+			_this.addControlBarHover();			
 		}
 
 		// Add recommend firefox if we have non-native playback:
@@ -712,8 +682,71 @@ mw.PlayerControlBuilder.prototype = {
 
 		mw.log('trigger::addControlBindingsEvent');
 		$( embedPlayer ).trigger( 'addControlBindingsEvent');
+		
+		// TODO should break out all control components into their own class and have them work with bindings
+		$( embedPlayer ).bind('SourceChange', function(){
+			if( _this.supportedComponets['sourceSwitch'] ){
+				_this.refreshSwitchSourceMenu();
+			}
+		})
 	},
-
+	bindSpaceUp : function(){
+		var embedPlayer = this.embedPlayer;
+		$(window).bind('keyup.mwPlayer', function(e) {
+			if(e.keyCode == 32) {
+				if(embedPlayer.paused) {
+					embedPlayer.play();
+				} else {
+					embedPlayer.pause();
+				}
+				return false;
+			}
+		});
+	},
+	bindSpaceDown : function() {
+		$(window).unbind('keyup.mwPlayer');
+	},
+	addControlBarHover: function(){
+		var _this = this;
+		this.embedPlayer.$interface.hoverIntent({
+			'sensitivity': 100,
+			'timeout' : 1000,
+			'over' : function(){
+				// Show controls with a set timeout ( avoid fade in fade out on short mouse over )
+				_this.showControlBar();
+				_this.bindSpaceUp();
+			},
+			'out' : function(){
+				_this.hideControlBar();
+				_this.bindSpaceDown();
+			}
+		});
+	},
+	
+	/**
+	* Show the control bar
+	*/
+	showControlBar: function( keepOnScreen ){
+		var animateDuration = 'fast';
+		if(! this.embedPlayer )
+			return ;
+		if( keepOnScreen ){
+			this.keepControlBarOnScreen = true;
+		}
+		
+		if( this.embedPlayer.getPlayerElement && ! this.embedPlayer.isPersistentNativePlayer() ){
+			$( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
+		}
+		mw.log( 'PlayerControlBuilder:: ShowControlBar' );
+		
+		// Show interface controls
+		this.embedPlayer.$interface.find( '.control-bar' )
+			.fadeIn( animateDuration );
+		
+		// Trigger the screen overlay with layout info: 
+		$( this.embedPlayer ).trigger( 'onShowControlBar', {'bottom' : this.getHeight() + 15 } );		
+	},
+	
 	/**
 	* Hide the control bar.
 	*/
@@ -737,34 +770,14 @@ mw.PlayerControlBuilder.prototype = {
 		// Hide the control bar
 		this.embedPlayer.$interface.find( '.control-bar')
 			.fadeOut( animateDuration );
+		
+		// rebind the hover
+		this.addControlBarHover();
+		
 		//mw.log('about to trigger hide control bar')
 		// Allow interface items to update: 
 		$( this.embedPlayer ).trigger('onHideControlBar', {'bottom' : 15} );
 
-	},
-
-	/**
-	* Show the control bar
-	*/
-	showControlBar: function( keepOnScreen ){
-		var animateDuration = 'fast';
-		if(! this.embedPlayer )
-			return ;
-		if( keepOnScreen ){
-			this.keepControlBarOnScreen = true;
-		}
-		
-		if( this.embedPlayer.getPlayerElement && ! this.embedPlayer.isPersistentNativePlayer() ){
-			$( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
-		}
-		mw.log( 'PlayerControlBuilder:: ShowControlBar' );
-		
-		// Show interface controls
-		this.embedPlayer.$interface.find( '.control-bar' )
-			.fadeIn( animateDuration );
-		
-		// Trigger the screen overlay with layout info: 
-		$( this.embedPlayer ).trigger( 'onShowControlBar', {'bottom' : this.getHeight() + 15 } );		
 	},
 
 	/**
@@ -1348,7 +1361,7 @@ mw.PlayerControlBuilder.prototype = {
 			.text( gM( 'mwe-embedplayer-choose_player' ) )
 		);
 
-		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
+		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
 
 			var isPlayable = (typeof mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.getMIMEType() ) == 'object' );
 			var is_selected = ( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() );
@@ -1387,15 +1400,15 @@ mw.PlayerControlBuilder.prototype = {
 							.attr({
 								'href' : '#',
 								'rel' : 'sel_source',
-								'id' : 'sc_' + sourceId + '_' + supportingPlayers[i].id
+								'id' : 'sc_' + sourceIndex + '_' + supportingPlayers[i].id
 							})
 							.addClass( 'ui-corner-all')
 							.text( supportingPlayers[i].getName() )
 							.click( function() {
 								var iparts = $( this ).attr( 'id' ).replace(/sc_/ , '' ).split( '_' );
-								var sourceId = iparts[0];
+								var sourceIndex = iparts[0];
 								var player_id = iparts[1];
-								mw.log( 'source id: ' + sourceId + ' player id: ' + player_id );
+								mw.log( 'source id: ' + sourceIndex + ' player id: ' + player_id );
 
 								embedPlayer.controlBuilder.closeMenuOverlay();
 
@@ -1404,12 +1417,12 @@ mw.PlayerControlBuilder.prototype = {
 									_this.restoreWindowPlayer();
 								}
 
-								embedPlayer.mediaElement.selectSource( sourceId );
+								embedPlayer.mediaElement.setSourceByIndex( sourceIndex );
 								var playableSources = embedPlayer.mediaElement.getPlayableSources();
 
 								mw.EmbedTypes.getMediaPlayers().setPlayerPreference(
 									player_id,
-									playableSources[ sourceId ].getMIMEType()
+									playableSources[ sourceIndex ].getMIMEType()
 								);
 
 								// Issue a stop
@@ -1523,23 +1536,57 @@ mw.PlayerControlBuilder.prototype = {
 			);
 		}
 	},
+	refreshSwitchSourceMenu: function(){
+		mw.log( 'PlayerControlBuilder::refreshSwitchSourceMenu' );
+		// Refresh the menu
+		this.embedPlayer.$interface.find('.source-switch')
+			.after( this.getComponent( 'sourceSwitch') )
+			.remove()
+	},
+	
 	getSwichSourceMenu: function(){
-		// for each source with "native playback" 
+		var _this = this;
+		var embedPlayer = this.embedPlayer;
+		// for each source with "native playback" 			
 		$sourceMenu = $j('<ul />');
-		$j.each( this.embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
-			//var isSelected = ( source.getSrc() == this.embedPlayer.mediaElement.selectedSource.getSrc() );
+		
+		// local function to closure the source variable scope: 
+		function addToSourceMenu( source ){			
+			// Check if source is selected: 
+			var icon =( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() ) ? 'bullet' : 'radio-on';
+			$sourceMenu.append(
+				$.getLineItem( source.shorttitle, icon, function(){
+					mw.log( 'PlayerControlBuilder::SwichSourceMenu: ' + source.getSrc() );
+		
+					// TODO this logic should be in mw.EmbedPlayer
+					embedPlayer.mediaElement.setSource( source );					
+					if( ! _this.embedPlayer.isStopped() ){
+						// Get the exact play time from the video element ( instead of parent embed Player ) 
+						var oldMediaTime = _this.embedPlayer.getPlayerElement().currentTime;
+						var oldPaused =  _this.embedPlayer.paused
+						// Do a live switch
+						embedPlayer.switchPlaySrc(source.getSrc(), function( vid ){
+							// issue a seek
+							embedPlayer.setCurrentTime( oldMediaTime );
+							// reflect pause state
+							if( oldPaused ){
+								embedPlayer.pause();
+							}
+						});
+					}
+				})
+			)
+		}
+		$j.each( this.embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
 			// Output the player select code:
 			var supportingPlayers = mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( source.getMIMEType() );
 			for ( var i = 0; i < supportingPlayers.length ; i++ ) {
 				if( supportingPlayers[i].library == 'Native' ){
-					$sourceMenu.append( 
-						$.getLineItem( source.shorttitle, 'video', function(){
-							mw.log("Selected source");
-						})
-					)
+					addToSourceMenu( source );
 				}
 			}
 		});
+		
 		return $sourceMenu;
 	},
 
@@ -1786,7 +1833,7 @@ mw.PlayerControlBuilder.prototype = {
 		},
 
 		'sourceSwitch' : {
-			'w' : 50,
+			'w' : 65,
 			'o' : function( ctrlObj ){
 				// Stream switching widget ( display the current selected stream text )
 				return $( '<div />' )
@@ -1796,7 +1843,7 @@ mw.PlayerControlBuilder.prototype = {
 					).menu( {
 						'content' : ctrlObj.getSwichSourceMenu(),
 						'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
-						'width' : 75,
+						'width' : 115,
 						'positionOpts' : {
 							'posY' : 'top',
 							'directionV' : 'up',
@@ -1806,7 +1853,7 @@ mw.PlayerControlBuilder.prototype = {
 							ctrlObj.showControlBar( true );
 						},
 						'closeMenuCallback' : function(){
-							ctrlObj.hideControlBar( true );
+							ctrlObj.keepControlBarOnScreen = false;
 						}
 					} );
 			}
@@ -1894,7 +1941,7 @@ mw.PlayerControlBuilder.prototype = {
 					.css({
 						"position" : 'absolute',
 						"left" : '33px',
-						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 10) + 'px'
+						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 30) + 'px'
 					})
 					// Playhead binding
 					.slider( sliderConfig );

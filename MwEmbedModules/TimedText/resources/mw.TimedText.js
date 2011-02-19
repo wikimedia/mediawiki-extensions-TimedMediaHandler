@@ -288,7 +288,7 @@
 		},
 		getInterfaceSizePercent: function( size ) {
 			// Some arbitrary scale relative to window size ( 400px wide is text size 105% )
-			var textSize = size.width / 5;
+			var textSize = size.width / 3.8;
 			if( textSize < 95 ) textSize = 95;
 			if( textSize > 200 ) textSize = 200;
 			return textSize;
@@ -366,7 +366,7 @@
 						_this.embedPlayer.controlBuilder.showControlBar( true );
 					},
 					'closeMenuCallback' : function(){
-						_this.embedPlayer.controlBuilder.hideControlBar( true );
+						_this.embedPlayer.controlBuilder.keepControlBarOnScreen = false;
 					}
 				} );
 			});

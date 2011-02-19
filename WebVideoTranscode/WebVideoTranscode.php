@@ -151,7 +151,7 @@ class WebVideoTranscode {
 								$wgLang->formatNum( $file->getHeight() ),
 								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
 							),
-			'data-shorttitle' => wfMsg('timedmedia-source-file'),
+			'data-shorttitle' => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),
 			'data-size' => $file->getWidth() . 'x' . $file->getHeight()
 			// TODO add some title and data about the file
 		);

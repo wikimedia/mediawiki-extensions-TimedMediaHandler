@@ -216,7 +216,7 @@ mw.PlayerSkinKskin = {
 		this.showControlBar();
 
 		// Set close overlay menu flag:
-		this.displayOptionsMenuFlag = false;
+		this.keepControlBarOnScreen = false;
 	},
 
 	/**
@@ -235,7 +235,7 @@ mw.PlayerSkinKskin = {
 		$(this.embedPlayer).trigger( 'displayMenuOverlay' );
 
 		// Set the Options Menu display flag to true:
-		this.displayOptionsMenuFlag = true;
+		this.keepControlBarOnScreen = true;
 	},
 
 	/**

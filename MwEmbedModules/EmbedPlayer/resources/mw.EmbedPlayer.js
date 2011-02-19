@@ -803,7 +803,7 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'EmbedPlayer::checkPlayerSources: ' + this.id );
 		var _this = this;
 
-		// Allow plugins to block on sources lookup: 
+		// Allow plugins to block on sources lookup ( cases where we just have an api key for example )
 		$( _this ).triggerQueueCallback( 'CheckPlayerSourcesEvent', function(){
 			_this.setupSourcePlayer();
 		});
@@ -1046,7 +1046,7 @@ mw.EmbedPlayer.prototype = {
 	 * overwritten by client that supports frame serving)
 	 */
 	setCurrentTime: function( time, callback ) {
-		mw.log( 'Error: base embed setCurrentTime can not frame serve (override via plugin)' );
+		mw.log( 'Error: setCurrentTime not overriden' );
 	},
 
 	/**

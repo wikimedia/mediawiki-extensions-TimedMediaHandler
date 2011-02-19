@@ -37,6 +37,7 @@ mediaElement.prototype = {
 	init: function( videoElement ) {
 		var _this = this;
 		mw.log( "EmbedPlayer::mediaElement:init:" + videoElement.id );
+		this.parentEmbedId = videoElement.id;
 		this.sources = new Array();
 
 		// Process the videoElement as a source element:
@@ -113,9 +114,9 @@ mediaElement.prototype = {
 	 *      source_id Id of the source to select.
 	 * @return {MediaSource} The selected mediaSource or null if not found
 	 */
-	getSourceById:function( source_id ) {
+	getSourceById:function( sourceId ) {
 		for ( var i = 0; i < this.sources.length ; i++ ) {
-			if ( this.sources[i].id == source_id ) {
+			if ( this.sources[i].id == sourceId ) {
 				return this.sources[i];
 			}
 		}
@@ -128,18 +129,32 @@ mediaElement.prototype = {
 	 * @param {Number}
 	 *      index Index of source element to set as selectedSource
 	 */
-	selectSource:function( index ) {
+	setSourceByIndex: function( index ) {
 		mw.log( 'EmbedPlayer::mediaElement:selectSource:' + index );
+		var oldSrc = this.selectedSource.getSrc()
 		var playableSources = this.getPlayableSources();
 		for ( var i = 0; i < playableSources.length; i++ ) {
 			if ( i == index ) {
-				this.selectedSource = playableSources[i];
-				// Update the user selected format:
-				mw.EmbedTypes.getMediaPlayers().setFormatPreference( playableSources[i].mimeType );
+				this.selectedSource = playableSources[i];				
 				break;
 			}
 		}
+		if( oldSrc !=  this.selectedSource.getSrc() ){
+			$( '#' + this.parentEmbedId ).trigger( 'SourceChange');
+		}
 	},
+	/**
+	 * Sets a the selected source to passed in source object
+	 * @param {Object} Source
+	 */
+	setSource: function( source ){
+		var oldSrc = this.selectedSource.getSrc();
+		this.selectedSource = source;
+		if( oldSrc !=  this.selectedSource.getSrc() ){
+			$( '#' + this.parentEmbedId ).trigger( 'SourceChange');
+		}
+	},
+	
 
 	/**
 	 * Selects the default source via cookie preference, default marked, or by
@@ -175,6 +190,9 @@ mediaElement.prototype = {
 		if( _this.selectedSource ){
 			return true;
 		}
+		
+		// Set via embed resolution relative to display size
+		
 
 		// Set via marked default:
 		for ( var source = 0; source < playableSources.length; source++ ) {
