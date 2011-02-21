@@ -2034,6 +2034,7 @@ $messages['pms'] = array(
 	'mwe-embedplayer-buffering' => 'an camin a buté ant la memòria tampon',
 	'mwe-embedplayer-copy-code' => 'Copié ël còdes',
 	'mwe-embedplayer-video-h264' => 'filmà H.264',
+	'mwe-embedplayer-video-webm' => 'Video WebM',
 	'mwe-embedplayer-video-flv' => 'filmà Flash',
 	'mwe-embedplayer-video-ogg' => 'filmà Ogg',
 	'mwe-embedplayer-video-audio' => 'Àudio Ogg',

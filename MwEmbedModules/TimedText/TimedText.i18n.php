@@ -700,7 +700,7 @@ $messages['hsb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Nahraće skónčene',
 	'mwe-timedtext-back-btn' => 'Wróćo',
 	'mwe-timedtext-choose-text' => 'Tekst wubrać',
-	'mwe-timedtext-add-timed-text' => 'Synchronizowany tekst přidać',
+	'mwe-timedtext-upload-timed-text' => 'Podtitule nahrać',
 	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizowany tekst so startuje',
 	'mwe-timedtext-search' => 'Klip pytać',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
@@ -722,6 +722,11 @@ $messages['hsb'] = array(
 	'mwe-timedtext-textcat-cue' => 'Zastupne dypki',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žane podtitule $1 za klip namakane: $2',
+	'mwe-timedtext-request-subs' => 'Transkripciju požadać',
+	'mwe-timedtext-request-subs-desc' => 'Požadanje za transkripciju tuteje widejodataje přidać',
+	'mwe-timedtext-request-subs-done' => 'Požadanje wo transkripciju přidate. [$1 Hlej wšě požadanja wo transkripciju]',
+	'mwe-timedtext-request-subs-fail' => 'Přidawanje požadanje wo transkripciju je so njeporadźiło. Sy so přizjewił?',
+	'mwe-timedtext-request-already-done' => 'Transkripcija tutoho wideja je so hižo požadała. [$1 Hlej wšě požadanja wo transkripciju]',
 );
 
 /** Hungarian (Magyar)

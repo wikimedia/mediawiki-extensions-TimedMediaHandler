@@ -949,6 +949,8 @@ $messages['hsb'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg multipleksna awdio-/widejodataja, $1, dołhosć: $2, $4×$5 pikselow, $3',
 	'timedmedia-ogg-long-general' => 'Ogg medijowa dataja, dołhosć: $2, $3',
 	'timedmedia-ogg-long-error' => 'Njepłaćiwa Ogg-dataja: $1',
+	'timedmedia-webm-short-video' => 'Widejodataja WebM $1, $2',
+	'timedmedia-webm-long-video' => 'Awdio-/widejodataja WebM, $1, dołhosć $2, $4 x $5 pikselow, $3 dohromady',
 	'timedmedia-no-player-js' => 'Twój wobhladowak je pak JavaScript znjemóžnił pak nima podpěrowany wothrawak.<br />
 Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.',
 	'timedmedia-more' => 'Wjace ...',
@@ -957,6 +959,16 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/w
 	'timedmedia-desc-link' => 'Wo tutej dataji',
 	'timedmedia-oggThumb-version' => 'OggHandler trjeba wersiju $1 oggThumb abo nowšu.',
 	'timedmedia-oggThumb-failed' => 'oggThumb njemóžeše wobrazk wutworić.',
+	'timedmedia-source-file' => 'Žórło ($1)',
+	'timedmedia-source-file-desc' => 'Originalny $1, $2 x $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg (200p)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Ogg-widejo z niskej šěrokosću pasma (200p)',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Ogg-widejo (360p), kotrež da so přez Web přenjesć',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Ogg-widejo (480p), kotrež da so přez Web přenjesć',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Sćahujomne Ogg-widejo wysokeje kwality (720p)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM-widejo (480p), kotrež da so přez Web přenjesć',
+	'timedmedia-derivative-desc720_VBR.webm' => 'Sćahujomna WebM-dataja wysokeje kwality (720p)',
+	'timedmedia-subtitle-language' => '$1 ($2) podtitule',
 );
 
 /** Hungarian (Magyar)
@@ -1296,6 +1308,7 @@ med Ömsetzung noh em <i lang="en">Ogg Theora</i> un em <i lang="en">Ogg Vorbis<
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för övver et Web ze striime',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
+	'timedmedia-subtitle-language' => 'Ongertittele en $1 ($2)',
 );
 
 /** Latin (Latina)
