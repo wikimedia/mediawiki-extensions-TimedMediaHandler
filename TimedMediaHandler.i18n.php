@@ -28,6 +28,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-more'             => 'More…',
 	'timedmedia-dismiss'          => 'Close',
 	'timedmedia-download'         => 'Download file',
+	'timedmedia-play-media'		  => 'Play media',
 	'timedmedia-desc-link'        => 'About this file',
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',

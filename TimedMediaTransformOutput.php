@@ -42,18 +42,22 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 	
 	function toHtml( $options = array() ) {
-		global $wgVideoTagOut;
+		global $wgVideoTagOut, $wgMinimumVideoPlayerSize, $wgOut;
 
 		wfLoadExtensionMessages( 'TimedMediaHandler' );
 		if ( count( func_get_args() ) == 2 ) {
 			throw new MWException( __METHOD__ .' called in the old style' );
 		}
-		
-		return $this->getXmlTagOutput( 
-			$this->getMediaAttr(), 
-			$this->getMediaSources(), 
-			$this->getLocalTextSources()
-		);				
+			
+		// Check if the video is too small to play inline ( instead do a pop-up dialog ) 
+		if( $this->width <= $wgMinimumVideoPlayerSize && $this->isVideo ){
+			// Make sure we add the popUpThum module
+			$wgOut->addModules( 'PopUpMediaTransform' );
+			$wgOut->addModuleStyles( 'PopUpMediaTransform' );
+			return $this->getImagePopUp();		
+		} else {
+			return $this->getXmlMediaTagOutput();
+		}		
 	}
 	// XXX migrate this to the mediawiki XML class as 'tagSet' helper function
 	static function xmlTagSet( $tagName, $tagSet ){
@@ -67,25 +71,63 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $s;
 	}
 	
+	function getImagePopUp(){
+		return Xml::tags( 'div' , array(
+			'id' => "ogg_thumbplayer_" . TimedMediaTransformOutput::$serial++,
+			'class' => 'PopUpMediaTransform',
+			'style' => "width:" . intval( $this->width ) . "px;height:" . 
+						intval( $this->getPlayerHeight() ) . "px",
+			'data-videopayload' => $this->getXmlMediaTagOutput( $this->getPopupPlayerSize() ),
+			),
+				Xml::tags( 'img', array(
+					'style' => 'width:100%;height:100%;',
+					'src' =>  $this->getPosterUrl(),
+				),'')
+				.
+				// For javascript disabled browsers provide a link to the asset:
+				Xml::tags( 'a', array(
+					'href'=> $this->file->getUrl(),
+					'title' => wfMsg( 'timedmedia-play-media' )
+				), '<b></b>'. // why is the a child tag escaped unless there is an html string prefix? 
+					Xml::tags( 'div', array(
+						'class' => 'play-btn-large'
+					), '')
+				)
+		);
+	}
+	
+	/**
+	 * Get target popup player size 
+	 * If player is smaller than threshold return size based on wgDefaultUserOptions )
+	 */
+	function getPopupPlayerSize(){
+		global $wgDefaultUserOptions, $wgMinimumVideoPlayerSize, $wgImageLimits;
+		// Get the max width from the enabled transcode settings: 
+		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
+		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize);
+	}
+	
 	/**
 	 * Call mediaWiki xml helper class to build media tag output from 
 	 * supplied arrays
 	 */
-	function getXmlTagOutput( $mediaAttr, $mediaSources, $textSources ){
+	function getXmlMediaTagOutput( $sizeOverride = array() ){
 		// Try to get the first source src attribute ( usually this should be the source file )
+		$mediaSources = $this->getMediaSources();
 		$firstSource = current( reset( $mediaSources ) );
-		if( !$firstSource['url']){
+		if( !$firstSource['url'] ){
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
-		}
+		};
+
 		// Build the video tag output:		
-		$s = Xml::tags( $this->getTagName(), $mediaAttr,
+		$s = Xml::tags( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
 	
 			// The set of media sources: 
 			self::xmlTagSet( 'source', $mediaSources ) .
 			
 			// Timed text: 
-			self::xmlTagSet( 'track', $textSources ) .		
+			self::xmlTagSet( 'track', $this->getLocalTextSources() ) .		
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
@@ -94,16 +136,18 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $s;
 	}
 
-	function getMediaAttr(){
+	function getMediaAttr( $sizeOverride = false ){
 		global $wgVideoPlayerSkin ;
 		// Normalize values
 		$length = floatval( $this->length  );
 		$offset = floatval( $this->offset );
-		$width = intval( $this->width );
+		
+		$width = ( $sizeOverride )? $sizeOverride[0] : intval( $this->width );
+		$height =  ( $sizeOverride )? $sizeOverride[1]: $this->getPlayerHeight();
 		
 		$mediaAttr = array(			
 			'id' => "ogg_player_" . TimedMediaTransformOutput::$serial++,
-			'style' => "width:{$width}px;height:" . $this->getPlayerHeight(). "px",
+			'style' => "width:{$width}px;height:{$height}px",
 			'poster' => $this->getPosterUrl(),
 			'alt' => $this->file->getTitle()->getText(),
 		

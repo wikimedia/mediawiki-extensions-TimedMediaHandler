@@ -37,14 +37,9 @@ $wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/geti
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 
-// Register the Timed Media Handler javascript resources ( mwEmbed modules )  
+// Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
-
-// MwEmbed module configuration:
-$wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true; 
-$wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
-
 
 // Localization 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
@@ -75,6 +70,19 @@ $wgExtensionCredits['media'][] = array(
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
+/*** MwEmbed module configuration: *********************************/
+// Show a warning to the user if they are not using an html5 browser with high quality ogg support
+$wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true; 
+
+// The text interface should always be shown 
+// ( even if there are no text tracks for that asset at render time )
+$wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
+
+/*** end MwEmbed module configuration: ******************************/
+
+// The minimum size for an embed video player:
+$wgMinimumVideoPlayerSize = 200;
+
 // Set the supported ogg codecs:
 $wgMediaVideoTypes = array( 'Theora', 'VP8' );
 $wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
@@ -93,7 +101,6 @@ $wgffmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
-
 
 /** 
  * Default enabled transcodes 

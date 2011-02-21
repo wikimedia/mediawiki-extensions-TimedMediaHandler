@@ -1620,12 +1620,35 @@ mw.EmbedPlayer.prototype = {
 	getShareIframeObject: function(){
 		// allow modules to generate the iframe:
 		var iframeEmbedCode ={};
-		$( this ).trigger( 'GetShareIframeCode', [ iframeEmbedCode ] );
-		if( iframeEmbedCode.code ){
-			return frameEmbedCode.code;
-		}
+		var iframeUrl = false
+		$( this ).trigger( 'GetShareIframeSrc', function( localIframeSrc ){
+			if( iframeUrl){
+				mw.log("Error multiple modules binding GetShareIframeSrc" );
+			}			
+			iframeUrl = localIframeSrc;
+		});
+	
+		if( !iframeUrl ){	
+			iframeUrl = this.getIframeSourceUrl()
+		}		
 		
-		// old style embed:
+		// Set up embedFrame src path
+		var embedCode = '&lt;iframe src=&quot;' + mw.html.escape( iframeUrl ) + '&quot; ';
+
+		// Set width / height of embed object
+		embedCode += 'width=&quot;' + this.getPlayerWidth() +'&quot; ';
+		embedCode += 'height=&quot;' + this.getPlayerHeight() + '&quot; ';
+		embedCode += 'frameborder=&quot;0&quot; ';
+
+		// Close up the embedCode tag:
+		embedCode+='&gt;&lt/iframe&gt;';
+
+		// Return the embed code
+		return embedCode;
+	},
+	
+	getIframeSourceUrl: function(){
+		// Point to raw files: 
 		var iframeUrl = mw.getMwEmbedPath() + 'mwEmbedFrame.php?';
 		var params = {'src[]':[]};
 
@@ -1634,7 +1657,7 @@ mw.EmbedPlayer.prototype = {
 		for( var i=0; i < this.mediaElement.sources.length; i++ ){
 			var source = this.mediaElement.sources[i];
 			if( source.src ) {
-                                  params['src[]'].push(mw.absoluteUrl( source.src ));
+                params['src[]'].push(mw.absoluteUrl( source.src ));
 			}
 		}
 		// Output the poster attr
@@ -1652,22 +1675,9 @@ mw.EmbedPlayer.prototype = {
 			params['data-durationhint'] = parseFloat( this.duration );
 		}
 		iframeUrl += $j.param( params );
-
-		// Set up embedFrame src path
-		var embedCode = '&lt;iframe src=&quot;' + mw.html.escape( iframeUrl ) + '&quot; ';
-
-		// Set width / height of embed object
-		embedCode += 'width=&quot;' + this.getPlayerWidth() +'&quot; ';
-		embedCode += 'height=&quot;' + this.getPlayerHeight() + '&quot; ';
-		embedCode += 'frameborder=&quot;0&quot; ';
-
-		// Close up the embedCode tag:
-		embedCode+='&gt;&lt/iframe&gt;';
-
-		// Return the embed code
-		return embedCode;
+		return iframeUrl;
 	},
-
+	
 	/**
 	 * Get the share embed Video tag code
 	 */

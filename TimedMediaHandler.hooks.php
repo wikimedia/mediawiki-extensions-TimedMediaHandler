@@ -11,7 +11,8 @@ class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
 		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, 
-			$wgMediaHandlers, $wgExcludeFromThumbnailPurge, $wgTimedMediaHandlerFileExtensions;
+			$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, 
+			$wgTimedMediaHandlerFileExtensions;
 
 		// Setup media Handlers: 
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
@@ -28,6 +29,18 @@ class TimedMediaHandlerHooks {
 		$wgJobExplitRequestTypes+= array(
 			'webVideoTranscode'
 		);
+		
+		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules ) 
+		$wgResourceModules+= array(
+			'PopUpMediaTransform' => array(
+				'scripts' => 'resources/PopUpThumbVideo.js',
+				'styles' => 'resources/PopUpThumbVideo.css',
+				'localBasePath' => dirname( __FILE__ ),
+		 		'remoteExtPath' => 'TimedMediaHandler',
+			)
+		);
+		
+
 		// Exclude transcoded assets from normal thumbnail purging 
 		// ( a mantaince script could handle transcode asset purging) 
 		$wgExcludeFromThumbnailPurge += $wgTimedMediaHandlerFileExtensions;

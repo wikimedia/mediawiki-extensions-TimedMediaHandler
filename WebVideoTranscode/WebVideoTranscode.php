@@ -115,7 +115,7 @@ class WebVideoTranscode {
 			) . '/' . 
 			$file->getName() . '.' .
 			$transcodeKey ;
-}
+	}
 	
 	static public function getTargetEncodePath( &$file, $transcodeKey ){
 		// TODO probably should use some other temporary non-web accessible location for 
@@ -124,7 +124,19 @@ class WebVideoTranscode {
 		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
 		return "{$filePath}.queue.{$ext}";
 	}
-	
+	/**
+	 * Get the max size of the web stream ( constant bitrate ) 
+	 */
+	static public function getMaxSizeWebStream(){
+		global $wgEnabledTranscodeSet;
+		$maxSize = 0;
+		foreach( $wgEnabledTranscodeSet as $transcodeKey ){
+			if( isset( self::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ){
+				$maxSize = self::$derivativeSettings[$transcodeKey]['maxSize'];
+			}
+		}
+		return $maxSize;
+	}
 	/** 
 	 * Static function to get the set of video assets 
 	 * 
