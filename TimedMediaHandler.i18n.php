@@ -88,7 +88,8 @@ Parameters are:
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
 	'timedmedia-source-file' => 'The source file 
-* $1 file type webm or ogg',
+* $1 file type webm or ogg
+{{Identical|Source}}',
 	'timedmedia-source-file-desc' => 'Source file description. Paramaters:
 * $1 file type ie webm or ogg
 * $2 resolution width
@@ -277,7 +278,7 @@ $messages['bcl'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'timedmedia-desc' => 'Апрацоўшчык сынхранізаваных файлаў (відэа, аўдыя, timedText) зь перакадаваньнем у Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Апрацоўшчык аўдыё, відэа і субтытраў у фарматах WebM, Ogg Theora, Vorbis і SRT',
 	'timedmedia-ogg-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Мэдыя-файл Ogg $1, $2',
@@ -294,10 +295,13 @@ $messages['be-tarask'] = array(
 	'timedmedia-desc-link' => 'Інфармацыя пра гэты файл',
 	'timedmedia-oggThumb-version' => 'OggHandler патрабуе oggThumb вэрсіі $1 ці больш позьняй.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не атрымалася стварыць мініятуру.',
-	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Нізкапаточнае Ogg-відэа (200 кб/с)',
+	'timedmedia-source-file' => 'Крыніца $1',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Нізкапаточнае Ogg-відэа (200P)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Паточнае Ogg-відэа (360 пкс)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Паточнае Ogg-відэа (480 пкс)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Высакаякаснае Ogg-відэа для загрузкі (720 пкс)',
+	'timedmedia-subtitle-language' => 'Субтытры ($2) на $1',
 );
 
 /** Bulgarian (Български)
@@ -353,6 +357,7 @@ $messages['br'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Restr Ogg klevet/video liesplezhet $1, pad $2, $4×$5 piksel, $3 hollad',
 	'timedmedia-ogg-long-general' => 'Restr media Ogg, pad $2, $3',
 	'timedmedia-ogg-long-error' => 'Restr ogg direizh : $1',
+	'timedmedia-webm-short-video' => 'Restr video WebM $1, $2',
 	'timedmedia-no-player-js' => 'Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n\'eo ket skoret lenner ebet gantañ.<br />
 <a href="$1">Pellgargañ ar c\'hlip</a> a c\'hallit pe <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">pellgargañ ul lenner</a> da lenn ar c\'hlip gant ho merdeer.',
 	'timedmedia-more' => "Muioc'h...",
@@ -361,6 +366,7 @@ $messages['br'] = array(
 	'timedmedia-desc-link' => 'Diwar-benn ar restr-mañ',
 	'timedmedia-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
 	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
+	'timedmedia-subtitle-language' => 'istitloù e $1 ($2)',
 );
 
 /** Bosnian (Bosanski)
@@ -488,7 +494,8 @@ $messages['de'] = array(
 Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'timedmedia-more' => 'Optionen …',
 	'timedmedia-dismiss' => 'Schließen',
-	'timedmedia-download' => 'Datei speichern',
+	'timedmedia-download' => 'Datei herunterladen',
+	'timedmedia-play-media' => 'Mediendatei abspielen',
 	'timedmedia-desc-link' => 'Über diese Datei',
 	'timedmedia-oggThumb-version' => 'OggHandler erfordert oggThumb in der Version $1 oder höher.',
 	'timedmedia-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
@@ -528,7 +535,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'timedmedia-desc' => 'Wóźeński program za Timed Media (widejo, awdio, timedText) z pśekoděrowanim do Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Wóźeński program za awdio, wideo a timedText, z formatoweju pódpěru za WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 awdiodataja, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 wideodataja, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medijowa dataja, $2',
@@ -537,6 +544,8 @@ $messages['dsb'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'ogg multipleksowa awdio-/wideodataja, $1, dłujkosć $2, $4×$5 pikselow, $3 dogromady',
 	'timedmedia-ogg-long-general' => 'Ogg medijowa dataja, dłujkosć $2, $3',
 	'timedmedia-ogg-long-error' => 'Njepłaśiwa Ogg-dataja: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 wideodataja, $2',
+	'timedmedia-webm-long-video' => 'WebM dataja awdio/wideo, $1, dłujkosć $2, $4 x $5, $3 dogromady',
 	'timedmedia-no-player-js' => 'Twój wobglědowak jo bóžko pak JavaScript znjemóžnił abo njama njepódpěrany wótegrawak.<br />
 Móžoš  <a href="$1">klip ześěgnuś</a> abo <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">wótgrawak ześěgnuś</a>, aby klip w swójom wobglědowaku wótegrał.',
 	'timedmedia-more' => 'Wěcej...',
@@ -545,6 +554,11 @@ Móžoš  <a href="$1">klip ześěgnuś</a> abo <a href="http://www.mediawiki.or
 	'timedmedia-desc-link' => 'Wó toś tej dataji',
 	'timedmedia-oggThumb-version' => 'OggHandler trjeba wersiju $1 oggThumb abo nowšu.',
 	'timedmedia-oggThumb-failed' => 'oggThumb njejo mógł wobrazk napóraś.',
+	'timedmedia-source-file' => 'Žrědło ($1)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg (200p)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Niska šyrokosć pasma Ogg-widea (200p)',
+	'timedmedia-subtitle-language' => '$1 ($2) pódtitele',
 );
 
 /** Greek (Ελληνικά)
@@ -957,6 +971,7 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/w
 	'timedmedia-more' => 'Wjace ...',
 	'timedmedia-dismiss' => 'Začinić',
 	'timedmedia-download' => 'Dataju sćahnyć',
+	'timedmedia-play-media' => 'Medijowu dataju wothrać',
 	'timedmedia-desc-link' => 'Wo tutej dataji',
 	'timedmedia-oggThumb-version' => 'OggHandler trjeba wersiju $1 oggThumb abo nowšu.',
 	'timedmedia-oggThumb-failed' => 'oggThumb njemóžeše wobrazk wutworić.',
@@ -1017,6 +1032,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-more' => 'Plus…',
 	'timedmedia-dismiss' => 'Clauder',
 	'timedmedia-download' => 'Discargar file',
+	'timedmedia-play-media' => 'Reproducer multimedia',
 	'timedmedia-desc-link' => 'A proposito de iste file',
 	'timedmedia-oggThumb-version' => 'OggHandler require oggThumb version $1 o plus recente.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ha fallite de crear le miniatura.',
@@ -1305,10 +1321,14 @@ med Ömsetzung noh em <i lang="en">Ogg Theora</i> un em <i lang="en">Ogg Vorbis<
 	'timedmedia-desc-link' => 'Övver di Datei',
 	'timedmedia-oggThumb-version' => 'Dä <code lang="en">OggHandler</code> bruch <code lang="en">oggThumb</code> in dä Version $1 udder hüüter.',
 	'timedmedia-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
+	'timedmedia-source-file-desc' => 'Ojinaal $1-Dattei, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'En Viddejo-Dattei em OGG-Fommaat met 720p',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'En Viddejo-Dattei met winnesch Bandbreide (200P) em <i lang="en">Ogg</i>-Fommaat',
-	'timedmedia-derivative-desc-360_400kbs.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
-	'timedmedia-derivative-desc-480_600kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för övver et Web ze striime',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'En Viddejo-Dattei em <i lang="en">Ogg</i>-Fommaat (360p) för ene Dahteshtrohm övver et Nez',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'Ene WebM Viddejo (met 480p) för ene Dahteshtrohm övver et Nez',
+	'timedmedia-derivative-desc720_VBR.webm' => 'En WebM Viddejo-Dattei met huhe Qualiteit (met 720p) zom eronger laade',
 	'timedmedia-subtitle-language' => 'Ongertittele en $1 ($2)',
 );
 
@@ -1419,6 +1439,7 @@ $messages['mk'] = array(
 	'timedmedia-more' => 'Повеќе...',
 	'timedmedia-dismiss' => 'Затвори',
 	'timedmedia-download' => 'Преземи податотека',
+	'timedmedia-play-media' => 'Пушти снимка',
 	'timedmedia-desc-link' => 'Информации за оваа податотека',
 	'timedmedia-oggThumb-version' => 'OggHandler бара oggThumb верзија $1 или понова.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не успеа да ја создаде минијатурата.',

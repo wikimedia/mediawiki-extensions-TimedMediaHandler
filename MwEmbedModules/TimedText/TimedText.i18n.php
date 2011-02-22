@@ -175,7 +175,7 @@ $messages['br'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Kargadenn graet',
 	'mwe-timedtext-back-btn' => 'Distreiñ',
 	'mwe-timedtext-choose-text' => 'Dibab an destenn',
-	'mwe-timedtext-add-timed-text' => 'Ouzhpennañ un tamm testenn sinkronelaet',
+	'mwe-timedtext-upload-timed-text' => 'Enporzhiañ istitloù',
 	'mwe-timedtext-loading-text-edit' => 'O kargañ an embanner testennoù sinkronelaet',
 	'mwe-timedtext-search' => "Klask ar c'hlip",
 	'mwe-timedtext-layout' => "Lec'hiadur",
@@ -197,6 +197,8 @@ $messages['br'] = array(
 	'mwe-timedtext-textcat-cue' => "Poent lec'hiañ",
 	'mwe-timedtext-language-subtitles-for-clip' => "$1 istitl evit ar c'hlip : $2",
 	'mwe-timedtext-language-no-subtitles-for-clip' => "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
+	'mwe-timedtext-request-subs' => 'Goulenn treuzkrivadur',
+	'mwe-timedtext-request-subs-desc' => 'Goulenn ma vo treuzskrivet ar restr video-mañ',
 );
 
 /** Czech (Česky)
@@ -319,7 +321,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Nagraśe skóńcone',
 	'mwe-timedtext-back-btn' => 'Slědk',
 	'mwe-timedtext-choose-text' => 'Tekst wubraś',
-	'mwe-timedtext-add-timed-text' => 'Snychronizěrowany tekst pśidaś',
+	'mwe-timedtext-upload-timed-text' => 'Pódtitele nagraś',
 	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizěrowany tekst se startujo',
 	'mwe-timedtext-search' => 'Klip pytaś',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
@@ -341,6 +343,10 @@ $messages['dsb'] = array(
 	'mwe-timedtext-textcat-cue' => 'Zastupne dypki',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
+	'mwe-timedtext-request-subs' => 'Transkripciju pominaś',
+	'mwe-timedtext-request-subs-desc' => 'Póžedanje na transkripciju toś teje wideojoweje dataje pśidaś',
+	'mwe-timedtext-request-subs-done' => 'Póžedanje na transkripciju pśidane. [$1 Glědaj wšykne póžedanja na transkripciju]',
+	'mwe-timedtext-request-subs-fail' => 'Pśidawanje póžedanja na transkripciju jo se njeraźiło. Sy se pśizjawił?',
 );
 
 /** Greek (Ελληνικά)
