@@ -96,7 +96,7 @@ $wgEnableIframeEmbed = true;
 // Location of oggThumb binary ( used instead of ffmpeg )
 $wgOggThumbLocation = '/usr/bin/oggThumb';
 
-// The location of ffmpeg2theora ( for metadata and transcoding )
+// The location of ffmpeg2theora ( transcoding )
 $wgffmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 

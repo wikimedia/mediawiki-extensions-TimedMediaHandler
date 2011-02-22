@@ -1833,7 +1833,7 @@ mw.PlayerControlBuilder.prototype = {
 		},
 
 		'sourceSwitch' : {
-			'w' : 65,
+			'w' : 70,
 			'o' : function( ctrlObj ){
 				// Stream switching widget ( display the current selected stream text )
 				return $( '<div />' )
