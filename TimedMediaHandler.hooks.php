@@ -12,7 +12,7 @@ class TimedMediaHandlerHooks {
 	static function register(){
 		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, 
 			$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, 
-			$wgTimedMediaHandlerFileExtensions;
+			$wgTimedMediaHandlerFileExtensions, $wgParserOutputHooks;
 
 		// Setup media Handlers: 
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
@@ -20,6 +20,9 @@ class TimedMediaHandlerHooks {
 		
 		// Setup a hook for iframe embed handling:  
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
+		
+		// Add parser hook
+		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 		
 		// Add transcode job class:
 		$wgJobClasses+= array(

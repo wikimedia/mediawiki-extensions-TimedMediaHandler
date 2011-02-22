@@ -18,7 +18,6 @@
 				// don't follow file link
 				return false; 
 			});
-		
 		});
 	});
 

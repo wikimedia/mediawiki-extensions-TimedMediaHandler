@@ -51,9 +51,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			
 		// Check if the video is too small to play inline ( instead do a pop-up dialog ) 
 		if( $this->width <= $wgMinimumVideoPlayerSize && $this->isVideo ){
-			// Make sure we add the popUpThum module
-			$wgOut->addModules( 'PopUpMediaTransform' );
-			$wgOut->addModuleStyles( 'PopUpMediaTransform' );
 			return $this->getImagePopUp();		
 		} else {
 			return $this->getXmlMediaTagOutput();

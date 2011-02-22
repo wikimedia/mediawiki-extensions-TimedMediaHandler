@@ -83,8 +83,24 @@ class TimedMediaHandler extends MediaHandler {
 
 		return true;
 	}
-	
-	
+	function parserTransformHook( $parser, $file ) {
+		if ( isset( $parser->mOutput->hasTimedMediaTransform ) ) {
+			return;
+		}
+		$parser->mOutput->hasTimedMediaTransform = true;
+		$parser->mOutput->addOutputHook( 'TimedMediaHandler' );
+	}
+	/**
+	 * Output hook only adds the PopUpMediaTransform 
+	 * 
+	 * The core embedPlayer module is part of a "loaderScript" so it does not need to 
+	 * be registered here. 
+	 */
+	static function outputHook( $outputPage, $parserOutput, $data ) {
+		// Add the PopUpMediaTransform code 
+		$outputPage->addModules( 'PopUpMediaTransform' );
+		$outputPage->addModuleStyles( 'PopUpMediaTransform' );
+	}
 	/**
 	 * Utility functions
 	 */
