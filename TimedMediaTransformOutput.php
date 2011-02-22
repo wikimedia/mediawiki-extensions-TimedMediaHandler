@@ -63,7 +63,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			return '';
 		}
 		foreach( $tagSet as $attr ){
-			$s.= Xml::tags($tagName, $attr, '');
+			$s.= Xml::element($tagName, $attr, '');
 		}
 		return $s;
 	}
