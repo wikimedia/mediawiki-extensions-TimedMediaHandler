@@ -85,7 +85,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 	function parserTransformHook( $parser, $file ) {
 		if ( isset( $parser->mOutput->hasTimedMediaTransform ) ) {
-			return;
+			return ;
 		}
 		$parser->mOutput->hasTimedMediaTransform = true;
 		$parser->mOutput->addOutputHook( 'TimedMediaHandler' );

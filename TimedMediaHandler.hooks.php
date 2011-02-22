@@ -12,7 +12,7 @@ class TimedMediaHandlerHooks {
 	static function register(){
 		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, 
 			$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, 
-			$wgTimedMediaHandlerFileExtensions, $wgParserOutputHooks;
+			$wgTimedMediaHandlerFileExtensions, $wgParserOutputHooks, $wgOut;
 
 		// Setup media Handlers: 
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
@@ -42,6 +42,8 @@ class TimedMediaHandlerHooks {
 		 		'remoteExtPath' => 'TimedMediaHandler',
 			)
 		);
+		// We should probalby move this to a parser function but not working right in 
+		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 		
 
 		// Exclude transcoded assets from normal thumbnail purging 
@@ -79,6 +81,12 @@ class TimedMediaHandlerHooks {
 		}	
 		define( "NS_TIMEDTEXT", $timedTextNS);		
 		define( "NS_TIMEDTEXT_TALK", $timedTextNS +1);
+	}
+	static function pageOutputHook(  &$out, &$sk ){
+		// FIXME we should only need to add this via parser output hook 	
+		$out->addModules( 'PopUpMediaTransform' );
+		$out->addModuleStyles( 'PopUpMediaTransform' );
+		return true;
 	}
 	
 }

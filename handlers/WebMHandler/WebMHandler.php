@@ -77,9 +77,9 @@ class WebMHandler extends TimedMediaHandler {
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
-		}
+		}		
 		// id3 gives 'V_VP8' for what we call VP8
-		if( $metadata['audio']['dataformat'] == 'vorbis' ){
+		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'vorbis' ){
 			$streamTypes[] =  'Vorbis';
 		}
 		if( $metadata['video']['dataformat'] == 'V_VP8' ){

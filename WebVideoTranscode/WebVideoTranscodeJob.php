@@ -196,7 +196,7 @@ class WebVideoTranscodeJob extends Job {
 		// Check maxSize
 		if (isset( $options['maxSize'] ) && intval( $options['maxSize'] ) > 0) {
 			// Get size transform ( if maxSize is > file, file size is used:
-			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] )			      	
+			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );			      	
 			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
 	    } else if ( 
 	    	(isset( $options['width'] ) && $options['width'] > 0 ) 
