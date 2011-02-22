@@ -37,7 +37,7 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	'data-shorttitle', // short title for stream ( usefull for stream switching control bar item) 
 	'data-width', // the width of the stream
 	'data-height', // the height of the stream
-	'data-bandwith', // the overall bitrate of the stream
+	'data-bandwidth', // the overall bitrate of the stream
 	'data-framerate', // the framereate of the stream
 	
 	// Media start time

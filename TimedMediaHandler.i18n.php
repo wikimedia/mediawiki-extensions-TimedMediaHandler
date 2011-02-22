@@ -41,7 +41,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 
 	// derivative timedmedia-derivative-desc-220_200kbs.ogv
 	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
-	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Low bandwith Ogg video (200P)',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Low bandwidth Ogg video (200P)',
 
 	'timedmedia-derivative-360_400kbs.ogv' => 'Ogg 360P',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Web streamable Ogg video (360P)',

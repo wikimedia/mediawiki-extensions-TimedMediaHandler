@@ -104,10 +104,12 @@ class WebMHandler extends TimedMediaHandler {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return 0;
-		} else {
-			print_r($metadata);
-			die();
-			return $metadata['framerate'];
+		} else {			
+			// return the frame rate of the first found video stream: 
+			if( isset( $metadata['video']['frame_rate'] ) ){
+				return $metadata['video']['frame_rate'];
+			}
+			return false;
 		}
 	}
 	

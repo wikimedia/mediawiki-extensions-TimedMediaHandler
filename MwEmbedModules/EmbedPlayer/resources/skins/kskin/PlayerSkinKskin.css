@@ -120,6 +120,7 @@
 	overflow: hidden;
 	width: 48px;
 	float: right;
+	text-align:center;
 }
 
 .k-player .source-switch{

@@ -155,7 +155,7 @@ class WebVideoTranscode {
 		$sources = array();
 		
 		// Add the original file: 
-		$sources[] = array(
+		$source = array(
 			'src' => $file->getUrl(),
 			'title' => wfMsg('timedmedia-source-file-desc',  
 								$file->getHandler()->getMetadataType(),
@@ -164,15 +164,25 @@ class WebVideoTranscode {
 								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
 							),
 			'data-shorttitle' => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),
-			'data-size' => $file->getWidth() . 'x' . $file->getHeight()
+							
+			'data-width' => $file->getWidth(),
+			'data-height' => $file->getHeight(),
 			// TODO add some title and data about the file
 		);
-		
+
 		// Just directly return audio sources ( for now no transcoding for audio ) 
 		if( $file->getHandler()->isAudio( $file ) ){
 			return $sources;
 		}
+		// For video include bitrate and framerate: 
+		$bitrate = $file->getHandler()->getBitrate( $file );
+		if( $bitrate ) $source['data-bandwidth'] = $bitrate;
 		
+		$framerate = $file->getHandler()->getFramerate( $file );
+		if( $framerate ) $source['data-framerate'] = $framerate;		
+		
+		// Add the source to the sources array
+		$sources[] = $source;
 		// Setup local variables 
 		$fileName = $file->getName();
 		
@@ -236,8 +246,8 @@ class WebVideoTranscode {
 	
 		// if the source size is < $transcodeKey assume source size: 
 		if( is_file( $derivativeFile ) ){
-			// Estimate bandwith: 
-			$bandwith = intval( filesize( $derivativeFile ) /  $file->getLength() ) * 8;
+			// Estimate bandwidth: 
+			$bandwidth = intval( filesize( $derivativeFile ) /  $file->getLength() ) * 8;
 			
 			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( 
 						$file, 
@@ -256,7 +266,7 @@ class WebVideoTranscode {
 				// eventually we will define a manifest xml entry point.
 				'data-width' => $width,
 				'data-height' => $height,
-				'data-bandwith' => $bandwith,
+				'data-bandwidth' => $bandwidth,
 				'data-framerate' => $framerate,					
 			);
 		} else {

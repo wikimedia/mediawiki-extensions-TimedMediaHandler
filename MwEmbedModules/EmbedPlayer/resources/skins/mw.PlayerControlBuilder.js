@@ -1941,7 +1941,7 @@ mw.PlayerControlBuilder.prototype = {
 					.css({
 						"position" : 'absolute',
 						"left" : '33px',
-						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 30) + 'px'
+						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 20) + 'px'
 					})
 					// Playhead binding
 					.slider( sliderConfig );
