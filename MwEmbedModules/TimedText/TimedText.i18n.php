@@ -347,6 +347,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-request-subs-desc' => 'Póžedanje na transkripciju toś teje wideojoweje dataje pśidaś',
 	'mwe-timedtext-request-subs-done' => 'Póžedanje na transkripciju pśidane. [$1 Glědaj wšykne póžedanja na transkripciju]',
 	'mwe-timedtext-request-subs-fail' => 'Pśidawanje póžedanja na transkripciju jo se njeraźiło. Sy se pśizjawił?',
+	'mwe-timedtext-request-already-done' => 'Póžedanje na transkripcija toś togo widea jo se južo stajiło. [$1 Glědaj wšykne póžedanja na transkripciju]',
 );
 
 /** Greek (Ελληνικά)

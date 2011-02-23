@@ -540,12 +540,14 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-no-player' => 'Za $1 žeden wótgrawak k dispoziciji',
 	'mwe-embedplayer-share_this_video' => 'Toś to wideo źěliś',
 	'mwe-embedplayer-video_credits' => 'Źěkowanja za napóranje wideo',
+	'mwe-embedplayer-no-video_credits' => 'Žedne pódaśa wó awtorje k dispoziciji',
 	'mwe-embedplayer-kaltura-platform-title' => 'Wideowa platforma zjawnego žrědła Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Meni',
 	'mwe-embedplayer-close_btn' => 'Zacyniś',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Grajadło VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Wótgrawak HTML5 Ogg',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Wótgrawak HTML5 H.264',
+	'mwe-embedplayer-ogg-player-webmNative' => 'Wótegrawak HTML5 WebM',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Tykac Generic Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Tykac QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -555,6 +557,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(wubrany)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vobis',
 	'mwe-embedplayer-for_best_experience' => 'Za lěpše dožywjenje wideoplaybacka pórucujomy:<br /><b>[$1 Firefox 3.5].</b>',
+	'mwe-embedplayer-download-warn' => 'Njekompatibelne wótegrawak we wobglědowaku namakany. Za wótegrawanje we wobglědowaku ześěgni pšosym [$1 nejnowšu wersiju Mozilla Firefox]',
 	'mwe-embedplayer-do_not_warn_again' => 'Tenraz zachyśiś.',
 	'mwe-embedplayer-playerSelect' => 'Wótgrawaki',
 	'mwe-embedplayer-read_before_embed' => 'Pšosym cytaj <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">wěstotne pśipiski wó zdalonem zasajźenju</a>, nježli až napšawdu zasajźujoš!',
@@ -564,6 +567,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-buffering' => 'pufrujo',
 	'mwe-embedplayer-copy-code' => 'Kod kopěrowaś',
 	'mwe-embedplayer-video-h264' => 'Wideo H.264',
+	'mwe-embedplayer-video-webm' => 'WebM-wideo',
 	'mwe-embedplayer-video-flv' => 'Wideo Flash',
 	'mwe-embedplayer-video-ogg' => 'Ogg-wideo',
 	'mwe-embedplayer-video-audio' => 'Ogg-awdio',
@@ -1771,6 +1775,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-buffering' => 'bufferen',
 	'mwe-embedplayer-copy-code' => 'Code kopiëren',
 	'mwe-embedplayer-video-h264' => 'H.264-video',
+	'mwe-embedplayer-video-webm' => 'WebM video',
 	'mwe-embedplayer-video-flv' => 'Flash-video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-video',
 	'mwe-embedplayer-video-audio' => 'Ogg-audio',
@@ -2200,6 +2205,7 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 );
 
 /** Russian (Русский)
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2265,6 +2271,7 @@ $messages['ru'] = array(
 	'mwe-embedplayer-buffering' => 'буферизация',
 	'mwe-embedplayer-copy-code' => 'Копировать код',
 	'mwe-embedplayer-video-h264' => 'Видео H.264',
+	'mwe-embedplayer-video-webm' => 'Видео WebM',
 	'mwe-embedplayer-video-flv' => 'Flash-видео',
 	'mwe-embedplayer-video-ogg' => 'Ogg-видео',
 	'mwe-embedplayer-video-audio' => 'Ogg-аудио',
