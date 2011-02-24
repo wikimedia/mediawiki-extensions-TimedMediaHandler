@@ -67,14 +67,13 @@
 		
 		// Check if the iFrame player api is enabled and we have a parent iframe url: 
 		// TODO we might want to move the iframe api to a separate module
-		if ( mw.getConfig('EmbedPlayer.EnableIframeApi') 
+		if ( mw.getConfig( 'EmbedPlayer.EnableIframeApi' ) 
 				&& 
 			mw.getConfig( 'EmbedPlayer.IframeParentUrl' ) 
 		){
 			$.merge( dependencySet, ['mw.EmbedPlayerNative', 'jquery.postMessage','mw.IFramePlayerApiServer'] );
 		}
 		
-		// Allow modules to update the set of dependencies: 
 		var rewriteElementCount = 0;
 		$( playerSelect).each( function(inx, playerElement){
 
@@ -102,13 +101,13 @@
 			// Add the skin to the request
 			var skinCaseName = skinName.charAt(0).toUpperCase() + skinName.substr(1);
 			$.merge( dependencySet, [ 'mw.PlayerSkin' + skinCaseName ] );
+			
 			// Allow other modules update the dependencies
 			$( mw ).trigger( 'EmbedPlayerUpdateDependencies',
 					[ playerElement, dependencySet ] );
 		});
 		// Remove duplicates in the dependencySet
 		dependencySet = $.unique( dependencySet );
-		
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){
 			setTimeout(function(){

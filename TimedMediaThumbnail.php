@@ -57,7 +57,7 @@ class TimedMediaThumbnail {
 		if( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ){
 			return false;
 		}
-	
+		
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
 			' -i ' . wfEscapeShellArg( $options['file']->getPath() ) .
 			' -ss ' . intval( $options['thumbtime'] ) .

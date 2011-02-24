@@ -6,9 +6,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	// Video file sources object lazy init in getSources()
 	var $sources = null;
 	var $textTracks = null;
+	var $hashTime = null;
+	
+	// The prefix for player ids
+	const PLAYER_ID_PREFIX = 'mwe_player_';
 	
 	function __construct( $conf ){
-		$options = array( 'file', 'sources', 'thumbUrl', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
+		$options = array( 'file', 'sources', 'thumbUrl','start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
@@ -87,6 +91,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 					'title' => wfMsg( 'timedmedia-play-media' )
 				), '<b></b>'. // why is the a child tag escaped unless there is an html string prefix? 
 					Xml::tags( 'div', array(
+						'target' => '_new',
 						'class' => 'play-btn-large'
 					), '')
 				)
@@ -143,7 +148,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$height =  ( $sizeOverride )? $sizeOverride[1]: $this->getPlayerHeight();
 		
 		$mediaAttr = array(			
-			'id' => "ogg_player_" . TimedMediaTransformOutput::$serial++,
+			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			'style' => "width:{$width}px;height:{$height}px",
 			'poster' => $this->getPosterUrl(),
 			'alt' => $this->file->getTitle()->getText(),
@@ -185,8 +190,37 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Generate transcode jobs ( and get sources that area already transcoded)
 			// At a minimum this should return the source video file. 
 			$this->sources = WebVideoTranscode::getSources( $this->file );	
+			// Check if we have "start or end" times and append the temporal url fragment hash
+			foreach( $this->sources as &$source ){
+				//print "ha:". $this->getTemporalUrlHash();
+				$source['src'].= $this->getTemporalUrlHash();
+			}			
 		}
 		return $this->sources;
+	}
+	
+	function getTemporalUrlHash(){
+		if( $this->hashTime ){
+			return $this->hashTime;
+		}
+		$hash ='';
+		if( $this->start ){
+			$startSec = TimedMediaHandler::parseTimeString( $this->start );
+			if( $startSec !== false ){
+				$hash.= '#t=' . TimedMediaHandler::seconds2npt( $startSec );
+			}
+		}
+		if( $this->end ){
+			if( $hash == '' ){
+				$hash .= '#t=0';
+			}
+			$endSec = TimedMediaHandler::parseTimeString( $this->end );
+			if( $endSec !== false ){
+				$hash.= ',' . TimedMediaHandler::seconds2npt( $endSec );
+			}
+		}
+		$this->hashTime = $hash;
+		return $this->hashTime;
 	}
 	
 	function getLocalTextSources(){

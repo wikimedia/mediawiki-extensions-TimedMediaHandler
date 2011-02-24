@@ -6,6 +6,51 @@
  * @constructor
  */
 
+/**
+ * The base source attribute checks also see:
+ * http://dev.w3.org/html5/spec/Overview.html#the-source-element
+ */
+mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
+	// source id
+	'id',
+
+	// media url
+	'src',
+
+	// Title string for the source asset
+	'title',
+
+	// boolean if we support temporal url requests on the source media
+	'URLTimeEncoding',
+
+	/* data- attributes ( not yet standards ) 
+	* NOTE data- is striped from the attribute once added to the MediaSrouce object
+	*/
+	
+	// Media has a startOffset ( used for plugins that
+	// display ogg page time rather than presentation time
+	'data-startoffset',
+
+	// A hint to the duration of the media file so that duration
+	// can be displayed in the player without loading the media file
+	'data-durationhint',
+	
+	// Source stream qualities ( will eventually be adaptive streaming )
+	'data-shorttitle', // short title for stream ( useful for stream switching control bar widget) 
+	'data-width', // the width of the stream
+	'data-height', // the height of the stream
+	'data-bandwidth', // the overall bitrate of the stream
+	'data-framerate', // the framereate of the stream
+	
+	// Media start time
+	'start',
+
+	// Media end time
+	'end',
+
+	// If the source is the default source
+	'default'
+] );
 function mediaSource( element ) {
 	this.init( element );
 }

@@ -104,9 +104,13 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Utility functions
 	 */
-	public static function parseTimeString( $seekString, $length = false ) {
-		$parts = explode( ':', $seekString );
+	public static function parseTimeString( $timeString, $length = false ) {
+		$parts = explode( ':', $timeString );
 		$time = 0;
+		// Check for extra :s 
+		if( count( $parts ) > 3 ){	
+			return false;
+		}
 		for ( $i = 0; $i < count( $parts ); $i++ ) {
 			if ( !is_numeric( $parts[$i] ) ) {
 				return false;
@@ -122,6 +126,18 @@ class TimedMediaHandler extends MediaHandler {
 			$time = $length - 1;
 		}
 		return $time;
+	}	
+	public static function seconds2npt( $time ){
+		if ( !is_numeric( $time ) ) {
+			wfDebug( __METHOD__.": trying to get npt time on NaN:" + $time);			
+			return false;
+		}
+		$hours = floor( $time / 3600 );
+		$min = floor( ( $time / 60 ) % 60 );
+		$sec = ($time % 60 );
+		$ms = ( $time - round( $time, 3) != 0 ) ? '.' .( $time - round( $time, 3) ) : '';
+		
+		return "{$hours}:{$min}:{$sec}{$ms}";
 	}	
 
 	function isMetadataValid( $image, $metadata ) {
@@ -140,39 +156,39 @@ class TimedMediaHandler extends MediaHandler {
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 	
-		$baseConfig = array(
+		$options = array(
 			'file' => $file,
 			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : $params['width']* $srcHeight / $srcWidth,
 			'isVideo' => !$this->isAudio( $file ),
-			'thumbtime' => ( isset( $params['thumbtime'] ) )? $params['thumbtime'] : false,
+			'thumbtime' => ( isset( $params['thumbtime'] ) )? $params['thumbtime'] : intval( $file->getLength() / 2 ),
 			'start' => ( isset( $params['start'] ) )? $params['start'] : false,
 			'end' => ( isset( $params['end'] ) )? $params['end'] : false
 		);
 		
 		// No thumbs for audio
-		if( $baseConfig['isVideo'] === false ){			
-			return new TimedMediaTransformOutput( $baseConfig );
+		if( $options['isVideo'] === false ){			
+			return new TimedMediaTransformOutput( $options );
 		}
 
 		// Setup pointer to thumb arguments
-		$baseConfig['thumbUrl'] = $dstUrl;
-		$baseConfig['dstPath'] = $dstPath;
+		$options['thumbUrl'] = $dstUrl;
+		$options['dstPath'] = $dstPath;
 		
 		// Check if transform is deferred:
 		if ( $flags & self::TRANSFORM_LATER ) {
-			return new TimedMediaTransformOutput($baseConfig);
+			return new TimedMediaTransformOutput($options);
 		}
 
 		// Generate thumb:
-		$thumbStatus = TimedMediaThumbnail::get( $baseConfig );
+		$thumbStatus = TimedMediaThumbnail::get( $options );
 		if( $thumbStatus !== true ){
 			return $thumbStatus;
 		}
 	
-		return new TimedMediaTransformOutput( $baseConfig );
+		return new TimedMediaTransformOutput( $options );
 	}
 
 	function canRender( $file ) { return true; }

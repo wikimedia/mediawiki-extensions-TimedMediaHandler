@@ -8,47 +8,6 @@
 */
 
 ( function( mw, $ ) {
-/**
- * The base source attribute checks also see:
- * http://dev.w3.org/html5/spec/Overview.html#the-source-element
- */
-mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
-	// source id
-	'id',
-
-	// media url
-	'src',
-
-	// Title string for the source asset
-	'title',
-
-	// boolean if we support temporal url requests on the source media
-	'URLTimeEncoding',
-
-	// Media has a startOffset ( used for plugins that
-	// display ogg page time rather than presentation time
-	'data-startoffset',
-
-	// A hint to the duration of the media file so that duration
-	// can be displayed in the player without loading the media file
-	'data-durationhint',
-	
-	// Source stream qualities ( will eventually be adaptive streaming )
-	'data-shorttitle', // short title for stream ( usefull for stream switching control bar item) 
-	'data-width', // the width of the stream
-	'data-height', // the height of the stream
-	'data-bandwidth', // the overall bitrate of the stream
-	'data-framerate', // the framereate of the stream
-	
-	// Media start time
-	'start',
-
-	// Media end time
-	'end',
-
-	// If the source is the default source
-	'default'
-] );
 
 /** 
  * Merge in the default video attributes supported by embedPlayer:
@@ -170,7 +129,19 @@ mw.mergeConfig('EmbedPlayer.Attributes', {
 mw.processEmbedPlayers = function( playerSelect, callback ) {
 	mw.log( 'EmbedPlayer:: processEmbedPlayers' );
 	
-		
+	// Check if the selected player set is ready if ready issue the parent callback
+	var areSelectedPlayersReady = function(){
+		var playersLoaded = true;
+		$(playerSelect).each(function(inx, player){
+			if( ! $( player ).get(0).doneLoading ){
+				playersLoaded = false;
+				return false;
+			}
+		})
+		if( playersLoaded ){
+			callback();
+		}
+	}
 	/**
 	 * Adds a player element for the embedPlayer to rewrite
 	 *
@@ -216,8 +187,8 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			waitForMeta = waitForMetaCheck( playerElement );
 		}
 		
-		var ranPlayerSwapFlag = false;
-
+		var ranPlayerSwapFlag = false;			
+		
 		// Local callback to runPlayer swap once playerElement has metadata
 		function runPlayerSwap() {
 			// Don't run player swap twice
@@ -234,9 +205,13 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			mw.log("EmbedPlayer::EmbedPlayerNewPlayer:trigger " + playerInterface.id );
 			$( mw ).trigger ( 'EmbedPlayerNewPlayer', $( '#' + playerInterface.id ).get(0) );
 
+			// Add a player ready binding: 
+			$( '#' + playerInterface.id ).bind( 'playerReady', areSelectedPlayersReady);
+			
 			// Issue the checkPlayerSources call to the new player
 			// interface: make sure to use the element that is in the DOM:
 			$( '#' + playerInterface.id ).get(0).checkPlayerSources();
+						
 		}
 
 		if( waitForMeta && mw.getConfig('EmbedPlayer.WaitForMeta' ) ) {
@@ -431,8 +406,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		}
 	});
 
-	// Create the Global Embed Player Manager ( if not already created )
-	// legacy EmbedPlayerManagerReady event ( should remove )
+	// deprecated EmbedPlayerManagerReady event ( should remove )
 	$( mw ).trigger( 'EmbedPlayerManagerReady' );
 	
 	// Make sure we have user preference setup for setting preferences on video selection 
@@ -489,9 +463,10 @@ mw.EmbedPlayer.prototype = {
 	// accurate seeks so we do tricks like hide the image until its ready
 	'previewMode' : false,
 
-	// Ready to play
-	// NOTE: we should switch over to setting the html5 video ready state
-	'readyToPlay' : false,
+	// If the player is done loading ( does not guarantee playability )
+	// for example if there is an error doneLoading is still set to true once 
+	// no more loading is to be done
+	'doneLoading' : false,
 
 	// Stores the loading errors
 	'loadError' : false,
@@ -1155,8 +1130,7 @@ mw.EmbedPlayer.prototype = {
 					'position' : 'relative'
 				})
 			)
-			// position the "player" absolute inside the relative interface
-			// parent:
+			// position the "player" absolute inside the relative interface parent:
 			.css('position', 'absolute');
 		}
 		
@@ -1199,6 +1173,10 @@ mw.EmbedPlayer.prototype = {
 		// Update temporal url if present
 		this.updateTemporalUrl();
 		
+		// updat the doneLoading flag
+		this.doneLoading = true;
+		// trigger the player ready event;
+		$(this).trigger('playerReady');
 		
 		if ( this.autoplay ) {
 			mw.log( 'EmbedPlayer::showPlayer::activating autoplay' );
@@ -1270,6 +1248,12 @@ mw.EmbedPlayer.prototype = {
 				'title' : gM('mwe-embedplayer-play_clip')
 			} )
 		);
+
+		// TODO we should have a smart doneLoading system that registers player states
+		// http://www.whatwg.org/specs/web-apps/current-work/#media-element
+		// does not really handle errors
+		this.doneLoading = true;
+		$(this).trigger('playerReady');
 	},
 
 	/**

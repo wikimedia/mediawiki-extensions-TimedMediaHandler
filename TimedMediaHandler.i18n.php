@@ -55,7 +55,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	// WebM profiles: 	
 	'timedmedia-derivative-480_600kbs.webm' => 'WebM 480P',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Web streamable WebM (480P)',
-	'timedmedia-derivative-720_VBR.webm' => 'WebM HQ',
+	'timedmedia-derivative-720_VBR.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc720_VBR.webm' => 'High quality downloadable WebM (720P)',
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',

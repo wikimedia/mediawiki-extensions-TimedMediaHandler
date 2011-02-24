@@ -70,14 +70,42 @@ class WebVideoTranscodeJob extends Job {
 			$status = false;
 		}
 		
-		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 
-		// XXX would be nice to clear the cache for the pages where the title in use
+		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 	
+		
+		
+		
+		
 		if( $status ){
 			wfSuppressWarnings();
-			$status = rename($destinationFile, WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey) );
+			$status = rename($destinationFile, WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey) );			
 			wfRestoreWarnings();
+		
+			$this->invalidateCache();
 		}
 		return $status;
+	}
+	/**
+	 * Invalidate the cache of all pages where the video is displayed  
+	 */
+	function invalidateCache(){
+		// the file page cache should be invalidated: 
+		$this->title->invalidateCache();
+		
+		// TODO if the video is used in over 500 pages add to 'job queue'
+		$limit = 500;
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			array( 'imagelinks', 'page' ),
+			array( 'page_namespace', 'page_title' ),
+			array( 'il_to' => $this->mTitle->getDBkey(), 'il_from = page_id' ),
+			__METHOD__,
+			array( 'LIMIT' => $limit + 1 )
+		);
+		foreach ( $res as $page ) {
+			$title = Title::makeTitle( $element->page_namespace, $page->page_title );
+			$title->invalidateCache();
+		}		
 	}
 	function removeFffmpgeLogFiles( $dir ){
 		if (is_dir($dir)) {

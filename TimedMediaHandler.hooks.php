@@ -33,16 +33,24 @@ class TimedMediaHandlerHooks {
 			'webVideoTranscode'
 		);
 		
+		$baseExtensionResource = array(
+			'localBasePath' => dirname( __FILE__ ),
+		 	'remoteExtPath' => 'TimedMediaHandler',
+		);
+		
 		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules ) 
 		$wgResourceModules+= array(
-			'PopUpMediaTransform' => array(
+			'PopUpMediaTransform' => $baseExtensionResource + array(
 				'scripts' => 'resources/PopUpThumbVideo.js',
 				'styles' => 'resources/PopUpThumbVideo.css',
-				'localBasePath' => dirname( __FILE__ ),
-		 		'remoteExtPath' => 'TimedMediaHandler',
-			)
+				'dependencies' => array( 'jquery.ui.dialog' ),
+			),
+			'embedPlayerIframeStyle'=> $baseExtensionResource + array(
+				'styles' => 'resources/embedPlayerIframe.css',
+			)			
 		);
-		// We should probalby move this to a parser function but not working right in 
+		// We should probably move this to a parser function but not working right 
+		// on special upload, when there is an "existing file" warning. 
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 		
 

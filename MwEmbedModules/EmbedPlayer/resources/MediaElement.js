@@ -174,54 +174,88 @@ mediaElement.prototype = {
 		var setSelectedSource = function( source ){
 			_this.selectedSource = source;
 		};
-
+		
 		// Set via user-preference
-		for ( var source = 0; source < playableSources.length; source++ ) {
-			var mimeType = playableSources[source].mimeType;
+		$.each( playableSources, function( inx, source ){
+			var mimeType =source.mimeType;
 			if ( mw.EmbedTypes.getMediaPlayers().preference[ 'format_preference' ] == mimeType ) {
-				 mw.log( 'EmbedPlayer::autoSelectSource: Set via preference: ' + playableSources[source].mimeType );
-				 setSelectedSource( playableSources[source] );
+				 mw.log( 'MediaElement::autoSelectSource: Set via preference: ' + source.mimeType );
+				 setSelectedSource( source );
 				 return true;
 			}
-		}
+		});
 		
 		// Set via module driven preference:
 		$(this).trigger( 'AutoSelectSource', [ playableSources ] );
 		if( _this.selectedSource ){
+			mw.log('MediaElement::autoSelectSource: Set via trigger::' );
+			return true;
+		}
+	
+		// Set via marked default:
+		$.each( playableSources, function( inx, source ){
+			if ( source.markedDefault ) {
+				mw.log( 'MediaElement::autoSelectSource: Set via marked default: ' + source.markedDefault );
+				setSelectedSource( source );
+				return true;
+			}
+		});
+		
+		//Set via user bandwith pref 
+		if( $.cookie('EmbedPlayer.UserBandwidth') ){
+			$.each( playableSources, function(inx, source ){
+				if( source.bandwidth ){
+					if( source.bandwidth < $.cookie('EmbedPlayer.UserBandwidth') ){
+						setSelectedSource( source );
+					}
+				}
+			});
+		}
+		if ( this.selectedSource ) {
+			mw.log('MediaElement::autoSelectSource: Set via bandwidth prefrence: source ' + source.bandwidth + ' user: ' + $.cookie('EmbedPlayer.UserBandwidth') );
 			return true;
 		}
 		
-		// Set via embed resolution relative to display size
-		
-
-		// Set via marked default:
-		for ( var source = 0; source < playableSources.length; source++ ) {
-			if ( playableSources[ source ].markedDefault ) {
-				mw.log( 'EmbedPlayer::autoSelectSource: Set via marked default: ' + playableSources[source].markedDefault );
-				setSelectedSource( playableSources[source] );
-				return true;
+		// Set via embed resolution closest to relative to display size 
+		var minSizeDelta = null;
+		var displayWidth = $('#' + this.parentEmbedId).width();
+		$.each( playableSources, function(inx, source ){
+			if( source.width && displayWidth ){
+				var sizeDelta =  Math.abs( source.width - displayWidth );
+				mw.log('MediaElement::autoSelectSource: size delta : ' + sizeDelta + ' for s:' + source.width );
+				if( minSizeDelta == null ||  sizeDelta < minSizeDelta){
+					minSizeDelta = sizeDelta;
+					setSelectedSource( source );
+				}
 			}
+		});
+		
+		// If we found a source via display resolution return true
+		if ( this.selectedSource ) {
+			mw.log('MediaElement::autoSelectSource: Set via embed resolution:' + this.selectedSource.width + ' close to: ' + displayWidth );
+			return true;
 		}
+		
 		
 		// Prefer native playback ( and prefer WebM over ogg and h.264 )
 		var namedSources = [];
-		for ( var source = 0; source < playableSources.length; source++ ) {
-			var mimeType = playableSources[source].mimeType;
+		$.each( playableSources, function(inx, source ){
+			var mimeType = source.mimeType;
 			var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );			
 			if ( player && player.library == 'Native'	) {
 				switch( player.id	){
 					case 'oggNative': 
-						namedSources['ogg'] = playableSources[ source ]; 
+						namedSources['ogg'] = source; 
 						break;
 					case 'webmNative':
-						namedSources['webm'] = playableSources[ source ]; 
+						namedSources['webm'] = source; 
 						break;
 					case 'h264Native':
-						namedSources['h264'] = playableSources[ source ]; 
+						namedSources['h264'] = source; 
 						break;
 				}
 			}
-		}
+		});
 		var codecPref =mw.getConfig( 'EmbedPlayer.CodecPreference');
 		for(var i =0; i < codecPref.length; i++){
 			var codec = codecPref[ i ];
@@ -233,8 +267,8 @@ mediaElement.prototype = {
 		
 
 		// Set h264 via native or flash fallback
-		for ( var source = 0; source < playableSources.length; source++ ) {
-			var mimeType = playableSources[source].mimeType;
+		$.each( playableSources, function(inx, source ){
+			var mimeType =source.mimeType;
 			var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
 			if ( mimeType == 'video/h264'
 				&& player
@@ -244,15 +278,15 @@ mediaElement.prototype = {
 					player.library == 'Kplayer'
 				)
 			) {
-				mw.log('EmbedPlayer::autoSelectSource: Set h264 via native or flash fallback');
-				 setSelectedSource( playableSources[ source ] );
+				mw.log('MediaElement::autoSelectSource: Set h264 via native or flash fallback');
+				 setSelectedSource( source );
 				return true;
 			}
-		};
+		});
 
 		// Else just select first source
 		if ( !this.selectedSource ) {
-			mw.log( 'EmbedPlayer::autoSelectSource: Set via first source:' + playableSources[0] );
+			mw.log( 'MediaElement::autoSelectSource: Set via first source:' + playableSources[0] );
 			 setSelectedSource( playableSources[0] );
 			return true;
 		}

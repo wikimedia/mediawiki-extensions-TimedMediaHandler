@@ -24,6 +24,8 @@ class TimedMediaIframeOutput {
 			$wgEnableIframeEmbed &&
 			$doOutput ){
 				self::outputIframe( $title );
+				// Shut down the database
+				wfGetLBFactory()->shutdown();		
 				exit();
 		}
 		
@@ -40,35 +42,68 @@ class TimedMediaIframeOutput {
 			throw new MWException( __METHOD__ .' is not enabled' );
 		}
 		
-		// Build the html output:
-		$file = wfFindFile( $title );
-		$thumb = $file->transform( $videoParam );
+		$skin = $wgUser->getSkin();
 		$out = new OutputPage();
-		$file->getHandler()->setHeaders( $out );
-	
+		
+		// Setup the render paramaters
+		$file = wfFindFile( $title );	
+		$params = array(
+			// ( will be resized on load )
+			'width' => 400
+		);
+		
+		$thumbName = $file->thumbName( $params );
+		$thumbnail = $file->transform( $params );
+		// XXX Need to "add modules" for the loader "go"... strange. 
+		$out->addModules( array( 'embedPlayerIframeStyle') );
+		$out->sendCacheControl();
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $title->getText() ?></title>
-<style type="text/css">
-	body {
-		margin-left: 0px;
-		margin-top: 0px;
-		margin-right: 0px;
-		margin-bottom: 0px;
-	}
-</style>
+	<?php 
+		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
+	?>
 	<?php
-		// Similar to $out->headElement (but without css)
-		echo $out->getHeadScripts();
-		echo $out->getHeadLinks();
+		echo $out->getHeadLinks($skin);
 		echo $out->getHeadItems();
 	?>
+	<style>
+	body {
+		background-image:url('<?php echo $file->getThumbUrl( $thumbName )?>');
+		background-repeat:no-repeat;
+		background-attachment:fixed;
+		background-position:center;
+		background-color:#000;
+		background-size: 100%;
+	} 
+	</style>
 </head>
 <body>
-	<?php echo $thumb->toHtml(); ?>
+	<div id="bgimage"></div>
+	<div id="videoContainer" style="visibility:hidden">
+		<?php echo $thumbnail->toHtml(); ?>
+	</div
+	<?php echo $out->getHeadScripts($skin); ?>	
+	<script type="text/javascript">		
+		mw.ready(function(){			
+			var fitPlayer = function(){
+				$j( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
+				.get(0).resizePlayer({
+					'width' : $j(window).width(),
+					'height' : $j(window).height()
+				});
+			}
+			// Bind window resize to reize the player:
+			$j( window ).resize( fitPlayer );	  
+			$('#videoContainer').css({
+				'visibility':'visible'
+			});
+			fitPlayer(); 
+		});
+	</script>
 </body>
 </html>
 	<?php

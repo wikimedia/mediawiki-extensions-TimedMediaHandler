@@ -9,11 +9,12 @@
 			$(this).find('a').click( function(){
 				var $video = $( unescape( $(_parent).attr('data-videopayload') ) );
 				mw.addDialog({
-					'width' : parseInt(  $video.css('width') ) + 35,
-					'height' : parseInt(  $video.css('height') ) + 55,
+					'width' : parseInt(  $video.css('width') ) + 20,
+					'height' : parseInt(  $video.css('height') ) + 45,
 					'title' : $video.attr('data-mwtitle'),
 					'content' : $video
 				})
+				.css('overflow', 'hidden')
 				.find('video').embedPlayer();
 				// don't follow file link
 				return false; 
