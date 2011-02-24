@@ -279,6 +279,7 @@ class WebVideoTranscode {
 	 */	
 	public static function updateJobQueue( &$file, $transcodeKey ){
 		$target =  self::getTargetEncodePath( $file, $transcodeKey );
+		$targetFailure = 
 		// TranscodeKey not found ( check if the file is in progress ) ( tmp transcode location ) 
 		if( is_file( $target ) ) {
 			// file in progress / in queue

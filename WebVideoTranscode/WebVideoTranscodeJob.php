@@ -98,7 +98,7 @@ class WebVideoTranscodeJob extends Job {
 		$res = $dbr->select(
 			array( 'imagelinks', 'page' ),
 			array( 'page_namespace', 'page_title' ),
-			array( 'il_to' => $this->mTitle->getDBkey(), 'il_from = page_id' ),
+			array( 'il_to' => $this->title->getDBkey(), 'il_from = page_id' ),
 			__METHOD__,
 			array( 'LIMIT' => $limit + 1 )
 		);
