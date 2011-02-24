@@ -1739,7 +1739,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-download' => 'Downloaden',
 	'mwe-embedplayer-share' => 'Delen',
 	'mwe-embedplayer-credits' => 'Vermeldingen',
-	'mwe-embedplayer-about-library' => 'Over de Kaltura-speler',
+	'mwe-embedplayer-about-library' => 'Over de Kalturaspeler',
 	'mwe-embedplayer-about-library-desc' => 'De HTML5-bibliotheek van Kaltura zorgt dat u nu kunt profiteren van de HTML5-labels <nowiki><video></nowiki> en <nowiki><audio></nowiki> met een consistent uiterlijk van de speler in alle veelgebruikte browsers.
 
 [$1 Meer over de bibliotheek van de Kaltura-speler].',
