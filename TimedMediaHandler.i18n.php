@@ -56,7 +56,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-480_600kbs.webm' => 'WebM 480P',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Web streamable WebM (480P)',
 	'timedmedia-derivative-720_VBR.webm' => 'WebM 720P',
-	'timedmedia-derivative-desc720_VBR.webm' => 'High quality downloadable WebM (720P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'High quality downloadable WebM (720P)',
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
 );
@@ -512,7 +512,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 );
 
@@ -758,7 +758,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vidéo Ogg lisible en continu sur le web (480p)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vidéo Ogg téléchargeable de grande qualité (720p)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM lisible en continu depuis le web (480p)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'Vidéo WebM téléchargeable de grande qualité (720p)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Vidéo WebM téléchargeable de grande qualité (720p)',
 	'timedmedia-subtitle-language' => 'soustitres en $1 ($2)',
 );
 
@@ -841,7 +841,7 @@ Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vídeo Ogg para a web (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vídeo Ogg de alta calidade que se pode descargar (720P)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM para a web (480P)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'WebM de alta calidade que se pode descargar (720P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM de alta calidade que se pode descargar (720P)',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 );
 
@@ -989,7 +989,7 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/w
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Ogg-widejo (480p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Sćahujomne Ogg-widejo wysokeje kwality (720p)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM-widejo (480p), kotrež da so přez Web přenjesć',
-	'timedmedia-derivative-desc720_VBR.webm' => 'Sćahujomna WebM-dataja wysokeje kwality (720p)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Sćahujomna WebM-dataja wysokeje kwality (720p)',
 	'timedmedia-subtitle-language' => '$1 ($2) podtitule',
 );
 
@@ -1050,7 +1050,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg fluibile per web (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Video Ogg discargabile de alte qualitate (720P)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM fluibile per web (480P)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'WebM discargabile de alte qualitate (720P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM discargabile de alte qualitate (720P)',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitulos',
 );
 
@@ -1338,7 +1338,7 @@ met Ongershtözung för de Fommaate <i lang="en">WebM</i>, <i lang="en">Ogg Theo
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Ene WebM Viddejo (met 480p) för ene Dahteshtrohm övver et Nez',
-	'timedmedia-derivative-desc720_VBR.webm' => 'En <i lang="en">WebM</i> Viddejo-Dattei met huhe Qualiteit (met 720p) zom eronger laade',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'En <i lang="en">WebM</i> Viddejo-Dattei met huhe Qualiteit (met 720p) zom eronger laade',
 	'timedmedia-subtitle-language' => 'Ongertittele en $1 ($2)',
 );
 
@@ -1464,7 +1464,7 @@ $messages['mk'] = array(
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Висококвалитетно Ogg-видео (720 пиксели)',
 	'timedmedia-derivative-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'Висококвалитетен WebM за преземање (720п)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
 );
 
@@ -1615,7 +1615,7 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Te webstreamen Ogg video (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Hoge kwaliteit downloadbare Ogg video (720P)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Via web te streamen WebM (480P)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'Hoge kwaliteit downloadbare WebM (720P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Hoge kwaliteit downloadbare WebM (720P)',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 );
 
@@ -1805,7 +1805,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Vídeo Ogg para web streaming (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Vídeo Ogg de alta qualidade para download (720 P)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM para web streaming (480P)',
-	'timedmedia-derivative-desc720_VBR.webm' => 'WebM de alta qualidade para download (720P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM de alta qualidade para download (720P)',
 	'timedmedia-subtitle-language' => 'Legendas em $1 ($2)',
 );
 
