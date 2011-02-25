@@ -68,7 +68,9 @@ mediaPlayer.prototype = {
 		mw.load( [
 			'mw.EmbedPlayer' + this.library.substr(0,1).toUpperCase() + this.library.substr(1)
 		], function() {
-			callback();
+			if( callback ){
+				callback();
+			}
 		} );
 	}
 };

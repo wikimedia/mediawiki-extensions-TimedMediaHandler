@@ -121,6 +121,9 @@ $wgEnabledTranscodeSet = array(
 	// A standard web streamable ogg video 
 	WebVideoTranscode::ENC_OGV_6MBS,
 	
+	// High quality 720P ogg video: 
+	WebVideoTranscode::ENC_OGV_HQ_VBR,
+	
 	// A standard web streamable WebM video	
 	WebVideoTranscode::ENC_WEBM_6MBS,	
 	

@@ -24,9 +24,8 @@ class WebVideoTranscode {
 	* key constant. ( Or just run a maintenance script to delete all
 	* the assets for a given profile )
 	* 
-	* Msg keys for derivatives are the profile constant with underscores instead of . 
-	* 200_200kbs.ogv look up would be: 
-	* $messages['timedmedia-derivative-200_200kbs_ogv'] => 'Ogg 200';
+	* Msg keys for derivatives are set as follows: 
+	* $messages['timedmedia-derivative-200_200kbs.ogv'] => 'Ogg 200';
 	*/
 	
 	// Ogg Profiles

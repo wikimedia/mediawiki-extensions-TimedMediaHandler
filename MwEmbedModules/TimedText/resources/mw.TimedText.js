@@ -427,7 +427,8 @@
 			
 			// If there are inline sources don't check the api )  
 			if( this.textSources.length != 0 ){
-				callback();
+				if( callback )
+					callback();	
 				return ;
 			}
 
@@ -464,7 +465,8 @@
 					_this.textSources.push( source );
 				}
 				// All sources loaded run callback:
-				callback();
+				if( callback )
+					callback();
 			} );
 		},
 
@@ -1540,11 +1542,13 @@
 				if( ! sourcePages.query.allpages ) {
 					//Check if a shared asset
 					mw.log( 'no subtitle pages found');
-					callback();
+					if( callback )
+						callback();
 					return ;
 				}
 				// We have sources put them into the player
-				callback( _this.getSources( sourcePages ) );
+				if( callback )
+					callback( _this.getSources( sourcePages ) );
 			} );
 		},
 

@@ -139,7 +139,8 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			}
 		})
 		if( playersLoaded ){
-			callback();
+			if( callback )
+				callback();
 		}
 	}
 	/**
