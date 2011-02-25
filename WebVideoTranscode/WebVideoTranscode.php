@@ -83,6 +83,16 @@ class WebVideoTranscode {
 				'bufDelay'			=> '256',
 				'codec' 			=> 'theora',
 			),
+
+		WebVideoTranscode::ENC_OGV_HQ_VBR =>
+			array(
+				'maxSize'			=> '720',
+				'videoQuality'		=> 6,
+				'audioQuality'		=> 3,
+				'noUpscaling'		=> 'true',
+				'keyframeInterval'	=> '128',
+				'codec' 			=> 'theora',
+			),	
 			
 		// WebM transcode:
 		WebVideoTranscode::ENC_WEBM_6MBS =>
