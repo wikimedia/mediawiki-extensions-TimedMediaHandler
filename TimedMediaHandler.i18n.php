@@ -894,7 +894,7 @@ $messages['gv'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'timedmedia-desc' => 'מציג מדיה למדיה מתוזמנת – וידאו, שמע, טקסט מתוזמן – עם קידוד מחדש ל־Ogg Theora או Vorbis',
+	'timedmedia-desc' => 'מטפל במדיה מתוזמנת – וידאו, שמע, טקסט מתוזמן – עם תמיכה בתסדירי WebM&rlm;, Ogg Theora&rlm;, Vorbis ו־srt',
 	'timedmedia-ogg-short-audio' => 'קובץ שמע $1 של Ogg, $2',
 	'timedmedia-ogg-short-video' => 'קובץ וידאו $1 של Ogg, $2',
 	'timedmedia-ogg-short-general' => 'קובץ מדיה $1 של Ogg, $2',
@@ -903,14 +903,27 @@ $messages['he'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'קובץ Ogg מרובב של שמע ווידאו, $1, באורך $2, $4×$5 פיקסלים, $3 בסך הכול',
 	'timedmedia-ogg-long-general' => 'קובץ מדיה של Ogg, באורך $2, $3',
 	'timedmedia-ogg-long-error' => 'קובץ ogg בלתי תקין: $1',
+	'timedmedia-webm-short-video' => 'קובץ וידוא WebM $1&rlm;, $2',
+	'timedmedia-webm-long-video' => 'קובץ שמע ווידאו WebM&rlm;, $1, באורך $2&rlm;, $4 × $5 פיקסלים, $3 סך הכול',
 	'timedmedia-no-player-js' => 'סליחה, בדפדפן שלכם לא מופעלת תמיכה ב־JavaScript או שאין לכם נגן נתמך.<br />
 אתם יכולים <a href="$1">להוריד למחשב את הסרטון</a> או <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">להוריד למחשב שלכם נגן</a> שינגן את הסרטון בדפדפן שלכם.',
 	'timedmedia-more' => 'עוד…',
 	'timedmedia-dismiss' => 'סגירה',
 	'timedmedia-download' => 'הורדת הקובץ',
+	'timedmedia-play-media' => 'לנגן את המדיה',
 	'timedmedia-desc-link' => 'אודות הקובץ',
 	'timedmedia-oggThumb-version' => 'OggHandler דורש oggThumb מגרסה $1 או גרסה חדשה יותר.',
 	'timedmedia-oggThumb-failed' => 'oggThumb לא הצליח ליצור תמונה מוקטנת.',
+	'timedmedia-source-file' => 'ממקור $1',
+	'timedmedia-source-file-desc' => '$1 מקורי, $2 × $3&rlm; ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'וידאו Ogg (200P)&lrm; לרוחב פס נמוך',
+	'timedmedia-derivative-desc-360_400kbs.ogv' => 'וידאו Ogg (360P)&lrm; לנגינה שוטפת מהרשת',
+	'timedmedia-derivative-desc-480_600kbs.ogv' => 'וידאו Ogg (480P)&lrm; לנגינה שוטפת מהרשת',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'וידאו Ogg (720P)&lrm; באיכות גבוהה שניתן להורדה',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'וידאו WebM (480P)&lrm; לנגינה שוטפת מהרשת',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'וידאו WebM (720P)&lrm; באיכות גבוהה שניתן להורדה',
+	'timedmedia-subtitle-language' => 'כתוביות ב$1&rlm; ($2)',
 );
 
 /** Hindi (हिन्दी)
@@ -2003,13 +2016,20 @@ Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/
 	'timedmedia-more' => 'Več ...',
 	'timedmedia-dismiss' => 'Zapri',
 	'timedmedia-download' => 'Prenesi datoteko',
+	'timedmedia-play-media' => 'Predvajaj predstavnost',
 	'timedmedia-desc-link' => 'O datoteki',
 	'timedmedia-oggThumb-version' => 'OggHandler potrebuje oggThumb različice $1 ali višje.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ni uspel ustvariti predogledne sličice.',
+	'timedmedia-source-file' => 'vir $1',
+	'timedmedia-source-file-desc' => 'Izvirnik $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Video Ogg za majhno pasovno širino (200P)',
 	'timedmedia-derivative-desc-360_400kbs.ogv' => 'Video Ogg za pretakanje preko spleta (360P)',
 	'timedmedia-derivative-desc-480_600kbs.ogv' => 'Video Ogg za pretakanje preko spleta (480P)',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Visoko ločljivostni video Ogg za prenos (720P)',
+	'timedmedia-derivative-desc-480_600kbs.webm' => 'WebM za pretakanje preko spleta (480P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Visokokakovostni WebM za prenos (720P)',
+	'timedmedia-subtitle-language' => 'podnapisi v jeziku $1 ($2)',
 );
 
 /** Albanian (Shqip)
