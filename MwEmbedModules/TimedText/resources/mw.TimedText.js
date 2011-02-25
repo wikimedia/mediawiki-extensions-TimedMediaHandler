@@ -18,7 +18,8 @@
 	mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
   	   'srclang',
 	   'category',
-	   'label'
+	   'label',
+	   'data-mwtitle'
 	]);
 	
 	/**
@@ -129,7 +130,7 @@
 			// Load user preferences config:
 			var preferenceConfig = $.cookie( 'TimedText.Prefrences' );
 			if( preferenceConfig !== null ) {
-				this.config = preferenceConfig;
+				this.config = JSON.parse(  preferenceConfig );
 			}
 			// Set up embedPlayer hooks:
 			
@@ -398,22 +399,6 @@
 		loadTextSources: function( callback ) {
 			var _this = this;
 			this.textSources = [ ];
-			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )
-			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
-			
-			// Add all the sources to textSources
-			for( var i = 0 ; i < inlineSources.length ; i++ ) {
-				// Make a new textSource:
-				var source = new TextSource( inlineSources[i] );				
-				this.textSources.push( source );
-			}
-
-			// If there are inline sources or no apiTitleKey we are done loading 
-			if( this.textSources.length != 0 || !this.embedPlayer.apiTitleKey ) {
-				// No other sources just issue the callback:
-				callback();
-				return ;
-			}
 			
 			// Try to get sources from text provider:
 			var provider_id = ( this.embedPlayer.apiProvider ) ? this.embedPlayer.apiProvider : 'local';
@@ -430,6 +415,21 @@
 				'apiUrl': apiUrl,
 				'embedPlayer': this.embedPlayer
 			} );
+			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )
+			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
+			
+			// Add all the sources to textSources
+			for( var i = 0 ; i < inlineSources.length ; i++ ) {
+				// Make a new textSource:
+				var source = new TextSource( inlineSources[i] , this.textProvider);				
+				this.textSources.push( source);
+			}
+			
+			// If there are inline sources don't check the api )  
+			if( this.textSources.length != 0 ){
+				callback();
+				return ;
+			}
 
 			// Load the textProvider sources
 			this.textProvider.loadSources( apiTitleKey, function( textSources ) {
@@ -933,7 +933,7 @@
 		*/
 		refreshDisplay: function() {
 			// Update the configuration object
-			$.cookie( 'TimedText.Prefrences', this.config );
+			$.cookie( 'TimedText.Prefrences',  JSON.stringify( this.config ) );
 			
 			// Empty out previous text to force an interface update:
 			this.prevText = [];
@@ -1071,7 +1071,6 @@
 			mw.log(" addItextDiv: " + category );
 			// Get the relative positioned player class from the controlBuilder:
 			var $playerTarget = this.embedPlayer.$interface;
-
 			//Remove any existing track divs for this player;
 			$playerTarget.find('.track_' + category ).remove();
 
@@ -1165,11 +1164,14 @@
 		/**
 		 * @constructor Inherits mediaSource from embedPlayer
 		 * @param {source} Base source element
+		 * @param {Object} Pointer to the textProvider 
 		 */
-		init: function( source , textProvider) {
-			for( var i in source) {
-				this[i] = source[i];
+		init: function( source , textProvider) {	
+			//	Inherits mediaSource	
+			for( var i in source){
+				this[ i ] =  source[ i];
 			}
+			
 			// Set default category to subtitle if unset:
 			if( ! this.category ) {
 				this.category = 'SUB';
@@ -1177,7 +1179,16 @@
 			//Set the textProvider if provided
 			if( textProvider ) {
 				this.textProvider = textProvider;
+				
+				// switch type to mw-srt if we are going to load via api 
+				// ( this is need because we want to represent one thing to search engines / crawlers, 
+				// while representing the mw-srt type internally so that mediawiki parsed text 
+				// gets converted to html before going into the video 
+				if( this.mwtitle ){
+					this.mimeType = 'text/mw-srt';
+				}
 			}
+			return this;
 		},
 
 		/**
@@ -1195,7 +1206,6 @@
 				}
 			};
 			_this.loaded = true;
-			
 			// Set parser handler:
 			switch( this.getMIMEType() ) {
 				//Special mediaWiki srt format ( support wiki-text in srt's )
@@ -1216,13 +1226,12 @@
 				mw.log("Error: no handler for type: " + this.getMIMEType() );
 				return ;
 			}
-
 			// Try to load src via textProvider:
-			if( this.textProvider && this.titleKey ) {
-				this.textProvider.loadTitleKey( this.titleKey, function( data ) {
+			if( this.textProvider && this.mwtitle) {
+				this.textProvider.loadTitleKey( this.mwtitle, function( data ) {
 					if( data ) {
 						_this.captions = handler( data );
-					}
+					}			
 					mw.log("mw.TimedText:: loaded from titleKey: " + _this.captions.length + ' captions');
 					// Update the loaded state:
 					_this.loaded = true;

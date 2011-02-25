@@ -251,7 +251,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$data = $api->getResultData();			
 		// Get the list of language Names
 		$langNames = Language::getLanguageNames();
-		
+
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
 				$subTitle = Title::newFromText( $page['title'] ) ;
@@ -269,6 +269,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$this->textTracks[] = array(		
 					'kind' => 'subtitles',
 					'data-mwtitle' => $subTitle->getNsText() . ':' . $subTitle->getDBkey(),
+					'data-mwprovider' => 'local',				
 					'type' => 'text/x-srt',
 					// TODO Should add a special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html

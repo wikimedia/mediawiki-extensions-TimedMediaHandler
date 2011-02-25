@@ -134,7 +134,7 @@ mediaPlayers.prototype =
 	 */
 	setFormatPreference : function ( mimeFormat ) {
 		 this.preference['formatPreference'] = mimeFormat;
-		 $.cookie( 'EmbedPlayer.Preference', this.preference);
+		 $.cookie( 'EmbedPlayer.Preference', JSON.stringify( this.preference) );
 	},
 
 	/**
@@ -152,7 +152,7 @@ mediaPlayers.prototype =
 				selectedPlayer = this.players[i];
 				mw.log( 'EmbedPlayer::setPlayerPreference: choosing ' + playerId + ' for ' + mimeType );
 				this.preference[ mimeType ] = playerId;
-				$.cookie( 'EmbedPlayer.Preference', this.preference );
+				$.cookie( 'EmbedPlayer.Preference', JSON.stringify( this.preference ) );
 				break;
 			}
 		}
@@ -176,7 +176,7 @@ mediaPlayers.prototype =
 		this.preference = { };		
 		// See if we have a cookie set to a clientSupported type:
 		if( $.cookie( 'EmbedPlayer.Preference' ) ) {
-			this.preference = $.cookie( 'EmbedPlayer.Preference' );
+			this.preference = JSON.parse( $.cookie( 'EmbedPlayer.Preference' ) );
 		}
 	}
 };
