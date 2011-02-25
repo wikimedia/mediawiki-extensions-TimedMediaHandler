@@ -58,6 +58,10 @@ class WebVideoTranscodeJob extends Job {
 				$status = $this->ffmpegEncode( $file, $destinationFile, $options, 1 );
 				if( $status ){
 					$status = $this->ffmpegEncode( $file, $destinationFile, $options, 2 );
+					// unlink the .log file used in two pass encoding: 
+					wfSuppressWarnings();
+					unlink( $destinationFile . '.log' );
+					wfRestoreWarnings();
 				}
 				// remove any log files
 				$this->removeFffmpgeLogFiles( dirname( $destinationFile) );

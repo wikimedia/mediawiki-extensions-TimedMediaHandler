@@ -60,6 +60,7 @@ class TimedMediaHandlerHooks {
 		// Also add the .log file ( used in two pass encoding ) 
 		// ( probably should move in-progress encodes out of web accessible directory )
 		$wgExcludeFromThumbnailPurge+= array( 'log');
+		
 		/**
 		 * Add support for the "TimedText" NameSpace
 		 */

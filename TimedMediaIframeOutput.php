@@ -70,16 +70,6 @@ class TimedMediaIframeOutput {
 		echo $out->getHeadLinks($skin);
 		echo $out->getHeadItems();
 	?>
-	<style>
-	body {
-		background-image:url('<?php echo $file->getThumbUrl( $thumbName )?>');
-		background-repeat:no-repeat;
-		background-attachment:fixed;
-		background-position:center;
-		background-color:#000;
-		background-size: 100%;
-	} 
-	</style>
 </head>
 <body>
 	<div id="bgimage"></div>
