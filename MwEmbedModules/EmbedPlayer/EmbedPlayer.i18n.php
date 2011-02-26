@@ -82,9 +82,9 @@ $messages['en'] = array(
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
-	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
 	'mwe-embedplayer-do_not_warn_again' => 'Standard messge for dissabling 
 future identical warnings messages',
+	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
 );
 
 /** Afrikaans (Afrikaans) */
@@ -453,7 +453,9 @@ $messages['de'] = array(
 	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden.',
 );
 
-/** Zazaki (Zazaki) */
+/** Zazaki (Zazaki)
+ * @author Mirzali
+ */
 $messages['diq'] = array(
 	'mwe-embedplayer-credit-title' => 'Sername: $1',
 	'mwe-embedplayer-loading_plugin' => 'loading plugin ...',
@@ -495,7 +497,7 @@ $messages['diq'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaykerdoğê kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(tercih biyaye)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'şıma wazenî hema/hona yew video playero rınd bıxebıtni tewsiyeya ma:<br /><b>[$1 Firefox 3.5].</b>',
+	'mwe-embedplayer-for_best_experience' => 'Seba daêna rınd kaykerdışê videoy ma <b>[Firefox $1ê tewr peyêni]</b> tewsiya kenime.',
 	'mwe-embedplayer-do_not_warn_again' => 'ına hal caverdê',
 	'mwe-embedplayer-read_before_embed' => 'kerem kerê verê nımıtışi <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">derheqê dûr ra nımıtışi de malumatê pawıtışan</a> bıwenê!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Zerreyê keyepel u blogê xo de bınımnê',

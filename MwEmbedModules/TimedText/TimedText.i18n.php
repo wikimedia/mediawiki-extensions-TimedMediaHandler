@@ -87,7 +87,7 @@ $messages['af'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Lirieke',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -116,7 +116,7 @@ $messages['be-tarask'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Загрузка выкананая',
 	'mwe-timedtext-back-btn' => 'Вярнуцца',
 	'mwe-timedtext-choose-text' => 'Выберыце тэкст',
-	'mwe-timedtext-add-timed-text' => 'Дадаць сынхранізаваны тэкст',
+	'mwe-timedtext-upload-timed-text' => 'Загрузіць субтытры',
 	'mwe-timedtext-loading-text-edit' => 'Загрузка рэдактара сынхранізаванага тэксту',
 	'mwe-timedtext-search' => 'Пошук кліпу',
 	'mwe-timedtext-layout' => 'Разьмяшчэньне',
@@ -138,6 +138,11 @@ $messages['be-tarask'] = array(
 	'mwe-timedtext-textcat-cue' => 'Сыгнальныя кропкі',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 субтытры для кліпу: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Субтытры $1 для кліпу ня знойдзеныя: $2',
+	'mwe-timedtext-request-subs' => 'Запытаць транскрыпцыю',
+	'mwe-timedtext-request-subs-desc' => 'Дадаць запыт на транскрыпцыю гэтага відэа',
+	'mwe-timedtext-request-subs-done' => 'Запыт на транскрыпцыю зроблены. [$1 Усе запыты на транскрыпцыю]',
+	'mwe-timedtext-request-subs-fail' => 'Немагчыма дадаць запыт на транскрыпцыю. Ці ўвайшлі Вы ў сыстэму?',
+	'mwe-timedtext-request-already-done' => 'Запыт на транскрыпцыю відэа ўжо быў пададзены. [$1 Усе запыты на транскрыпцыю]',
 );
 
 /** Bengali (বাংলা)
