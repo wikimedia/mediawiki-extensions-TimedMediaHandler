@@ -20,6 +20,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$this->$key = false;
 			}
 		}
+		// Init an associated textHandler
+		$this->textHandler = new TextHandler( $this->file );
 	}
 	
 	function getPosterUrl(){
@@ -129,7 +131,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			self::xmlTagSet( 'source', $mediaSources ) .
 			
 			// Timed text: 
-			self::xmlTagSet( 'track', $this->getLocalTextSources() ) .		
+			self::xmlTagSet( 'track', $this->textHandler->getTracks() ) .		
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
@@ -221,69 +223,5 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		$this->hashTime = $hash;
 		return $this->hashTime;
-	}
-	
-	function getLocalTextSources(){
-		global $wgServer, $wgScriptPath;
-		
-		// Don't do lookup if non-local path: 
-		// TODO integrate with repo api and do remote lookup
-		if( !$this->file->isLocal() ){
-			return array();
-		}
-		
-		// Check local cache: 		
-		if( $this->textTracks ){
-			return $this->textTracks;
-		}
-		// Init $this->textTracks
-		$this->textTracks = array();
-		
-		$params = new FauxRequest( array (
-			'action' => 'query',
-			'list' => 'allpages',
-			'apnamespace' => NS_TIMEDTEXT,
-			'aplimit' => 200,
-			'apprefix' => $this->file->getTitle()->getDBKey()
-		));
-		$api = new ApiMain( $params );
-		$api->execute();
-		$data = $api->getResultData();			
-		// Get the list of language Names
-		$langNames = Language::getLanguageNames();
-
-		if( $data['query'] && $data['query']['allpages'] ){
-			foreach( $data['query']['allpages'] as $na => $page ){
-				$subTitle = Title::newFromText( $page['title'] ) ;
-				$tileParts = explode( '.', $page['title'] );
-				if( count( $tileParts) >= 3 ){
-					$subtitle_extension = array_pop( $tileParts );
-					$languageKey = array_pop( $tileParts );
-				} else {
-					continue;
-				}
-				// If there is no valid language continue:
-				if( !isset( $langNames[ $languageKey ] ) ){
-					continue;
-				}
-				$this->textTracks[] = array(		
-					'kind' => 'subtitles',
-					'data-mwtitle' => $subTitle->getNsText() . ':' . $subTitle->getDBkey(),
-					'data-mwprovider' => 'local',				
-					'type' => 'text/x-srt',
-					// TODO Should add a special entry point and output proper WebVTT format:
-					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-					'src' => $subTitle->getFullURL( array( 
-						'action' => 'raw',
-						'ctype' => 'text/x-srt'
-					)),
-					'srclang' =>  $languageKey,
-					'label' => wfMsg('timedmedia-subtitle-language', 
-						$langNames[ $languageKey ], 
-						$languageKey )
-				);
-			}
-		}
-		return $this->textTracks;
-	}
+	}	
 }

@@ -34,6 +34,10 @@ ini_set( 'include_path',
 $wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
 $wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/getid3.php"; 
 
+// Text handler 
+$wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
+
+// Transcode support
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 
@@ -44,16 +48,6 @@ MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/T
 // Localization 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
-
-
-/**
- * Setup a metadata cache :(
- * 
- * Its very costly to generate metadata! I am not sure why the file repos don't get
- * instantiated with a path, and then could lazy init things like other normal objects and 
- * have a local cache of their metadata! 
- */ 
-$wgMediaHandlerMetadataCache = array();
 
 // Register all Timed Media Handler hooks: 
 TimedMediaHandlerHooks::register();
@@ -110,9 +104,9 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
  * 
  * -These transcodes are *in addition to* the source file. 
  * -Only derivatives with smaller width than the source asset size will be created
- * -At least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet
+ * -Irregardless source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet 
  * -Derivative jobs are added to the mediaWiki JobQueue the first time the asset is displayed
- * -List Derivative from min to max
+ * -Derivative should be listed min to max
  */
 $wgEnabledTranscodeSet = array(
 	// Cover accessibility for low bandwidth / low resources clients: 

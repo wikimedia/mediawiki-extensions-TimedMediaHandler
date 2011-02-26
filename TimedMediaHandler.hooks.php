@@ -67,7 +67,7 @@ class TimedMediaHandlerHooks {
 		global $wgExtraNamespaces;
 		$timedTextNS = null;
 	
-		// Make sure $wgExtraNamespaces in an array (set to NULL by default) :
+		// Make sure $wgExtraNamespaces in an array ( set to NULL by default ) :
 		if ( !is_array( $wgExtraNamespaces ) ) {
 			$wgExtraNamespaces = array();
 		}
@@ -82,9 +82,16 @@ class TimedMediaHandlerHooks {
 			}
 		}
 		
-		// If not found add Add a custom timedText NS
+		// @@TODO maybe we should fire a warning here? 
+		// Custom namespae management in mediawiki sucks :( 
+		//
+		// Since other extension use hacks like this as well.. it difficult to guarantee consistency 
+		// of the timed text namespace if LocalSettings.php $wgExtraNamespaces is modified or another
+		// extension that includes namespaces is added. 
+		// ( obviously its best if set in LocalSetting.php )
 		if( !$timedTextNS ){
-			$timedTextNS = ( $maxNS + 1 );
+			// Make sure that timedText is on an "even" page namespace: 
+			$timedTextNS = ( ($maxNS + 1)&1 )? $maxNS + 1 : $maxNS + 2;
 			$wgExtraNamespaces[	$timedTextNS ] = 'TimedText';
 			$wgExtraNamespaces[ $timedTextNS +1 ] =  'TimedText_talk';
 		}	
