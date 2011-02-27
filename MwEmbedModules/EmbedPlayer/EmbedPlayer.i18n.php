@@ -82,7 +82,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
-	'mwe-embedplayer-do_not_warn_again' => 'Standard messge for dissabling 
+	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
 );
