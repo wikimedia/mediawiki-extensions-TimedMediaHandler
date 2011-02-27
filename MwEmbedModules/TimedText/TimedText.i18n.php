@@ -236,6 +236,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'mwe-timedtext-editor' => 'Ermöglicht die Nutzung des „Timed Text“-Editors',
@@ -282,7 +283,7 @@ $messages['de'] = array(
 	'mwe-timedtext-textcat-lin' => 'Sprachliche Beschreibung',
 	'mwe-timedtext-textcat-cue' => 'Cue-Punkte',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Untertitel für den Videoclip gefunden: $2',
-	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kein $1 Untertitel für den Videoclip gefunden: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keine $1 Untertitel für den Videoclip gefunden: $2',
 	'mwe-timedtext-request-subs' => 'Untertitelung erbitten',
 	'mwe-timedtext-request-subs-desc' => 'Bitte zur Untertitelung dieses Videos hinzufügen',
 	'mwe-timedtext-request-subs-done' => 'Bitte zur Untertitelung wurde hinzugefügt. [$1 Alle Bitten zur Untertitelung ansehen]',
@@ -994,6 +995,15 @@ $messages['ja'] = array(
 	'mwe-timedtext-textcat-cue' => 'キューポイント',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mwe-timedtext-upload-text-preview' => 'Dä Täx nohkike',
+	'mwe-timedtext-upload-text-success' => 'Dä Täx es jäz huhjelaade',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Mer han kei $1 Ongertittelle jefonge för dat Shtöck: $2',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1136,7 +1146,7 @@ $messages['nl'] = array(
 	'mwe-timedtext-textcat-lin' => 'Taalkundige markup',
 	'mwe-timedtext-textcat-cue' => 'Richtpunten',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Ondertitels in het $1 voor clip: $2',
-	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen $1ondertitels gevonden voor clip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen ondertitels in de taal $1 gevonden voor clip: $2',
 	'mwe-timedtext-request-subs' => 'Transscriptieverzoek doen',
 	'mwe-timedtext-request-subs-desc' => 'Voerzoek toevoegen voor transscriptie van dit videobestand',
 	'mwe-timedtext-request-subs-done' => 'Het transscriptieverzoek is toegevoegd. U kunt [$1 alle transscriptieverzoeken bekijken].',
