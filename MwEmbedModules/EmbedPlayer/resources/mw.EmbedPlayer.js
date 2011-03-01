@@ -814,7 +814,6 @@ mw.EmbedPlayer.prototype = {
 	 */
 	setupSourcePlayer: function() {
 		mw.log("EmbedPlayer::setupSourcePlayer: " + this.id + ' sources: ' + this.mediaElement.sources.length );
-		
 		// Autoseletct the media source
 		this.mediaElement.autoSelectSource();
 

@@ -40,6 +40,7 @@ $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHan
 // Transcode support
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
+$wgAutoloadClasses['ApiQueryVideoInfo'] = "$timedMediaDir/ApiQueryVideoInfo.php";
 
 // Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
 MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );

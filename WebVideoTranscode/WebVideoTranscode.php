@@ -157,12 +157,17 @@ class WebVideoTranscode {
 	 * If no transcode is in progress or ready add the job to the jobQueue
 	 * 
 	 * @param {Object} File object
+	 * @param {Object} Options, a set of options:
+	 * 					'nodata' Strips the data- attribute, useful when your output is not html
 	 * @returns an associative array of sources suitable for <source> tag output
 	 */
-	static public function getSources( &$file ){
+	static public function getSources( &$file , $options=array() ){
 		global $wgEnabledTranscodeSet, $wgLang;
 		$sources = array();
 		
+		// Setup options
+		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
+				
 		// Add the original file: 
 		$source = array(
 			'src' => $file->getUrl(),
@@ -172,23 +177,23 @@ class WebVideoTranscode {
 								$wgLang->formatNum( $file->getHeight() ),
 								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
 							),
-			'data-shorttitle' => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),
+			"{$dataPrefix}shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),
 							
-			'data-width' => $file->getWidth(),
-			'data-height' => $file->getHeight(),
+			"{$dataPrefix}width" => $file->getWidth(),
+			"{$dataPrefix}height" => $file->getHeight(),
 			// TODO add some title and data about the file
 		);
 
-		// Just directly return audio sources ( for now no transcoding for audio ) 
+		// Just directly return audio sources ( No transcoding for audio ) 
 		if( $file->getHandler()->isAudio( $file ) ){
 			return $sources;
 		}
 		// For video include bitrate and framerate: 
 		$bitrate = $file->getHandler()->getBitrate( $file );
-		if( $bitrate ) $source['data-bandwidth'] = $bitrate;
+		if( $bitrate ) $source["{$dataPrefix}bandwidth"] = round ( $bitrate );
 		
 		$framerate = $file->getHandler()->getFramerate( $file );
-		if( $framerate ) $source['data-framerate'] = $framerate;		
+		if( $framerate ) $source["{$dataPrefix}framerate"] = $framerate;		
 		
 		// Add the source to the sources array
 		$sources[] = $source;
@@ -223,29 +228,28 @@ class WebVideoTranscode {
 				$addWebMFlag = true;
 			}
 			// Try and add the source
-			self::tryAddSource( $file, $sources,$transcodeKey );
+			self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
 		}
 		// Make sure we got at least one ogg and webm encode 
 		if( !$addOggFlag || !$addWebMFlag){
 			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['codec'] == 'theora' ){
-					self::tryAddSource( $file, $sources,$transcodeKey );
+					self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
 					$addOggFlag = true;
 				}
 				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['codec'] == 'vp8' ){
-					self::tryAddSource( $file, $sources, $transcodeKey );
+					self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
 					$addWebMFlag = true;
 				}
 			}
 		}
 		return $sources;
 	}
-	
 	/**
 	 * Try to add a source to the sources param
-	 * if the source is not found update the job queue 
+	 * if the source is not found update the job queue
 	 */
-	public static function tryAddSource( &$file, &$sources, $transcodeKey){
+	public static function tryAddSource( &$file, &$sources, $transcodeKey, $dataPrefix=''){
 		global $wgLang;
 		$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
 		
@@ -256,7 +260,7 @@ class WebVideoTranscode {
 		// if the source size is < $transcodeKey assume source size: 
 		if( is_file( $derivativeFile ) ){
 			// Estimate bandwidth: 
-			$bandwidth = intval( filesize( $derivativeFile ) /  $file->getLength() ) * 8;
+			$bandwidth = round( intval( filesize( $derivativeFile ) /  $file->getLength() ) * 8 );
 			
 			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( 
 						$file, 
@@ -269,14 +273,14 @@ class WebVideoTranscode {
 			$sources[] = array(
 				'src' => $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey,
 				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
-				'data-shorttitle' => wfMsg('timedmedia-derivative-' . $transcodeKey),
+				"{$dataPrefix}shorttitle" => wfMsg('timedmedia-derivative-' . $transcodeKey),
 				
 				// Add data attributes per emerging DASH / webTV adaptive streaming attributes
 				// eventually we will define a manifest xml entry point.
-				'data-width' => $width,
-				'data-height' => $height,
-				'data-bandwidth' => $bandwidth,
-				'data-framerate' => $framerate,					
+				"{$dataPrefix}width" => $width,
+				"{$dataPrefix}height" => $height,
+				"{$dataPrefix}bandwidth" => $bandwidth,
+				"{$dataPrefix}framerate" => $framerate,					
 			);
 		} else {
 			self::updateJobQueue($file, $transcodeKey); 				
