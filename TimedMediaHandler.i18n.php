@@ -1477,6 +1477,7 @@ $messages['mk'] = array(
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'Висококвалитетно Ogg-видео (720 пиксели)',
 	'timedmedia-derivative-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-derivative-desc-480_600kbs.webm' => 'Висококвалитетен WebM за преземање (720п)',
+	'timedmedia-derivative-720_VBR.webm' => 'WebM 720п',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
 );
