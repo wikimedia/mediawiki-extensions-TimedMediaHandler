@@ -657,7 +657,6 @@ $messages['eo'] = array(
 	'mwe-embedplayer-menu_btn' => 'Menuo',
 	'mwe-embedplayer-close_btn' => 'Fermi',
 	'mwe-embedplayer-ogg-player-selected' => '(elektita)',
-	'mwe-embedplayer-generic_missing_plugin' => 'Via retumilo ne verŝajne subtenas la jenan aŭdvidean dosiertipon: <b>$1</b><br />Vizitu la paĝon pri <a href="http://commons.wikimedia.org/wiki/Commons:Media_help">Aŭdvideaj MetodojMethods</a> por elŝuti la taŭgan kromprogramon..<br />',
 	'mwe-embedplayer-playerSelect' => 'Ludantoj',
 	'mwe-embedplayer-read_before_embed' => 'Bonvolu legi la <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">sekurecajn notojn pri ekstera enkorpigado</a> antaŭ fakte enkorpigado!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Enmeti en paĝo',
