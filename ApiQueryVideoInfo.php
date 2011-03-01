@@ -5,20 +5,20 @@
  * Alternativly core ApiQueryImageInfo could support being extended in obvious ways.
  */
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
-	
+
 	public function __construct( $query, $moduleName, $prefix = 'vi' ) {
 		// We allow a subclass to override the prefix, to create a related API module.
 		// Some other parts of MediaWiki construct this with a null $prefix, which used to be ignored when this only took two arguments
 		if ( is_null( $prefix ) ) {
 			$prefix = 'vi';
 		}
-		ApiQueryBase::__construct( $query, $moduleName, $prefix );
+		parent::__construct( $query, $moduleName, $prefix );
 	}
-	
+
 	public function getDescription() {
 		return 'Extends imageinfo to include video source information';
 	}
-	
+
 	static function getInfo( $file, $prop, $result, $thumbParams = null ) {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams = null );
 		if( isset( $prop['derivatives'] ) ){
@@ -32,19 +32,19 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		$prop[] = 'derivatives';
 		return $prop;
 	}
+
 	public static function getPropertyDescriptions() {
 		$s = parent::getPropertyDescriptions();
 		$s[] = ' derivatives 	-Adds an array of video source derivatives';
 		return $s;
 	}
-	
+
 	protected function getExamples() {
 		return array(
 			'api.php?action=query&titles=File:Folgers.ogv&prop=videoinfo',
 		);
 	}
-	
-	
+
 	/**
 	 * execute and getAllowedprops have to be verbatim copied because of static self:: references
 	 *
@@ -113,7 +113,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 					}
 					break;
 				}
-				
+
 				// Check if we can make the requested thumbnail, and get transform parameters.
 				$finalThumbParams = $this->mergeThumbParams( $img, $scale, $params['urlparam'] );
 
@@ -186,7 +186,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 			}
 		}
 	}
-	
+
 	public function getAllowedParams() {
 		return array(
 			'prop' => array(
@@ -222,5 +222,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 			'continue' => null,
 		);
 	}
-	
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
+	}
+
 }
