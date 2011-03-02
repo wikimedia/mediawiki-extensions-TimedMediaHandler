@@ -965,7 +965,8 @@ $messages['gl'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos a <b>[$1 última versión do Firefox].</b>',
 	'mwe-embedplayer-download-warn' => 'Non se detectou ningún reprodutor compatible co navegador; para unha mellor experiencia de reprodución de vídeo recomendamos a [$1 última versión do Firefox]',
-	'mwe-embedplayer-do_not_warn_again' => 'Agochar polo de agora.',
+	'mwe-embedplayer-fullscreen-tip' => 'Prema <b>F11</b> para activar ou desactivar a pantalla completa do <i>navegador web</i>',
+	'mwe-embedplayer-do_not_warn_again' => 'Non mostrar esta mensaxe no futuro.',
 	'mwe-embedplayer-playerSelect' => 'Reprodutores',
 	'mwe-embedplayer-read_before_embed' => 'Por favor, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">olle isto</a> antes da incrustación.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar nunha páxina',
@@ -2074,6 +2075,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
@@ -2129,7 +2131,8 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos::<br /><b>[$1 Firefox 3.5].</b>',
 	'mwe-embedplayer-download-warn' => 'Não foi encontrado nenhum leitor compatível que possa ser integrado no browser; para reproduzir no browser faça o download da [$1 última versão do Firefox]',
-	'mwe-embedplayer-do_not_warn_again' => 'Ignorar por agora.',
+	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para activar ou desactivar o modo de ecrã-inteiro no <i>browser</i>',
+	'mwe-embedplayer-do_not_warn_again' => 'No futuro, não mostrar esta mensagem',
 	'mwe-embedplayer-playerSelect' => 'Leitores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Leia isto</a> antes de incorporar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar numa página',
