@@ -78,8 +78,8 @@ mediaSource.prototype = {
 		// Set default URLTimeEncoding if we have a time url:
 		// not ideal way to discover if content is on an oggz_chop server.
 		// should check some other way.
-		var pUrl = mw.parseUri ( this.src );
-		if ( typeof pUrl[ 'queryKey' ][ 't' ] != 'undefined' ) {
+		var pUrl = new mw.Uri ( this.src );
+		if ( typeof pUrl.query[ 't' ] != 'undefined' ) {
 			this.URLTimeEncoding = true;
 		}
 
@@ -263,11 +263,13 @@ mediaSource.prototype = {
 			break;
 		}
 
-		// Return tilte based on file name:
-		var urlParts = mw.parseUri( this.getSrc() );
-		if( urlParts.file ){
-			return urlParts.file;
-		}
+		// Return title based on file name:
+		try{
+			var fileName = new mw.Uri( this.getSrc() ).path.split('/').pop();
+			if( fileName ){
+				return fileName;
+			}
+		} catch(e){}
 
 		// Return the mime type string if not known type.
 		return this.mimeType;
@@ -282,9 +284,9 @@ mediaSource.prototype = {
 	getURLDuration : function() {
 		// check if we have a URLTimeEncoding:
 		if ( this.URLTimeEncoding ) {
-			var annoURL = mw.parseUri( this.src );
-			if ( annoURL.queryKey.t ) {
-				var times = annoURL.queryKey.t.split( '/' );
+			var annoURL = new mw.Uri( this.src );
+			if ( annoURL.query.t ) {
+				var times = annoURL.query.t.split( '/' );
 				this.start_npt = times[0];
 				this.end_npt = times[1];
 				this.startOffset = mw.npt2seconds( this.start_npt );
@@ -313,9 +315,14 @@ mediaSource.prototype = {
 		// we can issue a HEAD request and read the mime type of the media...
 		// ( this will detect media mime type independently of the url name )
 		// http://www.jibbering.com/2002/4/httprequest.html
-		var urlParts =  mw.parseUri( uri );
+		var ext ='';
+		try{
+			ext = /[^.]+$/.exec( new mw.Uri( uri ).path );
+		} catch ( e){ 
+			ext =  /[^.]+$/.exec( uri );	
+		};
+		
 		// Get the extension from the url or from the relative name: 
-		var ext = ( urlParts.file )?  /[^.]+$/.exec( urlParts.file )  :  /[^.]+$/.exec( uri );
 		switch( ext.toString().toLowerCase() ) {
 			case 'smil':
 			case 'sml':

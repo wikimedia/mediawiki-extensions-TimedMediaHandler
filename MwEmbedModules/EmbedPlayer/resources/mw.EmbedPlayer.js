@@ -1160,7 +1160,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Update Thumbnail for the "player"
 		this.updatePosterHTML();
-		
+	
 		// Add controls if enabled:
 		if ( this.controls ) {
 			this.controlBuilder.addControls();

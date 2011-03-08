@@ -14,8 +14,8 @@
     <script type="text/javascript">
     	mw.ready( function(){
         	// check for hash:
-        	var urlParts = mw.parseUri( document.URL);
-        	if( urlParts.anchor ){
+        	var urlParts = new mw.Uri( document.URL);
+        	if( urlParts.fragment ){
 				// run the start offset:
 				var startTime = urlParts.anchor.split('=')[1];
 

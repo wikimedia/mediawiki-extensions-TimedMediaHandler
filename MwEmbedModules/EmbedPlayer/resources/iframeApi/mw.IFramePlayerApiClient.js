@@ -25,8 +25,8 @@ mw.IFramePlayerApiClient.prototype = {
 		this.iframe = iframe;
 		this.playerProxy = playerProxy;
 		// Set the iframe server
-		var srcParts = mw.parseUri( mw.absoluteUrl( $(this.iframe).attr('src') ) );
-		this.iframeServer = srcParts.protocol + '://' + srcParts.authority;
+		var srcParts = new mw.Uri( mw.absoluteUrl( $(this.iframe).attr('src') ) );
+		this.iframeServer = srcParts.protocol + '://' + srcParts.getAuthority();
 		
 		this.addPlayerSendApi();
 		this.addPlayerReciveApi();

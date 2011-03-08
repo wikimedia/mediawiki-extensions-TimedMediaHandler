@@ -22,6 +22,9 @@
 				'dependencies' => array(
 					// mwEmbed support module 
 					'mwEmbedSupport',
+					'mediawiki.client',
+					'mediawiki.UtilitiesTime',
+					'mediawiki.Uri',
 				
 					// Sub classes:
 					'MediaElement',
@@ -30,6 +33,7 @@
 					'mw.EmbedTypes',
 				
 					// jQuery dependencies: 
+					'jquery.client',
 					'jquery.hoverIntent',
 					'jquery.cookie',
 					'jquery.ui.mouse',

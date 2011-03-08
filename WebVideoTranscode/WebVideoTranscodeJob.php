@@ -107,7 +107,7 @@ class WebVideoTranscodeJob extends Job {
 			array( 'LIMIT' => $limit + 1 )
 		);
 		foreach ( $res as $page ) {
-			$title = Title::makeTitle( $element->page_namespace, $page->page_title );
+			$title = Title::makeTitle( $page->page_namespace, $page->page_title );
 			$title->invalidateCache();
 		}		
 	}

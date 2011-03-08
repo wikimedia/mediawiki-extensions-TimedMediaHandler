@@ -40,7 +40,7 @@ mw.EmbedPlayerKplayer = {
 		flashvars.entryId = mw.absoluteUrl(_this.getSrc());
 
 		// Use a relative url if the protocal is file://
-		if (mw.parseUri(document.URL).protocol == 'file') {
+		if ( new mw.Uri( document.URL ).protocol == 'file' ) {
 			playerPath = mw.getRelativeMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
 			flashvars.entryId = _this.getSrc();
 		}

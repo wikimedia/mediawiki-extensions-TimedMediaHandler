@@ -379,15 +379,13 @@ mediaElement.prototype = {
 	/**
 	 * Get playable sources
 	 *
-	 * @returns {Array} of playable sources
+	 * @returns {Array} of playable media sources
 	 */
 	getPlayableSources: function() {
 		 var playableSources = [];
 		 for ( var i = 0; i < this.sources.length; i++ ) {
 			 if ( this.isPlayableType( this.sources[i].mimeType ) ) {
 				 playableSources.push( this.sources[i] );
-			 } else {
-				 mw.log( "type " + this.sources[i].mimeType + ' is not playable' );
 			 }
 		 };
 		 return playableSources;

@@ -29,9 +29,7 @@ class TimedMediaHandlerHooks {
 			'webVideoTranscode' => 'WebVideoTranscodeJob'
 		);
 		// Transcode jobs must be explicitly requested from the job queue: 
-		$wgJobExplitRequestTypes+= array(
-			'webVideoTranscode'
-		);
+		$wgJobExplitRequestTypes[] = 'webVideoTranscode';
 		
 		$baseExtensionResource = array(
 			'localBasePath' => dirname( __FILE__ ),
@@ -49,6 +47,7 @@ class TimedMediaHandlerHooks {
 				'styles' => 'resources/embedPlayerIframe.css',
 			)
 		);
+		
 		// We should probably move this to a parser function but not working correctly in 
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
@@ -56,10 +55,10 @@ class TimedMediaHandlerHooks {
 
 		// Exclude transcoded assets from normal thumbnail purging 
 		// ( a mantaince script could handle transcode asset purging) 
-		$wgExcludeFromThumbnailPurge += $wgTimedMediaHandlerFileExtensions;
+		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $wgTimedMediaHandlerFileExtensions );
 		// Also add the .log file ( used in two pass encoding ) 
 		// ( probably should move in-progress encodes out of web accessible directory )
-		$wgExcludeFromThumbnailPurge+= array( 'log');
+		$wgExcludeFromThumbnailPurge[] = 'log';
 
 		// Api hooks for derivatives and query video derivatives 
 		$wgAPIPropModules += array(

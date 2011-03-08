@@ -717,7 +717,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		mw.log('trigger::addControlBindingsEvent');
 		$( embedPlayer ).trigger( 'addControlBindingsEvent');
-		
+
 		// TODO should break out all control components into their own class and have them work with bindings
 		$( embedPlayer ).bind('SourceChange', function(){
 			if( _this.supportedComponets['sourceSwitch'] ){
@@ -1526,7 +1526,7 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	showDownloadWithSources : function( $target ) {
 		var _this = this;
-		mw.log( 'showDownloadWithSources::' + $target.length );
+		mw.log( 'PlayerControlBuilder::showDownloadWithSources::' + $target.length );
 		var embedPlayer = this.embedPlayer;
 		// Empty the target:
 		$target.empty();
@@ -1535,7 +1535,7 @@ mw.PlayerControlBuilder.prototype = {
 		var $textList =  $( '<ul />' );
 		$j.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if( source.getSrc() ) {
-				mw.log("showDownloadWithSources:: Add src: " + source.getTitle() );
+				mw.log("PlayerControlBuilder::showDownloadWithSources:: Add src: " + source.getTitle() );
 				var $dl_line = $( '<li />').append(
 					$('<a />')
 					.attr( 'href', source.getSrc() )
@@ -1556,6 +1556,7 @@ mw.PlayerControlBuilder.prototype = {
 
 			}
 		} );
+		
 		if( $mediaList.find('li').length != 0 ) {
 			$target.append(
 				$('<h2 />')

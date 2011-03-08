@@ -202,7 +202,7 @@ mw.IFramePlayerApiServer.prototype = {
 			}
 			// @@FIXME we should also check protocol to avoid
 			// http vs https
-			var originDomain = mw.parseUri( origin ).host;
+			var originDomain = new mw.Uri( origin ).host;
 			
 			// Check the domains: 
 			for ( var i =0; i < domainWhiteList.length; i++ ) {
