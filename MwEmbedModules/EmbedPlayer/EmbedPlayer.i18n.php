@@ -2049,7 +2049,8 @@ $messages['pms'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => "Per na vision pi bon-a i arcomandoma l'<b>[$1 ùltim Firefox].</b>",
 	'mwe-embedplayer-download-warn' => "A son pa stàit trovà gnun letor compatìbij ant ël browser, për letor dël browser për piasì dëscaria l'[ùltim $1 Firefox]",
-	'mwe-embedplayer-do_not_warn_again' => 'Anterompe për adess.',
+	'mwe-embedplayer-fullscreen-tip' => 'Sgnaca <b>F11</b> për passé al <i>web browser</i> a tut scherm',
+	'mwe-embedplayer-do_not_warn_again' => "Ant l'avnì, mosta pa pi sto mëssagi",
 	'mwe-embedplayer-playerSelect' => 'Letor',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Les sossì</a> prima d\'ancorporé.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Ancorporé an sna pàgina',
@@ -2647,9 +2648,12 @@ $messages['vi'] = array(
 	'mwe-embedplayer-copy-code' => 'Chép mã',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
 	'mwe-embedplayer-download' => '下载',
+	'mwe-embedplayer-share' => '分享',
 	'mwe-embedplayer-close_btn' => '关闭',
 	'mwe-embedplayer-ogg-player-selected' => '（已选取）',
 );
