@@ -84,8 +84,7 @@
 }
 
 .k-player .play_head {
-	background: url("images/ksprite.png") repeat-x scroll 0 -350px
-		transparent;
+	background: url("images/ksprite.png") repeat-x scroll 0 -350px transparent;
 	display: inline;
 	float: left;
 	margin-left: 10px;
@@ -96,8 +95,7 @@
 }
 
 .k-player .play_head .ui-slider-handle {
-	background: url("images/ksprite.png") no-repeat scroll -67px -341px
-		transparent;
+	background: url("images/ksprite.png") no-repeat scroll -67px -341px transparent;
 	border: 1px solid #888888;
 	display: block;
 	height: 8px;

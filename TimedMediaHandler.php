@@ -5,6 +5,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
+if( !class_exists( 'MwEmbedResourceManager' ) ){
+	echo "TimedMediaHandler requires the MwEmbedSupport extension.\n";
+	exit( 1 );
+}
+
 // Set up the timed media handler dir: 
 $timedMediaDir = dirname(__FILE__);
 
@@ -60,6 +65,7 @@ $wgExtensionCredits['media'][] = array(
 	'author'         => array( 'Michael Dale', 'Tim Starling' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmedia-desc',
+	'version'		 => '0.2',
 );
 
 

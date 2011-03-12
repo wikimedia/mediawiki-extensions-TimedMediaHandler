@@ -1134,7 +1134,7 @@ mw.PlayerControlBuilder.prototype = {
 				 gM( 'mwe-embedplayer-download' ),
 				'disk',
 				function( ) {
-					ctrlObj.displayMenuOverlay( gM('mwe-loading_txt' ) );
+					ctrlObj.displayMenuOverlay( gM('mwe-loading' ) );
 					// Call show download with the target to be populated
 					ctrlObj.showDownload(
 						ctrlObj.embedPlayer.$interface.find( '.overlay-content' )
@@ -1978,7 +1978,7 @@ mw.PlayerControlBuilder.prototype = {
 					.css({
 						"position" : 'absolute',
 						"left" : '33px',
-						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 20) + 'px'
+						"right" : ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 35) + 'px'
 					})
 					// Playhead binding
 					.slider( sliderConfig );

@@ -46,7 +46,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	/**
-	 * execute and getAllowedprops have to be verbatim copied because of static self:: references
+	 * Execute and getAllowedprops have to be copied verbatim because of static self:: references
 	 *
 	 * With late static binding this would be avoidable:
 	 * http://php.net/manual/en/language.oop5.late-static-bindings.php

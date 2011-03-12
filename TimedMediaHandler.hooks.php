@@ -54,7 +54,7 @@ class TimedMediaHandlerHooks {
 		
 
 		// Exclude transcoded assets from normal thumbnail purging 
-		// ( a mantaince script could handle transcode asset purging) 
+		// ( a maintenance script could handle transcode asset purging) 
 		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $wgTimedMediaHandlerFileExtensions );
 		// Also add the .log file ( used in two pass encoding ) 
 		// ( probably should move in-progress encodes out of web accessible directory )

@@ -110,11 +110,9 @@
 		dependencySet = $.unique( dependencySet );
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){
-			setTimeout(function(){
-				mw.processEmbedPlayers( playerSelect, readyCallback );
-			},1000);
+			mw.processEmbedPlayers( playerSelect, readyCallback );
 		}, function( e ){
-			//throw new Error( 'Error loading EmbedPlayer dependency set' );
+			throw new Error( 'Error loading EmbedPlayer dependency set' );
 		});
 	};
 

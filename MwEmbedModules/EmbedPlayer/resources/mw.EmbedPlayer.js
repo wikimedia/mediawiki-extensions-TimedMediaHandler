@@ -9,6 +9,7 @@
 
 ( function( mw, $ ) {
 
+	
 /** 
  * Merge in the default video attributes supported by embedPlayer:
  */
