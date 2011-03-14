@@ -747,6 +747,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-more' => 'Plus…',
 	'timedmedia-dismiss' => 'Fermer',
 	'timedmedia-download' => 'Télécharger le fichier',
+	'timedmedia-play-media' => 'Lire le média',
 	'timedmedia-desc-link' => 'À propos de ce fichier',
 	'timedmedia-oggThumb-version' => 'OggHandler nécessite oggThumb, version $1 ou supérieure.',
 	'timedmedia-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
@@ -2229,7 +2230,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'timedmedia-desc' => 'Tagahawak para sa mga talaksang Ogg Theora at Vorbis, na may panugtog/pampaandar na JavaScript',
+	'timedmedia-desc' => 'Tagahawak para sa audio, bidyo at inoorasang teksto, na may pagtangkilik ng anyo para sa WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => '$1 na talaksang pangtunog ng Ogg, $2',
 	'timedmedia-ogg-short-video' => "$1 talaksang pampalabas (''video'') ng Ogg, $2",
 	'timedmedia-ogg-short-general' => '$1 talaksang pangmidya ng Ogg, $2',
