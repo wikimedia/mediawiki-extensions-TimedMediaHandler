@@ -47,11 +47,11 @@ class WebVideoTranscodeJob extends Job {
 		}
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 				
-		$this->output( "Encoding to codec: " . $options['codec'] );
+		$this->output( "Encoding to codec: " . $options['videoCodec'] );
 		// Check the codec see which encode method to call;
-		if( $options['codec'] == 'theora' ){
+		if( $options['videoCodec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $file, $destinationFile, $options );
-		} else if( $options['codec'] == 'vp8' ){			
+		} else if( $options['videoCodec'] == 'vp8' ){			
 			// Check for twopass:
 			if( isset( $options['twopass'] ) ){
 				// ffmpeg requires manual two pass

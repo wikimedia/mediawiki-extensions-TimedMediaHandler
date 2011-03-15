@@ -59,7 +59,7 @@ class WebVideoTranscode {
 				'twopass' 			=> 'true',
 				'keyframeInterval'	=> '64',
 				'bufDelay'			=> '128',
-				'codec' 			=> 'theora',
+				'videoCodec' 			=> 'theora',
 			),
 	   WebVideoTranscode::ENC_OGV_4MBS =>
 			array(
@@ -70,7 +70,7 @@ class WebVideoTranscode {
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
-				'codec' 			=> 'theora',
+				'videoCodec' 			=> 'theora',
 			),
 		WebVideoTranscode::ENC_OGV_6MBS =>
 			array(
@@ -81,7 +81,7 @@ class WebVideoTranscode {
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
-				'codec' 			=> 'theora',
+				'videoCodec' 			=> 'theora',
 			),
 
 		WebVideoTranscode::ENC_OGV_HQ_VBR =>
@@ -91,7 +91,7 @@ class WebVideoTranscode {
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
 				'keyframeInterval'	=> '128',
-				'codec' 			=> 'theora',
+				'videoCodec' 			=> 'theora',
 			),	
 			
 		// WebM transcode:
@@ -104,7 +104,7 @@ class WebVideoTranscode {
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
-				'codec' 			=> 'vp8',
+				'videoCodec' 			=> 'vp8',
 			),
 		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
 			 array(
@@ -112,7 +112,7 @@ class WebVideoTranscode {
 				'videoQuality'		=> 7,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
-				'codec' 			=> 'vp8',
+				'videoCodec' 			=> 'vp8',
 			)
 	);
 	
@@ -214,7 +214,7 @@ class WebVideoTranscode {
 		
 		foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 			$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
-			$codec =  self::$derivativeSettings[$transcodeKey]['codec'];
+			$codec =  self::$derivativeSettings[$transcodeKey]['videoCodec'];
 			// Check if we should add derivative to job queue 
 			// Skip if we have both an Ogg & WebM and if target encode larger than source
 			if( self::isTargetLargerThanFile( $file, self::$derivativeSettings[$transcodeKey]['maxSize']) ){				
@@ -233,11 +233,11 @@ class WebVideoTranscode {
 		// Make sure we got at least one ogg and webm encode 
 		if( !$addOggFlag || !$addWebMFlag){
 			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
-				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['codec'] == 'theora' ){
+				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'theora' ){
 					self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
 					$addOggFlag = true;
 				}
-				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['codec'] == 'vp8' ){
+				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'vp8' ){
 					self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
 					$addWebMFlag = true;
 				}
