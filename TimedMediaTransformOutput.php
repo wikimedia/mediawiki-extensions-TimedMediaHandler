@@ -24,7 +24,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->textHandler = new TextHandler( $this->file );
 	}
 	
-	function getPosterUrl(){
+	/**
+	 * Get the media transform thumbnail
+	 */
+	function getUrl(){
 		global $wgStylePath;
 		if ( $this->isVideo && $this->thumbUrl ) {
 			return $this->thumbUrl;
@@ -32,6 +35,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// else return the fileicon for the poster url: 
 		return "$wgStylePath/common/images/icons/fileicon-ogg.png";		
 	}
+	
 	
 	function getPlayerHeight(){
 		// Check if "video" tag output:
@@ -84,7 +88,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			),
 				Xml::tags( 'img', array(
 					'style' => 'width:100%;height:100%;',
-					'src' =>  $this->getPosterUrl(),
+					'src' =>  $this->getUrl(),
 				),'')
 				.
 				// For javascript disabled browsers provide a link to the asset:
@@ -152,7 +156,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$mediaAttr = array(			
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			'style' => "width:{$width}px;height:{$height}px",
-			'poster' => $this->getPosterUrl(),
+			'poster' => $this->getUrl(),
 			'alt' => $this->file->getTitle()->getText(),
 		
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface

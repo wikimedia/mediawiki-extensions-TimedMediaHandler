@@ -253,7 +253,7 @@ class WebVideoTranscode {
 		global $wgLang;
 		$derivativeFile = self::getDerivativeFilePath( $file, $transcodeKey);
 		
-		$thumbName = $file->thumbName( array() );		
+		$thumbName = $file->thumbName( array() );
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );
 	
