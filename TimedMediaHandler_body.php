@@ -155,7 +155,9 @@ class TimedMediaHandler extends MediaHandler {
 	
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
-	
+		
+		$params['width'] = ( isset( $params['width'] ) )? $params['width'] : $srcWidth;
+		
 		$options = array(
 			'file' => $file,
 			'length' => $this->getLength( $file ),

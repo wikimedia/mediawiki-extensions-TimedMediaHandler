@@ -12,7 +12,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 	
 	function __construct( $conf ){
-		$options = array( 'file', 'sources', 'thumbUrl','start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
+		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl','start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
@@ -35,7 +35,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// else return the fileicon for the poster url: 
 		return "$wgStylePath/common/images/icons/fileicon-ogg.png";		
 	}
-	
+	// TODO get the local path
+	function getPath(){
+		return $this->dstPath;
+	}
 	
 	function getPlayerHeight(){
 		// Check if "video" tag output:
