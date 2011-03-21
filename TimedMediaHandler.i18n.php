@@ -2297,9 +2297,10 @@ $messages['tt-cyrl'] = array(
  * @author Ahonc
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
-	'timedmedia-desc' => 'Оброблювач файлів Ogg Theora і Vorbis з використанням JavaScript-програвача',
+	'timedmedia-desc' => 'Оброблювач для аудіо, відео і субтитрів з підтримкою форматів WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Звуковий файл Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Відео-файл Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Файл Ogg $1, $2',
