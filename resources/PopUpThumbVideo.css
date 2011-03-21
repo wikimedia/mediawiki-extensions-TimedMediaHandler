@@ -6,9 +6,11 @@
 	height: 53px;
 	margin-left: -35px;
 	margin-top: -25px;
+	/* @embed */
 	background-image:url('player_big_play_button.png');
 }
 .PopUpMediaTransform a .play-btn-large :hover{
+	/* @embed */
 	background-image:url('player_big_play_button_hover.png');
 }
 .PopUpMediaTransform { 
