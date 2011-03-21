@@ -10,7 +10,7 @@
 class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
-		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobExplitRequestTypes, 
+		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, 
 			$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, 
 			$wgTimedMediaHandlerFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules;
 
@@ -29,7 +29,7 @@ class TimedMediaHandlerHooks {
 			'webVideoTranscode' => 'WebVideoTranscodeJob'
 		);
 		// Transcode jobs must be explicitly requested from the job queue: 
-		$wgJobExplitRequestTypes[] = 'webVideoTranscode';
+		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 		
 		$baseExtensionResource = array(
 			'localBasePath' => dirname( __FILE__ ),
