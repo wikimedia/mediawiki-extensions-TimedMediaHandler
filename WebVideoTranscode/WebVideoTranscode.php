@@ -61,7 +61,7 @@ class WebVideoTranscode {
 				'bufDelay'			=> '128',
 				'videoCodec' 			=> 'theora',
 			),
-	   WebVideoTranscode::ENC_OGV_4MBS =>
+		WebVideoTranscode::ENC_OGV_4MBS =>
 			array(
 				'maxSize'			=> '360',
 				'videoBitrate'		=> '368',

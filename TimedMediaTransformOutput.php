@@ -83,27 +83,28 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	
 	function getImagePopUp(){
 		return Xml::tags( 'div' , array(
-			'id' => "ogg_thumbplayer_" . TimedMediaTransformOutput::$serial++,
-			'class' => 'PopUpMediaTransform',
-			'style' => "width:" . intval( $this->width ) . "px;height:" . 
-						intval( $this->getPlayerHeight() ) . "px",
-			'data-videopayload' => $this->getXmlMediaTagOutput( $this->getPopupPlayerSize() ),
+				'id' => "ogg_thumbplayer_" . TimedMediaTransformOutput::$serial++,
+				'class' => 'PopUpMediaTransform',
+				'style' => "width:" . intval( $this->width ) . "px;height:" . 
+							intval( $this->getPlayerHeight() ) . "px",
+				'data-videopayload' => $this->getXmlMediaTagOutput( $this->getPopupPlayerSize() ),
 			),
-				Xml::tags( 'img', array(
-					'style' => 'width:100%;height:100%;',
-					'src' =>  $this->getUrl(),
-				),'')
-				.
-				// For javascript disabled browsers provide a link to the asset:
-				Xml::tags( 'a', array(
+			Xml::tags( 'img', array(
+				'style' => 'width:100%;height:100%;',
+				'src' =>  $this->getUrl(),
+			),'')
+			.
+			// For javascript disabled browsers provide a link to the asset:
+			Xml::tags( 'a', array(
 					'href'=> $this->file->getUrl(),
 					'title' => wfMsg( 'timedmedia-play-media' )
 				), '<b></b>'. // why is the a child tag escaped unless there is an html string prefix? 
-					Xml::tags( 'div', array(
+				Xml::tags( 'div', array(
 						'target' => '_new',
 						'class' => 'play-btn-large'
-					), '')
+					), ''
 				)
+			)
 		);
 	}
 	

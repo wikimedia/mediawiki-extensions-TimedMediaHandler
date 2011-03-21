@@ -152,24 +152,24 @@ class WebVideoTranscodeJob extends Job {
 			$cmd.= $this->ffmpegAddVideoOptions( $file, $target, $options, $pass );
 		}
 							   
-	    // Check for start time
+		// Check for start time
 		if( isset( $options['starttime'] ) ){
 			$cmd.= ' -ss ' . wfEscapeShellArg( $options['starttime'] );
 		} else {
 			$options['starttime'] = 0;
 		}
-	    // Check for end time:
-	    if( isset( $options['endtime'] ) ){
-	    	$cmd.= ' -t ' . intval( $options['endtime'] )  - intval($options['starttime'] ) ;
-	    }
-	    
-	    if ( $pass == 1 || isset( $options['noaudio'] ) ) {
-	    	$cmd.= ' -an';
-	    } else {
-	    	$cmd.= $this->ffmpegAddAudioOptions( $file, $target, $options, $pass );
-	    }	    	    
+		// Check for end time:
+		if( isset( $options['endtime'] ) ){
+		$cmd.= ' -t ' . intval( $options['endtime'] )  - intval($options['starttime'] ) ;
+		}
 
-	    // Output WebM
+		if ( $pass == 1 || isset( $options['noaudio'] ) ) {
+		$cmd.= ' -an';
+		} else {
+		$cmd.= $this->ffmpegAddAudioOptions( $file, $target, $options, $pass );
+		}	    	    
+
+		// Output WebM
 		$cmd.=" -f webm";
 		
 		if ( $pass != 0 ) {
@@ -230,56 +230,56 @@ class WebVideoTranscodeJob extends Job {
 			// Get size transform ( if maxSize is > file, file size is used:
 			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );			      	
 			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
-	    } else if ( 
-	    	(isset( $options['width'] ) && $options['width'] > 0 ) 
+		} else if ( 
+			(isset( $options['width'] ) && $options['width'] > 0 ) 
 			&&
 			(isset( $options['height'] ) && $options['height'] > 0 ) 
-	    ){
+		){
 			$cmd.= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
-	    }
-	    
+		}
+		
 		// Handle crop:
-	    $optionMap = array(
-	    	'cropTop' => '-croptop',
-	    	'cropBottom' => '-cropbottom',
-	    	'cropLeft' => '-cropleft',
-	    	'cropRight' => '-cropright'
-	    );
-	    foreach( $optionMap as $name => $cmdArg ){
-	    	if( isset($options[$name]) ){
-	    		$cmd.= " $cmdArg " .  wfEscapeShellArg( $options[$name] );
-	    	}
-	    }
-	    
-	    // Check for keyframeInterval
-	    if( isset( $options['keyframeInterval'] ) ){
-	    	$cmd.= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
-	    	$cmd.= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeInterval'] );
-	    }
-	    if( isset( $options['deinterlace'] ) ){
-	    	$cmd.= ' -deinterlace';
-	    }
-	    
-	    return $cmd;
+		$optionMap = array(
+			'cropTop' => '-croptop',
+			'cropBottom' => '-cropbottom',
+			'cropLeft' => '-cropleft',
+			'cropRight' => '-cropright'
+		);
+		foreach( $optionMap as $name => $cmdArg ){
+			if( isset($options[$name]) ){
+				$cmd.= " $cmdArg " .  wfEscapeShellArg( $options[$name] );
+			}
+		}
+
+		// Check for keyframeInterval
+		if( isset( $options['keyframeInterval'] ) ){
+			$cmd.= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
+			$cmd.= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeInterval'] );
+		}
+		if( isset( $options['deinterlace'] ) ){
+			$cmd.= ' -deinterlace';
+		}
+
+		return $cmd;
 	}
-	
+
 	function ffmpegAddAudioOptions( $file, $target, $options, $pass){
 		$cmd ='';
 		if( isset( $options['audioQuality'] ) ){
 			$cmd.= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
 		}			   
 		if( isset( $options['audioBitrate'] )){
-	    	$cmd.= ' -ab ' . intval( $options['audioBitrate'] ) * 1000;
-	    }
-	    if( isset( $options['samplerate'] ) ){
-	    	$cmd.= " -ar " .  wfEscapeShellArg( $options['samplerate'] );
-	    }
-	    if( isset( $options['channels'] )){
-	    	$cmd.= " -ac " . wfEscapeShellArg( $options['channels'] );
-	    }
-	    // Always use vorbis for audio:
-	  	$cmd.= " -acodec libvorbis ";
-	  	return $cmd;
+			$cmd.= ' -ab ' . intval( $options['audioBitrate'] ) * 1000;
+		}
+		if( isset( $options['samplerate'] ) ){
+			$cmd.= " -ar " .  wfEscapeShellArg( $options['samplerate'] );
+		}
+		if( isset( $options['channels'] )){
+			$cmd.= " -ac " . wfEscapeShellArg( $options['channels'] );
+		}
+		// Always use vorbis for audio:
+		$cmd.= " -acodec libvorbis ";
+		return $cmd;
 	}
 	
 	
