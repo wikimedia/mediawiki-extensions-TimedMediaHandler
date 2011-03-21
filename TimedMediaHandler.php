@@ -111,8 +111,8 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
  * 
  * -These transcodes are *in addition to* the source file. 
  * -Only derivatives with smaller width than the source asset size will be created
- * -Irregardless source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet 
- * -Derivative jobs are added to the mediaWiki JobQueue the first time the asset is displayed
+ * -Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet 
+ * -Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed
  * -Derivative should be listed min to max
  */
 $wgEnabledTranscodeSet = array(
