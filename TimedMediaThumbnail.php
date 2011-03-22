@@ -4,7 +4,7 @@ class TimedMediaThumbnail {
 	static function get( $options ){
 		global $wgFFmpegLocation, $wgOggThumbLocation;
 		$thumbtime = self::getThumbTime( $options );
-		
+
 		// Set up lodal pointer to file
 		$file = $options['file'];
 		if( !is_dir( dirname( $options['dstPath'] ) ) ){
@@ -40,9 +40,17 @@ class TimedMediaThumbnail {
 		}
 		
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
-			' -t '. intval( $options['thumbtime'] ) . ' ' .
-			' -n ' . wfEscapeShellArg( $options['dstPath'] ) . ' ' .
+			' -t '. intval( $options['thumbtime'] ) . ' ';
+		
+		// Setting height to 0 will keep aspect: 
+		// http://dev.streamnik.de/75.html
+		if( isset( $options['width'] ) ){
+			$cmd.= ' -s ' . intval( $options['width'] ) . 'x0 ';
+		}
+		
+		$cmd.= ' -n ' . wfEscapeShellArg( $options['dstPath'] ) . ' ' .
 			' ' . wfEscapeShellArg( $options['file']->getPath() ) . ' 2>&1';
+		
 		$returnText = wfShellExec( $cmd, $retval );
 		
 		// Check if it was successful
@@ -59,8 +67,13 @@ class TimedMediaThumbnail {
 		}
 		
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -i ' . wfEscapeShellArg( $options['file']->getPath() ) .
-			' -ss ' . intval( $options['thumbtime'] ) .
+			' -i ' . wfEscapeShellArg( $options['file']->getPath() );
+		// Set the output size if set in options: 
+		if( isset( $options['width'] ) && isset( $options['height'] ) ){
+			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
+		}
+		
+		$cmd.=' -ss ' . intval( $options['thumbtime'] ) .
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .

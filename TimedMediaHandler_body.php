@@ -42,13 +42,18 @@ class TimedMediaHandler extends MediaHandler {
 	}
 	
 	function makeParamString( $params ) {
+		// Add the width param string ( same as images {width}px )
+		$paramString ='';
+		$paramString.= ( isset( $params['width'] ) )?  $params['width'] . 'px' : '';
+		$paramString.= ( $paramString != '' )? '-' : '';
+		
 		if ( isset( $params['thumbtime'] ) ) {
 			$time = $this->parseTimeString( $params['thumbtime'] );
 			if ( $time !== false ) {
-				return 'seek=' . $time;
+				return $paramString. 'seek=' . $time;
 			}
 		}
-		return 'mid';
+		return $paramString ;
 	}
 
 	function parseParamString( $str ) {
@@ -60,7 +65,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	function normaliseParams( $image, &$params ) {
-		$timeParam = array('thumbtime', 'start', 'end');
+		$timeParam = array( 'thumbtime', 'start', 'end' );
 		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach($timeParam as $pn){
 			if ( isset( $params[$pn] ) ) {
@@ -163,7 +168,7 @@ class TimedMediaHandler extends MediaHandler {
 			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
-			'height' =>  $srcWidth == 0 ? $srcHeight : $params['width']* $srcHeight / $srcWidth,
+			'height' =>  $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth ),
 			'isVideo' => !$this->isAudio( $file ),
 			'thumbtime' => ( isset( $params['thumbtime'] ) )? $params['thumbtime'] : intval( $file->getLength() / 2 ),
 			'start' => ( isset( $params['start'] ) )? $params['start'] : false,
@@ -183,7 +188,7 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $flags & self::TRANSFORM_LATER ) {
 			return new TimedMediaTransformOutput($options);
 		}
-
+		
 		// Generate thumb:
 		$thumbStatus = TimedMediaThumbnail::get( $options );
 		if( $thumbStatus !== true ){

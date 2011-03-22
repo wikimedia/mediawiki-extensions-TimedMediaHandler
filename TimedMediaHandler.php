@@ -10,7 +10,7 @@ if( !class_exists( 'MwEmbedResourceManager' ) ){
 	exit( 1 );
 }
 
-// Set up the timed media handler dir: 
+// Set up the timed media handler dir:
 $timedMediaDir = dirname(__FILE__);
 
 $wgTimedMediaHandlerFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
