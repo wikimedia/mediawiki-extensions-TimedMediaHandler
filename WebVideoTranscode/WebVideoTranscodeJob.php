@@ -288,13 +288,13 @@ class WebVideoTranscodeJob extends Job {
 	 * ffmpeg2Theora mapping is much simpler since it is the basis of the the firefogg API  
 	 */
 	function ffmpeg2TheoraEncode( $file, $target, $options){
-		global $wgffmpeg2theoraLocation;
+		global $wgFFmpeg2theoraLocation;
 		
 		// Get the source:
 		$source = $file->getFullPath();
 		
 		// Set up the base command
-		$cmd = wfEscapeShellArg( $wgffmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $source );
+		$cmd = wfEscapeShellArg( $wgFFmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $source );
 		// Add in the encode settings
 		foreach( $options as $key => $val ){
 			if( isset( self::$foggMap[$key] ) ){

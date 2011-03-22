@@ -85,7 +85,7 @@ server.
 
 Set the ffmpeg2theora binary location with:
 
-    $wgffmpeg2theoraLocation = '/path/to/ffmpeg2theora';
+    $wgFFmpeg2theoraLocation = '/path/to/ffmpeg2theora';
 
 Download ffmpeg2theora from: http://firefogg.org/nightly/
 

@@ -45,7 +45,7 @@ $wgEnableIframeEmbed = true;
 $wgOggThumbLocation = '/usr/bin/oggThumb';
 
 // The location of ffmpeg2theora ( transcoding )
-$wgffmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
+$wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
