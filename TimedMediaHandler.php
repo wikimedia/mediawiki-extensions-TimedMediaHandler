@@ -10,6 +10,12 @@ if( !class_exists( 'MwEmbedResourceManager' ) ){
 	exit( 1 );
 }
 
+// Set up the timed media handler dir:
+$timedMediaDir = dirname(__FILE__);
+// Include WebVideoTranscode ( prior to config so that its defined transcode keys can be used in configuration  )  
+$wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
+
+
 /******************* CONFIGURATION STARTS HERE **********************/
 
 /*** MwEmbed module configuration: *********************************/
@@ -74,18 +80,13 @@ $wgEnabledTranscodeSet = array(
 );
 /******************* CONFIGURATION ENDS HERE **********************/
 
-// Set up the timed media handler dir:
-$timedMediaDir = dirname(__FILE__);
 
-// List of extensions handled by Timed Media Handler since its refrenced in a few places. 
+
+// List of extensions handled by Timed Media Handler since its referenced in a few places. 
 // you should not modify this variable 
 $tmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
 
-foreach($tmhFileExtensions as $ext ){
-	if ( !in_array( $ext, $wgFileExtensions ) ) {
-		$wgFileExtensions[] = $ext;
-	}
-}
+$wgFileExtensions = array_merge($wgFileExtensions, $tmhFileExtensions);
 
 // Timed Media Handler AutoLoad Classes:  
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
@@ -109,7 +110,6 @@ $wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/geti
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
 
 // Transcode support
-$wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 $wgAutoloadClasses['ApiQueryVideoInfo'] = "$timedMediaDir/ApiQueryVideoInfo.php";
 
