@@ -10,65 +10,6 @@ if( !class_exists( 'MwEmbedResourceManager' ) ){
 	exit( 1 );
 }
 
-// Set up the timed media handler dir:
-$timedMediaDir = dirname(__FILE__);
-
-$wgTimedMediaHandlerFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
-
-foreach($wgTimedMediaHandlerFileExtensions as $ext ){
-	if ( !in_array( $ext, $wgFileExtensions ) ) {
-		$wgFileExtensions[] = $ext;
-	}
-}
-
-// Timed Media Handler AutoLoad Classes:  
-$wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
-$wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";
-$wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
-$wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeOutput.php";
-$wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
-
-// Ogg Handler
-$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
-ini_set( 'include_path',
-	"$timedMediaDir/handlers/OggHandler/PEAR/File_Ogg" .
-	PATH_SEPARATOR .
-	ini_get( 'include_path' ) );
-
-// WebM Handler
-$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
-$wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/getid3.php"; 
-
-// Text handler 
-$wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
-
-// Transcode support
-$wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
-$wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
-$wgAutoloadClasses['ApiQueryVideoInfo'] = "$timedMediaDir/ApiQueryVideoInfo.php";
-
-// Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
-MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
-MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
-
-// Localization 
-$wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
-$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
-
-// Register all Timed Media Handler hooks: 
-TimedMediaHandlerHooks::register();
-
-// Extension Credits
-$wgExtensionCredits['media'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'TimedMediaHandler',
-	'author'         => array( 'Michael Dale', 'Tim Starling' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
-	'descriptionmsg' => 'timedmedia-desc',
-	'version'		 => '0.2',
-);
-
-
 /******************* CONFIGURATION STARTS HERE **********************/
 
 /*** MwEmbed module configuration: *********************************/
@@ -131,4 +72,67 @@ $wgEnabledTranscodeSet = array(
 	// A high quality WebM stream 
 	WebVideoTranscode::ENC_WEBM_HQ_VBR,
 );
+/******************* CONFIGURATION ENDS HERE **********************/
+
+// Set up the timed media handler dir:
+$timedMediaDir = dirname(__FILE__);
+
+// List of extensions handled by Timed Media Handler since its refrenced in a few places. 
+// you should not modify this variable 
+$tmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
+
+foreach($tmhFileExtensions as $ext ){
+	if ( !in_array( $ext, $wgFileExtensions ) ) {
+		$wgFileExtensions[] = $ext;
+	}
+}
+
+// Timed Media Handler AutoLoad Classes:  
+$wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
+$wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";
+$wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
+$wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeOutput.php";
+$wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
+
+// Ogg Handler
+$wgAutoloadClasses['OggHandler']  = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
+ini_set( 'include_path',
+	"$timedMediaDir/handlers/OggHandler/PEAR/File_Ogg" .
+	PATH_SEPARATOR .
+	ini_get( 'include_path' ) );
+
+// WebM Handler
+$wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
+$wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/getid3.php"; 
+
+// Text handler 
+$wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
+
+// Transcode support
+$wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
+$wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
+$wgAutoloadClasses['ApiQueryVideoInfo'] = "$timedMediaDir/ApiQueryVideoInfo.php";
+
+// Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
+MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
+
+// Localization 
+$wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
+$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
+
+// Register all Timed Media Handler hooks: 
+TimedMediaHandlerHooks::register();
+
+// Extension Credits
+$wgExtensionCredits['media'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'TimedMediaHandler',
+	'author'         => array( 'Michael Dale', 'Tim Starling' ),
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
+	'descriptionmsg' => 'timedmedia-desc',
+	'version'		 => '0.2',
+);
+
+
 
