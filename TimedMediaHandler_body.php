@@ -18,7 +18,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * Get the list of supported wikitext embed params
 	 */
 	function getParamMap() {
-		wfLoadExtensionMessages( 'TimedMediaHandler' );
+		
 		return array(
 			'img_width' => 'width',
 			'timedmedia_thumbtime' => 'thumbtime',
