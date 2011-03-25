@@ -50,6 +50,12 @@ $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 // Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
+// The NS for TimedText ( registerd on mediawiki.org )
+// http://www.mediawiki.org/wiki/Extension_namespace_registration
+// Note commons pre-dates TimedMediaHandler and should add $wgTimedTextNS = 102 per
+// their local settings config
+$wgTimedTextNS = 700;
+
 /** 
  * Default enabled transcodes 
  * 
@@ -121,8 +127,10 @@ MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/T
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 
-// Register all Timed Media Handler hooks: 
-TimedMediaHandlerHooks::register();
+// Register all Timed Media Handler hooks right after the cache check.
+// This way if you set a variable like $wgTimedTextNS after you include TimedMediaHandler its 
+// used as the hooks are registred.   
+$wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
 
 // Extension Credits
 $wgExtensionCredits['media'][] = array(

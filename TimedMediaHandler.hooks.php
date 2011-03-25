@@ -69,38 +69,12 @@ class TimedMediaHandlerHooks {
 		 * Add support for the "TimedText" NameSpace
 		 */
 		global $wgExtraNamespaces;
-		$timedTextNS = null;
-	
-		// Make sure $wgExtraNamespaces in an array ( set to NULL by default ) :
-		if ( !is_array( $wgExtraNamespaces ) ) {
-			$wgExtraNamespaces = array();
-		}
-		// Check for "TimedText" NS in $wgExtraNamespaces 
-		$maxNS = 101; // content pages need "even" namespaces
-		foreach($wgExtraNamespaces as $ns => $nsTitle ){
-			if( $nsTitle == 'TimedText' ){
-				$timedTextNS = $ns;
-			}
-			if( $ns > $maxNS ){
-				$maxNs = $ns;
-			}
-		}
+		$wgTimedTextNS = null;
 		
-		// @@TODO maybe we should fire a warning here? 
-		// Custom namespae management in mediawiki sucks :( 
-		//
-		// Since other extension use hacks like this as well.. it difficult to guarantee consistency 
-		// of the timed text namespace if LocalSettings.php $wgExtraNamespaces is modified or another
-		// extension that includes namespaces is added. 
-		// ( obviously its best if set in LocalSetting.php )
-		if( !$timedTextNS ){
-			// Make sure that timedText is on an "even" page namespace: 
-			$timedTextNS = ( ($maxNS + 1)&1 )? $maxNS + 1 : $maxNS + 2;
-			$wgExtraNamespaces[	$timedTextNS ] = 'TimedText';
-			$wgExtraNamespaces[ $timedTextNS +1 ] =  'TimedText_talk';
-		}	
-		define( "NS_TIMEDTEXT", $timedTextNS);		
-		define( "NS_TIMEDTEXT_TALK", $timedTextNS +1);
+		define( "NS_TIMEDTEXT", $wgTimedTextNS);		
+		define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
+		
+		return true;
 	}
 	static function pageOutputHook(  &$out, &$sk ){
 		// FIXME we should only need to add this via parser output hook 	
