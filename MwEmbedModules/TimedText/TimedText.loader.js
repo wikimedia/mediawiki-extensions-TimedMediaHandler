@@ -14,7 +14,7 @@
 	// includes timedText tracks.
 	$( mw ).bind( 'EmbedPlayerUpdateDependencies', function( event, playerElement, classRequest ) {
 		if( mw.isTimedTextSupported( playerElement ) ) {
-			classRequest = $j.merge( classRequest, ['mw.TimedText'] );
+			classRequest = $.merge( classRequest, ['mw.TimedText'] );
 		}
 	} );
 	

@@ -62,7 +62,7 @@ mediaElement.prototype = {
 	 */
 	updateSourceTimes: function( start_npt, end_npt ) {
 		var _this = this;
-		$j.each( this.sources, function( inx, mediaSource ) {
+		$.each( this.sources, function( inx, mediaSource ) {
 			mediaSource.updateSrcTime( start_npt, end_npt );
 		} );
 	},

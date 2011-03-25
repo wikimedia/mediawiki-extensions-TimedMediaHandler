@@ -62,7 +62,7 @@ mw.EmbedTypes = {
 
 		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
-		var uniqueMimesOnly = $j.browser.opera || $j.browser.safari;
+		var uniqueMimesOnly = $.browser.opera || $.browser.safari;
 
 		// Opera will switch off javaEnabled in preferences if java can't be
 		// found. And it doesn't register an application/x-java-applet mime type like
@@ -72,7 +72,7 @@ mw.EmbedTypes = {
 		}
 
 		// ActiveX plugins
-		if ( $j.browser.msie ) {
+		if ( $.browser.msie ) {
 			// check for flash
 			if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash' ) ) {
 				this.mediaPlayers.addPlayer( kplayer );

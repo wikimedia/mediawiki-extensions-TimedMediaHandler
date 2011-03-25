@@ -65,7 +65,7 @@ mw.EmbedPlayerJava = {
 
 		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
 		// NOTE:  This breaks reference to the applet so disabled for now:
-		/*if ( $j.browser.mozilla ) {
+		/*if ( $.browser.mozilla ) {
 			var iframe = document.createElement( 'iframe' );
 			iframe.setAttribute( 'width', this.getWidth() );
 			iframe.setAttribute( 'height', this.getHeight() );
@@ -206,7 +206,7 @@ mw.EmbedPlayerJava = {
 		this.playerElement = $( '#' + this.pid ).get( 0 );
 		//this.playerElement = document.applets[ 0 ];
 		// NOTE we are currently not using the iframe embed method:
-		//if ( $j.browser.mozilla ) {
+		//if ( $.browser.mozilla ) {
 		//	this.playerElement = $('#cframe_' + this.id).contents().find( '#' + this.pid );
 		//} else {
 		//	this.playerElement = $( '#' + this.pid ).get( 0 );

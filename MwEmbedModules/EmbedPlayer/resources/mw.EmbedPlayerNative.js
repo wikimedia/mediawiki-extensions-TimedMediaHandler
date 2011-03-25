@@ -193,10 +193,10 @@ mw.EmbedPlayerNative = {
 			mw.log( " Error: applyMediaElementBindings without player elemnet");
 			return ;
 		}
-		$j.each( _this.nativeEvents, function( inx, eventName ){
+		$.each( _this.nativeEvents, function( inx, eventName ){
 			$( vid ).bind( eventName , function(){
 				if( _this._propagateEvents ){
-					var argArray = $j.makeArray( arguments );
+					var argArray = $.makeArray( arguments );
 					// Check if there is local handler:
 					if( _this['on' + eventName ] ){
 						_this['on' + eventName ].apply( _this, argArray);

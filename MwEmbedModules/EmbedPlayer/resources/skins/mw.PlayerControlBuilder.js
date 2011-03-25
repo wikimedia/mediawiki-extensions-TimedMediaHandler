@@ -73,7 +73,7 @@ mw.PlayerControlBuilder.prototype = {
 		if ( mw['PlayerSkin' + skinClass ]) {
 
 			// Clone as to not override prototype with the skin config
-			var _this = $j.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );
+			var _this = $.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );
 			return _this;
 		}
 		// Return the controlBuilder Object:
@@ -162,7 +162,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		mw.log( 'PlayerControlsBuilder:: addControlComponents into:' + this.available_width );
 		// Build the supportedComponets list
-		this.supportedComponets = $j.extend( this.supportedComponets, embedPlayer.supports );
+		this.supportedComponets = $.extend( this.supportedComponets, embedPlayer.supports );
 		
 		$( embedPlayer ).trigger( 'addControlBarComponent', this);
 			
@@ -596,7 +596,7 @@ mw.PlayerControlBuilder.prototype = {
 			});
 
 			// Restore absolute layout of parents:
-			$j.each( _this.parentsAbsolute, function( na, element ){
+			$.each( _this.parentsAbsolute, function( na, element ){
 				$( element ).css( 'position', 'absolute' );
 			} );
 			_this.parentsAbsolute = null;
@@ -714,7 +714,7 @@ mw.PlayerControlBuilder.prototype = {
 		}
 
 		// Do png fix for ie6
-		if ( $j.browser.msie && $j.browser.version <= 6 ) {
+		if ( $.browser.msie && $.browser.version <= 6 ) {
 			$( '#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
 		}
 
@@ -967,7 +967,7 @@ mw.PlayerControlBuilder.prototype = {
 			.click( function() {
 				mw.log("WarningBindinng:: set " + preferenceId + ' to hidewarning ' );
 				// Set up a cookie for 30 days:
-				$j.cookie( preferenceId, 'hidewarning', { expires: 30 } );
+				$.cookie( preferenceId, 'hidewarning', { expires: 30 } );
 				// Set the current instance
 				mw.setConfig( preferenceId, false );
 				$( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
@@ -991,8 +991,8 @@ mw.PlayerControlBuilder.prototype = {
 				}
 				
 				// Check the global config before showing the warning
-				if ( mw.getConfig( preferenceId ) === true && $j.cookie( preferenceId ) != 'hidewarning' ){
-					mw.log("WarningBindinng:: show warning " + mw.getConfig( preferenceId ) + ' cookie: '+ $j.cookie( preferenceId ) + 'typeof:' + typeof $j.cookie( preferenceId ));
+				if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) != 'hidewarning' ){
+					mw.log("WarningBindinng:: show warning " + mw.getConfig( preferenceId ) + ' cookie: '+ $.cookie( preferenceId ) + 'typeof:' + typeof $.cookie( preferenceId ));
 					$targetWarning.fadeIn( 'slow' );
 				};
 			},
@@ -1127,7 +1127,7 @@ mw.PlayerControlBuilder.prototype = {
 	optionMenuItems: {
 		// Player select menu item
 		'playerSelect': function( ctrlObj ){
-			return $j.getLineItem(
+			return $.getLineItem(
 				gM( 'mwe-embedplayer-choose_player' ),
 				'gear',
 				function( ) {
@@ -1140,7 +1140,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		// Download the file menu
 		'download': function( ctrlObj ) {
-			return $j.getLineItem(
+			return $.getLineItem(
 				 gM( 'mwe-embedplayer-download' ),
 				'disk',
 				function( ) {
@@ -1156,7 +1156,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		// Share the video menu
 		'share': function( ctrlObj ) {
-			return $j.getLineItem(
+			return $.getLineItem(
 				gM( 'mwe-embedplayer-share' ),
 				'mail-closed',
 				function( ) {
@@ -1169,7 +1169,7 @@ mw.PlayerControlBuilder.prototype = {
 		},
 
 		'aboutPlayerLibrary' : function( ctrlObj ){
-			return $j.getLineItem(
+			return $.getLineItem(
 					gM( 'mwe-embedplayer-about-library' ),
 					'info',
 					function( ) {
@@ -1407,7 +1407,7 @@ mw.PlayerControlBuilder.prototype = {
 			.text( gM( 'mwe-embedplayer-choose_player' ) )
 		);
 
-		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
+		$.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
 
 			var isPlayable = (typeof mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.getMIMEType() ) == 'object' );
 			var is_selected = ( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() );
@@ -1543,7 +1543,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		var $mediaList = $( '<ul />' );
 		var $textList =  $( '<ul />' );
-		$j.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
+		$.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if( source.getSrc() ) {
 				mw.log("PlayerControlBuilder::showDownloadWithSources:: Add src: " + source.getTitle() );
 				var $dl_line = $( '<li />').append(
@@ -1595,7 +1595,7 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
 		// for each source with "native playback" 			
-		$sourceMenu = $j('<ul />');
+		$sourceMenu = $('<ul />');
 		
 		// local function to closure the source variable scope: 
 		function addToSourceMenu( source ){			
@@ -1624,7 +1624,7 @@ mw.PlayerControlBuilder.prototype = {
 				})
 			)
 		}
-		$j.each( this.embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
+		$.each( this.embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
 			// Output the player select code:
 			var supportingPlayers = mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( source.getMIMEType() );
 			for ( var i = 0; i < supportingPlayers.length ; i++ ) {

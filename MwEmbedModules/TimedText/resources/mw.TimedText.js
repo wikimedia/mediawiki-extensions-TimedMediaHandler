@@ -641,18 +641,18 @@
 			// Show text menu item ( if there are sources)
 			if( _this.textSources.length != 0 ) {
 				$menu.append(
-					$j.getLineItem( gM( 'mwe-timedtext-choose-text'), 'comment' ).append(
+					$.getLineItem( gM( 'mwe-timedtext-choose-text'), 'comment' ).append(
 						_this.getLanguageMenu()
 					),
 						// Layout Menu option
-					$j.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
+					$.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
 						_this.getLayoutMenu()
 					)
 				);
 			} else {
 				// Add a link to request timed text for this clip:
 				$menu.append(
-					$j.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
+					$.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
 						_this.getAddSubRequest();
 					})
 				);
@@ -786,7 +786,7 @@
 		 */
 		getLiAddText: function() {
 			var _this = this;
-			return $j.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
+			return $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
 						_this.showTimedTextEditUI( 'add' );
 					} );
 		},
@@ -801,14 +801,14 @@
 			var source_icon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on';
 
 			if( source.title ) {
-				return $j.getLineItem( source.title, source_icon, function() {
+				return $.getLineItem( source.title, source_icon, function() {
 					_this.selectTextSource( source );
 				});
 			}						
 			if( source.srclang ) {
 				var langKey = source.srclang.toLowerCase();
 				var cat = gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) );
-				return $j.getLineItem(
+				return $.getLineItem(
 					gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) ),
 					source_icon,
 					function() {
@@ -847,10 +847,10 @@
 			layoutOptions.push( 'off' );
 
 			$ul = $('<ul>');
-			$j.each( layoutOptions, function( na, layoutMode ) {
+			$.each( layoutOptions, function( na, layoutMode ) {
 				var icon = ( _this.config.layout == layoutMode ) ? 'bullet' : 'radio-on';
 				$ul.append(
-					$j.getLineItem(
+					$.getLineItem(
 						gM( 'mwe-timedtext-layout-' + layoutMode),
 						icon,
 						function() {
@@ -992,7 +992,7 @@
 					}
 					// Append a cat menu item for each category list
 					$langMenu.append(
-						$j.getLineItem( gM( 'mwe-timedtext-textcat-' + catKey.toLowerCase() ) ).append(
+						$.getLineItem( gM( 'mwe-timedtext-textcat-' + catKey.toLowerCase() ) ).append(
 							$catChildren
 						)
 					);
@@ -1251,7 +1251,7 @@
 					mw.log("Error: cant load crossDomain src:" + this.getSrc() );
 					return ;
 				}
-				$j.get( this.getSrc(), function( data ) {
+				$.get( this.getSrc(), function( data ) {
 					// Parse and load captions:
 					_this.captions = handler( data );
 					mw.log("mw.TimedText:: loaded from srt file: " + _this.captions.length + ' captions');
@@ -1333,7 +1333,7 @@
 					(parseInt(m[6], 10) * 60) +
 					(parseInt(m[7], 10)) +
 					endMs,
-				'content': $j.trim( m[9] )
+				'content': $.trim( m[9] )
 				});
 				return true;
 			}

@@ -89,7 +89,7 @@ mediaPlayers.prototype =
 		var mimePlayers = new Array();
 		var _this = this;
 		if ( this.defaultPlayers[mimeType] ) {
-			$j.each( this.defaultPlayers[ mimeType ], function( d, lib ) {
+			$.each( this.defaultPlayers[ mimeType ], function( d, lib ) {
 				var library = _this.defaultPlayers[ mimeType ][ d ];
 				for ( var i = 0; i < _this.players.length; i++ ) {
 					if ( _this.players[i].library == library && _this.players[i].supportsMIMEType( mimeType ) ) {

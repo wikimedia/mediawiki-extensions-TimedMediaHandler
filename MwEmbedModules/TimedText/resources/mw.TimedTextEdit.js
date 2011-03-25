@@ -225,7 +225,7 @@ mw.TimedTextEdit.prototype = {
 				}
 			}),
 			// Get a jQuery button object with language menu:
-			$j.button( {
+			$.button( {
 				'style': { 'float' : 'left' },
 				'class': 'language-select-btn',
 				'text': gM('mwe-timedtext-select-language'),
@@ -302,7 +302,7 @@ mw.TimedTextEdit.prototype = {
 			.css('clear', 'both'),
 			$('<br />'),
 			$('<br />'),
-			$j.button( {
+			$.button( {
 				'style': { 'float' : 'left' },
 				'text': gM('mwe-timedtext-upload-text'),
 				'icon': 'disk'
@@ -408,7 +408,7 @@ mw.TimedTextEdit.prototype = {
 	},
 	
 	getLangMenuItem: function( langKey , source_icon) {
-		return $j.getLineItem(
+		return $.getLineItem(
 			langKey + ' - ' + mw.Language.names[ langKey ],
 			source_icon,
 			function() {

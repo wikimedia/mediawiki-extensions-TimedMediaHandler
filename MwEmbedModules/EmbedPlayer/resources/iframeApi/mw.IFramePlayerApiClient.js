@@ -39,18 +39,18 @@ mw.IFramePlayerApiClient.prototype = {
 		// Allow modules to extend the list of iframeExported bindings
 		$( mw ).trigger( 'AddIframePlayerMethods', [ this.exportedMethods ]);
 		
-		$j.each( this.exportedMethods, function(na, method){
+		$.each( this.exportedMethods, function(na, method){
 			_this.playerProxy[ method ] = function(){
 				_this.postMessage( {
 					'method' : method,
-					'args' : $j.makeArray( arguments )
+					'args' : $.makeArray( arguments )
 				} );
 			};
 		});
 	},
 	'addPlayerReciveApi': function(){
 		var _this = this;
-		$j.receiveMessage( function( event ){
+		$.receiveMessage( function( event ){
 			_this.hanldeReciveMsg( event );
 		}, this.iframeServer);
 	},
@@ -65,7 +65,7 @@ mw.IFramePlayerApiClient.prototype = {
 		};
 		
 		// Bind orientation change to resize player ( if fullscreen )
-		$j(window).bind( 'orientationchange', function(e){
+		$(window).bind( 'orientationchange', function(e){
 			if( _this.inFullScreenMode ){
 				doFullscreen();
 			}
@@ -151,7 +151,7 @@ mw.IFramePlayerApiClient.prototype = {
 		/*mw.log( "IFramePlayerApiClient:: postMessage(): " + JSON.stringify( msgObject ) + 
 				' iframe: ' +  this.iframe + ' cw:' + this.iframe.contentWindow + 
 				' src: ' + mw.absoluteUrl( $( this.iframe ).attr('src')  ) );*/
-		$j.postMessage(
+		$.postMessage(
 			JSON.stringify( msgObject ), 
 			mw.absoluteUrl( $( this.iframe ).attr('src') ), 
 			this.iframe.contentWindow 

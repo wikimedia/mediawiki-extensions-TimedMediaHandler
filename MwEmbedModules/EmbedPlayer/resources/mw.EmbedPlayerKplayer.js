@@ -120,7 +120,7 @@ mw.EmbedPlayerKplayer = {
 		};
 
 		if (this.playerElement && this.playerElement.addJsListener) {
-			$j.each( bindEventMap, function( bindName, localMethod ) {
+			$.each( bindEventMap, function( bindName, localMethod ) {
 				_this.bindPlayerFunction(bindName, localMethod);
 			} );
 			// Start the monitor
