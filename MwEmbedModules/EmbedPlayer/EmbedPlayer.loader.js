@@ -76,6 +76,7 @@
 		
 		var rewriteElementCount = 0;
 		$( playerSelect).each( function(inx, playerElement){
+			var skinName ='';
 
 			// Assign an the element an ID ( if its missing one )
 			if ( $( playerElement ).attr( "id" ) == '' ) {
