@@ -24,9 +24,8 @@ class TimedMediaIframeOutput {
 			$wgEnableIframeEmbed &&
 			$doOutput ){
 				self::outputIframe( $title );
-				// Shut down the database
-				wfGetLBFactory()->shutdown();		
-				exit();
+				// Turn off output of anything other than the iframe 
+				$wgOut->disable();
 		}
 		
 		return true;
@@ -43,7 +42,6 @@ class TimedMediaIframeOutput {
 		}
 		
 		$skin = $wgUser->getSkin();
-		$out = new OutputPage();
 		
 		// Setup the render paramaters
 		$file = wfFindFile( $title );	
@@ -55,8 +53,8 @@ class TimedMediaIframeOutput {
 		$thumbName = $file->thumbName( $params );
 		$thumbnail = $file->transform( $params );
 		// XXX Need to "add modules" for the loader "go"... strange. 
-		$out->addModules( array( 'embedPlayerIframeStyle') );
-		$out->sendCacheControl();
+		$wgOut->addModules( array( 'embedPlayerIframeStyle') );
+		$wgOut->sendCacheControl();
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -67,8 +65,8 @@ class TimedMediaIframeOutput {
 		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
 	?>
 	<?php
-		echo $out->getHeadLinks($skin);
-		echo $out->getHeadItems();
+		echo $wgOut->getHeadLinks($skin);
+		echo $wgOut->getHeadItems();
 	?>
 </head>
 <body>
@@ -76,18 +74,18 @@ class TimedMediaIframeOutput {
 	<div id="videoContainer" style="visibility:hidden">
 		<?php echo $thumbnail->toHtml(); ?>
 	</div
-	<?php echo $out->getHeadScripts($skin); ?>	
+	<?php echo $wgOut->getHeadScripts($skin); ?>	
 	<script type="text/javascript">		
 		mw.ready(function(){			
 			var fitPlayer = function(){
-				$j( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
+				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
 				.get(0).resizePlayer({
-					'width' : $j(window).width(),
-					'height' : $j(window).height()
+					'width' : $(window).width(),
+					'height' : $(window).height()
 				});
 			}
 			// Bind window resize to reize the player:
-			$j( window ).resize( fitPlayer );	  
+			$( window ).resize( fitPlayer );	  
 			$('#videoContainer').css({
 				'visibility':'visible'
 			});
