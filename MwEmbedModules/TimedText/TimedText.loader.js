@@ -16,27 +16,16 @@
 		if( mw.isTimedTextSupported( playerElement ) ) {
 			classRequest = $.merge( classRequest, ['mw.TimedText'] );
 		}
-	} );
-	
-	// On new embed player check if we need to add timedText
-	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
-		if( mw.isTimedTextSupported( embedPlayer) ){
-			if( ! embedPlayer.timedText && mw.TimedText ) {
-				embedPlayer.timedText = new mw.TimedText( embedPlayer );
-			}
-		}
-	});
+	} );		
 	
 	/**
 	 * Check if we should load the timedText interface or not.
-	 *
-	 * Note we check for text sources outside of
 	 */
 	mw.isTimedTextSupported = function( embedPlayer ) {
 		if( mw.getConfig( 'TimedText.ShowInterface' ) == 'always' ) {
 			return true;
 		}
-		// Do a module check for timed Text support
+		// Do a module check for timed Text support ( note this module check is synchronous )
 		var supportsTimedText = false;
 		$( embedPlayer ).trigger('SupportsTimedText', function( moduleSupportsTimedText) {
 			if( moduleSupportsTimedText ){

@@ -1685,4 +1685,14 @@
 		} );
 	};
 	
+	
+	// On new embed player check if we need to add timedText
+	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
+		if( mw.isTimedTextSupported( embedPlayer) ){
+			if( ! embedPlayer.timedText && mw.TimedText ) {
+				embedPlayer.timedText = new mw.TimedText( embedPlayer );
+			}
+		}
+	});
+	
 } )( window.mediaWiki, window.jQuery );
