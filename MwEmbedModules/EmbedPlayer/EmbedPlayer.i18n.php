@@ -62,6 +62,8 @@ $messages['en'] = array(
 	'mwe-embedplayer-for_best_experience' => 'For a better video playback experience we recommend the <b>[$1 latest Firefox].</b>',
 	'mwe-embedplayer-download-warn' => 'No compatible in browser player was detected, for in browser playback please download the [$1 latest Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Press <b>F11</b> toggle <i>web browser</i> fullscreen',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Press <b>shift ⌘ F</b> to toggle fullscreen',
+	
 	'mwe-embedplayer-do_not_warn_again' => 'In the future, do not show this message',
 	'mwe-embedplayer-playerSelect' => 'Players',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Read this</a> before embedding.',

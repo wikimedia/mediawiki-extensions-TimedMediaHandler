@@ -478,11 +478,21 @@ mw.PlayerControlBuilder.prototype = {
 		if( mw.isMobileDevice() ){
 			return ;
 		}
-
-		var $targetTip = this.doWarningBindinng( 'EmbedPlayer.FullscreenTip', 
-			$('<h3/>').html( gM( 'mwe-embedplayer-fullscreen-tip') )
-		)
+		// Safari does not have a DOM fullscreen ( no subtitles, no controls )
+		if( $.browser.safari && /chrome/.test(navigator.userAgent.toLowerCase()) ){
+			return ;
+		}
 		
+		// OSX has a different short cut than windows and liux
+		var toolTipMsg = ( navigator.userAgent.toLowerCase().indexOf('Mac OS X') != -1 )?
+				gM( 'mwe-embedplayer-fullscreen-tip-osx') : 
+				gM( 'mwe-embedplayer-fullscreen-tip');
+		
+		var $targetTip = this.doWarningBindinng( 'EmbedPlayer.FullscreenTip', 
+			$('<h3/>').html( 
+				toolTipMsg
+			)
+		);		
 		// Display the target warning: 
 		$targetTip.show(); 
 		

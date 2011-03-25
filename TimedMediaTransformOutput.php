@@ -7,6 +7,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	var $sources = null;
 	var $textTracks = null;
 	var $hashTime = null;
+	var $textHandler = null; // lazy init in getTextHandler
 	
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
@@ -19,11 +20,15 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			} else {
 				$this->$key = false;
 			}
-		}
-		// Init an associated textHandler
-		$this->textHandler = new TextHandler( $this->file );
+		}		
 	}
-	
+	function getTextHandler(){
+		if( !$this->textHandler ){
+			// Init an associated textHandler
+			$this->textHandler = new TextHandler( $this->file );
+		}
+		return $this->textHandler; 
+	}
 	/**
 	 * Get the media transform thumbnail
 	 */
@@ -64,7 +69,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			
 		// Check if the video is too small to play inline ( instead do a pop-up dialog ) 
 		if( $this->width <= $wgMinimumVideoPlayerSize && $this->isVideo ){
-			return $this->getImagePopUp();		
+			return $this->getImagePopUp();
 		} else {
 			return $this->getXmlMediaTagOutput();
 		}		
@@ -110,7 +115,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	
 	/**
 	 * Get target popup player size 
-	 * If player is smaller than threshold return size based on wgDefaultUserOptions )
 	 */
 	function getPopupPlayerSize(){
 		global $wgDefaultUserOptions, $wgMinimumVideoPlayerSize, $wgImageLimits;
@@ -139,7 +143,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			self::xmlTagSet( 'source', $mediaSources ) .
 			
 			// Timed text: 
-			self::xmlTagSet( 'track', $this->textHandler->getTracks() ) .		
+			self::xmlTagSet( 'track', $this->getTextHandler()->getTracks() ) .		
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
@@ -147,7 +151,39 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		);
 		return $s;
 	}
-
+	
+	/**
+	 * Get a poster image from the api
+	 * @param Number, the width of the requested image 
+	 */
+	function getPosterFromApi ( $width ){		
+		// The media system is ~kind of~ strange. ( how do we get an alternate sized thumb url? )
+		// without going into some crazy object cloning or handler lookups path of least resistance, 
+		// seems to just do an inline FauxRequest: 
+		$params = new FauxRequest( array(
+	        'action' => 'query',
+	        'prop' => 'imageinfo',
+	        'iiprop' => 'url',
+	        'iiurlwidth' => intval( $width ),
+	        'titles' => $this->file->getTitle()->getPrefixedDBkey()
+		));
+		$api = new ApiMain( $params );
+		$api->execute();
+		$data = $api->getResultData();
+		if( isset( $data['query'] ) && isset( $data['query']['pages'] ) ){
+			$page = current( $data['query']['pages'] );
+			if( isset( $page['imageinfo'] ) && isset( $page['imageinfo'][0]['thumburl'] ) ){
+				return $page['imageinfo'][0]['thumburl'];
+			}
+		}
+		return false;
+		// no posterUrl found ( but its oky we still have the poster form $this->getUrl() )
+	}
+	
+	/**
+	 * Get the media attributes
+	 * @param $sizeOverride {Array} of width and height
+	 */ 
 	function getMediaAttr( $sizeOverride = false ){
 		global $wgVideoPlayerSkin ;
 		// Normalize values
@@ -157,10 +193,21 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$width = ( $sizeOverride )? $sizeOverride[0] : intval( $this->width );
 		$height =  ( $sizeOverride )? $sizeOverride[1]: $this->getPlayerHeight();
 		
+		// The poster url:
+		$posterUrl = $this->getUrl();
+		
+		// Update the $posterUrl to $sizeOverride
+		if( $sizeOverride && $sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
+			$apiUrl = $this->getPosterFromApi( $sizeOverride[0] );
+			if( $apiUrl ){
+				$posterUrl = $apiUrl;
+			}
+		}
 		$mediaAttr = array(			
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			'style' => "width:{$width}px;height:{$height}px",
-			'poster' => $this->getUrl(),
+			// Get the correct size: 
+			'poster' => $posterUrl,
 			'alt' => $this->file->getTitle()->getText(),
 		
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
