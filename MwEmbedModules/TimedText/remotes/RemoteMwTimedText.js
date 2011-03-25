@@ -23,7 +23,7 @@ RemoteMwTimedText.prototype = {
 
 	init: function( options ) {
 		for(var i in mw_default_remote_text_options) {
-			var opt = mw_default_remote_text_options[i]
+			var opt = mw_default_remote_text_options[i];
 			if( options[ opt ] ) {
 				this[ opt ] = options[ opt ];
 			}
@@ -110,7 +110,7 @@ RemoteMwTimedText.prototype = {
 				return ;
 			}
 			// Set the userLanguage:
-			player.timedText.config.userLanugage = this.langKey;
+			player.timedText.config.userLanguage = this.langKey;
 
 			// Make sure the timed text sources are loaded:
 			player.timedText.setupTextSources( function() {
@@ -173,15 +173,15 @@ RemoteMwTimedText.prototype = {
 	*/
 	getResource: function( page ) {
 		var resource = {
-				'apiTitleKey' : page.title.replace(/File:/ig, '' ),
-				'link'		 : page.imageinfo[0].descriptionurl,
-				'poster'	 : page.imageinfo[0].thumburl,
-				'src'		 : page.imageinfo[0].url,
-				'width' : page.imageinfo[0].width,
-				'height': page.imageinfo[0].height
-			};
-		// check metadata for length:
-		for( var i=0; page.imageinfo[0].metadata.length < i ; i++ ){
+			'apiTitleKey' : page.title.replace(/File:/ig, '' ),
+			'link'		 : page.imageinfo[0].descriptionurl,
+			'poster'	 : page.imageinfo[0].thumburl,
+			'src'		 : page.imageinfo[0].url,
+			'width' : page.imageinfo[0].width,
+			'height': page.imageinfo[0].height
+		};
+		// Check metadata for length:
+		for( var i=0; page.imageinfo[0].metadata.length > i ; i++ ){
 			var meta = page.imageinfo[0].metadata[i];
 			if( meta.name == 'length' ){
 				resource.duration = meta.value;
