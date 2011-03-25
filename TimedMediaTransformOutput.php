@@ -117,7 +117,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get target popup player size 
 	 */
 	function getPopupPlayerSize(){
-		global $wgDefaultUserOptions, $wgMinimumVideoPlayerSize, $wgImageLimits;
 		// Get the max width from the enabled transcode settings: 
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
 		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize);
@@ -190,8 +189,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$length = floatval( $this->length  );
 		$offset = floatval( $this->offset );
 		
-		$width = ( $sizeOverride )? $sizeOverride[0] : intval( $this->width );
-		$height =  ( $sizeOverride )? $sizeOverride[1]: $this->getPlayerHeight();
+		$width = $sizeOverride ? $sizeOverride[0] : intval( $this->width );
+		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
 		
 		// The poster url:
 		$posterUrl = $this->getUrl();
