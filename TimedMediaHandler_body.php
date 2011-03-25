@@ -12,6 +12,7 @@ class TimedMediaHandler extends MediaHandler {
 	
 	function getImageSize( $file, $path, $metadata = false ) {
 		/* override by handler */	
+		return array();
 	}
 	
 	/**
@@ -89,11 +90,12 @@ class TimedMediaHandler extends MediaHandler {
 		return true;
 	}
 	function parserTransformHook( $parser, $file ) {
-		if ( isset( $parser->mOutput->hasTimedMediaTransform ) ) {
+		$parserOutput = $parser->getOutput();
+		if ( isset( $parserOutput->hasTimedMediaTransform ) ) {
 			return ;
 		}
-		$parser->mOutput->hasTimedMediaTransform = true;
-		$parser->mOutput->addOutputHook( 'TimedMediaHandler' );
+		$parserOutput->hasTimedMediaTransform = true;
+		$parserOutput->addOutputHook( 'TimedMediaHandler' );
 	}
 	/**
 	 * Output hook only adds the PopUpMediaTransform 
@@ -132,6 +134,13 @@ class TimedMediaHandler extends MediaHandler {
 		}
 		return $time;
 	}	
+	/**
+	 * Converts seconds to Normal play time (NPT) time format:
+	 * consist of hh:mm:ss.ms
+	 * also see: http://www.ietf.org/rfc/rfc2326.txt section 3.6
+	 * 
+	 * @param $time {Number} Seconds to be converted to npt time format
+	 */	 
 	public static function seconds2npt( $time ){
 		if ( !is_numeric( $time ) ) {
 			wfDebug( __METHOD__.": trying to get npt time on NaN:" + $time);			
@@ -161,7 +170,7 @@ class TimedMediaHandler extends MediaHandler {
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 		
-		$params['width'] = ( isset( $params['width'] ) )? $params['width'] : $srcWidth;
+		$params['width'] = isset( $params['width'] )? $params['width'] : $srcWidth;
 		
 		$options = array(
 			'file' => $file,
@@ -170,13 +179,13 @@ class TimedMediaHandler extends MediaHandler {
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth ),
 			'isVideo' => !$this->isAudio( $file ),
-			'thumbtime' => ( isset( $params['thumbtime'] ) )? $params['thumbtime'] : intval( $file->getLength() / 2 ),
-			'start' => ( isset( $params['start'] ) )? $params['start'] : false,
-			'end' => ( isset( $params['end'] ) )? $params['end'] : false
+			'thumbtime' => isset( $params['thumbtime'] ) ? $params['thumbtime'] : intval( $file->getLength() / 2 ),
+			'start' => isset( $params['start'] ) ? $params['start'] : false,
+			'end' => isset( $params['end'] ) ? $params['end'] : false
 		);
 		
 		// No thumbs for audio
-		if( $options['isVideo'] === false ){			
+		if( !$options['isVideo'] ){			
 			return new TimedMediaTransformOutput( $options );
 		}
 
