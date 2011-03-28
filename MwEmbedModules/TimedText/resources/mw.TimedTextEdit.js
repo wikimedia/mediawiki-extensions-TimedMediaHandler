@@ -2,32 +2,6 @@
 * Timed text edit interface based off of participatory culture foundation timed text mockups.
 */
 ( function( mw, $ ) {
-mw.addMessages( {
-	"mwe-timedtext-editor" : "Timed text editor",
-	"mwe-timedtext-stage-transcribe" : "Transcribe",
-	"mwe-timedtext-stage-sync" : "Sync",
-	"mwe-timedtext-stage-translate" : "Translate",
-	"mwe-timedtext-stage-upload" : "Upload from local file",
-
-	"mwe-timedtext-select-language": "Select language",
-	"mwe-timedtext-file-language": "Subtitle file language",
-
-	"mwe-timedtext-upload-text": "Upload text file",
-	"mwe-timedtext-uploading-text": "Uploading text file",
-	"mwe-timedtext-upload-text-desc-title": "Upload a text file",
-	"mwe-timedtext-upload-text-desc-help": "The upload text file interface accepts .srt files",
-	"mwe-timedtext-upload-text-desc-help-browse": "Browse your local computer for the srt file you want to upload",
-	"mwe-timedtext-upload-text-desc-help-select" : "Select the language of the file",
-	"mwe-timedtext-upload-text-desc-help-review" : "Review / edit the text content and then press upload to add the text",
-	"mwe-timedtext-upload-text-preview" : "Review text",
-
-	"mwe-timedtext-upload-text-success" : "Upload of timed text was successful",
-	"mwe-timedtext-upload-text-done" : "Upload done",
-	"mwe-timedtext-upload-text-fail-desc" : "Upload was unsuccessful",
-	"mwe-timedtext-upload-text-fail-title" : "Upload failed",
-	"mwe-timedtext-upload-text-another" : "Upload another",
-	"mwe-timedtext-upload-text-done-uploading" : "Done uploading"
-} );
 
 mw.TimedTextEdit = function( parentTimedText ) {
 	return this.init( parentTimedText );

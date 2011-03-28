@@ -56,7 +56,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 	
 	function getTagName(){		
-		return ( $this->isVideo )? 'video' : 'audio';
+		return ( $this->isVideo ) ? 'video' : 'audio';
 	}
 	
 	function toHtml( $options = array() ) {

@@ -12,9 +12,10 @@
 		"TimedText.ShowInterface" => "auto",
 
 		/**
-		* If the "add timed text" link / interface should be exposed
+		* If the "add timed text" link / interface should be exposed 
+		* allows usere to upload text files to the wiki
 		*/
-		'TimedText.showAddTextLink' => true,
+		'TimedText.showAddTextLink' => false,
 
 		// The category for listing videos that need transcription:
 		'TimedText.NeedsTranscriptCategory' => 'Videos needing subtitles'

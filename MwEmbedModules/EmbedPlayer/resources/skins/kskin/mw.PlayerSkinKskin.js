@@ -91,7 +91,7 @@ mw.PlayerSkinKskin = {
 				$menuBar = $( '<ul />' )
 					.addClass( 'k-menu-bar' );
 
-				// dont include about player menu item ( FIXME should be moved to a init function )
+				// Don't include about player menu item ( FIXME should be moved to a init function )
 				delete ctrlObj.supportedMenuItems['aboutPlayerLibrary'];
 
 				// Output menu item containers:
@@ -231,9 +231,14 @@ mw.PlayerSkinKskin = {
 				.text ( gM( 'mwe-embedplayer-close_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
+		
+		$( this.embedPlayer ).trigger( 'displayMenuOverlay' );
 
-		$(this.embedPlayer).trigger( 'displayMenuOverlay' );
-
+		// By default show the credits ( if nothing else is displayed ) 
+		if( this.$playerTarget.find( '.menu-screen :visible' ).length == 0 ){
+			this.showMenuItem( 'credits' );
+		}
+		
 		// Set the Options Menu display flag to true:
 		this.keepControlBarOnScreen = true;
 	},
@@ -268,7 +273,7 @@ mw.PlayerSkinKskin = {
 				// Grab the context from the "clicked" menu item
 				var mk = $( this ).attr( 'rel' );
 
-				// hide all menu items
+				// get the target iitem
 				$targetItem = $playerTarget.find( '.menu-' + mk );
 
 				// call the function showMenuItem
@@ -369,7 +374,7 @@ mw.PlayerSkinKskin = {
 		
 		// Allow modules to load and add credits
 		$( embedPlayer ).triggerQueueCallback( 'ShowCredits', $creditsTarget, function( status ){
-			// Check if the first ShowCredits binding returned false:  
+			// If no module is showing credits add no-video credits msg:
 			if( !status || status[0] == false ){
 				$creditsTarget.text(
 					gM('mwe-embedplayer-no-video_credits')

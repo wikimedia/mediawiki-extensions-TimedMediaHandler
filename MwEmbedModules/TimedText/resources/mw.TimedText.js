@@ -128,7 +128,7 @@
 			}
 
 			// Load user preferences config:
-			var preferenceConfig = $.cookie( 'TimedText.Prefrences' );
+			var preferenceConfig = $.cookie( 'TimedText.Preferences' );
 			if( preferenceConfig !== null ) {
 				this.config = JSON.parse(  preferenceConfig );
 			}
@@ -762,14 +762,15 @@
 		showTimedTextEditUI: function( mode ) {
 			var _this = this;
 			// Show a loader:
-			mw.addLoaderDialog( gM( 'mwe-timedtext-loading-text-edit' ));
+			mw.addLoaderDialog( gM( 'mwe-timedtext-loading-text-edit' ) );
 			// Load the timedText edit interface
-			mw.load( 'TimedText.Edit', function() {
+			mw.load( 'mw.TimedTextEdit', function() {
 				if( ! _this.editText ) {
 					_this.editText = new mw.TimedTextEdit( _this );
 				}
 				// Close the loader:
 				mw.closeLoaderDialog();
+				// Show the upload text ui: 
 				_this.editText.showUI();
 			});
 		},
@@ -869,8 +870,8 @@
 			var _this = this;
 			if( layoutMode != _this.config.layout ) {
 				// Update the config and redraw layout
-				_this.config.layout = layoutMode;
-
+				_this.config.layout = layoutMode;						
+				
 				// Update the display:
 				_this.updateLayout();
 			}
@@ -880,7 +881,7 @@
 		* Updates the timed text layout ( should be called when config.layout changes )
 		*/
 		updateLayout: function() {
-			var $playerTarget = this.embedPlayer.$interface;
+			var $playerTarget = this.embedPlayer.$interface;			
 			$playerTarget.find('.track').remove();
 			this.refreshDisplay();
 		},
@@ -935,15 +936,17 @@
 		*/
 		refreshDisplay: function() {
 			// Update the configuration object
-			$.cookie( 'TimedText.Prefrences',  JSON.stringify( this.config ) );
+			$.cookie( 'TimedText.Preferences',  JSON.stringify( this.config ) );
 			
 			// Empty out previous text to force an interface update:
 			this.prevText = [];
+			
 			// Refresh the Menu (if it has a target to refresh)
 			if( this.menuTarget ) {
 				mw.log('bind menu refresh display');
 				this.bindMenu( this.menuTarget, false );
 			}
+			
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
 		},
@@ -1012,9 +1015,11 @@
 			}
 
 			//Add in the "add text" to the end of the interface:
-			$langMenu.append(
-				_this.getLiAddText()
-			);
+			if( mw.getConfig( 'TimedText.ShowAddTextLink' ) && _this.embedPlayer.apiTitleKey ){
+				$langMenu.append(
+					_this.getLiAddText()
+				);
+			}
 
 			return $langMenu;
 		},
@@ -1101,7 +1106,12 @@
 						'height' : this.embedPlayer.getHeight()
 					})
 				);
-
+				// Resize the interface for layoutMode == 'below' ( if not in full screen)
+				if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
+					this.embedPlayer.$interface.animate({
+						'height': this.embedPlayer.getHeight() 
+					});
+				}
 				$playerTarget.append( $track );
 				
 			} else if ( layoutMode == 'below') {

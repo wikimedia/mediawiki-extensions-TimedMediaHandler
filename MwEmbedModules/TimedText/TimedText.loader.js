@@ -19,23 +19,20 @@
 	} );		
 	
 	/**
-	 * Check if we should load the timedText interface or not.
+	 * Check timedText is active for a given embedPlayer
+	 * @param {object} embedPlayer The player to be checked for timedText properties
 	 */
 	mw.isTimedTextSupported = function( embedPlayer ) {
 		if( mw.getConfig( 'TimedText.ShowInterface' ) == 'always' ) {
 			return true;
 		}
-		// Do a module check for timed Text support ( note this module check is synchronous )
-		var supportsTimedText = false;
-		$( embedPlayer ).trigger('SupportsTimedText', function( moduleSupportsTimedText) {
-			if( moduleSupportsTimedText ){
-				supportsTimedText = true;
-			}
-		});
+		// Do a module check for timed Text support ( module must add data property 'SupportsTimedText' )
+		$( embedPlayer ).trigger('SupportsTimedText' );
 		
-		if( supportsTimedText ){
+		if( $( embedPlayer ).data( 'SupportsTimedText' )  ){
 			return true;
 		}
+		
 		// Check for standard 'track' attribute: 
 		if ( $( embedPlayer ).find( 'track' ).length != 0 ) {
 			return true;
