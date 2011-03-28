@@ -83,6 +83,7 @@ class TextHandler {
 		}
 		wfDebug("Get text tracks from remote api \n");
 		$query = $this->getTextPagesQuery();
+		
 		// Error in getting timed text namespace return empty array; 
 		if( $query === false ){
 			return array();
@@ -100,7 +101,7 @@ class TextHandler {
 		$params = new FauxRequest( $this->getTextPagesQuery() );
 		$api = new ApiMain( $params );
 		$api->execute();
-		$data = $api->getResultData();			
+		$data = $api->getResultData();
 		// Get the list of language Names
 		return $this->getTextTracksFromData( $data );
 	}
@@ -128,7 +129,6 @@ class TextHandler {
 		$interWikiPrefix = ( $providerName == 'local' )? '' : $providerName . ':';
 		
 		$langNames = Language::getLanguageNames();
-
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
 				$subTitle = Title::newFromText( $interWikiPrefix . $page['title'] ) ;

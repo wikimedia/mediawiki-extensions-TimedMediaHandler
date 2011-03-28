@@ -398,11 +398,13 @@
 		 */
 		loadTextSources: function( callback ) {
 			var _this = this;
-			this.textSources = [ ];
-			
-			// Try to get sources from text provider:
-			var provider_id = ( this.embedPlayer.apiProvider ) ? this.embedPlayer.apiProvider : 'local';
-			var apiUrl = mw.getApiProviderURL( provider_id );
+			this.textSources = [];
+
+			// Setup the provider id ( set to local if not found ) 
+			var providerId = $( this.embedPlayer ).attr('data-mwprovider') ? 
+					$(  this.embedPlayer  ).attr('data-mwprovider') : 
+					'local';
+			var apiUrl = mw.getApiProviderURL( providerId );
 			var apiTitleKey = 	this.embedPlayer.apiTitleKey;
 			if( !apiUrl || !apiTitleKey ) {
 				mw.log("Error: loading source without apiProvider or apiTitleKey");
@@ -411,15 +413,21 @@
 			
 			//For now only support mediaWikTrack provider library
 			this.textProvider = new mw.MediaWikTrackProvider( {
-				'provider_id' : provider_id,
+				'providerId' : providerId,
 				'apiUrl': apiUrl,
 				'embedPlayer': this.embedPlayer
 			} );
+			
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )
 			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
 			
 			// Add all the sources to textSources
 			for( var i = 0 ; i < inlineSources.length ; i++ ) {
+				// Check if the inline source has a text provider: 
+				var textSourceProvider = $( this.embedPlayer ).attr('data-mwprovider') ? 
+						$( this.embedPlayer ).attr('data-mwprovider') : 
+						this.textProvider;
+					
 				// Make a new textSource:
 				var source = new TextSource( inlineSources[i] , this.textProvider);				
 				this.textSources.push( source);
@@ -672,6 +680,7 @@
 		},
 
 		// Simple interface to add a transcription request
+		// TODO this should probably be moved to a gadget
 		getAddSubRequest: function(){
 			var _this = this;
 			var buttons = {};
@@ -1490,8 +1499,8 @@
 	 */
 	 var default_textProvider_attr = [
 		'apiUrl',
-		'provider_id',
-		'timed_text_NS',
+		'providerId',
+		'timedTextNS',
 		'embedPlayer'
 	];
 
@@ -1504,7 +1513,7 @@
 		apiUrl: null,
 
 		// The timed text namespace
-		timed_text_NS: null,
+		timedTextNS: null,
 
 		/**
 		* @constructor
@@ -1526,9 +1535,13 @@
 		loadTitleKey: function( titleKey, callback ) {
 			var request = {
 				'action': 'parse',
-				'page': titleKey,
+				'page': titleKey
+				/**
+				 * For now we don't use cache helpers since the request is 
+				 * going over jsonp we kill any outer cache anyway
 				'smaxage' : 300,
 				'maxage' : 300
+				*/
 			};
 			mw.getJSON( this.apiUrl, request, function( data ) {
 				if ( data && data.parse && data.parse.text['*'] ) {
@@ -1574,9 +1587,13 @@
 				'apprefix' : unescape( titleKey ),
 				'apnamespace' : this.getTimedTextNS(),
 				'aplimit' : 200,
-				'prop':'revisions',
+				'prop':'revisions'
+				/**
+				 * For now we don't use cache helpers since the request is 
+				 * going over jsonp we kill any outer cache anyway
 				'smaxage' : 300,
 				'maxage' : 300
+				*/
 			};
 			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
 				// If "timedText" is not a valid namespace try "just" with prefix:
@@ -1635,15 +1652,15 @@
 	 	 * Return the namespace ( if not encoded on the page return default 102 )
 	 	 */
 	 	getTimedTextNS: function() {
-	 		if( this.timed_text_NS )
-	 			return this.timed_text_NS;
+	 		if( this.timedTextNS )
+	 			return this.timedTextNS;
 			if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
-				this.timed_text_NS = wgNamespaceIds['timedtext'];
+				this.timedTextNS = wgNamespaceIds['timedtext'];
 			}else{
 				//default value is 102 ( probably should store this elsewhere )
-				this.timed_text_NS = 102;
+				this.timedTextNS = 102;
 			}
-			return this.timed_text_NS;
+			return this.timedTextNS;
 	 	},
 
 	 	/**
