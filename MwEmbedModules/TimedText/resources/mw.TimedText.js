@@ -659,11 +659,17 @@
 				);
 			} else {
 				// Add a link to request timed text for this clip:
-				$menu.append(
-					$.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
-						_this.getAddSubRequest();
-					})
-				);
+				if( mw.getConfig('TimedText.ShowRequestTranscript') ){
+					$menu.append(
+						$.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
+							_this.getAddSubRequest();
+						})
+					);
+				} else {
+					$menu.append(
+						$.getLineItem( gM( 'mwe-timedtext-no-subs'), 'close' )
+					)
+				}
 			}
 
 			// Put in the "Make Transcript" link if config enabled and we have an api key

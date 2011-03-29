@@ -27,7 +27,7 @@
 			return true;
 		}
 		// Do a module check for timed Text support ( module must add data property 'SupportsTimedText' )
-		$( embedPlayer ).trigger('SupportsTimedText' );
+		$( embedPlayer ).trigger( 'SupportsTimedText' );
 		
 		if( $( embedPlayer ).data( 'SupportsTimedText' )  ){
 			return true;

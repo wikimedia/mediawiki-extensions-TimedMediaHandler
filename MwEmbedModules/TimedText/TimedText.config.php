@@ -15,8 +15,11 @@
 		* If the "add timed text" link / interface should be exposed 
 		* allows usere to upload text files to the wiki
 		*/
-		'TimedText.showAddTextLink' => false,
+		'TimedText.ShowAddTextLink' => false,
 
+		// If the link to request a transcript should be shown on video files
+		'TimedText.ShowRequestTranscript' => false,
+	
 		// The category for listing videos that need transcription:
 		'TimedText.NeedsTranscriptCategory' => 'Videos needing subtitles'
 	);
