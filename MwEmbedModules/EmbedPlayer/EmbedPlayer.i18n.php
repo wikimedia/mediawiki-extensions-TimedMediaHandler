@@ -175,6 +175,7 @@ $messages['ar'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'mwe-embedplayer-credit-title' => 'Назва: $1',
@@ -187,7 +188,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-play_clip' => 'Прайграць частку файла',
 	'mwe-embedplayer-pause_clip' => 'Прыпыніць частку файла',
 	'mwe-embedplayer-volume_control' => 'Рэгуляваньне гучнасьці',
-	'mwe-embedplayer-player_options' => 'Устаноўкі прайгравальніка',
+	'mwe-embedplayer-player_options' => 'Налады прайгравальніка',
 	'mwe-embedplayer-timed_text' => 'Сынхранізаваны тэкст',
 	'mwe-embedplayer-player_fullscreen' => 'На ўвесь экран',
 	'mwe-embedplayer-next_clip_msg' => 'Прайграць наступную частку файла',
@@ -390,6 +391,8 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
+	'mwe-embedplayer-credit-date' => 'Datum: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'lade Plugin …',
 	'mwe-embedplayer-select_playback' => 'Wiedergabeeinstellungen ändern',
 	'mwe-embedplayer-link_back' => 'Link zurück',
@@ -1118,6 +1121,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-for_best_experience' => 'להצגת וידאו משופרת אנחנו ממליצים <b>[$1 להתקין את הגרסה החדשה ביותר של דפדפן פיירפוקס]</b>.',
 	'mwe-embedplayer-download-warn' => 'לא נמצא הגן תואם בדפדפן. כדי לנגן בתוך הדפדפן יש להוריד את [$1 הגרסה החדשה ביותר של פיירפוקס].',
 	'mwe-embedplayer-fullscreen-tip' => 'לחצו <b>F11</b> כדי להעביר את הדפדפן למצב מסך מלא וחזרה',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'לחיצה על <b>shift ⌘ F</b> מפעילה מסך מלא',
 	'mwe-embedplayer-do_not_warn_again' => 'לא להציג את ההודעה הזאת שוב',
 	'mwe-embedplayer-playerSelect' => 'נגנים',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">אנא קראו</a> לפני שיבוץ.',
@@ -1282,6 +1286,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'mwe-embedplayer-credit-title' => 'Titulo: $1',
+	'mwe-embedplayer-credit-date' => 'Data: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'cargamento del plug-in ...',
 	'mwe-embedplayer-select_playback' => 'Definir preferentia de reproduction',
 	'mwe-embedplayer-link_back' => 'Retroligamine',
@@ -1616,6 +1622,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'mwe-embedplayer-credit-title' => 'Наслов: $1',
+	'mwe-embedplayer-credit-date' => 'Датум: $1',
+	'mwe-embedplayer-credit-author' => 'Автор: $1',
 	'mwe-embedplayer-loading_plugin' => 'Го вчитувам приклучокот...',
 	'mwe-embedplayer-select_playback' => 'Постави изведбени нагодувања',
 	'mwe-embedplayer-link_back' => 'Обратна врска',
@@ -2010,6 +2018,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'mwe-embedplayer-credit-title' => 'Tìtol: $1',
+	'mwe-embedplayer-credit-date' => 'Data: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'Carié plugin...',
 	'mwe-embedplayer-select_playback' => 'Amposté gust ëd letura',
 	'mwe-embedplayer-link_back' => 'Anliura andré',
@@ -2095,6 +2105,8 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
+	'mwe-embedplayer-credit-date' => 'Data: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => "a carregar o ''plugin'' ...",
 	'mwe-embedplayer-select_playback' => 'Definir a preferência de reprodução',
 	'mwe-embedplayer-link_back' => 'Ligar atrás',
