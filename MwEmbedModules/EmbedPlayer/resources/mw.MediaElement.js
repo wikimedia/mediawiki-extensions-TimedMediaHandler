@@ -9,11 +9,13 @@
  *      videoElement <video> element used for initialization.
  * @constructor
  */
-function mediaElement( element ) {
+( function( mw, $ ) {
+	
+mw.MediaElement = function( element ) {
 	this.init( element );
 }
 
-mediaElement.prototype = {
+mw.MediaElement.prototype = {
 
 	// The array of mediaSource elements.
 	sources: null,
@@ -368,7 +370,7 @@ mediaElement.prototype = {
 			}
 		}
 		// Create a new source
-		var source = new mediaSource( element );
+		var source = new mw.MediaSource( element );
 
 		this.sources.push( source );
 		// mw.log( 'tryAddSource: added source ::' + source + 'sl:' +
@@ -391,4 +393,6 @@ mediaElement.prototype = {
 		 return playableSources;
 	}	
 };
+
+} )( mediaWiki, jQuery );
 

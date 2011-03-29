@@ -4,6 +4,32 @@
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
 ( function( mw, $ ) {
+
+/**
+ * Setup local players and supported mime types In an ideal world we would query the plugin
+ * to get what mime types it supports in practice not always reliable/available
+ *
+ * We can't cleanly store these values per library since player library is sometimes
+ * loaded post player detection
+ */
+// Flash based players:
+var kplayer = new mw.MediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'Kplayer');
+
+// Java based player
+var cortadoPlayer = new mw.MediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'Java' );
+
+// Native html5 players
+var oggNativePlayer = new mw.MediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg' ], 'Native' );
+var h264NativePlayer = new mw.MediaPlayer( 'h264Native', ['video/h264'], 'Native' );
+var webmNativePlayer = new mw.MediaPlayer( 'webmNative', ['video/webm'], 'Native' );
+
+// VLC player
+var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg'];
+var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMineList, 'Vlc' );
+
+// Generic plugin
+var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
+
 	
 mw.EmbedTypes = {
 
@@ -28,7 +54,7 @@ mw.EmbedTypes = {
 		if( this.mediaPlayers  ){
 			return this.mediaPlayers;
 		}
-		this.mediaPlayers = new mediaPlayers();
+		this.mediaPlayers = new mw.MediaPlayers();
 		// detect available players
 		this.detectPlayers();
 		return this.mediaPlayers;

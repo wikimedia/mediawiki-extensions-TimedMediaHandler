@@ -608,7 +608,7 @@ mw.EmbedPlayer.prototype = {
 			this.user_missing_plugin_html = element.innerHTML;
 		}
 		// Add the mediaElement object with the elements sources:
-		this.mediaElement = new mediaElement( element );
+		this.mediaElement = new mw.MediaElement( element );
 	},
 	/**
 	 * Stop events from Propagation and blocks interface updates and trigger events.

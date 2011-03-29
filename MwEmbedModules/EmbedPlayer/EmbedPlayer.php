@@ -1,17 +1,18 @@
 <?php
-
 	// Register all the EmbedPlayer modules 
 	return array(
-			"MediaElement" => array( 'scripts' => 'resources/MediaElement.js' ),
-			"MediaPlayer" => array( 'scripts' => 'resources/MediaPlayer.js' ),
-			"MediaPlayers" => array( 
-				'scripts' => 'resources/MediaPlayers.js',
-				'dependencies' => 'MediaPlayer'
+			"mw.MediaElement" => array( 'scripts' => 'resources/mw.MediaElement.js' ),
+			"mw.MediaPlayer" => array( 'scripts' => 'resources/mw.MediaPlayer.js' ),
+			"mw.MediaPlayers" => array( 
+				'scripts' => 'resources/mw.MediaPlayers.js',
+				'dependencies' => 'mw.MediaPlayer'
 			),
-			"MediaSource" => array( 'scripts' => 'resources/MediaSource.js' ),
+			"mw.MediaSource" => array( 'scripts' => 'resources/mw.MediaSource.js' ),
 			"mw.EmbedTypes" => array( 
 				'scripts' => 'resources/mw.EmbedTypes.js', 
-				'dependencies' => 'MediaPlayers'
+				'dependencies' =>  array(
+					'mw.MediaPlayers'
+				)
 			),
 
 			"mw.EmbedPlayer" => array( 
@@ -28,9 +29,9 @@
 					'mediawiki.absoluteUrl',
 				
 					// Sub classes:
-					'MediaElement',
-					'MediaPlayers',
-					'MediaSource',
+					'mw.MediaElement',
+					'mw.MediaPlayers',
+					'mw.MediaSource',
 					'mw.EmbedTypes',
 				
 					// jQuery dependencies: 

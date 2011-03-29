@@ -10,6 +10,9 @@
  * The base source attribute checks also see:
  * http://dev.w3.org/html5/spec/Overview.html#the-source-element
  */
+
+( function( mw, $ ) {
+	
 mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// source id
 	'id',
@@ -51,11 +54,12 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// If the source is the default source
 	'default'
 ] );
-function mediaSource( element ) {
+
+mw.MediaSource = function( element ) {
 	this.init( element );
 }
 
-mediaSource.prototype = {
+mw.MediaSource.prototype = {
 	// True if the source has been marked as the default.
 	markedDefault: false,
 
@@ -368,3 +372,4 @@ mediaSource.prototype = {
 	}
 };
 
+} )( mediaWiki, jQuery );

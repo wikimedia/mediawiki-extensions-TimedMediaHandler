@@ -4,13 +4,14 @@
  * @constructor
  */
 
-function mediaPlayers()
+( function( mw, $ ) {
+	
+mw.MediaPlayers = function()
 {
 	this.init();
 }
 
-mediaPlayers.prototype =
-{
+mw.MediaPlayers.prototype = {
 	// The list of players supported
 	players : null,
 
@@ -181,4 +182,4 @@ mediaPlayers.prototype =
 	}
 };
 
-
+} )( mediaWiki, jQuery );
