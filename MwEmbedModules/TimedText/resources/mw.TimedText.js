@@ -659,7 +659,7 @@
 				);
 			} else {
 				// Add a link to request timed text for this clip:
-				if( mw.getConfig('TimedText.ShowRequestTranscript') ){
+				if( mw.getConfig( 'TimedText.ShowRequestTranscript' ) ){
 					$menu.append(
 						$.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
 							_this.getAddSubRequest();
@@ -709,16 +709,18 @@
 				$dialog.dialog( 'option', 'buttons', null );
 
 				// Check if the category does not already exist:
-				mw.getJSON( apiUrl, {'titles': videoTitle, 'prop': 'categories'}, function( data ){
+				mw.getJSON( apiUrl, { 'titles': videoTitle, 'prop': 'categories' }, function( data ){
 					if( data && data.query && data.query.pages ){
-						for( var i in data.query.pages ){
+						for( var i in data.query.pages ){							
 							// we only request a single page:
-							var categories = data.query.pages[i].categories;
-							for(var j =0; j < categories.length; j++){
-								if( categories[j].title.indexOf( catName ) != -1 ){
-									$dialog.html( gM('mwe-timedtext-request-already-done', subRequestCategoryUrl ) );
-									$dialog.dialog( 'option', 'buttons', buttonOk);
-									return ;
+							if( data.query.pages[i].categories ){
+								var categories = data.query.pages[i].categories;
+								for(var j =0; j < categories.length; j++){
+									if( categories[j].title.indexOf( catName ) != -1 ){
+										$dialog.html( gM('mwe-timedtext-request-already-done', subRequestCategoryUrl ) );
+										$dialog.dialog( 'option', 'buttons', buttonOk);
+										return ;
+									}
 								}
 							}
 						}
