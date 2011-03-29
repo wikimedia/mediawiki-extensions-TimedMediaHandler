@@ -59,12 +59,12 @@ class WebVideoTranscode {
 				'twopass' 			=> 'true',
 				'keyframeInterval'	=> '64',
 				'bufDelay'			=> '128',
-				'videoCodec' 			=> 'theora',
+				'videoCodec' 		=> 'theora',
 			),
 		WebVideoTranscode::ENC_OGV_4MBS =>
 			array(
-				'maxSize'			=> '360',
-				'videoBitrate'		=> '368',
+				'maxSize'			=> '480',
+				'videoBitrate'		=> '512',
 				'audioBitrate'		=> '48',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
@@ -74,8 +74,8 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_OGV_6MBS =>
 			array(
-				'maxSize'			=> '480',
-				'videoBitrate'		=> '512',
+				'maxSize'			=> '640',
+				'videoBitrate'		=> '786',
 				'audioBitrate'		=> '96',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
@@ -86,19 +86,20 @@ class WebVideoTranscode {
 
 		WebVideoTranscode::ENC_OGV_HQ_VBR =>
 			array(
-				'maxSize'			=> '720',
+				'maxSize'			=> '1280',
 				'videoQuality'		=> 6,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
 				'keyframeInterval'	=> '128',
 				'videoCodec' 			=> 'theora',
 			),	
+
 			
 		// WebM transcode:
 		WebVideoTranscode::ENC_WEBM_6MBS =>
 			array(
-			 	'maxSize'			=> '512',
-				'videoBitrate'		=> '512',
+			 	'maxSize'			=> '640',
+				'videoBitrate'		=> '786',
 				'audioBitrate'		=> '96',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
@@ -108,11 +109,11 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
 			 array(
-				'maxSize'			=> '720',
+				'maxSize'			=> '1280',
 				'videoQuality'		=> 7,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
-				'videoCodec' 			=> 'vp8',
+				'videoCodec' 		=> 'vp8',
 			)
 	);
 	
