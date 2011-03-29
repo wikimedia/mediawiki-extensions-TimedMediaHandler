@@ -43,7 +43,6 @@
 		// Hide videonojs class
 		$( '.videonojs' ).hide();
 
-		
 		// Set up the embed video player class request: (include the skin js as well)
 		var dependencySet = [
 			'mw.EmbedPlayer'
@@ -107,7 +106,7 @@
 			$( mw ).trigger( 'EmbedPlayerUpdateDependencies',
 					[ playerElement, dependencySet ] );
 		});
-		// Remove duplicates in the dependencySet
+		// Remove any duplicates in the dependencySet:
 		dependencySet = $.unique( dependencySet );
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){

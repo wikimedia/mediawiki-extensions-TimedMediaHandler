@@ -25,6 +25,7 @@
 					'mediawiki.client',
 					'mediawiki.UtilitiesTime',
 					'mediawiki.Uri',
+					'mediawiki.absoluteUrl',
 				
 					// Sub classes:
 					'MediaElement',

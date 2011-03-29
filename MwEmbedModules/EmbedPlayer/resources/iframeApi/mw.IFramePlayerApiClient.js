@@ -5,7 +5,7 @@
 */
 
 ( function( mw ) {
-	
+
 mw.IFramePlayerApiClient = function( iframe, playerProxy ){
 	return this.init( iframe , playerProxy );
 }
@@ -119,7 +119,7 @@ mw.IFramePlayerApiClient.prototype = {
 		for( var attrName in playerAttributes ){
 			if( attrName != 'id' ){
 				if( _this._prevPlayerProxy[ attrName ] != _this.playerProxy[ attrName ] ){
-					//mw.log( "IFramePlayerApiClient:: User js update:" + attrName + ' set to: ' + this.playerProxy[ attrName ] + ' != old: ' + _this._prevPlayerProxy[ attrName ] );
+					// mw.log( "IFramePlayerApiClient:: User js update:" + attrName + ' set to: ' + this.playerProxy[ attrName ] + ' != old: ' + _this._prevPlayerProxy[ attrName ] );
 					// Send the updated attribute back to the iframe: 
 					_this.postMessage({
 						'attrName' : attrName,

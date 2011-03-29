@@ -9,6 +9,8 @@
 $messages = array();
 $messages['en'] = array(
 	'mwe-embedplayer-credit-title' => 'Title: $1',
+	'mwe-embedplayer-credit-date' => 'Date: $1',
+	'mwe-embedplayer-credit-author' => 'Author: $1',	
 	'mwe-embedplayer-loading_plugin' => 'Loading plugin ...',
 	'mwe-embedplayer-select_playback' => 'Set playback preference',
 	'mwe-embedplayer-link_back' => 'Link back',
