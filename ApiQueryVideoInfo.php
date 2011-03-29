@@ -2,7 +2,9 @@
 /**
  * Extends imageinfo with support for videoinfo sources property.
  * 
- * Alternativly core ApiQueryImageInfo could support being extended in obvious ways.
+ * Alternatively core ApiQueryImageInfo could support being extended in some straightforward ways.
+ * see: http://www.mediawiki.org/wiki/User:Catrope/Extension_review/TimedMediaHandler#ApiQueryVideoInfo.php
+ * 
  */
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 

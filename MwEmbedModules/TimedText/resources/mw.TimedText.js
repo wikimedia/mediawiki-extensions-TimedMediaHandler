@@ -635,6 +635,7 @@
 		*		Layout
 		*			Bellow video
 		*			Ontop video ( only available to supported plugins )
+		* TODO features:
 		*		[ Search Text ]
 		*			[ This video ]
 		*			[ All videos ]
@@ -642,8 +643,7 @@
 		*/
 		getMainMenu: function() {
 			var _this = this;
-
-
+			
 			// Build the source list menu item:
 			$menu = $( '<ul>' );
 			// Show text menu item ( if there are sources)
@@ -835,7 +835,7 @@
 		},
 
 		/**
-	 	 * Get lagnuage name from language key
+	 	 * Get language name from language key
 	 	 * @param {String} lang_key Language key
 	 	 */
 	 	getLanguageName: function( lang_key ) {
@@ -1493,6 +1493,7 @@
 	 *
 
 	// Will add a base class once we are serving more than just mediaWiki "commons"
+	// also we should segment out these files
 	mw.BaseTextProvider = function() {
 		return this.init();
 	}

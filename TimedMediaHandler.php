@@ -50,10 +50,9 @@ $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 // Location of the FFmpeg binary ( used to encode WebM and for thumbnails ) 
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
-// The NS for TimedText ( registerd on mediawiki.org )
+// The NS for TimedText ( registered on mediawiki.org )
 // http://www.mediawiki.org/wiki/Extension_namespace_registration
-// Note commons pre-dates TimedMediaHandler and should add $wgTimedTextNS = 102 per
-// their local settings config
+// Note commons pre-dates TimedMediaHandler and should set $wgTimedTextNS = 102 in localSettings.php
 $wgTimedTextNS = 700;
 
 /** 

@@ -5,7 +5,7 @@
  * Timed text support is presently fairly limited. Unlike Ogg and WebM handlers, 
  * timed text does not extend the TimedMediaHandler class. 
  * 
- * TODO On "new" timedtext laguage save purge all pages where file exists
+ * TODO On "new" timedtext language save purge all pages where file exists
  */
 class TextHandler {
 	
@@ -84,6 +84,7 @@ class TextHandler {
 		wfDebug("Get text tracks from remote api \n");
 		$query = $this->getTextPagesQuery();
 		
+		
 		// Error in getting timed text namespace return empty array; 
 		if( $query === false ){
 			return array();
@@ -92,7 +93,7 @@ class TextHandler {
 		if ( $data && $this->file->repo->descriptionCacheExpiry > 0 ) {
 			$wgMemc->set( $key, $data, $this->file->repo->descriptionCacheExpiry );
 		}
-		return  $this->getTextTracksFromData( $data );
+		return $this->getTextTracksFromData( $data );
 	}
 	function getLocalTextSources(){
 		global $wgServer, $wgScriptPath;
@@ -110,11 +111,10 @@ class TextHandler {
 		
 		$textTracks = array();
 		$providerName = $this->file->repo->getName();
-		// For a while commons repo in the manual was named "shared" if commons fix name
+		// For a while commons repo in the mediaWiki manual was called "shared" 
 		// ( we need commons to be named "commons" so that the javascript api provider names match up ) 
 		if( $providerName == 'shared' ){
 			// We could alternatively check $this->file->repo->mApiBase 
-			// ( but really we should add a getter ) 
 			foreach( $wgForeignFileRepos as $repo ){
 				if( $repo['name'] ==  $this->file->repo->getName() 
 						&&
@@ -149,7 +149,7 @@ class TextHandler {
 					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
 					'data-mwprovider' => $providerName,				
 					'type' => 'text/x-srt',
-					// TODO Should add a special entry point and output proper WebVTT format:
+					// TODO Should eventually add special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
 					'src' => $subTitle->getFullURL( array( 
 						'action' => 'raw',

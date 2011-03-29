@@ -11,8 +11,8 @@ class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
 		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, 
-			$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, 
-			$tmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules;
+			$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
+			$tmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules, $wgTimedTextNS;
 
 		// Setup media Handlers: 
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
@@ -67,12 +67,12 @@ class TimedMediaHandlerHooks {
 		
 		/**
 		 * Add support for the "TimedText" NameSpace
-		 */
-		global $wgExtraNamespaces;
-		$wgTimedTextNS = null;
-		
+		 */				
 		define( "NS_TIMEDTEXT", $wgTimedTextNS);		
 		define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
+		
+		$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
+		$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
 		
 		return true;
 	}
