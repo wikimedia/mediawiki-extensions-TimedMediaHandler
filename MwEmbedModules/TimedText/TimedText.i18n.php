@@ -654,6 +654,7 @@ $messages['gl'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => 'Subtítulos en $1 para o vídeo: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Non se atoparon os subtítulos en $1 para o vídeo: $2',
 	'mwe-timedtext-request-subs' => 'Solicitar a transcrición',
+	'mwe-timedtext-no-subs' => 'Non hai pistas de texto dispoñibles',
 	'mwe-timedtext-request-subs-desc' => 'Engadir unha solicitude de transcrición deste ficheiro de vídeo',
 	'mwe-timedtext-request-subs-done' => 'Solicitude de transcrición engadida. [$1 Ollar todas as solicitudes]',
 	'mwe-timedtext-request-subs-fail' => 'Erro ao engadir a solicitude de transcrición. Accedeu ao sistema?',

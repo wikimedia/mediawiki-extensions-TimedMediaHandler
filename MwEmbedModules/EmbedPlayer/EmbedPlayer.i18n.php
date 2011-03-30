@@ -924,6 +924,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
+	'mwe-embedplayer-credit-date' => 'Data: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'Cargando o complemento...',
 	'mwe-embedplayer-select_playback' => 'Configurar as preferencias de reprodución',
 	'mwe-embedplayer-link_back' => 'Ligazón de volta',
