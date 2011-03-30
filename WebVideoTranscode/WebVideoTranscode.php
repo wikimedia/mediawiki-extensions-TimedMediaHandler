@@ -30,12 +30,13 @@ class WebVideoTranscode {
 	
 	// Ogg Profiles
 	const ENC_OGV_2MBS = '220_200kbs.ogv';
-	const ENC_OGV_4MBS = '360_400kbs.ogv';
-	const ENC_OGV_6MBS = '480_600kbs.ogv';
+	const ENC_OGV_5MBS = '360_560kbs.ogv';
+	const ENC_OGV_9MBS = '480_880kbs.ogv';
 	const ENC_OGV_HQ_VBR = '720_VBR.ogv';
 	
 	// WebM profiles: 	
-	const ENC_WEBM_6MBS = '480_600kbs.webm';
+	const ENC_WEBM_5MBS = '360_560kbs.webm';
+	const ENC_WEBM_9MBS = '480_900kbs.webm';
 	const ENC_WEBM_HQ_VBR = '720_VBR.webm';
 
 	/**
@@ -49,7 +50,7 @@ class WebVideoTranscode {
 	public static $derivativeSettings = array(
 		WebVideoTranscode::ENC_OGV_2MBS =>
 			array(
-				'maxSize'			=> '220',
+				'maxSize'			=> '220', // 160P or around there 
 				'videoBitrate'		=> '160',
 				'audioBitrate'		=> '32',
 				'samplerate'		=> '22050',
@@ -61,9 +62,9 @@ class WebVideoTranscode {
 				'bufDelay'			=> '128',
 				'videoCodec' 		=> 'theora',
 			),
-		WebVideoTranscode::ENC_OGV_4MBS =>
+		WebVideoTranscode::ENC_OGV_5MBS =>
 			array(
-				'maxSize'			=> '480',
+				'maxSize'			=> '480', // 360P
 				'videoBitrate'		=> '512',
 				'audioBitrate'		=> '48',
 				'noUpscaling'		=> 'true',
@@ -72,33 +73,44 @@ class WebVideoTranscode {
 				'bufDelay'			=> '256',
 				'videoCodec' 			=> 'theora',
 			),
-		WebVideoTranscode::ENC_OGV_6MBS =>
+		WebVideoTranscode::ENC_OGV_9MBS =>
 			array(
-				'maxSize'			=> '640',
+				'maxSize'			=> '640', // 480P
 				'videoBitrate'		=> '786',
 				'audioBitrate'		=> '96',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
-				'videoCodec' 			=> 'theora',
+				'videoCodec' 		=> 'theora',
 			),
 
 		WebVideoTranscode::ENC_OGV_HQ_VBR =>
 			array(
-				'maxSize'			=> '1280',
+				'maxSize'			=> '1280', // 720P
 				'videoQuality'		=> 6,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
 				'keyframeInterval'	=> '128',
-				'videoCodec' 			=> 'theora',
+				'videoCodec' 		=> 'theora',
 			),	
 
 			
 		// WebM transcode:
-		WebVideoTranscode::ENC_WEBM_6MBS =>
+		WebVideoTranscode::ENC_WEBM_5MBS => 
 			array(
-			 	'maxSize'			=> '640',
+				'maxSize'			=> '480', // 380P
+				'videoBitrate'		=> '512',
+				'audioBitrate'		=> '48',
+				'noUpscaling'		=> 'true',
+				'twopass'			=> 'true',
+				'keyframeInterval'	=> '128',
+				'bufDelay'			=> '256',
+				'videoCodec' 		=> 'vp8',
+			),
+		WebVideoTranscode::ENC_WEBM_9MBS =>
+			array(
+			 	'maxSize'			=> '640', // 480P
 				'videoBitrate'		=> '786',
 				'audioBitrate'		=> '96',
 				'noUpscaling'		=> 'true',
@@ -109,7 +121,7 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
 			 array(
-				'maxSize'			=> '1280',
+				'maxSize'			=> '1280', // 720P
 				'videoQuality'		=> 7,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',

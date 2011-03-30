@@ -18,6 +18,9 @@ To install this extension, add the following to the end of your LocalSettings.ph
 	// TimedMediaHandler
     require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
+	// For boxes doing transcoding you should increase the allocated shell memmory:
+	$wgMaxShellMemory = 102400*64;
+
 
 Kaltura html5 player library
 -----

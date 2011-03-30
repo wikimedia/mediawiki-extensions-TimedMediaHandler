@@ -71,14 +71,14 @@ $wgEnabledTranscodeSet = array(
 	// Cover accessibility for low bandwidth / low resources clients: 
 	WebVideoTranscode::ENC_OGV_2MBS,
 	
-	// A standard web streamable ogg video 
-	WebVideoTranscode::ENC_OGV_6MBS,
+	// A high end web streamable ogg video 
+	WebVideoTranscode::ENC_OGV_9MBS,
 	
 	// High quality 720P ogg video: 
 	WebVideoTranscode::ENC_OGV_HQ_VBR,
 	
-	// A standard web streamable WebM video	
-	WebVideoTranscode::ENC_WEBM_6MBS,	
+	// A web streamable WebM video	
+	WebVideoTranscode::ENC_WEBM_9MBS,
 	
 	// A high quality WebM stream 
 	WebVideoTranscode::ENC_WEBM_HQ_VBR,

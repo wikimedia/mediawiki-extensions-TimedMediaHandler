@@ -75,8 +75,11 @@ class TimedMediaIframeOutput {
 		<?php echo $thumbnail->toHtml(); ?>
 	</div
 	<?php echo $wgOut->getHeadScripts($skin); ?>	
-	<script type="text/javascript">		
-		mw.ready(function(){			
+	<script type="text/javascript">
+		// Set the fullscreen property inline to avoid poluting the player cache  
+		mw.setConfig('EmbedPlayer.EnableFullscreen', false ); 
+			
+		mw.ready(function(){
 			var fitPlayer = function(){
 				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
 				.get(0).resizePlayer({
