@@ -127,8 +127,8 @@ $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandl
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 
 // Register all Timed Media Handler hooks right after the cache check.
-// This way if you set a variable like $wgTimedTextNS after you include TimedMediaHandler its 
-// used as the hooks are registred.   
+// This way if you set a variable like $wgTimedTextNS in LocalSettings.php after you include TimedMediaHandler  
+// we can still read the variable values   
 $wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
 
 // Extension Credits

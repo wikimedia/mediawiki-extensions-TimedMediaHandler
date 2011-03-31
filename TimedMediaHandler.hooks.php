@@ -53,6 +53,9 @@ class TimedMediaHandlerHooks {
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 		
 
+		// Add unit tests
+		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
+
 		// Exclude transcoded assets from normal thumbnail purging 
 		// ( a maintenance script could handle transcode asset purging) 
 		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $tmhFileExtensions );
@@ -76,6 +79,20 @@ class TimedMediaHandlerHooks {
 		
 		return true;
 	}
+	
+	/**
+	 * Hook to add list of PHPUnit test cases.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param array $files
+	 */
+	public static function registerUnitTests( array &$files ) {
+		$testDir = dirname( __FILE__ ) . '/tests/phpunit';
+		$files[] = $testDir . 'TimedMediaHandlerTestSuite.php';
+		return true;
+	}
+	
 	static function pageOutputHook(  &$out, &$sk ){
 		// FIXME we should only need to add this via parser output hook 	
 		$out->addModules( 'PopUpMediaTransform' );
