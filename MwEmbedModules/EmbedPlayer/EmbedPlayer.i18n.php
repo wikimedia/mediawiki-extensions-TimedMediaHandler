@@ -86,6 +86,8 @@ $messages['en'] = array(
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
+	'mwe-embedplayer-credit-date' => '{{Identical|Date}}',
+	'mwe-embedplayer-credit-author' => '{{Identical|Author}}',
 	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
@@ -179,6 +181,8 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'mwe-embedplayer-credit-title' => 'Назва: $1',
+	'mwe-embedplayer-credit-date' => 'Дата: $1',
+	'mwe-embedplayer-credit-author' => 'Аўтар: $1',
 	'mwe-embedplayer-loading_plugin' => 'Загружаецца дапаўненьне …',
 	'mwe-embedplayer-select_playback' => 'Устанавіць настройкі прайграваньня',
 	'mwe-embedplayer-link_back' => 'Адваротная спасылка',
@@ -232,6 +236,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-for_best_experience' => 'Для лепшага прайграваньня відэа, мы рэкамэндуем: <br /><b>[$1 Firefox 3.5].</b>',
 	'mwe-embedplayer-download-warn' => 'Ня знойдзены ўбудаваны прайгравальнік, для прагляду ў браўзэры загрузіце [$1 апошнюю вэрсію Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Клявіша <b>F11</b> пераключае <i>вэб-браўзэр</i> у поўнаэкранны рэжым',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Націсьніце <b>shift ⌘ F</b> для пераходу ў поўнаэкранны рэжым',
 	'mwe-embedplayer-do_not_warn_again' => 'Не паказваць гэтае паведамленьне ў будучыні',
 	'mwe-embedplayer-playerSelect' => 'Прайгравальнікі',
 	'mwe-embedplayer-read_before_embed' => 'Калі ласка, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">прачытайце гэта</a> перад устаўкай!',
@@ -1145,6 +1150,8 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'mwe-embedplayer-credit-title' => 'Titul: $1',
+	'mwe-embedplayer-credit-date' => 'Datum: $1',
+	'mwe-embedplayer-credit-author' => 'Awtor: $1',
 	'mwe-embedplayer-loading_plugin' => 'tykač so začituje ...',
 	'mwe-embedplayer-select_playback' => 'Nastajenje za playback stajić',
 	'mwe-embedplayer-link_back' => 'Wotkaz wróćo',
@@ -1751,6 +1758,8 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'mwe-embedplayer-credit-title' => 'Naam: $1',
+	'mwe-embedplayer-credit-date' => 'Datum: $1',
+	'mwe-embedplayer-credit-author' => 'Auteur: $1',
 	'mwe-embedplayer-loading_plugin' => 'bezig met het laden van de uitbreiding...',
 	'mwe-embedplayer-select_playback' => 'Afspeelinstellingen instellen',
 	'mwe-embedplayer-link_back' => 'Terugverwijzen',
@@ -2258,6 +2267,8 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
  */
 $messages['ru'] = array(
 	'mwe-embedplayer-credit-title' => 'Название: $1',
+	'mwe-embedplayer-credit-date' => 'Дата: $1',
+	'mwe-embedplayer-credit-author' => 'Автор: $1',
 	'mwe-embedplayer-loading_plugin' => 'загрузка плагина ...',
 	'mwe-embedplayer-select_playback' => 'Установить настройки воспроизведения',
 	'mwe-embedplayer-link_back' => 'Обратная ссылка',
