@@ -1,7 +1,5 @@
 <?php
 
-// TODO: Fix core printable stylesheet. Descendant selectors suck.
-
 class TimedMediaHandler extends MediaHandler {
 
 	static $magicDone = false;
@@ -19,7 +17,6 @@ class TimedMediaHandler extends MediaHandler {
 	 * Get the list of supported wikitext embed params
 	 */
 	function getParamMap() {
-		
 		return array(
 			'img_width' => 'width',
 			'timedmedia_thumbtime' => 'thumbtime',
@@ -141,9 +138,13 @@ class TimedMediaHandler extends MediaHandler {
 	 * 
 	 * @param $time {Number} Seconds to be converted to npt time format
 	 */	 
-	public static function seconds2npt( $time ){
+	public static function seconds2npt( $time ){ 
 		if ( !is_numeric( $time ) ) {
 			wfDebug( __METHOD__.": trying to get npt time on NaN:" + $time);			
+			return false;
+		}
+		if( $time < 0 ){
+			wfDebug( __METHOD__.": trying to time on negative value:" + $time);
 			return false;
 		}
 		$hours = floor( $time / 3600 );
