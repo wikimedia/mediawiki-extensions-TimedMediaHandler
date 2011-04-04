@@ -2071,11 +2071,12 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Millosh
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'timedmedia-desc' => 'Руковаоц ogg Теора и Ворбис фајловима са јаваскрипт плејером',
+	'timedmedia-desc' => 'Руководилац аудио, видео и текстуалним датотекама, уз подршку за формате вебм, OGG теора, ворбис и SRT',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 звучни фајл, $2.',
 	'timedmedia-ogg-short-video' => 'Ogg $1 видео фајл, $2.',
 	'timedmedia-ogg-short-general' => 'Ogg $1 медијски фајл, $2.',
