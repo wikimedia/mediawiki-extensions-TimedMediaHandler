@@ -2,12 +2,57 @@
 /**
  * TestApiUploadVideo test case.
  * 
+ * NOTE: This build heavily on ApiUploadTest ( would need to refactor ApiUploadTest for this to work better ) 
+ * 
  * @ingroup timedmedia
  * @since 0.2
  * @author Michael Dale
  */
 
-class TestApiUploadVideo extends ApiUploadTest {
+global $IP;
+require_once( "$IP/tests/phpunit/includes/api/ApiTestCaseUpload.php" );
+
+/**
+ * @group Database
+ * @group Destructive
+ *
+ * This is pretty sucky... needs to be prettified.
+ */
+class TestApiUploadVideo extends ApiTestCaseUpload {
+
+	/**
+	 * Testing login
+	 * XXX this is a funny way of getting session context
+	 */
+	function testLogin() {
+		$user = self::$users['uploader'];
+
+		$params = array(
+			'action' => 'login',
+			'lgname' => $user->username,
+			'lgpassword' => $user->password
+		);
+		list( $result, , $session ) = $this->doApiRequest( $params );
+		$this->assertArrayHasKey( "login", $result );
+		$this->assertArrayHasKey( "result", $result['login'] );
+		$this->assertEquals( "NeedToken", $result['login']['result'] );
+		$token = $result['login']['token'];
+
+		$params = array(
+			'action' => 'login',
+			'lgtoken' => $token,
+			'lgname' => $user->username,
+			'lgpassword' => $user->password
+		);
+		list( $result, , $session ) = $this->doApiRequest( $params, $session );
+		$this->assertArrayHasKey( "login", $result );
+		$this->assertArrayHasKey( "result", $result['login'] );
+		$this->assertEquals( "Success", $result['login']['result'] );
+		$this->assertArrayHasKey( 'lgtoken', $result['login'] );
+
+		return $session;
+
+	}
 
 	/**
 	 * @depends testLogin
@@ -17,7 +62,7 @@ class TestApiUploadVideo extends ApiUploadTest {
 		$wgUser = self::$users['uploader']->user;
 
 		$extension = 'ogv';
-		$mimeType = 'video/ogg';
+		$mimeType = 'application/ogg';
 		
 		// Grab a test ogg video: 		
 		$filePath =  dirname( __FILE__ ) . '/media/test5seconds.electricsheep.300x400.ogv';
@@ -47,6 +92,7 @@ class TestApiUploadVideo extends ApiUploadTest {
 		} catch ( UsageException $e ) {
 			$exception = true;
 		}
+
 		$this->assertTrue( isset( $result['upload'] ) );
 		$this->assertEquals( 'Success', $result['upload']['result'] );
 		$this->assertEquals( $fileSize, ( int )$result['upload']['imageinfo']['size'] );
@@ -55,6 +101,7 @@ class TestApiUploadVideo extends ApiUploadTest {
 
 		// clean up
 		$this->deleteFileByFilename( $fileName );
-		unlink( $filePath );	
-	}	
+		unlink( $filePath );
+	}
 }
+
