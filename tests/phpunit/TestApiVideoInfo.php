@@ -6,16 +6,16 @@
  * @since 0.2
  * @author Michael Dale
  */
-class TestApiVideoInfo extends ApiTestSetup {
-
-	public function setUp() {
-		parent::setUp();
-
-		wfSetupSession();
-
-		ini_set( 'log_errors', 1 );
-		ini_set( 'error_reporting', 1 );
-		ini_set( 'display_errors', 1 );
+class TestApiVideoInfo extends ApiTestCaseUpload {	
+	/**
+	 * @depends testUploadVideoFiles
+	 */
+	function testVideoInfo() {
+		// Once video files are uploaded grab all the media files and run api info test on them
+		$mediaFiles = TestApiUploadVideo::getTestMediaList();
+		foreach( $mediaFiles as $file ){
+			
+		}
 	}
 	
 }

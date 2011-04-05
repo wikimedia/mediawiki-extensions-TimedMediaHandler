@@ -38,15 +38,22 @@ class TimedMediaHandler extends MediaHandler {
 		}
 		return true;
 	}
-	
+	/**
+	 * TODO we should really have "$file" available here to validate the param string 
+	 */
 	function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
 		$paramString ='';
 		$paramString.= ( isset( $params['width'] ) )?  $params['width'] . 'px' : '';
 		$paramString.= ( $paramString != '' )? '-' : '';
 		
-		if ( isset( $params['thumbtime'] ) ) {
-			$time = $this->parseTimeString( $params['thumbtime'] );
+		// Get the raw thumbTime from thumbtime or start param
+		$thumbTime = isset( $params['thumbtime'] )? $params['thumbtime'] : false;
+		if( !$thumbTime )
+			$thumbTime = isset( $params['start'] )? $params['start'] : false;
+		
+		if ( $thumbTime ) {
+			$time = $this->parseTimeString( $thumbTime );
 			if ( $time !== false ) {
 				return $paramString. 'seek=' . $time;
 			}
@@ -78,6 +85,11 @@ class TimedMediaHandler extends MediaHandler {
 				}
 			}
 		}
+		// Make sure we don't try and up-scale the asset:
+		if( isset( $params['width'] ) && (int)$params['width'] > $image->getWidth() ){
+			$params['width'] = $image->getWidth();
+		}
+		
 		// Make sure start time is not > than end time
 		if(isset($params['start']) && isset($params['end']) ){
 			if($params['start'] > $params['end'])
@@ -172,6 +184,10 @@ class TimedMediaHandler extends MediaHandler {
 		$srcHeight = $file->getHeight();
 		
 		$params['width'] = isset( $params['width'] )? $params['width'] : $srcWidth;
+		// don't upscale: 
+		if( $params['width'] > $srcWidth ){
+			$params['width'] = $srcWidth;
+		}
 		
 		$options = array(
 			'file' => $file,

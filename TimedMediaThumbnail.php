@@ -3,7 +3,6 @@ class TimedMediaThumbnail {
 	
 	static function get( $options ){
 		global $wgFFmpegLocation, $wgOggThumbLocation;
-		$thumbtime = self::getThumbTime( $options );
 
 		// Set up lodal pointer to file
 		$file = $options['file'];
@@ -11,13 +10,10 @@ class TimedMediaThumbnail {
 			wfMkdirParents( dirname( $options['dstPath'] ) );
 		}
 
-		wfDebug( "Creating video thumbnail at" .  $options['dstPath']  . "\n" );
-		
-		// If ogg try OggThumb:
-		if( $options['file']->getHandler()->getMetadataType() == 'ogg' ){ 
-			if( self::tryOggThumb( $options) ){
-				return true;
-			}
+		wfDebug( "Creating video thumbnail at" .  $options['dstPath']  . "\n" );		
+		// If try OggThumb:	
+		if( self::tryOggThumb( $options) ){
+			return true;
 		}
 		// Else try ffmpeg and return result:
 		return self::tryFfmpegThumb( $options );
@@ -30,9 +26,13 @@ class TimedMediaThumbnail {
 	 * @param $dstPath {array} Thumb rendering parameters ( like size and time )
 	 */
 	static function tryOggThumb( $options ){
-		global $wgOggThumbLocation;
+		global $wgOggThumbLocation;			
+		// Check that the file is 'ogg' format
+		if( $options['file']->getHandler()->getMetadataType() != 'ogg' ){ 
+			return false;
+		}
 		
-		// Check for ogg format file and $wgOggThumbLocation 
+		// Check for $wgOggThumbLocation 
 		if( !$wgOggThumbLocation 
 			|| !is_file( $wgOggThumbLocation ) 
 		){
@@ -40,7 +40,7 @@ class TimedMediaThumbnail {
 		}
 		
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
-			' -t '. intval( $options['thumbtime'] ) . ' ';
+			' -t '. intval( self::getThumbTime( $options ) ) . ' ';
 		
 		// Setting height to 0 will keep aspect: 
 		// http://dev.streamnik.de/75.html
@@ -73,7 +73,7 @@ class TimedMediaThumbnail {
 			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
 		}
 		
-		$cmd.=' -ss ' . intval( $options['thumbtime'] ) .
+		$cmd.=' -ss ' . intval( self::getThumbTime( $options ) ) .
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .
@@ -102,15 +102,20 @@ class TimedMediaThumbnail {
 	static function getThumbTime( $options ){		
 		$length = $options['file']->getLength();
 		$thumbtime = false;
-		if ( $options['thumbtime'] ) {
-		 	return TimedMediaHandler::parseTimeString( $options['thumbtime'], $length );
-		}
+		
 		// If start time param isset use that for the thumb:
-		if( $options['start'] ) {
-			return TimedMediaHandler::parseTimeString( $options['start'], $length );
-		}else{
-			// Seek to midpoint by default, it tends to be more interesting than the start
-			return $length / 2;
+		if(  isset( $options['start'] ) ) {
+			$thumbtime = TimedMediaHandler::parseTimeString( $options['start'], $length );
+			if( $thumbtime )
+		 		return $thumbtime; 
+		}
+		// else use thumbtime
+		if ( isset( $options['thumbtime'] ) ) {
+		 	$thumbtime = TimedMediaHandler::parseTimeString( $options['thumbtime'], $length );
+		 	if( $thumbtime )
+		 		return $thumbtime; 
 		}		
+		// Seek to midpoint by default, it tends to be more interesting than the start
+		return $length / 2;
 	}
 }

@@ -13,7 +13,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 	
 	function __construct( $conf ){
-		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl','start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
+		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
@@ -248,7 +248,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->sources = WebVideoTranscode::getSources( $this->file );	
 			// Check if we have "start or end" times and append the temporal url fragment hash
 			foreach( $this->sources as &$source ){
-				//print "ha:". $this->getTemporalUrlHash();
 				$source['src'].= $this->getTemporalUrlHash();
 			}			
 		}

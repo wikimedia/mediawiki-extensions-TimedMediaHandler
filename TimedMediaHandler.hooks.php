@@ -27,17 +27,17 @@ class TimedMediaHandlerHooks {
 		// Add transcode job class:
 		$wgJobClasses+= array(
 			'webVideoTranscode' => 'WebVideoTranscodeJob'
-			);
-			// Transcode jobs must be explicitly requested from the job queue:
-			$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
+		);
+		// Transcode jobs must be explicitly requested from the job queue:
+		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
-			$baseExtensionResource = array(
-			'localBasePath' => dirname( __FILE__ ),
-		 	'remoteExtPath' => 'TimedMediaHandler',
-			);
+		$baseExtensionResource = array(
+		'localBasePath' => dirname( __FILE__ ),
+	 	'remoteExtPath' => 'TimedMediaHandler',
+		);
 
-			// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules )
-			$wgResourceModules+= array(
+		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules )
+		$wgResourceModules+= array(
 			'PopUpMediaTransform' => $baseExtensionResource + array(
 				'scripts' => 'resources/PopUpThumbVideo.js',
 				'styles' => 'resources/PopUpThumbVideo.css',
@@ -46,38 +46,38 @@ class TimedMediaHandlerHooks {
 			'embedPlayerIframeStyle'=> $baseExtensionResource + array(
 				'styles' => 'resources/embedPlayerIframe.css',
 			)
-			);
+		);
 
-			// We should probably move this to a parser function but not working correctly in
-			// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
-			$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
+		// We should probably move this to a parser function but not working correctly in
+		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
+		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 
 
-			// Add unit tests
-			$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
+		// Add unit tests
+		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 
-			// Exclude transcoded assets from normal thumbnail purging
-			// ( a maintenance script could handle transcode asset purging)
-			$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $tmhFileExtensions );
-			// Also add the .log file ( used in two pass encoding )
-			// ( probably should move in-progress encodes out of web accessible directory )
-			$wgExcludeFromThumbnailPurge[] = 'log';
+		// Exclude transcoded assets from normal thumbnail purging
+		// ( a maintenance script could handle transcode asset purging)
+		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $tmhFileExtensions );
+		// Also add the .log file ( used in two pass encoding )
+		// ( probably should move in-progress encodes out of web accessible directory )
+		$wgExcludeFromThumbnailPurge[] = 'log';
 
-			// Api hooks for derivatives and query video derivatives
-			$wgAPIPropModules += array(
+		// Api hooks for derivatives and query video derivatives
+		$wgAPIPropModules += array(
 			'videoinfo' => 'ApiQueryVideoInfo'
-			);
+		);
 
-			/**
-			 * Add support for the "TimedText" NameSpace
-			 */
-			define( "NS_TIMEDTEXT", $wgTimedTextNS);
-			define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
+		/**
+		 * Add support for the "TimedText" NameSpace
+		 */
+		define( "NS_TIMEDTEXT", $wgTimedTextNS);
+		define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
 
-			$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
-			$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
+		$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
+		$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
 
-			return true;
+		return true;
 	}
 
 	/**
@@ -89,8 +89,15 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testDir = dirname( __FILE__ ) . '/tests/phpunit/';
-		$files[] = $testDir . 'TestTimeParsing.php';
-		$files[] = $testDir . 'TestApiUploadVideo.php';
+		$testFiles = array(
+			'TestTimeParsing.php',
+			'TestApiUploadVideo.php',
+			'TestVideoThumbnail.php',
+			'TestVideoTranscode.php'
+		);
+		foreach( $testFiles as $fileName ){
+			$files[] = $testDir . $fileName;
+		}
 		return true;
 	}
 
@@ -100,5 +107,4 @@ class TimedMediaHandlerHooks {
 		$out->addModuleStyles( 'PopUpMediaTransform' );
 		return true;
 	}
-
 }

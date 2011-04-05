@@ -1827,8 +1827,11 @@ mw.EmbedPlayer.prototype = {
 		} )
 		.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) );
 	},
-	// special per browser check for autoTrigger events
-	// ideally jQuery would not have this inconsistency. 
+	
+	/** 
+	 * Special per browser check for autoTrigger events
+	 * ideally jQuery would not have this inconsistency
+	 */
 	doMethodsAutoTrigger: function(){
 		if( $.browser.mozilla && ! mw.versionIsAtLeast('2.0', $.browser.version ) ){
 			return true;

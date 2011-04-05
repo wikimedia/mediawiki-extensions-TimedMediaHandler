@@ -29,13 +29,13 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		return $vals;
 	}
 
-	public static function getPropertyNames() {	
+	public static function getPropertyNames( $filter = array() ) {	
 		$prop = parent::getPropertyNames();
 		$prop[] = 'derivatives';
 		return $prop;
 	}
 
-	public static function getPropertyDescriptions() {
+	public static function getPropertyDescriptions( $filter = array() ) {
 		$s = parent::getPropertyDescriptions();
 		$s[] = ' derivatives 	-Adds an array of video source derivatives';
 		return $s;

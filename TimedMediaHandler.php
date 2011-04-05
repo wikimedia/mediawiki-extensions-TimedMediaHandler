@@ -99,6 +99,8 @@ $wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler
 $wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
 $wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeOutput.php";
 $wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
+// Testing: 
+$wgAutoloadClasses['ApiTestCaseVideoUpload'] = "$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
 
 // Ogg Handler
 $wgAutoloadClasses['OggHandler']  = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
