@@ -292,6 +292,8 @@ $messages['be-tarask'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'мультыплексны аўдыё/відэа-файл Ogg, $1, даўжыня $2, $4×$5 піксэляў, усяго $3',
 	'timedmedia-ogg-long-general' => 'мэдыя-файл Ogg, даўжыня $2, $3',
 	'timedmedia-ogg-long-error' => 'Няслушны файл у фармаце Ogg: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 відэа-файл, $2',
+	'timedmedia-webm-long-video' => 'Аўдыё/відэа-файл WebM, $1, працягласьць $2, $4×$5 піксэлаў, усяго $3',
 	'timedmedia-no-player-js' => 'Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />
 Вы можаце <a href="$1">загрузіць кліп</a> ці <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'timedmedia-more' => 'Болей…',
@@ -302,11 +304,15 @@ $messages['be-tarask'] = array(
 	'timedmedia-oggThumb-version' => 'OggHandler патрабуе oggThumb вэрсіі $1 ці больш позьняй.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не атрымалася стварыць мініятуру.',
 	'timedmedia-source-file' => 'Крыніца $1',
+	'timedmedia-source-file-desc' => '$1 (арыгінал), $2×$3 ($4)',
 	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
 	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Нізкапаточнае Ogg-відэа (200P)',
 	'timedmedia-derivative-desc-360_560kbs.ogv' => 'Паточнае Ogg-відэа (360 пкс)',
 	'timedmedia-derivative-desc-480_880kbs.ogv' => 'Паточнае Ogg-відэа (480 пкс)',
-	'timedmedia-derivative-desc-720_VBR.ogv' => 'Высакаякаснае Ogg-відэа для загрузкі (720 пкс)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Высакаякаснае Ogg-відэа для загрузкі (720p)',
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'Паточны WebM (360p)',
+	'timedmedia-derivative-desc-480_900kbs.webm' => 'Паточны WebM (480p)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Высакаякаснае WebM-відэа для загрузкі (720p)',
 	'timedmedia-subtitle-language' => 'Субтытры ($2) на $1',
 );
 
