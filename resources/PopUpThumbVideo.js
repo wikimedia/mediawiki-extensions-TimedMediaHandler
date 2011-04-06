@@ -12,10 +12,14 @@
 					'width' : parseInt(  $video.css('width') ) + 20,
 					'height' : parseInt(  $video.css('height') ) + 45,
 					'title' : $video.attr('data-mwtitle'),
-					'content' : $video
+					'content' : $video,
+					'close' : function(){
+						// pause the video on close ( so that playback does not continue )
+						$(this).find('video,audio').get(0).pause();
+					}
 				})
 				.css('overflow', 'hidden')
-				.find('video').embedPlayer();
+				.find('video,audio').embedPlayer();				
 				// don't follow file link
 				return false; 
 			});

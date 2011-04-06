@@ -10,7 +10,7 @@
  * Job for web video transcode
  *
  * Support two modes 
- * 1) non-free media transcode ( dealys the media file being inserted, adds note to talk page once ready)
+ * 1) non-free media transcode ( delays the media file being inserted, adds note to talk page once ready)
  * 2) derivatives for video ( makes new sources for the asset )
  * 
  * @ingroup JobQueue
@@ -48,6 +48,22 @@ class WebVideoTranscodeJob extends Job {
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 				
 		$this->output( "Encoding to codec: " . $options['videoCodec'] );
+		
+		$db =wfGetDB( DB_MASTER );
+		
+		// Update the transcode table letting it know we have "started work":  
+		$db->update( 
+			'transcode',
+			array( 'transcode_time_startwork' => $db->timestamp() ),
+			array( 
+				'transcode_image_name' => $this->title->getDBkey(),
+				'transcode_key' => $transcodeKey
+			),
+			__METHOD__,
+			array( 'LIMIT' => 1 )
+		);
+				
+		
 		// Check the codec see which encode method to call;
 		if( $options['videoCodec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $file, $destinationFile, $options );
@@ -71,21 +87,49 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			wfDebug( 'Error unknown codec:' . $options['codec'] );
-			$status = false;
+			$status =  'Error unknown target encode codec:' . $options['codec'];
 		}
 		
-		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 	
-		
-		
-		
-		
-		if( $status ){
+		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 
+		// @@todo we should use some status class of some sort	
+		if( $status === true ){
+			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
 			wfSuppressWarnings();
-			$status = rename($destinationFile, WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey) );			
+			$status = rename( $destinationFile, $finalDerivativeFilePath );			
 			wfRestoreWarnings();
-		
+			$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
+			// Update the transcode table with success time: 
+			$db->update( 
+				'transcode',
+				array( 
+					'transcode_time_success' => $db->timestamp(),
+					'transcode_final_bitrate' => $bitrate 
+				),
+				array( 
+					'transcode_image_name' => $this->title->getDBkey(),
+					'transcode_key' => $transcodeKey,					
+				),
+				__METHOD__,
+				array( 'LIMIT' => 1 )
+			);			
 			$this->invalidateCache();
+		} else {
+			// Update the transcode table with failure time and error 
+			$db->update( 
+				'transcode',
+				array( 
+					'transcode_time_error' => $db->timestamp(),
+					'transcode_error' => $status
+				),
+				array( 
+						'transcode_image_name' => $this->title->getDBkey(),
+						'transcode_key' => $transcodeKey
+				),
+				__METHOD__,
+				array( 'LIMIT' => 1 )
+			);			
 		}
+		// pass along result status: 
 		return $status;
 	}
 	/**
@@ -96,8 +140,7 @@ class WebVideoTranscodeJob extends Job {
 		$this->title->invalidateCache();
 		
 		// TODO if the video is used in over 500 pages add to 'job queue'
-		$limit = 500;
-		
+		$limit = 500;		
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			array( 'imagelinks', 'page' ),
@@ -127,7 +170,6 @@ class WebVideoTranscodeJob extends Job {
 		}
 	}
 	/** Utility helper for ffmpeg and ffmpeg2theora mapping **/
-	
 	function ffmpegEncode( $file, $target, $options, $pass=0 ){
 		global $wgFFmpegLocation;	
 		// Get the source
@@ -190,11 +232,11 @@ class WebVideoTranscodeJob extends Job {
 		
 		// Right before we output remove the old file
 		wfProfileIn( 'ffmpeg_encode' );
-		wfShellExec( $cmd, $retval );
+		$shellOutput = wfShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg_encode' );
 
 		if( $retval ){
-			return false;
+			return $shellOutput;
 		}
 		return true;
 	}
@@ -320,11 +362,11 @@ class WebVideoTranscodeJob extends Job {
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
 		wfProfileIn( 'ffmpeg2theora_encode' );
-		wfShellExec( $cmd, $retval );
+		$shellOutput = wfShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg2theora_encode' );
 
 		if( $retval ){
-			return false;
+			return $shellOutput;
 		}
 		return true;
 	}

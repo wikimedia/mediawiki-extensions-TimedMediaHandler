@@ -13,15 +13,16 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 	
 	function __construct( $conf ){
-		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );		
+		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
 			} else {
 				$this->$key = false;
 			}
-		}		
+		}
 	}
+	
 	function getTextHandler(){
 		if( !$this->textHandler ){
 			// Init an associated textHandler
@@ -40,6 +41,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// else return the fileicon for the poster url: 
 		return "$wgStylePath/common/images/icons/fileicon-ogg.png";		
 	}
+	
 	// TODO get the local path
 	function getPath(){
 		return $this->dstPath;
@@ -165,7 +167,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	        'iiprop' => 'url',
 	        'iiurlwidth' => intval( $width ),
 	        'titles' => $this->file->getTitle()->getPrefixedDBkey()
-		));
+		) );
 		$api = new ApiMain( $params );
 		$api->execute();
 		$data = $api->getResultData();

@@ -32,8 +32,8 @@ class TimedMediaHandlerHooks {
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
 		$baseExtensionResource = array(
-		'localBasePath' => dirname( __FILE__ ),
-	 	'remoteExtPath' => 'TimedMediaHandler',
+			'localBasePath' => dirname( __FILE__ ),
+		 	'remoteExtPath' => 'TimedMediaHandler',
 		);
 
 		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules )
@@ -52,7 +52,10 @@ class TimedMediaHandlerHooks {
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 
-
+		// Add a hook for article deletion so that we remove transcode settings. 
+		$wgHooks['ArticleDeleteComplete'][] = 'TimedMediaHandlerHooks::checkArticleDeleteComplete';
+		
+		
 		// Add unit tests
 		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 
@@ -68,23 +71,55 @@ class TimedMediaHandlerHooks {
 			'videoinfo' => 'ApiQueryVideoInfo'
 		);
 
+		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::loadExtensionSchemaUpdates';
+	
+
 		/**
 		 * Add support for the "TimedText" NameSpace
 		 */
-		define( "NS_TIMEDTEXT", $wgTimedTextNS);
-		define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1);
+		define( "NS_TIMEDTEXT", $wgTimedTextNS );
+		define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1 );
 
 		$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
 		$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
 
 		return true;
 	}
-
+	
+	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
+		// Check if the article is a file and remove transcode jobs:
+		if( $article->getTitle()->getNamespace() == NS_FILE ){
+			// We can't get the file since the article is deleted :(
+			// so we can't: 
+			// $file = wfFindFile( $article->getTitle() );
+			// $file->getHandler()->getMetadataType() 
+			
+			 
+			// So we have to use this unfortunate file name extension hack :(
+			// XXX figure out a better way to do this.
+			$fileName = $article->getTitle()->getDBkey();			 
+			$ext = strtolower( pathinfo( "$fileName", PATHINFO_EXTENSION ) );
+					
+			if( $ext == 'ogg' || $ext == 'webm' || $ext == 'ogv' ){
+				WebVideoTranscode::removeTranscodeJobs( $article->getTitle()->getDBkey() );	
+			}
+		} 
+		return true;
+	}
+	
+	/**
+	 * Adds the transcode sql 
+	 */
+	public static function loadExtensionSchemaUpdates( ){
+		global $wgExtNewTables;
+	    $wgExtNewTables[] = array(
+	        'transcode',
+	        dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
+	    return true;
+	}
+	
 	/**
 	 * Hook to add list of PHPUnit test cases.
-	 *
-	 * @since 0.7
-	 *
 	 * @param array $files
 	 */
 	public static function registerUnitTests( array &$files ) {

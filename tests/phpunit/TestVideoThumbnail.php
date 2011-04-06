@@ -1,16 +1,16 @@
 <?php 
 /**
- *  
+ * @ingroup timedmedia
  * @author dale
  */
-class TestVideoThumbnail extends  ApiTestCaseVideoUpload {
+class TestVideoThumbnail extends ApiTestCaseVideoUpload {
 	
 	/**
 	 * Once video files are uploaded test thumbnail generating
 	 * 
 	 * @dataProvider mediaFilesProvider
 	 */
-	function testApiScaledThumbnails( $file ){
+	function testApiThumbnails( $file ){
 		// Upload the file to the mediaWiki system 
 		$result = $this->uploadFile( $file);
 		
@@ -47,7 +47,7 @@ class TestVideoThumbnail extends  ApiTestCaseVideoUpload {
 
 		// Make sure the thumbnail url is valid and the correct size ( assuming php has getimagesize function)
 		if( function_exists( 'getimagesize' ) ){
-			list($width ,,,) = getimagesize ( $imageInfo[ 'thumburl'] ); 		
+			list($width ,,,) = getimagesize ( $imageInfo[ 'thumburl'] );
 			$this->assertEquals( 200, $width );
 		}
 		
@@ -65,13 +65,10 @@ class TestVideoThumbnail extends  ApiTestCaseVideoUpload {
 				)
 			)
 		);
-		
 		$page = current( $result['query']['pages'] );
 		$imageInfo = current( $page['imageinfo'] );
-		
-		// Thumb should max out at source size:		
+		// Thumb should max out at source size ( no upscale )
 		$targetWidth = ( ( int )$file['width'] < 600 ) ? ( int )$file['width'] : 600;
-				
 		$this->assertEquals( $targetWidth, ( int )$imageInfo['thumbwidth'] );		
 		if( function_exists( 'getimagesize' ) ){
 			list( $srcImageWidth ,,,) = getimagesize ( $imageInfo[ 'thumburl'] ); 					
