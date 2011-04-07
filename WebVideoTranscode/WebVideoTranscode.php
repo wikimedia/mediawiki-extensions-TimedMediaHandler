@@ -288,6 +288,12 @@ class WebVideoTranscode {
 		// Else return the state:
 		return self::$transcodeStateCache[$fileName][$transcodeKey]['ready'];
 	}
+	/**
+	 * Clear the transcode state cache: 
+	 */
+	public static function clearTranscodeCache(){
+		self::$transcodeStateCache = null;
+	}
 
 	/**
 	 * Populates the local transcoding state cache with the current DB state of transcodes 
@@ -324,7 +330,7 @@ class WebVideoTranscode {
 	}
 	
 	/**
-	 * Try to add a source to the sources param
+	 * Try to add a source to the sources list
 	 * if the source is not found update the job queue
 	 */
 	public static function tryAddSource( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){

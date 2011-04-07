@@ -136,7 +136,10 @@ class WebVideoTranscodeJob extends Job {
 	 * Invalidate the cache of all pages where the video is displayed  
 	 */
 	function invalidateCache(){
-		// the file page cache should be invalidated: 
+		// The static cache of webVideoTranscode should be cleared
+		webVideoTranscode::clearTranscodeCache();
+		
+		// The file page cache should be invalidated: 
 		$this->title->invalidateCache();
 		
 		// TODO if the video is used in over 500 pages add to 'job queue'
