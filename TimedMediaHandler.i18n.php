@@ -1352,7 +1352,7 @@ met Ongershtözung för de Fommaate <i lang="en">WebM</i>, <i lang="en">Ogg Theo
 	'timedmedia-webm-long-video' => 'Ene Viddejo udder en Toondattei em WebM-Fommaat, $1, $2 jruuß, $4 × $5 Pixelle, $3 enßjesammp',
 	'timedmedia-no-player-js' => 'Schad, Dinge Brauser hät entweder JavaSkrepp ußjeschalldt udder kein zopaß Projramm zom Afschpelle.<br />Do kanns jäz <a href="$1">dat Stöck eronger laade</a> udder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Afspeller-Projramm eronger laade</a>, öm dat Schtöck en Dingem Brauser afzeschpelle.',
 	'timedmedia-more' => 'Enshtelle&nbsp;…',
-	'timedmedia-dismiss' => 'Zomaache!',
+	'timedmedia-dismiss' => 'Zohmaache!',
 	'timedmedia-download' => 'Datei erunger lade',
 	'timedmedia-play-media' => 'Afshpelle',
 	'timedmedia-desc-link' => 'Övver di Datei',
