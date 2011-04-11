@@ -1365,6 +1365,7 @@ met Ongershtözung för de Fommaate <i lang="en">WebM</i>, <i lang="en">Ogg Theo
 	'timedmedia-derivative-desc-360_560kbs.ogv' => 'En Viddejo-Dattei em <i lang="en">Ogg</i>-Fommaat (360p) för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-480_880kbs.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'En Viddejo-Dattei met huhe Qualiteit (met 720p) em <i lang="en">Ogg</i>-Fommaat zom eronger laade',
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'Ene WebM Viddejo (met 360p) för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'Ene WebM Viddejo (met 480p) för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'En <i lang="en">WebM</i> Viddejo-Dattei met huhe Qualiteit (met 720p) zom eronger laade',
 	'timedmedia-subtitle-language' => 'Ongertittele en $1 ($2)',
