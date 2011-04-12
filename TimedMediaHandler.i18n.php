@@ -2376,7 +2376,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'timedmedia-desc' => 'Bộ trình bày các tập tin Ogg Theora và Vorbis dùng hộp chơi phương tiện bằng JavaScript',
+	'timedmedia-desc' => 'Bộ trình bày các tập tin âm thanh, video, và phụ đề hỗ trợ WebM, Ogg Theora, Vorbis, và srt',
 	'timedmedia-ogg-short-audio' => 'Tập tin âm thanh Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Tập tin video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Tập tin Ogg $1, $2',

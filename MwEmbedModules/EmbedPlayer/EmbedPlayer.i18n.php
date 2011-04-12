@@ -2644,7 +2644,9 @@ $messages['vep'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(valitud)',
 );
 
-/** Vietnamese (Tiếng Việt) */
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
 $messages['vi'] = array(
 	'mwe-embedplayer-credit-title' => 'Tựa: $1',
 	'mwe-embedplayer-loading_plugin' => 'đang tải phần bổ trợ …',
@@ -2680,7 +2682,7 @@ $messages['vi'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Trình chơi Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(được chọn)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-do_not_warn_again' => 'Tạm kệ.',
+	'mwe-embedplayer-do_not_warn_again' => 'Từ nay không hiển thị thông báo này',
 	'mwe-embedplayer-read_before_embed' => 'Hãy <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding?uselang=vi" target="_new">đọc cảnh báo</a> trước khi nhúng.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Nhúng vào trang',
 	'mwe-embedplayer-related_videos' => 'Video liên quan',
