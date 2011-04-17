@@ -210,6 +210,9 @@ $messages['br'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
 	'mwe-timedtext-request-subs' => 'Goulenn treuzkrivadur',
 	'mwe-timedtext-request-subs-desc' => 'Goulenn ma vo treuzskrivet ar restr video-mañ',
+	'mwe-timedtext-request-subs-done' => "Ouzhpennet eo bet ar goulenn treuzskrivañ. [$1 Gwelet an holl c'houlennoù treuzskrivañ]",
+	'mwe-timedtext-request-subs-fail' => "N'eus ket bet gallet ouzhpennañ ar goulenn treuzskrivañ. Ha kevreet oc'h ?",
+	'mwe-timedtext-request-already-done' => "Goulennet eo bet treuzskrivañ ar video-mañ c'hoazh. [$1 Gwelet an holl c'houlennoù treuzskrivañ]",
 );
 
 /** Bosnian (Bosanski)
