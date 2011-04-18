@@ -378,6 +378,8 @@ $messages['br'] = array(
 	'timedmedia-desc-link' => 'Diwar-benn ar restr-mañ',
 	'timedmedia-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
 	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
+	'timedmedia-source-file' => 'Mammenn $1',
+	'timedmedia-source-file-desc' => 'Orin $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-language' => 'istitloù e $1 ($2)',
 );
 

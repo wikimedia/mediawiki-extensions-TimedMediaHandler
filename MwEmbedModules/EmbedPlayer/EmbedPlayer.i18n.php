@@ -259,6 +259,8 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'mwe-embedplayer-credit-title' => 'Titl : $1',
+	'mwe-embedplayer-credit-date' => 'Deiziad : $1',
+	'mwe-embedplayer-credit-author' => 'Aozer : $1',
 	'mwe-embedplayer-loading_plugin' => 'O kargañ ar plugin...',
 	'mwe-embedplayer-select_playback' => 'Termeniñ ar penndibaboù lenn',
 	'mwe-embedplayer-link_back' => 'Liamm distreiñ',
@@ -308,7 +310,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(diuzet)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => "Evit gwelet gwelloc'h e erbedadomp deoc'h : <br /><b>[$1 Firefox 3.5].</b>",
-	'mwe-embedplayer-do_not_warn_again' => 'Ehanañ evit ar poent.',
+	'mwe-embedplayer-do_not_warn_again' => 'Arabat diskouez ar gemennadenn-mañ ken',
 	'mwe-embedplayer-playerSelect' => 'Lennerien',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Lennit an dra-mañ</a> a-raok ober.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Enframmañ en ur bajenn',
