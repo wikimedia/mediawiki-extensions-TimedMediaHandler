@@ -1,7 +1,6 @@
 /**
 * EmbedPlayer loader
 */
-
 ( function( mw, $ ) {
 	
 	/**
@@ -11,20 +10,11 @@
 	* work after the 'IntefacesReady' event
 	*/
 	$( mw ).bind( 'SetupInterface', function( event, callback ){
-		// Allow modules to extend EmbedPlayerRewritePlayerTags rewrites as well: 
-		var doModuleTagRewrites = function(){			
-			$( mw ).triggerQueueCallback( 'EmbedPlayerRewritePlayerTags', callback );
-		};
-		
 		// Check if we have tags to rewrite: 
 		if( $( mw.getConfig( 'EmbedPlayer.RewriteTags' )  ).length ) {
-			var rewriteElementCount = 0;
-
-			// Rewrite the embedPlayer EmbedPlayer.RewriteTags :
+			// Rewrite the embedPlayer EmbedPlayer.RewriteTags and run callback once ready:
 			$( mw.getConfig( 'EmbedPlayer.RewriteTags' ) )
-				.embedPlayer( doModuleTagRewrites );
-		} else {
-			doModuleTagRewrites();
+				.embedPlayer( callback );
 		}
 	});
 	
@@ -40,6 +30,7 @@
 			var playerSelect = this;
 		}
 		mw.log( 'jQuery.fn.embedPlayer :: ' + playerSelect );
+		
 		// Hide videonojs class
 		$( '.videonojs' ).hide();
 
@@ -62,7 +53,6 @@
 		if( document.createElement('video').canPlayType && !$.browser.safari) {
 			$.merge( dependencySet, ['mw.EmbedPlayerNative'] )
 		}
-
 		
 		// Check if the iFrame player api is enabled and we have a parent iframe url: 
 		// TODO we might want to move the iframe api to a separate module
@@ -108,6 +98,7 @@
 		});
 		// Remove any duplicates in the dependencySet:
 		dependencySet = $.unique( dependencySet );
+		
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){
 			mw.processEmbedPlayers( playerSelect, readyCallback );
