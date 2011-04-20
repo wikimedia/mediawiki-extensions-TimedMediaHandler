@@ -2276,6 +2276,7 @@ Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.
 	'timedmedia-desc-link' => 'Tungkol sa talaksang ito',
 	'timedmedia-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma ng oggThumb.',
 	'timedmedia-oggThumb-failed' => 'Nabigong lumikha ang oggThumb ng munting larawan.',
+	'timedmedia-subtitle-language' => '$1 ($2) kabahaging mga pamagat',
 );
 
 /** Turkish (Türkçe)
