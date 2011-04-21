@@ -607,7 +607,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'timedmedia-desc' => 'Traktilo por dosieroj Ogg Theora kaj Vobis kun Ĵavaskripta legilo.',
+	'timedmedia-desc' => 'Traktilo por sondosieroj, videoj, kaj horloĝigita teksto, kun formatsubteno por WebM kaj Ogg Theora kaj Vobis kaj srt.',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 sondosiero, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videodosiero, $2',
 	'timedmedia-ogg-short-general' => 'Media Ogg-dosiero $1, $2',

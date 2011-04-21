@@ -552,6 +552,7 @@ $messages['fr'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 sous-titres pour clip : $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
 	'mwe-timedtext-request-subs' => 'Demande de transcription',
+	'mwe-timedtext-no-subs' => 'Aucun texte de piste disponible',
 	'mwe-timedtext-request-subs-desc' => 'Ajouter une demande de transcription de ce fichier vidéo',
 	'mwe-timedtext-request-subs-done' => 'Demande de transcription ajoutée. [$1 Voir toutes demandes de transcription]',
 	'mwe-timedtext-request-subs-fail' => "Impossible d'ajouter la demande de transcription. Êtes-vous connecté ?",
