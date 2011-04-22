@@ -796,6 +796,8 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'mwe-embedplayer-credit-title' => 'Titre : $1',
+	'mwe-embedplayer-credit-date' => 'Date : $1',
+	'mwe-embedplayer-credit-author' => 'Auteur : $1',
 	'mwe-embedplayer-loading_plugin' => 'chargement du greffon ...',
 	'mwe-embedplayer-select_playback' => 'Définir les préférences de lecture',
 	'mwe-embedplayer-link_back' => 'Lien retour',
@@ -849,6 +851,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage nous recommandons :<br /><b>[$1 Firefox 3.5].</b>',
 	'mwe-embedplayer-download-warn' => 'Navigateur web non compatible détecté, pour une lecteur dans le navigateur veuillez télécharger la [$1 dernière version de Firefox].',
 	'mwe-embedplayer-fullscreen-tip' => 'Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran',
 	'mwe-embedplayer-do_not_warn_again' => "Ne plus afficher ce message à l'avenir",
 	'mwe-embedplayer-playerSelect' => 'Lecteurs',
 	'mwe-embedplayer-read_before_embed' => 'Veuillez <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">lire ceci</a> avant de procéder !',
