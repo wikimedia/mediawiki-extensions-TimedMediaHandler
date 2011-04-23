@@ -1690,12 +1690,18 @@ $messages['tl'] = array(
 	'mwe-timedtext-textcat-sub' => 'Kabahaging mga pamagat',
 	'mwe-timedtext-textcat-tad' => 'Paglalarawan ng naririnig',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Teksto ng pampulso',
 	'mwe-timedtext-textcat-ar' => 'Masisiglang mga rehiyon',
 	'mwe-timedtext-textcat-nb' => 'Paliwanag',
 	'mwe-timedtext-textcat-meta' => 'Inorasang metadato',
 	'mwe-timedtext-textcat-trx' => 'Sipi ng salin',
 	'mwe-timedtext-textcat-lrc' => 'Titik ng awit',
+	'mwe-timedtext-textcat-lin' => 'Markang-pantaas ng lingguwistika',
+	'mwe-timedtext-textcat-cue' => 'Mga tuldok ng pahiwatig',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 kabahaging mga pamagat para sa putol na: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Walang natagpuang $1 kabahaging mga pamagat para sa putol na: $2',
 	'mwe-timedtext-request-subs' => 'Humiling ng sipi ng salin',
+	'mwe-timedtext-no-subs' => 'Walang makukuhang mga bakas ng teksto',
 );
 
 /** Ukrainian (Українська)

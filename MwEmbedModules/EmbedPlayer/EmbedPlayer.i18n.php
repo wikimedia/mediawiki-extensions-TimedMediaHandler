@@ -150,6 +150,7 @@ $messages['aln'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'mwe-embedplayer-loading_plugin' => 'تحميل ملحق...',
@@ -169,7 +170,8 @@ $messages['ar'] = array(
 	'mwe-embedplayer-choose_player' => 'اختر مشغل الفيديو',
 	'mwe-embedplayer-share_this_video' => 'شارك هذا الفيديو',
 	'mwe-embedplayer-menu_btn' => 'قائمة',
-	'mwe-embedplayer-close_btn' => 'إغلاق',
+	'mwe-embedplayer-close_btn' => 'أغلق',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'المشغل VLC',
 	'mwe-embedplayer-ogg-player-cortado' => 'جافا كورتادو',
 );
 
@@ -756,6 +758,15 @@ $messages['es'] = array(
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
 	'mwe-embedplayer-missing-source' => 'No se encontró ningún vídeo de origen.',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'mwe-embedplayer-credit-title' => 'Pealkiri: $1',
+	'mwe-embedplayer-credit-date' => 'Kuupäev: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 );
 
 /** Basque (Euskara) */
@@ -1427,7 +1438,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(dipilih)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Untuk pengalaman pemutaran video yang lebih baik kami menyarankan: <br /><b>[$1 Firefox 3.5].</b>',
-	'mwe-embedplayer-do_not_warn_again' => 'Selesai untuk saat ini.',
+	'mwe-embedplayer-do_not_warn_again' => 'Jangan tampilkan lagi pesan ini',
 	'mwe-embedplayer-playerSelect' => 'Pemutar',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Baca ini</a> sebelum mengikutkan.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Sertakan pada suatu halaman',

@@ -189,7 +189,7 @@ $messages['ar'] = array(
 	'timedmedia-ogg-long-general' => 'ملف ميديا Ogg، الطول $2، $3',
 	'timedmedia-ogg-long-error' => 'ملف Ogg غير صحيح: $1',
 	'timedmedia-more' => 'المزيد...',
-	'timedmedia-dismiss' => 'إغلاق',
+	'timedmedia-dismiss' => 'أغلق',
 	'timedmedia-download' => 'نزل الملف',
 	'timedmedia-desc-link' => 'عن هذا الملف',
 );
@@ -1093,7 +1093,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
  * @author Rex
  */
 $messages['id'] = array(
-	'timedmedia-desc' => 'Pemroses media berwaktu (video, audio, timedText) dengan transkode ke Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Pemroses audio, video, dan teks berwaktu, dengan dukungan format WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Berkas suara $1 ogg, $2',
 	'timedmedia-ogg-short-video' => 'Berkas video $1 ogg, $2',
 	'timedmedia-ogg-short-general' => 'Berkas media $1 ogg, $2',
@@ -2269,6 +2269,7 @@ $messages['tl'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'magkasanib at nagsasabayang talaksang nadirinig o audio/palabas ng Ogg, $1, haba $2, $4×$5 mga piksel, $3 sa kalahatan',
 	'timedmedia-ogg-long-general' => "Talaksang pangmidya ng ''Ogg'', haba $2, $3",
 	'timedmedia-ogg-long-error' => "Hindi tanggap na talaksang ''ogg'': $1",
+	'timedmedia-webm-short-video' => '$1 na talaksan ng bidyo ng WebM, $2',
 	'timedmedia-no-player-js' => 'Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />
 Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.',
 	'timedmedia-more' => 'Marami pa…',
@@ -2278,6 +2279,9 @@ Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.
 	'timedmedia-desc-link' => 'Tungkol sa talaksang ito',
 	'timedmedia-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma ng oggThumb.',
 	'timedmedia-oggThumb-failed' => 'Nabigong lumikha ang oggThumb ng munting larawan.',
+	'timedmedia-source-file' => '$1 pinagkukunan',
+	'timedmedia-source-file-desc' => 'Orihinal na $1, $2 × $3 ( $4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
 	'timedmedia-subtitle-language' => '$1 ($2) kabahaging mga pamagat',
 );
 
