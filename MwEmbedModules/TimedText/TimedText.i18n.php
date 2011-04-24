@@ -768,6 +768,7 @@ $messages['he'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => 'כתוביות ב$1 עבור הסרטון $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'לא נמצאו כתוביות ב$1 עבור $2',
 	'mwe-timedtext-request-subs' => 'לבקש תמלול',
+	'mwe-timedtext-no-subs' => 'אין רצועת תמליל זמינה',
 	'mwe-timedtext-request-subs-desc' => 'הוספת בקשה לתמלל את קובץ הווידאו הזה',
 	'mwe-timedtext-request-subs-done' => 'נוספה בקשת תמלול. [$1 הצגת כל בקשות התמלול]',
 	'mwe-timedtext-request-subs-fail' => 'הוספת בקשת התמלול נכשלה. האם נכנסתם לחשבון?',

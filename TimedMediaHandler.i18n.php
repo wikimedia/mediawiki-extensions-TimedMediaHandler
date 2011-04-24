@@ -937,6 +937,7 @@ $messages['he'] = array(
 	'timedmedia-derivative-desc-360_560kbs.ogv' => 'וידאו Ogg (360P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-480_880kbs.ogv' => 'וידאו Ogg (480P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'וידאו Ogg (720P)&lrm; באיכות גבוהה שניתן להורדה',
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'WebM ניתן לשידור שטף ברשת (360P)',
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'וידאו WebM (480P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'וידאו WebM (720P)&lrm; באיכות גבוהה שניתן להורדה',
 	'timedmedia-subtitle-language' => 'כתוביות ב$1&rlm; ($2)',
@@ -1545,6 +1546,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
  * @author Aviator
  */
 $messages['ms'] = array(
@@ -1561,6 +1563,7 @@ $messages['ms'] = array(
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Muat turun fail',
 	'timedmedia-desc-link' => 'Perihal fail ini',
+	'timedmedia-source-file' => 'Sumber $1',
 );
 
 /** Erzya (Эрзянь)

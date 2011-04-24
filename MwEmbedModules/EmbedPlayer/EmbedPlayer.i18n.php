@@ -1092,6 +1092,8 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'mwe-embedplayer-credit-title' => 'כותרת: $1',
+	'mwe-embedplayer-credit-date' => 'תאריך: $1',
+	'mwe-embedplayer-credit-author' => 'יוצר: $1',
 	'mwe-embedplayer-loading_plugin' => 'טעינת תוסף...',
 	'mwe-embedplayer-select_playback' => 'הגדרת העדפות נגינה',
 	'mwe-embedplayer-link_back' => 'קישור חזרה',
@@ -1767,6 +1769,13 @@ $messages['ml'] = array(
 	'mwe-embedplayer-video-flv' => 'ഫ്ലാഷ് ചലച്ചിത്രം',
 	'mwe-embedplayer-video-ogg' => 'ഓഗ് ചലച്ചിത്രം',
 	'mwe-embedplayer-video-audio' => 'ഓഗ് ശബ്ദപ്രമാണം',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'mwe-embedplayer-credit-date' => 'Tarikh: $1',
 );
 
 /** Dutch (Nederlands)
