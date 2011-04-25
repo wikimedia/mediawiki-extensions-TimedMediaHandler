@@ -426,7 +426,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-download_text' => 'Text herunterladen',
 	'mwe-embedplayer-download' => 'Herunterladen',
 	'mwe-embedplayer-share' => 'Teilen',
-	'mwe-embedplayer-credits' => 'Credits',
+	'mwe-embedplayer-credits' => 'Urheberschaft',
 	'mwe-embedplayer-about-library' => 'Über den Kaltura-Player',
 	'mwe-embedplayer-about-library-desc' => 'Kalturas HTML5-Medienbibliothek ermöglicht es die Vorteile der beiden HTML5-Tags <code><nowiki><video></nowiki></code> und  <code><nowiki><audio></nowiki></code> mit einem einheitlichen Player-Interface bei allen führenden Webbrowsern nutzen zu können.
 
@@ -2462,8 +2462,10 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'mwe-embedplayer-credit-title' => 'శీర్షిక: $1',
+	'mwe-embedplayer-credit-date' => 'తేదీ: $1',
 	'mwe-embedplayer-player_fullscreen' => 'నిండుతెర',
 	'mwe-embedplayer-download' => 'దింపుకోలు',
+	'mwe-embedplayer-share' => 'పంచుకోండి',
 	'mwe-embedplayer-share_this_video' => 'ఈ వీడియోని పంచుకోండి',
 	'mwe-embedplayer-menu_btn' => 'మెనూ',
 	'mwe-embedplayer-close_btn' => 'మూసివేయి',

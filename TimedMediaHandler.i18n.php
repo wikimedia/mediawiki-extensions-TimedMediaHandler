@@ -2200,6 +2200,7 @@ $messages['te'] = array(
 	'timedmedia-dismiss' => 'మూసివేయి',
 	'timedmedia-download' => 'ఫైలుని దిగుమతి చేసుకోండి',
 	'timedmedia-desc-link' => 'ఈ ఫైలు గురించి',
+	'timedmedia-subtitle-language' => '$1 ($2) ఉపశీర్షికలు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
