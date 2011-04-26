@@ -1369,12 +1369,12 @@ $messages['pms'] = array(
 	'mwe-timedtext-textcat-cue' => "Pont d'arferiment",
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 sot-tìtoj për ël tòch: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => "A l'é trovasse gnun sot-tìtoj $1 per ël tòch: $2",
-	'mwe-timedtext-request-subs' => 'Ciamé trascrission',
+	'mwe-timedtext-request-subs' => 'Arcesta ëd trascrission',
 	'mwe-timedtext-no-subs' => 'Pa gnun-e trasse ëd test disponìbij',
-	'mwe-timedtext-request-subs-desc' => "Gionté n'arcesta përchè sto archivi video a sia trascrit",
+	'mwe-timedtext-request-subs-desc' => "Gionté n'arcesta përchè cost archivi filmà a sia trascrivù",
 	'mwe-timedtext-request-subs-done' => "Arcesta ëd trascrission giontà. [$1 Vardé tute j'arceste ëd trascrission]",
-	'mwe-timedtext-request-subs-fail' => "Falì a gionté l'arcesta ëd trascrission. Ses-to intrà ant ël sistem?",
-	'mwe-timedtext-request-already-done' => "Na trascrission dë sto video a l'é già stàita ciamà. [$1 Vardé tute j'arceste ëd trascrission]",
+	'mwe-timedtext-request-subs-fail' => "Falì a gionté l'arcesta ëd trascrission. É-lo intrà ant ël sistema?",
+	'mwe-timedtext-request-already-done' => "Na trascrission d'ës filmà a l'é già stàita ciamà. [$1 Vardé tute j'arceste ëd trascrission]",
 );
 
 /** Pashto (پښتو)
