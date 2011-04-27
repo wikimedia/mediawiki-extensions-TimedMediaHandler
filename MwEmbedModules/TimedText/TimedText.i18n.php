@@ -984,6 +984,12 @@ $messages['id'] = array(
 	'mwe-timedtext-textcat-cue' => 'Titik acuan',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Subjudul $1 untuk klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Tidak ada subjudul $1 yang ditemukan untuk klip: $2',
+	'mwe-timedtext-request-subs' => 'Minta transkripsi',
+	'mwe-timedtext-no-subs' => 'Jalur teks tidak tersedia',
+	'mwe-timedtext-request-subs-desc' => 'Berikan permintaan transkripsi untuk berkas video ini',
+	'mwe-timedtext-request-subs-done' => 'Permintaan transkripsi ditambahkan. [$1 Lihat semua permintaan]',
+	'mwe-timedtext-request-subs-fail' => 'Gagal menambah permintaan transkripsi. Apakah Anda masuk log?',
+	'mwe-timedtext-request-already-done' => 'Transkripsi dari video ini telah diminta. [$1 Lihat semua permintaan]',
 );
 
 /** Italian (Italiano)

@@ -1103,14 +1103,28 @@ $messages['id'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Berkas audio/video multiplexed ogg, $1, panjang $2, $4×$5 piksel, $3 keseluruhan',
 	'timedmedia-ogg-long-general' => 'Berkas media ogg, panjang $2, $3',
 	'timedmedia-ogg-long-error' => 'Berkas ogg tak valid: $1',
+	'timedmedia-webm-short-video' => 'Berkas video $1 WebM, $2',
+	'timedmedia-webm-long-video' => 'Berkas audio/video WebM, $1, lama $2, $4 × $5 piksel, $3 keseluruhan',
 	'timedmedia-no-player-js' => 'Maaf, peramban Anda memiliki JavaScript yang dinonaktifkan atau tidak memiliki pemutar media apapun.<br />
 Anda dapat <a href="$1">mengunduh klip</a> atau <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">mengunduh pemutar</a> untuk memutar klip di peramban Anda.',
 	'timedmedia-more' => 'Lainnya...',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Unduh berkas',
+	'timedmedia-play-media' => 'Putar media',
 	'timedmedia-desc-link' => 'Mengenai berkas ini',
 	'timedmedia-oggThumb-version' => 'OggHandler membutuhkan oggThumb versi $1 atau terbaru.',
 	'timedmedia-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
+	'timedmedia-source-file' => 'Sumber $1',
+	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Video Ogg lebar pita rendah (200P)',
+	'timedmedia-derivative-desc-360_560kbs.ogv' => 'Video Ogg aliran web (360P)',
+	'timedmedia-derivative-desc-480_880kbs.ogv' => 'Video Ogg aliran web (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Video Ogg unduhan berkualitas tinggi (720P)',
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'WebM aliran web (360P)',
+	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM aliran web (480P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM unduhan berkualitas tinggi (720P)',
+	'timedmedia-subtitle-language' => 'Teks film $1 ($2)',
 );
 
 /** Ido (Ido)
