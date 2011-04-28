@@ -1794,7 +1794,7 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'timedmedia-desc' => "Gestor për ij mojen ch'a dësfilo (filmà, sonor, test sincronisà), con riprodussion an Ogg Theora/Vorbis",
+	'timedmedia-desc' => 'Gestor për audio, video e test a temp, con apògg ëd formà për WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Registrassion Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Film Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Archivi Multimojen Ogg $1, $2',
@@ -1803,14 +1803,28 @@ $messages['pms'] = array(
 	'timedmedia-ogg-long-multiplexed' => "Archivi audio/video multiplessà Ogg, $1, ch'a dura $2, formà $4×$5 px, $3 an tut",
 	'timedmedia-ogg-long-general' => "Archivi multimojen Ogg, ch'a dura $2, $3",
 	'timedmedia-ogg-long-error' => 'Archivi ogg nen bon: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 archivi video, $2',
+	'timedmedia-webm-long-video' => 'WebM archivi audio/video, $1, lunghëssa $2, $4 x $5 pixel, $3 an tut',
 	'timedmedia-no-player-js' => 'Darmagi, sò navigador a l\'ha JavaScript disabilità o a supòrta pa ël riprodutor.<br />
 A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.',
 	'timedmedia-more' => 'Dë pì...',
 	'timedmedia-dismiss' => 'sëré',
 	'timedmedia-download' => "Dëscarié l'archivi",
+	'timedmedia-play-media' => 'Riproduv mojen',
 	'timedmedia-desc-link' => "Rësgoard a st'archivi",
 	'timedmedia-oggThumb-version' => "OggHandler a ciama la version $1 d'oggThumb o pi agiornà.",
 	'timedmedia-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
+	'timedmedia-source-file' => '$1 sorziss',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Larghëssa ëd banda bassa Ogg video (200P)',
+	'timedmedia-derivative-desc-360_560kbs.ogv' => 'Web streamable Ogg video (360P)',
+	'timedmedia-derivative-desc-480_880kbs.ogv' => 'Web streamable Ogg video (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => "Dëscariàbil d'àuta qualità Ogg video (720P)",
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'Web streamable WebM (360P)',
+	'timedmedia-derivative-desc-480_900kbs.webm' => 'Web streamable WebM (480P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => "Dëscariàbil d'àuta qualità WebM (720P)",
+	'timedmedia-subtitle-language' => '$1 ($2) sot-tìtoj',
 );
 
 /** Pashto (پښتو)

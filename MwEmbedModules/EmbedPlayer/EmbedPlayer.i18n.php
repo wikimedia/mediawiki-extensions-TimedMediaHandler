@@ -1784,6 +1784,7 @@ $messages['ml'] = array(
  */
 $messages['ms'] = array(
 	'mwe-embedplayer-credit-date' => 'Tarikh: $1',
+	'mwe-embedplayer-playerSelect' => 'Pemain',
 );
 
 /** Dutch (Nederlands)
