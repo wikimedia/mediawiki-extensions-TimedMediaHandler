@@ -375,6 +375,7 @@ $messages['br'] = array(
 	'timedmedia-more' => "Muioc'h...",
 	'timedmedia-dismiss' => 'Serriñ',
 	'timedmedia-download' => 'Pellgargañ ar restr',
+	'timedmedia-play-media' => 'Lenn ar media',
 	'timedmedia-desc-link' => 'Diwar-benn ar restr-mañ',
 	'timedmedia-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
 	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
