@@ -1245,6 +1245,8 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'mwe-embedplayer-credit-title' => 'Cím: $1',
+	'mwe-embedplayer-credit-date' => 'Dátum: $1',
+	'mwe-embedplayer-credit-author' => 'Szerző: $1',
 	'mwe-embedplayer-loading_plugin' => 'bővítmény betöltése…',
 	'mwe-embedplayer-select_playback' => 'Használt lejátszó kiválasztása',
 	'mwe-embedplayer-link_back' => 'Visszahivatkozás',
@@ -1284,6 +1286,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg lejátszó',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 lejátszó',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM-lejátszó',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Általános Ogg bővítmény',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-bővítmény',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -1302,6 +1305,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-buffering' => 'pufferelés',
 	'mwe-embedplayer-copy-code' => 'Kód másolása',
 	'mwe-embedplayer-video-h264' => 'H.264 videó',
+	'mwe-embedplayer-video-webm' => 'WebM-videó',
 	'mwe-embedplayer-video-flv' => 'Flash videó',
 	'mwe-embedplayer-video-ogg' => 'Ogg videó',
 	'mwe-embedplayer-video-audio' => 'Ogg hangfájl',
@@ -2480,6 +2484,13 @@ $messages['te'] = array(
 	'mwe-embedplayer-close_btn' => 'మూసివేయి',
 	'mwe-embedplayer-ogg-player-selected' => '(ఎంచుకున్నారు)',
 	'mwe-embedplayer-related_videos' => 'సంబంధిత దృశ్యకాలు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'mwe-embedplayer-credit-author' => 'Autór: $1',
 );
 
 /** Tagalog (Tagalog)

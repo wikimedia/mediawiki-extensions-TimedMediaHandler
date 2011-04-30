@@ -1045,9 +1045,15 @@ $messages['hu'] = array(
 	'timedmedia-more' => 'Tovább...',
 	'timedmedia-dismiss' => 'Bezárás',
 	'timedmedia-download' => 'Fájl letöltése',
+	'timedmedia-play-media' => 'Média lejátszása',
 	'timedmedia-desc-link' => 'Fájlinformációk',
 	'timedmedia-oggThumb-version' => 'Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.',
 	'timedmedia-oggThumb-failed' => 'Az oggThumb nem tudta elkészíteni a bélyegképet.',
+	'timedmedia-source-file-desc' => 'Eredeti $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Alacsony sávszélességű Ogg videó (200P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Magas minőségű, letölthető Ogg videó (720P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Magas minőségű, letölthető WebM (720P)',
 );
 
 /** Interlingua (Interlingua)
