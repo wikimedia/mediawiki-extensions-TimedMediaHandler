@@ -927,7 +927,7 @@ $messages['frp'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Liésor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(chouèsi)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-do_not_warn_again' => 'Arrètar por lo moment.',
+	'mwe-embedplayer-do_not_warn_again' => 'Pas més fâre vêre cél mèssâjo a l’avegnir.',
 	'mwe-embedplayer-playerSelect' => 'Liésors',
 	'mwe-embedplayer-read_before_embed' => 'Volyéd <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">liére cen</a> devant qu’apondre !',
 	'mwe-embedplayer-embed_site_or_blog' => 'Apondre a una pâge',
