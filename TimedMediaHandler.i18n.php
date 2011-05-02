@@ -360,7 +360,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'timedmedia-desc' => 'Benveg kontrolliñ elfennoù liesmedia sinkronek (video, son, ha testenn sinkronekaet) gant treuzkodiñ da Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Skor video, son ha testenn sinkronelaet gant ar furmadoù WebM, Ogg Theora hag SRT skoret',
 	'timedmedia-ogg-short-audio' => 'Restr son Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Restr video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Restr media Ogg $1, $2',
@@ -370,6 +370,7 @@ $messages['br'] = array(
 	'timedmedia-ogg-long-general' => 'Restr media Ogg, pad $2, $3',
 	'timedmedia-ogg-long-error' => 'Restr ogg direizh : $1',
 	'timedmedia-webm-short-video' => 'Restr video WebM $1, $2',
+	'timedmedia-webm-long-video' => 'Restr video/son WebM, $1, pad $2, $4 × $5 piksel, $3 en holl',
 	'timedmedia-no-player-js' => 'Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n\'eo ket skoret lenner ebet gantañ.<br />
 <a href="$1">Pellgargañ ar c\'hlip</a> a c\'hallit pe <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">pellgargañ ul lenner</a> da lenn ar c\'hlip gant ho merdeer.',
 	'timedmedia-more' => "Muioc'h...",
@@ -381,6 +382,14 @@ $messages['br'] = array(
 	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 	'timedmedia-source-file' => 'Mammenn $1',
 	'timedmedia-source-file-desc' => 'Orin $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Video Ogg izelgas (200P)',
+	'timedmedia-derivative-desc-360_560kbs.ogv' => 'Video Ogg lennus war-eeun war ar Gwiad (360p)',
+	'timedmedia-derivative-desc-480_880kbs.ogv' => 'Video Ogg lennus war-eeun war ar Gwiad (480p)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => "Video Ogg da bellgargañ gant ur c'halite a-feson (720p)",
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'WebM lennus war-eeun eus ar Gwiad (360p)',
+	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM lennus war-eeun eus ar Gwiad (480p)',
+	'timedmedia-derivative-desc-720_VBR.webm' => "Video WebM da bellgargañ gant ur c'halite a-feson (720p)",
 	'timedmedia-subtitle-language' => 'istitloù e $1 ($2)',
 );
 
@@ -1156,6 +1165,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author .anaconda
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -1173,6 +1183,8 @@ $messages['it'] = array(
 	'timedmedia-dismiss' => 'Chiudi',
 	'timedmedia-download' => 'Scarica il file',
 	'timedmedia-desc-link' => 'Informazioni su questo file',
+	'timedmedia-source-file-desc' => 'Originale $1, $2 × $3 ($4)',
+	'timedmedia-subtitle-language' => '$1 ($2) sottotitoli',
 );
 
 /** Japanese (日本語)
