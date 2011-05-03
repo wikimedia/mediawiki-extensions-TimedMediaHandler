@@ -175,6 +175,15 @@ $messages['ar'] = array(
 	'mwe-embedplayer-ogg-player-cortado' => 'جافا كورتادو',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'mwe-embedplayer-credit-date' => 'Tarix: $1',
+	'mwe-embedplayer-credit-author' => 'Müəllif: $1',
+	'mwe-embedplayer-download' => 'Yüklə',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -2120,9 +2129,9 @@ $messages['pms'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => "Per na vision pi bon-a i arcomandoma l'<b>[$1 ùltim Firefox].</b>",
 	'mwe-embedplayer-download-warn' => "A l'é trovasse che ël navigador a l'é nen compatìbil, për na letura ant ël navigador, për piasì ch'a dëscaria l'[ùltim $1 Firefox]",
-	'mwe-embedplayer-fullscreen-tip' => 'Sgnaca <b>F11</b> për passé al <i>web browser</i> a tut scherm',
+	'mwe-embedplayer-fullscreen-tip' => "Sgnaché <b>F11</b> për passé al <i>navigador dl'aragnà</i> a scren antregh",
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Sgnaca <b>shift ⌘ F</b> për passé a scherm anter',
-	'mwe-embedplayer-do_not_warn_again' => "Ant l'avnì, mosta pa pi sto mëssagi",
+	'mwe-embedplayer-do_not_warn_again' => "Ant l'avnì, mostré pa pi ës mëssagi",
 	'mwe-embedplayer-playerSelect' => 'Letor',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Les sossì</a> prima d\'ancorporé.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Ancorporé an sna pàgina',
