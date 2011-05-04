@@ -31,7 +31,7 @@ class WebVideoTranscodeJob extends Job {
 		// Get the file object
 		$file = wfLocalFile( $this->title );		
 		
-		$source = $file->getFullPath();
+		$source = $file->getPath();
 		if( !is_file($source ) ){
 			$this->output( 'File not found: ' . $this->title );
 			return false;
@@ -176,7 +176,7 @@ class WebVideoTranscodeJob extends Job {
 	function ffmpegEncode( $file, $target, $options, $pass=0 ){
 		global $wgFFmpegLocation;	
 		// Get the source
-		$source = $file->getFullPath();
+		$source = $file->getPath();
 		$this->output( "Encode:\n source:$source\n target:$target\n" );
 		
 		// Set up the base command
@@ -336,7 +336,7 @@ class WebVideoTranscodeJob extends Job {
 		global $wgFFmpeg2theoraLocation;
 		
 		// Get the source:
-		$source = $file->getFullPath();
+		$source = $file->getPath();
 		
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgFFmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $source );
