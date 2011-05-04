@@ -790,14 +790,14 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'timedmedia-desc' => 'Assistance por los fichiérs multimèdia que dèfilont (ôdiô, vidèô et tèxto sincronisâ) avouéc transcodâjo en WebM, Ogg Theora, Vorbis et srt.',
+	'timedmedia-desc' => 'Assistance por los fichiérs mèdia que dèfilont (ôdiô, vidèô et tèxto sincronisâ) avouéc transcodâjo en WebM, Ogg Theora, Vorbis et srt.',
 	'timedmedia-ogg-short-audio' => 'Fichiér son Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Fichiér vidèô Ogg $1, $2',
-	'timedmedia-ogg-short-general' => 'Fichiér multimèdia Ogg $1, $2',
+	'timedmedia-ogg-short-general' => 'Fichiér mèdia Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'Fichiér son Ogg $1, temps $2, $3',
 	'timedmedia-ogg-long-video' => 'Fichiér vidèô Ogg $1, temps $2, $4×$5 pixèls, $3',
 	'timedmedia-ogg-long-multiplexed' => 'Fichiér multiplèxo ôdiô / vidèô Ogg, $1, temps $2, $4×$5 pixèls, $3',
-	'timedmedia-ogg-long-general' => 'Fichiér multimèdia Ogg, temps $2, $3',
+	'timedmedia-ogg-long-general' => 'Fichiér mèdia Ogg, temps $2, $3',
 	'timedmedia-ogg-long-error' => 'Fichiér Ogg envalido : $1',
 	'timedmedia-more' => 'De ples...',
 	'timedmedia-dismiss' => 'Cllôre',
@@ -1721,7 +1721,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'timedmedia-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
+	'timedmedia-desc' => 'Håndteringsprogram for lyd, video og tidsbestemt tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 lydfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediefil, $2',
@@ -1730,14 +1730,28 @@ $messages['no'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen',
 	'timedmedia-ogg-long-general' => 'Ogg mediefil, lengde $2, $3',
 	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
+	'timedmedia-webm-long-video' => 'WebM lyd-/videofil, $1, lengde $2, $4 × $5 piksler, $3 til sammen',
 	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
 Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
 	'timedmedia-more' => 'Mer …',
 	'timedmedia-dismiss' => 'Lukk',
 	'timedmedia-download' => 'Last ned fil',
+	'timedmedia-play-media' => 'Spill av media',
 	'timedmedia-desc-link' => 'Om denne filen',
 	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
 	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
+	'timedmedia-source-file' => '$1 kilde',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-220_200kbs.ogv' => 'Lav båndbredde Ogg-video (200P)',
+	'timedmedia-derivative-desc-360_560kbs.ogv' => 'Nett-strømbar Ogg-video (360P)',
+	'timedmedia-derivative-desc-480_880kbs.ogv' => 'Nett-strømbar Ogg-video (480P)',
+	'timedmedia-derivative-desc-720_VBR.ogv' => 'Høykvalitets nedlastbar Ogg-video (720P)',
+	'timedmedia-derivative-desc-360_560kbs.webm' => 'Nett-strømbar WebM (360P)',
+	'timedmedia-derivative-desc-480_900kbs.webm' => 'Nett-strømbar WebM (480P)',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'Høykvalitets nedlastbar WebM (720P)',
+	'timedmedia-subtitle-language' => '$1 ($2) undertekster',
 );
 
 /** Occitan (Occitan)
