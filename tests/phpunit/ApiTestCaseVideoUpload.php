@@ -4,6 +4,10 @@
  * @author dale
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit;
+}
+
 // Include core class ApiTestCaseUpload ( not part of base autoLoader )
 global $IP;
 require_once( "$IP/tests/phpunit/includes/api/ApiTestCaseUpload.php" );
