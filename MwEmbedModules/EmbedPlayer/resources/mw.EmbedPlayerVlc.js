@@ -351,7 +351,7 @@ mw.EmbedPlayerVlc = {
 				try{
 					this.playerElement.video.toggleFullscreen();
 				} catch ( e ){
-					mw.log("VlcEmbed toggle fullscreen : possible error: " + e);
+					mw.log("VlcEmbed:: toggle fullscreen : possible error: " + e);
 				}
 			}
 		}

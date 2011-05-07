@@ -115,6 +115,7 @@ $wgAutoloadClasses['getID3' ] = "$timedMediaDir/handlers/WebMHandler/getid3/geti
 
 // Text handler 
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
+$wgAutoloadClasses['TimedTextPage'] = "$timedMediaDir/TimedTextPage.php";
 
 // Transcode support
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";

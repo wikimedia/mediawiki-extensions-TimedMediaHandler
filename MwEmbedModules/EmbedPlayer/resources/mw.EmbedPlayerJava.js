@@ -1,22 +1,21 @@
-/**
-* List of domains and hosted location of cortado. Lets clients avoid the security warning for cross domain cortado
-*/
 ( function( mw, $ ) {
-	
+/**
+* List of domains and hosted location of cortado. Lets clients avoid the security warning 
+* for cross domain java applet loading. 
+*/	
 window.cortadoDomainLocations = {
 		'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'		
 };
-
-// Set the default location for CortadoApplet
-mw.setDefaultConfig( 'relativeCortadoAppletPath',
-	mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar'
-);
 
 mw.EmbedPlayerJava = {
 
 	// Instance name:
 	instanceOf: 'Java',
+	
+	// Set the local applet location for CortadoApplet
+	localAppletLocation: mw.getConfig('EmbedPlayer.WebPath' ) + /binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar'
 
+	
 	// Supported feature set of the cortado applet:
 	supports: {
 		'playHead' : true,
@@ -64,7 +63,7 @@ mw.EmbedPlayerJava = {
 		$( this ).html( appletCode );
 
 		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
-		// NOTE:  This breaks reference to the applet so disabled for now:
+		// NOTE:  This breaks javascript reference to the applet so disabled for now:
 		/*if ( $.browser.mozilla ) {
 			var iframe = document.createElement( 'iframe' );
 			iframe.setAttribute( 'width', this.getWidth() );
@@ -113,7 +112,7 @@ mw.EmbedPlayerJava = {
 			}
 		} else {
 			// Get the local relative cortado applet location:
-			appletLoc = mw.getConfig( 'relativeCortadoAppletPath' );
+			appletLoc = this.localAppletLocation;
 		}
 		return appletLoc;
 	},
@@ -128,14 +127,7 @@ mw.EmbedPlayerJava = {
 				try {
 					// java reads ogg media time.. so no need to add the start or seek offset:
 					//mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' + this.supportsURLTimeEncoding());
-
 					currentTime = this.playerElement.currentTime;
-					// ( java cortado has -1 time ~sometimes~ ) 
-					/*if ( this.currentTime < 0 ) {
-						mw.log( 'pp:' + this.currentTime );
-						// Probably reached clip ( should fire ondone event instead )
-						this.onClipDone();
-					}*/
 				} catch ( e ) {
 					mw.log( 'could not get time from jPlayer: ' + e );
 				}
@@ -147,7 +139,8 @@ mw.EmbedPlayerJava = {
 
 	/**
 	* Seek in the ogg stream
-	* ( Cortado seek does not seem to work very well )
+	* NOTE: Cortado seek does not seem to work very well.
+	* 
 	* @param {Float} percentage Percentage to seek into the stream
 	*/
 	doSeek: function( percentage ) {

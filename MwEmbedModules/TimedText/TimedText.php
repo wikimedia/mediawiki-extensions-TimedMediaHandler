@@ -6,7 +6,8 @@
 			'scripts' => "resources/mw.TimedText.js",
 			'styles' => "resources/mw.style.TimedText.css",
 			'dependencies' => array(
-				'mw.EmbedPlayer',	
+				'mw.EmbedPlayer',
+				'mw.Api',
 				'mw.Language.names',
 				'jquery.ui.dialog',			
 			),

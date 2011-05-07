@@ -48,20 +48,17 @@ class TimedMediaHandlerHooks {
 			)
 		);
 
-		// We should probably move this to a parser function but not working correctly in
+		// We should probably move this script output to a parser function but not working correctly in
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 
-		// Add a hook for article deletion so that we remove transcode settings. 
+		// Add a hook for article deletion so that we remove transcode settings / files. 
 		$wgHooks['ArticleDeleteComplete'][] = 'TimedMediaHandlerHooks::checkArticleDeleteComplete';
 		
-		
-		// Add unit tests
-		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
-
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
 		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $tmhFileExtensions );
+
 		// Also add the .log file ( used in two pass encoding )
 		// ( probably should move in-progress encodes out of web accessible directory )
 		$wgExcludeFromThumbnailPurge[] = 'log';
@@ -72,7 +69,10 @@ class TimedMediaHandlerHooks {
 		);
 
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::loadExtensionSchemaUpdates';
-	
+		
+		// Add unit tests
+		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
+		
 
 		/**
 		 * Add support for the "TimedText" NameSpace
@@ -83,12 +83,22 @@ class TimedMediaHandlerHooks {
 		$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
 		$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
 
+		// if on a timed text page, display timed text page:
+		$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
+		
 		return true;
+	}
+	
+	public static function checkForTimedTextPage( &$title, &$article ){
+		if( $title->getNamespace() == NS_TIMEDTEXT ) {
+			$article = new TimedTextPage( $title );
+		}
+		return true;			
 	}
 	
 	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
 		// Check if the article is a file and remove transcode jobs:
-		if( $article->getTitle()->getNamespace() == NS_FILE ){
+		if( $article->getTitle()->getNamespace() == NS_FILE ) {
 			// We can't get the file since the article is deleted :(
 			// so we can't: 
 			// $file = wfFindFile( $article->getTitle() );
@@ -137,7 +147,6 @@ class TimedMediaHandlerHooks {
 	}
 
 	static function pageOutputHook(  &$out, &$sk ){
-		// FIXME we should only need to add this via parser output hook
 		$out->addModules( 'PopUpMediaTransform' );
 		$out->addModuleStyles( 'PopUpMediaTransform' );
 		return true;

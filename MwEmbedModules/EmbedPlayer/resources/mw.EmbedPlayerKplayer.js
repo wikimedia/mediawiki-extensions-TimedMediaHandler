@@ -1,5 +1,7 @@
-/*
+/**
  * The "kaltura player" embedPlayer interface for fallback h.264 and flv video format support
+ * 
+ * Note once the flash supports webm we can also support that here. 
  */
 // Called from the kdp.swf
 ( function( mw, $ ) {
@@ -27,7 +29,7 @@ mw.EmbedPlayerKplayer = {
 	// Stores the current time as set from flash
 	flashCurrentTime : 0,
 
-	/*
+	/**
 	 * Write the Embed html to the target
 	 */
 	doEmbedHTML : function() {
@@ -103,7 +105,7 @@ mw.EmbedPlayerKplayer = {
 	},
 
 	/**
-	 * javascript run post player embedding
+	 * JavaScript run post player embedding
 	 */
 	postEmbedJS : function() {
 		var _this = this;
@@ -138,7 +140,7 @@ mw.EmbedPlayerKplayer = {
 	/**
 	 * Bind a Player Function,
 	 * 
-	 * Does some tricker to bind to "this" player instance:
+	 * Creates a unique global function to bind to "this" player instance:
 	 * 
 	 * @param {String}
 	 *            flash binding name
@@ -156,7 +158,7 @@ mw.EmbedPlayerKplayer = {
 					embedPlayer[methodName](data);
 				}
 			};
-		}(gKdpCallbackName, this);
+		}( gKdpCallbackName, this );
 
 		// Add the listener to the KDP flash player:
 		this.playerElement.addJsListener(bindName, gKdpCallbackName);
@@ -177,15 +179,18 @@ mw.EmbedPlayerKplayer = {
 	onPlay : function() {
 		this.parent_play();
 	},
-
+	/**
+	 * handles duration change event
+	 */
 	onDurationChange : function(data, id) {
-		mw.log(" onDurationChange: " + data.newValue);
+		mw.log("KPlayer::onDurationChange: " + data.newValue);
 		// update the duration:
 		this.duration = data.newValue;
 	},
 
 	/**
-	 * play method calls parent_play to update the interface
+	 * Play method sends the play request to the flash applet 
+	 * and calls parent_play to update the interface
 	 */
 	play : function() {
 		if (this.playerElement && this.playerElement.sendNotification) {
@@ -195,7 +200,8 @@ mw.EmbedPlayerKplayer = {
 	},
 
 	/**
-	 * pause method calls parent_pause to update the interface
+	 * Pause method sends the pause event to flash applet
+	 * and calls parent_pause to update the interface
 	 */
 	pause : function() {
 		if (this.playerElement && this.playerElement.sendNotification) {
@@ -210,7 +216,7 @@ mw.EmbedPlayerKplayer = {
 	 * @param {Float}
 	 *            percentage Percentage of total stream length to seek to
 	 */
-	doSeek : function(percentage) {
+	doSeek: function( percentage ) {
 		var _this = this;
 		var seekTime = percentage * this.getDuration();
 		mw.log( 'EmbedPlayerKalturaKplayer:: doSeek: ' + percentage + ' time:' + seekTime );
@@ -247,8 +253,8 @@ mw.EmbedPlayerKplayer = {
 	 * @param {Float}
 	 *            percentage Percentage of the stream to seek to between 0 and 1
 	 */
-	doPlayThenSeek : function(percentage) {
-		mw.log('flash::doPlayThenSeek::');
+	doPlayThenSeek : function( percentage ) {
+		mw.log('KPlayer::doPlayThenSeek::');
 		var _this = this;
 		// issue the play request
 		this.play();
@@ -309,7 +315,7 @@ mw.EmbedPlayerKplayer = {
 	 * function called by flash applet when download bytes changes
 	 */
 	onBytesDownloadedChange : function(data, id) {
-		mw.log('onBytesDownloadedChange');
+		mw.log('KPlayer::onBytesDownloadedChange');
 		this.bytesLoaded = data.newValue;
 		this.bufferedPercent = this.bytesLoaded / this.bytesTotal;
 	
@@ -343,7 +349,7 @@ mw.EmbedPlayerKplayer = {
  * NOTE: playerID is not always passed so we can't use this:
  */
 function onKdpReady(playerId) {
-	mw.log("player is ready::" + playerId);
+	mw.log("KPlayer:: player is ready::" + playerId);
 }
 
 /*

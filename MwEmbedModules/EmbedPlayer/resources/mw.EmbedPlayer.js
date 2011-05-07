@@ -1393,9 +1393,7 @@ mw.EmbedPlayer.prototype = {
 						$( '#new_img_thumb_' + _this.id ).attr( 'id', 'img_thumb_' + _this.id );
 						$( '#img_thumb_' + _this.id ).css( 'z-index', '1' );
 						_this.thumbnail_updating = false;
-						// mw.log("done fadding in "+
-						// $('#img_thumb_'+_this.id).attr("src"));
-
+						
 						// if we have a thumb queued update to that
 						if ( _this.last_thumb_url ) {
 							var src_url = _this.last_thumb_url;
@@ -1406,14 +1404,15 @@ mw.EmbedPlayer.prototype = {
 			}
 		}
 	},
-	// update the video poster: 
+	/**
+	 * Update the poster source
+	 * @param {String} url to poster src
+	 */
 	updatePosterSrc: function( posterSrc ){
 		this.poster = posterSrc;
 	},
 	/**
-	 * Returns the HTML code for the video when it is in thumbnail mode.
-	 * playing, configuring the player, inline cmml display, HTML linkback,
-	 * download, and embed code.
+	 * Update the player with thumbnail and play button.
 	 */
 	updatePosterHTML: function () {
 		mw.log( 'EmbedPlayer:updatePosterHTML::' + this.id );
@@ -1428,14 +1427,14 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set by default thumb value if not found
 		var posterSrc = ( this.poster ) ? this.poster :
-						mw.getConfig( 'imagesPath' ) + 'vid_default_thumb.jpg';
+						mw.getConfig( 'EmbedPlayer.WebPath' ) + 'resources/skins/common/vid_default_thumb.jpg';
 
 		// Update PersistentNativePlayer poster:
 		if( this.isPersistentNativePlayer() ){
 			$( '#' + this.pid ).attr('poster', posterSrc);		
 		} else {		
 			// Poster support is not very consistent in browsers
-			// use a jpg poster image:
+			// use a jpeg poster image:
 			$( this ).html(
 				$( '<img />' )
 				.css({
@@ -1462,8 +1461,6 @@ mw.EmbedPlayer.prototype = {
 	/**
 	 * Checks if native controls should be used
 	 *
-	 * @param [player]
-	 *      Object Optional player object to check controls attribute
 	 * @returns boolean true if the mwEmbed player interface should be used
 	 *     false if the mwEmbed player interface should not be used
 	 */
@@ -1555,6 +1552,9 @@ mw.EmbedPlayer.prototype = {
 		}
 		return ;
 	},
+	/**
+	 * Adds a play button to the player
+	 */
 	addPlayBtnLarge:function(){
 		var _this = this;
 		var $pid = $( '#' + _this.pid );
@@ -1569,7 +1569,8 @@ mw.EmbedPlayer.prototype = {
 		);
 	},
 	/**
-	 * Should be set via native embed support
+	 * Abstract method, 
+	 * Get native player html ( should be set by mw.EmbedPlayerNative )
 	 */
 	getNativePlayerHtml: function(){
 		return $('<div />' )
@@ -1598,12 +1599,12 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	* Get the share embed object code
+	* Get the share iframe embed code
 	*
 	* NOTE this could probably share a bit more code with getShareEmbedVideoJs
 	*/
 	getShareIframeObject: function(){
-		// allow modules to generate the iframe:
+		// Allow modules to generate the iframe embed code:
 		var iframeEmbedCode ={};
 		var iframeUrl = false
 		$( this ).trigger( 'GetShareIframeSrc', function( localIframeSrc ){
@@ -1612,7 +1613,7 @@ mw.EmbedPlayer.prototype = {
 			}			
 			iframeUrl = localIframeSrc;
 		});
-	
+
 		if( !iframeUrl ){	
 			iframeUrl = this.getIframeSourceUrl()
 		}		
@@ -1631,7 +1632,9 @@ mw.EmbedPlayer.prototype = {
 		// Return the embed code
 		return embedCode;
 	},
-	
+	/**
+	 * Get a url friendly set of sources for passing to the iframe embed 
+	 */
 	getIframeSourceUrl: function(){
 		// Point to raw files: 
 		var iframeUrl = mw.getMwEmbedPath() + 'mwEmbedFrame.php?';
@@ -1741,8 +1744,13 @@ mw.EmbedPlayer.prototype = {
 	/**
 	 * The Play Action
 	 *
-	 * Handles play requests, updates relevant states: seeking =false paused =
-	 * false Updates pause button Starts the "monitor"
+	 * Handles play requests, updates relevant states: 
+	 * seeking =false 
+	 * paused =false 
+	 * 
+	 * Triggers the play event
+	 * 
+	 * Updates pause button Starts the "monitor"
 	 */
 	play: function() {
 		var _this = this;
@@ -1798,9 +1806,6 @@ mw.EmbedPlayer.prototype = {
 	},
 	/**
 	 * Base embed pause Updates the play/pause button state.
-	 *
-	 * There is no general way to pause the video must be overwritten by embed
-	 * object to support this functionality.
 	 */
 	pause: function( event ) {
 		var _this = this;		
@@ -1845,15 +1850,19 @@ mw.EmbedPlayer.prototype = {
 	 */
 	load: function() {
 		// should be done by child (no base way to pre-buffer video)
-		mw.log( 'baseEmbed:load call' );
+		mw.log( 'BaseEmbed:load call' );
 	},
 
 	
 	/**
 	 * Base embed stop
 	 *
-	 * Updates the player to the stop state shows Thumbnail resets Buffer resets
-	 * Playhead slider resets Status
+	 * Updates the player to the stop state. 
+	 * 
+	 * Shows Thumbnail 
+	 * Resets Buffer 
+	 * Resets Playhead slider 
+	 * Resets Status
 	 */
 	stop: function() {
 		var _this = this;
@@ -1902,7 +1911,7 @@ mw.EmbedPlayer.prototype = {
 	 * Base Embed mute
 	 *
 	 * Handles interface updates for toggling mute. Plug-in / player interface
-	 * must handle the actual media player update
+	 * must handle the actual media player action
 	 */
 	toggleMute: function() {
 		mw.log( 'f:toggleMute:: (old state:) ' + this.muted );
@@ -1963,15 +1972,17 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	 * Abstract Update volume Method must be override by plug-in / player
-	 * interface
+	 * Abstract method Update volume Method must be override by plug-in / player interface
+	 * 
+	 * @param {float}
+	 * 		percent Percentage volume to update
 	 */
 	setPlayerElementVolume: function( percent ) {
 		mw.log('Error player does not support volume adjustment' );
 	},
 
 	/**
-	 * Abstract get volume Method must be override by plug-in / player interface
+	 * Abstract method get volume Method must be override by plug-in / player interface
 	 * (if player does not override we return the abstract player value )
 	 */
 	getPlayerElementVolume: function(){
@@ -1980,7 +1991,7 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	 * Abstract get volume muted property must be overwritten by plug-in /
+	 * Abstract method  get volume muted property must be overwritten by plug-in /
 	 * player interface (if player does not override we return the abstract
 	 * player value )
 	 */
@@ -2039,19 +2050,22 @@ mw.EmbedPlayer.prototype = {
 		return this.posterDisplayed;
 	},
 
-	// TODO temporary hack we need a better stop monitor system
+	/**
+	 * Stop the play state monitor
+	 */
 	stopMonitor: function(){
 		clearInterval( this.monitorInterval );
 		this.monitorInterval = 0;
 	},
-	// TODO temporary hack we need a better stop monitor system
+	/**
+	 * Start the play state monitor
+	 */
 	startMonitor: function(){
 		this.monitor();
 	},
 
 	/**
-	 * Checks if the currentTime was updated outside of the getPlayerElementTime
-	 * function
+	 * Checks if the currentTime was updated outside of the getPlayerElementTime function
 	 */
 	checkForCurrentTimeSeek: function(){
 		var _this = this;
@@ -2070,8 +2084,8 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	 * Monitor playback and update interface components. underling plugin
-	 * objects are responsible for updating currentTime
+	 * Monitor playback and update interface components. underling player classes 
+	 *  are responsible for updating currentTime
 	 */
 	monitor: function() {
 		var _this = this;
@@ -2122,7 +2136,7 @@ mw.EmbedPlayer.prototype = {
 			_this.muted = _this.getPlayerElementMuted();
 		}
 
-		//mw.log( 'Monitor:: ' + this.currentTime + ' duration: ' + ( parseInt(
+		// mw.log( 'Monitor:: ' + this.currentTime + ' duration: ' + ( parseInt(
 		//		this.getDuration() ) + 1 ) + ' is seeking: ' + this.seeking );
 		
 		if ( this.currentTime >= 0 && this.duration ) {
@@ -2164,7 +2178,7 @@ mw.EmbedPlayer.prototype = {
 		// Update buffer information
 		this.updateBufferStatus();
 
-		// run the "native" progress event on the virtual html5 object if set
+		// Trigger the "progress" event per HTML5 api support 
 		if( this.progressEventData ) {
 			// mw.log("trigger:progress event on html5 proxy");
 			if( _this._propagateEvents ){
@@ -2172,8 +2186,8 @@ mw.EmbedPlayer.prototype = {
 			}
 		}
 
-		// Call monitor at 250ms interval. ( use setInterval to avoid stacking
-		// monitor requests )
+		// Call monitor at this.monitorRate interval. 
+		// ( use setInterval to avoid stacking monitor requests )
 		if( ! this.isStopped() ) {
 			if( !this.monitorInterval ){
 				this.monitorInterval = setInterval( function(){

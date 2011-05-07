@@ -259,7 +259,7 @@ mw.EmbedPlayerNative = {
 
 	/**
 	* Do a native seek by updating the currentTime
-	* @param {float} percentage
+	* @param {Float} percentage
 	* 		Percent to seek to of full time
 	*/
 	doNativeSeek: function( percentage ) {
@@ -502,7 +502,8 @@ mw.EmbedPlayerNative = {
 	/**
 	* Update Volume
 	*
-	* @param {Float} percentage Value between 0 and 1 to set audio volume
+	* @param {Float} 
+	* 	percentage Value between 0 and 1 to set audio volume
 	*/
 	setPlayerElementVolume : function( percentage ) {
 		if ( this.getPlayerElement() ) {
@@ -526,7 +527,7 @@ mw.EmbedPlayerNative = {
 		}
 	},
 	/**
-	* get the native muted state
+	* Get the native muted state
 	*/
 	getPlayerElementMuted: function(){
 		if ( this.getPlayerElement() ) {
@@ -544,7 +545,7 @@ mw.EmbedPlayerNative = {
 	},
 
 	/**
-	* load the video stream with a callback fired once the video is "loaded"
+	* Load the video stream with a callback fired once the video is "loaded"
 	*
 	* @parma {Function} callbcak Function called once video is loaded
 	*/
@@ -565,7 +566,7 @@ mw.EmbedPlayerNative = {
 	},
 
 	/**
-	* Get /update the playerElement value
+	* Get / update the playerElement value
 	*/
 	getPlayerElement: function () {
 		this.playerElement = $( '#' + this.pid ).get( 0 );
