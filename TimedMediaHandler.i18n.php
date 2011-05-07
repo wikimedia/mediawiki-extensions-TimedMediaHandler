@@ -224,17 +224,20 @@ $messages['arz'] = array(
 
 /** Asturian (Asturianu)
  * @author Esbardu
+ * @author Xuacu
  */
 $messages['ast'] = array(
-	'timedmedia-desc' => "Remanador d'archivos Ogg Theora y Vorbis, con un reproductor JavaScript",
+	'timedmedia-desc' => 'Remanador de soníu, videu y testu cronometráu, con sofitu pa los formatos WebM, Ogg Theora, Vorbis y srt',
 	'timedmedia-ogg-short-audio' => 'Archivu de soníu ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Archivu de videu ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Archivu multimedia ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'Archivu de soníu ogg $1, llonxitú $2, $3',
 	'timedmedia-ogg-long-video' => 'Archivu de videu ogg $1, llonxitú $2, $4×$5 píxeles, $3',
-	'timedmedia-ogg-long-multiplexed' => "Archivu d'audiu/videu ogg multiplexáu, $1, llonxitú $2, $4×$5 píxeles, $3",
+	'timedmedia-ogg-long-multiplexed' => 'Ficheru de soníu/videu ogg multiplexáu, $1, llonxitú $2, $4×$5 píxeles, $3',
 	'timedmedia-ogg-long-general' => 'Archivu multimedia ogg, llonxitú $2, $3',
 	'timedmedia-ogg-long-error' => 'Archivu ogg non válidu: $1',
+	'timedmedia-webm-short-video' => 'Ficheru de videu  WebM $1, $2',
+	'timedmedia-webm-long-video' => 'Ficheru de soníu/videu  WebM, $1, llonxitú $2, $4 × $5 pixels, $3 total',
 	'timedmedia-more' => 'Más...',
 	'timedmedia-dismiss' => 'Zarrar',
 	'timedmedia-download' => 'Descargar archivu',
@@ -286,11 +289,11 @@ $messages['be-tarask'] = array(
 	'timedmedia-desc' => 'Апрацоўшчык аўдыё, відэа і субтытраў у фарматах WebM, Ogg Theora, Vorbis і SRT',
 	'timedmedia-ogg-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
-	'timedmedia-ogg-short-general' => 'Мэдыя-файл Ogg $1, $2',
+	'timedmedia-ogg-short-general' => 'Мэдыяфайл Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'аўдыё-файл Ogg $1, даўжыня $2, $3',
 	'timedmedia-ogg-long-video' => 'відэа-файл Ogg $1, даўжыня $2, $4×$5 піксэляў, $3',
 	'timedmedia-ogg-long-multiplexed' => 'мультыплексны аўдыё/відэа-файл Ogg, $1, даўжыня $2, $4×$5 піксэляў, усяго $3',
-	'timedmedia-ogg-long-general' => 'мэдыя-файл Ogg, даўжыня $2, $3',
+	'timedmedia-ogg-long-general' => 'мэдыяфайл Ogg, даўжыня $2, $3',
 	'timedmedia-ogg-long-error' => 'Няслушны файл у фармаце Ogg: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 відэа-файл, $2',
 	'timedmedia-webm-long-video' => 'Аўдыё/відэа-файл WebM, $1, працягласьць $2, $4×$5 піксэлаў, усяго $3',

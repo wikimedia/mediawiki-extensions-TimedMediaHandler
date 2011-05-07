@@ -1629,6 +1629,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
+	'mwe-embedplayer-credit-date' => 'Datum: $1',
+	'mwe-embedplayer-credit-author' => 'Auteur: $1',
 	'mwe-embedplayer-loading_plugin' => 'Plugin lueden ...',
 	'mwe-embedplayer-select_playback' => 'Astellunge vum Ofspillen festleeën',
 	'mwe-embedplayer-link_back' => 'Link zréck',
