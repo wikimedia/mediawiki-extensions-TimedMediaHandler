@@ -2350,6 +2350,7 @@ Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.
 	'timedmedia-source-file' => '$1 pinagkukunan',
 	'timedmedia-source-file-desc' => 'Orihinal na $1, $2 × $3 ( $4)',
 	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
+	'timedmedia-derivative-desc-720_VBR.webm' => 'May mataas na uring WebM na maikakargang paibaba (720P)',
 	'timedmedia-subtitle-language' => '$1 ($2) kabahaging mga pamagat',
 );
 
