@@ -1,5 +1,5 @@
 <?php 
-/** 
+/**
  * Adds iframe output ( bug 25862 ) 
  * 
  * This enables iframe based embeds of the wikimeia player with the following syntax:
@@ -43,16 +43,13 @@ class TimedMediaIframeOutput {
 		
 		$skin = $wgUser->getSkin();
 		
-		// Setup the render paramaters
+		// Setup the render parm
 		$file = wfFindFile( $title );	
 		$params = array(
-			// ( will be resized on load )
 			'width' => 400
 		);
+		$videoTransform= $file->transform( $params );
 		
-		$thumbName = $file->thumbName( $params );
-		$thumbnail = $file->transform( $params );
-		// XXX Need to "add modules" for the loader "go"... strange. 
 		$wgOut->addModules( array( 'embedPlayerIframeStyle') );
 		$wgOut->sendCacheControl();
 	?>
@@ -68,18 +65,41 @@ class TimedMediaIframeOutput {
 		echo $wgOut->getHeadLinks($skin);
 		echo $wgOut->getHeadItems();
 	?>
-</head>
+	<style type="text/css">
+		html, body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		  overflow:hidden;
+		}
+		img#bgimage {
+		  position:fixed;
+		  top:0;
+		  left:0;
+		  width:100%;
+		  height:100%;
+		}
+	</style>
+	<?php echo $wgOut->getHeadScripts( $skin ); ?>	
+	<?php 
+	echo Html::inlineScript(
+	ResourceLoader::makeLoaderConditionalScript(
+			Xml::encodeJsCall( 'mw.loader.go', array() )
+		)
+	);
+	?>
+	</head>
 <body>
-	<div id="bgimage"></div>
+	<img src="<?php echo $videoTransform->getUrl() ?>" id="bgimage" ></img>
 	<div id="videoContainer" style="visibility:hidden">
-		<?php echo $thumbnail->toHtml(); ?>
-	</div
-	<?php echo $wgOut->getHeadScripts($skin); ?>	
-	<script type="text/javascript">
+		<?php echo $videoTransform->toHtml(); ?>
+	</div>
+	<script>		
 		// Set the fullscreen property inline to avoid poluting the player cache  
-		mw.setConfig('EmbedPlayer.EnableFullscreen', false ); 
-			
-		mw.ready(function(){
+		mw.setConfig('EmbedPlayer.EnableFullscreen', false );
+		$('#bgimage').remove(); 			
+		
+		mw.ready(function(){		
 			var fitPlayer = function(){
 				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
 				.get(0).resizePlayer({

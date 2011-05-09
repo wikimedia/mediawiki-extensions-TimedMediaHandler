@@ -114,8 +114,8 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	static function outputHook( $outputPage, $parserOutput, $data ) {
 		// Add the PopUpMediaTransform code 
-		$outputPage->addModules( 'PopUpMediaTransform' );
-		$outputPage->addModuleStyles( 'PopUpMediaTransform' );
+		$outputPage->addModules( 'mw.PopUpMediaTransform' );
+		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform' );
 	}
 	/**
 	 * Utility functions
@@ -207,8 +207,8 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		// Setup pointer to thumb arguments
-		$options['thumbUrl'] = $dstUrl;
-		$options['dstPath'] = $dstPath;
+		$options[ 'thumbUrl' ] = $dstUrl;
+		$options[ 'dstPath' ] = $dstPath;
 		
 		// Check if transform is deferred:
 		if ( $flags & self::TRANSFORM_LATER ) {

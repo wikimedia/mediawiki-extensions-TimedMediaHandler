@@ -38,14 +38,14 @@ class TimedMediaHandlerHooks {
 
 		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules )
 		$wgResourceModules+= array(
-			'PopUpMediaTransform' => $baseExtensionResource + array(
-				'scripts' => 'resources/PopUpThumbVideo.js',
+			'mw.PopUpMediaTransform' => array_merge( $baseExtensionResource, array(
+				'scripts' => 'resources/mw.PopUpThumbVideo.js',
 				'styles' => 'resources/PopUpThumbVideo.css',
 				'dependencies' => array( 'jquery.ui.dialog' ),
-			),
-			'embedPlayerIframeStyle'=> $baseExtensionResource + array(
+			) ),
+			'embedPlayerIframeStyle'=> array_merge( $baseExtensionResource, array(
 				'styles' => 'resources/embedPlayerIframe.css',
-			)
+			) )
 		);
 
 		// We should probably move this script output to a parser function but not working correctly in
@@ -147,8 +147,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	static function pageOutputHook(  &$out, &$sk ){
-		$out->addModules( 'PopUpMediaTransform' );
-		$out->addModuleStyles( 'PopUpMediaTransform' );
+		$out->addModules( 'mw.PopUpMediaTransform' );
+		$out->addModuleStyles( 'mw.PopUpMediaTransform' );
 		return true;
 	}
 }

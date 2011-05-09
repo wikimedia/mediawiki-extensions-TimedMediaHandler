@@ -61,6 +61,8 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-desc-720_VBR.webm' => 'High quality downloadable WebM (720P)',
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
+	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page',
+	'timedmedia-subtitle-no-subtitles' => 'There is currently no $1 subtitles for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',
 );
 
 /** Message documentation (Message documentation)

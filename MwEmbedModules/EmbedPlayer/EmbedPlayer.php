@@ -22,7 +22,8 @@
 				),
 				'dependencies' => array(
 					// mwEmbed support module 
-					'mwEmbedSupport',
+					'mw.MwEmbedSupport',
+					'mediawiki.language.parser',					
 					'mediawiki.client',
 					'mediawiki.UtilitiesTime',
 					'mediawiki.Uri',

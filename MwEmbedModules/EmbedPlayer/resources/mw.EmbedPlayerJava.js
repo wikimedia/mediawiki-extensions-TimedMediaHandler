@@ -13,7 +13,7 @@ mw.EmbedPlayerJava = {
 	instanceOf: 'Java',
 	
 	// Set the local applet location for CortadoApplet
-	localAppletLocation: mw.getConfig('EmbedPlayer.WebPath' ) + /binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar'
+	localAppletLocation: mw.getConfig('EmbedPlayer.WebPath' ) + '/binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar',
 
 	
 	// Supported feature set of the cortado applet:
