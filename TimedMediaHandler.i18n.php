@@ -541,6 +541,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
+	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
+	'timedmedia-subtitle-no-subtitles' => 'Derzeit gibt es keine $1 Untertitel für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.',
 );
 
 /** Zazaki (Zazaki)
@@ -1105,6 +1107,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM fluibile per web (480P)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM discargabile de alte qualitate (720P)',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitulos',
+	'timedmedia-subtitle-no-video' => 'Il non ha video associate con le actual pagina de subtitulos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1540,6 +1543,8 @@ $messages['mk'] = array(
 	'timedmedia-derivative-720_VBR.webm' => 'WebM 720п',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
+	'timedmedia-subtitle-no-video' => 'Нема видеоснимка поврзана со тековната страница со титлови',
+	'timedmedia-subtitle-no-subtitles' => 'Моментално нема $1 титлови за оваа видеоснимка. Можете да ги додадете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредувајќи ја страницава]',
 );
 
 /** Malayalam (മലയാളം)
@@ -1698,6 +1703,7 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'Via web te streamen WebM (480P)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Hoge kwaliteit downloadbare WebM (720P)',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
