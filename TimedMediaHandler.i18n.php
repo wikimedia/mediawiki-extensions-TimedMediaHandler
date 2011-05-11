@@ -1108,6 +1108,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM discargabile de alte qualitate (720P)',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitulos',
 	'timedmedia-subtitle-no-video' => 'Il non ha video associate con le actual pagina de subtitulos',
+	'timedmedia-subtitle-no-subtitles' => 'Il ha actualmente nulle subtitulos de $1 pro iste video. Tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina] pro adder los.',
 );
 
 /** Indonesian (Bahasa Indonesia)
