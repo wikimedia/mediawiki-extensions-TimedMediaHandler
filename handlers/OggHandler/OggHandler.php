@@ -66,8 +66,8 @@ class OggHandler extends TimedMediaHandler {
 					$pictureWidth = $pictureWidth * $parNumerator / $parDenominator;
 				}
 				return array(
-					$pictureWidth,
-					$stream['header']['PICH']
+					intval( $pictureWidth ),
+					intval( $stream['header']['PICH'] )
 				);
 			}
 		}
