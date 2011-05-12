@@ -96,7 +96,7 @@ class OggHandler extends TimedMediaHandler {
 		foreach ( $metadata['streams'] as $stream ) {
 			$streamTypes[] = $stream['type'];
 		}
-		return $streamTypes;
+		return array_unique( $streamTypes );
 	}
 	
 	function getOffset( $file ){
