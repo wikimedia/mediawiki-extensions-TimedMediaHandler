@@ -14,7 +14,7 @@ class OggHandler extends TimedMediaHandler {
 		try {
 			$f = new File_Ogg( $path );
 			$streams = array();
-			foreach ( $f->listStreams() as $streamType => $streamIDs ) {
+			foreach ( $f->listStreams() as $streamIDs ) {
 				foreach ( $streamIDs as $streamID ) {
 					$stream = $f->getStream( $streamID );
 					$streams[$streamID] = array(
@@ -88,15 +88,15 @@ class OggHandler extends TimedMediaHandler {
 	}
 	
 	function getStreamTypes( $file ) {
-		$streamTypes = '';
+		$streamTypes = array();
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
 		foreach ( $metadata['streams'] as $stream ) {
-			$streamTypes[$stream['type']] = true;
+			$streamTypes[] = $stream['type'];
 		}
-		return array_keys( $streamTypes );
+		return $streamTypes;
 	}
 	
 	function getOffset( $file ){
