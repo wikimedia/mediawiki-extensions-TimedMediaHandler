@@ -58,8 +58,15 @@ class OggHandler extends TimedMediaHandler {
 		}
 		foreach ( $metadata['streams'] as $stream ) {
 			if ( in_array( $stream['type'], $wgMediaVideoTypes ) ) {
+				$pictureWidth = $stream['header']['PICW'];
+				$parNumerator = $stream['header']['PARN'];
+				$parDenominator = $stream['header']['PARD'];
+				if( $parNumerator && $parDenominator ) {
+					// Compensate for non-square pixel aspect ratios
+					$pictureWidth = $pictureWidth * $parNumerator / $parDenominator;
+				}
 				return array(
-					$stream['header']['PICW'],
+					$pictureWidth,
 					$stream['header']['PICH']
 				);
 			}
