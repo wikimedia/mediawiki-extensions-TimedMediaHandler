@@ -544,7 +544,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
-	'timedmedia-subtitle-no-subtitles' => 'Derzeit gibt es keine $1 Untertitel für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.',
+	'timedmedia-subtitle-no-subtitles' => 'Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.',
 );
 
 /** Zazaki (Zazaki)
@@ -755,6 +755,7 @@ $messages['fo'] = array(
  * @author Grondin
  * @author IAlex
  * @author Jean-Frédéric
+ * @author McDutchie
  * @author Peter17
  * @author Seb35
  * @author Sherbrooke
@@ -793,6 +794,8 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM lisible en continu depuis le web (480p)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Vidéo WebM téléchargeable de grande qualité (720p)',
 	'timedmedia-subtitle-language' => 'soustitres en $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Il n’y a aucune vidéo associée à la page actuelle de sous-titre',
+	'timedmedia-subtitle-no-subtitles' => "Il n'y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1110,7 +1113,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM discargabile de alte qualitate (720P)',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitulos',
 	'timedmedia-subtitle-no-video' => 'Il non ha video associate con le actual pagina de subtitulos',
-	'timedmedia-subtitle-no-subtitles' => 'Il ha actualmente nulle subtitulos de $1 pro iste video. Tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina] pro adder los.',
+	'timedmedia-subtitle-no-subtitles' => 'Il ha actualmente nulle subtitulos in $1 pro iste video. Tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina] pro adder los.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1152,6 +1155,8 @@ Anda dapat <a href="$1">mengunduh klip</a> atau <a href="http://www.mediawiki.or
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM aliran web (480P)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM unduhan berkualitas tinggi (720P)',
 	'timedmedia-subtitle-language' => 'Teks film $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Tidak ada video yang terkait dengan halaman subjudul ini',
+	'timedmedia-subtitle-no-subtitles' => 'Saat ini tidak ada subjudul $1 untuk video ini. Anda dapat [{{fullurl: {{FULLPAGENAME}}|action = edit}} menyunting halaman ini] untuk menambahkannya',
 );
 
 /** Ido (Ido)
@@ -1667,6 +1672,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
  */
@@ -1707,6 +1713,7 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Hoge kwaliteit downloadbare WebM (720P)',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',
+	'timedmedia-subtitle-no-subtitles' => 'Er zijn op het moment geen ondertitels in het $1 voor deze video. U kunt [{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken] om ze toe te voegen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1926,6 +1933,8 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM para web streaming (480P)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM de alta qualidade para download (720P)',
 	'timedmedia-subtitle-language' => 'Legendas em $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Não existe nenhum vídeo associado à actual página de legendas',
+	'timedmedia-subtitle-no-subtitles' => 'Neste momento não existem legendas em $1 para este vídeo. Pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar a página] e adicioná-las.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
