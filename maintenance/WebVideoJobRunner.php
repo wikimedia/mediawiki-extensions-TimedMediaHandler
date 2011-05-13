@@ -66,10 +66,10 @@ class WebVideoJobRunner extends Maintenance {
 			// Add one process:
 			$cmd = "php $wgMaintenancePath/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$this->transcodeTimeout}";
 			$status = $this->runBackgroundProc( $cmd );
-			$this->output( "$runingJobsCount existing job runners, Starting new transcode job runner:" );
+			$this->output( "$runingJobsCount existing job runners, Check for new transcode jobs:  " );
 		} else {
 			// Just output a "tick"
-			$this->output( "$runingJobsCount transcode jobs active" );
+			$this->output( "$runingJobsCount transcode jobs active:\n" );
 		}
 	}
 	

@@ -98,7 +98,6 @@ class WebVideoTranscode {
 				'videoCodec' 		=> 'theora',
 			),	
 
-			
 		// WebM transcode:
 		WebVideoTranscode::ENC_WEBM_5MBS => 
 			array(
@@ -120,7 +119,7 @@ class WebVideoTranscode {
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
-				'videoCodec' 			=> 'vp8',
+				'videoCodec' 		=> 'vp8',
 			),
 		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
 			 array(
@@ -141,7 +140,14 @@ class WebVideoTranscode {
 			$file->getName() . '.' .
 			$transcodeKey ;
 	}
-	
+	/**
+	 * Get the target encode path for a video encode
+	 * 
+	 * @param File $file
+	 * @param String $transcodeKey
+	 * 
+	 * @returns the local target encode path
+	 */
 	static public function getTargetEncodePath( &$file, $transcodeKey ){
 		// TODO probably should use some other temporary non-web accessible location for 
 		// in-progress encodes.
@@ -165,7 +171,74 @@ class WebVideoTranscode {
 	
 	/** 
 	 * Static function to get the set of video assets 
+	 * Checks if the file is local or remote and grabs respective sources
+	 */
+	static public function getSources( &$file , $options=array() ){
+		if( $file->isLocal() ){
+			return self::getLocalSources( $file , $options );
+		}else {
+			return self::getRemoteSources( $file , $options );
+		}
+	}
+	/**
+	 * Grabs sources from the remote repo via ApiQueryVideoInfo.php entry point. 
 	 * 
+	 * Because this works on both TimedMediaHandler commons and no TimedMediaHandler commons
+	 */
+	static public function getRemoteSources(&$file , $options=array() ){
+		global $wgMemc;
+		// Setup source attribute options
+		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
+		
+		// Use descriptionCacheExpiry as our expire for timed text tracks info
+		if ( $file->repo->descriptionCacheExpiry > 0 ) {
+			wfDebug("Attempting to get sources from cache...");
+			$key = $this->file->repo->getLocalCacheKey( 'WebVideoSources', 'url', $file->getName() );
+			$sources = $wgMemc->get($key);
+			if ( $sources ) {
+				wfDebug("Success found sources in local cache\n");
+				return $sources;
+			}
+			wfDebug("source cache miss\n");
+		}
+		wfDebug("Get Video sources from remote api \n");
+		$data = $file->repo->fetchImageQuery(  array( 
+			'action' => 'query',
+			'prop' => 'videoinfo',
+			'viprop' => 'derivatives',
+			'title' => $file->getTitle()->getDBKey()
+		) );
+		
+		if( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )
+			&& $data['warnings']['query']['*'] == "Unrecognized value for parameter 'prop': videoinfo" )
+		{
+			// Commons does not yet have TimedMediaHandler. 
+			// Use the normal file repo system single source:
+			return array( self::getPrimarySourceAttributes( $file, $dataPrefix ) );
+		}
+		$sources = array();
+		// Generate the source list from the data response:
+		if( $data['query'] && $data['query']['pages'] ){
+			$vidResult = first( $data['query']['pages'] );
+			if( $vidResult['videoinfo'] ){
+				$derResult =  first( $vidResult['videoinfo'] );
+				$derivatives = $derResult['derivatives'];
+				foreach( $derivatives as $derivativeSource ){
+					$sources[] = $derivativeSource;
+				}
+			}
+		}
+		
+		// Update the cache: 
+		if ( $sources && $this->file->repo->descriptionCacheExpiry > 0 ) {
+			$wgMemc->set( $key, $sources, $this->file->repo->descriptionCacheExpiry );
+		}
+		
+		return $sources;
+		
+	}
+
+	/*
 	 * Based on the $wgEnabledTranscodeSet set of enabled derivatives we 
 	 * sync the database with $wgEnabledTranscodeSet 
 	 * 	
@@ -176,42 +249,18 @@ class WebVideoTranscode {
 	 * 					'nodata' Strips the data- attribute, useful when your output is not html
 	 * @returns an associative array of sources suitable for <source> tag output
 	 */
-	static public function getSources( &$file , $options=array() ){
+	static public function getLocalSources( &$file , $options=array() ){
 		global $wgEnabledTranscodeSet, $wgLang;
 		$sources = array();
 		
-		// Setup options
-		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
-				
 		// Add the original file: 
-		$source = array(
-			'src' => $file->getUrl(),
-			'title' => wfMsg('timedmedia-source-file-desc',  
-								$file->getHandler()->getMetadataType(),
-								$wgLang->formatNum( $file->getWidth() ),
-								$wgLang->formatNum( $file->getHeight() ),
-								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
-							),
-			"{$dataPrefix}shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),							
-			"{$dataPrefix}width" => $file->getWidth(),
-			"{$dataPrefix}height" => $file->getHeight(),
-			// TODO add some title and data about the file
-		);
+		$source = self::getPrimarySourceAttributes( $file, $options );
 				
 		// Just directly return audio sources ( No transcoding for audio for now ) 
 		if( $file->getHandler()->isAudio( $file ) ){			
 			return array( $source );
 		}
 		
-		// For video include bitrate and framerate: 		
-		$bitrate = $file->getHandler()->getBitrate( $file );
-		if( $bitrate ) 
-			$source["{$dataPrefix}bandwidth"] = round ( $bitrate );
-		
-		$framerate = $file->getHandler()->getFramerate( $file );
-		if( $framerate ) 
-			$source[ "{$dataPrefix}framerate" ] = $framerate;
-			
 		// Add the source to the sources array
 		$sources[] = $source;
 		
@@ -247,18 +296,18 @@ class WebVideoTranscode {
 				$addWebMFlag = true;
 			}
 			// Try and add the source
-			self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
+			self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 		}
 		
 		// Make sure we have at least one ogg and webm encode 
 		if( !$addOggFlag || !$addWebMFlag){
 			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'theora' ){
-					self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
+					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 					$addOggFlag = true;
 				}
 				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'vp8' ){
-					self::tryAddSource( $file, $sources, $transcodeKey, $dataPrefix );
+					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 					$addWebMFlag = true;
 				}
 			}
@@ -266,7 +315,6 @@ class WebVideoTranscode {
 		
 		return $sources;
 	}
-	
 	/**
 	 * Get the transcode state for a given filename and transcodeKey
 	 * 
@@ -330,31 +378,79 @@ class WebVideoTranscode {
 	}
 	
 	/**
-	 * Try to add a source to the sources list
+	 * Add a source to the sources list if the transcode job is ready
 	 * if the source is not found update the job queue
 	 */
-	public static function tryAddSource( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){
+	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){
 		global $wgLang;
+		$fileName = $file->getTitle()->getDbKey();
+		// Check if the transcode is ready: 			
+		if( self::isTranscodeReady( $fileName, $transcodeKey ) ){
+			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
+		} else {
+			self::updateJobQueue( $file, $transcodeKey ); 				
+		}
+	}
+	/**
+	 * Get the primary "source" asset used for other derivatives
+	 */
+	static public function getPrimarySourceAttributes($file, $options){
+		global $wgLang;
+		// Setup source attribute options
+		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
+		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $file->getUrl() ) : $file->getUrl();
+		
+		$source = array(
+			'src' => $src,
+			'title' => wfMsg('timedmedia-source-file-desc',  
+								$file->getHandler()->getMetadataType(),
+								$wgLang->formatNum( $file->getWidth() ),
+								$wgLang->formatNum( $file->getHeight() ),
+								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
+							),
+			"{$dataPrefix}shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),							
+			"{$dataPrefix}width" => $file->getWidth(),
+			"{$dataPrefix}height" => $file->getHeight(),
+		);
+		 		
+		$bitrate = $file->getHandler()->getBitrate( $file );
+		if( $bitrate ) 
+			$source["{$dataPrefix}bandwidth"] = round ( $bitrate );
+			
+		// For video include framerate:
+		if( !$file->getHandler()->isAudio( $file ) ){
+			$framerate = $file->getHandler()->getFramerate( $file );
+			if( $framerate ) 
+				$source[ "{$dataPrefix}framerate" ] = $framerate;
+		}
+		return $source;
+	}
+	/**
+	 * Get derivative "source" attributes 
+	 */
+	static public function getDerivativeSourceAttributes($file, $transcodeKey, $options){
+		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
+		
+		
 		$fileName = $file->getTitle()->getDbKey();
 		
 		$thumbName = $file->thumbName( array() );
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );
-			
-		// Check if the transcode is ready: 			
-		if( self::isTranscodeReady( $fileName, $transcodeKey ) ){
-			
-			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( 
-				$file, 
-				self::$derivativeSettings[$transcodeKey]['maxSize'] 
-			);
-					
-			$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) )? 
+		
+		list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( 
+			$file, 
+			self::$derivativeSettings[$transcodeKey]['maxSize'] 
+		);
+		
+		$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) )? 
 						self::$derivativeSettings[$transcodeKey]['framerate'] :
 						$file->getHandler()->getFramerate( $file );
-						
-			$sources[] = array(
-				'src' => $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey,
+		// Setup the url src: 
+		$src = $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey;
+		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $src ) : $src;
+		return array(
+				'src' => $src,
 				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
 				"{$dataPrefix}shorttitle" => wfMsg('timedmedia-derivative-' . $transcodeKey),
 				
@@ -366,11 +462,7 @@ class WebVideoTranscode {
 				"{$dataPrefix}bandwidth" => self::$transcodeStateCache[$fileName][ $transcodeKey ]['bitrate'],
 				"{$dataPrefix}framerate" => $framerate,
 			);
-		} else {
-			self::updateJobQueue( $file, $transcodeKey ); 				
-		}
 	}
-	
 	/**
 	 * Update the job queue if the file is not already in the job queue:
 	 * @param object File object 

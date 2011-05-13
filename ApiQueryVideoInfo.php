@@ -21,7 +21,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		return 'Extends imageinfo to include video source information';
 	}
 
-	static function getInfo( $file, $prop, $result, $thumbParams = null ) {
+	static function getInfo( $file, $prop, $result, $thumbParams = null, $version = 'latest' ) {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams = null );
 		if( isset( $prop['derivatives'] ) ){
 			$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'nodata', 'fullurl') );
