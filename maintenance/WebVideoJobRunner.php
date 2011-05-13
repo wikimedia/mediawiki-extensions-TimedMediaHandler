@@ -33,9 +33,14 @@ class WebVideoJobRunner extends Maintenance {
 			$this->threads = $this->getOption( 'threads' ) ;
 		}
 		// Check if WebVideoJobRuner is already running:
+		$jobRunnerCount = 0;
 		foreach( $this->getProcessList() as $pid => $proc ){
 			if( strpos( $proc['args'], 'WebVideoJobRunner.php' ) !== false ){
-				$this->error( "WebVideoJobRunner.php is already running on this box with pid $pid" );
+				$jobRunnerCount++;
+				if( $jobRunnerCount > 1){
+					$this->error( "WebVideoJobRunner.php is already running on this box with pid $pid" );
+					exit(1);
+				}
 			}
 		}
 		// Main runCheckJobThreadsLoop 

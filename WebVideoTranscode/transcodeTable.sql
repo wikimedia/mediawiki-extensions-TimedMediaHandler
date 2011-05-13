@@ -5,7 +5,7 @@ CREATE TABLE /*$wgDBprefix*/transcode (
 	transcode_id INT NOT NULL AUTO_INCREMENT, 
 	transcode_image_name VARCHAR(255) NOT NULL, 
 	transcode_key VARCHAR(48) NOT NULL, 
-	transcode_error BLOB NOT NULL, 
+	transcode_error longtext NOT NULL, 
 	transcode_time_addjob DATETIME NULL, 
 	transcode_time_startwork DATETIME NULL, 
 	transcode_time_success DATETIME NULL, 
