@@ -7,8 +7,7 @@
  */
 
 // Check if the script is already running
-// threads ( number of simultaneous jobs to run ) 
-// wait 5 seconds and confirm job is running.
+// wait 5 seconds and confirm job(s) are running.
 $wgMaintenancePath = dirname( __FILE__ ) . '/../../../maintenance';
 require_once( "$wgMaintenancePath/Maintenance.php" );
 
@@ -26,21 +25,19 @@ class WebVideoJobRunner extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( "threads", "The number of simultaneous transcode threads to run", false, true );
-		$this->addOption( "checkJobsFrequency", "How often the script checks for job threads to be active", false, true );
+		$this->addOption( "frequency", "How often the script checks for job threads to be active", false, true );
 		$this->mDescription = "Transcode job running demon, continuously runs transcode jobs";
 	}
 	public function execute() {		
 		if ( $this->hasOption( "threads" ) ) {
 			$this->threads = $this->getOption( 'threads' ) ;
 		}
-		
 		// Check if WebVideoJobRuner is already running:
 		foreach( $this->getProcessList() as $pid => $proc ){
 			if( strpos( $proc['args'], 'WebVideoJobRunner.php' ) !== false ){
 				$this->error( "WebVideoJobRunner.php is already running on this box with pid $pid" );
 			}
 		}
-		
 		// Main runCheckJobThreadsLoop 
 		while( true ){		
 			$this->runCheckJobThreadsLoop();
@@ -69,7 +66,7 @@ class WebVideoJobRunner extends Maintenance {
 			// Add one process:
 			$cmd = "php $wgMaintenancePath/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$this->transcodeTimeout}";
 			$status = $this->runBackgroundProc( $cmd );
-			$this->output( "$runingJobsCount existing job runners, Starting new transcode job runner \n\n $status " );
+			$this->output( "$runingJobsCount existing job runners, Starting new transcode job runner:" );
 		} else {
 			// Just output a "tick"
 			$this->output( "$runingJobsCount transcode jobs active" );
