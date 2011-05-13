@@ -62,7 +62,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
 	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page',
-	'timedmedia-subtitle-no-subtitles' => 'There is currently no $1 subtitles for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',
+	'timedmedia-subtitle-no-subtitles' => 'There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',
 );
 
 /** Message documentation (Message documentation)
@@ -106,6 +106,8 @@ Parameters are:
 Paramaters are:
 * $1 Subtitle language 
 * $2 Subtitle key',
+	'timedmedia-subtitle-no-subtitles' => 'Parameters:
+* $1 is a language name.',
 );
 
 /** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
