@@ -173,7 +173,7 @@ class WebVideoTranscode {
 	 * Static function to get the set of video assets 
 	 * Checks if the file is local or remote and grabs respective sources
 	 */
-	static public function getSources( &$file , $options=array() ){
+	static public function getSources( &$file , $options = array() ){
 		if( $file->isLocal() ){
 			return self::getLocalSources( $file , $options );
 		}else {
@@ -185,7 +185,7 @@ class WebVideoTranscode {
 	 * 
 	 * Because this works on both TimedMediaHandler commons and no TimedMediaHandler commons
 	 */
-	static public function getRemoteSources(&$file , $options=array() ){
+	static public function getRemoteSources(&$file , $options = array() ){
 		global $wgMemc;
 		// Setup source attribute options
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
@@ -394,7 +394,7 @@ class WebVideoTranscode {
 	/**
 	 * Get the primary "source" asset used for other derivatives
 	 */
-	static public function getPrimarySourceAttributes($file, $options){
+	static public function getPrimarySourceAttributes($file, $options = array() ){
 		global $wgLang;
 		// Setup source attribute options
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
@@ -428,7 +428,7 @@ class WebVideoTranscode {
 	/**
 	 * Get derivative "source" attributes 
 	 */
-	static public function getDerivativeSourceAttributes($file, $transcodeKey, $options){
+	static public function getDerivativeSourceAttributes($file, $transcodeKey, $options = array() ){
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
 		
 		
