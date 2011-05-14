@@ -214,7 +214,7 @@ class WebVideoTranscode {
 		{
 			// Commons does not yet have TimedMediaHandler. 
 			// Use the normal file repo system single source:
-			return array( self::getPrimarySourceAttributes( $file, $dataPrefix ) );
+			return array( self::getPrimarySourceAttributes( $file, array( $dataPrefix ) ) );
 		}
 		$sources = array();
 		// Generate the source list from the data response:
