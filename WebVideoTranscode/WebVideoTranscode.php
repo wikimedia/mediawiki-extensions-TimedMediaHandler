@@ -193,7 +193,7 @@ class WebVideoTranscode {
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
 		if ( $file->repo->descriptionCacheExpiry > 0 ) {
 			wfDebug("Attempting to get sources from cache...");
-			$key = $this->file->repo->getLocalCacheKey( 'WebVideoSources', 'url', $file->getName() );
+			$key = $file->repo->getLocalCacheKey( 'WebVideoSources', 'url', $file->getName() );
 			$sources = $wgMemc->get($key);
 			if ( $sources ) {
 				wfDebug("Success found sources in local cache\n");
