@@ -77,6 +77,8 @@ class WebVideoTranscodeJob extends Job {
 					// unlink the .log file used in two pass encoding: 
 					wfSuppressWarnings();
 					unlink( $destinationFile . '.log' );
+					// Sometimes ffmpeg gives the file log-0.log extension 
+					unlink( $destinationFile . 'log-0.log');
 					wfRestoreWarnings();
 				}
 				// remove any log files

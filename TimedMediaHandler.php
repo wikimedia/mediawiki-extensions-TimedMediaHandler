@@ -41,9 +41,6 @@ $wgVideoPlayerSkin = 'kskin';
 // Support iframe for remote embedding 
 $wgEnableIframeEmbed = true;
 
-// Location of oggThumb binary ( used instead of ffmpeg )
-$wgOggThumbLocation = '/usr/bin/oggThumb';
-
 // The location of ffmpeg2theora ( transcoding )
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 

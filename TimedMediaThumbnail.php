@@ -11,60 +11,12 @@ class TimedMediaThumbnail {
 		}
 
 		wfDebug( "Creating video thumbnail at" .  $options['dstPath']  . "\n" );		
-		// If try OggThumb:	
-		if( self::tryOggThumb( $options) ){
-			return true;
-		}
 		// Else try ffmpeg and return result:
 		return self::tryFfmpegThumb( $options );
-	}
-	/**
-	 * Try to render a thumbnail using oggThumb:
-	 *
-	 * @param $file {Object} File object
-	 * @param $dstPath {string} Destination path for the rendered thumbnail
-	 * @param $dstPath {array} Thumb rendering parameters ( like size and time )
-	 */
-	static function tryOggThumb( $options ){
-		global $wgOggThumbLocation;			
-		// Check that the file is 'ogg' format
-		if( $options['file']->getHandler()->getMetadataType() != 'ogg' ){ 
-			return false;
-		}
-		
-		// Check for $wgOggThumbLocation 
-		if( !$wgOggThumbLocation 
-			|| !is_file( $wgOggThumbLocation ) 
-		){
-			return false;
-		}
-		
-		$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
-			' -t '. intval( self::getThumbTime( $options ) ) . ' ';
-		
-		// Setting height to 0 will keep aspect: 
-		// http://dev.streamnik.de/75.html
-		if( isset( $options['width'] ) ){
-			$cmd.= ' -s ' . intval( $options['width'] ) . 'x0 ';
-		}
-		
-		$cmd.= ' -n ' . wfEscapeShellArg( $options['dstPath'] ) . ' ' .
-			' ' . wfEscapeShellArg( $options['file']->getPath() ) . ' 2>&1';
-		
-		$returnText = wfShellExec( $cmd, $retval );
-		
-		// Check if it was successful
-		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
-			return true;
-		}
-		return false;
 	}
 	
 	static function tryFfmpegThumb( $options ){
 		global $wgFFmpegLocation;
-		if( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ){
-			return false;
-		}
 		
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
 			' -i ' . wfEscapeShellArg( $options['file']->getPath() );

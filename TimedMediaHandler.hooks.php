@@ -99,20 +99,14 @@ class TimedMediaHandlerHooks {
 	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
 		// Check if the article is a file and remove transcode jobs:
 		if( $article->getTitle()->getNamespace() == NS_FILE ) {
-			// We can't get the file since the article is deleted :(
-			// so we can't: 
-			// $file = wfFindFile( $article->getTitle() );
-			// $file->getHandler()->getMetadataType() 
 			
-			 
-			// So we have to use this unfortunate file name extension hack :(
-			// XXX figure out a better way to do this.
-			$fileName = $article->getTitle()->getDBkey();			 
-			$ext = strtolower( pathinfo( "$fileName", PATHINFO_EXTENSION ) );
-					
-			if( $ext == 'ogg' || $ext == 'webm' || $ext == 'ogv' ){
-				WebVideoTranscode::removeTranscodeJobs( $article->getTitle()->getDBkey() );	
+			$file = wfFindFile( $article->getTitle() );
+			$mediaType = $file->getHandler()->getMetadataType(); 	
+			
+			if( $mediaType == 'webm' || $mediaType == 'ogg' ){
+				WebVideoTranscode::removeTranscodeJobs( $file );	
 			}
+			
 		} 
 		return true;
 	}

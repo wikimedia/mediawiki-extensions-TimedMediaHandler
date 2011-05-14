@@ -49,7 +49,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-480_880kbs.ogv' => 'Ogg 480P',
 	'timedmedia-derivative-desc-480_880kbs.ogv' => 'Web streamable Ogg video (480P)',
 
-	'timedmedia-derivative-720_VBR.ogv' => 'Ogg HQ',
+	'timedmedia-derivative-720_VBR.ogv' => 'Ogg 720P',
 	'timedmedia-derivative-desc-720_VBR.ogv' => 'High quality downloadable Ogg video (720P)',
 	
 	// WebM profiles: 	

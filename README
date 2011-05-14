@@ -20,21 +20,32 @@ To install this extension, add the following to the end of your LocalSettings.ph
 
 	// For boxes doing transcoding you should increase the allocated shell memory:
 	$wgMaxShellMemory = 102400*64;
+	
+	
+== Running Transcodes ==
+To transcode the video you need to run webVideoTranscode jobs. In the trunk maintenance folder
+you can run as the web user:
+  php runJobs.php --type webVideoTranscode --maxjobs 1
+
+If you want to have a job runner that checks for new jobs every 5 min in the maintenance folder 
+of Timed Media Handler run: 
+  WebVideoJobRunner.php
 
 
-Kaltura html5 player library
------
+== Kaltura html5 player library ==
 TimedMediaHandler uses the Kaltura html5 player library for video playback.
 
 For more information about the player library visit: 
 http://html5video.org or http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library
 
 
-FFmpeg
-------
+== FFmpeg ==
 
 We use FFmpeg for creating still images of videos, and for transcoding webm
 videos. You will need a copy on your server. 
+
+You can download static ffmpeg builds for multiple platforms at:
+http://firefogg.org/nightly/ 
 
 Download source: http://ffmpeg.mplayerhq.hu/download.html
 About the bug: https://roundup.mplayerhq.hu/roundup/ffmpeg/issue159
@@ -80,11 +91,13 @@ Set the FFmpeg binary location with:
 after the require line in LocalSettings.php. 
 
 
-ffmpeg2theora
-------
+== ffmpeg2theora ==
 
 We use ffmpeg2theora for extract metadata from videos, you will need a copy on your 
 server.
+
+You can download static ffmpeg2theora builds for multiple platforms at:
+http://firefogg.org/nightly/ 
 
 Set the ffmpeg2theora binary location with:
 
@@ -93,22 +106,7 @@ Set the ffmpeg2theora binary location with:
 Download ffmpeg2theora from: http://firefogg.org/nightly/
 
 
-oggThumb
-------
-
-We use oggvideotools for creating still images of videos, you will need a copy on your 
-server. 
-
-Set the oggThumb binary location with:
-
-    $wgOggThumbLocation = '/path/to/oggThumb';
-
-Download oggThumb from: http://dev.streamnik.de/oggvideotools.html
-
-
-Cortado
--------
-
+== Cortado ==
 Wikimedia uses Cortado Java applet from Xiph.org.
 
 A .jar file compiled from this tree is provided in the OggHandler directory for
@@ -120,8 +118,8 @@ For information about Cortado see:
 
 See LICENSE.cortado, LICENSE.jheora and LICENSE.smoke for license information. 
 
-PEAR File_Ogg
--------------
+
+== PEAR File_Ogg ==
 
 Tim Starling forked the PEAR File_Ogg package and improved it significantly in order to 
 support this extension. Tim Starling  has now taken over maintainership of File_Ogg and 
@@ -132,11 +130,12 @@ version 0.3.0 or greater. It is licensed under the LGPL.
 http://pear.php.net/package/File_Ogg
 
 As per the usual convention, the PEAR base directory (the one with PEAR.php in 
-it) must be in your include_path.
+it) must be in your include_path. Note you do not need to install PEAR, its included
+with the TMH.
 
 
-getID3
-----------
+== getID3 ==
+
 getID3 is used for metadata of WebM files. 
 
 getID3() by James Heinrich <info@getid3.org>               

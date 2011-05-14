@@ -147,7 +147,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
-			wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )		
+			wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )
 		);
 		return $s;
 	}

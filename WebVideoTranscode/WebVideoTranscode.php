@@ -238,9 +238,9 @@ class WebVideoTranscode {
 		
 	}
 
-	/*
+	/**
 	 * Based on the $wgEnabledTranscodeSet set of enabled derivatives we 
-	 * sync the database with $wgEnabledTranscodeSet 
+	 * sync the database with $wgEnabledTranscodeSet and return sources that are ready
 	 * 	
 	 * If no transcode is in progress or ready add the job to the jobQueue
 	 * 
@@ -297,10 +297,9 @@ class WebVideoTranscode {
 			}
 			// Try and add the source
 			self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
-		}
-		
+		}	
 		// Make sure we have at least one ogg and webm encode 
-		if( !$addOggFlag || !$addWebMFlag){
+		if( !$addOggFlag || !$addWebMFlag ){
 			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'theora' ){
 					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
@@ -312,9 +311,9 @@ class WebVideoTranscode {
 				}
 			}
 		}
-		
 		return $sources;
 	}
+	
 	/**
 	 * Get the transcode state for a given filename and transcodeKey
 	 * 
@@ -322,9 +321,9 @@ class WebVideoTranscode {
 	 */
 	public static function isTranscodeReady( $fileName, $transcodeKey ){
 		
-		// check if we need to populate the transcodeState cache: 
+		// Check if we need to populate the transcodeState cache: 
 		if( !self::$transcodeStateCache || !isset( self::$transcodeStateCache[ $fileName ] ) ) {
-			self::populateTranscodeStateCache( $fileName );
+			self::getTranscodeStateCache( $fileName );
 		}
 		// If no state is found the cache for this file is false: 
 		if( !isset( self::$transcodeStateCache[ $fileName ][ $transcodeKey ]) 
@@ -344,12 +343,12 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * Populates the local transcoding state cache with the current DB state of transcodes 
+	 * Populates the transcode table with the current DB state of transcodes 
 	 * if transcodes are not found in the database their state is set to "false"
 	 * 
 	 * @param string $fileName key
 	 */
-	public static function populateTranscodeStateCache( $fileName ){
+	public static function getTranscodeStateCache( $fileName ){
 		wfProfileIn( __METHOD__ );
 		$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
 				array( 'transcode_key', 'transcode_time_success','transcode_time_addjob','transcode_final_bitrate' ) , 
@@ -369,12 +368,28 @@ class WebVideoTranscode {
 	}
 	/**
 	 * Remove any transcode jobs associated with a given $fileName
+	 * 
+	 * also remove the transcode files: 
 	 */
-	public static function removeTranscodeJobs( $fileName ){
-		 wfGetDB( DB_MASTER )->delete( 'transcode', 
+	public static function removeTranscodeJobs( &$file ){
+		$fileName = $file->getTitle()->getDbKey();
+		
+		$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
+			array( 'transcode_key' ),
+			array( 'transcode_image_name' => $fileName )
+		);
+		// remove the file
+		foreach( $res as $transcodeRow ){
+			$filePath = self::getDerivativeFilePath($file, $transcodeRow->transcode_key );
+			if( ! @unlink( $filePath ) ){
+				wfDebug( "Could not delete file $filePath\n" );
+			}
+		} 
+		// Remove the db entries
+		wfGetDB( DB_MASTER )->delete( 'transcode', 
 		 	array( 'transcode_image_name' => $fileName ),
 		 	__METHOD__ 
-		 );
+		);
 	}
 	
 	/**
@@ -388,7 +403,7 @@ class WebVideoTranscode {
 		if( self::isTranscodeReady( $fileName, $transcodeKey ) ){
 			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
 		} else {
-			self::updateJobQueue( $file, $transcodeKey ); 				
+			self::updateJobQueue( $file, $transcodeKey ); 
 		}
 	}
 	/**
@@ -473,9 +488,9 @@ class WebVideoTranscode {
 				
 		$fileName = $file->getTitle()->getDbKey();
 				
-		// Check if we need to populate the transcodeState cache: 
+		// Check if we need to update the transcode state:
 		if( !self::$transcodeStateCache || !isset( self::$transcodeStateCache[ $fileName ] ) ) {
-			self::populateTranscodeStateCache( $fileName );
+			self::getTranscodeStateCache( $fileName );
 		}
 		
 		// Check if the job has been added: 
@@ -518,7 +533,7 @@ class WebVideoTranscode {
 					);
 				}
 				// Update the state cache   
-				self::populateTranscodeStateCache( $fileName );
+				self::getTranscodeStateCache( $fileName );
 			}
 			// no jobId ? error out in some way? 
 		}
