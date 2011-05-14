@@ -131,7 +131,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		$firstSource = current( reset( $mediaSources ) );
-		if( !$firstSource['url'] ){
+		if( !$firstSource['src'] ){
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
 		};
@@ -147,7 +147,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
-			wfMsg('timedmedia-no-player-js', $firstSource['src'])				
+			wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )		
 		);
 		return $s;
 	}
