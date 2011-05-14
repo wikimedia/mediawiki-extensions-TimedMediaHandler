@@ -83,7 +83,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			return '';
 		}
 		foreach( $tagSet as $attr ){
-			$s.= Xml::element($tagName, $attr, '');
+			$s.= Xml::tags($tagName, $attr, '');
 		}
 		return $s;
 	}
@@ -95,7 +95,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				'style' => "width:" . intval( $this->width ) . "px;height:" . 
 							intval( $this->getPlayerHeight() ) . "px",
 				'data-videopayload' => $this->getXmlMediaTagOutput( $this->getPopupPlayerSize() ),
-			),
+				),
 			Xml::tags( 'img', array(
 				'style' => 'width:100%;height:100%;',
 				'src' =>  $this->getUrl(),
@@ -109,8 +109,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				Xml::tags( 'div', array(
 						'target' => '_new',
 						'class' => 'play-btn-large'
-					), ''
-				)
+					), '' )
 			)
 		);
 	}
