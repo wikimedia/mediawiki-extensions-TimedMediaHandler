@@ -208,7 +208,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			$( mw ).trigger ( 'EmbedPlayerNewPlayer', $( '#' + playerInterface.id ).get(0) );
 
 			// Add a player ready binding: 
-			$( '#' + playerInterface.id ).bind( 'playerReady', areSelectedPlayersReady);
+			$( '#' + playerInterface.id ).bind( 'playerReady', areSelectedPlayersReady );
 			
 			// Issue the checkPlayerSources call to the new player
 			// interface: make sure to use the element that is in the DOM:
@@ -527,6 +527,9 @@ mw.EmbedPlayer.prototype = {
 		
 		var playerAttributes = mw.getConfig( 'EmbedPlayer.Attributes' );
 		
+		// Copy over the tag type
+		this.virtualTagName = element.tagName.toLowerCase();
+		
 		// Setup the player Interface from supported attributes:
 		for ( var attr in playerAttributes ) {
 			// We can't use $(element).attr( attr ) because we have to check for boolean attributes: 
@@ -690,13 +693,13 @@ mw.EmbedPlayer.prototype = {
 		// Special case for audio
 		// Firefox sets audio height to "0px" while webkit uses 32px .. force
 		// zero:
-		if( element.tagName.toLowerCase() == 'audio' && this.height == '32' ) {
-			this.height = 0;
+		if( this.isAudio() && this.height == '32' ) {
+			this.height = 20;
 		}
 
 		// Use default aspect ration to get height or width ( if rewriting a
 		// non-audio player )
-		if( element.tagName.toLowerCase() != 'audio' && this.videoAspect ) {
+		if( this.isAudio() && this.videoAspect ) {
 			var aspect = this.videoAspect.split( ':' );
 			if( this.height && !this.width ) {
 				this.width = parseInt( this.height * ( aspect[0] / aspect[1] ) );
@@ -724,8 +727,8 @@ mw.EmbedPlayer.prototype = {
 			}
 
 			// Special height default for audio tag ( if not set )
-			if( element.tagName.toLowerCase() == 'audio' ) {
-				this.height = 0;
+			if( this.isAudio() ) {
+				this.height = 20;
 			}else{
 				this.height = defaultSize[1];
 			}
@@ -966,12 +969,14 @@ mw.EmbedPlayer.prototype = {
 	 * Check if the selected source is an audio element:
 	 */
 	isAudio: function(){
-		return ( this.mediaElement.selectedSource.mimeType.indexOf('audio/') !== -1 );
+		return 	( this.virtualTagName == 'audio' 
+				|| 
+				( this.mediaElement && this.mediaElement.selectedSource.mimeType.indexOf('audio/') !== -1 )
+		);
 	},
 
 	/**
-	 * Get the plugin embed html ( should be implemented by embed player
-	 * interface )
+	 * Get the plugin embed html ( should be implemented by embed player interface )
 	 */
 	doEmbedHTML: function() {
 		return 'Error: function doEmbedHTML should be implemented by embed player interface ';

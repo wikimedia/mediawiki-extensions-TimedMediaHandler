@@ -129,7 +129,8 @@ mw.PlayerControlBuilder.prototype = {
 				'height' : parseInt( embedPlayer.height ) - parseInt( this.height )
 			} );
 		}*/
-		// Make room for audio controls in the interface: 
+		
+		// Make room for audio controls in the interface ( if we have a zero height
 		if( embedPlayer.isAudio() && embedPlayer.$interface.height() == 0 ){
 			embedPlayer.$interface.css( {
 				'height' : this.height
@@ -180,6 +181,10 @@ mw.PlayerControlBuilder.prototype = {
 			this.supportedComponets[ 'options'] = false;
 		}
 		
+		// Check if we have multiple playable sources ( if only one source don't display source switch )
+		if( embedPlayer.mediaElement.getPlayableSources().length == 1 ){
+			this.supportedComponets[ 'sourceSwitch'] = false;
+		}
 		
 		var addComponent = function( component_id ){
 			if ( _this.supportedComponets[ component_id ] ) {
@@ -850,13 +855,12 @@ mw.PlayerControlBuilder.prototype = {
 		if( mw.isIpad() ){
 			return false;
 		}
-		
 
-		// Don't hide controls when content "height" is 0px ( audio tags )
-		if( this.embedPlayer.getPlayerHeight() === 0 &&
-			$(this.embedPlayer).css('height').indexOf('%') === -1 ){
+		// Don't hide controls when its an audio player 
+		if( this.embedPlayer.isAudio() ){
 			return false;
 		}
+		
 		if( this.embedPlayer.controls === false ){
 			return false;
 		}

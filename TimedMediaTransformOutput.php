@@ -52,8 +52,17 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->isVideo ) {
 			return intval( $this->height );
 		} else {
-			// Give sound files a height of 0 
-			return 0;
+			// Give sound files a height of 20px 
+			return 20;
+		}
+	}
+	function getPlayerWidth(){
+		// Check if "video" tag output:
+		if ( $this->isVideo ) {
+			return intval( $this->width );
+		} else {
+			// Give sound files a height of 20px 
+			return 220;
 		}
 	}
 	
@@ -92,7 +101,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return Xml::tags( 'div' , array(
 				'id' => "ogg_thumbplayer_" . TimedMediaTransformOutput::$serial++,
 				'class' => 'PopUpMediaTransform',
-				'style' => "width:" . intval( $this->width ) . "px;height:" . 
+				'style' => "width:" . intval( $this->getPlayerWidth() ) . "px;height:" . 
 							intval( $this->getPlayerHeight() ) . "px",
 				'data-videopayload' => $this->getXmlMediaTagOutput( $this->getPopupPlayerSize() ),
 				),
@@ -190,7 +199,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$length = floatval( $this->length  );
 		$offset = floatval( $this->offset );
 		
-		$width = $sizeOverride ? $sizeOverride[0] : intval( $this->width );
+		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
 		
 		// The poster url:
