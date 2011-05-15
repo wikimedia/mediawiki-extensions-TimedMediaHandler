@@ -881,6 +881,8 @@ Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM para a web (480P)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'WebM de alta calidade que se pode descargar (720P)',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Non hai ningún vídeo asociado coa páxina de subtítulos actual',
+	'timedmedia-subtitle-no-subtitles' => 'Actualmente non hai subtítulos en $1 para este vídeo; pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] para engadilos',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
