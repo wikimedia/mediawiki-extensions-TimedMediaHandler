@@ -2151,6 +2151,8 @@ Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'WebM za pretakanje preko spleta (480P)',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'Visokokakovostni WebM za prenos (720P)',
 	'timedmedia-subtitle-language' => 'podnapisi v jeziku $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'S trenutno podnaslovno stranjo ni povezan noben videoposnetek',
+	'timedmedia-subtitle-no-subtitles' => 'V jeziku $1 trenutno ni nobenih podnapisov za ta video; lahko [{{fullurl:{{FULLPAGENAME}}|action=edit}} uredite to stran] in jih dodate',
 );
 
 /** Albanian (Shqip)
