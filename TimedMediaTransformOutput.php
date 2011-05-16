@@ -1,4 +1,4 @@
-e?php 
+<?php 
 
 class TimedMediaTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
