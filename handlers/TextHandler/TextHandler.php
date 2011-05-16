@@ -113,7 +113,7 @@ class TextHandler {
 		$providerName = $this->file->repo->getName();
 		// For a while commons repo in the mediaWiki manual was called "shared" 
 		// ( we need commons to be named "commons" so that the javascript api provider names match up ) 
-		if( $providerName == 'shared' ){
+		if( $providerName == 'shared' || $providername == 'wikimediacommons' ){
 			// We could alternatively check $this->file->repo->mApiBase 
 			foreach( $wgForeignFileRepos as $repo ){
 				if( $repo['name'] ==  $this->file->repo->getName() 

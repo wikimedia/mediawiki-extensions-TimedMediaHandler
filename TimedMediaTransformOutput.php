@@ -1,4 +1,4 @@
-<?php 
+e?php 
 
 class TimedMediaTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
@@ -241,7 +241,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Set the api provider name to "commons" for shared ( instant commons convention ) 
 			// ( provider names should have identified the provider
 			// instead of the provider type "shared" )
-			$apiProviderName = ( $this->file->getRepoName() == 'shared' ) ? 'commons':  $this->file->getRepoName();			
+			$apiProviderName = $this->file->getRepoName();
+			if( $apiProviderName == 'shared' || $apiProviderName == 'wikimediacommons' ) {
+				$apiProviderName = 'commons';
+			}
 		} else {
 			$apiProviderName = 'local';
 		}
