@@ -828,8 +828,6 @@ mw.EmbedPlayer.prototype = {
 			this.selectedPlayer = mw.EmbedTypes.getMediaPlayers().defaultPlayer( this.mediaElement.selectedSource.mimeType );
 		}
 		
-		this.selectedPlayer = null;
-		
 		if ( this.selectedPlayer ) {
 			// Inherit the playback system of the selected player:
 			this.inheritEmbedPlayer();
