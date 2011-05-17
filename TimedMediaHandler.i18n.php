@@ -196,6 +196,7 @@ $messages['ar'] = array(
 	'timedmedia-dismiss' => 'أغلق',
 	'timedmedia-download' => 'نزل الملف',
 	'timedmedia-desc-link' => 'عن هذا الملف',
+	'timedmedia-ogg' => 'أو جي جي',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
