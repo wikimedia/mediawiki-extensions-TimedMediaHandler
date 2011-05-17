@@ -52,8 +52,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->isVideo ) {
 			return intval( $this->height );
 		} else {
-			// Give sound files a height of 20px 
-			return 20;
+			// Give sound files a height of 23px
+			return 23;
 		}
 	}
 	function getPlayerWidth(){
@@ -61,7 +61,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->isVideo ) {
 			return intval( $this->width );
 		} else {
-			// Give sound files a height of 20px 
+			// Give sound files a width of 220px 
 			return 220;
 		}
 	}
