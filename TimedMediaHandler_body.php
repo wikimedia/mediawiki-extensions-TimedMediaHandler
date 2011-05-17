@@ -183,11 +183,13 @@ class TimedMediaHandler extends MediaHandler {
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 		
-		$params['width'] = isset( $params['width'] )? $params['width'] : $srcWidth;
-		// don't upscale: 
-		if( $params['width'] > $srcWidth ){
-			$params['width'] = $srcWidth;
+		// Audio should not be transformed by size, give it a default width and height
+		if( $this->isAudio( $file ) ){
+			$srcWidth = 220;
+			$srcHeight = 23;
 		}
+		
+		$params['width'] = isset( $params['width'] ) ? $params['width'] : $srcWidth;
 		
 		$options = array(
 			'file' => $file,

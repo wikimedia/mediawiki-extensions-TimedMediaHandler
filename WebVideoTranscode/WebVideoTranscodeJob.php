@@ -93,7 +93,6 @@ class WebVideoTranscodeJob extends Job {
 		}
 		
 		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 
-		// @@todo we should use some status class of some sort	
 		if( $status === true ){
 			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
 			wfSuppressWarnings();
