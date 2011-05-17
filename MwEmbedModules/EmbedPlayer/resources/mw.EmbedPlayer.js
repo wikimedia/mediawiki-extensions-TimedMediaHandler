@@ -827,7 +827,9 @@ mw.EmbedPlayer.prototype = {
 		} else {
 			this.selectedPlayer = mw.EmbedTypes.getMediaPlayers().defaultPlayer( this.mediaElement.selectedSource.mimeType );
 		}
-
+		
+		this.selectedPlayer = null;
+		
 		if ( this.selectedPlayer ) {
 			// Inherit the playback system of the selected player:
 			this.inheritEmbedPlayer();
@@ -1232,21 +1234,23 @@ mw.EmbedPlayer.prototype = {
 	 */
 	showPluginMissingHTML: function( ) {
 		mw.log("EmbedPlayer::showPluginMissingHTML");
-		// Control builder ( for play button )
-		this.controlBuilder = new mw.PlayerControlBuilder( this );					
+		// Hide loader
+		$('#loadingSpinner_' + this.id ).remove();
 		
+		// Set the top level container to relative position: 
+		$(this).css('position', 'relative');
+		
+		// Control builder ( for play button )
+		this.controlBuilder = new mw.PlayerControlBuilder( this );		
+		// Update the poster and html:
+		this.updatePosterHTML();
+		// Add the warning
 		this.controlBuilder.doWarningBindinng( 'EmbedPlayer.DirectFileLinkWarning',
 			gM( 'mwe-embedplayer-download-warn', mw.getConfig('EmbedPlayer.FirefoxLink') )
 		);
-		// Hide loader
-		$('#loadingSpinner_' + this.id ).remove();
-		$(this).css('position', 'relative');
-		
-		// Get mime type for un-supported formats:
-		this.updatePosterHTML();		
 		
 		// Set the play button to the first available source: 
-		$(this).find('.play-btn-large')
+		$( this ).find('.play-btn-large')
 		.unbind('click')
 		.wrap(
 			$('<a />').attr( {
@@ -1255,9 +1259,8 @@ mw.EmbedPlayer.prototype = {
 			} )
 		);
 
-		// TODO we should have a smart doneLoading system that registers player states
+		// TODO we should have a smart done Loading system that registers player states
 		// http://www.whatwg.org/specs/web-apps/current-work/#media-element
-		// does not really handle errors
 		this.doneLoading = true;
 		$(this).trigger('playerReady');
 	},

@@ -651,7 +651,7 @@ mw.PlayerControlBuilder.prototype = {
 		var bindFirstPlay = false;		
 		
 		// Bind into play.ctrl namespace ( so we can unbind without affecting other play bindings )
-		$(embedPlayer).unbind('play.ctrl').bind('play.ctrl', function() { //Only bind once played
+		$( embedPlayer ).unbind( 'play.ctrl' ).bind( 'play.ctrl', function() { //Only bind once played
 			if(bindFirstPlay) {
 				return ;
 			}
@@ -683,7 +683,6 @@ mw.PlayerControlBuilder.prototype = {
 						}
 					}
 				}, dblClickTime );
-				
 			});		
 		});
 		
@@ -710,7 +709,6 @@ mw.PlayerControlBuilder.prototype = {
 			// Add a special absolute overlay for hover 
 			_this.addControlBarHover();			
 		}
-
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.checkNativeWarning( ) ) {
 			_this.doWarningBindinng( 'EmbedPlayer.ShowNativeWarning',
@@ -927,7 +925,7 @@ mw.PlayerControlBuilder.prototype = {
 	*
 	*/
 	doWarningBindinng: function( preferenceId, warningMsg ) {
-		mw.log( 'controlBuilder: doWarningBindinng: ' + preferenceId + ' wm: ' + warningMsg);
+		mw.log( 'mw.PlayerControlBuilder:: doWarningBindinng: ' + preferenceId + ' wm: ' + warningMsg);
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
 		var _this = this;
@@ -936,14 +934,13 @@ mw.PlayerControlBuilder.prototype = {
 			return false;
 		}
 		// Add the targetWarning: 
-		$targetWarning = $('<div />')
+		var $targetWarning = $('<div />')
 		.attr( {
 			'id': "warningOverlay_" + embedPlayer.id
 		} )
-		.addClass( 'ui-state-highlight ui-corner-all' )
+		.addClass( 'warningOverlay ui-state-highlight ui-corner-all' )
 		.css({
 			'position' : 'absolute',
-			'display' : 'none',
 			'background' : '#FFF',
 			'color' : '#111',
 			'top' : '10px',
@@ -952,10 +949,6 @@ mw.PlayerControlBuilder.prototype = {
 			'padding' : '4px'
 		})
 		.html( warningMsg )
-	
-		$( embedPlayer ).append(
-			$targetWarning 
-		);
 	
 		$targetWarning.append(
 			$('<br />')
@@ -984,23 +977,25 @@ mw.PlayerControlBuilder.prototype = {
 			.text( gM( 'mwe-embedplayer-do_not_warn_again' ) )
 			.attr( 'for', 'ffwarn_' + embedPlayer.id )
 		);
-		$targetWarning.hide();
+		
+		$targetWarning.appendTo( embedPlayer ).hide();
 		
 		$( embedPlayer ).hoverIntent({
 			'timeout': 2000,
 			'over': function() {
-				// don't do the overlay if already playing
-				if( embedPlayer.isPlaying() ){
+				// don't do the overlay if already playing and we have a player selected
+				if( embedPlayer.isPlaying() && embedPlayer.selectedPlayer ){
 					return ;
 				}
 				
 				// Check the global config before showing the warning
 				if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) != 'hidewarning' ){
-					mw.log("WarningBindinng:: show warning " + mw.getConfig( preferenceId ) + ' cookie: '+ $.cookie( preferenceId ) + 'typeof:' + typeof $.cookie( preferenceId ));
+					mw.log("WarningBindinng:: show warning " + mw.getConfig( preferenceId ) + ' cookie: '+ $.cookie( preferenceId ) + 'typeof: ' + typeof $.cookie( preferenceId ) + ' tw:' + $targetWarning.length );
 					$targetWarning.fadeIn( 'slow' );
 				};
 			},
 			'out': function() {
+				mw.log( 'mw.PlayerControlBuilder:: hide ' );
 				$targetWarning.fadeOut( 'slow' );
 			}
 		});
