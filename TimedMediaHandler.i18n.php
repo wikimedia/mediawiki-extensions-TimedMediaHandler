@@ -966,6 +966,8 @@ $messages['he'] = array(
 	'timedmedia-derivative-desc-480_900kbs.webm' => 'וידאו WebM (480P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-720_VBR.webm' => 'וידאו WebM (720P)&lrm; באיכות גבוהה שניתן להורדה',
 	'timedmedia-subtitle-language' => 'כתוביות ב$1&rlm; ($2)',
+	'timedmedia-subtitle-no-video' => 'אין וידאו שמשויך לדף הכתוביות הנוכחי',
+	'timedmedia-subtitle-no-subtitles' => 'אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן',
 );
 
 /** Hindi (हिन्दी)
