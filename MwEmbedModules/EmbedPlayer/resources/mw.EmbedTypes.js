@@ -24,8 +24,8 @@ var h264NativePlayer = new mw.MediaPlayer( 'h264Native', ['video/h264'], 'Native
 var webmNativePlayer = new mw.MediaPlayer( 'webmNative', ['video/webm'], 'Native' );
 
 // VLC player
-var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg'];
-var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMineList, 'Vlc' );
+var vlcMimeList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg'];
+var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' );
 
 // Generic plugin
 var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
