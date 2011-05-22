@@ -15,7 +15,10 @@
 					'content' : $video,
 					'close' : function(){
 						// pause the video on close ( so that playback does not continue )
-						$(this).find('video,audio').get(0).pause();
+						var domEl = $(this).find('video,audio').get(0);
+						if( domEl ) {
+							domEl.pause();
+						}
 					}
 				} )
 				.css('overflow', 'hidden')
