@@ -386,7 +386,7 @@
 .k-player .volume-slider .ui-slider-range {
 	-moz-border-radius: 0 0 0 0;
 	background: url("images/ksprite.png") repeat-x scroll -66px -306px
-		transparent;
+		transparent !important;
 	height: 17px;
 	position: absolute;
 }
