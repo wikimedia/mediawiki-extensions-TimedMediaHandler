@@ -1078,6 +1078,9 @@
 				// include html formating 
 				// TOOD we should scrub this for non-formating html
 				$textTarget.html( text );
+
+				// Add/update the lang option
+				$textTarget.attr( 'lang', source.srclang.toLowerCase() );
 				
 				// Update any links to point to a new window
 				$textTarget.find( 'a' ).attr( 'target', '_blank' );
