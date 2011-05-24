@@ -378,7 +378,7 @@
 		*/
 		monitor: function( ) {
 			//mw.log(" timed Text monitor: " + this.enabledSources.length );
-			embedPlayer = this.embedPlayer;
+			var embedPlayer = this.embedPlayer;
 			// Setup local reference to currentTime:
 			var currentTime = embedPlayer.currentTime;
 
@@ -645,7 +645,7 @@
 			var _this = this;
 			
 			// Build the source list menu item:
-			$menu = $( '<ul>' );
+			var $menu = $( '<ul>' );
 			// Show text menu item ( if there are sources)
 			if( _this.textSources.length != 0 ) {
 				$menu.append(
@@ -1004,7 +1004,7 @@
 			// Check if we have multiple categories ( if not just list them under the parent menu item)
 			if( catSourceCount > 1 ) {
 				for(var catKey in catSourceList) {
-					$catChildren = $('<ul>');
+					var $catChildren = $('<ul>');
 					for(var i=0; i < catSourceList[ catKey ].length; i++) {
 						$catChildren.append(
 							catSourceList[ catKey ][i]
@@ -1314,7 +1314,7 @@
 			}
 			// Start looking for the text via time, return first match:
 			for( var i = startIndex ; i < this.captions.length; i++ ) {
-				caption = this.captions[ i ];
+				var caption = this.captions[ i ];
 				// Don't handle captions with 0 or -1 end time:
 				if( caption.end == 0 || caption.end == -1)
 					continue;
@@ -1701,6 +1701,7 @@
 	*/
 	$.fn.timedText = function ( action, target ) {
 		mw.log('fn.timedText:: ' + action + ' t: ' + target );
+		var options;
 		if( !target ){
 			options = action;
 		}
