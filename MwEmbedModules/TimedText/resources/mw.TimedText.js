@@ -1341,7 +1341,7 @@
 		var parseNextAsTime = false;
 		// Optimize: we could use javascript strings functions instead of jQuery XML parsing:
 		$( '<div>' + data + '</div>' ).find('p').each( function() {
-			currentPtext = $(this).html();
+			var currentPtext = $(this).html();
 			//mw.log( 'pText: ' + currentPtext );
 
 			//Check if the p matches the "all in one line" match:
