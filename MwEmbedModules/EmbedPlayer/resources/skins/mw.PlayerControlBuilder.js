@@ -487,6 +487,7 @@ mw.PlayerControlBuilder.prototype = {
 		if( $.browser.safari && /chrome/.test(navigator.userAgent.toLowerCase()) ){
 			return ;
 		}
+		// 
 		
 		// OSX has a different short cut than windows and liux
 		var toolTipMsg = ( navigator.userAgent.toLowerCase().indexOf('Mac OS X') != -1 )?
@@ -503,7 +504,7 @@ mw.PlayerControlBuilder.prototype = {
 		
 		var hideTip = function(){ 
 			mw.setConfig('EmbedPlayer.FullscreenTip', false );
-			$targetWarning.fadeOut('fast'); 
+			$targetTip.fadeOut('fast'); 
 		};
 		
 		// Hide fullscreen tip if:

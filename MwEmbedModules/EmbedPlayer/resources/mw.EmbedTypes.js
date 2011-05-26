@@ -223,7 +223,7 @@ mw.EmbedTypes = {
 		}
 
 		// Allow extensions to detect and add their own "players"
-		mw.log("trigger::embedPlayerUpdateMediaPlayersEvent");
+		mw.log("EmbedPlayer::trigger:embedPlayerUpdateMediaPlayersEvent");
 		$( mw ).trigger( 'embedPlayerUpdateMediaPlayersEvent' , this.mediaPlayers );
 
 	},

@@ -54,6 +54,7 @@
 			// if the browser should display a warning for direct file links:
 			"EmbedPlayer.DirectFileLinkWarning" => false,
 			
+			// A  link to download firefox
 			"EmbedPlayer.FirefoxLink" => 'http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed',
 	
 			// If fullscreen is global enabled.

@@ -101,7 +101,7 @@ class TimedMediaHandlerHooks {
 		if( $article->getTitle()->getNamespace() == NS_FILE ) {
 			
 			$file = wfFindFile( $article->getTitle() );
-			$mediaType = $file->getHandler()->getMetadataType(); 	
+			$mediaType = $file->getHandler()->getMetadataType( $image = '' ); 	
 			
 			if( $mediaType == 'webm' || $mediaType == 'ogg' ){
 				WebVideoTranscode::removeTranscodeJobs( $file );	

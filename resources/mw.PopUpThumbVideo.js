@@ -16,13 +16,14 @@
 					'close' : function(){
 						// pause the video on close ( so that playback does not continue )
 						var domEl = $(this).find('video,audio').get(0);
-						if( domEl ) {
+						if( domEl && domEl.pause ) {
 							domEl.pause();
 						}
+						return true;
 					}
 				} )
 				.css('overflow', 'hidden')
-				.find('video,audio').embedPlayer();				
+				.find('video,audio').embedPlayer();
 				// don't follow file link
 				return false; 
 			});
