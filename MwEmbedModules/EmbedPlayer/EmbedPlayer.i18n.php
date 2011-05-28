@@ -899,6 +899,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'mwe-embedplayer-credit-title' => 'Titro : $1',
+	'mwe-embedplayer-credit-date' => 'Dâta : $1',
+	'mwe-embedplayer-credit-author' => 'Ôtor : $1',
 	'mwe-embedplayer-loading_plugin' => 'Chargement du modulo d’èxtension ...',
 	'mwe-embedplayer-select_playback' => 'Dèfenir les prèferences de lèctura',
 	'mwe-embedplayer-link_back' => 'Lim retôrn',
@@ -924,17 +926,20 @@ $messages['frp'] = array(
 	'mwe-embedplayer-download' => 'Tèlèchargiér',
 	'mwe-embedplayer-share' => 'Partagiér',
 	'mwe-embedplayer-credits' => 'Crèdits',
+	'mwe-embedplayer-about-library' => 'A propôs du liésor Kaltura',
 	'mwe-embedplayer-clip_linkback' => 'Pâge sôrsa du clipe',
 	'mwe-embedplayer-choose_player' => 'Chouèsir lo liésor vidèô',
 	'mwe-embedplayer-no-player' => 'Gins de liésor disponiblo por $1',
 	'mwe-embedplayer-share_this_video' => 'Partagiér ceta vidèô',
 	'mwe-embedplayer-video_credits' => 'Crèdits de la vidèô',
+	'mwe-embedplayer-no-video_credits' => 'Gins de crèdit disponiblo',
 	'mwe-embedplayer-kaltura-platform-title' => 'Platafôrma vidèô a sôrsa uvèrta Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Cllôre',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Liésor VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Liésor Ogg HTML5',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Liésor H.264 HTML5',
+	'mwe-embedplayer-ogg-player-webmNative' => 'Liésor WebM HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Modulo d’èxtension g·ènèrico Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Modulo d’èxtension QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX QuickTime',
@@ -950,9 +955,11 @@ $messages['frp'] = array(
 	'mwe-embedplayer-seeking' => 'rechèrche',
 	'mwe-embedplayer-copy-code' => 'Copiyér lo code',
 	'mwe-embedplayer-video-h264' => 'Vidèô H.264',
+	'mwe-embedplayer-video-webm' => 'Vidèô WebM',
 	'mwe-embedplayer-video-flv' => 'Vidèô Flash',
 	'mwe-embedplayer-video-ogg' => 'Vidèô Ogg',
 	'mwe-embedplayer-video-audio' => 'Ôdiô Ogg',
+	'mwe-embedplayer-missing-source' => 'Niona sôrsa vidèô at étâ trovâ.',
 );
 
 /** Galician (Galego)

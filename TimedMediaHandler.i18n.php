@@ -815,9 +815,14 @@ $messages['frp'] = array(
 	'timedmedia-more' => 'De ples...',
 	'timedmedia-dismiss' => 'Cllôre',
 	'timedmedia-download' => 'Tèlèchargiér lo fichiér',
+	'timedmedia-play-media' => 'Liére lo mèdia',
 	'timedmedia-desc-link' => 'A propôs de ceti fichiér',
 	'timedmedia-oggThumb-version' => 'OggHandler at fôta d’oggThumb, vèrsion $1 ou ben ples novèla.',
 	'timedmedia-oggThumb-failed' => 'oggThumb at pas reussi a fâre la figura.',
+	'timedmedia-source-file' => 'Sôrsa $1',
+	'timedmedia-source-file-desc' => 'Originâl $1, $2 × $3 ($4)',
+	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200p',
+	'timedmedia-subtitle-language' => 'sot-titros en $1 ($2)',
 );
 
 /** Friulian (Furlan)

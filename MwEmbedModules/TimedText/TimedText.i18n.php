@@ -586,6 +586,7 @@ $messages['frp'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Tèlèchargement fêt',
 	'mwe-timedtext-back-btn' => 'Tornar',
 	'mwe-timedtext-choose-text' => 'Chouèsésséd lo tèxto',
+	'mwe-timedtext-upload-timed-text' => 'Importar des sot-titros',
 	'mwe-timedtext-loading-text-edit' => 'Chargement de l’èditor de tèxto sincronisâ',
 	'mwe-timedtext-search' => 'Rechèrche un clipe',
 	'mwe-timedtext-layout' => 'Misa en pâge',
@@ -607,6 +608,7 @@ $messages['frp'] = array(
 	'mwe-timedtext-textcat-cue' => 'Pouents de repèro',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 sot-titros por clipe : $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nion sot-titro $1 at étâ trovâ por lo clipe : $2',
+	'mwe-timedtext-request-subs' => 'Demandar la transcripcion',
 );
 
 /** Galician (Galego)
