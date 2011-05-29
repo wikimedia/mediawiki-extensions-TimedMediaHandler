@@ -15,6 +15,7 @@
 }
 .PopUpMediaTransform { 
 	position : relative;
+	display: inline-block;
 }
 
 li.gallerybox div.thumb div.PopUpMediaTransform {
