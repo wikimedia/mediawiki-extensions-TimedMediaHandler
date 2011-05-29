@@ -184,7 +184,7 @@ mw.IFramePlayerApiServer.prototype = {
 	},
 	
 	/**
-	 * Check an origin domain against the configuration value: 'EmbedPLayer.IFramePlayer.DomainWhiteList'
+	 * Check an origin domain against the configuration value: 'EmbedPlayer.IFramePlayer.DomainWhiteList'
 	 *  Returns true if the origin domain is allowed to communicate with the embedPlayer
 	 *  otherwise returns false. 
 	 * 
@@ -192,9 +192,9 @@ mw.IFramePlayerApiServer.prototype = {
 	 * 		The origin domain to be checked
 	 */
 	'eventDomainCheck': function( origin ){
-		if( mw.getConfig( 'EmbedPLayer.IFramePlayer.DomainWhiteList' ) ){
+		if( mw.getConfig( 'EmbedPlayer.IFramePlayer.DomainWhiteList' ) ){
 			// NOTE this is very similar to the apiProxy function: 
-			var domainWhiteList =  mw.getConfig('EmbedPLayer.IFramePlayer.DomainWhiteList');
+			var domainWhiteList =  mw.getConfig('EmbedPlayer.IFramePlayer.DomainWhiteList');
 			if( domainWhiteList == '*' ){
 				// The default very permissive state
 				return true;

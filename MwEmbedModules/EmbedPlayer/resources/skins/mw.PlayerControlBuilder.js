@@ -1009,7 +1009,7 @@ mw.PlayerControlBuilder.prototype = {
 	doVolumeBinding: function( ) {
 		var embedPlayer = this.embedPlayer;
 		var _this = this;
-		$volumeSlider = embedPlayer.$interface.find( '.volume-slider' );
+		var $volumeSlider = embedPlayer.$interface.find( '.volume-slider' );
 		if( $volumeSlider.length == 0 ){
 			return false;
 		}			
@@ -1841,7 +1841,7 @@ mw.PlayerControlBuilder.prototype = {
 			'w' : 36,
 			'o' : function( ctrlObj ) {
 				mw.log( 'PlayerControlBuilder::Set up volume control for: ' + ctrlObj.embedPlayer.id );
-				$volumeOut = $( '<span />' );
+				var $volumeOut = $( '<span />' );
 				if ( ctrlObj.volume_layout == 'horizontal' ) {
 					$volumeOut.append(
 						$( '<div />' )

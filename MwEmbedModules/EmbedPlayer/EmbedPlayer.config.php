@@ -98,14 +98,14 @@
 			'EmbedPlayer.MonitorRate' => 250,
 	
 			// If the embedPlayer should accept arguments passed in from iframe postMessages calls
-			'EmbedPlayer.EnalbeIFramePlayerServer' => false,
+			'EmbedPlayer.EnableIFramePlayerServer' => false,
 			
 			// If embedPlayer should support server side temporal urls for seeking options are 
 			// flash|always|none default is support for flash only.
 			'EmbedPlayer.EnableURLTimeEncoding' => 'flash',
 			
 			// The domains which can read and send events to the video player
-			'EmbedPLayer.IFramePlayer.DomainWhiteList' => '*',
+			'EmbedPlayer.IFramePlayer.DomainWhiteList' => '*',
 			
 			// If the iframe should send and receive javascript events across domains via postMessage 
 			'EmbedPlayer.EnableIframeApi' => true,

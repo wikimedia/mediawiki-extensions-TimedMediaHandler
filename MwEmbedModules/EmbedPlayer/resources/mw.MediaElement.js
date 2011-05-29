@@ -167,7 +167,8 @@ mw.MediaElement.prototype = {
 		var _this = this;
 		// Select the default source
 		var playableSources = this.getPlayableSources();
-		var flash_flag = ogg_flag = false;
+		var flash_flag, oggflag;
+		flash_flag = ogg_flag = false;
 
 		// Check if there are any playableSources
 		if( playableSources.length == 0 ){

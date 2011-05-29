@@ -217,7 +217,7 @@
 			return {
 				'w': 28,
 				'o': function( ctrlObj ) {
-					$textButton = $( '<div />' )
+					var $textButton = $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-timed_text' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton timed-text" )
 						.append(
@@ -531,7 +531,7 @@
 			}
 		},
 		/**
-		 * Enalbe a source and update the currentLangKey 
+		 * Enable a source and update the currentLangKey 
 		 * @param source
 		 * @return
 		 */
