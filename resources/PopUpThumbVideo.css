@@ -16,3 +16,7 @@
 .PopUpMediaTransform { 
 	position : relative;
 }
+
+li.gallerybox div.thumb div.PopUpMediaTransform {
+        margin: 0 auto;
+}
