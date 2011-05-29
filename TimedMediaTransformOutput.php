@@ -90,7 +90,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	
 	function getImagePopUp(){
 		return Xml::tags( 'div' , array(
-				'id' => "ogg_thumbplayer_" . TimedMediaTransformOutput::$serial++,
+				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . intval( $this->width ) . "px;height:" . 
 							intval( $this->height ) . "px",
