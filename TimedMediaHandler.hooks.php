@@ -13,7 +13,11 @@ class TimedMediaHandlerHooks {
 		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$tmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules, $wgTimedTextNS;
-
+		
+		// Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
+		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
+		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
+		
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
@@ -28,6 +32,7 @@ class TimedMediaHandlerHooks {
 		$wgJobClasses+= array(
 			'webVideoTranscode' => 'WebVideoTranscodeJob'
 		);
+		
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
