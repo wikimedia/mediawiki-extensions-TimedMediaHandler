@@ -76,8 +76,7 @@
 			$( playerElement )
 				.getAbsoluteOverlaySpinner()
 				.attr('id', 'loadingSpinner_' + $( playerElement ).attr('id') )
-				.addClass( 'playerLoadingSpinner' );
-			
+						
 			// Add core "skin/interface" loader			
 			var skinString = $( playerElement ).attr( 'class' );
 			if( ! skinString 
