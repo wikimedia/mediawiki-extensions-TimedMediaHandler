@@ -50,6 +50,10 @@ class TimedMediaHandlerHooks {
 			) ),
 			'embedPlayerIframeStyle'=> array_merge( $baseExtensionResource, array(
 				'styles' => 'resources/embedPlayerIframe.css',
+			) ),
+			'ext.tmh.transcodetable' => array_merge($baseExtensionResource, array(
+				'scripts' => 'resources/ext.tmh.transcodetable.js',
+				'styles' => 'resources/transcodeTable.css'
 			) )
 		);
 
@@ -88,8 +92,11 @@ class TimedMediaHandlerHooks {
 		$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
 		$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
 
-		// if on a timed text page, display timed text page:
+		// Check for timed text page:
 		$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
+		
+		// Add transcode status to video asset pages:
+		$wgHooks[ 'ImagePageAfterImageLinks' ][] = 'TimedMediaHandlerHooks::checkForTranscodeStatus';
 		
 		return true;
 	}
@@ -100,7 +107,22 @@ class TimedMediaHandlerHooks {
 		}
 		return true;			
 	}
-	
+	public static function checkForTranscodeStatus( $article, &$html ){
+		// load the file: 
+		$file = wfFindFile( $article->getTitle() );
+		// cant find file
+		if( !$file ){
+			return true;
+		}
+		
+		// get mediaType
+		$mediaType = $file->getHandler()->getMetadataType( $image = '' ); 
+		// if ogg or webm format and not audio show transcode page: 
+		if( ( $mediaType == 'webm' || $mediaType == 'ogg' ) && ! $file->getHandler()->isAudio( $file ) ){
+			$html = TranscodeStatusTable::getHTML( $file );
+		}
+		return true;
+	}
 	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
 		// Check if the article is a file and remove transcode jobs:
 		if( $article->getTitle()->getNamespace() == NS_FILE ) {

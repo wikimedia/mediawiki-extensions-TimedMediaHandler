@@ -8,7 +8,7 @@
 			var _parent = this;					
 			$( this ).find('a').click( function(){
 				var $video = $( unescape( $(_parent).attr('data-videopayload') ) );
-				mw.addDialog( {
+				mw.addDialog({
 					'width' : 'auto',
 					'height' : 'auto',
 					'title' : $video.attr('data-mwtitle'),
@@ -21,7 +21,7 @@
 						}
 						return true;
 					}
-				} )
+				})
 				.css('overflow', 'hidden')
 				.find('video,audio').embedPlayer();
 				// don't follow file link

@@ -28,6 +28,12 @@ $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
 
 /*** end MwEmbed module configuration: ******************************/
 
+// Add the rest transcode right:
+$wgAvailableRights[] = 'resetTranscode'; 
+
+// Which users can restart failed or expired transcode jobs
+$wgGroupPermissions['sysop']['resetTranscode'] = true;
+
 // The minimum size for an embed video player:
 $wgMinimumVideoPlayerSize = 200;
 
@@ -96,6 +102,9 @@ $wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler
 $wgAutoloadClasses['TimedMediaTransformOutput'] = "$timedMediaDir/TimedMediaTransformOutput.php";
 $wgAutoloadClasses['TimedMediaIframeOutput'] = "$timedMediaDir/TimedMediaIframeOutput.php";
 $wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.php";
+// Transcode Page
+$wgAutoloadClasses['TranscodeStatusTable'] = "$timedMediaDir/TranscodeStatusTable.php";
+
 // Testing: 
 $wgAutoloadClasses['ApiTestCaseVideoUpload'] = "$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
 

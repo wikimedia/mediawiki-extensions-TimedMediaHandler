@@ -33,6 +33,30 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 
+	// Transcode status table: 
+	
+	'timedmedia-status-header' 		=> 'Transcode status',
+	'timedmedia-update-status'		=> 'Update transcode status',
+	'timedmedia-status'				=> 'status',
+	'timedmedia-status-unknown'		=> 'unknown status',
+	'timedmedia-transcodeinfo' 		=> 'Transcode derivative description',
+	'timedmedia-actions'			=> 'actions',
+	'timedmedia-direct-link'		=> 'Download derivative',
+	'timedmedia-not-ready'			=> 'Not ready',
+	'timedmedia-completed-on'		=> 'Completed transcode $1',
+	'timedmedia-error-on' 			=> 'Error in transcode on $1. ',
+	'timedmedia-started-transcode'	=> 'Transcode started $1 ago. $2',
+	'timedmedia-percent-done'		=> 'About $1% done',
+	'timedmedia-in-job-queue'		=> 'Added to Job queue $1 ago',
+	'timedmedia-unknown-target-size'=> 'Unknown target size, $1 encoded',
+	'timedmedia-days' 				=> '{{PLURAL:$1|day|$1 days}}',
+	'timedmedia-hours'				=> '{{PLURAL:$1|hour|$1 hours}}',
+	'timedmedia-minutes'			=> '{{PLURAL:$1|minute|$1 minutes}}',
+	'timedmedia-seconds'			=> '{{PLURAL:$1|second|$1 seconds}}',
+	'timedmedia-and'				=> 'and $1',
+	'timedmedia-days-hours-min-sec-time' => '$1, $2, $3 $4',
+	'timedmedia-show-error'			=> 'Show error',
+	
 	// Original uploaded asset
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',

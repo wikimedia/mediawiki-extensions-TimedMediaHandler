@@ -78,10 +78,10 @@ class WebMHandler extends TimedMediaHandler {
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}		
-		// id3 gives 'V_VP8' for what we call VP8
 		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'vorbis' ){
 			$streamTypes[] =  'Vorbis';
 		}
+		// id3 gives 'V_VP8' for what we call VP8
 		if( $metadata['video']['dataformat'] == 'V_VP8' ){
 			$streamTypes[] =  'VP8';
 		}	

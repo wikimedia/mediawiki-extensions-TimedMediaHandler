@@ -40,7 +40,7 @@ class WebVideoTranscode {
 	const ENC_WEBM_HQ_VBR = '720_VBR.webm';
 	
 	// Static cache of transcode state per instantiation 
-	public static $transcodeStateCache = null;
+	public static $transcodeState = array() ;
 	
 	/**
 	* Encoding parameters are set via firefogg encode api
@@ -140,6 +140,7 @@ class WebVideoTranscode {
 			$file->getName() . '.' .
 			$transcodeKey ;
 	}
+	
 	/**
 	 * Get the target encode path for a video encode
 	 * 
@@ -150,11 +151,12 @@ class WebVideoTranscode {
 	 */
 	static public function getTargetEncodePath( &$file, $transcodeKey ){
 		// TODO probably should use some other temporary non-web accessible location for 
-		// in-progress encodes.
+		// in-progress encodes, its nice having it publicly accessible for debugging though
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
 		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
 		return "{$filePath}.queue.{$ext}";
 	}
+	
 	/**
 	 * Get the max size of the web stream ( constant bitrate ) 
 	 */
@@ -167,6 +169,22 @@ class WebVideoTranscode {
 			}
 		}
 		return $maxSize;
+	}
+	/**
+	 * Give a rough estimate on file size 
+	 * Note this is not always accurate.. especially with variable bitrate codecs ;)
+	 */ 
+	static public function getProjectedFileSize( $file, $transcodeKey){
+		$settings = self::$derivativeSettings[$transcodeKey];
+		if( $settings[ 'videoBitrate' ] && $settings['audioBitrate'] ){
+			return $file->getLength * 8 * (
+				self::$derivativeSettings[$transcodeKey]['videoBitrate']
+				+
+				self::$derivativeSettings[$transcodeKey]['audioBitrate']
+			);
+		}
+		// Else just return the size of the source video ( we have no idea how large the actual derivative size will be )
+		return $file->getLength * $file->getHandler()->getBitrate( $file ) * 8;  
 	}
 	
 	/** 
@@ -321,25 +339,26 @@ class WebVideoTranscode {
 	 */
 	public static function isTranscodeReady( $fileName, $transcodeKey ){
 		
-		// Check if we need to populate the transcodeState cache: 
-		if( !self::$transcodeStateCache || !isset( self::$transcodeStateCache[ $fileName ] ) ) {
-			self::getTranscodeStateCache( $fileName );
-		}
+		// Check if we need to populate the transcodeState cache:
+		$transcodeState =  self::getTranscodeState( $fileName );
+		
 		// If no state is found the cache for this file is false: 
-		if( !isset( self::$transcodeStateCache[ $fileName ][ $transcodeKey ]) 
-				||
-			self::$transcodeStateCache[ $fileName ][ $transcodeKey ] === false )
-		{
+		if( !isset( $transcodeState[ $transcodeKey ] ) ) {
 			return false;
 		}
-		// Else return the state:
-		return self::$transcodeStateCache[$fileName][$transcodeKey]['ready'];
+		// Else return boolean ready state ( if not null, then ready ):
+		return !is_null( $transcodeState[ $transcodeKey ]['time_success'] );
 	}
 	/**
-	 * Clear the transcode state cache: 
+	 * Clear the transcode state cache:
+	 * @param String $fileName Optional fileName to clear transcode cache for
 	 */
-	public static function clearTranscodeCache(){
-		self::$transcodeStateCache = null;
+	public static function clearTranscodeCache( $fileName = null){
+		if( $fileName ){
+			self::$transcodeState[ $fileName ] = array();
+		} else {
+			self::$transcodeState = array();
+		}
 	}
 
 	/**
@@ -348,24 +367,29 @@ class WebVideoTranscode {
 	 * 
 	 * @param string $fileName key
 	 */
-	public static function getTranscodeStateCache( $fileName ){
-		wfProfileIn( __METHOD__ );
-		$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
-				array( 'transcode_key', 'transcode_time_success','transcode_time_addjob','transcode_final_bitrate' ) , 
-				array( 'transcode_image_name' => $fileName ),
-				__METHOD__, 
-				array( 'LIMIT' => 100 )
-		);			
-		// Populate the per transcode state cache   
-		foreach ( $res as $row ) {
-			self::$transcodeStateCache[$fileName][ $row->transcode_key ] = array(
-				'ready' => !is_null( $row->transcode_time_success ),
-				'bitrate' => $row->transcode_final_bitrate,
-				'addjob' => $row->transcode_time_addjob,		
+	public static function getTranscodeState( $fileName ){
+		if( ! isset( self::$transcodeState[$fileName] ) ){
+			wfProfileIn( __METHOD__ );
+			$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
+					'*', 
+					array( 'transcode_image_name' => $fileName ),
+					__METHOD__, 
+					array( 'LIMIT' => 100 )
 			);
-		}		
-		wfProfileOut( __METHOD__ );
+			// Populate the per transcode state cache   
+			foreach ( $res as $row ) {
+				// strip the out the "transcode_" from keys
+				$trascodeState = array();
+				foreach( $row as $k => $v ){
+					$trascodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
+				}			
+				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $trascodeState;
+			}				
+			wfProfileOut( __METHOD__ );
+		}
+		return self::$transcodeState[ $fileName ];
 	}
+	
 	/**
 	 * Remove any transcode jobs associated with a given $fileName
 	 * 
@@ -390,6 +414,8 @@ class WebVideoTranscode {
 		 	array( 'transcode_image_name' => $fileName ),
 		 	__METHOD__ 
 		);
+		// Remove from local cache:
+		self::clearTranscodeCache( $fileName );
 	}
 	
 	/**
@@ -474,7 +500,7 @@ class WebVideoTranscode {
 				"{$dataPrefix}width" => $width,
 				"{$dataPrefix}height" => $height,
 				// a "ready" transcode should have a bitrate:  
-				"{$dataPrefix}bandwidth" => self::$transcodeStateCache[$fileName][ $transcodeKey ]['bitrate'],
+				"{$dataPrefix}bandwidth" => self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate'],
 				"{$dataPrefix}framerate" => $framerate,
 			);
 	}
@@ -489,25 +515,20 @@ class WebVideoTranscode {
 		$fileName = $file->getTitle()->getDbKey();
 				
 		// Check if we need to update the transcode state:
-		if( !self::$transcodeStateCache || !isset( self::$transcodeStateCache[ $fileName ] ) ) {
-			self::getTranscodeStateCache( $fileName );
-		}
+		$transcodeState = self::getTranscodeState( $fileName );
 		
 		// Check if the job has been added: 
-		if( ! isset( self::$transcodeStateCache[$fileName][$transcodeKey] ) 
-				||
-			is_null( self::$transcodeStateCache[$fileName][$transcodeKey]['addjob'] ) )
-		{
-			// add to job queue and update the db
+		if( is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
+			// Add to job queue and update the db
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
-			) );					
+			) );
 			$jobId = $job->insert();
 			if( $jobId ){				
 				$db = wfGetDB( DB_MASTER );
 				// update the transcode state: 
-				if( ! isset( self::$transcodeStateCache[$fileName][$transcodeKey] ) ){
+				if( ! isset( $transcodeState[$transcodeKey] ) ){
 					// insert the transcode row with jobadd time					
 					$db->insert(
 						'transcode', 
@@ -532,8 +553,8 @@ class WebVideoTranscode {
 						__METHOD__
 					);
 				}
-				// Update the state cache   
-				self::getTranscodeStateCache( $fileName );
+				// Clear the state cache ( now that we have updated the page )   
+				self::clearTranscodeCache( $fileName );
 			}
 			// no jobId ? error out in some way? 
 		}
@@ -578,4 +599,3 @@ class WebVideoTranscode {
 		return ( $targetMaxSize > $largerSize );
 	}
 }
-
