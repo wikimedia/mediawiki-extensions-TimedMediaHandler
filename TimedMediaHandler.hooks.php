@@ -108,13 +108,21 @@ class TimedMediaHandlerHooks {
 		return true;			
 	}
 	public static function checkForTranscodeStatus( $article, &$html ){
+		global $wgEnableTranscode;
+		// don't show the transcode table if transcode is disabled 
+		if( $wgEnableTranscode === false ){
+			return true;
+		}
 		// load the file: 
 		$file = wfFindFile( $article->getTitle() );
 		// cant find file
 		if( !$file ){
 			return true;
 		}
-		
+		// We don't show transcode status for remote files: 
+		if( !$file->isLocal() ){
+			return true;
+		}
 		// get mediaType
 		$mediaType = $file->getHandler()->getMetadataType( $image = '' ); 
 		// if ogg or webm format and not audio show transcode page: 

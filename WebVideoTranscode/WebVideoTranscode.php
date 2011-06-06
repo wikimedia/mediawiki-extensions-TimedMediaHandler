@@ -268,19 +268,21 @@ class WebVideoTranscode {
 	 * @returns an associative array of sources suitable for <source> tag output
 	 */
 	static public function getLocalSources( &$file , $options=array() ){
-		global $wgEnabledTranscodeSet, $wgLang;
+		global $wgEnabledTranscodeSet, $wgEnableTranscode, $wgLang;
 		$sources = array();
 		
 		// Add the original file: 
-		$source = self::getPrimarySourceAttributes( $file, $options );
-				
-		// Just directly return audio sources ( No transcoding for audio for now ) 
-		if( $file->getHandler()->isAudio( $file ) ){			
-			return array( $source );
+		$sources[] = self::getPrimarySourceAttributes( $file, $options );
+		
+		// If $wgEnableTranscode is false don't look for or add other local sources:
+		if( $wgEnableTranscode === false ){
+			return $sources;
 		}
 		
-		// Add the source to the sources array
-		$sources[] = $source;
+		// Just directly return audio sources ( No transcoding for audio for now ) 
+		if( $file->getHandler()->isAudio( $file ) ){			
+			return $sources;
+		}
 		
 		// Setup local variables 
 		$fileName = $file->getName();
@@ -370,6 +372,8 @@ class WebVideoTranscode {
 	public static function getTranscodeState( $fileName ){
 		if( ! isset( self::$transcodeState[$fileName] ) ){
 			wfProfileIn( __METHOD__ );
+			// initialize the transcode state array
+			self::$transcodeState[$fileName] = array();
 			$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
 					'*', 
 					array( 'transcode_image_name' => $fileName ),
@@ -518,7 +522,7 @@ class WebVideoTranscode {
 		$transcodeState = self::getTranscodeState( $fileName );
 		
 		// Check if the job has been added: 
-		if( is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
+		if( isset( $transcodeState[ $transcodeKey ] ) &&  is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
 			// Add to job queue and update the db
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',

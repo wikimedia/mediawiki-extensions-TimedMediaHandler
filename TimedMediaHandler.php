@@ -47,6 +47,11 @@ $wgVideoPlayerSkin = 'kskin';
 // Support iframe for remote embedding 
 $wgEnableIframeEmbed = true;
 
+// If transcoding is enabled for this wiki ( if disabled, no transcode jobs are added and no 
+// transcode status is displayed. Note if remote embeding an asset we will still check if 
+// the remote repo has transcoding enabled and associated flavors for that media embed. 
+$wgEnableTranscode = true;
+
 // The location of ffmpeg2theora ( transcoding )
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
