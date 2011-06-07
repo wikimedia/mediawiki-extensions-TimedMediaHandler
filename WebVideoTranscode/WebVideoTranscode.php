@@ -357,7 +357,7 @@ class WebVideoTranscode {
 	 */
 	public static function clearTranscodeCache( $fileName = null){
 		if( $fileName ){
-			self::$transcodeState[ $fileName ] = array();
+			unset( self::$transcodeState[ $fileName ] );
 		} else {
 			self::$transcodeState = array();
 		}
@@ -373,7 +373,7 @@ class WebVideoTranscode {
 		if( ! isset( self::$transcodeState[$fileName] ) ){
 			wfProfileIn( __METHOD__ );
 			// initialize the transcode state array
-			self::$transcodeState[$fileName] = array();
+			self::$transcodeState[ $fileName ] = array();
 			$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
 					'*', 
 					array( 'transcode_image_name' => $fileName ),
