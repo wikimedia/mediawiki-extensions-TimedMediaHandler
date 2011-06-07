@@ -118,6 +118,8 @@ Parameters are:
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
+	'timedmedia-error-on' => 'Parameters:
+* $1 is a timestamp.',
 	'timedmedia-source-file' => 'The source file 
 * $1 file type webm or ogg
 {{Identical|Source}}',
@@ -1821,7 +1823,7 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-direct-link' => 'Afgeleid werk downloaden',
 	'timedmedia-not-ready' => 'Niet klaar',
 	'timedmedia-completed-on' => 'Conversie voltooid op $1',
-	'timedmedia-error-on' => 'Fout in de conversie op $1.',
+	'timedmedia-error-on' => 'Fout in de conversie om $1.',
 	'timedmedia-started-transcode' => 'De conversie is $1 geleden begonnen. $2',
 	'timedmedia-percent-done' => 'Ongeveer $1% afgerond',
 	'timedmedia-in-job-queue' => '$1 geleden toegevoegd aan de Job queue',
