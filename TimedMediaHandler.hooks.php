@@ -12,7 +12,7 @@ class TimedMediaHandlerHooks {
 	static function register(){
 		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
-		$tmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules, $wgTimedTextNS;
+		$wgTmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules, $wgTimedTextNS;
 		
 		// Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
@@ -66,7 +66,7 @@ class TimedMediaHandlerHooks {
 		
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
-		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $tmhFileExtensions );
+		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $wgTmhFileExtensions );
 
 		// Also add the .log file ( used in two pass encoding )
 		// ( probably should move in-progress encodes out of web accessible directory )

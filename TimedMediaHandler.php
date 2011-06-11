@@ -97,9 +97,9 @@ $wgEnabledTranscodeSet = array(
 
 // List of extensions handled by Timed Media Handler since its referenced in a few places. 
 // you should not modify this variable 
-$tmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
+$wgTmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
 
-$wgFileExtensions = array_merge($wgFileExtensions, $tmhFileExtensions);
+$wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
 // Timed Media Handler AutoLoad Classes:  
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
