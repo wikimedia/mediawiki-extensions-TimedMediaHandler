@@ -35,8 +35,7 @@ class ApiTranscodeReset extends ApiBase {
 		if( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ){
 			$this->dieUsage( array( 'invalidtranscodetitle', $params['title'] ) );
 		}
-		$file = wfFindFile( $titleObj );
-		WebVideoTranscode::removeTranscodeJobs( $file, isset( $params['transcodekey'] )? $params['transcodekey']: false );
+		WebVideoTranscode::removeTranscodes( $titleObj, isset( $params['transcodekey'] )? $params['transcodekey']: false );
 		
 		$this->getResult()->addValue(null, 'success', 'removed transcode');
 	}

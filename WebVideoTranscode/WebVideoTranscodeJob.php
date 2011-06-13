@@ -114,8 +114,8 @@ class WebVideoTranscodeJob extends Job {
 		);
 		
 		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
-		if( $jobStartTimeCache != $dbStartTime ){
-			wfDebug('Possible Error, transcode task restarted, removed, or completed while transcode was in progress');
+		if(  $db->timestamp( $jobStartTimeCache ) != $db->timestamp( $dbStartTime ) ){
+			$this->output('Possible Error, transcode task restarted, removed, or completed while transcode was in progress');
 			// if an error; just error out, we can't remove temp files or update states, because the new job may be doing stuff.
 			if( $status !== true ){
 				return false;	
@@ -145,7 +145,7 @@ class WebVideoTranscodeJob extends Job {
 				__METHOD__,
 				array( 'LIMIT' => 1 )
 			);			
-			WebVideoTranscode::invalidatePagesWithAsset( $this->title );
+			WebVideoTranscode::invalidatePagesWithFile( $this->title );
 		} else {
 			// Update the transcode table with failure time and error 
 			$dbw->update( 
@@ -161,7 +161,9 @@ class WebVideoTranscodeJob extends Job {
 				__METHOD__,
 				array( 'LIMIT' => 1 )
 			);
-			// no need to invalidate cache. Because all pages remain valid ( no $transcodeKey derivative ) 
+			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative ) 
+			// just clear the file page ( so that the transcode table shows the error )
+			$this->title->invalidateCache();
 		}
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around ) 
 		webVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
@@ -251,7 +253,7 @@ class WebVideoTranscodeJob extends Job {
 		wfProfileOut( 'ffmpeg_encode' );
 
 		if( $retval ){
-			return $shellOutput;
+			return $cmd . "\n\n" . $shellOutput;
 		}
 		return true;
 	}
@@ -381,7 +383,7 @@ class WebVideoTranscodeJob extends Job {
 		wfProfileOut( 'ffmpeg2theora_encode' );
 
 		if( $retval ){
-			return $shellOutput;
+			return $cmd . "\n\n" . $shellOutput;
 		}
 		return true;
 	}

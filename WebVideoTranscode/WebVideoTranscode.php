@@ -395,15 +395,15 @@ class WebVideoTranscode {
 	}
 	
 	/**
-	 * Remove any transcode jobs associated with a given $fileName
+	 * Remove any transcode files and db states associated with a given $title
 	 * 
 	 * also remove the transcode files: 
-	 * @param $file File Object
+	 * @param $titleObj Title Object
 	 * @param $transcodeKey String Optional transcode key to remove only this key
 	 */
-	public static function removeTranscodeJobs( &$file, $transcodeKey = false ){
-		$titleObj = $file->getTitle();
-		print " \n\n " . $titleObj->getDBKey() . "\n\n";
+	public static function removeTranscodes( &$titleObj, $transcodeKey = false ){
+		$file = wfFindFile($titleObj );
+		
 		// if transcode key is non-false, non-null:
 		if( $transcodeKey ){
 			// only remove the requested $transcodeKey
@@ -441,13 +441,13 @@ class WebVideoTranscode {
 		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
 		
 		// Purge the cache for pages that include this video: 
-		self::invalidatePagesWithAsset( $titleObj );
+		self::invalidatePagesWithFile( $titleObj );
 
 		// Remove from local WebVideoTranscode cache:
 		self::clearTranscodeCache(  $titleObj->getDBKey()  );
 	}
 	
-	public static function invalidatePagesWithAsset( &$titleObj ){
+	public static function invalidatePagesWithFile( &$titleObj ){
 		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBKey() );
 		// Purge the main image page: 
 		$titleObj->invalidateCache();

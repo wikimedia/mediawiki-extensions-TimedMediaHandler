@@ -63,6 +63,12 @@ class TimedMediaHandlerHooks {
 		// When an upload completes ( check clear any existing transcodes )
 		$wgHooks['UploadComplete'][] = 'TimedMediaHandlerHooks::checkUploadComplete';
 
+		// When an image page is moved: 
+		$wgHooks['TitleMoveComplete'][] = 'TimedMediaHandlerHooks::checkTitleMoveComplete';
+
+		// When image page is deleted so that we remove transcode settings / files. 
+		$wgHooks['ArticleDeleteComplete'][] = 'TimedMediaHandlerHooks::checkArticleDeleteComplete';
+		
 		// Add parser hook
 		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 		
@@ -70,8 +76,6 @@ class TimedMediaHandlerHooks {
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 
-		// Add a hook for article deletion so that we remove transcode settings / files. 
-		$wgHooks['ArticleDeleteComplete'][] = 'TimedMediaHandlerHooks::checkArticleDeleteComplete';
 		
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
@@ -159,17 +163,35 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 	public static function checkUploadComplete( &$image ){
-		if( self::isTranscodableTitle( $image->getTitle() ) ){
-			// clear transcode data:
+		$title = $image->getTitle();
+		// Check that the file is a transcodable asset:
+		if( self::isTranscodableTitle( $title ) ){
+			// Remove all the transcode files and db states for this asset ( will be re-added the first time the asset is displayed )
+			WebVideoTranscode::removeTranscodes( $title );
+		}
+		return true;
+	}
+	/**
+	 * Handle moved titles
+	 * 
+	 * For now we just remove all the derivatives for the oldTitle. In the future we could
+	 * look at moving the files, but right now thumbs are not moved, so I don't want to be 
+	 * inconsistent.
+	 */
+	public static function checkTitleMoveComplete( &$title, &$newTitle, &$user, $oldid, $newid ){
+		if( self::isTranscodableTitle( $title ) ){
+			// Remove all the transcode files and db states for this asset 
+			// ( will be re-added the first time the asset is displayed with its new title )
+			WebVideoTranscode::removeTranscodes( $title );
 		}
 		return true;
 	}
 	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
-		// Check if the article is a file and remove transcode jobs:
+		// Check if the article is a file and remove transcode files:
 		if( $article->getTitle()->getNamespace() == NS_FILE ) {
 			$file = wfFindFile( $article->getTitle() );
 			if( self::isTranscodableFile( $file ) ){
-				WebVideoTranscode::removeTranscodeJobs( $file );
+				WebVideoTranscode::removeTranscodes( $file );
 			}
 		} 
 		return true;
