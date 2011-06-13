@@ -144,8 +144,8 @@ class WebVideoTranscode {
 	/**
 	 * Get the target encode path for a video encode
 	 * 
-	 * @param File $file
-	 * @param String $transcodeKey
+	 * @param $file File
+	 * @param $transcodeKey String 
 	 * 
 	 * @returns the local target encode path
 	 */
@@ -154,7 +154,7 @@ class WebVideoTranscode {
 		// in-progress encodes, its nice having it publicly accessible for debugging though
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
 		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
-		return "{$filePath}.queue.{$ext}";
+		return "{$filePath}.tmp.{$ext}";
 	}
 	
 	/**
@@ -201,7 +201,7 @@ class WebVideoTranscode {
 	/**
 	 * Grabs sources from the remote repo via ApiQueryVideoInfo.php entry point. 
 	 * 
-	 * Because this works on both TimedMediaHandler commons and no TimedMediaHandler commons
+	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
 	 */
 	static public function getRemoteSources(&$file , $options = array() ){
 		global $wgMemc;
@@ -398,28 +398,75 @@ class WebVideoTranscode {
 	 * Remove any transcode jobs associated with a given $fileName
 	 * 
 	 * also remove the transcode files: 
+	 * @param $file File Object
+	 * @param $transcodeKey String Optional transcode key to remove only this key
 	 */
-	public static function removeTranscodeJobs( &$file ){
-		$fileName = $file->getTitle()->getDbKey();
+	public static function removeTranscodeJobs( &$file, $transcodeKey = false ){
+		$titleObj = $file->getTitle();
+		print " \n\n " . $titleObj->getDBKey() . "\n\n";
+		// if transcode key is non-false, non-null:
+		if( $transcodeKey ){
+			// only remove the requested $transcodeKey
+			$removeKeys = array( $transcodeKey );
+		} else {
+			// Remove any existing files ( regardless of their state )
+			$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
+				array( 'transcode_key' ),
+				array( 'transcode_image_name' => $titleObj->getDBKey() )
+			);
+			$removeKeys = array();
+			foreach( $res as $transcodeRow ){
+				$removeKeys[] = $transcodeRow->transcode_key;
+			} 
+		}
 		
-		$res = wfGetDB( DB_SLAVE )->select( 'transcode', 
-			array( 'transcode_key' ),
-			array( 'transcode_image_name' => $fileName )
-		);
-		// remove the file
-		foreach( $res as $transcodeRow ){
-			$filePath = self::getDerivativeFilePath($file, $transcodeRow->transcode_key );
-			if( ! @unlink( $filePath ) ){
-				wfDebug( "Could not delete file $filePath\n" );
+		// Remove files by key:
+		foreach( $removeKeys as $tKey){
+			$filePath = self::getDerivativeFilePath($file,  $tKey);
+			if( is_file( $filePath ) ){
+				if( ! @unlink( $filePath ) ){
+					wfDebug( "Could not delete file $filePath\n" );
+				}
 			}
-		} 
+		}
+				
+		// Build the sql query:
+		$dbw = wfGetDB( DB_MASTER );
+		$deleteWhere = array( 'transcode_image_name ='. $dbw->addQuotes( $titleObj->getDBkey() ) );
+		// Check if we are removing a specific transcode key
+		if( $transcodeKey !== false ){
+			$deleteWhere[] = 'transcode_key =' . $dbw->addQuotes( $transcodeKey );
+		}
 		// Remove the db entries
-		wfGetDB( DB_MASTER )->delete( 'transcode', 
-		 	array( 'transcode_image_name' => $fileName ),
-		 	__METHOD__ 
+		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
+		
+		// Purge the cache for pages that include this video: 
+		self::invalidatePagesWithAsset( $titleObj );
+
+		// Remove from local WebVideoTranscode cache:
+		self::clearTranscodeCache(  $titleObj->getDBKey()  );
+	}
+	
+	public static function invalidatePagesWithAsset( &$titleObj ){
+		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBKey() );
+		// Purge the main image page: 
+		$titleObj->invalidateCache();
+		
+		// TODO if the video is used in over 500 pages add to 'job queue'
+		// TODO interwiki invalidation ?
+		$limit = 500;		
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			array( 'imagelinks', 'page' ),
+			array( 'page_namespace', 'page_title' ),
+			array( 'il_to' => $titleObj->getDBkey(), 'il_from = page_id' ),
+			__METHOD__,
+			array( 'LIMIT' => $limit + 1 )
 		);
-		// Remove from local cache:
-		self::clearTranscodeCache( $fileName );
+		foreach ( $res as $page ) {
+			$title = Title::makeTitle( $page->page_namespace, $page->page_title );
+			$title->invalidateCache();
+		}
 	}
 	
 	/**
@@ -429,7 +476,7 @@ class WebVideoTranscode {
 	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){
 		global $wgLang;
 		$fileName = $file->getTitle()->getDbKey();
-		// Check if the transcode is ready: 			
+		// Check if the transcode is ready:
 		if( self::isTranscodeReady( $fileName, $transcodeKey ) ){
 			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
 		} else {
@@ -510,8 +557,8 @@ class WebVideoTranscode {
 	}
 	/**
 	 * Update the job queue if the file is not already in the job queue:
-	 * @param object File object 
-	 * @param 
+	 * @param $file File object 
+	 * @param $transcodeKey String transcode key
 	 */	
 	public static function updateJobQueue( &$file, $transcodeKey ){
 		wfProfileIn( __METHOD__ );
@@ -520,9 +567,8 @@ class WebVideoTranscode {
 				
 		// Check if we need to update the transcode state:
 		$transcodeState = self::getTranscodeState( $fileName );
-		
 		// Check if the job has been added: 
-		if( isset( $transcodeState[ $transcodeKey ] ) &&  is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
+		if( !isset( $transcodeState[ $transcodeKey ] ) || is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
 			// Add to job queue and update the db
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',

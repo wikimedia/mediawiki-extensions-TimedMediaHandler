@@ -24,7 +24,7 @@ class TranscodeStatusTable {
 			. '<th>' . wfMsgHtml( 'timedmedia-transcodeinfo' ) . '</th>'
 			. '<th>'.wfMsgHtml( 'timedmedia-direct-link' ) .'</th>';
 			
-		if( array_search( 'resetTranscode', $wgUser->getRights() )!== false ){
+		if( $wgUser->isAllowed( 'transcode-reset' ) ){
 			$o.= '<th>' . wfMsgHtml( 'timedmedia-actions' ) . '</th>';
 		}
 			
@@ -57,9 +57,9 @@ class TranscodeStatusTable {
 			$o.='</td>';
 			
 			// Check if we should include actions: 
-			if( array_search( 'resetTranscode', $wgUser->getRights() )!== false ){
+			if( $wgUser->isAllowed( 'transcode-reset' ) ){
 				// include reset transcode action buttons
-				
+				$o.='<td class="transcodereset"><a href="#" data-transcodekey="' . htmlspecialchars( $transcodeKey ). '">' . wfMsg('timedmedia-reset') . '</a></td>';
 			}
 			$o.='</tr>';
 		}
@@ -90,13 +90,14 @@ class TranscodeStatusTable {
 			}
 			return wfMsgHtml('timedmedia-error-on', $state['time_error'] ) . $showErrorLink;
 		}		
+		$db = wfGetDB( DB_SLAVE );
 		// Check for started encoding
 		if( !is_null( $state['time_startwork'] ) ){
-			$timePassed = wfTimestamp() - wfTimestamp( TS_UNIX, strtotime( $state['time_startwork'] ) );
+			$timePassed = wfTimestampNow() - $db->timestamp( $state['time_startwork'] );
 
 			// Get the rough estimate of time done: ( this is not very costly considering everything else
 			// that happens in an action=purge video page request ) 
-			$filePath = WebVideoTranscode::getTargetEncodePath( $file, $state['key'] );
+			/*$filePath = WebVideoTranscode::getTargetEncodePath( $file, $state['key'] );
 			if( is_file( $filePath ) ){
 				$targetSize = WebVideoTranscode::getProjectedFileSize( $file, $state['key'] );
 				if( $targetSize === false ){
@@ -104,12 +105,14 @@ class TranscodeStatusTable {
 				} else {
 					$doneMsg = wfMsgHtml('timedmedia-percent-done', round( filesize( $filePath ) / $targetSize, 2 ) );
 				}
-			}					
+			}	*/
+			// predicting percent done is not working well right now ( disabled for now )
+			$doneMsg = '';
 			return wfMsgHtml('timedmedia-started-transcode', self::getTimePassedMsg( $timePassed ), $doneMsg );
 		}
 		// Check for job added ( but not started encoding )
 		if( !is_null( $state['time_addjob'] ) ){
-			$timePassed =  wfTimestamp() - wfTimestamp( TS_UNIX, strtotime( $state['time_addjob'] ) );
+			$timePassed =  wfTimestampNow() - $db->timestamp( $state['time_addjob'] ) ;
 			return wfMsgHtml('timedmedia-in-job-queue', self::getTimePassedMsg( $timePassed ) );
 		}
 		// Return unknown status error:
@@ -120,21 +123,18 @@ class TranscodeStatusTable {
 		$t['hours'] = floor($timePassed/60/60)%24;
 		$t['minutes'] = floor($timePassed/60)%60;
 		$t['seconds'] = $timePassed%60;			
+		
 		foreach( $t as $k => $v ){
 			if($v == 0 ){
-				$t[$k] = '';
+				unset( $t[$k] );
 			}else{
 				$t[$k] = wfMsg( 'timedmedia-' . $k, $v);
 			}
 		}
-		// Add the tailing and $1 text:
-		if( $t['seconds'] !== '' ){
-			$t['seconds'] = wfMsg('timedmedia-and', $t['seconds'] );
-		} else if( $t['minutes'] !== '' ){
-			$t['minutes'] = wfMsg('timedmedia-and', $t['minutes'] );
-		} else if( $t['hours'] !== '' ){
-			$t['hours'] = wfMsg('timedmedia-and', $t['hours'] );
+		if( count( $t ) == 0 ){
+			$t = array( wfMsg( 'timedmedia-seconds', 0) ) ;
 		}
-		return wfMsgHtml('timedmedia-days-hours-min-sec-time', $t['days'], $t['hours'], $t['minutes'], $t['seconds'] );
+		// Call to the correct set of significant measurements:
+		return wfMsgHtml( 'timedmedia-time-' . count($t) . '-measurements', $t);
 	}
 }

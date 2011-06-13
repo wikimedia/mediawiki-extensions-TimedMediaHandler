@@ -202,7 +202,6 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 
 			var playerInterface = new mw.EmbedPlayer( playerElement );
 			var swapPlayer = swapEmbedPlayerElement( playerElement, playerInterface );			
-
 			// Trigger the EmbedPlayerNewPlayer for embedPlayer interface
 			mw.log("EmbedPlayer::EmbedPlayerNewPlayer:trigger " + playerInterface.id );
 			$( mw ).trigger ( 'EmbedPlayerNewPlayer', $( '#' + playerInterface.id ).get(0) );

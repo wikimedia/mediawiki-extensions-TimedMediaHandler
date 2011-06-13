@@ -22,12 +22,6 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 
-		// Setup a hook for iframe embed handling:
-		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
-
-		// Add parser hook
-		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
-
 		// Add transcode job class:
 		$wgJobClasses+= array(
 			'webVideoTranscode' => 'WebVideoTranscodeJob'
@@ -53,10 +47,25 @@ class TimedMediaHandlerHooks {
 			) ),
 			'ext.tmh.transcodetable' => array_merge($baseExtensionResource, array(
 				'scripts' => 'resources/ext.tmh.transcodetable.js',
-				'styles' => 'resources/transcodeTable.css'
+				'styles' => 'resources/transcodeTable.css',
+				'messages'=> array(
+					'mwe-ok',
+					'mwe-cancel',
+					'timedmedia-reset-error',
+					'timedmedia-reset',
+					'timedmedia-reset-confirm'
+				)
 			) )
 		);
+		// Setup a hook for iframe embed handling:
+		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
+		
+		// When an upload completes ( check clear any existing transcodes )
+		$wgHooks['UploadComplete'][] = 'TimedMediaHandlerHooks::checkUploadComplete';
 
+		// Add parser hook
+		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
+		
 		// We should probably move this script output to a parser function but not working correctly in
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
@@ -71,18 +80,12 @@ class TimedMediaHandlerHooks {
 		// Also add the .log file ( used in two pass encoding )
 		// ( probably should move in-progress encodes out of web accessible directory )
 		$wgExcludeFromThumbnailPurge[] = 'log';
-
-		// Api hooks for derivatives and query video derivatives
-		$wgAPIPropModules += array(
-			'videoinfo' => 'ApiQueryVideoInfo'
-		);
-
+		
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::loadExtensionSchemaUpdates';
 		
 		// Add unit tests
 		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 		
-
 		/**
 		 * Add support for the "TimedText" NameSpace
 		 */
@@ -107,43 +110,67 @@ class TimedMediaHandlerHooks {
 		}
 		return true;			
 	}
-	public static function checkForTranscodeStatus( $article, &$html ){
+	
+	/**
+	 * Wraps the isTranscodableFile function
+	 * @param $title Title
+	 */
+	public static function isTranscodableTitle( $title ){
+		if( $title->getNamespace() != NS_FILE ){
+			return false;
+		}
+		$file = wfFindFile( $title );
+		return self::isTranscodableFile( $file );
+	}
+	
+	/**
+	 * Utility function to check if a given file can be "transcoded"
+	 * @param $file File object
+	 */
+	public static function isTranscodableFile( & $file ){
 		global $wgEnableTranscode;
+		
 		// don't show the transcode table if transcode is disabled 
 		if( $wgEnableTranscode === false ){
+			return false;
+		}
+		// Can't find file 
+		if( !$file ){
+			return false;
+		}
+		// We can only transcode local files
+		if( !$file->isLocal() ){
+			return false;
+		}
+		$mediaType = $file->getHandler()->getMetadataType( $image = '' ); 
+		// If ogg or webm format and not audio we can "transcode" this file
+		if( ( $mediaType == 'webm' || $mediaType == 'ogg' ) && ! $file->getHandler()->isAudio( $file ) ){
 			return true;
 		}
+		return false;
+	}
+	
+	public static function checkForTranscodeStatus( $article, &$html ){
 		// load the file: 
 		$file = wfFindFile( $article->getTitle() );
-		// cant find file
-		if( !$file ){
-			return true;
-		}
-		// We don't show transcode status for remote files: 
-		if( !$file->isLocal() ){
-			return true;
-		}
-		// get mediaType
-		$mediaType = $file->getHandler()->getMetadataType( $image = '' ); 
-		// if ogg or webm format and not audio show transcode page: 
-		if( ( $mediaType == 'webm' || $mediaType == 'ogg' ) && ! $file->getHandler()->isAudio( $file ) ){
+		if( self::isTranscodableFile( $file ) ){
 			$html = TranscodeStatusTable::getHTML( $file );
+		}
+		return true;
+	}
+	public static function checkUploadComplete( &$image ){
+		if( self::isTranscodableTitle( $image->getTitle() ) ){
+			// clear transcode data:
 		}
 		return true;
 	}
 	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
 		// Check if the article is a file and remove transcode jobs:
 		if( $article->getTitle()->getNamespace() == NS_FILE ) {
-			
 			$file = wfFindFile( $article->getTitle() );
-			if ( $file ) {
-				$mediaType = $file->getHandler()->getMetadataType( $image = '' );
-
-				if( $mediaType == 'webm' || $mediaType == 'ogg' ){
-					WebVideoTranscode::removeTranscodeJobs( $file );
-				}
+			if( self::isTranscodableFile( $file ) ){
+				WebVideoTranscode::removeTranscodeJobs( $file );
 			}
-			
 		} 
 		return true;
 	}
@@ -161,7 +188,7 @@ class TimedMediaHandlerHooks {
 	
 	/**
 	 * Hook to add list of PHPUnit test cases.
-	 * @param array $files
+	 * @param $files Array of files
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testDir = dirname( __FILE__ ) . '/tests/phpunit/';

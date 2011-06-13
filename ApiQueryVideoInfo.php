@@ -6,6 +6,12 @@
  * see: http://www.mediawiki.org/wiki/User:Catrope/Extension_review/TimedMediaHandler#ApiQueryVideoInfo.php
  * 
  */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	// Eclipse helper - will be ignored in production
+	require_once( "ApiBase.php" );
+}
+
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	public function __construct( $query, $moduleName, $prefix = 'vi' ) {

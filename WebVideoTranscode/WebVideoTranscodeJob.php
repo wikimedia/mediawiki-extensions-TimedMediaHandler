@@ -40,21 +40,34 @@ class WebVideoTranscodeJob extends Job {
 		
 		// Build the destination target
 		$destinationFile = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
-		
 		if( ! isset(  WebVideoTranscode::$derivativeSettings[ $transcodeKey ] )){
-			$this->output("Transcode key $transcodeKey not found, skipping");
+			$this->output( "Transcode key $transcodeKey not found, skipping" );
 			return false;
 		}
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 				
 		$this->output( "Encoding to codec: " . $options['videoCodec'] );
 		
-		$db =wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_SLAVE );
 		
-		// Update the transcode table letting it know we have "started work":  
-		$db->update( 
+		// Check if we have "already started" the transcode ( possible error ) 
+		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
+			array( 	'transcode_image_name = ' . $db->addQuotes( $this->title->getDBKey() ),
+					'transcode_key =' . $db->addQuotes( $transcodeKey ) )
+		);
+		if( ! is_null( $dbStartTime ) ){
+			$this->output( 'Error, running transcode job, for job that has already started' );
+			// back out of this job. ( if there was a transcode error it should be restarted with api transcode-reset ) 
+			// not some strange out-of-order error. 
+			return false;
+		}
+		
+		// Update the transcode table letting it know we have "started work":  		
+		$jobStartTimeCache = $db->timestamp();
+		$dbw->update( 
 			'transcode',
-			array( 'transcode_time_startwork' => $db->timestamp() ),
+			array( 'transcode_time_startwork' => $jobStartTimeCache ),
 			array( 
 				'transcode_image_name' => $this->title->getDBkey(),
 				'transcode_key' => $transcodeKey
@@ -62,7 +75,7 @@ class WebVideoTranscodeJob extends Job {
 			__METHOD__,
 			array( 'LIMIT' => 1 )
 		);
-				
+		
 		
 		// Check the codec see which encode method to call;
 		if( $options['videoCodec'] == 'theora' ){
@@ -92,6 +105,25 @@ class WebVideoTranscodeJob extends Job {
 			$status =  'Error unknown target encode codec:' . $options['codec'];
 		}
 		
+		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
+		// Confirm the in memory $jobStartTimeCache matches db start time
+		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
+			array( 	'transcode_image_name = ' . $db->addQuotes( $this->title->getDBKey() ),
+					'transcode_key =' . $db->addQuotes( $transcodeKey )
+			)
+		);
+		
+		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
+		if( $jobStartTimeCache != $dbStartTime ){
+			wfDebug('Possible Error, transcode task restarted, removed, or completed while transcode was in progress');
+			// if an error; just error out, we can't remove temp files or update states, because the new job may be doing stuff.
+			if( $status !== true ){
+				return false;	
+			}
+			// else just continue with db updates, and when the new job comes around it won't start because it will see 
+			// that the job has already been started.
+		}
+			
 		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there ) 
 		if( $status === true ){
 			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
@@ -100,7 +132,7 @@ class WebVideoTranscodeJob extends Job {
 			wfRestoreWarnings();
 			$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
 			// Update the transcode table with success time: 
-			$db->update( 
+			$dbw->update( 
 				'transcode',
 				array( 
 					'transcode_time_success' => $db->timestamp(),
@@ -113,10 +145,10 @@ class WebVideoTranscodeJob extends Job {
 				__METHOD__,
 				array( 'LIMIT' => 1 )
 			);			
-			$this->invalidateCache();
+			WebVideoTranscode::invalidatePagesWithAsset( $this->title );
 		} else {
 			// Update the transcode table with failure time and error 
-			$db->update( 
+			$dbw->update( 
 				'transcode',
 				array( 
 					'transcode_time_error' => $db->timestamp(),
@@ -128,35 +160,14 @@ class WebVideoTranscodeJob extends Job {
 				),
 				__METHOD__,
 				array( 'LIMIT' => 1 )
-			);			
+			);
+			// no need to invalidate cache. Because all pages remain valid ( no $transcodeKey derivative ) 
 		}
+		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around ) 
+		webVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
+		
 		// pass along result status: 
 		return $status;
-	}
-	/**
-	 * Invalidate the cache of all pages where the video is displayed  
-	 */
-	function invalidateCache(){
-		// The static cache of webVideoTranscode should be cleared
-		webVideoTranscode::clearTranscodeCache();
-		
-		// The file page cache should be invalidated: 
-		$this->title->invalidateCache();
-		
-		// TODO if the video is used in over 500 pages add to 'job queue'
-		$limit = 500;		
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select(
-			array( 'imagelinks', 'page' ),
-			array( 'page_namespace', 'page_title' ),
-			array( 'il_to' => $this->title->getDBkey(), 'il_from = page_id' ),
-			__METHOD__,
-			array( 'LIMIT' => $limit + 1 )
-		);
-		foreach ( $res as $page ) {
-			$title = Title::makeTitle( $page->page_namespace, $page->page_title );
-			$title->invalidateCache();
-		}		
 	}
 	function removeFffmpgeLogFiles( $dir ){
 		if (is_dir($dir)) {

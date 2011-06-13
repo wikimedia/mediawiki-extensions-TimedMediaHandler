@@ -29,10 +29,10 @@ $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
 /*** end MwEmbed module configuration: ******************************/
 
 // Add the rest transcode right:
-$wgAvailableRights[] = 'resetTranscode'; 
+$wgAvailableRights[] = 'transcode-reset'; 
 
 // Which users can restart failed or expired transcode jobs
-$wgGroupPermissions['sysop']['resetTranscode'] = true;
+$wgGroupPermissions['sysop']['transcode-reset'] = true;
 
 // The minimum size for an embed video player:
 $wgMinimumVideoPlayerSize = 200;
@@ -48,7 +48,7 @@ $wgVideoPlayerSkin = 'kskin';
 $wgEnableIframeEmbed = true;
 
 // If transcoding is enabled for this wiki ( if disabled, no transcode jobs are added and no 
-// transcode status is displayed. Note if remote embeding an asset we will still check if 
+// transcode status is displayed. Note if remote embedding an asset we will still check if 
 // the remote repo has transcoding enabled and associated flavors for that media embed. 
 $wgEnableTranscode = true;
 
@@ -81,9 +81,6 @@ $wgEnabledTranscodeSet = array(
 	
 	// A high end web streamable ogg video 
 	WebVideoTranscode::ENC_OGV_9MBS,
-	
-	// High quality 720P ogg video: 
-	WebVideoTranscode::ENC_OGV_HQ_VBR,
 	
 	// A web streamable WebM video	
 	WebVideoTranscode::ENC_WEBM_9MBS,
@@ -130,7 +127,17 @@ $wgAutoloadClasses['TimedTextPage'] = "$timedMediaDir/TimedTextPage.php";
 
 // Transcode support
 $wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
+
+// Api modules:
 $wgAutoloadClasses['ApiQueryVideoInfo'] = "$timedMediaDir/ApiQueryVideoInfo.php";
+$wgAPIPropModules ['videoinfo'] = 'ApiQueryVideoInfo';
+
+$wgAutoloadClasses['ApiTranscodeStatus'] = "$timedMediaDir/ApiTranscodeStatus.php";
+$wgAPIPropModules ['transcodestatus'] = 'ApiTranscodeStatus';
+
+$wgAutoloadClasses['ApiTranscodeReset'] = "$timedMediaDir/ApiTranscodeReset.php";
+$wgAPIModules['transcodereset'] = 'ApiTranscodeReset';
+
 
 // Localization 
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
@@ -145,7 +152,7 @@ $wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
 $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TimedMediaHandler',
-	'author'         => array( 'Michael Dale', 'Tim Starling' ),
+	'author'         => array( 'Michael Dale', 'Tim Starling', 'James Heinrich' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmedia-desc',
 	'version'		 => '0.2',

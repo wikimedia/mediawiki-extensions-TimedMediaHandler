@@ -37,10 +37,10 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	
 	'timedmedia-status-header' 		=> 'Transcode status',
 	'timedmedia-update-status'		=> 'Update transcode status',
-	'timedmedia-status'				=> 'status',
-	'timedmedia-status-unknown'		=> 'unknown status',
+	'timedmedia-status'				=> 'Status',
+	'timedmedia-status-unknown'		=> 'Unknown status',
 	'timedmedia-transcodeinfo' 		=> 'Transcode derivative description',
-	'timedmedia-actions'			=> 'actions',
+	'timedmedia-actions'			=> 'Actions',
 	'timedmedia-direct-link'		=> 'Download derivative',
 	'timedmedia-not-ready'			=> 'Not ready',
 	'timedmedia-completed-on'		=> 'Completed transcode $1',
@@ -53,9 +53,15 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-hours'				=> '{{PLURAL:$1|hour|$1 hours}}',
 	'timedmedia-minutes'			=> '{{PLURAL:$1|minute|$1 minutes}}',
 	'timedmedia-seconds'			=> '{{PLURAL:$1|second|$1 seconds}}',
-	'timedmedia-and'				=> 'and $1',
-	'timedmedia-days-hours-min-sec-time' => '$1, $2, $3 $4',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 and $4',
+	'timedmedia-time-3-measurements' => '$1, $2 and $3',
+	'timedmedia-time-2-measurements' => '$1 and $2',
+	'timedmedia-time-1-measurements' => '$1',
 	'timedmedia-show-error'			=> 'Show error',
+	'timedmedia-reset'				=> 'Reset transcode',
+	'timedmedia-reset-confirm'		=> 'Resetting this transcode, will remove any existing file ( if present ), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />' . 
+'Are you sure you want to proceed?',
+	'timedmedia-reset-error'		=> 'Error in reseting transcode job',
 	
 	// Original uploaded asset
 	'timedmedia-ogg' => 'Ogg',
