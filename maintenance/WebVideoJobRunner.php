@@ -47,7 +47,7 @@ class WebVideoJobRunner extends Maintenance {
 		}		
 	}
 	function runCheckJobThreadsLoop(){
-		global $wgMaintenancePath, $wgTranscodeBackgroundTimeLimit;
+		global $IP, $wgTranscodeBackgroundTimeLimit;
 		// Check if we have $threads number of webTranscode jobs running else sleep
 		$runingJobsCount = 0;
 		foreach( $this->getProcessList() as $pid => $proc ){
@@ -66,7 +66,7 @@ class WebVideoJobRunner extends Maintenance {
 		}
 		if( $runingJobsCount < $this->threads ){			
 			// Add one process:
-			$cmd = "php $wgMaintenancePath/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
+			$cmd = "php $IP/maintenance/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
 			$status = $this->runBackgroundProc( $cmd );
 			$this->output( "$runingJobsCount existing job runners, Check for new transcode jobs:  " );
 		} else {
