@@ -53,7 +53,8 @@ class WebVideoTranscode {
 	public static $derivativeSettings = array(
 		WebVideoTranscode::ENC_OGV_2MBS =>
 			array(
-				'maxSize'			=> '220', // 160P or around there 
+				'maxSize'			=> '220', 
+				'targetSize'		=> '160P', // 160P 
 				'videoBitrate'		=> '160',
 				'audioBitrate'		=> '32',
 				'samplerate'		=> '22050',
@@ -67,7 +68,8 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_OGV_5MBS =>
 			array(
-				'maxSize'			=> '480', // 360P
+				'maxSize'			=> '480', 
+				'targetSize'		=> '360P', // 360P
 				'videoBitrate'		=> '512',
 				'audioBitrate'		=> '48',
 				'noUpscaling'		=> 'true',
@@ -78,7 +80,8 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_OGV_9MBS =>
 			array(
-				'maxSize'			=> '640', // 480P
+				'maxSize'			=> '640', 
+				'targetSize'		=> '480P', // 480P
 				'videoBitrate'		=> '786',
 				'audioBitrate'		=> '96',
 				'noUpscaling'		=> 'true',
@@ -91,6 +94,7 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_OGV_HQ_VBR =>
 			array(
 				'maxSize'			=> '1280', // 720P
+				'targetSize'		=> '720P', // 480P
 				'videoQuality'		=> 6,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
@@ -101,7 +105,8 @@ class WebVideoTranscode {
 		// WebM transcode:
 		WebVideoTranscode::ENC_WEBM_5MBS => 
 			array(
-				'maxSize'			=> '480', // 380P
+				'maxSize'			=> '480',
+				'targetSize'		=> '380P', // 360P
 				'videoBitrate'		=> '512',
 				'audioBitrate'		=> '48',
 				'noUpscaling'		=> 'true',
@@ -112,7 +117,8 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_WEBM_9MBS =>
 			array(
-			 	'maxSize'			=> '640', // 480P
+			 	'maxSize'			=> '640', 
+				'targetSize'		=> '480P', // 480P
 				'videoBitrate'		=> '786',
 				'audioBitrate'		=> '96',
 				'noUpscaling'		=> 'true',
@@ -123,7 +129,8 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
 			 array(
-				'maxSize'			=> '1280', // 720P
+				'maxSize'			=> '1280', 
+				'targetSize'		=> '720P', // 720P
 				'videoQuality'		=> 7,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
@@ -609,6 +616,48 @@ class WebVideoTranscode {
 			// no jobId ? error out in some way? 
 		}
 		wfProfileOut( __METHOD__ );
+	}
+	/**
+	 * Target size transform slightly diffrent from "maxsize" 
+	 * 
+	 * Here we check aspect ratio to decide if we use the $target size or not. 
+	 * 
+	 * @param $file File Object the source file being transformed
+	 * @param $targetSize String Target file size string ushualy of type '640P', '720P' etc .
+	 */
+	public static function getTargetSizeTransform( &$file, $targetSize ){
+		// Strip the non-numeric parts of the targetSize
+		$targetSize = preg_replace('/\D/', '', $targetSize);
+		$base16n9Ratio = 16/9;
+		$fileRatio = $file->getWidth() / $file->getHeight();
+		
+		// Check if the $file for very nonstandard aspect ratio ie "very wide" or "very tall" video: 
+		// in this case use the max size system to avoid a huge video at low bitrates:
+		if( $fileRatio > 3 || $fileRatio < .25 ){
+			return self::getMaxSizeTransform( $file, $targetSize);
+		}
+		// make sure we don't upscale
+		$targetSize = ( $targetSize > $file->getHeight() )? $file->getHeight() : $targetSize;
+
+		// Check if file is narrower than 16:9 and use raw targetSize for height, true to HD name
+		// ie 640P is 640 pixles high. 
+		if( $fileRatio <= $base16n9Ratio ){
+			$height = $targetSize;
+			$width = $fileRatio * $height;
+		} else {
+			// wider than 16:9 full HD width 
+			$width = $targetSize * $base16n9Ratio;
+			$height = $width / $fileRatio;
+		}
+		
+		// round width and height
+		$width = round( $width );
+		$height = round( $height );
+		
+		// round to even numbers: 
+		$width = ($width % 2)? $width+1: $width;
+		$height = ($height % 2)? $height+1: $height;
+		return array( $width, $height );
 	}
 	
 	/**

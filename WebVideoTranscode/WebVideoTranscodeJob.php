@@ -323,10 +323,13 @@ class WebVideoTranscodeJob extends Job {
 		} else {
 			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
 		}		
-		// Check maxSize
-		if (isset( $options['maxSize'] ) && intval( $options['maxSize'] ) > 0) {
+		// First check targetSize
+		if( isset( $options['targetSize'] ) ){
+			list( $width, $height ) = WebVideoTranscode::getTargetSizeTransform( $file, $options['targetSize'] );
+			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
+		} else if (isset( $options['maxSize'] ) && intval( $options['maxSize'] ) > 0) {
 			// Get size transform ( if maxSize is > file, file size is used:
-			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );			      	
+			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
 			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
 		} else if ( 
 			(isset( $options['width'] ) && $options['width'] > 0 ) 
@@ -390,6 +393,18 @@ class WebVideoTranscodeJob extends Job {
 		
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgFFmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $this->getSourceFilePath() );
+			
+		$file = wfLocalFile( $this->title );
+		
+		// Check special case options like targetSize
+		if( isset( $options['targetSize'] ) ){
+			list( $width, $height ) = WebVideoTranscode::getTargetSizeTransform( $file, $options['targetSize'] );
+			$options['width'] = $width;
+			$options['height'] = $height;
+			unset( $options['targetSize'] );
+			unset( $options['maxSize'] );
+		}
+	
 		// Add in the encode settings
 		foreach( $options as $key => $val ){
 			if( isset( self::$foggMap[$key] ) ){

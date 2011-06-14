@@ -62,7 +62,7 @@ $wgEnableNiceBackgroundTranscodeJobs = true;
 // The priority to be used with the nice transcode commands. 
 $wgTranscodeBackgroundPriority = 19;
 
-// The total amount of time a transcoding shell command can take: 
+// The total amout of time a transcoding shell command can take: 
 $wgTranscodeBackgroundTimeLimit = 3600 * 4;
 
 // The location of ffmpeg2theora ( transcoding )
