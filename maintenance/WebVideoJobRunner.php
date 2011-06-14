@@ -15,11 +15,7 @@ class WebVideoJobRunner extends Maintenance {
 	// Default number of simultaneous transcoding threads  
 	var $threads = 2;
 	
-	// Default time for a transcode to time out: 4 hours, 
-	// ( should be increased if we add long form content to wikimedia )  
-	var $transcodeTimeout = 14400;
-	
-	// How often the script checks for $threads transcode jobs to be active. 
+	// How often ( in seconds ) the script checks for $threads transcode jobs to be active. 
 	var $checkJobsFrequency = 5;
 	
 	public function __construct() {
@@ -51,7 +47,7 @@ class WebVideoJobRunner extends Maintenance {
 		}		
 	}
 	function runCheckJobThreadsLoop(){
-		global $wgMaintenancePath;
+		global $wgMaintenancePath, $wgTranscodeBackgroundTimeLimit;
 		// Check if we have $threads number of webTranscode jobs running else sleep
 		$runingJobsCount = 0;
 		foreach( $this->getProcessList() as $pid => $proc ){
@@ -60,6 +56,7 @@ class WebVideoJobRunner extends Maintenance {
 				strpos( $proc['args'], '--type webVideoTranscode' ) !== false 
 			){
 				if( TimedMediaHandler::parseTimeString( $proc['time'] ) > $this->transcodeTimeout ){	
+					// should probably "kill" the process 
 					
 				} else {
 					// Job is oky add to count: 
@@ -69,7 +66,7 @@ class WebVideoJobRunner extends Maintenance {
 		}
 		if( $runingJobsCount < $this->threads ){			
 			// Add one process:
-			$cmd = "php $wgMaintenancePath/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$this->transcodeTimeout}";
+			$cmd = "php $wgMaintenancePath/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
 			$status = $this->runBackgroundProc( $cmd );
 			$this->output( "$runingJobsCount existing job runners, Check for new transcode jobs:  " );
 		} else {

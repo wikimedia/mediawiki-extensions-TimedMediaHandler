@@ -154,7 +154,7 @@ class WebVideoTranscode {
 		// in-progress encodes, its nice having it publicly accessible for debugging though
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
 		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
-		return "{$filePath}.tmp.{$ext}";
+		return "{$filePath}.part.{$ext}";
 	}
 	
 	/**

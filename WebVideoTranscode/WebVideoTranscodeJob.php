@@ -15,7 +15,37 @@
  * 
  * @ingroup JobQueue
  */
+
+
+/**
+ * Unless I am unaware of some command line trickery, we have to wrap the background
+ * commands in a script to grab the background exit code ( echo $? ) 
+ * 
+ * Ie in the bellow code "echo $?" gives us the status of "echo $1" not "nohub" call
+ * a wait $pid & echo $? of course does not work since the background taks is not part
+ * of a child shell call
+ * 
+ * pseudo shell code for backgroundTask.sh 
+ * 
+#/bin/bash
+  
+# simple script to run a background and writing output and exit status to a file
+# returns its "pid" for proccess monitoring 
+# Usage: backgroundTask.sh [command] [stdout target file] [pid target file] [exit status target file]
+
+# Run the command with output redirected to target file ( in the background )
+$1 > $2 &
+# Output the pid to target file: 
+echo $! > $3
+# wait until task is done
+wait $!
+# output exit status:
+echo $? > $4
+
+*/
 class WebVideoTranscodeJob extends Job {
+	var $targetEncodePath = null;
+	var $sourceFilePath = null;
 	
 	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'webVideoTranscode', $title, $params, $id );
@@ -25,25 +55,40 @@ class WebVideoTranscodeJob extends Job {
 	private function output( $msg ){
 		print $msg . "\n";
 	}
-	
+	private function getTargetEncodePath(){
+		if( !$this->targetEncodePath ){
+			$file = wfLocalFile( $this->title );
+			$transcodeKey = $this->params['transcodeKey'];
+			$this->targetEncodePath = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
+		}
+		return $this->targetEncodePath;
+	}
+	private function getSourceFilePath(){
+		if( !$this->sourceFilePath ){
+			$file = wfLocalFile( $this->title );
+			$this->sourceFilePath = $file->getPath();
+		}
+		return $this->sourceFilePath;
+	}
 	// Run the transcode request
 	public function run() {
-		// Get the file object
-		$file = wfLocalFile( $this->title );		
+		// get a local pointer to the file
+		$file = wfLocalFile( $this->title );
 		
-		$source = $file->getPath();
-		if( !is_file($source ) ){
+		// Validate the file exists : 
+		if( !$file || !is_file( $this->getSourceFilePath() ) ){
 			$this->output( 'File not found: ' . $this->title );
 			return false;
 		}
-		$transcodeKey = $this->params['transcodeKey'];
 		
+		// Validate the transcode key param: 
+		$transcodeKey = $this->params['transcodeKey'];
 		// Build the destination target
-		$destinationFile = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
 		if( ! isset(  WebVideoTranscode::$derivativeSettings[ $transcodeKey ] )){
 			$this->output( "Transcode key $transcodeKey not found, skipping" );
 			return false;
 		}
+		
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 				
 		$this->output( "Encoding to codec: " . $options['videoCodec'] );
@@ -79,31 +124,25 @@ class WebVideoTranscodeJob extends Job {
 		
 		// Check the codec see which encode method to call;
 		if( $options['videoCodec'] == 'theora' ){
-			$status = $this->ffmpeg2TheoraEncode( $file, $destinationFile, $options );
+			$status = $this->ffmpeg2TheoraEncode( $options );
 		} else if( $options['videoCodec'] == 'vp8' ){			
 			// Check for twopass:
 			if( isset( $options['twopass'] ) ){
 				// ffmpeg requires manual two pass
-				$status = $this->ffmpegEncode( $file, $destinationFile, $options, 1 );
+				$status = $this->ffmpegEncode( $options, 1 );
 				if( $status ){
-					$status = $this->ffmpegEncode( $file, $destinationFile, $options, 2 );
-					// unlink the .log file used in two pass encoding: 
-					wfSuppressWarnings();
-					unlink( $destinationFile . '.log' );
-					// Sometimes ffmpeg gives the file log-0.log extension 
-					unlink( $destinationFile . 'log-0.log');
-					wfRestoreWarnings();
-				}
-				// remove any log files
-				$this->removeFffmpgeLogFiles( dirname( $destinationFile) );
-				
+					$status = $this->ffmpegEncode( $options, 2 );
+				}				
 			} else {
-				$status = $this->ffmpegEncode( $file, $destinationFile, $options );
+				$status = $this->ffmpegEncode( $options );
 			}
 		} else {
 			wfDebug( 'Error unknown codec:' . $options['codec'] );
 			$status =  'Error unknown target encode codec:' . $options['codec'];
 		}
+		
+		// Remove any log files all useful info should be in status and or we are done with 2 passs encoding
+		$this->removeFffmpgeLogFiles();
 		
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm the in memory $jobStartTimeCache matches db start time
@@ -128,7 +167,7 @@ class WebVideoTranscodeJob extends Job {
 		if( $status === true ){
 			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
 			wfSuppressWarnings();
-			$status = rename( $destinationFile, $finalDerivativeFilePath );			
+			$status = rename( $this->getTargetEncodePath(), $finalDerivativeFilePath );			
 			wfRestoreWarnings();
 			$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
 			// Update the transcode table with success time: 
@@ -171,12 +210,13 @@ class WebVideoTranscodeJob extends Job {
 		// pass along result status: 
 		return $status;
 	}
-	function removeFffmpgeLogFiles( $dir ){
+	function removeFffmpgeLogFiles(){
+		$dir = dirname( $this->getTargetEncodePath() );
 		if (is_dir($dir)) {
 			if ($dh = opendir($dir)) {
 				while (($file = readdir($dh)) !== false) {
 					$ext = strtolower( pathinfo("$dir/$file", PATHINFO_EXTENSION) );
-					if( $ext == '.log' ){
+					if( $ext == 'log' ){
 						wfSuppressWarnings();
 						unlink( "$dir/$file");
 						wfRestoreWarnings();
@@ -187,14 +227,11 @@ class WebVideoTranscodeJob extends Job {
 		}
 	}
 	/** Utility helper for ffmpeg and ffmpeg2theora mapping **/
-	function ffmpegEncode( $file, $target, $options, $pass=0 ){
+	function ffmpegEncode( $options, $pass=0 ){
 		global $wgFFmpegLocation;	
-		// Get the source
-		$source = $file->getPath();
-		$this->output( "Encode:\n source:$source\n target:$target\n" );
-		
+
 		// Set up the base command
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -i ' . wfEscapeShellArg( $source );
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
 		
 		if( isset($options['preset']) ){
 			if ($options['preset'] == "360p") {
@@ -208,7 +245,7 @@ class WebVideoTranscodeJob extends Job {
 		if ( isset( $options['novideo'] )  ) {
 			$cmd.= " -vn ";
 		} else {
-			$cmd.= $this->ffmpegAddVideoOptions( $file, $target, $options, $pass );
+			$cmd.= $this->ffmpegAddVideoOptions( $options, $pass );
 		}
 							   
 		// Check for start time
@@ -219,13 +256,13 @@ class WebVideoTranscodeJob extends Job {
 		}
 		// Check for end time:
 		if( isset( $options['endtime'] ) ){
-		$cmd.= ' -t ' . intval( $options['endtime'] )  - intval($options['starttime'] ) ;
+			$cmd.= ' -t ' . intval( $options['endtime'] )  - intval($options['starttime'] ) ;
 		}
 
 		if ( $pass == 1 || isset( $options['noaudio'] ) ) {
-		$cmd.= ' -an';
+			$cmd.= ' -an';
 		} else {
-		$cmd.= $this->ffmpegAddAudioOptions( $file, $target, $options, $pass );
+			$cmd.= $this->ffmpegAddAudioOptions( $options, $pass );
 		}	    	    
 
 		// Output WebM
@@ -233,31 +270,33 @@ class WebVideoTranscodeJob extends Job {
 		
 		if ( $pass != 0 ) {
 			$cmd.=" -pass " .wfEscapeShellArg( $pass ) ;
-			$cmd.=" -passlogfile " . wfEscapeShellArg( $target .'.log' );
+			$cmd.=" -passlogfile " . wfEscapeShellArg( $this->getTargetEncodePath() .'.log' );
 		}
 		// And the output target: 
 		if ($pass==1) {
 			$cmd.= ' /dev/null';
 		} else{
-			$cmd.= " $target";
+			$cmd.= " " . $this->getTargetEncodePath();
 		}	
-		
-		// Don't display shell output
-		$cmd .= ' 2>&1';
 		
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
 		// Right before we output remove the old file
 		wfProfileIn( 'ffmpeg_encode' );
-		$shellOutput = wfShellExec( $cmd, $retval );
+		$retval = 0;
+		$shellOutput = $this->runShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg_encode' );
 
-		if( $retval ){
+		if( $retval != 0 ){
 			return $cmd . "\n\n" . $shellOutput;
 		}
 		return true;
 	}
-	function ffmpegAddVideoOptions( $file, $target, $options, $pass){
+	function ffmpegAddVideoOptions( $options, $pass){
+		
+		// Get a local pointer to the file object
+		$file = wfLocalFile( $this->title );
+		
 		$cmd ='';
 		// Add the boiler plate vp8 ffmpeg command: 
 		$cmd.=" -y -skip_threshold 0 -rc_buf_aggressivity 0 -bufsize 6000k -rc_init_occupancy 4000 -threads 4";
@@ -322,7 +361,7 @@ class WebVideoTranscodeJob extends Job {
 		return $cmd;
 	}
 
-	function ffmpegAddAudioOptions( $file, $target, $options, $pass){
+	function ffmpegAddAudioOptions( $options, $pass){
 		$cmd ='';
 		if( isset( $options['audioQuality'] ) ){
 			$cmd.= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
@@ -346,14 +385,11 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * ffmpeg2Theora mapping is much simpler since it is the basis of the the firefogg API  
 	 */
-	function ffmpeg2TheoraEncode( $file, $target, $options){
+	function ffmpeg2TheoraEncode( $options){
 		global $wgFFmpeg2theoraLocation;
 		
-		// Get the source:
-		$source = $file->getPath();
-		
 		// Set up the base command
-		$cmd = wfEscapeShellArg( $wgFFmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $source );
+		$cmd = wfEscapeShellArg( $wgFFmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $this->getSourceFilePath() );
 		// Add in the encode settings
 		foreach( $options as $key => $val ){
 			if( isset( self::$foggMap[$key] ) ){
@@ -371,21 +407,129 @@ class WebVideoTranscodeJob extends Job {
 		}		
 		
 		// Add the output target:
-		$cmd.= ' -o ' . wfEscapeShellArg ( $target );
-		
-		// Don't display shell output
-		$cmd.=' 2>&1';
+		$cmd.= ' -o ' . wfEscapeShellArg ( $this->getTargetEncodePath() );
 		
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 		
 		wfProfileIn( 'ffmpeg2theora_encode' );
-		$shellOutput = wfShellExec( $cmd, $retval );
+		$retval = 0;
+		$shellOutput = $this->runShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg2theora_encode' );
-
-		if( $retval ){
+		if( $retval != 0 ){
 			return $cmd . "\n\n" . $shellOutput;
 		}
 		return true;
+	}
+	/**
+	 * Runs the shell exec command. 
+	 * if $wgEnableBackgroundTranscodeJobs is enabled will mannage a background transcode task
+	 * else it just directly passes off to wfShellExec 
+	 *
+	 * @param $cmd String Command to be run
+	 * @param $retval String, refrence variable to return the exit code
+	 */
+	public function runShellExec( $cmd, &$retval){
+		global $wgEnableNiceBackgroundTranscodeJobs, $wgTranscodeBackgroundPriority, 
+		$wgTranscodeBackgroundTimeLimit;
+		
+		// Check if background tasks are enabled
+		if( $wgEnableNiceBackgroundTranscodeJobs === false ){
+			// Dont display shell output
+			$cmd .= ' 2>&1';
+			// Directly execute the shell command:
+			return wfShellExec( $cmd, $retval );
+		}
+		// Setup pointers for status and encoding log:  
+		$encodingLog = $this->getTargetEncodePath() . '.stdout.log';
+		$exitStatusLog = $this->getTargetEncodePath() . '.exit.log';
+		
+		// Start background shell proc
+		$pid = wfShellExec(
+			"nohup nice -n $wgTranscodeBackgroundPriority $cmd > " . wfEscapeShellArg( $encodingLog ) . ' ' .
+			// ideally we could store the exit status here ( but it causes & echo $! to give us a bad pid )
+			// "& echo $? > " . wfEscapeShellArg( $exitStatusLog ) . ' ' .
+			"& echo $!", 
+			$retval 
+		);
+		$pid = trim( $pid );
+		$errorMsg = '';
+		
+		if( $pid == '' || $retval != 0){
+			$errorMsg = "Failed to start, check $wgMaxShellMemory settings";
+			$this->output( $errorMsg);
+			$retval = 1;
+			return $errorMsg;
+		}
+		$loopCount = 0;
+		$oldFileSize = 0;
+		$startTime = time();
+		$fileIsNotGrowing = false;
+		
+		while( true ){
+			
+			// Check if pid still runing
+			if( ! self::isProcessRunning( $pid ) ){
+				// see large note above about background tasks ( echo $? is probably not the exit status we want ) 
+				$retval = wfShellExec( "echo $?");
+				//$this->output( $pid . ' is done, $retval: ' .$retval );
+				break;
+			}
+			
+			// Check that the target file is growing ( every 5 seconds ) 
+			if( $loopCount == 5 ){
+				// only run check if we are outputing to target file 
+				// ( two pass encoding does not output to target on first pass ) 
+				if( is_file( $this->getTargetEncodePath() ) ){
+					clearstatcache();
+					$newFileSize = filesize( $this->getTargetEncodePath() );
+					if( $newFileSize == $oldFileSize ){
+						if( $fileIsNotGrowing ){
+							$errorMsg = "Target File is not increasing in size, kill process.";
+							$this->output( $errorMsg );
+							// file is not growing in size, kill proccess
+							$retval = 1;
+							self::killProcess( $pid );
+							break;
+						}
+						// Wait an additional 5 seconds of the file not growing to confirm 
+						// the transcode is frozen. 
+						$fileIsNotGrowing = true;
+					} 
+					$oldFileSize = $newFileSize;
+				}
+				// reset the loop counter
+				$loopCount = 0;
+			}
+			
+			// Check if we have global job run-time has been exceeded:
+			if ( $wgTranscodeBackgroundTimeLimit && time() - $startTime  > $wgTranscodeBackgroundTimeLimit ){
+				$errorMsg = "Encoding exceeded max job run time ( " . TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process.";
+				$this->output( $errorMsg );
+				// File is not growing in size, kill proccess
+				$retval = 1;
+				self::killProcess( $pid );
+				break;
+			}
+			
+			// Sleep for one second before repeating loop
+			$loopCount++;
+			sleep( 1 );
+		}
+		
+		// return the encoding log contents ( will be inserted into error table if an error ) 
+		// ( will be ignored and removed if success )
+		if( $errorMsg!= '' ){
+			$errorMsg.="\n\n";
+		}
+		return $errorMsg . file_get_contents( $encodingLog );
+	}
+	public static function isProcessRunning( $pid ){
+       exec( "ps $pid", $processState );
+       return( count( $processState ) >= 2 );
+	}
+	public static function killProcess( $pid ){
+		// we are killing a hung prcoces send -9 signal 
+		wfShellExec( "kill -9 $pid");
 	}
 	
 	 /**

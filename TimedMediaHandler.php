@@ -52,6 +52,19 @@ $wgEnableIframeEmbed = true;
 // the remote repo has transcoding enabled and associated flavors for that media embed. 
 $wgEnableTranscode = true;
 
+// If the job runner should run transcode commands in a background thread and monitor the 
+// transcoding progress. This enables more fine grain control of the transcoding process, wraps
+// encoding commands in a lower priority 'nice' call, and kills long running transcodes that are 
+// not making any progress. If set to false, the job runner will use the more compatible 
+// php blocking shell exec command.
+$wgEnableNiceBackgroundTranscodeJobs = true;
+
+// The priority to be used with the nice transcode commands. 
+$wgTranscodeBackgroundPriority = 19;
+
+// The total amount of time a transcoding shell command can take: 
+$wgTranscodeBackgroundTimeLimit = 3600 * 4;
+
 // The location of ffmpeg2theora ( transcoding )
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
