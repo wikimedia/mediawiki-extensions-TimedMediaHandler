@@ -42,7 +42,8 @@ http://html5video.org or http://www.kaltura.org/project/HTML5_Video_Media_JavaSc
 == FFmpeg ==
 
 We use FFmpeg for creating still images of videos, and for transcoding webm
-videos. For best experience use the latest release of ffmpeg 
+videos. For best experience use the latest release of ffmpeg. At a minimum ffmpeg 0.6.1 was the
+first version to include WebM support.  
 
 You can download static ffmpeg builds for multiple platforms at:
 http://firefogg.org/nightly/ 
@@ -94,7 +95,8 @@ after the require line in LocalSettings.php.
 == ffmpeg2theora ==
 
 We use ffmpeg2theora for extract metadata from videos, you will need a copy on your 
-server. For best experience use the latest release of ffmpeg2theora
+server. For best experience use the latest release of ffmpeg2theora. At a minimum you need to use
+ffmpeg2thoera 0.27 
 
 You can download static ffmpeg2theora builds for multiple platforms at:
 http://firefogg.org/nightly/ 
