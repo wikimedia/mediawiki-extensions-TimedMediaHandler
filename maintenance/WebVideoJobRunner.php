@@ -5,7 +5,11 @@
  * 
  * This could be replaced by a cron job shell script that did something similar. 
  */
-require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
+	$IP = dirname( __FILE__ ) . '/../../..';
+}
+require( "$IP/maintenance/Maintenance.php" );
 
 class WebVideoJobRunner extends Maintenance {
 	// Default number of simultaneous transcoding threads  
