@@ -5,11 +5,7 @@
  * 
  * This could be replaced by a cron job shell script that did something similar. 
  */
-
-// Check if the script is already running
-// wait 5 seconds and confirm job(s) are running.
-$wgMaintenancePath = dirname( __FILE__ ) . '/../../../maintenance';
-require_once( "$wgMaintenancePath/Maintenance.php" );
+require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 class WebVideoJobRunner extends Maintenance {
 	// Default number of simultaneous transcoding threads  
