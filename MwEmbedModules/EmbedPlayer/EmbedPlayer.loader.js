@@ -72,11 +72,12 @@
 				$( playerElement ).attr( "id", 'v' + ( rewriteElementCount++ ) );
 			}
 			
-			// Add an overlay loader
-			$( playerElement )
-				.getAbsoluteOverlaySpinner()
-				.attr('id', 'loadingSpinner_' + $( playerElement ).attr('id') )
-						
+			// Add an overlay loader ( firefox has its own native loader )
+			if( !$.browser.mozilla ){
+				$( playerElement )
+					.getAbsoluteOverlaySpinner()
+					.attr('id', 'loadingSpinner_' + $( playerElement ).attr('id') )
+			}
 			// Add core "skin/interface" loader			
 			var skinString = $( playerElement ).attr( 'class' );
 			if( ! skinString 

@@ -358,7 +358,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		} );
 
 		// If we don't already have a loadSpiner add one:
-		if( $('#loadingSpinner_' + playerInterface.id ).length == 0 ){
+		if( $('#loadingSpinner_' + playerInterface.id ).length == 0 && !$.browser.mozilla ){
 			if( playerInterface.useNativePlayerControls() || playerInterface.isPersistentNativePlayer() ) {
 				var $spinner = $( targetElement )
 					.getAbsoluteOverlaySpinner();
