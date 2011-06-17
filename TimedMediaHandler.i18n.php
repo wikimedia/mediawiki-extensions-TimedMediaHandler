@@ -814,6 +814,7 @@ $messages['fo'] = array(
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
+ * @author Od1n
  * @author Peter17
  * @author Seb35
  * @author Sherbrooke
@@ -843,12 +844,16 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
 	'timedmedia-status' => 'statut',
 	'timedmedia-status-unknown' => 'statut inconnu',
+	'timedmedia-actions' => 'Actions',
 	'timedmedia-not-ready' => 'Pas prêt',
 	'timedmedia-percent-done' => 'Environ $1 % complété',
 	'timedmedia-days' => '$1 {{PLURAL:$1| jour|jours}}',
 	'timedmedia-hours' => '$1 {{PLURAL:$1|heure|heures}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minute|minutes}}',
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|seconde|secondes}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 et $4',
+	'timedmedia-time-3-measurements' => '$1, $2 et $3',
+	'timedmedia-time-2-measurements' => '$1 et $2',
 	'timedmedia-show-error' => 'Afficher les erreurs',
 	'timedmedia-source-file' => 'Source $1',
 	'timedmedia-source-file-desc' => 'Initial $1, $2 × $3 ($4)',
