@@ -2089,6 +2089,7 @@ $messages['ps'] = array(
 	'timedmedia-dismiss' => 'تړل',
 	'timedmedia-download' => 'دوتنه ښکته کول',
 	'timedmedia-desc-link' => 'د همدې دوتنې په اړه',
+	'timedmedia-status' => 'دريځ',
 );
 
 /** Portuguese (Português)
