@@ -660,8 +660,8 @@ mw.EmbedPlayer.prototype = {
 	 */
 	loadPlayerSize: function( element ) {
 		// check for direct element attribute:
-		this.height = element.height ? element.height : $(element).css( 'height' );
-		this.width = element.width ? element.width : $(element).css( 'width' );
+		this.height = element.height ? element.height + '' : $(element).css( 'height' );
+		this.width = element.width ? element.width + '' : $(element).css( 'width' );
 		// Special check for chrome 100% with re-mapping to 32px 
 		// ( hopefully no one embeds video at 32x32 )
 		if( this.height == '32px' || this.height =='32px' ){
@@ -693,8 +693,8 @@ mw.EmbedPlayer.prototype = {
 
 
 		// Special case for audio
-		// Firefox sets audio height to "0px" while webkit uses 32px .. force
-		// zero:
+						
+		// Firefox sets audio height to "0px" while webkit uses 32px .. force zero:
 		if( this.isAudio() && this.height == '32' ) {
 			this.height = 20;
 		}

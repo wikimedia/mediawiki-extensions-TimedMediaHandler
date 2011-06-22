@@ -131,12 +131,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function getXmlMediaTagOutput( $sizeOverride = array() ){
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
-		$firstSource = current( reset( $mediaSources ) );
+		$firstSource = current( $mediaSources );
 		if( !$firstSource['src'] ){
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
 		};
-
 		// Build the video tag output:		
 		$s = Xml::tags( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
 	
