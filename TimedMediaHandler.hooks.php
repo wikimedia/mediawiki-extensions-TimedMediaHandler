@@ -18,6 +18,11 @@ class TimedMediaHandlerHooks {
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
 		
+		// Set the default webPath for this embed player extension
+		global $wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir;
+		$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath . 
+			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer'; 
+		
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';

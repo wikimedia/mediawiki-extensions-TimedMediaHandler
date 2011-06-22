@@ -716,7 +716,6 @@ mw.PlayerControlBuilder.prototype = {
 				gM( 'mwe-embedplayer-for_best_experience', mw.getConfig('EmbedPlayer.FirefoxLink') )
 			);
 		}
-
 		// Do png fix for ie6
 		if ( $.browser.msie && $.browser.version <= 6 ) {
 			$( '#' + embedPlayer.id + ' .play-btn-large' ).pngFix();

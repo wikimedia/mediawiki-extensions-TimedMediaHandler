@@ -20,7 +20,7 @@ $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebV
 
 /*** MwEmbed module configuration: *********************************/
 // Show a warning to the user if they are not using an html5 browser with high quality ogg support
-$wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true; 
+$wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 
 // The text interface should always be shown 
 // ( even if there are no text tracks for that asset at render time )

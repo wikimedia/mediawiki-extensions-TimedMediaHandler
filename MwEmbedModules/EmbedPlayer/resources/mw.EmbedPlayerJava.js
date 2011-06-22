@@ -101,9 +101,7 @@ mw.EmbedPlayerJava = {
 		if (
 			!mw.isLocalDomain( mediaSrc )
 			||
-			!mw.isLocalDomain( mw.getMwEmbedPath()
-			||
-			mw.getConfig( 'relativeCortadoAppletPath' ) === false )
+			!mw.isLocalDomain( mw.getMwEmbedPath() )
 		){
 			if ( window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ] ) {
 				appletLoc = window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
