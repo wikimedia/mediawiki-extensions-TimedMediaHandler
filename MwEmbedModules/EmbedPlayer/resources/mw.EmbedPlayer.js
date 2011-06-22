@@ -601,6 +601,7 @@ mw.EmbedPlayer.prototype = {
 
 		// Set the player size attributes based loaded video element:
 		this.loadPlayerSize( element );
+		
 		// Set the plugin id
 		this.pid = 'pid_' + this.id;
 
@@ -658,8 +659,9 @@ mw.EmbedPlayer.prototype = {
 	 *      element Source element to grab size from
 	 */
 	loadPlayerSize: function( element ) {
-		this.height = $(element).css( 'height' );
-		this.width = $(element).css( 'width' );
+		// check for direct element attribute:
+		this.height = element.height ? element.height : $(element).css( 'height' );
+		this.width = element.width ? element.width : $(element).css( 'width' );
 		// Special check for chrome 100% with re-mapping to 32px 
 		// ( hopefully no one embeds video at 32x32 )
 		if( this.height == '32px' || this.height =='32px' ){

@@ -204,9 +204,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$posterUrl = $apiUrl;
 			}
 		}
-		$mediaAttr = array(			
+		$mediaAttr = array(
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			'style' => "width:{$width}px;height:{$height}px",
+			// also set direct width height attributes for IE html elements to retain properties:
+			'width' => $width,
+			'height' => $height,
 			// Get the correct size: 
 			'poster' => $posterUrl,
 			'alt' => $this->file->getTitle()->getText(),
