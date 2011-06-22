@@ -11,9 +11,9 @@
 	*/
 	$( mw ).bind( 'SetupInterface', function( event, callback ){
 		// Check if we have tags to rewrite: 
-		if( $( mw.getConfig( 'EmbedPlayer.RewriteTags' )  ).length ) {
-			// Rewrite the embedPlayer EmbedPlayer.RewriteTags and run callback once ready:
-			$( mw.getConfig( 'EmbedPlayer.RewriteTags' ) )
+		if( $( mw.getConfig( 'EmbedPlayer.RewriteSelector' )  ).length ) {
+			// Rewrite the embedPlayer EmbedPlayer.RewriteSelector and run callback once ready:
+			$( mw.getConfig( 'EmbedPlayer.RewriteSelector' ) )
 				.embedPlayer( callback );
 		}
 	});

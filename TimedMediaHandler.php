@@ -34,6 +34,9 @@ $wgAvailableRights[] = 'transcode-reset';
 // Which users can restart failed or expired transcode jobs
 $wgGroupPermissions['sysop']['transcode-reset'] = true;
 
+// How long you have to wait between transcode resets for non-error transcodes
+$wgWaitTimeForTranscodeReset = 3600;
+
 // The minimum size for an embed video player:
 $wgMinimumVideoPlayerSize = 200;
 
@@ -170,6 +173,4 @@ $wgExtensionCredits['media'][] = array(
 	'descriptionmsg' => 'timedmedia-desc',
 	'version'		 => '0.2',
 );
-
-
 

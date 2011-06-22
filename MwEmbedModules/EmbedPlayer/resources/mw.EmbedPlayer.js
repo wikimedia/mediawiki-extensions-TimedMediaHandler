@@ -144,6 +144,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 				callback();
 		}
 	}
+
 	/**
 	 * Adds a player element for the embedPlayer to rewrite
 	 *

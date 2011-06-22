@@ -143,6 +143,25 @@ class TimedMediaHandler extends MediaHandler {
 		}
 		return $time;
 	}	
+	public static function getTimePassedMsg( $timePassed ){		
+		$t['days'] = floor($timePassed/60/60/24);
+		$t['hours'] = floor($timePassed/60/60)%24;
+		$t['minutes'] = floor($timePassed/60)%60;
+		$t['seconds'] = $timePassed%60;			
+		
+		foreach( $t as $k => $v ){
+			if($v == 0 ){
+				unset( $t[$k] );
+			}else{
+				$t[$k] = wfMsg( 'timedmedia-' . $k, $v);
+			}
+		}
+		if( count( $t ) == 0 ){
+			$t = array( wfMsg( 'timedmedia-seconds', 0) ) ;
+		}
+		// Call to the correct set of significant measurements:
+		return wfMsgHtml( 'timedmedia-time-' . count($t) . '-measurements', $t);
+	}
 	/**
 	 * Converts seconds to Normal play time (NPT) time format:
 	 * consist of hh:mm:ss.ms

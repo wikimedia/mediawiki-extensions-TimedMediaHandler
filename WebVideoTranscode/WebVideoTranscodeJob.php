@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  * Job for transcode jobs
  *
@@ -16,33 +16,6 @@
  * @ingroup JobQueue
  */
 
-
-/**
- * Unless I am unaware of some command line trickery, we have to wrap the background
- * commands in a script to grab the background exit code ( echo $? )
- *
- * Ie in the bellow code "echo $?" gives us the status of "echo $1" not "nohub" call
- * a wait $pid & echo $? of course does not work since the background taks is not part
- * of a child shell call
- *
- * pseudo shell code for backgroundTask.sh
- *
-#/bin/bash
-
-# simple script to run a background and writing output and exit status to a file
-# returns its "pid" for proccess monitoring
-# Usage: backgroundTask.sh [command] [stdout target file] [pid target file] [exit status target file]
-
-# Run the command with output redirected to target file ( in the background )
-$1 > $2 &
-# Output the pid to target file:
-echo $! > $3
-# wait until task is done
-wait $!
-# output exit status:
-echo $? > $4
-
-*/
 class WebVideoTranscodeJob extends Job {
 	var $targetEncodePath = null;
 	var $sourceFilePath = null;
@@ -103,12 +76,12 @@ class WebVideoTranscodeJob extends Job {
 		);
 		if( ! is_null( $dbStartTime ) ){
 			$this->output( 'Error, running transcode job, for job that has already started' );
-			// back out of this job. ( if there was a transcode error it should be restarted with api transcode-reset )
+			// back out of this job. ( if there was a transcode error it should be restarted with api transcode-reset ) 
 			// not some strange out-of-order error.
 			return false;
 		}
 
-		// Update the transcode table letting it know we have "started work":
+		// Update the transcode table letting it know we have "started work":  		
 		$jobStartTimeCache = $db->timestamp();
 		$dbw->update(
 			'transcode',
@@ -120,8 +93,8 @@ class WebVideoTranscodeJob extends Job {
 			__METHOD__,
 			array( 'LIMIT' => 1 )
 		);
-
-
+		
+		
 		// Check the codec see which encode method to call;
 		if( $options['videoCodec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $options );
@@ -159,17 +132,17 @@ class WebVideoTranscodeJob extends Job {
 			if( $status !== true ){
 				return false;
 			}
-			// else just continue with db updates, and when the new job comes around it won't start because it will see
+			// else just continue with db updates, and when the new job comes around it won't start because it will see 
 			// that the job has already been started.
 		}
 
-		// If status is oky move the file to its final destination. ( timedMediaHandler will look for it there )
-		if( $status === true ){
+		// If status is oky and file exists and is larger than 0 bytes
+		if( $status === true && is_file( $this->getTargetEncodePath() ) && filesize( $this->getTargetEncodePath() ) > 0 ){
 			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
 			wfSuppressWarnings();
-			$status = rename( $this->getTargetEncodePath(), $finalDerivativeFilePath );
-			wfRestoreWarnings();
+			$status = rename( $this->getTargetEncodePath(), $finalDerivativeFilePath );			
 			$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
+			wfRestoreWarnings();
 			// Update the transcode table with success time:
 			$dbw->update(
 				'transcode',
@@ -186,7 +159,7 @@ class WebVideoTranscodeJob extends Job {
 			);
 			WebVideoTranscode::invalidatePagesWithFile( $this->title );
 		} else {
-			// Update the transcode table with failure time and error
+			// Update the transcode table with failure time and error 
 			$dbw->update(
 				'transcode',
 				array(
@@ -200,11 +173,11 @@ class WebVideoTranscodeJob extends Job {
 				__METHOD__,
 				array( 'LIMIT' => 1 )
 			);
-			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
+			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative ) 
 			// just clear the file page ( so that the transcode table shows the error )
 			$this->title->invalidateCache();
 		}
-		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
+		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around ) 
 		webVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
 		// pass along result status:
@@ -280,7 +253,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
-
+		
 		// Right before we output remove the old file
 		wfProfileIn( 'ffmpeg_encode' );
 		$retval = 0;
@@ -300,8 +273,8 @@ class WebVideoTranscodeJob extends Job {
 		$cmd ='';
 		// Add the boiler plate vp8 ffmpeg command:
 		$cmd.=" -y -skip_threshold 0 -rc_buf_aggressivity 0 -bufsize 6000k -rc_init_occupancy 4000 -threads 4";
-
-		// Check for video quality:
+		
+		// Check for video quality: 
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
 			// Map 0-10 to 63-0, higher values worse quality
 			$quality = 63 - intval( intval( $options['videoQuality'] )/10 * 63 );
@@ -309,7 +282,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -qmax " . wfEscapeShellArg( $quality );
 		}
 
-		// Check for video bitrate:
+		// Check for video bitrate: 
 		if ( isset( $options['videoBitrate'] ) ) {
 			$cmd.= " -qmin 1 -qmax 51";
 			$cmd.= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
@@ -317,7 +290,7 @@ class WebVideoTranscodeJob extends Job {
 		// Set the codec:
 		$cmd.= " -vcodec libvpx";
 
-		// Check for aspect ratio ( we don't do anything with this right now)
+		// Check for aspect ratio ( we don't do anything with this right now) 
 		if ( isset( $options['aspect'] ) ) {
 			$aspectRatio = $options['aspect'];
 		} else {
@@ -331,14 +304,14 @@ class WebVideoTranscodeJob extends Job {
 			// Get size transform ( if maxSize is > file, file size is used:
 			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
 			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
-		} elseif (
-			(isset( $options['width'] ) && $options['width'] > 0 )
+		} elseif ( 
+			(isset( $options['width'] ) && $options['width'] > 0 ) 
 			&&
-			(isset( $options['height'] ) && $options['height'] > 0 )
+			(isset( $options['height'] ) && $options['height'] > 0 ) 
 		){
 			$cmd.= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
 		}
-
+		
 		// Handle crop:
 		$optionMap = array(
 			'cropTop' => '-croptop',
@@ -423,9 +396,9 @@ class WebVideoTranscodeJob extends Job {
 
 		// Add the output target:
 		$cmd.= ' -o ' . wfEscapeShellArg ( $this->getTargetEncodePath() );
-
+		
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
-
+		
 		wfProfileIn( 'ffmpeg2theora_encode' );
 		$retval = 0;
 		$shellOutput = $this->runShellExec( $cmd, $retval );
@@ -436,17 +409,15 @@ class WebVideoTranscodeJob extends Job {
 		return true;
 	}
 	/**
-	 * Runs the shell exec command.
+	 * Runs the shell exec command. 
 	 * if $wgEnableBackgroundTranscodeJobs is enabled will mannage a background transcode task
-	 * else it just directly passes off to wfShellExec
+	 * else it just directly passes off to wfShellExec 
 	 *
 	 * @param $cmd String Command to be run
 	 * @param $retval String, refrence variable to return the exit code
 	 */
 	public function runShellExec( $cmd, &$retval){
-		global $wgEnableNiceBackgroundTranscodeJobs, $wgTranscodeBackgroundPriority,
-		$wgTranscodeBackgroundTimeLimit;
-
+		global $wgEnableNiceBackgroundTranscodeJobs, $wgTranscodeBackgroundPriority;
 		// Check if background tasks are enabled
 		if( $wgEnableNiceBackgroundTranscodeJobs === false ){
 			// Dont display shell output
@@ -454,99 +425,150 @@ class WebVideoTranscodeJob extends Job {
 			// Directly execute the shell command:
 			return wfShellExec( $cmd, $retval );
 		}
-		// Setup pointers for status and encoding log:
-		$encodingLog = $this->getTargetEncodePath() . '.stdout.log';
-		$exitStatusLog = $this->getTargetEncodePath() . '.exit.log';
-
-		// Start background shell proc
-		$pid = wfShellExec(
-			"nohup nice -n $wgTranscodeBackgroundPriority $cmd > " . wfEscapeShellArg( $encodingLog ) . ' ' .
-			// ideally we could store the exit status here ( but it causes & echo $! to give us a bad pid )
-			// "& echo $? > " . wfEscapeShellArg( $exitStatusLog ) . ' ' .
-			"& echo $!",
-			$retval
-		);
-		$pid = trim( $pid );
-		$errorMsg = '';
-
-		if( $pid == '' || $retval != 0){
-			$errorMsg = "Failed to start, check $wgMaxShellMemory settings";
-			$this->output( $errorMsg);
+		
+		$encodingLog = $this->getTargetEncodePath() . '.stdout.log';	
+		$retvalLog = $this->getTargetEncodePath() . '.retval.log';
+		// Check that we can actually write to these files 
+		//( no point in running the encode if we can't write )
+		wfSuppressWarnings();
+		if( ! touch( $encodingLog) || ! touch( $retvalLog ) ){
+			wfRestoreWarnings();
 			$retval = 1;
-			return $errorMsg;
+			return "Error could not write to target location";
 		}
+		wfRestoreWarnings();
+		
+		// Fork out a process for running the transcode
+		$pid = pcntl_fork();
+		if ($pid == -1) {
+			$errorMsg = '$wgEnableNiceBackgroundTranscodeJobs enabled but failed pcntl_fork';
+			$retval = 1;
+			$this->output( $errorMsg);
+		    return $errorMsg;
+		} else if ( $pid == 0) {
+			// we are the child
+			$this->runChildCmd( $cmd, $retval, $encodingLog, $retvalLog);
+			// exit with the same code as the transcode:
+			exit( $retval );
+		} else {
+			// we are the parent monitor and return status
+			return $this->monitorTranscode($pid, $retval, $encodingLog, $retvalLog);
+		}
+	}
+	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog ){
+		global $wgTranscodeBackgroundPriority;
+		// In theory we should use pcntl_exec but not sure how to get the stdout, ensure
+		// we don't max php memory with the same protections provided by wfShellExec. 
+		
+		// pcntl_exec requires a direct path to the exe and arguments as an array:
+		//$cmd = explode(' ', $cmd );
+		//$baseCmd = array_shift( $cmd );
+		//print "run:" . $baseCmd . " args: " . print_r( $cmd, true );
+		//$status  = pcntl_exec($baseCmd , $cmd );
+		
+		// Directly execute the shell command:
+		//global $wgTranscodeBackgroundPriority;
+		//$status = wfShellExec( 'nice -n ' . $wgTranscodeBackgroundPriority . ' '. $cmd . ' 2>&1', $retval );
+		$status = wfShellExec( $cmd . ' 2>&1', $retval );
+		
+		// Output the status: 
+		wfSuppressWarnings();
+		file_put_contents( $encodingLog, $status );
+		// Output the retVal to the $retvalLog 
+		file_put_contents( $retvalLog, $retval );
+		wfRestoreWarnings();
+	}
+	
+	public function monitorTranscode( $pid, &$retval, $encodingLog, $retvalLog ){
+		global $wgTranscodeBackgroundTimeLimit, $wgLang;
+		$errorMsg = '';
 		$loopCount = 0;
 		$oldFileSize = 0;
 		$startTime = time();
 		$fileIsNotGrowing = false;
-
-		while( true ){
-
-			// Check if pid still runing
-			if( ! self::isProcessRunning( $pid ) ){
-				// see large note above about background tasks ( echo $? is probably not the exit status we want )
-				$retval = wfShellExec( "echo $?");
-				//$this->output( $pid . ' is done, $retval: ' .$retval );
-				break;
-			}
-
-			// Check that the target file is growing ( every 5 seconds )
+		
+		$this->output( "Encoding with pid: $pid \npcntl_waitpid: " . pcntl_waitpid( $pid, $status, WNOHANG OR WUNTRACED) . 
+			"\nisProcessRunning: " . self::isProcessRunningKillZombie( $pid ) . "\n" );
+		
+		// Check that the child process is still running ( note this does not work well with  pcntl_waitpid
+		// for some reason :( 
+		while( self::isProcessRunningKillZombie( $pid ) ) {
+			//$this->output( "$pid is running" );
+			
+			// Check that the target file is growing ( every 5 seconds ) 
 			if( $loopCount == 5 ){
-				// only run check if we are outputing to target file
-				// ( two pass encoding does not output to target on first pass )
+				// only run check if we are outputing to target file 
+				// ( two pass encoding does not output to target on first pass ) 
 				if( is_file( $this->getTargetEncodePath() ) ){
 					clearstatcache();
 					$newFileSize = filesize( $this->getTargetEncodePath() );
+					$this->output(  $wgLang->formatSize( $newFileSize ). ' Total size, encoding ' . 
+						$wgLang->formatSize( ( $newFileSize - $oldFileSize ) / 5 ) . ' per second' );
 					if( $newFileSize == $oldFileSize ){
 						if( $fileIsNotGrowing ){
 							$errorMsg = "Target File is not increasing in size, kill process.";
 							$this->output( $errorMsg );
 							// file is not growing in size, kill proccess
 							$retval = 1;
-							self::killProcess( $pid );
+							posix_kill( $pid, 9);
 							break;
 						}
-						// Wait an additional 5 seconds of the file not growing to confirm
-						// the transcode is frozen.
+						// Wait an additional 5 seconds of the file not growing to confirm 
+						// the transcode is frozen. 
 						$fileIsNotGrowing = true;
+					} else {
+						$fileIsNotGrowing = false;
 					}
 					$oldFileSize = $newFileSize;
 				}
 				// reset the loop counter
 				$loopCount = 0;
-			}
-
+			}			
+			
 			// Check if we have global job run-time has been exceeded:
 			if ( $wgTranscodeBackgroundTimeLimit && time() - $startTime  > $wgTranscodeBackgroundTimeLimit ){
 				$errorMsg = "Encoding exceeded max job run time ( " . TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process.";
 				$this->output( $errorMsg );
 				// File is not growing in size, kill proccess
 				$retval = 1;
-				self::killProcess( $pid );
+				posix_kill( $pid, 9);
 				break;
 			}
-
+			
 			// Sleep for one second before repeating loop
 			$loopCount++;
 			sleep( 1 );
 		}
-
-		// return the encoding log contents ( will be inserted into error table if an error )
+		
+		$returnPcntl = pcntl_wexitstatus( $status );
+		// check status 
+		wfSuppressWarnings();
+		$returnCodeFile = file_get_contents( $retvalLog );
+		wfRestoreWarnings();
+		//$this->output( "TranscodeJob:: Child pcntl return:". $returnPcntl . ' Log file exit code:' . $returnCodeFile . "\n" );
+		
+		// File based exit code seems more reliable than pcntl_wexitstatus
+		$retval = $returnCodeFile;
+		
+		// return the encoding log contents ( will be inserted into error table if an error ) 
 		// ( will be ignored and removed if success )
 		if( $errorMsg!= '' ){
 			$errorMsg.="\n\n";
 		}
 		return $errorMsg . file_get_contents( $encodingLog );
 	}
-	public static function isProcessRunning( $pid ){
-       exec( "ps $pid", $processState );
-       return( count( $processState ) >= 2 );
+	// check if proccess is running and not a zombie 
+	public static function isProcessRunningKillZombie( $pid ){
+		exec( "ps $pid", $processState );
+		if( !isset( $processState[1] ) ){
+			return false;
+		}
+		if( strpos( $processState[1], '<defunct>' ) !== false ){
+			posix_kill( $pid, 9);
+			return false;
+		}
+		return true;
 	}
-	public static function killProcess( $pid ){
-		// we are killing a hung prcoces send -9 signal
-		wfShellExec( "kill -9 $pid");
-	}
-
 	 /**
 	 * Mapping between firefogg api and ffmpeg2theora command line
 	 *
@@ -591,5 +613,5 @@ class WebVideoTranscodeJob extends Job {
 		'license'		=> "--license",
 		'contact'		=> "--contact"
 	);
-
+	
 }

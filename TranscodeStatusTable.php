@@ -108,33 +108,15 @@ class TranscodeStatusTable {
 			}	*/
 			// predicting percent done is not working well right now ( disabled for now )
 			$doneMsg = '';
-			return wfMsgHtml('timedmedia-started-transcode', self::getTimePassedMsg( $timePassed ), $doneMsg );
+			return wfMsgHtml('timedmedia-started-transcode', TimedMediaHandler::getTimePassedMsg( $timePassed ), $doneMsg );
 		}
 		// Check for job added ( but not started encoding )
 		if( !is_null( $state['time_addjob'] ) ){
 			$timePassed =  wfTimestampNow() - $db->timestamp( $state['time_addjob'] ) ;
-			return wfMsgHtml('timedmedia-in-job-queue', self::getTimePassedMsg( $timePassed ) );
+			return wfMsgHtml('timedmedia-in-job-queue', TimedMediaHandler::getTimePassedMsg( $timePassed ) );
 		}
 		// Return unknown status error:
 		return wfMsgHtml('timedmedia-status-unknown');
 	}
-	public static function getTimePassedMsg( $timePassed ){		
-		$t['days'] = floor($timePassed/60/60/24);
-		$t['hours'] = floor($timePassed/60/60)%24;
-		$t['minutes'] = floor($timePassed/60)%60;
-		$t['seconds'] = $timePassed%60;			
-		
-		foreach( $t as $k => $v ){
-			if($v == 0 ){
-				unset( $t[$k] );
-			}else{
-				$t[$k] = wfMsg( 'timedmedia-' . $k, $v);
-			}
-		}
-		if( count( $t ) == 0 ){
-			$t = array( wfMsg( 'timedmedia-seconds', 0) ) ;
-		}
-		// Call to the correct set of significant measurements:
-		return wfMsgHtml( 'timedmedia-time-' . count($t) . '-measurements', $t);
-	}
+	
 }

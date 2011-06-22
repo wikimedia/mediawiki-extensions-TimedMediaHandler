@@ -23,7 +23,7 @@
 	
 			// jQuery selector of tags to be re-written by embedPlayer
 			// Set to empty string or null to avoid automatic video tag rewrites to embedPlayer
-			"EmbedPlayer.RewriteTags" => "video,audio,playlist",
+			"EmbedPlayer.RewriteSelector" => "video,audio,playlist",
 	
 			// Default video size ( if no size provided )
 			"EmbedPlayer.DefaultSize" => "400x300",
