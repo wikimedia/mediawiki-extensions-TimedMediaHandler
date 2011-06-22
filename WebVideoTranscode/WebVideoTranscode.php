@@ -286,6 +286,11 @@ class WebVideoTranscode {
 			return $sources;
 		}
 		
+		// If an "oldFile" don't look for other sources:
+		if( $file->isOld() ){
+			return $sources;
+		}
+		
 		// Just directly return audio sources ( No transcoding for audio for now ) 
 		if( $file->getHandler()->isAudio( $file ) ){			
 			return $sources;

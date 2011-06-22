@@ -197,8 +197,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// The poster url:
 		$posterUrl = $this->getUrl();
 		
-		// Update the $posterUrl to $sizeOverride
-		if( $sizeOverride && $sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
+		// Update the $posterUrl to $sizeOverride ( if not an old file ) 
+		if( !$this->file->isOld() && $sizeOverride && $sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){			
 			$apiUrl = $this->getPosterFromApi( $sizeOverride[0] );
 			if( $apiUrl ){
 				$posterUrl = $apiUrl;
