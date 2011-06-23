@@ -15,6 +15,8 @@ $timedMediaDir = dirname(__FILE__);
 // Include WebVideoTranscode ( prior to config so that its defined transcode keys can be used in configuration  )  
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 
+// Add the rest transcode right:
+$wgAvailableRights[] = 'transcode-reset'; 
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
@@ -25,11 +27,6 @@ $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 // The text interface should always be shown 
 // ( even if there are no text tracks for that asset at render time )
 $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
-
-/*** end MwEmbed module configuration: ******************************/
-
-// Add the rest transcode right:
-$wgAvailableRights[] = 'transcode-reset'; 
 
 // Which users can restart failed or expired transcode jobs
 $wgGroupPermissions['sysop']['transcode-reset'] = true;

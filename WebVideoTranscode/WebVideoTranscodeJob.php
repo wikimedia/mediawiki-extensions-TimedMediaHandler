@@ -499,9 +499,10 @@ class WebVideoTranscodeJob extends Job {
 			if( $loopCount == 5 ){
 				// only run check if we are outputing to target file 
 				// ( two pass encoding does not output to target on first pass ) 
-				if( is_file( $this->getTargetEncodePath() ) ){
-					clearstatcache();
-					$newFileSize = filesize( $this->getTargetEncodePath() );
+				clearstatcache();
+				$newFileSize = filesize( $this->getTargetEncodePath() );
+				// Don't start checking for file growth until we have an initial positive file size: 
+				if( is_file( $this->getTargetEncodePath() ) &&  $newFileSize > 0 ){
 					$this->output(  $wgLang->formatSize( $newFileSize ). ' Total size, encoding ' . 
 						$wgLang->formatSize( ( $newFileSize - $oldFileSize ) / 5 ) . ' per second' );
 					if( $newFileSize == $oldFileSize ){
@@ -510,7 +511,9 @@ class WebVideoTranscodeJob extends Job {
 							$this->output( $errorMsg );
 							// file is not growing in size, kill proccess
 							$retval = 1;
-							posix_kill( $pid, 9);
+							
+							//posix_kill( $pid, 9);
+							self::killProcess( $pid );
 							break;
 						}
 						// Wait an additional 5 seconds of the file not growing to confirm 
@@ -531,7 +534,8 @@ class WebVideoTranscodeJob extends Job {
 				$this->output( $errorMsg );
 				// File is not growing in size, kill proccess
 				$retval = 1;
-				posix_kill( $pid, 9);
+				//posix_kill( $pid, 9);
+				self::killProcess( $pid );
 				break;
 			}
 			
@@ -564,11 +568,27 @@ class WebVideoTranscodeJob extends Job {
 			return false;
 		}
 		if( strpos( $processState[1], '<defunct>' ) !== false ){
-			posix_kill( $pid, 9);
+			// posix kill does not seem to work
+			//posix_kill( $pid, 9);
+			self::killProcess( $pid );	
 			return false;
 		}
 		return true;
 	}
+	/**
+    * Kill Application PID
+    *
+    * @param  unknown_type $PID
+    * @return boolen
+    */
+	public static function killProcess( $pid ){
+		exec( "kill -9 $pid" );
+		exec( "ps $pid", $processState );
+		if( isset( $processState[1] ) ){
+			return false;
+		}
+		return true;
+   	}
 	 /**
 	 * Mapping between firefogg api and ffmpeg2theora command line
 	 *
