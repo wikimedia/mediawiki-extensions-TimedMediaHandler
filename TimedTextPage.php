@@ -41,7 +41,7 @@ class TimedTextPage extends Article {
 		$wgOut->addHTML( 
 			xml::tags( 'table', array( 'style'=> 'border:none' ), 
 				xml::tags( 'tr', null, 
-					xml::tags( 'td', array( 'width' => self::$videoWidth ), $this->getVideoHTML( $videoTitle ) ) .
+					xml::tags( 'td', array( 'valign' => 'top',  'width' => self::$videoWidth ), $this->getVideoHTML( $videoTitle ) ) .
 					xml::tags( 'td', array( 'valign' => 'top' ) , $this->getSrtHTML( $languageName ) )
 				)
 			)
@@ -74,5 +74,6 @@ class TimedTextPage extends Article {
 		if( !$this->exists() ){
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
+		return '<pre style="margin-top:0px;">'. $this->getContent() . "</pre>";
 	}
 }
