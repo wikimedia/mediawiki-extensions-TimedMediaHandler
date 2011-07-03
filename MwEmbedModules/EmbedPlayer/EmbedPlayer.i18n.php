@@ -2080,7 +2080,7 @@ $messages['pl'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(zaznaczone)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Dla lepszego odtwarzania filmów polecamy [$1 najnowszy Firefox].',
-	'mwe-embedplayer-do_not_warn_again' => 'Od teraz ignoruj.',
+	'mwe-embedplayer-do_not_warn_again' => 'W przyszłości nie pokazuj tego komunikatu',
 	'mwe-embedplayer-playerSelect' => 'Odtwarzacze',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="_new">Przeczytaj to</a> przed wstawieniem.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Umieść na swojej stronie lub blogu',
