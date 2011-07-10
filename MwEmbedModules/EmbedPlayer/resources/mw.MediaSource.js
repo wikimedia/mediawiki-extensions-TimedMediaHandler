@@ -57,9 +57,18 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 
 mw.MediaSource = function( element ) {
 	this.init( element );
-}
+};
 
 mw.MediaSource.prototype = {
+	// MIME type of the source.
+	mimeType:null,
+
+	// URI of the source.
+	uri:null,
+
+	// Title of the source.
+	title: null,
+
 	// True if the source has been marked as the default.
 	markedDefault: false,
 
@@ -72,10 +81,25 @@ mw.MediaSource.prototype = {
 	// Duration of the requested segment (0 if not known)
 	duration:0,
 
+	// Is the source playable
+	is_playable: null,
+
+	// source id
+	id: null,
+
+	// Start time in npt format
+	start_npt: null,
+
+	// End time in npt format
+	end_npt: null,
+
+	// Language of the file
+	srclang: null,
 	/**
 	 * MediaSource constructor:
 	 */
 	init : function( element ) {
+		var _this = this;
 		// mw.log('EmbedPlayer::adding mediaSource: ' + element);
 		this.src = $( element ).attr( 'src' );
 
@@ -88,16 +112,19 @@ mw.MediaSource.prototype = {
 		}
 
 		var sourceAttr = mw.getConfig( 'EmbedPlayer.SourceAttributes' );
-		for ( var i = 0; i < sourceAttr.length; i++ ) { // array loop:
-			var attr = sourceAttr[ i ];
-			var attrValue = $( element ).attr( attr );			
-			if ( attrValue ) {
+		$.each(sourceAttr, function(inx, attr){
+			if ( $j( element ).attr( attr ) ) {
 				// strip data- from the attribute name
 				if( attr.indexOf('data-') === 0){
 					attr = attr.substr(5);
 				}
-				this[ attr ] = attrValue;
+				_this[ attr ] = $j( element ).attr( attr );
 			}
+		});
+
+		// Normalize "label" to "title" ( label is the actual spec so use that over title )
+		if( this.label ){
+			this.title = this.label;
 		}
 
 		// Set the content type:
@@ -119,6 +146,12 @@ mw.MediaSource.prototype = {
 
 		if( this.mimeType == 'audio/vorbis') {
 			this.mimeType = 'audio/ogg';
+		}
+		
+		// Conform long form "video/ogg; codecs=theora" based attributes
+		// @@TODO we should support codec in the type arguments
+		if( this.mimeType ){
+			this.mimeType = this.mimeType.split(';')[0];
 		}
 
 		// Check for parent elements ( supplies categories in "track" )
@@ -259,6 +292,12 @@ mw.MediaSource.prototype = {
 			case 'audio/ogg' :
 				return gM( 'mwe-embedplayer-video-audio' );
 			break;
+			case 'audio/mpeg' :
+				return 'MPEG audio'; // FIXME: i18n
+			break;
+			case 'video/3gp' :
+				return '3gp video'; // FIXME: i18n
+			break;
 			case 'video/mpeg' :
 				return 'MPEG video'; // FIXME: i18n
 			break;
@@ -306,7 +345,16 @@ mw.MediaSource.prototype = {
 			}
 		}
 	},
-
+	/**
+	* Get the extension of a url
+	* @param String uri
+	*/
+	getExt : function( uri ){
+		var urlParts = new mw.Uri( uri );
+		// Get the extension from the url or from the relative name:
+		var ext = ( urlParts.file )?  /[^.]+$/.exec( urlParts.file )  :  /[^.]+$/.exec( uri );
+		return ext.toString().toLowerCase()
+	},
 	/**
 	 * Attempts to detect the type of a media file based on the URI.
 	 *
@@ -319,15 +367,7 @@ mw.MediaSource.prototype = {
 		// we can issue a HEAD request and read the mime type of the media...
 		// ( this will detect media mime type independently of the url name )
 		// http://www.jibbering.com/2002/4/httprequest.html
-		var ext ='';
-		try{
-			ext = /[^.]+$/.exec( new mw.Uri( uri ).path );
-		} catch ( e){ 
-			ext =  /[^.]+$/.exec( uri );	
-		};
-		
-		// Get the extension from the url or from the relative name: 
-		switch( ext.toString().toLowerCase() ) {
+		switch( this.getExt( uri ) ) {
 			case 'smil':
 			case 'sml':
 				return 'application/smil';
@@ -336,8 +376,14 @@ mw.MediaSource.prototype = {
 			case 'mp4':
 				return 'video/h264';
 			break;
+			case 'm3u8':
+				return 'application/vnd.apple.mpegurl';
+			break;
 			case 'webm':
 				return 'video/webm';
+			break;
+			case '3gp':
+				return 'video/3gp';
 			break;
 			case 'srt':
 				return 'text/x-srt';
@@ -351,6 +397,9 @@ mw.MediaSource.prototype = {
 			break;
 			case 'oga':
 				return 'audio/ogg';
+			break;
+			case 'mp3':
+				return 'audio/mpeg';
 			break;
 			case 'anx':
 				return 'video/ogg';

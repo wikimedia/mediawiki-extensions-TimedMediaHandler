@@ -43,14 +43,16 @@ mw.MediaElement.prototype = {
 		this.sources = new Array();
 
 		// Process the videoElement as a source element:
-		if ( $( videoElement ).attr( "src" ) ) {
-			_this.tryAddSource( videoElement );
-		}
+		if( videoElement ){
+			if ( $( videoElement ).attr( "src" ) ) {
+				_this.tryAddSource( videoElement );
+			}
 
-		// Process elements source children
-		$( videoElement ).find( 'source,track' ).each( function( ) {
-			_this.tryAddSource( this );
-		} );
+			// Process elements source children
+			$( videoElement ).find( 'source,track' ).each( function( ) {
+				_this.tryAddSource( this );
+			} );
+		}
 	},
 
 	/**
@@ -113,7 +115,7 @@ mw.MediaElement.prototype = {
 	 * Selects a source by id
 	 *
 	 * @param {String}
-	 *      source_id Id of the source to select.
+	 *      sourceId Id of the source to select.
 	 * @return {MediaSource} The selected mediaSource or null if not found
 	 */
 	getSourceById:function( sourceId ) {
@@ -167,8 +169,7 @@ mw.MediaElement.prototype = {
 		var _this = this;
 		// Select the default source
 		var playableSources = this.getPlayableSources();
-		var flash_flag, oggflag;
-		flash_flag = ogg_flag = false;
+		var flash_flag = ogg_flag = false;
 
 		// Check if there are any playableSources
 		if( playableSources.length == 0 ){
@@ -176,25 +177,25 @@ mw.MediaElement.prototype = {
 		}
 		var setSelectedSource = function( source ){
 			_this.selectedSource = source;
+			return true;
 		};
-		
+
 		// Set via user-preference
 		$.each( playableSources, function( inx, source ){
 			var mimeType =source.mimeType;
 			if ( mw.EmbedTypes.getMediaPlayers().preference[ 'format_preference' ] == mimeType ) {
 				 mw.log( 'MediaElement::autoSelectSource: Set via preference: ' + source.mimeType );
-				 setSelectedSource( source );
-				 return true;
+				 return setSelectedSource( source );
 			}
 		});
-		
+
 		// Set via module driven preference:
 		$(this).trigger( 'AutoSelectSource', [ playableSources ] );
 		if( _this.selectedSource ){
 			mw.log('MediaElement::autoSelectSource: Set via trigger::' );
 			return true;
 		}
-	
+
 		// Set via marked default:
 		$.each( playableSources, function( inx, source ){
 			if ( source.markedDefault ) {
@@ -203,7 +204,7 @@ mw.MediaElement.prototype = {
 				return true;
 			}
 		});
-		
+
 		//Set via user bandwith pref 
 		if( $.cookie('EmbedPlayer.UserBandwidth') ){
 			$.each( playableSources, function(inx, source ){
@@ -244,30 +245,32 @@ mw.MediaElement.prototype = {
 		var namedSources = [];
 		$.each( playableSources, function(inx, source ){
 			var mimeType = source.mimeType;
-			var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );			
+			var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
 			if ( player && player.library == 'Native'	) {
 				switch( player.id	){
-					case 'oggNative': 
-						namedSources['ogg'] = source; 
+					case 'mp3Native':
+						namedSources['mp3'] = playableSources[ source ];
+						break;
+					case 'oggNative':
+						namedSources['ogg'] = playableSources[ source ];
 						break;
 					case 'webmNative':
-						namedSources['webm'] = source; 
+						namedSources['webm'] = playableSources[ source ];
 						break;
 					case 'h264Native':
-						namedSources['h264'] = source; 
+						namedSources['h264'] = playableSources[ source ];
 						break;
 				}
 			}
 		});
+		
 		var codecPref =mw.getConfig( 'EmbedPlayer.CodecPreference');
 		for(var i =0; i < codecPref.length; i++){
 			var codec = codecPref[ i ];
 			if( namedSources[ codec ]){
-				setSelectedSource( namedSources[ codec ] );
-				return true;
+				return setSelectedSource( namedSources[ codec ] );
 			}
 		};
-		
 
 		// Set h264 via native or flash fallback
 		$.each( playableSources, function(inx, source ){
@@ -282,16 +285,14 @@ mw.MediaElement.prototype = {
 				)
 			) {
 				mw.log('MediaElement::autoSelectSource: Set h264 via native or flash fallback');
-				 setSelectedSource( source );
-				return true;
+				return setSelectedSource( playableSources[ source ] );
 			}
 		});
 
 		// Else just select first source
-		if ( !this.selectedSource ) {
+		if ( !this.selectedSource &&  playableSources[0] ) {
 			mw.log( 'MediaElement::autoSelectSource: Set via first source:' + playableSources[0] );
-			 setSelectedSource( playableSources[0] );
-			return true;
+			return setSelectedSource( playableSources[0] );
 		}
 		// No Source found so no source selected
 		return false;
@@ -389,10 +390,12 @@ mw.MediaElement.prototype = {
 		 for ( var i = 0; i < this.sources.length; i++ ) {
 			 if ( this.isPlayableType( this.sources[i].mimeType ) ) {
 				 playableSources.push( this.sources[i] );
-			 }
+			} else {
+				 mw.log( "type " + this.sources[i].mimeType + ' is not playable' );
+			}
 		 };
 		 return playableSources;
-	}	
+	}
 };
 
 } )( mediaWiki, jQuery );
