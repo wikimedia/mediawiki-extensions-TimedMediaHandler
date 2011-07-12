@@ -86,12 +86,11 @@ class TimedMediaHandlerHooks {
 		// ( a maintenance script could handle transcode asset purging)
 		if ( isset( $wgExcludeFromThumbnailPurge ) ) {
 			$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $wgTmhFileExtensions );
+			// Also add the .log file ( used in two pass encoding )
+			// ( probably should move in-progress encodes out of web accessible directory )
+			$wgExcludeFromThumbnailPurge[] = 'log';
 		}
 
-		// Also add the .log file ( used in two pass encoding )
-		// ( probably should move in-progress encodes out of web accessible directory )
-		$wgExcludeFromThumbnailPurge[] = 'log';
-		
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::loadExtensionSchemaUpdates';
 		
 		// Add unit tests
