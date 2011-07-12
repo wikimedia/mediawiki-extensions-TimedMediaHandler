@@ -7,7 +7,15 @@
  * 
  */
 class TranscodeStatusTable {
-	
+
+	public static $linker;
+
+	public static function getLinker() {
+	    if ( is_null( self::$linker ) ) {
+		    self::$linker = new Linker();
+	    }
+	}
+
 	public static function getHTML( $file ){
 		global $wgUser, $wgOut;
 		
@@ -16,7 +24,7 @@ class TranscodeStatusTable {
 		
 		$o = '<h2>' . wfMsgHtml( 'timedmedia-status-header' ) . '</h2>';
 		// Give the user a purge page link
-		$o.= Linker::link( $file->getTitle(), wfMsg('timedmedia-update-status'), array(), array( 'action'=> 'purge' ) );
+		$o.= self::$linker->link( $file->getTitle(), wfMsg('timedmedia-update-status'), array(), array( 'action'=> 'purge' ) );
 		
 		$o.= Xml::openElement( 'table', array( 'class' => 'wikitable transcodestatus' ) ) . "\n"
 			. '<tr>'
@@ -82,7 +90,7 @@ class TranscodeStatusTable {
 		// Check for error: 
 		if( !is_null( $state['time_error'] ) ){
 			if( !is_null( $state['error'] ) ){
-				$showErrorLink = Linker::link( $file->getTitle(), wfMsg('timedmedia-show-error'), array(
+				$showErrorLink = self::$linker->link( $file->getTitle(), wfMsg('timedmedia-show-error'), array(
 					'title' => wfMsgHtml('timedmedia-error-on', $state['time_error'] ),
 					'class' => 'errorlink',
 					'data-error' => $state['error']

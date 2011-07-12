@@ -84,7 +84,9 @@ class TimedMediaHandlerHooks {
 		
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
-		$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $wgTmhFileExtensions );
+		if ( isset( $wgExcludeFromThumbnailPurge ) ) {
+			$wgExcludeFromThumbnailPurge = array_merge( $wgExcludeFromThumbnailPurge, $wgTmhFileExtensions );
+		}
 
 		// Also add the .log file ( used in two pass encoding )
 		// ( probably should move in-progress encodes out of web accessible directory )
@@ -109,6 +111,9 @@ class TimedMediaHandlerHooks {
 		
 		// Add transcode status to video asset pages:
 		$wgHooks[ 'ImagePageAfterImageLinks' ][] = 'TimedMediaHandlerHooks::checkForTranscodeStatus';
+
+		// for MediaWiki 1.17 compatibility
+		TranscodeStatusTable::getLinker();
 		
 		return true;
 	}
