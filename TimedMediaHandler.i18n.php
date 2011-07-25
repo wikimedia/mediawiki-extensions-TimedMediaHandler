@@ -915,7 +915,7 @@ $messages['frp'] = array(
  * @author Klenje
  */
 $messages['fur'] = array(
-	'timedmedia-desc' => 'Gjestôr pai files Ogg Theora e Vorbis, cuntun riprodutôr JavaScript',
+	'timedmedia-desc' => 'Gjestôr pai files audio, video e di test cul timp, cun supuart pai formâts WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'File audio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'File video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'File multimediâl Ogg $1, $2',
@@ -924,10 +924,13 @@ $messages['fur'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'File audio/video multiplexed Ogg $1, lungjece $2, dimensions $4×$5 pixels, in dut $3',
 	'timedmedia-ogg-long-general' => 'File multimediâl Ogg, durade $2, $3',
 	'timedmedia-ogg-long-error' => 'File ogg no valit: $1',
+	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
 	'timedmedia-more' => 'Altri...',
 	'timedmedia-dismiss' => 'Siere',
 	'timedmedia-download' => 'Discjame il file',
 	'timedmedia-desc-link' => 'Informazions su chest file',
+	'timedmedia-status' => 'Stât',
+	'timedmedia-actions' => 'Azions',
 );
 
 /** Irish (Gaeilge)
