@@ -1853,13 +1853,13 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'timedmedia-desc' => 'Haandelt veur Ogg Theora- en Vorbisbestanen, mit JavaScriptmediaspeuler',
+	'timedmedia-desc' => 'Haandelt veur Ogg Theora- en Vorbis-bestaanden, mit JavaScript-mediaspeuler',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 geluudsbestaand, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videobestaand, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediabestaand, $2',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 geluudsbestaand, lengte $2, $3',
 	'timedmedia-ogg-long-video' => 'Ogg $1 videobestaand, lengte $2, $4×$5 pixels, $3',
-	'timedmedia-ogg-long-multiplexed' => 'Ogg emultiplexed geluuds-/videobestaand, $1, lengte $2, $4×$5 pixels, $3 totaal',
+	'timedmedia-ogg-long-multiplexed' => 'Ogg-emultiplext geluuds-/videobestaand, $1, lengte $2, $4×$5 pixels, $3 totaal',
 	'timedmedia-ogg-long-general' => 'Ogg-mediabestaand, lengte $2, $3',
 	'timedmedia-ogg-long-error' => 'Ongeldig Ogg-bestaand: $1',
 	'timedmedia-more' => 'Meer...',
