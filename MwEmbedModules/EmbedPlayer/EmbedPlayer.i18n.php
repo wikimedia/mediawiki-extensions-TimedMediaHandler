@@ -1039,6 +1039,13 @@ $messages['gl'] = array(
 	'mwe-embedplayer-missing-source' => 'Non se atopou o vídeo de orixe.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'mwe-embedplayer-credit-date' => 'Ἡμερομηνία: $1',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */

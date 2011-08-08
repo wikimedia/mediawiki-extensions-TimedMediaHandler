@@ -1014,6 +1014,7 @@ $messages['grc'] = array(
 	'timedmedia-ogg-long-error' => 'Ἄκυρα ἀρχεῖα ogg: $1',
 	'timedmedia-more' => 'πλέον...',
 	'timedmedia-dismiss' => 'Κλῄειν',
+	'timedmedia-source-file' => '$1 Πηγή',
 );
 
 /** Swiss German (Alemannisch)
