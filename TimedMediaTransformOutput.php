@@ -105,10 +105,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// For javascript disabled browsers provide a link to the asset:
 			Xml::tags( 'a', array(
 					'href'=> $this->file->getUrl(),
-					'title' => wfMsg( 'timedmedia-play-media' )
+					'title' => wfMsg( 'timedmedia-play-media' ),
+					'target' => 'new'
 				), '<b></b>'. // why is the a child tag escaped unless there is an html string prefix? 
 				Xml::tags( 'div', array(
-						'target' => '_new',
 						'class' => 'play-btn-large'
 					), '' )
 			)

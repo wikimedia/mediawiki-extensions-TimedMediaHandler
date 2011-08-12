@@ -1314,7 +1314,7 @@ mw.PlayerControlBuilder.prototype = {
 						gM('mwe-embedplayer-about-library-desc',
 							$('<a />').attr({
 								'href' : mw.getConfig( 'EmbedPlayer.LibraryPage' ),
-								'target' : '_new'
+								'target' : 'new'
 							})
 						)
 					)
@@ -1739,7 +1739,7 @@ mw.PlayerControlBuilder.prototype = {
 					.attr({
 						'href': buttonConfig.href,
 						'title' : buttonConfig.title,
-						'target' : '_new'
+						'target' : 'new'
 					})
 					.addClass( 'attributionButton' )
 					.append(
