@@ -73,17 +73,17 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if( $this->width <= $wgMinimumVideoPlayerSize && $this->isVideo ){
 			return $this->getImagePopUp();
 		} else {
-			return $this->getXmlMediaTagOutput();
+			return $this->getHtmlMediaTagOutput();
 		}		
 	}
-	// XXX migrate this to the mediawiki XML class as 'tagSet' helper function
-	static function xmlTagSet( $tagName, $tagSet ){
+	// XXX migrate this to the mediawiki Html class as 'tagSet' helper function
+	static function htmlTagSet( $tagName, $tagSet ){
 		$s = '';
 		if( empty( $tagSet ) ){
 			return '';
 		}
 		foreach( $tagSet as $attr ){
-			$s.= Xml::tags($tagName, $attr, '');
+			$s.= Html::rawElement($tagName, $attr, '');
 		}
 		return $s;
 	}
@@ -94,7 +94,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . intval( $this->width ) . "px;height:" . 
 							intval( $this->height ) . "px",
-				'data-videopayload' => $this->getXmlMediaTagOutput( $this->getPopupPlayerSize() ),
+				'data-videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize() ),
 				),
 			Xml::tags( 'img', array(
 				'style' => "width:" . intval( $this->width ) . "px;height:" . 
@@ -128,7 +128,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Call mediaWiki xml helper class to build media tag output from 
 	 * supplied arrays
 	 */
-	function getXmlMediaTagOutput( $sizeOverride = array() ){
+	function getHtmlMediaTagOutput( $sizeOverride = array() ){
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		$firstSource = current( $mediaSources );
@@ -137,13 +137,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			return 'Error missing media source';
 		};
 		// Build the video tag output:		
-		$s = Xml::tags( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
+		$s = Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
 	
 			// The set of media sources: 
-			self::xmlTagSet( 'source', $mediaSources ) .
+			self::htmlTagSet( 'source', $mediaSources ) .
 			
 			// Timed text: 
-			self::xmlTagSet( 'track', $this->getTextHandler()->getTracks() ) .		
+			self::htmlTagSet( 'track', $this->getTextHandler()->getTracks() ) .		
 			
 			// Fallback text displayed for browsers without js and without video tag support: 
 			/// XXX note we may want to replace this with an image and download link play button
