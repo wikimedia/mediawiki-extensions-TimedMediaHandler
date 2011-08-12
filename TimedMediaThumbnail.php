@@ -18,17 +18,18 @@ class TimedMediaThumbnail {
 	static function tryFfmpegThumb( $options ){
 		global $wgFFmpegLocation;
 
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -i ' . wfEscapeShellArg( $options['file']->getPath() );
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation );
+
+		$cmd .= ' -ss ' . intval( self::getThumbTime( $options ) );
+		$cmd .= ' -i ' . wfEscapeShellArg( $options['file']->getPath() );
 		// Set the output size if set in options:
 		if( isset( $options['width'] ) && isset( $options['height'] ) ){
 			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
 		}
 
-		$cmd.=' -ss ' . intval( self::getThumbTime( $options ) ) .
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
-			' -f mjpeg -an -vframes 1 ' .
+		$cmd .=	' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $options['dstPath'] ) . ' 2>&1';
 
 		$retval = 0;
