@@ -83,7 +83,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			return '';
 		}
 		foreach( $tagSet as $attr ){
-			$s.= Html::rawElement($tagName, $attr, '');
+			$s .= Html::element( $tagName, $attr);
 		}
 		return $s;
 	}
@@ -211,8 +211,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			'height' => $height,
 			// Get the correct size: 
 			'poster' => $posterUrl,
-			'alt' => $this->file->getTitle()->getText(),
-		
+
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
 			// it updates the controls attribute of the embed video
 			'controls'=> 'true',
