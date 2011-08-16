@@ -61,7 +61,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-reset'				=> 'Reset transcode',
 	'timedmedia-reset-confirm'		=> 'Resetting this transcode, will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />' . 
 'Are you sure you want to proceed?',
-	'timedmedia-reset-error'		=> 'Error in reseting transcode job',
+	'timedmedia-reset-error'		=> 'Error in resetting transcode job.',
 	
 	// Original uploaded asset
 	'timedmedia-ogg' => 'Ogg',
