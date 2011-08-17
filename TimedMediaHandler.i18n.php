@@ -123,8 +123,20 @@ Parameters are:
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
+	'timedmedia-transcodeinfo' => 'A table column header for description of Transcode derivative',
+	'timedmedia-not-ready' => 'State of a given transcode job being not yet complete or not yet ready',
+	'timedmedia-completed-on' => 'Completed transcode message
+Parameters are:
+* $1 The date that the transcode was completed',
 	'timedmedia-error-on' => 'Parameters:
 * $1 is a timestamp.',
+	'timedmedia-started-transcode' => 'Status update for Transcodes
+Parameters are:
+* $1 Time passed since transcoded started
+* $2 Percentage of transcode complete',
+	'timedmedia-unknown-target-size' => 'Status update for Transcodes
+Parameters are:
+* $1 The number of bytes of the file transcoded so far',
 	'timedmedia-source-file' => 'The source file
 * $1 file type webm or ogg
 {{Identical|Source}}',
@@ -139,18 +151,6 @@ Paramaters are:
 * $2 Subtitle key',
 	'timedmedia-subtitle-no-subtitles' => 'Parameters:
 * $1 is a language name.',
-	'timedmedia-transcodeinfo'   => 'A table column header for description of Transcode derivative',
-	'timedmedia-unknown-target-size' => 'Status update for Transcodes
-Parameters are:
-* $1 The number of bytes of the file transcoded so far',
-	'timedmedia-started-transcode' => 'Status update for Transcodes
-Parameters are:
-* $1 Time passed since transcoded started
-* $2 Percentage of transcode complete',
-	'timedmedia-completed-on' => 'Completed transcode message
-Parameters are:
-* $1 The date that the transcode was completed',
-	'timedmedia-not-ready' => "State of a given transcode job being not yet complete or not yet ready",
 );
 
 /** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
