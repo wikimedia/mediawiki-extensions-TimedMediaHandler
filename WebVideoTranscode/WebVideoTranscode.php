@@ -29,15 +29,15 @@ class WebVideoTranscode {
 	*/
 	
 	// Ogg Profiles
-	const ENC_OGV_2MBS = '220_200kbs.ogv';
-	const ENC_OGV_5MBS = '360_560kbs.ogv';
-	const ENC_OGV_9MBS = '480_880kbs.ogv';
-	const ENC_OGV_HQ_VBR = '720_VBR.ogv';
+	const ENC_OGV_160P = '160p.ogv';
+	const ENC_OGV_360P = '360p.ogv';
+	const ENC_OGV_480P = '480p.ogv';
+	const ENC_OGV_720P = '720p.ogv';
 	
 	// WebM profiles: 	
-	const ENC_WEBM_5MBS = '360_560kbs.webm';
-	const ENC_WEBM_9MBS = '480_900kbs.webm';
-	const ENC_WEBM_HQ_VBR = '720_VBR.webm';
+	const ENC_WEBM_360P = '360p.webm';
+	const ENC_WEBM_480P = '480p.webm';
+	const ENC_WEBM_720P = '720p.webm';
 	
 	// Static cache of transcode state per instantiation 
 	public static $transcodeState = array() ;
@@ -51,39 +51,40 @@ class WebVideoTranscode {
 	* http://firefogg.org/dev/index.html
 	*/
 	public static $derivativeSettings = array(
-		WebVideoTranscode::ENC_OGV_2MBS =>
+		WebVideoTranscode::ENC_OGV_160P =>
 			array(
-				'maxSize'			=> '220', 
-				'targetSize'		=> '160P', // 160P 
+				'maxSize'			=> '288x160', 
 				'videoBitrate'		=> '160',
-				'audioBitrate'		=> '32',
-				'samplerate'		=> '22050',
-				'framerate'			=> '18',
-				'channels'			=> '1',
-				'noUpscaling'		=> 'true',
-				'twopass' 			=> 'true',
-				'keyframeInterval'	=> '64',
-				'bufDelay'			=> '128',
-				'videoCodec' 		=> 'theora',
-			),
-		WebVideoTranscode::ENC_OGV_5MBS =>
-			array(
-				'maxSize'			=> '480', 
-				'targetSize'		=> '360P', // 360P
-				'videoBitrate'		=> '512',
-				'audioBitrate'		=> '48',
+				'framerate'			=> '15',
+				'audioQuality'		=> '-1',
+				'samplerate'		=> '44100',
+				'channels'			=> '2',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
-				'videoCodec' 			=> 'theora',
+				'videoCodec' 		=> 'theora',
 			),
-		WebVideoTranscode::ENC_OGV_9MBS =>
+		WebVideoTranscode::ENC_OGV_360P =>
 			array(
-				'maxSize'			=> '640', 
-				'targetSize'		=> '480P', // 480P
-				'videoBitrate'		=> '786',
-				'audioBitrate'		=> '96',
+				'maxSize'			=> '620x360', 
+				'videoBitrate'		=> '512',
+				'audioQuality'		=> '1',
+				'samplerate'		=> '44100',
+				'channels'			=> '2',
+				'noUpscaling'		=> 'true',
+				'twopass'			=> 'true',
+				'keyframeInterval'	=> '128',
+				'bufDelay'			=> '256',
+				'videoCodec'		=> 'theora',
+			),
+		WebVideoTranscode::ENC_OGV_480P =>
+			array(
+				'maxSize'			=> '854x480', 
+				'videoBitrate'		=> '1024',
+				'audioQuality'		=> '2',
+				'samplerate'		=> '44100',
+				'channels'			=> '2',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
@@ -91,10 +92,9 @@ class WebVideoTranscode {
 				'videoCodec' 		=> 'theora',
 			),
 
-		WebVideoTranscode::ENC_OGV_HQ_VBR =>
+		WebVideoTranscode::ENC_OGV_720P =>
 			array(
-				'maxSize'			=> '1280', // 720P
-				'targetSize'		=> '720P', // 480P
+				'maxSize'			=> '1280x720', 
 				'videoQuality'		=> 6,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
@@ -103,34 +103,33 @@ class WebVideoTranscode {
 			),	
 
 		// WebM transcode:
-		WebVideoTranscode::ENC_WEBM_5MBS => 
+		WebVideoTranscode::ENC_WEBM_360P => 
 			array(
-				'maxSize'			=> '480',
-				'targetSize'		=> '380P', // 360P
+				'maxSize'			=> '640x360',
 				'videoBitrate'		=> '512',
-				'audioBitrate'		=> '48',
+				'audioQuality'		=> '1',
+				'samplerate'		=> '44100',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
 				'videoCodec' 		=> 'vp8',
 			),
-		WebVideoTranscode::ENC_WEBM_9MBS =>
+		WebVideoTranscode::ENC_WEBM_480P =>
 			array(
-			 	'maxSize'			=> '640', 
-				'targetSize'		=> '480P', // 480P
-				'videoBitrate'		=> '786',
-				'audioBitrate'		=> '96',
+			 	'maxSize'			=> '854x480', 
+				'videoBitrate'		=> '1024',
+				'audioQuality'		=> '2',
+				'samplerate'		=> '44100',
 				'noUpscaling'		=> 'true',
 				'twopass'			=> 'true',
 				'keyframeInterval'	=> '128',
 				'bufDelay'			=> '256',
 				'videoCodec' 		=> 'vp8',
 			),
-		WebVideoTranscode::ENC_WEBM_HQ_VBR =>
+		WebVideoTranscode::ENC_WEBM_720P =>
 			 array(
-				'maxSize'			=> '1280', 
-				'targetSize'		=> '720P', // 720P
+				'maxSize'			=> '1280x720', 
 				'videoQuality'		=> 7,
 				'audioQuality'		=> 3,
 				'noUpscaling'		=> 'true',
@@ -622,75 +621,34 @@ class WebVideoTranscode {
 		}
 		wfProfileOut( __METHOD__ );
 	}
-	/**
-	 * Target size transform slightly diffrent from "maxsize" 
-	 * 
-	 * Here we check aspect ratio to decide if we use the $target size or not. 
-	 * 
-	 * @param $file File Object the source file being transformed
-	 * @param $targetSize String Target file size string ushualy of type '640P', '720P' etc .
-	 */
-	public static function getTargetSizeTransform( &$file, $targetSize ){
-		// Strip the non-numeric parts of the targetSize
-		$targetSize = preg_replace('/\D/', '', $targetSize);
-		$base16n9Ratio = 16/9;
-		$fileRatio = $file->getWidth() / $file->getHeight();
-		
-		// Check if the $file for very nonstandard aspect ratio ie "very wide" or "very tall" video: 
-		// in this case use the max size system to avoid a huge video at low bitrates:
-		if( $fileRatio > 3 || $fileRatio < .25 ){
-			return self::getMaxSizeTransform( $file, $targetSize);
-		}
-		// make sure we don't upscale
-		$targetSize = ( $targetSize > $file->getHeight() )? $file->getHeight() : $targetSize;
-
-		// Check if file is narrower than 16:9 and use raw targetSize for height, true to HD name
-		// ie 640P is 640 pixles high. 
-		if( $fileRatio <= $base16n9Ratio ){
-			$height = $targetSize;
-			$width = $fileRatio * $height;
-		} else {
-			// wider than 16:9 full HD width 
-			$width = $targetSize * $base16n9Ratio;
-			$height = $width / $fileRatio;
-		}
-		
-		// round width and height
-		$width = round( $width );
-		$height = round( $height );
-		
-		// round to even numbers: 
-		$width = ($width % 2)? $width+1: $width;
-		$height = ($height % 2)? $height+1: $height;
-		return array( $width, $height );
-	}
 	
 	/**
 	 * Transforms the size per a given "maxSize" 
 	 *  if maxSize is > file, file size is used
 	 */
-	public static function getMaxSizeTransform( &$file, $targetMaxSize ){		
-		$sourceWidth = $file->getWidth();
-		$sourceHeight = $file->getHeight();
-		if( WebVideoTranscode::isTargetLargerThanFile( $file, $targetMaxSize) ){
-			return array(
-				$sourceWidth,
-				$sourceHeight
-			);
-		}
-		// Get the aspect ratio percentage
-		$ar = intval( $sourceWidth ) / intval( $sourceHeight );
-		if ( $sourceWidth > $targetMaxSize ) {
-			return array(
-				intval( $targetMaxSize ),
-				intval( $targetMaxSize / $ar)
-			);
+	public static function getMaxSizeTransform( &$file, $targetMaxSize ){
+		$maxSize = self::getMaxSize( $targetMaxSize );
+		$sourceWidth = intval( $file->getWidth() );
+		$sourceHeight = intval( $file->getHeight() );
+		$sourceAspect = intval( $sourceWidth ) / intval( $sourceHeight );
+		$targetWidth = $sourceWidth;
+		$targetHeight = $sourceHeight;
+		if ( $sourceAspect <= $maxSize['aspect'] ) {
+			if ( $sourceHeight > $maxSize['height'] ) {
+				$targetHeight = $maxSize['height'];
+				$targetWidth = intval( $targetHeight * $sourceAspect );
+				//some players do not like uneven frame sizes
+				$targetWidth += $targetWidth%2;
+			}
 		} else {
-			return array(
-				intval( $targetMaxSize ),
-				intval( $targetMaxSize / $ar)
-			);
-      	}
+			if ( $sourceWidth > $maxSize['width'] ) {
+				$targetWidth = $maxSize['width'];
+				$targetHeight = intval( $targetWidth / $sourceAspect );
+				//some players do not like uneven frame sizes
+				$targetHeight += $targetHeight%2;
+			}
+		}
+		return array( $targetWidth, $targetHeight );
 	}
 	/**
 	 * Test if a given transcode target is larger than the source file
@@ -699,7 +657,33 @@ class WebVideoTranscode {
 	 * @param $file {Object} File object
 	 */
 	public static function isTargetLargerThanFile( &$file, $targetMaxSize ){
-		$largerSize = ( $file->getWidth() > $file->getHeight() )?$file->getWidth(): $file->getHeight();		
-		return ( $targetMaxSize > $largerSize );
+		$maxSize = self::getMaxSize( $targetMaxSize );
+		print_r($max_size);
+		$sourceWidth = $file->getWidth();
+		$sourceHeight = $file->getHeight();
+		$sourceAspect = intval( $sourceWidth ) / intval( $sourceHeight );
+		if ( $sourceAspect <= $maxSize['aspect'] ) {
+			return ( $maxSize['height'] > $sourceHeight );
+		} else {
+			return ( $maxSize['width'] > $sourceWidth );
+		}
+	}
+	/**
+	 * Return maxSize array for given maxSize setting 
+	 * 
+	 * @param $maxSize maxSize settings string (i.e. 640x480)
+	 */
+	public static function getMaxSize( $targetMaxSize ){
+		$maxSize = array();
+		$targetMaxSize = explode('x', $targetMaxSize);
+		if (count($targetMaxSize) == 1) {
+			$maxSize['width'] = intval($targetMaxSize[0]);
+			$maxSize['height'] = intval($targetMaxSize[0]);
+		} else {
+			$maxSize['width'] = intval($targetMaxSize[0]);
+			$maxSize['height'] = intval($targetMaxSize[1]);
+		}
+		$maxSize['aspect'] = $maxSize['width'] / $maxSize['height'];
+		return $maxSize;
 	}
 }

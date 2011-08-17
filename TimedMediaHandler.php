@@ -90,16 +90,16 @@ $wgTimedTextNS = 700;
  */
 $wgEnabledTranscodeSet = array(
 	// Cover accessibility for low bandwidth / low resources clients: 
-	WebVideoTranscode::ENC_OGV_2MBS,
+	WebVideoTranscode::ENC_OGV_160P,
 	
 	// A high end web streamable ogg video 
-	WebVideoTranscode::ENC_OGV_9MBS,
+	WebVideoTranscode::ENC_OGV_480P,
 	
 	// A web streamable WebM video	
-	WebVideoTranscode::ENC_WEBM_9MBS,
+	WebVideoTranscode::ENC_WEBM_480P,
 	
 	// A high quality WebM stream 
-	WebVideoTranscode::ENC_WEBM_HQ_VBR,
+	WebVideoTranscode::ENC_WEBM_720P,
 );
 /******************* CONFIGURATION ENDS HERE **********************/
 

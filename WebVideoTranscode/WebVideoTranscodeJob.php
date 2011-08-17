@@ -296,12 +296,9 @@ class WebVideoTranscodeJob extends Job {
 		} else {
 			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
 		}
-		// First check targetSize
-		if( isset( $options['targetSize'] ) ){
-			list( $width, $height ) = WebVideoTranscode::getTargetSizeTransform( $file, $options['targetSize'] );
-			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
-		} elseif (isset( $options['maxSize'] ) && intval( $options['maxSize'] ) > 0) {
+		if (isset( $options['maxSize'] )) {
 			// Get size transform ( if maxSize is > file, file size is used:
+
 			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
 			$cmd.= ' -s ' . intval( $width ) . 'x' . intval( $height );
 		} elseif ( 
@@ -369,12 +366,11 @@ class WebVideoTranscodeJob extends Job {
 
 		$file = wfLocalFile( $this->title );
 
-		// Check special case options like targetSize
-		if( isset( $options['targetSize'] ) ){
-			list( $width, $height ) = WebVideoTranscode::getTargetSizeTransform( $file, $options['targetSize'] );
+		if( isset( $options['maxSize'] ) ){
+			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
 			$options['width'] = $width;
 			$options['height'] = $height;
-			unset( $options['targetSize'] );
+			$options['aspect'] = $width . ':' . $height;
 			unset( $options['maxSize'] );
 		}
 
