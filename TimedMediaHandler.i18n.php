@@ -21,7 +21,7 @@ $messages['en'] = array(
 
 	'timedmedia-webm-short-video' => 'WebM $1 video file, $2',
 	'timedmedia-webm-long-video' => 'WebM audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
-	
+
 	'timedmedia-no-player-js' 	  => 'Sorry, your browser either has JavaScript disabled or does not have any supported player.<br />
 You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a> to play the clip in your browser.',
 
@@ -33,8 +33,8 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 
-	// Transcode status table: 
-	
+	// Transcode status table:
+
 	'timedmedia-status-header' 		=> 'Transcode status',
 	'timedmedia-update-status'		=> 'Update transcode status',
 	'timedmedia-status'				=> 'Status',
@@ -44,7 +44,7 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-direct-link'		=> 'Download derivative',
 	'timedmedia-not-ready'			=> 'Not ready',
 	'timedmedia-completed-on'		=> 'Completed transcode $1',
-	'timedmedia-error-on' 			=> 'Error in transcode on $1. ',
+	'timedmedia-error-on'			=> 'Error in transcode on $1.',
 	'timedmedia-started-transcode'	=> 'Transcode started $1 ago. $2',
 	'timedmedia-percent-done'		=> 'About $1% done',
 	'timedmedia-in-job-queue'		=> 'Added to Job queue $1 ago',
@@ -59,10 +59,10 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 	'timedmedia-time-1-measurements' => '$1',
 	'timedmedia-show-error'			=> 'Show error',
 	'timedmedia-reset'				=> 'Reset transcode',
-	'timedmedia-reset-confirm'		=> 'Resetting this transcode, will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />' . 
+	'timedmedia-reset-confirm'		=> 'Resetting this transcode, will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />' .
 'Are you sure you want to proceed?',
 	'timedmedia-reset-error'		=> 'Error in resetting transcode job.',
-	
+
 	// Original uploaded asset
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
@@ -74,14 +74,14 @@ You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/
 
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360P',
 	'timedmedia-derivative-desc-360p.ogv' => 'Web streamable Ogg video (360P)',
-	
+
 	'timedmedia-derivative-480p.ogv' => 'Ogg 480P',
 	'timedmedia-derivative-desc-480p.ogv' => 'Web streamable Ogg video (480P)',
 
 	'timedmedia-derivative-720_VBR.ogv' => 'Ogg 720P',
 	'timedmedia-derivative-desc-720p.ogv' => 'High quality downloadable Ogg video (720P)',
-	
-	// WebM profiles: 	
+
+	// WebM profiles:
 	'timedmedia-derivative-360p.webm' => 'WebM 360P',
 	'timedmedia-derivative-desc-360p.webm' => 'Web streamable WebM (360P)',
 	'timedmedia-derivative-480p.webm' => 'WebM 480P',
@@ -125,7 +125,7 @@ Parameters are:
 	'timedmedia-download' => '{{Identical|Download}}',
 	'timedmedia-error-on' => 'Parameters:
 * $1 is a timestamp.',
-	'timedmedia-source-file' => 'The source file 
+	'timedmedia-source-file' => 'The source file
 * $1 file type webm or ogg
 {{Identical|Source}}',
 	'timedmedia-source-file-desc' => 'Source file description. Paramaters:
@@ -135,7 +135,7 @@ Parameters are:
 * $4 human readable bitrate',
 	'timedmedia-subtitle-language' => 'Subtitle names
 Paramaters are:
-* $1 Subtitle language 
+* $1 Subtitle language
 * $2 Subtitle key',
 	'timedmedia-subtitle-no-subtitles' => 'Parameters:
 * $1 is a language name.',
@@ -143,7 +143,7 @@ Paramaters are:
 	'timedmedia-unknown-target-size' => 'Status update for Transcodes
 Parameters are:
 * $1 The number of bytes of the file transcoded so far',
-	'timedmedia-started-transcode' => 'Status update for Transcodes 
+	'timedmedia-started-transcode' => 'Status update for Transcodes
 Parameters are:
 * $1 Time passed since transcoded started
 * $2 Percentage of transcode complete',
