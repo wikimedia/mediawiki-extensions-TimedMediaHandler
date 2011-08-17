@@ -811,6 +811,7 @@ $messages['fo'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author Hashar
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
@@ -847,6 +848,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-actions' => 'Actions',
 	'timedmedia-not-ready' => 'Pas prêt',
 	'timedmedia-percent-done' => 'Environ $1 % complété',
+	'timedmedia-in-job-queue' => "Ajouté à la file d'attente il y a $1",
 	'timedmedia-days' => '$1 {{PLURAL:$1| jour|jours}}',
 	'timedmedia-hours' => '$1 {{PLURAL:$1|heure|heures}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minute|minutes}}',
@@ -1917,6 +1919,10 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/
 	'timedmedia-time-3-measurements' => '$1, $2 en $3',
 	'timedmedia-time-2-measurements' => '$1 en $2',
 	'timedmedia-show-error' => 'Foutmelding weergeven',
+	'timedmedia-reset' => 'Transcodering opnieuw instellen',
+	'timedmedia-reset-confirm' => 'Door de transcodering opnieuw in te stellen worden alle bestanden bestanden (als aanwezig) verwijderd en de transcodering wordt opnieuw toegevoegd aan de wachtrij. Transcoderen kost tijd.<br /><br />
+Weet u zeker dat u wilt doorgaan?',
+	'timedmedia-reset-error' => 'Er is een fout opgetreden tijdens het opnieuw instellen van de transcoderingstaak.',
 	'timedmedia-source-file' => 'Bron van $1',
 	'timedmedia-source-file-desc' => 'Origineel $1, $2 × $3 ($4)',
 	'timedmedia-derivative-220_200kbs.ogv' => 'Ogg 200P',
@@ -2014,7 +2020,7 @@ $messages['oc'] = array(
 	'timedmedia-desc-link' => "A prepaus d'aqueste fichièr",
 );
 
-/** Ossetic (Иронау)
+/** Ossetic (Ирон)
  * @author Amikeco
  */
 $messages['os'] = array(
@@ -2296,7 +2302,7 @@ $messages['rue'] = array(
 	'timedmedia-dismiss' => 'Заперти',
 );
 
-/** Yakut (Саха тыла)
+/** Sakha (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
