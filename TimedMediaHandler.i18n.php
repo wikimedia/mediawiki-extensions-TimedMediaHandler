@@ -1739,6 +1739,7 @@ $messages['mk'] = array(
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg-видео за емитување (360 пиксели)',
 	'timedmedia-derivative-480p.ogv' => 'Ogg 480п',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg-видео за емитување (480 пиксели)',
+	'timedmedia-derivative-720_VBR.ogv' => 'Ogg 720п',
 	'timedmedia-derivative-desc-720p.ogv' => 'Висококвалитетно Ogg-видео (720 пиксели)',
 	'timedmedia-derivative-360p.webm' => 'WebM 360п',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM за каналско емитување (360п)',
