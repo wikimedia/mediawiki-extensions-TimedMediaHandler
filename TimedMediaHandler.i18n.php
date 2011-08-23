@@ -1626,6 +1626,7 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawi
 	'timedmedia-desc-link' => 'Iwwer dëse Fichier',
 	'timedmedia-oggThumb-version' => "Den OggHandler brauch d'Versioun $1 (oder méi eng nei Versioun) vun OggThumb.",
 	'timedmedia-oggThumb-failed' => "oggThumb konnt d'Miniaturbild (thumbnail) net uleeën.",
+	'timedmedia-actions' => 'Aktiounen',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
