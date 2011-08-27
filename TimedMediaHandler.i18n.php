@@ -399,7 +399,7 @@ $messages['bn'] = array(
 	'timedmedia-ogg-long-general' => 'অগ মিডিয়া ফাইল, দৈর্ঘ্য $2, $3',
 	'timedmedia-ogg-long-error' => 'অবৈধ অগ ফাইল: $1',
 	'timedmedia-more' => 'আরও...',
-	'timedmedia-dismiss' => 'বন্ধ করা হোক',
+	'timedmedia-dismiss' => 'বন্ধ',
 	'timedmedia-download' => 'ফাইল ডাউনলোড করুন',
 	'timedmedia-desc-link' => 'এই ফাইলের বৃত্তান্ত',
 );
