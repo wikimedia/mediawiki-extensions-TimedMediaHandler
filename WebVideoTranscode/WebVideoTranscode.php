@@ -658,7 +658,6 @@ class WebVideoTranscode {
 	 */
 	public static function isTargetLargerThanFile( &$file, $targetMaxSize ){
 		$maxSize = self::getMaxSize( $targetMaxSize );
-		print_r($max_size);
 		$sourceWidth = $file->getWidth();
 		$sourceHeight = $file->getHeight();
 		$sourceAspect = intval( $sourceWidth ) / intval( $sourceHeight );

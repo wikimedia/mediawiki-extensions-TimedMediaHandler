@@ -52,12 +52,12 @@
 		 * The list of enabled sources
 		 */
 		enabledSources: null,
-		
+
 		/**
-		 * The current langauge key
+		 * The current language key
 		 */
 		currentLangKey : null,
-		
+
 		/**
 		 * Stores the last text string per category to avoid dom checks
 		 * for updated text
@@ -150,7 +150,7 @@
 			$( embedPlayer ).bind( 'play', function() {
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
-			} );	
+			} );
 			
 			// Resize the timed text font size per window width
 			$( embedPlayer ).bind( 'onCloseFullScreen onOpenFullScreen', function() {
@@ -898,7 +898,7 @@
 		* Updates the timed text layout ( should be called when config.layout changes )
 		*/
 		updateLayout: function() {
-			var $playerTarget = this.embedPlayer.$interface;			
+			var $playerTarget = this.embedPlayer.$interface;
 			$playerTarget.find('.track').remove();
 			this.refreshDisplay();
 		},
@@ -1427,6 +1427,10 @@
 			var content, start, end, s;
 			caption = caplist[i];
 			s = caption.split(/\n/);
+			if (s.length < 2) {
+				// file format error or comment lines
+				continue;
+			}
 			if (s[0].match(/^\d+$/) && s[1].match(/\d+:\d+:\d+/)) {
 				// ignore caption number in s[0]
 				// parse time string

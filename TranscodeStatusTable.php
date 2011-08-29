@@ -114,7 +114,7 @@ class TranscodeStatusTable {
 					$doneMsg = wfMsgHtml('timedmedia-percent-done', round( filesize( $filePath ) / $targetSize, 2 ) );
 				}
 			}	*/
-			// predicting percent done is not working well right now ( disabled for now )
+			// Predicting percent done is not working well right now ( disabled for now )
 			$doneMsg = '';
 			return wfMsgHtml('timedmedia-started-transcode', TimedMediaHandler::getTimePassedMsg( $timePassed ), $doneMsg );
 		}
