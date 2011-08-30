@@ -816,6 +816,7 @@ $messages['fo'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Grondin
  * @author Hashar
  * @author IAlex
@@ -849,12 +850,20 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-desc-link' => 'À propos de ce fichier',
 	'timedmedia-oggThumb-version' => 'OggHandler nécessite oggThumb, version $1 ou supérieure.',
 	'timedmedia-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
+	'timedmedia-status-header' => 'Statut de transcodage',
+	'timedmedia-update-status' => 'Mettre à jour le statut de transcodage',
 	'timedmedia-status' => 'statut',
 	'timedmedia-status-unknown' => 'statut inconnu',
+	'timedmedia-transcodeinfo' => 'Description dérivée du transcodage',
 	'timedmedia-actions' => 'Actions',
+	'timedmedia-direct-link' => 'Télécharger le dérivé',
 	'timedmedia-not-ready' => 'Pas prêt',
+	'timedmedia-completed-on' => 'Transcodage de $1 terminé',
+	'timedmedia-error-on' => 'Erreur dans le transcodage de $1.',
+	'timedmedia-started-transcode' => 'Transcodage démarré depuis $1. $2',
 	'timedmedia-percent-done' => 'Environ $1 % complété',
 	'timedmedia-in-job-queue' => "Ajouté à la file d'attente il y a $1",
+	'timedmedia-unknown-target-size' => 'Taille de la cible inconnue, $1 encodé',
 	'timedmedia-days' => '$1 {{PLURAL:$1| jour|jours}}',
 	'timedmedia-hours' => '$1 {{PLURAL:$1|heure|heures}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minute|minutes}}',
@@ -863,6 +872,9 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-time-3-measurements' => '$1, $2 et $3',
 	'timedmedia-time-2-measurements' => '$1 et $2',
 	'timedmedia-show-error' => 'Afficher les erreurs',
+	'timedmedia-reset' => 'Réinitialiser le transcodage',
+	'timedmedia-reset-confirm' => "Remettre à zéro ce transcodage supprimera tout fichier existant (s'il y en a) et ajoutera de nouveau le transcodage à la file de travaux. Cela prendra un certain temps pour être transcodé de nouveau.<br /><br />Êtes-vous sûrs de vouloir continuer?",
+	'timedmedia-reset-error' => 'Erreur en réinitialisant le travail de transcodage.',
 	'timedmedia-source-file' => 'Source $1',
 	'timedmedia-source-file-desc' => 'Initial $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Vidéo Ogg bas débit (160P)',
