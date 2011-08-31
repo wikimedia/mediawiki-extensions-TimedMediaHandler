@@ -2086,7 +2086,7 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'timedmedia-desc' => 'Gestor për audio, video e test a temp, con apògg ëd formà për WebM, Ogg Theora, Vorbis, srt',
+	'timedmedia-desc' => 'Gestor për ij son, filmà e test a sincronisà, con manteniment dij formà për WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Registrassion Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Film Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Archivi Multimojen Ogg $1, $2',
