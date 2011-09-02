@@ -1527,7 +1527,12 @@ mw.EmbedPlayer.prototype = {
 		// Support fake user agent 
 		if( !source || !source.src ){
 			mw.log( 'Warning: Your probably fakeing the iPhone userAgent ( no h.264 source )' );
-			source = this.mediaElement.getSources( 'video/ogg' )[0];
+			this.mediaElement.autoSelectSource()
+			if( !this.mediaElement.selectedSource ){
+				this.showPluginMissingHTML();
+				return ;
+			}
+			source = this.mediaElement.selectedSource;
 		}
 		
 		// Setup videoAttribues	
