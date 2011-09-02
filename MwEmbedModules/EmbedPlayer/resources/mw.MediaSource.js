@@ -106,7 +106,8 @@ mw.MediaSource.prototype = {
 		// Set default URLTimeEncoding if we have a time url:
 		// not ideal way to discover if content is on an oggz_chop server.
 		// should check some other way.
-		var pUrl = new mw.Uri ( this.src );
+		var pUrl = new mw.Uri ( mw.absoluteUrl( this.src) );	// mw.Uri only handles full urls
+		
 		if ( typeof pUrl.query[ 't' ] != 'undefined' ) {
 			this.URLTimeEncoding = true;
 		}
@@ -308,7 +309,7 @@ mw.MediaSource.prototype = {
 
 		// Return title based on file name:
 		try{
-			var fileName = new mw.Uri( this.getSrc() ).path.split('/').pop();
+			var fileName = new mw.Uri( mw.absoluteUrl( this.getSrc() ) ).path.split('/').pop();
 			if( fileName ){
 				return fileName;
 			}
@@ -327,7 +328,7 @@ mw.MediaSource.prototype = {
 	getURLDuration : function() {
 		// check if we have a URLTimeEncoding:
 		if ( this.URLTimeEncoding ) {
-			var annoURL = new mw.Uri( this.src );
+			var annoURL = new mw.Uri( mw.absoluteUrl( this.getSrc() ) );
 			if ( annoURL.query.t ) {
 				var times = annoURL.query.t.split( '/' );
 				this.start_npt = times[0];
@@ -350,7 +351,7 @@ mw.MediaSource.prototype = {
 	* @param String uri
 	*/
 	getExt : function( uri ){
-		var urlParts = new mw.Uri( uri );
+		var urlParts = new mw.Uri( mw.absoluteUrl( uri ) );
 		// Get the extension from the url or from the relative name:
 		var ext = ( urlParts.file )?  /[^.]+$/.exec( urlParts.file )  :  /[^.]+$/.exec( uri );
 		return ext.toString().toLowerCase()

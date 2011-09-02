@@ -102,7 +102,7 @@
 		mediaWiki.loader.using( dependencySet, function(){
 			mw.processEmbedPlayers( playerSelect, readyCallback );
 		}, function( e ){
-			throw new Error( 'Error loading EmbedPlayer dependency set' );
+			throw new Error( 'Error loading EmbedPlayer dependency set: ' + e.message  );
 		});
 	};
 
