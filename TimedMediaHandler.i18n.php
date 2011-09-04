@@ -2110,11 +2110,11 @@ A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.o
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Larghëssa ëd banda bassa Ogg video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Web streamable Ogg video (360P)',
-	'timedmedia-derivative-desc-480p.ogv' => 'Web streamable Ogg video (480P)',
-	'timedmedia-derivative-desc-720p.ogv' => "Dëscariàbil d'àuta qualità Ogg video (720P)",
-	'timedmedia-derivative-desc-360p.webm' => 'Web streamable WebM (360P)',
-	'timedmedia-derivative-desc-480p.webm' => 'Web streamable WebM (480P)',
-	'timedmedia-derivative-desc-720p.webm' => "Dëscariàbil d'àuta qualità WebM (720P)",
+	'timedmedia-derivative-desc-480p.ogv' => "Filmà Ogg lesìbil an continuà an sl'aragnà (480P)",
+	'timedmedia-derivative-desc-720p.ogv' => "Filmà Ogg dëscariàbil d'àuta qualità (720P)",
+	'timedmedia-derivative-desc-360p.webm' => "WebM lesìbil an continuà an sl'aragnà (360P)",
+	'timedmedia-derivative-desc-480p.webm' => "WebM lesìbil an continuà an sl'aragnà (480P)",
+	'timedmedia-derivative-desc-720p.webm' => "WebM dëscariàbil d'àuta qualità (720P)",
 	'timedmedia-subtitle-language' => '$1 ($2) sot-tìtoj',
 );
 

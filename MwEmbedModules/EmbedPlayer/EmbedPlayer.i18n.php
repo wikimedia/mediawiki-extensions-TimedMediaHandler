@@ -2434,7 +2434,8 @@ $messages['sk'] = array(
 	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2442,7 +2443,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-play_clip' => 'Пусти клип',
 	'mwe-embedplayer-pause_clip' => 'Паузирај клип',
 	'mwe-embedplayer-volume_control' => 'Контрола јачине звука',
-	'mwe-embedplayer-player_fullscreen' => 'Цели екран',
+	'mwe-embedplayer-player_fullscreen' => 'Цео екран',
 	'mwe-embedplayer-next_clip_msg' => 'Пусти следећи клип',
 	'mwe-embedplayer-prev_clip_msg' => 'Пусти претходни клип',
 	'mwe-embedplayer-seek_to' => 'Скочи на $1',
