@@ -609,6 +609,7 @@ $messages['frp'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 sot-titros por clipe : $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nion sot-titro $1 at étâ trovâ por lo clipe : $2',
 	'mwe-timedtext-request-subs' => 'Demandar la transcripcion',
+	'mwe-timedtext-no-subs' => 'Gins de pista de tèxto disponibla',
 );
 
 /** Galician (Galego)
