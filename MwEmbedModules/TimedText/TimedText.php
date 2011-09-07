@@ -20,8 +20,5 @@
 				'mw.TimedText',				
 				'jquery.ui.tabs'
 			)
-		),
-		"RemoteMwTimedText" =>array(
-			'scripts' => "remotes/RemoteMwTimedText.js"
 		)
 	);	
