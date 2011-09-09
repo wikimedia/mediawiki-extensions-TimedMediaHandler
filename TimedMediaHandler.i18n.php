@@ -300,6 +300,16 @@ $messages['avk'] = array(
 	'timedmedia-desc-link' => 'Icde bat iyeltak',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'timedmedia-status' => 'Status',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 və $4',
+	'timedmedia-time-3-measurements' => '$1, $2 və $3',
+	'timedmedia-time-2-measurements' => '$1 və $2',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
