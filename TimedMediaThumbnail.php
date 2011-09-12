@@ -21,14 +21,19 @@ class TimedMediaThumbnail {
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation );
 
 		$offset = intval( self::getThumbTime( $options ) );
-		//seek 2 seconds before offset and seek in decoded stream,
-		//works around 
+		/*
+		This is a workaround until ffmpegs ogg demuxer properly seeks to keyframes.
+		Seek 2 seconds before offset and seek in decoded stream after that.
+		 -ss before input seeks without decode
+		 -ss after input seeks in decoded stream
+		*/
 		if($offset > 2) {
 			$cmd .= ' -ss ' . ($offset - 2);
 			$offset = 2;
 		}
 		$cmd .= ' -i ' . wfEscapeShellArg( $options['file']->getPath() );
 		$cmd .= ' -ss ' . $offset . ' ';
+
 		// Set the output size if set in options:
 		if( isset( $options['width'] ) && isset( $options['height'] ) ){
 			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
