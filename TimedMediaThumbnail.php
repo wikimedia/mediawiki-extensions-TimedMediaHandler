@@ -20,8 +20,15 @@ class TimedMediaThumbnail {
 
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation );
 
-		$cmd .= ' -ss ' . intval( self::getThumbTime( $options ) );
+		$offset = intval( self::getThumbTime( $options ) );
+		//seek 2 seconds before offset and seek in decoded stream,
+		//works around 
+		if($offset > 2) {
+			$cmd .= ' -ss ' . ($offset - 2);
+			$offset = 2;
+		}
 		$cmd .= ' -i ' . wfEscapeShellArg( $options['file']->getPath() );
+		$cmd .= ' -ss ' . $offset . ' ';
 		// Set the output size if set in options:
 		if( isset( $options['width'] ) && isset( $options['height'] ) ){
 			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
