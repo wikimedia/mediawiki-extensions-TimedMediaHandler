@@ -74,7 +74,7 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
 // The NS for TimedText (registered on MediaWiki.org)
 // http://www.mediawiki.org/wiki/Extension_namespace_registration
 // Note commons pre-dates TimedMediaHandler and should set $wgTimedTextNS = 102 in LocalSettings.php
-$wgTimedTextNS = 700;
+$wgTimedTextNS = 710;
 
 /**
  * Default enabled transcodes
