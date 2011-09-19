@@ -67,7 +67,7 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_OGV_360P =>
 			array(
-				'maxSize'			=> '620x360', 
+				'maxSize'			=> '640x360', 
 				'videoBitrate'		=> '512',
 				'audioQuality'		=> '1',
 				'samplerate'		=> '44100',
