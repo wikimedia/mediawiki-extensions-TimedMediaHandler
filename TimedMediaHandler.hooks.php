@@ -60,7 +60,14 @@ class TimedMediaHandlerHooks {
 					'timedmedia-reset',
 					'timedmedia-reset-confirm'
 				)
-			) )
+			) ),
+			"mw.MediaWikiPlayerSupport" =>  array_merge($baseExtensionResource, array(
+				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
+				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js',
+				'dependencies'=> array( 
+					'mw.Api' 
+				)
+			) ),
 		);
 		// Setup a hook for iframe embed handling:
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';

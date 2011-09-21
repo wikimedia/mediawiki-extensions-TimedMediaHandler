@@ -106,6 +106,10 @@ mw.mergeConfig('EmbedPlayer.Attributes', {
 
 	// If the player should include an attribution button:
 	'attributionbutton' : true,
+	
+	// A player error state ( lets you propagate an error instead of a play button ) 
+	// ( while keeping the full player api available )
+	'data-playerError': null,
 
 	// If serving an ogg_chop segment use this to offset the presentation time
 	// ( for some plugins that use ogg page time rather than presentation time )
