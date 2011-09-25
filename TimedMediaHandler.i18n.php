@@ -2443,7 +2443,7 @@ Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/
 	'timedmedia-days' => '$1 {{PLURAL:$1|dan|dneva|dnevi|dni}}',
 	'timedmedia-hours' => '{{PLURAL:$1|ura|$1 uri|$1 ure|$1 ur}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|minuta|$1 minuti|$1 minute|$1 minut}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|sekunda|$1 sekundi|$1 sekunde|sekund}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|sekunda|$1 sekundi|$1 sekunde|$1 sekund}}',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 in $4',
 	'timedmedia-time-3-measurements' => '$1, $2 in $3',
 	'timedmedia-time-2-measurements' => '$1 in $2',
