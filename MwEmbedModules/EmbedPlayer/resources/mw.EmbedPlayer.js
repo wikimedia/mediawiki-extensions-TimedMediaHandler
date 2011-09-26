@@ -174,7 +174,6 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		var _this = this;
 		mw.log('EmbedPlayer:: addElement:: ' + playerElement.id );
 
-		var waitForMeta = true;
 
 		// Be sure to "stop" the target ( Firefox 3x keeps playing
 		// the video even though its been removed from the DOM )
@@ -185,12 +184,13 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		// Allow modules to override the wait for metadata flag:
 		$( mw ).trigger( 'checkPlayerWaitForMetaData', playerElement );
 
-		// Update the waitForMeta object if set to boolean false: 
-		waitForMeta = !! playerElement.waitForMeta;
-
-
-		// Confirm we want to wait for meta data ( if not already set to false by module )
-		if( waitForMeta ){
+		// DOM *could* load height, width and duration eventually, in some browsers
+		// By default, don't bother waiting for this.
+		var waitForMeta = false;
+		
+		// if a plugin has told us not to waitForMeta, don't
+		if ( playerElement.waitForMeta !== false ) {
+			// Check if we should wait for metadata, after all
 			waitForMeta = waitForMetaCheck( playerElement );
 		}
 		
