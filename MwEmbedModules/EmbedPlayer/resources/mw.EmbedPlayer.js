@@ -186,7 +186,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		$( mw ).trigger( 'checkPlayerWaitForMetaData', playerElement );
 
 		// Update the waitForMeta object if set to boolean false: 
-		waitForMeta = ( playerElement.waitForMeta === false )? false : true;
+		waitForMeta = !! playerElement.waitForMeta;
 
 
 		// Confirm we want to wait for meta data ( if not already set to false by module )
