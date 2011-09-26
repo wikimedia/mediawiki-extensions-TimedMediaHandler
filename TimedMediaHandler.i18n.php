@@ -2480,7 +2480,7 @@ $messages['sq'] = array(
 	'timedmedia-desc-link' => 'Rreth kësaj skede',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -2498,7 +2498,7 @@ $messages['sr-ec'] = array(
 	'timedmedia-ogg-long-error' => 'Лош ogg фајл: $1.',
 	'timedmedia-more' => 'Више...',
 	'timedmedia-dismiss' => 'Затвори',
-	'timedmedia-download' => 'Преузми фајл',
+	'timedmedia-download' => 'Преузми датотеку',
 	'timedmedia-desc-link' => 'О овом фајлу',
 );
 
