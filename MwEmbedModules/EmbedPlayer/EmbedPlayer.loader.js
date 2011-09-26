@@ -15,6 +15,8 @@
 			// Rewrite the embedPlayer EmbedPlayer.RewriteSelector and run callback once ready:
 			$( mw.getConfig( 'EmbedPlayer.RewriteSelector' ) )
 				.embedPlayer( callback );
+		} else {
+			callback();
 		}
 	});
 	
