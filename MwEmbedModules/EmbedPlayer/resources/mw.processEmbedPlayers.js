@@ -81,22 +81,20 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			mw.log("EmbedPlayer::runPlayerSwap::" + $( playerElement ).attr('id') );
 
 			var playerInterface = new mw.EmbedPlayer( playerElement );
-			var swapPlayer = swapEmbedPlayerElement( playerElement, playerInterface );	
+			var inDomPlayer = swapEmbedPlayerElement( playerElement, playerInterface );	
 								
 			// Trigger the EmbedPlayerNewPlayer for embedPlayer interface
-			mw.log("EmbedPlayer::EmbedPlayerNewPlayer:trigger " + playerInterface.id );
+			mw.log("EmbedPlayer::EmbedPlayerNewPlayer:trigger " + inDomPlayer.id );
 			
-			// TODO: (from review) $( '#' + playerInterface.id ).get(0) is, theoreticaly, the same as swapPlayer and they might be interchangeable.
-			$( mw ).trigger ( 'EmbedPlayerNewPlayer', $( '#' + playerInterface.id ).get(0) );
+			// Allow plugins to add bindings to the inDomPlayer
+			$( mw ).trigger ( 'EmbedPlayerNewPlayer', inDomPlayer );
 
 			// Add a player ready binding: 
-			$( '#' + playerInterface.id ).bind( 'playerReady', areSelectedPlayersReady );
+			$( inDomPlayer ).bind( 'playerReady', areSelectedPlayersReady );
 			
 			// Issue the checkPlayerSources call to the new player
 			// interface: make sure to use the element that is in the DOM:
-			// TODO: (from review) should be same as swapPlayer?
-			$( '#' + playerInterface.id ).get(0).checkPlayerSources();
-						
+			inDomPlayer.checkPlayerSources();
 		}
 
 		if( waitForMeta && mw.getConfig('EmbedPlayer.WaitForMeta' ) ) {
