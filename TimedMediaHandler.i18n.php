@@ -618,7 +618,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-reset-error' => 'Fehler beim Zurücksetzen der Umschlüsselung',
 	'timedmedia-source-file' => 'Quelle ($1)',
 	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)',
-	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-Videodatei mit niedriger Datenübertragungsrate (200p)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-Videodatei mit niedriger Datenübertragungsrate (160p)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Webstreamingfähige Ogg-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
