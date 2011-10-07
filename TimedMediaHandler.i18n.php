@@ -2306,6 +2306,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Kaganer
  * @author Kv75
  * @author MaxSem
  * @author Александр Сигачёв
@@ -2316,8 +2317,8 @@ $messages['ru'] = array(
 	'timedmedia-ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Медиа-файл Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'звуковой файл Ogg $1, длительность $2, $3',
-	'timedmedia-ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4×$5 пикселов, $3',
-	'timedmedia-ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4×$5 пикселов, $3 всего',
+	'timedmedia-ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3',
+	'timedmedia-ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3 всего',
 	'timedmedia-ogg-long-general' => 'медиа-файл Ogg, длительность $2, $3',
 	'timedmedia-ogg-long-error' => 'неправильный Ogg-файл: $1',
 	'timedmedia-no-player-js' => 'К сожалению, в вашем браузере отключён JavaScript, или не имеется требуемого проигрывателя.<br />
