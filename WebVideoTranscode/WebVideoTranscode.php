@@ -153,7 +153,7 @@ class WebVideoTranscode {
 	 * @param $file File
 	 * @param $transcodeKey String 
 	 * 
-	 * @returns the local target encode path
+	 * @return the local target encode path
 	 */
 	static public function getTargetEncodePath( &$file, $transcodeKey ){
 		// TODO probably should use some other temporary non-web accessible location for 
@@ -271,7 +271,7 @@ class WebVideoTranscode {
 	 * @param {Object} File object
 	 * @param {Object} Options, a set of options:
 	 * 					'nodata' Strips the data- attribute, useful when your output is not html
-	 * @returns an associative array of sources suitable for <source> tag output
+	 * @return an associative array of sources suitable for <source> tag output
 	 */
 	static public function getLocalSources( &$file , $options=array() ){
 		global $wgEnabledTranscodeSet, $wgEnableTranscode, $wgLang;
