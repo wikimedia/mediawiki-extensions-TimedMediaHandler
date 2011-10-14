@@ -1,23 +1,23 @@
-<?php 
-/*
+<?php
+/**
  * Timed Text handling for mediaWiki
- * 
- * Timed text support is presently fairly limited. Unlike Ogg and WebM handlers, 
- * timed text does not extend the TimedMediaHandler class. 
- * 
+ *
+ * Timed text support is presently fairly limited. Unlike Ogg and WebM handlers,
+ * timed text does not extend the TimedMediaHandler class.
+ *
  * TODO On "new" timedtext language save purge all pages where file exists
  */
 class TextHandler {
-	
+
 	var $remoteNs = null;//lazy init remote Namespace number
-	
+
 	function __construct( $file ){
 		$this->file = $file;
 	}
 	/**
-	 * Get the timed text tracks elements as an associative array 
+	 * Get the timed text tracks elements as an associative array
 	 */
-	function getTracks(){				
+	function getTracks(){
 		if( !$this->file->isLocal() ){
 			return $this->getRemoteTextSources();
 		}else {
@@ -31,23 +31,23 @@ class TextHandler {
 			if( $this->remoteNs !== null ){
 				return $this->remoteNs;
 			}
-			// Get the namespace data from the image api repo: 
-			// fetchImageQuery query caches results 
+			// Get the namespace data from the image api repo:
+			// fetchImageQuery query caches results
 			$data = $this->file->repo->fetchImageQuery( array(
 				'meta' =>'siteinfo',
 				'siprop' => 'namespaces'
 			));
-			
+
 			if( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ){
-				
+
 				foreach( $data['query']['namespaces'] as $ns ){
 					if( $ns['*'] == 'TimedText' ){
 						$this->remoteNs = $ns['id'];
 						return $this->remoteNs;
 					}
 				}
-			} 
-			
+			}
+
 			// Look in the main namespace ?
 			// ( probably should instead throw an error )
 			return false;
@@ -60,7 +60,7 @@ class TextHandler {
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
-		return array( 
+		return array(
 			'action' => 'query',
 			'list' => 'allpages',
 			'apnamespace' => $ns,
@@ -83,9 +83,9 @@ class TextHandler {
 		}
 		wfDebug("Get text tracks from remote api \n");
 		$query = $this->getTextPagesQuery();
-		
-		
-		// Error in getting timed text namespace return empty array; 
+
+
+		// Error in getting timed text namespace return empty array;
 		if( $query === false ){
 			return array();
 		}
@@ -97,7 +97,7 @@ class TextHandler {
 	}
 	function getLocalTextSources(){
 		global $wgServer, $wgScriptPath;
-		
+
 		// Init $this->textTracks
 		$params = new FauxRequest( $this->getTextPagesQuery() );
 		$api = new ApiMain( $params );
@@ -108,15 +108,15 @@ class TextHandler {
 	}
 	function getTextTracksFromData( $data ){
 		global $wgForeignFileRepos;
-		
+
 		$textTracks = array();
 		$providerName = $this->file->repo->getName();
-		// For a while commons repo in the mediaWiki manual was called "shared" 
-		// ( we need commons to be named "commons" so that the javascript api provider names match up ) 
+		// For a while commons repo in the mediaWiki manual was called "shared"
+		// ( we need commons to be named "commons" so that the javascript api provider names match up )
 		if( $providerName == 'shared' || $providerName == 'wikimediacommons' ){
-			// We could alternatively check $this->file->repo->mApiBase 
+			// We could alternatively check $this->file->repo->mApiBase
 			foreach( $wgForeignFileRepos as $repo ){
-				if( $repo['name'] ==  $this->file->repo->getName() 
+				if( $repo['name'] ==  $this->file->repo->getName()
 						&&
 					parse_url( $repo['apibase'] , PHP_URL_HOST ) == 'commons.wikimedia.org'
 				){
@@ -125,9 +125,9 @@ class TextHandler {
 			}
 		}
 		// Provider name should be the same as the interwiki map
-		// @@todo more testing with this: 
+		// @@todo more testing with this:
 		$interWikiPrefix = ( $providerName == 'local' )? '' : $providerName . ':';
-		
+
 		$langNames = Language::getLanguageNames();
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
@@ -144,20 +144,20 @@ class TextHandler {
 					continue;
 				}
 				$namespacePrefix = ( $subTitle->getNsText() )? $subTitle->getNsText() . ':' : '';
-				$textTracks[] = array(		
+				$textTracks[] = array(
 					'kind' => 'subtitles',
 					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
-					'data-mwprovider' => $providerName,				
+					'data-mwprovider' => $providerName,
 					'type' => 'text/x-srt',
 					// TODO Should eventually add special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-					'src' => $subTitle->getFullURL( array( 
+					'src' => $subTitle->getFullURL( array(
 						'action' => 'raw',
 						'ctype' => 'text/x-srt'
 					)),
 					'srclang' =>  $languageKey,
-					'label' => wfMsg('timedmedia-subtitle-language', 
-						$langNames[ $languageKey ], 
+					'label' => wfMsg('timedmedia-subtitle-language',
+						$langNames[ $languageKey ],
 						$languageKey )
 				);
 			}

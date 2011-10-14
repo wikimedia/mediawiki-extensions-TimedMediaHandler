@@ -1,6 +1,6 @@
 <?php
-/*
- * Sample test suite. 
+/**
+ * Sample test suite.
  * Two ways to configure MW for these tests
  * 1) If you are running multiple test suites, add the following in LocalSettings.php
  * require_once("tests/selenium/SimpleSeleniumConfig.php");
@@ -13,7 +13,7 @@ class EmbedPlayerTestSuite extends SeleniumTestSuite
 {
 	public function setUp() {
 		parent::setUp();
-	} 
+	}
 	public function addTests() {
 		$testFiles = array(
 			'extensions/TimedMediaHandler/tests/EmbedPlayerLoadsTestCase.php'
