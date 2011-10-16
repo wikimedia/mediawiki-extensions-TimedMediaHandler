@@ -670,6 +670,7 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -718,6 +719,12 @@ $messages['gsw'] = array(
 	'mwe-timedtext-textcat-cue' => 'Cue-Pinkt',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Untertitel gfunde fir dr Videoclip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kei $1 Untertitel gfunde fir dr Videoclip: $2',
+	'mwe-timedtext-request-subs' => 'Untertitel aafordre',
+	'mwe-timedtext-no-subs' => 'Untertitel sin nit verfiegbar',
+	'mwe-timedtext-request-subs-desc' => 'E Aafroog stelle, dass für des Video Untertitel gmacht werde',
+	'mwe-timedtext-request-subs-done' => 'D Aafroog für e Untertitelig isch dezuegfiegt worde. [$1 Alli Aafrooge zur Untertitelung aaluege]',
+	'mwe-timedtext-request-subs-fail' => 'Die Aafroog für e Untertitelig het nit chönne dezuegfiegt worde. Bisch aagmolde?',
+	'mwe-timedtext-request-already-done' => 'Es git scho e Aafroog, dass de Video untertitelt wird. [$1 Alli Aafrooge zur Untertitelig aaluege]',
 );
 
 /** Hebrew (עברית)

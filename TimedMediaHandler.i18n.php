@@ -1053,11 +1053,12 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  * @author Melancholie
  */
 $messages['gsw'] = array(
-	'timedmedia-desc' => 'Stellt e Styyrigsprogramm fir zytgstyyrti Medie (Video, Audio, timedText) mit dr Codeumwandlig no Ogg Theora/Vorbis z Verfiegig',
+	'timedmedia-desc' => 'Stellt e Styyrigsprogramm fir zytgstyyrti Medie (Video, Audio, timedText) zur Verfiegig, wo d Format WebM, Ogg Theora, Ogg Vorbis un SubRip unterstützt',
 	'timedmedia-ogg-short-audio' => 'Ogg-$1-Audiodatei, $2',
 	'timedmedia-ogg-short-video' => 'Ogg-$1-Videodatei, $2',
 	'timedmedia-ogg-short-general' => 'Ogg-$1-Mediadatei, $2',
@@ -1066,14 +1067,48 @@ $messages['gsw'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg-Audio-/Video-Datei, $1, Längi: $2, $4×$5 Pixel, $3',
 	'timedmedia-ogg-long-general' => 'Ogg-Mediadatei, Längi: $2, $3',
 	'timedmedia-ogg-long-error' => 'Uugiltigi Ogg-Datei: $1',
+	'timedmedia-webm-short-video' => 'WebM-$1-Videodatei, $2',
+	'timedmedia-webm-long-video' => 'WebM-Audio-/Video-Datei, $1, Längei: $2, $4×$5 Pixel, $3 insgsamt',
 	'timedmedia-no-player-js' => 'Excusez, aber Dyy Browser het entwäder JavaScript deaktiviert oder kei unterstitzti Abspilsoftware.<br />
 Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.',
 	'timedmedia-more' => 'Meh …',
 	'timedmedia-dismiss' => 'Zuemache',
 	'timedmedia-download' => 'Datei spychere',
+	'timedmedia-play-media' => 'Mediedatei abspiile',
 	'timedmedia-desc-link' => 'Iber die Datei',
 	'timedmedia-oggThumb-version' => 'OggHandler brucht oggThumb in dr Version $1 oder hecher.',
 	'timedmedia-oggThumb-failed' => 'oggThumb het kei Miniaturbild chenne aalege.',
+	'timedmedia-status-header' => 'Umschlüsseligsstatus',
+	'timedmedia-update-status' => 'Umschlüsseligsstatus aktualisiere',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Status nit bekannt',
+	'timedmedia-actions' => 'Aktione',
+	'timedmedia-direct-link' => 'Ableitig abelade',
+	'timedmedia-not-ready' => 'Nit parat',
+	'timedmedia-completed-on' => 'Umschlüsselig vo $1 abgschlosse',
+	'timedmedia-error-on' => 'Fääler bim Umschlüssle in $1.',
+	'timedmedia-started-transcode' => 'Umschlüsselig het vor $1 aagfange. $2',
+	'timedmedia-percent-done' => 'Öbe $1 % fertig',
+	'timedmedia-unknown-target-size' => 'Unbekannti Ziilgrößi, $1 codiert',
+	'timedmedia-days' => '{{PLURAL:$1|1 Tag|$1 Täg}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 Stund|$1 Stunde}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 Minut|$1 Minute}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekund|$1 Sekunde}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 un $4',
+	'timedmedia-time-3-measurements' => '$1, $2 un $3',
+	'timedmedia-time-2-measurements' => '$1 un $2',
+	'timedmedia-show-error' => 'Fääler aazeige',
+	'timedmedia-reset' => 'Umschlüsselig zruggsetze',
+	'timedmedia-source-file' => 'Quell ($1)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-Videodatei mit niidriger Dateübertragigsrate (160p)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Webstreamingfähigi Ogg-Videodatei (360p)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Webstreamingfähigi Ogg-Videodatei (480p)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Qualitativ hochwertigi Ogg-Videodatei (720p)',
+	'timedmedia-derivative-desc-360p.webm' => 'Webstreamingfähigi WebM-Videodatei (360p)',
+	'timedmedia-derivative-desc-480p.webm' => 'Webstreamingfähigi WebM-Videodatei (480p)',
+	'timedmedia-derivative-desc-720p.webm' => 'Qualitativ hochwertigi WebM-Videodatei (720p)',
+	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 );
 
 /** Manx (Gaelg)

@@ -1050,10 +1050,13 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
+	'mwe-embedplayer-credit-date' => 'Datum: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'Am Lade vum Plugin ...',
 	'mwe-embedplayer-select_playback' => 'Yystellige fir s Abspile setze',
 	'mwe-embedplayer-link_back' => 'Gleich (Link) retur',
@@ -1088,12 +1091,14 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-no-player' => 'Fir $1 isch kei Player verfiegbar',
 	'mwe-embedplayer-share_this_video' => 'Des Video teile',
 	'mwe-embedplayer-video_credits' => 'Videokredit',
+	'mwe-embedplayer-no-video_credits' => 'Kei Urheberrächtsaagabe verfiegbar',
 	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura Open-Source-Video-Plattform',
 	'mwe-embedplayer-menu_btn' => 'Uuswahl',
 	'mwe-embedplayer-close_btn' => 'Zuemache',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-Player',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-Player',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-Player',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM-Player',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generisch Ogg-Plugin',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-Plugin',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -1103,7 +1108,10 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(uusgwehlt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Fir e besseri Abspilqualitet vu däm Video empfähle mir:<br />[$1 Firefox 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Fir desmol ablähne.',
+	'mwe-embedplayer-download-warn' => 'S Wiidergabeprogramm im Browser isch nit kompatibel. Zume im Browser aaluege, due bitte d [$1 nöisti Version vo Firefox] abelade.',
+	'mwe-embedplayer-fullscreen-tip' => 'D Taschte <b>F11</b> drugge, zume uff de Vollbildmodus vum <i>Webbrowsers</i> umzschalte.',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'D Taschte <b>UMSCHALT ⌘ F</b> drugge, zume uff de Vollbildmodus vum <i>Webbrowsers</i> umzschalte.',
+	'mwe-embedplayer-do_not_warn_again' => 'Die Mäldig ab jetz nümm aazeige.',
 	'mwe-embedplayer-playerSelect' => 'Player',
 	'mwe-embedplayer-read_before_embed' => 'Bitte lis d <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Sicherheitsnotize iber s Yyfiege</a> voreb Du s wirkli yyfiege tuesch!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Yybunde in e Syte',
@@ -1112,6 +1120,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-buffering' => 'pufferet',
 	'mwe-embedplayer-copy-code' => 'Code kopiere',
 	'mwe-embedplayer-video-h264' => 'H.264-Video',
+	'mwe-embedplayer-video-webm' => 'WebM-Video',
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
