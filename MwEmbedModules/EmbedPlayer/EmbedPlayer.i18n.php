@@ -1650,6 +1650,15 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-copy-code' => 'Kood kopeere',
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author Gomada
+ */
+$messages['ku-latn'] = array(
+	'mwe-embedplayer-credit-title' => 'Sernav: $1',
+	'mwe-embedplayer-credit-date' => 'Dîrok: $1',
+	'mwe-embedplayer-credit-author' => 'Xwedî: $1',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
