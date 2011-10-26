@@ -1,11 +1,11 @@
 /**
  * The "kaltura player" embedPlayer interface for fallback h.264 and flv video format support
- * 
- * Note once the flash supports webm we can also support that here. 
+ *
+ * Note once the flash supports webm we can also support that here.
  */
 // Called from the kdp.swf
 ( function( mw, $ ) {
-	
+
 function jsInterfaceReadyFunc() {
 	return true;
 }
@@ -139,9 +139,9 @@ mw.EmbedPlayerKplayer = {
 
 	/**
 	 * Bind a Player Function,
-	 * 
+	 *
 	 * Creates a unique global function to bind to "this" player instance:
-	 * 
+	 *
 	 * @param {String}
 	 *            flash binding name
 	 * @param {String}
@@ -189,7 +189,7 @@ mw.EmbedPlayerKplayer = {
 	},
 
 	/**
-	 * Play method sends the play request to the flash applet 
+	 * Play method sends the play request to the flash applet
 	 * and calls parent_play to update the interface
 	 */
 	play : function() {
@@ -212,7 +212,7 @@ mw.EmbedPlayerKplayer = {
 
 	/**
 	 * Issues a seek to the playerElement
-	 * 
+	 *
 	 * @param {Float}
 	 *            percentage Percentage of total stream length to seek to
 	 */
@@ -231,7 +231,7 @@ mw.EmbedPlayerKplayer = {
 			}
 		}
 
-		if (this.playerElement) {		
+		if (this.playerElement) {
 			// Issue the seek to the flash player:
 			this.playerElement.sendNotification('doSeek', seekTime);
 
@@ -249,7 +249,7 @@ mw.EmbedPlayerKplayer = {
 
 	/**
 	 * Seek in a existing stream
-	 * 
+	 *
 	 * @param {Float}
 	 *            percentage Percentage of the stream to seek to between 0 and 1
 	 */
@@ -258,10 +258,10 @@ mw.EmbedPlayerKplayer = {
 		var _this = this;
 		// issue the play request
 		this.play();
-	
+
 		// let the player know we are seeking
 		_this.seeking = true;
-	
+
 		var getPlayerCount = 0;
 		var readyForSeek = function() {
 			_this.getPlayerElement();
@@ -284,10 +284,10 @@ mw.EmbedPlayerKplayer = {
 		};
 		readyForSeek();
 	},
-	
+
 	/**
 	 * Issues a volume update to the playerElement
-	 * 
+	 *
 	 * @param {Float}
 	 *            percentage Percentage to update volume to
 	 */
@@ -296,21 +296,21 @@ mw.EmbedPlayerKplayer = {
 			this.playerElement.sendNotification('changeVolume', percentage);
 		}
 	},
-	
+
 	/**
 	 * function called by flash at set interval to update the playhead.
 	 */
 	onUpdatePlayhead : function(playheadValue) {
 		this.flashCurrentTime = playheadValue;
 	},
-	
+
 	/**
 	 * function called by flash when the total media size changes
 	 */
 	onBytesTotalChange : function(data, id) {
 		this.bytesTotal = data.newValue;
 	},
-	
+
 	/**
 	 * function called by flash applet when download bytes changes
 	 */
@@ -318,14 +318,14 @@ mw.EmbedPlayerKplayer = {
 		mw.log('KPlayer::onBytesDownloadedChange');
 		this.bytesLoaded = data.newValue;
 		this.bufferedPercent = this.bytesLoaded / this.bytesTotal;
-	
+
 		// Fire the parent html5 action
 		$(this).trigger('progress', {
 			'loaded' : this.bytesLoaded,
 			'total' : this.bytesTotal
 		});
 	},
-	
+
 	/**
 	 * Get the embed player time
 	 */
@@ -333,7 +333,7 @@ mw.EmbedPlayerKplayer = {
 		// update currentTime
 		return this.flashCurrentTime;
 	},
-	
+
 	/**
 	 * Get the embed fla object player Element
 	 */
@@ -345,7 +345,7 @@ mw.EmbedPlayerKplayer = {
 
 /**
  * function called once player is ready.
- * 
+ *
  * NOTE: playerID is not always passed so we can't use this:
  */
 function onKdpReady(playerId) {
@@ -365,7 +365,7 @@ var swfobject = function() {
 
 	plugin = false, domLoadFnArr = [ main ], regObjArr = [], objIdArr = [], listenersArr = [], storedAltContent, storedAltContentId, storedCallbackFn, storedCallbackObj, isDomLoaded = false, isExpressInstallActive = false, dynamicStylesheet, dynamicStylesheetMedia, autoHideShow = true,
 
-	/*
+	/**
 	 * Centralized function for browser feature detection - User agent string
 	 * detection is only used when no good alternative is possible - Is executed
 	 * directly for optimal performance
@@ -463,7 +463,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Cross-browser onload - Based on James Edwards' solution:
 	 * http://brothercake.com/site/resources/scripts/onload/ - Will fire an
 	 * event as soon as a web page including all of its assets are loaded
@@ -486,7 +486,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Main function - Will preferably execute onDomLoad, otherwise onload (as a
 	 * fallback)
 	 */
@@ -498,7 +498,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Detect the Flash Player version for non-Internet Explorer browsers -
 	 * Detecting the plug-in version via the object element is more precise than
 	 * using the plugins collection item's description: a. Both release and
@@ -542,7 +542,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Perform Flash Player and SWF version matching; static publishing only
 	 */
 	function matchVersions() {
@@ -648,7 +648,7 @@ var swfobject = function() {
 		return r;
 	}
 
-	/*
+	/**
 	 * Requirements for Adobe Express Install - only one instance can be active
 	 * at a time - fp 6.0.65 or higher - Win/Mac OS only - no Webkit engines
 	 * older than version 312
@@ -658,7 +658,7 @@ var swfobject = function() {
 				&& (ua.win || ua.mac) && !(ua.wk && ua.wk < 312);
 	}
 
-	/*
+	/**
 	 * Show the Adobe Express Install dialog - Reference:
 	 * http://www.adobe.com/cfusion/knowledgebase/index.cfm?id=6a253b75
 	 */
@@ -726,7 +726,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Functions to abstract and display alternative content
 	 */
 	function displayAltContent(obj) {
@@ -777,7 +777,7 @@ var swfobject = function() {
 		return ac;
 	}
 
-	/*
+	/**
 	 * Cross-browser dynamic SWF creation
 	 */
 	function createSWF(attObj, parObj, id) {
@@ -882,7 +882,7 @@ var swfobject = function() {
 		el.appendChild(p);
 	}
 
-	/*
+	/**
 	 * Cross-browser SWF removal - Especially needed to safely and completely
 	 * remove a SWF in Internet Explorer
 	 */
@@ -916,7 +916,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Functions to optimize JavaScript compression
 	 */
 	function getElementById(id) {
@@ -932,7 +932,7 @@ var swfobject = function() {
 		return doc.createElement(el);
 	}
 
-	/*
+	/**
 	 * Updated attachEvent function for Internet Explorer - Stores attachEvent
 	 * information in an Array, so on unload the detachEvent functions can be
 	 * called to avoid memory leaks
@@ -942,7 +942,7 @@ var swfobject = function() {
 		listenersArr[listenersArr.length] = [ target, eventType, fn ];
 	}
 
-	/*
+	/**
 	 * Flash Player and SWF content version matching
 	 */
 	function hasPlayerVersion(rv) {
@@ -955,7 +955,7 @@ var swfobject = function() {
 				&& pv[1] == v[1] && pv[2] >= v[2])) ? true : false;
 	}
 
-	/*
+	/**
 	 * Cross-browser dynamic CSS creation - Based on Bobby van der Sluis'
 	 * solution: http://www.bobbyvandersluis.com/articles/dynamicCSS.php
 	 */
@@ -1010,7 +1010,7 @@ var swfobject = function() {
 		}
 	}
 
-	/*
+	/**
 	 * Filter to avoid XSS attacks
 	 */
 	function urlEncodeIfNecessary(s) {
@@ -1020,7 +1020,7 @@ var swfobject = function() {
 				: s;
 	}
 
-	/*
+	/**
 	 * Release memory to avoid memory leaks caused by closures, fix hanging
 	 * audio/video threads and force open sockets/NetConnections to disconnect
 	 * (Internet Explorer only)
