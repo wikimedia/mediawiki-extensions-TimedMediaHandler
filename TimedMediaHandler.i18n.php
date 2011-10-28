@@ -1084,6 +1084,7 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.or
 	'timedmedia-update-status' => 'Umschlüsseligsstatus aktualisiere',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Status nit bekannt',
+	'timedmedia-transcodeinfo' => 'Abgleiteti Beschryybig umschlüssle',
 	'timedmedia-actions' => 'Aktione',
 	'timedmedia-direct-link' => 'Ableitig abelade',
 	'timedmedia-not-ready' => 'Nit parat',
@@ -1091,6 +1092,7 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.or
 	'timedmedia-error-on' => 'Fääler bim Umschlüssle in $1.',
 	'timedmedia-started-transcode' => 'Umschlüsselig het vor $1 aagfange. $2',
 	'timedmedia-percent-done' => 'Öbe $1 % fertig',
+	'timedmedia-in-job-queue' => 'Vor $1 zur Ufftragswarteschlange dezuegfiegt worde',
 	'timedmedia-unknown-target-size' => 'Unbekannti Ziilgrößi, $1 codiert',
 	'timedmedia-days' => '{{PLURAL:$1|1 Tag|$1 Täg}}',
 	'timedmedia-hours' => '{{PLURAL:$1|1 Stund|$1 Stunde}}',
@@ -1101,6 +1103,8 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.or
 	'timedmedia-time-2-measurements' => '$1 un $2',
 	'timedmedia-show-error' => 'Fääler aazeige',
 	'timedmedia-reset' => 'Umschlüsselig zruggsetze',
+	'timedmedia-reset-confirm' => "S Zruggsetze vo dere Umschlüsselig wird (wänn's vorhande isch), die aktuelli Datei ussenee un d Umschlüsselig no emool uff d Ufftragswarteschlange dezuefiege. E nöii Umschlüsselig wird e Wyyl goo.<br /><br /> Söll des würkli gmacht werde?",
+	'timedmedia-reset-error' => 'Fääler bim Zruggsetze vo de Umschlüsselig.',
 	'timedmedia-source-file' => 'Quell ($1)',
 	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-Videodatei mit niidriger Dateübertragigsrate (160p)',
@@ -1111,6 +1115,8 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.or
 	'timedmedia-derivative-desc-480p.webm' => 'Webstreamingfähigi WebM-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Qualitativ hochwertigi WebM-Videodatei (720p)',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
+	'timedmedia-subtitle-no-video' => 'Dere Untertitel-Syte isch kei Video zuegordnet.',
+	'timedmedia-subtitle-no-subtitles' => 'Es git uff $1 zurzit kei Untertitel für des Video. Bim dezuefiege vo Untertitel cha [{{fullurl:{{FULLPAGENAME}}|action=edit}} die Syte] bearbeitet werde.',
 );
 
 /** Manx (Gaelg)
