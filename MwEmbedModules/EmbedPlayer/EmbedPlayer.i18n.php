@@ -1772,7 +1772,7 @@ $messages['mk'] = array(
 	'mwe-embedplayer-playerSelect' => 'Изведувач',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Прочитајте го ова</a> пред да вметнувате.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Вметни во страница',
-	'mwe-embedplayer-related_videos' => 'Поврзани снимки',
+	'mwe-embedplayer-related_videos' => 'Поврзани видеа',
 	'mwe-embedplayer-seeking' => 'барам',
 	'mwe-embedplayer-buffering' => 'меѓускладирање',
 	'mwe-embedplayer-copy-code' => 'Копирај код',
