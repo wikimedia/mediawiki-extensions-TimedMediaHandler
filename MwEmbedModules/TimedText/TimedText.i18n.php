@@ -92,6 +92,39 @@ $messages['af'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Lirieke',
 );
 
+/** Arabic (العربية)
+ * @author روخو
+ */
+$messages['ar'] = array(
+	'mwe-timedtext-stage-transcribe' => 'دون',
+	'mwe-timedtext-stage-sync' => 'تزامن',
+	'mwe-timedtext-stage-translate' => 'ترجمة',
+	'mwe-timedtext-stage-upload' => 'رفع من ملف محلي',
+	'mwe-timedtext-select-language' => 'اختر اللغة',
+	'mwe-timedtext-file-language' => 'عنوان ملف اللغة الفرعي',
+	'mwe-timedtext-upload-text' => 'رفع ملف نصي',
+	'mwe-timedtext-uploading-text' => 'جاري رفع الملف النصي',
+	'mwe-timedtext-upload-text-desc-title' => 'رفع الملف النصي',
+	'mwe-timedtext-upload-text-desc-help-select' => 'حدد لغة الملف',
+	'mwe-timedtext-upload-text-desc-help-review' => 'راجع/حرر محتوى النص ثم اضغط على زر رفع لإضافة نص',
+	'mwe-timedtext-upload-text-preview' => 'مراجعة النص',
+	'mwe-timedtext-upload-text-done' => 'انتهت عملية الرفع',
+	'mwe-timedtext-upload-text-fail-desc' => 'عملية الرفع لم تنجح',
+	'mwe-timedtext-upload-text-fail-title' => 'فشل في رفع الملف',
+	'mwe-timedtext-upload-text-another' => 'رفع ملف اخر',
+	'mwe-timedtext-upload-text-done-uploading' => 'انتهى الرفع',
+	'mwe-timedtext-back-btn' => 'رجوع',
+	'mwe-timedtext-choose-text' => 'اختر نص',
+	'mwe-timedtext-upload-timed-text' => 'رفع الترجمات',
+	'mwe-timedtext-search' => 'البحث عن مقطع',
+	'mwe-timedtext-layout' => 'مخرجات',
+	'mwe-timedtext-layout-ontop' => 'في أعلى الفيديو',
+	'mwe-timedtext-layout-off' => 'إخفاء الترجمات',
+	'mwe-timedtext-loading-text' => 'جاري تحميل النص...',
+	'mwe-timedtext-textcat-cc' => 'نصوص توضيحية',
+	'mwe-timedtext-textcat-cue' => 'نقاط تلميح',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by

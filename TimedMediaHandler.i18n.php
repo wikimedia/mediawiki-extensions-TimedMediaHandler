@@ -224,6 +224,7 @@ $messages['an'] = array(
  * @author Alnokta
  * @author Meno25
  * @author OsamaK
+ * @author روخو
  */
 $messages['ar'] = array(
 	'timedmedia-desc' => 'متحكم لملفات Ogg Theora وVorbis، مع لاعب جافاسكريت',
@@ -235,11 +236,29 @@ $messages['ar'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'ملف Ogg مالتي بليكسد أوديو/فيديو، $1، الطول $2، $4×$5 بكسل، $3 إجمالي',
 	'timedmedia-ogg-long-general' => 'ملف ميديا Ogg، الطول $2، $3',
 	'timedmedia-ogg-long-error' => 'ملف Ogg غير صحيح: $1',
+	'timedmedia-webm-short-video' => 'نسق WebM، $1 ملف فيديو $2',
+	'timedmedia-webm-long-video' => 'ملف صوت/فيديو بنسق WebM , $1, الطول $2, $4×$5 بكسل، $3 إجمالا',
+	'timedmedia-no-player-js' => 'عذرا، متصفحك إما انه لا يدعم الجافا سكريبت أو انها معطلة.<br />
+تستطيع <a href="$1">تحميل المقطع</a> أو <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">تحميل مشغل</a> يستطيع تشغيل المقطع على متصفحك.',
 	'timedmedia-more' => 'المزيد...',
 	'timedmedia-dismiss' => 'أغلق',
 	'timedmedia-download' => 'نزل الملف',
+	'timedmedia-play-media' => 'تشغيل الوسائط',
 	'timedmedia-desc-link' => 'عن هذا الملف',
+	'timedmedia-status' => 'الحالة',
+	'timedmedia-status-unknown' => 'حالة غير معروفة',
+	'timedmedia-actions' => 'الإجراءات',
+	'timedmedia-not-ready' => 'غير جاهز',
+	'timedmedia-percent-done' => 'وصل لنسبة $1% انتهى',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 و $4',
+	'timedmedia-time-3-measurements' => '$1, $2 و $3',
+	'timedmedia-time-2-measurements' => '$1 و $2',
+	'timedmedia-show-error' => 'إظهار الخطأ',
 	'timedmedia-ogg' => 'أو جي جي',
+	'timedmedia-source-file' => '$1 مصدر',
+	'timedmedia-derivative-desc-160p.ogv' => 'انخفاض عرض النطاق الترددي أوج فيديو (160P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'تحميل أوج فيديو بجودة عالية  (720P)',
+	'timedmedia-subtitle-language' => '$1 ($2) ترجمات',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
