@@ -1898,7 +1898,7 @@ $messages['mr'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
-	'timedmedia-desc' => 'Pengelola fail Ogg Theora dan Vorbis, dengan pemain JavaScript',
+	'timedmedia-desc' => 'Pemproses audio, video dan teks bermasa, dengan sokongan format untuk WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'fail bunyi Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'fail video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'fail media Ogg $1, $2',
@@ -1910,6 +1910,7 @@ $messages['ms'] = array(
 	'timedmedia-more' => 'Lagi…',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Muat turun fail',
+	'timedmedia-play-media' => 'Mainkan media',
 	'timedmedia-desc-link' => 'Perihal fail ini',
 	'timedmedia-source-file' => 'Sumber $1',
 );
