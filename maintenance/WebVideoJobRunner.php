@@ -55,7 +55,7 @@ class WebVideoJobRunner extends Maintenance {
 			if( strpos( $proc['args'], 'runJobs.php' ) !== false && 
 				strpos( $proc['args'], '--type webVideoTranscode' ) !== false 
 			){
-				if( TimedMediaHandler::parseTimeString( $proc['time'] ) > $this->transcodeTimeout ){	
+				if( TimedMediaHandler::parseTimeString( $proc['time'] ) > $wgTranscodeBackgroundTimeLimit ){	
 					// should probably "kill" the process 
 					
 				} else {
