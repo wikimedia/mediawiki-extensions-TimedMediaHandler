@@ -28,13 +28,13 @@ $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 // ( even if there are no text tracks for that asset at render time )
 $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
 
-// Which users can restart failed or expired transcode jobs
+// Which users can restart failed or expired transcode jobs:
 $wgGroupPermissions['sysop']['transcode-reset'] = true;
 
 // How long you have to wait between transcode resets for non-error transcodes
 $wgWaitTimeForTranscodeReset = 3600;
 
-// The minimum size for an embed video player:
+// The minimum size for an embed video player ( smaller than this size uses a pop-up player )
 $wgMinimumVideoPlayerSize = 200;
 
 // Set the supported ogg codecs:
@@ -102,7 +102,6 @@ $wgEnabledTranscodeSet = array(
 	WebVideoTranscode::ENC_WEBM_720P,
 );
 /******************* CONFIGURATION ENDS HERE **********************/
-
 
 
 // List of extensions handled by Timed Media Handler since its referenced in a few places.
