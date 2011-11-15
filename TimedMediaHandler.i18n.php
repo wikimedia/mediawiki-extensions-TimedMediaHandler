@@ -69,7 +69,7 @@ Are you sure you want to proceed?',
 	'timedmedia-source-file' => '$1 source',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 
-	// derivative timedmedia-derivative-desc-160p.ogv
+	'timedmedia-derivative-160p.ogv' => 'Ogg 160P',
 	'timedmedia-derivative-desc-160p.ogv' => 'Low bandwidth Ogg video (160P)',
 
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360P',
