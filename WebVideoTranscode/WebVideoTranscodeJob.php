@@ -31,7 +31,7 @@ class WebVideoTranscodeJob extends Job {
 	private function getTargetEncodePath(){
 		if( !$this->targetEncodePath ){
 			$file = wfLocalFile( $this->title );
-			$transcodeKey = $this->params['transcodeKey'];
+			$transcodeKey = $this->params[ 'transcodeKey' ];
 			$this->targetEncodePath = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
 		}
 		return $this->targetEncodePath;
@@ -496,9 +496,9 @@ class WebVideoTranscodeJob extends Job {
 				// only run check if we are outputing to target file 
 				// ( two pass encoding does not output to target on first pass ) 
 				clearstatcache();
-				$newFileSize = filesize( $this->getTargetEncodePath() );
+				$newFileSize = is_file( $this->getTargetEncodePath() ) ? filesize( $this->getTargetEncodePath() ) : 0;
 				// Don't start checking for file growth until we have an initial positive file size: 
-				if( is_file( $this->getTargetEncodePath() ) &&  $newFileSize > 0 ){
+				if( $newFileSize > 0 ){
 					$this->output(  $wgLang->formatSize( $newFileSize ). ' Total size, encoding ' . 
 						$wgLang->formatSize( ( $newFileSize - $oldFileSize ) / 5 ) . ' per second' );
 					if( $newFileSize == $oldFileSize ){
