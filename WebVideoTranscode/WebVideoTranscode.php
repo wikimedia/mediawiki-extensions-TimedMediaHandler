@@ -637,17 +637,17 @@ class WebVideoTranscode {
 			if ( $sourceHeight > $maxSize['height'] ) {
 				$targetHeight = $maxSize['height'];
 				$targetWidth = intval( $targetHeight * $sourceAspect );
-				//some players do not like uneven frame sizes
-				$targetWidth += $targetWidth%2;
 			}
 		} else {
 			if ( $sourceWidth > $maxSize['width'] ) {
 				$targetWidth = $maxSize['width'];
 				$targetHeight = intval( $targetWidth / $sourceAspect );
 				//some players do not like uneven frame sizes
-				$targetHeight += $targetHeight%2;
 			}
 		}
+		//some players do not like uneven frame sizes
+		$targetWidth += $targetWidth%2;
+		$targetHeight += $targetHeight%2;
 		return array( $targetWidth, $targetHeight );
 	}
 	/**
