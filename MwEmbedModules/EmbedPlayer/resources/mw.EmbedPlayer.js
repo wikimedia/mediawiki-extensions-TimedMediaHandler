@@ -516,21 +516,23 @@ mw.EmbedPlayer.prototype = {
 
 		if ( this.selectedPlayer ) {
 			// Inherit the playback system of the selected player:
-			this.inheritEmbedPlayer();
+			this.updatePlaybackInterface();
 		} else {
 			this.showPluginMissingHTML();
 		}
 	},
 
 	/**
-	 * Load and inherit methods from the selected player interface
+	 * Updates the player interface 
+	 * 
+	 * Loads and inherit methods from the selected player interface.
 	 *
 	 * @param {Function}
 	 *      callback Function to be called once playback-system has been
 	 *      inherited
 	 */
-	inheritEmbedPlayer: function( callback ) {
-		mw.log( "EmbedPlayer::inheritEmbedPlayer:duration is: " + this.getDuration() + ' p: ' + this.id );
+	updatePlaybackInterface: function( callback ) {
+		mw.log( "EmbedPlayer::updatePlaybackInterface: duration is: " + this.getDuration() + ' p: ' + this.id );
 
 		// Clear out any non-base embedObj methods:
 		if ( this.instanceOf ) {
@@ -545,12 +547,12 @@ mw.EmbedPlayer.prototype = {
 		}
 
 		// Set up the new embedObj
-		mw.log( 'EmbedPlayer::inheritEmbedPlayer: embedding with ' + this.selectedPlayer.library );
+		mw.log( 'EmbedPlayer::updatePlaybackInterface: embedding with ' + this.selectedPlayer.library );
 		var _this = this;
 
 		// Load the selected player
 		this.selectedPlayer.load( function() {
-			mw.log( 'EmbedPlayer::inheritEmbedPlayer ' + _this.selectedPlayer.library + " player loaded for " + _this.id );
+			mw.log( 'EmbedPlayer::updatePlaybackInterface ' + _this.selectedPlayer.library + " player loaded for " + _this.id );
 
 			// Get embed library player Interface
 			var playerInterface = mw[ 'EmbedPlayer' + _this.selectedPlayer.library ];
@@ -591,7 +593,7 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		if ( this.selectedPlayer.id != player.id ) {
 			this.selectedPlayer = player;
-			this.inheritEmbedPlayer( function(){
+			this.updatePlaybackInterface( function(){
 				// Hide / remove track container
 				_this.$interface.find( '.track' ).remove();
 				// We have to re-bind hoverIntent ( has to happen in this scope
