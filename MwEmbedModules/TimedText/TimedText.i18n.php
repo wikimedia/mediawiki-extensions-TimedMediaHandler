@@ -1624,8 +1624,16 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'mwe-timedtext-editor' => 'Уредник усклађеног текста',
+	'mwe-timedtext-stage-transcribe' => 'Направи транскрипт',
+	'mwe-timedtext-stage-sync' => 'Усклади',
+	'mwe-timedtext-stage-translate' => 'Преведи',
 	'mwe-timedtext-stage-upload' => 'Пошаљи датотеку са рачунара',
 	'mwe-timedtext-select-language' => 'Изабери језик',
+	'mwe-timedtext-file-language' => 'Језик титла',
+	'mwe-timedtext-upload-text' => 'Отпреми текстуалну датотеку',
+	'mwe-timedtext-uploading-text' => 'Отпремање текстуалне датотеке',
+	'mwe-timedtext-upload-text-desc-title' => 'Отпремање текстуалне датотеке',
 	'mwe-timedtext-upload-text-done' => 'Слање је завршено',
 	'mwe-timedtext-upload-text-fail-desc' => 'Слање је било неуспешно',
 	'mwe-timedtext-upload-text-fail-title' => 'Слање није прошло',
