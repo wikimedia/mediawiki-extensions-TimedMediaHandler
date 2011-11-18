@@ -62,32 +62,6 @@ mw.EmbedPlayerJava = {
 
 		$( this ).html( appletCode );
 
-		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
-		// NOTE:  This breaks javascript reference to the applet so disabled for now:
-		/*if ( $.browser.mozilla ) {
-			var iframe = document.createElement( 'iframe' );
-			iframe.setAttribute( 'width', this.getWidth() );
-			iframe.setAttribute( 'height', this.getHeight() );
-			iframe.setAttribute( 'scrolling', 'no' );
-			iframe.setAttribute( 'frameborder', 0 );
-			iframe.setAttribute( 'marginWidth', 0 );
-			iframe.setAttribute( 'marginHeight', 0 );
-			iframe.setAttribute( 'id', 'cframe_' + this.id )
-
-			// Append the iframe to the embed object:
-			$( this ).html( iframe );
-
-			// Write out the iframe content:
-			var newDoc = iframe.contentDocument;
-			newDoc.open();
-			newDoc.write( '<html><body>' + appletCode + '</body></html>' );
-			// spurious error in some versions of FF, no workaround known
-			newDoc.close();
-		} else {
-			$( this ).html( appletCode );
-		//}
-		*/
-
 		// Start the monitor:
 		_this.monitor();
 	},
