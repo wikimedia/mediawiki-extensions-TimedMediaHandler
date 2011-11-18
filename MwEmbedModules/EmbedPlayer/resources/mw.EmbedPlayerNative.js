@@ -370,10 +370,14 @@ mw.EmbedPlayerNative = {
 		return this.playerElement.currentTime;
 	},
 	
-	// Update the poster src ( updates the native object if in dom ) 
+	/**
+	 * Updates the poster source for the video tatg
+	 * @param {string}
+	 * 		src Url of the poster iamge
+	 */
 	updatePosterSrc: function( src ){
 		if( this.getPlayerElement() ){
-			this.getPlayerElement().poster = src;
+			$( this.getPlayerElement() ).attr( 'poster', src );
 		}
 		// Also update the embedPlayer poster 
 		this.parent_updatePosterSrc( src );
@@ -565,8 +569,9 @@ mw.EmbedPlayerNative = {
 		} else {
 			// Should not happen offten
 			this.playerElement.load();
-			if( callback)
+			if( callback ){
 				callback();
+			}
 		}
 	},
 
@@ -586,19 +591,20 @@ mw.EmbedPlayerNative = {
 	* Local method for seeking event
 	* fired when "seeking"
 	*/
-	onseeking: function() {
-		mw.log( "native:onSeeking");
+	_onseeking: function() {
+		mw.log( "EmbedPlayerNative::onSeeking " + this.seeking);
 		// Trigger the html5 seeking event
 		//( if not already set from interface )
 		if( !this.seeking ) {
 			this.seeking = true;
-
 			// Run the onSeeking interface update
 			this.controlBuilder.onSeek();
 
 			// Trigger the html5 "seeking" trigger
-			mw.log("native:seeking:trigger:: " + this.seeking);
-			$( this ).trigger( 'seeking' );
+			mw.log("EmbedPlayerNative::seeking:trigger:: " + this.seeking);
+			if( this._propagateEvents ){
+				$( this ).trigger( 'seeking' );
+			}
 		}
 	},
 
@@ -606,20 +612,25 @@ mw.EmbedPlayerNative = {
 	* Local method for seeked event
 	* fired when done seeking
 	*/
-	onseeked: function() {
-		mw.log("native:onSeeked");
+	_onseeked: function() {
+		mw.log("EmbedPlayerNative::onSeeked " + this.seeking + ' ct:' + this.playerElement.currentTime );
+		// sync the seek checks so that we don't re-issue the seek request
+		this.previousTime = this.currentTime = this.playerElement.currentTime;
 		// Trigger the html5 action on the parent
 		if( this.seeking ){
 			this.seeking = false;
-			$( this ).trigger( 'seeked' );
+			if( this._propagateEvents ){
+				$( this ).trigger( 'seeked' );
+			}
 		}
-		this.seeking = false;
+		// update the playhead status
+		this.monitor();
 	},
 
 	/**
 	* Handle the native paused event
 	*/
-	onpause: function(){
+	_onpause: function(){
 		mw.log( "EmbedPlayer:native: OnPaused:: " +  this._propagateEvents );
 		if(  this._propagateEvents ){
 			this.parent_pause();
@@ -629,7 +640,7 @@ mw.EmbedPlayerNative = {
 	/**
 	* Handle the native play event
 	*/
-	onplay: function(){
+	_onplay: function(){
 		mw.log("EmbedPlayer:native:: OnPlay::" +  this._propagateEvents );
 		// Update the interface ( if paused )
 		if(  this._propagateEvents ){
@@ -644,10 +655,10 @@ mw.EmbedPlayerNative = {
 	* Used to update the media duration to
 	* accurately reflect the src duration
 	*/
-	onloadedmetadata: function() {
+	_onloadedmetadata: function() {
 		this.getPlayerElement();
 		if ( this.playerElement && ! isNaN( this.playerElement.duration ) ) {
-			mw.log( 'f:onloadedmetadata metadata ready Update duration:' + this.playerElement.duration + ' old dur: ' + this.getDuration() );
+			mw.log( 'EmbedPlayerNative :onloadedmetadata metadata ready Update duration:' + this.playerElement.duration + ' old dur: ' + this.getDuration() );
 			this.duration = this.playerElement.duration;
 		}
 
@@ -672,7 +683,7 @@ mw.EmbedPlayerNative = {
 	* Note: this way of updating buffer was only supported in Firefox 3.x and
 	* not supported in Firefox 4.x
 	*/
-	onprogress: function( event ) {
+	_onprogress: function( event ) {
 		var e = event.originalEvent;
 		if( e && e.loaded && e.total ) {
 			this.bufferedPercent = e.loaded / e.total;
@@ -681,16 +692,15 @@ mw.EmbedPlayerNative = {
 	},
 
 	/**
-	* Local method for progress event
-	* fired as the video is downloaded / buffered
-	*
-	* Used to update the bufferedPercent
+	* Local method for end of media event
 	*/
-	onended: function() {
+	_onended: function() {
 		var _this = this;
-		mw.log( 'EmbedPlayer:native: onended:' + this.playerElement.currentTime + ' real dur:' + this.getDuration() + ' ended ' + this._propagateEvents );
-		if( this._propagateEvents ){
-			this.onClipDone();
+		if( this.getPlayerElement() ){
+			mw.log( 'EmbedPlayer:native: onended:' + this.playerElement.currentTime + ' real dur:' + this.getDuration() + ' ended ' + this._propagateEvents );
+			if( this._propagateEvents ){
+				this.onClipDone();
+			}
 		}
 	}
 };
