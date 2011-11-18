@@ -47,7 +47,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		return $s;
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'api.php?action=query&titles=File:Folgers.ogv&prop=videoinfo',
 		);
