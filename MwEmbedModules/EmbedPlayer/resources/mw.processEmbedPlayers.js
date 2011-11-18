@@ -35,7 +35,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 	 *
 	 * _this.checkPlayerSources() 
 	 * _this.setupSourcePlayer() 
-	 * _this.inheritEmbedPlayer()
+	 * _this.updatePlaybackInterface()
 	 * _this.selectedPlayer.load() 
 	 * _this.showPlayer()
 	 *

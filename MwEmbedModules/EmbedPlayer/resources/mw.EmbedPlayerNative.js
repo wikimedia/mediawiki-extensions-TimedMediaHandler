@@ -84,7 +84,7 @@ mw.EmbedPlayerNative = {
 	/**
 	* Return the embed code
 	*/
-	doEmbedHTML : function () {
+	embedPlayerHTML : function () {
 		var _this = this;
 
 		// Reset some play state flags:
@@ -231,8 +231,8 @@ mw.EmbedPlayerNative = {
 	*
 	* @param {Float} percentage
 	*/
-	doSeek: function( percentage ) {
-		mw.log( 'Native::doSeek p: ' + percentage + ' : ' + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+	seek: function( percentage ) {
+		mw.log( 'Native::seek p: ' + percentage + ' : ' + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		this.seeking = true;
 
 		// Run the onSeeking interface update
@@ -246,7 +246,7 @@ mw.EmbedPlayerNative = {
 				this.doNativeSeek( percentage );
 			} else {
 				// We support URLTimeEncoding call parent seek:
-				this.parent_doSeek( percentage );
+				this.parent_seek( percentage );
 			}
 		} else if ( this.playerElement && this.playerElement.duration ) {
 			// (could also check bufferedPercent > percentage seek (and issue oggz_chop request or not)
@@ -555,7 +555,7 @@ mw.EmbedPlayerNative = {
 			// No vid loaded
 			mw.log( 'native::load() ... doEmbed' );
 			this.onlyLoadFlag = true;
-			this.doEmbedHTML();
+			this.embedPlayerHTML();
 			this.onLoadedCallback = callback;
 		} else {
 			// Should not happen offten

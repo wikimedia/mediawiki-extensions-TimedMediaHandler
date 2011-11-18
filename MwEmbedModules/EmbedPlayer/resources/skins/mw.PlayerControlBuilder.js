@@ -1963,9 +1963,9 @@ mw.PlayerControlBuilder.prototype = {
 								var perc = ui.value / 1000;
 								// Set seek time (in case we have to do a url seek)
 								embedPlayer.seek_time_sec = mw.npt2seconds( embedPlayer.jump_time, true );
-								mw.log( 'do jump to: ' + embedPlayer.jump_time + ' perc:' + perc + ' sts:' + embedPlayer.seek_time_sec );
+								mw.log( 'PlayerControlsBuilder:: Seek to: ' + embedPlayer.jump_time + ' perc:' + perc + ' sts:' + embedPlayer.seek_time_sec );
 								ctrlObj.setStatus( gM( 'mwe-embedplayer-seeking' ) );
-								embedPlayer.doSeek( perc );
+								embedPlayer.seek( perc );
 							}
 						}
 					};

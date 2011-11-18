@@ -168,7 +168,7 @@ mw.EmbedPlayer.prototype = {
 	// for more on CMML see: http://wiki.xiph.org/CMML
 	'cmmlData': null,
 
-	// Stores the seek time request, Updated by the doSeek function
+	// Stores the seek time request, Updated by the seek function
 	'serverSeekTime' : 0,
 
 	// If the embedPlayer is current 'seeking'
@@ -672,23 +672,23 @@ mw.EmbedPlayer.prototype = {
 	/**
 	 * Get the plugin embed html ( should be implemented by embed player interface )
 	 */
-	doEmbedHTML: function() {
-		return 'Error: function doEmbedHTML should be implemented by embed player interface ';
+	embedPlayerHTML: function() {
+		return 'Error: function embedPlayerHTML should be implemented by embed player interface ';
 	},
 
 	/**
 	 * Seek function ( should be implemented by embedPlayer interface
-	 * playerNative, playerKplayer etc. ) embedPlayer doSeek only handles URL
+	 * playerNative, playerKplayer etc. ) embedPlayer seek only handles URL
 	 * time seeks
 	 */
-	doSeek: function( percent ) {
+	seek: function( percent ) {
 		var _this = this;
 
 		this.seeking = true;
 
 		// See if we should do a server side seek ( player independent )
 		if ( this.supportsURLTimeEncoding() ) {
-			mw.log( 'EmbedPlayer::doSeek:: updated serverSeekTime: ' + mw.seconds2npt ( this.serverSeekTime ) +
+			mw.log( 'EmbedPlayer::seek:: updated serverSeekTime: ' + mw.seconds2npt ( this.serverSeekTime ) +
 					' currentTime: ' + _this.currentTime );
 			// make sure we need to seek:
 			if( _this.currentTime == _this.serverSeekTime ){
@@ -1475,7 +1475,7 @@ mw.EmbedPlayer.prototype = {
 				this.posterDisplayed = false;
 				// Hide any button if present:
 				this.$interface.find( '.play-btn-large' ).remove();
-				this.doEmbedHTML();
+				this.embedPlayerHTML();
 			}
 		}
 
@@ -1783,7 +1783,7 @@ mw.EmbedPlayer.prototype = {
 						 _this.currentTime + " javascript based currentTime update to " +
 						 seekPercent + ' == ' + _this.currentTime );
 				_this.previousTime = _this.currentTime;
-				this.doSeek( seekPercent );
+				this.seek( seekPercent );
 			}
 		}
 	},

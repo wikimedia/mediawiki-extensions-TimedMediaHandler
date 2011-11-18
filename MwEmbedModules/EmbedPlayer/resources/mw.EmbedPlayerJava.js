@@ -29,7 +29,7 @@ mw.EmbedPlayerJava = {
 	/**
 	* Output the the embed html
 	*/
-	doEmbedHTML: function () {
+	embedPlayerHTML: function () {
 		var _this = this;
 		mw.log( "java play url:" + this.getSrc( this.seek_time_sec ) );
 
@@ -141,15 +141,15 @@ mw.EmbedPlayerJava = {
 	* 
 	* @param {Float} percentage Percentage to seek into the stream
 	*/
-	doSeek: function( percentage ) {
+	seek: function( percentage ) {
 		mw.log( 'java:seek:p: ' + percentage + ' : ' + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		this.getPlayerElement();
 
 		if ( this.supportsURLTimeEncoding() ) {
-			this.parent_doSeek( percentage );
+			this.parent_seek( percentage );
 		} else if ( this.playerElement ) {
 			// do a (generally broken) local seek:
-			mw.log( "Cortado seek is not very accurate :: doSeek::" + ( percentage * parseFloat( this.getDuration() ) ) );
+			mw.log( "Cortado seek is not very accurate :: seek::" + ( percentage * parseFloat( this.getDuration() ) ) );
 			this.playerElement.currentTime = ( percentage * parseFloat( this.getDuration() ) );
 		} else {
 			this.doPlayThenSeek( percentage );
@@ -172,7 +172,7 @@ mw.EmbedPlayerJava = {
 			_this.getPlayerElement();
 			// if we have .jre ~in theory~ we can seek (but probably not)
 			if ( _this.playerElement ) {
-				_this.doSeek( perc );
+				_this.seek( perc );
 			} else {
 				// try to get player for 10 seconds:
 				if ( rfsCount < 200 ) {

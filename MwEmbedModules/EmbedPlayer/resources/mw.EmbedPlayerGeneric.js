@@ -22,7 +22,7 @@
 		* @return {String}
 		* 	embed code for generic ogg plugin
 		*/
-		doEmbedHTML: function() {
+		embedPlayerHTML: function() {
 			$( this ).html(
 				'<object type="application/ogg" ' +
 				'width="' + this.getWidth() + '" height="' + this.getHeight() + '" ' +
