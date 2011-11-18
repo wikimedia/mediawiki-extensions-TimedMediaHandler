@@ -7,7 +7,6 @@
 * mw.PlayerControlBuilder Handles skinning of the player controls
 */
 
-// TODO: (from review) move code that's immediately invoked into another file, for clarity.
 ( function( mw, $ ) {
 
 
@@ -1225,14 +1224,7 @@ mw.EmbedPlayer.prototype = {
 	 * Should be set via native embed support
 	 */
 	applyMediaElementBindings: function(){
-		mw.log("Warning 	/**
-	 * Should be set via native embed support
-	 */
-	applyMediaElementBindings: function(){
 		mw.log("Warning applyMediaElementBindings should be implemented by player interface" );
-		return ;
-	},
- should be implemented by player interface" );
 		return ;
 	},
 
@@ -1687,25 +1679,6 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	 * Checks if the currentTime was updated outside of the getPlayerElementTime function
-	 */
-	checkForCurrentTimeSeek: function(){
-		var _this = this;
-		// Check if a javascript currentTime change based seek has occurred
-		if( _this.previousTime != _this.currentTime && !this.userSlide && !this.seeking){
-			// If the time has been updated and is in range issue a seek
-			if( _this.getDuration() && _this.currentTime <= _this.getDuration() ){
-				var seekPercent = _this.currentTime / _this.getDuration();
-				mw.log("checkForCurrentTimeSeek::" + _this.previousTime + ' != ' +
-						 _this.currentTime + " javascript based currentTime update to " +
-						 seekPercent + ' == ' + _this.currentTime );
-				_this.previousTime = _this.currentTime;
-				this.seek( seekPercent );
-			}
-		}
-	},
-
-	/**
 	 * Monitor playback and update interface components. underling player classes
 	 *  are responsible for updating currentTime
 	 */
@@ -1713,37 +1686,62 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 
 		// Check for current time update outside of embed player
-		this.checkForCurrentTimeSeek();
+		_this.syncCurrentTime();
+		
+		// Keep volume proprties set outside of the embed player in sync
+		_this.syncVolume();
 
+		// Update the playhead status:
+		_this.updatePlayheadStatus()
 
-		// Update currentTime via embedPlayer
-		_this.currentTime = _this.getPlayerElementTime();
-
-		// Update any offsets from server seek
-		if( _this.serverSeekTime && _this.supportsURLTimeEncoding() ){
-			_this.currentTime = parseInt( _this.serverSeekTime ) + parseInt( _this.getPlayerElementTime() );
+		// Update buffer information
+		_this.updateBufferStatus();
+		
+		// Make sure the monitor continues to run as long as the video is not stoped
+		_this.syncMonitor()
+		
+		if( _this._propagateEvents ){
+			// mw.log('trigger:monitor:: ' + this.currentTime );
+			$( this ).trigger( 'monitorEvent' );
+			
+			// Trigger the "progress" event per HTML5 api support
+			if( this.progressEventData ) {
+				$( this ).trigger( 'progress', this.progressEventData );
+			}
 		}
-
-		// Update the previousTime ( so we can know if the user-javascript
-		// changed currentTime )
-		_this.previousTime = _this.currentTime;
-
-		if( _this.pauseTime && _this.currentTime >  _this.pauseTime ){
-			_this.pause();
-			_this.pauseTime = null;
+	},
+	/**
+	 * Sync the monitor function  
+	 */
+	syncMonitor: function(){
+		var _this = this;
+		// Call monitor at this.monitorRate interval.
+		// ( use setInterval to avoid stacking monitor requests )
+		if( ! this.isStopped() ) {
+			if( !this.monitorInterval ){
+				this.monitorInterval = setInterval( function(){
+					if( _this.monitor )
+						_this.monitor();
+				}, this.monitorRate );
+			}
+		} else {
+			// If stopped "stop" monitor:
+			this.stopMonitor();
 		}
-
-
+	},
+	/**
+	 * Sync the video volume
+	 */
+	syncVolume: function(){
+		var _this = this;
 		// Check if volume was set outside of embed player function
-		// mw.log( ' this.volume: ' + _this.volume + ' prev Volume:: ' +
-		// _this.previousVolume );
+		// mw.log( ' this.volume: ' + _this.volume + ' prev Volume:: ' + _this.previousVolume );
 		if( Math.round( _this.volume * 100 ) != Math.round( _this.previousVolume * 100 ) ) {
 			_this.setInterfaceVolume( _this.volume );
 			if( _this._propagateEvents ){
 				$( this ).trigger('volumeChanged', _this.volume );
 			}
 		}
-
 		// Update the previous volume
 		_this.previousVolume = _this.volume;
 
@@ -1752,15 +1750,51 @@ mw.EmbedPlayer.prototype = {
 
 		// update the mute state from the player element
 		if( _this.muted != _this.getPlayerElementMuted() && ! _this.isStopped() ){
-			mw.log( "EmbedPlayer::monitor: muted does not mach embed player" );
+			mw.log( "EmbedPlayer::syncVolume: muted does not mach embed player" );
 			_this.toggleMute();
 			// Make sure they match:
 			_this.muted = _this.getPlayerElementMuted();
 		}
+	},
+	
+	/**
+	 * Checks if the currentTime was updated outside of the getPlayerElementTime function
+	 */
+	syncCurrentTime: function(){
+		var _this = this;
+		// Check if a javascript currentTime change based seek has occurred
+		if( _this.previousTime != _this.currentTime && !this.userSlide && !this.seeking){
+			// If the time has been updated and is in range issue a seek
+			if( _this.getDuration() && _this.currentTime <= _this.getDuration() ){
+				var seekPercent = _this.currentTime / _this.getDuration();
+				mw.log("EmbedPlayer::syncCurrentTime::" + _this.previousTime + ' != ' +
+						 _this.currentTime + " javascript based currentTime update to " +
+						 seekPercent + ' == ' + _this.currentTime );
+				_this.previousTime = _this.currentTime;
+				this.seek( seekPercent );
+			}
+		}
+		
+		// Update currentTime via embedPlayer
+		_this.currentTime = _this.getPlayerElementTime();
 
-		// mw.log( 'Monitor:: ' + this.currentTime + ' duration: ' + ( parseInt(
-		//		this.getDuration() ) + 1 ) + ' is seeking: ' + this.seeking );
+		// Update any offsets from server seek
+		if( _this.serverSeekTime && _this.supportsURLTimeEncoding() ){
+			_this.currentTime = parseInt( _this.serverSeekTime ) + parseInt( _this.getPlayerElementTime() );
+		}
 
+		// Update the previousTime ( so we can know if the user-javascript changed currentTime )
+		_this.previousTime = _this.currentTime;
+		
+		// Check for a pauseTime to stop playback in temporal media fragments 
+		if( _this.pauseTime && _this.currentTime >  _this.pauseTime ){
+			_this.pause();
+			_this.pauseTime = null;
+		}
+	},
+
+	updatePlayheadStatus: function(){
+		var _this = this;
 		if ( this.currentTime >= 0 && this.duration ) {
 			if ( !this.userSlide && !this.seeking ) {
 				if ( parseInt( this.startOffset ) != 0 ) {
@@ -1796,38 +1830,8 @@ mw.EmbedPlayer.prototype = {
 				this.controlBuilder.setStatus( this.getTimeRange() );
 			}
 		}
-
-		// Update buffer information
-		this.updateBufferStatus();
-
-		// Trigger the "progress" event per HTML5 api support
-		if( this.progressEventData ) {
-			// mw.log("trigger:progress event on html5 proxy");
-			if( _this._propagateEvents ){
-				$( this ).trigger( 'progress', this.progressEventData );
-			}
-		}
-
-		// Call monitor at this.monitorRate interval.
-		// ( use setInterval to avoid stacking monitor requests )
-		if( ! this.isStopped() ) {
-			if( !this.monitorInterval ){
-				this.monitorInterval = setInterval( function(){
-					if( _this.monitor )
-						_this.monitor();
-				}, this.monitorRate );
-			}
-		} else {
-			// If stopped "stop" monitor:
-			this.stopMonitor();
-		}
-
-		// mw.log('trigger:monitor:: ' + this.currentTime );
-		if( _this._propagateEvents ){
-			$( this ).trigger( 'monitorEvent' );
-		}
 	},
-
+	
 	/**
 	 * Abstract getPlayerElementTime function
 	 */
