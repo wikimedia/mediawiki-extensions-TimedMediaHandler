@@ -617,7 +617,7 @@ mw.EmbedPlayer.prototype = {
 	/**
 	 * Get a time range from the media start and end time
 	 *
-	 * @return start_npt and end_npt time if present
+	 * @return startNpt and endNpt time if present
 	 */
 	getTimeRange: function() {
 		var end_time = (this.controlBuilder.longTimeDisp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
@@ -628,10 +628,10 @@ mw.EmbedPlayer.prototype = {
 		if ( !this.mediaElement.selectedSource ){
 			return default_time_range;
 		}
-		if ( !this.mediaElement.selectedSource.end_npt ){
+		if ( !this.mediaElement.selectedSource.endNpt ){
 			return default_time_range;
 		}
-		return this.mediaElement.selectedSource.start_npt + this.mediaElement.selectedSource.end_npt;
+		return this.mediaElement.selectedSource.startNpt + this.mediaElement.selectedSource.endNpt;
 	},
 
 	/**
@@ -698,7 +698,7 @@ mw.EmbedPlayer.prototype = {
 			this.stop();
 			this.didSeekJump = true;
 			// Make sure this.serverSeekTime is up-to-date:
-			this.serverSeekTime = mw.npt2seconds( this.start_npt ) + parseFloat( percent * this.getDuration() );
+			this.serverSeekTime = mw.npt2seconds( this.startNpt ) + parseFloat( percent * this.getDuration() );
 			// Update the slider
 			this.updatePlayHead( percent );
 		}
@@ -961,27 +961,28 @@ mw.EmbedPlayer.prototype = {
 	 * Update the video time request via a time request string
 	 *
 	 * @param {String}
-	 *      time_req
+	 *      timeRequest video time to be updated
 	 */
-	updateVideoTimeReq: function( time_req ) {
-		mw.log( 'EmbedPlayer::updateVideoTimeReq:' + time_req );
-		var time_parts = time_req.split( '/' );
-		this.updateVideoTime( time_parts[0], time_parts[1] );
+	updateVideoTimeReq: function( timeRequest ) {
+		mw.log( 'EmbedPlayer::updateVideoTimeReq:' + timeRequest );
+		var timeParts = timeRequest.split( '/' );
+		this.updateVideoTime( timeParts[0], timeParts[1] );
 	},
 
 	/**
-	 * Update Video time from provided start_npt and end_npt values
+	 * Update Video time from provided startNpt and endNpt values
 	 *
 	 * @param {String}
-	 *      start_npt the new start time in npt format
-	 * @pamra {String} end_npt the new end time in npt format
+	 *      startNpt the new start time in npt format ( hh:mm:ss.ms )
+	 * @pamra {String} 
+	 * 		endNpt the new end time in npt format ( hh:mm:ss.ms )
 	 */
-	updateVideoTime: function( start_npt, end_npt ) {
+	updateVideoTime: function( startNpt, endNpt ) {
 		// update media
-		this.mediaElement.updateSourceTimes( start_npt, end_npt );
+		this.mediaElement.updateSourceTimes( startNpt, endNpt );
 
 		// update mv_time
-		this.controlBuilder.setStatus( start_npt + '/' + end_npt );
+		this.controlBuilder.setStatus( startNpt + '/' + endNpt );
 
 		// reset slider
 		this.updatePlayHead( 0 );
@@ -990,7 +991,7 @@ mw.EmbedPlayer.prototype = {
 		if ( this.mediaElement.selectedSource.URLTimeEncoding ) {
 			this.serverSeekTime = 0;
 		} else {
-			this.serverSeekTime = mw.npt2seconds( start_npt );
+			this.serverSeekTime = mw.npt2seconds( startNpt );
 		}
 	},
 
@@ -1014,18 +1015,18 @@ mw.EmbedPlayer.prototype = {
 	updateThumbTime:function( floatSeconds ) {
 		// mw.log('updateThumbTime:'+floatSeconds);
 		var _this = this;
-		if ( typeof this.org_thum_src == 'undefined' ) {
-			this.org_thum_src = this.poster;
+		if ( typeof this.orgThumSrc == 'undefined' ) {
+			this.orgThumSrc = this.poster;
 		}
-		if ( this.org_thum_src.indexOf( 't=' ) !== -1 ) {
-			this.last_thumb_url = mw.replaceUrlParams( this.org_thum_src,
+		if ( this.orgThumSrc.indexOf( 't=' ) !== -1 ) {
+			this.lastThumbUrl = mw.replaceUrlParams( this.orgThumSrc,
 				{
 					't' : mw.seconds2npt( floatSeconds + parseInt( this.startOffset ) )
 				}
 			);
 			if ( !this.thumbnail_updating ) {
-				this.updatePoster( this.last_thumb_url , false );
-				this.last_thumb_url = null;
+				this.updatePoster( this.lastThumbUrl , false );
+				this.lastThumbUrl = null;
 			}
 		}
 	},
@@ -1095,9 +1096,9 @@ mw.EmbedPlayer.prototype = {
 						_this.thumbnail_updating = false;
 
 						// if we have a thumb queued update to that
-						if ( _this.last_thumb_url ) {
-							var src_url = _this.last_thumb_url;
-							_this.last_thumb_url = null;
+						if ( _this.lastThumbUrl ) {
+							var src_url = _this.lastThumbUrl;
+							_this.lastThumbUrl = null;
 							_this.updatePosterSrc( src_url );
 						}
 				} );
