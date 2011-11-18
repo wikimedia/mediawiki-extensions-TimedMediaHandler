@@ -578,7 +578,6 @@ mw.EmbedPlayer.prototype = {
 					callback();
 				}
 			},0);
-
 		} );
 	},
 
@@ -623,12 +622,15 @@ mw.EmbedPlayer.prototype = {
 	getTimeRange: function() {
 		var end_time = (this.controlBuilder.longTimeDisp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
 		var default_time_range = '0:00' + end_time;
-		if ( !this.mediaElement )
+		if ( !this.mediaElement ){
 			return default_time_range;
-		if ( !this.mediaElement.selectedSource )
+		}
+		if ( !this.mediaElement.selectedSource ){
 			return default_time_range;
-		if ( !this.mediaElement.selectedSource.end_npt )
+		}
+		if ( !this.mediaElement.selectedSource.end_npt ){
 			return default_time_range;
+		}
 		return this.mediaElement.selectedSource.start_npt + this.mediaElement.selectedSource.end_npt;
 	},
 
