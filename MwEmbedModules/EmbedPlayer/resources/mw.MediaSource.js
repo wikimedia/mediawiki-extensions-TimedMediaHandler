@@ -115,14 +115,14 @@ mw.MediaSource.prototype = {
 		var sourceAttr = mw.getConfig( 'EmbedPlayer.SourceAttributes' );
 		$.each(sourceAttr, function(inx, attr){
 			if ( $j( element ).attr( attr ) ) {
+				var attrName = attr;
 				// strip data- from the attribute name
 				if( attr.indexOf('data-') === 0){
-					attr = attr.substr(5);
+					attrName = attr.substr(5);
 				}
-				_this[ attr ] = $j( element ).attr( attr );
+				_this[ attrName ] = $( element ).attr( attr );
 			}
 		});
-
 		// Normalize "label" to "title" ( label is the actual spec so use that over title )
 		if( this.label ){
 			this.title = this.label;

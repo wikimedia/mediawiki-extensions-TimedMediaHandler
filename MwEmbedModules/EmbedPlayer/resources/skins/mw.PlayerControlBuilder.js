@@ -1596,14 +1596,13 @@ mw.PlayerControlBuilder.prototype = {
 		// for each source with "native playback" 			
 		$sourceMenu = $('<ul />');
 		
-		// local function to closure the source variable scope: 
+		// Local function to closure the "source" variable scope: 
 		function addToSourceMenu( source ){			
 			// Check if source is selected: 
-			var icon =( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() ) ? 'bullet' : 'radio-on';
+			var icon = ( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() ) ? 'bullet' : 'radio-on';
 			$sourceMenu.append(
 				$.getLineItem( source.shorttitle, icon, function(){
 					mw.log( 'PlayerControlBuilder::SwichSourceMenu: ' + source.getSrc() );
-		
 					// TODO this logic should be in mw.EmbedPlayer
 					embedPlayer.mediaElement.setSource( source );					
 					if( ! _this.embedPlayer.isStopped() ){
@@ -1632,7 +1631,6 @@ mw.PlayerControlBuilder.prototype = {
 				}
 			}
 		});
-		
 		return $sourceMenu;
 	},
 
