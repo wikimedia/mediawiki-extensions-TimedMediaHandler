@@ -73,9 +73,10 @@ mw.EmbedPlayerJava = {
 		var mediaSrc = this.getSrc();
 		var appletLoc = false;
 		if (
-			!mw.isLocalDomain( mediaSrc )
-			||
-			!mw.isLocalDomain( mw.getMwEmbedPath() )
+			!( mw.isLocalDomain( mediaSrc )
+				||
+			  mw.isLocalDomain( mw.getMwEmbedPath() )
+			 )
 		){
 			if ( window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ] ) {
 				appletLoc = window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
@@ -169,13 +170,6 @@ mw.EmbedPlayerJava = {
 		}
 		//mw.log( 'getPlayerElement::' + this.pid );
 		this.playerElement = $( '#' + this.pid ).get( 0 );
-		//this.playerElement = document.applets[ 0 ];
-		// NOTE we are currently not using the iframe embed method:
-		//if ( $.browser.mozilla ) {
-		//	this.playerElement = $('#cframe_' + this.id).contents().find( '#' + this.pid );
-		//} else {
-		//	this.playerElement = $( '#' + this.pid ).get( 0 );
-		//}
 		return this.playerElement;
 	},
 
