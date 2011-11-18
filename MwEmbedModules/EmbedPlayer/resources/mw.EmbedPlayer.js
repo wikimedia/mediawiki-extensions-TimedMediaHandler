@@ -150,9 +150,9 @@ mw.EmbedPlayer.prototype = {
 	'previewMode' : false,
 
 	// If the player is done loading ( does not guarantee playability )
-	// for example if there is an error doneLoading is still set to true once
+	// for example if there is an error playerReady is still set to true once
 	// no more loading is to be done
-	'doneLoading' : false,
+	'playerReady' : false,
 
 	// Stores the loading errors
 	'loadError' : false,
@@ -873,8 +873,8 @@ mw.EmbedPlayer.prototype = {
 		// Update temporal url if present
 		this.updateTemporalUrl();
 
-		// updat the doneLoading flag
-		this.doneLoading = true;
+		// Update the playerReady flag
+		this.playerReady = true;
 		// trigger the player ready event;
 		$(this).trigger('playerReady');
 
@@ -953,7 +953,7 @@ mw.EmbedPlayer.prototype = {
 
 		// TODO we should have a smart done Loading system that registers player states
 		// http://www.whatwg.org/specs/web-apps/current-work/#media-element
-		this.doneLoading = true;
+		this.playerReady = true;
 		$(this).trigger('playerReady');
 	},
 
