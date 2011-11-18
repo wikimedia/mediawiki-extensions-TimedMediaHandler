@@ -1664,15 +1664,6 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	 * Get paused state
-	 *
-	 * @return {Boolean} true if playing false if not playing
-	 */
-	isPaused: function() {
-		return this.paused;
-	},
-
-	/**
 	 * Get Stopped state
 	 *
 	 * @return {Boolean} true if stopped false if playing
@@ -1794,7 +1785,7 @@ mw.EmbedPlayer.prototype = {
 			// Media lacks duration just show end time
 			if ( this.isStopped() ) {
 				this.controlBuilder.setStatus( this.getTimeRange() );
-			} else if ( this.isPaused() ) {
+			} else if ( this.paused ) {
 				this.controlBuilder.setStatus( gM( 'mwe-embedplayer-paused' ) );
 			} else if ( this.isPlaying() ) {
 				if ( this.currentTime && ! this.duration )
