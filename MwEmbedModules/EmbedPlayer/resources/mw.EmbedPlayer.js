@@ -1042,78 +1042,13 @@ mw.EmbedPlayer.prototype = {
 	},
 
 	/**
-	 * Updates the thumbnail if the thumbnail is being displayed
-	 *
-	 * @param {String}
-	 *      src New src of thumbnail
-	 * @param {Boolean}
-	 *      quickSwitch true switch happens instantly false / undefined
-	 *      animated cross fade
-	 */
-	updatePosterSrc: function( src, quickSwitch ) {
-		// make sure we don't go to the same url if we are not already updating:
-		if ( !this.thumbnailUpdatingFlag && $( '#img_thumb_' + this.id ).attr( 'src' ) == src )
-			return false;
-		// if we are already updating don't issue a new update:
-		if ( this.thumbnailUpdatingFlag && $( '#new_img_thumb_' + this.id ).attr( 'src' ) == src )
-			return false;
-
-		mw.log( 'update thumb: ' + src );
-
-		if ( quickSwitch ) {
-			$( '#img_thumb_' + this.id ).attr( 'src', src );
-			return ;
-		}
-		var _this = this;
-		// if still animating remove new_img_thumb_
-		if ( this.thumbnailUpdatingFlag == true )
-			$( '#new_img_thumb_' + this.id ).stop().remove();
-
-		if ( this.posterDisplayed ) {
-			mw.log( 'set to thumb:' + src );
-			this.thumbnailUpdatingFlag = true;
-			$( this ).append(
-				$('<img />')
-				.attr({
-					'src' : src,
-					'id' : 'new_img_thumb_' + this.id,
-					'width' : this.width,
-					'height': this.height
-				})
-				.css( {
-					'display' : 'none',
-					'position' : 'absolute',
-					'z-index' : 2,
-					'top' : '0px',
-					'left' : '0px'
-				})
-			);
-			// mw.log('appended: new_img_thumb_');
-			$( '#new_img_thumb_' + this.id ).fadeIn( "slow", function() {
-					// once faded in remove org and rename new:
-					$( '#img_thumb_' + _this.id )
-						.replaceWith( $( '#new_img_thumb_' + _this.id ) )
-						.attr( 'id', 'img_thumb_' + _this.id )
-						.css( 'z-index', '1' );
-							
-					_this.thumbnailUpdatingFlag = false;
-
-					// if we have a thumb queued update to that
-					if ( _this.lastThumbUrl ) {
-						var src_url = _this.lastThumbUrl;
-						_this.lastThumbUrl = null;
-						_this.updatePosterSrc( src_url );
-					}
-			} );
-		}
-	},
-	
-	/**
 	 * Update the poster source
-	 * @param {String} url to poster src
-	 */
+	 * @param {String} 
+	 * 		posterSrc Poster src url
+	 */	
 	updatePosterSrc: function( posterSrc ){
 		this.poster = posterSrc;
+		this.updatePosterHTML();
 	},
 	/**
 	 * Update the player with thumbnail and play button.
