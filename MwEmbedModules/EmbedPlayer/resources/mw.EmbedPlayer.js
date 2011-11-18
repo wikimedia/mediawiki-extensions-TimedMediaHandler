@@ -1225,6 +1225,14 @@ mw.EmbedPlayer.prototype = {
 	 * Should be set via native embed support
 	 */
 	applyMediaElementBindings: function(){
+		mw.log("Warning 	/**
+	 * Should be set via native embed support
+	 */
+	applyMediaElementBindings: function(){
+		mw.log("Warning applyMediaElementBindings should be implemented by player interface" );
+		return ;
+	},
+ should be implemented by player interface" );
 		return ;
 	},
 
