@@ -1515,13 +1515,7 @@ mw.EmbedPlayer.prototype = {
 
 		// Issue pause to update interface (only call this parent)
 		if( !this.paused ){
-			this.paused = true;
-			// update the interface
-			if ( this['parent_pause'] ) {
-				this.parent_pause();
-			} else {
-				this.pause();
-			}
+			this.pause();
 		}
 		// Native player controls:
 		if( this.useNativePlayerControls() ){
