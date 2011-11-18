@@ -1091,9 +1091,11 @@ mw.EmbedPlayer.prototype = {
 			// mw.log('appended: new_img_thumb_');
 			$( '#new_img_thumb_' + this.id ).fadeIn( "slow", function() {
 					// once faded in remove org and rename new:
-					$( '#img_thumb_' + _this.id ).remove();
-					$( '#new_img_thumb_' + _this.id ).attr( 'id', 'img_thumb_' + _this.id );
-					$( '#img_thumb_' + _this.id ).css( 'z-index', '1' );
+					$( '#img_thumb_' + _this.id )
+						.replaceWith( $( '#new_img_thumb_' + _this.id ) )
+						.attr( 'id', 'img_thumb_' + _this.id )
+						.css( 'z-index', '1' );
+							
 					_this.thumbnailUpdatingFlag = false;
 
 					// if we have a thumb queued update to that
