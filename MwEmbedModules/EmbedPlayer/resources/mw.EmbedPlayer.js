@@ -937,7 +937,7 @@ mw.EmbedPlayer.prototype = {
 		// Update the poster and html:
 		this.updatePosterHTML();
 		// Add the warning
-		this.controlBuilder.doWarningBindinng( 'EmbedPlayer.DirectFileLinkWarning',
+		this.controlBuilder.addWarningBinding( 'EmbedPlayer.DirectFileLinkWarning',
 			gM( 'mwe-embedplayer-download-warn', mw.getConfig('EmbedPlayer.FirefoxLink') )
 		);
 
