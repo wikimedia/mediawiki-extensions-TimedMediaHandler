@@ -883,7 +883,7 @@ mw.EmbedPlayer.prototype = {
 			// Issue a non-blocking play request
 			setTimeout(function(){
 				_this.play();
-			},1);
+			}, 0);
 		}
 
 	},
