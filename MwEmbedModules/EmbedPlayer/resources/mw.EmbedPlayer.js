@@ -159,7 +159,7 @@ mw.EmbedPlayer.prototype = {
 
 	// Thumbnail updating flag ( to avoid rewriting an thumbnail thats already
 	// being updated)
-	'thumbnail_updating' : false,
+	'thumbnailUpdatingFlag' : false,
 
 	// Poster display flag
 	'posterDisplayed' : true,
@@ -1024,7 +1024,7 @@ mw.EmbedPlayer.prototype = {
 					't' : mw.seconds2npt( floatSeconds + parseInt( this.startOffset ) )
 				}
 			);
-			if ( !this.thumbnail_updating ) {
+			if ( !this.thumbnailUpdatingFlag ) {
 				this.updatePoster( this.lastThumbUrl , false );
 				this.lastThumbUrl = null;
 			}
@@ -1047,64 +1047,65 @@ mw.EmbedPlayer.prototype = {
 	 * @param {String}
 	 *      src New src of thumbnail
 	 * @param {Boolean}
-	 *      quick_switch true switch happens instantly false / undefined
+	 *      quickSwitch true switch happens instantly false / undefined
 	 *      animated cross fade
 	 */
-	updatePosterSrc: function( src, quick_switch ) {
+	updatePosterSrc: function( src, quickSwitch ) {
 		// make sure we don't go to the same url if we are not already updating:
-		if ( !this.thumbnail_updating && $( '#img_thumb_' + this.id ).attr( 'src' ) == src )
+		if ( !this.thumbnailUpdatingFlag && $( '#img_thumb_' + this.id ).attr( 'src' ) == src )
 			return false;
 		// if we are already updating don't issue a new update:
-		if ( this.thumbnail_updating && $( '#new_img_thumb_' + this.id ).attr( 'src' ) == src )
+		if ( this.thumbnailUpdatingFlag && $( '#new_img_thumb_' + this.id ).attr( 'src' ) == src )
 			return false;
 
 		mw.log( 'update thumb: ' + src );
 
-		if ( quick_switch ) {
+		if ( quickSwitch ) {
 			$( '#img_thumb_' + this.id ).attr( 'src', src );
-		} else {
-			var _this = this;
-			// if still animating remove new_img_thumb_
-			if ( this.thumbnail_updating == true )
-				$( '#new_img_thumb_' + this.id ).stop().remove();
+			return ;
+		}
+		var _this = this;
+		// if still animating remove new_img_thumb_
+		if ( this.thumbnailUpdatingFlag == true )
+			$( '#new_img_thumb_' + this.id ).stop().remove();
 
-			if ( this.posterDisplayed ) {
-				mw.log( 'set to thumb:' + src );
-				this.thumbnail_updating = true;
-				$( this ).append(
-					$('<img />')
-					.attr({
-						'src' : src,
-						'id' : 'new_img_thumb_' + this.id,
-						'width' : this.width,
-						'height': this.height
-					})
-					.css( {
-						'display' : 'none',
-						'position' : 'absolute',
-						'z-index' : 2,
-						'top' : '0px',
-						'left' : '0px'
-					})
-				);
-				// mw.log('appended: new_img_thumb_');
-				$( '#new_img_thumb_' + this.id ).fadeIn( "slow", function() {
-						// once faded in remove org and rename new:
-						$( '#img_thumb_' + _this.id ).remove();
-						$( '#new_img_thumb_' + _this.id ).attr( 'id', 'img_thumb_' + _this.id );
-						$( '#img_thumb_' + _this.id ).css( 'z-index', '1' );
-						_this.thumbnail_updating = false;
+		if ( this.posterDisplayed ) {
+			mw.log( 'set to thumb:' + src );
+			this.thumbnailUpdatingFlag = true;
+			$( this ).append(
+				$('<img />')
+				.attr({
+					'src' : src,
+					'id' : 'new_img_thumb_' + this.id,
+					'width' : this.width,
+					'height': this.height
+				})
+				.css( {
+					'display' : 'none',
+					'position' : 'absolute',
+					'z-index' : 2,
+					'top' : '0px',
+					'left' : '0px'
+				})
+			);
+			// mw.log('appended: new_img_thumb_');
+			$( '#new_img_thumb_' + this.id ).fadeIn( "slow", function() {
+					// once faded in remove org and rename new:
+					$( '#img_thumb_' + _this.id ).remove();
+					$( '#new_img_thumb_' + _this.id ).attr( 'id', 'img_thumb_' + _this.id );
+					$( '#img_thumb_' + _this.id ).css( 'z-index', '1' );
+					_this.thumbnailUpdatingFlag = false;
 
-						// if we have a thumb queued update to that
-						if ( _this.lastThumbUrl ) {
-							var src_url = _this.lastThumbUrl;
-							_this.lastThumbUrl = null;
-							_this.updatePosterSrc( src_url );
-						}
-				} );
-			}
+					// if we have a thumb queued update to that
+					if ( _this.lastThumbUrl ) {
+						var src_url = _this.lastThumbUrl;
+						_this.lastThumbUrl = null;
+						_this.updatePosterSrc( src_url );
+					}
+			} );
 		}
 	},
+	
 	/**
 	 * Update the poster source
 	 * @param {String} url to poster src
