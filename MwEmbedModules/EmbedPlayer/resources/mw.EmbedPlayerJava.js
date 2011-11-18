@@ -199,7 +199,11 @@ mw.EmbedPlayerJava = {
 		this.parent_pause();
 		// Call the pause function if it exists:
 		if ( this.playerElement ) {
-			this.playerElement.pause();
+			try{
+				this.playerElement.pause();
+			}catch( e ){
+				mw.log("EmbedPlayerJava::Could not issue pause request");
+			}
 		}
 	}
 };
