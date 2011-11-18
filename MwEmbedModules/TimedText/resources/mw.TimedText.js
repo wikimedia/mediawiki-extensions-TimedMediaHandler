@@ -147,7 +147,7 @@
 				_this.monitor();
 			} );
 
-			$( embedPlayer ).bind( 'play', function() {
+			$( embedPlayer ).bind( 'onplay', function() {
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
 			} );

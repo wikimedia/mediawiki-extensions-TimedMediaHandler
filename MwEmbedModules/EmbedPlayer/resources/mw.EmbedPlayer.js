@@ -1430,9 +1430,7 @@ mw.EmbedPlayer.prototype = {
 			this.paused = false;
 			// Check if we should Trigger the play event
 			mw.log("EmbedPlayer:: trigger play even::" + !this.paused);
-			if( ! this.doMethodsAutoTrigger() ) {
-				$( this ).trigger( 'play' );
-			}
+			$( this ).trigger( 'onplay' );
 		}
 
 		// If we previously finished playing this clip run the "replay hook"
@@ -1466,9 +1464,7 @@ mw.EmbedPlayer.prototype = {
 		if( this.paused === false ){
 			this.paused = true;
 			mw.log('EmbedPlayer:trigger pause:' + this.paused);
-			if(  ! this.doMethodsAutoTrigger() ){
-				$( this ).trigger( 'pause' );
-			}
+			$( this ).trigger( 'onpause' );
 		}
 
 		// update the ctrl "paused state"
@@ -1483,17 +1479,6 @@ mw.EmbedPlayer.prototype = {
 			_this.play();
 		} )
 		.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) );
-	},
-
-	/**
-	 * Special per browser check for autoTrigger events
-	 * ideally jQuery would not have this inconsistency
-	 */
-	doMethodsAutoTrigger: function(){
-		if( $.browser.mozilla && ! mw.versionIsAtLeast('2.0', $.browser.version ) ){
-			return true;
-		}
-		return false;
 	},
 
 	/**
