@@ -58,7 +58,7 @@ class WebVideoJobRunner extends Maintenance {
 				if( TimedMediaHandler::parseTimeString( $proc['time'] ) > $wgTranscodeBackgroundTimeLimit ){	
 					// should probably "kill" the process 
 					$killSuccess = posix_kill( $pid );
-					$this->output( "Trying to expired transcode job: " . $pid . " result:" . $killSuccess );
+					$this->output( "Trying to expire transcode job: " . $pid . " result:" . $killSuccess );
 				} else {
 					// Job is oky add to count: 
 					$runingJobsCount++;
