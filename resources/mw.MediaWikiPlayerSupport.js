@@ -11,7 +11,7 @@
 	});
 	
 	// Add mediaWiki player support to target embedPlayer 
-	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
+	$( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayer ){
 		mw.addMediaWikiPlayerSupport( embedPlayer );
 	});
 	
@@ -234,7 +234,7 @@
 			showCredits( $target, callback);			
 		});
 				
-		$( embedPlayer ).bind('CheckPlayerSourcesEvent', function(event, callback){
+		$( embedPlayer ).bind( 'checkPlayerSourcesEvent', function(event, callback){
 			// Only load source if none are available:
 			if( embedPlayer.mediaElement.sources.length == 0 ){
 				loadPlayerSources( callback );
@@ -244,7 +244,7 @@
 			}
 		});
 		
-		$( embedPlayer ).bind('GetShareIframeSrc', function(event, callback){
+		$( embedPlayer ).bind( 'GetShareIframeSrc', function(event, callback){
 			// Check the embedPlayer title key: 
 			var title =  $( embedPlayer).attr( 'data-mwtitle');
 			// TODO Check the provider key and use that hosts title page entry point!
