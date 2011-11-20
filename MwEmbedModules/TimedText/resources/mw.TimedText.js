@@ -137,7 +137,7 @@
 			// Check for timed text support:
 			$( embedPlayer ).bind( 'addControlBarComponent', function(event, controlBar ){
 				if( mw.isTimedTextSupported( embedPlayer ) ){
-					controlBar.supportedComponets['timedText'] = true;
+					controlBar.supportedComponents['timedText'] = true;
 					controlBar.components['timedText'] = _this.getTimedTextButton();					
 				}
 			});

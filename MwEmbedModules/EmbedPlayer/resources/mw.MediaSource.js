@@ -263,6 +263,21 @@ mw.MediaSource.prototype = {
 	},
 
 	/**
+	 * Get a short title for the stream
+	 */
+	getShortTitle: function(){
+		var _this =this;
+		if( this.shorttitle ){
+			return this.shorttitle;
+		}
+		// Just use a short "long title"
+		var longTitle = this.getTitle();
+		if(longTitle.length > 20) {
+			longTitle = longTitle.substring(0,17)+"...";
+		}
+		return longTitle
+	},
+	/**
 	 * Title accessor function.
 	 *
 	 * @return {String} Title of the source.

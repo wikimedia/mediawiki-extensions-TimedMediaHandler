@@ -46,10 +46,6 @@ mw.PlayerSkinKskin = {
 		// No attributionButton component for kSkin ( its integrated into the credits screen )
 		'attributionButton' : false,
 
-		// Time display:
-		'timeDisplay': {
-			'w':45
-		},
 		'optionsMenu': {
 			'w' : 0,
 			'o' : function( ctrlObj ) {
