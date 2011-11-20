@@ -28,6 +28,12 @@
 			// Default video size ( if no size provided )
 			"EmbedPlayer.DefaultSize" => "400x300",
 	
+			// The height of the player controls: 
+			'EmbedPlayer.ControlsHeight' => 31,
+			
+			// Default time display size: 
+			'EmbedPlayer.TimeDisplayWidth' => 15,
+	
 			// If the video player should attribute kaltura
 			"EmbedPlayer.KalturaAttribution" => true,
 	
@@ -88,7 +94,7 @@
 			//		the remote site to the mwEmbed javascript and can be a xss issue.
 			"EmbedPlayer.ShareEmbedMode" => 'iframe',
 	
-			// The skin framework list: 
+			// The skin list ( should correspond to a folder in skins )
 			"EmbedPlayer.SkinList" => array( 'mvpcf', 'kskin' ),
 			
 			// Default player skin name
@@ -109,6 +115,5 @@
 			
 			// If the iframe should send and receive javascript events across domains via postMessage 
 			'EmbedPlayer.EnableIframeApi' => true,
-			
 	);	
 ?>

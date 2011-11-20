@@ -107,5 +107,22 @@
 			throw new Error( 'Error loading EmbedPlayer dependency set: ' + e.message  );
 		});
 	};
+	
+	/**
+	 * Utility loader function to grab configuration for passing into an iframe as a hash target
+	 */
+	mw.getIframeHash = function( playerId ){
+		// Append the configuration and request domain to the iframe hash: 
+		var iframeMwConfig =  mw.getNonDefaultConfigObject();
+		// Add the parentUrl to the iframe config: 
+		iframeMwConfig['EmbedPlayer.IframeParentUrl'] = document.URL;
+
+		return '#' + encodeURIComponent(
+			JSON.stringify({
+				'mwConfig' :iframeMwConfig,
+				'playerId' : playerId
+			})
+		);
+	};
 
 } )( mediaWiki, jQuery );
