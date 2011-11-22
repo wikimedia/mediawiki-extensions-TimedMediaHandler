@@ -36,15 +36,15 @@ mw.EmbedTypes = {
 	 // MediaPlayers object ( supports methods for quering set of browser players ) 
 	mediaPlayers: null,
 
-	 // Detect flag for completion
-	 detect_done:false,
+	// Detect flag for completion
+	detect_done:false,
 
-	 /**
-		 * Runs the detect method and update the detect_done flag
-		 *
-		 * @constructor
-		 */
-	 init: function() {
+	/**
+	 * Runs the detect method and update the detect_done flag
+	 *
+	 * @constructor
+	 */
+	init: function() {
 		// detect supported types
 		this.detect();
 		this.detect_done = true;
@@ -82,9 +82,9 @@ mw.EmbedTypes = {
 		mw.log( "embedPlayer: running detect" );		
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
-		try{
+		try　{
 			var javaEnabled = navigator.javaEnabled();
-		} catch ( e ){
+		} catch ( e )　{
 
 		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
