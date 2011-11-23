@@ -147,8 +147,9 @@ mw.MediaElement.prototype = {
 			$( '#' + this.parentEmbedId ).trigger( 'SourceChange');
 		}
 	},
+	
 	/**
-	 * Sets a the selected source to passed in source object
+	 * Sets the selected source to passed in source object
 	 * @param {Object} Source
 	 */
 	setSource: function( source ){
@@ -158,7 +159,6 @@ mw.MediaElement.prototype = {
 			$( '#' + this.parentEmbedId ).trigger( 'SourceChange');
 		}
 	},
-	
 
 	/**
 	 * Selects the default source via cookie preference, default marked, or by
@@ -328,10 +328,8 @@ mw.MediaElement.prototype = {
 	 *      mimeType MIME type to check.
 	 * @return {Boolean} true if sources include MIME false if not.
 	 */
-	hasStreamOfMIMEType: function( mimeType )
-	{
-		for ( var i = 0; i < this.sources.length; i++ )
-		{
+	hasStreamOfMIMEType: function( mimeType ) {
+		for ( var i = 0; i < this.sources.length; i++ ) {
 			if ( this.sources[i].getMIMEType() == mimeType ){
 				return true;
 			}
