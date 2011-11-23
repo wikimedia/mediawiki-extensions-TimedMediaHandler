@@ -1572,7 +1572,7 @@ $messages['kk-arab'] = array(
 	'timedmedia-desc-link' => 'بۇل فايل تۋرالى',
 );
 
-/** Kazakh (Cyrillic) (Қазақша (Cyrillic)) */
+/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 дыбыс файлы, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 бейне файлы, $2',
@@ -1588,7 +1588,7 @@ $messages['kk-cyrl'] = array(
 	'timedmedia-desc-link' => 'Бұл файл туралы',
 );
 
-/** Kazakh (Latin) (Қазақша (Latin)) */
+/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 dıbıs faýlı, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 beýne faýlı, $2',
@@ -2610,7 +2610,7 @@ $messages['sr-ec'] = array(
 	'timedmedia-subtitle-no-subtitles' => 'Тренутно нема $1 титлова за овај видео снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -2709,7 +2709,7 @@ $messages['te'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) ఉపశీర్షికలు',
 );
 
-/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+/** Tajik (Cyrillic script) (Тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2728,7 +2728,7 @@ $messages['tg-cyrl'] = array(
 	'timedmedia-desc-link' => 'Дар бораи ин парванда',
 );
 
-/** Tajik (Latin) (Тоҷикӣ (Latin))
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -2826,7 +2826,7 @@ $messages['ts'] = array(
 	'timedmedia-dismiss' => 'Pfala',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(

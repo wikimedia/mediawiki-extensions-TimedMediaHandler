@@ -1648,7 +1648,7 @@ $messages['sr-ec'] = array(
 	'mwe-timedtext-textcat-trx' => 'Транскрипт',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Rancher
  */
 $messages['sr-el'] = array(

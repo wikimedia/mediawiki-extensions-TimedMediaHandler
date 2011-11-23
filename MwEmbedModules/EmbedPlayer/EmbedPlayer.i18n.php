@@ -2564,7 +2564,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-missing-source' => 'Није пронађен извор снимка.',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'mwe-embedplayer-credit-title' => 'Naslov: $1',
 	'mwe-embedplayer-play_clip' => 'Pusti klip',
