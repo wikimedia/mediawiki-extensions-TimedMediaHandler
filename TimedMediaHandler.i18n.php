@@ -105,6 +105,7 @@ Are you sure you want to proceed?',
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'timedmedia-desc' => '{{desc}}',
@@ -137,6 +138,8 @@ Parameters are:
 	'timedmedia-unknown-target-size' => 'Status update for Transcodes
 Parameters are:
 * $1 The number of bytes of the file transcoded so far',
+	'timedmedia-ogg' => '{{optional}}',
+	'timedmedia-webm' => '{{optional}}',
 	'timedmedia-source-file' => 'The source file
 * $1 file type webm or ogg
 {{Identical|Source}}',
@@ -145,6 +148,13 @@ Parameters are:
 * $2 resolution width
 * $3 resolution height
 * $4 human readable bitrate',
+	'timedmedia-derivative-160p.ogv' => '{{optional}}',
+	'timedmedia-derivative-360p.ogv' => '{{optional}}',
+	'timedmedia-derivative-480p.ogv' => '{{optional}}',
+	'timedmedia-derivative-720p.ogv' => '{{optional}}',
+	'timedmedia-derivative-360p.webm' => '{{optional}}',
+	'timedmedia-derivative-480p.webm' => '{{optional}}',
+	'timedmedia-derivative-720p.webm' => '{{optional}}',
 	'timedmedia-subtitle-language' => 'Subtitle names
 Paramaters are:
 * $1 Subtitle language

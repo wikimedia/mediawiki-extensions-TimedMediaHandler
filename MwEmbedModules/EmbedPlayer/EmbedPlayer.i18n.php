@@ -84,10 +84,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'mwe-embedplayer-credit-date' => '{{Identical|Date}}',
 	'mwe-embedplayer-credit-author' => '{{Identical|Author}}',
+	'mwe-embedplayer-ogg-player-cortado' => '{{optional}}',
 	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
