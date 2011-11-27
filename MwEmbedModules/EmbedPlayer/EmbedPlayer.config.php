@@ -28,6 +28,12 @@
 			// Default video size ( if no size provided )
 			"EmbedPlayer.DefaultSize" => "400x300",
 			
+			// Default player controls size: 
+			'EmbedPlayer.ControlsHeight'=> 31,
+		
+			// Default time display size: 
+			'EmbedPlayer.TimeDisplayWidth'=> 25,
+	
 			// If the video player should attribute kaltura
 			"EmbedPlayer.KalturaAttribution" => true,
 	
