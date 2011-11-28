@@ -521,6 +521,10 @@ $messages['de'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG-Audio',
+	'mwe-embedplayer-video-3gp' => '3gp-Video',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-Video',
+	'mwe-embedplayer-video-msvideo' => 'AVI-Video',
 	'mwe-embedplayer-missing-source' => 'Es konnte kein Videoclip gefunden werden.',
 );
 
@@ -1076,6 +1080,10 @@ $messages['gl'] = array(
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Son Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Son MPEG',
+	'mwe-embedplayer-video-3gp' => 'Vídeo 3gp',
+	'mwe-embedplayer-video-mpeg' => 'Vídeo MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Vídeo AVI',
 	'mwe-embedplayer-missing-source' => 'Non se atopou o vídeo de orixe.',
 );
 
@@ -1464,6 +1472,10 @@ $messages['ia'] = array(
 	'mwe-embedplayer-video-flv' => 'Video Flash',
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Audio MPEG',
+	'mwe-embedplayer-video-3gp' => 'Video 3gp',
+	'mwe-embedplayer-video-mpeg' => 'Video MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Video AVI',
 	'mwe-embedplayer-missing-source' => 'Nulle video de origine ha essite trovate.',
 );
 
@@ -1818,6 +1830,10 @@ $messages['mk'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash видео',
 	'mwe-embedplayer-video-ogg' => 'Ogg видео',
 	'mwe-embedplayer-video-audio' => 'Ogg аудио',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG аудио',
+	'mwe-embedplayer-video-3gp' => '3gp видео',
+	'mwe-embedplayer-video-mpeg' => 'MPEG видео',
+	'mwe-embedplayer-video-msvideo' => 'AVI видео',
 	'mwe-embedplayer-missing-source' => 'Не е пронајден извор на снимката.',
 );
 
