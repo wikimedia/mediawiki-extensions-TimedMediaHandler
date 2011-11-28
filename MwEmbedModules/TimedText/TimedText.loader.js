@@ -29,16 +29,13 @@
 		// Do a module check for timed Text support ( module must add data property 'SupportsTimedText' )
 		$( embedPlayer ).trigger( 'SupportsTimedText' );
 		
+		// triggers are triggered synchronously, check for data property being updated.  
 		if( $( embedPlayer ).data( 'SupportsTimedText' )  ){
 			return true;
 		}
 		
 		// Check for standard 'track' attribute: 
-		if ( $( embedPlayer ).find( 'track' ).length != 0 ) {
-			return true;
-		} else {
-			return false;
-		}
+		return $( embedPlayer ).find( 'track' ).length != 0 ;
 	};	
 
 } )( window.mediaWiki, window.jQuery );
