@@ -2,8 +2,6 @@
 * VLC embed based on: http://people.videolan.org/~damienf/plugin-0.8.6.html
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html
 *  assume version > 0.8.5.1
-*  
-*  mark for deletion
 */
 ( function( mw, $ ) {
 	
@@ -53,36 +51,22 @@ mw.EmbedPlayerVlc = {
 					'<embed pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" ' +
 						'progid="VideoLAN.VLCPlugin.2" name="' + this.pid + '" ' +
 						'height="' + this.getHeight() + '" width="' + this.getWidth() + '" ' +
-						// set the style too 'just to be sure'
+						// Set the style for IE layout issues )
 						'style="width:' + this.getWidth() + 'px;height:' + this.getHeight() + 'px;" ' +
 					'>' +
 			'</object>'
 		)
-		/*
-			$( this ).html(
-			'<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" '+
-				'width="' + this.width +'" ' +
-				'height="' + this.height + '" ' +
-				'id="' + this.pid + '"> ' +
-			'</embed>'
-		);*/
-
-
-		// give VLC 150ms to initialize before we start playback
-		// @@todo should be able to do this as an ready event
-		this.waitForVlcCount = 0;
-		setTimeout( function() {
-			_this.postEmbedJS();
-		}, 150 );
+		// Call postEmbedActions directly ( postEmbedJs will wait for player ready ) 
+		_this.postEmbedActions();
 	},
 
 	/**
 	* Javascript to run post vlc embedding
 	* Inserts the requested src to the embed instance
 	*/
-	postEmbedJS: function() {
+	postEmbedActions: function() {
 		var _this = this;
-		// load a pointer to the vlc into the object (this.playerElement)
+		// Load a pointer to the vlc into the object (this.playerElement)
 		this.getPlayerElement();
 		if ( this.playerElement && this.playerElement.playlist) {
 			// manipulate the dom object to make sure vlc has the correct size:
@@ -93,27 +77,26 @@ mw.EmbedPlayerVlc = {
 			// VLC likes absolute urls:
 			var src = mw.absoluteUrl( this.getSrc() ) ;
 
-			// @@todo if client supports seeking no need to send seek_offset to URI
-			mw.log( 'vlc play::' + src );
+			mw.log( "EmbedPlayerVlc:: postEmbedActions play src:" + src );
 			var itemId = this.playerElement.playlist.add( src );
 			if ( itemId != -1 ) {
 				// Play
 				this.playerElement.playlist.playItem( itemId );
 			} else {
-				mw.log( "error:cannot play at the moment !" );
+				mw.log( "Error:: EmbedPlayerVlc can not play" );
 			}
 			setTimeout( function() {
 				_this.monitor();
 			}, 100 );
 		} else {
-			mw.log( 'postEmbedJS: vlc not ready' );
+			mw.log( 'EmbedPlayerVlc:: postEmbedActions: vlc not ready' );
 			this.waitForVlcCount++;
 			if ( this.waitForVlcCount < 10 ) {
 				setTimeout( function() {
-					_this.postEmbedJS();
+					_this.postEmbedActions();
 				}, 100 );
 			} else {
-				mw.log( 'vlc never ready' );
+				mw.log( 'EmbedPlayerVlc:: vlc never ready' );
 			}
 		}
 	},
@@ -125,15 +108,16 @@ mw.EmbedPlayerVlc = {
 	*/
 	seek : function( percent ) {
 		this.getPlayerElement();
+		// Use the parent (re) embed with new seek url method if urlTimeEncoding is supported. 
 		if ( this.supportsURLTimeEncoding() ) {
 			this.parent_seek( percent );
 		} else if ( this.playerElement ) {
 			this.seeking = true;
-			mw.log( "do vlc http seek to: " + percent )
+			mw.log( "EmbedPlayerVlc:: seek to: " + percent )
 			if ( ( this.playerElement.input.state == 3 ) && ( this.playerElement.input.position != percent ) )
 			{
 				this.playerElement.input.position = percent;
-				this.controlBuilder.setStatus( 'seeking...' );
+				this.controlBuilder.setStatus( gM('mwe-embedplayer-seeking') );
 			}
 		} else {
 			this.doPlayThenSeek( percent );
@@ -147,23 +131,23 @@ mw.EmbedPlayerVlc = {
 	* @param {Float} percent Seek to this percent of the stream after playing
 	*/
 	doPlayThenSeek:function( percent ) {
-		mw.log( 'doPlayThenSeekHack' );
+		mw.log( 'EmbedPlayerVlc:: doPlayThenSeek' );
 		var _this = this;
 		this.play();
-		var rfsCount = 0;
+		var seekCount = 0;
 		var readyForSeek = function() {
 			_this.getPlayerElement();
 			var newState = _this.playerElement.input.state;
-			// if playing we are ready to do the
+			// If playing we are ready to do the seek
 			if ( newState == 3 ) {
 				_this.seek( percent );
 			} else {
-				// try to get player for 10 seconds:
-				if ( rfsCount < 200 ) {
+				// Try to get player for 10 seconds:
+				if ( seekCount < 200 ) {
 					setTimeout( readyForSeek, 50 );
 					rfsCount++;
 				} else {
-					mw.log( 'error:doPlayThenSeek failed' );
+					mw.log( 'Error: EmbedPlayerVlc doPlayThenSeek failed' );
 				}
 			}
 		}
@@ -175,12 +159,11 @@ mw.EmbedPlayerVlc = {
 	*/
 	monitor: function() {
 		this.getPlayerElement();
-		if ( !this.playerElement )
+		if ( ! this.playerElement ){
 			return ;
+		}
+		// Try to get relay vlc log messages to the console. 
 		try{
-			//mw.log( 'state:' + this.playerElement.input.state);
-			//mw.log('time: ' + this.playerElement.input.time);
-			//mw.log('pos: ' + this.playerElement.input.position);
 			if ( this.playerElement.log.messages.count > 0 ) {
 				// there is one or more messages in the log
 				var iter = this.playerElement.log.messages.iterator();
@@ -228,28 +211,28 @@ mw.EmbedPlayerVlc = {
 				this.onPlaying();
 			}
 		} catch( e ){
-			mw.log("EmbedPlayerVlc::Monitor error");
+			mw.log("EmbedPlayerVlc:: Monitor error");
 		}
-		// update the status and check timmer via universal parent monitor
+		// Update the status and check timer via universal parent monitor
 		this.parent_monitor();
 	},
 
 	/**
 	* Events:
-	*  NOTE : should be localized:
 	*/
 	onOpen: function() {
-		this.controlBuilder.setStatus( "Opening..." );
+		// Open is considered equivalent to other players buffer status: 
+		this.controlBuilder.setStatus( gM('mwe-embedplayer-buffering') );
 	},
 	onBuffer: function() {
-		this.controlBuilder.setStatus( "Buffering..." );
+		this.controlBuilder.setStatus(  gM('mwe-embedplayer-buffering') );
 	},
 	onPlay: function() {
 		this.onPlaying();
 	},
 	onPlaying: function() {
 		this.seeking = false;
-		// for now trust the duration from url over vlc input.length
+		// For now trust the duration from url over vlc input.length
 		if ( !this.getDuration() && this.playerElement.input.length > 0 )
 		{
 			// mw.log('setting duration to ' + this.playerElement.input.length /1000);
@@ -266,19 +249,21 @@ mw.EmbedPlayerVlc = {
 	},
 
 	onPause: function() {
-		this.parent_pause(); // update the inteface if paused via native control
+		// Update the interface if paused via native plugin
+		this.parent_pause(); 
 	},
 	onStop: function() {
-		mw.log( 'vlc:onStop:' );
-		if ( !this.seeking )
+		mw.log( 'EmbedPlayerVlc:: onStop' );
+		if ( !this.seeking ){
 			this.onClipDone();
+		}
 	},
 
 	/**
 	* Handles play requests
 	*/
-	play : function() {
-		mw.log( 'f:vlcPlay' );
+	play: function() {
+		mw.log( 'EmbedPlayerVlc:: play' );
 		// Update the interface
 		this.parent_play();
 		if ( this.getPlayerElement() ) {
@@ -304,13 +289,13 @@ mw.EmbedPlayerVlc = {
 	* Passes the Pause request to the plugin.
 	* calls parent "pause" to update interface
 	*/
-	pause : function() {
+	pause: function() {
 		this.parent_pause(); // update the interface if paused via native control
 		if ( this.getPlayerElement() ) {
 			try{
 				this.playerElement.playlist.togglePause();
 			} catch( e ){
-				mw.log("EmbedPlayerVlc could not pause video " + e);
+				mw.log("EmbedPlayerVlc:: Could not pause video " + e);
 			}
 		}
 	},
@@ -321,16 +306,17 @@ mw.EmbedPlayerVlc = {
 	*/
 	toggleMute:function() {
 		this.parent_toggleMute();
-		if ( this.getPlayerElement() )
+		if ( this.getPlayerElement() ){
 			this.playerElement.audio.toggleMute();
+		}
 	},
 
 	/**
 	* Update the player volume
-	* @pram {Float} percent Percent of total volume
+	* @parm {Float} percent Percent of total volume
 	*/
 	setPlayerElementVolume: function ( percent ) {
-		if ( this.getPlayerElement() ) {
+		if ( this.getPlayerElement() && this.playerElement.audio ) {
 			this.playerElement.audio.volume = percent * 100;
 		}
 	},
@@ -340,8 +326,9 @@ mw.EmbedPlayerVlc = {
 	* @return {Float} percent percent of total volume
 	*/
 	getVolumen:function() {
-		if ( this.getPlayerElement() )
+		if ( this.getPlayerElement() ){
 			return this.playerElement.audio.volume / 100;
+		}
 	},
 
 	/**
@@ -353,7 +340,7 @@ mw.EmbedPlayerVlc = {
 				try{
 					this.playerElement.video.toggleFullscreen();
 				} catch ( e ){
-					mw.log("VlcEmbed:: toggle fullscreen : possible error: " + e);
+					mw.log("EmbedPlayerVlc:: toggle fullscreen : possible error: " + e);
 				}
 			}
 		}
@@ -368,4 +355,4 @@ mw.EmbedPlayerVlc = {
 	}
 };
 
-} )( window.mediaWiki, window.jQuery );
+} )( mediaWiki, jQuery );
