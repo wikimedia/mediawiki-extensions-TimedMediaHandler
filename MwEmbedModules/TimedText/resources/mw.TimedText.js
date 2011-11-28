@@ -10,16 +10,15 @@
  * @author: Michael Dale
  *
  */
+mw.includeAllModuleMessages();
 
-// Bind to mw ( for uncluttered global namespace )
 ( function( mw, $ ) {
 
 	// Merge in timed text related attributes:
 	mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
   	   'srclang',
-	   'category',
-	   'label',
-	   'data-mwtitle'
+  	   'kind',
+	   'label'
 	]);
 	
 	/**
@@ -42,16 +41,21 @@
 			'layout' : 'ontop',
 
 			//Set the default local ( should be grabbed from the browser )
-			'userLanugage' : 'en',
+			'userLanguage' : 'en',
 
-			//Set the default category of timedText to display ( un-categorized timed-text is by default "SUB" )
-			'userCategory' : 'SUB'
+			//Set the default kind of timedText to display ( un-categorized timed-text is by default "subtitles" )
+			'userKind' : 'subtitles'
 		},
-
+		// The bind prefix:
+		bindPostFix: '.timedText',
+		
+		// Default options are empty
+		options: {},
+		
 		/**
 		 * The list of enabled sources
 		 */
-		enabledSources: null,
+		enabledSources: [],
 
 		/**
 		 * The current language key
@@ -59,26 +63,15 @@
 		currentLangKey : null,
 
 		/**
-		 * Stores the last text string per category to avoid dom checks
+		 * Stores the last text string per kind to avoid dom checks
 		 * for updated text
 		 */
-		prevText: null,
+		prevText: [],
 
 		/**
 		* Text sources ( a set of textSource objects )
 		*/
 		textSources: null,
-
-		/**
-		* Text Source(s) Setup Flag
-		*/
-		textSourceSetupFlag: null,
-
-		/*
-		 * Hard coded to "commons" right now .. but we will want to support per-asset provider id's
-		 * in addition to a standard "callback" system from cross domain grabbing of srt's
-		 */
-		textProviderId : 'commons',
 
 		/**
 		* Valid "Track" categories
@@ -99,113 +92,122 @@
 		],
 
 		/**
-		 * Timed text extension to mime map
-		 */
-		timedTextExtMime: {
-			'srt': 'text/x-srt',
-			'mw-srt': 'text/mw-srt',
-			'cmml': 'text/cmml'
-		},
-
-		/**
 		 * @constructor
 		 * @param {Object} embedPlayer Host player for timedText interfaces
 		 */
 		init: function( embedPlayer, options ) {
 			var _this = this;
 			mw.log("TimedText: init() ");
-			this.embedPlayer = embedPlayer;
-			this.options = options;
-
-			//Init internal variables:
-			this.enabledSources = [];
-			this.prevText = '';
-			this.textSources = [];
-			this.textSourceSetupFlag = false;
-			// Set default language via wgUserLanguage if set
-			if( typeof wgUserLanguage == 'object' ) {
-				this.config.userLanugage = wgUserLanguage;
+			this.embedPlayer = embedPlayer;	
+			if( options ){
+				this.options = options;
 			}
-
 			// Load user preferences config:
 			var preferenceConfig = $.cookie( 'TimedText.Preferences' );
-			if( preferenceConfig !== null ) {
+			if( preferenceConfig !== "false" && preferenceConfig != null ) {
 				this.config = JSON.parse(  preferenceConfig );
 			}
-			// Set up embedPlayer hooks:
+			// remove any old bindings on change media: 
+			$( this.embedPlayer ).bind('onChangeMedia', function(){
+				_this.destroy();
+			});
+			// Remove any old bindings before we add the current bindings: 
+			_this.destroy();
+			// Add player bindings
+			this.addPlayerBindings();
+		},
+		destroy:function(){
+			// remove any old player bindings; 
+			$( this.embedPlayer ).unbind( this.bindPostFix )
+		},
+		/**
+		 * Add timed text related player bindings
+		 * @return
+		 */
+		addPlayerBindings: function(){
+			var _this = this;
+			var embedPlayer = this.embedPlayer;
 			
 			// Check for timed text support:
-			$( embedPlayer ).bind( 'addControlBarComponent', function(event, controlBar ){
-				if( mw.isTimedTextSupported( embedPlayer ) ){
+			$( embedPlayer ).bind( 'addControlBarComponent' + this.bindPostFix, function(event, controlBar ){
+				if( embedPlayer.hasTextTracks() ){
 					controlBar.supportedComponents['timedText'] = true;
 					controlBar.components['timedText'] = _this.getTimedTextButton();					
 				}
 			});
 			
-			
-			$( embedPlayer ).bind( 'monitorEvent', function() {
+			$( embedPlayer ).bind( 'monitorEvent'+ this.bindPostFix, function() {
 				_this.monitor();
 			} );
 
-			$( embedPlayer ).bind( 'onplay', function() {
+			$( embedPlayer ).bind( 'onplay'+ this.bindPostFix, function() {
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
+				// Hide the caption menu if presently displayed
+				$( '#textMenuContainer_' + embedPlayer.id ).parent().remove();
 			} );
 			
 			// Resize the timed text font size per window width
-			$( embedPlayer ).bind( 'onCloseFullScreen onOpenFullScreen', function() {
-				var textOffset = _this.embedPlayer.controlBuilder.fullscreenMode ? 30 : 10;
-				
-				mw.log( 'TimedText::set text size for: : ' + embedPlayer.$interface.width() + ' = ' + _this.getInterfaceSizeTextCss({
+			$( embedPlayer ).bind( 'onCloseFullScreen'+ this.bindPostFix + ' onOpenFullScreen'+ this.bindPostFix, function() {
+				// Check if we are in fullscreen or not, if so add an additional bottom offset of 
+				// double the default bottom padding. 
+				var textOffset = _this.embedPlayer.controlBuilder.fullscreenMode ? 
+						mw.getConfig("TimedText.BottomPadding") *2 : 
+						mw.getConfig("TimedText.BottomPadding");
+						
+				var textCss = _this.getInterfaceSizeTextCss({
 					'width' :  embedPlayer.$interface.width(),
 					'height' : embedPlayer.$interface.height()
-				})['font-size'] );
-				
-				embedPlayer.$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss({
-					'width' :  embedPlayer.$interface.width(),
-					'height' : embedPlayer.$interface.height()
-				}) ).css({
-					// Get the text size scale then set it to control bar height + 10 px; 
-					'bottom': ( _this.embedPlayer.controlBuilder.getHeight() + textOffset ) + 'px'
 				});
 				
+				mw.log( 'TimedText::set text size for: : ' + embedPlayer.$interface.width() + ' = ' + textCss['font-size'] );
+				
+				embedPlayer.$interface.find( '.track' )
+				.css( textCss )
+				.css({
+					// Get the text size scale then set it to control bar height + TimedText.BottomPadding; 
+					'bottom': ( _this.embedPlayer.controlBuilder.getHeight() + textOffset ) + 'px'
+				});
 			});
 			
 			// Update the timed text size
-			$( embedPlayer ).bind( 'onResizePlayer', function(e, size, animate) {
-				mw.log( 'TimedText::onResizePlayer: ' + _this.getInterfaceSizeTextCss(size)['font-size'] );
-				if (animate) {
-					embedPlayer.$interface.find( '.track' ).animate( _this.getInterfaceSizeTextCss( size ) );
+			$( embedPlayer ).bind( 'onResizePlayer'+ this.bindPostFix, function(event, size, animate) {
+				// If the the player resize action is an animation, animate text resize, 
+				// else instantly adjust the css. 
+				var textCss = _this.getInterfaceSizeTextCss( size );
+				mw.log( 'TimedText::onResizePlayer: ' + textCss['font-size']);
+				if ( animate ) {
+					embedPlayer.$interface.find( '.track' ).animate( textCss);
 				} else {
-					embedPlayer.$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss( size ) );
+					embedPlayer.$interface.find( '.track' ).css( textCss );
 				}
 			});
 
 			// Setup display binding
-			$( embedPlayer ).bind( 'onShowControlBar', function(event, layout ){
+			$( embedPlayer ).bind( 'onShowControlBar'+ this.bindPostFix, function(event, layout ){
 				// Move the text track if present
 				embedPlayer.$interface.find( '.track' )
 				.stop()
 				.animate( layout, 'fast' );
 			});
 			
-			$( embedPlayer ).bind( 'onHideControlBar', function(event, layout ){
+			$( embedPlayer ).bind( 'onHideControlBar'+ this.bindPostFix, function(event, layout ){
 				// Move the text track down if present
 				embedPlayer.$interface.find( '.track' )
 				.stop()
 				.animate( layout, 'fast' );
 			});
-			
 		},
+
 		/**
 		 * Get the current language key
-		 * 
 		 * @return 
 		 * @type {string}
 		 */
 		getCurrentLangKey: function(){
 			return this.currentLangKey;
 		},
+		
 		/**
 		 * The timed text button to be added to the interface
 		 */
@@ -249,6 +251,7 @@
 				'font-size' : this.getInterfaceSizePercent( size ) + '%'
 			};
 		},
+		
 		/**
 		* Show the text interface library and show the text interface near the player.
 		*/
@@ -258,7 +261,6 @@
 			mw.log('showTextInterface::' + embedPlayer.id + ' t' + loc.top + ' r' + loc.right);
 
 			var $menu = $( '#timedTextMenu_' + embedPlayer.id );
-			//This may be unnecessary .. we just need to show a spinner somewhere
 			if ( $menu.length != 0 ) {
 				// Hide show the menu:
 				if( $menu.is( ':visible' ) ) {
@@ -267,12 +269,19 @@
 					// move the menu to proper location
 					$menu.show("fast");
 				}
-			}else{
+			}else{				
+				// Bind the text menu:
+				this.bindMenu( true );
+			}
+		},
+		getTextMenuContainer: function(){
+			var textMenuId = 'textMenuContainer_' + this.embedPlayer.id;
+			if( !$( '#' + textMenuId ).length ){
 				//Setup the menu:
 				$('body').append(
 					$('<div>')
 						.addClass('ui-widget ui-widget-content ui-corner-all')
-						.attr( 'id', 'timedTextMenu_' + embedPlayer.id )
+						.attr( 'id', textMenuId )
 						.css( {
 							'position' 	: 'absolute',
 							'z-index' 	: 10,
@@ -281,17 +290,25 @@
 							'font-size'	: '12px',
 							'display' : 'none'
 						} )
-
+	
 				);
-				// Load text interface ( if not already loaded )
-				$( '#' + embedPlayer.id ).timedText( 'showMenu', '#timedTextMenu_' + embedPlayer.id );
 			}
+			return $( '#' + textMenuId );
 		},
+		/**
+		 * Gets a text size percent relative to about 30 columns of text for 400 
+		 * pixel wide player, at 100% text size.  
+		 * 
+		 * @param size {object} The size of the target player area width and height
+		 */
 		getInterfaceSizePercent: function( size ) {
-			// Some arbitrary scale relative to window size ( 400px wide is text size 105% )
-			var textSize = size.width / 3.8;
-			if( textSize < 95 ) textSize = 95;
-			if( textSize > 200 ) textSize = 200;
+			var textSize = size.width / 4;
+			if( textSize < 95 ){
+				textSize = 95;
+			}
+			if( textSize > 200 ){
+				textSize = 200;
+			}
 			return textSize;
 		},
 
@@ -304,17 +321,8 @@
 		setupTextSources: function( callback ) {
 			mw.log( 'mw.TimedText::setupTextSources');
 			var _this = this;
-			if( this.textSourceSetupFlag ) {
-				if( callback ) {
-					callback();
-				}
-				return ;
-			}
-			this.textSourceSetupFlag = true;
-
 			// Load textSources
 			_this.loadTextSources( function() {
-
 				// Enable a default source and issue a request to "load it"
 				_this.autoSelectSource();
 
@@ -334,10 +342,8 @@
 		* @param {Object} target to display the menu
 		* @param {Boolean} autoShow If the menu should be displayed
 		*/
-		bindMenu: function( target , autoShow) {
+		bindMenu: function( autoShow) {
 			var _this = this;
-			mw.log( "TimedText:bindMenu:" + target );
-			_this.menuTarget = target;
 			var $menuButton = this.embedPlayer.$interface.find( '.timed-text' );
 
 			var positionOpts = { };
@@ -360,7 +366,7 @@
 					'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 					'crumbDefaultText' : ' ',
 					'autoShow': autoShow,
-					'targetMenuContainer' : _this.menuTarget,
+					'targetMenuContainer' : _this.getTextMenuContainer(),
 					'positionOpts' : positionOpts,
 					'backLinkText' : gM( 'mwe-timedtext-back-btn' ),
 					'createMenuCallback' : function(){
@@ -382,107 +388,43 @@
 			// Setup local reference to currentTime:
 			var currentTime = embedPlayer.currentTime;
 
-			// Get the text per category
+			// Get the text per kind
 			var textCategories = [ ];
 
-			for( var i = 0; i < this.enabledSources.length ; i++ ) {
-				var source = this.enabledSources[ i ];
-				this.updateSourceDisplay( source, currentTime );
-			}
+			//for( var i = 0; i < this.enabledSources.length ; i++ ) {
+				//var source = this.enabledSources[ i ];
+				var source = this.enabledSources[ 0 ];
+				if( source ) {
+					this.updateSourceDisplay( source, currentTime );
+				}
+			//}
 		},
 
 		/**
 		 * Load all the available text sources from the inline embed
-		 * 	or from a apiProvider
 		 * @param {Function} callback Function to call once text sources are loaded
 		 */
 		loadTextSources: function( callback ) {
 			var _this = this;
+			// check if text sources are already loaded ( not null )
+			if( this.textSources !== null ){
+				callback( this.textSources );
+				return ;
+			}
 			this.textSources = [];
-
-			// Setup the provider id ( set to local if not found ) 
-			var providerId = $( this.embedPlayer ).attr('data-mwprovider') ? 
-					$(  this.embedPlayer  ).attr('data-mwprovider') : 
-					'local';
-			var apiUrl = mw.getApiProviderURL( providerId );
-			var apiTitleKey = 	this.embedPlayer.apiTitleKey;
-			if( !apiUrl || !apiTitleKey ) {
-				mw.log("Error: loading source without apiProvider or apiTitleKey");
-				return ;
-			}
-			
-			//For now only support mediaWikTrack provider library
-			this.textProvider = new mw.MediaWikTrackProvider( {
-				'providerId' : providerId,
-				'apiUrl': apiUrl,
-				'embedPlayer': this.embedPlayer
-			} );
-			
-			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )
-			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
-			
-			// Add all the sources to textSources
-			for( var i = 0 ; i < inlineSources.length ; i++ ) {
-				// Check if the inline source has a text provider: 
-				var textSourceProvider = $( this.embedPlayer ).attr('data-mwprovider') ? 
-						$( this.embedPlayer ).attr('data-mwprovider') : 
-						this.textProvider;
-					
-				// Make a new textSource:
-				var source = new TextSource( inlineSources[i] , this.textProvider);				
-				this.textSources.push( source);
-			}
-			
-			// If there are inline sources don't check the api )  
-			if( this.textSources.length != 0 ){
-				if( callback )
-					callback();	
-				return ;
-			}
-
-			// Load the textProvider sources
-			this.textProvider.loadSources( apiTitleKey, function( textSources ) {
-				for( var i=0; i < textSources.length; i++ ) {
-					var textSource = textSources[ i ];
-					// Try to insert the track source:
-					var textElm = document.createElement( 'track' );
-					$( textElm ).attr({
-						'category'	: 'SUB',
-						'srclang' 	: textSource.srclang,
-						'type'		: _this.timedTextExtMime[ textSource.extension ],
-						'titleKey' 	: textSource.titleKey
-					});
-
-					// Build the url for downloading the text:
-					$( textElm ).attr('src',
-						_this.textProvider.apiUrl.replace('api.php', 'index.php?title=') +
-						encodeURIComponent( textSource.titleKey ) + '&action=raw&ctype=text/x-srt'
-					);
-
-					// Add a title
-					$( textElm ).attr('title',
-						gM('mwe-timedtext-key-language', textSource.srclang, mw.Language.names[ textSource.srclang ] )
-					);
-
-					// Add the sources to the parent embedPlayer
-					// ( in case other interfaces want to access them )
-					var embedSource = _this.embedPlayer.mediaElement.tryAddSource( textElm );
-				
-					// Get a "textSource" object:
-					var source = new TextSource( embedSource, _this.textProvider );
-					_this.textSources.push( source );
-				}
-				// All sources loaded run callback:
-				if( callback )
-					callback();
-			} );
+			// load inline text sources:
+			$.each( this.embedPlayer.getTextTracks(), function( inx, textSource ){
+				_this.textSources.push( new mw.TextSource( textSource ) );
+			});
+			// return the callback with sources
+			callback( _this.textSources );
 		},
 
 		/**
 		* Get the layout mode
 		*
 		* Takes into consideration:
-		* 	Playback method overlays support ( have to put subtitles bellow video )
+		* 	Playback method overlays support ( have to put subtitles below video )
 		*
 		*/
 		getLayoutMode: function() {
@@ -500,23 +442,32 @@
 		* In the future we could support multiple "enabled sources"
 		*/
 		autoSelectSource: function() {
+			var _this = this;
 			this.enabledSources = [];
-			// Check if any source matches our "local"
-			for( var i=0; i < this.textSources.length; i++ ) {
-				var source = this.textSources[ i ];
-				if( this.config.userLanugage &&
-					this.config.userLanugage == source.srclang.toLowerCase() ) {
-					// Check for category if available
-					this.enableSource( source );
+			// Check if any source matches our "local" pref
+			$.each( this.textSources, function(inx, source){
+				if(	_this.config.userLanguage == source.srclang.toLowerCase() 
+					&& 
+					_this.config.userKind == source.kind
+				) {
+					_this.enableSource( source );
 					return ;
 				}
-			}
+			});
+			// Check if any source is marked default:
+			$.each( this.textSources, function(inx, source){
+				if( source['default'] ){
+					_this.enableSource( source );
+					return ;
+				}
+			});
+					
 			// If no userLang, source try enabling English:
 			if( this.enabledSources.length == 0 ) {
 				for( var i=0; i < this.textSources.length; i++ ) {
 					var source = this.textSources[ i ];
 					if( source.srclang.toLowerCase() == 'en' ) {
-						this.enableSource( source );
+						_this.enableSource( source );
 						return ;
 					}
 				}
@@ -525,14 +476,14 @@
 			if( this.enabledSources.length == 0 ) {
 				for( var i=0; i < this.textSources.length; i++ ) {
 					var source = this.textSources[ i ];
-					this.enableSource( source );
+					_this.enableSource( source );
 					return ;
 				}
 			}
 		},
 		/**
 		 * Enable a source and update the currentLangKey 
-		 * @param source
+		 * @param {object} source
 		 * @return
 		 */
 		enableSource: function( source ){
@@ -540,12 +491,15 @@
 			this.currentLangKey = source.srclang;
 		},
 
-		// Get the current source sub captions
-		loadCurrentSubSrouce: function( callback ){
-			mw.log("loadCurrentSubSrouce:: enabled source:" + this.enabledSources.length);
+		/**
+		 * Get the current source sub captions
+		 * @param {function} callback function called once source is loaded
+		 */
+		loadCurrentSubSource: function( callback ){
+			mw.log("loadCurrentSubSource:: enabled source:" + this.enabledSources.length);
 			for( var i =0; i < this.enabledSources.length; i++ ){
 				var source = this.enabledSources[i];
-				if( source.category == 'SUB' ){
+				if( source.kind == 'SUB' ){
 					source.load( function(){
 						callback( source);
 						return ;
@@ -555,11 +509,16 @@
 			return false;
 		},
 
-		// Get sub captions by language key:
+		/**
+		 * Get sub captions by language key:
+		 * 
+		 * @param {string} langKey Key of captions to load
+		 * @pram {function} callback function called once language key is loaded
+		 */
 		getSubCaptions: function( langKey, callback ){
 			for( var i=0; i < this.textSources.length; i++ ) {
 				var source = this.textSources[ i ];
-				if( source.srclang.toLowerCase() == langKey ) {
+				if( source.srclang.toLowerCase() === langKey ) {
 					var source = this.textSources[ i ];
 					source.load( function(){
 						callback( source.captions );
@@ -573,11 +532,9 @@
 		*  Should be called anytime enabled Source list is updated
 		*/
 		loadEnabledSources: function() {
-			for(var i=0; i < this.enabledSources.length; i++ ) {
-				var enabledSource = this.enabledSources[ i ];
-				if( ! enabledSource.loaded )
-					enabledSource.load();
-			}
+			$.each( this.enabledSources, function( inx, enabledSource ) {
+				enabledSource.load();
+			});
 		},
 
 		/**
@@ -587,6 +544,7 @@
 		*/
 		selectMenuItem: function( item ) {
 			mw.log("selectMenuItem: " + $( item ).find('a').attr('class') );
+			//this.currentLangKey = ''
 		},
 
 		/**
@@ -596,28 +554,31 @@
 		* 	false if source is off
 		*/
 		isSourceEnabled: function( source ) {
-			for(var i=0; i < this.enabledSources.length; i++ ) {
-				var enabledSource = this.enabledSources[i];
+			$.each( this.enabledSources, function( inx, enabledSource ) {
 				if( source.id ) {
-					if( source.id == enabledSource.id )
+					if( source.id === enabledSource.id ){
 						return true;
+					}
 				}
 				if( source.srclang ) {
-					if( source.srclang == enabledSource.srclang )
+					if( source.srclang === enabledSource.srclang ){
 						return true;
+					}
 				}
-			}
+			});
 			return false;
 		},
 
 		/**
 		* Get a source object by language, returns "false" if not found
+		* @param {string} langKey The language key filter for selected source
 		*/
 		getSourceByLanguage: function ( langKey ) {
 			for(var i=0; i < this.textSources.length; i++) {
 				var source = this.textSources[ i ];
-				if( source.srclang == langKey )
+				if( source.srclang == langKey ){
 					return source;
+				}
 			}
 			return false;
 		},
@@ -646,30 +607,28 @@
 			
 			// Build the source list menu item:
 			var $menu = $( '<ul>' );
-			// Show text menu item ( if there are sources)
-			if( _this.textSources.length != 0 ) {
+			
+			// Show text menu item with layout option (if not fullscren ) 
+			if( _this.textSources.length !== 0 ) {
 				$menu.append(
 					$.getLineItem( gM( 'mwe-timedtext-choose-text'), 'comment' ).append(
 						_this.getLanguageMenu()
-					),
-						// Layout Menu option
-					$.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
-						_this.getLayoutMenu()
-					)
+					)					
 				);
-			} else {
-				// Add a link to request timed text for this clip:
-				if( mw.getConfig( 'TimedText.ShowRequestTranscript' ) ){
-					$menu.append(
-						$.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
-							_this.getAddSubRequest();
-						})
-					);
-				} else {
-					$menu.append(
-						$.getLineItem( gM( 'mwe-timedtext-no-subs'), 'close' )
-					)
-				}
+			} 
+			
+			// Layout Menu option if not in an iframe and we can expand video size: 
+
+			$menu.append(
+				$.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
+					_this.getLayoutMenu()
+				)
+			);
+			
+			if(  _this.textSources.length == 0 ){
+				$menu.append(
+					$.getLineItem( gM( 'mwe-timedtext-no-subs'), 'close' )
+				);
 			}
 
 			// Put in the "Make Transcript" link if config enabled and we have an api key
@@ -682,114 +641,13 @@
 			// Allow other modules to add to the timed text menu:
 			$( _this.embedPlayer ).trigger( 'TimedText.BuildCCMenu', $menu ) ;
 
+			// Test if only one menu item move its children to the top level
+			if( $menu.children('li').length == 1 ){
+				$menu.find('li > ul > li').detach().appendTo( $menu );  
+				$menu.find('li').eq(0).remove();
+			}
+			
 			return $menu;
-		},
-
-		// Simple interface to add a transcription request
-		// TODO this should probably be moved to a gadget
-		getAddSubRequest: function(){
-			var _this = this;
-			var buttons = {};
-			buttons[ gM('mwe-timedtext-request-subs') ] = function(){
-				var apiUrl = _this.textProvider.apiUrl;
-				var videoTitle = 'File:' + _this.embedPlayer.apiTitleKey.replace('File:|Image:', '');
-				var catName = mw.getConfig( 'TimedText.NeedsTranscriptCategory' );
-				var $dialog = $(this);
-
-				var subRequestCategoryUrl = apiUrl.replace('api.php', 'index.php') +
-					'?title=Category:' + catName.replace(/ /g, '_');
-
-				var buttonOk= {};
-				buttonOk[gM('mwe-ok')] =function(){
-					$(this).dialog('close');
-				};
-				// Set the loadingSpinner:
-				$( this ).loadingSpinner();
-				// Turn off buttons while loading
-				$dialog.dialog( 'option', 'buttons', null );
-
-				// Check if the category does not already exist:
-				mw.getJSON( apiUrl, { 'titles': videoTitle, 'prop': 'categories' }, function( data ){
-					if( data && data.query && data.query.pages ){
-						for( var i in data.query.pages ){							
-							// we only request a single page:
-							if( data.query.pages[i].categories ){
-								var categories = data.query.pages[i].categories;
-								for(var j =0; j < categories.length; j++){
-									if( categories[j].title.indexOf( catName ) != -1 ){
-										$dialog.html( gM('mwe-timedtext-request-already-done', subRequestCategoryUrl ) );
-										$dialog.dialog( 'option', 'buttons', buttonOk);
-										return ;
-									}
-								}
-							}
-						}
-					}
-
-					// Else category not found add to category:
-					// check if the user is logged in:
-					mw.getUserName( apiUrl, function( userName ){
-						if( !userName ){
-							$dialog.html( gM('mwe-timedtext-request-subs-fail') );
-							return ;
-						}
-						// Get an edit token:
-						mw.getToken( apiUrl, videoTitle, function( token ) {
-							if( !token ){
-								$dialog.html( gM('mwe-timedtext-request-subs-fail') );
-								return ;
-							}
-							var request = {
-								'action' : 'edit',
-								'summary' : 'Added request for subtitles using [[Commons:MwEmbed|MwEmbed]]',
-								'title' : videoTitle,
-								'appendtext' : "\n[[Category:" + catName + "]]",
-								'token': token
-							};
-							// Do the edit request:
-							mw.getJSON( apiUrl, request, function(data){
-								if( data.edit && data.edit.newrevid){
-
-									$dialog.html( gM('mwe-timedtext-request-subs-done', subRequestCategoryUrl )
-									);
-								} else {
-									$dialog.html( gM('mwe-timedtext-request-subs-fail') );
-								}
-								$dialog.dialog( 'option', 'buttons', buttonOk );
-							});
-						});
-					});
-				});
-			};
-			buttons[ gM('mwe-cancel') ] = function(){
-				$(this).dialog('close');
-			};
-			mw.addDialog({
-				'title' : gM( 'mwe-timedtext-request-subs'),
-				'width' : 450,
-				'content' : gM('mwe-timedtext-request-subs-desc'),
-				'buttons' : buttons
-			});
-		},
-		/**
-		 * Shows the timed text edit ui
-		 *
-		 * @param {String} mode Mode or page to display ( to differentiate between edit vs new transcript)
-		 */
-		showTimedTextEditUI: function( mode ) {
-			var _this = this;
-			// Show a loader:
-			mw.addLoaderDialog( gM( 'mwe-timedtext-loading-text-edit' ) );
-			// Load the timedText edit interface
-			mw.load( 'mw.TimedTextEdit', function() {
-				if( ! _this.editText ) {
-					_this.editText = new mw.TimedTextEdit( _this );
-				}
-				// Close the loader:
-				mw.closeLoaderDialog();
-				// Show the upload text ui: 
-				_this.editText.showUI();
-			});
 		},
 
 		/**
@@ -805,8 +663,8 @@
 		getLiAddText: function() {
 			var _this = this;
 			return $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
-						_this.showTimedTextEditUI( 'add' );
-					} );
+				_this.showTimedTextEditUI( 'add' );
+			});
 		},
 
 		/**
@@ -822,10 +680,9 @@
 				return $.getLineItem( source.title, source_icon, function() {
 					_this.selectTextSource( source );
 				});
-			}						
+			}	
 			if( source.srclang ) {
 				var langKey = source.srclang.toLowerCase();
-				var cat = gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) );
 				return $.getLineItem(
 					gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) ),
 					source_icon,
@@ -857,11 +714,14 @@
 			var layoutOptions = [ ];
 
 			//Only display the "ontop" option if the player supports it:
-			if( this.embedPlayer.supports[ 'overlays' ] )
+			if( this.embedPlayer.supports[ 'overlays' ] ){
 				layoutOptions.push( 'ontop' );
+			}
 
 			//Add below and "off" options:
-			layoutOptions.push( 'below' );
+			if( ! mw.getConfig('EmbedPlayer.IsIframeServer') ){
+				layoutOptions.push( 'below' );
+			}
 			layoutOptions.push( 'off' );
 
 			$ul = $('<ul>');
@@ -893,7 +753,13 @@
 				_this.updateLayout();
 			}
 		},
-
+		toggleCaptions: function(){
+			if( this.config.layout == 'off' ){
+				this.selectLayout( 'ontop' );
+			} else {
+				this.selectLayout( 'off' );
+			}
+		},
 		/**
 		* Updates the timed text layout ( should be called when config.layout changes )
 		*/
@@ -911,22 +777,22 @@
 		selectTextSource: function( source ) {
 			var _this = this;
 			mw.log("mw.TimedText:: selectTextSource: select lang: " + source.srclang );
+			
 			// For some reason we lose binding for the menu ~sometimes~ re-bind
 			this.bindTextButton( this.embedPlayer.$interface.find('timed-text') );
-			
 			
 			this.currentLangKey =  source.srclang;
 			
 			// Update the config language if the source includes language
 			if( source.srclang )
-				this.config.userLanugage = source.srclang;
+				this.config.userLanguage = source.srclang;
 
-			if( source.category )
-				this.config.userCategory = source.category;
+			if( source.kind )
+				this.config.userKind = source.kind;
 
-			// (@@todo update category & setup category language buckets? )
+			// (@@todo update kind & setup kind language buckets? )
 
-			// Remove any other sources selected in sources category
+			// Remove any other sources selected in sources kind
 			this.enabledSources = [];
 
 			this.enabledSources.push( source );
@@ -943,6 +809,9 @@
 			} else {
 				_this.refreshDisplay();
 			}
+
+			// Trigger the event
+			$( this.embedPlayer ).trigger( 'TimedText_ChangeSource' );
 		},
 
 		/**
@@ -970,30 +839,34 @@
 
 		/**
 		* Builds the language source list menu
-		* checks all text sources for category and language key attribute
+		* Cehck if the "track" tags had the "kind" attribute.
+		* 
+		* The kind attribute forms "categories" of text tracks like "subtitles", 
+		*  "audio description", "chapter names". We check for these categories 
+		*  when building out the language menu. 
 		*/
 		getLanguageMenu: function() {
 			var _this = this;
 
 			// See if we have categories to worry about
-			// associative array of SUB etc categories. Each category contains an array of textSources.
-			var catSourceList = {};
-			var catSourceCount = 0;
+			// associative array of SUB etc categories. Each kind contains an array of textSources.
+			var categorySourceList = {};
+			var sourcesWithCategoryCount = 0;
 
-			// ( All sources should have a category (depreciate )
+			// ( All sources should have a kind (depreciate )
 			var sourcesWithoutCategory = [ ];
 			for( var i=0; i < this.textSources.length; i++ ) {
 				var source = this.textSources[ i ];
-				if( source.category ) {
-					var catKey = source.category ;
+				if( source.kind ) {
+					var categoryKey = source.kind ;
 					// Init Category menu item if it does not already exist:
-					if( !catSourceList[ catKey ] ) {
+					if( !categorySourceList[ categoryKey ] ) {
 						// Set up catList pointer:
-						catSourceList[ catKey ] = [ ];
-						catSourceCount++;
+						categorySourceList[ categoryKey ] = [ ];
+						sourcesWithCategoryCount++;
 					}
-					// Append to the source category key menu item:
-					catSourceList[ catKey ].push(
+					// Append to the source kind key menu item:
+					categorySourceList[ categoryKey ].push(
 						_this.getLiSource( source )
 					);
 				}else{
@@ -1002,31 +875,31 @@
 			}
 			var $langMenu = $('<ul>');
 			// Check if we have multiple categories ( if not just list them under the parent menu item)
-			if( catSourceCount > 1 ) {
-				for(var catKey in catSourceList) {
+			if( sourcesWithCategoryCount > 1 ) {
+				for(var categoryKey in categorySourceList) {
 					var $catChildren = $('<ul>');
-					for(var i=0; i < catSourceList[ catKey ].length; i++) {
+					for(var i=0; i < categorySourceList[ categoryKey ].length; i++) {
 						$catChildren.append(
-							catSourceList[ catKey ][i]
+							categorySourceList[ categoryKey ][i]
 						);
 					}
-					// Append a cat menu item for each category list
+					// Append a cat menu item for each kind list
 					$langMenu.append(
-						$.getLineItem( gM( 'mwe-timedtext-textcat-' + catKey.toLowerCase() ) ).append(
+						$.getLineItem( gM( 'mwe-timedtext-textcat-' + categoryKey.toLowerCase() ) ).append(
 							$catChildren
 						)
 					);
 				}
 			} else {
-				for(var catKey in catSourceList) {
-					for(var i=0; i < catSourceList[ catKey ].length; i++) {
+				for(var categoryKey in categorySourceList) {
+					for(var i=0; i < categorySourceList[ categoryKey ].length; i++) {
 						$langMenu.append(
-							catSourceList[ catKey ][i]
+							categorySourceList[ categoryKey ][i]
 						);
 					}
 				}
 			}
-
+			// Add any remaning sources that did nto have a category
 			for(var i=0; i < sourcesWithoutCategory.length; i++) {
 				$langMenu.append( sourcesWithoutCategory[i] );
 			}
@@ -1037,706 +910,235 @@
 					_this.getLiAddText()
 				);
 			}
-
+			
 			return $langMenu;
 		},
 
 		/**
 		 * Updates a source display in the interface for a given time
-		 * @param {Object} source Source to update
+		 * @param {object} source Source to update
+		 * @param {number} time Caption time used to add and remove active captions.   
 		 */
 		updateSourceDisplay: function ( source, time ) {
-			// Get the source text for the requested time:
-			var text = source.getTimedText( time );
-
-			// We do a type comparison so that "undefined" != "false"
-			// ( check if we are updating the text )
-			if( text === this.prevText[ source.category ] ){
-				return ;
-			}
-
-			//mw.log( 'mw.TimedText:: updateTextDisplay: ' + text );
-
-			var $playerTarget = this.embedPlayer.$interface;
-			var $textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
-			// If we are missing the target add it:
-			if( $textTarget.length == 0 ) {
-				this.addItextDiv( source.category );
-				// Re-grab the textTarget:
-				$textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
-			}
-
-			// If text is "false" fade out the subtitle:
-			if( text === false ) {
-				$textTarget.fadeOut('fast');
-			}else{
-				// Fade in the target if not visible
-				if( ! $textTarget.is(':visible') ) {
-					$textTarget.fadeIn('fast');
-				}
-				// Update text ( use "html" instead of "text" so that subtitle format can
-				// include html formating 
-				// TOOD we should scrub this for non-formating html
-				$textTarget.html( text );
-
-				// Add/update the lang option
-				$textTarget.attr( 'lang', source.srclang.toLowerCase() );
-				
-				// Update any links to point to a new window
-				$textTarget.find( 'a' ).attr( 'target', '_blank' );
-			}
-			// mw.log( ' len: ' + $textTarget.length + ' ' + $textTarget.html() );
-			// Update the prev text:
-			this.prevText[ source.category ] = text;
-		},
-
-
-		/**
-		 * Add an track div to the embedPlayer
-		 */
-		addItextDiv: function( category ) {
-			mw.log(" addItextDiv: " + category );
-			// Get the relative positioned player class from the controlBuilder:
-			var $playerTarget = this.embedPlayer.$interface;
-			//Remove any existing track divs for this player;
-			$playerTarget.find('.track_' + category ).remove();
-
-			// Setup the display text div:
-			var layoutMode = this.getLayoutMode();
-			if( layoutMode == 'ontop' ) {
-				this.embedPlayer.controlBuilder.keepControlBarOnScreen = false;
-				var $track = $('<div>')
-					.addClass( 'track' + ' ' + 'track_' + category )
-					.css( {
-						'position':'absolute',
-						'bottom': ( this.embedPlayer.controlBuilder.getHeight() + 10 ),
-						'width': '100%',
-						'display': 'block',
-						'opacity': .8,
-						'text-align':'center'
-					})
-					.append(
-						$('<span \>')
-					);
-
-				// Scale the text Relative to player size:
-				$track.css(
-					this.getInterfaceSizeTextCss({
-						'width' :  this.embedPlayer.getWidth(),
-						'height' : this.embedPlayer.getHeight()
-					})
-				);
-				// Resize the interface for layoutMode == 'below' ( if not in full screen)
-				if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
-					this.embedPlayer.$interface.animate({
-						'height': this.embedPlayer.getHeight() 
-					});
-				}
-				$playerTarget.append( $track );
-				
-			} else if ( layoutMode == 'below') {
-				this.embedPlayer.controlBuilder.keepControlBarOnScreen = true;
-				// Set the belowBar size to 60 pixels:
-				var belowBarHeight = 60;
-				// Append before controls:
-				$playerTarget.find( '.control-bar' ).before(
-					$('<div>').addClass( 'track' + ' ' + 'track_' + category )
-						.css({
-							'position' : 'absolute',
-							'top' : this.embedPlayer.getHeight(),
-							'display' : 'block',
-							'width' : '100%',
-							'height' : belowBarHeight + 'px',
-							'background-color' : '#000',
-							'text-align' : 'center',
-							'padding-top' : '5px'
-						} ).append(
-							$('<span>').css( {
-								'color':'white'
-							} )
-						)
-				);
-				// Add some height for the bar and interface
-				var height = ( belowBarHeight + 8 ) + this.embedPlayer.getHeight() + this.embedPlayer.controlBuilder.getHeight();
-				// Resize the interface for layoutMode == 'below' ( if not in full screen)
-				if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
-					this.embedPlayer.$interface.animate({
-						'height': height
-					});
-				}
-				mw.log( ' height of ' + this.embedPlayer.id + ' is now: ' + $( '#' + this.embedPlayer.id ).height() );
-			}
-			mw.log( 'should have been appended: ' + $playerTarget.find('.track').length );
-		}
-	};
-
-	/**
-	 * TextSource object extends a base mediaSource object
-	 *  with some timedText features
-	 *
-	 * @param {Object} source Source object to extend
-	 * @param {Object} textProvider [Optional] The text provider interface ( to load source from api )
-	 */
-	TextSource = function( source , textProvider) {
-		return this.init( source, textProvider );
-	};
-	TextSource.prototype = {
-
-		//The load state:
-		loaded: false,
-
-		// Container for the captions
-		// captions include "start", "end" and "content" fields
-		captions: [],
-
-		// The previous index of the timed text served
-		// Avoids searching the entire array on time updates.
-		prevIndex: 0,
-
-		/**
-		 * @constructor Inherits mediaSource from embedPlayer
-		 * @param {source} Base source element
-		 * @param {Object} Pointer to the textProvider 
-		 */
-		init: function( source , textProvider) {	
-			//	Inherits mediaSource	
-			for( var i in source){
-				this[ i ] =  source[ i];
+			var _this = this;
+			if( this.timeOffset ){
+				time = time + parseInt( this.timeOffset );
 			}
 			
-			// Set default category to subtitle if unset:
-			if( ! this.category ) {
-				this.category = 'SUB';
-			}
-			//Set the textProvider if provided
-			if( textProvider ) {
-				this.textProvider = textProvider;
-				
-				// switch type to mw-srt if we are going to load via api 
-				// ( this is need because we want to represent one thing to search engines / crawlers, 
-				// while representing the mw-srt type internally so that mediawiki parsed text 
-				// gets converted to html before going into the video 
-				if( this.mwtitle ){
-					this.mimeType = 'text/mw-srt';
+			// Get the source text for the requested time:
+			var activeCaptions = source.getCaptionForTime( time );
+			var addedCaption = false;
+			// Show captions that are on: 
+			$.each(activeCaptions, function( capId, caption){
+				if( _this.embedPlayer.$interface.find( '.track[data-capId="' + capId +'"]').length == 0){
+					_this.addCaption( source, capId, caption );
+					addedCaption = true;
 				}
-			}
-			return this;
+			});
+			
+			// hide captions that are off: 
+			_this.embedPlayer.$interface.find( '.track' ).each(function( inx, caption){
+				if( !activeCaptions[ $( caption ).attr('data-capId') ] ){
+					if( addedCaption ){
+						$( caption ).remove();
+					} else {
+						$( caption ).fadeOut( mw.getConfig('EmbedPlayer.MonitorRate'), function(){ $(this).remove();} );
+					}
+				}
+			});
 		},
-
-		/**
-		 * Function to load and parse the source text
-		 * @param {Function} callback Function called once text source is loaded
-		 */
-		load: function( callback ) {
-			var _this = this;
-
-			//check if its already loaded:
-			if( _this.loaded ) {
-				if( callback ) {
-					callback();
-					return ;
-				}
+		getCaptionsTarget: function(){
+			var $capTarget = this.embedPlayer.$interface.find('.captionsLayoutTarget');
+			var layoutCss = {
+				'left' : 0,
+				'top' :0,
+				'right':0,
+				'position': 'absolute'
 			};
-			_this.loaded = true;
-			// Set parser handler:
-			switch( this.getMIMEType() ) {
-				//Special mediaWiki srt format ( support wiki-text in srt's )
-				case 'text/mw-srt':
-					var handler = parseMwSrt;
-				break;
-				case 'text/x-srt':
-					var handler = parseSrt;
-				break;
-				case 'text/cmml':
-					var handler = parseCMML;
-				break;
-				default:
-					var hanlder = null;
-				break;
-			}
-			if( !handler ) {
-				mw.log("Error: no handler for type: " + this.getMIMEType() );
-				return ;
-			}
-			// Try to load src via textProvider:
-			if( this.textProvider && this.mwtitle) {
-				this.textProvider.loadTitleKey( this.mwtitle, function( data ) {
-					if( data ) {
-						_this.captions = handler( data );
-					}			
-					mw.log("mw.TimedText:: loaded from titleKey: " + _this.captions.length + ' captions');
-					// Update the loaded state:
-					_this.loaded = true;
-					if( callback ) {
-						callback();
-					}
-				});
-				return ;
-			}
-
-			// Try to load src via XHR source
-			if( this.getSrc() ) {
-				// Issue the direct load request
-				if ( !mw.isLocalDomain( this.getSrc() ) ) {
-					mw.log("Error: cant load crossDomain src:" + this.getSrc() );
-					return ;
-				}
-				$.get( this.getSrc(), function( data ) {
-					// Parse and load captions:
-					_this.captions = handler( data );
-					mw.log("mw.TimedText:: loaded from srt file: " + _this.captions.length + ' captions');
-					// Update the loaded state:
-					_this.loaded = true;
-					if( callback ) {
-						callback();
-					}
-				}, 'text' );
-				return ;
-			}
-
-
-		},
-
-		/**
-		* Returns the text content for requested time
-		*
-		* @param {String} time Time in seconds
-		*/
-		getTimedText: function ( time ) {
-			var prevCaption = this.captions[ this.prevIndex ];
-
-			// Setup the startIndex:
-			if( prevCaption && time >= prevCaption.start ) {
-				var startIndex = this.prevIndex;
-			}else{
-				//If a backwards seek start searching at the start:
-				var startIndex = 0;
-			}
-			// Start looking for the text via time, return first match:
-			for( var i = startIndex ; i < this.captions.length; i++ ) {
-				var caption = this.captions[ i ];
-				// Don't handle captions with 0 or -1 end time:
-				if( caption.end == 0 || caption.end == -1)
-					continue;
-
-				if( time >= caption.start &&
-					time <= caption.end ) {
-					this.prevIndex = i;
-					//mw.log("Start cap time: " + caption.start + ' End time: ' + caption.end );
-					return caption.content;
-				}
-			}
-			//No text found in range return false:
-			return false;
-		}
-	};
-
-	/**
-	 * parse mediaWiki html srt
-	 * @param {Object} data XML data string to be parsed
-	 */
-	function parseMwSrt( data ) {
-		var captions = [ ];
-		var curentCap = [];
-		var parseNextAsTime = false;
-		// Optimize: we could use javascript strings functions instead of jQuery XML parsing:
-		$( '<div>' + data + '</div>' ).find('p').each( function() {
-			var currentPtext = $(this).html();
-			//mw.log( 'pText: ' + currentPtext );
-
-			//Check if the p matches the "all in one line" match:
-			var m = currentPtext
-			.replace('--&gt;', '-->')
-			.match(/\d+\s([\d\-]+):([\d\-]+):([\d\-]+)(?:,([\d\-]+))?\s*--?>\s*([\d\-]+):([\d\-]+):([\d\-]+)(?:,([\d\-]+))?\n?(.*)/);
-
-			if (m) {
-				var startMs = (m[4])? (parseInt(m[4], 10) / 1000):0;
-				var endMs = (m[8])? (parseInt(m[8], 10) / 1000) : 0;
-				captions.push({
-				'start':
-					(parseInt(m[1], 10) * 60 * 60) +
-					(parseInt(m[2], 10) * 60) +
-					(parseInt(m[3], 10)) +
-					startMs ,
-				'end':
-					(parseInt(m[5], 10) * 60 * 60) +
-					(parseInt(m[6], 10) * 60) +
-					(parseInt(m[7], 10)) +
-					endMs,
-				'content': $.trim( m[9] )
-				});
-				return true;
-			}
-			// Else check for multi-line match:
-			if( parseInt( currentPtext ) == currentPtext ) {
-				if( curentCap.length != 0) {
-					captions.push( curentCap );
-				}
-				curentCap = {
-					'content': ''
-				};
-				return true;
-			}
-			//Check only for time match:
-			var m = currentPtext.replace('--&gt;', '-->').match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
-			if (m) {
-				var startMs = (m[4])? (parseInt(m[4], 10) / 1000):0;
-				var endMs = (m[8])? (parseInt(m[8], 10) / 1000) : 0;
-				curentCap['start']=
-					(parseInt(m[1], 10) * 60 * 60) +
-					(parseInt(m[2], 10) * 60) +
-					(parseInt(m[3], 10)) +
-					startMs;
-				curentCap['end']=
-					(parseInt(m[5], 10) * 60 * 60) +
-					(parseInt(m[6], 10) * 60) +
-					(parseInt(m[7], 10)) +
-					endMs;
-				return true;
-			}
-			//Else content for the curentCap
-			if( currentPtext != '<br>' ) {
-				curentCap['content'] += currentPtext;
-			}
-		});
-		//Push last subtitle:
-		if( curentCap.length != 0) {
-			captions.push( curentCap );
-		}
-		return captions;
-	}
-	/**
-	 * srt timed text parse handle:
-	 * @param {String} data Srt string to be parsed
-	 */
-	function parseSrt( data ) {
-		// Remove dos newlines
-		var srt = data.replace(/\r+/g, '');
-
-		// Trim white space start and end
-		srt = srt.replace(/^\s+|\s+$/g, '');
-
-		// Remove all html tags for security reasons
-		srt = srt.replace(/<[a-zA-Z\/][^>]*>/g, '');
-
-		// Get captions
-		var captions = [];
-		var caplist = srt.split('\n\n');
-		for (var i = 0; i < caplist.length; i++) {
-	 		var caption = "";
-			var content, start, end, s;
-			caption = caplist[i];
-			s = caption.split(/\n/);
-			if (s.length < 2) {
-				// file format error or comment lines
-				continue;
-			}
-			if (s[0].match(/^\d+$/) && s[1].match(/\d+:\d+:\d+/)) {
-				// ignore caption number in s[0]
-				// parse time string
-				var m = s[1].match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
-				if (m) {
-					start =
-						(parseInt(m[1], 10) * 60 * 60) +
-						(parseInt(m[2], 10) * 60) +
-						(parseInt(m[3], 10)) +
-						(parseInt(m[4], 10) / 1000);
-					end =
-						(parseInt(m[5], 10) * 60 * 60) +
-						(parseInt(m[6], 10) * 60) +
-						(parseInt(m[7], 10)) +
-						(parseInt(m[8], 10) / 1000);
-				} else {
-					// Unrecognized timestring
-					continue;
-				}
-				// concatenate text lines to html text
-				content = s.slice(2).join("<br>");
+			if( this.embedPlayer.controlBuilder.isOverlayControls() || 
+				!mw.getConfig( 'EmbedPlayer.OverlayControls')  )
+			{
+				layoutCss['bottom'] = 0;				
 			} else {
-				// file format error or comment lines
-				continue;
+				layoutCss['bottom'] = this.embedPlayer.controlBuilder.getHeight();
 			}
-			captions.push({
-				'start' : start,
-				'end' : end,
-				'content' : content
-			} );
-		}
-
-		return captions;
-	};
-	/**
-	 * CMML parser handle
-	 * @param {Mixed} data String or XML tree of CMML data to be parsed
-	 */
-	function parseCMML( data ) {
-		var captions = [ ];
-		$( data ).find( 'clip' ).each( function( inx, clip ) {
-			var content, start, end;
-			// mw.log(' on clip ' + clip.id);
-			start = mw.npt2seconds( $( clip ).attr( 'start' ).replace( 'npt:', '' ) );
-			end = mw.npt2seconds( $( clip ).attr( 'end' ).replace( 'npt:', '' ) );
-
-			$( clip ).find( 'body' ).each( function( binx, bn ) {
-				if ( bn.textContent ) {
-					content = bn.textContent;
-				} else if ( bn.text ) {
-					content = bn.text;
-				}
-			} );
-			captions.push ( {
-				'start' : start,
-				'end' : end,
-				'content' : content
-			} );
-		} );
-
-		return captions;
-	}
-
-	/**
-	 * Text Providers
-	 *
-	 * text provider objects let you map your player to a timed text provider
-	 * can provide discovery, and contribution push back
-	 *
-
-	// Will add a base class once we are serving more than just mediaWiki "commons"
-	// also we should segment out these files
-	mw.BaseTextProvider = function() {
-		return this.init();
-	}
-	mw.BaseTextProvider.prototype = {
-		init: function() {
-
-		}
-	}
-
-	 */
-	 var default_textProvider_attr = [
-		'apiUrl',
-		'providerId',
-		'timedTextNS',
-		'embedPlayer'
-	];
-
-	mw.MediaWikTrackProvider = function( options ) {
-		this.init( options );
-	};
-	mw.MediaWikTrackProvider.prototype = {
-
-		// The api url:
-		apiUrl: null,
-
-		// The timed text namespace
-		timedTextNS: null,
-
-		/**
-		* @constructor
-		* @param {Object} options Set of options for the provider
-		*/
-		init: function( options ) {
-			for(var i in default_textProvider_attr) {
-				var attr = default_textProvider_attr[ i ];
-				if( options[ attr ] )
-					this[ attr ] = options[ attr ];
-
+			
+			if( $capTarget.length == 0 ){
+				$capTarget = $( '<div />' )
+				 	.addClass( 'captionsLayoutTarget' )
+					.css( layoutCss )
+				this.embedPlayer.$interface.append( $capTarget )
 			}
+			return $capTarget;
 		},
+		addCaption: function( source, capId, caption ){
+			if( this.getLayoutMode() == 'off' ){
+				return ;
+			}
+			// use capId as a class instead of id for easy selections and no conflicts with 
+			// multiple players on page. 
+			var $textTarget = $('<div />')
+				.addClass( 'track' )
+				.attr( 'data-capId', capId )
+				.hide();
+			
+			// Update text ( use "html" instead of "text" so that subtitle format can
+			// include html formating 
+			// TOOD we should scrub this for non-formating html
+			$textTarget.append( 
+				$('<span />')
+					.css( this.getCaptionCss() )
+					.html( caption.content )
+			);
 
-		/**
-		 * Loads a single text source by titleKey
-		 * @param {Object} titleKey
-		 */
-		loadTitleKey: function( titleKey, callback ) {
-			var request = {
-				'action': 'parse',
-				'page': titleKey
-				/**
-				 * For now we don't use cache helpers since the request is 
-				 * going over jsonp we kill any outer cache anyway
-				'smaxage' : 300,
-				'maxage' : 300
-				*/
-			};
-			mw.getJSON( this.apiUrl, request, function( data ) {
-				if ( data && data.parse && data.parse.text['*'] ) {
-					callback( data.parse.text['*'] );
-					return;
-				}
-				mw.log("Error: could not load:" + titleKey);
-				callback( false );
-			} );
-		},
 
-		/**
-		 * Loads all available source for a given apiTitleKey
-		 *
-		 * @param {String} apiTitleKey For mediaWiki the apiTitleKey is the "wiki title"
-		 */
-		loadSources: function( apiTitleKey, callback ) {
-			var request = {};
-			var _this = this;
-			this.getSourcePages( apiTitleKey, function( sourcePages ) {
-				if( ! sourcePages.query.allpages ) {
-					//Check if a shared asset
-					mw.log( 'no subtitle pages found');
-					if( callback )
-						callback();
-					return ;
-				}
-				// We have sources put them into the player
-				if( callback )
-					callback( _this.getSources( sourcePages ) );
-			} );
-		},
-
-		/**
-		 * Get the subtitle pages
-		 * @param {String} titleKey Title to get subtitles for
-		 * @param {Function} callback Function to call once NS subs are grabbed
-		 */
-		getSourcePages: function( titleKey, callback ) {
-			var _this = this;
-			var request = {
-				'list' : 'allpages',
-				'apprefix' : unescape( titleKey ),
-				'apnamespace' : this.getTimedTextNS(),
-				'aplimit' : 200,
-				'prop':'revisions'
-				/**
-				 * For now we don't use cache helpers since the request is 
-				 * going over jsonp we kill any outer cache anyway
-				'smaxage' : 300,
-				'maxage' : 300
-				*/
-			};
-			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
-				// If "timedText" is not a valid namespace try "just" with prefix:
-				if ( sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
-					var request = {
-						'list' : 'allpages',
-						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.embedPlayer.apiTitleKey
-					};
-					mw.getJSON( _this.apiUrl, request, function( sourcePages ) {
-						callback( sourcePages );
-					} );
+			// Add/update the lang option
+			$textTarget.attr( 'lang', source.srclang.toLowerCase() );
+			
+			// Update any links to point to a new window
+			$textTarget.find( 'a' ).attr( 'target', '_blank' );
+			
+			// Apply any custom style ( if we are ontop of the video )
+			if( this.getLayoutMode() == 'ontop' ){
+				if( caption.css ){
+					$textTarget.css( caption.css );
 				} else {
-					callback( sourcePages );
+					$textTarget.css( this.getDefaultStyle() );
 				}
-			} );
-	 	},
-
-	 	/**
-	 	 * Get the sources from sourcePages data object ( api result )
-	 	 * @param {Object} sourcePages Source page result object
-	 	 */
-	 	getSources: function( sourcePages ) {
-			var _this = this;
-			// look for text tracks:
-			var foundTextTracks = false;
-			var sources = [];
-			for ( var i=0; i < sourcePages.query.allpages.length; i++ ) {
-
-				var subPage = sourcePages.query.allpages[i];
-				if( !subPage || !subPage.title ){
-					continue;
-				}
-				var langKey = subPage.title.split( '.' );
-				var extension = langKey.pop();
-				langKey = langKey.pop();
-				//NOTE: we hard code the mw-srt type
-				// ( This is because mediaWiki srt files can have wiki-text and parsed as such )
-				if( extension == 'srt' ) {
-					extension = 'mw-srt';
-				}
-
-				if ( ! _this.isSuportedLang( langKey ) ) {
-					mw.log( 'Error: langkey:' + langKey + ' not supported' );
-				} else {
-					sources.push( {
-						'extension': extension,
-						'srclang': langKey,
-						'titleKey': subPage.title.replace( / /g, "_")
-					} );
-				}
+				this.getCaptionsTarget().append( 
+					$textTarget	
+				);
+			} else {
+				// else apply the default layout system:
+				this.addTextToDefaultLocation( $textTarget );
 			}
-			return sources;
-	 	},
-
-	 	/**
-	 	 * Return the namespace ( if not encoded on the page return default 102 )
-	 	 */
-	 	getTimedTextNS: function() {
-	 		if( this.timedTextNS )
-	 			return this.timedTextNS;
-			if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
-				this.timedTextNS = wgNamespaceIds['timedtext'];
-			}else{
-				//default value is 102 ( probably should store this elsewhere )
-				this.timedTextNS = 102;
+			// apply any interface size adjustments: 
+			$textTarget.css( this.getInterfaceSizeTextCss({
+					'width' :  this.embedPlayer.$interface.width(),
+					'height' : this.embedPlayer.$interface.height()
+				})
+			);
+			
+			
+			// Update the style of the text object if set
+			if( caption.styleId ){
+				var capCss = source.getStyleCssById( caption.styleId );
+				$textTarget.find('span').css(
+					capCss
+				);
 			}
-			return this.timedTextNS;
-	 	},
+		
+			$textTarget.fadeIn('fast');
+		},
+		getDefaultStyle: function(){ 
+			var baseCss =  {
+					'position':'absolute',
+					'bottom': 10,
+					'width': '100%',
+					'display': 'block',
+					'opacity': .8,
+					'text-align': 'center',
+					'z-index': 2
+				};
+			baseCss =$.extend( baseCss, this.getInterfaceSizeTextCss({
+				'width' :  this.embedPlayer.$interface.width(),
+				'height' : this.embedPlayer.$interface.height()
+			}));
+			return baseCss;
+		},
+		/**
+		 * Applies the default layout for a text target
+		 */
+		addTextBelowVideo: function( $textTarget ) {
+			var $playerTarget = this.embedPlayer.$interface;
+			// Get the relative positioned player class from the controlBuilder:
+			this.embedPlayer.controlBuilder.keepControlBarOnScreen = true;
+			// Set the belowBar size to 60 pixels:
+			var belowBarHeight = mw.getConfig('TimedText.BelowVideoBlackBoxHeight');
+			
+			// Append before controls:
+			$playerTarget.find( '.control-bar' ).before(
+				$('<div>').addClass( 'captionContainer' )
+					.css({
+						'position' : 'absolute',
+						'top' : this.embedPlayer.getHeight(),
+						'display' : 'block',
+						'width' : '100%',
+						'height' : belowBarHeight + 'px',
+						'background-color' : '#000',
+						'text-align' : 'center',
+						'padding-top' : '5px'
+					} ).append(
+						$textTarget.css( {
+							'color':'white'
+						} )
+					)
+			);
+			
+			// Add some height for the bar and interface
+			var height = ( belowBarHeight + 8 ) + this.embedPlayer.getHeight() + this.embedPlayer.controlBuilder.getHeight();
+			
+			// Resize the interface for layoutMode == 'below' ( if not in full screen)
+			if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
+				this.embedPlayer.$interface.animate({
+					'height': height
+				});
+			}
+			mw.log( 'TimedText:: height of ' + this.embedPlayer.id + ' is now: ' + $( '#' + this.embedPlayer.id ).height() );
+		},
+		/**
+		 * Build css for caption using this.options
+		 */
+		getCaptionCss: function() {
+			var options = this.options;
+			var style = {'display': 'inline'};
 
-	 	/**
-	 	 * Get the Canonical timed text namespace text
-	 	 */
-	 	getCanonicalTimedTextNS: function() {
-	 		return 'TimedText';
-	 	},
+			if( options.bg ) {
+				style["background-color"] = this.getHexColor( options.bg );
+			}
+			if( options.fontColor ) {
+				style["color"] = this.getHexColor( options.fontColor );
+			}
+			if( options.fontFamily ){
+				style["font-family"] = options.fontFamily;
+			}
+			if( options.fontsize ) {
+				// Translate to em size so that font-size parent percentage
+				// base on http://pxtoem.com/
+				var emFontMap = { '6': .375, '7': .438, '8' : .5, '9': .563, '10': .625, '11':.688,
+						'12':.75, '13': .813, '14': .875, '15':.938, '16':1, '17':1.063, '18': 1.125, '19': 1.888,
+						'20':1.25, '21':1.313, '22':1.375, '23':1.438, '24':1.5};
+				// Make sure its an int: 
+				options.fontsize = parseInt( options.fontsize );
+				style[ "font-size" ] = ( emFontMap[ options.fontsize ] ) ?  
+						emFontMap[ options.fontsize ] +'em' :
+						(  options.fontsize > 24 )?  emFontMap[24]+'em' : emFontMap[6];
+			}
+			if( options.useGlow && options.glowBlur && options.glowColor ) {
+				style["text-shadow"] = '0 0 ' + options.glowBlur + 'px ' + this.getHexColor( options.glowColor );
+			}
 
-	 	/**
-	 	 * Check if the language is supported
-	 	 */
-	 	isSuportedLang: function( lang_key ) {
-	 		if( mw.Language.names[ lang_key ]) {
-	 			return true;
-	 		}
-	 		return false;
-	 	}
-	 };
+			return style;
+		},
 
-	/**
-	* jquery timedText binding.
-	* Calls mw.timedText on the given selector
-	*
-	* @param {Object} options Options for the timed text menu
-	*/
-	$.fn.timedText = function ( action, target ) {
-		mw.log('fn.timedText:: ' + action + ' t: ' + target );
-		var options;
-		if( !target ){
-			options = action;
+		getHexColor: function(color) {
+			if( color.substr(0,2) == "0x" ) {
+				return color.replace('0x', '#');
+			} else {
+				color = parseInt( color );
+				color = color.toString(16);
+				var len = 6 - color.length;
+				if( len > 0 ) {
+					var pre = '';
+					for( var i=0; i<len; i++) {
+						pre += '0';
+					}
+					color = pre + color;
+				}
+				return '#' + color;
+			}
 		}
-		if( typeof options == 'undefined' )
-			options = {};
-	
-		$( this.selector ).each(function() {
-			var embedPlayer = $(this).get(0);
-	
-			// Setup timed text for the given player:
-			if( ! embedPlayer.timedText ) {
-				embedPlayer.timedText = new mw.TimedText( embedPlayer, options);
-			}
-	
-			// Show the timedText menu
-			if( action == 'showMenu' ) {
-				// Bind the menu to the target with autoShow = true
-				mw.log('bind menu fn.timedText');
-				embedPlayer.timedText.bindMenu( target, true );
-			}
-		} );
 	};
-	
-	
-	// On new embed player check if we need to add timedText
-	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
-		if( mw.isTimedTextSupported( embedPlayer) ){
-			if( ! embedPlayer.timedText && mw.TimedText ) {
-				embedPlayer.timedText = new mw.TimedText( embedPlayer );
-			}
-		}
-	});
+
 	
 } )( window.mediaWiki, window.jQuery );

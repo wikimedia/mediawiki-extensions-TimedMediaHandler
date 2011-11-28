@@ -20,6 +20,12 @@
 		// If the link to request a transcript should be shown on video files
 		'TimedText.ShowRequestTranscript' => false,
 	
-		// The category for listing videos that need transcription:
-		'TimedText.NeedsTranscriptCategory' => 'Videos needing subtitles'
+		// Category for listing videos that need transcription:
+		'TimedText.NeedsTranscriptCategory' => 'Videos needing subtitles',
+		
+		// Default bottom text padding 
+		'TimedText.BottomPadding' => 10,
+	
+		// Height of black box below video. 
+		'TimedText.BelowVideoBlackBoxHeight' => 60,
 	);
