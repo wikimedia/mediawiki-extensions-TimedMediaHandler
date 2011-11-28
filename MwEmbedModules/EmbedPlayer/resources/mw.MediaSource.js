@@ -309,16 +309,16 @@ mw.MediaSource.prototype = {
 				return gM( 'mwe-embedplayer-video-audio' );
 			break;
 			case 'audio/mpeg' :
-				return 'MPEG audio'; // FIXME: i18n
+				return gM('mwe-embedplayer-audio-mpeg');
 			break;
 			case 'video/3gp' :
-				return '3gp video'; // FIXME: i18n
+				return gM('mwe-embedplayer-video-3gp'); 
 			break;
 			case 'video/mpeg' :
-				return 'MPEG video'; // FIXME: i18n
+				return gM('mwe-embedplayer-video-mpeg');
 			break;
 			case 'video/x-msvideo' :
-				return 'AVI video'; // FIXME: i18n
+				return gM('mwe-embedplayer-video-msvideo' );
 			break;
 		}
 
