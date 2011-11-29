@@ -68,7 +68,6 @@ mw.PlayerControlBuilder.prototype = {
 	* @param {Object} embedPlayer EmbedPlayer interface
 	*/
 	init: function( embedPlayer ) {
-		var _this = this;
 		this.embedPlayer = embedPlayer;
 
 		// Check for skin overrides for controlBuilder
@@ -139,7 +138,7 @@ mw.PlayerControlBuilder.prototype = {
 
 
 		// Make room for audio controls in the interface: 
-		if( embedPlayer.isAudio() && embedPlayer.$interface.height() == 0 ){
+		if( embedPlayer.isAudio() && embedPlayer.$interface.height() === 0 ){
 			embedPlayer.$interface.css( {
 				'height' : this.height
 			} );
@@ -296,9 +295,9 @@ mw.PlayerControlBuilder.prototype = {
 	 */
 	getIntrinsicSize: function(){
 		var size = {};
-		var vid = this.embedPlayer.getPlayerElement()
+		var vid = this.embedPlayer.getPlayerElement();
 		// Check for embedVideo size: 
-		if( vid ){
+		if( vid ) {
 			size.width = vid.videoWidth;
 			size.height = vid.videoHeight;
 		}
@@ -327,11 +326,11 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;
 		// Set the offset depending if controls are hidden or displayed: 
 		var pheight = this.getComponentHeight( 'playButtonLarge' );
-		var topCompoentOffset = ( this.isOverlayControls() ) ? pheight : pheight / 2;
+		var topComponentOffset = ( this.isOverlayControls() ) ? pheight : pheight / 2;
 		return {
 			'position' : 'absolute',
 			'left' : ( ( parseInt( size.width ) - this.getComponentWidth( 'playButtonLarge' ) ) / 2 ),
-			'top' : ( ( parseInt( size.height ) - topCompoentOffset ) / 2 )
+			'top' : ( ( parseInt( size.height ) - topComponentOffset ) / 2 )
 		};
 	},
 
@@ -386,8 +385,9 @@ mw.PlayerControlBuilder.prototype = {
 		$( document ).bind( 'touchend.fullscreen', function(e){
 			$( embedPlayer ).trigger( 'onTouchEnd' );
 		});
-		if( triggerOnOpenFullScreen )
+		if( triggerOnOpenFullScreen ) {
 			$( embedPlayer ).trigger( 'onOpenFullScreen' );
+		}
 	},
 	doFullScreenPlayerDom: function(){
 		var _this = this;
@@ -413,10 +413,12 @@ mw.PlayerControlBuilder.prototype = {
 		);
 		
 		// get the original interface to absolute positioned:
-		if( ! this.windowPositionStyle  )
+		if( ! this.windowPositionStyle  ) {
 			this.windowPositionStyle = $interface.css( 'position' );
-		if( !this.windowZindex )
+		}
+		if( !this.windowZindex ) {
 			this.windowZindex = $interface.css( 'z-index' );
+		}
 
 		// Get the base offset:
 		this.windowOffset = this.getWindowOffset();
@@ -464,7 +466,7 @@ mw.PlayerControlBuilder.prototype = {
 		$interface.css( 'overlow', 'hidden' );
 		
 		// only animate if we are not inside an iframe
-		var aninmate = !mw.getConfig( 'EmbedPlayer.IsIframeServer' );
+		var animate = !mw.getConfig( 'EmbedPlayer.IsIframeServer' );
 		
 		// Resize the player keeping aspect and with the widow scroll offset:
 		embedPlayer.resizePlayer({
@@ -472,7 +474,7 @@ mw.PlayerControlBuilder.prototype = {
 			'left' : leftOffset,
 			'width' : $( window ).width(),
 			'height' : $( window ).height()
-		}, aninmate, function(){
+		}, animate, function(){
 			_this.displayFullscreenTip();
 		});
 
@@ -507,13 +509,13 @@ mw.PlayerControlBuilder.prototype = {
 						setTimeout(checkMovedMouse, 250 );
 					}
 				}
-			};
+			}
 			checkMovedMouse();
 		}
 
 		// Bind Scroll position update
 
-		// Bind resize resize window to resize window
+		// Bind resize window to resize embed player, if in fullscreen mode
 		$( window ).resize( function() {
 			if( _this.fullscreenMode ){
 				embedPlayer.resizePlayer({
@@ -666,7 +668,7 @@ mw.PlayerControlBuilder.prototype = {
 			: embedPlayer.getHeight() + _this.getHeight();
 	
 		// only animate if we are not inside an iframe
-		var aninmate = !mw.getConfig( 'EmbedPlayer.IsIframeServer' );
+		var animate = !mw.getConfig( 'EmbedPlayer.IsIframeServer' );
 			
 		mw.log( 'restoreWindowPlayer:: h:' + interfaceHeight + ' w:' + embedPlayer.getWidth());
 		$('.mw-fullscreen-overlay').fadeOut( 'slow' );
@@ -678,7 +680,7 @@ mw.PlayerControlBuilder.prototype = {
 			'left' : _this.windowOffset.left + 'px',
 			'width' : embedPlayer.getWidth(),
 			'height' : embedPlayer.getHeight()
-		}, aninmate, function(){
+		}, animate, function(){
 			var topPos = {
 					'position' : _this.windowPositionStyle,
 					'z-index' : _this.windowZindex,
@@ -749,7 +751,7 @@ mw.PlayerControlBuilder.prototype = {
 			var lastClickTime = 0;
 			var didDblClick = false;
 			// add right click binding again ( in case the player got swaped )
-			_this.addRightClickBinding()
+			_this.addRightClickBinding();
 			
 			// Remove parent dbl click ( so we can handle play clicks )
 			$( embedPlayer ).unbind( "click.onplayer" ).bind( "click.onplayer", function() {
@@ -929,8 +931,9 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	showControlBar: function( keepOnScreen ){
 		var animateDuration = 'fast';
-		if(! this.embedPlayer )
-			return ;
+		if(! this.embedPlayer ) {
+			return;
+		}
 		
 		if( this.embedPlayer.getPlayerElement && ! this.embedPlayer.isPersistentNativePlayer() ){
 			$( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
@@ -1747,7 +1750,7 @@ mw.PlayerControlBuilder.prototype = {
 			);
 		}
 	},
-	getSwichSourceMenu: function(){
+	getSwitchSourceMenu: function(){
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
 		// for each source with "native playback" 			
@@ -1759,13 +1762,13 @@ mw.PlayerControlBuilder.prototype = {
 			var icon = ( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() ) ? 'bullet' : 'radio-on';
 			$sourceMenu.append(
 				$.getLineItem( source.getShortTitle() , icon, function(){
-					mw.log( 'PlayerControlBuilder::SwichSourceMenu: ' + source.getSrc() );
+					mw.log( 'PlayerControlBuilder::SwitchSourceMenu: ' + source.getSrc() );
 					// TODO this logic should be in mw.EmbedPlayer
 					embedPlayer.mediaElement.setSource( source );					
 					if( ! _this.embedPlayer.isStopped() ){
 						// Get the exact play time from the video element ( instead of parent embed Player ) 
 						var oldMediaTime = _this.embedPlayer.getPlayerElement().currentTime;
-						var oldPaused =  _this.embedPlayer.paused
+						var oldPaused =  _this.embedPlayer.paused;
 						// Do a live switch
 						embedPlayer.switchPlaySrc(source.getSrc(), function( vid ){
 							// issue a seek
@@ -1879,11 +1882,12 @@ mw.PlayerControlBuilder.prototype = {
 			'o' : function( ctrlObj ){
 				var buttonConfig = mw.getConfig( 'EmbedPlayer.AttributionButton');
 				// Check for source ( by configuration convention this is a 16x16 image
+				var $icon;
 				if( buttonConfig.iconurl ){
-					var $icon =  $('<img />')
+					$icon =  $('<img />')
 						.attr('src', buttonConfig.iconurl );
 				} else {
-					var $icon = $('<span />')
+					$icon = $('<span />')
 					.addClass( 'ui-icon' );
 					if( buttonConfig['class'] ){
 						$icon.addClass( buttonConfig['class'] );
@@ -1960,7 +1964,7 @@ mw.PlayerControlBuilder.prototype = {
 					ctrlObj.embedPlayer.fullscreen();
 				});
 
-				$btn = $( '<div />' )
+				var $btn = $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-player_fullscreen' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton fullscreen-btn" )
 						.append(
@@ -2100,7 +2104,7 @@ mw.PlayerControlBuilder.prototype = {
 					.append(
 						ctrlObj.embedPlayer.mediaElement.selectedSource.getShortTitle()
 					).menu( {
-						'content' : ctrlObj.getSwichSourceMenu(),
+						'content' : ctrlObj.getSwitchSourceMenu(),
 						'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 						'width' : 115,
 						'positionOpts' : {
@@ -2192,13 +2196,13 @@ mw.PlayerControlBuilder.prototype = {
 					if( $playHead.length ){
 						$playHead.slider( "option", "disabled", true );
 					}
-				}
+				};
 				ctrlObj.enableSeekBar = function(){
 					var $playHead = ctrlObj.embedPlayer.$interface.find( ".play_head" );
 					if( $playHead.length ){
 						$playHead.slider( "option", "disabled", false);
 					}
-				}
+				};
 			
 				var embedPlayer = ctrlObj.embedPlayer;
 				var _this = this;
