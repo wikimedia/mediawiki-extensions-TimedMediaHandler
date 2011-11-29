@@ -1028,7 +1028,7 @@ $messages['gl'] = array(
 	'timedmedia-no-player-js' => 'O seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
 Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">un reprodutor</a> para reproducir o vídeo no seu navegador.',
 	'timedmedia-more' => 'Máis...',
-	'timedmedia-dismiss' => 'Fechar',
+	'timedmedia-dismiss' => 'Pechar',
 	'timedmedia-download' => 'Descargar o ficheiro',
 	'timedmedia-play-media' => 'Reproducir o contido',
 	'timedmedia-desc-link' => 'Acerca deste ficheiro',
