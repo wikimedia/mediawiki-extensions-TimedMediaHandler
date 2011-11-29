@@ -67,7 +67,7 @@ mw.IFramePlayerApiServer.prototype = {
 		var _this = this;		
 		mw.log('IFramePlayerApiServer::_addIframeListener');
 		$.receiveMessage( function( event ) {			
-			_this.hanldeMsg( event );
+			_this.handleMsg( event );
 		}, this.getParentUrl() );	
 	},
 	getParentUrl: function(){
@@ -154,8 +154,8 @@ mw.IFramePlayerApiServer.prototype = {
 	 * 
 	 * @param {string} event
 	 */
-	'hanldeMsg': function( event ){
-		mw.log( 'IFramePlayerApiServer:: hanldeMsg: ' +  event.data );
+	'handleMsg': function( event ){
+		mw.log( 'IFramePlayerApiServer:: handleMsg: ' +  event.data );
 		// Check if the server should even be enabled 
 		if( !mw.getConfig( 'EmbedPlayer.EnableIframeApi' )){
 			mw.log( 'Error: Loading iFrame playerApi but config EmbedPlayer.EnableIframeApi is false');

@@ -51,7 +51,7 @@ mw.IFramePlayerApiClient.prototype = {
 	'addPlayerReciveApi': function(){
 		var _this = this;
 		$.receiveMessage( function( event ){
-			_this.hanldeReciveMsg( event );
+			_this.handleReciveMsg( event );
 		}, this.iframeServer);
 	},
 	'addIframeFullscreenBinding': function(){
@@ -108,7 +108,7 @@ mw.IFramePlayerApiClient.prototype = {
 	/**
 	 * Handle received events
 	 */
-	'hanldeReciveMsg': function( event ){
+	'handleReciveMsg': function( event ){
 		var _this = this;
 		
 		// Decode the message 
@@ -181,7 +181,7 @@ mw.IFramePlayerApiClient.prototype = {
 		var playerProxy = $( '#' + originalIframeId ).get(0);		
 		var iframe = $('#' + iframePlayerId).get(0);
 		if(!iframe){
-			mw.log("Error invalide iFramePlayer request");
+			mw.log("Error invalid iFramePlayer request");
 			return false;
 		}
 		if( !iframe['playerApi'] ){
