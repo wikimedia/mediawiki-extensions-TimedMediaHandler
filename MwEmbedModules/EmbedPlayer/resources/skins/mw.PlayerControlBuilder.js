@@ -1697,14 +1697,14 @@ mw.PlayerControlBuilder.prototype = {
 	* Shows the download interface with sources loaded
 	* @param {Object} $target jQuery target to output to
 	*/
-	showDownloadWithSources : function( $target ) {
+	showDownloadWithSources : function( $targetContainer ) {
 		var _this = this;
-		mw.log( 'showDownloadWithSources::' + $target.length );
+		mw.log( 'showDownloadWithSources::' + $targetContainer.length );
 		var embedPlayer = this.embedPlayer;
 		// Empty the target:
-		$target.empty();
-		$target.append( $('<div />') );
-		$target = $target.find('div');
+		$targetContainer.empty();
+		$targetContainer.append( $('<div />') );
+		$target = $targetContainer.find('div');
 
 		var $mediaList = $( '<ul />' );
 		var $textList =  $( '<ul />' );
