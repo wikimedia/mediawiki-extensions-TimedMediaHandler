@@ -1570,7 +1570,7 @@ mw.PlayerControlBuilder.prototype = {
 			.text( gM( 'mwe-embedplayer-choose_player' ) )
 		);
 
-		$.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
+		$.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
 
 			var isPlayable = (typeof mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.getMIMEType() ) == 'object' );
 			var isSelected = ( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() );
@@ -1609,15 +1609,15 @@ mw.PlayerControlBuilder.prototype = {
 						$playerLine = $( '<a />')
 							.attr({
 								'href' : '#',
-								'id' : 'sc_' + sourceId + '_' + supportingPlayers[i].id
+								'id' : 'sc_' + sourceIndex + '_' + supportingPlayers[i].id
 							})
 							.addClass( 'ui-corner-all')
 							.text( supportingPlayers[i].getName() )
 							.click( function() {
 								var iparts = $( this ).attr( 'id' ).replace(/sc_/ , '' ).split( '_' );
-								var sourceId = iparts[0];
+								var sourceIndex = iparts[0];
 								var player_id = iparts[1];
-								mw.log( 'source id: ' + sourceId + ' player id: ' + player_id );
+								mw.log( 'source index: ' + sourceIndex + ' player id: ' + player_id );
 
 								embedPlayer.controlBuilder.closeMenuOverlay();
 
@@ -1626,12 +1626,12 @@ mw.PlayerControlBuilder.prototype = {
 									_this.restoreWindowPlayer();
 								}
 
-								embedPlayer.mediaElement.setSourceByIndex( sourceId );
+								embedPlayer.mediaElement.setSourceByIndex( sourceIndex );
 								var playableSources = embedPlayer.mediaElement.getPlayableSources();
 
 								mw.EmbedTypes.getMediaPlayers().setPlayerPreference(
 									player_id,
-									playableSources[ sourceId ].getMIMEType()
+									playableSources[ sourceIndex ].getMIMEType()
 								);
 
 								// Issue a stop
