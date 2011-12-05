@@ -1746,6 +1746,11 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawi
 	'timedmedia-oggThumb-version' => "Den OggHandler brauch d'Versioun $1 (oder méi eng nei Versioun) vun OggThumb.",
 	'timedmedia-oggThumb-failed' => "oggThumb konnt d'Miniaturbild (thumbnail) net uleeën.",
 	'timedmedia-actions' => 'Aktiounen',
+	'timedmedia-days' => '{{PLURAL:$1|Dag|$1 Deeg}}',
+	'timedmedia-hours' => '{{PLURAL:$1|Stonn|$1 Stonnen}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|Minutt|$1 Minutten}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|Sekonn|$1 Sekonnen}}',
+	'timedmedia-show-error' => 'Feeler weisen',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

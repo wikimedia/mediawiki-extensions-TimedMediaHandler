@@ -858,6 +858,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  * @author Peter17
  */
@@ -932,6 +933,10 @@ $messages['fr'] = array(
 	'mwe-embedplayer-video-flv' => 'vidéo Flash',
 	'mwe-embedplayer-video-ogg' => 'vidéo Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Audio MPEG',
+	'mwe-embedplayer-video-3gp' => 'Vidéo 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Vidéo MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Vidéo AVI',
 	'mwe-embedplayer-missing-source' => "Aucune source vidéo n'a été trouvée.",
 );
 
