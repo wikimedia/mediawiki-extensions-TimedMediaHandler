@@ -1057,7 +1057,8 @@ Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wi
 	'timedmedia-time-2-measurements' => '$1 e $2',
 	'timedmedia-show-error' => 'Mostrar o erro',
 	'timedmedia-reset' => 'Restablecer a transcodificación',
-	'timedmedia-reset-confirm' => 'Ao restablecer a transcodificación eliminarase calquera ficheiro existente e volverá engadir a transcodificación á cola de traballos. A nova transcodificación levará bastante tempo.<br /><br />Está seguro de querer continuar?',
+	'timedmedia-reset-confirm' => 'Ao restablecer a transcodificación eliminarase calquera ficheiro existente e volverá engadir a transcodificación á cola de traballos. A nova transcodificación levará bastante tempo.<br /><br />
+Está seguro de querer continuar?',
 	'timedmedia-reset-error' => 'Erro no restablecemento do traballo de transcodificación.',
 	'timedmedia-source-file' => 'Fonte $1',
 	'timedmedia-source-file-desc' => 'Orixinal $1, $2 × $3 ($4)',
@@ -2586,13 +2587,13 @@ $messages['sq'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'timedmedia-desc' => 'Руководилац аудио, видео и текстуалним датотекама, уз подршку за формате вебм, OGG теора, ворбис и SRT',
+	'timedmedia-desc' => 'Обрађивач за звук, видео и усклађени текст, с подршком за формате WebM, Ogg Theora, Vorbis и SRT',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 звучни фајл, $2.',
-	'timedmedia-ogg-short-video' => 'Ogg $1 видео датотека, $2.',
+	'timedmedia-ogg-short-video' => 'Ogg $1 видео-снимак, $2.',
 	'timedmedia-ogg-short-general' => 'Ogg $1 медијска датотека, $2.',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 звучни фајл, дужина $2, $3.',
-	'timedmedia-ogg-long-video' => 'Ogg $1 видео датотека, трајање $2, $4 × $5 пиксела, $3.',
-	'timedmedia-ogg-long-multiplexed' => 'Мултиплексирана .ogg аудио/видео датотека, $1, трајање $2, $4 × $5 пиксела, $3.',
+	'timedmedia-ogg-long-video' => 'Ogg $1 видео-снимак, трајање $2, $4 × $5 пиксела, $3.',
+	'timedmedia-ogg-long-multiplexed' => 'Мултиплексирани .ogg аудио/видео снимак, $1, трајање $2, $4 × $5 пиксела, $3.',
 	'timedmedia-ogg-long-general' => 'Ogg медијски фајл, дужина $2, $3.',
 	'timedmedia-ogg-long-error' => 'Неисправна .ogg датотека: $1.',
 	'timedmedia-more' => 'Више...',
@@ -2630,8 +2631,8 @@ $messages['sr-ec'] = array(
 	'timedmedia-derivative-720p.webm' => 'WebM 720п',
 	'timedmedia-derivative-desc-720p.webm' => 'Висококвалитетни WebM за преузимање (720п)',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
-	'timedmedia-subtitle-no-video' => 'Нема видео снимака повезаних са текућом страницом с титловима',
-	'timedmedia-subtitle-no-subtitles' => 'Тренутно нема $1 титлова за овај видео снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]',
+	'timedmedia-subtitle-no-video' => 'Нема видео-снимака повезаних са текућом страницом с титловима',
+	'timedmedia-subtitle-no-subtitles' => 'Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]',
 );
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
