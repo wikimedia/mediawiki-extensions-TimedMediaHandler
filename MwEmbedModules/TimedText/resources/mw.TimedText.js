@@ -10,8 +10,6 @@
  * @author: Michael Dale
  *
  */
-mw.includeAllModuleMessages();
-
 ( function( mw, $ ) {
 
 	// Merge in timed text related attributes:
@@ -984,7 +982,9 @@ mw.includeAllModuleMessages();
 			
 			// Update text ( use "html" instead of "text" so that subtitle format can
 			// include html formating 
-			// TOOD we should scrub this for non-formating html
+			// TOOD we should scrub this for non-formating html ( note all text in mediaWiki loader
+			// comes from the mediaWiki html render so does not represent an XSS, but in principal, 
+			// we only want formating html here. 
 			$textTarget.append( 
 				$('<span />')
 					.css( this.getCaptionCss() )
@@ -1104,16 +1104,9 @@ mw.includeAllModuleMessages();
 			}
 			if( options.fontsize ) {
 				// Translate to em size so that font-size parent percentage
-				// base on http://pxtoem.com/
-				var emFontMap = { '6': .375, '7': .438, '8' : .5, '9': .563, '10': .625, '11':.688,
-						'12':.75, '13': .813, '14': .875, '15':.938, '16':1, '17':1.063, '18': 1.125, '19': 1.888,
-						'20':1.25, '21':1.313, '22':1.375, '23':1.438, '24':1.5};
-				// Make sure its an int: 
-				options.fontsize = parseInt( options.fontsize );
-				style[ "font-size" ] = ( emFontMap[ options.fontsize ] ) ?  
-						emFontMap[ options.fontsize ] +'em' :
-						(  options.fontsize > 24 )?  emFontMap[24]+'em' : emFontMap[6];
+				style[ "font-size" ] = ( options.fontsize > 24 ) ? '1.5em' :  Math.round( options.fontsize * .0625 * 1000 ) / 1000 + 'em';
 			}
+			
 			if( options.useGlow && options.glowBlur && options.glowColor ) {
 				style["text-shadow"] = '0 0 ' + options.glowBlur + 'px ' + this.getHexColor( options.glowColor );
 			}

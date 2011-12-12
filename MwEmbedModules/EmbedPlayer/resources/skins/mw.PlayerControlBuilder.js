@@ -1698,7 +1698,7 @@ mw.PlayerControlBuilder.prototype = {
 
 	/**
 	* Shows the download interface with sources loaded
-	* @param {Object} $target jQuery target to output to
+	* @param {Object} $targetContainer jQuery target to output to
 	*/
 	showDownloadWithSources : function( $targetContainer ) {
 		var _this = this;
