@@ -470,6 +470,7 @@ $messages['br'] = array(
 	'timedmedia-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
 	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 	'timedmedia-status' => 'Statud',
+	'timedmedia-status-unknown' => 'Statud dianav',
 	'timedmedia-not-ready' => "N'eo ket prest",
 	'timedmedia-days' => '$1 {{PLURAL: $1|devezh|devezh}}',
 	'timedmedia-hours' => '$1 {{PLURAL: $1|eurvezh|eurvezh}}',
