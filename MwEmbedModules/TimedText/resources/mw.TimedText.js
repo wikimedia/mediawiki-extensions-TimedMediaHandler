@@ -116,7 +116,7 @@
 		},
 		destroy:function(){
 			// remove any old player bindings; 
-			$( this.embedPlayer ).unbind( this.bindPostFix )
+			$( this.embedPlayer ).unbind( this.bindPostFix );
 		},
 		/**
 		 * Add timed text related player bindings
@@ -346,7 +346,7 @@
 
 			var positionOpts = { };
 			if( this.embedPlayer.supports[ 'overlays' ] ){
-				var positionOpts = {
+				positionOpts = {
 					'directionV' : 'up',
 					'offsetY' : this.embedPlayer.controlBuilder.getHeight(),
 					'directionH' : 'left',
@@ -963,8 +963,8 @@
 			if( $capTarget.length == 0 ){
 				$capTarget = $( '<div />' )
 				 	.addClass( 'captionsLayoutTarget' )
-					.css( layoutCss )
-				this.embedPlayer.$interface.append( $capTarget )
+					.css( layoutCss );
+				this.embedPlayer.$interface.append( $capTarget );
 			}
 			return $capTarget;
 		},
@@ -1035,7 +1035,7 @@
 					'bottom': 10,
 					'width': '100%',
 					'display': 'block',
-					'opacity': .8,
+					'opacity': 0.8,
 					'text-align': 'center',
 					'z-index': 2
 				};
@@ -1103,7 +1103,7 @@
 			}
 			if( options.fontsize ) {
 				// Translate to em size so that font-size parent percentage
-				style[ "font-size" ] = ( options.fontsize > 24 ) ? '1.5em' :  Math.round( options.fontsize * .0625 * 1000 ) / 1000 + 'em';
+				style[ "font-size" ] = ( options.fontsize > 24 ) ? '1.5em' :  Math.round( options.fontsize * 0.0625 * 1000 ) / 1000 + 'em';
 			}
 			
 			if( options.useGlow && options.glowBlur && options.glowColor ) {
