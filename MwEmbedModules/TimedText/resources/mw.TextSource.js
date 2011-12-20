@@ -211,7 +211,7 @@
 						if( attrName[c].toLowerCase() != attrName[c] ){
 							cssName += '-' +  attrName[c].toLowerCase();
 						} else {
-							cssName+= attrName[c]
+							cssName+= attrName[c];
 						}
 					}
 					cssObject[ cssName ] = attr.nodeValue;
@@ -420,7 +420,7 @@
 					return true;
 				}
 				// Check only for time match:
-				var m = currentPtext
+				m = currentPtext
 					.replace('--&gt;', '-->')
 					.match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
 				if (m) {
