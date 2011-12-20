@@ -389,13 +389,12 @@
 			// Get the text per kind
 			var textCategories = [ ];
 
-			//for( var i = 0; i < this.enabledSources.length ; i++ ) {
-				//var source = this.enabledSources[ i ];
-				var source = this.enabledSources[ 0 ];
+			for( var i = 0; i < this.enabledSources.length ; i++ ) {
+				var source = this.enabledSources[ i ];
 				if( source ) {
 					this.updateSourceDisplay( source, currentTime );
 				}
-			//}
+			}
 		},
 
 		/**
