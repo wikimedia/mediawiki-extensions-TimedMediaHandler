@@ -31,7 +31,8 @@ class TimedMediaThumbnail {
 			$cmd .= ' -ss ' . ($offset - 2);
 			$offset = 2;
 		}
-		$cmd .= ' -i ' . wfEscapeShellArg( $options['file']->getPath() );
+		$srcPath = $options['file']->getLocalRefPath();
+		$cmd .= ' -y -i ' . wfEscapeShellArg( $srcPath );
 		$cmd .= ' -ss ' . $offset . ' ';
 
 		// Set the output size if set in options:
