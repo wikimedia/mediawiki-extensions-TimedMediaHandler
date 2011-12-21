@@ -28,9 +28,15 @@ class WebVideoTranscodeJob extends Job {
 	private function output( $msg ){
 		print $msg . "\n";
 	}
+	private function getFile() {
+		if( !$this->file){
+			$this->file = wfLocalFile( $this->title );
+		}
+		return $this->file;
+	}
 	private function getTargetEncodePath(){
 		if( !$this->targetEncodePath ){
-			$file = wfLocalFile( $this->title );
+			$file = $this->getFile();
 			$transcodeKey = $this->params[ 'transcodeKey' ];
 			$this->targetEncodePath = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
 		}
@@ -39,7 +45,7 @@ class WebVideoTranscodeJob extends Job {
 	private function getSourceFilePath(){
 		if( !$this->sourceFilePath ){
 			$file = wfLocalFile( $this->title );
-			$this->sourceFilePath = $file->getPath();
+			$this->sourceFilePath = $file->getLocalRefPath();
 		}
 		return $this->sourceFilePath;
 	}
@@ -139,25 +145,51 @@ class WebVideoTranscodeJob extends Job {
 		// If status is oky and file exists and is larger than 0 bytes
 		if( $status === true && is_file( $this->getTargetEncodePath() ) && filesize( $this->getTargetEncodePath() ) > 0 ){
 			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
-			wfSuppressWarnings();
-			$status = rename( $this->getTargetEncodePath(), $finalDerivativeFilePath );
-			$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
-			wfRestoreWarnings();
-			// Update the transcode table with success time:
-			$dbw->update(
-				'transcode',
-				array(
-					'transcode_time_success' => $db->timestamp(),
-					'transcode_final_bitrate' => $bitrate
-				),
-				array(
-					'transcode_image_name' => $this->title->getDBkey(),
-					'transcode_key' => $transcodeKey,
-				),
-				__METHOD__,
-				array( 'LIMIT' => 1 )
-			);
-			WebVideoTranscode::invalidatePagesWithFile( $this->title );
+			//wfSuppressWarnings();
+			// @TODO: use a FileRepo store function
+			$op = array( 'op' => 'store',
+				'src' => $this->getTargetEncodePath(), 'dst' => $finalDerivativeFilePath, 'overwriteDest' => true );
+			// Copy derivaitve from the FS into storage at $finalDerivativeFilePath
+			$opts = array( 'ignoreErrors' => true, 'nonLocking' => true ); // performance
+			$file = $this->getFile();
+			$status = $file->getRepo()->getBackend()->doOperation( $op, $opts );
+			if (!$status->isOK() ) {
+				// Update the transcode table with failure time and error
+				$dbw->update(
+					'transcode',
+					array(
+						'transcode_time_error' => $db->timestamp(),
+						'transcode_error' => $status
+					),
+					array(
+							'transcode_image_name' => $this->title->getDBkey(),
+							'transcode_key' => $transcodeKey
+					),
+					__METHOD__,
+					array( 'LIMIT' => 1 )
+				);
+				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
+				// just clear the file page ( so that the transcode table shows the error )
+				$this->title->invalidateCache();
+			} else {
+				$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
+				//wfRestoreWarnings();
+				// Update the transcode table with success time:
+				$dbw->update(
+					'transcode',
+					array(
+						'transcode_time_success' => $db->timestamp(),
+						'transcode_final_bitrate' => $bitrate
+					),
+					array(
+						'transcode_image_name' => $this->title->getDBkey(),
+						'transcode_key' => $transcodeKey,
+					),
+					__METHOD__,
+					array( 'LIMIT' => 1 )
+				);
+				WebVideoTranscode::invalidatePagesWithFile( $this->title );
+			}
 		} else {
 			// Update the transcode table with failure time and error
 			$dbw->update(
@@ -204,7 +236,7 @@ class WebVideoTranscodeJob extends Job {
 		global $wgFFmpegLocation;
 
 		// Set up the base command
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -y -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
 
 		if( isset($options['preset']) ){
 			if ($options['preset'] == "360p") {

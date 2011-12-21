@@ -156,11 +156,15 @@ class WebVideoTranscode {
 	 * @return the local target encode path
 	 */
 	static public function getTargetEncodePath( &$file, $transcodeKey ){
-		// TODO probably should use some other temporary non-web accessible location for
-		// in-progress encodes, its nice having it publicly accessible for debugging though
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
 		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
-		return "{$filePath}.part.{$ext}";
+
+		// Create a temp FS file with the same extension
+		$tmpFile = TempFSFile::factory( 'transcode_' . $transcodeKey, $ext);
+		if ( !$tmpFile ) {
+			return False;
+		}
+		return $tmpFile->getPath(); //path with 0-byte temp file
 	}
 
 	/**
