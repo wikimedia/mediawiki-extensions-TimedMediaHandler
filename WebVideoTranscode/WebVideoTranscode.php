@@ -164,6 +164,7 @@ class WebVideoTranscode {
 		if ( !$tmpFile ) {
 			return False;
 		}
+		$tmpFile->bind( $file );
 		return $tmpFile->getPath(); //path with 0-byte temp file
 	}
 

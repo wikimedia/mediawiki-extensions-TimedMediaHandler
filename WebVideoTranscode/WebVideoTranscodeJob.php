@@ -190,6 +190,8 @@ class WebVideoTranscodeJob extends Job {
 				);
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );
 			}
+			//remove temoprary file in any case
+			$this->getTargetEncodePath()->purge();
 		} else {
 			// Update the transcode table with failure time and error
 			$dbw->update(
