@@ -2640,7 +2640,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'timedmedia-desc' => 'Rukovaoc ogg Teora i Vorbis fajlovima sa javaskript plejerom',
+	'timedmedia-desc' => 'Obrađivač za zvuk, video i usklađeni tekst, s podrškom za formate WebM, Ogg Theora, Vorbis i SRT',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 zvučni fajl, $2.',
 	'timedmedia-ogg-short-video' => 'Ogg $1 video fajl, $2.',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medijski fajl, $2.',
@@ -2653,6 +2653,39 @@ $messages['sr-el'] = array(
 	'timedmedia-dismiss' => 'Zatvori',
 	'timedmedia-download' => 'Preuzmi fajl',
 	'timedmedia-desc-link' => 'O ovom fajlu',
+	'timedmedia-days' => '{{PLURAL:$1|dan|$1 dana|$1 dana}}',
+	'timedmedia-hours' => '{{PLURAL:$1|sat|$1 sata|$1 sati}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuta|$1 minuta}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|sekund|$1 sekunde|$1 sekundi}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 i $4',
+	'timedmedia-time-3-measurements' => '$1, $2 i $3',
+	'timedmedia-time-2-measurements' => '$1 i $2',
+	'timedmedia-show-error' => 'Prikaži grešku',
+	'timedmedia-reset' => 'Poništi prekodiranje',
+	'timedmedia-reset-confirm' => 'Poništavanje ovog prekodiranja će ukloniti postojeću datoteku (ako postoji) i vratiti prekodiranje na spisak zadataka. Ova radnja može da potraje. <br /><br />
+Želite li da nastavite?',
+	'timedmedia-reset-error' => 'Greška pri poništavanju zadataka za prekodiranje.',
+	'timedmedia-ogg' => 'Ogg',
+	'timedmedia-webm' => 'WebM',
+	'timedmedia-source-file' => 'Izvorni $1',
+	'timedmedia-source-file-desc' => 'Izvorni $1, $2 × $3 ($4)',
+	'timedmedia-derivative-160p.ogv' => 'Ogg 160p',
+	'timedmedia-derivative-desc-160p.ogv' => 'Niskopropusni .ogg video (160p)',
+	'timedmedia-derivative-360p.ogv' => 'Ogg 360p',
+	'timedmedia-derivative-desc-360p.ogv' => 'Ogg video za emitovanje (360p)',
+	'timedmedia-derivative-480p.ogv' => 'Ogg 480p',
+	'timedmedia-derivative-desc-480p.ogv' => 'Ogg video za emitovanje (480p)',
+	'timedmedia-derivative-720p.ogv' => 'Ogg 720p',
+	'timedmedia-derivative-desc-720p.ogv' => 'Visokokvalitetni .ogg video za preuzimanje (720p)',
+	'timedmedia-derivative-360p.webm' => 'WebM 360p',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM za emitovanje (360p)',
+	'timedmedia-derivative-480p.webm' => 'WebM 480p',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM za emitovanje (480p)',
+	'timedmedia-derivative-720p.webm' => 'WebM 720p',
+	'timedmedia-derivative-desc-720p.webm' => 'Visokokvalitetni WebM za preuzimanje (720p)',
+	'timedmedia-subtitle-language' => '$1 ($2) titlovi',
+	'timedmedia-subtitle-no-video' => 'Nema video-snimaka povezanih sa tekućom stranicom s titlovima',
+	'timedmedia-subtitle-no-subtitles' => 'Trenutno nema $1 titlova za ovaj video-snimak. Možete da ih dodate tako što ćete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti stranicu]',
 );
 
 /** Seeltersk (Seeltersk)

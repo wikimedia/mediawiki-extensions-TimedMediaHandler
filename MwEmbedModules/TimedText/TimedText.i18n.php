@@ -1654,7 +1654,16 @@ $messages['sr-ec'] = array(
  * @author Rancher
  */
 $messages['sr-el'] = array(
+	'mwe-timedtext-editor' => 'Urednik usklađenog teksta',
+	'mwe-timedtext-stage-transcribe' => 'Napravi transkript',
+	'mwe-timedtext-stage-sync' => 'Uskladi',
+	'mwe-timedtext-stage-translate' => 'Prevedi',
+	'mwe-timedtext-stage-upload' => 'Pošalji datoteku sa računara',
 	'mwe-timedtext-select-language' => 'Izaberi jezik',
+	'mwe-timedtext-file-language' => 'Jezik titla',
+	'mwe-timedtext-upload-text' => 'Otpremi tekstualnu datoteku',
+	'mwe-timedtext-uploading-text' => 'Otpremanje tekstualne datoteke',
+	'mwe-timedtext-upload-text-desc-title' => 'Otpremanje tekstualne datoteke',
 	'mwe-timedtext-upload-text-done' => 'Slanje je završeno',
 	'mwe-timedtext-upload-text-fail-desc' => 'Slanje je bilo neuspešno',
 	'mwe-timedtext-upload-text-fail-title' => 'Slanje nije prošlo',
@@ -1663,6 +1672,7 @@ $messages['sr-el'] = array(
 	'mwe-timedtext-back-btn' => 'Nazad',
 	'mwe-timedtext-layout-off' => 'Sakrij sabtajtlove',
 	'mwe-timedtext-loading-text' => 'Učitava se tekst ...',
+	'mwe-timedtext-key-language' => '$1, $2',
 	'mwe-timedtext-textcat-cc' => 'Oznake',
 	'mwe-timedtext-textcat-sub' => 'Podnaslovi',
 	'mwe-timedtext-textcat-trx' => 'Transkript',
@@ -1798,6 +1808,7 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => '上传完成',
 	'mwe-timedtext-back-btn' => '返回',
 	'mwe-timedtext-choose-text' => '选择文字',
+	'mwe-timedtext-upload-timed-text' => '上传字幕',
 	'mwe-timedtext-search' => '搜索剪辑',
 	'mwe-timedtext-layout' => '布局',
 	'mwe-timedtext-layout-off' => '隐藏字幕',
@@ -1810,11 +1821,28 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
+	'mwe-timedtext-stage-transcribe' => '字幕',
 	'mwe-timedtext-stage-sync' => '同步',
 	'mwe-timedtext-stage-translate' => '翻譯',
+	'mwe-timedtext-stage-upload' => '從本地上傳',
+	'mwe-timedtext-select-language' => '選擇語言',
+	'mwe-timedtext-file-language' => '字幕語言',
+	'mwe-timedtext-upload-text' => '上傳文本文件',
+	'mwe-timedtext-uploading-text' => '正在上傳文本文件',
+	'mwe-timedtext-upload-text-desc-help-browse' => '瀏覽本機以查閱您想要上傳的.srt文件',
+	'mwe-timedtext-upload-text-desc-help-select' => '選擇文件的語言',
+	'mwe-timedtext-upload-text-done' => '上傳完成',
+	'mwe-timedtext-upload-text-fail-desc' => '未能成功上傳',
 	'mwe-timedtext-upload-text-fail-title' => '上傳失敗',
+	'mwe-timedtext-upload-text-done-uploading' => '上傳完成',
+	'mwe-timedtext-back-btn' => '返回',
+	'mwe-timedtext-choose-text' => '選擇文字',
 	'mwe-timedtext-upload-timed-text' => '上傳字幕',
+	'mwe-timedtext-search' => '搜索剪輯',
+	'mwe-timedtext-layout' => '布局',
 	'mwe-timedtext-layout-off' => '隱藏字幕',
+	'mwe-timedtext-loading-text' => '正在讀取文本……',
 	'mwe-timedtext-textcat-cc' => '標題',
+	'mwe-timedtext-textcat-sub' => '副標題',
 );
 
