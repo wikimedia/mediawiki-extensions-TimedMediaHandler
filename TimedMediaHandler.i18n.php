@@ -2105,7 +2105,7 @@ $messages['nn'] = array(
  * @author Laaknor
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'timedmedia-desc' => 'Håndteringsprogram for lyd, video og tidsbestemt tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 lydfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',

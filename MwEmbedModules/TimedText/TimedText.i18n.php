@@ -1269,7 +1269,7 @@ $messages['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mwe-timedtext-editor' => 'Editor for tidsbestemt tekst',
 	'mwe-timedtext-stage-transcribe' => 'Transkriber',
 	'mwe-timedtext-stage-sync' => 'Synkroniser',

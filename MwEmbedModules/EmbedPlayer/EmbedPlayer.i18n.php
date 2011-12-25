@@ -2015,7 +2015,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'mwe-embedplayer-credit-title' => 'Tittel: $1',
 	'mwe-embedplayer-credit-date' => 'Dato: $1',
 	'mwe-embedplayer-credit-author' => 'Forfatter: $1',
