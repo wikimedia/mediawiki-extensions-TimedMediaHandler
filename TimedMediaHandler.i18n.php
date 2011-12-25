@@ -904,7 +904,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-status-header' => 'Statut de transcodage',
 	'timedmedia-update-status' => 'Mettre à jour le statut de transcodage',
 	'timedmedia-status' => 'statut',
-	'timedmedia-status-unknown' => 'statut inconnu',
+	'timedmedia-status-unknown' => 'État inconnu',
 	'timedmedia-transcodeinfo' => 'Description dérivée du transcodage',
 	'timedmedia-actions' => 'Actions',
 	'timedmedia-direct-link' => 'Télécharger le dérivé',
@@ -1748,6 +1748,8 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawi
 	'timedmedia-oggThumb-version' => "Den OggHandler brauch d'Versioun $1 (oder méi eng nei Versioun) vun OggThumb.",
 	'timedmedia-oggThumb-failed' => "oggThumb konnt d'Miniaturbild (thumbnail) net uleeën.",
 	'timedmedia-actions' => 'Aktiounen',
+	'timedmedia-not-ready' => 'Net fäerdeg',
+	'timedmedia-percent-done' => 'Ongeféier $1% fäerdeg',
 	'timedmedia-days' => '{{PLURAL:$1|Dag|$1 Deeg}}',
 	'timedmedia-hours' => '{{PLURAL:$1|Stonn|$1 Stonnen}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|Minutt|$1 Minutten}}',
@@ -1967,6 +1969,44 @@ $messages['nah'] = array(
 	'timedmedia-desc-link' => 'Inīn tlahcuilōltechcopa',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Laaknor
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'timedmedia-desc' => 'Håndteringsprogram for lyd, video og tidsbestemt tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt',
+	'timedmedia-ogg-short-audio' => 'Ogg $1 lydfil, $2',
+	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
+	'timedmedia-ogg-short-general' => 'Ogg $1 mediefil, $2',
+	'timedmedia-ogg-long-audio' => 'Ogg $1 lydfil, lengde $2, $3',
+	'timedmedia-ogg-long-video' => 'Ogg $1 videofil, lengde $2, $4×$5 piksler, $3',
+	'timedmedia-ogg-long-multiplexed' => 'Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen',
+	'timedmedia-ogg-long-general' => 'Ogg mediefil, lengde $2, $3',
+	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
+	'timedmedia-webm-long-video' => 'WebM lyd-/videofil, $1, lengde $2, $4 × $5 piksler, $3 til sammen',
+	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
+Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
+	'timedmedia-more' => 'Mer …',
+	'timedmedia-dismiss' => 'Lukk',
+	'timedmedia-download' => 'Last ned fil',
+	'timedmedia-play-media' => 'Spill av media',
+	'timedmedia-desc-link' => 'Om denne filen',
+	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
+	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
+	'timedmedia-source-file' => '$1 kilde',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg-video (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Nett-strømbar Ogg-video (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Nett-strømbar Ogg-video (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Høykvalitets nedlastbar Ogg-video (720P)',
+	'timedmedia-derivative-desc-360p.webm' => 'Nett-strømbar WebM (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'Nett-strømbar WebM (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'Høykvalitets nedlastbar WebM (720P)',
+	'timedmedia-subtitle-language' => '$1 ($2) undertekster',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -2098,44 +2138,6 @@ $messages['nn'] = array(
 	'timedmedia-dismiss' => 'Lat att',
 	'timedmedia-download' => 'Last ned fila',
 	'timedmedia-desc-link' => 'Om denne fila',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- * @author Laaknor
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'timedmedia-desc' => 'Håndteringsprogram for lyd, video og tidsbestemt tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt',
-	'timedmedia-ogg-short-audio' => 'Ogg $1 lydfil, $2',
-	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
-	'timedmedia-ogg-short-general' => 'Ogg $1 mediefil, $2',
-	'timedmedia-ogg-long-audio' => 'Ogg $1 lydfil, lengde $2, $3',
-	'timedmedia-ogg-long-video' => 'Ogg $1 videofil, lengde $2, $4×$5 piksler, $3',
-	'timedmedia-ogg-long-multiplexed' => 'Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen',
-	'timedmedia-ogg-long-general' => 'Ogg mediefil, lengde $2, $3',
-	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
-	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
-	'timedmedia-webm-long-video' => 'WebM lyd-/videofil, $1, lengde $2, $4 × $5 piksler, $3 til sammen',
-	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
-Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
-	'timedmedia-more' => 'Mer …',
-	'timedmedia-dismiss' => 'Lukk',
-	'timedmedia-download' => 'Last ned fil',
-	'timedmedia-play-media' => 'Spill av media',
-	'timedmedia-desc-link' => 'Om denne filen',
-	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
-	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
-	'timedmedia-source-file' => '$1 kilde',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
-	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg-video (160P)',
-	'timedmedia-derivative-desc-360p.ogv' => 'Nett-strømbar Ogg-video (360P)',
-	'timedmedia-derivative-desc-480p.ogv' => 'Nett-strømbar Ogg-video (480P)',
-	'timedmedia-derivative-desc-720p.ogv' => 'Høykvalitets nedlastbar Ogg-video (720P)',
-	'timedmedia-derivative-desc-360p.webm' => 'Nett-strømbar WebM (360P)',
-	'timedmedia-derivative-desc-480p.webm' => 'Nett-strømbar WebM (480P)',
-	'timedmedia-derivative-desc-720p.webm' => 'Høykvalitets nedlastbar WebM (720P)',
-	'timedmedia-subtitle-language' => '$1 ($2) undertekster',
 );
 
 /** Occitan (Occitan)
@@ -2405,13 +2407,14 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ahonc
+ * @author Eleferen
  * @author Kaganer
  * @author Kv75
  * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'timedmedia-desc' => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя',
+	'timedmedia-desc' => 'Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Звуковой файл Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Медиа-файл Ogg $1, $2',
@@ -2420,14 +2423,55 @@ $messages['ru'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3 всего',
 	'timedmedia-ogg-long-general' => 'медиа-файл Ogg, длительность $2, $3',
 	'timedmedia-ogg-long-error' => 'неправильный Ogg-файл: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 видео-файл, $2',
+	'timedmedia-webm-long-video' => 'WebM аудио/видео файл, $1, продолжительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, всего $3',
 	'timedmedia-no-player-js' => 'К сожалению, в вашем браузере отключён JavaScript, или не имеется требуемого проигрывателя.<br />
 Вы можете <a href="$1">загрузить ролик</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузить проигрыватель</a> для воспроизведения ролика в браузере.',
 	'timedmedia-more' => 'Больше…',
 	'timedmedia-dismiss' => 'Скрыть',
 	'timedmedia-download' => 'Загрузить файл',
+	'timedmedia-play-media' => 'Воспроизвести медиа-файл',
 	'timedmedia-desc-link' => 'Информация об этом файле',
 	'timedmedia-oggThumb-version' => 'OggHandler требует oggThumb версии $1 или более поздней.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не удалось создать миниатюру.',
+	'timedmedia-status-header' => 'Состояние декодирования',
+	'timedmedia-update-status' => 'Обновить статус декодирования',
+	'timedmedia-status' => 'Состояние',
+	'timedmedia-status-unknown' => 'Неизвестное состояние',
+	'timedmedia-transcodeinfo' => 'Описание производных декодироания',
+	'timedmedia-actions' => 'Действия',
+	'timedmedia-direct-link' => 'Скачать модифицированный вариант',
+	'timedmedia-not-ready' => 'Не готов',
+	'timedmedia-completed-on' => 'Завершено декодирование $1',
+	'timedmedia-error-on' => 'Ошибка при декодировании на $1.',
+	'timedmedia-started-transcode' => 'Декодирование запущено $1 назад. $2',
+	'timedmedia-percent-done' => 'Примерно $1% выполнено',
+	'timedmedia-in-job-queue' => 'Добавлено в очередь заданий $1 назад',
+	'timedmedia-unknown-target-size' => 'Неизвестный целевой размер, $1 при кодировке',
+	'timedmedia-days' => '{{PLURAL:$1|день|$1 дня|$1 дней}}',
+	'timedmedia-hours' => '{{PLURAL:$1|$1 час|$1 часа|$1 часов}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 минута|$1 минуты|$1 минут}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунда|$1 секунды|$1 секунд}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 и $4',
+	'timedmedia-time-3-measurements' => '$1, $2 и $3',
+	'timedmedia-time-2-measurements' => '$1 и $2',
+	'timedmedia-show-error' => 'Показать ошибку',
+	'timedmedia-reset' => 'Перезапуск декодирования',
+	'timedmedia-reset-confirm' => 'Перезапуск декодирования удалит существующий файл (если он существует), и  декодирование вновь будет добавлено в очередь заданий. Повторное декодирование займет некоторое время. <br /><br />
+Вы уверены, что хотите продолжить?',
+	'timedmedia-reset-error' => 'Ошибка при перезапуске декодирования.',
+	'timedmedia-source-file' => 'Источник $1',
+	'timedmedia-source-file-desc' => 'Оригинал $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-видео низкого качества (160p)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Потоковое Ogg-видео (360p)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Потоковое Ogg-видео (480p)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Ogg-видео высокого качества (720p)',
+	'timedmedia-derivative-desc-360p.webm' => 'Потоковое WebM-видео (360p)',
+	'timedmedia-derivative-desc-480p.webm' => 'Потоковое WebM-видео (480p)',
+	'timedmedia-derivative-desc-720p.webm' => 'WebM-видео высокого качества (720p)',
+	'timedmedia-subtitle-language' => '$1 ($2) субтитры',
+	'timedmedia-subtitle-no-video' => 'Нет видео, связанного с текущей страницей субтитров',
+	'timedmedia-subtitle-no-subtitles' => 'В настоящее время нет субтитров на $1 для этого видео, Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} изменить эту страницу] для их добавления',
 );
 
 /** Rusyn (Русиньскый)
@@ -2638,21 +2682,22 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
+ * @author Rancher
  */
 $messages['sr-el'] = array(
 	'timedmedia-desc' => 'Obrađivač za zvuk, video i usklađeni tekst, s podrškom za formate WebM, Ogg Theora, Vorbis i SRT',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 zvučni fajl, $2.',
-	'timedmedia-ogg-short-video' => 'Ogg $1 video fajl, $2.',
-	'timedmedia-ogg-short-general' => 'Ogg $1 medijski fajl, $2.',
+	'timedmedia-ogg-short-video' => 'Ogg $1 video-snimak, $2.',
+	'timedmedia-ogg-short-general' => 'Ogg $1 medijska datoteka, $2.',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 zvučni fajl, dužina $2, $3.',
-	'timedmedia-ogg-long-video' => 'Ogg $1 video fajl, dužina $2, $4×$5 piksela, $3.',
-	'timedmedia-ogg-long-multiplexed' => 'Ogg multipleksovani audio/video fajl, $1, dužina $2, $4×$5 piksela, $3 ukupno.',
+	'timedmedia-ogg-long-video' => 'Ogg $1 video-snimak, trajanje $2, $4 × $5 piksela, $3.',
+	'timedmedia-ogg-long-multiplexed' => 'Multipleksirani .ogg audio/video snimak, $1, trajanje $2, $4 × $5 piksela, $3.',
 	'timedmedia-ogg-long-general' => 'Ogg medijski fajl, dužina $2, $3.',
-	'timedmedia-ogg-long-error' => 'Loš ogg fajl: $1.',
+	'timedmedia-ogg-long-error' => 'Neispravna .ogg datoteka: $1.',
 	'timedmedia-more' => 'Više...',
 	'timedmedia-dismiss' => 'Zatvori',
-	'timedmedia-download' => 'Preuzmi fajl',
-	'timedmedia-desc-link' => 'O ovom fajlu',
+	'timedmedia-download' => 'Preuzmi datoteku',
+	'timedmedia-desc-link' => 'Podaci o ovoj datoteci',
 	'timedmedia-days' => '{{PLURAL:$1|dan|$1 dana|$1 dana}}',
 	'timedmedia-hours' => '{{PLURAL:$1|sat|$1 sata|$1 sati}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuta|$1 minuta}}',

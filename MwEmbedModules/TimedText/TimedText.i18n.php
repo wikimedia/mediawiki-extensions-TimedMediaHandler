@@ -539,6 +539,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author Peter17
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'mwe-timedtext-editor' => 'Éditeur de texte synchronisé',
@@ -562,7 +563,7 @@ $messages['fr'] = array(
 	'mwe-timedtext-upload-text-fail-title' => 'Échec du téléversement',
 	'mwe-timedtext-upload-text-another' => 'Téléverser un autre',
 	'mwe-timedtext-upload-text-done-uploading' => 'Téléversement effectué',
-	'mwe-timedtext-back-btn' => 'Revenir',
+	'mwe-timedtext-back-btn' => 'Arrière',
 	'mwe-timedtext-choose-text' => 'Choisissez le texte',
 	'mwe-timedtext-upload-timed-text' => 'Importer des sous-titres',
 	'mwe-timedtext-loading-text-edit' => "Chargement de l'éditeur de texte synchronisé",
@@ -1209,6 +1210,49 @@ $messages['mk'] = array(
 	'mwe-timedtext-request-already-done' => 'Веќе има поставено барање за транскрипција на оваа видеоснимка. [$1 Сите барања]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'mwe-timedtext-editor' => 'Editor for tidsbestemt tekst',
+	'mwe-timedtext-stage-transcribe' => 'Transkriber',
+	'mwe-timedtext-stage-sync' => 'Synkroniser',
+	'mwe-timedtext-stage-translate' => 'Oversett',
+	'mwe-timedtext-stage-upload' => 'Last opp fra lokal fil',
+	'mwe-timedtext-select-language' => 'Velg språk',
+	'mwe-timedtext-file-language' => 'Undertekstfilspråk',
+	'mwe-timedtext-upload-text' => 'Last opp tekstfil',
+	'mwe-timedtext-uploading-text' => 'Laster opp tekstfil',
+	'mwe-timedtext-upload-text-desc-title' => 'Last opp en tekstfil',
+	'mwe-timedtext-upload-text-desc-help' => 'Opplastingsgrensesnittet for tekstfiler aksepterer .srt-filer',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Bla gjennom din lokale datamaskin etter .srt-filen du vil laste opp',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Velg filens språk',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Gjennomgå / rediger tekstinnholdet og klikk på last opp for å legge til teksten',
+	'mwe-timedtext-upload-text-preview' => 'Gjennomgå teksten',
+	'mwe-timedtext-upload-text-done' => 'Opplastingen ferdig',
+	'mwe-timedtext-upload-text-fail-desc' => 'Opplastingen ble mislykket',
+	'mwe-timedtext-upload-text-fail-title' => 'Opplastingen feilet',
+	'mwe-timedtext-upload-text-another' => 'Last opp en til',
+	'mwe-timedtext-upload-text-done-uploading' => 'Ferdig med å laste opp',
+	'mwe-timedtext-back-btn' => 'Tilbake',
+	'mwe-timedtext-choose-text' => 'Velg tekst',
+	'mwe-timedtext-loading-text-edit' => 'Laster editor for tidsbestemt tekst',
+	'mwe-timedtext-search' => 'Søk klipp',
+	'mwe-timedtext-layout' => 'Oppsett',
+	'mwe-timedtext-layout-ontop' => 'Over video',
+	'mwe-timedtext-layout-below' => 'Under video',
+	'mwe-timedtext-layout-off' => 'Gjem undertekster',
+	'mwe-timedtext-loading-text' => 'Laster tekst ...',
+	'mwe-timedtext-textcat-cc' => 'Undertektster',
+	'mwe-timedtext-textcat-sub' => 'Undertekster',
+	'mwe-timedtext-textcat-tad' => 'Lydbeskrivelse',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-ar' => 'Aktive regioner',
+	'mwe-timedtext-textcat-lrc' => 'Tekster',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertekster for klipp: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ingen $1-undertekster ble funnet for klipp: $2',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1264,49 +1308,6 @@ $messages['nl'] = array(
 	'mwe-timedtext-request-subs-done' => 'Het transscriptieverzoek is toegevoegd. U kunt [$1 alle transscriptieverzoeken bekijken].',
 	'mwe-timedtext-request-subs-fail' => 'Het toevoegen van het transscriptieverzoek is mislukt. Bent u wel aangemeld?',
 	'mwe-timedtext-request-already-done' => 'Er bestaat al een transscriptieverzoek voor dit videobestand. U kunt [$1 alle transscriptieverzoeken bekijken].',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'mwe-timedtext-editor' => 'Editor for tidsbestemt tekst',
-	'mwe-timedtext-stage-transcribe' => 'Transkriber',
-	'mwe-timedtext-stage-sync' => 'Synkroniser',
-	'mwe-timedtext-stage-translate' => 'Oversett',
-	'mwe-timedtext-stage-upload' => 'Last opp fra lokal fil',
-	'mwe-timedtext-select-language' => 'Velg språk',
-	'mwe-timedtext-file-language' => 'Undertekstfilspråk',
-	'mwe-timedtext-upload-text' => 'Last opp tekstfil',
-	'mwe-timedtext-uploading-text' => 'Laster opp tekstfil',
-	'mwe-timedtext-upload-text-desc-title' => 'Last opp en tekstfil',
-	'mwe-timedtext-upload-text-desc-help' => 'Opplastingsgrensesnittet for tekstfiler aksepterer .srt-filer',
-	'mwe-timedtext-upload-text-desc-help-browse' => 'Bla gjennom din lokale datamaskin etter .srt-filen du vil laste opp',
-	'mwe-timedtext-upload-text-desc-help-select' => 'Velg filens språk',
-	'mwe-timedtext-upload-text-desc-help-review' => 'Gjennomgå / rediger tekstinnholdet og klikk på last opp for å legge til teksten',
-	'mwe-timedtext-upload-text-preview' => 'Gjennomgå teksten',
-	'mwe-timedtext-upload-text-done' => 'Opplastingen ferdig',
-	'mwe-timedtext-upload-text-fail-desc' => 'Opplastingen ble mislykket',
-	'mwe-timedtext-upload-text-fail-title' => 'Opplastingen feilet',
-	'mwe-timedtext-upload-text-another' => 'Last opp en til',
-	'mwe-timedtext-upload-text-done-uploading' => 'Ferdig med å laste opp',
-	'mwe-timedtext-back-btn' => 'Tilbake',
-	'mwe-timedtext-choose-text' => 'Velg tekst',
-	'mwe-timedtext-loading-text-edit' => 'Laster editor for tidsbestemt tekst',
-	'mwe-timedtext-search' => 'Søk klipp',
-	'mwe-timedtext-layout' => 'Oppsett',
-	'mwe-timedtext-layout-ontop' => 'Over video',
-	'mwe-timedtext-layout-below' => 'Under video',
-	'mwe-timedtext-layout-off' => 'Gjem undertekster',
-	'mwe-timedtext-loading-text' => 'Laster tekst ...',
-	'mwe-timedtext-textcat-cc' => 'Undertektster',
-	'mwe-timedtext-textcat-sub' => 'Undertekster',
-	'mwe-timedtext-textcat-tad' => 'Lydbeskrivelse',
-	'mwe-timedtext-textcat-ktv' => 'Karaoke',
-	'mwe-timedtext-textcat-ar' => 'Aktive regioner',
-	'mwe-timedtext-textcat-lrc' => 'Tekster',
-	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertekster for klipp: $2',
-	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ingen $1-undertekster ble funnet for klipp: $2',
 );
 
 /** Deitsch (Deitsch)

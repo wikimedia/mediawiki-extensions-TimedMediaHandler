@@ -1912,6 +1912,63 @@ $messages['ms'] = array(
 	'mwe-embedplayer-playerSelect' => 'Pemain',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['nb'] = array(
+	'mwe-embedplayer-credit-title' => 'Tittel: $1',
+	'mwe-embedplayer-credit-date' => 'Dato: $1',
+	'mwe-embedplayer-credit-author' => 'Forfatter: $1',
+	'mwe-embedplayer-loading_plugin' => 'Laster utvidelse ...',
+	'mwe-embedplayer-select_playback' => 'Sett avspillingsinnstillinger',
+	'mwe-embedplayer-link_back' => 'Lenk tilbake',
+	'mwe-embedplayer-error_swap_vid' => 'Feil: mwEmbed kunne ikke bytte videoelementet for mwEmbed-grensesnittet',
+	'mwe-embedplayer-play_clip' => 'Spill av klipp',
+	'mwe-embedplayer-pause_clip' => 'Paus klipp',
+	'mwe-embedplayer-volume_control' => 'Volumkontroll',
+	'mwe-embedplayer-timed_text' => 'Tidsbestemt tekst',
+	'mwe-embedplayer-player_fullscreen' => 'Fullskjerm',
+	'mwe-embedplayer-next_clip_msg' => 'Spill av neste klipp',
+	'mwe-embedplayer-prev_clip_msg' => 'Spill av forrige klipp',
+	'mwe-embedplayer-current_clip_msg' => 'Fortsett å spille av dette klippet',
+	'mwe-embedplayer-seek_to' => 'Søk $1',
+	'mwe-embedplayer-paused' => 'pauset',
+	'mwe-embedplayer-download_segment' => 'Last ned utvalg:',
+	'mwe-embedplayer-download_full' => 'Last ned hele videofilen:',
+	'mwe-embedplayer-download_right_click' => 'For å laste ned, høyreklikk og velg <i>Lagre lenke som...</i>',
+	'mwe-embedplayer-download_clip' => 'Last ned video',
+	'mwe-embedplayer-download_text' => 'Last ned tekst',
+	'mwe-embedplayer-download' => 'Last ned',
+	'mwe-embedplayer-share' => 'Del',
+	'mwe-embedplayer-about-library' => 'Om Kaltura-avspilleren',
+	'mwe-embedplayer-choose_player' => 'Velg videospiller',
+	'mwe-embedplayer-no-player' => 'Ingen spiller tilgjengelig for $1',
+	'mwe-embedplayer-share_this_video' => 'Del denne videoen',
+	'mwe-embedplayer-menu_btn' => 'Meny',
+	'mwe-embedplayer-close_btn' => 'Lukk',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-spiller',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-spiller',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-spiller',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM-avspiller',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generisk Ogg-utvidelse',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-utvidelse',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
+	'mwe-embedplayer-ogg-player-selected' => '(valgt)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-for_best_experience' => 'For en bedre opplevelse av videoavspillingen anbefaler vi [$1 den nyeste Firefox].',
+	'mwe-embedplayer-playerSelect' => 'Spillere',
+	'mwe-embedplayer-related_videos' => 'Relaterte videoer',
+	'mwe-embedplayer-copy-code' => 'Kopier kode',
+	'mwe-embedplayer-video-h264' => 'H.264-video',
+	'mwe-embedplayer-video-webm' => 'WebM-video',
+	'mwe-embedplayer-video-flv' => 'Flash-video',
+	'mwe-embedplayer-video-ogg' => 'Ogg-video',
+	'mwe-embedplayer-video-audio' => 'Ogg-audio',
+	'mwe-embedplayer-missing-source' => 'Ingen kildevideo ble funnet',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -2010,63 +2067,6 @@ $messages['nn'] = array(
 	'mwe-embedplayer-playerSelect' => 'Avspelarar',
 	'mwe-embedplayer-video-h264' => 'H.264-video',
 	'mwe-embedplayer-video-flv' => 'Flash-video',
-);
-
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Nghtwlkr
- */
-$messages['nb'] = array(
-	'mwe-embedplayer-credit-title' => 'Tittel: $1',
-	'mwe-embedplayer-credit-date' => 'Dato: $1',
-	'mwe-embedplayer-credit-author' => 'Forfatter: $1',
-	'mwe-embedplayer-loading_plugin' => 'Laster utvidelse ...',
-	'mwe-embedplayer-select_playback' => 'Sett avspillingsinnstillinger',
-	'mwe-embedplayer-link_back' => 'Lenk tilbake',
-	'mwe-embedplayer-error_swap_vid' => 'Feil: mwEmbed kunne ikke bytte videoelementet for mwEmbed-grensesnittet',
-	'mwe-embedplayer-play_clip' => 'Spill av klipp',
-	'mwe-embedplayer-pause_clip' => 'Paus klipp',
-	'mwe-embedplayer-volume_control' => 'Volumkontroll',
-	'mwe-embedplayer-timed_text' => 'Tidsbestemt tekst',
-	'mwe-embedplayer-player_fullscreen' => 'Fullskjerm',
-	'mwe-embedplayer-next_clip_msg' => 'Spill av neste klipp',
-	'mwe-embedplayer-prev_clip_msg' => 'Spill av forrige klipp',
-	'mwe-embedplayer-current_clip_msg' => 'Fortsett å spille av dette klippet',
-	'mwe-embedplayer-seek_to' => 'Søk $1',
-	'mwe-embedplayer-paused' => 'pauset',
-	'mwe-embedplayer-download_segment' => 'Last ned utvalg:',
-	'mwe-embedplayer-download_full' => 'Last ned hele videofilen:',
-	'mwe-embedplayer-download_right_click' => 'For å laste ned, høyreklikk og velg <i>Lagre lenke som...</i>',
-	'mwe-embedplayer-download_clip' => 'Last ned video',
-	'mwe-embedplayer-download_text' => 'Last ned tekst',
-	'mwe-embedplayer-download' => 'Last ned',
-	'mwe-embedplayer-share' => 'Del',
-	'mwe-embedplayer-about-library' => 'Om Kaltura-avspilleren',
-	'mwe-embedplayer-choose_player' => 'Velg videospiller',
-	'mwe-embedplayer-no-player' => 'Ingen spiller tilgjengelig for $1',
-	'mwe-embedplayer-share_this_video' => 'Del denne videoen',
-	'mwe-embedplayer-menu_btn' => 'Meny',
-	'mwe-embedplayer-close_btn' => 'Lukk',
-	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-spiller',
-	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-spiller',
-	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-spiller',
-	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM-avspiller',
-	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generisk Ogg-utvidelse',
-	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime-utvidelse',
-	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
-	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
-	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
-	'mwe-embedplayer-ogg-player-selected' => '(valgt)',
-	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For en bedre opplevelse av videoavspillingen anbefaler vi [$1 den nyeste Firefox].',
-	'mwe-embedplayer-playerSelect' => 'Spillere',
-	'mwe-embedplayer-related_videos' => 'Relaterte videoer',
-	'mwe-embedplayer-copy-code' => 'Kopier kode',
-	'mwe-embedplayer-video-h264' => 'H.264-video',
-	'mwe-embedplayer-video-webm' => 'WebM-video',
-	'mwe-embedplayer-video-flv' => 'Flash-video',
-	'mwe-embedplayer-video-ogg' => 'Ogg-video',
-	'mwe-embedplayer-video-audio' => 'Ogg-audio',
-	'mwe-embedplayer-missing-source' => 'Ingen kildevideo ble funnet',
 );
 
 /** Occitan (Occitan) */
@@ -2435,6 +2435,7 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author MaxSem
  * @author Александр Сигачёв
  */
@@ -2509,6 +2510,10 @@ $messages['ru'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-видео',
 	'mwe-embedplayer-video-ogg' => 'Ogg-видео',
 	'mwe-embedplayer-video-audio' => 'Ogg-аудио',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG-аудио',
+	'mwe-embedplayer-video-3gp' => '3GP-видео',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-видео',
+	'mwe-embedplayer-video-msvideo' => 'AVI-видео',
 	'mwe-embedplayer-missing-source' => 'Не найден источник видео',
 );
 
@@ -2605,7 +2610,9 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-missing-source' => 'Није пронађен извор снимка.',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
+ * @author Rancher
+ */
 $messages['sr-el'] = array(
 	'mwe-embedplayer-credit-title' => 'Naslov: $1',
 	'mwe-embedplayer-credit-date' => 'Datum: $1',
@@ -2621,7 +2628,7 @@ $messages['sr-el'] = array(
 	'mwe-embedplayer-volume_control' => 'Kontrola jačine zvuka',
 	'mwe-embedplayer-player_options' => 'Postavke izvođača',
 	'mwe-embedplayer-timed_text' => 'Usklađen tekst',
-	'mwe-embedplayer-player_fullscreen' => 'Celi ekran',
+	'mwe-embedplayer-player_fullscreen' => 'Ceo ekran',
 	'mwe-embedplayer-next_clip_msg' => 'Pusti sledeći klip',
 	'mwe-embedplayer-prev_clip_msg' => 'Pusti prethodni klip',
 	'mwe-embedplayer-current_clip_msg' => 'Nastavi s izvođenjem ovog snimka',
@@ -2649,12 +2656,12 @@ $messages['sr-el'] = array(
 	'mwe-embedplayer-menu_btn' => 'Meni',
 	'mwe-embedplayer-close_btn' => 'Zatvori',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC plejer',
-	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg plejer',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Izvođač .ogg (HTML5)',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 plejer',
 	'mwe-embedplayer-ogg-player-webmNative' => 'Izvođač WebM (HTML5)',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generički Ogg plagin',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime plagin',
-	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'Kviktajm (Aktiviks)',
 	'mwe-embedplayer-ogg-player-cortado' => 'Kortado (Java)',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Izvođač Kaltura',
