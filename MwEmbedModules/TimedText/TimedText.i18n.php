@@ -1789,6 +1789,13 @@ $messages['uk'] = array(
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'mwe-timedtext-back-btn' => 'צוריק',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Wilsonmess
  */

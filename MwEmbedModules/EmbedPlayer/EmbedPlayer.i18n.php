@@ -2987,6 +2987,13 @@ $messages['vi'] = array(
 	'mwe-embedplayer-copy-code' => 'Chép mã',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'mwe-embedplayer-credit-date' => 'דאַטע: $1',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
  */
