@@ -298,6 +298,10 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-відэа',
 	'mwe-embedplayer-video-ogg' => 'Ogg-відэа',
 	'mwe-embedplayer-video-audio' => 'Ogg-аўдыё',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG-аўдыё',
+	'mwe-embedplayer-video-3gp' => '3GP-відэа',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-відэа',
+	'mwe-embedplayer-video-msvideo' => 'AVI-відэа',
 	'mwe-embedplayer-missing-source' => 'Ня знойдзена крынічнае відэа.',
 );
 
