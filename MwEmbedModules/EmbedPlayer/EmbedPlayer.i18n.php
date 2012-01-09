@@ -2274,6 +2274,10 @@ $messages['pms'] = array(
 	'mwe-embedplayer-video-flv' => 'filmà Flash',
 	'mwe-embedplayer-video-ogg' => 'filmà Ogg',
 	'mwe-embedplayer-video-audio' => 'Àudio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'audio MPEG',
+	'mwe-embedplayer-video-3gp' => 'video 3GP',
+	'mwe-embedplayer-video-mpeg' => 'video MPEG',
+	'mwe-embedplayer-video-msvideo' => 'video AVI',
 	'mwe-embedplayer-missing-source' => "Gnun filmà sorgiss a l'é stàit trovà.",
 );
 
