@@ -406,6 +406,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
 	'mwe-timedtext-request-subs' => 'Transkripciju pominaś',
+	'mwe-timedtext-no-subs' => 'Žedne pódtitele k dispoziciji',
 	'mwe-timedtext-request-subs-desc' => 'Póžedanje na transkripciju toś teje wideojoweje dataje pśidaś',
 	'mwe-timedtext-request-subs-done' => 'Póžedanje na transkripciju pśidane. [$1 Glědaj wšykne póžedanja na transkripciju]',
 	'mwe-timedtext-request-subs-fail' => 'Pśidawanje póžedanja na transkripciju jo se njeraźiło. Sy se pśizjawił?',
