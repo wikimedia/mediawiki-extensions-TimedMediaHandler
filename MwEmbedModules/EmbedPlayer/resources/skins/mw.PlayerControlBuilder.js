@@ -28,6 +28,12 @@ mw.PlayerControlBuilder.prototype = {
 
 	// Default control bar height
 	height: mw.getConfig( 'EmbedPlayer.ControlsHeight' ),
+	
+	// Minimal width for interface overlay: 
+	minInterfaceWidth: 300,
+	
+	// Minimal height for interface overlay:
+	minInterfaceHeight: 200,
 
 	// Default supported components is merged with embedPlayer set of supported types
 	supportedComponents: {
@@ -69,14 +75,11 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	init: function( embedPlayer ) {
 		this.embedPlayer = embedPlayer;
-
 		// Check for skin overrides for controlBuilder
 		var skinClass = embedPlayer.skinName.substr(0,1).toUpperCase() + embedPlayer.skinName.substr( 1 );
 		if ( mw['PlayerSkin' + skinClass ] ) {
-
-			// Clone as to not override prototype with the skin config
-			var _this = $.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );
-			return _this;
+			// Clone as to not override prototype with the skin overrides
+			return $.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );;
 		}
 		// Return the controlBuilder Object:
 		return this;
@@ -87,12 +90,6 @@ mw.PlayerControlBuilder.prototype = {
 	* @return {Number} control bar height
 	*/
 	getHeight: function(){
-		// Check if the configuration was updated
-		// Probably will break things to set control bar height config late 
-		// but try to support it anyway
-		if( mw.getConfig( 'EmbedPlayer.ControlsHeight' ) != this.height ){
-			this.height = mw.getConfig( 'EmbedPlayer.ControlsHeight' ) ;
-		}
 		return this.height;
 	},
 
@@ -339,9 +336,8 @@ mw.PlayerControlBuilder.prototype = {
 	 *  doFullScreenPlayer to enable fullscreen mode
 	 *  restoreWindowPlayer to restore window mode
 	 */
-	toggleFullscreen: function( forceClose ) {
+	toggleFullscreen: function( ) {
 		var _this = this;
-		
 		// Do normal in-page fullscreen handling: 
 		if( this.fullscreenMode ){			
 			this.restoreWindowPlayer();
@@ -710,14 +706,16 @@ mw.PlayerControlBuilder.prototype = {
 	* Get minimal width for interface overlay
 	*/
 	getOverlayWidth: function( ) {
-		return ( this.embedPlayer.getPlayerWidth() < 300 )? 300 : this.embedPlayer.getPlayerWidth();
+		return ( this.embedPlayer.getPlayerWidth() < this.minInterfaceWidth ) ? 
+				this.minInterfaceWidth : this.embedPlayer.getPlayerWidth();
 	},
 
 	/**
 	* Get minimal height for interface overlay
 	*/
 	getOverlayHeight: function( ) {
-		return ( this.embedPlayer.getPlayerHeight() < 200 )? 200 : this.embedPlayer.getPlayerHeight();
+		return ( this.embedPlayer.getPlayerHeight() < this.minInterfaceHeight )? 
+				this.minInterfaceHeight  : this.embedPlayer.getPlayerHeight();
 	},
 
 	/**

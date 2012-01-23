@@ -154,7 +154,7 @@ mw.EmbedPlayer.prototype = {
 	// If the player is done loading ( does not guarantee playability )
 	// for example if there is an error playerReady is still set to true once
 	// no more loading is to be done
-	'playerReady' : false,
+	'playerReadyFlag' : false,
 
 	// Stores the loading errors
 	'loadError' : false,
@@ -693,7 +693,7 @@ mw.EmbedPlayer.prototype = {
 				// Hide / remove track container
 				_this.$interface.find( '.track' ).remove();
 				// We have to re-bind hoverIntent ( has to happen in this scope )
-				if( !this.useNativePlayerControls() && _this.controls && _this.controlBuilder.isOverlayControls() ){
+				if( ! _this.useNativePlayerControls() && _this.controls && _this.controlBuilder.isOverlayControls() ){
 					_this.controlBuilder.showControlBar();
 					_this.$interface.hoverIntent({
 						'sensitivity': 4,
@@ -961,7 +961,7 @@ mw.EmbedPlayer.prototype = {
 		}, 0);
 
 		// Update the playerReady flag
-		this.playerReady = true;
+		this.playerReadyFlag = true;
 		// trigger the player ready event;
 		$(this).trigger('playerReady');
 

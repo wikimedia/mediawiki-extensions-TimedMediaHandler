@@ -183,7 +183,7 @@ mw.MediaElement.prototype = {
 		// Set via user-preference
 		$.each( playableSources, function( inx, source ){
 			var mimeType =source.mimeType;
-			if ( mw.EmbedTypes.getMediaPlayers().preference[ 'format_preference' ] == mimeType ) {
+			if ( $.cookie( 'EmbedPlayer.FormatPreference' ) == mimeType ) {
 				 mw.log( 'MediaElement::autoSelectSource: Set via preference: ' + source.mimeType );
 				 return setSelectedSource( source );
 			}

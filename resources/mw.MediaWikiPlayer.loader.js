@@ -5,5 +5,4 @@
 			$.merge( dependencySet, ['mw.MediaWikiPlayerSupport'] );
 		}
 	});
-	
 } )( window.mediaWiki, jQuery );

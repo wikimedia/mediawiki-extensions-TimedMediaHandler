@@ -104,10 +104,12 @@
 	top: 0;
 	width: 8px;
 	cursor: pointer;
-	-moz-border-radius:5px 5px 5px 5px;
+	-moz-border-radius:5px 5px 5px 5px !important;
+	border-radius:5px 5px 5px 5px !important;
 }
 .k-player .ui-corner-all {
-	-moz-border-radius:5px 5px 5px 5px;
+	-moz-border-radius:5px 5px 5px 5px !important;
+	border-radius:5px 5px 5px 5px !important;
 }
 .k-player .time-disp {
 	border: medium none;

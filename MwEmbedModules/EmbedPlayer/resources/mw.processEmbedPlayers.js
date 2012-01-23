@@ -13,7 +13,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 	var areSelectedPlayersReady = function(){
 		var playersLoaded = true;
 		$(playerSelect).each(function(inx, player){
-			if( ! $( player ).get(0).playerReady ){
+			if( ! $( player ).get(0).playerReadyFlag ){
 				playersLoaded = false;
 				return false;
 			}

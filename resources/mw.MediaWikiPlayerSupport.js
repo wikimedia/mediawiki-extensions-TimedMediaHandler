@@ -105,7 +105,7 @@
 		*
 		* TODO parse the resource page template
 		*
-		* @parm {String} resourceHTML Resource wiki text page contents
+		* @param {String} resourceHTML Resource wiki text page contents
 		*/
 		function doCreditLine( resourceHTML, articleUrl ){
 			// Get the title string ( again a "Title" like js object could help out here. ) 		

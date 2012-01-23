@@ -50,7 +50,7 @@ class TimedMediaHandlerHooks {
 			'embedPlayerIframeStyle'=> array_merge( $baseExtensionResource, array(
 				'styles' => 'resources/embedPlayerIframe.css',
 			) ),
-			'ext.tmh.transcodetable' => array_merge($baseExtensionResource, array(
+			'ext.tmh.transcodetable' => array_merge( $baseExtensionResource, array(
 				'scripts' => 'resources/ext.tmh.transcodetable.js',
 				'styles' => 'resources/transcodeTable.css',
 				'messages'=> array(
@@ -61,12 +61,12 @@ class TimedMediaHandlerHooks {
 					'timedmedia-reset-confirm'
 				)
 			) ),
-			"mw.MediaWikiPlayerSupport" =>  array_merge($baseExtensionResource, array(
+			"mw.MediaWikiPlayerSupport" =>  array_merge( $baseExtensionResource, array(
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js',
-				'dependencies'=> array( 
-					'mw.Api' 
-				)
+				'dependencies'=> array( 'mw.Api' )
+			) ),
+			"mw.MediaWikiPlayer.loader" =>  array_merge( $baseExtensionResource, array(
+				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js', 
 			) ),
 		);
 		// Setup a hook for iframe embed handling:

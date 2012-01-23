@@ -15,9 +15,6 @@ mw.MediaPlayers.prototype = {
 	// The list of players supported
 	players : null,
 
-	// Store per mime-type prefrences for players
-	preference : { },
-
 	// Stores the default set of players for a given mime type
 	defaultPlayers : { },
 
@@ -27,7 +24,6 @@ mw.MediaPlayers.prototype = {
 	 */
 	init: function() {
 		this.players = new Array();
-		this.loadPreferences();
 
 		// set up default players order for each library type
 		this.defaultPlayers['video/x-flv'] = ['Kplayer', 'Vlc'];
@@ -61,8 +57,6 @@ mw.MediaPlayers.prototype = {
 				return ;
 			}
 		}
-
-
 		// Add the player:
 		this.players.push( player );
 	},
@@ -116,8 +110,10 @@ mw.MediaPlayers.prototype = {
 		{
 			// Check for prior preference for this mime type
 			for ( var i = 0; i < mimePlayers.length; i++ ) {
-				if ( mimePlayers[i].id == this.preference[mimeType] )
+				if ( mimePlayers[i].id == $.cookie( 'EmbedPlayer.PlayerPreference.' + mimeType ) ){
+					mw.log( "mw.MediaPlayers:: setPlayer via cookie:: " + mimeType + ' playerId: ' + mimePlayers[i].id );
 					return mimePlayers[i];
+				}
 			}
 			// Otherwise just return the first compatible player
 			// (it will be chosen according to the defaultPlayers list
@@ -134,8 +130,7 @@ mw.MediaPlayers.prototype = {
 	 *      mimeFormat Prefered format
 	 */
 	setFormatPreference : function ( mimeFormat ) {
-		 this.preference['formatPreference'] = mimeFormat;
-		 $.cookie( 'EmbedPlayer.Preference', JSON.stringify( this.preference) );
+		 $.cookie( 'EmbedPlayer.FormatPreference', mimeFormat );
 	},
 
 	/**
@@ -152,11 +147,14 @@ mw.MediaPlayers.prototype = {
 			if ( this.players[i].id == playerId ) {
 				selectedPlayer = this.players[i];
 				mw.log( 'EmbedPlayer::setPlayerPreference: choosing ' + playerId + ' for ' + mimeType );
-				this.preference[ mimeType ] = playerId;
-				$.cookie( 'EmbedPlayer.Preference', JSON.stringify( this.preference ) );
+				// Update the reference cookie
+				$.cookie( 'EmbedPlayer.PlayerPreference.' + mimeType, playerId);
 				break;
 			}
 		}
+		// Also update the format Preference: 
+		this.setFormatPreference( mimeType );
+		
 		// Update All the player instances on the page
 		if ( selectedPlayer ) {			
 			$('.mwEmbedPlayer').each(function(inx, playerTarget ){
@@ -167,17 +165,6 @@ mw.MediaPlayers.prototype = {
 					embedPlayer.selectPlayer( selectedPlayer );
 				}
 			});
-		}
-	},
-
-	/**
-	 * Loads the user preference settings from a cookie
-	 */
-	loadPreferences : function ( ) {
-		this.preference = { };		
-		// See if we have a cookie set to a clientSupported type:
-		if( $.cookie( 'EmbedPlayer.Preference' ) ) {
-			this.preference = JSON.parse( $.cookie( 'EmbedPlayer.Preference' ) );
 		}
 	}
 };
