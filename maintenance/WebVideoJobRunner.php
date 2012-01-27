@@ -72,7 +72,7 @@ class WebVideoJobRunner extends Maintenance {
 			// Add one process:
 			$cmd = "php $IP/maintenance/runJobs.php";
 			if( $this->wiki ) {
-				$cmd .= " --wiki " . $this->wiki;
+				$cmd .= " --wiki " . wfEscapeShellArg ( $this->wiki );
 			}
 			$cmd .= " --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
 			$status = $this->runBackgroundProc( $cmd );
