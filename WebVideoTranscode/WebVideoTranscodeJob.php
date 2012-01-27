@@ -109,7 +109,7 @@ class WebVideoTranscodeJob extends Job {
 			if( isset( $options['twopass'] ) ){
 				// ffmpeg requires manual two pass
 				$status = $this->ffmpegEncode( $options, 1 );
-				if( $status ){
+				if( $status && !is_string($status) ){
 					$status = $this->ffmpegEncode( $options, 2 );
 				}
 			} else {
