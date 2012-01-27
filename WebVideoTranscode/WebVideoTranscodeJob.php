@@ -190,8 +190,6 @@ class WebVideoTranscodeJob extends Job {
 				);
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );
 			}
-			//remove temoprary file in any case
-			unlink( $this->getTargetEncodePath() );
 		} else {
 			// Update the transcode table with failure time and error
 			$dbw->update(
@@ -210,6 +208,10 @@ class WebVideoTranscodeJob extends Job {
 			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 			// just clear the file page ( so that the transcode table shows the error )
 			$this->title->invalidateCache();
+		}
+		//remove temoprary file in any case
+		if( is_file( $this->getTargetEncodePath() ) ) {
+			unlink( $this->getTargetEncodePath() );
 		}
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
 		webVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
