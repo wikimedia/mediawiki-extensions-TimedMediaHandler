@@ -230,6 +230,7 @@ class TimedMediaHandler extends MediaHandler {
 		// Setup pointer to thumb arguments
 		$options[ 'thumbUrl' ] = $dstUrl;
 		$options[ 'dstPath' ] = $dstPath;
+		$options[ 'path' ] = $dstPath;
 		
 		// Check if transform is deferred:
 		if ( $flags & self::TRANSFORM_LATER ) {

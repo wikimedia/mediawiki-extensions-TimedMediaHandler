@@ -28,6 +28,9 @@ class WebVideoJobRunner extends Maintenance {
 		if ( $this->hasOption( "threads" ) ) {
 			$this->threads = $this->getOption( 'threads' ) ;
 		}
+		if ( $this->hasOption( "wiki" ) ) {
+			$this->wiki = $this->getOption( 'wiki' ) ;
+		}
 		// Check if WebVideoJobRuner is already running:
 		$jobRunnerCount = 0;
 		$fistPid = null;
@@ -67,7 +70,11 @@ class WebVideoJobRunner extends Maintenance {
 		}
 		if( $runingJobsCount < $this->threads ){			
 			// Add one process:
-			$cmd = "php $IP/maintenance/runJobs.php --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
+			$cmd = "php $IP/maintenance/runJobs.php";
+			if( $this->wiki ) {
+				$cmd .= " --wiki " . $this->wiki;
+			}
+			$cmd .= " --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
 			$status = $this->runBackgroundProc( $cmd );
 			$this->output( "$runingJobsCount existing job runners, Check for new transcode jobs:  " );
 		} else {

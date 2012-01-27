@@ -172,7 +172,7 @@ class WebVideoTranscodeJob extends Job {
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
 			} else {
-				$bitrate = round( intval( filesize( $finalDerivativeFilePath ) /  $file->getLength() ) * 8 );
+				$bitrate = round( intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8 );
 				//wfRestoreWarnings();
 				// Update the transcode table with success time:
 				$dbw->update(
@@ -191,7 +191,7 @@ class WebVideoTranscodeJob extends Job {
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );
 			}
 			//remove temoprary file in any case
-			$this->getTargetEncodePath()->purge();
+			unlink( $this->getTargetEncodePath() );
 		} else {
 			// Update the transcode table with failure time and error
 			$dbw->update(
