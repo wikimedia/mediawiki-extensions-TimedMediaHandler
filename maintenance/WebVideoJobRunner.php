@@ -30,6 +30,8 @@ class WebVideoJobRunner extends Maintenance {
 		}
 		if ( $this->hasOption( "wiki" ) ) {
 			$this->wiki = $this->getOption( 'wiki' ) ;
+		} else {
+			$this->wiki = false;
 		}
 		// Check if WebVideoJobRuner is already running:
 		$jobRunnerCount = 0;
@@ -68,13 +70,20 @@ class WebVideoJobRunner extends Maintenance {
 				}				
 			}
 		}
-		if( $runingJobsCount < $this->threads ){			
+		if( $runingJobsCount < $this->threads ){
 			// Add one process:
-			$cmd = "php $IP/maintenance/runJobs.php";
+			$parameters = array();
 			if( $this->wiki ) {
-				$cmd .= " --wiki " . wfEscapeShellArg ( $this->wiki );
+				$parameters[] = '--wiki';
+				$parameters[] = $this->wiki;
 			}
-			$cmd .= " --type webVideoTranscode --maxjobs 1 --maxtime {$wgTranscodeBackgroundTimeLimit}";
+			$parameters[] = '--type';
+			$parameters[] = 'webVideoTranscode';
+			$parameters[] = '--maxjobs';
+			$parameters[] = '1';
+			$parameters[] = '--maxtime';
+			$parameters[] = $wgTranscodeBackgroundTimeLimit;
+			$cmd = wfShellMaintenanceCmd("$IP/maintenance/runJobs.php", $parameters);
 			$status = $this->runBackgroundProc( $cmd );
 			$this->output( "$runingJobsCount existing job runners, Check for new transcode jobs:  " );
 		} else {
