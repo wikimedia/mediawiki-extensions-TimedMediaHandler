@@ -1084,7 +1084,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Prema <b>shift ⌘ F</b> para activar ou desactivar a pantalla completa',
 	'mwe-embedplayer-do_not_warn_again' => 'Non mostrar esta mensaxe no futuro.',
 	'mwe-embedplayer-playerSelect' => 'Reprodutores',
-	'mwe-embedplayer-read_before_embed' => 'Por favor, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">olle isto</a> antes da incrustación.',
+	'mwe-embedplayer-read_before_embed' => 'Por favor, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">olle isto</a> antes da inserción.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar nunha páxina',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'procurando',
