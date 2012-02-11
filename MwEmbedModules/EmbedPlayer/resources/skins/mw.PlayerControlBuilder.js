@@ -670,13 +670,21 @@ mw.PlayerControlBuilder.prototype = {
 		$('.mw-fullscreen-overlay').fadeOut( 'slow' );
 	
 		mw.log( 'restore embedPlayer:: ' + embedPlayer.getWidth() + ' h: ' + embedPlayer.getHeight());
-		// Restore the player:
-		embedPlayer.resizePlayer( {
-			'top' : _this.windowOffset.top + 'px',
-			'left' : _this.windowOffset.left + 'px',
+		
+		var newPlayerSizePosition = {
 			'width' : embedPlayer.getWidth(),
 			'height' : embedPlayer.getHeight()
-		}, animate, function(){
+		};
+		if( _this.windowPositionStyle == 'relative' ){
+			newPlayerSizePosition['top'] = 0;
+			newPlayerSizePosition['left'] = 0;
+		} else {
+			newPlayerSizePosition['top'] = _this.windowOffset.top + 'px';
+			newPlayerSizePosition['left'] = _this.windowOffset.left + 'px';
+		}
+		
+		// Restore the player:
+		embedPlayer.resizePlayer( newPlayerSizePosition, animate, function(){
 			var topPos = {
 					'position' : _this.windowPositionStyle,
 					'z-index' : _this.windowZindex,
