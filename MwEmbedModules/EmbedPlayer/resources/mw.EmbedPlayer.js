@@ -825,7 +825,7 @@ mw.EmbedPlayer.prototype = {
 	 * On clip done action. Called once a clip is done playing
 	 * TODO clean up end sequence flow
 	 */
-	postSequence: false,
+	postSequenceFlag: false,
 	onClipDone: function() {
 		var _this = this;
 		// Don't run onclipdone if _propagateEvents is off
@@ -1251,8 +1251,8 @@ mw.EmbedPlayer.prototype = {
 		
 		// Reset first play to true, to count that play event
 		this.firstPlay = true;
-		this.preSequence = false;
-		this.postSequence = false;
+		this.preSequenceFlag = false;
+		this.postSequenceFlag = false;
 		
 		// Add a loader to the embed player: 
 		this.pauseLoading();
@@ -1675,7 +1675,7 @@ mw.EmbedPlayer.prototype = {
 	 * Updates pause button Starts the "monitor"
 	 */
 	firstPlay : true,
-	preSequence: false,
+	preSequenceFlag: false,
 	inPreSequence: false,
 	replayEventCount : 0,
 	play: function() {
@@ -1696,8 +1696,8 @@ mw.EmbedPlayer.prototype = {
 			}
 		}
 		
-		if( !this.preSequence ) {
-			this.preSequence = true;
+		if( !this.preSequenceFlag ) {
+			this.preSequenceFlag = true;
 			mw.log( "EmbedPlayer:: trigger preSequence " );
 			$( this ).trigger( 'preSequence' );
 			this.playInterfaceUpdate();
