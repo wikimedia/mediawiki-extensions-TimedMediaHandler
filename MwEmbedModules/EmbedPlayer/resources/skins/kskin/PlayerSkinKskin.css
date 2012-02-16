@@ -81,6 +81,7 @@
 	background: url(images/ksprite.png) repeat-x 0 -81px;
 	font: normal 11px arial, sans-serif;
 	color: #555;
+	z-index:2;
 }
 
 .k-player .play_head {
