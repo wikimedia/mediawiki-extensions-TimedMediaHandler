@@ -1769,6 +1769,13 @@ mw.PlayerControlBuilder.prototype = {
 			$sourceMenu.append(
 				$.getLineItem( source.getShortTitle() , icon, function(){
 					mw.log( 'PlayerControlBuilder::SwitchSourceMenu: ' + source.getSrc() );
+					// update menu selecting parent li siblings
+					$( this ).parent().siblings().find('span.ui-icon').removeClass( 'ui-icon-bullet').addClass( 'ui-icon-radio-on' );
+					$( this ).find('span.ui-icon').removeClass( 'ui-icon-radio-on').addClass( 'ui-icon-bullet' );
+					// update control bar text 
+					embedPlayer.$interface.find( '.source-switch' ).text( source.getShortTitle() );
+					
+					
 					// TODO this logic should be in mw.EmbedPlayer
 					embedPlayer.mediaElement.setSource( source );					
 					if( ! _this.embedPlayer.isStopped() ){
