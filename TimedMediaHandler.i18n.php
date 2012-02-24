@@ -799,7 +799,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
  * @author Silvar
  */
 $messages['et'] = array(
-	'timedmedia-desc' => 'Ogg Theora ja Vorbis failide töötleja JavaScript-esitajaga.',
+	'timedmedia-desc' => 'WebM-, srt- ning Theora- ja Vorbis-tüüpi Ogg-vormingu toega heli-, video- ja ajastatud teksti käsitseja',
 	'timedmedia-ogg-long-error' => 'Vigane Ogg-fail: $1',
 	'timedmedia-more' => 'Lisa...',
 	'timedmedia-dismiss' => 'Sule',
