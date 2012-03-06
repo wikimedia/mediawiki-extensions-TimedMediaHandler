@@ -473,6 +473,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Locos epraix
  * @author Pertile
@@ -524,6 +525,12 @@ $messages['es'] = array(
 	'mwe-timedtext-textcat-cue' => 'Puntos de referencia',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 subtítulos para el clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'No se ha encontrado subtítulos $1 para el clip: $2',
+	'mwe-timedtext-request-subs' => 'Solicitar la transcripción',
+	'mwe-timedtext-no-subs' => 'No hay pistas de texto disponibles',
+	'mwe-timedtext-request-subs-desc' => 'Añadir una solicitud de transcripción de este archivo de vídeo',
+	'mwe-timedtext-request-subs-done' => 'Solicitud de transcripción añadida. [$1 Ver todas las solicitudes de transcripción]',
+	'mwe-timedtext-request-subs-fail' => 'Error al añadir la solicitud de transcripción. ¿Ha iniciado sesión?',
+	'mwe-timedtext-request-already-done' => 'Ya se solicitó la transcripción de este vídeo. [$1 Ver todas las solicitudes de transcripción]',
 );
 
 /** Finnish (Suomi)
