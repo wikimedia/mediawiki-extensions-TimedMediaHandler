@@ -757,11 +757,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Translationista
  */
 $messages['es'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
+	'mwe-embedplayer-credit-date' => 'Fecha: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'Cargando plugin ...',
 	'mwe-embedplayer-select_playback' => 'Configurar preferencia de reproducción',
 	'mwe-embedplayer-link_back' => 'Referir a enlace',
@@ -796,12 +799,14 @@ $messages['es'] = array(
 	'mwe-embedplayer-no-player' => 'No hay ningún reproductor disponible para $1',
 	'mwe-embedplayer-share_this_video' => 'Compartir este video',
 	'mwe-embedplayer-video_credits' => 'Créditos de video',
+	'mwe-embedplayer-no-video_credits' => 'No hay créditos disponibles',
 	'mwe-embedplayer-kaltura-platform-title' => 'Plataforma de vídeo de código abierto Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Menú',
 	'mwe-embedplayer-close_btn' => 'Cerrar',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Reproductor de VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Reproductor HTML5 Ogg',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Reproductor HTML5 H.264',
+	'mwe-embedplayer-ogg-player-webmNative' => 'Reproductor WebM HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin Ogg genérico',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plugin QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -811,7 +816,10 @@ $messages['es'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para una mejor experiencia de reproducción de video, recomendamos: <br />[$1 Firefox 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Descartar por ahora.',
+	'mwe-embedplayer-download-warn' => 'Se detectó un reproductor no compatible con el explorador, para reproducción integrada en el  navegador descargue la [$1 última versión de Firefox]',
+	'mwe-embedplayer-fullscreen-tip' => 'Presione <b>F11</b> para activar o desactivar la pantalla completa del <i>navegador web</i>',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Presione <b>shift ⌘ F</b> para activar o desactivarl a pantalla completa',
+	'mwe-embedplayer-do_not_warn_again' => 'No mostrar este mensaje en el futuro.',
 	'mwe-embedplayer-playerSelect' => 'Reproductores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leer esto</a> antes de insertar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Insertar en una página',
@@ -820,9 +828,14 @@ $messages['es'] = array(
 	'mwe-embedplayer-buffering' => 'cargando en el búfer',
 	'mwe-embedplayer-copy-code' => 'Copiar código',
 	'mwe-embedplayer-video-h264' => 'Video H.264',
+	'mwe-embedplayer-video-webm' => 'Vídeo WebM',
 	'mwe-embedplayer-video-flv' => 'Video Flash',
 	'mwe-embedplayer-video-ogg' => 'Video Ogg',
 	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Audio MPEG',
+	'mwe-embedplayer-video-3gp' => 'Vídeo 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Vídeo MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Vídeo AVI',
 	'mwe-embedplayer-missing-source' => 'No se encontró ningún vídeo de origen.',
 );
 

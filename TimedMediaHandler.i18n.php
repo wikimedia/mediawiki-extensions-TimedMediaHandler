@@ -766,6 +766,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Aleator
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Muro de Aguas
  * @author Remember the dot
@@ -774,7 +775,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'timedmedia-desc' => 'Herramienta de control de elementos multimedia sincronizados (vídeo, sonido y texto sincronizado) con transcodificación Ogg Theora y Vorbis',
+	'timedmedia-desc' => 'Manipulador de sonido, vídeo y texto sincronizado, con soporte para los formatos WebM, Ogg Theora, Vorbis y srt',
 	'timedmedia-ogg-short-audio' => 'Archivo de sonido Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Archivo de video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Archivo Ogg $1, $2',
@@ -783,14 +784,55 @@ $messages['es'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Archivo Ogg de audio/video multiplexado, $1, tamaño $2, $4×$5 píxeles, $3 en todo',
 	'timedmedia-ogg-long-general' => 'Archivo Ogg. tamaño $2, $3',
 	'timedmedia-ogg-long-error' => 'Archivo Ogg no válido: $1',
+	'timedmedia-webm-short-video' => 'Archivo de vídeo WebM $1, $2',
+	'timedmedia-webm-long-video' => 'Archivo de audio/vídeo WebM,  $1 , longitud  $2 ,  $4  ×  $5  píxeles,  $3  total',
 	'timedmedia-no-player-js' => 'Lo sentimos, pero tu navegador tiene JavaScript inhabilitado o no tiene ningún reproductor compatible instalado.<br />
 Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargar un reproductor</a> para poder ver el vídeo en tu navegador.',
 	'timedmedia-more' => 'Opciones...',
 	'timedmedia-dismiss' => 'Cerrar',
 	'timedmedia-download' => 'Descargar archivo',
+	'timedmedia-play-media' => 'Reproducir contenido multimedia',
 	'timedmedia-desc-link' => 'Sobre este archivo',
 	'timedmedia-oggThumb-version' => 'OggHandler requiere una versión oggThumb $1 o posterior.',
 	'timedmedia-oggThumb-failed' => 'oggThumb no pudo crear la imagen miniatura.',
+	'timedmedia-status-header' => 'Estado de transcodificación',
+	'timedmedia-update-status' => 'Actualizar el estado de transcodificación',
+	'timedmedia-status' => 'Estado',
+	'timedmedia-status-unknown' => 'Estado desconocido',
+	'timedmedia-transcodeinfo' => 'Descripción derivada de transcodificación',
+	'timedmedia-actions' => 'Acciones',
+	'timedmedia-direct-link' => 'Descargar el derivado',
+	'timedmedia-not-ready' => 'No está listo',
+	'timedmedia-completed-on' => 'Transcodificación completada $1',
+	'timedmedia-error-on' => 'Error en la transcodificación en  $1 .',
+	'timedmedia-started-transcode' => 'Transcodificación comenzada hace  $1. $2',
+	'timedmedia-percent-done' => 'Aproximadamente $1 % completado',
+	'timedmedia-in-job-queue' => 'Añadido a la cola de trabajos hace  $1',
+	'timedmedia-unknown-target-size' => 'Tamaño de archivo de destino desconocido,  $1 codificado',
+	'timedmedia-days' => '{{PLURAL:$1|un día|$1 días}}',
+	'timedmedia-hours' => '{{PLURAL:$1|una hora|$1 horas}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|un minuto|$1 minutos}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|un segundo|$1 segundos}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 y $4',
+	'timedmedia-time-3-measurements' => '$1, $2 y $3',
+	'timedmedia-time-2-measurements' => '$1y $2',
+	'timedmedia-show-error' => 'Mostrar error',
+	'timedmedia-reset' => 'Reiniciar la transcodificación',
+	'timedmedia-reset-confirm' => 'Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.<br /><br />
+¿Está seguro de que desea continuar?',
+	'timedmedia-reset-error' => 'Error al restablecer el trabajo de transcodificación.',
+	'timedmedia-source-file' => 'Fuente $1',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Video en formato Ogg de bajo ancho de banda (160 P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Vídeo Ogg para la web (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Vídeo Ogg para la web (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Vídeo Ogg de alta calidad que se puede descargar (720P)',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM para la web (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM para la web (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta calidad que se puede descargar (720P)',
+	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
+	'timedmedia-subtitle-no-subtitles' => 'Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos',
 );
 
 /** Estonian (Eesti)
