@@ -243,13 +243,11 @@
 				callback();
 			}
 		});
-		
-		$( embedPlayer ).bind( 'GetShareIframeSrc', function(event, callback){
+		$( embedPlayer ).bind( 'getShareIframeSrc', function(event, callback){
 			// Check the embedPlayer title key: 
 			var title =  $( embedPlayer).attr( 'data-mwtitle');
 			// TODO Check the provider key and use that hosts title page entry point!
 			var provider =  $( embedPlayer).attr( 'data-mwprovider');
-			
 			var iframeUrl = false;
 			if( mw.getConfig('wgServer') && mw.getConfig('wgArticlePath') ){
 				iframeUrl =  mw.getConfig('wgServer') + 
@@ -257,6 +255,7 @@
 						unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' ) ) +
 					'?' + 'embedplayer=yes';
 			}
+			
 			callback( iframeUrl );
 		});
 	};

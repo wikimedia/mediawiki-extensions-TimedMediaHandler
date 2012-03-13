@@ -65,6 +65,7 @@ class TimedMediaHandlerHooks {
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
 				'dependencies'=> array( 'mw.Api' )
 			) ),
+			// adds support MediaWikiPlayerSupport player bindings 
 			"mw.MediaWikiPlayer.loader" =>  array_merge( $baseExtensionResource, array(
 				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js', 
 			) ),

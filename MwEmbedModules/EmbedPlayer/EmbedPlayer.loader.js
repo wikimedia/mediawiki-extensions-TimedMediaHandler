@@ -2,7 +2,6 @@
 * EmbedPlayer loader
 */
 ( function( mw, $ ) {
-	
 	/**
 	* Add a DOM ready check for player tags
 	*

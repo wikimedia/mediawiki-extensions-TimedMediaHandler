@@ -1760,7 +1760,7 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
 		// for each source with "native playback" 			
-		$sourceMenu = $('<ul />');
+		var $sourceMenu = $('<ul />');
 		
 		// Local function to closure the "source" variable scope: 
 		function addToSourceMenu( source ){			

@@ -1539,7 +1539,7 @@ mw.EmbedPlayer.prototype = {
 		var iframeUrl = false;
 		$( this ).trigger( 'getShareIframeSrc', function( localIframeSrc ){
 			if( iframeUrl){
-				mw.log("Error multiple modules binding getShareIframeSrc" );
+				mw.log("EmbedPlayer:: Error multiple modules binding getShareIframeSrc" );
 			}
 			iframeUrl = localIframeSrc;
     	});
