@@ -1547,7 +1547,7 @@ mw.EmbedPlayer.prototype = {
 			return iframeUrl;
 		}
 		// old style embed:
-		var iframeUrl = mw.getMwEmbedPath() + 'mwEmbedFrame.php?';
+		var iframeUrl = mw.absoluteUrl( mw.getMwEmbedPath() + 'mwEmbedFrame.php?' );
 		var params = { 'src[]' : [] };
 
 		// TODO move to mediaWiki Support module
