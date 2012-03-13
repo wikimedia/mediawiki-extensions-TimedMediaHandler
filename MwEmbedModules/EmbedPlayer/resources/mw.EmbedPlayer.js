@@ -214,7 +214,7 @@ mw.EmbedPlayer.prototype = {
 	 */
 	init: function( element ) {
 		var _this = this;
-		mw.log('EmbedPlayer: initEmbedPlayer: ' + $(element).width() );
+		mw.log('EmbedPlayer: initEmbedPlayer: ' + $(element).attr('id') );
 
 		var playerAttributes = mw.getConfig( 'EmbedPlayer.Attributes' );
 
@@ -1522,7 +1522,7 @@ mw.EmbedPlayer.prototype = {
 		iframeUrl = this.getIframeSourceUrl();
 
 		// Set up embedFrame src path
-		var embedCode = '&lt;iframe src=&quot;' + mw.escapeQuotesHTML( iframeUrl ) + '&quot; ';
+		var embedCode = '&lt;iframe src=&quot;' + mw.html.escape( iframeUrl ) + '&quot; ';
 
 		// Set width / height of embed object
 		embedCode += 'width=&quot;' + this.getPlayerWidth() +'&quot; ';
