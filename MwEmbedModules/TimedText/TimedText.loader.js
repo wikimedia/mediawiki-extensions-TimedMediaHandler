@@ -17,7 +17,12 @@
 			classRequest = $.merge( classRequest, ['mw.TimedText'] );
 		}
 	} );		
-	
+	// On new embed player check if we need to add timedText
+	$( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayer ){
+		if( mw.isTimedTextSupported( embedPlayer ) ){
+			embedPlayer.timedText = new mw.TimedText( embedPlayer );
+		}
+	});
 	/**
 	 * Check timedText is active for a given embedPlayer
 	 * @param {object} embedPlayer The player to be checked for timedText properties

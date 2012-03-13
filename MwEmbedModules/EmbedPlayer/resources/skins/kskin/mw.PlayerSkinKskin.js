@@ -308,7 +308,7 @@ mw.PlayerSkinKskin = {
 	*/
 	showMenuItem:function( menuItem ) {
 		var embedPlayer = this.embedPlayer;
-		//handle special k-skin specific display;
+		// Handle special k-skin specific display;
 		switch( menuItem ){
 			case 'credits':
 				this.showCredits();
@@ -319,9 +319,8 @@ mw.PlayerSkinKskin = {
 				);
 			break;
 			case 'download' :
-				embedPlayer.$interface.find( '.menu-download').text(
-					gM('mwe-loading' )
-				);
+				embedPlayer.$interface.find( '.menu-download')
+					.loadingSpinner();
 				// Call show download with the target to be populated
 				this.showDownload(
 					embedPlayer.$interface.find( '.menu-download')

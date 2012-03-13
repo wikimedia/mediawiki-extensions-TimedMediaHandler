@@ -72,6 +72,18 @@ mw.MediaElement.prototype = {
 	},
 
 	/**
+	 * Get Text tracks
+	 */
+	getTextTracks: function(){
+		var textTracks = [];
+		$.each( this.sources, function(inx, source ){
+			if (  source.nodeName == 'track' || ( source.mimeType && source.mimeType.indexOf('text/') !== -1 )){
+				textTracks.push( source );
+			}
+		});
+		return textTracks;
+	},
+	/**
 	 * Check for Timed Text tracks
 	 *
 	 * @return {Boolean} True if text tracks exist, false if no text tracks are

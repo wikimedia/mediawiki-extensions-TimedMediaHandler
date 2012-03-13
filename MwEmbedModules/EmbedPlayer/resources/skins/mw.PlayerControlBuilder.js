@@ -1684,32 +1684,11 @@ mw.PlayerControlBuilder.prototype = {
 	* Loads sources and calls showDownloadWithSources
 	* @param {Object} $target jQuery target to output to
 	*/
-	showDownload: function( $target ) {
+	showDownload: function( $targetContainer ) {
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
 		
-		// Load additional text sources via apiTitleKey:
-		// TODO we should move this to timedText bindings
-		if( embedPlayer.apiTitleKey ) {
-			// Load text interface ( if not already loaded )
-			mw.load( 'TimedText', function() {
-				embedPlayer.timedText.setupTextSources(function(){
-					_this.showDownloadWithSources( $target );
-				});
-			});
-		} else {
-			_this.showDownloadWithSources( $target );
-		}
-	},
-
-	/**
-	* Shows the download interface with sources loaded
-	* @param {Object} $targetContainer jQuery target to output to
-	*/
-	showDownloadWithSources : function( $targetContainer ) {
-		var _this = this;
-		mw.log( 'showDownloadWithSources::' + $targetContainer.length );
-		var embedPlayer = this.embedPlayer;
+		mw.log( 'PlayerControlBuilder::showDownload: ' + $targetContainer.length );
 		// Empty the target:
 		$targetContainer.empty();
 		$targetContainer.append( $('<div />') );
@@ -1719,7 +1698,7 @@ mw.PlayerControlBuilder.prototype = {
 		var $textList =  $( '<ul />' );
 		$.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if( source.getSrc() ) {
-				mw.log("showDownloadWithSources:: Add src: " + source.getTitle() );
+				mw.log("PlayerControlBuilder::showDownload:  Add src: " + source.getTitle() );
 				var $dl_line = $( '<li />').append(
 					$('<a />')
 					.attr( 'href', source.getSrc() )
