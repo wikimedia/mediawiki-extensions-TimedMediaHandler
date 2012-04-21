@@ -1599,6 +1599,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Shirayuki
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -1629,7 +1630,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-share' => '共有',
 	'mwe-embedplayer-credits' => 'クレジット',
 	'mwe-embedplayer-about-library' => 'Kalturaプレイヤーについて',
-	'mwe-embedplayer-about-library-desc' => 'KalturaのHTML5メディアライブラリーは、すべての主要ブラウザー間で一貫性のある再生インターフェースをHTML5の<code><nowiki><video></nowiki></code>と<code><nowiki><audio></nowiki></code>タグで活用することができます。
+	'mwe-embedplayer-about-library-desc' => 'KalturaのHTML5メディアライブラリーは、すべての主要ブラウザー間で一貫性のある再生インターフェイスをHTML5の<code><nowiki><video></nowiki></code>と<code><nowiki><audio></nowiki></code>タグで活用することができます。
 
 [$1 Kalturaプレイヤーライブラリーについての詳細情報]。',
 	'mwe-embedplayer-clip_linkback' => 'クリップの情報ページ',

@@ -1061,6 +1061,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi
+ * @author Shirayuki
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -1075,7 +1076,7 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text' => 'テキストファイルをアップロード',
 	'mwe-timedtext-uploading-text' => 'テキストファイルのアップロード',
 	'mwe-timedtext-upload-text-desc-title' => 'テキストファイルをアップロード',
-	'mwe-timedtext-upload-text-desc-help' => 'アップロードするテキストファイルのインターフェースは .srt ファイルを受け付けます',
+	'mwe-timedtext-upload-text-desc-help' => 'アップロードするテキストファイルのインターフェイスは .srt ファイルを受け付けます',
 	'mwe-timedtext-upload-text-desc-help-browse' => 'ローカルのコンピューターの上からアップロードする .srt ファイルを探す',
 	'mwe-timedtext-upload-text-desc-help-select' => 'ファイルの言語を選択',
 	'mwe-timedtext-upload-text-desc-help-review' => 'テキストの内容を確認・編集してからアップロードを押してテキストを追加してください',
