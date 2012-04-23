@@ -644,7 +644,7 @@ class WebVideoTranscodeJob extends Job {
 		'cropBottom'	=> "--cropbottom",
 		'cropLeft'		=> "--cropleft",
 		'cropRight'		=> "--cropright",
-		'keyframeInterval'=> "--key",
+		'keyframeInterval'=> "--keyint",
 		'denoise'		=> array("--pp", "de"),
 	 	'deinterlace'	=> "--deinterlace",
 		'novideo'		=> array("--novideo", "--no-skeleton"),
