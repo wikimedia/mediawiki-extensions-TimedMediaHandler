@@ -263,7 +263,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		);
 
 		// Add api provider:
-		if( !$this->file->isLocal() ){
+		if( $this->file->isLocal() || $this->file->repo instanceof ForeignDBViaLBRepo ){
+			$apiProviderName = 'local';
+		} else {
 			// Set the api provider name to "commons" for shared ( instant commons convention )
 			// ( provider names should have identified the provider
 			// instead of the provider type "shared" )
@@ -271,8 +273,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			if( $apiProviderName == 'shared' || $apiProviderName == 'wikimediacommons' ) {
 				$apiProviderName = 'commons';
 			}
-		} else {
-			$apiProviderName = 'local';
 		}
 		// XXX Note: will probably migrate mwprovider to an escaped api url.
 		$mediaAttr[ 'data-mwprovider' ] = $apiProviderName;
