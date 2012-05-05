@@ -1803,6 +1803,7 @@ $messages['uk'] = array(
  */
 $messages['yi'] = array(
 	'mwe-timedtext-back-btn' => 'צוריק',
+	'mwe-timedtext-textcat-cc' => 'באשרייבונגען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
