@@ -30,10 +30,10 @@ var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' );
 // Generic plugin
 var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
 
-	
+
 mw.EmbedTypes = {
 
-	 // MediaPlayers object ( supports methods for quering set of browser players ) 
+	 // MediaPlayers object ( supports methods for quering set of browser players )
 	mediaPlayers: null,
 
 	// Detect flag for completion
@@ -49,7 +49,7 @@ mw.EmbedTypes = {
 		this.detect();
 		this.detect_done = true;
 	},
-	
+
 	getMediaPlayers: function(){
 		if( this.mediaPlayers  ){
 			return this.mediaPlayers;
@@ -79,7 +79,7 @@ mw.EmbedTypes = {
 	 * Detects what plug-ins the client supports
 	 */
 	detectPlayers: function() {
-		mw.log( "embedPlayer: running detect" );		
+		mw.log( "embedPlayer: running detect" );
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
 		try　{

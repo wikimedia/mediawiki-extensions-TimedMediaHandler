@@ -2,7 +2,7 @@
 * Skin js allows you to override contrlBuilder html/class output
 */
 ( function( mw, $ ) {
-	
+
 mw.PlayerSkinKskin = {
 
 	// The parent class for all kskin css:
@@ -175,7 +175,7 @@ mw.PlayerSkinKskin = {
 		} );
 
 	},
-	
+
 	/**
 	* checks for menu overlay and runs menu bindings if unset
 	*/
@@ -226,14 +226,14 @@ mw.PlayerSkinKskin = {
 				.text ( gM( 'mwe-embedplayer-close_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
-		
+
 		$( this.embedPlayer ).trigger( 'displayMenuOverlay' );
 
-		// By default show the credits ( if nothing else is displayed ) 
+		// By default show the credits ( if nothing else is displayed )
 		if( this.$playerTarget.find( '.menu-screen :visible' ).length == 0 ){
 			this.showMenuItem( 'credits' );
 		}
-		
+
 		// Set the Options Menu display flag to true:
 		this.keepControlBarOnScreen = true;
 	},
@@ -341,9 +341,9 @@ mw.PlayerSkinKskin = {
 		// Set up the shortcuts:
 		var embedPlayer = this.embedPlayer;
 		var _this = this;
-				
-		var $target = embedPlayer.$interface.find( '.menu-credits' );		
-				
+
+		var $target = embedPlayer.$interface.find( '.menu-credits' );
+
 		$target.empty().append(
 			$('<h2 />')
 			.text( gM( 'mwe-embedplayer-credits' ) ),
@@ -365,7 +365,7 @@ mw.PlayerSkinKskin = {
 			);
 		}
 		var $creditsTarget = embedPlayer.$interface.find( '.menu-credits .credits_box' );
-		
+
 		// Allow modules to load and add credits
 		$( embedPlayer ).triggerQueueCallback( 'ShowCredits', $creditsTarget, function( status ){
 			// If no module is showing credits add no-video credits msg:

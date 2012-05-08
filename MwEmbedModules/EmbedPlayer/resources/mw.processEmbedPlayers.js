@@ -1,6 +1,6 @@
 /**
  * Selector based embedPlayer processing
- * 
+ *
  * @param {Function=}
  *      callback Optional Function to be called once video interfaces
  *      are ready
@@ -8,7 +8,7 @@
  */
 mw.processEmbedPlayers = function( playerSelect, callback ) {
 	mw.log( 'EmbedPlayer:: processEmbedPlayers' );
-	
+
 	// Check if the selected player set is ready if ready issue the parent callback
 	var areSelectedPlayersReady = function(){
 		var playersLoaded = true;
@@ -33,10 +33,10 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 	 * Once a player interface is established the following chain of functions
 	 * are called;
 	 *
-	 * _this.checkPlayerSources() 
-	 * _this.setupSourcePlayer() 
+	 * _this.checkPlayerSources()
+	 * _this.setupSourcePlayer()
 	 * _this.updatePlaybackInterface()
-	 * _this.selectedPlayer.load() 
+	 * _this.selectedPlayer.load()
 	 * _this.showPlayer()
 	 *
 	 * @param {Element}
@@ -55,22 +55,22 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		if( playerElement.pause ){
 			playerElement.pause();
 		}
-		
+
 		// Allow modules to override the wait for metadata flag:
 		$( mw ).trigger( 'checkPlayerWaitForMetaData', playerElement );
 
 		// DOM *could* load height, width and duration eventually, in some browsers
 		// By default, don't bother waiting for this.
 		var waitForMeta = false;
-		
+
 		// if a plugin has told us not to waitForMeta, don't
 		if ( playerElement.waitForMeta !== false ) {
 			// Check if we should wait for metadata, after all
 			waitForMeta = waitForMetaCheck( playerElement );
 		}
-		
-		var ranPlayerSwapFlag = false;			
-		
+
+		var ranPlayerSwapFlag = false;
+
 		// Local callback to runPlayer swap once playerElement has metadata
 		function runPlayerSwap() {
 			// Don't run player swap twice
@@ -81,17 +81,17 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			mw.log("EmbedPlayer::runPlayerSwap::" + $( playerElement ).attr('id') );
 
 			var playerInterface = new mw.EmbedPlayer( playerElement );
-			var inDomPlayer = swapEmbedPlayerElement( playerElement, playerInterface );	
-								
+			var inDomPlayer = swapEmbedPlayerElement( playerElement, playerInterface );
+
 			// Trigger the EmbedPlayerNewPlayer for embedPlayer interface
 			mw.log("EmbedPlayer::EmbedPlayerNewPlayer:trigger " + inDomPlayer.id );
-			
+
 			// Allow plugins to add bindings to the inDomPlayer
 			$( mw ).trigger ( 'newEmbedPlayerEvent', inDomPlayer );
 
-			// Add a player ready binding: 
+			// Add a player ready binding:
 			$( inDomPlayer ).bind( 'playerReady', areSelectedPlayersReady );
-			
+
 			// Issue the checkPlayerSources call to the new player
 			// interface: make sure to use the element that is in the DOM:
 			inDomPlayer.checkPlayerSources();
@@ -118,12 +118,12 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 	/**
 	 * Check if we should wait for metadata.
 	 *
-	 * @return 	true if the size is "likely" to be updated by waiting for metadata 
+	 * @return 	true if the size is "likely" to be updated by waiting for metadata
 	 * 			false if the size has been set via an attribute or is already loaded
 	 */
 	var waitForMetaCheck = function( playerElement ){
 		var waitForMeta = false;
-			
+
 		// Don't wait for metadata for non html5 media elements
 		if( !playerElement ){
 			return false;
@@ -143,9 +143,9 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		var width = $( playerElement ).css( 'width' );
 		var height = $( playerElement ).css( 'height' );
 
-		// Css video defaults ( firefox ) 
+		// Css video defaults ( firefox )
 		if( $( playerElement ).css( 'width' ) == '300px' &&
-				$( playerElement ).css( 'height' ) == '150px' 			
+				$( playerElement ).css( 'height' ) == '150px'
 		){
 			waitForMeta = true;
 		} else {
@@ -209,9 +209,9 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		// Create a new element to swap the player interface into
 		var swapPlayerElement = document.createElement('div');
 
-		// Add a class that identifies all embedPlayers: 
+		// Add a class that identifies all embedPlayers:
 		$( swapPlayerElement ).addClass( 'mwEmbedPlayer' );
-		
+
 		// Get properties / methods from playerInterface:
 		for ( var method in playerInterface ) {
 			if ( method != 'readyState' ) { // readyState crashes IE ( don't include )
@@ -252,9 +252,9 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		return swapPlayerElement;
 	};
 
-	// Add a loader for <div> embed player rewrites: 
+	// Add a loader for <div> embed player rewrites:
 	$( playerSelect ).each( function( index, playerElement) {
-		
+
 		// Make sure the playerElement has an id:
 		if( !$( playerElement ).attr('id') ){
 			$( playerElement ).attr( "id", 'mwe_v' + ( index ) );
@@ -291,11 +291,11 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 
 	// deprecated EmbedPlayerManagerReady event ( should remove )
 	$( mw ).trigger( 'EmbedPlayerManagerReady' );
-	
-	// Make sure we have user preference setup for setting preferences on video selection 
+
+	// Make sure we have user preference setup for setting preferences on video selection
 	var addedToPlayerManager = false;
 	mw.log("EmbedPlayer:: do: " + $( playerSelect ).length + ' players ');
-	
+
 	// Add each selected element to the player manager:
 	$( playerSelect ).each( function( index, playerElement) {
 		// Make sure the video tag was not generated by our library:
@@ -303,7 +303,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			$('#loadingSpinner_' + $( playerElement ).attr('id') ).remove();
 			mw.log( 'EmbedPlayer::$.embedPlayer skip embedPlayer gennerated video: ' + playerElement );
 		} else {
-			addedToPlayerManager = true;										
+			addedToPlayerManager = true;
 			// Add the player
 			addPlayerElement( playerElement );
 		}
