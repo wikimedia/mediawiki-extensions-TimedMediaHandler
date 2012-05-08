@@ -32,7 +32,7 @@ class ApiTranscodeReset extends ApiBase {
 		}
 		// Make sure the title can be transcoded
 		if( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ){
-			$this->dieUsage( array( 'invalidtranscodetitle', $params['title'] ) );
+			$this->dieUsageMsg( array( 'invalidtranscodetitle', $params['title'] ) );
 		}
 		$transcodeKey = false;
 		// Make sure its a enabled transcode key we are trying to remove:

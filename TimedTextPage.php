@@ -19,7 +19,8 @@ class TimedTextPage extends Article {
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
 		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || ( isset( $diff ) && $diffOnly ) ) {
-			return parent::view();
+			parent::view();
+			return;
 		}
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
 		$srt = array_pop( $titleParts );

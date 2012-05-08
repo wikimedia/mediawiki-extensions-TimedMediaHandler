@@ -38,7 +38,6 @@ class WebMHandler extends TimedMediaHandler {
 	 * Get the "media size"
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
-		global $wgMediaVideoTypes;
 		// Just return the size of the first video stream
 		if ( $metadata === false ) {
 			$metadata = $file->getMetadata();

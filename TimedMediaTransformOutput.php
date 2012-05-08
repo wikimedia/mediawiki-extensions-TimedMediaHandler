@@ -63,8 +63,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 
 	function toHtml( $options = array() ) {
-		global $wgVideoTagOut, $wgMinimumVideoPlayerSize, $wgOut;
-
+		global $wgMinimumVideoPlayerSize;
 
 		if ( count( func_get_args() ) == 2 ) {
 			throw new MWException( __METHOD__ .' called in the old style' );

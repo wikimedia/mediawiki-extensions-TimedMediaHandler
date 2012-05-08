@@ -454,7 +454,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param $retval String, refrence variable to return the exit code
 	 */
 	public function runShellExec( $cmd, &$retval){
-		global $wgEnableNiceBackgroundTranscodeJobs, $wgTranscodeBackgroundPriority;
+		global $wgEnableNiceBackgroundTranscodeJobs;
 		// Check if background tasks are enabled
 		if( $wgEnableNiceBackgroundTranscodeJobs === false ){
 			// Dont display shell output
@@ -494,7 +494,6 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog ){
-		global $wgTranscodeBackgroundPriority;
 		// In theory we should use pcntl_exec but not sure how to get the stdout, ensure
 		// we don't max php memory with the same protections provided by wfShellExec.
 
@@ -568,7 +567,9 @@ class WebVideoTranscodeJob extends Job {
 
 			// Check if we have global job run-time has been exceeded:
 			if ( $wgTranscodeBackgroundTimeLimit && time() - $startTime  > $wgTranscodeBackgroundTimeLimit ){
-				$errorMsg = "Encoding exceeded max job run time ( " . TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process.";
+				// FIXME: $maxTime is undefined
+				$errorMsg = "Encoding exceeded max job run time ( "
+					. TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process.";
 				$this->output( $errorMsg );
 				// File is not growing in size, kill proccess
 				$retval = 1;

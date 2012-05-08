@@ -79,7 +79,7 @@ mw.EmbedTypes = {
 	 * Detects what plug-ins the client supports
 	 */
 	detectPlayers: function() {
-		mw.log( "embedPlayer: running detect" );		
+		mw.log( "embedPlayer: running detect" );
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
 		try　{

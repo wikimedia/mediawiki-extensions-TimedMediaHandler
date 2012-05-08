@@ -23,9 +23,10 @@ class TimedMediaIframeOutput {
 			$wgRequest->getVal('embedplayer') == 'yes' &&
 			$wgEnableIframeEmbed &&
 			$doOutput ){
-				self::outputIframe( $title );
-				// Turn off output of anything other than the iframe
-				$wgOut->disable();
+
+			self::outputIframe( $title );
+			// Turn off output of anything other than the iframe
+			$wgOut->disable();
 		}
 
 		return true;
@@ -34,8 +35,7 @@ class TimedMediaIframeOutput {
 	 * Output an iframe
 	 */
 	static function outputIframe( $title ) {
-		global $wgEnableIframeEmbed, $wgOut, $wgUser,
-			$wgEnableScriptLoader;
+		global $wgEnableIframeEmbed, $wgOut, $wgUser;
 
 		if(!$wgEnableIframeEmbed){
 			throw new MWException( __METHOD__ .' is not enabled' );

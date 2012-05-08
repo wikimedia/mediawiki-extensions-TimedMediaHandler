@@ -261,8 +261,8 @@ class WebVideoTranscode {
 		}
 
 		// Update the cache:
-		if ( $sources && $this->file->repo->descriptionCacheExpiry > 0 ) {
-			$wgMemc->set( $key, $sources, $this->file->repo->descriptionCacheExpiry );
+		if ( $sources && $file->repo->descriptionCacheExpiry > 0 ) {
+			$wgMemc->set( $key, $sources, $file->repo->descriptionCacheExpiry );
 		}
 
 		return $sources;
@@ -281,7 +281,7 @@ class WebVideoTranscode {
 	 * @return an associative array of sources suitable for <source> tag output
 	 */
 	static public function getLocalSources( &$file , $options=array() ){
-		global $wgEnabledTranscodeSet, $wgEnableTranscode, $wgLang;
+		global $wgEnabledTranscodeSet, $wgEnableTranscode;
 		$sources = array();
 
 		// Add the original file:
