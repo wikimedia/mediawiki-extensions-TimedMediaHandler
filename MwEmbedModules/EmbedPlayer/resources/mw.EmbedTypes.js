@@ -30,10 +30,10 @@ var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' );
 // Generic plugin
 var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
 
-	
+
 mw.EmbedTypes = {
 
-	 // MediaPlayers object ( supports methods for quering set of browser players ) 
+	 // MediaPlayers object ( supports methods for quering set of browser players )
 	mediaPlayers: null,
 
 	// Detect flag for completion
@@ -49,7 +49,7 @@ mw.EmbedTypes = {
 		this.detect();
 		this.detect_done = true;
 	},
-	
+
 	getMediaPlayers: function(){
 		if( this.mediaPlayers  ){
 			return this.mediaPlayers;

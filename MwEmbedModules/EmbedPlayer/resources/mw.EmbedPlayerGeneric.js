@@ -12,10 +12,10 @@
 			'timeDisplay':false,
 			'volumeControl':false
 		},
-	
+
 		// Instance name:
 		instanceOf:'Generic',
-	
+
 		/*
 		* Generic embed html
 		*

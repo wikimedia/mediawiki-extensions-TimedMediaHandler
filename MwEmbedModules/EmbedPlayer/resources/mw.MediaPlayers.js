@@ -5,7 +5,7 @@
  */
 
 ( function( mw, $ ) {
-	
+
 mw.MediaPlayers = function()
 {
 	this.init();
@@ -152,14 +152,14 @@ mw.MediaPlayers.prototype = {
 				break;
 			}
 		}
-		// Also update the format Preference: 
+		// Also update the format Preference:
 		this.setFormatPreference( mimeType );
-		
+
 		// Update All the player instances on the page
-		if ( selectedPlayer ) {			
+		if ( selectedPlayer ) {
 			$('.mwEmbedPlayer').each(function(inx, playerTarget ){
 				var embedPlayer = $( playerTarget ).get( 0 );
-				if ( embedPlayer.mediaElement.selectedSource 
+				if ( embedPlayer.mediaElement.selectedSource
 						&& ( embedPlayer.mediaElement.selectedSource.mimeType == mimeType ) )
 				{
 					embedPlayer.selectPlayer( selectedPlayer );

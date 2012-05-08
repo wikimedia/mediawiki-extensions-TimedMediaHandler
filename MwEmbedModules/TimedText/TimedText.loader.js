@@ -3,7 +3,7 @@
 */
 // Scope everything in "mw" ( keeps the global namespace clean )
 ( function( mw, $ ) {
-	
+
 	/**
 	* Check if the video tags in the page support timed text
 	* this way we can add our timed text libraries to the player
@@ -16,7 +16,7 @@
 		if( mw.isTimedTextSupported( playerElement ) ) {
 			classRequest = $.merge( classRequest, ['mw.TimedText'] );
 		}
-	} );		
+	} );
 	// On new embed player check if we need to add timedText
 	$( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayer ){
 		if( mw.isTimedTextSupported( embedPlayer ) ){
@@ -33,14 +33,14 @@
 		}
 		// Do a module check for timed Text support ( module must add data property 'SupportsTimedText' )
 		$( embedPlayer ).trigger( 'SupportsTimedText' );
-		
-		// triggers are triggered synchronously, check for data property being updated.  
+
+		// triggers are triggered synchronously, check for data property being updated.
 		if( $( embedPlayer ).data( 'SupportsTimedText' )  ){
 			return true;
 		}
-		
-		// Check for standard 'track' attribute: 
+
+		// Check for standard 'track' attribute:
 		return $( embedPlayer ).find( 'track' ).length != 0 ;
-	};	
+	};
 
 } )( window.mediaWiki, window.jQuery );

@@ -12,7 +12,7 @@
  */
 
 ( function( mw, $ ) {
-	
+
 mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// source id
 	'id',
@@ -26,10 +26,10 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// boolean if we support temporal url requests on the source media
 	'URLTimeEncoding',
 
-	/* data- attributes ( not yet standards ) 
+	/* data- attributes ( not yet standards )
 	* NOTE data- is striped from the attribute once added to the MediaSrouce object
 	*/
-	
+
 	// Media has a startOffset ( used for plugins that
 	// display ogg page time rather than presentation time
 	'data-startoffset',
@@ -37,14 +37,14 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// A hint to the duration of the media file so that duration
 	// can be displayed in the player without loading the media file
 	'data-durationhint',
-	
+
 	// Source stream qualities ( will eventually be adaptive streaming )
-	'data-shorttitle', // short title for stream ( useful for stream switching control bar widget) 
+	'data-shorttitle', // short title for stream ( useful for stream switching control bar widget)
 	'data-width', // the width of the stream
 	'data-height', // the height of the stream
 	'data-bandwidth', // the overall bitrate of the stream
 	'data-framerate', // the framereate of the stream
-	
+
 	// Media start time
 	'start',
 
@@ -107,7 +107,7 @@ mw.MediaSource.prototype = {
 		// not ideal way to discover if content is on an oggz_chop server.
 		// should check some other way.
 		var pUrl = new mw.Uri ( mw.absoluteUrl( this.src) );	// mw.Uri only handles full urls
-		
+
 		if ( typeof pUrl.query[ 't' ] != 'undefined' ) {
 			this.URLTimeEncoding = true;
 		}
@@ -148,7 +148,7 @@ mw.MediaSource.prototype = {
 		if( this.mimeType == 'audio/vorbis') {
 			this.mimeType = 'audio/ogg';
 		}
-		
+
 		// Conform long form "video/ogg; codecs=theora" based attributes
 		// @@TODO we should support codec in the type arguments
 		if( this.mimeType ){
@@ -286,7 +286,7 @@ mw.MediaSource.prototype = {
 		if( this.title ){
 			return this.title;
 		}
-		// Text tracks use "label" instead of "title" 
+		// Text tracks use "label" instead of "title"
 		if( this.label ){
 			return this.label;
 		}
@@ -312,7 +312,7 @@ mw.MediaSource.prototype = {
 				return gM('mwe-embedplayer-audio-mpeg');
 			break;
 			case 'video/3gp' :
-				return gM('mwe-embedplayer-video-3gp'); 
+				return gM('mwe-embedplayer-video-3gp');
 			break;
 			case 'video/mpeg' :
 				return gM('mwe-embedplayer-video-mpeg');

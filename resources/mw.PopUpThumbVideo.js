@@ -1,11 +1,11 @@
 /**
-* Simple script to add pop-up video dialog link support for video thumbnails 
+* Simple script to add pop-up video dialog link support for video thumbnails
 */
 ( function( mw, $ ) {
-	
+
 	$(document).ready(function(){
 		$('.PopUpMediaTransform').each(function(){
-			var _parent = this;					
+			var _parent = this;
 			$( this ).find('a').click( function(){
 				var $video = $( unescape( $(_parent).attr('data-videopayload') ) );
 				mw.addDialog({
@@ -25,7 +25,7 @@
 				.css('overflow', 'hidden')
 				.find('video,audio').embedPlayer();
 				// don't follow file link
-				return false; 
+				return false;
 			});
 		});
 	});

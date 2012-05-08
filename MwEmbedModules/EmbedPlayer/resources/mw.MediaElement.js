@@ -10,7 +10,7 @@
  * @constructor
  */
 ( function( mw, $ ) {
-	
+
 mw.MediaElement = function( element ) {
 	this.init( element );
 }
@@ -151,7 +151,7 @@ mw.MediaElement.prototype = {
 		var playableSources = this.getPlayableSources();
 		for ( var i = 0; i < playableSources.length; i++ ) {
 			if ( i == index ) {
-				this.selectedSource = playableSources[i];				
+				this.selectedSource = playableSources[i];
 				break;
 			}
 		}
@@ -159,7 +159,7 @@ mw.MediaElement.prototype = {
 			$( '#' + this.parentEmbedId ).trigger( 'SourceChange');
 		}
 	},
-	
+
 	/**
 	 * Sets the selected source to passed in source object
 	 * @param {Object} Source
@@ -217,7 +217,7 @@ mw.MediaElement.prototype = {
 			}
 		});
 
-		//Set via user bandwith pref 
+		//Set via user bandwith pref
 		if( $.cookie('EmbedPlayer.UserBandwidth') ){
 			$.each( playableSources, function(inx, source ){
 				if( source.bandwidth ){
@@ -231,8 +231,8 @@ mw.MediaElement.prototype = {
 			mw.log('MediaElement::autoSelectSource: Set via bandwidth prefrence: source ' + source.bandwidth + ' user: ' + $.cookie('EmbedPlayer.UserBandwidth') );
 			return true;
 		}
-		
-		// Set via embed resolution closest to relative to display size 
+
+		// Set via embed resolution closest to relative to display size
 		var minSizeDelta = null;
 		var displayWidth = $('#' + this.parentEmbedId).width();
 		$.each( playableSources, function(inx, source ){
@@ -245,14 +245,14 @@ mw.MediaElement.prototype = {
 				}
 			}
 		});
-		
+
 		// If we found a source via display resolution return true
 		if ( this.selectedSource ) {
 			mw.log('MediaElement::autoSelectSource: Set via embed resolution:' + this.selectedSource.width + ' close to: ' + displayWidth );
 			return true;
 		}
-		
-		
+
+
 		// Prefer native playback ( and prefer WebM over ogg and h.264 )
 		var namedSources = [];
 		$.each( playableSources, function(inx, source ){
@@ -275,7 +275,7 @@ mw.MediaElement.prototype = {
 				}
 			}
 		});
-		
+
 		var codecPref =mw.getConfig( 'EmbedPlayer.CodecPreference');
 		for(var i =0; i < codecPref.length; i++){
 			var codec = codecPref[ i ];

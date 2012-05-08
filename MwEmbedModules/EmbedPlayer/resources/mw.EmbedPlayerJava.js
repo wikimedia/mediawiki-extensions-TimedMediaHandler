@@ -1,21 +1,21 @@
 ( function( mw, $ ) {
 /**
-* List of domains and hosted location of cortado. Lets clients avoid the security warning 
-* for cross domain java applet loading. 
-*/	
+* List of domains and hosted location of cortado. Lets clients avoid the security warning
+* for cross domain java applet loading.
+*/
 window.cortadoDomainLocations = {
-		'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'		
+		'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'
 };
 
 mw.EmbedPlayerJava = {
 
 	// Instance name:
 	instanceOf: 'Java',
-	
+
 	// Set the local applet location for CortadoApplet
 	localAppletLocation: mw.getConfig('EmbedPlayer.WebPath' ) + '/binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar',
 
-	
+
 	// Supported feature set of the cortado applet:
 	supports: {
 		'playHead' : true,
@@ -110,7 +110,7 @@ mw.EmbedPlayerJava = {
 	/**
 	* Seek in the ogg stream
 	* NOTE: Cortado seek does not seem to work very well.
-	* 
+	*
 	* @param {Float} percentage Percentage to seek into the stream
 	*/
 	seek: function( percentage ) {

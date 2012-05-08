@@ -4,7 +4,7 @@
 * Enables embedPlayer support for native html5 browser playback system
 */
 ( function( mw, $ ) {
-	
+
 mw.EmbedPlayerNative = {
 
 	//Instance Name
@@ -74,7 +74,7 @@ mw.EmbedPlayerNative = {
 			this.supports.overlays = false;
 			this.supports.volumeControl = false;
 		}
-		// iOS  does not support volume control ( only iPad can have controls ) 
+		// iOS  does not support volume control ( only iPad can have controls )
 		if( mw.isIpad() ){
 			this.supports.volumeControl = false;
 		}
@@ -88,23 +88,23 @@ mw.EmbedPlayerNative = {
 		var _this = this;
 		var vid = _this.getPlayerElement();
 		this.isFirstEmbedPlay = true;
-		
+
 		if( vid && $( vid ).attr('src') == this.getSrc( this.currentTime ) ){
 			_this.postEmbedActions();
 			return ;
 		}
 		mw.log( "EmbedPlayerNative::embedPlayerHTML > play url:" + this.getSrc( this.currentTime  ) + ' startOffset: ' + this.start_ntp + ' end: ' + this.end_ntp );
-		
+
 		// Check if using native controls and already the "pid" is already in the DOM
 		if( this.isPersistentNativePlayer() && vid ) {
 			_this.postEmbedActions();
 			return ;
 		}
-		
+
 		// Reset some play state flags:
 		_this.bufferStartFlag = false;
 		_this.bufferEndFlag = false;
-		
+
 		$( this ).html(
 			_this.getNativePlayerHtml()
 		);
@@ -135,7 +135,7 @@ mw.EmbedPlayerNative = {
 		if( this.autoplay ) {
 			playerAttribtues['autoplay'] = 'true';
 		}
-		
+
 		if( !cssSet ){
 			cssSet = {};
 		}
@@ -210,10 +210,10 @@ mw.EmbedPlayerNative = {
 	monitor: function(){
 		var _this = this;
 		var vid = _this.getPlayerElement();
-		
+
 		// Update duration
 		if( vid && vid.duration ){
-			this.duration = vid.duration; 
+			this.duration = vid.duration;
 		}
 		// Update the bufferedPercent
 		if( vid && vid.buffered && vid.buffered.end && vid.duration ) {
@@ -314,7 +314,7 @@ mw.EmbedPlayerNative = {
 			callbackCount = 0;
 		}
 		var vid = this.getPlayerElement();
-		
+
 		// Check if player is ready for seek:
 		if( vid.readyState < 1 ){
 			if( callbackCount >= 400 ){
@@ -326,14 +326,14 @@ mw.EmbedPlayerNative = {
 			}, 100 );
 			return ;
 		}
-		// Check if currentTime is already set to the seek target: 
+		// Check if currentTime is already set to the seek target:
 		if( vid.currentTime == time ){
 			if( callback ){
 				callback();
 			}
 			return;
 		}
-		
+
 		// Setup a local function callback for successful seek
 		var once = function( event ) {
 			// Remove the listner:
@@ -344,7 +344,7 @@ mw.EmbedPlayerNative = {
 		};
 		// Assume we will get to add the Listener before the seek is done
 		vid.addEventListener( 'seeked', once, false );
-		// Try to update the playerElement time: 
+		// Try to update the playerElement time:
 		try {
 			vid.currentTime = time;
 		} catch (e) {
@@ -369,7 +369,7 @@ mw.EmbedPlayerNative = {
 		// Return the playerElement currentTime
 		return this.playerElement.currentTime;
 	},
-	
+
 	/**
 	 * Updates the poster source for the video tatg
 	 * @param {string}
@@ -379,13 +379,13 @@ mw.EmbedPlayerNative = {
 		if( this.getPlayerElement() ){
 			$( this.getPlayerElement() ).attr( 'poster', src );
 		}
-		// Also update the embedPlayer poster 
+		// Also update the embedPlayer poster
 		this.parent_updatePosterSrc( src );
 	},
-	
+
 	/**
 	 * switchPlaySrc switches the player source working around a few bugs in browsers
-	 * 
+	 *
 	 * @param {string}
 	 *            src Video url Source to switch to.
 	 * @param {function}
@@ -396,13 +396,13 @@ mw.EmbedPlayerNative = {
 	switchPlaySrc: function( src, switchCallback, doneCallback ){
 		var _this = this;
 		mw.log( 'EmbedPlayerNative:: switchPlaySrc:' + src + ' native time: ' + this.getPlayerElement().currentTime );
-		// Update some parent embedPlayer vars: 
+		// Update some parent embedPlayer vars:
 		this.duration = 0;
 		this.currentTime = 0;
 		this.previousTime = 0;
 		var vid = this.getPlayerElement();
-		
-		// iOS and Chrome have broken source switch system work around their bugs here: 
+
+		// iOS and Chrome have broken source switch system work around their bugs here:
 		if ( vid ) {
 			try {
 				// issue a play request on the source
@@ -412,9 +412,9 @@ mw.EmbedPlayerNative = {
 					$(vid).unbind();
 					vid.pause();
 					var orginalControlsState = vid.controls;
-					// Hide controls ( to not display native play button while switching sources ) 
+					// Hide controls ( to not display native play button while switching sources )
 					vid.removeAttribute('controls');
-					
+
 					// Local scope update source and play function to work around google chrome bug
 					var updateSrcAndPlay = function() {
 						var vid = _this.getPlayerElement();
@@ -427,10 +427,10 @@ mw.EmbedPlayerNative = {
 							// Wait another 100ms then bind the end event and any custom events
 							// for the switchCallback
 							setTimeout(function() {
-								var vid = _this.getPlayerElement();			
-								// restore controls 
+								var vid = _this.getPlayerElement();
+								// restore controls
 								vid.controls = orginalControlsState;
-								// add the end binding: 
+								// add the end binding:
 								$(vid).bind('ended', function( event ) {
 									if(typeof doneCallback == 'function' ){
 										doneCallback();
@@ -456,7 +456,7 @@ mw.EmbedPlayerNative = {
 			}
 		}
 	},
-	
+
 	/**
 	* Pause the video playback
 	* calls parent_pause to update the interface
@@ -511,7 +511,7 @@ mw.EmbedPlayerNative = {
 	/**
 	* Update Volume
 	*
-	* @param {Float} 
+	* @param {Float}
 	* 	percentage Value between 0 and 1 to set audio volume
 	*/
 	setPlayerElementVolume : function( percentage ) {
