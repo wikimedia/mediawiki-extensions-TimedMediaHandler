@@ -1,10 +1,10 @@
-<?php 
+<?php
 /**
  * Extends imageinfo with support for videoinfo sources property.
- * 
+ *
  * Alternatively core ApiQueryImageInfo could support being extended in some straightforward ways.
  * see: http://www.mediawiki.org/wiki/User:Catrope/Extension_review/TimedMediaHandler#ApiQueryVideoInfo.php
- * 
+ *
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -31,11 +31,11 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams = null );
 		if( isset( $prop['derivatives'] ) ){
 			$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'nodata', 'fullurl') );
-		}	
+		}
 		return $vals;
 	}
 
-	public static function getPropertyNames( $filter = array() ) {	
+	public static function getPropertyNames( $filter = array() ) {
 		$prop = parent::getPropertyNames();
 		$prop[] = 'derivatives';
 		return $prop;
@@ -133,7 +133,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 					( is_null( $params['end'] ) || $img->getTimestamp() >= $params['end'] )
 				) {
 					$gotOne = true;
-					
+
 					$fit = $this->addPageSubItem( $pageId,
 						self::getInfo( $img, $prop, $result, $finalThumbParams ) );
 					if ( !$fit ) {

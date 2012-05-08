@@ -1,6 +1,6 @@
 <?php
 /**
- * Abstract test class to support Video Tests with video uploads  
+ * Abstract test class to support Video Tests with video uploads
  * @author dale
  */
 
@@ -17,10 +17,10 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	 * @return Array set of test files with associated metadata
 	 */
 	static function mediaFilesProvider(){
-		return array( 
+		return array(
 			array(
-				// Double wrap the file array to match phpunit data provider conventions 
-				array( 
+				// Double wrap the file array to match phpunit data provider conventions
+				array(
 					'mime' => 'application/ogg',
 					'filePath' => dirname( __FILE__ ) . '/media/test5seconds.electricsheep.300x400.ogv',
 					"size" => 301477,
@@ -41,15 +41,15 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 					"mediatype" => "VIDEO",
 					"bandwidth" => 522142,
 					"framerate" => 29.97
-				)		
+				)
 			)
 		);
 	}
 	/**
 	 * Fixture -- run after every test
 	 * Clean up temporary files etc.
-	 * 
-	*/ 
+	 *
+	*/
 	function tearDown() {
 		$testMediaFiles = $this->mediaFilesProvider();
 		foreach( $testMediaFiles as $file ){
@@ -81,7 +81,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 		list( $result, , $session ) = $this->doApiRequest( $params, $session );
 		return $session;
 	}
-	
+
 	/**
 	 * uploads a file:
 	 */
@@ -89,12 +89,12 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 		global $wgUser;
 		// get a session object
 		$session = $this->doLogin();
-		// Update the global user: 
+		// Update the global user:
 		$wgUser = self::$users['uploader']->user;
-		
+
 		// Upload the media file:
 		$fileName = basename( $file['filePath'] );
-	
+
 		// remove if already in thd db:
 		$this->deleteFileByFileName( $fileName );
 		$this->deleteFileByContent( $file['filePath'] );
@@ -109,19 +109,19 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 			'file' => 'dummy content',
 			'comment' => 'dummy comment',
 			'text'	=> "This is the page text for $fileName",
-			// This uploadFile function supports video tests not a test upload warnings 
+			// This uploadFile function supports video tests not a test upload warnings
 			'ignorewarnings' => true
 		);
-		
-		try{		
+
+		try{
 			list( $result, , ) = $this->doApiRequestWithToken( $params, $session );
 		} catch( Exception $e ) {
 			// Could not upload mark test that called uploadFile as incomplete
 			$this->markTestIncomplete( $e->getMessage() );
 		}
-		 
+
 		return $result;
-				
+
 	}
-	
+
 }

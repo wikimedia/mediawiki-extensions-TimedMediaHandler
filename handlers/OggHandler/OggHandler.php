@@ -1,10 +1,10 @@
-<?php 
+<?php
 /**
- * ogg handler 
+ * ogg handler
  */
 class OggHandler extends TimedMediaHandler {
 	const METADATA_VERSION = 2;
-	
+
 	function getMetadata( $image, $path ) {
 		$metadata = array( 'version' => self::METADATA_VERSION );
 
@@ -43,9 +43,9 @@ class OggHandler extends TimedMediaHandler {
 		return serialize( $metadata );
 	}
 	/**
-	 * Get the "media size" 
+	 * Get the "media size"
 	 *
-	 */	 
+	 */
 	function getImageSize( $file, $path, $metadata = false ) {
 		global $wgMediaVideoTypes;
 		// Just return the size of the first video stream
@@ -73,7 +73,7 @@ class OggHandler extends TimedMediaHandler {
 		}
 		return array( false, false );
 	}
-	
+
 	function unpackMetadata( $metadata ) {
 		$unser = @unserialize( $metadata );
 		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
@@ -82,11 +82,11 @@ class OggHandler extends TimedMediaHandler {
 			return false;
 		}
 	}
-	
+
 	function getMetadataType( $image = '' ) {
 		return 'ogg';
 	}
-	
+
 	function getStreamTypes( $file ) {
 		$streamTypes = array();
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
@@ -98,7 +98,7 @@ class OggHandler extends TimedMediaHandler {
 		}
 		return array_unique( $streamTypes );
 	}
-	
+
 	function getOffset( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['offset']) ) {
@@ -107,7 +107,7 @@ class OggHandler extends TimedMediaHandler {
 			return $metadata['offset'];
 		}
 	}
-	
+
 	function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -121,12 +121,12 @@ class OggHandler extends TimedMediaHandler {
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return 0;
 		} else {
-			// Return the first found theora stream framerate: 
+			// Return the first found theora stream framerate:
 			foreach ( $metadata['streams'] as $stream ) {
 				if( $stream['type'] == 'Theora' ){
 					return  $stream['header']['FRN'] / $stream['header']['FRD'];
 				}
-			}			
+			}
 			return 0;
 		}
 	}
@@ -186,8 +186,8 @@ class OggHandler extends TimedMediaHandler {
 			$wgLang->formatNum( $file->getHeight() )
 	   	);
 	}
-	
-	function getBitRate( &$file ){ 
+
+	function getBitRate( &$file ){
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$unpacked || isset( $metadata['error'] ) ) {
@@ -201,5 +201,5 @@ class OggHandler extends TimedMediaHandler {
 		}
 		return $length == 0 ? 0 : $size / $length * 8;
 	}
-	
+
 }

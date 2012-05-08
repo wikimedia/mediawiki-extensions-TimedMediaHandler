@@ -1,7 +1,7 @@
-<?php 
+<?php
 
-	// Register all the timedText modules 
-	return array(			
+	// Register all the timedText modules
+	return array(
 		"mw.TimedText" => array(
 			'scripts' => array(
 				"resources/mw.TimedText.js",
@@ -12,8 +12,8 @@
 				'mw.EmbedPlayer',
 				'mw.Api',
 				'mw.Language.names',
-				'jquery.ui.dialog',	
+				'jquery.ui.dialog',
 			),
 			'messageFile' => 'TimedText.i18n.php',
 		)
-	);	
+	);

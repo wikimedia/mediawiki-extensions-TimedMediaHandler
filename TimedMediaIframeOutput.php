@@ -1,15 +1,15 @@
-<?php 
+<?php
 /**
- * Adds iframe output ( bug 25862 ) 
- * 
+ * Adds iframe output ( bug 25862 )
+ *
  * This enables iframe based embeds of the wikimeia player with the following syntax:
- *  
+ *
  * <iframe src="http://commons.wikimedia.org/wiki/File:Folgers.ogv?embedplayer=yes"
  * 		width="240" height="180" frameborder="0" ></iframe>
- * 
+ *
  */
 
-class TimedMediaIframeOutput {	
+class TimedMediaIframeOutput {
 	/**
 	 * The iframe hook check file pages embedplayer=yes
 	 */
@@ -24,10 +24,10 @@ class TimedMediaIframeOutput {
 			$wgEnableIframeEmbed &&
 			$doOutput ){
 				self::outputIframe( $title );
-				// Turn off output of anything other than the iframe 
+				// Turn off output of anything other than the iframe
 				$wgOut->disable();
 		}
-		
+
 		return true;
 	}
 	/**
@@ -36,20 +36,20 @@ class TimedMediaIframeOutput {
 	static function outputIframe( $title ) {
 		global $wgEnableIframeEmbed, $wgOut, $wgUser,
 			$wgEnableScriptLoader;
-	
+
 		if(!$wgEnableIframeEmbed){
 			throw new MWException( __METHOD__ .' is not enabled' );
 		}
-		
+
 		$skin = $wgUser->getSkin();
-		
+
 		// Setup the render parm
-		$file = wfFindFile( $title );	
+		$file = wfFindFile( $title );
 		$params = array(
 			'width' => 400
 		);
 		$videoTransform= $file->transform( $params );
-		
+
 		$wgOut->addModules( array( 'embedPlayerIframeStyle') );
 		$wgOut->sendCacheControl();
 	?>
@@ -58,7 +58,7 @@ class TimedMediaIframeOutput {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?php echo $title->getText() ?></title>
-	<?php 
+	<?php
 		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
 	?>
 	<?php
@@ -80,8 +80,8 @@ class TimedMediaIframeOutput {
 		  height:100%;
 		}
 	</style>
-	<?php echo $wgOut->getHeadScripts( $skin ); ?>	
-	<?php 
+	<?php echo $wgOut->getHeadScripts( $skin ); ?>
+	<?php
 	echo Html::inlineScript(
 	ResourceLoader::makeLoaderConditionalScript(
 			Xml::encodeJsCall( 'mw.loader.go', array() )
@@ -94,12 +94,12 @@ class TimedMediaIframeOutput {
 	<div id="videoContainer" style="visibility:hidden">
 		<?php echo $videoTransform->toHtml(); ?>
 	</div>
-	<script>		
-		// Set the fullscreen property inline to avoid poluting the player cache  
+	<script>
+		// Set the fullscreen property inline to avoid poluting the player cache
 		mw.setConfig('EmbedPlayer.EnableFullscreen', false );
-		$('#bgimage').remove(); 			
-		
-		mw.ready(function(){		
+		$('#bgimage').remove();
+
+		mw.ready(function(){
 			var fitPlayer = function(){
 				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
 				.get(0).resizePlayer({
@@ -108,16 +108,16 @@ class TimedMediaIframeOutput {
 				});
 			}
 			// Bind window resize to reize the player:
-			$( window ).resize( fitPlayer );	  
+			$( window ).resize( fitPlayer );
 			$('#videoContainer').css({
 				'visibility':'visible'
 			});
-			fitPlayer(); 
+			fitPlayer();
 		});
 	</script>
 </body>
 </html>
 	<?php
 	}
-	
+
 }

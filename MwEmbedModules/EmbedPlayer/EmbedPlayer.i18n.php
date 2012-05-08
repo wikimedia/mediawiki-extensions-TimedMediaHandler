@@ -10,7 +10,7 @@ $messages = array();
 $messages['en'] = array(
 	'mwe-embedplayer-credit-title' => 'Title: $1',
 	'mwe-embedplayer-credit-date' => 'Date: $1',
-	'mwe-embedplayer-credit-author' => 'Author: $1',	
+	'mwe-embedplayer-credit-author' => 'Author: $1',
 	'mwe-embedplayer-loading_plugin' => 'Loading plugin ...',
 	'mwe-embedplayer-select_playback' => 'Set playback preference',
 	'mwe-embedplayer-link_back' => 'Link back',
@@ -65,7 +65,7 @@ $messages['en'] = array(
 	'mwe-embedplayer-download-warn' => 'No compatible in browser player was detected, for in browser playback please download the [$1 latest Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Press <b>F11</b> toggle <i>web browser</i> fullscreen',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Press <b>shift ⌘ F</b> to toggle fullscreen',
-	
+
 	'mwe-embedplayer-do_not_warn_again' => 'In the future, do not show this message',
 	'mwe-embedplayer-playerSelect' => 'Players',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Read this</a> before embedding.',
@@ -258,7 +258,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-credits' => 'Стваральнікі',
 	'mwe-embedplayer-about-library' => 'Пра прайгравальнік Kaltura',
 	'mwe-embedplayer-about-library-desc' => 'HTML5 мэдыя-бібліятэка Kaltura дазваляе Вам выкарыстоўваць перавагамі HTML5 <code><nowiki><video></nowiki></code> і <code><nowiki><audio></nowiki></code> тэгаў ужо зараз, з аднолькавым інтэрфэйсам прайграваньня ва ўсіх асноўных браўзэрах.
-	
+
 [$1 даведацца болей пра бібліятэку прайгравальніка Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Крынічная старонка часткі файла',
 	'mwe-embedplayer-choose_player' => 'Выберыце відэа-прайгравальнік',
@@ -340,7 +340,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-credits' => 'Kredoù',
 	'mwe-embedplayer-about-library' => 'Diwar-benn al lenner Kaltura',
 	'mwe-embedplayer-about-library-desc' => "Talvezout a ra al levraoueg Kaltura deoc'h d'ober ho mad eus ar balizennoù HTML5 <code><nowiki><video></nowiki></code> ha <code><nowiki><klevet></nowiki></code> diouzhtu gant ul lenner hag un etrefas kenglotus gant ar merdeerioù pennañ.
-	
+
 [$1 Evit gouzout hiroc'h diwar-benn al levraoueg lenn Kaltura].",
 	'mwe-embedplayer-clip_linkback' => "Pajenn mammenn ar c'hlip",
 	'mwe-embedplayer-choose_player' => 'Dibab al lenner video',
@@ -792,7 +792,7 @@ $messages['es'] = array(
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-about-library' => 'Acerca del reproductor Kaltura',
 	'mwe-embedplayer-about-library-desc' => 'La biblioteca HTMl5 de Kaltura permite utilizar etiquetas de <code><nowiki><video></nowiki></code> y <code><nowiki><audio></nowiki></code> ahora con una interfaz de reproductor consistente en los navegadores más usados.
-	
+
 [$1 Más acerca de la biblioteca del reproductor Kalltura].',
 	'mwe-embedplayer-clip_linkback' => 'Página fuente de clip',
 	'mwe-embedplayer-choose_player' => 'Elegir reproductor de video',
@@ -916,7 +916,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-credits' => 'Crédits',
 	'mwe-embedplayer-about-library' => 'À propos du lecteur Kaltura',
 	'mwe-embedplayer-about-library-desc' => 'La bibliothèque HTML5 de Kaltura vous permet de profiter des balises HTML5 <code><nowiki><video></nowiki></code> et <code><nowiki><audio></nowiki></code> dès à présent avec un lecteur et une interface compatibles avec tous les principaux navigateurs.
-	
+
 [$1 Pour en savoir plus sur la bibliothèque de lecture Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Page source du clip',
 	'mwe-embedplayer-choose_player' => 'Choisir le lecteur vidéo',
@@ -1068,7 +1068,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-about-library' => 'Acerca do reprodutor Kaltura',
 	'mwe-embedplayer-about-library-desc' => 'A biblioteca HTML5 do Kaltura permite sacar proveito das etiquetas <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> do HTML5 cun reprodutor e unha interface compatibles cos principais navegadores.
-	
+
 [$1 Máis información sobre a biblioteca do reprodutor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Páxina de orixe do vídeo',
 	'mwe-embedplayer-choose_player' => 'Escolla o reprodutor de vídeo',
@@ -1392,7 +1392,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-credits' => 'Készítők',
 	'mwe-embedplayer-about-library' => 'A Kaltura lejátszó névjegye',
 	'mwe-embedplayer-about-library-desc' => 'A Kaltura HTML5-ös médialejátszó lehetővé teszi, hogy kihasználd a HTML5 <code><nowiki><video></nowiki></code> és <code><nowiki><audio></nowiki></code> elemeit azonos felületet biztonsítva az összes lényeges böngésző esetén.
-	
+
 [$1 További információ a Kaltura lejátszóról].',
 	'mwe-embedplayer-clip_linkback' => 'Klip forráslapja',
 	'mwe-embedplayer-choose_player' => 'Videolejátszó választása',
@@ -1464,7 +1464,7 @@ $messages['ia'] = array(
 	'mwe-embedplayer-credits' => 'Creditos',
 	'mwe-embedplayer-about-library' => 'A proposito del reproductor Kaltura',
 	'mwe-embedplayer-about-library-desc' => 'Le bibliotheca multimedia HTML5 de Kaltura te permitte traher avantage del etiquettas HTML5 <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> jam hodie con un interfacie de reproductor consistente trans tote le major navigatores.
-	
+
 [$1 Plus a proposito del bibliotheca reproductor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Pagina de fonte del clip',
 	'mwe-embedplayer-choose_player' => 'Seliger reproductor de video',
@@ -1545,7 +1545,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-share' => 'Bagikan',
 	'mwe-embedplayer-credits' => 'Kredit',
 	'mwe-embedplayer-about-library' => 'About pemutar Kaltura',
-	'mwe-embedplayer-about-library-desc' => 'Pustaka media HTML5 Kaltura memungkinkan Anda untuk mengambil keuntungan dari tag HTML5 <nowiki><video></nowiki> dan <nowiki><audio></nowiki> dengan antarmuka pemutar yang konsisten di semua peramban utama. 
+	'mwe-embedplayer-about-library-desc' => 'Pustaka media HTML5 Kaltura memungkinkan Anda untuk mengambil keuntungan dari tag HTML5 <nowiki><video></nowiki> dan <nowiki><audio></nowiki> dengan antarmuka pemutar yang konsisten di semua peramban utama.
 
  [$1 Selengkapnya tentang pustaka pemutar Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Halaman sumber klip',
@@ -2340,7 +2340,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-about-library' => 'Sobre o leitor Kaltura',
 	'mwe-embedplayer-about-library-desc' => 'A biblioteca multimédia HTML5 do Kaltura permite-lhe utilizar já hoje os elementos <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> do HTML5 com uma interface consistente do leitor em todos os browsers principais.
-	
+
 [$1 Mais sobre a biblioteca do leitor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Página fonte do clipe',
 	'mwe-embedplayer-choose_player' => 'Escolher leitor de vídeo',
@@ -2420,7 +2420,7 @@ $messages['pt-br'] = array(
 [$1 Mais sobre a biblioteca de reprodução Kaltura].
 
 enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code> and <code><nowiki><audio></nowiki></code> tags today with a consistent player interface across all major browsers.
-	
+
 [$1 More about the Kaltura player library].',
 	'mwe-embedplayer-clip_linkback' => 'Página fonte do clipe',
 	'mwe-embedplayer-choose_player' => 'Escolher leitor de vídeo',

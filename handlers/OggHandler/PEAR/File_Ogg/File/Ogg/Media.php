@@ -48,7 +48,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
      * Length of the stream in seconds
      */
     var $_streamLength;
-	
+
     /* Start offset of the stream in seconds */
     var $_startOffset = 0;
 
@@ -80,7 +80,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
             $packet = unpack("Cdata", fread($this->_filePointer, 1));
             if ($packet['data'] != $packetType)
                 throw new PEAR_Exception("Stream Undecodable", OGG_ERROR_UNDECODABLE);
-        
+
             // The following six characters should be equal to getIdentificationString()
             $id = $this->getIdentificationString();
             if ($id !== '' && fread($this->_filePointer, strlen($id)) !== $id)
@@ -119,7 +119,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
             $comment        = explode("=", fread($this->_filePointer, $comment_length['data']));
             $comment_title  = (string) $comment[0];
             $comment_value  = (string) utf8_decode($comment[1]);
-    
+
             // Check if the comment type (e.g. ARTIST) already exists.  If it does,
             // take the new value, and the existing value (or array) and insert it
             // into a new array.  This is important, since each comment type may have
@@ -134,7 +134,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
                 $this->_comments[$comment_title] = $comment_value;
         }
     }
-    
+
     /**
      * Provides a list of the comments extracted from the Vorbis stream.
      *
@@ -177,7 +177,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
         // The comment doesn't exist in this file.  The user should've called getCommentList first.
         return ("");
     }
-    
+
     /**
      * Get the entire comments array.
      * May return an empty array if the bitstream does not support comments.
@@ -209,7 +209,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
      * @access  public
      * @return  array
      */
-    function getHeader() 
+    function getHeader()
     {
         return array();
     }

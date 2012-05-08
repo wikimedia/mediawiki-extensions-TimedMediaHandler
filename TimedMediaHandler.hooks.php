@@ -14,15 +14,15 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$wgTmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules, $wgTimedTextNS,
 		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir;
-		
-		// Register the Timed Media Handler javascript resources ( MwEmbed modules ) 
+
+		// Register the Timed Media Handler javascript resources ( MwEmbed modules )
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
-		
+
 		// Set the default webPath for this embed player extension
-		$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath . 
-			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer'; 
-		
+		$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath .
+			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer';
+
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
@@ -31,7 +31,7 @@ class TimedMediaHandlerHooks {
 		$wgJobClasses+= array(
 			'webVideoTranscode' => 'WebVideoTranscodeJob'
 		);
-		
+
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
@@ -65,31 +65,31 @@ class TimedMediaHandlerHooks {
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
 				'dependencies'=> array( 'mw.Api' )
 			) ),
-			// adds support MediaWikiPlayerSupport player bindings 
+			// adds support MediaWikiPlayerSupport player bindings
 			"mw.MediaWikiPlayer.loader" =>  array_merge( $baseExtensionResource, array(
-				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js', 
+				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js',
 			) ),
 		);
 		// Setup a hook for iframe embed handling:
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
-		
+
 		// When an upload completes ( check clear any existing transcodes )
 		$wgHooks['UploadComplete'][] = 'TimedMediaHandlerHooks::checkUploadComplete';
 
-		// When an image page is moved: 
+		// When an image page is moved:
 		$wgHooks['TitleMoveComplete'][] = 'TimedMediaHandlerHooks::checkTitleMoveComplete';
 
-		// When image page is deleted so that we remove transcode settings / files. 
+		// When image page is deleted so that we remove transcode settings / files.
 		$wgHooks['ArticleDeleteComplete'][] = 'TimedMediaHandlerHooks::checkArticleDeleteComplete';
-		
+
 		// Add parser hook
 		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
-		
+
 		// We should probably move this script output to a parser function but not working correctly in
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
 
-		
+
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
 		if ( isset( $wgExcludeFromThumbnailPurge ) ) {
@@ -100,10 +100,10 @@ class TimedMediaHandlerHooks {
 		}
 
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::loadExtensionSchemaUpdates';
-		
+
 		// Add unit tests
 		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
-		
+
 		/**
 		 * Add support for the "TimedText" NameSpace
 		 */
@@ -115,23 +115,23 @@ class TimedMediaHandlerHooks {
 
 		// Check for timed text page:
 		$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
-		
+
 		// Add transcode status to video asset pages:
 		$wgHooks[ 'ImagePageAfterImageLinks' ][] = 'TimedMediaHandlerHooks::checkForTranscodeStatus';
 
 		// for MediaWiki 1.17 compatibility
 		TranscodeStatusTable::getLinker();
-		
+
 		return true;
 	}
-	
+
 	public static function checkForTimedTextPage( &$title, &$article ){
 		if( $title->getNamespace() == NS_TIMEDTEXT ) {
 			$article = new TimedTextPage( $title );
 		}
-		return true;			
+		return true;
 	}
-	
+
 	/**
 	 * Wraps the isTranscodableFile function
 	 * @param $title Title
@@ -143,19 +143,19 @@ class TimedMediaHandlerHooks {
 		$file = wfFindFile( $title );
 		return self::isTranscodableFile( $file );
 	}
-	
+
 	/**
 	 * Utility function to check if a given file can be "transcoded"
 	 * @param $file File object
 	 */
 	public static function isTranscodableFile( & $file ){
 		global $wgEnableTranscode;
-		
-		// don't show the transcode table if transcode is disabled 
+
+		// don't show the transcode table if transcode is disabled
 		if( $wgEnableTranscode === false ){
 			return false;
 		}
-		// Can't find file 
+		// Can't find file
 		if( !$file ){
 			return false;
 		}
@@ -163,16 +163,16 @@ class TimedMediaHandlerHooks {
 		if( !$file->isLocal() ){
 			return false;
 		}
-		$mediaType = $file->getHandler()->getMetadataType(); 
+		$mediaType = $file->getHandler()->getMetadataType();
 		// If ogg or webm format and not audio we can "transcode" this file
 		if( ( $mediaType == 'webm' || $mediaType == 'ogg' ) && ! $file->getHandler()->isAudio( $file ) ){
 			return true;
 		}
 		return false;
 	}
-	
+
 	public static function checkForTranscodeStatus( $article, &$html ){
-		// load the file: 
+		// load the file:
 		$file = wfFindFile( $article->getTitle() );
 		if( self::isTranscodableFile( $file ) ){
 			$html = TranscodeStatusTable::getHTML( $file );
@@ -190,14 +190,14 @@ class TimedMediaHandlerHooks {
 	}
 	/**
 	 * Handle moved titles
-	 * 
+	 *
 	 * For now we just remove all the derivatives for the oldTitle. In the future we could
-	 * look at moving the files, but right now thumbs are not moved, so I don't want to be 
+	 * look at moving the files, but right now thumbs are not moved, so I don't want to be
 	 * inconsistent.
 	 */
 	public static function checkTitleMoveComplete( &$title, &$newTitle, &$user, $oldid, $newid ){
 		if( self::isTranscodableTitle( $title ) ){
-			// Remove all the transcode files and db states for this asset 
+			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
 			WebVideoTranscode::removeTranscodes( $title );
 		}
@@ -210,12 +210,12 @@ class TimedMediaHandlerHooks {
 			if( self::isTranscodableFile( $file ) ){
 				WebVideoTranscode::removeTranscodes( $file );
 			}
-		} 
+		}
 		return true;
 	}
-	
+
 	/**
-	 * Adds the transcode sql 
+	 * Adds the transcode sql
 	 */
 	public static function loadExtensionSchemaUpdates( ){
 		global $wgExtNewTables;
@@ -224,7 +224,7 @@ class TimedMediaHandlerHooks {
 	        dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
 	    return true;
 	}
-	
+
 	/**
 	 * Hook to add list of PHPUnit test cases.
 	 * @param $files Array of files

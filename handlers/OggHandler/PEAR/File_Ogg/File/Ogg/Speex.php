@@ -44,15 +44,15 @@ class File_Ogg_Speex extends File_Ogg_Media
         $this->_decodeHeader();
         $this->_decodeCommentsHeader();
         $endSec =
-            (( '0x' . substr( $this->_lastGranulePos, 0, 8 ) ) * pow(2, 32) 
+            (( '0x' . substr( $this->_lastGranulePos, 0, 8 ) ) * pow(2, 32)
             + ( '0x' . substr( $this->_lastGranulePos, 8, 8 ) ))
             / $this->_header['rate'];
-     
-         $startSec	 =        
-            (( '0x' . substr( $this->_firstGranulePos, 0, 8 ) ) * pow(2, 32) 
+
+         $startSec	 =
+            (( '0x' . substr( $this->_firstGranulePos, 0, 8 ) ) * pow(2, 32)
             + ( '0x' . substr( $this->_firstGranulePos, 8, 8 ) ))
             / $this->_header['rate'];
-            
+
          //make sure the offset is worth taking into account oggz_chop related hack
 	    if( $startSec > 1){
             $this->_streamLength = $endSec - $startSec;
@@ -66,7 +66,7 @@ class File_Ogg_Speex extends File_Ogg_Media
      * Get a short string describing the type of the stream
      * @return string
      */
-    function getType() 
+    function getType()
     {
         return 'Speex';
     }

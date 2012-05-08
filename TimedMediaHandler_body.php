@@ -7,12 +7,12 @@ class TimedMediaHandler extends MediaHandler {
 	function isEnabled() {
 		return true;
 	}
-	
+
 	function getImageSize( $file, $path, $metadata = false ) {
-		/* override by handler */	
+		/* override by handler */
 		return array();
 	}
-	
+
 	/**
 	 * Get the list of supported wikitext embed params
 	 */
@@ -26,9 +26,9 @@ class TimedMediaHandler extends MediaHandler {
 	}
 	/**
 	 * Validate a embed file parameters
-	 * 
+	 *
 	 * @param $name {String} Name of the param
-	 * @param $value {Mixed} Value to validated 
+	 * @param $value {Mixed} Value to validated
 	 */
 	function validateParam( $name, $value ) {
 		if ( $name == 'thumbtime' || $name == 'start' || $name == 'end' ) {
@@ -39,19 +39,19 @@ class TimedMediaHandler extends MediaHandler {
 		return true;
 	}
 	/**
-	 * TODO we should really have "$file" available here to validate the param string 
+	 * TODO we should really have "$file" available here to validate the param string
 	 */
 	function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
 		$paramString ='';
 		$paramString.= ( isset( $params['width'] ) )?  $params['width'] . 'px' : '';
 		$paramString.= ( $paramString != '' )? '-' : '';
-		
+
 		// Get the raw thumbTime from thumbtime or start param
 		$thumbTime = isset( $params['thumbtime'] )? $params['thumbtime'] : false;
 		if( !$thumbTime )
 			$thumbTime = isset( $params['start'] )? $params['start'] : false;
-		
+
 		if ( $thumbTime ) {
 			$time = $this->parseTimeString( $thumbTime );
 			if ( $time !== false ) {
@@ -89,7 +89,7 @@ class TimedMediaHandler extends MediaHandler {
 		if( isset( $params['width'] ) && (int)$params['width'] > $image->getWidth() ){
 			$params['width'] = $image->getWidth();
 		}
-		
+
 		// Make sure start time is not > than end time
 		if(isset($params['start']) && isset($params['end']) ){
 			if($params['start'] > $params['end'])
@@ -107,13 +107,13 @@ class TimedMediaHandler extends MediaHandler {
 		$parserOutput->addOutputHook( 'TimedMediaHandler' );
 	}
 	/**
-	 * Output hook only adds the PopUpMediaTransform 
-	 * 
-	 * The core embedPlayer module is part of a "loaderScript" so it does not need to 
-	 * be registered here. 
+	 * Output hook only adds the PopUpMediaTransform
+	 *
+	 * The core embedPlayer module is part of a "loaderScript" so it does not need to
+	 * be registered here.
 	 */
 	static function outputHook( $outputPage, $parserOutput, $data ) {
-		// Add the PopUpMediaTransform code 
+		// Add the PopUpMediaTransform code
 		$outputPage->addModules( 'mw.PopUpMediaTransform' );
 		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform' );
 	}
@@ -123,8 +123,8 @@ class TimedMediaHandler extends MediaHandler {
 	public static function parseTimeString( $timeString, $length = false ) {
 		$parts = explode( ':', $timeString );
 		$time = 0;
-		// Check for extra :s 
-		if( count( $parts ) > 3 ){	
+		// Check for extra :s
+		if( count( $parts ) > 3 ){
 			return false;
 		}
 		for ( $i = 0; $i < count( $parts ); $i++ ) {
@@ -142,13 +142,13 @@ class TimedMediaHandler extends MediaHandler {
 			$time = $length - 1;
 		}
 		return $time;
-	}	
-	public static function getTimePassedMsg( $timePassed ){		
+	}
+	public static function getTimePassedMsg( $timePassed ){
 		$t['days'] = floor($timePassed/60/60/24);
 		$t['hours'] = floor($timePassed/60/60)%24;
 		$t['minutes'] = floor($timePassed/60)%60;
-		$t['seconds'] = $timePassed%60;			
-		
+		$t['seconds'] = $timePassed%60;
+
 		foreach( $t as $k => $v ){
 			if($v == 0 ){
 				unset( $t[$k] );
@@ -166,12 +166,12 @@ class TimedMediaHandler extends MediaHandler {
 	 * Converts seconds to Normal play time (NPT) time format:
 	 * consist of hh:mm:ss.ms
 	 * also see: http://www.ietf.org/rfc/rfc2326.txt section 3.6
-	 * 
+	 *
 	 * @param $time {Number} Seconds to be converted to npt time format
-	 */	 
-	public static function seconds2npt( $time ){ 
+	 */
+	public static function seconds2npt( $time ){
 		if ( !is_numeric( $time ) ) {
-			wfDebug( __METHOD__.": trying to get npt time on NaN:" + $time);			
+			wfDebug( __METHOD__.": trying to get npt time on NaN:" + $time);
 			return false;
 		}
 		if( $time < 0 ){
@@ -182,9 +182,9 @@ class TimedMediaHandler extends MediaHandler {
 		$min = floor( ( $time / 60 ) % 60 );
 		$sec = ($time % 60 );
 		$ms = ( $time - round( $time, 3) != 0 ) ? '.' .( $time - round( $time, 3) ) : '';
-		
+
 		return "{$hours}:{$min}:{$sec}{$ms}";
-	}	
+	}
 
 	function isMetadataValid( $image, $metadata ) {
 		return $this->unpackMetadata( $metadata ) !== false;
@@ -198,18 +198,18 @@ class TimedMediaHandler extends MediaHandler {
 	}
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgFFmpegLocation, $wgEnabledDerivatives;
-	
+
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
-		
+
 		// Audio should not be transformed by size, give it a default width and height
 		if( $this->isAudio( $file ) ){
 			$srcWidth = 220;
 			$srcHeight = 23;
 		}
-		
+
 		$params['width'] = isset( $params['width'] ) ? $params['width'] : $srcWidth;
-		
+
 		$options = array(
 			'file' => $file,
 			'length' => $this->getLength( $file ),
@@ -221,9 +221,9 @@ class TimedMediaHandler extends MediaHandler {
 			'start' => isset( $params['start'] ) ? $params['start'] : false,
 			'end' => isset( $params['end'] ) ? $params['end'] : false
 		);
-		
+
 		// No thumbs for audio
-		if( !$options['isVideo'] ){			
+		if( !$options['isVideo'] ){
 			return new TimedMediaTransformOutput( $options );
 		}
 
@@ -231,18 +231,18 @@ class TimedMediaHandler extends MediaHandler {
 		$options[ 'thumbUrl' ] = $dstUrl;
 		$options[ 'dstPath' ] = $dstPath;
 		$options[ 'path' ] = $dstPath;
-		
+
 		// Check if transform is deferred:
 		if ( $flags & self::TRANSFORM_LATER ) {
 			return new TimedMediaTransformOutput($options);
 		}
-		
+
 		// Generate thumb:
 		$thumbStatus = TimedMediaThumbnail::get( $options );
 		if( $thumbStatus !== true ){
 			return $thumbStatus;
 		}
-	
+
 		return new TimedMediaTransformOutput( $options );
 	}
 
