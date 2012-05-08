@@ -42,6 +42,7 @@ class OggHandler extends TimedMediaHandler {
 		}
 		return serialize( $metadata );
 	}
+
 	/**
 	 * Get the "media size"
 	 *
@@ -116,6 +117,7 @@ class OggHandler extends TimedMediaHandler {
 			return $metadata['length'];
 		}
 	}
+
 	function getFramerate( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -130,6 +132,7 @@ class OggHandler extends TimedMediaHandler {
 			return 0;
 		}
 	}
+
 	function getShortDesc( $file ) {
 		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
 

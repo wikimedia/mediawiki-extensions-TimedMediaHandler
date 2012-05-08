@@ -88,10 +88,12 @@ class WebMHandler extends TimedMediaHandler {
 
 		return $streamTypes;
 	}
+
 	function getBitrate($file ){
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		return $metadata['bitrate'];
 	}
+
 	function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -100,6 +102,7 @@ class WebMHandler extends TimedMediaHandler {
 			return $metadata['playtime_seconds'];
 		}
 	}
+
 	function getFramerate( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -114,7 +117,7 @@ class WebMHandler extends TimedMediaHandler {
 	}
 
 	function getShortDesc( $file ) {
-		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
+		global $wgLang;
 
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

@@ -10,9 +10,9 @@
 class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	static function register(){
-		global $wgParserOutputHooks, $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
+		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
-		$wgTmhFileExtensions, $wgParserOutputHooks, $wgOut, $wgAPIPropModules, $wgTimedTextNS,
+		$wgTmhFileExtensions, $wgParserOutputHooks, $wgTimedTextNS,
 		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir;
 
 		// Register the Timed Media Handler javascript resources ( MwEmbed modules )
@@ -37,7 +37,7 @@ class TimedMediaHandlerHooks {
 
 		$baseExtensionResource = array(
 			'localBasePath' => dirname( __FILE__ ),
-		 	'remoteExtPath' => 'TimedMediaHandler',
+			'remoteExtPath' => 'TimedMediaHandler',
 		);
 
 		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules )
@@ -179,6 +179,7 @@ class TimedMediaHandlerHooks {
 		}
 		return true;
 	}
+
 	public static function checkUploadComplete( &$image ){
 		$title = $image->getTitle();
 		// Check that the file is a transcodable asset:
@@ -219,10 +220,10 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function loadExtensionSchemaUpdates( ){
 		global $wgExtNewTables;
-	    $wgExtNewTables[] = array(
-	        'transcode',
-	        dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
-	    return true;
+		$wgExtNewTables[] = array(
+			'transcode',
+			dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
+		return true;
 	}
 
 	/**

@@ -14,6 +14,7 @@ class TextHandler {
 	function __construct( $file ){
 		$this->file = $file;
 	}
+
 	/**
 	 * Get the timed text tracks elements as an associative array
 	 */
@@ -24,6 +25,7 @@ class TextHandler {
 			return $this->getLocalTextSources();
 		}
 	}
+
 	function getTimedTextNamespace(){
 		if( $this->file->isLocal() ){
 			return NS_TIMEDTEXT;
@@ -53,6 +55,7 @@ class TextHandler {
 			return false;
 		}
 	}
+
 	function getTextPagesQuery(){
 		$ns = $this->getTimedTextNamespace();
 		if( $ns === false ){
@@ -68,6 +71,7 @@ class TextHandler {
 			'apprefix' => $this->file->getTitle()->getDBKey()
 		);
 	}
+
 	function getRemoteTextSources(){
 		global $wgMemc;
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
@@ -95,9 +99,8 @@ class TextHandler {
 		}
 		return $this->getTextTracksFromData( $data );
 	}
-	function getLocalTextSources(){
-		global $wgServer, $wgScriptPath;
 
+	function getLocalTextSources(){
 		// Init $this->textTracks
 		$params = new FauxRequest( $this->getTextPagesQuery() );
 		$api = new ApiMain( $params );
@@ -106,6 +109,7 @@ class TextHandler {
 		// Get the list of language Names
 		return $this->getTextTracksFromData( $data );
 	}
+
 	function getTextTracksFromData( $data ){
 		global $wgForeignFileRepos;
 

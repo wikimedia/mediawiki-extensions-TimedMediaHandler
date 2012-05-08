@@ -28,12 +28,14 @@ class WebVideoTranscodeJob extends Job {
 	private function output( $msg ){
 		print $msg . "\n";
 	}
+
 	private function getFile() {
 		if( !$this->file){
 			$this->file = wfLocalFile( $this->title );
 		}
 		return $this->file;
 	}
+
 	private function getTargetEncodePath(){
 		if( !$this->targetEncodePath ){
 			$file = $this->getFile();
@@ -42,6 +44,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return $this->targetEncodePath;
 	}
+
 	private function getSourceFilePath(){
 		if( !$this->sourceFilePath ){
 			$file = wfLocalFile( $this->title );
@@ -49,6 +52,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return $this->sourceFilePath;
 	}
+
 	// Run the transcode request
 	public function run() {
 		// get a local pointer to the file
@@ -219,6 +223,7 @@ class WebVideoTranscodeJob extends Job {
 		// pass along result status:
 		return $status;
 	}
+
 	function removeFffmpgeLogFiles(){
 		$dir = dirname( $this->getTargetEncodePath() );
 		if (is_dir($dir)) {
@@ -231,8 +236,8 @@ class WebVideoTranscodeJob extends Job {
 						wfRestoreWarnings();
 					}
 				}
-		        closedir($dh);
-		    }
+				closedir($dh);
+			}
 		}
 	}
 	/** Utility helper for ffmpeg and ffmpeg2theora mapping **/
@@ -301,6 +306,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
+
 	function ffmpegAddVideoOptions( $options, $pass){
 
 		// Get a local pointer to the file object
@@ -389,8 +395,6 @@ class WebVideoTranscodeJob extends Job {
 		return $cmd;
 	}
 
-
-
 	/**
 	 * ffmpeg2Theora mapping is much simpler since it is the basis of the the firefogg API
 	 */
@@ -416,7 +420,7 @@ class WebVideoTranscodeJob extends Job {
 				if( is_array(  self::$foggMap[$key] ) ){
 					$cmd.= ' '. implode(' ', WebVideoTranscode::$foggMap[$key] );
 				} elseif ($val == 'true' || $val === true){
-			 		$cmd.= ' '. self::$foggMap[$key];
+					$cmd.= ' '. self::$foggMap[$key];
 				} elseif ( $val === false){
 					//ignore "false" flags
 				} else {
@@ -440,6 +444,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
+
 	/**
 	 * Runs the shell exec command.
 	 * if $wgEnableBackgroundTranscodeJobs is enabled will mannage a background transcode task
@@ -476,7 +481,7 @@ class WebVideoTranscodeJob extends Job {
 			$errorMsg = '$wgEnableNiceBackgroundTranscodeJobs enabled but failed pcntl_fork';
 			$retval = 1;
 			$this->output( $errorMsg);
-		    return $errorMsg;
+			return $errorMsg;
 		} elseif ( $pid == 0) {
 			// we are the child
 			$this->runChildCmd( $cmd, $retval, $encodingLog, $retvalLog);
@@ -487,6 +492,7 @@ class WebVideoTranscodeJob extends Job {
 			return $this->monitorTranscode($pid, $retval, $encodingLog, $retvalLog);
 		}
 	}
+
 	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog ){
 		global $wgTranscodeBackgroundPriority;
 		// In theory we should use pcntl_exec but not sure how to get the stdout, ensure
@@ -593,6 +599,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return $errorMsg . file_get_contents( $encodingLog );
 	}
+
 	// check if proccess is running and not a zombie
 	public static function isProcessRunningKillZombie( $pid ){
 		exec( "ps $pid", $processState );
@@ -607,12 +614,13 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
+
 	/**
-    * Kill Application PID
-    *
-    * @param  unknown_type $PID
-    * @return boolen
-    */
+	* Kill Application PID
+	*
+	* @param  unknown_type $PID
+	* @return boolen
+	*/
 	public static function killProcess( $pid ){
 		exec( "kill -9 $pid" );
 		exec( "ps $pid", $processState );
@@ -620,7 +628,8 @@ class WebVideoTranscodeJob extends Job {
 			return false;
 		}
 		return true;
-   	}
+	}
+
 	 /**
 	 * Mapping between firefogg api and ffmpeg2theora command line
 	 *
@@ -646,16 +655,16 @@ class WebVideoTranscodeJob extends Job {
 		'cropRight'		=> "--cropright",
 		'keyframeInterval'=> "--keyint",
 		'denoise'		=> array("--pp", "de"),
-	 	'deinterlace'	=> "--deinterlace",
+		'deinterlace'	=> "--deinterlace",
 		'novideo'		=> array("--novideo", "--no-skeleton"),
 		'bufDelay'		=> "--buf-delay",
-		 // audio
+		// audio
 		'audioQuality'	=> "-a",
 		'audioBitrate'	=> "-A",
 		'samplerate'	=> "-H",
 		'channels'		=> "-c",
 		'noaudio'		=> "--noaudio",
-		 // metadata
+		// metadata
 		'artist'		=> "--artist",
 		'title'			=> "--title",
 		'date'			=> "--date",

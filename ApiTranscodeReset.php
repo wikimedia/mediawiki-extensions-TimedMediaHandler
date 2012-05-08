@@ -13,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiTranscodeReset extends ApiBase {
 	public function execute() {
-		global $wgUser, $wgEnabledTranscodeSet, $wgEnableTranscode, $wgWaitTimeForTranscodeReset;
+		global $wgUser, $wgEnableTranscode, $wgWaitTimeForTranscodeReset;
 		// Check if transcoding is enabled on this wiki at all:
 		if( !$wgEnableTranscode ){
 			$this->dieUsage( 'Transcode is disabled on this wiki', 'disabledtranscode' );
@@ -59,6 +59,7 @@ class ApiTranscodeReset extends ApiBase {
 
 		$this->getResult()->addValue(null, 'success', 'removed transcode');
 	}
+
 	static public function checkTimeSinceLastRest( $fileName, $transcodeKey ){
 		global $wgWaitTimeForTranscodeReset;
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $fileName );
@@ -80,6 +81,7 @@ class ApiTranscodeReset extends ApiBase {
 		}
 		return $leastWait;
 	}
+
 	static public function getStateResetTime( $state ){
 		global $wgWaitTimeForTranscodeReset;
 		$db = wfGetDB( DB_SLAVE );
@@ -96,6 +98,7 @@ class ApiTranscodeReset extends ApiBase {
 		// No time info, return resetWaitTime
 		return $wgWaitTimeForTranscodeReset + 1;
 	}
+
 	public function mustBePosted() {
 		return true;
 	}

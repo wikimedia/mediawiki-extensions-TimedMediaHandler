@@ -30,6 +30,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		return $this->textHandler;
 	}
+
 	/**
 	 * Get the media transform thumbnail
 	 */
@@ -161,11 +162,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// without going into some crazy object cloning or handler lookups path of least resistance,
 		// seems to just do an inline FauxRequest:
 		$params = new FauxRequest( array(
-	        'action' => 'query',
-	        'prop' => 'imageinfo',
-	        'iiprop' => 'url',
-	        'iiurlwidth' => intval( $width ),
-	        'titles' => $this->file->getTitle()->getPrefixedDBkey()
+			'action' => 'query',
+			'prop' => 'imageinfo',
+			'iiprop' => 'url',
+			'iiurlwidth' => intval( $width ),
+			'titles' => $this->file->getTitle()->getPrefixedDBkey()
 		) );
 		$api = new ApiMain( $params );
 		$api->execute();

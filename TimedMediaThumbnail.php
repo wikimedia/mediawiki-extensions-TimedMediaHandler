@@ -2,10 +2,6 @@
 class TimedMediaThumbnail {
 
 	static function get( $options ){
-		global $wgFFmpegLocation, $wgOggThumbLocation;
-
-		// Set up lodal pointer to file
-		$file = $options['file'];
 		if( !is_dir( dirname( $options['dstPath'] ) ) ){
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
 		}
@@ -67,7 +63,6 @@ class TimedMediaThumbnail {
 
 	static function getThumbTime( $options ){
 		$length = $options['file']->getLength();
-		$thumbtime = false;
 
 		// If start time param isset use that for the thumb:
 		if(  isset( $options['start'] ) ) {

@@ -11,9 +11,9 @@ class TranscodeStatusTable {
 	public static $linker;
 
 	public static function getLinker() {
-	    if ( is_null( self::$linker ) ) {
-		    self::$linker = new Linker();
-	    }
+		if ( is_null( self::$linker ) ) {
+			self::$linker = new Linker();
+		}
 	}
 
 	public static function getHTML( $file ){
@@ -73,9 +73,8 @@ class TranscodeStatusTable {
 		}
 		return $o;
 	}
-	public static function getSourceUrl( $file, $transcodeKey ){
-		$fileName = $file->getTitle()->getDbKey();
 
+	public static function getSourceUrl( $file, $transcodeKey ){
 		$thumbName = $file->thumbName( array() );
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );

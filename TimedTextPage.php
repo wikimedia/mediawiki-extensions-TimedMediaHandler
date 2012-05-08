@@ -13,15 +13,15 @@ class TimedTextPage extends Article {
 	static private $videoWidth = 400;
 
 	public function view() {
-		global $wgOut, $wgShowEXIF, $wgRequest, $wgUser;
+		global $wgOut, $wgRequest, $wgUser;
 
 		$diff = $wgRequest->getVal( 'diff' );
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
-		if ( $this->mTitle->getNamespace() != NS_TIMEDTEXT || ( isset( $diff ) && $diffOnly ) ) {
+		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || ( isset( $diff ) && $diffOnly ) ) {
 			return parent::view();
 		}
-		$titleParts = explode( '.', $this->mTitle->getDBKey() );
+		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
 		$srt = array_pop( $titleParts );
 		$lanugaeKey = array_pop( $titleParts );
 		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
@@ -47,6 +47,7 @@ class TimedTextPage extends Article {
 			)
 		);
 	}
+
 	/**
 	 * Gets the video HTML ( with the current language set as default )
 	 * @param unknown_type $videoTitle
@@ -65,6 +66,7 @@ class TimedTextPage extends Article {
 			return $videoTransform->toHTML();
 		}
 	}
+
 	/**
 	 * Gets the srt text
 	 *

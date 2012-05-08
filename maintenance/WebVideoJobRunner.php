@@ -24,6 +24,7 @@ class WebVideoJobRunner extends Maintenance {
 		$this->addOption( "frequency", "How often the script checks for job threads to be active", false, true );
 		$this->mDescription = "Transcode job running demon, continuously runs transcode jobs";
 	}
+
 	public function execute() {
 		if ( $this->hasOption( "threads" ) ) {
 			$this->threads = $this->getOption( 'threads' ) ;

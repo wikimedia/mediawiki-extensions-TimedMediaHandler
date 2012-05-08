@@ -37,9 +37,11 @@ class ApiTranscodeStatus extends ApiQueryBase {
 			}
 		}
 	}
+
 	public function getCacheMode( $params ) {
 		return 'public';
 	}
+
 	public function getAllowedParams() {
 		return array();
 	}

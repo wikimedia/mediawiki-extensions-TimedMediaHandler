@@ -181,6 +181,7 @@ class WebVideoTranscode {
 		}
 		return $maxSize;
 	}
+
 	/**
 	 * Give a rough estimate on file size
 	 * Note this is not always accurate.. especially with variable bitrate codecs ;)
@@ -209,6 +210,7 @@ class WebVideoTranscode {
 			return self::getRemoteSources( $file , $options );
 		}
 	}
+
 	/**
 	 * Grabs sources from the remote repo via ApiQueryVideoInfo.php entry point.
 	 *
@@ -367,6 +369,7 @@ class WebVideoTranscode {
 		// Else return boolean ready state ( if not null, then ready ):
 		return !is_null( $transcodeState[ $transcodeKey ]['time_success'] );
 	}
+
 	/**
 	 * Clear the transcode state cache:
 	 * @param String $fileName Optional fileName to clear transcode cache for
@@ -490,7 +493,6 @@ class WebVideoTranscode {
 	 * if the source is not found update the job queue
 	 */
 	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){
-		global $wgLang;
 		$fileName = $file->getTitle()->getDbKey();
 		// Check if the transcode is ready:
 		if( self::isTranscodeReady( $fileName, $transcodeKey ) ){
@@ -499,6 +501,7 @@ class WebVideoTranscode {
 			self::updateJobQueue( $file, $transcodeKey );
 		}
 	}
+
 	/**
 	 * Get the primary "source" asset used for other derivatives
 	 */
@@ -533,12 +536,12 @@ class WebVideoTranscode {
 		}
 		return $source;
 	}
+
 	/**
 	 * Get derivative "source" attributes
 	 */
 	static public function getDerivativeSourceAttributes($file, $transcodeKey, $options = array() ){
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
-
 
 		$fileName = $file->getTitle()->getDbKey();
 
@@ -571,6 +574,7 @@ class WebVideoTranscode {
 				"{$dataPrefix}framerate" => $framerate,
 			);
 	}
+
 	/**
 	 * Update the job queue if the file is not already in the job queue:
 	 * @param $file File object
@@ -655,6 +659,7 @@ class WebVideoTranscode {
 		$targetHeight += $targetHeight%2;
 		return array( $targetWidth, $targetHeight );
 	}
+
 	/**
 	 * Test if a given transcode target is larger than the source file
 	 *
@@ -672,6 +677,7 @@ class WebVideoTranscode {
 			return ( $maxSize['width'] > $sourceWidth );
 		}
 	}
+
 	/**
 	 * Return maxSize array for given maxSize setting
 	 *
