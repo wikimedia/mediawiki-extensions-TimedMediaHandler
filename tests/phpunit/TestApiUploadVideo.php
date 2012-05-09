@@ -32,4 +32,3 @@ class TestApiUploadVideo extends ApiTestCaseVideoUpload {
 	}
 
 }
-

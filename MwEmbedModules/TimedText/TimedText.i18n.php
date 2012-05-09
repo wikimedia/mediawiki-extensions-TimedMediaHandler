@@ -1863,4 +1863,3 @@ $messages['zh-hant'] = array(
 	'mwe-timedtext-textcat-cc' => '標題',
 	'mwe-timedtext-textcat-sub' => '副標題',
 );
-

@@ -187,7 +187,7 @@ class OggHandler extends TimedMediaHandler {
 			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
 			$wgLang->formatNum( $file->getWidth() ),
 			$wgLang->formatNum( $file->getHeight() )
-	   	);
+		);
 	}
 
 	function getBitRate( &$file ){

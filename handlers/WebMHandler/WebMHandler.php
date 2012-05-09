@@ -134,7 +134,7 @@ class WebMHandler extends TimedMediaHandler {
 			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
 			$wgLang->formatNum( $file->getWidth() ),
 			$wgLang->formatNum( $file->getHeight() )
-	   	);
+		);
 
 	}
 

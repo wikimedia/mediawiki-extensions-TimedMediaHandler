@@ -3045,4 +3045,3 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-close_btn' => '關閉',
 	'mwe-embedplayer-ogg-player-selected' => '（已選取）',
 );
-

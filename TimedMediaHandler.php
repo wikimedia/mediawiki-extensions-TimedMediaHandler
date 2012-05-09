@@ -168,4 +168,3 @@ $wgExtensionCredits['media'][] = array(
 	'descriptionmsg' => 'timedmedia-desc',
 	'version'		 => '0.2',
 );
-

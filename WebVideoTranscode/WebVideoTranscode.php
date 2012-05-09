@@ -117,7 +117,7 @@ class WebVideoTranscode {
 			),
 		WebVideoTranscode::ENC_WEBM_480P =>
 			array(
-			 	'maxSize'			=> '854x480',
+				'maxSize'			=> '854x480',
 				'videoBitrate'		=> '1024',
 				'audioQuality'		=> '2',
 				'samplerate'		=> '44100',

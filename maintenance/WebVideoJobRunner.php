@@ -128,4 +128,3 @@ class WebVideoJobRunner extends Maintenance {
 
 $maintClass = "WebVideoJobRunner";
 require_once( RUN_MAINTENANCE_IF_MAIN );
-

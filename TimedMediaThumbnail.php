@@ -68,13 +68,13 @@ class TimedMediaThumbnail {
 		if(  isset( $options['start'] ) ) {
 			$thumbtime = TimedMediaHandler::parseTimeString( $options['start'], $length );
 			if( $thumbtime )
-		 		return $thumbtime;
+				return $thumbtime;
 		}
 		// else use thumbtime
 		if ( isset( $options['thumbtime'] ) ) {
-		 	$thumbtime = TimedMediaHandler::parseTimeString( $options['thumbtime'], $length );
-		 	if( $thumbtime )
-		 		return $thumbtime;
+			$thumbtime = TimedMediaHandler::parseTimeString( $options['thumbtime'], $length );
+			if( $thumbtime )
+				return $thumbtime;
 		}
 		// Seek to midpoint by default, it tends to be more interesting than the start
 		return $length / 2;
