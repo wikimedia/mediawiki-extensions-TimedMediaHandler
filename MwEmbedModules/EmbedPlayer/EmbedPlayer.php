@@ -64,4 +64,4 @@
 			"mw.PlayerSkinMvpcf" => array( 	'scripts'=> "resources/skins/mvpcf/mw.PlayerSkinMvpcf.js",
 											'styles'=> "resources/skins/mvpcf/PlayerSkinMvpcf.css"),
 	);
-?>
+
