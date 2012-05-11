@@ -58,6 +58,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 			$this->deleteFileByFilename( $file['filePath'] );
 		}
 	}
+
 	/**
 	 * Do login
 	 */
@@ -99,7 +100,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 		$this->deleteFileByFileName( $fileName );
 		$this->deleteFileByContent( $file['filePath'] );
 
-		if (! $this->fakeUploadFile( 'file', $fileName, $file['mime'], $file['filePath'] ) ) {
+		if ( !$this->fakeUploadFile( 'file', $fileName, $file['mime'], $file['filePath'] ) ) {
 			$this->markTestIncomplete( "Couldn't upload file!\n" );
 		}
 

@@ -7,6 +7,11 @@
  *
  */
 class TranscodeStatusTable {
+
+	/**
+	 * @param $file File
+	 * @return string
+	 */
 	public static function getHTML( $file ){
 		global $wgUser, $wgOut;
 
@@ -35,6 +40,10 @@ class TranscodeStatusTable {
 		return $o;
 	}
 
+	/**
+	 * @param $file File
+	 * @return string
+	 */
 	public static function getTranscodeRows( $file ){
 		global $wgUser;
 		$o='';
@@ -65,6 +74,11 @@ class TranscodeStatusTable {
 		return $o;
 	}
 
+	/**
+	 * @param $file File
+	 * @param $transcodeKey string
+	 * @return string
+	 */
 	public static function getSourceUrl( $file, $transcodeKey ){
 		$thumbName = $file->thumbName( array() );
 		$thumbUrl = $file->getThumbUrl( $thumbName );
@@ -72,6 +86,11 @@ class TranscodeStatusTable {
 		return $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey;
 	}
 
+	/**
+	 * @param $file File
+	 * @param $state
+	 * @return string
+	 */
 	public static function getStatusMsg( $file, $state ){
 		// Check for success:
 		if( !is_null( $state['time_success'] ) ) {

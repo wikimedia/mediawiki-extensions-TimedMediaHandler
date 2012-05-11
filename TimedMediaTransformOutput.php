@@ -9,6 +9,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	var $hashTime = null;
 	var $textHandler = null; // lazy init in getTextHandler
 
+	var $start, $end;
+
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
@@ -23,6 +25,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 	}
 
+	/**
+	 * @return TextHandler
+	 */
 	function getTextHandler(){
 		if( !$this->textHandler ){
 			// Init an associated textHandler
@@ -33,6 +38,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media transform thumbnail
+	 * @return string
 	 */
 	function getUrl(){
 		global $wgStylePath;
@@ -43,11 +49,17 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return "$wgStylePath/common/images/icons/fileicon-ogg.png";
 	}
 
-	// TODO get the local path
+	/**
+	 * TODO get the local path
+	 * @return mixed
+	 */
 	function getPath(){
 		return $this->dstPath;
 	}
 
+	/**
+	 * @return int
+	 */
 	function getPlayerHeight(){
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
@@ -58,10 +70,18 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 	}
 
+	/**
+	 * @return string
+	 */
 	function getTagName(){
 		return ( $this->isVideo ) ? 'video' : 'audio';
 	}
 
+	/**
+	 * @param $options array
+	 * @return string
+	 * @throws MWException
+	 */
 	function toHtml( $options = array() ) {
 		global $wgMinimumVideoPlayerSize;
 
@@ -76,7 +96,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			return $this->getHtmlMediaTagOutput();
 		}
 	}
-	// XXX migrate this to the mediawiki Html class as 'tagSet' helper function
+
+	/**
+	 * XXX migrate this to the mediawiki Html class as 'tagSet' helper function
+	 * @param $tagName
+	 * @param $tagSet
+	 * @return string
+	 */
 	static function htmlTagSet( $tagName, $tagSet ){
 		$s = '';
 		if( empty( $tagSet ) ){
@@ -88,6 +114,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $s;
 	}
 
+	/**
+	 * @return string
+	 */
 	function getImagePopUp(){
 		return Xml::tags( 'div' , array(
 				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
@@ -127,6 +156,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * Call mediaWiki xml helper class to build media tag output from
 	 * supplied arrays
+	 * @param $sizeOverride array
+	 * @return string
 	 */
 	function getHtmlMediaTagOutput( $sizeOverride = array() ){
 		// Try to get the first source src attribute ( usually this should be the source file )
@@ -154,7 +185,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get a poster image from the api
-	 * @param Number, the width of the requested image
+	 * @param $width Number, the width of the requested image
+	 * @return bool
 	 */
 	function getPosterFromApi ( $width ){
 		// The media system is ~kind of~ strange. ( how do we get an alternate sized thumb url? )
@@ -183,6 +215,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * Get the media attributes
 	 * @param $sizeOverride {Array} of width and height
+	 * @return array
 	 */
 	function getMediaAttr( $sizeOverride = false ){
 		global $wgVideoPlayerSkin ;
@@ -247,6 +280,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $mediaAttr;
 	}
 
+	/**
+	 * @return null
+	 */
 	function getMediaSources(){
 		if( !$this->sources ){
 			// Generate transcode jobs ( and get sources that area already transcoded)

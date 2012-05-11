@@ -122,6 +122,11 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param $title Title
+	 * @param $article Article
+	 * @return bool
+	 */
 	public static function checkForTimedTextPage( &$title, &$article ){
 		if( $title->getNamespace() == NS_TIMEDTEXT ) {
 			$article = new TimedTextPage( $title );
@@ -132,6 +137,7 @@ class TimedMediaHandlerHooks {
 	/**
 	 * Wraps the isTranscodableFile function
 	 * @param $title Title
+	 * @return bool
 	 */
 	public static function isTranscodableTitle( $title ){
 		if( $title->getNamespace() != NS_FILE ){
@@ -144,6 +150,7 @@ class TimedMediaHandlerHooks {
 	/**
 	 * Utility function to check if a given file can be "transcoded"
 	 * @param $file File object
+	 * @return bool
 	 */
 	public static function isTranscodableFile( & $file ){
 		global $wgEnableTranscode;
@@ -168,6 +175,11 @@ class TimedMediaHandlerHooks {
 		return false;
 	}
 
+	/**
+	 * @param $article Article
+	 * @param $html string
+	 * @return bool
+	 */
 	public static function checkForTranscodeStatus( $article, &$html ){
 		// load the file:
 		$file = wfFindFile( $article->getTitle() );
@@ -177,6 +189,10 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param $image File
+	 * @return bool
+	 */
 	public static function checkUploadComplete( &$image ){
 		$title = $image->getTitle();
 		// Check that the file is a transcodable asset:
@@ -186,12 +202,19 @@ class TimedMediaHandlerHooks {
 		}
 		return true;
 	}
+
 	/**
 	 * Handle moved titles
 	 *
 	 * For now we just remove all the derivatives for the oldTitle. In the future we could
 	 * look at moving the files, but right now thumbs are not moved, so I don't want to be
 	 * inconsistent.
+	 * @param $title Title
+	 * @param $newTitle Title
+	 * @param $user User
+	 * @param $oldid int
+	 * @param $newid int
+	 * @return bool
 	 */
 	public static function checkTitleMoveComplete( &$title, &$newTitle, &$user, $oldid, $newid ){
 		if( self::isTranscodableTitle( $title ) ){
@@ -201,6 +224,14 @@ class TimedMediaHandlerHooks {
 		}
 		return true;
 	}
+
+	/**
+	 * @param $article Article
+	 * @param $user User
+	 * @param $reason string
+	 * @param $id
+	 * @return bool
+	 */
 	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
 		// Check if the article is a file and remove transcode files:
 		if( $article->getTitle()->getNamespace() == NS_FILE ) {
@@ -214,18 +245,18 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Adds the transcode sql
+	 * @param $updater DatabaseUpdater
+	 * @return bool
 	 */
-	public static function loadExtensionSchemaUpdates( ){
-		global $wgExtNewTables;
-		$wgExtNewTables[] = array(
-			'transcode',
-			dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
+	public static function loadExtensionSchemaUpdates( $updater ){
+		$updater->addExtensionTable( 'transcode', dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
 		return true;
 	}
 
 	/**
 	 * Hook to add list of PHPUnit test cases.
 	 * @param $files Array of files
+	 * @return bool
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testDir = dirname( __FILE__ ) . '/tests/phpunit/';
@@ -241,6 +272,11 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param $out OutputPage
+	 * @param $sk
+	 * @return bool
+	 */
 	static function pageOutputHook(  &$out, &$sk ){
 		$out->addModules( 'mw.PopUpMediaTransform' );
 		$out->addModuleStyles( 'mw.PopUpMediaTransform' );

@@ -5,6 +5,11 @@
 class OggHandler extends TimedMediaHandler {
 	const METADATA_VERSION = 2;
 
+	/**
+	 * @param $image File
+	 * @param $path string
+	 * @return string
+	 */
 	function getMetadata( $image, $path ) {
 		$metadata = array( 'version' => self::METADATA_VERSION );
 
@@ -46,6 +51,10 @@ class OggHandler extends TimedMediaHandler {
 	/**
 	 * Get the "media size"
 	 *
+	 * @param $file File
+	 * @param $path string
+	 * @param $metadata bool
+	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
 		global $wgMediaVideoTypes;
@@ -75,6 +84,10 @@ class OggHandler extends TimedMediaHandler {
 		return array( false, false );
 	}
 
+	/**
+	 * @param $metadata
+	 * @return bool|mixed
+	 */
 	function unpackMetadata( $metadata ) {
 		$unser = @unserialize( $metadata );
 		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
@@ -84,10 +97,18 @@ class OggHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $image string
+	 * @return string
+	 */
 	function getMetadataType( $image = '' ) {
 		return 'ogg';
 	}
 
+	/**
+	 * @param $file File
+	 * @return array|bool
+	 */
 	function getStreamTypes( $file ) {
 		$streamTypes = array();
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
@@ -100,6 +121,10 @@ class OggHandler extends TimedMediaHandler {
 		return array_unique( $streamTypes );
 	}
 
+	/**
+	 * @param $file File
+	 * @return int
+	 */
 	function getOffset( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['offset']) ) {
@@ -109,6 +134,10 @@ class OggHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $file File
+	 * @return int
+	 */
 	function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -118,6 +147,10 @@ class OggHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $file File
+	 * @return float|int
+	 */
 	function getFramerate( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -133,6 +166,10 @@ class OggHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $file File
+	 * @return String
+	 */
 	function getShortDesc( $file ) {
 		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
 
@@ -152,6 +189,10 @@ class OggHandler extends TimedMediaHandler {
 			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
 	}
 
+	/**
+	 * @param $file File
+	 * @return String
+	 */
 	function getLongDesc( $file ) {
 		global $wgLang, $wgMediaVideoTypes, $wgMediaAudioTypes;
 
@@ -190,6 +231,10 @@ class OggHandler extends TimedMediaHandler {
 		);
 	}
 
+	/**
+	 * @param $file File
+	 * @return float|int
+	 */
 	function getBitRate( &$file ){
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );

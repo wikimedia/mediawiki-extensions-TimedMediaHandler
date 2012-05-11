@@ -20,15 +20,26 @@ class WebVideoTranscodeJob extends Job {
 	var $targetEncodePath = null;
 	var $sourceFilePath = null;
 
+	/**
+	 * @var File
+	 */
+	var $file;
+
 	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'webVideoTranscode', $title, $params, $id );
 	}
 
-	// Local function to debug output ( jobs don't have access to the maintenance output class )
+	/**
+	 * Local function to debug output ( jobs don't have access to the maintenance output class )
+	 * @param $msg string
+	 */
 	private function output( $msg ){
 		print $msg . "\n";
 	}
 
+	/**
+	 * @return File
+	 */
 	private function getFile() {
 		if( !$this->file){
 			$this->file = wfLocalFile( $this->title );
@@ -36,6 +47,9 @@ class WebVideoTranscodeJob extends Job {
 		return $this->file;
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getTargetEncodePath(){
 		if( !$this->targetEncodePath ){
 			$file = $this->getFile();
@@ -45,6 +59,9 @@ class WebVideoTranscodeJob extends Job {
 		return $this->targetEncodePath;
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getSourceFilePath(){
 		if( !$this->sourceFilePath ){
 			$file = wfLocalFile( $this->title );
@@ -53,7 +70,10 @@ class WebVideoTranscodeJob extends Job {
 		return $this->sourceFilePath;
 	}
 
-	// Run the transcode request
+	/**
+	 * Run the transcode request
+	 * @return bool|string
+	 */
 	public function run() {
 		// get a local pointer to the file
 		$file = wfLocalFile( $this->title );
@@ -244,7 +264,13 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 	}
-	/** Utility helper for ffmpeg and ffmpeg2theora mapping **/
+
+	/**
+	 * Utility helper for ffmpeg and ffmpeg2theora mapping
+	 * @param $options array
+	 * @param $pass int
+	 * @return bool|string
+	 */
 	function ffmpegEncode( $options, $pass=0 ){
 		global $wgFFmpegLocation;
 
@@ -311,7 +337,12 @@ class WebVideoTranscodeJob extends Job {
 		return true;
 	}
 
-	function ffmpegAddVideoOptions( $options, $pass){
+	/**
+	 * @param $options
+	 * @param $pass
+	 * @return string
+	 */
+	function ffmpegAddVideoOptions( $options, $pass ){
 
 		// Get a local pointer to the file object
 		$file = wfLocalFile( $this->title );
@@ -380,7 +411,12 @@ class WebVideoTranscodeJob extends Job {
 		return $cmd;
 	}
 
-	function ffmpegAddAudioOptions( $options, $pass){
+	/**
+	 * @param $options array
+	 * @param $pass
+	 * @return string
+	 */
+	function ffmpegAddAudioOptions( $options, $pass ){
 		$cmd ='';
 		if( isset( $options['audioQuality'] ) ){
 			$cmd.= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
@@ -401,8 +437,10 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * ffmpeg2Theora mapping is much simpler since it is the basis of the the firefogg API
+	 * @param $options array
+	 * @return bool|string
 	 */
-	function ffmpeg2TheoraEncode( $options){
+	function ffmpeg2TheoraEncode( $options ){
 		global $wgFFmpeg2theoraLocation;
 
 		// Set up the base command
@@ -422,7 +460,7 @@ class WebVideoTranscodeJob extends Job {
 		foreach( $options as $key => $val ){
 			if( isset( self::$foggMap[$key] ) ){
 				if( is_array(  self::$foggMap[$key] ) ){
-					$cmd.= ' '. implode(' ', WebVideoTranscode::$foggMap[$key] );
+					$cmd.= ' '. implode(' ', self::$foggMap[$key] );
 				} elseif ($val == 'true' || $val === true){
 					$cmd.= ' '. self::$foggMap[$key];
 				} elseif ( $val === false){
@@ -456,6 +494,7 @@ class WebVideoTranscodeJob extends Job {
 	 *
 	 * @param $cmd String Command to be run
 	 * @param $retval String, refrence variable to return the exit code
+	 * @return string
 	 */
 	public function runShellExec( $cmd, &$retval){
 		global $wgEnableNiceBackgroundTranscodeJobs;
@@ -497,6 +536,12 @@ class WebVideoTranscodeJob extends Job {
 		}
 	}
 
+	/**
+	 * @param $cmd
+	 * @param $retval
+	 * @param $encodingLog
+	 * @param $retvalLog
+	 */
 	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog ){
 		// In theory we should use pcntl_exec but not sure how to get the stdout, ensure
 		// we don't max php memory with the same protections provided by wfShellExec.
@@ -520,6 +565,13 @@ class WebVideoTranscodeJob extends Job {
 		wfRestoreWarnings();
 	}
 
+	/**
+	 * @param $pid
+	 * @param $retval
+	 * @param $encodingLog
+	 * @param $retvalLog
+	 * @return string
+	 */
 	public function monitorTranscode( $pid, &$retval, $encodingLog, $retvalLog ){
 		global $wgTranscodeBackgroundTimeLimit, $wgLang;
 		$errorMsg = '';
@@ -573,7 +625,7 @@ class WebVideoTranscodeJob extends Job {
 			if ( $wgTranscodeBackgroundTimeLimit && time() - $startTime  > $wgTranscodeBackgroundTimeLimit ){
 				// FIXME: $maxTime is undefined
 				$errorMsg = "Encoding exceeded max job run time ( "
-					. TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process.";
+					. TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process."; // FIXME: $maxTime is undefined
 				$this->output( $errorMsg );
 				// File is not growing in size, kill proccess
 				$retval = 1;
@@ -605,7 +657,11 @@ class WebVideoTranscodeJob extends Job {
 		return $errorMsg . file_get_contents( $encodingLog );
 	}
 
-	// check if proccess is running and not a zombie
+	/**
+	 * check if proccess is running and not a zombie
+	 * @param $pid int
+	 * @return bool
+	 */
 	public static function isProcessRunningKillZombie( $pid ){
 		exec( "ps $pid", $processState );
 		if( !isset( $processState[1] ) ){
@@ -623,7 +679,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	* Kill Application PID
 	*
-	* @param $PID int
+	* @param $pid int
 	* @return bool
 	*/
 	public static function killProcess( $pid ){

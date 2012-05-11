@@ -22,6 +22,9 @@ class ApiTranscodeStatus extends ApiQueryBase {
 
 			$result = $this->getResult();
 			$images = RepoGroup::singleton()->findFiles( $titles );
+			/**
+			 * @var $img File
+			 */
 			foreach ( $images as $img ) {
 				// if its a "transcode" add the transcode status table output
 				if( TimedMediaHandlerHooks::isTranscodableTitle( $img->getTitle() ) ){

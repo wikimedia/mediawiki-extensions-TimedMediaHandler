@@ -51,7 +51,6 @@ class TestVideoThumbnail extends ApiTestCaseVideoUpload {
 			$this->assertEquals( 200, $width );
 		}
 
-
 		/**
 		 * We combine tests because fixtures don't play well with dataProvider
 		 * see README for more info

@@ -1,6 +1,10 @@
 <?php
 class TimedMediaThumbnail {
 
+	/**
+	 * @param $options array()
+	 * @return bool|MediaTransformError
+	 */
 	static function get( $options ){
 		if( !is_dir( dirname( $options['dstPath'] ) ) ){
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
@@ -11,6 +15,10 @@ class TimedMediaThumbnail {
 		return self::tryFfmpegThumb( $options );
 	}
 
+	/**
+	 * @param $options array
+	 * @return bool|MediaTransformError
+	 */
 	static function tryFfmpegThumb( $options ){
 		global $wgFFmpegLocation;
 
@@ -61,6 +69,10 @@ class TimedMediaThumbnail {
 		return new MediaTransformError( 'thumbnail_error', $options['width'], $options['height'], implode( "\n", $lines ) );
 	}
 
+	/**
+	 * @param $options array
+	 * @return bool|float|int
+	 */
 	static function getThumbTime( $options ){
 		$length = $options['file']->getLength();
 

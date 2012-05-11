@@ -4,6 +4,9 @@ class TimedMediaHandler extends MediaHandler {
 
 	static $magicDone = false;
 
+	/**
+	 * @return bool
+	 */
 	function isEnabled() {
 		return true;
 	}
@@ -15,6 +18,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * Get the list of supported wikitext embed params
+	 * @return array
 	 */
 	function getParamMap() {
 		return array(
@@ -30,6 +34,7 @@ class TimedMediaHandler extends MediaHandler {
 	 *
 	 * @param $name {String} Name of the param
 	 * @param $value {Mixed} Value to validated
+	 * @return bool
 	 */
 	function validateParam( $name, $value ) {
 		if ( $name == 'thumbtime' || $name == 'start' || $name == 'end' ) {
@@ -42,6 +47,8 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * TODO we should really have "$file" available here to validate the param string
+	 * @param $params array
+	 * @return string
 	 */
 	function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
@@ -63,6 +70,10 @@ class TimedMediaHandler extends MediaHandler {
 		return $paramString ;
 	}
 
+	/**
+	 * @param $str string
+	 * @return array
+	 */
 	function parseParamString( $str ) {
 		$m = false;
 		if ( preg_match( '/^seek=(\d+)$/', $str, $m ) ) {
@@ -71,12 +82,17 @@ class TimedMediaHandler extends MediaHandler {
 		return array();
 	}
 
+	/**
+	 * @param $image File
+	 * @param $params array
+	 * @return bool
+	 */
 	function normaliseParams( $image, &$params ) {
 		$timeParam = array( 'thumbtime', 'start', 'end' );
 		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach($timeParam as $pn){
 			if ( isset( $params[$pn] ) ) {
-				$length = $this->getLength( $image );
+				$length = $this->getLength( $image ); // FIXME: getLength() is undefined
 				$time = $this->parseTimeString( $params[$pn] );
 				if ( $time === false ) {
 					return false;
@@ -101,6 +117,10 @@ class TimedMediaHandler extends MediaHandler {
 		return true;
 	}
 
+	/**
+	 * @param $parser Parser
+	 * @param $file File
+	 */
 	function parserTransformHook( $parser, $file ) {
 		$parserOutput = $parser->getOutput();
 		if ( isset( $parserOutput->hasTimedMediaTransform ) ) {
@@ -109,19 +129,28 @@ class TimedMediaHandler extends MediaHandler {
 		$parserOutput->hasTimedMediaTransform = true;
 		$parserOutput->addOutputHook( 'TimedMediaHandler' );
 	}
+
 	/**
 	 * Output hook only adds the PopUpMediaTransform
 	 *
 	 * The core embedPlayer module is part of a "loaderScript" so it does not need to
 	 * be registered here.
+	 *
+	 * @param $outputPage OutputPage
+	 * @param $parserOutput
+	 * @param $data
 	 */
 	static function outputHook( $outputPage, $parserOutput, $data ) {
 		// Add the PopUpMediaTransform code
 		$outputPage->addModules( 'mw.PopUpMediaTransform' );
 		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform' );
 	}
+
 	/**
 	 * Utility functions
+	 * @param $timeString
+	 * @param $length
+	 * @return bool|int
 	 */
 	public static function parseTimeString( $timeString, $length = false ) {
 		$parts = explode( ':', $timeString );
@@ -147,7 +176,13 @@ class TimedMediaHandler extends MediaHandler {
 		return $time;
 	}
 
+	/**
+	 * @static
+	 * @param $timePassed
+	 * @return string
+	 */
 	public static function getTimePassedMsg( $timePassed ){
+		$t = array();
 		$t['days'] = floor($timePassed/60/60/24);
 		$t['hours'] = floor($timePassed/60/60)%24;
 		$t['minutes'] = floor($timePassed/60)%60;
@@ -166,12 +201,14 @@ class TimedMediaHandler extends MediaHandler {
 		// Call to the correct set of significant measurements:
 		return wfMsgHtml( 'timedmedia-time-' . count($t) . '-measurements', $t);
 	}
+
 	/**
 	 * Converts seconds to Normal play time (NPT) time format:
 	 * consist of hh:mm:ss.ms
 	 * also see: http://www.ietf.org/rfc/rfc2326.txt section 3.6
 	 *
-	 * @param $time {Number} Seconds to be converted to npt time format
+	 * @param $time Number Seconds to be converted to npt time format
+	 * @return bool|string
 	 */
 	public static function seconds2npt( $time ){
 		if ( !is_numeric( $time ) ) {
@@ -190,19 +227,42 @@ class TimedMediaHandler extends MediaHandler {
 		return "{$hours}:{$min}:{$sec}{$ms}";
 	}
 
+	/**
+	 * @param $image
+	 * @param $metadata
+	 * @return bool
+	 */
 	function isMetadataValid( $image, $metadata ) {
-		return $this->unpackMetadata( $metadata ) !== false;
+		return $this->unpackMetadata( $metadata ) !== false; // FIXME: unpackMetadata() is undefined
 	}
 
+	/**
+	 * @param $ext
+	 * @param $mime
+	 * @param null $params
+	 * @return array
+	 */
 	function getThumbType( $ext, $mime, $params = null ) {
 		return array( 'jpg', 'image/jpeg' );
 	}
 
-	// checks if a given file is an audio file
+	/**
+	 * checks if a given file is an audio file
+	 * @param $file File
+	 * @return bool
+	 */
 	function isAudio( $file ){
 		return ( $file->getWidth() == 0 && $file->getHeight() == 0 );
 	}
 
+	/**
+	 * @param $file File
+	 * @param $dstPath String
+	 * @param $dstUrl String
+	 * @param $params array
+	 * @param $flags int
+	 * @return bool|MediaTransformError|MediaTransformOutput|TimedMediaTransformOutput
+	 */
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
@@ -217,7 +277,7 @@ class TimedMediaHandler extends MediaHandler {
 
 		$options = array(
 			'file' => $file,
-			'length' => $this->getLength( $file ),
+			'length' => $this->getLength( $file ), // FIXME: getLength() is undefined
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth ),
@@ -251,23 +311,40 @@ class TimedMediaHandler extends MediaHandler {
 		return new TimedMediaTransformOutput( $options );
 	}
 
+	/**
+	 * @param $file
+	 * @return bool
+	 */
 	function canRender( $file ) { return true; }
+
+	/**
+	 * @param $file
+	 * @return bool
+	 */
 	function mustRender( $file ) { return true; }
 
-	// Get a stream offset time
+	/**
+	 * Get a stream offset time
+	 * @param $file
+	 * @return int
+	 */
 	function getOffset( $file ){
 		return 0;
 	}
 
+	/**
+	 * @param $file File
+	 * @return String
+	 */
 	function getDimensionsString( $file ) {
 		global $wgLang;
 
 		if ( $file->getWidth() ) {
-			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
+			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ), // FIXME: getLength() is undefined
 				$wgLang->formatNum( $file->getWidth() ),
 				$wgLang->formatNum( $file->getHeight() ) );
 		} else {
-			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
+			return $wgLang->formatTimePeriod( $this->getLength( $file ) ); // FIXME: getLength() is undefined
 		}
 	}
 }

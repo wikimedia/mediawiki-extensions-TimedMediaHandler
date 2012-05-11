@@ -18,6 +18,8 @@ class WebVideoJobRunner extends Maintenance {
 	// How often ( in seconds ) the script checks for $threads transcode jobs to be active.
 	var $checkJobsFrequency = 5;
 
+	var $wiki;
+
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( "threads", "The number of simultaneous transcode threads to run", false, true );
@@ -93,6 +95,11 @@ class WebVideoJobRunner extends Maintenance {
 		}
 	}
 
+	/**
+	 * @param $command string
+	 * @param $priority int
+	 * @return string
+	 */
 	function runBackgroundProc($command, $priority = 19 ){
 		$out = wfShellExec("nohup nice -n $priority $command > /dev/null & echo $!");
 		return trim( $out );
@@ -100,18 +107,19 @@ class WebVideoJobRunner extends Maintenance {
 
 	/**
 	 * Gets a list of php process
+	 * @return array
 	 */
 	function getProcessList(){
 		// Get all the php process except for
 		$pList = wfShellExec( 'ps axo pid,etime,args | grep php | grep -v grep' );
 		$pList = explode("\n", $pList );
 		$namedProccessList = array();
-		foreach( $pList as $key => $val ){
-			if( trim( $val) == '' )
+		foreach( $pList as $val ){
+			if( trim( $val ) == '' ) {
 				continue;
+			}
 
 			// Split the process id
-			//$matchStatus = preg_match('/\s([0-9]+)\s+([0-9]+:?[0-9]+:[0-9]+)+\s+([^\s]+)\s(.*)/', $val, $matches);
 			$matchStatus = preg_match('/\s*([0-9]+)\s+([0-9]+:?[0-9]+:[0-9]+)+\s+([^\s]+)\s(.*)/', $val, $matches);
 			if( !$matchStatus ){
 				continue;

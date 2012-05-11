@@ -12,9 +12,13 @@
 class TimedMediaIframeOutput {
 	/**
 	 * The iframe hook check file pages embedplayer=yes
+	 * @param $title Title
+	 * @param $article Article
+	 * @param bool $doOutput
+	 * @return bool
 	 */
 	static function iframeHook( &$title, &$article, $doOutput = true ) {
-		global $wgTitle, $wgRequest, $wgOut, $wgEnableIframeEmbed;
+		global $wgTitle, $wgRequest, $wgOut, $wgEnableIframeEmbed; // FIXME: Do we need to use $wgTitle ?
 		if( !$wgEnableIframeEmbed )
 			return true; //continue normal output iframes are "off" (maybe throw a warning in the future)
 

@@ -11,12 +11,18 @@ class TextHandler {
 
 	var $remoteNs = null;//lazy init remote Namespace number
 
+	/**
+	 * @var File
+	 */
+	protected $file;
+
 	function __construct( $file ){
 		$this->file = $file;
 	}
 
 	/**
 	 * Get the timed text tracks elements as an associative array
+	 * @return array|mixed
 	 */
 	function getTracks(){
 		if( !$this->file->isLocal() ){
@@ -26,6 +32,9 @@ class TextHandler {
 		}
 	}
 
+	/**
+	 * @return bool|int|null
+	 */
 	function getTimedTextNamespace(){
 		if( $this->file->isLocal() ){
 			return NS_TIMEDTEXT;
@@ -35,7 +44,7 @@ class TextHandler {
 			}
 			// Get the namespace data from the image api repo:
 			// fetchImageQuery query caches results
-			$data = $this->file->repo->fetchImageQuery( array(
+			$data = $this->file->getRepo()->fetchImageQuery( array(
 				'meta' =>'siteinfo',
 				'siprop' => 'namespaces'
 			));
@@ -56,6 +65,9 @@ class TextHandler {
 		}
 	}
 
+	/**
+	 * @return array|bool
+	 */
 	function getTextPagesQuery(){
 		$ns = $this->getTimedTextNamespace();
 		if( $ns === false ){
@@ -72,12 +84,15 @@ class TextHandler {
 		);
 	}
 
+	/**
+	 * @return array|mixed
+	 */
 	function getRemoteTextSources(){
 		global $wgMemc;
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
-		if ( $this->file->repo->descriptionCacheExpiry > 0 ) {
+		if ( $this->file->getRepo()->descriptionCacheExpiry > 0 ) {
 			wfDebug("Attempting to get text tracks from cache...");
-			$key = $this->file->repo->getLocalCacheKey( 'RemoteTextTracks', 'url', $this->file->getName() );
+			$key = $this->file->getRepo()->getLocalCacheKey( 'RemoteTextTracks', 'url', $this->file->getName() );
 			$obj = $wgMemc->get($key);
 			if ($obj) {
 				wfDebug("success!\n");
@@ -88,18 +103,20 @@ class TextHandler {
 		wfDebug("Get text tracks from remote api \n");
 		$query = $this->getTextPagesQuery();
 
-
 		// Error in getting timed text namespace return empty array;
 		if( $query === false ){
 			return array();
 		}
-		$data = $this->file->repo->fetchImageQuery( $query );
+		$data = $this->file->getRepo()->fetchImageQuery( $query );
 		if ( $data && $this->file->repo->descriptionCacheExpiry > 0 ) {
 			$wgMemc->set( $key, $data, $this->file->repo->descriptionCacheExpiry );
 		}
 		return $this->getTextTracksFromData( $data );
 	}
 
+	/**
+	 * @return array
+	 */
 	function getLocalTextSources(){
 		// Init $this->textTracks
 		$params = new FauxRequest( $this->getTextPagesQuery() );
@@ -110,6 +127,10 @@ class TextHandler {
 		return $this->getTextTracksFromData( $data );
 	}
 
+	/**
+	 * @param $data
+	 * @return array
+	 */
 	function getTextTracksFromData( $data ){
 		global $wgForeignFileRepos;
 

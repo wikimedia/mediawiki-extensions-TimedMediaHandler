@@ -6,6 +6,11 @@ class WebMHandler extends TimedMediaHandler {
 	// XXX match GETID3_VERSION ( too bad version is not a getter )
 	const METADATA_VERSION = 1;
 
+	/**
+	 * @param $image File
+	 * @param $path string
+	 * @return string
+	 */
 	function getMetadata( $image, $path ) {
 		// Create new id3 object:
 		$getID3 = new getID3();
@@ -36,6 +41,10 @@ class WebMHandler extends TimedMediaHandler {
 
 	/**
 	 * Get the "media size"
+	 * @param $file File
+	 * @param $path string
+	 * @param $metadata bool
+	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
 		// Just return the size of the first video stream
@@ -58,6 +67,10 @@ class WebMHandler extends TimedMediaHandler {
 		return array( false, false );
 	}
 
+	/**
+	 * @param $metadata
+	 * @return bool|mixed
+	 */
 	function unpackMetadata( $metadata ) {
 		$unser = @unserialize( $metadata );
 		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
@@ -67,10 +80,18 @@ class WebMHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $image string
+	 * @return string
+	 */
 	function getMetadataType( $image = '' ) {
 		return 'webm';
 	}
 
+	/**
+	 * @param $file File
+	 * @return array|bool
+	 */
 	function getStreamTypes( $file ) {
 		$streamTypes = array();
 		$metadata = self::unpackMetadata( $file->getMetadata() );
@@ -88,11 +109,19 @@ class WebMHandler extends TimedMediaHandler {
 		return $streamTypes;
 	}
 
+	/**
+	 * @param $file File
+	 * @return mixed
+	 */
 	function getBitrate($file ){
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		return $metadata['bitrate'];
 	}
 
+	/**
+	 * @param $file File
+	 * @return int
+	 */
 	function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -102,6 +131,10 @@ class WebMHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $file File
+	 * @return bool|int
+	 */
 	function getFramerate( $file ){
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -115,6 +148,10 @@ class WebMHandler extends TimedMediaHandler {
 		}
 	}
 
+	/**
+	 * @param $file File
+	 * @return String
+	 */
 	function getShortDesc( $file ) {
 		global $wgLang;
 
@@ -126,6 +163,10 @@ class WebMHandler extends TimedMediaHandler {
 			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
 	}
 
+	/**
+	 * @param $file File
+	 * @return String
+	 */
 	function getLongDesc( $file ) {
 		global $wgLang;
 		return wfMsg('timedmedia-webm-long-video',

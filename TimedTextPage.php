@@ -23,16 +23,16 @@ class TimedTextPage extends Article {
 			return;
 		}
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
-		$srt = array_pop( $titleParts );
-		$lanugaeKey = array_pop( $titleParts );
+		array_pop( $titleParts );
+		$languageKey = array_pop( $titleParts );
 		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
 
 		// Look up the language name:
 		$languages = Language::getTranslatedLanguageNames( 'en' );
-		if( isset( $languages[ $lanugaeKey ] ) ) {
-			$languageName = $languages[ $lanugaeKey ];
+		if( isset( $languages[ $languageKey ] ) ) {
+			$languageName = $languages[ $languageKey ];
 		} else {
-			$languageName = $lanugaeKey;
+			$languageName = $languageKey;
 		}
 
 		// Set title
@@ -52,6 +52,7 @@ class TimedTextPage extends Article {
 	/**
 	 * Gets the video HTML ( with the current language set as default )
 	 * @param $videoTitle string
+	 * @return String
 	 */
 	private function getVideoHTML( $videoTitle ){
 		// Get the video embed:
@@ -72,9 +73,11 @@ class TimedTextPage extends Article {
 	 * Gets the srt text
 	 *
 	 * XXX We should add srt parsing and links to seek to that time in the video
+	 * @param $languageName string
+	 * @return Message|string
 	 */
 	private function getSrtHTML( $languageName ){
-		if( !$this->exists() ){
+		if( !$this->exists() ){ // FIXME: exists() doesn't exist
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
 		return '<pre style="margin-top:0px;">'. $this->getContent() . '</pre>';

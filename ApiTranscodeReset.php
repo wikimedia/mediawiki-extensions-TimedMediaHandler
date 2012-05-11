@@ -60,6 +60,11 @@ class ApiTranscodeReset extends ApiBase {
 		$this->getResult()->addValue(null, 'success', 'removed transcode');
 	}
 
+	/**
+	 * @param $fileName
+	 * @param $transcodeKey
+	 * @return int|string
+	 */
 	static public function checkTimeSinceLastRest( $fileName, $transcodeKey ){
 		global $wgWaitTimeForTranscodeReset;
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $fileName );
@@ -73,7 +78,7 @@ class ApiTranscodeReset extends ApiBase {
 		// least wait is set to reset time:
 		$leastWait = $wgWaitTimeForTranscodeReset + 1;
 		// else check for lowest reset time
-		foreach($transcodeStates as $tk => $state ){
+		foreach($transcodeStates as $state ){
 			$ctime = self::getStateResetTime( $state );
 			if( $ctime < $leastWait){
 				$leastWait = $ctime;
@@ -82,6 +87,10 @@ class ApiTranscodeReset extends ApiBase {
 		return $leastWait;
 	}
 
+	/**
+	 * @param $state
+	 * @return int|string
+	 */
 	static public function getStateResetTime( $state ){
 		global $wgWaitTimeForTranscodeReset;
 		$db = wfGetDB( DB_SLAVE );
