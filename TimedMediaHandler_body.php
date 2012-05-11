@@ -347,4 +347,18 @@ class TimedMediaHandler extends MediaHandler {
 			return $wgLang->formatTimePeriod( $this->getLength( $file ) ); // FIXME: getLength() is undefined
 		}
 	}
+
+	public function filterThumbnailPurgeList( &$files, $options ) {
+		global $wgEnabledTranscodeSet;
+
+		//dont remove derivatives on normal purge
+		foreach($files as $key => $file) {
+			foreach( $wgEnabledTranscodeSet as $transcodeKey ) {
+				if ( preg_match('/' . preg_quote($transcodeKey) . '$/', $file) ) {
+					unset($files[$key]);
+					break;
+				}
+			}
+		}
+	}
 }
