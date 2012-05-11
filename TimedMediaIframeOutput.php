@@ -31,8 +31,11 @@ class TimedMediaIframeOutput {
 
 		return true;
 	}
+
 	/**
 	 * Output an iframe
+	 * @param $title Title
+	 * @throws MWException
 	 */
 	static function outputIframe( $title ) {
 		global $wgEnableIframeEmbed, $wgOut, $wgUser;

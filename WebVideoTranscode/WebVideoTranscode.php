@@ -137,6 +137,11 @@ class WebVideoTranscode {
 			)
 	);
 
+	/**
+	 * @param $file File
+	 * @param $transcodeKey string
+	 * @return string
+	 */
 	static public function getDerivativeFilePath( &$file, $transcodeKey){
 		return dirname(
 				$file->getThumbPath(
@@ -153,7 +158,7 @@ class WebVideoTranscode {
 	 * @param $file File
 	 * @param $transcodeKey String
 	 *
-	 * @return the local target encode path
+	 * @return string the local target encode path
 	 */
 	static public function getTargetEncodePath( &$file, $transcodeKey ){
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
@@ -170,6 +175,7 @@ class WebVideoTranscode {
 
 	/**
 	 * Get the max size of the web stream ( constant bitrate )
+	 * @return int
 	 */
 	static public function getMaxSizeWebStream(){
 		global $wgEnabledTranscodeSet;
@@ -185,23 +191,29 @@ class WebVideoTranscode {
 	/**
 	 * Give a rough estimate on file size
 	 * Note this is not always accurate.. especially with variable bitrate codecs ;)
+	 * @param $file File
+	 * @param $transcodeKey string
+	 * @return number
 	 */
-	static public function getProjectedFileSize( $file, $transcodeKey){
+	static public function getProjectedFileSize( $file, $transcodeKey ){
 		$settings = self::$derivativeSettings[$transcodeKey];
 		if( $settings[ 'videoBitrate' ] && $settings['audioBitrate'] ){
-			return $file->getLength * 8 * (
+			return $file->getLength() * 8 * (
 				self::$derivativeSettings[$transcodeKey]['videoBitrate']
 				+
 				self::$derivativeSettings[$transcodeKey]['audioBitrate']
 			);
 		}
 		// Else just return the size of the source video ( we have no idea how large the actual derivative size will be )
-		return $file->getLength * $file->getHandler()->getBitrate( $file ) * 8;
+		return $file->getLength() * $file->getHandler()->getBitrate( $file ) * 8;
 	}
 
 	/**
 	 * Static function to get the set of video assets
 	 * Checks if the file is local or remote and grabs respective sources
+	 * @param $file File
+	 * @param $options array
+	 * @return array|mixed
 	 */
 	static public function getSources( &$file , $options = array() ){
 		if( $file->isLocal() ){
@@ -215,6 +227,9 @@ class WebVideoTranscode {
 	 * Grabs sources from the remote repo via ApiQueryVideoInfo.php entry point.
 	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
+	 * @param $file File
+	 * @param $options array
+	 * @return array|mixed
 	 */
 	static public function getRemoteSources(&$file , $options = array() ){
 		global $wgMemc;
@@ -233,7 +248,7 @@ class WebVideoTranscode {
 			wfDebug("source cache miss\n");
 		}
 		wfDebug("Get Video sources from remote api \n");
-		$data = $file->repo->fetchImageQuery(  array(
+		$data = $file->getRepo()->fetchImageQuery(  array(
 			'action' => 'query',
 			'prop' => 'videoinfo',
 			'viprop' => 'derivatives',
@@ -250,9 +265,9 @@ class WebVideoTranscode {
 		$sources = array();
 		// Generate the source list from the data response:
 		if( $data['query'] && $data['query']['pages'] ){
-			$vidResult = first( $data['query']['pages'] );
+			$vidResult = first( $data['query']['pages'] ); // FIXME: first() is not a function
 			if( $vidResult['videoinfo'] ){
-				$derResult =  first( $vidResult['videoinfo'] );
+				$derResult = first( $vidResult['videoinfo'] ); // FIXME: first() is not a function
 				$derivatives = $derResult['derivatives'];
 				foreach( $derivatives as $derivativeSource ){
 					$sources[] = $derivativeSource;
@@ -275,10 +290,10 @@ class WebVideoTranscode {
 	 *
 	 * If no transcode is in progress or ready add the job to the jobQueue
 	 *
-	 * @param {Object} File object
-	 * @param {Object} Options, a set of options:
+	 * @param $file File object
+	 * @param $options array Options, a set of options:
 	 * 					'nodata' Strips the data- attribute, useful when your output is not html
-	 * @return an associative array of sources suitable for <source> tag output
+	 * @return array an associative array of sources suitable for <source> tag output
 	 */
 	static public function getLocalSources( &$file , $options=array() ){
 		global $wgEnabledTranscodeSet, $wgEnableTranscode;
@@ -355,7 +370,9 @@ class WebVideoTranscode {
 	/**
 	 * Get the transcode state for a given filename and transcodeKey
 	 *
-	 * @param {string} $fileName
+	 * @param $fileName string
+	 * @param $transcodeKey string
+	 * @return bool
 	 */
 	public static function isTranscodeReady( $fileName, $transcodeKey ){
 
@@ -418,7 +435,7 @@ class WebVideoTranscode {
 	 *
 	 * also remove the transcode files:
 	 * @param $titleObj Title Object
-	 * @param $transcodeKey String Optional transcode key to remove only this key
+	 * @param $transcodeKey bool|String Optional transcode key to remove only this key
 	 */
 	public static function removeTranscodes( &$titleObj, $transcodeKey = false ){
 		$file = wfFindFile($titleObj );
@@ -443,7 +460,10 @@ class WebVideoTranscode {
 		foreach( $removeKeys as $tKey){
 			$filePath = self::getDerivativeFilePath($file,  $tKey);
 			if( is_file( $filePath ) ){
-				if( ! @unlink( $filePath ) ){
+				wfSuppressWarnings();
+				$res = unlink( $filePath );
+				wfRestoreWarnings();
+				if( !$res ){
 					wfDebug( "Could not delete file $filePath\n" );
 				}
 			}
@@ -451,10 +471,10 @@ class WebVideoTranscode {
 
 		// Build the sql query:
 		$dbw = wfGetDB( DB_MASTER );
-		$deleteWhere = array( 'transcode_image_name ='. $dbw->addQuotes( $titleObj->getDBkey() ) );
+		$deleteWhere = array( 'transcode_image_name' => $titleObj->getDBkey() );
 		// Check if we are removing a specific transcode key
 		if( $transcodeKey !== false ){
-			$deleteWhere[] = 'transcode_key =' . $dbw->addQuotes( $transcodeKey );
+			$deleteWhere['transcode_key'] = $transcodeKey;
 		}
 		// Remove the db entries
 		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
@@ -466,6 +486,9 @@ class WebVideoTranscode {
 		self::clearTranscodeCache(  $titleObj->getDBKey()  );
 	}
 
+	/**
+	 * @param $titleObj Title
+	 */
 	public static function invalidatePagesWithFile( &$titleObj ){
 		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBKey() );
 		// Purge the main image page:
@@ -504,8 +527,11 @@ class WebVideoTranscode {
 
 	/**
 	 * Get the primary "source" asset used for other derivatives
+	 * @param $file File
+	 * @param $options array
+	 * @return array
 	 */
-	static public function getPrimarySourceAttributes($file, $options = array() ){
+	static public function getPrimarySourceAttributes( $file, $options = array() ){
 		global $wgLang;
 		// Setup source attribute options
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
@@ -514,7 +540,7 @@ class WebVideoTranscode {
 		$source = array(
 			'src' => $src,
 			'title' => wfMsg('timedmedia-source-file-desc',
-								$file->getHandler()->getMetadataType(),
+								$file->getHandler()->getMetadataType(), // FIXME: Missing parameter
 								$wgLang->formatNum( $file->getWidth() ),
 								$wgLang->formatNum( $file->getHeight() ),
 								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
@@ -539,6 +565,10 @@ class WebVideoTranscode {
 
 	/**
 	 * Get derivative "source" attributes
+	 * @param $file File
+	 * @param $transcodeKey string
+	 * @param $options array
+	 * @return array
 	 */
 	static public function getDerivativeSourceAttributes($file, $transcodeKey, $options = array() ){
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
@@ -634,6 +664,9 @@ class WebVideoTranscode {
 	/**
 	 * Transforms the size per a given "maxSize"
 	 *  if maxSize is > file, file size is used
+	 * @param $file File
+	 * @param $targetMaxSize int
+	 * @return array
 	 */
 	public static function getMaxSizeTransform( &$file, $targetMaxSize ){
 		$maxSize = self::getMaxSize( $targetMaxSize );
@@ -663,8 +696,9 @@ class WebVideoTranscode {
 	/**
 	 * Test if a given transcode target is larger than the source file
 	 *
-	 * @param $transcodeKey The static transcode key
-	 * @param $file {Object} File object
+	 * @param $file File object
+	 * @param $targetMaxSize int
+	 * @return bool
 	 */
 	public static function isTargetLargerThanFile( &$file, $targetMaxSize ){
 		$maxSize = self::getMaxSize( $targetMaxSize );
@@ -681,7 +715,8 @@ class WebVideoTranscode {
 	/**
 	 * Return maxSize array for given maxSize setting
 	 *
-	 * @param $maxSize maxSize settings string (i.e. 640x480)
+	 * @param $targetMaxSize int
+	 * @return array
 	 */
 	public static function getMaxSize( $targetMaxSize ){
 		$maxSize = array();

@@ -57,8 +57,7 @@ class TesVideoTranscode extends ApiTestCaseVideoUpload {
 		$this->assertTrue( $hasOgg && $hasWebM );
 
 		// Now run the transcode job queue
-		$status = $this->runTranscodeJobs();
-
+		$this->runTranscodeJobs();
 
 		$res = $db->select( 'transcode', '*', array(
 			'transcode_image_name' => ucfirst( $fileName )
@@ -88,10 +87,9 @@ class TesVideoTranscode extends ApiTestCaseVideoUpload {
 		$dbw = wfGetDB( DB_MASTER );
 		$type = 'webVideoTranscode';
 		// Set the condition to only run the webVideoTranscode
-		$conds = "job_cmd = " . $dbw->addQuotes( $type );
+		$conds = array( "job_cmd" => $type );
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
-			$offset = 0;
 			for ( ; ; ) {
 				$job = Job::pop_type( $type );
 				if ( !$job )

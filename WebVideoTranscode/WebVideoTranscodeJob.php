@@ -81,8 +81,10 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check if we have "already started" the transcode ( possible error )
 		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
-			array( 	'transcode_image_name = ' . $db->addQuotes( $this->title->getDBKey() ),
-					'transcode_key =' . $db->addQuotes( $transcodeKey ) )
+			array(
+				'transcode_image_name' => $this->title->getDBKey(),
+				'transcode_key' => $transcodeKey
+			)
 		);
 		if( ! is_null( $dbStartTime ) ){
 			$this->output( 'Error, running transcode job, for job that has already started' );
@@ -130,8 +132,9 @@ class WebVideoTranscodeJob extends Job {
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm the in memory $jobStartTimeCache matches db start time
 		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
-			array( 	'transcode_image_name = ' . $db->addQuotes( $this->title->getDBKey() ),
-					'transcode_key =' . $db->addQuotes( $transcodeKey )
+			array(
+				'transcode_image_name' => $this->title->getDBKey(),
+				'transcode_key' => $transcodeKey
 			)
 		);
 
@@ -227,7 +230,8 @@ class WebVideoTranscodeJob extends Job {
 	function removeFffmpgeLogFiles(){
 		$dir = dirname( $this->getTargetEncodePath() );
 		if (is_dir($dir)) {
-			if ($dh = opendir($dir)) {
+			$dh = opendir($dir);
+			if ( $dh ) {
 				while (($file = readdir($dh)) !== false) {
 					$ext = strtolower( pathinfo("$dir/$file", PATHINFO_EXTENSION) );
 					if( $ext == 'log' ){
@@ -619,8 +623,8 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	* Kill Application PID
 	*
-	* @param  unknown_type $PID
-	* @return boolen
+	* @param $PID int
+	* @return bool
 	*/
 	public static function killProcess( $pid ){
 		exec( "kill -9 $pid" );
