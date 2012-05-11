@@ -24,7 +24,7 @@ class TimedMediaHandlerHooks {
 			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer';
 
 		// Setup media Handlers:
-		$wgMediaHandlers['application/ogg'] = 'OggHandler';
+		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 
 		// Add transcode job class:

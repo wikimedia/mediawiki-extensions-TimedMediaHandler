@@ -2,7 +2,7 @@
 /**
  * ogg handler
  */
-class OggHandler extends TimedMediaHandler {
+class OggHandlerTMH extends TimedMediaHandler {
 	const METADATA_VERSION = 2;
 
 	/**

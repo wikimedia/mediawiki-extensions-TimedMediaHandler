@@ -123,7 +123,7 @@ $wgAutoloadClasses['TranscodeStatusTable'] = "$timedMediaDir/TranscodeStatusTabl
 $wgAutoloadClasses['ApiTestCaseVideoUpload'] = "$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
 
 // Ogg Handler
-$wgAutoloadClasses['OggHandler'] = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
+$wgAutoloadClasses['OggHandlerTMH'] = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
 ini_set( 'include_path',
 	"$timedMediaDir/handlers/OggHandler/PEAR/File_Ogg" .
 	PATH_SEPARATOR .
