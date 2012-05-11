@@ -533,6 +533,7 @@ $messages['de'] = array(
 );
 
 /** Zazaki (Zazaki)
+ * @author Erdemaslancan
  * @author Mirzali
  */
 $messages['diq'] = array(
@@ -566,7 +567,7 @@ $messages['diq'] = array(
 	'mwe-embedplayer-share_this_video' => 'na video bare/par bıker',
 	'mwe-embedplayer-video_credits' => 'êyê ke destek dayê video',
 	'mwe-embedplayer-menu_btn' => 'menu',
-	'mwe-embedplayer-close_btn' => 'bıqefeln',
+	'mwe-embedplayer-close_btn' => 'Racnê',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Kay kerdogê VLC',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generic Ogg plugin',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime plugin',
@@ -3045,3 +3046,4 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-close_btn' => '關閉',
 	'mwe-embedplayer-ogg-player-selected' => '（已選取）',
 );
+

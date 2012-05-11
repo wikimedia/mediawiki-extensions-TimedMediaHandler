@@ -673,6 +673,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Erdemaslancan
  * @author Xoser
  */
 $messages['diq'] = array(
@@ -686,7 +687,7 @@ $messages['diq'] = array(
 	'timedmedia-ogg-long-general' => 'Ogg dosyaya medyayi, mudde $2, $3',
 	'timedmedia-ogg-long-error' => 'dosyaya oggi yo nemeqbul: $1',
 	'timedmedia-more' => 'hema....',
-	'timedmedia-dismiss' => 'bıqefeln',
+	'timedmedia-dismiss' => 'Racnê',
 	'timedmedia-download' => 'dosya biyar war',
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
 );
@@ -3165,3 +3166,4 @@ $messages['zh-hant'] = array(
 	'timedmedia-download' => '下載檔案',
 	'timedmedia-desc-link' => '關於這個檔案',
 );
+
