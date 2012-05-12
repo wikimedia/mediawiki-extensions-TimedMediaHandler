@@ -2906,7 +2906,7 @@ $messages['tg-cyrl'] = array(
 	'timedmedia-desc-link' => 'Дар бораи ин парванда',
 );
 
-/** Tajik (Latin script) (tojikī)
+/** Tajik (Latin script) (Tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -3058,7 +3058,7 @@ $messages['vec'] = array(
 	'timedmedia-desc-link' => 'Informazion su sto file',
 );
 
-/** Veps (Vepsan kel')
+/** Veps (Vepsän kel’)
  * @author Игорь Бродский
  */
 $messages['vep'] = array(

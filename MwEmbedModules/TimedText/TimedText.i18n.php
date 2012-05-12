@@ -1327,7 +1327,15 @@ $messages['pdc'] = array(
 	'mwe-timedtext-back-btn' => 'Zerrick',
 );
 
+/** Pälzisch (Pälzisch)
+ * @author Manuae
+ */
+$messages['pfl'] = array(
+	'mwe-timedtext-stage-translate' => 'Iwasedze',
+);
+
 /** Polish (Polski)
+ * @author BeginaFelicysym
  * @author Leinad
  * @author Shadown
  * @author Sp5uhe
@@ -1378,6 +1386,12 @@ $messages['pl'] = array(
 	'mwe-timedtext-textcat-cue' => 'Punkty kontrolne',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 napisy do filmu: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nie odnaleziono $1 napisów do filmu: $2',
+	'mwe-timedtext-request-subs' => 'Poproś o transkrypcję',
+	'mwe-timedtext-no-subs' => 'Nie ma dostępnych ścieżek tekstowych',
+	'mwe-timedtext-request-subs-desc' => 'Dodaj prośbę transkrypcji dla tego pliku wideo',
+	'mwe-timedtext-request-subs-done' => 'Dodano prośbę transkrypcji. [ $1  Zobacz wszystkie prośby transkrypcji]',
+	'mwe-timedtext-request-subs-fail' => 'Nie udało się doanie prośby transkrypcji. Czy jesteś zalogowany?',
+	'mwe-timedtext-request-already-done' => 'Już złożono prośbę o transkrypcję tego wideo. [ $1  Zobacz wszystkie prośby transkrypcji]',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1863,3 +1877,4 @@ $messages['zh-hant'] = array(
 	'mwe-timedtext-textcat-cc' => '標題',
 	'mwe-timedtext-textcat-sub' => '副標題',
 );
+
