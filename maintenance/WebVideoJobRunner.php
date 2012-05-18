@@ -1,7 +1,7 @@
 <?php
 /**
- * Simple job runner demon suitable to be run from the can be run from the command line with a
- * virtual session using a unix utility such as screen.
+ * Simple job runner demon suitable to be run from the command line 
+ * for example using a virtual session in a screen session.
  *
  * This could be replaced by a cron job shell script that did something similar.
  */
