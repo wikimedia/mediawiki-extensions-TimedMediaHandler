@@ -1275,6 +1275,10 @@ $messages['he'] = array(
 	'mwe-embedplayer-video-flv' => 'וידאו ב־Flash',
 	'mwe-embedplayer-video-ogg' => 'וידאו Ogg',
 	'mwe-embedplayer-video-audio' => 'שמע Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'שמע MPEG',
+	'mwe-embedplayer-video-3gp' => 'וידאו 3GP',
+	'mwe-embedplayer-video-mpeg' => 'וידאו MPEG',
+	'mwe-embedplayer-video-msvideo' => 'וידאו AVI',
 	'mwe-embedplayer-missing-source' => 'הווידאו המקורי לא נמצא',
 );
 
