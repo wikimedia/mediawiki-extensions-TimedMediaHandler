@@ -1247,15 +1247,17 @@ $messages['he'] = array(
 	'timedmedia-desc-link' => 'אודות הקובץ',
 	'timedmedia-oggThumb-version' => 'OggHandler דורש oggThumb מגרסה $1 או גרסה חדשה יותר.',
 	'timedmedia-oggThumb-failed' => 'oggThumb לא הצליח ליצור תמונה מוקטנת.',
-	'timedmedia-status-header' => 'מצב המרה מחדש',
-	'timedmedia-update-status' => 'עדכון מצב המרה מחדש',
+	'timedmedia-status-header' => 'מצב המרה משנית',
+	'timedmedia-update-status' => 'עדכון מצב המרה משנית',
 	'timedmedia-status' => 'מצב',
 	'timedmedia-status-unknown' => 'מצב לא ידוע',
+	'timedmedia-transcodeinfo' => 'תיאור של תוצאות ההמרה המשנית',
 	'timedmedia-actions' => 'פעולות',
+	'timedmedia-direct-link' => 'הורדת הקובץ המומר',
 	'timedmedia-not-ready' => 'לא מוכן',
-	'timedmedia-completed-on' => 'ההמרה מחדש $1 הושלמה',
-	'timedmedia-error-on' => 'שגיאה בהמרה מחדש ב־$1.',
-	'timedmedia-started-transcode' => 'המרה מחדש התחילה לפני $1‏. $2',
+	'timedmedia-completed-on' => 'ההמרה המשנית $1 הושלמה',
+	'timedmedia-error-on' => 'שגיאה בהמרה משנית ב־$1.',
+	'timedmedia-started-transcode' => 'המרה משנית התחילה לפני $1‏. $2',
 	'timedmedia-percent-done' => 'בערך $1% נעשה',
 	'timedmedia-in-job-queue' => 'נוסף לתור משימות לפני $1',
 	'timedmedia-unknown-target-size' => 'גודל יעד אינו ידוע, קודדו $1',
@@ -1267,9 +1269,9 @@ $messages['he'] = array(
 	'timedmedia-time-3-measurements' => '$1‏, ‏$2 ו{{GRAMMAR:תחילית|$3}}',
 	'timedmedia-time-2-measurements' => '$1 ו{{GRAMMAR:תחילית|$2}}',
 	'timedmedia-show-error' => 'להציג את השגיאה',
-	'timedmedia-reset' => 'אתחול המרה מחדש',
-	'timedmedia-reset-confirm' => 'אתחול ההמרה הזאת תמחק כל קובץ קיים (אם יש כזה) ותוסיף שוב את ההמרה מחדש לתור המשימות. ייקח זמן כדי להמיר מחדש שוב.<br /><br />להמשיך?',
-	'timedmedia-reset-error' => 'שגיאה באתחול משימת המרה מחדש',
+	'timedmedia-reset' => 'אתחול המרה משנית',
+	'timedmedia-reset-confirm' => 'אתחול ההמרה הזאת ימחק כל קובץ קיים (אם יש כזה) ויוסיף שוב את ההמרה המשנית לתור המשימות. ייקח זמן כדי לבצע את ההמרה המשנית שוב.<br /><br />להמשיך?',
+	'timedmedia-reset-error' => 'שגיאה באתחול משימת המרה משנית',
 	'timedmedia-source-file' => 'ממקור $1',
 	'timedmedia-source-file-desc' => '$1 מקורי, $2 × $3&rlm; ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'וידאו Ogg (160P)&lrm; לרוחב פס נמוך',
@@ -1576,6 +1578,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  * @author JtFuruhata
  * @author Kahusi
+ * @author Shirayuki
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -1588,14 +1591,27 @@ $messages['ja'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg 多重音声/動画ファイル、$1、長さ $2、$4×$5 ピクセル、$3',
 	'timedmedia-ogg-long-general' => 'Ogg メディアファイル、長さ $2、$3',
 	'timedmedia-ogg-long-error' => '無効な Ogg ファイル: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 動画ファイル、$2',
+	'timedmedia-webm-long-video' => 'WebM 音声/動画ファイル、$1、長さ $2、$4×$5 ピクセル、全体で$3',
 	'timedmedia-no-player-js' => '申し訳ありません。あなたのブラウザはJavaScriptが有効でないか、プレイヤーをサポートしていません。<br />
 再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">プレイヤーをダウンロード</a>する必要があります。',
-	'timedmedia-more' => 'その他……',
+	'timedmedia-more' => 'その他…',
 	'timedmedia-dismiss' => '閉じる',
 	'timedmedia-download' => 'ファイルをダウンロード',
+	'timedmedia-play-media' => 'メディアを再生',
 	'timedmedia-desc-link' => 'ファイルの詳細',
 	'timedmedia-oggThumb-version' => 'OggHandler は oggThumb バージョン$1またはそれ以降が必要です。',
 	'timedmedia-oggThumb-failed' => 'oggThumb によるサムネイル作成に失敗しました。',
+	'timedmedia-status' => '状態',
+	'timedmedia-status-unknown' => '不明な状態',
+	'timedmedia-days' => '{{PLURAL:$1|$1 日}}',
+	'timedmedia-hours' => '{{PLURAL:$1|$1 時間}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 分}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 秒}}',
+	'timedmedia-time-4-measurements' => '$1、$2、$3、$4',
+	'timedmedia-time-3-measurements' => '$1、$2、$3',
+	'timedmedia-time-2-measurements' => '$1、$2',
+	'timedmedia-show-error' => 'エラーを表示',
 );
 
 /** Jutish (Jysk)
@@ -1934,7 +1950,7 @@ $messages['mk'] = array(
 	'timedmedia-show-error' => 'Покажи ја грешката',
 	'timedmedia-reset' => 'Одново',
 	'timedmedia-reset-confirm' => 'Враќајќи го ова прекодирање одново ќе ја отстраните постоечката податотека (ако ја има) и ќе го вратите прекодирањето во редицата на задачи. Повторното прекодирање ќе потрае. <br /><br />Дали сте сигурни дека сакате да продолжите?',
-	'timedmedia-reset-error' => 'Грешка при враќањето одново на задачата за транскодирање',
+	'timedmedia-reset-error' => 'Грешка при повторното пуштање на транскодирањето.',
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-source-file' => 'Извор на $1',
