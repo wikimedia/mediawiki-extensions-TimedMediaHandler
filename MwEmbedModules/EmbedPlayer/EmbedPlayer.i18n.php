@@ -1198,6 +1198,10 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-Video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-Video',
 	'mwe-embedplayer-video-audio' => 'Ogg-Audiodatei',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG-Audio',
+	'mwe-embedplayer-video-3gp' => '3gp-Video',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-Video',
+	'mwe-embedplayer-video-msvideo' => 'AVI-Video',
 	'mwe-embedplayer-missing-source' => 'S isch kei Videoclip gfunde wore.',
 );
 
