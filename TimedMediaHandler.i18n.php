@@ -1582,7 +1582,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'timedmedia-desc' => 'Theora および Vorbis 形式の Ogg ファイルハンドラーと JavaScript プレイヤー',
+	'timedmedia-desc' => 'WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 音声ファイル、$2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 動画ファイル、$2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 メディアファイル、$2',
@@ -1593,7 +1593,7 @@ $messages['ja'] = array(
 	'timedmedia-ogg-long-error' => '無効な Ogg ファイル: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 動画ファイル、$2',
 	'timedmedia-webm-long-video' => 'WebM 音声/動画ファイル、$1、長さ $2、$4×$5 ピクセル、全体で$3',
-	'timedmedia-no-player-js' => '申し訳ありません。あなたのブラウザはJavaScriptが有効でないか、プレイヤーをサポートしていません。<br />
+	'timedmedia-no-player-js' => '申し訳ありません。あなたのブラウザーではJavaScriptが無効になっているか、対応したプレイヤーがありません。<br />
 再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">プレイヤーをダウンロード</a>する必要があります。',
 	'timedmedia-more' => 'その他…',
 	'timedmedia-dismiss' => '閉じる',
@@ -1604,6 +1604,7 @@ $messages['ja'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb によるサムネイル作成に失敗しました。',
 	'timedmedia-status' => '状態',
 	'timedmedia-status-unknown' => '不明な状態',
+	'timedmedia-actions' => '操作',
 	'timedmedia-days' => '{{PLURAL:$1|$1 日}}',
 	'timedmedia-hours' => '{{PLURAL:$1|$1 時間}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 分}}',

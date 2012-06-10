@@ -1066,7 +1066,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'mwe-timedtext-editor' => '字幕エディタ',
+	'mwe-timedtext-editor' => '字幕エディター',
 	'mwe-timedtext-stage-transcribe' => '文字起こし',
 	'mwe-timedtext-stage-sync' => '同期',
 	'mwe-timedtext-stage-translate' => '翻訳',
@@ -1090,13 +1090,13 @@ $messages['ja'] = array(
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
 	'mwe-timedtext-upload-timed-text' => '字幕のアップロード',
-	'mwe-timedtext-loading-text-edit' => '字幕エディタの読み込み中',
+	'mwe-timedtext-loading-text-edit' => '字幕エディターの読み込み中',
 	'mwe-timedtext-search' => 'クリップの検索',
 	'mwe-timedtext-layout' => 'レイアウト',
 	'mwe-timedtext-layout-ontop' => '動画の冒頭',
 	'mwe-timedtext-layout-below' => '以下の動画',
 	'mwe-timedtext-layout-off' => '字幕を隠す',
-	'mwe-timedtext-loading-text' => 'テキストを読み込み中・・・',
+	'mwe-timedtext-loading-text' => 'テキストの読み込み中...',
 	'mwe-timedtext-textcat-cc' => '見出し',
 	'mwe-timedtext-textcat-sub' => '字幕',
 	'mwe-timedtext-textcat-tad' => '音声の説明',
