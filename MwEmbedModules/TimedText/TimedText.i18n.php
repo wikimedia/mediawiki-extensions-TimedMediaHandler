@@ -1820,8 +1820,9 @@ $messages['yi'] = array(
 	'mwe-timedtext-textcat-cc' => 'באשרייבונגען',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Wilsonmess
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'mwe-timedtext-stage-transcribe' => '字幕',
@@ -1847,6 +1848,7 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-loading-text' => '正在读取文本……',
 	'mwe-timedtext-textcat-cc' => '标题',
 	'mwe-timedtext-textcat-sub' => '副标题',
+	'mwe-timedtext-textcat-nb' => '注解',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
