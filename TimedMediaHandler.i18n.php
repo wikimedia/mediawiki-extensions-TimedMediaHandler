@@ -1549,14 +1549,14 @@ $messages['is'] = array(
 	'timedmedia-download' => 'Sækja skrá',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author .anaconda
  * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'timedmedia-desc' => 'Gestore per i file Ogg Theora e Vorbis, con programma di riproduzione in JavaScript',
+	'timedmedia-desc' => 'Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'File audio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'File video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'File multimediale Ogg $1, $2',
@@ -1565,10 +1565,26 @@ $messages['it'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'File audio/video multiplexed Ogg $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3',
 	'timedmedia-ogg-long-general' => 'File multimediale Ogg, durata $2, $3',
 	'timedmedia-ogg-long-error' => 'File ogg non valido: $1',
+	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
+	'timedmedia-webm-long-video' => 'File audio/video WebM $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3',
 	'timedmedia-more' => 'Altro...',
 	'timedmedia-dismiss' => 'Chiudi',
 	'timedmedia-download' => 'Scarica il file',
+	'timedmedia-play-media' => 'Riproduci file multimediale',
 	'timedmedia-desc-link' => 'Informazioni su questo file',
+	'timedmedia-status-header' => 'Stato transcodifica',
+	'timedmedia-update-status' => 'Aggiorna stato transcodifica',
+	'timedmedia-status' => 'Stato',
+	'timedmedia-status-unknown' => 'Stato sconosciuto',
+	'timedmedia-actions' => 'Azioni',
+	'timedmedia-days' => '{{PLURAL:$1|un giorno|$1 giorni}}',
+	'timedmedia-hours' => "{{PLURAL:$1|un'ora|$1 ore}}",
+	'timedmedia-minutes' => '{{PLURAL:$1|un minuto|$1 minuti}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|un secondo|$1 secondi}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 e $4',
+	'timedmedia-time-3-measurements' => '$1, $2 e $3',
+	'timedmedia-time-2-measurements' => '$1 e $2',
+	'timedmedia-show-error' => 'Vedi errore',
 	'timedmedia-source-file-desc' => 'Originale $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitoli',
 );
