@@ -25,7 +25,16 @@ $(document).ready(function(){
 		var buttons = {};
 		buttons[ gM('mwe-ok') ] = function(){
 			var _thisDialog = this;
-			$(this).loadingSpinner();
+
+			// Only show cancel button while loading:
+			var cancelBtn = {};
+			cancelBtn[ gM('mwe-cancel') ] = function() {
+				$(this).dialog("close");
+			}
+			$( _thisDialog ).dialog( "option", "buttons", cancelBtn );
+
+			$( this ).loadingSpinner();
+
 			var apiUrl =  mw.config.get('wgServer') + mw.config.get( 'wgScriptPath' ) + '/api.php';
 			// Do an api post action:
 			$.post( apiUrl, {
