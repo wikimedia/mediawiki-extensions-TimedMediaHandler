@@ -135,6 +135,8 @@ class TimedMediaHandler extends MediaHandler {
 	 *
 	 * The core embedPlayer module is part of a "loaderScript" so it does not need to
 	 * be registered here.
+	 * 
+	 * TODO move core loader to on-page script as to not include it on all pages. 
 	 *
 	 * @param $outputPage OutputPage
 	 * @param $parserOutput
