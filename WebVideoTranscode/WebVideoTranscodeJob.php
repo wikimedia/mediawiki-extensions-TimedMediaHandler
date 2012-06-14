@@ -171,16 +171,13 @@ class WebVideoTranscodeJob extends Job {
 
 		// If status is oky and file exists and is larger than 0 bytes
 		if( $status === true && is_file( $this->getTargetEncodePath() ) && filesize( $this->getTargetEncodePath() ) > 0 ){
-			$finalDerivativeFilePath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey);
-			//wfSuppressWarnings();
-			// @TODO: use a FileRepo store function
-			$op = array( 'op' => 'store',
-				'src' => $this->getTargetEncodePath(), 'dst' => $finalDerivativeFilePath, 'overwrite' => true );
-			// Copy derivaitve from the FS into storage at $finalDerivativeFilePath
-			$opts = array( 'ignoreErrors' => true, 'nonLocking' => true ); // performance
 			$file = $this->getFile();
-			$status = $file->getRepo()->getBackend()->doOperation( $op, $opts );
-			if (!$status->isOK() ) {
+			// Copy derivative from the FS into storage at $finalDerivativeFilePath
+			$status = $file->getRepo()->quickImport(
+				$this->getTargetEncodePath(), // temp file
+				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ) // storage
+			);
+			if ( !$status->isOK() ) {
 				// Update the transcode table with failure time and error
 				$dbw->update(
 					'transcode',

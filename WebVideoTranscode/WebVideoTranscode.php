@@ -459,10 +459,10 @@ class WebVideoTranscode {
 
 		// Remove files by key:
 		foreach( $removeKeys as $tKey){
-			$filePath = self::getDerivativeFilePath($file,  $tKey);
-			if( is_file( $filePath ) ){
+			$filePath = self::getDerivativeFilePath( $file, $tKey );
+			if( $file->repo->fileExists( $filePath ) ){
 				wfSuppressWarnings();
-				$res = unlink( $filePath );
+				$res = $file->repo->quickPurge( $filePath );
 				wfRestoreWarnings();
 				if( !$res ){
 					wfDebug( "Could not delete file $filePath\n" );
