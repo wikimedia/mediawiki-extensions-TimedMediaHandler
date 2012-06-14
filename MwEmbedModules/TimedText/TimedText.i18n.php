@@ -193,7 +193,7 @@ $messages['bn'] = array(
 	'mwe-timedtext-stage-translate' => 'অনুবাদ',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fulup
  * @author Y-M D
  */
@@ -250,7 +250,7 @@ $messages['br'] = array(
 	'mwe-timedtext-request-already-done' => "Goulennet eo bet treuzskrivañ ar video-mañ c'hoazh. [$1 Gwelet an holl c'houlennoù treuzskrivañ]",
 );
 
-/** Bosnian (Bosanski)
+/** Bosnian (bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
@@ -262,7 +262,7 @@ $messages['bs'] = array(
 	'mwe-timedtext-textcat-tad' => 'Opis zvuka',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
@@ -472,7 +472,7 @@ $messages['eo'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Finiĝis alŝutado',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  * @author Crazymadlover
  * @author Locos epraix
@@ -533,7 +533,7 @@ $messages['es'] = array(
 	'mwe-timedtext-request-already-done' => 'Ya se solicitó la transcripción de este vídeo. [$1 Ver todas las solicitudes de transcripción]',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Silvonen
  */
 $messages['fi'] = array(
@@ -544,7 +544,7 @@ $messages['fi'] = array(
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 );
 
-/** French (Français)
+/** French (français)
  * @author IAlex
  * @author Peter17
  * @author Verdy p
@@ -603,7 +603,7 @@ $messages['fr'] = array(
 	'mwe-timedtext-request-already-done' => 'Une transcription de cette vidéo a déjà été demandée. [$1 Voir toutes les demandes de transcription]',
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
@@ -886,7 +886,7 @@ $messages['hsb'] = array(
 	'mwe-timedtext-request-already-done' => 'Transkripcija tutoho wideja je so hižo požadała. [$1 Hlej wšě požadanja wo transkripciju]',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dani
  * @author Glanthor Reviol
  */
@@ -931,7 +931,7 @@ $messages['hu'] = array(
 	'mwe-timedtext-textcat-lin' => 'Nyelvi jelölés',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -1046,7 +1046,7 @@ $messages['id'] = array(
 	'mwe-timedtext-request-already-done' => 'Transkripsi dari video ini telah diminta. [$1 Lihat semua permintaan]',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Gianfranco
  */
 $messages['it'] = array(
@@ -1162,7 +1162,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keng $1 Ënnertitele goufe fonnt fir de Clip: $2',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -1334,7 +1334,7 @@ $messages['pfl'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwasedze',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author BeginaFelicysym
  * @author Leinad
  * @author Shadown
@@ -1462,7 +1462,7 @@ $messages['ps'] = array(
 	'mwe-timedtext-textcat-ktv' => 'کارااوکه',
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author Giro720
  * @author Hamilton Abreu
  */
@@ -1520,7 +1520,7 @@ $messages['pt'] = array(
 	'mwe-timedtext-request-already-done' => 'Já foi pedida anteriormente uma transcrição deste vídeo. [$1 Ver todos os pedidos de transcrição]',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author Giro720
  * @author Luckas Blade
  */
@@ -1572,7 +1572,7 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Não foram encontradas legendas em $1 para o clipe: $2',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author MaxSem
  * @author Александр Сигачёв
  */
@@ -1637,7 +1637,7 @@ $messages['rue'] = array(
 	'mwe-timedtext-back-btn' => 'Назад',
 );
 
-/** Slovenian (Slovenščina)
+/** Slovenian (slovenščina)
  * @author Dbc334
  */
 $messages['sl'] = array(
@@ -1645,7 +1645,7 @@ $messages['sl'] = array(
 	'mwe-timedtext-back-btn' => 'Nazaj',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1674,7 +1674,7 @@ $messages['sr-ec'] = array(
 	'mwe-timedtext-textcat-trx' => 'Транскрипт',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪srpski (latinica)‬)
  * @author Rancher
  */
 $messages['sr-el'] = array(
@@ -1702,7 +1702,7 @@ $messages['sr-el'] = array(
 	'mwe-timedtext-textcat-trx' => 'Transkript',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Dafer45
  */
 $messages['sv'] = array(
@@ -1799,7 +1799,7 @@ $messages['tl'] = array(
 	'mwe-timedtext-no-subs' => 'Walang makukuhang mga bakas ng teksto',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author Тест
  */
 $messages['uk'] = array(
@@ -1851,7 +1851,7 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-textcat-nb' => '注解',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(

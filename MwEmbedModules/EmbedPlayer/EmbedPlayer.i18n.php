@@ -212,7 +212,7 @@ $messages['ar'] = array(
 	'mwe-embedplayer-missing-source' => 'لم يعثر على مصدر الفيديو',
 );
 
-/** Azerbaijani (Azərbaycanca)
+/** Azerbaijani (azərbaycanca)
  * @author Cekli829
  */
 $messages['az'] = array(
@@ -305,7 +305,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-missing-source' => 'Ня знойдзена крынічнае відэа.',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fulup
  * @author Y-M D
  */
@@ -383,7 +383,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-missing-source' => "N'eus bet kavet mammenn video ebet.",
 );
 
-/** Bosnian (Bosanski) */
+/** Bosnian (bosanski) */
 $messages['bs'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'Puni ekran',
 	'mwe-embedplayer-paused' => 'zaustavljeno',
@@ -403,7 +403,7 @@ $messages['ce'] = array(
 	'mwe-embedplayer-seeking' => 'лаха',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
@@ -757,7 +757,7 @@ $messages['eo'] = array(
 	'mwe-embedplayer-missing-source' => 'Neniu fonta video estis trovita',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  * @author Crazymadlover
  * @author Translationista
@@ -840,7 +840,7 @@ $messages['es'] = array(
 	'mwe-embedplayer-missing-source' => 'No se encontró ningún vídeo de origen.',
 );
 
-/** Estonian (Eesti)
+/** Estonian (eesti)
  * @author Pikne
  */
 $messages['et'] = array(
@@ -849,7 +849,7 @@ $messages['et'] = array(
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
 );
 
-/** Basque (Euskara) */
+/** Basque (euskara) */
 $messages['eu'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'Pantaila osoan',
 	'mwe-embedplayer-paused' => 'pausatua',
@@ -860,7 +860,7 @@ $messages['eu'] = array(
 	'mwe-embedplayer-close_btn' => 'Itxi',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Crt
  * @author Nike
  * @author Tofu II
@@ -881,7 +881,7 @@ $messages['fi'] = array(
 	'mwe-embedplayer-copy-code' => 'Kopioi koodi',
 );
 
-/** French (Français)
+/** French (français)
  * @author Crochet.david
  * @author IAlex
  * @author Peter17
@@ -964,7 +964,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-missing-source' => "Aucune source vidéo n'a été trouvée.",
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
@@ -1367,7 +1367,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-missing-source' => 'Žane widejo namakane.',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dani
  */
 $messages['hu'] = array(
@@ -1439,7 +1439,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-missing-source' => 'Nem található forrásvideó',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -1598,7 +1598,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan.',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Gianfranco
  */
 $messages['it'] = array(
@@ -1799,7 +1799,7 @@ $messages['lb'] = array(
 	'mwe-embedplayer-missing-source' => 'Et gouf kee Video fonnt',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -2077,7 +2077,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-missing-source' => 'Er is geen bronvideo gevonden.',
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
  * @author Nghtwlkr
  */
 $messages['nn'] = array(
@@ -2096,7 +2096,7 @@ $messages['nn'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-video',
 );
 
-/** Occitan (Occitan) */
+/** Occitan (occitan) */
 $messages['oc'] = array(
 	'mwe-embedplayer-loading_plugin' => 'cargament del plugin ...',
 	'mwe-embedplayer-select_playback' => 'Definir las preferéncias de lectura',
@@ -2152,7 +2152,7 @@ $messages['pdc'] = array(
 	'mwe-embedplayer-seek_to' => 'Guck uff $1',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author BeginaFelicysym
  * @author Sp5uhe
  */
@@ -2325,7 +2325,7 @@ $messages['ps'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(ټاکل شوی)',
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author Hamilton Abreu
  * @author Waldir
  */
@@ -2403,7 +2403,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo.',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author Giro720
  * @author Luckas Blade
  */
@@ -2476,7 +2476,7 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo.',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Eleferen
  * @author MaxSem
  * @author Александр Сигачёв
@@ -2567,14 +2567,14 @@ $messages['rue'] = array(
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Перегравач VLC',
 );
 
-/** Slovak (Slovenčina) */
+/** Slovak (slovenčina) */
 $messages['sk'] = array(
 	'mwe-embedplayer-download' => 'Stiahnuť',
 	'mwe-embedplayer-close_btn' => 'Zavrieť',
 	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2652,7 +2652,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-missing-source' => 'Није пронађен извор снимка.',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪srpski (latinica)‬)
  * @author Rancher
  */
 $messages['sr-el'] = array(
@@ -2729,7 +2729,7 @@ $messages['sr-el'] = array(
 	'mwe-embedplayer-missing-source' => 'Nije pronađen izvor snimka.',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Dafer45
  */
 $messages['sv'] = array(
@@ -2773,7 +2773,7 @@ $messages['te'] = array(
 	'mwe-embedplayer-related_videos' => 'సంబంధిత దృశ్యకాలు',
 );
 
-/** Tetum (Tetun)
+/** Tetum (tetun)
  * @author MF-Warburg
  */
 $messages['tet'] = array(
@@ -2906,7 +2906,7 @@ $messages['tr'] = array(
 	'mwe-embedplayer-copy-code' => 'Kodu kopyala',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author Тест
  */
 $messages['uk'] = array(
@@ -2930,7 +2930,7 @@ $messages['uk'] = array(
 	'mwe-embedplayer-video-audio' => 'Ogg аудіо',
 );
 
-/** Vèneto (Vèneto) */
+/** vèneto (vèneto) */
 $messages['vec'] = array(
 	'mwe-embedplayer-credit-title' => 'Titolo: $1',
 	'mwe-embedplayer-loading_plugin' => "so' drio cargar el plugin...",
@@ -3036,7 +3036,7 @@ $messages['yi'] = array(
 	'mwe-embedplayer-credit-date' => 'דאַטע: $1',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Hydra
  */
 $messages['zh-hans'] = array(
@@ -3051,7 +3051,7 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '（已选取）',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(

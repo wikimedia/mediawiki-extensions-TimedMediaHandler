@@ -301,7 +301,7 @@ $messages['arz'] = array(
 	'timedmedia-desc-link' => 'عن الملف دا',
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Esbardu
  * @author Xuacu
  */
@@ -331,7 +331,7 @@ $messages['avk'] = array(
 	'timedmedia-desc-link' => 'Icde bat iyeltak',
 );
 
-/** Azerbaijani (Azərbaycanca)
+/** Azerbaijani (azərbaycanca)
  * @author Cekli829
  */
 $messages['az'] = array(
@@ -413,7 +413,7 @@ $messages['be-tarask'] = array(
 	'timedmedia-subtitle-language' => 'Субтытры ($2) на $1',
 );
 
-/** Bulgarian (Български)
+/** Bulgarian (български)
  * @author Borislav
  * @author DCLXVI
  * @author Spiritia
@@ -451,7 +451,7 @@ $messages['bn'] = array(
 	'timedmedia-desc-link' => 'এই ফাইলের বৃত্তান্ত',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
  * @author Y-M D
@@ -500,7 +500,7 @@ $messages['br'] = array(
 	'timedmedia-subtitle-language' => 'istitloù e $1 ($2)',
 );
 
-/** Bosnian (Bosanski)
+/** Bosnian (bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
@@ -526,7 +526,7 @@ Možete <a href="$1">učitati klip</a> ili <a href="http://www.mediawiki.org/wik
 	'timedmedia-subtitle-language' => '$1 ($2) podnaslovi',
 );
 
-/** Catalan (Català)
+/** Catalan (català)
  * @author Aleator
  * @author Paucabot
  * @author SMP
@@ -556,7 +556,7 @@ $messages['ce'] = array(
 	'timedmedia-download' => 'Чуйаккха хlум',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Li-sung
  * @author Matěj Grabovský
  * @author Mormegil
@@ -581,7 +581,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-oggThumb-failed' => 'oggThumb nedokázal vytvořit náhled.',
 );
 
-/** Danish (Dansk)
+/** Danish (dansk)
  * @author Byrial
  * @author Jon Harald Søby
  */
@@ -765,7 +765,7 @@ $messages['eo'] = array(
 	'timedmedia-desc-link' => 'Pri ĉi tiu dosiero',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Aleator
  * @author Armando-Martin
  * @author Crazymadlover
@@ -836,7 +836,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-subtitle-no-subtitles' => 'Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos',
 );
 
-/** Estonian (Eesti)
+/** Estonian (eesti)
  * @author Avjoska
  * @author Pikne
  * @author Silvar
@@ -850,7 +850,7 @@ $messages['et'] = array(
 	'timedmedia-desc-link' => 'Info faili kohta',
 );
 
-/** Basque (Euskara)
+/** Basque (euskara)
  * @author An13sa
  * @author Joxemai
  * @author Theklan
@@ -887,7 +887,7 @@ $messages['fa'] = array(
 	'timedmedia-desc-link' => 'دربارهٔ این پرونده',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Agony
  * @author Crt
  * @author Nike
@@ -909,14 +909,14 @@ $messages['fi'] = array(
 	'timedmedia-desc-link' => 'Tiedoston tiedot',
 );
 
-/** Faroese (Føroyskt)
+/** Faroese (føroyskt)
  * @author Spacebirdy
  */
 $messages['fo'] = array(
 	'timedmedia-more' => 'Meira...',
 );
 
-/** French (Français)
+/** French (français)
  * @author Crochet.david
  * @author Gomoko
  * @author Grondin
@@ -1001,7 +1001,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-subtitle-no-subtitles' => 'Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter',
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
@@ -1041,7 +1041,7 @@ $messages['frp'] = array(
 	'timedmedia-subtitle-language' => 'sot-titros en $1 ($2)',
 );
 
-/** Friulian (Furlan)
+/** Friulian (furlan)
  * @author Klenje
  */
 $messages['fur'] = array(
@@ -1306,7 +1306,7 @@ $messages['hi'] = array(
 	'timedmedia-desc-link' => 'इस फ़ाईलके बारे में',
 );
 
-/** Croatian (Hrvatski)
+/** Croatian (hrvatski)
  * @author CERminator
  * @author Dalibor Bosits
  * @author Ex13
@@ -1394,7 +1394,7 @@ Chceš woprawdźe pokročować?',
 	'timedmedia-subtitle-no-subtitles' => 'Tuchwilu podtitule w $1 zu tute widejo njejsu, móžeš [{{fullurl:{{FULLPAGENAME}}|action=edit}} tutu stronu wobdźěłać], zo by je přidał',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dani
  * @author Glanthor Reviol
  * @author Tgr
@@ -1424,7 +1424,7 @@ $messages['hu'] = array(
 	'timedmedia-derivative-desc-720p.webm' => 'Magas minőségű, letölthető WebM (720P)',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -1539,7 +1539,7 @@ $messages['io'] = array(
 	'timedmedia-desc-link' => 'Pri ca arkivo',
 );
 
-/** Icelandic (Íslenska)
+/** Icelandic (íslenska)
  * @author S.Örvarr.S
  * @author Spacebirdy
  */
@@ -1631,7 +1631,7 @@ $messages['ja'] = array(
 	'timedmedia-show-error' => 'エラーを表示',
 );
 
-/** Jutish (Jysk)
+/** Jutish (jysk)
  * @author Huslåke
  */
 $messages['jut'] = array(
@@ -1891,7 +1891,7 @@ $messages['li'] = array(
 	'timedmedia-desc-link' => 'Euver dit bestandj',
 );
 
-/** Lithuanian (Lietuvių)
+/** Lithuanian (lietuvių)
  * @author Homo
  * @author Matasg
  */
@@ -1911,14 +1911,14 @@ $messages['lt'] = array(
 	'timedmedia-desc-link' => 'Apie šią bylą',
 );
 
-/** Latvian (Latviešu)
+/** Latvian (latviešu)
  * @author Xil
  */
 $messages['lv'] = array(
 	'timedmedia-dismiss' => 'Aizvērt',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  * @author Brest
  */
@@ -2227,7 +2227,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-subtitle-no-subtitles' => 'Er zijn op het moment geen ondertitels in het $1 voor deze video. U kunt [{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken] om ze toe te voegen',
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
  * @author Eirik
  * @author Harald Khan
  */
@@ -2247,7 +2247,7 @@ $messages['nn'] = array(
 	'timedmedia-desc-link' => 'Om denne fila',
 );
 
-/** Occitan (Occitan)
+/** Occitan (occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
@@ -2289,7 +2289,7 @@ $messages['pdc'] = array(
 	'timedmedia-download' => 'Feil runnerlaade',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author Derbeth
  * @author Leinad
  * @author Sp5uhe
@@ -2366,7 +2366,7 @@ $messages['ps'] = array(
 	'timedmedia-status' => 'دريځ',
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author 555
  * @author Giro720
  * @author Hamilton Abreu
@@ -2433,7 +2433,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-subtitle-no-subtitles' => 'Neste momento não existem legendas em $1 para este vídeo. Pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar a página] e adicioná-las.',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
  */
@@ -2467,7 +2467,7 @@ $messages['qu'] = array(
 	'timedmedia-desc-link' => 'Kay willañiqimanta',
 );
 
-/** Romanian (Română)
+/** Romanian (română)
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Minisarm
@@ -2488,7 +2488,7 @@ $messages['ro'] = array(
 	'timedmedia-desc-link' => 'Despre acest fișier',
 );
 
-/** Tarandíne (Tarandíne)
+/** tarandíne (tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
@@ -2512,7 +2512,7 @@ $messages['roa-tara'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitele',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Ahonc
  * @author Eleferen
  * @author Kaganer
@@ -2589,7 +2589,7 @@ $messages['rue'] = array(
 	'timedmedia-dismiss' => 'Заперти',
 );
 
-/** Sakha (Саха тыла)
+/** Sakha (саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
@@ -2634,7 +2634,7 @@ $messages['si'] = array(
 	'timedmedia-desc-link' => 'මෙම ගොනුව පිළිබඳ',
 );
 
-/** Slovak (Slovenčina)
+/** Slovak (slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
@@ -2653,7 +2653,7 @@ $messages['sk'] = array(
 	'timedmedia-desc-link' => 'O tomto súbore',
 );
 
-/** Slovenian (Slovenščina)
+/** Slovenian (slovenščina)
  * @author Dbc334
  */
 $messages['sl'] = array(
@@ -2717,7 +2717,7 @@ Lahko <a href="$1">prenesete posnetek</a> ali <a href="http://www.mediawiki.org/
 	'timedmedia-subtitle-no-subtitles' => 'V jeziku $1 trenutno ni nobenih podnapisov za ta video; lahko [{{fullurl:{{FULLPAGENAME}}|action=edit}} uredite to stran] in jih dodate',
 );
 
-/** Albanian (Shqip)
+/** Albanian (shqip)
  * @author Dori
  */
 $messages['sq'] = array(
@@ -2732,7 +2732,7 @@ $messages['sq'] = array(
 	'timedmedia-desc-link' => 'Rreth kësaj skede',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -2787,7 +2787,7 @@ $messages['sr-ec'] = array(
 	'timedmedia-subtitle-no-subtitles' => 'Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪srpski (latinica)‬)
  * @author Michaello
  * @author Rancher
  */
@@ -2877,7 +2877,7 @@ $messages['su'] = array(
 	'timedmedia-desc-link' => 'Ngeunaan ieu koropak',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Rotsee
@@ -2920,7 +2920,7 @@ $messages['te'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) ఉపశీర్షికలు',
 );
 
-/** Tajik (Cyrillic script) (Тоҷикӣ)
+/** Tajik (Cyrillic script) (тоҷикӣ)
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
@@ -2939,7 +2939,7 @@ $messages['tg-cyrl'] = array(
 	'timedmedia-desc-link' => 'Дар бораи ин парванда',
 );
 
-/** Tajik (Latin script) (Tojikī)
+/** Tajik (Latin script) (tojikī)
  * @author Liangent
  */
 $messages['tg-latn'] = array(
@@ -3037,7 +3037,7 @@ $messages['ts'] = array(
 	'timedmedia-dismiss' => 'Pfala',
 );
 
-/** Tatar (Cyrillic script) (Татарча)
+/** Tatar (Cyrillic script) (татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
@@ -3049,7 +3049,7 @@ $messages['tt-cyrl'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb нигезендә миниатюраны ясап булмады.',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author AS
  * @author Ahonc
  * @author NickK
@@ -3072,7 +3072,7 @@ $messages['uk'] = array(
 	'timedmedia-desc-link' => 'Інформація про цей файл',
 );
 
-/** Vèneto (Vèneto)
+/** vèneto (vèneto)
  * @author Candalua
  */
 $messages['vec'] = array(
@@ -3132,7 +3132,7 @@ $messages['vo'] = array(
 	'timedmedia-desc-link' => 'Tefü ragiv at',
 );
 
-/** Walloon (Walon) */
+/** Walloon (walon) */
 $messages['wa'] = array(
 	'timedmedia-dismiss' => 'Clôre',
 );
@@ -3161,7 +3161,7 @@ $messages['yue'] = array(
 	'timedmedia-desc-link' => '關於呢個檔案',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Gaoxuewei
  */
 $messages['zh-hans'] = array(
@@ -3180,7 +3180,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-desc-link' => '关于这个文件',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Gaoxuewei
  * @author Mark85296341
  */
