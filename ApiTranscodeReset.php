@@ -54,7 +54,6 @@ class ApiTranscodeReset extends ApiBase {
 				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset  ) .
 				' until this transcode can be reset', 'notenoughtimereset');
 		}
-<<<<<<< HEAD
 
 		// All good do the transcode removal:
 		WebVideoTranscode::removeTranscodes( $titleObj, $transcodeKey );
