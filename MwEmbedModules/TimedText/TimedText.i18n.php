@@ -1812,6 +1812,27 @@ $messages['uk'] = array(
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
 );
 
+/** Walloon (walon)
+ * @author Srtxg
+ */
+$messages['wa'] = array(
+	'mwe-timedtext-editor' => "Aspougneu d' tecse sincronijhî",
+	'mwe-timedtext-stage-transcribe' => 'Transcrire',
+	'mwe-timedtext-stage-sync' => 'Sincronijhî',
+	'mwe-timedtext-stage-translate' => 'Ratourner',
+	'mwe-timedtext-stage-upload' => 'Eberweter on fitchî locå',
+	'mwe-timedtext-select-language' => "Tchoezixhoz l' lingaedje",
+	'mwe-timedtext-file-language' => "Lingaedje do fitchî d' dizo-tites",
+	'mwe-timedtext-upload-text' => 'Eberweter on fitchî tecse',
+	'mwe-timedtext-uploading-text' => 'Eberwetaedje do fitchî tecse',
+	'mwe-timedtext-upload-text-desc-title' => 'Eberweter on fitchî tecse',
+	'mwe-timedtext-upload-text-desc-help' => "L' eterface d' eberwetaedje di fitchîs tecse acceptêye les fitchîs .srt",
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Foytez dins vos ridants locås pol fitchî .srt ki vos vloz eberweter',
+	'mwe-timedtext-upload-text-desc-help-select' => "Tchoezixhoz l' lingaedje do fitchî",
+	'mwe-timedtext-upload-text-fail-title' => "L' eberwetaedje a fwait berwete",
+	'mwe-timedtext-textcat-sub' => 'Dizo-tites',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
