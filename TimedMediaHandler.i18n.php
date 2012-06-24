@@ -1780,6 +1780,13 @@ $messages['ko'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb가 섬네일을 생성하지 못했습니다.',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'timedmedia-more' => 'Кёбюрек…',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
