@@ -1541,12 +1541,27 @@ $messages['io'] = array(
 
 /** Icelandic (íslenska)
  * @author S.Örvarr.S
+ * @author Snævar
  * @author Spacebirdy
  */
 $messages['is'] = array(
+	'timedmedia-ogg-short-audio' => 'Ogg $1 hljóðskrá, $2',
+	'timedmedia-ogg-short-video' => 'Ogg $1 myndbandskrá, $2',
+	'timedmedia-ogg-short-general' => 'Ogg $1 margmiðlunarskrá, $2',
+	'timedmedia-ogg-long-audio' => 'Ogg $1 hljóðskrá, lengd $2, $3',
+	'timedmedia-ogg-long-video' => 'Ogg $1 myndbandskrá, lengd $2, $4×$5 dílar, $3',
+	'timedmedia-ogg-long-general' => 'Ogg margmiðlunarskrá, lengd $2, $3',
+	'timedmedia-webm-short-video' => 'WebM $1 myndbandskrá, $2',
 	'timedmedia-more' => 'Meira...',
 	'timedmedia-dismiss' => 'Loka',
 	'timedmedia-download' => 'Sækja skrá',
+	'timedmedia-desc-link' => 'Um þessa skrá',
+	'timedmedia-status' => 'Staða',
+	'timedmedia-actions' => 'Aðgerðir',
+	'timedmedia-days' => '{{PLURAL:$1|einn dagur|$1 dagar}}',
+	'timedmedia-hours' => '{{PLURAL:$1|einn klukkutími|$1 klukkutímar}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|ein mínúta|$1 mínútur}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|ein sekúnda|$1 sekúndur}}',
 );
 
 /** Italian (italiano)

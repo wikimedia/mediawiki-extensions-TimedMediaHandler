@@ -1598,6 +1598,18 @@ $messages['id'] = array(
 	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan.',
 );
 
+/** Icelandic (íslenska)
+ * @author Snævar
+ */
+$messages['is'] = array(
+	'mwe-embedplayer-download_clip' => 'Sækja myndband',
+	'mwe-embedplayer-download' => 'Hlaða niður',
+	'mwe-embedplayer-share' => 'Deila',
+	'mwe-embedplayer-close_btn' => 'Loka',
+	'mwe-embedplayer-ogg-player-selected' => '(valið)',
+	'mwe-embedplayer-playerSelect' => 'Spilarar',
+);
+
 /** Italian (italiano)
  * @author Gianfranco
  */
