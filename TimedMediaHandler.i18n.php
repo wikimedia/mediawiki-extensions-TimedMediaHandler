@@ -1774,9 +1774,10 @@ $messages['km'] = array(
  * @author ITurtle
  * @author Kwj2772
  * @author ToePeu
+ * @author 아라
  */
 $messages['ko'] = array(
-	'timedmedia-desc' => 'OGG Theora 및 Vorbis 파일 핸들러와 자바스크립트 플레이어',
+	'timedmedia-desc' => 'WebM, OGG Theora 및 Vorbis, srt를 위한 포맷 지원과 오디오, 미디어아와 시간 텍스트를 위한 핸들러',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 소리 파일, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 영상 파일, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 미디어 파일, $2',
