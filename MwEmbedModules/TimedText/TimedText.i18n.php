@@ -1829,8 +1829,18 @@ $messages['wa'] = array(
 	'mwe-timedtext-upload-text-desc-help' => "L' eterface d' eberwetaedje di fitchîs tecse acceptêye les fitchîs .srt",
 	'mwe-timedtext-upload-text-desc-help-browse' => 'Foytez dins vos ridants locås pol fitchî .srt ki vos vloz eberweter',
 	'mwe-timedtext-upload-text-desc-help-select' => "Tchoezixhoz l' lingaedje do fitchî",
+	'mwe-timedtext-upload-text-fail-desc' => "L' eberwetaedje a stî comifåt",
 	'mwe-timedtext-upload-text-fail-title' => "L' eberwetaedje a fwait berwete",
+	'mwe-timedtext-layout-ontop' => 'Sol dizeur do videyo',
+	'mwe-timedtext-layout-below' => 'Sol dizo do videyo',
+	'mwe-timedtext-layout-off' => 'Catchî les dzo-tites',
+	'mwe-timedtext-loading-text' => 'Dji tchedje li tecse...',
+	'mwe-timedtext-textcat-cc' => 'Ledjindes',
 	'mwe-timedtext-textcat-sub' => 'Dizo-tites',
+	'mwe-timedtext-textcat-lrc' => 'Paroles',
+	'mwe-timedtext-textcat-lin' => 'Etiketes di lingaedje',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Dizo-tites e $1 pol clip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Nou dzo-tite $1 di trové pol clip: $2',
 );
 
 /** Yiddish (ייִדיש)
