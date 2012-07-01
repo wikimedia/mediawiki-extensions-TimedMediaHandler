@@ -213,7 +213,7 @@ $messages['aln'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb dështuar për të krijuar tablo.',
 );
 
-/** Aragonese (Aragonés)
+/** Aragonese (aragonés)
  * @author Juanpabl
  */
 $messages['an'] = array(
@@ -368,7 +368,7 @@ $messages['bcl'] = array(
 	'timedmedia-dismiss' => 'Isara',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -692,7 +692,7 @@ $messages['diq'] = array(
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -1070,7 +1070,7 @@ $messages['ga'] = array(
 	'timedmedia-dismiss' => 'Dún',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  * @author Xosé
  */
@@ -1328,7 +1328,7 @@ $messages['hr'] = array(
 	'timedmedia-desc-link' => 'O ovoj datoteci',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Dundak
  * @author Michawiki
  * @author Reedy
@@ -2604,7 +2604,7 @@ $messages['ru'] = array(
 	'timedmedia-subtitle-no-subtitles' => 'В настоящее время нет субтитров на $1 для этого видео, Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} изменить эту страницу] для их добавления',
 );
 
-/** Rusyn (Русиньскый)
+/** Rusyn (русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
@@ -2631,7 +2631,7 @@ $messages['sah'] = array(
 	'timedmedia-desc-link' => 'Бу билэ туһунан',
 );
 
-/** Samogitian (Žemaitėška)
+/** Samogitian (žemaitėška)
  * @author Hugo.arg
  */
 $messages['sgs'] = array(

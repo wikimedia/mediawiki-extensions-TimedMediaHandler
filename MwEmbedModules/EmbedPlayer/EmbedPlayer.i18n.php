@@ -221,7 +221,7 @@ $messages['az'] = array(
 	'mwe-embedplayer-download' => 'Yüklə',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -586,7 +586,7 @@ $messages['diq'] = array(
 	'mwe-embedplayer-copy-code' => 'Kodê kopya',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -1035,7 +1035,7 @@ $messages['frp'] = array(
 	'mwe-embedplayer-missing-source' => 'Niona sôrsa vidèô at étâ trovâ.',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -1286,7 +1286,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-missing-source' => 'הווידאו המקורי לא נמצא',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -2571,7 +2571,7 @@ $messages['ru'] = array(
 	'mwe-embedplayer-missing-source' => 'Не найден источник видео',
 );
 
-/** Rusyn (Русиньскый)
+/** Rusyn (русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

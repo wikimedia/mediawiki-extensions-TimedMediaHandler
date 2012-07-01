@@ -127,7 +127,7 @@ $messages['ar'] = array(
 	'mwe-timedtext-textcat-cue' => 'نقاط تلميح',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -356,7 +356,7 @@ $messages['de-formal'] = array(
 	'mwe-timedtext-upload-text-desc-help-review' => 'Sehen Sie den Text durch und bearbeiten Sie ihn gegebenenfalls, bevor Sie ihn mit einem Klick auf Hochladen hinzufügen',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -656,7 +656,7 @@ $messages['frp'] = array(
 	'mwe-timedtext-no-subs' => 'Gins de pista de tèxto disponibla',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -829,7 +829,7 @@ $messages['he'] = array(
 	'mwe-timedtext-request-already-done' => 'בקשה לתמלל את הסרט הזה כבר נשלחה. [$1 הצגת כל בקשות התמלול]',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -1523,6 +1523,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (português do Brasil)
  * @author Giro720
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'mwe-timedtext-editor' => 'Editor de legendas',
@@ -1554,7 +1555,7 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-layout' => 'Posição',
 	'mwe-timedtext-layout-ontop' => 'Sobre o vídeo',
 	'mwe-timedtext-layout-below' => 'Abaixo do vídeo',
-	'mwe-timedtext-layout-off' => 'Esconder legendas',
+	'mwe-timedtext-layout-off' => 'Ocultar legendas',
 	'mwe-timedtext-loading-text' => 'Carregando o texto ...',
 	'mwe-timedtext-textcat-cc' => 'Títulos',
 	'mwe-timedtext-textcat-sub' => 'Legendas',
@@ -1630,7 +1631,7 @@ $messages['ru'] = array(
 	'mwe-timedtext-request-already-done' => 'Транскрипция этого видео уже была запрошена. [$1 Просмотреть все запросы]',
 );
 
-/** Rusyn (Русиньскый)
+/** Rusyn (русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
