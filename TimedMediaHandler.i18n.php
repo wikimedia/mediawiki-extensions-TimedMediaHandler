@@ -1794,6 +1794,7 @@ $messages['ko'] = array(
 	'timedmedia-desc-link' => '파일 정보',
 	'timedmedia-oggThumb-version' => 'OggHandler는 oggThumb 버전 $1 이상을 요구합니다.',
 	'timedmedia-oggThumb-failed' => 'oggThumb가 섬네일을 생성하지 못했습니다.',
+	'timedmedia-source-file' => '$1 출처',
 );
 
 /** Karachay-Balkar (Къарачай-Малкъар)

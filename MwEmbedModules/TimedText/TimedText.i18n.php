@@ -1521,9 +1521,9 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author 555
  * @author Giro720
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'mwe-timedtext-editor' => 'Editor de legendas',
