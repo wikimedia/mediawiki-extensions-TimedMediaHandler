@@ -1047,15 +1047,48 @@ $messages['id'] = array(
 );
 
 /** Italian (italiano)
+ * @author Beta16
  * @author Gianfranco
  */
 $messages['it'] = array(
+	'mwe-timedtext-editor' => 'Editor sottotitoli',
+	'mwe-timedtext-stage-transcribe' => 'Trascrivi',
+	'mwe-timedtext-stage-translate' => 'Traduci',
+	'mwe-timedtext-stage-upload' => 'Carica da file locale',
+	'mwe-timedtext-select-language' => 'Seleziona lingua',
+	'mwe-timedtext-file-language' => 'Lingua file sottotitoli',
+	'mwe-timedtext-upload-text' => 'Carica file di testo',
+	'mwe-timedtext-uploading-text' => 'Caricamento file di testo',
+	'mwe-timedtext-upload-text-desc-title' => 'Carica file di testo',
+	'mwe-timedtext-upload-text-desc-help' => "L'interfaccia per il caricamento dei file di testo accetta il file .srt",
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Sfoglia il computer locale per i file .srt che vuoi caricare',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Seleziona la lingua del file.',
+	'mwe-timedtext-upload-text-success' => 'Caricamento dei sottotitoli corretto',
 	'mwe-timedtext-upload-text-done' => 'Caricamento completato',
 	'mwe-timedtext-upload-text-fail-desc' => 'Caricamento fallito',
 	'mwe-timedtext-upload-text-fail-title' => 'Caricamento non riuscito',
 	'mwe-timedtext-upload-text-another' => 'Carica un altro',
 	'mwe-timedtext-upload-text-done-uploading' => 'Completato caricamento',
 	'mwe-timedtext-back-btn' => 'Indietro',
+	'mwe-timedtext-choose-text' => 'Scegli il testo',
+	'mwe-timedtext-upload-timed-text' => 'Carica sottotitoli',
+	'mwe-timedtext-loading-text-edit' => 'Caricamento editor sottotitoli',
+	'mwe-timedtext-search' => 'Ricerca clip',
+	'mwe-timedtext-layout' => 'Aspetto',
+	'mwe-timedtext-layout-ontop' => 'Sopra il video',
+	'mwe-timedtext-layout-below' => 'Sotto il video',
+	'mwe-timedtext-layout-off' => 'Nascondi sottotitoli',
+	'mwe-timedtext-loading-text' => 'Caricamento testo...',
+	'mwe-timedtext-textcat-cc' => 'Didascalie',
+	'mwe-timedtext-textcat-sub' => 'Sottotitoli',
+	'mwe-timedtext-textcat-tad' => 'Descrizione audio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-ar' => 'Regioni attive',
+	'mwe-timedtext-textcat-nb' => 'Annotazione',
+	'mwe-timedtext-textcat-trx' => 'Trascrizione',
+	'mwe-timedtext-textcat-lrc' => 'Testi',
+	'mwe-timedtext-language-subtitles-for-clip' => 'sottotitoli in $1 per il clip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Sottotitoli in $1 non trovati per il clip: $2',
 );
 
 /** Japanese (日本語)
