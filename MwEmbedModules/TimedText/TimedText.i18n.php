@@ -1831,6 +1831,10 @@ $messages['tl'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Walang natagpuang $1 kabahaging mga pamagat para sa putol na: $2',
 	'mwe-timedtext-request-subs' => 'Humiling ng sipi ng salin',
 	'mwe-timedtext-no-subs' => 'Walang makukuhang mga bakas ng teksto',
+	'mwe-timedtext-request-subs-desc' => 'Magdagdag ng isang kahilingan para sa talaksang ito ng bidyong upang maisulat',
+	'mwe-timedtext-request-subs-done' => 'Naidagdag ang kahilingan ng transkripsiyon. [$1 Tingnan ang lahat ng mga hiling ng pagpapasulat]',
+	'mwe-timedtext-request-subs-fail' => 'Nabigo sa pagdaragdag ng kahilingan ng pagpapasulat. Nakalagda ka ba?',
+	'mwe-timedtext-request-already-done' => 'Nahiling na ang isang transkripsiyon ng bidyong ito. [$1 Tingnan ang lahat ng mga hiling ng pagpapasulat]',
 );
 
 /** Ukrainian (українська)

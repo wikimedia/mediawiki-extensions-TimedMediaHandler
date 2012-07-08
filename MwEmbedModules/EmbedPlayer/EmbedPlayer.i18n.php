@@ -2904,6 +2904,9 @@ $messages['tl'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(napili na)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para sa mas mainam na karanasan ng pagpapaandar ng bidyo iminumungkahi namin ang [$1 pinakabagong Firefox].',
+	'mwe-embedplayer-download-warn' => 'Walang napansin na kaugmang pampaandar ng pantingin-tingin, para sa pag-uulit ng pagpapaandar ng pantingin-tingin ikargang paibaba ang [$1 pinakahuling Firefox]',
+	'mwe-embedplayer-fullscreen-tip' => 'Pindutin ang <b>F11</b> pampalit-lipat ng <i>pantingin-tingin sa web</i> na buo ang panooran',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Pindutin ang <b>shift ⌘ F</b> upang mapalitan at malipatan ang buong panooran',
 	'mwe-embedplayer-do_not_warn_again' => 'Sa hinaharap, huwag ipakita ang mensaheng ito',
 	'mwe-embedplayer-playerSelect' => 'Mga pampaandar',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Basahin ito</a> bago ibaon.',
@@ -2917,6 +2920,10 @@ $messages['tl'] = array(
 	'mwe-embedplayer-video-flv' => 'Bidyong kisap',
 	'mwe-embedplayer-video-ogg' => 'Bidyong Ogg',
 	'mwe-embedplayer-video-audio' => 'Tunog na Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Pamparinig na MPEG',
+	'mwe-embedplayer-video-3gp' => 'Bidyong 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Bidyong MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Bidyong AVI',
 	'mwe-embedplayer-missing-source' => 'Walang natagpuang pinagmulang bidyo.',
 );
 
