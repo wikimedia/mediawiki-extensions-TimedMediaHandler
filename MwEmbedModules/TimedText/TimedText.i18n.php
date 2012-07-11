@@ -1252,7 +1252,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-request-already-done' => 'Веќе има поставено барање за транскрипција на оваа видеоснимка. [$1 Сите барања]',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+/** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(

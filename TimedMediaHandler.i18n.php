@@ -549,7 +549,7 @@ $messages['ca'] = array(
 	'timedmedia-desc-link' => 'Informació del fitxer',
 );
 
-/** Chechen (Нохчийн)
+/** Chechen (нохчийн)
  * @author Sasan700
  */
 $messages['ce'] = array(
@@ -1715,7 +1715,7 @@ $messages['kk-arab'] = array(
 	'timedmedia-desc-link' => 'بۇل فايل تۋرالى',
 );
 
-/** Kazakh (Cyrillic script) (‪Қазақша (кирил)‬) */
+/** Kazakh (Cyrillic script) (‪қазақша (кирил)‬) */
 $messages['kk-cyrl'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 дыбыс файлы, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 бейне файлы, $2',
@@ -1731,7 +1731,7 @@ $messages['kk-cyrl'] = array(
 	'timedmedia-desc-link' => 'Бұл файл туралы',
 );
 
-/** Kazakh (Latin script) (‪Qazaqşa (latın)‬) */
+/** Kazakh (Latin script) (‪qazaqşa (latın)‬) */
 $messages['kk-latn'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 dıbıs faýlı, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 beýne faýlı, $2',
@@ -1797,7 +1797,7 @@ $messages['ko'] = array(
 	'timedmedia-source-file' => '$1 출처',
 );
 
-/** Karachay-Balkar (Къарачай-Малкъар)
+/** Karachay-Balkar (къарачай-малкъар)
  * @author Iltever
  */
 $messages['krc'] = array(
@@ -2078,7 +2078,7 @@ $messages['ms'] = array(
 	'timedmedia-source-file' => 'Sumber $1',
 );
 
-/** Erzya (Эрзянь)
+/** Erzya (эрзянь)
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
@@ -2100,8 +2100,7 @@ $messages['nah'] = array(
 	'timedmedia-desc-link' => 'Inīn tlahcuilōltechcopa',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
+/** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Laaknor
  * @author Nghtwlkr
  */
@@ -3115,7 +3114,7 @@ $messages['vec'] = array(
 	'timedmedia-desc-link' => 'Informazion su sto file',
 );
 
-/** Veps (Vepsän kel’)
+/** Veps (vepsän kel’)
  * @author Игорь Бродский
  */
 $messages['vep'] = array(

@@ -396,7 +396,7 @@ $messages['bs'] = array(
 	'mwe-embedplayer-related_videos' => 'Povezani snimci',
 );
 
-/** Chechen (Нохчийн)
+/** Chechen (нохчийн)
  * @author Sasan700
  */
 $messages['ce'] = array(
@@ -2006,7 +2006,7 @@ $messages['ms'] = array(
 	'mwe-embedplayer-playerSelect' => 'Pemain',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+/** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
@@ -3044,7 +3044,7 @@ $messages['vec'] = array(
 	'mwe-embedplayer-copy-code' => 'Copia el còdese',
 );
 
-/** Veps (Vepsän kel’) */
+/** Veps (vepsän kel’) */
 $messages['vep'] = array(
 	'mwe-embedplayer-link_back' => 'Kosketuz tagaze',
 	'mwe-embedplayer-play_clip' => 'Väta klip',
