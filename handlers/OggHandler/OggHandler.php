@@ -89,7 +89,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @return bool|mixed
 	 */
 	function unpackMetadata( $metadata ) {
-		$unser = @unserialize( $metadata );
+		$unser = @unserialize( $metadata );  // FIXME: usage of @ is bad
 		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
 			return $unser;
 		} else {
