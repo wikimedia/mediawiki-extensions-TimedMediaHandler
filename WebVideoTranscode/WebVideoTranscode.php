@@ -471,9 +471,8 @@ class WebVideoTranscode {
 		}
 
 		// Build the sql query:
-		$dbw = $file->repo->getMasterDB();
 		$dbw = wfGetDB( DB_MASTER );
-		$deleteWhere = array( 'transcode_image_name' => $titleObj->getDBkey() );
+		$deleteWhere = array( 'transcode_image_name' => $titleObj->getDBkey() ); // FIXME: $titleOBj is undefined
 		// Check if we are removing a specific transcode key
 		if( $transcodeKey !== false ){
 			$deleteWhere['transcode_key'] = $transcodeKey;
@@ -518,7 +517,6 @@ class WebVideoTranscode {
 	 * if the source is not found update the job queue
 	 */
 	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){
-		$fileName = $file->getTitle()->getDbKey();
 		// Check if the transcode is ready:
 		if( self::isTranscodeReady( $file, $transcodeKey ) ){
 			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
@@ -539,20 +537,22 @@ class WebVideoTranscode {
 		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
 		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
+		$bitrate = $file->getHandler()->getBitrate( $file );
+		$metadataType = $file->getHandler()->getMetadataType(); // FIXME: Missing parameter
+
 		$source = array(
 			'src' => $src,
 			'title' => wfMsg('timedmedia-source-file-desc',
-								$file->getHandler()->getMetadataType(), // FIXME: Missing parameter
+								$metadataType,
 								$wgLang->formatNum( $file->getWidth() ),
 								$wgLang->formatNum( $file->getHeight() ),
-								$wgLang->formatBitrate( $file->getHandler()->getBitrate( $file ) )
+								$wgLang->formatBitrate( $bitrate )
 							),
-			"{$dataPrefix}shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $file->getHandler()->getMetadataType() ) ),
+			"{$dataPrefix}shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $metadataType ) ),
 			"{$dataPrefix}width" => $file->getWidth(),
 			"{$dataPrefix}height" => $file->getHeight(),
 		);
 
-		$bitrate = $file->getHandler()->getBitrate( $file );
 		if( $bitrate )
 			$source["{$dataPrefix}bandwidth"] = round ( $bitrate );
 

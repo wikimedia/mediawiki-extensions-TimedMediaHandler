@@ -105,6 +105,8 @@ class TranscodeStatusTable {
 					'class' => 'errorlink',
 					'data-error' => $state['error']
 				));
+			} else {
+				$showErrorLink = '';
 			}
 			return wfMsgHtml('timedmedia-error-on', $state['time_error'] ) . $showErrorLink;
 		}

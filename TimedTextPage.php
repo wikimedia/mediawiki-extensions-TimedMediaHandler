@@ -77,7 +77,7 @@ class TimedTextPage extends Article {
 	 * @return Message|string
 	 */
 	private function getSrtHTML( $languageName ){
-		if( !$this->exists() ){ // FIXME: exists() doesn't exist
+		if( !$this->exists() ){
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
 		return '<pre style="margin-top:0px;">'. $this->getContent() . '</pre>';

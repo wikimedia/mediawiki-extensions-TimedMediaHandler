@@ -104,10 +104,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	static function htmlTagSet( $tagName, $tagSet ){
-		$s = '';
 		if( empty( $tagSet ) ){
 			return '';
 		}
+		$s = '';
 		foreach( $tagSet as $attr ){
 			$s .= Html::element( $tagName, $attr);
 		}
@@ -214,7 +214,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media attributes
-	 * @param $sizeOverride {Array} of width and height
+	 * @param $sizeOverride Array|bool of width and height
 	 * @return array
 	 */
 	function getMediaAttr( $sizeOverride = false ){
