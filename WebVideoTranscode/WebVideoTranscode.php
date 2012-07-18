@@ -472,7 +472,7 @@ class WebVideoTranscode {
 
 		// Build the sql query:
 		$dbw = wfGetDB( DB_MASTER );
-		$deleteWhere = array( 'transcode_image_name' => $titleObj->getDBkey() ); // FIXME: $titleOBj is undefined
+		$deleteWhere = array( 'transcode_image_name' => $file->getTitle()->getDBkey() );
 		// Check if we are removing a specific transcode key
 		if( $transcodeKey !== false ){
 			$deleteWhere['transcode_key'] = $transcodeKey;

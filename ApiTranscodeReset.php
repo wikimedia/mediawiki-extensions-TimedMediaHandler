@@ -56,7 +56,7 @@ class ApiTranscodeReset extends ApiBase {
 		}
 
 		// All good do the transcode removal:
-		WebVideoTranscode::removeTranscodes( $titleObj, $transcodeKey );
+		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
 
 		$this->getResult()->addValue(null, 'success', 'removed transcode');
 	}
@@ -67,10 +67,6 @@ class ApiTranscodeReset extends ApiBase {
 	 * @return int|string
 	 */
 	static public function checkTimeSinceLastRest( $file, $transcodeKey ){
-		// All good do the transcode removal:
-		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
-		$this->getResult()->addValue(null, 'success', 'removed transcode'); // FIXME: $this cannot be used in a static context
-
 		global $wgWaitTimeForTranscodeReset;
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $file );
 		if( $transcodeKey ){
