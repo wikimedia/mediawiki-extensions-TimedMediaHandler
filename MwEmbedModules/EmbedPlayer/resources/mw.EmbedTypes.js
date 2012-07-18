@@ -82,9 +82,9 @@ mw.EmbedTypes = {
 		mw.log( "embedPlayer: running detect" );
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
-		try　{
+		try {
 			var javaEnabled = navigator.javaEnabled();
-		} catch ( e )　{
+		} catch ( e ) {
 
 		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
