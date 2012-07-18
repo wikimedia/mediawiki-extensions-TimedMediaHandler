@@ -64,8 +64,8 @@ class WebVideoJobRunner extends Maintenance {
 				strpos( $proc['args'], '--type webVideoTranscode' ) !== false
 			){
 				if( TimedMediaHandler::parseTimeString( $proc['time'] ) > $wgTranscodeBackgroundTimeLimit ){
-					// should probably "kill" the process
-					$killSuccess = posix_kill( $pid ); // FIXME: $sig parameter missing
+					// "kill" the process
+					$killSuccess = posix_kill( $pid, SIGTERM );
 					$this->output( "Trying to expire transcode job: " . $pid . " result:" . $killSuccess );
 				} else {
 					// Job is oky add to count:

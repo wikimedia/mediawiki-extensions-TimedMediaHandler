@@ -18,12 +18,12 @@ class TimedMediaIframeOutput {
 	 * @return bool
 	 */
 	static function iframeHook( &$title, &$article, $doOutput = true ) {
-		global $wgTitle, $wgRequest, $wgOut, $wgEnableIframeEmbed; // FIXME: Do we need to use $wgTitle ?
+		global $wgRequest, $wgOut, $wgEnableIframeEmbed;
 		if( !$wgEnableIframeEmbed )
 			return true; //continue normal output iframes are "off" (maybe throw a warning in the future)
 
 		// Make sure we are in the right namespace and iframe=true was called:
-		if(	is_object( $wgTitle ) && $wgTitle->getNamespace() == NS_FILE  &&
+		if(	is_object( $title ) && $title->getNamespace() == NS_FILE  &&
 			$wgRequest->getVal('embedplayer') == 'yes' &&
 			$wgEnableIframeEmbed &&
 			$doOutput ){

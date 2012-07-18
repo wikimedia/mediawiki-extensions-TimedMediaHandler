@@ -28,7 +28,6 @@ class TestApiUploadVideo extends ApiTestCaseVideoUpload {
 		$this->assertEquals( filesize( $file['filePath'] ), ( int )$result['upload']['imageinfo']['size'] );
 		$this->assertEquals( $file['mime'], $result['upload']['imageinfo']['mime'] );
 
-		return $session; // FIXME: $session is undefined
 	}
 
 }
