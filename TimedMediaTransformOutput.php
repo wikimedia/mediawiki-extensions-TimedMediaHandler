@@ -167,19 +167,25 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
 		};
+		$width = $sizeOverride ? $sizeOverride[0] : $this->width;
 		// Build the video tag output:
-		$s = Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
+		$s = Xml::tags( 'div' , array(
+				'class' => 'mediaContainer',
+				'style' => 'position:relative;display:block;width:'. $width . 'px'
+			),
+			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
+				// The set of media sources:
+				self::htmlTagSet( 'source', $mediaSources ) .
 
-			// The set of media sources:
-			self::htmlTagSet( 'source', $mediaSources ) .
+				// Timed text:
+				self::htmlTagSet( 'track', $this->getTextHandler()->getTracks() ) .
 
-			// Timed text:
-			self::htmlTagSet( 'track', $this->getTextHandler()->getTracks() ) .
-
-			// Fallback text displayed for browsers without js and without video tag support:
-			/// XXX note we may want to replace this with an image and download link play button
-			wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )
+				// Fallback text displayed for browsers without js and without video tag support:
+				/// XXX note we may want to replace this with an image and download link play button
+				wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )
+			)
 		);
+
 		return $s;
 	}
 
