@@ -249,11 +249,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// it updates the controls attribute of the embed video
 			'controls'=> 'true',
 		);
-
-		// Set player skin:
-		if( $wgVideoPlayerSkin ){
-			$mediaAttr['class'] = htmlspecialchars ( $wgVideoPlayerSkin );
-		}
+		// MediaWiki uses the kSkin class
+		$mediaAttr['class'] = 'kskin';
 
 		// Custom data-attributes
 		$mediaAttr += array(

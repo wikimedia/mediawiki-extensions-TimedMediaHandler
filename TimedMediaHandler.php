@@ -42,7 +42,7 @@ $wgMediaVideoTypes = array( 'Theora', 'VP8' );
 $wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
 // Default skin for mwEmbed player (class attribute of video tag)
-$wgVideoPlayerSkin = 'kskin';
+$wgVideoPlayerSkinModule = 'mw.PlayerSkinKskin';
 
 // Support iframe for remote embedding
 $wgEnableIframeEmbed = true;
