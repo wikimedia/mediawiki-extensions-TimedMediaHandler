@@ -266,9 +266,9 @@ class WebVideoTranscode {
 		$sources = array();
 		// Generate the source list from the data response:
 		if( $data['query'] && $data['query']['pages'] ){
-			$vidResult = first( $data['query']['pages'] ); // FIXME: first() is not a function
+			$vidResult = array_shift( $data['query']['pages'] );
 			if( $vidResult['videoinfo'] ){
-				$derResult = first( $vidResult['videoinfo'] ); // FIXME: first() is not a function
+				$derResult = array_shift( $vidResult['videoinfo'] );
 				$derivatives = $derResult['derivatives'];
 				foreach( $derivatives as $derivativeSource ){
 					$sources[] = $derivativeSource;
@@ -538,7 +538,7 @@ class WebVideoTranscode {
 		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
 		$bitrate = $file->getHandler()->getBitrate( $file );
-		$metadataType = $file->getHandler()->getMetadataType(); // FIXME: Missing parameter
+		$metadataType = $file->getHandler()->getMetadataType( $file );
 
 		$source = array(
 			'src' => $src,

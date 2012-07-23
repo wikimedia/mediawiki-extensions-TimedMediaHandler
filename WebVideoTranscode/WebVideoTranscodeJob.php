@@ -620,9 +620,8 @@ class WebVideoTranscodeJob extends Job {
 
 			// Check if we have global job run-time has been exceeded:
 			if ( $wgTranscodeBackgroundTimeLimit && time() - $startTime  > $wgTranscodeBackgroundTimeLimit ){
-				// FIXME: $maxTime is undefined
 				$errorMsg = "Encoding exceeded max job run time ( "
-					. TimedMediaHandler::seconds2npt( $maxTime ) . " ), kill process."; // FIXME: $maxTime is undefined
+					. TimedMediaHandler::seconds2npt( $wgTranscodeBackgroundTimeLimit ) . " ), kill process.";
 				$this->output( $errorMsg );
 				// File is not growing in size, kill proccess
 				$retval = 1;

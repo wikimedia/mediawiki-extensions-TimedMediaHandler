@@ -92,7 +92,7 @@ class TimedMediaHandler extends MediaHandler {
 		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach($timeParam as $pn){
 			if ( isset( $params[$pn] ) ) {
-				$length = $this->getLength( $image ); // FIXME: getLength() is undefined
+				$length = $this->getLength( $image );
 				$time = $this->parseTimeString( $params[$pn] );
 				if ( $time === false ) {
 					return false;
@@ -229,13 +229,28 @@ class TimedMediaHandler extends MediaHandler {
 		return "{$hours}:{$min}:{$sec}{$ms}";
 	}
 
+ 	/**
+	 * @param $metadata
+	 * @return bool|mixed
+	 */
+	function unpackMetadata( $image, $metadata ) {
+		wfSuppressWarnings();
+		$unser = unserialize( $metadata );
+		wfRestoreWarnings();
+		if ( isset( $unser['version'] ) ) {
+			return $unser;
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * @param $image
 	 * @param $metadata
 	 * @return bool
 	 */
 	function isMetadataValid( $image, $metadata ) {
-		return $this->unpackMetadata( $metadata ) !== false; // FIXME: unpackMetadata() is undefined
+		return $this->unpackMetadata( $metadata ) !== false;
 	}
 
 	/**
@@ -279,7 +294,7 @@ class TimedMediaHandler extends MediaHandler {
 
 		$options = array(
 			'file' => $file,
-			'length' => $this->getLength( $file ), // FIXME: getLength() is undefined
+			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
 			'width' => $params['width'],
 			'height' =>  $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth ),
@@ -333,6 +348,15 @@ class TimedMediaHandler extends MediaHandler {
 	function getOffset( $file ){
 		return 0;
 	}
+	
+	/**
+	 * Get length of a file
+	 * @param $file
+	 * @return int
+	 */
+	function getLength( $file ){
+		return $file->getLength();
+	}
 
 	/**
 	 * @param $file File
@@ -342,11 +366,11 @@ class TimedMediaHandler extends MediaHandler {
 		global $wgLang;
 
 		if ( $file->getWidth() ) {
-			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ), // FIXME: getLength() is undefined
+			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
 				$wgLang->formatNum( $file->getWidth() ),
 				$wgLang->formatNum( $file->getHeight() ) );
 		} else {
-			return $wgLang->formatTimePeriod( $this->getLength( $file ) ); // FIXME: getLength() is undefined
+			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}
 	}
 

@@ -72,7 +72,9 @@ class WebMHandler extends TimedMediaHandler {
 	 * @return bool|mixed
 	 */
 	function unpackMetadata( $metadata ) {
-		$unser = @unserialize( $metadata ); // FIXME: usage of @ is bad
+		wfSuppressWarnings();
+		$unser = unserialize( $metadata );
+		wfRestoreWarnings();
 		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
 			return $unser;
 		} else {
@@ -81,10 +83,10 @@ class WebMHandler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $image string
+	 * @param $image
 	 * @return string
 	 */
-	function getMetadataType( $image = '' ) {
+	function getMetadataType( $image ) {
 		return 'webm';
 	}
 
@@ -113,7 +115,7 @@ class WebMHandler extends TimedMediaHandler {
 	 * @param $file File
 	 * @return mixed
 	 */
-	function getBitrate($file ){
+	function getBitrate( $file ){
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		return $metadata['bitrate'];
 	}
