@@ -64,6 +64,10 @@ $wgTranscodeBackgroundPriority = 19;
 
 // The total amout of time a transcoding shell command can take:
 $wgTranscodeBackgroundTimeLimit = 3600 * 4;
+// Maximum amount of virtual memory available to transcoding processes in KB
+$wgTranscodeBackgroundMemoryLimit = 512 * 1024; // 512MB
+// Maximum file size transcoding processes can create, in KB
+$wgTranscodeBackgroundSizeLimit = 1024 * 1024; // 1GB
 
 // The location of ffmpeg2theora (transcoding)
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';

@@ -540,6 +540,9 @@ class WebVideoTranscodeJob extends Job {
 	 * @param $retvalLog
 	 */
 	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog ){
+		global $wgTranscodeBackgroundTimeLimit,
+			$wgTranscodeBackgroundMemoryLimit,
+			$wgTranscodeBackgroundSizeLimit;
 		// In theory we should use pcntl_exec but not sure how to get the stdout, ensure
 		// we don't max php memory with the same protections provided by wfShellExec.
 
@@ -552,7 +555,12 @@ class WebVideoTranscodeJob extends Job {
 		// Directly execute the shell command:
 		//global $wgTranscodeBackgroundPriority;
 		//$status = wfShellExec( 'nice -n ' . $wgTranscodeBackgroundPriority . ' '. $cmd . ' 2>&1', $retval );
-		$status = wfShellExec( $cmd . ' 2>&1', $retval );
+		$limits = array(
+			"filesize" => $wgTranscodeBackgroundSizeLimit,
+			"memory" => $wgTranscodeBackgroundMemoryLimit,
+			"time" => $wgTranscodeBackgroundTimeLimit
+		);
+		$status = wfShellExec( $cmd . ' 2>&1', $retval , array(), $limits );
 
 		// Output the status:
 		wfSuppressWarnings();
