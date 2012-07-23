@@ -41,7 +41,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return File
 	 */
 	private function getFile() {
-		if( !$this->file){
+		if( !$this->file ){
 			$this->file = wfLocalFile( $this->title );
 		}
 		return $this->file;
@@ -64,8 +64,14 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function getSourceFilePath(){
 		if( !$this->sourceFilePath ){
-			$file = wfLocalFile( $this->title );
-			$this->sourceFilePath = $file->getLocalRefPath();
+			$file = $this->getFile();
+			$this->source = $file->repo->getLocalReference( $file->getPath() );
+			// If file is in a remote repository we get a temp file.
+			// make sure its not delted before encoding is done.
+			if ( $this->source instanceof TempFSFile ) {
+				$this->source->preserve();
+			}
+			$this->sourceFilePath = $this->source->getPath();
 		}
 		return $this->sourceFilePath;
 	}
@@ -76,7 +82,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	public function run() {
 		// get a local pointer to the file
-		$file = wfLocalFile( $this->title );
+		$file = $this->getFile();
 
 		// Validate the file exists :
 		if( !$file || !is_file( $this->getSourceFilePath() ) ){
@@ -148,6 +154,11 @@ class WebVideoTranscodeJob extends Job {
 
 		// Remove any log files all useful info should be in status and or we are done with 2 passs encoding
 		$this->removeFffmpgeLogFiles();
+
+		// Purge temp copy that was locked with preserve in getSourceFilePath
+		if ( isset($this->source) && $this->source instanceof TempFSFile ) {
+			$this->source->purge();
+		}
 
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm the in memory $jobStartTimeCache matches db start time
@@ -271,6 +282,10 @@ class WebVideoTranscodeJob extends Job {
 	function ffmpegEncode( $options, $pass=0 ){
 		global $wgFFmpegLocation;
 
+		if( !is_file( $this->getSourceFilePath() ) ) {
+			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
+		}
+
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -y -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
 
@@ -342,7 +357,7 @@ class WebVideoTranscodeJob extends Job {
 	function ffmpegAddVideoOptions( $options, $pass ){
 
 		// Get a local pointer to the file object
-		$file = wfLocalFile( $this->title );
+		$file = $this->getFile();
 
 		$cmd ='';
 		// Add the boiler plate vp8 ffmpeg command:
@@ -440,10 +455,14 @@ class WebVideoTranscodeJob extends Job {
 	function ffmpeg2TheoraEncode( $options ){
 		global $wgFFmpeg2theoraLocation;
 
+		if( !is_file( $this->getSourceFilePath() ) ) {
+			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
+		}
+
 		// Set up the base command
 		$cmd = wfEscapeShellArg( $wgFFmpeg2theoraLocation ) . ' ' . wfEscapeShellArg( $this->getSourceFilePath() );
 
-		$file = wfLocalFile( $this->title );
+		$file = $this->getFile();
 
 		if( isset( $options['maxSize'] ) ){
 			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
@@ -594,7 +613,7 @@ class WebVideoTranscodeJob extends Job {
 			//$this->output( "$pid is running" );
 
 			// Check that the target file is growing ( every 5 seconds )
-			if( $loopCount == 5 ){
+			if( $loopCount == 10 ){
 				// only run check if we are outputing to target file
 				// ( two pass encoding does not output to target on first pass )
 				clearstatcache();
