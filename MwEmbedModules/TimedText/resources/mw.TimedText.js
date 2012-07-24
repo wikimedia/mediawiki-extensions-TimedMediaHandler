@@ -169,15 +169,15 @@
 						mw.getConfig("TimedText.BottomPadding");
 
 				var textCss = _this.getInterfaceSizeTextCss({
-					'width' :  embedPlayer.$interface.width(),
-					'height' : embedPlayer.$interface.height()
+					'width' :  embedPlayer.getInterface().width(),
+					'height' : embedPlayer.getInterface().height()
 				});
 
-				mw.log( 'TimedText::set text size for: : ' + embedPlayer.$interface.width() + ' = ' + textCss['font-size'] );
-				if ( embedPlayer.controlBuilder.isOverlayControls() && !embedPlayer.$interface.find( '.control-bar' ).is( ':hidden' ) ) {
+				mw.log( 'TimedText::set text size for: : ' + embedPlayer.getInterface().width() + ' = ' + textCss['font-size'] );
+				if ( embedPlayer.controlBuilder.isOverlayControls() && !embedPlayer.getInterface().find( '.control-bar' ).is( ':hidden' ) ) {
 					textOffset += _this.embedPlayer.controlBuilder.getHeight();
 				}
-				embedPlayer.$interface.find( '.track' )
+				embedPlayer.getInterface().find( '.track' )
 				.css( textCss )
 				.css({
 					// Get the text size scale then set it to control bar height + TimedText.BottomPadding;
@@ -186,23 +186,22 @@
 			});
 
 			// Update the timed text size
-			$( embedPlayer ).bind( 'onResizePlayer'+ this.bindPostFix, function(event, size, animate) {
+			$( embedPlayer ).bind( 'updateLayout'+ this.bindPostFix, function() {
 				// If the the player resize action is an animation, animate text resize,
 				// else instantly adjust the css.
-				var textCss = _this.getInterfaceSizeTextCss( size );
-				mw.log( 'TimedText::onResizePlayer: ' + textCss['font-size']);
-				if ( animate ) {
-					embedPlayer.$interface.find( '.track' ).animate( textCss);
-				} else {
-					embedPlayer.$interface.find( '.track' ).css( textCss );
-				}
+				var textCss = _this.getInterfaceSizeTextCss( {
+					'width': embedPlayer.getPlayerWidth(),
+					'height': embedPlayer.getPlayerHeight()
+				});
+				mw.log( 'TimedText::updateLayout: ' + textCss['font-size']);
+				embedPlayer.getInterface().find( '.track' ).css( textCss );
 			});
 
 			// Setup display binding
 			$( embedPlayer ).bind( 'onShowControlBar'+ this.bindPostFix, function(event, layout ){
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track if present
-					embedPlayer.$interface.find( '.track' )
+					embedPlayer.getInterface().find( '.track' )
 					.stop()
 					.animate( layout, 'fast' );
 				}
@@ -211,7 +210,7 @@
 			$( embedPlayer ).bind( 'onHideControlBar'+ this.bindPostFix, function(event, layout ){
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track down if present
-					embedPlayer.$interface.find( '.track' )
+					embedPlayer.getInterface().find( '.track' )
 					.stop()
 					.animate( layout, 'fast' );
 				}
@@ -221,7 +220,7 @@
 				if ( $( '#textMenuContainer_' + embedPlayer.id ).length ) {
 					$( '#textMenuContainer_' + embedPlayer.id ).hide();
 				}
-				var $textButton = embedPlayer.$interface.find( '.timed-text' );
+				var $textButton = embedPlayer.getInterface().find( '.timed-text' );
 				if ( $textButton.length ) {
 					$textButton.unbind( 'click' );
 				}
@@ -230,7 +229,7 @@
 			} );
 
 			$( embedPlayer ).bind( 'AdSupport_EndAdPlayback' + this.bindPostFix, function() {
-				var $textButton = embedPlayer.$interface.find( '.timed-text' );
+				var $textButton = embedPlayer.getInterface().find( '.timed-text' );
 				if ( $textButton.length ) {
 					_this.bindTextButton( $textButton );
 				}
@@ -309,10 +308,10 @@
 		*/
 		showTextMenu: function() {
 			var embedPlayer = this.embedPlayer;
-			var loc = embedPlayer.$interface.find( '.rButton.timed-text' ).offset();
+			var loc = embedPlayer.getInterface().find( '.rButton.timed-text' ).offset();
 			mw.log('TimedText::showTextMenu:: ' + embedPlayer.id + ' location: ', loc);
 			// TODO: Fix menu animation
-			var $menuButton = this.embedPlayer.$interface.find( '.timed-text' );
+			var $menuButton = this.embedPlayer.getInterface().find( '.timed-text' );
 			// Check if a menu has already been built out for the menu button:
 			if ( $menuButton[0].m ) {
 				$menuButton.menu('show');
@@ -400,7 +399,7 @@
 			var embedPlayer = this.embedPlayer;
 			// Setup text sources ( will callback inline if already loaded )
 			_this.setupTextSources( function() {
-				var $menuButton = _this.embedPlayer.$interface.find( '.timed-text' );
+				var $menuButton = _this.embedPlayer.getInterface().find( '.timed-text' );
 
 				var positionOpts = { };
 				if( _this.embedPlayer.supports[ 'overlays' ] ){
@@ -412,11 +411,11 @@
 					};
 				}
 
-				if( !_this.embedPlayer.$interface ){
+				if( !_this.embedPlayer.getInterface() ){
 					mw.log("TimedText:: interface called before interface ready, just wait for interface");
 					return ;
 				}
-				var $menuButton = _this.embedPlayer.$interface.find( '.timed-text' );
+				var $menuButton = _this.embedPlayer.getInterface().find( '.timed-text' );
 				// NOTE: Button target should be an option or config
 				$menuButton.menu( {
 					'content'	: _this.getMainMenu(),
@@ -852,7 +851,7 @@
 				layoutOptions.push( 'ontop' );
 			}
 			// Support below player display:
-			layoutOptions.push( 'below' );
+			//layoutOptions.push( 'below' );
 			layoutOptions.push( 'off'  );
 
 			var $ul = $('<ul>');
@@ -903,7 +902,7 @@
 		*/
 		updateLayout: function() {
 			mw.log( "TimedText:: updateLayout " );
-			var $playerTarget = this.embedPlayer.$interface;
+			var $playerTarget = this.embedPlayer.getInterface();
             if( $playerTarget ) {
             	// remove any existing caption containers:
                 $playerTarget.find('.captionContainer,.captionsOverlay').remove();
@@ -921,7 +920,7 @@
 			mw.log("TimedText:: selectTextSource: select lang: " + source.srclang );
 
 			// For some reason we lose binding for the menu ~sometimes~ re-bind
-			this.bindTextButton( this.embedPlayer.$interface.find('timed-text') );
+			this.bindTextButton( this.embedPlayer.getInterface().find('timed-text') );
 
 			this.currentLangKey =  source.srclang;
 
@@ -943,7 +942,7 @@
 
 			// Set any existing text target to "loading"
 			if( !source.loaded ) {
-				var $playerTarget = this.embedPlayer.$interface;
+				var $playerTarget = this.embedPlayer.getInterface();
 				$playerTarget.find('.track').text( gM('mwe-timedtext-loading-text') );
 				// Load the text:
 				source.load( function(){
@@ -1078,14 +1077,14 @@
 			var addedCaption = false;
 			// Show captions that are on:
 			$.each( activeCaptions, function( capId, caption ){
-				if( _this.embedPlayer.$interface.find( '.track[data-capId="' + capId +'"]').length == 0){
+				if( _this.embedPlayer.getInterface().find( '.track[data-capId="' + capId +'"]').length == 0){
 					_this.addCaption( source, capId, caption );
 					addedCaption = true;
 				}
 			});
 
 			// hide captions that are off:
-			_this.embedPlayer.$interface.find( '.track' ).each(function( inx, caption){
+			_this.embedPlayer.getInterface().find( '.track' ).each(function( inx, caption){
 				if( !activeCaptions[ $( caption ).attr('data-capId') ] ){
 					if( addedCaption ){
 						$( caption ).remove();
@@ -1136,8 +1135,8 @@
 
 			// apply any interface size adjustments:
 			$textTarget.css( this.getInterfaceSizeTextCss({
-					'width' :  this.embedPlayer.$interface.width(),
-					'height' : this.embedPlayer.$interface.height()
+					'width' :  this.embedPlayer.getInterface().width(),
+					'height' : this.embedPlayer.getInterface().height()
 				})
 			);
 
@@ -1166,7 +1165,7 @@
 		},
 		getDefaultStyle: function(){
 			var defaultBottom = 15;
-			if( this.embedPlayer.controlBuilder.isOverlayControls() && !this.embedPlayer.$interface.find( '.control-bar' ).is( ':hidden' ) ) {
+			if( this.embedPlayer.controlBuilder.isOverlayControls() && !this.embedPlayer.getInterface().find( '.control-bar' ).is( ':hidden' ) ) {
 				defaultBottom += this.embedPlayer.controlBuilder.getHeight();
 			}
 			var baseCss =  {
@@ -1179,14 +1178,14 @@
 					'z-index': 2
 				};
 			baseCss =$.extend( baseCss, this.getInterfaceSizeTextCss({
-				'width' :  this.embedPlayer.$interface.width(),
-				'height' : this.embedPlayer.$interface.height()
+				'width' :  this.embedPlayer.getInterface().width(),
+				'height' : this.embedPlayer.getInterface().height()
 			}));
 			return baseCss;
 		},
 		addTextOverlay: function( $textTarget ){
 			var _this = this;
-			var $captionsOverlayTarget = this.embedPlayer.$interface.find('.captionsOverlay');
+			var $captionsOverlayTarget = this.embedPlayer.getInterface().find('.captionsOverlay');
 			var layoutCss = {
 				'left': 0,
 				'top': 0,
@@ -1211,7 +1210,7 @@
 		 * Applies the default layout for a text target
 		 */
 		addTextBelowVideo: function( $textTarget ) {
-			var $playerTarget = this.embedPlayer.$interface;
+			var $playerTarget = this.embedPlayer.getInterface();
 			// Get the relative positioned player class from the controlBuilder:
 			this.embedPlayer.controlBuilder.keepControlBarOnScreen = true;
 			if( !$playerTarget.find('.captionContainer').length || this.embedPlayer.useNativePlayerControls() ) {
@@ -1226,7 +1225,7 @@
 		addBelowVideoCaptionContainer: function(){
 			var _this = this;
 			mw.log( "TimedText:: addBelowVideoCaptionContainer" );
-			var $playerTarget = this.embedPlayer.$interface;
+			var $playerTarget = this.embedPlayer.getInterface();
 			if( $playerTarget.find('.captionContainer').length ) {
 				return ;
 			}
