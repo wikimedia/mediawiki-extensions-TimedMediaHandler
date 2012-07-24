@@ -52,6 +52,9 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	'data-flavorid', // a source flavor id ( useful for targeting devices )
 	'data-aspect', // the aspect ratio, useful for adaptive protocal urls that don't have a strict height / width
 
+	// Used for download attribute on mediawiki
+	'data-mwtitle',
+
 	// Media start time
 	'start',
 

@@ -2061,9 +2061,12 @@ mw.PlayerControlBuilder.prototype = {
 		$.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if( source.getSrc() ) {
 				mw.log("showDownloadWithSources:: Add src: " + source.getTitle() );
-				var path = new mw.Uri( source.getSrc() ).path;
-				var pathParts = path.split( '/' );
-				var fileName = pathParts[ pathParts.length -1 ];
+				var fileName = source.mwtitle;
+				if ( !fileName ) {
+					var path = new mw.Uri( source.getSrc() ).path;
+					var pathParts = path.split( '/' );
+					fileName = pathParts[ pathParts.length -1 ];
+				}
 				var $dlLine = $( '<li />').append(
 					$('<a />')
 					.attr( {
