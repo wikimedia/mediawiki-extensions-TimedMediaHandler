@@ -218,7 +218,7 @@ class getid3_matroska extends getid3_handler
     private $EBMLbuffer_length = 0;
     private $current_offset    = 0;
     private $unuseful_elements = array(EBML_ID_CRC32, EBML_ID_VOID);
-    
+
 	public function Analyze()
 	{
 		$info = &$this->getid3->info;

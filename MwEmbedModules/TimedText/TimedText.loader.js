@@ -17,12 +17,7 @@
 			classRequest = $.merge( classRequest, ['mw.TimedText'] );
 		}
 	} );
-	// On new embed player check if we need to add timedText
-	$( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayer ){
-		if( mw.isTimedTextSupported( embedPlayer ) ){
-			embedPlayer.timedText = new mw.TimedText( embedPlayer );
-		}
-	});
+
 	/**
 	 * Check timedText is active for a given embedPlayer
 	 * @param {object} embedPlayer The player to be checked for timedText properties
@@ -34,13 +29,16 @@
 		// Do a module check for timed Text support ( module must add data property 'SupportsTimedText' )
 		$( embedPlayer ).trigger( 'SupportsTimedText' );
 
-		// triggers are triggered synchronously, check for data property being updated.
 		if( $( embedPlayer ).data( 'SupportsTimedText' )  ){
 			return true;
 		}
 
 		// Check for standard 'track' attribute:
-		return $( embedPlayer ).find( 'track' ).length != 0 ;
+		if ( $( embedPlayer ).find( 'track' ).length != 0 ) {
+			return true;
+		} else {
+			return false;
+		}
 	};
 
 } )( window.mediaWiki, window.jQuery );

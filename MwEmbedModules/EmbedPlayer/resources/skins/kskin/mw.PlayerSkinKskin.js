@@ -1,7 +1,8 @@
 /**
 * Skin js allows you to override contrlBuilder html/class output
 */
-( function( mw, $ ) {
+
+( function( mw, $ ) {"use strict";
 
 mw.PlayerSkinKskin = {
 
@@ -15,13 +16,15 @@ mw.PlayerSkinKskin = {
 	height: 20,
 
 	// Volume control layout is horizontal
-	volume_layout: 'horizontal',
+	volumeLayout: 'horizontal',
 
 	// Skin "kskin" is specific for wikimedia we have an
 	// api Title key so the "credits" menu item can be showed.
 	supportedMenuItems: {
 		'credits': true
 	},
+	// Stores the current menu item id
+	currentMenuItem: null,
 
 	// Extends base components with kskin specific options:
 	components: {
@@ -41,17 +44,21 @@ mw.PlayerSkinKskin = {
 			}
 		},
 		'volumeControl': {
-			'w':40
+			'w':36
 		},
 		// No attributionButton component for kSkin ( its integrated into the credits screen )
 		'attributionButton' : false,
 
+		// Time display:
+		'timeDisplay': {
+			'w':52
+		},
 		'optionsMenu': {
 			'w' : 0,
 			'o' : function( ctrlObj ) {
 				var embedPlayer = ctrlObj.embedPlayer;
 
-				$menuOverlay = $( '<div />')
+				var $menuOverlay = $( '<div />')
 					.addClass( 'overlay-win k-menu ui-widget-content' )
 					.css( {
 						'width' : '100%',
@@ -59,6 +66,7 @@ mw.PlayerSkinKskin = {
 						'top' : '0px',
 						'bottom' : ( ctrlObj.getHeight() + 2 ) + 'px'
 					} );
+
 				// Note safari can't display video overlays with text:
 				// see bug https://bugs.webkit.org/show_bug.cgi?id=48379
 
@@ -69,7 +77,7 @@ mw.PlayerSkinKskin = {
 				// Setup menu offset ( if player height < getOverlayHeight )
 				// This displays the menu outside of the player on small embeds
 				if ( embedPlayer.getPlayerHeight() < ctrlObj.getOverlayHeight() ) {
-					var topPos = ( ctrlObj.checkOverlayControls() )
+					var topPos = ( ctrlObj.isOverlayControls() )
 							? embedPlayer.getPlayerHeight()
 							: embedPlayer.getPlayerHeight() + ctrlObj.getHeight();
 
@@ -78,12 +86,12 @@ mw.PlayerSkinKskin = {
 						'bottom' : null,
 						'width' : ctrlObj.getOverlayWidth(),
 						'height' : ctrlObj.getOverlayHeight() + 'px'
-					});
+					} );
 					// Special common overflow hack for thumbnail display of player
 					$( embedPlayer ).parents( '.thumbinner' ).css( 'overflow', 'visible' );
 				}
 
-				$menuBar = $( '<ul />' )
+				var $menuBar = $( '<ul />' )
 					.addClass( 'k-menu-bar' );
 
 				// Don't include about player menu item ( FIXME should be moved to a init function )
@@ -170,7 +178,11 @@ mw.PlayerSkinKskin = {
 			if ( $kmenu.is( ':visible' ) ) {
 				_this.closeMenuOverlay( );
 			} else {
-				_this.showMenuOverlay( );
+				_this.showMenuOverlay();
+				// no other item is selected by default show the media credits:
+				if ( !_this.currentMenuItem ){
+					_this.showMenuItem('credits');
+				}
 			}
 		} );
 
@@ -197,21 +209,23 @@ mw.PlayerSkinKskin = {
 	* Close the menu overlay
 	*/
 	closeMenuOverlay: function() {
-		mw.log("PlayerSkin: close menu overlay" );
-
+		mw.log("PlayerSkinKskin:: close menu overlay" );
 		var $optionsMenu = this.$playerTarget.find( '.k-options' );
 		var $kmenu = this.$playerTarget.find( '.k-menu' );
 		$kmenu.fadeOut( "fast", function() {
 			$optionsMenu.find( 'span' )
 				.text ( gM( 'mwe-embedplayer-menu_btn' ) );
 		} );
-		this.$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
+		// show the play button if not playing
+		if( !this.embedPlayer.isPlaying() ){
+			this.$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
+		}
 
-		// re display the control bar if hidden:
+		// re-display the control bar if hidden:
 		this.showControlBar();
 
 		// Set close overlay menu flag:
-		this.keepControlBarOnScreen = false;
+		this.displayOptionsMenuFlag = false;
 	},
 
 	/**
@@ -227,15 +241,10 @@ mw.PlayerSkinKskin = {
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 
-		$( this.embedPlayer ).trigger( 'displayMenuOverlay' );
-
-		// By default show the credits ( if nothing else is displayed )
-		if( this.$playerTarget.find( '.menu-screen :visible' ).length == 0 ){
-			this.showMenuItem( 'credits' );
-		}
+		$(this.embedPlayer).trigger( 'displayMenuOverlay' );
 
 		// Set the Options Menu display flag to true:
-		this.keepControlBarOnScreen = true;
+		this.displayOptionsMenuFlag = true;
 	},
 
 	/**
@@ -268,8 +277,8 @@ mw.PlayerSkinKskin = {
 				// Grab the context from the "clicked" menu item
 				var mk = $( this ).attr( 'rel' );
 
-				// get the target iitem
-				$targetItem = $playerTarget.find( '.menu-' + mk );
+				// hide all menu items
+				var $targetItem = $playerTarget.find( '.menu-' + mk );
 
 				// call the function showMenuItem
 				_this.showMenuItem(	mk );
@@ -287,18 +296,6 @@ mw.PlayerSkinKskin = {
 	},
 
 	/**
-	* onClipDone action
-	* onClipDone for k-skin (with apiTitleKey) show the "credits" screen:
-	*/
-	onClipDone: function(){
-		if( this.embedPlayer.apiTitleKey ){
-			this.checkMenuOverlay( );
-			this.showMenuOverlay();
-			this.showMenuItem( 'credits' );
-		}
-	},
-
-	/**
 	* Shows a selected menu_item
 	*
 	* NOTE: this should be merged with parent mw.PlayerControlBuilder optionMenuItems
@@ -308,7 +305,8 @@ mw.PlayerSkinKskin = {
 	*/
 	showMenuItem:function( menuItem ) {
 		var embedPlayer = this.embedPlayer;
-		// Handle special k-skin specific display;
+		this.currentMenuItem = menuItem;
+		//handle special k-skin specific display;
 		switch( menuItem ){
 			case 'credits':
 				this.showCredits();
@@ -319,8 +317,9 @@ mw.PlayerSkinKskin = {
 				);
 			break;
 			case 'download' :
-				embedPlayer.$interface.find( '.menu-download')
-					.loadingSpinner();
+				embedPlayer.$interface.find( '.menu-download').text(
+					gM('mwe-loading_txt' )
+				);
 				// Call show download with the target to be populated
 				this.showDownload(
 					embedPlayer.$interface.find( '.menu-download')
@@ -341,7 +340,6 @@ mw.PlayerSkinKskin = {
 		// Set up the shortcuts:
 		var embedPlayer = this.embedPlayer;
 		var _this = this;
-
 		var $target = embedPlayer.$interface.find( '.menu-credits' );
 
 		$target.empty().append(
@@ -364,18 +362,14 @@ mw.PlayerSkinKskin = {
 				})
 			);
 		}
-		var $creditsTarget = embedPlayer.$interface.find( '.menu-credits .credits_box' );
-
-		// Allow modules to load and add credits
-		$( embedPlayer ).triggerQueueCallback( 'ShowCredits', $creditsTarget, function( status ){
-			// If no module is showing credits add no-video credits msg:
-			if( !status || status[0] == false ){
-				$creditsTarget.text(
-					gM('mwe-embedplayer-no-video_credits')
-				);
+		var $creditBox =$target.find('.credits_box');
+		$( embedPlayer ).triggerQueueCallback('showCredits', $creditBox, function( addedCredits ){
+			if( !addedCredits ){
+				$creditBox.find('.credits_box').text( gM( 'mwe-embedplayer-nocredits') )
 			}
 		});
 	}
+
 };
 
-} )( window.mediaWiki, window.jQuery );
+} )( window.mw, jQuery );

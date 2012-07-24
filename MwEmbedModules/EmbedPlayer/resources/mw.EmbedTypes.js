@@ -3,7 +3,7 @@
  * closely mirrors OggHandler so that its easier to share efforts in this area:
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
-( function( mw, $ ) {
+( function( mw, $ ) { "use strict";
 
 /**
  * Setup local players and supported mime types In an ideal world we would query the plugin
@@ -13,7 +13,7 @@
  * loaded post player detection
  */
 // Flash based players:
-var kplayer = new mw.MediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'Kplayer');
+var kplayer = new mw.MediaPlayer('kplayer', ['video/x-flv', 'video/h264', 'audio/mpeg'], 'Kplayer');
 
 // Java based player
 var cortadoPlayer = new mw.MediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'Java' );
@@ -21,30 +21,35 @@ var cortadoPlayer = new mw.MediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'a
 // Native html5 players
 var oggNativePlayer = new mw.MediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg' ], 'Native' );
 var h264NativePlayer = new mw.MediaPlayer( 'h264Native', ['video/h264'], 'Native' );
+var appleVdnPlayer = new mw.MediaPlayer( 'appleVdn', ['application/vnd.apple.mpegurl'], 'Native');
+var mp3NativePlayer = new mw.MediaPlayer( 'mp3Native', ['audio/mpeg', 'audio/mp3'], 'Native' );
 var webmNativePlayer = new mw.MediaPlayer( 'webmNative', ['video/webm'], 'Native' );
 
+// Image Overlay player ( extends native )
+var imageOverlayPlayer = new mw.MediaPlayer( 'imageOverlay', ['image/jpeg', 'image/png'], 'ImageOverlay' );
+
 // VLC player
-var vlcMimeList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg'];
-var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' );
+//var vlcMimeList = ['video/ogg', 'audio/ogg', 'audio/mpeg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg', 'video/3gp'];
+//var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' );
 
 // Generic plugin
-var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
+//var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
 
 
 mw.EmbedTypes = {
 
-	 // MediaPlayers object ( supports methods for quering set of browser players )
+	// MediaPlayers object ( supports methods for quering set of browser players )
 	mediaPlayers: null,
 
-	// Detect flag for completion
-	detect_done:false,
+	 // Detect flag for completion
+	 detect_done:false,
 
 	/**
 	 * Runs the detect method and update the detect_done flag
 	 *
 	 * @constructor
 	 */
-	init: function() {
+	 init: function() {
 		// detect supported types
 		this.detect();
 		this.detect_done = true;
@@ -69,22 +74,36 @@ mw.EmbedTypes = {
 	supportedMimeType: function( mimeType ) {
 		for ( var i =0; i < navigator.plugins.length; i++ ) {
 			var plugin = navigator.plugins[i];
-			if ( typeof plugin[ mimeType ] != "undefined" )
-			 return true;
+			if ( typeof plugin[ mimeType ] != "undefined" ){
+				return true;
+			}
 		}
 		return false;
 	},
-
+	addFlashPlayer: function(){
+		if( !mw.getConfig( 'EmbedPlayer.DisableHTML5FlashFallback' ) ){
+			this.mediaPlayers.addPlayer( kplayer );
+		}
+	},
+	addJavaPlayer: function(){
+		if( !mw.getConfig( 'EmbedPlayer.DisableJava' ) ){
+			this.mediaPlayers.addPlayer( cortadoPlayer );
+		}
+	},
 	/**
 	 * Detects what plug-ins the client supports
 	 */
 	detectPlayers: function() {
-		mw.log( "embedPlayer: running detect" );
+		mw.log( "EmbedTypes::detectPlayers running detect" );
+
+		// All players support for playing "images"
+		this.mediaPlayers.addPlayer( imageOverlayPlayer );
+
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
-		try {
+		try{
 			var javaEnabled = navigator.javaEnabled();
-		} catch ( e ) {
+		} catch ( e ){
 
 		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
@@ -94,24 +113,24 @@ mw.EmbedTypes = {
 		// found. And it doesn't register an application/x-java-applet mime type like
 		// Mozilla does.
 		if ( javaEnabled && ( navigator.appName == 'Opera' ) ) {
-			this.mediaPlayers.addPlayer( cortadoPlayer );
+			this.addJavaPlayer();
+		}
+
+		// Use core mw.supportsFlash check:
+		if( mw.supportsFlash() ){
+			this.addFlashPlayer();
 		}
 
 		// ActiveX plugins
 		if ( $.browser.msie ) {
-			// check for flash
-			if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash' ) ) {
-				this.mediaPlayers.addPlayer( kplayer );
-				// this.mediaPlayers.addPlayer( flowPlayer );
-			}
 			 // VLC
-			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-				 this.mediaPlayers.addPlayer( vlcPlayer );
-			 }
+			 //if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
+			 //	 this.mediaPlayers.addPlayer( vlcPlayer );
+			 //}
 
 			 // Java ActiveX
 			 if ( this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
-				 this.mediaPlayers.addPlayer( cortadoPlayer );
+				 this.addJavaPlayer();
 			 }
 
 			 // quicktime (currently off)
@@ -120,9 +139,14 @@ mw.EmbedTypes = {
 			 // this.mediaPlayers.addPlayer(quicktimeActiveXPlayer);
 		 }
 		// <video> element
-		if ( typeof HTMLVideoElement == 'object' // Firefox, Safari
-				|| typeof HTMLVideoElement == 'function' ) // Opera
-		{
+		if ( ! mw.getConfig('EmbedPlayer.DisableVideoTagSupport' ) // to support testing limited / old browsers
+				&&
+				(
+				typeof HTMLVideoElement == 'object' // Firefox, Safari
+					||
+				typeof HTMLVideoElement == 'function' // Opera
+				)
+		){
 			// Test what codecs the native player supports:
 			try {
 				var dummyvid = document.createElement( "video" );
@@ -132,9 +156,22 @@ mw.EmbedTypes = {
 						this.mediaPlayers.addPlayer( webmNativePlayer );
 					}
 
+					// Test for MP3:
+					if ( this.supportedMimeType('audio/mpeg') ) {
+							this.mediaPlayers.addPlayer( mp3NativePlayer );
+					}
+
 					// Test for h264:
 					if ( dummyvid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ) ) {
 						this.mediaPlayers.addPlayer( h264NativePlayer );
+						// Check for iOS for vdn player support ( apple adaptive ) or vdn canPlayType != '' ( ie maybe/probably )
+						if( mw.isIOS() || dummyvid.canPlayType('application/vnd.apple.mpegurl; codecs="avc1.42E01E"' ) ){
+							// Android 3x lies about HLS support ( only add if not Android 3.x )
+							if( navigator.userAgent.indexOf( 'Android 3.') == -1 ){
+								this.mediaPlayers.addPlayer( appleVdnPlayer );
+							}
+						}
+
 					}
 					// For now if Android assume we support h264Native (FIXME
 					// test on real devices )
@@ -144,6 +181,10 @@ mw.EmbedTypes = {
 
 					// Test for ogg
 					if ( dummyvid.canPlayType( 'video/ogg; codecs="theora,vorbis"' ) ) {
+						this.mediaPlayers.addPlayer( oggNativePlayer );
+					// older versions of safari do not support canPlayType,
+				  	// but xiph qt registers mimetype via quicktime plugin
+					} else if ( this.supportedMimeType( 'video/ogg' ) ) {
 						this.mediaPlayers.addPlayer( oggNativePlayer );
 					}
 				}
@@ -166,54 +207,38 @@ mw.EmbedTypes = {
 					// In case it is null or undefined
 					pluginName = '';
 				}
-				if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
-					this.mediaPlayers.addPlayer( vlcPlayer );
-					continue;
-				}
+				//if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
+				//	this.mediaPlayers.addPlayer( vlcPlayer );
+				//	continue;
+				//}
 
 				if ( type == 'application/x-java-applet' ) {
-					this.mediaPlayers.addPlayer( cortadoPlayer );
+					this.addJavaPlayer();
 					continue;
 				}
 
-				if ( (type == 'video/mpeg' || type == 'video/x-msvideo') &&
-					pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-					this.mediaPlayers.addPlayer( vlcMozillaPlayer );
+				if ( (type == 'video/mpeg' || type == 'video/x-msvideo') ){
+					//pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
+					//this.mediaPlayers.addPlayer( vlcMozillaPlayer );
 				}
 
 				if ( type == 'application/ogg' ) {
-					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-						this.mediaPlayers.addPlayer( vlcMozillaPlayer );
-					// else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
-					// this.mediaPlayers.addPlayer(quicktimeMozillaPlayer);
-					} else {
-						this.mediaPlayers.addPlayer( oggPluginPlayer );
-					}
+					//if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
+						//this.mediaPlayers.addPlayer( vlcMozillaPlayer );
+					//else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
+						//this.mediaPlayers.addPlayer(quicktimeMozillaPlayer);
+					//} else {
+						//this.mediaPlayers.addPlayer( oggPluginPlayer );
+					//}
 					continue;
 				} else if ( uniqueMimesOnly ) {
 					if ( type == 'application/x-vlc-player' ) {
-						this.mediaPlayers.addPlayer( vlcMozillaPlayer );
+						// this.mediaPlayers.addPlayer( vlcMozillaPlayer );
 						continue;
 					} else if ( type == 'video/quicktime' ) {
 						// this.mediaPlayers.addPlayer(quicktimeMozillaPlayer);
 						continue;
 					}
-				}
-
-				if ( type == 'application/x-shockwave-flash' ) {
-
-					this.mediaPlayers.addPlayer( kplayer );
-					// this.mediaPlayers.addPlayer( flowPlayer );
-
-					// check version to add omtk:
-					if( navigator.plugins["Shockwave Flash"] ){
-						var flashDescription = navigator.plugins["Shockwave Flash"].description;
-						var descArray = flashDescription.split( " " );
-						var tempArrayMajor = descArray[2].split( "." );
-						var versionMajor = tempArrayMajor[0];
-						// mw.log("version of flash: " + versionMajor);
-					}
-					continue;
 				}
 			}
 		}

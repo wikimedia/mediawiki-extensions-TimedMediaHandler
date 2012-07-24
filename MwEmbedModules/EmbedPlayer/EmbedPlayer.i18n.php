@@ -11,6 +11,7 @@ $messages['en'] = array(
 	'mwe-embedplayer-credit-title' => 'Title: $1',
 	'mwe-embedplayer-credit-date' => 'Date: $1',
 	'mwe-embedplayer-credit-author' => 'Author: $1',
+	'mwe-embedplayer-nocredits' => 'No credits available',
 	'mwe-embedplayer-loading_plugin' => 'Loading plugin ...',
 	'mwe-embedplayer-select_playback' => 'Set playback preference',
 	'mwe-embedplayer-link_back' => 'Link back',
@@ -1554,7 +1555,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-share' => 'Bagikan',
 	'mwe-embedplayer-credits' => 'Kredit',
 	'mwe-embedplayer-about-library' => 'About pemutar Kaltura',
-	'mwe-embedplayer-about-library-desc' => 'Pustaka media HTML5 Kaltura memungkinkan Anda untuk mengambil keuntungan dari tag HTML5 <nowiki><video></nowiki> dan <nowiki><audio></nowiki> dengan antarmuka pemutar yang konsisten di semua peramban utama. 
+	'mwe-embedplayer-about-library-desc' => 'Pustaka media HTML5 Kaltura memungkinkan Anda untuk mengambil keuntungan dari tag HTML5 <nowiki><video></nowiki> dan <nowiki><audio></nowiki> dengan antarmuka pemutar yang konsisten di semua peramban utama.
 
  [$1 Selengkapnya tentang pustaka pemutar Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Halaman sumber klip',

@@ -24,6 +24,9 @@ $wgAvailableRights[] = 'transcode-reset';
 // Show a warning to the user if they are not using an html5 browser with high quality ogg support
 $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 
+// Show the options menu:
+$wgMwEmbedModuleConfig['EmbedPlayer.EnableOptionsMenu'] = true;
+
 // The text interface should always be shown
 // ( even if there are no text tracks for that asset at render time )
 $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
@@ -41,7 +44,7 @@ $wgMinimumVideoPlayerSize = 200;
 $wgMediaVideoTypes = array( 'Theora', 'VP8' );
 $wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
-// Default skin for mwEmbed player (class attribute of video tag)
+// Default skin for mwEmbed player
 $wgVideoPlayerSkinModule = 'mw.PlayerSkinKskin';
 
 // Support iframe for remote embedding

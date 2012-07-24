@@ -11,7 +11,7 @@
 	});
 
 	// Add mediaWiki player support to target embedPlayer
-	$( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayer ){
+	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
 		mw.addMediaWikiPlayerSupport( embedPlayer );
 	});
 
@@ -213,6 +213,7 @@
 			};
 			var articleUrl = '';
 			mw.getJSON( apiUrl, request, function( data ){
+
 				descUrl = apiUrl.replace( 'api.php', 'index.php');
 				descUrl+= '?title=' + fileTitle;
 				if ( data && data.parse && data.parse.text && data.parse.text['*'] ) {
@@ -229,10 +230,18 @@
 		 * Adds embedPlayer Bindings
 		 */
 		// Show credits when requested
-		$( embedPlayer ).bind('ShowCredits', function( event, $target, callback){
+		$( embedPlayer ).bind('showCredits', function( event, $target, callback){
 			// Only request the credits once:
 			showCredits( $target, callback);
 		});
+		// show credits on clip complete:
+		$( embedPlayer ).bind('onEndedDone', function(){
+			var cb = embedPlayer.controlBuilder;
+			cb.checkMenuOverlay( );
+			cb.showMenuOverlay();
+			cb.showMenuItem( 'credits' );
+		});
+
 
 		$( embedPlayer ).bind( 'checkPlayerSourcesEvent', function(event, callback){
 			// Only load source if none are available:

@@ -4,7 +4,7 @@
  * @param {Object} source Source object to extend
  * @param {Object} textProvider [Optional] The text provider interface ( to load source from api )
  */
-( function( mw, $ ) {
+( function( mw, $ ) { "use strict";
 
 	mw.TextSource = function( source ) {
 		return this.init( source );
@@ -53,6 +53,8 @@
 		 */
 		load: function( callback ) {
 			var _this = this;
+			mw.log("TextSource:: load src "+ _this.getSrc() );
+
 			// Setup up a callback ( in case it was not defined )
 			if( !callback ){
 				callback = function(){ return ; };
@@ -68,40 +70,20 @@
 				mw.log( "Error: TextSource no source url for text track");
 				return callback();
 			}
-			try {
-				$.ajax({
-					url: _this.getSrc(),
-					success: function( data ) {
-						_this.captions = _this.getCaptions( data );
-						_this.loaded = true;
-						mw.log("mw.TextSource :: loaded from " +  _this.getSrc() + " Found: " + _this.captions.length + ' captions' );
-						callback();
-					},
-					error: function( jqXHR, textStatus, errorThrown ){
-						// try to load the file with the proxy:
-						_this.loadViaProxy( function(){
-							callback();
-							_this.loaded = true;
-						});
-					}
-				});
-			} catch ( e ){
-				mw.log( "TimedText source:: first cross domain request failed, trying via proxy" );
-			}
-		},
-		loadViaProxy: function( callback ){
-			var _this = this;
-			// Load via proxy:
-			var proxyUrl = mw.getConfig('Mw.XmlProxyUrl');
-			$.getJSON( proxyUrl + '?url=' + encodeURIComponent(  this.getSrc() ) + '&callback=?', function( result ){
-				if( result['http_code'] == 'ERROR' || result['http_code'] == 0 ){
+
+			new mw.ajaxProxy({
+				url: _this.getSrc(),
+				success: function( resultXML ) {
+					_this.captions = _this.getCaptions( resultXML );
+					_this.loaded = true;
+					mw.log("mw.TextSource :: loaded from " +  _this.getSrc() + " Found: " + _this.captions.length + ' captions' );
+					callback();
+				},
+				error: function() {
 					mw.log("Error: TextSource Error with http response");
-					return callback();
+					_this.loaded = true;
+					callback();
 				}
-				// Parse and load captions:
-				_this.captions = _this.getCaptions( result['contents'] );
-				mw.log("mw.TextSource :: loaded from proxy xml request: captions length: " + _this.captions.length + ' captions' );
-				callback();
 			});
 		},
 		/**
@@ -144,10 +126,18 @@
 				}
 			}
 			// Update the prevIndex:
-			this.prevIndex =firstCapIndex;
+			this.prevIndex = firstCapIndex;
 			//Return the set of captions in range:
 			return captionSet;
 		},
+
+		/**
+		 * Check if the caption is an overlay format ( and must be ontop of the player )
+		 */
+		isOverlay: function(){
+			return this.mimeType == 'text/xml';
+		},
+
 		getCaptions: function( data ){
 			// Detect caption data type:
 			switch( this.mimeType ){
@@ -161,6 +151,8 @@
 					return this.getCaptionsFromTMML( data );
 					break;
 			}
+			// caption mime not found return empty set:
+			return [];
 		},
 
 		getStyleCssById: function( styleId ){
@@ -211,28 +203,21 @@
 						if( attrName[c].toLowerCase() != attrName[c] ){
 							cssName += '-' +  attrName[c].toLowerCase();
 						} else {
-							cssName+= attrName[c];
+							cssName+= attrName[c]
 						}
 					}
 					cssObject[ cssName ] = attr.nodeValue;
 				});
-				//for(var i =0; i< style.length )
+				// for(var i =0; i< style.length )
 				_this.styleCss[ $( style).attr('id') ] = cssObject;
 			});
 
 			$( xml ).find( 'p' ).each( function( inx, p ){
-
-				// Get text content ( just a quick hack, we need more detailed spec or TTML parser )
+				// Get text content by converting ttml node to html
 				var content = '';
-				$( p.childNodes ).each(function(inx,node){
-				   if( node.nodeName != '#text' && node.nodeName != 'metadata' ){
-					   // Add any html tags:
-					   content +='<' + node.nodeName + '/>';
-				    } else {
-				    	content += node.textContent;
-				    }
+				$.each( p.childNodes, function(inx, node){
+					content+= _this.convertTTML2HTML( node );
 				});
-
 				// Get the end time:
 				var end = null;
 				if( $( p ).attr( 'end' ) ){
@@ -248,7 +233,7 @@
 				var captionObj ={
 					'start': mw.npt2seconds( $( p ).attr( 'begin' ) ),
 					'end': end,
-					'content':  content
+					'content': content
 				};
 
 				// See if we have custom metadata for position of this caption object
@@ -261,20 +246,21 @@
 					if( $meta.attr('cccol') ){
 						captionObj['css']['left'] = ( $meta.attr('cccol') / 35 ) * 100 +'%';
 						// also means the width has to be reduced:
-						captionObj['css']['width'] =  100 - parseInt( captionObj['css']['left'] ) + '%';
+						//captionObj['css']['width'] =  100 - parseInt( captionObj['css']['left'] ) + '%';
 					}
 					if( $meta.attr('ccrow') ){
 						captionObj['css']['top'] = ( $meta.attr('ccrow') / 15 ) * 100 +'%';
 					}
 				}
 				if( $(p).attr('tts:textAlign') ){
-					if( !captionObj['css'] )
+					if( !captionObj['css'] ){
 						captionObj['css'] = {};
+					}
 					captionObj['css']['text-align'] = $(p).attr('tts:textAlign');
 
 					// Remove text align is "right" flip the css left:
 					if( captionObj['css']['text-align'] == 'right' && captionObj['css']['left'] ){
-						captionObj['css']['width'] = captionObj['css']['left'];
+						//captionObj['css']['width'] = captionObj['css']['left'];
 						captionObj['css']['left'] = null;
 					}
 				}
@@ -288,6 +274,43 @@
 				captions.push( captionObj);
 			});
 			return captions;
+		},
+		convertTTML2HTML: function( node ){
+			var _this = this;
+
+			// look for text node:
+			if( node.nodeType == 3 ){
+				return node.textContent;
+			}
+			// skip metadata nodes:
+			if( node.nodeName == 'metadata' ){
+				return '';
+			}
+			// if a br just append
+			if( node.nodeName == 'br' ){
+				return '<br />';
+			}
+			// Setup tts mappings TODO should be static property of a ttmlSource object.
+			var ttsStyleMap = {
+				'tts:color' : 'color',
+				'tts:fontWeight' : 'font-weight',
+				'tts:fontStyle' : 'font-style'
+			};
+			if( node.childNodes.length ){
+				var nodeString = '';
+				var styleVal = '';
+				for( var attr in ttsStyleMap ){
+					if( node.getAttribute( attr ) ){
+						styleVal+= ttsStyleMap[ attr ] + ':' +  node.getAttribute( attr ) + ';';
+					}
+				}
+				nodeString +=  '<' + node.nodeName + ' style="' + styleVal + '" >';
+				$.each( node.childNodes, function( inx, childNode ){
+					nodeString += _this.convertTTML2HTML( childNode );
+				});
+				nodeString += '</' + node.nodeName + '>';
+				return nodeString;
+			}
 		},
 		/**
 		 * srt timed text parse handle:
@@ -321,7 +344,7 @@
 		 		var captionText = "";
 				var caption = false;
 				captionText = caplist[i];
-				s = captionText.split(/\n/);
+				var s = captionText.split(/\n/);
 				if (s.length < 2) {
 					// file format error or comment lines
 					continue;
@@ -420,7 +443,7 @@
 					return true;
 				}
 				// Check only for time match:
-				m = currentPtext
+				var m = currentPtext
 					.replace('--&gt;', '-->')
 					.match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
 				if (m) {

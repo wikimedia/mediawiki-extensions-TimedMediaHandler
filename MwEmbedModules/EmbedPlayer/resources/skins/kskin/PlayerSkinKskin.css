@@ -81,11 +81,18 @@
 	background: url(images/ksprite.png) repeat-x 0 -81px;
 	font: normal 11px arial, sans-serif;
 	color: #555;
-	z-index:2;
+	
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+
+	z-index: 2;
 }
 
 .k-player .play_head {
-	background: url("images/ksprite.png") repeat-x scroll 0 -350px transparent;
+	background: url("images/ksprite.png") repeat-x scroll 0 -350px
+		transparent;
 	display: inline;
 	float: left;
 	margin-left: 10px;
@@ -96,7 +103,8 @@
 }
 
 .k-player .play_head .ui-slider-handle {
-	background: url("images/ksprite.png") no-repeat scroll -67px -341px transparent;
+	background: url("images/ksprite.png") no-repeat scroll -67px -341px
+		transparent;
 	border: 1px solid #888888;
 	display: block;
 	height: 8px;
@@ -105,12 +113,12 @@
 	top: 0;
 	width: 8px;
 	cursor: pointer;
-	-moz-border-radius:5px 5px 5px 5px !important;
-	border-radius:5px 5px 5px 5px !important;
+	-moz-border-radius:5px 5px 5px 5px;
+	border-radius:5px 5px 5px 5px;
+	-webkit-border-radius:5px 5px 5px 5px;
 }
 .k-player .ui-corner-all {
-	-moz-border-radius:5px 5px 5px 5px !important;
-	border-radius:5px 5px 5px 5px !important;
+	-moz-border-radius:5px 5px 5px 5px;
 }
 .k-player .time-disp {
 	border: medium none;
@@ -119,15 +127,14 @@
 	font: 11px arial, sans-serif;
 	line-height: 20px;
 	overflow: hidden;
-	width: 48px;
+	width: 39px;
 	float: right;
-	text-align: center;
 }
 
-.k-player .source-switch{
+.k-player .source-switch {
 	border: medium none;
 	display: inline;
-	color: #555555;
+	color: #555;
 	font: 11px arial, sans-serif;
 	line-height: 20px;
 	overflow: hidden;
@@ -136,7 +143,6 @@
 	float: right;
 	text-align: center;
 }
-
 
 .k-player .lButton {
 	cursor: pointer;
@@ -157,7 +163,7 @@
 	list-style: none outside none;
 	margin-top: 2px;
 	padding: 0px 0;
-	width: 22px;
+	width: 23px;
 	height: 16px;
 	position: relative;
 	background: none repeat scroll 0 0 transparent;
@@ -177,7 +183,7 @@
 	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
 	font-size: 11px;
 	text-transform: uppercase;
-	text-align:center;
+	text-align: center;
 }
 
 .k-player .k-options span {
@@ -312,6 +318,7 @@
 }
 
 .k-menu-screens li {
+	height: 14px;
 	margin-bottom: 6px;
 }
 
@@ -389,7 +396,7 @@
 .k-player .volume-slider .ui-slider-range {
 	-moz-border-radius: 0 0 0 0;
 	background: url("images/ksprite.png") repeat-x scroll -66px -306px
-		transparent !important;
+		transparent;
 	height: 17px;
 	position: absolute;
 }

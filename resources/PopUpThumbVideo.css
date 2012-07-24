@@ -13,7 +13,7 @@
 	/* @embed */
 	background-image:url('player_big_play_button_hover.png');
 }
-.PopUpMediaTransform { 
+.PopUpMediaTransform {
 	position : relative;
 	display: inline-block;
 }

@@ -11,7 +11,7 @@
  * http://dev.w3.org/html5/spec/Overview.html#the-source-element
  */
 
-( function( mw, $ ) {
+( function( mw, $ ) { "use strict";
 
 mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// source id
@@ -26,8 +26,11 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// boolean if we support temporal url requests on the source media
 	'URLTimeEncoding',
 
-	/* data- attributes ( not yet standards )
-	* NOTE data- is striped from the attribute once added to the MediaSrouce object
+	// Store the node name for type identification
+	'nodeName',
+
+	/**
+	 * data- attributes ( not yet standards )
 	*/
 
 	// Media has a startOffset ( used for plugins that
@@ -38,12 +41,16 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// can be displayed in the player without loading the media file
 	'data-durationhint',
 
-	// Source stream qualities ( will eventually be adaptive streaming )
+	// Source stream qualities
+	// NOTE data- is striped from the attribute as we build out the "mediaSource" object
 	'data-shorttitle', // short title for stream ( useful for stream switching control bar widget)
 	'data-width', // the width of the stream
 	'data-height', // the height of the stream
-	'data-bandwidth', // the overall bitrate of the stream
+	'data-bandwidth', // the overall bitrate of the stream in bytes
+	'data-sizebytes', // the size of the stream in bytes
 	'data-framerate', // the framereate of the stream
+	'data-flavorid', // a source flavor id ( useful for targeting devices )
+	'data-aspect', // the aspect ratio, useful for adaptive protocal urls that don't have a strict height / width
 
 	// Media start time
 	'start',
@@ -81,9 +88,6 @@ mw.MediaSource.prototype = {
 	// Duration of the requested segment (0 if not known)
 	duration:0,
 
-	// Is the source playable
-	is_playable: null,
-
 	// source id
 	id: null,
 
@@ -106,23 +110,20 @@ mw.MediaSource.prototype = {
 		// Set default URLTimeEncoding if we have a time url:
 		// not ideal way to discover if content is on an oggz_chop server.
 		// should check some other way.
-		var pUrl = new mw.Uri ( mw.absoluteUrl( this.src) );	// mw.Uri only handles full urls
-
+		var pUrl = new mw.Uri ( this.src );
 		if ( typeof pUrl.query[ 't' ] != 'undefined' ) {
 			this.URLTimeEncoding = true;
 		}
 
 		var sourceAttr = mw.getConfig( 'EmbedPlayer.SourceAttributes' );
-		$.each(sourceAttr, function(inx, attr){
-			if ( $j( element ).attr( attr ) ) {
-				var attrName = attr;
+		$.each( sourceAttr, function( inx, attr ){
+			if ( $( element ).attr( attr ) ) {
 				// strip data- from the attribute name
-				if( attr.indexOf('data-') === 0){
-					attrName = attr.substr(5);
-				}
+				var attrName = ( attr.indexOf('data-') === 0) ? attr.substr(5) : attr
 				_this[ attrName ] = $( element ).attr( attr );
 			}
 		});
+
 		// Normalize "label" to "title" ( label is the actual spec so use that over title )
 		if( this.label ){
 			this.title = this.label;
@@ -133,7 +134,7 @@ mw.MediaSource.prototype = {
 			this.mimeType = $( element ).attr( 'type' );
 		}else if ( $( element ).attr( 'content-type' ) ) {
 			this.mimeType = $( element ).attr( 'content-type' );
-		}else if( $( element ).get(0).tagName.toLowerCase() == 'audio' ){
+		}else if( $( element )[0].tagName.toLowerCase() == 'audio' ){
 			// If the element is an "audio" tag set audio format
 			this.mimeType = 'audio/ogg';
 		} else {
@@ -152,7 +153,7 @@ mw.MediaSource.prototype = {
 		// Conform long form "video/ogg; codecs=theora" based attributes
 		// @@TODO we should support codec in the type arguments
 		if( this.mimeType ){
-			this.mimeType = this.mimeType.split(';')[0];
+			this.mimeType = this.mimeType.split( ';' )[0];
 		}
 
 		// Check for parent elements ( supplies categories in "track" )
@@ -227,7 +228,7 @@ mw.MediaSource.prototype = {
 	},
 
 	/**
-	 * MIME type accessors function.
+	 * MIME type accessor function.
 	 *
 	 * @return {String} the MIME type of the source.
 	 */
@@ -237,6 +238,14 @@ mw.MediaSource.prototype = {
 		}
 		this.mimeType = this.detectType( this.src );
 		return this.mimeType;
+	},
+	/**
+	 * Update the local src
+	 * @param {String}
+	 * 		src The URL to the media asset
+	 */
+	setSrc: function( src ){
+		this.src = src;
 	},
 
 	/**
@@ -260,22 +269,6 @@ mw.MediaSource.prototype = {
 				't': mw.seconds2npt( serverSeekTime ) + endvar
 	  		}
 		);
-	},
-
-	/**
-	 * Get a short title for the stream
-	 */
-	getShortTitle: function(){
-		var _this =this;
-		if( this.shorttitle ){
-			return this.shorttitle;
-		}
-		// Just use a short "long title"
-		var longTitle = this.getTitle();
-		if(longTitle.length > 20) {
-			longTitle = longTitle.substring(0,17)+"...";
-		}
-		return longTitle
 	},
 	/**
 	 * Title accessor function.
@@ -333,7 +326,21 @@ mw.MediaSource.prototype = {
 		// Return the mime type string if not known type.
 		return this.mimeType;
 	},
-
+	/**
+	 * Get a short title for the stream
+	 */
+	getShortTitle: function(){
+		var _this =this;
+		if( this.shorttitle ){
+			return this.shorttitle;
+		}
+		// Just use a short "long title"
+		var longTitle = this.getTitle();
+		if(longTitle.length > 20) {
+			longTitle = longTitle.substring(0,17)+"...";
+		}
+		return longTitle
+	},
 	/**
 	 *
 	 * Get Duration of the media in milliseconds from the source url.
@@ -343,7 +350,7 @@ mw.MediaSource.prototype = {
 	getURLDuration : function() {
 		// check if we have a URLTimeEncoding:
 		if ( this.URLTimeEncoding ) {
-			var annoURL = new mw.Uri( mw.absoluteUrl( this.getSrc() ) );
+			var annoURL = new mw.Uri( this.src );
 			if ( annoURL.query.t ) {
 				var times = annoURL.query.t.split( '/' );
 				this.startNpt = times[0];
@@ -366,11 +373,21 @@ mw.MediaSource.prototype = {
 	* @param String uri
 	*/
 	getExt : function( uri ){
-		var urlParts = new mw.Uri( mw.absoluteUrl( uri ) );
+		var urlParts = new mw.Uri( uri );
 		// Get the extension from the url or from the relative name:
 		var ext = ( urlParts.file )?  /[^.]+$/.exec( urlParts.file )  :  /[^.]+$/.exec( uri );
 		return ext.toString().toLowerCase()
 	},
+	/**
+	 * Get the flavorId if available.
+	 */
+	getFlavorId: function(){
+		if( this.flavorid ){
+			return this.flavorid;
+		}
+		return ;
+	},
+
 	/**
 	 * Attempts to detect the type of a media file based on the URI.
 	 *
@@ -434,6 +451,24 @@ mw.MediaSource.prototype = {
 			break;
 		}
 		mw.log( "Error: could not detect type of media src: " + uri );
+	},
+	/**
+	 * bitrate is mesured in kbs rather than bandwith bytes per second
+	 */
+	getBitrate: function() {
+		if( this.bandwidth ){
+			return this.bandwidth / 1024;
+		}
+		return 0;
+	},
+	/**
+	 * Get the size of the stream in bytes
+	 */
+	getSize: function(){
+		if( this.sizebytes ){
+			return this.sizebytes;
+		}
+		return 0;
 	}
 };
 

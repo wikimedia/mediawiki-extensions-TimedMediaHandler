@@ -6,21 +6,27 @@
  *      are ready
  *
  */
+
+( function( mw, $ ) { "use strict";
+
 mw.processEmbedPlayers = function( playerSelect, callback ) {
-	mw.log( 'EmbedPlayer:: processEmbedPlayers' );
+	mw.log( 'processEmbedPlayers:: playerSelector: '+ playerSelect);
+	// The player id list container
+	var playerIdList = [];
 
 	// Check if the selected player set is ready if ready issue the parent callback
 	var areSelectedPlayersReady = function(){
 		var playersLoaded = true;
-		$(playerSelect).each(function(inx, player){
-			if( ! $( player ).get(0).playerReadyFlag ){
+		$.each( playerIdList, function(inx, playerId){
+			if( ! $( '#' + playerId )[0].playerReadyFlag ){
 				playersLoaded = false;
 				return false;
 			}
 		})
 		if( playersLoaded ){
-			if( callback )
+			if( callback ){
 				callback();
+			}
 		}
 	}
 
@@ -41,14 +47,10 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 	 *
 	 * @param {Element}
 	 *      playerElement DOM element to be swapped
-	 * @param {Object}
-	 *      [Optional] attributes Extra attributes to apply to the player
-	 *      interface
 	 */
 	var addPlayerElement = function( playerElement ) {
 		var _this = this;
 		mw.log('EmbedPlayer:: addElement:: ' + playerElement.id );
-
 
 		// Be sure to "stop" the target ( Firefox 3x keeps playing
 		// the video even though its been removed from the DOM )
@@ -57,7 +59,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		}
 
 		// Allow modules to override the wait for metadata flag:
-		$( mw ).trigger( 'checkPlayerWaitForMetaData', playerElement );
+		$( mw ).trigger( 'EmbedPlayerWaitForMetaCheck', playerElement );
 
 		// DOM *could* load height, width and duration eventually, in some browsers
 		// By default, don't bother waiting for this.
@@ -72,41 +74,48 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		var ranPlayerSwapFlag = false;
 
 		// Local callback to runPlayer swap once playerElement has metadata
-		function runPlayerSwap() {
+		var runPlayerSwap = function () {
 			// Don't run player swap twice
 			if( ranPlayerSwapFlag ){
 				return ;
 			}
 			ranPlayerSwapFlag = true;
-			mw.log("EmbedPlayer::runPlayerSwap::" + $( playerElement ).attr('id') );
+			mw.log( "processEmbedPlayers::runPlayerSwap::" + $( playerElement ).attr('id') );
 
 			var playerInterface = new mw.EmbedPlayer( playerElement );
 			var inDomPlayer = swapEmbedPlayerElement( playerElement, playerInterface );
-
 			// Trigger the EmbedPlayerNewPlayer for embedPlayer interface
-			mw.log("EmbedPlayer::EmbedPlayerNewPlayer:trigger " + inDomPlayer.id );
+			mw.log("processEmbedPlayers::trigger:: EmbedPlayerNewPlayer " + inDomPlayer.id );
 
 			// Allow plugins to add bindings to the inDomPlayer
-			$( mw ).trigger ( 'newEmbedPlayerEvent', inDomPlayer );
+			$( mw ).trigger ( 'EmbedPlayerNewPlayer', inDomPlayer );
 
 			// Add a player ready binding:
 			$( inDomPlayer ).bind( 'playerReady', areSelectedPlayersReady );
 
-			// Issue the checkPlayerSources call to the new player
-			// interface: make sure to use the element that is in the DOM:
-			inDomPlayer.checkPlayerSources();
-		}
+			//
+			// Allow modules to block player build out
+			//
+			// this is needed in cases where you need to do an asynchronous
+			// player interface setup. like iframes asynchronous announcing its ready for
+			// bindings that can affect player setup.
+			mw.log("EmbedPlayer::addPlayerElement :trigger startPlayerBuildOut:" + inDomPlayer.id );
+			$( '#' + inDomPlayer.id ).triggerQueueCallback( 'startPlayerBuildOut', function(){
+				// Issue the checkPlayerSources call to the new player
+				// interface: make sure to use the element that is in the DOM:
+				inDomPlayer.checkPlayerSources();
+			});
+		};
 
 		if( waitForMeta && mw.getConfig('EmbedPlayer.WaitForMeta' ) ) {
-			mw.log('EmbedPlayer::WaitForMeta ( video missing height (' +
+			mw.log('processEmbedPlayers::WaitForMeta ( video missing height (' +
 					$( playerElement ).attr('height') + '), width (' +
 					$( playerElement ).attr('width') + ') or duration: ' +
 					$( playerElement ).attr('duration')
 			);
-			$( playerElement ).bind("loadedmetadata", runPlayerSwap );
+			$( playerElement ).bind( "loadedmetadata", runPlayerSwap );
 
-			// Time-out of 5 seconds ( maybe still playable but no timely
-			// metadata )
+			// Time-out of 5 seconds ( maybe still playable but no timely metadata )
 			setTimeout( runPlayerSwap, 5000 );
 			return ;
 		} else {
@@ -134,7 +143,8 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		// If we don't have a native player don't wait for metadata
 		if( !mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'oggNative') &&
 			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'webmNative') &&
-			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'h264Native' ) )
+			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'h264Native' ) &&
+			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'appleVdnPlayer' ) )
 		{
 			return false;
 		}
@@ -142,7 +152,6 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 
 		var width = $( playerElement ).css( 'width' );
 		var height = $( playerElement ).css( 'height' );
-
 		// Css video defaults ( firefox )
 		if( $( playerElement ).css( 'width' ) == '300px' &&
 				$( playerElement ).css( 'height' ) == '150px'
@@ -151,6 +160,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		} else {
 			// Check if we should wait for duration:
 			if( $( playerElement ).attr( 'duration') ||
+				$( playerElement ).attr( 'durationHint') ||
 				$( playerElement ).attr('data-durationhint')
 			){
 				// height, width and duration set; do not wait for meta data:
@@ -173,7 +183,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		}
 
 		// Firefox default width height is ~sometimes~ 150 / 300
-		if( this.height == 150 && this.width == 300 ){
+		if( playerElement.height == 150 && playerElement.width == 300 ){
 			waitForMeta = true;
 		}
 
@@ -205,7 +215,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 	 *      playerInterface Interface to swap into the target element
 	 */
 	var swapEmbedPlayerElement =  function( targetElement, playerInterface ) {
-		mw.log( 'EmbedPlayer::swapEmbedPlayerElement: ' + targetElement.id );
+		mw.log( 'processEmbedPlayers::swapEmbedPlayerElement: ' + targetElement.id );
 		// Create a new element to swap the player interface into
 		var swapPlayerElement = document.createElement('div');
 
@@ -218,8 +228,30 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 				swapPlayerElement[ method ] = playerInterface[ method ];
 			}
 		}
-		// Check if we are using native controls or Persistent player ( should keep the video embed around )
-		if( playerInterface.useNativePlayerControls() || playerInterface.isPersistentNativePlayer() ) {
+		// copy over css text:
+		swapPlayerElement.style.cssText = targetElement.style.cssText;
+		// player element must always be relative to host video and image layout
+		swapPlayerElement.style.position = 'relative';
+
+		// Copy any data attributes from the target player element over to the swapPlayerElement
+		var dataAttributes = mw.getConfig("EmbedPlayer.DataAttributes");
+		if( dataAttributes ){
+			$.each( dataAttributes, function( attrName, na ){
+				if( $( targetElement ).data( attrName ) ){
+					$( swapPlayerElement ).data( attrName, $( targetElement ).data( attrName ) );
+				}
+			});
+		}
+		// Check for Persistent native player ( should keep the video embed around )
+		if(  playerInterface.isPersistentNativePlayer()
+				||
+			// Also check for native controls on a video or audio tag
+			( playerInterface.useNativePlayerControls()
+					&&
+				( targetElement.nodeName == 'video' || targetElement.nodeName == 'audio' )
+			)
+		) {
+
 			$( targetElement )
 			.attr( 'id', playerInterface.pid )
 			.addClass( 'nativeEmbedPlayerPid' )
@@ -231,13 +263,6 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		} else {
 			$( targetElement ).replaceWith( swapPlayerElement );
 		}
-
-
-		// Set swapPlayerElement has height / width set and set to loading:
-		$( swapPlayerElement ).css( {
-			'width' : playerInterface.width + 'px',
-			'height' : playerInterface.height + 'px'
-		} );
 
 		// If we don't already have a loadSpiner add one:
 		if( $('#loadingSpinner_' + playerInterface.id ).length == 0 && !$.browser.mozilla ){
@@ -252,28 +277,32 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		return swapPlayerElement;
 	};
 
-	// Add a loader for <div> embed player rewrites:
+	// Add a loader for <div /> embed player rewrites:
 	$( playerSelect ).each( function( index, playerElement) {
 
 		// Make sure the playerElement has an id:
 		if( !$( playerElement ).attr('id') ){
-			$( playerElement ).attr( "id", 'mwe_v' + ( index ) );
+			$( playerElement ).attr( "id", 'mwe_vid' + ( index ) );
 		}
+		// Add the player Id to the playerIdList
+		playerIdList.push( $( playerElement ).attr( "id") );
 
 		// If we are dynamically embedding on a "div" check if we can
 		// add a poster image behind the loader:
 		if( playerElement.nodeName.toLowerCase() == 'div'
-			&& ( attributes.poster || $(playerElement).attr( 'poster' ) ) ){
-			var posterSrc = ( attributes.poster ) ? attributes.poster : $(playerElement).attr( 'poster' );
+				&&
+			$(playerElement).attr( 'poster' ) )
+		{
+			var posterSrc = $(playerElement).attr( 'poster' );
 
 			// Set image size:
 			var width = $( playerElement ).width();
 			var height = $( playerElement ).height();
 			if( !width ){
-				var width = ( attributes.width ) ? attributes.width : '100%';
+				var width = '100%';
 			}
 			if( !height ){
-				var height = ( attributes.height ) ? attributes.height : '100%';
+				var height = '100%';
 			}
 
 			mw.log('EmbedPlayer:: set loading background: ' + posterSrc);
@@ -289,33 +318,27 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		}
 	});
 
-	// deprecated EmbedPlayerManagerReady event ( should remove )
-	$( mw ).trigger( 'EmbedPlayerManagerReady' );
-
 	// Make sure we have user preference setup for setting preferences on video selection
-	var addedToPlayerManager = false;
-	mw.log("EmbedPlayer:: do: " + $( playerSelect ).length + ' players ');
-
+	var addedPlayersFlag = false;
+	mw.log("processEmbedPlayers:: Do: " + $( playerSelect ).length + ' players ');
 	// Add each selected element to the player manager:
 	$( playerSelect ).each( function( index, playerElement) {
 		// Make sure the video tag was not generated by our library:
 		if( $( playerElement ).hasClass( 'nativeEmbedPlayerPid' ) ){
-			$('#loadingSpinner_' + $( playerElement ).attr('id') ).remove();
-			mw.log( 'EmbedPlayer::$.embedPlayer skip embedPlayer gennerated video: ' + playerElement );
+			$( '#loadingSpinner_' + $( playerElement ).attr('id') ).remove();
+			mw.log( 'processEmbedPlayers::$.embedPlayer skip embedPlayer gennerated video: ' + playerElement );
 		} else {
-			addedToPlayerManager = true;
+			addedPlayersFlag = true;
 			// Add the player
 			addPlayerElement( playerElement );
 		}
 	});
-	if( addedToPlayerManager ){
-		if( callback ){
-			$( mw ).bind( "playersReadyEvent", callback );
-		}
-	} else {
+	if( !addedPlayersFlag ){
 		// Run the callback directly if no players were added
 		if( callback ){
 			callback();
 		}
 	}
 };
+
+})( window.mw, jQuery );

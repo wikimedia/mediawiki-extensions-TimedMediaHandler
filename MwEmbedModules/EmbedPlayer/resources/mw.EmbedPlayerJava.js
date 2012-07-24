@@ -1,4 +1,4 @@
-( function( mw, $ ) {
+( function( mw, $ ) { "use strict";
 /**
 * List of domains and hosted location of cortado. Lets clients avoid the security warning
 * for cross domain java applet loading.
@@ -7,14 +7,13 @@ window.cortadoDomainLocations = {
 		'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'
 };
 
+// Set the default location for CortadoApplet
+mw.setDefaultConfig( 'relativeCortadoAppletPath',mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar' );
+
 mw.EmbedPlayerJava = {
 
 	// Instance name:
 	instanceOf: 'Java',
-
-	// Set the local applet location for CortadoApplet
-	localAppletLocation: mw.getConfig('EmbedPlayer.WebPath' ) + '/binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar',
-
 
 	// Supported feature set of the cortado applet:
 	supports: {
@@ -31,7 +30,7 @@ mw.EmbedPlayerJava = {
 	*/
 	embedPlayerHTML: function () {
 		var _this = this;
-		mw.log( "java play url:" + this.getSrc( this.seek_time_sec ) );
+		mw.log( "java play url:" + this.getSrc( this.seekTimeSec ) );
 
 		mw.log('Applet location: ' +  this.getAppletLocation() );
 		mw.log('Play media: ' + this.getSrc() );
@@ -73,7 +72,11 @@ mw.EmbedPlayerJava = {
 		var mediaSrc = this.getSrc();
 		var appletLoc = false;
 		if (
-			!( mw.isLocalDomain( mediaSrc ) && mw.isLocalDomain( mw.getMwEmbedPath() ) )
+			!mw.isLocalDomain( mediaSrc )
+			||
+			!mw.isLocalDomain( mw.getMwEmbedPath()
+			||
+			mw.getConfig( 'relativeCortadoAppletPath' ) === false )
 		){
 			if ( window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ] ) {
 				appletLoc = window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
@@ -82,7 +85,7 @@ mw.EmbedPlayerJava = {
 			}
 		} else {
 			// Get the local relative cortado applet location:
-			appletLoc = this.localAppletLocation;
+			appletLoc = mw.getConfig( 'relativeCortadoAppletPath' );
 		}
 		return appletLoc;
 	},
@@ -97,7 +100,14 @@ mw.EmbedPlayerJava = {
 				try {
 					// java reads ogg media time.. so no need to add the start or seek offset:
 					//mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' + this.supportsURLTimeEncoding());
+
 					currentTime = this.playerElement.currentTime;
+					// ( java cortado has -1 time ~sometimes~ )
+					/*if ( this.currentTime < 0 ) {
+						mw.log( 'pp:' + this.currentTime );
+						// Probably reached clip ( should fire ondone event instead )
+						this.onClipDone();
+					}*/
 				} catch ( e ) {
 					mw.log( 'could not get time from jPlayer: ' + e );
 				}
@@ -109,12 +119,11 @@ mw.EmbedPlayerJava = {
 
 	/**
 	* Seek in the ogg stream
-	* NOTE: Cortado seek does not seem to work very well.
-	*
+	* ( Cortado seek does not seem to work very well )
 	* @param {Float} percentage Percentage to seek into the stream
 	*/
 	seek: function( percentage ) {
-		mw.log( 'java:seek:p: ' + percentage + ' : ' + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
+		mw.log( 'java:seek:p: ' + percentage + ' : ' + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seekTimeSec );
 		this.getPlayerElement();
 
 		if ( this.supportsURLTimeEncoding() ) {
@@ -164,8 +173,7 @@ mw.EmbedPlayerJava = {
 	getPlayerElement: function() {
 		if( !$( '#' + this.pid ).length ) {
 			return false;
-		}
-		//mw.log( 'getPlayerElement::' + this.pid );
+		};
 		this.playerElement = $( '#' + this.pid ).get( 0 );
 		return this.playerElement;
 	},
