@@ -68,7 +68,7 @@ $wgTranscodeBackgroundPriority = 19;
 // The total amout of time a transcoding shell command can take:
 $wgTranscodeBackgroundTimeLimit = 3600 * 4;
 // Maximum amount of virtual memory available to transcoding processes in KB
-$wgTranscodeBackgroundMemoryLimit = 400000; // 400MB this is also set as upper limit in jobs-loop.sh
+$wgTranscodeBackgroundMemoryLimit = 1024 * 1024; // 1GB ffmpeg, ffmpeg2theora mmap resources so virtual memory needs to be high enough
 // Maximum file size transcoding processes can create, in KB
 $wgTranscodeBackgroundSizeLimit = 1024 * 1024; // 1GB
 
