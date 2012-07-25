@@ -118,14 +118,12 @@
 			$creditLine.append(
 				$('<span>').html(
 					gM( 'mwe-embedplayer-credit-title' ,
-						// We use a div container to easily get at the built out link
-						$('<div>').append(
-							$('<a/>').attr({
-								'href' : articleUrl,
-								'title' : titleStr
-							})
-							.text( titleStr )
-						).html()
+						// get the link
+						$('<a/>').attr({
+							'href' : articleUrl,
+							'title' : titleStr
+						})
+						.text( titleStr )
 					)
 				)
 			);
@@ -181,7 +179,9 @@
 							'border': 0,
 							'src' : embedPlayer.poster
 						} ).css( {
-							'width' : imgWidth
+							'width' : imgWidth,
+							// needed for IE8 which does not keep aspect in width only sizes
+							'height' : imgWidth * ( embedPlayer.height/ embedPlayer.width )
 						} )
 					)
 				)

@@ -28,7 +28,8 @@
 					'mediawiki.UtilitiesTime',
 					'mediawiki.Uri',
 					'mediawiki.absoluteUrl',
-
+					'mediawiki.jqueryMsg',
+				
 					// Browser fullscreen api support:
 					'fullScreenApi',
 

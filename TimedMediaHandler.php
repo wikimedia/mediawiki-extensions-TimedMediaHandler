@@ -18,7 +18,7 @@ $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebV
 // Add the rest transcode right:
 $wgAvailableRights[] = 'transcode-reset';
 
-/******************* CONFIGURATION STARTS HERE **********************/
+
 
 /*** MwEmbed module configuration: *********************************/
 // Show a warning to the user if they are not using an html5 browser with high quality ogg support
@@ -27,9 +27,17 @@ $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 // Show the options menu:
 $wgMwEmbedModuleConfig['EmbedPlayer.EnableOptionsMenu'] = true;
 
+// TMH needs java ( no h.264 or mp3 derivatives )
+$wgMwEmbedModuleConfig['EmbedPlayer.DisableJava' ] = false;
+
+// TMH has not use for flash currently ( no h.264 or mp3 derivatives )
+$wgMwEmbedModuleConfig['EmbedPlayer.DisableHTML5FlashFallback'] = false;
+
 // The text interface should always be shown
 // ( even if there are no text tracks for that asset at render time )
 $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
+
+/*** Timed Media Handler configuration ****************************/
 
 // Which users can restart failed or expired transcode jobs:
 $wgGroupPermissions['sysop']['transcode-reset'] = true;

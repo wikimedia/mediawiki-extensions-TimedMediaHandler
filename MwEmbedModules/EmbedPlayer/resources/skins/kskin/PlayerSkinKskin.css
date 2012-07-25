@@ -223,7 +223,7 @@
 	left: 0;
 	position: absolute;
 	top: 0;
-	z-index: 2;
+	z-index: 3;
 }
 
 .k-player .k-menu-bar li a {

@@ -56,6 +56,8 @@
 
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){
+			// Setup the enhanced language: 
+			window.gM = mw.jqueryMsg.getMessageFunction( {} );
 			mw.processEmbedPlayers( playerSelect, readyCallback );
 		}, function( e ){
 			throw new Error( 'Error loading EmbedPlayer dependency set: ' + e.message  );

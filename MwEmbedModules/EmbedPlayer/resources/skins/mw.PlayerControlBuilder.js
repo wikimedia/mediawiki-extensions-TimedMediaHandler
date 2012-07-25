@@ -1067,7 +1067,13 @@ mw.PlayerControlBuilder.prototype = {
 		if ( _this.checkNativeWarning( ) ) {
 			_this.addWarningBinding(
 				'EmbedPlayer.ShowNativeWarning',
-				gM( 'mwe-embedplayer-for_best_experience' )
+				gM( 'mwe-embedplayer-for_best_experience', 
+					$('<a />')
+						.attr({
+							'href': 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
+							'target' : '_new'
+						})
+				)
 			);
 		}
 
@@ -1335,6 +1341,15 @@ mw.PlayerControlBuilder.prototype = {
 		if( embedPlayer.getWidth() < 200 ){
 			return false;
 		}
+		
+		// Can be uncommented to reset hide prefrence 
+		// $.cookie( preferenceId, '' );
+		
+		// Check if a cookie has been set to hide the warning: 
+		if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) == 'hidewarning' ){
+			return ;
+		}
+		
 		var warnId = "warningOverlay_" + embedPlayer.id;
 		$( '#' + warnId ).remove();
 
@@ -1346,7 +1361,6 @@ mw.PlayerControlBuilder.prototype = {
 		.addClass( 'ui-state-highlight ui-corner-all' )
 		.css({
 			'position' : 'absolute',
-			'display' : 'none',
 			'background' : '#FFF',
 			'color' : '#111',
 			'top' : '10px',
@@ -1357,7 +1371,7 @@ mw.PlayerControlBuilder.prototype = {
 		})
 		.html( warningMsg );
 
-		$( embedPlayer ).append(
+		embedPlayer.getInterface().append(
 			$targetWarning
 		);
 
@@ -1387,26 +1401,6 @@ mw.PlayerControlBuilder.prototype = {
 			.text( gM( 'mwe-embedplayer-do_not_warn_again' ) )
 			.attr( 'for', 'ffwarn_' + embedPlayer.id )
 		);
-		$targetWarning.hide();
-
-		$( embedPlayer ).hoverIntent({
-			'timeout': 2000,
-			'over': function() {
-				// don't do the overlay if already playing
-				if( embedPlayer.isPlaying() ){
-					return ;
-				}
-
-				// Check the global config before showing the warning
-				if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) != 'hidewarning' ){
-					mw.log("WarningBindinng:: show warning " + mw.getConfig( preferenceId ) + ' cookie: '+ $.cookie( preferenceId ) + 'typeof:' + typeof $.cookie( preferenceId ));
-					$targetWarning.fadeIn( 'slow' );
-				};
-			},
-			'out': function() {
-				$targetWarning.fadeOut( 'slow' );
-			}
-		});
 		return $targetWarning;
 	},
 
