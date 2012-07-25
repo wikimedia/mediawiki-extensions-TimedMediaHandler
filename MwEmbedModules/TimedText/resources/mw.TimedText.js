@@ -25,7 +25,7 @@
 	 * @param embedPlayer Host player for timedText interfaces
 	 */
 	mw.TimedText = function( embedPlayer ) {
-		return this.init( embedPlayer);
+		return this.init( embedPlayer );
 	};
 
 	mw.TimedText.prototype = {
@@ -107,20 +107,22 @@
 			var _this = this;
 			mw.log("TimedText: init() ");
 			this.embedPlayer = embedPlayer;
-
 			// Load user preferences config:
 			var preferenceConfig = $.cookie( 'TimedText.Preferences' );
 			if( preferenceConfig !== "false" && preferenceConfig != null ) {
 				this.config = JSON.parse(  preferenceConfig );
 			}
 			// remove any old bindings on change media:
-			$( this.embedPlayer ).bind( 'onChangeMedia', function(){
+			$( this.embedPlayer ).bind( 'onChangeMedia' + this.bindPostFix , function(){
 				_this.destroy();
 			});
+
 			// Remove any old bindings before we add the current bindings:
 			_this.destroy();
+			
 			// Add player bindings
 			_this.addPlayerBindings();
+			return this;
 		},
 		destroy: function(){
 			// remove any old player bindings;
@@ -161,7 +163,7 @@
 			} );
 
 			// Resize the timed text font size per window width
-			$( embedPlayer ).bind( 'onCloseFullScreen'+ this.bindPostFix + ' onOpenFullScreen'+ this.bindPostFix, function() {
+			$( embedPlayer ).bind( 'onCloseFullScreen' + this.bindPostFix + ' onOpenFullScreen' + this.bindPostFix, function() {
 				// Check if we are in fullscreen or not, if so add an additional bottom offset of
 				// double the default bottom padding.
 				var textOffset = _this.embedPlayer.controlBuilder.inFullScreen ?
@@ -207,7 +209,7 @@
 				}
 			});
 
-			$( embedPlayer ).bind( 'onHideControlBar'+ this.bindPostFix, function(event, layout ){
+			$( embedPlayer ).bind( 'onHideControlBar' + this.bindPostFix, function(event, layout ){
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track down if present
 					embedPlayer.getInterface().find( '.track' )
@@ -416,20 +418,38 @@
 					return ;
 				}
 				var $menuButton = _this.embedPlayer.getInterface().find( '.timed-text' );
+				var ctrlObj = _this.embedPlayer.controlBuilder;
 				// NOTE: Button target should be an option or config
 				$menuButton.menu( {
 					'content'	: _this.getMainMenu(),
 					'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 					'crumbDefaultText' : ' ',
 					'autoShow': autoShow,
+					'keepPosition' : true,
+					'showSpeed': 0,
+					'height' : 100,
+					'width' : 200,
 					'targetMenuContainer' : _this.getTextMenuContainer(),
 					'positionOpts' : positionOpts,
 					'backLinkText' : gM( 'mwe-timedtext-back-btn' ),
 					'createMenuCallback' : function(){
-						_this.embedPlayer.controlBuilder.showControlBar( true );
+						var $interface = _this.embedPlayer.getInterface();
+						var $textContainer =  _this.getTextMenuContainer();
+						var textHeight = 130;
+						var top = $interface.height() - textHeight - ctrlObj.getHeight() - 8;
+						if( top < 0 )
+							top = 0;
+						$textContainer.css({
+							'top' : top,
+							'height': textHeight,
+							'position' : 'absolute',
+							'left': $menuButton[0].offsetLeft,
+							'bottom': ctrlObj.getHeight(),
+						})
+						ctrlObj.showControlBar( true );
 					},
 					'closeMenuCallback' : function(){
-						_this.embedPlayer.controlBuilder.keepControlBarOnScreen = false;
+						ctrlObj.restoreControlsHover();
 					}
 				});
 			});

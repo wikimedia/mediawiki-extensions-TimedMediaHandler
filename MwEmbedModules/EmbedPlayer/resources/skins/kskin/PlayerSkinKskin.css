@@ -6,10 +6,10 @@
 	background-color: #000;
 }
 .k-player .ui-widget-content {
-	color: #999;
+	color: #555;
 }
 .k-player .ui-widget-content a{
-	color: #999;
+	color: #555;
 }
 /* large play button */
 .k-player .play-btn-large {
@@ -31,7 +31,7 @@
 }
 
 /* control icons: */
-.k-player .ui-state-default .ui-icon,.k-player .ui-state-hover .ui-icon{
+.k-player .control-bar .ui-icon,.k-player .control-bar .ui-icon{
 	background: transparent url(images/ksprite.png) no-repeat scroll 0 -48px;
 }
 
@@ -50,9 +50,6 @@
 /* cc icon */
 .k-player .ui-state-default .ui-icon-comment {
 	background-position: 0px -65px;
-}
-.k-player .ui-state-hover .ui-icon-comment {
-	background-position: -17px -65px;
 }
 
 .k-player .ui-state-default .ui-icon-play {
@@ -120,6 +117,16 @@
 .k-player .ui-corner-all {
 	-moz-border-radius:5px 5px 5px 5px;
 }
+.k-player ul.fg-menu{
+	margin: 0.3em 0 0 .3em;
+	font-size: 1.2em;
+	padding: 0px;
+}
+.k-player .fg-menu-container{
+	padding: 0px;
+}
+
+
 .k-player .time-disp {
 	border: medium none;
 	display: inline;

@@ -53,9 +53,6 @@ mw.PlayerControlBuilder.prototype = {
 	// Flag to store the current fullscreen mode
 	inFullScreen: false,
 
-	// Flag for full window size players
-	isWindowSizePlayer: false,
-
 	// Flag to store if a warning binding has been added
 	addWarningFlag: false,
 
@@ -79,7 +76,6 @@ mw.PlayerControlBuilder.prototype = {
 	init: function( embedPlayer ) {
 		var _this = this;
 		this.embedPlayer = embedPlayer;
-
 		// Check for skin overrides for controlBuilder
 		var skinClass = embedPlayer.skinName.substr(0,1).toUpperCase() + embedPlayer.skinName.substr( 1 );
 		if ( mw['PlayerSkin' + skinClass ] ) {
@@ -919,43 +915,39 @@ mw.PlayerControlBuilder.prototype = {
 		var bindFirstPlay = false;
 		_this.addRightClickBinding();
 
-		// check if the player takes up the full window size:
-		if( $( embedPlayer ).width() == $(window).width() ){
-			this.isWindowSizePlayer = true;
-		}
-
 		// add the player click bindings
 		_this.addPlayerClickBindings();
 
 		// Bind into play.ctrl namespace ( so we can unbind without affecting other play bindings )
 		$( embedPlayer ).bind( 'onplay' + this.bindPostfix, function() { //Only bind once played
 			// add right click binding again ( in case the player got swaped )
-			_this.addRightClickBinding();
+			this.controlBuilder.addRightClickBinding();
 		});
 
 		$( embedPlayer ).bind( 'timeupdate' + this.bindPostfix, function(){
 			// Update the playhead status: TODO move to controlBuilder
-			embedPlayer.updatePlayheadStatus()
+			this.updatePlayheadStatus()
 		});
 
 		// Update buffer information TODO move to controlBuilder
 		$( embedPlayer ).bind( 'progress' + this.bindPostfix, function(){
-			_this.updateBufferStatus();
+			this.updateBufferStatus();
 		});
 
 		// Bind to EnableInterfaceComponents
 		$( embedPlayer ).bind( 'onEnableInterfaceComponents' + this.bindPostfix, function() {
-			_this.controlsDisabled = false;
-			_this.addPlayerClickBindings();
+			this.controlBuilder.controlsDisabled = false;
+			this.controlBuilder.addPlayerClickBindings();
 		});
 
 		// Bind to DisableInterfaceComponents
 		$( embedPlayer ).bind( 'onDisableInterfaceComponents' + this.bindPostfix, function() {
-			_this.controlsDisabled = true;
-			_this.removePlayerClickBindings();
+			this.controlBuilder.controlsDisabled = true;
+			this.controlBuilder.removePlayerClickBindings();
 		});
 
 
+		// TODO select a player on the page
 		var bindSpaceUp = function(){
 			$(window).bind('keyup' + _this.bindPostfix, function(e) {
 				if( e.keyCode == 32 ) {
@@ -1126,7 +1118,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		// Check for click
 		$( embedPlayer ).bind( "click" + _this.bindPostfix, function() {
-			mw.log( "PlayerControlBuilder:: click:"  + ' isPause:' + embedPlayer.paused);
+			mw.log( "PlayerControlBuilder:: click:" + embedPlayer.id + ' isPause:' + embedPlayer.paused);
 			// Don't do anything if native controls displayed:
 			if( embedPlayer.useNativePlayerControls() || _this.isControlsDisabled() || mw.isIpad() ) {
 				return true;
@@ -1151,6 +1143,7 @@ mw.PlayerControlBuilder.prototype = {
 			}, dblClickTime );
 			return true;
 		});
+		
 	},
 	addRightClickBinding: function(){
 		var embedPlayer = this.embedPlayer;
@@ -1757,7 +1750,11 @@ mw.PlayerControlBuilder.prototype = {
         if( typeof alertObj.callbackFunction == 'string' ) {
             if ( alertObj.isExternal ) {
                 // TODO better support of running external JS functions, instead of window.parent
+            	try{
                 callback = window.parent[ alertObj.callbackFunction ];
+            	} catch ( e ){
+            		// could not call parent method
+            	}
             } else {
                 callback = window[ alertObj.callbackFunction ];
             }
@@ -2308,7 +2305,7 @@ mw.PlayerControlBuilder.prototype = {
 						// Options binding:
 						.menu( {
 							'content' : ctrlObj.getOptionsMenu(),
-							'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 1,
+							'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 							'positionOpts': {
 								'directionV' : 'up',
 								'offsetY' : 30,
@@ -2471,6 +2468,10 @@ mw.PlayerControlBuilder.prototype = {
 		'sourceSwitch' : {
 			'w' : 70,
 			'o' : function( ctrlObj ){
+				var $menuContainer = $('<div />').addClass( 'swMenuContainer' ).hide();
+				ctrlObj.embedPlayer.getInterface().append( 
+						$menuContainer
+				)
 				// Stream switching widget ( display the current selected stream text )
 				return $( '<div />' )
 					.addClass('ui-widget source-switch')
@@ -2479,17 +2480,28 @@ mw.PlayerControlBuilder.prototype = {
 					).menu( {
 						'content' : ctrlObj.getSwitchSourceMenu(),
 						'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+						'keepPosition' : true,
+						'targetMenuContainer' : $menuContainer,
 						'width' : 115,
-						'positionOpts' : {
-							'posY' : 'top',
-							'directionV' : 'up',
-							'offsetY' : 23
-						},
+						'showSpeed': 0,
 						'createMenuCallback' : function(){
+							var $interface = ctrlObj.embedPlayer.getInterface();
+							var $sw = $interface.find( '.source-switch' );
+							var $swMenuContainer = $interface.find('.swMenuContainer');
+							var height = $swMenuContainer.find( 'li' ).length * 30;
+							// position from top ( unkown why we can't use bottom here )
+							var top = $interface.height() - height - ctrlObj.getHeight() - 8;
+							$menuContainer.css({
+								'position' : 'absolute',
+								'left': $sw[0].offsetLeft,
+								'top' : top,
+								'bottom': ctrlObj.getHeight(),
+								'height' : height
+							})
 							ctrlObj.showControlBar( true );
 						},
 						'closeMenuCallback' : function(){
-							ctrlObj.keepControlBarOnScreen = false;
+							ctrlObj.restoreControlsHover()
 						}
 					} );
 			}

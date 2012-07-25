@@ -1172,7 +1172,6 @@
 					.append(
 						$('<div />').addClass( 'videoHolder' )
 					)
-
 				).parent().parent();
 
 				// pass along any inhereted style:
