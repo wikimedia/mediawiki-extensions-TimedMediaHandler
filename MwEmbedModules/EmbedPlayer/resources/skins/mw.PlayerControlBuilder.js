@@ -2061,22 +2061,28 @@ mw.PlayerControlBuilder.prototype = {
 		$.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if( source.getSrc() ) {
 				mw.log("showDownloadWithSources:: Add src: " + source.getTitle() );
-				var $dl_line = $( '<li />').append(
+				var path = new mw.Uri( source.getSrc() ).path;
+				var pathParts = path.split( '/' );
+				var fileName = pathParts[ pathParts.length -1 ];
+				var $dlLine = $( '<li />').append(
 					$('<a />')
-					.attr( 'href', source.getSrc() )
+					.attr( {
+						'href': source.getSrc(),
+						'download': fileName
+					})
 					.text( source.getTitle() )
 				);
 				// Add link to correct "bucket"
 
 				//Add link to time segment:
 				if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
-					$target.append( $dl_line );
+					$target.append( $dlLine );
 				} else if ( this.getMIMEType().indexOf('text') === 0 ) {
 					// Add link to text list
-					$textList.append( $dl_line );
+					$textList.append( $dlLine );
 				} else {
 					// Add link to media list
-					$mediaList.append( $dl_line );
+					$mediaList.append( $dlLine );
 				}
 
 			}
