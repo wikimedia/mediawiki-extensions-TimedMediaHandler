@@ -436,7 +436,7 @@
 						var $interface = _this.embedPlayer.getInterface();
 						var $textContainer =  _this.getTextMenuContainer();
 						var textHeight = 130;
-						var top = $interface.height() - textHeight - ctrlObj.getHeight() - 8;
+						var top = $interface.height() - textHeight - ctrlObj.getHeight() - 6;
 						if( top < 0 )
 							top = 0;
 						$textContainer.css({

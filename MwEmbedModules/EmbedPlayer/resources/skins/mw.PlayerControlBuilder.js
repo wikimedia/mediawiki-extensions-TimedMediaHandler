@@ -2485,7 +2485,7 @@ mw.PlayerControlBuilder.prototype = {
 						'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 						'keepPosition' : true,
 						'targetMenuContainer' : $menuContainer,
-						'width' : 115,
+						'width' : 130,
 						'showSpeed': 0,
 						'createMenuCallback' : function(){
 							var $interface = ctrlObj.embedPlayer.getInterface();
@@ -2493,7 +2493,7 @@ mw.PlayerControlBuilder.prototype = {
 							var $swMenuContainer = $interface.find('.swMenuContainer');
 							var height = $swMenuContainer.find( 'li' ).length * 30;
 							// position from top ( unkown why we can't use bottom here )
-							var top = $interface.height() - height - ctrlObj.getHeight() - 8;
+							var top = $interface.height() - height - ctrlObj.getHeight() - 6;
 							$menuContainer.css({
 								'position' : 'absolute',
 								'left': $sw[0].offsetLeft,

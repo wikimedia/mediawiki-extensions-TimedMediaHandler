@@ -75,7 +75,7 @@
 	height: 21px;
 	padding: 2px 0 0 6px;
 	margin-top: 0px;
-	background: url(images/ksprite.png) repeat-x 0 -81px;
+	background: url(images/ksprite.png) repeat-x 0 -81px; !important;
 	font: normal 11px arial, sans-serif;
 	color: #555;
 	
@@ -126,6 +126,9 @@
 	padding: 0px;
 }
 
+.ui-dialog-content .k-player ul.fg-menu{
+	font-size: 1.2em;
+}
 
 .k-player .time-disp {
 	border: medium none;
@@ -402,8 +405,7 @@
 
 .k-player .volume-slider .ui-slider-range {
 	-moz-border-radius: 0 0 0 0;
-	background: url("images/ksprite.png") repeat-x scroll -66px -306px
-		transparent;
+	background: url("images/ksprite.png") repeat-x scroll -66px -306px transparent !important;
 	height: 17px;
 	position: absolute;
 }
