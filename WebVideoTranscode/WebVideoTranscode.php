@@ -60,7 +60,6 @@ class WebVideoTranscode {
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'theora',

@@ -83,8 +83,9 @@ $wgTranscodeBackgroundSizeLimit = 1024 * 1024; // 1GB
 // The location of ffmpeg2theora (transcoding)
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
-// Location of the FFmpeg binary (used to encode WebM and for thumbnails)
-$wgFFmpegLocation = '/usr/bin/ffmpeg';
+// Location of the avconv/ffmpeg binary (used to encode WebM and for thumbnails)
+// ubuntu 12.04 has libav now, use avconv by default
+$wgFFmpegLocation = '/usr/bin/avconv';
 
 // The NS for TimedText (registered on MediaWiki.org)
 // http://www.mediawiki.org/wiki/Extension_namespace_registration

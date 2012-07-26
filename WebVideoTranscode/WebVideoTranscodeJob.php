@@ -120,7 +120,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Update the transcode table letting it know we have "started work":
-		$jobStartTimeCache = $db->timestamp();
+		$jobStartTimeCache = $dbw->timestamp();
 		$dbw->update(
 			'transcode',
 			array( 'transcode_time_startwork' => $jobStartTimeCache ),
@@ -479,7 +479,7 @@ class WebVideoTranscodeJob extends Job {
 					$cmd.= ' '. implode(' ', self::$foggMap[$key] );
 				} elseif ($val == 'true' || $val === true){
 					$cmd.= ' '. self::$foggMap[$key];
-				} elseif ( $val === false){
+				} elseif ($val == 'false' || $val === false){
 					//ignore "false" flags
 				} else {
 					//normal get/set value
