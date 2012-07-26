@@ -128,7 +128,7 @@
 		"startOffset" : 0,
 
 		// If the download link should be shown
-		"download_link" : true,
+		"downloadLink" : true,
 
 		// Content type of the media
 		"type" : null
@@ -1330,7 +1330,7 @@
 				//this.showNoPlayableSources();
 				return ;
 			}
-
+			
 			// Set the isLink player flag:
 			this.isLinkPlayer= true;
 			// Update the poster and html:
@@ -1350,19 +1350,24 @@
 			});
 			// Set the play button to the first available source:
 			var $pBtn = this.getInterface().find('.play-btn-large')
-			.attr( 'title', gM('mwe-embedplayer-play_clip') )
-			.show()
-			.unbind( 'click' )
-			.click( function() {
-				_this.triggerHelper( 'firstPlay' ); // To send stats event for play
-				_this.triggerHelper( 'playing' );
-				return true;
-			});
+				.attr( 'title', gM('mwe-embedplayer-play_clip') )
+				.show()
+				.unbind( 'click' )
+				.click( function() {
+					_this.triggerHelper( 'firstPlay' ); // To send stats event for play
+					_this.triggerHelper( 'playing' );
+					return true;
+				});
 			if( !$pBtn.parent('a').length ){
 				$pBtn.wrap( $( '<a />' ).attr("target", "_blank" ) );
 			}
 			$pBtn.parent('a').attr( "href", downloadUrl );
+			
+			$( this ).trigger( 'showInlineDownloadLink' );
 		},
+		/**
+		 * Show no playable sources error:
+		 */
 		showNoPlayableSources: function(){
 			var $this = $( this );
 			var errorObj = this.getKalturaMsgObject( 'mwe-embedplayer-missing-source' );

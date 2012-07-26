@@ -229,17 +229,36 @@
 		/**
 		 * Adds embedPlayer Bindings
 		 */
+		
 		// Show credits when requested
 		$( embedPlayer ).bind('showCredits', function( event, $target, callback){
 			// Only request the credits once:
 			showCredits( $target, callback);
 		});
-		// show credits on clip complete:
+		
+		// Show credits on clip complete:
 		$( embedPlayer ).bind('onEndedDone', function(){
 			var cb = embedPlayer.controlBuilder;
 			cb.checkMenuOverlay( );
 			cb.showMenuOverlay();
 			cb.showMenuItem( 'credits' );
+		});
+		
+		$( embedPlayer ).bind('showInlineDownloadLink', function(){
+			// Add recommend HTML5 player if we have non-native playback:
+			if ( embedPlayer.controlBuilder.checkNativeWarning( ) ) {
+				embedPlayer.controlBuilder.addWarningBinding(
+					'EmbedPlayer.ShowNativeWarning',
+					gM( 'mwe-embedplayer-for_best_experience', 
+						$('<a />')
+							.attr({
+								'href': 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
+								'target' : '_new'
+							})
+					), 
+					true
+				);
+			}
 		});
 
 

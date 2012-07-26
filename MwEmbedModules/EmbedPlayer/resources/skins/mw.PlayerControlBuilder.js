@@ -1330,9 +1330,10 @@ mw.PlayerControlBuilder.prototype = {
 	* checks a preference Id to enable or disable it.
 	* @param {string} preferenceId The preference Id
 	* @param {object} warningMsg The jQuery object warning message to be displayed.
+	* @param {boolean} if the hide ui should be exposed
 	*
 	*/
-	addWarningBinding: function( preferenceId, warningMsg ) {
+	addWarningBinding: function( preferenceId, warningMsg, hideDisableUi ) {
 		mw.log( 'mw.PlayerControlBuilder: addWarningBinding: ' + preferenceId + ' wm: ' + warningMsg);
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
@@ -1343,7 +1344,7 @@ mw.PlayerControlBuilder.prototype = {
 		}
 		
 		// Can be uncommented to reset hide prefrence 
-		// $.cookie( preferenceId, '' );
+		//$.cookie( preferenceId, '' );
 		
 		// Check if a cookie has been set to hide the warning: 
 		if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) == 'hidewarning' ){
@@ -1378,29 +1379,33 @@ mw.PlayerControlBuilder.prototype = {
 		$targetWarning.append(
 			$('<br />')
 		);
-
-		$targetWarning.append(
-			$( '<input type="checkbox" />' )
-			.attr({
-				'id' : 'ffwarn_' + embedPlayer.id,
-				'name' : 'ffwarn_' + embedPlayer.id
-			})
-			.click( function() {
-				mw.log("WarningBindinng:: set " + preferenceId + ' to hidewarning ' );
-				// Set up a cookie for 30 days:
-				$.cookie( preferenceId, 'hidewarning', {expires: 30} );
-				// Set the current instance
-				mw.setConfig( preferenceId, false );
-				$( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
-				// set the local preference to false
-				_this.addWarningFlag = false;
-			} )
-		);
-		$targetWarning.append(
-			$('<label />')
-			.text( gM( 'mwe-embedplayer-do_not_warn_again' ) )
-			.attr( 'for', 'ffwarn_' + embedPlayer.id )
-		);
+		// check if we should show the checkbox
+		if( !hideDisableUi ){
+			
+			$targetWarning.append(
+				$( '<input type="checkbox" />' )
+				.attr({
+					'id' : 'ffwarn_' + embedPlayer.id,
+					'name' : 'ffwarn_' + embedPlayer.id
+				})
+				.click( function() {
+					mw.log("WarningBindinng:: set " + preferenceId + ' to hidewarning ' );
+					// Set up a cookie for 30 days:
+					$.cookie( preferenceId, 'hidewarning', {expires: 30} );
+					// Set the current instance
+					mw.setConfig( preferenceId, false );
+					$( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
+					// set the local preference to false
+					_this.addWarningFlag = false;
+				} )
+			);
+			$targetWarning.append(
+				$('<label />')
+				.text( gM( 'mwe-embedplayer-do_not_warn_again' ) )
+				.attr( 'for', 'ffwarn_' + embedPlayer.id )
+			);
+		}
+		
 		return $targetWarning;
 	},
 
