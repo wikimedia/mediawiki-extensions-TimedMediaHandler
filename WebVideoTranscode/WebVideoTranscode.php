@@ -103,6 +103,19 @@ class WebVideoTranscode {
 			),
 
 		// WebM transcode:
+		WebVideoTranscode::ENC_WEBM_160P =>
+			array(
+				'maxSize'                    => '288x160',
+				'videoBitrate'               => '256',
+				'audioQuality'               => '-1',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp8',
+			),
 		WebVideoTranscode::ENC_WEBM_360P =>
 			array(
 				'maxSize'                    => '640x360',
