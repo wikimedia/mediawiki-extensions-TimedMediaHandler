@@ -347,7 +347,11 @@ mw.PlayerSkinKskin = {
 			.text( gM( 'mwe-embedplayer-credits' ) ),
 			$('<div />')
 			.addClass( "credits_box ui-corner-all" )
-			.loadingSpinner()
+			.append( 
+				$('<div/>')
+				.loadingSpinner()
+				.css({'position':'absolute','top':'50%','left':'50%'})
+			)
 		);
 
 		if( mw.getConfig( 'EmbedPlayer.KalturaAttribution' ) == true ){
