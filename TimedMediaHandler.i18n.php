@@ -82,6 +82,8 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-desc-720p.ogv' => 'High quality downloadable Ogg video (720P)',
 
 	// WebM profiles:
+	'timedmedia-derivative-160p.webm' => 'WebM 160P',
+	'timedmedia-derivative-desc-160p.webm' => 'Web streamable WebM (160P)',
 	'timedmedia-derivative-360p.webm' => 'WebM 360P',
 	'timedmedia-derivative-desc-360p.webm' => 'Web streamable WebM (360P)',
 	'timedmedia-derivative-480p.webm' => 'WebM 480P',
@@ -154,6 +156,7 @@ Parameters are:
 	'timedmedia-derivative-360p.ogv' => '{{optional}}',
 	'timedmedia-derivative-480p.ogv' => '{{optional}}',
 	'timedmedia-derivative-720p.ogv' => '{{optional}}',
+	'timedmedia-derivative-160p.webm' => '{{optional}}',
 	'timedmedia-derivative-360p.webm' => '{{optional}}',
 	'timedmedia-derivative-480p.webm' => '{{optional}}',
 	'timedmedia-derivative-720p.webm' => '{{optional}}',

@@ -105,11 +105,11 @@ $wgTimedTextNS = 710;
  * -Derivative should be listed min to max
  */
 $wgEnabledTranscodeSet = array(
-	// Ogg fallback for IE/cortado
-	WebVideoTranscode::ENC_OGV_480P,
-
 	// Small version for default thumb embeds(220)
 	WebVideoTranscode::ENC_WEBM_160P,
+
+	// Ogg fallback for IE/cortado
+	WebVideoTranscode::ENC_OGV_480P,
 
 	// A web streamable WebM video
 	WebVideoTranscode::ENC_WEBM_480P,
