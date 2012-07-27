@@ -7,6 +7,22 @@
  *
  * TODO On "new" timedtext language save purge all pages where file exists
  */
+
+
+/**
+ * Subclass ApiMain but query other db
+ */
+class ForeignApiQueryAllPages extends ApiQueryAllPages {
+
+	public function __construct( $mDb, $query, $moduleName ) {
+		$this->foreignDb = $mDb;
+		parent::__construct( $query, $moduleName, 'ap' );
+	}
+	protected function getDB() {
+		return $this->foreignDb;
+	}
+}
+
 class TextHandler {
 
 	var $remoteNs = null;//lazy init remote Namespace number
@@ -25,8 +41,10 @@ class TextHandler {
 	 * @return array|mixed
 	 */
 	function getTracks(){
-		if( $this->file->isLocal() || $this->file->repo instanceof ForeignDBViaLBRepo ){
+		if( $this->file->isLocal() ){
 			return $this->getLocalTextSources();
+		}else if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
+			return $this->getForeignDBTextSources();
 		}else {
 			return $this->getRemoteTextSources();
 		}
@@ -121,6 +139,24 @@ class TextHandler {
 		$api = new ApiMain( $params );
 		$api->execute();
 		$data = $api->getResultData();
+		// Get the list of language Names
+		return $this->getTextTracksFromData( $data );
+	}
+
+	/**
+	 * @return array|mixed
+	 */
+	function getForeignDBTextSources(){
+		// Init $this->textTracks
+		$params = new FauxRequest( $this->getTextPagesQuery() );
+		$api = new ApiMain( $params );
+		$api->profileIn();
+		$module = new ForeignApiQueryAllPages( $this->file->getRepo()->getSlaveDB(), $api, 'allpages' );
+		$module->profileIn();
+		$module->execute();
+		$module->profileOut();
+
+		$data = $module->getResultData();
 		// Get the list of language Names
 		return $this->getTextTracksFromData( $data );
 	}
