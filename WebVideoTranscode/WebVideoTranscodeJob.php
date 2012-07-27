@@ -344,7 +344,7 @@ class WebVideoTranscodeJob extends Job {
 		wfProfileOut( 'ffmpeg_encode' );
 
 		if( $retval != 0 ){
-			return $cmd . "\n\n" . $shellOutput;
+			return $cmd . "\n\nExitcode:" . $retval . "\n\n" . $shellOutput;
 		}
 		return true;
 	}
