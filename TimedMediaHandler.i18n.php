@@ -91,6 +91,12 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-720p.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc-720p.webm' => 'High quality downloadable WebM (720P)',
 
+
+	// Timed text page
+	'timedmedia-subtitle-new' => 'Create new translation or edit existing',
+	'timedmedia-subtitle-new-desc' => "Replace '''LANG''' part with your [[:en:ISO 639|language code]] and press '''Go''' button",
+	'timedmedia-subtitle-new-go' => 'Go',
+
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
 	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page',
 	'timedmedia-subtitle-no-subtitles' => 'There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',

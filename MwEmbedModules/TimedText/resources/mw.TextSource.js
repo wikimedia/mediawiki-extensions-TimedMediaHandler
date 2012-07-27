@@ -70,7 +70,6 @@
 				mw.log( "Error: TextSource no source url for text track");
 				return callback();
 			}
-
 			new mw.ajaxProxy({
 				url: _this.getSrc(),
 				success: function( resultXML ) {
@@ -386,6 +385,7 @@
 		 * TODO move to mediaWiki specific module.
 		 */
 		getCaptiosnFromMediaWikiSrt: function( data ){
+			mw.log("TimedText::getCaptiosnFromMediaWikiSrt:");
 			var _this = this;
 			var captions = [ ];
 			var curentCap = {

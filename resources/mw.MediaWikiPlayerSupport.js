@@ -189,7 +189,7 @@
 					$creditLine
 				);
 		};
-
+		
 		/**
 		 * Issues a request to populate the credits box
 		 */
@@ -261,6 +261,27 @@
 			}
 		});
 
+		$( embedPlayer ).bind( 'TimedText_BuildCCMenu', function(event, $menu){
+			// Put in the "Make Transcript" link if config enabled and we have an api key
+			if( embedPlayer.apiTitleKey ){
+				
+				var addTextPage =  mw.getApiProviderURL( apiProvider )
+									.replace( 'api.php', 'index.php') +
+									'?title=TimedText:' + unescape( embedPlayer.apiTitleKey ).replace(/^File:|^Image:/, '');
+				
+				var $li = $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
+					window.location = addTextPage;
+				})
+				.find( "a" )
+				.attr( {
+					'href': addTextPage,
+					'target' : '_new'
+				});
+				$menu.append(
+					$li
+				);
+			}
+		});
 
 		$( embedPlayer ).bind( 'checkPlayerSourcesEvent', function(event, callback){
 			// Only load source if none are available:

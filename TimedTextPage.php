@@ -23,7 +23,16 @@ class TimedTextPage extends Article {
 			return;
 		}
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
-		array_pop( $titleParts );
+		$srt = array_pop( $titleParts );
+		
+		// create a title from the current page title in the NS_FILE ns ( create new link ) 
+		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
+		// Check for a valid srt page, present redirect form for the full title match:
+		if( $srt !== '.srt' &&  $fileTitle->exists() ){
+			$this->doRedirectToPageForm( $fileTitle );
+			return ;
+		}
+		
 		$languageKey = array_pop( $titleParts );
 		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
 
@@ -48,7 +57,36 @@ class TimedTextPage extends Article {
 			)
 		);
 	}
+	function doRedirectToPageForm( $fileTitle ){
+		global $wgContLang, $wgOut;
+		// Set the page title:
+		$wgOut->setPageTitle(
+				wfMsg( 'timedmedia-subtitle-new' )
+			);
 
+		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'. 
+							$wgContLang->getCode() . '.srt', NS_TIMEDTEXT );
+		$wgOut->addHTML(  
+			xml::tags('div', array( 'style' => 'text-align:center' ),
+				xml::tags( 'span', null, wfMsgWikiHtml('timedmedia-subtitle-new-desc') ) .
+				xml::tags( 'input', array( 
+					'id' => 'timedmedia-tt-input',
+					'value' => $timedTextTile->getFullText(), 
+					'size' => 50 ), 
+					xml::tags( 'button', array( 'id'=>'timedmedia-tt-go'), wfMsg( 'timedmedia-subtitle-new-go' ) )	 
+				)
+			)
+		);
+		$wgOut->addScript( 
+			Html::InlineScript( '$("#timedmedia-tt-go").click(function(){' .
+					'var articlePath = mw.config.get( "wgArticlePath" );' .
+					'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
+					'window.location = articlePath.replace(/\$1/, $( "#timedmedia-tt-input" ).val() + ' . 
+					' paramSep + "action=edit" )  ' .
+				'});'
+			)
+		);
+	}
 	/**
 	 * Gets the video HTML ( with the current language set as default )
 	 * @param $videoTitle string

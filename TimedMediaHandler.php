@@ -37,6 +37,9 @@ $wgMwEmbedModuleConfig['EmbedPlayer.DisableHTML5FlashFallback'] = false;
 // ( even if there are no text tracks for that asset at render time )
 $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
 
+// Show the add text link:
+$wgMwEmbedModuleConfig['TimedText.ShowAddTextLink'] = true;
+
 /*** Timed Media Handler configuration ****************************/
 
 // Which users can restart failed or expired transcode jobs:

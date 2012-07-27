@@ -250,7 +250,8 @@
 			});
 		},
 		includeCaptionButton:function(){
-			return this.embedPlayer.getTextTracks().length;
+			return  mw.getConfig( 'TimedText.ShowInterface' ) == 'always'  ||
+					this.embedPlayer.getTextTracks().length;
 		},
 		/**
 		 * Get the current language key
@@ -443,7 +444,7 @@
 							'top' : top,
 							'height': textHeight,
 							'position' : 'absolute',
-							'left': $menuButton[0].offsetLeft,
+							'left': $menuButton[0].offsetLeft - 75,
 							'bottom': ctrlObj.getHeight(),
 						})
 						ctrlObj.showControlBar( true );
@@ -670,6 +671,10 @@
 		* 	false if source is off
 		*/
 		isSourceEnabled: function( source ) {
+			// no source is "enabled" if subtitles are "off" 
+			if( this.getLayoutMode() == 'off'  ){
+				return false;
+			}
 			var isEnabled = false;
 			$.each( this.enabledSources, function( inx, enabledSource ) {
 				if( source.id ) {
@@ -677,11 +682,11 @@
 						isEnabled = true;
 					}
 				}
-				/*if( source.srclang ) {
-					if( source.srclang === enabledSource.srclang ){
-						return true;
+				if( source.src ){
+					if( source.src == enabledSource.src ){
+						isEnabled = true;
 					}
-				}*/
+				}
 			});
 			return isEnabled;
 		},
@@ -756,41 +761,29 @@
 		getMainMenu: function() {
 			var _this = this;
 
-			// Build the source list menu item:
-			var $menu = $( '<ul>' );
-
-			// Show text menu item with layout option (if not fullscren )
-			if( _this.textSources.length !== 0 ) {
-				$menu.append(
-					$.getLineItem( gM( 'mwe-timedtext-choose-text'), 'comment' ).append(
-						_this.getLanguageMenu()
-					)
-				);
-			}
-
-			// Layout Menu option if not in an iframe and we can expand video size:
-
-			$menu.append(
-				$.getLineItem( gM( 'mwe-timedtext-layout' ), 'image' ).append(
-					_this.getLayoutMenu()
-				)
-			);
+			// Set the menut to avaliable languages:
+			var $menu = _this.getLanguageMenu();
 
 			if(  _this.textSources.length == 0 ){
 				$menu.append(
 					$.getLineItem( gM( 'mwe-timedtext-no-subs'), 'close' )
 				);
+			} else {
+				// Layout Menu option if not in an iframe and we can expand video size:
+				$menu.append( 
+					$.getLineItem(
+						gM( 'mwe-timedtext-layout-off'),
+						( _this.getLayoutMode() == 'off' ) ? 'bullet' : 'radio-on',
+						function() {
+							_this.setLayoutMode( 'off' );
+						},
+						'layoutRow',
+						{ 'layoutMode' : 'off' }
+					)
+				)
 			}
-
-			// Put in the "Make Transcript" link if config enabled and we have an api key
-			if( mw.getConfig( 'TimedText.ShowAddTextLink' ) && _this.embedPlayer.apiTitleKey ){
-				$menu.append(
-					_this.getLiAddText()
-				);
-			}
-
 			// Allow other modules to add to the timed text menu:
-			$( _this.embedPlayer ).trigger( 'TimedText.BuildCCMenu', $menu ) ;
+			$( _this.embedPlayer ).trigger( 'TimedText_BuildCCMenu', [ $menu ] ) ;
 
 			// Test if only one menu item move its children to the top level
 			if( $menu.children('li').length == 1 ){
@@ -809,26 +802,15 @@
 		*/
 
 		/**
-		 * Get the add text menu item:
-		 */
-		getLiAddText: function() {
-			var _this = this;
-			return $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
-				_this.showTimedTextEditUI( 'add' );
-			});
-		},
-
-		/**
 		* Get line item (li) from source object
 		* @param {Object} source Source to get menu line item from
 		*/
 		getLiSource: function( source ) {
 			var _this = this;
 			//See if the source is currently "on"
-			var source_icon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on';
-
+			var sourceIcon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on';
 			if( source.title ) {
-				return $.getLineItem( source.title, source_icon, function() {
+				return $.getLineItem( source.title, sourceIcon, function() {
 					_this.selectTextSource( source );
 				}, 'captionRow', { 'caption-id' : source.id } );
 			}
@@ -836,8 +818,9 @@
 				var langKey = source.srclang.toLowerCase();
 				return $.getLineItem(
 					gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) ),
-					source_icon,
+					sourceIcon,
 					function() {
+						// select the current text source:
 						_this.selectTextSource( source );
 					},
 					'captionRow',
@@ -857,40 +840,6 @@
 	 		return false;
 	 	},
 
-		/**
-		* Builds and returns the "layout" menu
-		* @return {Object}
-		* 	The jquery menu dom object
-		*/
-		getLayoutMenu: function() {
-			var _this = this;
-			mw.log( 'TimedText:: getLayoutMenu layout: ' + _this.config.layout );
-			var layoutOptions = [];
-			//Only display the "ontop" option if the player supports it:
-			if( this.embedPlayer.supports[ 'overlays' ] ){
-				layoutOptions.push( 'ontop' );
-			}
-			// Support below player display:
-			//layoutOptions.push( 'below' );
-			layoutOptions.push( 'off'  );
-
-			var $ul = $('<ul>');
-			$.each( layoutOptions, function( na, layoutMode ) {
-				var icon = ( _this.config.layout == layoutMode ) ? 'bullet' : 'radio-on';
-				$ul.append(
-					$.getLineItem(
-						gM( 'mwe-timedtext-layout-' + layoutMode),
-						icon,
-						function() {
-							_this.setLayoutMode( layoutMode );
-						},
-						'layoutRow',
-						{ 'layoutMode' : layoutMode }
-					)
-				);
-			});
-			return $ul;
-		},
 
 		/**
 		* set the layout mode
@@ -939,6 +888,9 @@
 			var _this = this;
 			mw.log("TimedText:: selectTextSource: select lang: " + source.srclang );
 
+			// enable last non-off layout:
+			_this.setLayoutMode( _this.lastLayout );
+			
 			// For some reason we lose binding for the menu ~sometimes~ re-bind
 			this.bindTextButton( this.embedPlayer.getInterface().find('timed-text') );
 
@@ -1069,13 +1021,6 @@
 			// Add any remaning sources that did nto have a category
 			for(var i=0; i < sourcesWithoutCategory.length; i++) {
 				$langMenu.append( sourcesWithoutCategory[i] );
-			}
-
-			//Add in the "add text" to the end of the interface:
-			if( mw.getConfig( 'TimedText.ShowAddTextLink' ) && _this.embedPlayer.apiTitleKey ){
-				$langMenu.append(
-					_this.getLiAddText()
-				);
 			}
 
 			return $langMenu;

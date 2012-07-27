@@ -154,7 +154,7 @@ class TextHandler {
 		*/
 		// Provider name should be the same as the interwiki map
 		// @@todo more testing with this:
-		$interWikiPrefix = ( $providerName == 'local' )? '' : $providerName . ':';
+		$interWikiPrefix = ( $providerName == 'local' ) ? '' : $providerName . ':';
 
 		$langNames = Language::getLanguageNames();
 		if( $data['query'] && $data['query']['allpages'] ){
