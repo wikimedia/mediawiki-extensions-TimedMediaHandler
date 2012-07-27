@@ -19,7 +19,7 @@ class CleanupUnusedTranscodes extends Maintenance {
 		global $wgEnabledTranscodeSet;
 
 		if ( $this->hasOption( "key" ) ) {
-			$where = array( 'transcode_key' =>  $this->getOption( 'key' ) ),
+			$where = array( 'transcode_key' =>  $this->getOption( 'key' ) );
 		} else {
 			$where = 'transcode_key NOT IN ("'. implode('", "', $wgEnabledTranscodeSet ).'")';
 		}
