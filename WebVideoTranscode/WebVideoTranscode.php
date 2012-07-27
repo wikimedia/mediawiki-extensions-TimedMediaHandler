@@ -35,6 +35,7 @@ class WebVideoTranscode {
 	const ENC_OGV_720P = '720p.ogv';
 
 	// WebM profiles:
+	const ENC_WEBM_160P = '160p.webm';
 	const ENC_WEBM_360P = '360p.webm';
 	const ENC_WEBM_480P = '480p.webm';
 	const ENC_WEBM_720P = '720p.webm';
