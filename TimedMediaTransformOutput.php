@@ -163,11 +163,26 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		$firstSource = current( $mediaSources );
+
 		if( !$firstSource['src'] ){
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
 		};
+		
+		// We prefix some source attributes with data- to pass along to the javascript player
+		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate' );
+		foreach( $mediaSources as &$source ){
+			foreach( $source as $attr => $val ){
+				if( in_array( $attr, $prefixedSourceAttr ) ){
+					$source[ 'data-' . $attr ] = $val;
+					unset( $source[ $attr ] );
+				}
+			}
+		}
+		
+		
 		$width = $sizeOverride ? $sizeOverride[0] : $this->width;
+		
 		// Build the video tag output:
 		$s = Xml::tags( 'div' , array(
 				'class' => 'mediaContainer',
@@ -185,7 +200,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )
 			)
 		);
-
 		return $s;
 	}
 

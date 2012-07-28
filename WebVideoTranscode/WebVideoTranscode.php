@@ -263,12 +263,13 @@ class WebVideoTranscode {
 		}
 
 		wfDebug("Get Video sources from remote api for " . $file->getTitle()->getDBKey() . "\n");
-		$data = $file->repo->fetchImageQuery(  array(
+		$query = array(
 			'action' => 'query',
 			'prop' => 'videoinfo',
 			'viprop' => 'derivatives',
-			'title' => $file->getTitle()->getDBKey()
-		) );
+			'titles' => $file->getTitle()->getFullText()
+		);
+		$data = $file->repo->fetchImageQuery( $query );
 
 		if( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )
 			&& $data['warnings']['query']['*'] == "Unrecognized value for parameter 'prop': videoinfo" )
@@ -279,9 +280,9 @@ class WebVideoTranscode {
 		}
 		$sources = array();
 		// Generate the source list from the data response:
-		if( $data['query'] && $data['query']['pages'] ){
+		if( isset( $data['query'] ) && $data['query']['pages'] ){
 			$vidResult = array_shift( $data['query']['pages'] );
-			if( $vidResult['videoinfo'] ){
+			if( isset( $vidResult['videoinfo'] ) ) {
 				$derResult = array_shift( $vidResult['videoinfo'] );
 				$derivatives = $derResult['derivatives'];
 				foreach( $derivatives as $derivativeSource ){
@@ -547,8 +548,6 @@ class WebVideoTranscode {
 	 */
 	static public function getPrimarySourceAttributes( $file, $options = array() ){
 		global $wgLang;
-		// Setup source attribute options
-		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
 		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
 		$bitrate = $file->getHandler()->getBitrate( $file );
@@ -562,19 +561,21 @@ class WebVideoTranscode {
 								$wgLang->formatNum( $file->getHeight() ),
 								$wgLang->formatBitrate( $bitrate )
 							),
-			"{$dataPrefix}shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $metadataType ) ),
-			"{$dataPrefix}width" => $file->getWidth(),
-			"{$dataPrefix}height" => $file->getHeight(),
+			"shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $metadataType ) ),
+			"width" => $file->getWidth(),
+			"height" => $file->getHeight(),
 		);
 
-		if( $bitrate )
-			$source["{$dataPrefix}bandwidth"] = round ( $bitrate );
+		if( $bitrate ){
+			$source["bandwidth"] = round ( $bitrate );
+		}
 
 		// For video include framerate:
 		if( !$file->getHandler()->isAudio( $file ) ){
 			$framerate = $file->getHandler()->getFramerate( $file );
-			if( $framerate )
-				$source[ "{$dataPrefix}framerate" ] = $framerate;
+			if( $framerate ){
+				$source[ "framerate" ] = $framerate;
+			}
 		}
 		return $source;
 	}
@@ -609,15 +610,16 @@ class WebVideoTranscode {
 		return array(
 				'src' => $src,
 				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
-				"{$dataPrefix}shorttitle" => wfMsg('timedmedia-derivative-' . $transcodeKey),
+				"shorttitle" => wfMsg('timedmedia-derivative-' . $transcodeKey),
+				"transcodekey" => $transcodeKey, 
 
 				// Add data attributes per emerging DASH / webTV adaptive streaming attributes
 				// eventually we will define a manifest xml entry point.
-				"{$dataPrefix}width" => $width,
-				"{$dataPrefix}height" => $height,
+				"width" => $width,
+				"height" => $height,
 				// a "ready" transcode should have a bitrate:
-				"{$dataPrefix}bandwidth" => self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate'],
-				"{$dataPrefix}framerate" => $framerate,
+				"bandwidth" => self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate'],
+				"framerate" => $framerate,
 			);
 	}
 

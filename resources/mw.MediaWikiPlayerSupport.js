@@ -271,12 +271,13 @@
 				
 				var $li = $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
 					window.location = addTextPage;
-				})
-				.find( "a" )
-				.attr( {
-					'href': addTextPage,
-					'target' : '_new'
 				});
+				
+				$li.find( "a" )
+					.attr( {
+						'href': addTextPage,
+						'target' : '_new'
+					});
 				$menu.append(
 					$li
 				);
@@ -292,6 +293,35 @@
 				callback();
 			}
 		});
+		
+		$( mw ).bind( 'TimedText_LoadTextSource', function( event, source, callback ){
+			if( !source['mwtitle'] || !source['mwprovider'] ){
+				callback();
+				return ;
+			}
+			// Load via api
+			var apiUrl = mw.getApiProviderURL( source['mwprovider'] );
+			// Get the image page ( cache for 1 hour )
+			var request = {
+				'action': 'parse',
+				'page': source['mwtitle'],
+				'smaxage' : 3600,
+				'maxage' : 3600
+			};
+			mw.getJSON( apiUrl, request, function( data ){
+				if( data && data['parse'] && data['parse']['text'] &&  data['parse']['text']['*'] ){
+					source.loaded = true;
+					source.mimeType = 'text/mw-srt';
+					source.captions = source.getCaptions(  data['parse']['text']['*'] );
+					callback();
+				} else {
+					mw.log( "Error: MediaWiki api error in getting timed text:", data );
+					callback();
+				}
+			});
+		});
+		
+		
 		$( embedPlayer ).bind( 'getShareIframeSrc', function(event, callback){
 			// Check the embedPlayer title key:
 			var title =  $( embedPlayer).attr( 'data-mwtitle');

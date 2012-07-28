@@ -1076,6 +1076,7 @@
 			$textTarget.append(
 				$('<span />')
 					.addClass( 'ttmlStyled' )
+					.css( 'pointer-events', 'auto')
 					.css( this.getCaptionCss() )
 					.html( caption.content )
 			);

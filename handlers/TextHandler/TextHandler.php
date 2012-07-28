@@ -50,18 +50,15 @@ class TextHandler {
 			));
 
 			if( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ){
-
+				// get the ~last~ timed text namespace defined
 				foreach( $data['query']['namespaces'] as $ns ){
 					if( $ns['*'] == 'TimedText' ){
 						$this->remoteNs = $ns['id'];
-						return $this->remoteNs;
 					}
 				}
 			}
-
-			// Look in the main namespace ?
-			// ( probably should instead throw an error )
-			return false;
+			// Return the remote Ns
+			return $this->remoteNs;
 		}
 	}
 
@@ -108,10 +105,11 @@ class TextHandler {
 			return array();
 		}
 		$data = $this->file->getRepo()->fetchImageQuery( $query );
+		$textTracks = $this->getTextTracksFromData( $data );
 		if ( $data && $this->file->repo->descriptionCacheExpiry > 0 ) {
-			$wgMemc->set( $key, $data, $this->file->repo->descriptionCacheExpiry );
+			$wgMemc->set( $key, $textTracks, $this->file->repo->descriptionCacheExpiry );
 		}
-		return $this->getTextTracksFromData( $data );
+		return $textTracks;
 	}
 
 	/**
@@ -154,12 +152,11 @@ class TextHandler {
 		*/
 		// Provider name should be the same as the interwiki map
 		// @@todo more testing with this:
-		$interWikiPrefix = ( $providerName == 'local' ) ? '' : $providerName . ':';
 
 		$langNames = Language::getLanguageNames();
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
-				$subTitle = Title::newFromText( $interWikiPrefix . $page['title'] ) ;
+				$subTitle = Title::newFromText( $page['title'] ) ;
 				$tileParts = explode( '.', $page['title'] );
 				if( count( $tileParts) >= 3 ){
 					$subtitle_extension = array_pop( $tileParts );
@@ -179,10 +176,7 @@ class TextHandler {
 					'type' => 'text/x-srt',
 					// TODO Should eventually add special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-					'src' => $subTitle->getFullURL( array(
-						'action' => 'raw',
-						'ctype' => 'text/x-srt'
-					)),
+					'src' => $this->getFullURL( $page['title'] ),
 					'srclang' =>  $languageKey,
 					'label' => wfMsg('timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
@@ -191,5 +185,45 @@ class TextHandler {
 			}
 		}
 		return $textTracks;
+	}
+	function getFullURL( $pageTitle ){
+		if( $this->file->isLocal() || $this->file->repo instanceof ForeignDBViaLBRepo ){
+			$subTitle =  Title::newFromText( $pageTitle ) ;
+			return $subTitle->getFullURL( array(
+						'action' => 'raw',
+						'ctype' => 'text/x-srt'
+					));
+		} else {
+			$basePageUrl = $this->getRepoPageURL( $pageTitle );
+			$sep = ( strpos( $basePageUrl, '?' ) === false ) ? '?' : '&';
+			return $basePageUrl . $sep . 'action=raw&ctype=text/x-srt';
+		}
+	}
+	/** 
+	 * A generalized version of getDescriptionUrl for prefixed pages rather than Image: prefix
+	 */
+	function getRepoPageURL( $pageTitle ){
+		$repo = $this->file->repo;
+		$encName = wfUrlencode( $pageTitle );
+		if ( !is_null( $repo->descBaseUrl ) ) {
+			# "http://example.com/wiki/Image:"
+			return str_replace( array('Image:', 'File:' ), '', $repo->descBaseUrl ) . $encName;
+		}
+		if ( !is_null( $repo->articleUrl ) ) {
+			# "http://example.com/wiki/$1"
+			#
+			# We use "Image:" as the canonical namespace for
+			# compatibility across all MediaWiki versions.
+			return str_replace( '$1', "$encName", $this->articleUrl );
+		}
+		if ( !is_null( $repo->scriptDirUrl ) ) {
+			# "http://example.com/w"
+			#
+			# We use "Image:" as the canonical namespace for
+			# compatibility across all MediaWiki versions,
+			# and just sort of hope index.php is right. ;)
+			return $repo->makeUrl( "title=$encName" );
+		}
+		return false;
 	}
 }

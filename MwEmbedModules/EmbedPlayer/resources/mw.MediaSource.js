@@ -54,6 +54,8 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 
 	// Used for download attribute on mediawiki
 	'data-mwtitle',
+	// used for setting the api provider for mediawiki
+	'data-mwprovider',
 
 	// Media start time
 	'start',
