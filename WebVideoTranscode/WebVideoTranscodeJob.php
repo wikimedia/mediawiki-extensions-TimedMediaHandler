@@ -513,13 +513,21 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	public function runShellExec( $cmd, &$retval){
-		global $wgEnableNiceBackgroundTranscodeJobs;
+		global $wgTranscodeBackgroundTimeLimit,
+			$wgTranscodeBackgroundMemoryLimit,
+			$wgTranscodeBackgroundSizeLimit,
+			$wgEnableNiceBackgroundTranscodeJobs;
 		// Check if background tasks are enabled
 		if( $wgEnableNiceBackgroundTranscodeJobs === false ){
 			// Dont display shell output
 			$cmd .= ' 2>&1';
 			// Directly execute the shell command:
-			return wfShellExec( $cmd, $retval );
+			$limits = array(
+				"filesize" => $wgTranscodeBackgroundSizeLimit,
+				"memory" => $wgTranscodeBackgroundMemoryLimit,
+				"time" => $wgTranscodeBackgroundTimeLimit
+			);
+			return wfShellExec( $cmd . ' 2>&1', $retval , array(), $limits );
 		}
 
 		$encodingLog = $this->getTargetEncodePath() . '.stdout.log';
