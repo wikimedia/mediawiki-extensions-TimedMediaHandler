@@ -9,21 +9,25 @@ if ( $IP === false ) {
 }
 require_once( "$IP/maintenance/Maintenance.php" );
 
-class CleanupUnusedTranscodes extends Maintenance {
+class CleanupTranscodes extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( "key", "remove all transcodes for given key", false, true );
+		$this->addOption( "all", "remove all transcodes", false, false );
+		$this->mDescription = "cleanup transcodes left over after changing encoding profiles.";
 	}
 	public function execute() {
 		global $wgEnabledTranscodeSet;
 
-		if ( $this->hasOption( "key" ) ) {
+		if ( $this->hasOption( "all" ) ) {
+			$where = array();
+		} else if ( $this->hasOption( "key" ) ) {
 			$where = array( 'transcode_key' =>  $this->getOption( 'key' ) );
 		} else {
 			$where = 'transcode_key NOT IN ("'. implode('", "', $wgEnabledTranscodeSet ).'")';
 		}
-		$this->output( "Cleanup unused transcodes:\n" );
+		$this->output( "Cleanup transcodes:\n" );
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'transcode', '*', $where, __METHOD__ );
 		foreach ( $res as $row ) {
@@ -38,5 +42,5 @@ class CleanupUnusedTranscodes extends Maintenance {
 	}
 }
 
-$maintClass = 'CleanupUnusedTranscodes'; // Tells it to run the class
+$maintClass = 'CleanupTranscodes'; // Tells it to run the class
 require_once( RUN_MAINTENANCE_IF_MAIN );
