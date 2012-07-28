@@ -112,7 +112,7 @@ $wgTimedTextNS = 710;
  */
 $wgEnabledTranscodeSet = array(
 	// Small version for default thumb embeds(220)
-	WebVideoTranscode::ENC_WEBM_160P,
+	WebVideoTranscode::ENC_WEBM_360P,
 
 	// Ogg fallback for IE/cortado
 	WebVideoTranscode::ENC_OGV_480P,
