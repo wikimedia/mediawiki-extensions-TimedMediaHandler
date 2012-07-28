@@ -27,8 +27,9 @@ class TimedTextPage extends Article {
 		
 		// create a title from the current page title in the NS_FILE ns ( create new link ) 
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
+		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
-		if( $srt !== '.srt' &&  $fileTitle->exists() ){
+		if( $srt !== '.srt' && $file && $file->exists() ){
 			$this->doRedirectToPageForm( $fileTitle );
 			return ;
 		}
