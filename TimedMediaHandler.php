@@ -17,6 +17,7 @@ $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebV
 
 // Add the rest transcode right:
 $wgAvailableRights[] = 'transcode-reset';
+$wgAvailableRights[] = 'transcode-status';
 
 
 
@@ -44,6 +45,8 @@ $wgMwEmbedModuleConfig['TimedText.ShowAddTextLink'] = true;
 
 // Which users can restart failed or expired transcode jobs:
 $wgGroupPermissions['sysop']['transcode-reset'] = true;
+// Which users can see Special:TimedMediaHandler
+$wgGroupPermissions['sysop']['transcode-status'] = true;
 
 // How long you have to wait between transcode resets for non-error transcodes
 $wgWaitTimeForTranscodeReset = 3600;
@@ -172,11 +175,18 @@ $wgAPIModules['transcodereset'] = 'ApiTranscodeReset';
 // Localization
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
+// Special Pages
+$wgAutoloadClasses['SpecialTimedMediaHandler'] = "$timedMediaDir/SpecialTimedMediaHandler.php";
 
 // Register all Timed Media Handler hooks right after the cache check.
 // This way if you set a variable like $wgTimedTextNS in LocalSettings.php after you include TimedMediaHandler
 // we can still read the variable values
 $wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
+
+
+# add Special:TimedMediaHandler 
+$wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
+
 
 // Extension Credits
 $wgExtensionCredits['media'][] = array(
