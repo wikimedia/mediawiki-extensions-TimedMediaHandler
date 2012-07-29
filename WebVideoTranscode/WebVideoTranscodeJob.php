@@ -256,19 +256,21 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	function removeFffmpgeLogFiles(){
-		$dir = dirname( $this->getTargetEncodePath() );
-		if (is_dir($dir)) {
-			$dh = opendir($dir);
+		$path =  $this->getTargetEncodePath();
+		$dir = dirname( $path );
+		if ( is_dir( $dir ) ) {
+			$dh = opendir( $dir );
 			if ( $dh ) {
-				while (($file = readdir($dh)) !== false) {
-					$ext = strtolower( pathinfo("$dir/$file", PATHINFO_EXTENSION) );
-					if( $ext == 'log' ){
+				while ( ($file = readdir($dh)) !== false ) {
+					$log_path = "$dir/$file";
+					$ext = strtolower( pathinfo( $log_path, PATHINFO_EXTENSION ) );
+					if( $ext == 'log' && substr( $log_path, 0 , strlen($path)  ) == $path ){
 						wfSuppressWarnings();
-						unlink( "$dir/$file");
+						unlink( $log_path );
 						wfRestoreWarnings();
 					}
 				}
-				closedir($dh);
+				closedir( $dh );
 			}
 		}
 	}
