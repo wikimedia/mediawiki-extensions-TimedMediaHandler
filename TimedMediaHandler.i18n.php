@@ -100,7 +100,17 @@ Are you sure you want to proceed?',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
 	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page',
 	'timedmedia-subtitle-no-subtitles' => 'There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',
-	'timedmediahandler'             => 'TimedMediaHandler',
+
+	//Special:TimedMediaHandler
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg video|$1 Ogg videos}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM video|$1 WebM videos}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcode|$1 transcodes}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 running transcode|$1 running transcodes}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 queued transcode|$1 queued transcodes}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 failed transcode|$1 failed transcodes}}',
+	'timedmedia-file' => 'File',
 );
 
 /** Message documentation (Message documentation)
@@ -173,7 +183,29 @@ Paramaters are:
 * $2 Subtitle key',
 	'timedmedia-subtitle-no-subtitles' => 'Parameters:
 * $1 is a language name.',
-	'timedmediahandler'             => 'title of Special:TimedMediaHandler',
+	//Special:TimedMediaHandler
+	'timedmediahandler' => 'title of Special:TimedMediaHandler',
+	'timedmedia-videos' => 'number of videos on Special:TimedMediaHandler
+Parameters are:
+* $1 number of videos',
+	'timedmedia-ogg-videos' => 'number of Ogg videos on Special:TimedMediaHandler
+Parameters are:
+* $1 number of videos',
+	'timedmedia-webm-videos' => 'number of WebM videos on Special:TimedMediaHandler
+Parameters are:
+* $1 number of videos',
+	'timedmedia-derivative-state-transcodes' => 'numer of transcodes
+Parameters are:
+* $1 number of transcodes',
+	'timedmedia-derivative-state-active' => 'currently active transcoes
+Parameters are:
+* $1 number of transcodes',
+	'timedmedia-derivative-state-queued' => 'queued transcode jobs
+Parameters are:
+* $1 number of transcodes',
+	'timedmedia-derivative-state-failed' => 'failed transcode jobs
+Parameters are:
+* $1 number of transcodes',
 );
 
 /** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
