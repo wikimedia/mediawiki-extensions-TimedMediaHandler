@@ -136,8 +136,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 					'href'=> $this->file->getUrl(),
 					'title' => wfMsg( 'timedmedia-play-media' ),
 					'target' => 'new'
-				), '<b></b>'. // why is the a child tag escaped unless there is an html string prefix?
-				Xml::tags( 'div', array(
+				),
+				Xml::tags( 'span', array(
 						'class' => 'play-btn-large'
 					), '' )
 			)
