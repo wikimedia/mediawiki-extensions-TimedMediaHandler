@@ -139,7 +139,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				),
 				Xml::tags( 'span', array(
 						'class' => 'play-btn-large'
-					), '' )
+					), '&nbsp;' )
 			)
 		);
 	}
