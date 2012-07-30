@@ -317,7 +317,7 @@
 			var $menuButton = this.embedPlayer.getInterface().find( '.timed-text' );
 			// Check if a menu has already been built out for the menu button:
 			if ( $menuButton[0].m ) {
-				$menuButton.menu('show');
+				$menuButton.menu( 'show' );
 			} else {
 				// Bind the text menu:
 				this.buildMenu( true );
@@ -327,7 +327,7 @@
 			var textMenuId = 'textMenuContainer_' + this.embedPlayer.id;
 			if( !$( '#' + textMenuId ).length ){
 				//Setup the menu:
-				$( this.embedPlayer ).append(
+				this.embedPlayer.getInterface().append(
 					$('<div>')
 						.addClass('ui-widget ui-widget-content ui-corner-all')
 						.attr( 'id', textMenuId )
@@ -438,8 +438,13 @@
 						var $textContainer =  _this.getTextMenuContainer();
 						var textHeight = 130;
 						var top = $interface.height() - textHeight - ctrlObj.getHeight() - 6;
-						if( top < 0 )
+						if( top < 0 ){
 							top = 0;
+						}
+						// check for audio
+						if(  _this.embedPlayer.isAudio() ){
+							top = _this.embedPlayer.controlBuilder.getHeight() + 4;
+						}
 						$textContainer.css({
 							'top' : top,
 							'height': textHeight,

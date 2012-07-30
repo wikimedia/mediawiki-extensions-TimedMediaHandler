@@ -1657,18 +1657,18 @@ mw.PlayerControlBuilder.prototype = {
             );
         }
 
-		var controlBar_height = embedPlayer.getInterface().find( '.control-bar' ).height();
-		var overlay_width = (embedPlayer.getWidth() - 30);
-		var overlay_height = (embedPlayer.getHeight() - (controlBar_height + 30));
-		var overlay_top = (( (embedPlayer.getInterface().height() - controlBar_height) - overlay_height) / 2);
-		var overlay_left = ((embedPlayer.getInterface().width() - overlay_width) / 2);
+		var controlBarHeight = embedPlayer.getInterface().find( '.control-bar' ).height();
+		var overlayWidth = (embedPlayer.getWidth() - 30);
+		var overlayHeight = (embedPlayer.getHeight() - (controlBarHeight + 30));
+		var overlayTop = (( (embedPlayer.getInterface().height() - controlBarHeight) - overlayHeight) / 2);
+		var overlayLeft = ((embedPlayer.getInterface().width() - overlayWidth) / 2);
 
 		var overlayMenuCss = {
-			'height' : overlay_height + 'px',
-			'width' : overlay_width + 'px',
+			'height' : overlayHeight + 'px',
+			'width' : overlayWidth + 'px',
 			'position' : 'absolute',
-			'top' : overlay_top + 'px',
-			'left': overlay_left + 'px',
+			'top' : overlayTop + 'px',
+			'left': overlayLeft + 'px',
 			'margin': '0 10px 10px 0',
 			'overflow' : 'auto',
 			'padding' : '4px',
@@ -1684,19 +1684,10 @@ mw.PlayerControlBuilder.prototype = {
 					.append( overlayContent )
 			);
 
-		// Clone the overlay menu css:
-		var shadowCss = jQuery.extend( true, {}, overlayMenuCss );
-		shadowCss['height' ] = 210;
-		shadowCss['width' ] = 260;
-		shadowCss[ 'z-index' ] = 2;
-		var $overlayShadow = $( '<div />' )
-			.addClass('ui-widget-shadow ui-corner-all')
-			.css( shadowCss );
 
 		// Append the overlay menu to the player interface
 		embedPlayer.getInterface().prepend(
 			$overlayMenu
-			//,$overlayShadow
 		)
 		.find( '.overlay-win' )
 		.fadeIn( "slow" );

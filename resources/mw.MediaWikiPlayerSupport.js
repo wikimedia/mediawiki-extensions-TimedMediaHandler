@@ -168,7 +168,14 @@
 
 
 			// Build out the image and credit line
-			var imgWidth = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 120;
+			var imgSize = { };
+			if( embedPlayer.isAudio() ){
+				imgSize.width= 80;
+				imgSize.height = 80;
+			} else{
+				imgSize.width=  ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 120;
+				imgSize.height = imgSize.width * ( embedPlayer.height/ embedPlayer.width )
+			}
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(
 					$('<a/>').attr({
@@ -178,11 +185,7 @@
 						$('<img/>').attr( {
 							'border': 0,
 							'src' : embedPlayer.poster
-						} ).css( {
-							'width' : imgWidth,
-							// needed for IE8 which does not keep aspect in width only sizes
-							'height' : imgWidth * ( embedPlayer.height/ embedPlayer.width )
-						} )
+						} ).css( imgSize )
 					)
 				)
 				.append(

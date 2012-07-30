@@ -430,6 +430,7 @@
 	position:absolute;
 	right:30px;
 	top:48px;
+	overflow:hidden;
 }
 .k-player .credits_box a{
 	color:#666;

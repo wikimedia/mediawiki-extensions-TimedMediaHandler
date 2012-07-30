@@ -71,6 +71,19 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 
 	/**
+	 * @return int
+	 */
+	function getPlayerWidth(){
+		// Check if "video" tag output:
+		if ( $this->isVideo ) {
+			return intval( $this->width );
+		} else {
+			// Give sound files a width of 300px
+			return 300;
+		}
+	}
+
+	/**
 	 * @return string
 	 */
 	function getTagName(){
@@ -90,7 +103,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 
 		// Check if the video is too small to play inline ( instead do a pop-up dialog )
-		if( $this->width <= $wgMinimumVideoPlayerSize && $this->isVideo ){
+		if( $this->getPlayerWidth() <= $wgMinimumVideoPlayerSize && $this->isVideo ){
 			return $this->getImagePopUp();
 		} else {
 			return $this->getHtmlMediaTagOutput();
@@ -121,13 +134,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return Xml::tags( 'div' , array(
 				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 				'class' => 'PopUpMediaTransform',
-				'style' => "width:" . intval( $this->width ) . "px;height:" .
-							intval( $this->height ) . "px",
+				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
+							$this->getPlayerHeight() . "px",
 				'data-videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize() ),
 				),
 			Xml::tags( 'img', array(
-				'style' => "width:" . intval( $this->width ) . "px;height:" .
-							intval( $this->height ) . "px",
+				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
+							$this->getPlayerHeight() . "px",
 				'src' =>  $this->getUrl(),
 			),'')
 			.
@@ -181,7 +194,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		
 		
-		$width = $sizeOverride ? $sizeOverride[0] : $this->width;
+		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		
 		// Build the video tag output:
 		$s = Xml::tags( 'div' , array(
@@ -243,8 +256,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$length = floatval( $this->length  );
 		$offset = floatval( $this->offset );
 
-		$width = $sizeOverride ? $sizeOverride[0] : $this->width;
-		$height = $sizeOverride ? $sizeOverride[1]: $this->height;
+		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
+		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
 
 		// The poster url:
 		$posterUrl = $this->getUrl();

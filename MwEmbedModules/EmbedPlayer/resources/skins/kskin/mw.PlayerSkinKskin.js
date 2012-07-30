@@ -57,7 +57,6 @@ mw.PlayerSkinKskin = {
 			'w' : 0,
 			'o' : function( ctrlObj ) {
 				var embedPlayer = ctrlObj.embedPlayer;
-
 				var $menuOverlay = $( '<div />')
 					.addClass( 'overlay-win k-menu ui-widget-content' )
 					.css( {
@@ -81,6 +80,10 @@ mw.PlayerSkinKskin = {
 							? embedPlayer.getPlayerHeight()
 							: embedPlayer.getPlayerHeight() + ctrlObj.getHeight();
 
+					if( embedPlayer.isAudio() ){
+						topPos = ctrlObj.getHeight() + 4;
+					}		
+							
 					$menuOverlay.css( {
 						'top' : topPos + 'px',
 						'bottom' : null,
