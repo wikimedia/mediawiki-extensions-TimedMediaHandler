@@ -81,8 +81,8 @@ mw.PlayerSkinKskin = {
 							: embedPlayer.getPlayerHeight() + ctrlObj.getHeight();
 
 					if( embedPlayer.isAudio() ){
-						topPos = ctrlObj.getHeight() + 4;
-					}		
+						topPos = ctrlObj.embedPlayer.getInterface().height();
+					}
 							
 					$menuOverlay.css( {
 						'top' : topPos + 'px',

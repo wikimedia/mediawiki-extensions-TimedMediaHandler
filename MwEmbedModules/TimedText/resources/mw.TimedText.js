@@ -1123,14 +1123,18 @@
 		},
 		displayTextTarget: function( $textTarget ){
 			var embedPlayer = this.embedPlayer;
+			var $interface = embedPlayer.getInterface();
+			var controlBarHeight = embedPlayer.controlBuilder.getHeight();
+			
 			if( this.getLayoutMode() == 'off' ){
 				// sync player size per audio player:
 				if( embedPlayer.isAudio() ){
-					embedPlayer.getInterface()
-					.css( 'height', embedPlayer.controlBuilder.getHeight() )
+					$interface.find( '.overlay-win' ).css( 'top', controlBarHeight  );
+					$interface.css( 'height',  controlBarHeight );
 				}
 				return;
 			}
+			
 			if( this.getLayoutMode() == 'ontop' ){
 				this.addTextOverlay(
 					$textTarget
@@ -1143,9 +1147,10 @@
 			
 			// sync player size per audio player:
 			if( embedPlayer.isAudio() && embedPlayer.getInterface().height() < 80 ){
-				embedPlayer.getInterface()
-					.css( 'height', 80 )
-					.find('.captionsOverlay')
+				$interface.find( '.overlay-win' ).css( 'top', 80);
+				$interface.css( 'height', 80 );
+				
+				$interface.find('.captionsOverlay' )
 						.css('bottom', embedPlayer.controlBuilder.getHeight() )
 			}
 			
