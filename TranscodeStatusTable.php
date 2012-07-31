@@ -93,15 +93,18 @@ class TranscodeStatusTable {
 	 * @return string
 	 */
 	public static function getStatusMsg( $file, $state ){
+		global $wgContLang;
 		// Check for success:
 		if( !is_null( $state['time_success'] ) ) {
-			return wfMsgHtml('timedmedia-completed-on', $state['time_success'] );
+			return wfMsgHtml('timedmedia-completed-on',
+				$wgContLang->timeAndDate( $state[ 'time_success' ] ));
 		}
 		// Check for error:
 		if( !is_null( $state['time_error'] ) ){
 			if( !is_null( $state['error'] ) ){
 				$showErrorLink = Linker::link( $file->getTitle(), wfMsg('timedmedia-show-error'), array(
-					'title' => wfMsgHtml('timedmedia-error-on', $state['time_error'] ),
+					'title' => wfMsgHtml('timedmedia-error-on',
+						$wgContLang->timeAndDate( $state[ 'time_error' ] ) ),
 					'class' => 'errorlink',
 					'data-error' => $state['error']
 				));
@@ -114,7 +117,6 @@ class TranscodeStatusTable {
 		// Check for started encoding
 		if( !is_null( $state['time_startwork'] ) ){
 			$timePassed = wfTimestampNow() - $db->timestamp( $state['time_startwork'] );
-
 			// Get the rough estimate of time done: ( this is not very costly considering everything else
 			// that happens in an action=purge video page request )
 			/*$filePath = WebVideoTranscode::getTargetEncodePath( $file, $state['key'] );
