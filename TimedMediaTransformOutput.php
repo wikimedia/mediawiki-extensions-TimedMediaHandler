@@ -9,13 +9,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	var $hashTime = null;
 	var $textHandler = null; // lazy init in getTextHandler
 
-	var $start, $end;
+	var $start, $end, $fillwindow;
 
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
 	function __construct( $conf ){
-		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end', 'width', 'height', 'length', 'offset', 'isVideo', 'path' );
+		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end', 
+			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow' );
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
@@ -199,11 +200,15 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		
 		
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
-		
+		if( $this->fillwindow ){
+			$width = '100%';
+		} else {
+			$width .= 'px';
+		}
 		// Build the video tag output:
 		$s = Xml::tags( 'div' , array(
 				'class' => 'mediaContainer',
-				'style' => 'position:relative;display:block;width:'. $width . 'px'
+				'style' => 'position:relative;display:block;width:'. $width
 			),
 			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
 				// The set of media sources:
@@ -262,6 +267,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
+		
+		if( $this->fillwindow ){
+			$width = '100%';
+			$height = '100%';
+		} else{
+			$width .= 'px';
+			$height .= 'px';
+		}
 
 		// The poster url:
 		$posterUrl = $this->getUrl();
@@ -275,10 +288,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		$mediaAttr = array(
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
-			'style' => "width:{$width}px;height:{$height}px",
-			// also set direct width height attributes for IE html elements to retain properties:
-			'width' => $width,
-			'height' => $height,
+			'style' => "width:{$width};height:{$height}",
 			// Get the correct size:
 			'poster' => $posterUrl,
 

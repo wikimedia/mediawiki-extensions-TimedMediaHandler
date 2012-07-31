@@ -163,7 +163,7 @@
 	width: 24px;
 	height: 16px;
 	position: relative;
-	background: none repeat scroll 0 0 transparent;
+	background: none repeat scroll 0 0 transparent !important;
 	border: medium none;
 }
 
@@ -176,20 +176,20 @@
 	width: 23px;
 	height: 16px;
 	position: relative;
-	background: none repeat scroll 0 0 transparent;
+	background: none repeat scroll 0 0 transparent !important;
 	border: medium none;
 }
 
 .k-player .k-options {
 	border: 1px solid #AAAAAA !important;
-	color: #555555;
+	color: #555555 !important;
 	float: right;
 	height: 21px;
 	margin-top: -2px;
 	margin-right: 0px;
 	width: 50px;
 	float: right;
-	background: none repeat scroll 0 0 transparent;
+	background: none repeat scroll 0 0 transparent !important;
 	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
 	font-size: 11px;
 	text-transform: uppercase;
