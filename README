@@ -5,7 +5,7 @@ When enabled, a player will be automatically embedded in the file description
 page, or any wiki page while still using the same syntax as for images.
 
 * Broad support for input file formats
-* Transcoder to make ogg video at web resolutions when embedding clips in a page
+* Transcoder to make video at web resolutions when embedding clips in a page
 * include support for timed Text per the w3c "track" recommendation
 * use embedPlayer mwEmbed javascript module for playback
 
@@ -17,10 +17,6 @@ LocalSettings.php:
 
 	// TimedMediaHandler
     require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
-
-	// For boxes doing transcoding you should increase the allocated shell
-	// memory::
-	$wgMaxShellMemory = 102400*64;
 
 
 == Running Transcodes ==
@@ -45,7 +41,7 @@ folder (do not forget to run it as the webserver user)::
 == Kaltura HTML5 player library ==
 
 TimedMediaHandler uses the Kaltura HTML5 player library for video playback, it
-rlies on the <video> element as well as JavaScript.
+relies on the <video> element as well as JavaScript.
 
 For more information about the player library visit:
   http://html5video.org/
@@ -65,7 +61,7 @@ was the first version to include WebM support.
 If you are operating system distribution does not include the required ffmpeg software, you can download static builds for multiple platforms at:
   http://firefogg.org/nightly/
 
-Download source: http://ffmpeg.mplayerhq.hu/download.html
+Download source: http://ffmpeg.org/download.html
 
 Static Binary /latest version/ distribution for major OS
 ( with webm encoder and borad decode support )
@@ -114,7 +110,7 @@ will have to specify the FFmpeg binary location with:
 
     $wgFFmpegLocation = '/path/to/ffmpeg';
 
-Default being `/usr/bin/ffmpeg`.
+Default being `/usr/bin/avconv`.
 
 
 == ffmpeg2theora ==
