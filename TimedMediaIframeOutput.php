@@ -53,7 +53,7 @@ class TimedMediaIframeOutput {
 		// Setup the render parm
 		$file = wfFindFile( $title );
 		$params = array(
-			'width' => 400
+			'fillwindow' => true
 		);
 		$videoTransform= $file->transform( $params );
 
@@ -106,13 +106,12 @@ class TimedMediaIframeOutput {
 		mw.setConfig('EmbedPlayer.EnableFullscreen', false );
 		$('#bgimage').remove();
 
+		mw.setConfig( 'EmbedPlayer.IsIframeServer', true );
+		
 		mw.ready(function(){
 			var fitPlayer = function(){
 				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
-				.get(0).resizePlayer({
-					'width' : $(window).width(),
-					'height' : $(window).height()
-				});
+				[0].updateLayout();
 			}
 			// Bind window resize to reize the player:
 			$( window ).resize( fitPlayer );
