@@ -192,8 +192,8 @@ $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
 $wgExtensionCredits['media'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TimedMediaHandler',
-	'author'         => array( 'Michael Dale', 'Tim Starling', 'James Heinrich' ),
+	'author'         => array( 'Michael Dale', 'Tim Starling', 'James Heinrich', 'Jan Gerber' ),
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmedia-desc',
-	'version'		 => '0.2',
+	'version'		 => '0.3',
 );
