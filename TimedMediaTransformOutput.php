@@ -78,8 +78,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->isVideo ) {
 			return intval( $this->width );
 		} else {
-			// Give sound files a width of 300px
-			return 300;
+			// Give sound files a width of 300px ( if unsized ) 
+			if( $this->width == 0 ){
+				return 300;
+			}
+			// else give the target size down to 150 px wide
+			return ( $this->width < 150 ) ? 150: intval( $this->width ) ;
 		}
 	}
 

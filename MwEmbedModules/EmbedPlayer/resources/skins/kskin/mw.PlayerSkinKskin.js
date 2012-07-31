@@ -150,7 +150,7 @@ mw.PlayerSkinKskin = {
 	* Get minimal width for interface overlay
 	*/
 	getOverlayWidth: function(){
-		return ( this.embedPlayer.getPlayerWidth() < 200 )? 200 : this.embedPlayer.getPlayerWidth();
+		return ( this.embedPlayer.getPlayerWidth() < 220 )? 220 : this.embedPlayer.getPlayerWidth();
 	},
 
 	/**

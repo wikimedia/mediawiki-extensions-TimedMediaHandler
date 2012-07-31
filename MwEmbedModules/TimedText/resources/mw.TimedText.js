@@ -1068,6 +1068,7 @@
 			if( this.getLayoutMode() == 'off' ){
 				return ;
 			}
+			
 			// use capId as a class instead of id for easy selections and no conflicts with
 			// multiple players on page.
 			var $textTarget = $('<div />')
@@ -1110,7 +1111,7 @@
 					'height' : this.embedPlayer.getInterface().height()
 				})
 			);
-
+			
 			// Update the style of the text object if set
 			if( caption.styleId ){
 				var capCss = source.getStyleCssById( caption.styleId );
@@ -1121,7 +1122,13 @@
 			$textTarget.fadeIn('fast');
 		},
 		displayTextTarget: function( $textTarget ){
+			var embedPlayer = this.embedPlayer;
 			if( this.getLayoutMode() == 'off' ){
+				// sync player size per audio player:
+				if( embedPlayer.isAudio() ){
+					embedPlayer.getInterface()
+					.css( 'height', embedPlayer.controlBuilder.getHeight() )
+				}
 				return;
 			}
 			if( this.getLayoutMode() == 'ontop' ){
@@ -1133,6 +1140,15 @@
 			} else {
 				mw.log("Possible Error, layout mode not recognized: " + this.getLayoutMode() );
 			}
+			
+			// sync player size per audio player:
+			if( embedPlayer.isAudio() && embedPlayer.getInterface().height() < 80 ){
+				embedPlayer.getInterface()
+					.css( 'height', 80 )
+					.find('.captionsOverlay')
+						.css('bottom', embedPlayer.controlBuilder.getHeight() )
+			}
+			
 		},
 		getDefaultStyle: function(){
 			var defaultBottom = 15;
