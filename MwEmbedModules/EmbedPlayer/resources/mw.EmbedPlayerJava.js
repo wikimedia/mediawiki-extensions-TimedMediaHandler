@@ -77,9 +77,9 @@ mw.EmbedPlayerJava = {
 		if (
 			!mw.isLocalDomain( mediaSrc )
 			||
-			!mw.isLocalDomain( mw.getMwEmbedPath()
+			!mw.isLocalDomain( mw.getMwEmbedPath() )
 			||
-			mw.getConfig( 'relativeCortadoAppletPath' ) === false )
+			mw.getConfig( 'relativeCortadoAppletPath' ) === false
 		){
 			if ( window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ] ) {
 				return window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
