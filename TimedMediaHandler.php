@@ -174,6 +174,10 @@ $wgAPIModules['transcodereset'] = 'ApiTranscodeReset';
 // Localization
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
+// Inlcude module locationlizations 
+$wgExtensionMessagesFiles['MwEmbed.EmbedPlayer'] = "$timedMediaDir/MwEmbedModules/EmbedPlayer/EmbedPlayer.i18n.php";
+$wgExtensionMessagesFiles['MwEmbed.TimedText'] = "$timedMediaDir/MwEmbedModules/EmbedPlayer/EmbedPlayer.i18n.php";
+
 // Special Pages
 $wgAutoloadClasses['SpecialTimedMediaHandler'] = "$timedMediaDir/SpecialTimedMediaHandler.php";
 
