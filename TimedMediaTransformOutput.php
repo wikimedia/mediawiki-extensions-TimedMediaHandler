@@ -295,6 +295,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
 			// it updates the controls attribute of the embed video
 			'controls'=> 'true',
+			// Since we will reload the item with javascript,
+			// tell browser to not load the video before
+			'preload'=>'none',
 		);
 		// MediaWiki uses the kSkin class
 		$mediaAttr['class'] = 'kskin';
