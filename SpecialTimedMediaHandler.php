@@ -63,7 +63,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		if ( $stats[ $state ][ 'total' ] ) {
 			$out->addHTML(
 				"<h2>"
-				. wfMsgHtml( 'timedmedia-derivative-state-' . $state, $stats['transcodes']['total'] )
+				. wfMsgHtml( 'timedmedia-derivative-state-' . $state, $stats[ $state ]['total'] )
 				. "</h2>"
 			);
 			foreach( $wgEnabledTranscodeSet as $key ) {
