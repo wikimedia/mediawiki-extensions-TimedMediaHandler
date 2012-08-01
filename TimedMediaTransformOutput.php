@@ -313,11 +313,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if( $this->file->isLocal() ){
 			$apiProviderName = 'local';
 		} else {
-			// Set the api provider name to "commons" for shared ( instant commons convention )
-			// ( provider names should have identified the provider
-			// instead of the provider type "shared" )
+			// Set the api provider name to "wikimediacommons" for shared ( instant commons convention )
+			// (provider names should have identified the provider instead of the provider type "shared")
 			$apiProviderName = $this->file->getRepoName();
-			if( $apiProviderName == 'shared' || $apiProviderName == 'wikimediacommons' ) {
+			if( $apiProviderName == 'shared' ) {
 				$apiProviderName = 'wikimediacommons';
 			}
 		}

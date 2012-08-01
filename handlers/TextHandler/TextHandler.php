@@ -178,22 +178,10 @@ class TextHandler {
 
 		$textTracks = array();
 		$providerName = $this->file->repo->getName();
-		// For a while commons repo in the mediaWiki manual was called "shared"
-		// ( we need commons to be named "commons" so that the javascript api provider names match up )
-		//disabled for now, this breaks embedding commons on wikipedia
-		/*
-		if( $providerName == 'shared' || $providerName == 'wikimediacommons' ){
-			// We could alternatively check $this->file->repo->mApiBase
-			foreach( $wgForeignFileRepos as $repo ){
-				if( $repo['name'] ==  $this->file->repo->getName()
-						&&
-					parse_url( $repo['apibase'] , PHP_URL_HOST ) == 'commons.wikimedia.org'
-				){
-					$providerName = 'commons';
-				}
-			}
+		// commons is called shared in production. normalize it to wikimediacommons
+		if( $providerName == 'shared' ){
+			$providerName = 'wikimediacommons';
 		}
-		*/
 		// Provider name should be the same as the interwiki map
 		// @@todo more testing with this:
 
@@ -231,12 +219,13 @@ class TextHandler {
 		return $textTracks;
 	}
 	function getFullURL( $pageTitle ){
-		if( $this->file->isLocal() || $this->file->repo instanceof ForeignDBViaLBRepo ){
+		if( $this->file->isLocal() ) {
 			$subTitle =  Title::newFromText( $pageTitle ) ;
 			return $subTitle->getFullURL( array(
 						'action' => 'raw',
 						'ctype' => 'text/x-srt'
 					));
+		//} else if ( $this->file->repo instanceof ForeignDBViaLBRepo ){
 		} else {
 			$basePageUrl = $this->getRepoPageURL( $pageTitle );
 			$sep = ( strpos( $basePageUrl, '?' ) === false ) ? '?' : '&';
@@ -249,6 +238,14 @@ class TextHandler {
 	function getRepoPageURL( $pageTitle ){
 		$repo = $this->file->repo;
 		$encName = wfUrlencode( $pageTitle );
+		if ( !is_null( $repo->scriptDirUrl ) ) {
+			# "http://example.com/w"
+			#
+			# We use "Image:" as the canonical namespace for
+			# compatibility across all MediaWiki versions,
+			# and just sort of hope index.php is right. ;)
+			return $repo->makeUrl( "title=$encName" );
+		}
 		if ( !is_null( $repo->descBaseUrl ) ) {
 			# "http://example.com/wiki/Image:"
 			return str_replace( array('Image:', 'File:' ), '', $repo->descBaseUrl ) . $encName;
@@ -259,14 +256,6 @@ class TextHandler {
 			# We use "Image:" as the canonical namespace for
 			# compatibility across all MediaWiki versions.
 			return str_replace( '$1', "$encName", $this->articleUrl );
-		}
-		if ( !is_null( $repo->scriptDirUrl ) ) {
-			# "http://example.com/w"
-			#
-			# We use "Image:" as the canonical namespace for
-			# compatibility across all MediaWiki versions,
-			# and just sort of hope index.php is right. ;)
-			return $repo->makeUrl( "title=$encName" );
 		}
 		return false;
 	}
