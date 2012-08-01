@@ -116,7 +116,7 @@ class TranscodeStatusTable {
 		$db = wfGetDB( DB_SLAVE );
 		// Check for started encoding
 		if( !is_null( $state['time_startwork'] ) ){
-			$timePassed = wfTimestampNow() - $db->timestamp( $state['time_startwork'] );
+			$timePassed = time() - wfTimestamp ( TS_UNIX, $state['time_startwork'] );
 			// Get the rough estimate of time done: ( this is not very costly considering everything else
 			// that happens in an action=purge video page request )
 			/*$filePath = WebVideoTranscode::getTargetEncodePath( $file, $state['key'] );
@@ -134,7 +134,7 @@ class TranscodeStatusTable {
 		}
 		// Check for job added ( but not started encoding )
 		if( !is_null( $state['time_addjob'] ) ){
-			$timePassed =  wfTimestampNow() - $db->timestamp( $state['time_addjob'] ) ;
+			$timePassed = time() - wfTimestamp ( TS_UNIX, $state['time_addjob'] );
 			return wfMsgHtml('timedmedia-in-job-queue', TimedMediaHandler::getTimePassedMsg( $timePassed ) );
 		}
 		// Return unknown status error:
