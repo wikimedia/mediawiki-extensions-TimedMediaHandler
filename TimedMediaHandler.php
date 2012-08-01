@@ -97,6 +97,10 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
 // Note commons pre-dates TimedMediaHandler and should set $wgTimedTextNS = 102 in LocalSettings.php
 $wgTimedTextNS = 710;
 
+// Set TimedText namespace for ForeignDBViaLBRepo on a per wikiID basis
+// $wgTimedTextForeignNamespaces = array( 'commonswiki' => 102 );
+$wgTimedTextForeignNamespaces = array();
+
 /**
  * Default enabled transcodes
  *
