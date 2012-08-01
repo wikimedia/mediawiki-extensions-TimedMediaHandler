@@ -62,7 +62,7 @@ $messages['en'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura player',
 	'mwe-embedplayer-ogg-player-selected' => '(selected)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For a better video playback experience we recommend a [$1 HTML5 video browser].',
+	'mwe-embedplayer-for_best_experience' => 'For a better video playback experience we recommend a [$1 html5 video browser].',
 	'mwe-embedplayer-download-warn' => 'No compatible in browser player was detected, for in browser playback please download the [$1 latest Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Press <b>F11</b> toggle <i>web browser</i> fullscreen',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Press <b>shift ⌘ F</b> to toggle fullscreen',
@@ -454,11 +454,13 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Metalhead64
  */
 $messages['de'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
 	'mwe-embedplayer-credit-date' => 'Datum: $1',
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
+	'mwe-embedplayer-nocredits' => 'Keine Danksagungen verfügbar',
 	'mwe-embedplayer-loading_plugin' => 'lade Plugin …',
 	'mwe-embedplayer-select_playback' => 'Wiedergabeeinstellungen ändern',
 	'mwe-embedplayer-link_back' => 'Link zurück',
@@ -509,7 +511,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-Player',
 	'mwe-embedplayer-ogg-player-selected' => '(ausgewählt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Für eine bessere Videowiedergabe wird die [$1 neueste Version von Mozilla Firefox] empfohlen.',
+	'mwe-embedplayer-for_best_experience' => 'Für eine bessere Videowiedergabe wird ein [$1 HTML5-Videobrowser] empfohlen.',
 	'mwe-embedplayer-download-warn' => 'Beim Browser wurde ein inkompatibles Wiedergabeprogramm erkannt. Für eine im Browser eingebettete Wiedergabe wird die Nutzung der [$1 neuesten Version von Mozilla Firefox] empfohlen.',
 	'mwe-embedplayer-fullscreen-tip' => 'Die Taste <b>F11</b> drücken, um zum Vollbildmodus des <i>Webbrowsers</i> umzuschalten.',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Die Tasten <b>UMSCHALT ⌘ F</b> drücken, um zum Vollbildmodus des <i>Webbrowsers</i> umzuschalten.',
@@ -2855,6 +2857,7 @@ $messages['tl'] = array(
 	'mwe-embedplayer-credit-title' => 'Pamagat: $1',
 	'mwe-embedplayer-credit-date' => 'Petsa: $1',
 	'mwe-embedplayer-credit-author' => 'May-akda: $1',
+	'mwe-embedplayer-nocredits' => 'Walang makuhang mga pagbanggit',
 	'mwe-embedplayer-loading_plugin' => 'Ikinakarga ang pampasak ...',
 	'mwe-embedplayer-select_playback' => 'Itakda ang nais sa pagpapaandar',
 	'mwe-embedplayer-link_back' => 'Ikawing pabalik',
@@ -2900,11 +2903,12 @@ $messages['tl'] = array(
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Panlahatang pamasak ng Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Pampasak ng QuickTime',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'ActiveX ng QuickTime',
+	'mwe-embedplayer-ogg-player-cortado' => 'Java Cortado',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Pampaandar na Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Pampaandar ng Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(napili na)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para sa mas mainam na karanasan ng pagpapaandar ng bidyo iminumungkahi namin ang [$1 pinakabagong Firefox].',
+	'mwe-embedplayer-for_best_experience' => 'Para sa mas mainam na karanasan ng pagpapaandar ng bidyo iminumungkahi namin ang [$1 pantingin-tingin ng bidyo na html5].',
 	'mwe-embedplayer-download-warn' => 'Walang napansin na kaugmang pampaandar ng pantingin-tingin, para sa pag-uulit ng pagpapaandar ng pantingin-tingin ikargang paibaba ang [$1 pinakahuling Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Pindutin ang <b>F11</b> pampalit-lipat ng <i>pantingin-tingin sa web</i> na buo ang panooran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Pindutin ang <b>shift ⌘ F</b> upang mapalitan at malipatan ang buong panooran',

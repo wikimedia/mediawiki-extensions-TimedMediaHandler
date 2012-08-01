@@ -291,6 +291,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Metalhead64
  * @author Purodha
  */
 $messages['de'] = array(
@@ -317,7 +318,7 @@ $messages['de'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Hochladen ist abgeschlossen',
 	'mwe-timedtext-back-btn' => 'Zurück',
 	'mwe-timedtext-choose-text' => 'Text auswählen',
-	'mwe-timedtext-upload-timed-text' => 'Untertitel hochladen',
+	'mwe-timedtext-upload-timed-text' => 'Untertitel hinzufügen',
 	'mwe-timedtext-loading-text-edit' => 'Lade den Editor für „Timed Text“',
 	'mwe-timedtext-search' => 'Suche den Videoclip',
 	'mwe-timedtext-layout' => 'Ausrichtung',
@@ -1807,7 +1808,7 @@ $messages['tl'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Natapos na ang pagkakargang papaitaas',
 	'mwe-timedtext-back-btn' => 'Bumalik',
 	'mwe-timedtext-choose-text' => 'Pumili ng teksto',
-	'mwe-timedtext-upload-timed-text' => 'Ikargang paitaas ang kabahaging mga pamagat',
+	'mwe-timedtext-upload-timed-text' => 'Magdagdag ng kabahaging mga pamagat',
 	'mwe-timedtext-loading-text-edit' => 'Ikinakarga ang patnugot ng inoorasang teksto',
 	'mwe-timedtext-search' => 'Maghanap ng putol',
 	'mwe-timedtext-layout' => 'Kaayusan',

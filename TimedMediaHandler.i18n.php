@@ -183,7 +183,6 @@ Paramaters are:
 * $2 Subtitle key',
 	'timedmedia-subtitle-no-subtitles' => 'Parameters:
 * $1 is a language name.',
-	//Special:TimedMediaHandler
 	'timedmediahandler' => 'title of Special:TimedMediaHandler',
 	'timedmedia-videos' => 'number of videos on Special:TimedMediaHandler
 Parameters are:
@@ -706,12 +705,25 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-360p.ogv' => 'Webstreamingfähige Ogg-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
+	'timedmedia-derivative-desc-160p.webm' => 'Webstreambares WebM (160P)',
 	'timedmedia-derivative-desc-360p.webm' => 'Webstreamingfähige WebM-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
+	'timedmedia-subtitle-new' => 'Neue Übersetzung erstellen oder vorhandene bearbeiten',
+	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:wp:de:ISO 639|Sprachcode]] und klicke auf die Schaltfläche '''Los'''",
+	'timedmedia-subtitle-new-go' => 'Los',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
 	'timedmedia-subtitle-no-subtitles' => 'Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|Ein Video|$1 Videos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|Ein Ogg-Video|$1 Ogg-Videos}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|Ein WebM-Video|$1 WebM-Videos}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|Eine laufende Umschlüsselung|$1 laufende Umschlüsselungen}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
+	'timedmedia-file' => 'Datei',
 );
 
 /** Zazaki (Zazaki)
@@ -2203,7 +2215,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'timedmedia-desc' => 'Haandelt veur Ogg Theora- en Vorbis-bestaanden, mit JavaScript-mediaspeuler',
+	'timedmedia-desc' => 'Haandelt audio, video en ondertitels aof mit ondersteuning veur WebM, Ogg Theora, Vorbis en srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 geluudsbestaand, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videobestaand, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediabestaand, $2',
@@ -3099,12 +3111,25 @@ Nakatitiyak ka ba na nais mong magpatuloy?',
 	'timedmedia-derivative-desc-360p.ogv' => 'Mapapaanod sa Web na bidyo ng Ogg (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Mapapaanod sa Web na bidyo ng Ogg (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Mataas na uri ng bidyo ng Ogg na maikakargang paibaba (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'Mapapaanod sa Web na WebM (160P)',
 	'timedmedia-derivative-desc-360p.webm' => 'Mapapaanod sa Web na WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Mapapaanod sa Web na WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Mataas na uri ng WebM na maikakargang paibaba (720P)',
+	'timedmedia-subtitle-new' => 'Lumikha ng bagong salinwika o baguhin ang umiiral na',
+	'timedmedia-subtitle-new-desc' => "Palitan ang bahaging '''LANG''' ng iyong [[:en:ISO 639|kodigo ng wika]] at pindutin ang pindutang '''Gawin'''",
+	'timedmedia-subtitle-new-go' => 'Gawin',
 	'timedmedia-subtitle-language' => '$1 ($2) kabahaging mga pamagat',
 	'timedmedia-subtitle-no-video' => 'Walang bidyo na may kaugnayan sa pangkasalukuyang pahina ng kabahaging pamagat',
 	'timedmedia-subtitle-no-subtitles' => 'Kasalukuyang walang mga kabahaging pamagat sa loob ng $1 para sa bidyong ito, maaari mong [{{fullurl:{{FULLPAGENAME}}|action=edit}} baguhin ang pahinang ito] upang maidagdag ang mga ito',
+	'timedmediahandler' => 'Inoorasang Panghawak ng Midya',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 bidyo|$1 mga bidyo}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 bidyo ng Ogg|$1 mga bidyo ng Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 bidyo ng WebM|$1 mga bidyo ng WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transkodigo|$1 mga transkodigo}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 tumatakbong transkodigo|$1 tumatakbong mga transkodigo}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 nakapilang transkodigo|$1 nakapilang mga transkodigo}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nabigong transkodigo|$1 nabigong mga transkodigo}}',
+	'timedmedia-file' => 'Talaksan',
 );
 
 /** Turkish (Türkçe)
