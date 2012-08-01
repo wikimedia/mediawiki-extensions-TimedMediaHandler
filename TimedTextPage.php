@@ -79,11 +79,14 @@ class TimedTextPage extends Article {
 			)
 		);
 		$wgOut->addScript( 
-			Html::InlineScript( '$("#timedmedia-tt-go").click(function(){' .
-					'var articlePath = mw.config.get( "wgArticlePath" );' .
-					'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
-					'window.location = articlePath.replace(/\$1/, $( "#timedmedia-tt-input" ).val() + ' . 
-					' paramSep + "action=edit" )  ' .
+			Html::InlineScript(
+				'$(function() {' .
+					'$("#timedmedia-tt-go").click(function(){' .
+						'var articlePath = mw.config.get( "wgArticlePath" );' .
+						'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
+						'window.location = articlePath.replace(/\$1/, $( "#timedmedia-tt-input" ).val() + ' . 
+						' paramSep + "action=edit" )  ' .
+					'});' .
 				'});'
 			)
 		);
