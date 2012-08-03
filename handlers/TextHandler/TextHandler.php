@@ -200,7 +200,7 @@ class TextHandler {
 				if( !isset( $langNames[ $languageKey ] ) ){
 					continue;
 				}
-				$namespacePrefix = ( $subTitle->getNsText() )? $subTitle->getNsText() . ':' : '';
+				$namespacePrefix = "TimedText:";
 				$textTracks[] = array(
 					'kind' => 'subtitles',
 					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
