@@ -705,7 +705,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-360p.ogv' => 'Webstreamingfähige Ogg-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webstreamingfähige Ogg-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Qualitativ hochwertige Ogg-Videodatei (720p)',
-	'timedmedia-derivative-desc-160p.webm' => 'Webstreambares WebM (160P)',
+	'timedmedia-derivative-desc-160p.webm' => 'Webstreamingfähige WebM-Videodatei (160p)',
 	'timedmedia-derivative-desc-360p.webm' => 'Webstreamingfähige WebM-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
@@ -824,6 +824,7 @@ $messages['eo'] = array(
  * @author Aleator
  * @author Armando-Martin
  * @author Crazymadlover
+ * @author Jewbask
  * @author Muro de Aguas
  * @author Remember the dot
  * @author Sanbec
@@ -889,6 +890,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
 	'timedmedia-subtitle-no-subtitles' => 'Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos',
+	'timedmedia-file' => 'Archivo',
 );
 
 /** Estonian (eesti)
@@ -1183,12 +1185,25 @@ Está seguro de querer continuar?',
 	'timedmedia-derivative-desc-360p.ogv' => 'Vídeo Ogg para a web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Vídeo Ogg para a web (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Vídeo Ogg de alta calidade que se pode descargar (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM para a web (160P)',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM para a web (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM para a web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta calidade que se pode descargar (720P)',
+	'timedmedia-subtitle-new' => 'Crear unha nova tradución ou editar a actual',
+	'timedmedia-subtitle-new-desc' => "Substitúa o texto '''LANG''' co [[:gl:ISO 639|código da súa lingua]] e prema no botón \"'''Continuar'''\"",
+	'timedmedia-subtitle-new-go' => 'Continuar',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Non hai ningún vídeo asociado coa páxina de subtítulos actual',
 	'timedmedia-subtitle-no-subtitles' => 'Actualmente non hai subtítulos en $1 para este vídeo; pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] para engadilos',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 vídeo WebM|$1 vídeos WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificacións}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transcodificación activa|$1 transcodificacións activas}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificacións}} na cola',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificacións fallidas}}',
+	'timedmedia-file' => 'Ficheiro',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1441,12 +1456,21 @@ Chceš woprawdźe pokročować?',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg-widejo (360p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg-widejo (480p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-720p.ogv' => 'Sćahujomne Ogg-widejo wysokeje kwality (720p)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM-widejo (160p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM-widejo (360p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM-widejo (480p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-720p.webm' => 'Sćahujomna WebM-dataja wysokeje kwality (720p)',
+	'timedmedia-subtitle-new' => 'Nowy přełožk wutworić abo eksistowacy wobdźěłać',
+	'timedmedia-subtitle-new-desc' => "Wuměń  dźěl '''LANG''' přez twój [[:en:ISO 639|rěčny kod]] a klikń na tłóčatko '''W porjadku'''",
+	'timedmedia-subtitle-new-go' => 'W porjadku',
 	'timedmedia-subtitle-language' => '$1 ($2) podtitule',
 	'timedmedia-subtitle-no-video' => 'Widejo zwjazane z aktuelnej stronu podtitulow njeje',
 	'timedmedia-subtitle-no-subtitles' => 'Tuchwilu podtitule w $1 zu tute widejo njejsu, móžeš [{{fullurl:{{FULLPAGENAME}}|action=edit}} tutu stronu wobdźěłać], zo by je přidał',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 widejo|$1 wideji|$1 wideja|$1 widejow}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-widejo|$1 Ogg-wideji|$1 Ogg-wideja|$1 Ogg-widejow}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-widejo|$1 WebM-wideji|$1 WebM-wideja|$1 WebM-widejow}}',
+	'timedmedia-file' => 'Dataja',
 );
 
 /** Hungarian (magyar)
@@ -2059,15 +2083,29 @@ $messages['mk'] = array(
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg-видео за емитување (480 пиксели)',
 	'timedmedia-derivative-720p.ogv' => 'Ogg 720п',
 	'timedmedia-derivative-desc-720p.ogv' => 'Висококвалитетно Ogg-видео за преземање (720п)',
+	'timedmedia-derivative-160p.webm' => 'WebM 160п',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM за каналско емитување (160п)',
 	'timedmedia-derivative-360p.webm' => 'WebM 360п',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM за каналско емитување (360п)',
 	'timedmedia-derivative-480p.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-derivative-desc-480p.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-derivative-720p.webm' => 'WebM 720п',
 	'timedmedia-derivative-desc-720p.webm' => 'Висококвалитетен WebM за преземање (720п)',
+	'timedmedia-subtitle-new' => 'Создај нов превод или измени постоечки',
+	'timedmedia-subtitle-new-desc' => "Заменете го делот '''LANG''' со вашиот [[:en:ISO 639|јазичен код]] и стиснете на копчето „'''Оди'''“",
+	'timedmedia-subtitle-new-go' => 'Оди',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
 	'timedmedia-subtitle-no-video' => 'Нема видеоснимка поврзана со тековната страница со титлови',
 	'timedmedia-subtitle-no-subtitles' => 'Моментално нема $1 титлови за оваа видеоснимка. Можете да ги додадете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредувајќи ја страницава]',
+	'timedmediahandler' => 'ПоставувачНаУсогласениСнимки',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 видео|$1 видеа}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-видео|$1 Ogg-видеа}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-видео|$1 WebM-видеа}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 прекодирање|$1 прекодирања}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 прекодирање во тек|$1 прекодирања во тек}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 прекодирање во редица на чекање|$1 прекодирања во редица на чекање}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}',
+	'timedmedia-file' => 'Податотека',
 );
 
 /** Malayalam (മലയാളം)
@@ -2956,6 +2994,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (svenska)
+ * @author Ainali
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Rotsee
@@ -2971,10 +3010,18 @@ $messages['sv'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg multiplexad ljud/video-fil, $1, längd $2, $4×$5 pixel, $3 totalt',
 	'timedmedia-ogg-long-general' => 'Ogg mediafil, längd $2, $3',
 	'timedmedia-ogg-long-error' => 'Felaktig Ogg-fil: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
 	'timedmedia-more' => 'Mer...',
 	'timedmedia-dismiss' => 'Stäng',
 	'timedmedia-download' => 'Ladda ner filen',
+	'timedmedia-play-media' => 'Spela upp media',
 	'timedmedia-desc-link' => 'Om filen',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Okänd status',
+	'timedmedia-actions' => 'Åtgärder',
+	'timedmedia-percent-done' => 'Ungefär $1% klar',
+	'timedmedia-show-error' => 'Visa fel',
+	'timedmedia-file' => 'Fil',
 );
 
 /** Telugu (తెలుగు)

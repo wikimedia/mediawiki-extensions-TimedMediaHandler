@@ -326,7 +326,7 @@ $messages['de'] = array(
 	'mwe-timedtext-layout-below' => 'Unterhalb des Videoclips',
 	'mwe-timedtext-layout-off' => 'Untertitel ausblenden',
 	'mwe-timedtext-loading-text' => 'Text wird geladen …',
-	'mwe-timedtext-textcat-cc' => 'Beschreibungen (Video)',
+	'mwe-timedtext-textcat-cc' => 'Legenden',
 	'mwe-timedtext-textcat-sub' => 'Untertitel',
 	'mwe-timedtext-textcat-tad' => 'Beschreibung (Audio)',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
@@ -548,6 +548,7 @@ $messages['fi'] = array(
 /** French (français)
  * @author IAlex
  * @author Peter17
+ * @author Tititou36
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -574,7 +575,7 @@ $messages['fr'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Téléversement effectué',
 	'mwe-timedtext-back-btn' => 'Arrière',
 	'mwe-timedtext-choose-text' => 'Choisissez le texte',
-	'mwe-timedtext-upload-timed-text' => 'Importer des sous-titres',
+	'mwe-timedtext-upload-timed-text' => 'Ajouter des sous-titres',
 	'mwe-timedtext-loading-text-edit' => "Chargement de l'éditeur de texte synchronisé",
 	'mwe-timedtext-search' => 'Recherche un clip',
 	'mwe-timedtext-layout' => 'Disposition',
@@ -684,7 +685,7 @@ $messages['gl'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Non cargar máis',
 	'mwe-timedtext-back-btn' => 'Volver',
 	'mwe-timedtext-choose-text' => 'Escolla o texto',
-	'mwe-timedtext-upload-timed-text' => 'Cargar subtítulos',
+	'mwe-timedtext-upload-timed-text' => 'Engadir subtítulos',
 	'mwe-timedtext-loading-text-edit' => 'Cargando o editor de texto sincronizado',
 	'mwe-timedtext-search' => 'Buscar un vídeo',
 	'mwe-timedtext-layout' => 'Disposición',
@@ -857,7 +858,7 @@ $messages['hsb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Nahraće skónčene',
 	'mwe-timedtext-back-btn' => 'Wróćo',
 	'mwe-timedtext-choose-text' => 'Tekst wubrać',
-	'mwe-timedtext-upload-timed-text' => 'Podtitule nahrać',
+	'mwe-timedtext-upload-timed-text' => 'Podtitule přidać',
 	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizowany tekst so startuje',
 	'mwe-timedtext-search' => 'Klip pytać',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
@@ -1223,7 +1224,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Готово со подигање',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-choose-text' => 'Одберете текст',
-	'mwe-timedtext-upload-timed-text' => 'Подигни титлови',
+	'mwe-timedtext-upload-timed-text' => 'Стави титлови',
 	'mwe-timedtext-loading-text-edit' => 'Ги вчитувам уредникот на синхронизиран текст',
 	'mwe-timedtext-search' => 'Пребарај снимка',
 	'mwe-timedtext-layout' => 'Распоред',
