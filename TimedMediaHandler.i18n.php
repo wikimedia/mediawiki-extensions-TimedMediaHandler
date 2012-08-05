@@ -709,8 +709,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-360p.webm' => 'Webstreamingfähige WebM-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
-	'timedmedia-subtitle-new' => 'Neue Übersetzung erstellen oder vorhandene bearbeiten',
-	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:wp:de:ISO 639|Sprachcode]] und klicke auf die Schaltfläche '''Los'''",
+	'timedmedia-subtitle-new' => 'Neue Übersetzung machen oder vorhandene bearbeiten',
+	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:en:ISO 639|Sprachcode]] und klicke auf die Schaltfläche '''Los'''",
 	'timedmedia-subtitle-new-go' => 'Los',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
@@ -732,7 +732,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
  * @author Xoser
  */
 $messages['diq'] = array(
-	'timedmedia-desc' => 'Qe dosyayanê Ogg Theora u Vorbisî pê JavaScriptî qulp',
+	'timedmedia-desc' => 'Qen dê dosyayan dê WebM, Ogg Theora, Vorbis, srt rêxo desti veng dekerdış u nuşte ronayış',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 dosyaya vengi, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 dosyaya filmi, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 dosyaya medyayi, $2',
@@ -745,6 +745,14 @@ $messages['diq'] = array(
 	'timedmedia-dismiss' => 'Racnê',
 	'timedmedia-download' => 'dosya biyar war',
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
+	'timedmedia-days' => '{{PLURAL:$1|roca|$1 rocan}}',
+	'timedmedia-hours' => '{{PLURAL:$1|seata|$1 seatan}}',
+	'timedmedia-minutes' => '{{PLURAL: $1|deqe|$1 deqey}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|saniye|$1 saniyeyan}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 u $4',
+	'timedmedia-time-3-measurements' => '$1, $2 u $3',
+	'timedmedia-time-2-measurements' => '$1 u $2',
+	'timedmedia-subtitle-new-go' => 'Şo',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -2332,15 +2340,28 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-desc-480p.ogv' => 'Te webstreamen Ogg video (480P)',
 	'timedmedia-derivative-720p.ogv' => 'Ogg 720P',
 	'timedmedia-derivative-desc-720p.ogv' => 'Hoge kwaliteit downloadbare Ogg video (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'Web streamable WebM (160P)',
 	'timedmedia-derivative-360p.webm' => 'WebM 360P',
 	'timedmedia-derivative-desc-360p.webm' => 'Web streamable WebM (360P)',
 	'timedmedia-derivative-480p.webm' => 'WebM 480P',
 	'timedmedia-derivative-desc-480p.webm' => 'Via web te streamen WebM (480P)',
 	'timedmedia-derivative-720p.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc-720p.webm' => 'Hoge kwaliteit downloadbare WebM (720P)',
+	'timedmedia-subtitle-new' => 'Nieuw vertaling maken of bestaande bewerken',
+	'timedmedia-subtitle-new-desc' => "Vervang het deel '''LANG''' door uw [[:nl:ISO 639|taalcode]] en klik op de knop '''OK'''",
+	'timedmedia-subtitle-new-go' => 'OK',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',
 	'timedmedia-subtitle-no-subtitles' => 'Er zijn op het moment geen ondertitels in het $1 voor deze video. U kunt [{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken] om ze toe te voegen',
+	'timedmediahandler' => 'Timed Media Handler',
+	'timedmedia-videos' => "{{PLURAL:$1|één video|$1 video's}}",
+	'timedmedia-ogg-videos' => "{{PLURAL:$1|één Oggvideo|$1 Oggvideo's}}",
+	'timedmedia-webm-videos' => "{{PLURAL:$1|één WebM-video|$1 WebM-video's}}",
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|één transcodering|$1 transcoderingen}}',
+	'timedmedia-derivative-state-active' => '{PLURAL:$1|één lopende transcodering|$1 lopende transcoderingen}}',
+	'timedmedia-derivative-state-queued' => '{PLURAL:$1|één transcodering|$1 transcoderingen}} in de wachtrij',
+	'timedmedia-derivative-state-failed' => '{PLURAL:$1|één mislukte transcodering|$1 mislukte transcoderingen}}',
+	'timedmedia-file' => 'Bestand',
 );
 
 /** Norwegian Nynorsk (‪norsk (nynorsk)‬)
@@ -3177,6 +3198,13 @@ Nakatitiyak ka ba na nais mong magpatuloy?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 nakapilang transkodigo|$1 nakapilang mga transkodigo}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nabigong transkodigo|$1 nabigong mga transkodigo}}',
 	'timedmedia-file' => 'Talaksan',
+);
+
+/** толышә зывон (толышә зывон)
+ * @author Erdemaslancan
+ */
+$messages['tly'] = array(
+	'timedmedia-subtitle-new-go' => 'Давардеј',
 );
 
 /** Turkish (Türkçe)

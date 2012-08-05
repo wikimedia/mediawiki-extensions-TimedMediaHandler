@@ -357,6 +357,13 @@ $messages['de-formal'] = array(
 	'mwe-timedtext-upload-text-desc-help-review' => 'Sehen Sie den Text durch und bearbeiten Sie ihn gegebenenfalls, bevor Sie ihn mit einem Klick auf Hochladen hinzufügen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'mwe-timedtext-stage-sync' => 'Sync',
+);
+
 /** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
@@ -384,7 +391,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Nagraśe skóńcone',
 	'mwe-timedtext-back-btn' => 'Slědk',
 	'mwe-timedtext-choose-text' => 'Tekst wubraś',
-	'mwe-timedtext-upload-timed-text' => 'Pódtitele nagraś',
+	'mwe-timedtext-upload-timed-text' => 'Pódtitele pśidaś',
 	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizěrowany tekst se startujo',
 	'mwe-timedtext-search' => 'Klip pytaś',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
@@ -1324,7 +1331,7 @@ $messages['nl'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Upload afgerond',
 	'mwe-timedtext-back-btn' => 'Terug',
 	'mwe-timedtext-choose-text' => 'Tekst kiezen',
-	'mwe-timedtext-upload-timed-text' => 'Ondertitels uploaden',
+	'mwe-timedtext-upload-timed-text' => 'Ondertitels toevoegen',
 	'mwe-timedtext-loading-text-edit' => 'Bezig met het laden van de tekstverwerker voor ondertitels',
 	'mwe-timedtext-search' => 'Clip zoeken',
 	'mwe-timedtext-layout' => 'Vormgeving',
