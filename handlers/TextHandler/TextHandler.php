@@ -15,11 +15,31 @@
 class ForeignApiQueryAllPages extends ApiQueryAllPages {
 
 	public function __construct( $mDb, $query, $moduleName ) {
+		global $wgTimedTextForeignNamespaces;
+
 		$this->foreignDb = $mDb;
+
+		$wikiID = $this->foreignDb->getWikiID();
+		if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {
+			$this->foreignNs = $wgTimedTextForeignNamespaces[ $wikiID ];
+		} else {
+			$this->foreignNs = NS_TIMEDTEXT;
+		}
 		parent::__construct( $query, $moduleName, 'ap' );
 	}
 	protected function getDB() {
 		return $this->foreignDb;
+	}
+	protected function parseMultiValue( $valueName, $value, $allowMultiple, $allowedValues ) {
+		// foreignnNs might not be defined localy,
+		// catch the undefined error here
+		if ( $valueName == 'apnamespace'
+			&& $value == $this->foreignNs
+			&& $allowMultiple == false
+		) {
+			return $this->foreignNs;
+		}
+		return parent::parseMultiValue( $valueName, $value, $allowMultiple, $allowedValues );
 	}
 }
 
