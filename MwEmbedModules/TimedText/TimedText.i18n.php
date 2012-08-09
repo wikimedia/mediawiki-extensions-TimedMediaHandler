@@ -1507,6 +1507,7 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author SandroHc
  */
 $messages['pt'] = array(
 	'mwe-timedtext-editor' => 'Editor de legendas',
@@ -1532,7 +1533,7 @@ $messages['pt'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Não carregar mais',
 	'mwe-timedtext-back-btn' => 'Voltar',
 	'mwe-timedtext-choose-text' => 'Escolher texto',
-	'mwe-timedtext-upload-timed-text' => 'Upload das legendas',
+	'mwe-timedtext-upload-timed-text' => 'Adicionar legendas',
 	'mwe-timedtext-loading-text-edit' => 'A carregar o editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
 	'mwe-timedtext-layout' => 'Posição',
@@ -1613,6 +1614,27 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-textcat-cue' => 'Pontos de entrada',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Legendas em $1 para o clipe: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Não foram encontradas legendas em $1 para o clipe: $2',
+);
+
+/** Romanian (română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Transcrie',
+	'mwe-timedtext-stage-sync' => 'Sincronizează',
+	'mwe-timedtext-stage-translate' => 'Tradu',
+	'mwe-timedtext-upload-text-preview' => 'Revizuiește textul',
+	'mwe-timedtext-upload-text-done-uploading' => 'S-a terminat încărcarea',
+	'mwe-timedtext-back-btn' => 'Înapoi',
+	'mwe-timedtext-choose-text' => 'Alege textul',
+	'mwe-timedtext-layout' => 'Aspect',
+	'mwe-timedtext-layout-off' => 'Ascunde subtitrările',
+	'mwe-timedtext-loading-text' => 'Se încarcă textul...',
+	'mwe-timedtext-textcat-sub' => 'Subtitrări',
+	'mwe-timedtext-textcat-tad' => 'Descriere audio',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-ar' => 'Regiuni active',
+	'mwe-timedtext-textcat-lrc' => 'Versuri',
 );
 
 /** Russian (русский)
@@ -1932,6 +1954,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文（繁體）‬)
  * @author Mark85296341
+ * @author Simon Shek
  */
 $messages['zh-hant'] = array(
 	'mwe-timedtext-stage-transcribe' => '字幕',
@@ -1947,15 +1970,20 @@ $messages['zh-hant'] = array(
 	'mwe-timedtext-upload-text-done' => '上傳完成',
 	'mwe-timedtext-upload-text-fail-desc' => '未能成功上傳',
 	'mwe-timedtext-upload-text-fail-title' => '上傳失敗',
+	'mwe-timedtext-upload-text-another' => '上載其他',
 	'mwe-timedtext-upload-text-done-uploading' => '上傳完成',
 	'mwe-timedtext-back-btn' => '返回',
 	'mwe-timedtext-choose-text' => '選擇文字',
-	'mwe-timedtext-upload-timed-text' => '上傳字幕',
+	'mwe-timedtext-upload-timed-text' => '添加字幕',
 	'mwe-timedtext-search' => '搜索剪輯',
 	'mwe-timedtext-layout' => '布局',
 	'mwe-timedtext-layout-off' => '隱藏字幕',
 	'mwe-timedtext-loading-text' => '正在讀取文本……',
 	'mwe-timedtext-textcat-cc' => '標題',
 	'mwe-timedtext-textcat-sub' => '副標題',
+	'mwe-timedtext-textcat-ktv' => '卡拉OK',
+	'mwe-timedtext-textcat-nb' => '註解',
+	'mwe-timedtext-textcat-trx' => '字幕',
+	'mwe-timedtext-textcat-lrc' => '歌詞',
 );
 

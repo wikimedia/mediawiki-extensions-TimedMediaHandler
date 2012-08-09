@@ -2415,12 +2415,14 @@ $messages['ps'] = array(
 
 /** Portuguese (português)
  * @author Hamilton Abreu
+ * @author SandroHc
  * @author Waldir
  */
 $messages['pt'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
 	'mwe-embedplayer-credit-date' => 'Data: $1',
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
+	'mwe-embedplayer-nocredits' => 'Sem créditos disponíveis',
 	'mwe-embedplayer-loading_plugin' => "a carregar o ''plugin'' ...",
 	'mwe-embedplayer-select_playback' => 'Definir a preferência de reprodução',
 	'mwe-embedplayer-link_back' => 'Ligar atrás',
@@ -2471,7 +2473,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos::<br />[$1 Firefox 3.5].',
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador de vídeo html5].',
 	'mwe-embedplayer-download-warn' => 'Não foi encontrado nenhum leitor compatível que possa ser integrado no browser; para reproduzir no browser faça o download da [$1 última versão do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para activar ou desactivar o modo de ecrã-inteiro no <i>browser</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Carregue em <b>shift ⌘ F</b> para activar ou desactivar o modo de ecrã-inteiro',
@@ -2488,6 +2490,10 @@ $messages['pt'] = array(
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Áudio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Áudio MPEG',
+	'mwe-embedplayer-video-3gp' => 'Vídeo 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Vídeo MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Vídeo AVI',
 	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo.',
 );
 
@@ -2562,6 +2568,50 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-video-ogg' => 'Vídeo Ogg',
 	'mwe-embedplayer-video-audio' => 'Áudio Ogg',
 	'mwe-embedplayer-missing-source' => 'Não foi encontrado nenhum vídeo.',
+);
+
+/** Romanian (română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'mwe-embedplayer-credit-title' => 'Titlu: $1',
+	'mwe-embedplayer-credit-date' => 'Data: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
+	'mwe-embedplayer-loading_plugin' => 'Se încarcă modulul...',
+	'mwe-embedplayer-play_clip' => 'Redă clipul',
+	'mwe-embedplayer-pause_clip' => 'Pauză la clip',
+	'mwe-embedplayer-volume_control' => 'Controlul de volum',
+	'mwe-embedplayer-player_options' => 'Opțiunile playerului',
+	'mwe-embedplayer-player_fullscreen' => 'Ecran complet',
+	'mwe-embedplayer-paused' => 'în pauză',
+	'mwe-embedplayer-download_segment' => 'Selectarea descărcării:',
+	'mwe-embedplayer-download_full' => 'Descarcă întregul videoclip:',
+	'mwe-embedplayer-download_right_click' => 'Pentru a descărca, clic drept și selectează <i>Salvează legătura ca...</i>',
+	'mwe-embedplayer-download_clip' => 'Descarcă videoclipul',
+	'mwe-embedplayer-download_text' => 'Descarcă textul',
+	'mwe-embedplayer-download' => 'Descarcă',
+	'mwe-embedplayer-share' => 'Distribuie',
+	'mwe-embedplayer-share_this_video' => 'Distribuie acest videoclip',
+	'mwe-embedplayer-no-video_credits' => 'Niciun credit disponibil',
+	'mwe-embedplayer-menu_btn' => 'Meniu',
+	'mwe-embedplayer-close_btn' => 'Închide',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'Player VLC',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Player Kaltura',
+	'mwe-embedplayer-ogg-player-selected' => '(selectat)',
+	'mwe-embedplayer-do_not_warn_again' => 'În viitor, nu mai afișa acest mesaj',
+	'mwe-embedplayer-playerSelect' => 'Playere',
+	'mwe-embedplayer-embed_site_or_blog' => 'Încorporează pe o pagină',
+	'mwe-embedplayer-related_videos' => 'Videoclipuri similare',
+	'mwe-embedplayer-copy-code' => 'Copiază codul',
+	'mwe-embedplayer-video-h264' => 'Video H.264',
+	'mwe-embedplayer-video-webm' => 'Video WebM',
+	'mwe-embedplayer-video-flv' => 'Video în Flash',
+	'mwe-embedplayer-video-ogg' => 'Video Ogg',
+	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Audio MPEG',
+	'mwe-embedplayer-video-3gp' => 'Video 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Video MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Video AVI',
 );
 
 /** Russian (русский)
@@ -3193,6 +3243,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文（繁體）‬)
  * @author Mark85296341
+ * @author Simon Shek
  */
 $messages['zh-hant'] = array(
 	'mwe-embedplayer-missing_video_stream' => '此串流的影片檔案已遺失',
@@ -3204,5 +3255,16 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-share' => '分享',
 	'mwe-embedplayer-close_btn' => '關閉',
 	'mwe-embedplayer-ogg-player-selected' => '（已選取）',
+	'mwe-embedplayer-related_videos' => '相關視頻',
+	'mwe-embedplayer-buffering' => '緩衝中',
+	'mwe-embedplayer-video-h264' => 'H.264視頻',
+	'mwe-embedplayer-video-webm' => 'WebM視頻',
+	'mwe-embedplayer-video-flv' => 'Flash視頻',
+	'mwe-embedplayer-video-ogg' => 'Ogg視頻',
+	'mwe-embedplayer-video-audio' => 'Ogg音頻',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG音頻',
+	'mwe-embedplayer-video-3gp' => '3GP視頻',
+	'mwe-embedplayer-video-mpeg' => 'MPEG視頻',
+	'mwe-embedplayer-video-msvideo' => 'AVI視頻',
 );
 

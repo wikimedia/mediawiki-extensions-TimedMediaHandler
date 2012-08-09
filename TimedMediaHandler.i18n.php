@@ -599,6 +599,7 @@ $messages['ce'] = array(
 );
 
 /** Czech (česky)
+ * @author Chmee2
  * @author Li-sung
  * @author Matěj Grabovský
  * @author Mormegil
@@ -621,6 +622,14 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-desc-link' => 'O tomto souboru',
 	'timedmedia-oggThumb-version' => 'OggHandler vyžaduje oggThumb verze $1 nebo novější.',
 	'timedmedia-oggThumb-failed' => 'oggThumb nedokázal vytvořit náhled.',
+	'timedmedia-status' => 'Stav',
+	'timedmedia-actions' => 'Akce',
+	'timedmedia-not-ready' => 'Není připraven.',
+	'timedmedia-completed-on' => 'Dokončené překódování $1',
+	'timedmedia-show-error' => 'Zobrazit chybu',
+	'timedmedia-reset' => 'Obnovit transkódování',
+	'timedmedia-subtitle-new-go' => 'Přejít',
+	'timedmedia-file' => 'Soubor',
 );
 
 /** Danish (dansk)
@@ -835,6 +844,7 @@ $messages['eo'] = array(
  * @author Jewbask
  * @author Muro de Aguas
  * @author Remember the dot
+ * @author Rodrigo Molinero
  * @author Sanbec
  * @author Spacebirdy
  * @author Translationista
@@ -897,6 +907,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-desc-480p.webm' => 'WebM para la web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta calidad que se puede descargar (720P)',
 	'timedmedia-subtitle-new' => 'Crear una nueva traducción o editar una existente',
+	'timedmedia-subtitle-new-desc' => "Reemplaza la parte '''LANG'' con su [[:en:ISO 639|language code]] y presiona el botón '''Go'''",
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
 	'timedmedia-subtitle-no-subtitles' => 'Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos',
@@ -937,6 +948,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Mjbmr
  */
 $messages['fa'] = array(
 	'timedmedia-desc' => 'به دست گیرندهٔ پرونده‌های صوتی، تصویری و متن‌های زمان‌بندی شده با پشتیبانی از Ogg Theora ،Vorbis و srt',
@@ -952,6 +964,15 @@ $messages['fa'] = array(
 	'timedmedia-dismiss' => 'بستن',
 	'timedmedia-download' => 'بارگیری پرونده',
 	'timedmedia-desc-link' => 'دربارهٔ این پرونده',
+	'timedmedia-status' => 'وضعیت',
+	'timedmedia-status-unknown' => 'وضعیت ناشناخته',
+	'timedmedia-not-ready' => 'آماده نیست',
+	'timedmedia-days' => '$1 روز',
+	'timedmedia-hours' => '$1 ساعت',
+	'timedmedia-minutes' => '$1 دقیقه',
+	'timedmedia-seconds' => '$1 ثانیه',
+	'timedmedia-show-error' => 'نمایش خطا',
+	'timedmedia-subtitle-new-go' => 'برو',
 );
 
 /** Finnish (suomi)
@@ -985,6 +1006,7 @@ $messages['fo'] = array(
 
 /** French (français)
  * @author Crochet.david
+ * @author Erkethan
  * @author Gomoko
  * @author Grondin
  * @author Hashar
@@ -995,6 +1017,7 @@ $messages['fo'] = array(
  * @author Peter17
  * @author Seb35
  * @author Sherbrooke
+ * @author Shirayuki
  * @author Urhixidur
  * @author Verdy p
  */
@@ -1057,15 +1080,19 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-derivative-desc-480p.ogv' => 'Vidéo Ogg lisible en continu sur le web (480p)',
 	'timedmedia-derivative-720p.ogv' => 'Ogg 720p',
 	'timedmedia-derivative-desc-720p.ogv' => 'Vidéo Ogg téléchargeable de grande qualité (720p)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM lisible en continu depuis le web (160p)',
 	'timedmedia-derivative-360p.webm' => 'WebM 360p',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM lisible en continu depuis le web (360p)',
 	'timedmedia-derivative-480p.webm' => 'WebM 480p',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM lisible en continu depuis le web (480p)',
 	'timedmedia-derivative-720p.webm' => 'WebM 720p',
 	'timedmedia-derivative-desc-720p.webm' => 'Vidéo WebM téléchargeable de grande qualité (720p)',
+	'timedmedia-subtitle-new' => 'Créer une nouvelle traduction ou modifier une traduction existante',
+	'timedmedia-subtitle-new-go' => 'Aller',
 	'timedmedia-subtitle-language' => 'sous-titres en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Il n’y a aucune vidéo associée à la page actuelle de sous-titre',
 	'timedmedia-subtitle-no-subtitles' => 'Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter',
+	'timedmedia-file' => 'Fichier',
 );
 
 /** Franco-Provençal (arpetan)
@@ -1675,16 +1702,26 @@ $messages['it'] = array(
 	'timedmedia-ogg-long-error' => 'File ogg non valido: $1',
 	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
 	'timedmedia-webm-long-video' => 'File audio/video WebM $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3',
+	'timedmedia-no-player-js' => 'Si sta utilizzando un browser che ha JavaScript disattivato oppure non ha alcun riproduttore supportato.<br />
+È possibile <a href="$1">scaricare il clip multimediale</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un riproduttore</a> per riprodurre il clip nel proprio browser.',
 	'timedmedia-more' => 'Altro...',
 	'timedmedia-dismiss' => 'Chiudi',
 	'timedmedia-download' => 'Scarica il file',
 	'timedmedia-play-media' => 'Riproduci file multimediale',
 	'timedmedia-desc-link' => 'Informazioni su questo file',
+	'timedmedia-oggThumb-version' => 'OggHandler richiede la versione $1 o superiore di oggThumb.',
+	'timedmedia-oggThumb-failed' => 'oggThumb non è riuscito a creare la miniatura.',
 	'timedmedia-status-header' => 'Stato transcodifica',
 	'timedmedia-update-status' => 'Aggiorna stato transcodifica',
 	'timedmedia-status' => 'Stato',
 	'timedmedia-status-unknown' => 'Stato sconosciuto',
 	'timedmedia-actions' => 'Azioni',
+	'timedmedia-not-ready' => 'Non pronto',
+	'timedmedia-completed-on' => 'Transcodifica completata $1',
+	'timedmedia-error-on' => 'Errore nella transcodifica il $1.',
+	'timedmedia-started-transcode' => 'Transcodifica iniziata $1 fa. $2',
+	'timedmedia-percent-done' => '$1% circa completato',
+	'timedmedia-in-job-queue' => 'Aggiunto alla coda di lavoro  $1  fa',
 	'timedmedia-days' => '{{PLURAL:$1|un giorno|$1 giorni}}',
 	'timedmedia-hours' => "{{PLURAL:$1|un'ora|$1 ore}}",
 	'timedmedia-minutes' => '{{PLURAL:$1|un minuto|$1 minuti}}',
@@ -1693,8 +1730,26 @@ $messages['it'] = array(
 	'timedmedia-time-3-measurements' => '$1, $2 e $3',
 	'timedmedia-time-2-measurements' => '$1 e $2',
 	'timedmedia-show-error' => 'Vedi errore',
+	'timedmedia-reset' => 'Resetta transcodifica',
+	'timedmedia-reset-confirm' => 'Resettando questa transcodifica tutti i file esistenti (se presenti) saranno cancellati e la transcodifica sarà nuovamente aggiunta alla coda di lavoro. Ci vorrà qualche tempo per rieseguire la transcodifica. <br /><br />
+Continuare?',
+	'timedmedia-reset-error' => 'Errore nel resettaggio della transcodifica.',
 	'timedmedia-source-file-desc' => 'Originale $1, $2 × $3 ($4)',
+	'timedmedia-subtitle-new' => 'Creare una nuova traduzione o modificare esistenti',
+	'timedmedia-subtitle-new-desc' => "Sostituire la parte '''LANG''' con il proprio [[:en:ISO 639|codice linguistico]] e premere il pulsante '''Vai'''",
+	'timedmedia-subtitle-new-go' => 'Vai',
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitoli',
+	'timedmedia-subtitle-no-video' => "Non non c'è nessun video associato all'attuale pagina dei sottotitoli",
+	'timedmedia-subtitle-no-subtitles' => 'Non ci sono al momento sottotitoli in $1 per questo video, è possibile [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificare questa pagina] per aggiungerli',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 video Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 video WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in esecuzione',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coda',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}',
+	'timedmedia-file' => 'File',
 );
 
 /** Japanese (日本語)
@@ -1780,6 +1835,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author David1010
  * @author Malafaya
  * @author გიორგიმელა
  */
@@ -1789,7 +1845,26 @@ $messages['ka'] = array(
 	'timedmedia-more' => 'მეტი...',
 	'timedmedia-dismiss' => 'დახურვა',
 	'timedmedia-download' => 'ფაილის ჩამოტვირთვა',
+	'timedmedia-play-media' => 'მედია-ფაილის დაკვრა',
 	'timedmedia-desc-link' => 'ამ ფაილის შესახებ',
+	'timedmedia-status' => 'სტატუსი',
+	'timedmedia-status-unknown' => 'უცნობი სტატუსი',
+	'timedmedia-days' => '{{PLURAL:$1|დღე|$1 დღე}}',
+	'timedmedia-hours' => '{{PLURAL:$1|საათი|$1 საათი}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|წუთი|$1 წუთი}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|წამი|$1 წამი}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 და $4',
+	'timedmedia-time-3-measurements' => '$1, $2 და $3',
+	'timedmedia-time-2-measurements' => '$1 და $2',
+	'timedmedia-show-error' => 'შეცდომის ჩვენება',
+	'timedmedia-source-file' => 'წყარო $1',
+	'timedmedia-source-file-desc' => 'ორიგინალი $1, $2 × $3 ($4)',
+	'timedmedia-subtitle-new-go' => 'მიდი',
+	'timedmedia-subtitle-language' => '$1 ($2) სუბტიტრები',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 ვიდეო|$1 ვიდეო}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg ვიდეო|$1 Ogg ვიდეო}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM ვიდეო|$1 WebM ვიდეო}}',
+	'timedmedia-file' => 'ფაილი',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -2486,6 +2561,7 @@ $messages['pdc'] = array(
 /** Polish (polski)
  * @author Derbeth
  * @author Leinad
+ * @author Przemub
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -2498,14 +2574,50 @@ $messages['pl'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'plik audio/wideo Ogg, $1, długość $2, rozdzielczość $4×$5, ogółem $3',
 	'timedmedia-ogg-long-general' => 'plik multimedialny Ogg, długość $2, $3',
 	'timedmedia-ogg-long-error' => 'niepoprawny plik Ogg: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 plik wideo, $2',
+	'timedmedia-webm-long-video' => 'WebM plik audio-wideo, $1, długość $2, $4 × $5 pikseli, ogółem $3',
 	'timedmedia-no-player-js' => 'Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />
 Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.',
 	'timedmedia-more' => 'Więcej...',
 	'timedmedia-dismiss' => 'Zamknij',
 	'timedmedia-download' => 'Pobierz plik',
+	'timedmedia-play-media' => 'Odtwórz plik multimedialny',
 	'timedmedia-desc-link' => 'Właściwości pliku',
 	'timedmedia-oggThumb-version' => 'OggHandler wymaga oggThumb w wersji $1 lub późniejszej.',
 	'timedmedia-oggThumb-failed' => 'oggThumb nie udało się utworzyć miniaturki.',
+	'timedmedia-status-header' => 'Status konwersji',
+	'timedmedia-update-status' => 'Zaktualizuj status konwersji',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Status nieznany',
+	'timedmedia-transcodeinfo' => 'Opis pochodny konwersji',
+	'timedmedia-actions' => 'Operacje',
+	'timedmedia-direct-link' => 'Pobierz pochodną',
+	'timedmedia-not-ready' => 'Niegotowe',
+	'timedmedia-completed-on' => 'Przekonwertowano o $1',
+	'timedmedia-error-on' => 'Błąd w konwersji o $1.',
+	'timedmedia-started-transcode' => 'Konwersja rozpoczęła się $1 temu. $2',
+	'timedmedia-percent-done' => 'Ukończono ok. $1%',
+	'timedmedia-in-job-queue' => 'Dodano do kolejki $1 temu',
+	'timedmedia-unknown-target-size' => 'Rozmiar docelowy nieznany, $1 zakodowane',
+	'timedmedia-days' => '{{PLURAL:$1|dzień|dni}}',
+	'timedmedia-hours' => '{{PLURAL:$1|godzina|godziny|godzin}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|minuta|$1 minuty|$1 minut}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|sekunda|$1 sekundy|$1 sekund}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 i $4',
+	'timedmedia-time-3-measurements' => '$1, $2 i $3',
+	'timedmedia-time-2-measurements' => '$1 i $2',
+	'timedmedia-show-error' => 'Pokaż błąd',
+	'timedmedia-reset' => 'Resetuj konwersję',
+	'timedmedia-reset-confirm' => 'Reset konwersji spowoduje usunięcie obecnego pliku (jeżeli takowy istnieje) i doda ją ponownie do kolejki. Zabierze to trochę czasu. <br /><br />
+Czy na pewno chcesz kontynuować?',
+	'timedmedia-reset-error' => 'Błąd w resecie konwersji.',
+	'timedmedia-source-file' => 'Źródło $1',
+	'timedmedia-source-file-desc' => 'Oryginalne $1, $2 x $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Ogg video o niskiej przepustowości (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Ogg video o przepustowości sieciowej (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Ogg video o przepustowości sieciowej (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Ogg video o wysokiej jakości (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'Ogg video o jakości sieciowej (160P)',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2558,6 +2670,15 @@ $messages['ps'] = array(
 	'timedmedia-download' => 'دوتنه ښکته کول',
 	'timedmedia-desc-link' => 'د همدې دوتنې په اړه',
 	'timedmedia-status' => 'دريځ',
+	'timedmedia-actions' => 'چارې',
+	'timedmedia-days' => '{{PLURAL:$1|ورځ|$1 ورځې}}',
+	'timedmedia-hours' => '{{PLURAL:$1|ساعت|$1 ساعتونه}}',
+	'timedmedia-time-4-measurements' => '$1، $2، $3 او $4',
+	'timedmedia-time-3-measurements' => '$1، $2 او $3',
+	'timedmedia-time-2-measurements' => '$1 او $2',
+	'timedmedia-subtitle-new-go' => 'ورځه',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 ويډيو|$1 ويډيوګانې}}',
+	'timedmedia-file' => 'دوتنه',
 );
 
 /** Portuguese (português)
@@ -2662,6 +2783,7 @@ $messages['qu'] = array(
 );
 
 /** Romanian (română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Minisarm
@@ -2680,6 +2802,12 @@ $messages['ro'] = array(
 	'timedmedia-dismiss' => 'Închide',
 	'timedmedia-download' => 'Descarcă fișier',
 	'timedmedia-desc-link' => 'Despre acest fișier',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 și $4',
+	'timedmedia-time-3-measurements' => '$1, $2 și $3',
+	'timedmedia-time-2-measurements' => '$1 și $2',
+	'timedmedia-show-error' => 'Afișează eroarea',
+	'timedmedia-subtitle-new-go' => 'Mergeți',
+	'timedmedia-file' => 'Fișier',
 );
 
 /** tarandíne (tarandíne)
@@ -2811,6 +2939,7 @@ $messages['sgs'] = array(
 
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
+ * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
 	'timedmedia-desc' => 'Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ',
@@ -2825,7 +2954,14 @@ $messages['si'] = array(
 	'timedmedia-more' => 'ඉතිරිය…',
 	'timedmedia-dismiss' => 'වසන්න',
 	'timedmedia-download' => 'ගොනුව බා ගන්න',
+	'timedmedia-play-media' => 'මාධ්‍ය වයන්න',
 	'timedmedia-desc-link' => 'මෙම ගොනුව පිළිබඳ',
+	'timedmedia-status' => 'තත්වය',
+	'timedmedia-status-unknown' => 'නොදන්නා තත්වය',
+	'timedmedia-not-ready' => 'සුදානම් නැත',
+	'timedmedia-show-error' => 'දෝෂය පෙන්වන්න',
+	'timedmedia-subtitle-new-go' => 'යන්න',
+	'timedmedia-file' => 'ගොනුව',
 );
 
 /** Slovak (slovenčina)
@@ -3451,6 +3587,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文（繁體）‬)
  * @author Gaoxuewei
  * @author Mark85296341
+ * @author Simon Shek
  */
 $messages['zh-hant'] = array(
 	'timedmedia-desc' => 'Ogg Theora 和 Vorbis 檔案的處理器，含 JavaScript 播放器',
@@ -3465,6 +3602,12 @@ $messages['zh-hant'] = array(
 	'timedmedia-more' => '更多...',
 	'timedmedia-dismiss' => '關閉',
 	'timedmedia-download' => '下載檔案',
+	'timedmedia-play-media' => '播放媒體',
 	'timedmedia-desc-link' => '關於這個檔案',
+	'timedmedia-status' => '狀態',
+	'timedmedia-days' => '$1天',
+	'timedmedia-hours' => '$1小時',
+	'timedmedia-show-error' => '顯示錯誤',
+	'timedmedia-file' => '檔案',
 );
 
