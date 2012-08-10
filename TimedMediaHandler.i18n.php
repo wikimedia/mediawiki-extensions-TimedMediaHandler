@@ -383,6 +383,20 @@ $messages['az'] = array(
 	'timedmedia-time-2-measurements' => '$1 və $2',
 );
 
+/** Bashkir (башҡортса)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'timedmedia-days' => '{{PLURAL:$1|$1 көн|$1 көн}}',
+	'timedmedia-hours' => '{{PLURAL:$1|$1 сәғәт|$1 сәғәт}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 минут|$1 минут}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунд|$1 секунд}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 һәм $4',
+	'timedmedia-time-3-measurements' => '$1, $2 һәм $3',
+	'timedmedia-time-2-measurements' => '$1 һәм $2',
+	'timedmedia-show-error' => 'Хатаны күрһәт',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -754,6 +768,7 @@ $messages['diq'] = array(
 	'timedmedia-dismiss' => 'Racnê',
 	'timedmedia-download' => 'dosya biyar war',
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
+	'timedmedia-actions' => 'Kerdeni',
 	'timedmedia-days' => '{{PLURAL:$1|roca|$1 rocan}}',
 	'timedmedia-hours' => '{{PLURAL:$1|seata|$1 seatan}}',
 	'timedmedia-minutes' => '{{PLURAL: $1|deqe|$1 deqey}}',
@@ -926,6 +941,8 @@ $messages['et'] = array(
 	'timedmedia-dismiss' => 'Sule',
 	'timedmedia-download' => 'Laadi fail alla',
 	'timedmedia-desc-link' => 'Info faili kohta',
+	'timedmedia-status' => 'Olek',
+	'timedmedia-not-ready' => 'Ei ole valmis',
 );
 
 /** Basque (euskara)
@@ -963,6 +980,7 @@ $messages['fa'] = array(
 	'timedmedia-more' => 'بیشتر...',
 	'timedmedia-dismiss' => 'بستن',
 	'timedmedia-download' => 'بارگیری پرونده',
+	'timedmedia-play-media' => 'پخش رسانه',
 	'timedmedia-desc-link' => 'دربارهٔ این پرونده',
 	'timedmedia-status' => 'وضعیت',
 	'timedmedia-status-unknown' => 'وضعیت ناشناخته',
@@ -1005,6 +1023,7 @@ $messages['fo'] = array(
 );
 
 /** French (français)
+ * @author Brunoperel
  * @author Crochet.david
  * @author Erkethan
  * @author Gomoko
@@ -1092,6 +1111,13 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-subtitle-language' => 'sous-titres en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Il n’y a aucune vidéo associée à la page actuelle de sous-titre',
 	'timedmedia-subtitle-no-subtitles' => 'Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 vidéo|$1 vidéos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vidéo Ogg|$1 vidéos Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 vidéo WebM|$1 vidéos WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodage|$1 transcodages}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transcodage en cours|$1 transcodages en cours}}',
+	'timedmedia-derivative-state-queued' => "{{PLURAL:$1|$1 transcodage en file d'attente|$1 transcodages en file d'attente}}",
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodage échoué|$1 transcodages échoués}}',
 	'timedmedia-file' => 'Fichier',
 );
 
@@ -1391,6 +1417,7 @@ $messages['he'] = array(
 	'timedmedia-subtitle-language' => 'כתוביות ב$1&rlm; ($2)',
 	'timedmedia-subtitle-no-video' => 'אין וידאו שמשויך לדף הכתוביות הנוכחי',
 	'timedmedia-subtitle-no-subtitles' => 'אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן',
+	'timedmedia-file' => 'קובץ',
 );
 
 /** Hindi (हिन्दी)
@@ -2303,12 +2330,67 @@ $messages['ms'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'fail audio/video multipleks Ogg, $1, tempoh $2, $4×$5 piksel, keseluruhan $3',
 	'timedmedia-ogg-long-general' => 'fail media Ogg, tempoh $2, $3',
 	'timedmedia-ogg-long-error' => 'Fail Ogg tidak sah: $1',
+	'timedmedia-webm-short-video' => 'fail video WebM $1, $2',
+	'timedmedia-webm-long-video' => 'fail audio/video webM, $1, tempoh $2, $4×$5 piksel, $3 keseluruhannya',
+	'timedmedia-no-player-js' => 'Maaf, pelayar anda sama ada telah dimatikan JavaScript-nya ataupun tidak mempunyai sebarang pemain yang disokong.<br />
+Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">memuat turun pemain</a> yang boleh memutarkan sedutan berkenaan dalam pelayar anda.',
 	'timedmedia-more' => 'Lagi…',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Muat turun fail',
 	'timedmedia-play-media' => 'Mainkan media',
 	'timedmedia-desc-link' => 'Perihal fail ini',
+	'timedmedia-oggThumb-version' => 'OggHandler memerlukan oggThumb versi $1 ke atas.',
+	'timedmedia-oggThumb-failed' => 'oggThumb gagal mencipta gambar kenit.',
+	'timedmedia-status-header' => 'Status transkod',
+	'timedmedia-update-status' => 'Kemaskinikan status transkod',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Status tidak diketahui',
+	'timedmedia-transcodeinfo' => 'Keterangan hasil terbitan transkod',
+	'timedmedia-actions' => 'Tindakan',
+	'timedmedia-direct-link' => 'Muat turun terbitan',
+	'timedmedia-not-ready' => 'Belum sedia',
+	'timedmedia-completed-on' => 'Pentranskodan selesai pada $1',
+	'timedmedia-error-on' => 'Ralat dalam transkod pada $1.',
+	'timedmedia-started-transcode' => 'Pentranskodan bermula $1 lalu. $2',
+	'timedmedia-percent-done' => 'Kira-kira $1% selesai',
+	'timedmedia-in-job-queue' => 'Ditambahkan ke dalam baris gilir kerja $1 lalu',
+	'timedmedia-unknown-target-size' => 'Saiz sasaran tidak diketahui, $1 dikodkan',
+	'timedmedia-days' => '{{PLURAL:$1|hari|$1 hari}}',
+	'timedmedia-hours' => '{{PLURAL:$1|jam|$1 jam}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|minit|$1 minit}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|saat|$1 saat}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 dan $4',
+	'timedmedia-time-3-measurements' => '$1, $2 dan $3',
+	'timedmedia-time-2-measurements' => '$1 dan $2',
+	'timedmedia-show-error' => 'Paparkan ralat',
+	'timedmedia-reset' => 'Set semula transkod',
+	'timedmedia-reset-confirm' => 'Mengeset semula transkod ini akan membuang sebarang fail yang sedia ada (jika ada), lalu menambahkan semula transkod ke dalam baris gilir tugas. Pentranskodan semula akan memakan masa.<br /><br />Adakah anda tetap ingin melakukannya?',
+	'timedmedia-reset-error' => 'Ralat ketika mengeset semula tugas pentranskodan.',
 	'timedmedia-source-file' => 'Sumber $1',
+	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg lebar jalur rendah (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg boleh strim web (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Video Ogg boleh strim web (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Video Ogg boleh muat turun bermutu tinggi (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM boleh strim web (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM boleh strim web (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM boleh strim web (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'Video WebM boleh muat turun bermutu tinggi (720P)',
+	'timedmedia-subtitle-new' => 'Buat terjemahan baru atau sunting terjemahan sedia ada',
+	'timedmedia-subtitle-new-desc' => "Ganti bahagian '''LANG''' dengan [[:ms:ISO 639|kod bahasa]] anda, kemudian tekan butang '''Pergi'''",
+	'timedmedia-subtitle-new-go' => 'Pergi',
+	'timedmedia-subtitle-language' => 'Sari kata $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Tiada video yang berkaitan dengan halaman sari kata ini',
+	'timedmedia-subtitle-no-subtitles' => 'Sekarang, tiada sari kata dalam $1 bagi video ini; anda boleh [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting halaman ini] untuk menambahkannya',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '$1 video',
+	'timedmedia-ogg-videos' => '$1 video Ogg',
+	'timedmedia-webm-videos' => '$1 video WebM',
+	'timedmedia-derivative-state-transcodes' => '$1 transkod',
+	'timedmedia-derivative-state-active' => '$1 transkod aktif',
+	'timedmedia-derivative-state-queued' => '$1 transkod berbaris',
+	'timedmedia-derivative-state-failed' => '$1 transkod gagal',
+	'timedmedia-file' => 'Fail',
 );
 
 /** Erzya (эрзянь)
@@ -3236,6 +3318,17 @@ $messages['sv'] = array(
 	'timedmedia-percent-done' => 'Ungefär $1% klar',
 	'timedmedia-show-error' => 'Visa fel',
 	'timedmedia-file' => 'Fil',
+);
+
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'timedmedia-more' => 'மேலும்...',
+	'timedmedia-dismiss' => 'மூடுக',
+	'timedmedia-download' => 'கோப்பை பதிவிறக்கம் செய்',
+	'timedmedia-play-media' => 'ஊடகத்தை ஓடவிடு',
+	'timedmedia-desc-link' => 'இந்தக் கோப்பைப் பற்றி',
 );
 
 /** Telugu (తెలుగు)

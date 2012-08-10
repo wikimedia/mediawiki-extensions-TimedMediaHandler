@@ -896,6 +896,7 @@ $messages['fi'] = array(
 );
 
 /** French (français)
+ * @author Brunoperel
  * @author Crochet.david
  * @author IAlex
  * @author Peter17
@@ -954,7 +955,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lecteur Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(sélectionné)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage nous recommandons :<br />[$1 Firefox 3.5].',
+	'mwe-embedplayer-for_best_experience' => "Pour un meilleur visionnage nous recommandons l'utilisation d'un navigateur permettant la lecture de [vidéos HTML 5].",
 	'mwe-embedplayer-download-warn' => 'Navigateur web non compatible détecté, pour une lecteur dans le navigateur veuillez télécharger la [$1 dernière version de Firefox].',
 	'mwe-embedplayer-fullscreen-tip' => 'Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran',
@@ -2577,6 +2578,7 @@ $messages['ro'] = array(
 	'mwe-embedplayer-credit-title' => 'Titlu: $1',
 	'mwe-embedplayer-credit-date' => 'Data: $1',
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
+	'mwe-embedplayer-nocredits' => 'Niciun credit disponibil',
 	'mwe-embedplayer-loading_plugin' => 'Se încarcă modulul...',
 	'mwe-embedplayer-play_clip' => 'Redă clipul',
 	'mwe-embedplayer-pause_clip' => 'Pauză la clip',
@@ -2591,6 +2593,7 @@ $messages['ro'] = array(
 	'mwe-embedplayer-download_text' => 'Descarcă textul',
 	'mwe-embedplayer-download' => 'Descarcă',
 	'mwe-embedplayer-share' => 'Distribuie',
+	'mwe-embedplayer-credits' => 'Mulțumiri',
 	'mwe-embedplayer-share_this_video' => 'Distribuie acest videoclip',
 	'mwe-embedplayer-no-video_credits' => 'Niciun credit disponibil',
 	'mwe-embedplayer-menu_btn' => 'Meniu',
