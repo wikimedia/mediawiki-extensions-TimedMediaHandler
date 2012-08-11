@@ -2641,6 +2641,7 @@ $messages['pdc'] = array(
 );
 
 /** Polish (polski)
+ * @author Ankry
  * @author Derbeth
  * @author Leinad
  * @author Przemub
@@ -2671,7 +2672,7 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki
 	'timedmedia-update-status' => 'Zaktualizuj status konwersji',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Status nieznany',
-	'timedmedia-transcodeinfo' => 'Opis pochodny konwersji',
+	'timedmedia-transcodeinfo' => 'Opis pochodnej konwersji',
 	'timedmedia-actions' => 'Operacje',
 	'timedmedia-direct-link' => 'Pobierz pochodną',
 	'timedmedia-not-ready' => 'Niegotowe',

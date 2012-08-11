@@ -541,6 +541,14 @@ $messages['es'] = array(
 	'mwe-timedtext-request-already-done' => 'Ya se solicitó la transcripción de este vídeo. [$1 Ver todas las solicitudes de transcripción]',
 );
 
+/** Estonian (eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-lrc' => 'Laulusõnad',
+);
+
 /** Finnish (suomi)
  * @author Silvonen
  */
@@ -1057,6 +1065,7 @@ $messages['id'] = array(
 
 /** Italian (italiano)
  * @author Beta16
+ * @author Darth Kule
  * @author Gianfranco
  */
 $messages['it'] = array(
@@ -1080,7 +1089,7 @@ $messages['it'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Completato caricamento',
 	'mwe-timedtext-back-btn' => 'Indietro',
 	'mwe-timedtext-choose-text' => 'Scegli il testo',
-	'mwe-timedtext-upload-timed-text' => 'Carica sottotitoli',
+	'mwe-timedtext-upload-timed-text' => 'Aggiungi sottotitoli',
 	'mwe-timedtext-loading-text-edit' => 'Caricamento editor sottotitoli',
 	'mwe-timedtext-search' => 'Ricerca clip',
 	'mwe-timedtext-layout' => 'Aspetto',
@@ -1623,6 +1632,8 @@ $messages['ro'] = array(
 	'mwe-timedtext-stage-transcribe' => 'Transcrie',
 	'mwe-timedtext-stage-sync' => 'Sincronizează',
 	'mwe-timedtext-stage-translate' => 'Tradu',
+	'mwe-timedtext-select-language' => 'Selectează limba',
+	'mwe-timedtext-file-language' => 'Selectează fișierul de limbă',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Selectează limba din fișier',
 	'mwe-timedtext-upload-text-preview' => 'Revizuiește textul',
 	'mwe-timedtext-upload-text-done' => 'Încărcare realizată',

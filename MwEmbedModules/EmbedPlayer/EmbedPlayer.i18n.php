@@ -855,12 +855,17 @@ $messages['es'] = array(
 );
 
 /** Estonian (eesti)
+ * @author Avjoska
  * @author Pikne
  */
 $messages['et'] = array(
 	'mwe-embedplayer-credit-title' => 'Pealkiri: $1',
 	'mwe-embedplayer-credit-date' => 'Kuupäev: $1',
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
+	'mwe-embedplayer-player_fullscreen' => 'Täisekraan',
+	'mwe-embedplayer-download_clip' => 'Laadi video alla',
+	'mwe-embedplayer-download_text' => 'Laadi tekst alla',
+	'mwe-embedplayer-download' => 'Laadi alla',
 );
 
 /** Basque (euskara) */
@@ -1630,6 +1635,7 @@ $messages['is'] = array(
 
 /** Italian (italiano)
  * @author Beta16
+ * @author Darth Kule
  * @author Gianfranco
  */
 $messages['it'] = array(
@@ -1674,7 +1680,7 @@ $messages['it'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Player Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selezionato)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => "Per una migliore esperienza di riproduzione dei video si consiglia [$1 l'ultima versione di Firefox].",
+	'mwe-embedplayer-for_best_experience' => 'Per una migliore esperienza di riproduzione dei video si consiglia un [$1 browser che supporti i video html5].',
 	'mwe-embedplayer-do_not_warn_again' => 'In futuro, non mostrare questo messaggio',
 	'mwe-embedplayer-playerSelect' => 'Lettori',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leggi questo</a> prima di incorporare.',
@@ -2599,8 +2605,15 @@ $messages['ro'] = array(
 	'mwe-embedplayer-menu_btn' => 'Meniu',
 	'mwe-embedplayer-close_btn' => 'Închide',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Player VLC',
+	'mwe-embedplayer-ogg-player-oggNative' => 'Player HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-h264Native' => 'Player HTML5 H.264',
+	'mwe-embedplayer-ogg-player-webmNative' => 'Player HTML5 WebM',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin generic Ogg',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plugin QuickTime',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Player Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selectat)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-do_not_warn_again' => 'În viitor, nu mai afișa acest mesaj',
 	'mwe-embedplayer-playerSelect' => 'Playere',
 	'mwe-embedplayer-embed_site_or_blog' => 'Încorporează pe o pagină',
