@@ -95,6 +95,7 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author روخو
  */
 $messages['ar'] = array(
@@ -117,7 +118,7 @@ $messages['ar'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'انتهى الرفع',
 	'mwe-timedtext-back-btn' => 'رجوع',
 	'mwe-timedtext-choose-text' => 'اختر نص',
-	'mwe-timedtext-upload-timed-text' => 'رفع الترجمات',
+	'mwe-timedtext-upload-timed-text' => 'إضافة الترجمات',
 	'mwe-timedtext-search' => 'البحث عن مقطع',
 	'mwe-timedtext-layout' => 'مخرجات',
 	'mwe-timedtext-layout-ontop' => 'في أعلى الفيديو',
@@ -1164,6 +1165,22 @@ $messages['ja'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'クリップ$2には$1字幕が見つかりませんでした。',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'mwe-timedtext-stage-sync' => 'სინქრონიზაცია',
+	'mwe-timedtext-stage-translate' => 'თარგმნა',
+	'mwe-timedtext-select-language' => 'აირჩიეთ ენა',
+	'mwe-timedtext-file-language' => 'სუბტიტრების ფაილის ენა',
+	'mwe-timedtext-upload-text' => 'ტექსტური ფაილის ატვირთვა',
+	'mwe-timedtext-uploading-text' => 'ტექსტური ფაილის ატვირთვა',
+	'mwe-timedtext-upload-text-desc-title' => 'ტექსტური ფაილის ატვირთვა',
+	'mwe-timedtext-upload-text-done' => 'ატვირთვა დასრულდა',
+	'mwe-timedtext-upload-text-fail-title' => 'ატვირთვა ვერ მოხერხდა',
+	'mwe-timedtext-back-btn' => 'უკან',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -1719,6 +1736,14 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'mwe-timedtext-back-btn' => 'Назад',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
+	'mwe-timedtext-back-btn' => 'ආපසු',
 );
 
 /** Slovenian (slovenščina)

@@ -1768,6 +1768,48 @@ $messages['ja'] = array(
 	'mwe-embedplayer-missing-source' => 'ソースとなる動画が見つかりませんでした',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'mwe-embedplayer-credit-title' => 'სათაური: $1',
+	'mwe-embedplayer-credit-date' => 'თარიღი: $1',
+	'mwe-embedplayer-credit-author' => 'ავტორი: $1',
+	'mwe-embedplayer-play_clip' => 'კლიპის დაკვრა',
+	'mwe-embedplayer-pause_clip' => 'კლიპის შეჩერება',
+	'mwe-embedplayer-volume_control' => 'ხმის კონტროლი',
+	'mwe-embedplayer-player_options' => 'დამკვრელის პარამეტრები',
+	'mwe-embedplayer-player_fullscreen' => 'მთელ ეკრანზე',
+	'mwe-embedplayer-next_clip_msg' => 'შემდეგი კლიპის დაკვრა',
+	'mwe-embedplayer-prev_clip_msg' => 'წინა კლიპის დაკვრა',
+	'mwe-embedplayer-paused' => 'შეჩერებულია',
+	'mwe-embedplayer-download_full' => 'მთლიანი ვიდეო-ფაილის ჩამოტვირთვა:',
+	'mwe-embedplayer-download_clip' => 'ვიდეოს ჩამოტვირთვა',
+	'mwe-embedplayer-download_text' => 'ტექსტის ჩამოტვირთვა',
+	'mwe-embedplayer-download' => 'ჩამოტვირთვა',
+	'mwe-embedplayer-share' => 'გაზიარება',
+	'mwe-embedplayer-credits' => 'შემქმნელები',
+	'mwe-embedplayer-about-library' => 'Kaltura player-ის შესახებ',
+	'mwe-embedplayer-choose_player' => 'აირჩიეთ ვიდეოდამკვრელი',
+	'mwe-embedplayer-share_this_video' => 'ამ ვიდეოს გაზიარება',
+	'mwe-embedplayer-video_credits' => 'ვიდეოს შემქმნელები',
+	'mwe-embedplayer-menu_btn' => 'მენიუ',
+	'mwe-embedplayer-close_btn' => 'დახურვა',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg player',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 player',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM player',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura player',
+	'mwe-embedplayer-ogg-player-selected' => '(არჩეულია)',
+	'mwe-embedplayer-playerSelect' => 'დამკვრელები',
+	'mwe-embedplayer-video-ogg' => 'Ogg ვიდეო',
+	'mwe-embedplayer-video-audio' => 'Ogg აუდიო',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG აუდიო',
+	'mwe-embedplayer-video-3gp' => '3GP ვიდეო',
+	'mwe-embedplayer-video-mpeg' => 'MPEG ვიდეო',
+	'mwe-embedplayer-video-msvideo' => 'AVI ვიდეო',
+);
+
 /** Korean (한국어)
  * @author 아라
  */
@@ -2719,6 +2761,21 @@ $messages['ru'] = array(
 $messages['rue'] = array(
 	'mwe-embedplayer-close_btn' => 'Заперти',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Перегравач VLC',
+);
+
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'mwe-embedplayer-credit-date' => 'දිනය: $1',
+	'mwe-embedplayer-credit-author' => 'කතෘ: $1',
+	'mwe-embedplayer-download' => 'බාගන්න',
+	'mwe-embedplayer-credits' => 'ස්තුතිය',
+	'mwe-embedplayer-menu_btn' => 'මෙනුව',
+	'mwe-embedplayer-close_btn' => 'වසන්න',
+	'mwe-embedplayer-ogg-player-selected' => '(තෝරාගත්)',
+	'mwe-embedplayer-playerSelect' => 'වාදක',
+	'mwe-embedplayer-embed_site_or_blog' => 'පිටුවක ඔබ්බවන්න',
 );
 
 /** Slovak (slovenčina) */

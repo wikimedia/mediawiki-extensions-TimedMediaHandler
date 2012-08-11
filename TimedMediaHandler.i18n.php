@@ -125,6 +125,7 @@ Are you sure you want to proceed?',
  * @author Raymond
  * @author Siebrand
  * @author Umherirrender
+ * @author 아라
  */
 $messages['qqq'] = array(
 	'timedmedia-desc' => '{{desc}}',
@@ -177,6 +178,7 @@ Parameters are:
 	'timedmedia-derivative-360p.webm' => '{{optional}}',
 	'timedmedia-derivative-480p.webm' => '{{optional}}',
 	'timedmedia-derivative-720p.webm' => '{{optional}}',
+	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> to {{int:Timedmedia-subtitle-new-go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names
 Paramaters are:
 * $1 Subtitle language
@@ -733,7 +735,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-480p.webm' => 'Webstreamingfähige WebM-Videodatei (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Qualitativ hochwertige WebM-Videodatei (720p)',
 	'timedmedia-subtitle-new' => 'Neue Übersetzung machen oder vorhandene bearbeiten',
-	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:en:ISO 639|Sprachcode]] und klicke auf die Schaltfläche '''Los'''",
+	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:de:ISO 639|Sprachcode]] und klicke auf die Schaltfläche '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Los',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
@@ -1525,7 +1527,7 @@ Chceš woprawdźe pokročować?',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM-widejo (480p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-720p.webm' => 'Sćahujomna WebM-dataja wysokeje kwality (720p)',
 	'timedmedia-subtitle-new' => 'Nowy přełožk wutworić abo eksistowacy wobdźěłać',
-	'timedmedia-subtitle-new-desc' => "Wuměń  dźěl '''LANG''' přez twój [[:en:ISO 639|rěčny kod]] a klikń na tłóčatko '''W porjadku'''",
+	'timedmedia-subtitle-new-desc' => "Wuměń  dźěl '''LANG''' přez twój [[:en:ISO 639|rěčny kod]] a klikń na tłóčatko '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'W porjadku',
 	'timedmedia-subtitle-language' => '$1 ($2) podtitule',
 	'timedmedia-subtitle-no-video' => 'Widejo zwjazane z aktuelnej stronu podtitulow njeje',
@@ -1763,7 +1765,7 @@ Continuare?',
 	'timedmedia-reset-error' => 'Errore nel resettaggio della transcodifica.',
 	'timedmedia-source-file-desc' => 'Originale $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-new' => 'Creare una nuova traduzione o modificare esistenti',
-	'timedmedia-subtitle-new-desc' => "Sostituire la parte '''LANG''' con il proprio [[:en:ISO 639|codice linguistico]] e premere il pulsante '''Vai'''",
+	'timedmedia-subtitle-new-desc' => "Sostituire la parte '''LANG''' con il proprio [[:en:ISO 639|codice linguistico]] e premere il pulsante '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Vai',
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitoli',
 	'timedmedia-subtitle-no-video' => "Non non c'è nessun video associato all'attuale pagina dei sottotitoli",
@@ -2027,7 +2029,7 @@ $messages['ko'] = array(
 	'timedmedia-derivative-desc-480p.webm' => '웹 스트리밍 가능 WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => '고화질 다운로드 가능 WebM (720P)',
 	'timedmedia-subtitle-new' => '새 번역 만들기 또는 기존 번역 편집',
-	'timedmedia-subtitle-new-desc' => "[[:en:ISO 639|언어 코드]]로 '''LANG''' 부분을 바꾸고 나서 '''가기''' 버튼을 누르세요",
+	'timedmedia-subtitle-new-desc' => "[[:en:ISO 639|언어 코드]]로 '''LANG''' 부분을 바꾸고 나서 '''{{int:Timedmedia-subtitle-new-go}}''' 버튼을 누르세요",
 	'timedmedia-subtitle-new-go' => '가기',
 	'timedmedia-subtitle-language' => '$1 ($2) 자막',
 	'timedmedia-subtitle-no-video' => '현재 자막 페이지와 관련된 동영상이 없습니다',
@@ -2259,7 +2261,7 @@ $messages['mk'] = array(
 	'timedmedia-derivative-720p.webm' => 'WebM 720п',
 	'timedmedia-derivative-desc-720p.webm' => 'Висококвалитетен WebM за преземање (720п)',
 	'timedmedia-subtitle-new' => 'Создај нов превод или измени постоечки',
-	'timedmedia-subtitle-new-desc' => "Заменете го делот '''LANG''' со вашиот [[:en:ISO 639|јазичен код]] и стиснете на копчето „'''Оди'''“",
+	'timedmedia-subtitle-new-desc' => "Заменете го делот '''LANG''' со вашиот [[:en:ISO 639|јазичен код]] и стиснете на копчето „'''{{int:Timedmedia-subtitle-new-go}}'''“.",
 	'timedmedia-subtitle-new-go' => 'Оди',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
 	'timedmedia-subtitle-no-video' => 'Нема видеоснимка поврзана со тековната страница со титлови',
@@ -2377,7 +2379,7 @@ Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="http://www.me
 	'timedmedia-derivative-desc-480p.webm' => 'WebM boleh strim web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Video WebM boleh muat turun bermutu tinggi (720P)',
 	'timedmedia-subtitle-new' => 'Buat terjemahan baru atau sunting terjemahan sedia ada',
-	'timedmedia-subtitle-new-desc' => "Ganti bahagian '''LANG''' dengan [[:ms:ISO 639|kod bahasa]] anda, kemudian tekan butang '''Pergi'''",
+	'timedmedia-subtitle-new-desc' => "Ganti bahagian '''LANG''' dengan [[:ms:ISO 639|kod bahasa]] anda, kemudian tekan butang '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Pergi',
 	'timedmedia-subtitle-language' => 'Sari kata $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Tiada video yang berkaitan dengan halaman sari kata ini',
@@ -2992,6 +2994,7 @@ $messages['ru'] = array(
 $messages['rue'] = array(
 	'timedmedia-more' => 'Веце...',
 	'timedmedia-dismiss' => 'Заперти',
+	'timedmedia-file' => 'Файл',
 );
 
 /** Sakha (саха тыла)
@@ -3041,6 +3044,7 @@ $messages['si'] = array(
 	'timedmedia-desc-link' => 'මෙම ගොනුව පිළිබඳ',
 	'timedmedia-status' => 'තත්වය',
 	'timedmedia-status-unknown' => 'නොදන්නා තත්වය',
+	'timedmedia-actions' => 'කාර්යයන්',
 	'timedmedia-not-ready' => 'සුදානම් නැත',
 	'timedmedia-show-error' => 'දෝෂය පෙන්වන්න',
 	'timedmedia-subtitle-new-go' => 'යන්න',
@@ -3350,7 +3354,20 @@ $messages['te'] = array(
 	'timedmedia-dismiss' => 'మూసివేయి',
 	'timedmedia-download' => 'ఫైలుని దిగుమతి చేసుకోండి',
 	'timedmedia-desc-link' => 'ఈ ఫైలు గురించి',
+	'timedmedia-status' => 'స్థితి',
+	'timedmedia-status-unknown' => 'తెలియని స్థితి',
+	'timedmedia-actions' => 'చర్యలు',
+	'timedmedia-days' => '{{PLURAL:$1|రోజు|$1 రోజులు}}',
+	'timedmedia-hours' => '{{PLURAL:$1|గంట|$1 గంటలు}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|నిమిషం|$1 నిమిషాలు}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|క్షణం|$1 క్షణాలు}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 మరియు $4',
+	'timedmedia-time-3-measurements' => '$1, $2 మరియు $3',
+	'timedmedia-time-2-measurements' => '$1 మరియు $2',
+	'timedmedia-source-file-desc' => 'అసలు $1, $2 × $3 ($4)',
+	'timedmedia-subtitle-new-go' => 'వెళ్ళు',
 	'timedmedia-subtitle-language' => '$1 ($2) ఉపశీర్షికలు',
+	'timedmedia-file' => 'దస్త్రం',
 );
 
 /** Tajik (Cyrillic script) (тоҷикӣ)
