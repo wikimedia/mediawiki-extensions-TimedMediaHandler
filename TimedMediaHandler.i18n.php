@@ -1025,6 +1025,7 @@ $messages['fo'] = array(
 );
 
 /** French (français)
+ * @author Boniface
  * @author Brunoperel
  * @author Crochet.david
  * @author Erkethan
@@ -1109,6 +1110,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-derivative-720p.webm' => 'WebM 720p',
 	'timedmedia-derivative-desc-720p.webm' => 'Vidéo WebM téléchargeable de grande qualité (720p)',
 	'timedmedia-subtitle-new' => 'Créer une nouvelle traduction ou modifier une traduction existante',
+	'timedmedia-subtitle-new-desc' => "Remplacer l'expression '''LANG ''' par votre [[:en:ISO 639|code de langue]] utilisée et appuyez sur le bouton '''{{int:Timedmedia-sous-titre-nouvelles-aller}}'''.",
 	'timedmedia-subtitle-new-go' => 'Aller',
 	'timedmedia-subtitle-language' => 'sous-titres en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Il n’y a aucune vidéo associée à la page actuelle de sous-titre',
@@ -1413,12 +1415,24 @@ $messages['he'] = array(
 	'timedmedia-derivative-desc-360p.ogv' => 'וידאו Ogg (360P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-480p.ogv' => 'וידאו Ogg (480P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-720p.ogv' => 'וידאו Ogg (720P)&lrm; באיכות גבוהה שניתן להורדה',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM להזרמה ברשת (160P)',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM ניתן לשידור שטף ברשת (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'וידאו WebM (480P)&lrm; לנגינה שוטפת מהרשת',
 	'timedmedia-derivative-desc-720p.webm' => 'וידאו WebM (720P)&lrm; באיכות גבוהה שניתן להורדה',
+	'timedmedia-subtitle-new' => 'יצירת תרגום חדש או עריכת תרגום קיים',
+	'timedmedia-subtitle-new-desc' => "יש להחליף את '''LANG''' בקוד [[:he:ISO 639|קוד השפה]] וללחוץ על כפתור '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'מעבר',
 	'timedmedia-subtitle-language' => 'כתוביות ב$1&rlm; ($2)',
 	'timedmedia-subtitle-no-video' => 'אין וידאו שמשויך לדף הכתוביות הנוכחי',
 	'timedmedia-subtitle-no-subtitles' => 'אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן',
+	'timedmediahandler' => 'מדיה מתוזמנת',
+	'timedmedia-videos' => '{{PLURAL:$1|סרט אחד|$1 סרטים}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|סרט Ogg אחד|$1 סרטי Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|סרט WebM אחד|$1 סרטי WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|המרה משנית אחת|$1 המרות משניות}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|המרה משנית אחת רצה|$1 המרות משניות רצות}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|המרה משנית אחת בתור|$1 המרות משניות בתור}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|המרות משנית אחת נכשלה|$1 המרות משניות נכשלו}}',
 	'timedmedia-file' => 'קובץ',
 );
 
@@ -2564,7 +2578,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-720p.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc-720p.webm' => 'Hoge kwaliteit downloadbare WebM (720P)',
 	'timedmedia-subtitle-new' => 'Nieuw vertaling maken of bestaande bewerken',
-	'timedmedia-subtitle-new-desc' => "Vervang het deel '''LANG''' door uw [[:nl:ISO 639|taalcode]] en klik op de knop '''OK'''",
+	'timedmedia-subtitle-new-desc' => "Vervang het deel '''LANG''' door uw [[:nl:ISO 639|taalcode]] en klik op de knop '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'OK',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',
@@ -2722,7 +2736,7 @@ $messages['pms'] = array(
 	'timedmedia-ogg-long-error' => 'Archivi ogg nen bon: $1',
 	'timedmedia-webm-short-video' => 'Archivi filmà WebM $1, $2',
 	'timedmedia-webm-long-video' => 'WebM archivi sonor/filmà, $1, longheur $2, $4 x $5 pontin, $3 an tut',
-	'timedmedia-no-player-js' => 'Darmagi, sò navigador a l\'ha JavaScript disabilità o a supòrta pa ël riprodutor.<br />
+	'timedmedia-no-player-js' => 'Darmagi, sò navigador a l\'ha JavaScript disabilità o a sopòrta pa ël riprodutor.<br />
 A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.',
 	'timedmedia-more' => 'Dë pì...',
 	'timedmedia-dismiss' => 'sëré',
@@ -3045,8 +3059,20 @@ $messages['si'] = array(
 	'timedmedia-status' => 'තත්වය',
 	'timedmedia-status-unknown' => 'නොදන්නා තත්වය',
 	'timedmedia-actions' => 'කාර්යයන්',
+	'timedmedia-direct-link' => 'ව්‍යුත්පන්නය බාගන්න',
 	'timedmedia-not-ready' => 'සුදානම් නැත',
+	'timedmedia-percent-done' => '$1% පමණ ඉවරයි',
+	'timedmedia-days' => '{{PLURAL:$1|දවස|$1 දවස්}}',
+	'timedmedia-hours' => '{{PLURAL:$1|පැය|$1 පැය}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|මිනිත්තුව|$1 මිනිත්තු}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|තත්පරය|$1 තත්පර}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 සහ $4',
+	'timedmedia-time-3-measurements' => '$1, $2 සහ $3',
+	'timedmedia-time-2-measurements' => '$1 සහ $2',
 	'timedmedia-show-error' => 'දෝෂය පෙන්වන්න',
+	'timedmedia-source-file' => '$1 මූලාශ්‍රය',
+	'timedmedia-source-file-desc' => 'නියම $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'අවම කලාප පළල Ogg විදෘශ්‍ය (160P)',
 	'timedmedia-subtitle-new-go' => 'යන්න',
 	'timedmedia-file' => 'ගොනුව',
 );
@@ -3325,15 +3351,38 @@ $messages['sv'] = array(
 	'timedmedia-file' => 'Fil',
 );
 
+/** Swahili (Kiswahili)
+ * @author Stephenwanjau
+ */
+$messages['sw'] = array(
+	'timedmedia-download' => 'Pakua faili',
+	'timedmedia-desc-link' => 'Kuhusu faili hii',
+	'timedmedia-status' => 'Hali',
+	'timedmedia-actions' => 'Vitendo',
+	'timedmedia-not-ready' => 'Haiko tayari',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 na $4',
+	'timedmedia-time-3-measurements' => '$1, $2 na $3',
+	'timedmedia-time-2-measurements' => '$1 na $2',
+	'timedmedia-show-error' => 'Onyesha hitilafu',
+	'timedmedia-subtitle-new-go' => 'Nenda',
+	'timedmedia-file' => 'Faili',
+);
+
 /** Tamil (தமிழ்)
+ * @author Karthi.dr
  * @author Shanmugamp7
  */
 $messages['ta'] = array(
+	'timedmedia-ogg-long-general' => 'Ogg  ஊடக கோப்பு,  நீளம்   $2 , $3',
+	'timedmedia-ogg-long-error' => 'செல்லாத ogg கோப்பு: $1',
 	'timedmedia-more' => 'மேலும்...',
 	'timedmedia-dismiss' => 'மூடுக',
 	'timedmedia-download' => 'கோப்பை பதிவிறக்கம் செய்',
 	'timedmedia-play-media' => 'ஊடகத்தை ஓடவிடு',
 	'timedmedia-desc-link' => 'இந்தக் கோப்பைப் பற்றி',
+	'timedmedia-not-ready' => 'தயாராக இல்லை',
+	'timedmedia-show-error' => 'பிழை காட்டு',
+	'timedmedia-file' => 'கோப்பு',
 );
 
 /** Telugu (తెలుగు)
@@ -3429,6 +3478,7 @@ $messages['tk'] = array(
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
+ * @author Sky Harbor
  */
 $messages['tl'] = array(
 	'timedmedia-desc' => 'Tagahawak para sa audio, bidyo at inoorasang teksto, na may pagtangkilik ng anyo para sa WebM, Ogg Theora, Vorbis, srt',
@@ -3498,7 +3548,7 @@ Nakatitiyak ka ba na nais mong magpatuloy?',
 	'timedmedia-derivative-720p.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc-720p.webm' => 'Mataas na uri ng WebM na maikakargang paibaba (720P)',
 	'timedmedia-subtitle-new' => 'Lumikha ng bagong salinwika o baguhin ang umiiral na',
-	'timedmedia-subtitle-new-desc' => "Palitan ang bahaging '''LANG''' ng iyong [[:en:ISO 639|kodigo ng wika]] at pindutin ang pindutang '''Gawin'''",
+	'timedmedia-subtitle-new-desc' => "Palitan ang bahaging '''LANG''' ng iyong [[:en:ISO 639|kodigo ng wika]] at pindutin ang pindutang '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Gawin',
 	'timedmedia-subtitle-language' => '$1 ($2) kabahaging mga pamagat',
 	'timedmedia-subtitle-no-video' => 'Walang bidyo na may kaugnayan sa pangkasalukuyang pahina ng kabahaging pamagat',
@@ -3678,9 +3728,10 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文（简体）‬)
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
-	'timedmedia-desc' => 'Ogg Theora 和 Vorbis 文件的处理器，含 JavaScript 播放器',
+	'timedmedia-desc' => '带有WebM，Ogg Theora、Vorbis，srt格式支持的音频、视频和同步文本处理器',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 声音文件，$2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 视频文件，$2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 媒体文件，$2',
@@ -3689,10 +3740,68 @@ $messages['zh-hans'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg 多工声音／视频文件，$1，长度$2，$4×$5像素，共$3',
 	'timedmedia-ogg-long-general' => 'Ogg 媒体文件，长度$2，$3',
 	'timedmedia-ogg-long-error' => '无效的ogg文件: $1',
+	'timedmedia-webm-short-video' => 'WebM $1视频文件，$2',
+	'timedmedia-webm-long-video' => 'WebM音频/视频文件，$1，长度$2，$4 × $5像素，共$3',
+	'timedmedia-no-player-js' => '抱歉，您的浏览器的JavaScript已关闭或没有可以支持的播放器。<br />
+您可以<a href="$1">下载这个片段</a>或<a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">下载一个播放器</a>以在浏览器中播放片段。',
 	'timedmedia-more' => '更多...',
 	'timedmedia-dismiss' => '关闭',
 	'timedmedia-download' => '下载文件',
+	'timedmedia-play-media' => '播放媒体',
 	'timedmedia-desc-link' => '关于这个文件',
+	'timedmedia-oggThumb-version' => 'OggHandler需要oggThumb $1或者之后的版本。',
+	'timedmedia-oggThumb-failed' => 'oggThumb未能创建缩略图。',
+	'timedmedia-status-header' => '转码状态',
+	'timedmedia-update-status' => '更新转码状态',
+	'timedmedia-status' => '状态',
+	'timedmedia-status-unknown' => '未知状态',
+	'timedmedia-transcodeinfo' => '转码衍生作品描述',
+	'timedmedia-actions' => '动作',
+	'timedmedia-direct-link' => '下载衍生作品',
+	'timedmedia-not-ready' => '未就绪',
+	'timedmedia-completed-on' => '已完成转码$1',
+	'timedmedia-error-on' => '于$1转码错误。',
+	'timedmedia-started-transcode' => '于$1前开始转码。$2',
+	'timedmedia-percent-done' => '大约$1%已完成',
+	'timedmedia-in-job-queue' => '$1前添加到工作队列',
+	'timedmedia-unknown-target-size' => '未知目标大小，$1已编码',
+	'timedmedia-days' => '$1天',
+	'timedmedia-hours' => '$1小时',
+	'timedmedia-minutes' => '$1分',
+	'timedmedia-seconds' => '$1秒',
+	'timedmedia-time-4-measurements' => '$1、$2、$3和$4',
+	'timedmedia-time-3-measurements' => '$1、$2和$3',
+	'timedmedia-time-2-measurements' => '$1和$2',
+	'timedmedia-show-error' => '显示错误',
+	'timedmedia-reset' => '重置转码',
+	'timedmedia-reset-confirm' => '重置转码会移除所有现有文件，并将其重新加入转码工作队列。可能需要一些时间来重新转码。<br /><br />
+您确实想继续吗？',
+	'timedmedia-reset-error' => '重置转码工作时发生错误。',
+	'timedmedia-source-file' => '$1原始文件',
+	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）',
+	'timedmedia-derivative-desc-160p.ogv' => '低带宽Ogg视频（160P）',
+	'timedmedia-derivative-desc-360p.ogv' => 'Web流Ogg视频（360P）',
+	'timedmedia-derivative-desc-480p.ogv' => 'Web流Ogg视频（480P）',
+	'timedmedia-derivative-desc-720p.ogv' => '高质量可下载Ogg视频（720P）',
+	'timedmedia-derivative-desc-160p.webm' => 'Web流WebM（160P）',
+	'timedmedia-derivative-desc-360p.webm' => 'Web流WebM（360P）',
+	'timedmedia-derivative-desc-480p.webm' => 'Web流WebM（480P）',
+	'timedmedia-derivative-desc-720p.webm' => '高质量可下载WebM视频（720P）',
+	'timedmedia-subtitle-new' => '创建新翻译或编辑现有翻译',
+	'timedmedia-subtitle-new-desc' => "将'''LANG'''替换为您的[[:en:ISO 639|语言代码]]并按下'''{{int:Timedmedia-subtitle-new-go}}'''按钮",
+	'timedmedia-subtitle-new-go' => '提交',
+	'timedmedia-subtitle-language' => '$1（$2）字幕',
+	'timedmedia-subtitle-no-video' => '当前字幕页面没有关联的视频',
+	'timedmedia-subtitle-no-subtitles' => '当前没有这个视频的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑这个页面]以添加',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '$1个视频',
+	'timedmedia-ogg-videos' => '$1个Ogg视频',
+	'timedmedia-webm-videos' => '$1个WebM视频',
+	'timedmedia-derivative-state-transcodes' => '$1次转码',
+	'timedmedia-derivative-state-active' => '$1个正在运行的转码任务',
+	'timedmedia-derivative-state-queued' => '$1个队列中的转码任务',
+	'timedmedia-derivative-state-failed' => '$1次转码失败',
+	'timedmedia-file' => '文件',
 );
 
 /** Traditional Chinese (‪中文（繁體）‬)

@@ -1743,6 +1743,7 @@ $messages['rue'] = array(
  */
 $messages['si'] = array(
 	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
+	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
 	'mwe-timedtext-back-btn' => 'ආපසු',
 );
 
@@ -1840,6 +1841,21 @@ $messages['sv'] = array(
 	'mwe-timedtext-textcat-ar' => 'Aktiva regioner',
 	'mwe-timedtext-textcat-nb' => 'Anmärkning',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertexter för klipp: $2',
+);
+
+/** Tamil (தமிழ்)
+ * @author Karthi.dr
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'mwe-timedtext-stage-translate' => 'மொழிபெயர்க்கவும்',
+	'mwe-timedtext-file-language' => 'துணைத்தலைப்பு கோப்பு மொழி',
+	'mwe-timedtext-upload-text' => 'உரைக்கோப்பை பதிவேற்றவும்',
+	'mwe-timedtext-uploading-text' => 'உரைக்கோப்பு பதிவேற்றப்படுகிறது',
+	'mwe-timedtext-upload-text-desc-title' => 'ஒரு உரைக்கோப்பை பதிவேற்று',
+	'mwe-timedtext-upload-text-desc-help-select' => 'கோப்பின் மொழியைத் தேர்ந்தெடுக்கவும்',
+	'mwe-timedtext-back-btn' => 'பின்செல்',
+	'mwe-timedtext-textcat-lrc' => 'பாடல் வரிகள்',
 );
 
 /** Telugu (తెలుగు)

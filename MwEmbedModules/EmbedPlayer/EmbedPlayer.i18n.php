@@ -2458,6 +2458,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'mwe-embedplayer-credit-title' => 'سرليک: $1',
 	'mwe-embedplayer-download' => 'ښکته کول',
+	'mwe-embedplayer-share' => 'شريکول',
 	'mwe-embedplayer-close_btn' => 'تړل',
 	'mwe-embedplayer-ogg-player-selected' => '(ټاکل شوی)',
 );
@@ -2767,9 +2768,16 @@ $messages['rue'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'mwe-embedplayer-credit-title' => 'මාතෘකාව: $1',
 	'mwe-embedplayer-credit-date' => 'දිනය: $1',
 	'mwe-embedplayer-credit-author' => 'කතෘ: $1',
+	'mwe-embedplayer-player_options' => 'වාදක විකල්පයන්',
+	'mwe-embedplayer-player_fullscreen' => 'පූර්ණ තිරය',
+	'mwe-embedplayer-download_segment' => 'තේරීම බාගන්න:',
+	'mwe-embedplayer-download_clip' => 'වීඩියෝව බාගන්න',
+	'mwe-embedplayer-download_text' => 'පාඨය බාගන්න',
 	'mwe-embedplayer-download' => 'බාගන්න',
+	'mwe-embedplayer-share' => 'හුවමාරු කරන්න',
 	'mwe-embedplayer-credits' => 'ස්තුතිය',
 	'mwe-embedplayer-menu_btn' => 'මෙනුව',
 	'mwe-embedplayer-close_btn' => 'වසන්න',
@@ -3009,6 +3017,21 @@ $messages['sv'] = array(
 	'mwe-embedplayer-video-mpeg' => 'MPEG video',
 	'mwe-embedplayer-video-msvideo' => 'AVI video',
 	'mwe-embedplayer-missing-source' => 'Ingen källvideo hittades',
+);
+
+/** Tamil (தமிழ்)
+ * @author Karthi.dr
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'mwe-embedplayer-credit-title' => 'தலைப்பு: $1',
+	'mwe-embedplayer-credit-date' => 'தேதி: $1',
+	'mwe-embedplayer-credit-author' => 'ஆக்குனர்: $1',
+	'mwe-embedplayer-player_fullscreen' => 'முழுத்திரை',
+	'mwe-embedplayer-download' => 'பதிவிறக்கம் செய்',
+	'mwe-embedplayer-share' => 'பகிர்',
+	'mwe-embedplayer-share_this_video' => 'இக் காணொளியைப் பகிர்க',
+	'mwe-embedplayer-close_btn' => 'மூடு',
 );
 
 /** Telugu (తెలుగు)
