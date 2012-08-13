@@ -944,6 +944,7 @@ $messages['et'] = array(
 	'timedmedia-download' => 'Laadi fail alla',
 	'timedmedia-desc-link' => 'Info faili kohta',
 	'timedmedia-status' => 'Olek',
+	'timedmedia-actions' => 'Toimingud',
 	'timedmedia-not-ready' => 'Ei ole valmis',
 );
 
@@ -2012,7 +2013,9 @@ $messages['ko'] = array(
 	'timedmedia-update-status' => '코드 변환 상태 업데이트',
 	'timedmedia-status' => '상태',
 	'timedmedia-status-unknown' => '알 수 없는 상태',
+	'timedmedia-transcodeinfo' => '코드 변환 파생 설명',
 	'timedmedia-actions' => '행위',
+	'timedmedia-direct-link' => '파생 다운로드',
 	'timedmedia-not-ready' => '준비하지 않음',
 	'timedmedia-completed-on' => '$1 코드 변환 완료',
 	'timedmedia-error-on' => '$1에 코드 변환하는 데 오류가 났습니다.',
@@ -3051,6 +3054,7 @@ $messages['si'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Ogg බහුපථකාරක ශ්‍රව්‍ය/දෘශ්‍ය ගොනුව, $1, ප්‍රවර්තනය $2, $4×$5 පික්සල්, $3 සමස්ත',
 	'timedmedia-ogg-long-general' => 'Ogg මාධ්‍ය ගොනුව, ප්‍රවර්තනය $2, $3',
 	'timedmedia-ogg-long-error' => 'අනීතික ogg ගොනුව: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 විදෘශ්‍ය ගොනුව, $2',
 	'timedmedia-more' => 'ඉතිරිය…',
 	'timedmedia-dismiss' => 'වසන්න',
 	'timedmedia-download' => 'ගොනුව බා ගන්න',
@@ -3326,6 +3330,7 @@ $messages['su'] = array(
  * @author Lejonel
  * @author Rotsee
  * @author Skalman
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
 	'timedmedia-desc' => 'Stöder filtyperna Ogg Theora och Ogg Vorbis med en JavaScript-baserad mediaspelare',
@@ -3347,7 +3352,27 @@ $messages['sv'] = array(
 	'timedmedia-status-unknown' => 'Okänd status',
 	'timedmedia-actions' => 'Åtgärder',
 	'timedmedia-percent-done' => 'Ungefär $1% klar',
+	'timedmedia-days' => '{{PLURAL:$1|dag|$1 dagar}}',
+	'timedmedia-hours' => '{{PLURAL:$1|timme|$1 timmar}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuter}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|sekund|$1 sekunder}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 och $4',
+	'timedmedia-time-3-measurements' => '$1, $2 och $3',
+	'timedmedia-time-2-measurements' => '$1 och $2',
 	'timedmedia-show-error' => 'Visa fel',
+	'timedmedia-derivative-desc-160p.ogv' => 'Låg bandbredd Ogg-video (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Webbströmningsbar Ogg-video (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Webbströmningsbar Ogg-video (480P)',
+	'timedmedia-derivative-desc-160p.webm' => 'Webbströmningsbar WebM (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'Webbströmningsbar WebM (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'Webbströmningsbar WebM (480P)',
+	'timedmedia-subtitle-new' => 'Skapa ny översättning eller redigera befintlig',
+	'timedmedia-subtitle-new-desc' => "Ersätt delen '''LANG''' med din [[:en:ISO 639|språkkod]] och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Gå',
+	'timedmedia-subtitle-language' => '$1 ($2) undertexter',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 videoklipp|$1 videoklipp}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videor}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-video|$1 WebM-videor}}',
 	'timedmedia-file' => 'Fil',
 );
 
