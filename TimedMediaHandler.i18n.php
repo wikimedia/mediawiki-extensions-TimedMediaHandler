@@ -2932,8 +2932,19 @@ $messages['roa-tara'] = array(
 	'timedmedia-desc-link' => "'Mbormaziune sus a stu file",
 	'timedmedia-oggThumb-version' => "OggHandler vole 'a versine de oggThumb $1 o cchiù ierte.",
 	'timedmedia-oggThumb-failed' => 'oggThumn ha fallite a ccrejà le miniature.',
+	'timedmedia-actions' => 'Aziune',
+	'timedmedia-days' => '{{PLURAL: $1|sciurne|$1 sciurne}}',
+	'timedmedia-hours' => '{{PLURAL: $1|ore|$1 ore}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|minute|$1 minute}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|seconde|$1 seconde}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 e $4',
+	'timedmedia-time-3-measurements' => '$1, $2 e $3',
+	'timedmedia-time-2-measurements' => '$1 e $2',
 	'timedmedia-source-file' => '$1 sorgende',
+	'timedmedia-source-file-desc' => 'Origgenale $1, $2 × $3 ($4)',
+	'timedmedia-subtitle-new-go' => 'Véje',
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitele',
+	'timedmedia-file' => 'File',
 );
 
 /** Russian (русский)
@@ -3078,6 +3089,7 @@ $messages['si'] = array(
 	'timedmedia-source-file-desc' => 'නියම $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'අවම කලාප පළල Ogg විදෘශ්‍ය (160P)',
 	'timedmedia-subtitle-new-go' => 'යන්න',
+	'timedmedia-subtitle-language' => '$1 ($2) උපශීර්ෂ',
 	'timedmedia-file' => 'ගොනුව',
 );
 
@@ -3396,6 +3408,7 @@ $messages['sw'] = array(
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Shanmugamp7
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
 	'timedmedia-ogg-long-general' => 'Ogg  ஊடக கோப்பு,  நீளம்   $2 , $3',
@@ -3405,8 +3418,19 @@ $messages['ta'] = array(
 	'timedmedia-download' => 'கோப்பை பதிவிறக்கம் செய்',
 	'timedmedia-play-media' => 'ஊடகத்தை ஓடவிடு',
 	'timedmedia-desc-link' => 'இந்தக் கோப்பைப் பற்றி',
+	'timedmedia-status' => 'நிலை',
+	'timedmedia-status-unknown' => 'அறியப்படாத நிலை',
+	'timedmedia-actions' => 'செயல்கள்',
 	'timedmedia-not-ready' => 'தயாராக இல்லை',
+	'timedmedia-percent-done' => 'ஏறத்தாழ $1% முடிந்தது',
+	'timedmedia-time-4-measurements' => '$1, $2, $3, $4',
+	'timedmedia-time-3-measurements' => '$1, $2, $3',
+	'timedmedia-time-2-measurements' => '$1, $2',
 	'timedmedia-show-error' => 'பிழை காட்டு',
+	'timedmedia-source-file' => '$1 மூலம்',
+	'timedmedia-subtitle-new' => 'புதிய மொழிபெயர்ப்பை உருவாக்கவும் அல்லது உள்ளதைத் தொகுக்கவும்',
+	'timedmedia-subtitle-new-go' => 'செல்',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 காணொளி|$1 காணொளிகள்}}',
 	'timedmedia-file' => 'கோப்பு',
 );
 

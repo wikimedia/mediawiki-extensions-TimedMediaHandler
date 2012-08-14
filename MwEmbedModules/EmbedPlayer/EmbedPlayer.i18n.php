@@ -1636,6 +1636,7 @@ $messages['is'] = array(
 /** Italian (italiano)
  * @author Beta16
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Gianfranco
  */
 $messages['it'] = array(
@@ -1662,6 +1663,7 @@ $messages['it'] = array(
 	'mwe-embedplayer-download' => 'Scarica',
 	'mwe-embedplayer-share' => 'Condividi',
 	'mwe-embedplayer-credits' => 'Crediti',
+	'mwe-embedplayer-about-library' => 'Su Kaltura player',
 	'mwe-embedplayer-clip_linkback' => 'Pagina di origine clip',
 	'mwe-embedplayer-choose_player' => 'Scegli riproduttore video',
 	'mwe-embedplayer-no-player' => 'Nessun lettore disponibile per $1',
@@ -2099,6 +2101,28 @@ $messages['ms'] = array(
 	'mwe-embedplayer-credit-date' => 'Tarikh: $1',
 	'mwe-embedplayer-credit-author' => 'Pengarang: $1',
 	'mwe-embedplayer-playerSelect' => 'Pemain',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'mwe-embedplayer-close_btn' => 'Agħlaq',
+	'mwe-embedplayer-ogg-player-selected' => '(magħżul)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-do_not_warn_again' => 'Fil-futur, turix dan il-messaġġ',
+	'mwe-embedplayer-playerSelect' => 'Plejers',
+	'mwe-embedplayer-related_videos' => 'Vidjows relatati',
+	'mwe-embedplayer-video-h264' => 'Vidjow H.264',
+	'mwe-embedplayer-video-webm' => 'Vidjow WebM',
+	'mwe-embedplayer-video-flv' => 'Vidjow Flash',
+	'mwe-embedplayer-video-ogg' => 'Vidjow Ogg',
+	'mwe-embedplayer-video-audio' => 'Awdjo Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Awdjo MPEG',
+	'mwe-embedplayer-video-3gp' => 'Vidjow 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Vidjow MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Vidjow AVI',
+	'mwe-embedplayer-missing-source' => "L-ebda sors ta' vidjow ma nstab",
 );
 
 /** Norwegian Bokmål (‪norsk (bokmål)‬)
