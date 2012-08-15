@@ -550,6 +550,13 @@ $messages['et'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Laulusõnad',
 );
 
+/** Basque (euskara)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['eu'] = array(
+	'mwe-timedtext-back-btn' => 'Atzera',
+);
+
 /** Finnish (suomi)
  * @author Silvonen
  */

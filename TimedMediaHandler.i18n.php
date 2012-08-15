@@ -952,6 +952,7 @@ $messages['et'] = array(
  * @author An13sa
  * @author Joxemai
  * @author Theklan
+ * @author පසිඳු කාවින්ද
  */
 $messages['eu'] = array(
 	'timedmedia-desc' => 'Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin',
@@ -964,6 +965,9 @@ $messages['eu'] = array(
 	'timedmedia-dismiss' => 'Itxi',
 	'timedmedia-download' => 'Fitxategia jaitsi',
 	'timedmedia-desc-link' => 'Fitxategi honen inguruan',
+	'timedmedia-status' => 'Egoera',
+	'timedmedia-subtitle-new-go' => 'Joan',
+	'timedmedia-file' => 'Fitxategia',
 );
 
 /** Persian (فارسی)
@@ -1116,6 +1120,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-subtitle-language' => 'sous-titres en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Il n’y a aucune vidéo associée à la page actuelle de sous-titre',
 	'timedmedia-subtitle-no-subtitles' => 'Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter',
+	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 vidéo|$1 vidéos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vidéo Ogg|$1 vidéos Ogg}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 vidéo WebM|$1 vidéos WebM}}',
@@ -1190,9 +1195,14 @@ $messages['fur'] = array(
 
 /** Irish (Gaeilge)
  * @author Spacebirdy
+ * @author පසිඳු කාවින්ද
  */
 $messages['ga'] = array(
+	'timedmedia-more' => 'Níos mó...',
 	'timedmedia-dismiss' => 'Dún',
+	'timedmedia-actions' => 'Gníomhartha',
+	'timedmedia-subtitle-new-go' => 'Gabh',
+	'timedmedia-file' => 'Comhad',
 );
 
 /** Galician (galego)
@@ -1733,6 +1743,7 @@ $messages['is'] = array(
  * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
+ * @author F. Cosoleto
  */
 $messages['it'] = array(
 	'timedmedia-desc' => 'Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt',
@@ -1779,6 +1790,14 @@ $messages['it'] = array(
 Continuare?',
 	'timedmedia-reset-error' => 'Errore nel resettaggio della transcodifica.',
 	'timedmedia-source-file-desc' => 'Originale $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg a bassa larghezza di banda (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg trasmettibile in streaming via Web (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Video Ogg trasmettibile in streaming via Web (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Video Ogg scaricabile in alta qualità (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM trasmettibile in streaming via Web (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM trasmettibile in streaming via Web (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM trasmettibile in streaming via Web (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'WebM scaricabile in alta qualità (720P)',
 	'timedmedia-subtitle-new' => 'Creare una nuova traduzione o modificare esistenti',
 	'timedmedia-subtitle-new-desc' => "Sostituire la parte '''LANG''' con il proprio [[:en:ISO 639|codice linguistico]] e premere il pulsante '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Vai',
@@ -1893,6 +1912,7 @@ $messages['ka'] = array(
 	'timedmedia-desc-link' => 'ამ ფაილის შესახებ',
 	'timedmedia-status' => 'სტატუსი',
 	'timedmedia-status-unknown' => 'უცნობი სტატუსი',
+	'timedmedia-actions' => 'მოქმედება',
 	'timedmedia-days' => '{{PLURAL:$1|დღე|$1 დღე}}',
 	'timedmedia-hours' => '{{PLURAL:$1|საათი|$1 საათი}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|წუთი|$1 წუთი}}',
@@ -2932,6 +2952,7 @@ $messages['roa-tara'] = array(
 	'timedmedia-desc-link' => "'Mbormaziune sus a stu file",
 	'timedmedia-oggThumb-version' => "OggHandler vole 'a versine de oggThumb $1 o cchiù ierte.",
 	'timedmedia-oggThumb-failed' => 'oggThumn ha fallite a ccrejà le miniature.',
+	'timedmedia-status-unknown' => 'State scanusciute',
 	'timedmedia-actions' => 'Aziune',
 	'timedmedia-days' => '{{PLURAL: $1|sciurne|$1 sciurne}}',
 	'timedmedia-hours' => '{{PLURAL: $1|ore|$1 ore}}',
