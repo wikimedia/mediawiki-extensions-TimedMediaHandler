@@ -655,7 +655,7 @@ $messages['frp'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Tèlèchargement fêt',
 	'mwe-timedtext-back-btn' => 'Tornar',
 	'mwe-timedtext-choose-text' => 'Chouèsésséd lo tèxto',
-	'mwe-timedtext-upload-timed-text' => 'Importar des sot-titros',
+	'mwe-timedtext-upload-timed-text' => 'Apondre des sot-titros',
 	'mwe-timedtext-loading-text-edit' => 'Chargement de l’èditor de tèxto sincronisâ',
 	'mwe-timedtext-search' => 'Rechèrche un clipe',
 	'mwe-timedtext-layout' => 'Misa en pâge',
@@ -1218,6 +1218,13 @@ $messages['ka'] = array(
 	'mwe-timedtext-textcat-cue' => 'ნიშნული წერტილები',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 სუბტიტრები კლიპისათვის: $2',
 	'mwe-timedtext-request-subs' => 'ტრანსკრიფციის მოთხოვნა',
+);
+
+/** Korean (한국어)
+ * @author 아라
+ */
+$messages['ko'] = array(
+	'mwe-timedtext-textcat-cc' => '설명',
 );
 
 /** Colognian (Ripoarisch)
@@ -1979,6 +1986,13 @@ $messages['uk'] = array(
 	'mwe-timedtext-upload-text-desc-help-select' => 'Оберіть мову файлу',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['vi'] = array(
+	'mwe-timedtext-back-btn' => 'Quay lại',
 );
 
 /** Walloon (walon)

@@ -1002,6 +1002,7 @@ $messages['fa'] = array(
 
 /** Finnish (suomi)
  * @author Agony
+ * @author Beluga
  * @author Crt
  * @author Nike
  * @author Str4nd
@@ -1020,6 +1021,12 @@ $messages['fi'] = array(
 	'timedmedia-dismiss' => 'Sulje',
 	'timedmedia-download' => 'Lataa',
 	'timedmedia-desc-link' => 'Tiedoston tiedot',
+	'timedmedia-status' => 'Tila',
+	'timedmedia-status-unknown' => 'Tuntematon tila',
+	'timedmedia-not-ready' => 'Ei valmis',
+	'timedmedia-subtitle-new-go' => 'Siirry',
+	'timedmedia-subtitle-language' => '$1 ($2) kuvatekstit',
+	'timedmedia-file' => 'Tiedosto',
 );
 
 /** Faroese (føroyskt)
@@ -3739,6 +3746,7 @@ $messages['vep'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
 	'timedmedia-desc' => 'Bộ trình bày các tập tin âm thanh, video, và phụ đề hỗ trợ WebM, Ogg Theora, Vorbis, và srt',
@@ -3754,6 +3762,8 @@ $messages['vi'] = array(
 	'timedmedia-dismiss' => 'Đóng',
 	'timedmedia-download' => 'Tải tập tin xuống',
 	'timedmedia-desc-link' => 'Chi tiết của tập tin này',
+	'timedmedia-status' => 'Trạng thái',
+	'timedmedia-file' => 'Tập tin',
 );
 
 /** Volapük (Volapük)
@@ -3774,9 +3784,13 @@ $messages['wa'] = array(
 
 /** Yiddish (ייִדיש)
  * @author פוילישער
+ * @author පසිඳු කාවින්ද
  */
 $messages['yi'] = array(
+	'timedmedia-dismiss' => 'שליסן',
 	'timedmedia-download' => 'אראָפלאָדן טעקע',
+	'timedmedia-status' => 'סטאַטוס',
+	'timedmedia-file' => 'טעקע',
 );
 
 /** Cantonese (粵語) */

@@ -991,6 +991,7 @@ $messages['frp'] = array(
 	'mwe-embedplayer-credit-title' => 'Titro : $1',
 	'mwe-embedplayer-credit-date' => 'Dâta : $1',
 	'mwe-embedplayer-credit-author' => 'Ôtor : $1',
+	'mwe-embedplayer-nocredits' => 'Gins de crèdit disponiblo',
 	'mwe-embedplayer-loading_plugin' => 'Chargement du modulo d’èxtension ...',
 	'mwe-embedplayer-select_playback' => 'Dèfenir les prèferences de lèctura',
 	'mwe-embedplayer-link_back' => 'Lim retôrn',
@@ -1052,7 +1053,18 @@ $messages['frp'] = array(
 	'mwe-embedplayer-video-flv' => 'Vidèô Flash',
 	'mwe-embedplayer-video-ogg' => 'Vidèô Ogg',
 	'mwe-embedplayer-video-audio' => 'Ôdiô Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Ôdiô MPEG',
+	'mwe-embedplayer-video-3gp' => 'Vidèô 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Vidèô MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Vidèô AVI',
 	'mwe-embedplayer-missing-source' => 'Niona sôrsa vidèô at étâ trovâ.',
+);
+
+/** Irish (Gaeilge)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ga'] = array(
+	'mwe-embedplayer-close_btn' => 'Dún',
 );
 
 /** Galician (galego)
@@ -3367,9 +3379,11 @@ $messages['vi'] = array(
 
 /** Yiddish (ייִדיש)
  * @author פוילישער
+ * @author පසිඳු කාවින්ද
  */
 $messages['yi'] = array(
 	'mwe-embedplayer-credit-date' => 'דאַטע: $1',
+	'mwe-embedplayer-close_btn' => 'שליסן',
 );
 
 /** Simplified Chinese (‪中文（简体）‬)
