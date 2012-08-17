@@ -1885,6 +1885,7 @@ $messages['jut'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author NoiX180
  * @author Pras
  */
 $messages['jv'] = array(
@@ -1900,7 +1901,54 @@ $messages['jv'] = array(
 	'timedmedia-more' => 'Luwih akèh...',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Undhuh berkas',
+	'timedmedia-play-media' => 'Puter média',
 	'timedmedia-desc-link' => 'Prekara berkas iki',
+	'timedmedia-oggThumb-version' => 'OggHandler mbutuhaké oggThumb vèrsi $1 utawa sakbanjuré.',
+	'timedmedia-oggThumb-failed' => 'oggTumb gagal nggawé gambar mini.',
+	'timedmedia-status-header' => 'Status transkodhé',
+	'timedmedia-update-status' => 'Anyari status transkodhé',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Status ora dingertèni',
+	'timedmedia-transcodeinfo' => 'Katrangan turunan transkodhé',
+	'timedmedia-actions' => 'Laku',
+	'timedmedia-direct-link' => 'Undhuh turunan',
+	'timedmedia-not-ready' => 'Durung siap',
+	'timedmedia-completed-on' => 'Nglengkapi transkodhé $1',
+	'timedmedia-error-on' => 'Kasalahan nèng transkodhé $1.',
+	'timedmedia-started-transcode' => 'Transkodhé lekas $1 kapungkur. $2',
+	'timedmedia-percent-done' => 'Kira-kira $1 rampung',
+	'timedmedia-in-job-queue' => 'Nambahaké nèng antrian Pakaryan $1 kapungkur',
+	'timedmedia-unknown-target-size' => 'Gedhé patujon oradingertèni, $1 kasandhèkaké',
+	'timedmedia-days' => '{{PLURAL:$1|dina|dina}}',
+	'timedmedia-hours' => '{{PLURAL:$1|jam|jam}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|menit|menit}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|detik|detik}}',
+	'timedmedia-time-4-measurements' => '$1, $2, $3 lan $4',
+	'timedmedia-time-3-measurements' => '$1, $2 lan $3',
+	'timedmedia-time-2-measurements' => '$1 lan $2',
+	'timedmedia-show-error' => 'Tuduhaké kasalahan',
+	'timedmedia-reset' => 'Setèl ulang transkodhé',
+	'timedmedia-reset-error' => 'Kasalahan nalika nyetèl ulang tugas transkodhé.',
+	'timedmedia-source-file' => 'Sumber $1',
+	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Vidio Ogg bandwidth cilik (160P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Vidio Ogg sing bisa diundhuh mawa kualitas dhuwur (720P)',
+	'timedmedia-derivative-desc-720p.webm' => 'WebM sing bisa diundhuh mawa kualitas dhuwur (720P)',
+	'timedmedia-subtitle-new' => 'Gawé terjemahan anyar utawa sunting sing wis ana',
+	'timedmedia-subtitle-new-desc' => "Ganti bagéyan '''LANG''' nganggo [[:en:ISO 639|kodhé basa]] Sampéyan lan pencèt tombol '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Nuju',
+	'timedmedia-subtitle-language' => 'Subjudhul $1 ($2)',
+	'timedmedia-subtitle-no-video' => 'Ora ana vidio sing cocok karo kaca subjudhul saiki',
+	'timedmedia-subtitle-no-subtitles' => 'Sawetara durung ana subjudhul nèng $1 kanggo vidio iki, Sampéyan bisa [{{fullurl:{{FULLPAGENAME}}|action=edit}} nyunting kaca iki] kanggo nambahi',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 vidio|$1 vidio}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vidio Ogg|$1 vidio Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 vidio WebM|$1 vidio WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transkodhé|$1 transkodhé}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transkodhé lumangsung|$1 transkodhé lumangsung}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transkodhé ngantri|$1 transkodhé ngantri}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transkodhé gagal|$1 transkodhé gagal}}',
+	'timedmedia-file' => 'Berkas',
 );
 
 /** Georgian (ქართული)
@@ -3712,6 +3760,22 @@ $messages['uk'] = array(
 	'timedmedia-dismiss' => 'Закрити',
 	'timedmedia-download' => 'Завантажити файл',
 	'timedmedia-desc-link' => 'Інформація про цей файл',
+);
+
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'timedmedia-more' => 'مزید...',
+	'timedmedia-dismiss' => 'بند',
+	'timedmedia-download' => 'فائل ڈاؤن لوڈ ، اتارنا',
+	'timedmedia-play-media' => 'کھیلنے کے میڈیا',
+	'timedmedia-desc-link' => 'اس فائل کے بارے میں',
+	'timedmedia-status' => 'حیثیت',
+	'timedmedia-status-unknown' => 'نامعلوم مقام',
+	'timedmedia-actions' => 'اعمال',
+	'timedmedia-show-error' => 'شو کی غلطی',
+	'timedmedia-file' => 'فائل',
 );
 
 /** vèneto (vèneto)

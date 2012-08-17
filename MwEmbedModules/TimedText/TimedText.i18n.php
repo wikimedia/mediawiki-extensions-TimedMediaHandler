@@ -1074,6 +1074,7 @@ $messages['id'] = array(
 /** Italian (italiano)
  * @author Beta16
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Gianfranco
  */
 $messages['it'] = array(
@@ -1115,6 +1116,7 @@ $messages['it'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Testi',
 	'mwe-timedtext-language-subtitles-for-clip' => 'sottotitoli in $1 per il clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Sottotitoli in $1 non trovati per il clip: $2',
+	'mwe-timedtext-request-already-done' => 'Una trascrizione di questo video è già stata richiesta. [$1 Vedi tutte le richieste di trascrizione]',
 );
 
 /** Japanese (日本語)
@@ -1986,6 +1988,15 @@ $messages['uk'] = array(
 	'mwe-timedtext-upload-text-desc-help-select' => 'Оберіть мову файлу',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
+);
+
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'mwe-timedtext-stage-translate' => 'کا ترجمہ',
+	'mwe-timedtext-back-btn' => 'واپس',
+	'mwe-timedtext-textcat-sub' => 'رومانیہ',
 );
 
 /** Vietnamese (Tiếng Việt)

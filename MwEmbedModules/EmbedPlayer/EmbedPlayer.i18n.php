@@ -1667,6 +1667,7 @@ $messages['it'] = array(
 	'mwe-embedplayer-next_clip_msg' => 'Riproduci clip successivo',
 	'mwe-embedplayer-prev_clip_msg' => 'Riproduci clip precedente',
 	'mwe-embedplayer-current_clip_msg' => 'Continuare a riprodurre questa clip',
+	'mwe-embedplayer-seek_to' => 'Salta a $1',
 	'mwe-embedplayer-paused' => 'in pausa',
 	'mwe-embedplayer-download_segment' => 'Scarica selezione:',
 	'mwe-embedplayer-download_full' => 'Scarica file video completo:',
@@ -1695,6 +1696,8 @@ $messages['it'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(selezionato)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Per una migliore esperienza di riproduzione dei video si consiglia un [$1 browser che supporti i video html5].',
+	'mwe-embedplayer-fullscreen-tip' => 'Premere <b>F11</b> attiva/disattiva la modalità a schermo intero del <i>browser web</i>',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Premere <b>Maiusc ⌘ F</b> attiva/disattiva la modalità a schermo intero',
 	'mwe-embedplayer-do_not_warn_again' => 'In futuro, non mostrare questo messaggio',
 	'mwe-embedplayer-playerSelect' => 'Lettori',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leggi questo</a> prima di incorporare.',
@@ -3276,6 +3279,17 @@ $messages['uk'] = array(
 	'mwe-embedplayer-video-flv' => 'Флеш відео',
 	'mwe-embedplayer-video-ogg' => 'Ogg відео',
 	'mwe-embedplayer-video-audio' => 'Ogg аудіо',
+);
+
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'mwe-embedplayer-download' => 'ڈاؤن لوڈ ، اتارنا',
+	'mwe-embedplayer-share' => 'حصہ',
+	'mwe-embedplayer-credits' => 'کریڈٹ',
+	'mwe-embedplayer-menu_btn' => 'مینو',
+	'mwe-embedplayer-close_btn' => 'بند',
 );
 
 /** vèneto (vèneto) */
