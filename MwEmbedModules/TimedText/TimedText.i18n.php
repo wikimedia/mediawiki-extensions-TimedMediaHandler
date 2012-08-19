@@ -1691,13 +1691,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (română)
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'mwe-timedtext-stage-transcribe' => 'Transcrie',
 	'mwe-timedtext-stage-sync' => 'Sincronizează',
 	'mwe-timedtext-stage-translate' => 'Tradu',
-	'mwe-timedtext-select-language' => 'Selectează limba',
+	'mwe-timedtext-select-language' => 'Selectare limbă',
 	'mwe-timedtext-file-language' => 'Selectează fișierul de limbă',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Selectează limba din fișier',
 	'mwe-timedtext-upload-text-preview' => 'Revizuiește textul',

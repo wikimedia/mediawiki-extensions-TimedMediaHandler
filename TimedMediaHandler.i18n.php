@@ -537,6 +537,7 @@ $messages['br'] = array(
 	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 	'timedmedia-status' => 'Statud',
 	'timedmedia-status-unknown' => 'Statud dianav',
+	'timedmedia-actions' => 'Oberoù',
 	'timedmedia-not-ready' => "N'eo ket prest",
 	'timedmedia-days' => '$1 {{PLURAL: $1|devezh|devezh}}',
 	'timedmedia-hours' => '$1 {{PLURAL: $1|eurvezh|eurvezh}}',
@@ -1275,7 +1276,7 @@ Está seguro de querer continuar?',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM para a web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta calidade que se pode descargar (720P)',
 	'timedmedia-subtitle-new' => 'Crear unha nova tradución ou editar a actual',
-	'timedmedia-subtitle-new-desc' => "Substitúa o texto '''LANG''' co [[:en:ISO 639|código da súa lingua]] e prema no botón \"'''Continuar'''\"",
+	'timedmedia-subtitle-new-desc' => "Substitúa o texto '''LANG''' co [[:en:ISO 639|código da súa lingua]] e prema no botón \"'''{{int:Timedmedia-subtitle-new-go}}'''\"",
 	'timedmedia-subtitle-new-go' => 'Continuar',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Non hai ningún vídeo asociado coa páxina de subtítulos actual',
@@ -3027,6 +3028,7 @@ $messages['roa-tara'] = array(
  * @author Ahonc
  * @author Eleferen
  * @author Kaganer
+ * @author Kalan
  * @author Kv75
  * @author MaxSem
  * @author Александр Сигачёв
@@ -3090,6 +3092,7 @@ $messages['ru'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) субтитры',
 	'timedmedia-subtitle-no-video' => 'Нет видео, связанного с текущей страницей субтитров',
 	'timedmedia-subtitle-no-subtitles' => 'В настоящее время нет субтитров на $1 для этого видео, Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} изменить эту страницу] для их добавления',
+	'timedmedia-file' => 'Файл',
 );
 
 /** Rusyn (русиньскый)
