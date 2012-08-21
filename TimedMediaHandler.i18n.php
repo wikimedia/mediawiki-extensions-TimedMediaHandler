@@ -930,9 +930,18 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta calidad que se puede descargar (720P)',
 	'timedmedia-subtitle-new' => 'Crear una nueva traducción o editar una existente',
 	'timedmedia-subtitle-new-desc' => "Reemplaza la parte '''LANG'' con su [[:en:ISO 639|código de idioma]] y presiona el botón '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Ir',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
 	'timedmedia-subtitle-no-subtitles' => 'Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 vídeo WebM|$1 vídeos WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transcodificación activa|$1 transcodificaciones activas}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}} en la cola',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificaciones fallidas}}',
 	'timedmedia-file' => 'Archivo',
 );
 
