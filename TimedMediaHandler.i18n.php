@@ -1679,11 +1679,20 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
 	'timedmedia-derivative-desc-480p.webm' => 'WebM transmissibile per fluxo web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM discargabile de alte qualitate (720P)',
 	'timedmedia-subtitle-new' => 'Crear un nove traduction o modificar le existente',
-	'timedmedia-subtitle-new-desc' => "Reimplacia le litteras '''LANG''' per le [[:en:ISO 639|codice de tu lingua]] e preme le button '''Va'''",
+	'timedmedia-subtitle-new-desc' => "Reimplacia le litteras '''LANG''' per le [[:en:ISO 639|codice de tu lingua]] e preme le button '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Va',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitulos',
 	'timedmedia-subtitle-no-video' => 'Il non ha video associate con le actual pagina de subtitulos',
 	'timedmedia-subtitle-no-subtitles' => 'Il ha actualmente nulle subtitulos in $1 pro iste video. Tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina] pro adder los.',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 video Ogg|$1 videos Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 video WebM|$1 videos WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodification|$1 transcodificationes}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transcodification|$1 transcodificationes}} active',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodification|$1 transcodificationes}} in cauda',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodification|$1 transcodificationes}} fallite',
+	'timedmedia-file' => 'File',
 );
 
 /** Indonesian (Bahasa Indonesia)
