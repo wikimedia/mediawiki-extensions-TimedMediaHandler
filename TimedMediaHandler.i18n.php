@@ -1881,6 +1881,7 @@ $messages['ja'] = array(
 	'timedmedia-status' => '状態',
 	'timedmedia-status-unknown' => '不明な状態',
 	'timedmedia-actions' => '操作',
+	'timedmedia-percent-done' => '約 $1% 完了',
 	'timedmedia-days' => '{{PLURAL:$1|$1 日}}',
 	'timedmedia-hours' => '{{PLURAL:$1|$1 時間}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 分}}',
@@ -1889,6 +1890,10 @@ $messages['ja'] = array(
 	'timedmedia-time-3-measurements' => '$1、$2、$3',
 	'timedmedia-time-2-measurements' => '$1、$2',
 	'timedmedia-show-error' => 'エラーを表示',
+	'timedmedia-subtitle-new-desc' => "'''LANG''' 部分を自分の[[:en:ISO 639|言語コード]]に置換して、'''{{int:Timedmedia-subtitle-new-go}}'''ボタンを押してください。",
+	'timedmedia-subtitle-new-go' => '実行',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 動画}}',
+	'timedmedia-file' => 'ファイル',
 );
 
 /** Jutish (jysk)
