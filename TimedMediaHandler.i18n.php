@@ -1778,6 +1778,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  * @author Darth Kule
  * @author F. Cosoleto
+ * @author Raoli
  */
 $messages['it'] = array(
 	'timedmedia-desc' => 'Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt',
@@ -1804,13 +1805,16 @@ $messages['it'] = array(
 	'timedmedia-update-status' => 'Aggiorna stato transcodifica',
 	'timedmedia-status' => 'Stato',
 	'timedmedia-status-unknown' => 'Stato sconosciuto',
+	'timedmedia-transcodeinfo' => 'Descrizione derivata dal Transcodice',
 	'timedmedia-actions' => 'Azioni',
+	'timedmedia-direct-link' => 'Scarica derivato',
 	'timedmedia-not-ready' => 'Non pronto',
 	'timedmedia-completed-on' => 'Transcodifica completata $1',
 	'timedmedia-error-on' => 'Errore nella transcodifica il $1.',
 	'timedmedia-started-transcode' => 'Transcodifica iniziata $1 fa. $2',
 	'timedmedia-percent-done' => '$1% circa completato',
 	'timedmedia-in-job-queue' => 'Aggiunto alla coda di lavoro  $1  fa',
+	'timedmedia-unknown-target-size' => 'Dimensioni di destinazione sconosciuta, $1 codificato',
 	'timedmedia-days' => '{{PLURAL:$1|un giorno|$1 giorni}}',
 	'timedmedia-hours' => "{{PLURAL:$1|un'ora|$1 ore}}",
 	'timedmedia-minutes' => '{{PLURAL:$1|un minuto|$1 minuti}}',
@@ -1823,6 +1827,7 @@ $messages['it'] = array(
 	'timedmedia-reset-confirm' => 'Resettando questa transcodifica tutti i file esistenti (se presenti) saranno cancellati e la transcodifica sarà nuovamente aggiunta alla coda di lavoro. Ci vorrà qualche tempo per rieseguire la transcodifica. <br /><br />
 Continuare?',
 	'timedmedia-reset-error' => 'Errore nel resettaggio della transcodifica.',
+	'timedmedia-source-file' => 'Fonte $1',
 	'timedmedia-source-file-desc' => 'Originale $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg a bassa larghezza di banda (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg trasmettibile in streaming via Web (360P)',

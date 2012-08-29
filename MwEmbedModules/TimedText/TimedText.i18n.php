@@ -1227,6 +1227,7 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'mwe-timedtext-textcat-cc' => '설명',
+	'mwe-timedtext-textcat-nb' => '주석',
 );
 
 /** Colognian (Ripoarisch)
