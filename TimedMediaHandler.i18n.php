@@ -2005,6 +2005,7 @@ $messages['ka'] = array(
 	'timedmedia-status' => 'სტატუსი',
 	'timedmedia-status-unknown' => 'უცნობი სტატუსი',
 	'timedmedia-actions' => 'მოქმედება',
+	'timedmedia-not-ready' => 'არაა მზად',
 	'timedmedia-days' => '{{PLURAL:$1|დღე|$1 დღე}}',
 	'timedmedia-hours' => '{{PLURAL:$1|საათი|$1 საათი}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|წუთი|$1 წუთი}}',
