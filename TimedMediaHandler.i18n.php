@@ -987,6 +987,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Huji
  * @author Mjbmr
+ * @author جواد
  */
 $messages['fa'] = array(
 	'timedmedia-desc' => 'به دست گیرندهٔ پرونده‌های صوتی، تصویری و متن‌های زمان‌بندی شده با پشتیبانی از Ogg Theora ،Vorbis و srt',
@@ -1010,6 +1011,9 @@ $messages['fa'] = array(
 	'timedmedia-hours' => '$1 ساعت',
 	'timedmedia-minutes' => '$1 دقیقه',
 	'timedmedia-seconds' => '$1 ثانیه',
+	'timedmedia-time-4-measurements' => '$1، $2، ،$3 و $4',
+	'timedmedia-time-3-measurements' => '$1، $2 و $3',
+	'timedmedia-time-2-measurements' => '$1 و $2',
 	'timedmedia-show-error' => 'نمایش خطا',
 	'timedmedia-subtitle-new-go' => 'برو',
 );
