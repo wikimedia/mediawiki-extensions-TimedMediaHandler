@@ -1677,7 +1677,7 @@ $messages['it'] = array(
 	'mwe-embedplayer-download' => 'Scarica',
 	'mwe-embedplayer-share' => 'Condividi',
 	'mwe-embedplayer-credits' => 'Crediti',
-	'mwe-embedplayer-about-library' => 'Su Kaltura player',
+	'mwe-embedplayer-about-library' => 'Informazioni su Kaltura player',
 	'mwe-embedplayer-about-library-desc' => "La libreria multimedia HTML5 di Kaltura consente adesso di utilizzare l'etichette HTML5 &lt;video&gt; and &lt;audio&gt; con una interfaccia del media player coerente in tutti i principali browser.
 
 [$1 Maggiori informazioni sulla libreria Kaltura].",
