@@ -60,10 +60,10 @@ class TimedMediaIframeOutput {
 		$wgOut->addModules( array( 'embedPlayerIframeStyle') );
 		$wgOut->sendCacheControl();
 	?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta charset="UTF-8" />
 <title><?php echo $title->getText() ?></title>
 	<?php
 		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
@@ -102,18 +102,23 @@ class TimedMediaIframeOutput {
 		<?php echo $videoTransform->toHtml(); ?>
 	</div>
 	<script>
+		// Turn off rewrite selector
+		mw.setConfig('EmbedPlayer.RewriteSelector', '');
 		// Set the fullscreen property inline to avoid poluting the player cache
 		mw.setConfig('EmbedPlayer.EnableFullscreen', false );
 		$('#bgimage').remove();
 
 		mw.setConfig( 'EmbedPlayer.IsIframeServer', true );
-		
-		mw.ready(function(){
+
+		// rewrite player
+		$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' ).embedPlayer(function(){
+				
+			// Bind window resize to reize the player:
 			var fitPlayer = function(){
 				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
 				[0].updateLayout();
 			}
-			// Bind window resize to reize the player:
+		
 			$( window ).resize( fitPlayer );
 			$('#videoContainer').css({
 				'visibility':'visible'
