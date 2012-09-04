@@ -4,18 +4,13 @@
 ( function( mw, $ ) {
 	/**
 	* Add a DOM ready check for player tags
-	*
-	* We use 'SetupInterface' binding so other code that depend on the video interface can
-	* work after the 'IntefacesReady' event
 	*/
-	$( mw ).bind( 'SetupInterface', function( event, callback ){
+	$(function( event, callback ){
 		// Check if we have tags to rewrite:
 		if( $( mw.getConfig( 'EmbedPlayer.RewriteSelector' )  ).length ) {
 			// Rewrite the embedPlayer EmbedPlayer.RewriteSelector and run callback once ready:
 			$( mw.getConfig( 'EmbedPlayer.RewriteSelector' ) )
-				.embedPlayer( callback );
-		} else {
-			callback();
+				.embedPlayer();
 		}
 	});
 
