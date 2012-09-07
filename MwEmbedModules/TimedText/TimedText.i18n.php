@@ -360,9 +360,11 @@ $messages['de-formal'] = array(
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
 	'mwe-timedtext-stage-sync' => 'Sync',
+	'mwe-timedtext-back-btn' => 'Peyser',
 );
 
 /** Lower Sorbian (dolnoserbski)
