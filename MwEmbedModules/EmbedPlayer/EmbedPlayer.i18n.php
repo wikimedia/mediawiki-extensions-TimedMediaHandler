@@ -2633,6 +2633,8 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'mwe-embedplayer-credit-title' => 'Título: $1',
+	'mwe-embedplayer-credit-date' => 'Data: $1',
+	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-loading_plugin' => 'Carregando plugin ...',
 	'mwe-embedplayer-select_playback' => 'Definir as preferências de reprodução',
 	'mwe-embedplayer-link_back' => 'Ligar atrás',
