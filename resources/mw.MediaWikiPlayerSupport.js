@@ -267,6 +267,11 @@
 		$( embedPlayer ).bind( 'TimedText_BuildCCMenu', function(event, $menu){
 			// Put in the "Make Transcript" link if config enabled and we have an api key
 			if( embedPlayer.apiTitleKey ){
+				// check if not already there:
+				if( $menu.find( '.add-timed-text' ).length ){
+					// add text link already present
+					return ;
+				}
 				
 				var addTextPage =  mw.getApiProviderURL( apiProvider )
 									.replace( 'api.php', 'index.php') +
@@ -276,7 +281,8 @@
 					window.location = addTextPage;
 				});
 				
-				$li.find( "a" )
+				$li.addClass( 'add-timed-text')
+					.find( "a" )
 					.attr( {
 						'href': addTextPage,
 						'target' : '_new'
@@ -296,7 +302,6 @@
 				callback();
 			}
 		});
-		
 		$( mw ).bind( 'TimedText_LoadTextSource', function( event, source, callback ){
 			if( !source['mwtitle'] || !source['mwprovider'] ){
 				callback();

@@ -337,7 +337,8 @@
 							'height'	: '180px',
 							'width' 	: '180px',
 							'font-size'	: '12px',
-							'display' : 'none'
+							'display' : 'none',
+							'overflow' : 'auto'
 						} )
 
 				);
@@ -1047,7 +1048,11 @@
 			var addedCaption = false;
 			// Show captions that are on:
 			$.each( activeCaptions, function( capId, caption ){
-				if( _this.embedPlayer.getInterface().find( '.track[data-capId="' + capId +'"]').length == 0){
+				var $cap =  _this.embedPlayer.getInterface().find( '.track[data-capId="' + capId +'"]');
+				if( caption.content != $cap.html() ){
+					// remove old
+					$cap.remove();
+					// add the updated value: 
 					_this.addCaption( source, capId, caption );
 					addedCaption = true;
 				}
