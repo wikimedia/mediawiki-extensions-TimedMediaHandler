@@ -240,9 +240,13 @@
 		});
 		
 		// Show credits on clip complete:
-		$( embedPlayer ).bind('onEndedDone', function(){
+		$( embedPlayer ).bind('onEndedDone', function( event, id ){
+			if( embedPlayer.id != id ){
+				// possible event trigger error. ( skip )
+				return ;
+			}
 			var cb = embedPlayer.controlBuilder;
-			cb.checkMenuOverlay( );
+			cb.checkMenuOverlay();
 			cb.showMenuOverlay();
 			cb.showMenuItem( 'credits' );
 		});

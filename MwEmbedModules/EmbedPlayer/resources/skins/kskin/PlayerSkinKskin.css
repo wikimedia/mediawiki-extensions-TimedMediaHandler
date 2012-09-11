@@ -115,6 +115,8 @@
 	-webkit-border-radius:5px 5px 5px 5px;
 }
 .k-player .ui-corner-all {
+	border-radius:5px 5px 5px 5px;
+	-webkit-border-radius:5px 5px 5px 5px;
 	-moz-border-radius:5px 5px 5px 5px;
 }
 .k-player ul.fg-menu{

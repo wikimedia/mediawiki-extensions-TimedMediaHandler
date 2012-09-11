@@ -1013,7 +1013,7 @@
 						mw.log("EmbedPlayer:: trigger: onEndedDone");
 						if ( !_this.triggeredEndDone ){
 							_this.triggeredEndDone = true;
-							$( _this ).trigger( 'onEndedDone' );
+							$( _this ).trigger( 'onEndedDone', [_this.id] );
 						}
 					})
 				}
