@@ -2277,6 +2277,8 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawi
 	'timedmedia-minutes' => '{{PLURAL:$1|Minutt|$1 Minutten}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|Sekonn|$1 Sekonnen}}',
 	'timedmedia-show-error' => 'Feeler weisen',
+	'timedmedia-subtitle-new-go' => 'Lass',
+	'timedmedia-file' => 'Fichier',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
