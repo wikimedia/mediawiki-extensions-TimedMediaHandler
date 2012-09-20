@@ -2409,6 +2409,9 @@
 
 			// mw.log( "monitor:: " + this.currentTime + ' propagateEvents: ' +  _this._propagateEvents );
 
+			// update player status
+			_this.updatePlayheadStatus();
+			
 			// Keep volume proprties set outside of the embed player in sync
 			_this.syncVolume();
 
