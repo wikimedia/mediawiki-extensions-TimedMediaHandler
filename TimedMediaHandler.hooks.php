@@ -13,7 +13,7 @@ class TimedMediaHandlerHooks {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$wgTmhFileExtensions, $wgParserOutputHooks, $wgTimedTextNS,
-		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir;
+		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir, $wgCortadoJarFile;
 
 		// Register the Timed Media Handler javascript resources ( MwEmbed modules )
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
@@ -23,6 +23,9 @@ class TimedMediaHandlerHooks {
 		$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath .
 			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer';
 
+		// Register java cortado path config: 
+		$wgMwEmbedModuleConfig['wgCortadoJarFile'] = $wgCortadoJarFile;
+		
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';

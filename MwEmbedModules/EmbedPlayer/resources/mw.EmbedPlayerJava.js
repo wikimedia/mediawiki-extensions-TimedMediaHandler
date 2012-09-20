@@ -4,7 +4,7 @@
 * for cross domain java applet loading.
 */
 window.cortadoDomainLocations = {
-		'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'
+	'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'
 };
 
 // Set the default location for CortadoApplet
@@ -74,6 +74,11 @@ mw.EmbedPlayerJava = {
 	getAppletLocation: function() {
 		var mediaSrc = this.getSrc();
 		var appletLoc = false;
+		// Check for wgCortadoJarFile override
+		if( mw.getConfig( 'wgCortadoJarFile' ) !== false ){
+			return mw.getConfig('wgCortadoJarFile' ); 
+		}
+		
 		if (
 			!mw.isLocalDomain( mediaSrc )
 			||

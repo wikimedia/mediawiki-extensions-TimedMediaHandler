@@ -22,6 +22,11 @@ $wgAvailableRights[] = 'transcode-status';
 
 
 /*** MwEmbed module configuration: *********************************/
+
+// Path overdie for cortado ( by default its false and uses hard coded paths relative to TMH
+// or the predefined path on upload server: http://upload.wikimedia.org/jars/cortado.jar 
+$wgCortadoJarFile = false;
+
 // Show a warning to the user if they are not using an html5 browser with high quality ogg support
 $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 
