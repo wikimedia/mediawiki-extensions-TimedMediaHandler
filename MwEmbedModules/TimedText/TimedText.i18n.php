@@ -1082,6 +1082,7 @@ $messages['id'] = array(
 $messages['it'] = array(
 	'mwe-timedtext-editor' => 'Editor sottotitoli',
 	'mwe-timedtext-stage-transcribe' => 'Trascrivi',
+	'mwe-timedtext-stage-sync' => 'Sincronizza',
 	'mwe-timedtext-stage-translate' => 'Traduci',
 	'mwe-timedtext-stage-upload' => 'Carica da file locale',
 	'mwe-timedtext-select-language' => 'Seleziona lingua',
@@ -1092,6 +1093,8 @@ $messages['it'] = array(
 	'mwe-timedtext-upload-text-desc-help' => "L'interfaccia per il caricamento dei file di testo accetta il file .srt",
 	'mwe-timedtext-upload-text-desc-help-browse' => 'Sfoglia il computer locale per i file .srt che vuoi caricare',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Seleziona la lingua del file.',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Rivedi/modifica il contenuto del testo e premi carica per aggiungerlo',
+	'mwe-timedtext-upload-text-preview' => 'Rivedi testo',
 	'mwe-timedtext-upload-text-success' => 'Caricamento dei sottotitoli corretto',
 	'mwe-timedtext-upload-text-done' => 'Caricamento completato',
 	'mwe-timedtext-upload-text-fail-desc' => 'Caricamento fallito',
@@ -1118,6 +1121,10 @@ $messages['it'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Testi',
 	'mwe-timedtext-language-subtitles-for-clip' => 'sottotitoli in $1 per il clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Sottotitoli in $1 non trovati per il clip: $2',
+	'mwe-timedtext-request-subs' => 'Richiedi trascrizione',
+	'mwe-timedtext-request-subs-desc' => 'Aggiungi una richiesta per la trascrizione di questo video',
+	'mwe-timedtext-request-subs-done' => 'Richiesta di trascrizione aggiunta. [$1 Vedi tutte le richieste di trascrizione]',
+	'mwe-timedtext-request-subs-fail' => "Impossibile aggiungere la richiesta di trascrizione. Hai effettuato l'accesso?",
 	'mwe-timedtext-request-already-done' => 'Una trascrizione di questo video è già stata richiesta. [$1 Vedi tutte le richieste di trascrizione]',
 );
 
