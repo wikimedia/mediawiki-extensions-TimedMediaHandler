@@ -1638,6 +1638,20 @@ $messages['id'] = array(
  * @author Snævar
  */
 $messages['is'] = array(
+	'mwe-embedplayer-credit-title' => 'Titill: $1',
+	'mwe-embedplayer-credit-date' => 'Dagsetning: $1',
+	'mwe-embedplayer-credit-author' => 'Höfundur: $1',
+	'mwe-embedplayer-select_playback' => 'Setja afspilunar stillingar',
+	'mwe-embedplayer-error_swap_vid' => 'Villa: mwEmbad gat ekki skipt myndbands tagi út fyrir mwEmbed valmyndina',
+	'mwe-embedplayer-play_clip' => 'Spila myndband',
+	'mwe-embedplayer-pause_clip' => 'Gera hlé á spilun',
+	'mwe-embedplayer-volume_control' => 'Hljóðstyrkur',
+	'mwe-embedplayer-player_options' => 'Stillingar spilarans',
+	'mwe-embedplayer-player_fullscreen' => 'Fylla skjá',
+	'mwe-embedplayer-next_clip_msg' => 'Spila næsta myndband',
+	'mwe-embedplayer-prev_clip_msg' => 'Spila fyrra myndband',
+	'mwe-embedplayer-current_clip_msg' => 'Halda áfram spilun',
+	'mwe-embedplayer-seek_to' => 'Sæki $1',
 	'mwe-embedplayer-download_clip' => 'Sækja myndband',
 	'mwe-embedplayer-download' => 'Hlaða niður',
 	'mwe-embedplayer-share' => 'Deila',
