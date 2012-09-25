@@ -2394,6 +2394,7 @@ $messages['pl'] = array(
 	'mwe-embedplayer-credit-title' => 'Tytuł – $1',
 	'mwe-embedplayer-credit-date' => 'Data: $1',
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
+	'mwe-embedplayer-nocredits' => 'Informacja o twórcach nie jest dostępna',
 	'mwe-embedplayer-loading_plugin' => 'trwa ładowanie wtyczki...',
 	'mwe-embedplayer-select_playback' => 'Ustaw preferencje odtwarzania',
 	'mwe-embedplayer-link_back' => 'Link powrotny',
