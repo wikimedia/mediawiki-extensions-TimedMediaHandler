@@ -3437,7 +3437,7 @@ $messages['yi'] = array(
 	'mwe-embedplayer-close_btn' => 'שליסן',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Hydra
  */
 $messages['zh-hans'] = array(
@@ -3450,6 +3450,17 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-share' => '分享',
 	'mwe-embedplayer-close_btn' => '关闭',
 	'mwe-embedplayer-ogg-player-selected' => '（已选取）',
+	'mwe-embedplayer-related_videos' => '相关视频',
+	'mwe-embedplayer-buffering' => '缓冲中',
+	'mwe-embedplayer-video-h264' => 'H.264视频',
+	'mwe-embedplayer-video-webm' => 'WebM视频',
+	'mwe-embedplayer-video-flv' => 'Flash视频',
+	'mwe-embedplayer-video-ogg' => 'Ogg视频',
+	'mwe-embedplayer-video-audio' => 'Ogg音频',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG音频',
+	'mwe-embedplayer-video-3gp' => '3GP视频',
+	'mwe-embedplayer-video-mpeg' => 'MPEG视频',
+	'mwe-embedplayer-video-msvideo' => 'AVI视频',
 );
 
 /** Traditional Chinese (‪中文（繁體）‬)

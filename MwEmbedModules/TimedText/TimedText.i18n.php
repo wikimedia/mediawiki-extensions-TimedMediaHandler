@@ -2056,7 +2056,7 @@ $messages['yi'] = array(
 	'mwe-timedtext-textcat-cc' => 'באשרייבונגען',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Wilsonmess
  * @author Xiaomingyan
  */
@@ -2074,17 +2074,21 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-upload-text-done' => '上传完成',
 	'mwe-timedtext-upload-text-fail-desc' => '未能成功上传',
 	'mwe-timedtext-upload-text-fail-title' => '上传失败',
+	'mwe-timedtext-upload-text-another' => '上载其他',
 	'mwe-timedtext-upload-text-done-uploading' => '上传完成',
 	'mwe-timedtext-back-btn' => '返回',
 	'mwe-timedtext-choose-text' => '选择文字',
-	'mwe-timedtext-upload-timed-text' => '上传字幕',
+	'mwe-timedtext-upload-timed-text' => '添加字幕',
 	'mwe-timedtext-search' => '搜索剪辑',
 	'mwe-timedtext-layout' => '布局',
 	'mwe-timedtext-layout-off' => '隐藏字幕',
 	'mwe-timedtext-loading-text' => '正在读取文本……',
 	'mwe-timedtext-textcat-cc' => '标题',
 	'mwe-timedtext-textcat-sub' => '副标题',
+	'mwe-timedtext-textcat-ktv' => '卡拉OK',
 	'mwe-timedtext-textcat-nb' => '注解',
+	'mwe-timedtext-textcat-trx' => '字幕',
+	'mwe-timedtext-textcat-lrc' => '歌词',
 );
 
 /** Traditional Chinese (‪中文（繁體）‬)
