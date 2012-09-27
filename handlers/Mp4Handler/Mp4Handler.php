@@ -2,7 +2,7 @@
 /**
  * WebM handler
  */
-class WebMHandler extends TimedMediaHandler {
+class Mp4Handler extends TimedMediaHandler {
 	// XXX match GETID3_VERSION ( too bad version is not a getter )
 	const METADATA_VERSION = 1;
 
@@ -27,7 +27,7 @@ class WebMHandler extends TimedMediaHandler {
 		$id3 = $getID3->analyze( $path );
 
 		// Unset some parts of id3 that are too detailed and matroska specific:
-		unset( $id3['matroska'] );
+		unset( $id3['quicktime'] );
 		// remove file paths
 		unset( $id3['filename'] );
 		unset( $id3['filepath'] );
@@ -87,7 +87,7 @@ class WebMHandler extends TimedMediaHandler {
 	 * @return string
 	 */
 	function getMetadataType( $image ) {
-		return 'webm';
+		return 'mp4';
 	}
 
 	/**
@@ -100,12 +100,19 @@ class WebMHandler extends TimedMediaHandler {
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'vorbis' ){
-			$streamTypes[] =  'Vorbis';
+		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'mp4' ){
+			if( isset( $metadata['audio']['codec'] )
+				&&
+				strpos( $metadata['audio']['codec'] , 'AAC' ) !== false
+			){
+				$streamTypes[] =  'AAC';
+			} else {
+				$streamTypes[] = $metadata['audio']['codec'];
+			}
 		}
 		// id3 gives 'V_VP8' for what we call VP8
-		if( $metadata['video']['dataformat'] == 'vp8' ){
-			$streamTypes[] =  'VP8';
+		if( $metadata['video']['dataformat'] == 'quicktime' ){
+			$streamTypes[] =  'h.264';
 		}
 
 		return $streamTypes;
@@ -161,8 +168,8 @@ class WebMHandler extends TimedMediaHandler {
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-		return wfMessage( 'timedmedia-webm-short-video', implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
+		return wfMsg( 'timedmedia-mp4-short-video', implode( '/', $streamTypes ),
+			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
 	}
 
 	/**
@@ -171,14 +178,13 @@ class WebMHandler extends TimedMediaHandler {
 	 */
 	function getLongDesc( $file ) {
 		global $wgLang;
-		return wfMessage('timedmedia-webm-long-video',
+		return wfMsg('timedmedia-mp4-long-video',
 			implode( '/', $this->getStreamTypes( $file ) ),
 			$wgLang->formatTimePeriod( $this->getLength($file) ),
-			$wgLang->formatBitrate( $this->getBitRate( $file ) )
-		)->numParams(
-			$file->getWidth(),
-			$file->getHeight()
-		)->text();
+			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
+			$wgLang->formatNum( $file->getWidth() ),
+			$wgLang->formatNum( $file->getHeight() )
+		);
 
 	}
 

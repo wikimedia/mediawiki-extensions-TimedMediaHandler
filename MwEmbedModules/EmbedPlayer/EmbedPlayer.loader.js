@@ -34,6 +34,8 @@
 		var rewriteElementCount = 0;
 		$( playerSelect).each( function(inx, playerElement){
 			var skinName ='';
+			// we have javascript ( disable controls )
+			$( playerElement ).removeAttr( 'controls' );
 			// Add an overlay loader ( firefox has its own native loading spinner )
 			if( !$.browser.mozilla ){
 				$( playerElement )

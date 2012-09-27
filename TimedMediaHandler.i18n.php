@@ -22,6 +22,9 @@ $messages['en'] = array(
 	'timedmedia-webm-short-video' => 'WebM $1 video file, $2',
 	'timedmedia-webm-long-video' => 'WebM audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
 
+	'timedmedia-mp4-short-video' => 'Mp4 $1 video file, $2',
+	'timedmedia-mp4-long-video' => 'Mp4 audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
+
 	'timedmedia-no-player-js' 	  => 'Sorry, your browser either has JavaScript disabled or does not have any supported player.<br />
 You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download a player</a> to play the clip in your browser.',
 
@@ -66,6 +69,7 @@ Are you sure you want to proceed?',
 	// Original uploaded asset
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
+	'timedmedia-mp4' => 'Mp4',
 	'timedmedia-source-file' => '$1 source',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 
@@ -91,6 +95,15 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-720p.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc-720p.webm' => 'High quality downloadable WebM (720P)',
 
+	// h264 profiles
+	'timedmedia-derivative-320p.mp4' => 'H264 320P',
+	'timedmedia-derivative-desc-320p.mp4' => 'Device-friendly Mp4 (320P)',
+
+	'timedmedia-derivative-480p.mp4' => 'H264 480P',
+	'timedmedia-derivative-desc-480p.mp4' => 'Web streamable Mp4 (480P)',
+
+	'timedmedia-derivative-720p.mp4' => 'h264 720P',
+	'timedmedia-derivative-desc-720p.mp4' => 'HD quality Mp4 (720P)',
 
 	// Timed text page
 	'timedmedia-subtitle-new' => 'Create new translation or edit existing',
@@ -182,6 +195,10 @@ Parameters are:
 	'timedmedia-derivative-360p.webm' => '{{optional}}',
 	'timedmedia-derivative-480p.webm' => '{{optional}}',
 	'timedmedia-derivative-720p.webm' => '{{optional}}',
+	'timedmedia-derivative-320p.mp4' => '{{optional}}',
+	'timedmedia-derivative-480p.mp4' => '{{optional}}',
+	'timedmedia-derivative-720p.mp4' => '{{optional}}',
+
 	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> to {{int:Timedmedia-subtitle-new-go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names
 Paramaters are:

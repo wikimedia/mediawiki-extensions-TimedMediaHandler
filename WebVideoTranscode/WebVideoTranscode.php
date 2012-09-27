@@ -37,6 +37,11 @@ class WebVideoTranscode {
 	const ENC_WEBM_480P = '480p.webm';
 	const ENC_WEBM_720P = '720p.webm';
 
+	// mp4 profiles:
+	const ENC_H264_320P = '320p.mp4';
+	const ENC_H264_480P = '480p.mp4';
+	const ENC_H264_720P = '720p.mp4';
+
 	// Static cache of transcode state per instantiation
 	public static $transcodeState = array() ;
 
@@ -145,7 +150,45 @@ class WebVideoTranscode {
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
-			)
+			),
+
+		// Losly defined per PCF guide to mp4 profiles:
+		// https://develop.participatoryculture.org/index.php/ConversionMatrix
+		// and apple HLS profile guide:
+		// https://developer.apple.com/library/ios/#documentation/networkinginternet/conceptual/streamingmediaguide/UsingHTTPLiveStreaming/UsingHTTPLiveStreaming.html#//apple_ref/doc/uid/TP40008332-CH102-DontLinkElementID_24
+
+		WebVideoTranscode::ENC_H264_320P =>
+			array(
+				'maxSize' => '480x320',
+				'videoCodec' => 'h264',
+				'preset' => 'ipod320',
+				'videoBitrate' => '400k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '40k',
+			),
+
+		WebVideoTranscode::ENC_H264_480P =>
+			array(
+				'maxSize' => '640x480',
+				'videoCodec' => 'h264',
+				'preset' => 'ipod640',
+				'videoBitrate' => '1200k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '64k',
+			),
+
+		WebVideoTranscode::ENC_H264_720P =>
+			array(
+				'maxSize' => '1280x720',
+				'videoCodec' => 'h264',
+				'preset' => '720p',
+				'videoBitrate' => '2500k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '128k',
+			),
 	);
 
 	/**
@@ -334,11 +377,14 @@ class WebVideoTranscode {
 
 		$addOggFlag = false;
 		$addWebMFlag = false;
+		$addH264Flag = false;
 
 		$ext = pathinfo( "$fileName", PATHINFO_EXTENSION);
 
 		// Check the source file for .webm extension
-		if( strtolower( $ext )== 'webm' ) {
+		if( strtolower( $ext ) == 'mp4' ){
+
+		} else 	if( strtolower( $ext )== 'webm' ) {
 			$addWebMFlag = true;
 		} else {
 			// If not webm assume ogg as the source file
@@ -349,7 +395,7 @@ class WebVideoTranscode {
 		foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 			$codec =  self::$derivativeSettings[$transcodeKey]['videoCodec'];
 			// Check if we should add derivative to job queue
-			// Skip if we have both an Ogg & WebM and if target encode larger than source
+			// Skip if target encode larger than source
 			if( self::isTargetLargerThanFile( $file, self::$derivativeSettings[$transcodeKey]['maxSize']) ){
 				continue;
 			}
@@ -360,11 +406,15 @@ class WebVideoTranscode {
 			if( $codec == 'vp8' ){
 				$addWebMFlag = true;
 			}
+			if( $codec == 'h264' ){
+				$addH264Flag = true;
+			}
 			// Try and add the source
 			self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 		}
-		// Make sure we have at least one ogg and webm encode
-		if( !$addOggFlag || !$addWebMFlag ){
+		// Make sure we have at least one ogg, webm and h264 encode
+		// Note this only reflects any enabled derviatives in $wgEnabledTranscodeSet
+		if( !$addOggFlag || !$addWebMFlag || !$addH264Flag ){
 			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'theora' ){
 					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
@@ -373,6 +423,10 @@ class WebVideoTranscode {
 				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'vp8' ){
 					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 					$addWebMFlag = true;
+				}
+				if( !$addH264Flag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'h264' ){
+					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
+					$addH264Flag = true;
 				}
 			}
 		}
@@ -491,6 +545,14 @@ class WebVideoTranscode {
 		// Remove the db entries
 		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
 
+		// also remove assoicated jobs ( will be re-added on page view, or reset job request )
+		$deleteJobsWhere = array(
+			'job_cmd' => 'webVideoTranscode',
+			'job_title' => $file->getTitle()->getDBkey()
+		);
+		// Remove jobs db entries
+		$dbw->delete( 'job', $deleteJobsWhere, __METHOD__ );
+
 		// Purge the cache for pages that include this video:
 		self::invalidatePagesWithFile( $file->getTitle() );
 
@@ -607,7 +669,7 @@ class WebVideoTranscode {
 				'src' => $src,
 				'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
 				"shorttitle" => wfMessage( 'timedmedia-derivative-' . $transcodeKey )->text(),
-				"transcodekey" => $transcodeKey, 
+				"transcodekey" => $transcodeKey,
 
 				// Add data attributes per emerging DASH / webTV adaptive streaming attributes
 				// eventually we will define a manifest xml entry point.

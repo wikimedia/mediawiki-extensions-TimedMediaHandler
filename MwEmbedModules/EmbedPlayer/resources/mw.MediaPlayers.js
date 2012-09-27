@@ -13,7 +13,7 @@ mw.MediaPlayers.prototype = {
 	// The list of players supported
 	players : null,
 
-	// Store per mime-type prefrences for players
+	// Store per mime-type preferences for players
 	preference : { },
 
 	// Stores the default set of players for a given mime type
@@ -115,10 +115,16 @@ mw.MediaPlayers.prototype = {
 		var mimePlayers = this.getMIMETypePlayers( mimeType );
 		if ( mimePlayers.length > 0 )
 		{
-			// Check for prior preference for this mime type
+			// Select the default player:
 			for ( var i = 0; i < mimePlayers.length; i++ ) {
-				if ( mimePlayers[i].id == this.preference[mimeType] )
+				// Check for native:
+				if(  mimePlayers[i].librayr == 'Native' ){
+					return  mimePlayers[i];
+				}
+				// else check for preference
+				if ( mimePlayers[i].id == this.preference[mimeType] ){
 					return mimePlayers[i];
+				}
 			}
 			// Otherwise just return the first compatible player
 			// (it will be chosen according to the defaultPlayers list
@@ -154,7 +160,7 @@ mw.MediaPlayers.prototype = {
 	 * Sets the player preference
 	 *
 	 * @param {String}
-	 *      playerId Prefered player id
+	 *      playerId Preferred player id
 	 * @param {String}
 	 *      mimeType Mime type for the associated player stream
 	 */

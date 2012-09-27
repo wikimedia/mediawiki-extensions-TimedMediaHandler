@@ -36,9 +36,6 @@ $wgMwEmbedModuleConfig['EmbedPlayer.EnableOptionsMenu'] = true;
 // TMH needs java ( no h.264 or mp3 derivatives )
 $wgMwEmbedModuleConfig['EmbedPlayer.DisableJava' ] = false;
 
-// TMH has not use for flash currently ( no h.264 or mp3 derivatives )
-$wgMwEmbedModuleConfig['EmbedPlayer.DisableHTML5FlashFallback'] = false;
-
 // The text interface should always be shown
 // ( even if there are no text tracks for that asset at render time )
 $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
@@ -119,7 +116,7 @@ $wgTimedTextForeignNamespaces = array();
  * -Derivative should be listed min to max
  */
 $wgEnabledTranscodeSet = array(
-	// Small version for default thumb embeds(220)
+	// Small WebM version for default small embed size thumbs
 	WebVideoTranscode::ENC_WEBM_360P,
 
 	// Ogg fallback for IE/cortado
@@ -130,13 +127,26 @@ $wgEnabledTranscodeSet = array(
 
 	// A high quality WebM stream
 	WebVideoTranscode::ENC_WEBM_720P,
+/*
+	// A least common denominator h.264 stream; first gen iPhone, iPods, early android etc.
+	WebVideoTranscode::ENC_H264_320P,
+
+	// A mid range h.264 stream; mid range phones and low end tables
+	WebVideoTranscode::ENC_H264_480P,
+
+	// An high quality HD stream; higher end phones, tablets, smart tvs
+	WebVideoTranscode::ENC_H264_720P,
+*/
 );
+// If mp4 source assets can be ingested:
+$wgTmhEnableMp4Uploads = false;
+
 /******************* CONFIGURATION ENDS HERE **********************/
 
 
 // List of extensions handled by Timed Media Handler since its referenced in a few places.
 // you should not modify this variable
-$wgTmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm');
+$wgTmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm', 'mp4' );
 
 $wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
@@ -159,9 +169,13 @@ ini_set( 'include_path',
 	PATH_SEPARATOR .
 	ini_get( 'include_path' ) );
 
+// getID3 provides metadata for mp4 and webm files:
+$wgAutoloadClasses['getID3'] = "$timedMediaDir/libs/getid3/getid3.php";
+
+// Mp4 / h264 Handler
+$wgAutoloadClasses['Mp4Handler'] = "$timedMediaDir/handlers/Mp4Handler/Mp4Handler.php";
 // WebM Handler
 $wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
-$wgAutoloadClasses['getID3'] = "$timedMediaDir/handlers/WebMHandler/getid3/getid3.php";
 
 // Text handler
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
