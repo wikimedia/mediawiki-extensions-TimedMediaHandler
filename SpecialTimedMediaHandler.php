@@ -26,8 +26,6 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgEnabledTranscodeSet;
-
 		// only show if user has right permissions
 		if ( !$this->getUser()->isAllowed( 'transcode-status' ) ) {
 			return;
@@ -41,13 +39,13 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$stats = $this->getStats();
 		$out->addHTML(
 			"<h2>"
-			. wfMsgHtml ( 'timedmedia-videos',  $stats['videos']['total'] )
+			. $this->msg( 'timedmedia-videos',  $stats['videos']['total'] )->escaped()
 			. "</h2>"
 		);
 		foreach ( $this->formats as $format => $condition ) {
 			if ( $stats[ 'videos' ][ $format ] ) {
 				$out->addHTML(
-					wfMsgHtml ( "timedmedia-$format-videos", $stats[ 'videos' ][ $format ] )
+					$this->msg ( "timedmedia-$format-videos", $stats[ 'videos' ][ $format ] )->escaped()
 					. "<br>"
 				);
 			}
@@ -58,12 +56,18 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param OutputPage $out
+	 * @param $state
+	 * @param $stats
+	 * @param bool $showTable
+	 */
 	private function renderState ( $out, $state, $stats, $showTable = true ) {
 		global $wgEnabledTranscodeSet;
 		if ( $stats[ $state ][ 'total' ] ) {
 			$out->addHTML(
 				"<h2>"
-				. wfMsgHtml( 'timedmedia-derivative-state-' . $state, $stats[ $state ]['total'] )
+				. $this->msg( 'timedmedia-derivative-state-' . $state, $stats[ $state ]['total'] )->escaped()
 				. "</h2>"
 			);
 			foreach( $wgEnabledTranscodeSet as $key ) {
@@ -71,7 +75,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 					$out->addHTML(
 						$stats[ $state ][ $key ]
 						. ' '
-						. wfMsgHtml( 'timedmedia-derivative-desc-' . $key )
+						. $this->msg( 'timedmedia-derivative-desc-' . $key )->escaped()
 						. "<br>" );
 				}
 			}
@@ -99,18 +103,19 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		}
 		return $files;
 	}
+
 	private function getTranscodesTable ( $state, $limit = 30 ) {
 		$table = '<table class="wikitable">' . "\n"
 			. '<tr>'
-			. '<th>' . wfMsgHtml( 'timedmedia-transcodeinfo' ) . '</th>'
-			. '<th>' . wfMsgHtml( 'timedmedia-file' ) . '</th>'
+			. '<th>' . $this->msg( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
+			. '<th>' . $this->msg( 'timedmedia-file' )->escaped() . '</th>'
 			. '</tr>'
 			. "\n";
 
 		foreach( $this->getTranscodes( $state, $limit ) as $transcode ) {
 			$title = Title::newFromText( $transcode[ 'image_name' ], NS_FILE );
 			$table .= '<tr>'
-				. '<td>' . wfMsgHtml('timedmedia-derivative-desc-' . $transcode[ 'key' ]) . '</td>'
+				. '<td>' . $this->msg('timedmedia-derivative-desc-' . $transcode[ 'key' ] )->escaped() . '</td>'
 				. '<td>' . Linker::link( $title, $transcode[ 'image_name' ] ) . '</td>'
 				. '</tr>'
 				. "\n";

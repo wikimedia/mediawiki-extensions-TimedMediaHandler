@@ -13,7 +13,6 @@
  * Subclass ApiMain but query other db
  */
 class ForeignApiQueryAllPages extends ApiQueryAllPages {
-
 	public function __construct( $mDb, $query, $moduleName ) {
 		global $wgTimedTextForeignNamespaces;
 
@@ -44,7 +43,6 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 }
 
 class TextHandler {
-
 	var $remoteNs = null;//lazy init remote Namespace number
 
 	/**
@@ -205,7 +203,7 @@ class TextHandler {
 		// Provider name should be the same as the interwiki map
 		// @@todo more testing with this:
 
-		$langNames = Language::getLanguageNames();
+		$langNames = Language::fetchLanguageNames( null, 'mw' );
 		if( $data['query'] && $data['query']['allpages'] ){
 			foreach( $data['query']['allpages'] as $na => $page ){
 				$subTitle = Title::newFromText( $page['title'] ) ;
@@ -226,13 +224,13 @@ class TextHandler {
 					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
 					'data-mwprovider' => $providerName,
 					'type' => 'text/x-srt',
-					// TODO Should eventually add special entry point and output proper WebVTT format:
+					// @todo Should eventually add special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
 					'src' => $this->getFullURL( $page['title'] ),
 					'srclang' =>  $languageKey,
-					'label' => wfMsg('timedmedia-subtitle-language',
+					'label' => wfMessage('timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
-						$languageKey )
+						$languageKey )->text()
 				);
 			}
 		}

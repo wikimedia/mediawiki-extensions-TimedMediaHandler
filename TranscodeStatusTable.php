@@ -7,7 +7,6 @@
  *
  */
 class TranscodeStatusTable {
-
 	/**
 	 * @param $file File
 	 * @return string
@@ -18,18 +17,23 @@ class TranscodeStatusTable {
 		// Add transcode table css and javascript:
 		$wgOut->addModules( array( 'ext.tmh.transcodetable' ) );
 
-		$o = '<h2>' . wfMsgHtml( 'timedmedia-status-header' ) . '</h2>';
+		$o = '<h2>' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
 		// Give the user a purge page link
-		$o.= Linker::link( $file->getTitle(), wfMsg('timedmedia-update-status'), array(), array( 'action'=> 'purge' ) );
+		$o.= Linker::link(
+			$file->getTitle(),
+			wfMessage('timedmedia-update-status')->escaped(),
+			array(),
+			array( 'action'=> 'purge' )
+		);
 
 		$o.= Xml::openElement( 'table', array( 'class' => 'wikitable transcodestatus' ) ) . "\n"
 			. '<tr>'
-			. '<th>'.wfMsgHtml( 'timedmedia-status' ) .'</th>'
-			. '<th>' . wfMsgHtml( 'timedmedia-transcodeinfo' ) . '</th>'
-			. '<th>'.wfMsgHtml( 'timedmedia-direct-link' ) .'</th>';
+			. '<th>' . wfMessage( 'timedmedia-status' )->escaped() . '</th>'
+			. '<th>' . wfMessage( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
+			. '<th>' . wfMessage( 'timedmedia-direct-link' )->escaped() . '</th>';
 
-		if( $wgUser->isAllowed( 'transcode-reset' ) ){
-			$o.= '<th>' . wfMsgHtml( 'timedmedia-actions' ) . '</th>';
+		if( $wgUser->isAllowed( 'transcode-reset' ) ) {
+			$o.= '<th>' . wfMessage( 'timedmedia-actions' )->escaped() . '</th>';
 		}
 
 		$o.= "</tr>\n";
@@ -56,19 +60,22 @@ class TranscodeStatusTable {
 			$o.='<td>' . self::getStatusMsg( $file, $state ) . '</td>';
 
 			// Encode info:
-			$o.='<td>' . wfMsgHtml('timedmedia-derivative-desc-' . $transcodeKey ) . '</td>';
+			$o.='<td>' . wfMessage('timedmedia-derivative-desc-' . $transcodeKey )->escaped() . '</td>';
 
 			// Download file
 			$o.='<td>';
 			$o.= ( !is_null( $state['time_success'] ) ) ?
-				'<a href="'.self::getSourceUrl( $file, $transcodeKey ) .'" title="'.wfMsg('timedmedia-download' ) .'"><div class="download-btn"></div></a></td>' :
-				wfMsgHtml('timedmedia-not-ready' );
+				'<a href="'.self::getSourceUrl( $file, $transcodeKey ) .'" title="'.wfMessage
+				('timedmedia-download' )->escaped() .'"><div class="download-btn"></div></a></td>' :
+				wfMessage('timedmedia-not-ready' )->escaped();
 			$o.='</td>';
 
 			// Check if we should include actions:
 			if( $wgUser->isAllowed( 'transcode-reset' ) ){
 				// include reset transcode action buttons
-				$o.='<td class="transcodereset"><a href="#" data-transcodekey="' . htmlspecialchars( $transcodeKey ). '">' . wfMsg('timedmedia-reset') . '</a></td>';
+				$o.='<td class="transcodereset"><a href="#" data-transcodekey="' .
+					htmlspecialchars( $transcodeKey ). '">' . wfMessage('timedmedia-reset')->escaped() .
+					'</a></td>';
 			}
 			$o.='</tr>';
 		}
@@ -96,24 +103,33 @@ class TranscodeStatusTable {
 		global $wgContLang;
 		// Check for success:
 		if( !is_null( $state['time_success'] ) ) {
-			return wfMsgHtml('timedmedia-completed-on',
-				$wgContLang->timeAndDate( $state[ 'time_success' ] ));
+			return wfMessage( 'timedmedia-completed-on',
+				$wgContLang->timeAndDate( $state[ 'time_success' ] ) )->escaped();
 		}
 		// Check for error:
 		if( !is_null( $state['time_error'] ) ){
 			if( !is_null( $state['error'] ) ){
-				$showErrorLink = Linker::link( $file->getTitle(), wfMsg('timedmedia-show-error'), array(
-					'title' => wfMsgHtml('timedmedia-error-on',
-						$wgContLang->timeAndDate( $state[ 'time_error' ] ) ),
+				$showErrorLink = Linker::link(
+					$file->getTitle(),
+					wfMessage('timedmedia-show-error')->escaped(),
+					array(
+						'title' => wfMessage(
+							'timedmedia-error-on',
+							$wgContLang->timeAndDate( $state[ 'time_error' ] )
+						)->escaped(),
 					'class' => 'errorlink',
 					'data-error' => $state['error']
-				));
+					)
+				);
 			} else {
 				$showErrorLink = '';
 			}
-			return wfMsgHtml('timedmedia-error-on', $state['time_error'] ) . $showErrorLink;
+
+			return wfMessage( 'timedmedia-error-on', $state['time_error'] )->escaped() .
+				$showErrorLink;
 		}
-		$db = wfGetDB( DB_SLAVE );
+
+		//$db = wfGetDB( DB_SLAVE );
 		// Check for started encoding
 		if( !is_null( $state['time_startwork'] ) ){
 			$timePassed = time() - wfTimestamp ( TS_UNIX, $state['time_startwork'] );
@@ -123,22 +139,27 @@ class TranscodeStatusTable {
 			if( is_file( $filePath ) ){
 				$targetSize = WebVideoTranscode::getProjectedFileSize( $file, $state['key'] );
 				if( $targetSize === false ){
-					$doneMsg = wfMsgHtml('timedmedia-unknown-target-size', $wgLang->formatSize( filesize( $filePath ) ) );
+					$doneMsg = wfMessage( 'timedmedia-unknown-target-size', $wgLang->formatSize( filesize( $filePath ) ) )->escaped();
 				} else {
-					$doneMsg = wfMsgHtml('timedmedia-percent-done', round( filesize( $filePath ) / $targetSize, 2 ) );
+					$doneMsg = wfMessage('timedmedia-percent-done', round( filesize( $filePath ) / $targetSize, 2 ) )->escaped();
 				}
 			}	*/
 			// Predicting percent done is not working well right now ( disabled for now )
 			$doneMsg = '';
-			return wfMsgHtml('timedmedia-started-transcode', TimedMediaHandler::getTimePassedMsg( $timePassed ), $doneMsg );
+			return wfMessage(
+				'timedmedia-started-transcode',
+				TimedMediaHandler::getTimePassedMsg( $timePassed ), $doneMsg
+			)->escaped();
 		}
 		// Check for job added ( but not started encoding )
 		if( !is_null( $state['time_addjob'] ) ){
 			$timePassed = time() - wfTimestamp ( TS_UNIX, $state['time_addjob'] );
-			return wfMsgHtml('timedmedia-in-job-queue', TimedMediaHandler::getTimePassedMsg( $timePassed ) );
+			return wfMessage(
+				'timedmedia-in-job-queue',
+				TimedMediaHandler::getTimePassedMsg( $timePassed )
+			)->escaped();
 		}
 		// Return unknown status error:
-		return wfMsgHtml('timedmedia-status-unknown');
+		return wfMessage('timedmedia-status-unknown')->escaped();
 	}
-
 }

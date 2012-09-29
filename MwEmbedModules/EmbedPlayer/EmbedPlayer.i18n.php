@@ -7,6 +7,7 @@
  */
 
 $messages = array();
+
 $messages['en'] = array(
 	'mwe-embedplayer-credit-title' => 'Title: $1',
 	'mwe-embedplayer-credit-date' => 'Date: $1',

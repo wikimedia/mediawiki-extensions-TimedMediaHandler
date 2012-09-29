@@ -8,7 +8,6 @@
  *  @todo link-in or include the universal subtitles editor
  */
 class TimedTextPage extends Article {
-
 	// The width of the video plane:
 	static private $videoWidth = 400;
 
@@ -38,7 +37,7 @@ class TimedTextPage extends Article {
 		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
 
 		// Look up the language name:
-		$languages = Language::getTranslatedLanguageNames( 'en' );
+		$languages = Language::fetchLanguageNames( 'en', 'all' );
 		if( isset( $languages[ $languageKey ] ) ) {
 			$languageName = $languages[ $languageKey ];
 		} else {
@@ -46,7 +45,9 @@ class TimedTextPage extends Article {
 		}
 
 		// Set title
-		$wgOut->setPageTitle( wfMsg('mwe-timedtext-language-subtitles-for-clip', $languageName,  $videoTitle) );
+		$wgOut->setPageTitle(
+			wfMessage( 'mwe-timedtext-language-subtitles-for-clip', $languageName, $videoTitle )
+		);
 
 		// Get the video with with a max of 600 pixel page
 		$wgOut->addHTML(
@@ -61,20 +62,21 @@ class TimedTextPage extends Article {
 	function doRedirectToPageForm( $fileTitle ){
 		global $wgContLang, $wgOut;
 		// Set the page title:
-		$wgOut->setPageTitle(
-				wfMsg( 'timedmedia-subtitle-new' )
-			);
+		$wgOut->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
 
 		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'. 
 							$wgContLang->getCode() . '.srt', NS_TIMEDTEXT );
 		$wgOut->addHTML(  
-			xml::tags('div', array( 'style' => 'text-align:center' ),
-				xml::tags( 'span', null, wfMsgWikiHtml('timedmedia-subtitle-new-desc') ) .
-				xml::tags( 'input', array( 
+			Xml::tags('div', array( 'style' => 'text-align:center' ),
+				Xml::tags( 'span', null, wfMessage( 'timedmedia-subtitle-new-desc' )->escaped() ) .
+				Xml::tags( 'input', array(
 					'id' => 'timedmedia-tt-input',
 					'value' => $timedTextTile->getFullText(), 
 					'size' => 50 ), 
-					xml::tags( 'button', array( 'id'=>'timedmedia-tt-go'), wfMsg( 'timedmedia-subtitle-new-go' ) )	 
+					Xml::tags( 'button',
+						array( 'id' => 'timedmedia-tt-go' ),
+						wfMessage( 'timedmedia-subtitle-new-go' )->escaped()
+					)
 				)
 			)
 		);
@@ -100,7 +102,7 @@ class TimedTextPage extends Article {
 		// Get the video embed:
 		$file = wfFindFile( $videoTitle );
 		if( !$file ){
-			return wfMsg( 'timedmedia-subtitle-no-video' );
+			return wfMessage( 'timedmedia-subtitle-no-video' )->escaped();
 		} else {
 			$videoTransform= $file->transform(
 				array(
@@ -122,6 +124,6 @@ class TimedTextPage extends Article {
 		if( !$this->exists() ){
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
-		return '<pre style="margin-top:0px;">'. $this->getContent() . '</pre>';
+		return '<pre style="margin-top: 0px;">'. $this->getContent() . '</pre>';
 	}
 }

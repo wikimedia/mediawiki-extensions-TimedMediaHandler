@@ -1,5 +1,4 @@
 <?php
-
 /**
  * WebVideoTranscode provides:
  *  encode keys
@@ -9,12 +8,10 @@
  *  extends video tag output to provide all the available sources
  */
 
-
 /**
  * Main WebVideoTranscode Class hold some constants and config values
  */
 class WebVideoTranscode {
-
 	/**
 	* Key constants for the derivatives,
 	* this key is appended to the derivative file name
@@ -555,13 +552,13 @@ class WebVideoTranscode {
 
 		$source = array(
 			'src' => $src,
-			'title' => wfMsg('timedmedia-source-file-desc',
-								$metadataType,
-								$wgLang->formatNum( $file->getWidth() ),
-								$wgLang->formatNum( $file->getHeight() ),
-								$wgLang->formatBitrate( $bitrate )
-							),
-			"shorttitle" => wfMsg('timedmedia-source-file', wfMsg( 'timedmedia-' . $metadataType ) ),
+			'title' => wfMessage( 'timedmedia-source-file-desc', $metadataType )
+				->numParams( $file->getWidth(), $file->getHeight() )
+				->params( $wgLang->formatBitrate( $bitrate ) ),
+			"shorttitle" => wfMessage(
+				'timedmedia-source-file',
+				wfMessage( 'timedmedia-' . $metadataType )->text()
+			)->text(),
 			"width" => $file->getWidth(),
 			"height" => $file->getHeight(),
 		);
@@ -609,8 +606,8 @@ class WebVideoTranscode {
 		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $src ) : $src;
 		return array(
 				'src' => $src,
-				'title' => wfMsg('timedmedia-derivative-desc-' . $transcodeKey ),
-				"shorttitle" => wfMsg('timedmedia-derivative-' . $transcodeKey),
+				'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
+				"shorttitle" => wfMessage( 'timedmedia-derivative-' . $transcodeKey )->text(),
 				"transcodekey" => $transcodeKey, 
 
 				// Add data attributes per emerging DASH / webTV adaptive streaming attributes

@@ -152,7 +152,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// For javascript disabled browsers provide a link to the asset:
 			Xml::tags( 'a', array(
 					'href'=> $this->file->getUrl(),
-					'title' => wfMsg( 'timedmedia-play-media' ),
+					'title' => wfMessage( 'timedmedia-play-media' )->escaped(),
 					'target' => 'new'
 				),
 				Xml::tags( 'span', array(
@@ -197,8 +197,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				}
 			}
 		}
-		
-		
+
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		if( $this->fillwindow ){
 			$width = '100%';
@@ -219,7 +218,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 				// Fallback text displayed for browsers without js and without video tag support:
 				/// XXX note we may want to replace this with an image and download link play button
-				wfMsg( 'timedmedia-no-player-js', $firstSource['src'] )
+				wfMessage( 'timedmedia-no-player-js', $firstSource['src'] )->text()
 			)
 		);
 		return $s;
