@@ -430,7 +430,7 @@ $messages['bcl'] = array(
 	'timedmedia-dismiss' => 'Isara',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
@@ -2037,7 +2037,7 @@ $messages['ka'] = array(
 	'timedmedia-file' => 'ფაილი',
 );
 
-/** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
+/** Kazakh (Arabic script) (قازاقشا (تٴوتە)‏) */
 $messages['kk-arab'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 دىبىس فايلى, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 بەينە فايلى, $2',
@@ -2053,7 +2053,7 @@ $messages['kk-arab'] = array(
 	'timedmedia-desc-link' => 'بۇل فايل تۋرالى',
 );
 
-/** Kazakh (Cyrillic script) (‪қазақша (кирил)‬) */
+/** Kazakh (Cyrillic script) (қазақша (кирил)‎) */
 $messages['kk-cyrl'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 дыбыс файлы, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 бейне файлы, $2',
@@ -2069,7 +2069,7 @@ $messages['kk-cyrl'] = array(
 	'timedmedia-desc-link' => 'Бұл файл туралы',
 );
 
-/** Kazakh (Latin script) (‪qazaqşa (latın)‬) */
+/** Kazakh (Latin script) (qazaqşa (latın)‎) */
 $messages['kk-latn'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 dıbıs faýlı, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 beýne faýlı, $2',
@@ -2597,7 +2597,7 @@ $messages['nah'] = array(
 	'timedmedia-desc-link' => 'Inīn tlahcuilōltechcopa',
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Laaknor
  * @author Nghtwlkr
  */
@@ -2760,7 +2760,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-file' => 'Bestand',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Eirik
  * @author Harald Khan
  */
@@ -3359,7 +3359,7 @@ $messages['sq'] = array(
 	'timedmedia-desc-link' => 'Rreth kësaj skede',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -3414,7 +3414,7 @@ $messages['sr-ec'] = array(
 	'timedmedia-subtitle-no-subtitles' => 'Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬)
+/** Serbian (Latin script) (srpski (latinica)‎)
  * @author Michaello
  * @author Rancher
  */
@@ -4026,7 +4026,7 @@ $messages['yue'] = array(
 	'timedmedia-desc-link' => '關於呢個檔案',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Gaoxuewei
  * @author Liangent
  */
