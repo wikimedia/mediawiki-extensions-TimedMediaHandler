@@ -222,7 +222,7 @@ $messages['az'] = array(
 	'mwe-embedplayer-download' => 'Yüklə',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -1951,7 +1951,7 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-copy-code' => 'Kood kopeere',
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author Gomada
  */
 $messages['ku-latn'] = array(
@@ -2172,7 +2172,7 @@ $messages['mt'] = array(
 	'mwe-embedplayer-missing-source' => "L-ebda sors ta' vidjow ma nstab",
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
@@ -2311,7 +2311,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-missing-source' => 'Er is geen bronvideo gevonden.',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Nghtwlkr
  */
 $messages['nn'] = array(
@@ -2895,7 +2895,7 @@ $messages['sk'] = array(
 	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -2973,7 +2973,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-missing-source' => 'Није пронађен извор снимка.',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬)
+/** Serbian (Latin script) (srpski (latinica)‎)
  * @author Rancher
  */
 $messages['sr-el'] = array(
@@ -3463,7 +3463,7 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-video-msvideo' => 'AVI视频',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Mark85296341
  * @author Simon Shek
  */
