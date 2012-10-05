@@ -253,7 +253,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function loadExtensionSchemaUpdates( $updater ){
-		$updater->addExtensionTable( 'transcode', dirname( __FILE__ ) . '/WebVideoTranscode/transcodeTable.sql' );
+		$updater->addExtensionTable( 'transcode', dirname( __FILE__ ) . '/TimedMediaHandler.sql' );
 		return true;
 	}
 

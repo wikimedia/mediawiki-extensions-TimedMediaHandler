@@ -1,4 +1,4 @@
--- transcodeTable.sql
+-- TimedMediaHandler.sql
 -- 2011-04-05  <mdale@wikimedia.org>
 --
 CREATE TABLE /*_*/transcode (
