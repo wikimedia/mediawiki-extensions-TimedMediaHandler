@@ -1252,6 +1252,8 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Ëmschreiwen',
+	'mwe-timedtext-stage-sync' => 'Synchroniséieren',
 	'mwe-timedtext-stage-translate' => 'Iwwersetzen',
 	'mwe-timedtext-stage-upload' => 'E lokale Fichier eroplueden',
 	'mwe-timedtext-select-language' => 'Sprooch eraussichen',
@@ -1268,7 +1270,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => "D'Eroplueden ass fäerdeg",
 	'mwe-timedtext-back-btn' => 'Zréck',
 	'mwe-timedtext-choose-text' => 'Text eraussichen',
-	'mwe-timedtext-upload-timed-text' => 'Ënnertitelen eroplueden',
+	'mwe-timedtext-upload-timed-text' => 'Ënnertitelen derbäisetzen',
 	'mwe-timedtext-search' => 'Clip sichen',
 	'mwe-timedtext-layout' => 'Layout',
 	'mwe-timedtext-layout-ontop' => 'Iwwert dem Video',
@@ -1872,16 +1874,21 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (svenska)
+ * @author Ainali
  * @author Dafer45
  */
 $messages['sv'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Transkribera',
 	'mwe-timedtext-stage-sync' => 'Sync',
 	'mwe-timedtext-stage-translate' => 'Översätt',
 	'mwe-timedtext-stage-upload' => 'Ladda upp från lokal fil',
 	'mwe-timedtext-select-language' => 'Välj språk',
+	'mwe-timedtext-file-language' => 'Undertextfilspråk',
 	'mwe-timedtext-upload-text' => 'Ladda upp textfil',
 	'mwe-timedtext-uploading-text' => 'Laddar upp textfil',
 	'mwe-timedtext-upload-text-desc-title' => 'Ladda upp en textfil',
+	'mwe-timedtext-upload-text-desc-help' => 'Uppladdningsgränssnittet för textfiler accepterar .srt-filer',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Bläddra på din lokala dator efter .srt filen du vill ladda upp',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Välj filens språk',
 	'mwe-timedtext-upload-text-desc-help-review' => 'Granska / redigera textens innehåll och tryck sedan ladda upp för att lägga till text',
 	'mwe-timedtext-upload-text-preview' => 'Granska text',
@@ -1892,14 +1899,30 @@ $messages['sv'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Klar med uppladdning',
 	'mwe-timedtext-back-btn' => 'Tillbaka',
 	'mwe-timedtext-choose-text' => 'Välj text',
+	'mwe-timedtext-upload-timed-text' => 'Lägga till undertexter',
+	'mwe-timedtext-search' => 'Sök klipp',
 	'mwe-timedtext-layout' => 'Layout',
+	'mwe-timedtext-layout-ontop' => 'Ovanför video',
+	'mwe-timedtext-layout-below' => 'Under video',
 	'mwe-timedtext-layout-off' => 'Dölj undertexter',
 	'mwe-timedtext-loading-text' => 'Laddar text ...',
 	'mwe-timedtext-textcat-sub' => 'Undertexter',
+	'mwe-timedtext-textcat-tad' => 'Ljudbeskrivning',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-ar' => 'Aktiva regioner',
 	'mwe-timedtext-textcat-nb' => 'Anmärkning',
+	'mwe-timedtext-textcat-trx' => 'Transkription',
+	'mwe-timedtext-textcat-lrc' => 'Texter',
+	'mwe-timedtext-textcat-lin' => 'Språkliga markeringar',
+	'mwe-timedtext-textcat-cue' => 'Referenspunkter',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertexter för klipp: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Inga $1 undertexter hittades för klipp: $2',
+	'mwe-timedtext-request-subs' => 'Begäran transkription',
+	'mwe-timedtext-no-subs' => 'Inga textspår finns',
+	'mwe-timedtext-request-subs-desc' => 'Lägga till en begäran om att denna videofil ska transkriberas',
+	'mwe-timedtext-request-subs-done' => 'Transkriptionsbegäran lades till. [$1 Se alla transkribeeringsbegäranden]',
+	'mwe-timedtext-request-subs-fail' => 'Det gick inte att lägga till transkriptionsbegäran. Är du inloggad?',
+	'mwe-timedtext-request-already-done' => 'En transkription av denna video har redan begärts. [$1  Se alla transkriberingsbegäranden]',
 );
 
 /** Tamil (தமிழ்)
