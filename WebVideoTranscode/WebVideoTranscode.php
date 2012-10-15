@@ -164,14 +164,14 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * Get the target encode path for a video encode
+	 * Get temp file at target path for video encode
 	 *
 	 * @param $file File
 	 * @param $transcodeKey String
 	 *
-	 * @return string the local target encode path
+	 * @return TempFSFile at target encode path
 	 */
-	static public function getTargetEncodePath( &$file, $transcodeKey ){
+	static public function getTargetEncodeFile( &$file, $transcodeKey ){
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
 		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
 
@@ -180,8 +180,7 @@ class WebVideoTranscode {
 		if ( !$tmpFile ) {
 			return False;
 		}
-		$tmpFile->bind( $file );
-		return $tmpFile->getPath(); //path with 0-byte temp file
+		return $tmpFile;
 	}
 
 	/**

@@ -17,7 +17,7 @@
  */
 
 class WebVideoTranscodeJob extends Job {
-	var $targetEncodePath = null;
+	var $targetEncodeFile = null;
 	var $sourceFilePath = null;
 
 	/**
@@ -51,12 +51,22 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	private function getTargetEncodePath(){
-		if( !$this->targetEncodePath ){
+		if( !$this->targetEncodeFile ){
 			$file = $this->getFile();
 			$transcodeKey = $this->params[ 'transcodeKey' ];
-			$this->targetEncodePath = WebVideoTranscode::getTargetEncodePath( $file, $transcodeKey );
+			$this->targetEncodeFile = WebVideoTranscode::getTargetEncodeFile( $file, $transcodeKey );
+			$this->targetEncodeFile->bind( $this );
 		}
-		return $this->targetEncodePath;
+		return $this->targetEncodeFile->getPath();
+	}
+	/**
+	 * purge temporary encode target
+	 */
+	private function purgeTargetEncodeFile () {
+		if ( $this->targetEncodeFile ) {
+			$this->targetEncodeFile->purge();
+			$this->targetEncodeFile = null;
+		}
 	}
 
 	/**
@@ -66,11 +76,6 @@ class WebVideoTranscodeJob extends Job {
 		if( !$this->sourceFilePath ){
 			$file = $this->getFile();
 			$this->source = $file->repo->getLocalReference( $file->getPath() );
-			// If file is in a remote repository we get a temp file.
-			// make sure its not delted before encoding is done.
-			if ( $this->source instanceof TempFSFile ) {
-				$this->source->preserve();
-			}
 			$this->sourceFilePath = $this->source->getPath();
 		}
 		return $this->sourceFilePath;
@@ -155,11 +160,6 @@ class WebVideoTranscodeJob extends Job {
 		// Remove any log files all useful info should be in status and or we are done with 2 passs encoding
 		$this->removeFffmpgeLogFiles();
 
-		// Purge temp copy that was locked with preserve in getSourceFilePath
-		if ( isset($this->source) && $this->source instanceof TempFSFile ) {
-			$this->source->purge();
-		}
-
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm the in memory $jobStartTimeCache matches db start time
 		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
@@ -180,8 +180,12 @@ class WebVideoTranscodeJob extends Job {
 			// that the job has already been started.
 		}
 
-		// If status is oky and file exists and is larger than 0 bytes
-		if( $status === true && is_file( $this->getTargetEncodePath() ) && filesize( $this->getTargetEncodePath() ) > 0 ){
+		// If status is oky and target does not exist, reset status
+		if( $status === true && !is_file( $this->getTargetEncodePath() ) ) {
+			$status = 'Target does not exist: ' . $this->getTargetEncodePath();
+		}
+		// If status is ok and target is larger than 0 bytes
+		if( $status === true && filesize( $this->getTargetEncodePath() ) > 0 ){
 			$file = $this->getFile();
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
 			$status = $file->getRepo()->quickImport(
@@ -244,10 +248,9 @@ class WebVideoTranscodeJob extends Job {
 			// just clear the file page ( so that the transcode table shows the error )
 			$this->title->invalidateCache();
 		}
-		//remove temoprary file in any case
-		if( is_file( $this->getTargetEncodePath() ) ) {
-			unlink( $this->getTargetEncodePath() );
-		}
+		//done with encoding target, clean up
+		$this->purgeTargetEncodeFile();
+
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
 		webVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
@@ -331,7 +334,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd.=" -passlogfile " . wfEscapeShellArg( $this->getTargetEncodePath() .'.log' );
 		}
 		// And the output target:
-		if ($pass==1) {
+		if ($pass == 1) {
 			$cmd.= ' /dev/null';
 		} else{
 			$cmd.= " " . $this->getTargetEncodePath();
@@ -554,6 +557,12 @@ class WebVideoTranscodeJob extends Job {
 		} elseif ( $pid == 0) {
 			// we are the child
 			$this->runChildCmd( $cmd, $retval, $encodingLog, $retvalLog);
+			// dont remove any temp files in the child process, this is done
+			// once the parent is finished
+			$this->targetEncodeFile->preserve();
+			if ( $this->source instanceof TempFSFile ) {
+				$this->source->preserve();
+			}
 			// exit with the same code as the transcode:
 			exit( $retval );
 		} else {
