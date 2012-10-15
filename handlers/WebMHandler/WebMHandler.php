@@ -161,8 +161,8 @@ class WebMHandler extends TimedMediaHandler {
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-		return wfMsg( 'timedmedia-webm-short-video', implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
+		return wfMessage( 'timedmedia-webm-short-video', implode( '/', $streamTypes ),
+			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
 	}
 
 	/**
@@ -171,13 +171,14 @@ class WebMHandler extends TimedMediaHandler {
 	 */
 	function getLongDesc( $file ) {
 		global $wgLang;
-		return wfMsg('timedmedia-webm-long-video',
+		return wfMessage('timedmedia-webm-long-video',
 			implode( '/', $this->getStreamTypes( $file ) ),
 			$wgLang->formatTimePeriod( $this->getLength($file) ),
-			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
-			$wgLang->formatNum( $file->getWidth() ),
-			$wgLang->formatNum( $file->getHeight() )
-		);
+			$wgLang->formatBitrate( $this->getBitRate( $file ) )
+		)->numParams(
+			$file->getWidth(),
+			$file->getHeight()
+		)->text();
 
 	}
 

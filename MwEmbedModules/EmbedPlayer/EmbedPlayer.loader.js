@@ -39,7 +39,7 @@
 				$( playerElement )
 					.parent()
 					.getAbsoluteOverlaySpinner()
-					.attr('id', 'loadingSpinner_' + $( playerElement ).attr('id') )
+					.attr('id', 'loadingSpinner_' + $( playerElement ).attr('id') );
 			}
 			// Allow other modules update the dependencies
 			$( mw ).trigger( 'EmbedPlayerUpdateDependencies',

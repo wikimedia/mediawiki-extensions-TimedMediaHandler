@@ -1,7 +1,6 @@
 <?php
 
 class TimedMediaHandler extends MediaHandler {
-
 	static $magicDone = false;
 
 	/**
@@ -193,15 +192,15 @@ class TimedMediaHandler extends MediaHandler {
 		foreach( $t as $k => $v ){
 			if($v == 0 ){
 				unset( $t[$k] );
-			}else{
-				$t[$k] = wfMsg( 'timedmedia-' . $k, $v);
+			} else {
+				$t[$k] = wfMessage( 'timedmedia-' . $k, $v )->text();
 			}
 		}
 		if( count( $t ) == 0 ){
-			$t = array( wfMsg( 'timedmedia-seconds', 0) ) ;
+			$t = array( wfMessage( 'timedmedia-seconds', 0 )->text() ) ;
 		}
 		// Call to the correct set of significant measurements:
-		return wfMsgHtml( 'timedmedia-time-' . count($t) . '-measurements', $t);
+		return wfMessage( 'timedmedia-time-' . count($t) . '-measurements', $t)->escaped();
 	}
 
 	/**
@@ -367,9 +366,8 @@ class TimedMediaHandler extends MediaHandler {
 		global $wgLang;
 
 		if ( $file->getWidth() ) {
-			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
-				$wgLang->formatNum( $file->getWidth() ),
-				$wgLang->formatNum( $file->getHeight() ) );
+			return wfMessage( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ) )
+				->numParams( $file->getWidth(), $file->getHeight() )->text();
 		} else {
 			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}

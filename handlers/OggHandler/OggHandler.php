@@ -187,8 +187,8 @@ class OggHandlerTMH extends TimedMediaHandler {
 		} else {
 			$msg = 'timedmedia-ogg-short-general';
 		}
-		return wfMsg( $msg, implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) );
+		return wfMessage( $msg, implode( '/', $streamTypes ),
+			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
 	}
 
 	/**
@@ -201,7 +201,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
-			return wfMsg( 'timedmedia-ogg-long-error', $unpacked['error']['message'] );
+			return wfMessage( 'timedmedia-ogg-long-error', $unpacked['error']['message'] )->text();
 		}
 		if ( array_intersect( $streamTypes,$wgMediaVideoTypes  ) ) {
 			if ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
@@ -225,12 +225,15 @@ class OggHandlerTMH extends TimedMediaHandler {
 					$size += $stream['size'];
 			}
 		}
-		return wfMsg( $msg, implode( '/', $streamTypes ),
+		return wfMessage(
+			$msg,
+			implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $length ),
-			$wgLang->formatBitrate( $this->getBitRate( $file ) ),
-			$wgLang->formatNum( $file->getWidth() ),
-			$wgLang->formatNum( $file->getHeight() )
-		);
+			$wgLang->formatBitrate( $this->getBitRate( $file ) )
+		)->numParams(
+			$file->getWidth(),
+			$file->getHeight()
+		)->text();
 	}
 
 	/**
@@ -251,5 +254,4 @@ class OggHandlerTMH extends TimedMediaHandler {
 		}
 		return $length == 0 ? 0 : $size / $length * 8;
 	}
-
 }
