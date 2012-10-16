@@ -898,8 +898,15 @@ $messages['fi'] = array(
 	'mwe-embedplayer-close_btn' => 'Sulje',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-selected' => '(valittu)',
-	'mwe-embedplayer-for_best_experience' => 'Parempaa videotoistokokemusta varten suosituksena on [$1 viimeisin Firefox].',
+	'mwe-embedplayer-for_best_experience' => 'Parempaa videotoistokokemusta varten suosituksena on selain, joka [$1 tukee HTML5-videota].',
 	'mwe-embedplayer-copy-code' => 'Kopioi koodi',
+	'mwe-embedplayer-video-h264' => 'H.264-video',
+	'mwe-embedplayer-video-webm' => 'WebM-video',
+	'mwe-embedplayer-video-flv' => 'Flash-video',
+	'mwe-embedplayer-video-ogg' => 'Ogg-video',
+	'mwe-embedplayer-video-3gp' => '3GP-video',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-video',
+	'mwe-embedplayer-video-msvideo' => 'AVI-video',
 );
 
 /** French (français)
