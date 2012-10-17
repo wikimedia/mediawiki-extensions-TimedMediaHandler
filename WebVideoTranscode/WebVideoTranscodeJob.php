@@ -82,6 +82,29 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
+	 * Update the transcode table with failure time and error
+	 * @param $transcodeKey string
+	 * @param $error string
+	 *
+	 */
+	private function updateTranscodeError($transcodeKey, $error){
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update(
+			'transcode',
+			array(
+				'transcode_time_error' => $db->timestamp(),
+				'transcode_error' => $error
+			),
+			array(
+					'transcode_image_name' => $this->title->getDBkey(),
+					'transcode_key' => $transcodeKey
+			),
+			__METHOD__,
+			array( 'LIMIT' => 1 )
+		);
+	}
+
+	/**
 	 * Run the transcode request
 	 * @return bool|string
 	 */
@@ -89,9 +112,9 @@ class WebVideoTranscodeJob extends Job {
 		// get a local pointer to the file
 		$file = $this->getFile();
 
-		// Validate the file exists :
-		if( !$file || !is_file( $this->getSourceFilePath() ) ){
-			$this->output( 'File not found: ' . $this->title . ' at ' . $this->getSourceFilePath() );
+		// Validate the file exists:
+		if( !$file ){
+			$this->output( $this->title . ': File not found ' );
 			return false;
 		}
 
@@ -100,6 +123,14 @@ class WebVideoTranscodeJob extends Job {
 		// Build the destination target
 		if( ! isset(  WebVideoTranscode::$derivativeSettings[ $transcodeKey ] )){
 			$this->output( "Transcode key $transcodeKey not found, skipping" );
+			return false;
+		}
+
+		// Validate the source exists:
+		if( !is_file( $this->getSourceFilePath() ) ){
+			$status = $this->title . ': Source not found ' . $this->getSourceFilePath();
+			$this->output( $status );
+			$this->updateTranscodeError($transcodeKey, $status);
 			return false;
 		}
 
@@ -193,20 +224,7 @@ class WebVideoTranscodeJob extends Job {
 				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ) // storage
 			);
 			if ( !$status->isOK() ) {
-				// Update the transcode table with failure time and error
-				$dbw->update(
-					'transcode',
-					array(
-						'transcode_time_error' => $db->timestamp(),
-						'transcode_error' => $status
-					),
-					array(
-							'transcode_image_name' => $this->title->getDBkey(),
-							'transcode_key' => $transcodeKey
-					),
-					__METHOD__,
-					array( 'LIMIT' => 1 )
-				);
+				$this->updateTranscodeError($transcodeKey, $status);
 				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
@@ -231,19 +249,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			// Update the transcode table with failure time and error
-			$dbw->update(
-				'transcode',
-				array(
-					'transcode_time_error' => $db->timestamp(),
-					'transcode_error' => $status
-				),
-				array(
-						'transcode_image_name' => $this->title->getDBkey(),
-						'transcode_key' => $transcodeKey
-				),
-				__METHOD__,
-				array( 'LIMIT' => 1 )
-			);
+			$this->updateTranscodeError($transcodeKey, $status);
 			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 			// just clear the file page ( so that the transcode table shows the error )
 			$this->title->invalidateCache();
