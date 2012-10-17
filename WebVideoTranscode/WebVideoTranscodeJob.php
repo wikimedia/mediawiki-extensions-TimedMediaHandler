@@ -91,7 +91,7 @@ class WebVideoTranscodeJob extends Job {
 
 		// Validate the file exists :
 		if( !$file || !is_file( $this->getSourceFilePath() ) ){
-			$this->output( 'File not found: ' . $this->title );
+			$this->output( 'File not found: ' . $this->title . ' at ' . $this->getSourceFilePath() );
 			return false;
 		}
 
