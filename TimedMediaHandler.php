@@ -79,7 +79,7 @@ $wgEnableTranscode = true;
 // encoding commands in a lower priority 'nice' call, and kills long running transcodes that are
 // not making any progress. If set to false, the job runner will use the more compatible
 // php blocking shell exec command.
-$wgEnableNiceBackgroundTranscodeJobs = true;
+$wgEnableNiceBackgroundTranscodeJobs = false;
 
 // The priority to be used with the nice transcode commands.
 $wgTranscodeBackgroundPriority = 19;
