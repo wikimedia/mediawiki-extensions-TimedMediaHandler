@@ -894,6 +894,7 @@ $messages['fi'] = array(
 	'mwe-embedplayer-download_clip' => 'Lataa video',
 	'mwe-embedplayer-download' => 'Lataa',
 	'mwe-embedplayer-share' => 'Jaa',
+	'mwe-embedplayer-share_this_video' => 'Jaa tämä video',
 	'mwe-embedplayer-menu_btn' => 'Valikko',
 	'mwe-embedplayer-close_btn' => 'Sulje',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
