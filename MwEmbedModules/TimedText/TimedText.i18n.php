@@ -558,6 +558,33 @@ $messages['eu'] = array(
 	'mwe-timedtext-back-btn' => 'Atzera',
 );
 
+/** Persian (فارسی)
+ * @author پاناروما
+ */
+$messages['fa'] = array(
+	'mwe-timedtext-stage-transcribe' => 'رونویسی',
+	'mwe-timedtext-stage-sync' => 'همگام سازی',
+	'mwe-timedtext-stage-translate' => 'ترجمه',
+	'mwe-timedtext-stage-upload' => 'بارگذاری از پروندۀاصلی',
+	'mwe-timedtext-select-language' => 'انتخاب زبان',
+	'mwe-timedtext-upload-text' => 'بارگذاری پروندۀ متن',
+	'mwe-timedtext-upload-text-desc-help-select' => 'انتخاب زبان پرونده',
+	'mwe-timedtext-upload-text-preview' => 'بررسی متن',
+	'mwe-timedtext-upload-text-done' => 'بارگذاری انجام شد',
+	'mwe-timedtext-upload-text-fail-desc' => 'بارگذاری ناموفق بود',
+	'mwe-timedtext-upload-text-another' => 'بارگذاری دیگر',
+	'mwe-timedtext-upload-text-done-uploading' => 'بارگذاری انجام شد',
+	'mwe-timedtext-back-btn' => 'بازگشت',
+	'mwe-timedtext-choose-text' => 'انتخاب متن',
+	'mwe-timedtext-upload-timed-text' => 'اضافه کردن زیرنویس',
+	'mwe-timedtext-layout' => 'چیدمان',
+	'mwe-timedtext-layout-off' => 'پنهان‌کردن زیرنویس',
+	'mwe-timedtext-loading-text' => 'در حال بارگیری متن...',
+	'mwe-timedtext-textcat-cc' => 'عناوین:',
+	'mwe-timedtext-textcat-sub' => 'زیرنویس',
+	'mwe-timedtext-textcat-lrc' => 'متن ترانه‌ها',
+);
+
 /** Finnish (suomi)
  * @author Silvonen
  */

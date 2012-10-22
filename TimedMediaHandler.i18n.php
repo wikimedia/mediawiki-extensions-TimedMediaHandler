@@ -1000,6 +1000,7 @@ $messages['eu'] = array(
  * @author Huji
  * @author Mjbmr
  * @author جواد
+ * @author پاناروما
  */
 $messages['fa'] = array(
 	'timedmedia-desc' => 'به دست گیرندهٔ پرونده‌های صوتی، تصویری و متن‌های زمان‌بندی شده با پشتیبانی از Ogg Theora ،Vorbis و srt',
@@ -1028,6 +1029,7 @@ $messages['fa'] = array(
 	'timedmedia-time-2-measurements' => '$1 و $2',
 	'timedmedia-show-error' => 'نمایش خطا',
 	'timedmedia-subtitle-new-go' => 'برو',
+	'timedmedia-file' => 'پرونده',
 );
 
 /** Finnish (suomi)
