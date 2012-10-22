@@ -101,7 +101,8 @@ future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
 );
 
-/** Afrikaans (Afrikaans) */
+/** Afrikaans (Afrikaans)
+ */
 $messages['af'] = array(
 	'mwe-embedplayer-credit-title' => 'Naam: $1',
 	'mwe-embedplayer-loading_plugin' => 'laai uitbreiding ...',
@@ -118,7 +119,6 @@ $messages['af'] = array(
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-selected' => '(gekies)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-playerSelect' => '',
 	'mwe-embedplayer-embed_site_or_blog' => 'Voeg by jou webblad of webjoernaal',
 );
 
@@ -126,7 +126,7 @@ $messages['af'] = array(
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'mwe-embedplayer-share_this_video' => 'Share this video',
+	'mwe-embedplayer-share_this_video' => 'Share this video', # Fuzzy
 	'mwe-embedplayer-video_credits' => 'kreditë Video',
 	'mwe-embedplayer-kaltura-platform-title' => 'video Kaltura me burim të hapur platformën',
 	'mwe-embedplayer-menu_btn' => 'Menu',
@@ -141,8 +141,8 @@ $messages['aln'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'lojtar Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(Zgjedhur)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'Flash Vorbis OMTK',
-	'mwe-embedplayer-for_best_experience' => 'Për një përvojë më të mirë video rishikim të këshillojmë [$1 Firefox fundit] .',
-	'mwe-embedplayer-do_not_warn_again' => 'Shkarkojë tani për tani.',
+	'mwe-embedplayer-for_best_experience' => 'Për një përvojë më të mirë video rishikim të këshillojmë [$1 Firefox fundit] .', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Shkarkojë tani për tani.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Lojtaret',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Lexoni kete</a> para se embedding.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Embed në një faqe',
@@ -199,7 +199,7 @@ $messages['ar'] = array(
 	'mwe-embedplayer-ogg-player-cortado' => 'جافا كورتادو',
 	'mwe-embedplayer-ogg-player-kplayer' => 'مشغل كالشورا',
 	'mwe-embedplayer-ogg-player-selected' => '(مختار)',
-	'mwe-embedplayer-for_best_experience' => 'للحصول على تجربة تشغيل للفيديو بشكل أفضل نوصي [1 $ بأحدث أصدار فايرفوكس].',
+	'mwe-embedplayer-for_best_experience' => 'للحصول على تجربة تشغيل للفيديو بشكل أفضل نوصي [1 $ بأحدث أصدار فايرفوكس].', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'اضغط <b>F11</b> لتبديل <i>متصفح الوب</i> لوضع الشاشة الكاملة',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'اضغط <b>shift ⌘ F</b> لوضع شاشة كاملة',
 	'mwe-embedplayer-do_not_warn_again' => 'لا تظهر هذه الرسالة في المرة القادمة',
@@ -366,7 +366,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lenner Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(diuzet)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => "Evit gwelet gwelloc'h e erbedadomp deoc'h : <br />[$1 Firefox 3.5].",
+	'mwe-embedplayer-for_best_experience' => "Evit gwelet gwelloc'h e erbedadomp deoc'h : <br />[$1 Firefox 3.5].", # Fuzzy
 	'mwe-embedplayer-download-warn' => "N'eo ket kenglotus ar Merdeer web detektet; evit lenn er merdeer, pellgargit [$1 stumm nevez Firefox]",
 	'mwe-embedplayer-fullscreen-tip' => 'Pouezit war <b>F11</b> da wintañ e mod Skramm leun ar <i>merdeer web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => "Pouezit war <b>pennlizh. ⌘ F</b> evit gwintañ d'ar mod Skramm leun",
@@ -386,7 +386,8 @@ $messages['br'] = array(
 	'mwe-embedplayer-missing-source' => "N'eus bet kavet mammenn video ebet.",
 );
 
-/** Bosnian (bosanski) */
+/** Bosnian (bosanski)
+ */
 $messages['bs'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'Puni ekran',
 	'mwe-embedplayer-paused' => 'zaustavljeno',
@@ -440,8 +441,8 @@ $messages['cs'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Přehrávač Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(vybraný)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pro příjemnější přehrávání videa doporučujeme <br /><a href="http://www.mozilla-europe.org/cs/firefox/?from=mwEmbed">aktuální Firefox].',
-	'mwe-embedplayer-do_not_warn_again' => 'Skrýt toto hlášení.',
+	'mwe-embedplayer-for_best_experience' => 'Pro příjemnější přehrávání videa doporučujeme <br /><a href="http://www.mozilla-europe.org/cs/firefox/?from=mwEmbed">aktuální Firefox].', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Skrýt toto hlášení.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Přehrávače',
 	'mwe-embedplayer-read_before_embed' => 'Před vkládáním <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">čtěte upozornění</a>.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Vložení na stránku',
@@ -731,8 +732,8 @@ $messages['el'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura player',
 	'mwe-embedplayer-ogg-player-selected' => '(επιλεγμένο)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Για μια καλύτερη εμπειρία αναπαραγωγής βίντεο σας προτείνουμε το <a href="http://www.mozilla-europe.org/el/firefox/?from=mwEmbed">νεότερο Firefox] .',
-	'mwe-embedplayer-do_not_warn_again' => 'Παράβλεψη για τώρα.',
+	'mwe-embedplayer-for_best_experience' => 'Για μια καλύτερη εμπειρία αναπαραγωγής βίντεο σας προτείνουμε το <a href="http://www.mozilla-europe.org/el/firefox/?from=mwEmbed">νεότερο Firefox] .', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Παράβλεψη για τώρα.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Λογισμικό αναπαραγωγής',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Διαβάστε αυτό</a> πριν από την ενσωμάτωση.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Ενσωμάτωση στο σάιτ ή μπλογκ σας',
@@ -870,7 +871,8 @@ $messages['et'] = array(
 	'mwe-embedplayer-download' => 'Laadi alla',
 );
 
-/** Basque (euskara) */
+/** Basque (euskara)
+ */
 $messages['eu'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'Pantaila osoan',
 	'mwe-embedplayer-paused' => 'pausatua',
@@ -879,6 +881,38 @@ $messages['eu'] = array(
 	'mwe-embedplayer-credits' => 'Kredituak',
 	'mwe-embedplayer-menu_btn' => 'Menua',
 	'mwe-embedplayer-close_btn' => 'Itxi',
+);
+
+/** Persian (فارسی)
+ * @author پاناروما
+ */
+$messages['fa'] = array(
+	'mwe-embedplayer-credit-title' => 'عنوان: $1',
+	'mwe-embedplayer-credit-date' => 'تاریخ: $1',
+	'mwe-embedplayer-credit-author' => 'نویسنده = $1',
+	'mwe-embedplayer-loading_plugin' => 'در حال بارگزاری افزایه...',
+	'mwe-embedplayer-select_playback' => 'تنظیم اولویت پخش',
+	'mwe-embedplayer-add_to_end_of_sequence' => 'اضافه کردن به انتهای دنباله',
+	'mwe-embedplayer-play_clip' => 'نشان دادن کلیپ',
+	'mwe-embedplayer-pause_clip' => 'توقف کلیپ',
+	'mwe-embedplayer-volume_control' => 'تنظیم صدا',
+	'mwe-embedplayer-player_options' => 'گزینه‌های دستگاه پخش',
+	'mwe-embedplayer-player_fullscreen' => 'تمام صفحه',
+	'mwe-embedplayer-next_clip_msg' => 'نمایش کلیپ بعدی',
+	'mwe-embedplayer-prev_clip_msg' => 'نمایش کلیپ قبلی',
+	'mwe-embedplayer-current_clip_msg' => 'ادامه دادن نمایش کلیپ',
+	'mwe-embedplayer-paused' => 'مکث',
+	'mwe-embedplayer-download_full' => 'بارگیری پرونده‌های فیلم',
+	'mwe-embedplayer-download_right_click' => 'برای بارگیری، کلیک راست کنید و این گزینه را انتخاب کنید<i>Save link as...</i>',
+	'mwe-embedplayer-download_clip' => 'بارگیری تصویر',
+	'mwe-embedplayer-download_text' => 'بارگیری نوشته',
+	'mwe-embedplayer-download' => 'بارگیری',
+	'mwe-embedplayer-share' => 'به اشتراک گذاشتن',
+	'mwe-embedplayer-credits' => 'اعتبار',
+	'mwe-embedplayer-no-player' => 'دسترسی به پخش‌کننده وجود ندارد $1',
+	'mwe-embedplayer-share_this_video' => 'این تصویر را به اشتراک گذارید',
+	'mwe-embedplayer-menu_btn' => 'فهرست',
+	'mwe-embedplayer-close_btn' => 'بستن',
 );
 
 /** Finnish (suomi)
@@ -970,7 +1004,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lecteur Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(sélectionné)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => "Pour un meilleur visionnage nous recommandons l'utilisation d'un navigateur permettant la lecture de [vidéos HTML 5].",
+	'mwe-embedplayer-for_best_experience' => "Pour un meilleur visionnage nous recommandons l'utilisation d'un navigateur permettant la lecture de [vidéos HTML 5].", # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Navigateur web non compatible détecté, pour une lecteur dans le navigateur veuillez télécharger la [$1 dernière version de Firefox].',
 	'mwe-embedplayer-fullscreen-tip' => 'Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran',
@@ -1224,7 +1258,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-Player',
 	'mwe-embedplayer-ogg-player-selected' => '(uusgwehlt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Fir e besseri Abspilqualitet vu däm Video empfähle mir:<br />[$1 Firefox 3.5].',
+	'mwe-embedplayer-for_best_experience' => 'Fir e besseri Abspilqualitet vu däm Video empfähle mir:<br />[$1 Firefox 3.5].', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'S Wiidergabeprogramm im Browser isch nit kompatibel. Zume im Browser aaluege, due bitte d [$1 nöisti Version vo Firefox] abelade.',
 	'mwe-embedplayer-fullscreen-tip' => 'D Taschte <b>F11</b> drugge, zume uff de Vollbildmodus vum <i>Webbrowsers</i> umzschalte.',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'D Taschte <b>UMSCHALT ⌘ F</b> drugge, zume uff de Vollbildmodus vum <i>Webbrowsers</i> umzschalte.',
@@ -1467,8 +1501,8 @@ $messages['hu'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura lejátszó',
 	'mwe-embedplayer-ogg-player-selected' => '(kiválasztva)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Jobb videolejátszási élményhez ajánljuk:<br />[$1 Firefox 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Eltüntetés egyelőre.',
+	'mwe-embedplayer-for_best_experience' => 'Jobb videolejátszási élményhez ajánljuk:<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Eltüntetés egyelőre.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Lejátszók',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Olvasd el ezt</a>, mielőtt beillesztenéd.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Beágyazás egy lapra',
@@ -1541,7 +1575,7 @@ $messages['ia'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Le reproductor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seligite)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pro un melior experientia de reproduction de video, nos recommenda:<br />[$1 Firefox 3.5].',
+	'mwe-embedplayer-for_best_experience' => 'Pro un melior experientia de reproduction de video, nos recommenda:<br />[$1 Firefox 3.5].', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nulle lector compatibile esseva detegite in le navigator del web. Pro reproduction in le navigator, per favor discarga le [$1 ultime version de Firefox].',
 	'mwe-embedplayer-fullscreen-tip' => 'Preme <b>F11</b> pro alternar le <i>navigator del web</i> in plen schermo',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Preme <b>shift ⌘ F</b> pro alternar plen schermo',
@@ -1623,7 +1657,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Pemutar Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(dipilih)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Untuk pengalaman pemutaran video yang lebih baik kami menyarankan: <br />[$1 Firefox 3.5].',
+	'mwe-embedplayer-for_best_experience' => 'Untuk pengalaman pemutaran video yang lebih baik kami menyarankan: <br />[$1 Firefox 3.5].', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Pemutar dalam peramban yang kompatibel tidak ditemukan. Untuk pemutaran dalam peramban silakan unduh [$1 Firefox terbaru]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tekan <b>F11</b> untuk beralih ke layar penuh <i>peramban web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Tekan <b>shift ⌘ F</b> untuk beralih ke layar penuh',
@@ -1944,7 +1978,8 @@ $messages['ko'] = array(
 	'mwe-embedplayer-copy-code' => '코드 복사하기',
 );
 
-/** Colognian (Ripoarisch) */
+/** Colognian (Ripoarisch)
+ */
 $messages['ksh'] = array(
 	'mwe-embedplayer-loading_plugin' => 'Ben dat Ongerprojramm aam laade&nbsp;…',
 	'mwe-embedplayer-select_playback' => 'Enstellunge för et Affshpelle maache',
@@ -1985,8 +2020,8 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Dä <i lang="en">Kaltura</i> Afshpeller',
 	'mwe-embedplayer-ogg-player-selected' => '(ußjesöhk)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => '<i lang="en">OMTK Flash Vorbis</i> Shpeller',
-	'mwe-embedplayer-for_best_experience' => 'öm en bäßere Qualliteit för dä Viddejo ze krijje, nämmp_der:<br /><i lang="en">[$1 Firefox 3.5]</i>.',
-	'mwe-embedplayer-do_not_warn_again' => 'Eets ens nit norr_ens aanzeije.',
+	'mwe-embedplayer-for_best_experience' => 'öm en bäßere Qualliteit för dä Viddejo ze krijje, nämmp_der:<br /><i lang="en">[$1 Firefox 3.5]</i>.', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Eets ens nit norr_ens aanzeije.', # Fuzzy
 	'mwe-embedplayer-read_before_embed' => 'Beß esu joot un liß <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">övver de Sesherheit bemm Ennfööje övver et Netz</a> iih dat De jet ennfööschß!',
 	'mwe-embedplayer-embed_site_or_blog' => 'En en Websigg udder <i lang="en">Blog</i>_erinndonn',
 	'mwe-embedplayer-related_videos' => 'Verwandte Viddejos',
@@ -2133,7 +2168,8 @@ $messages['mk'] = array(
 	'mwe-embedplayer-missing-source' => 'Не е пронајден извор на снимката.',
 );
 
-/** Malayalam (മലയാളം) */
+/** Malayalam (മലയാളം)
+ */
 $messages['ml'] = array(
 	'mwe-embedplayer-credit-title' => 'തലക്കെട്ട്: $1',
 	'mwe-embedplayer-loading_plugin' => 'പ്ലഗ്ഗിൻ ശേഖരിക്കുന്നു...',
@@ -2171,8 +2207,8 @@ $messages['ml'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'കൽറ്റ്യൂറ പ്ലേയർ',
 	'mwe-embedplayer-ogg-player-selected' => '(തിരഞ്ഞെടുത്തവ)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'ഓ‌‌എംറ്റികെ ഫ്ലാഷ് വോർബിസ്',
-	'mwe-embedplayer-for_best_experience' => 'മെച്ചപ്പെട്ട ചലച്ചിത്രാസ്വാദനത്തിനു ഞങ്ങൾ നിർദ്ദേശിക്കുന്നത്:<br />[$1 ഫയർഫോക്സ് 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'ഇപ്പോൾ ഒഴിവാക്കുക.',
+	'mwe-embedplayer-for_best_experience' => 'മെച്ചപ്പെട്ട ചലച്ചിത്രാസ്വാദനത്തിനു ഞങ്ങൾ നിർദ്ദേശിക്കുന്നത്:<br />[$1 ഫയർഫോക്സ് 3.5].', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'ഇപ്പോൾ ഒഴിവാക്കുക.', # Fuzzy
 	'mwe-embedplayer-read_before_embed' => 'ഉൾപ്പെടുത്തുന്നതിനു മുമ്പ് <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">ഇത് വായിക്കുക</a>.',
 	'mwe-embedplayer-embed_site_or_blog' => 'ഒരു താളിൽ ഉൾപ്പെടുത്തുക',
 	'mwe-embedplayer-related_videos' => 'ബന്ധപ്പെട്ട ചലച്ചിത്രങ്ങൾ',
@@ -2260,7 +2296,7 @@ $messages['nb'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
 	'mwe-embedplayer-ogg-player-selected' => '(valgt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For en bedre opplevelse av videoavspillingen anbefaler vi [$1 den nyeste Firefox].',
+	'mwe-embedplayer-for_best_experience' => 'For en bedre opplevelse av videoavspillingen anbefaler vi [$1 den nyeste Firefox].', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Spillere',
 	'mwe-embedplayer-related_videos' => 'Relaterte videoer',
 	'mwe-embedplayer-copy-code' => 'Kopier kode',
@@ -2373,7 +2409,8 @@ $messages['nn'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-video',
 );
 
-/** Occitan (occitan) */
+/** Occitan (occitan)
+ */
 $messages['oc'] = array(
 	'mwe-embedplayer-loading_plugin' => 'cargament del plugin ...',
 	'mwe-embedplayer-select_playback' => 'Definir las preferéncias de lectura',
@@ -2412,8 +2449,8 @@ $messages['oc'] = array(
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionat)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Per un melhor visionatge recomandam :<br />[$1 Firefox 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Interrompre pel moment.',
+	'mwe-embedplayer-for_best_experience' => 'Per un melhor visionatge recomandam :<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Interrompre pel moment.', # Fuzzy
 	'mwe-embedplayer-read_before_embed' => 'Legissètz <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">aquò</a> abans de procedir !',
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar dins una pagina',
 	'mwe-embedplayer-related_videos' => 'Vidèos associadas',
@@ -2757,8 +2794,8 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos::<br />[$1 Firefox 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Ignorar por agora.',
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos::<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Ignorar por agora.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Leitores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leia isto</a> antes de incorporar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar numa página',
@@ -2886,7 +2923,7 @@ $messages['ru'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Проигрыватель Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(выбрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Для хорошего воспроизведения видео мы рекомендуем: <br />[$1 Firefox 3.5].',
+	'mwe-embedplayer-for_best_experience' => 'Для хорошего воспроизведения видео мы рекомендуем: <br />[$1 Firefox 3.5].', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Не найдено встроенного проигрывателя для браузера, для воспроизведении в браузере загрузите [$1 последний Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Клавиша <b>F11</b> переводит <i>веб-браузер</i> в полноэкранный режим',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Нажмите <b>shift ⌘ F</b> для перехода в полноэкранный режим',
@@ -2940,11 +2977,12 @@ $messages['si'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'පිටුවක ඔබ්බවන්න',
 );
 
-/** Slovak (slovenčina) */
+/** Slovak (slovenčina)
+ */
 $messages['sk'] = array(
 	'mwe-embedplayer-download' => 'Stiahnuť',
 	'mwe-embedplayer-close_btn' => 'Zavrieť',
-	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať',
+	'mwe-embedplayer-do_not_warn_again' => 'Nateraz nezobrazovať', # Fuzzy
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
@@ -3005,7 +3043,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Извођач Калтура',
 	'mwe-embedplayer-ogg-player-selected' => '(изабрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'За квалитетније прегледање снимака, препоручујемо вам [$1 најновији Фајерфокс].',
+	'mwe-embedplayer-for_best_experience' => 'За квалитетније прегледање снимака, препоручујемо вам [$1 најновији Фајерфокс].', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Није пронађен прикладан извођач за пуштање преко прегледача. Преузмите [$1 најновији Фајерфокс]',
 	'mwe-embedplayer-fullscreen-tip' => 'Притисните <b>F11</b> да пребаците <i>прегледач</i> на цео екран',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Притисните <b>Shift ⌘ F</b> за пребацивање на цео екран',
@@ -3082,7 +3120,7 @@ $messages['sr-el'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Izvođač Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(izabrano)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Za kvalitetnije pregledanje snimaka, preporučujemo vam [$1 najnoviji Fajerfoks].',
+	'mwe-embedplayer-for_best_experience' => 'Za kvalitetnije pregledanje snimaka, preporučujemo vam [$1 najnoviji Fajerfoks].', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nije pronađen prikladan izvođač za puštanje preko pregledača. Preuzmite [$1 najnoviji Fajerfoks]',
 	'mwe-embedplayer-fullscreen-tip' => 'Pritisnite <b>F11</b> da prebacite <i>pregledač</i> na ceo ekran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Pritisnite <b>Shift ⌘ F</b> za prebacivanje na ceo ekran',
@@ -3339,8 +3377,8 @@ $messages['tr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura oynatıcısı',
 	'mwe-embedplayer-ogg-player-selected' => '(seçili)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için önerimiz:<br />[$1 Firefox 3.5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Şimdilik bırakın.',
+	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için önerimiz:<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => 'Şimdilik bırakın.', # Fuzzy
 	'mwe-embedplayer-read_before_embed' => 'Lütfen gerçekten gömmeden <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">uzaktan gömme hakkındaki güvenlik notlarını</a> okuyun!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Bir sayfaya gömün',
 	'mwe-embedplayer-related_videos' => 'İlgili videolar',
@@ -3383,7 +3421,8 @@ $messages['ur'] = array(
 	'mwe-embedplayer-close_btn' => 'بند',
 );
 
-/** vèneto (vèneto) */
+/** vèneto (vèneto)
+ */
 $messages['vec'] = array(
 	'mwe-embedplayer-credit-title' => 'Titolo: $1',
 	'mwe-embedplayer-loading_plugin' => "so' drio cargar el plugin...",
@@ -3423,7 +3462,8 @@ $messages['vec'] = array(
 	'mwe-embedplayer-copy-code' => 'Copia el còdese',
 );
 
-/** Veps (vepsän kel’) */
+/** Veps (vepsän kel’)
+ */
 $messages['vep'] = array(
 	'mwe-embedplayer-link_back' => 'Kosketuz tagaze',
 	'mwe-embedplayer-play_clip' => 'Väta klip',
@@ -3543,4 +3583,3 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-video-mpeg' => 'MPEG視頻',
 	'mwe-embedplayer-video-msvideo' => 'AVI視頻',
 );
-

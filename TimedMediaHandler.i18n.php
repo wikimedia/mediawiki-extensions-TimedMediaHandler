@@ -164,6 +164,7 @@ Parameters are:
 	'timedmedia-unknown-target-size' => 'Status update for Transcodes
 Parameters are:
 * $1 The number of bytes of the file transcoded so far',
+	'timedmedia-time-1-measurements' => '{{notranslate}}',
 	'timedmedia-ogg' => '{{optional}}',
 	'timedmedia-webm' => '{{optional}}',
 	'timedmedia-source-file' => 'The source file
@@ -213,19 +214,12 @@ Parameters are:
 * $1 number of transcodes',
 );
 
-/** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
- * @author Ulohnanne
- */
-$messages['akz'] = array(
-	'timedmedia-more' => 'Maatàasasi...',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
  */
 $messages['af'] = array(
-	'timedmedia-desc' => "Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler",
+	'timedmedia-desc' => "Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler", # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 klanklêer, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 video lêer, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medialêer, $2',
@@ -239,11 +233,18 @@ $messages['af'] = array(
 	'timedmedia-desc-link' => 'Aangaande die lêer',
 );
 
+/** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
+ * @author Ulohnanne
+ */
+$messages['akz'] = array(
+	'timedmedia-more' => 'Maatàasasi...',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'timedmedia-desc' => 'Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis',
+	'timedmedia-desc' => 'Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg tingull $1 fotografi, $2',
 	'timedmedia-ogg-short-video' => 'video file Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 media file, $2',
@@ -265,7 +266,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'timedmedia-desc' => 'Maneyador de fichers sincronizatos (vidio, son y texto sincronizato) con transcodificación Ogg Theora/Vorbis',
+	'timedmedia-desc' => 'Maneyador de fichers sincronizatos (vidio, son y texto sincronizato) con transcodificación Ogg Theora/Vorbis', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Fichero de son ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Fichero de vidio ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Fichero multimedia ogg $1, $2',
@@ -287,7 +288,7 @@ $messages['an'] = array(
  * @author روخو
  */
 $messages['ar'] = array(
-	'timedmedia-desc' => 'متحكم لملفات Ogg Theora وVorbis، مع لاعب جافاسكريت',
+	'timedmedia-desc' => 'متحكم لملفات Ogg Theora وVorbis، مع لاعب جافاسكريت', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ملف صوت، $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 ملف فيديو، $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 ملف ميديا، $2',
@@ -334,7 +335,7 @@ $messages['arc'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'timedmedia-desc' => 'متحكم لملفات أو جى جى ثيورا و فوربيس، مع بلاير جافاسكريبت',
+	'timedmedia-desc' => 'متحكم لملفات أو جى جى ثيورا و فوربيس، مع بلاير جافاسكريبت', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ملف صوت، $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 ملف فيديو, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 ملف ميديا، $2',
@@ -407,7 +408,7 @@ $messages['ba'] = array(
  * @author Mostafadaneshvar
  */
 $messages['bcc'] = array(
-	'timedmedia-desc' => 'دسگیره په فایلان Ogg Theora و Vorbis, گون پخش کنوک جاوا اسکرسیپت',
+	'timedmedia-desc' => 'دسگیره په فایلان Ogg Theora و Vorbis, گون پخش کنوک جاوا اسکرسیپت', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'فایل صوتی Ogg $1، $2',
 	'timedmedia-ogg-short-video' => 'فایل تصویری Ogg $1، $2',
 	'timedmedia-ogg-short-general' => 'فایل مدیا Ogg $1، $2',
@@ -481,7 +482,7 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
-	'timedmedia-desc' => 'Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript',
+	'timedmedia-desc' => 'Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 звуков файл, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 видео файл, $2',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 звуков файл, продължителност $2, $3',
@@ -597,7 +598,7 @@ Možete <a href="$1">učitati klip</a> ili <a href="http://www.mediawiki.org/wik
  * @author Vriullop
  */
 $messages['ca'] = array(
-	'timedmedia-desc' => 'Gestor de fitxers Ogg Theora i Vorbis, amb reproductor de Javascript',
+	'timedmedia-desc' => 'Gestor de fitxers Ogg Theora i Vorbis, amb reproductor de Javascript', # Fuzzy
 	'timedmedia-ogg-short-audio' => "Fitxer OGG d'àudio $1, $2",
 	'timedmedia-ogg-short-video' => 'Fitxer OGG de vídeo $1, $2',
 	'timedmedia-ogg-short-general' => 'Fitxer multimèdia OGG $1, $2',
@@ -667,7 +668,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
-	'timedmedia-desc' => 'Understøtter Ogg Theora- og Vorbis-filer med en JavaScript-afspiller.',
+	'timedmedia-desc' => 'Understøtter Ogg Theora- og Vorbis-filer med en JavaScript-afspiller.', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 lydfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediafil, $2',
@@ -733,6 +734,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-time-4-measurements' => '$1, $2, $3 und $4',
 	'timedmedia-time-3-measurements' => '$1, $2 und $3',
 	'timedmedia-time-2-measurements' => '$1 und $2',
+	'timedmedia-time-1-measurements' => '$1',
 	'timedmedia-show-error' => 'Fehler anzeigen',
 	'timedmedia-reset' => 'Umschlüsselung zurücksetzen',
 	'timedmedia-reset-confirm' => 'Das Zurücksetzen dieser Umschlüsselung wird, sofern vorhanden, die bestehende Datei entfernen und die Umschlüsselung erneut der Auftragswarteschlange hinzufügen. Die erneute Umschlüsselung wird einige Zeit dauern.<br /><br />Soll dies tatsächlich gemacht werden?',
@@ -832,7 +834,7 @@ Móžoš  <a href="$1">klip ześěgnuś</a> abo <a href="http://www.mediawiki.or
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'timedmedia-desc' => 'Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript',
+	'timedmedia-desc' => 'Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Αρχείο ήχου Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Αρχείο βίντεο Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Αρχείο μέσων Ogg $1, $2',
@@ -873,6 +875,7 @@ $messages['eo'] = array(
  * @author Armando-Martin
  * @author Crazymadlover
  * @author Jewbask
+ * @author Maor X
  * @author Muro de Aguas
  * @author Remember the dot
  * @author Rodrigo Molinero
@@ -978,7 +981,7 @@ $messages['et'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['eu'] = array(
-	'timedmedia-desc' => 'Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin',
+	'timedmedia-desc' => 'Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 soinu fitxategia, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 bideo fitxategia, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 media fitxategia, $2',
@@ -1493,7 +1496,7 @@ $messages['he'] = array(
  * @author Shyam
  */
 $messages['hi'] = array(
-	'timedmedia-desc' => 'ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ',
+	'timedmedia-desc' => 'ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'ऑग $1 ध्वनी फ़ाईल, $2',
 	'timedmedia-ogg-short-video' => 'ऑग $1 चलतचित्र फ़ाईल, $2',
 	'timedmedia-ogg-short-general' => 'ऑग $1 मीडिया फ़ाईल, $2',
@@ -1515,7 +1518,7 @@ $messages['hi'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'timedmedia-desc' => 'Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom',
+	'timedmedia-desc' => 'Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 video datoteka, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medijska datoteka, $2',
@@ -1615,7 +1618,7 @@ Chceš woprawdźe pokročować?',
  * @author Tgr
  */
 $messages['hu'] = array(
-	'timedmedia-desc' => 'JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz',
+	'timedmedia-desc' => 'JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 hangfájl, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofájl, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 médiafájl, $2',
@@ -1943,7 +1946,7 @@ $messages['ja'] = array(
  * @author Huslåke
  */
 $messages['jut'] = array(
-	'timedmedia-desc' => 'Håndlær før Ogg Theora og Vorbis filer, ve JavaScript spæler',
+	'timedmedia-desc' => 'Håndlær før Ogg Theora og Vorbis filer, ve JavaScript spæler', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 sond file, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 video file, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 media file, $2',
@@ -1964,7 +1967,7 @@ $messages['jut'] = array(
  * @author Pras
  */
 $messages['jv'] = array(
-	'timedmedia-desc' => 'Sing ngurusi berkas Ogg Theora lan Vorbis mawa pamain JavaScript',
+	'timedmedia-desc' => 'Sing ngurusi berkas Ogg Theora lan Vorbis mawa pamain JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Berkas swara $1 ogg, $2',
 	'timedmedia-ogg-short-video' => 'Berkas vidéo $1 ogg, $2',
 	'timedmedia-ogg-short-general' => 'Berkas média $1 ogg, $2',
@@ -2062,7 +2065,8 @@ $messages['ka'] = array(
 	'timedmedia-file' => 'ფაილი',
 );
 
-/** Kazakh (Arabic script) (قازاقشا (تٴوتە)‏) */
+/** Kazakh (Arabic script) (قازاقشا (تٴوتە)‏)
+ */
 $messages['kk-arab'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 دىبىس فايلى, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 بەينە فايلى, $2',
@@ -2078,7 +2082,8 @@ $messages['kk-arab'] = array(
 	'timedmedia-desc-link' => 'بۇل فايل تۋرالى',
 );
 
-/** Kazakh (Cyrillic script) (қазақша (кирил)‎) */
+/** Kazakh (Cyrillic script) (қазақша (кирил)‎)
+ */
 $messages['kk-cyrl'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 дыбыс файлы, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 бейне файлы, $2',
@@ -2094,7 +2099,8 @@ $messages['kk-cyrl'] = array(
 	'timedmedia-desc-link' => 'Бұл файл туралы',
 );
 
-/** Kazakh (Latin script) (qazaqşa (latın)‎) */
+/** Kazakh (Latin script) (qazaqşa (latın)‎)
+ */
 $messages['kk-latn'] = array(
 	'timedmedia-ogg-short-audio' => 'Ogg $1 dıbıs faýlı, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 beýne faýlı, $2',
@@ -2118,7 +2124,7 @@ $messages['kk-latn'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'timedmedia-desc' => 'គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript',
+	'timedmedia-desc' => 'គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'ឯកសារ សំឡេង Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'ឯកសារវីដេអូ Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'ឯកសារមេឌាOgg $1, $2',
@@ -2318,7 +2324,7 @@ $messages['lfn'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'timedmedia-desc' => "Handelt Ogg Theora- en Vorbis-bestande aaf met 'n JavaScript-mediaspeler",
+	'timedmedia-desc' => "Handelt Ogg Theora- en Vorbis-bestande aaf met 'n JavaScript-mediaspeler", # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 geluidsbestandj, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videobestandj, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediabestandj, $2',
@@ -2338,7 +2344,7 @@ $messages['li'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
-	'timedmedia-desc' => 'Įrankis groti Ogg Theora ir Vorbis failus su JavaScript grotuvu',
+	'timedmedia-desc' => 'Įrankis groti Ogg Theora ir Vorbis failus su JavaScript grotuvu', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 garso byla, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 video byla, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medija byla, $2',
@@ -2508,7 +2514,7 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'timedmedia-desc' => 'ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट',
+	'timedmedia-desc' => 'ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'ऑग $1 ध्वनी संचिका, $2',
 	'timedmedia-ogg-short-video' => 'ऑग $1 चलतचित्र संचिका, $2',
 	'timedmedia-ogg-short-general' => 'ऑग $1 मीडिया संचिका, $2',
@@ -2663,7 +2669,7 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.or
  * @author Slomox
  */
 $messages['nds'] = array(
-	'timedmedia-desc' => 'Stüürprogramm för Ogg-Theora- un Vorbis Datein, mitsamt en Afspeler in JavaScript',
+	'timedmedia-desc' => 'Stüürprogramm för Ogg-Theora- un Vorbis Datein, mitsamt en Afspeler in JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 	'timedmedia-ogg-short-video' => 'Ogg-$1-Videodatei, $2',
 	'timedmedia-ogg-short-general' => 'Ogg-$1-Mediendatei, $2',
@@ -2790,7 +2796,7 @@ Weet u zeker dat u wilt doorgaan?',
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'timedmedia-desc' => 'Gjer at Ogg Theora- og Ogg Vorbis-filer kan verta køyrte ved hjelp av JavaScript-avspelar.',
+	'timedmedia-desc' => 'Gjer at Ogg Theora- og Ogg Vorbis-filer kan verta køyrte ved hjelp av JavaScript-avspelar.', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1-lydfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1-videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1-mediafil, $2',
@@ -2809,7 +2815,7 @@ $messages['nn'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'timedmedia-desc' => 'Supòrt pels fichièrs Ogg Theora e Vorbis, amb un lector Javascript',
+	'timedmedia-desc' => 'Supòrt pels fichièrs Ogg Theora e Vorbis, amb un lector Javascript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Fichièr son Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Fichièr vidèo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Fichièr mèdia Ogg $1, $2',
@@ -2974,11 +2980,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (português)
- * @author 555
  * @author Giro720
  * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
+ * @author 555
  */
 $messages['pt'] = array(
 	'timedmedia-desc' => 'Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt',
@@ -3045,7 +3051,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
  * @author Giro720
  */
 $messages['pt-br'] = array(
-	'timedmedia-desc' => 'Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript',
+	'timedmedia-desc' => 'Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Arquivo de áudio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Arquivo de vídeo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Arquivo multimídia Ogg $1, $2',
@@ -3222,7 +3228,7 @@ $messages['rue'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'timedmedia-desc' => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя',
+	'timedmedia-desc' => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Звуковой файл Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Медиа-файл Ogg $1, $2',
@@ -3249,7 +3255,7 @@ $messages['sgs'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
-	'timedmedia-desc' => 'Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ',
+	'timedmedia-desc' => 'Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ශ්‍රව්‍ය ගොනුව, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 දෘශ්‍ය ගොනුව, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 මාධ්‍ය ගොනුව, $2',
@@ -3290,7 +3296,7 @@ $messages['si'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'timedmedia-desc' => 'Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom',
+	'timedmedia-desc' => 'Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Zvukový súbor ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Video súbor ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Multimediálny súbor ogg $1, $2',
@@ -3496,7 +3502,7 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'timedmedia-desc' => 'Stjuurengsprogramm foar Ogg Theora- un Vorbis-Doatäie, inklusive n JavaScript-Ouspielsoftware',
+	'timedmedia-desc' => 'Stjuurengsprogramm foar Ogg Theora- un Vorbis-Doatäie, inklusive n JavaScript-Ouspielsoftware', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg-$1-Audiodoatäi, $2',
 	'timedmedia-ogg-short-video' => 'Ogg-$1-Videodoatäi, $2',
 	'timedmedia-ogg-short-general' => 'Ogg-$1-Mediadoatäi, $2',
@@ -3538,7 +3544,7 @@ $messages['su'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'timedmedia-desc' => 'Stöder filtyperna Ogg Theora och Ogg Vorbis med en JavaScript-baserad mediaspelare',
+	'timedmedia-desc' => 'Stöder filtyperna Ogg Theora och Ogg Vorbis med en JavaScript-baserad mediaspelare', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ljudfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediafil, $2',
@@ -3669,7 +3675,7 @@ $messages['te'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'timedmedia-desc' => 'Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript',
+	'timedmedia-desc' => 'Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 парвандаи савтӣ, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 парвандаи наворӣ, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 парвандаи расона, $2',
@@ -3688,7 +3694,7 @@ $messages['tg-cyrl'] = array(
  * @author Liangent
  */
 $messages['tg-latn'] = array(
-	'timedmedia-desc' => 'Ba dastgirandae baroi parvandahoi  Ogg Theora va Vorbis, bo paxşkunandai JavaScript',
+	'timedmedia-desc' => 'Ba dastgirandae baroi parvandahoi  Ogg Theora va Vorbis, bo paxşkunandai JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 parvandai savtī, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 parvandai navorī, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 parvandai rasona, $2',
@@ -3707,7 +3713,7 @@ $messages['tg-latn'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
-	'timedmedia-desc' => 'Ogg Theora we Vorbis faýllary üçin işleýji, JavaScript pleýeri bilen bilelikde',
+	'timedmedia-desc' => 'Ogg Theora we Vorbis faýllary üçin işleýji, JavaScript pleýeri bilen bilelikde', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ses faýly, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 wideo faýly, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 media faýly, $2',
@@ -3825,7 +3831,7 @@ $messages['tly'] = array(
  * @author Srhat
  */
 $messages['tr'] = array(
-	'timedmedia-desc' => 'Ogg Theora ve Vorbis dosyaları için işleyici, JavaScript oynatıcısı ile',
+	'timedmedia-desc' => 'Ogg Theora ve Vorbis dosyaları için işleyici, JavaScript oynatıcısı ile', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ses dosyası, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 film dosyası, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medya dosyası, $2',
@@ -3903,7 +3909,7 @@ $messages['ur'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'timedmedia-desc' => 'Gestor par i file Ogg Theora e Vorbis, con riprodutor JavaScript',
+	'timedmedia-desc' => 'Gestor par i file Ogg Theora e Vorbis, con riprodutor JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'File audio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'File video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'File multimedial Ogg $1, $2',
@@ -4018,7 +4024,8 @@ $messages['vo'] = array(
 	'timedmedia-desc-link' => 'Tefü ragiv at',
 );
 
-/** Walloon (walon) */
+/** Walloon (walon)
+ */
 $messages['wa'] = array(
 	'timedmedia-dismiss' => 'Clôre',
 );
@@ -4034,9 +4041,10 @@ $messages['yi'] = array(
 	'timedmedia-file' => 'טעקע',
 );
 
-/** Cantonese (粵語) */
+/** Cantonese (粵語)
+ */
 $messages['yue'] = array(
-	'timedmedia-desc' => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',
+	'timedmedia-desc' => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Ogg $1 聲檔，$2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 畫檔，$2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 媒檔，$2',
@@ -4207,4 +4215,3 @@ $messages['zh-hant'] = array(
 	'timedmedia-derivative-state-failed' => '$1次轉碼失敗',
 	'timedmedia-file' => '檔案',
 );
-

@@ -90,7 +90,6 @@ $messages['af'] = array(
 	'mwe-timedtext-choose-text' => 'Kies teks',
 	'mwe-timedtext-layout' => 'Uitleg',
 	'mwe-timedtext-textcat-cc' => 'Onderskrifte',
-	'mwe-timedtext-textcat-nb' => '',
 	'mwe-timedtext-textcat-lrc' => 'Lirieke',
 );
 
@@ -222,7 +221,7 @@ $messages['br'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Kargadenn graet',
 	'mwe-timedtext-back-btn' => 'Distreiñ',
 	'mwe-timedtext-choose-text' => 'Dibab an destenn',
-	'mwe-timedtext-upload-timed-text' => 'Enporzhiañ istitloù',
+	'mwe-timedtext-upload-timed-text' => 'Enporzhiañ istitloù', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'O kargañ an embanner testennoù sinkronelaet',
 	'mwe-timedtext-search' => "Klask ar c'hlip",
 	'mwe-timedtext-layout' => "Lec'hiadur",
@@ -768,7 +767,7 @@ $messages['gsw'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Fertig mit Uffelade',
 	'mwe-timedtext-back-btn' => 'Zruck',
 	'mwe-timedtext-choose-text' => 'Text uuswehle',
-	'mwe-timedtext-upload-timed-text' => 'Untertitel uffelade',
+	'mwe-timedtext-upload-timed-text' => 'Untertitel uffelade', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'Am Lade vum Ächtzyt-Text-Editor',
 	'mwe-timedtext-search' => 'Videoclip sueche',
 	'mwe-timedtext-layout' => 'Uusrichtig',
@@ -938,7 +937,7 @@ $messages['hu'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'A feltöltés befejeződött',
 	'mwe-timedtext-back-btn' => 'Vissza',
 	'mwe-timedtext-choose-text' => 'Szöveg választása',
-	'mwe-timedtext-upload-timed-text' => 'Felirat feltöltése',
+	'mwe-timedtext-upload-timed-text' => 'Felirat feltöltése', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'Időzítettszöveg-szerkesztő betöltése',
 	'mwe-timedtext-search' => 'Klip keresése',
 	'mwe-timedtext-layout' => 'Elrendezés',
@@ -985,7 +984,7 @@ $messages['ia'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Finite incargar',
 	'mwe-timedtext-back-btn' => 'Retornar',
 	'mwe-timedtext-choose-text' => 'Selige texto',
-	'mwe-timedtext-upload-timed-text' => 'Incargar subtitulos',
+	'mwe-timedtext-upload-timed-text' => 'Incargar subtitulos', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'Carga le editor de subtitulos…',
 	'mwe-timedtext-search' => 'Cercar clip',
 	'mwe-timedtext-layout' => 'Disposition',
@@ -1043,7 +1042,7 @@ $messages['id'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Selesai mengunggah',
 	'mwe-timedtext-back-btn' => 'Kembali',
 	'mwe-timedtext-choose-text' => 'Pilih teks',
-	'mwe-timedtext-upload-timed-text' => 'Unggah teks film',
+	'mwe-timedtext-upload-timed-text' => 'Unggah teks film', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'Memuat penyunting teks berjangka waktu',
 	'mwe-timedtext-search' => 'Cari klip',
 	'mwe-timedtext-layout' => 'Tampilan',
@@ -1650,9 +1649,9 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
- * @author 555
  * @author Giro720
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'mwe-timedtext-editor' => 'Editor de legendas',
@@ -1678,7 +1677,7 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Carregamento feito',
 	'mwe-timedtext-back-btn' => 'Voltar',
 	'mwe-timedtext-choose-text' => 'Escolher texto',
-	'mwe-timedtext-upload-timed-text' => 'Carregar legendas',
+	'mwe-timedtext-upload-timed-text' => 'Carregar legendas', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'Carregando editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
 	'mwe-timedtext-layout' => 'Posição',
@@ -1762,7 +1761,7 @@ $messages['ru'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Загрузка завершена',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-choose-text' => 'Выберите текст',
-	'mwe-timedtext-upload-timed-text' => 'Загрузить субтитры',
+	'mwe-timedtext-upload-timed-text' => 'Загрузить субтитры', # Fuzzy
 	'mwe-timedtext-loading-text-edit' => 'Загрузка редактора синхронизированного текста',
 	'mwe-timedtext-search' => 'Поиск клипа',
 	'mwe-timedtext-layout' => 'Положение',
@@ -2148,4 +2147,3 @@ $messages['zh-hant'] = array(
 	'mwe-timedtext-textcat-trx' => '字幕',
 	'mwe-timedtext-textcat-lrc' => '歌詞',
 );
-
