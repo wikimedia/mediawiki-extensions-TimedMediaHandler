@@ -711,7 +711,9 @@ class WebVideoTranscode {
 						array(
 							'transcode_image_name' => $fileName,
 							'transcode_key' => $transcodeKey,
-							'transcode_time_addjob' => $db->timestamp()
+							'transcode_time_addjob' => $db->timestamp(),
+							'transcode_error' => "",
+							'transcode_final_bitrate' => 0
 						),
 						__METHOD__
 					);
