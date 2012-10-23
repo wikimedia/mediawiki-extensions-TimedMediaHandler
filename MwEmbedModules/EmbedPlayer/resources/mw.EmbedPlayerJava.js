@@ -35,7 +35,7 @@ mw.EmbedPlayerJava = {
 		mw.log( 'EmbedPlayerJava:: Applet location: ' +  this.getAppletLocation() );
 		mw.log( 'EmbedPlayerJava:: Play media: ' + this.getSrc() );
 
-		
+
 		// load directly in the page..
 		// ( media must be on the same server or applet must be signed )
 		var appletCode = '' +
@@ -76,9 +76,9 @@ mw.EmbedPlayerJava = {
 		var appletLoc = false;
 		// Check for wgCortadoJarFile override
 		if( mw.getConfig( 'wgCortadoJarFile' ) !== false ){
-			return mw.getConfig('wgCortadoJarFile' ); 
+			return mw.getConfig('wgCortadoJarFile' );
 		}
-		
+
 		if (
 			!mw.isLocalDomain( mediaSrc )
 			||

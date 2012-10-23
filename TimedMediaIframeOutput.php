@@ -112,13 +112,13 @@ class TimedMediaIframeOutput {
 
 		// rewrite player
 		$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' ).embedPlayer(function(){
-				
+
 			// Bind window resize to reize the player:
 			var fitPlayer = function(){
 				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
 				[0].updateLayout();
 			}
-		
+
 			$( window ).resize( fitPlayer );
 			$('#videoContainer').css({
 				'visibility':'visible'

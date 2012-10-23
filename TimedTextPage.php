@@ -23,8 +23,8 @@ class TimedTextPage extends Article {
 		}
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
 		$srt = array_pop( $titleParts );
-		
-		// create a title from the current page title in the NS_FILE ns ( create new link ) 
+
+		// create a title from the current page title in the NS_FILE ns ( create new link )
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
 		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
@@ -32,7 +32,7 @@ class TimedTextPage extends Article {
 			$this->doRedirectToPageForm( $fileTitle );
 			return ;
 		}
-		
+
 		$languageKey = array_pop( $titleParts );
 		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
 
@@ -64,15 +64,15 @@ class TimedTextPage extends Article {
 		// Set the page title:
 		$wgOut->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
 
-		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'. 
+		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'.
 							$wgContLang->getCode() . '.srt', NS_TIMEDTEXT );
-		$wgOut->addHTML(  
+		$wgOut->addHTML(
 			Xml::tags('div', array( 'style' => 'text-align:center' ),
 				Xml::tags( 'span', null, wfMessage( 'timedmedia-subtitle-new-desc' )->escaped() ) .
 				Xml::tags( 'input', array(
 					'id' => 'timedmedia-tt-input',
-					'value' => $timedTextTile->getFullText(), 
-					'size' => 50 ), 
+					'value' => $timedTextTile->getFullText(),
+					'size' => 50 ),
 					Xml::tags( 'button',
 						array( 'id' => 'timedmedia-tt-go' ),
 						wfMessage( 'timedmedia-subtitle-new-go' )->escaped()
@@ -80,13 +80,13 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
-		$wgOut->addScript( 
+		$wgOut->addScript(
 			Html::InlineScript(
 				'$(function() {' .
 					'$("#timedmedia-tt-go").click(function(){' .
 						'var articlePath = mw.config.get( "wgArticlePath" );' .
 						'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
-						'window.location = articlePath.replace(/\$1/, $( "#timedmedia-tt-input" ).val() + ' . 
+						'window.location = articlePath.replace(/\$1/, $( "#timedmedia-tt-input" ).val() + ' .
 						' paramSep + "action=edit" )  ' .
 					'});' .
 				'});'

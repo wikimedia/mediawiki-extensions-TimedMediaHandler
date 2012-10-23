@@ -250,7 +250,7 @@ class TextHandler {
 			return $basePageUrl . $sep . 'action=raw&ctype=text/x-srt';
 		}
 	}
-	/** 
+	/**
 	 * A generalized version of getDescriptionUrl for prefixed pages rather than Image: prefix
 	 */
 	function getRepoPageURL( $pageTitle ){

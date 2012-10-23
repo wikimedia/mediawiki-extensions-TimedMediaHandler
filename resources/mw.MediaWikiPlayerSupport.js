@@ -192,7 +192,7 @@
 					$creditLine
 				);
 		};
-		
+
 		/**
 		 * Issues a request to populate the credits box
 		 */
@@ -232,7 +232,7 @@
 		/**
 		 * Adds embedPlayer Bindings
 		 */
-		
+
 		// Show credits when requested
 		$( embedPlayer ).bind('showCredits', function( event, $target, callback){
 			if( $target.data('playerId') != embedPlayer.id ){
@@ -242,7 +242,7 @@
 			// Only request the credits once:
 			showCredits( $target, callback);
 		});
-		
+
 		// Show credits on clip complete:
 		$( embedPlayer ).bind('onEndedDone', function( event, id ){
 			if( embedPlayer.id != id ){
@@ -254,19 +254,19 @@
 			cb.showMenuOverlay();
 			cb.showMenuItem( 'credits' );
 		});
-		
+
 		$( embedPlayer ).bind('showInlineDownloadLink', function(){
 			// Add recommend HTML5 player if we have non-native playback:
 			if ( embedPlayer.controlBuilder.checkNativeWarning( ) ) {
 				embedPlayer.controlBuilder.addWarningBinding(
 					'EmbedPlayer.ShowNativeWarning',
-					gM( 'mwe-embedplayer-for_best_experience', 
+					gM( 'mwe-embedplayer-for_best_experience',
 						$('<a />')
 							.attr({
 								'href': 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
 								'target' : '_new'
 							})
-					), 
+					),
 					true
 				);
 			}
@@ -280,15 +280,15 @@
 					// add text link already present
 					return ;
 				}
-				
+
 				var addTextPage =  mw.getApiProviderURL( apiProvider )
 									.replace( 'api.php', 'index.php') +
 									'?title=TimedText:' + unescape( embedPlayer.apiTitleKey ).replace(/^File:|^Image:/, '');
-				
+
 				var $li = $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
 					window.location = addTextPage;
 				});
-				
+
 				$li.addClass( 'add-timed-text')
 					.find( "a" )
 					.attr( {
@@ -336,8 +336,8 @@
 				}
 			});
 		});
-		
-		
+
+
 		$( embedPlayer ).bind( 'getShareIframeSrc', function(event, callback){
 			// Check the embedPlayer title key:
 			var title =  $( embedPlayer).attr( 'data-mwtitle');

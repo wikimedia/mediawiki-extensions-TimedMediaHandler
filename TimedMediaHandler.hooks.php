@@ -33,9 +33,9 @@ class TimedMediaHandlerHooks {
 		$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath .
 			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer';
 
-		// Register java cortado path config: 
+		// Register java cortado path config:
 		$wgMwEmbedModuleConfig['wgCortadoJarFile'] = $wgCortadoJarFile;
-		
+
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';

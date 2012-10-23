@@ -90,7 +90,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$res = $dbr->select(
 			'transcode',
 			'*',
-			$this->transcodeStates[ $state ], 
+			$this->transcodeStates[ $state ],
 			__METHOD__,
 			array( 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' )
 		);

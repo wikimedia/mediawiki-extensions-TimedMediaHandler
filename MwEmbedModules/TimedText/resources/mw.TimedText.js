@@ -124,7 +124,7 @@
 
 			// Remove any old bindings before we add the current bindings:
 			_this.destroy();
-			
+
 			// Add player bindings
 			_this.addPlayerBindings();
 			return this;
@@ -901,7 +901,7 @@
 
 			// enable last non-off layout:
 			_this.setLayoutMode( _this.lastLayout );
-			
+
 			// For some reason we lose binding for the menu ~sometimes~ re-bind
 			this.bindTextButton( this.embedPlayer.getInterface().find('timed-text') );
 
@@ -1078,7 +1078,7 @@
 			if( this.getLayoutMode() == 'off' ){
 				return ;
 			}
-			
+
 			// use capId as a class instead of id for easy selections and no conflicts with
 			// multiple players on page.
 			var $textTarget = $('<div />')
@@ -1121,7 +1121,7 @@
 					'height' : this.embedPlayer.getInterface().height()
 				})
 			);
-			
+
 			// Update the style of the text object if set
 			if( caption.styleId ){
 				var capCss = source.getStyleCssById( caption.styleId );
@@ -1135,7 +1135,7 @@
 			var embedPlayer = this.embedPlayer;
 			var $interface = embedPlayer.getInterface();
 			var controlBarHeight = embedPlayer.controlBuilder.getHeight();
-			
+
 			if( this.getLayoutMode() == 'off' ){
 				// sync player size per audio player:
 				if( embedPlayer.isAudio() ){
@@ -1144,7 +1144,7 @@
 				}
 				return;
 			}
-			
+
 			if( this.getLayoutMode() == 'ontop' ){
 				this.addTextOverlay(
 					$textTarget
@@ -1154,16 +1154,16 @@
 			} else {
 				mw.log("Possible Error, layout mode not recognized: " + this.getLayoutMode() );
 			}
-			
+
 			// sync player size per audio player:
 			if( embedPlayer.isAudio() && embedPlayer.getInterface().height() < 80 ){
 				$interface.find( '.overlay-win' ).css( 'top', 80);
 				$interface.css( 'height', 80 );
-				
+
 				$interface.find('.captionsOverlay' )
 						.css('bottom', embedPlayer.controlBuilder.getHeight() )
 			}
-			
+
 		},
 		getDefaultStyle: function(){
 			var defaultBottom = 15;

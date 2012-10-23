@@ -70,7 +70,7 @@
 				mw.log( "Error: TextSource no source url for text track");
 				return callback();
 			}
-			
+
 			// Check type for special loaders:
 			$( mw ).triggerQueueCallback( 'TimedText_LoadTextSource', _this, function(){
 				if( _this.loaded ){

@@ -252,14 +252,14 @@ class getid3_matroska extends getid3_handler
 		// process tracks
 		if (isset($info['matroska']['tracks']['tracks']) && is_array($info['matroska']['tracks']['tracks'])) {
 			foreach ($info['matroska']['tracks']['tracks'] as $key => $trackarray) {
-				
+
 				$track_info = array();
 				$track_info['dataformat'] = self::MatroskaCodecIDtoCommonName($trackarray['CodecID']);
 				$track_info['default'] = (isset($trackarray['FlagDefault']) ? $trackarray['FlagDefault'] : true);
 				if (isset($trackarray['Name'])) { $track_info['name'] = $trackarray['Name']; }
-				
+
 				switch ($trackarray['TrackType']) {
-					
+
 					case 1: // Video
 						$track_info['resolution_x'] = $trackarray['PixelWidth'];
 						$track_info['resolution_y'] = $trackarray['PixelHeight'];
@@ -267,7 +267,7 @@ class getid3_matroska extends getid3_handler
 						if (isset($trackarray['DisplayHeight']))   { $track_info['display_y']  = $trackarray['DisplayHeight']; }
 						if (isset($trackarray['DefaultDuration'])) { $track_info['frame_rate'] = round(1000000000 / $trackarray['DefaultDuration'], 3); }
 						//if (isset($trackarray['CodecName']))       { $track_info['codec']      = $trackarray['CodecName']; }
-						
+
 						switch ($trackarray['CodecID']) {
 							case 'V_MS/VFW/FOURCC':
 								if (!getid3_lib::IncludeDependency(GETID3_INCLUDEPATH.'module.audio-video.riff.php', __FILE__, false)) {
@@ -279,17 +279,17 @@ class getid3_matroska extends getid3_handler
 								$info['matroska']['track_codec_parsed'][$trackarray['TrackNumber']] = $parsed;
 								break;
 						}
-						
+
 						$info['video']['streams'][] = $track_info;
 						break;
-					
+
 					case 2: // Audio
 						$track_info['sample_rate'] = (isset($trackarray['SamplingFrequency']) ? $trackarray['SamplingFrequency'] : 8000.0);
 						$track_info['channels']    = (isset($trackarray['Channels']) ? $trackarray['Channels'] : 1);
 						$track_info['language']    = (isset($trackarray['Language']) ? $trackarray['Language'] : 'eng');
 						if (isset($trackarray['BitDepth']))  { $track_info['bits_per_sample'] = $trackarray['BitDepth']; }
 						//if (isset($trackarray['CodecName'])) { $track_info['codec']           = $trackarray['CodecName']; }
-						
+
 						switch ($trackarray['CodecID']) {
 							case 'A_PCM/INT/LIT':
 							case 'A_PCM/INT/BIG':
@@ -401,7 +401,7 @@ class getid3_matroska extends getid3_handler
 										}
 									}
 								}
-								
+
 								// copy errors and warnings
 								if (!empty($getid3_temp->info['error'])) {
 									foreach ($getid3_temp->info['error'] as $newerror) {
@@ -413,7 +413,7 @@ class getid3_matroska extends getid3_handler
 										$this->getid3->warning('getid3_ogg() says: ['.$newerror.']');
 									}
 								}
-								
+
 								if (!empty($getid3_temp->info['ogg']['bitrate_nominal'])) {
 									$track_info['bitrate'] = $getid3_temp->info['ogg']['bitrate_nominal'];
 								}
@@ -425,7 +425,7 @@ class getid3_matroska extends getid3_handler
 									$this->getid3->warning('Unable to parse audio data ['.basename(__FILE__).':'.__LINE__.'] because cannot include "module.audio-video.riff.php"');
 									break;
 								}
-								
+
 								$parsed = getid3_riff::RIFFparseWAVEFORMATex($trackarray['CodecPrivate']);
 								foreach ($parsed as $key => $value) {
 									if ($key != 'raw') {
@@ -434,7 +434,7 @@ class getid3_matroska extends getid3_handler
 								}
 								$info['matroska']['track_codec_parsed'][$trackarray['TrackNumber']] = $parsed;
 								break;
-								
+
 							default:
 								$this->getid3->warning('Unhandled audio type "'.(isset($trackarray['CodecID']) ? $trackarray['CodecID'] : '').'"');
 						}
@@ -443,7 +443,7 @@ class getid3_matroska extends getid3_handler
 						break;
 				}
 			}
-		
+
 			if (!empty($info['video']['streams'])) {
 				$info['video'] = self::getDefaultStreamInfo($info['video']['streams']);
 			}
@@ -587,7 +587,7 @@ class getid3_matroska extends getid3_handler
 													case EBML_ID_CODECNAME:
 														$track_entry[$subelement['id_name']] = getid3_lib::trimNullByte($subelement['data']);
 														break;
-														
+
 													case EBML_ID_CODECPRIVATE:
 														$track_entry[$subelement['id_name']] = $subelement['data'];
 														break;
@@ -810,7 +810,7 @@ class getid3_matroska extends getid3_handler
 
 													case EBML_ID_CUETRACKPOSITIONS:
                                                     	$cuetrackpositions_entry = array();
-													
+
 														while ($this->getEBMLelement($sub_sub_subelement, $sub_subelement['end'], true)) {
 															switch ($sub_sub_subelement['id']) {
 
@@ -848,13 +848,13 @@ class getid3_matroska extends getid3_handler
 
 							case EBML_ID_TAGS: // Element containing elements specific to Tracks/Chapters.
                             	$tags_entry = array();
-							
+
 								while ($this->getEBMLelement($subelement, $element_data['end'], false)) {
 									switch ($subelement['id']) {
 
 										case EBML_ID_TAG:
 											$tag_entry = array();
-										
+
 											while ($this->getEBMLelement($sub_subelement, $subelement['end'], false)) {
 												switch ($sub_subelement['id']) {
 
@@ -872,8 +872,8 @@ class getid3_matroska extends getid3_handler
 																case EBML_ID_TARGETTYPE:
 																	$targets_entry[$sub_sub_subelement['id_name']] = $sub_sub_subelement['data'];
 																	break;
-																
-																case EBML_ID_TAGTRACKUID:	
+
+																case EBML_ID_TAGTRACKUID:
 																case EBML_ID_TAGEDITIONUID:
 																case EBML_ID_TAGCHAPTERUID:
 																case EBML_ID_TAGATTACHMENTUID:
@@ -1115,7 +1115,7 @@ class getid3_matroska extends getid3_handler
 													case EBML_ID_CLUSTERREFERENCEBLOCK:    // signed-int
 														$cluster_block_group[$sub_subelement['id_name']][] = getid3_lib::BigEndian2Int($sub_subelement['data'], false, true);
 														break;
-													
+
 													case EBML_ID_CLUSTERCODECSTATE:
 														$cluster_block_group[$sub_subelement['id_name']] = getid3_lib::trimNullByte($sub_subelement['data']);
 														break;
@@ -1682,7 +1682,7 @@ class getid3_matroska extends getid3_handler
 
 		return (isset($EBMLidList[$value]) ? $EBMLidList[$value] : dechex($value));
 	}
-	
+
 	private static function getDefaultStreamInfo($streams)
 	{
 		foreach (array_reverse($streams) as $stream) {
@@ -1694,10 +1694,10 @@ class getid3_matroska extends getid3_handler
 		if (isset($stream['name'])) {
 			unset($stream['name']);
 		}
-		
+
 		$info = $stream;
 		$info['streams'] = $streams;
-		
+
 		return $info;
 	}
 

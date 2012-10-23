@@ -1330,7 +1330,7 @@
 				//this.showNoPlayableSources();
 				return ;
 			}
-			
+
 			// Set the isLink player flag:
 			this.isLinkPlayer= true;
 			// Update the poster and html:
@@ -1362,7 +1362,7 @@
 				$pBtn.wrap( $( '<a />' ).attr("target", "_blank" ) );
 			}
 			$pBtn.parent('a').attr( "href", downloadUrl );
-			
+
 			$( this ).trigger( 'showInlineDownloadLink' );
 		},
 		/**
@@ -2419,7 +2419,7 @@
 
 			// update player status
 			_this.updatePlayheadStatus();
-			
+
 			// Keep volume proprties set outside of the embed player in sync
 			_this.syncVolume();
 

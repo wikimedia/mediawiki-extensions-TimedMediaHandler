@@ -1152,7 +1152,7 @@ mw.PlayerControlBuilder.prototype = {
 			}, dblClickTime );
 			return true;
 		});
-		
+
 	},
 	addRightClickBinding: function(){
 		var embedPlayer = this.embedPlayer;
@@ -1345,15 +1345,15 @@ mw.PlayerControlBuilder.prototype = {
 		if( embedPlayer.getWidth() < 200 ){
 			return false;
 		}
-		
+
 		// Can be uncommented to reset hide prefrence
 		//$.cookie( preferenceId, '' );
-		
+
 		// Check if a cookie has been set to hide the warning:
 		if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) == 'hidewarning' ){
 			return ;
 		}
-		
+
 		var warnId = "warningOverlay_" + embedPlayer.id;
 		$( '#' + warnId ).remove();
 
@@ -1384,7 +1384,7 @@ mw.PlayerControlBuilder.prototype = {
 		);
 		// check if we should show the checkbox
 		if( !hideDisableUi ){
-			
+
 			$targetWarning.append(
 				$( '<input type="checkbox" />' )
 				.attr({
@@ -1408,7 +1408,7 @@ mw.PlayerControlBuilder.prototype = {
 				.attr( 'for', 'ffwarn_' + embedPlayer.id )
 			);
 		}
-		
+
 		return $targetWarning;
 	},
 
@@ -2471,7 +2471,7 @@ mw.PlayerControlBuilder.prototype = {
 			'w' : 70,
 			'o' : function( ctrlObj ){
 				var $menuContainer = $('<div />').addClass( 'swMenuContainer' ).hide();
-				ctrlObj.embedPlayer.getInterface().append( 
+				ctrlObj.embedPlayer.getInterface().append(
 						$menuContainer
 				)
 				// Stream switching widget ( display the current selected stream text )

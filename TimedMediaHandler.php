@@ -24,7 +24,7 @@ $wgAvailableRights[] = 'transcode-status';
 /*** MwEmbed module configuration: *********************************/
 
 // Path overdie for cortado ( by default its false and uses hard coded paths relative to TMH
-// or the predefined path on upload server: http://upload.wikimedia.org/jars/cortado.jar 
+// or the predefined path on upload server: http://upload.wikimedia.org/jars/cortado.jar
 $wgCortadoJarFile = false;
 
 // Show a warning to the user if they are not using an html5 browser with high quality ogg support
@@ -197,7 +197,7 @@ $wgAPIModules['transcodereset'] = 'ApiTranscodeReset';
 // Localization
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
-// Inlcude module locationlizations 
+// Inlcude module locationlizations
 $wgExtensionMessagesFiles['MwEmbed.EmbedPlayer'] = "$timedMediaDir/MwEmbedModules/EmbedPlayer/EmbedPlayer.i18n.php";
 $wgExtensionMessagesFiles['MwEmbed.TimedText'] = "$timedMediaDir/MwEmbedModules/TimedText/TimedText.i18n.php";
 
@@ -210,7 +210,7 @@ $wgAutoloadClasses['SpecialTimedMediaHandler'] = "$timedMediaDir/SpecialTimedMed
 $wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
 
 
-# add Special:TimedMediaHandler 
+# add Special:TimedMediaHandler
 $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
 
 

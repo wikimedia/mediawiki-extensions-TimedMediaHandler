@@ -15,7 +15,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
 	function __construct( $conf ){
-		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end', 
+		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
 			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow' );
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
@@ -79,7 +79,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->isVideo ) {
 			return intval( $this->width );
 		} else {
-			// Give sound files a width of 300px ( if unsized ) 
+			// Give sound files a width of 300px ( if unsized )
 			if( $this->width == 0 ){
 				return 300;
 			}
@@ -186,7 +186,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
 		};
-		
+
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate' );
 		foreach( $mediaSources as &$source ){
@@ -266,7 +266,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
-		
+
 		if( $this->fillwindow ){
 			$width = '100%';
 			$height = '100%';

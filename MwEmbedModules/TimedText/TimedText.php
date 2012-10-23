@@ -1,12 +1,12 @@
 <?php
 
 	// Register all the timedText modules
-	return array(			
+	return array(
 		"mw.TimedText" => array(
 			'scripts' => "resources/mw.TimedText.js",
 			'styles' => "resources/mw.style.TimedText.css",
 			'dependencies' => array(
-				'mw.EmbedPlayer',	
+				'mw.EmbedPlayer',
 				'jquery.ui.dialog',
 				'mw.TextSource'
 			),
@@ -19,4 +19,4 @@
 				"mw.ajaxProxy",
 			)
 		)
-	);	
+	);

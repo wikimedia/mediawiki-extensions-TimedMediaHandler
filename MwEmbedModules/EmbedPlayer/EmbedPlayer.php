@@ -29,7 +29,7 @@
 					'mediawiki.Uri',
 					'mediawiki.absoluteUrl',
 					'mediawiki.jqueryMsg',
-				
+
 					// Browser fullscreen api support:
 					'fullScreenApi',
 
@@ -41,7 +41,7 @@
 					'mw.MediaPlayers',
 					'mw.MediaSource',
 					'mw.EmbedTypes',
-				
+
 					// jQuery dependencies:
 					'jquery.client',
 					'jquery.hoverIntent',
@@ -51,14 +51,14 @@
 					'jquery.menu',
 					'jquery.ui.slider',
 					'jquery.ui.touchPunch',
-					
+
 					// Set to mw.PlayerSkinKskin or mw.PlayerSkinMvpcf in config
 					$wgVideoPlayerSkinModule
 				),
 				'styles' => "resources/skins/EmbedPlayer.css",
 				'messageFile' => 'EmbedPlayer.i18n.php',
 			),
-				
+
 			"mw.EmbedPlayerKplayer"	=> array( 'scripts'=> "resources/mw.EmbedPlayerKplayer.js" ),
 			"mw.EmbedPlayerGeneric"	=> array( 'scripts'=> "resources/mw.EmbedPlayerGeneric.js" ),
 			"mw.EmbedPlayerJava" => array( 'scripts'=> "resources/mw.EmbedPlayerJava.js"),

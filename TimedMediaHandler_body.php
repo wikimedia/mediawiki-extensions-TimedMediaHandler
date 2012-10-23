@@ -348,7 +348,7 @@ class TimedMediaHandler extends MediaHandler {
 	function getOffset( $file ){
 		return 0;
 	}
-	
+
 	/**
 	 * Get length of a file
 	 * @param $file
