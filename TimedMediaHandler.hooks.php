@@ -12,8 +12,18 @@ class TimedMediaHandlerHooks {
 	static function register(){
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
-		$wgTmhFileExtensions, $wgParserOutputHooks, $wgTimedTextNS,
+		$wgParserOutputHooks, $wgTimedTextNS, $wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir, $wgCortadoJarFile;
+
+		// Remove mp4 if not enabled:
+		if( $wgTmhEnableMp4Uploads === false ){
+			foreach( $wgFileExtensions as $inx => $val ) {
+				if( $val == 'mp4' ){
+					unset( $wgFileExtensions[$inx] );
+				}
+			}
+		}
+
 
 		// Register the Timed Media Handler javascript resources ( MwEmbed modules )
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
@@ -29,6 +39,7 @@ class TimedMediaHandlerHooks {
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
+		$wgMediaHandlers['video/mp4'] = 'Mp4Handler';
 
 		// Add transcode job class:
 		$wgJobClasses+= array(
@@ -172,7 +183,7 @@ class TimedMediaHandlerHooks {
 		}
 		$mediaType = $file->getHandler()->getMetadataType( $file );
 		// If ogg or webm format and not audio we can "transcode" this file
-		if( ( $mediaType == 'webm' || $mediaType == 'ogg' ) && ! $file->getHandler()->isAudio( $file ) ){
+		if( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType =='mp4' ) && ! $file->getHandler()->isAudio( $file ) ){
 			return true;
 		}
 		return false;

@@ -235,6 +235,10 @@
 		
 		// Show credits when requested
 		$( embedPlayer ).bind('showCredits', function( event, $target, callback){
+			if( $target.data('playerId') != embedPlayer.id ){
+				// bad event trigger
+				return ;
+			}
 			// Only request the credits once:
 			showCredits( $target, callback);
 		});

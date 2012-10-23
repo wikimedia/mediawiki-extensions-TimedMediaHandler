@@ -213,15 +213,16 @@ mw.PlayerSkinKskin = {
 	*/
 	closeMenuOverlay: function() {
 		mw.log("PlayerSkinKskin:: close menu overlay" );
-		var $optionsMenu = this.$playerTarget.find( '.k-options' );
-		var $kmenu = this.$playerTarget.find( '.k-menu' );
+		var embedPlayer = this.embedPlayer;
+		var $optionsMenu = embedPlayer.getInterface().find( '.k-options' );
+		var $kmenu = embedPlayer.getInterface().find( '.k-menu' );
 		$kmenu.fadeOut( "fast", function() {
 			$optionsMenu.find( 'span' )
 				.text ( gM( 'mwe-embedplayer-menu_btn' ) );
 		} );
 		// show the play button if not playing
-		if( !this.embedPlayer.isPlaying() ){
-			this.$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
+		if( !embedPlayer.isPlaying() ){
+			embedPlayer.getInterface().find( '.play-btn-large' ).fadeIn( 'fast' );
 		}
 
 		// re-display the control bar if hidden:
@@ -369,7 +370,8 @@ mw.PlayerSkinKskin = {
 				})
 			);
 		}
-		var $creditBox =$target.find('.credits_box');
+		var $creditBox = $target.find('.credits_box');
+		$creditBox.data( 'playerId', embedPlayer.id );
 		$( embedPlayer ).triggerQueueCallback('showCredits', $creditBox, function( addedCredits ){
 			if( !addedCredits ){
 				$creditBox.find('.credits_box').text( gM( 'mwe-embedplayer-nocredits') )

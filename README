@@ -1,6 +1,6 @@
 == TimedMediaHandler ==
 
-This extension provides a media handler for the Ogg and WebM container format.
+This extension provides a media handler for the Ogg, WebM, mp4 container format.
 When enabled, a player will be automatically embedded in the file description
 page, or any wiki page while still using the same syntax as for images.
 
@@ -44,9 +44,7 @@ TimedMediaHandler uses the Kaltura HTML5 player library for video playback, it
 relies on the <video> element as well as JavaScript.
 
 For more information about the player library visit:
-  http://html5video.org/
-or
-  http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library
+  http://www.html5video.org/kaltura-player/docs
 
 
 == FFmpeg ==
@@ -54,6 +52,7 @@ or
 We use FFmpeg for two purposes:
  - creating still images of videos (aka thumbnails)
  - transcoding webm videos
+ - transcoding h264 videos
 
 For best experience use the latest release of ffmpeg. At a minimum ffmpeg 0.6.1
 was the first version to include WebM support.
@@ -95,6 +94,9 @@ Suggested configure line for webm encoding and decoding of many formats:
       pcm_s24be,pcm_s24le,pcm_s32be,pcm_s32le,pcm_s8,pcm_u16be,pcm_u16le,\
       pcm_u24be,pcm_u24le,pcm_u32be,pcm_u32le,pcm_u8,rawvideo,wav,webm,\
       yuv4mpegpipe'
+
+Guide for building ffmpeg with h.264 for ubuntu:
+https://ffmpeg.org/trac/ffmpeg/wiki/UbuntuCompilationGuide
 
 Note: there must be a simpler way to add all those encoders and muxers.
 

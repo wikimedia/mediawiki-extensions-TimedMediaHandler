@@ -673,8 +673,10 @@ mw.EmbedPlayerNative = {
 				$( vid ).bind( 'loadedmetadata' + switchBindPostfix, function(){
 					$( vid ).unbind( 'loadedmetadata' + switchBindPostfix);
 					mw.log("EmbedPlayerNative:: playerSwitchSource> loadedmetadata callback for:" + src + ' switchCallback: ' + switchCallback );
-					// Update the duration
-					_this.duration = vid.duration;
+					// Update the duration ( if not android 4 which gives bad duration )
+					if( !mw.isAndroid40() ){
+						_this.duration = vid.duration;
+					}
 					// keep going towards playback! if  switchCallback has not been called yet
 					// we need the "playing" event to trigger the switch callback
 					if ( $.isFunction( switchCallback ) ){
@@ -1019,7 +1021,10 @@ mw.EmbedPlayerNative = {
 
 		if ( this.playerElement && !isNaN( this.playerElement.duration ) && isFinite( this.playerElement.duration) ) {
 			mw.log( 'EmbedPlayerNative :onloadedmetadata metadata ready Update duration:' + this.playerElement.duration + ' old dur: ' + this.getDuration() );
-			this.duration = this.playerElement.duration;
+			// update duration if not android 4 ( gives bad duration )
+			if( !mw.isAndroid40() ){
+				this.duration = this.playerElement.duration;
+			}
 		}
 
 		// Check if in "playing" state and we are _propagateEvents events and continue to playback:

@@ -40,7 +40,7 @@ mw.EmbedPlayerKplayer = {
 		flashvars.autoPlay = "true";
 		flashvars.loop = "false";
 
-		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
+		var playerPath =  mw.absoluteUrl( mw.getEmbedPlayerPath() + '/binPlayers/kaltura-player' );
 		flashvars.entryId = mw.absoluteUrl( _this.getSrc() );
 
 		// Use a relative url if the protocol is file://
@@ -198,7 +198,7 @@ mw.EmbedPlayerKplayer = {
 		// Update the duration ( only if not in url time encoding mode:
 		if( !this.supportsURLTimeEncoding() ){
 			this.duration = data.newValue;
-			$(this).trigger('durationchange');
+			this.triggerHelper('durationchange');
 		}
 	},
 
@@ -331,7 +331,7 @@ mw.EmbedPlayerKplayer = {
 		var seekedCallback = 'kdp_seek_' + this.id + '_' + new Date().getTime();
 		window[ seekedCallback ] = function(){
 			_this.seeking = false;
-			$( this ).trigger( 'seeked' );
+			_this.triggerHelper( 'seeked' );
 			if( seekInterval  ) {
 				clearInterval( seekInterval );
 			}
@@ -340,7 +340,7 @@ mw.EmbedPlayerKplayer = {
 
 		if ( this.getPlayerElement() ) {
 			// trigger the html5 event:
-			$( this ).trigger( 'seeking' );
+			_this.triggerHelper( 'seeking' );
 
 			// Issue the seek to the flash player:
 			this.playerElement.sendNotification('doSeek', seekTime);
@@ -351,7 +351,7 @@ mw.EmbedPlayerKplayer = {
 				if( _this.flashCurrentTime != orgTime ){
 					_this.seeking = false;
 					clearInterval( seekInterval );
-					$( this ).trigger( 'seeked' );
+					this.triggerHelper( 'seeked' );
 				}
 			}, mw.getConfig( 'EmbedPlayer.MonitorRate' ) );
 
@@ -378,7 +378,7 @@ mw.EmbedPlayerKplayer = {
 
 		// let the player know we are seeking
 		_this.seeking = true;
-		$( this ).trigger( 'seeking' );
+		this.triggerHelper( 'seeking' );
 
 		var getPlayerCount = 0;
 		var readyForSeek = function() {
@@ -439,7 +439,7 @@ mw.EmbedPlayerKplayer = {
 		this.bufferedPercent = this.bytesLoaded / this.bytesTotal;
 
 		// Fire the parent html5 action
-		$( this ).trigger('progress', {
+		this.triggerHelper('progress', {
 			'loaded' : this.bytesLoaded,
 			'total' : this.bytesTotal
 		});

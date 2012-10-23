@@ -1736,7 +1736,7 @@
 			// iPad can use html controls if its a persistantPlayer in the dom before loading )
 			// else it needs to use native controls:
 			if( mw.isIpad() ){
-				if( this.isPersistentNativePlayer() && mw.getConfig('EmbedPlayer.EnableIpadHTMLControls') === true){
+				if( mw.getConfig('EmbedPlayer.EnableIpadHTMLControls') === true){
 					return false;
 				} else {
 					// Set warning that your trying to do iPad controls without
@@ -1759,6 +1759,14 @@
 				return $('#' + this.id ).hasClass('persistentNativePlayer');
 			}
 			return $('#' + this.pid ).hasClass('persistentNativePlayer');
+		},
+		//
+		isTouchDevice: function(){
+			return mw.isIpad()
+				||
+			mw.isAndroid40()
+				||
+			mw.isMobileChrome();
 		},
 		/**
 		 * Hides the large play button

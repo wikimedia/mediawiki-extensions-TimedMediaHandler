@@ -205,7 +205,7 @@
 
 .k-player .k-menu-screens {
 	float: left;
-	font-size: 11px;
+	font-size: 14px;
 	text-align: left;
 	padding: 13px 10px 15px 15px;
 }
@@ -342,11 +342,11 @@
 }
 
 .k-menu-screens li a.active,.k-menu-screens li a:hover .active {
-	background-position: -85px -247px;
+	background-position: -85px -245px;
 }
 
 .k-menu-screens li a:hover {
-	background-position: -85px -260px;
+	background-position: -85px -259px;
 }
 
 .k-menu textarea {

@@ -107,6 +107,11 @@
 			var _this = this;
 			mw.log("TimedText: init() ");
 			this.embedPlayer = embedPlayer;
+			// don't display captions on native player:
+			if( embedPlayer.useNativePlayerControls() ){
+				return this;
+			}
+
 			// Load user preferences config:
 			var preferenceConfig = $.cookie( 'TimedText.Preferences' );
 			if( preferenceConfig !== "false" && preferenceConfig != null ) {
@@ -677,7 +682,7 @@
 		* 	false if source is off
 		*/
 		isSourceEnabled: function( source ) {
-			// no source is "enabled" if subtitles are "off" 
+			// no source is "enabled" if subtitles are "off"
 			if( this.getLayoutMode() == 'off'  ){
 				return false;
 			}
@@ -776,7 +781,7 @@
 				);
 			} else {
 				// Layout Menu option if not in an iframe and we can expand video size:
-				$menu.append( 
+				$menu.append(
 					$.getLineItem(
 						gM( 'mwe-timedtext-layout-off'),
 						( _this.getLayoutMode() == 'off' ) ? 'bullet' : 'radio-on',
@@ -1052,7 +1057,7 @@
 				if( caption.content != $cap.html() ){
 					// remove old
 					$cap.remove();
-					// add the updated value: 
+					// add the updated value:
 					_this.addCaption( source, capId, caption );
 					addedCaption = true;
 				}
