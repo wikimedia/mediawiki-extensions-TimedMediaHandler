@@ -267,16 +267,18 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
 
-		if( $this->fillwindow ){
-			$width = '100%';
-			$height = '100%';
-		} else{
-			$width .= 'px';
-			$height .= 'px';
-		}
-
 		// The poster url:
 		$posterUrl = $this->getUrl();
+
+		// FIXME: remove thise after transition to TMH on commons
+		// In mixed setup with OggHandler and TMH always resolved through api
+		// (OggHandler only supports /mid-name thumbnails.)
+		if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
+			$apiUrl = $this->getPosterFromApi( $width );
+			if ( $apiUrl ) {
+				$posterUrl = $apiUrl;
+			}
+		}
 
 		// Update the $posterUrl to $sizeOverride ( if not an old file )
 		if( !$this->file->isOld() && $sizeOverride && $sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
@@ -285,6 +287,15 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$posterUrl = $apiUrl;
 			}
 		}
+
+		if( $this->fillwindow ){
+			$width = '100%';
+			$height = '100%';
+		} else{
+			$width .= 'px';
+			$height .= 'px';
+		}
+
 		$mediaAttr = array(
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			'style' => "width:{$width};height:{$height}",

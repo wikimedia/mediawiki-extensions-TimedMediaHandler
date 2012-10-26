@@ -209,6 +209,7 @@ $wgAutoloadClasses['SpecialTimedMediaHandler'] = "$timedMediaDir/SpecialTimedMed
 // we can still read the variable values
 $wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
 
+$wgHooks['ExtractThumbParameters'][] = 'TimedMediaHandler::onExtractThumbParameters';
 
 # add Special:TimedMediaHandler
 $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';

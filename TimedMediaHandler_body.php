@@ -66,6 +66,11 @@ class TimedMediaHandler extends MediaHandler {
 				return $paramString. 'seek=' . $time;
 			}
 		}
+
+		if ( !$paramString ) {
+			$paramString = 'mid';
+		}
+
 		return $paramString ;
 	}
 
@@ -385,5 +390,31 @@ class TimedMediaHandler extends MediaHandler {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Handler for the ExtractThumbParameters hook
+	 *
+	 * @param $thumbname string URL-decoded basename of URI
+	 * @param &$params Array Currently parsed thumbnail params
+	 * @return bool
+	 */
+	public static function onExtractThumbParameters( $thumbname, array &$params ) {
+		global $wgTmhFileExtensions;
+
+		$supported = '/\.(?:' . implode( '|', $wgTmhFileExtensions ) . ')$/i';
+		if ( !preg_match( $supported, $params['f'] ) ) {
+			return true; // not a supported extension
+		}
+		// Check if the parameters can be extracted from the thumbnail name...
+		if ( preg_match( '!^(mid|seek=[0-9.]+)-[^/]*$!', $thumbname, $m ) ) {
+			list( /* all */, $timeFull ) = $m;
+			if ( $timeFull != 'mid' ) {
+				list( $seek, $thumbtime ) = explode( '=', $timeFull, 2 );
+				$params['thumbtime'] = $thumbtime;
+			}
+			return false; // valid thumbnail URL
+		}
+		return true; // pass through to next handler
 	}
 }
