@@ -92,7 +92,7 @@ $wgTranscodeBackgroundSizeLimit = 1024 * 1024; // 1GB
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of the avconv/ffmpeg binary (used to encode WebM and for thumbnails)
-$wgFFmpegLocation = '/usr/bin/ffmpeg';
+$wgFFmpegLocation = '/usr/bin/avconv';
 
 // The NS for TimedText (registered on MediaWiki.org)
 // http://www.mediawiki.org/wiki/Extension_namespace_registration

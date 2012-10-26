@@ -47,65 +47,34 @@ For more information about the player library visit:
   http://www.html5video.org/kaltura-player/docs
 
 
-== FFmpeg ==
+== Libav ==
 
-We use FFmpeg for two purposes:
+We use Libav for two purposes:
  - creating still images of videos (aka thumbnails)
- - transcoding webm videos
- - transcoding h264 videos
+ - transcoding WebM, H.264 videos
 
-For best experience use the latest release of ffmpeg. At a minimum ffmpeg 0.6.1
-was the first version to include WebM support.
+Wikimedia currently uses libav as shipped in Ubuntu 12.04 (libav 0.8.x).
+For best experience use that or any later release from http://libav.org.
 
-If you are operating system distribution does not include the required ffmpeg software, you can download static builds for multiple platforms at:
+On Ubuntu/Debian:
+  apt-get install libav-tools
+
+For H.264 support:
+  apt-get install libav-tools libavcodec-extra-53
+
+If you operating system does not include the required libav software,
+you can download static builds for multiple platforms at:
   http://firefogg.org/nightly/
 
-Download source: http://ffmpeg.org/download.html
-
-Static Binary /latest version/ distribution for major OS
-( with webm encoder and borad decode support )
-http://firefogg.org/nightly/
-
-Suggested configure line for minimal functionality:
-
-./configure --disable-demuxers --disable-muxers
-  --disable-decoders --disable-encoders \
-  --disable-ffserver --disable-ffplay \
-  --enable-encoder=mjpeg --enable-muxer=mjpeg \
-  --enable-decoder=theora --enable-demuxer=ogg --disable-network \
-  --disable-devices --disable-parsers --enable-parser=vp3 \
-  --build-suffix=-still
-
-Suggested configure line for webm encoding and decoding of many formats:
-
-  --enable-gpl --enable-version3 --enable-postproc --enable-libvorbis \
-  --enable-pthreads --disable-shared --disable-ffserver --disable-ffprobe \
-  --enable-postproc --enable-libopencore-amrnb --enable-libopencore-amrwb \
-  --enable-bzlib --enable-libtheora --enable-libspeex --enable-libvpx \
-  --disable-encoders --disable-decoder=vp8 --disable-muxers \
-  --enable-encoder='bmp,dvvideo,ffv1,ffvhuff,flac,gif,huffyuv,libdirac,\
-      libschroedinger,libtheora,libvorbis,libvpx,mjpeg,pbm,pcm_f32be,\
-      pcm_f32le,pcm_f64be,pcm_f64le,pcm_s16be,pcm_s16le,pcm_s24be,\
-      pcm_s24le,pcm_s32be,pcm_s32le,pcm_s8,pcm_u16be,pcm_u16le,pcm_u24be,\
-      pcm_u24le,pcm_u32be,pcm_u32le,pcm_u8,pgm,pgmyuv,png,ppm,rawvideo,tiff,\
-      vorbis,zlib' \
-  --enable-muxer='aiff,crc,dv,gif,image2,image2pipe,matroska,matroska_audio,\
-      md5,mjpeg,null,ogg,pcm_f32be,pcm_f32le,pcm_f64be,pcm_f64le,pcm_s16le,\
-      pcm_s24be,pcm_s24le,pcm_s32be,pcm_s32le,pcm_s8,pcm_u16be,pcm_u16le,\
-      pcm_u24be,pcm_u24le,pcm_u32be,pcm_u32le,pcm_u8,rawvideo,wav,webm,\
-      yuv4mpegpipe'
-
-Guide for building ffmpeg with h.264 for ubuntu:
+You can also build libav/ffmpeg from source.
+Guide for building ffmpeg with H.264 for Ubuntu:
 https://ffmpeg.org/trac/ffmpeg/wiki/UbuntuCompilationGuide
-
-Note: there must be a simpler way to add all those encoders and muxers.
 
 Some old versions of FFmpeg had a bug which made it extremely slow to seek in
 large theora videos in order to generate a thumbnail.  If you are using an old
 version of FFmpeg and find that performance is extremely poor (tens of seconds)
 to generate thumbnails of theora videos that are several minutes or more in
-length, try applying our ffmpeg-bugfix.diff.
-About the bug: https://roundup.mplayerhq.hu/roundup/ffmpeg/issue159
+length. Please update to a more recent version.
 
 In MediaWiki configuration, after the require line in LocalSettings.php, you
 will have to specify the FFmpeg binary location with:
