@@ -791,6 +791,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 /** Zazaki (Zazaki)
  * @author Aspar
  * @author Erdemaslancan
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
@@ -807,7 +808,7 @@ $messages['diq'] = array(
 	'timedmedia-dismiss' => 'Racnê',
 	'timedmedia-download' => 'dosya biyar war',
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
-	'timedmedia-actions' => 'Kerdeni',
+	'timedmedia-actions' => 'Kerdışi',
 	'timedmedia-days' => '{{PLURAL:$1|roca|$1 rocan}}',
 	'timedmedia-hours' => '{{PLURAL:$1|seata|$1 seatan}}',
 	'timedmedia-minutes' => '{{PLURAL: $1|deqe|$1 deqey}}',
@@ -916,6 +917,8 @@ $messages['es'] = array(
 	'timedmedia-ogg-long-error' => 'Archivo Ogg no válido: $1',
 	'timedmedia-webm-short-video' => 'Archivo de vídeo WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Archivo de audio/vídeo WebM,  $1 , longitud  $2 ,  $4  ×  $5  píxeles,  $3  total',
+	'timedmedia-mp4-short-video' => 'Archivo de vídeo MP4 $1, $2',
+	'timedmedia-mp4-long-video' => 'Archivo de audio/vídeo MP4,  $1 , longitud  $2 ,  $4  ×  $5  píxeles,  $3  total',
 	'timedmedia-no-player-js' => 'Lo sentimos, pero tu navegador tiene JavaScript inhabilitado o no tiene ningún reproductor compatible instalado.<br />
 Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descargar un reproductor</a> para poder ver el vídeo en tu navegador.',
 	'timedmedia-more' => 'Opciones...',
@@ -951,6 +954,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-reset-confirm' => 'Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.<br /><br />
 ¿Está seguro de que desea continuar?',
 	'timedmedia-reset-error' => 'Error al restablecer el trabajo de transcodificación.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Fuente $1',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Video en formato Ogg de bajo ancho de banda (160 P)',
@@ -961,6 +965,9 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-desc-360p.webm' => 'WebM para la web (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM para la web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta calidad que se puede descargar (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => 'MP4 para dispositivos móviles (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'MP4 para la web (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'MP4 de calidad HD (720P)',
 	'timedmedia-subtitle-new' => 'Crear una nueva traducción o editar una existente',
 	'timedmedia-subtitle-new-desc' => "Reemplaza la parte '''LANG'' con su [[:en:ISO 639|código de idioma]] y presiona el botón '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Ir',
@@ -1799,14 +1806,19 @@ $messages['io'] = array(
  * @author Spacebirdy
  */
 $messages['is'] = array(
+	'timedmedia-desc' => 'Rekill fyrir hljóð, myndbönd og texta myndbanda með stuðningi við skráarsniðin WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 hljóðskrá, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 myndbandskrá, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 margmiðlunarskrá, $2',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 hljóðskrá, lengd $2, $3',
 	'timedmedia-ogg-long-video' => 'Ogg $1 myndbandskrá, lengd $2, $4×$5 dílar, $3',
+	'timedmedia-ogg-long-multiplexed' => 'Ogg myndbandaskrá, $1, lengd $2, $4 × $5 dílar, $3 samanlagt',
 	'timedmedia-ogg-long-general' => 'Ogg margmiðlunarskrá, lengd $2, $3',
 	'timedmedia-ogg-long-error' => 'Ógild Ogg skrá: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 myndbandskrá, $2',
+	'timedmedia-webm-long-video' => 'WebM myndbandaskrá, $1, lengd $2, $4 × $5 dílar, $3 samanlagt',
+	'timedmedia-mp4-short-video' => 'MP4 $1 myndbandaskrá, $2',
+	'timedmedia-mp4-long-video' => 'MP4 myndbandaskrá, $1, lengd $2, $4 × $5 dílar, $3 samanlagt',
 	'timedmedia-no-player-js' => 'Því miður hefur vafrinn þinn annaðhvort óvirkan JavaScript eða engan studdann spilara.<br />
 Þú getur <a href="$1">hlaðið niður skránni</a> eða <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hlaðið niður spilara</a> til þess að spila skránna í vafranum.',
 	'timedmedia-more' => 'Meira...',
@@ -1818,6 +1830,7 @@ $messages['is'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb mistókst að búa til smámynd.',
 	'timedmedia-status' => 'Staða',
 	'timedmedia-actions' => 'Aðgerðir',
+	'timedmedia-direct-link' => 'Sækja eftirgerð',
 	'timedmedia-not-ready' => 'Ekki tilbúin',
 	'timedmedia-percent-done' => 'Um $1% lokið',
 	'timedmedia-unknown-target-size' => 'Óþekkt markstærð, $1 kóðað',
@@ -1829,7 +1842,21 @@ $messages['is'] = array(
 	'timedmedia-time-3-measurements' => '$1, $2 og $3',
 	'timedmedia-time-2-measurements' => '$1 og $2',
 	'timedmedia-show-error' => 'Sýna villu',
-	'timedmedia-derivative-desc-720p.webm' => 'Hágæða niðurhalanleg WebM (720P)',
+	'timedmedia-source-file' => '$1 uppruni',
+	'timedmedia-source-file-desc' => 'Upphaflega $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Ogg myndband fyrir litla bandbreidd (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Ogg myndbands streymi (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Ogg myndbands streymi (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Hágæða niðurhalanlegt Ogg myndband (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM myndbands streymi (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM myndbands streymi (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM myndbands streymi (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'Hágæða niðurhalanlegt WebM myndband (720P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'MP4 myndbands streymi (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'Háskerpu MP4 (720P)',
+	'timedmedia-subtitle-new-desc' => "Skiptu '''LANG''' út fyrir [[:en:ISO 639|tungumálakóðann]] þinn og smelltu á '''{{int:Timedmedia-subtitle-new-go}}''' takkann",
+	'timedmedia-subtitle-new-go' => 'Áfram',
+	'timedmedia-subtitle-no-video' => 'Ekkert myndband tengist þessum myndbanda texta',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 myndband|$1 myndbönd}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg myndband|$1 Ogg myndbönd}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM myndband|$1 WebM myndbönd}}',
@@ -1955,6 +1982,7 @@ $messages['ja'] = array(
 	'timedmedia-status-unknown' => '不明な状態',
 	'timedmedia-actions' => '操作',
 	'timedmedia-percent-done' => '約 $1% 完了',
+	'timedmedia-in-job-queue' => '$1前にジョブ キューに追加されました',
 	'timedmedia-days' => '{{PLURAL:$1|$1 日}}',
 	'timedmedia-hours' => '{{PLURAL:$1|$1 時間}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 分}}',
@@ -1975,8 +2003,10 @@ $messages['ja'] = array(
 	'timedmedia-derivative-desc-320p.mp4' => 'デバイスフレンドリー MP4 (320P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'ウェブ ストリーミング可能 MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD 品質 MP4 (720P)',
+	'timedmedia-subtitle-new' => '翻訳を新規作成、または既存のものを編集',
 	'timedmedia-subtitle-new-desc' => "'''LANG''' 部分を自分の[[:en:ISO 639|言語コード]]に置換して、'''{{int:Timedmedia-subtitle-new-go}}'''ボタンを押してください。",
 	'timedmedia-subtitle-new-go' => '実行',
+	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 件の動画}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 件の Ogg 動画}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 件の WebM 動画}}',
