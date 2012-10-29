@@ -270,20 +270,20 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// The poster url:
 		$posterUrl = $this->getUrl();
 
-		// FIXME: remove thise after transition to TMH on commons
-		// In mixed setup with OggHandler and TMH always get
-		// name/mid-name.jpg
-		if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
-			$thumbName = $this->file->thumbName( array() );
-			$posterUrl = $this->file->getThumbUrl( $thumbName );
-		}
-
 		// Update the $posterUrl to $sizeOverride ( if not an old file )
 		if( !$this->file->isOld() && $sizeOverride && $sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
 			$apiUrl = $this->getPosterFromApi( $sizeOverride[0] );
 			if( $apiUrl ){
 				$posterUrl = $apiUrl;
 			}
+		}
+
+		// FIXME: remove thise after transition to TMH on commons
+		// In mixed setup with OggHandler and TMH always get
+		// name/mid-name.jpg
+		if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
+			$thumbName = $this->file->thumbName( array() );
+			$posterUrl = $this->file->getThumbUrl( $thumbName );
 		}
 
 		if( $this->fillwindow ){
