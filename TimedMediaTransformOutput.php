@@ -271,13 +271,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$posterUrl = $this->getUrl();
 
 		// FIXME: remove thise after transition to TMH on commons
-		// In mixed setup with OggHandler and TMH always resolved through api
-		// (OggHandler only supports /mid-name thumbnails.)
+		// In mixed setup with OggHandler and TMH always get
+		// name/mid-name.jpg
 		if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
-			$apiUrl = $this->getPosterFromApi( $width );
-			if ( $apiUrl ) {
-				$posterUrl = $apiUrl;
-			}
+			$thumbName = $this->file->thumbName( array() );
+			$posterUrl = $this->file->getThumbUrl( $thumbName );
 		}
 
 		// Update the $posterUrl to $sizeOverride ( if not an old file )
