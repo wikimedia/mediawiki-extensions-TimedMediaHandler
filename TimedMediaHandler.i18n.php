@@ -124,6 +124,8 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 queued transcode|$1 queued transcodes}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 failed transcode|$1 failed transcodes}}',
 	'timedmedia-file' => 'File',
+	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
+	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 );
 
 /** Message documentation (Message documentation)
@@ -228,6 +230,8 @@ Parameters are:
 	'timedmedia-derivative-state-failed' => 'failed transcode jobs
 Parameters are:
 * $1 number of transcodes',
+	'timedmedia-oggThumb-version' => '{{optional}}',
+	'timedmedia-oggThumb-failed'  => '{{optional}}',
 );
 
 /** Afrikaans (Afrikaans)

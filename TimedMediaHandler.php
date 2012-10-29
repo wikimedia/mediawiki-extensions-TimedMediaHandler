@@ -91,6 +91,9 @@ $wgTranscodeBackgroundSizeLimit = 1024 * 1024; // 1GB
 // The location of ffmpeg2theora (transcoding)
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
+// Location of oggThumb binary ( used instead of ffmpeg )
+$wgOggThumbLocation = '/usr/bin/oggThumb';
+
 // Location of the avconv/ffmpeg binary (used to encode WebM and for thumbnails)
 $wgFFmpegLocation = '/usr/bin/avconv';
 

@@ -99,6 +99,18 @@ Set the ffmpeg2theora binary location with:
 
 Default being `/usr/bin/ffmpeg2theora`.
 
+oggThumb
+-------
+
+We use oggvideotools for creating still images of videos, you will need a copy on your
+server.
+
+Set the oggThumb binary location with:
+
+    $wgOggThumbLocation = '/path/to/oggThumb';
+
+Download oggThumb from: http://dev.streamnik.de/oggvideotools.html
+
 
 == Cortado ==
 
