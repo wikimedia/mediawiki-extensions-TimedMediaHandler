@@ -1120,8 +1120,12 @@ mw.PlayerControlBuilder.prototype = {
 		var lastClickTime = 0;
 		var didDblClick = false;
 
-		// Check for click
-		$( embedPlayer ).bind( "click" + _this.bindPostfix, function() {
+		// For some reason jquery .bind( 'click' ) is doing evil things
+		embedPlayer.addEventListener('click', function( event ) {
+			// make sure the event matches:
+			if( event.currentTarget.id != embedPlayer.id ){
+				embedPlayer = $( '#' + event.currentTarget.id )[0];
+			}
 			mw.log( "PlayerControlBuilder:: click:" + embedPlayer.id + ' isPause:' + embedPlayer.paused);
 			// Don't do anything if touch interface or native controls are shown
 			if( embedPlayer.useNativePlayerControls()

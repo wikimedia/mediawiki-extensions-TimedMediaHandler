@@ -1354,7 +1354,7 @@
 				.show()
 				.unbind( 'click' )
 				.click( function() {
-					_this.triggerHelper( 'firstPlay' ); // To send stats event for play
+					_this.triggerHelper( 'firstPlay', [ _this.id ] ); // To send stats event for play
 					_this.triggerHelper( 'playing' );
 					return true;
 				});
@@ -2019,7 +2019,7 @@
 			// We need first play event for analytics purpose
 			if( this.firstPlay && this._propagateEvents) {
 				this.firstPlay = false;
-				this.triggerHelper( 'firstPlay' );
+				this.triggerHelper( 'firstPlay', [ _this.id ] );
 			}
 
 			if( this.paused === true ){
@@ -2429,7 +2429,7 @@
 			if( _this._propagateEvents ){
 
 				// mw.log('trigger:monitor:: ' + this.currentTime );
-				$( _this ).trigger( 'monitorEvent' );
+				$( _this ).trigger( 'monitorEvent', [ _this.id ] );
 
 				// Trigger the "progress" event per HTML5 api support
 				if( _this.progressEventData ) {

@@ -148,15 +148,21 @@
 			// Check for timed text support:
 			_this.addInterface();
 
-			$( embedPlayer ).bind( 'monitorEvent' + this.bindPostFix, function() {
+			$( embedPlayer ).bind( 'monitorEvent' + this.bindPostFix, function( event, id ) {
+				if( id != embedPlayer.id ){
+					_this = $('#' + id)[0].timedText;
+				}
 				_this.monitor();
 			} );
 
-			$( embedPlayer ).bind( 'firstPlay' + this.bindPostFix, function() {
+			$( embedPlayer ).bind( 'firstPlay' + this.bindPostFix, function(event, id ) {
+				if( id != embedPlayer.id ){
+					_this = $('#' + id)[0].timedText;
+				}
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
 				// Hide the caption menu if presently displayed
-				$( '#textMenuContainer_' + embedPlayer.id ).hide();
+				$( '#textMenuContainer_' + _this.embedPlayer.id ).hide();
 			} );
 
 			// Re-Initialize when changing media
