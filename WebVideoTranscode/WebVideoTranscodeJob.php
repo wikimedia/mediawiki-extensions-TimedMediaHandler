@@ -92,7 +92,7 @@ class WebVideoTranscodeJob extends Job {
 		$dbw->update(
 			'transcode',
 			array(
-				'transcode_time_error' => $db->timestamp(),
+				'transcode_time_error' => $dbw->timestamp(),
 				'transcode_error' => $error
 			),
 			array(
