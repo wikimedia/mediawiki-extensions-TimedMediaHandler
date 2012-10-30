@@ -212,7 +212,8 @@ class TimedMediaHandlerHooks {
 		// Check that the file is a transcodable asset:
 		if( self::isTranscodableTitle( $title ) ){
 			// Remove all the transcode files and db states for this asset ( will be re-added the first time the asset is displayed )
-			WebVideoTranscode::removeTranscodes( $title );
+			$file = wfFindFile( $title );
+			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
 	}
