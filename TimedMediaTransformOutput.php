@@ -41,13 +41,33 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get the media transform thumbnail
 	 * @return string
 	 */
-	function getUrl(){
+	function getUrl( $sizeOverride = false ){
 		global $wgStylePath;
-		if ( $this->isVideo && $this->thumbUrl ) {
-			return $this->thumbUrl;
+		$url = "$wgStylePath/common/images/icons/fileicon-ogg.png";
+
+		if ( $this->isVideo ) {
+			if ( $this->thumbUrl ) {
+				$url = $this->thumbUrl;
+			}
+
+			// Update the $posterUrl to $sizeOverride ( if not an old file )
+			if( !$this->file->isOld() && $sizeOverride &&
+				$sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
+				$apiUrl = $this->getPosterFromApi( $sizeOverride[0] );
+				if( $apiUrl ){
+					$url = $apiUrl;
+				}
+			}
+
+			// FIXME: remove thise after transition to TMH on commons
+			// In mixed setup with OggHandler and TMH always get
+			// name/mid-name.jpg
+			if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
+				$thumbName = $this->file->thumbName( array() );
+				$url = $this->file->getThumbUrl( $thumbName );
+			}
 		}
-		// else return the fileicon for the poster url:
-		return "$wgStylePath/common/images/icons/fileicon-ogg.png";
+		return $url;
 	}
 
 	/**
@@ -268,23 +288,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
 
 		// The poster url:
-		$posterUrl = $this->getUrl();
-
-		// Update the $posterUrl to $sizeOverride ( if not an old file )
-		if( !$this->file->isOld() && $sizeOverride && $sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
-			$apiUrl = $this->getPosterFromApi( $sizeOverride[0] );
-			if( $apiUrl ){
-				$posterUrl = $apiUrl;
-			}
-		}
-
-		// FIXME: remove thise after transition to TMH on commons
-		// In mixed setup with OggHandler and TMH always get
-		// name/mid-name.jpg
-		if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
-			$thumbName = $this->file->thumbName( array() );
-			$posterUrl = $this->file->getThumbUrl( $thumbName );
-		}
+		$posterUrl = $this->getUrl( $sizeOverride );
 
 		if( $this->fillwindow ){
 			$width = '100%';
