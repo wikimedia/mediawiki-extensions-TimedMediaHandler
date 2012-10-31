@@ -272,7 +272,9 @@
 
 			// Store the rewrite element tag type
 			this.rewriteElementTagName = element.tagName.toLowerCase();
-
+			
+			this.noPlayerFallbackHTML = $( element ).html();
+			
 			// Setup the player Interface from supported attributes:
 			for ( var attr in playerAttributes ) {
 				// We can't use $(element).attr( attr ) because we have to check for boolean attributes:
@@ -1050,8 +1052,9 @@
 		 * Show the player
 		 */
 		showPlayer: function () {
-			mw.log( 'EmbedPlayer:: showPlayer: ' + this.id + ' interace: w:' + this.width + ' h:' + this.height );
+			mw.log( 'EmbedPlayer:: showPlayer: ' + this.id + ' interface: w:' + this.width + ' h:' + this.height );
 			var _this = this;
+
 			// Remove the player loader spinner if it exists
 			this.hideSpinnerAndPlayBtn();
 			// If a isPersistentNativePlayer ( overlay the controls )
@@ -1327,10 +1330,13 @@
 				||
 				!mw.getConfig('EmbedPlayer.NotPlayableDownloadLink') )
 			{
-				//this.showNoPlayableSources();
 				return ;
 			}
-
+			// if an audio player we don't have room for error message interface: 
+			if( this.isAudio() ){
+				$( this ).parent().parent().replaceWith( this.noPlayerFallbackHTML );
+				return ;
+			}
 			// Set the isLink player flag:
 			this.isLinkPlayer= true;
 			// Update the poster and html:
@@ -1364,25 +1370,6 @@
 			$pBtn.parent('a').attr( "href", downloadUrl );
 
 			$( this ).trigger( 'showInlineDownloadLink' );
-		},
-		/**
-		 * Show no playable sources error:
-		 */
-		showNoPlayableSources: function(){
-			var $this = $( this );
-			var errorObj = this.getKalturaMsgObject( 'mwe-embedplayer-missing-source' );
-
-			// Support no sources custom error msg:
-			$this.trigger( 'NoSourcesCustomError', function( customErrorMsg ){
-				if( customErrorMsg){
-					errorObj.message = customErrorMsg;
-				}
-	    	});
-
-			// Add the no sources error:
-			this.showErrorMsg( errorObj );
-			this.hideLargePlayBtn();
-			return ;
 		},
 		/**
 		 * Update the video time request via a time request string
@@ -1626,6 +1613,7 @@
 		 */
 		updatePosterHTML: function () {
 			mw.log( 'EmbedPlayer:updatePosterHTML::' + this.id );
+			
 			var _this = this;
 			var thumb_html = '';
 			var class_atr = '';

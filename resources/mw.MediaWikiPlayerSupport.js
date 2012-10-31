@@ -174,7 +174,7 @@
 				imgSize.height = 80;
 			} else{
 				imgSize.width=  ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 120;
-				imgSize.height = imgSize.width * ( embedPlayer.height/ embedPlayer.width )
+				imgSize.height = parseInt( imgSize.width * ( embedPlayer.getHeight()/ embedPlayer.getWidth() ) )
 			}
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(

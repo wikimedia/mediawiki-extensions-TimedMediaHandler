@@ -1119,9 +1119,8 @@ mw.PlayerControlBuilder.prototype = {
 		var dblClickTime = 300;
 		var lastClickTime = 0;
 		var didDblClick = false;
-
-		// For some reason jquery .bind( 'click' ) is doing evil things
-		embedPlayer.addEventListener('click', function( event ) {
+		
+		var playerClickCb = function( event ) {
 			// make sure the event matches:
 			if( event.currentTarget.id != embedPlayer.id ){
 				embedPlayer = $( '#' + event.currentTarget.id )[0];
@@ -1155,7 +1154,13 @@ mw.PlayerControlBuilder.prototype = {
 				}
 			}, dblClickTime );
 			return true;
-		});
+		};
+		if (!embedPlayer.addEventListener) {
+			embedPlayer.attachEvent("onclick", playerClickCb);
+		} else{
+			// For some reason jquery .bind( 'click' ) is doing evil things
+			embedPlayer.addEventListener('click', playerClickCb );
+		}
 
 	},
 	addRightClickBinding: function(){
@@ -1286,15 +1291,13 @@ mw.PlayerControlBuilder.prototype = {
 		}
 
 		// If the resolution is too small don't display the warning
-		if( this.embedPlayer.getPlayerHeight() < 199 ){
+		if( parseInt( this.embedPlayer.getPlayerHeight() ) < 199 ){
 			return false;
 		}
-		// See if we have we have ogg support
-		var supportingPlayers = mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'video/ogg' );
-		for ( var i = 0; i < supportingPlayers.length; i++ ) {
-			if ( supportingPlayers[i].id == 'oggNative') {
-				return false;
-			}
+
+		// See if we have we have native support
+		if( this.embedPlayer.instanceOf == 'Native' ){
+			return false;
 		}
 
 		// Chrome's webM support is oky though:

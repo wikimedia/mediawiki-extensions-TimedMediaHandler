@@ -87,6 +87,7 @@ mw.EmbedTypes = {
 	},
 	addJavaPlayer: function(){
 		if( !mw.getConfig( 'EmbedPlayer.DisableJava' ) ){
+			mw.log("EmbedTypes::addJavaPlayer: adding cortadoPlayer");
 			this.mediaPlayers.addPlayer( cortadoPlayer );
 		}
 	},

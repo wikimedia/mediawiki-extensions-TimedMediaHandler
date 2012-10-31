@@ -149,16 +149,15 @@
 			_this.addInterface();
 
 			$( embedPlayer ).bind( 'monitorEvent' + this.bindPostFix, function( event, id ) {
-				if( id != embedPlayer.id ){
-					_this = $('#' + id)[0].timedText;
-				}
+				// regain scope
+				_this = $('#' + id)[0].timedText;
+				// monitor text updates
 				_this.monitor();
 			} );
 
 			$( embedPlayer ).bind( 'firstPlay' + this.bindPostFix, function(event, id ) {
-				if( id != embedPlayer.id ){
-					_this = $('#' + id)[0].timedText;
-				}
+				// regain scope
+				_this = $('#' + id)[0].timedText;
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
 				// Hide the caption menu if presently displayed
@@ -212,6 +211,9 @@
 
 			// Setup display binding
 			$( embedPlayer ).bind( 'onShowControlBar'+ this.bindPostFix, function(event, layout ){
+				if( event.currentTarget.id != embedPlayer.id ){
+					embedPlayer = $('#' +event.currentTarget.id )[0];
+				}
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track if present
 					embedPlayer.getInterface().find( '.track' )
@@ -476,7 +478,7 @@
 		/**
 		* Monitor video time and update timed text filed[s]
 		*/
-		monitor: function( ) {
+		monitor: function() {
 			//mw.log(" timed Text monitor: " + this.enabledSources.length );
 			var embedPlayer = this.embedPlayer;
 			// Setup local reference to currentTime:
