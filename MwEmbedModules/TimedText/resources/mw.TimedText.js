@@ -464,7 +464,7 @@
 							'height': textHeight,
 							'position' : 'absolute',
 							'left': $menuButton[0].offsetLeft - 75,
-							'bottom': ctrlObj.getHeight(),
+							'bottom': ctrlObj.getHeight()
 						})
 						ctrlObj.showControlBar( true );
 					},
