@@ -45,7 +45,7 @@ class TimedMediaThumbnail {
 		$videoPath = $options['file']->getLocalRefPath();
 
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation )
-			. ' -t ' . floatval( $time );
+			. ' -threads 1 -t ' . floatval( $time );
 		// Set the output size if set in options:
 		if( isset( $options['width'] ) && isset( $options['height'] ) ){
 			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );

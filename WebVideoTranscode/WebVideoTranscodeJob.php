@@ -366,7 +366,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	function ffmpegAddH264VideoOptions( $options, $pass ){
 		// Set the codec:
-		$cmd= " -vcodec libx264";
+		$cmd= " -threads 4 -vcodec libx264";
 		// Check for presets:
 		if( isset( $options['preset'] ) ){
 			// Add the two vpre types:
