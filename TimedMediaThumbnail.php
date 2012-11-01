@@ -77,7 +77,7 @@ class TimedMediaThumbnail {
 	 * @return bool|MediaTransformError
 	 */
 	static function tryFfmpegThumb( $options ){
-		global $wgFFmpegLocation;
+		global $wgFFmpegLocation, $wgMaxShellMemory;
 
 		if( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ){
 			return false;
@@ -116,18 +116,9 @@ class TimedMediaThumbnail {
 		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;
 		}
-		// Filter nonsense
-		$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
-		if ( substr( $lines[0], 0, 6 ) == 'FFmpeg' ) {
-			for ( $i = 1; $i < count( $lines ); $i++ ) {
-				if ( substr( $lines[$i], 0, 2 ) != '  ' ) {
-					break;
-				}
-			}
-			$lines = array_slice( $lines, $i );
-		}
+		$returnText = $cmd . "\nwgMaxShellMemory: $wgMaxShellMemory\n" . $returnText;
 		// Return error box
-		return new MediaTransformError( 'thumbnail_error', $options['width'], $options['height'], implode( "\n", $lines ) );
+		return new MediaTransformError( 'thumbnail_error', $options['width'], $options['height'], $returnText );
 	}
 
 	/**
