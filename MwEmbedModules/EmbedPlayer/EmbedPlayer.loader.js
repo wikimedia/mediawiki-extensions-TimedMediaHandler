@@ -49,7 +49,7 @@
 		});
 
 		// Remove any duplicates in the dependencySet:
-		dependencySet = $.unique( dependencySet );
+		dependencySet = $.uniqueArray( dependencySet );
 
 		// Do the request and process the playerElements with updated dependency set
 		mediaWiki.loader.using( dependencySet, function(){
