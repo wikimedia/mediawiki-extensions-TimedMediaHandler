@@ -163,6 +163,8 @@ Parameters are:
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
+	'timedmedia-oggThumb-version' => '{{optional}}',
+	'timedmedia-oggThumb-failed' => '{{optional}}',
 	'timedmedia-status' => '{{Identical|Status}}',
 	'timedmedia-transcodeinfo' => 'A table column header for description of Transcode derivative',
 	'timedmedia-actions' => '{{Identical|Action}}',
@@ -230,8 +232,6 @@ Parameters are:
 	'timedmedia-derivative-state-failed' => 'failed transcode jobs
 Parameters are:
 * $1 number of transcodes',
-	'timedmedia-oggThumb-version' => '{{optional}}',
-	'timedmedia-oggThumb-failed'  => '{{optional}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2224,7 +2224,7 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'timedmedia-desc' => 'WebM, OGG Theora 및 Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 시간 텍스트를 위한 핸들러',
+	'timedmedia-desc' => 'WebM, OGG Theora 및 Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 소리 파일, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 동영상 파일, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 미디어 파일, $2',
@@ -2235,6 +2235,8 @@ $messages['ko'] = array(
 	'timedmedia-ogg-long-error' => '잘못된 ogg 파일: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 동영상 파일, $2',
 	'timedmedia-webm-long-video' => 'WebM 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
+	'timedmedia-mp4-short-video' => 'MP4 $1 동영상 파일, $2',
+	'timedmedia-mp4-long-video' => 'MP4 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
 	'timedmedia-no-player-js' => '죄송합니다, 당신의 시스템은 자바스크립트를 지원하지 않거나 지원하는 미디어 플레이어가 설치되어 있지 않습니다.<br />
 <a href="$1">미디어 클립을 다운로드</a>하거나, <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">미디어 플레이어를 다운로드</a>할 수 있습니다.',
 	'timedmedia-more' => '더 보기...',
@@ -2270,6 +2272,7 @@ $messages['ko'] = array(
 	'timedmedia-reset-confirm' => '코드 변환을 초기화하면 기존 파일이 (있는 경우) 제거되며, 작업 대기열로 코드 변환을 다시 추가합니다. 다시 변환하는 데 다소 시간이 걸릴 것입니다. <br /><br />
 계속하겠습니까?',
 	'timedmedia-reset-error' => '코드 변환 작업을 초기화하는 데 오류가 났습니다.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 출처',
 	'timedmedia-source-file-desc' => '원본 $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => '낮은 대역폭 Ogg 비디오 (160P)',
@@ -2280,6 +2283,9 @@ $messages['ko'] = array(
 	'timedmedia-derivative-desc-360p.webm' => '웹 스트리밍 가능 WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => '웹 스트리밍 가능 WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => '고화질 다운로드 가능 WebM (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => '장치 친화적 MP4 (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => '웹 스트리밍 가능 MP4 (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'HD 품질 MP4 (720P)',
 	'timedmedia-subtitle-new' => '새 번역 만들기 또는 기존 번역 편집',
 	'timedmedia-subtitle-new-desc' => "[[:en:ISO 639|언어 코드]]로 '''LANG''' 부분을 바꾸고 나서 '''{{int:Timedmedia-subtitle-new-go}}''' 버튼을 누르세요",
 	'timedmedia-subtitle-new-go' => '가기',
@@ -3661,7 +3667,7 @@ $messages['su'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'timedmedia-desc' => 'Stöder filtyperna Ogg Theora och Ogg Vorbis med en JavaScript-baserad mediaspelare', # Fuzzy
+	'timedmedia-desc' => 'Hanterare för ljud-, video- och tidsbestämd text, med stöd för format WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ljudfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediafil, $2',
@@ -3671,17 +3677,25 @@ $messages['sv'] = array(
 	'timedmedia-ogg-long-general' => 'Ogg mediafil, längd $2, $3',
 	'timedmedia-ogg-long-error' => 'Felaktig Ogg-fil: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
+	'timedmedia-webm-long-video' => 'WebM-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
+	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
+	'timedmedia-mp4-long-video' => 'MP4-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
+	'timedmedia-no-player-js' => 'Tyvärr, din webbläsare har antingen JavaScript inaktiverat eller inte någon spelare som stöds.<br />
+Du kan <a href="$1">ladda ner klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hämta en spelare</a> för att spela upp klippet i din webbläsare.',
 	'timedmedia-more' => 'Mer...',
 	'timedmedia-dismiss' => 'Stäng',
 	'timedmedia-download' => 'Ladda ner filen',
 	'timedmedia-play-media' => 'Spela upp media',
 	'timedmedia-desc-link' => 'Om filen',
+	'timedmedia-oggThumb-version' => 'OggHandler kräver oggThumb version $1 eller senare.',
+	'timedmedia-oggThumb-failed' => 'oggThumb misslyckades med att skapa miniatyrbilden.',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Okänd status',
 	'timedmedia-actions' => 'Åtgärder',
 	'timedmedia-not-ready' => 'Inte redo',
 	'timedmedia-percent-done' => 'Ungefär $1% klar',
 	'timedmedia-in-job-queue' => 'Lades till i jobbkön för $1sedan',
+	'timedmedia-unknown-target-size' => 'Okänd målstorlek, $1-kodad',
 	'timedmedia-days' => '{{PLURAL:$1|dag|$1 dagar}}',
 	'timedmedia-hours' => '{{PLURAL:$1|timme|$1 timmar}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuter}}',
@@ -3690,18 +3704,27 @@ $messages['sv'] = array(
 	'timedmedia-time-3-measurements' => '$1, $2 och $3',
 	'timedmedia-time-2-measurements' => '$1 och $2',
 	'timedmedia-show-error' => 'Visa fel',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 Källa',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Låg bandbredd Ogg-video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Webbströmningsbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webbströmningsbar Ogg-video (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Högkvalitets nedladdningsbar Ogg-video (720P)',
 	'timedmedia-derivative-desc-160p.webm' => 'Webbströmningsbar WebM (160P)',
 	'timedmedia-derivative-desc-360p.webm' => 'Webbströmningsbar WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Webbströmningsbar WebM (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'Högkvalitets nedladdningsbar WebM (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => 'Enhetsvänlig MP4 (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'Webbströmningsbar MP4 (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720P)',
 	'timedmedia-subtitle-new' => 'Skapa ny översättning eller redigera befintlig',
 	'timedmedia-subtitle-new-desc' => "Ersätt delen '''LANG''' med din [[:en:ISO 639|språkkod]] och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Gå',
 	'timedmedia-subtitle-language' => '$1 ($2) undertexter',
+	'timedmedia-subtitle-no-video' => 'Det finns ingen video som är associerade med den aktuella undertextssidan',
 	'timedmedia-subtitle-no-subtitles' => 'Det finns för närvarande ingen textning på $1 för denna video, du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida] för att lägga till dem',
+	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 videoklipp|$1 videoklipp}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videor}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-video|$1 WebM-videor}}',
