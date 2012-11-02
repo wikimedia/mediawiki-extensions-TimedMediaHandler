@@ -164,6 +164,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				'data-videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize() ),
 				),
 			Xml::tags( 'img', array(
+				'alt' => $this->file->getTitle(),
 				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
 							$this->getPlayerHeight() . "px",
 				'src' =>  $this->getUrl(),
