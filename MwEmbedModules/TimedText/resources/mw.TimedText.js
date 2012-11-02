@@ -802,7 +802,7 @@
 				)
 			}
 			// Allow other modules to add to the timed text menu:
-			$( _this.embedPlayer ).trigger( 'TimedText_BuildCCMenu', [ $menu ] ) ;
+			$( _this.embedPlayer ).trigger( 'TimedText_BuildCCMenu', [ $menu, _this.embedPlayer.id ] ) ;
 
 			// Test if only one menu item move its children to the top level
 			if( $menu.children('li').length == 1 ){

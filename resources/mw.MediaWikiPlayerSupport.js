@@ -272,7 +272,11 @@
 			}
 		});
 
-		$( embedPlayer ).bind( 'TimedText_BuildCCMenu', function(event, $menu){
+		$( embedPlayer ).bind( 'TimedText_BuildCCMenu', function(event, $menu, id ){
+			if( id != embedPlayer.id ){
+				_this = $('#' + id )[0].timedText;
+				embedPlayer = _this.embedPlayer;
+			}
 			// Put in the "Make Transcript" link if config enabled and we have an api key
 			if( embedPlayer.apiTitleKey ){
 				// check if not already there:
@@ -280,7 +284,7 @@
 					// add text link already present
 					return ;
 				}
-
+				
 				var addTextPage =  mw.getApiProviderURL( apiProvider )
 									.replace( 'api.php', 'index.php') +
 									'?title=TimedText:' + unescape( embedPlayer.apiTitleKey ).replace(/^File:|^Image:/, '');
