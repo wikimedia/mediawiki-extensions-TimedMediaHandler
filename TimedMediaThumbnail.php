@@ -27,7 +27,7 @@ class TimedMediaThumbnail {
 	 * @return bool|MediaTransformError
 	 *
 	 */
-	function tryOggThumb( $options ) {
+	static function tryOggThumb( $options ) {
 		global $wgOggThumbLocation;
 
 		// Check that the file is 'ogg' format

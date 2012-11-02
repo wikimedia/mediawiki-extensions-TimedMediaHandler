@@ -240,7 +240,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param $metadata
 	 * @return bool|mixed
 	 */
-	function unpackMetadata( $image, $metadata ) {
+	function unpackMetadata( $metadata ) {
 		wfSuppressWarnings();
 		$unser = unserialize( $metadata );
 		wfRestoreWarnings();
