@@ -114,6 +114,9 @@ Are you sure you want to proceed?',
 	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page',
 	'timedmedia-subtitle-no-subtitles' => 'There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',
 
+	'timedmedia-subtitle-remote' => 'Timed text for this file is hosted on $1',
+	'timedmedia-subtitle-remote-link' => 'You can [$1 view the description page] for this file on $2',
+
 	//Special:TimedMediaHandler
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videos}}',
