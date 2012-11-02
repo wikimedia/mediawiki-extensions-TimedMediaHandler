@@ -458,6 +458,11 @@ mw.PlayerControlBuilder.prototype = {
 
 		// trigger the open fullscreen event:
 		$( embedPlayer ).trigger( 'onOpenFullScreen' );
+
+		// re draw the controls after a timeout ( to allow the screen dom to update )
+		setTimeout( function(){
+			_this.addControls();
+		},100)
 	},
 
 	/**
@@ -846,6 +851,10 @@ mw.PlayerControlBuilder.prototype = {
 			window.scroll( 0, _this.verticalScrollPosition );
 		}, 100 );
 		
+		// re draw the controls after a timeout ( to allow the screen dom to update )
+		setTimeout( function(){
+			_this.addControls();
+		},100)
 	},
 	restoreDomPlayer: function(){
 		var _this = this;

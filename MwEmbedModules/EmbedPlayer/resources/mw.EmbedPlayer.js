@@ -1139,7 +1139,6 @@
 		updateLayout: function() {
 			// update image layout:
 			this.applyIntrinsicAspect();
-
 			if( !mw.getConfig('EmbedPlayer.IsIframeServer' ) ){
 				// Use intrensic container size
 				return ;
