@@ -42,9 +42,7 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['video/mp4'] = 'Mp4Handler';
 
 		// Add transcode job class:
-		$wgJobClasses+= array(
-			'webVideoTranscode' => 'WebVideoTranscodeJob'
-		);
+		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';
 
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';

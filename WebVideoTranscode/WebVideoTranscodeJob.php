@@ -258,7 +258,7 @@ class WebVideoTranscodeJob extends Job {
 		$this->purgeTargetEncodeFile();
 
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
-		webVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
+		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
 		// pass along result status:
 		return $status;

@@ -564,7 +564,7 @@ class WebVideoTranscode {
 	 * @param $titleObj Title
 	 */
 	public static function invalidatePagesWithFile( &$titleObj ){
-		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBKey() );
+		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBKey() . "\n" );
 		// Purge the main image page:
 		$titleObj->invalidateCache();
 
