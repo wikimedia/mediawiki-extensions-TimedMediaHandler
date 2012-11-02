@@ -368,6 +368,12 @@ mw.PlayerControlBuilder.prototype = {
 		// Setup pointer to control builder :
 		var _this = this;
 
+		// Store the page vertical scroll
+		var isIframe = mw.getConfig('EmbedPlayer.IsIframeServer' );
+		var doc =  isIframe ? window['parent'].document : window.document;
+		var context = isIframe ? window['parent'] : window;
+		this.verticalScrollPosition = doc.all ? doc.scrollTop : context.pageYOffset;
+		
 		// Setup local reference to embed player:
 		var embedPlayer = this.embedPlayer;
 
@@ -389,8 +395,7 @@ mw.PlayerControlBuilder.prototype = {
 
 		// Store the current scroll location on the iframe:
 		$( embedPlayer ).trigger( 'fullScreenStoreVerticalScroll' );
-
-		// Check for native support for fullscreen and we are in an iframe server
+		
 		if( window.fullScreenApi.supportsFullScreen ) {
 			_this.preFullscreenPlayerSize = this.getPlayerSize();
 			var fullscreenHeight = null;
@@ -469,7 +474,6 @@ mw.PlayerControlBuilder.prototype = {
 		context = isIframe ? window['parent'] : window;
 
 		// update / reset local restore properties
-		this.verticalScrollPosition = (doc.all ? doc.scrollTop : context.pageYOffset);
 		this.parentsAbsoluteList = [];
 		this.parentsRelativeList = [];
 
@@ -550,7 +554,7 @@ mw.PlayerControlBuilder.prototype = {
 	 */
 	restoreContextPlayer: function(){
 		var isIframe = mw.getConfig('EmbedPlayer.IsIframeServer' );
-
+		
 		var
 		_this = this,
 		doc = isIframe ? window['parent'].document : window.document,
@@ -585,9 +589,6 @@ mw.PlayerControlBuilder.prototype = {
 		$doc.find( _this.parentsRelativeList ).each( function() {
 			$( this ).css( 'position', 'relative' );
 		} );
-
-		// Scroll back to the previews position
-		window.scroll( 0, this.verticalScrollPosition );
 	},
 
 	/**
@@ -839,6 +840,12 @@ mw.PlayerControlBuilder.prototype = {
 
 		// Trigger the onCloseFullscreen event:
 		$( embedPlayer ).trigger( 'onCloseFullScreen' );
+
+		// Scroll back to the previews position ( do in async call to allow dom fullscreen restore ) 
+		setTimeout( function(){
+			window.scroll( 0, _this.verticalScrollPosition );
+		}, 100 );
+		
 	},
 	restoreDomPlayer: function(){
 		var _this = this;
