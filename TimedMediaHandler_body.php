@@ -56,11 +56,15 @@ class TimedMediaHandler extends MediaHandler {
 		$paramString.= ( $paramString != '' )? '-' : '';
 
 		// Get the raw thumbTime from thumbtime or start param
-		$thumbTime = isset( $params['thumbtime'] )? $params['thumbtime'] : false;
-		if( !$thumbTime )
-			$thumbTime = isset( $params['start'] )? $params['start'] : false;
+		if ( isset ( $params['thumbtime'] ) ) {
+			$thumbTime = $params['thumbtime'];
+		} elseif ( isset ( $params['start'] ) ) {
+			$thumbTime = $params['start'];
+		} else {
+			$thumbTime = false;
+		}
 
-		if ( $thumbTime ) {
+		if ( $thumbTime !== false ) {
 			$time = $this->parseTimeString( $thumbTime );
 			if ( $time !== false ) {
 				return $paramString. 'seek=' . $time;
@@ -70,7 +74,6 @@ class TimedMediaHandler extends MediaHandler {
 		if ( !$paramString ) {
 			$paramString = 'mid';
 		}
-
 		return $paramString ;
 	}
 
@@ -401,16 +404,17 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public static function onExtractThumbParameters( $thumbname, array &$params ) {
 		global $wgTmhFileExtensions;
-
 		$supported = '/\.(?:' . implode( '|', $wgTmhFileExtensions ) . ')$/i';
 		if ( !preg_match( $supported, $params['f'] ) ) {
 			return true; // not a supported extension
 		}
 		// Check if the parameters can be extracted from the thumbnail name...
-		if ( preg_match( '!^(mid|seek=[0-9.]+)-[^/]*$!', $thumbname, $m ) ) {
-			list( /* all */, $timeFull ) = $m;
-			if ( $timeFull != 'mid' ) {
-				list( $seek, $thumbtime ) = explode( '=', $timeFull, 2 );
+		if ( preg_match( '!^(mid|(\d*)px-)*(seek=(\d+))*-[^/]*$!', $thumbname, $matches ) ) {
+			list( /* all */, $sizeFull, $size, $timeFull, $thumbtime ) = $matches;
+			if ( $size != null ) {
+				$params['width'] = $size;
+			}
+			if ( $thumbtime != null ) {
 				$params['thumbtime'] = $thumbtime;
 			}
 			return false; // valid thumbnail URL
