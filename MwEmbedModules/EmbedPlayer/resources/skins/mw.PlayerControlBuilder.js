@@ -1369,7 +1369,7 @@ mw.PlayerControlBuilder.prototype = {
 		.attr( {
 			'id': warnId
 		} )
-		.addClass( 'ui-state-highlight ui-corner-all' )
+		.addClass( 'ui-corner-all' )
 		.css({
 			'position' : 'absolute',
 			'background' : '#FFF',
