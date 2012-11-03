@@ -21,20 +21,37 @@ class TimedTextPage extends Article {
 			parent::view();
 			return;
 		}
+		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
 		$srt = array_pop( $titleParts );
+		$languageKey = array_pop( $titleParts );
 
-		// create a title from the current page title in the NS_FILE ns ( create new link )
+		// Check for File name without text extension:
+		// i.e TimedText:myfile.ogg
+		
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
 		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
 		if( $srt !== '.srt' && $file && $file->exists() ){
-			$this->doRedirectToPageForm( $fileTitle );
+			if( $file->isLocal() ){
+				$this->doRedirectToPageForm( $fileTitle );
+			} else {
+				$this->doLinkToRemote( $file );
+			}
 			return ;
 		}
 
-		$languageKey = array_pop( $titleParts );
+		// Check for File name with text extension ( from remaning parts of title )
+		// i.e TimedText:myfile.ogg.en.srt
+
 		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
+
+		// Check for remote file
+		$basefile = wfFindFile( $videoTitle );
+		if( !$basefile->isLocal() ){
+			$this->doLinkToRemote( $basefile );
+			return ;
+		}
 
 		// Look up the language name:
 		$languages = Language::fetchLanguageNames( 'en', 'all' );
@@ -58,6 +75,17 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
+	}
+	/**
+	 * Timed text or file is hosted on remote repo, Add a short description and link to foring repo
+	 * @param $file the base file
+	 */
+	function doLinkToRemote( $file ){
+		global $wgOut;
+		$remoteName = $file->getRepoName();
+		$wgOut->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',  $file->getRepo()->getDisplayName() ) );
+		
+		$wgOut->addHTML( wfMessage( 'timedmedia-subtitle-remote-link', $file->getDescriptionUrl(), $file->getRepo()->getDisplayName()  ) );
 	}
 	function doRedirectToPageForm( $fileTitle ){
 		global $wgContLang, $wgOut;
