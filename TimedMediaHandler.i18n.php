@@ -784,6 +784,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
 	'timedmedia-subtitle-no-subtitles' => 'Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.',
+	'timedmedia-subtitle-remote' => 'timedText für diese Datei befindet sich auf $1',
+	'timedmedia-subtitle-remote-link' => 'Du kannst [$1 die Beschreibungsseite] für diese Datei auf $2 ansehen',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|Ein Video|$1 Videos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|Ein Ogg-Video|$1 Ogg-Videos}}',
@@ -981,6 +983,8 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
 	'timedmedia-subtitle-no-subtitles' => 'Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos',
+	'timedmedia-subtitle-remote' => 'El texto programado para este archivo está alojado en $1',
+	'timedmedia-subtitle-remote-link' => 'Puedes [$1 ver la página de descripción] de este archivo en $2',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}',
@@ -1118,6 +1122,7 @@ $messages['fo'] = array(
  * @author Gomoko
  * @author Grondin
  * @author Hashar
+ * @author Hello71
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
@@ -1178,6 +1183,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-reset-error' => 'Erreur en réinitialisant le travail de transcodage.',
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Source $1',
 	'timedmedia-source-file-desc' => 'Original $1, $2&nbsp;×&nbsp;$3 ($4)',
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160p',
@@ -1201,6 +1207,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-subtitle-language' => 'sous-titres en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Il n’y a aucune vidéo associée à la page actuelle de sous-titre',
 	'timedmedia-subtitle-no-subtitles' => 'Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter',
+	'timedmedia-subtitle-remote-link' => 'Vous pouvez [$1 voir la page de description] de ce fichier sur $2',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 vidéo|$1 vidéos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vidéo Ogg|$1 vidéos Ogg}}',
@@ -1946,6 +1953,8 @@ Continuare?',
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitoli',
 	'timedmedia-subtitle-no-video' => "Non non c'è nessun video associato all'attuale pagina dei sottotitoli",
 	'timedmedia-subtitle-no-subtitles' => 'Non ci sono al momento sottotitoli in $1 per questo video, è possibile [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificare questa pagina] per aggiungerli',
+	'timedmedia-subtitle-remote' => 'I sottotitoli per questo file sono ospitati su $1',
+	'timedmedia-subtitle-remote-link' => 'Puoi vedere la [$1 pagina di descrizione] per questo file su $2',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 video}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 video Ogg}}',
@@ -2016,6 +2025,7 @@ $messages['ja'] = array(
 	'timedmedia-subtitle-new' => '翻訳を新規作成、または既存のものを編集',
 	'timedmedia-subtitle-new-desc' => "'''LANG''' 部分を自分の[[:en:ISO 639|言語コード]]に置換して、'''{{int:Timedmedia-subtitle-new-go}}'''ボタンを押してください。",
 	'timedmedia-subtitle-new-go' => '実行',
+	'timedmedia-subtitle-remote-link' => '$2 でこのファイルの[$1 解説ページを閲覧]できます',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 件の動画}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 件の Ogg 動画}}',
@@ -2538,6 +2548,8 @@ $messages['mk'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
 	'timedmedia-subtitle-no-video' => 'Нема видеоснимка поврзана со тековната страница со титлови',
 	'timedmedia-subtitle-no-subtitles' => 'Моментално нема $1 титлови за оваа видеоснимка. Можете да ги додадете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредувајќи ја страницава]',
+	'timedmedia-subtitle-remote' => 'Синхронизираниот текст за податотекава е вдомен во $1',
+	'timedmedia-subtitle-remote-link' => 'Можете да ја [$1 погледате описната страниац] на податотекава на $2',
 	'timedmediahandler' => 'ПоставувачНаУсогласениСнимки',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 видео|$1 видеа}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-видео|$1 Ogg-видеа}}',
@@ -3471,6 +3483,7 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="http://www.mediawiki.org/wi
 	'timedmedia-reset' => 'Ponastavi prekodiranje',
 	'timedmedia-reset-confirm' => 'Ob ponastavitvi tega prekodiranja se bodo izbrisale vse obstoječe datoteke (če obstajajo), prekodiranje pa se bo ponovno dodalo v čakalno vrsto. Ponovno prekodiranje bo vzelo nekaj časa. <br /><br />Ste prepričani, da želite nadaljevati?',
 	'timedmedia-reset-error' => 'Napaka pri ponastavljanju prekodiranja.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'vir $1',
 	'timedmedia-source-file-desc' => 'Izvirnik $1, $2 × $3 ($4)',
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160P',
@@ -3491,8 +3504,11 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="http://www.mediawiki.org/wi
 	'timedmedia-subtitle-language' => 'podnapisi v jeziku: $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'S trenutno podnaslovno stranjo ni povezan noben videoposnetek',
 	'timedmedia-subtitle-no-subtitles' => 'V jeziku $1 trenutno ni nobenih podnapisov za ta video; stran lahko [{{fullurl:{{FULLPAGENAME}}|action=edit}} odprete za urejanje] in jih dodate.',
+	'timedmedia-subtitle-remote' => 'Časovno besedilo datoteke gostuje na $1',
+	'timedmedia-subtitle-remote-link' => '[$1 Ogledate si lahko opisno stran] datoteke na $2',
+	'timedmediahandler' => 'Upravljavec časovne predstavnosti',
 	'timedmedia-videos' => '{{PLURAL:$1|$ video|$ videa|$ videi|$ videov}}',
-	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 video Ogg|$1 videa Ogg|$1 videi Ogg|$1| videov Ogg}}', # Fuzzy
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 video Ogg|$1 videa Ogg|$1 videi Ogg|$1 videov Ogg}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 video WebM|$1 videa WebM|$1 videi WebM|$1 videov WebM}}',
 	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|eno prekodiranje|dve prekodiranji|$1 prekodiranja|$1 prekodiranj}}',
 	'timedmedia-derivative-state-active' => '{{PLURAL:$1|eno tekoče prekodiranje|dve tekoči prekodiranji|$1 prekodiranja|$1 prekodiranj}}',
