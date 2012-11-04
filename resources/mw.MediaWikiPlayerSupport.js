@@ -135,21 +135,21 @@
 			var $author = $page.find('#fileinfotpl_aut');
 			if( $author.length ){
 				// Get the real author sibling of fileinfotpl_aut
-				$author = $author.next().find('p');
+				$authorText = $author.next()
 				// Remove white space:
-				$author.find('br').remove();
+				$authorText.find('br').remove();
 
 				// Update link to be absolute per page url context:
-				var $links = $author.find('a');
+				var $links = $authorText.find('a');
 				if( $links.length ) {
-					var authUrl = $author.find('a').attr('href');
+					var authUrl = $authorText.find('a').attr('href');
 					authUrl = mw.absoluteUrl( authUrl,  articleUrl );
-					$author.find('a').attr('href',
+					$authorText.find('a').attr('href',
 						authUrl
 					)
 				}
 				$creditLine.append( $( '<br />' ),
-					gM('mwe-embedplayer-credit-author', $author.html() )
+					gM('mwe-embedplayer-credit-author', $authorText.html() )
 				)
 			}
 
@@ -157,7 +157,7 @@
 			var $date =$page.find('#fileinfotpl_date');
 			if( $date.length ){
 				// Get the real date sibling of fileinfotpl_date
-				$date = $date.next().find('p');
+				$date = $date.next();
 
 				// remove white space:
 				$date.find('br').remove();
@@ -218,7 +218,7 @@
 			mw.getJSON( apiUrl, request, function( data ){
 
 				descUrl = apiUrl.replace( 'api.php', 'index.php');
-				descUrl+= '?title=' + fileTitle;
+				descUrl+= '?title=' + encodeURIComponent( fileTitle );
 				if ( data && data.parse && data.parse.text && data.parse.text['*'] ) {
 					// TODO improve provider 'concept' to support page title link
 					$creditsCache = doCreditLine( data.parse.text['*'], descUrl );

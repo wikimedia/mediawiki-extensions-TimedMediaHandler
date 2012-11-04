@@ -267,7 +267,7 @@ mw.PlayerSkinKskin = {
 			return false;
 
 		// Add options menu to top of player target children:
-		$playerTarget.prepend(
+		$playerTarget.append(
 			_this.getComponent( 'optionsMenu' )
 		);
 
