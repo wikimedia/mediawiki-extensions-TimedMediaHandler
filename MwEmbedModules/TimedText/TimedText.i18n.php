@@ -2110,10 +2110,31 @@ $messages['ur'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
+	'mwe-timedtext-editor' => 'Trình sửa văn bản đồng bộ',
+	'mwe-timedtext-stage-sync' => 'Đồng bộ',
+	'mwe-timedtext-stage-translate' => 'Biên dịch',
+	'mwe-timedtext-stage-upload' => 'Tải lên từ tập tin trên máy',
+	'mwe-timedtext-select-language' => 'Chọn ngôn ngữ',
+	'mwe-timedtext-upload-text' => 'Tải lên tập tin văn bản',
+	'mwe-timedtext-uploading-text' => 'Đang tải lên tập tin văn bản',
+	'mwe-timedtext-upload-text-desc-title' => 'Tải lên một tập tin văn bản',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Chọn ngôn ngữ của tập tin',
+	'mwe-timedtext-upload-text-preview' => 'Xem lại văn bản',
 	'mwe-timedtext-back-btn' => 'Quay lại',
+	'mwe-timedtext-choose-text' => 'Chọn văn bản',
+	'mwe-timedtext-loading-text-edit' => 'Đang tải trình sửa văn bản đồng bộ',
+	'mwe-timedtext-layout' => 'Bố trí',
+	'mwe-timedtext-layout-ontop' => 'Ở trên video',
+	'mwe-timedtext-layout-below' => 'Ở dưới video',
+	'mwe-timedtext-loading-text' => 'Đang tải văn bản…',
+	'mwe-timedtext-textcat-tad' => 'Lời miêu tả âm thanh',
+	'mwe-timedtext-textcat-ktv' => 'Karaôkê',
+	'mwe-timedtext-textcat-meta' => 'Siêu dữ liệu đồng bộ',
+	'mwe-timedtext-textcat-lrc' => 'Lời hát',
 );
 
 /** Walloon (walon)
