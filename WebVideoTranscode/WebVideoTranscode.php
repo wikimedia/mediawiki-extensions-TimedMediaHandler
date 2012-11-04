@@ -615,7 +615,7 @@ class WebVideoTranscode {
 			'src' => $src,
 			'title' => wfMessage( 'timedmedia-source-file-desc', $metadataType )
 				->numParams( $file->getWidth(), $file->getHeight() )
-				->params( $wgLang->formatBitrate( $bitrate ) ),
+				->params( $wgLang->formatBitrate( $bitrate ) )->text(),
 			"shorttitle" => wfMessage(
 				'timedmedia-source-file',
 				wfMessage( 'timedmedia-' . $metadataType )->text()
