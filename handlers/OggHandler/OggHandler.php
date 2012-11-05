@@ -243,13 +243,15 @@ class OggHandlerTMH extends TimedMediaHandler {
 	function getBitRate( &$file ){
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$unpacked || isset( $metadata['error'] ) ) {
+		if ( !$unpacked || isset( $unpacked['error'] ) ) {
 			$length = 0;
 		} else {
 			$length = $this->getLength( $file );
-			foreach ( $unpacked['streams'] as $stream ) {
-				if( isset( $stream['size'] ) )
-					$size += $stream['size'];
+			if ( isset( $unpacked['streams'] ) ) {
+				foreach ( $unpacked['streams'] as $stream ) {
+					if( isset( $stream['size'] ) )
+						$size += $stream['size'];
+				}
 			}
 		}
 		return $length == 0 ? 0 : $size / $length * 8;
