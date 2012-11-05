@@ -366,7 +366,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	function ffmpegAddH264VideoOptions( $options, $pass ){
 		// Set the codec:
-		$cmd= " -threads 4 -vcodec libx264";
+		$cmd= " -threads 1 -vcodec libx264";
 		// Check for presets:
 		if( isset( $options['preset'] ) ){
 			// Add the two vpre types:
@@ -442,7 +442,7 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		$cmd ='';
+		$cmd =' -threads 1';
 
 		// check for presets:
 		if( isset($options['preset']) ){
@@ -456,7 +456,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Add the boiler plate vp8 ffmpeg command:
-		$cmd.=" -y -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000 -threads 4";
+		$cmd.=" -y -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000";
 
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
