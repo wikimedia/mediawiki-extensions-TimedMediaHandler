@@ -125,7 +125,8 @@ class TranscodeStatusTable {
 				$showErrorLink = '';
 			}
 
-			return wfMessage( 'timedmedia-error-on', $state['time_error'] )->escaped() .
+			return wfMessage( 'timedmedia-error-on',
+				$wgContLang->timeAndDate( $state['time_error'] ) )->escaped() .
 				$showErrorLink;
 		}
 
