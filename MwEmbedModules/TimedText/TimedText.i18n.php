@@ -1308,6 +1308,10 @@ $messages['ko'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => '클립에 대한 $1 자막을 찾을 수 없습니다: $2',
 	'mwe-timedtext-request-subs' => '복사 요청',
 	'mwe-timedtext-no-subs' => '사용할 수 있는 텍스트 트랙이 없습니다',
+	'mwe-timedtext-request-subs-desc' => '복사할 이 동영상 파일에 대한 요청 추가',
+	'mwe-timedtext-request-subs-done' => '복사 요청을 추가했습니다. [$1 모든 복사 요청을 봅니다]',
+	'mwe-timedtext-request-subs-fail' => '복사 요청을 추가하는 데 실패했습니다. 로그인하시겠습니까?',
+	'mwe-timedtext-request-already-done' => '이 동영상의 복사를 이미 요청했습니다. [$1 모든 복사 요청을 봅니다]',
 );
 
 /** Colognian (Ripoarisch)

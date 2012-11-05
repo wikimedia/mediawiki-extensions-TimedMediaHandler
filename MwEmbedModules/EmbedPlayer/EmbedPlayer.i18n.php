@@ -954,6 +954,7 @@ $messages['fi'] = array(
 /** French (français)
  * @author Brunoperel
  * @author Crochet.david
+ * @author Gomoko
  * @author IAlex
  * @author Peter17
  */
@@ -961,6 +962,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-credit-title' => 'Titre : $1',
 	'mwe-embedplayer-credit-date' => 'Date : $1',
 	'mwe-embedplayer-credit-author' => 'Auteur : $1',
+	'mwe-embedplayer-nocredits' => 'Aucun crédit disponible',
 	'mwe-embedplayer-loading_plugin' => 'chargement du greffon ...',
 	'mwe-embedplayer-select_playback' => 'Définir les préférences de lecture',
 	'mwe-embedplayer-link_back' => 'Lien retour',
@@ -1011,7 +1013,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lecteur Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(sélectionné)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => "Pour un meilleur visionnage nous recommandons l'utilisation d'un navigateur permettant la lecture de [vidéos HTML 5].", # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage, nous recommandons un [$1 navigateur vidéo HTML 5].',
 	'mwe-embedplayer-download-warn' => 'Navigateur web non compatible détecté, pour une lecteur dans le navigateur veuillez télécharger la [$1 dernière version de Firefox].',
 	'mwe-embedplayer-fullscreen-tip' => 'Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran',
