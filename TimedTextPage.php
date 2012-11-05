@@ -152,6 +152,11 @@ class TimedTextPage extends Article {
 		if( !$this->exists() ){
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
-		return '<pre style="margin-top: 0px;">'. $this->getContent() . '</pre>';
+		return Xml::element(
+			'pre',
+			array( 'style' => 'margin-top: 0px;' ),
+			$this->getContent(),
+			false
+		);
 	}
 }
