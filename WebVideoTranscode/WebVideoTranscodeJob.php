@@ -291,7 +291,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return bool|string
 	 */
 	function ffmpegEncode( $options, $pass=0 ){
-		global $wgFFmpegLocation;
+		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
 
 		if( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
@@ -352,7 +352,9 @@ class WebVideoTranscodeJob extends Job {
 		wfProfileOut( 'ffmpeg_encode' );
 
 		if( $retval != 0 ){
-			return $cmd . "\n\nExitcode:" . $retval . "\n\n" . $shellOutput;
+			return $cmd .
+				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				$shellOutput;
 		}
 		return true;
 	}
@@ -456,7 +458,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Add the boiler plate vp8 ffmpeg command:
-		$cmd.=" -y -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000";
+		$cmd.=" -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000";
 
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
@@ -533,7 +535,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return bool|string
 	 */
 	function ffmpeg2TheoraEncode( $options ){
-		global $wgFFmpeg2theoraLocation;
+		global $wgFFmpeg2theoraLocation, $wgTranscodeBackgroundMemoryLimit;
 
 		if( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
@@ -578,7 +580,9 @@ class WebVideoTranscodeJob extends Job {
 		$shellOutput = $this->runShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg2theora_encode' );
 		if( $retval != 0 ){
-			return $cmd . "\n\n" . $shellOutput;
+			return $cmd .
+				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				$shellOutput;
 		}
 		return true;
 	}
@@ -599,8 +603,6 @@ class WebVideoTranscodeJob extends Job {
 			$wgEnableNiceBackgroundTranscodeJobs;
 		// Check if background tasks are enabled
 		if( $wgEnableNiceBackgroundTranscodeJobs === false ){
-			// Dont display shell output
-			$cmd .= ' 2>&1';
 			// Directly execute the shell command:
 			$limits = array(
 				"filesize" => $wgTranscodeBackgroundSizeLimit,
