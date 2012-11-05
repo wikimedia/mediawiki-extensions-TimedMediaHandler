@@ -101,7 +101,7 @@
 
 .k-player .play_head .ui-slider-handle {
 	background: url("images/ksprite.png") no-repeat scroll -67px -341px
-		transparent;
+		transparent !important;
 	border: 1px solid #888888;
 	display: block;
 	height: 8px;
@@ -115,9 +115,9 @@
 	-webkit-border-radius:5px 5px 5px 5px;
 }
 .k-player .ui-corner-all {
-	border-radius:5px 5px 5px 5px;
-	-webkit-border-radius:5px 5px 5px 5px;
-	-moz-border-radius:5px 5px 5px 5px;
+	border-radius:5px 5px 5px 5px !important;
+	-webkit-border-radius:5px 5px 5px 5px !important;
+	-moz-border-radius:5px 5px 5px 5px !important;
 }
 .k-player ul.fg-menu{
 	margin: 0.3em 0 0 .3em;
