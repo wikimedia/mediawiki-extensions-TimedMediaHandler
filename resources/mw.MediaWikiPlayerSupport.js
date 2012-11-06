@@ -342,19 +342,25 @@
 		});
 
 
-		$( embedPlayer ).bind( 'getShareIframeSrc', function(event, callback){
-			// Check the embedPlayer title key:
-			var title =  $( embedPlayer).attr( 'data-mwtitle');
-			// TODO Check the provider key and use that hosts title page entry point!
-			var provider =  $( embedPlayer).attr( 'data-mwprovider');
-			var iframeUrl = false;
-			if( mw.getConfig('wgServer') && mw.getConfig('wgArticlePath') ){
-				iframeUrl =  mw.getConfig('wgServer') +
-					mw.getConfig('wgArticlePath').replace( /\$1/, 'File:' +
-						unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' ) ) +
-					'?' + 'embedplayer=yes';
+		$( embedPlayer ).bind( 'getShareIframeSrc', function(event, callback, id){
+			if( id != embedPlayer.id ){
+				embedPlayer = $('#' + id)[0];
 			}
-
+			var iframeUrl = false;
+			// Do a special check for wikimediacommons provider as a known shared reop
+			if( embedPlayer['data-mwprovider'] == 'wikimediacommons' ){
+				iframeUrl = '//commons.wikimedia.org/wiki/File:' + unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' );
+			} else {
+				// use the local wiki:
+				if( mw.getConfig('wgServer') && mw.getConfig('wgArticlePath') ){
+					iframeUrl =  mw.getConfig('wgServer') +
+						mw.getConfig('wgArticlePath').replace( /\$1/, 'File:' +
+							unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' ) )
+				}
+			}
+			if( iframeUrl ){
+				iframeUrl += '?embedplayer=yes';
+			}
 			callback( iframeUrl );
 		});
 	};
