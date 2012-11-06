@@ -13,7 +13,8 @@ class TimedMediaHandlerHooks {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$wgParserOutputHooks, $wgTimedTextNS, $wgFileExtensions, $wgTmhEnableMp4Uploads,
-		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir, $wgCortadoJarFile;
+		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir, $wgCortadoJarFile,
+		$wgEnableLocalTimedText;
 
 		// Remove mp4 if not enabled:
 		if( $wgTmhEnableMp4Uploads === false ){
@@ -119,14 +120,20 @@ class TimedMediaHandlerHooks {
 		/**
 		 * Add support for the "TimedText" NameSpace
 		 */
-		define( "NS_TIMEDTEXT", $wgTimedTextNS );
-		define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1 );
+		if ( $wgEnableLocalTimedText ) {
+			define( "NS_TIMEDTEXT", $wgTimedTextNS );
+			define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1 );
 
-		$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
-		$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
+			$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
+			$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
 
-		// Check for timed text page:
-		$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
+			// Check for timed text page:
+			$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
+		} else {
+			$wgTimedTextNS = false;
+			// overwrite TimedText.ShowInterface for video with mw-provider=local
+			$wgMwEmbedModuleConfig['TimedText.ShowInterface.local'] = 'off';
+		}
 
 		// Add transcode status to video asset pages:
 		$wgHooks[ 'ImagePageAfterImageLinks' ][] = 'TimedMediaHandlerHooks::checkForTranscodeStatus';

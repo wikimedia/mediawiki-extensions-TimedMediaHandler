@@ -106,6 +106,12 @@ $wgTimedTextNS = 710;
 // $wgTimedTextForeignNamespaces = array( 'commonswiki' => 102 );
 $wgTimedTextForeignNamespaces = array();
 
+// Set to false to disable local TimedText,
+// you still get subtitles for videos from foreign repos
+// to disable all TimedText, set
+// $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'off';
+$wgEnableLocalTimedText = true;
+
 /**
  * Default enabled transcodes
  *
