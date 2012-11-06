@@ -145,7 +145,9 @@ class WebVideoTranscodeJob extends Job {
 			array(
 				'transcode_image_name' => $this->title->getDBKey(),
 				'transcode_key' => $transcodeKey
-			)
+			),
+			__METHOD__,
+			array( 'ORDER BY' => 'transcode_id' )
 		);
 		if( ! is_null( $dbStartTime ) ){
 			$this->output( 'Error, running transcode job, for job that has already started' );
@@ -164,7 +166,7 @@ class WebVideoTranscodeJob extends Job {
 				'transcode_key' => $transcodeKey
 			),
 			__METHOD__,
-			array( 'LIMIT' => 1 )
+			array( 'ORDER BY' => 'transcode_id', 'LIMIT' => 1 )
 		);
 
 

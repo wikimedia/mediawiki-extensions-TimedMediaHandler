@@ -728,6 +728,29 @@ class WebVideoTranscode {
 					__METHOD__
 				);
 			}
+			//make sure we did not add a second row
+			//this is to avoid concurrent inserts in a multi server setup
+			if ( (int)$db->selectField ( 'transcode', 'COUNT(*)', array(
+				'transcode_image_name' => $fileName,
+				'transcode_key' => $transcodeKey,
+			) ) > 1 ) {
+				$id = $dbw->selectField( 'transcode', 'transcode_id',
+					array(
+						'transcode_image_name' => $this->title->getDBKey(),
+						'transcode_key' => $transcodeKey
+					),
+					__METHOD__,
+					array( 'ORDER BY' => 'transcode_id' )
+				);
+				$dbw->delete( 'transcode',
+					array(
+						'transcode_image_name' => $this->title->getDBKey(),
+						'transcode_key' => $transcodeKey,
+						"transcode_id != $id"
+					),
+					__METHOD__
+				);
+			}
 			// Add to job queue and update the db
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',
