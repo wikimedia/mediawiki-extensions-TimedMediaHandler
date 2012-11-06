@@ -1854,12 +1854,12 @@
 		 */
 		getIframeSourceUrl: function(){
 			var iframeUrl = false;
-			this.triggerHelper( 'getShareIframeSrc', function( localIframeSrc ){
+			this.triggerHelper( 'getShareIframeSrc', [ function( localIframeSrc ){
 				if( iframeUrl){
 					mw.log("Error multiple modules binding getShareIframeSrc" );
 				}
 				iframeUrl = localIframeSrc;
-	    	});
+	    	}, this.id ]);
 			if( iframeUrl ){
 				return iframeUrl;
 			}
