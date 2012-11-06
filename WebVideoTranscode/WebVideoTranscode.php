@@ -471,13 +471,16 @@ class WebVideoTranscode {
 	 *
 	 * @param {Object} File object
 	 */
-	public static function getTranscodeState( $file ){
+	public static function getTranscodeState( $file, $db = false ){
 		$fileName = $file->getTitle()->getDbKey();
 		if( ! isset( self::$transcodeState[$fileName] ) ){
 			wfProfileIn( __METHOD__ );
+			if ( $db === false ) {
+				$db = $file->repo->getSlaveDB();
+			}
 			// initialize the transcode state array
 			self::$transcodeState[ $fileName ] = array();
-			$res = $file->repo->getSlaveDB()->select( 'transcode',
+			$res = $db->select( 'transcode',
 					'*',
 					array( 'transcode_image_name' => $fileName ),
 					__METHOD__,
@@ -512,7 +515,7 @@ class WebVideoTranscode {
 			$removeKeys = array( $transcodeKey );
 		} else {
 			// Remove any existing files ( regardless of their state )
-			$res = $file->repo->getSlaveDB()->select( 'transcode',
+			$res = $file->repo->getMasterDB()->select( 'transcode',
 				array( 'transcode_key' ),
 				array( 'transcode_image_name' => $file->getTitle()->getDBKey() )
 			);
@@ -690,9 +693,10 @@ class WebVideoTranscode {
 		wfProfileIn( __METHOD__ );
 
 		$fileName = $file->getTitle()->getDbKey();
+		$db = $file->repo->getMasterDB();
 
 		// Check if we need to update the transcode state:
-		$transcodeState = self::getTranscodeState( $file );
+		$transcodeState = self::getTranscodeState( $file, $db );
 		// Check if the job has been added:
 		if( !isset( $transcodeState[ $transcodeKey ] ) || is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
 			// Add to job queue and update the db
@@ -702,7 +706,6 @@ class WebVideoTranscode {
 			) );
 			$jobId = $job->insert();
 			if( $jobId ){
-				$db = $file->repo->getMasterDB();
 				// update the transcode state:
 				if( ! isset( $transcodeState[$transcodeKey] ) ){
 					// insert the transcode row with jobadd time

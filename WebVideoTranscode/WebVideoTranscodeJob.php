@@ -139,10 +139,9 @@ class WebVideoTranscodeJob extends Job {
 		$this->output( "Encoding to codec: " . $options['videoCodec'] );
 
 		$dbw = wfGetDB( DB_MASTER );
-		$db = wfGetDB( DB_SLAVE );
 
 		// Check if we have "already started" the transcode ( possible error )
-		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
+		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
 			array(
 				'transcode_image_name' => $this->title->getDBKey(),
 				'transcode_key' => $transcodeKey
@@ -193,7 +192,7 @@ class WebVideoTranscodeJob extends Job {
 
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm the in memory $jobStartTimeCache matches db start time
-		$dbStartTime = $db->selectField( 'transcode', 'transcode_time_startwork',
+		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
 			array(
 				'transcode_image_name' => $this->title->getDBKey(),
 				'transcode_key' => $transcodeKey
@@ -201,7 +200,7 @@ class WebVideoTranscodeJob extends Job {
 		);
 
 		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
-		if(  $db->timestamp( $jobStartTimeCache ) != $db->timestamp( $dbStartTime ) ){
+		if(  $dbw->timestamp( $jobStartTimeCache ) != $dbw->timestamp( $dbStartTime ) ){
 			$this->output('Possible Error, transcode task restarted, removed, or completed while transcode was in progress');
 			// if an error; just error out, we can't remove temp files or update states, because the new job may be doing stuff.
 			if( $status !== true ){
@@ -235,7 +234,7 @@ class WebVideoTranscodeJob extends Job {
 				$dbw->update(
 					'transcode',
 					array(
-						'transcode_time_success' => $db->timestamp(),
+						'transcode_time_success' => $dbw->timestamp(),
 						'transcode_final_bitrate' => $bitrate
 					),
 					array(
