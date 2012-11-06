@@ -698,7 +698,36 @@ class WebVideoTranscode {
 		// Check if we need to update the transcode state:
 		$transcodeState = self::getTranscodeState( $file, $db );
 		// Check if the job has been added:
-		if( !isset( $transcodeState[ $transcodeKey ] ) || is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
+		if( !isset( $transcodeState[ $transcodeKey ] )
+			|| is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
+			// update the transcode state:
+			if( ! isset( $transcodeState[$transcodeKey] ) ){
+				// insert the transcode row with jobadd time
+				$db->insert(
+					'transcode',
+					array(
+						'transcode_image_name' => $fileName,
+						'transcode_key' => $transcodeKey,
+						'transcode_time_addjob' => $db->timestamp(),
+						'transcode_error' => "",
+						'transcode_final_bitrate' => 0
+					),
+					__METHOD__
+				);
+			} else {
+				// update job start time
+				$db->update(
+					'transcode',
+					array(
+						'transcode_time_addjob' => $db->timestamp()
+					),
+					array(
+						'transcode_image_name' => $fileName,
+						'transcode_key' => $transcodeKey,
+					),
+					__METHOD__
+				);
+			}
 			// Add to job queue and update the db
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',
@@ -706,38 +735,24 @@ class WebVideoTranscode {
 			) );
 			$jobId = $job->insert();
 			if( $jobId ){
-				// update the transcode state:
-				if( ! isset( $transcodeState[$transcodeKey] ) ){
-					// insert the transcode row with jobadd time
-					$db->insert(
-						'transcode',
-						array(
-							'transcode_image_name' => $fileName,
-							'transcode_key' => $transcodeKey,
-							'transcode_time_addjob' => $db->timestamp(),
-							'transcode_error' => "",
-							'transcode_final_bitrate' => 0
-						),
-						__METHOD__
-					);
-				} else {
-					// update job start time
-					$db->update(
-						'transcode',
-						array(
-							'transcode_time_addjob' => $db->timestamp()
-						),
-						array(
-							'transcode_image_name' => $fileName,
-							'transcode_key' => $transcodeKey,
-						),
-						__METHOD__
-					);
-				}
 				// Clear the state cache ( now that we have updated the page )
 				self::clearTranscodeCache( $fileName );
+			} else {
+				//adding job failed, update transcode
+				$db->update(
+					'transcode',
+					array(
+						'transcode_time_error' => $db->timestamp(),
+						'transcode_error' => "Failed to insert Job."
+					),
+					array(
+						'transcode_image_name' => $fileName,
+						'transcode_key' => $transcodeKey,
+					),
+					__METHOD__,
+					array( 'LIMIT' => 1 )
+				);
 			}
-			// no jobId ? error out in some way?
 		}
 		wfProfileOut( __METHOD__ );
 	}
