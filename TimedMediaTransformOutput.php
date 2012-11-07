@@ -58,14 +58,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 					$url = $apiUrl;
 				}
 			}
-
-			// FIXME: remove thise after transition to TMH on commons
-			// In mixed setup with OggHandler and TMH always get
-			// name/mid-name.jpg
-			if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
-				$thumbName = $this->file->thumbName( array() );
-				$url = $this->file->getThumbUrl( $thumbName );
-			}
 		}
 		return $url;
 	}
