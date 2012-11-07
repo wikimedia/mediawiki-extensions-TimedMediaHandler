@@ -52,6 +52,9 @@ class TimedMediaIframeOutput {
 
 		// Setup the render parm
 		$file = wfFindFile( $title );
+		if ( !$file ) {
+			throw new MWException( __METHOD__ .' file not found' );
+		}
 		$params = array(
 			'fillwindow' => true
 		);

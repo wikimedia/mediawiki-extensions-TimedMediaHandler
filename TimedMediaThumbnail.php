@@ -64,10 +64,12 @@ class TimedMediaThumbnail {
 			if ( count( $lines ) > 0
 				&& preg_match( '/invalid option -- \'n\'$/', $lines[0] ) )
 			{
-				return new MediaTransformError( 'timedmedia-oggThumb-version', '0.9' );
+				$returnText = wfMessage( 'timedmedia-oggThumb-version', '0.9' )->inContentLanguage()->text();
 			} else {
-				return new MediaTransformError( 'timedmedia-oggThumb-failed' );
+				$returnText = wfMessage( 'timedmedia-oggThumb-failed' )->inContentLanguage()->text();
 			}
+			return new MediaTransformError( 'thumbnail_error',
+				$options['width'], $options['height'], $returnText );
 		}
 		return true;
 	}
