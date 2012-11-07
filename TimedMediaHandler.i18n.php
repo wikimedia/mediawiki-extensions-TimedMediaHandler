@@ -710,6 +710,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author G.Hagedorn
  * @author Kghbln
  * @author Leithian
  * @author Metalhead64
@@ -745,11 +746,11 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-update-status' => 'Umschlüsselungsstatus aktualisieren',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Unbekannter Status',
-	'timedmedia-transcodeinfo' => 'Beschreibung der Variante',
+	'timedmedia-transcodeinfo' => 'Beschreibung',
 	'timedmedia-actions' => 'Aktionen',
-	'timedmedia-direct-link' => 'Variante herunterladen',
+	'timedmedia-direct-link' => 'Formatvariante herunterladen',
 	'timedmedia-not-ready' => 'Nicht bereit',
-	'timedmedia-completed-on' => 'Umschlüsselung abgeschlossen: $1',
+	'timedmedia-completed-on' => 'Konvertierung abgeschlossen: $1',
 	'timedmedia-error-on' => 'Fehler beim Umschlüsseln in $1.',
 	'timedmedia-started-transcode' => 'Umschlüsselung startete vor $1. $2',
 	'timedmedia-percent-done' => 'Ungefähr $1 % sind erledigt',
@@ -2706,10 +2707,10 @@ Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="http://www.me
 	'timedmedia-percent-done' => 'Kira-kira $1% selesai',
 	'timedmedia-in-job-queue' => 'Ditambahkan ke dalam baris gilir kerja $1 lalu',
 	'timedmedia-unknown-target-size' => 'Saiz sasaran tidak diketahui, $1 dikodkan',
-	'timedmedia-days' => '{{PLURAL:$1|hari|$1 hari}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|jam|$1 jam}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|minit|$1 minit}}', # Fuzzy
-	'timedmedia-seconds' => '{{PLURAL:$1|saat|$1 saat}}', # Fuzzy
+	'timedmedia-days' => '$1 hari',
+	'timedmedia-hours' => '$1 jam',
+	'timedmedia-minutes' => '$1 minit',
+	'timedmedia-seconds' => '$1 saat',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 dan $4',
 	'timedmedia-time-3-measurements' => '$1, $2 dan $3',
 	'timedmedia-time-2-measurements' => '$1 dan $2',
@@ -2930,6 +2931,8 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',
 	'timedmedia-subtitle-no-subtitles' => 'Er zijn op het moment geen ondertitels in het $1 voor deze video. U kunt [{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken] om ze toe te voegen',
+	'timedmedia-subtitle-remote' => 'De ondertitels voor dit bestand komen van $1',
+	'timedmedia-subtitle-remote-link' => 'U kunt de [$1 beschrijvingspagina voor dit bestand] bekijken op $2',
 	'timedmediahandler' => 'Timed Media Handler',
 	'timedmedia-videos' => "{{PLURAL:$1|één video|$1 video's}}",
 	'timedmedia-ogg-videos' => "{{PLURAL:$1|één Oggvideo|$1 Oggvideo's}}",

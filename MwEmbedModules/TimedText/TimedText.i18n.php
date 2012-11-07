@@ -2092,13 +2092,20 @@ $messages['tl'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Base
  * @author Тест
  */
 $messages['uk'] = array(
 	'mwe-timedtext-editor' => 'Редактор субтитрів',
+	'mwe-timedtext-stage-transcribe' => 'Стенограма',
+	'mwe-timedtext-stage-sync' => 'Синхронізувати',
 	'mwe-timedtext-stage-translate' => 'Перекласти',
 	'mwe-timedtext-stage-upload' => 'Завантажити з локального файлу',
 	'mwe-timedtext-select-language' => 'Оберіть мову',
+	'mwe-timedtext-file-language' => 'Мова файлу субтитрів',
+	'mwe-timedtext-upload-text' => 'Завантажити текстовий файл',
+	'mwe-timedtext-uploading-text' => 'Завантаження текстового файлу',
+	'mwe-timedtext-upload-text-desc-title' => 'Завантаження текстового файлу',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Оберіть мову файлу',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
@@ -2194,6 +2201,7 @@ $messages['yi'] = array(
  * @author Shizhao
  * @author Wilsonmess
  * @author Xiaomingyan
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'mwe-timedtext-editor' => '字幕编辑器',
@@ -2209,7 +2217,7 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-upload-text-desc-help' => '上传文本文件接口接受.srt文件',
 	'mwe-timedtext-upload-text-desc-help-browse' => '浏览本机以查阅您想要上传的.srt文件',
 	'mwe-timedtext-upload-text-desc-help-select' => '选择文件的语言',
-	'mwe-timedtext-upload-text-desc-help-review' => '审阅/编辑文本内容并通过上传增加文本',
+	'mwe-timedtext-upload-text-desc-help-review' => '审阅/编辑文本内容和通过上传增加文本',
 	'mwe-timedtext-upload-text-preview' => '审阅文本',
 	'mwe-timedtext-upload-text-success' => '顺利更新字幕',
 	'mwe-timedtext-upload-text-done' => '上传完成',
@@ -2221,7 +2229,7 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-choose-text' => '选择文字',
 	'mwe-timedtext-upload-timed-text' => '添加字幕',
 	'mwe-timedtext-loading-text-edit' => '正在载入字幕编辑器',
-	'mwe-timedtext-search' => '搜索剪辑',
+	'mwe-timedtext-search' => '搜索片段',
 	'mwe-timedtext-layout' => '布局',
 	'mwe-timedtext-layout-ontop' => '位于视频上方',
 	'mwe-timedtext-layout-below' => '视频下方',
@@ -2239,10 +2247,14 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-textcat-lrc' => '歌词',
 	'mwe-timedtext-textcat-lin' => '语言标记',
 	'mwe-timedtext-textcat-cue' => '暗点',
-	'mwe-timedtext-language-subtitles-for-clip' => '剪辑的字幕文件（$1）：$2',
-	'mwe-timedtext-language-no-subtitles-for-clip' => '未找到剪辑的字幕文件（$1）：$2',
+	'mwe-timedtext-language-subtitles-for-clip' => '片段的字幕文件（$1）：$2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => '未找到片段的字幕文件（$1）：$2',
 	'mwe-timedtext-request-subs' => '字幕请求',
 	'mwe-timedtext-no-subs' => '无文本轨迹可用',
+	'mwe-timedtext-request-subs-desc' => '添加对此视频的字幕请求',
+	'mwe-timedtext-request-subs-done' => '已添加字幕请求 [$1 查看所有字幕请求]',
+	'mwe-timedtext-request-subs-fail' => '添加字幕请求失败。您登录了吗？',
+	'mwe-timedtext-request-already-done' => '此视频已被提出字幕请求 [$1 查看所有字幕请求]',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
