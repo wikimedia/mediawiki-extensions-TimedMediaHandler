@@ -15,3 +15,4 @@ CREATE TABLE /*_*/transcode (
 
 CREATE INDEX /*i*/transcode_name_inx ON /*_*/transcode( transcode_image_name, transcode_key );
 CREATE INDEX /*i*/transcode_time_inx ON /*_*/transcode( transcode_time_addjob ,transcode_time_startwork , transcode_time_success, transcode_time_error );
+CREATE INDEX /*i*/transcode_key_idx ON /*_*/transcode( transcode_key );
