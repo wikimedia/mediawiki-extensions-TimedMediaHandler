@@ -132,25 +132,35 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		foreach ( $this->transcodeStates as $state => $condition ) {
 			$stats[ $state ] = array( 'total' => 0 );
 		}
-		foreach ( $wgEnabledTranscodeSet as $key ) {
-			foreach ( $this->transcodeStates as $state => $condition ) {
-				$stats[ $state ][ $key ] = (int)$dbr->selectField(
-					'transcode',
-					'COUNT(*)',
-					'transcode_key = "' . $key . '" AND ' . $condition,
-					__METHOD__
-				);
+		foreach ( $this->transcodeStates as $state => $condition ) {
+			$cond = array( 'transcode_key' => $wgEnabledTranscodeSet );
+			$cond[] = $condition;
+			$res = $dbr->select( 'transcode',
+				array('COUNT(*) as count', 'transcode_key'),
+				$cond,
+				__METHOD__,
+				array( 'GROUP BY' => 'transcode_key' )
+			);
+			foreach( $res as $row ) {
+				$key = $row->transcode_key;
+				$stats[ $state ][ $key ] = $row->count;
 				$stats[ $state ][ 'total' ] += $stats[ $state ][ $key ];
 			}
-			$stats[ 'transcodes' ][ $key ] = (int)$dbr->selectField(
-				'transcode',
-				'COUNT(*)',
-				array( 'transcode_key' => $key ),
-				__METHOD__
-			);
+		}
+		$res = $dbr->select( 'transcode',
+			array( 'COUNT(*) as count', 'transcode_key' ),
+			array( 'transcode_key' => $wgEnabledTranscodeSet ),
+			__METHOD__,
+			array( 'GROUP BY' => 'transcode_key' )
+		);
+
+		foreach( $res as $row ) {
+			$key = $row->transcode_key;
+			$stats[ 'transcodes' ][ $key ] = $row->count;
 			$stats[ 'transcodes' ][ $key ] -= $stats[ 'queued' ][ $key ];
 			$stats[ 'transcodes' ][ 'total' ] += $stats[ 'transcodes' ][ $key ];
 		}
+
 		$stats[ 'videos' ] = array( 'total' => 0 );
 		foreach( $this->formats as $format => $condition ) {
 			$stats[ 'videos' ][ $format ] = (int)$dbr->selectField(
