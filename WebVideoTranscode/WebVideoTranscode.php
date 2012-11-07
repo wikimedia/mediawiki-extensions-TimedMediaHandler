@@ -736,7 +736,7 @@ class WebVideoTranscode {
 			) ) > 1 ) {
 				$id = $db->selectField( 'transcode', 'transcode_id',
 					array(
-						'transcode_image_name' => $this->title->getDBKey(),
+						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey
 					),
 					__METHOD__,
@@ -744,7 +744,7 @@ class WebVideoTranscode {
 				);
 				$db->delete( 'transcode',
 					array(
-						'transcode_image_name' => $this->title->getDBKey(),
+						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
 						"transcode_id != $id"
 					),
