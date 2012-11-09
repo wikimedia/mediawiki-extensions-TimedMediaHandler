@@ -40,7 +40,7 @@
 			'layout' : 'ontop',
 
 			//Set the default local ( should be grabbed from the browser )
-			'userLanguage' : 'en',
+			'userLanguage' : mw.config.get( 'wgUserLanguage' ) || 'en',
 
 			//Set the default kind of timedText to display ( un-categorized timed-text is by default "subtitles" )
 			'userKind' : 'subtitles'
@@ -443,7 +443,7 @@
 					'keepPosition' : true,
 					'showSpeed': 0,
 					'height' : 100,
-					'width' : 200,
+					'width' : 300,
 					'targetMenuContainer' : _this.getTextMenuContainer(),
 					'positionOpts' : positionOpts,
 					'backLinkText' : gM( 'mwe-timedtext-back-btn' ),
@@ -463,7 +463,7 @@
 							'top' : top,
 							'height': textHeight,
 							'position' : 'absolute',
-							'left': $menuButton[0].offsetLeft - 75,
+							'left': $menuButton[0].offsetLeft - 165,
 							'bottom': ctrlObj.getHeight()
 						})
 						ctrlObj.showControlBar( true );
