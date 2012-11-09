@@ -95,7 +95,7 @@ class TimedMediaThumbnail {
 		 -ss after input seeks in decoded stream
 		*/
 		if($offset > 2) {
-			$cmd .= ' -ss ' . ($offset - 2);
+			$cmd .= ' -ss ' . floatval($offset - 2);
 			$offset = 2;
 		}
 		$srcPath = $options['file']->getLocalRefPath();
