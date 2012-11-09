@@ -129,6 +129,9 @@ Are you sure you want to proceed?',
 	'timedmedia-file' => 'File',
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
+
+	'right-transcode-reset' => 'Reset failed or transcoded videos so they are inserted into the job queue again.',
+	'right-transcode-status' => 'View [[Special:TimedMediaHandler]] with information about current transcode activity',
 );
 
 /** Message documentation (Message documentation)
@@ -238,6 +241,8 @@ Parameters are:
 	'timedmedia-derivative-state-failed' => 'failed transcode jobs
 Parameters are:
 * $1 number of transcodes',
+	'right-transcode-reset' => '{{doc-right|transcode-reset}}',
+	'right-transcode-status' => '{{doc-right|transcode-status}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -799,6 +804,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
 	'timedmedia-file' => 'Datei',
+	'right-transcode-reset' => 'Fehlgeschlagene oder umgewandelte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
+	'right-transcode-status' => '[[Special:TimedMediaHandler]] mit Informationen über aktuelle Umwandlungen betrachten',
 );
 
 /** Zazaki (Zazaki)
@@ -2588,6 +2595,8 @@ $messages['mk'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 прекодирање во редица на чекање|$1 прекодирања во редица на чекање}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}',
 	'timedmedia-file' => 'Податотека',
+	'right-transcode-reset' => 'Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.',
+	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler]] со информации тековните активности во прекодирањето',
 );
 
 /** Malayalam (മലയാളം)
