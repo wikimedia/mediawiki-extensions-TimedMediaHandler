@@ -26,7 +26,7 @@ class TranscodeStatusTable {
 			array( 'action'=> 'purge' )
 		);
 
-		$o.= Xml::openElement( 'table', array( 'class' => 'wikitable transcodestatus' ) ) . "\n"
+		$o.= Xml::openElement( 'table', array( 'class' => 'wikitable mw-filepage-transcodestatus' ) ) . "\n"
 			. '<tr>'
 			. '<th>' . wfMessage( 'timedmedia-status' )->escaped() . '</th>'
 			. '<th>' . wfMessage( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
@@ -73,7 +73,7 @@ class TranscodeStatusTable {
 			// Check if we should include actions:
 			if( $wgUser->isAllowed( 'transcode-reset' ) ){
 				// include reset transcode action buttons
-				$o.='<td class="transcodereset"><a href="#" data-transcodekey="' .
+				$o.='<td class="mw-filepage-transcodereset"><a href="#" data-transcodekey="' .
 					htmlspecialchars( $transcodeKey ). '">' . wfMessage('timedmedia-reset')->escaped() .
 					'</a></td>';
 			}

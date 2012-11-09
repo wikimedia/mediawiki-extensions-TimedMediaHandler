@@ -3,7 +3,7 @@
 */
 $(document).ready(function(){
 	// Error link popup:
-	$('.transcodestatus .errorlink').click(function(){
+	$('.mw-filepage-transcodestatus .errorlink').click(function(){
 		// pop up dialog
 		mw.addDialog({
 			'width' : '640',
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		return false;
 	})
 	// Reset transcode action:
-	$j('.transcodereset a').click( function(){
+	$('.mw-filepage-transcodereset a').click( function(){
 		var tKey = $(this).attr('data-transcodekey');
 		var buttons = {};
 		buttons[ gM('mwe-ok') ] = function(){
