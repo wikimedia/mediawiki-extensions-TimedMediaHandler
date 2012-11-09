@@ -83,7 +83,7 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	function parseParamString( $str ) {
 		$m = false;
-		if ( preg_match( '/^seek=(\d+)$/', $str, $m ) ) {
+		if ( preg_match( '/^seek=([\d.]+)$/', $str, $m ) ) {
 			return array( 'thumbtime' => $m[0] );
 		}
 		return array();
@@ -172,7 +172,7 @@ class TimedMediaHandler extends MediaHandler {
 			if ( !is_numeric( $parts[$i] ) ) {
 				return false;
 			}
-			$time += intval( $parts[$i] ) * pow( 60, count( $parts ) - $i - 1 );
+			$time += floatval( $parts[$i] ) * pow( 60, count( $parts ) - $i - 1 );
 		}
 
 		if ( $time < 0 ) {
@@ -417,7 +417,7 @@ class TimedMediaHandler extends MediaHandler {
 			return true; // not a supported extension
 		}
 		// Check if the parameters can be extracted from the thumbnail name...
-		if ( preg_match( '!^(mid|(\d*)px-)*(seek=(\d+))*-[^/]*$!', $thumbname, $matches ) ) {
+		if ( preg_match( '!^(mid|(\d*)px-)*(seek=([\d.]+))*-[^/]*$!', $thumbname, $matches ) ) {
 			list( /* all */, $sizeFull, $size, $timeFull, $thumbtime ) = $matches;
 			if ( $size != null ) {
 				$params['width'] = $size;
