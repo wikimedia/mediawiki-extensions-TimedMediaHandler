@@ -1980,6 +1980,8 @@ mw.PlayerControlBuilder.prototype = {
 						 	)
 						).click( function(){
 							embedPlayer.controlBuilder.closeMenuOverlay();
+							// Don't follow the # link:
+							return false;
 						});
 						//.addClass( 'ui-state-highlight ui-corner-all' ); removed by ran
 					} else {
