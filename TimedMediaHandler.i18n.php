@@ -804,6 +804,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
 	'timedmedia-file' => 'Datei',
+	'right-transcode-reset' => 'Fehlgeschlagene oder umgewandelte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
+	'right-transcode-status' => '[[Special:TimedMediaHandler]] mit Informationen über aktuelle Umwandlungen betrachten',
 );
 
 /** Zazaki (Zazaki)
@@ -2593,6 +2595,8 @@ $messages['mk'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 прекодирање во редица на чекање|$1 прекодирања во редица на чекање}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}',
 	'timedmedia-file' => 'Податотека',
+	'right-transcode-reset' => 'Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.',
+	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler]] со информации тековните активности во прекодирањето',
 );
 
 /** Malayalam (മലയാളം)
