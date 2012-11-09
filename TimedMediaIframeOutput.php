@@ -89,6 +89,9 @@ class TimedMediaIframeOutput {
 		  width:100%;
 		  height:100%;
 		}
+		.videoHolder {
+		  position:relative;
+		}
 	</style>
 	<?php echo $wgOut->getHeadScripts( $skin ); ?>
 	<?php
