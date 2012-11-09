@@ -299,12 +299,20 @@ class TimedMediaHandler extends MediaHandler {
 
 		$params['width'] = isset( $params['width'] ) ? $params['width'] : $srcWidth;
 
+		// if height overtakes width use height as max:
+		$targetWidth = $params['width'];
+		$targetHeight = $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth );
+		if( isset( $params['height'] ) && $targetHeight > $params['height'] ){
+			$targetHeight = $params['height'];
+			$targetWidth = round( $params['width']*  $srcWidth / $srcHeight );
+		}
+
 		$options = array(
 			'file' => $file,
 			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
-			'width' => $params['width'],
-			'height' =>  $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth ),
+			'width' => $targetWidth,
+			'height' =>  $targetHeight,
 			'isVideo' => !$this->isAudio( $file ),
 			'thumbtime' => isset( $params['thumbtime'] ) ? $params['thumbtime'] : intval( $file->getLength() / 2 ),
 			'start' => isset( $params['start'] ) ? $params['start'] : false,
