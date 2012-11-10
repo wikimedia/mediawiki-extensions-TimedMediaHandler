@@ -1686,6 +1686,21 @@ $messages['id'] = array(
 	'mwe-embedplayer-missing-source' => 'Tidak ada video sumber yang ditemukan.',
 );
 
+/** Iloko (Ilokano)
+ * @author Lam-ang
+ */
+$messages['ilo'] = array(
+	'mwe-embedplayer-credit-title' => 'Titulo: $1',
+	'mwe-embedplayer-credit-date' => 'Petsa: $1',
+	'mwe-embedplayer-credit-author' => 'Mannurat: $1',
+	'mwe-embedplayer-nocredits' => 'Awan dagiti pammadayaw a magun-od',
+	'mwe-embedplayer-loading_plugin' => 'Agikarkarga ti plugin ...',
+	'mwe-embedplayer-select_playback' => 'Agikabil ti preperensia ti panagy-ayam',
+	'mwe-embedplayer-link_back' => 'Agisilpo',
+	'mwe-embedplayer-error_swap_vid' => 'Biddut: Ti mwEmbed ket saan a nakaisukat ti etiketa ti video para iti interface ti mwEmbed',
+	'mwe-embedplayer-add_to_end_of_sequence' => 'Inayon idiay gibus ti pangsasarunuan',
+);
+
 /** Icelandic (íslenska)
  * @author Snævar
  */
@@ -3308,16 +3323,33 @@ $messages['sv'] = array(
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Shanmugamp7
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
 	'mwe-embedplayer-credit-title' => 'தலைப்பு: $1',
 	'mwe-embedplayer-credit-date' => 'தேதி: $1',
 	'mwe-embedplayer-credit-author' => 'ஆக்குனர்: $1',
+	'mwe-embedplayer-play_clip' => 'துண்டை இயக்கு',
 	'mwe-embedplayer-player_fullscreen' => 'முழுத்திரை',
+	'mwe-embedplayer-next_clip_msg' => 'அடுத்த துண்டை இயக்கு',
+	'mwe-embedplayer-prev_clip_msg' => 'முந்தைய துண்டை இயக்கு',
+	'mwe-embedplayer-current_clip_msg' => 'இத்துண்டை இயக்குவதைத் தொடர்',
+	'mwe-embedplayer-paused' => 'இடைநிறுத்தப்பட்டது',
+	'mwe-embedplayer-download_segment' => 'தெரிவைத் தரவிறக்கு:',
+	'mwe-embedplayer-download_full' => 'முழுக் காணொளிக் கோப்பைத் தரவிறக்கு:',
+	'mwe-embedplayer-download_clip' => 'காணொளியைத் தரவிறக்கு',
+	'mwe-embedplayer-download_text' => 'உரையைத் தரவிறக்கு',
 	'mwe-embedplayer-download' => 'பதிவிறக்கம் செய்',
 	'mwe-embedplayer-share' => 'பகிர்',
+	'mwe-embedplayer-choose_player' => 'காணொளி இயக்கியைத் தெரி',
 	'mwe-embedplayer-share_this_video' => 'இக் காணொளியைப் பகிர்க',
+	'mwe-embedplayer-menu_btn' => 'பட்டி',
 	'mwe-embedplayer-close_btn' => 'மூடு',
+	'mwe-embedplayer-do_not_warn_again' => 'வருங்காலத்தில் இச்செய்தியைக் காட்ட வேண்டாம்',
+	'mwe-embedplayer-playerSelect' => 'இயக்கிகள்',
+	'mwe-embedplayer-related_videos' => 'தொடர்புள்ள காணொளிகள்',
+	'mwe-embedplayer-copy-code' => 'குறிமுறையைப் படியெடு',
+	'mwe-embedplayer-missing-source' => 'மூலக் காணொளியேதும் கண்டுபிடிக்கப்படவில்லை',
 );
 
 /** Telugu (తెలుగు)

@@ -1627,6 +1627,8 @@ $messages['hsb'] = array(
 	'timedmedia-ogg-long-error' => 'Njepłaćiwa Ogg-dataja: $1',
 	'timedmedia-webm-short-video' => 'Widejodataja WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Awdio-/widejodataja WebM, $1, dołhosć $2, $4 x $5 pikselow, $3 dohromady',
+	'timedmedia-mp4-short-video' => 'MP4 $1 widejodataja, $2',
+	'timedmedia-mp4-long-video' => 'MP4 awdio-/widejodataja, $1, dołhosć $2, $4 × $5 pikselow, $3 dohromady',
 	'timedmedia-no-player-js' => 'Twój wobhladowak je pak JavaScript znjemóžnił pak nima podpěrowany wothrawak.<br />
 Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.',
 	'timedmedia-more' => 'Wjace ...',
@@ -1650,10 +1652,10 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/w
 	'timedmedia-percent-done' => 'Na wšě $1% sčinjene',
 	'timedmedia-in-job-queue' => 'Před $1 čakanskemu rynčkej přidaty',
 	'timedmedia-unknown-target-size' => 'Njeznata cilowa wulkosć, $1 kodowane',
-	'timedmedia-days' => '{{PLURAL:$1|dźeń|$1 dnjej|$1 dny|$1 dnjow}}',
-	'timedmedia-hours' => '{{PLURAL:$1|hodźina|$1 hodźinje|$1 hodźiny|$1 hodźin}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|mjeńšina|$1 mjeńšinje|$1 mjeńšiny|$1 mjeńšin}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|sekunda|$1 sekundźe|$1 sekundy|$1 sekundow}}',
+	'timedmedia-days' => '{{PLURAL:$1|1 dźeń|$1 dnjej|$1 dny|$1 dnjow}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 hodźina|$1 hodźinje|$1 hodźiny|$1 hodźin}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 mjeńšina|$1 mjeńšinje|$1 mjeńšiny|$1 mjeńšin}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 sekunda|$1 sekundźe|$1 sekundy|$1 sekundow}}',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 a $4',
 	'timedmedia-time-3-measurements' => '$1, $2 a $3',
 	'timedmedia-time-2-measurements' => '$1 a $2',
@@ -1662,6 +1664,7 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/w
 	'timedmedia-reset-confirm' => 'Wróćostajenje tutoho překodowanja wotstroni eksistowacu dataju (jeli tajka eksistuje), a budźe překodowanje znowa čakanskemu rynčkej přidawać. Nowe překodowanje budźe někotry čas trać.<br /><br />
 Chceš woprawdźe pokročować?',
 	'timedmedia-reset-error' => 'Zmylk při wróćostajenju překodowanja.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Žórło ($1)',
 	'timedmedia-source-file-desc' => 'Originalny $1, $2 x $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-widejo z niskej šěrokosću pasma (160p)',
@@ -1672,6 +1675,9 @@ Chceš woprawdźe pokročować?',
 	'timedmedia-derivative-desc-360p.webm' => 'WebM-widejo (360p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM-widejo (480p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-720p.webm' => 'Sćahujomna WebM-dataja wysokeje kwality (720p)',
+	'timedmedia-derivative-desc-320p.mp4' => 'Gratapřećelny MP4 (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'MP4-dataja, kotraž da so přez Web přenjesć',
+	'timedmedia-derivative-desc-720p.mp4' => 'MP4 w HD-kwaliće (720P)',
 	'timedmedia-subtitle-new' => 'Nowy přełožk wutworić abo eksistowacy wobdźěłać',
 	'timedmedia-subtitle-new-desc' => "Wuměń  dźěl '''LANG''' přez twój [[:en:ISO 639|rěčny kod]] a klikń na tłóčatko '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'W porjadku',
@@ -2059,6 +2065,10 @@ $messages['ja'] = array(
 	'timedmedia-subtitle-new' => '翻訳を新規作成、または既存のものを編集',
 	'timedmedia-subtitle-new-desc' => "'''LANG''' 部分を自分の[[:en:ISO 639|言語コード]]に置換して、'''{{int:Timedmedia-subtitle-new-go}}'''ボタンを押してください。",
 	'timedmedia-subtitle-new-go' => '実行',
+	'timedmedia-subtitle-language' => '$1 ($2) 字幕',
+	'timedmedia-subtitle-no-video' => '現在の字幕ページに関連付けられた動画はありません',
+	'timedmedia-subtitle-no-subtitles' => '現在、この動画には$1の字幕はありませんが、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを編集]して追加できます',
+	'timedmedia-subtitle-remote' => 'このファイルの字幕は$1でホストされています',
 	'timedmedia-subtitle-remote-link' => '$2 でこのファイルの[$1 解説ページを閲覧]できます',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 件の動画}}',
@@ -2350,6 +2360,8 @@ $messages['ko'] = array(
 	'timedmedia-derivative-state-queued' => '대기 중인 코드 변환 $1개',
 	'timedmedia-derivative-state-failed' => '실패한 코드 변환 $1개',
 	'timedmedia-file' => '파일',
+	'right-transcode-reset' => '초기화를 실패했거나 동영상이 코드 변환했기 때문에 다시 작업 대기열에 삽입됩니다.',
+	'right-transcode-status' => '현재 코드 변환 활동에 대한 정보는 [[Special:TimedMediaHandler]]를 참고하세요',
 );
 
 /** Karachay-Balkar (къарачай-малкъар)
@@ -3832,8 +3844,10 @@ $messages['ta'] = array(
 	'timedmedia-time-2-measurements' => '$1, $2',
 	'timedmedia-show-error' => 'பிழை காட்டு',
 	'timedmedia-source-file' => '$1 மூலம்',
+	'timedmedia-source-file-desc' => 'மூல $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-new' => 'புதிய மொழிபெயர்ப்பை உருவாக்கவும் அல்லது உள்ளதைத் தொகுக்கவும்',
 	'timedmedia-subtitle-new-go' => 'செல்',
+	'timedmedia-subtitle-language' => '$1 ($2) துணைத்தலைப்புக்கள்',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 காணொளி|$1 காணொளிகள்}}',
 	'timedmedia-file' => 'கோப்பு',
 );
@@ -4177,10 +4191,10 @@ Bạn có thể <a href="$1">tải về đoạn âm hoặc đoạn video</a> hay
 	'timedmedia-percent-done' => 'Hoàn tất khoảng $1%',
 	'timedmedia-in-job-queue' => 'Đã thêm vào hàng đợi việc cách đây $1',
 	'timedmedia-unknown-target-size' => 'Tập tin đích có kích thước không rõ, đã chuyển mã $1',
-	'timedmedia-days' => '$1 ngày', # Fuzzy
-	'timedmedia-hours' => '$1 giờ', # Fuzzy
-	'timedmedia-minutes' => '$1 phút', # Fuzzy
-	'timedmedia-seconds' => '$1 giây', # Fuzzy
+	'timedmedia-days' => '$1 ngày',
+	'timedmedia-hours' => '$1 giờ',
+	'timedmedia-minutes' => '$1 phút',
+	'timedmedia-seconds' => '$1 giây',
 	'timedmedia-time-4-measurements' => '$1, $2, $3, và $4',
 	'timedmedia-time-3-measurements' => '$1, $2, và $3',
 	'timedmedia-time-2-measurements' => '$1 và $2',
@@ -4220,6 +4234,8 @@ Bạn có chắc chắn muốn tiếp tục?',
 	'timedmedia-derivative-state-queued' => '$1 tập tin chuyển mã trong hàng đợi',
 	'timedmedia-derivative-state-failed' => '$1 tập tin chuyển mã thất bại',
 	'timedmedia-file' => 'Tập tin',
+	'right-transcode-reset' => 'Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng nó lại vào hàng đợi việc.',
+	'right-transcode-status' => 'Xem thông tin về hoạt động chuyển mã đang xảy ra tại [[Special:TimedMediaHandler]]',
 );
 
 /** Volapük (Volapük)

@@ -2008,15 +2008,33 @@ $messages['sv'] = array(
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Shanmugamp7
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
 	'mwe-timedtext-stage-translate' => 'மொழிபெயர்க்கவும்',
+	'mwe-timedtext-select-language' => 'மொழியைத் தெரி',
 	'mwe-timedtext-file-language' => 'துணைத்தலைப்பு கோப்பு மொழி',
 	'mwe-timedtext-upload-text' => 'உரைக்கோப்பை பதிவேற்றவும்',
 	'mwe-timedtext-uploading-text' => 'உரைக்கோப்பு பதிவேற்றப்படுகிறது',
 	'mwe-timedtext-upload-text-desc-title' => 'ஒரு உரைக்கோப்பை பதிவேற்று',
 	'mwe-timedtext-upload-text-desc-help-select' => 'கோப்பின் மொழியைத் தேர்ந்தெடுக்கவும்',
+	'mwe-timedtext-upload-text-preview' => 'உரையை மதிப்பிடு',
+	'mwe-timedtext-upload-text-done' => 'பதிவேற்றம் நிறைவு',
+	'mwe-timedtext-upload-text-fail-desc' => 'பதிவேற்றம் வெற்றிகரமாகவில்லை',
+	'mwe-timedtext-upload-text-fail-title' => 'பதிவேற்றந் தோல்வி',
+	'mwe-timedtext-upload-text-another' => 'இன்னொன்றைப் பதிவேற்று',
+	'mwe-timedtext-upload-text-done-uploading' => 'பதிவேற்றம் நிறைவு',
 	'mwe-timedtext-back-btn' => 'பின்செல்',
+	'mwe-timedtext-choose-text' => 'உரையைத் தெரி',
+	'mwe-timedtext-upload-timed-text' => 'துணைத்தலைப்புக்களைச் சேர்',
+	'mwe-timedtext-search' => 'துண்டைத் தேடு',
+	'mwe-timedtext-layout' => 'தளவமைப்பு',
+	'mwe-timedtext-layout-ontop' => 'காணொளியின் மேல்',
+	'mwe-timedtext-layout-below' => 'காணொளியின் கீழ்',
+	'mwe-timedtext-layout-off' => 'துணைத்தலைப்புக்களை மறை',
+	'mwe-timedtext-loading-text' => 'உரையை ஏற்றுகிறது ...',
+	'mwe-timedtext-textcat-sub' => 'துணைத்தலைப்புக்கள்',
+	'mwe-timedtext-textcat-tad' => 'ஒலித விவரணம்',
 	'mwe-timedtext-textcat-lrc' => 'பாடல் வரிகள்',
 );
 
@@ -2126,6 +2144,7 @@ $messages['ur'] = array(
  */
 $messages['vi'] = array(
 	'mwe-timedtext-editor' => 'Trình sửa văn bản đồng bộ',
+	'mwe-timedtext-stage-transcribe' => 'Chuyển mã',
 	'mwe-timedtext-stage-sync' => 'Đồng bộ',
 	'mwe-timedtext-stage-translate' => 'Biên dịch',
 	'mwe-timedtext-stage-upload' => 'Tải lên từ tập tin trên máy',
@@ -2139,7 +2158,10 @@ $messages['vi'] = array(
 	'mwe-timedtext-upload-text-desc-help-select' => 'Chọn ngôn ngữ của tập tin',
 	'mwe-timedtext-upload-text-desc-help-review' => 'Xem lại và sửa đổi nội dung văn bản, rồi bấm Tải lên để thêm văn bản',
 	'mwe-timedtext-upload-text-preview' => 'Xem lại văn bản',
+	'mwe-timedtext-upload-text-success' => 'Đã tải lên văn bản đồng bộ thành công',
 	'mwe-timedtext-upload-text-done' => 'Tải lên hoàn tất',
+	'mwe-timedtext-upload-text-fail-desc' => 'Đã tải lên thành công',
+	'mwe-timedtext-upload-text-fail-title' => 'Đã tải lên thất bại',
 	'mwe-timedtext-upload-text-another' => 'Tải lên một tập tin nữa',
 	'mwe-timedtext-upload-text-done-uploading' => 'Đã hoàn tất tải lên',
 	'mwe-timedtext-back-btn' => 'Quay lại',
