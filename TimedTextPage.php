@@ -12,13 +12,17 @@ class TimedTextPage extends Article {
 	static private $videoWidth = 400;
 
 	public function view() {
-		global $wgOut, $wgRequest, $wgUser;
+		wfProfileIn( __METHOD__ );
+		$request = $this->getContext()->getRequest();
+		$out = $this->getContext()->getOutput();
+		$user = $this->getContext()->getUser();
 
-		$diff = $wgRequest->getVal( 'diff' );
-		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
+		$diff = $request->getVal( 'diff' );
+		$diffOnly = $request->getBool( 'diffonly', $user->getOption( 'diffonly' ) );
 
 		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || ( isset( $diff ) && $diffOnly ) ) {
 			parent::view();
+			wfProfileOut( __METHOD__ );
 			return;
 		}
 		// parse page title:
@@ -28,7 +32,7 @@ class TimedTextPage extends Article {
 
 		// Check for File name without text extension:
 		// i.e TimedText:myfile.ogg
-		
+
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
 		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
@@ -38,7 +42,8 @@ class TimedTextPage extends Article {
 			} else {
 				$this->doLinkToRemote( $file );
 			}
-			return ;
+			wfProfileOut( __METHOD__ );
+			return;
 		}
 
 		// Check for File name with text extension ( from remaning parts of title )
@@ -48,9 +53,16 @@ class TimedTextPage extends Article {
 
 		// Check for remote file
 		$basefile = wfFindFile( $videoTitle );
+		if ( !$basefile ) {
+			$out->addHTML( wfMessage( 'timedmedia-subtitle-no-video' )->escaped() );
+			wfProfileOut( __METHOD__ );
+			return;
+		}
+
 		if( !$basefile->isLocal() ){
 			$this->doLinkToRemote( $basefile );
-			return ;
+			wfProfileOut( __METHOD__ );
+			return;
 		}
 
 		// Look up the language name:
@@ -62,39 +74,46 @@ class TimedTextPage extends Article {
 		}
 
 		// Set title
-		$wgOut->setPageTitle(
+		$out->setPageTitle(
 			wfMessage( 'mwe-timedtext-language-subtitles-for-clip', $languageName, $videoTitle )
 		);
 
 		// Get the video with with a max of 600 pixel page
-		$wgOut->addHTML(
+		$out->addHTML(
 			xml::tags( 'table', array( 'style'=> 'border:none' ),
 				xml::tags( 'tr', null,
-					xml::tags( 'td', array( 'valign' => 'top',  'width' => self::$videoWidth ), $this->getVideoHTML( $videoTitle ) ) .
+					xml::tags( 'td', array( 'valign' => 'top',  'width' => self::$videoWidth ),
+						$this->getVideoHTML( $videoTitle )
+					) .
 					xml::tags( 'td', array( 'valign' => 'top' ) , $this->getSrtHTML( $languageName ) )
 				)
 			)
 		);
+		wfProfileOut( __METHOD__ );
 	}
+
 	/**
 	 * Timed text or file is hosted on remote repo, Add a short description and link to foring repo
-	 * @param $file the base file
+	 * @param $file File the base file
 	 */
 	function doLinkToRemote( $file ){
-		global $wgOut;
-		$remoteName = $file->getRepoName();
-		$wgOut->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',  $file->getRepo()->getDisplayName() ) );
-		
-		$wgOut->addHTML( wfMessage( 'timedmedia-subtitle-remote-link', $file->getDescriptionUrl(), $file->getRepo()->getDisplayName()  ) );
+		$output = $this->getContext()->getOutput();
+		$output->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',
+			$file->getRepo()->getDisplayName() ) );
+		$output->addHTML( wfMessage( 'timedmedia-subtitle-remote-link',
+			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName()  ) );
 	}
-	function doRedirectToPageForm( $fileTitle ){
-		global $wgContLang, $wgOut;
+
+	function doRedirectToPageForm(){
+		$lang = $this->getContext()->getLang();
+		$out = $this->getContext()->getOutput();
+
 		// Set the page title:
-		$wgOut->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
+		$out->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
 
 		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'.
-							$wgContLang->getCode() . '.srt', NS_TIMEDTEXT );
-		$wgOut->addHTML(
+			$lang->getCode() . '.srt', NS_TIMEDTEXT );
+		$out->addHTML(
 			Xml::tags('div', array( 'style' => 'text-align:center' ),
 				Xml::tags( 'span', null, wfMessage( 'timedmedia-subtitle-new-desc' )->escaped() ) .
 				Xml::tags( 'input', array(
@@ -108,7 +127,7 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
-		$wgOut->addScript(
+		$out->addScript(
 			Html::InlineScript(
 				'$(function() {' .
 					'$("#timedmedia-tt-go").click(function(){' .
@@ -121,6 +140,7 @@ class TimedTextPage extends Article {
 			)
 		);
 	}
+
 	/**
 	 * Gets the video HTML ( with the current language set as default )
 	 * @param $videoTitle string
