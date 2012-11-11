@@ -21,14 +21,13 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	);
 
 	public function __construct( $request = null, $par = null ) {
-		parent::__construct( 'TimedMediaHandler' );
-
+		parent::__construct( 'TimedMediaHandler', 'transcode-status' );
 	}
 
 	public function execute( $par ) {
 		// only show if user has right permissions
 		if ( !$this->getUser()->isAllowed( 'transcode-status' ) ) {
-			return;
+			$this->displayRestrictionError();
 		}
 
 		$this->setHeaders();
