@@ -127,8 +127,6 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 queued transcode|$1 queued transcodes}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 failed transcode|$1 failed transcodes}}',
 	'timedmedia-file' => 'File',
-	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
-	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 
 	'right-transcode-reset' => 'Reset failed or transcoded videos so they are inserted into the job queue again.',
 	'right-transcode-status' => 'View [[Special:TimedMediaHandler]] with information about current transcode activity',
