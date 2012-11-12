@@ -358,7 +358,8 @@ class WebVideoTranscode {
 		$sources[] = self::getPrimarySourceAttributes( $file, $options );
 
 		// If $wgEnableTranscode is false don't look for or add other local sources:
-		if( $wgEnableTranscode === false ){
+		if( $wgEnableTranscode === false &&
+			!($file->repo instanceof ForeignDBViaLBRepo) ){
 			return $sources;
 		}
 
