@@ -115,7 +115,7 @@ class TimedTextPage extends Article {
 			$lang->getCode() . '.srt', NS_TIMEDTEXT );
 		$out->addHTML(
 			Xml::tags('div', array( 'style' => 'text-align:center' ),
-				Xml::tags( 'span', null, wfMessage( 'timedmedia-subtitle-new-desc' )->escaped() ) .
+				Xml::tags( 'span', null, wfMessage( 'timedmedia-subtitle-new-desc' )->parse() ) .
 				Xml::tags( 'input', array(
 					'id' => 'timedmedia-tt-input',
 					'value' => $timedTextTile->getFullText(),
