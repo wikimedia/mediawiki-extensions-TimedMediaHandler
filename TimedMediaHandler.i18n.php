@@ -493,6 +493,8 @@ $messages['be-tarask'] = array(
 	'timedmedia-status-unknown' => 'Статус невядомы',
 	'timedmedia-actions' => 'Дзеяньні',
 	'timedmedia-completed-on' => 'Транскадаваньне завершанае $1',
+	'timedmedia-show-error' => 'Паказаць памылку',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Крыніца $1',
 	'timedmedia-source-file-desc' => '$1 (арыгінал), $2×$3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Нізкапаточнае Ogg-відэа (160P)',
@@ -502,7 +504,9 @@ $messages['be-tarask'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'Паточны WebM (360p)',
 	'timedmedia-derivative-desc-480p.webm' => 'Паточны WebM (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Высакаякаснае WebM-відэа для загрузкі (720p)',
+	'timedmedia-subtitle-new-go' => 'Пачаць',
 	'timedmedia-subtitle-language' => 'Субтытры ($2) на $1',
+	'timedmediahandler' => 'TimedMediaHandler',
 );
 
 /** Bulgarian (български)
@@ -785,8 +789,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-desc-320p.mp4' => 'Gerätefreundliche MP4-Datei (320P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'Webstreamingfähige MP4-Datei (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4-Datei in HD-Qualität (720P)',
-	'timedmedia-subtitle-new' => 'Neue Übersetzung machen oder vorhandene bearbeiten',
-	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:de:ISO 639|Sprachcode]] und klicke auf die Schaltfläche '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new' => 'Neue Übersetzung erstellen oder vorhandene bearbeiten',
+	'timedmedia-subtitle-new-desc' => "Ersetze '''LANG''' durch deinen [[:de:ISO 639|Sprachcode]] und klicke auf '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Los',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
@@ -1564,6 +1568,8 @@ $messages['he'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|המרה משנית אחת בתור|$1 המרות משניות בתור}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|המרות משנית אחת נכשלה|$1 המרות משניות נכשלו}}',
 	'timedmedia-file' => 'קובץ',
+	'right-transcode-reset' => 'אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל כך שהם מוכנסים מחדש לתור המשימות.',
+	'right-transcode-status' => 'הצגת הדף המיוחד [[Special:TimedMediaHandler]] עם מידע על פעילות קידוד־המשנה הנוכחית',
 );
 
 /** Hindi (हिन्दी)
@@ -2968,9 +2974,10 @@ Weet u zeker dat u wilt doorgaan?',
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Eirik
  * @author Harald Khan
+ * @author Njardarlogar
  */
 $messages['nn'] = array(
-	'timedmedia-desc' => 'Gjer at Ogg Theora- og Ogg Vorbis-filer kan verta køyrte ved hjelp av JavaScript-avspelar.', # Fuzzy
+	'timedmedia-desc' => 'Handteringsprogram for ljod, video og tidbunden tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1-lydfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1-videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1-mediafil, $2',
@@ -2982,7 +2989,12 @@ $messages['nn'] = array(
 	'timedmedia-more' => 'Meir...',
 	'timedmedia-dismiss' => 'Lat att',
 	'timedmedia-download' => 'Last ned fila',
+	'timedmedia-play-media' => 'Spel av media',
 	'timedmedia-desc-link' => 'Om denne fila',
+	'timedmedia-actions' => 'Handlingar',
+	'timedmedia-not-ready' => 'Ikkje ferdig',
+	'timedmedia-subtitle-new-desc' => "Byt ut '''LANG'''-delen med [[:en:ISO 639|språkkoden]] din og trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
+	'timedmedia-subtitle-new-go' => 'Gå',
 );
 
 /** Occitan (occitan)
@@ -3324,7 +3336,7 @@ Sunteți sigur că doriți să continuați?',
 	'timedmedia-derivative-desc-320p.mp4' => 'MP4 prietenos cu dispozitivele (320P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4 pentru redare pe web (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4 de calitate HD (720P)',
-	'timedmedia-subtitle-new' => 'Creează o traducere nouă sau modifică una existentă',
+	'timedmedia-subtitle-new' => 'Creare traducere nouă sau modificare una existentă',
 	'timedmedia-subtitle-new-desc' => "Înlocuiți expresia '''LANG''' cu [[:en:ISO 639|codul limbii]] dumneavoastră și apăsați butonul '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Du-te',
 	'timedmedia-subtitle-language' => 'subtitrări în $1 ($2)',
