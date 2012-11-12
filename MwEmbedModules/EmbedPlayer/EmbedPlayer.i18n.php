@@ -2490,9 +2490,29 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Nghtwlkr
+ * @author Njardarlogar
  */
 $messages['nn'] = array(
 	'mwe-embedplayer-credit-title' => 'Tittel: $1',
+	'mwe-embedplayer-credit-date' => 'Dato: $1',
+	'mwe-embedplayer-credit-author' => 'Forfattar: $1',
+	'mwe-embedplayer-play_clip' => 'Spel av klipp',
+	'mwe-embedplayer-pause_clip' => 'Stogga klipp',
+	'mwe-embedplayer-volume_control' => 'Volumstyring',
+	'mwe-embedplayer-player_options' => 'Spelarval',
+	'mwe-embedplayer-timed_text' => 'Tidbunden tekst',
+	'mwe-embedplayer-player_fullscreen' => 'Fullskjerm',
+	'mwe-embedplayer-next_clip_msg' => 'Spel av neste klippet',
+	'mwe-embedplayer-prev_clip_msg' => 'Spel av førre klippet',
+	'mwe-embedplayer-paused' => 'stogga',
+	'mwe-embedplayer-download_full' => 'Lasta ned heile videofila:',
+	'mwe-embedplayer-download_clip' => 'Lasta ned video',
+	'mwe-embedplayer-download_text' => 'Lasta ned tekst',
+	'mwe-embedplayer-download' => 'Lasta ned',
+	'mwe-embedplayer-share' => 'Del',
+	'mwe-embedplayer-choose_player' => 'Vel videospelar',
+	'mwe-embedplayer-share_this_video' => 'Del videoen',
+	'mwe-embedplayer-menu_btn' => 'Meny',
 	'mwe-embedplayer-close_btn' => 'Steng',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-spelar',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-spelar',
@@ -2504,7 +2524,14 @@ $messages['nn'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-playerSelect' => 'Avspelarar',
 	'mwe-embedplayer-video-h264' => 'H.264-video',
+	'mwe-embedplayer-video-webm' => 'WebM-video',
 	'mwe-embedplayer-video-flv' => 'Flash-video',
+	'mwe-embedplayer-video-ogg' => 'Ogg-video',
+	'mwe-embedplayer-video-audio' => 'Ogg-ljod',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG-ljod',
+	'mwe-embedplayer-video-3gp' => '3GP-video',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-video',
+	'mwe-embedplayer-video-msvideo' => 'AVI-video',
 );
 
 /** Occitan (occitan)
