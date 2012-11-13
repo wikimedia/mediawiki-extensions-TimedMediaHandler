@@ -2,15 +2,26 @@
 * EmbedPlayer loader
 */
 ( function( mw, $ ) {
+
 	/**
 	* Add a DOM ready check for player tags
 	*/
-	$(function( event, callback ){
-		// Check if we have tags to rewrite:
-		if( $( mw.config.get( 'EmbedPlayer.RewriteSelector' )  ).length ) {
-			// Rewrite the embedPlayer EmbedPlayer.RewriteSelector and run callback once ready:
-			$( mw.config.get( 'EmbedPlayer.RewriteSelector' ) )
-				.embedPlayer();
+	$(function( event ){
+		var $selected = $( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
+		if( $selected.length ){
+			var inx = 0;
+			var checkSetDone = function(){
+				if( inx < $selected.length ){
+					// put in timeout to avoid browser lockup, and function stack
+					$selected.slice(inx, inx+1).embedPlayer( function(){
+						setTimeout(function(){
+							checkSetDone();
+						}, 5);
+					});
+				}
+				inx++;
+			};
+			checkSetDone();
 		}
 	});
 
@@ -18,13 +29,8 @@
 	* Add the mwEmbed jQuery loader wrapper
 	*/
 	$.fn.embedPlayer = function( readyCallback ){
-		var playerSelect;
-		if( this.selector ){
-			playerSelect = this.selector;
-		} else {
-			playerSelect = this;
-		}
-		mw.log( 'jQuery.fn.embedPlayer :: ' + playerSelect );
+		var playerSet = this;
+		mw.log( 'jQuery.fn.embedPlayer :: ' + $( this ).length );
 
 		// Set up the embed video player class request: (include the skin js as well)
 		var dependencySet = [
@@ -32,7 +38,7 @@
 		];
 
 		var rewriteElementCount = 0;
-		$( playerSelect).each( function(inx, playerElement){
+		$( this ).each( function(inx, playerElement){
 			var skinName ='';
 			// we have javascript ( disable controls )
 			$( playerElement ).removeAttr( 'controls' );
@@ -55,7 +61,7 @@
 		mediaWiki.loader.using( dependencySet, function(){
 			// Setup the enhanced language:
 			window.gM = mw.jqueryMsg.getMessageFunction( {} );
-			mw.processEmbedPlayers( playerSelect, readyCallback );
+			mw.processEmbedPlayers( playerSet, readyCallback );
 		}, function( e ){
 			throw new Error( 'Error loading EmbedPlayer dependency set: ' + e.message  );
 		});
