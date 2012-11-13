@@ -91,7 +91,7 @@ class TranscodeStatusTable {
 		$thumbName = $file->thumbName( array() );
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );
-		return $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey;
+		return $thumbUrlDir . '/' . rawurlencode( $file->getName() ) . '.' . $transcodeKey;
 	}
 
 	/**

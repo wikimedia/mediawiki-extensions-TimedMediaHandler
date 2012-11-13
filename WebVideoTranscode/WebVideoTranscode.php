@@ -667,7 +667,7 @@ class WebVideoTranscode {
 						self::$derivativeSettings[$transcodeKey]['framerate'] :
 						$file->getHandler()->getFramerate( $file );
 		// Setup the url src:
-		$src = $thumbUrlDir . '/' .$file->getName() . '.' . $transcodeKey;
+		$src = $thumbUrlDir . '/' . rawurlencode( $file->getName() ) . '.' . $transcodeKey;
 		$src = in_array( 'fullurl', $options)?  wfExpandUrl( $src ) : $src;
 		return array(
 				'src' => $src,
