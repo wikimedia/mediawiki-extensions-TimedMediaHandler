@@ -1,10 +1,13 @@
 ( function( mw, $ ) { "use strict";
 /**
-* List of domains and hosted location of cortado. Lets clients avoid the security warning
+* List of domains and hosted location of cortado.
+* Lets clients avoid the security warning
 * for cross domain java applet loading.
+* The warning can also be avoided by providing crossdomain.xml.
+* This is the case with upload.wikimedia.org:
+* http://upload.wikimedia.org/crossdomain.xml
 */
 window.cortadoDomainLocations = {
-	'upload.wikimedia.org' : 'http://upload.wikimedia.org/jars/cortado.jar'
 };
 
 // Set the default location for CortadoApplet
