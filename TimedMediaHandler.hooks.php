@@ -129,6 +129,7 @@ class TimedMediaHandlerHooks {
 
 			// Check for timed text page:
 			$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
+			$wgHooks[ 'ArticleContentOnDiff' ][] = 'TimedMediaHandlerHooks::checkForTimedTextDiff';
 		} else {
 			$wgTimedTextNS = false;
 			// overwrite TimedText.ShowInterface for video with mw-provider=local
@@ -149,6 +150,20 @@ class TimedMediaHandlerHooks {
 	public static function checkForTimedTextPage( &$title, &$article ){
 		if( $title->getNamespace() == NS_TIMEDTEXT ) {
 			$article = new TimedTextPage( $title );
+		}
+		return true;
+	}
+
+	/**
+	 * @param $diffEngine DifferenceEngine
+	 * @param $output OutputPage
+	 * @return bool
+	 */
+	public static function checkForTimedTextDiff( $diffEngine, $output ) {
+		if ( $output->getTitle()->getNamespace() == NS_TIMEDTEXT ) {
+			$article = new TimedTextPage( $output->getTitle() );
+			$article->renderOutput( $output );
+			return false;
 		}
 		return true;
 	}
