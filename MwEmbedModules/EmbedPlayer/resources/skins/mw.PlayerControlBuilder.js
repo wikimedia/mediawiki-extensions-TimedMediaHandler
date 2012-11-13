@@ -358,6 +358,8 @@ mw.PlayerControlBuilder.prototype = {
 		}else {
 			this.doFullScreenPlayer();
 		}
+		// Don't follow the # link:
+		return false;
 	},
 
 	/**
@@ -1977,12 +1979,12 @@ mw.PlayerControlBuilder.prototype = {
 							.addClass( 'active')
 							.text(
 								supportingPlayers[i].getName()
-						 	)
-						).click( function(){
-							embedPlayer.controlBuilder.closeMenuOverlay();
-							// Don't follow the # link:
-							return false;
-						});
+							).click( function(){
+								embedPlayer.controlBuilder.closeMenuOverlay();
+								// Don't follow the # link:
+								return false;
+							})
+						);
 						//.addClass( 'ui-state-highlight ui-corner-all' ); removed by ran
 					} else {
 						// Non active player add link to select:
@@ -2446,6 +2448,8 @@ mw.PlayerControlBuilder.prototype = {
 						.buttonHover()
 						.click( function() {
 							ctrlObj.embedPlayer.play();
+							// Don't follow the # link:
+							return false;
 						});
 			}
 		},
