@@ -98,8 +98,21 @@ class TimedMediaThumbnail {
 			$cmd .= ' -ss ' . floatval($offset - 2);
 			$offset = 2;
 		}
-		$srcPath = $options['file']->getLocalRefPath();
-		$cmd .= ' -y -i ' . wfEscapeShellArg( $srcPath );
+		//try to get temorary local url to file
+		$backend = $options['file']->getRepo()->getBackend();
+		// getFileHttpUrl was only added in mw 1.21, dont fail if it does not exist
+		if ( MWInit::methodExists( $backend, 'getFileHttpUrl' ) ) {
+			$src = $backend->getFileHttpUrl( array(
+				'src' =>  $options['file']->getPath()
+			) );
+		} else {
+			$src = null;
+		}
+		if ( $src == null ) {
+			$src = $options['file']->getLocalRefPath();
+		}
+
+		$cmd .= ' -y -i ' . wfEscapeShellArg( $src );
 		$cmd .= ' -ss ' . $offset . ' ';
 
 		// Set the output size if set in options:
