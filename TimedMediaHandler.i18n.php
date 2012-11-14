@@ -776,7 +776,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-actions' => 'Aktionen',
 	'timedmedia-direct-link' => 'Formatvariante herunterladen',
 	'timedmedia-not-ready' => 'Nicht bereit',
-	'timedmedia-completed-on' => 'Konvertierung abgeschlossen: $1',
+	'timedmedia-completed-on' => 'Umschlüsselung abgeschlossen: $1',
 	'timedmedia-error-on' => 'Fehler beim Umschlüsseln in $1.',
 	'timedmedia-started-transcode' => 'Umschlüsselung startete vor $1. $2',
 	'timedmedia-percent-done' => 'Ungefähr $1 % sind erledigt',
@@ -825,8 +825,9 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
 	'timedmedia-file' => 'Datei',
-	'right-transcode-reset' => 'Fehlgeschlagene oder umgewandelte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
-	'right-transcode-status' => '[[Special:TimedMediaHandler]] mit Informationen über aktuelle Umwandlungen betrachten',
+	'right-transcode-reset' => 'Fehlgeschlagene oder umgeschlüsselte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
+	'right-transcode-status' => '[[Special:TimedMediaHandler]] mit Informationen über aktuelle Umschlüsselungen betrachten',
+	'action-transcode-status' => 'den Umschlüsselungsstatus anzusehen',
 );
 
 /** Zazaki (Zazaki)
@@ -1416,6 +1417,9 @@ Está seguro de querer continuar?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificacións}} na cola',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificacións fallidas}}',
 	'timedmedia-file' => 'Ficheiro',
+	'right-transcode-reset' => 'Restablecer os vídeos transcodificados erroneamente para incluílos de novo na cola de traballo.',
+	'right-transcode-status' => 'Ollar [[Special:TimedMediaHandler]] con información sobre a actividade de transcodificación actual',
+	'action-transcode-status' => 'ollar o estado da transcodificación',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1589,6 +1593,7 @@ $messages['he'] = array(
 	'timedmedia-file' => 'קובץ',
 	'right-transcode-reset' => 'אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל כך שהם מוכנסים מחדש לתור המשימות.',
 	'right-transcode-status' => 'הצגת הדף המיוחד [[Special:TimedMediaHandler]] עם מידע על פעילות קידוד־המשנה הנוכחית',
+	'action-transcode-status' => 'הצגת מצב המרת־המשנה',
 );
 
 /** Hindi (हिन्दी)
@@ -2029,6 +2034,8 @@ Continuare?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coda',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}',
 	'timedmedia-file' => 'File',
+	'right-transcode-status' => "Visualizza [[Special:TimedMediaHandler]] con informazioni sull'attuale attività di transcodifica",
+	'action-transcode-status' => 'visualizzare lo stato della transcodifica',
 );
 
 /** Japanese (日本語)
@@ -2634,6 +2641,7 @@ $messages['mk'] = array(
 	'timedmedia-file' => 'Податотека',
 	'right-transcode-reset' => 'Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.',
 	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler]] со информации тековните активности во прекодирањето',
+	'action-transcode-status' => 'преглед на статусот на прекодирањето',
 );
 
 /** Malayalam (മലയാളം)
@@ -2652,6 +2660,8 @@ $messages['ml'] = array(
 	'timedmedia-ogg-long-error' => 'അസാധുവായ ഓഗ് പ്രമാണം: $1',
 	'timedmedia-webm-short-video' => 'വെബ്എം $1 ചലച്ചിത്രപ്രമാണം, $2',
 	'timedmedia-webm-long-video' => 'വെബ്എം ശബ്ദ/ചലച്ചിത്ര പ്രമാണം, $1, ദൈർഘ്യം $2, $4 × $5 ബിന്ദു, ആകെക്കൂടി $3',
+	'timedmedia-mp4-short-video' => 'എംപി4 $1 വീഡിയോ പ്രമാണം, $2',
+	'timedmedia-mp4-long-video' => 'എംപി4 ശബ്ദ/ചലച്ചിത്ര പ്രമാണം, $1, ദൈർഘ്യം $2, $4 × $5 ബിന്ദു, ആകെക്കൂടി $3',
 	'timedmedia-no-player-js' => 'ക്ഷമിക്കുക, താങ്കളുടെ ബ്രൗസറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമാക്കിയിട്ടില്ല അല്ലെങ്കിൽ പിന്തുണയുള്ള പ്ലേയർ ലഭ്യമല്ല.<br />
 താങ്കൾക്ക് <a href="$1">ചലച്ചിത്രഭാഗം ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a> അല്ലെങ്കിൽ ബ്രൗസറിൽ പ്രവർത്തിപ്പിക്കാനായി <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">ഒരു പ്ലേയർ ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a>.',
 	'timedmedia-more' => 'കൂടുതൽ...',
@@ -2661,11 +2671,20 @@ $messages['ml'] = array(
 	'timedmedia-desc-link' => 'ഈ പ്രമാണത്തെക്കുറിച്ച്',
 	'timedmedia-oggThumb-version' => 'ഓഗ്-തമ്പ് പതിപ്പ് $1 അല്ലെങ്കിൽ പുതിയത് ഓഗ്-ഹാൻഡ്ലറിനാവശ്യമാണ്.',
 	'timedmedia-oggThumb-failed' => 'ലഘുചിത്രം സൃഷ്ടിക്കുന്നതിൽ ഓഗ്-തമ്പ് പരാജയപ്പെട്ടു.',
+	'timedmedia-status-header' => 'ട്രാൻസ്‌കോഡ് സ്ഥിതി',
+	'timedmedia-update-status' => 'ട്രാൻസ്‌കോഡ് സ്ഥിതി പുതുക്കുക',
 	'timedmedia-status' => 'സ്ഥിതി',
 	'timedmedia-status-unknown' => 'അപരിചിതമായ സ്ഥിതി',
+	'timedmedia-transcodeinfo' => 'ട്രാൻസ്‌കോഡ് വ്യുൽപ്പന്നത്തിന്റെ വിവരണം',
 	'timedmedia-actions' => 'പ്രവൃത്തികൾ',
+	'timedmedia-direct-link' => 'വ്യുൽപ്പന്നം ഡൗൺലോഡ് ചെയ്യുക',
 	'timedmedia-not-ready' => 'തയ്യാറായിട്ടില്ല',
+	'timedmedia-completed-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ പൂർത്തിയായി $1',
+	'timedmedia-error-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യലിൽ $1-ൽ പിഴവുണ്ടായി.',
+	'timedmedia-started-transcode' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ $1 മുമ്പ് ആരംഭിച്ചു. $2',
 	'timedmedia-percent-done' => 'ഏകദേശം $1% പൂർത്തിയായി',
+	'timedmedia-in-job-queue' => 'ജോബ് ക്യൂവിലേയ്ക്ക് $1 മുമ്പ് ചേർത്തു',
+	'timedmedia-unknown-target-size' => 'ലക്ഷ്യമിടുന്ന വലിപ്പം അറിയില്ല, $1 എൻകോഡ് ചെയ്തു',
 	'timedmedia-days' => '{{PLURAL:$1|ഒരു ദിവസം|$1 ദിവസം}}',
 	'timedmedia-hours' => '{{PLURAL:$1|ഒരു മണിക്കൂർ|$1 മണിക്കൂർ}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|ഒരു മിനിറ്റ്|$1 മിനിറ്റ്}}',
@@ -2674,16 +2693,24 @@ $messages['ml'] = array(
 	'timedmedia-time-3-measurements' => '$1, $2 ഒപ്പം $3',
 	'timedmedia-time-2-measurements' => '$1 ഒപ്പം $2',
 	'timedmedia-show-error' => 'പിഴവ് പ്രദർശിപ്പിക്കുക',
+	'timedmedia-reset' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ പുനഃസജ്ജീകരിക്കുക',
+	'timedmedia-reset-confirm' => 'ഈ ട്രാൻസ്‌കോഡ് ചെയ്യൽ പുനഃസജ്ജീകരിക്കുമ്പോൾ നിലവിലുള്ള ഫയൽ (അങ്ങനെയൊന്നുണ്ടെങ്കിൽ) നീക്കം ചെയ്യപ്പെടും, ഒപ്പം അത് ജോബ് ക്യൂവിലേയ്ക്ക് ട്രാൻസ്‌കോഡ് ചെയ്യാൻ വീണ്ടും ചേർക്കപ്പെടുകയും ചെയ്യും.  വീണ്ടും-ട്രാൻസ്‌കോഡ് ചെയ്യാൻ അല്പസമയമെടുക്കുന്നതാണ്. <br /><br />
+തുടരണമെന്ന് താങ്കൾക്കുറപ്പാണോ?',
+	'timedmedia-reset-error' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ പുനഃസജ്ജീകരിക്കുന്നതിൽ പിഴവുണ്ടായി.',
+	'timedmedia-mp4' => 'എംപി4',
 	'timedmedia-source-file' => '$1 സ്രോതസ്സ്',
 	'timedmedia-source-file-desc' => 'യഥാർത്ഥം $1, $2 × $3 ($4)',
-	'timedmedia-derivative-desc-160p.ogv' => 'കുറഞ്ഞ ബാൻഡ്‌വിഡ്ത് ഓഗ് ചലച്ചിത്രം (160P)',
-	'timedmedia-derivative-desc-360p.ogv' => 'വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (360P)',
-	'timedmedia-derivative-desc-480p.ogv' => 'വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (480P)',
-	'timedmedia-derivative-desc-720p.ogv' => 'ഉന്നത ഗുണമേന്മയിൽ ഡൗൺലോഡ് ചെയ്യാവുന്ന ഓഗ് ചലച്ചിത്രം (720P)',
-	'timedmedia-derivative-desc-160p.webm' => 'വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (160P)',
-	'timedmedia-derivative-desc-360p.webm' => 'വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (360P)',
-	'timedmedia-derivative-desc-480p.webm' => 'വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (360P)',
-	'timedmedia-derivative-desc-720p.webm' => 'ഉന്നത ഗുണമേന്മയിൽ ഡൗൺലോഡ് ചെയ്യാവുന്ന വെബ്എം (720P)',
+	'timedmedia-derivative-desc-160p.ogv' => 'കുറഞ്ഞ ബാൻഡ്‌വിഡ്ത് ഓഗ് ചലച്ചിത്രം (160ബി)',
+	'timedmedia-derivative-desc-360p.ogv' => 'വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (360ബി)',
+	'timedmedia-derivative-desc-480p.ogv' => 'വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (480ബി)',
+	'timedmedia-derivative-desc-720p.ogv' => 'ഉന്നത ഗുണമേന്മയിൽ ഡൗൺലോഡ് ചെയ്യാവുന്ന ഓഗ് ചലച്ചിത്രം (720ബി)',
+	'timedmedia-derivative-desc-160p.webm' => 'വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (160ബി)',
+	'timedmedia-derivative-desc-360p.webm' => 'വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (360ബി)',
+	'timedmedia-derivative-desc-480p.webm' => 'വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (360ബി)',
+	'timedmedia-derivative-desc-720p.webm' => 'ഉന്നത ഗുണമേന്മയിൽ ഡൗൺലോഡ് ചെയ്യാവുന്ന വെബ്എം (720ബി)',
+	'timedmedia-derivative-desc-320p.mp4' => 'ഉപകരണ-സുഹൃദ് എംപി4 (320ബി)',
+	'timedmedia-derivative-desc-480p.mp4' => 'വെബിലൂടെ എടുക്കാവുന്ന എംപി4 (480ബി)',
+	'timedmedia-derivative-desc-720p.mp4' => 'എച്ച്.ഡി. ഗുണമേന്മയുള്ള എംപി4 (720ബി)',
 	'timedmedia-subtitle-new' => 'പുതിയ പരിഭാഷ തുടങ്ങുക അല്ലെങ്കിൽ നിലവിലുള്ളത് തിരുത്തുക',
 	'timedmedia-subtitle-new-desc' => "താങ്കളുടെ [[:en:ISO 639|ഭാഷാ കോഡ്]] ഉപയോഗിച്ച് '''LANG''' ഭാഗം മാറ്റിച്ചേർത്ത് '''{{int:Timedmedia-subtitle-new-go}}''' ബട്ടൺ അമർത്തുക",
 	'timedmedia-subtitle-new-go' => 'പോകൂ',
@@ -4330,6 +4357,7 @@ Bạn có chắc chắn muốn tiếp tục?',
 	'timedmedia-file' => 'Tập tin',
 	'right-transcode-reset' => 'Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng nó lại vào hàng đợi việc.',
 	'right-transcode-status' => 'Xem thông tin về hoạt động chuyển mã đang xảy ra tại [[Special:TimedMediaHandler]]',
+	'action-transcode-status' => 'xem trạng thái chuyển mã',
 );
 
 /** Volapük (Volapük)
