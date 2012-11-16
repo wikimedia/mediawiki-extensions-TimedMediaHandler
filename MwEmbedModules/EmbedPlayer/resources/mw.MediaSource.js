@@ -123,7 +123,7 @@ mw.MediaSource.prototype = {
 			this.URLTimeEncoding = true;
 		}
 
-		var sourceAttr = mw.getConfig( 'EmbedPlayer.SourceAttributes' );
+		var sourceAttr = mw.config.get( 'EmbedPlayer.SourceAttributes' );
 		$.each( sourceAttr, function( inx, attr ){
 			if ( $( element ).attr( attr ) ) {
 				// strip data- from the attribute name

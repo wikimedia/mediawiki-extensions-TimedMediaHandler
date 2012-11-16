@@ -27,7 +27,7 @@ mw.PlayerControlBuilder.prototype = {
 	volumeLayout : 'vertical',
 
 	// Default control bar height
-	height: mw.getConfig( 'EmbedPlayer.ControlsHeight' ),
+	height: mw.config.get( 'EmbedPlayer.ControlsHeight' ),
 
 	// Default supported components is merged with embedPlayer set of supported types
 	supportedComponents: {
@@ -166,19 +166,19 @@ mw.PlayerControlBuilder.prototype = {
 		this.supportedComponents = $.extend( this.supportedComponents, embedPlayer.supports );
 
 		// Check for Attribution button
-		if( mw.getConfig( 'EmbedPlayer.AttributionButton' ) && embedPlayer.attributionbutton ){
+		if( mw.config.get( 'EmbedPlayer.AttributionButton' ) && embedPlayer.attributionbutton ){
 			this.supportedComponents[ 'attributionButton' ] = true;
 		}
 		// Check global fullscreen enabled flag
-		if( mw.getConfig( 'EmbedPlayer.EnableFullscreen' ) === false ){
+		if( mw.config.get( 'EmbedPlayer.EnableFullscreen' ) === false ){
 			this.supportedComponents[ 'fullscreen'] = false;
 		}
 		// Check if the options item is available
-		if( mw.getConfig( 'EmbedPlayer.EnableOptionsMenu' ) === false ){
+		if( mw.config.get( 'EmbedPlayer.EnableOptionsMenu' ) === false ){
 			this.supportedComponents[ 'options'] = false;
 		}
 		// Check for volume control
-		if( mw.getConfig( 'EmbedPlayer.EnableVolumeControl') === false ){
+		if( mw.config.get( 'EmbedPlayer.EnableVolumeControl') === false ){
 			this.supportedComponents[ 'volumeControl'] = false;
 		}
 
@@ -223,7 +223,7 @@ mw.PlayerControlBuilder.prototype = {
 			addComponent( componentId );
 		}
 		// Add special case remaining components:
-		if( mw.getConfig( 'EmbedPlayer.EnableTimeDisplay' ) ){
+		if( mw.config.get( 'EmbedPlayer.EnableTimeDisplay' ) ){
 			addComponent( 'timeDisplay' );
 		}
 		if( this.availableWidth > 30 ){
@@ -371,7 +371,7 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;
 
 		// Store the page vertical scroll
-		var isIframe = mw.getConfig('EmbedPlayer.IsIframeServer' );
+		var isIframe = mw.config.get('EmbedPlayer.IsIframeServer' );
 		var doc =  isIframe ? window['parent'].document : window.document;
 		var context = isIframe ? window['parent'] : window;
 		this.verticalScrollPosition = doc.all ? doc.scrollTop : context.pageYOffset;
@@ -405,7 +405,7 @@ mw.PlayerControlBuilder.prototype = {
 
 			var escapeFullscreen = function( event ) {
 				// grab the correct document target to check for fullscreen
-				var doc = ( mw.getConfig('EmbedPlayer.IsIframeServer' ) )?
+				var doc = ( mw.config.get('EmbedPlayer.IsIframeServer' ) )?
 						window['parent'].document:
 						window.document;
 				if ( ! window.fullScreenApi.isFullScreen( doc ) ) {
@@ -438,7 +438,7 @@ mw.PlayerControlBuilder.prototype = {
 		} else {
 			// Check for hybrid html controls / native fullscreen support:
 			var vid = this.embedPlayer.getPlayerElement();
-			if( mw.getConfig('EmbedPlayer.EnableIpadNativeFullscreen')
+			if( mw.config.get('EmbedPlayer.EnableIpadNativeFullscreen')
 					&&
 				vid && vid.webkitSupportsFullscreen
 			){
@@ -471,7 +471,7 @@ mw.PlayerControlBuilder.prototype = {
 	 * Make the target player interface or iframe fullscreen
 	 */
 	doContextTargetFullscreen: function() {
-		var isIframe = mw.getConfig('EmbedPlayer.IsIframeServer' );
+		var isIframe = mw.config.get('EmbedPlayer.IsIframeServer' );
 
 		var
 		_this = this,
@@ -520,7 +520,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Make the $target fullscreen
 		$target
 			.css({
-				'z-index': mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ),
+				'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' ),
 				'position': playerCssPosition,
 				'top' : '0px',
 				'left' : '0px',
@@ -560,7 +560,7 @@ mw.PlayerControlBuilder.prototype = {
 	 * Restore the player interface or iframe to a window player
 	 */
 	restoreContextPlayer: function(){
-		var isIframe = mw.getConfig('EmbedPlayer.IsIframeServer' );
+		var isIframe = mw.config.get('EmbedPlayer.IsIframeServer' );
 		
 		var
 		_this = this,
@@ -641,7 +641,7 @@ mw.PlayerControlBuilder.prototype = {
 			$( '<div />' )
 			.addClass( 'mw-fullscreen-overlay' )
 			// Set some arbitrary high z-index
-			.css('z-index', mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) )
+			.css('z-index', mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) )
 			.hide()
 			.fadeIn("slow")
 		);
@@ -659,7 +659,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Change the z-index of the interface
 		$interface.css( {
 			'position' : 'fixed',
-			'z-index' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 1,
+			'z-index' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 1,
 			'top' : this.windowOffset.top,
 			'left' : this.windowOffset.left
 		} );
@@ -667,7 +667,7 @@ mw.PlayerControlBuilder.prototype = {
 		// If native persistent native player update z-index:
 		if( embedPlayer.isPersistentNativePlayer() ){
 			$( embedPlayer.getPlayerElement() ).css( {
-				'z-index': mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 1,
+				'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 1,
 				'position': 'absolute'
 			});
 		}
@@ -795,7 +795,7 @@ mw.PlayerControlBuilder.prototype = {
 	//( avoid repatiave conditionals in getters )
 	getPlayerSize: function(){
 		var height = $(window).height() - this.getHeight();
-		if( mw.getConfig('EmbedPlayer.IsIframeServer' ) ){
+		if( mw.config.get('EmbedPlayer.IsIframeServer' ) ){
 			return {
 				'height' : height,
 				'width' : $(window).width()
@@ -808,7 +808,7 @@ mw.PlayerControlBuilder.prototype = {
 		}
 	},
 	getFsTarget: function(){
-		if( mw.getConfig('EmbedPlayer.IsIframeServer' ) ){
+		if( mw.config.get('EmbedPlayer.IsIframeServer' ) ){
 			return window['parent'].document.getElementById( this.embedPlayer.id + '_ifp' );
 		} else {
 			var	$interface = this.embedPlayer.getInterface();
@@ -1184,7 +1184,7 @@ mw.PlayerControlBuilder.prototype = {
 	addRightClickBinding: function(){
 		var embedPlayer = this.embedPlayer;
 		// check config:
-		if( mw.getConfig( 'EmbedPlayer.EnableRightClick') === false ){
+		if( mw.config.get( 'EmbedPlayer.EnableRightClick') === false ){
 			document.oncontextmenu= function(e){return false;};
 			$(embedPlayer).mousedown(function(e){
 				if( e.button == 2 ) {
@@ -1275,7 +1275,7 @@ mw.PlayerControlBuilder.prototype = {
 
 
 		// If the config is false
-		if( mw.getConfig( 'EmbedPlayer.OverlayControls' ) === false){
+		if( mw.config.get( 'EmbedPlayer.OverlayControls' ) === false){
 			return false;
 		}
 
@@ -1299,7 +1299,7 @@ mw.PlayerControlBuilder.prototype = {
 	* dependent on mediaElement being setup
 	*/
 	checkNativeWarning: function( ) {
-		if( mw.getConfig( 'EmbedPlayer.ShowNativeWarning' ) === false ){
+		if( mw.config.get( 'EmbedPlayer.ShowNativeWarning' ) === false ){
 			return false;
 		}
 
@@ -1375,7 +1375,7 @@ mw.PlayerControlBuilder.prototype = {
 		//$.cookie( preferenceId, '' );
 
 		// Check if a cookie has been set to hide the warning:
-		if ( mw.getConfig( preferenceId ) === true && $.cookie( preferenceId ) == 'hidewarning' ){
+		if ( mw.config.get( preferenceId ) === true && $.cookie( preferenceId ) == 'hidewarning' ){
 			return ;
 		}
 
@@ -1514,7 +1514,7 @@ mw.PlayerControlBuilder.prototype = {
 		for( var menuItemKey in this.optionMenuItems ){
 
 			// Make sure its supported in the current controlBuilder config:
-			if( $.inArray( menuItemKey, mw.getConfig( 'EmbedPlayer.EnabledOptionsMenuItems' ) ) === -1 ) {
+			if( $.inArray( menuItemKey, mw.config.get( 'EmbedPlayer.EnabledOptionsMenuItems' ) ) === -1 ) {
 			 	continue;
 			}
 
@@ -1850,7 +1850,7 @@ mw.PlayerControlBuilder.prototype = {
 					.append(
 						gM('mwe-embedplayer-about-library-desc',
 							$('<a />').attr({
-								'href' : mw.getConfig( 'EmbedPlayer.LibraryPage' ),
+								'href' : mw.config.get( 'EmbedPlayer.LibraryPage' ),
 								'target' : '_new'
 							})
 						)
@@ -2275,7 +2275,7 @@ mw.PlayerControlBuilder.prototype = {
 		'attributionButton' : {
 			'w' : 28,
 			'o' : function( ctrlObj ){
-				var buttonConfig = mw.getConfig( 'EmbedPlayer.AttributionButton');
+				var buttonConfig = mw.config.get( 'EmbedPlayer.AttributionButton');
 				// Check for source ( by configuration convention this is a 16x16 image
 				if( buttonConfig.iconurl ){
 					var $icon =  $('<img />')
@@ -2334,7 +2334,7 @@ mw.PlayerControlBuilder.prototype = {
 						// Options binding:
 						.menu( {
 							'content' : ctrlObj.getOptionsMenu(),
-							'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+							'zindex' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 							'positionOpts': {
 								'directionV' : 'up',
 								'offsetY' : 30,
@@ -2362,14 +2362,14 @@ mw.PlayerControlBuilder.prototype = {
 						.buttonHover();
 				// Link out to another window if iPad 3x ( broken iframe resize )
 				if( (
-						mw.getConfig('EmbedPlayer.IsIframeServer')
+						mw.config.get('EmbedPlayer.IsIframeServer')
 						&&
 						mw.isIpad3()
 					)
 						||
-					  mw.getConfig( "EmbedPlayer.NewWindowFullscreen" )
+					  mw.config.get( "EmbedPlayer.NewWindowFullscreen" )
 					  	||
-					( mw.getConfig('EmbedPlayer.IsIframeServer')  && mw.getConfig('EmbedPlayer.EnableIframeApi') === false )
+					( mw.config.get('EmbedPlayer.IsIframeServer')  && mw.config.get('EmbedPlayer.EnableIframeApi') === false )
 				){
 					// Get the iframe url:
 					var url = ctrlObj.embedPlayer.getIframeSourceUrl();
@@ -2510,7 +2510,7 @@ mw.PlayerControlBuilder.prototype = {
 						ctrlObj.embedPlayer.mediaElement.selectedSource.getShortTitle()
 					).menu( {
 						'content' : ctrlObj.getSwitchSourceMenu(),
-						'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+						'zindex' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 						'keepPosition' : true,
 						'targetMenuContainer' : $menuContainer,
 						'width' : 130,
@@ -2541,7 +2541,7 @@ mw.PlayerControlBuilder.prototype = {
 		* The time display area
 		*/
 		'timeDisplay': {
-			'w' : mw.getConfig( 'EmbedPlayer.TimeDisplayWidth' ),
+			'w' : mw.config.get( 'EmbedPlayer.TimeDisplayWidth' ),
 			'o' : function( ctrlObj ) {
 				return $( '<div />' )
 				.addClass( "ui-widget time-disp" )

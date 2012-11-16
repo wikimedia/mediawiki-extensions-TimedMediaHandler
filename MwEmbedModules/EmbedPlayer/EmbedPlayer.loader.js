@@ -7,9 +7,9 @@
 	*/
 	$(function( event, callback ){
 		// Check if we have tags to rewrite:
-		if( $( mw.getConfig( 'EmbedPlayer.RewriteSelector' )  ).length ) {
+		if( $( mw.config.get( 'EmbedPlayer.RewriteSelector' )  ).length ) {
 			// Rewrite the embedPlayer EmbedPlayer.RewriteSelector and run callback once ready:
-			$( mw.getConfig( 'EmbedPlayer.RewriteSelector' ) )
+			$( mw.config.get( 'EmbedPlayer.RewriteSelector' ) )
 				.embedPlayer();
 		}
 	});

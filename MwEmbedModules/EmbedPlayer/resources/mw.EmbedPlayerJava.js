@@ -78,8 +78,8 @@ mw.EmbedPlayerJava = {
 		var mediaSrc = this.getSrc();
 		var appletLoc = false;
 		// Check for wgCortadoJarFile override
-		if( mw.getConfig( 'wgCortadoJarFile' ) !== false ){
-			return mw.getConfig('wgCortadoJarFile' );
+		if( mw.config.get( 'wgCortadoJarFile' ) !== false ){
+			return mw.config.get('wgCortadoJarFile' );
 		}
 
 		if (
@@ -87,7 +87,7 @@ mw.EmbedPlayerJava = {
 			||
 			!mw.isLocalDomain( mw.getMwEmbedPath() )
 			||
-			mw.getConfig( 'relativeCortadoAppletPath' ) === false
+			mw.config.get( 'relativeCortadoAppletPath' ) === false
 		){
 			if ( window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ] ) {
 				return window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
@@ -96,7 +96,7 @@ mw.EmbedPlayerJava = {
 			}
 		} else {
 			// Get the local relative cortado applet location:
-			return mw.getConfig( 'relativeCortadoAppletPath' );
+			return mw.config.get( 'relativeCortadoAppletPath' );
 		}
 	},
 

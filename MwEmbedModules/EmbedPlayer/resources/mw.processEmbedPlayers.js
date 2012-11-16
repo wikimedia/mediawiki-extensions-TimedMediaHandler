@@ -107,7 +107,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 			});
 		};
 
-		if( waitForMeta && mw.getConfig('EmbedPlayer.WaitForMeta' ) ) {
+		if( waitForMeta && mw.config.get('EmbedPlayer.WaitForMeta' ) ) {
 			mw.log('processEmbedPlayers::WaitForMeta ( video missing height (' +
 					$( playerElement ).attr('height') + '), width (' +
 					$( playerElement ).attr('width') + ') or duration: ' +
@@ -234,7 +234,7 @@ mw.processEmbedPlayers = function( playerSelect, callback ) {
 		swapPlayerElement.style.position = 'relative';
 
 		// Copy any data attributes from the target player element over to the swapPlayerElement
-		var dataAttributes = mw.getConfig("EmbedPlayer.DataAttributes");
+		var dataAttributes = mw.config.get("EmbedPlayer.DataAttributes");
 		if( dataAttributes ){
 			$.each( dataAttributes, function( attrName, na ){
 				if( $( targetElement ).data( attrName ) ){

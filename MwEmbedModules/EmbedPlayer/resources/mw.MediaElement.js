@@ -283,7 +283,7 @@ mw.MediaElement.prototype = {
 			}
 		});
 
-		var codecPref = mw.getConfig( 'EmbedPlayer.CodecPreference');
+		var codecPref = mw.config.get( 'EmbedPlayer.CodecPreference');
 
 		// if on android 4 use mp4 over webm
 		if( mw.isAndroid40() ){

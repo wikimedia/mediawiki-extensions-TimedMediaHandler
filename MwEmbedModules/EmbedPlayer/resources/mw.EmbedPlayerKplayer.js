@@ -353,7 +353,7 @@ mw.EmbedPlayerKplayer = {
 					clearInterval( seekInterval );
 					this.triggerHelper( 'seeked' );
 				}
-			}, mw.getConfig( 'EmbedPlayer.MonitorRate' ) );
+			}, mw.config.get( 'EmbedPlayer.MonitorRate' ) );
 
 		} else {
 			// try to do a play then seek:

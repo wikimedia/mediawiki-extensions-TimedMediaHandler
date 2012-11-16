@@ -119,7 +119,7 @@ mw.EmbedPlayerNative = {
 
 		// Add an image poster:
 		var posterSrc = ( this.poster ) ? this.poster :
-			mw.getConfig( 'EmbedPlayer.BlackPixel' );
+			mw.config.get( 'EmbedPlayer.BlackPixel' );
 
 		// Check if the poster is already present:
 		if( $( this ).find( '.playerPoster' ).length ){
@@ -233,11 +233,11 @@ mw.EmbedPlayerNative = {
 			$( vid ).attr( 'src', this.getSrc( this.currentTime ) );
 		}
 		// Update the WebKitPlaysInline value
-		if( mw.getConfig( 'EmbedPlayer.WebKitPlaysInline') ){
+		if( mw.config.get( 'EmbedPlayer.WebKitPlaysInline') ){
 			$( vid ).attr( 'webkit-playsinline', 1 );
 		}
 		// Update the EmbedPlayer.WebKitAllowAirplay option:
-		if( mw.getConfig( 'EmbedPlayer.WebKitAllowAirplay' ) ){
+		if( mw.config.get( 'EmbedPlayer.WebKitAllowAirplay' ) ){
 			$( vid ).attr( 'x-webkit-airplay', "allow" );
 		}
 		// make sure to display native controls if enabled:
@@ -554,7 +554,7 @@ mw.EmbedPlayerNative = {
 					mw.log("EmbedPlayerNative:: Got possitive time:" + vid.currentTime.toFixed(3) + ", trying to seek again");
 					_this.setCurrentTime( seekTime , callback, callbackCount+1 );
 				});
-			}, mw.getConfig( 'EmbedPlayer.MonitorRate' ) );
+			}, mw.config.get( 'EmbedPlayer.MonitorRate' ) );
 		}
 	},
 	waitForPositiveCurrentTime: function( callback ){
@@ -980,7 +980,7 @@ mw.EmbedPlayerNative = {
 		mw.log( "EmbedPlayerNative:: OnPaused:: propagate:" +  this._propagateEvents + ' time since play: ' + timeSincePlay  + ' isNative=true' );
 		// Only trigger parent pause if more than MonitorRate time has gone by.
 		// Some browsers trigger native pause events when they "play" or after a src switch
-		if( timeSincePlay > mw.getConfig( 'EmbedPlayer.MonitorRate' ) ){
+		if( timeSincePlay > mw.config.get( 'EmbedPlayer.MonitorRate' ) ){
 			_this.parent_pause();
 		} else {
 			// continue playback:

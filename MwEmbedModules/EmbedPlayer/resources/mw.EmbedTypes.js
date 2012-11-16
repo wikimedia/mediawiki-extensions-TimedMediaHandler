@@ -81,12 +81,12 @@ mw.EmbedTypes = {
 		return false;
 	},
 	addFlashPlayer: function(){
-		if( !mw.getConfig( 'EmbedPlayer.DisableHTML5FlashFallback' ) ){
+		if( !mw.config.get( 'EmbedPlayer.DisableHTML5FlashFallback' ) ){
 			this.mediaPlayers.addPlayer( kplayer );
 		}
 	},
 	addJavaPlayer: function(){
-		if( !mw.getConfig( 'EmbedPlayer.DisableJava' ) ){
+		if( !mw.config.get( 'EmbedPlayer.DisableJava' ) ){
 			mw.log("EmbedTypes::addJavaPlayer: adding cortadoPlayer");
 			this.mediaPlayers.addPlayer( cortadoPlayer );
 		}
@@ -140,7 +140,7 @@ mw.EmbedTypes = {
 			 // this.mediaPlayers.addPlayer(quicktimeActiveXPlayer);
 		 }
 		// <video> element
-		if ( ! mw.getConfig('EmbedPlayer.DisableVideoTagSupport' ) // to support testing limited / old browsers
+		if ( ! mw.config.get('EmbedPlayer.DisableVideoTagSupport' ) // to support testing limited / old browsers
 				&&
 				(
 				typeof HTMLVideoElement == 'object' // Firefox, Safari

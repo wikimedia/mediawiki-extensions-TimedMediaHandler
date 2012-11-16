@@ -32,8 +32,8 @@
 		//EmbedPlayerUpdateDependencies passes video element with data attribute
 		//catch both
 		var mwprovider = embedPlayer['data-mwprovider'] || $( embedPlayer ).data('mwprovider');
-		var showInterface = mw.getConfig( 'TimedText.ShowInterface.' + mwprovider  ) ||
-			 mw.getConfig( 'TimedText.ShowInterface' );
+		var showInterface = mw.config.get( 'TimedText.ShowInterface.' + mwprovider  ) ||
+			 mw.config.get( 'TimedText.ShowInterface' );
 
 		if ( showInterface == 'always' ) {
 			return true;

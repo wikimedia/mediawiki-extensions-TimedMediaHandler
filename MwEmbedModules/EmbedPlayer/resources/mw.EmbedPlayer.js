@@ -268,7 +268,7 @@
 			var _this = this;
 			mw.log('EmbedPlayer: initEmbedPlayer: ' + $(element).width() );
 
-			var playerAttributes = mw.getConfig( 'EmbedPlayer.Attributes' );
+			var playerAttributes = mw.config.get( 'EmbedPlayer.Attributes' );
 
 			// Store the rewrite element tag type
 			this.rewriteElementTagName = element.tagName.toLowerCase();
@@ -301,7 +301,7 @@
 			var	sn = $(element).attr( 'class' );
 
 			if ( sn && sn != '' ) {
-				var skinList = mw.getConfig('EmbedPlayer.SkinList');
+				var skinList = mw.config.get('EmbedPlayer.SkinList');
 				for ( var n = 0; n < skinList.length; n++ ) {
 					if ( sn.indexOf( skinList[n].toLowerCase() ) !== -1 ) {
 						this.skinName = skinList[ n ];
@@ -310,12 +310,12 @@
 			}
 			// Set the default skin if unset:
 			if ( !this.skinName ) {
-				this.skinName = mw.getConfig( 'EmbedPlayer.DefaultSkin' );
+				this.skinName = mw.config.get( 'EmbedPlayer.DefaultSkin' );
 			}
 
 			// Support custom monitorRate Attribute ( if not use default )
 			if( !this.monitorRate ){
-				this.monitorRate = mw.getConfig( 'EmbedPlayer.MonitorRate' );
+				this.monitorRate = mw.config.get( 'EmbedPlayer.MonitorRate' );
 			}
 
 			// Make sure startOffset is cast as an float:
@@ -553,7 +553,7 @@
 					// values
 					( (this.height == 150 || this.height == 64 ) && this.width == 300 )
 				) {
-				var defaultSize = mw.getConfig( 'EmbedPlayer.DefaultSize' ).split( 'x' );
+				var defaultSize = mw.config.get( 'EmbedPlayer.DefaultSize' ).split( 'x' );
 				if( isNaN( this.width ) ){
 					this.width = defaultSize[0];
 				}
@@ -665,9 +665,9 @@
 			mw.log("EmbedPlayer::setupSourcePlayer: " + this.id + ' sources: ' + this.mediaElement.sources.length );
 
 			// Check for source replace configuration:
-			if( mw.getConfig('EmbedPlayer.ReplaceSources' ) ){
+			if( mw.config.get('EmbedPlayer.ReplaceSources' ) ){
 				this.emptySources();
-				$.each( mw.getConfig('EmbedPlayer.ReplaceSources' ), function( inx, source ){
+				$.each( mw.config.get('EmbedPlayer.ReplaceSources' ), function( inx, source ){
 					_this.mediaElement.tryAddSource( source );
 				});
 			}
@@ -1001,7 +1001,7 @@
 							_this.pause();
 						}
 						// Check if have a force display of the large play button
-						if( mw.getConfig('EmbedPlayer.ForceLargeReplayButton') === true ){
+						if( mw.config.get('EmbedPlayer.ForceLargeReplayButton') === true ){
 							_this.addLargePlayBtn();
 						} else{
 							// Check if we should hide the large play button on end:
@@ -1139,7 +1139,7 @@
 		updateLayout: function() {
 			// update image layout:
 			this.applyIntrinsicAspect();
-			if( !mw.getConfig('EmbedPlayer.IsIframeServer' ) ){
+			if( !mw.config.get('EmbedPlayer.IsIframeServer' ) ){
 				// Use intrensic container size
 				return ;
 			}
@@ -1260,7 +1260,7 @@
 			// Remove a loading spinner
 			this.hideSpinnerAndPlayBtn();
 			if( this.controlBuilder ) {
-				if( mw.getConfig("EmbedPlayer.ShowPlayerAlerts") ) {
+				if( mw.config.get("EmbedPlayer.ShowPlayerAlerts") ) {
 					var alertObj = $.extend( errorObj, {
 						'isModal': true,
 						'keepOverlay': true,
@@ -1327,7 +1327,7 @@
 			// Check if any sources are avaliable:
 			if( this.mediaElement.sources.length == 0
 				||
-				!mw.getConfig('EmbedPlayer.NotPlayableDownloadLink') )
+				!mw.config.get('EmbedPlayer.NotPlayableDownloadLink') )
 			{
 				return ;
 			}
@@ -1461,7 +1461,7 @@
 		 */
 		updatePosterSrc: function( posterSrc ){
 			if( ! posterSrc ) {
-				posterSrc = mw.getConfig( 'EmbedPlayer.BlackPixel' );
+				posterSrc = mw.config.get( 'EmbedPlayer.BlackPixel' );
 			}
 			this.poster = posterSrc;
 			this.updatePosterHTML();
@@ -1593,7 +1593,7 @@
 			return ( this.useNativePlayerControls() &&
 				!this.isLinkPlayer &&
 				mw.isIphone() &&
-				mw.getConfig( 'EmbedPlayer.iPhoneShowHTMLPlayScreen')
+				mw.config.get( 'EmbedPlayer.iPhoneShowHTMLPlayScreen')
 			);
 		},
 		/**
@@ -1625,7 +1625,7 @@
 
 			// Set by default thumb value if not found
 			var posterSrc = ( this.poster ) ? this.poster :
-							mw.getConfig( 'EmbedPlayer.BlackPixel' );
+							mw.config.get( 'EmbedPlayer.BlackPixel' );
 
 			// Update PersistentNativePlayer poster:
 			if( this.isPersistentNativePlayer() ){
@@ -1692,7 +1692,7 @@
 		 */
 		isPersistantPlayBtn: function(){
 			return mw.isAndroid2() ||
-					( mw.isIphone() && mw.getConfig( 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ) );
+					( mw.isIphone() && mw.config.get( 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ) );
 		},
 		/**
 		 * Checks if native controls should be used
@@ -1705,12 +1705,12 @@
 				return true;
 			}
 
-			if( mw.getConfig('EmbedPlayer.NativeControls') === true ) {
+			if( mw.config.get('EmbedPlayer.NativeControls') === true ) {
 				return true;
 			}
 
 			// Check for special webkit property that allows inline iPhone playback:
-	 		if( mw.getConfig('EmbedPlayer.WebKitPlaysInline') === true && mw.isIphone() ) {
+	 		if( mw.config.get('EmbedPlayer.WebKitPlaysInline') === true && mw.isIphone() ) {
 	 			return false;
 	 		}
 
@@ -1723,7 +1723,7 @@
 			// iPad can use html controls if its a persistantPlayer in the dom before loading )
 			// else it needs to use native controls:
 			if( mw.isIpad() ){
-				if( mw.getConfig('EmbedPlayer.EnableIpadHTMLControls') === true){
+				if( mw.config.get('EmbedPlayer.EnableIpadHTMLControls') === true){
 					return false;
 				} else {
 					// Set warning that your trying to do iPad controls without
@@ -1780,7 +1780,7 @@
 			}
 
 			// iPhone in WebKitPlaysInline mode does not support clickable overlays as of iOS 5.0
-			if( mw.getConfig( 'EmbedPlayer.WebKitPlaysInline') && mw.isIphone() ) {
+			if( mw.config.get( 'EmbedPlayer.WebKitPlaysInline') && mw.isIphone() ) {
 				return ;
 			}
 			if( this.getInterface().find( '.play-btn-large' ).length ){
@@ -1818,7 +1818,7 @@
 		 * Gets code to embed the player remotely for "share" this player links
 		 */
 		getSharingEmbedCode: function() {
-			switch( mw.getConfig( 'EmbedPlayer.ShareEmbedMode' ) ){
+			switch( mw.config.get( 'EmbedPlayer.ShareEmbedMode' ) ){
 				case 'iframe':
 					return this.getShareIframeObject();
 				break;
@@ -2724,7 +2724,7 @@
 		 *         src does not support url time requests
 		 */
 		supportsURLTimeEncoding: function() {
-			var timeUrls = mw.getConfig('EmbedPlayer.EnableURLTimeEncoding') ;
+			var timeUrls = mw.config.get('EmbedPlayer.EnableURLTimeEncoding') ;
 			if( timeUrls == 'none' ){
 				return false;
 			} else if( timeUrls == 'always' ){
@@ -2735,7 +2735,7 @@
 					return ( this.instanceOf == 'Kplayer' );
 				}
 			} else {
-				mw.log("Error:: invalid config value for EmbedPlayer.EnableURLTimeEncoding:: " + mw.getConfig('EmbedPlayer.EnableURLTimeEncoding') );
+				mw.log("Error:: invalid config value for EmbedPlayer.EnableURLTimeEncoding:: " + mw.config.get('EmbedPlayer.EnableURLTimeEncoding') );
 			}
 			return false;
 		}

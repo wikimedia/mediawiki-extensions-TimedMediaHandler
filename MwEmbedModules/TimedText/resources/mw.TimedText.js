@@ -177,8 +177,8 @@
 				// Check if we are in fullscreen or not, if so add an additional bottom offset of
 				// double the default bottom padding.
 				var textOffset = _this.embedPlayer.controlBuilder.inFullScreen ?
-						mw.getConfig("TimedText.BottomPadding") * 2 :
-						mw.getConfig("TimedText.BottomPadding");
+						mw.config.get("TimedText.BottomPadding") * 2 :
+						mw.config.get("TimedText.BottomPadding");
 
 				var textCss = _this.getInterfaceSizeTextCss({
 					'width' :  embedPlayer.getInterface().width(),
@@ -263,7 +263,7 @@
 			});
 		},
 		includeCaptionButton:function(){
-			return  mw.getConfig( 'TimedText.ShowInterface' ) == 'always'  ||
+			return  mw.config.get( 'TimedText.ShowInterface' ) == 'always'  ||
 					this.embedPlayer.getTextTracks().length;
 		},
 		/**
@@ -437,7 +437,7 @@
 				// NOTE: Button target should be an option or config
 				$menuButton.menu( {
 					'content'	: _this.getMainMenu(),
-					'zindex' : mw.getConfig( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+					'zindex' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 					'crumbDefaultText' : ' ',
 					'autoShow': autoShow,
 					'keepPosition' : true,
@@ -1077,7 +1077,7 @@
 					if( addedCaption ){
 						$( caption ).remove();
 					} else {
-						$( caption ).fadeOut( mw.getConfig('EmbedPlayer.MonitorRate'), function(){$(this).remove();} );
+						$( caption ).fadeOut( mw.config.get('EmbedPlayer.MonitorRate'), function(){$(this).remove();} );
 					}
 				}
 			});
@@ -1244,7 +1244,7 @@
 				$('<div>').addClass( 'captionContainer block' )
 				.css({
 					'width' : '100%',
-					'height' : mw.getConfig( 'TimedText.BelowVideoBlackBoxHeight' ) + 'px',
+					'height' : mw.config.get( 'TimedText.BelowVideoBlackBoxHeight' ) + 'px',
 					'background-color' : '#000',
 					'text-align' : 'center',
 					'padding-top' : '5px'

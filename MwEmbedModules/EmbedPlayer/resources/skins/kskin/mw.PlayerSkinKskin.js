@@ -358,7 +358,7 @@ mw.PlayerSkinKskin = {
 			)
 		);
 
-		if( mw.getConfig( 'EmbedPlayer.KalturaAttribution' ) == true ){
+		if( mw.config.get( 'EmbedPlayer.KalturaAttribution' ) == true ){
 			$target.append(
 				$( '<div />' )
 				.addClass( 'k-attribution' )

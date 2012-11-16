@@ -116,7 +116,7 @@ mw.EmbedPlayerImageOverlay = {
 			// add another pause request after 500 ms ( iOS sometimes does not listen the first time )
 			setTimeout(function(){
 				vid.pause();
-			}, mw.getConfig( 'EmbedPlayer.MonitorRate' ) * 2 );
+			}, mw.config.get( 'EmbedPlayer.MonitorRate' ) * 2 );
 		}
 		// call the parent play ( to update interface and call respective triggers )
 		this.parent_play();
@@ -134,7 +134,7 @@ mw.EmbedPlayerImageOverlay = {
 		if( this.imageDuration ){
 			this.duration = this.imageDuration ;
 		} else {
-			this.duration = mw.getConfig( "EmbedPlayer.DefaultImageDuration" );
+			this.duration = mw.config.get( "EmbedPlayer.DefaultImageDuration" );
 		}
 		// make sure duration has type float:
 		this.duration = parseFloat( this.duration );

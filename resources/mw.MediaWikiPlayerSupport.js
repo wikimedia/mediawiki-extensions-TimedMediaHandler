@@ -30,7 +30,7 @@
 		// Set local apiProvider via config if not defined
 		var apiProvider = embedPlayer['data-mwprovider'];
 		if( !apiProvider ){
-			apiProvider = mw.getConfig( 'EmbedPlayer.ApiProvider' );
+			apiProvider = mw.config.get( 'EmbedPlayer.ApiProvider' );
 		}
 
 		/**
@@ -352,9 +352,9 @@
 				iframeUrl = '//commons.wikimedia.org/wiki/File:' + unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' );
 			} else {
 				// use the local wiki:
-				if( mw.getConfig('wgServer') && mw.getConfig('wgArticlePath') ){
-					iframeUrl =  mw.getConfig('wgServer') +
-						mw.getConfig('wgArticlePath').replace( /\$1/, 'File:' +
+				if( mw.config.get('wgServer') && mw.config.get('wgArticlePath') ){
+					iframeUrl =  mw.config.get('wgServer') +
+						mw.config.get('wgArticlePath').replace( /\$1/, 'File:' +
 							unescape( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/ , '' ) )
 				}
 			}
