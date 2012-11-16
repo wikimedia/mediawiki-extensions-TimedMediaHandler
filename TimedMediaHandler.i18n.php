@@ -1027,6 +1027,9 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}} en la cola',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificaciones fallidas}}',
 	'timedmedia-file' => 'Archivo',
+	'right-transcode-reset' => 'Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo.',
+	'right-transcode-status' => 'Ver [[Special:TimedMediaHandler]] con información sobre la actividad de transcodificación actual',
+	'action-transcode-status' => 'ver el estado de transcodificación',
 );
 
 /** Estonian (eesti)
@@ -2394,6 +2397,7 @@ $messages['ko'] = array(
 	'timedmedia-file' => '파일',
 	'right-transcode-reset' => '초기화를 실패했거나 동영상이 코드 변환했기 때문에 다시 작업 대기열에 삽입됩니다.',
 	'right-transcode-status' => '현재 코드 변환 활동에 대한 정보는 [[Special:TimedMediaHandler]]를 참고하세요',
+	'action-transcode-status' => '코드 변환 상태 보기',
 );
 
 /** Karachay-Balkar (къарачай-малкъар)

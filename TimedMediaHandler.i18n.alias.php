@@ -12,3 +12,8 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'TimedMediaHandler' => array( 'TimedMediaHandler' ),
 );
+
+/** Macedonian (македонски) */
+$specialPageAliases['mk'] = array(
+	'TimedMediaHandler' => array( 'СинхронизираниСнимки' ),
+);
