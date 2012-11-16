@@ -284,7 +284,7 @@
 			* The closed captions button
 			*/
 			return {
-				'w': 28,
+				'w': 30,
 				'o': function( ctrlObj ) {
 					var $textButton = $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-timed_text' ) )
