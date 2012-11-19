@@ -705,7 +705,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-days' => '$1 {{PLURAL:$1|den|dny|dní}}',
 	'timedmedia-hours' => '$1 {{PLURAL:$1|hodina|hodiny|hodin}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minuta|minuty|minut}}',
-	'timedmedia-seconds' => '$1 {{PLURAL:|sekunda|sekundy|sekund}}',
+	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 a $4',
 	'timedmedia-time-3-measurements' => '$1, $2 a $3',
 	'timedmedia-time-2-measurements' => '$1 a $2',
@@ -1259,6 +1259,9 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-derivative-state-queued' => "{{PLURAL:$1|$1 transcodage en file d'attente|$1 transcodages en file d'attente}}",
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodage échoué|$1 transcodages échoués}}',
 	'timedmedia-file' => 'Fichier',
+	'right-transcode-reset' => 'Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux.',
+	'right-transcode-status' => "Afficher [[Special:TimedMediaHandler]] avec une information sur l'activité de transcodage actuelle",
+	'action-transcode-status' => "afficher l'état de transcodage",
 );
 
 /** Franco-Provençal (arpetan)
