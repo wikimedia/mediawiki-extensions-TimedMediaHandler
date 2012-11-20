@@ -150,6 +150,19 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
+	* Get useful response headers for GET/HEAD requests for a file with the given metadata
+	* @param $metadata mixed Result this handlers getMetadata() for a file
+	* @return Array
+	*/
+	public function getStreamHeaders( $metadata ) {
+		$metadata = $this->unpackMetadata( $metadata );
+		if ( $metadata && !isset( $metadata['error'] ) && isset( $metadata['length'] ) ) {
+			return array( 'X-Content-Duration' => floatval( $metadata[ 'length' ] ) );
+		}
+		return array();
+	}
+
+	/**
 	 * @param $file File
 	 * @return float|int
 	 */
