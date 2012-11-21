@@ -18,13 +18,22 @@ class TimedTextPage extends Article {
 		$user = $this->getContext()->getUser();
 
 		$diff = $request->getVal( 'diff' );
-		$diffOnly = $request->getBool( 'diffonly', $user->getOption( 'diffonly' ) );
 
-		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || ( isset( $diff ) && $diffOnly ) ) {
+		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || isset( $diff ) ) {
 			parent::view();
 			wfProfileOut( __METHOD__ );
 			return;
 		}
+		$this->renderOutput( $out );
+		wfProfileOut( __METHOD__ );
+	}
+
+	/**
+	 * Render TimedText to given output
+	 * @param $out OutputPage
+	 */
+	public function renderOutput( $out ){
+		wfProfileIn( __METHOD__ );
 		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
 		$srt = array_pop( $titleParts );
