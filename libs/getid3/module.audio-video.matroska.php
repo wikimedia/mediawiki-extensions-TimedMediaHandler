@@ -263,8 +263,20 @@ class getid3_matroska extends getid3_handler
 					case 1: // Video
 						$track_info['resolution_x'] = $trackarray['PixelWidth'];
 						$track_info['resolution_y'] = $trackarray['PixelHeight'];
+						if (isset($trackarray['PixelCropBottom'])) { $track_info['crop_bottom']  = $trackarray['PixelCropBottom']; }
+						if (isset($trackarray['PixelCropTop']))    { $track_info['crop_top']  = $trackarray['PixelCropTop']; }
+						if (isset($trackarray['PixelCropLeft']))   { $track_info['crop_left']  = $trackarray['PixelCropLeft']; }
+						if (isset($trackarray['PixelCropRight']))  { $track_info['crop_right']  = $trackarray['PixelCropRight']; }
 						if (isset($trackarray['DisplayWidth']))    { $track_info['display_x']  = $trackarray['DisplayWidth']; }
 						if (isset($trackarray['DisplayHeight']))   { $track_info['display_y']  = $trackarray['DisplayHeight']; }
+						if (isset($trackarray['DisplayUnit'])) {
+							//0: pixels, 1: centimeters, 2: inches, 3: Display Aspect Ratio).
+							if ($trackarray['DisplayUnit'] > 0 && isset($track_info['display_y'])) {
+								$track_info['display_aspect_ratio'] = $track_info['display_x'] / $track_info['display_y'];
+								unset($track_info['display_x']);
+								unset($track_info['display_y']);
+							}
+						}
 						if (isset($trackarray['DefaultDuration'])) { $track_info['frame_rate'] = round(1000000000 / $trackarray['DefaultDuration'], 3); }
 						//if (isset($trackarray['CodecName']))       { $track_info['codec']      = $trackarray['CodecName']; }
 
