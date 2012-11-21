@@ -138,6 +138,7 @@ class TimedMediaHandlerHooks {
 
 		// Add transcode status to video asset pages:
 		$wgHooks[ 'ImagePageAfterImageLinks' ][] = 'TimedMediaHandlerHooks::checkForTranscodeStatus';
+		$wgHooks[ 'NewRevisionFromEditComplete' ][] = 'TimedMediaHandlerHooks::onNewRevisionFromEditComplete';
 
 		return true;
 	}
@@ -278,6 +279,22 @@ class TimedMediaHandlerHooks {
 			$file = wfFindFile( $article->getTitle() );
 			if( self::isTranscodableFile( $file ) ){
 				WebVideoTranscode::removeTranscodes( $file );
+			}
+		}
+		return true;
+	}
+
+	/*
+	 * If file gets reverted to a previous version, remove transcodes.
+	 */
+	public static function onNewRevisionFromEditComplete( $article, Revision $rev, $baseID, User $user ) {
+		if ( $baseID !== false ) {
+			// Check if the article is a file and remove transcode files:
+			if( $article->getTitle()->getNamespace() == NS_FILE ) {
+				$file = wfFindFile( $article->getTitle() );
+				if( self::isTranscodableFile( $file ) ){
+					WebVideoTranscode::removeTranscodes( $file );
+				}
 			}
 		}
 		return true;
