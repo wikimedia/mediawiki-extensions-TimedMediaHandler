@@ -16,8 +16,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 	);
 	private $formats = array(
-		'ogg' => 'img_name LIKE "%.ogv" OR img_name LIKE "%.ogg"',
-		'webm' => 'img_name LIKE "%.webm"',
+		'ogg' => 'img_minor_mime = "ogg"',
+		'webm' => 'img_minor_mime = "webm"',
 	);
 
 	public function __construct( $request = null, $par = null ) {
@@ -25,11 +25,6 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		// only show if user has right permissions
-		if ( !$this->getUser()->isAllowed( 'transcode-status' ) ) {
-			$this->displayRestrictionError();
-		}
-
 		$this->setHeaders();
 		$out = $this->getOutput();
 
