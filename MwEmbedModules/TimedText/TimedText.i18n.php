@@ -2247,6 +2247,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Shizhao
+ * @author Simon Shek
  * @author Wilsonmess
  * @author Xiaomingyan
  * @author Yfdyh000
@@ -2267,7 +2268,7 @@ $messages['zh-hans'] = array(
 	'mwe-timedtext-upload-text-desc-help-select' => '选择文件的语言',
 	'mwe-timedtext-upload-text-desc-help-review' => '审阅/编辑文本内容和通过上传增加文本',
 	'mwe-timedtext-upload-text-preview' => '审阅文本',
-	'mwe-timedtext-upload-text-success' => '顺利更新字幕',
+	'mwe-timedtext-upload-text-success' => '順利更新字幕',
 	'mwe-timedtext-upload-text-done' => '上传完成',
 	'mwe-timedtext-upload-text-fail-desc' => '未能成功上传',
 	'mwe-timedtext-upload-text-fail-title' => '上传失败',
@@ -2310,16 +2311,22 @@ $messages['zh-hans'] = array(
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
+	'mwe-timedtext-editor' => '字幕編輯器',
 	'mwe-timedtext-stage-transcribe' => '字幕',
 	'mwe-timedtext-stage-sync' => '同步',
 	'mwe-timedtext-stage-translate' => '翻譯',
 	'mwe-timedtext-stage-upload' => '從本地上傳',
 	'mwe-timedtext-select-language' => '選擇語言',
 	'mwe-timedtext-file-language' => '字幕語言',
-	'mwe-timedtext-upload-text' => '上傳文本文件',
-	'mwe-timedtext-uploading-text' => '正在上傳文本文件',
-	'mwe-timedtext-upload-text-desc-help-browse' => '瀏覽本機以查閱您想要上傳的.srt文件',
+	'mwe-timedtext-upload-text' => '上傳文本檔案',
+	'mwe-timedtext-uploading-text' => '正在上傳文本檔案',
+	'mwe-timedtext-upload-text-desc-title' => '上傳文字檔',
+	'mwe-timedtext-upload-text-desc-help' => '上傳文字檔介面接受.srt 檔',
+	'mwe-timedtext-upload-text-desc-help-browse' => '瀏覽本機以查閱您想要上傳的.srt檔案',
 	'mwe-timedtext-upload-text-desc-help-select' => '選擇文件的語言',
+	'mwe-timedtext-upload-text-desc-help-review' => '審閱／編輯文本內容後按上傳增加文本',
+	'mwe-timedtext-upload-text-preview' => '審閱文本',
+	'mwe-timedtext-upload-text-success' => '順利更新字幕',
 	'mwe-timedtext-upload-text-done' => '上傳完成',
 	'mwe-timedtext-upload-text-fail-desc' => '未能成功上傳',
 	'mwe-timedtext-upload-text-fail-title' => '上傳失敗',
@@ -2328,14 +2335,31 @@ $messages['zh-hant'] = array(
 	'mwe-timedtext-back-btn' => '返回',
 	'mwe-timedtext-choose-text' => '選擇文字',
 	'mwe-timedtext-upload-timed-text' => '添加字幕',
+	'mwe-timedtext-loading-text-edit' => '正在載入字幕編輯器',
 	'mwe-timedtext-search' => '搜索剪輯',
 	'mwe-timedtext-layout' => '布局',
+	'mwe-timedtext-layout-ontop' => '於視頻上方',
+	'mwe-timedtext-layout-below' => '視頻下方',
 	'mwe-timedtext-layout-off' => '隱藏字幕',
 	'mwe-timedtext-loading-text' => '正在讀取文本……',
 	'mwe-timedtext-textcat-cc' => '標題',
 	'mwe-timedtext-textcat-sub' => '副標題',
+	'mwe-timedtext-textcat-tad' => '音訊說明',
 	'mwe-timedtext-textcat-ktv' => '卡拉OK',
+	'mwe-timedtext-textcat-tik' => '滾動文本',
+	'mwe-timedtext-textcat-ar' => '有效區城',
 	'mwe-timedtext-textcat-nb' => '註解',
+	'mwe-timedtext-textcat-meta' => '字幕元數據',
 	'mwe-timedtext-textcat-trx' => '字幕',
 	'mwe-timedtext-textcat-lrc' => '歌詞',
+	'mwe-timedtext-textcat-lin' => '語言標記',
+	'mwe-timedtext-textcat-cue' => '暗點',
+	'mwe-timedtext-language-subtitles-for-clip' => '片段的$1字幕文件：$2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => '沒有找到片段的$1字幕文件：$2',
+	'mwe-timedtext-request-subs' => '請求字幕',
+	'mwe-timedtext-no-subs' => '沒有文本軌道',
+	'mwe-timedtext-request-subs-desc' => '添加此視頻的字幕請求',
+	'mwe-timedtext-request-subs-done' => '已添加此視頻的字幕請求。[$1 查看所有字幕請求]',
+	'mwe-timedtext-request-subs-fail' => '未能添加字幕請求。您登錄了嗎？',
+	'mwe-timedtext-request-already-done' => '已請求此視頻的字幕。[$1 查看所有字幕請求]',
 );

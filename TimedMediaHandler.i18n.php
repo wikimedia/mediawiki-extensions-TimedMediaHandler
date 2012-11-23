@@ -2854,6 +2854,7 @@ $messages['nah'] = array(
 );
 
 /** Norwegian Bokmål (norsk (bokmål)‎)
+ * @author Danmichaelo
  * @author Laaknor
  * @author Nghtwlkr
  */
@@ -2869,6 +2870,8 @@ $messages['nb'] = array(
 	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
 	'timedmedia-webm-long-video' => 'WebM lyd-/videofil, $1, lengde $2, $4 × $5 piksler, $3 til sammen',
+	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
+	'timedmedia-mp4-long-video' => 'MP4-fil for lyd/video, $1, lengde $2, $4 × $5 piksler, $3 totalt',
 	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
 Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
 	'timedmedia-more' => 'Mer …',
@@ -2884,9 +2887,11 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.or
 	'timedmedia-derivative-desc-360p.ogv' => 'Nett-strømbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Nett-strømbar Ogg-video (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Høykvalitets nedlastbar Ogg-video (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'Nett-strømbar WebM (160P)',
 	'timedmedia-derivative-desc-360p.webm' => 'Nett-strømbar WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Nett-strømbar WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Høykvalitets nedlastbar WebM (720P)',
+	'timedmedia-subtitle-new-go' => 'Kjør',
 	'timedmedia-subtitle-language' => '$1 ($2) undertekster',
 );
 
