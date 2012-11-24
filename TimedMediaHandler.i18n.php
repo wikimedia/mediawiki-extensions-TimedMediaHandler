@@ -3659,10 +3659,10 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="http://www.mediawiki.org/wi
 	'timedmedia-percent-done' => 'Končanih približno $1 %',
 	'timedmedia-in-job-queue' => 'Dodano v čakalno vrsto pred $1',
 	'timedmedia-unknown-target-size' => 'Neznana ciljna velikost, prekodirano $1',
-	'timedmedia-days' => '$1 {{PLURAL:$1|dan|dneva|dnevi|dni}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|ura|$1 uri|$1 ure|$1 ur}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|minuta|$1 minuti|$1 minute|$1 minut}}', # Fuzzy
-	'timedmedia-seconds' => '{{PLURAL:$1|sekunda|$1 sekundi|$1 sekunde|$1 sekund}}', # Fuzzy
+	'timedmedia-days' => '$1 {{PLURAL:$1|dan|dneva|dnevi|dni}}',
+	'timedmedia-hours' => '$1 {{PLURAL:$1|ura|uri|ure|ur}}',
+	'timedmedia-minutes' => '$1 {{PLURAL:$1|minuta|minuti|minute|minut}}',
+	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekunda|sekundi|sekunde|sekund}}',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 in $4',
 	'timedmedia-time-3-measurements' => '$1, $2 in $3',
 	'timedmedia-time-2-measurements' => '$1 in $2',
