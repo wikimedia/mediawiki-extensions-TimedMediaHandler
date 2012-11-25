@@ -690,11 +690,14 @@ $messages['cs'] = array(
 	'timedmedia-ogg-long-error' => 'Chybný soubor ogg: $1',
 	'timedmedia-webm-short-video' => 'Videosoubor WebM $1, $2',
 	'timedmedia-webm-long-video' => 'audio/video soubor WebM, $1, délka $2, $4×$5 pixelů, celkem $3',
+	'timedmedia-mp4-short-video' => 'Videosoubor MP4 $1, $2',
+	'timedmedia-mp4-long-video' => 'audio/video soubor MP4, $1, délka $2, $4×$5 pixelů, celkem $3',
 	'timedmedia-no-player-js' => 'Je mi líto, ale váš prohlížeč má buď vypnutý JavaScript, nebo nemáte žádný podporovaný přehrávač.<br />
 Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download/cs">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.',
 	'timedmedia-more' => 'Více...',
 	'timedmedia-dismiss' => 'Zavřít',
 	'timedmedia-download' => 'Stáhnout soubor',
+	'timedmedia-play-media' => 'Přehrát média',
 	'timedmedia-desc-link' => 'O tomto souboru',
 	'timedmedia-oggThumb-version' => 'OggHandler vyžaduje oggThumb verze $1 nebo novější.',
 	'timedmedia-oggThumb-failed' => 'oggThumb nedokázal vytvořit náhled.',
@@ -712,6 +715,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-show-error' => 'Zobrazit chybu',
 	'timedmedia-reset' => 'Obnovit transkódování',
 	'timedmedia-subtitle-new-go' => 'Přejít',
+	'timedmedia-subtitle-language' => 'titulky v jazyce $1 ($2)',
 	'timedmedia-file' => 'Soubor',
 );
 

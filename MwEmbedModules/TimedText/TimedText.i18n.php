@@ -363,7 +363,13 @@ $messages['de-formal'] = array(
  */
 $messages['diq'] = array(
 	'mwe-timedtext-stage-sync' => 'Sync',
+	'mwe-timedtext-stage-translate' => 'Açarne',
 	'mwe-timedtext-back-btn' => 'Peyser',
+	'mwe-timedtext-layout' => 'Ca gınayiş',
+	'mwe-timedtext-textcat-cc' => 'Bınnuşte',
+	'mwe-timedtext-textcat-sub' => 'Bın name',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-nb' => 'Ole şınasiye',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -2150,8 +2156,11 @@ $messages['uk'] = array(
 	'mwe-timedtext-upload-text' => 'Завантажити текстовий файл',
 	'mwe-timedtext-uploading-text' => 'Завантаження текстового файлу',
 	'mwe-timedtext-upload-text-desc-title' => 'Завантаження текстового файлу',
+	'mwe-timedtext-upload-text-desc-help' => 'Інтерфейс завантаження текстових файлів приймає файли з розширенням .srt',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Оберіть мову файлу',
 	'mwe-timedtext-back-btn' => 'Назад',
+	'mwe-timedtext-textcat-sub' => 'Субтитри',
+	'mwe-timedtext-textcat-tad' => 'Аудіо-опис',
 	'mwe-timedtext-textcat-ktv' => 'Караоке',
 );
 
