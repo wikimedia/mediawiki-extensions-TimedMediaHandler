@@ -306,8 +306,9 @@ class WebVideoTranscode {
 			'action' => 'query',
 			'prop' => 'videoinfo',
 			'viprop' => 'derivatives',
-			'titles' => $file->getTitle()->getFullText()
+			'titles' => MWNamespace::getCanonicalName( NS_FILE ) .':'. $file->getTitle()->mTextform
 		);
+		
 		$data = $file->repo->fetchImageQuery( $query );
 
 		if( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )

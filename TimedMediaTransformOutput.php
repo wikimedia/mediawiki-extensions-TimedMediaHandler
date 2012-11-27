@@ -336,7 +336,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 */
 	function getMediaSources(){
 		if( !$this->sources ){
-			// Generate transcode jobs ( and get sources that area already transcoded)
+			// Generate transcode jobs ( and get sources that are already transcoded)
 			// At a minimum this should return the source video file.
 			$this->sources = WebVideoTranscode::getSources( $this->file );
 			// Check if we have "start or end" times and append the temporal url fragment hash
