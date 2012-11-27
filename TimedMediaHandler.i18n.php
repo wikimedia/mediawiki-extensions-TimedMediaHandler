@@ -484,7 +484,7 @@ $messages['be-tarask'] = array(
 	'timedmedia-no-player-js' => 'Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />
 Вы можаце <a href="$1">загрузіць кліп</a> ці <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'timedmedia-more' => 'Болей…',
-	'timedmedia-dismiss' => 'Зачыніць',
+	'timedmedia-dismiss' => 'Схаваць',
 	'timedmedia-download' => 'Загрузіць файл',
 	'timedmedia-play-media' => 'Прайграць',
 	'timedmedia-desc-link' => 'Інфармацыя пра гэты файл',
@@ -522,6 +522,8 @@ $messages['be-tarask'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'Паточны WebM (360p)',
 	'timedmedia-derivative-desc-480p.webm' => 'Паточны WebM (480p)',
 	'timedmedia-derivative-desc-720p.webm' => 'Высакаякаснае WebM-відэа для загрузкі (720p)',
+	'timedmedia-derivative-desc-720p.mp4' => 'MP4 HD-якасьці (720P)',
+	'timedmedia-subtitle-new' => 'Стварыць новы пераклад ці рэдагаваць існуючы',
 	'timedmedia-subtitle-new-go' => 'Пачаць',
 	'timedmedia-subtitle-language' => 'Субтытры ($2) на $1',
 	'timedmediahandler' => 'TimedMediaHandler',
@@ -1962,6 +1964,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  * @author Darth Kule
  * @author F. Cosoleto
+ * @author Gianfranco
  * @author Raoli
  */
 $messages['it'] = array(
@@ -2044,6 +2047,7 @@ Continuare?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coda',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}',
 	'timedmedia-file' => 'File',
+	'right-transcode-reset' => 'Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.',
 	'right-transcode-status' => "Visualizza [[Special:TimedMediaHandler]] con informazioni sull'attuale attività di transcodifica",
 	'action-transcode-status' => 'visualizzare lo stato della transcodifica',
 );
