@@ -338,7 +338,7 @@ $messages['de'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Liedtext',
 	'mwe-timedtext-textcat-lin' => 'Sprachliche Beschreibung',
 	'mwe-timedtext-textcat-cue' => 'Cue-Punkte',
-	'mwe-timedtext-language-subtitles-for-clip' => '$1 Untertitel für den Videoclip gefunden: $2',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Untertitel auf $1 für den Videoclip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keine $1 Untertitel für den Videoclip gefunden: $2',
 	'mwe-timedtext-request-subs' => 'Untertitelung erbitten',
 	'mwe-timedtext-no-subs' => 'Es sind keine Untertitel verfügbar',
@@ -592,13 +592,29 @@ $messages['fa'] = array(
 );
 
 /** Finnish (suomi)
+ * @author Nedergard
  * @author Silvonen
  */
 $messages['fi'] = array(
 	'mwe-timedtext-stage-translate' => 'Käännä',
+	'mwe-timedtext-stage-upload' => 'Lataa paikallisesti tiedostosta',
 	'mwe-timedtext-select-language' => 'Valitse kieli',
+	'mwe-timedtext-file-language' => 'Tekstitystiedoston kieli',
+	'mwe-timedtext-upload-text' => 'Lataa tekstitiedosto',
+	'mwe-timedtext-uploading-text' => 'Ladataan tekstitiedostoa',
+	'mwe-timedtext-upload-text-desc-title' => 'Lataa tekstitiedosto',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Valitse tiedoston kieli',
+	'mwe-timedtext-upload-text-success' => 'Ajastetun tekstin lataus onnistui',
+	'mwe-timedtext-upload-text-done' => 'Lataus valmis',
+	'mwe-timedtext-upload-text-fail-desc' => 'Lataus onnistui',
+	'mwe-timedtext-upload-text-fail-title' => 'Lataus epäonnistui',
 	'mwe-timedtext-back-btn' => 'Takaisin',
+	'mwe-timedtext-choose-text' => 'Valitse teksti',
+	'mwe-timedtext-upload-timed-text' => 'Lisää tekstitykset',
+	'mwe-timedtext-layout-off' => 'Piilota tekstitys',
+	'mwe-timedtext-loading-text' => 'Ladataan tekstiä...',
 	'mwe-timedtext-textcat-cc' => 'Kuvatekstit',
+	'mwe-timedtext-textcat-sub' => 'Tekstitykset',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 );
 

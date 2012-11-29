@@ -951,15 +951,21 @@ $messages['fa'] = array(
 
 /** Finnish (suomi)
  * @author Crt
+ * @author Nedergard
  * @author Nike
  * @author Tofu II
  */
 $messages['fi'] = array(
+	'mwe-embedplayer-credit-title' => 'Otsikko: $1',
+	'mwe-embedplayer-credit-date' => 'Päivämäärä: $1',
+	'mwe-embedplayer-credit-author' => 'Tekijä: $1',
 	'mwe-embedplayer-loading_plugin' => 'Ladataan liitännäistä...',
 	'mwe-embedplayer-player_options' => 'Soittimen asetukset',
+	'mwe-embedplayer-timed_text' => 'Ajastettu teksti',
 	'mwe-embedplayer-player_fullscreen' => 'Koko näyttö',
 	'mwe-embedplayer-download_full' => 'Lataa koko videotiedosto:',
 	'mwe-embedplayer-download_clip' => 'Lataa video',
+	'mwe-embedplayer-download_text' => 'Lataa teksti',
 	'mwe-embedplayer-download' => 'Lataa',
 	'mwe-embedplayer-share' => 'Jaa',
 	'mwe-embedplayer-share_this_video' => 'Jaa tämä video',
