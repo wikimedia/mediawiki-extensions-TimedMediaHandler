@@ -2383,6 +2383,7 @@ $messages['mt'] = array(
 );
 
 /** Norwegian Bokmål (norsk (bokmål)‎)
+ * @author Danmichaelo
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
@@ -2427,7 +2428,7 @@ $messages['nb'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
 	'mwe-embedplayer-ogg-player-selected' => '(valgt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For en bedre opplevelse av videoavspillingen anbefaler vi [$1 den nyeste Firefox].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'For en bedre avspillingsopplevelse anbefaler vi en [$1 html5 videoleser].',
 	'mwe-embedplayer-playerSelect' => 'Spillere',
 	'mwe-embedplayer-related_videos' => 'Relaterte videoer',
 	'mwe-embedplayer-copy-code' => 'Kopier kode',
@@ -2436,6 +2437,10 @@ $messages['nb'] = array(
 	'mwe-embedplayer-video-flv' => 'Flash-video',
 	'mwe-embedplayer-video-ogg' => 'Ogg-video',
 	'mwe-embedplayer-video-audio' => 'Ogg-audio',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG-lyd',
+	'mwe-embedplayer-video-3gp' => '3GP-video',
+	'mwe-embedplayer-video-mpeg' => 'MPEG-video',
+	'mwe-embedplayer-video-msvideo' => 'AVI-video',
 	'mwe-embedplayer-missing-source' => 'Ingen kildevideo ble funnet',
 );
 

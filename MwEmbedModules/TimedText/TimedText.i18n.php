@@ -1445,6 +1445,7 @@ $messages['mk'] = array(
 );
 
 /** Norwegian Bokmål (norsk (bokmål)‎)
+ * @author Danmichaelo
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
@@ -1470,6 +1471,7 @@ $messages['nb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'Ferdig med å laste opp',
 	'mwe-timedtext-back-btn' => 'Tilbake',
 	'mwe-timedtext-choose-text' => 'Velg tekst',
+	'mwe-timedtext-upload-timed-text' => 'Legg til undertekster',
 	'mwe-timedtext-loading-text-edit' => 'Laster editor for tidsbestemt tekst',
 	'mwe-timedtext-search' => 'Søk klipp',
 	'mwe-timedtext-layout' => 'Oppsett',
@@ -1481,10 +1483,20 @@ $messages['nb'] = array(
 	'mwe-timedtext-textcat-sub' => 'Undertekster',
 	'mwe-timedtext-textcat-tad' => 'Lydbeskrivelse',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Tekst-ticker',
 	'mwe-timedtext-textcat-ar' => 'Aktive regioner',
+	'mwe-timedtext-textcat-nb' => 'Merknad',
+	'mwe-timedtext-textcat-meta' => 'Tidsbestemt metadata',
+	'mwe-timedtext-textcat-trx' => 'Transkripsjon',
 	'mwe-timedtext-textcat-lrc' => 'Tekster',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertekster for klipp: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ingen $1-undertekster ble funnet for klipp: $2',
+	'mwe-timedtext-request-subs' => 'Etterspør transkripsjon',
+	'mwe-timedtext-no-subs' => 'Ingen tekstspor finnes',
+	'mwe-timedtext-request-subs-desc' => 'Legg inn forespørsel om at denne videofilen blir transkribert',
+	'mwe-timedtext-request-subs-done' => 'Transkripsjonsforespørsel lagt til. [$1 Vis alle transkripsjonsforespørsler]',
+	'mwe-timedtext-request-subs-fail' => 'Transkripsjonsforespørselen kunne ikke lagres. Er du logget inn?',
+	'mwe-timedtext-request-already-done' => 'Transkripsjon av denne videoen har allerede blitt forespurt. [$1 Vis alle transkripsjonsforespørsler]',
 );
 
 /** Dutch (Nederlands)
