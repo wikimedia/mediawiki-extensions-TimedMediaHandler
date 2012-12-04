@@ -249,6 +249,12 @@
 				// possible event trigger error. ( skip )
 				return ;
 			}
+			// dont show credits for audio elements,
+			// seek to begining instead
+			if( embedPlayer.isAudio() ){
+				embedPlayer.setCurrentTime(0);
+				return ;
+			}
 			var cb = embedPlayer.controlBuilder;
 			cb.checkMenuOverlay();
 			cb.showMenuOverlay();
