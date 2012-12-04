@@ -33,6 +33,7 @@ class TimedTextPage extends Article {
 	 * @param $out OutputPage
 	 */
 	public function renderOutput( $out ){
+		global $wgLang;
 		wfProfileIn( __METHOD__ );
 		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
@@ -75,7 +76,7 @@ class TimedTextPage extends Article {
 		}
 
 		// Look up the language name:
-		$languages = Language::fetchLanguageNames( 'en', 'all' );
+		$languages = Language::fetchLanguageNames( $wgLang->getCode(), 'all' );
 		if( isset( $languages[ $languageKey ] ) ) {
 			$languageName = $languages[ $languageKey ];
 		} else {
@@ -83,9 +84,10 @@ class TimedTextPage extends Article {
 		}
 
 		// Set title
-		$out->setPageTitle(
-			wfMessage( 'mwe-timedtext-language-subtitles-for-clip', $languageName, $videoTitle )
-		);
+		$message = $this->exists() ?
+			'mwe-timedtext-language-subtitles-for-clip' :
+			'mwe-timedtext-language-no-subtitles-for-clip';
+		$out->setPageTitle( wfMessage($message, $languageName, $videoTitle ) );
 
 		// Get the video with with a max of 600 pixel page
 		$out->addHTML(
