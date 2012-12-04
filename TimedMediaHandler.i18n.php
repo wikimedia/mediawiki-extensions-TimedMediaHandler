@@ -3056,6 +3056,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|één transcodering|$1 transcoderingen}} in de wachtrij',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|één mislukte transcodering|$1 mislukte transcoderingen}}',
 	'timedmedia-file' => 'Bestand',
+	'action-transcode-status' => 'transcoderingsstatus te bekijken',
 );
 
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
