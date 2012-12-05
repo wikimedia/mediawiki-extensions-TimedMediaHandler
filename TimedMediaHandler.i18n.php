@@ -107,7 +107,7 @@ Are you sure you want to proceed?',
 
 	// Timed text page
 	'timedmedia-subtitle-new' => 'Create new translation or edit existing',
-	'timedmedia-subtitle-new-desc' => "Replace '''LANG''' part with your [[:en:ISO 639|language code]] and press '''{{int:Timedmedia-subtitle-new-go}}''' button",
+	'timedmedia-subtitle-new-desc' => "Replace '''$1''' part with your [[:en:ISO 639|language code]] and press '''{{int:Timedmedia-subtitle-new-go}}''' button",
 	'timedmedia-subtitle-new-go' => 'Go',
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
