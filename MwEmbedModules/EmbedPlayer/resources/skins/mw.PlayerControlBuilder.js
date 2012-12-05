@@ -79,7 +79,6 @@ mw.PlayerControlBuilder.prototype = {
 		// Check for skin overrides for controlBuilder
 		var skinClass = embedPlayer.skinName.substr(0,1).toUpperCase() + embedPlayer.skinName.substr( 1 );
 		if ( mw['PlayerSkin' + skinClass ] ) {
-
 			// Clone as to not override prototype with the skin config
 			var _this = $.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );
 			return _this;
@@ -2248,6 +2247,70 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	components: {
 		/**
+		* The pause / play button
+		*/
+		'pause': {
+			'w': 28,
+			'o': function( ctrlObj ) {
+				return $( '<div />' )
+						.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) )
+						.addClass ( "ui-state-default ui-corner-all ui-icon_link lButton play-btn" )
+						.append(
+							$( '<span />' )
+							.addClass( "ui-icon ui-icon-play" )
+						)
+						// Play / pause binding
+						.buttonHover()
+						.click( function() {
+							ctrlObj.embedPlayer.play();
+							// Don't follow the # link:
+							return false;
+						});
+			}
+		},
+
+		/**
+		* The volume control interface html
+		*/
+		'volumeControl': {
+			'w' : 28,
+			'o' : function( ctrlObj ) {
+				mw.log( 'PlayerControlBuilder::Set up volume control for: ' + ctrlObj.embedPlayer.id );
+				var $volumeOut = $( '<span />' );
+				if ( ctrlObj.volumeLayout == 'horizontal' ) {
+					$volumeOut.append(
+						$( '<div />' )
+						.addClass( "ui-slider ui-slider-horizontal rButton volume-slider" )
+					);
+				}
+
+				// Add the volume control icon
+				$volumeOut.append(
+				 	$('<div />')
+				 	.attr( 'title', gM( 'mwe-embedplayer-volume_control' ) )
+				 	.addClass( "ui-state-default ui-corner-all ui-icon_link rButton volume_control" )
+				 	.append(
+				 		$( '<span />' )
+				 		.addClass( "ui-icon ui-icon-volume-on" )
+				 	)
+				 );
+				if ( ctrlObj.volumeLayout == 'vertical' ) {
+					$volumeOut.find('.volume_control').append(
+						$( '<div />' )
+						.hide()
+						.addClass( "vol_container ui-corner-all" )
+						.append(
+							$( '<div />' )
+							.addClass ( "volume-slider" )
+						)
+					);
+				}
+				//Return the inner html
+				return $volumeOut.html();
+			}
+		},
+
+		/**
 		* The large play button in center of the player
 		*/
 		'playButtonLarge': {
@@ -2431,70 +2494,6 @@ mw.PlayerControlBuilder.prototype = {
 		},
 
 
-		/**
-		* The pause / play button
-		*/
-		'pause': {
-			'w': 28,
-			'o': function( ctrlObj ) {
-				return $( '<div />' )
-						.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) )
-						.addClass ( "ui-state-default ui-corner-all ui-icon_link lButton play-btn" )
-						.append(
-							$( '<span />' )
-							.addClass( "ui-icon ui-icon-play" )
-						)
-						// Play / pause binding
-						.buttonHover()
-						.click( function() {
-							ctrlObj.embedPlayer.play();
-							// Don't follow the # link:
-							return false;
-						});
-			}
-		},
-
-
-		/**
-		* The volume control interface html
-		*/
-		'volumeControl': {
-			'w' : 28,
-			'o' : function( ctrlObj ) {
-				mw.log( 'PlayerControlBuilder::Set up volume control for: ' + ctrlObj.embedPlayer.id );
-				var $volumeOut = $( '<span />' );
-				if ( ctrlObj.volumeLayout == 'horizontal' ) {
-					$volumeOut.append(
-						$( '<div />' )
-						.addClass( "ui-slider ui-slider-horizontal rButton volume-slider" )
-					);
-				}
-
-				// Add the volume control icon
-				$volumeOut.append(
-				 	$('<div />')
-				 	.attr( 'title', gM( 'mwe-embedplayer-volume_control' ) )
-				 	.addClass( "ui-state-default ui-corner-all ui-icon_link rButton volume_control" )
-				 	.append(
-				 		$( '<span />' )
-				 		.addClass( "ui-icon ui-icon-volume-on" )
-				 	)
-				 );
-				if ( ctrlObj.volumeLayout == 'vertical' ) {
-					$volumeOut.find('.volume_control').append(
-						$( '<div />' )
-						.hide()
-						.addClass( "vol_container ui-corner-all" )
-						.append(
-							$( '<div />' )
-							.addClass ( "volume-slider" )
-						)
-					);
-				}
-				//Return the inner html
-				return $volumeOut.html();
-			}
-		},
 
 		'sourceSwitch' : {
 			'w' : 70,
