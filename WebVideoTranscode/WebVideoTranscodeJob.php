@@ -70,13 +70,17 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * @return string
+	 * @return string|bool
 	 */
 	private function getSourceFilePath(){
 		if( !$this->sourceFilePath ){
 			$file = $this->getFile();
 			$this->source = $file->repo->getLocalReference( $file->getPath() );
-			$this->sourceFilePath = $this->source->getPath();
+			if ( !$this->source ) {
+				$this->sourceFilePath = false;
+			} else {
+				$this->sourceFilePath = $this->source->getPath();
+			}
 		}
 		return $this->sourceFilePath;
 	}
@@ -127,7 +131,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Validate the source exists:
-		if( !is_file( $this->getSourceFilePath() ) ){
+		if( !$this->getSourceFilePath() || !is_file( $this->getSourceFilePath() ) ){
 			$status = $this->title . ': Source not found ' . $this->getSourceFilePath();
 			$this->output( $status );
 			$this->updateTranscodeError($transcodeKey, $status);
