@@ -33,7 +33,6 @@ class TimedTextPage extends Article {
 	 * @param $out OutputPage
 	 */
 	public function renderOutput( $out ){
-		global $wgLang;
 		wfProfileIn( __METHOD__ );
 		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
@@ -89,7 +88,8 @@ class TimedTextPage extends Article {
 		}
 
 		// Look up the language name:
-		$languages = Language::fetchLanguageNames( $wgLang->getCode(), 'all' );
+		$language = $out->getLanguage()->getCode();
+		$languages = Language::fetchLanguageNames( $language, 'all' );
 		if( isset( $languages[ $languageKey ] ) ) {
 			$languageName = $languages[ $languageKey ];
 		} else {
