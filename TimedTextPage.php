@@ -39,9 +39,22 @@ class TimedTextPage extends Article {
 		$srt = array_pop( $titleParts );
 		$languageKey = array_pop( $titleParts );
 
+		$oldid = $this->getOldID();
+		# Are we looking at an old revision
+		if ( $oldid && $this->mRevision ) {
+			$this->fetchContentObject();
+			$out->setRevisionId( $this->getRevIdFetched() );
+			$this->setOldSubtitle( $oldid );
+
+			if ( !$this->showDeletedRevisionHeader() ) {
+				wfDebug( __METHOD__ . ": cannot view deleted revision\n" );
+				wfProfileOut( __METHOD__ );
+				return;
+			}
+		}
+
 		// Check for File name without text extension:
 		// i.e TimedText:myfile.ogg
-
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
 		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
