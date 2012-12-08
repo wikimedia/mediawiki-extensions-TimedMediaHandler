@@ -129,8 +129,8 @@ Are you sure you want to proceed?',
 	'timedmedia-file' => 'File',
 
 	'right-transcode-reset' => 'Reset failed or transcoded videos so they are inserted into the job queue again.',
-	'right-transcode-status' => 'View [[Special:TimedMediaHandler]] with information about current transcode activity',
-	'action-transcode-status' => 'view transcoding status'
+	'right-transcode-status' => 'View [[Special:TimedMediaHandler|information about the current transcode activity]]',
+	'action-transcode-status' => 'view the current transcoding status'
 );
 
 /** Message documentation (Message documentation)
