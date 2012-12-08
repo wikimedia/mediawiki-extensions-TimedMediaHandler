@@ -88,14 +88,14 @@
 	background-image: url('images/pbar-ani.gif');
 }
 
-.ui-widget-overlay {
+.kplayer .ui-widget-overlay {
 	background: black; opacity: .40; filter: Alpha(Opacity=40);
 }
 
-.ui-widget-content input {
+.kplayer .ui-widget-content input {
 	padding: 5px;
 }
-.ui-widget-content a {
+.kplayer .ui-widget-content a {
 	color: #222;
 }
 
