@@ -95,8 +95,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			if( $this->width == 0 ){
 				return 300;
 			}
-			// else give the target size down to 150 px wide
-			return ( $this->width < 150 ) ? 150: intval( $this->width ) ;
+			// else give the target size down to 35 px wide
+			return ( $this->width < 35 ) ? 35 : intval( $this->width ) ;
 		}
 	}
 

@@ -28,12 +28,18 @@ mw.PlayerSkinKskin = {
 
 	// Extends base components with kskin specific options:
 	components: {
+		'pause': {
+			'w': 28
+		},
+		'volumeControl': {
+			'w': 36
+		},
 		'playButtonLarge' : {
 			'h' : 55
 		},
 		'options': {
-			'w':50,
-			'o':function( ctrlObj ) {
+			'w': 52,
+			'o': function( ctrlObj ) {
 				return $( '<div />' )
 					.attr( 'title', gM( 'mwe-embedplayer-player_options' ) )
 					.addClass( "ui-state-default ui-corner-bl rButton k-options" )
@@ -43,15 +49,12 @@ mw.PlayerSkinKskin = {
 					);
 			}
 		},
-		'volumeControl': {
-			'w':36
-		},
 		// No attributionButton component for kSkin ( its integrated into the credits screen )
 		'attributionButton' : false,
 
 		// Time display:
 		'timeDisplay': {
-			'w':52
+			'w': 52
 		},
 		'optionsMenu': {
 			'w' : 0,
