@@ -330,7 +330,7 @@
 			var $menuButton = this.embedPlayer.getInterface().find( '.timed-text' );
 			// Check if a menu has already been built out for the menu button:
 			if ( $menuButton[0].m ) {
-				$menuButton.menu( 'show' );
+				$menuButton.embedMenu( 'show' );
 			} else {
 				// Bind the text menu:
 				this.buildMenu( true );
@@ -435,7 +435,7 @@
 				var $menuButton = _this.embedPlayer.getInterface().find( '.timed-text' );
 				var ctrlObj = _this.embedPlayer.controlBuilder;
 				// NOTE: Button target should be an option or config
-				$menuButton.menu( {
+				$menuButton.embedMenu( {
 					'content'	: _this.getMainMenu(),
 					'zindex' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 					'crumbDefaultText' : ' ',

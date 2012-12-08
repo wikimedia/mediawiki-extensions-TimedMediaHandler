@@ -48,7 +48,7 @@
 					'jquery.cookie',
 					'jquery.ui.mouse',
 					'jquery.debouncedresize',
-					'jquery.menu',
+					'jquery.embedMenu',
 					'jquery.ui.slider',
 					'jquery.ui.touchPunch',
 
