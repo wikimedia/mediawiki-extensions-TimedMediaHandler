@@ -2169,6 +2169,14 @@ $messages['tl'] = array(
 	'mwe-timedtext-request-already-done' => 'Nahiling na ang isang transkripsiyon ng bidyong ito. [$1 Tingnan ang lahat ng mga hiling ng pagpapasulat]',
 );
 
+/** Turkish (Türkçe)
+ * @author Emperyan
+ */
+$messages['tr'] = array(
+	'mwe-timedtext-editor' => 'Zamanlanmış metin editörü',
+	'mwe-timedtext-select-language' => 'Dil seçin',
+);
+
 /** Ukrainian (українська)
  * @author Base
  * @author Тест
@@ -2344,6 +2352,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (中文（繁體）‎)
+ * @author Justincheng12345
  * @author Mark85296341
  * @author Simon Shek
  */
@@ -2360,8 +2369,8 @@ $messages['zh-hant'] = array(
 	'mwe-timedtext-upload-text-desc-title' => '上傳文字檔',
 	'mwe-timedtext-upload-text-desc-help' => '上傳文字檔介面接受.srt 檔',
 	'mwe-timedtext-upload-text-desc-help-browse' => '瀏覽本機以查閱您想要上傳的.srt檔案',
-	'mwe-timedtext-upload-text-desc-help-select' => '選擇文件的語言',
-	'mwe-timedtext-upload-text-desc-help-review' => '審閱／編輯文本內容後按上傳增加文本',
+	'mwe-timedtext-upload-text-desc-help-select' => '選擇檔案的語言',
+	'mwe-timedtext-upload-text-desc-help-review' => '審閱或編輯文本內容後按上傳以增加文本',
 	'mwe-timedtext-upload-text-preview' => '審閱文本',
 	'mwe-timedtext-upload-text-success' => '順利更新字幕',
 	'mwe-timedtext-upload-text-done' => '上傳完成',

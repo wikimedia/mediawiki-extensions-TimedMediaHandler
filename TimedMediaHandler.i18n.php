@@ -738,8 +738,8 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-derivative-state-queued' => '$1 {{PLURAL:$1|naplánované|naplánovaná|naplánovaných}} transkódování',
 	'timedmedia-derivative-state-failed' => '$1 {{PLURAL:$1|neúspěšné|neúspěšná|neúspěšných}} transkódování',
 	'timedmedia-file' => 'Soubor',
-	'right-transcode-status' => 'Zobrazení stránky [[Special:TimedMediaHandler]] s informacemi o probíhajícím transkódování',
-	'action-transcode-status' => 'vidět stav transkódování',
+	'right-transcode-status' => 'Zobrazení stránky [[Special:TimedMediaHandler]] s informacemi o probíhajícím transkódování', # Fuzzy
+	'action-transcode-status' => 'vidět stav transkódování', # Fuzzy
 );
 
 /** Danish (dansk)
@@ -853,8 +853,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.media
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
 	'timedmedia-file' => 'Datei',
 	'right-transcode-reset' => 'Fehlgeschlagene oder umgeschlüsselte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
-	'right-transcode-status' => '[[Special:TimedMediaHandler]] mit Informationen über aktuelle Umschlüsselungen betrachten',
-	'action-transcode-status' => 'den Umschlüsselungsstatus anzusehen',
+	'right-transcode-status' => '[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten',
+	'action-transcode-status' => 'den aktuellen Umschlüsselungsstatus anzusehen',
 );
 
 /** Zazaki (Zazaki)
@@ -1165,6 +1165,7 @@ $messages['fi'] = array(
 	'timedmedia-time-2-measurements' => '$1 ja $2',
 	'timedmedia-show-error' => 'Näytä virhe',
 	'timedmedia-source-file' => 'Lähde $1',
+	'timedmedia-subtitle-new-desc' => "Korvaa '''$1''' [[:fi:ISO 639|kielikoodilla]] ja napsauta  '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	'timedmedia-subtitle-new-go' => 'Siirry',
 	'timedmedia-subtitle-language' => '$1 ($2) kuvatekstit',
 	'timedmedia-file' => 'Tiedosto',
@@ -1451,8 +1452,8 @@ Está seguro de querer continuar?',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificacións fallidas}}',
 	'timedmedia-file' => 'Ficheiro',
 	'right-transcode-reset' => 'Restablecer os vídeos transcodificados erroneamente para incluílos de novo na cola de traballo.',
-	'right-transcode-status' => 'Ollar [[Special:TimedMediaHandler]] con información sobre a actividade de transcodificación actual',
-	'action-transcode-status' => 'ollar o estado da transcodificación',
+	'right-transcode-status' => 'Ollar [[Special:TimedMediaHandler]] con información sobre a actividade de transcodificación actual', # Fuzzy
+	'action-transcode-status' => 'ollar o estado da transcodificación', # Fuzzy
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1625,8 +1626,8 @@ $messages['he'] = array(
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|המרות משנית אחת נכשלה|$1 המרות משניות נכשלו}}',
 	'timedmedia-file' => 'קובץ',
 	'right-transcode-reset' => 'אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל כך שהם מוכנסים מחדש לתור המשימות.',
-	'right-transcode-status' => 'הצגת הדף המיוחד [[Special:TimedMediaHandler]] עם מידע על פעילות קידוד־המשנה הנוכחית',
-	'action-transcode-status' => 'הצגת מצב המרת־המשנה',
+	'right-transcode-status' => 'הצגת הדף המיוחד [[Special:TimedMediaHandler]] עם מידע על פעילות קידוד־המשנה הנוכחית', # Fuzzy
+	'action-transcode-status' => 'הצגת מצב המרת־המשנה', # Fuzzy
 );
 
 /** Hindi (हिन्दी)
@@ -2069,8 +2070,8 @@ Continuare?',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}',
 	'timedmedia-file' => 'File',
 	'right-transcode-reset' => 'Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.',
-	'right-transcode-status' => "Visualizza [[Special:TimedMediaHandler]] con informazioni sull'attuale attività di transcodifica",
-	'action-transcode-status' => 'visualizzare lo stato della transcodifica',
+	'right-transcode-status' => "Visualizza [[Special:TimedMediaHandler]] con informazioni sull'attuale attività di transcodifica", # Fuzzy
+	'action-transcode-status' => 'visualizzare lo stato della transcodifica', # Fuzzy
 );
 
 /** Japanese (日本語)
@@ -2428,8 +2429,8 @@ $messages['ko'] = array(
 	'timedmedia-derivative-state-failed' => '실패한 코드 변환 $1개',
 	'timedmedia-file' => '파일',
 	'right-transcode-reset' => '초기화를 실패했거나 동영상이 코드 변환했기 때문에 다시 작업 대기열에 삽입됩니다.',
-	'right-transcode-status' => '현재 코드 변환 활동에 대한 정보는 [[Special:TimedMediaHandler]]를 참고하세요',
-	'action-transcode-status' => '코드 변환 상태 보기',
+	'right-transcode-status' => '현재 코드 변환 활동에 대한 정보는 [[Special:TimedMediaHandler]]를 참고하세요', # Fuzzy
+	'action-transcode-status' => '코드 변환 상태 보기', # Fuzzy
 );
 
 /** Karachay-Balkar (къарачай-малкъар)
@@ -2676,8 +2677,8 @@ $messages['mk'] = array(
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}',
 	'timedmedia-file' => 'Податотека',
 	'right-transcode-reset' => 'Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.',
-	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler]] со информации тековните активности во прекодирањето',
-	'action-transcode-status' => 'преглед на статусот на прекодирањето',
+	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler]] со информации тековните активности во прекодирањето', # Fuzzy
+	'action-transcode-status' => 'преглед на статусот на прекодирањето', # Fuzzy
 );
 
 /** Malayalam (മലയാളം)
@@ -2858,6 +2859,9 @@ Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="http://www.me
 	'timedmedia-derivative-state-queued' => '$1 transkod berbaris',
 	'timedmedia-derivative-state-failed' => '$1 transkod gagal',
 	'timedmedia-file' => 'Fail',
+	'right-transcode-reset' => 'Mengeset semula video-video yang gagal atau ditranskodkan supaya dimasukkan semula ke dalam barisan gilir.',
+	'right-transcode-status' => 'Melihat [[Special:TimedMediaHandler]] dengan maklumat tentang kegiatan transkod semasa', # Fuzzy
+	'action-transcode-status' => 'melihat status pentranskodan', # Fuzzy
 );
 
 /** Erzya (эрзянь)
@@ -3056,7 +3060,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|één transcodering|$1 transcoderingen}} in de wachtrij',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|één mislukte transcodering|$1 mislukte transcoderingen}}',
 	'timedmedia-file' => 'Bestand',
-	'action-transcode-status' => 'transcoderingsstatus te bekijken',
+	'action-transcode-status' => 'huidige transcoderingsstatus te bekijken',
 );
 
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
@@ -3442,7 +3446,7 @@ Sunteți sigur că doriți să continuați?',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 codificare eșuată|$1 codificări eșuate|$1 de codificări eșuate}}',
 	'timedmedia-file' => 'Fișier',
 	'right-transcode-reset' => 'Reinițializează videoclipuri nereușit codificate pentru ca acestea să fie readăugate la șirul de sarcini.',
-	'right-transcode-status' => 'Vizualizează [[Special:TimedMediaHandler]], pagină cu informații despre activitatea curentă de codificare',
+	'right-transcode-status' => 'Vizualizează [[Special:TimedMediaHandler]], pagină cu informații despre activitatea curentă de codificare', # Fuzzy
 );
 
 /** tarandíne (tarandíne)
@@ -4413,8 +4417,8 @@ Bạn có chắc chắn muốn tiếp tục?',
 	'timedmedia-derivative-state-failed' => '$1 tập tin chuyển mã thất bại',
 	'timedmedia-file' => 'Tập tin',
 	'right-transcode-reset' => 'Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng nó lại vào hàng đợi việc.',
-	'right-transcode-status' => 'Xem thông tin về hoạt động chuyển mã đang xảy ra tại [[Special:TimedMediaHandler]]',
-	'action-transcode-status' => 'xem trạng thái chuyển mã',
+	'right-transcode-status' => 'Xem thông tin về hoạt động chuyển mã đang xảy ra tại [[Special:TimedMediaHandler]]', # Fuzzy
+	'action-transcode-status' => 'xem trạng thái chuyển mã', # Fuzzy
 );
 
 /** Volapük (Volapük)
@@ -4552,6 +4556,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Gaoxuewei
+ * @author Justincheng12345
  * @author Mark85296341
  * @author Simon Shek
  */
@@ -4567,6 +4572,8 @@ $messages['zh-hant'] = array(
 	'timedmedia-ogg-long-error' => '無效的ogg檔案：$1',
 	'timedmedia-webm-short-video' => 'WebM $1視頻文件，$2',
 	'timedmedia-webm-long-video' => 'WebM音頻/視頻文件，$1，長度$2，$4 × $5像素，共$3',
+	'timedmedia-mp4-short-video' => 'MP4 $1視訊檔案，$2',
+	'timedmedia-mp4-long-video' => 'MP4音訊/視訊檔案，$1，長度$2，$4×$5像素，共$3',
 	'timedmedia-no-player-js' => '抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />
 您可以<a href="$1">下載這個片段</a>或<a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">下載一個播放器</a>以在瀏覽器中播放片段。',
 	'timedmedia-more' => '更多...',
@@ -4590,10 +4597,10 @@ $messages['zh-hant'] = array(
 	'timedmedia-percent-done' => '大約$1%已完成',
 	'timedmedia-in-job-queue' => '$1前添加到工作隊列',
 	'timedmedia-unknown-target-size' => '未知目標大小，$1已編碼',
-	'timedmedia-days' => '$1天', # Fuzzy
-	'timedmedia-hours' => '$1小時', # Fuzzy
-	'timedmedia-minutes' => '$1分', # Fuzzy
-	'timedmedia-seconds' => '$1秒', # Fuzzy
+	'timedmedia-days' => '$1天',
+	'timedmedia-hours' => '$1小時',
+	'timedmedia-minutes' => '$1分',
+	'timedmedia-seconds' => '$1秒',
 	'timedmedia-time-4-measurements' => '$1、$2、$3和$4',
 	'timedmedia-time-3-measurements' => '$1、$2和$3',
 	'timedmedia-time-2-measurements' => '$1和$2',
@@ -4602,6 +4609,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-reset-confirm' => '重置轉碼會移除所有現有文件，並將其重新加入轉碼工作隊列。可能需要一些時間來重新轉碼。<br /><br />
 您確實想繼續嗎？',
 	'timedmedia-reset-error' => '重置轉碼工作時發生錯誤。',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1原始文件',
 	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）',
 	'timedmedia-derivative-desc-160p.ogv' => '低帶寬Ogg視頻（160P）',
@@ -4612,12 +4620,17 @@ $messages['zh-hant'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'Web流WebM（360P）',
 	'timedmedia-derivative-desc-480p.webm' => 'Web流WebM（480P）',
 	'timedmedia-derivative-desc-720p.webm' => '高質量可下載WebM視頻（720P）',
+	'timedmedia-derivative-desc-320p.mp4' => '設備友好MP4（320P）',
+	'timedmedia-derivative-desc-480p.mp4' => '網頁流媒體MP4（480P）',
+	'timedmedia-derivative-desc-720p.mp4' => '高清MP4（720P）',
 	'timedmedia-subtitle-new' => '創建新翻譯或編輯現有翻譯',
 	'timedmedia-subtitle-new-desc' => "將'''$1'''替換為您的[[:en:ISO 639|語言代碼]]並按下'''{{int:Timedmedia-subtitle-new-go}}'''按鈕",
 	'timedmedia-subtitle-new-go' => '提交',
 	'timedmedia-subtitle-language' => '$1（$2）字幕',
 	'timedmedia-subtitle-no-video' => '當前字幕頁面沒有關聯的視頻',
 	'timedmedia-subtitle-no-subtitles' => '當前沒有這個視頻的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯這個頁面]以添加',
+	'timedmedia-subtitle-remote' => '本檔案的字幕位於$1',
+	'timedmedia-subtitle-remote-link' => '您可於$2查看[$1 該檔案的描述頁]',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '$1個視頻',
 	'timedmedia-ogg-videos' => '$1個Ogg視頻',
@@ -4627,4 +4640,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-derivative-state-queued' => '$1個隊列中的轉碼任務',
 	'timedmedia-derivative-state-failed' => '$1次轉碼失敗',
 	'timedmedia-file' => '檔案',
+	'right-transcode-reset' => '重設失敗或轉碼視頻以將其再插入作業佇列中。',
+	'right-transcode-status' => '查看[[Special:TimedMediaHandler|當前轉碼活動的資訊]]',
+	'action-transcode-status' => '查看當前轉碼狀態',
 );
