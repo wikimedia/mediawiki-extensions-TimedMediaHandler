@@ -1055,8 +1055,8 @@ Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wi
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificaciones fallidas}}',
 	'timedmedia-file' => 'Archivo',
 	'right-transcode-reset' => 'Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo.',
-	'right-transcode-status' => 'Ver [[Special:TimedMediaHandler]] con información sobre la actividad de transcodificación actual',
-	'action-transcode-status' => 'ver el estado de transcodificación',
+	'right-transcode-status' => 'Ver [[Special:TimedMediaHandler|información sobre la actividad de transcodificación actual]]',
+	'action-transcode-status' => 'ver el estado de transcodificación actual',
 );
 
 /** Estonian (eesti)
@@ -1288,8 +1288,8 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodage échoué|$1 transcodages échoués}}',
 	'timedmedia-file' => 'Fichier',
 	'right-transcode-reset' => 'Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux.',
-	'right-transcode-status' => "Afficher [[Special:TimedMediaHandler]] avec une information sur l'activité de transcodage actuelle",
-	'action-transcode-status' => "afficher l'état de transcodage",
+	'right-transcode-status' => "Afficher [[Special:TimedMediaHandler|l'information sur l'activité de transcodage actuelle]]",
+	'action-transcode-status' => "afficher l'état de transcodage actuel",
 );
 
 /** Franco-Provençal (arpetan)
@@ -1626,8 +1626,8 @@ $messages['he'] = array(
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|המרות משנית אחת נכשלה|$1 המרות משניות נכשלו}}',
 	'timedmedia-file' => 'קובץ',
 	'right-transcode-reset' => 'אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל כך שהם מוכנסים מחדש לתור המשימות.',
-	'right-transcode-status' => 'הצגת הדף המיוחד [[Special:TimedMediaHandler]] עם מידע על פעילות קידוד־המשנה הנוכחית', # Fuzzy
-	'action-transcode-status' => 'הצגת מצב המרת־המשנה', # Fuzzy
+	'right-transcode-status' => 'הצגת [[Special:TimedMediaHandler|מידע על פעילות המרת־המשנה הנוכחית]]',
+	'action-transcode-status' => 'הצגת מצב המרת־המשנה',
 );
 
 /** Hindi (हिन्दी)
@@ -2070,8 +2070,8 @@ Continuare?',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}',
 	'timedmedia-file' => 'File',
 	'right-transcode-reset' => 'Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.',
-	'right-transcode-status' => "Visualizza [[Special:TimedMediaHandler]] con informazioni sull'attuale attività di transcodifica", # Fuzzy
-	'action-transcode-status' => 'visualizzare lo stato della transcodifica', # Fuzzy
+	'right-transcode-status' => "Visualizza [[Special:TimedMediaHandler|informazioni sull'attuale attività di transcodifica]]",
+	'action-transcode-status' => "visualizzare l'attuale stato della transcodifica",
 );
 
 /** Japanese (日本語)
@@ -2677,8 +2677,8 @@ $messages['mk'] = array(
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}',
 	'timedmedia-file' => 'Податотека',
 	'right-transcode-reset' => 'Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.',
-	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler]] со информации тековните активности во прекодирањето', # Fuzzy
-	'action-transcode-status' => 'преглед на статусот на прекодирањето', # Fuzzy
+	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler|информации за тековните активности во прекодирањето]]',
+	'action-transcode-status' => 'преглед на тековниот статус на прекодирањето',
 );
 
 /** Malayalam (മലയാളം)
