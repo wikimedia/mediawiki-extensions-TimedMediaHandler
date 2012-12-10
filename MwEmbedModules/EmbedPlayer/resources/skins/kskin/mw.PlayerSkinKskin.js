@@ -370,7 +370,7 @@ mw.PlayerSkinKskin = {
 					'title': gM('mwe-embedplayer-kaltura-platform-title')
 				})
 				.click( function( ) {
-					window.location = 'http://kaltura.com';
+					window.location = 'http://html5video.org';
 				})
 			);
 		}
