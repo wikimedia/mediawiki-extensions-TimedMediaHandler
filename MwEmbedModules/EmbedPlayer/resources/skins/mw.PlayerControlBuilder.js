@@ -2395,7 +2395,7 @@ mw.PlayerControlBuilder.prototype = {
 						)
 						.buttonHover()
 						// Options binding:
-						.menu( {
+						.embedMenu( {
 							'content' : ctrlObj.getOptionsMenu(),
 							'zindex' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 							'positionOpts': {
@@ -2507,7 +2507,7 @@ mw.PlayerControlBuilder.prototype = {
 					.addClass('ui-widget source-switch')
 					.append(
 						ctrlObj.embedPlayer.mediaElement.selectedSource.getShortTitle()
-					).menu( {
+					).embedMenu( {
 						'content' : ctrlObj.getSwitchSourceMenu(),
 						'zindex' : mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
 						'keepPosition' : true,
