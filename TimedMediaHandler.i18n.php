@@ -724,6 +724,8 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-time-2-measurements' => '$1 a $2',
 	'timedmedia-show-error' => 'Zobrazit chybu',
 	'timedmedia-reset' => 'Obnovit transkódování',
+	'timedmedia-subtitle-new' => 'Vytvoření nového překladu nebo editace stávajícího',
+	'timedmedia-subtitle-new-desc' => "Nahraďte část '''$1''' svým [[:cs:ISO 639|kódem jazyka]] a stiskněte tlačítko '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Přejít',
 	'timedmedia-subtitle-language' => 'titulky v jazyce $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'K aktuální stránce titulků nepatří žádné video.',
@@ -738,8 +740,8 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawik
 	'timedmedia-derivative-state-queued' => '$1 {{PLURAL:$1|naplánované|naplánovaná|naplánovaných}} transkódování',
 	'timedmedia-derivative-state-failed' => '$1 {{PLURAL:$1|neúspěšné|neúspěšná|neúspěšných}} transkódování',
 	'timedmedia-file' => 'Soubor',
-	'right-transcode-status' => 'Zobrazení stránky [[Special:TimedMediaHandler]] s informacemi o probíhajícím transkódování', # Fuzzy
-	'action-transcode-status' => 'vidět stav transkódování', # Fuzzy
+	'right-transcode-status' => 'Zobrazení [[Special:TimedMediaHandler|informací o probíhajícím transkódování]]',
+	'action-transcode-status' => 'vidět aktuální stav transkódování',
 );
 
 /** Danish (dansk)
@@ -3060,6 +3062,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|één transcodering|$1 transcoderingen}} in de wachtrij',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|één mislukte transcodering|$1 mislukte transcoderingen}}',
 	'timedmedia-file' => 'Bestand',
+	'right-transcode-status' => '[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken',
 	'action-transcode-status' => 'huidige transcoderingsstatus te bekijken',
 );
 
