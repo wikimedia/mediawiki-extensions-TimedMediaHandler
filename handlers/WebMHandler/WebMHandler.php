@@ -4,7 +4,7 @@
  */
 class WebMHandler extends TimedMediaHandler {
 	// XXX match GETID3_VERSION ( too bad version is not a getter )
-	const METADATA_VERSION = 1;
+	const METADATA_VERSION = 2;
 
 	/**
 	 * @param $image File
@@ -55,16 +55,49 @@ class WebMHandler extends TimedMediaHandler {
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if( isset( $metadata['video']['resolution_x'])
+
+		$size = array( false, false );
+		// display_x/display_y is only set if DisplayUnit
+		// is pixels, otherwise display_aspect_ratio is set
+		if ( isset( $metadata['video']['display_x'] )
 				&&
-			isset( $metadata['video']['resolution_y'])
+			isset( $metadata['video']['display_y'] )
 		){
-			return array (
+			$size = array (
+				$metadata['video']['display_x'],
+				$metadata['video']['display_y']
+			);
+		}
+		else if ( isset( $metadata['video']['resolution_x'] )
+				&&
+			isset( $metadata['video']['resolution_y'] )
+		){
+			$size = array (
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']
 			);
+			if ( isset($metadata['video']['crop_top']) ) {
+				$size[1] -= $metadata['video']['crop_top'];
+			}
+			if ( isset($metadata['video']['crop_bottom']) ) {
+				$size[1] -= $metadata['video']['crop_bottom'];
+			}
+			if ( isset($metadata['video']['crop_left']) ) {
+				$size[0] -= $metadata['video']['crop_left'];
+			}
+			if ( isset($metadata['video']['crop_right']) ) {
+				$size[0] -= $metadata['video']['crop_right'];
+			}
 		}
-		return array( false, false );
+		if ( $size[0] && $size[1] && isset( $metadata['video']['display_aspect_ratio'] ) ) {
+			//for wide images (i.e. 16:9) take native height as base
+			if ( $metadata['video']['display_aspect_ratio'] >= 1 ) {
+				$size[0] = intval( $size[1] * $metadata['video']['display_aspect_ratio'] );
+			} else { //for tall images (i.e. 9:16) take width as base
+				$size[1] = intval( $size[0] / $metadata['video']['display_aspect_ratio'] );
+			}
+		}
+		return $size;
 	}
 
 	/**
