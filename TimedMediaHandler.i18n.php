@@ -2862,8 +2862,8 @@ Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="http://www.me
 	'timedmedia-derivative-state-failed' => '$1 transkod gagal',
 	'timedmedia-file' => 'Fail',
 	'right-transcode-reset' => 'Mengeset semula video-video yang gagal atau ditranskodkan supaya dimasukkan semula ke dalam barisan gilir.',
-	'right-transcode-status' => 'Melihat [[Special:TimedMediaHandler]] dengan maklumat tentang kegiatan transkod semasa', # Fuzzy
-	'action-transcode-status' => 'melihat status pentranskodan', # Fuzzy
+	'right-transcode-status' => 'Melihat [[Special:TimedMediaHandler|maklumat tentang kegiatan transkod semasa]]',
+	'action-transcode-status' => 'melihat status pentranskodan semasa',
 );
 
 /** Erzya (эрзянь)
