@@ -67,6 +67,7 @@ class WebVideoTranscode {
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
 			),
 		WebVideoTranscode::ENC_OGV_360P =>
 			array(
@@ -80,6 +81,7 @@ class WebVideoTranscode {
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
 			),
 		WebVideoTranscode::ENC_OGV_480P =>
 			array(
@@ -93,6 +95,7 @@ class WebVideoTranscode {
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
 			),
 
 		WebVideoTranscode::ENC_OGV_720P =>
@@ -103,6 +106,7 @@ class WebVideoTranscode {
 				'noUpscaling'                => 'true',
 				'keyframeInterval'           => '128',
 				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
 			),
 
 		// WebM transcode:
@@ -118,6 +122,7 @@ class WebVideoTranscode {
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
 		WebVideoTranscode::ENC_WEBM_360P =>
 			array(
@@ -130,6 +135,7 @@ class WebVideoTranscode {
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
 		WebVideoTranscode::ENC_WEBM_480P =>
 			array(
@@ -142,6 +148,7 @@ class WebVideoTranscode {
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
 				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
 		WebVideoTranscode::ENC_WEBM_720P =>
 			 array(
@@ -150,6 +157,7 @@ class WebVideoTranscode {
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
 
 		// Losly defined per PCF guide to mp4 profiles:
@@ -166,6 +174,7 @@ class WebVideoTranscode {
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '40k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
 
 		WebVideoTranscode::ENC_H264_480P =>
@@ -177,6 +186,7 @@ class WebVideoTranscode {
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '64k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
 
 		WebVideoTranscode::ENC_H264_720P =>
@@ -188,6 +198,7 @@ class WebVideoTranscode {
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '128k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
 	);
 
@@ -621,6 +632,7 @@ class WebVideoTranscode {
 			'title' => wfMessage( 'timedmedia-source-file-desc', $metadataType )
 				->numParams( $file->getWidth(), $file->getHeight() )
 				->params( $wgLang->formatBitrate( $bitrate ) )->text(),
+			'type' => $file->getHandler()->getWebType( $file ),
 			"shorttitle" => wfMessage(
 				'timedmedia-source-file',
 				wfMessage( 'timedmedia-' . $metadataType )->text()
@@ -673,6 +685,7 @@ class WebVideoTranscode {
 		return array(
 				'src' => $src,
 				'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
+				'type' => self::$derivativeSettings[ $transcodeKey ][ 'type' ],
 				"shorttitle" => wfMessage( 'timedmedia-derivative-' . $transcodeKey )->text(),
 				"transcodekey" => $transcodeKey,
 

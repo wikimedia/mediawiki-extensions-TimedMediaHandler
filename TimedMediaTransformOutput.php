@@ -183,7 +183,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
 		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize);
 	}
-
+	static function sortMediaByBandwidth( $a, $b){
+		return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
+	}
 	/**
 	 * Call mediaWiki xml helper class to build media tag output from
 	 * supplied arrays
@@ -199,6 +201,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
 		};
+
+		// Sort sources by bandwidth least to greatest ( so default selection on resource constrained
+		// browsers ( without js? ) go with minimal source.
+		uasort( $mediaSources, 'TimedMediaTransformOutput::sortMediaByBandwidth' );
 
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate' );
