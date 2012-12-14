@@ -3062,6 +3062,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|één transcodering|$1 transcoderingen}} in de wachtrij',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|één mislukte transcodering|$1 mislukte transcoderingen}}',
 	'timedmedia-file' => 'Bestand',
+	'right-transcode-reset' => "Video's waarvoor transcoderen mislukt is of die al getranscodeerd zijn opnieuw in de jobqueue plaatsen.",
 	'right-transcode-status' => '[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken',
 	'action-transcode-status' => 'huidige transcoderingsstatus te bekijken',
 );
