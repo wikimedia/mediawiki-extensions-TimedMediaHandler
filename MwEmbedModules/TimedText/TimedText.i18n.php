@@ -1556,6 +1556,20 @@ $messages['nl'] = array(
 	'mwe-timedtext-request-already-done' => 'Er bestaat al een transscriptieverzoek voor dit videobestand. U kunt [$1 alle transscriptieverzoeken bekijken].',
 );
 
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
+ * @author Njardarlogar
+ */
+$messages['nn'] = array(
+	'mwe-timedtext-select-language' => 'Vel språk',
+	'mwe-timedtext-upload-timed-text' => 'Legg til undertekstar',
+	'mwe-timedtext-layout-off' => 'Gøym undertekstar',
+	'mwe-timedtext-textcat-sub' => 'Undertekstar',
+	'mwe-timedtext-textcat-lrc' => 'Tekstar',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertekstar for klippet: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ingen undertekster på $1 vart funne for klippet: $2',
+	'mwe-timedtext-no-subs' => 'Ingen tekstspor er tilgjengelege',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
