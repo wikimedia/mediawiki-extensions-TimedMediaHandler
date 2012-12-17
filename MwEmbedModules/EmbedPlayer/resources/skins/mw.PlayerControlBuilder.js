@@ -188,20 +188,40 @@ mw.PlayerControlBuilder.prototype = {
 
 		$( embedPlayer ).trigger( 'addControlBarComponent', this );
 
+		var components = [];
+		var largestPos = 0;
 		var addComponent = function( componentId ){
 			if ( _this.supportedComponents[ componentId ] ) {
 				if ( _this.availableWidth > _this.components[ componentId ].w ) {
-					// Append the component
-					$controlBar.append(
-						_this.getComponent( componentId )
-					);
 					_this.availableWidth -= _this.components[ componentId ].w;
+					// Check if position is defined, if not, place at end of known positions
+					var position =  _this.components[ componentId ].position ?
+							_this.components[ componentId ].position:
+							largestPos+1
+					if( position > largestPos ){
+						largestPos = position;
+					}
+					components.push({
+						'id': componentId,
+						'position': position
+					});
 					//mw.log(" availableWidth:" + _this.availableWidth + ' ' + componentId + ' took: ' +  _this.components[ componentId ].w )
 				} else {
 					mw.log( 'PlayerControlBuilder:: Not enough space for control component:' + componentId );
 				}
 			}
 		};
+
+		var addComponents = function() {
+			components.sort(function(a, b) {
+				return b.position - a.position;
+			});
+			for(var i=0;i<components.length;i++) {
+				$controlBar.append(
+					_this.getComponent( components[ i ]['id'] )
+				);
+			}
+		}
 
 		// Output components
 		for ( var componentId in this.components ) {
@@ -228,6 +248,7 @@ mw.PlayerControlBuilder.prototype = {
 		if( this.availableWidth > 30 ){
 			addComponent( 'playHead' );
 		}
+		addComponents();
 		$(embedPlayer).trigger( 'controlBarBuildDone' );
 	},
 
@@ -2245,6 +2266,8 @@ mw.PlayerControlBuilder.prototype = {
 	* 'o' Function to return a binded jQuery object ( accepts the ctrlObject as a parameter )
 	* 'w' The width of the component
 	* 'h' The height of the component ( if height is undefined the height of the control bar is used )
+	* 'position' elements are inserted into the dom based on component order and available space.
+	*  if the element is inserted, position is then used to set relative dom insert order. 
 	*/
 	components: {
 		/**
@@ -2252,6 +2275,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'pause': {
 			'w': 28,
+			'position': 1,
 			'o': function( ctrlObj ) {
 				return $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) )
@@ -2275,6 +2299,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'volumeControl': {
 			'w' : 28,
+			'position': 7,
 			'o' : function( ctrlObj ) {
 				mw.log( 'PlayerControlBuilder::Set up volume control for: ' + ctrlObj.embedPlayer.id );
 				var $volumeOut = $( '<span />' );
@@ -2317,6 +2342,7 @@ mw.PlayerControlBuilder.prototype = {
 		'playButtonLarge': {
 			'w' : 70,
 			'h' : 53,
+			'position': 2,
 			'o' : function( ctrlObj ) {
 				return $( '<div />' )
 					.attr( {
@@ -2338,6 +2364,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'attributionButton' : {
 			'w' : 28,
+			'position': 3,
 			'o' : function( ctrlObj ){
 				var buttonConfig = mw.config.get( 'EmbedPlayer.AttributionButton');
 				// Check for source ( by configuration convention this is a 16x16 image
@@ -2386,6 +2413,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'options': {
 			'w': 28,
+			'position': 10,
 			'o': function( ctrlObj ) {
 				return $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-player_options' ) )
@@ -2414,6 +2442,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'fullscreen': {
 			'w': 24,
+			'position': 8,
 			'o': function( ctrlObj ) {
 				var $btn = $( '<div />' )
 						.attr( 'title', gM( 'mwe-embedplayer-player_fullscreen' ) )
@@ -2494,10 +2523,9 @@ mw.PlayerControlBuilder.prototype = {
 			}
 		},
 
-
-
 		'sourceSwitch' : {
 			'w' : 70,
+			'position': 9,
 			'o' : function( ctrlObj ){
 				var $menuContainer = $('<div />').addClass( 'swMenuContainer' ).hide();
 				ctrlObj.embedPlayer.getInterface().append(
@@ -2542,6 +2570,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'timeDisplay': {
 			'w' : mw.config.get( 'EmbedPlayer.TimeDisplayWidth' ),
+			'position': 6,
 			'o' : function( ctrlObj ) {
 				return $( '<div />' )
 				.addClass( "ui-widget time-disp" )
@@ -2556,6 +2585,7 @@ mw.PlayerControlBuilder.prototype = {
 		*/
 		'playHead': {
 			'w':0, // special case (takes up remaining space)
+			'position': 5,
 			'o':function( ctrlObj ) {
 
 				var sliderConfig = {
