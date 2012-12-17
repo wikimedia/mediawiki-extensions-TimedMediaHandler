@@ -593,6 +593,7 @@ $messages['fa'] = array(
 
 /** Finnish (suomi)
  * @author Nedergard
+ * @author Nike
  * @author Silvonen
  */
 $messages['fi'] = array(
@@ -600,17 +601,17 @@ $messages['fi'] = array(
 	'mwe-timedtext-stage-upload' => 'Lataa paikallisesti tiedostosta',
 	'mwe-timedtext-select-language' => 'Valitse kieli',
 	'mwe-timedtext-file-language' => 'Tekstitystiedoston kieli',
-	'mwe-timedtext-upload-text' => 'Lataa tekstitiedosto',
+	'mwe-timedtext-upload-text' => 'Tallenna tekstitystiedosto',
 	'mwe-timedtext-uploading-text' => 'Ladataan tekstitiedostoa',
-	'mwe-timedtext-upload-text-desc-title' => 'Lataa tekstitiedosto',
+	'mwe-timedtext-upload-text-desc-title' => 'Tallenna tekstitiedosto',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Valitse tiedoston kieli',
 	'mwe-timedtext-upload-text-success' => 'Ajastetun tekstin lataus onnistui',
-	'mwe-timedtext-upload-text-done' => 'Lataus valmis',
-	'mwe-timedtext-upload-text-fail-desc' => 'Lataus onnistui',
-	'mwe-timedtext-upload-text-fail-title' => 'Lataus epäonnistui',
+	'mwe-timedtext-upload-text-done' => 'Tallennus valmis',
+	'mwe-timedtext-upload-text-fail-desc' => 'Tallennus onnistui',
+	'mwe-timedtext-upload-text-fail-title' => 'Tallennus epäonnistui',
 	'mwe-timedtext-back-btn' => 'Takaisin',
 	'mwe-timedtext-choose-text' => 'Valitse teksti',
-	'mwe-timedtext-upload-timed-text' => 'Lisää tekstitykset',
+	'mwe-timedtext-upload-timed-text' => 'Lisää tekstitys',
 	'mwe-timedtext-layout-off' => 'Piilota tekstitys',
 	'mwe-timedtext-loading-text' => 'Ladataan tekstiä...',
 	'mwe-timedtext-textcat-cc' => 'Kuvatekstit',
