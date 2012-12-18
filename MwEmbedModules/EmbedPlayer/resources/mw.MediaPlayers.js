@@ -39,6 +39,7 @@ mw.MediaPlayers.prototype = {
 		this.defaultPlayers['audio/ogg'] = ['Native', 'Vlc', 'Java' ];
 		this.defaultPlayers['audio/mpeg']= ['Native', 'Kplayer'];
 		this.defaultPlayers['audio/mp3']= ['Native', 'Kplayer'];
+		this.defaultPlayers['audio/mp4']= ['Native'];
 		this.defaultPlayers['video/mp4'] = ['Vlc'];
 		this.defaultPlayers['video/mpeg'] = ['Vlc'];
 		this.defaultPlayers['video/x-msvideo'] = ['Vlc'];
@@ -90,9 +91,10 @@ mw.MediaPlayers.prototype = {
 	getMIMETypePlayers: function( mimeType ) {
 		var mimePlayers = new Array();
 		var _this = this;
-		if ( this.defaultPlayers[mimeType] ) {
-			$.each( this.defaultPlayers[ mimeType ], function( d, lib ) {
-				var library = _this.defaultPlayers[ mimeType ][ d ];
+		var baseMimeType = mimeType.split( ';' )[0];
+		if ( this.defaultPlayers[ baseMimeType ] ) {
+			$.each( this.defaultPlayers[ baseMimeType ], function( d, lib ) {
+				var library = _this.defaultPlayers[ baseMimeType ][ d ];
 				for ( var i = 0; i < _this.players.length; i++ ) {
 					if ( _this.players[i].library == library && _this.players[i].supportsMIMEType( mimeType ) ) {
 						mimePlayers.push( _this.players[i] );

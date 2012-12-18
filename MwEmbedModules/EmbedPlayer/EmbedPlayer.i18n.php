@@ -53,6 +53,8 @@ $messages['en'] = array(
 	'mwe-embedplayer-close_btn' => 'Close',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg player',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'HTML5 MP3 player',
+	'mwe-embedplayer-ogg-player-aacNative' => 'HTML5 AAC player',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 player',
 	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM player',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Generic Ogg plugin',
@@ -109,6 +111,8 @@ $messages['qqq'] = array(
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
 	'mwe-embedplayer-copy-code' => 'Button label. Pressing the button marks the code in a textarea above it so it can be copied.',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'name of mp3 player in configuration screen',
+	'mwe-embedplayer-ogg-player-aacNative' => 'name of AAC player in configuration screen',
 );
 
 /** Afrikaans (Afrikaans)

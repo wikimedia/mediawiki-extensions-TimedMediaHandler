@@ -42,6 +42,11 @@ class WebVideoTranscode {
 	const ENC_H264_480P = '480p.mp4';
 	const ENC_H264_720P = '720p.mp4';
 
+	const ENC_OGG_VORBIS = 'ogg';
+	const ENC_OGG_OPUS = 'opus';
+	const ENC_MP3 = 'mp3';
+	const ENC_AAC = 'm4a';
+
 	// Static cache of transcode state per instantiation
 	public static $transcodeState = array() ;
 
@@ -199,6 +204,48 @@ class WebVideoTranscode {
 				'channels' => '2',
 				'audioBitrate' => '128k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			),
+
+		//Audio profiles
+		WebVideoTranscode::ENC_OGG_VORBIS =>
+			array(
+				'audioCodec'                 => 'vorbis',
+				'audioQuality'               => '1',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				'novideo'                    => 'true',
+				'type'                       => 'audio/ogg; codecs="vorbis"',
+			),
+		WebVideoTranscode::ENC_OGG_OPUS =>
+			array(
+				'audioCodec'                 => 'opus',
+				'audioQuality'               => '1',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				'novideo'                    => 'true',
+				'type'                       => 'audio/ogg; codecs="opus"',
+			),
+		WebVideoTranscode::ENC_MP3 =>
+			array(
+				'audioCodec'                 => 'mp3',
+				'audioQuality'               => '1',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				'novideo'                    => 'true',
+				'type'                       => 'audio/mpeg',
+			),
+		WebVideoTranscode::ENC_AAC =>
+			array(
+				'audioCodec'                 => 'aac',
+				'audioQuality'               => '1',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				'novideo'                    => 'true',
+				'type'                       => 'audio/mp4; codecs="mp4a.40.5"',
 			),
 	);
 
@@ -363,7 +410,7 @@ class WebVideoTranscode {
 	 * @return array an associative array of sources suitable for <source> tag output
 	 */
 	static public function getLocalSources( &$file , $options=array() ){
-		global $wgEnabledTranscodeSet, $wgEnableTranscode;
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgEnableTranscode;
 		$sources = array();
 
 		// Add the original file:
@@ -380,8 +427,16 @@ class WebVideoTranscode {
 			return $sources;
 		}
 
-		// Just directly return audio sources ( No transcoding for audio for now )
 		if( $file->getHandler()->isAudio( $file ) ){
+			$sourceCodec = $file->getHandler()->getStreamTypes( $file );
+			$sourceCodec = strtolower($sourceCodec[0]);
+			foreach( $wgEnabledAudioTranscodeSet as $transcodeKey ){
+				$codec =  self::$derivativeSettings[$transcodeKey]['audioCodec'];
+				if ( $sourceCodec != $codec ) {
+					// Try and add the source
+					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
+				}
+			}
 			return $sources;
 		}
 
@@ -671,10 +726,14 @@ class WebVideoTranscode {
 		$thumbUrl = $file->getThumbUrl( $thumbName );
 		$thumbUrlDir = dirname( $thumbUrl );
 
-		list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform(
-			$file,
-			self::$derivativeSettings[$transcodeKey]['maxSize']
-		);
+		if( $file->getHandler()->isAudio( $file ) ){
+			$width = $height = 0;
+		} else {
+			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform(
+				$file,
+				self::$derivativeSettings[$transcodeKey]['maxSize']
+			);
+		}
 
 		$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) )?
 						self::$derivativeSettings[$transcodeKey]['framerate'] :
@@ -861,6 +920,10 @@ class WebVideoTranscode {
 		} else {
 			$maxSize['width'] = intval($targetMaxSize[0]);
 			$maxSize['height'] = intval($targetMaxSize[1]);
+		}
+		// check for zero size ( audio )
+		if( $maxSize['width'] === 0 || $maxSize['height'] == 0 ){
+			return 0;
 		}
 		$maxSize['aspect'] = $maxSize['width'] / $maxSize['height'];
 		return $maxSize;

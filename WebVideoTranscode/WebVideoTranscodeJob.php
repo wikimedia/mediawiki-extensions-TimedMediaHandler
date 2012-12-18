@@ -140,7 +140,11 @@ class WebVideoTranscodeJob extends Job {
 
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 
-		$this->output( "Encoding to codec: " . $options['videoCodec'] );
+		if ( $options[ 'novideo' ] ) {
+			$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
+		} else {
+			$this->output( "Encoding to codec: " . $options['videoCodec'] );
+		}
 
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -175,7 +179,9 @@ class WebVideoTranscodeJob extends Job {
 
 
 		// Check the codec see which encode method to call;
-		if( $options['videoCodec'] == 'theora' ){
+		if( $options['novideo'] ) {
+			$status = $this->ffmpegEncode( $options );
+		} else if( $options['videoCodec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $options );
 		} else if( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'h264' ){
 			// Check for twopass:
@@ -520,6 +526,8 @@ class WebVideoTranscodeJob extends Job {
 			$encoders = array(
 				'aac'		=> 'libvo_aacenc',
 				'vorbis'	=> 'libvorbis',
+				'opus'		=> 'libopus',
+				'mp3'		=> 'libmp3lame',
 			);
 			if ( isset( $encoders[ $options['audioCodec'] ] ) ) {
 				$codec = $encoders[ $options['audioCodec'] ];

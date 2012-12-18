@@ -188,7 +188,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function isTranscodableFile( & $file ){
-		global $wgEnableTranscode;
+		global $wgEnableTranscode, $wgEnabledAudioTranscodeSet;
 
 		// don't show the transcode table if transcode is disabled
 		if( $wgEnableTranscode === false ){
@@ -209,6 +209,9 @@ class TimedMediaHandlerHooks {
 		$mediaType = $file->getHandler()->getMetadataType( $file );
 		// If ogg or webm format and not audio we can "transcode" this file
 		if( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType =='mp4' ) && ! $file->getHandler()->isAudio( $file ) ){
+			return true;
+		}
+		if( $file->getHandler()->isAudio( $file ) && count($wgEnabledAudioTranscodeSet) ) {
 			return true;
 		}
 		return false;
