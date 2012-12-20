@@ -22,3 +22,8 @@ $specialPageAliases['ko'] = array(
 $specialPageAliases['mk'] = array(
 	'TimedMediaHandler' => array( 'СинхронизираниСнимки' ),
 );
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'TimedMediaHandler' => array( 'Bộ_xử_lý_phương_tiện_đồng_bộ', 'Bộ_xử_lí_phương_tiện_đồng_bộ' ),
+);
