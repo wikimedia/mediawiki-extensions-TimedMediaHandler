@@ -1842,6 +1842,7 @@
 			embedCode += 'width=&quot;' + this.getPlayerWidth() +'&quot; ';
 			embedCode += 'height=&quot;' + this.getPlayerHeight() + '&quot; ';
 			embedCode += 'frameborder=&quot;0&quot; ';
+			embedCode += 'webkitAllowFullScreen mozallowfullscreen allowFullScreen';
 
 			// Close up the embedCode tag:
 			embedCode+='&gt;&lt/iframe&gt;';
