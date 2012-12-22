@@ -1124,14 +1124,16 @@ $messages['fa'] = array(
 	'timedmedia-status' => 'وضعیت',
 	'timedmedia-status-unknown' => 'وضعیت ناشناخته',
 	'timedmedia-not-ready' => 'آماده نیست',
-	'timedmedia-days' => '$1 روز',
-	'timedmedia-hours' => '$1 ساعت',
-	'timedmedia-minutes' => '$1 دقیقه',
-	'timedmedia-seconds' => '$1 ثانیه',
+	'timedmedia-percent-done' => 'حدود $1% انجام شده',
+	'timedmedia-days' => '$1 روز', # Fuzzy
+	'timedmedia-hours' => '$1 ساعت', # Fuzzy
+	'timedmedia-minutes' => '$1 دقیقه', # Fuzzy
+	'timedmedia-seconds' => '$1 ثانیه', # Fuzzy
 	'timedmedia-time-4-measurements' => '$1، $2، ،$3 و $4',
 	'timedmedia-time-3-measurements' => '$1، $2 و $3',
 	'timedmedia-time-2-measurements' => '$1 و $2',
 	'timedmedia-show-error' => 'نمایش خطا',
+	'timedmedia-source-file' => '$1 مبدأ',
 	'timedmedia-subtitle-new-go' => 'برو',
 	'timedmedia-file' => 'پرونده',
 );
@@ -4295,6 +4297,7 @@ $messages['tt-cyrl'] = array(
  * @author Base
  * @author NickK
  * @author Prima klasy4na
+ * @author Steve.rusyn
  * @author Тест
  */
 $messages['uk'] = array(
@@ -4353,6 +4356,7 @@ $messages['uk'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'Потокове WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Потокове WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Високоякісне WebM (720P) для завантаження',
+	'timedmedia-file' => 'Файл',
 );
 
 /** Urdu (اردو)

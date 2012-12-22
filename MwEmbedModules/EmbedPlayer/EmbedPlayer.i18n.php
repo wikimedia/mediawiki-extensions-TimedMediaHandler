@@ -903,6 +903,7 @@ $messages['et'] = array(
 	'mwe-embedplayer-download_clip' => 'Laadi video alla',
 	'mwe-embedplayer-download_text' => 'Laadi tekst alla',
 	'mwe-embedplayer-download' => 'Laadi alla',
+	'mwe-embedplayer-share' => 'Jaga',
 );
 
 /** Basque (euskara)
@@ -918,6 +919,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Mjbmr
  * @author پاناروما
  */
 $messages['fa'] = array(
@@ -947,6 +949,7 @@ $messages['fa'] = array(
 	'mwe-embedplayer-share_this_video' => 'این تصویر را به اشتراک گذارید',
 	'mwe-embedplayer-menu_btn' => 'فهرست',
 	'mwe-embedplayer-close_btn' => 'بستن',
+	'mwe-embedplayer-ogg-player-selected' => '(انتخاب شده)',
 );
 
 /** Finnish (suomi)
@@ -2455,10 +2458,10 @@ $messages['nl'] = array(
 	'mwe-embedplayer-credit-date' => 'Datum: $1',
 	'mwe-embedplayer-credit-author' => 'Auteur: $1',
 	'mwe-embedplayer-nocredits' => 'Geen auteursgegevens beschikbaar',
-	'mwe-embedplayer-loading_plugin' => 'bezig met het laden van de uitbreiding...',
+	'mwe-embedplayer-loading_plugin' => 'Bezig met het laden van de uitbreiding...',
 	'mwe-embedplayer-select_playback' => 'Afspeelinstellingen instellen',
 	'mwe-embedplayer-link_back' => 'Terugverwijzen',
-	'mwe-embedplayer-error_swap_vid' => 'Fout: mv_embed kon de videotag voor de mv_embed-interface niet wisselen',
+	'mwe-embedplayer-error_swap_vid' => 'Fout: mvEmbed kon de videotag voor de mwEmbed-interface niet wisselen',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Aan het einde van de reeks toevoegen',
 	'mwe-embedplayer-missing_video_stream' => 'Het videobestand voor deze stream is niet aanwezig',
 	'mwe-embedplayer-play_clip' => 'Clip afspelen',
@@ -2474,7 +2477,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-paused' => 'gepauzeerd',
 	'mwe-embedplayer-download_segment' => 'Selectie downloaden:',
 	'mwe-embedplayer-download_full' => 'Volledig videobestand downloaden:',
-	'mwe-embedplayer-download_right_click' => 'Klik rechts en selecteer <i>Verwijzing opslaan als...</i> om het bestand te downloaden',
+	'mwe-embedplayer-download_right_click' => 'Klik rechts en selecteer <i>Koppeling opslaan als...</i> om het bestand te downloaden',
 	'mwe-embedplayer-download_clip' => 'Video downloaden',
 	'mwe-embedplayer-download_text' => 'Tekst downloaden',
 	'mwe-embedplayer-download' => 'Downloaden',
@@ -2493,7 +2496,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura open source videoplatform',
 	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Sluiten',
-	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC mediaspeler',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC-mediaspeler',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg-speler',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264-speler',
 	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM-speler',
