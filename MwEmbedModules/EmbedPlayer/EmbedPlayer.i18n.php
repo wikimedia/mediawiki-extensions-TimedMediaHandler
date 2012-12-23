@@ -315,6 +315,13 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-missing-source' => 'Ня знойдзена крынічнае відэа.',
 );
 
+/** Bulgarian (български)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['bg'] = array(
+	'mwe-embedplayer-close_btn' => 'Затваряне',
+);
+
 /** Breton (brezhoneg)
  * @author Fulup
  * @author Y-M D

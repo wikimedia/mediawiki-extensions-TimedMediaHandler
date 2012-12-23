@@ -186,6 +186,13 @@ $messages['be-tarask'] = array(
 	'mwe-timedtext-request-already-done' => 'Запыт на транскрыпцыю відэа ўжо быў пададзены. [$1 Усе запыты на транскрыпцыю]',
 );
 
+/** Bulgarian (български)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['bg'] = array(
+	'mwe-timedtext-back-btn' => 'Назад',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

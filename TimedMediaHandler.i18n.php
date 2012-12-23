@@ -1883,6 +1883,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/w
  * @author Irwangatot
  * @author IvanLanin
  * @author Rex
+ * @author පසිඳු කාවින්ද
  */
 $messages['id'] = array(
 	'timedmedia-desc' => 'Pemroses audio, video, dan teks berwaktu, dengan dukungan format WebM, Ogg Theora, Vorbis, srt',
@@ -1905,6 +1906,7 @@ Anda dapat <a href="$1">mengunduh klip</a> atau <a href="http://www.mediawiki.or
 	'timedmedia-desc-link' => 'Mengenai berkas ini',
 	'timedmedia-oggThumb-version' => 'OggHandler membutuhkan oggThumb versi $1 atau terbaru.',
 	'timedmedia-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Sumber $1',
 	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg lebar pita rendah (160P)',
@@ -3178,6 +3180,7 @@ $messages['pdc'] = array(
  * @author Ankry
  * @author Derbeth
  * @author Leinad
+ * @author Matma Rex
  * @author Przemub
  * @author Sp5uhe
  */
@@ -3216,10 +3219,10 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki
 	'timedmedia-percent-done' => 'Ukończono ok. $1%',
 	'timedmedia-in-job-queue' => 'Dodano do kolejki $1 temu',
 	'timedmedia-unknown-target-size' => 'Rozmiar docelowy nieznany, $1 zakodowane',
-	'timedmedia-days' => '{{PLURAL:$1|dzień|dni}}',
-	'timedmedia-hours' => '{{PLURAL:$1|godzina|godziny|godzin}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|minuta|$1 minuty|$1 minut}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|sekunda|$1 sekundy|$1 sekund}}',
+	'timedmedia-days' => '$1 {{PLURAL:$1|dzień|dni}}',
+	'timedmedia-hours' => '$1 {{PLURAL:$1|godzina|godziny|godzin}}',
+	'timedmedia-minutes' => '$1 {{PLURAL:$1|minuta|minuty|minut}}',
+	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 i $4',
 	'timedmedia-time-3-measurements' => '$1, $2 i $3',
 	'timedmedia-time-2-measurements' => '$1 i $2',
@@ -3228,13 +3231,29 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki
 	'timedmedia-reset-confirm' => 'Reset konwersji spowoduje usunięcie obecnego pliku (jeżeli takowy istnieje) i doda ją ponownie do kolejki. Zabierze to trochę czasu. <br /><br />
 Czy na pewno chcesz kontynuować?',
 	'timedmedia-reset-error' => 'Błąd w resecie konwersji.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Źródło $1',
 	'timedmedia-source-file-desc' => 'Oryginalne $1, $2 x $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg video o niskiej przepustowości (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg video o przepustowości sieciowej (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg video o przepustowości sieciowej (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Ogg video o wysokiej jakości (720P)',
-	'timedmedia-derivative-desc-160p.webm' => 'Ogg video o jakości sieciowej (160P)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM w jakości sieciowej (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM w jakości sieciowej (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM w jakości sieciowej (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'WebM o wysokiej jakości (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => 'MP4 odpowiednie dla tego urządzenia (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'MP4 w jakości sieciowej (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'MP4 w jakości HD (720P)',
+	'timedmedia-subtitle-new-go' => 'Przejdź',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 trwające transkodowanie|$1 trwające transkodowania|$1 trwających transkodowań}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}',
+	'timedmedia-file' => 'Plik',
+	'right-transcode-status' => 'Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]',
+	'action-transcode-status' => 'zobaczenia aktualnego statusu transkodowania',
 );
 
 /** Piedmontese (Piemontèis)
@@ -3979,10 +3998,10 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="http://www.mediawiki.or
 	'timedmedia-percent-done' => 'Ungefär $1% klar',
 	'timedmedia-in-job-queue' => 'Lades till i jobbkön för $1sedan',
 	'timedmedia-unknown-target-size' => 'Okänd målstorlek, $1-kodad',
-	'timedmedia-days' => '{{PLURAL:$1|dag|$1 dagar}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|timme|$1 timmar}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuter}}', # Fuzzy
-	'timedmedia-seconds' => '{{PLURAL:$1|sekund|$1 sekunder}}', # Fuzzy
+	'timedmedia-days' => '{{PLURAL:$1|1 dag|$1 dagar}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 timme|$1 timmar}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minuter}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekunder}}',
 	'timedmedia-time-4-measurements' => '$1, $2, $3 och $4',
 	'timedmedia-time-3-measurements' => '$1, $2 och $3',
 	'timedmedia-time-2-measurements' => '$1 och $2',
@@ -4007,6 +4026,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="http://www.mediawiki.or
 	'timedmedia-subtitle-language' => '$1 ($2) undertexter',
 	'timedmedia-subtitle-no-video' => 'Det finns ingen video som är associerade med den aktuella undertextssidan',
 	'timedmedia-subtitle-no-subtitles' => 'Det finns för närvarande ingen textning på $1 för denna video, du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida] för att lägga till dem',
+	'timedmedia-subtitle-remote-link' => 'Du kan [$1 visa beskrivningssidan] för denna fil på $2',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 videoklipp|$1 videoklipp}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videor}}',
@@ -4356,6 +4376,8 @@ $messages['uk'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'Потокове WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Потокове WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Високоякісне WebM (720P) для завантаження',
+	'timedmedia-subtitle-language' => '$1 ($2) субтитри',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 відео|$1 відео}}', # Fuzzy
 	'timedmedia-file' => 'Файл',
 );
 
