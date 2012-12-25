@@ -81,19 +81,17 @@ mw.EmbedPlayerJava = {
 		if( mw.config.get( 'wgCortadoJarFile' ) !== false ){
 			return mw.config.get('wgCortadoJarFile' );
 		}
-
 		if (
+			(
 			!mw.isLocalDomain( mediaSrc )
 			||
 			!mw.isLocalDomain( mw.getMwEmbedPath() )
 			||
 			mw.config.get( 'relativeCortadoAppletPath' ) === false
+            ) &&
+			window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ]
 		){
-			if ( window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ] ) {
-				return window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
-			} else {
-				return 'http://theora.org/cortado.jar';
-			}
+		    return window.cortadoDomainLocations[ new mw.Uri( mediaSrc ).host ];
 		} else {
 			// Get the local relative cortado applet location:
 			return mw.config.get( 'relativeCortadoAppletPath' );
