@@ -230,6 +230,21 @@ $messages['az'] = array(
 	'mwe-embedplayer-download' => 'Yüklə',
 );
 
+/** Bashkir (башҡортса)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'mwe-embedplayer-video-h264' => 'H.264 видео',
+	'mwe-embedplayer-video-webm' => 'WebM видео',
+	'mwe-embedplayer-video-flv' => 'Flash видео',
+	'mwe-embedplayer-video-ogg' => 'Ogg видео',
+	'mwe-embedplayer-video-audio' => 'Ogg аудио',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG аудио',
+	'mwe-embedplayer-video-3gp' => '3GP видео',
+	'mwe-embedplayer-video-mpeg' => 'MPEG видео',
+	'mwe-embedplayer-video-msvideo' => 'AVI видео',
+);
+
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
@@ -3664,6 +3679,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (українська)
  * @author Base
+ * @author Ата
  * @author Тест
  */
 $messages['uk'] = array(
@@ -3674,6 +3690,7 @@ $messages['uk'] = array(
 	'mwe-embedplayer-loading_plugin' => 'Завантаження додатка ...',
 	'mwe-embedplayer-select_playback' => 'Встановити налаштування відтворення',
 	'mwe-embedplayer-link_back' => 'Зворотнє посилання',
+	'mwe-embedplayer-error_swap_vid' => 'Помилка: mwEmbed не вдалося замінити тег відео для інтерфейсу mwEmbed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Додати у кінець послідовності',
 	'mwe-embedplayer-missing_video_stream' => 'Відеофайл для цього потоку відсутній',
 	'mwe-embedplayer-play_clip' => 'Відтворити кліп',
@@ -3696,11 +3713,16 @@ $messages['uk'] = array(
 	'mwe-embedplayer-share' => 'Поділитись',
 	'mwe-embedplayer-credits' => 'Створювачі',
 	'mwe-embedplayer-about-library' => 'Про програвач Kaltura',
+	'mwe-embedplayer-about-library-desc' => 'HTML5 медіа-бібліотека Kaltura дозволяє Вам користуватись HTML5 тегами &lt;відео&gt; та &lt;аудіо&gt; вже сьогодні зі стандартним інтерфейсом відтворення у різних браузерах.
+
+[$1 Більше про бібліотеку програвача Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Вихідна сторінка кліпу',
 	'mwe-embedplayer-choose_player' => 'Виберіть відео плеєр',
 	'mwe-embedplayer-no-player' => 'Нема програвача для $1',
 	'mwe-embedplayer-share_this_video' => 'Поділитись цим відео',
 	'mwe-embedplayer-video_credits' => 'Про створювачів відео',
+	'mwe-embedplayer-no-video_credits' => 'Нема відомостей про автора',
+	'mwe-embedplayer-kaltura-platform-title' => 'Відео-платформа з відкритим кодом Kaltura',
 	'mwe-embedplayer-menu_btn' => 'Меню',
 	'mwe-embedplayer-close_btn' => 'Закрити',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC програвач',
@@ -3714,6 +3736,8 @@ $messages['uk'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Програвач Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(обрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
+	'mwe-embedplayer-for_best_experience' => 'Для кращого відтворення відео рекомендуємо [$1 html5 відео браузер].',
+	'mwe-embedplayer-download-warn' => 'Не знайдено вбудованого програвача для браузера, для відтворення в браузері завантажте, будь ласка, [$1 останній Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Натисніть кнопку <b>F11</b> для перемикання <i>веб-браузеру</i> у повноекранний режим',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Натисніть кнопку <b>shift ⌘ F</b> для переходу у повноекранний режим',
 	'mwe-embedplayer-do_not_warn_again' => 'Не показувати це повідомлення у майбутньому',
