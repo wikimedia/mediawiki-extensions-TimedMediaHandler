@@ -1963,6 +1963,7 @@ $messages['si'] = array(
 	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
 	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
 	'mwe-timedtext-back-btn' => 'ආපසු',
+	'mwe-timedtext-layout' => 'සැලැස්ම',
 );
 
 /** Slovenian (slovenščina)

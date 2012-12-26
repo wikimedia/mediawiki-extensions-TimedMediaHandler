@@ -3502,10 +3502,18 @@ $messages['ta'] = array(
 	'mwe-embedplayer-share_this_video' => 'இக் காணொளியைப் பகிர்க',
 	'mwe-embedplayer-menu_btn' => 'பட்டி',
 	'mwe-embedplayer-close_btn' => 'மூடு',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC ஊடக இயக்கி',
 	'mwe-embedplayer-do_not_warn_again' => 'வருங்காலத்தில் இச்செய்தியைக் காட்ட வேண்டாம்',
 	'mwe-embedplayer-playerSelect' => 'இயக்கிகள்',
 	'mwe-embedplayer-related_videos' => 'தொடர்புள்ள காணொளிகள்',
 	'mwe-embedplayer-copy-code' => 'குறிமுறையைப் படியெடு',
+	'mwe-embedplayer-video-h264' => 'H.264 காணொளி',
+	'mwe-embedplayer-video-webm' => 'WebM காணொளி',
+	'mwe-embedplayer-video-flv' => 'பிளாஷ் காணொளி',
+	'mwe-embedplayer-video-ogg' => 'Ogg காணொளி',
+	'mwe-embedplayer-video-3gp' => '3GP காணொளி',
+	'mwe-embedplayer-video-mpeg' => 'MPEG காணொளி',
+	'mwe-embedplayer-video-msvideo' => 'AVI காணொளி',
 	'mwe-embedplayer-missing-source' => 'மூலக் காணொளியேதும் கண்டுபிடிக்கப்படவில்லை',
 );
 
