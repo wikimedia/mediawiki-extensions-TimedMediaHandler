@@ -1964,6 +1964,9 @@ $messages['si'] = array(
 	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
 	'mwe-timedtext-back-btn' => 'ආපසු',
 	'mwe-timedtext-layout' => 'සැලැස්ම',
+	'mwe-timedtext-textcat-ktv' => 'කැරෝකේ',
+	'mwe-timedtext-textcat-trx' => 'ප්‍රතිලේඛනය',
+	'mwe-timedtext-textcat-lrc' => 'ගීපදවැල්',
 );
 
 /** Slovenian (slovenščina)

@@ -507,6 +507,7 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
+ * @author Purodha
  */
 $messages['de'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
@@ -523,7 +524,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-pause_clip' => 'Clip pausieren',
 	'mwe-embedplayer-volume_control' => 'Lautstärkeregelung',
 	'mwe-embedplayer-player_options' => 'Playeroptionen',
-	'mwe-embedplayer-timed_text' => 'Als nächstes eingereiht',
+	'mwe-embedplayer-timed_text' => 'Zeitbezogene Untertitel',
 	'mwe-embedplayer-player_fullscreen' => 'Vollbild',
 	'mwe-embedplayer-next_clip_msg' => 'Nächsten Clip wiedergeben',
 	'mwe-embedplayer-prev_clip_msg' => 'Vorherigen Clip wiedergeben',
@@ -2135,8 +2136,13 @@ $messages['ko'] = array(
 );
 
 /** Colognian (Ripoarisch)
+ * @author Purodha
  */
 $messages['ksh'] = array(
+	'mwe-embedplayer-credit-title' => 'Tittel: $1',
+	'mwe-embedplayer-credit-date' => 'Dattum: $1',
+	'mwe-embedplayer-credit-author' => 'Schriever: $1',
+	'mwe-embedplayer-nocredits' => 'Mer han kein Dangksaaronge ze jriefe',
 	'mwe-embedplayer-loading_plugin' => 'Ben dat Ongerprojramm aam laade&nbsp;…',
 	'mwe-embedplayer-select_playback' => 'Enstellunge för et Affshpelle maache',
 	'mwe-embedplayer-link_back' => 'Lengk retuur',
@@ -2147,6 +2153,7 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-pause_clip' => 'Donn dä Ußschnedd aanhallde',
 	'mwe-embedplayer-volume_control' => 'Enshtellung för de Loutshtärk',
 	'mwe-embedplayer-player_options' => 'Enschtellunge för Affshpellprojramme',
+	'mwe-embedplayer-timed_text' => 'Ongertitele met Zigge',
 	'mwe-embedplayer-player_fullscreen' => 'Op der janze Beldscherm jonn',
 	'mwe-embedplayer-next_clip_msg' => 'Donn dä Ußschnedd donoh shpelle',
 	'mwe-embedplayer-prev_clip_msg' => 'Donn dä Ußschnedd dovöör shpelle',
@@ -2161,13 +2168,20 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-download' => 'Eronger laade',
 	'mwe-embedplayer-share' => 'Wigger jävve',
 	'mwe-embedplayer-credits' => 'Aanerkennunge för Beidrääsch',
+	'mwe-embedplayer-about-library' => 'Övver der Kaltuura Schpeller',
 	'mwe-embedplayer-clip_linkback' => 'Däm Ußschnett singe Quällsigg',
 	'mwe-embedplayer-choose_player' => 'Donn en Affshpellprojramm för Viddejos ußsöhke',
+	'mwe-embedplayer-no-player' => 'Mer han keine Afschpeller för $1',
 	'mwe-embedplayer-share_this_video' => 'Donn dä Viddejo wigger jävve',
 	'mwe-embedplayer-video_credits' => 'Aanerkennunge för Beidrääsch aan dämm Viddejo',
+	'mwe-embedplayer-no-video_credits' => 'Mer han kein Dangksaaronge ze jriefe',
+	'mwe-embedplayer-kaltura-platform-title' => 'Kaltuura - Viddejo Projramme med offe Quälle',
 	'mwe-embedplayer-menu_btn' => 'Ußwahl',
 	'mwe-embedplayer-close_btn' => 'Zohmaache',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Dä <i lang="en">VLC</i>-Affschpeller',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5-<i lang="en">Ogg</i>-Affschpeller',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5-<i lang="en">H.264</i>-Affschpeller',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5-<i lang="en">WebM</i>-Affschpeller',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Däm <i lang="en">Ogg</i>-Shpeller sing Stanndatt-<i lang="en">plugin</i>',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Dä <i lang="en">QuickTime</i>-Shpeller als <i lang="en">plugin</i>',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'Dä <i lang="en">QuickTime</i>-Shpeller övver <i lang="en">ActiveX</i>',
@@ -2177,12 +2191,25 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(ußjesöhk)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => '<i lang="en">OMTK Flash Vorbis</i> Shpeller',
 	'mwe-embedplayer-for_best_experience' => 'öm en bäßere Qualliteit för dä Viddejo ze krijje, nämmp_der:<br /><i lang="en">[$1 Firefox 3.5]</i>.', # Fuzzy
-	'mwe-embedplayer-do_not_warn_again' => 'Eets ens nit norr_ens aanzeije.', # Fuzzy
+	'mwe-embedplayer-fullscreen-tip' => 'Met däm <b>F11</b>-Knopp schalldt mer dä <i>Brauser</i> op der kumplätte Beldscherrem öm, un widder retuur.',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Met <b>Ömschallde-⌘-F</b> schalldt mer op der kumplätte Beldscherrem öm',
+	'mwe-embedplayer-do_not_warn_again' => 'Donn heh di Nohreesch en Zohkonf nit norr_ens aanzeije.',
+	'mwe-embedplayer-playerSelect' => 'Schpeller',
 	'mwe-embedplayer-read_before_embed' => 'Beß esu joot un liß <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">övver de Sesherheit bemm Ennfööje övver et Netz</a> iih dat De jet ennfööschß!',
 	'mwe-embedplayer-embed_site_or_blog' => 'En en Websigg udder <i lang="en">Blog</i>_erinndonn',
 	'mwe-embedplayer-related_videos' => 'Verwandte Viddejos',
 	'mwe-embedplayer-seeking' => 'aam Söhke',
 	'mwe-embedplayer-copy-code' => 'Kood kopeere',
+	'mwe-embedplayer-video-h264' => 'En <i lang="en">H.264</i>-Viddejo-Dattei',
+	'mwe-embedplayer-video-webm' => 'En <i lang="en">WebM</i>-Viddejo-Dattei',
+	'mwe-embedplayer-video-flv' => 'En <i lang="en">Flash</i>-Viddejo-Dattei',
+	'mwe-embedplayer-video-ogg' => 'En <i lang="en">Ogg</i>-Viddejo-Dattei',
+	'mwe-embedplayer-video-audio' => 'En <i lang="en">Ogg</i>-Tohn-Dattei',
+	'mwe-embedplayer-audio-mpeg' => 'En <i lang="en">MPEG </i>-Tohn-Dattei',
+	'mwe-embedplayer-video-3gp' => 'En <i lang="en">3GP</i>-Viddejo-Dattei',
+	'mwe-embedplayer-video-mpeg' => 'En <i lang="en">MPEG</i>-Viddejo-Dattei',
+	'mwe-embedplayer-video-msvideo' => 'En <i lang="en">AVI</i>-Viddejo-Dattei',
+	'mwe-embedplayer-missing-source' => 'Mer han kein Viddejo-Quälle-Dattei jefonge',
 );
 
 /** Kurdish (Latin script) (Kurdî (latînî)‎)
@@ -2192,6 +2219,14 @@ $messages['ku-latn'] = array(
 	'mwe-embedplayer-credit-title' => 'Sernav: $1',
 	'mwe-embedplayer-credit-date' => 'Dîrok: $1',
 	'mwe-embedplayer-credit-author' => 'Xwedî: $1',
+);
+
+/** Kirghiz (Кыргызча)
+ * @author Growingup
+ */
+$messages['ky'] = array(
+	'mwe-embedplayer-menu_btn' => 'Меню',
+	'mwe-embedplayer-close_btn' => 'Жабуу',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3217,19 +3252,49 @@ $messages['si'] = array(
 	'mwe-embedplayer-credit-title' => 'මාතෘකාව: $1',
 	'mwe-embedplayer-credit-date' => 'දිනය: $1',
 	'mwe-embedplayer-credit-author' => 'කතෘ: $1',
+	'mwe-embedplayer-volume_control' => 'ශබ්ද ප්‍රමාණ පාලකය',
 	'mwe-embedplayer-player_options' => 'වාදක විකල්පයන්',
 	'mwe-embedplayer-player_fullscreen' => 'පූර්ණ තිරය',
+	'mwe-embedplayer-paused' => 'විරාමගතයි',
 	'mwe-embedplayer-download_segment' => 'තේරීම බාගන්න:',
 	'mwe-embedplayer-download_clip' => 'වීඩියෝව බාගන්න',
 	'mwe-embedplayer-download_text' => 'පාඨය බාගන්න',
 	'mwe-embedplayer-download' => 'බාගන්න',
 	'mwe-embedplayer-share' => 'හුවමාරු කරන්න',
 	'mwe-embedplayer-credits' => 'ස්තුතිය',
+	'mwe-embedplayer-choose_player' => 'වීඩියෝ වාදකය තෝරන්න',
+	'mwe-embedplayer-share_this_video' => 'මෙම වීඩියෝව හුවමාරු කරන්න',
+	'mwe-embedplayer-video_credits' => 'වීඩියෝ ස්තූතිය',
+	'mwe-embedplayer-no-video_credits' => 'ස්තූතිය ලබා ගත නොහැක',
 	'mwe-embedplayer-menu_btn' => 'මෙනුව',
 	'mwe-embedplayer-close_btn' => 'වසන්න',
+	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC වාදකය',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg වාදකය',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 වාදකය',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM වාදකය',
+	'mwe-embedplayer-ogg-player-oggPlugin' => 'ප්‍රජාතීය Ogg ප්ලගීනය',
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime ප්ලගීනය',
+	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
+	'mwe-embedplayer-ogg-player-flowplayer' => 'ෆ්ලොව්වාදකය',
+	'mwe-embedplayer-ogg-player-kplayer' => 'කල්තුරා වාදකය',
 	'mwe-embedplayer-ogg-player-selected' => '(තෝරාගත්)',
+	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK ෆ්ලෑෂ් Vorbis',
 	'mwe-embedplayer-playerSelect' => 'වාදක',
+	'mwe-embedplayer-read_before_embed' => 'එබ්බීම පෙර <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">මෙය කියවන්න</a>.',
 	'mwe-embedplayer-embed_site_or_blog' => 'පිටුවක ඔබ්බවන්න',
+	'mwe-embedplayer-related_videos' => 'ආශ්‍රිත වීඩියෝ',
+	'mwe-embedplayer-seeking' => 'ඉලියමින්',
+	'mwe-embedplayer-buffering' => 'අවරෝධීකරණය කරමින්',
+	'mwe-embedplayer-copy-code' => 'පිටපත් කේතය',
+	'mwe-embedplayer-video-h264' => 'H.264 වීඩියෝ',
+	'mwe-embedplayer-video-webm' => 'වෙබ්එම් වීඩියෝ',
+	'mwe-embedplayer-video-flv' => 'ෆ්ලෑෂ් වීඩියෝ',
+	'mwe-embedplayer-video-ogg' => 'Ogg වීඩියෝ',
+	'mwe-embedplayer-video-audio' => 'Ogg ශ්‍රව්‍ය',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG වීඩියෝ',
+	'mwe-embedplayer-video-3gp' => '3GP වීඩියෝ',
+	'mwe-embedplayer-video-mpeg' => 'MPEG වීඩියෝ',
+	'mwe-embedplayer-video-msvideo' => 'AVI වීඩියෝ',
 );
 
 /** Slovak (slovenčina)
