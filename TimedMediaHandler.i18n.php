@@ -107,7 +107,7 @@ Are you sure you want to proceed?',
 
 	// Timed text page
 	'timedmedia-subtitle-new' => 'Create new translation or edit existing',
-	'timedmedia-subtitle-new-desc' => "Replace '''$1''' part with your [[:en:ISO 639|language code]] and press '''{{int:Timedmedia-subtitle-new-go}}''' button",
+	'timedmedia-subtitle-new-desc' => "Replace '''$1''' part with your [[:en:ISO 639|language code]] and press the '''{{int:Timedmedia-subtitle-new-go}}''' button",
 	'timedmedia-subtitle-new-go' => 'Go',
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
@@ -211,6 +211,8 @@ Parameters are:
 	'timedmedia-derivative-320p.mp4' => '{{optional}}',
 	'timedmedia-derivative-480p.mp4' => '{{optional}}',
 	'timedmedia-derivative-720p.mp4' => '{{optional}}',
+	'timedmedia-subtitle-new-desc' => 'Instruction to create subtitles in a new language. Parameters:
+* $1 is the language code of the current context.',
 	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> to {{int:Timedmedia-subtitle-new-go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names
 Paramaters are:
