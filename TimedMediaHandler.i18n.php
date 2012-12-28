@@ -286,7 +286,7 @@ $messages['aln'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'ZQM multiplexed audio / video file, $1, gjatë $2, $4 × $5 pixels, $3 e përgjithshme',
 	'timedmedia-ogg-long-general' => 'Ogg media file, gjatë $2, $3',
 	'timedmedia-ogg-long-error' => 'E pavlefshme Ogg file: $1',
-	'timedmedia-no-player-js' => 'Na vjen keq, browser-i juaj ose ka JavaScript paaftë ose nuk ka asnjë lojtar të mbështetur. <br /> Ju mund të <a href="$1">shkarkoni clip</a> ose <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">shkarkoni një lojtar</a> për të luajtur clip në shfletuesin tuaj.',
+	'timedmedia-no-player-js' => 'Na vjen keq, browser-i juaj ose ka JavaScript paaftë ose nuk ka asnjë lojtar të mbështetur. <br /> Ju mund të <a href="$1">shkarkoni clip</a> ose <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">shkarkoni një lojtar</a> për të luajtur clip në shfletuesin tuaj.',
 	'timedmedia-more' => 'Më shumë ...',
 	'timedmedia-dismiss' => 'Afër',
 	'timedmedia-download' => 'Shkarko file',
@@ -333,7 +333,7 @@ $messages['ar'] = array(
 	'timedmedia-webm-short-video' => 'نسق WebM، $1 ملف فيديو $2',
 	'timedmedia-webm-long-video' => 'ملف صوت/فيديو بنسق WebM , $1, الطول $2, $4×$5 بكسل، $3 إجمالا',
 	'timedmedia-no-player-js' => 'عذرا، متصفحك إما انه لا يدعم الجافا سكريبت أو انها معطلة.<br />
-تستطيع <a href="$1">تحميل المقطع</a> أو <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">تحميل مشغل</a> يستطيع تشغيل المقطع على متصفحك.',
+تستطيع <a href="$1">تحميل المقطع</a> أو <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">تحميل مشغل</a> يستطيع تشغيل المقطع على متصفحك.',
 	'timedmedia-more' => 'المزيد...',
 	'timedmedia-dismiss' => 'أغلق',
 	'timedmedia-download' => 'نزل الملف',
@@ -484,7 +484,7 @@ $messages['be-tarask'] = array(
 	'timedmedia-webm-long-video' => 'Аўдыё/відэа-файл WebM, $1, працягласьць $2, $4×$5 піксэлаў, усяго $3',
 	'timedmedia-mp4-short-video' => 'MP4 $1 відэафайл, $2',
 	'timedmedia-no-player-js' => 'Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />
-Вы можаце <a href="$1">загрузіць кліп</a> ці <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
+Вы можаце <a href="$1">загрузіць кліп</a> ці <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'timedmedia-more' => 'Болей…',
 	'timedmedia-dismiss' => 'Схаваць',
 	'timedmedia-download' => 'Загрузіць файл',
@@ -588,7 +588,7 @@ $messages['br'] = array(
 	'timedmedia-webm-short-video' => 'Restr video WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Restr video/son WebM, $1, pad $2, $4 × $5 piksel, $3 en holl',
 	'timedmedia-no-player-js' => 'Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n\'eo ket skoret lenner ebet gantañ.<br />
-<a href="$1">Pellgargañ ar c\'hlip</a> a c\'hallit pe <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pellgargañ ul lenner</a> da lenn ar c\'hlip gant ho merdeer.',
+<a href="$1">Pellgargañ ar c\'hlip</a> a c\'hallit pe <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pellgargañ ul lenner</a> da lenn ar c\'hlip gant ho merdeer.',
 	'timedmedia-more' => "Muioc'h...",
 	'timedmedia-dismiss' => 'Serriñ',
 	'timedmedia-download' => 'Pellgargañ ar restr',
@@ -600,10 +600,10 @@ $messages['br'] = array(
 	'timedmedia-status-unknown' => 'Statud dianav',
 	'timedmedia-actions' => 'Oberoù',
 	'timedmedia-not-ready' => "N'eo ket prest",
-	'timedmedia-days' => '$1 {{PLURAL: $1|devezh|devezh}}',
-	'timedmedia-hours' => '$1 {{PLURAL: $1|eurvezh|eurvezh}}',
-	'timedmedia-minutes' => '$1 {{PLURAL: $1|munutenn|munutenn}}',
-	'timedmedia-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}',
+	'timedmedia-days' => '$1 {{PLURAL: $1|devezh|devezh}}', # Fuzzy
+	'timedmedia-hours' => '$1 {{PLURAL: $1|eurvezh|eurvezh}}', # Fuzzy
+	'timedmedia-minutes' => '$1 {{PLURAL: $1|munutenn|munutenn}}', # Fuzzy
+	'timedmedia-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}', # Fuzzy
 	'timedmedia-time-4-measurements' => '$1, $2, $3 ha $4',
 	'timedmedia-time-3-measurements' => '$1, $2 ha $3',
 	'timedmedia-time-2-measurements' => '$1 ha $2',
@@ -634,7 +634,7 @@ $messages['bs'] = array(
 	'timedmedia-ogg-long-general' => 'Ogg medijalna datoteka, dužina $2, $3',
 	'timedmedia-ogg-long-error' => 'Nevaljana ogg datoteka: $1',
 	'timedmedia-no-player-js' => 'Žao nam je, vaš preglednik ili je onemogućio JavaScript ili nema nijednog podržanog playera.<br />
-Možete <a href="$1">učitati klip</a> ili <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">učitati player</a> za reproduciranje klipa u vašem pregledniku.',
+Možete <a href="$1">učitati klip</a> ili <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">učitati player</a> za reproduciranje klipa u vašem pregledniku.',
 	'timedmedia-more' => 'Više...',
 	'timedmedia-dismiss' => 'Zatvori',
 	'timedmedia-download' => 'Učitaj datoteku',
@@ -697,7 +697,7 @@ $messages['cs'] = array(
 	'timedmedia-mp4-short-video' => 'Videosoubor MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'audio/video soubor MP4, $1, délka $2, $4×$5 pixelů, celkem $3',
 	'timedmedia-no-player-js' => 'Je mi líto, ale váš prohlížeč má buď vypnutý JavaScript, nebo nemáte žádný podporovaný přehrávač.<br />
-Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download/cs">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.',
+Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download/cs">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.',
 	'timedmedia-more' => 'Více...',
 	'timedmedia-dismiss' => 'Zavřít',
 	'timedmedia-download' => 'Stáhnout soubor',
@@ -791,7 +791,7 @@ $messages['de'] = array(
 	'timedmedia-mp4-short-video' => 'MP4-$1-Videodatei, $2',
 	'timedmedia-mp4-long-video' => 'MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 gesamt',
 	'timedmedia-no-player-js' => 'Entschuldige, aber dein Browser hat entweder JavaScript deaktiviert oder keine unterstützte Abspielsoftware.<br />
-Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
+Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'timedmedia-more' => 'Optionen …',
 	'timedmedia-dismiss' => 'Schließen',
 	'timedmedia-download' => 'Datei herunterladen',
@@ -908,7 +908,7 @@ $messages['dsb'] = array(
 	'timedmedia-webm-short-video' => 'WebM $1 wideodataja, $2',
 	'timedmedia-webm-long-video' => 'WebM dataja awdio/wideo, $1, dłujkosć $2, $4 x $5, $3 dogromady',
 	'timedmedia-no-player-js' => 'Twój wobglědowak jo bóžko pak JavaScript znjemóžnił abo njama njepódpěrany wótegrawak.<br />
-Móžoš  <a href="$1">klip ześěgnuś</a> abo <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">wótgrawak ześěgnuś</a>, aby klip w swójom wobglědowaku wótegrał.',
+Móžoš  <a href="$1">klip ześěgnuś</a> abo <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">wótgrawak ześěgnuś</a>, aby klip w swójom wobglědowaku wótegrał.',
 	'timedmedia-more' => 'Wěcej...',
 	'timedmedia-dismiss' => 'Zacyniś',
 	'timedmedia-download' => 'Dataju ześěgnuś',
@@ -993,7 +993,7 @@ $messages['es'] = array(
 	'timedmedia-mp4-short-video' => 'Archivo de vídeo MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Archivo de audio/vídeo MP4,  $1 , longitud  $2 ,  $4  ×  $5  píxeles,  $3  total',
 	'timedmedia-no-player-js' => 'Lo sentimos, pero tu navegador tiene JavaScript inhabilitado o no tiene ningún reproductor compatible instalado.<br />
-Puedes <a href="$1">descargar el clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descargar un reproductor</a> para poder ver el vídeo en tu navegador.',
+Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descargar un reproductor</a> para poder ver el vídeo en tu navegador.',
 	'timedmedia-more' => 'Opciones...',
 	'timedmedia-dismiss' => 'Cerrar',
 	'timedmedia-download' => 'Descargar archivo',
@@ -1163,7 +1163,7 @@ $messages['fi'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 -videotiedosto, $2',
 	'timedmedia-mp4-long-video' => 'MP4-ääni-/videotiedosto, $1, pituus $2, $4×$5 pikseliä, yhteensä $3',
 	'timedmedia-no-player-js' => 'Valitettavasti selaimessasi on joko JavaScript pois päältä tai sille ei ole tuettua soitinta.<br />
-Voit <a href="$1">ladata leikkeen</a> tai <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">ladata soittimen</a> toistaaksesi sen selaimessasi.',
+Voit <a href="$1">ladata leikkeen</a> tai <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">ladata soittimen</a> toistaaksesi sen selaimessasi.',
 	'timedmedia-more' => 'Lisää…',
 	'timedmedia-dismiss' => 'Sulje',
 	'timedmedia-download' => 'Lataa',
@@ -1254,7 +1254,7 @@ $messages['fr'] = array(
 	'timedmedia-mp4-short-video' => 'Fichier vidéo MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Fichier audio/vidéo MP4, $1, taille $2, $4 x $5 pixels, $3 au total',
 	'timedmedia-no-player-js' => 'Désolé, soit votre navigateur a JavaScript désactivé, soit il ne dispose d’aucun lecteur pris en charge.<br />
-Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">télécharger un lecteur</a> pour lire le clip dans votre navigateur.',
+Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">télécharger un lecteur</a> pour lire le clip dans votre navigateur.',
 	'timedmedia-more' => 'Plus…',
 	'timedmedia-dismiss' => 'Fermer',
 	'timedmedia-download' => 'Télécharger le fichier',
@@ -1426,7 +1426,7 @@ $messages['gl'] = array(
 	'timedmedia-mp4-short-video' => 'Ficheiro de vídeo MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Ficheiro MP4 de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total',
 	'timedmedia-no-player-js' => 'O seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
-Pode <a href="$1">descargar o vídeo</a> ou <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un reprodutor</a> para reproducir o vídeo no seu navegador.',
+Pode <a href="$1">descargar o vídeo</a> ou <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un reprodutor</a> para reproducir o vídeo no seu navegador.',
 	'timedmedia-more' => 'Máis...',
 	'timedmedia-dismiss' => 'Pechar',
 	'timedmedia-download' => 'Descargar o ficheiro',
@@ -1527,7 +1527,7 @@ $messages['gsw'] = array(
 	'timedmedia-webm-short-video' => 'WebM-$1-Videodatei, $2',
 	'timedmedia-webm-long-video' => 'WebM-Audio-/Video-Datei, $1, Längei: $2, $4×$5 Pixel, $3 insgsamt',
 	'timedmedia-no-player-js' => 'Excusez, aber Dyy Browser het entwäder JavaScript deaktiviert oder kei unterstitzti Abspilsoftware.<br />
-Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.',
+Du chasch <a href="$1">dr Clip abelade</a> oder <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.',
 	'timedmedia-more' => 'Meh …',
 	'timedmedia-dismiss' => 'Zuemache',
 	'timedmedia-download' => 'Datei spychere',
@@ -1549,10 +1549,10 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.or
 	'timedmedia-percent-done' => 'Öbe $1 % fertig',
 	'timedmedia-in-job-queue' => 'Vor $1 zur Ufftragswarteschlange dezuegfiegt worde',
 	'timedmedia-unknown-target-size' => 'Unbekannti Ziilgrößi, $1 codiert',
-	'timedmedia-days' => '{{PLURAL:$1|1 Tag|$1 Täg}}',
-	'timedmedia-hours' => '{{PLURAL:$1|1 Stund|$1 Stunde}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|1 Minut|$1 Minute}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekund|$1 Sekunde}}',
+	'timedmedia-days' => '{{PLURAL:$1|1 Tag|$1 Täg}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|1 Stund|$1 Stunde}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|1 Minut|$1 Minute}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekund|$1 Sekunde}}', # Fuzzy
 	'timedmedia-time-4-measurements' => '$1, $2, $3 un $4',
 	'timedmedia-time-3-measurements' => '$1, $2 un $3',
 	'timedmedia-time-2-measurements' => '$1 un $2',
@@ -1602,7 +1602,7 @@ $messages['he'] = array(
 	'timedmedia-mp4-short-video' => 'קובץ וידאו MP4 $1&rlm;, $2',
 	'timedmedia-mp4-long-video' => 'קובץ שמע ווידאו MP4&rlm;, $1, באורך $2, rlm;, $4 × $5פיקסלים, $3 סך הכול',
 	'timedmedia-no-player-js' => 'סליחה, בדפדפן שלכם לא מופעלת תמיכה ב־JavaScript או שאין לכם נגן נתמך.<br />
-אתם יכולים <a href="$1">להוריד למחשב את הסרטון</a> או <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">להוריד למחשב שלכם נגן</a> שינגן את הסרטון בדפדפן שלכם.',
+אתם יכולים <a href="$1">להוריד למחשב את הסרטון</a> או <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">להוריד למחשב שלכם נגן</a> שינגן את הסרטון בדפדפן שלכם.',
 	'timedmedia-more' => 'עוד…',
 	'timedmedia-dismiss' => 'סגירה',
 	'timedmedia-download' => 'הורדת הקובץ',
@@ -1733,7 +1733,7 @@ $messages['hsb'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 widejodataja, $2',
 	'timedmedia-mp4-long-video' => 'MP4 awdio-/widejodataja, $1, dołhosć $2, $4 × $5 pikselow, $3 dohromady',
 	'timedmedia-no-player-js' => 'Twój wobhladowak je pak JavaScript znjemóžnił pak nima podpěrowany wothrawak.<br />
-Móžeš <a href="$1">klip sćahnyć</a> abo <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.',
+Móžeš <a href="$1">klip sćahnyć</a> abo <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.',
 	'timedmedia-more' => 'Wjace ...',
 	'timedmedia-dismiss' => 'Začinić',
 	'timedmedia-download' => 'Dataju sćahnyć',
@@ -1816,7 +1816,7 @@ $messages['hu'] = array(
 	'timedmedia-ogg-long-general' => 'Ogg médiafájl, hossza: $2, $3',
 	'timedmedia-ogg-long-error' => 'Érvénytelen ogg fájl: $1',
 	'timedmedia-no-player-js' => 'Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />
-<a href="$1">Letöltheted a klipet</a>, vagy <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.',
+<a href="$1">Letöltheted a klipet</a>, vagy <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.',
 	'timedmedia-more' => 'Tovább...',
 	'timedmedia-dismiss' => 'Bezárás',
 	'timedmedia-download' => 'Fájl letöltése',
@@ -1846,7 +1846,7 @@ $messages['ia'] = array(
 	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
 	'timedmedia-webm-long-video' => 'File audio/video WebM, $1, longitude $2, $4 × $5 pixels, $3 in total',
 	'timedmedia-no-player-js' => 'Pardono, tu systema o ha JavaScript disactivate o non ha un reproductor supportate.<br />
-Tu pote <a href="$1">discargar le clip</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">discargar un reproductor</a> pro reproducer le clip in tu navigator.',
+Tu pote <a href="$1">discargar le clip</a> o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">discargar un reproductor</a> pro reproducer le clip in tu navigator.',
 	'timedmedia-more' => 'Plus…',
 	'timedmedia-dismiss' => 'Clauder',
 	'timedmedia-download' => 'Discargar file',
@@ -1927,7 +1927,7 @@ $messages['id'] = array(
 	'timedmedia-webm-short-video' => 'Berkas video $1 WebM, $2',
 	'timedmedia-webm-long-video' => 'Berkas audio/video WebM, $1, lama $2, $4 × $5 piksel, $3 keseluruhan',
 	'timedmedia-no-player-js' => 'Maaf, peramban Anda memiliki JavaScript yang dinonaktifkan atau tidak memiliki pemutar media apapun.<br />
-Anda dapat <a href="$1">mengunduh klip</a> atau <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">mengunduh pemutar</a> untuk memutar klip di peramban Anda.',
+Anda dapat <a href="$1">mengunduh klip</a> atau <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">mengunduh pemutar</a> untuk memutar klip di peramban Anda.',
 	'timedmedia-more' => 'Lainnya...',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Unduh berkas',
@@ -1980,7 +1980,7 @@ $messages['is'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 myndbandaskrá, $2',
 	'timedmedia-mp4-long-video' => 'MP4 myndbandaskrá, $1, lengd $2, $4 × $5 dílar, $3 samanlagt',
 	'timedmedia-no-player-js' => 'Því miður hefur vafrinn þinn annaðhvort óvirkan JavaScript eða engan studdann spilara.<br />
-Þú getur <a href="$1">hlaðið niður skránni</a> eða <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hlaðið niður spilara</a> til þess að spila skránna í vafranum.',
+Þú getur <a href="$1">hlaðið niður skránni</a> eða <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hlaðið niður spilara</a> til þess að spila skránna í vafranum.',
 	'timedmedia-more' => 'Meira...',
 	'timedmedia-dismiss' => 'Loka',
 	'timedmedia-download' => 'Sækja skrá',
@@ -2047,7 +2047,7 @@ $messages['it'] = array(
 	'timedmedia-mp4-short-video' => 'File video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'File audio/video MP4 $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3',
 	'timedmedia-no-player-js' => 'Si sta utilizzando un browser che ha JavaScript disattivato oppure non ha alcun riproduttore supportato.<br />
-È possibile <a href="$1">scaricare il clip multimediale</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un riproduttore</a> per riprodurre il clip nel proprio browser.',
+È possibile <a href="$1">scaricare il clip multimediale</a> o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un riproduttore</a> per riprodurre il clip nel proprio browser.',
 	'timedmedia-more' => 'Altro...',
 	'timedmedia-dismiss' => 'Chiudi',
 	'timedmedia-download' => 'Scarica il file',
@@ -2140,7 +2140,7 @@ $messages['ja'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 動画ファイル、$2',
 	'timedmedia-mp4-long-video' => 'MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で$3',
 	'timedmedia-no-player-js' => '申し訳ありません。あなたのブラウザーではJavaScriptが無効になっているか、対応したプレイヤーがありません。<br />
-再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">プレイヤーをダウンロード</a>する必要があります。',
+再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">プレイヤーをダウンロード</a>する必要があります。',
 	'timedmedia-more' => 'その他…',
 	'timedmedia-dismiss' => '閉じる',
 	'timedmedia-download' => 'ファイルをダウンロード',
@@ -2420,7 +2420,7 @@ $messages['ko'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 동영상 파일, $2',
 	'timedmedia-mp4-long-video' => 'MP4 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
 	'timedmedia-no-player-js' => '죄송합니다, 당신의 시스템은 자바스크립트를 지원하지 않거나 지원하는 미디어 플레이어가 설치되어 있지 않습니다.<br />
-<a href="$1">미디어 클립을 다운로드</a>하거나, <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">미디어 플레이어를 다운로드</a>할 수 있습니다.',
+<a href="$1">미디어 클립을 다운로드</a>하거나, <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">미디어 플레이어를 다운로드</a>할 수 있습니다.',
 	'timedmedia-more' => '더 보기...',
 	'timedmedia-dismiss' => '닫기',
 	'timedmedia-download' => '파일 다운로드',
@@ -2521,7 +2521,7 @@ met Ongershtözung för de Fommaate <i lang="en">WebM</i>, <i lang="en">Ogg Theo
 	'timedmedia-ogg-long-error' => 'En kapodde <i lang="en">Ogg</i>-Dattei: $1',
 	'timedmedia-webm-short-video' => 'En $1 Viddejo-Dattei em WebM-Fommaat vun $2',
 	'timedmedia-webm-long-video' => 'Ene Viddejo udder en Toondattei em WebM-Fommaat, $1, $2 jruuß, $4 × $5 Pixelle, $3 enßjesammp',
-	'timedmedia-no-player-js' => 'Schad, Dinge Brauser hät entweder JavaSkrepp ußjeschalldt udder kein zopaß Projramm zom Afschpelle.<br />Do kanns jäz <a href="$1">dat Stöck eronger laade</a> udder <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">e Afspeller-Projramm eronger laade</a>, öm dat Schtöck en Dingem Brauser afzeschpelle.',
+	'timedmedia-no-player-js' => 'Schad, Dinge Brauser hät entweder JavaSkrepp ußjeschalldt udder kein zopaß Projramm zom Afschpelle.<br />Do kanns jäz <a href="$1">dat Stöck eronger laade</a> udder <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">e Afspeller-Projramm eronger laade</a>, öm dat Schtöck en Dingem Brauser afzeschpelle.',
 	'timedmedia-more' => 'Enshtelle&nbsp;…',
 	'timedmedia-dismiss' => 'Zohmaache!',
 	'timedmedia-download' => 'Datei erunger lade',
@@ -2564,7 +2564,7 @@ $messages['lb'] = array(
 	'timedmedia-ogg-long-general' => 'Ogg Media-Fichier, Dauer $2, $3',
 	'timedmedia-ogg-long-error' => 'Ongëltegen Ogg-Fichier: $1',
 	'timedmedia-no-player-js' => 'Pardon, Äre Browser huet entweder JavaScript ausgeschalt oder en huet kee Player-Programm deen ënnerstëtzt gëtt.<br />
-Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">e Player-Programm erofluede</a> fir de Clip an Ärem Browser ze spillen.',
+Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">e Player-Programm erofluede</a> fir de Clip an Ärem Browser ze spillen.',
 	'timedmedia-more' => 'Méi ...',
 	'timedmedia-dismiss' => 'Zoumaachen',
 	'timedmedia-download' => 'Fichier eroflueden',
@@ -2574,10 +2574,10 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawi
 	'timedmedia-actions' => 'Aktiounen',
 	'timedmedia-not-ready' => 'Net fäerdeg',
 	'timedmedia-percent-done' => 'Ongeféier $1% fäerdeg',
-	'timedmedia-days' => '{{PLURAL:$1|Dag|$1 Deeg}}',
-	'timedmedia-hours' => '{{PLURAL:$1|Stonn|$1 Stonnen}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|Minutt|$1 Minutten}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|Sekonn|$1 Sekonnen}}',
+	'timedmedia-days' => '{{PLURAL:$1|Dag|$1 Deeg}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|Stonn|$1 Stonnen}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|Minutt|$1 Minutten}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|Sekonn|$1 Sekonnen}}', # Fuzzy
 	'timedmedia-show-error' => 'Feeler weisen',
 	'timedmedia-subtitle-new-go' => 'Lass',
 	'timedmedia-file' => 'Fichier',
@@ -2631,10 +2631,22 @@ $messages['lt'] = array(
 );
 
 /** Latvian (latviešu)
+ * @author Papuass
  * @author Xil
  */
 $messages['lv'] = array(
+	'timedmedia-more' => 'Vairāk...',
 	'timedmedia-dismiss' => 'Aizvērt',
+	'timedmedia-download' => 'Lejupielādēt failu',
+	'timedmedia-desc-link' => 'Par šo failu',
+	'timedmedia-status' => 'Statuss',
+	'timedmedia-status-unknown' => 'Nezināms statuss',
+	'timedmedia-actions' => 'Darbības',
+	'timedmedia-show-error' => 'Parādīt kļūdu',
+	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file' => '$1 avots',
+	'timedmedia-subtitle-new-go' => 'Aiziet!',
+	'timedmedia-subtitle-language' => '$1 ($2) subtitri',
 );
 
 /** Macedonian (македонски)
@@ -2656,7 +2668,7 @@ $messages['mk'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 видеоснимка, $2',
 	'timedmedia-mp4-long-video' => 'MP4 аудио/видео снимка, $1, времетраење $2, $4 × $5 пиксели, вкупно $3',
 	'timedmedia-no-player-js' => 'Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />
-Можете да го <a href="$1">преземете клипот</a> или <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.',
+Можете да го <a href="$1">преземете клипот</a> или <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.',
 	'timedmedia-more' => 'Повеќе...',
 	'timedmedia-dismiss' => 'Затвори',
 	'timedmedia-download' => 'Преземи податотека',
@@ -2757,7 +2769,7 @@ $messages['ml'] = array(
 	'timedmedia-mp4-short-video' => 'എംപി4 $1 വീഡിയോ പ്രമാണം, $2',
 	'timedmedia-mp4-long-video' => 'എംപി4 ശബ്ദ/ചലച്ചിത്ര പ്രമാണം, $1, ദൈർഘ്യം $2, $4 × $5 ബിന്ദു, ആകെക്കൂടി $3',
 	'timedmedia-no-player-js' => 'ക്ഷമിക്കുക, താങ്കളുടെ ബ്രൗസറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമാക്കിയിട്ടില്ല അല്ലെങ്കിൽ പിന്തുണയുള്ള പ്ലേയർ ലഭ്യമല്ല.<br />
-താങ്കൾക്ക് <a href="$1">ചലച്ചിത്രഭാഗം ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a> അല്ലെങ്കിൽ ബ്രൗസറിൽ പ്രവർത്തിപ്പിക്കാനായി <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">ഒരു പ്ലേയർ ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a>.',
+താങ്കൾക്ക് <a href="$1">ചലച്ചിത്രഭാഗം ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a> അല്ലെങ്കിൽ ബ്രൗസറിൽ പ്രവർത്തിപ്പിക്കാനായി <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">ഒരു പ്ലേയർ ഡൗൺലോഡ് ചെയ്യാവുന്നതാണ്</a>.',
 	'timedmedia-more' => 'കൂടുതൽ...',
 	'timedmedia-dismiss' => 'അടയ്ക്കുക',
 	'timedmedia-download' => 'പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക',
@@ -2852,7 +2864,7 @@ $messages['ms'] = array(
 	'timedmedia-mp4-short-video' => 'fail video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'fail audio/video MP4, $1, tempoh $2, $4×$5 piksel, $3 keseluruhannya',
 	'timedmedia-no-player-js' => 'Maaf, pelayar anda sama ada telah dimatikan JavaScript-nya ataupun tidak mempunyai sebarang pemain yang disokong.<br />
-Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">memuat turun pemain</a> yang boleh memutarkan sedutan berkenaan dalam pelayar anda.',
+Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">memuat turun pemain</a> yang boleh memutarkan sedutan berkenaan dalam pelayar anda.',
 	'timedmedia-more' => 'Lagi…',
 	'timedmedia-dismiss' => 'Tutup',
 	'timedmedia-download' => 'Muat turun fail',
@@ -2963,7 +2975,7 @@ $messages['nb'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'MP4-fil for lyd/video, $1, lengde $2, $4 × $5 piksler, $3 totalt',
 	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
-Du kan <a href="$1">laste ned klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
+Du kan <a href="$1">laste ned klippet</a> eller <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">laste ned en spiller</a> for å spille av klippet i nettleseren din.',
 	'timedmedia-more' => 'Mer …',
 	'timedmedia-dismiss' => 'Lukk',
 	'timedmedia-download' => 'Last ned fil',
@@ -3043,7 +3055,7 @@ $messages['nl'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 videobestand, $2',
 	'timedmedia-mp4-long-video' => 'MP4 audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal',
 	'timedmedia-no-player-js' => 'Uw systeem heeft JavaScript uitgeschakeld of er is geen ondersteunde mediaspeler.<br />
-U kunt <a href="$1">de clip downloaden</a> of <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.',
+U kunt <a href="$1">de clip downloaden</a> of <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.',
 	'timedmedia-more' => 'Meer…',
 	'timedmedia-dismiss' => 'Sluiten',
 	'timedmedia-download' => 'Bestand downloaden',
@@ -3226,7 +3238,7 @@ $messages['pl'] = array(
 	'timedmedia-webm-short-video' => 'WebM $1 plik wideo, $2',
 	'timedmedia-webm-long-video' => 'WebM plik audio-wideo, $1, długość $2, $4 × $5 pikseli, ogółem $3',
 	'timedmedia-no-player-js' => 'Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />
-Możesz <a href="$1">pobrać plik</a> lub <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.',
+Możesz <a href="$1">pobrać plik</a> lub <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.',
 	'timedmedia-more' => 'Więcej...',
 	'timedmedia-dismiss' => 'Zamknij',
 	'timedmedia-download' => 'Pobierz plik',
@@ -3289,6 +3301,7 @@ Czy na pewno chcesz kontynuować?',
  * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
+ * @author පසිඳු කාවින්ද
  */
 $messages['pms'] = array(
 	'timedmedia-desc' => 'Gestor për ij son, filmà e test a sincronisà, con manteniment dij formà për WebM, Ogg Theora, Vorbis, srt',
@@ -3303,7 +3316,7 @@ $messages['pms'] = array(
 	'timedmedia-webm-short-video' => 'Archivi filmà WebM $1, $2',
 	'timedmedia-webm-long-video' => 'WebM archivi sonor/filmà, $1, longheur $2, $4 x $5 pontin, $3 an tut',
 	'timedmedia-no-player-js' => 'Darmagi, sò navigador a l\'ha JavaScript disabilità o a sopòrta pa ël riprodutor.<br />
-A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.',
+A peul <a href="$1">dëscarié la senëtta</a> o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.',
 	'timedmedia-more' => 'Dë pì...',
 	'timedmedia-dismiss' => 'sëré',
 	'timedmedia-download' => "Dëscarié l'archivi",
@@ -3311,6 +3324,8 @@ A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.o
 	'timedmedia-desc-link' => "Rësgoard a st'archivi",
 	'timedmedia-oggThumb-version' => "OggHandler a ciama la version $1 d'oggThumb o pi agiornà.",
 	'timedmedia-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
+	'timedmedia-status' => 'Stat',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 sorziss',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Larghëssa ëd banda bassa Ogg video (160P)',
@@ -3320,7 +3335,9 @@ A peul <a href="$1">dëscarié la senëtta</a> o <a href="http://www.mediawiki.o
 	'timedmedia-derivative-desc-360p.webm' => "WebM lesìbil an continuà an sl'aragnà (360P)",
 	'timedmedia-derivative-desc-480p.webm' => "WebM lesìbil an continuà an sl'aragnà (480P)",
 	'timedmedia-derivative-desc-720p.webm' => "WebM dëscariàbil d'àuta qualità (720P)",
+	'timedmedia-subtitle-new-go' => 'Va',
 	'timedmedia-subtitle-language' => '$1 ($2) sot-tìtoj',
+	'timedmedia-file' => 'Archivi',
 );
 
 /** Pashto (پښتو)
@@ -3368,7 +3385,7 @@ $messages['pt'] = array(
 	'timedmedia-webm-short-video' => 'Vídeo WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Áudio/vídeo WebM, $1, $2 de duração, $4 × $5 pixels, $3 no todo',
 	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desactivado ou não tem nenhum dos leitores suportados.<br />
-Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download de um leitor</a> para assistir ao vídeo no seu browser.',
+Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download de um leitor</a> para assistir ao vídeo no seu browser.',
 	'timedmedia-more' => 'Mais...',
 	'timedmedia-dismiss' => 'Fechar',
 	'timedmedia-download' => 'Fazer download do ficheiro',
@@ -3390,10 +3407,10 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="http://www.mediaw
 	'timedmedia-percent-done' => 'O progresso é cerca de $1%',
 	'timedmedia-in-job-queue' => 'Adicionado à fila de tarefas há $1',
 	'timedmedia-unknown-target-size' => 'Dimensão do destino desconhecida; $1 codificados',
-	'timedmedia-days' => '{{PLURAL:$1|dia|$1 dias}}',
-	'timedmedia-hours' => '{{PLURAL:$1|hora|$1 horas}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|minuto|$1 minutos}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|segundo|$1 segundos}}',
+	'timedmedia-days' => '{{PLURAL:$1|dia|$1 dias}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|hora|$1 horas}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|minuto|$1 minutos}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|segundo|$1 segundos}}', # Fuzzy
 	'timedmedia-time-4-measurements' => '$1, $2, $3 e $4',
 	'timedmedia-time-3-measurements' => '$1, $2 e $3',
 	'timedmedia-time-2-measurements' => '$1 e $2',
@@ -3430,7 +3447,7 @@ $messages['pt-br'] = array(
 	'timedmedia-ogg-long-general' => 'Multimídia Ogg, $2 de duração, $3',
 	'timedmedia-ogg-long-error' => 'Ficheiro ogg inválido: $1',
 	'timedmedia-no-player-js' => 'Desculpe, seu navegador ou está com JavaScript desabilitado ou não tem nenhum "player" suportado.<br />
-Você pode <a href="$1">descarregar o clipe</a> ou <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descarregar um "player"</a> para executar o clipe em seu navegador.',
+Você pode <a href="$1">descarregar o clipe</a> ou <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descarregar um "player"</a> para executar o clipe em seu navegador.',
 	'timedmedia-more' => 'Mais...',
 	'timedmedia-dismiss' => 'Fechar',
 	'timedmedia-download' => 'Descarregar arquivo',
@@ -3471,7 +3488,7 @@ $messages['ro'] = array(
 	'timedmedia-mp4-short-video' => 'fișier video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'fișier audio/video MP4, $1, lungime $2, $4 × $5 pixeli, $3 per ansamblu',
 	'timedmedia-no-player-js' => 'Ne pare rău, însă navigatorul dumneavoastră fie are JavaScript dezactivat, fie nu conține niciun player suportat.<br />
-Puteți <a href="$1">descărca clipul</a> sau puteți <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descărca un player</a> pentru a-l reda direct în navigator.',
+Puteți <a href="$1">descărca clipul</a> sau puteți <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descărca un player</a> pentru a-l reda direct în navigator.',
 	'timedmedia-more' => 'Mai mult…',
 	'timedmedia-dismiss' => 'Închide',
 	'timedmedia-download' => 'Descarcă fișierul',
@@ -3602,7 +3619,7 @@ $messages['ru'] = array(
 	'timedmedia-webm-short-video' => 'WebM $1 видео-файл, $2',
 	'timedmedia-webm-long-video' => 'WebM аудио/видео файл, $1, продолжительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, всего $3',
 	'timedmedia-no-player-js' => 'К сожалению, в вашем браузере отключён JavaScript, или не имеется требуемого проигрывателя.<br />
-Вы можете <a href="$1">загрузить ролик</a> или <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">загрузить проигрыватель</a> для воспроизведения ролика в браузере.',
+Вы можете <a href="$1">загрузить ролик</a> или <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">загрузить проигрыватель</a> для воспроизведения ролика в браузере.',
 	'timedmedia-more' => 'Больше…',
 	'timedmedia-dismiss' => 'Скрыть',
 	'timedmedia-download' => 'Загрузить файл',
@@ -3624,10 +3641,10 @@ $messages['ru'] = array(
 	'timedmedia-percent-done' => 'Примерно $1% выполнено',
 	'timedmedia-in-job-queue' => 'Добавлено в очередь заданий $1 назад',
 	'timedmedia-unknown-target-size' => 'Неизвестный целевой размер, $1 при кодировке',
-	'timedmedia-days' => '{{PLURAL:$1|день|$1 дня|$1 дней}}',
-	'timedmedia-hours' => '{{PLURAL:$1|$1 час|$1 часа|$1 часов}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|$1 минута|$1 минуты|$1 минут}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунда|$1 секунды|$1 секунд}}',
+	'timedmedia-days' => '{{PLURAL:$1|день|$1 дня|$1 дней}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|$1 час|$1 часа|$1 часов}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 минута|$1 минуты|$1 минут}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунда|$1 секунды|$1 секунд}}', # Fuzzy
 	'timedmedia-time-4-measurements' => '$1, $2, $3 и $4',
 	'timedmedia-time-3-measurements' => '$1, $2 и $3',
 	'timedmedia-time-2-measurements' => '$1 и $2',
@@ -3768,7 +3785,7 @@ $messages['sl'] = array(
 	'timedmedia-mp4-short-video' => 'Videodatoteka MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Avdio-/videodatoteka MP4, $1, dolžine $2, $4 × $5 pik, skupaj $3',
 	'timedmedia-no-player-js' => 'Oprostite, vaš brskalnik ima onemogočen JavaScript ali pa nima nobenega podprtega predvajalnika.<br />
-Posnetek lahko <a href="$1">snamete</a> ali <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">prenesete predvajalnik</a> za predvajanje posnetka v svojem brskalniku.',
+Posnetek lahko <a href="$1">snamete</a> ali <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">prenesete predvajalnik</a> za predvajanje posnetka v svojem brskalniku.',
 	'timedmedia-more' => 'Več ...',
 	'timedmedia-dismiss' => 'Zapri',
 	'timedmedia-download' => 'Prenesi',
@@ -4018,7 +4035,7 @@ $messages['sv'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'MP4-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
 	'timedmedia-no-player-js' => 'Tyvärr, din webbläsare har antingen JavaScript inaktiverat eller inte någon spelare som stöds.<br />
-Du kan <a href="$1">ladda ner klippet</a> eller <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hämta en spelare</a> för att spela upp klippet i din webbläsare.',
+Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hämta en spelare</a> för att spela upp klippet i din webbläsare.',
 	'timedmedia-more' => 'Mer...',
 	'timedmedia-dismiss' => 'Stäng',
 	'timedmedia-download' => 'Ladda ner filen',
@@ -4225,7 +4242,7 @@ $messages['tl'] = array(
 	'timedmedia-webm-short-video' => '$1 na talaksan ng bidyo ng WebM, $2',
 	'timedmedia-webm-long-video' => 'Talaksang pamparinig/bidyo ng WebM, $1, haba $2, $4 × $5 mga piksel, $3 lahat-lahat',
 	'timedmedia-no-player-js' => 'Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />
-Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.',
+Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.',
 	'timedmedia-more' => 'Marami pa…',
 	'timedmedia-dismiss' => 'Isara',
 	'timedmedia-download' => 'Ikarga ang talaksan',
@@ -4370,7 +4387,7 @@ $messages['uk'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1 відео-файл, $2',
 	'timedmedia-mp4-long-video' => 'MP4 аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3',
 	'timedmedia-no-player-js' => 'Нажаль, у Вашому браузері вимкнено JavaScript, або нема жодного необхідного програвача.<br />
-Ви можете <a href="$1">завантажити ролик</a> або <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">завантажити програвач</a> для відтворенні ролику у браузері.',
+Ви можете <a href="$1">завантажити ролик</a> або <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">завантажити програвач</a> для відтворенні ролику у браузері.',
 	'timedmedia-more' => 'Більше…',
 	'timedmedia-dismiss' => 'Закрити',
 	'timedmedia-download' => 'Завантажити файл',
@@ -4481,7 +4498,7 @@ $messages['vi'] = array(
 	'timedmedia-mp4-short-video' => 'tập tin video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'tập tin âm thanh/video MP4, $1, dài $2, $4×$5 điểm ảnh, $3 tất cả',
 	'timedmedia-no-player-js' => 'Rất tiếc, hoặc JavaScript bị tắt trong trình duyệt của bạn hoặc trình duyệt không có trình chơi nào được hỗ trợ.<br />
-Bạn có thể <a href="$1">tải về đoạn âm hoặc đoạn video</a> hay <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download?uselang=vi">tải về một trình chơi</a> để chơi đoạn âm hoặc đoạn video trong trình duyệt.',
+Bạn có thể <a href="$1">tải về đoạn âm hoặc đoạn video</a> hay <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download?uselang=vi">tải về một trình chơi</a> để chơi đoạn âm hoặc đoạn video trong trình duyệt.',
 	'timedmedia-more' => 'Thêm nữa…',
 	'timedmedia-dismiss' => 'Đóng',
 	'timedmedia-download' => 'Tải tập tin xuống',
@@ -4628,7 +4645,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1视频文件，$2',
 	'timedmedia-mp4-long-video' => 'MP4音频/视频文件，$1，长度$2，$4 × $5像素，$3 overall',
 	'timedmedia-no-player-js' => '抱歉，您的浏览器禁用了JavaScript或没有任何可支持的播放器。<br />
-您可以<a href="$1">下载这个片段</a>或<a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">下载一个播放器</a>以在浏览器中播放片段。',
+您可以<a href="$1">下载这个片段</a>或<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">下载一个播放器</a>以在浏览器中播放片段。',
 	'timedmedia-more' => '更多...',
 	'timedmedia-dismiss' => '关闭',
 	'timedmedia-download' => '下载文件',
@@ -4716,7 +4733,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-mp4-short-video' => 'MP4 $1視訊檔案，$2',
 	'timedmedia-mp4-long-video' => 'MP4音訊/視訊檔案，$1，長度$2，$4×$5像素，共$3',
 	'timedmedia-no-player-js' => '抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />
-您可以<a href="$1">下載這個片段</a>或<a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">下載一個播放器</a>以在瀏覽器中播放片段。',
+您可以<a href="$1">下載這個片段</a>或<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">下載一個播放器</a>以在瀏覽器中播放片段。',
 	'timedmedia-more' => '更多...',
 	'timedmedia-dismiss' => '關閉',
 	'timedmedia-download' => '下載檔案',

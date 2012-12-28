@@ -1395,6 +1395,23 @@ $messages['lb'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keng $1 Ënnertitele goufe fonnt fir de Clip: $2',
 );
 
+/** Latvian (latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'mwe-timedtext-stage-translate' => 'Tulkot',
+	'mwe-timedtext-select-language' => 'Izvēlieties valodu',
+	'mwe-timedtext-file-language' => 'Subtitru faila valoda',
+	'mwe-timedtext-upload-text' => 'Augšupielādēt teksta failu',
+	'mwe-timedtext-uploading-text' => 'Augšupielādē teksta failu',
+	'mwe-timedtext-upload-text-desc-title' => 'Augšupielādēt teksta failu',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Izvēlieties faila valodu',
+	'mwe-timedtext-upload-text-preview' => 'Pārskatiet tekstu',
+	'mwe-timedtext-upload-text-done' => 'Augšupielāde pabeigta',
+	'mwe-timedtext-textcat-nb' => 'Anotācija',
+	'mwe-timedtext-textcat-trx' => 'Transkripts',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
@@ -1962,9 +1979,22 @@ $messages['rue'] = array(
 $messages['si'] = array(
 	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
 	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
+	'mwe-timedtext-upload-text-done' => 'උඩුගත කිරීම අවසන්',
+	'mwe-timedtext-upload-text-fail-desc' => 'උඩුගත කිරීම අසාර්ථකයි',
+	'mwe-timedtext-upload-text-fail-title' => 'උඩුගත කිරීම අසාර්ථකයි',
+	'mwe-timedtext-upload-text-another' => 'වෙනත් එකක් උඩුගත කරන්න',
+	'mwe-timedtext-upload-text-done-uploading' => 'උඩුගත කිරීම අවසන්',
 	'mwe-timedtext-back-btn' => 'ආපසු',
+	'mwe-timedtext-choose-text' => 'පාඨය තෝරන්න',
+	'mwe-timedtext-upload-timed-text' => 'උපශීර්ෂ එක් කරන්න',
+	'mwe-timedtext-search' => 'ක්ලිපය සොයන්න',
 	'mwe-timedtext-layout' => 'සැලැස්ම',
+	'mwe-timedtext-textcat-cc' => 'උපන්‍යාස',
+	'mwe-timedtext-textcat-sub' => 'උපශීර්ෂ',
+	'mwe-timedtext-textcat-tad' => 'ශ්‍රව්‍ය විස්තරය',
 	'mwe-timedtext-textcat-ktv' => 'කැරෝකේ',
+	'mwe-timedtext-textcat-nb' => 'ටීකාව',
+	'mwe-timedtext-textcat-meta' => 'කාලිත පාරදත්ත',
 	'mwe-timedtext-textcat-trx' => 'ප්‍රතිලේඛනය',
 	'mwe-timedtext-textcat-lrc' => 'ගීපදවැල්',
 );
