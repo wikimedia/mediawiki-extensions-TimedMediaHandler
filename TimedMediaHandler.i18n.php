@@ -26,7 +26,7 @@ $messages['en'] = array(
 	'timedmedia-mp4-long-video' => 'MP4 audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
 
 	'timedmedia-no-player-js' 	  => 'Sorry, your browser either has JavaScript disabled or does not have any supported player.<br />
-You can <a href="$1">download the clip</a> or <a href="http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download a player</a> to play the clip in your browser.',
+You can <a href="$1">download the clip</a> or <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download a player</a> to play the clip in your browser.',
 
 	'timedmedia-more'             => 'More…',
 	'timedmedia-dismiss'          => 'Close',
