@@ -56,10 +56,6 @@ You can <a href="$1">download the clip</a> or <a href="//www.mediawiki.org/wiki/
 	'timedmedia-hours'			=> '{{PLURAL:$1|1 hour|$1 hours}}',
 	'timedmedia-minutes'			=> '{{PLURAL:$1|1 minute|$1 minutes}}',
 	'timedmedia-seconds'			=> '{{PLURAL:$1|1 second|$1 seconds}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 and $4',
-	'timedmedia-time-3-measurements' => '$1, $2 and $3',
-	'timedmedia-time-2-measurements' => '$1 and $2',
-	'timedmedia-time-1-measurements' => '$1',
 	'timedmedia-show-error'			=> 'Show error',
 	'timedmedia-reset'				=> 'Reset transcode',
 	'timedmedia-reset-confirm'		=> 'Resetting this transcode will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />
@@ -183,9 +179,8 @@ Parameters are:
 Parameters are:
 * $1 Time passed since transcoded started
 * $2 Percentage of transcode complete',
-	'timedmedia-in-job-queue' => 'Shown on the file description page in the {{msg-mw|timedmedia-status-header}} section
-
-* $1 = {{msg-mw|timedmedia-time-1-measurements}} or {{msg-mw|timedmedia-time-2-measurements}} or {{msg-mw|timedmedia-time-3-measurements}} or {{msg-mw|timedmedia-time-4-measurements}}',
+	'timedmedia-in-job-queue' => 'Shown on the file description page in the {{msg-mw|timedmedia-status-header}} section. Parameters:
+* $1 the time the media has been in the job queue',
 	'timedmedia-unknown-target-size' => 'Status update for Transcodes
 Parameters are:
 * $1 The number of bytes of the file transcoded so far',
