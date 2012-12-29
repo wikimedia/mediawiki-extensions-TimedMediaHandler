@@ -386,6 +386,7 @@ mw.MediaSource.prototype = {
 		var ext = ( urlParts.file ) ?  /[^.]+$/.exec( urlParts.file )  :  /[^.]+$/.exec( uri );
 		// remove the hash string if present
 		ext = /[^#]*/g.exec( ext.toString() );
+		ext = ext || '';
 		return ext.toString().toLowerCase();
 	},
 	/**

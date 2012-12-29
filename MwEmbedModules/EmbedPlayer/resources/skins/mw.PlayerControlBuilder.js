@@ -1176,7 +1176,8 @@ mw.PlayerControlBuilder.prototype = {
 			embedPlayer.attachEvent("onclick", playerClickCb);
 		} else{
 			// For some reason jquery .bind( 'click' ) is doing evil things
-			embedPlayer.addEventListener('click', playerClickCb );
+			// Firefox 3.5 requires third argument to addEventListener
+			embedPlayer.addEventListener('click', playerClickCb, false );
 		}
 
 	},
