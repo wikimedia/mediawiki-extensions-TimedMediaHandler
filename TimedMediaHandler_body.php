@@ -207,8 +207,9 @@ class TimedMediaHandler extends MediaHandler {
 		if( count( $t ) == 0 ){
 			$t = array( wfMessage( 'timedmedia-seconds', 0 )->text() ) ;
 		}
-		// Call to the correct set of significant measurements:
-		return wfMessage( 'timedmedia-time-' . count($t) . '-measurements', $t)->escaped();
+
+		global $wgLang;
+		return $wgLang->commaList( $t );
 	}
 
 	/**
