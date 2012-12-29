@@ -1388,12 +1388,6 @@ $messages['lv'] = array(
 	'mwe-timedtext-stage-translate' => 'Tulkot',
 	'mwe-timedtext-select-language' => 'Izvēlieties valodu',
 	'mwe-timedtext-file-language' => 'Subtitru faila valoda',
-	'mwe-timedtext-upload-text' => 'Augšupielādēt teksta failu',
-	'mwe-timedtext-uploading-text' => 'Augšupielādē teksta failu',
-	'mwe-timedtext-upload-text-desc-title' => 'Augšupielādēt teksta failu',
-	'mwe-timedtext-upload-text-desc-help-select' => 'Izvēlieties faila valodu',
-	'mwe-timedtext-upload-text-preview' => 'Pārskatiet tekstu',
-	'mwe-timedtext-upload-text-done' => 'Augšupielāde pabeigta',
 	'mwe-timedtext-textcat-nb' => 'Anotācija',
 	'mwe-timedtext-textcat-trx' => 'Transkripts',
 );
@@ -1963,13 +1957,9 @@ $messages['rue'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'mwe-timedtext-editor' => 'කාලිත වදන් සකසුව',
 	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
 	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
-	'mwe-timedtext-upload-text-done' => 'උඩුගත කිරීම අවසන්',
-	'mwe-timedtext-upload-text-fail-desc' => 'උඩුගත කිරීම අසාර්ථකයි',
-	'mwe-timedtext-upload-text-fail-title' => 'උඩුගත කිරීම අසාර්ථකයි',
-	'mwe-timedtext-upload-text-another' => 'වෙනත් එකක් උඩුගත කරන්න',
-	'mwe-timedtext-upload-text-done-uploading' => 'උඩුගත කිරීම අවසන්',
 	'mwe-timedtext-back-btn' => 'ආපසු',
 	'mwe-timedtext-choose-text' => 'පාඨය තෝරන්න',
 	'mwe-timedtext-upload-timed-text' => 'උපශීර්ෂ එක් කරන්න',
