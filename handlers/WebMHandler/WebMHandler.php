@@ -122,7 +122,12 @@ class WebMHandler extends TimedMediaHandler {
 	function getMetadataType( $image ) {
 		return 'webm';
 	}
-
+	/**
+	 * @param $file File
+	 */
+	function getWebType( $file ) {
+		return 'video/webm; codecs="vp8, vorbis"';
+	}
 	/**
 	 * @param $file File
 	 * @return array|bool
