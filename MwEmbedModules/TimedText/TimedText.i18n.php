@@ -257,6 +257,7 @@ $messages['bs'] = array(
 
 /** Czech (česky)
  * @author Mormegil
+ * @author Vks
  */
 $messages['cs'] = array(
 	'mwe-timedtext-editor' => 'Editor titulků',
@@ -266,10 +267,6 @@ $messages['cs'] = array(
 	'mwe-timedtext-stage-upload' => 'Načtení místního souboru',
 	'mwe-timedtext-select-language' => 'Vyberte jazyk',
 	'mwe-timedtext-file-language' => 'Jazyk titulků',
-	'mwe-timedtext-upload-text' => 'Načíst textový soubor',
-	'mwe-timedtext-uploading-text' => 'Načítá se textový soubor',
-	'mwe-timedtext-upload-text-desc-title' => 'Načíst textový soubor',
-	'mwe-timedtext-upload-text-preview' => 'Kontrola textu',
 	'mwe-timedtext-back-btn' => 'Zpět',
 	'mwe-timedtext-choose-text' => 'Zvolit text',
 	'mwe-timedtext-loading-text-edit' => 'Načítá se editor titulků',
@@ -278,6 +275,9 @@ $messages['cs'] = array(
 	'mwe-timedtext-layout-below' => 'Pod obrazem',
 	'mwe-timedtext-layout-off' => 'Skrýt titulky',
 	'mwe-timedtext-loading-text' => 'Načítá se text…',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-nb' => 'Anotace',
+	'mwe-timedtext-textcat-trx' => 'Přepis',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Titulky ke klipu $2 v jazyce $1',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ke klipu $2 nebyly nalezeny titulky v jazyce $1',
 );
@@ -1958,6 +1958,7 @@ $messages['rue'] = array(
  */
 $messages['si'] = array(
 	'mwe-timedtext-editor' => 'කාලිත වදන් සකසුව',
+	'mwe-timedtext-stage-sync' => 'සමමුහුර්තකරණය',
 	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
 	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
 	'mwe-timedtext-back-btn' => 'ආපසු',
@@ -1965,10 +1966,14 @@ $messages['si'] = array(
 	'mwe-timedtext-upload-timed-text' => 'උපශීර්ෂ එක් කරන්න',
 	'mwe-timedtext-search' => 'ක්ලිපය සොයන්න',
 	'mwe-timedtext-layout' => 'සැලැස්ම',
+	'mwe-timedtext-layout-below' => 'පහත වීඩියෝව',
+	'mwe-timedtext-layout-off' => 'උපශීර්ෂ සඟවන්න',
+	'mwe-timedtext-loading-text' => 'පෙළ පූරණය වෙමින් ...',
 	'mwe-timedtext-textcat-cc' => 'උපන්‍යාස',
 	'mwe-timedtext-textcat-sub' => 'උපශීර්ෂ',
 	'mwe-timedtext-textcat-tad' => 'ශ්‍රව්‍ය විස්තරය',
 	'mwe-timedtext-textcat-ktv' => 'කැරෝකේ',
+	'mwe-timedtext-textcat-tik' => 'ඔරලෝසු පෙළ',
 	'mwe-timedtext-textcat-nb' => 'ටීකාව',
 	'mwe-timedtext-textcat-meta' => 'කාලිත පාරදත්ත',
 	'mwe-timedtext-textcat-trx' => 'ප්‍රතිලේඛනය',

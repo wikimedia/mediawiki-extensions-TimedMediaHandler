@@ -438,6 +438,7 @@ $messages['ce'] = array(
 
 /** Czech (česky)
  * @author Mormegil
+ * @author Vks
  */
 $messages['cs'] = array(
 	'mwe-embedplayer-credit-title' => 'Název: $1',
@@ -456,6 +457,7 @@ $messages['cs'] = array(
 	'mwe-embedplayer-seek_to' => 'Přesun na $1',
 	'mwe-embedplayer-paused' => 'pozastaveno',
 	'mwe-embedplayer-download_full' => 'Stažení celého videosouboru:',
+	'mwe-embedplayer-download_clip' => 'Stáhnout video',
 	'mwe-embedplayer-download' => 'Stáhnout',
 	'mwe-embedplayer-share' => 'Sdílet',
 	'mwe-embedplayer-credits' => 'O souboru',
@@ -3313,6 +3315,9 @@ $messages['si'] = array(
 	'mwe-embedplayer-credit-date' => 'දිනය: $1',
 	'mwe-embedplayer-credit-author' => 'කතෘ: $1',
 	'mwe-embedplayer-nocredits' => 'ස්තූති කිසිවක් ලබා ගත නොහැක',
+	'mwe-embedplayer-loading_plugin' => 'ප්ලගීනය පූරණය වෙමින් ...',
+	'mwe-embedplayer-select_playback' => 'පිළිවැයිම් අභිරුචිය සකසන්න',
+	'mwe-embedplayer-link_back' => 'නැවත සම්බන්ධ කරන්න',
 	'mwe-embedplayer-play_clip' => 'ක්ලිපය වයන්න',
 	'mwe-embedplayer-pause_clip' => 'ක්ලිපය විරාමගත කරන්න',
 	'mwe-embedplayer-volume_control' => 'ශබ්ද ප්‍රමාණ පාලකය',
@@ -3321,6 +3326,7 @@ $messages['si'] = array(
 	'mwe-embedplayer-player_fullscreen' => 'පූර්ණ තිරය',
 	'mwe-embedplayer-next_clip_msg' => 'මීළඟ ක්ලිපය වයන්න',
 	'mwe-embedplayer-prev_clip_msg' => 'පෙර ක්ලිපය වයන්න',
+	'mwe-embedplayer-current_clip_msg' => 'මෙම ක්ලිපය දිගටම වයන්න',
 	'mwe-embedplayer-seek_to' => '$1 ඉලියන්න',
 	'mwe-embedplayer-paused' => 'විරාමගතයි',
 	'mwe-embedplayer-download_segment' => 'තේරීම බාගන්න:',
@@ -3330,6 +3336,7 @@ $messages['si'] = array(
 	'mwe-embedplayer-download' => 'බාගන්න',
 	'mwe-embedplayer-share' => 'හුවමාරු කරන්න',
 	'mwe-embedplayer-credits' => 'ස්තුතිය',
+	'mwe-embedplayer-clip_linkback' => 'ක්ලිපයේ මූලාශ්‍ර පිටුව',
 	'mwe-embedplayer-choose_player' => 'වීඩියෝ වාදකය තෝරන්න',
 	'mwe-embedplayer-share_this_video' => 'මෙම වීඩියෝව හුවමාරු කරන්න',
 	'mwe-embedplayer-video_credits' => 'වීඩියෝ ස්තූතිය',

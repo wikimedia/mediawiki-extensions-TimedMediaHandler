@@ -339,9 +339,6 @@ $messages['ar'] = array(
 	'timedmedia-actions' => 'الإجراءات',
 	'timedmedia-not-ready' => 'غير جاهز',
 	'timedmedia-percent-done' => 'وصل لنسبة $1% انتهى',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 و $4',
-	'timedmedia-time-3-measurements' => '$1, $2 و $3',
-	'timedmedia-time-2-measurements' => '$1 و $2',
 	'timedmedia-show-error' => 'إظهار الخطأ',
 	'timedmedia-ogg' => 'أو جي جي',
 	'timedmedia-source-file' => '$1 مصدر',
@@ -2518,11 +2515,12 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="//www.mediawiki.or
 	'timedmedia-actions' => 'Aktiounen',
 	'timedmedia-not-ready' => 'Net fäerdeg',
 	'timedmedia-percent-done' => 'Ongeféier $1% fäerdeg',
-	'timedmedia-days' => '{{PLURAL:$1|Dag|$1 Deeg}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|Stonn|$1 Stonnen}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|Minutt|$1 Minutten}}', # Fuzzy
-	'timedmedia-seconds' => '{{PLURAL:$1|Sekonn|$1 Sekonnen}}', # Fuzzy
+	'timedmedia-days' => '{{PLURAL:$1|1 Dag|$1 Deeg}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 Stonn|$1 Stonnen}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 Minutt|$1 Minutten}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekonn|$1 Sekonnen}}',
 	'timedmedia-show-error' => 'Feeler weisen',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-subtitle-new-go' => 'Lass',
 	'timedmedia-file' => 'Fichier',
 );
@@ -3712,6 +3710,9 @@ $messages['si'] = array(
 	'timedmedia-subtitle-new-go' => 'යන්න',
 	'timedmedia-subtitle-language' => '$1 ($2) උපශීර්ෂ',
 	'timedmediahandler' => 'කාලිතමාධ්‍යහසුරවනය',
+	'timedmedia-videos' => '{{PLURAL:$1|වීඩියෝ}} $1 ක්',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|Ogg වීඩියෝ}} $1 ක්',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|WebM වීඩියෝ}} $1 ක්',
 	'timedmedia-file' => 'ගොනුව',
 );
 
