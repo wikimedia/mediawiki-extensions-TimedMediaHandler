@@ -544,10 +544,20 @@ $messages['es'] = array(
 
 /** Estonian (eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'mwe-timedtext-editor' => 'Ajastatud teksti redaktor',
+	'mwe-timedtext-file-language' => 'Alltiitrite faili keel',
+	'mwe-timedtext-upload-timed-text' => 'Lisa alltiitrid',
+	'mwe-timedtext-layout-off' => 'Peida alltiitrid',
+	'mwe-timedtext-loading-text' => 'Teksti laadimine...',
+	'mwe-timedtext-textcat-sub' => 'Alltiitrid',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-meta' => 'Ajastatud metaandmed',
 	'mwe-timedtext-textcat-lrc' => 'Laulusõnad',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Lõigu $2 $1 alltiitrid',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Lõigu $2 jaoks ei leitud $1 alltiitreid',
 );
 
 /** Basque (euskara)
@@ -1958,14 +1968,19 @@ $messages['rue'] = array(
  */
 $messages['si'] = array(
 	'mwe-timedtext-editor' => 'කාලිත වදන් සකසුව',
+	'mwe-timedtext-stage-transcribe' => 'අනු ලැකීම',
 	'mwe-timedtext-stage-sync' => 'සමමුහුර්තකරණය',
 	'mwe-timedtext-stage-translate' => 'පරිවර්තනය කරන්න',
+	'mwe-timedtext-stage-upload' => 'ස්ථානික ගොනුවකින් උඩුගත කරන්න',
 	'mwe-timedtext-select-language' => 'භාෂාව තෝරන්න',
+	'mwe-timedtext-file-language' => 'උපසිරුස ගොනු භාෂාව',
 	'mwe-timedtext-back-btn' => 'ආපසු',
 	'mwe-timedtext-choose-text' => 'පාඨය තෝරන්න',
 	'mwe-timedtext-upload-timed-text' => 'උපශීර්ෂ එක් කරන්න',
+	'mwe-timedtext-loading-text-edit' => 'කාලිත පෙළ සකසනය පූරණය කරමින්',
 	'mwe-timedtext-search' => 'ක්ලිපය සොයන්න',
 	'mwe-timedtext-layout' => 'සැලැස්ම',
+	'mwe-timedtext-layout-ontop' => 'වීඩියෝවේ ඉහලම',
 	'mwe-timedtext-layout-below' => 'පහත වීඩියෝව',
 	'mwe-timedtext-layout-off' => 'උපශීර්ෂ සඟවන්න',
 	'mwe-timedtext-loading-text' => 'පෙළ පූරණය වෙමින් ...',
@@ -1974,10 +1989,16 @@ $messages['si'] = array(
 	'mwe-timedtext-textcat-tad' => 'ශ්‍රව්‍ය විස්තරය',
 	'mwe-timedtext-textcat-ktv' => 'කැරෝකේ',
 	'mwe-timedtext-textcat-tik' => 'ඔරලෝසු පෙළ',
+	'mwe-timedtext-textcat-ar' => 'සක්‍රිය ප්‍රදේශ',
 	'mwe-timedtext-textcat-nb' => 'ටීකාව',
 	'mwe-timedtext-textcat-meta' => 'කාලිත පාරදත්ත',
 	'mwe-timedtext-textcat-trx' => 'ප්‍රතිලේඛනය',
 	'mwe-timedtext-textcat-lrc' => 'ගීපදවැල්',
+	'mwe-timedtext-textcat-lin' => 'භාෂාමය අධිකය',
+	'mwe-timedtext-textcat-cue' => 'ඉංගිත ගතිගුණ',
+	'mwe-timedtext-language-subtitles-for-clip' => 'ක්ලිපය සඳහා $1 උපසිරුස: $2',
+	'mwe-timedtext-request-subs' => 'පිටපත් කිරීම අයදින්න',
+	'mwe-timedtext-no-subs' => 'මීළඟ පථ ලබාගත නොහැක',
 );
 
 /** Slovenian (slovenščina)
