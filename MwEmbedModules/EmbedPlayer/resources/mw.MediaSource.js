@@ -60,6 +60,9 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// used for setting the api provider for mediawiki
 	'data-mwprovider',
 
+	// used for language direction of subtitles
+	'data-dir',
+
 	// Media start time
 	'start',
 
