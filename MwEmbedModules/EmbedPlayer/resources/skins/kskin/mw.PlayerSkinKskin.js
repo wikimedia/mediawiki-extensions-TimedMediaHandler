@@ -32,7 +32,7 @@ mw.PlayerSkinKskin = {
 			'w': 28
 		},
 		'volumeControl': {
-			'w': 36
+			'w': 40
 		},
 		'playButtonLarge' : {
 			'h' : 55
