@@ -239,6 +239,7 @@ class TextHandler {
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
 					'src' => $this->getFullURL( $page['title'] ),
 					'srclang' =>  $languageKey,
+					'data-dir' => Language::factory( $languageKey )->getDir(),
 					'label' => wfMessage('timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
 						$languageKey )->text()

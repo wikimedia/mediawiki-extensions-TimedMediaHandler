@@ -72,6 +72,11 @@
 		currentLangKey : null,
 
 		/**
+		 * The direction of the current language
+		 */
+		currentLangDir : null,
+
+		/**
 		 * Stores the last text string per kind to avoid dom checks for updated text
 		 */
 		prevText: [],
@@ -273,6 +278,18 @@
 		 */
 		getCurrentLangKey: function(){
 			return this.currentLangKey;
+		},
+		/**
+		 * Get the current language direction
+		 * @return
+		 * @type {string}
+		 */
+		getCurrentLangDir: function(){
+			if ( !this.currentLangDir ) {
+				var source = this.getSourceByLanguage( this.getCurrentLangKey() );
+				this.currentLangDir = source.dir;
+			}
+			return this.currentLangDir;
 		},
 
 		/**
@@ -615,6 +632,7 @@
 			if( !_this.enabledSources.length ){
 				_this.enabledSources.push( source );
 				_this.currentLangKey = source.srclang;
+				_this.currentLangDir = null;
 				return ;
 			}
 			var sourceEnabled = false;
@@ -627,6 +645,7 @@
 			if ( !sourceEnabled ) {
 				_this.enabledSources.push( source );
 				_this.currentLangKey = source.srclang;
+				_this.currentLangDir = null;
 			}
 		},
 
@@ -915,6 +934,7 @@
 			this.bindTextButton( this.embedPlayer.getInterface().find('timed-text') );
 
 			this.currentLangKey =  source.srclang;
+			this.currentLangDir = null;
 
 			// Update the config language if the source includes language
 			if( source.srclang ){
@@ -1202,7 +1222,8 @@
 				'top': 0,
 				'bottom': 0,
 				'right': 0,
-				'position': 'absolute'
+				'position': 'absolute',
+				'direction': this.getCurrentLangDir()
 			};
 
 			if( $captionsOverlayTarget.length == 0 ){
