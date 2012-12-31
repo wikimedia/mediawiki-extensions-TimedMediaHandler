@@ -391,9 +391,8 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;
 
 		// Store the page vertical scroll
-		var isIframe = mw.config.get('EmbedPlayer.IsIframeServer' );
-		var doc =  isIframe ? window['parent'].document : window.document;
-		var context = isIframe ? window['parent'] : window;
+		var doc =  window.document;
+		var context = window;
 		this.verticalScrollPosition = doc.all ? doc.scrollTop : context.pageYOffset;
 		
 		// Setup local reference to embed player:
@@ -425,10 +424,7 @@ mw.PlayerControlBuilder.prototype = {
 
 			var escapeFullscreen = function( event ) {
 				// grab the correct document target to check for fullscreen
-				var doc = ( mw.config.get('EmbedPlayer.IsIframeServer' ) )?
-						window['parent'].document:
-						window.document;
-				if ( ! window.fullScreenApi.isFullScreen( doc ) ) {
+				if ( ! window.fullScreenApi.isFullScreen( window.document ) ) {
 					_this.restoreWindowPlayer();
 				}
 			}
@@ -491,14 +487,12 @@ mw.PlayerControlBuilder.prototype = {
 	 * Make the target player interface or iframe fullscreen
 	 */
 	doContextTargetFullscreen: function() {
-		var isIframe = mw.config.get('EmbedPlayer.IsIframeServer' );
-
 		var
 		_this = this,
-		doc = isIframe ? window['parent'].document : window.document,
+		doc = window.document,
 		$doc = $( doc ),
 		$target = $( this.getFsTarget() ),
-		context = isIframe ? window['parent'] : window;
+		context = window;
 
 		// update / reset local restore properties
 		this.parentsAbsoluteList = [];
@@ -580,14 +574,12 @@ mw.PlayerControlBuilder.prototype = {
 	 * Restore the player interface or iframe to a window player
 	 */
 	restoreContextPlayer: function(){
-		var isIframe = mw.config.get('EmbedPlayer.IsIframeServer' );
-		
 		var
 		_this = this,
-		doc = isIframe ? window['parent'].document : window.document,
+		doc = window.document,
 		$doc = $( doc ),
 		$target = $( this.getFsTarget() ),
-		context = isIframe ? window['parent'] : window;
+		context = window;
 
 		mw.log("PlayerControlsBuilder:: restoreContextPlayer> verticalScrollPosition:" + this.verticalScrollPosition );
 
@@ -828,12 +820,8 @@ mw.PlayerControlBuilder.prototype = {
 		}
 	},
 	getFsTarget: function(){
-		if( mw.config.get('EmbedPlayer.IsIframeServer' ) ){
-			return window['parent'].document.getElementById( this.embedPlayer.id + '_ifp' );
-		} else {
-			var	$interface = this.embedPlayer.getInterface();
-			return $interface[0];
-		}
+		var $interface = this.embedPlayer.getInterface();
+		return $interface[0];
 	},
 	/**
 	* Restore the window player
@@ -1888,7 +1876,7 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	getShare: function( ) {
 		var embedPlayer = this.embedPlayer;
-		var	embed_code = embedPlayer.getSharingEmbedCode();
+		var embed_code = embedPlayer.getSharingEmbedCode();
 		var _this = this;
 
 		var $shareInterface = $('<div />');
