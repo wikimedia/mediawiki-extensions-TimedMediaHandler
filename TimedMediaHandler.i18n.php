@@ -1367,17 +1367,15 @@ $messages['frp'] = array(
 	'timedmedia-actions' => 'Accions',
 	'timedmedia-not-ready' => 'Pas prèst',
 	'timedmedia-percent-done' => 'A pou prés $1 % complètâ',
-	'timedmedia-days' => '$1 jorn{{PLURAL:$1||s}}',
-	'timedmedia-hours' => '$1 hor{{PLURAL:$1|a|es}}',
-	'timedmedia-minutes' => '$1 menut{{PLURAL:$1|a|es}}',
-	'timedmedia-seconds' => '$1 second{{PLURAL:$1|a|es}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 et $4',
-	'timedmedia-time-3-measurements' => '$1, $2 et $3',
-	'timedmedia-time-2-measurements' => '$1 et $2',
+	'timedmedia-days' => '$1 jorn{{PLURAL:$1||s}}', # Fuzzy
+	'timedmedia-hours' => '$1 hor{{PLURAL:$1|a|es}}', # Fuzzy
+	'timedmedia-minutes' => '$1 menut{{PLURAL:$1|a|es}}', # Fuzzy
+	'timedmedia-seconds' => '$1 second{{PLURAL:$1|a|es}}', # Fuzzy
 	'timedmedia-show-error' => 'Fâre vêre les èrrors',
 	'timedmedia-source-file' => 'Sôrsa $1',
 	'timedmedia-source-file-desc' => 'Originâl $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-language' => 'sot-titros en $1 ($2)',
+	'timedmedia-file' => 'Fichiér',
 );
 
 /** Friulian (furlan)
