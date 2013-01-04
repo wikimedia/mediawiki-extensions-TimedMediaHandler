@@ -782,8 +782,8 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-desc-link' => 'Über diese Datei',
 	'timedmedia-oggThumb-version' => 'OggHandler erfordert oggThumb in der Version $1 oder höher.',
 	'timedmedia-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
-	'timedmedia-status-header' => 'Umschlüsselungsstatus',
-	'timedmedia-update-status' => 'Umschlüsselungsstatus aktualisieren',
+	'timedmedia-status-header' => 'Transkodierungstatus',
+	'timedmedia-update-status' => 'Transkodierungstatus aktualisieren',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Unbekannter Status',
 	'timedmedia-transcodeinfo' => 'Beschreibung',
@@ -838,7 +838,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-file' => 'Datei',
 	'right-transcode-reset' => 'Fehlgeschlagene oder umgeschlüsselte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
 	'right-transcode-status' => '[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten',
-	'action-transcode-status' => 'den aktuellen Umschlüsselungsstatus anzusehen',
+	'action-transcode-status' => 'den aktuellen Transkodierungstatus anzusehen',
 );
 
 /** Zazaki (Zazaki)
@@ -3875,6 +3875,9 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|eno čakajoče prekodiranje|dve čakajoči prekodiranji|$1 čakajoča prekodiranja|$1 čakajočih prekodiranj}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|eno neuspelo prekodiranje|dve neuspeli prekodiranji|$1 neuspela prekodiranja|$1 neuspelih prekodiranj}}',
 	'timedmedia-file' => 'Datoteka:',
+	'right-transcode-reset' => 'Ponastavitev neuspelih ali pretvorjenih videov, da so ponovno vstavljeni v čakalno vrsto opravil.',
+	'right-transcode-status' => 'Ogled [[Special:TimedMediaHandler|informacij o trenutni dejavnosti pretvarjanja]]',
+	'action-transcode-status' => 'ogled trenutnega stanja pretvorbe',
 );
 
 /** Albanian (shqip)
