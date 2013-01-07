@@ -1430,8 +1430,8 @@ $messages['gl'] = array(
 	'timedmedia-webm-long-video' => 'Ficheiro WebM de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total',
 	'timedmedia-mp4-short-video' => 'Ficheiro de vídeo MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Ficheiro MP4 de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total',
-	'timedmedia-no-player-js' => 'O seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
-Pode <a href="$1">descargar o vídeo</a> ou <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un reprodutor</a> para reproducir o vídeo no seu navegador.',
+	'timedmedia-no-player-js' => 'Sentímolo, o seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
+Pode <a href="$1">descargar o vídeo</a> ou <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descargar un reprodutor</a> para reproducir o vídeo no seu navegador.',
 	'timedmedia-more' => 'Máis...',
 	'timedmedia-dismiss' => 'Pechar',
 	'timedmedia-download' => 'Descargar o ficheiro',
