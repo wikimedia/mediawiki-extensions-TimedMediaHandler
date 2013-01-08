@@ -212,8 +212,12 @@ class WebMHandler extends TimedMediaHandler {
 	 */
 	function getLongDesc( $file ) {
 		global $wgLang;
+		$streamTypes = $this->getStreamTypes( $file );
+		if ( !$streamTypes ) {
+			return parent::getLongDesc( $file );
+		}
 		return wfMessage('timedmedia-webm-long-video',
-			implode( '/', $this->getStreamTypes( $file ) ),
+			implode( '/', $streamTypes ),
 			$wgLang->formatTimePeriod( $this->getLength($file) ),
 			$wgLang->formatBitrate( $this->getBitRate( $file ) )
 		)->numParams(
