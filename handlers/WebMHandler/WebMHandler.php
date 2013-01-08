@@ -122,19 +122,22 @@ class WebMHandler extends TimedMediaHandler {
 	function getMetadataType( $image ) {
 		return 'webm';
 	}
+
 	/**
 	 * @param $file File
+	 * @return String
 	 */
 	function getWebType( $file ) {
 		return 'video/webm; codecs="vp8, vorbis"';
 	}
+
 	/**
 	 * @param $file File
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
 		$streamTypes = array();
-		$metadata = self::unpackMetadata( $file->getMetadata() );
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
