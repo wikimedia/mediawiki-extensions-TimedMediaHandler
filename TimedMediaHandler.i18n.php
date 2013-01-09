@@ -140,6 +140,7 @@ Are you sure you want to proceed?',
  * @author Mormegil
  * @author Purodha
  * @author Raymond
+ * @author Shirayuki
  * @author Siebrand
  * @author Umherirrender
  * @author 아라
@@ -209,6 +210,7 @@ Parameters are:
 	'timedmedia-derivative-480p.mp4' => '{{optional}}',
 	'timedmedia-derivative-720p.mp4' => '{{optional}}',
 	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> to {{int:Timedmedia-subtitle-new-go}}',
+	'timedmedia-subtitle-new-go' => '{{Identical|Go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names
 Paramaters are:
 * $1 Subtitle language
