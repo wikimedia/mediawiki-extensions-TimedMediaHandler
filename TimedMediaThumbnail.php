@@ -90,13 +90,13 @@ class TimedMediaThumbnail {
 		$offset = intval( self::getThumbTime( $options ) );
 		/*
 		This is a workaround until ffmpegs ogg demuxer properly seeks to keyframes.
-		Seek 2 seconds before offset and seek in decoded stream after that.
+		Seek 3 seconds before offset and seek in decoded stream after that.
 		 -ss before input seeks without decode
 		 -ss after input seeks in decoded stream
 		*/
-		if($offset > 2) {
-			$cmd .= ' -ss ' . floatval($offset - 2);
-			$offset = 2;
+		if($offset > 3) {
+			$cmd .= ' -ss ' . floatval($offset - 3);
+			$offset = 3;
 		}
 		//try to get temorary local url to file
 		$backend = $options['file']->getRepo()->getBackend();
