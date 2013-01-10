@@ -89,6 +89,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Amire80
  * @author EugeneZelenko
  * @author Shirayuki
  * @author Umherirrender
@@ -101,6 +102,7 @@ $messages['qqq'] = array(
 	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
+	'mwe-embedplayer-copy-code' => 'Button label. Pressing the button marks the code in a textarea above it so it can be copied.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1454,7 +1456,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-related_videos' => 'סרטונים קשורים',
 	'mwe-embedplayer-seeking' => 'חיפוש',
 	'mwe-embedplayer-buffering' => 'אגירה',
-	'mwe-embedplayer-copy-code' => 'קוד להעתקה',
+	'mwe-embedplayer-copy-code' => 'העתקת הקוד',
 	'mwe-embedplayer-video-h264' => 'סרט H.264',
 	'mwe-embedplayer-video-webm' => 'סרט WebM',
 	'mwe-embedplayer-video-flv' => 'סרט Flash',
