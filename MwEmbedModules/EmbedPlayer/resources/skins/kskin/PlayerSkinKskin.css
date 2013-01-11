@@ -78,7 +78,7 @@
 	background: url(images/ksprite.png) repeat-x 0 -81px; !important;
 	font: normal 11px arial, sans-serif;
 	color: #555;
-	
+
 	position:absolute;
 	bottom:0px;
 	left:0px;
@@ -381,7 +381,6 @@
 	float: right;
 	height: 34px;
 	padding: 0 5px 3px;
-	width: 84px;
 	font-size: 1em;
 }
 
