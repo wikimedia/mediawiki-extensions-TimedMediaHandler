@@ -2404,7 +2404,7 @@ $messages['ko'] = array(
 	'timedmedia-webm-long-video' => 'WebM 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
 	'timedmedia-mp4-short-video' => 'MP4 $1 동영상 파일, $2',
 	'timedmedia-mp4-long-video' => 'MP4 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
-	'timedmedia-no-player-js' => '죄송합니다, 당신의 시스템은 자바스크립트를 지원하지 않거나 지원하는 미디어 플레이어가 설치되어 있지 않습니다.<br />
+	'timedmedia-no-player-js' => '죄송합니다, 시스템은 자바스크립트를 지원하지 않거나 지원하는 미디어 플레이어가 설치되어 있지 않습니다.<br />
 <a href="$1">미디어 클립을 다운로드</a>하거나, <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">미디어 플레이어를 다운로드</a>할 수 있습니다.',
 	'timedmedia-more' => '더 보기...',
 	'timedmedia-dismiss' => '닫기',
