@@ -480,7 +480,7 @@ $messages['be-tarask'] = array(
 	'timedmedia-no-player-js' => 'Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />
 Вы можаце <a href="$1">загрузіць кліп</a> ці <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.',
 	'timedmedia-more' => 'Болей…',
-	'timedmedia-dismiss' => 'Схаваць',
+	'timedmedia-dismiss' => 'Назад',
 	'timedmedia-download' => 'Загрузіць файл',
 	'timedmedia-play-media' => 'Прайграць',
 	'timedmedia-desc-link' => 'Інфармацыя пра гэты файл',
@@ -4406,6 +4406,7 @@ $messages['ug-arab'] = array(
  * @author Ahonc
  * @author Base
  * @author NickK
+ * @author Olvin
  * @author Prima klasy4na
  * @author Steve.rusyn
  * @author Тест
@@ -4424,7 +4425,7 @@ $messages['uk'] = array(
 	'timedmedia-webm-long-video' => 'WebM аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3',
 	'timedmedia-mp4-short-video' => 'MP4 $1 відео-файл, $2',
 	'timedmedia-mp4-long-video' => 'MP4 аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3',
-	'timedmedia-no-player-js' => 'Нажаль, у Вашому браузері вимкнено JavaScript, або нема жодного необхідного програвача.<br />
+	'timedmedia-no-player-js' => 'На жаль, у Вашому браузері вимкнено JavaScript і не підтримується жодного програвача.<br />
 Ви можете <a href="$1">завантажити ролик</a> або <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">завантажити програвач</a> для відтворенні ролику у браузері.',
 	'timedmedia-more' => 'Більше…',
 	'timedmedia-dismiss' => 'Закрити',
