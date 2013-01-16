@@ -1884,6 +1884,13 @@ $messages['ro'] = array(
 	'mwe-timedtext-request-already-done' => 'O transcripție pentru acest videoclip a fost deja solicitată. [$1 Vezi toate cererile de transcripție]',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mwe-timedtext-stage-sync' => 'Sinc',
+);
+
 /** Russian (русский)
  * @author MaxSem
  * @author Александр Сигачёв
