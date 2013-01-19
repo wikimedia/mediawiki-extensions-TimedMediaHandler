@@ -13,6 +13,11 @@ $specialPageAliases['en'] = array(
 	'TimedMediaHandler' => array( 'TimedMediaHandler' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'TimedMediaHandler' => array( 'TimedMedia-Steuerungsprogramm' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'TimedMediaHandler' => array( '자막미디어핸들러' ),
