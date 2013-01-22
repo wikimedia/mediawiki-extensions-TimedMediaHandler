@@ -35,7 +35,7 @@ class CleanupTranscodes extends Maintenance {
 				'remove: '. $row->transcode_image_name . ' ' . $row->transcode_key . "\n"
 			);
 			$title = Title::newFromText( $row->transcode_image_name, NS_FILE );
-			$file = wfFindFile( $title );
+			$file = wfLocalFile( $title );
 			WebVideoTranscode::removeTranscodes( $file, $row->transcode_key );
 		}
 		$this->output( "Finished!\n" );
