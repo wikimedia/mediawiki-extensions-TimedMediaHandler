@@ -1939,7 +1939,7 @@ Anda dapat <a href="$1">mengunduh klip</a> atau <a href="//www.mediawiki.org/wik
 	'timedmedia-derivative-desc-720p.webm' => 'WebM unduhan berkualitas tinggi (720P)',
 	'timedmedia-subtitle-language' => 'Teks film $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Tidak ada video yang terkait dengan halaman subjudul ini',
-	'timedmedia-subtitle-no-subtitles' => 'Saat ini tidak ada subjudul $1 untuk video ini. Anda dapat [{{fullurl: {{FULLPAGENAME}}|action = edit}} menyunting halaman ini] untuk menambahkannya',
+	'timedmedia-subtitle-no-subtitles' => 'Saat ini tidak ada subjudul $1 untuk video ini. Anda dapat [{{fullurl: {{FULLPAGENAME}}|action=edit}} menyunting halaman ini] untuk menambahkannya',
 );
 
 /** Ido (Ido)
