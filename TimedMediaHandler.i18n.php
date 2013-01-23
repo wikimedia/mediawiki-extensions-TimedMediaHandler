@@ -188,6 +188,7 @@ Parameters are:
 	'timedmedia-unknown-target-size' => 'Status update for Transcodes
 Parameters are:
 * $1 The number of bytes of the file transcoded so far',
+	'timedmedia-minutes' => '{{Identical|Minute}}',
 	'timedmedia-ogg' => '{{optional}}',
 	'timedmedia-webm' => '{{optional}}',
 	'timedmedia-source-file' => 'The source file
@@ -261,6 +262,7 @@ $messages['af'] = array(
 	'timedmedia-dismiss' => 'Sluit',
 	'timedmedia-download' => 'Laai lêer af',
 	'timedmedia-desc-link' => 'Aangaande die lêer',
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 minuut|$1 minute}}',
 );
 
 /** Albaamo innaaɬiilka (Albaamo innaaɬiilka)

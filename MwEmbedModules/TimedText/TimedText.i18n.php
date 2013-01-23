@@ -51,11 +51,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Shirayuki
  * @author Siebrand
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'mwe-timedtext-stage-translate' => '{{Identical|Translate}}',
+	'mwe-timedtext-select-language' => '{{Identical|Select language}}',
 	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
 	'mwe-timedtext-key-language' => '{{optional}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
