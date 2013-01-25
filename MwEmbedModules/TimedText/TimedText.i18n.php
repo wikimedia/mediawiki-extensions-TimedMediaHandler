@@ -2004,6 +2004,13 @@ $messages['sl'] = array(
 	'mwe-timedtext-back-btn' => 'Nazaj',
 );
 
+/** Somali (Soomaaliga)
+ * @author Abshirdheere
+ */
+$messages['so'] = array(
+	'mwe-timedtext-select-language' => 'Dooro luqad',
+);
+
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  * @author Михајло Анђелковић
