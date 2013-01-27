@@ -414,22 +414,16 @@ $messages['avk'] = array(
  */
 $messages['az'] = array(
 	'timedmedia-status' => 'Status',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 və $4',
-	'timedmedia-time-3-measurements' => '$1, $2 və $3',
-	'timedmedia-time-2-measurements' => '$1 və $2',
 );
 
 /** Bashkir (башҡортса)
  * @author Haqmar
  */
 $messages['ba'] = array(
-	'timedmedia-days' => '{{PLURAL:$1|$1 көн|$1 көн}}',
-	'timedmedia-hours' => '{{PLURAL:$1|$1 сәғәт|$1 сәғәт}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|$1 минут|$1 минут}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунд|$1 секунд}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 һәм $4',
-	'timedmedia-time-3-measurements' => '$1, $2 һәм $3',
-	'timedmedia-time-2-measurements' => '$1 һәм $2',
+	'timedmedia-days' => '{{PLURAL:$1|$1 көн|$1 көн}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|$1 сәғәт|$1 сәғәт}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 минут|$1 минут}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунд|$1 секунд}}', # Fuzzy
 	'timedmedia-show-error' => 'Хатаны күрһәт',
 );
 
@@ -870,9 +864,6 @@ $messages['diq'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 seate|$1 seati}}',
 	'timedmedia-minutes' => '{{PLURAL: $1|1 deqa|$1 deqey}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 saniya|$1 saniyey}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 u $4',
-	'timedmedia-time-3-measurements' => '$1, $2 u $3',
-	'timedmedia-time-2-measurements' => '$1 u $2',
 	'timedmedia-subtitle-new-go' => 'Şo',
 );
 
@@ -2234,9 +2225,6 @@ $messages['jv'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|jam|jam}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|menit|menit}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|detik|detik}}', # Fuzzy
-	'timedmedia-time-4-measurements' => '$1, $2, $3 lan $4',
-	'timedmedia-time-3-measurements' => '$1, $2 lan $3',
-	'timedmedia-time-2-measurements' => '$1 lan $2',
 	'timedmedia-show-error' => 'Tuduhaké kasalahan',
 	'timedmedia-reset' => 'Setèl ulang transkodhé',
 	'timedmedia-reset-error' => 'Kasalahan nalika nyetèl ulang tugas transkodhé.',
@@ -2296,9 +2284,6 @@ $messages['ka'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 საათი|$1 საათი}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 წუთი|$1 წუთი}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 წამი|$1 წამი}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 და $4',
-	'timedmedia-time-3-measurements' => '$1, $2 და $3',
-	'timedmedia-time-2-measurements' => '$1 და $2',
 	'timedmedia-show-error' => 'შეცდომის ჩვენება',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'წყარო $1',
@@ -2992,7 +2977,7 @@ $messages['nds'] = array(
 	'timedmedia-desc-link' => 'Över disse Datei',
 );
 
-/** Nedersaksisch (Nedersaksisch)
+/** Nedersaksies (Nedersaksies)
  * @author Servien
  */
 $messages['nds-nl'] = array(
@@ -3366,12 +3351,9 @@ $messages['ps'] = array(
 	'timedmedia-desc-link' => 'د همدې دوتنې په اړه',
 	'timedmedia-status' => 'دريځ',
 	'timedmedia-actions' => 'چارې',
-	'timedmedia-days' => '{{PLURAL:$1|ورځ|$1 ورځې}}',
-	'timedmedia-hours' => '{{PLURAL:$1|ساعت|$1 ساعتونه}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|دقيقه|دقيقې}}',
-	'timedmedia-time-4-measurements' => '$1، $2، $3 او $4',
-	'timedmedia-time-3-measurements' => '$1، $2 او $3',
-	'timedmedia-time-2-measurements' => '$1 او $2',
+	'timedmedia-days' => '{{PLURAL:$1|ورځ|$1 ورځې}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|ساعت|$1 ساعتونه}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|دقيقه|دقيقې}}', # Fuzzy
 	'timedmedia-subtitle-new-go' => 'ورځه',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 ويډيو|$1 ويډيوګانې}}',
 	'timedmedia-file' => 'دوتنه',
@@ -3921,13 +3903,10 @@ $messages['sr-ec'] = array(
 	'timedmedia-dismiss' => 'Затвори',
 	'timedmedia-download' => 'Преузми датотеку',
 	'timedmedia-desc-link' => 'Подаци о овој датотеци',
-	'timedmedia-days' => '{{PLURAL:$1|дан|$1 дана|$1 дана}}',
-	'timedmedia-hours' => '{{PLURAL:$1|сат|$1 сата|$1 сати}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|минут|$1 минута|$1 минута}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|секунд|$1 секунде|$1 секунди}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 и $4',
-	'timedmedia-time-3-measurements' => '$1, $2 и $3',
-	'timedmedia-time-2-measurements' => '$1 и $2',
+	'timedmedia-days' => '{{PLURAL:$1|дан|$1 дана|$1 дана}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|сат|$1 сата|$1 сати}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|минут|$1 минута|$1 минута}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|секунд|$1 секунде|$1 секунди}}', # Fuzzy
 	'timedmedia-show-error' => 'Прикажи грешку',
 	'timedmedia-reset' => 'Поништи прекодирање',
 	'timedmedia-reset-confirm' => 'Поништавање овог прекодирања ће уклонити постојећу датотеку (ако постоји) и вратити прекодирање на списак задатака. Ова радња може да потраје. <br /><br />
@@ -3974,13 +3953,10 @@ $messages['sr-el'] = array(
 	'timedmedia-dismiss' => 'Zatvori',
 	'timedmedia-download' => 'Preuzmi datoteku',
 	'timedmedia-desc-link' => 'Podaci o ovoj datoteci',
-	'timedmedia-days' => '{{PLURAL:$1|dan|$1 dana|$1 dana}}',
-	'timedmedia-hours' => '{{PLURAL:$1|sat|$1 sata|$1 sati}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuta|$1 minuta}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|sekund|$1 sekunde|$1 sekundi}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 i $4',
-	'timedmedia-time-3-measurements' => '$1, $2 i $3',
-	'timedmedia-time-2-measurements' => '$1 i $2',
+	'timedmedia-days' => '{{PLURAL:$1|dan|$1 dana|$1 dana}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|sat|$1 sata|$1 sati}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuta|$1 minuta}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|sekund|$1 sekunde|$1 sekundi}}', # Fuzzy
 	'timedmedia-show-error' => 'Prikaži grešku',
 	'timedmedia-reset' => 'Poništi prekodiranje',
 	'timedmedia-reset-confirm' => 'Poništavanje ovog prekodiranja će ukloniti postojeću datoteku (ako postoji) i vratiti prekodiranje na spisak zadataka. Ova radnja može da potraje. <br /><br />
@@ -4126,9 +4102,6 @@ $messages['sw'] = array(
 	'timedmedia-status' => 'Hali',
 	'timedmedia-actions' => 'Vitendo',
 	'timedmedia-not-ready' => 'Haiko tayari',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 na $4',
-	'timedmedia-time-3-measurements' => '$1, $2 na $3',
-	'timedmedia-time-2-measurements' => '$1 na $2',
 	'timedmedia-show-error' => 'Onyesha hitilafu',
 	'timedmedia-subtitle-new-go' => 'Nenda',
 	'timedmedia-file' => 'Faili',
@@ -4152,9 +4125,6 @@ $messages['ta'] = array(
 	'timedmedia-actions' => 'செயல்கள்',
 	'timedmedia-not-ready' => 'தயாராக இல்லை',
 	'timedmedia-percent-done' => 'ஏறத்தாழ $1% முடிந்தது',
-	'timedmedia-time-4-measurements' => '$1, $2, $3, $4',
-	'timedmedia-time-3-measurements' => '$1, $2, $3',
-	'timedmedia-time-2-measurements' => '$1, $2',
 	'timedmedia-show-error' => 'பிழை காட்டு',
 	'timedmedia-source-file' => '$1 மூலம்',
 	'timedmedia-source-file-desc' => 'மூல $1, $2 × $3 ($4)',
@@ -4186,13 +4156,10 @@ $messages['te'] = array(
 	'timedmedia-status' => 'స్థితి',
 	'timedmedia-status-unknown' => 'తెలియని స్థితి',
 	'timedmedia-actions' => 'చర్యలు',
-	'timedmedia-days' => '{{PLURAL:$1|రోజు|$1 రోజులు}}',
-	'timedmedia-hours' => '{{PLURAL:$1|గంట|$1 గంటలు}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|నిమిషం|$1 నిమిషాలు}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|క్షణం|$1 క్షణాలు}}',
-	'timedmedia-time-4-measurements' => '$1, $2, $3 మరియు $4',
-	'timedmedia-time-3-measurements' => '$1, $2 మరియు $3',
-	'timedmedia-time-2-measurements' => '$1 మరియు $2',
+	'timedmedia-days' => '{{PLURAL:$1|రోజు|$1 రోజులు}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|గంట|$1 గంటలు}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|నిమిషం|$1 నిమిషాలు}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|క్షణం|$1 క్షణాలు}}', # Fuzzy
 	'timedmedia-source-file-desc' => 'అసలు $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-new-go' => 'వెళ్ళు',
 	'timedmedia-subtitle-language' => '$1 ($2) ఉపశీర్షికలు',
