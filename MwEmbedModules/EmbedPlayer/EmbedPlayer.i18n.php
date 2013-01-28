@@ -98,7 +98,13 @@ $messages['qqq'] = array(
 	'mwe-embedplayer-credit-date' => '{{Identical|Date}}',
 	'mwe-embedplayer-credit-author' => '{{Identical|Author}}',
 	'mwe-embedplayer-credits' => '{{Identical|Credit}}',
+	'mwe-embedplayer-about-library-desc' => 'Parameters:
+* $1 - URL',
 	'mwe-embedplayer-ogg-player-cortado' => '{{optional}}',
+	'mwe-embedplayer-for_best_experience' => 'Parameters:
+* $1 - URL',
+	'mwe-embedplayer-download-warn' => 'Parameters:
+* $1 - URL',
 	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
@@ -2003,6 +2009,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(選択済み)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => '動画再生品質の向上のために、[$1 HTML5 動画対応のブラウザー]をお勧めします。',
+	'mwe-embedplayer-download-warn' => '互換性がないブラウザー内プレーヤーを検出しました: ブラウザー内で再生するには、[$1 最新版の Firefox] をダウンロードしてください',
 	'mwe-embedplayer-fullscreen-tip' => '<i>ウェブ ブラウザー</i>の全画面表示を切り替えるには <b>F11</b> キーを押してください',
 	'mwe-embedplayer-fullscreen-tip-osx' => '全画面表示を切り替えるには <b>shift &#x2318; F</b> を押してください',
 	'mwe-embedplayer-do_not_warn_again' => '今後、このメッセージを表示しない',
@@ -2435,7 +2442,7 @@ $messages['mk'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(избрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'За поквалитетно прегледување на снимките ви го препорачуваме [видеопрелистувачот со html5 на $1].',
-	'mwe-embedplayer-download-warn' => 'Не најдов прикладен изведувач за пуштање од прелистувач. Преземете го [$1 најновиот Firefox]',
+	'mwe-embedplayer-download-warn' => 'Не најдов прикладен изведувач за пуштање од прелистувач Ако сакате да пуштате од прелистувач, преземете го [$1 најновиот Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Притиснете <b>F11</b> за да го префрлите <i>прелистувачот</i> на полн екран',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Притиснете <b>shift ⌘ F</b> за преглед на цел екран',
 	'mwe-embedplayer-do_not_warn_again' => 'Отсега не ја прикажувај оваа порака',
@@ -4163,7 +4170,7 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '（已选）',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => '为了得到更好的视频播放体验，我们推荐[$1 HTML5视频浏览器]。',
-	'mwe-embedplayer-download-warn' => '检测到播放器与浏览器不兼容，为了在浏览器中播放请下载[$1 最新的Firefox]',
+	'mwe-embedplayer-download-warn' => '检测到播放器与浏览器不兼容，为了在浏览器中播放请下载[$1 最新的Firefox]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => '按<b>F11</b>把网页浏览器设为全屏',
 	'mwe-embedplayer-fullscreen-tip-osx' => '按<b>Shift ⌘ F</b>设为全屏',
 	'mwe-embedplayer-do_not_warn_again' => '以后不再显示这条消息',
