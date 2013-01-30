@@ -223,7 +223,7 @@ $wgHooks['ExtractThumbParameters'][] = 'TimedMediaHandler::onExtractThumbParamet
 
 # add Special:TimedMediaHandler
 $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
-
+$wgSpecialPageGroups['TimedMediaHandler'] = 'media';
 
 // Extension Credits
 $wgExtensionCredits['media'][] = array(
