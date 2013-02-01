@@ -3597,6 +3597,9 @@ $messages['roa-tara'] = array(
 	'timedmedia-source-file-desc' => 'Origgenale $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-new-go' => 'Véje',
 	'timedmedia-subtitle-language' => '$1 ($2) sottotitele',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Video Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 Video WebM}}',
 	'timedmedia-file' => 'File',
 );
 

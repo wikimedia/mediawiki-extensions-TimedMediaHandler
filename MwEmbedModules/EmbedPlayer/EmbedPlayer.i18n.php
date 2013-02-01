@@ -102,6 +102,8 @@ $messages['qqq'] = array(
 	'mwe-embedplayer-credits' => '{{Identical|Credit}}',
 	'mwe-embedplayer-about-library-desc' => 'Parameters:
 * $1 - URL',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'name of mp3 player in configuration screen',
+	'mwe-embedplayer-ogg-player-aacNative' => 'name of AAC player in configuration screen',
 	'mwe-embedplayer-ogg-player-cortado' => '{{optional}}',
 	'mwe-embedplayer-for_best_experience' => 'Parameters:
 * $1 - URL',
@@ -111,8 +113,6 @@ $messages['qqq'] = array(
 future identical warnings messages',
 	'mwe-embedplayer-playerSelect' => '{{Identical|Player}}',
 	'mwe-embedplayer-copy-code' => 'Button label. Pressing the button marks the code in a textarea above it so it can be copied.',
-	'mwe-embedplayer-ogg-player-mp3Native' => 'name of mp3 player in configuration screen',
-	'mwe-embedplayer-ogg-player-aacNative' => 'name of AAC player in configuration screen',
 );
 
 /** Afrikaans (Afrikaans)
@@ -3262,6 +3262,31 @@ $messages['ro'] = array(
 	'mwe-embedplayer-video-mpeg' => 'Video MPEG',
 	'mwe-embedplayer-video-msvideo' => 'Video AVI',
 	'mwe-embedplayer-missing-source' => 'Nu s-a găsit niciun videoclip sursă.',
+);
+
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mwe-embedplayer-credit-title' => 'Titole: $1',
+	'mwe-embedplayer-credit-date' => 'Date: $1',
+	'mwe-embedplayer-credit-author' => 'Autore: $1',
+	'mwe-embedplayer-download_clip' => "Scareche 'u video",
+	'mwe-embedplayer-download_text' => "Scareche 'u teste",
+	'mwe-embedplayer-download' => 'Scareche',
+	'mwe-embedplayer-share' => 'Condivide',
+	'mwe-embedplayer-credits' => 'Credite',
+	'mwe-embedplayer-ogg-player-selected' => '(scacchiate)',
+	'mwe-embedplayer-copy-code' => "Copie 'u codece",
+	'mwe-embedplayer-video-h264' => 'Video H.264',
+	'mwe-embedplayer-video-webm' => 'Video WebM',
+	'mwe-embedplayer-video-flv' => 'Video Flash',
+	'mwe-embedplayer-video-ogg' => 'Video Ogg',
+	'mwe-embedplayer-video-audio' => 'Audio Ogg',
+	'mwe-embedplayer-audio-mpeg' => 'Audio MPEG',
+	'mwe-embedplayer-video-3gp' => 'Video 3GP',
+	'mwe-embedplayer-video-mpeg' => 'Video MPEG',
+	'mwe-embedplayer-video-msvideo' => 'Video AVI',
 );
 
 /** Russian (русский)
