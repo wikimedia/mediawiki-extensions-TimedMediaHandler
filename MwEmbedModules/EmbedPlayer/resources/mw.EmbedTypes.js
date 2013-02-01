@@ -13,20 +13,56 @@
  * loaded post player detection
  */
 // Flash based players:
-var kplayer = new mw.MediaPlayer('kplayer', ['video/x-flv', 'video/h264', 'audio/mpeg'], 'Kplayer');
+var kplayer = new mw.MediaPlayer('kplayer', [
+	'video/x-flv',
+	'video/h264',
+	'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+	'audio/mpeg'
+], 'Kplayer');
 
 // Java based player
-var cortadoPlayer = new mw.MediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'Java' );
+var cortadoPlayer = new mw.MediaPlayer( 'cortado', [
+	'video/ogg',
+	'video/ogg; codecs="theora,vorbis"',
+	'audio/ogg',
+	'audio/ogg; codecs="vorbis"',
+	'application/ogg'
+], 'Java' );
 
 // Native html5 players
-var oggNativePlayer = new mw.MediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg' ], 'Native' );
-var h264NativePlayer = new mw.MediaPlayer( 'h264Native', ['video/h264'], 'Native' );
-var appleVdnPlayer = new mw.MediaPlayer( 'appleVdn', ['application/vnd.apple.mpegurl'], 'Native');
-var mp3NativePlayer = new mw.MediaPlayer( 'mp3Native', ['audio/mpeg', 'audio/mp3'], 'Native' );
-var webmNativePlayer = new mw.MediaPlayer( 'webmNative', ['video/webm'], 'Native' );
+var oggNativePlayer = new mw.MediaPlayer( 'oggNative', [
+	'video/ogg',
+	'video/ogg; codecs="theora, vorbis"',
+	'audio/ogg',
+	'audio/ogg; codecs="vorbis"',
+	'application/ogg'
+], 'Native' );
+var h264NativePlayer = new mw.MediaPlayer( 'h264Native', [
+	'video/h264',
+	'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+], 'Native' );
+var appleVdnPlayer = new mw.MediaPlayer( 'appleVdn', [
+	'application/vnd.apple.mpegurl',
+	'application/vnd.apple.mpegurl; codecs="avc1.42E01E"'
+], 'Native');
+var mp3NativePlayer = new mw.MediaPlayer( 'mp3Native', [
+	'audio/mpeg',
+	'audio/mp3'
+], 'Native' );
+var aacNativePlayer = new mw.MediaPlayer( 'aacNative', [
+	'audio/mp4',
+	'audio/mp4; codecs="mp4a.40.5"'
+], 'Native' );
+var webmNativePlayer = new mw.MediaPlayer( 'webmNative', [
+	'video/webm',
+	'video/webm; codecs="vp8, vorbis"'
+], 'Native' );
 
 // Image Overlay player ( extends native )
-var imageOverlayPlayer = new mw.MediaPlayer( 'imageOverlay', ['image/jpeg', 'image/png'], 'ImageOverlay' );
+var imageOverlayPlayer = new mw.MediaPlayer( 'imageOverlay', [
+	'image/jpeg',
+	'image/png'
+], 'ImageOverlay' );
 
 // VLC player
 //var vlcMimeList = ['video/ogg', 'audio/ogg', 'audio/mpeg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg', 'video/3gp'];
@@ -160,6 +196,11 @@ mw.EmbedTypes = {
 					// Test for MP3:
 					if ( this.supportedMimeType('audio/mpeg') ) {
 							this.mediaPlayers.addPlayer( mp3NativePlayer );
+					}
+
+					// Test for AAC:
+					if ( dummyvid.canPlayType( 'audio/mp4; codecs="mp4a.40.5"' ) ) {
+							this.mediaPlayers.addPlayer( aacNativePlayer );
 					}
 
 					// Test for h264:

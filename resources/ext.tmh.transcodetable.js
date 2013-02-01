@@ -67,7 +67,7 @@ $(document).ready(function(){
 			'width' : '400',
 			'height' : '200',
 			'title' : gM('timedmedia-reset'),
-			'content' : gM('timedmedia-reset-confirm'),
+			'content' : mw.msg('timedmedia-reset-confirm'),
 			'buttons': buttons
 		})
 		.css('overflow', 'hidden');

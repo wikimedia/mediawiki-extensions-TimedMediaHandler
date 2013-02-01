@@ -391,11 +391,13 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	public function filterThumbnailPurgeList( &$files, $options ) {
-		global $wgEnabledTranscodeSet;
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+
+		$transcodeSet = array_merge($wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet);
 
 		//dont remove derivatives on normal purge
 		foreach($files as $key => $file) {
-			foreach( $wgEnabledTranscodeSet as $transcodeKey ) {
+			foreach( $transcodeSet as $transcodeKey ) {
 				if ( preg_match('/' . preg_quote($transcodeKey) . '$/', $file) ) {
 					unset($files[$key]);
 					break;

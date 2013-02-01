@@ -161,12 +161,6 @@ mw.MediaSource.prototype = {
 			this.mimeType = 'audio/ogg';
 		}
 
-		// Conform long form "video/ogg; codecs=theora" based attributes
-		// @@TODO we should support codec in the type arguments
-		if( this.mimeType ){
-			this.mimeType = this.mimeType.split( ';' )[0];
-		}
-
 		// Check for parent elements ( supplies categories in "track" )
 		if( $( element ).parent().attr('category') ) {
 			this.category = $( element ).parent().attr('category');
@@ -296,8 +290,10 @@ mw.MediaSource.prototype = {
 		}
 
 		// Return a Title based on mime type:
-		switch( this.getMIMEType() ) {
+		var mimeType = this.getMIMEType().split( ';' )[0];
+		switch( mimeType ) {
 			case 'video/h264' :
+			case 'video/mp4' :
 				return gM( 'mwe-embedplayer-video-h264' );
 			break;
 			case 'video/x-flv' :
@@ -447,6 +443,8 @@ mw.MediaSource.prototype = {
 			break;
 			case 'mp3':
 				return 'audio/mpeg';
+			case 'm4a':
+				return 'audio/mp4';
 			break;
 			case 'anx':
 				return 'video/ogg';

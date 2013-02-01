@@ -35,6 +35,7 @@ $wgMwEmbedModuleConfig['EmbedPlayer.EnableOptionsMenu'] = true;
 
 // TMH needs java ( no h.264 or mp3 derivatives )
 $wgMwEmbedModuleConfig['EmbedPlayer.DisableJava' ] = false;
+$wgMwEmbedModuleConfig['EmbedPlayer.DisableHTML5FlashFallback' ] = true;
 
 // The text interface should always be shown
 // ( even if there are no text tracks for that asset at render time )
@@ -147,6 +148,20 @@ $wgEnabledTranscodeSet = array(
 	WebVideoTranscode::ENC_H264_720P,
 */
 );
+
+$wgEnabledAudioTranscodeSet = array(
+	WebVideoTranscode::ENC_OGG_VORBIS,
+
+	//opus support must be available in avconv
+	//WebVideoTranscode::ENC_OGG_OPUS,
+
+	//avconv needs libmp3lame support
+	//WebVideoTranscode::ENC_MP3,
+
+	//avconv needs libvo_aacenc support
+	//WebVideoTranscode::ENC_AAC,
+);
+
 // If mp4 source assets can be ingested:
 $wgTmhEnableMp4Uploads = false;
 

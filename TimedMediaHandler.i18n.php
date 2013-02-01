@@ -101,6 +101,16 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-720p.mp4' => 'H264 720P',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD quality MP4 (720P)',
 
+	//Audio
+	'timedmedia-derivative-ogg' => 'Ogg Vorbis',
+	'timedmedia-derivative-desc-ogg' => 'Ogg Vorbis',
+	'timedmedia-derivative-opus' => 'Opus',
+	'timedmedia-derivative-desc-opus' => 'Opus',
+	'timedmedia-derivative-mp3' => 'MP3',
+	'timedmedia-derivative-desc-mp3' => 'MP3',
+	'timedmedia-derivative-m4a' => 'AAC',
+	'timedmedia-derivative-desc-m4a' => 'AAC',
+
 	// Timed text page
 	'timedmedia-subtitle-new' => 'Create new translation or edit existing',
 	'timedmedia-subtitle-new-desc' => "Replace '''$1''' part with your [[:en:ISO 639|language code]] and press the '''{{int:Timedmedia-subtitle-new-go}}''' button",
@@ -210,6 +220,14 @@ Parameters are:
 	'timedmedia-derivative-320p.mp4' => '{{optional}}',
 	'timedmedia-derivative-480p.mp4' => '{{optional}}',
 	'timedmedia-derivative-720p.mp4' => '{{optional}}',
+	'timedmedia-derivative-ogg' => '{{optional}}',
+	'timedmedia-derivative-desc-ogg' => '{{optional}}',
+	'timedmedia-derivative-opus' => '{{optional}}',
+	'timedmedia-derivative-desc-opus' => '{{optional}}',
+	'timedmedia-derivative-mp3' => '{{optional}}',
+	'timedmedia-derivative-desc-mp3' => '{{optional}}',
+	'timedmedia-derivative-m4a' => '{{optional}}',
+	'timedmedia-derivative-desc-m4a' => '{{optional}}',
 	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> to {{int:Timedmedia-subtitle-new-go}}',
 	'timedmedia-subtitle-new-go' => '{{Identical|Go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names
