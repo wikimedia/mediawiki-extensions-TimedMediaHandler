@@ -651,6 +651,7 @@ Možete <a href="$1">učitati klip</a> ili <a href="//www.mediawiki.org/wiki/Ext
 /** Catalan (català)
  * @author Aleator
  * @author Paucabot
+ * @author Pitort
  * @author SMP
  * @author Toniher
  * @author Vriullop
@@ -669,6 +670,15 @@ $messages['ca'] = array(
 	'timedmedia-dismiss' => 'Tanca',
 	'timedmedia-download' => 'Descarrega el fitxer',
 	'timedmedia-desc-link' => 'Informació del fitxer',
+	'timedmedia-days' => '{{PLURAL:$1|1 dia|$1 dies}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 hora|$1 hores}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minuts}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 segon|$1 segons}}',
+	'timedmedia-show-error' => 'Mostra els errors',
+	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-subtitle-language' => '$1 ($2) subtítols',
+	'timedmedia-file' => 'Fitxer',
 );
 
 /** Chechen (нохчийн)
@@ -4652,6 +4662,7 @@ $messages['yue'] = array(
  * @author Gaoxuewei
  * @author Liangent
  * @author Shizhao
+ * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
 	'timedmedia-desc' => '带有WebM，Ogg Theora、Vorbis，srt格式支持的音频、视频和字幕处理器',
@@ -4713,6 +4724,9 @@ $messages['zh-hans'] = array(
 	'timedmedia-derivative-desc-320p.mp4' => '设备友好MP4 (320P)',
 	'timedmedia-derivative-desc-480p.mp4' => '网页流媒体MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => '高清MP4 (720P)',
+	'timedmedia-derivative-ogg' => 'Ogg Vorbis',
+	'timedmedia-derivative-desc-ogg' => 'Ogg Vorbis',
+	'timedmedia-derivative-desc-mp3' => 'MP3',
 	'timedmedia-subtitle-new' => '创建新翻译或编辑现有翻译',
 	'timedmedia-subtitle-new-desc' => "将'''$1'''替换为您的[[:zh:ISO 639|语言代码]]并按下'''{{int:Timedmedia-subtitle-new-go}}'''按钮",
 	'timedmedia-subtitle-new-go' => '提交',

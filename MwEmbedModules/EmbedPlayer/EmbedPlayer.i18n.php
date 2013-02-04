@@ -1111,6 +1111,8 @@ $messages['fr'] = array(
 	'mwe-embedplayer-close_btn' => 'Fermer',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Lecteur VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Lecteur Ogg HTML5',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'Lecteur MP3 HTML5',
+	'mwe-embedplayer-ogg-player-aacNative' => 'Lecteur AAC HTML5',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Lecteur H.264 HTML5',
 	'mwe-embedplayer-ogg-player-webmNative' => 'Lecteur WebM HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Module générique Ogg',
@@ -2156,6 +2158,8 @@ $messages['ko'] = array(
 	'mwe-embedplayer-close_btn' => '닫기',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC 플레이어',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg 플레이어',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'HTML5 MP3 플레이어',
+	'mwe-embedplayer-ogg-player-aacNative' => 'HTML5 AAC 플레이어',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 플레이어',
 	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM 플레이어',
 	'mwe-embedplayer-ogg-player-oggPlugin' => '일반 Ogg 플러그인',
@@ -2166,7 +2170,7 @@ $messages['ko'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(선택됨)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK 플레시 보비스',
 	'mwe-embedplayer-for_best_experience' => '더 나은 동영상 재생을 위해서는<br />[$1 html5 비디오 브라우저]를 권장합니다.',
-	'mwe-embedplayer-download-warn' => '감지한 브라우저 플레이어는 호환되지 않습니다. 브라우저 재생을 하려면 [$1 최신 파이어폭스]를 다운로드하세요.',
+	'mwe-embedplayer-download-warn' => '호환되지 않는 브라우저 안의 플레이어를 감지했습니다: 브라우저 안에 재생을 하려면 [$1 최신 파이어폭스]를 다운로드하세요',
 	'mwe-embedplayer-fullscreen-tip' => '<i>웹 브라우저</i>를 전체 화면으로 전환하려면 <b>F11</b>을 누르세요',
 	'mwe-embedplayer-fullscreen-tip-osx' => '전체 화면으로 전환하려면 <b>shift ⌘ F</b>를 누르세요',
 	'mwe-embedplayer-do_not_warn_again' => '나중에 이 메시지를 보여주지 않음',
@@ -4149,6 +4153,7 @@ $messages['yi'] = array(
  * @author Hydra
  * @author Shizhao
  * @author Yfdyh000
+ * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
 	'mwe-embedplayer-credit-title' => '标题：$1',
@@ -4195,6 +4200,8 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-close_btn' => '关闭',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC播放器',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg播放器',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'HTML5 MP3播放器',
+	'mwe-embedplayer-ogg-player-aacNative' => 'HTML5 AAC播放器',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264播放器',
 	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM播放器',
 	'mwe-embedplayer-ogg-player-oggPlugin' => '未注册Ogg插件',
@@ -4205,7 +4212,7 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '（已选）',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => '为了得到更好的视频播放体验，我们推荐[$1 HTML5视频浏览器]。',
-	'mwe-embedplayer-download-warn' => '检测到播放器与浏览器不兼容，为了在浏览器中播放请下载[$1 最新的Firefox]', # Fuzzy
+	'mwe-embedplayer-download-warn' => '检测到播放器与浏览器不兼容：为了能在浏览器中播放，请下载[$1 最新的Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => '按<b>F11</b>把网页浏览器设为全屏',
 	'mwe-embedplayer-fullscreen-tip-osx' => '按<b>Shift ⌘ F</b>设为全屏',
 	'mwe-embedplayer-do_not_warn_again' => '以后不再显示这条消息',
