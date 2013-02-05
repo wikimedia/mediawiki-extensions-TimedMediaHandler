@@ -192,7 +192,7 @@ mw.PlayerControlBuilder.prototype = {
 		var largestPos = 0;
 		var addComponent = function( componentId ){
 			if ( _this.supportedComponents[ componentId ] ) {
-				if ( _this.availableWidth > _this.components[ componentId ].w ) {
+				if ( _this.availableWidth >= _this.components[ componentId ].w ) {
 					_this.availableWidth -= _this.components[ componentId ].w;
 					// Check if position is defined, if not, place at end of known positions
 					var position =  _this.components[ componentId ].position ?
@@ -231,7 +231,10 @@ mw.PlayerControlBuilder.prototype = {
 			}
 
 			// Special case with playhead and time ( to make sure they are to the left of everything else )
-			if ( componentId == 'playHead' || componentId == 'timeDisplay'){
+			if ( componentId == 'playHead' ){
+				continue;
+			}
+			if( componentId == 'timeDisplay' && !mw.config.get( 'EmbedPlayer.EnableTimeDisplay' ) ){
 				continue;
 			}
 
@@ -240,10 +243,6 @@ mw.PlayerControlBuilder.prototype = {
 				continue;
 			}
 			addComponent( componentId );
-		}
-		// Add special case remaining components:
-		if( mw.config.get( 'EmbedPlayer.EnableTimeDisplay' ) ){
-			addComponent( 'timeDisplay' );
 		}
 		if( this.availableWidth > 30 ){
 			addComponent( 'playHead' );
@@ -2396,6 +2395,21 @@ mw.PlayerControlBuilder.prototype = {
 			}
 		},
 
+		/*
+		* The time display area
+		*/
+		'timeDisplay': {
+			'w' : mw.config.get( 'EmbedPlayer.TimeDisplayWidth' ),
+			'position': 6,
+			'o' : function( ctrlObj ) {
+				return $( '<div />' )
+				.addClass( "ui-widget time-disp" )
+				.append(
+					ctrlObj.embedPlayer.getTimeRange()
+				);
+			}
+		},
+
 		/**
 		* The options button, invokes display of the options menu
 		*/
@@ -2551,20 +2565,6 @@ mw.PlayerControlBuilder.prototype = {
 							ctrlObj.restoreControlsHover()
 						}
 					} );
-			}
-		},
-		/*
-		* The time display area
-		*/
-		'timeDisplay': {
-			'w' : mw.config.get( 'EmbedPlayer.TimeDisplayWidth' ),
-			'position': 6,
-			'o' : function( ctrlObj ) {
-				return $( '<div />' )
-				.addClass( "ui-widget time-disp" )
-				.append(
-					ctrlObj.embedPlayer.getTimeRange()
-				);
 			}
 		},
 
