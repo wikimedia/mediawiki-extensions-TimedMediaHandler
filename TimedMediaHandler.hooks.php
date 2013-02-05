@@ -200,16 +200,20 @@ class TimedMediaHandlerHooks {
 		if( !$file->isLocal() ){
 			return false;
 		}
+
+		$handler = $file->getHandler();
 		// Not able to transcode files without handler
-		if( !$file->getHandler() ) {
+		if( !$handler ) {
 			return false;
 		}
-		$mediaType = $file->getHandler()->getMetadataType( $file );
+		$mediaType = $handler->getMetadataType( $file );
 		// If ogg or webm format and not audio we can "transcode" this file
-		if( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType =='mp4' ) && ! $file->getHandler()->isAudio( $file ) ){
+		if( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType =='mp4' )
+			&& $handler instanceof TimedMediaHandler  && !$handler->isAudio( $file )
+		){
 			return true;
 		}
-		if( $file->getHandler()->isAudio( $file ) && count($wgEnabledAudioTranscodeSet) ) {
+		if( $handler->isAudio( $file ) && count( $wgEnabledAudioTranscodeSet ) ) {
 			return true;
 		}
 		return false;
