@@ -189,6 +189,10 @@ mw.PlayerSkinKskin = {
 				// no other item is selected by default show the media credits:
 				if ( !_this.currentMenuItem ){
 					_this.showMenuItem('credits');
+					// Hide the others
+					_this.$playerTarget.find( '.menu-screen' ).hide();
+					// Show credits
+					_this.$playerTarget.find( '.menu-credits' ).fadeIn( "fast" );
 				}
 			}
 		} );
