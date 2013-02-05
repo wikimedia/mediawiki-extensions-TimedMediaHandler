@@ -14,7 +14,7 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$wgParserOutputHooks, $wgTimedTextNS, $wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir, $wgCortadoJarFile,
-		$wgEnableLocalTimedText;
+		$wgEnableLocalTimedText, $wgTmhFileExtensions;
 
 		// Remove mp4 if not enabled:
 		if( $wgTmhEnableMp4Uploads === false ){
@@ -24,7 +24,6 @@ class TimedMediaHandlerHooks {
 				}
 			}
 		}
-
 
 		// Register the Timed Media Handler javascript resources ( MwEmbed modules )
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
@@ -101,7 +100,6 @@ class TimedMediaHandlerHooks {
 		// We should probably move this script output to a parser function but not working correctly in
 		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
-
 
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
