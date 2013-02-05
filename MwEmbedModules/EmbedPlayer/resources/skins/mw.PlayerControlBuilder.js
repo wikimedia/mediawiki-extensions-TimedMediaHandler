@@ -80,11 +80,14 @@ mw.PlayerControlBuilder.prototype = {
 		var skinClass = embedPlayer.skinName.substr(0,1).toUpperCase() + embedPlayer.skinName.substr( 1 );
 		if ( mw['PlayerSkin' + skinClass ] ) {
 			// Clone as to not override prototype with the skin config
-			var _this = $.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );
-			return _this;
+			_this = $.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );
+		}
+		if ( _this.embedPlayer.mediaElement.getPlayableSources().length <= 1
+			&& _this.supportedMenuItems.playerSelect ) {
+			delete _this.supportedMenuItems.playerSelect;
 		}
 		// Return the controlBuilder Object:
-		return this;
+		return _this;
 	},
 
 	/**
