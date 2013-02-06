@@ -170,11 +170,10 @@
 			// Build out the image and credit line
 			var imgSize = { };
 			if( embedPlayer.isAudio() ){
-				imgSize.width= 80;
-				imgSize.height = 80;
+				imgSize.height = imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 80;
 			} else{
-				imgSize.width=  ( embedPlayer.controlBuilder.getOverlayWidth() < 250 )? 45 : 120;
-				imgSize.height = parseInt( imgSize.width * ( embedPlayer.getHeight()/ embedPlayer.getWidth() ) )
+				imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 120;
+				imgSize.height = parseInt( imgSize.width * ( embedPlayer.getHeight()/ embedPlayer.getWidth() ) );
 			}
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(
@@ -223,7 +222,7 @@
 					// TODO improve provider 'concept' to support page title link
 					$creditsCache = doCreditLine( data.parse.text['*'], descUrl );
 				} else {
-					$creditsCache = doCreditLine( false, descUrl)
+					$creditsCache = doCreditLine( false, descUrl );
 				}
 				$target.html( $creditsCache );
 				callback( true );
