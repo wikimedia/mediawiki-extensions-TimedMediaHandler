@@ -16,8 +16,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 	);
 	private $formats = array(
-		'ogg' => 'img_minor_mime = "ogg"',
-		'webm' => 'img_minor_mime = "webm"',
+		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
+		'webm' => 'img_major_mime="video" AND img_minor_mime = "webm"',
 	);
 
 	public function __construct( $request = null, $par = null ) {
