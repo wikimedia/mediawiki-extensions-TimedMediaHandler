@@ -181,9 +181,9 @@ class WebVideoTranscodeJob extends Job {
 		// Check the codec see which encode method to call;
 		if( $options['novideo'] ) {
 			$status = $this->ffmpegEncode( $options );
-		} else if( $options['videoCodec'] == 'theora' ){
+		} elseif( $options['videoCodec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $options );
-		} else if( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'h264' ){
+		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'h264' ){
 			// Check for twopass:
 			if( isset( $options['twopass'] ) ){
 				// ffmpeg requires manual two pass
@@ -318,9 +318,9 @@ class WebVideoTranscodeJob extends Job {
 
 		if ( isset( $options['novideo'] )  ) {
 			$cmd.= " -vn ";
-		} else if( $options['videoCodec'] == 'vp8' ){
+		} elseif( $options['videoCodec'] == 'vp8' ){
 			$cmd.= $this->ffmpegAddWebmVideoOptions( $options, $pass );
-		} else if( $options['videoCodec'] == 'h264'){
+		} elseif( $options['videoCodec'] == 'h264'){
 			$cmd.= $this->ffmpegAddH264VideoOptions( $options, $pass );
 		}
 		// Add size options:

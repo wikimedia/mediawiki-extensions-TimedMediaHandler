@@ -68,7 +68,7 @@ class WebMHandler extends TimedMediaHandler {
 				$metadata['video']['display_y']
 			);
 		}
-		else if ( isset( $metadata['video']['resolution_x'] )
+		elseif ( isset( $metadata['video']['resolution_x'] )
 				&&
 			isset( $metadata['video']['resolution_y'] )
 		){

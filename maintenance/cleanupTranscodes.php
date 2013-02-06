@@ -22,7 +22,7 @@ class CleanupTranscodes extends Maintenance {
 
 		if ( $this->hasOption( "all" ) ) {
 			$where = array();
-		} else if ( $this->hasOption( "key" ) ) {
+		} elseif ( $this->hasOption( "key" ) ) {
 			$where = array( 'transcode_key' =>  $this->getOption( 'key' ) );
 		} else {
 			$where = 'transcode_key NOT IN ("'. implode('", "', $wgEnabledTranscodeSet ).'")';

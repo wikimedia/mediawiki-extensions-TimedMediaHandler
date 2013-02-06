@@ -61,9 +61,9 @@ class TextHandler {
 	function getTracks(){
 		if( $this->file->isLocal() ){
 			return $this->getLocalTextSources();
-		}else if ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
+		} elseif ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
 			return $this->getForeignDBTextSources();
-		}else {
+		} else {
 			return $this->getRemoteTextSources();
 		}
 	}
@@ -79,7 +79,7 @@ class TextHandler {
 			} else {
 				return false;
 			}
-		} else if( $this->file->repo instanceof ForeignDBViaLBRepo ){
+		} elseif( $this->file->repo instanceof ForeignDBViaLBRepo ){
 			global $wgTimedTextForeignNamespaces;
 			$wikiID = $this->file->getRepo()->getSlaveDB()->getWikiID();
 			if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {
@@ -255,7 +255,7 @@ class TextHandler {
 						'action' => 'raw',
 						'ctype' => 'text/x-srt'
 					));
-		//} else if ( $this->file->repo instanceof ForeignDBViaLBRepo ){
+		//} elseif( $this->file->repo instanceof ForeignDBViaLBRepo ){
 		} else {
 			$basePageUrl = $this->getRepoPageURL( $pageTitle );
 			$sep = ( strpos( $basePageUrl, '?' ) === false ) ? '?' : '&';
