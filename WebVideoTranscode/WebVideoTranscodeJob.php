@@ -140,7 +140,7 @@ class WebVideoTranscodeJob extends Job {
 
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 
-		if ( $options[ 'novideo' ] ) {
+		if ( isset( $options[ 'novideo' ] ) ) {
 			$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
 		} else {
 			$this->output( "Encoding to codec: " . $options['videoCodec'] );
@@ -179,7 +179,7 @@ class WebVideoTranscodeJob extends Job {
 
 
 		// Check the codec see which encode method to call;
-		if( $options['novideo'] ) {
+		if ( isset( $options[ 'novideo' ] ) ) {
 			$status = $this->ffmpegEncode( $options );
 		} elseif( $options['videoCodec'] == 'theora' ){
 			$status = $this->ffmpeg2TheoraEncode( $options );
