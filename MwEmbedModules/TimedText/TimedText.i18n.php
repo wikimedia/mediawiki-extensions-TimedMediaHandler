@@ -217,6 +217,15 @@ $messages['bs'] = array(
 	'mwe-timedtext-textcat-tad' => 'Opis zvuka',
 );
 
+/** Catalan (català)
+ * @author Pitort
+ */
+$messages['ca'] = array(
+	'mwe-timedtext-stage-translate' => 'Tradueix',
+	'mwe-timedtext-back-btn' => 'Enrere',
+	'mwe-timedtext-textcat-sub' => 'Subtítols',
+);
+
 /** Czech (česky)
  * @author Mormegil
  * @author Vks

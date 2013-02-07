@@ -657,7 +657,7 @@ Možete <a href="$1">učitati klip</a> ili <a href="//www.mediawiki.org/wiki/Ext
  * @author Vriullop
  */
 $messages['ca'] = array(
-	'timedmedia-desc' => 'Gestor de fitxers Ogg Theora i Vorbis, amb reproductor de Javascript', # Fuzzy
+	'timedmedia-desc' => 'Gestor de fitxers de vídeo, àudio i text sincronitzat amb suport pels formats WebM, Ogg Theora, Vorbi i srt',
 	'timedmedia-ogg-short-audio' => "Fitxer OGG d'àudio $1, $2",
 	'timedmedia-ogg-short-video' => 'Fitxer OGG de vídeo $1, $2',
 	'timedmedia-ogg-short-general' => 'Fitxer multimèdia OGG $1, $2',
@@ -678,6 +678,9 @@ $messages['ca'] = array(
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-language' => '$1 ($2) subtítols',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 vídeo WebM|$1 vídeosWebM}}',
 	'timedmedia-file' => 'Fitxer',
 );
 
@@ -4572,9 +4575,10 @@ $messages['ur'] = array(
 
 /** vèneto (vèneto)
  * @author Candalua
+ * @author GatoSelvadego
  */
 $messages['vec'] = array(
-	'timedmedia-desc' => 'Gestor par i file Ogg Theora e Vorbis, con riprodutor JavaScript', # Fuzzy
+	'timedmedia-desc' => "Gestor pa' i file audio, video e có sototitołi; formati suportai: WebM, Ogg Theora, Vorbis, srt",
 	'timedmedia-ogg-short-audio' => 'File audio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'File video Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'File multimedial Ogg $1, $2',
@@ -4583,10 +4587,72 @@ $messages['vec'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'File audio/video multiplexed Ogg $1, durata $2, dimensioni $4×$5 pixel, conplessivamente $3',
 	'timedmedia-ogg-long-general' => 'File multimedial Ogg, durata $2, $3',
 	'timedmedia-ogg-long-error' => 'File ogg mìa valido: $1',
+	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
+	'timedmedia-webm-long-video' => 'File audio/video WebM $1, durata $2, dimension $4×$5 pixel, conplesivamente $3',
+	'timedmedia-mp4-short-video' => 'File video MP4 $1, $2',
+	'timedmedia-mp4-long-video' => 'File audio/video MP4 $1, durata $2, dimension $4×$5 pixel, conplesivamente $3',
 	'timedmedia-more' => 'Altro...',
 	'timedmedia-dismiss' => 'Sara',
 	'timedmedia-download' => 'Descarga el file',
+	'timedmedia-play-media' => 'Riproduxi el file multimediałe',
 	'timedmedia-desc-link' => 'Informazion su sto file',
+	'timedmedia-oggThumb-version' => 'Par OggHandler ghe vole oggThumb version $1 o sucessiva.',
+	'timedmedia-oggThumb-failed' => "oggThumb no'l xe stà bon de crear la miniadura.",
+	'timedmedia-status-header' => 'Stato transcodifega',
+	'timedmedia-update-status' => 'Axorna stato transcodifega',
+	'timedmedia-status' => 'Stato',
+	'timedmedia-status-unknown' => 'Stato sconosùo',
+	'timedmedia-transcodeinfo' => 'Descrision derivà dal Transcodexe',
+	'timedmedia-actions' => 'Asion',
+	'timedmedia-direct-link' => 'Descarga derivà',
+	'timedmedia-not-ready' => 'Nó pronto',
+	'timedmedia-completed-on' => 'Transodifega conpletà $1',
+	'timedmedia-error-on' => 'Eror inte ła transcodifega so $1.',
+	'timedmedia-started-transcode' => 'Transcodifega tacà $1 fa. $2',
+	'timedmedia-percent-done' => '$1% sirca conpletà',
+	'timedmedia-in-job-queue' => 'Xontà a ła coa de laoro  $1  fa',
+	'timedmedia-unknown-target-size' => 'Dimension de destinasion sconosùa, $1 codifegà',
+	'timedmedia-days' => '{{PLURAL:$1|1 xorno|$1 xorni}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 ora|$1 ore}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 minuto|$1 minuti}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 secondo|$1 secondi}}',
+	'timedmedia-show-error' => 'Varda eror',
+	'timedmedia-reset' => 'Rexeta transcodifega',
+	'timedmedia-reset-error' => "Eror inte'l resetajo de ła transcodifega.",
+	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file' => 'Fonte $1',
+	'timedmedia-source-file-desc' => 'Orixenałe $1, $2 × $3 ($4)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg a basa larghesa de banda (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg trasmetibiłe in streaming via Web (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'Video Ogg trasmetibiłe in streaming via Web (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'Video Ogg descargabiłe in alta cuałità (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'WebM trasmetibiłe in streaming via Web (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'WebM trasmetibiłe in streaming via Web (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'WebM trasmetibiłe in streaming via Web (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'WebM descargabiłe in alta cuałità (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => 'MP4 par dispoxitivi conpatibiłi (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'MP4 trasmetibiłe in streaming via Web (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'MP4 in cuałità HD (720P)',
+	'timedmedia-subtitle-new' => 'Crear na nova tradusion o canbiar una de chełe che ghe xe xà',
+	'timedmedia-subtitle-new-desc' => "Sostituir ła parte '''$1''' có 'l propio [[:en:ISO 639|còdexe lenguistego]] e strucar el boton '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Và',
+	'timedmedia-subtitle-language' => '$1 ($2) sototitołi',
+	'timedmedia-subtitle-no-video' => "Nó ghe xe nisun video asocià a l'atuałe pàjina de i sototitołi",
+	'timedmedia-subtitle-no-subtitles' => 'Nó ghe xe al momento sototitołi in $1 par sto video, xe posibiłe [{{fullurl:{{FULLPAGENAME}}|action=edit}} canbiar sta pàjina] par xontarli',
+	'timedmedia-subtitle-remote' => 'I sototitołi par sto file i se cata so $1',
+	'timedmedia-subtitle-remote-link' => 'Te poi vardar ła [$1 pàjina de descrision] par sto file so $2',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 video Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 video WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodifega|$1 transcodifeghe}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transcodifega|$1 transcodifeghe}} in execusion',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodifega|$1 transcodifeghe}} in coa',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodifega nó riusia|$1 transcodifeghe nó riusie}}',
+	'timedmedia-file' => 'File',
+	'right-transcode-reset' => 'Reinposta i video difetoxi o transcodifegai cusì che i posa esar incluxi de novo in coa de laoro.',
+	'right-transcode-status' => "Vixuałixa [[Special:TimedMediaHandler|informasion so l'atuałe atività de transcodifega]]",
+	'action-transcode-status' => "mostrar l'atuałe stato de ła transcodifega",
 );
 
 /** Veps (vepsän kel’)
