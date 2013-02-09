@@ -176,24 +176,24 @@ mw.EmbedPlayerNative = {
 	/**
 	 * Get the native player embed code.
 	 *
-	 * @param {object} playerAttribtues Attributes to be override in function call
+	 * @param {object} playerAttributes Attributes to be override in function call
 	 * @return {object} cssSet css to apply to the player
 	 */
-	getNativePlayerHtml: function( playerAttribtues, cssSet ){
-		if( !playerAttribtues) {
-			playerAttribtues = {};
+	getNativePlayerHtml: function( playerAttributes, cssSet ){
+		if( !playerAttributes) {
+			playerAttributes = {};
 		}
 		// Update required attributes
-		if( !playerAttribtues['id'] ){
-			playerAttribtues['id'] = this.pid;
+		if( !playerAttributes['id'] ){
+			playerAttributes['id'] = this.pid;
 		}
-		if( !playerAttribtues['src'] ){
-			playerAttribtues['src'] = this.getSrc( this.currentTime);
+		if( !playerAttributes['src'] ){
+			playerAttributes['src'] = this.getSrc( this.currentTime);
 		}
 
 		// If autoplay pass along to attribute ( needed for iPad / iPod no js autoplay support
 		if( this.autoplay ) {
-			playerAttribtues['autoplay'] = 'true';
+			playerAttributes['autoplay'] = 'true';
 		}
 
 		if( !cssSet ){
@@ -206,7 +206,7 @@ mw.EmbedPlayerNative = {
 
 		// Also need to set the loop param directly for iPad / iPod
 		if( this.loop ) {
-			playerAttribtues['loop'] = 'true';
+			playerAttributes['loop'] = 'true';
 		}
 
 		var tagName = this.isAudio() ? 'audio' : 'video';
@@ -214,7 +214,7 @@ mw.EmbedPlayerNative = {
 		return	$( '<' + tagName + ' />' )
 			// Add the special nativeEmbedPlayer to avoid any rewrites of of this video tag.
 			.addClass( 'nativeEmbedPlayerPid' )
-			.attr( playerAttribtues )
+			.attr( playerAttributes )
 			.css( cssSet )
 	},
 
