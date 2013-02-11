@@ -41,11 +41,11 @@ mw.PlayerSkinKskin = {
 			'w': 52,
 			'o': function( ctrlObj ) {
 				return $( '<div />' )
-					.attr( 'title', gM( 'mwe-embedplayer-player_options' ) )
+					.attr( 'title', mw.msg( 'mwe-embedplayer-player_options' ) )
 					.addClass( "ui-state-default ui-corner-bl rButton k-options" )
 					.append(
 						$( '<span />' )
-						.text( gM( 'mwe-embedplayer-menu_btn' ) )
+						.text( mw.msg( 'mwe-embedplayer-menu_btn' ) )
 					);
 			}
 		},
@@ -114,7 +114,7 @@ mw.PlayerSkinKskin = {
 						.append(
 							$( '<a />' )
 							.attr( {
-								'title' : gM( 'mwe-embedplayer-' + menuItem ),
+								'title' : mw.msg( 'mwe-embedplayer-' + menuItem ),
 								'href' : '#'
 							})
 						)
@@ -226,7 +226,7 @@ mw.PlayerSkinKskin = {
 		var $kmenu = embedPlayer.getInterface().find( '.k-menu' );
 		$kmenu.fadeOut( "fast", function() {
 			$optionsMenu.find( 'span' )
-				.text ( gM( 'mwe-embedplayer-menu_btn' ) );
+				.text ( mw.msg( 'mwe-embedplayer-menu_btn' ) );
 		} );
 		// show the play button if not playing
 		if( !embedPlayer.isPlaying() ){
@@ -249,7 +249,7 @@ mw.PlayerSkinKskin = {
 
 		$kmenu.fadeIn( "fast", function() {
 			$optionsMenu.find( 'span' )
-				.text ( gM( 'mwe-embedplayer-close_btn' ) );
+				.text ( mw.msg( 'mwe-embedplayer-close_btn' ) );
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 
@@ -330,7 +330,7 @@ mw.PlayerSkinKskin = {
 			break;
 			case 'download' :
 				embedPlayer.$interface.find( '.menu-download').text(
-					gM('mwe-loading_txt' )
+					mw.msg('mwe-loading_txt' )
 				);
 				// Call show download with the target to be populated
 				this.showDownload(
@@ -356,7 +356,7 @@ mw.PlayerSkinKskin = {
 
 		$target.empty().append(
 			$('<h2 />')
-			.text( gM( 'mwe-embedplayer-credits' ) ),
+			.text( mw.msg( 'mwe-embedplayer-credits' ) ),
 			$('<div />')
 			.addClass( "credits_box ui-corner-all" )
 			.append(
@@ -371,7 +371,7 @@ mw.PlayerSkinKskin = {
 				$( '<div />' )
 				.addClass( 'k-attribution' )
 				.attr({
-					'title': gM('mwe-embedplayer-kaltura-platform-title')
+					'title': mw.msg('mwe-embedplayer-kaltura-platform-title')
 				})
 				.click( function( ) {
 					window.location = 'http://html5video.org';
@@ -382,7 +382,7 @@ mw.PlayerSkinKskin = {
 		$creditBox.data( 'playerId', embedPlayer.id );
 		$( embedPlayer ).triggerQueueCallback('showCredits', $creditBox, function( addedCredits ){
 			if( !addedCredits ){
-				$creditBox.find('.credits_box').text( gM( 'mwe-embedplayer-nocredits') )
+				$creditBox.find('.credits_box').text( mw.msg( 'mwe-embedplayer-nocredits') )
 			}
 		});
 	}

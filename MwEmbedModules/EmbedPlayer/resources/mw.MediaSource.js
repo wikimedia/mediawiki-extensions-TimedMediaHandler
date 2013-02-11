@@ -294,31 +294,31 @@ mw.MediaSource.prototype = {
 		switch( mimeType ) {
 			case 'video/h264' :
 			case 'video/mp4' :
-				return gM( 'mwe-embedplayer-video-h264' );
+				return mw.msg( 'mwe-embedplayer-video-h264' );
 			break;
 			case 'video/x-flv' :
-				return gM( 'mwe-embedplayer-video-flv' );
+				return mw.msg( 'mwe-embedplayer-video-flv' );
 			break;
 			case 'video/webm' :
-				return gM( 'mwe-embedplayer-video-webm');
+				return mw.msg( 'mwe-embedplayer-video-webm');
 			break;
 			case 'video/ogg' :
-				return gM( 'mwe-embedplayer-video-ogg' );
+				return mw.msg( 'mwe-embedplayer-video-ogg' );
 			break;
 			case 'audio/ogg' :
-				return gM( 'mwe-embedplayer-video-audio' );
+				return mw.msg( 'mwe-embedplayer-video-audio' );
 			break;
 			case 'audio/mpeg' :
-				return gM('mwe-embedplayer-audio-mpeg');
+				return mw.msg('mwe-embedplayer-audio-mpeg');
 			break;
 			case 'video/3gp' :
-				return gM('mwe-embedplayer-video-3gp');
+				return mw.msg('mwe-embedplayer-video-3gp');
 			break;
 			case 'video/mpeg' :
-				return gM('mwe-embedplayer-video-mpeg');
+				return mw.msg('mwe-embedplayer-video-mpeg');
 			break;
 			case 'video/x-msvideo' :
-				return gM('mwe-embedplayer-video-msvideo' );
+				return mw.msg('mwe-embedplayer-video-msvideo' );
 			break;
 		}
 

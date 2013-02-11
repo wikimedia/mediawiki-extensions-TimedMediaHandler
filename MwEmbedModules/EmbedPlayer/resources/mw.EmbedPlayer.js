@@ -1355,7 +1355,7 @@
 			});
 			// Set the play button to the first available source:
 			var $pBtn = this.getInterface().find('.play-btn-large')
-				.attr( 'title', gM('mwe-embedplayer-play_clip') )
+				.attr( 'title', mw.msg('mwe-embedplayer-play_clip') )
 				.show()
 				.unbind( 'click' )
 				.click( function() {
@@ -2099,7 +2099,7 @@
 					_this.pause();
 				}
 			 } )
-			.attr( 'title', gM( 'mwe-embedplayer-pause_clip' ) );
+			.attr( 'title', mw.msg( 'mwe-embedplayer-pause_clip' ) );
 		},
 		/**
 		 * Pause player, and display a loading animation
@@ -2182,7 +2182,7 @@
 					_this.play();
 				}
 			} )
-			.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) );
+			.attr( 'title', mw.msg( 'mwe-embedplayer-play_clip' ) );
 		},
 		/**
 		 * Maps the html5 load request. There is no general way to "load" clips so
@@ -2567,7 +2567,7 @@
 				if ( this.isStopped() ) {
 					this.controlBuilder.setStatus( this.getTimeRange() );
 				} else if ( this.paused ) {
-					this.controlBuilder.setStatus( gM( 'mwe-embedplayer-paused' ) );
+					this.controlBuilder.setStatus( mw.msg( 'mwe-embedplayer-paused' ) );
 				} else if ( this.isPlaying() ) {
 					if ( this.currentTime && ! this.duration )
 						this.controlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + ' /' );

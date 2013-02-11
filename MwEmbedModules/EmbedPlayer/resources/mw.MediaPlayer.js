@@ -53,7 +53,7 @@ mw.MediaPlayer.prototype = {
 	 * Get the "name" of the player from a predictable msg key
 	 */
 	getName: function() {
-		return gM( 'mwe-embedplayer-ogg-player-' + this.id );
+		return mw.msg( 'mwe-embedplayer-ogg-player-' + this.id );
 	},
 
 	/**

@@ -305,7 +305,7 @@
 				'position': 6.9,
 				'o': function( ctrlObj ) {
 					var $textButton = $( '<div />' )
-						.attr( 'title', gM( 'mwe-embedplayer-timed_text' ) )
+						.attr( 'title', mw.msg( 'mwe-embedplayer-timed_text' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton timed-text" )
 						.append(
 							$( '<span />' )
@@ -464,7 +464,7 @@
 					'width' : 300,
 					'targetMenuContainer' : _this.getTextMenuContainer(),
 					'positionOpts' : positionOpts,
-					'backLinkText' : gM( 'mwe-timedtext-back-btn' ),
+					'backLinkText' : mw.msg( 'mwe-timedtext-back-btn' ),
 					'createMenuCallback' : function(){
 						var $interface = _this.embedPlayer.getInterface();
 						var $textContainer =  _this.getTextMenuContainer();
@@ -805,13 +805,13 @@
 
 			if(  _this.textSources.length == 0 ){
 				$menu.append(
-					$.getLineItem( gM( 'mwe-timedtext-no-subs'), 'close' )
+					$.getLineItem( mw.msg( 'mwe-timedtext-no-subs'), 'close' )
 				);
 			} else {
 				// Layout Menu option if not in an iframe and we can expand video size:
 				$menu.append(
 					$.getLineItem(
-						gM( 'mwe-timedtext-layout-off'),
+						mw.msg( 'mwe-timedtext-layout-off'),
 						( _this.getLayoutMode() == 'off' ) ? 'bullet' : 'radio-on',
 						function() {
 							_this.setLayoutMode( 'off' );
@@ -856,7 +856,7 @@
 			if( source.srclang ) {
 				var langKey = source.srclang.toLowerCase();
 				return $.getLineItem(
-					gM('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) ),
+					mw.msg('mwe-timedtext-key-language', langKey, _this.getLanguageName ( langKey ) ),
 					sourceIcon,
 					function() {
 						// select the current text source:
@@ -955,7 +955,7 @@
 			// Set any existing text target to "loading"
 			if( !source.loaded ) {
 				var $playerTarget = this.embedPlayer.getInterface();
-				$playerTarget.find('.track').text( gM('mwe-timedtext-loading-text') );
+				$playerTarget.find('.track').text( mw.msg('mwe-timedtext-loading-text') );
 				// Load the text:
 				source.load( function(){
 					// Refresh the interface:
@@ -1044,7 +1044,7 @@
 					}
 					// Append a cat menu item for each kind list
 					$langMenu.append(
-						$.getLineItem( gM( 'mwe-timedtext-textcat-' + categoryKey.toLowerCase() ) ).append(
+						$.getLineItem( mw.msg( 'mwe-timedtext-textcat-' + categoryKey.toLowerCase() ) ).append(
 							$catChildren
 						)
 					);

@@ -23,12 +23,12 @@ $(document).ready(function(){
 	$('.mw-filepage-transcodereset a').click( function(){
 		var tKey = $(this).attr('data-transcodekey');
 		var buttons = {};
-		buttons[ gM('mwe-ok') ] = function(){
+		buttons[ mw.msg('mwe-ok') ] = function(){
 			var _thisDialog = this;
 
 			// Only show cancel button while loading:
 			var cancelBtn = {};
-			cancelBtn[ gM('mwe-cancel') ] = function() {
+			cancelBtn[ mw.msg('mwe-cancel') ] = function() {
 				$(this).dialog("close");
 			}
 			$( _thisDialog ).dialog( "option", "buttons", cancelBtn );
@@ -51,22 +51,22 @@ $(document).ready(function(){
 					if( data.error && data.error.info ){
 						$( _thisDialog ).text( data.error.info );
 					} else {
-						$( _thisDialog ).text( gM( 'timedmedia-reset-error' ) );
+						$( _thisDialog ).text( mw.msg( 'timedmedia-reset-error' ) );
 					}
 					var okBtn = {};
-					okBtn[ gM('mwe-ok') ] = function() { $(this).dialog("close"); }
+					okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog("close"); }
 					$( _thisDialog ).dialog( "option", "buttons", okBtn );
 				}
 			})
 		};
-		buttons[ gM('mwe-cancel') ] =function(){
+		buttons[ mw.msg('mwe-cancel') ] =function(){
 			$(this).dialog('close');
 		}
 		// pop up dialog
 		mw.addDialog({
 			'width' : '400',
 			'height' : '200',
-			'title' : gM('timedmedia-reset'),
+			'title' : mw.msg('timedmedia-reset'),
 			'content' : mw.msg('timedmedia-reset-confirm'),
 			'buttons': buttons
 		})
