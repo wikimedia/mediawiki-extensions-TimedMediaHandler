@@ -1879,6 +1879,7 @@ mw.PlayerControlBuilder.prototype = {
 	getShare: function( ) {
 		var embedPlayer = this.embedPlayer;
 		var embed_code = embedPlayer.getSharingEmbedCode();
+		var embed_wiki_code = embedPlayer.getWikiEmbedCode();
 		var _this = this;
 
 		var $shareInterface = $('<div />');
@@ -1907,24 +1908,27 @@ mw.PlayerControlBuilder.prototype = {
 			.text( gM( 'mwe-embedplayer-share_this_video' ) )
 		);
 
+		if ( embed_wiki_code ) {
+			$shareInterface.append(
+				$('<ul />').append(
+					$('<li />').text(
+						mw.msg( 'mwe-embedplayer-embed_wiki' )
+					)
+				),
+				$( '<textarea />' )
+				.attr( 'rows', 1 )
+				.html( embed_wiki_code )
+				.click( function() {
+					$( this ).select();
+				}),
+				$('<br />')
+			);
+		}
+
 		$shareInterface.append(
 			$shareList
 		);
 
-		var $shareButton = false;
-		if( ! mw.isIpad() ) {
-			$shareButton = $('<button />')
-			.addClass( 'ui-state-default ui-corner-all copycode' )
-			.text( gM( 'mwe-embedplayer-copy-code' ) )
-			.click(function() {
-				$shareInterface.find( 'textarea' ).focus().select();
-				// Copy the text if supported:
-				if ( document.selection ) {
-					CopiedTxt = document.selection.createRange();
-					CopiedTxt.execCommand( "Copy" );
-				}
-			} );
-		}
 		$shareInterface.append(
 
 			$( '<textarea />' )
@@ -1935,8 +1939,7 @@ mw.PlayerControlBuilder.prototype = {
 			}),
 
 			$('<br />'),
-			$('<br />'),
-			$shareButton
+			$('<br />')
 		);
 		return $shareInterface;
 	},

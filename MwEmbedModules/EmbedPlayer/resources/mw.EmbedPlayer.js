@@ -1829,6 +1829,17 @@
 		},
 
 		/**
+		 * Gets code to embed the player in a wiki
+		 */
+		getWikiEmbedCode: function() {
+			if( this.apiTitleKey) {
+				return '[[File:' + this.apiTitleKey + ']]';
+			} else {
+				return false;
+			}
+		},
+
+		/**
 		 * Get the iframe share code:
 		 */
 		getShareIframeObject: function(){
