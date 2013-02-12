@@ -1503,6 +1503,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'mwe-timedtext-stage-sync' => 'Sinc',
+	'mwe-timedtext-stage-translate' => 'Traduce',
+	'mwe-timedtext-stage-upload' => "Careche da 'u file locale",
 );
 
 /** Russian (русский)
