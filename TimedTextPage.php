@@ -135,31 +135,33 @@ class TimedTextPage extends Article {
 		// Set the page title:
 		$out->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
 
-		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'.
-			$lang->getCode() . '.srt', NS_TIMEDTEXT );
+		// Look up the language name:
+		$language = $out->getLanguage()->getCode();
+		$attrs = array( 'id' => 'timedmedia-tt-input' );
+		$langSelect = Xml::languageSelector( $language, false, null, $attrs, null );
+
 		$out->addHTML(
 			Xml::tags('div', array( 'style' => 'text-align:center' ),
 				Xml::tags( 'div', null,
 					wfMessage( 'timedmedia-subtitle-new-desc', $lang->getCode() )->parse()
 				) .
-				Xml::tags( 'input', array(
-					'id' => 'timedmedia-tt-input',
-					'value' => $timedTextTile->getFullText(),
-					'size' => 50 ),
-					Xml::tags( 'button',
-						array( 'id' => 'timedmedia-tt-go' ),
-						wfMessage( 'timedmedia-subtitle-new-go' )->escaped()
-					)
+				$langSelect[1] .
+				Xml::tags( 'button',
+					array( 'id' => 'timedmedia-tt-go' ),
+					wfMessage( 'timedmedia-subtitle-new-go' )->escaped()
 				)
 			)
 		);
+		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'.
+			'LANG' . '.srt', NS_TIMEDTEXT )->getFullText();
 		$out->addScript(
 			Html::InlineScript(
 				'$(function() {' .
 					'$("#timedmedia-tt-go").click(function(){' .
 						'var articlePath = mw.config.get( "wgArticlePath" );' .
 						'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
-						'window.location = articlePath.replace(/\$1/, $( "#timedmedia-tt-input" ).val() + ' .
+						'var title = ' . json_encode( $timedTextTile ) . '.replace("LANG", $("#timedmedia-tt-input").val());'.
+						'window.location = articlePath.replace(/\$1/, title + ' .
 						' paramSep + "action=edit" )  ' .
 					'});' .
 				'});'
