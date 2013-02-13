@@ -198,6 +198,7 @@ Parameters are:
 	'timedmedia-unknown-target-size' => 'Status update for Transcodes
 Parameters are:
 * $1 The number of bytes of the file transcoded so far',
+	'timedmedia-days' => '{{Identical|Day}}',
 	'timedmedia-minutes' => '{{Identical|Minute}}',
 	'timedmedia-ogg' => '{{optional}}',
 	'timedmedia-webm' => '{{optional}}',
@@ -258,6 +259,7 @@ Parameters are:
 	'timedmedia-derivative-state-failed' => 'failed transcode jobs
 Parameters are:
 * $1 number of transcodes',
+	'timedmedia-file' => '{{Identical|File}}',
 	'right-transcode-reset' => '{{doc-right|transcode-reset}}',
 	'right-transcode-status' => '{{doc-right|transcode-status}}', # Fuzzy
 	'action-transcode-status' => '{{doc-action|transcode-status}}', # Fuzzy
@@ -2826,6 +2828,8 @@ $messages['ml'] = array(
 	'timedmedia-subtitle-new' => 'പുതിയ പരിഭാഷ തുടങ്ങുക അല്ലെങ്കിൽ നിലവിലുള്ളത് തിരുത്തുക',
 	'timedmedia-subtitle-new-desc' => "താങ്കളുടെ [[:en:ISO 639|ഭാഷാ കോഡ്]] ഉപയോഗിച്ച് '''$1''' ഭാഗം മാറ്റിച്ചേർത്ത് '''{{int:Timedmedia-subtitle-new-go}}''' ബട്ടൺ അമർത്തുക",
 	'timedmedia-subtitle-new-go' => 'പോകൂ',
+	'timedmedia-subtitle-language' => '$1 ($2) സംഭാഷണരേഖകൾ',
+	'timedmedia-subtitle-no-video' => 'ഇപ്പോഴത്തെ സംഭാഷണരേഖാ താളുമായി ചലച്ചിത്രങ്ങളൊന്നും ചേർത്തിട്ടില്ല',
 	'timedmedia-videos' => '{{PLURAL:$1|ഒരു ചലച്ചിത്രം|$1 ചലച്ചിത്രങ്ങൾ}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|ഒരു ഓഗ് ചലച്ചിത്രം|$1 ഓഗ് ചലച്ചിത്രങ്ങൾ}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|ഒരു വെബ്എം ചലച്ചിത്രം|$1 വെബ്എം ചലച്ചിത്രങ്ങൾ}}',
