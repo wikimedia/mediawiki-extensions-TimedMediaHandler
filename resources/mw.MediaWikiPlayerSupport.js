@@ -117,13 +117,15 @@
 			// Add the title:
 			$creditLine.append(
 				$('<span>').html(
-					gM( 'mwe-embedplayer-credit-title' ,
+					mw.msg( 'mwe-embedplayer-credit-title' ,
 						// get the link
-						$('<a/>').attr({
-							'href' : articleUrl,
-							'title' : titleStr
-						})
-						.text( titleStr )
+						$('<div>').append(
+							$('<a/>').attr({
+								'href' : articleUrl,
+								'title' : titleStr
+							})
+							.text( titleStr )
+						)[0].innerHTML
 					)
 				)
 			);
@@ -149,7 +151,7 @@
 					)
 				}
 				$creditLine.append( $( '<br />' ),
-					gM('mwe-embedplayer-credit-author', $authorText.html() )
+					mw.msg('mwe-embedplayer-credit-author', $authorText.html() )
 				)
 			}
 
@@ -162,7 +164,7 @@
 				// remove white space:
 				$date.find('br').remove();
 				$creditLine.append(  $( '<br />' ),
-					gM('mwe-embedplayer-credit-date', $date.html() )
+					mw.msg('mwe-embedplayer-credit-date', $date.html() )
 				)
 			}
 
@@ -265,12 +267,13 @@
 			if ( embedPlayer.controlBuilder.checkNativeWarning( ) ) {
 				embedPlayer.controlBuilder.addWarningBinding(
 					'EmbedPlayer.ShowNativeWarning',
-					gM( 'mwe-embedplayer-for_best_experience',
-						$('<a />')
-							.attr({
+					mw.msg( 'mwe-embedplayer-for_best_experience',
+						$('<div>').append(
+							$('<a />').attr({
 								'href': 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
 								'target' : '_new'
 							})
+						)[0].innerHTML
 					),
 					true
 				);
@@ -294,7 +297,7 @@
 									.replace( 'api.php', 'index.php') +
 									'?title=TimedText:' + unescape( embedPlayer.apiTitleKey ).replace(/^File:|^Image:/, '');
 
-				var $li = $.getLineItem( gM( 'mwe-timedtext-upload-timed-text'), 'script', function() {
+				var $li = $.getLineItem( mw.msg( 'mwe-timedtext-upload-timed-text'), 'script', function() {
 					window.location = addTextPage;
 				});
 
