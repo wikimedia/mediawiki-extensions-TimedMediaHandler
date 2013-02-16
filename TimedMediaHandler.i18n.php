@@ -1108,7 +1108,7 @@ $messages['et'] = array(
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minutit}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekundit}}',
 	'timedmedia-source-file' => 'Allikas ($1)',
-	'timedmedia-source-file-desc' => 'Algne $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Algne $1-fail, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Võrgus voogedastatav Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Võrgus voogedastatav Ogg-video (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Kõrge kvaliteediga allalaaditav Ogg-video (720P)',
@@ -1118,7 +1118,7 @@ $messages['et'] = array(
 	'timedmedia-derivative-desc-720p.webm' => 'Kõrge kvaliteediga allalaaditav WebM (720P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'Võrgus voogedastatav MP4 (480P)',
 	'timedmedia-subtitle-new' => 'Uue tõlkega alustamine või olemasoleva muutmine',
-	'timedmedia-subtitle-new-desc' => "Asenda '''$1''' oma [[:en:ISO 639|keelekoodiga]] ja klõpsa '''{{int:Timedmedia-subtitle-new-go}}'''-nuppu.",
+	'timedmedia-subtitle-new-desc' => "Vali keel ja klõpsa nuppu '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	'timedmedia-subtitle-new-go' => 'Mine',
 	'timedmedia-subtitle-language' => '$1 ($2) alltiitrid',
 	'timedmedia-subtitle-no-video' => 'Puudub selle alltiitrite leheküljega seotud video.',
@@ -2478,7 +2478,8 @@ $messages['ko'] = array(
 	'timedmedia-reset-error' => '코드 변환 작업을 초기화하는 데 오류가 났습니다.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 출처',
-	'timedmedia-source-file-desc' => '원본 $1, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => '원본 $1 파일, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => '원본 $1 파일 ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => '낮은 대역폭 Ogg 비디오 (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => '웹 스트리밍 가능 Ogg 동영상 (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => '웹 스트리밍 가능 Ogg 동영상 (480P)',
@@ -2491,7 +2492,7 @@ $messages['ko'] = array(
 	'timedmedia-derivative-desc-480p.mp4' => '웹 스트리밍 가능 MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD 품질 MP4 (720P)',
 	'timedmedia-subtitle-new' => '새 번역 만들기 또는 기존 번역 편집',
-	'timedmedia-subtitle-new-desc' => "[[:en:ISO 639|언어 코드]]로 '''$1''' 부분을 바꾸고 나서 '''{{int:Timedmedia-subtitle-new-go}}''' 버튼을 누르세요", # Fuzzy
+	'timedmedia-subtitle-new-desc' => "언어를 선택하고 '''{{int:Timedmedia-subtitle-new-go}}''' 버튼을 누르세요",
 	'timedmedia-subtitle-new-go' => '가기',
 	'timedmedia-subtitle-language' => '$1 ($2) 자막',
 	'timedmedia-subtitle-no-video' => '현재 자막 페이지와 관련된 동영상이 없습니다',
@@ -2725,7 +2726,8 @@ $messages['mk'] = array(
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Извор на $1',
-	'timedmedia-source-file-desc' => 'Изворен $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Оригинална $1-податотека, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Оригинална $1-податотека ($2)',
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160п',
 	'timedmedia-derivative-desc-160p.ogv' => 'Нископропусно Ogg-видео (160п)',
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360п',
@@ -2749,7 +2751,7 @@ $messages['mk'] = array(
 	'timedmedia-derivative-720p.mp4' => 'H264 720п',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4-снимка со HD-квалитет (720п)',
 	'timedmedia-subtitle-new' => 'Создај нов превод или измени постоечки',
-	'timedmedia-subtitle-new-desc' => "Заменете го делот '''$1''' со вашиот [[:en:ISO 639|јазичен код]] и стиснете на копчето „'''{{int:Timedmedia-subtitle-new-go}}'''“.",
+	'timedmedia-subtitle-new-desc' => "Изберете јазик и стиснете на копчето '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Оди',
 	'timedmedia-subtitle-language' => '$1 ($2) титлови',
 	'timedmedia-subtitle-no-video' => 'Нема видеоснимка поврзана со тековната страница со титлови',
@@ -4262,6 +4264,7 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Balajijagadesh
  * @author Karthi.dr
  * @author Shanmugamp7
  * @author மதனாஹரன்
@@ -4280,8 +4283,9 @@ $messages['ta'] = array(
 	'timedmedia-not-ready' => 'தயாராக இல்லை',
 	'timedmedia-percent-done' => 'ஏறத்தாழ $1% முடிந்தது',
 	'timedmedia-show-error' => 'பிழை காட்டு',
+	'timedmedia-mp4' => 'எம்பி4',
 	'timedmedia-source-file' => '$1 மூலம்',
-	'timedmedia-source-file-desc' => 'மூல $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'மூல $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-new' => 'புதிய மொழிபெயர்ப்பை உருவாக்கவும் அல்லது உள்ளதைத் தொகுக்கவும்',
 	'timedmedia-subtitle-new-go' => 'செல்',
 	'timedmedia-subtitle-language' => '$1 ($2) துணைத்தலைப்புக்கள்',

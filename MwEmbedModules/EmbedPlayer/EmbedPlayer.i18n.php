@@ -100,6 +100,7 @@ $messages['qqq'] = array(
 	'mwe-embedplayer-credit-date' => '{{Identical|Date}}',
 	'mwe-embedplayer-credit-author' => '{{Identical|Author}}',
 	'mwe-embedplayer-player_fullscreen' => '{{Identical|Full screen}}',
+	'mwe-embedplayer-share' => '{{Identical|Share}}',
 	'mwe-embedplayer-credits' => '{{Identical|Credit}}',
 	'mwe-embedplayer-about-library-desc' => 'Parameters:
 * $1 - URL',
