@@ -2721,6 +2721,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-playerSelect' => 'Spelers',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Lees dit</a> voordat u gaat embedden (Engels)!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Toevoegen aan een pagina',
+	'mwe-embedplayer-embed_wiki' => 'Toevoegen aan een pagina',
 	'mwe-embedplayer-related_videos' => "Gerelateerde video's",
 	'mwe-embedplayer-seeking' => 'bezig met zoeken',
 	'mwe-embedplayer-buffering' => 'bufferen',
@@ -3942,6 +3943,16 @@ $messages['tr'] = array(
 	'mwe-embedplayer-video-h264' => 'H.264 video',
 	'mwe-embedplayer-video-webm' => 'WebM video',
 	'mwe-embedplayer-video-flv' => 'Flash, video',
+	'mwe-embedplayer-video-ogg' => 'Ogg video',
+);
+
+/** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
+ * @author Tifinaghes
+ */
+$messages['tzm'] = array(
+	'mwe-embedplayer-share' => 'ⴼⵙⴻⵔ',
+	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-flv' => 'ⴼⵍⴰⵛ video',
 	'mwe-embedplayer-video-ogg' => 'Ogg video',
 );
 

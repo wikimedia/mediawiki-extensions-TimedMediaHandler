@@ -3117,7 +3117,8 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Bron van $1',
-	'timedmedia-source-file-desc' => 'Origineel $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Origineel $1-bestand, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Origineel $1-bestand ($2)',
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160P',
 	'timedmedia-derivative-desc-160p.ogv' => 'Lage bandbreedte Ogg video (160P)',
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360P',
@@ -3137,7 +3138,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-desc-480p.mp4' => 'Te webstreamen MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kwaliteit MP4 (720P)',
 	'timedmedia-subtitle-new' => 'Nieuw vertaling maken of bestaande bewerken',
-	'timedmedia-subtitle-new-desc' => "Vervang het deel '''$1''' door uw [[:nl:ISO 639|taalcode]] en klik op de knop '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Vervang het deel '''$1''' door uw [[:nl:ISO 639|taalcode]] en klik op de knop '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'OK',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',
@@ -4516,6 +4517,13 @@ $messages['tt-cyrl'] = array(
 	'timedmedia-oggThumb-failed' => 'oggThumb нигезендә миниатюраны ясап булмады.',
 );
 
+/** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
+ * @author Tifinaghes
+ */
+$messages['tzm'] = array(
+	'timedmedia-mp4' => 'MP4',
+);
+
 /** Uyghur (Arabic script) (ئۇيغۇرچە)
  * @author Sahran
  */
@@ -4531,6 +4539,7 @@ $messages['ug-arab'] = array(
 /** Ukrainian (українська)
  * @author AS
  * @author Ahonc
+ * @author AtUkr
  * @author Base
  * @author NickK
  * @author Olvin
@@ -4581,9 +4590,14 @@ $messages['uk'] = array(
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|секунду|секунди|секунд}}',
 	'timedmedia-show-error' => 'Показати помилку',
 	'timedmedia-reset' => 'Перезапуск декодування',
+	'timedmedia-reset-confirm' => 'Перезапуск декодування видалить наявний файл (якщо він існує), і  декодування знов буде додано в чергу завдань. Повторне декодування займе якийсь час. <br /><br />
+Ви упевнені, що хочете продовжити?',
+	'timedmedia-reset-error' => 'Помилка при перезапуску декодування.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Джерело $1',
-	'timedmedia-source-file-desc' => 'Оригінал $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Оригінальний $1 файл, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Оригінальний $1 файл ($2)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-відео низької якості (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Потокове Ogg-відео (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Потокове Ogg-відео (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Високоякісне Ogg-відео (720P) для завантаження',
@@ -4591,9 +4605,29 @@ $messages['uk'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'Потокове WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Потокове WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Високоякісне WebM (720P) для завантаження',
+	'timedmedia-derivative-desc-320p.mp4' => 'Сумісний з MP$ (320P) пристрій',
+	'timedmedia-derivative-desc-480p.mp4' => 'Веб-потокове MP4 (480 Р)',
+	'timedmedia-derivative-desc-720p.mp4' => 'MP4 якості HD (720P)',
+	'timedmedia-subtitle-new' => 'Створити новий переклад або відредагувати існуючий',
+	'timedmedia-subtitle-new-desc' => "Виберіть мову та натисніть '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Перейти',
 	'timedmedia-subtitle-language' => '$1 ($2) субтитри',
+	'timedmedia-subtitle-no-video' => "Немає відео, пов'язаного з поточною сторінкою субтитрів",
+	'timedmedia-subtitle-no-subtitles' => 'В даний час немає субтитрів на $1 для цього відео, Ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} змінити цю сторінку] для їх додавання',
+	'timedmedia-subtitle-remote' => 'Текст до цього файлу розміщений на $1',
+	'timedmedia-subtitle-remote-link' => 'Ви можете [$1 переглянути опис сторінки] для цього файлу на $2',
+	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 відео|$1 відео}}', # Fuzzy
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg відео|$1 Ogg відео}}', # Fuzzy
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM відео|$1 WebM відео}}', # Fuzzy
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 перекодування|$1 перекодувань}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 працюючі перекодування|$1 працюючих перекодувань}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 перекодування в черзі|$1 перекодувань в черзі}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 невдалі перекодування|$1 невдалих перекодувань}}',
 	'timedmedia-file' => 'Файл',
+	'right-transcode-reset' => 'Скинуто невдалі або перекодовані відео, тож вони знову занесені в чергу завдань.',
+	'right-transcode-status' => 'Перегляньте [[Special:TimedMediaHandler|інформацію про поточну перекодувальну діяльність]]',
+	'action-transcode-status' => 'Перегляд поточного стану перекодування',
 );
 
 /** Urdu (اردو)
