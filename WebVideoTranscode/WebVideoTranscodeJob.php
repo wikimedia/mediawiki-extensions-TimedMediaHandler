@@ -110,7 +110,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * Run the transcode request
-	 * @return bool|string
+	 * @return boolean success
 	 */
 	public function run() {
 		// get a local pointer to the file
@@ -230,15 +230,16 @@ class WebVideoTranscodeJob extends Job {
 		if( $status === true && filesize( $this->getTargetEncodePath() ) > 0 ){
 			$file = $this->getFile();
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
-			$status = $file->getRepo()->quickImport(
+			$result = $file->getRepo()->quickImport(
 				$this->getTargetEncodePath(), // temp file
 				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ) // storage
 			);
-			if ( !$status->isOK() ) {
-				$this->updateTranscodeError($transcodeKey, $status);
+			if ( !$result->isOK() ) {
+				$this->updateTranscodeError( $transcodeKey, $result );
 				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
+				$status = false;
 			} else {
 				$bitrate = round( intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8 );
 				//wfRestoreWarnings();
@@ -260,7 +261,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			// Update the transcode table with failure time and error
-			$this->updateTranscodeError($transcodeKey, $status);
+			$this->updateTranscodeError( $transcodeKey, $status );
 			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 			// just clear the file page ( so that the transcode table shows the error )
 			$this->title->invalidateCache();
@@ -271,8 +272,7 @@ class WebVideoTranscodeJob extends Job {
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
 		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
-		// pass along result status:
-		return $status;
+		return $status === true;
 	}
 
 	function removeFffmpgeLogFiles(){
