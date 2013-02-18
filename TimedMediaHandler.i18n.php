@@ -785,6 +785,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Filzstift
  * @author G.Hagedorn
  * @author Kghbln
  * @author Leithian
@@ -863,7 +864,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-subtitle-no-subtitles' => 'Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.',
 	'timedmedia-subtitle-remote' => 'timedText für diese Datei befindet sich auf $1',
 	'timedmedia-subtitle-remote-link' => 'Du kannst [$1 die Beschreibungsseite] für diese Datei auf $2 ansehen',
-	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmediahandler' => 'Steuerungsprogramm für zeitgesteuerte Medien',
 	'timedmedia-videos' => '{{PLURAL:$1|Ein Video|$1 Videos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|Ein Ogg-Video|$1 Ogg-Videos}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|Ein WebM-Video|$1 WebM-Videos}}',
@@ -1797,7 +1798,8 @@ Chceš woprawdźe pokročować?',
 	'timedmedia-reset-error' => 'Zmylk při wróćostajenju překodowanja.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Žórło ($1)',
-	'timedmedia-source-file-desc' => 'Originalny $1, $2 x $3 ($4)',
+	'timedmedia-source-file-desc' => 'Originalny $1, $2 x $3 ($4)', # Fuzzy
+	'timedmedia-source-audio-file-desc' => 'Originalna $1-dataja ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-widejo z niskej šěrokosću pasma (160p)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg-widejo (360p), kotrež da so přez Web přenjesć',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg-widejo (480p), kotrež da so přez Web přenjesć',
@@ -1810,7 +1812,7 @@ Chceš woprawdźe pokročować?',
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4-dataja, kotraž da so přez Web přenjesć',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4 w HD-kwaliće (720P)',
 	'timedmedia-subtitle-new' => 'Nowy přełožk wutworić abo eksistowacy wobdźěłać',
-	'timedmedia-subtitle-new-desc' => "Wuměń  dźěl '''$1''' přez twój [[:en:ISO 639|rěčny kod]] a klikń na tłóčatko '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Wuměń  dźěl '''$1''' přez twój [[:en:ISO 639|rěčny kod]] a klikń na tłóčatko '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'W porjadku',
 	'timedmedia-subtitle-language' => '$1 ($2) podtitule',
 	'timedmedia-subtitle-no-video' => 'Widejo zwjazane z aktuelnej stronu podtitulow njeje',

@@ -59,6 +59,7 @@ $messages['qqq'] = array(
 	'mwe-timedtext-stage-translate' => '{{Identical|Translate}}',
 	'mwe-timedtext-select-language' => '{{Identical|Select language}}',
 	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
+	'mwe-timedtext-layout' => '{{Identical|Layout}}',
 	'mwe-timedtext-key-language' => '{{optional}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
