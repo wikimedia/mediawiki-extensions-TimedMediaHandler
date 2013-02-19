@@ -4260,6 +4260,7 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-playerSelect' => '播放器',
 	'mwe-embedplayer-read_before_embed' => '在嵌入前请先<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">阅读本文</a>。',
 	'mwe-embedplayer-embed_site_or_blog' => '嵌入页面',
+	'mwe-embedplayer-embed_wiki' => '在wiki上嵌入',
 	'mwe-embedplayer-related_videos' => '相关视频',
 	'mwe-embedplayer-seeking' => '正在搜寻',
 	'mwe-embedplayer-buffering' => '缓冲中',
