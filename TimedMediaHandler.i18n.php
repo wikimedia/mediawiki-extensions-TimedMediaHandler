@@ -4889,6 +4889,7 @@ $messages['yue'] = array(
  * @author Gaoxuewei
  * @author Liangent
  * @author Shizhao
+ * @author Yfdyh000
  * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
@@ -4939,7 +4940,8 @@ $messages['zh-hans'] = array(
 	'timedmedia-reset-error' => '重置转码工作时发生错误。',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1原始文件',
-	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）',
+	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）', # Fuzzy
+	'timedmedia-source-audio-file-desc' => '原始$1文件 ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => '低带宽Ogg视频（160P）',
 	'timedmedia-derivative-desc-360p.ogv' => 'Web流媒体Ogg视频（360P）',
 	'timedmedia-derivative-desc-480p.ogv' => 'Web流媒体Ogg视频（480P）',
@@ -4955,7 +4957,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-derivative-desc-ogg' => 'Ogg Vorbis',
 	'timedmedia-derivative-desc-mp3' => 'MP3',
 	'timedmedia-subtitle-new' => '创建新翻译或编辑现有翻译',
-	'timedmedia-subtitle-new-desc' => "将'''$1'''替换为您的[[:zh:ISO 639|语言代码]]并按下'''{{int:Timedmedia-subtitle-new-go}}'''按钮",
+	'timedmedia-subtitle-new-desc' => "选择语言然后按'''{{int:Timedmedia-subtitle-new-go}}'''按钮",
 	'timedmedia-subtitle-new-go' => '提交',
 	'timedmedia-subtitle-language' => '$1（$2）字幕',
 	'timedmedia-subtitle-no-video' => '当前字幕页面没有关联的视频',
@@ -4971,6 +4973,9 @@ $messages['zh-hans'] = array(
 	'timedmedia-derivative-state-queued' => '$1个队列中的转码任务',
 	'timedmedia-derivative-state-failed' => '$1次转码失败',
 	'timedmedia-file' => '文件',
+	'right-transcode-reset' => '重置失败或转码的视频以将其再次插入到作业队列中。',
+	'right-transcode-status' => '查看[[Special:TimedMediaHandler|当前转码活动的信息]]',
+	'action-transcode-status' => '查看当前转码状态',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
