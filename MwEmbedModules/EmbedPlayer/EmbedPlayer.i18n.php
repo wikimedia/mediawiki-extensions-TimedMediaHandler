@@ -1556,6 +1556,8 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-close_btn' => 'Začinić',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Wothrawak VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Wothrawak HTML5 Ogg',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'Wothrawak HTML5 MP3',
+	'mwe-embedplayer-ogg-player-aacNative' => 'Wothrawak HTML5 AAC',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Wothrawak HTML5 H.264',
 	'mwe-embedplayer-ogg-player-webmNative' => 'Wothrawak za HTML5 WebM',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Tykač Generic Ogg',
@@ -1567,17 +1569,17 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(wubrany)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Za lěpše wothrawanje widejow poručamy [$1 widejowobglědowak za HTML 5].',
-	'mwe-embedplayer-download-warn' => 'Njekompatibelne wothrawak we wobhladowaku namakany. Za wothrawanje znutřka wobhladowaka sćehń prošu [$1 najnowšu wersiju Mozilla Firefox]',
+	'mwe-embedplayer-download-warn' => 'Njekompatibelne wothrawak we wobhladowaku namakany: za wothrawanje znutřka wobhladowaka, sćehń prošu [$1 najnowšu wersiju Mozilla Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tłóč na <b>F11</b>, zo by <i>webwobhladowak</i> do modusa połneje wobrazowki přepinał',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Stłóč <b>UMSCH ⌘ F</b>, zo by do modusa połneje wobrazowki přepinył',
 	'mwe-embedplayer-do_not_warn_again' => 'W přichodźe tutu zdźělenku wjace njepokazać',
 	'mwe-embedplayer-playerSelect' => 'Wothrawaki',
 	'mwe-embedplayer-read_before_embed' => 'Prošu <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">čitaj to</a> do zasadźenja!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Na stronje zasadźić',
+	'mwe-embedplayer-embed_wiki' => 'We wikiju zasadźić',
 	'mwe-embedplayer-related_videos' => 'Přiwuzne wideja',
 	'mwe-embedplayer-seeking' => 'pyta so',
 	'mwe-embedplayer-buffering' => 'pufruje so',
-	'mwe-embedplayer-copy-code' => 'Kod kopěrować',
 	'mwe-embedplayer-video-h264' => 'Wideo H.264',
 	'mwe-embedplayer-video-webm' => 'WebM-widejo',
 	'mwe-embedplayer-video-flv' => 'Widejo Flash',
@@ -2820,6 +2822,7 @@ $messages['nn'] = array(
 );
 
 /** Occitan (occitan)
+ * @author Cedric31
  */
 $messages['oc'] = array(
 	'mwe-embedplayer-loading_plugin' => 'cargament del plugin ...',
@@ -2850,7 +2853,7 @@ $messages['oc'] = array(
 	'mwe-embedplayer-choose_player' => 'Causir lo lector vidèo',
 	'mwe-embedplayer-share_this_video' => 'Partejar aquesta vidèo',
 	'mwe-embedplayer-video_credits' => 'Credits de la vidèo',
-	'mwe-embedplayer-menu_btn' => 'Menut',
+	'mwe-embedplayer-menu_btn' => 'Menú',
 	'mwe-embedplayer-close_btn' => 'Tampar',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Modul generic Ogg',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Modul QuickTime',
@@ -2865,7 +2868,6 @@ $messages['oc'] = array(
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar dins una pagina',
 	'mwe-embedplayer-related_videos' => 'Vidèos associadas',
 	'mwe-embedplayer-seeking' => 'recèrca',
-	'mwe-embedplayer-copy-code' => 'Copiar lo còde',
 );
 
 /** Deitsch (Deitsch)
