@@ -484,22 +484,32 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Pouyana
  * @author پاناروما
  */
 $messages['fa'] = array(
+	'mwe-timedtext-editor' => 'ویرایشگر متنی زمانی',
 	'mwe-timedtext-stage-transcribe' => 'رونویسی',
 	'mwe-timedtext-stage-sync' => 'همگام سازی',
 	'mwe-timedtext-stage-translate' => 'ترجمه',
 	'mwe-timedtext-stage-upload' => 'بارگذاری از پروندۀاصلی',
 	'mwe-timedtext-select-language' => 'انتخاب زبان',
+	'mwe-timedtext-file-language' => 'زیان پرونده زیرنویس',
 	'mwe-timedtext-back-btn' => 'بازگشت',
 	'mwe-timedtext-choose-text' => 'انتخاب متن',
 	'mwe-timedtext-upload-timed-text' => 'اضافه کردن زیرنویس',
+	'mwe-timedtext-loading-text-edit' => 'بارگذاری ویرایشگر متنی زمانی',
+	'mwe-timedtext-search' => 'جستجوی کلیپ',
 	'mwe-timedtext-layout' => 'چیدمان',
+	'mwe-timedtext-layout-ontop' => 'بالای ویدئو',
+	'mwe-timedtext-layout-below' => 'پایین ویدیو',
 	'mwe-timedtext-layout-off' => 'پنهان‌کردن زیرنویس',
 	'mwe-timedtext-loading-text' => 'در حال بارگیری متن...',
 	'mwe-timedtext-textcat-cc' => 'عناوین:',
 	'mwe-timedtext-textcat-sub' => 'زیرنویس',
+	'mwe-timedtext-textcat-tad' => 'توضیح صوتی',
+	'mwe-timedtext-textcat-ktv' => 'کارائوکه',
+	'mwe-timedtext-textcat-tik' => 'متن تیکر',
 	'mwe-timedtext-textcat-lrc' => 'متن ترانه‌ها',
 );
 

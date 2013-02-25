@@ -3140,7 +3140,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'timedmedia-derivative-desc-480p.mp4' => 'Te webstreamen MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kwaliteit MP4 (720P)',
 	'timedmedia-subtitle-new' => 'Nieuw vertaling maken of bestaande bewerken',
-	'timedmedia-subtitle-new-desc' => "Vervang het deel '''$1''' door uw [[:nl:ISO 639|taalcode]] en klik op de knop '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
+	'timedmedia-subtitle-new-desc' => "Selecteer een taal en klik op de knop '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'OK',
 	'timedmedia-subtitle-language' => 'Ondertitels in $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Er is geen video gekoppeld aan de huidige ondertitelpagina',

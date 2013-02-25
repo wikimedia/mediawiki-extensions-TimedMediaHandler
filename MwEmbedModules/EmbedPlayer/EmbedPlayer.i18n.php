@@ -1014,6 +1014,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Mjbmr
+ * @author Pouyana
  * @author پاناروما
  */
 $messages['fa'] = array(
@@ -1045,6 +1046,7 @@ $messages['fa'] = array(
 	'mwe-embedplayer-close_btn' => 'بستن',
 	'mwe-embedplayer-ogg-player-selected' => '(انتخاب شده)',
 	'mwe-embedplayer-seeking' => 'در حال پیگرد',
+	'mwe-embedplayer-buffering' => 'در حال بافر',
 );
 
 /** Finnish (suomi)
