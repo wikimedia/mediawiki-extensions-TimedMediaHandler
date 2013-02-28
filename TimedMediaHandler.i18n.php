@@ -157,7 +157,7 @@ Are you sure you want to proceed?',
  * @author 아라
  */
 $messages['qqq'] = array(
-	'timedmedia-desc' => '{{desc}}',
+	'timedmedia-desc' => '{{desc|name=Timed Media Handler|url=http://www.mediawiki.org/wiki/Extension:TimedMediaHandler}}',
 	'timedmedia-ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
 Parameters are:
 * $1 file type, e.g. Vorbis, Speex
@@ -1231,7 +1231,8 @@ Voit <a href="$1">ladata leikkeen</a> tai <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-show-error' => 'Näytä virhe',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Lähde $1',
-	'timedmedia-source-file-desc' => 'Alkuperäinen $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Alkuperäinen $1-tiedosto, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Alkuperäinen $1-tiedosto ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Pienen kaistanleveyden Ogg-video (160p)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Verkossa suoratoistettava Ogg-video (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Verkossa suoratoistettava Ogg-video (480p)',
@@ -1244,7 +1245,7 @@ Voit <a href="$1">ladata leikkeen</a> tai <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-derivative-desc-480p.mp4' => 'Verkossa suoratoistettava MP4 (480p)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-laatuinen MP4 (720p)',
 	'timedmedia-subtitle-new' => 'Luo uusi käännös tai muokkaa aiempaa',
-	'timedmedia-subtitle-new-desc' => "Korvaa '''$1''' [[:fi:ISO 639|kielikoodilla]] ja napsauta  '''{{int:Timedmedia-subtitle-new-go}}'''.",
+	'timedmedia-subtitle-new-desc' => "Valitse kieli ja napsauta '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	'timedmedia-subtitle-new-go' => 'Siirry',
 	'timedmedia-subtitle-language' => '$1 ($2) kuvatekstit',
 	'timedmedia-subtitle-no-video' => 'Tähän tekstityssivuun ei liity videota',
