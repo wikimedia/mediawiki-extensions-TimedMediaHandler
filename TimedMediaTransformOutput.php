@@ -16,7 +16,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	function __construct( $conf ){
 		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
-			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow' );
+			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow',
+			'sources' );
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
@@ -207,7 +208,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		uasort( $mediaSources, 'TimedMediaTransformOutput::sortMediaByBandwidth' );
 
 		// We prefix some source attributes with data- to pass along to the javascript player
-		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate' );
+		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate', 'disablecontrols' );
 		foreach( $mediaSources as &$source ){
 			foreach( $source as $attr => $val ){
 				if( in_array( $attr, $prefixedSourceAttr ) ){
@@ -233,7 +234,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				self::htmlTagSet( 'source', $mediaSources ) .
 
 				// Timed text:
-				self::htmlTagSet( 'track', $this->getTextHandler()->getTracks() ) .
+				self::htmlTagSet( 'track',
+					$this->file ? $this->getTextHandler()->getTracks() : null ) .
 
 				// Fallback text displayed for browsers without js and without video tag support:
 				/// XXX note we may want to replace this with an image and download link play button
@@ -313,26 +315,28 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// MediaWiki uses the kSkin class
 		$mediaAttr['class'] = 'kskin';
 
-		// Custom data-attributes
-		$mediaAttr += array(
-			'data-durationhint' => $length,
-			'data-startoffset' => $offset,
-			'data-mwtitle' => $this->file->getTitle()->getDBKey()
-		);
+		if ( $this->file ) {
+			// Custom data-attributes
+			$mediaAttr += array(
+				'data-durationhint' => $length,
+				'data-startoffset' => $offset,
+				'data-mwtitle' => $this->file->getTitle()->getDBKey()
+			);
 
-		// Add api provider:
-		if( $this->file->isLocal() ){
-			$apiProviderName = 'local';
-		} else {
-			// Set the api provider name to "wikimediacommons" for shared ( instant commons convention )
-			// (provider names should have identified the provider instead of the provider type "shared")
-			$apiProviderName = $this->file->getRepoName();
-			if( $apiProviderName == 'shared' ) {
-				$apiProviderName = 'wikimediacommons';
+			// Add api provider:
+			if( $this->file->isLocal() ){
+				$apiProviderName = 'local';
+			} else {
+				// Set the api provider name to "wikimediacommons" for shared ( instant commons convention )
+				// (provider names should have identified the provider instead of the provider type "shared")
+				$apiProviderName = $this->file->getRepoName();
+				if( $apiProviderName == 'shared' ) {
+					$apiProviderName = 'wikimediacommons';
+				}
 			}
+			// XXX Note: will probably migrate mwprovider to an escaped api url.
+			$mediaAttr[ 'data-mwprovider' ] = $apiProviderName;
 		}
-		// XXX Note: will probably migrate mwprovider to an escaped api url.
-		$mediaAttr[ 'data-mwprovider' ] = $apiProviderName;
 
 		return $mediaAttr;
 	}
