@@ -117,6 +117,10 @@
 			// Add the title:
 			$creditLine.append(
 				$('<span>').html(
+					// Changed to use only text due to change Ifbeae7e9
+					// Change back once bug 44525 is fixed
+					mw.msg( 'mwe-embedplayer-credit-title' , titleStr )
+					/*
 					mw.msg( 'mwe-embedplayer-credit-title' ,
 						// get the link
 						$('<div>').append(
@@ -127,6 +131,7 @@
 							.text( titleStr )
 						)[0].innerHTML
 					)
+					*/
 				)
 			);
 
@@ -151,7 +156,9 @@
 					)
 				}
 				$creditLine.append( $( '<br />' ),
-					mw.msg('mwe-embedplayer-credit-author', $authorText.html() )
+					// Switched from .html() to .text() due to change Ifbeae7e9
+					// Change back once bug 44525 is fixed
+					mw.msg('mwe-embedplayer-credit-author', $authorText.text() )
 				)
 			}
 
@@ -164,7 +171,9 @@
 				// remove white space:
 				$date.find('br').remove();
 				$creditLine.append(  $( '<br />' ),
-					mw.msg('mwe-embedplayer-credit-date', $date.html() )
+					// Switched from .html() to .text() due to change Ifbeae7e9
+					// Change back once bug 44525 is fixed
+					mw.msg('mwe-embedplayer-credit-date', $date.text() )
 				)
 			}
 
