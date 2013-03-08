@@ -2656,6 +2656,20 @@ mw.PlayerControlBuilder.prototype = {
 					.addClass( "ui-state-highlight ui-corner-all mw_buffer")
 				);
 
+				// Show video timeline position on hover and when dragging playhead
+				function showPosition(event) {
+					var pos = ( event.clientX - $playHead.offset().left ) / $playHead.width();
+					var time = mw.seconds2npt( parseFloat( embedPlayer.getDuration() ) * pos  + (embedPlayer.startTimeSec || 0) );
+					$playHead.attr('title', time);
+				}
+				$playHead.on({
+					mouseenter: showPosition,
+					mouseleave: function(event) {
+						$playHead.attr({title: ''});
+					},
+					mousemove: showPosition
+				});
+
 				return $playHead;
 			}
 		}
