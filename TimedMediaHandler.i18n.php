@@ -611,13 +611,15 @@ $messages['br'] = array(
 	'timedmedia-status-unknown' => 'Statud dianav',
 	'timedmedia-actions' => 'Oberoù',
 	'timedmedia-not-ready' => "N'eo ket prest",
+	'timedmedia-percent-done' => 'War-dro $1 % zo bet graet',
 	'timedmedia-days' => '$1 {{PLURAL: $1|devezh|devezh}}', # Fuzzy
 	'timedmedia-hours' => '$1 {{PLURAL: $1|eurvezh|eurvezh}}', # Fuzzy
 	'timedmedia-minutes' => '$1 {{PLURAL: $1|munutenn|munutenn}}', # Fuzzy
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}', # Fuzzy
 	'timedmedia-show-error' => 'Diskouez ar fazi',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Mammenn $1',
-	'timedmedia-source-file-desc' => 'Orin $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Orin $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg izelgas (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg lennus war-eeun war ar Gwiad (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Video Ogg lennus war-eeun war ar Gwiad (480p)',
@@ -625,7 +627,9 @@ $messages['br'] = array(
 	'timedmedia-derivative-desc-360p.webm' => 'WebM lennus war-eeun eus ar Gwiad (360p)',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM lennus war-eeun eus ar Gwiad (480p)',
 	'timedmedia-derivative-desc-720p.webm' => "Video WebM da bellgargañ gant ur c'halite a-feson (720p)",
+	'timedmedia-subtitle-new-go' => 'Mont',
 	'timedmedia-subtitle-language' => 'istitloù e $1 ($2)',
+	'timedmedia-file' => 'Restr',
 );
 
 /** Bosnian (bosanski)
