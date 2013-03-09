@@ -28,9 +28,10 @@ class TimedMediaIframeOutput {
 			$wgEnableIframeEmbed &&
 			$doOutput ){
 
-			self::outputIframe( $title );
-			// Turn off output of anything other than the iframe
-			$wgOut->disable();
+			if ( self::outputIframe( $title ) ) {
+				// Turn off output of anything other than the iframe
+				$wgOut->disable();
+			}
 		}
 
 		return true;
@@ -44,8 +45,8 @@ class TimedMediaIframeOutput {
 	static function outputIframe( $title ) {
 		global $wgEnableIframeEmbed, $wgOut, $wgUser;
 
-		if(!$wgEnableIframeEmbed){
-			throw new MWException( __METHOD__ .' is not enabled' );
+		if( !$wgEnableIframeEmbed ){
+			return false;
 		}
 
 		$skin = $wgUser->getSkin();
@@ -53,7 +54,8 @@ class TimedMediaIframeOutput {
 		// Setup the render parm
 		$file = wfFindFile( $title );
 		if ( !$file ) {
-			throw new MWException( __METHOD__ .' file not found' );
+			// file was removed, show wiki page with warning
+			return false;
 		}
 		$params = array(
 			'fillwindow' => true
@@ -136,6 +138,7 @@ class TimedMediaIframeOutput {
 </body>
 </html>
 	<?php
+		return true;
 	}
 
 }
