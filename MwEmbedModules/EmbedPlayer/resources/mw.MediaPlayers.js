@@ -40,7 +40,7 @@ mw.MediaPlayers.prototype = {
 		this.defaultPlayers['audio/mpeg']= ['Native', 'Kplayer'];
 		this.defaultPlayers['audio/mp3']= ['Native', 'Kplayer'];
 		this.defaultPlayers['audio/mp4']= ['Native'];
-		this.defaultPlayers['video/mp4'] = ['Vlc'];
+		this.defaultPlayers['video/mp4'] = ['Native', 'Vlc'];
 		this.defaultPlayers['video/mpeg'] = ['Vlc'];
 		this.defaultPlayers['video/x-msvideo'] = ['Vlc'];
 
