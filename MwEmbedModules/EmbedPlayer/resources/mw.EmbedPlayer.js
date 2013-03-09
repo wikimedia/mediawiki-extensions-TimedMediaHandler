@@ -1331,11 +1331,6 @@
 			{
 				return ;
 			}
-			// if an audio player we don't have room for error message interface: 
-			if( this.isAudio() ){
-				$( this ).parent().parent().replaceWith( this.noPlayerFallbackHTML );
-				return ;
-			}
 			// Set the isLink player flag:
 			this.isLinkPlayer= true;
 			// Update the poster and html:
