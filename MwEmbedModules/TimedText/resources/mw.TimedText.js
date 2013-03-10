@@ -1043,6 +1043,11 @@
 						);
 					}
 					// Append a cat menu item for each kind list
+					// Give grep a chance to find the usages:
+					// mwe-timedtext-textcat-cc, mwe-timedtext-textcat-sub, mwe-timedtext-textcat-tad,
+					// mwe-timedtext-textcat-ktv, mwe-timedtext-textcat-tik, mwe-timedtext-textcat-ar,
+					// mwe-timedtext-textcat-nb, mwe-timedtext-textcat-meta, mwe-timedtext-textcat-trx,
+					// mwe-timedtext-textcat-lrc, mwe-timedtext-textcat-lin, mwe-timedtext-textcat-cue
 					$langMenu.append(
 						$.getLineItem( mw.msg( 'mwe-timedtext-textcat-' + categoryKey.toLowerCase() ) ).append(
 							$catChildren

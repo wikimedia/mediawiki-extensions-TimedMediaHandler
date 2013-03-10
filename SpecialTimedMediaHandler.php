@@ -36,6 +36,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 			. $this->msg( 'timedmedia-videos',  $stats['videos']['total'] )->escaped()
 			. "</h2>"
 		);
+		// Give grep a chance to find the usages: timedmedia-ogg-videos, timedmedia-webm-videos
 		foreach ( $this->formats as $format => $condition ) {
 			if ( $stats[ 'videos' ][ $format ] ) {
 				$out->addHTML(
@@ -59,6 +60,9 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	private function renderState ( $out, $state, $stats, $showTable = true ) {
 		global $wgEnabledTranscodeSet;
 		if ( $stats[ $state ][ 'total' ] ) {
+			// Give grep a chance to find the usages:
+			// timedmedia-derivative-state-transcodes, timedmedia-derivative-state-active,
+			// timedmedia-derivative-state-queued, timedmedia-derivative-state-failed
 			$out->addHTML(
 				"<h2>"
 				. $this->msg( 'timedmedia-derivative-state-' . $state, $stats[ $state ]['total'] )->escaped()
