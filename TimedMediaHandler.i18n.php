@@ -772,9 +772,10 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 /** Danish (dansk)
  * @author Byrial
  * @author Jon Harald Søby
+ * @author Steenth
  */
 $messages['da'] = array(
-	'timedmedia-desc' => 'Understøtter Ogg Theora- og Vorbis-filer med en JavaScript-afspiller.', # Fuzzy
+	'timedmedia-desc' => 'Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 lydfil, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 videofil, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 mediafil, $2',
@@ -783,10 +784,28 @@ $messages['da'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Sammensat Ogg-lyd- og -videofil, $1, længde $2, $4×$5 pixel, $3 samlet',
 	'timedmedia-ogg-long-general' => 'Ogg mediafil, længde $2, $3',
 	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
+	'timedmedia-webm-long-video' => 'WebM audio/video fil, $1, længde  $2,  $4 × $5 pixel, $3 samlet',
+	'timedmedia-mp4-short-video' => 'Mp4 $1 videofil, $2',
+	'timedmedia-mp4-long-video' => 'Mp4-fil for audio/video, $1, længde $2, $4 × $5 pixel, $3 samlet',
 	'timedmedia-more' => 'Mere...',
 	'timedmedia-dismiss' => 'Luk',
 	'timedmedia-download' => 'Download fil',
 	'timedmedia-desc-link' => 'Om denne fil',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Ukendt status',
+	'timedmedia-actions' => 'Handlinger',
+	'timedmedia-not-ready' => 'Ikke klar',
+	'timedmedia-days' => '{{PLURAL:$1|$1 dag|$1 dage}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 time|$1 timer}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minutter}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 sekund|$1 sekunder}}',
+	'timedmedia-show-error' => 'Vis fejl',
+	'timedmedia-mp4' => 'MP4',
+	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg video (160 P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720 P)',
+	'timedmedia-subtitle-language' => '$1( $2 ) undertekster',
+	'timedmedia-file' => 'Fil',
 );
 
 /** German (Deutsch)
@@ -3528,6 +3547,7 @@ $messages['ps'] = array(
  * @author Giro720
  * @author Hamilton Abreu
  * @author Malafaya
+ * @author Opraco
  * @author Waldir
  * @author 555
  */
@@ -3536,7 +3556,7 @@ $messages['pt'] = array(
 	'timedmedia-ogg-short-audio' => 'Áudio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Vídeo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Multimédia Ogg $1, $2',
-	'timedmedia-ogg-long-audio' => 'Áudio Ogg $1, $2 de duração, $3',
+	'timedmedia-ogg-long-audio' => 'áudio Ogg $1, $2 de duração, $3',
 	'timedmedia-ogg-long-video' => 'Vídeo Ogg $1, $2 de duração, $4×$5 pixels, $3',
 	'timedmedia-ogg-long-multiplexed' => 'Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo',
 	'timedmedia-ogg-long-general' => 'Multimédia Ogg, $2 de duração, $3',
@@ -3575,7 +3595,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 	'timedmedia-reset-confirm' => 'Reiniciar esta transcodificação elimina qualquer ficheiro existente e volta a adicionar a transcodificação à fila de tarefas. A nova transcodificação irá demorar algum tempo. <br /><br />Tem a certeza de que pretende continuar?',
 	'timedmedia-reset-error' => 'Ocorreu um erro ao reiniciar a tarefa de transcodificação',
 	'timedmedia-source-file' => 'Fonte $1',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Vídeo Ogg de baixa largura de banda (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Vídeo Ogg para web streaming (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Vídeo Ogg para web streaming (480P)',
@@ -3591,13 +3611,14 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 /** Brazilian Portuguese (português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
+ * @author Opraco
  */
 $messages['pt-br'] = array(
 	'timedmedia-desc' => 'Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript', # Fuzzy
 	'timedmedia-ogg-short-audio' => 'Arquivo de áudio Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Arquivo de vídeo Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Arquivo multimídia Ogg $1, $2',
-	'timedmedia-ogg-long-audio' => 'Arquivo de Áudio Ogg $1, $2 de duração, $3',
+	'timedmedia-ogg-long-audio' => 'arquivo de áudio Ogg $1, $2 de duração, $3',
 	'timedmedia-ogg-long-video' => 'Vídeo Ogg $1, $2 de duração, $4×$5 pixels, $3',
 	'timedmedia-ogg-long-multiplexed' => 'Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo',
 	'timedmedia-ogg-long-general' => 'Multimídia Ogg, $2 de duração, $3',
