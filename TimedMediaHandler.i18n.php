@@ -771,6 +771,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 
 /** Danish (dansk)
  * @author Byrial
+ * @author Fnielsen
  * @author Jon Harald Søby
  * @author Steenth
  */
@@ -802,6 +803,7 @@ $messages['da'] = array(
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 sekund|$1 sekunder}}',
 	'timedmedia-show-error' => 'Vis fejl',
 	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file' => '$1 kilde',
 	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg video (160 P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720 P)',
 	'timedmedia-subtitle-language' => '$1( $2 ) undertekster',
