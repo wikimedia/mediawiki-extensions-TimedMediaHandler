@@ -680,6 +680,7 @@ class WebVideoTranscode {
 		$bitrate = $file->getHandler()->getBitrate( $file );
 		$metadataType = $file->getHandler()->getMetadataType( $file );
 
+		// Give grep a chance to find the usages: timedmedia-ogg, timedmedia-webm, timedmedia-mp4
 		if( $file->getHandler()->isAudio( $file ) ){
 			$title = wfMessage( 'timedmedia-source-audio-file-desc',
 				wfMessage( 'timedmedia-' . $metadataType )->text() )
@@ -691,6 +692,7 @@ class WebVideoTranscode {
 				->params( $wgLang->formatBitrate( $bitrate ) )->text();
 		}
 
+		// Give grep a chance to find the usages: timedmedia-ogg, timedmedia-webm, timedmedia-mp4
 		$source = array(
 			'src' => $src,
 			'type' => $file->getHandler()->getWebType( $file ),

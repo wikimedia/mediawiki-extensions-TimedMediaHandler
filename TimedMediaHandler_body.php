@@ -201,6 +201,8 @@ class TimedMediaHandler extends MediaHandler {
 			if($v == 0 ){
 				unset( $t[$k] );
 			} else {
+				// Give grep a chance to find the usages:
+				// timedmedia-days, timedmedia-hours, timedmedia-minutes,timedmedia-seconds
 				$t[$k] = wfMessage( 'timedmedia-' . $k, $v )->text();
 			}
 		}

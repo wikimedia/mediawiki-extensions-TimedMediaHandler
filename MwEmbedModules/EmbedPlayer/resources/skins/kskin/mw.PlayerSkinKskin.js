@@ -106,6 +106,9 @@ mw.PlayerSkinKskin = {
 
 				// Output menu item containers:
 				for ( var menuItem in ctrlObj.supportedMenuItems ) {
+					// Give grep a chance to find the usages:
+					// mwe-embedplayer-playerSelect, mwe-embedplayer-download,
+					// mwe-embedplayer-share, mwe-embedplayer-credits
 					$menuBar.append(
 						$( '<li />')
 						// Add the menu item class:

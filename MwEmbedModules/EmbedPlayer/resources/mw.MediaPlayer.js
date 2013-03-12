@@ -53,6 +53,13 @@ mw.MediaPlayer.prototype = {
 	 * Get the "name" of the player from a predictable msg key
 	 */
 	getName: function() {
+		// Give grep a chance to find the usages:
+		// mwe-embedplayer-ogg-player-vlc-player, mwe-embedplayer-ogg-player-oggNative, mwe-embedplayer-ogg-player-mp3Native,
+		// mwe-embedplayer-ogg-player-aacNative, mwe-embedplayer-ogg-player-h264Native, mwe-embedplayer-ogg-player-webmNative,
+		// mwe-embedplayer-ogg-player-oggPlugin, mwe-embedplayer-ogg-player-quicktime-mozilla,
+		// mwe-embedplayer-ogg-player-quicktime-activex, mwe-embedplayer-ogg-player-cortado,
+		// mwe-embedplayer-ogg-player-flowplayer, mwe-embedplayer-ogg-player-kplayer, mwe-embedplayer-ogg-player-selected,
+		// mwe-embedplayer-ogg-player-omtkplayer
 		return mw.msg( 'mwe-embedplayer-ogg-player-' + this.id );
 	},
 
