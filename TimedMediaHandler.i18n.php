@@ -883,7 +883,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-derivative-desc-480p.mp4' => 'Webstreamingfähige MP4-Datei (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4-Datei in HD-Qualität (720P)',
 	'timedmedia-subtitle-new' => 'Neue Übersetzung erstellen oder vorhandene bearbeiten',
-	'timedmedia-subtitle-new-desc' => "Wähle die Sprache aus und klicke auf '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Wähle eine Sprache aus und klicke auf '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Los',
 	'timedmedia-subtitle-language' => '$1 ($2) Untertitel',
 	'timedmedia-subtitle-no-video' => 'Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.',
