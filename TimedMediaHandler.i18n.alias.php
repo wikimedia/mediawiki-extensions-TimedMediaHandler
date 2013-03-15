@@ -32,3 +32,8 @@ $specialPageAliases['mk'] = array(
 $specialPageAliases['vi'] = array(
 	'TimedMediaHandler' => array( 'Bộ_xử_lý_phương_tiện_đồng_bộ', 'Bộ_xử_lí_phương_tiện_đồng_bộ' ),
 );
+
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'TimedMediaHandler' => array( '定时媒体处理程序' ),
+);
