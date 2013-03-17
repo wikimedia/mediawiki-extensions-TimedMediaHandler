@@ -772,6 +772,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 /** Danish (dansk)
  * @author Byrial
  * @author Fnielsen
+ * @author HenrikKbh
  * @author Jon Harald Søby
  * @author Steenth
  */
@@ -792,11 +793,21 @@ $messages['da'] = array(
 	'timedmedia-more' => 'Mere...',
 	'timedmedia-dismiss' => 'Luk',
 	'timedmedia-download' => 'Download fil',
+	'timedmedia-play-media' => 'Afspil medier',
 	'timedmedia-desc-link' => 'Om denne fil',
+	'timedmedia-oggThumb-version' => 'OggHandler kræver oggThumb version  $1  eller nyere.',
+	'timedmedia-oggThumb-failed' => 'oggThumb kunne ikke oprette et miniaturebillede.',
+	'timedmedia-status-header' => 'Transcode status',
+	'timedmedia-update-status' => 'Opdater transcode status',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Ukendt status',
+	'timedmedia-transcodeinfo' => 'Afledt transcode beskrivelse',
 	'timedmedia-actions' => 'Handlinger',
 	'timedmedia-not-ready' => 'Ikke klar',
+	'timedmedia-completed-on' => 'Gennemført transcode $1',
+	'timedmedia-error-on' => 'Fejl i kode på  $1',
+	'timedmedia-percent-done' => 'Cirka $1 % udført',
+	'timedmedia-in-job-queue' => 'Føjet til jobkøen $1 siden',
 	'timedmedia-days' => '{{PLURAL:$1|$1 dag|$1 dage}}',
 	'timedmedia-hours' => '{{PLURAL:$1|1 time|$1 timer}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minutter}}',
@@ -804,10 +815,28 @@ $messages['da'] = array(
 	'timedmedia-show-error' => 'Vis fejl',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 kilde',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg video (160 P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720 P)',
+	'timedmedia-subtitle-new-desc' => "Vælg sprog og tryk på '''{{int:Timedmedia-undertitlen-ny-gå}}'' ' knappen",
+	'timedmedia-subtitle-new-go' => 'Kør',
 	'timedmedia-subtitle-language' => '$1( $2 ) undertekster',
+	'timedmedia-subtitle-no-video' => 'Der er ingen video tilknyttet den aktuelle undertitel side',
+	'timedmedia-subtitle-no-subtitles' => 'Der er i øjeblikket ingen undertekster i $1 denne video du kan [{{fullurl: {{FULLPAGENAME}} |action = Rediger}} redigere denne side] for at tilføje dem',
+	'timedmedia-subtitle-remote' => 'Tidsbestemte tekst for denne fil er placeret på $1',
+	'timedmedia-subtitle-remote-link' => 'Du kan [$1 se beskrivelses siden] til denne fil på $2',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videoer}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg video|$1 Ogg videoer}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM video|$1 WebM videoer}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transkode|$1 transkoder}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 kørende transcode|$1 kørende transcodes}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transkode i kø|$1 transkoder i kø}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transkode mislykket|$1 transkoder mislykkedes}}',
 	'timedmedia-file' => 'Fil',
+	'right-transcode-reset' => 'Nulstil mislykkedes eller transkodede videoer så de er sat ind i jobkøen igen.',
+	'right-transcode-status' => 'Visning [[Special: TimedMediaHandler|information om den aktuelle kodeaktivitet]]', # Fuzzy
+	'action-transcode-status' => 'få vist den aktuelle transkode status',
 );
 
 /** German (Deutsch)
@@ -957,7 +986,7 @@ Móžoš  <a href="$1">klip ześěgnuś</a> abo <a href="//www.mediawiki.org/wik
 	'timedmedia-oggThumb-version' => 'OggHandler trjeba wersiju $1 oggThumb abo nowšu.',
 	'timedmedia-oggThumb-failed' => 'oggThumb njejo mógł wobrazk napóraś.',
 	'timedmedia-source-file' => 'Žrědło ($1)',
-	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)',
+	'timedmedia-source-file-desc' => 'Originalna $1-dataja, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Niska šyrokosć pasma Ogg-widea (200p)',
 	'timedmedia-subtitle-language' => '$1 ($2) pódtitele',
 );
