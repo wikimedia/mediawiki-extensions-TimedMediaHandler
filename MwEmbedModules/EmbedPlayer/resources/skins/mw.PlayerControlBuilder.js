@@ -245,6 +245,10 @@ mw.PlayerControlBuilder.prototype = {
 			if( componentId == 'fullscreen' && this.embedPlayer.isAudio() ){
 				continue;
 			}
+			// Skip sourceSwitch if width < smalles derivative
+			if ( componentId == 'sourceSwitch' && this.availableWidth < 320) {
+				continue;
+			}
 			addComponent( componentId );
 		}
 		if( this.availableWidth > 30 ){
