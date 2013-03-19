@@ -179,8 +179,8 @@ Parameters are:
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
-	'timedmedia-oggThumb-version' => '{{optional}}',
-	'timedmedia-oggThumb-failed' => '{{optional}}',
+	'timedmedia-oggThumb-version' => 'none',
+	'timedmedia-oggThumb-failed' => 'none',
 	'timedmedia-status' => '{{Identical|Status}}',
 	'timedmedia-transcodeinfo' => 'A table column header for description of Transcode derivative',
 	'timedmedia-actions' => '{{Identical|Action}}',
@@ -855,7 +855,7 @@ Er du sikker på du vil fortsætte?', # Fuzzy
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transkode mislykket|$1 transkoder mislykkedes}}',
 	'timedmedia-file' => 'Fil',
 	'right-transcode-reset' => 'Nulstil mislykkedes eller transkodede videoer så de er sat ind i jobkøen igen.',
-	'right-transcode-status' => 'Visning [[Special: TimedMediaHandler|information om den aktuelle kodeaktivitet]]', # Fuzzy
+	'right-transcode-status' => 'Vis [[Special: TimedMediaHandler|information om den aktuelle kodeaktivitet]]', # Fuzzy
 	'action-transcode-status' => 'få vist den aktuelle transkode status',
 );
 
