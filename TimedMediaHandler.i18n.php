@@ -158,24 +158,104 @@ Are you sure you want to proceed?',
  */
 $messages['qqq'] = array(
 	'timedmedia-desc' => '{{desc|name=Timed Media Handler|url=http://www.mediawiki.org/wiki/Extension:TimedMediaHandler}}',
+	'timedmedia-ogg-short-audio' => 'File details for Ogg sound (audio) files, short version.
+Parameters:
+* $1 - stream type name. Any one of the following: Vorbis, Speex, FLAC
+* $2 - duration of the sound/audio (localized) - e.g. 1m34s
+{{Related|Timedmedia-ogg-short}}',
+	'timedmedia-ogg-short-video' => 'File details for Ogg video files, short version.
+Parameters:
+* $1 - stream type name: Theora
+* $2 - duration of the video (localized) - e.g. 1m34s
+{{Related|Timedmedia-ogg-short}}',
 	'timedmedia-ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
-Parameters are:
-* $1 file type, e.g. Vorbis, Speex
-* $2 ?',
-	'timedmedia-ogg-long-audio' => 'File details for Ogg files, shown after the filename in the image description page.
-Parameters are:
-* $1 file codec, f.e. Vorbis, Speex
-* $2 file duration, f.e. 1m34s
-* $3 file sampling rate, f.e. 97kbps',
-	'timedmedia-ogg-long-video' => 'Start with a lowercase letter, unless the first word is "Ogg".',
-	'timedmedia-ogg-long-multiplexed' => 'Start with a lowercase letter, unless the first word is "Ogg".',
-	'timedmedia-webm-short-video' => 'Parameters:
-* $1 is a slash ("/") separated list of stream types.
-* $2 is a time period.',
-	'timedmedia-webm-long-video' => 'Start with a lowercase letter, unless the first word is "WebM".',
-	'timedmedia-mp4-short-video' => 'Parameters:
-* $1 is a slash ("/") separated list of stream types.
-* $2 is a time period.',
+Parameters:
+* $1 - stream type name
+* $2 - duration of the media (localized) - e.g. 1m34s
+{{Related|Timedmedia-ogg-short}}',
+	'timedmedia-ogg-long-audio' => 'File details for Ogg sound (audio) files, long version.
+
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - stream type name. Any one of the following: Vorbis, Speex, FLAC
+* $2 - duration of the sound (localized) - e.g. 1m34s
+* $3 - bit-rate of the sound (localized) - e.g. 97kbps
+{{Related|Timedmedia-ogg-long}}',
+	'timedmedia-ogg-long-video' => 'File details for Ogg video files, long version.
+
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - stream type name: Theora
+* $2 - duration of the video (localized) - e.g. 1m34s
+* $3 - bit-rate of the video (localized) - e.g. 97kbps
+* $4 - width of the video (in pixels)
+* $5 - height of the video (in pixels)
+{{Related|Timedmedia-ogg-long}}',
+	'timedmedia-ogg-long-multiplexed' => '{{doc-important|Start with a lowercase letter, unless the first word is "Ogg".}}
+File details for Ogg multiplexed audio/video files, long version.
+
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - stream type names, slash-separated - e.g. Theora/Vorbis
+* $2 - duration (localized) - e.g. 1m34s
+* $3 - bit-rate (localized) - e.g. 97kbps
+* $4 - width of the video (in pixels)
+* $5 - height of the video (in pixels)
+{{Related|Timedmedia-ogg-long}}',
+	'timedmedia-ogg-long-general' => 'File details for Ogg generic (non-video, non-audio) files, long version.
+
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - (Unused)
+* $2 - duration (localized) - e.g. 1m34s
+* $3 - bit-rate (localized) - e.g. 97kbps
+{{Related|Timedmedia-ogg-long}}',
+	'timedmedia-ogg-long-error' => 'Used as error message. Parameters:
+* $1 - error message. e.g. File not found, invalid stream, etc.',
+	'timedmedia-webm-short-video' => 'File details for WebM video files, short version.
+Parameters:
+* $1 - stream type names (slash separated) -  e.g. Vorbis/VP8
+* $2 - duration of the video (localized) - e.g. 1m34s
+See also:
+* {{msg-mw|Timedmedia-webm-long-video}}',
+	'timedmedia-webm-long-video' => 'File details for WebM multiplexed audio/video files, long version.
+
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - stream type names (slash separated) - e.g. Vorbis/VP8
+* $2 - duration (localized) - e.g. 1m34s
+* $3 - bit-rate (localized) - e.g. 97kbps
+* $4 - width of the video (in pixels)
+* $5 - height of the video (in pixels)
+See also:
+* {{msg-mw|Timedmedia-webm-short-video}}',
+	'timedmedia-mp4-short-video' => 'File details for MP4 video files, short version.
+Parameters:
+* $1 - stream type names (slash separated) - e.g. AAC/h.264
+* $2 - duration of the video (localized) - e.g. 1m34s
+See also:
+* {{msg-mw|Timedmedia-mp4-long-video}}',
+	'timedmedia-mp4-long-video' => 'File details for MP4 multiplexed audio/video files, long version.
+
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - stream type names (slash separated) - e.g. AAC/h.264
+* $2 - duration (localized) - e.g. 1m34s
+* $3 - bit-rate (localized) - e.g. 97kbps
+* $4 - width of the video (in pixels)
+* $5 - height of the video (in pixels)
+See also:
+* {{msg-mw|Timedmedia-mp4-short-video}}',
+	'timedmedia-no-player-js' => 'Used as fallback text displayed for browsers without js and without video tag support.
+
+Parameters:
+* $1 - media source URL',
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
@@ -194,13 +274,35 @@ Parameters are:
 Parameters are:
 * $1 Time passed since transcoded started
 * $2 Percentage of transcode complete',
+	'timedmedia-percent-done' => 'Commented out at this time.
+
+Status update for Transcodes. Parameters:
+* $1 - percentage of the file transcoded so far
+See also:
+* {{msg-mw|timedmedia-unknown-target-size}}',
 	'timedmedia-in-job-queue' => 'Shown on the file description page in the {{msg-mw|timedmedia-status-header}} section. Parameters:
 * $1 the time the media has been in the job queue',
-	'timedmedia-unknown-target-size' => 'Status update for Transcodes
-Parameters are:
-* $1 The number of bytes of the file transcoded so far',
-	'timedmedia-days' => '{{Identical|Day}}',
-	'timedmedia-minutes' => '{{Identical|Minute}}',
+	'timedmedia-unknown-target-size' => 'Commented out at this time.
+
+Status update for Transcodes. Parameters:
+* $1 - the number of bytes of the file transcoded so far (localized)
+See also:
+* {{msg-mw|Timedmedia-percent-done}}',
+	'timedmedia-days' => 'Parameters:
+* $1 - number of days
+{{Related|Timedmedia-days}}
+{{Identical|Day}}',
+	'timedmedia-hours' => 'Parameters:
+* $1 - number of hours
+{{Related|Timedmedia-days}}
+{{Identical|Hour}}',
+	'timedmedia-minutes' => 'Parameters:
+* $1 - minutes
+{{Related|Timedmedia-days}}
+{{Identical|Minute}}',
+	'timedmedia-seconds' => 'Parameters:
+* $1 - number of seconds
+{{Related|Timedmedia-days}}',
 	'timedmedia-ogg' => '{{optional}}',
 	'timedmedia-webm' => '{{optional}}',
 	'timedmedia-source-file' => 'The source file
@@ -241,6 +343,15 @@ Paramaters are:
 * $2 Subtitle key',
 	'timedmedia-subtitle-no-subtitles' => 'Parameters:
 * $1 is a language name.',
+	'timedmedia-subtitle-remote' => 'Used as page title. Parameters:
+* $1 - the display name of the repository
+The page body for this page title is:
+* {{msg-mw|timedmedia-subtitle-remote-link}}',
+	'timedmedia-subtitle-remote-link' => 'Used as page body. Parameters:
+* $1 - the description URL of the file
+* $2 - the display name of the repository
+The page title for this message is:
+* {{msg-mw|timedmedia-subtitle-remote}}',
 	'timedmediahandler' => 'title of Special:TimedMediaHandler',
 	'timedmedia-videos' => 'number of videos on Special:TimedMediaHandler
 Parameters are:

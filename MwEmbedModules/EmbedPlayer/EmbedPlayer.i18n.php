@@ -97,13 +97,22 @@ $messages['en'] = array(
  * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'mwe-embedplayer-credit-title' => 'Used as a part of the credit. Parameters:
+* $1 - title
+This message is followed by the following messages:
+* {{msg-mw|mwe-embedplayer-credit-author}}
+* {{msg-mw|mwe-embedplayer-credit-date}}',
 	'mwe-embedplayer-credit-date' => '{{Identical|Date}}',
 	'mwe-embedplayer-credit-author' => '{{Identical|Author}}',
 	'mwe-embedplayer-player_fullscreen' => '{{Identical|Full screen}}',
+	'mwe-embedplayer-seek_to' => 'Used as the Player status string. Parameters:
+* $1 - a time in the NPT format. NPT (Normal play time) is defined in [//www.ietf.org/rfc/rfc2326.txt RFC 2326].',
 	'mwe-embedplayer-share' => '{{Identical|Share}}',
 	'mwe-embedplayer-credits' => '{{Identical|Credit}}',
 	'mwe-embedplayer-about-library-desc' => 'Parameters:
 * $1 - URL',
+	'mwe-embedplayer-no-player' => 'This message means that there are no available players to play $1.
+* $1 - source media title',
 	'mwe-embedplayer-menu_btn' => '{{Identical|Menu}}',
 	'mwe-embedplayer-ogg-player-mp3Native' => 'name of mp3 player in configuration screen',
 	'mwe-embedplayer-ogg-player-aacNative' => 'name of AAC player in configuration screen',
@@ -2027,7 +2036,7 @@ $messages['ja'] = array(
 [$1 Kaltura プレーヤー ライブラリについての詳細情報]。',
 	'mwe-embedplayer-clip_linkback' => 'クリップの情報ページ',
 	'mwe-embedplayer-choose_player' => '動画のプレーヤーを選択',
-	'mwe-embedplayer-no-player' => '$1に利用できるプレーヤーはありません',
+	'mwe-embedplayer-no-player' => '$1 を再生できるプレーヤーはありません',
 	'mwe-embedplayer-share_this_video' => 'この動画を共有する',
 	'mwe-embedplayer-video_credits' => '動画のクレジット',
 	'mwe-embedplayer-no-video_credits' => '著作者情報はありません',

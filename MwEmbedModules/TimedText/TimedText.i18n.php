@@ -63,9 +63,21 @@ $messages['qqq'] = array(
 	'mwe-timedtext-key-language' => '{{optional}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
-	'mwe-timedtext-language-subtitles-for-clip' => 'Parameters:
-* $1 is a language name.
-* $2 is a file link with a file name as link description.',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Used as page title, if the subtitles exist. Parameters:
+Parameters:
+* $1 - a language name, or a language code (if the language name not defined)
+* $2 - a video title
+See also:
+* {{msg-mw|Mwe-timedtext-language-no-subtitles-for-clip}}',
+	'mwe-timedtext-language-no-subtitles-for-clip' => "Used as page title, if the subtitles don't exist. Parameters:
+* $1 - a language name, or a language code (if the language name not defined)
+* $2 - a video title
+See also:
+* {{msg-mw|Mwe-timedtext-language-subtitles-for-clip}}",
+	'mwe-timedtext-request-subs-done' => 'Unused at this time. Parameters:
+* $1 - full URL',
+	'mwe-timedtext-request-already-done' => 'Unused at this time. Parameters:
+* $1 - full URL',
 );
 
 /** Afrikaans (Afrikaans)
@@ -990,8 +1002,8 @@ $messages['ja'] = array(
 	'mwe-timedtext-textcat-lrc' => '歌詞',
 	'mwe-timedtext-textcat-lin' => '言語マーク',
 	'mwe-timedtext-textcat-cue' => 'キューポイント',
-	'mwe-timedtext-language-subtitles-for-clip' => 'クリップ$2のための$1字幕',
-	'mwe-timedtext-language-no-subtitles-for-clip' => 'クリップ$2には$1字幕が見つかりませんでした。',
+	'mwe-timedtext-language-subtitles-for-clip' => 'クリップ $2 の$1字幕',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'クリップ $2 には$1字幕がありません',
 );
 
 /** Georgian (ქართული)
