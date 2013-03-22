@@ -185,8 +185,19 @@ mw.PlayerControlBuilder.prototype = {
 		}
 
 		// Check if we have multiple playable sources ( if only one source don't display source switch )
+
 		if( embedPlayer.mediaElement.getPlayableSources().length == 1 ){
-			this.supportedComponents[ 'sourceSwitch'] = false;
+			this.supportedComponents[ 'sourceSwitch' ] = false;
+
+		}
+
+		// Give embeds option to explicitly disable components via flag
+		var source = embedPlayer.mediaElement.getPlayableSources()[0];
+		if ( source && source.disablecontrols ) {
+			source.disablecontrols.split(',').forEach(function( key ) {
+				mw.log( 'PlayerControlBuilder:: disabled component via flag:' + key );
+				_this.supportedComponents[ key ] = false;
+			});
 		}
 
 		$( embedPlayer ).trigger( 'addControlBarComponent', this );

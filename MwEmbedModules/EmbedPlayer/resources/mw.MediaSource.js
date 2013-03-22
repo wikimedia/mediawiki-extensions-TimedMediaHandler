@@ -60,6 +60,9 @@ mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
 	// used for setting the api provider for mediawiki
 	'data-mwprovider',
 
+	// to disable menu or timedText for a given embed
+	'data-disablecontrols',
+
 	// used for language direction of subtitles
 	'data-dir',
 

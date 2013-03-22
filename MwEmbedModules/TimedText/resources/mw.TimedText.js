@@ -261,7 +261,8 @@
 			var _this = this;
 			// By default we include a button in the control bar.
 			$( _this.embedPlayer ).bind( 'addControlBarComponent' + this.bindPostFix, function(event, controlBar ){
-				if( _this.includeCaptionButton() ){
+				if( controlBar.supportedComponents['timedText'] !== false &&
+					_this.includeCaptionButton() ) {
 					controlBar.supportedComponents['timedText'] = true;
 					controlBar.components['timedText'] = _this.getTimedTextButton();
 				}
