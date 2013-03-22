@@ -25,12 +25,18 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	public function execute( $par ) {
+		global $wgMemc;
 		$this->setHeaders();
 		$out = $this->getOutput();
 
 		$out->addModuleStyles( 'mediawiki.special' );
 
-		$stats = $this->getStats();
+		$key = wfMemcKey( 'TimedMediaHandler', 'stats' );
+		$stats = $wgMemc->get( $key );
+		if ( !$stats ) {
+			$stats = $this->getStats();
+			$wgMemc->add( $key, $stats, 3600 );
+		}
 		$out->addHTML(
 			"<h2>"
 			. $this->msg( 'timedmedia-videos',  $stats['videos']['total'] )->escaped()
