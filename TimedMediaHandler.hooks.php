@@ -229,7 +229,7 @@ class TimedMediaHandlerHooks {
 		// load the file:
 		$file = wfFindFile( $article->getTitle() );
 		if( self::isTranscodableFile( $file ) ){
-			$html = TranscodeStatusTable::getHTML( $file );
+			$html .= TranscodeStatusTable::getHTML( $file );
 		}
 		return true;
 	}
