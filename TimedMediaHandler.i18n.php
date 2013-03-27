@@ -352,7 +352,7 @@ The page body for this page title is:
 * $2 - the display name of the repository
 The page title for this message is:
 * {{msg-mw|timedmedia-subtitle-remote}}',
-	'timedmediahandler' => 'title of Special:TimedMediaHandler',
+	'timedmediahandler' => '{{doc-special|TimedMediaHandler}}',
 	'timedmedia-videos' => 'number of videos on Special:TimedMediaHandler
 Parameters are:
 * $1 number of videos',
@@ -1084,7 +1084,7 @@ $messages['diq'] = array(
 	'timedmedia-more' => 'hema....',
 	'timedmedia-dismiss' => 'Racnê',
 	'timedmedia-download' => 'dosya biyar war',
-	'timedmedia-play-media' => 'Medya bıcın',
+	'timedmedia-play-media' => 'Medya bıcıne',
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
 	'timedmedia-status' => 'Weziyet',
 	'timedmedia-actions' => 'Kerdışi',
