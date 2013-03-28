@@ -885,6 +885,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
  * @author Fnielsen
  * @author HenrikKbh
  * @author Jon Harald Søby
+ * @author Peter Alberti
  * @author Steenth
  */
 $messages['da'] = array(
@@ -901,8 +902,8 @@ $messages['da'] = array(
 	'timedmedia-webm-long-video' => 'WebM audio/video fil, $1, længde  $2,  $4 × $5 pixel, $3 samlet',
 	'timedmedia-mp4-short-video' => 'Mp4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'Mp4-fil for audio/video, $1, længde $2, $4 × $5 pixel, $3 samlet',
-	'timedmedia-no-player-js' => 'Beklager men din browser har enten deaktiveret JavaScript eller har ikke en afspiller, der understøtter formatet.<br>
-Du kan enten <a href="$1">hente klippet</a> eller <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hente en afspiller</a> til at afspille klippet i din browser.', # Fuzzy
+	'timedmedia-no-player-js' => 'Beklager, men din browser har enten deaktiveret JavaScript eller har ikke en afspiller, som vi understøtter.<br />
+Du kan enten <a href="$1">hente klippet</a> eller <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">hente en afspiller</a> til at afspille klippet i din browser.',
 	'timedmedia-more' => 'Mere...',
 	'timedmedia-dismiss' => 'Luk',
 	'timedmedia-download' => 'Download fil',
@@ -930,8 +931,8 @@ Du kan enten <a href="$1">hente klippet</a> eller <a href="//www.mediawiki.org/w
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 sekund|$1 sekunder}}',
 	'timedmedia-show-error' => 'Vis fejl',
 	'timedmedia-reset' => 'Nulstil transkode',
-	'timedmedia-reset-confirm' => 'Nulstilling af denne kode vil fjerne eksisterende fil (hvis den findes), og vil genindsætte koden i jobkøen. Det vil tage nogen tid at genkode.<br><br>
-Er du sikker på du vil fortsætte?', # Fuzzy
+	'timedmedia-reset-confirm' => 'Nulstilling af denne omkodning vil fjerne alle eksisterende filer (hvis der er nogen), og vil genindsætte omkodningen i jobkøen. Det vil tage nogen tid at omkode forfra.<br /><br />
+Er du sikker på, du vil fortsætte?',
 	'timedmedia-reset-error' => 'Fejl ved nulstilling af kode job.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 kilde',
@@ -966,7 +967,7 @@ Er du sikker på du vil fortsætte?', # Fuzzy
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transkode mislykket|$1 transkoder mislykkedes}}',
 	'timedmedia-file' => 'Fil',
 	'right-transcode-reset' => 'Nulstil mislykkedes eller transkodede videoer så de er sat ind i jobkøen igen.',
-	'right-transcode-status' => 'Vis [[Special: TimedMediaHandler|information om den aktuelle kodeaktivitet]]', # Fuzzy
+	'right-transcode-status' => 'Vis [[Special:TimedMediaHandler|information om den aktuelle omkodningsaktivitet]]',
 	'action-transcode-status' => 'få vist den aktuelle transkode status',
 );
 
