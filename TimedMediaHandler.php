@@ -48,6 +48,8 @@ $wgMwEmbedModuleConfig['TimedText.ShowAddTextLink'] = true;
 
 // Which users can restart failed or expired transcode jobs:
 $wgGroupPermissions['sysop']['transcode-reset'] = true;
+$wgGroupPermissions['autoconfirmed']['transcode-reset'] = true;
+
 // Which users can see Special:TimedMediaHandler
 $wgGroupPermissions['sysop']['transcode-status'] = true;
 
