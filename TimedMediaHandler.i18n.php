@@ -1291,6 +1291,7 @@ $messages['et'] = array(
 	'timedmedia-oggThumb-version' => 'OggHandleri jaoks on vaja oggThumbi versiooni $1 või hilisemat.',
 	'timedmedia-oggThumb-failed' => 'oggThumb ei saanud pisipildi loomisega hakkama.',
 	'timedmedia-status' => 'Olek',
+	'timedmedia-status-unknown' => 'Tundmatu olek',
 	'timedmedia-actions' => 'Toimingud',
 	'timedmedia-not-ready' => 'Ei ole valmis',
 	'timedmedia-percent-done' => 'Umbes $1% valmis',
