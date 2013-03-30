@@ -2653,7 +2653,11 @@ $messages['ka'] = array(
 	'timedmedia-videos' => '{{PLURAL:$1|$1 ვიდეო|$1 ვიდეო}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg ვიდეო|$1 Ogg ვიდეო}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM ვიდეო|$1 WebM ვიდეო}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 დეკოდირებული|$1 დეკოდირებული}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 დეკოდირება ჩაიშალა|$1 დეკოდირება ჩაიშალა}}',
 	'timedmedia-file' => 'ფაილი',
+	'right-transcode-status' => 'იხილეთ [[Special:TimedMediaHandler|ინფორმაცია მიმდინარე დეკოდირების შესახებ]]',
+	'action-transcode-status' => 'იხილეთ მიმდინარე დეკოდირების სტატუსი',
 );
 
 /** Kazakh (Arabic script) (قازاقشا (تٴوتە)‏)
