@@ -10,7 +10,14 @@ class TimedMediaThumbnail {
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
 		}
 
-		wfDebug( "Creating video thumbnail at" .  $options['dstPath']  . "\n" );
+		wfDebug( "Creating video thumbnail at " .  $options['dstPath']  . "\n" );
+		if(
+			isset( $options['width'] ) && isset( $options['height'] ) &&
+			$options['width'] != $options['file']->getWidth() &&
+			$options['height'] != $options['file']->getHeight()
+		){
+			return self::resizeThumb( $options );
+		}
 		// try OggThumb, and fallback to ffmpeg
 		$result = self::tryOggThumb( $options );
 		if ( $result === false ) {
@@ -41,7 +48,7 @@ class TimedMediaThumbnail {
 		}
 
 		$time = self::getThumbTime( $options );
-		$dstPath =  $options['dstPath'];
+		$dstPath = $options['dstPath'];
 		$videoPath = $options['file']->getLocalRefPath();
 
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation )
@@ -134,6 +141,58 @@ class TimedMediaThumbnail {
 		$returnText = $cmd . "\nwgMaxShellMemory: $wgMaxShellMemory\n" . $returnText;
 		// Return error box
 		return new MediaTransformError( 'thumbnail_error', $options['width'], $options['height'], $returnText );
+	}
+
+	/**
+	 * @param $options array
+	 * @return bool|MediaTransformError
+	 */
+	static function resizeThumb( $options ) {
+		$file = $options['file'];
+		$params = array();
+		foreach( array( 'start', 'thumbtime' ) as $key ) {
+			if(  isset( $options[ $key ] ) ) {
+				$params[ $key ] = $options[ $key ];
+			}
+		}
+		$params["width"] = $file->getWidth();
+		$params["height"] = $file->getHeight();
+
+		$poolKey = $file->getRepo()->getSharedCacheKey( 'file', md5( $file->getName() ) );
+		$posOptions = array_flip( array( 'start', 'thumbtime' ) );
+		$poolKey = wfAppendQuery( $poolKey, array_intersect_key( $options, $posOptions ) );
+
+		if ( MWInit::classExists( 'PoolCounterWorkViaCallback' ) ) {
+			$work = new PoolCounterWorkViaCallback( 'TMHTransformFrame',
+				'_tmh:frame:' . $poolKey,
+				array( 'doWork' => function() use ($file, $params) {
+					return $file->transform( $params, File::RENDER_NOW );
+				} ) );
+			$thumb = $work->execute();
+		} else {
+			$thumb = $file->transform( $params, File::RENDER_NOW );
+		}
+
+		if ( !$thumb || $thumb->isError() ) {
+			return $thumb;
+		}
+		$src = $thumb->getStoragePath();
+		if ( !$src ) {
+			return false;
+		}
+		$thumbFile = new UnregisteredLocalFile( $file->getTitle(),
+			RepoGroup::singleton()->getLocalRepo(), $src, false );
+		$thumbParams = array(
+			"width" => $options['width'],
+			"height" => $options['height']
+		);
+		$scaledThumb = $thumbFile->getHandler()->doTransform( $thumbFile,
+			$options['dstPath'], $options['dstPath'], $thumbParams );
+
+		if ( !$scaledThumb || $scaledThumb->isError() ) {
+			return $scaledThumb;
+		}
+		return true;
 	}
 
 	/**
