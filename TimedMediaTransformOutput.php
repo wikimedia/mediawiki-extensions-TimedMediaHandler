@@ -8,6 +8,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	var $textTracks = null;
 	var $hashTime = null;
 	var $textHandler = null; // lazy init in getTextHandler
+	var $disablecontrols = null;
 
 	var $start, $end, $fillwindow;
 
@@ -17,7 +18,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function __construct( $conf ){
 		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
 			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow',
-			'sources' );
+			'sources', 'disablecontrols' );
 		foreach ( $options as $key ) {
 			if( isset( $conf[ $key ]) ){
 				$this->$key = $conf[$key];
@@ -210,6 +211,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate', 'disablecontrols' );
 		foreach( $mediaSources as &$source ){
+			if ( $this->disablecontrols && !isset( $source['disablecontrols'] ) ) {
+				$source['disablecontrols'] = $this->disablecontrols;
+			}
 			foreach( $source as $attr => $val ){
 				if( in_array( $attr, $prefixedSourceAttr ) ){
 					$source[ 'data-' . $attr ] = $val;
