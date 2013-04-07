@@ -5234,7 +5234,7 @@ $messages['yue'] = array(
  * @author 乌拉跨氪
  */
 $messages['zh-hans'] = array(
-	'timedmedia-desc' => '带有WebM，Ogg Theora、Vorbis，srt格式支持的音频、视频和字幕处理器',
+	'timedmedia-desc' => '音频、视频和字幕的处理程序，支持WebM，Ogg Theora、Vorbis，srt格式',
 	'timedmedia-ogg-short-audio' => 'Ogg $1声音文件，$2',
 	'timedmedia-ogg-short-video' => 'Ogg $1视频文件，$2',
 	'timedmedia-ogg-short-general' => 'Ogg $1媒体文件，$2',
@@ -5268,7 +5268,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-error-on' => '于$1转码错误。',
 	'timedmedia-started-transcode' => '于$1前开始转码。$2',
 	'timedmedia-percent-done' => '大约$1%已完成',
-	'timedmedia-in-job-queue' => '$1前添加到工作队列',
+	'timedmedia-in-job-queue' => '添加到工作队列在$1前',
 	'timedmedia-unknown-target-size' => '未知目标大小，$1已编码',
 	'timedmedia-days' => '$1天',
 	'timedmedia-hours' => '$1小时',
@@ -5276,12 +5276,12 @@ $messages['zh-hans'] = array(
 	'timedmedia-seconds' => '$1秒',
 	'timedmedia-show-error' => '显示错误',
 	'timedmedia-reset' => '重置转码',
-	'timedmedia-reset-confirm' => '重置转码会移除所有现有文件，并将其重新加入转码工作队列。可能需要一些时间来重新转码。<br /><br />
-您确实想继续吗？',
+	'timedmedia-reset-confirm' => '重置转码将会尽可能移除所有现有文件，并将其重新加入到转码工作队列。这将需要一些时间来重新转码。<br /><br />
+您确定要继续吗？',
 	'timedmedia-reset-error' => '重置转码工作时发生错误。',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1原始文件',
-	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）', # Fuzzy
+	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）',
 	'timedmedia-source-audio-file-desc' => '原始$1文件 ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => '低带宽Ogg视频（160P）',
 	'timedmedia-derivative-desc-360p.ogv' => 'Web流媒体Ogg视频（360P）',
@@ -5305,7 +5305,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-subtitle-no-subtitles' => '当前没有这个视频的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑这个页面]以添加',
 	'timedmedia-subtitle-remote' => '本文件的字幕文件位于$1',
 	'timedmedia-subtitle-remote-link' => '你可以在$2查看[$1 该文件的描述页]',
-	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmediahandler' => '定时媒体处理程序',
 	'timedmedia-videos' => '$1个视频',
 	'timedmedia-ogg-videos' => '$1个Ogg视频',
 	'timedmedia-webm-videos' => '$1个WebM视频',
@@ -5314,9 +5314,9 @@ $messages['zh-hans'] = array(
 	'timedmedia-derivative-state-queued' => '$1个队列中的转码任务',
 	'timedmedia-derivative-state-failed' => '$1次转码失败',
 	'timedmedia-file' => '文件',
-	'right-transcode-reset' => '重置失败或转码的视频以将其再次插入到作业队列中。',
+	'right-transcode-reset' => '重置已失败或已转码的视频将其再次加入到作业队列中。',
 	'right-transcode-status' => '查看[[Special:TimedMediaHandler|当前转码活动的信息]]',
-	'action-transcode-status' => '查看当前转码状态',
+	'action-transcode-status' => '查看当前的转码状态',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
