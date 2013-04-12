@@ -1063,6 +1063,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Nedergard
  * @author Nike
+ * @author Silvonen
  * @author Tofu II
  */
 $messages['fi'] = array(
@@ -1078,13 +1079,14 @@ $messages['fi'] = array(
 	'mwe-embedplayer-download_text' => 'Lataa teksti',
 	'mwe-embedplayer-download' => 'Lataa',
 	'mwe-embedplayer-share' => 'Jaa',
+	'mwe-embedplayer-about-library' => 'Tietoja Kaltura-soittimesta',
 	'mwe-embedplayer-share_this_video' => 'Jaa tämä video',
 	'mwe-embedplayer-menu_btn' => 'Valikko',
 	'mwe-embedplayer-close_btn' => 'Sulje',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
+	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-soitin',
 	'mwe-embedplayer-ogg-player-selected' => '(valittu)',
 	'mwe-embedplayer-for_best_experience' => 'Parempaa videotoistokokemusta varten suosituksena on selain, joka [$1 tukee HTML5-videota].',
-	'mwe-embedplayer-copy-code' => 'Kopioi koodi',
 	'mwe-embedplayer-video-h264' => 'H.264-video',
 	'mwe-embedplayer-video-webm' => 'WebM-video',
 	'mwe-embedplayer-video-flv' => 'Flash-video',
