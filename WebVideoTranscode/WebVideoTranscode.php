@@ -614,14 +614,6 @@ class WebVideoTranscode {
 		// Remove the db entries
 		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
 
-		// also remove assoicated jobs ( will be re-added on page view, or reset job request )
-		$deleteJobsWhere = array(
-			'job_cmd' => 'webVideoTranscode',
-			'job_title' => $file->getTitle()->getDBkey()
-		);
-		// Remove jobs db entries
-		$dbw->delete( 'job', $deleteJobsWhere, __METHOD__ );
-
 		// Purge the cache for pages that include this video:
 		self::invalidatePagesWithFile( $file->getTitle() );
 

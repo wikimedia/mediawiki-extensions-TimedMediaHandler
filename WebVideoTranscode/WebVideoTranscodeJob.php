@@ -27,6 +27,7 @@ class WebVideoTranscodeJob extends Job {
 
 	public function __construct( $title, $params, $id = 0 ) {
 		parent::__construct( 'webVideoTranscode', $title, $params, $id );
+		$this->removeDuplicates = true;
 	}
 
 	/**
