@@ -1316,6 +1316,8 @@ $messages['et'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) alltiitrid',
 	'timedmedia-subtitle-no-video' => 'Puudub selle alltiitrite leheküljega seotud video.',
 	'timedmedia-subtitle-no-subtitles' => 'Selle video alltiitrid puuduvad praegu selles keeles ($1). Saad seda lehekülge [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigeerida], et need lisada.',
+	'timedmedia-subtitle-remote' => 'Selle faili ajastatud tekst on hoidlas $1',
+	'timedmedia-subtitle-remote-link' => 'Selle faili [$1 kirjelduslehekülge] saad vaadata hoidlas $2.',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videot}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videot}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-video|$1 WebM-videot}}',
@@ -2132,6 +2134,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="//www.mediawiki.org/wiki/E
  * @author Farras
  * @author Irwangatot
  * @author IvanLanin
+ * @author Iwan Novirion
  * @author Rex
  * @author පසිඳු කාවින්ද
  */
@@ -2156,9 +2159,27 @@ Anda dapat <a href="$1">mengunduh klip</a> atau <a href="//www.mediawiki.org/wik
 	'timedmedia-desc-link' => 'Mengenai berkas ini',
 	'timedmedia-oggThumb-version' => 'OggHandler membutuhkan oggThumb versi $1 atau terbaru.',
 	'timedmedia-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
+	'timedmedia-status-header' => 'Status transkoder',
+	'timedmedia-update-status' => 'Memperbarui status transkoder',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Status tidak diketahui',
+	'timedmedia-transcodeinfo' => 'Deskripsi turunan transkoder',
+	'timedmedia-actions' => 'Tindakan',
+	'timedmedia-direct-link' => 'Unduh turunan',
+	'timedmedia-not-ready' => 'Belum siap',
+	'timedmedia-completed-on' => 'Transkoder komplit $1',
+	'timedmedia-error-on' => 'Kesalahan dalam transkoder pada  $1 .',
+	'timedmedia-started-transcode' => 'Transkoder mulai $1 yang lalu. $2',
+	'timedmedia-percent-done' => 'Sekitar $1% selesai',
+	'timedmedia-days' => '{{PLURAL:$1|$1 hari}}',
+	'timedmedia-hours' => '{{PLURAL:$1|$1 jam}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 menit}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 detik}}',
+	'timedmedia-show-error' => 'Tunjukkan kesalahan',
+	'timedmedia-reset' => 'Reset transkoder',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Sumber $1',
-	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg lebar pita rendah (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg aliran web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Video Ogg aliran web (480P)',
@@ -2166,9 +2187,22 @@ Anda dapat <a href="$1">mengunduh klip</a> atau <a href="//www.mediawiki.org/wik
 	'timedmedia-derivative-desc-360p.webm' => 'WebM aliran web (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM aliran web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM unduhan berkualitas tinggi (720P)',
+	'timedmedia-subtitle-new-go' => 'Lanjut',
 	'timedmedia-subtitle-language' => 'Teks film $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Tidak ada video yang terkait dengan halaman subjudul ini',
 	'timedmedia-subtitle-no-subtitles' => 'Saat ini tidak ada subjudul $1 untuk video ini. Anda dapat [{{fullurl: {{FULLPAGENAME}}|action=edit}} menyunting halaman ini] untuk menambahkannya',
+	'timedmediahandler' => 'Daftar berkas media',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Video ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 Video WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transkoder}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 transkoder aktif}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 antrian transkoder}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transkoder rusak}}',
+	'timedmedia-file' => 'Berkas',
+	'right-transcode-reset' => 'Reset transkoder rusak ataupun yang tidak sehingga kembali dimasukkan dalam antrian.',
+	'right-transcode-status' => 'Lihat [[Special:TimedMediaHandler|informasi tentang aktifitas transkoder terkini]]',
+	'action-transcode-status' => 'lihat status transkoder terkini',
 );
 
 /** Iloko (Ilokano)
@@ -2983,6 +3017,13 @@ $messages['lv'] = array(
 	'timedmedia-source-file' => '$1 avots',
 	'timedmedia-subtitle-new-go' => 'Aiziet!',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitri',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author Iwan Novirion
+ */
+$messages['min'] = array(
+	'timedmediahandler' => 'Dafta berkas media',
 );
 
 /** Macedonian (македонски)
@@ -3837,9 +3878,9 @@ $messages['ps'] = array(
 	'timedmedia-desc-link' => 'د همدې دوتنې په اړه',
 	'timedmedia-status' => 'دريځ',
 	'timedmedia-actions' => 'چارې',
-	'timedmedia-days' => '{{PLURAL:$1|ورځ|$1 ورځې}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|ساعت|$1 ساعتونه}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|دقيقه|دقيقې}}', # Fuzzy
+	'timedmedia-days' => '{{PLURAL:$1|1 ورځ|$1 ورځې}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 ساعت|$1 ساعتونه}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 دقيقه|دقيقې}}',
 	'timedmedia-subtitle-new-go' => 'ورځه',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 ويډيو|$1 ويډيوګانې}}',
 	'timedmedia-file' => 'دوتنه',
