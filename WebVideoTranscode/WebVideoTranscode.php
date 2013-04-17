@@ -815,7 +815,8 @@ class WebVideoTranscode {
 						'transcode_error' => "",
 						'transcode_final_bitrate' => 0
 					),
-					__METHOD__
+					__METHOD__,
+					array( 'IGNORE' )
 				);
 			} else {
 				// update job start time
@@ -827,29 +828,6 @@ class WebVideoTranscode {
 					array(
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
-					),
-					__METHOD__
-				);
-			}
-			//make sure we did not add a second row
-			//this is to avoid concurrent inserts in a multi server setup
-			if ( (int)$db->selectField ( 'transcode', 'COUNT(*)', array(
-				'transcode_image_name' => $fileName,
-				'transcode_key' => $transcodeKey,
-			) ) > 1 ) {
-				$id = $db->selectField( 'transcode', 'transcode_id',
-					array(
-						'transcode_image_name' => $fileName,
-						'transcode_key' => $transcodeKey
-					),
-					__METHOD__,
-					array( 'ORDER BY' => 'transcode_id' )
-				);
-				$db->delete( 'transcode',
-					array(
-						'transcode_image_name' => $fileName,
-						'transcode_key' => $transcodeKey,
-						"transcode_id != $id"
 					),
 					__METHOD__
 				);

@@ -13,6 +13,7 @@ CREATE TABLE /*_*/transcode (
 	transcode_final_bitrate INT NOT NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX /*i*/transcode_name_inx ON /*_*/transcode( transcode_image_name, transcode_key );
 CREATE INDEX /*i*/transcode_time_inx ON /*_*/transcode( transcode_time_addjob ,transcode_time_startwork , transcode_time_success, transcode_time_error );
 CREATE INDEX /*i*/transcode_key_idx ON /*_*/transcode( transcode_key );
+
+CREATE UNIQUE INDEX /*i*/transcode_name_key ON /*_*/transcode (transcode_image_name,transcode_key);
