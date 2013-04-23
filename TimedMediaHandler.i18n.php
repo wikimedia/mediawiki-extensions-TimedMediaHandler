@@ -808,9 +808,10 @@ $messages['ca'] = array(
 
 /** Chechen (нохчийн)
  * @author Sasan700
+ * @author Умар
  */
 $messages['ce'] = array(
-	'timedmedia-download' => 'Чуйаккха хlум',
+	'timedmedia-download' => 'Чуйаккха файл',
 );
 
 /** Czech (česky)
@@ -4041,7 +4042,7 @@ Sunteți sigur că doriți să continuați?',
 	'timedmedia-reset-error' => 'Eroare la reinițializarea codificării.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Sursă $1',
-	'timedmedia-source-file-desc' => '$1 original, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => '$1 original, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Videoclip Ogg cu lățime de bandă mică (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Videoclip Ogg pentru redare pe web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Videoclip Ogg pentru redare pe web (480P)',
@@ -4054,9 +4055,9 @@ Sunteți sigur că doriți să continuați?',
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4 pentru redare pe web (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4 de calitate HD (720P)',
 	'timedmedia-subtitle-new' => 'Creare traducere nouă sau modificare una existentă',
-	'timedmedia-subtitle-new-desc' => "Înlocuiți expresia '''$1''' cu [[:en:ISO 639|codul limbii]] dumneavoastră și apăsați butonul '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Înlocuiți expresia '''$1''' cu [[:en:ISO 639|codul limbii]] dumneavoastră și apăsați butonul '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Du-te',
-	'timedmedia-subtitle-language' => 'subtitrări în $1 ($2)',
+	'timedmedia-subtitle-language' => 'Subtitrare în $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Nu există niciun videoclip asociat cu pagina curentă de subtitrare',
 	'timedmedia-subtitle-no-subtitles' => 'Nu există în acest moment subtitrări în limba $1 pentru acest videoclip. Puteți [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifica această pagină] pentru a le adăuga.',
 	'timedmedia-subtitle-remote' => 'Subtitrarea sincronizată a acestui fișier este găzduită la $1',
