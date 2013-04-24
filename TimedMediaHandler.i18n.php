@@ -1568,7 +1568,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="//www.mediawiki.o
 	'timedmedia-file' => 'Fichier',
 	'right-transcode-reset' => 'Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux.',
 	'right-transcode-status' => "Afficher [[Special:TimedMediaHandler|l'information sur l'activité de transcodage actuelle]]",
-	'action-transcode-status' => "afficher l'état de transcodage actuel",
+	'action-transcode-status' => 'afficher l’état de transcodage actuel',
 );
 
 /** Franco-Provençal (arpetan)
