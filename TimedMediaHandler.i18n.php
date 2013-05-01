@@ -3997,6 +3997,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 /** Brazilian Portuguese (português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
+ * @author Luckas
  * @author Opraco
  */
 $messages['pt-br'] = array(
@@ -4008,7 +4009,7 @@ $messages['pt-br'] = array(
 	'timedmedia-ogg-long-video' => 'Vídeo Ogg $1, $2 de duração, $4×$5 pixels, $3',
 	'timedmedia-ogg-long-multiplexed' => 'Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo',
 	'timedmedia-ogg-long-general' => 'Multimídia Ogg, $2 de duração, $3',
-	'timedmedia-ogg-long-error' => 'Ficheiro ogg inválido: $1',
+	'timedmedia-ogg-long-error' => 'Arquivo ogg inválido: $1',
 	'timedmedia-no-player-js' => 'Desculpe, seu navegador ou está com JavaScript desabilitado ou não tem nenhum "player" suportado.<br />
 Você pode <a href="$1">descarregar o clipe</a> ou <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">descarregar um "player"</a> para executar o clipe em seu navegador.',
 	'timedmedia-more' => 'Mais...',
