@@ -5097,6 +5097,8 @@ $messages['vec'] = array(
 	'timedmedia-webm-long-video' => 'File audio/video WebM $1, durata $2, dimension $4×$5 pixel, conplesivamente $3',
 	'timedmedia-mp4-short-video' => 'File video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'File audio/video MP4 $1, durata $2, dimension $4×$5 pixel, conplesivamente $3',
+	'timedmedia-no-player-js' => 'El to browser el gà JavaScript destacà, opure no\'l gà nissun riprodutor suportà.<br />
+Te pol <a href="$1">descargar el file multimediale</a> o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">un riprodutor</a> par farlo \'ndar sul to browser.',
 	'timedmedia-more' => 'Altro...',
 	'timedmedia-dismiss' => 'Sara',
 	'timedmedia-download' => 'Descarga el file',
@@ -5124,6 +5126,8 @@ $messages['vec'] = array(
 	'timedmedia-seconds' => '{{PLURAL:$1|1 secondo|$1 secondi}}',
 	'timedmedia-show-error' => 'Varda eror',
 	'timedmedia-reset' => 'Rexeta transcodifega',
+	'timedmedia-reset-confirm' => "Resetando sta transcodifica tuti i file esistenti (se presenti) i sarà scancelà e la transcodifica la sarà de novo zontà a la coa de laoro. Ghe vorà un po' de tenpo par rifar la transcodifica. <br /><br />
+Vuto 'ndar vanti?",
 	'timedmedia-reset-error' => "Eror inte'l resetajo de ła transcodifega.",
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Fonte $1',

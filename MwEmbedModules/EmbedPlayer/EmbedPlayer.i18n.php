@@ -3558,6 +3558,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Milicevic01
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -3568,7 +3569,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-loading_plugin' => 'Учитавам додатак…',
 	'mwe-embedplayer-select_playback' => 'Постави подешавања за извођење',
 	'mwe-embedplayer-link_back' => 'Обрнута веза',
-	'mwe-embedplayer-error_swap_vid' => 'Грешка: mwEmbed не може да замени видео-ознаку за сучеље mwEmbed',
+	'mwe-embedplayer-error_swap_vid' => 'Грешка: mwEmbed не може да замени видео-ознаку за окружење mwEmbed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Додај на крај низа',
 	'mwe-embedplayer-missing_video_stream' => 'Недостаје видео-снимак за овај ток',
 	'mwe-embedplayer-play_clip' => 'Пусти клип',
@@ -3616,7 +3617,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(изабрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'За квалитетније прегледање снимака, препоручујемо вам [$1 најновији Фајерфокс].', # Fuzzy
-	'mwe-embedplayer-download-warn' => 'Није пронађен прикладан извођач за пуштање преко прегледача. Преузмите [$1 најновији Фајерфокс]',
+	'mwe-embedplayer-download-warn' => 'Није пронађен прикладан извођач за пуштање преко прегледача. Преузмите [$1 најновији Фајерфокс]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Притисните <b>F11</b> да пребаците <i>прегледач</i> на цео екран',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Притисните <b>Shift ⌘ F</b> за пребацивање на цео екран',
 	'mwe-embedplayer-do_not_warn_again' => 'Не приказуј ову поруку поново',
@@ -3626,7 +3627,6 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-related_videos' => 'Сродни видео-снимци',
 	'mwe-embedplayer-seeking' => 'тражим',
 	'mwe-embedplayer-buffering' => 'учитавам',
-	'mwe-embedplayer-copy-code' => 'Копирај кôд',
 	'mwe-embedplayer-video-h264' => 'H.264 видео',
 	'mwe-embedplayer-video-webm' => 'WebM видео',
 	'mwe-embedplayer-video-flv' => 'Флеш видео',
