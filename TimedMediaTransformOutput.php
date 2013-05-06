@@ -336,8 +336,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 			// XXX Note: will probably migrate mwprovider to an escaped api url.
 			$mediaAttr[ 'data-mwprovider' ] = $apiProviderName;
+		} else {
+			if ( $length ) {
+				$mediaAttr[ 'data-durationhint' ] = $length;
+			}
+			if ( $offset ) {
+				$mediaAttr[ 'data-startoffset' ] = $offset;
+			}
 		}
-
 		return $mediaAttr;
 	}
 
