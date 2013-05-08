@@ -56,12 +56,17 @@ $messages['en'] = array(
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'mwe-timedtext-stage-translate' => '{{Identical|Translate}}',
+	'mwe-timedtext-stage-transcribe' => 'Unused at this time.',
+	'mwe-timedtext-stage-sync' => 'Unused at this time.',
+	'mwe-timedtext-stage-translate' => 'Unused at this time.
+{{Identical|Translate}}',
+	'mwe-timedtext-stage-upload' => 'Unused at this time.',
 	'mwe-timedtext-select-language' => '{{Identical|Select language}}',
 	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
 	'mwe-timedtext-layout' => '{{Identical|Layout}}',
 	'mwe-timedtext-key-language' => '{{optional}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
+	'mwe-timedtext-textcat-ktv' => 'See [[w:Karaoke]].',
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Used as page title, if the subtitles exist. Parameters:
 Parameters:
