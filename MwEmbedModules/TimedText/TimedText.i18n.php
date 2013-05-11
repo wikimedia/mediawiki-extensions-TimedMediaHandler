@@ -1445,6 +1445,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (português do Brasil)
  * @author Giro720
+ * @author Luckas
  * @author Luckas Blade
  * @author 555
  */
@@ -1458,7 +1459,7 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-file-language' => 'Língua do arquivo de legendas',
 	'mwe-timedtext-back-btn' => 'Voltar',
 	'mwe-timedtext-choose-text' => 'Escolher texto',
-	'mwe-timedtext-upload-timed-text' => 'Carregar legendas', # Fuzzy
+	'mwe-timedtext-upload-timed-text' => 'Adicionar legendas',
 	'mwe-timedtext-loading-text-edit' => 'Carregando editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
 	'mwe-timedtext-layout' => 'Posição',

@@ -3112,6 +3112,7 @@ $messages['ps'] = array(
 
 /** Portuguese (português)
  * @author Hamilton Abreu
+ * @author Luckas
  * @author SandroHc
  * @author Waldir
  */
@@ -3168,10 +3169,10 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-cortado' => 'Java Cortado',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
-	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
+	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador de vídeo html5].',
-	'mwe-embedplayer-download-warn' => 'Não foi encontrado nenhum leitor compatível que possa ser integrado no browser; para reproduzir no browser faça o download da [$1 última versão do Firefox]',
+	'mwe-embedplayer-download-warn' => 'Não foi encontrado nenhum leitor compatível que possa ser integrado no browser; para reproduzir no browser faça o download da [$1 última versão do Firefox]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para activar ou desactivar o modo de ecrã-inteiro no <i>browser</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Carregue em <b>shift ⌘ F</b> para activar ou desactivar o modo de ecrã-inteiro',
 	'mwe-embedplayer-do_not_warn_again' => 'No futuro, não mostrar esta mensagem',
@@ -3181,7 +3182,6 @@ $messages['pt'] = array(
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'a procurar',
 	'mwe-embedplayer-buffering' => 'a preencher a buffer',
-	'mwe-embedplayer-copy-code' => 'Copiar código',
 	'mwe-embedplayer-video-h264' => 'Vídeo H.264',
 	'mwe-embedplayer-video-webm' => 'Vídeo WebM',
 	'mwe-embedplayer-video-flv' => 'Vídeo Flash',

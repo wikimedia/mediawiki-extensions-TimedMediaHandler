@@ -3932,6 +3932,7 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Luckas
  * @author Malafaya
  * @author Opraco
  * @author Waldir
@@ -3963,7 +3964,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 	'timedmedia-status' => 'estado',
 	'timedmedia-status-unknown' => 'estado desconhecido',
 	'timedmedia-transcodeinfo' => 'Descrição do ficheiro transcodificado',
-	'timedmedia-actions' => 'acções',
+	'timedmedia-actions' => 'Ações',
 	'timedmedia-direct-link' => 'Download do ficheiro transcodificado',
 	'timedmedia-not-ready' => 'Ainda não está pronto',
 	'timedmedia-completed-on' => 'Transcodificação de $1 terminada',
