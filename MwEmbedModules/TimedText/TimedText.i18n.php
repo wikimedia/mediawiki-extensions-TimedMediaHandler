@@ -244,6 +244,13 @@ $messages['ca'] = array(
 	'mwe-timedtext-textcat-sub' => 'Subtítols',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'mwe-timedtext-search' => 'Лаха клип',
+);
+
 /** Czech (česky)
  * @author Mormegil
  * @author Vks
