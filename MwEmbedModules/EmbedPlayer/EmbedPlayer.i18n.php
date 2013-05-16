@@ -1101,6 +1101,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Gomoko
  * @author IAlex
+ * @author Nnemo
  * @author Peter17
  */
 $messages['fr'] = array(
@@ -1160,7 +1161,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lecteur Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(sélectionné)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage, nous recommandons un [$1 navigateur vidéo HTML 5].',
+	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage, nous recommandons un [$1 navigateur vidéo HTML5].',
 	'mwe-embedplayer-download-warn' => 'Aucun navigateur web compatible détecté: pour une lecteur intégré au navigateur, veuillez télécharger la [$1 dernière version de Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran',
