@@ -811,7 +811,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
-	'timedmedia-download' => 'Файл чуяккхар',
+	'timedmedia-download' => 'Чуйаккха файл',
 );
 
 /** Czech (česky)
