@@ -25,6 +25,7 @@ class TimedMediaHandler extends MediaHandler {
 			'timedmedia_thumbtime' => 'thumbtime',
 			'timedmedia_starttime'	=> 'start',
 			'timedmedia_endtime'	=> 'end',
+			'timedmedia_disablecontrols'	=> 'disablecontrols',
 		);
 	}
 
@@ -39,6 +40,13 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $name == 'thumbtime' || $name == 'start' || $name == 'end' ) {
 			if ( $this->parseTimeString( $value ) === false ) {
 				return false;
+			}
+		} else if ( $name == 'disablecontrols' ) {
+			$values = explode( ',', $value);
+			foreach($values as $v) {
+				if ( !in_array( $v, array( 'options', 'timedText', 'fullscreen' ) ) ) {
+					return false;
+				}
 			}
 		}
 		return true;
@@ -321,6 +329,7 @@ class TimedMediaHandler extends MediaHandler {
 			'start' => isset( $params['start'] ) ? $params['start'] : false,
 			'end' => isset( $params['end'] ) ? $params['end'] : false,
 			'fillwindow' => isset( $params['fillwindow'] ) ? $params['fillwindow'] : false,
+			'disablecontrols' => isset ( $params['disablecontrols'] ) ? $params['disablecontrols'] : false
 		);
 
 		// No thumbs for audio
