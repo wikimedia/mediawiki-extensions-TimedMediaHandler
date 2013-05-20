@@ -161,7 +161,7 @@ class TimedTextPage extends Article {
 						'var articlePath = mw.config.get( "wgArticlePath" );' .
 						'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
 						'var title = ' . json_encode( $timedTextTile ) . '.replace("LANG", $("#timedmedia-tt-input").val());'.
-						'window.location = articlePath.replace(/\$1/, title + ' .
+						'window.location = articlePath.replace(/\$1/, mw.util.wikiUrlencode( title ) + ' .
 						' paramSep + "action=edit" )  ' .
 					'});' .
 				'});'
