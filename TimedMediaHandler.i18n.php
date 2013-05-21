@@ -811,7 +811,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
-	'timedmedia-download' => 'Чуйаккха файл',
+	'timedmedia-download' => 'Файл чуяккхар',
 );
 
 /** Czech (česky)
@@ -2971,7 +2971,12 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="//www.mediawiki.or
 	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekonn|$1 Sekonnen}}',
 	'timedmedia-show-error' => 'Feeler weisen',
 	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file' => 'Quell ($1)',
 	'timedmedia-subtitle-new-go' => 'Lass',
+	'timedmedia-subtitle-language' => '$1 ($2) Ënnertitelen',
+	'timedmedia-subtitle-no-video' => 'Et ass kee Video mat der aktueller Säit vun Ënnertitelen associéiert.',
+	'timedmedia-subtitle-remote-link' => "Dir kënnt [$1 d'Beschreiwungssäit] fir dëse Fichier op $2 gesinn",
+	'timedmedia-videos' => '{{PLURAL:$1|$1 Video|$1 Videoen}}',
 	'timedmedia-file' => 'Fichier',
 );
 
