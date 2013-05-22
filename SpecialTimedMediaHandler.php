@@ -11,7 +11,7 @@
 class SpecialTimedMediaHandler extends SpecialPage {
 	private $transcodeStates = array(
 		'active' => 'transcode_time_startwork IS NOT NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
-		'failed' => 'transcode_error != ""',
+		'failed' => 'transcode_error != "" AND transcode_time_success IS NULL',
 		'queued' => 'transcode_time_startwork IS NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
 
 	);

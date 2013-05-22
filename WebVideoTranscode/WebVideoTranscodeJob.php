@@ -248,6 +248,7 @@ class WebVideoTranscodeJob extends Job {
 				$dbw->update(
 					'transcode',
 					array(
+						'transcode_error' => '',
 						'transcode_time_success' => $dbw->timestamp(),
 						'transcode_final_bitrate' => $bitrate
 					),
