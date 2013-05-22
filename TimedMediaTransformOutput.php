@@ -214,9 +214,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate', 'disablecontrols' );
 		foreach( $mediaSources as &$source ){
-			if ( $this->disablecontrols && !isset( $source['disablecontrols'] ) ) {
-				$source['disablecontrols'] = $this->disablecontrols;
-			}
 			foreach( $source as $attr => $val ){
 				if( in_array( $attr, $prefixedSourceAttr ) ){
 					$source[ 'data-' . $attr ] = $val;
@@ -354,6 +351,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			if ( $offset ) {
 				$mediaAttr[ 'data-startoffset' ] = $offset;
 			}
+		}
+		if ( $this->disablecontrols ) {
+			$mediaAttr[ 'data-disablecontrols' ] = $this->disablecontrols;
 		}
 		return $mediaAttr;
 	}

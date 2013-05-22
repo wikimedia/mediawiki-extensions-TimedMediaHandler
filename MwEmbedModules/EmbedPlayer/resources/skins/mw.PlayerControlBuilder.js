@@ -193,8 +193,11 @@ mw.PlayerControlBuilder.prototype = {
 
 		// Give embeds option to explicitly disable components via flag
 		var source = embedPlayer.mediaElement.getPlayableSources()[0];
-		if ( source && source.disablecontrols ) {
-			source.disablecontrols.split(',').forEach(function( key ) {
+		if ( !embedPlayer.disablecontrols && source ) {
+			embedPlayer.disablecontrols = source.disablecontrols;
+		}
+		if ( embedPlayer.disablecontrols ) {
+			embedPlayer.disablecontrols.split(',').forEach(function( key ) {
 				mw.log( 'PlayerControlBuilder:: disabled component via flag:' + key );
 				_this.supportedComponents[ key ] = false;
 			});
