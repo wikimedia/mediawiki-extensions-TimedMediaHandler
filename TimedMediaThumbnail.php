@@ -129,7 +129,7 @@ class TimedMediaThumbnail {
 
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
-		$cmd .=	' -f mjpeg -an -vframes 1 ' .
+		$cmd .= ' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $options['dstPath'] ) . ' 2>&1';
 
 		$retval = 0;

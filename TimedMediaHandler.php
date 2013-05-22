@@ -247,5 +247,5 @@ $wgExtensionCredits['media'][] = array(
 	'author'         => array( 'Michael Dale', 'Tim Starling', 'James Heinrich', 'Jan Gerber' ),
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmedia-desc',
-	'version'		 => '0.3',
+	'version'        => '0.3',
 );

@@ -5,7 +5,7 @@
  * This enables iframe based embeds of the wikimeia player with the following syntax:
  *
  * <iframe src="http://commons.wikimedia.org/wiki/File:Folgers.ogv?embedplayer=yes"
- * 		width="240" height="180" frameborder="0" ></iframe>
+ *     width="240" height="180" frameborder="0" ></iframe>
  *
  */
 

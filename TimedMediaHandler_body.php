@@ -23,9 +23,9 @@ class TimedMediaHandler extends MediaHandler {
 		return array(
 			'img_width' => 'width',
 			'timedmedia_thumbtime' => 'thumbtime',
-			'timedmedia_starttime'	=> 'start',
-			'timedmedia_endtime'	=> 'end',
-			'timedmedia_disablecontrols'	=> 'disablecontrols',
+			'timedmedia_starttime' => 'start',
+			'timedmedia_endtime' => 'end',
+			'timedmedia_disablecontrols' => 'disablecontrols',
 		);
 	}
 
