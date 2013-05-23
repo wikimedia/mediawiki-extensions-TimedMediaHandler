@@ -1538,9 +1538,20 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Trascrive',
 	'mwe-timedtext-stage-sync' => 'Sinc',
 	'mwe-timedtext-stage-translate' => 'Traduce',
 	'mwe-timedtext-stage-upload' => "Careche da 'u file locale",
+	'mwe-timedtext-select-language' => "Scacchie 'a lènghe",
+	'mwe-timedtext-file-language' => "Sottotitole d'u file d'a lènghe",
+	'mwe-timedtext-back-btn' => 'Rrete',
+	'mwe-timedtext-choose-text' => "Scacchie 'u teste",
+	'mwe-timedtext-upload-timed-text' => 'Aggiunge le sottotitole',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-nb' => 'Annotazione',
+	'mwe-timedtext-textcat-meta' => 'Metadate temborizzate',
+	'mwe-timedtext-textcat-trx' => 'Trascrive',
+	'mwe-timedtext-textcat-lrc' => 'Teste',
 );
 
 /** Russian (русский)
