@@ -2509,6 +2509,7 @@ $messages['ja'] = array(
 	'timedmedia-status' => '状態',
 	'timedmedia-status-unknown' => '不明な状態',
 	'timedmedia-actions' => '操作',
+	'timedmedia-not-ready' => '準備ができていません',
 	'timedmedia-percent-done' => '約 $1% 完了',
 	'timedmedia-in-job-queue' => '$1前にジョブ キューに追加されました',
 	'timedmedia-days' => '{{PLURAL:$1|$1 日}}',
