@@ -16,6 +16,7 @@
 var kplayer = new mw.MediaPlayer('kplayer', [
 	'video/x-flv',
 	'video/h264',
+	'video/mp4; codecs="avc1.42E01E"',
 	'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 	'audio/mpeg'
 ], 'Kplayer');
@@ -23,6 +24,7 @@ var kplayer = new mw.MediaPlayer('kplayer', [
 // Java based player
 var cortadoPlayer = new mw.MediaPlayer( 'cortado', [
 	'video/ogg',
+	'video/ogg; codecs="theora"',
 	'video/ogg; codecs="theora,vorbis"',
 	'audio/ogg',
 	'audio/ogg; codecs="vorbis"',
@@ -32,6 +34,7 @@ var cortadoPlayer = new mw.MediaPlayer( 'cortado', [
 // Native html5 players
 var oggNativePlayer = new mw.MediaPlayer( 'oggNative', [
 	'video/ogg',
+	'video/ogg; codecs="theora"',
 	'video/ogg; codecs="theora, vorbis"',
 	'audio/ogg',
 	'audio/ogg; codecs="vorbis"',
@@ -55,6 +58,7 @@ var aacNativePlayer = new mw.MediaPlayer( 'aacNative', [
 ], 'Native' );
 var webmNativePlayer = new mw.MediaPlayer( 'webmNative', [
 	'video/webm',
+	'video/webm; codecs="vp8"',
 	'video/webm; codecs="vp8, vorbis"'
 ], 'Native' );
 
