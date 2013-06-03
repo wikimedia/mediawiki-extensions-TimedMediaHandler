@@ -766,7 +766,7 @@ Možete <a href="$1">učitati klip</a> ili <a href="//www.mediawiki.org/wiki/Ext
 	'timedmedia-oggThumb-version' => 'OggHandler zahtijeva oggThumb verziju $1 ili kasniju.',
 	'timedmedia-oggThumb-failed' => 'oggThumb nije uspio napraviti smanjeni pregled.',
 	'timedmedia-source-file' => '$1 izvor',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-language' => '$1 ($2) podnaslovi',
 );
 
@@ -798,7 +798,7 @@ $messages['ca'] = array(
 	'timedmedia-seconds' => '{{PLURAL:$1|1 segon|$1 segons}}',
 	'timedmedia-show-error' => 'Mostra els errors',
 	'timedmedia-mp4' => 'MP4',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-language' => '$1 ($2) subtítols',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}',
@@ -862,7 +862,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 	'timedmedia-show-error' => 'Zobrazit chybu',
 	'timedmedia-reset' => 'Obnovit transkódování',
 	'timedmedia-subtitle-new' => 'Vytvoření nového překladu nebo editace stávajícího',
-	'timedmedia-subtitle-new-desc' => "Nahraďte část '''$1''' svým [[:cs:ISO 639|kódem jazyka]] a stiskněte tlačítko '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Nahraďte část '''$1''' svým [[:cs:ISO 639|kódem jazyka]] a stiskněte tlačítko '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Přejít',
 	'timedmedia-subtitle-language' => 'titulky v jazyce $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'K aktuální stránce titulků nepatří žádné video.',
@@ -1232,7 +1232,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-reset-error' => 'Error al restablecer el trabajo de transcodificación.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Fuente $1',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Video en formato Ogg de bajo ancho de banda (160 P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Vídeo Ogg para la web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Vídeo Ogg para la web (480P)',
@@ -1245,7 +1245,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4 para la web (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4 de calidad HD (720P)',
 	'timedmedia-subtitle-new' => 'Crear una nueva traducción o editar una existente',
-	'timedmedia-subtitle-new-desc' => "Reemplaza la parte '''LANG'' con su [[:en:ISO 639|código de idioma]] y presiona el botón '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Reemplaza la parte '''LANG'' con su [[:en:ISO 639|código de idioma]] y presiona el botón '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Ir',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
@@ -1604,7 +1604,7 @@ $messages['frp'] = array(
 	'timedmedia-seconds' => '$1 second{{PLURAL:$1|a|es}}', # Fuzzy
 	'timedmedia-show-error' => 'Fâre vêre les èrrors',
 	'timedmedia-source-file' => 'Sôrsa $1',
-	'timedmedia-source-file-desc' => 'Originâl $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Originâl $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-language' => 'sot-titros en $1 ($2)',
 	'timedmedia-file' => 'Fichiér',
 );
@@ -1792,7 +1792,7 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="//www.mediawiki.org/wik
 	'timedmedia-reset-confirm' => "S Zruggsetze vo dere Umschlüsselig wird (wänn's vorhande isch), die aktuelli Datei ussenee un d Umschlüsselig no emool uff d Ufftragswarteschlange dezuefiege. E nöii Umschlüsselig wird e Wyyl goo.<br /><br /> Söll des würkli gmacht werde?",
 	'timedmedia-reset-error' => 'Fääler bim Zruggsetze vo de Umschlüsselig.',
 	'timedmedia-source-file' => 'Quell ($1)',
-	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 x $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-Videodatei mit niidriger Dateübertragigsrate (160p)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Webstreamingfähigi Ogg-Videodatei (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webstreamingfähigi Ogg-Videodatei (480p)',
@@ -2051,7 +2051,7 @@ $messages['hu'] = array(
 	'timedmedia-desc-link' => 'Fájlinformációk',
 	'timedmedia-oggThumb-version' => 'Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.',
 	'timedmedia-oggThumb-failed' => 'Az oggThumb nem tudta elkészíteni a bélyegképet.',
-	'timedmedia-source-file-desc' => 'Eredeti $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Eredeti $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Alacsony sávszélességű Ogg videó (160P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Magas minőségű, letölthető Ogg videó (720P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Magas minőségű, letölthető WebM (720P)',
@@ -2104,7 +2104,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="//www.mediawiki.org/wiki/E
 	'timedmedia-reset-confirm' => 'Reinitialisar iste transcodification removera tote le files existente (si presente), e illo re-addera le transcodification al cauda de actiones. Le transcodification prendera un tempore. <br /><br />Es tu secur de voler continuar?',
 	'timedmedia-reset-error' => 'Error durante le reinitialisation del action de transcodification',
 	'timedmedia-source-file' => 'original $1',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Video Ogg a basse largor de banda (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Video Ogg transmissibile per fluxo web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Video Ogg transmissibile per fluxo web (480P)',
@@ -2114,7 +2114,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="//www.mediawiki.org/wiki/E
 	'timedmedia-derivative-desc-480p.webm' => 'WebM transmissibile per fluxo web (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM discargabile de alte qualitate (720P)',
 	'timedmedia-subtitle-new' => 'Crear un nove traduction o modificar le existente',
-	'timedmedia-subtitle-new-desc' => "Reimplacia le litteras '''$1''' per le [[:en:ISO 639|codice de tu lingua]] e preme le button '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Reimplacia le litteras '''$1''' per le [[:en:ISO 639|codice de tu lingua]] e preme le button '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Va',
 	'timedmedia-subtitle-language' => '$1 ($2) subtitulos',
 	'timedmedia-subtitle-no-video' => 'Il non ha video associate con le actual pagina de subtitulos',
@@ -2363,7 +2363,7 @@ $messages['is'] = array(
 	'timedmedia-seconds' => '{{PLURAL:$1|ein sekúnda|$1 sekúndur}}', # Fuzzy
 	'timedmedia-show-error' => 'Sýna villu',
 	'timedmedia-source-file' => '$1 uppruni',
-	'timedmedia-source-file-desc' => 'Upphafleg $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Upphafleg $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg myndband fyrir litla bandbreidd (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg myndbands streymi (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg myndbands streymi (480P)',
@@ -2374,7 +2374,7 @@ $messages['is'] = array(
 	'timedmedia-derivative-desc-720p.webm' => 'Hágæða niðurhalanlegt WebM myndband (720P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4 myndbands streymi (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'Háskerpu MP4 (720P)',
-	'timedmedia-subtitle-new-desc' => "Skiptu '''$1''' út fyrir [[:en:ISO 639|tungumálakóðann]] þinn og smelltu á '''{{int:Timedmedia-subtitle-new-go}}''' takkann",
+	'timedmedia-subtitle-new-desc' => "Skiptu '''$1''' út fyrir [[:en:ISO 639|tungumálakóðann]] þinn og smelltu á '''{{int:Timedmedia-subtitle-new-go}}''' takkann", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Áfram',
 	'timedmedia-subtitle-no-video' => 'Ekkert myndband tengist þessum myndbanda texta',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 myndband|$1 myndbönd}}',
@@ -2610,12 +2610,12 @@ $messages['jv'] = array(
 	'timedmedia-reset' => 'Setèl ulang transkodhé',
 	'timedmedia-reset-error' => 'Kasalahan nalika nyetèl ulang tugas transkodhé.',
 	'timedmedia-source-file' => 'Sumber $1',
-	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => '$1 asli, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Vidio Ogg bandwidth cilik (160P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Vidio Ogg sing bisa diundhuh mawa kualitas dhuwur (720P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM sing bisa diundhuh mawa kualitas dhuwur (720P)',
 	'timedmedia-subtitle-new' => 'Gawé terjemahan anyar utawa sunting sing wis ana',
-	'timedmedia-subtitle-new-desc' => "Ganti bagéyan '''$1''' nganggo [[:en:ISO 639|kodhé basa]] Sampéyan lan pencèt tombol '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Ganti bagéyan '''$1''' nganggo [[:en:ISO 639|kodhé basa]] Sampéyan lan pencèt tombol '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Nuju',
 	'timedmedia-subtitle-language' => 'Subjudhul $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Ora ana vidio sing cocok karo kaca subjudhul saiki',
@@ -2922,7 +2922,7 @@ met Ongershtözung för de Fommaate <i lang="en">WebM</i>, <i lang="en">Ogg Theo
 	'timedmedia-oggThumb-version' => 'Dä <code lang="en">OggHandler</code> bruch <code lang="en">oggThumb</code> in dä Version $1 udder hüüter.',
 	'timedmedia-oggThumb-failed' => '<code lang="en">oggThumb</code> kunnt kei MiniBelldsche maache.',
 	'timedmedia-source-file' => 'Quell-Dattei em $1-Fommaat',
-	'timedmedia-source-file-desc' => 'Ojinaal $1-Dattei, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Ojinaal $1-Dattei, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'En Viddejo-Dattei met winnesch Bandbreide (160P) em <i lang="en">Ogg</i>-Fommaat',
 	'timedmedia-derivative-desc-360p.ogv' => 'En Viddejo-Dattei em <i lang="en">Ogg</i>-Fommaat (360p) för ene Dahteshtrohm övver et Nez',
 	'timedmedia-derivative-desc-480p.ogv' => 'En Viddejo-Dattei (met 480p) em <i lang="en">Ogg</i>-Fommaat för ene Dahteshtrohm övver et Nez',
@@ -3409,7 +3409,7 @@ $messages['nah'] = array(
 	'timedmedia-desc-link' => 'Inīn tlahcuilōltechcopa',
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  * @author Danmichaelo
  * @author Laaknor
  * @author Nghtwlkr
@@ -3438,7 +3438,7 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
 	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
 	'timedmedia-source-file' => '$1 kilde',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg-video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Nett-strømbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Nett-strømbar Ogg-video (480P)',
@@ -3470,7 +3470,7 @@ $messages['nds'] = array(
 	'timedmedia-desc-link' => 'Över disse Datei',
 );
 
-/** Nedersaksies (Nedersaksies)
+/** Low Saxon (Netherlands) (Nedersaksies)
  * @author Servien
  */
 $messages['nds-nl'] = array(
@@ -3594,7 +3594,7 @@ Weet u zeker dat u wilt doorgaan?',
 	'action-transcode-status' => 'huidige transcoderingsstatus te bekijken',
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎)
+/** Norwegian Nynorsk (norsk nynorsk)
  * @author Eirik
  * @author Harald Khan
  * @author Njardarlogar
@@ -3622,13 +3622,13 @@ $messages['nn'] = array(
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekund}}',
 	'timedmedia-show-error' => 'Vis feil',
 	'timedmedia-source-file' => '$1-kjelde',
-	'timedmedia-source-file-desc' => 'Opphavleg $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Opphavleg $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-video med låg bandbreidd (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg-video som kan strøymast på nett (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg-video som kan strøymast på nett (480P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Ogg-video av høg kvalitet som kan lastast ned (720P)',
 	'timedmedia-subtitle-new' => 'Lag ny omsetjing eller endra eksisterande',
-	'timedmedia-subtitle-new-desc' => "Byt ut '''$1'''-delen med [[:en:ISO 639|språkkoden]] din og trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
+	'timedmedia-subtitle-new-desc' => "Byt ut '''$1'''-delen med [[:en:ISO 639|språkkoden]] din og trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Gå',
 );
 
@@ -3651,7 +3651,7 @@ $messages['oc'] = array(
 	'timedmedia-desc-link' => "A prepaus d'aqueste fichièr",
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Jnanaranjan Sahu
  */
 $messages['or'] = array(
@@ -3814,7 +3814,7 @@ Czy na pewno chcesz kontynuować?',
 	'timedmedia-reset-error' => 'Błąd w resecie konwersji.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Źródło $1',
-	'timedmedia-source-file-desc' => 'Oryginalne $1, $2 x $3 ($4)',
+	'timedmedia-source-file-desc' => 'Oryginalne $1, $2 x $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg video o niskiej przepustowości (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg video o przepustowości sieciowej (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg video o przepustowości sieciowej (480P)',
@@ -4287,7 +4287,7 @@ $messages['ru'] = array(
 Вы уверены, что хотите продолжить?',
 	'timedmedia-reset-error' => 'Ошибка при перезапуске декодирования.',
 	'timedmedia-source-file' => 'Источник $1',
-	'timedmedia-source-file-desc' => 'Оригинал $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Оригинал $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-видео низкого качества (160p)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Потоковое Ogg-видео (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Потоковое Ogg-видео (480p)',
@@ -4384,7 +4384,7 @@ $messages['si'] = array(
 	'timedmedia-reset-error' => 'transcode කෘත්‍ය යළි සැකසීමේ දෝෂය.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 මූලාශ්‍රය',
-	'timedmedia-source-file-desc' => 'නියම $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'නියම $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'අවම කලාප පළල Ogg විදෘශ්‍ය (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'ජාල ශ්‍රෝතමය Ogg වීඩියෝව (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'ජාල ශ්‍රෝතමය Ogg වීඩියෝව (480P)',
@@ -4567,7 +4567,7 @@ $messages['sr-ec'] = array(
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-source-file' => 'Изворни $1',
-	'timedmedia-source-file-desc' => 'Изворни $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Изворни $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160п',
 	'timedmedia-derivative-desc-160p.ogv' => 'Нископропусни .ogg видео (160п)',
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360п',
@@ -4617,7 +4617,7 @@ $messages['sr-el'] = array(
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-source-file' => 'Izvorni $1',
-	'timedmedia-source-file-desc' => 'Izvorni $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Izvorni $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160p',
 	'timedmedia-derivative-desc-160p.ogv' => 'Niskopropusni .ogg video (160p)',
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360p',
@@ -4719,7 +4719,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-show-error' => 'Visa fel',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 Källa',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Låg bandbredd Ogg-video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Webbströmningsbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webbströmningsbar Ogg-video (480P)',
@@ -4732,7 +4732,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-derivative-desc-480p.mp4' => 'Webbströmningsbar MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720P)',
 	'timedmedia-subtitle-new' => 'Skapa ny översättning eller redigera befintlig',
-	'timedmedia-subtitle-new-desc' => "Ersätt delen '''$1''' med din [[:en:ISO 639|språkkod]] och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Ersätt delen '''$1''' med din [[:en:ISO 639|språkkod]] och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Gå',
 	'timedmedia-subtitle-language' => '$1 ($2) undertexter',
 	'timedmedia-subtitle-no-video' => 'Det finns ingen video som är associerade med den aktuella undertextssidan',
@@ -4814,7 +4814,7 @@ $messages['te'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|గంట|$1 గంటలు}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|నిమిషం|$1 నిమిషాలు}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|క్షణం|$1 క్షణాలు}}', # Fuzzy
-	'timedmedia-source-file-desc' => 'అసలు $1, $2 × $3 ($4)',
+	'timedmedia-source-file-desc' => 'అసలు $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-new-go' => 'వెళ్ళు',
 	'timedmedia-subtitle-language' => '$1 ($2) ఉపశీర్షికలు',
 	'timedmedia-file' => 'దస్త్రం',
@@ -4928,7 +4928,7 @@ Nakatitiyak ka ba na nais mong magpatuloy?',
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-source-file' => '$1 pinagkukunan',
-	'timedmedia-source-file-desc' => 'Orihinal na $1, $2 × $3 ( $4)',
+	'timedmedia-source-file-desc' => 'Orihinal na $1, $2 × $3 ( $4)', # Fuzzy
 	'timedmedia-derivative-160p.ogv' => 'Ogg 160P',
 	'timedmedia-derivative-desc-160p.ogv' => 'Mababang lapad ng paha ng bidyo ng Ogg (160P)',
 	'timedmedia-derivative-360p.ogv' => 'Ogg 360P',
@@ -4946,7 +4946,7 @@ Nakatitiyak ka ba na nais mong magpatuloy?',
 	'timedmedia-derivative-720p.webm' => 'WebM 720P',
 	'timedmedia-derivative-desc-720p.webm' => 'Mataas na uri ng WebM na maikakargang paibaba (720P)',
 	'timedmedia-subtitle-new' => 'Lumikha ng bagong salinwika o baguhin ang umiiral na',
-	'timedmedia-subtitle-new-desc' => "Palitan ang bahaging '''$1''' ng iyong [[:en:ISO 639|kodigo ng wika]] at pindutin ang pindutang '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-desc' => "Palitan ang bahaging '''$1''' ng iyong [[:en:ISO 639|kodigo ng wika]] at pindutin ang pindutang '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
 	'timedmedia-subtitle-new-go' => 'Gawin',
 	'timedmedia-subtitle-language' => '$1 ($2) kabahaging mga pamagat',
 	'timedmedia-subtitle-no-video' => 'Walang bidyo na may kaugnayan sa pangkasalukuyang pahina ng kabahaging pamagat',
