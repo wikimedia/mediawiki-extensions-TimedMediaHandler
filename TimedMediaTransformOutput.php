@@ -150,12 +150,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	function getImagePopUp(){
+		// pop up videos set the autoplay attribute to true:
+		$autoPlay = true;
 		return Xml::tags( 'div' , array(
 				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
 							$this->getPlayerHeight() . "px",
-				'data-videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize() ),
+				'data-videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize(), $autoPlay ),
 				),
 			Xml::tags( 'img', array(
 				'alt' => $this->file->getTitle(),
@@ -192,9 +194,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Call mediaWiki xml helper class to build media tag output from
 	 * supplied arrays
 	 * @param $sizeOverride array
+	 * @param $autoPlay boolean sets the autoplay attribute
 	 * @return string
 	 */
-	function getHtmlMediaTagOutput( $sizeOverride = array() ){
+	function getHtmlMediaTagOutput( $sizeOverride = array(), $autoPlay = false ){
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		$firstSource = current( $mediaSources );
@@ -233,7 +236,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				'class' => 'mediaContainer',
 				'style' => 'position:relative;display:block;width:'. $width
 			),
-			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride ),
+			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
 				// The set of media sources:
 				self::htmlTagSet( 'source', $mediaSources ) .
 
@@ -283,7 +286,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param $sizeOverride Array|bool of width and height
 	 * @return array
 	 */
-	function getMediaAttr( $sizeOverride = false ){
+	function getMediaAttr( $sizeOverride = false, $autoPlay = false ){
 		global $wgVideoPlayerSkin ;
 		// Normalize values
 		$length = floatval( $this->length  );
@@ -316,6 +319,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// tell browser to not load the video before
 			'preload'=>'none',
 		);
+		if( $autoPlay === true ){
+			$mediaAttr['autoplay'] = 'true';
+		}
+
 		// MediaWiki uses the kSkin class
 		$mediaAttr['class'] = 'kskin';
 
