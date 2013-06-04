@@ -127,7 +127,9 @@ class WebVideoTranscodeJob extends Job {
 		$transcodeKey = $this->params['transcodeKey'];
 		// Build the destination target
 		if( ! isset(  WebVideoTranscode::$derivativeSettings[ $transcodeKey ] )){
-			$this->output( "Transcode key $transcodeKey not found, skipping" );
+			$error = "Transcode key $transcodeKey not found, skipping";
+			$this->output( $error );
+			$this->setLastError( $error );
 			return false;
 		}
 
@@ -136,6 +138,7 @@ class WebVideoTranscodeJob extends Job {
 			$status = $this->title . ': Source not found ' . $this->getSourceFilePath();
 			$this->output( $status );
 			$this->updateTranscodeError($transcodeKey, $status);
+			$this->setLastError( $status );
 			return false;
 		}
 
@@ -159,9 +162,9 @@ class WebVideoTranscodeJob extends Job {
 			array( 'ORDER BY' => 'transcode_id' )
 		);
 		if( ! is_null( $dbStartTime ) ){
-			$this->output( 'Error, running transcode job, for job that has already started' );
-			// back out of this job. ( if there was a transcode error it should be restarted with api transcode-reset )
-			// not some strange out-of-order error.
+			$error = 'Error, running transcode job, for job that has already started';
+			$this->output( $error );
+			$this->setLastError( $error );
 			return false;
 		}
 
@@ -217,6 +220,7 @@ class WebVideoTranscodeJob extends Job {
 			$this->output('Possible Error, transcode task restarted, removed, or completed while transcode was in progress');
 			// if an error; just error out, we can't remove temp files or update states, because the new job may be doing stuff.
 			if( $status !== true ){
+				$this->setLastError( $status );
 				return false;
 			}
 			// else just continue with db updates, and when the new job comes around it won't start because it will see
@@ -240,6 +244,7 @@ class WebVideoTranscodeJob extends Job {
 				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
+				$this->setLastError( $result );
 				$status = false;
 			} else {
 				$bitrate = round( intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8 );
@@ -274,6 +279,9 @@ class WebVideoTranscodeJob extends Job {
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
 		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
+		if ($status !== true) {
+			$this->setLastError( $status );
+		}
 		return $status === true;
 	}
 
