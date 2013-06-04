@@ -538,6 +538,7 @@ class WebVideoTranscode {
 	 * @param {Object} File object
 	 */
 	public static function getTranscodeState( $file, $db = false ){
+		global $wgTranscodeBackgroundTimeLimit;
 		$fileName = $file->getTitle()->getDbKey();
 		if( ! isset( self::$transcodeState[$fileName] ) ){
 			wfProfileIn( __METHOD__ );
@@ -552,6 +553,8 @@ class WebVideoTranscode {
 					__METHOD__,
 					array( 'LIMIT' => 100 )
 			);
+			$overTimeout = array();
+			$over = $db->timestamp(time() - (2 * $wgTranscodeBackgroundTimeLimit));
 			// Populate the per transcode state cache
 			foreach ( $res as $row ) {
 				// strip the out the "transcode_" from keys
@@ -560,6 +563,27 @@ class WebVideoTranscode {
 					$trascodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
 				}
 				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $trascodeState;
+				if ( $row->transcode_time_start < $over
+					&& $row->transcode_time_success == NULL
+					&& $row->transcode_time_error == NULL ) {
+					$overTimeout[] = $row->transcode_key;
+				}
+			}
+			if ( $overTimeout ) {
+				$dbw = wfGetDB( DB_MASTER );
+				$dbw->update(
+					'transcode',
+					array(
+						'transcode_time_error' => $dbw->timestamp(),
+						'transcode_error' => 'timeout'
+					),
+					array(
+						'transcode_image_name' => $fileName,
+						'transcode_key' => $overTimeout
+					),
+					__METHOD__,
+					array( 'LIMIT' => count( $overTimeout ) )
+				);
 			}
 			wfProfileOut( __METHOD__ );
 		}
