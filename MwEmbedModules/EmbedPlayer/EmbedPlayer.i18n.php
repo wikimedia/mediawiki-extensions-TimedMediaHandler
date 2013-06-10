@@ -1321,7 +1321,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos un [$1 navegador de vídeo html5].',
 	'mwe-embedplayer-download-warn' => 'Non se detectou ningún reprodutor integrado compatible co navegador: Para ter unha mellor experiencia de reprodución de vídeo recomendamos a [$1 última versión do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Prema <b>F11</b> para activar ou desactivar a pantalla completa do <i>navegador web</i>',
-	'mwe-embedplayer-fullscreen-tip-osx' => 'Prema <b>shift ⌘ F</b> para activar ou desactivar a pantalla completa',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Prema <b>maiús ⌘ F</b> para activar ou desactivar a pantalla completa',
 	'mwe-embedplayer-do_not_warn_again' => 'Non mostrar esta mensaxe no futuro.',
 	'mwe-embedplayer-playerSelect' => 'Reprodutores',
 	'mwe-embedplayer-read_before_embed' => 'Por favor, <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">olle isto</a> antes da inserción.',
@@ -1597,6 +1597,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (magyar)
  * @author Dani
+ * @author Misibacsi
  * @author Tacsipacsi
  */
 $messages['hu'] = array(
@@ -1651,7 +1652,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura lejátszó',
 	'mwe-embedplayer-ogg-player-selected' => '(kiválasztva)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Jobb videolejátszási élményhez ajánlunk egy [$1 HTML5-öt támogató böngészőt].',
+	'mwe-embedplayer-for_best_experience' => 'A jobb videolejátszási élményhez [$1 HTML5-öt támogató böngészőt] ajánlunk.',
 	'mwe-embedplayer-do_not_warn_again' => 'Eltüntetés egyelőre.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Lejátszók',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Olvasd el ezt</a>, mielőtt beillesztenéd.',
