@@ -25,18 +25,13 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgMemc;
 		$this->setHeaders();
 		$out = $this->getOutput();
 
 		$out->addModuleStyles( 'mediawiki.special' );
 
-		$key = wfMemcKey( 'TimedMediaHandler', 'stats' );
-		$stats = $wgMemc->get( $key );
-		if ( !$stats ) {
-			$stats = $this->getStats();
-			$wgMemc->add( $key, $stats, 3600 );
-		}
+		$stats = $this->getStats();
+
 		$out->addHTML(
 			"<h2>"
 			. $this->msg( 'timedmedia-videos',  $stats['videos']['total'] )->escaped()
@@ -51,34 +46,36 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				);
 			}
 		}
-		$this->renderState( $out, 'transcodes', $stats, false );
+
+		$states = $this->getStates();
+		$this->renderState( $out, 'transcodes', $states, false );
 		foreach ( $this->transcodeStates as $state => $condition ) {
-			$this->renderState( $out, $state, $stats );
+			$this->renderState( $out, $state, $states );
 		}
 	}
 
 	/**
 	 * @param OutputPage $out
 	 * @param $state
-	 * @param $stats
+	 * @param $states
 	 * @param bool $showTable
 	 */
-	private function renderState ( $out, $state, $stats, $showTable = true ) {
+	private function renderState ( $out, $state, $states, $showTable = true ) {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
 		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
-		if ( $stats[ $state ][ 'total' ] ) {
+		if ( $states[ $state ][ 'total' ] ) {
 			// Give grep a chance to find the usages:
 			// timedmedia-derivative-state-transcodes, timedmedia-derivative-state-active,
 			// timedmedia-derivative-state-queued, timedmedia-derivative-state-failed
 			$out->addHTML(
 				"<h2>"
-				. $this->msg( 'timedmedia-derivative-state-' . $state, $stats[ $state ]['total'] )->escaped()
+				. $this->msg( 'timedmedia-derivative-state-' . $state, $states[ $state ]['total'] )->escaped()
 				. "</h2>"
 			);
 			foreach( $allTranscodes as $key ) {
-				if ( $stats[ $state ][ $key ] ) {
+				if ( $states[ $state ][ $key ] ) {
 					$out->addHTML(
-						$stats[ $state ][ $key ]
+						$states[ $state ][ $key ]
 						. ' '
 						. $this->msg( 'timedmedia-derivative-desc-' . $key )->escaped()
 						. "<br>" );
@@ -89,27 +86,34 @@ class SpecialTimedMediaHandler extends SpecialPage {
 			}
 		}
 	}
-	private function getTranscodes ( $state, $limit = 30 ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$files = array();
-		$res = $dbr->select(
-			'transcode',
-			'*',
-			$this->transcodeStates[ $state ],
-			__METHOD__,
-			array( 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' )
-		);
-		foreach( $res as $row ) {
-			$transcode = array();
-			foreach( $row as $k => $v ){
-				$transcode[ str_replace( 'transcode_', '', $k ) ] = $v;
+
+	private function getTranscodes ( $state, $limit = 50 ) {
+		global $wgMemc;
+		$key = wfMemcKey( 'TimedMediaHandler', 'files' );
+		$files = $wgMemc->get( $key );
+		if ( !$files ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$files = array();
+			$res = $dbr->select(
+				'transcode',
+				'*',
+				$this->transcodeStates[ $state ],
+				__METHOD__,
+				array( 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' )
+			);
+			foreach( $res as $row ) {
+				$transcode = array();
+				foreach( $row as $k => $v ){
+					$transcode[ str_replace( 'transcode_', '', $k ) ] = $v;
+				}
+				$files[] = $transcode;
 			}
-			$files[] = $transcode;
+			$wgMemc->add( $key, $files, 60 );
 		}
 		return $files;
 	}
 
-	private function getTranscodesTable ( $state, $limit = 30 ) {
+	private function getTranscodesTable ( $state, $limit = 50 ) {
 		$table = '<table class="wikitable">' . "\n"
 			. '<tr>'
 			. '<th>' . $this->msg( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
@@ -130,57 +134,76 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	private function getStats() {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
 		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
-		$stats = array();
-		$dbr = wfGetDB( DB_SLAVE );
-		$stats[ 'transcodes' ] = array( 'total' => 0 );
-		foreach ( $this->transcodeStates as $state => $condition ) {
-			$stats[ $state ] = array( 'total' => 0 );
-			foreach( $allTranscodes as $type ) {
-				// Important to pre-initialize, as can give
-				// warnings if you don't have a lot of things in transcode table.
-				$stats[ $state ][ $type ] = 0;
+
+		$key = wfMemcKey( 'TimedMediaHandler', 'stats' );
+		$stats = $wgMemc->get( $key );
+		if ( !$stats ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$stats = array();
+			$stats[ 'videos' ] = array( 'total' => 0 );
+			foreach( $this->formats as $format => $condition ) {
+				$stats[ 'videos' ][ $format ] = (int)$dbr->selectField(
+					'image',
+					'COUNT(*)',
+					'img_media_type = "VIDEO" AND (' . $condition . ')',
+					__METHOD__
+				);
+				$stats[ 'videos' ][ 'total' ] += $stats[ 'videos' ][ $format ];
 			}
+			$wgMemc->add( $key, $stats, 3600 );
 		}
-		foreach ( $this->transcodeStates as $state => $condition ) {
-			$cond = array( 'transcode_key' => $allTranscodes );
-			$cond[] = $condition;
+		return $stats;
+	}
+
+	private function getStates() {
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
+		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+
+		$key = wfMemcKey( 'TimedMediaHandler', 'states' );
+		$states = $wgMemc->get( $key );
+		if ( !$states ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$states = array();
+			$states[ 'transcodes' ] = array( 'total' => 0 );
+			foreach ( $this->transcodeStates as $state => $condition ) {
+				$states[ $state ] = array( 'total' => 0 );
+				foreach( $allTranscodes as $type ) {
+					// Important to pre-initialize, as can give
+					// warnings if you don't have a lot of things in transcode table.
+					$states[ $state ][ $type ] = 0;
+				}
+			}
+			foreach ( $this->transcodeStates as $state => $condition ) {
+				$cond = array( 'transcode_key' => $allTranscodes );
+				$cond[] = $condition;
+				$res = $dbr->select( 'transcode',
+					array('COUNT(*) as count', 'transcode_key'),
+					$cond,
+					__METHOD__,
+					array( 'GROUP BY' => 'transcode_key' )
+				);
+				foreach( $res as $row ) {
+					$key = $row->transcode_key;
+					$states[ $state ][ $key ] = $row->count;
+					$states[ $state ][ 'total' ] += $states[ $state ][ $key ];
+				}
+			}
 			$res = $dbr->select( 'transcode',
-				array('COUNT(*) as count', 'transcode_key'),
-				$cond,
+				array( 'COUNT(*) as count', 'transcode_key' ),
+				array( 'transcode_key' => $allTranscodes ),
 				__METHOD__,
 				array( 'GROUP BY' => 'transcode_key' )
 			);
 			foreach( $res as $row ) {
 				$key = $row->transcode_key;
-				$stats[ $state ][ $key ] = $row->count;
-				$stats[ $state ][ 'total' ] += $stats[ $state ][ $key ];
+				$states[ 'transcodes' ][ $key ] = $row->count;
+				$states[ 'transcodes' ][ $key ] -= $states[ 'queued' ][ $key ];
+				$states[ 'transcodes' ][ 'total' ] += $states[ 'transcodes' ][ $key ];
 			}
+			$wgMemc->add( $key, $states, 60 );
 		}
-		$res = $dbr->select( 'transcode',
-			array( 'COUNT(*) as count', 'transcode_key' ),
-			array( 'transcode_key' => $allTranscodes ),
-			__METHOD__,
-			array( 'GROUP BY' => 'transcode_key' )
-		);
-		foreach( $res as $row ) {
-			$key = $row->transcode_key;
-			$stats[ 'transcodes' ][ $key ] = $row->count;
-			$stats[ 'transcodes' ][ $key ] -= $stats[ 'queued' ][ $key ];
-			$stats[ 'transcodes' ][ 'total' ] += $stats[ 'transcodes' ][ $key ];
-		}
-
-		$stats[ 'videos' ] = array( 'total' => 0 );
-		foreach( $this->formats as $format => $condition ) {
-			$stats[ 'videos' ][ $format ] = (int)$dbr->selectField(
-				'image',
-				'COUNT(*)',
-				'img_media_type = "VIDEO" AND (' . $condition . ')',
-				__METHOD__
-			);
-			$stats[ 'videos' ][ 'total' ] += $stats[ 'videos' ][ $format ];
-		}
-		return $stats;
+		return $states;
 	}
 }
