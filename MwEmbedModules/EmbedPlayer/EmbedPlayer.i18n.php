@@ -3959,6 +3959,11 @@ $messages['tr'] = array(
 	'mwe-embedplayer-menu_btn' => 'Menü',
 	'mwe-embedplayer-close_btn' => 'Kapat',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC player',
+	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg oynatıcı',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'HTML5 MP3 oynatıcı',
+	'mwe-embedplayer-ogg-player-aacNative' => 'HTML5 AAC oynatıcı',
+	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 oynatıcı',
+	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM oynatıcı',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Jenerik Ogg eklentisi',
 	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'QuickTime eklentisi',
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
@@ -3969,8 +3974,10 @@ $messages['tr'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için önerimiz:<br />[$1 Firefox 3.5].', # Fuzzy
 	'mwe-embedplayer-do_not_warn_again' => 'Gelecekte bu iletiyi gösterme',
+	'mwe-embedplayer-playerSelect' => 'Oynatıcılar',
 	'mwe-embedplayer-read_before_embed' => 'Lütfen gerçekten gömmeden <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">uzaktan gömme hakkındaki güvenlik notlarını</a> okuyun!',
 	'mwe-embedplayer-embed_site_or_blog' => 'Bir sayfaya gömün',
+	'mwe-embedplayer-embed_wiki' => 'Bir viki üzerinde göm',
 	'mwe-embedplayer-related_videos' => 'İlgili videolar',
 	'mwe-embedplayer-seeking' => 'aranıyor',
 	'mwe-embedplayer-buffering' => 'ara belleğe alınıyor',
@@ -3978,6 +3985,12 @@ $messages['tr'] = array(
 	'mwe-embedplayer-video-webm' => 'WebM video',
 	'mwe-embedplayer-video-flv' => 'Flash, video',
 	'mwe-embedplayer-video-ogg' => 'Ogg video',
+	'mwe-embedplayer-video-audio' => 'Ogg ses',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG ses',
+	'mwe-embedplayer-video-3gp' => '3GP video',
+	'mwe-embedplayer-video-mpeg' => 'MPEG video',
+	'mwe-embedplayer-video-msvideo' => 'AVI video',
+	'mwe-embedplayer-missing-source' => 'Video kaynağı bulunamadı',
 );
 
 /** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
