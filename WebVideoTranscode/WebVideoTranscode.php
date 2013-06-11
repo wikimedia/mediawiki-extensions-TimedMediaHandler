@@ -563,7 +563,7 @@ class WebVideoTranscode {
 					$trascodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
 				}
 				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $trascodeState;
-				if ( $row->transcode_time_start < $over
+				if ( $row->transcode_time_startwork < $over
 					&& $row->transcode_time_success == NULL
 					&& $row->transcode_time_error == NULL ) {
 					$overTimeout[] = $row->transcode_key;
