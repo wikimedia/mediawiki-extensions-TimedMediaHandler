@@ -144,11 +144,12 @@
 				// Update link to be absolute per page url context:
 				var $links = $authorText.find('a');
 				if( $links.length ) {
-					var authUrl = $authorText.find('a').attr('href');
-					authUrl = mw.absoluteUrl( authUrl,  articleUrl );
-					$authorText.find('a').attr('href',
-						authUrl
-					)
+					$links.each(function(i, authorLink) {
+						var $authorLink = $(authorLink);
+						var authUrl = $authorLink.attr('href');
+						authUrl = mw.absoluteUrl( authUrl,  articleUrl );
+						$authorLink.attr('href', authUrl);
+					});
 				}
 				$creditLine.append( $( '<br />' ),
 					mw.msg('mwe-embedplayer-credit-author', $authorText.html() )
