@@ -286,6 +286,9 @@ mw.EmbedPlayerNative = {
 			$( vid ).unbind( eventName + '.embedPlayerNative').bind( eventName + '.embedPlayerNative', function(){
 				if( _this._propagateEvents ){
 					var argArray = $.makeArray( arguments );
+					// always pass the current ref id as the last argument
+					// helps check against some event trigger ref issues in jQuery
+					argArray.push( _this.id );
 					// Check if there is local handler:
 					if( _this[ '_on' + eventName ] ){
 						_this[ '_on' + eventName ].apply( _this, argArray);
@@ -1041,23 +1044,6 @@ mw.EmbedPlayerNative = {
 		if( ! this.mediaLoadedFlag ){
 			$( this ).trigger( 'mediaLoaded' );
 			this.mediaLoadedFlag = true;
-		}
-	},
-
-	/**
-	* Local method for progress event
-	* fired as the video is downloaded / buffered
-	*
-	* Used to update the bufferedPercent
-	*
-	* Note: this way of updating buffer was only supported in Firefox 3.x and
-	* not supported in Firefox 4.x
-	*/
-	_onprogress: function( event ) {
-		var e = event.originalEvent;
-		if( e && e.loaded && e.total ) {
-			this.bufferedPercent = e.loaded / e.total;
-			this.progressEventData = e.loaded;
 		}
 	},
 

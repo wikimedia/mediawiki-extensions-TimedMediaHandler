@@ -153,7 +153,7 @@
 			// Check for timed text support:
 			_this.addInterface();
 
-			$( embedPlayer ).bind( 'monitorEvent' + this.bindPostFix, function( event, id ) {
+			$( embedPlayer ).bind( 'timeupdate' + this.bindPostFix, function( event, jEvent, id ) {
 				// regain scope
 				_this = $('#' + id)[0].timedText;
 				// monitor text updates
@@ -215,10 +215,9 @@
 			});
 
 			// Setup display binding
-			$( embedPlayer ).bind( 'onShowControlBar'+ this.bindPostFix, function(event, layout ){
-				if( event.currentTarget.id != embedPlayer.id ){
-					embedPlayer = $('#' +event.currentTarget.id )[0];
-				}
+			$( embedPlayer ).bind( 'onShowControlBar'+ this.bindPostFix, function(event, layout, id ){
+				// update embedPlayer ref:
+				var embedPlayer = $('#' + id )[0];
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track if present
 					embedPlayer.getInterface().find( '.track' )
@@ -227,7 +226,8 @@
 				}
 			});
 
-			$( embedPlayer ).bind( 'onHideControlBar' + this.bindPostFix, function(event, layout ){
+			$( embedPlayer ).bind( 'onHideControlBar' + this.bindPostFix, function(event, layout, id ){
+				var embedPlayer = $('#' + id )[0];
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track down if present
 					embedPlayer.getInterface().find( '.track' )
