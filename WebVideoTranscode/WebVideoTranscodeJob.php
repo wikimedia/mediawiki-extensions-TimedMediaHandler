@@ -92,7 +92,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param $error string
 	 *
 	 */
-	private function updateTranscodeError($transcodeKey, $error){
+	private function setTranscodeError( $transcodeKey, $error ){
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'transcode',
@@ -107,6 +107,7 @@ class WebVideoTranscodeJob extends Job {
 			__METHOD__,
 			array( 'LIMIT' => 1 )
 		);
+		$this->setLastError( $error );
 	}
 
 	/**
@@ -137,8 +138,7 @@ class WebVideoTranscodeJob extends Job {
 		if( !$this->getSourceFilePath() || !is_file( $this->getSourceFilePath() ) ){
 			$status = $this->title . ': Source not found ' . $this->getSourceFilePath();
 			$this->output( $status );
-			$this->updateTranscodeError($transcodeKey, $status);
-			$this->setLastError( $status );
+			$this->setTranscodeError( $transcodeKey, $status );
 			return false;
 		}
 
@@ -220,7 +220,7 @@ class WebVideoTranscodeJob extends Job {
 			$this->output('Possible Error, transcode task restarted, removed, or completed while transcode was in progress');
 			// if an error; just error out, we can't remove temp files or update states, because the new job may be doing stuff.
 			if( $status !== true ){
-				$this->setLastError( $status );
+				$this->setTranscodeError( $transcodeKey, $status );
 				return false;
 			}
 			// else just continue with db updates, and when the new job comes around it won't start because it will see
@@ -240,11 +240,10 @@ class WebVideoTranscodeJob extends Job {
 				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ) // storage
 			);
 			if ( !$result->isOK() ) {
-				$this->updateTranscodeError( $transcodeKey, $result );
 				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
-				$this->setLastError( $result );
+				$this->setTranscodeError( $transcodeKey, $result );
 				$status = false;
 			} else {
 				$bitrate = round( intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8 );
@@ -268,7 +267,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			// Update the transcode table with failure time and error
-			$this->updateTranscodeError( $transcodeKey, $status );
+			$this->setTranscodeError( $transcodeKey, $status );
 			// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 			// just clear the file page ( so that the transcode table shows the error )
 			$this->title->invalidateCache();
