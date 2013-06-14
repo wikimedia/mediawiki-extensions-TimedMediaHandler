@@ -243,7 +243,7 @@ class WebVideoTranscodeJob extends Job {
 				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
-				$this->setTranscodeError( $transcodeKey, $result );
+				$this->setTranscodeError( $transcodeKey, $result->getWikiText() );
 				$status = false;
 			} else {
 				$bitrate = round( intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8 );
