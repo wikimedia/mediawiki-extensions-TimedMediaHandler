@@ -40,6 +40,8 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 		$wgMediaHandlers['video/mp4'] = 'Mp4Handler';
+		$wgMediaHandlers['audio/x-flac'] = 'FLACHandler';
+		$wgMediaHandlers['audio/flac'] = 'FLACHandler';
 
 		// Add transcode job class:
 		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';
