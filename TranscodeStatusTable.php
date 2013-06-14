@@ -112,26 +112,18 @@ class TranscodeStatusTable {
 		}
 		// Check for error:
 		if( !is_null( $state['time_error'] ) ){
+			$attribs = array();
 			if( !is_null( $state['error'] ) ){
-				$showErrorLink = Linker::link(
-					$file->getTitle(),
-					wfMessage('timedmedia-show-error')->escaped(),
-					array(
-						'title' => wfMessage(
-							'timedmedia-error-on',
-							$wgContLang->timeAndDate( $state[ 'time_error' ] )
-						)->escaped(),
-					'class' => 'errorlink',
-					'data-error' => $state['error']
-					)
+				$attribs = array(
+					'class' => 'mw-tmh-pseudo-error-link',
+					'data-error' => $state['error'],
 				);
-			} else {
-				$showErrorLink = '';
 			}
 
-			return wfMessage( 'timedmedia-error-on',
-				$wgContLang->timeAndDate( $state['time_error'] ) )->escaped() .
-				$showErrorLink;
+			return Html::rawElement( 'span', $attribs,
+				wfMessage( 'timedmedia-error-on',
+					$wgContLang->timeAndDate( $state['time_error'] ) )->escaped()
+			);
 		}
 
 		//$db = wfGetDB( DB_SLAVE );

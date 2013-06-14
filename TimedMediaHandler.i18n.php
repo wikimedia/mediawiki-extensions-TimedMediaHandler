@@ -47,7 +47,7 @@ You can <a href="$1">download the clip</a> or <a href="//www.mediawiki.org/wiki/
 	'timedmedia-direct-link' => 'Download derivative',
 	'timedmedia-not-ready' => 'Not ready',
 	'timedmedia-completed-on' => 'Completed transcode $1',
-	'timedmedia-error-on' => 'Error in transcode on $1.',
+	'timedmedia-error-on' => 'Error in transcode on $1',
 	'timedmedia-started-transcode' => 'Transcode started $1 ago. $2',
 	'timedmedia-percent-done' => 'About $1% done',
 	'timedmedia-in-job-queue' => 'Added to Job queue $1 ago',
@@ -56,7 +56,6 @@ You can <a href="$1">download the clip</a> or <a href="//www.mediawiki.org/wiki/
 	'timedmedia-hours' => '{{PLURAL:$1|1 hour|$1 hours}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minute|$1 minutes}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 second|$1 seconds}}',
-	'timedmedia-show-error' => 'Show error',
 	'timedmedia-reset' => 'Reset transcode',
 	'timedmedia-reset-confirm' => 'Resetting this transcode will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />
 Are you sure you want to proceed?',
