@@ -135,6 +135,11 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$stats[ 'transcodes' ] = array( 'total' => 0 );
 		foreach ( $this->transcodeStates as $state => $condition ) {
 			$stats[ $state ] = array( 'total' => 0 );
+			foreach( $wgEnabledTranscodeSet as $type ) {
+				// Important to pre-initialize, as can give
+				// warnings if you don't have a lot of things in transcode table.
+				$stats[ $state ][ $type ] = 0;
+			}
 		}
 		foreach ( $this->transcodeStates as $state => $condition ) {
 			$cond = array( 'transcode_key' => $wgEnabledTranscodeSet );
@@ -157,7 +162,6 @@ class SpecialTimedMediaHandler extends SpecialPage {
 			__METHOD__,
 			array( 'GROUP BY' => 'transcode_key' )
 		);
-
 		foreach( $res as $row ) {
 			$key = $row->transcode_key;
 			$stats[ 'transcodes' ][ $key ] = $row->count;
