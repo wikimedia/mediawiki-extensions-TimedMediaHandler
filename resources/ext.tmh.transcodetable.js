@@ -2,8 +2,9 @@
 * Javascript to support transcode table on image page
 */
 $(document).ready(function(){
-	// Error link popup:
-	$('.mw-filepage-transcodestatus .errorlink').click(function(){
+	var errorPopup, $errorLink;
+
+	errorPopup = function () {
 		// pop up dialog
 		mw.addDialog({
 			'width' : '640',
@@ -18,7 +19,20 @@ $(document).ready(function(){
 		})
 		.css('overflow', 'hidden');
 		return false;
-	})
+	}
+
+	// Old version. Need to keep for a little while in case of cached pages.
+	$( '.mw-filepage-transcodestatus .errorlink' ).click( errorPopup );
+	// New version.
+	$errorLink = $( '.mw-filepage-transcodestatus .mw-tmh-pseudo-error-link' );
+	$errorLink.wrapInner(
+		$( '<a />' ).attr( {
+			href: '#',
+			title: $errorLink.text(),
+			'data-error': $errorLink.attr('data-error')
+		} ).click( errorPopup )
+	);
+
 	// Reset transcode action:
 	$('.mw-filepage-transcodereset a').click( function(){
 		var tKey = $(this).attr('data-transcodekey');
