@@ -189,7 +189,7 @@ class TimedMediaHandlerHooks {
 		global $wgEnableTranscode, $wgEnabledAudioTranscodeSet;
 
 		// don't show the transcode table if transcode is disabled
-		if( $wgEnableTranscode === false ){
+		if( !$wgEnableTranscode && !$wgEnabledAudioTranscodeSet ){
 			return false;
 		}
 		// Can't find file
