@@ -873,7 +873,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Trigger the onCloseFullscreen event:
 		$( embedPlayer ).trigger( 'onCloseFullScreen' );
 
-		// Scroll back to the previews position ( do in async call to allow dom fullscreen restore ) 
+		// Scroll back to the previews position ( do in async call to allow dom fullscreen restore )
 		setTimeout( function(){
 			window.scroll( 0, _this.verticalScrollPosition );
 		}, 100 );
@@ -971,8 +971,10 @@ mw.PlayerControlBuilder.prototype = {
 			embedPlayer.updatePlayheadStatus()
 		});
 
-		// Update buffer information TODO move to controlBuilder
-		$( embedPlayer ).bind( 'progress' + this.bindPostfix, function(){
+		// Update buffer information
+		$( embedPlayer ).bind( 'progress' + this.bindPostfix, function( event, jEvent, id){
+			// regain scope
+			var embedPlayer = $( '#' + id )[0];
 			embedPlayer.updateBufferStatus();
 		});
 
@@ -1200,10 +1202,10 @@ mw.PlayerControlBuilder.prototype = {
 			}, dblClickTime );
 			return true;
 		};
-		if (!embedPlayer.addEventListener) {
+		// Add click binding: ( $(embedPlayer).click ) has scope issues )
+		if ( embedPlayer.attachEvent ) {
 			embedPlayer.attachEvent("onclick", playerClickCb);
 		} else{
-			// For some reason jquery .bind( 'click' ) is doing evil things
 			// Firefox 3.5 requires third argument to addEventListener
 			embedPlayer.addEventListener('click', playerClickCb, false );
 		}
@@ -1246,7 +1248,7 @@ mw.PlayerControlBuilder.prototype = {
 			.fadeOut( animateDuration );
 		//mw.log('about to trigger hide control bar')
 		// Allow interface items to update:
-		$( this.embedPlayer ).trigger('onHideControlBar', {'bottom' : 15} );
+		$( this.embedPlayer ).trigger('onHideControlBar', [ {'bottom' : 15}, this.embedPlayer.id ] );
 
 	},
 	restoreControlsHover:function(){
@@ -1276,9 +1278,9 @@ mw.PlayerControlBuilder.prototype = {
 		}
 
 		// Trigger the screen overlay with layout info:
-		$( this.embedPlayer ).trigger( 'onShowControlBar', {
+		$( this.embedPlayer ).trigger( 'onShowControlBar', [{
 			'bottom' : this.getHeight() + 15
-		} );
+		}, this.embedPlayer.id ] );
 	},
 
 	/**
@@ -2279,7 +2281,7 @@ mw.PlayerControlBuilder.prototype = {
 	* 'w' The width of the component
 	* 'h' The height of the component ( if height is undefined the height of the control bar is used )
 	* 'position' elements are inserted into the dom based on component order and available space.
-	*  if the element is inserted, position is then used to set relative dom insert order. 
+	*  if the element is inserted, position is then used to set relative dom insert order.
 	*/
 	components: {
 		/**

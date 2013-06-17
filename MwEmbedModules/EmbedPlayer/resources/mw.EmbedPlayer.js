@@ -6,7 +6,6 @@
 * mediaElement Represents source media elements
 * mw.PlayerControlBuilder Handles skinning of the player controls
 */
-
 ( function( mw, $ ) {"use strict";
 	/**
 	 * Merge in the default video attributes supported by embedPlayer:
@@ -1038,8 +1037,6 @@
 
 			this.paused = true;
 			this.stopped = true;
-			// Make sure the controlBuilder bindings are up-to-date
-			this.controlBuilder.addControlBindings();
 
 			// Once the thumbnail is shown run the mediaReady trigger (if not using native controls)
 			if( !this.useNativePlayerControls() ){
@@ -2242,6 +2239,9 @@
 			this.updatePlayHead( 0 );
 			// update the status:
 			this.controlBuilder.setStatus( this.getTimeRange() );
+			// reset buffer indicator:
+			this.bufferedPercent = 0;
+			this.updateBufferStatus();
 		},
 
 		/**
@@ -2594,8 +2594,6 @@
 		updateBufferStatus: function() {
 			// Get the buffer target based for playlist vs clip
 			var $buffer = this.getInterface().find( '.mw_buffer' );
-
-			// mw.log(' set bufferd %:' + this.bufferedPercent );
 			// Update the buffer progress bar (if available )
 			if ( this.bufferedPercent != 0 ) {
 				// mw.log('Update buffer css: ' + ( this.bufferedPercent * 100 ) +

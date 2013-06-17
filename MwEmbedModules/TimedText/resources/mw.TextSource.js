@@ -478,8 +478,8 @@
 		match2caption: function( m ){
 			var caption = {};
 			// Look for ms:
-			var startMs = (m[4])? (parseInt(m[4], 10) / 1000): 0;
-			var endMs = (m[8])? (parseInt(m[8], 10) / 1000) : 0;
+			var startMs = (m[4]) ? parseInt(m[4], 10) : 0;
+			var endMs = (m[8]) ? parseInt(m[8], 10) : 0;
 			caption['start'] = this.timeParts2seconds( m[1], m[2], m[3], startMs );
 			caption['end'] = this.timeParts2seconds( m[5], m[6], m[7], endMs );
 			if( m[9] ){
