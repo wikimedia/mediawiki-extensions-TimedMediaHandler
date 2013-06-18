@@ -64,7 +64,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	 * @param bool $showTable
 	 */
 	private function renderState ( $out, $state, $stats, $showTable = true ) {
-		global $wgEnabledTranscodeSet;
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 		if ( $stats[ $state ][ 'total' ] ) {
 			// Give grep a chance to find the usages:
 			// timedmedia-derivative-state-transcodes, timedmedia-derivative-state-active,
@@ -74,7 +75,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				. $this->msg( 'timedmedia-derivative-state-' . $state, $stats[ $state ]['total'] )->escaped()
 				. "</h2>"
 			);
-			foreach( $wgEnabledTranscodeSet as $key ) {
+			foreach( $allTranscodes as $key ) {
 				if ( $stats[ $state ][ $key ] ) {
 					$out->addHTML(
 						$stats[ $state ][ $key ]
@@ -129,20 +130,21 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	private function getStats() {
-		global $wgEnabledTranscodeSet;
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 		$stats = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		$stats[ 'transcodes' ] = array( 'total' => 0 );
 		foreach ( $this->transcodeStates as $state => $condition ) {
 			$stats[ $state ] = array( 'total' => 0 );
-			foreach( $wgEnabledTranscodeSet as $type ) {
+			foreach( $allTranscodes as $type ) {
 				// Important to pre-initialize, as can give
 				// warnings if you don't have a lot of things in transcode table.
 				$stats[ $state ][ $type ] = 0;
 			}
 		}
 		foreach ( $this->transcodeStates as $state => $condition ) {
-			$cond = array( 'transcode_key' => $wgEnabledTranscodeSet );
+			$cond = array( 'transcode_key' => $allTranscodes );
 			$cond[] = $condition;
 			$res = $dbr->select( 'transcode',
 				array('COUNT(*) as count', 'transcode_key'),
@@ -158,7 +160,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		}
 		$res = $dbr->select( 'transcode',
 			array( 'COUNT(*) as count', 'transcode_key' ),
-			array( 'transcode_key' => $wgEnabledTranscodeSet ),
+			array( 'transcode_key' => $allTranscodes ),
 			__METHOD__,
 			array( 'GROUP BY' => 'transcode_key' )
 		);
