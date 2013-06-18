@@ -41,13 +41,15 @@ class TimedMediaHandler extends MediaHandler {
 			if ( $this->parseTimeString( $value ) === false ) {
 				return false;
 			}
-		} else if ( $name == 'disablecontrols' ) {
+		} elseif ( $name == 'disablecontrols' ) {
 			$values = explode( ',', $value);
 			foreach($values as $v) {
 				if ( !in_array( $v, array( 'options', 'timedText', 'fullscreen' ) ) ) {
 					return false;
 				}
 			}
+		} elseif( $name === 'width' || $name === 'height' ) {
+			return $value > 0;
 		}
 		return true;
 	}
@@ -106,7 +108,7 @@ class TimedMediaHandler extends MediaHandler {
 		$timeParam = array( 'thumbtime', 'start', 'end' );
 		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach($timeParam as $pn){
-			if ( isset( $params[$pn] ) ) {
+			if ( isset( $params[$pn] ) && $params[$pn] !== false ) {
 				$length = $this->getLength( $image );
 				$time = $this->parseTimeString( $params[$pn] );
 				if ( $time === false ) {
@@ -118,13 +120,29 @@ class TimedMediaHandler extends MediaHandler {
 				}
 			}
 		}
-		// Make sure we don't try and up-scale the asset:
-		if( isset( $params['width'] ) && (int)$params['width'] > $image->getWidth() ){
-			$params['width'] = $image->getWidth();
+
+		if ( !$this->isAudio( $image ) ) {
+			// Make sure we don't try and up-scale the asset:
+			if( isset( $params['width'] ) && (int)$params['width'] > $image->getWidth() ){
+				$params['width'] = $image->getWidth();
+			}
+
+			if ( isset( $params['height'] ) && $params['height'] != -1 ) {
+				if( $params['width'] * $image->getHeight() > $params['height'] * $image->getWidth() ) {
+					$params['width'] = self::fitBoxWidth( $image->getWidth(), $image->getHeight(), $params['height'] );
+				}
+			}
+
+			$params['height'] = File::scaleHeight( $image->getWidth(), $image->getHeight(), $params['width'] );
+
 		}
 
 		// Make sure start time is not > than end time
-		if(isset($params['start']) && isset($params['end']) ){
+		if( isset($params['start'])
+			&& isset($params['end'] )
+			&& $params['start'] !== false
+			&& $params['end'] !== false
+		) {
 			if($params['start'] > $params['end'])
 				return false;
 		}
@@ -299,6 +317,11 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return bool|MediaTransformError|MediaTransformOutput|TimedMediaTransformOutput
 	 */
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
+		# Important or height handling is wrong.
+		if ( !$this->normaliseParams( $file, $params ) ) {
+			return new TransformParameterError( $params );
+		}
+
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 
@@ -317,7 +340,6 @@ class TimedMediaHandler extends MediaHandler {
 			$targetHeight = $params['height'];
 			$targetWidth = round( $params['width']*  $srcWidth / $srcHeight );
 		}
-
 		$options = array(
 			'file' => $file,
 			'length' => $this->getLength( $file ),
