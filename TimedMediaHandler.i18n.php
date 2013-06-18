@@ -268,7 +268,7 @@ Parameters:
 Parameters are:
 * $1 The date that the transcode was completed',
 	'timedmedia-error-on' => 'Parameters:
-* $1 is a timestamp.',
+* $1 - timestamp',
 	'timedmedia-started-transcode' => 'Status update for Transcodes
 Parameters are:
 * $1 Time passed since transcoded started
@@ -1081,7 +1081,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-direct-link' => 'Formatvariante herunterladen',
 	'timedmedia-not-ready' => 'Nicht bereit',
 	'timedmedia-completed-on' => 'Umschlüsselung abgeschlossen um $1',
-	'timedmedia-error-on' => 'Fehler beim Umschlüsseln um $1.',
+	'timedmedia-error-on' => 'Fehler beim Umschlüsseln um $1',
 	'timedmedia-started-transcode' => 'Umschlüsselung startete vor $1. $2',
 	'timedmedia-percent-done' => 'Ungefähr $1 % sind erledigt',
 	'timedmedia-in-job-queue' => 'Vor $1 der Auftragswarteschlange hinzugefügt',
@@ -1090,7 +1090,6 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-hours' => '{{PLURAL:$1|1 Stunde|$1 Stunden}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 Minute|$1 Minuten}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekunde|$1 Sekunden}}',
-	'timedmedia-show-error' => 'Fehler anzeigen',
 	'timedmedia-reset' => 'Umschlüsselung zurücksetzen',
 	'timedmedia-reset-confirm' => 'Das Zurücksetzen dieser Umschlüsselung wird, sofern vorhanden, die bestehende Datei entfernen und die Umschlüsselung erneut der Auftragswarteschlange hinzufügen. Die erneute Umschlüsselung wird einige Zeit dauern.<br /><br />Soll dies tatsächlich gemacht werden?',
 	'timedmedia-reset-error' => 'Fehler beim Zurücksetzen der Umschlüsselung',
@@ -1577,7 +1576,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="//www.mediawiki.o
 	'timedmedia-direct-link' => 'Télécharger le dérivé',
 	'timedmedia-not-ready' => 'Pas prêt',
 	'timedmedia-completed-on' => 'Transcodage de $1 terminé',
-	'timedmedia-error-on' => 'Erreur dans le transcodage de $1.',
+	'timedmedia-error-on' => 'Erreur dans le transcodage de $1',
 	'timedmedia-started-transcode' => 'Transcodage démarré depuis $1. $2',
 	'timedmedia-percent-done' => 'Environ $1 % complété',
 	'timedmedia-in-job-queue' => 'Ajouté à la file d’attente des travaux il y a $1',
@@ -1586,7 +1585,6 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="//www.mediawiki.o
 	'timedmedia-hours' => '{{PLURAL:$1|1 heure|$1 heures}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minute|$1 minutes}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 seconde|$1 secondes}}',
-	'timedmedia-show-error' => 'Afficher les erreurs',
 	'timedmedia-reset' => 'Réinitialiser le transcodage',
 	'timedmedia-reset-confirm' => 'Remettre à zéro ce transcodage supprimera tout fichier existant (s’il y en a) et ajoutera de nouveau le transcodage à la file de travaux. Cela prendra un certain temps pour être transcodé de nouveau. <br /><br />
 Êtes-vous sûr de vouloir continuer ?',
@@ -1745,7 +1743,7 @@ Pode <a href="$1">descargar o vídeo</a> ou <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-direct-link' => 'Descargar o derivado',
 	'timedmedia-not-ready' => 'Aínda non está preparado',
 	'timedmedia-completed-on' => 'Transcodificación completada o $1',
-	'timedmedia-error-on' => 'Erro na transcodificación o $1.',
+	'timedmedia-error-on' => 'Erro na transcodificación o $1',
 	'timedmedia-started-transcode' => 'A transcodificación comezou hai $1. $2',
 	'timedmedia-percent-done' => 'Preto do $1% feito',
 	'timedmedia-in-job-queue' => 'Engadido á cola de traballos hai $1',
@@ -1754,7 +1752,6 @@ Pode <a href="$1">descargar o vídeo</a> ou <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-hours' => '{{PLURAL:$1|1 hora|$1 horas}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuto|$1 minutos}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 segundo|$1 segundos}}',
-	'timedmedia-show-error' => 'Mostrar o erro',
 	'timedmedia-reset' => 'Restablecer a transcodificación',
 	'timedmedia-reset-confirm' => 'Ao restablecer a transcodificación eliminarase calquera ficheiro existente e volverá engadir a transcodificación á cola de traballos. A nova transcodificación levará bastante tempo.<br /><br />
 Está seguro de querer continuar?',
@@ -2490,7 +2487,7 @@ $messages['it'] = array(
 	'timedmedia-direct-link' => 'Scarica derivato',
 	'timedmedia-not-ready' => 'Non pronto',
 	'timedmedia-completed-on' => 'Transcodifica completata $1',
-	'timedmedia-error-on' => 'Errore nella transcodifica il $1.',
+	'timedmedia-error-on' => 'Errore nella transcodifica il $1',
 	'timedmedia-started-transcode' => 'Transcodifica iniziata $1 fa. $2',
 	'timedmedia-percent-done' => '$1% circa completato',
 	'timedmedia-in-job-queue' => 'Aggiunto alla coda di lavoro  $1  fa',
@@ -2499,7 +2496,6 @@ $messages['it'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 ora|$1 ore}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuto|$1 minuti}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 secondo|$1 secondi}}',
-	'timedmedia-show-error' => 'Vedi errore',
 	'timedmedia-reset' => 'Resetta transcodifica',
 	'timedmedia-reset-confirm' => 'Resettando questa transcodifica tutti i file esistenti (se presenti) saranno cancellati e la transcodifica sarà nuovamente aggiunta alla coda di lavoro. Ci vorrà qualche tempo per rieseguire la transcodifica. <br /><br />
 Continuare?',
@@ -3189,7 +3185,7 @@ $messages['mk'] = array(
 	'timedmedia-direct-link' => 'Преземи изведено',
 	'timedmedia-not-ready' => 'Не е готово',
 	'timedmedia-completed-on' => 'Прекодирањето е завршено $1',
-	'timedmedia-error-on' => 'Грешка при прекодирањето на $1.',
+	'timedmedia-error-on' => 'Грешка при прекодирањето на $1',
 	'timedmedia-started-transcode' => 'Прекодирањето започна пред $1. $2',
 	'timedmedia-percent-done' => 'Сработено: околу $1%',
 	'timedmedia-in-job-queue' => 'Додадено во редицата на задачи пред $1',
@@ -3198,7 +3194,6 @@ $messages['mk'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 час|$1 часа}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 минута|$1 минути}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 секунда|$1 секунди}}',
-	'timedmedia-show-error' => 'Покажи ја грешката',
 	'timedmedia-reset' => 'Одново',
 	'timedmedia-reset-confirm' => 'Враќајќи го ова прекодирање одново ќе ја отстраните постоечката податотека (ако ја има) и ќе го вратите прекодирањето во редицата на задачи. Повторното прекодирање ќе потрае. <br /><br />Дали сте сигурни дека сакате да продолжите?',
 	'timedmedia-reset-error' => 'Грешка при повторното пуштање на транскодирањето.',
@@ -4247,7 +4242,7 @@ Tu puè <a href=\"\$1\">scarecà 'u video</a> o <a href=\"//www.mediawiki.org/wi
 	'timedmedia-direct-link' => 'Scareche le derivate',
 	'timedmedia-not-ready' => "Non g'è pronde",
 	'timedmedia-completed-on' => 'Codifeche combletate $1',
-	'timedmedia-error-on' => "Errore jndr'à transcodifeche sus a $1.",
+	'timedmedia-error-on' => "Errore jndr'à transcodifeche sus a $1",
 	'timedmedia-started-transcode' => 'Transcodifeche accumenzate $1 fà. $2',
 	'timedmedia-percent-done' => 'Cchiù o mene $1% fatte',
 	'timedmedia-in-job-queue' => "Aggiunde a 'a Fatìe in code $1 fà",
@@ -4256,7 +4251,6 @@ Tu puè <a href=\"\$1\">scarecà 'u video</a> o <a href=\"//www.mediawiki.org/wi
 	'timedmedia-hours' => '{{PLURAL: $1|1 ore|$1 ore}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minute|$1 minute}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 seconde|$1 seconde}}',
-	'timedmedia-show-error' => "Fà vedè l'errore",
 	'timedmedia-reset' => "Azzere 'a transcodifeche",
 	'timedmedia-reset-confirm' => "Stoche azzere sta transcodifiche ca adda luà ogne file esistende (ce presende), e pò aggiunge 'a transcodifiche jndr'à code d'a fatìe. Cchiù vote accumenze 'a transcodifiche. <br /><br />
 Sì secure ca vuè ccu vvè nnande?",
@@ -5340,7 +5334,7 @@ Bạn có thể <a href="$1">tải về đoạn âm hoặc đoạn video</a> hay
 	'timedmedia-direct-link' => 'Tải về tác phẩm phái sinh',
 	'timedmedia-not-ready' => 'Chưa sẵn',
 	'timedmedia-completed-on' => 'Hoàn tất chuyển mã $1',
-	'timedmedia-error-on' => 'Lỗi chuyển mã vào $1.',
+	'timedmedia-error-on' => 'Lỗi chuyển mã vào $1',
 	'timedmedia-started-transcode' => 'Bắt đầu chuyển mã cách đây $1. $2',
 	'timedmedia-percent-done' => 'Hoàn tất khoảng $1%',
 	'timedmedia-in-job-queue' => 'Đã thêm vào hàng đợi việc cách đây $1',
@@ -5349,7 +5343,6 @@ Bạn có thể <a href="$1">tải về đoạn âm hoặc đoạn video</a> hay
 	'timedmedia-hours' => '$1 giờ',
 	'timedmedia-minutes' => '$1 phút',
 	'timedmedia-seconds' => '$1 giây',
-	'timedmedia-show-error' => 'Xem lỗi',
 	'timedmedia-reset' => 'Đặt lại chuyển mã',
 	'timedmedia-reset-confirm' => 'Việc đặt lại chuyển mã sẽ xóa tập tin nào hiện có, nếu có, và sẽ lại thêm việc chuyển mã vào hàng đợi việc. Việc chuyển mã lại sẽ mất một chút thì giờ.<br /><br />
 Bạn có chắc chắn muốn tiếp tục?',
