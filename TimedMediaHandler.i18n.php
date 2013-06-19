@@ -549,7 +549,7 @@ Pue <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Exten
 	'timedmedia-direct-link' => 'Descargar el deriváu',
 	'timedmedia-not-ready' => 'Nun ta preparáu',
 	'timedmedia-completed-on' => 'Trescodificación completada el $1',
-	'timedmedia-error-on' => 'Error na trescodificación del $1.',
+	'timedmedia-error-on' => 'Error na trescodificación del $1',
 	'timedmedia-started-transcode' => 'La trescodificación principió hai $1. $2',
 	'timedmedia-percent-done' => 'Fecho alredor del $1%',
 	'timedmedia-in-job-queue' => 'Amestáu a la cola de trabayos hai $1',
@@ -558,7 +558,6 @@ Pue <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Exten
 	'timedmedia-hours' => '{{PLURAL:$1|1 hora|$1 hores}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minutu|$1 minutos}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 segundu|$1 segundos}}',
-	'timedmedia-show-error' => "Ver l'error",
 	'timedmedia-reset' => 'Reaniciar la trescodificación',
 	'timedmedia-reset-confirm' => 'Al reaniciar esta trescodificación desaniciará tolos ficheros esistentes (si los hai), y volverá a amestar la trescodificación a la cola de trabayos. Llevará un tiempu volver a trescodificar.<br /><br />
 ¿Ta seguru de que quier siguir?',
