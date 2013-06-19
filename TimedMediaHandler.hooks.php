@@ -59,6 +59,11 @@ class TimedMediaHandlerHooks {
 				'styles' => 'resources/PopUpThumbVideo.css',
 				'dependencies' => array( 'jquery.ui.dialog' ),
 			) ),
+			'mw.TMHGalleryHook.js' => array_merge( $baseExtensionResource, array(
+				'scripts' => 'resources/mw.TMHGalleryHook.js',
+				// position top needed as it needs to load before mediawiki.page.gallery
+				'position' => 'top',
+			) ),
 			'embedPlayerIframeStyle'=> array_merge( $baseExtensionResource, array(
 				'styles' => 'resources/embedPlayerIframe.css',
 			) ),

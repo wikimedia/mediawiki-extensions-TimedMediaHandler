@@ -179,6 +179,7 @@ class TimedMediaHandler extends MediaHandler {
 		// Add the PopUpMediaTransform code
 		$outputPage->addModules( 'mw.PopUpMediaTransform' );
 		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform' );
+		$outputPage->addModules( 'mw.TMHGalleryHook.js' );
 	}
 
 	/**
