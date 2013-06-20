@@ -640,10 +640,11 @@ class WebVideoTranscode {
 		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
 
 		// Purge the cache for pages that include this video:
-		self::invalidatePagesWithFile( $file->getTitle() );
+		$titleObj = $file->getTitle();
+		self::invalidatePagesWithFile( $titleObj );
 
 		// Remove from local WebVideoTranscode cache:
-		self::clearTranscodeCache(  $file->getTitle()->getDBKey()  );
+		self::clearTranscodeCache( $titleObj->getDBKey() );
 	}
 
 	/**
