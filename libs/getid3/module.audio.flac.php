@@ -293,7 +293,6 @@ class getid3_flac extends getid3_handler
 		$offset += 4;
 		$info['flac']['APPLICATION'][$ApplicationID]['name'] = getid3_flac::FLACapplicationIDLookup($ApplicationID);
 		$info['flac']['APPLICATION'][$ApplicationID]['data'] = substr($METAdataBlockData, $offset);
-		$offset = $METAdataBlockLength;
 
 		unset($info['flac']['APPLICATION']['raw']);
 		return true;

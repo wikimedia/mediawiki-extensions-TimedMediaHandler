@@ -10,9 +10,17 @@ class TimedMediaHandler extends MediaHandler {
 		return true;
 	}
 
+	/**
+	 * Get an image size array like that returned by getimagesize(), or false if it
+	 * can't be determined.
+	 * @param $file File
+	 * @param $path string
+	 * @param $metadata bool
+	 * @return array|bool
+	 */
 	function getImageSize( $file, $path, $metadata = false ) {
 		/* override by handler */
-		return array();
+		return false;
 	}
 
 	/**

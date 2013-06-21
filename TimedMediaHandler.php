@@ -172,7 +172,7 @@ $wgTmhEnableMp4Uploads = false;
 
 // List of extensions handled by Timed Media Handler since its referenced in a few places.
 // you should not modify this variable
-$wgTmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'webm', 'mp4' );
+$wgTmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'flac', 'webm', 'mp4' );
 
 $wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
@@ -202,6 +202,8 @@ $wgAutoloadClasses['getID3'] = "$timedMediaDir/libs/getid3/getid3.php";
 $wgAutoloadClasses['Mp4Handler'] = "$timedMediaDir/handlers/Mp4Handler/Mp4Handler.php";
 // WebM Handler
 $wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHandler.php";
+// FLAC Handler
+$wgAutoloadClasses['FLACHandler'] = "$timedMediaDir/handlers/FLACHandler/FLACHandler.php";
 
 // Text handler
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
