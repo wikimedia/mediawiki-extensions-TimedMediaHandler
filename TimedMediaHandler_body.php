@@ -121,21 +121,31 @@ class TimedMediaHandler extends MediaHandler {
 			}
 		}
 
-		if ( !$this->isAudio( $image ) ) {
-			// Make sure we don't try and up-scale the asset:
-			if( isset( $params['width'] ) && (int)$params['width'] > $image->getWidth() ){
-				$params['width'] = $image->getWidth();
-			}
-
-			if ( isset( $params['height'] ) && $params['height'] != -1 ) {
-				if( $params['width'] * $image->getHeight() > $params['height'] * $image->getWidth() ) {
-					$params['width'] = self::fitBoxWidth( $image->getWidth(), $image->getHeight(), $params['height'] );
-				}
-			}
-
-			$params['height'] = File::scaleHeight( $image->getWidth(), $image->getHeight(), $params['width'] );
-
+		if ( $this->isAudio( $image ) ) {
+			// Assume a default for audio files
+			$size = array(
+				'width' => 220,
+				'height' => 23,
+			);
+		} else {
+			$size = array(
+				'width' => $image->getWidth(),
+				'height' => $image->getHeight(),
+			);
 		}
+
+		// Make sure we don't try and up-scale the asset:
+		if( isset( $params['width'] ) && (int)$params['width'] > $size['width'] ){
+			$params['width'] = $size['width'];
+		}
+
+		if ( isset( $params['height'] ) && $params['height'] != -1 ) {
+			if( $params['width'] * $size['height'] > $params['height'] * $size['width'] ) {
+				$params['width'] = self::fitBoxWidth( $size['width'], $size['height'], $params['height'] );
+			}
+		}
+
+		$params['height'] = File::scaleHeight( $size['width'], $size['height'], $params['width'] );
 
 		// Make sure start time is not > than end time
 		if( isset($params['start'])
@@ -335,10 +345,10 @@ class TimedMediaHandler extends MediaHandler {
 
 		// if height overtakes width use height as max:
 		$targetWidth = $params['width'];
-		$targetHeight = $srcWidth == 0 ? $srcHeight : round( $params['width']* $srcHeight / $srcWidth );
+		$targetHeight = $srcWidth == 0 ? $srcHeight : round( $params['width'] * $srcHeight / $srcWidth );
 		if( isset( $params['height'] ) && $targetHeight > $params['height'] ){
 			$targetHeight = $params['height'];
-			$targetWidth = round( $params['width']*  $srcWidth / $srcHeight );
+			$targetWidth = round( $params['height'] * $srcWidth / $srcHeight );
 		}
 		$options = array(
 			'file' => $file,
