@@ -1080,6 +1080,8 @@ $messages['de'] = array(
 	'timedmedia-ogg-long-error' => 'Ungültige Ogg-Datei: $1',
 	'timedmedia-webm-short-video' => 'WebM-$1-Videodatei, $2',
 	'timedmedia-webm-long-video' => 'WebM-Audio-/Video-Datei, $1, Länge: $2, $4×$5 Pixel, $3 insgesamt',
+	'timedmedia-flac-short-audio' => 'FLAC-Audiodatei, $1',
+	'timedmedia-flac-long-audio' => 'FLAC-Audiodatei, Länge: $1, Bitrate: $2',
 	'timedmedia-mp4-short-video' => 'MP4-$1-Videodatei, $2',
 	'timedmedia-mp4-long-video' => 'MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 gesamt',
 	'timedmedia-no-player-js' => 'Entschuldige, aber dein Browser hat entweder JavaScript deaktiviert oder keine unterstützte Abspielsoftware.<br />
@@ -3517,6 +3519,16 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-desc-link' => 'Om denne filen',
 	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
 	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
+	'timedmedia-status' => 'Status',
+	'timedmedia-status-unknown' => 'Ukjent status',
+	'timedmedia-actions' => 'Handlinger',
+	'timedmedia-not-ready' => 'Ikke klar',
+	'timedmedia-percent-done' => 'Rundt $1% ferdig',
+	'timedmedia-days' => '{{PLURAL:$1|1 dag|$1 dager}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 time|$1 timer}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 minutt|$1 minutter}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekunder}}',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 kilde',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg-video (160P)',
@@ -3527,8 +3539,17 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-derivative-desc-360p.webm' => 'Nett-strømbar WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Nett-strømbar WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Høykvalitets nedlastbar WebM (720P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'Nett-strømbar MP4 (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720P)',
+	'timedmedia-subtitle-new' => 'Opprett ny oversettelse eller rediger eksisterende',
+	'timedmedia-subtitle-new-desc' => "Velg språk eller trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
 	'timedmedia-subtitle-new-go' => 'Kjør',
 	'timedmedia-subtitle-language' => '$1 ($2) undertekster',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videoer}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videoer}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-video|$1 WebM-videoer}}',
+	'timedmedia-file' => 'Fil',
 );
 
 /** Low German (Plattdüütsch)
