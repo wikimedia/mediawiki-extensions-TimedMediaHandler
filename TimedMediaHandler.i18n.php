@@ -243,7 +243,8 @@ Primarily used on Special:Search results pages, i.e.
  https://commons.wikimedia.org/w/index.php?title=Special%3ASearch&profile=advanced&search=What%27s+a+love+dart&fulltext=Search&ns6=1&profile=advanced
 
 See also:
-* {{msg-mw|Timedmedia-flac-long-audio}}',
+* {{msg-mw|Timedmedia-flac-long-audio}}
+* {{msg-mw|Timedmedia-ogg-short-audio}}',
 	'timedmedia-flac-long-audio' => 'File details for FLAC files, long version.
 
 Shown after the filename in the image description page.
@@ -1060,6 +1061,7 @@ Er du sikker på, du vil fortsætte?',
 /** German (Deutsch)
  * @author Filzstift
  * @author G.Hagedorn
+ * @author Geitost
  * @author Kghbln
  * @author Leithian
  * @author Metalhead64
@@ -1147,7 +1149,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
 	'timedmedia-file' => 'Datei',
-	'right-transcode-reset' => 'Fehlgeschlagene oder umgeschlüsselte Videos zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
+	'right-transcode-reset' => 'Fehlgeschlagene oder erfolgreiche Umschlüsselungen von Video-Dateien zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
 	'right-transcode-status' => '[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten',
 	'action-transcode-status' => 'den aktuellen Transkodierungstatus anzusehen',
 );
@@ -1744,6 +1746,8 @@ $messages['gl'] = array(
 	'timedmedia-ogg-long-error' => 'Ficheiro Ogg non válido: $1',
 	'timedmedia-webm-short-video' => 'Ficheiro de vídeo WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Ficheiro WebM de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total',
+	'timedmedia-flac-short-audio' => 'Ficheiro de son FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Ficheiro de son FLAC, duración $1, $2 total',
 	'timedmedia-mp4-short-video' => 'Ficheiro de vídeo MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Ficheiro MP4 de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total',
 	'timedmedia-no-player-js' => 'Sentímolo, o seu navegador ten o JavaScript desactivado ou non conta con ningún reprodutor dos soportados.<br />
@@ -2573,13 +2577,15 @@ $messages['ja'] = array(
 	'timedmedia-ogg-short-general' => 'Ogg $1 メディアファイル、$2',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 音声ファイル、長さ $2、$3',
 	'timedmedia-ogg-long-video' => 'Ogg $1 動画ファイル、長さ $2、$4 × $5 ピクセル、$3',
-	'timedmedia-ogg-long-multiplexed' => 'Ogg 多重音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で$3',
+	'timedmedia-ogg-long-multiplexed' => 'Ogg 多重音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3',
 	'timedmedia-ogg-long-general' => 'Ogg メディアファイル、長さ $2、$3',
 	'timedmedia-ogg-long-error' => '無効な Ogg ファイル: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 動画ファイル、$2',
-	'timedmedia-webm-long-video' => 'WebM 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で$3',
+	'timedmedia-webm-long-video' => 'WebM 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3',
+	'timedmedia-flac-short-audio' => 'FLAC 音声ファイル、$1',
+	'timedmedia-flac-long-audio' => 'FLAC 音声ファイル、長さ $1、全体で $2',
 	'timedmedia-mp4-short-video' => 'MP4 $1 動画ファイル、$2',
-	'timedmedia-mp4-long-video' => 'MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で$3',
+	'timedmedia-mp4-long-video' => 'MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3',
 	'timedmedia-no-player-js' => '申し訳ありませんが、あなたのブラウザーではJavaScriptが無効になっているか、対応しているプレーヤーがありません。<br />
 再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">プレーヤーをダウンロード</a>する必要があります。',
 	'timedmedia-more' => 'その他…',
@@ -3186,6 +3192,8 @@ $messages['mk'] = array(
 	'timedmedia-ogg-long-error' => 'Оштетена Ogg-податотека: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 видеоснимка, $2',
 	'timedmedia-webm-long-video' => 'WebM аудио/видео снимка, $1, должина: $2, $4 × $5 пиксели, вкупно $3',
+	'timedmedia-flac-short-audio' => 'Аудиоподатотека FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Аудиоподатотека FLAC, траење: $1, вкупно $2',
 	'timedmedia-mp4-short-video' => 'MP4 $1 видеоснимка, $2',
 	'timedmedia-mp4-long-video' => 'MP4 аудио/видео снимка, $1, времетраење $2, $4 × $5 пиксели, вкупно $3',
 	'timedmedia-no-player-js' => 'Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />
@@ -3419,7 +3427,7 @@ Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="//www.mediawi
 	'timedmedia-direct-link' => 'Muat turun terbitan',
 	'timedmedia-not-ready' => 'Belum sedia',
 	'timedmedia-completed-on' => 'Pentranskodan selesai pada $1',
-	'timedmedia-error-on' => 'Ralat dalam transkod pada $1.',
+	'timedmedia-error-on' => 'Ralat dalam transkod pada $1',
 	'timedmedia-started-transcode' => 'Pentranskodan bermula $1 lalu. $2',
 	'timedmedia-percent-done' => 'Kira-kira $1% selesai',
 	'timedmedia-in-job-queue' => 'Ditambahkan ke dalam baris gilir kerja $1 lalu',
@@ -3428,7 +3436,6 @@ Anda boleh <a href="$1">memuat turun sedutan</a> itu atau <a href="//www.mediawi
 	'timedmedia-hours' => '$1 jam',
 	'timedmedia-minutes' => '$1 minit',
 	'timedmedia-seconds' => '$1 saat',
-	'timedmedia-show-error' => 'Paparkan ralat',
 	'timedmedia-reset' => 'Set semula transkod',
 	'timedmedia-reset-confirm' => 'Mengeset semula transkod ini akan membuang sebarang fail yang sedia ada (jika ada), lalu menambahkan semula transkod ke dalam baris gilir tugas. Pentranskodan semula akan memakan masa.<br /><br />Adakah anda tetap ingin melakukannya?',
 	'timedmedia-reset-error' => 'Ralat ketika mengeset semula tugas pentranskodan.',
