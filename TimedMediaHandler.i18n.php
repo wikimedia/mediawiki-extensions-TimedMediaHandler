@@ -1579,6 +1579,8 @@ $messages['fr'] = array(
 	'timedmedia-ogg-long-error' => 'Fichier Ogg invalide : $1',
 	'timedmedia-webm-short-video' => 'Fichier vidéo WebM $1, $2',
 	'timedmedia-webm-long-video' => "Fichier audio/vidéo WebM, $1, longueur $2, $4 x $5 pixels, $3 l'ensemble",
+	'timedmedia-flac-short-audio' => 'Fichier audio FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Fichier audio FLAC, durée $1, débit $2 sur l’ensemble',
 	'timedmedia-mp4-short-video' => 'Fichier vidéo MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Fichier audio/vidéo MP4, $1, taille $2, $4 x $5 pixels, $3 au total',
 	'timedmedia-no-player-js' => 'Désolé, soit votre navigateur a JavaScript désactivé, soit il ne dispose d’aucun lecteur pris en charge.<br />
@@ -2492,6 +2494,8 @@ $messages['it'] = array(
 	'timedmedia-ogg-long-error' => 'File ogg non valido: $1',
 	'timedmedia-webm-short-video' => 'File video WebM $1, $2',
 	'timedmedia-webm-long-video' => 'File audio/video WebM $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3',
+	'timedmedia-flac-short-audio' => 'File audio FLAC, $1',
+	'timedmedia-flac-long-audio' => 'File audio FLAC, durata $1, complessivamente $2',
 	'timedmedia-mp4-short-video' => 'File video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'File audio/video MP4 $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3',
 	'timedmedia-no-player-js' => 'Si sta utilizzando un browser che ha JavaScript disattivato oppure non ha alcun riproduttore supportato.<br />
@@ -3407,6 +3411,8 @@ $messages['ms'] = array(
 	'timedmedia-ogg-long-error' => 'Fail Ogg tidak sah: $1',
 	'timedmedia-webm-short-video' => 'fail video WebM $1, $2',
 	'timedmedia-webm-long-video' => 'fail audio/video webM, $1, tempoh $2, $4×$5 piksel, $3 keseluruhannya',
+	'timedmedia-flac-short-audio' => 'Fail audio FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Fail audio FLAC, tempoh $1, $2 keseluruhannya',
 	'timedmedia-mp4-short-video' => 'fail video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'fail audio/video MP4, $1, tempoh $2, $4×$5 piksel, $3 keseluruhannya',
 	'timedmedia-no-player-js' => 'Maaf, pelayar anda sama ada telah dimatikan JavaScript-nya ataupun tidak mempunyai sebarang pemain yang disokong.<br />
@@ -4185,6 +4191,8 @@ $messages['ro'] = array(
 	'timedmedia-ogg-long-error' => 'fișier ogg incorect: $1',
 	'timedmedia-webm-short-video' => 'fișier video WebM $1, $2',
 	'timedmedia-webm-long-video' => 'fișier audio/video WebM, $1, lungime $2, $4 × $5 pixeli, $3 per ansamblu',
+	'timedmedia-flac-short-audio' => 'fișier audio FLAC, $1',
+	'timedmedia-flac-long-audio' => 'fișier audio FLAC, lungime $1, $2 per ansmablu',
 	'timedmedia-mp4-short-video' => 'fișier video MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'fișier audio/video MP4, $1, lungime $2, $4 × $5 pixeli, $3 per ansamblu',
 	'timedmedia-no-player-js' => 'Ne pare rău, însă navigatorul dumneavoastră fie are JavaScript dezactivat, fie nu conține niciun player suportat.<br />
@@ -4205,7 +4213,7 @@ Puteți <a href="$1">descărca clipul</a> sau puteți <a href="//www.mediawiki.o
 	'timedmedia-direct-link' => 'Descarcă derivata',
 	'timedmedia-not-ready' => 'Nu este gata',
 	'timedmedia-completed-on' => 'Codificarea $1 s-a finalizat',
-	'timedmedia-error-on' => 'Eroare în codificarea din $1.',
+	'timedmedia-error-on' => 'Eroare în codificarea din $1',
 	'timedmedia-started-transcode' => 'Codificare pornită acum $1. $2',
 	'timedmedia-percent-done' => 'Aproximativ $1% finalizat',
 	'timedmedia-in-job-queue' => 'Adăugat la șirul de sarcini acum $1',
@@ -4214,14 +4222,14 @@ Puteți <a href="$1">descărca clipul</a> sau puteți <a href="//www.mediawiki.o
 	'timedmedia-hours' => '{{PLURAL:$1|o oră|$1 ore|$1 de ore}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|un minut|$1 minute|$1 de minute}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|o secundă|$1 secunde|$1 de secunde}}',
-	'timedmedia-show-error' => 'Afișează eroarea',
 	'timedmedia-reset' => 'Reinițializează codificarea',
 	'timedmedia-reset-confirm' => 'Reinițializarea acestei codificări va elimina orice fișier existent (dacă există) și va readăuga codificarea la șirul de sarcini. Va dura ceva timp pentru a recodifica. <br /><br />
 Sunteți sigur că doriți să continuați?',
 	'timedmedia-reset-error' => 'Eroare la reinițializarea codificării.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Sursă $1',
-	'timedmedia-source-file-desc' => '$1 original, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Fișier $1 original, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Fișier $1 original ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Videoclip Ogg cu lățime de bandă mică (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Videoclip Ogg pentru redare pe web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Videoclip Ogg pentru redare pe web (480P)',
@@ -4234,7 +4242,7 @@ Sunteți sigur că doriți să continuați?',
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4 pentru redare pe web (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4 de calitate HD (720P)',
 	'timedmedia-subtitle-new' => 'Creare traducere nouă sau modificare una existentă',
-	'timedmedia-subtitle-new-desc' => "Înlocuiți expresia '''$1''' cu [[:en:ISO 639|codul limbii]] dumneavoastră și apăsați butonul '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
+	'timedmedia-subtitle-new-desc' => "Alegeți limba și apăsați butonul '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Du-te',
 	'timedmedia-subtitle-language' => 'Subtitrare în $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'Nu există niciun videoclip asociat cu pagina curentă de subtitrare',
@@ -4251,7 +4259,8 @@ Sunteți sigur că doriți să continuați?',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 codificare eșuată|$1 codificări eșuate|$1 de codificări eșuate}}',
 	'timedmedia-file' => 'Fișier',
 	'right-transcode-reset' => 'Reinițializează videoclipuri nereușit codificate pentru ca acestea să fie readăugate la șirul de sarcini.',
-	'right-transcode-status' => 'Vizualizează [[Special:TimedMediaHandler]], pagină cu informații despre activitatea curentă de codificare', # Fuzzy
+	'right-transcode-status' => 'Vizualizează [[Special:TimedMediaHandler|informații despre activitatea curentă de codificare]]',
+	'action-transcode-status' => 'vizualizați statutul actual al codificării',
 );
 
 /** tarandíne (tarandíne)
@@ -5619,7 +5628,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-direct-link' => '下載衍生作品',
 	'timedmedia-not-ready' => '未就緒',
 	'timedmedia-completed-on' => '已完成轉碼$1',
-	'timedmedia-error-on' => '於$1轉碼錯誤。',
+	'timedmedia-error-on' => '於$1轉碼錯誤。', # Fuzzy
 	'timedmedia-started-transcode' => '於$1前開始轉碼。$2',
 	'timedmedia-percent-done' => '大約$1%已完成',
 	'timedmedia-in-job-queue' => '$1前添加到工作隊列',
@@ -5628,7 +5637,6 @@ $messages['zh-hant'] = array(
 	'timedmedia-hours' => '$1小時',
 	'timedmedia-minutes' => '$1分',
 	'timedmedia-seconds' => '$1秒',
-	'timedmedia-show-error' => '顯示錯誤',
 	'timedmedia-reset' => '重置轉碼',
 	'timedmedia-reset-confirm' => '重置轉碼會移除所有現有文件，並將其重新加入轉碼工作隊列。可能需要一些時間來重新轉碼。<br /><br />
 您確實想繼續嗎？',
@@ -5656,7 +5664,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-subtitle-no-subtitles' => '當前沒有這個視頻的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯這個頁面]以添加',
 	'timedmedia-subtitle-remote' => '本檔案的字幕位於$1',
 	'timedmedia-subtitle-remote-link' => '您可於$2查看[$1 該檔案的描述頁]',
-	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmediahandler' => '定時媒體處理器',
 	'timedmedia-videos' => '$1個視頻',
 	'timedmedia-ogg-videos' => '$1個Ogg視頻',
 	'timedmedia-webm-videos' => '$1個WebM視頻',
