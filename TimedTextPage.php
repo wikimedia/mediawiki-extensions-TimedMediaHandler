@@ -35,7 +35,7 @@ class TimedTextPage extends Article {
 	public function renderOutput( $out ){
 		wfProfileIn( __METHOD__ );
 		// parse page title:
-		$titleParts = explode( '.', $this->getTitle()->getDBKey() );
+		$titleParts = explode( '.', $this->getTitle()->getDBkey() );
 		$srt = array_pop( $titleParts );
 		$languageKey = array_pop( $titleParts );
 
@@ -55,7 +55,7 @@ class TimedTextPage extends Article {
 
 		// Check for File name without text extension:
 		// i.e TimedText:myfile.ogg
-		$fileTitle = Title::newFromText( $this->getTitle()->getDBKey(), NS_FILE );
+		$fileTitle = Title::newFromText( $this->getTitle()->getDBkey(), NS_FILE );
 		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
 		if( $srt !== '.srt' && $file && $file->exists() ){
@@ -152,7 +152,7 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
-		$timedTextTile = Title::newFromText( $this->getTitle()->getDBKey() . '.'.
+		$timedTextTile = Title::newFromText( $this->getTitle()->getDBkey() . '.'.
 			'LANG' . '.srt', NS_TIMEDTEXT )->getFullText();
 		$out->addScript(
 			Html::InlineScript(

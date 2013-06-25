@@ -328,7 +328,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr += array(
 				'data-durationhint' => $length,
 				'data-startoffset' => $offset,
-				'data-mwtitle' => $this->file->getTitle()->getDBKey()
+				'data-mwtitle' => $this->file->getTitle()->getDBkey()
 			);
 
 			// Add api provider:

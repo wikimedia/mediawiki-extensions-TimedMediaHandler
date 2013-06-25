@@ -126,7 +126,7 @@ class TextHandler {
 			'list' => 'allpages',
 			'apnamespace' => $ns,
 			'aplimit' => 300,
-			'apprefix' => $this->file->getTitle()->getDBKey()
+			'apprefix' => $this->file->getTitle()->getDBkey()
 		);
 	}
 
