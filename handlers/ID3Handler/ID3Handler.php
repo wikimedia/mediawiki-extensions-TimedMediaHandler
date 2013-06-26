@@ -10,7 +10,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param $path string
 	 * @return array
 	 */
-	private function getID3( $path ) {
+	protected function getID3( $path ) {
 		// Create new id3 object:
 		$getID3 = new getID3();
 

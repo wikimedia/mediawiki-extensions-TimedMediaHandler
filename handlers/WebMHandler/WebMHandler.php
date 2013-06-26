@@ -4,7 +4,11 @@
  */
 class WebMHandler extends ID3Handler {
 
-	private function getID3( $path ) {
+	/**
+	 * @param $path string
+	 * @return array
+	 */
+	protected function getID3( $path ) {
 		$id3 = parent::getID3( $path );
 		// Unset some parts of id3 that are too detailed and matroska specific:
 		unset( $id3['matroska'] );
