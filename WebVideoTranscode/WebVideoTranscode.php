@@ -427,9 +427,9 @@ class WebVideoTranscode {
 
 		if( $file->getHandler()->isAudio( $file ) ){
 			$sourceCodec = $file->getHandler()->getStreamTypes( $file );
-			$sourceCodec = strtolower($sourceCodec[0]);
+			$sourceCodec = $sourceCodec ? strtolower( $sourceCodec[0] ) : '';
 			foreach( $wgEnabledAudioTranscodeSet as $transcodeKey ){
-				$codec =  self::$derivativeSettings[$transcodeKey]['audioCodec'];
+				$codec = self::$derivativeSettings[$transcodeKey]['audioCodec'];
 				if ( $sourceCodec != $codec ) {
 					// Try and add the source
 					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
