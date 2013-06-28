@@ -26,6 +26,7 @@ $messages['en'] = array(
 
 	'timedmedia-wav-short-audio' => 'WAV audio file, $1',
 	'timedmedia-wav-long-audio' => 'WAV audio file, length $1, $2 overall',
+	'timedmedia-wav-pcm-required' => 'You can only upload PCM (Pulse Code Modulation) WAV.',
 
 	'timedmedia-mp4-short-video' => 'MP4 $1 video file, $2',
 	'timedmedia-mp4-long-video' => 'MP4 audio/video file, $1, length $2, $4 × $5 pixels, $3 overall',
@@ -40,7 +41,6 @@ You can <a href="$1">download the clip</a> or <a href="//www.mediawiki.org/wiki/
 	'timedmedia-desc-link'        => 'About this file',
 	'timedmedia-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
 	'timedmedia-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
-	'timedmedia-wav-pcm-required' => 'You can only upload PCM (Pulse Code Modulation) WAV.',
 
 	// Transcode status table:
 
@@ -249,6 +249,7 @@ See also:
 Shown after the filename in the image description page.
 See also:
 * {{msg-mw|Timedmedia-wav-short-audio}}',
+	'timedmedia-wav-pcm-required' => 'Message shown at upload if user tries to upload a WAV file using a codec that is not PCM',
 
 	'timedmedia-flac-short-audio' => 'File details for FLAC audio files, short version.
 Parameters:
@@ -413,7 +414,6 @@ Parameters are:
 	'right-transcode-reset' => '{{doc-right|transcode-reset}}',
 	'right-transcode-status' => '{{doc-right|transcode-status}}', # Fuzzy
 	'action-transcode-status' => '{{doc-action|transcode-status}}', # Fuzzy
-	'timedmedia-wav-pcm-required' => 'Message shown at upload if user tries to upload a WAV file using a codec that is not PCM',
 );
 
 /** Afrikaans (Afrikaans)
