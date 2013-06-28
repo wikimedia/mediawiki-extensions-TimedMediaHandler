@@ -941,7 +941,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 	'timedmedia-actions' => 'Akce',
 	'timedmedia-not-ready' => 'Nepřipraveno',
 	'timedmedia-completed-on' => 'Transkódování dokončeno v $1',
-	'timedmedia-error-on' => 'Chyba transkódování v $1.',
+	'timedmedia-error-on' => 'Chyba transkódování v $1',
 	'timedmedia-started-transcode' => 'Transkódování začalo před $1. $2',
 	'timedmedia-percent-done' => 'Hotovo asi $1 %',
 	'timedmedia-in-job-queue' => 'Před $1 přidáno do fronty',
@@ -950,7 +950,6 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 	'timedmedia-hours' => '$1 {{PLURAL:$1|hodina|hodiny|hodin}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minuta|minuty|minut}}',
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
-	'timedmedia-show-error' => 'Zobrazit chybu',
 	'timedmedia-reset' => 'Obnovit transkódování',
 	'timedmedia-subtitle-new' => 'Vytvoření nového překladu nebo editace stávajícího',
 	'timedmedia-subtitle-new-desc' => "Nahraďte část '''$1''' svým [[:cs:ISO 639|kódem jazyka]] a stiskněte tlačítko '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
