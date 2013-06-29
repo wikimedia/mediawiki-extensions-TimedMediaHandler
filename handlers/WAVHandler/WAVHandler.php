@@ -22,7 +22,7 @@ class WAVHandler extends ID3Handler {
 
 	function verifyUpload( $filename ) {
 		$metadata = $this->getID3( $filename );
-		if( issset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'wav' && $metadata['audio']['codec'] == 'Pulse Code Modulation (PCM)') {
+		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'wav' && $metadata['audio']['codec'] == 'Pulse Code Modulation (PCM)') {
 			return Status::newGood();
 		}
 		return Status::newFatal( 'timedmedia-wav-pcm-required' );
