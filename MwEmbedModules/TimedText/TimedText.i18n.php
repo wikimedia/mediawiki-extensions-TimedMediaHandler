@@ -66,6 +66,7 @@ $messages['qqq'] = array(
 	'mwe-timedtext-layout' => '{{Identical|Layout}}',
 	'mwe-timedtext-key-language' => '{{optional}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
+	'mwe-timedtext-textcat-sub' => '{{Identical|Subtitle}}',
 	'mwe-timedtext-textcat-ktv' => 'See [[w:Karaoke]].',
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
 	'mwe-timedtext-language-subtitles-for-clip' => 'Used as page title, if the subtitles exist. Parameters:

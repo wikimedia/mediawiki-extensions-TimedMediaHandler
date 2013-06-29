@@ -239,18 +239,6 @@ Parameters:
 * $5 - height of the video (in pixels)
 See also:
 * {{msg-mw|Timedmedia-webm-short-video}}',
-
-	'timedmedia-wav-short-audio' => 'File details for WAV audio files, short version.
-Parameters:
-* $1 - duration of the audio (localized) - e.g. 1m34s
-See also:
-* {{msg-mw|Timedmedia-wav-long-audio}}',
-	'timedmedia-wav-long-audio' => 'File details for WAV files, long version.
-Shown after the filename in the image description page.
-See also:
-* {{msg-mw|Timedmedia-wav-short-audio}}',
-	'timedmedia-wav-pcm-required' => 'Message shown at upload if user tries to upload a WAV file using a codec that is not PCM',
-
 	'timedmedia-flac-short-audio' => 'File details for FLAC audio files, short version.
 Parameters:
 * $1 - duration of the audio (localized) - e.g. 1m34s
@@ -270,6 +258,20 @@ Parameters:
 * $2 - bit-rate (localized) - e.g. 97kbps
 See also:
 * {{msg-mw|Timedmedia-flac-short-audio}}',
+	'timedmedia-wav-short-audio' => 'File details for WAV audio files, short version.
+Parameters:
+* $1 - duration of the audio (localized) - e.g. 1m34s
+See also:
+* {{msg-mw|Timedmedia-wav-long-audio}}',
+	'timedmedia-wav-long-audio' => 'File details for WAV files, long version.
+Shown after the filename in the image description page.
+
+Parameters:
+* $1 - duration of the audio (localized) - e.g. 1m34s
+* $2 - bit-rate (localized) - e.g. 97kbps
+See also:
+* {{msg-mw|Timedmedia-wav-short-audio}}',
+	'timedmedia-wav-pcm-required' => 'Message shown at upload if user tries to upload a WAV file using a codec that is not PCM',
 	'timedmedia-mp4-short-video' => 'File details for MP4 video files, short version.
 Parameters:
 * $1 - stream type names (slash separated) - e.g. AAC/h.264
@@ -295,9 +297,11 @@ Parameters:
 	'timedmedia-more' => '{{Identical|More...}}',
 	'timedmedia-dismiss' => '{{Identical|Close}}',
 	'timedmedia-download' => '{{Identical|Download}}',
+	'timedmedia-desc-link' => '{{Identical|About this file}}',
 	'timedmedia-oggThumb-version' => 'none',
 	'timedmedia-oggThumb-failed' => 'none',
 	'timedmedia-status' => '{{Identical|Status}}',
+	'timedmedia-status-unknown' => '{{Identical|Unknown status}}',
 	'timedmedia-transcodeinfo' => 'A table column header for description of Transcode derivative',
 	'timedmedia-actions' => '{{Identical|Action}}',
 	'timedmedia-not-ready' => 'State of a given transcode job being not yet complete or not yet ready',
@@ -1103,9 +1107,12 @@ $messages['de'] = array(
 	'timedmedia-webm-short-video' => 'WebM-$1-Videodatei, $2',
 	'timedmedia-webm-long-video' => 'WebM-Audio-/Video-Datei, $1, Länge: $2, $4×$5 Pixel, $3 insgesamt',
 	'timedmedia-flac-short-audio' => 'FLAC-Audiodatei, $1',
-	'timedmedia-flac-long-audio' => 'FLAC-Audiodatei, Länge: $1, Bitrate: $2',
+	'timedmedia-flac-long-audio' => 'FLAC-Audiodatei, Länge: $1, $2 insgesamt',
+	'timedmedia-wav-short-audio' => 'WAV-Audiodatei, $1',
+	'timedmedia-wav-long-audio' => 'WAV-Audiodatei, Länge: $1, $2 insgesamt',
+	'timedmedia-wav-pcm-required' => 'Du kannst nur PCM-WAV-Dateien hochladen (Pulse Code Modulation).',
 	'timedmedia-mp4-short-video' => 'MP4-$1-Videodatei, $2',
-	'timedmedia-mp4-long-video' => 'MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 gesamt',
+	'timedmedia-mp4-long-video' => 'MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 insgesamt',
 	'timedmedia-no-player-js' => 'Entschuldige, aber dein Browser hat entweder JavaScript deaktiviert oder keine unterstützte Abspielsoftware.<br />
 Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.',
 	'timedmedia-more' => 'Optionen …',
@@ -2608,6 +2615,9 @@ $messages['ja'] = array(
 	'timedmedia-webm-long-video' => 'WebM 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3',
 	'timedmedia-flac-short-audio' => 'FLAC 音声ファイル、$1',
 	'timedmedia-flac-long-audio' => 'FLAC 音声ファイル、長さ $1、全体で $2',
+	'timedmedia-wav-short-audio' => 'WAV 音声ファイル、$1',
+	'timedmedia-wav-long-audio' => 'WAV 音声ファイル、長さ $1、全体で $2',
+	'timedmedia-wav-pcm-required' => 'アップロードできるのは PCM (パルス符号変調) WAV のみです。',
 	'timedmedia-mp4-short-video' => 'MP4 $1 動画ファイル、$2',
 	'timedmedia-mp4-long-video' => 'MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3',
 	'timedmedia-no-player-js' => '申し訳ありませんが、あなたのブラウザーではJavaScriptが無効になっているか、対応しているプレーヤーがありません。<br />
@@ -3218,6 +3228,9 @@ $messages['mk'] = array(
 	'timedmedia-webm-long-video' => 'WebM аудио/видео снимка, $1, должина: $2, $4 × $5 пиксели, вкупно $3',
 	'timedmedia-flac-short-audio' => 'Аудиоподатотека FLAC, $1',
 	'timedmedia-flac-long-audio' => 'Аудиоподатотека FLAC, траење: $1, вкупно $2',
+	'timedmedia-wav-short-audio' => 'Аудиоподатотека WAV, $1',
+	'timedmedia-wav-long-audio' => 'Аудиоподатотека WAV, траење: $1, вкупно $2',
+	'timedmedia-wav-pcm-required' => 'Можете да подигате само WAV-податотеки со PCM (импулсна кодна модулација).',
 	'timedmedia-mp4-short-video' => 'MP4 $1 видеоснимка, $2',
 	'timedmedia-mp4-long-video' => 'MP4 аудио/видео снимка, $1, времетраење $2, $4 × $5 пиксели, вкупно $3',
 	'timedmedia-no-player-js' => 'Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />
@@ -3541,6 +3554,11 @@ $messages['nb'] = array(
 	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
 	'timedmedia-webm-long-video' => 'WebM lyd-/videofil, $1, lengde $2, $4 × $5 piksler, $3 til sammen',
+	'timedmedia-flac-short-audio' => 'FLAC-lydfil, $1',
+	'timedmedia-flac-long-audio' => 'FLAC-lydfil, varighet $1, $2 totalt',
+	'timedmedia-wav-short-audio' => 'WAV-lydfil, $1',
+	'timedmedia-wav-long-audio' => 'WAV-lydfil, varighet $1, $2 totalt',
+	'timedmedia-wav-pcm-required' => 'Du kan kun laste opp PCM (Pulse Code Modulation) WAV.',
 	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'MP4-fil for lyd/video, $1, lengde $2, $4 × $5 piksler, $3 totalt',
 	'timedmedia-no-player-js' => 'Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />
@@ -3552,18 +3570,32 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-desc-link' => 'Om denne filen',
 	'timedmedia-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
 	'timedmedia-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
+	'timedmedia-status-header' => 'Omkodingsstatus',
+	'timedmedia-update-status' => 'Oppdater omkodingsstatus',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Ukjent status',
+	'timedmedia-transcodeinfo' => 'Beskrivelse',
 	'timedmedia-actions' => 'Handlinger',
+	'timedmedia-direct-link' => 'Last ned utgave',
 	'timedmedia-not-ready' => 'Ikke klar',
+	'timedmedia-completed-on' => 'Omkoding ferdig $1',
+	'timedmedia-error-on' => 'Omkoding feilet den $1',
+	'timedmedia-started-transcode' => 'Omkoding startet for $1 siden. $2',
 	'timedmedia-percent-done' => 'Rundt $1% ferdig',
+	'timedmedia-in-job-queue' => 'Lagt til i jobbkø for $1 siden',
+	'timedmedia-unknown-target-size' => 'Ukjent målstørrelse, $1 ferdig kodet',
 	'timedmedia-days' => '{{PLURAL:$1|1 dag|$1 dager}}',
 	'timedmedia-hours' => '{{PLURAL:$1|1 time|$1 timer}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minutt|$1 minutter}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekunder}}',
+	'timedmedia-reset' => 'Nullstill omkoding',
+	'timedmedia-reset-confirm' => 'Nullstilling av denne omkodingsjobben vil slette eksisterende filer (hvis det er noen), og gjeninnsette omkodingsjobben i jobbkøen. Dette vil naturligvis ta noe tid.<br /><br />
+Er du sikker på at du ønsker å fortsette?',
+	'timedmedia-reset-error' => 'Det oppsto en feil ved forsøk på å nullstille omkodingsjobben.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 kilde',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Original $1-fil, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Original $1-fil ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Lav båndbredde Ogg-video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Nett-strømbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Nett-strømbar Ogg-video (480P)',
@@ -3572,17 +3604,29 @@ Du kan <a href="$1">laste ned klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-derivative-desc-360p.webm' => 'Nett-strømbar WebM (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'Nett-strømbar WebM (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'Høykvalitets nedlastbar WebM (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => 'Mobilvennlig MP4 (320P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'Nett-strømbar MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720P)',
 	'timedmedia-subtitle-new' => 'Opprett ny oversettelse eller rediger eksisterende',
 	'timedmedia-subtitle-new-desc' => "Velg språk eller trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
 	'timedmedia-subtitle-new-go' => 'Kjør',
 	'timedmedia-subtitle-language' => '$1 ($2) undertekster',
+	'timedmedia-subtitle-no-video' => 'Det finnes ingen video koblet til den aktuelle undertekstsiden',
+	'timedmedia-subtitle-no-subtitles' => 'Det er for øyeblikket ingen undertekster på $1 for denne videoen. Du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere denne siden] for å legge de til',
+	'timedmedia-subtitle-remote' => 'Undertekster (timed text) for denne filen befinner seg på $1',
+	'timedmedia-subtitle-remote-link' => 'Du kan [$1 vise beskrivelsessiden] for denne filen på $2',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 video|$1 videoer}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videoer}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-video|$1 WebM-videoer}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 omkoding|$1 omkodinger}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 pågående omkoding|$1 pågående omkodinger}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 omkoding|$1 omkodinger}} i kø',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 omkoding|$1 omkodinger}} feilet',
 	'timedmedia-file' => 'Fil',
+	'right-transcode-reset' => 'Nullstill feilede eller omkodede videoer så de blir gjeninnsatt i jobbkøen.',
+	'right-transcode-status' => 'Vis [[Special:TimedMediaHandler|informasjon om pågående omkodinger]]',
+	'action-transcode-status' => 'vise pågående omkodingsstatus',
 );
 
 /** Low German (Plattdüütsch)
@@ -4585,6 +4629,11 @@ $messages['sl'] = array(
 	'timedmedia-ogg-long-error' => 'Neveljavna datoteka Ogg: $1',
 	'timedmedia-webm-short-video' => 'Videodatoteka WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Avdio-/videodatoteka WebM, $1, dolžine $2, $4 × $5 pik, skupaj $3',
+	'timedmedia-flac-short-audio' => 'Datoteka z zvokom FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Datoteka z zvokom FLAC, dolžine $1, skupno $2',
+	'timedmedia-wav-short-audio' => 'Datoteka z zvokom WAV, $1',
+	'timedmedia-wav-long-audio' => 'Datoteka z zvokom WAV, dolžine $1, skupno $2',
+	'timedmedia-wav-pcm-required' => 'Naložite lahko samo PCM (Pulse Code Modulation) WAV.',
 	'timedmedia-mp4-short-video' => 'Videodatoteka MP4 $1, $2',
 	'timedmedia-mp4-long-video' => 'Avdio-/videodatoteka MP4, $1, dolžine $2, $4 × $5 pik, skupaj $3',
 	'timedmedia-no-player-js' => 'Oprostite, vaš brskalnik ima onemogočen JavaScript ali pa nima nobenega podprtega predvajalnika.<br />
@@ -4605,7 +4654,7 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-direct-link' => 'Prenos izpeljave',
 	'timedmedia-not-ready' => 'Ni pripravljeno',
 	'timedmedia-completed-on' => 'Prekodiranje končano $1',
-	'timedmedia-error-on' => 'Napaka pri prekodiranju $1.',
+	'timedmedia-error-on' => 'Napaka pri prekodiranju dne $1',
 	'timedmedia-started-transcode' => 'Prekodiranje se je začelo pred $1. $2',
 	'timedmedia-percent-done' => 'Končanih približno $1 %',
 	'timedmedia-in-job-queue' => 'Dodano v čakalno vrsto pred $1',
@@ -4614,7 +4663,6 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-hours' => '$1 {{PLURAL:$1|ura|uri|ure|ur}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minuta|minuti|minute|minut}}',
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekunda|sekundi|sekunde|sekund}}',
-	'timedmedia-show-error' => 'Prikaži napako',
 	'timedmedia-reset' => 'Ponastavi prekodiranje',
 	'timedmedia-reset-confirm' => 'Ob ponastavitvi tega prekodiranja se bodo izbrisale vse obstoječe datoteke (če obstajajo), prekodiranje pa se bo ponovno dodalo v čakalno vrsto. Ponovno prekodiranje bo vzelo nekaj časa. <br /><br />Ste prepričani, da želite nadaljevati?',
 	'timedmedia-reset-error' => 'Napaka pri ponastavljanju prekodiranja.',
