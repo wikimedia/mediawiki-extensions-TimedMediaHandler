@@ -107,6 +107,7 @@ This message is followed by the following messages:
 	'mwe-embedplayer-player_fullscreen' => '{{Identical|Full screen}}',
 	'mwe-embedplayer-seek_to' => 'Used as the Player status string. Parameters:
 * $1 - a time in the NPT format. NPT (Normal play time) is defined in [//www.ietf.org/rfc/rfc2326.txt RFC 2326].',
+	'mwe-embedplayer-paused' => '{{Identical|Paused}}',
 	'mwe-embedplayer-download' => '{{Identical|Download}}',
 	'mwe-embedplayer-share' => '{{Identical|Share}}',
 	'mwe-embedplayer-credits' => '{{Identical|Credit}}',
