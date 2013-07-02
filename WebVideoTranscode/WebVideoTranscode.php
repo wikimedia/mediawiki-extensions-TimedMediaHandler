@@ -357,7 +357,7 @@ class WebVideoTranscode {
 			wfDebug("source cache miss\n");
 		}
 
-		wfDebug("Get Video sources from remote api for " . $file->getTitle()->getDBKey() . "\n");
+		wfDebug("Get Video sources from remote api for " . $file->getName() . "\n");
 		$query = array(
 			'action' => 'query',
 			'prop' => 'videoinfo',
@@ -539,7 +539,7 @@ class WebVideoTranscode {
 	 */
 	public static function getTranscodeState( $file, $db = false ){
 		global $wgTranscodeBackgroundTimeLimit;
-		$fileName = $file->getTitle()->getDbKey();
+		$fileName = $file->getName();
 		if( ! isset( self::$transcodeState[$fileName] ) ){
 			wfProfileIn( __METHOD__ );
 			if ( $db === false ) {
@@ -608,7 +608,7 @@ class WebVideoTranscode {
 			// Remove any existing files ( regardless of their state )
 			$res = $file->repo->getMasterDB()->select( 'transcode',
 				array( 'transcode_key' ),
-				array( 'transcode_image_name' => $file->getTitle()->getDBKey() )
+				array( 'transcode_image_name' => $file->getName() )
 			);
 			$removeKeys = array();
 			foreach( $res as $transcodeRow ){
@@ -631,7 +631,7 @@ class WebVideoTranscode {
 
 		// Build the sql query:
 		$dbw = wfGetDB( DB_MASTER );
-		$deleteWhere = array( 'transcode_image_name' => $file->getTitle()->getDBkey() );
+		$deleteWhere = array( 'transcode_image_name' => $file->getName() );
 		// Check if we are removing a specific transcode key
 		if( $transcodeKey !== false ){
 			$deleteWhere['transcode_key'] = $transcodeKey;
@@ -644,14 +644,14 @@ class WebVideoTranscode {
 		self::invalidatePagesWithFile( $titleObj );
 
 		// Remove from local WebVideoTranscode cache:
-		self::clearTranscodeCache( $titleObj->getDBKey() );
+		self::clearTranscodeCache( $titleObj->getDBkey() );
 	}
 
 	/**
 	 * @param $titleObj Title
 	 */
 	public static function invalidatePagesWithFile( &$titleObj ){
-		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBKey() . "\n" );
+		wfDebug("WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBkey() . "\n" );
 		// Purge the main image page:
 		$titleObj->invalidateCache();
 

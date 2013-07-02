@@ -101,7 +101,7 @@ class WebVideoTranscodeJob extends Job {
 				'transcode_error' => $error
 			),
 			array(
-					'transcode_image_name' => $this->title->getDBkey(),
+					'transcode_image_name' => $this->getFile()->getName(),
 					'transcode_key' => $transcodeKey
 			),
 			__METHOD__,
@@ -155,7 +155,7 @@ class WebVideoTranscodeJob extends Job {
 		// Check if we have "already started" the transcode ( possible error )
 		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
 			array(
-				'transcode_image_name' => $this->title->getDBKey(),
+				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
 			),
 			__METHOD__,
@@ -174,7 +174,7 @@ class WebVideoTranscodeJob extends Job {
 			'transcode',
 			array( 'transcode_time_startwork' => $jobStartTimeCache ),
 			array(
-				'transcode_image_name' => $this->title->getDBkey(),
+				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
 			),
 			__METHOD__,
@@ -210,7 +210,7 @@ class WebVideoTranscodeJob extends Job {
 		// Confirm the in memory $jobStartTimeCache matches db start time
 		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
 			array(
-				'transcode_image_name' => $this->title->getDBKey(),
+				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
 			)
 		);
@@ -257,7 +257,7 @@ class WebVideoTranscodeJob extends Job {
 						'transcode_final_bitrate' => $bitrate
 					),
 					array(
-						'transcode_image_name' => $this->title->getDBkey(),
+						'transcode_image_name' => $this->getFile()->getName(),
 						'transcode_key' => $transcodeKey,
 					),
 					__METHOD__,
