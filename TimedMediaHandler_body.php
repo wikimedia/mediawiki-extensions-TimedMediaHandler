@@ -141,7 +141,6 @@ class TimedMediaHandler extends MediaHandler {
 				'height' => $image->getHeight(),
 			);
 		}
-
 		// Make sure we don't try and up-scale the asset:
 		if( isset( $params['width'] ) && (int)$params['width'] > $size['width'] ){
 			$params['width'] = $size['width'];
@@ -152,8 +151,9 @@ class TimedMediaHandler extends MediaHandler {
 				$params['width'] = self::fitBoxWidth( $size['width'], $size['height'], $params['height'] );
 			}
 		}
-
-		$params['height'] = File::scaleHeight( $size['width'], $size['height'], $params['width'] );
+		if ( isset( $params['width'] ) ) {
+			$params['height'] = File::scaleHeight( $size['width'], $size['height'], $params['width'] );
+		}
 
 		// Make sure start time is not > than end time
 		if( isset($params['start'])

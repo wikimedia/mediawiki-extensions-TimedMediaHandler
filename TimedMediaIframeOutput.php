@@ -60,7 +60,7 @@ class TimedMediaIframeOutput {
 		$params = array(
 			'fillwindow' => true
 		);
-		$videoTransform= $file->transform( $params );
+		$videoTransform = $file->transform( $params );
 
 		$wgOut->addModules( array( 'embedPlayerIframeStyle') );
 		$wgOut->sendCacheControl();
