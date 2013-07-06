@@ -243,7 +243,7 @@ See also:
 Parameters:
 * $1 - duration of the audio (localized) - e.g. 1m34s
 
-Primarily used on Special:Search results pages, i.e.
+Primarily used on [[Special:Search]] results pages, i.e.
  https://commons.wikimedia.org/w/index.php?title=Special%3ASearch&profile=advanced&search=What%27s+a+love+dart&fulltext=Search&ns6=1&profile=advanced
 
 See also:
@@ -393,15 +393,18 @@ The page body for this page title is:
 The page title for this message is:
 * {{msg-mw|timedmedia-subtitle-remote}}',
 	'timedmediahandler' => '{{doc-special|TimedMediaHandler}}',
-	'timedmedia-videos' => 'number of videos on Special:TimedMediaHandler
-Parameters are:
-* $1 number of videos',
-	'timedmedia-ogg-videos' => 'number of Ogg videos on Special:TimedMediaHandler
-Parameters are:
-* $1 number of videos',
-	'timedmedia-webm-videos' => 'number of WebM videos on Special:TimedMediaHandler
-Parameters are:
-* $1 number of videos',
+	'timedmedia-videos' => 'number of videos on [[Special:TimedMediaHandler]].
+
+Parameters:
+* $1 - number of videos',
+	'timedmedia-ogg-videos' => 'number of Ogg videos on [[Special:TimedMediaHandler]].
+
+Parameters:
+* $1 - number of videos',
+	'timedmedia-webm-videos' => 'number of WebM videos on [[Special:TimedMediaHandler]].
+
+Parameters:
+* $1 - number of videos',
 	'timedmedia-derivative-state-transcodes' => 'numer of transcodes
 Parameters are:
 * $1 number of transcodes',
@@ -2947,6 +2950,7 @@ $messages['ko'] = array(
 	'timedmedia-ogg-long-error' => '잘못된 ogg 파일: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 동영상 파일, $2',
 	'timedmedia-webm-long-video' => 'WebM 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
+	'timedmedia-wav-pcm-required' => 'PCM(펄스 부호 변조) WAV만 올릴 수 있습니다.',
 	'timedmedia-mp4-short-video' => 'MP4 $1 동영상 파일, $2',
 	'timedmedia-mp4-long-video' => 'MP4 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3',
 	'timedmedia-no-player-js' => '죄송합니다, 시스템은 자바스크립트를 지원하지 않거나 지원하는 미디어 플레이어가 설치되어 있지 않습니다.<br />
@@ -2967,7 +2971,7 @@ $messages['ko'] = array(
 	'timedmedia-direct-link' => '파생 다운로드',
 	'timedmedia-not-ready' => '준비하지 않음',
 	'timedmedia-completed-on' => '$1 코드 변환 완료',
-	'timedmedia-error-on' => '$1에 코드 변환하는 데 오류가 났습니다.',
+	'timedmedia-error-on' => '$1에 코드 변환하는 데 오류',
 	'timedmedia-started-transcode' => '$1 전에 코드 변환을 시작했습니다. $2',
 	'timedmedia-percent-done' => '약 $1% 완료',
 	'timedmedia-in-job-queue' => '$1 전에 작업 대기열에 추가함',
@@ -2976,7 +2980,6 @@ $messages['ko'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1시간|$1시간}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1분|$1분}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1초|$1초}}',
-	'timedmedia-show-error' => '보이기 오류',
 	'timedmedia-reset' => '코드 변환 초기화',
 	'timedmedia-reset-confirm' => '코드 변환을 초기화하면 기존 파일이 (있는 경우) 제거되며, 작업 대기열로 코드 변환을 다시 추가합니다. 다시 변환하는 데 다소 시간이 걸릴 것입니다. <br /><br />
 계속하겠습니까?',
