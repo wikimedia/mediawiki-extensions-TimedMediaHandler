@@ -2110,7 +2110,7 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="//www.mediawiki.org/wiki/E
 	'timedmedia-direct-link' => 'Wotwodźenje sćahnyć',
 	'timedmedia-not-ready' => 'Nic hotowy',
 	'timedmedia-completed-on' => 'Překodowanje $1 wotzamknjene',
-	'timedmedia-error-on' => 'Zmylk při překodowanju $1.',
+	'timedmedia-error-on' => 'Zmylk při překodowanju $1',
 	'timedmedia-started-transcode' => 'Překodowanje před $1 startowane. $2',
 	'timedmedia-percent-done' => 'Na wšě $1% sčinjene',
 	'timedmedia-in-job-queue' => 'Před $1 čakanskemu rynčkej přidaty',
@@ -2119,7 +2119,6 @@ Móžeš <a href="$1">klip sćahnyć</a> abo <a href="//www.mediawiki.org/wiki/E
 	'timedmedia-hours' => '{{PLURAL:$1|1 hodźina|$1 hodźinje|$1 hodźiny|$1 hodźin}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 mjeńšina|$1 mjeńšinje|$1 mjeńšiny|$1 mjeńšin}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekunda|$1 sekundźe|$1 sekundy|$1 sekundow}}',
-	'timedmedia-show-error' => 'Zmylk pokazać',
 	'timedmedia-reset' => 'Překodowanje wróćo stajić',
 	'timedmedia-reset-confirm' => 'Wróćostajenje tutoho překodowanja wotstroni eksistowacu dataju (jeli tajka eksistuje), a budźe překodowanje znowa čakanskemu rynčkej přidawać. Nowe překodowanje budźe někotry čas trać.<br /><br />
 Chceš woprawdźe pokročować?',
