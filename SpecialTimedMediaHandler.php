@@ -137,8 +137,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
 		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 
-		$key = wfMemcKey( 'TimedMediaHandler', 'stats' );
-		$stats = $wgMemc->get( $key );
+		$memcKey= wfMemcKey( 'TimedMediaHandler', 'stats' );
+		$stats = $wgMemc->get( $memcKey );
 		if ( !$stats ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$stats = array();
@@ -152,7 +152,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				);
 				$stats[ 'videos' ][ 'total' ] += $stats[ 'videos' ][ $format ];
 			}
-			$wgMemc->add( $key, $stats, 3600 );
+			$wgMemc->add( $memcKey, $stats, 3600 );
 		}
 		return $stats;
 	}
@@ -161,8 +161,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
 		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 
-		$key = wfMemcKey( 'TimedMediaHandler', 'states' );
-		$states = $wgMemc->get( $key );
+		$memcKey = wfMemcKey( 'TimedMediaHandler', 'states' );
+		$states = $wgMemc->get( $memcKey );
 		if ( !$states ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$states = array();
@@ -202,7 +202,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				$states[ 'transcodes' ][ $key ] -= $states[ 'queued' ][ $key ];
 				$states[ 'transcodes' ][ 'total' ] += $states[ 'transcodes' ][ $key ];
 			}
-			$wgMemc->add( $key, $states, 60 );
+			$wgMemc->add( $memcKey, $states, 60 );
 		}
 		return $states;
 	}
