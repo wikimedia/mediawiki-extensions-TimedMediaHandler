@@ -767,7 +767,7 @@ $messages['bcl'] = array(
 	'timedmedia-subtitle-no-video' => 'Mayo tabing bidyo na asosyado na igwa nin sa ngunyan na subtitulo kan pahina',
 	'timedmedia-subtitle-no-subtitles' => 'Mayo tabi nin sa ngunyan na mga subtitulo sa $1 para kaining bidyo, ika tabi [{{fullurl:{{FULLPAGENAME}}|action=edit}} makapagliwat kaining pahina] tanganing maidugang sinda',
 	'timedmedia-subtitle-remote' => 'Pinag-orasang teksto para kaining sagunson iyo an pinagbunsod sa $1',
-	'timedmedia-subtitle-remote-link' => 'Ika tabi ($1 makakatanaw sa pahina kan deskripsyon] para kaining sagunson sa $2', # Fuzzy
+	'timedmedia-subtitle-remote-link' => 'Ika tabi [$1 makakatanaw sa pahina kan deskripsyon] para kaining sagunson sa $2',
 	'timedmediahandler' => 'Pinag-orasan na Parakapot kan Midya',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 bidyo|$1 mga bidyo}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg bidyo|$1 Ogg mga bidyo}}',
@@ -777,6 +777,9 @@ $messages['bcl'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 pinaghahalat na panggantaw na kodigo|$1 pinaghahalat na panggantaw na mga kodigo}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nagpalyang panggantaw na kodigo|$1 nagpalyang panggantaw na mga kodigo}}',
 	'timedmedia-file' => 'Sagunson',
+	'right-transcode-reset' => 'An pagbágo nagpalya o an pinaggantaw na kodigong mga bidyo kaya sinda pinagsingit giraray sa haralatan kan trabaho.',
+	'right-transcode-status' => 'Patanaw [[Special:TimedMediaHandler|impormasyon mapanungod sa ngunyan na aktibidad kan panggantaw na kodigo]]',
+	'action-transcode-status' => 'tanawon an sa ngunyan na kamugtakan kan panggangtaw na kodigo',
 );
 
 /** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
@@ -3793,6 +3796,9 @@ $messages['nl'] = array(
 	'timedmedia-ogg-long-error' => 'Ongeldig Ogg-bestand: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videobestand, $2',
 	'timedmedia-webm-long-video' => 'WebM audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal',
+	'timedmedia-wav-short-audio' => 'WAV-audiobestand, $1',
+	'timedmedia-wav-long-audio' => 'WAV-audiobestand, lengte $1, $2 gemiddeld',
+	'timedmedia-wav-pcm-required' => 'U kunt alleen PCM (Pulse Code Modulation) WAV uploaden.',
 	'timedmedia-mp4-short-video' => 'MP4 $1 videobestand, $2',
 	'timedmedia-mp4-long-video' => 'MP4 audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal',
 	'timedmedia-no-player-js' => 'Uw systeem heeft JavaScript uitgeschakeld of er is geen ondersteunde mediaspeler.<br />
@@ -3813,7 +3819,7 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="//www.mediawiki.org/wiki/
 	'timedmedia-direct-link' => 'Afgeleid werk downloaden',
 	'timedmedia-not-ready' => 'Niet klaar',
 	'timedmedia-completed-on' => 'Conversie voltooid op $1',
-	'timedmedia-error-on' => 'Fout in de conversie om $1.',
+	'timedmedia-error-on' => 'Fout in de conversie om $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'De conversie is $1 geleden begonnen. $2',
 	'timedmedia-percent-done' => 'Ongeveer $1% afgerond',
 	'timedmedia-in-job-queue' => '$1 geleden toegevoegd aan de Job queue',
@@ -3822,7 +3828,6 @@ U kunt <a href="$1">de clip downloaden</a> of <a href="//www.mediawiki.org/wiki/
 	'timedmedia-hours' => '{{PLURAL:$1|1 uur|$1 uur}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuut|$1 minuten}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 seconde|$1 seconden}}',
-	'timedmedia-show-error' => 'Foutmelding weergeven',
 	'timedmedia-reset' => 'Transcodering opnieuw instellen',
 	'timedmedia-reset-confirm' => 'Door de transcodering opnieuw in te stellen worden alle bestanden bestanden (als aanwezig) verwijderd en de transcodering wordt opnieuw toegevoegd aan de wachtrij. Transcoderen kost tijd.<br /><br />
 Weet u zeker dat u wilt doorgaan?',

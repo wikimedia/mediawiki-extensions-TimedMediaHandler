@@ -2014,6 +2014,7 @@ $messages['vi'] = array(
 	'mwe-timedtext-textcat-ktv' => 'Karaôkê',
 	'mwe-timedtext-textcat-meta' => 'Siêu dữ liệu đồng bộ',
 	'mwe-timedtext-textcat-lrc' => 'Lời hát',
+	'mwe-timedtext-textcat-lin' => 'Đánh dấu ngôn ngữ học',
 );
 
 /** Walloon (walon)
