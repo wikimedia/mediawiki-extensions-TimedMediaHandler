@@ -5681,6 +5681,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Byfserag
  * @author Gaoxuewei
  * @author Liangent
  * @author Shizhao
@@ -5719,7 +5720,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-direct-link' => '下载衍生作品',
 	'timedmedia-not-ready' => '未就绪',
 	'timedmedia-completed-on' => '已完成转码$1',
-	'timedmedia-error-on' => '于$1转码错误。',
+	'timedmedia-error-on' => '于$1转码错误',
 	'timedmedia-started-transcode' => '于$1前开始转码。$2',
 	'timedmedia-percent-done' => '大约$1%已完成',
 	'timedmedia-in-job-queue' => '添加到工作队列在$1前',
@@ -5728,7 +5729,6 @@ $messages['zh-hans'] = array(
 	'timedmedia-hours' => '$1小时',
 	'timedmedia-minutes' => '$1分',
 	'timedmedia-seconds' => '$1秒',
-	'timedmedia-show-error' => '显示错误',
 	'timedmedia-reset' => '重置转码',
 	'timedmedia-reset-confirm' => '重置转码将会尽可能移除所有现有文件，并将其重新加入到转码工作队列。这将需要一些时间来重新转码。<br /><br />
 您确定要继续吗？',
