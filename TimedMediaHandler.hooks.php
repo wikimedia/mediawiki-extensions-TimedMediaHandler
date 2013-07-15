@@ -95,7 +95,7 @@ class TimedMediaHandlerHooks {
 		$wgHooks['TitleMoveComplete'][] = 'TimedMediaHandlerHooks::checkTitleMoveComplete';
 
 		// When image page is deleted so that we remove transcode settings / files.
-		$wgHooks['ArticleDeleteComplete'][] = 'TimedMediaHandlerHooks::checkArticleDeleteComplete';
+		$wgHooks['FileDeleteComplete'][] = 'TimedMediaHandlerHooks::onFileDeleteComplete';
 
 		// Add parser hook
 		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
@@ -276,16 +276,17 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
+	 * Hook to FileDeleteComplete
+	 * remove transcodes on delete
+	 * @param $file File
+	 * @param $oldimage
 	 * @param $article Article
 	 * @param $user User
 	 * @param $reason string
-	 * @param $id
 	 * @return bool
 	 */
-	public static function checkArticleDeleteComplete( &$article, &$user, $reason, $id  ){
-		// Check if the article is a file and remove transcode files:
-		if( $article->getTitle()->getNamespace() == NS_FILE ) {
-			$file = wfFindFile( $article->getTitle() );
+	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
+		if ( !$oldimage ) {
 			if( self::isTranscodableFile( $file ) ){
 				WebVideoTranscode::removeTranscodes( $file );
 			}
