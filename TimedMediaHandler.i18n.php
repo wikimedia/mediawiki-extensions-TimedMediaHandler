@@ -1009,6 +1009,8 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'timedmedia-ogg-short-audio' => 'Аьзнийн файл Ogg $1, $2',
+	'timedmedia-ogg-long-audio' => 'аьзнийн файл Ogg $1, дохалла (хан) $2, $3',
 	'timedmedia-download' => 'Файл чуяккхар',
 	'timedmedia-status' => 'Хьал',
 	'timedmedia-source-file' => 'Хьост $1',
@@ -3796,6 +3798,8 @@ $messages['nl'] = array(
 	'timedmedia-ogg-long-error' => 'Ongeldig Ogg-bestand: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videobestand, $2',
 	'timedmedia-webm-long-video' => 'WebM audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal',
+	'timedmedia-flac-short-audio' => 'FLAC-audiobestand, $1',
+	'timedmedia-flac-long-audio' => 'FLAC-audiobestand, lengte $1, $2 gemiddeld',
 	'timedmedia-wav-short-audio' => 'WAV-audiobestand, $1',
 	'timedmedia-wav-long-audio' => 'WAV-audiobestand, lengte $1, $2 gemiddeld',
 	'timedmedia-wav-pcm-required' => 'U kunt alleen PCM (Pulse Code Modulation) WAV uploaden.',
