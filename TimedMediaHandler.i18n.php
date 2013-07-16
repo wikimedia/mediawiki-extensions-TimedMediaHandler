@@ -717,7 +717,7 @@ $messages['bcl'] = array(
 	'timedmedia-mp4-short-video' => 'MP$ $1 sagunson nin bidyo, $2',
 	'timedmedia-mp4-long-video' => 'MP4 sagunson nin audio/bidyo, $1, an laba $2, $4 x $5 piksel, $3 sa bilog na kagabsan',
 	'timedmedia-no-player-js' => 'Sori po, an saimong pangilyaw baya pinagpundo an JavaScript o mayo gayod nin arinmang pinagsuportaran na parapaandar. <br /> Ika <a href="$1">makakapagkarga nin klip</a> o baya <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">magkarga nin sarong parapaandar</a> tanganing paandaron an klip kan saimong kilyawan.',
-	'timedmedia-more' => 'Dakol pa..',
+	'timedmedia-more' => 'Dakolon pa..',
 	'timedmedia-dismiss' => 'Isara',
 	'timedmedia-download' => 'Ikarga an sagunson',
 	'timedmedia-play-media' => 'Paandaron an midya',
@@ -1554,8 +1554,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Alireza
+ * @author Calak
  * @author Huji
+ * @author Mahdiz
  * @author Mjbmr
+ * @author Reza1615
  * @author جواد
  * @author پاناروما
  */
@@ -1569,23 +1573,73 @@ $messages['fa'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'پرونده صوتی/تصویری پیچیده Ogg، $1، مدت $2، $4×$5 پیکسل، $3 در مجموع',
 	'timedmedia-ogg-long-general' => 'پرونده Ogg، مدت $2، $3',
 	'timedmedia-ogg-long-error' => 'پرونده Ogg غیرمجاز: $1',
+	'timedmedia-webm-short-video' => 'رسانهٔ وب  $1 پروندهٔ ویدئویی، $2',
+	'timedmedia-webm-long-video' => 'رسانهٔ وب پروندهٔ صوتی/تصویری، $1، مدت $2، $4 × $5 پیکسل، $3 کلی',
+	'timedmedia-flac-short-audio' => 'پروندهٔ صوتی اف‌ال‌ای‌سی، $1',
+	'timedmedia-flac-long-audio' => 'پروندهٔ صوتی اف‌ال‌ای‌سی، مدت $1، $2 کلی',
+	'timedmedia-wav-short-audio' => 'پروندهٔ صوتی WAV، $1',
+	'timedmedia-wav-long-audio' => 'پروندهٔ صوتی WAV، مدت $1، $2 کلی',
+	'timedmedia-wav-pcm-required' => 'شما فقط می توانید PCM و WAV را بار کنید.',
+	'timedmedia-mp4-short-video' => 'MP4  $1 پروندهٔ ویدئویی، $2',
+	'timedmedia-mp4-long-video' => 'فایل های صوتی یا تصویری با فرمت $1، زمان $2، $4 × $5 پیکسل و $3',
 	'timedmedia-more' => 'بیشتر...',
 	'timedmedia-dismiss' => 'بستن',
 	'timedmedia-download' => 'بارگیری پرونده',
 	'timedmedia-play-media' => 'پخش رسانه',
 	'timedmedia-desc-link' => 'دربارهٔ این پرونده',
+	'timedmedia-status-header' => 'وضعیت فراکد',
+	'timedmedia-update-status' => 'وضعیت به‌روزرسانی فراکد',
 	'timedmedia-status' => 'وضعیت',
 	'timedmedia-status-unknown' => 'وضعیت ناشناخته',
+	'timedmedia-transcodeinfo' => 'توضیحات اشتقاقی فراکد',
+	'timedmedia-actions' => 'فعالیت‌ها',
+	'timedmedia-direct-link' => 'بارگیری اشتقاقی',
 	'timedmedia-not-ready' => 'آماده نیست',
+	'timedmedia-completed-on' => 'تکمیل فراکد $1',
+	'timedmedia-error-on' => 'خطا در فراکد در $1',
+	'timedmedia-started-transcode' => 'فراکد $1 پیش آغاز شد. $2',
 	'timedmedia-percent-done' => 'حدود $1% انجام شده',
-	'timedmedia-days' => '$1 روز', # Fuzzy
-	'timedmedia-hours' => '$1 ساعت', # Fuzzy
-	'timedmedia-minutes' => '$1 دقیقه', # Fuzzy
-	'timedmedia-seconds' => '$1 ثانیه', # Fuzzy
-	'timedmedia-show-error' => 'نمایش خطا',
+	'timedmedia-in-job-queue' => 'اضافه‌شد به صف کار  $1  پیش',
+	'timedmedia-unknown-target-size' => 'اندازهٔ هدف ناشناخته، $1 رمزی',
+	'timedmedia-days' => '{{PLURAL:$1|1 روز|$1 روز}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 ساعت|$1 ساعت}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|1 دقیقه|$1 دقیقه}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|1 ثانیه|$1 ثانیه}}',
+	'timedmedia-reset' => 'تنظیم مجدد فراکد',
+	'timedmedia-reset-error' => 'خطا در بازنشانی کار فراکد.',
+	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 مبدأ',
+	'timedmedia-source-file-desc' => 'اصلی $1 پرونده، $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'اصلی  $1  پرونده ( $2 )',
+	'timedmedia-derivative-desc-160p.ogv' => 'ویدئو Ogg با پهنای باند کم (160P)',
+	'timedmedia-derivative-desc-360p.ogv' => 'ویدئو Ogg با پهنای وب (360P)',
+	'timedmedia-derivative-desc-480p.ogv' => 'ویدئو Ogg با پهنای وب (480P)',
+	'timedmedia-derivative-desc-720p.ogv' => 'ویدئو Ogg قابل بارگیری با کیفیت بالا (720P)',
+	'timedmedia-derivative-desc-160p.webm' => 'رسانه وب با پهنای وب (160P)',
+	'timedmedia-derivative-desc-360p.webm' => 'رسانه وب با پهنای وب (360P)',
+	'timedmedia-derivative-desc-480p.webm' => 'رسانه وب با پهنای وب (480P)',
+	'timedmedia-derivative-desc-720p.webm' => 'رسانه وب قابل بارگیری با کیفیت بالا (720P)',
+	'timedmedia-derivative-desc-320p.mp4' => 'ابزار سازگار با MP4  (320P)',
+	'timedmedia-derivative-desc-480p.mp4' => 'پهنای وب  MP4  (480P)',
+	'timedmedia-derivative-desc-720p.mp4' => 'کیفیت بالا  MP4  (720P)',
+	'timedmedia-subtitle-new' => 'ترجمه جدیدی را ایجاد کنید یا در صورت وجود آن را ویرایش کنید.',
+	'timedmedia-subtitle-new-desc' => " زبان را انتخاب کنید و دکمهٔ '''{{int:Timedmedia-subtitle-new-go}}''' را بفشارید",
 	'timedmedia-subtitle-new-go' => 'برو',
+	'timedmedia-subtitle-language' => '$1 ($2) زیرنویس‌ها',
+	'timedmedia-subtitle-no-video' => 'هیچ ویدئویی مرتبط با زیرعنوان این صفحه موجود نیست',
+	'timedmedia-subtitle-no-subtitles' => 'این فیلم درحال حاضر بدون زیرنویس است($1). شما میتوانید با [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش این صفحه] آن را بیافزایید.',
+	'timedmedia-subtitle-remote' => 'متن زمان‌دار برای پرونده ذخیره شده در $1',
+	'timedmedia-subtitle-remote-link' => 'شما می توانید [$1 توضیحات صفحه مشاهده کنید] برای این پرونده در $2',
+	'timedmediahandler' => 'هدایت‌کننده رسانهٔ زمان‌دار',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 ویدئو|$1 ویدئو}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 ویدئو Ogg|$1 ویدئو  Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 ویدئو WebM|$1 ویدئو  WebM}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 فراکدها|$1 فراکدها}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 درحال اجرای فراکدها|$1 در حال اجرای فراکدها}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 صف فراکدها|$1 صف فراکدها}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 فراکدهای اشتباه|$1 فراکدهای اشتباه}}',
 	'timedmedia-file' => 'پرونده',
+	'action-transcode-status' => 'نمایش وضعیت فراکدگذاری کنونی',
 );
 
 /** Finnish (suomi)

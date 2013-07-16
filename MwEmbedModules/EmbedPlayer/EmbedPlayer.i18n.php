@@ -831,6 +831,9 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'mwe-embedplayer-credit-title' => 'Τίτλος: $1',
+	'mwe-embedplayer-credit-date' => 'Ημερομηνία: $1',
+	'mwe-embedplayer-credit-author' => 'Συγγραφέας: $1',
+	'mwe-embedplayer-nocredits' => 'Δεν διατίθενται αναφορές',
 	'mwe-embedplayer-loading_plugin' => 'Φόρτωση plugin ...',
 	'mwe-embedplayer-select_playback' => 'Ορισμός προτίμησης αναπαραγωγής',
 	'mwe-embedplayer-link_back' => 'Σύνδεση πίσω',
@@ -856,11 +859,13 @@ $messages['el'] = array(
 	'mwe-embedplayer-download' => 'Λήψη',
 	'mwe-embedplayer-share' => 'Διαμοιρασμός',
 	'mwe-embedplayer-credits' => 'Συντελεστές',
+	'mwe-embedplayer-about-library' => 'Σχετικά με την εφαρμογή Kaltura',
 	'mwe-embedplayer-clip_linkback' => 'Σελίδα προέλευσης βίντεο',
 	'mwe-embedplayer-choose_player' => 'Επιλέξτε πρόγραμμα αναπαραγωγής βίντεο',
 	'mwe-embedplayer-no-player' => 'Κανένα πρόγραμμα αναπαραγωγής δεν διατίθεται για το $1',
 	'mwe-embedplayer-share_this_video' => 'Μοιραστείτε αυτό το βίντεο',
 	'mwe-embedplayer-video_credits' => 'Συντελεστές βίντεο',
+	'mwe-embedplayer-no-video_credits' => 'Δεν διατίθενται αναφορές',
 	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura open source video platform',
 	'mwe-embedplayer-menu_btn' => 'Μενου',
 	'mwe-embedplayer-close_btn' => 'Κλείσιμο',
@@ -875,17 +880,26 @@ $messages['el'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura player',
 	'mwe-embedplayer-ogg-player-selected' => '(επιλεγμένο)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Για μια καλύτερη εμπειρία αναπαραγωγής βίντεο σας προτείνουμε το <a href="http://www.mozilla-europe.org/el/firefox/?from=mwEmbed">νεότερο Firefox] .', # Fuzzy
-	'mwe-embedplayer-do_not_warn_again' => 'Παράβλεψη για τώρα.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Για μια καλύτερη εμπειρία αναπαραγωγής βίντεο σας προτείνουμε ένα [$1 περιηγητή HTML5 video].',
+	'mwe-embedplayer-fullscreen-tip' => 'Πατήστε <b>F11</b> για εναλλαγή <i>του προγράμματος περιήγησης</i> σε πλήρη οθόνη',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Πατήστε <b>shift ⌘ F</b> για την εναλλαγή πλήρους οθόνης',
+	'mwe-embedplayer-do_not_warn_again' => 'Στο μέλλον, να μην εμφανιστεί αυτό το μήνυμα',
 	'mwe-embedplayer-playerSelect' => 'Λογισμικό αναπαραγωγής',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Διαβάστε αυτό</a> πριν από την ενσωμάτωση.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Ενσωμάτωση στο σάιτ ή μπλογκ σας',
+	'mwe-embedplayer-embed_wiki' => 'Ενσωματώστε σε ένα wiki',
 	'mwe-embedplayer-related_videos' => 'Σχετικά βίντεο',
 	'mwe-embedplayer-seeking' => 'αναζήτηση',
 	'mwe-embedplayer-video-h264' => 'H.264 video',
+	'mwe-embedplayer-video-webm' => 'WebM βίντεο',
 	'mwe-embedplayer-video-flv' => 'Flash video',
 	'mwe-embedplayer-video-ogg' => 'Ogg video',
 	'mwe-embedplayer-video-audio' => 'Ogg audio',
+	'mwe-embedplayer-audio-mpeg' => 'MPEG ήχος',
+	'mwe-embedplayer-video-3gp' => '3GP βίντεο',
+	'mwe-embedplayer-video-mpeg' => 'MPEG βίντεο',
+	'mwe-embedplayer-video-msvideo' => 'AVI βίντεο',
+	'mwe-embedplayer-missing-source' => 'Δεν βρέθηκε πηγή βίντεο',
 );
 
 /** Esperanto (Esperanto)
