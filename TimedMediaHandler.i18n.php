@@ -377,10 +377,10 @@ See also:
 	'timedmedia-derivative-desc-m4a' => '{{optional}}',
 	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> will be replaced by {{msg-mw|Timedmedia-subtitle-new-go}}.',
 	'timedmedia-subtitle-new-go' => '{{Identical|Go}}',
-	'timedmedia-subtitle-language' => 'Subtitle names
-Paramaters are:
-* $1 Subtitle language
-* $2 Subtitle key',
+	'timedmedia-subtitle-language' => 'Subtitle names. Parameters are:
+* $1 - subtitle language
+* $2 - subtitle key
+{{Identical|Subtitle}}',
 	'timedmedia-subtitle-no-subtitles' => 'Parameters:
 * $1 is a language name.',
 	'timedmedia-subtitle-remote' => 'Used as page title. Parameters:
@@ -1581,12 +1581,16 @@ $messages['fa'] = array(
 	'timedmedia-wav-long-audio' => 'پروندهٔ صوتی WAV، مدت $1، $2 کلی',
 	'timedmedia-wav-pcm-required' => 'شما فقط می توانید PCM و WAV را بار کنید.',
 	'timedmedia-mp4-short-video' => 'MP4  $1 پروندهٔ ویدئویی، $2',
-	'timedmedia-mp4-long-video' => 'فایل های صوتی یا تصویری با فرمت $1، زمان $2، $4 × $5 پیکسل و $3',
+	'timedmedia-mp4-long-video' => 'فایل های صوتی یا تصویری با فرمت $1، زمان $2، $4 × $5 پیکسل و $3 به طورکلی',
+	'timedmedia-no-player-js' => 'با عرض پوزش، نرم افزار جاوا اسکریپت برروی مرورگر شما فعال نیست، و یا مرورگر شما از این نرم افزار پشتیبانی نمی کند.<br />
+شما میتوانید <a href="$1">این ویدیو را دانلود</a> و یا <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">یک پخش کننده</a> برای اجرای این ویدیو دانلود نمایید.',
 	'timedmedia-more' => 'بیشتر...',
 	'timedmedia-dismiss' => 'بستن',
 	'timedmedia-download' => 'بارگیری پرونده',
 	'timedmedia-play-media' => 'پخش رسانه',
 	'timedmedia-desc-link' => 'دربارهٔ این پرونده',
+	'timedmedia-oggThumb-version' => 'نگهدارندهٔ Ogg به بند‌انگشتی Ogg نسخهٔ  $1 یا بالاتر نیاز دارد.',
+	'timedmedia-oggThumb-failed' => 'بندانگشتی Ogg در ساخت بندانگشتی با خطا مواجه شد.',
 	'timedmedia-status-header' => 'وضعیت فراکد',
 	'timedmedia-update-status' => 'وضعیت به‌روزرسانی فراکد',
 	'timedmedia-status' => 'وضعیت',
@@ -1606,6 +1610,8 @@ $messages['fa'] = array(
 	'timedmedia-minutes' => '{{PLURAL:$1|1 دقیقه|$1 دقیقه}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 ثانیه|$1 ثانیه}}',
 	'timedmedia-reset' => 'تنظیم مجدد فراکد',
+	'timedmedia-reset-confirm' => 'تنظیم مجدد فراکد پرونده‌های موجود را حذف خواهد کرد و فراکد را در صف کار خواهد افزود. این کار مقداری زمان لازم دارد.<br /><br />
+آیا می‌خواهید ادامه دهید؟',
 	'timedmedia-reset-error' => 'خطا در بازنشانی کار فراکد.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 مبدأ',
@@ -1639,6 +1645,8 @@ $messages['fa'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 صف فراکدها|$1 صف فراکدها}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 فراکدهای اشتباه|$1 فراکدهای اشتباه}}',
 	'timedmedia-file' => 'پرونده',
+	'right-transcode-reset' => 'تنظیم مجدد انجام‌نشده‌ها یا ویدئوهای فراکدشده اعمال شد. در نتیجه مجدداً آنها در صف کار قرار گرفتند.',
+	'right-transcode-status' => 'مشاهدهٔ [[Special:TimedMediaHandler|اطلاعات در مورد فعالیت فراکد]]',
 	'action-transcode-status' => 'نمایش وضعیت فراکدگذاری کنونی',
 );
 
@@ -5028,6 +5036,7 @@ $messages['su'] = array(
 /** Swedish (svenska)
  * @author Ainali
  * @author Jon Harald Søby
+ * @author Jopparn
  * @author Lejonel
  * @author Rotsee
  * @author Skalman
@@ -5045,6 +5054,7 @@ $messages['sv'] = array(
 	'timedmedia-ogg-long-error' => 'Felaktig Ogg-fil: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
 	'timedmedia-webm-long-video' => 'WebM-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
+	'timedmedia-wav-short-audio' => 'WAV-ljudfil, $1',
 	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'MP4-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
 	'timedmedia-no-player-js' => 'Tyvärr, din webbläsare har antingen JavaScript inaktiverat eller inte någon spelare som stöds.<br />
@@ -5067,7 +5077,6 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-hours' => '{{PLURAL:$1|1 timme|$1 timmar}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minuter}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekunder}}',
-	'timedmedia-show-error' => 'Visa fel',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 Källa',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
