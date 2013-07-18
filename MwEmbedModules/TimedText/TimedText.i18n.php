@@ -312,6 +312,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'mwe-timedtext-stage-translate' => 'Гоч',
 	'mwe-timedtext-search' => 'Лаха клип',
 );
 
