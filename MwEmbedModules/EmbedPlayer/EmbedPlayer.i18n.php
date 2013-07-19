@@ -2760,6 +2760,7 @@ $messages['nb'] = array(
 	'mwe-embedplayer-credit-title' => 'Tittel: $1',
 	'mwe-embedplayer-credit-date' => 'Dato: $1',
 	'mwe-embedplayer-credit-author' => 'Opphavsperson: $1',
+	'mwe-embedplayer-nocredits' => 'Ingen kreditering tilgjengelig',
 	'mwe-embedplayer-loading_plugin' => 'Laster utvidelse ...',
 	'mwe-embedplayer-select_playback' => 'Angi avspillingsinnstillinger',
 	'mwe-embedplayer-link_back' => 'Lenk tilbake',
@@ -2793,6 +2794,8 @@ $messages['nb'] = array(
 	'mwe-embedplayer-choose_player' => 'Velg videospiller',
 	'mwe-embedplayer-no-player' => 'Ingen spiller tilgjengelig for $1',
 	'mwe-embedplayer-share_this_video' => 'Del denne videoen',
+	'mwe-embedplayer-video_credits' => 'Kreditering',
+	'mwe-embedplayer-no-video_credits' => 'Ingen kreditering tilgjengelig',
 	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura åpen kildekode-videoplattform',
 	'mwe-embedplayer-menu_btn' => 'Meny',
 	'mwe-embedplayer-close_btn' => 'Lukk',
@@ -4472,6 +4475,7 @@ $messages['zh-hans'] = array(
  * @author Justincheng12345
  * @author Mark85296341
  * @author Simon Shek
+ * @author StephDC
  */
 $messages['zh-hant'] = array(
 	'mwe-embedplayer-credit-title' => '標題：$1',
@@ -4518,6 +4522,8 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-close_btn' => '關閉',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC播放器',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg播放器',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'HTML5 MP3 播放機',
+	'mwe-embedplayer-ogg-player-aacNative' => 'HTML5 AAC 播放機',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264播放器',
 	'mwe-embedplayer-ogg-player-webmNative' => 'HTML5 WebM播放器',
 	'mwe-embedplayer-ogg-player-oggPlugin' => '未注冊Ogg插件',
@@ -4528,13 +4534,14 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '（已選取）',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => '為取得更好視訊播放體驗，我們推薦[$1 HTML5視訊瀏覽器]。',
-	'mwe-embedplayer-download-warn' => '檢測到播放器與瀏覽器不兼容，於瀏覽器中播放請下載[$1 最新的Firefox]', # Fuzzy
+	'mwe-embedplayer-download-warn' => '檢測到播放器與瀏覽器不兼容，如希望於瀏覽器中播放請下載[$1 最新版本Firefox瀏覽器]',
 	'mwe-embedplayer-fullscreen-tip' => '按<b>F11</b>把瀏覽器設為全屏',
 	'mwe-embedplayer-fullscreen-tip-osx' => '按<b>Shift ⌘ F</b>設為全屏',
 	'mwe-embedplayer-do_not_warn_again' => '以後不再顯示此訊息',
 	'mwe-embedplayer-playerSelect' => '播放器',
 	'mwe-embedplayer-read_before_embed' => '嵌入前請先<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">閱讀本文</a>。',
 	'mwe-embedplayer-embed_site_or_blog' => '嵌入頁面',
+	'mwe-embedplayer-embed_wiki' => '在 wiki 上嵌入',
 	'mwe-embedplayer-related_videos' => '相關視頻',
 	'mwe-embedplayer-seeking' => '正在搜尋',
 	'mwe-embedplayer-buffering' => '緩衝中',
