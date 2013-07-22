@@ -1186,6 +1186,7 @@ Er du sikker på, du vil fortsætte?',
  * @author Geitost
  * @author Kghbln
  * @author Leithian
+ * @author Les Meloures
  * @author Metalhead64
  * @author MichaelFrey
  * @author Raimond Spekking
@@ -4333,7 +4334,7 @@ $messages['pt'] = array(
 	'timedmedia-ogg-long-error' => 'Ficheiro ogg inválido: $1',
 	'timedmedia-webm-short-video' => 'Vídeo WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Áudio/vídeo WebM, $1, $2 de duração, $4 × $5 pixels, $3 no todo',
-	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desactivado ou não tem nenhum dos leitores suportados.<br />
+	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desativado ou não tem nenhum dos leitores suportados.<br />
 Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download de um leitor</a> para assistir ao vídeo no seu browser.',
 	'timedmedia-more' => 'Mais...',
 	'timedmedia-dismiss' => 'Fechar',

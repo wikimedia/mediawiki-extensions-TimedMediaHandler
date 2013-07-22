@@ -516,8 +516,10 @@ $messages['ca'] = array(
 
 /** Chechen (нохчийн)
  * @author Sasan700
+ * @author Умар
  */
 $messages['ce'] = array(
+	'mwe-embedplayer-credit-title' => 'ЦӀе: $1',
 	'mwe-embedplayer-seeking' => 'лаха',
 );
 
@@ -4102,6 +4104,7 @@ $messages['tr'] = array(
 	'mwe-embedplayer-about-library' => 'Kaltura oynatıcısı hakkında',
 	'mwe-embedplayer-clip_linkback' => 'Klip kaynak sayfası',
 	'mwe-embedplayer-choose_player' => 'Video oynatıcı seç',
+	'mwe-embedplayer-no-player' => '$1 için oynatıcı mevcut değil',
 	'mwe-embedplayer-share_this_video' => 'Bu videoyu paylaş',
 	'mwe-embedplayer-video_credits' => 'Videoya katkıda bulunanlar',
 	'mwe-embedplayer-kaltura-platform-title' => 'Kaltura açık kaynak kodlu video platformu',
