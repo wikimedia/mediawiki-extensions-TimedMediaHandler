@@ -89,8 +89,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 	private function getTranscodes ( $state, $limit = 50 ) {
 		global $wgMemc;
-		$key = wfMemcKey( 'TimedMediaHandler', 'files' );
-		$files = $wgMemc->get( $key );
+		$memcKey = wfMemcKey( 'TimedMediaHandler', 'files', $state );
+		$files = $wgMemc->get( $memcKey );
 		if ( !$files ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$files = array();
@@ -108,7 +108,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				}
 				$files[] = $transcode;
 			}
-			$wgMemc->add( $key, $files, 60 );
+			$wgMemc->add( $memcKey, $files, 60 );
 		}
 		return $files;
 	}
