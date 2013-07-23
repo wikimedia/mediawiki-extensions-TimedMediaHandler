@@ -592,6 +592,13 @@ $messages['cs'] = array(
 	'mwe-embedplayer-missing-source' => 'Nebylo nalezeno zdrojové video',
 );
 
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'mwe-embedplayer-close_btn' => 'ꙁакрꙑи',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64

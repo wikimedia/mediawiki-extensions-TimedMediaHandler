@@ -1086,6 +1086,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'timedmedia-dismiss' => 'ꙁакрꙑи',
 	'timedmedia-file' => 'дѣло',
 );
 
