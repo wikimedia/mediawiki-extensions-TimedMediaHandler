@@ -596,6 +596,7 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'mwe-embedplayer-credit-author' => 'творьць : $1',
 	'mwe-embedplayer-close_btn' => 'ꙁакрꙑи',
 );
 
