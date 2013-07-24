@@ -162,7 +162,7 @@ class TimedMediaThumbnail {
 		$posOptions = array_flip( array( 'start', 'thumbtime' ) );
 		$poolKey = wfAppendQuery( $poolKey, array_intersect_key( $options, $posOptions ) );
 
-		if ( MWInit::classExists( 'PoolCounterWorkViaCallback' ) ) {
+		if ( class_exists( 'PoolCounterWorkViaCallback' ) ) {
 			$work = new PoolCounterWorkViaCallback( 'TMHTransformFrame',
 				'_tmh:frame:' . $poolKey,
 				array( 'doWork' => function() use ($file, $params) {
