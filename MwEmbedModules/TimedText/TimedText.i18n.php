@@ -1516,6 +1516,7 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Luckas
  * @author SandroHc
  */
 $messages['pt'] = array(
@@ -1541,7 +1542,7 @@ $messages['pt'] = array(
 	'mwe-timedtext-textcat-tad' => 'Descrição áudio',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-tik' => 'Cotações',
-	'mwe-timedtext-textcat-ar' => 'Regiões activas',
+	'mwe-timedtext-textcat-ar' => 'Regiões ativas',
 	'mwe-timedtext-textcat-nb' => 'Anotação',
 	'mwe-timedtext-textcat-meta' => 'Metadados de sincronização',
 	'mwe-timedtext-textcat-trx' => 'Transcrição',
