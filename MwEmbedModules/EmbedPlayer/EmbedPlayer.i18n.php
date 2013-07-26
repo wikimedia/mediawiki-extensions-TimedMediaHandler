@@ -520,6 +520,7 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'mwe-embedplayer-credit-title' => 'ЦӀе: $1',
+	'mwe-embedplayer-close_btn' => 'ДӀачӀагӀа',
 	'mwe-embedplayer-seeking' => 'лаха',
 );
 
@@ -3282,7 +3283,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-paused' => 'em pausa',
 	'mwe-embedplayer-download_segment' => 'Download da selecção:',
 	'mwe-embedplayer-download_full' => 'Donwnload do ficheiro vídeo completo:',
-	'mwe-embedplayer-download_right_click' => 'Para descarregar, clique com o botão direito do rato e seleccione <i>Guardar ligação como...</i>',
+	'mwe-embedplayer-download_right_click' => 'Para descarregar, clique com o botão direito do mouse e selecione <i>Guardar ligação como...</i>',
 	'mwe-embedplayer-download_clip' => 'Download do vídeo',
 	'mwe-embedplayer-download_text' => 'Download do texto',
 	'mwe-embedplayer-download' => 'Download',
