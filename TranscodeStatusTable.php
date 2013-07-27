@@ -89,7 +89,7 @@ class TranscodeStatusTable {
 	 */
 	public static function getSourceUrl( $file, $transcodeKey ){
 		$thumbName = $file->thumbName( array() );
-		if ( MWInit::methodExists( $file, 'getTranscodedUrl' ) ) {
+		if ( method_exists( $file, 'getTranscodedUrl' ) ) {
 			$thumbUrl = $file->getTranscodedUrl( $thumbName );
 		} else {
 			$thumbUrl = $file->getThumbUrl( $thumbName );

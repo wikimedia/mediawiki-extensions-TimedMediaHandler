@@ -255,7 +255,7 @@ class WebVideoTranscode {
 	 * @return string
 	 */
 	static public function getDerivativeFilePath( &$file, $transcodeKey){
-		if ( MWInit::methodExists( $file, 'getTranscodedPath' ) ) {
+		if ( method_exists( $file, 'getTranscodedPath' ) ) {
 			return $file->getTranscodedPath( $file->getName() . '.' . $transcodeKey );
 		} else {
 			return $file->getThumbPath( $file->getName() . '.' . $transcodeKey );

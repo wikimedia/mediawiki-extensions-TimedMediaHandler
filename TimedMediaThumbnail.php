@@ -108,7 +108,7 @@ class TimedMediaThumbnail {
 		//try to get temorary local url to file
 		$backend = $options['file']->getRepo()->getBackend();
 		// getFileHttpUrl was only added in mw 1.21, dont fail if it does not exist
-		if ( MWInit::methodExists( $backend, 'getFileHttpUrl' ) ) {
+		if ( method_exists( $backend, 'getFileHttpUrl' ) ) {
 			$src = $backend->getFileHttpUrl( array(
 				'src' =>  $options['file']->getPath()
 			) );
