@@ -4376,7 +4376,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 	'timedmedia-derivative-desc-480p.webm' => 'WebM para web streaming (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta qualidade para download (720P)',
 	'timedmedia-subtitle-language' => 'Legendas em $1 ($2)',
-	'timedmedia-subtitle-no-video' => 'Não existe nenhum vídeo associado à actual página de legendas',
+	'timedmedia-subtitle-no-video' => 'Não existe nenhum vídeo associado à atual página de legendas',
 	'timedmedia-subtitle-no-subtitles' => 'Neste momento não existem legendas em $1 para este vídeo. Pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar a página] e adicioná-las.',
 );
 
