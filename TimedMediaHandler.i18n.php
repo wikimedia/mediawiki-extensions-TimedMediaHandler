@@ -1017,6 +1017,13 @@ $messages['ce'] = array(
 	'timedmedia-source-file' => 'Хьост $1',
 );
 
+/** Sorani Kurdish (کوردی)
+ * @author Calak
+ */
+$messages['ckb'] = array(
+	'right-transcode-reset' => 'ڕێکخستنەوەی ڤیدیۆ سەرنەکوتووەکان یان ترانسکۆدکراوەکان ھەتا دیسان بچنەوە ناو ڕیزی کارەوە.',
+);
+
 /** Czech (česky)
  * @author Chmee2
  * @author Li-sung
