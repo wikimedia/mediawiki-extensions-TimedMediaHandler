@@ -1022,6 +1022,7 @@ $messages['ce'] = array(
  */
 $messages['ckb'] = array(
 	'right-transcode-reset' => 'ڕێکخستنەوەی ڤیدیۆ سەرنەکوتووەکان یان ترانسکۆدکراوەکان ھەتا دیسان بچنەوە ناو ڕیزی کارەوە.',
+	'right-transcode-status' => 'دیتنی [[تایبەت:TimedMediaHandler|زانیاری لەمەڕ چالاکیی ترانسکۆدی ھەنووکەیی]]', # Fuzzy
 );
 
 /** Czech (česky)
