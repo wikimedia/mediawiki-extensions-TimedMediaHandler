@@ -1560,6 +1560,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Dianakc
  * @author Giro720
  * @author Luckas
  * @author Luckas Blade
@@ -1570,7 +1571,7 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-stage-transcribe' => 'Transcrever',
 	'mwe-timedtext-stage-sync' => 'Sincronizar',
 	'mwe-timedtext-stage-translate' => 'Traduzir',
-	'mwe-timedtext-stage-upload' => 'Carregar a partir de arquivo local',
+	'mwe-timedtext-stage-upload' => 'Enviar arquivo local',
 	'mwe-timedtext-select-language' => 'Selecionar língua',
 	'mwe-timedtext-file-language' => 'Língua do arquivo de legendas',
 	'mwe-timedtext-back-btn' => 'Voltar',

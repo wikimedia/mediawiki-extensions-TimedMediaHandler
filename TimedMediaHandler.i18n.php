@@ -4139,6 +4139,7 @@ $messages['pdc'] = array(
 /** Polish (polski)
  * @author Ankry
  * @author Derbeth
+ * @author Faren
  * @author Leinad
  * @author Matma Rex
  * @author Przemub
@@ -4174,7 +4175,7 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-direct-link' => 'Pobierz pochodną',
 	'timedmedia-not-ready' => 'Niegotowe',
 	'timedmedia-completed-on' => 'Przekonwertowano o $1',
-	'timedmedia-error-on' => 'Błąd w konwersji o $1.',
+	'timedmedia-error-on' => 'Błąd w konwersji o $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Konwersja rozpoczęła się $1 temu. $2',
 	'timedmedia-percent-done' => 'Ukończono ok. $1%',
 	'timedmedia-in-job-queue' => 'Dodano do kolejki $1 temu',
@@ -4183,7 +4184,6 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-hours' => '$1 {{PLURAL:$1|godzina|godziny|godzin}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|minuta|minuty|minut}}',
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekunda|sekundy|sekund}}',
-	'timedmedia-show-error' => 'Pokaż błąd',
 	'timedmedia-reset' => 'Resetuj konwersję',
 	'timedmedia-reset-confirm' => 'Reset konwersji spowoduje usunięcie obecnego pliku (jeżeli takowy istnieje) i doda ją ponownie do kolejki. Zabierze to trochę czasu. <br /><br />
 Czy na pewno chcesz kontynuować?',
@@ -4209,6 +4209,7 @@ Czy na pewno chcesz kontynuować?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}',
 	'timedmedia-file' => 'Plik',
+	'right-transcode-reset' => 'Resetowanie nie powiodło się lub filmy po transkodowaniu, zostały więc umieszczone w kolejce zadań ponownie.',
 	'right-transcode-status' => 'Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]',
 	'action-transcode-status' => 'zobaczenia aktualnego statusu transkodowania',
 );
