@@ -47,6 +47,10 @@ define("OGG_STREAM_SPEEX",      3);
  * @access  public
  */
 define("OGG_STREAM_FLAC",       4);
+/**
+ * @access  public
+ */
+define("OGG_STREAM_OPUS",       5);
 
 /**
  * Capture pattern to determine if a file is an Ogg physical stream.
@@ -86,6 +90,11 @@ define("OGG_STREAM_CAPTURE_FLAC",   "FLAC");
  */
 define("OGG_STREAM_CAPTURE_THEORA", "theora");
 /**
+ * Capture pattern for an Ogg Opus logical stream.
+ * @access  private
+ */
+define("OGG_STREAM_CAPTURE_OPUS",  "OpusHead");
+/**
  * Error thrown if the file location passed is nonexistant or unreadable.
  *
  * @access  private
@@ -118,6 +127,7 @@ require_once("File/Ogg/Flac.php");
 require_once("File/Ogg/Speex.php");
 require_once("File/Ogg/Theora.php");
 require_once("File/Ogg/Vorbis.php");
+require_once("File/Ogg/Opus.php");
 
 
 /**
@@ -477,6 +487,9 @@ class File_Ogg
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_THEORA . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_THEORA;
                 $stream = new File_Ogg_Theora($stream_serial, $streamData, $this->_filePointer);
+            } elseif (preg_match("/" . OGG_STREAM_CAPTURE_OPUS . "/", $pattern)) {
+                $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_OPUS;
+                $stream = new File_Ogg_Opus($stream_serial, $streamData, $this->_filePointer);
             } else {
                 $streamData['stream_type'] = "unknown";
                 $stream = false;

@@ -314,23 +314,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Number of channels used in this stream
-     *
-     * This function returns the number of channels used in this stream.  This
-     * can range from 1 to 255, but will likely be 2 (stereo) or 1 (mono).
-     *
-     * @access  public
-     * @return  int
-     * @see     File_Ogg_Vorbis::isMono()
-     * @see     File_Ogg_Vorbis::isStereo()
-     * @see     File_Ogg_Vorbis::isQuadrophonic()
-     */
-    function getChannels()
-    {
-        return ($this->_channels);
-    }
-
-    /**
      * Samples per second.
      *
      * This function returns the number of samples used per second in this

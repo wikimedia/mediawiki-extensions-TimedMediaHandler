@@ -61,7 +61,7 @@ $wgMinimumVideoPlayerSize = 200;
 
 // Set the supported ogg codecs:
 $wgMediaVideoTypes = array( 'Theora', 'VP8' );
-$wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
+$wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC', 'Opus' );
 
 // Default skin for mwEmbed player
 $wgVideoPlayerSkinModule = 'mw.PlayerSkinKskin';

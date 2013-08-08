@@ -40,6 +40,10 @@ var oggNativePlayer = new mw.MediaPlayer( 'oggNative', [
 	'audio/ogg; codecs="vorbis"',
 	'application/ogg'
 ], 'Native' );
+// Native html5 players
+var opusNativePlayer = new mw.MediaPlayer( 'opusNative', [
+	'audio/ogg; codecs="opus"',
+], 'Native' );
 var h264NativePlayer = new mw.MediaPlayer( 'h264Native', [
 	'video/h264',
 	'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
@@ -232,6 +236,11 @@ mw.EmbedTypes = {
 				  	// but xiph qt registers mimetype via quicktime plugin
 					} else if ( this.supportedMimeType( 'video/ogg' ) ) {
 						this.mediaPlayers.addPlayer( oggNativePlayer );
+					}
+
+					// Test for opus
+					if ( dummyvid.canPlayType( 'audio/ogg; codecs="opus"' ).replace(/maybe/, '') ) {
+						this.mediaPlayers.addPlayer( opusNativePlayer );
 					}
 				}
 			} catch ( e ) {
