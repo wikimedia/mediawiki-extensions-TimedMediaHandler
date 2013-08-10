@@ -3105,7 +3105,7 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'timedmedia-desc' => 'WebM, OGG Theora 및 Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러',
+	'timedmedia-desc' => 'WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 소리 파일, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 동영상 파일, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 미디어 파일, $2',
@@ -3155,7 +3155,7 @@ $messages['ko'] = array(
 계속하겠습니까?',
 	'timedmedia-reset-error' => '코드 변환 작업을 초기화하는 데 오류가 났습니다.',
 	'timedmedia-mp4' => 'MP4',
-	'timedmedia-source-file' => '$1 출처',
+	'timedmedia-source-file' => '$1 원본',
 	'timedmedia-source-file-desc' => '원본 $1 파일, $2 × $3 ($4)',
 	'timedmedia-source-audio-file-desc' => '원본 $1 파일 ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => '낮은 대역폭 Ogg 비디오 (160P)',
@@ -3520,6 +3520,11 @@ $messages['ml'] = array(
 	'timedmedia-ogg-long-error' => 'അസാധുവായ ഓഗ് പ്രമാണം: $1',
 	'timedmedia-webm-short-video' => 'വെബ്എം $1 ചലച്ചിത്രപ്രമാണം, $2',
 	'timedmedia-webm-long-video' => 'വെബ്എം ശബ്ദ/ചലച്ചിത്ര പ്രമാണം, $1, ദൈർഘ്യം $2, $4 × $5 ബിന്ദു, ആകെക്കൂടി $3',
+	'timedmedia-flac-short-audio' => 'ഫ്ലാക് ശബ്ദപ്രമാണം, $1',
+	'timedmedia-flac-long-audio' => 'ഫ്ലാക് ശബ്ദപ്രമാണം, ദൈർഘ്യം $1, ആകെ $2',
+	'timedmedia-wav-short-audio' => 'വേവ് ശബ്ദപ്രമാണം, $1',
+	'timedmedia-wav-long-audio' => 'വേവ് ശബ്ദപ്രമാണം, ദൈർഘ്യം $1, ആകെ $2',
+	'timedmedia-wav-pcm-required' => 'പി.സി.എം. (പൾസ് ഓഡിയോ മോഡുലേഷൻ) വേവ് മാത്രമേ അപ്‌ലോഡ് ചെയ്യാനാവൂ.',
 	'timedmedia-mp4-short-video' => 'എംപി4 $1 വീഡിയോ പ്രമാണം, $2',
 	'timedmedia-mp4-long-video' => 'എംപി4 ശബ്ദ/ചലച്ചിത്ര പ്രമാണം, $1, ദൈർഘ്യം $2, $4 × $5 ബിന്ദു, ആകെക്കൂടി $3',
 	'timedmedia-no-player-js' => 'ക്ഷമിക്കുക, താങ്കളുടെ ബ്രൗസറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമാക്കിയിട്ടില്ല അല്ലെങ്കിൽ പിന്തുണയുള്ള പ്ലേയർ ലഭ്യമല്ല.<br />
@@ -3540,7 +3545,7 @@ $messages['ml'] = array(
 	'timedmedia-direct-link' => 'വ്യുൽപ്പന്നം ഡൗൺലോഡ് ചെയ്യുക',
 	'timedmedia-not-ready' => 'തയ്യാറായിട്ടില്ല',
 	'timedmedia-completed-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ പൂർത്തിയായി $1',
-	'timedmedia-error-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യലിൽ $1-ൽ പിഴവുണ്ടായി.',
+	'timedmedia-error-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യലിൽ $1-ൽ പിഴവുണ്ടായി',
 	'timedmedia-started-transcode' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ $1 മുമ്പ് ആരംഭിച്ചു. $2',
 	'timedmedia-percent-done' => 'ഏകദേശം $1% പൂർത്തിയായി',
 	'timedmedia-in-job-queue' => 'ജോബ് ക്യൂവിലേയ്ക്ക് $1 മുമ്പ് ചേർത്തു',
@@ -3549,7 +3554,6 @@ $messages['ml'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|ഒരു മണിക്കൂർ|$1 മണിക്കൂർ}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|ഒരു മിനിറ്റ്|$1 മിനിറ്റ്}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|ഒരു സെക്കന്റ്|$1 സെക്കന്റ്}}',
-	'timedmedia-show-error' => 'പിഴവ് പ്രദർശിപ്പിക്കുക',
 	'timedmedia-reset' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ പുനഃസജ്ജീകരിക്കുക',
 	'timedmedia-reset-confirm' => 'ഈ ട്രാൻസ്‌കോഡ് ചെയ്യൽ പുനഃസജ്ജീകരിക്കുമ്പോൾ നിലവിലുള്ള ഫയൽ (അങ്ങനെയൊന്നുണ്ടെങ്കിൽ) നീക്കം ചെയ്യപ്പെടും, ഒപ്പം അത് ജോബ് ക്യൂവിലേയ്ക്ക് ട്രാൻസ്‌കോഡ് ചെയ്യാൻ വീണ്ടും ചേർക്കപ്പെടുകയും ചെയ്യും.  വീണ്ടും-ട്രാൻസ്‌കോഡ് ചെയ്യാൻ അല്പസമയമെടുക്കുന്നതാണ്. <br /><br />
 തുടരണമെന്ന് താങ്കൾക്കുറപ്പാണോ?',
