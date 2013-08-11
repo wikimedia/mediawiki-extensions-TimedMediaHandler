@@ -4168,6 +4168,7 @@ $messages['tzm'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Andriykopanytsia
  * @author Base
  * @author Ата
  * @author Тест
@@ -4217,6 +4218,8 @@ $messages['uk'] = array(
 	'mwe-embedplayer-close_btn' => 'Закрити',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'VLC програвач',
 	'mwe-embedplayer-ogg-player-oggNative' => 'HTML5 Ogg програвач',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'HTML5 MP3-програвач',
+	'mwe-embedplayer-ogg-player-aacNative' => 'HTML5 AAC-програвач',
 	'mwe-embedplayer-ogg-player-h264Native' => 'HTML5 H.264 програвач',
 	'mwe-embedplayer-ogg-player-webmNative' => 'Програвач HTML5 WebM',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Загальний плаґін Ogg',
@@ -4227,13 +4230,14 @@ $messages['uk'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(обрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Для кращого відтворення відео рекомендуємо [$1 html5 відео браузер].',
-	'mwe-embedplayer-download-warn' => 'Не знайдено вбудованого програвача для браузера, для відтворення в браузері завантажте, будь ласка, [$1 останній Firefox]', # Fuzzy
+	'mwe-embedplayer-download-warn' => 'Не знайдено вбудованого програвача для браузера, для відтворення в браузері завантажте, будь ласка, [$1 останній Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Натисніть кнопку <b>F11</b> для перемикання <i>веб-браузеру</i> у повноекранний режим',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Натисніть кнопку <b>shift ⌘ F</b> для переходу у повноекранний режим',
 	'mwe-embedplayer-do_not_warn_again' => 'Не показувати це повідомлення у майбутньому',
 	'mwe-embedplayer-playerSelect' => 'Програвачі',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Прочитайте це</a> перед включенням.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Включити на сторінку',
+	'mwe-embedplayer-embed_wiki' => 'Вбудований у вікі',
 	'mwe-embedplayer-related_videos' => "Пов'язані відео",
 	'mwe-embedplayer-seeking' => 'пошук',
 	'mwe-embedplayer-buffering' => 'буферизація',

@@ -294,57 +294,110 @@ See also:
 
 Parameters:
 * $1 - media source URL',
-	'timedmedia-more' => '{{Identical|More...}}',
-	'timedmedia-dismiss' => '{{Identical|Close}}',
-	'timedmedia-download' => '{{Identical|Download}}',
-	'timedmedia-desc-link' => '{{Identical|About this file}}',
-	'timedmedia-oggThumb-version' => 'none',
-	'timedmedia-oggThumb-failed' => 'none',
-	'timedmedia-status' => '{{Identical|Status}}',
-	'timedmedia-status-unknown' => '{{Identical|Unknown status}}',
+	'timedmedia-more' => 'Unused at this time.
+{{Identical|More...}}',
+	'timedmedia-dismiss' => 'Unused at this time.
+{{Identical|Close}}',
+	'timedmedia-download' => 'Used as tooltip for the Download button.
+{{Identical|Download}}',
+	'timedmedia-play-media' => 'Used as tooltip for the link.',
+	'timedmedia-desc-link' => 'Unused at this time.
+{{Identical|About this file}}',
+	'timedmedia-oggThumb-version' => 'Used as error message when the specified option is invalid. Parameters:
+* $1 - version number "0.9" (hard-coded)',
+	'timedmedia-oggThumb-failed' => '{{doc-important|Do not translate <code>oggThumb</code>.}}
+Used as error message when executing oggThumb.',
+	'timedmedia-status-header' => 'Used as section heading.',
+	'timedmedia-update-status' => 'Used as text for the link which is used to purge.',
+	'timedmedia-status' => 'Used as column header.
+{{Identical|Status}}',
+	'timedmedia-status-unknown' => 'Used as status message on error.
+{{Identical|Unknown status}}',
 	'timedmedia-transcodeinfo' => 'A table column header for description of Transcode derivative',
-	'timedmedia-actions' => '{{Identical|Action}}',
+	'timedmedia-actions' => 'Used as column header.
+{{Identical|Action}}',
+	'timedmedia-direct-link' => 'Used as column header.',
 	'timedmedia-not-ready' => 'State of a given transcode job being not yet complete or not yet ready',
 	'timedmedia-completed-on' => 'Completed transcode message
 Parameters are:
 * $1 The date that the transcode was completed',
 	'timedmedia-error-on' => 'Parameters:
 * $1 - timestamp',
-	'timedmedia-started-transcode' => 'Status update for Transcodes
-Parameters are:
-* $1 Time passed since transcoded started
-* $2 Percentage of transcode complete',
+	'timedmedia-started-transcode' => 'Status update for Transcodes. Parameters:
+* $1 - time passed since transcoded started (e.g. "{{int:timedmedia-minutes|1}}{{int:comma-separator}}{{int:timedmedia-seconds|42}}"), uses the following messages:
+** {{msg-mw|Timedmedia-days}}
+** {{msg-mw|Timedmedia-hours}}
+** {{msg-mw|Timedmedia-minutes}}
+** {{msg-mw|Timedmedia-seconds}}
+** {{msg-mw|Comma-separator}}
+* $2 - percentage of transcode complete',
 	'timedmedia-percent-done' => 'Commented out at this time.
 
 Status update for Transcodes. Parameters:
 * $1 - percentage of the file transcoded so far
 See also:
 * {{msg-mw|timedmedia-unknown-target-size}}',
-	'timedmedia-in-job-queue' => 'Shown on the file description page in the {{msg-mw|timedmedia-status-header}} section. Parameters:
-* $1 the time the media has been in the job queue',
+	'timedmedia-in-job-queue' => 'Shown on the file description page in the {{msg-mw|timedmedia-status-header}} section.
+
+Parameters:
+* $1 - the time the media has been in the job queue (e.g. "{{int:timedmedia-minutes|1}}{{int:comma-separator}}{{int:timedmedia-seconds|42}}"), uses the following messages:
+** {{msg-mw|Timedmedia-days}}
+** {{msg-mw|Timedmedia-hours}}
+** {{msg-mw|Timedmedia-minutes}}
+** {{msg-mw|Timedmedia-seconds}}
+** {{msg-mw|Comma-separator}}',
 	'timedmedia-unknown-target-size' => 'Commented out at this time.
 
 Status update for Transcodes. Parameters:
 * $1 - the number of bytes of the file transcoded so far (localized)
 See also:
 * {{msg-mw|Timedmedia-percent-done}}',
-	'timedmedia-days' => 'Parameters:
+	'timedmedia-days' => 'Used as the duration, as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-in-job-queue}}
+* {{msg-mw|Timedmedia-started-transcode}}
+Parameters:
 * $1 - number of days
 {{Related|Timedmedia-days}}
 {{Identical|Day}}',
-	'timedmedia-hours' => 'Parameters:
+	'timedmedia-hours' => 'Used as the duration, as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-in-job-queue}}
+* {{msg-mw|Timedmedia-started-transcode}}
+Parameters:
 * $1 - number of hours
 {{Related|Timedmedia-days}}
 {{Identical|Hour}}',
-	'timedmedia-minutes' => 'Parameters:
+	'timedmedia-minutes' => 'Used as the duration, as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-in-job-queue}}
+* {{msg-mw|Timedmedia-started-transcode}}
+Parameters:
 * $1 - minutes
 {{Related|Timedmedia-days}}
 {{Identical|Minute}}',
-	'timedmedia-seconds' => 'Parameters:
+	'timedmedia-seconds' => 'Used as the duration, as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-in-job-queue}}
+* {{msg-mw|Timedmedia-started-transcode}}
+Parameters:
 * $1 - number of seconds
 {{Related|Timedmedia-days}}',
-	'timedmedia-ogg' => '{{optional}}',
-	'timedmedia-webm' => '{{optional}}',
+	'timedmedia-reset' => 'Used as action link text and as dialog title.
+
+The contents of the dialog is {{msg-mw|Timedmedia-reset-confirm}}.',
+	'timedmedia-reset-confirm' => 'Used as confirmation message in the dialog which has the title {{msg-mw|Timedmedia-reset}}.',
+	'timedmedia-reset-error' => 'Used as generic error message.',
+	'timedmedia-ogg' => '{{optional}}
+Used as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-source-audio-file-desc}}
+* {{msg-mw|Timedmedia-source-file-desc}}
+* {{msg-mw|Timedmedia-source-file}}',
+	'timedmedia-webm' => '{{optional}}
+Used as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-source-audio-file-desc}}
+* {{msg-mw|Timedmedia-source-file-desc}}
+* {{msg-mw|Timedmedia-source-file}}',
+	'timedmedia-mp4' => 'Used as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-source-audio-file-desc}}
+* {{msg-mw|Timedmedia-source-file-desc}}
+* {{msg-mw|Timedmedia-source-file}}',
 	'timedmedia-source-file' => 'The source file
 * $1 file type webm or ogg
 {{Identical|Source}}',
@@ -375,8 +428,12 @@ See also:
 	'timedmedia-derivative-desc-mp3' => '{{optional}}',
 	'timedmedia-derivative-m4a' => '{{optional}}',
 	'timedmedia-derivative-desc-m4a' => '{{optional}}',
+	'timedmedia-subtitle-new' => 'Used as page title.',
 	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> will be replaced by {{msg-mw|Timedmedia-subtitle-new-go}}.',
-	'timedmedia-subtitle-new-go' => '{{Identical|Go}}',
+	'timedmedia-subtitle-new-go' => 'Used as label for the Submit button.
+
+Preceded by the description {{msg-mw|Timedmedia-subtitle-new-desc}}.
+{{Identical|Go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names. Parameters are:
 * $1 - subtitle language
 * $2 - subtitle key
@@ -417,10 +474,11 @@ Parameters are:
 	'timedmedia-derivative-state-failed' => 'failed transcode jobs
 Parameters are:
 * $1 number of transcodes',
-	'timedmedia-file' => '{{Identical|File}}',
+	'timedmedia-file' => 'Used as table column header.
+{{Identical|File}}',
 	'right-transcode-reset' => '{{doc-right|transcode-reset}}',
-	'right-transcode-status' => '{{doc-right|transcode-status}}', # Fuzzy
-	'action-transcode-status' => '{{doc-action|transcode-status}}', # Fuzzy
+	'right-transcode-status' => '{{doc-right|transcode-status}}',
+	'action-transcode-status' => '{{doc-action|transcode-status}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2807,8 +2865,8 @@ $messages['ja'] = array(
 再生するには、<a href="$1">クリップをダウンロード</a>するか、<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">プレーヤーをダウンロード</a>する必要があります。',
 	'timedmedia-more' => 'その他…',
 	'timedmedia-dismiss' => '閉じる',
-	'timedmedia-download' => 'ファイルをダウンロード',
-	'timedmedia-play-media' => 'メディアを再生',
+	'timedmedia-download' => 'ファイルをダウンロードする',
+	'timedmedia-play-media' => 'メディアを再生する',
 	'timedmedia-desc-link' => 'ファイルの詳細',
 	'timedmedia-oggThumb-version' => 'OggHandler には oggThumb バージョン $1 またはそれ以降が必要です。',
 	'timedmedia-oggThumb-failed' => 'oggThumb によるサムネイル作成に失敗しました。',
@@ -2837,7 +2895,7 @@ $messages['ja'] = array(
 	'timedmedia-derivative-desc-320p.mp4' => 'デバイスフレンドリー MP4 (320P)',
 	'timedmedia-derivative-desc-480p.mp4' => 'ウェブ ストリーミング可能 MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD 品質 MP4 (720P)',
-	'timedmedia-subtitle-new' => '翻訳を新規作成、または既存のものを編集',
+	'timedmedia-subtitle-new' => '翻訳の新規作成、または既存の翻訳の編集',
 	'timedmedia-subtitle-new-desc' => "言語を選択して、'''{{int:Timedmedia-subtitle-new-go}}'''ボタンを押してください。",
 	'timedmedia-subtitle-new-go' => '実行',
 	'timedmedia-subtitle-language' => '$1 ($2) 字幕',
@@ -3507,6 +3565,7 @@ $messages['mk'] = array(
 /** Malayalam (മലയാളം)
  * @author Praveenp
  * @author Shijualex
+ * @author Vssun
  */
 $messages['ml'] = array(
 	'timedmedia-desc' => 'ഓഗ് തിയോറ, വോർബിസ്, എസ്.ആർ.ടി, വെബ്എം തുടങ്ങിയവയ്ക്കുള്ള പിന്തുണയടക്കമുള്ള ശബ്ദ, ചലച്ചിത്ര, സമയമനുസരിച്ച് പ്രദർശിപ്പിക്കുന്ന എഴുത്തുകൾ എന്നിവയ്ക്കുള്ള കൈകാര്യോപകരണം',
@@ -3545,7 +3604,7 @@ $messages['ml'] = array(
 	'timedmedia-direct-link' => 'വ്യുൽപ്പന്നം ഡൗൺലോഡ് ചെയ്യുക',
 	'timedmedia-not-ready' => 'തയ്യാറായിട്ടില്ല',
 	'timedmedia-completed-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ പൂർത്തിയായി $1',
-	'timedmedia-error-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യലിൽ $1-ൽ പിഴവുണ്ടായി',
+	'timedmedia-error-on' => 'ട്രാൻസ്‌കോഡ് ചെയ്യലിൽ $1 എന്ന സമയത്ത് പിഴവുണ്ടായി',
 	'timedmedia-started-transcode' => 'ട്രാൻസ്‌കോഡ് ചെയ്യൽ $1 മുമ്പ് ആരംഭിച്ചു. $2',
 	'timedmedia-percent-done' => 'ഏകദേശം $1% പൂർത്തിയായി',
 	'timedmedia-in-job-queue' => 'ജോബ് ക്യൂവിലേയ്ക്ക് $1 മുമ്പ് ചേർത്തു',
