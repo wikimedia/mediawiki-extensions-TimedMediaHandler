@@ -4206,6 +4206,7 @@ $messages['pdc'] = array(
  * @author Leinad
  * @author Matma Rex
  * @author Przemub
+ * @author Rzuwig
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -4272,7 +4273,7 @@ Czy na pewno chcesz kontynuować?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}',
 	'timedmedia-file' => 'Plik',
-	'right-transcode-reset' => 'Resetowanie nie powiodło się lub filmy po transkodowaniu, zostały więc umieszczone w kolejce zadań ponownie.',
+	'right-transcode-reset' => 'Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań',
 	'right-transcode-status' => 'Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]',
 	'action-transcode-status' => 'zobaczenia aktualnego statusu transkodowania',
 );
