@@ -1163,6 +1163,7 @@ $messages['cu'] = array(
  * @author HenrikKbh
  * @author Jon Harald Søby
  * @author Peter Alberti
+ * @author Simeondahl
  * @author Steenth
  */
 $messages['da'] = array(
@@ -1197,7 +1198,7 @@ Du kan enten <a href="$1">hente klippet</a> eller <a href="//www.mediawiki.org/w
 	'timedmedia-direct-link' => 'Hent derivat',
 	'timedmedia-not-ready' => 'Ikke klar',
 	'timedmedia-completed-on' => 'Gennemført transcode $1',
-	'timedmedia-error-on' => 'Fejl i kode på  $1',
+	'timedmedia-error-on' => 'Fejl i kode på  $1', # Fuzzy
 	'timedmedia-started-transcode' => 'Kode startet $1 siden. $2',
 	'timedmedia-percent-done' => 'Cirka $1 % udført',
 	'timedmedia-in-job-queue' => 'Føjet til jobkøen $1 siden',
@@ -1206,7 +1207,6 @@ Du kan enten <a href="$1">hente klippet</a> eller <a href="//www.mediawiki.org/w
 	'timedmedia-hours' => '{{PLURAL:$1|1 time|$1 timer}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minutter}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 sekund|$1 sekunder}}',
-	'timedmedia-show-error' => 'Vis fejl',
 	'timedmedia-reset' => 'Nulstil transkode',
 	'timedmedia-reset-confirm' => 'Nulstilling af denne omkodning vil fjerne alle eksisterende filer (hvis der er nogen), og vil genindsætte omkodningen i jobkøen. Det vil tage nogen tid at omkode forfra.<br /><br />
 Er du sikker på, du vil fortsætte?',
@@ -1462,6 +1462,7 @@ $messages['eo'] = array(
  * @author Muro de Aguas
  * @author Remember the dot
  * @author Rodrigo Molinero
+ * @author Rzuwig
  * @author Sanbec
  * @author Spacebirdy
  * @author Translationista
@@ -1498,7 +1499,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-direct-link' => 'Descargar el derivado',
 	'timedmedia-not-ready' => 'No está listo',
 	'timedmedia-completed-on' => 'Transcodificación completada $1',
-	'timedmedia-error-on' => 'Error en la transcodificación en  $1 .',
+	'timedmedia-error-on' => 'Error en la transcodificación en  $1 .', # Fuzzy
 	'timedmedia-started-transcode' => 'Transcodificación comenzada hace  $1. $2',
 	'timedmedia-percent-done' => 'Aproximadamente $1 % completado',
 	'timedmedia-in-job-queue' => 'Añadido a la cola de trabajos hace  $1',
@@ -1507,7 +1508,6 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-hours' => '{{PLURAL:$1|1 hora|$1 horas}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuto|$1 minutos}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 segundo|$1 segundos}}',
-	'timedmedia-show-error' => 'Mostrar error',
 	'timedmedia-reset' => 'Reiniciar la transcodificación',
 	'timedmedia-reset-confirm' => 'Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.<br /><br />
 ¿Está seguro de que desea continuar?',
@@ -1543,7 +1543,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}} en la cola',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificaciones fallidas}}',
 	'timedmedia-file' => 'Archivo',
-	'right-transcode-reset' => 'Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo.',
+	'right-transcode-reset' => 'Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo',
 	'right-transcode-status' => 'Ver [[Special:TimedMediaHandler|información sobre la actividad de transcodificación actual]]',
 	'action-transcode-status' => 'ver el estado de transcodificación actual',
 );
@@ -1817,6 +1817,7 @@ $messages['fo'] = array(
  * @author McDutchie
  * @author Od1n
  * @author Peter17
+ * @author Rzuwig
  * @author Seb35
  * @author Sherbrooke
  * @author Shirayuki
@@ -1914,7 +1915,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="//www.mediawiki.o
 	'timedmedia-derivative-state-queued' => "{{PLURAL:$1|$1 transcodage en file d'attente|$1 transcodages en file d'attente}}",
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodage échoué|$1 transcodages échoués}}',
 	'timedmedia-file' => 'Fichier',
-	'right-transcode-reset' => 'Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux.',
+	'right-transcode-reset' => 'Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux',
 	'right-transcode-status' => "Afficher [[Special:TimedMediaHandler|l'information sur l'activité de transcodage actuelle]]",
 	'action-transcode-status' => 'afficher l’état de transcodage actuel',
 );
@@ -4882,6 +4883,7 @@ $messages['sk'] = array(
 /** Slovenian (slovenščina)
  * @author Dbc334
  * @author Eleassar
+ * @author Rzuwig
  */
 $messages['sl'] = array(
 	'timedmedia-desc' => 'Upravljavec zvoka, videa in časovnega besedila s podprtimi oblikami WebM, Ogg Theora, Vorbis in SubRip',
@@ -4965,7 +4967,7 @@ Posnetek lahko <a href="$1">snamete</a> ali <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|eno čakajoče prekodiranje|dve čakajoči prekodiranji|$1 čakajoča prekodiranja|$1 čakajočih prekodiranj}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|eno neuspelo prekodiranje|dve neuspeli prekodiranji|$1 neuspela prekodiranja|$1 neuspelih prekodiranj}}',
 	'timedmedia-file' => 'Datoteka:',
-	'right-transcode-reset' => 'Ponastavitev neuspelih ali pretvorjenih videov, da so ponovno vstavljeni v čakalno vrsto opravil.',
+	'right-transcode-reset' => 'Ponastavitev neuspelih ali pretvorjenih videov, da so ponovno vstavljeni v čakalno vrsto opravil',
 	'right-transcode-status' => 'Ogled [[Special:TimedMediaHandler|informacij o trenutni dejavnosti pretvarjanja]]',
 	'action-transcode-status' => 'ogled trenutnega stanja pretvorbe',
 );
