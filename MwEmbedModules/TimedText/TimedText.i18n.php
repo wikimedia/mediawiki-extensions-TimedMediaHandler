@@ -1256,6 +1256,22 @@ $messages['mk'] = array(
 	'mwe-timedtext-request-already-done' => 'Веќе има поставено барање за транскрипција на оваа видеоснимка. [$1 Сите барања]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'mwe-timedtext-editor' => 'സമയമനുസരിച്ചുള്ള എഴുത്തിന്റെ തിരുത്തലുപകരണം',
+	'mwe-timedtext-stage-transcribe' => 'പകർത്തിയെഴുതുക',
+	'mwe-timedtext-stage-sync' => 'താദാമ്യപ്പെടുത്തുക',
+	'mwe-timedtext-stage-translate' => 'പരിഭാഷപ്പെടുത്തുക',
+	'mwe-timedtext-stage-upload' => 'പ്രാദേശിക പ്രമാണത്തിൽ നിന്നും അപ്‌ലോഡ് ചെയ്യുക',
+	'mwe-timedtext-select-language' => 'ഭാഷ തിരഞ്ഞെടുക്കുക',
+	'mwe-timedtext-file-language' => 'സംഭാഷണരേഖാ പ്രമാണത്തിന്റെ ഭാഷ',
+	'mwe-timedtext-back-btn' => 'പുറകോട്ട്',
+	'mwe-timedtext-choose-text' => 'എഴുത്ത് എടുക്കുക',
+	'mwe-timedtext-upload-timed-text' => 'സംഭാഷണരേഖ കൂട്ടിച്ചേർക്കുക',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Anakmalaysia
  */

@@ -3657,10 +3657,16 @@ $messages['ml'] = array(
 	'timedmedia-subtitle-language' => '$1 ($2) സംഭാഷണരേഖകൾ',
 	'timedmedia-subtitle-no-video' => 'ഇപ്പോഴത്തെ സംഭാഷണരേഖാ താളുമായി ചലച്ചിത്രങ്ങളൊന്നും ചേർത്തിട്ടില്ല',
 	'timedmedia-subtitle-no-subtitles' => 'ഈ ചലച്ചിത്രത്തിന് $1 ഭാഷയിൽ ഇപ്പോൾ സംഭാഷണരേഖയൊന്നും ഇല്ല, താങ്കൾക്ക് [{{fullurl:{{FULLPAGENAME}}|action=edit}} ഈ താൾ തിരുത്തി] അവ കൂട്ടിച്ചേർക്കാവുന്നതാണ്',
+	'timedmedia-subtitle-remote' => 'ഈ പ്രമാണത്തിനുള്ള സമയമനുസരിച്ചുള്ള എഴുത്ത് $1-ൽ ഹോസ്റ്റ് ചെയ്തിട്ടുണ്ട്.',
 	'timedmedia-subtitle-remote-link' => 'ഈ പ്രമാണത്തിനുള്ള [$1 വിവരണ താൾ] $2-ൽ താങ്കൾക്ക് കാണാവുന്നതാണ്',
+	'timedmediahandler' => 'മീഡിയ സമയമനുസരിച്ച് കൈകാര്യം ചെയ്യാനുള്ളയുപകരണം',
 	'timedmedia-videos' => '{{PLURAL:$1|ഒരു ചലച്ചിത്രം|$1 ചലച്ചിത്രങ്ങൾ}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|ഒരു ഓഗ് ചലച്ചിത്രം|$1 ഓഗ് ചലച്ചിത്രങ്ങൾ}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|ഒരു വെബ്എം ചലച്ചിത്രം|$1 വെബ്എം ചലച്ചിത്രങ്ങൾ}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|ഒരു ട്രാൻസ്കോഡ്|$1 ട്രാൻസ്കോഡുകൾ}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|ഒരെണ്ണം ട്രാൻസ്കോഡ് ചെയ്യുന്നു|$1 എണ്ണം ട്രാൻസ്കോഡ് ചെയ്യുന്നു}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|ഒരെണ്ണം ട്രാൻസ്കോഡ് ചെയ്യാനായി ഉണ്ട്|$1 എണ്ണം ട്രാൻസ്കോഡ് ചെയ്യാനായി ഉണ്ട്}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|ഒരെണ്ണം ട്രാൻസ്കോഡ് ചെയ്യുന്നത് പരാജയപ്പെട്ടു|$1 എണ്ണം ട്രാൻസ്കോഡ് ചെയ്യുന്നത് പരാജയപ്പെട്ടു}}',
 	'timedmedia-file' => 'പ്രമാണം',
 );
 
