@@ -121,12 +121,25 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			throw new MWException( __METHOD__ .' called in the old style' );
 		}
 
+		$oldHeight = $this->height;
+		$oldWidth = $this->width;
+		if ( isset( $options['override-height'] ) ) {
+			$this->height = $options['override-height'];
+		}
+		if ( isset( $options['override-width'] ) ) {
+			$this->width = $options['override-width'];
+		}
+
+
 		// Check if the video is too small to play inline ( instead do a pop-up dialog )
 		if( $this->getPlayerWidth() <= $wgMinimumVideoPlayerSize && $this->isVideo ){
-			return $this->getImagePopUp();
+			$res = $this->getImagePopUp();
 		} else {
-			return $this->getHtmlMediaTagOutput();
+			$res = $this->getHtmlMediaTagOutput();
 		}
+		$this->width = $oldWidth;
+		$this->height = $oldHeight;
+		return $res;
 	}
 
 	/**
