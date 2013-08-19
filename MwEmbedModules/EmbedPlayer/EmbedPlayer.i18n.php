@@ -4002,6 +4002,7 @@ $messages['tet'] = array(
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
+ * @author Sky Harbor
  */
 $messages['tl'] = array(
 	'mwe-embedplayer-credit-title' => 'Pamagat: $1',
@@ -4014,8 +4015,8 @@ $messages['tl'] = array(
 	'mwe-embedplayer-error_swap_vid' => 'Kamalian: hindi nagawang pagpalitin ng mwEmbed ang tatak ng bidyo para sa hangganang-mukha ng mwEmbed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Idagdag sa huli ng sunuran',
 	'mwe-embedplayer-missing_video_stream' => 'Nawawala ang talaksan ng biyo para sa daloy na ito',
-	'mwe-embedplayer-play_clip' => 'Paandarin ang putol',
-	'mwe-embedplayer-pause_clip' => 'Ihinto ang putol',
+	'mwe-embedplayer-play_clip' => 'Palaruin ang klip',
+	'mwe-embedplayer-pause_clip' => 'Pahintuin ang klip',
 	'mwe-embedplayer-volume_control' => 'Pangtaban ng lakas ng tunog',
 	'mwe-embedplayer-player_options' => 'Pagpipiliang pangpampaandar',
 	'mwe-embedplayer-timed_text' => 'Tekstong inoorasan',
@@ -4037,14 +4038,14 @@ $messages['tl'] = array(
 	'mwe-embedplayer-about-library-desc' => 'Ang aklatan ng midyang HTML5 ng Kaltura ay nagpapahintulot sa iyong samantalahin ang mga tatak na <code><nowiki><bidyo></nowiki></code> na HTML5 at <code><nowiki><audio></nowiki></code> ngayon ng isang ugnayang-mukha ng palagiang pampaandar sa kahabaan ng lahat ng pangunahing mga pantingin-tingin.
 
 [$1 Marami pang hinggil sa aklatan ng pampaandar ng Kaltura].',
-	'mwe-embedplayer-clip_linkback' => 'Pahina ng pinagmulan ng putol',
+	'mwe-embedplayer-clip_linkback' => 'Pahinang batayan ng klip',
 	'mwe-embedplayer-choose_player' => 'Piliin ang pampaandar ng bidyo',
 	'mwe-embedplayer-no-player' => 'Walang makuhang pampaandar para sa $1',
 	'mwe-embedplayer-share_this_video' => 'Ipamahagi ang bidyong ito',
 	'mwe-embedplayer-video_credits' => 'Mga banggit-pagkilala ng bidyo',
 	'mwe-embedplayer-no-video_credits' => 'Walang makuhang mga pagbanggit',
 	'mwe-embedplayer-kaltura-platform-title' => 'Plataporma ng bukas na pinagmulan ng bidyo ng Kaltura',
-	'mwe-embedplayer-menu_btn' => 'Putahe',
+	'mwe-embedplayer-menu_btn' => 'Menu',
 	'mwe-embedplayer-close_btn' => 'Isara',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Pampaandar ng VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Pampaandar ng HTML5 Ogg',
@@ -4070,11 +4071,11 @@ $messages['tl'] = array(
 	'mwe-embedplayer-seeking' => 'hinahanap',
 	'mwe-embedplayer-buffering' => 'pinapakinis',
 	'mwe-embedplayer-video-h264' => 'Bidyong H.264',
-	'mwe-embedplayer-video-webm' => 'Bidyo ng WebM',
-	'mwe-embedplayer-video-flv' => 'Bidyong kisap',
+	'mwe-embedplayer-video-webm' => 'Bidyong WebM',
+	'mwe-embedplayer-video-flv' => 'Bidyong Flash',
 	'mwe-embedplayer-video-ogg' => 'Bidyong Ogg',
 	'mwe-embedplayer-video-audio' => 'Tunog na Ogg',
-	'mwe-embedplayer-audio-mpeg' => 'Pamparinig na MPEG',
+	'mwe-embedplayer-audio-mpeg' => 'Tunog na MPEG',
 	'mwe-embedplayer-video-3gp' => 'Bidyong 3GP',
 	'mwe-embedplayer-video-mpeg' => 'Bidyong MPEG',
 	'mwe-embedplayer-video-msvideo' => 'Bidyong AVI',

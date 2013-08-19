@@ -5493,12 +5493,14 @@ $messages['ug-arab'] = array(
 /** Ukrainian (українська)
  * @author AS
  * @author Ahonc
+ * @author Andriykopanytsia
  * @author AtUkr
  * @author Base
  * @author NickK
  * @author Olvin
  * @author Prima klasy4na
  * @author Steve.rusyn
+ * @author SteveR
  * @author Тест
  */
 $messages['uk'] = array(
@@ -5513,6 +5515,11 @@ $messages['uk'] = array(
 	'timedmedia-ogg-long-error' => 'Неправильний Ogg-файл: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 відео-файл, $2',
 	'timedmedia-webm-long-video' => 'WebM аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3',
+	'timedmedia-flac-short-audio' => 'FLAC аудіо-файл,$1',
+	'timedmedia-flac-long-audio' => 'FLAC аудіо-файл, тривалість $1, $2 швидкість',
+	'timedmedia-wav-short-audio' => 'Аудіо-файл WAV, $1',
+	'timedmedia-wav-long-audio' => 'Аудіо-файл WAV, тривалість $1, $2 швидкість',
+	'timedmedia-wav-pcm-required' => 'Ви можете тільки завантажити PCM (імпульсно-кодова модуляція) WAV.',
 	'timedmedia-mp4-short-video' => 'MP4 $1 відео-файл, $2',
 	'timedmedia-mp4-long-video' => 'MP4 аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3',
 	'timedmedia-no-player-js' => 'На жаль, у Вашому браузері вимкнено JavaScript і не підтримується жодного програвача.<br />
@@ -5533,7 +5540,7 @@ $messages['uk'] = array(
 	'timedmedia-direct-link' => 'Завантажити похідний варіант',
 	'timedmedia-not-ready' => 'Не готово',
 	'timedmedia-completed-on' => 'Завершено декодування $1',
-	'timedmedia-error-on' => 'помилка при декодуванні $1.',
+	'timedmedia-error-on' => 'Помилка при декодуванні $1.',
 	'timedmedia-started-transcode' => 'Декодування розпочато $1 назад. $2',
 	'timedmedia-percent-done' => 'Приблизно $1% готово',
 	'timedmedia-in-job-queue' => 'Додано до черги завдань $1 назад',
@@ -5542,7 +5549,6 @@ $messages['uk'] = array(
 	'timedmedia-hours' => '$1 {{PLURAL:$1|гадину|години|годин}}',
 	'timedmedia-minutes' => '$1 {{PLURAL:$1|хвилину|хвилини|хвилин}}',
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|секунду|секунди|секунд}}',
-	'timedmedia-show-error' => 'Показати помилку',
 	'timedmedia-reset' => 'Перезапуск декодування',
 	'timedmedia-reset-confirm' => 'Перезапуск декодування видалить наявний файл (якщо він існує), і  декодування знов буде додано в чергу завдань. Повторне декодування займе якийсь час. <br /><br />
 Ви упевнені, що хочете продовжити?',
@@ -5571,9 +5577,9 @@ $messages['uk'] = array(
 	'timedmedia-subtitle-remote' => 'Текст до цього файлу розміщений на $1',
 	'timedmedia-subtitle-remote-link' => 'Ви можете [$1 переглянути опис сторінки] для цього файлу на $2',
 	'timedmediahandler' => 'TimedMediaHandler',
-	'timedmedia-videos' => '{{PLURAL:$1|$1 відео|$1 відео}}', # Fuzzy
-	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg відео|$1 Ogg відео}}', # Fuzzy
-	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM відео|$1 WebM відео}}', # Fuzzy
+	'timedmedia-videos' => '{{PLURAL:$1|$1 відео}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg відео}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM відео}}',
 	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 перекодування|$1 перекодувань}}',
 	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 працюючі перекодування|$1 працюючих перекодувань}}',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 перекодування в черзі|$1 перекодувань в черзі}}',
