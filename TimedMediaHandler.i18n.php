@@ -5855,6 +5855,7 @@ $messages['yue'] = array(
 /** Simplified Chinese (中文（简体）‎)
  * @author Byfserag
  * @author Gaoxuewei
+ * @author Hzy980512
  * @author Liangent
  * @author Shizhao
  * @author Yfdyh000
@@ -5872,6 +5873,11 @@ $messages['zh-hans'] = array(
 	'timedmedia-ogg-long-error' => '无效的ogg文件：$1',
 	'timedmedia-webm-short-video' => 'WebM $1视频文件，$2',
 	'timedmedia-webm-long-video' => 'WebM音频/视频文件，$1，长度$2，$4 × $5像素，共$3',
+	'timedmedia-flac-short-audio' => 'FLAC音频文件，$1',
+	'timedmedia-flac-long-audio' => 'FLAC音频文件，总共长$1，码率$2',
+	'timedmedia-wav-short-audio' => 'WAV音频文件，$1',
+	'timedmedia-wav-long-audio' => 'WAV音频文件，总共长$1，码率$2',
+	'timedmedia-wav-pcm-required' => '您只能上传脉冲编码调制（PCM）WAV。',
 	'timedmedia-mp4-short-video' => 'MP4 $1视频文件，$2',
 	'timedmedia-mp4-long-video' => 'MP4音频/视频文件，$1，长度$2，$4 × $5像素，$3 overall',
 	'timedmedia-no-player-js' => '抱歉，您的浏览器禁用了JavaScript或没有任何可支持的播放器。<br />
