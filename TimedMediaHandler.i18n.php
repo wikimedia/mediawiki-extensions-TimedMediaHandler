@@ -398,17 +398,33 @@ Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 * {{msg-mw|Timedmedia-source-file}}',
-	'timedmedia-source-file' => 'The source file
-* $1 file type webm or ogg
+	'timedmedia-source-file' => 'The source file. Parameters:
+* $1 - file type; any one of the following messages:
+** {{msg-mw|Timedmedia-ogg}} - Optional message
+** {{msg-mw|Timedmedia-webm}} - Optional message
+** {{msg-mw|Timedmedia-mp4}}
+See also:
+* {{msg-mw|Timedmedia-source-audio-file-desc}}
+* {{msg-mw|Timedmedia-source-file-desc}}
 {{Identical|Source}}',
-	'timedmedia-source-file-desc' => 'Source file description. Paramaters:
-* $1 file type ie WebM or Ogg
-* $2 resolution width
-* $3 resolution height
-* $4 human readable bitrate',
-	'timedmedia-source-audio-file-desc' => 'Source file description. Paramaters:
-* $1 file type ie WebM or Ogg
-* $2 human readable bitrate',
+	'timedmedia-source-file-desc' => 'Source file description. Parameters:
+* $1 - file type; any one of the following messages:
+** {{msg-mw|Timedmedia-ogg}} - Optional message
+** {{msg-mw|Timedmedia-webm}} - Optional message
+** {{msg-mw|Timedmedia-mp4}}
+* $2 - resolution width
+* $3 - resolution height
+* $4 - human readable bitrate
+See also:
+* {{msg-mw|Timedmedia-source-audio-file-desc}} - for audio file',
+	'timedmedia-source-audio-file-desc' => 'Source file description. Parameters:
+* $1 - file type; any one of the following messages:
+** {{msg-mw|Timedmedia-ogg}} - Optional message
+** {{msg-mw|Timedmedia-webm}} - Optional message
+** {{msg-mw|Timedmedia-mp4}}
+* $2 - human readable bitrate
+See also:
+* {{msg-mw|Timedmedia-source-file-desc}} - for video file',
 	'timedmedia-derivative-160p.ogv' => '{{optional}}',
 	'timedmedia-derivative-360p.ogv' => '{{optional}}',
 	'timedmedia-derivative-480p.ogv' => '{{optional}}',
@@ -2882,7 +2898,7 @@ $messages['ja'] = array(
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 分}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 秒}}',
 	'timedmedia-mp4' => 'MP4',
-	'timedmedia-source-file' => '$1 音源',
+	'timedmedia-source-file' => '$1 ソース',
 	'timedmedia-source-file-desc' => 'オリジナル $1 ファイル、$2 × $3 ($4)',
 	'timedmedia-source-audio-file-desc' => 'オリジナル $1 ファイル ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => '低帯域 Ogg 動画 (160P)',
@@ -5178,7 +5194,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekunder}}',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 Källa',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Ursprunglig $1-fil, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Låg bandbredd Ogg-video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Webbströmningsbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webbströmningsbar Ogg-video (480P)',
@@ -5191,7 +5207,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-derivative-desc-480p.mp4' => 'Webbströmningsbar MP4 (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'HD-kvalitet MP4 (720P)',
 	'timedmedia-subtitle-new' => 'Skapa ny översättning eller redigera befintlig',
-	'timedmedia-subtitle-new-desc' => "Ersätt delen '''$1''' med din [[:en:ISO 639|språkkod]] och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
+	'timedmedia-subtitle-new-desc' => "Välj språk och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Gå',
 	'timedmedia-subtitle-language' => '$1 ($2) undertexter',
 	'timedmedia-subtitle-no-video' => 'Det finns ingen video som är associerade med den aktuella undertextssidan',

@@ -1270,6 +1270,14 @@ $messages['ml'] = array(
 	'mwe-timedtext-back-btn' => 'പുറകോട്ട്',
 	'mwe-timedtext-choose-text' => 'എഴുത്ത് എടുക്കുക',
 	'mwe-timedtext-upload-timed-text' => 'സംഭാഷണരേഖ കൂട്ടിച്ചേർക്കുക',
+	'mwe-timedtext-loading-text-edit' => 'സമയാനുസൃതമായുള്ള എഴുത്ത് തിരുത്തലുപകരണം എടുക്കുന്നു',
+	'mwe-timedtext-search' => 'മീഡിയശകലത്തിൽ തിരയുക',
+	'mwe-timedtext-layout' => 'രൂപഘടന',
+	'mwe-timedtext-layout-ontop' => 'ചലച്ചത്രത്തിനുപരി',
+	'mwe-timedtext-layout-below' => 'ചലച്ചിത്രത്തിനു താഴെ',
+	'mwe-timedtext-layout-off' => 'സംഭാഷണരേഖ മറയ്ക്കുക',
+	'mwe-timedtext-loading-text' => 'എഴുത്ത് ശേഖരിക്കുന്നു...',
+	'mwe-timedtext-textcat-cc' => 'തലവാക്യം',
 );
 
 /** Malay (Bahasa Melayu)
