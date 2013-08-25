@@ -4262,7 +4262,7 @@ Możesz <a href="$1">pobrać plik</a> lub <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-direct-link' => 'Pobierz pochodną',
 	'timedmedia-not-ready' => 'Niegotowe',
 	'timedmedia-completed-on' => 'Przekonwertowano o $1',
-	'timedmedia-error-on' => 'Błąd w konwersji o $1.', # Fuzzy
+	'timedmedia-error-on' => 'Błąd w konwersji o $1',
 	'timedmedia-started-transcode' => 'Konwersja rozpoczęła się $1 temu. $2',
 	'timedmedia-percent-done' => 'Ukończono ok. $1%',
 	'timedmedia-in-job-queue' => 'Dodano do kolejki $1 temu',
@@ -4277,7 +4277,8 @@ Czy na pewno chcesz kontynuować?',
 	'timedmedia-reset-error' => 'Błąd w resecie konwersji.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Źródło $1',
-	'timedmedia-source-file-desc' => 'Oryginalne $1, $2 x $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Oryginalny plik $1, $2 x $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Oryginalny plik $1 ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg video o niskiej przepustowości (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Ogg video o przepustowości sieciowej (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Ogg video o przepustowości sieciowej (480P)',
