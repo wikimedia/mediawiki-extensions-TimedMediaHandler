@@ -365,7 +365,6 @@
 						.attr( 'id', textMenuId )
 						.css( {
 							'position' 	: 'absolute',
-							'z-index' 	: 10,
 							'height'	: '180px',
 							'width' 	: '180px',
 							'font-size'	: '12px',
@@ -1211,8 +1210,7 @@
 					'width': '100%',
 					'display': 'block',
 					'opacity': .8,
-					'text-align': 'center',
-					'z-index': 2
+					'text-align': 'center'
 				};
 			baseCss =$.extend( baseCss, this.getInterfaceSizeTextCss({
 				'width' :  this.embedPlayer.getInterface().width(),
