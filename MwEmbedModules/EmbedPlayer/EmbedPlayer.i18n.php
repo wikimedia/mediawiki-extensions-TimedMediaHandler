@@ -102,12 +102,8 @@ $messages['qqq'] = array(
 This message is followed by the following messages:
 * {{msg-mw|mwe-embedplayer-credit-author}}
 * {{msg-mw|mwe-embedplayer-credit-date}}',
-	'mwe-embedplayer-credit-date' => 'Parameters:
-* $1 - date
-{{Identical|Date}}',
-	'mwe-embedplayer-credit-author' => 'Parameters:
-* $1 - author
-{{Identical|Author}}',
+	'mwe-embedplayer-credit-date' => '{{Identical|Date}}',
+	'mwe-embedplayer-credit-author' => '{{Identical|Author}}',
 	'mwe-embedplayer-player_fullscreen' => '{{Identical|Full screen}}',
 	'mwe-embedplayer-seek_to' => 'Used as the Player status string. Parameters:
 * $1 - a time in the NPT format. NPT (Normal play time) is defined in [//www.ietf.org/rfc/rfc2326.txt RFC 2326].',

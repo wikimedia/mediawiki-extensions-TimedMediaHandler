@@ -64,10 +64,7 @@ $messages['qqq'] = array(
 	'mwe-timedtext-select-language' => '{{Identical|Select language}}',
 	'mwe-timedtext-back-btn' => '{{Identical|Back}}',
 	'mwe-timedtext-layout' => '{{Identical|Layout}}',
-	'mwe-timedtext-key-language' => '{{optional}}
-Parameters:
-* $1 - language key. e.g. "en"
-* $2 - language name',
+	'mwe-timedtext-key-language' => '{{optional}}',
 	'mwe-timedtext-textcat-cc' => '{{Identical|Caption}}',
 	'mwe-timedtext-textcat-sub' => '{{Identical|Subtitle}}',
 	'mwe-timedtext-textcat-ktv' => 'See [[w:Karaoke]].',
