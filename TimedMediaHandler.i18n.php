@@ -63,7 +63,7 @@ You can <a href="$1">download the clip</a> or <a href="//www.mediawiki.org/wiki/
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minute|$1 minutes}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 second|$1 seconds}}',
 	'timedmedia-reset' => 'Reset transcode',
-	'timedmedia-reset-confirm' => 'Resetting this transcode will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode.<br /><br />
+	'timedmedia-reset-confirm' => 'Resetting this transcode will remove any existing file (if present), and it will re-add the transcode to the job queue. It will take some time to re-transcode. <br /><br />
 Are you sure you want to proceed?',
 	'timedmedia-reset-error' => 'Error in resetting transcode job.',
 
@@ -123,8 +123,8 @@ Are you sure you want to proceed?',
 	'timedmedia-subtitle-new-go' => 'Go',
 
 	'timedmedia-subtitle-language' => '$1 ($2) subtitles',
-	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page.',
-	'timedmedia-subtitle-no-subtitles' => 'There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them.',
+	'timedmedia-subtitle-no-video' => 'There is no video associated with the current subtitle page',
+	'timedmedia-subtitle-no-subtitles' => 'There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them',
 
 	'timedmedia-subtitle-remote' => 'Timed text for this file is hosted on $1',
 	'timedmedia-subtitle-remote-link' => 'You can [$1 view the description page] for this file on $2',
@@ -140,7 +140,7 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 failed transcode|$1 failed transcodes}}',
 	'timedmedia-file' => 'File',
 
-	'right-transcode-reset' => 'Reset failed or transcoded videos so they are inserted into the job queue again',
+	'right-transcode-reset' => 'Reset failed or transcoded videos so they are inserted into the job queue again.',
 	'right-transcode-status' => 'View [[Special:TimedMediaHandler|information about the current transcode activity]]',
 	'action-transcode-status' => 'view the current transcoding status'
 );
