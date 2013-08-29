@@ -66,8 +66,7 @@ mw.PlayerSkinKskin = {
 						'width' : '100%',
 						'position': 'absolute',
 						'top' : '0px',
-						'bottom' : ( ctrlObj.getHeight() + 2 ) + 'px',
-						'z-index': '3'
+						'bottom' : ( ctrlObj.getHeight() + 2 ) + 'px'
 					} );
 
 				// Note safari can't display video overlays with text:
