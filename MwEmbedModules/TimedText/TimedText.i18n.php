@@ -1281,6 +1281,13 @@ $messages['ml'] = array(
 	'mwe-timedtext-layout-off' => 'സംഭാഷണരേഖ മറയ്ക്കുക',
 	'mwe-timedtext-loading-text' => 'എഴുത്ത് ശേഖരിക്കുന്നു...',
 	'mwe-timedtext-textcat-cc' => 'തലവാക്യം',
+	'mwe-timedtext-textcat-sub' => 'സംഭാഷണരേഖകൾ',
+	'mwe-timedtext-textcat-tad' => 'ശബ്ദത്തിന്റെ വിവരണം',
+	'mwe-timedtext-textcat-ktv' => 'കരോക്കേ',
+	'mwe-timedtext-textcat-ar' => 'സജീവമായ പ്രദേശങ്ങൾ',
+	'mwe-timedtext-textcat-lrc' => 'വരികൾ',
+	'mwe-timedtext-language-subtitles-for-clip' => 'ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖ: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2',
 );
 
 /** Malay (Bahasa Melayu)
