@@ -3058,7 +3058,7 @@ $messages['oc'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionat)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Per un melhor visionatge recomandam :<br />[$1 Firefox 3.5].', # Fuzzy
-	'mwe-embedplayer-do_not_warn_again' => 'Interrompre pel moment.', # Fuzzy
+	'mwe-embedplayer-do_not_warn_again' => "Afichar pas mai aqueste messatge a l'avenir",
 	'mwe-embedplayer-read_before_embed' => 'Legissètz <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">aquò</a> abans de procedir !',
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar dins una pagina',
 	'mwe-embedplayer-related_videos' => 'Vidèos associadas',
