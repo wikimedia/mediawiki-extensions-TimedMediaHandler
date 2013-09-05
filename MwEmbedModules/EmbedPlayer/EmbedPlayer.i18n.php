@@ -3342,6 +3342,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Giro720
  * @author Luckas
  * @author Luckas Blade
@@ -3401,7 +3402,7 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos::<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador que suporta HTML5].',
 	'mwe-embedplayer-do_not_warn_again' => 'Ignorar por agora.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Leitores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leia isto</a> antes de incorporar.',
