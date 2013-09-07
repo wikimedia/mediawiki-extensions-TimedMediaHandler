@@ -4107,10 +4107,16 @@ $messages['oc'] = array(
 	'timedmedia-ogg-long-multiplexed' => 'Fichièr multiplexat àudio/vidèo Ogg, $1, durada $2, $4×$5 pixèls, $3',
 	'timedmedia-ogg-long-general' => 'Fichièr mèdia Ogg, durada $2, $3',
 	'timedmedia-ogg-long-error' => 'Fichièr Ogg invalid : $1',
+	'timedmedia-webm-short-video' => 'Fichièr vidèo WebM $1, $2',
+	'timedmedia-webm-long-video' => "Fichièr àudio/vidèo WebM, $1, longor $2, $4 x $5 pixèls, $3 l'ensemble",
+	'timedmedia-flac-short-audio' => 'Fichièr àudio FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Fichièr àudio FLAC, durada $1, debit $2 sus l’ensemble',
+	'timedmedia-wav-short-audio' => 'Fichièr àudio WAV, $1',
 	'timedmedia-more' => 'Mai…',
 	'timedmedia-dismiss' => 'Tampar',
 	'timedmedia-download' => 'Telecargar lo fichièr',
 	'timedmedia-desc-link' => "A prepaus d'aqueste fichièr",
+	'timedmedia-file' => 'Fichièr',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
