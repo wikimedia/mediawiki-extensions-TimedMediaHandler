@@ -445,10 +445,10 @@ See also:
 	'timedmedia-derivative-m4a' => '{{optional}}',
 	'timedmedia-derivative-desc-m4a' => '{{optional}}',
 	'timedmedia-subtitle-new' => 'Used as page title.',
-	'timedmedia-subtitle-new-desc' => '<nowiki>{{int:Timedmedia-subtitle-new-go}}</nowiki> will be replaced by {{msg-mw|Timedmedia-subtitle-new-go}}.',
+	'timedmedia-subtitle-new-desc' => 'Refers to {{msg-mw|Timedmedia-subtitle-new-go}}.',
 	'timedmedia-subtitle-new-go' => 'Used as label for the Submit button.
 
-Preceded by the description {{msg-mw|Timedmedia-subtitle-new-desc}}.
+Preceded by (and used in) the description {{msg-mw|Timedmedia-subtitle-new-desc}}.
 {{Identical|Go}}',
 	'timedmedia-subtitle-language' => 'Subtitle names. Parameters are:
 * $1 - subtitle language
