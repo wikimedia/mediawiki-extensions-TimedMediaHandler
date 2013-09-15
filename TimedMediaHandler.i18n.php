@@ -318,9 +318,8 @@ Used as error message when executing oggThumb.',
 {{Identical|Action}}',
 	'timedmedia-direct-link' => 'Used as column header.',
 	'timedmedia-not-ready' => 'State of a given transcode job being not yet complete or not yet ready',
-	'timedmedia-completed-on' => 'Completed transcode message
-Parameters are:
-* $1 The date that the transcode was completed',
+	'timedmedia-completed-on' => 'Completed transcode message. Parameters:
+* $1 - the timestamp (time and date) that the transcode was completed',
 	'timedmedia-error-on' => 'Parameters:
 * $1 - timestamp',
 	'timedmedia-started-transcode' => 'Status update for Transcodes. Parameters:
