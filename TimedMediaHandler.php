@@ -91,6 +91,9 @@ $wgTranscodeBackgroundMemoryLimit = 2 * 1024 * 1024; // 2GB avconv, ffmpeg2theor
 // Maximum file size transcoding processes can create, in KB
 $wgTranscodeBackgroundSizeLimit = 3 * 1024 * 1024; // 3GB
 
+// Number of threads to use in avconv for transcoding
+$wgFFmpegThreads = 1;
+
 // The location of ffmpeg2theora (transcoding)
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 

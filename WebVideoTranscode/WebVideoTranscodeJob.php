@@ -387,8 +387,9 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	function ffmpegAddH264VideoOptions( $options, $pass ){
+		global $wgFFmpegThreads;
 		// Set the codec:
-		$cmd= " -threads 1 -vcodec libx264";
+		$cmd= " -threads " . intval( $wgFFmpegThreads ) . " -vcodec libx264";
 		// Check for presets:
 		if( isset( $options['preset'] ) ){
 			// Add the two vpre types:
@@ -460,11 +461,12 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	function ffmpegAddWebmVideoOptions( $options, $pass ){
+		global $wgFFmpegThreads;
 
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		$cmd =' -threads 1';
+		$cmd =' -threads ' . intval( $wgFFmpegThreads );
 
 		// check for presets:
 		if( isset($options['preset']) ){
