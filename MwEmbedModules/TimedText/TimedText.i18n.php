@@ -1175,6 +1175,7 @@ $messages['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
 	'mwe-timedtext-stage-transcribe' => 'Ëmschreiwen',
@@ -1189,7 +1190,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-search' => 'Clip sichen',
 	'mwe-timedtext-layout' => 'Layout',
 	'mwe-timedtext-layout-ontop' => 'Iwwert dem Video',
-	'mwe-timedtext-layout-below' => 'Ënnert dem Video',
+	'mwe-timedtext-layout-below' => 'Ënner dem Video',
 	'mwe-timedtext-layout-off' => 'Ënnertitele verstoppen',
 	'mwe-timedtext-loading-text' => 'Text gëtt gelueden ...',
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
