@@ -2437,6 +2437,7 @@ $messages['ky'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
@@ -2476,7 +2477,7 @@ $messages['lb'] = array(
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-do_not_warn_again' => 'Dëse Message an Zukunft net méi weisen.',
 	'mwe-embedplayer-playerSelect' => 'Player',
-	'mwe-embedplayer-read_before_embed' => 'Liest w.e.g. virum Abannen d\'<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Sécherheetsinformatiounen iwwert d\'Abannen iwwer Remote</a> ier Dir mam Abanne weidermaacht!',
+	'mwe-embedplayer-read_before_embed' => 'Liest w.e.g. virum Abannen d\'<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Sécherheetsinformatiounen iwwer d\'Abannen iwwer Remote</a> ier Dir mam Abanne weidermaacht!',
 	'mwe-embedplayer-embed_site_or_blog' => 'An Är Säit abauen',
 	'mwe-embedplayer-related_videos' => 'Ähnlech Videoen',
 	'mwe-embedplayer-seeking' => 'sichen',
