@@ -4716,6 +4716,7 @@ Sì secure ca vuè ccu vvè nnande?",
  * @author Kalan
  * @author Kv75
  * @author MaxSem
+ * @author Okras
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -4748,16 +4749,15 @@ $messages['ru'] = array(
 	'timedmedia-direct-link' => 'Скачать модифицированный вариант',
 	'timedmedia-not-ready' => 'Не готов',
 	'timedmedia-completed-on' => 'Завершено декодирование $1',
-	'timedmedia-error-on' => 'Ошибка при декодировании на $1.',
+	'timedmedia-error-on' => 'Ошибка при декодировании на $1',
 	'timedmedia-started-transcode' => 'Декодирование запущено $1 назад. $2',
 	'timedmedia-percent-done' => 'Примерно $1% выполнено',
 	'timedmedia-in-job-queue' => 'Добавлено в очередь заданий $1 назад',
 	'timedmedia-unknown-target-size' => 'Неизвестный целевой размер, $1 при кодировке',
-	'timedmedia-days' => '{{PLURAL:$1|день|$1 дня|$1 дней}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|$1 час|$1 часа|$1 часов}}', # Fuzzy
+	'timedmedia-days' => '{{PLURAL:$1|1 день|$1 дня|$1 дней}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 час|$1 часа|$1 часов}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 минута|$1 минуты|$1 минут}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунда|$1 секунды|$1 секунд}}', # Fuzzy
-	'timedmedia-show-error' => 'Показать ошибку',
 	'timedmedia-reset' => 'Перезапуск декодирования',
 	'timedmedia-reset-confirm' => 'Перезапуск декодирования удалит существующий файл (если он существует), и  декодирование вновь будет добавлено в очередь заданий. Повторное декодирование займет некоторое время. <br /><br />
 Вы уверены, что хотите продолжить?',

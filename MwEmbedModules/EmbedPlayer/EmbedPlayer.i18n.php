@@ -3584,6 +3584,7 @@ $messages['roa-tara'] = array(
 /** Russian (русский)
  * @author Eleferen
  * @author MaxSem
+ * @author Okras
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -3640,8 +3641,8 @@ $messages['ru'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Проигрыватель Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(выбрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Для хорошего воспроизведения видео мы рекомендуем: <br />[$1 Firefox 3.5].', # Fuzzy
-	'mwe-embedplayer-download-warn' => 'Не найдено встроенного проигрывателя для браузера, для воспроизведении в браузере загрузите [$1 последний Firefox]', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Для лучшего воспроизведения видео мы рекомендуем [$1 браузер, поддерживающий HTML5].',
+	'mwe-embedplayer-download-warn' => 'Не найдено встроенного в браузер проигрывателя, для воспроизведении в браузере загрузите [$1 последний Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Клавиша <b>F11</b> переводит <i>веб-браузер</i> в полноэкранный режим',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Нажмите <b>shift ⌘ F</b> для перехода в полноэкранный режим',
 	'mwe-embedplayer-do_not_warn_again' => 'Не показывать это сообщение в будущем',

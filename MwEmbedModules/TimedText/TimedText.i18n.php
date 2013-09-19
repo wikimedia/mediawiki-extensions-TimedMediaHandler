@@ -1701,6 +1701,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (русский)
  * @author MaxSem
+ * @author Okras
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1713,7 +1714,7 @@ $messages['ru'] = array(
 	'mwe-timedtext-file-language' => 'Язык файла субтитров',
 	'mwe-timedtext-back-btn' => 'Назад',
 	'mwe-timedtext-choose-text' => 'Выберите текст',
-	'mwe-timedtext-upload-timed-text' => 'Загрузить субтитры', # Fuzzy
+	'mwe-timedtext-upload-timed-text' => 'Добавить субтитры',
 	'mwe-timedtext-loading-text-edit' => 'Загрузка редактора синхронизированного текста',
 	'mwe-timedtext-search' => 'Поиск клипа',
 	'mwe-timedtext-layout' => 'Положение',
