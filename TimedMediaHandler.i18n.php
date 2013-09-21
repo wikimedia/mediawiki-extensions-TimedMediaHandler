@@ -4763,7 +4763,7 @@ $messages['ru'] = array(
 Вы уверены, что хотите продолжить?',
 	'timedmedia-reset-error' => 'Ошибка при перезапуске декодирования.',
 	'timedmedia-source-file' => 'Источник $1',
-	'timedmedia-source-file-desc' => 'Оригинал $1, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Оригинал $1 файла, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-видео низкого качества (160p)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Потоковое Ogg-видео (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Потоковое Ogg-видео (480p)',
