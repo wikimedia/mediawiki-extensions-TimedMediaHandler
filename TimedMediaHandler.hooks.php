@@ -97,7 +97,7 @@ class TimedMediaHandlerHooks {
 		$wgHooks['UploadComplete'][] = 'TimedMediaHandlerHooks::checkUploadComplete';
 
 		// When an image page is moved:
-		$wgHooks['TitleMoveComplete'][] = 'TimedMediaHandlerHooks::checkTitleMoveComplete';
+		$wgHooks['TitleMove'][] = 'TimedMediaHandlerHooks::checkTitleMove';
 
 		// When image page is deleted so that we remove transcode settings / files.
 		$wgHooks['FileDeleteComplete'][] = 'TimedMediaHandlerHooks::onFileDeleteComplete';
@@ -257,7 +257,6 @@ class TimedMediaHandlerHooks {
 		}
 		return true;
 	}
-
 	/**
 	 * Handle moved titles
 	 *
@@ -267,11 +266,9 @@ class TimedMediaHandlerHooks {
 	 * @param $title Title
 	 * @param $newTitle Title
 	 * @param $user User
-	 * @param $oldid int
-	 * @param $newid int
 	 * @return bool
 	 */
-	public static function checkTitleMoveComplete( &$title, &$newTitle, &$user, $oldid, $newid ){
+	public static function checkTitleMove( $title, $newTitle, $user ){
 		if( self::isTranscodableTitle( $title ) ){
 			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
