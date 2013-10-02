@@ -1,4 +1,4 @@
-.track span {
+.ttmlStyled {
 	color: white;
 	letter-spacing: 0.04em;
 	text-align: center;
@@ -9,11 +9,10 @@
 	*/
 	background-color: #333;
 }
-.track span a {
+.ttmlStyled a {
 	text-decoration: none;
 	color : #BBF;
 }
-.track span a:visited{
+.ttmlStyled a:visited{
 	color : #BBF;
 }
-

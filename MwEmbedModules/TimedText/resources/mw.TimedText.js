@@ -1124,11 +1124,17 @@
 			// include html formating
 			// TOOD we should scrub this for non-formating html
 			$textTarget.append(
-				$('<span />')
+				$('<span>')
 					.addClass( 'ttmlStyled' )
 					.css( 'pointer-events', 'auto')
 					.css( this.getCaptionCss() )
-					.html( caption.content )
+					.append(
+						$('<span>')
+							// Prevent background (color) overflowing TimedText
+							// http://stackoverflow.com/questions/9077887/avoid-overlapping-rows-in-inline-element-with-a-background-color-applied
+							.css( 'position', 'relative' )
+							.html( caption.content )
+					)
 			);
 
 
