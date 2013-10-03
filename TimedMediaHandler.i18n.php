@@ -4916,10 +4916,10 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'timedmedia-desc' => 'Upravljavec zvoka, videa in časovnega besedila s podprtimi oblikami WebM, Ogg Theora, Vorbis in SubRip',
-	'timedmedia-ogg-short-audio' => 'Avdiodatoteka Ogg $1, $2',
+	'timedmedia-ogg-short-audio' => 'avdiodatoteka Ogg $1, $2',
 	'timedmedia-ogg-short-video' => 'Videodatoteka Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
-	'timedmedia-ogg-long-audio' => 'Avdiodatoteka Ogg $1, dolžine $2, $3',
+	'timedmedia-ogg-long-audio' => 'avdiodatoteka Ogg $1, dolžine $2, $3',
 	'timedmedia-ogg-long-video' => 'videodatoteka ogg $1, dolžine $2, $4 × $5 pik, $3',
 	'timedmedia-ogg-long-multiplexed' => 'multipleksna avdio-/videodatoteka Ogg, $1, dolžine $2, $4 × $5 pik, skupaj $3',
 	'timedmedia-ogg-long-general' => 'predstavnostna datoteka Ogg, dolžine $2, $3',
@@ -5977,6 +5977,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (中文（繁體）‎)
  * @author Gaoxuewei
  * @author Justincheng12345
+ * @author Liuxinyu970226
  * @author Mark85296341
  * @author Simon Shek
  */
@@ -5992,6 +5993,8 @@ $messages['zh-hant'] = array(
 	'timedmedia-ogg-long-error' => '無效的ogg檔案：$1',
 	'timedmedia-webm-short-video' => 'WebM $1視頻文件，$2',
 	'timedmedia-webm-long-video' => 'WebM音頻/視頻文件，$1，長度$2，$4 × $5像素，共$3',
+	'timedmedia-flac-short-audio' => 'FLAC音頻檔案，$1',
+	'timedmedia-wav-short-audio' => 'WAV音頻檔案，$1',
 	'timedmedia-mp4-short-video' => 'MP4 $1視訊檔案，$2',
 	'timedmedia-mp4-long-video' => 'MP4音訊/視訊檔案，$1，長度$2，$4×$5像素，共$3',
 	'timedmedia-no-player-js' => '抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />
