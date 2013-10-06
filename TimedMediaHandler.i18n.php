@@ -1174,6 +1174,7 @@ $messages['cu'] = array(
 
 /** Danish (dansk)
  * @author Byrial
+ * @author Christian List
  * @author Fnielsen
  * @author HenrikKbh
  * @author Jon Harald Søby
@@ -1193,6 +1194,11 @@ $messages['da'] = array(
 	'timedmedia-ogg-long-error' => 'Ugyldig Ogg-fil: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
 	'timedmedia-webm-long-video' => 'WebM audio/video fil, $1, længde  $2,  $4 × $5 pixel, $3 samlet',
+	'timedmedia-flac-short-audio' => 'FLAC lydfil, $1',
+	'timedmedia-flac-long-audio' => 'FLAC lydfil, varighed $1, $2 samlet',
+	'timedmedia-wav-short-audio' => 'WAV lydfil, $1',
+	'timedmedia-wav-long-audio' => 'WAV lydfil, varighed $1, $2 samlet',
+	'timedmedia-wav-pcm-required' => 'Du kan kun uploade PCM (Pulse Code Modulation) WAV.',
 	'timedmedia-mp4-short-video' => 'Mp4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'Mp4-fil for audio/video, $1, længde $2, $4 × $5 pixel, $3 samlet',
 	'timedmedia-no-player-js' => 'Beklager, men din browser har enten deaktiveret JavaScript eller har ikke en afspiller, som vi understøtter.<br />
@@ -1213,7 +1219,7 @@ Du kan enten <a href="$1">hente klippet</a> eller <a href="//www.mediawiki.org/w
 	'timedmedia-direct-link' => 'Hent derivat',
 	'timedmedia-not-ready' => 'Ikke klar',
 	'timedmedia-completed-on' => 'Gennemført transcode $1',
-	'timedmedia-error-on' => 'Fejl i kode på  $1', # Fuzzy
+	'timedmedia-error-on' => 'Fejl i omkodning ved $1',
 	'timedmedia-started-transcode' => 'Kode startet $1 siden. $2',
 	'timedmedia-percent-done' => 'Cirka $1 % udført',
 	'timedmedia-in-job-queue' => 'Føjet til jobkøen $1 siden',
@@ -5994,7 +6000,9 @@ $messages['zh-hant'] = array(
 	'timedmedia-webm-short-video' => 'WebM $1視頻文件，$2',
 	'timedmedia-webm-long-video' => 'WebM音頻/視頻文件，$1，長度$2，$4 × $5像素，共$3',
 	'timedmedia-flac-short-audio' => 'FLAC音頻檔案，$1',
+	'timedmedia-flac-long-audio' => 'FLAC音頻檔案，長$1，寬$2',
 	'timedmedia-wav-short-audio' => 'WAV音頻檔案，$1',
+	'timedmedia-wav-long-audio' => 'WAV音頻檔案，長$1，寬$2',
 	'timedmedia-mp4-short-video' => 'MP4 $1視訊檔案，$2',
 	'timedmedia-mp4-long-video' => 'MP4音訊/視訊檔案，$1，長度$2，$4×$5像素，共$3',
 	'timedmedia-no-player-js' => '抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />
@@ -6015,7 +6023,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-direct-link' => '下載衍生作品',
 	'timedmedia-not-ready' => '未就緒',
 	'timedmedia-completed-on' => '已完成轉碼$1',
-	'timedmedia-error-on' => '於$1轉碼錯誤。', # Fuzzy
+	'timedmedia-error-on' => '於$1轉碼時出錯。',
 	'timedmedia-started-transcode' => '於$1前開始轉碼。$2',
 	'timedmedia-percent-done' => '大約$1%已完成',
 	'timedmedia-in-job-queue' => '$1前添加到工作隊列',
