@@ -18,10 +18,9 @@ class TimedMediaHandlerHooks {
 
 		// Remove mp4 if not enabled:
 		if( $wgTmhEnableMp4Uploads === false ){
-			foreach( $wgFileExtensions as $inx => $val ) {
-				if( $val == 'mp4' ){
-					unset( $wgFileExtensions[$inx] );
-				}
+			$index = array_search( 'mp4', $wgFileExtensions );
+			if ( $index !== false ) {
+				array_splice( $wgFileExtensions, $index, 1 );
 			}
 		}
 
