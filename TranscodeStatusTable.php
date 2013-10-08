@@ -17,7 +17,7 @@ class TranscodeStatusTable {
 		// Add transcode table css and javascript:
 		$wgOut->addModules( array( 'ext.tmh.transcodetable' ) );
 
-		$o = '<h2>' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
+		$o = '<h2 id="transcodestatus">' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
 		// Give the user a purge page link
 		$o.= Linker::link(
 			$file->getTitle(),
