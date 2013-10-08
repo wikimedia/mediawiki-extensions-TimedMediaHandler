@@ -406,7 +406,7 @@ See also:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 {{Identical|Source}}',
-	'timedmedia-source-file-desc' => 'Source file description. Parameters:
+	'timedmedia-source-file-desc' => 'Source file description. This is a file title in the primary source attributes of a timed media file. I can look like "\'\'Original Ogg file, 640 × 480 (10 Mbps)\'\'". Parameters:
 * $1 - file type; any one of the following messages:
 ** {{msg-mw|Timedmedia-ogg}} - Optional message
 ** {{msg-mw|Timedmedia-webm}} - Optional message
@@ -594,7 +594,6 @@ $messages['ar'] = array(
 	'timedmedia-actions' => 'الإجراءات',
 	'timedmedia-not-ready' => 'غير جاهز',
 	'timedmedia-percent-done' => 'وصل لنسبة $1% انتهى',
-	'timedmedia-show-error' => 'إظهار الخطأ',
 	'timedmedia-ogg' => 'أو جي جي',
 	'timedmedia-source-file' => '$1 مصدر',
 	'timedmedia-derivative-desc-160p.ogv' => 'انخفاض عرض النطاق الترددي أوج فيديو (160P)',
@@ -744,7 +743,6 @@ $messages['ba'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|$1 сәғәт|$1 сәғәт}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 минут|$1 минут}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунд|$1 секунд}}', # Fuzzy
-	'timedmedia-show-error' => 'Хатаны күрһәт',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -997,7 +995,6 @@ $messages['br'] = array(
 	'timedmedia-hours' => '$1 {{PLURAL: $1|eurvezh|eurvezh}}', # Fuzzy
 	'timedmedia-minutes' => '$1 {{PLURAL: $1|munutenn|munutenn}}', # Fuzzy
 	'timedmedia-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}', # Fuzzy
-	'timedmedia-show-error' => 'Diskouez ar fazi',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Mammenn $1',
 	'timedmedia-source-file-desc' => 'Orin $1, $2 × $3 ($4)', # Fuzzy
@@ -1067,7 +1064,6 @@ $messages['ca'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 hora|$1 hores}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minuts}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 segon|$1 segons}}',
-	'timedmedia-show-error' => 'Mostra els errors',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-language' => '$1 ($2) subtítols',
@@ -1788,7 +1784,6 @@ Voit <a href="$1">ladata leikkeen</a> tai <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-hours' => '{{PLURAL:$1|1 tunti|$1 tuntia}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuutti|$1 minuuttia}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekunti|$1 sekuntia}}',
-	'timedmedia-show-error' => 'Näytä virhe',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Lähde $1',
 	'timedmedia-source-file-desc' => 'Alkuperäinen $1-tiedosto, $2 × $3 ($4)',
@@ -1972,7 +1967,6 @@ $messages['frp'] = array(
 	'timedmedia-hours' => '$1 hor{{PLURAL:$1|a|es}}', # Fuzzy
 	'timedmedia-minutes' => '$1 menut{{PLURAL:$1|a|es}}', # Fuzzy
 	'timedmedia-seconds' => '$1 second{{PLURAL:$1|a|es}}', # Fuzzy
-	'timedmedia-show-error' => 'Fâre vêre les èrrors',
 	'timedmedia-source-file' => 'Sôrsa $1',
 	'timedmedia-source-file-desc' => 'Originâl $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-subtitle-language' => 'sot-titros en $1 ($2)',
@@ -2152,7 +2146,7 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="//www.mediawiki.org/wik
 	'timedmedia-direct-link' => 'Ableitig abelade',
 	'timedmedia-not-ready' => 'Nit parat',
 	'timedmedia-completed-on' => 'Umschlüsselig vo $1 abgschlosse',
-	'timedmedia-error-on' => 'Fääler bim Umschlüssle in $1.',
+	'timedmedia-error-on' => 'Fääler bim Umschlüssle in $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Umschlüsselig het vor $1 aagfange. $2',
 	'timedmedia-percent-done' => 'Öbe $1 % fertig',
 	'timedmedia-in-job-queue' => 'Vor $1 zur Ufftragswarteschlange dezuegfiegt worde',
@@ -2161,7 +2155,6 @@ Du chasch <a href="$1">dr Clip abelade</a> oder <a href="//www.mediawiki.org/wik
 	'timedmedia-hours' => '{{PLURAL:$1|1 Stund|$1 Stunde}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|1 Minut|$1 Minute}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|1 Sekund|$1 Sekunde}}', # Fuzzy
-	'timedmedia-show-error' => 'Fääler aazeige',
 	'timedmedia-reset' => 'Umschlüsselig zruggsetze',
 	'timedmedia-reset-confirm' => "S Zruggsetze vo dere Umschlüsselig wird (wänn's vorhande isch), die aktuelli Datei ussenee un d Umschlüsselig no emool uff d Ufftragswarteschlange dezuefiege. E nöii Umschlüsselig wird e Wyyl goo.<br /><br /> Söll des würkli gmacht werde?",
 	'timedmedia-reset-error' => 'Fääler bim Zruggsetze vo de Umschlüsselig.',
@@ -2467,7 +2460,7 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="//www.mediawiki.org/wiki/E
 	'timedmedia-direct-link' => 'Discargar file transcodificate',
 	'timedmedia-not-ready' => 'Non preste',
 	'timedmedia-completed-on' => 'Transcodification de $1 complete',
-	'timedmedia-error-on' => 'Error in transcodification a $1.',
+	'timedmedia-error-on' => 'Error in transcodification a $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Le transcodification comenciava $1 retro. $2',
 	'timedmedia-percent-done' => 'Circa $1% complete',
 	'timedmedia-in-job-queue' => 'Addite al cauda de actiones $1 retro',
@@ -2476,7 +2469,6 @@ Tu pote <a href="$1">discargar le clip</a> o <a href="//www.mediawiki.org/wiki/E
 	'timedmedia-hours' => '{{PLURAL:$1|hora|$1 horas}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|minuta|$1 minutas}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|secunda|$1 secundas}}', # Fuzzy
-	'timedmedia-show-error' => 'Monstrar error',
 	'timedmedia-reset' => 'Reinitialisar transcodification',
 	'timedmedia-reset-confirm' => 'Reinitialisar iste transcodification removera tote le files existente (si presente), e illo re-addera le transcodification al cauda de actiones. Le transcodification prendera un tempore. <br /><br />Es tu secur de voler continuar?',
 	'timedmedia-reset-error' => 'Error durante le reinitialisation del action de transcodification',
@@ -2546,14 +2538,13 @@ Anda dapat <a href="$1">mengunduh klip</a> atau <a href="//www.mediawiki.org/wik
 	'timedmedia-direct-link' => 'Unduh turunan',
 	'timedmedia-not-ready' => 'Belum siap',
 	'timedmedia-completed-on' => 'Transkoder komplit $1',
-	'timedmedia-error-on' => 'Kesalahan dalam transkoder pada  $1 .',
+	'timedmedia-error-on' => 'Kesalahan dalam transkoder pada  $1 .', # Fuzzy
 	'timedmedia-started-transcode' => 'Transkoder mulai $1 yang lalu. $2',
 	'timedmedia-percent-done' => 'Sekitar $1% selesai',
 	'timedmedia-days' => '{{PLURAL:$1|$1 hari}}',
 	'timedmedia-hours' => '{{PLURAL:$1|$1 jam}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|$1 menit}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|$1 detik}}',
-	'timedmedia-show-error' => 'Tunjukkan kesalahan',
 	'timedmedia-reset' => 'Reset transkoder',
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
@@ -2639,7 +2630,7 @@ Mabalinmo ti <a href="$1">agikarga ti sigpit</a> wenno <a href="//www.mediawiki.
 	'timedmedia-direct-link' => 'Ikarga ti deribatibo',
 	'timedmedia-not-ready' => 'Saan pay a sisasagana',
 	'timedmedia-completed-on' => 'Nakompleto ti transkodigo $1',
-	'timedmedia-error-on' => 'Biddut ti transkodigo iti $1.',
+	'timedmedia-error-on' => 'Biddut ti transkodigo iti $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Ti transkodigo ket nairugi di $1. $2',
 	'timedmedia-percent-done' => 'Agarup a $1% ti nalapasen',
 	'timedmedia-in-job-queue' => 'Nagnayon idiay Pagurayan ti maaramid idi $1',
@@ -2648,7 +2639,6 @@ Mabalinmo ti <a href="$1">agikarga ti sigpit</a> wenno <a href="//www.mediawiki.
 	'timedmedia-hours' => '{{PLURAL:$1|1 nga oras|$1 nga or-oras}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 a minuto|$1 a minutos}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 a segundo|$1 a seg-segundo}}',
-	'timedmedia-show-error' => 'Ipakita ti biddut',
 	'timedmedia-reset' => 'Iyasentar manen ti transkodigo',
 	'timedmedia-reset-confirm' => 'Ti papangyasentar ti daytoy a transkodigo ket mangikkat ti aniaman nga adda a papeles (no adda), ket manginayonto manen ti transkodigo iti pagurayan ti maaramid. <br /><br />
 Seguradoka kadi a kayatmo ti tumuloy?',
@@ -2738,7 +2728,6 @@ $messages['is'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|einn klukkutími|$1 klukkutímar}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|ein mínúta|$1 mínútur}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|ein sekúnda|$1 sekúndur}}', # Fuzzy
-	'timedmedia-show-error' => 'Sýna villu',
 	'timedmedia-source-file' => '$1 uppruni',
 	'timedmedia-source-file-desc' => 'Upphafleg $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg myndband fyrir litla bandbreidd (160P)',
@@ -2982,7 +2971,7 @@ $messages['jv'] = array(
 	'timedmedia-direct-link' => 'Undhuh turunan',
 	'timedmedia-not-ready' => 'Durung siap',
 	'timedmedia-completed-on' => 'Nglengkapi transkodhé $1',
-	'timedmedia-error-on' => 'Kasalahan nèng transkodhé $1.',
+	'timedmedia-error-on' => 'Kasalahan nèng transkodhé $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Transkodhé lekas $1 kapungkur. $2',
 	'timedmedia-percent-done' => 'Kira-kira $1 rampung',
 	'timedmedia-in-job-queue' => 'Nambahaké nèng antrian Pakaryan $1 kapungkur',
@@ -2991,7 +2980,6 @@ $messages['jv'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|jam|jam}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|menit|menit}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|detik|detik}}', # Fuzzy
-	'timedmedia-show-error' => 'Tuduhaké kasalahan',
 	'timedmedia-reset' => 'Setèl ulang transkodhé',
 	'timedmedia-reset-error' => 'Kasalahan nalika nyetèl ulang tugas transkodhé.',
 	'timedmedia-source-file' => 'Sumber $1',
@@ -3054,7 +3042,7 @@ $messages['ka'] = array(
 	'timedmedia-direct-link' => 'მოდიფიცირებული ვარიანტის გადმოწერა',
 	'timedmedia-not-ready' => 'არაა მზად',
 	'timedmedia-completed-on' => '$1-ის დეკოდირება დასრულებულია',
-	'timedmedia-error-on' => 'შეცდომა დეკოდირებისას $1-ზე.',
+	'timedmedia-error-on' => 'შეცდომა დეკოდირებისას $1-ზე.', # Fuzzy
 	'timedmedia-started-transcode' => 'დეკოდირება გაშვებულია $1 წინ. $2',
 	'timedmedia-percent-done' => 'დაახლოებით $1% შესრულებულია',
 	'timedmedia-in-job-queue' => 'დამატებულია დავალებების რიგში $1 წინ',
@@ -3063,7 +3051,6 @@ $messages['ka'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 საათი|$1 საათი}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 წუთი|$1 წუთი}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 წამი|$1 წამი}}',
-	'timedmedia-show-error' => 'შეცდომის ჩვენება',
 	'timedmedia-reset' => 'დეკოდირების თავიდან დაყენება',
 	'timedmedia-reset-confirm' => 'დეკოდირების თავიდან დაყენება წაშლის არსებულ ფაილს (თუკი ის არსებობს) და დეკოდირება კვლავ დაემატება დავალებების რიგში. განმეორებით დეკოდირებას დაჭირდება გარკვეული დრო. <br /><br />
 დარწმუნებული ხართ, რომ გსურთ გააგრძელოთ?',
@@ -3445,7 +3432,6 @@ $messages['lv'] = array(
 	'timedmedia-status' => 'Statuss',
 	'timedmedia-status-unknown' => 'Nezināms statuss',
 	'timedmedia-actions' => 'Darbības',
-	'timedmedia-show-error' => 'Parādīt kļūdu',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 avots',
 	'timedmedia-subtitle-new-go' => 'Aiziet!',
@@ -3809,7 +3795,6 @@ $messages['myv'] = array(
 	'timedmedia-download' => 'Таргамо файла',
 	'timedmedia-play-media' => 'Седямо медия',
 	'timedmedia-desc-link' => 'Те файладонть',
-	'timedmedia-show-error' => 'Невтемс манявкс',
 	'timedmedia-source-file' => '$1 лисьмапря',
 );
 
@@ -4087,7 +4072,6 @@ $messages['nn'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 time|$1 timar}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minutt|$1 minutt}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekund}}',
-	'timedmedia-show-error' => 'Vis feil',
 	'timedmedia-source-file' => '$1-kjelde',
 	'timedmedia-source-file-desc' => 'Opphavleg $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg-video med låg bandbreidd (160P)',
@@ -4351,7 +4335,7 @@ A peul <a href="$1">dëscarié la senëtta</a> o <a href="//www.mediawiki.org/wi
 	'timedmedia-direct-link' => 'Dëscarié ël derivà',
 	'timedmedia-not-ready' => 'Pa pront',
 	'timedmedia-completed-on' => 'Trascodìfica completà $1',
-	'timedmedia-error-on' => 'Eror ant la trascodìfica ëd $1.',
+	'timedmedia-error-on' => 'Eror ant la trascodìfica ëd $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Trascodìfica ancaminà $1 fà. $2',
 	'timedmedia-percent-done' => 'Sirca $1% fàit',
 	'timedmedia-in-job-queue' => 'Giontà a la coa dij Travaj $1 fà',
@@ -4360,7 +4344,6 @@ A peul <a href="$1">dëscarié la senëtta</a> o <a href="//www.mediawiki.org/wi
 	'timedmedia-hours' => '{{PLURAL:$1|1 ora|$1 ore}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuta|$1 minute}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 second|$1 second}}',
-	'timedmedia-show-error' => "Smon-e l'eror",
 	'timedmedia-reset' => 'Amposté torna la trascodìfica',
 	'timedmedia-reset-confirm' => "Amposté torna sa trascodìfica a tramuderà tut archivi esistent (s'a-i na j'é) e a gionterà torna la trascodìfica a la coa dij travaj. A-i andrà dël temp a trascodifiché torna. <br /><br />
 É-lo sigur ëd vorèj continué?",
@@ -4852,7 +4835,7 @@ $messages['si'] = array(
 	'timedmedia-direct-link' => 'ව්‍යුත්පන්නය බාගන්න',
 	'timedmedia-not-ready' => 'සුදානම් නැත',
 	'timedmedia-completed-on' => '$1 transcode සම්පූර්ණ කරන ලදී',
-	'timedmedia-error-on' => '$1 හී transcode දෝෂයක්.',
+	'timedmedia-error-on' => '$1 හී transcode දෝෂයක්.', # Fuzzy
 	'timedmedia-started-transcode' => '$1 පෙර Transcode ආරම්භ කරන ලදී. $2',
 	'timedmedia-percent-done' => '$1% පමණ ඉවරයි',
 	'timedmedia-in-job-queue' => '$1 පෙර කෘත්‍ය පෙලට එක් කරන ලදී',
@@ -4861,7 +4844,6 @@ $messages['si'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|පැය|$1 පැය}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|මිනිත්තුව|$1 මිනිත්තු}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|තත්පරය|$1 තත්පර}}', # Fuzzy
-	'timedmedia-show-error' => 'දෝෂය පෙන්වන්න',
 	'timedmedia-reset' => 'transcode යළි සකසන්න',
 	'timedmedia-reset-error' => 'transcode කෘත්‍ය යළි සැකසීමේ දෝෂය.',
 	'timedmedia-mp4' => 'MP4',
@@ -5046,7 +5028,6 @@ $messages['sr-ec'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|сат|$1 сата|$1 сати}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|минут|$1 минута|$1 минута}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|секунд|$1 секунде|$1 секунди}}', # Fuzzy
-	'timedmedia-show-error' => 'Прикажи грешку',
 	'timedmedia-reset' => 'Поништи прекодирање',
 	'timedmedia-reset-confirm' => 'Поништавање овог прекодирања ће уклонити постојећу датотеку (ако постоји) и вратити прекодирање на списак задатака. Ова радња може да потраје. <br /><br />
 Желите ли да наставите?',
@@ -5096,7 +5077,6 @@ $messages['sr-el'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|sat|$1 sata|$1 sati}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|minut|$1 minuta|$1 minuta}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|sekund|$1 sekunde|$1 sekundi}}', # Fuzzy
-	'timedmedia-show-error' => 'Prikaži grešku',
 	'timedmedia-reset' => 'Poništi prekodiranje',
 	'timedmedia-reset-confirm' => 'Poništavanje ovog prekodiranja će ukloniti postojeću datoteku (ako postoji) i vratiti prekodiranje na spisak zadataka. Ova radnja može da potraje. <br /><br />
 Želite li da nastavite?',
@@ -5208,6 +5188,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 Källa',
 	'timedmedia-source-file-desc' => 'Ursprunglig $1-fil, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Ursprunglig $1-fil ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Låg bandbredd Ogg-video (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Webbströmningsbar Ogg-video (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Webbströmningsbar Ogg-video (480P)',
@@ -5242,7 +5223,6 @@ $messages['sw'] = array(
 	'timedmedia-status' => 'Hali',
 	'timedmedia-actions' => 'Vitendo',
 	'timedmedia-not-ready' => 'Haiko tayari',
-	'timedmedia-show-error' => 'Onyesha hitilafu',
 	'timedmedia-subtitle-new-go' => 'Nenda',
 	'timedmedia-file' => 'Faili',
 );
@@ -5266,7 +5246,6 @@ $messages['ta'] = array(
 	'timedmedia-actions' => 'செயல்கள்',
 	'timedmedia-not-ready' => 'தயாராக இல்லை',
 	'timedmedia-percent-done' => 'ஏறத்தாழ $1% முடிந்தது',
-	'timedmedia-show-error' => 'பிழை காட்டு',
 	'timedmedia-mp4' => 'எம்பி4',
 	'timedmedia-source-file' => '$1 மூலம்',
 	'timedmedia-source-file-desc' => 'மூல $1, $2 × $3 ($4)', # Fuzzy
@@ -5399,7 +5378,7 @@ Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="//www.media
 	'timedmedia-direct-link' => 'Ikargang paibaba ang hinango',
 	'timedmedia-not-ready' => 'Hindi nakahanda',
 	'timedmedia-completed-on' => 'Nabuo ang transkodigo noong $1',
-	'timedmedia-error-on' => 'Kamalian sa transkodigo noong $1.',
+	'timedmedia-error-on' => 'Kamalian sa transkodigo noong $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Nagsimula ang transkodigo noong $1 na ang nakalilipas. $2',
 	'timedmedia-percent-done' => 'Halos $1% na ang natatapos',
 	'timedmedia-in-job-queue' => 'Idinagdag sa pila ng Gawain noong $1 na ang nakalilipas',
@@ -5408,7 +5387,6 @@ Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="//www.media
 	'timedmedia-hours' => '{{PLURAL:$1|horas|$1 mga oras}}', # Fuzzy
 	'timedmedia-minutes' => '{{PLURAL:$1|minuto|$1 mga minuto}}', # Fuzzy
 	'timedmedia-seconds' => '{{PLURAL:$1|segundo|$1 mga segundo}}', # Fuzzy
-	'timedmedia-show-error' => 'Ipakita ang kamalian',
 	'timedmedia-reset' => 'Itakdang muli ang transkodigo',
 	'timedmedia-reset-confirm' => 'Ang muling pagtatakda ng transkodigong ito ay magtatanggal ng anumang umiiral na talaksan (kung naroroon), at muling nitong idaragdag ang transkodigo sa pila ng trabaho. Gugugol ito ng ilang panahon upang muling maitranskodigo. <br /><br />
 Nakatitiyak ka ba na nais mong magpatuloy?',
@@ -5631,7 +5609,6 @@ $messages['ur'] = array(
 	'timedmedia-status' => 'حیثیت',
 	'timedmedia-status-unknown' => 'نامعلوم مقام',
 	'timedmedia-actions' => 'اعمال',
-	'timedmedia-show-error' => 'شو کی غلطی',
 	'timedmedia-file' => 'فائل',
 );
 
@@ -5671,7 +5648,7 @@ Te pol <a href="$1">descargar el file multimediale</a> o <a href="//www.mediawik
 	'timedmedia-direct-link' => 'Descarga derivà',
 	'timedmedia-not-ready' => 'Nó pronto',
 	'timedmedia-completed-on' => 'Transodifega conpletà $1',
-	'timedmedia-error-on' => 'Eror inte ła transcodifega so $1.',
+	'timedmedia-error-on' => 'Eror inte ła transcodifega so $1.', # Fuzzy
 	'timedmedia-started-transcode' => 'Transcodifega tacà $1 fa. $2',
 	'timedmedia-percent-done' => '$1% sirca conpletà',
 	'timedmedia-in-job-queue' => 'Xontà a ła coa de laoro  $1  fa',
@@ -5680,7 +5657,6 @@ Te pol <a href="$1">descargar el file multimediale</a> o <a href="//www.mediawik
 	'timedmedia-hours' => '{{PLURAL:$1|1 ora|$1 ore}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minuto|$1 minuti}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 secondo|$1 secondi}}',
-	'timedmedia-show-error' => 'Varda eror',
 	'timedmedia-reset' => 'Rexeta transcodifega',
 	'timedmedia-reset-confirm' => "Resetando sta transcodifica tuti i file esistenti (se presenti) i sarà scancelà e la transcodifica la sarà de novo zontà a la coa de laoro. Ghe vorà un po' de tenpo par rifar la transcodifica. <br /><br />
 Vuto 'ndar vanti?",

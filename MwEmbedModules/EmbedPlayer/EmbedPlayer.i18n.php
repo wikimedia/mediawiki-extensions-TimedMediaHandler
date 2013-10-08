@@ -2427,7 +2427,7 @@ $messages['ku-latn'] = array(
 	'mwe-embedplayer-credit-author' => 'Xwedî: $1',
 );
 
-/** Kirghiz (Кыргызча)
+/** Kyrgyz (Кыргызча)
  * @author Growingup
  */
 $messages['ky'] = array(
