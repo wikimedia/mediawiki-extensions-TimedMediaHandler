@@ -60,7 +60,7 @@ class TimedMediaHandlerHooks {
 			'mw.PopUpMediaTransform' => array_merge( $baseExtensionResource, array(
 				'scripts' => 'resources/mw.PopUpThumbVideo.js',
 				'styles' => 'resources/PopUpThumbVideo.css',
-				'dependencies' => array( 'jquery.ui.dialog' ),
+				'dependencies' => array( 'mw.MwEmbedSupport' ),
 			) ),
 			'mw.TMHGalleryHook.js' => array_merge( $baseExtensionResource, array(
 				'scripts' => 'resources/mw.TMHGalleryHook.js',
