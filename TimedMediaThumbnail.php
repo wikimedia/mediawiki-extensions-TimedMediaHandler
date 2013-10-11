@@ -97,14 +97,26 @@ class TimedMediaThumbnail {
 		$offset = intval( self::getThumbTime( $options ) );
 		/*
 		This is a workaround until ffmpegs ogg demuxer properly seeks to keyframes.
-		Seek 3 seconds before offset and seek in decoded stream after that.
+		Seek N seconds before offset and seek in decoded stream after that.
 		 -ss before input seeks without decode
 		 -ss after input seeks in decoded stream
-		*/
-		if($offset > 3) {
-			$cmd .= ' -ss ' . floatval($offset - 3);
-			$offset = 3;
+
+		 N depends on framerate of input, keyframe interval defaults
+		 to 64 for most encoders, seeking a bit before that
+		 */
+
+		$framerate = $options['file']->getHandler()->getFramerate( $options['file'] );
+		if ( $framerate > 0 ) {
+			$seekoffset = 1 + intval( 64 / $framerate );
+		} else {
+			$seekoffset = 3;
 		}
+
+		if($offset > $seekoffset) {
+			$cmd .= ' -ss ' . floatval($offset - $seekoffset);
+			$offset = $seekoffset;
+		}
+
 		//try to get temorary local url to file
 		$backend = $options['file']->getRepo()->getBackend();
 		// getFileHttpUrl was only added in mw 1.21, dont fail if it does not exist
