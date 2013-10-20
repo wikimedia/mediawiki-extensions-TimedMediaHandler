@@ -4402,7 +4402,7 @@ $messages['ps'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 ساعت|$1 ساعتونه}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 دقيقه|دقيقې}}',
 	'timedmedia-subtitle-new-go' => 'ورځه',
-	'timedmedia-videos' => '{{PLURAL:$1|$1 ويډيو|$1 ويډيوګانې}}',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 ويډيو|$1 ويډيوگانې}}',
 	'timedmedia-file' => 'دوتنه',
 );
 
