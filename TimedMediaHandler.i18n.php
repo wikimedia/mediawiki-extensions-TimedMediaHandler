@@ -1649,6 +1649,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Alireza
  * @author Calak
+ * @author Ebraminio
  * @author Huji
  * @author Mahdiz
  * @author Mjbmr
@@ -1665,7 +1666,7 @@ $messages['fa'] = array(
 	'timedmedia-ogg-long-video' => 'پرونده تصویری Ogg $1، مدت $2 ، $4×$5 پیکسل، $3',
 	'timedmedia-ogg-long-multiplexed' => 'پرونده صوتی/تصویری پیچیده Ogg، $1، مدت $2، $4×$5 پیکسل، $3 در مجموع',
 	'timedmedia-ogg-long-general' => 'پرونده Ogg، مدت $2، $3',
-	'timedmedia-ogg-long-error' => 'پرونده Ogg غیرمجاز: $1',
+	'timedmedia-ogg-long-error' => 'پروندهٔ Ogg نامجاز: $1',
 	'timedmedia-webm-short-video' => 'رسانهٔ وب  $1 پروندهٔ ویدئویی، $2',
 	'timedmedia-webm-long-video' => 'رسانهٔ وب پروندهٔ صوتی/تصویری، $1، مدت $2، $4 × $5 پیکسل، $3 کلی',
 	'timedmedia-flac-short-audio' => 'پروندهٔ صوتی اف‌ال‌ای‌سی، $1',
