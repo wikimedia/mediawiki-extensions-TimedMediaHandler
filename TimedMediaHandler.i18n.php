@@ -5147,6 +5147,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author Jopparn
  * @author Lejonel
+ * @author Lokal Profil
  * @author Rotsee
  * @author Skalman
  * @author WikiPhoenix
@@ -5163,7 +5164,11 @@ $messages['sv'] = array(
 	'timedmedia-ogg-long-error' => 'Felaktig Ogg-fil: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 videofil, $2',
 	'timedmedia-webm-long-video' => 'WebM-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
+	'timedmedia-flac-short-audio' => 'FLAC-ljudfil, $1',
+	'timedmedia-flac-long-audio' => 'FLAC-ljudfil, längd $1, $2 totalt',
 	'timedmedia-wav-short-audio' => 'WAV-ljudfil, $1',
+	'timedmedia-wav-long-audio' => 'WAV-ljudfil, längd $1, $2 total',
+	'timedmedia-wav-pcm-required' => 'Du kan enbart ladda upp PCM (Pulskodsmodulerad) WAV',
 	'timedmedia-mp4-short-video' => 'MP4 $1 videofil, $2',
 	'timedmedia-mp4-long-video' => 'MP4-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt',
 	'timedmedia-no-player-js' => 'Tyvärr, din webbläsare har antingen JavaScript inaktiverat eller inte någon spelare som stöds.<br />
@@ -5175,10 +5180,17 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-desc-link' => 'Om filen',
 	'timedmedia-oggThumb-version' => 'OggHandler kräver oggThumb version $1 eller senare.',
 	'timedmedia-oggThumb-failed' => 'oggThumb misslyckades med att skapa miniatyrbilden.',
+	'timedmedia-status-header' => 'Transkodningsstatus',
+	'timedmedia-update-status' => 'Uppdatera transkodningsstatus',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Okänd status',
+	'timedmedia-transcodeinfo' => 'Härledd beskrivning för transkodning',
 	'timedmedia-actions' => 'Åtgärder',
+	'timedmedia-direct-link' => 'Ladda ner derivat',
 	'timedmedia-not-ready' => 'Inte redo',
+	'timedmedia-completed-on' => 'Genomförde transkodningen $1',
+	'timedmedia-error-on' => 'Fel i transkodningen för $1',
+	'timedmedia-started-transcode' => 'Transkodningen startade $1 sedan. $2',
 	'timedmedia-percent-done' => 'Ungefär $1% klar',
 	'timedmedia-in-job-queue' => 'Lades till i jobbkön för $1sedan',
 	'timedmedia-unknown-target-size' => 'Okänd målstorlek, $1-kodad',
@@ -5186,6 +5198,10 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-hours' => '{{PLURAL:$1|1 timme|$1 timmar}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minuter}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 sekund|$1 sekunder}}',
+	'timedmedia-reset' => 'Nollställ transkodningen',
+	'timedmedia-reset-confirm' => 'Nollställning av denna transkodning tar bort alla befintliga filer (om närvarande), och lägger åter till transkodningen till jobbkön. Det kommer att ta tid att om-transkoda.<br /><br />
+Är du säker på att du vill fortsätta?',
+	'timedmedia-reset-error' => 'Fel i nollställningen av transkod-jobbet.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 Källa',
 	'timedmedia-source-file-desc' => 'Ursprunglig $1-fil, $2 × $3 ($4)',
@@ -5207,12 +5223,20 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-subtitle-language' => '$1 ($2) undertexter',
 	'timedmedia-subtitle-no-video' => 'Det finns ingen video som är associerade med den aktuella undertextssidan',
 	'timedmedia-subtitle-no-subtitles' => 'Det finns för närvarande ingen textning på $1 för denna video, du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida] för att lägga till dem',
+	'timedmedia-subtitle-remote' => 'Undertexter (timed text) för denna fil finns på $1',
 	'timedmedia-subtitle-remote-link' => 'Du kan [$1 visa beskrivningssidan] för denna fil på $2',
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 videoklipp|$1 videoklipp}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videor}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM-video|$1 WebM-videor}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transkodning|$1 transkodningar}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 aktiv transkodning|$1 aktiva transkodningar}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 köad transkodning|$1 köade transkodningar}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 misslyckad transkodning|$1 misslyckade transkodningar}}',
 	'timedmedia-file' => 'Fil',
+	'right-transcode-reset' => 'Återställ misslyckade eller transkodade videor så att de åter infogas i jobbkön.',
+	'right-transcode-status' => 'Visa [[Special:TimedMediaHandler|information om den aktuella transkodningsaktivitetet]]',
+	'action-transcode-status' => 'visa den aktuella transkodningsstatusen',
 );
 
 /** Swahili (Kiswahili)

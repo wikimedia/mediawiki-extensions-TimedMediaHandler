@@ -965,6 +965,13 @@ $messages['el'] = array(
 	'mwe-embedplayer-missing-source' => 'Δεν βρέθηκε πηγή βίντεο',
 );
 
+/** British English (British English)
+ * @author Shirayuki
+ */
+$messages['en-gb'] = array(
+	'mwe-embedplayer-do_not_warn_again' => 'In future, do not show this message',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
