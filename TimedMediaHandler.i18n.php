@@ -5184,7 +5184,7 @@ Du kan <a href="$1">ladda ner klippet</a> eller <a href="//www.mediawiki.org/wik
 	'timedmedia-update-status' => 'Uppdatera transkodningsstatus',
 	'timedmedia-status' => 'Status',
 	'timedmedia-status-unknown' => 'Okänd status',
-	'timedmedia-transcodeinfo' => 'Härledd beskrivning för transkodning',
+	'timedmedia-transcodeinfo' => 'Beskrivning av transkodningen',
 	'timedmedia-actions' => 'Åtgärder',
 	'timedmedia-direct-link' => 'Ladda ner derivat',
 	'timedmedia-not-ready' => 'Inte redo',
