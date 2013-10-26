@@ -1168,6 +1168,51 @@ $messages['cu'] = array(
 	'timedmedia-file' => 'дѣло',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'timedmedia-ogg-short-audio' => 'Ffeil sain Ogg $1, $2',
+	'timedmedia-ogg-short-video' => 'Ffeil fideo Ogg $1, $2',
+	'timedmedia-ogg-short-general' => 'Ffeil gyfrwng Ogg $1, $2',
+	'timedmedia-ogg-long-audio' => 'Ffeil sain Ogg $1, yn para $2, $3',
+	'timedmedia-ogg-long-video' => 'Ffeil fideo Ogg $1, yn para $2, $4 × $5 picsel, $3',
+	'timedmedia-ogg-long-error' => 'Ffeil Ogg annilys: $1',
+	'timedmedia-more' => 'Mwy…',
+	'timedmedia-dismiss' => 'Caeer',
+	'timedmedia-download' => 'Islwytho ffeil',
+	'timedmedia-play-media' => "Chwarae'r ffeil gyfrwng",
+	'timedmedia-desc-link' => "Ynglŷn â'r ffeil hon",
+	'timedmedia-status-header' => 'Statws trawsgodio',
+	'timedmedia-update-status' => "Diweddaru'r statws trawsgodio",
+	'timedmedia-status' => 'Statws',
+	'timedmedia-status-unknown' => 'Statws anhysbys',
+	'timedmedia-actions' => 'Gweithredoedd',
+	'timedmedia-not-ready' => 'Ddim yn barod',
+	'timedmedia-started-transcode' => 'Dechreuodd y trawsgodio $1 yn ôl. $2',
+	'timedmedia-percent-done' => 'Tua $1% wedi ei wneud',
+	'timedmedia-in-job-queue' => "Ychwanegwyd i'r ciw tasgiau $1 yn ôl",
+	'timedmedia-unknown-target-size' => "Maint anhysbys i'r gwrthrych, $1 wedi ei amgodio",
+	'timedmedia-days' => '{{PLURAL:$1|$1 diwrnod|diwrnod|deuddydd|tridiau|$1 diwrnod}}',
+	'timedmedia-hours' => '{{PLURAL:$1|$1 awr}}',
+	'timedmedia-minutes' => '{{PLURAL:$1|$1 munud|$1 munud|$1 funud|$1 munud}}',
+	'timedmedia-seconds' => '{{PLURAL:$1|$1 eiliad}}',
+	'timedmedia-reset' => 'Ailosod y trawsgodio',
+	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file-desc' => 'Y ffeil $1 gwreiddiol, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Y ffeil $1 gwreiddiol ($2)',
+	'timedmedia-derivative-desc-160p.ogv' => 'Fideo Ogg (160P) o led band isel',
+	'timedmedia-subtitle-new-desc' => "Dewiswch iaith a gwasgu'r botwm '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Gwneler',
+	'timedmedia-subtitle-language' => 'Isdeitlau $1 ($2)',
+	'timedmediahandler' => 'TimedMediaHandler',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 fideo}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 fideo Ogg}}',
+	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 fideo WebM}}',
+	'timedmedia-file' => 'Ffeil',
+	'action-transcode-status' => 'gweld statws presennol y trawsgodio',
+);
+
 /** Danish (dansk)
  * @author Byrial
  * @author Christian List
