@@ -50,26 +50,26 @@ class TimedMediaHandlerHooks {
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
 		$baseExtensionResource = array(
-			'localBasePath' => dirname( __FILE__ ),
+			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'TimedMediaHandler',
 		);
 
 		// Add the PopUpMediaTransform module ( specific to timedMedia handler ( no support in mwEmbed modules )
 		$wgResourceModules+= array(
-			'mw.PopUpMediaTransform' => array_merge( $baseExtensionResource, array(
+			'mw.PopUpMediaTransform' => $baseExtensionResource + array(
 				'scripts' => 'resources/mw.PopUpThumbVideo.js',
 				'styles' => 'resources/PopUpThumbVideo.css',
 				'dependencies' => array( 'mw.MwEmbedSupport', 'mediawiki.Title' ),
-			) ),
-			'mw.TMHGalleryHook.js' => array_merge( $baseExtensionResource, array(
+			),
+			'mw.TMHGalleryHook.js' => $baseExtensionResource + array(
 				'scripts' => 'resources/mw.TMHGalleryHook.js',
 				// position top needed as it needs to load before mediawiki.page.gallery
 				'position' => 'top',
-			) ),
-			'embedPlayerIframeStyle'=> array_merge( $baseExtensionResource, array(
+			),
+			'embedPlayerIframeStyle'=> $baseExtensionResource + array(
 				'styles' => 'resources/embedPlayerIframe.css',
-			) ),
-			'ext.tmh.transcodetable' => array_merge( $baseExtensionResource, array(
+			),
+			'ext.tmh.transcodetable' => $baseExtensionResource + array(
 				'scripts' => 'resources/ext.tmh.transcodetable.js',
 				'styles' => 'resources/transcodeTable.css',
 				'messages'=> array(
@@ -79,15 +79,15 @@ class TimedMediaHandlerHooks {
 					'timedmedia-reset',
 					'timedmedia-reset-confirm'
 				)
-			) ),
-			"mw.MediaWikiPlayerSupport" =>  array_merge( $baseExtensionResource, array(
+			),
+			"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + array(
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-				'dependencies'=> array( 'mw.Api' )
-			) ),
+				'dependencies'=> 'mw.Api',
+			),
 			// adds support MediaWikiPlayerSupport player bindings
-			"mw.MediaWikiPlayer.loader" =>  array_merge( $baseExtensionResource, array(
+			"mw.MediaWikiPlayer.loader" =>  $baseExtensionResource + array(
 				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js',
-			) ),
+			),
 		);
 		// Setup a hook for iframe embed handling:
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
@@ -318,7 +318,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function loadExtensionSchemaUpdates( $updater ){
-		$updater->addExtensionTable( 'transcode', dirname( __FILE__ ) . '/TimedMediaHandler.sql' );
+		$updater->addExtensionTable( 'transcode', __DIR__ . '/TimedMediaHandler.sql' );
 		return true;
 	}
 
@@ -328,7 +328,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function registerUnitTests( array &$files ) {
-		$testDir = dirname( __FILE__ ) . '/tests/phpunit/';
+		$testDir = __DIR__ . '/tests/phpunit/';
 		$testFiles = array(
 			'TestTimeParsing.php',
 			'TestApiUploadVideo.php',
@@ -348,7 +348,6 @@ class TimedMediaHandlerHooks {
 	 */
 	static function pageOutputHook(  &$out, &$sk ){
 		$out->addModules( 'mw.PopUpMediaTransform' );
-		$out->addModuleStyles( 'mw.PopUpMediaTransform' );
 		return true;
 	}
 
