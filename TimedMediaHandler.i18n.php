@@ -3725,6 +3725,7 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'timedmedia-desc' => 'ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट', # Fuzzy
@@ -3738,7 +3739,7 @@ $messages['mr'] = array(
 	'timedmedia-ogg-long-error' => 'चुकीची ऑग संचिका: $1',
 	'timedmedia-more' => 'आणखी...',
 	'timedmedia-dismiss' => 'बंद करा',
-	'timedmedia-download' => 'संचिका उतरवा',
+	'timedmedia-download' => 'संचिका अधिभारण करा',
 	'timedmedia-desc-link' => 'या संचिकेबद्दलची माहिती',
 );
 
