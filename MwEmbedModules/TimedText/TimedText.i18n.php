@@ -592,6 +592,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Pouyana
  * @author پاناروما
  */
@@ -606,13 +607,13 @@ $messages['fa'] = array(
 	'mwe-timedtext-back-btn' => 'بازگشت',
 	'mwe-timedtext-choose-text' => 'انتخاب متن',
 	'mwe-timedtext-upload-timed-text' => 'اضافه کردن زیرنویس',
-	'mwe-timedtext-loading-text-edit' => 'بارگذاری ویرایشگر متنی زمانی',
+	'mwe-timedtext-loading-text-edit' => 'بارگیری ویرایشگر متنی زمانی',
 	'mwe-timedtext-search' => 'جستجوی کلیپ',
 	'mwe-timedtext-layout' => 'چیدمان',
 	'mwe-timedtext-layout-ontop' => 'بالای ویدئو',
 	'mwe-timedtext-layout-below' => 'پایین ویدیو',
 	'mwe-timedtext-layout-off' => 'پنهان‌کردن زیرنویس',
-	'mwe-timedtext-loading-text' => 'در حال بارگیری متن...',
+	'mwe-timedtext-loading-text' => 'در حال بارگیری متن ...',
 	'mwe-timedtext-textcat-cc' => 'عناوین:',
 	'mwe-timedtext-textcat-sub' => 'زیرنویس',
 	'mwe-timedtext-textcat-tad' => 'توضیح صوتی',
