@@ -477,9 +477,8 @@ Parameters:
 
 Parameters:
 * $1 - number of videos',
-	'timedmedia-derivative-state-transcodes' => 'numer of transcodes
-Parameters are:
-* $1 number of transcodes',
+	'timedmedia-derivative-state-transcodes' => 'Number of transcodes. Parameters:
+* $1 - number of transcodes',
 	'timedmedia-derivative-state-active' => 'currently active transcoes
 Parameters are:
 * $1 number of transcodes',
