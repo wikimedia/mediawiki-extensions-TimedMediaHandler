@@ -34,14 +34,14 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 		$out->addHTML(
 			"<h2>"
-			. $this->msg( 'timedmedia-videos',  $stats['videos']['total'] )->escaped()
+			. $this->msg( 'timedmedia-videos' )->numParams( $stats['videos']['total'] )->escaped()
 			. "</h2>"
 		);
 		// Give grep a chance to find the usages: timedmedia-ogg-videos, timedmedia-webm-videos
 		foreach ( $this->formats as $format => $condition ) {
 			if ( $stats[ 'videos' ][ $format ] ) {
 				$out->addHTML(
-					$this->msg ( "timedmedia-$format-videos", $stats[ 'videos' ][ $format ] )->escaped()
+					$this->msg( "timedmedia-$format-videos" )->numParams( $stats[ 'videos' ][ $format ] )->escaped()
 					. "<br>"
 				);
 			}
