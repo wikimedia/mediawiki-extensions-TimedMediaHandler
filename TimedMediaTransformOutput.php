@@ -132,7 +132,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 
 		// Check if the video is too small to play inline ( instead do a pop-up dialog )
-		if( $this->getPlayerWidth() <= $wgMinimumVideoPlayerSize && $this->isVideo ){
+		// If we're filling the window (e.g. during an iframe embed) one probably doesn't want the pop up.
+		// Also the pop up is broken in that case.
+		if( $this->getPlayerWidth() <= $wgMinimumVideoPlayerSize && $this->isVideo && !$this->fillwindow ){
 			$res = $this->getImagePopUp();
 		} else {
 			$res = $this->getHtmlMediaTagOutput();
