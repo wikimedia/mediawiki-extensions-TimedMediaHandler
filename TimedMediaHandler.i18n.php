@@ -1082,6 +1082,7 @@ $messages['ce'] = array(
 	'timedmedia-download' => 'Файл чуяккхар',
 	'timedmedia-status' => 'Хьал',
 	'timedmedia-actions' => 'Дийраш',
+	'timedmedia-hours' => '{{PLURAL:$1|1 сахьат}}',
 	'timedmedia-source-file' => 'Хьост $1',
 );
 
@@ -3626,7 +3627,7 @@ $messages['ml'] = array(
 	'timedmedia-ogg-short-video' => 'ഓഗ് $1 വീഡിയോ പ്രമാണം, $2',
 	'timedmedia-ogg-short-general' => 'ഓഗ് $1 മീഡിയ പ്രമാണം, $2',
 	'timedmedia-ogg-long-audio' => 'ഓഗ് $1 ശബ്ദ പ്രമാണം, ദൈർഘ്യം $2, $3',
-	'timedmedia-ogg-long-video' => 'ഓഗ് $1 വീഡിയോ പ്രമാണം, ദൈർഘ്യം $2, $4×$5 pixels, $3',
+	'timedmedia-ogg-long-video' => 'ഓഗ് $1 വീഡിയോ പ്രമാണം, ദൈർഘ്യം $2, $4×$5 ബിന്ദു, $3',
 	'timedmedia-ogg-long-multiplexed' => 'ഓഗ് മൾട്ടിപ്ലക്സ്‌‌ഡ് ശബ്ദ/ചലച്ചിത്ര പ്രമാണം, $1, ദൈർഘ്യം $2, $4×$5 ബിന്ദു, ആകെക്കൂടി $3',
 	'timedmedia-ogg-long-general' => 'ഓഗ് മീഡിയ പ്രമാണം, ദൈർഘ്യം $2, $3',
 	'timedmedia-ogg-long-error' => 'അസാധുവായ ഓഗ് പ്രമാണം: $1',
@@ -3720,6 +3721,9 @@ $messages['ml'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|ഒരെണ്ണം ട്രാൻസ്കോഡ് ചെയ്യാനായി ഉണ്ട്|$1 എണ്ണം ട്രാൻസ്കോഡ് ചെയ്യാനായി ഉണ്ട്}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|ഒരെണ്ണം ട്രാൻസ്കോഡ് ചെയ്യുന്നത് പരാജയപ്പെട്ടു|$1 എണ്ണം ട്രാൻസ്കോഡ് ചെയ്യുന്നത് പരാജയപ്പെട്ടു}}',
 	'timedmedia-file' => 'പ്രമാണം',
+	'right-transcode-reset' => 'പുനഃക്രമീകരണം പരാജയപ്പെട്ടു അല്ലെങ്കിൽ ട്രാൻസ്കോഡ് ചെയ്ത ചലച്ചിത്രങ്ങൾ ജോബ് ക്യൂവിലേയ്ക്ക് വീണ്ടും ചേർത്തു',
+	'right-transcode-status' => '[[Special:TimedMediaHandler|ഇപ്പോഴത്തെ ട്രാൻസ്കോഡ് പ്രവർത്തനത്തിന്റെ വിവരങ്ങൾ]] കാണുക',
+	'action-transcode-status' => 'ഇപ്പോഴത്തെ ട്രാൻസ്കോഡിങ് സ്ഥിതി കാണുക',
 );
 
 /** Marathi (मराठी)

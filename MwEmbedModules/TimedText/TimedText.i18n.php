@@ -1302,10 +1302,22 @@ $messages['ml'] = array(
 	'mwe-timedtext-textcat-sub' => 'സംഭാഷണരേഖകൾ',
 	'mwe-timedtext-textcat-tad' => 'ശബ്ദത്തിന്റെ വിവരണം',
 	'mwe-timedtext-textcat-ktv' => 'കരോക്കേ',
+	'mwe-timedtext-textcat-tik' => 'മിന്നിവരുന്ന എഴുത്ത്',
 	'mwe-timedtext-textcat-ar' => 'സജീവമായ പ്രദേശങ്ങൾ',
+	'mwe-timedtext-textcat-nb' => 'ടിപ്പണി',
+	'mwe-timedtext-textcat-meta' => 'സമയമനുസരിച്ചുള്ള മെറ്റാഡേറ്റ',
+	'mwe-timedtext-textcat-trx' => 'പകർത്തിയെഴുത്ത്',
 	'mwe-timedtext-textcat-lrc' => 'വരികൾ',
+	'mwe-timedtext-textcat-lin' => 'ഭാഷാസംബന്ധിയായ അടയാളഭാഷ',
+	'mwe-timedtext-textcat-cue' => 'സൂചക ബിന്ദുക്കൾ',
 	'mwe-timedtext-language-subtitles-for-clip' => 'ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖ: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2',
+	'mwe-timedtext-request-subs' => 'എഴുത്ത് ആവശ്യപ്പെടുക',
+	'mwe-timedtext-no-subs' => 'എഴുത്തുകളുടെ വരി ലഭ്യമല്ല',
+	'mwe-timedtext-request-subs-desc' => 'ഈ ചലച്ചിത്രപ്രമാണം എഴുതിരേഖപ്പെടുത്തുന്നതിനുള്ള അഭ്യർത്ഥന ചേർക്കുക',
+	'mwe-timedtext-request-subs-done' => 'എഴുതിരേഖപ്പെടുത്തുന്നതിനുള്ള അഭ്യർത്ഥന ചേർത്തിരിക്കുന്നു.  [$1 എല്ലാ എഴുതിരേഖപ്പെടുത്തൽ അഭ്യർത്ഥനകളും കാണുക]',
+	'mwe-timedtext-request-subs-fail' => 'എഴുതിരേഖപ്പെടുത്താനുള്ള അഭ്യർത്ഥന പരാജയപ്പെട്ടു. താങ്കൾ ലോഗിൻ ചെയ്തിട്ടുണ്ടോ?',
+	'mwe-timedtext-request-already-done' => 'ഈ ചലച്ചിത്രം എഴുതിരേഖപ്പെടുത്താനുള്ള അഭ്യർത്ഥന മുമ്പേ ഉണ്ട്. [$1 എല്ലാ എഴുതിരേഖപ്പെടുത്തൽ അഭ്യർത്ഥനകളും കാണുക]',
 );
 
 /** Malay (Bahasa Melayu)
