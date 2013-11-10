@@ -4146,7 +4146,7 @@ $messages['tl'] = array(
 	'mwe-embedplayer-video-3gp' => 'Bidyong 3GP',
 	'mwe-embedplayer-video-mpeg' => 'Bidyong MPEG',
 	'mwe-embedplayer-video-msvideo' => 'Bidyong AVI',
-	'mwe-embedplayer-missing-source' => 'Walang natagpuang pinagmulang bidyo.',
+	'mwe-embedplayer-missing-source' => 'Walang natagpuang batayang bidyo',
 );
 
 /** Turkish (Türkçe)
