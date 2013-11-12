@@ -2019,6 +2019,13 @@ $messages['frp'] = array(
 	'timedmedia-file' => 'Fichiér',
 );
 
+/** Northern Frisian (Nordfriisk)
+ * @author Murma174
+ */
+$messages['frr'] = array(
+	'timedmediahandler' => 'Timed Media Handler',
+);
+
 /** Friulian (furlan)
  * @author Klenje
  */
