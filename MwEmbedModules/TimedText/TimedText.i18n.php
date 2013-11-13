@@ -1056,6 +1056,7 @@ $messages['it'] = array(
 	'mwe-timedtext-language-subtitles-for-clip' => 'sottotitoli in $1 per il clip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Sottotitoli in $1 non trovati per il clip: $2',
 	'mwe-timedtext-request-subs' => 'Richiedi trascrizione',
+	'mwe-timedtext-no-subs' => 'Nessuna traccia di testo disponibile',
 	'mwe-timedtext-request-subs-desc' => 'Aggiungi una richiesta per la trascrizione di questo video',
 	'mwe-timedtext-request-subs-done' => 'Richiesta di trascrizione aggiunta. [$1 Vedi tutte le richieste di trascrizione]',
 	'mwe-timedtext-request-subs-fail' => "Impossibile aggiungere la richiesta di trascrizione. Hai effettuato l'accesso?",
