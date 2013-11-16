@@ -41,8 +41,8 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		return $prop;
 	}
 
-	public static function getPropertyDescriptions( $filter = array() ) {
-		$s = parent::getPropertyDescriptions();
+	public static function getPropertyDescriptions( $filter = array(), $modulePrefix = '' ) {
+		$s = parent::getPropertyDescriptions( $filter, $modulePrefix );
 		$s[] = ' derivatives 	-Adds an array of video source derivatives';
 		return $s;
 	}
