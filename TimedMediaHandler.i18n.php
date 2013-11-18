@@ -406,7 +406,9 @@ See also:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 {{Identical|Source}}',
-	'timedmedia-source-file-desc' => 'Source file description. This is a file title in the primary source attributes of a timed media file. I can look like "\'\'Original Ogg file, 640 × 480 (10 Mbps)\'\'". Parameters:
+	'timedmedia-source-file-desc' => 'Source file description. This is a file title in the primary source attributes of a timed media file. I can look like "\'\'Original Ogg file, 640 × 480 (10 Mbps)\'\'".
+
+Parameters:
 * $1 - file type; any one of the following messages:
 ** {{msg-mw|Timedmedia-ogg}} - Optional message
 ** {{msg-mw|Timedmedia-webm}} - Optional message
