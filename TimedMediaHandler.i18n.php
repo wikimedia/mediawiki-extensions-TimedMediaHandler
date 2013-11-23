@@ -1796,6 +1796,7 @@ $messages['fa'] = array(
  * @author Beluga
  * @author Crt
  * @author Nike
+ * @author Pxos
  * @author Str4nd
  * @author VezonThunder
  */
@@ -1837,7 +1838,7 @@ Voit <a href="$1">ladata leikkeen</a> tai <a href="//www.mediawiki.org/wiki/Exte
 	'timedmedia-source-file-desc' => 'Alkuperäinen $1-tiedosto, $2 × $3 ($4)',
 	'timedmedia-source-audio-file-desc' => 'Alkuperäinen $1-tiedosto ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Pienen kaistanleveyden Ogg-video (160p)',
-	'timedmedia-derivative-desc-360p.ogv' => 'Verkossa suoratoistettava Ogg-video (360p)',
+	'timedmedia-derivative-desc-360p.ogv' => 'verkossa suoratoistettavaa Ogg-videota (360p)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Verkossa suoratoistettava Ogg-video (480p)',
 	'timedmedia-derivative-desc-720p.ogv' => 'Korkealaatuinen ladattava Ogg-video (720p)',
 	'timedmedia-derivative-desc-160p.webm' => 'Verkossa suoratoistettava WebM-video (160p)',
