@@ -267,26 +267,12 @@ class TextHandler {
 	 */
 	function getRepoPageURL( $pageTitle ){
 		$repo = $this->file->repo;
-		$encName = wfUrlencode( $pageTitle );
-		if ( !is_null( $repo->scriptDirUrl ) ) {
-			# "http://example.com/w"
-			#
-			# We use "Image:" as the canonical namespace for
-			# compatibility across all MediaWiki versions,
-			# and just sort of hope index.php is right. ;)
-			return $repo->makeUrl( "title=$encName" );
+
+		$url = $repo->getDescriptionUrl( $pageTitle );
+		if ( $url === false ) {
+			return false;
 		}
-		if ( !is_null( $repo->descBaseUrl ) ) {
-			# "http://example.com/wiki/Image:"
-			return str_replace( array('Image:', 'File:' ), '', $repo->descBaseUrl ) . $encName;
-		}
-		if ( !is_null( $repo->articleUrl ) ) {
-			# "http://example.com/wiki/$1"
-			#
-			# We use "Image:" as the canonical namespace for
-			# compatibility across all MediaWiki versions.
-			return str_replace( '$1', "$encName", $this->articleUrl );
-		}
-		return false;
+		$url = str_replace( array('Image:', 'File:' ), '', $url );
+		return $url;
 	}
 }
