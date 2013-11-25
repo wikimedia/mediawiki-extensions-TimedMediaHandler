@@ -55,7 +55,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Update the $posterUrl to $sizeOverride ( if not an old file )
 			if( !$this->file->isOld() && $sizeOverride &&
 				$sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ){
-				$apiUrl = $this->getPosterFromApi( $sizeOverride[0] );
+				$apiUrl = $this->getPoster( $sizeOverride[0] );
 				if( $apiUrl ){
 					$url = $apiUrl;
 				}
@@ -265,32 +265,23 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 
 	/**
-	 * Get a poster image from the api
-	 * @param $width Number, the width of the requested image
-	 * @return bool
+	 * Get poster.
+	 * @param $width Integer width of poster. Should not equal $this->width.
+	 * @throws MWException If $width is same as $this->width.
+	 * @return String|bool url for poster or false
 	 */
-	function getPosterFromApi ( $width ){
-		// The media system is ~kind of~ strange. ( how do we get an alternate sized thumb url? )
-		// without going into some crazy object cloning or handler lookups path of least resistance,
-		// seems to just do an inline FauxRequest:
-		$params = new FauxRequest( array(
-			'action' => 'query',
-			'prop' => 'imageinfo',
-			'iiprop' => 'url',
-			'iiurlwidth' => intval( $width ),
-			'titles' => $this->file->getTitle()->getPrefixedDBkey()
-		) );
-		$api = new ApiMain( $params );
-		$api->execute();
-		$data = $api->getResultData();
-		if( isset( $data['query'] ) && isset( $data['query']['pages'] ) ){
-			$page = current( $data['query']['pages'] );
-			if( isset( $page['imageinfo'] ) && isset( $page['imageinfo'][0]['thumburl'] ) ){
-				return $page['imageinfo'][0]['thumburl'];
-			}
+	function getPoster ( $width ) {
+		if ( intval( $width ) === intval( $this->width ) ) {
+			// Prevent potential loop
+			throw new MWException( "Asked for poster in current size. Potential loop." );
 		}
-		return false;
-		// no posterUrl found ( but its oky we still have the poster form $this->getUrl() )
+		$params = array( "width" => intval( $width ) );
+		$mto = $this->file->transform( $params );
+		if ( $mto ) {
+			return $mto->getUrl();
+		} else {
+			return false;
+		}
 	}
 
 	/**
