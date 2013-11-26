@@ -3317,6 +3317,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (português)
+ * @author Cainamarques
  * @author Hamilton Abreu
  * @author Luckas
  * @author Malafaya
@@ -3368,6 +3369,8 @@ $messages['pt'] = array(
 	'mwe-embedplayer-close_btn' => 'Fechar',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'Leitor VLC',
 	'mwe-embedplayer-ogg-player-oggNative' => 'Leitor Ogg HTML5',
+	'mwe-embedplayer-ogg-player-mp3Native' => 'Leitor MP3 HTML5',
+	'mwe-embedplayer-ogg-player-aacNative' => 'Leitor AAC HTML5',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Leitor H.264 HTML5',
 	'mwe-embedplayer-ogg-player-webmNative' => 'Leitor WebM HTML5',
 	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin Ogg genérico',
@@ -3386,6 +3389,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-playerSelect' => 'Leitores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leia isto</a> antes de incorporar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar numa página',
+	'mwe-embedplayer-embed_wiki' => 'Incorporar numa wiki',
 	'mwe-embedplayer-related_videos' => 'Vídeos relacionados',
 	'mwe-embedplayer-seeking' => 'a procurar',
 	'mwe-embedplayer-buffering' => 'a preencher a buffer',
