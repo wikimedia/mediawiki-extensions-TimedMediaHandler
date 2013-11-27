@@ -141,6 +141,10 @@ Are you sure you want to proceed?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 queued transcode|$1 queued transcodes}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 failed transcode|$1 failed transcodes}}',
 	'timedmedia-file' => 'File',
+	'timedmedia-audios' => '{{PLURAL:$1|$1 audio file|$1 audio files}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 Ogg audio file|$1 Ogg audio files}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1 FLAC audio file|$1 FLAC audio files}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1 WAV audio file|$1 WAV audio files}}',
 
 	'right-transcode-reset' => 'Reset failed or transcoded videos so they are inserted into the job queue again',
 	'right-transcode-status' => 'View [[Special:TimedMediaHandler|information about the current transcode activity]]',
@@ -499,6 +503,10 @@ Parameters:
 
 Parameters:
 * $1 - number of videos',
+	'timedmedia-audios' => 'Number of audio files on [[Special:TimedMediaHandler]]. $1 is number of audio files.',
+	'timedmedia-ogg-audios' => 'Number of ogg audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
+	'timedmedia-flac-audios' => 'Number of FLAC audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
+	'timedmedia-wav-audios' => 'Number of WAV audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
 	'timedmedia-derivative-state-transcodes' => 'Number of transcodes. Parameters:
 * $1 - number of transcodes',
 	'timedmedia-derivative-state-active' => 'currently active transcoes

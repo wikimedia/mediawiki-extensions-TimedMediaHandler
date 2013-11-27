@@ -19,6 +19,11 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
 		'webm' => 'img_major_mime="video" AND img_minor_mime = "webm"',
 	);
+	private $audioFormats = array(
+		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
+		'flac' => 'img_major_mime="audio" AND img_minor_mime="x-flac"',
+		'wav' => 'img_major_mime="audio" AND img_minor_mime="wav"',
+	);
 
 	public function __construct( $request = null, $par = null ) {
 		parent::__construct( 'TimedMediaHandler', 'transcode-status' );
@@ -32,18 +37,22 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 		$stats = $this->getStats();
 
-		$out->addHTML(
-			"<h2>"
-			. $this->msg( 'timedmedia-videos' )->numParams( $stats['videos']['total'] )->escaped()
-			. "</h2>"
-		);
-		// Give grep a chance to find the usages: timedmedia-ogg-videos, timedmedia-webm-videos
-		foreach ( $this->formats as $format => $condition ) {
-			if ( $stats[ 'videos' ][ $format ] ) {
-				$out->addHTML(
-					$this->msg( "timedmedia-$format-videos" )->numParams( $stats[ 'videos' ][ $format ] )->escaped()
-					. "<br>"
-				);
+		foreach( array( 'audios', 'videos' ) as $type ) {
+			// for grep timedmedia-audios, timedmedia-videos
+			$out->addHTML(
+				"<h2>"
+				. $this->msg( 'timedmedia-' . $type )->numParams( $stats[$type]['total'] )->escaped()
+				. "</h2>"
+			);
+			// Give grep a chance to find the usages: timedmedia-ogg-videos, timedmedia-webm-videos,
+			// timedmedia-ogg-audios, timedmedia-flac-audios, timedmedia-wav-audios
+			foreach ( $this->formats as $format => $condition ) {
+				if ( $stats[ $type ][ $format ] ) {
+					$out->addHTML(
+						$this->msg( "timedmedia-$format-$type" )->numParams( $stats[ $type ][ $format ] )->escaped()
+						. Html::element( 'br' )
+					);
+				}
 			}
 		}
 
@@ -137,7 +146,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
 		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 
-		$memcKey= wfMemcKey( 'TimedMediaHandler', 'stats' );
+		$memcKey= wfMemcKey( 'TimedMediaHandler', 'stats', '1' /* version */ );
 		$stats = $wgMemc->get( $memcKey );
 		if ( !$stats ) {
 			$dbr = wfGetDB( DB_SLAVE );
@@ -152,7 +161,16 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				);
 				$stats[ 'videos' ][ 'total' ] += $stats[ 'videos' ][ $format ];
 			}
-			$wgMemc->add( $memcKey, $stats, 3600 );
+			$stats[ 'audios' ] = array( 'total' => 0 );
+			foreach( $this->formats as $format => $condition ) {
+				$stats[ 'audios' ][ $format ] = (int)$dbr->selectField(
+					'image',
+					'COUNT(*)',
+					'img_media_type = "AUDIO" AND (' . $condition . ')',
+					__METHOD__
+				);
+				$stats[ 'audios' ][ 'total' ] += $stats[ 'audios' ][ $format ];
+			}
 		}
 		return $stats;
 	}
