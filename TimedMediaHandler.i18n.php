@@ -1084,7 +1084,7 @@ $messages['ce'] = array(
 	'timedmedia-download' => 'Файл чуяккхар',
 	'timedmedia-status' => 'Хьал',
 	'timedmedia-actions' => 'Дийраш',
-	'timedmedia-hours' => '{{PLURAL:$1|1 сахьат}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 сахьт}}',
 	'timedmedia-source-file' => 'Хьост $1',
 );
 
@@ -6103,6 +6103,7 @@ $messages['zh-hant'] = array(
 	'timedmedia-flac-long-audio' => 'FLAC音頻檔案，長$1，寬$2',
 	'timedmedia-wav-short-audio' => 'WAV音頻檔案，$1',
 	'timedmedia-wav-long-audio' => 'WAV音頻檔案，長$1，寬$2',
+	'timedmedia-wav-pcm-required' => '您僅可上載PCM（流派代碼調試）WAV。',
 	'timedmedia-mp4-short-video' => 'MP4 $1視訊檔案，$2',
 	'timedmedia-mp4-long-video' => 'MP4音訊/視訊檔案，$1，長度$2，$4×$5像素，共$3',
 	'timedmedia-no-player-js' => '抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />
