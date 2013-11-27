@@ -80,7 +80,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 			// timedmedia-derivative-state-queued, timedmedia-derivative-state-failed
 			$out->addHTML(
 				"<h2>"
-				. $this->msg( 'timedmedia-derivative-state-' . $state, $states[ $state ]['total'] )->escaped()
+				. $this->msg( 'timedmedia-derivative-state-' . $state )->numParams( $states[ $state ]['total'] )->escaped()
 				. "</h2>"
 			);
 			foreach( $allTranscodes as $key ) {
@@ -88,7 +88,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 					&& isset( $states[ $state ][ $key ] )
 					&& $states[ $state ][ $key ] ) {
 					$out->addHTML(
-						$states[ $state ][ $key ]
+						htmlspecialchars( $this->getLanguage()->formatNum( $states[ $state ][ $key ] ) )
 						. ' '
 						. $this->msg( 'timedmedia-derivative-desc-' . $key )->escaped()
 						. "<br>" );
