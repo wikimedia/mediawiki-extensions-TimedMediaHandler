@@ -3473,7 +3473,10 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador que suporta HTML5].',
-	'mwe-embedplayer-do_not_warn_again' => 'Ignorar por agora.', # Fuzzy
+	'mwe-embedplayer-download-warn' => 'Não foi detetado nenhum leitor compatível integrado ao browser: para reproduzir pelo browser, faça o download da [$1 última versão do Firefox]',
+	'mwe-embedplayer-fullscreen-tip' => 'Aperte <b>F11</b> para ativar ou desativar o modo de tela inteira no <i>browser</i>',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Aperte <b>shift ⌘ F</b> para ativar ou desativar o modo de tela inteira',
+	'mwe-embedplayer-do_not_warn_again' => 'No futuro, não mostrar esta mensagem',
 	'mwe-embedplayer-playerSelect' => 'Tocadores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leia isto</a> antes de incorporar.',
 	'mwe-embedplayer-embed_site_or_blog' => 'Incorporar em uma página',
