@@ -1041,6 +1041,7 @@ Možete <a href="$1">učitati klip</a> ili <a href="//www.mediawiki.org/wiki/Ext
 
 /** Catalan (català)
  * @author Aleator
+ * @author Alvaro Vidal-Abarca
  * @author Paucabot
  * @author Pitort
  * @author SMP
@@ -1066,7 +1067,7 @@ $messages['ca'] = array(
 	'timedmedia-minutes' => '{{PLURAL:$1|1 minut|$1 minuts}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 segon|$1 segons}}',
 	'timedmedia-mp4' => 'MP4',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Arxiu original $1, $2 × $3 ($4)',
 	'timedmedia-subtitle-language' => '$1 ($2) subtítols',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}',
