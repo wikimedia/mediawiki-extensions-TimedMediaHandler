@@ -104,9 +104,12 @@ class TimedMediaHandlerHooks {
 		// Add parser hook
 		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 
-		// We should probably move this script output to a parser function but not working correctly in
-		// dynamic contexts ( for example in special upload, when there is an "existing file" warning. )
+		// Use a BeforePageDisplay hook to load the styles in pages that pull in media dynamically.
+		// (Special:Upload, for example, when there is an "existing file" warning.)
 		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
+
+		// Make sure modules are loaded on image pages that don't have a media file in the wikitext.
+		$wgHooks['ImageOpenShowImageInlineBefore'][] = 'TimedMediaHandlerHooks::onImageOpenShowImageInlineBefore';
 
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
@@ -146,6 +149,19 @@ class TimedMediaHandlerHooks {
 		$wgHooks[ 'NewRevisionFromEditComplete' ][] = 'TimedMediaHandlerHooks::onNewRevisionFromEditComplete';
 
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::checkSchemaUpdates';
+		return true;
+	}
+
+	/**
+	 * @param $imagePage ImagePage
+	 * @param $wgOut OutputPage
+	 * @return bool
+	 */
+	public static function onImageOpenShowImageInlineBefore( $imagePage, $out ) {
+		$handler = $imagePage->getDisplayedFile()->getHandler();
+		if ( $handler !== false && $handler instanceof TimedMediaHandler ) {
+			TimedMediaHandler::outputHook( $out, null, null );
+		}
 		return true;
 	}
 
@@ -342,12 +358,38 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
+	 * Add JavaScript and CSS for special pages that may include timed media
+	 * but which will not fire the parser hook.
+	 *
+	 * FIXME: There ought to be a better interface for determining whether the
+	 * page is liable to contain timed media.
+	 *
 	 * @param $out OutputPage
 	 * @param $sk
 	 * @return bool
 	 */
 	static function pageOutputHook(  &$out, &$sk ){
-		$out->addModules( 'mw.PopUpMediaTransform' );
+		$title = $out->getTitle();
+		$namespace = $title->getNamespace();
+		$addModules = false;
+
+		if ( $namespace === NS_CATEGORY || $namespace === NS_TIMEDTEXT ) {
+			$addModules = true;
+		}
+
+		if ( $title->isSpecialPage() ) {
+			list( $name, /* subpage */ ) = SpecialPageFactory::resolveAlias( $title->getDBkey() );
+			if ( stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
+				|| $name === 'Search' || $name === 'GlobalUsage' ) {
+					$addModules = true;
+			}
+		}
+
+		if ( $addModules ) {
+			$out->addModules( 'mw.PopUpMediaTransform' );
+			$out->addModuleStyles( 'mw.PopUpMediaTransform' );
+		}
+
 		return true;
 	}
 
