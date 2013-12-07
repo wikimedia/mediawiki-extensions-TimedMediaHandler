@@ -576,7 +576,7 @@ $messages['ce'] = array(
 	'mwe-embedplayer-seeking' => 'лаха',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Mormegil
  * @author Vks
  */
@@ -645,7 +645,7 @@ $messages['cs'] = array(
 	'mwe-embedplayer-missing-source' => 'Nebylo nalezeno zdrojové video',
 );
 
-/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(

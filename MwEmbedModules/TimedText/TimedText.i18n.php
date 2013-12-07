@@ -319,7 +319,7 @@ $messages['ce'] = array(
 	'mwe-timedtext-search' => 'Лаха клип',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Mormegil
  * @author Vks
  */

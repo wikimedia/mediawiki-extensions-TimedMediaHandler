@@ -1097,7 +1097,7 @@ $messages['ckb'] = array(
 	'right-transcode-status' => 'دیتنی [[تایبەت:TimedMediaHandler|زانیاری لەمەڕ چالاکیی ترانسکۆدی ھەنووکەیی]]', # Fuzzy
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Chmee2
  * @author Li-sung
  * @author Matěj Grabovský
@@ -1163,7 +1163,7 @@ Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="//www.mediawiki.org
 	'action-transcode-status' => 'vidět aktuální stav transkódování',
 );
 
-/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
