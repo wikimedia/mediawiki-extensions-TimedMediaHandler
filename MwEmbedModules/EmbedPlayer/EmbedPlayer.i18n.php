@@ -572,6 +572,9 @@ $messages['ca'] = array(
 $messages['ce'] = array(
 	'mwe-embedplayer-credit-title' => 'ЦӀе: $1',
 	'mwe-embedplayer-seek_to' => 'Дехьа гӀо $1',
+	'mwe-embedplayer-download_clip' => 'Чуяккха видео',
+	'mwe-embedplayer-download_text' => 'Чудаккха йоза',
+	'mwe-embedplayer-download' => 'Чуяккха',
 	'mwe-embedplayer-close_btn' => 'ДӀачӀагӀа',
 	'mwe-embedplayer-seeking' => 'лаха',
 );
