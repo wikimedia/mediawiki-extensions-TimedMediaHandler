@@ -1087,6 +1087,7 @@ $messages['ce'] = array(
 	'timedmedia-actions' => 'Дийраш',
 	'timedmedia-hours' => '{{PLURAL:$1|1 сахьт}}',
 	'timedmedia-source-file' => 'Хьост $1',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 видео-файл|$1 видео-файлаш}}',
 );
 
 /** Sorani Kurdish (کوردی)

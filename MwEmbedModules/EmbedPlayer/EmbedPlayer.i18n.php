@@ -1560,6 +1560,7 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Guycn2
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1624,6 +1625,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-playerSelect' => 'נגנים',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">אנא קִראו</a> לפני הטמעה.',
 	'mwe-embedplayer-embed_site_or_blog' => 'הטמעה באתר או בבלוג שלכם',
+	'mwe-embedplayer-embed_wiki' => 'להטמיע בוויקי',
 	'mwe-embedplayer-related_videos' => 'סרטונים קשורים',
 	'mwe-embedplayer-seeking' => 'חיפוש',
 	'mwe-embedplayer-buffering' => 'אגירה',
