@@ -14,6 +14,11 @@ $specialPageAliases['en'] = array(
 	'TimedMediaHandler' => array( 'TimedMediaHandler' ),
 );
 
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'TimedMediaHandler' => array( 'معالج_الميديا_الزمنية' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'TimedMediaHandler' => array( 'TimedMedia-Steuerungsprogramm' ),
