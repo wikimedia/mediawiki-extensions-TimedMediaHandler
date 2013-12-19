@@ -2240,6 +2240,7 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Guycn2
  * @author Rotem Liss
  * @author Rotemliss
  * @author YaronSh
