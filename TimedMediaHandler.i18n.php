@@ -1419,6 +1419,7 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
  * @author Aspar
  * @author Erdemaslancan
  * @author Gorizon
+ * @author Marmase
  * @author Mirzali
  * @author Xoser
  */
@@ -1445,6 +1446,7 @@ $messages['diq'] = array(
 	'timedmedia-seconds' => '{{PLURAL:$1|1 saniya|$1 saniyey}}',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-subtitle-new-go' => 'Şo',
+	'timedmedia-file' => 'Dosya',
 );
 
 /** Lower Sorbian (dolnoserbski)
