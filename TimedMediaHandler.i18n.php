@@ -71,6 +71,7 @@ Are you sure you want to proceed?',
 	'timedmedia-ogg' => 'Ogg',
 	'timedmedia-webm' => 'WebM',
 	'timedmedia-mp4' => 'MP4',
+	'timedmedia-flac' => 'FLAC',
 	'timedmedia-source-file' => '$1 source',
 	'timedmedia-source-file-desc' => 'Original $1 file, $2 × $3 ($4)',
 	'timedmedia-source-audio-file-desc' => 'Original $1 file ($2)',
@@ -394,6 +395,10 @@ Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-file-desc}}
 * {{msg-mw|Timedmedia-source-file}}',
 	'timedmedia-mp4' => 'Used as <code>$1</code> in the following messages:
+* {{msg-mw|Timedmedia-source-audio-file-desc}}
+* {{msg-mw|Timedmedia-source-file-desc}}
+* {{msg-mw|Timedmedia-source-file}}',
+	'timedmedia-flac' => 'Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 * {{msg-mw|Timedmedia-source-file}}',
