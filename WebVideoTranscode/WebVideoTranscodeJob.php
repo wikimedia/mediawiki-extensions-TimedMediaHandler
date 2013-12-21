@@ -278,6 +278,8 @@ class WebVideoTranscodeJob extends Job {
 		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
 		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
+		SquidUpdate::purge( array( $file->getTranscodedUrl( $file->getName() . '.' . $transcodeKey ) ) );
+
 		if ($status !== true) {
 			$this->setLastError( $status );
 		}

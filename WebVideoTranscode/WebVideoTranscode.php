@@ -617,7 +617,9 @@ class WebVideoTranscode {
 		}
 
 		// Remove files by key:
-		foreach( $removeKeys as $tKey){
+		$urlsToPurge = array();
+		foreach ( $removeKeys as $tKey ) {
+			$urlsToPurge[] = $file->getTranscodedUrl( $file->getName() . '.' . $tKey );
 			$filePath = self::getDerivativeFilePath( $file, $tKey );
 			if( $file->repo->fileExists( $filePath ) ){
 				wfSuppressWarnings();
@@ -628,6 +630,8 @@ class WebVideoTranscode {
 				}
 			}
 		}
+
+		SquidUpdate::purge( $urlsToPurge );
 
 		// Build the sql query:
 		$dbw = wfGetDB( DB_MASTER );
