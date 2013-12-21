@@ -394,11 +394,15 @@ Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 * {{msg-mw|Timedmedia-source-file}}',
-	'timedmedia-mp4' => 'Used as <code>$1</code> in the following messages:
+	'timedmedia-mp4' => '{{Optional}}
+
+Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 * {{msg-mw|Timedmedia-source-file}}',
-	'timedmedia-flac' => 'Used as <code>$1</code> in the following messages:
+	'timedmedia-flac' => '{{Optional}}
+
+Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
 * {{msg-mw|Timedmedia-source-file}}',
