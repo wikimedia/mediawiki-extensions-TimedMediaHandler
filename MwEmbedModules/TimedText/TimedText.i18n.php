@@ -317,6 +317,7 @@ $messages['ca'] = array(
 $messages['ce'] = array(
 	'mwe-timedtext-stage-translate' => 'Гоч',
 	'mwe-timedtext-search' => 'Лаха клип',
+	'mwe-timedtext-textcat-tad' => 'Аудио-хаам',
 );
 
 /** Czech (čeština)
