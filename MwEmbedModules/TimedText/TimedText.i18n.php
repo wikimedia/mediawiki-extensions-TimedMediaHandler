@@ -595,6 +595,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Pouyana
+ * @author Reza1615
  * @author پاناروما
  */
 $messages['fa'] = array(
@@ -620,6 +621,7 @@ $messages['fa'] = array(
 	'mwe-timedtext-textcat-tad' => 'توضیح صوتی',
 	'mwe-timedtext-textcat-ktv' => 'کارائوکه',
 	'mwe-timedtext-textcat-tik' => 'متن تیکر',
+	'mwe-timedtext-textcat-nb' => 'یادداشت',
 	'mwe-timedtext-textcat-lrc' => 'متن ترانه‌ها',
 );
 
