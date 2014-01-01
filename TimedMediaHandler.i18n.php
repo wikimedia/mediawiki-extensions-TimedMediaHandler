@@ -1092,6 +1092,7 @@ $messages['ce'] = array(
 	'timedmedia-ogg-short-audio' => 'Аьзнийн файл Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'аьзнийн файл Ogg $1, дохалла (хан) $2, $3',
 	'timedmedia-ogg-long-multiplexed' => 'мультиплекан аудио/видео-файл Ogg, $1, йохалла $2, $4×$5 пиксель, $3 ерриг',
+	'timedmedia-dismiss' => 'Къайлаяккха',
 	'timedmedia-download' => 'Файл чуяккхар',
 	'timedmedia-status' => 'Хьал',
 	'timedmedia-actions' => 'Дийраш',
