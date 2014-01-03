@@ -749,10 +749,10 @@ $messages['az'] = array(
  * @author Haqmar
  */
 $messages['ba'] = array(
-	'timedmedia-days' => '{{PLURAL:$1|$1 көн|$1 көн}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|$1 сәғәт|$1 сәғәт}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|$1 минут|$1 минут}}', # Fuzzy
-	'timedmedia-seconds' => '{{PLURAL:$1|$1 секунд|$1 секунд}}', # Fuzzy
+	'timedmedia-days' => '{{PLURAL:$1|1=$1 көн|$1 көн}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|1=$1 сәғәт|$1 сәғәт}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|1=$1 минут|$1 минут}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|1=$1 секунд|$1 секунд}}', # Fuzzy
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -1096,9 +1096,11 @@ $messages['ce'] = array(
 	'timedmedia-download' => 'Файл чуяккхар',
 	'timedmedia-status' => 'Хьал',
 	'timedmedia-actions' => 'Дийраш',
-	'timedmedia-hours' => '{{PLURAL:$1|1 сахьт}}',
+	'timedmedia-hours' => '{{PLURAL:$1|1 сахьт}}', # Fuzzy
 	'timedmedia-source-file' => 'Хьост $1',
-	'timedmedia-videos' => '{{PLURAL:$1|$1 видео-файл|$1 видео-файлаш}}',
+	'timedmedia-videos' => '{{PLURAL:$1|1=$1 видео-файл|$1 видео-файлаш}}', # Fuzzy
+	'right-transcode-reset' => 'Кхосса дика йоцу видеош уьш рогӀехь хилийта.',
+	'right-transcode-status' => 'Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]',
 );
 
 /** Sorani Kurdish (کوردی)
@@ -4833,12 +4835,12 @@ $messages['ru'] = array(
 	'timedmedia-ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Медиа-файл Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'Звуковой файл Ogg $1, длительность $2, $3',
-	'timedmedia-ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3',
-	'timedmedia-ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, $3 всего',
+	'timedmedia-ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, $3', # Fuzzy
+	'timedmedia-ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, $3 всего', # Fuzzy
 	'timedmedia-ogg-long-general' => 'медиа-файл Ogg, длительность $2, $3',
 	'timedmedia-ogg-long-error' => 'неправильный Ogg-файл: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 видео-файл, $2',
-	'timedmedia-webm-long-video' => 'WebM аудио/видео файл, $1, продолжительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселя|пикселей}}, всего $3',
+	'timedmedia-webm-long-video' => 'WebM аудио/видео файл, $1, продолжительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, всего $3', # Fuzzy
 	'timedmedia-flac-short-audio' => 'FLAC аудио-файл, $1',
 	'timedmedia-flac-long-audio' => 'Аудио-файл FLAC, длина — $1, битрейт — $2',
 	'timedmedia-wav-short-audio' => 'WAV аудио-файл, $1',
@@ -4869,10 +4871,10 @@ $messages['ru'] = array(
 	'timedmedia-percent-done' => 'Примерно $1% выполнено',
 	'timedmedia-in-job-queue' => 'Добавлено в очередь заданий $1 назад',
 	'timedmedia-unknown-target-size' => 'Неизвестный целевой размер, $1 при кодировке',
-	'timedmedia-days' => '{{PLURAL:$1|1 день|$1 дня|$1 дней}}',
-	'timedmedia-hours' => '{{PLURAL:$1|1 час|$1 часа|$1 часов}}',
-	'timedmedia-minutes' => '{{PLURAL:$1|1 минута|$1 минуты|$1 минут}}',
-	'timedmedia-seconds' => '{{PLURAL:$1|1 секунда|$1 секунды|$1 секунд}}',
+	'timedmedia-days' => '{{PLURAL:$1|1 день|$1 дней|$1 дня}}', # Fuzzy
+	'timedmedia-hours' => '{{PLURAL:$1|1 час|$1 часов|$1 часа}}', # Fuzzy
+	'timedmedia-minutes' => '{{PLURAL:$1|1 минута|$1 минут|$1 минуты}}', # Fuzzy
+	'timedmedia-seconds' => '{{PLURAL:$1|1 секунда|$1 секунд|$1 секунды}}', # Fuzzy
 	'timedmedia-reset' => 'Перезапуск декодирования',
 	'timedmedia-reset-confirm' => 'Перезапуск декодирования удалит существующий файл (если он существует), и  декодирование вновь будет добавлено в очередь заданий. Повторное декодирование займет некоторое время. <br /><br />
 Вы уверены, что хотите продолжить?',
@@ -4901,13 +4903,13 @@ $messages['ru'] = array(
 	'timedmedia-subtitle-remote' => 'Субтитры для этого файла размещены на $1',
 	'timedmedia-subtitle-remote-link' => 'Вы можете [$1 посмотреть страницу описания] этого файла на $2',
 	'timedmediahandler' => 'TimedMediaHandler',
-	'timedmedia-videos' => '{{PLURAL:$1|$1 видео-файл|$1 видео-файлов}}',
-	'timedmedia-ogg-videos' => '$1 Ogg видео-{{PLURAL:$1|файл|файла|файлов}}',
-	'timedmedia-webm-videos' => '$1 WebM видео-{{PLURAL:$1|файл|файла|файлов}}',
-	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 декодирование|$1 декодирования|$1 декодирований}}',
-	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 запущенное декодирование|$1 запущенных декодирования|$1 запущенных декодирований}}',
-	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 поставленное в очередь декодирование|$1 поставленных в очередь декодирования|$1 поставленных в очередь декодирований}}',
-	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неудавшееся декодирование|$1 неудавшихся декодирования|$1 неудавшихся декодирований}}',
+	'timedmedia-videos' => '{{PLURAL:$1|1=$1 видео-файл|$1 видео-файлов}}', # Fuzzy
+	'timedmedia-ogg-videos' => '$1 Ogg видео-{{PLURAL:$1|файл|файлов|файла}}', # Fuzzy
+	'timedmedia-webm-videos' => '$1 WebM видео-{{PLURAL:$1|файл|файлов|файла}}', # Fuzzy
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 декодирование|$1 декодирований|$1 декодирования}}', # Fuzzy
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 запущенное декодирование|$1 запущенных декодирований|$1 запущенных декодирования}}', # Fuzzy
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 поставленное в очередь декодирование|$1 поставленных в очередь декодирований|$1 поставленных в очередь декодирования}}', # Fuzzy
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неудавшееся декодирование|$1 неудавшихся декодирований|$1 неудавшихся декодирования}}', # Fuzzy
 	'timedmedia-file' => 'Файл',
 	'right-transcode-reset' => 'Сбросить неудавшиеся или транскодированные видео, чтобы они встали в очередь заданий снова.',
 	'right-transcode-status' => 'Просмотр [[Special:TimedMediaHandler|информации о текущем ходе перекодирования]]',
@@ -5759,10 +5761,10 @@ $messages['uk'] = array(
 	'timedmedia-videos' => '{{PLURAL:$1|$1 відео}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg відео}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM відео}}',
-	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 перекодування|$1 перекодувань}}',
-	'timedmedia-derivative-state-active' => '{{PLURAL:$1|$1 працюючі перекодування|$1 працюючих перекодувань}}',
-	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 перекодування в черзі|$1 перекодувань в черзі}}',
-	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 невдалі перекодування|$1 невдалих перекодувань}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|1=$1 перекодування|$1 перекодувань}}',
+	'timedmedia-derivative-state-active' => '{{PLURAL:$1|1=$1 працюючі перекодування|$1 працюючих перекодувань}}',
+	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|1=$1 перекодування в черзі|$1 перекодувань в черзі}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|1=$1 невдалі перекодування|$1 невдалих перекодувань}}',
 	'timedmedia-file' => 'Файл',
 	'right-transcode-reset' => 'Скинуто невдалі або перекодовані відео, тож вони знову занесені в чергу завдань.',
 	'right-transcode-status' => 'Перегляньте [[Special:TimedMediaHandler|інформацію про поточну перекодувальну діяльність]]',
