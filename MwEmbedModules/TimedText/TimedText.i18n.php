@@ -2134,6 +2134,7 @@ $messages['wa'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'mwe-timedtext-stage-translate' => 'איבערזעצן',
 	'mwe-timedtext-back-btn' => 'צוריק',
 	'mwe-timedtext-textcat-cc' => 'באשרייבונגען',
 );

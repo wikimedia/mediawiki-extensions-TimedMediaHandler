@@ -4821,6 +4821,7 @@ Sì secure ca vuè ccu vvè nnande?",
 
 /** Russian (русский)
  * @author Ahonc
+ * @author Amire80
  * @author Eleferen
  * @author Kaganer
  * @author Kalan
@@ -4835,7 +4836,7 @@ $messages['ru'] = array(
 	'timedmedia-ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'timedmedia-ogg-short-general' => 'Медиа-файл Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'Звуковой файл Ogg $1, длительность $2, $3',
-	'timedmedia-ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, $3', # Fuzzy
+	'timedmedia-ogg-long-video' => 'видео-файл Ogg $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, $3',
 	'timedmedia-ogg-long-multiplexed' => 'мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, $3 всего', # Fuzzy
 	'timedmedia-ogg-long-general' => 'медиа-файл Ogg, длительность $2, $3',
 	'timedmedia-ogg-long-error' => 'неправильный Ogg-файл: $1',
@@ -4861,7 +4862,7 @@ $messages['ru'] = array(
 	'timedmedia-update-status' => 'Обновить статус декодирования',
 	'timedmedia-status' => 'Состояние',
 	'timedmedia-status-unknown' => 'Неизвестное состояние',
-	'timedmedia-transcodeinfo' => 'Описание производных декодироания',
+	'timedmedia-transcodeinfo' => 'Описание производных декодирования',
 	'timedmedia-actions' => 'Действия',
 	'timedmedia-direct-link' => 'Скачать модифицированный вариант',
 	'timedmedia-not-ready' => 'Не готов',
