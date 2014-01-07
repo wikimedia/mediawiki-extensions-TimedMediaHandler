@@ -427,12 +427,13 @@ $messages['diq'] = array(
 	'mwe-timedtext-back-btn' => 'Peyser',
 	'mwe-timedtext-layout' => 'Ca gınayiş',
 	'mwe-timedtext-textcat-cc' => 'Bınnuşte',
-	'mwe-timedtext-textcat-sub' => 'Bın name',
+	'mwe-timedtext-textcat-sub' => 'Sernuştey bıni',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-nb' => 'Ole şınasiye',
 );
 
 /** Lower Sorbian (dolnoserbski)
+ * @author Derbeth
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -471,7 +472,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-no-subs' => 'Žedne pódtitele k dispoziciji',
 	'mwe-timedtext-request-subs-desc' => 'Póžedanje na transkripciju toś teje wideojoweje dataje pśidaś',
 	'mwe-timedtext-request-subs-done' => 'Póžedanje na transkripciju pśidane. [$1 Glědaj wšykne póžedanja na transkripciju]',
-	'mwe-timedtext-request-subs-fail' => 'Pśidawanje póžedanja na transkripciju jo se njeraźiło. Sy se pśizjawił?',
+	'mwe-timedtext-request-subs-fail' => 'Pśidawanje póžedanja na transkripciju njejo se raźiło. Sy se pśizjawił?',
 	'mwe-timedtext-request-already-done' => 'Póžedanje na transkripcija toś togo widea jo se južo stajiło. [$1 Glědaj wšykne póžedanja na transkripciju]',
 );
 
