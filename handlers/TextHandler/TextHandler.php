@@ -26,9 +26,11 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 		}
 		parent::__construct( $query, $moduleName, 'ap' );
 	}
+
 	protected function getDB() {
 		return $this->foreignDb;
 	}
+
 	protected function parseMultiValue( $valueName, $value, $allowMultiple, $allowedValues ) {
 		// foreignnNs might not be defined localy,
 		// catch the undefined error here
@@ -39,6 +41,19 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 			return $this->foreignNs;
 		}
 		return parent::parseMultiValue( $valueName, $value, $allowMultiple, $allowedValues );
+	}
+
+	/**
+	 * An alternative to titleToKey() that doesn't trim trailing spaces
+	 *
+	 *
+	 * @FIXME: I'M A BIG HACK
+	 *
+	 * @param string $titlePart Title part with spaces
+	 * @return string Title part with underscores
+	 */
+	public function titlePartToKey( $titlePart ) {
+		return substr( $this->titleToKey( $titlePart . 'x' ), 0, -1 );
 	}
 }
 
@@ -203,8 +218,6 @@ class TextHandler {
 	 * @return array
 	 */
 	function getTextTracksFromData( $data ){
-		global $wgForeignFileRepos;
-
 		$textTracks = array();
 		$providerName = $this->file->repo->getName();
 		// commons is called shared in production. normalize it to wikimediacommons
@@ -216,11 +229,11 @@ class TextHandler {
 
 		$langNames = Language::fetchLanguageNames( null, 'mw' );
 		if( $data['query'] && $data['query']['allpages'] ){
-			foreach( $data['query']['allpages'] as $na => $page ){
+			foreach( $data['query']['allpages'] as $page ){
 				$subTitle = Title::newFromText( $page['title'] ) ;
 				$tileParts = explode( '.', $page['title'] );
 				if( count( $tileParts) >= 3 ){
-					$subtitle_extension = array_pop( $tileParts );
+					/*$subtitle_extension = */ array_pop( $tileParts );
 					$languageKey = array_pop( $tileParts );
 				} else {
 					continue;
@@ -248,13 +261,14 @@ class TextHandler {
 		}
 		return $textTracks;
 	}
+
 	function getFullURL( $pageTitle ){
 		if( $this->file->isLocal() ) {
 			$subTitle =  Title::newFromText( $pageTitle ) ;
 			return $subTitle->getFullURL( array(
-						'action' => 'raw',
-						'ctype' => 'text/x-srt'
-					));
+				'action' => 'raw',
+				'ctype' => 'text/x-srt'
+			));
 		//} elseif( $this->file->repo instanceof ForeignDBViaLBRepo ){
 		} else {
 			$basePageUrl = $this->getRepoPageURL( $pageTitle );
@@ -262,6 +276,7 @@ class TextHandler {
 			return $basePageUrl . $sep . 'action=raw&ctype=text/x-srt';
 		}
 	}
+
 	/**
 	 * A generalized version of getDescriptionUrl for prefixed pages rather than Image: prefix
 	 */
@@ -272,7 +287,7 @@ class TextHandler {
 		if ( $url === false ) {
 			return false;
 		}
-		$url = str_replace( array('Image:', 'File:' ), '', $url );
+		$url = str_replace( array( 'Image:', 'File:' ), '', $url );
 		return $url;
 	}
 }
