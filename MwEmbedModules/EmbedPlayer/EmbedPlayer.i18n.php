@@ -3367,6 +3367,7 @@ $messages['ps'] = array(
  * @author Luckas
  * @author Malafaya
  * @author SandroHc
+ * @author Vitorvicentevalente
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -3374,12 +3375,12 @@ $messages['pt'] = array(
 	'mwe-embedplayer-credit-date' => 'Data: $1',
 	'mwe-embedplayer-credit-author' => 'Autor: $1',
 	'mwe-embedplayer-nocredits' => 'Sem créditos disponíveis',
-	'mwe-embedplayer-loading_plugin' => "a carregar o ''plugin'' ...",
+	'mwe-embedplayer-loading_plugin' => "A carregar o ''plugin'' ...",
 	'mwe-embedplayer-select_playback' => 'Definir a preferência de reprodução',
 	'mwe-embedplayer-link_back' => 'Ligar atrás',
 	'mwe-embedplayer-error_swap_vid' => 'Erro: o mv_embed não conseguiu trocar o elemento de vídeo pela interface mv_embed',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'Adicionar ao fim da sequência',
-	'mwe-embedplayer-missing_video_stream' => "Ficheiro vídeo para esta ''stream'' em falta",
+	'mwe-embedplayer-missing_video_stream' => 'O ficheiro vídeo para esta transmissão está em falta',
 	'mwe-embedplayer-play_clip' => 'Reproduzir clipe',
 	'mwe-embedplayer-pause_clip' => 'Pausar clipe',
 	'mwe-embedplayer-volume_control' => 'Controlo de volume',
@@ -3391,16 +3392,16 @@ $messages['pt'] = array(
 	'mwe-embedplayer-current_clip_msg' => 'Continuar a reproduzir este clipe',
 	'mwe-embedplayer-seek_to' => 'Procurar $1',
 	'mwe-embedplayer-paused' => 'em pausa',
-	'mwe-embedplayer-download_segment' => 'Download da selecção:',
-	'mwe-embedplayer-download_full' => 'Donwnload do ficheiro vídeo completo:',
-	'mwe-embedplayer-download_right_click' => 'Para descarregar, clique com o botão direito do mouse e selecione <i>Guardar ligação como...</i>',
-	'mwe-embedplayer-download_clip' => 'Download do vídeo',
-	'mwe-embedplayer-download_text' => 'Download do texto',
-	'mwe-embedplayer-download' => 'Download',
+	'mwe-embedplayer-download_segment' => 'Descarga da selecção:',
+	'mwe-embedplayer-download_full' => 'Descarga do ficheiro vídeo completo:',
+	'mwe-embedplayer-download_right_click' => 'Para descarregar, clique no botão direito do rato e seleccione <i>Guardar ligação como...</i>',
+	'mwe-embedplayer-download_clip' => 'Descarga do vídeo',
+	'mwe-embedplayer-download_text' => 'Descarga do texto',
+	'mwe-embedplayer-download' => 'Descarga',
 	'mwe-embedplayer-share' => 'Partilhar',
 	'mwe-embedplayer-credits' => 'Créditos',
 	'mwe-embedplayer-about-library' => 'Sobre o leitor Kaltura',
-	'mwe-embedplayer-about-library-desc' => 'A biblioteca multimédia HTML5 do Kaltura permite-lhe utilizar já hoje os elementos <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> do HTML5 com uma interface consistente do leitor em todos os browsers principais.
+	'mwe-embedplayer-about-library-desc' => 'A biblioteca multimédia HTML5 do Kaltura permite-lhe utilizar já hoje os elementos <code><nowiki><video></nowiki></code> e <code><nowiki><audio></nowiki></code> do HTML5 com uma interface consistente do leitor em todos os navegadores principais.
 	
 [$1 Mais sobre a biblioteca do leitor Kaltura].',
 	'mwe-embedplayer-clip_linkback' => 'Página fonte do clipe',
@@ -3418,18 +3419,18 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-aacNative' => 'Leitor AAC HTML5',
 	'mwe-embedplayer-ogg-player-h264Native' => 'Leitor H.264 HTML5',
 	'mwe-embedplayer-ogg-player-webmNative' => 'Leitor WebM HTML5',
-	'mwe-embedplayer-ogg-player-oggPlugin' => 'Plugin Ogg genérico',
-	'mwe-embedplayer-ogg-player-quicktime-mozilla' => 'Plugin QuickTime',
+	'mwe-embedplayer-ogg-player-oggPlugin' => "''Plugin'' Ogg genérico",
+	'mwe-embedplayer-ogg-player-quicktime-mozilla' => "''Plugin'' QuickTime",
 	'mwe-embedplayer-ogg-player-quicktime-activex' => 'QuickTime ActiveX',
 	'mwe-embedplayer-ogg-player-cortado' => 'Java Cortado',
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
-	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
+	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador de vídeo html5].',
-	'mwe-embedplayer-download-warn' => 'Não foi detetado nenhum leitor compatível integrado no browser: para reproduzir no browser, faça o download da [$1 última versão do Firefox]',
-	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para ativar ou desativar o modo de tela inteira no <i>browser</i>',
-	'mwe-embedplayer-fullscreen-tip-osx' => 'Carregue em <b>shift ⌘ F</b> para ativar ou desativar o modo de tela inteira',
+	'mwe-embedplayer-download-warn' => 'Não foi detectado nenhum leitor compatível integrado no navegador: para reproduzir no navegador, faça a descarga da [$1 última versão do Firefox]',
+	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para activar ou desactivar o modo de ecrã inteiro no navegador',
+	'mwe-embedplayer-fullscreen-tip-osx' => 'Carregue em <b>shift ⌘ F</b> para activar ou dcesativar o modo de ecrã inteiro',
 	'mwe-embedplayer-do_not_warn_again' => 'No futuro, não mostrar esta mensagem',
 	'mwe-embedplayer-playerSelect' => 'Leitores',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Leia isto</a> antes de incorporar.',

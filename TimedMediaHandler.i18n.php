@@ -1096,6 +1096,7 @@ $messages['ce'] = array(
 	'timedmedia-download' => 'Файл чуяккхар',
 	'timedmedia-status' => 'Хьал',
 	'timedmedia-actions' => 'Дийраш',
+	'timedmedia-days' => '{{PLURAL:$1|$1 де}}',
 	'timedmedia-hours' => '{{PLURAL:$1|1 сахьт}}', # Fuzzy
 	'timedmedia-source-file' => 'Хьост $1',
 	'timedmedia-videos' => '{{PLURAL:$1|1=$1 видео-файл|$1 видео-файлаш}}', # Fuzzy
@@ -1222,6 +1223,7 @@ $messages['cy'] = array(
 	'timedmedia-subtitle-new-desc' => "Dewiswch iaith a gwasgu'r botwm '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Gwneler',
 	'timedmedia-subtitle-language' => 'Isdeitlau $1 ($2)',
+	'timedmedia-subtitle-remote-link' => "Gallwch [$1 weld tudalen ddisgrifio'r] ffeil hon ar $2",
 	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-videos' => '{{PLURAL:$1|$1 fideo}}',
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 fideo Ogg}}',
@@ -4533,6 +4535,7 @@ $messages['ps'] = array(
  * @author Luckas
  * @author Malafaya
  * @author Opraco
+ * @author Vitorvicentevalente
  * @author Waldir
  * @author 555
  */
@@ -4548,25 +4551,25 @@ $messages['pt'] = array(
 	'timedmedia-ogg-long-error' => 'Ficheiro ogg inválido: $1',
 	'timedmedia-webm-short-video' => 'Vídeo WebM $1, $2',
 	'timedmedia-webm-long-video' => 'Áudio/vídeo WebM, $1, $2 de duração, $4 × $5 pixels, $3 no todo',
-	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu browser está com o JavaScript desativado ou não tem nenhum dos leitores suportados.<br />
-Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">download de um leitor</a> para assistir ao vídeo no seu browser.',
+	'timedmedia-no-player-js' => 'Desculpe, mas ou o seu navegador está com o JavaScript desactivado ou não tem nenhum dos leitores suportados.<br />
+Pode fazer a <a href="$1">descarga do vídeo</a> ou o <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">de um leitor</a> para assistir ao vídeo no seu navegador.',
 	'timedmedia-more' => 'Mais...',
 	'timedmedia-dismiss' => 'Fechar',
-	'timedmedia-download' => 'Fazer download do ficheiro',
+	'timedmedia-download' => 'Fazer descarga do ficheiro',
 	'timedmedia-play-media' => 'Reproduzir conteúdo',
 	'timedmedia-desc-link' => 'Sobre este ficheiro',
-	'timedmedia-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
+	'timedmedia-oggThumb-version' => 'O oggHandler requer a versão $1 do oggThumb ou posterior.',
 	'timedmedia-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
 	'timedmedia-status-header' => 'Estado da transcodificação',
-	'timedmedia-update-status' => 'Atualizar o estado da transcodificação',
-	'timedmedia-status' => 'estado',
-	'timedmedia-status-unknown' => 'estado desconhecido',
+	'timedmedia-update-status' => 'Actualizar o estado da transcodificação',
+	'timedmedia-status' => 'Estado',
+	'timedmedia-status-unknown' => 'Estado desconhecido',
 	'timedmedia-transcodeinfo' => 'Descrição do ficheiro transcodificado',
-	'timedmedia-actions' => 'Ações',
-	'timedmedia-direct-link' => 'Download do ficheiro transcodificado',
+	'timedmedia-actions' => 'Acções',
+	'timedmedia-direct-link' => 'Descarga do ficheiro transcodificado',
 	'timedmedia-not-ready' => 'Ainda não está pronto',
 	'timedmedia-completed-on' => 'Transcodificação de $1 terminada',
-	'timedmedia-error-on' => 'Erro na transcodificação, em $1.', # Fuzzy
+	'timedmedia-error-on' => 'Erro na transcodificação em $1',
 	'timedmedia-started-transcode' => 'A transcodificação foi iniciada há $1. $2',
 	'timedmedia-percent-done' => 'O progresso é cerca de $1%',
 	'timedmedia-in-job-queue' => 'Adicionado à fila de tarefas há $1',
@@ -4580,6 +4583,7 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 	'timedmedia-reset-error' => 'Ocorreu um erro ao reiniciar a tarefa de transcodificação',
 	'timedmedia-source-file' => 'Fonte $1',
 	'timedmedia-source-file-desc' => 'Ficheiro $1 original, $2 × $3 ($4)',
+	'timedmedia-source-audio-file-desc' => 'Ficheiro $1 original ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Vídeo Ogg de baixa largura de banda (160P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Vídeo Ogg para web streaming (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Vídeo Ogg para web streaming (480P)',
@@ -4587,10 +4591,21 @@ Pode fazer o <a href="$1">download do vídeo</a> ou o <a href="//www.mediawiki.o
 	'timedmedia-derivative-desc-360p.webm' => 'WebM para web streaming (360P)',
 	'timedmedia-derivative-desc-480p.webm' => 'WebM para web streaming (480P)',
 	'timedmedia-derivative-desc-720p.webm' => 'WebM de alta qualidade para download (720P)',
+	'timedmedia-subtitle-new' => 'Criar nova tradução ou editar existente',
+	'timedmedia-subtitle-new-desc' => "Seleccione o idioma e pressione o botão '''{{int:Timedmedia-subtitle-new-go}}'''",
+	'timedmedia-subtitle-new-go' => 'Enviar',
 	'timedmedia-subtitle-language' => 'Legendas em $1 ($2)',
-	'timedmedia-subtitle-no-video' => 'Não existe nenhum vídeo associado à atual página de legendas',
+	'timedmedia-subtitle-no-video' => 'Não existe nenhum vídeo associado à actual página de legendas',
 	'timedmedia-subtitle-no-subtitles' => 'Neste momento não existem legendas em $1 para este vídeo. Pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar a página] e adicioná-las.',
+	'timedmedia-subtitle-remote' => 'A legenda para este ficheiro está hospedada em $1',
+	'timedmedia-subtitle-remote-link' => 'Pode [$1 ver a página de descrição] para este ficheiro em $2',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 vídeo|$1 vídeos}}',
+	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 vídeo ogg|$1 vídeos ogg}}',
+	'timedmedia-derivative-state-transcodes' => '{{PLURAL:$1|$1 transcodificação|$1 transcodificações}}',
+	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 transcodificação falhada|$1 transcodificações falhadas}}',
 	'timedmedia-file' => 'Ficheiro',
+	'right-transcode-status' => 'Ver [[Special:TimedMediaHandler|informação sobre a actividade actual de transcodificação]]',
+	'action-transcode-status' => 'ver o estado actual de transcodificação',
 );
 
 /** Brazilian Portuguese (português do Brasil)

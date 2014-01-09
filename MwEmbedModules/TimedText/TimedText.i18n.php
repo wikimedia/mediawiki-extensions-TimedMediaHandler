@@ -1588,6 +1588,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  * @author Luckas
  * @author SandroHc
+ * @author Vitorvicentevalente
  */
 $messages['pt'] = array(
 	'mwe-timedtext-editor' => 'Editor de legendas',
@@ -1595,24 +1596,24 @@ $messages['pt'] = array(
 	'mwe-timedtext-stage-sync' => 'Sincronizar',
 	'mwe-timedtext-stage-translate' => 'Traduzir',
 	'mwe-timedtext-stage-upload' => 'Carregar a partir de ficheiro local',
-	'mwe-timedtext-select-language' => 'Escolher a língua',
-	'mwe-timedtext-file-language' => 'Língua do ficheiro de legendas',
+	'mwe-timedtext-select-language' => 'Escolher o idioma',
+	'mwe-timedtext-file-language' => 'Idioma do ficheiro de legendas',
 	'mwe-timedtext-back-btn' => 'Voltar',
 	'mwe-timedtext-choose-text' => 'Escolher texto',
 	'mwe-timedtext-upload-timed-text' => 'Adicionar legendas',
 	'mwe-timedtext-loading-text-edit' => 'A carregar o editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
 	'mwe-timedtext-layout' => 'Posição',
-	'mwe-timedtext-layout-ontop' => 'Sobre o vídeo',
+	'mwe-timedtext-layout-ontop' => 'Acima do vídeo',
 	'mwe-timedtext-layout-below' => 'Abaixo do vídeo',
-	'mwe-timedtext-layout-off' => 'Esconder legendas',
+	'mwe-timedtext-layout-off' => 'Ocultar legendas',
 	'mwe-timedtext-loading-text' => 'A carregar o texto ...',
 	'mwe-timedtext-textcat-cc' => 'Títulos',
 	'mwe-timedtext-textcat-sub' => 'Legendas',
-	'mwe-timedtext-textcat-tad' => 'Descrição áudio',
-	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tad' => 'Descrição de áudio',
+	'mwe-timedtext-textcat-ktv' => 'Caraoque',
 	'mwe-timedtext-textcat-tik' => 'Cotações',
-	'mwe-timedtext-textcat-ar' => 'Regiões ativas',
+	'mwe-timedtext-textcat-ar' => 'Regiões activas',
 	'mwe-timedtext-textcat-nb' => 'Anotação',
 	'mwe-timedtext-textcat-meta' => 'Metadados de sincronização',
 	'mwe-timedtext-textcat-trx' => 'Transcrição',
