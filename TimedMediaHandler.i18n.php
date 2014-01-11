@@ -1539,6 +1539,7 @@ $messages['eo'] = array(
 /** Spanish (español)
  * @author Aleator
  * @author Armando-Martin
+ * @author Ciencia Al Poder
  * @author Crazymadlover
  * @author Jewbask
  * @author Maor X
@@ -1597,7 +1598,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-reset-error' => 'Error al restablecer el trabajo de transcodificación.',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => 'Fuente $1',
-	'timedmedia-source-file-desc' => 'Original $1, $2 × $3 ($4)', # Fuzzy
+	'timedmedia-source-file-desc' => 'Archivo $1 original, $2 × $3 ($4)',
 	'timedmedia-derivative-desc-160p.ogv' => 'Video en formato Ogg de bajo ancho de banda (160 P)',
 	'timedmedia-derivative-desc-360p.ogv' => 'Vídeo Ogg para la web (360P)',
 	'timedmedia-derivative-desc-480p.ogv' => 'Vídeo Ogg para la web (480P)',
@@ -1610,7 +1611,7 @@ Puedes <a href="$1">descargar el clip</a> o <a href="//www.mediawiki.org/wiki/Ex
 	'timedmedia-derivative-desc-480p.mp4' => 'MP4 para la web (480P)',
 	'timedmedia-derivative-desc-720p.mp4' => 'MP4 de calidad HD (720P)',
 	'timedmedia-subtitle-new' => 'Crear una nueva traducción o editar una existente',
-	'timedmedia-subtitle-new-desc' => "Reemplaza la parte '''LANG'' con su [[:en:ISO 639|código de idioma]] y presiona el botón '''{{int:Timedmedia-subtitle-new-go}}'''", # Fuzzy
+	'timedmedia-subtitle-new-desc' => "Selecciona el idioma y pulsa el botón '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'Ir',
 	'timedmedia-subtitle-language' => 'Subtítulos en $1 ($2)',
 	'timedmedia-subtitle-no-video' => 'No hay ningún video asociado con la página actual de subtítulos',
