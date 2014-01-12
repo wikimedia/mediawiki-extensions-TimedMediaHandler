@@ -2838,10 +2838,10 @@ $messages['is'] = array(
 	'timedmedia-not-ready' => 'Ekki tilbúin',
 	'timedmedia-percent-done' => 'Um $1% lokið',
 	'timedmedia-unknown-target-size' => 'Óþekkt markstærð, $1 kóðað',
-	'timedmedia-days' => '{{PLURAL:$1|einn dagur|$1 dagar}}', # Fuzzy
-	'timedmedia-hours' => '{{PLURAL:$1|einn klukkutími|$1 klukkutímar}}', # Fuzzy
-	'timedmedia-minutes' => '{{PLURAL:$1|ein mínúta|$1 mínútur}}', # Fuzzy
-	'timedmedia-seconds' => '{{PLURAL:$1|ein sekúnda|$1 sekúndur}}', # Fuzzy
+	'timedmedia-days' => '$1 {{PLURAL:$1|dagur|dagar}}',
+	'timedmedia-hours' => '$1 {{PLURAL:$1|klukkutími|klukkutímar}}',
+	'timedmedia-minutes' => '$1 {{PLURAL:$1|mínúta|mínútur}}',
+	'timedmedia-seconds' => '$1 {{PLURAL:$1|sekúnda|sekúndur}}',
 	'timedmedia-source-file' => '$1 uppruni',
 	'timedmedia-source-file-desc' => 'Upphafleg $1, $2 × $3 ($4)', # Fuzzy
 	'timedmedia-derivative-desc-160p.ogv' => 'Ogg myndband fyrir litla bandbreidd (160P)',
@@ -3429,6 +3429,14 @@ met Ongershtözung för de Fommaate <i lang="en">WebM</i>, <i lang="en">Ogg Theo
  */
 $messages['la'] = array(
 	'timedmedia-more' => 'Plus…',
+);
+
+/** Ladino (Ladino)
+ * @author Menachem.Moreira
+ */
+$messages['lad'] = array(
+	'timedmedia-subtitle-new-go' => 'Ir',
+	'timedmedia-file' => 'Archivo',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
