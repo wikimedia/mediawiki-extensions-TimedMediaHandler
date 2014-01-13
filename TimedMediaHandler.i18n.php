@@ -3433,10 +3433,11 @@ $messages['la'] = array(
 
 /** Ladino (Ladino)
  * @author Menachem.Moreira
+ * @author Universal Life
  */
 $messages['lad'] = array(
 	'timedmedia-subtitle-new-go' => 'Ir',
-	'timedmedia-file' => 'Archivo',
+	'timedmedia-file' => 'Dosya',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
