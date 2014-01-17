@@ -597,7 +597,8 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Add the output target:
-		$cmd.= ' -o ' . wfEscapeShellArg ( $this->getTargetEncodePath() );
+		$outputFile = $this->getTargetEncodePath();
+		$cmd.= ' -o ' . wfEscapeShellArg ( $outputFile );
 
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
 
@@ -605,7 +606,9 @@ class WebVideoTranscodeJob extends Job {
 		$retval = 0;
 		$shellOutput = $this->runShellExec( $cmd, $retval );
 		wfProfileOut( 'ffmpeg2theora_encode' );
-		if( $retval != 0 ){
+
+		// ffmpeg2theora returns 0 status on some errors, so also check for file
+		if( $retval != 0 || !is_file( $outputFile ) || filesize( $outputFile ) === 0 ){
 			return $cmd .
 				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
 				$shellOutput;
