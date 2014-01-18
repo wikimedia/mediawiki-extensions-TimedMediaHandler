@@ -88,14 +88,7 @@ class TranscodeStatusTable {
 	 * @return string
 	 */
 	public static function getSourceUrl( $file, $transcodeKey ){
-		$thumbName = $file->thumbName( array() );
-		if ( method_exists( $file, 'getTranscodedUrl' ) ) {
-			$thumbUrl = $file->getTranscodedUrl( $thumbName );
-		} else {
-			$thumbUrl = $file->getThumbUrl( $thumbName );
-		}
-		$thumbUrlDir = dirname( $thumbUrl );
-		return $thumbUrlDir . '/' . rawurlencode( $file->getName() ) . '.' . $transcodeKey;
+		return WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
 	}
 
 	/**
