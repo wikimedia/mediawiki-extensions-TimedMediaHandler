@@ -25,13 +25,14 @@ $(document).ready(function(){
 	$( '.mw-filepage-transcodestatus .errorlink' ).click( errorPopup );
 	// New version.
 	$errorLink = $( '.mw-filepage-transcodestatus .mw-tmh-pseudo-error-link' );
-	$errorLink.wrapInner(
-		$( '<a />' ).attr( {
+	$errorLink.wrapInner( function() {
+		var $this = $(this);
+		return $( '<a />' ).attr( {
 			href: '#',
-			title: $errorLink.text(),
-			'data-error': $errorLink.attr('data-error')
-		} ).click( errorPopup )
-	);
+			title: $this.text(),
+			'data-error': $this.attr('data-error')
+		} ).click( errorPopup );
+	} );
 
 	// Reset transcode action:
 	$('.mw-filepage-transcodereset a').click( function(){
