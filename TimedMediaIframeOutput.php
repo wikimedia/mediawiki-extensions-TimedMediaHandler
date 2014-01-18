@@ -49,8 +49,6 @@ class TimedMediaIframeOutput {
 			return false;
 		}
 
-		$skin = $wgUser->getSkin();
-
 		// Setup the render parm
 		$file = wfFindFile( $title );
 		if ( !$file ) {
@@ -74,7 +72,7 @@ class TimedMediaIframeOutput {
 		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
 	?>
 	<?php
-		echo $wgOut->getHeadLinks($skin);
+		echo $wgOut->getHeadLinks();
 		echo $wgOut->getHeadItems();
 	?>
 	<style type="text/css">
@@ -96,7 +94,7 @@ class TimedMediaIframeOutput {
 		  position:relative;
 		}
 	</style>
-	<?php echo $wgOut->getHeadScripts( $skin ); ?>
+	<?php echo $wgOut->getHeadScripts(); ?>
 	<?php
 	echo Html::inlineScript(
 	ResourceLoader::makeLoaderConditionalScript(
