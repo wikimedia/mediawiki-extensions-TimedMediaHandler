@@ -49,6 +49,95 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
+	 * Display metadata box on file description page.
+	 *
+	 * This is pretty basic, it puts data from all the streams together,
+	 * and only outputs a couple of the most commonly used ogg "comments",
+	 * with comments from all the streams combined
+	 *
+	 * @param File $file
+	 * @return array|bool
+	 */
+	public function formatMetadata( $file ) {
+		$meta = $this->getCommonMetaArray( $file );
+		if ( count( $meta ) === 0 ) {
+			return false;
+		}
+		return $this->formatMetadataHelper( $meta );
+	}
+
+	/**
+	 * Get some basic metadata properties that are common across file types.
+	 *
+	 * @param File $file
+	 * @return array Array of metadata. See MW's FormatMetadata class for format.
+	 */
+	public function getCommonMetaArray( File $file ) {
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
+		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
+			return false;
+		}
+		wfProfileIn( __METHOD__ );
+
+		// See http://www.xiph.org/vorbis/doc/v-comment.html
+		// http://age.hobba.nl/audio/mirroredpages/ogg-tagging.html
+		$metadataMap = array(
+			'title' => 'ObjectName',
+			'artist' => 'Artist',
+			'performer' => 'Artist',
+			'description' => 'ImageDescription',
+			'license' => 'UsageTerms',
+			'copyright' => 'Copyright',
+			'organization' => 'dc-publisher',
+			'date' => 'DateTimeDigitized',
+			'location' => 'LocationDest',
+			'contact' => 'Contact',
+			'encoded_using' => 'Software',
+			'encoder' => 'Software',
+			// OpenSubtitles.org hash. Identifies source video.
+			'source_ohash' => 'OriginalDocumentID',
+			'comment' => 'UserComment',
+			'language' => 'LanguageCode',
+		);
+
+		$props = array();
+
+		foreach( $metadata['streams'] as $stream ) {
+			if ( isset( $stream['vendor'] ) ) {
+				if ( !isset( $props['Software'] ) ) {
+					$props['Software'] = array();
+				}
+				$props['Software'][] = trim( $stream['vendor'] );
+			}
+			if ( !isset( $stream['comments'] ) ) {
+				continue;
+			}
+			foreach( $stream['comments'] as $name => $value ) {
+				$trimmedValue = trim( $value );
+				if ( $trimmedValue === '' ) {
+					continue;
+				}
+				$lowerName = strtolower( $name );
+				if ( isset( $metadataMap[$lowerName] ) ) {
+					$convertedName = $metadataMap[$lowerName];
+					if ( !isset( $props[$convertedName] ) ) {
+						$props[$convertedName] = array();
+					}
+					$props[$convertedName][] = $trimmedValue;
+				}
+			}
+
+		}
+		// properties might be duplicated across streams
+		foreach( $props as &$type ) {
+			$type = array_unique( $type );
+			$type = array_values( $type );
+		}
+		wfProfileOut( __METHOD__ );
+		return $props;
+	}
+
+	/**
 	 * Get the "media size"
 	 *
 	 * @param $file File

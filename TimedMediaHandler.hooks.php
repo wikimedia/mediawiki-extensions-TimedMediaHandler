@@ -349,7 +349,8 @@ class TimedMediaHandlerHooks {
 			'TestTimeParsing.php',
 			'TestApiUploadVideo.php',
 			'TestVideoThumbnail.php',
-			'TestVideoTranscode.php'
+			'TestVideoTranscode.php',
+			'TestOggHandler.php'
 		);
 		foreach( $testFiles as $fileName ){
 			$files[] = $testDir . $fileName;
