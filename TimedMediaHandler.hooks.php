@@ -386,7 +386,7 @@ class TimedMediaHandlerHooks {
 		}
 
 		if ( $addModules ) {
-			$out->addModules( 'mw.PopUpMediaTransform' );
+			$out->addModuleScripts( 'mw.PopUpMediaTransform' );
 			$out->addModuleStyles( 'mw.PopUpMediaTransform' );
 		}
 
