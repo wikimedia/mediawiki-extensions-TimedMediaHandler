@@ -413,9 +413,11 @@ Used as <code>$1</code> in the following messages:
 * {{msg-mw|Timedmedia-source-file}}',
 	'timedmedia-source-file' => 'The source file. Parameters:
 * $1 - file type; any one of the following messages:
-** {{msg-mw|Timedmedia-ogg}} - Optional message
-** {{msg-mw|Timedmedia-webm}} - Optional message
+** {{msg-mw|Timedmedia-ogg}}
+** {{msg-mw|Timedmedia-webm}}
 ** {{msg-mw|Timedmedia-mp4}}
+** {{msg-mw|Timedmedia-flac}}
+** {{msg-mw|Timedmedia-wav}}
 See also:
 * {{msg-mw|Timedmedia-source-audio-file-desc}}
 * {{msg-mw|Timedmedia-source-file-desc}}
@@ -424,9 +426,11 @@ See also:
 
 Parameters:
 * $1 - file type; any one of the following messages:
-** {{msg-mw|Timedmedia-ogg}} - Optional message
-** {{msg-mw|Timedmedia-webm}} - Optional message
+** {{msg-mw|Timedmedia-ogg}}
+** {{msg-mw|Timedmedia-webm}}
 ** {{msg-mw|Timedmedia-mp4}}
+** {{msg-mw|Timedmedia-flac}}
+** {{msg-mw|Timedmedia-wav}}
 * $2 - resolution width
 * $3 - resolution height
 * $4 - human readable bitrate
@@ -434,9 +438,11 @@ See also:
 * {{msg-mw|Timedmedia-source-audio-file-desc}} - for audio file',
 	'timedmedia-source-audio-file-desc' => 'Source file description. Parameters:
 * $1 - file type; any one of the following messages:
-** {{msg-mw|Timedmedia-ogg}} - Optional message
-** {{msg-mw|Timedmedia-webm}} - Optional message
+** {{msg-mw|Timedmedia-ogg}}
+** {{msg-mw|Timedmedia-webm}}
 ** {{msg-mw|Timedmedia-mp4}}
+** {{msg-mw|Timedmedia-flac}}
+** {{msg-mw|Timedmedia-wav}}
 * $2 - human readable bitrate
 See also:
 * {{msg-mw|Timedmedia-source-file-desc}} - for video file',
@@ -3526,6 +3532,16 @@ $messages['li'] = array(
 	'timedmedia-dismiss' => 'Sloet',
 	'timedmedia-download' => 'Bestandj downloade',
 	'timedmedia-desc-link' => 'Euver dit bestandj',
+);
+
+/** لوری (لوری)
+ * @author Bonevarluri
+ */
+$messages['lrc'] = array(
+	'timedmedia-download' => 'گرتن جانیا',
+	'timedmedia-desc-link' => 'دباره ای جانیا',
+	'timedmedia-source-file-desc' => 'اصلی $1 جانیا, $2 × $3 ($4)',
+	'timedmedia-file' => 'جانیا',
 );
 
 /** Lithuanian (lietuvių)
