@@ -1429,7 +1429,9 @@ mw.PlayerControlBuilder.prototype = {
 			'left' : '10px',
 			'right' : '10px',
 			'padding' : '4px',
-			'z-index' : 2
+			// z-index should be > than play button, as well as greater
+			// than the dialog box (in pop up video), or link won't work.
+			'z-index' : '1502',
 		})
 		.html( warningMsg );
 
