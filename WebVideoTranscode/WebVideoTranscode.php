@@ -254,12 +254,40 @@ class WebVideoTranscode {
 	 * @param $transcodeKey string
 	 * @return string
 	 */
-	static public function getDerivativeFilePath( &$file, $transcodeKey){
-		if ( method_exists( $file, 'getTranscodedPath' ) ) {
-			return $file->getTranscodedPath( $file->getName() . '.' . $transcodeKey );
+	static public function getDerivativeFilePath( $file, $transcodeKey ) {
+		return $file->getTranscodedPath( self::getTranscodeFileBaseName( $file, $transcodeKey ) );
+	}
+
+	/**
+	 * Get the name to use as the base name for the transcode.
+	 *
+	 * Swift has problems where the url-encoded version of
+	 * the path (ie 'filename.ogv/filename.ogv.720p.webm' )
+	 * is greater that > 1024 bytes, so shorten in that case.
+	 *
+	 * Future versions might respect FileRepo::$abbrvThreshold.
+	 *
+	 * @param File $file
+	 * @param String $suffix Optional suffix (e.g. transcode key).
+	 * @return String File name, or the string transcode.
+	 */
+	static public function getTranscodeFileBaseName( $file, $suffix = '' ) {
+		$name = $file->getName();
+		if ( strlen( urlencode( $name ) ) * 2 + 12 > 1024 ) {
+			return 'transcode' . '.' . $suffix;
 		} else {
-			return $file->getThumbPath( $file->getName() . '.' . $transcodeKey );
+			return $name . '.' . $suffix;
 		}
+	}
+
+	/**
+	 * Get url for a transcode.
+	 *
+	 * @param $file
+	 * @param $suffix Transcode key
+	 */
+	static public function getTranscodedUrlForFile( $file, $suffix = '' ) {
+		return $file->getTranscodedUrl( self::getTranscodeFileBaseName( $file, $suffix ) );
 	}
 
 	/**
@@ -619,7 +647,7 @@ class WebVideoTranscode {
 		// Remove files by key:
 		$urlsToPurge = array();
 		foreach ( $removeKeys as $tKey ) {
-			$urlsToPurge[] = $file->getTranscodedUrl( $file->getName() . '.' . $tKey );
+			$urlsToPurge[] = self::getTranscodedUrlForFile( $file, $tKey );
 			$filePath = self::getDerivativeFilePath( $file, $tKey );
 			if( $file->repo->fileExists( $filePath ) ){
 				wfSuppressWarnings();
@@ -755,12 +783,7 @@ class WebVideoTranscode {
 
 		$fileName = $file->getTitle()->getDbKey();
 
-		$thumbName = $file->thumbName( array() );
-		if ( MWInit::methodExists( $file, 'getTranscodedUrl' ) ) {
-			$src = $file->getTranscodedUrl( $file->getName() . '.' . $transcodeKey );
-		} else {
-			$src = $file->getThumbUrl( $file->getName() . '.' . $transcodeKey );
-		}
+		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
 
 		if( $file->getHandler()->isAudio( $file ) ){
 			$width = $height = 0;
