@@ -65,7 +65,7 @@ $messages['en'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura player',
 	'mwe-embedplayer-ogg-player-selected' => '(selected)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For a better video playback experience we recommend a [$1 HTML5 video browser].',
+	'mwe-embedplayer-for_best_experience' => 'For a better video playback experience we recommend an <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 video browser</a>.',
 	'mwe-embedplayer-download-warn' => 'No compatible in-browser player was detected: for in-browser playback, please download the [$1 latest Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Press <b>F11</b> toggle <i>web browser</i> fullscreen',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Press <b>shift ⌘ F</b> to toggle fullscreen',
@@ -125,8 +125,8 @@ This message is followed by the following messages:
 	'mwe-embedplayer-ogg-player-aacNative' => 'name of AAC player in configuration screen',
 	'mwe-embedplayer-ogg-player-cortado' => '{{optional}}',
 	'mwe-embedplayer-ogg-player-selected' => '{{Identical|Selected}}',
-	'mwe-embedplayer-for_best_experience' => 'Parameters:
-* $1 - URL',
+	'mwe-embedplayer-for_best_experience' => 'Shown when user\'s browser doesn\'t support playing videos. Parameters:
+* $1 - An empty &lt;a&gt; tag. Don\'t use this parameter.',
 	'mwe-embedplayer-download-warn' => 'Parameters:
 * $1 - URL',
 	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
