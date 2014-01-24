@@ -125,8 +125,8 @@ This message is followed by the following messages:
 	'mwe-embedplayer-ogg-player-aacNative' => 'name of AAC player in configuration screen',
 	'mwe-embedplayer-ogg-player-cortado' => '{{optional}}',
 	'mwe-embedplayer-ogg-player-selected' => '{{Identical|Selected}}',
-	'mwe-embedplayer-for_best_experience' => 'Shown when user\'s browser doesn\'t support playing videos. Parameters:
-* $1 - An empty &lt;a&gt; tag. Don\'t use this parameter.',
+	'mwe-embedplayer-for_best_experience' => "Shown when user's browser doesn't support playing videos. Parameters:
+* $1 - An empty &lt;a&gt; tag. Don't use this parameter.",
 	'mwe-embedplayer-download-warn' => 'Parameters:
 * $1 - URL',
 	'mwe-embedplayer-do_not_warn_again' => 'Standard message for disabling
@@ -176,7 +176,7 @@ $messages['aln'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'lojtar Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(Zgjedhur)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'Flash Vorbis OMTK',
-	'mwe-embedplayer-for_best_experience' => 'Për një përvojë më të mirë video rishikim të këshillojmë [$1 Firefox fundit] .', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Për një përvojë më të mirë video rishikim të këshillojmë <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">Firefox fundit</a> .', # Fuzzy
 	'mwe-embedplayer-do_not_warn_again' => 'Shkarkojë tani për tani.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Lojtaret',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Lexoni kete</a> para se embedding.',
@@ -233,7 +233,7 @@ $messages['ar'] = array(
 	'mwe-embedplayer-ogg-player-cortado' => 'جافا كورتادو',
 	'mwe-embedplayer-ogg-player-kplayer' => 'مشغل كالشورا',
 	'mwe-embedplayer-ogg-player-selected' => '(مختار)',
-	'mwe-embedplayer-for_best_experience' => 'للحصول على تجربة تشغيل للفيديو بشكل أفضل نوصي [1 $ بأحدث أصدار فايرفوكس].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'للحصول على تجربة تشغيل للفيديو بشكل أفضل نوصي [1 $ بأحدث أصدار فايرفوكس</a>.', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'اضغط <b>F11</b> لتبديل <i>متصفح الوب</i> لوضع الشاشة الكاملة',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'اضغط <b>shift ⌘ F</b> لوضع شاشة كاملة',
 	'mwe-embedplayer-do_not_warn_again' => 'لا تظهر هذه الرسالة في المرة القادمة',
@@ -313,7 +313,7 @@ $messages['ast'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Reproductor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleicionáu)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pa una meyor esperiencia de reproducción de videu recomendamos un [$1 navegador de videu html5].',
+	'mwe-embedplayer-for_best_experience' => 'Pa una meyor esperiencia de reproducción de videu recomendamos un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de videu html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nun se detectó nengún reproductor compatible integráu col navegador: pa una reproducción integrada nel navegador, descargue la [$1 última versión de Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Calque <b>F11</b> pa conmutar la pantalla completa del <i>navegador web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Calque <b>mayús ⌘ F</b> pa conmutar la pantalla completa',
@@ -424,7 +424,7 @@ $messages['be-tarask'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Прайгравальнік Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(выбраны)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Для лепшага прайграваньня відэа мы рэкамэндуем [$1 браўзэр з падтрымкай HTML5-відэа].',
+	'mwe-embedplayer-for_best_experience' => 'Для лепшага прайграваньня відэа мы рэкамэндуем <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">браўзэр з падтрымкай HTML5-відэа</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Ня знойдзены ўбудаваны прайгравальнік: для прагляду ў браўзэры загрузіце [$1 апошнюю вэрсію Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Клявіша <b>F11</b> пераключае <i>вэб-браўзэр</i> у поўнаэкранны рэжым',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Націсьніце <b>shift ⌘ F</b> для пераходу ў поўнаэкранны рэжым',
@@ -551,7 +551,7 @@ $messages['br'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lenner Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(diuzet)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => "Evit gwelet gwelloc'h e erbedadomp deoc'h : <br />[$1 Firefox 3.5].", # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Evit gwelet gwelloc\'h e erbedadomp deoc\'h : <br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">Firefox 3.5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => "N'eo ket kenglotus ar Merdeer web detektet; evit lenn er merdeer, pellgargit [$1 stumm nevez Firefox]", # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Pouezit war <b>F11</b> da wintañ e mod Skramm leun ar <i>merdeer web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => "Pouezit war <b>pennlizh. ⌘ F</b> evit gwintañ d'ar mod Skramm leun",
@@ -664,7 +664,7 @@ $messages['cs'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Přehrávač Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(vybraný)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pro příjemnější přehrávání videa doporučujeme [$1 HTML5 prohlížeč videa].',
+	'mwe-embedplayer-for_best_experience' => 'Pro příjemnější přehrávání videa doporučujeme <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 prohlížeč videa</a>.', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Stisknutím <b>F11</b> přepínáte celoobrazovkový režim <i>webového prohlížeče</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Stisknutím <b>shift ⌘ F</b> přepínáte celoobrazovkový režim',
 	'mwe-embedplayer-do_not_warn_again' => 'Příště tuto zprávu nezobrazovat.',
@@ -756,7 +756,7 @@ $messages['de'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-Player',
 	'mwe-embedplayer-ogg-player-selected' => '(ausgewählt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Für eine bessere Videowiedergabe wird ein [$1 HTML5-Videobrowser] empfohlen.',
+	'mwe-embedplayer-for_best_experience' => 'Für eine bessere Videowiedergabe wird ein <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download/de" target="_blank">HTML5-Videobrowser</a> empfohlen.',
 	'mwe-embedplayer-download-warn' => 'Beim Browser wurde ein inkompatibles Wiedergabeprogramm erkannt. Für eine im Browser eingebettete Wiedergabe wird die Nutzung der [$1 neuesten Version von Mozilla Firefox] empfohlen.',
 	'mwe-embedplayer-fullscreen-tip' => 'Die Taste <b>F11</b> drücken, um zum Vollbildmodus des <i>Webbrowsers</i> umzuschalten.',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Die Tasten <b>UMSCHALT ⌘ F</b> drücken, um zum Vollbildmodus des <i>Webbrowsers</i> umzuschalten.',
@@ -830,7 +830,7 @@ $messages['diq'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaykerdoğê kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(tercih biyaye)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Seba daêna rınd kaykerdışê videoy ma [$1 html5 video arden] tewsiya kenime.',
+	'mwe-embedplayer-for_best_experience' => 'Seba daêna rınd kaykerdışê videoy ma <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">html5 video arden</a> tewsiya kenime.', # Fuzzy
 	'mwe-embedplayer-do_not_warn_again' => 'Vındero bahdo, na mesac newkê memocne',
 	'mwe-embedplayer-playerSelect' => 'Kaykeri',
 	'mwe-embedplayer-read_before_embed' => 'kerem kerê verê nımıtışi <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">derheqê dûr ra nımıtışi de malumatê pawıtışan</a> bıwenê!',
@@ -907,7 +907,7 @@ $messages['dsb'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Grajadło Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(wubrany)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vobis',
-	'mwe-embedplayer-for_best_experience' => 'Za lěpše wideodožywjenje pórucujomy [$1 wideowobglědowak HTML 5].',
+	'mwe-embedplayer-for_best_experience' => 'Za lěpše wideodožywjenje pórucujomy <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">wideowobglědowak HTML 5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Njekompatibelne wótegrawak we wobglědowaku namakany: za wótegrawanje we wobglědowaku ześěgni pšosym [$1 nejnowšu wersiju Mozilla Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tłoc <b>F11</b>, aby <i>webwobglědowak</i> do połneje wobrazowki pśešaltował',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Tłoc <b>UMSCH ⌘ F</b>, aby pśešaltował do modusa połneje wobrazowki',
@@ -984,7 +984,7 @@ $messages['el'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura player',
 	'mwe-embedplayer-ogg-player-selected' => '(επιλεγμένο)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Για μια καλύτερη εμπειρία αναπαραγωγής βίντεο σας προτείνουμε ένα [$1 περιηγητή HTML5 video].',
+	'mwe-embedplayer-for_best_experience' => 'Για μια καλύτερη εμπειρία αναπαραγωγής βίντεο σας προτείνουμε ένα <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">περιηγητή HTML5 video</a>.', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Πατήστε <b>F11</b> για εναλλαγή <i>του προγράμματος περιήγησης</i> σε πλήρη οθόνη',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Πατήστε <b>shift ⌘ F</b> για την εναλλαγή πλήρους οθόνης',
 	'mwe-embedplayer-do_not_warn_again' => 'Στο μέλλον, να μην εμφανιστεί αυτό το μήνυμα',
@@ -1099,7 +1099,7 @@ $messages['es'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Reproductor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para una mejor experiencia de reproducción de vídeo recomendamos un [$1 navegador de vídeo html5].',
+	'mwe-embedplayer-for_best_experience' => 'Para una mejor experiencia de reproducción de vídeo recomendamos un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Se detectó un reproductor no compatible con el explorador, para reproducción integrada en el  navegador descargue la [$1 última versión de Firefox]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Presione <b>F11</b> para activar o desactivar la pantalla completa del <i>navegador web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Presione <b>shift ⌘ F</b> para activar o desactivarl a pantalla completa',
@@ -1245,7 +1245,7 @@ $messages['fi'] = array(
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-soitin',
 	'mwe-embedplayer-ogg-player-selected' => '(valittu)',
-	'mwe-embedplayer-for_best_experience' => 'Parempaa videotoistokokemusta varten suosituksena on selain, joka [$1 tukee HTML5-videota].',
+	'mwe-embedplayer-for_best_experience' => 'Parempaa videotoistokokemusta varten suosituksena on selain, joka <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">tukee HTML5-videota</a>.', # Fuzzy
 	'mwe-embedplayer-video-h264' => 'H.264-video',
 	'mwe-embedplayer-video-webm' => 'WebM-video',
 	'mwe-embedplayer-video-flv' => 'Flash-video',
@@ -1320,7 +1320,7 @@ $messages['fr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Lecteur Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(sélectionné)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage, nous recommandons un [$1 navigateur vidéo HTML5].',
+	'mwe-embedplayer-for_best_experience' => 'Pour un meilleur visionnage de la vidéo, nous recommandons un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navigateur vidéo HTML5</a>.',
 	'mwe-embedplayer-download-warn' => 'Aucun navigateur web compatible détecté: pour une lecteur intégré au navigateur, veuillez télécharger la [$1 dernière version de Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran',
@@ -1486,7 +1486,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Reprodutor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos un [$1 navegador de vídeo html5].',
+	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Non se detectou ningún reprodutor integrado compatible co navegador: Para ter unha mellor experiencia de reprodución de vídeo recomendamos a [$1 última versión do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Prema <b>F11</b> para activar ou desactivar a pantalla completa do <i>navegador web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Prema <b>maiús ⌘ F</b> para activar ou desactivar a pantalla completa',
@@ -1575,7 +1575,7 @@ $messages['gsw'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-Player',
 	'mwe-embedplayer-ogg-player-selected' => '(uusgwehlt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Fir e besseri Abspilqualitet vu däm Video empfähle mir:<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Fir e besseri Abspilqualitet vu däm Video empfähle mir:<br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">Firefox 3.5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'S Wiidergabeprogramm im Browser isch nit kompatibel. Zume im Browser aaluege, due bitte d [$1 nöisti Version vo Firefox] abelade.', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'D Taschte <b>F11</b> drugge, zume uff de Vollbildmodus vum <i>Webbrowsers</i> umzschalte.',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'D Taschte <b>UMSCHALT ⌘ F</b> drugge, zume uff de Vollbildmodus vum <i>Webbrowsers</i> umzschalte.',
@@ -1657,7 +1657,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'נגן קלטורה',
 	'mwe-embedplayer-ogg-player-selected' => '(נבחר)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'להצגת וידאו משופרת אנחנו ממליצים [$1 להתקין דפדפן שתומך בווידאו ב־html5].',
+	'mwe-embedplayer-for_best_experience' => 'להצגת וידאו משופרת אנחנו ממליצים <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">להתקין דפדפן שתומך בווידאו ב־html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'לא נמצא נגן תואם בדפדפן. כדי לנגן בתוך הדפדפן יש להוריד את [$1 הגרסה החדשה ביותר של פיירפוקס].', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'לחצו <b>F11</b> כדי להעביר את הדפדפן למצב מסך מלא וחזרה',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'לחיצה על <b>shift ⌘ F</b> מפעילה מסך מלא',
@@ -1741,7 +1741,7 @@ $messages['hsb'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Wothrawak Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(wubrany)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Za lěpše wothrawanje widejow poručamy [$1 widejowobglědowak za HTML 5].',
+	'mwe-embedplayer-for_best_experience' => 'Za lěpše wothrawanje widejow poručamy <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">widejowobglědowak za HTML 5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Njekompatibelne wothrawak we wobhladowaku namakany: za wothrawanje znutřka wobhladowaka, sćehń prošu [$1 najnowšu wersiju Mozilla Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tłóč na <b>F11</b>, zo by <i>webwobhladowak</i> do modusa połneje wobrazowki přepinał',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Stłóč <b>UMSCH ⌘ F</b>, zo by do modusa połneje wobrazowki přepinył',
@@ -1822,7 +1822,7 @@ $messages['hu'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura lejátszó',
 	'mwe-embedplayer-ogg-player-selected' => '(kiválasztva)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'A jobb videolejátszási élményhez [$1 HTML5-öt támogató böngészőt] ajánlunk.',
+	'mwe-embedplayer-for_best_experience' => 'A jobb videolejátszási élményhez <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5-öt támogató böngészőt</a> ajánlunk.', # Fuzzy
 	'mwe-embedplayer-do_not_warn_again' => 'Eltüntetés egyelőre.', # Fuzzy
 	'mwe-embedplayer-playerSelect' => 'Lejátszók',
 	'mwe-embedplayer-read_before_embed' => '<a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">Olvasd el ezt</a>, mielőtt beillesztenéd.',
@@ -1895,7 +1895,7 @@ $messages['ia'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Le reproductor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seligite)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pro un melior experientia de reproduction de video, nos recommenda:<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Pro un melior experientia de reproduction de video, nos recommenda:<br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">Firefox 3.5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nulle lector compatibile esseva detegite in le navigator del web. Pro reproduction in le navigator, per favor discarga le [$1 ultime version de Firefox].', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Preme <b>F11</b> pro alternar le <i>navigator del web</i> in plen schermo',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Preme <b>shift ⌘ F</b> pro alternar plen schermo',
@@ -1976,7 +1976,7 @@ $messages['id'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Pemutar Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(dipilih)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Untuk pengalaman pemutaran video yang lebih baik kami menyarankan: <br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Untuk pengalaman pemutaran video yang lebih baik kami menyarankan: <br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">Firefox 3.5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Pemutar dalam peramban yang kompatibel tidak ditemukan. Untuk pemutaran dalam peramban silakan unduh [$1 Firefox terbaru]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Tekan <b>F11</b> untuk beralih ke layar penuh <i>peramban web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Tekan <b>shift ⌘ F</b> untuk beralih ke layar penuh',
@@ -2135,7 +2135,7 @@ $messages['it'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Player Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selezionato)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Per una migliore esperienza di riproduzione dei video si consiglia un [$1 browser che supporti i video html5].',
+	'mwe-embedplayer-for_best_experience' => 'Per una migliore esperienza di riproduzione dei video si consiglia un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">browser che supporti i video HTML5</a>.',
 	'mwe-embedplayer-download-warn' => "Rilevato lettore integrato non compatibile: per la riproduzione tramite browser scaricare [$1 l'ultima versione di Firefox].",
 	'mwe-embedplayer-fullscreen-tip' => 'Premere <b>F11</b> attiva/disattiva la modalità a schermo intero del <i>browser web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Premere <b>Maiusc ⌘ F</b> attiva/disattiva la modalità a schermo intero',
@@ -2220,7 +2220,7 @@ $messages['ja'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura プレーヤー',
 	'mwe-embedplayer-ogg-player-selected' => '(選択済み)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => '動画再生品質の向上のために、[$1 HTML5 動画対応のブラウザー]をお勧めします。',
+	'mwe-embedplayer-for_best_experience' => '動画再生品質の向上のために、<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 動画対応のブラウザー</a>をお勧めします。',
 	'mwe-embedplayer-download-warn' => '互換性がないブラウザー内プレーヤーを検出しました: ブラウザー内で再生するには、[$1 最新版の Firefox] をダウンロードしてください',
 	'mwe-embedplayer-fullscreen-tip' => '<i>ウェブ ブラウザー</i>の全画面表示を切り替えるには <b>F11</b> キーを押してください',
 	'mwe-embedplayer-fullscreen-tip-osx' => '全画面表示を切り替えるには <b>shift &#x2318; F</b> を押してください',
@@ -2314,6 +2314,7 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
@@ -2372,7 +2373,7 @@ $messages['ko'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura 플레이어',
 	'mwe-embedplayer-ogg-player-selected' => '(선택됨)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK 플레시 보비스',
-	'mwe-embedplayer-for_best_experience' => '더 나은 동영상 재생을 위해서는<br />[$1 html5 비디오 브라우저]를 권장합니다.',
+	'mwe-embedplayer-for_best_experience' => '더 나은 동영상 재생을 위해서는<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">html5 동영상 브라우저</a>를 권장합니다.',
 	'mwe-embedplayer-download-warn' => '호환되지 않는 브라우저 안의 플레이어를 감지했습니다: 브라우저 안에 재생을 하려면 [$1 최신 파이어폭스]를 다운로드하세요',
 	'mwe-embedplayer-fullscreen-tip' => '<i>웹 브라우저</i>를 전체 화면으로 전환하려면 <b>F11</b>을 누르세요',
 	'mwe-embedplayer-fullscreen-tip-osx' => '전체 화면으로 전환하려면 <b>shift ⌘ F</b>를 누르세요',
@@ -2453,7 +2454,7 @@ $messages['ksh'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Dä <i lang="en">Kaltura</i> Afshpeller',
 	'mwe-embedplayer-ogg-player-selected' => '(ußjesöhk)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => '<i lang="en">OMTK Flash Vorbis</i> Shpeller',
-	'mwe-embedplayer-for_best_experience' => 'öm en bäßere Qualliteit för dä Viddejo ze krijje, dom_mer der [$1 HTML5-Viddejo-Browser] ämfähle.',
+	'mwe-embedplayer-for_best_experience' => 'öm en bäßere Qualliteit för dä Viddejo ze krijje, dom_mer der <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5-Viddejo-Browser</a> ämfähle.', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Met däm <b>F11</b>-Knopp schalldt mer dä <i>Brauser</i> op der kumplätte Beldscherrem öm, un widder retuur.',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Met <b>Ömschallde-⌘-F</b> schalldt mer op der kumplätte Beldscherrem öm',
 	'mwe-embedplayer-do_not_warn_again' => 'Donn heh di Nohreesch en Zohkonf nit norr_ens aanzeije.',
@@ -2659,7 +2660,7 @@ $messages['mk'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Изведувач Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(избрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'За поквалитетно прегледување на снимките ви го препорачуваме [видеопрелистувачот со html5 на $1].',
+	'mwe-embedplayer-for_best_experience' => 'За поквалитетно прегледување на снимките ви го препорачуваме <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">видеопрелистувачот со HTML5</a>.',
 	'mwe-embedplayer-download-warn' => 'Не најдов прикладен изведувач за пуштање од прелистувач Ако сакате да пуштате од прелистувач, преземете го [$1 најновиот Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Притиснете <b>F11</b> за да го префрлите <i>прелистувачот</i> на полн екран',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Притиснете <b>shift ⌘ F</b> за преглед на цел екран',
@@ -2743,7 +2744,7 @@ $messages['ml'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'കൽടൂറ പ്ലേയർ',
 	'mwe-embedplayer-ogg-player-selected' => '(തിരഞ്ഞെടുത്തവ)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'ഓ‌‌എംറ്റികെ ഫ്ലാഷ് വോർബിസ്',
-	'mwe-embedplayer-for_best_experience' => 'മെച്ചപ്പെട്ട ചലച്ചിത്രാസ്വാദനത്തിനു ഞങ്ങൾ നിർദ്ദേശിക്കുന്നത്:<br />[$1 എച്ച്.റ്റി.എം.എൽ.5 വീഡിയോ ബ്രൗസർ].',
+	'mwe-embedplayer-for_best_experience' => 'മെച്ചപ്പെട്ട ചലച്ചിത്രാസ്വാദനത്തിനു ഞങ്ങൾ നിർദ്ദേശിക്കുന്നത്:<br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">എച്ച്.റ്റി.എം.എൽ.5 വീഡിയോ ബ്രൗസർ</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'ബ്രൗസറിനുള്ളിൽ അനുരൂപമായ പ്രവർത്തനോപകരണം കണ്ടെത്താനായില്ല: ബ്രൗസറിനുള്ളിൽ തന്നെ പ്രവർത്തിപ്പിക്കാൻ, ദയവായി [$1 ഏറ്റവും പുതിയ ഫയർഫോക്സ്] ഡൗൺലോഡ് ചെയ്യുക',
 	'mwe-embedplayer-fullscreen-tip' => ' <i>വെബ് ബ്രൗസർ</i> സ്ക്രീൻ നിറഞ്ഞ് കാണാനും മാറ്റാനും  <b>F11</b> അമർത്തുക',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'സ്ക്രീൻ നിറഞ്ഞ് കാണാനും മാറ്റാനും <b>ഷിഫ്റ്റ് ⌘ F</b> അമർത്തുക',
@@ -2826,7 +2827,7 @@ $messages['ms'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(dipilih)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Untuk tontonan video yang lebih baik, kami mencadangkan [$1 pelayar video HTML5].',
+	'mwe-embedplayer-for_best_experience' => 'Untuk tontonan video yang lebih baik, kami mencadangkan <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">pelayar video HTML5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Tiada pemain dalam pelayar serasi yang dikesan: untuk menayangkan video dalam pelayar, sila muat turun [$1 Firefox terbaru]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tekan <b>F11</b> untuk menogol <i>pelayar web</i> ke skrin penuh',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Tekan <b>shift ⌘ F</b> untuk ke skrin penuh',
@@ -2932,7 +2933,7 @@ $messages['nb'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spiller',
 	'mwe-embedplayer-ogg-player-selected' => '(valgt)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For en bedre avspillingsopplevelse anbefaler vi en [$1 html5 videoleser].',
+	'mwe-embedplayer-for_best_experience' => 'For en bedre avspillingsopplevelse anbefaler vi en <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">html5 videoleser</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Ingen kompatibel mediespiller for nettleseren ble funnet: for avspilling i nettleseren kan du laste ned [$1 nyeste utgave av Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Trykk <b>F11</b> for å sette <i>nettleseren</i> i fullskjermmodus',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Trykk <b>shift ⌘ F</b> for å vise i fullskjerm',
@@ -2957,6 +2958,7 @@ $messages['nb'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Arent
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -3016,7 +3018,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura mediaspeler',
 	'mwe-embedplayer-ogg-player-selected' => '(geselecteerd)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Voor een betere kwaliteitsbeleving adviseren een [$1 HTML5 videobrowser].',
+	'mwe-embedplayer-for_best_experience' => 'Voor een betere kwaliteitsbeleving adviseren we een <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 videobrowser</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Er is geen compatibele speler in de browser aangetroffen. Download de [$1 meest recente versie van Firefox] om dit bestand in de browser af te kunnen spelen.',
 	'mwe-embedplayer-fullscreen-tip' => 'Druk op <b>F11</b> om de <i>web browser</i> in het volledige scherm weer te geven',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Typ <b>SHIRT+⌘+F</b> voor volledig scherm of terug',
@@ -3098,7 +3100,7 @@ $messages['nn'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura-spelar',
 	'mwe-embedplayer-ogg-player-selected' => '(vald)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'For ei betre videoavspelingsoppleving tilrår me ein [$1 html5-videolesar].',
+	'mwe-embedplayer-for_best_experience' => 'For ei betre videoavspelingsoppleving tilrår me ein <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">html5-videolesar</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Det vart ikkje funne nokon kompatibel spelar i nettlesaren; for å spela av i nettlesaren bør du lasta ned [$1 siste utgåva av Firefox]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Trykk <b>F11</b> for å slå på fullskjermen til <i>nettlesaren</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Trykk på <b>shift ⌘ F</b> for å slå på fullskjerm',
@@ -3162,7 +3164,7 @@ $messages['oc'] = array(
 	'mwe-embedplayer-ogg-player-flowplayer' => 'Flowplayer',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionat)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Per un melhor visionatge recomandam un [$1 navigador vidèo HTML5].',
+	'mwe-embedplayer-for_best_experience' => 'Per un melhor visionatge recomandam un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navigador vidèo HTML5</a>.', # Fuzzy
 	'mwe-embedplayer-do_not_warn_again' => "Afichar pas mai aqueste messatge a l'avenir",
 	'mwe-embedplayer-read_before_embed' => 'Legissètz <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">aquò</a> abans de procedir !',
 	'mwe-embedplayer-embed_site_or_blog' => 'Integrar dins una pagina',
@@ -3237,7 +3239,7 @@ $messages['pl'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Odtwarzacz Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(zaznaczone)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Dla lepszego odtwarzania filmów polecamy [przeglądarkę video html5 $1].',
+	'mwe-embedplayer-for_best_experience' => 'Dla lepszego odtwarzania filmów polecamy [przeglądarkę video html5 $1</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nie odnaleziono zgodnego odtwarzacza dla przeglądarki, aby odtworzyć tą zawartość w przeglądarce należy pobrać [$1 najnowszą wersjęFirefox]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Naciśnij klawisz <b>F11</b> by przełączyć <i>przeglądarkę</i> w tryb pełnoekranowy',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Naciśnij klawisze <b>shift ⌘ f</b> aby przełączyć w tryb pełnoekranowy',
@@ -3318,7 +3320,7 @@ $messages['pms'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Letor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selessionà)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => "Per n'esperiensa ëd vision pi bon-a i arcomandoma un [$1 navigador adat ai filmà html5].",
+	'mwe-embedplayer-for_best_experience' => 'Per n\'esperiensa ëd vision pi bon-a i arcomandoma un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navigador adat ai filmà html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => "A l'é trovasse che ël navigador a l'é nen compatìbil, për na letura ant ël navigador, për piasì ch'a dëscaria l'[$1 ùltim  Firefox]", # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => "Sgnaché <b>F11</b> për passé al <i>navigador dl'aragnà</i> a scren antregh",
 	'mwe-embedplayer-fullscreen-tip-osx' => "Ch'a sgnaca <b>majùscole ⌘ F</b> për passé a scren antregh",
@@ -3427,7 +3429,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador de vídeo html5].',
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Não foi detectado nenhum leitor compatível integrado no navegador: para reproduzir no navegador, faça a descarga da [$1 última versão do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para activar ou desactivar o modo de ecrã inteiro no navegador',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Carregue em <b>shift ⌘ F</b> para activar ou dcesativar o modo de ecrã inteiro',
@@ -3518,7 +3520,7 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-ogg-player-kplayer' => 'Tocador Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um [$1 navegador que suporta HTML5].',
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador que suporta HTML5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Não foi detetado nenhum leitor compatível integrado ao browser: para reproduzir pelo browser, faça o download da [$1 última versão do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Aperte <b>F11</b> para ativar ou desativar o modo de tela inteira no <i>browser</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Aperte <b>shift ⌘ F</b> para ativar ou desativar o modo de tela inteira',
@@ -3602,7 +3604,7 @@ $messages['ro'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Player Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selectat)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Pentru o vizionare mai bună a videoclipului vă recomandăm un [$1 navigator video compatibil cu HTML5].',
+	'mwe-embedplayer-for_best_experience' => 'Pentru o vizionare mai bună a videoclipului vă recomandăm un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navigator video compatibil cu HTML5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nu s-a detectat niciun player integrat în navigator compatibil: pentru a reda în navigator, vă rugăm să descărcați [$1 ultima versiune de Firefox].',
 	'mwe-embedplayer-fullscreen-tip' => 'Apăsați <b>F11</b> pentru a comuta <i>navigatorul</i> în modul ecran complet',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Apăsați <b>shift ⌘ F</b> pentru a comuta în modul ecran complet',
@@ -3721,7 +3723,7 @@ $messages['ru'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Проигрыватель Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(выбрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Для лучшего воспроизведения видео мы рекомендуем [$1 браузер, поддерживающий HTML5].',
+	'mwe-embedplayer-for_best_experience' => 'Для лучшего воспроизведения видео мы рекомендуем <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">браузер, поддерживающий HTML5</a>.',
 	'mwe-embedplayer-download-warn' => 'Не найдено встроенного в браузер проигрывателя, для воспроизведении в браузере загрузите [$1 последний Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Клавиша <b>F11</b> переводит <i>веб-браузер</i> в полноэкранный режим',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Нажмите <b>shift ⌘ F</b> для перехода в полноэкранный режим',
@@ -3894,7 +3896,7 @@ $messages['sr-ec'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Извођач Калтура',
 	'mwe-embedplayer-ogg-player-selected' => '(изабрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'За квалитетније прегледање снимака, препоручујемо вам [$1 HTML5 видео прегледач].',
+	'mwe-embedplayer-for_best_experience' => 'За квалитетније прегледање снимака, препоручујемо вам <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 видео прегледач</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Није пронађен прикладан извођач за пуштање преко прегледача. Преузмите [$1 најновији Фајерфокс]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Притисните <b>F11</b> да пребаците <i>прегледач</i> на цео екран',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Притисните <b>Shift ⌘ F</b> за пребацивање на цео екран',
@@ -3970,7 +3972,7 @@ $messages['sr-el'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Izvođač Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(izabrano)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Za kvalitetnije pregledanje snimaka, preporučujemo vam [$1 najnoviji Fajerfoks].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Za kvalitetnije pregledanje snimaka, preporučujemo vam <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">najnoviji Fajerfoks</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Nije pronađen prikladan izvođač za puštanje preko pregledača. Preuzmite [$1 najnoviji Fajerfoks]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Pritisnite <b>F11</b> da prebacite <i>pregledač</i> na ceo ekran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Pritisnite <b>Shift ⌘ F</b> za prebacivanje na ceo ekran',
@@ -4049,7 +4051,7 @@ $messages['sv'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura spelare',
 	'mwe-embedplayer-ogg-player-selected' => '(vald)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'För en bättre videouppspelningsupplevelse rekommenderar vi en [$1html5 videowebbläsare].',
+	'mwe-embedplayer-for_best_experience' => 'För en bättre videouppspelningsupplevelse rekommenderar vi en [$1html5 videowebbläsare</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Ingen kompatibel mediaspelare i webbläsaren upptäcktes: för webbläsaruppspelning, hämta [$1 senaste Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tryck på <b>F11</b> för att växla <i>webbläsaren</i> till helskärm',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Tryck på <b>SKIFT ⌘ f</b> för att växla till helskärm',
@@ -4194,7 +4196,7 @@ $messages['tl'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Pampaandar ng Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(napili na)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para sa mas mainam na karanasan ng pagpapaandar ng bidyo iminumungkahi namin ang [$1 pantingin-tingin ng bidyo na html5].',
+	'mwe-embedplayer-for_best_experience' => 'Para sa mas mainam na karanasan ng pagpapaandar ng bidyo iminumungkahi namin ang <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">pantingin-tingin ng bidyo na html5</a>.', # Fuzzy
 	'mwe-embedplayer-download-warn' => 'Walang napansin na kaugmang pampaandar ng pantingin-tingin, para sa pag-uulit ng pagpapaandar ng pantingin-tingin ikargang paibaba ang [$1 pinakahuling Firefox]', # Fuzzy
 	'mwe-embedplayer-fullscreen-tip' => 'Pindutin ang <b>F11</b> pampalit-lipat ng <i>pantingin-tingin sa web</i> na buo ang panooran',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Pindutin ang <b>shift ⌘ F</b> upang mapalitan at malipatan ang buong panooran',
@@ -4272,7 +4274,7 @@ $messages['tr'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura oynatıcısı',
 	'mwe-embedplayer-ogg-player-selected' => '(seçili)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için önerimiz:<br />[$1 Firefox 3.5].', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Daha iyi bir video oynatma deneyimi için önerimiz:<br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">Firefox 3.5</a>.', # Fuzzy
 	'mwe-embedplayer-do_not_warn_again' => 'Gelecekte bu iletiyi gösterme',
 	'mwe-embedplayer-playerSelect' => 'Oynatıcılar',
 	'mwe-embedplayer-read_before_embed' => 'Lütfen gerçekten gömmeden <a href="http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding" target="new">uzaktan gömme hakkındaki güvenlik notlarını</a> okuyun!',
@@ -4365,7 +4367,7 @@ $messages['uk'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Програвач Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(обрано)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Для кращого відтворення відео рекомендуємо [$1 html5 відео браузер].',
+	'mwe-embedplayer-for_best_experience' => 'Для кращого відтворення відео рекомендуємо <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">html5 відео браузер</a>.',
 	'mwe-embedplayer-download-warn' => 'Не знайдено вбудованого програвача для браузера, для відтворення в браузері завантажте, будь ласка, [$1 останній Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Натисніть кнопку <b>F11</b> для перемикання <i>веб-браузеру</i> у повноекранний режим',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Натисніть кнопку <b>shift ⌘ F</b> для переходу у повноекранний режим',
@@ -4602,7 +4604,7 @@ $messages['zh-hans'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura播放器',
 	'mwe-embedplayer-ogg-player-selected' => '（已选）',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => '为了得到更好的视频播放体验，我们推荐[$1 HTML5视频浏览器]。',
+	'mwe-embedplayer-for_best_experience' => '为了得到更好的视频播放体验，我们推荐<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5视频浏览器</a>。', # Fuzzy
 	'mwe-embedplayer-download-warn' => '检测到播放器和浏览器不兼容：为了能在浏览器中播放，请下载[$1 最新Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => '按<b>F11</b>切换浏览器至全屏',
 	'mwe-embedplayer-fullscreen-tip-osx' => '按<b>Shift ⌘ F</b>切换至全屏',
@@ -4688,7 +4690,7 @@ $messages['zh-hant'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura播放器',
 	'mwe-embedplayer-ogg-player-selected' => '（已選取）',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => '為取得更好視訊播放體驗，我們推薦[$1 HTML5視訊瀏覽器]。',
+	'mwe-embedplayer-for_best_experience' => '為取得更好視訊播放體驗，我們推薦<a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5視訊瀏覽器</a>。', # Fuzzy
 	'mwe-embedplayer-download-warn' => '檢測到播放器與瀏覽器不兼容，如希望於瀏覽器中播放請下載[$1 最新版本Firefox瀏覽器]',
 	'mwe-embedplayer-fullscreen-tip' => '按<b>F11</b>把瀏覽器設為全屏',
 	'mwe-embedplayer-fullscreen-tip-osx' => '按<b>Shift ⌘ F</b>設為全屏',

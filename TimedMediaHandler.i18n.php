@@ -1100,6 +1100,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'timedmedia-desc' => 'WebM, Ogg Theora, Vorbis, srt форматаш ловш аудио, видео а субтитраш а кечерг',
 	'timedmedia-ogg-short-audio' => 'Аьзнийн файл Ogg $1, $2',
 	'timedmedia-ogg-long-audio' => 'аьзнийн файл Ogg $1, дохалла (хан) $2, $3',
 	'timedmedia-ogg-long-multiplexed' => 'мультиплекан аудио/видео-файл Ogg, $1, йохалла $2, $4×$5 пиксель, $3 ерриг',
@@ -3538,6 +3539,7 @@ $messages['li'] = array(
  * @author Bonevarluri
  */
 $messages['lrc'] = array(
+	'timedmedia-wav-pcm-required' => 'شما فقط تونیت پی سی ام نه سوار بکید',
 	'timedmedia-download' => 'گرتن جانیا',
 	'timedmedia-desc-link' => 'دباره ای جانیا',
 	'timedmedia-source-file-desc' => 'اصلی $1 جانیا, $2 × $3 ($4)',
