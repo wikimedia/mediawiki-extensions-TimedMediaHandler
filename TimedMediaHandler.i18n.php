@@ -503,10 +503,6 @@ Parameters:
 
 Parameters:
 * $1 - number of videos',
-	'timedmedia-audios' => 'Number of audio files on [[Special:TimedMediaHandler]]. $1 is number of audio files.',
-	'timedmedia-ogg-audios' => 'Number of ogg audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
-	'timedmedia-flac-audios' => 'Number of FLAC audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
-	'timedmedia-wav-audios' => 'Number of WAV audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
 	'timedmedia-derivative-state-transcodes' => 'Number of transcodes. Parameters:
 * $1 - number of transcodes',
 	'timedmedia-derivative-state-active' => 'currently active transcoes
@@ -520,6 +516,10 @@ Parameters are:
 * $1 number of transcodes',
 	'timedmedia-file' => 'Used as table column header.
 {{Identical|File}}',
+	'timedmedia-audios' => 'Number of audio files on [[Special:TimedMediaHandler]]. $1 is number of audio files.',
+	'timedmedia-ogg-audios' => 'Number of ogg audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
+	'timedmedia-flac-audios' => 'Number of FLAC audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
+	'timedmedia-wav-audios' => 'Number of WAV audio files, displayed on [[Special:TimedMediaHandler]]. $1 is the number of files',
 	'right-transcode-reset' => '{{doc-right|transcode-reset}}',
 	'right-transcode-status' => '{{doc-right|transcode-status}}',
 	'action-transcode-status' => '{{doc-action|transcode-status}}',
@@ -1444,6 +1444,10 @@ Du kannst <a href="$1">den Clip herunterladen</a> oder <a href="//www.mediawiki.
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}',
 	'timedmedia-file' => 'Datei',
+	'timedmedia-audios' => '{{PLURAL:$1|Eine Audiodatei|$1 Audiodateien}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|Eine OGG-Audiodatei|$1 OGG-Audiodateien}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|Eine FLAC-Audiodatei|$1 FLAC-Audiodateien}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|Eine WAV-Audiodatei|$1 WAV-Audiodateien}}',
 	'right-transcode-reset' => 'Fehlgeschlagene oder erfolgreiche Umschlüsselungen von Video-Dateien zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen',
 	'right-transcode-status' => '[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten',
 	'action-transcode-status' => 'den aktuellen Transkodierungstatus anzusehen',
@@ -3514,6 +3518,10 @@ Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="//www.mediawiki.or
 	'timedmedia-ogg-videos' => '{{PLURAL:$1|$1 Ogg Video|$1 Ogg Videoen}}',
 	'timedmedia-webm-videos' => '{{PLURAL:$1|$1 WebM Video|$1 WebM Videoen}}',
 	'timedmedia-file' => 'Fichier',
+	'timedmedia-audios' => '{{PLURAL:$1|$1 Audio-Fichier|$1 Audio-Fichieren}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 Ogg Audio-Fichier|$1 Ogg Audio-Fichieren}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1 FLAC Audio-Fichier|$1 FLAC Audio-Fichieren}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1 WAV Audio-Fichier|$1 WAV Audio-Fichieren}}',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
@@ -3550,6 +3558,7 @@ $messages['lrc'] = array(
 	'timedmedia-wav-pcm-required' => 'شما فقط تونیت پی سی ام نه سوار بکید',
 	'timedmedia-download' => 'گرتن جانیا',
 	'timedmedia-desc-link' => 'دباره ای جانیا',
+	'timedmedia-percent-done' => 'د حدود $1% انجوم بی',
 	'timedmedia-source-file-desc' => 'اصلی $1 جانیا, $2 × $3 ($4)',
 	'timedmedia-file' => 'جانیا',
 );
@@ -3719,6 +3728,10 @@ $messages['mk'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 прекодирање во редица на чекање|$1 прекодирања во редица на чекање}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}',
 	'timedmedia-file' => 'Податотека',
+	'timedmedia-audios' => '{{PLURAL:$1|Една аудиоснимка|$1 аудиоснимки}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|Една Ogg-аудиоснимка|$1 Ogg-аудиоснимки}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|Една FLAC-аудиоснимка|$1 FLAC-аудиоснимки}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|Една WAV-аудиоснимка|$1 WAV-аудиоснимки}}',
 	'right-transcode-reset' => 'Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.',
 	'right-transcode-status' => 'Преглед на [[Special:TimedMediaHandler|информации за тековните активности во прекодирањето]]',
 	'action-transcode-status' => 'преглед на тековниот статус на прекодирањето',

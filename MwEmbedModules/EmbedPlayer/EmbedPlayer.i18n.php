@@ -1490,7 +1490,7 @@ $messages['gl'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Reprodutor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo html5</a>.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Para unha mellor experiencia de reprodución de vídeo recomendamos un <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo HTML5</a>.',
 	'mwe-embedplayer-download-warn' => 'Non se detectou ningún reprodutor integrado compatible co navegador: Para ter unha mellor experiencia de reprodución de vídeo recomendamos a [$1 última versión do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Prema <b>F11</b> para activar ou desactivar a pantalla completa do <i>navegador web</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Prema <b>maiús ⌘ F</b> para activar ou desactivar a pantalla completa',
