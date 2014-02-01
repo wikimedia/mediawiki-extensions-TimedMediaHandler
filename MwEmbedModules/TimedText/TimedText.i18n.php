@@ -594,6 +594,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Armin1392
  * @author Ebraminio
  * @author Pouyana
  * @author Reza1615
@@ -622,8 +623,15 @@ $messages['fa'] = array(
 	'mwe-timedtext-textcat-tad' => 'توضیح صوتی',
 	'mwe-timedtext-textcat-ktv' => 'کارائوکه',
 	'mwe-timedtext-textcat-tik' => 'متن تیکر',
+	'mwe-timedtext-textcat-ar' => 'مناطق فعال',
 	'mwe-timedtext-textcat-nb' => 'یادداشت',
+	'mwe-timedtext-textcat-meta' => 'فرادادهٔ به هنگام',
+	'mwe-timedtext-textcat-trx' => 'رونوشت',
 	'mwe-timedtext-textcat-lrc' => 'متن ترانه‌ها',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 زیرنویس برای کلیپ: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'هیچ $1 زیرنویسی برای کلیپ پیدا نشد: $2',
+	'mwe-timedtext-request-subs' => 'درخواست رونویسی',
+	'mwe-timedtext-no-subs' => 'هیچ آهنگ متنی دردسترس نیست',
 );
 
 /** Finnish (suomi)

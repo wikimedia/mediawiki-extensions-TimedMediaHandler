@@ -1183,6 +1183,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Armin1392
  * @author Ebraminio
  * @author Mjbmr
  * @author Pouyana
@@ -1218,8 +1219,14 @@ $messages['fa'] = array(
 	'mwe-embedplayer-close_btn' => 'بستن',
 	'mwe-embedplayer-ogg-player-selected' => '(انتخاب شده)',
 	'mwe-embedplayer-playerSelect' => 'بازیکنان',
+	'mwe-embedplayer-embed_site_or_blog' => 'قرار دادن در یک صفحه',
+	'mwe-embedplayer-embed_wiki' => 'قرار دادن در یک ویکی',
+	'mwe-embedplayer-related_videos' => 'مرتبط شدن ویدیو‌ها',
 	'mwe-embedplayer-seeking' => 'در حال پیگرد',
 	'mwe-embedplayer-buffering' => 'در حال بافر',
+	'mwe-embedplayer-video-h264' => 'ویدیو اچ.۲۶۴',
+	'mwe-embedplayer-video-webm' => 'ویدیو وب‌ام',
+	'mwe-embedplayer-video-flv' => 'فلش ویدیو',
 );
 
 /** Finnish (suomi)
