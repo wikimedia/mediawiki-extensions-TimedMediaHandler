@@ -3374,6 +3374,7 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author ITurtle
  * @author Kwj2772
+ * @author Priviet
  * @author ToePeu
  * @author 아라
  */
@@ -3459,6 +3460,10 @@ $messages['ko'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|대기 중인 코드 변환 $1개}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|실패한 코드 변환 $1개}}',
 	'timedmedia-file' => '파일',
+	'timedmedia-audios' => '{{PLURAL:$1|$1개의 오디오 파일}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1개의 Ogg 오디오 파일}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1개의 FLAC 오디오 파일}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1개의 WAV 오디오 파일}}',
 	'right-transcode-reset' => '초기화를 실패했거나 동영상이 코드 변환했기 때문에 다시 작업 대기열에 삽입됩니다.',
 	'right-transcode-status' => '[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기',
 	'action-transcode-status' => '현재 코드 변환 상태 보기',
@@ -3623,6 +3628,7 @@ $messages['li'] = array(
  * @author Bonevarluri
  */
 $messages['lrc'] = array(
+	'timedmedia-ogg-short-audio' => 'جانیا دنگ اوگ $1،$2',
 	'timedmedia-wav-pcm-required' => 'شما فقط تونیت پی سی ام نه سوار بکید',
 	'timedmedia-download' => 'گرتن جانیا',
 	'timedmedia-desc-link' => 'دباره ای جانیا',
@@ -5920,6 +5926,10 @@ $messages['uk'] = array(
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|1=$1 перекодування в черзі|$1 перекодувань в черзі}}',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|1=$1 невдалі перекодування|$1 невдалих перекодувань}}',
 	'timedmedia-file' => 'Файл',
+	'timedmedia-audios' => '{{PLURAL:$1|$1 аудіо-файл|$1 аудіо-файлів̟|$1 аудіо-файли}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 аудіо-файл Ogg|$1 аудіо-файлів Ogg|$1 аудіо-файли Ogg}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1 аудіо-файл FLAC|$1 аудіо-файлів FLAC|$1 аудіо-файли FLAC}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1 аудіо-файл WAV|$1 аудіо-файлів WAV|$1 аудіо-файли WAV}}',
 	'right-transcode-reset' => 'Скинуто невдалі або перекодовані відео, тож вони знову занесені в чергу завдань.',
 	'right-transcode-status' => 'Перегляньте [[Special:TimedMediaHandler|інформацію про поточну перекодувальну діяльність]]',
 	'action-transcode-status' => 'Перегляд поточного стану перекодування',

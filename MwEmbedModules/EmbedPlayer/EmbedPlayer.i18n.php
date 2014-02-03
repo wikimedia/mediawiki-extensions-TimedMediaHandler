@@ -1194,6 +1194,7 @@ $messages['fa'] = array(
 	'mwe-embedplayer-credit-title' => 'عنوان: $1',
 	'mwe-embedplayer-credit-date' => 'تاریخ: $1',
 	'mwe-embedplayer-credit-author' => 'نویسنده = $1',
+	'mwe-embedplayer-nocredits' => 'هیچ اعتباری در دسترس نیست',
 	'mwe-embedplayer-loading_plugin' => 'در حال بارگیری افزایه...',
 	'mwe-embedplayer-select_playback' => 'تنظیم اولویت پخش',
 	'mwe-embedplayer-add_to_end_of_sequence' => 'اضافه کردن به انتهای دنباله',
