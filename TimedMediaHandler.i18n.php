@@ -1129,6 +1129,10 @@ $messages['ce'] = array(
 	'timedmedia-hours' => '{{PLURAL:$1|1 сахьт}}', # Fuzzy
 	'timedmedia-source-file' => 'Хьост $1',
 	'timedmedia-videos' => '{{PLURAL:$1|1=$1 видео-файл|$1 видео-файлаш}}', # Fuzzy
+	'timedmedia-audios' => '{{PLURAL:$1|$1 аудио-файл|$1 аудио-файлаш}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 аудио-файл Ogg|$1 аудио-файлаш Ogg}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1 аудио-файл FLAC|$1 аудио-файлаш FLAC}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1 аудио-файл WAV|$1 аудио-файлаш WAV}}',
 	'right-transcode-reset' => 'Кхосса дика йоцу видеош уьш рогӀехь хилийта.',
 	'right-transcode-status' => 'Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]',
 );
