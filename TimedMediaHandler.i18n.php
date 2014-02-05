@@ -3637,6 +3637,7 @@ $messages['lrc'] = array(
 	'timedmedia-download' => 'گرتن جانیا',
 	'timedmedia-desc-link' => 'دباره ای جانیا',
 	'timedmedia-percent-done' => 'د حدود $1% انجوم بی',
+	'timedmedia-days' => '{{جمی:$1|1 روز|$1 روز}}', # Fuzzy
 	'timedmedia-source-file-desc' => 'اصلی $1 جانیا, $2 × $3 ($4)',
 	'timedmedia-file' => 'جانیا',
 );
