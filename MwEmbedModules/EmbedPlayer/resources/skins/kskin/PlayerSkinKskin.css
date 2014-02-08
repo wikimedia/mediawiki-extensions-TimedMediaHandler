@@ -7,6 +7,7 @@
 }
 .k-player .ui-widget-content {
 	color: #555;
+	z-index: 1503;
 }
 .k-player .ui-widget-content a{
 	color: #555;
