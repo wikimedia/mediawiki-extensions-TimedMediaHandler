@@ -3532,7 +3532,7 @@ enables you to take advantage of the HTML5 <code><nowiki><video></nowiki></code>
 	'mwe-embedplayer-ogg-player-kplayer' => 'Tocador Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(selecionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador que suporta HTML5</a>.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador que suporta HTML5</a>.',
 	'mwe-embedplayer-download-warn' => 'Não foi detetado nenhum leitor compatível integrado ao browser: para reproduzir pelo browser, faça o download da [$1 última versão do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Aperte <b>F11</b> para ativar ou desativar o modo de tela inteira no <i>browser</i>',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Aperte <b>shift ⌘ F</b> para ativar ou desativar o modo de tela inteira',
