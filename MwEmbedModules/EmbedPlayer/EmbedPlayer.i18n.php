@@ -3378,6 +3378,7 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Cainamarques
  * @author Hamilton Abreu
+ * @author Imperadeiro98
  * @author Luckas
  * @author Malafaya
  * @author SandroHc
@@ -3441,7 +3442,7 @@ $messages['pt'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Leitor Kaltura',
 	'mwe-embedplayer-ogg-player-selected' => '(seleccionado)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo html5</a>.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Para uma melhor experiência de reprodução de vídeo recomendamos um <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">navegador de vídeo HTML5</a>.',
 	'mwe-embedplayer-download-warn' => 'Não foi detectado nenhum leitor compatível integrado no navegador: para reproduzir no navegador, faça a descarga da [$1 última versão do Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Carregue em <b>F11</b> para activar ou desactivar o modo de ecrã inteiro no navegador',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Carregue em <b>shift ⌘ F</b> para activar ou dcesativar o modo de ecrã inteiro',

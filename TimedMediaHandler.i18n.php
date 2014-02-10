@@ -600,6 +600,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author Asaifm
  * @author Meno25
  * @author OsamaK
  * @author روخو
@@ -633,6 +634,7 @@ $messages['ar'] = array(
 	'timedmedia-derivative-desc-160p.ogv' => 'انخفاض عرض النطاق الترددي أوج فيديو (160P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'تحميل أوج فيديو بجودة عالية  (720P)',
 	'timedmedia-subtitle-language' => '$1 ($2) ترجمات',
+	'timedmedia-file' => 'ملف',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
