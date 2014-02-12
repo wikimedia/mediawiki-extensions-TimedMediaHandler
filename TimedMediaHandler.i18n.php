@@ -631,8 +631,10 @@ $messages['ar'] = array(
 	'timedmedia-percent-done' => 'وصل لنسبة $1% انتهى',
 	'timedmedia-ogg' => 'أو جي جي',
 	'timedmedia-source-file' => '$1 مصدر',
+	'timedmedia-source-audio-file-desc' => 'الملف $1 الأصلي ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'انخفاض عرض النطاق الترددي أوج فيديو (160P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'تحميل أوج فيديو بجودة عالية  (720P)',
+	'timedmedia-subtitle-new-go' => 'اذهب',
 	'timedmedia-subtitle-language' => '$1 ($2) ترجمات',
 	'timedmedia-file' => 'ملف',
 );
