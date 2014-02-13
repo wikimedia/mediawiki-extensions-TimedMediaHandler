@@ -316,6 +316,7 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'mwe-timedtext-stage-translate' => 'Гоч',
+	'mwe-timedtext-select-language' => 'Харжа мотт',
 	'mwe-timedtext-search' => 'Лаха клип',
 	'mwe-timedtext-textcat-tad' => 'Аудио-хаам',
 );
