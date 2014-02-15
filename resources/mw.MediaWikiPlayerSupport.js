@@ -293,10 +293,12 @@
 					// add text link already present
 					return ;
 				}
-				
+
+				var pageTitle = 'TimedText:' +
+					decodeURIComponent( embedPlayer.apiTitleKey ).replace(/^File:|^Image:/, '');
 				var addTextPage =  mw.getApiProviderURL( apiProvider )
 									.replace( 'api.php', 'index.php') +
-									'?title=TimedText:' + unescape( embedPlayer.apiTitleKey ).replace(/^File:|^Image:/, '');
+									'?title=' + encodeURIComponent( pageTitle );
 
 				var $li = $.getLineItem( mw.msg( 'mwe-timedtext-upload-timed-text'), 'script', function() {
 					window.location = addTextPage;
