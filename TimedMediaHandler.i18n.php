@@ -606,7 +606,7 @@ $messages['an'] = array(
  * @author روخو
  */
 $messages['ar'] = array(
-	'timedmedia-desc' => 'متحكم لملفات Ogg Theora وVorbis، مع لاعب جافاسكريت', # Fuzzy
+	'timedmedia-desc' => 'مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ملف صوت، $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 ملف فيديو، $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 ملف ميديا، $2',
@@ -1504,12 +1504,15 @@ $messages['diq'] = array(
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
 	'timedmedia-status' => 'Weziyet',
 	'timedmedia-actions' => 'Kerdışi',
+	'timedmedia-not-ready' => 'Mewan',
 	'timedmedia-days' => '{{PLURAL:$1|1 roce|$1 roci}}',
 	'timedmedia-hours' => '{{PLURAL:$1|1 seate|$1 seati}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 deqa|$1 deqey}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|1 saniya|$1 saniyey}}',
 	'timedmedia-mp4' => 'MP4',
+	'timedmedia-source-file' => '$1 çıme',
 	'timedmedia-subtitle-new-go' => 'Şo',
+	'timedmediahandler' => 'DestoğMedyaZemandar',
 	'timedmedia-file' => 'Dosya',
 );
 
@@ -3763,8 +3766,8 @@ $messages['mk'] = array(
 	'timedmedia-percent-done' => 'Сработено: околу $1%',
 	'timedmedia-in-job-queue' => 'Додадено во редицата на задачи пред $1',
 	'timedmedia-unknown-target-size' => 'Непозната целна големина. $1 е шифрирано',
-	'timedmedia-days' => '{{PLURAL:$1|1 ден|$1 дена}}',
-	'timedmedia-hours' => '{{PLURAL:$1|1 час|$1 часа}}',
+	'timedmedia-days' => '{{PLURAL:$1|еден ден|$1 дена}}',
+	'timedmedia-hours' => '{{PLURAL:$1|еден час|$1 часа}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|една минута|$1 минути}}',
 	'timedmedia-seconds' => '{{PLURAL:$1|една секунда|$1 секунди}}',
 	'timedmedia-reset' => 'Одново',
@@ -4481,6 +4484,7 @@ $messages['pdc'] = array(
 
 /** Polish (polski)
  * @author Ankry
+ * @author Chrumps
  * @author Derbeth
  * @author Faren
  * @author Leinad
@@ -4501,6 +4505,8 @@ $messages['pl'] = array(
 	'timedmedia-ogg-long-error' => 'niepoprawny plik Ogg: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 plik wideo, $2',
 	'timedmedia-webm-long-video' => 'WebM plik audio-wideo, $1, długość $2, $4 × $5 pikseli, ogółem $3',
+	'timedmedia-flac-short-audio' => 'Plik audio FLAC, $1',
+	'timedmedia-wav-short-audio' => 'Plik audio WAV, $1',
 	'timedmedia-no-player-js' => 'Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />
 Możesz <a href="$1">pobrać plik</a> lub <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.',
 	'timedmedia-more' => 'Więcej...',
