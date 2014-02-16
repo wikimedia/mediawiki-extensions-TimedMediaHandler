@@ -1504,7 +1504,7 @@ $messages['diq'] = array(
 	'timedmedia-desc-link' => 'derheqê dosyayi de',
 	'timedmedia-status' => 'Weziyet',
 	'timedmedia-actions' => 'Kerdışi',
-	'timedmedia-not-ready' => 'Mewan',
+	'timedmedia-not-ready' => 'Hazır niyo',
 	'timedmedia-days' => '{{PLURAL:$1|1 roce|$1 roci}}',
 	'timedmedia-hours' => '{{PLURAL:$1|1 seate|$1 seati}}',
 	'timedmedia-minutes' => '{{PLURAL:$1|1 deqa|$1 deqey}}',
@@ -1512,7 +1512,7 @@ $messages['diq'] = array(
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1 çıme',
 	'timedmedia-subtitle-new-go' => 'Şo',
-	'timedmediahandler' => 'DestoğMedyaZemandar',
+	'timedmediahandler' => 'Programê kontroliê zemanê kontrolbiyayey',
 	'timedmedia-file' => 'Dosya',
 );
 
@@ -3955,6 +3955,10 @@ $messages['mr'] = array(
 	'timedmedia-dismiss' => 'बंद करा',
 	'timedmedia-download' => 'संचिका अधिभारण करा',
 	'timedmedia-desc-link' => 'या संचिकेबद्दलची माहिती',
+	'timedmediahandler' => 'टाईम्डमिडियाहॅंडलर',
+	'timedmedia-videos' => '{{PLURAL:$1|$1 व्हीडिओ}}',
+	'timedmedia-audios' => '{{PLURAL:$1|$1 ध्वनी संचिका}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 Ogg ध्वनी संचिका}}',
 );
 
 /** Malay (Bahasa Melayu)
