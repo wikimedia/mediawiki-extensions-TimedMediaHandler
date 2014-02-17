@@ -634,9 +634,18 @@ $messages['ar'] = array(
 	'timedmedia-source-audio-file-desc' => 'الملف $1 الأصلي ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => 'انخفاض عرض النطاق الترددي أوج فيديو (160P)',
 	'timedmedia-derivative-desc-720p.ogv' => 'تحميل أوج فيديو بجودة عالية  (720P)',
+	'timedmedia-subtitle-new-desc' => "قم بإختيار اللغة وإضغط على زر '''{{int:Timedmedia-subtitle-new-go}}'''",
 	'timedmedia-subtitle-new-go' => 'اذهب',
 	'timedmedia-subtitle-language' => '$1 ($2) ترجمات',
+	'timedmedia-subtitle-no-video' => 'لا يوجد فيديو مقترن بصفحة ترجمة أو نصوص الفيديو الحالية.',
+	'timedmedia-subtitle-no-subtitles' => 'لا توجد نصوص أو ترجمات في  $1 لهذا الفيديو، يمكنك [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة] وإضافتهم.',
+	'timedmedia-subtitle-remote-link' => 'يمكنك [$1 مطالعة صفحة الوصف] لهذا الملف على $2',
+	'timedmedia-videos' => '{{$1 فيديو|فيديو واحد|$1 videos}}', # Fuzzy
+	'timedmedia-ogg-videos' => '{{$1 فيديو أوغ|فيديو أوغ واحد|$1 videos}}', # Fuzzy
+	'timedmedia-webm-videos' => '{{$1 فيديو ويب إم|فيديو ويب إم واحد|$1 videos}}', # Fuzzy
 	'timedmedia-file' => 'ملف',
+	'timedmedia-audios' => '{{PLURAL:$1|ملف صوتي واحد|$1 ملف صوتي}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|ملف صوتي واحد بصيغة أوغ|$1 ملف صوتي بصيغة أوغ}}',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -4510,7 +4519,9 @@ $messages['pl'] = array(
 	'timedmedia-webm-short-video' => 'WebM $1 plik wideo, $2',
 	'timedmedia-webm-long-video' => 'WebM plik audio-wideo, $1, długość $2, $4 × $5 pikseli, ogółem $3',
 	'timedmedia-flac-short-audio' => 'Plik audio FLAC, $1',
+	'timedmedia-flac-long-audio' => 'Plik dźwiękowy FLAC, długość $1, przepływność $2',
 	'timedmedia-wav-short-audio' => 'Plik audio WAV, $1',
+	'timedmedia-wav-long-audio' => 'Plik dźwiękowy WAV, długość $1, przepływność $2',
 	'timedmedia-no-player-js' => 'Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />
 Możesz <a href="$1">pobrać plik</a> lub <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.',
 	'timedmedia-more' => 'Więcej...',
@@ -4564,6 +4575,10 @@ Czy na pewno chcesz kontynuować?',
 	'timedmedia-derivative-state-queued' => '{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce',
 	'timedmedia-derivative-state-failed' => '{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}',
 	'timedmedia-file' => 'Plik',
+	'timedmedia-audios' => '{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} Ogg',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} FLAC',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} WAV',
 	'right-transcode-reset' => 'Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań',
 	'right-transcode-status' => 'Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]',
 	'action-transcode-status' => 'zobaczenia aktualnego statusu transkodowania',
