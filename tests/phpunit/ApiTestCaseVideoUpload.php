@@ -50,7 +50,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	 * Clean up temporary files etc.
 	 *
 	*/
-	function tearDown() {
+	protected function tearDown() {
 		$testMediaFiles = $this->mediaFilesProvider();
 		foreach( $testMediaFiles as $file ){
 			$file = $file[0];
@@ -62,7 +62,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	/**
 	 * Do login
 	 */
-	function doLogin() {
+	protected function doLogin( $user = 'sysop' ) {
 		$user = self::$users['uploader'];
 
 		$params = array(
@@ -86,7 +86,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	/**
 	 * uploads a file:
 	 */
-	function uploadFile( $file ){
+	public function uploadFile( $file ){
 		global $wgUser;
 		// get a session object
 		$session = $this->doLogin();
