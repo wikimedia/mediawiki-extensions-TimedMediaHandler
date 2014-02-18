@@ -25,7 +25,7 @@ var kplayer = new mw.MediaPlayer('kplayer', [
 var cortadoPlayer = new mw.MediaPlayer( 'cortado', [
 	'video/ogg',
 	'video/ogg; codecs="theora"',
-	'video/ogg; codecs="theora,vorbis"',
+	'video/ogg; codecs="theora, vorbis"',
 	'audio/ogg',
 	'audio/ogg; codecs="vorbis"',
 	'application/ogg'
@@ -230,7 +230,7 @@ mw.EmbedTypes = {
 					}
 
 					// Test for ogg
-					if ( dummyvid.canPlayType( 'video/ogg; codecs="theora,vorbis"' ) ) {
+					if ( dummyvid.canPlayType( 'video/ogg; codecs="theora, vorbis"' ) ) {
 						this.mediaPlayers.addPlayer( oggNativePlayer );
 					// older versions of safari do not support canPlayType,
 				  	// but xiph qt registers mimetype via quicktime plugin
