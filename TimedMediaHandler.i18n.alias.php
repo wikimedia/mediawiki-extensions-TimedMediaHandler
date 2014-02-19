@@ -19,6 +19,11 @@ $specialPageAliases['ar'] = array(
 	'TimedMediaHandler' => array( 'معالج_الميديا_الزمنية' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'TimedMediaHandler' => array( 'معالج_الميديا-الزمنيه' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'TimedMediaHandler' => array( 'TimedMedia-Steuerungsprogramm' ),
