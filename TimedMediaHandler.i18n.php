@@ -5138,6 +5138,16 @@ $messages['sah'] = array(
 	'timedmedia-desc-link' => 'Бу билэ туһунан',
 );
 
+/** Scots (Scots)
+ * @author John Reid
+ */
+$messages['sco'] = array(
+	'timedmedia-audios' => '{{PLURAL:$1|$1 audio file|$1 audio files}}',
+	'timedmedia-ogg-audios' => '{{PLURAL:$1|$1 Ogg audio file|$1 Ogg audio files}}',
+	'timedmedia-flac-audios' => '{{PLURAL:$1|$1 FLAC audio file|$1 FLAC audio files}}',
+	'timedmedia-wav-audios' => '{{PLURAL:$1|$1 WAV audio file|$1 WAV audio files}}',
+);
+
 /** Samogitian (žemaitėška)
  * @author Hugo.arg
  */
