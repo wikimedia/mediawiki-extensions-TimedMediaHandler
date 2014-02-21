@@ -2972,6 +2972,7 @@ $messages['nb'] = array(
 /** Dutch (Nederlands)
  * @author Arent
  * @author Siebrand
+ * @author Southparkfan
  */
 $messages['nl'] = array(
 	'mwe-embedplayer-credit-title' => 'Naam: $1',
@@ -3030,7 +3031,7 @@ $messages['nl'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura mediaspeler',
 	'mwe-embedplayer-ogg-player-selected' => '(geselecteerd)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'Voor een betere kwaliteitsbeleving adviseren we een <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 videobrowser</a>.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'Voor een betere kwaliteitsbeleving adviseren we een <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 videobrowser</a>.',
 	'mwe-embedplayer-download-warn' => 'Er is geen compatibele speler in de browser aangetroffen. Download de [$1 meest recente versie van Firefox] om dit bestand in de browser af te kunnen spelen.',
 	'mwe-embedplayer-fullscreen-tip' => 'Druk op <b>F11</b> om de <i>web browser</i> in het volledige scherm weer te geven',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Typ <b>SHIRT+⌘+F</b> voor volledig scherm of terug',
