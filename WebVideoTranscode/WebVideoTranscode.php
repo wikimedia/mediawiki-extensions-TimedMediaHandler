@@ -319,7 +319,10 @@ class WebVideoTranscode {
 		$maxSize = 0;
 		foreach( $wgEnabledTranscodeSet as $transcodeKey ){
 			if( isset( self::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ){
-				$maxSize = self::$derivativeSettings[$transcodeKey]['maxSize'];
+				$currentSize = self::$derivativeSettings[$transcodeKey]['maxSize'];
+				if( $currentSize > $maxSize ){
+					$maxSize = $currentSize;
+				}
 			}
 		}
 		return $maxSize;
