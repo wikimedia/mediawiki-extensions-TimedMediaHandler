@@ -12,6 +12,8 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 	 *  Test if a transcode job is added for a file once requested
 	 *
 	 * @dataProvider mediaFilesProvider
+	 * Broken as per bug 61878
+	 * @group Broken
 	 */
 	function testTranscodeJobs( $file ){
 		// Upload the file to the mediaWiki system
