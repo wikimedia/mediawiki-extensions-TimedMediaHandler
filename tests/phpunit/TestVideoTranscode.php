@@ -4,7 +4,7 @@
  * @author michael dale
  * @group medium
  */
-class TesVideoTranscode extends ApiTestCaseVideoUpload {
+class TestVideoTranscode extends ApiTestCaseVideoUpload {
 
 	/**
 	 * Once video files are uploaded test transcoding
