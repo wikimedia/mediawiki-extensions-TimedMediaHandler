@@ -2,6 +2,7 @@
 /**
  * @ingroup timedmedia
  * @author michael dale
+ * @group medium
  */
 class TesVideoTranscode extends ApiTestCaseVideoUpload {
 

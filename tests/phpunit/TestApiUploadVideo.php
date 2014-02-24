@@ -12,6 +12,7 @@
 /**
  * @group Database
  * @group Destructive
+ * @group medium
  */
 class TestApiUploadVideo extends ApiTestCaseVideoUpload {
 
