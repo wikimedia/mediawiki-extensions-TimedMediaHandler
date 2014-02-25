@@ -3238,6 +3238,7 @@ $messages['jv'] = array(
  * @author BRUTE
  * @author David1010
  * @author Malafaya
+ * @author Tokoko
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -3252,6 +3253,8 @@ $messages['ka'] = array(
 	'timedmedia-ogg-long-error' => 'არასწორი Ogg-ფაილი: $1',
 	'timedmedia-webm-short-video' => 'WebM $1 ვიდეო ფაილი, $2',
 	'timedmedia-webm-long-video' => 'WebM აუდიო/ვიდეო ფაილი, $1, სიგრძე $2, $4 × $5 პიქსელი, $3 სრული',
+	'timedmedia-flac-short-audio' => 'FLAC აუდიო ფაილი, $1',
+	'timedmedia-wav-short-audio' => 'WAV აუდიო ფაილი, $1',
 	'timedmedia-mp4-short-video' => 'MP4 $1 ვიდეო ფაილი, $2',
 	'timedmedia-mp4-long-video' => 'MP4 აუდიო/ვიდეო ფაილი, $1, სიგრძე $2, $4 × $5 პიქსელი, $3 სრული',
 	'timedmedia-no-player-js' => 'სამწუხაროდ, თქვენ ბრაუზერში გამორთულია JavaScript ან არ არის საჭირო დამკვრელი.<br />
@@ -3272,7 +3275,7 @@ $messages['ka'] = array(
 	'timedmedia-direct-link' => 'მოდიფიცირებული ვარიანტის გადმოწერა',
 	'timedmedia-not-ready' => 'არაა მზად',
 	'timedmedia-completed-on' => '$1-ის დეკოდირება დასრულებულია',
-	'timedmedia-error-on' => 'შეცდომა დეკოდირებისას $1-ზე.', # Fuzzy
+	'timedmedia-error-on' => 'შეცდომა დეკოდირებისას $1-ზე.',
 	'timedmedia-started-transcode' => 'დეკოდირება გაშვებულია $1 წინ. $2',
 	'timedmedia-percent-done' => 'დაახლოებით $1% შესრულებულია',
 	'timedmedia-in-job-queue' => 'დამატებულია დავალებების რიგში $1 წინ',
