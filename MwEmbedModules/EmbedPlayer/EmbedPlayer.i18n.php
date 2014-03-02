@@ -2784,7 +2784,7 @@ $messages['ml'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'കൽടൂറ പ്ലേയർ',
 	'mwe-embedplayer-ogg-player-selected' => '(തിരഞ്ഞെടുത്തവ)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'ഓ‌‌എംറ്റികെ ഫ്ലാഷ് വോർബിസ്',
-	'mwe-embedplayer-for_best_experience' => 'മെച്ചപ്പെട്ട ചലച്ചിത്രാസ്വാദനത്തിനു ഞങ്ങൾ നിർദ്ദേശിക്കുന്നത്:<br /><a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">എച്ച്.റ്റി.എം.എൽ.5 വീഡിയോ ബ്രൗസർ</a>.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'മെച്ചപ്പെട്ട ചലച്ചിത്രാസ്വാദനത്തിനു ഞങ്ങൾ നിർദ്ദേശിക്കുന്നത് <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">എച്ച്.റ്റി.എം.എൽ.5 വീഡിയോ ബ്രൗസർ</a> ആണ്.',
 	'mwe-embedplayer-download-warn' => 'ബ്രൗസറിനുള്ളിൽ അനുരൂപമായ പ്രവർത്തനോപകരണം കണ്ടെത്താനായില്ല: ബ്രൗസറിനുള്ളിൽ തന്നെ പ്രവർത്തിപ്പിക്കാൻ, ദയവായി [$1 ഏറ്റവും പുതിയ ഫയർഫോക്സ്] ഡൗൺലോഡ് ചെയ്യുക',
 	'mwe-embedplayer-fullscreen-tip' => ' <i>വെബ് ബ്രൗസർ</i> സ്ക്രീൻ നിറഞ്ഞ് കാണാനും മാറ്റാനും  <b>F11</b> അമർത്തുക',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'സ്ക്രീൻ നിറഞ്ഞ് കാണാനും മാറ്റാനും <b>ഷിഫ്റ്റ് ⌘ F</b> അമർത്തുക',
