@@ -629,10 +629,16 @@ $messages['fa'] = array(
 	'mwe-timedtext-textcat-meta' => 'فرادادهٔ به هنگام',
 	'mwe-timedtext-textcat-trx' => 'رونوشت',
 	'mwe-timedtext-textcat-lrc' => 'متن ترانه‌ها',
+	'mwe-timedtext-textcat-lin' => 'زبان نشانه‌گذاری',
+	'mwe-timedtext-textcat-cue' => 'نقاط نشانه',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 زیرنویس برای کلیپ: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'هیچ $1 زیرنویسی برای کلیپ پیدا نشد: $2',
 	'mwe-timedtext-request-subs' => 'درخواست رونویسی',
 	'mwe-timedtext-no-subs' => 'هیچ آهنگ متنی دردسترس نیست',
+	'mwe-timedtext-request-subs-desc' => 'افزودن درخواست برای این پوشه فیلم برای رونویسی شدن',
+	'mwe-timedtext-request-subs-done' => 'رونویسی درخواست اضافه شده. [$1 مشاهده همه درخواست‌های رونویسی]',
+	'mwe-timedtext-request-subs-fail' => 'عدم موفقیت افزودن درخواست رونویسی. آیا شما وارد شده‌اید؟',
+	'mwe-timedtext-request-already-done' => 'رونویسی این فیلم قبلاً درخواست شده‌است. [$1 مشاهده همه درخواست‌های رونویسی]',
 );
 
 /** Finnish (suomi)
