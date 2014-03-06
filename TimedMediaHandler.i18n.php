@@ -5830,21 +5830,31 @@ $messages['tly'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Incelemeelemani
  * @author Joseph
  * @author Mach
  * @author Runningfridgesrule
  * @author Srhat
  */
 $messages['tr'] = array(
-	'timedmedia-desc' => 'Ogg Theora ve Vorbis dosyaları için işleyici, JavaScript oynatıcısı ile', # Fuzzy
+	'timedmedia-desc' => 'Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği',
 	'timedmedia-ogg-short-audio' => 'Ogg $1 ses dosyası, $2',
-	'timedmedia-ogg-short-video' => 'Ogg $1 film dosyası, $2',
+	'timedmedia-ogg-short-video' => 'Ogg $1 video dosyası, $2',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medya dosyası, $2',
 	'timedmedia-ogg-long-audio' => 'Ogg $1 ses dosyası, süre $2, $3',
-	'timedmedia-ogg-long-video' => 'Ogg $1 film dosyası, süre $2, $4×$5 piksel, $3',
-	'timedmedia-ogg-long-multiplexed' => 'Ogg çok düzeyli ses/film dosyası, $1, süre $2, $4×$5 piksel, $3 genelde',
+	'timedmedia-ogg-long-video' => 'Ogg $1 video dosyası, süre $2, $4×$5 piksel, $3',
+	'timedmedia-ogg-long-multiplexed' => 'Ogg çok düzeyli ses/video dosyası, $1, süre $2, $4×$5 piksel, $3 genelde',
 	'timedmedia-ogg-long-general' => 'Ogg medya dosyası, süre $2, $3',
 	'timedmedia-ogg-long-error' => 'Geçersiz ogg dosyası: $1',
+	'timedmedia-webm-short-video' => 'WebM $1 video dosyası, $2',
+	'timedmedia-webm-long-video' => 'WebM ses/video dosyası, $1, süre $2, $4 × $5 piksel, $3 tümü',
+	'timedmedia-flac-short-audio' => 'FLAC ses dosyası, $1',
+	'timedmedia-flac-long-audio' => 'FLAC ses dosyası, süre $1, $2 tümü',
+	'timedmedia-wav-short-audio' => 'WAV ses dosyası, $1',
+	'timedmedia-wav-long-audio' => 'WAV ses dosyası, süre $1, $2 tümü',
+	'timedmedia-wav-pcm-required' => 'Yalnızca PCM (Darbeli Kod Modülasyonu) WAV yükleyebilirsiniz.',
+	'timedmedia-mp4-short-video' => 'MP4 $1 video dosyası, $2',
+	'timedmedia-mp4-long-video' => 'MP4 ses/video dosyası, $1, süre $2, $4 × $5 piksel, $3 tümü',
 	'timedmedia-more' => 'Daha...',
 	'timedmedia-dismiss' => 'Kapat',
 	'timedmedia-download' => 'Dosya indir',
