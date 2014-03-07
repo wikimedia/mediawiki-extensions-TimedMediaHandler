@@ -1224,12 +1224,15 @@ $messages['fa'] = array(
 	'mwe-embedplayer-share' => 'به اشتراک گذاشتن',
 	'mwe-embedplayer-credits' => 'اعتبار',
 	'mwe-embedplayer-about-library' => 'دربارهٔ‌کالترا پلیر',
+	'mwe-embedplayer-about-library-desc' => 'کتابخانه رسانه اچ‌تی‌ام‌ال۵ کالتُرا به شمارا قادر به مزیت اچ‌تی‌ام‌ال۵و ال‌تی؛ویدیوو جی‌تی؛ و ال‌تی؛صوتی‌وجی‌تی؛برچسبهای امروز با رابط دستگاه پخش سازگار در سراسر همه مرورگرهای اصلی می‌کند.
+[ $1 بیشتر درباره کتابخانه پخش کالتُرا].',
 	'mwe-embedplayer-clip_linkback' => 'صفحهٔ منبع کلیپ',
 	'mwe-embedplayer-choose_player' => 'انتخاب دستگاه پخش ویدیو',
 	'mwe-embedplayer-no-player' => 'دسترسی به پخش‌کننده وجود ندارد $1',
 	'mwe-embedplayer-share_this_video' => 'این تصویر را به اشتراک گذارید',
 	'mwe-embedplayer-video_credits' => 'اعتبارات ویدیو',
 	'mwe-embedplayer-no-video_credits' => 'هیچ اعتباری در دسترس نیست',
+	'mwe-embedplayer-kaltura-platform-title' => 'منبع باز صحنه ویدیو کالتُرا',
 	'mwe-embedplayer-menu_btn' => 'فهرست',
 	'mwe-embedplayer-close_btn' => 'بستن',
 	'mwe-embedplayer-ogg-player-vlc-player' => 'وی‌ال‌سی پلیر',
@@ -1245,6 +1248,8 @@ $messages['fa'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'پخش کالترا',
 	'mwe-embedplayer-ogg-player-selected' => '(انتخاب شده)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'اُ‌ام‌تی‌کا فلش وُربیس',
+	'mwe-embedplayer-for_best_experience' => 'برای یک تجربه پخش ویدیو بهتر، ما یک <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 video browser</a> را توصیه می‌کنیم.',
+	'mwe-embedplayer-download-warn' => 'هیچ پخش در مرورگر سازگاری شناسایی نشد: برای پخش در مرورگر، لطفاً [ $1  آخرین فایرفاکس] را دانلود کنید',
 	'mwe-embedplayer-fullscreen-tip' => 'فشار دادن <b>F11</b> دکمه <i> مرورگر وب </i> تمام صفحه',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'فشار دادن <b> کلید مبدل ⌘ F</b> به دکمه تمام صفحه',
 	'mwe-embedplayer-do_not_warn_again' => 'در آینده، این پیام را نشان ندهید',
@@ -4045,6 +4050,7 @@ $messages['sr-el'] = array(
 /** Swedish (svenska)
  * @author Ainali
  * @author Dafer45
+ * @author Lokal Profil
  */
 $messages['sv'] = array(
 	'mwe-embedplayer-credit-title' => 'Titel: $1',
@@ -4102,7 +4108,7 @@ $messages['sv'] = array(
 	'mwe-embedplayer-ogg-player-kplayer' => 'Kaltura spelare',
 	'mwe-embedplayer-ogg-player-selected' => '(vald)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
-	'mwe-embedplayer-for_best_experience' => 'För en bättre videouppspelningsupplevelse rekommenderar vi en [$1html5 videowebbläsare</a>.', # Fuzzy
+	'mwe-embedplayer-for_best_experience' => 'För en bättre videouppspelningsupplevelse rekommenderar vi en <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">HTML5 videowebbläsare</a>.',
 	'mwe-embedplayer-download-warn' => 'Ingen kompatibel mediaspelare i webbläsaren upptäcktes: för webbläsaruppspelning, hämta [$1 senaste Firefox]',
 	'mwe-embedplayer-fullscreen-tip' => 'Tryck på <b>F11</b> för att växla <i>webbläsaren</i> till helskärm',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'Tryck på <b>SKIFT ⌘ f</b> för att växla till helskärm',
