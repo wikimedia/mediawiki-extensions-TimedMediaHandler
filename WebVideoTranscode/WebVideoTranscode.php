@@ -363,6 +363,9 @@ class WebVideoTranscode {
 	/**
 	 * Grabs sources from the remote repo via ApiQueryVideoInfo.php entry point.
 	 *
+	 * TODO: This method could use some rethinking. See comments on PS1 of
+	 *	 <https://gerrit.wikimedia.org/r/#/c/117916/>
+	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
 	 * @param $file File
 	 * @param $options array
@@ -392,7 +395,7 @@ class WebVideoTranscode {
 			'viprop' => 'derivatives',
 			'titles' => MWNamespace::getCanonicalName( NS_FILE ) .':'. $file->getTitle()->mTextform
 		);
-		
+
 		$data = $file->repo->fetchImageQuery( $query );
 
 		if( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )
@@ -822,6 +825,8 @@ class WebVideoTranscode {
 	 * @param $transcodeKey String transcode key
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ){
+		global $wgMemc;
+
 		wfProfileIn( __METHOD__ );
 
 		$fileName = $file->getTitle()->getDbKey();
@@ -831,7 +836,18 @@ class WebVideoTranscode {
 		$transcodeState = self::getTranscodeState( $file, $db );
 		// Check if the job has been added:
 		if( !isset( $transcodeState[ $transcodeKey ] )
-			|| is_null( $transcodeState[ $transcodeKey ]['time_addjob'] ) ) {
+			|| is_null( $transcodeState[ $transcodeKey ]['time_addjob'] )
+		) {
+			// Avoid lock wait timeout due to duplicated work
+			$cKey = wfMemcKey( 'transcode', md5( $fileName ), $transcodeKey );
+			if ( !$wgMemc->lock( $cKey, 1 ) ) {
+				return; // assume another process is doing this
+			}
+			$unlocker = new ScopedCallback( function() use ( $cKey ) {
+				global $wgMemc;
+				$wgMemc->unlock( $cKey );
+			} );
+
 			// update the transcode state:
 			if( ! isset( $transcodeState[$transcodeKey] ) ){
 				// insert the transcode row with jobadd time
