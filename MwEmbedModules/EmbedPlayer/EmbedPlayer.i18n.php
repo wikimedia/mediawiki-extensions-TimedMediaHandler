@@ -1655,6 +1655,7 @@ $messages['gsw'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Guycn2
+ * @author Inkbug
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -1712,7 +1713,7 @@ $messages['he'] = array(
 	'mwe-embedplayer-ogg-player-selected' => '(נבחר)',
 	'mwe-embedplayer-ogg-player-omtkplayer' => 'OMTK Flash Vorbis',
 	'mwe-embedplayer-for_best_experience' => 'להצגת וידאו משופרת אנחנו ממליצים <a href="//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download" target="_blank">להתקין דפדפן שתומך בווידאו ב־html5</a>.', # Fuzzy
-	'mwe-embedplayer-download-warn' => 'לא נמצא נגן תואם בדפדפן. כדי לנגן בתוך הדפדפן יש להוריד את [$1 הגרסה החדשה ביותר של פיירפוקס].', # Fuzzy
+	'mwe-embedplayer-download-warn' => 'לא נמצא נגן תואם בדפדפן: כדי לנגן בתוך הדפדפן יש להוריד את [$1 הגרסה החדשה ביותר של פיירפוקס].',
 	'mwe-embedplayer-fullscreen-tip' => 'לחצו <b>F11</b> כדי להעביר את הדפדפן למצב מסך מלא וחזרה',
 	'mwe-embedplayer-fullscreen-tip-osx' => 'לחיצה על <b>shift ⌘ F</b> מפעילה מסך מלא',
 	'mwe-embedplayer-do_not_warn_again' => 'לא להציג את ההודעה הזאת שוב',
