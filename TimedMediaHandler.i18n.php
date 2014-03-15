@@ -6317,6 +6317,7 @@ $messages['yue'] = array(
  * @author Liangent
  * @author Liuxinyu970226
  * @author Shizhao
+ * @author Xiaomingyan
  * @author Yfdyh000
  * @author 乌拉跨氪
  */
@@ -6372,7 +6373,7 @@ $messages['zh-hans'] = array(
 	'timedmedia-reset-error' => '重置转码工作时发生错误。',
 	'timedmedia-mp4' => 'MP4',
 	'timedmedia-source-file' => '$1原始文件',
-	'timedmedia-source-file-desc' => '$1原始文件，$2 × $3（$4）',
+	'timedmedia-source-file-desc' => '原始$1文件，$2 × $3（$4）',
 	'timedmedia-source-audio-file-desc' => '原始$1文件 ($2)',
 	'timedmedia-derivative-desc-160p.ogv' => '低带宽Ogg视频（160P）',
 	'timedmedia-derivative-desc-360p.ogv' => 'Web流媒体Ogg视频（360P）',
