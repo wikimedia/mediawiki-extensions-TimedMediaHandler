@@ -4390,6 +4390,7 @@ $messages['oc'] = array(
 	'timedmedia-dismiss' => 'Tampar',
 	'timedmedia-download' => 'Telecargar lo fichièr',
 	'timedmedia-desc-link' => "A prepaus d'aqueste fichièr",
+	'timedmediahandler' => 'TimedMediaHandler',
 	'timedmedia-file' => 'Fichièr',
 );
 
