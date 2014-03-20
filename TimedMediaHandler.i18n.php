@@ -5371,6 +5371,7 @@ $messages['sq'] = array(
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Milicevic01
  * @author Millosh
  * @author Rancher
  * @author Sasa Stefanovic
@@ -5378,13 +5379,13 @@ $messages['sq'] = array(
  */
 $messages['sr-ec'] = array(
 	'timedmedia-desc' => 'Обрађивач за звук, видео и усклађени текст, с подршком за формате WebM, Ogg Theora, Vorbis и SRT',
-	'timedmedia-ogg-short-audio' => 'Ogg $1 звучни фајл, $2.',
+	'timedmedia-ogg-short-audio' => 'Ogg $1 звучна датотека, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 видео-снимак, $2.',
 	'timedmedia-ogg-short-general' => 'Ogg $1 медијска датотека, $2.',
-	'timedmedia-ogg-long-audio' => 'Ogg $1 звучни фајл, дужина $2, $3.',
+	'timedmedia-ogg-long-audio' => 'Ogg $1 звучна датотека, трајање $2, $3',
 	'timedmedia-ogg-long-video' => 'Ogg $1 видео-снимак, трајање $2, $4 × $5 пиксела, $3.',
 	'timedmedia-ogg-long-multiplexed' => 'Мултиплексирани .ogg аудио/видео снимак, $1, трајање $2, $4 × $5 пиксела, $3.',
-	'timedmedia-ogg-long-general' => 'Ogg медијски фајл, дужина $2, $3.',
+	'timedmedia-ogg-long-general' => 'Ogg медијска датотека, трајање $2, $3.',
 	'timedmedia-ogg-long-error' => 'Неисправна .ogg датотека: $1.',
 	'timedmedia-more' => 'Више...',
 	'timedmedia-dismiss' => 'Затвори',
@@ -5423,17 +5424,18 @@ $messages['sr-ec'] = array(
 
 /** Serbian (Latin script) (srpski (latinica)‎)
  * @author Michaello
+ * @author Milicevic01
  * @author Rancher
  */
 $messages['sr-el'] = array(
 	'timedmedia-desc' => 'Obrađivač za zvuk, video i usklađeni tekst, s podrškom za formate WebM, Ogg Theora, Vorbis i SRT',
-	'timedmedia-ogg-short-audio' => 'Ogg $1 zvučni fajl, $2.',
+	'timedmedia-ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 	'timedmedia-ogg-short-video' => 'Ogg $1 video-snimak, $2.',
 	'timedmedia-ogg-short-general' => 'Ogg $1 medijska datoteka, $2.',
-	'timedmedia-ogg-long-audio' => 'Ogg $1 zvučni fajl, dužina $2, $3.',
+	'timedmedia-ogg-long-audio' => 'Ogg $1 zvučna datoteka, dužina $2, $3',
 	'timedmedia-ogg-long-video' => 'Ogg $1 video-snimak, trajanje $2, $4 × $5 piksela, $3.',
 	'timedmedia-ogg-long-multiplexed' => 'Multipleksirani .ogg audio/video snimak, $1, trajanje $2, $4 × $5 piksela, $3.',
-	'timedmedia-ogg-long-general' => 'Ogg medijski fajl, dužina $2, $3.',
+	'timedmedia-ogg-long-general' => 'Ogg medijska datoteka, dužina $2, $3.',
 	'timedmedia-ogg-long-error' => 'Neispravna .ogg datoteka: $1.',
 	'timedmedia-more' => 'Više...',
 	'timedmedia-dismiss' => 'Zatvori',
