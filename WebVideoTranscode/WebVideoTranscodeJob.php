@@ -115,6 +115,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return boolean success
 	 */
 	public function run() {
+		global $wgVersion;
 		// get a local pointer to the file
 		$file = $this->getFile();
 
@@ -234,10 +235,20 @@ class WebVideoTranscodeJob extends Job {
 		// If status is ok and target is larger than 0 bytes
 		if( $status === true && filesize( $this->getTargetEncodePath() ) > 0 ){
 			$file = $this->getFile();
+			$storeOptions = null;
+			if ( version_compare( $wgVersion, '1.23c', '>' ) &&
+				strpos( $options['type'], '/ogg' ) !== false &&
+				$file->getLength()
+			) {
+				// Ogg files need a duration header for firefox
+				$storeOptions['headers']['X-Content-Duration'] = floatval( $file->getLength() );
+			}
+
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
 			$result = $file->getRepo()->quickImport(
 				$this->getTargetEncodePath(), // temp file
-				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ) // storage
+				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ), // storage
+				$storeOptions
 			);
 			if ( !$result->isOK() ) {
 				// no need to invalidate all pages with video. Because all pages remain valid ( no $transcodeKey derivative )
