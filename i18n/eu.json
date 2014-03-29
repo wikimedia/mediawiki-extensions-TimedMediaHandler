@@ -1,0 +1,23 @@
+{
+    "@metadata": {
+        "authors": [
+            "An13sa",
+            "Joxemai",
+            "Theklan",
+            "පසිඳු කාවින්ද"
+        ]
+    },
+    "timedmedia-desc": "Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin",
+    "timedmedia-ogg-short-audio": "Ogg $1 soinu fitxategia, $2",
+    "timedmedia-ogg-short-video": "Ogg $1 bideo fitxategia, $2",
+    "timedmedia-ogg-short-general": "Ogg $1 media fitxategia, $2",
+    "timedmedia-ogg-long-audio": "Ogg $1 soinu fitxategia, $2 iraupea, $3",
+    "timedmedia-ogg-long-error": "ogg fitxategi okerra: $1",
+    "timedmedia-more": "Gehiago...",
+    "timedmedia-dismiss": "Itxi",
+    "timedmedia-download": "Fitxategia jaitsi",
+    "timedmedia-desc-link": "Fitxategi honen inguruan",
+    "timedmedia-status": "Egoera",
+    "timedmedia-subtitle-new-go": "Joan",
+    "timedmedia-file": "Fitxategia"
+}

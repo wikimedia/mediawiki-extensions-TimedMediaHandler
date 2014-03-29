@@ -1,0 +1,35 @@
+{
+    "@metadata": {
+        "authors": [
+            "Eduardo.mps",
+            "Giro720",
+            "Luckas",
+            "Opraco"
+        ]
+    },
+    "timedmedia-desc": "Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
+    "timedmedia-ogg-short-audio": "Arquivo de áudio Ogg $1, $2",
+    "timedmedia-ogg-short-video": "Arquivo de vídeo Ogg $1, $2",
+    "timedmedia-ogg-short-general": "Arquivo multimídia Ogg $1, $2",
+    "timedmedia-ogg-long-audio": "arquivo de áudio Ogg $1, $2 de duração, $3",
+    "timedmedia-ogg-long-video": "Vídeo Ogg $1, $2 de duração, $4×$5 pixels, $3",
+    "timedmedia-ogg-long-multiplexed": "Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo",
+    "timedmedia-ogg-long-general": "Multimídia Ogg, $2 de duração, $3",
+    "timedmedia-ogg-long-error": "Arquivo ogg inválido: $1",
+    "timedmedia-no-player-js": "Desculpe, seu navegador ou está com JavaScript desabilitado ou não tem nenhum \"player\" suportado.<br />\nVocê pode <a href=\"$1\">descarregar o clipe</a> ou <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">descarregar um \"player\"</a> para executar o clipe em seu navegador.",
+    "timedmedia-more": "Mais...",
+    "timedmedia-dismiss": "Fechar",
+    "timedmedia-download": "Descarregar arquivo",
+    "timedmedia-desc-link": "Sobre este arquivo",
+    "timedmedia-oggThumb-version": "O oggHandler requer o oggThumb versão $1 ou posterior.",
+    "timedmedia-oggThumb-failed": "O oggThumb não conseguiu criar a miniatura.",
+    "timedmedia-actions": "Ações",
+    "timedmedia-days": "{{PLURAL:$1|1 dia|$1 dias}}",
+    "timedmedia-hours": "{{PLURAL:$1|1 hora|$1 horas}}",
+    "timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minutos}}",
+    "timedmedia-seconds": "{{PLURAL:$1|1 segundo|$1 segundos}}",
+    "timedmedia-mp4": "MP4",
+    "timedmedia-source-file": "Fonte $1",
+    "timedmedia-subtitle-new-go": "Ir",
+    "timedmedia-file": "Arquivo"
+}

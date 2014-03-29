@@ -1,0 +1,30 @@
+{
+    "@metadata": {
+        "authors": [
+            "Iwan Novirion"
+        ]
+    },
+    "timedmedia-transcodeinfo": "Deskripsi turunan transkoder",
+    "timedmedia-ogg": "Ogg",
+    "timedmedia-webm": "WebM",
+    "timedmedia-derivative-160p.ogv": "Ogg 160p",
+    "timedmedia-derivative-360p.ogv": "Ogg 360p",
+    "timedmedia-derivative-480p.ogv": "Ogg 480p",
+    "timedmedia-derivative-720p.ogv": "Ogg 720p",
+    "timedmedia-derivative-160p.webm": "WebM 160p",
+    "timedmedia-derivative-360p.webm": "WebM 360p",
+    "timedmedia-derivative-480p.webm": "WebM 480p",
+    "timedmedia-derivative-720p.webm": "WebM 720p",
+    "timedmedia-derivative-320p.mp4": "H264 320p",
+    "timedmedia-derivative-480p.mp4": "H264 480p",
+    "timedmedia-derivative-720p.mp4": "H264 720p",
+    "timedmedia-derivative-ogg": "Ogg Vorbis",
+    "timedmedia-derivative-desc-ogg": "Ogg Vorbis",
+    "timedmedia-derivative-opus": "Opus",
+    "timedmedia-derivative-desc-opus": "Opus",
+    "timedmedia-derivative-mp3": "MP3",
+    "timedmedia-derivative-desc-mp3": "MP3",
+    "timedmedia-derivative-m4a": "AAC",
+    "timedmedia-derivative-desc-m4a": "AAC",
+    "timedmediahandler": "Daftar berkas media"
+}

@@ -1,0 +1,23 @@
+{
+    "@metadata": {
+        "authors": [
+            "Consta",
+            "Dead3y3",
+            "Omnipaedista",
+            "ZaDiak"
+        ]
+    },
+    "timedmedia-desc": "Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript",
+    "timedmedia-ogg-short-audio": "Αρχείο ήχου Ogg $1, $2",
+    "timedmedia-ogg-short-video": "Αρχείο βίντεο Ogg $1, $2",
+    "timedmedia-ogg-short-general": "Αρχείο μέσων Ogg $1, $2",
+    "timedmedia-ogg-long-audio": "Αρχείο ήχου Ogg $1, διάρκεια $2, $3",
+    "timedmedia-ogg-long-video": "Αρχείο βίντεο Ogg $1, διάρκεια $2, $4×$5 pixels, $3",
+    "timedmedia-ogg-long-multiplexed": "Αρχείο πολυπλεκτικού ήχου/βίντεο Ogg, $1, διάρκεια $2, $4×$5 pixels, $3 ολικά",
+    "timedmedia-ogg-long-general": "Αρχείο μέσων Ogg, διάρκεια $2, $3",
+    "timedmedia-ogg-long-error": "Άκυρο αρχείο ogg: $1",
+    "timedmedia-more": "Περισσότερα...",
+    "timedmedia-dismiss": "Κλείσιμο",
+    "timedmedia-download": "Κατεβάστε το αρχείο",
+    "timedmedia-desc-link": "Σχετικά με αυτό το αρχείο"
+}

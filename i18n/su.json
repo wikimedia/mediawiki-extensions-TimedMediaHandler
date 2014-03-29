@@ -1,0 +1,19 @@
+{
+    "@metadata": {
+        "authors": [
+            "Kandar"
+        ]
+    },
+    "timedmedia-ogg-short-audio": "Koropak sora $1 ogg, $2",
+    "timedmedia-ogg-short-video": "Koropak vidéo $1 ogg, $2",
+    "timedmedia-ogg-short-general": "Koropak média $1 ogg, $2",
+    "timedmedia-ogg-long-audio": "Koropak sora $1 ogg, lilana $2, $3",
+    "timedmedia-ogg-long-video": "Koropak vidéo $1 ogg, lilana $2, $4×$5 piksel, $3",
+    "timedmedia-ogg-long-multiplexed": "Koropak sora/vidéo ogg multipléks, $1, lilana $2, $4×$5 piksel, $3 gembleng",
+    "timedmedia-ogg-long-general": "Koropak média ogg, lilana $2, $3",
+    "timedmedia-ogg-long-error": "Koropak ogg teu valid: $1",
+    "timedmedia-more": "Lianna...",
+    "timedmedia-dismiss": "Tutup",
+    "timedmedia-download": "Bedol",
+    "timedmedia-desc-link": "Ngeunaan ieu koropak"
+}

@@ -1,0 +1,21 @@
+{
+    "@metadata": {
+        "authors": [
+            "Homo",
+            "Matasg"
+        ]
+    },
+    "timedmedia-desc": "Įrankis groti Ogg Theora ir Vorbis failus su JavaScript grotuvu",
+    "timedmedia-ogg-short-audio": "Ogg $1 garso byla, $2",
+    "timedmedia-ogg-short-video": "Ogg $1 video byla, $2",
+    "timedmedia-ogg-short-general": "Ogg $1 medija byla, $2",
+    "timedmedia-ogg-long-audio": "Ogg $1 garso byla, ilgis $2, $3",
+    "timedmedia-ogg-long-video": "Ogg $1 video byla, ilgis $2, $4×$5 pikseliai, $3",
+    "timedmedia-ogg-long-multiplexed": "Ogg sutankinta audio/video byla, $1, ilgis $2, $4×$5 pikseliai, $3 viso",
+    "timedmedia-ogg-long-general": "Ogg media byla, ilgis $2, $3",
+    "timedmedia-ogg-long-error": "Bloga ogg byla: $1",
+    "timedmedia-more": "Daugiau...",
+    "timedmedia-dismiss": "Uždaryti",
+    "timedmedia-download": "Atsisiųsti bylą",
+    "timedmedia-desc-link": "Apie šią bylą"
+}

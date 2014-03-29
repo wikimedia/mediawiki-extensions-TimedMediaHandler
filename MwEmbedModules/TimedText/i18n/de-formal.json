@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "Kghbln"
+        ]
+    },
+    "mwe-timedtext-upload-text-desc-help-browse": "Durchsuchen Sie Ihren lokalen Computer nach der SRT-Datei, die Sie hochladen möchten",
+    "mwe-timedtext-upload-text-desc-help-select": "Wählen Sie die Sprache der Datei",
+    "mwe-timedtext-upload-text-desc-help-review": "Sehen Sie den Text durch und bearbeiten Sie ihn gegebenenfalls, bevor Sie ihn mit einem Klick auf Hochladen hinzufügen"
+}

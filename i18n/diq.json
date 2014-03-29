@@ -1,0 +1,40 @@
+{
+    "@metadata": {
+        "authors": [
+            "Aspar",
+            "Erdemaslancan",
+            "Gorizon",
+            "Marmase",
+            "Mirzali",
+            "Xoser"
+        ]
+    },
+    "timedmedia-desc": "Qen dê dosyayan dê WebM, Ogg Theora, Vorbis, srt rêxo desti veng dekerdış u nuşte ronayış",
+    "timedmedia-ogg-short-audio": "Ogg $1 dosyaya vengi, $2",
+    "timedmedia-ogg-short-video": "Ogg $1 dosyaya filmi, $2",
+    "timedmedia-ogg-short-general": "Ogg $1 dosyaya medyayi, $2",
+    "timedmedia-ogg-long-audio": "Ogg $1 dosyaya medyayi,  mudde $2, $3",
+    "timedmedia-ogg-long-video": "Ogg $1 dosyaya filmi, mudde $2, $4×$5 piksel, $3",
+    "timedmedia-ogg-long-multiplexed": "Ogg dosyaya filmi/vengi yo multiexed, $1, mudde $2, $4×$5 piksel, $3 bıumumi",
+    "timedmedia-ogg-long-general": "Ogg dosyaya medyayi, mudde $2, $3",
+    "timedmedia-ogg-long-error": "dosyaya oggi yo nemeqbul: $1",
+    "timedmedia-more": "hema....",
+    "timedmedia-dismiss": "Racnê",
+    "timedmedia-download": "dosya biyar war",
+    "timedmedia-play-media": "Medya bıcıne",
+    "timedmedia-desc-link": "derheqê dosyayi de",
+    "timedmedia-status": "Weziyet",
+    "timedmedia-status-unknown": "Weziyeto nêzanaye",
+    "timedmedia-transcodeinfo": "Şınasiya babetê transkodi",
+    "timedmedia-actions": "Kerdışi",
+    "timedmedia-not-ready": "Hazır niyo",
+    "timedmedia-days": "{{PLURAL:$1|1 roce|$1 roci}}",
+    "timedmedia-hours": "{{PLURAL:$1|1 seate|$1 seati}}",
+    "timedmedia-minutes": "{{PLURAL:$1|1 deqa|$1 deqey}}",
+    "timedmedia-seconds": "{{PLURAL:$1|1 saniya|$1 saniyey}}",
+    "timedmedia-mp4": "MP4",
+    "timedmedia-source-file": "$1 çıme",
+    "timedmedia-subtitle-new-go": "Şo",
+    "timedmediahandler": "Programê kontroliê zemanê kontrolbiyayey",
+    "timedmedia-file": "Dosya"
+}

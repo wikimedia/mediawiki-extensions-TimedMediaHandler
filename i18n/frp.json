@@ -1,0 +1,38 @@
+{
+    "@metadata": {
+        "authors": [
+            "ChrisPtDe"
+        ]
+    },
+    "timedmedia-desc": "Assistance por los fichiérs mèdia que dèfilont (ôdiô, vidèô et tèxto sincronisâ) avouéc transcodâjo en WebM, Ogg Theora, Vorbis et srt.",
+    "timedmedia-ogg-short-audio": "Fichiér son Ogg $1, $2",
+    "timedmedia-ogg-short-video": "Fichiér vidèô Ogg $1, $2",
+    "timedmedia-ogg-short-general": "Fichiér mèdia Ogg $1, $2",
+    "timedmedia-ogg-long-audio": "Fichiér son Ogg $1, temps $2, $3",
+    "timedmedia-ogg-long-video": "Fichiér vidèô Ogg $1, temps $2, $4×$5 pixèls, $3",
+    "timedmedia-ogg-long-multiplexed": "Fichiér multiplèxo ôdiô / vidèô Ogg, $1, temps $2, $4×$5 pixèls, $3",
+    "timedmedia-ogg-long-general": "Fichiér mèdia Ogg, temps $2, $3",
+    "timedmedia-ogg-long-error": "Fichiér Ogg envalido : $1",
+    "timedmedia-webm-short-video": "Fichiér vidèô WebM $1, $2",
+    "timedmedia-webm-long-video": "Fichiér ôdiô / vidèô WebM, $1, longior $2, $4 x $5 pixèls, en tot $3",
+    "timedmedia-more": "De ples...",
+    "timedmedia-dismiss": "Cllôre",
+    "timedmedia-download": "Tèlèchargiér lo fichiér",
+    "timedmedia-play-media": "Liére lo mèdia",
+    "timedmedia-desc-link": "Sur ceti fichiér",
+    "timedmedia-oggThumb-version": "OggHandler at fôta d’oggThumb, vèrsion $1 ou ben ples novèla.",
+    "timedmedia-oggThumb-failed": "oggThumb at pas reussi a fâre la figura.",
+    "timedmedia-status": "statut",
+    "timedmedia-status-unknown": "statut encognu",
+    "timedmedia-actions": "Accions",
+    "timedmedia-not-ready": "Pas prèst",
+    "timedmedia-percent-done": "A pou prés $1 % complètâ",
+    "timedmedia-days": "$1 jorn{{PLURAL:$1||s}}",
+    "timedmedia-hours": "$1 hor{{PLURAL:$1|a|es}}",
+    "timedmedia-minutes": "$1 menut{{PLURAL:$1|a|es}}",
+    "timedmedia-seconds": "$1 second{{PLURAL:$1|a|es}}",
+    "timedmedia-source-file": "Sôrsa $1",
+    "timedmedia-source-file-desc": "Originâl $1, $2 × $3 ($4)",
+    "timedmedia-subtitle-language": "sot-titros en $1 ($2)",
+    "timedmedia-file": "Fichiér"
+}
