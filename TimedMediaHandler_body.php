@@ -161,8 +161,9 @@ class TimedMediaHandler extends MediaHandler {
 			&& $params['start'] !== false
 			&& $params['end'] !== false
 		) {
-			if($params['start'] > $params['end'])
+			if ( $this->parseTimeString( $params['start'] ) > $this->parseTimeString( $params['end'] ) ) {
 				return false;
+			}
 		}
 
 		return true;
