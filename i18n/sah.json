@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "HalanTul"
+        ]
+    },
+    "timedmedia-desc": "Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя",
+    "timedmedia-ogg-short-audio": "Звуковой файл Ogg $1, $2",
+    "timedmedia-ogg-short-video": "Видео-файл Ogg $1, $2",
+    "timedmedia-ogg-short-general": "Медиа-файл Ogg $1, $2",
+    "timedmedia-ogg-long-audio": "звуковой файл Ogg $1, уһуна $2, $3",
+    "timedmedia-ogg-long-video": "видео-файл Ogg $1, уһуна $2, $4×$5 пииксэллээх, $3",
+    "timedmedia-ogg-long-multiplexed": "мультиплексный аудио/видео-файл Ogg, $1, уһуна $2, $4×$5 пииксэллээх, барыта $3",
+    "timedmedia-ogg-long-general": "медиа-файл Ogg, уһуна $2, $3",
+    "timedmedia-ogg-long-error": "сыыһа Ogg-файл: $1",
+    "timedmedia-more": "Өссө...",
+    "timedmedia-dismiss": "Кистээ/сап",
+    "timedmedia-download": "Билэни хачайдаа",
+    "timedmedia-desc-link": "Бу билэ туһунан"
+}

@@ -1,0 +1,16 @@
+{
+    "@metadata": {
+        "authors": [
+            "Dori"
+        ]
+    },
+    "timedmedia-ogg-short-audio": "Skedë zanore Ogg $1, $2",
+    "timedmedia-ogg-short-video": "Skedë pamore Ogg $1, $2",
+    "timedmedia-ogg-short-general": "Skedë mediatike Ogg $1, $2",
+    "timedmedia-ogg-long-audio": "Skedë zanore Ogg $1, kohëzgjatja $2, $3",
+    "timedmedia-ogg-long-video": "Skedë pamore Ogg $1, kohëzgjatja $2, $4×$5 pixel, $3",
+    "timedmedia-more": "Më shumë...",
+    "timedmedia-dismiss": "Mbylle",
+    "timedmedia-download": "Shkarko skedën",
+    "timedmedia-desc-link": "Rreth kësaj skede"
+}

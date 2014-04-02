@@ -1,0 +1,26 @@
+{
+    "@metadata": {
+        "authors": [
+            "EugeneZelenko",
+            "Shirayuki",
+            "Siebrand",
+            "Umherirrender"
+        ]
+    },
+    "mwe-timedtext-stage-transcribe": "Unused at this time.",
+    "mwe-timedtext-stage-sync": "Unused at this time.",
+    "mwe-timedtext-stage-translate": "Unused at this time.\n{{Identical|Translate}}",
+    "mwe-timedtext-stage-upload": "Unused at this time.",
+    "mwe-timedtext-select-language": "{{Identical|Select language}}",
+    "mwe-timedtext-back-btn": "{{Identical|Back}}",
+    "mwe-timedtext-layout": "{{Identical|Layout}}",
+    "mwe-timedtext-key-language": "{{optional}}\nParameters:\n* $1 - language key. e.g. \"en\"\n* $2 - language name",
+    "mwe-timedtext-textcat-cc": "{{Identical|Caption}}",
+    "mwe-timedtext-textcat-sub": "{{Identical|Subtitle}}",
+    "mwe-timedtext-textcat-ktv": "See [[w:Karaoke]].",
+    "mwe-timedtext-textcat-nb": "{{Identical|Annotation}}",
+    "mwe-timedtext-language-subtitles-for-clip": "Used as page title, if the subtitles exist. Parameters:\nParameters:\n* $1 - a language name, or a language code (if the language name not defined)\n* $2 - a video title\nSee also:\n* {{msg-mw|Mwe-timedtext-language-no-subtitles-for-clip}}",
+    "mwe-timedtext-language-no-subtitles-for-clip": "Used as page title, if the subtitles don't exist. Parameters:\n* $1 - a language name, or a language code (if the language name not defined)\n* $2 - a video title\nSee also:\n* {{msg-mw|Mwe-timedtext-language-subtitles-for-clip}}",
+    "mwe-timedtext-request-subs-done": "Unused at this time. Parameters:\n* $1 - full URL",
+    "mwe-timedtext-request-already-done": "Unused at this time. Parameters:\n* $1 - full URL"
+}

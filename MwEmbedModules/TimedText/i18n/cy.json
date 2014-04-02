@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Lloffiwr"
+        ]
+    },
+    "mwe-timedtext-editor": "Golygydd cydamseru testun",
+    "mwe-timedtext-stage-transcribe": "Adysgrifio",
+    "mwe-timedtext-stage-sync": "Cydamseru",
+    "mwe-timedtext-stage-translate": "Cyfieithu",
+    "mwe-timedtext-stage-upload": "Uwchlwytho o ffeil leol",
+    "mwe-timedtext-select-language": "Dewis iaith",
+    "mwe-timedtext-file-language": "Iaith y ffeil isdeitlau",
+    "mwe-timedtext-back-btn": "Yn ôl",
+    "mwe-timedtext-choose-text": "Dewis y testun",
+    "mwe-timedtext-upload-timed-text": "Ychwanegu isdeitlau"
+}

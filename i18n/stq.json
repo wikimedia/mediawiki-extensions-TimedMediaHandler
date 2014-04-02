@@ -1,0 +1,20 @@
+{
+    "@metadata": {
+        "authors": [
+            "Pyt"
+        ]
+    },
+    "timedmedia-desc": "Stjuurengsprogramm foar Ogg Theora- un Vorbis-Doatäie, inklusive n JavaScript-Ouspielsoftware",
+    "timedmedia-ogg-short-audio": "Ogg-$1-Audiodoatäi, $2",
+    "timedmedia-ogg-short-video": "Ogg-$1-Videodoatäi, $2",
+    "timedmedia-ogg-short-general": "Ogg-$1-Mediadoatäi, $2",
+    "timedmedia-ogg-long-audio": "Ogg-$1-Audiodoatäi, Loangte: $2, $3",
+    "timedmedia-ogg-long-video": "Ogg-$1-Videodoatäi, Loangte: $2, $4×$5 Pixel, $3",
+    "timedmedia-ogg-long-multiplexed": "Ogg-Audio-/Video-Doatäi, $1, Loangte: $2, $4×$5 Pixel, $3",
+    "timedmedia-ogg-long-general": "Ogg-Mediadoatäi, Loangte: $2, $3",
+    "timedmedia-ogg-long-error": "Uungultige Ogg-Doatäi: $1",
+    "timedmedia-more": "Optione …",
+    "timedmedia-dismiss": "Sluute",
+    "timedmedia-download": "Doatäi spiekerje",
+    "timedmedia-desc-link": "Uur disse Doatäi"
+}

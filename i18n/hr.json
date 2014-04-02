@@ -1,0 +1,23 @@
+{
+    "@metadata": {
+        "authors": [
+            "CERminator",
+            "Dalibor Bosits",
+            "Ex13",
+            "SpeedyGonsales"
+        ]
+    },
+    "timedmedia-desc": "Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
+    "timedmedia-ogg-short-audio": "Ogg $1 zvučna datoteka, $2",
+    "timedmedia-ogg-short-video": "Ogg $1 video datoteka, $2",
+    "timedmedia-ogg-short-general": "Ogg $1 medijska datoteka, $2",
+    "timedmedia-ogg-long-audio": "Ogg $1 zvučna datoteka, duljine $2, $3",
+    "timedmedia-ogg-long-video": "Ogg $1 video datoteka, duljine $2, $4x$5 piksela, $3",
+    "timedmedia-ogg-long-multiplexed": "Ogg multipleksirana zvučna/video datoteka, $1, duljine $2, $4×$5 piksela, $3 ukupno",
+    "timedmedia-ogg-long-general": "Ogg medijska datoteka, duljine $2, $3",
+    "timedmedia-ogg-long-error": "nevaljana ogg datoteka: $1",
+    "timedmedia-more": "Više...",
+    "timedmedia-dismiss": "Zatvori",
+    "timedmedia-download": "Snimi datoteku",
+    "timedmedia-desc-link": "O ovoj datoteci"
+}

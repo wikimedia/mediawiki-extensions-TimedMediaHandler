@@ -1,0 +1,24 @@
+{
+    "@metadata": {
+        "authors": [
+            "Chhorran",
+            "Lovekhmer",
+            "T-Rithy",
+            "Thearith",
+            "គីមស៊្រុន"
+        ]
+    },
+    "timedmedia-desc": "គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript",
+    "timedmedia-ogg-short-audio": "ឯកសារ សំឡេង Ogg $1, $2",
+    "timedmedia-ogg-short-video": "ឯកសារវីដេអូ Ogg $1, $2",
+    "timedmedia-ogg-short-general": "ឯកសារមេឌាOgg $1, $2",
+    "timedmedia-ogg-long-audio": "ឯកសារសំឡេងប្រភេទOgg $1, រយៈពេល$2 និងទំហំ$3",
+    "timedmedia-ogg-long-video": "ឯកសារវីដេអូប្រភេទOgg $1, រយៈពេល$2, $4×$5px, $3",
+    "timedmedia-ogg-long-multiplexed": "ឯកសារអូឌីយ៉ូ/វីដេអូចម្រុះប្រភេទOgg , $1, រយៈពេល$2, $4×$5px, ប្រហែល$3",
+    "timedmedia-ogg-long-general": "ឯកសារមេឌាប្រភេទOgg, រយៈពេល$2, $3",
+    "timedmedia-ogg-long-error": "ឯកសារ ogg មិនមាន សុពលភាព ៖ $1",
+    "timedmedia-more": "បន្ថែម...",
+    "timedmedia-dismiss": "បិទ",
+    "timedmedia-download": "ទាញយកឯកសារ",
+    "timedmedia-desc-link": "អំពីឯកសារនេះ"
+}

@@ -1,0 +1,38 @@
+{
+    "@metadata": {
+        "authors": [
+            "Crt",
+            "Nedergard",
+            "Nike",
+            "Silvonen",
+            "Tofu II"
+        ]
+    },
+    "mwe-embedplayer-credit-title": "Otsikko: $1",
+    "mwe-embedplayer-credit-date": "Päivämäärä: $1",
+    "mwe-embedplayer-credit-author": "Tekijä: $1",
+    "mwe-embedplayer-loading_plugin": "Ladataan liitännäistä...",
+    "mwe-embedplayer-player_options": "Soittimen asetukset",
+    "mwe-embedplayer-timed_text": "Ajastettu teksti",
+    "mwe-embedplayer-player_fullscreen": "Koko näyttö",
+    "mwe-embedplayer-download_full": "Lataa koko videotiedosto:",
+    "mwe-embedplayer-download_clip": "Lataa video",
+    "mwe-embedplayer-download_text": "Lataa teksti",
+    "mwe-embedplayer-download": "Lataa",
+    "mwe-embedplayer-share": "Jaa",
+    "mwe-embedplayer-about-library": "Tietoja Kaltura-soittimesta",
+    "mwe-embedplayer-share_this_video": "Jaa tämä video",
+    "mwe-embedplayer-menu_btn": "Valikko",
+    "mwe-embedplayer-close_btn": "Sulje",
+    "mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
+    "mwe-embedplayer-ogg-player-kplayer": "Kaltura-soitin",
+    "mwe-embedplayer-ogg-player-selected": "(valittu)",
+    "mwe-embedplayer-for_best_experience": "Parempaa videotoistokokemusta varten suosituksena on selain, joka <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">tukee HTML5-videota</a>.",
+    "mwe-embedplayer-video-h264": "H.264-video",
+    "mwe-embedplayer-video-webm": "WebM-video",
+    "mwe-embedplayer-video-flv": "Flash-video",
+    "mwe-embedplayer-video-ogg": "Ogg-video",
+    "mwe-embedplayer-video-3gp": "3GP-video",
+    "mwe-embedplayer-video-mpeg": "MPEG-video",
+    "mwe-embedplayer-video-msvideo": "AVI-video"
+}

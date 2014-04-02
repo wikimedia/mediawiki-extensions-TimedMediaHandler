@@ -11,7 +11,7 @@ if( !class_exists( 'MwEmbedResourceManager' ) ) {
 }
 
 // Set up the timed media handler dir:
-$timedMediaDir = dirname( __FILE__ );
+$timedMediaDir = __DIR__;
 // Include WebVideoTranscode (prior to config so that its defined transcode keys can be used in configuration)
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 
@@ -231,11 +231,14 @@ $wgAutoloadClasses['ApiTranscodeReset'] = "$timedMediaDir/ApiTranscodeReset.php"
 $wgAPIModules['transcodereset'] = 'ApiTranscodeReset';
 
 // Localization
+$wgMessagesDirs['TimedMediaHandler'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler.i18n.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
 $wgExtensionMessagesFiles['TimedMediaHandlerAliases'] = "$timedMediaDir/TimedMediaHandler.i18n.alias.php";
 // Inlcude module locationlizations
+$wgMessagesDirs['MwEmbed.EmbedPlayer'] = __DIR__ . '/MwEmbedModules/EmbedPlayer/i18n';
 $wgExtensionMessagesFiles['MwEmbed.EmbedPlayer'] = "$timedMediaDir/MwEmbedModules/EmbedPlayer/EmbedPlayer.i18n.php";
+$wgMessagesDirs['MwEmbed.TimedText'] = __DIR__ . '/MwEmbedModules/TimedText/i18n';
 $wgExtensionMessagesFiles['MwEmbed.TimedText'] = "$timedMediaDir/MwEmbedModules/TimedText/TimedText.i18n.php";
 
 // Special Pages
@@ -259,5 +262,5 @@ $wgExtensionCredits['media'][] = array(
 	'author'         => array( 'Michael Dale', 'Tim Starling', 'James Heinrich', 'Jan Gerber' ),
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmedia-desc',
-	'version'        => '0.3',
+	'version'        => '0.4.0',
 );

@@ -56,7 +56,7 @@
 					$wgVideoPlayerSkinModule
 				),
 				'styles' => "resources/skins/EmbedPlayer.css",
-				'messageFile' => 'EmbedPlayer.i18n.php',
+				'messageDir' => 'i18n',
 			),
 
 			"mw.EmbedPlayerKplayer"	=> array( 'scripts'=> "resources/mw.EmbedPlayerKplayer.js" ),

@@ -10,7 +10,7 @@
 				'jquery.ui.dialog',
 				'mw.TextSource'
 			),
-			'messageFile' => 'TimedText.i18n.php',
+			'messageDir' => 'i18n',
 		),
 		"mw.TextSource" => array(
 			'scripts' => "resources/mw.TextSource.js",
