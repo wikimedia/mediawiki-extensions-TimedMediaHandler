@@ -71,6 +71,7 @@
     "timedmedia-derivative-desc-320p.mp4": "MP4 odpowiednie dla tego urządzenia (320P)",
     "timedmedia-derivative-desc-480p.mp4": "MP4 w jakości sieciowej (480P)",
     "timedmedia-derivative-desc-720p.mp4": "MP4 w jakości HD (720P)",
+    "timedmedia-subtitle-new": "Utwórz nowe tłumaczenie lub edytuj istniejące",
     "timedmedia-subtitle-new-go": "Przejdź",
     "timedmediahandler": "TimedMediaHandler",
     "timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}}",
