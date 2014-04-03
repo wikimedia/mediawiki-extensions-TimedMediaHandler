@@ -24,7 +24,7 @@
     "timedmedia-webm-short-video": "WebM $1视频文件，$2",
     "timedmedia-webm-long-video": "WebM音频/视频文件，$1，长度$2，$4 × $5像素，共$3",
     "timedmedia-flac-short-audio": "FLAC音频文件，$1",
-    "timedmedia-flac-long-audio": "FLAC音频文件，总共长$1，码率$2",
+    "timedmedia-flac-long-audio": "FLAC音频文件，长度$1，码率$2",
     "timedmedia-wav-short-audio": "WAV音频文件，$1",
     "timedmedia-wav-long-audio": "WAV音频文件，总共长$1，码率$2",
     "timedmedia-wav-pcm-required": "您只能上传脉冲编码调制（PCM）WAV。",
