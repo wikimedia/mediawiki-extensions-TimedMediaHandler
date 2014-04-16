@@ -1,26 +1,26 @@
 {
-    "@metadata": {
-        "authors": [
-            "Sasan700",
-            "Умар"
-        ]
-    },
-    "timedmedia-desc": "WebM, Ogg Theora, Vorbis, srt форматаш ловш аудио, видео а субтитраш а кечерг",
-    "timedmedia-ogg-short-audio": "Аьзнийн файл Ogg $1, $2",
-    "timedmedia-ogg-long-audio": "аьзнийн файл Ogg $1, дохалла (хан) $2, $3",
-    "timedmedia-ogg-long-multiplexed": "мультиплекан аудио/видео-файл Ogg, $1, йохалла $2, $4×$5 пиксель, $3 ерриг",
-    "timedmedia-dismiss": "Къайлаяккха",
-    "timedmedia-download": "Файл чуяккхар",
-    "timedmedia-status": "Хьал",
-    "timedmedia-actions": "Дийраш",
-    "timedmedia-days": "{{PLURAL:$1|$1 де}}",
-    "timedmedia-hours": "{{PLURAL:$1|1 сахьт}}",
-    "timedmedia-source-file": "Хьост $1",
-    "timedmedia-videos": "{{PLURAL:$1|1=$1 видео-файл|$1 видео-файлаш}}",
-    "timedmedia-audios": "{{PLURAL:$1|$1 аудио-файл|$1 аудио-файлаш}}",
-    "timedmedia-ogg-audios": "{{PLURAL:$1|$1 аудио-файл Ogg|$1 аудио-файлаш Ogg}}",
-    "timedmedia-flac-audios": "{{PLURAL:$1|$1 аудио-файл FLAC|$1 аудио-файлаш FLAC}}",
-    "timedmedia-wav-audios": "{{PLURAL:$1|$1 аудио-файл WAV|$1 аудио-файлаш WAV}}",
-    "right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
-    "right-transcode-status": "Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]"
+	"@metadata": {
+		"authors": [
+			"Sasan700",
+			"Умар"
+		]
+	},
+	"timedmedia-desc": "WebM, Ogg Theora, Vorbis, srt форматаш ловш аудио, видео а субтитраш а кечерг",
+	"timedmedia-ogg-short-audio": "Аьзнийн файл Ogg $1, $2",
+	"timedmedia-ogg-long-audio": "аьзнийн файл Ogg $1, дохалла (хан) $2, $3",
+	"timedmedia-ogg-long-multiplexed": "мультиплекан аудио/видео-файл Ogg, $1, йохалла $2, $4×$5 пиксель, $3 ерриг",
+	"timedmedia-dismiss": "Къайлаяккха",
+	"timedmedia-download": "Файл чуяккхар",
+	"timedmedia-status": "Хьал",
+	"timedmedia-actions": "Дийраш",
+	"timedmedia-days": "{{PLURAL:$1|$1 де}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 сахьт}}",
+	"timedmedia-source-file": "Хьост $1",
+	"timedmedia-videos": "{{PLURAL:$1|1=$1 видео-файл|$1 видео-файлаш}}",
+	"timedmedia-audios": "{{PLURAL:$1|$1 аудио-файл|$1 аудио-файлаш}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 аудио-файл Ogg|$1 аудио-файлаш Ogg}}",
+	"timedmedia-flac-audios": "{{PLURAL:$1|$1 аудио-файл FLAC|$1 аудио-файлаш FLAC}}",
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудио-файл WAV|$1 аудио-файлаш WAV}}",
+	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
+	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]"
 }

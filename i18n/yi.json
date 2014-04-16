@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "פוילישער",
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "timedmedia-dismiss": "שליסן",
-    "timedmedia-download": "אראָפלאָדן טעקע",
-    "timedmedia-status": "סטאַטוס",
-    "timedmedia-file": "טעקע"
+	"@metadata": {
+		"authors": [
+			"פוילישער",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"timedmedia-dismiss": "שליסן",
+	"timedmedia-download": "אראָפלאָדן טעקע",
+	"timedmedia-status": "סטאַטוס",
+	"timedmedia-file": "טעקע"
 }

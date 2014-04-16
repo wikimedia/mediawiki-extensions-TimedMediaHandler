@@ -1,14 +1,12 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "mwe-embedplayer-player_fullscreen": "Puni ekran",
-    "mwe-embedplayer-paused": "zaustavljeno",
-    "mwe-embedplayer-download": "Učitavanje",
-    "mwe-embedplayer-share": "Dijeli",
-    "mwe-embedplayer-credits": "Zasluge",
-    "mwe-embedplayer-share_this_video": "Dijeli ovaj video",
-    "mwe-embedplayer-menu_btn": "Meni",
-    "mwe-embedplayer-close_btn": "Zatvori",
-    "mwe-embedplayer-related_videos": "Povezani snimci"
+	"@metadata": [],
+	"mwe-embedplayer-player_fullscreen": "Puni ekran",
+	"mwe-embedplayer-paused": "zaustavljeno",
+	"mwe-embedplayer-download": "Učitavanje",
+	"mwe-embedplayer-share": "Dijeli",
+	"mwe-embedplayer-credits": "Zasluge",
+	"mwe-embedplayer-share_this_video": "Dijeli ovaj video",
+	"mwe-embedplayer-menu_btn": "Meni",
+	"mwe-embedplayer-close_btn": "Zatvori",
+	"mwe-embedplayer-related_videos": "Povezani snimci"
 }

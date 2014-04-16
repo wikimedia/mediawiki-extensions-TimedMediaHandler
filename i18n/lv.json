@@ -1,19 +1,19 @@
 {
-    "@metadata": {
-        "authors": [
-            "Papuass",
-            "Xil"
-        ]
-    },
-    "timedmedia-more": "Vairāk...",
-    "timedmedia-dismiss": "Aizvērt",
-    "timedmedia-download": "Lejupielādēt failu",
-    "timedmedia-desc-link": "Par šo failu",
-    "timedmedia-status": "Statuss",
-    "timedmedia-status-unknown": "Nezināms statuss",
-    "timedmedia-actions": "Darbības",
-    "timedmedia-mp4": "MP4",
-    "timedmedia-source-file": "$1 avots",
-    "timedmedia-subtitle-new-go": "Aiziet!",
-    "timedmedia-subtitle-language": "$1 ($2) subtitri"
+	"@metadata": {
+		"authors": [
+			"Papuass",
+			"Xil"
+		]
+	},
+	"timedmedia-more": "Vairāk...",
+	"timedmedia-dismiss": "Aizvērt",
+	"timedmedia-download": "Lejupielādēt failu",
+	"timedmedia-desc-link": "Par šo failu",
+	"timedmedia-status": "Statuss",
+	"timedmedia-status-unknown": "Nezināms statuss",
+	"timedmedia-actions": "Darbības",
+	"timedmedia-mp4": "MP4",
+	"timedmedia-source-file": "$1 avots",
+	"timedmedia-subtitle-new-go": "Aiziet!",
+	"timedmedia-subtitle-language": "$1 ($2) subtitri"
 }

@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "ОйЛ"
-        ]
-    },
-    "mwe-embedplayer-credit-author": "творьць : $1",
-    "mwe-embedplayer-close_btn": "ꙁакрꙑи"
+	"@metadata": {
+		"authors": [
+			"ОйЛ"
+		]
+	},
+	"mwe-embedplayer-credit-author": "творьць : $1",
+	"mwe-embedplayer-close_btn": "ꙁакрꙑи"
 }

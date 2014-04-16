@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "Ibrahim"
-        ]
-    },
-    "timedmedia-desc": "Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
-    "timedmedia-ogg-short-audio": "Ogg $1 парвандаи савтӣ, $2",
-    "timedmedia-ogg-short-video": "Ogg $1 парвандаи наворӣ, $2",
-    "timedmedia-ogg-short-general": "Ogg $1 парвандаи расона, $2",
-    "timedmedia-ogg-long-audio": "Ogg $1 парвандаи савтӣ, тӯл $2, $3",
-    "timedmedia-ogg-long-video": "Ogg $1 парвандаи наворӣ, тӯл $2, $4×$5 пикселҳо, $3",
-    "timedmedia-ogg-long-multiplexed": "Парвандаи Ogg савтӣ/наворӣ печида, $1, тӯл $2, $4×$5 пикселҳо, дар маҷмӯъ $3",
-    "timedmedia-ogg-long-general": "Парвандаи расонаи Ogg, тӯл $2, $3",
-    "timedmedia-ogg-long-error": "Парвандаи ғайримиҷози ogg: $1",
-    "timedmedia-more": "Бештар...",
-    "timedmedia-dismiss": "Бастан",
-    "timedmedia-download": "Боргирии парванда",
-    "timedmedia-desc-link": "Дар бораи ин парванда"
+	"@metadata": {
+		"authors": [
+			"Ibrahim"
+		]
+	},
+	"timedmedia-desc": "Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
+	"timedmedia-ogg-short-audio": "Ogg $1 парвандаи савтӣ, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 парвандаи наворӣ, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 парвандаи расона, $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 парвандаи савтӣ, тӯл $2, $3",
+	"timedmedia-ogg-long-video": "Ogg $1 парвандаи наворӣ, тӯл $2, $4×$5 пикселҳо, $3",
+	"timedmedia-ogg-long-multiplexed": "Парвандаи Ogg савтӣ/наворӣ печида, $1, тӯл $2, $4×$5 пикселҳо, дар маҷмӯъ $3",
+	"timedmedia-ogg-long-general": "Парвандаи расонаи Ogg, тӯл $2, $3",
+	"timedmedia-ogg-long-error": "Парвандаи ғайримиҷози ogg: $1",
+	"timedmedia-more": "Бештар...",
+	"timedmedia-dismiss": "Бастан",
+	"timedmedia-download": "Боргирии парванда",
+	"timedmedia-desc-link": "Дар бораи ин парванда"
 }

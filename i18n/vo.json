@@ -1,12 +1,12 @@
 {
-    "@metadata": {
-        "authors": [
-            "Malafaya",
-            "Smeira"
-        ]
-    },
-    "timedmedia-more": "Pluikos...",
-    "timedmedia-dismiss": "Färmükön",
-    "timedmedia-download": "Donükön ragivi",
-    "timedmedia-desc-link": "Tefü ragiv at"
+	"@metadata": {
+		"authors": [
+			"Malafaya",
+			"Smeira"
+		]
+	},
+	"timedmedia-more": "Pluikos...",
+	"timedmedia-dismiss": "Färmükön",
+	"timedmedia-download": "Donükön ragivi",
+	"timedmedia-desc-link": "Tefü ragiv at"
 }

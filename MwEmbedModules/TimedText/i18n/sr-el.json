@@ -1,21 +1,21 @@
 {
-    "@metadata": {
-        "authors": [
-            "Rancher"
-        ]
-    },
-    "mwe-timedtext-editor": "Urednik usklađenog teksta",
-    "mwe-timedtext-stage-transcribe": "Napravi transkript",
-    "mwe-timedtext-stage-sync": "Uskladi",
-    "mwe-timedtext-stage-translate": "Prevedi",
-    "mwe-timedtext-stage-upload": "Pošalji datoteku sa računara",
-    "mwe-timedtext-select-language": "Izaberi jezik",
-    "mwe-timedtext-file-language": "Jezik titla",
-    "mwe-timedtext-back-btn": "Nazad",
-    "mwe-timedtext-layout-off": "Sakrij sabtajtlove",
-    "mwe-timedtext-loading-text": "Učitava se tekst ...",
-    "mwe-timedtext-key-language": "$1, $2",
-    "mwe-timedtext-textcat-cc": "Oznake",
-    "mwe-timedtext-textcat-sub": "Podnaslovi",
-    "mwe-timedtext-textcat-trx": "Transkript"
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"mwe-timedtext-editor": "Urednik usklađenog teksta",
+	"mwe-timedtext-stage-transcribe": "Napravi transkript",
+	"mwe-timedtext-stage-sync": "Uskladi",
+	"mwe-timedtext-stage-translate": "Prevedi",
+	"mwe-timedtext-stage-upload": "Pošalji datoteku sa računara",
+	"mwe-timedtext-select-language": "Izaberi jezik",
+	"mwe-timedtext-file-language": "Jezik titla",
+	"mwe-timedtext-back-btn": "Nazad",
+	"mwe-timedtext-layout-off": "Sakrij sabtajtlove",
+	"mwe-timedtext-loading-text": "Učitava se tekst ...",
+	"mwe-timedtext-key-language": "$1, $2",
+	"mwe-timedtext-textcat-cc": "Oznake",
+	"mwe-timedtext-textcat-sub": "Podnaslovi",
+	"mwe-timedtext-textcat-trx": "Transkript"
 }

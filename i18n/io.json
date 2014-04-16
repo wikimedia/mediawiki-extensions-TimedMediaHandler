@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Malafaya"
-        ]
-    },
-    "timedmedia-ogg-long-error": "Ne-valida Ogg-arkivo: $1",
-    "timedmedia-more": "Plus…",
-    "timedmedia-dismiss": "Klozar",
-    "timedmedia-desc-link": "Pri ca arkivo"
+	"@metadata": {
+		"authors": [
+			"Malafaya"
+		]
+	},
+	"timedmedia-ogg-long-error": "Ne-valida Ogg-arkivo: $1",
+	"timedmedia-more": "Plus…",
+	"timedmedia-dismiss": "Klozar",
+	"timedmedia-desc-link": "Pri ca arkivo"
 }

@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "Slomox"
-        ]
-    },
-    "timedmedia-desc": "Stüürprogramm för Ogg-Theora- un Vorbis Datein, mitsamt en Afspeler in JavaScript",
-    "timedmedia-ogg-short-audio": "Ogg-$1-Toondatei, $2",
-    "timedmedia-ogg-short-video": "Ogg-$1-Videodatei, $2",
-    "timedmedia-ogg-short-general": "Ogg-$1-Mediendatei, $2",
-    "timedmedia-ogg-long-audio": "Ogg-$1-Toondatei, $2 lang, $3",
-    "timedmedia-ogg-long-video": "Ogg-$1-Videodatei, $2 lang, $4×$5 Pixels, $3",
-    "timedmedia-ogg-long-multiplexed": "Ogg-Multiplexed-Audio-/Video-Datei, $1, $2 lang, $4×$5 Pixels, $3 alltohoop",
-    "timedmedia-ogg-long-general": "Ogg-Mediendatei, $2 lang, $3",
-    "timedmedia-ogg-long-error": "Kaputte Ogg-Datei: $1",
-    "timedmedia-more": "Mehr...",
-    "timedmedia-dismiss": "Dichtmaken",
-    "timedmedia-download": "Datei dalladen",
-    "timedmedia-desc-link": "Över disse Datei"
+	"@metadata": {
+		"authors": [
+			"Slomox"
+		]
+	},
+	"timedmedia-desc": "Stüürprogramm för Ogg-Theora- un Vorbis Datein, mitsamt en Afspeler in JavaScript",
+	"timedmedia-ogg-short-audio": "Ogg-$1-Toondatei, $2",
+	"timedmedia-ogg-short-video": "Ogg-$1-Videodatei, $2",
+	"timedmedia-ogg-short-general": "Ogg-$1-Mediendatei, $2",
+	"timedmedia-ogg-long-audio": "Ogg-$1-Toondatei, $2 lang, $3",
+	"timedmedia-ogg-long-video": "Ogg-$1-Videodatei, $2 lang, $4×$5 Pixels, $3",
+	"timedmedia-ogg-long-multiplexed": "Ogg-Multiplexed-Audio-/Video-Datei, $1, $2 lang, $4×$5 Pixels, $3 alltohoop",
+	"timedmedia-ogg-long-general": "Ogg-Mediendatei, $2 lang, $3",
+	"timedmedia-ogg-long-error": "Kaputte Ogg-Datei: $1",
+	"timedmedia-more": "Mehr...",
+	"timedmedia-dismiss": "Dichtmaken",
+	"timedmedia-download": "Datei dalladen",
+	"timedmedia-desc-link": "Över disse Datei"
 }

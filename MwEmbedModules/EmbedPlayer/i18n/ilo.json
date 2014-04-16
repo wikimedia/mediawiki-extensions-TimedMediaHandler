@@ -1,16 +1,16 @@
 {
-    "@metadata": {
-        "authors": [
-            "Lam-ang"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "Titulo: $1",
-    "mwe-embedplayer-credit-date": "Petsa: $1",
-    "mwe-embedplayer-credit-author": "Mannurat: $1",
-    "mwe-embedplayer-nocredits": "Awan dagiti pammadayaw a magun-od",
-    "mwe-embedplayer-loading_plugin": "Agikarkarga ti plugin ...",
-    "mwe-embedplayer-select_playback": "Agikabil ti preperensia ti panagy-ayam",
-    "mwe-embedplayer-link_back": "Agisilpo",
-    "mwe-embedplayer-error_swap_vid": "Biddut: Ti mwEmbed ket saan a nakaisukat ti etiketa ti video para iti interface ti mwEmbed",
-    "mwe-embedplayer-add_to_end_of_sequence": "Inayon idiay gibus ti pangsasarunuan"
+	"@metadata": {
+		"authors": [
+			"Lam-ang"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Titulo: $1",
+	"mwe-embedplayer-credit-date": "Petsa: $1",
+	"mwe-embedplayer-credit-author": "Mannurat: $1",
+	"mwe-embedplayer-nocredits": "Awan dagiti pammadayaw a magun-od",
+	"mwe-embedplayer-loading_plugin": "Agikarkarga ti plugin ...",
+	"mwe-embedplayer-select_playback": "Agikabil ti preperensia ti panagy-ayam",
+	"mwe-embedplayer-link_back": "Agisilpo",
+	"mwe-embedplayer-error_swap_vid": "Biddut: Ti mwEmbed ket saan a nakaisukat ti etiketa ti video para iti interface ti mwEmbed",
+	"mwe-embedplayer-add_to_end_of_sequence": "Inayon idiay gibus ti pangsasarunuan"
 }

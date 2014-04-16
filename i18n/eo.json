@@ -1,22 +1,22 @@
 {
-    "@metadata": {
-        "authors": [
-            "Amikeco",
-            "ArnoLagrange",
-            "Yekrats"
-        ]
-    },
-    "timedmedia-desc": "Traktilo por sondosieroj, videoj, kaj horloĝigita teksto, kun formatsubteno por WebM kaj Ogg Theora kaj Vobis kaj srt.",
-    "timedmedia-ogg-short-audio": "Ogg $1 sondosiero, $2",
-    "timedmedia-ogg-short-video": "Ogg $1 videodosiero, $2",
-    "timedmedia-ogg-short-general": "Media Ogg-dosiero $1, $2",
-    "timedmedia-ogg-long-audio": "Aŭda Ogg-dosiero $1, longeco $2, $3 entute",
-    "timedmedia-ogg-long-video": "Video Ogg-dosiero $1, longeco $2, $4×$5 pikseloj, $3 entute",
-    "timedmedia-ogg-long-multiplexed": "Kunigita aŭdio/video Ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute",
-    "timedmedia-ogg-long-general": "Ogg-mediodosiero, longeco $2, $3",
-    "timedmedia-ogg-long-error": "Malvalida Ogg-dosiero: $1",
-    "timedmedia-more": "Pli...",
-    "timedmedia-dismiss": "Fermi",
-    "timedmedia-download": "Alŝuti dosieron",
-    "timedmedia-desc-link": "Pri ĉi tiu dosiero"
+	"@metadata": {
+		"authors": [
+			"Amikeco",
+			"ArnoLagrange",
+			"Yekrats"
+		]
+	},
+	"timedmedia-desc": "Traktilo por sondosieroj, videoj, kaj horloĝigita teksto, kun formatsubteno por WebM kaj Ogg Theora kaj Vobis kaj srt.",
+	"timedmedia-ogg-short-audio": "Ogg $1 sondosiero, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 videodosiero, $2",
+	"timedmedia-ogg-short-general": "Media Ogg-dosiero $1, $2",
+	"timedmedia-ogg-long-audio": "Aŭda Ogg-dosiero $1, longeco $2, $3 entute",
+	"timedmedia-ogg-long-video": "Video Ogg-dosiero $1, longeco $2, $4×$5 pikseloj, $3 entute",
+	"timedmedia-ogg-long-multiplexed": "Kunigita aŭdio/video Ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute",
+	"timedmedia-ogg-long-general": "Ogg-mediodosiero, longeco $2, $3",
+	"timedmedia-ogg-long-error": "Malvalida Ogg-dosiero: $1",
+	"timedmedia-more": "Pli...",
+	"timedmedia-dismiss": "Fermi",
+	"timedmedia-download": "Alŝuti dosieron",
+	"timedmedia-desc-link": "Pri ĉi tiu dosiero"
 }

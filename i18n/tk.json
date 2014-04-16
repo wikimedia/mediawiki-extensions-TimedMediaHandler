@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "Hanberke"
-        ]
-    },
-    "timedmedia-desc": "Ogg Theora we Vorbis faýllary üçin işleýji, JavaScript pleýeri bilen bilelikde",
-    "timedmedia-ogg-short-audio": "Ogg $1 ses faýly, $2",
-    "timedmedia-ogg-short-video": "Ogg $1 wideo faýly, $2",
-    "timedmedia-ogg-short-general": "Ogg $1 media faýly, $2",
-    "timedmedia-ogg-long-audio": "Ogg $1 ses faýly, uzynlyk $2, $3",
-    "timedmedia-ogg-long-video": "Ogg $1 wideo faýly, uzynlyk $2, $4×$5 piksel, $3",
-    "timedmedia-ogg-long-multiplexed": "Ogg multipleks audio/wideo faýly, $1, uzynlyk $2, $4×$5 piksel, $3 jemi",
-    "timedmedia-ogg-long-general": "Ogg media faýly, uzynlyk $2, $3",
-    "timedmedia-ogg-long-error": "Nädogry ogg faýly: $1",
-    "timedmedia-more": "Has köp...",
-    "timedmedia-dismiss": "Ýap",
-    "timedmedia-download": "Faýl düşür",
-    "timedmedia-desc-link": "Bu faýl hakda"
+	"@metadata": {
+		"authors": [
+			"Hanberke"
+		]
+	},
+	"timedmedia-desc": "Ogg Theora we Vorbis faýllary üçin işleýji, JavaScript pleýeri bilen bilelikde",
+	"timedmedia-ogg-short-audio": "Ogg $1 ses faýly, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 wideo faýly, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 media faýly, $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 ses faýly, uzynlyk $2, $3",
+	"timedmedia-ogg-long-video": "Ogg $1 wideo faýly, uzynlyk $2, $4×$5 piksel, $3",
+	"timedmedia-ogg-long-multiplexed": "Ogg multipleks audio/wideo faýly, $1, uzynlyk $2, $4×$5 piksel, $3 jemi",
+	"timedmedia-ogg-long-general": "Ogg media faýly, uzynlyk $2, $3",
+	"timedmedia-ogg-long-error": "Nädogry ogg faýly: $1",
+	"timedmedia-more": "Has köp...",
+	"timedmedia-dismiss": "Ýap",
+	"timedmedia-download": "Faýl düşür",
+	"timedmedia-desc-link": "Bu faýl hakda"
 }

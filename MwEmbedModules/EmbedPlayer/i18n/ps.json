@@ -1,21 +1,21 @@
 {
-    "@metadata": {
-        "authors": [
-            "Ahmed-Najib-Biabani-Ibrahimkhel"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "سرليک: $1",
-    "mwe-embedplayer-credit-date": "نېټه: $1",
-    "mwe-embedplayer-credit-author": "ليکوال: $1",
-    "mwe-embedplayer-download_clip": "ويډيو ښکته کول",
-    "mwe-embedplayer-download_text": "متن ښکته کول",
-    "mwe-embedplayer-download": "ښکته کول",
-    "mwe-embedplayer-share": "شريکول",
-    "mwe-embedplayer-close_btn": "تړل",
-    "mwe-embedplayer-ogg-player-selected": "(ټاکل شوی)",
-    "mwe-embedplayer-playerSelect": "غږونکي",
-    "mwe-embedplayer-audio-mpeg": "MPEG غږ",
-    "mwe-embedplayer-video-3gp": "3GP ويډيو",
-    "mwe-embedplayer-video-mpeg": "MPEG ويډيو",
-    "mwe-embedplayer-video-msvideo": "AVI ويډيو"
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"mwe-embedplayer-credit-title": "سرليک: $1",
+	"mwe-embedplayer-credit-date": "نېټه: $1",
+	"mwe-embedplayer-credit-author": "ليکوال: $1",
+	"mwe-embedplayer-download_clip": "ويډيو ښکته کول",
+	"mwe-embedplayer-download_text": "متن ښکته کول",
+	"mwe-embedplayer-download": "ښکته کول",
+	"mwe-embedplayer-share": "شريکول",
+	"mwe-embedplayer-close_btn": "تړل",
+	"mwe-embedplayer-ogg-player-selected": "(ټاکل شوی)",
+	"mwe-embedplayer-playerSelect": "غږونکي",
+	"mwe-embedplayer-audio-mpeg": "MPEG غږ",
+	"mwe-embedplayer-video-3gp": "3GP ويډيو",
+	"mwe-embedplayer-video-mpeg": "MPEG ويډيو",
+	"mwe-embedplayer-video-msvideo": "AVI ويډيو"
 }

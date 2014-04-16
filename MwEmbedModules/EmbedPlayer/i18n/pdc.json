@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "Xqt"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "Titel: $1",
-    "mwe-embedplayer-seek_to": "Guck uff $1"
+	"@metadata": {
+		"authors": [
+			"Xqt"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Titel: $1",
+	"mwe-embedplayer-seek_to": "Guck uff $1"
 }

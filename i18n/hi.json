@@ -1,26 +1,26 @@
 {
-    "@metadata": {
-        "authors": [
-            "Kaustubh",
-            "Shyam",
-            "Siddhartha Ghai"
-        ]
-    },
-    "timedmedia-desc": "ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ",
-    "timedmedia-ogg-short-audio": "ऑग $1 ध्वनी फ़ाईल, $2",
-    "timedmedia-ogg-short-video": "ऑग $1 चलतचित्र फ़ाईल, $2",
-    "timedmedia-ogg-short-general": "ऑग $1 मीडिया फ़ाईल, $2",
-    "timedmedia-ogg-long-audio": "ऑग $1 ध्वनी फ़ाईल, लंबाई $2, $3",
-    "timedmedia-ogg-long-video": "ऑग $1 चलतचित्र फ़ाईल, लंबाई $2, $4×$5 पीक्सेल्स, $3",
-    "timedmedia-ogg-long-multiplexed": "ऑग ध्वनी/चित्र फ़ाईल, $1, लंबाई $2, $4×$5 पिक्सेल्स, $3 कुल",
-    "timedmedia-ogg-long-general": "ऑग मीडिया फ़ाईल, लंबाई $2, $3",
-    "timedmedia-ogg-long-error": "गलत ऑग फ़ाईल: $1",
-    "timedmedia-more": "और...",
-    "timedmedia-dismiss": "बंद करें",
-    "timedmedia-download": "फ़ाईल डाउनलोड करें",
-    "timedmedia-desc-link": "इस फ़ाईलके बारे में",
-    "timedmedia-audios": "{{PLURAL:$1|$1 ऑडियो फ़ाइल|$1 ऑडियो फ़ाइलें}}",
-    "timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ऑडियो फ़ाइल|$1 Ogg ऑडियो फ़ाइलें}}",
-    "timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ऑडियो फ़ाइल|$1 FLAC ऑडियो फ़ाइलें}}",
-    "timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}"
+	"@metadata": {
+		"authors": [
+			"Kaustubh",
+			"Shyam",
+			"Siddhartha Ghai"
+		]
+	},
+	"timedmedia-desc": "ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ",
+	"timedmedia-ogg-short-audio": "ऑग $1 ध्वनी फ़ाईल, $2",
+	"timedmedia-ogg-short-video": "ऑग $1 चलतचित्र फ़ाईल, $2",
+	"timedmedia-ogg-short-general": "ऑग $1 मीडिया फ़ाईल, $2",
+	"timedmedia-ogg-long-audio": "ऑग $1 ध्वनी फ़ाईल, लंबाई $2, $3",
+	"timedmedia-ogg-long-video": "ऑग $1 चलतचित्र फ़ाईल, लंबाई $2, $4×$5 पीक्सेल्स, $3",
+	"timedmedia-ogg-long-multiplexed": "ऑग ध्वनी/चित्र फ़ाईल, $1, लंबाई $2, $4×$5 पिक्सेल्स, $3 कुल",
+	"timedmedia-ogg-long-general": "ऑग मीडिया फ़ाईल, लंबाई $2, $3",
+	"timedmedia-ogg-long-error": "गलत ऑग फ़ाईल: $1",
+	"timedmedia-more": "और...",
+	"timedmedia-dismiss": "बंद करें",
+	"timedmedia-download": "फ़ाईल डाउनलोड करें",
+	"timedmedia-desc-link": "इस फ़ाईलके बारे में",
+	"timedmedia-audios": "{{PLURAL:$1|$1 ऑडियो फ़ाइल|$1 ऑडियो फ़ाइलें}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ऑडियो फ़ाइल|$1 Ogg ऑडियो फ़ाइलें}}",
+	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ऑडियो फ़ाइल|$1 FLAC ऑडियो फ़ाइलें}}",
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}"
 }

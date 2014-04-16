@@ -1,20 +1,41 @@
 {
-    "@metadata": {
-        "authors": [
-            "Bellayet",
-            "Zaheen"
-        ]
-    },
-    "timedmedia-ogg-short-audio": "অগ $1 সাউন্ড ফাইল, $2",
-    "timedmedia-ogg-short-video": "অগ $1 ভিডিও ফাইল, $2",
-    "timedmedia-ogg-short-general": "অগ $1 মিডিয়া ফাইল, $2",
-    "timedmedia-ogg-long-audio": "অগ $1 সাউন্ড ফাইল, দৈর্ঘ্য $2, $3",
-    "timedmedia-ogg-long-video": "অগ $1 ভিডিও ফাইল, দৈর্ঘ্য $2, $4×$5 পিক্সেল, $3",
-    "timedmedia-ogg-long-multiplexed": "অগ মাল্টিপ্লেক্সকৃত অডিও/ভিডিও ফাইল, $1, দৈর্ঘ্য $2, $4×$5 পিক্সেল, $3 সামগ্রিক",
-    "timedmedia-ogg-long-general": "অগ মিডিয়া ফাইল, দৈর্ঘ্য $2, $3",
-    "timedmedia-ogg-long-error": "অবৈধ অগ ফাইল: $1",
-    "timedmedia-more": "আরও...",
-    "timedmedia-dismiss": "বন্ধ",
-    "timedmedia-download": "ফাইল ডাউনলোড করুন",
-    "timedmedia-desc-link": "এই ফাইলের বৃত্তান্ত"
+	"@metadata": {
+		"authors": [
+			"Bellayet",
+			"Zaheen",
+			"Aftab1995"
+		]
+	},
+	"timedmedia-ogg-short-audio": "অগ $1 সাউন্ড ফাইল, $2",
+	"timedmedia-ogg-short-video": "অগ $1 ভিডিও ফাইল, $2",
+	"timedmedia-ogg-short-general": "অগ $1 মিডিয়া ফাইল, $2",
+	"timedmedia-ogg-long-audio": "অগ $1 সাউন্ড ফাইল, দৈর্ঘ্য $2, $3",
+	"timedmedia-ogg-long-video": "অগ $1 ভিডিও ফাইল, দৈর্ঘ্য $2, $4×$5 পিক্সেল, $3",
+	"timedmedia-ogg-long-multiplexed": "অগ মাল্টিপ্লেক্সকৃত অডিও/ভিডিও ফাইল, $1, দৈর্ঘ্য $2, $4×$5 পিক্সেল, $3 সামগ্রিক",
+	"timedmedia-ogg-long-general": "অগ মিডিয়া ফাইল, দৈর্ঘ্য $2, $3",
+	"timedmedia-ogg-long-error": "অবৈধ অগ ফাইল: $1",
+	"timedmedia-more": "আরও...",
+	"timedmedia-dismiss": "বন্ধ",
+	"timedmedia-download": "ফাইল ডাউনলোড করুন",
+	"timedmedia-play-media": "মিডিয়া চালান",
+	"timedmedia-desc-link": "এই ফাইলের বৃত্তান্ত",
+	"timedmedia-status-header": "ট্রান্সকোড অবস্থা",
+	"timedmedia-update-status": "ট্রান্সকোড অবস্থা হালনাগাদ করুন",
+	"timedmedia-status": "অবস্থা",
+	"timedmedia-status-unknown": "অবস্থা অজানা",
+	"timedmedia-transcodeinfo": "ব্যুৎপন্ন বর্ণনা ট্রান্সকোড",
+	"timedmedia-actions": "কার্য",
+	"timedmedia-direct-link": "ব্যুৎপন্ন ডাউনলোড করুন",
+	"timedmedia-not-ready": "তৈরি নয়",
+	"timedmedia-days": "{{PLURAL:$1|১ দিন|$1 দিন}}",
+	"timedmedia-hours": "{{PLURAL:$1|১ ঘণ্টা|$1 ঘণ্টা}}",
+	"timedmedia-minutes": "{{PLURAL:$1|১ মিনিট|$1 মিনিট}}",
+	"timedmedia-seconds": "{{PLURAL:$1|১ সেকেন্ড|$1 সেকেন্ড}}",
+	"timedmedia-source-file": "$1 উৎস",
+	"timedmedia-subtitle-new-go": "যাও",
+	"timedmedia-subtitle-language": "$1 ($2) সাবটাইটেল",
+	"timedmedia-videos": "{{PLURAL:$1|$1টি ভিডিও}}",
+	"timedmedia-file": "ফাইল",
+	"timedmedia-audios": "{{PLURAL:$1|$1টি অডিও ফাইল}}",
+	"action-transcode-status": "বর্তমান ট্রান্সকোডিংয়ের অবস্থা দেখুন"
 }

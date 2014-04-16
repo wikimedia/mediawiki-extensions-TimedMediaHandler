@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "सरोज कुमार ढकाल"
-        ]
-    },
-    "timedmedia-source-file-desc": "मूल $1 फाईल, $2 × $3 ($4)",
-    "timedmedia-source-audio-file-desc": "मूल $1 फाईल ($2)"
+	"@metadata": {
+		"authors": [
+			"सरोज कुमार ढकाल"
+		]
+	},
+	"timedmedia-source-file-desc": "मूल $1 फाईल, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "मूल $1 फाईल ($2)"
 }

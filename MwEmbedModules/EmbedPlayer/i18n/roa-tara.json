@@ -1,33 +1,33 @@
 {
-    "@metadata": {
-        "authors": [
-            "Joetaras"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "Titole: $1",
-    "mwe-embedplayer-credit-date": "Date: $1",
-    "mwe-embedplayer-credit-author": "Autore: $1",
-    "mwe-embedplayer-download_clip": "Scareche 'u video",
-    "mwe-embedplayer-download_text": "Scareche 'u teste",
-    "mwe-embedplayer-download": "Scareche",
-    "mwe-embedplayer-share": "Condivide",
-    "mwe-embedplayer-credits": "Credite",
-    "mwe-embedplayer-menu_btn": "Menù",
-    "mwe-embedplayer-close_btn": "Chiude",
-    "mwe-embedplayer-ogg-player-vlc-player": "Visualizzatore VLC",
-    "mwe-embedplayer-ogg-player-oggNative": "Visualizzatore Ogg de HTML5",
-    "mwe-embedplayer-ogg-player-mp3Native": "Visualizzatore MP3 de HTML5",
-    "mwe-embedplayer-ogg-player-aacNative": "Visualizzatore AAC de HTML5",
-    "mwe-embedplayer-ogg-player-h264Native": "Visualizzatore H.264 de HTML5",
-    "mwe-embedplayer-ogg-player-webmNative": "Visualizzatore WebM de HTML5",
-    "mwe-embedplayer-ogg-player-selected": "(scacchiate)",
-    "mwe-embedplayer-video-h264": "Video H.264",
-    "mwe-embedplayer-video-webm": "Video WebM",
-    "mwe-embedplayer-video-flv": "Video Flash",
-    "mwe-embedplayer-video-ogg": "Video Ogg",
-    "mwe-embedplayer-video-audio": "Audio Ogg",
-    "mwe-embedplayer-audio-mpeg": "Audio MPEG",
-    "mwe-embedplayer-video-3gp": "Video 3GP",
-    "mwe-embedplayer-video-mpeg": "Video MPEG",
-    "mwe-embedplayer-video-msvideo": "Video AVI"
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Titole: $1",
+	"mwe-embedplayer-credit-date": "Date: $1",
+	"mwe-embedplayer-credit-author": "Autore: $1",
+	"mwe-embedplayer-download_clip": "Scareche 'u video",
+	"mwe-embedplayer-download_text": "Scareche 'u teste",
+	"mwe-embedplayer-download": "Scareche",
+	"mwe-embedplayer-share": "Condivide",
+	"mwe-embedplayer-credits": "Credite",
+	"mwe-embedplayer-menu_btn": "Menù",
+	"mwe-embedplayer-close_btn": "Chiude",
+	"mwe-embedplayer-ogg-player-vlc-player": "Visualizzatore VLC",
+	"mwe-embedplayer-ogg-player-oggNative": "Visualizzatore Ogg de HTML5",
+	"mwe-embedplayer-ogg-player-mp3Native": "Visualizzatore MP3 de HTML5",
+	"mwe-embedplayer-ogg-player-aacNative": "Visualizzatore AAC de HTML5",
+	"mwe-embedplayer-ogg-player-h264Native": "Visualizzatore H.264 de HTML5",
+	"mwe-embedplayer-ogg-player-webmNative": "Visualizzatore WebM de HTML5",
+	"mwe-embedplayer-ogg-player-selected": "(scacchiate)",
+	"mwe-embedplayer-video-h264": "Video H.264",
+	"mwe-embedplayer-video-webm": "Video WebM",
+	"mwe-embedplayer-video-flv": "Video Flash",
+	"mwe-embedplayer-video-ogg": "Video Ogg",
+	"mwe-embedplayer-video-audio": "Audio Ogg",
+	"mwe-embedplayer-audio-mpeg": "Audio MPEG",
+	"mwe-embedplayer-video-3gp": "Video 3GP",
+	"mwe-embedplayer-video-mpeg": "Video MPEG",
+	"mwe-embedplayer-video-msvideo": "Video AVI"
 }

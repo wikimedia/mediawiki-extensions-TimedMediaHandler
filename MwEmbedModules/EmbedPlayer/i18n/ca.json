@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "Pitort"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "Títol: $1",
-    "mwe-embedplayer-credit-date": "Data: $1",
-    "mwe-embedplayer-credit-author": "Autor: $1",
-    "mwe-embedplayer-video-h264": "Vídeo H.264",
-    "mwe-embedplayer-video-webm": "Vídeo WebM",
-    "mwe-embedplayer-video-flv": "Vídeo flaix",
-    "mwe-embedplayer-video-ogg": "Vídeo Ogg",
-    "mwe-embedplayer-video-audio": "Àudio Ogg",
-    "mwe-embedplayer-audio-mpeg": "Àudio MPEG",
-    "mwe-embedplayer-video-3gp": "Vídeo 3GP",
-    "mwe-embedplayer-video-mpeg": "Vídeo MPEG",
-    "mwe-embedplayer-video-msvideo": "Vídeo AVI",
-    "mwe-embedplayer-missing-source": "No s'ha trobat cap font de vídeo"
+	"@metadata": {
+		"authors": [
+			"Pitort"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Títol: $1",
+	"mwe-embedplayer-credit-date": "Data: $1",
+	"mwe-embedplayer-credit-author": "Autor: $1",
+	"mwe-embedplayer-video-h264": "Vídeo H.264",
+	"mwe-embedplayer-video-webm": "Vídeo WebM",
+	"mwe-embedplayer-video-flv": "Vídeo flaix",
+	"mwe-embedplayer-video-ogg": "Vídeo Ogg",
+	"mwe-embedplayer-video-audio": "Àudio Ogg",
+	"mwe-embedplayer-audio-mpeg": "Àudio MPEG",
+	"mwe-embedplayer-video-3gp": "Vídeo 3GP",
+	"mwe-embedplayer-video-mpeg": "Vídeo MPEG",
+	"mwe-embedplayer-video-msvideo": "Vídeo AVI",
+	"mwe-embedplayer-missing-source": "No s'ha trobat cap font de vídeo"
 }

@@ -1,12 +1,10 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "mwe-embedplayer-player_fullscreen": "Pantaila osoan",
-    "mwe-embedplayer-paused": "pausatua",
-    "mwe-embedplayer-download": "Jaitsi",
-    "mwe-embedplayer-share": "Partekatu",
-    "mwe-embedplayer-credits": "Kredituak",
-    "mwe-embedplayer-menu_btn": "Menua",
-    "mwe-embedplayer-close_btn": "Itxi"
+	"@metadata": [],
+	"mwe-embedplayer-player_fullscreen": "Pantaila osoan",
+	"mwe-embedplayer-paused": "pausatua",
+	"mwe-embedplayer-download": "Jaitsi",
+	"mwe-embedplayer-share": "Partekatu",
+	"mwe-embedplayer-credits": "Kredituak",
+	"mwe-embedplayer-menu_btn": "Menua",
+	"mwe-embedplayer-close_btn": "Itxi"
 }

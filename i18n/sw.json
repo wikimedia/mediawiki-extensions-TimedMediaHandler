@@ -1,14 +1,14 @@
 {
-    "@metadata": {
-        "authors": [
-            "Stephenwanjau"
-        ]
-    },
-    "timedmedia-download": "Pakua faili",
-    "timedmedia-desc-link": "Kuhusu faili hii",
-    "timedmedia-status": "Hali",
-    "timedmedia-actions": "Vitendo",
-    "timedmedia-not-ready": "Haiko tayari",
-    "timedmedia-subtitle-new-go": "Nenda",
-    "timedmedia-file": "Faili"
+	"@metadata": {
+		"authors": [
+			"Stephenwanjau"
+		]
+	},
+	"timedmedia-download": "Pakua faili",
+	"timedmedia-desc-link": "Kuhusu faili hii",
+	"timedmedia-status": "Hali",
+	"timedmedia-actions": "Vitendo",
+	"timedmedia-not-ready": "Haiko tayari",
+	"timedmedia-subtitle-new-go": "Nenda",
+	"timedmedia-file": "Faili"
 }

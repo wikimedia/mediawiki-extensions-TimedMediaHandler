@@ -1,10 +1,7 @@
 {
-    "@metadata": {
-        "authors": [
-            "Yekrats"
-        ]
-    },
-    "mwe-timedtext-upload-text-fail-title": "Alŝutado malsukcesis",
-    "mwe-timedtext-upload-text-another": "Alŝuti alian",
-    "mwe-timedtext-upload-text-done-uploading": "Finiĝis alŝutado"
+	"@metadata": {
+		"authors": [
+			"Yekrats"
+		]
+	}
 }

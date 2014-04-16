@@ -1,28 +1,28 @@
 {
-    "@metadata": {
-        "authors": [
-            "Mormegil",
-            "Vks"
-        ]
-    },
-    "mwe-timedtext-editor": "Editor titulků",
-    "mwe-timedtext-stage-transcribe": "Přepis",
-    "mwe-timedtext-stage-sync": "Synchronizace",
-    "mwe-timedtext-stage-translate": "Překlad",
-    "mwe-timedtext-stage-upload": "Načtení místního souboru",
-    "mwe-timedtext-select-language": "Vyberte jazyk",
-    "mwe-timedtext-file-language": "Jazyk titulků",
-    "mwe-timedtext-back-btn": "Zpět",
-    "mwe-timedtext-choose-text": "Zvolit text",
-    "mwe-timedtext-loading-text-edit": "Načítá se editor titulků",
-    "mwe-timedtext-layout": "Vzhled",
-    "mwe-timedtext-layout-ontop": "Přes obraz",
-    "mwe-timedtext-layout-below": "Pod obrazem",
-    "mwe-timedtext-layout-off": "Skrýt titulky",
-    "mwe-timedtext-loading-text": "Načítá se text…",
-    "mwe-timedtext-textcat-ktv": "Karaoke",
-    "mwe-timedtext-textcat-nb": "Anotace",
-    "mwe-timedtext-textcat-trx": "Přepis",
-    "mwe-timedtext-language-subtitles-for-clip": "Titulky ke klipu $2 v jazyce $1",
-    "mwe-timedtext-language-no-subtitles-for-clip": "Ke klipu $2 nebyly nalezeny titulky v jazyce $1"
+	"@metadata": {
+		"authors": [
+			"Mormegil",
+			"Vks"
+		]
+	},
+	"mwe-timedtext-editor": "Editor titulků",
+	"mwe-timedtext-stage-transcribe": "Přepis",
+	"mwe-timedtext-stage-sync": "Synchronizace",
+	"mwe-timedtext-stage-translate": "Překlad",
+	"mwe-timedtext-stage-upload": "Načtení místního souboru",
+	"mwe-timedtext-select-language": "Vyberte jazyk",
+	"mwe-timedtext-file-language": "Jazyk titulků",
+	"mwe-timedtext-back-btn": "Zpět",
+	"mwe-timedtext-choose-text": "Zvolit text",
+	"mwe-timedtext-loading-text-edit": "Načítá se editor titulků",
+	"mwe-timedtext-layout": "Vzhled",
+	"mwe-timedtext-layout-ontop": "Přes obraz",
+	"mwe-timedtext-layout-below": "Pod obrazem",
+	"mwe-timedtext-layout-off": "Skrýt titulky",
+	"mwe-timedtext-loading-text": "Načítá se text…",
+	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-nb": "Anotace",
+	"mwe-timedtext-textcat-trx": "Přepis",
+	"mwe-timedtext-language-subtitles-for-clip": "Titulky ke klipu $2 v jazyce $1",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Ke klipu $2 nebyly nalezeny titulky v jazyce $1"
 }

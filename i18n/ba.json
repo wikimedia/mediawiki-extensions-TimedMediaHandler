@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "Haqmar"
-        ]
-    },
-    "timedmedia-days": "{{PLURAL:$1|1=$1 көн|$1 көн}}",
-    "timedmedia-hours": "{{PLURAL:$1|1=$1 сәғәт|$1 сәғәт}}",
-    "timedmedia-minutes": "{{PLURAL:$1|1=$1 минут|$1 минут}}",
-    "timedmedia-seconds": "{{PLURAL:$1|1=$1 секунд|$1 секунд}}"
+	"@metadata": {
+		"authors": [
+			"Haqmar"
+		]
+	},
+	"timedmedia-days": "{{PLURAL:$1|1=$1 көн|$1 көн}}",
+	"timedmedia-hours": "{{PLURAL:$1|1=$1 сәғәт|$1 сәғәт}}",
+	"timedmedia-minutes": "{{PLURAL:$1|1=$1 минут|$1 минут}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1=$1 секунд|$1 секунд}}"
 }

@@ -1,14 +1,12 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "mwe-embedplayer-link_back": "Kosketuz tagaze",
-    "mwe-embedplayer-play_clip": "Väta klip",
-    "mwe-embedplayer-credits": "Tegijad",
-    "mwe-embedplayer-menu_btn": "Menü",
-    "mwe-embedplayer-close_btn": "Saubata",
-    "mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-plagin",
-    "mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
-    "mwe-embedplayer-ogg-player-cortado": "Java Cortado",
-    "mwe-embedplayer-ogg-player-selected": "(valitud)"
+	"@metadata": [],
+	"mwe-embedplayer-link_back": "Kosketuz tagaze",
+	"mwe-embedplayer-play_clip": "Väta klip",
+	"mwe-embedplayer-credits": "Tegijad",
+	"mwe-embedplayer-menu_btn": "Menü",
+	"mwe-embedplayer-close_btn": "Saubata",
+	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-plagin",
+	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
+	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
+	"mwe-embedplayer-ogg-player-selected": "(valitud)"
 }

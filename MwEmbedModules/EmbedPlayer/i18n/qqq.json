@@ -1,33 +1,33 @@
 {
-    "@metadata": {
-        "authors": [
-            "Amire80",
-            "EugeneZelenko",
-            "Shirayuki",
-            "Umherirrender"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}",
-    "mwe-embedplayer-credit-date": "Parameters:\n* $1 - date\n{{Identical|Date}}",
-    "mwe-embedplayer-credit-author": "Parameters:\n* $1 - author\n{{Identical|Author}}",
-    "mwe-embedplayer-player_fullscreen": "{{Identical|Full screen}}",
-    "mwe-embedplayer-seek_to": "Used as the Player status string. Parameters:\n* $1 - a time in the NPT format. NPT (Normal play time) is defined in [//www.ietf.org/rfc/rfc2326.txt RFC 2326].",
-    "mwe-embedplayer-paused": "{{Identical|Paused}}",
-    "mwe-embedplayer-download": "{{Identical|Download}}",
-    "mwe-embedplayer-share": "{{Identical|Share}}",
-    "mwe-embedplayer-credits": "{{Identical|Credit}}",
-    "mwe-embedplayer-about-library-desc": "Parameters:\n* $1 - URL",
-    "mwe-embedplayer-no-player": "This message means that there are no available players to play $1.\n* $1 - source media title",
-    "mwe-embedplayer-menu_btn": "{{Identical|Menu}}",
-    "mwe-embedplayer-close_btn": "{{Identical|Close}}",
-    "mwe-embedplayer-ogg-player-mp3Native": "name of mp3 player in configuration screen",
-    "mwe-embedplayer-ogg-player-aacNative": "name of AAC player in configuration screen",
-    "mwe-embedplayer-ogg-player-cortado": "{{optional}}",
-    "mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
-    "mwe-embedplayer-for_best_experience": "Shown when user's browser doesn't support playing videos. Parameters:\n* $1 - An empty &lt;a&gt; tag. Don't use this parameter.",
-    "mwe-embedplayer-download-warn": "Parameters:\n* $1 - URL",
-    "mwe-embedplayer-do_not_warn_again": "Standard message for disabling\nfuture identical warnings messages",
-    "mwe-embedplayer-playerSelect": "{{Identical|Player}}",
-    "mwe-embedplayer-embed_site_or_blog": "title for iframe embed code in share dialog",
-    "mwe-embedplayer-embed_wiki": "title for wiki embed code in share dialog"
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"EugeneZelenko",
+			"Shirayuki",
+			"Umherirrender"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}",
+	"mwe-embedplayer-credit-date": "Parameters:\n* $1 - date\n{{Identical|Date}}",
+	"mwe-embedplayer-credit-author": "Parameters:\n* $1 - author\n{{Identical|Author}}",
+	"mwe-embedplayer-player_fullscreen": "{{Identical|Full screen}}",
+	"mwe-embedplayer-seek_to": "Used as the Player status string. Parameters:\n* $1 - a time in the NPT format. NPT (Normal play time) is defined in [//www.ietf.org/rfc/rfc2326.txt RFC 2326].",
+	"mwe-embedplayer-paused": "{{Identical|Paused}}",
+	"mwe-embedplayer-download": "{{Identical|Download}}",
+	"mwe-embedplayer-share": "{{Identical|Share}}",
+	"mwe-embedplayer-credits": "{{Identical|Credit}}",
+	"mwe-embedplayer-about-library-desc": "Parameters:\n* $1 - URL",
+	"mwe-embedplayer-no-player": "This message means that there are no available players to play $1.\n* $1 - source media title",
+	"mwe-embedplayer-menu_btn": "{{Identical|Menu}}",
+	"mwe-embedplayer-close_btn": "{{Identical|Close}}",
+	"mwe-embedplayer-ogg-player-mp3Native": "name of mp3 player in configuration screen",
+	"mwe-embedplayer-ogg-player-aacNative": "name of AAC player in configuration screen",
+	"mwe-embedplayer-ogg-player-cortado": "{{optional}}",
+	"mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
+	"mwe-embedplayer-for_best_experience": "Shown when user's browser doesn't support playing videos. Parameters:\n* $1 - An empty &lt;a&gt; tag. Don't use this parameter.",
+	"mwe-embedplayer-download-warn": "Parameters:\n* $1 - URL",
+	"mwe-embedplayer-do_not_warn_again": "Standard message for disabling\nfuture identical warnings messages",
+	"mwe-embedplayer-playerSelect": "{{Identical|Player}}",
+	"mwe-embedplayer-embed_site_or_blog": "title for iframe embed code in share dialog",
+	"mwe-embedplayer-embed_wiki": "title for wiki embed code in share dialog"
 }

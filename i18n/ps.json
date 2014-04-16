@@ -1,23 +1,23 @@
 {
-    "@metadata": {
-        "authors": [
-            "Ahmed-Najib-Biabani-Ibrahimkhel"
-        ]
-    },
-    "timedmedia-ogg-short-audio": "Ogg $1 غږيزه دوتنه، $2",
-    "timedmedia-ogg-short-video": "Ogg $1 ويډيويي دوتنه، $2",
-    "timedmedia-ogg-short-general": "Ogg $1 رسنيزه دوتنه، $2",
-    "timedmedia-more": "نور...",
-    "timedmedia-dismiss": "تړل",
-    "timedmedia-download": "دوتنه ښکته کول",
-    "timedmedia-play-media": "رسنۍ غږول",
-    "timedmedia-desc-link": "د همدې دوتنې په اړه",
-    "timedmedia-status": "دريځ",
-    "timedmedia-actions": "چارې",
-    "timedmedia-days": "{{PLURAL:$1|1 ورځ|$1 ورځې}}",
-    "timedmedia-hours": "{{PLURAL:$1|1 ساعت|$1 ساعتونه}}",
-    "timedmedia-minutes": "{{PLURAL:$1|1 دقيقه|دقيقې}}",
-    "timedmedia-subtitle-new-go": "ورځه",
-    "timedmedia-videos": "{{PLURAL:$1|$1 ويډيو|$1 ويډيوگانې}}",
-    "timedmedia-file": "دوتنه"
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"timedmedia-ogg-short-audio": "Ogg $1 غږيزه دوتنه، $2",
+	"timedmedia-ogg-short-video": "Ogg $1 ويډيويي دوتنه، $2",
+	"timedmedia-ogg-short-general": "Ogg $1 رسنيزه دوتنه، $2",
+	"timedmedia-more": "نور...",
+	"timedmedia-dismiss": "تړل",
+	"timedmedia-download": "دوتنه ښکته کول",
+	"timedmedia-play-media": "رسنۍ غږول",
+	"timedmedia-desc-link": "د همدې دوتنې په اړه",
+	"timedmedia-status": "دريځ",
+	"timedmedia-actions": "چارې",
+	"timedmedia-days": "{{PLURAL:$1|1 ورځ|$1 ورځې}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 ساعت|$1 ساعتونه}}",
+	"timedmedia-minutes": "{{PLURAL:$1|1 دقيقه|دقيقې}}",
+	"timedmedia-subtitle-new-go": "ورځه",
+	"timedmedia-videos": "{{PLURAL:$1|$1 ويډيو|$1 ويډيوگانې}}",
+	"timedmedia-file": "دوتنه"
 }

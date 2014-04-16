@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "Helix84"
-        ]
-    },
-    "timedmedia-desc": "Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom",
-    "timedmedia-ogg-short-audio": "Zvukový súbor ogg $1, $2",
-    "timedmedia-ogg-short-video": "Video súbor ogg $1, $2",
-    "timedmedia-ogg-short-general": "Multimediálny súbor ogg $1, $2",
-    "timedmedia-ogg-long-audio": "Zvukový súbor ogg $1, dĺžka $2, $3",
-    "timedmedia-ogg-long-video": "Video súbor ogg $1, dĺžka $2, $4×$5 pixelov, $3",
-    "timedmedia-ogg-long-multiplexed": "Multiplexovaný zvukový/video súbor ogg, $1, dĺžka $2, $4×$5 pixelov, $3 celkom",
-    "timedmedia-ogg-long-general": "Multimediálny súbor ogg, dĺžka $2, $3",
-    "timedmedia-ogg-long-error": "Neplatný súbor ogg: $1",
-    "timedmedia-more": "viac...",
-    "timedmedia-dismiss": "Zatvoriť",
-    "timedmedia-download": "Stiahnuť súbor",
-    "timedmedia-desc-link": "O tomto súbore"
+	"@metadata": {
+		"authors": [
+			"Helix84"
+		]
+	},
+	"timedmedia-desc": "Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom",
+	"timedmedia-ogg-short-audio": "Zvukový súbor ogg $1, $2",
+	"timedmedia-ogg-short-video": "Video súbor ogg $1, $2",
+	"timedmedia-ogg-short-general": "Multimediálny súbor ogg $1, $2",
+	"timedmedia-ogg-long-audio": "Zvukový súbor ogg $1, dĺžka $2, $3",
+	"timedmedia-ogg-long-video": "Video súbor ogg $1, dĺžka $2, $4×$5 pixelov, $3",
+	"timedmedia-ogg-long-multiplexed": "Multiplexovaný zvukový/video súbor ogg, $1, dĺžka $2, $4×$5 pixelov, $3 celkom",
+	"timedmedia-ogg-long-general": "Multimediálny súbor ogg, dĺžka $2, $3",
+	"timedmedia-ogg-long-error": "Neplatný súbor ogg: $1",
+	"timedmedia-more": "viac...",
+	"timedmedia-dismiss": "Zatvoriť",
+	"timedmedia-download": "Stiahnuť súbor",
+	"timedmedia-desc-link": "O tomto súbore"
 }

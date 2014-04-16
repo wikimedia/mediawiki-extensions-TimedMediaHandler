@@ -1,17 +1,17 @@
 {
-    "@metadata": {
-        "authors": [
-            "Veeven"
-        ]
-    },
-    "mwe-embedplayer-credit-title": "శీర్షిక: $1",
-    "mwe-embedplayer-credit-date": "తేదీ: $1",
-    "mwe-embedplayer-player_fullscreen": "నిండుతెర",
-    "mwe-embedplayer-download": "దింపుకోలు",
-    "mwe-embedplayer-share": "పంచుకోండి",
-    "mwe-embedplayer-share_this_video": "ఈ వీడియోని పంచుకోండి",
-    "mwe-embedplayer-menu_btn": "మెనూ",
-    "mwe-embedplayer-close_btn": "మూసివేయి",
-    "mwe-embedplayer-ogg-player-selected": "(ఎంచుకున్నారు)",
-    "mwe-embedplayer-related_videos": "సంబంధిత దృశ్యకాలు"
+	"@metadata": {
+		"authors": [
+			"Veeven"
+		]
+	},
+	"mwe-embedplayer-credit-title": "శీర్షిక: $1",
+	"mwe-embedplayer-credit-date": "తేదీ: $1",
+	"mwe-embedplayer-player_fullscreen": "నిండుతెర",
+	"mwe-embedplayer-download": "దింపుకోలు",
+	"mwe-embedplayer-share": "పంచుకోండి",
+	"mwe-embedplayer-share_this_video": "ఈ వీడియోని పంచుకోండి",
+	"mwe-embedplayer-menu_btn": "మెనూ",
+	"mwe-embedplayer-close_btn": "మూసివేయి",
+	"mwe-embedplayer-ogg-player-selected": "(ఎంచుకున్నారు)",
+	"mwe-embedplayer-related_videos": "సంబంధిత దృశ్యకాలు"
 }

@@ -1,25 +1,25 @@
 {
-    "@metadata": {
-        "authors": [
-            "Kaustubh",
-            "V.narsikar"
-        ]
-    },
-    "timedmedia-desc": "ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट",
-    "timedmedia-ogg-short-audio": "ऑग $1 ध्वनी संचिका, $2",
-    "timedmedia-ogg-short-video": "ऑग $1 चलतचित्र संचिका, $2",
-    "timedmedia-ogg-short-general": "ऑग $1 मीडिया संचिका, $2",
-    "timedmedia-ogg-long-audio": "ऑग $1 ध्वनी संचिका, लांबी $2, $3",
-    "timedmedia-ogg-long-video": "ऑग $1 चलतचित्र संचिका, लांबी $2, $4×$5 पीक्सेल्स, $3",
-    "timedmedia-ogg-long-multiplexed": "ऑग ध्वनी/चित्र संचिका, $1, लांबी $2, $4×$5 पिक्सेल्स, $3 एकूण",
-    "timedmedia-ogg-long-general": "ऑग मीडिया संचिका, लांबी $2, $3",
-    "timedmedia-ogg-long-error": "चुकीची ऑग संचिका: $1",
-    "timedmedia-more": "आणखी...",
-    "timedmedia-dismiss": "बंद करा",
-    "timedmedia-download": "संचिका अधिभारण करा",
-    "timedmedia-desc-link": "या संचिकेबद्दलची माहिती",
-    "timedmediahandler": "टाईम्डमिडियाहॅंडलर",
-    "timedmedia-videos": "{{PLURAL:$1|$1 व्हीडिओ}}",
-    "timedmedia-audios": "{{PLURAL:$1|$1 ध्वनी संचिका}}",
-    "timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ध्वनी संचिका}}"
+	"@metadata": {
+		"authors": [
+			"Kaustubh",
+			"V.narsikar"
+		]
+	},
+	"timedmedia-desc": "ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट",
+	"timedmedia-ogg-short-audio": "ऑग $1 ध्वनी संचिका, $2",
+	"timedmedia-ogg-short-video": "ऑग $1 चलतचित्र संचिका, $2",
+	"timedmedia-ogg-short-general": "ऑग $1 मीडिया संचिका, $2",
+	"timedmedia-ogg-long-audio": "ऑग $1 ध्वनी संचिका, लांबी $2, $3",
+	"timedmedia-ogg-long-video": "ऑग $1 चलतचित्र संचिका, लांबी $2, $4×$5 पीक्सेल्स, $3",
+	"timedmedia-ogg-long-multiplexed": "ऑग ध्वनी/चित्र संचिका, $1, लांबी $2, $4×$5 पिक्सेल्स, $3 एकूण",
+	"timedmedia-ogg-long-general": "ऑग मीडिया संचिका, लांबी $2, $3",
+	"timedmedia-ogg-long-error": "चुकीची ऑग संचिका: $1",
+	"timedmedia-more": "आणखी...",
+	"timedmedia-dismiss": "बंद करा",
+	"timedmedia-download": "संचिका अधिभारण करा",
+	"timedmedia-desc-link": "या संचिकेबद्दलची माहिती",
+	"timedmediahandler": "टाईम्डमिडियाहॅंडलर",
+	"timedmedia-videos": "{{PLURAL:$1|$1 व्हीडिओ}}",
+	"timedmedia-audios": "{{PLURAL:$1|$1 ध्वनी संचिका}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ध्वनी संचिका}}"
 }

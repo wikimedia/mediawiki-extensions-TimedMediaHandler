@@ -1,30 +1,30 @@
 {
-    "@metadata": {
-        "authors": [
-            "Dani",
-            "Glanthor Reviol",
-            "Tgr"
-        ]
-    },
-    "timedmedia-desc": "JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz",
-    "timedmedia-ogg-short-audio": "Ogg $1 hangfájl, $2",
-    "timedmedia-ogg-short-video": "Ogg $1 videofájl, $2",
-    "timedmedia-ogg-short-general": "Ogg $1 médiafájl, $2",
-    "timedmedia-ogg-long-audio": "Ogg $1 hangfájl, hossza: $2, $3",
-    "timedmedia-ogg-long-video": "Ogg $1 videófájl, hossza $2, $4×$5 képpont, $3",
-    "timedmedia-ogg-long-multiplexed": "Ogg egyesített audió- és videófájl, $1, hossz: $2, $4×$5 képpont, $3 összesen",
-    "timedmedia-ogg-long-general": "Ogg médiafájl, hossza: $2, $3",
-    "timedmedia-ogg-long-error": "Érvénytelen ogg fájl: $1",
-    "timedmedia-no-player-js": "Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />\n<a href=\"$1\">Letöltheted a klipet</a>, vagy <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.",
-    "timedmedia-more": "Tovább...",
-    "timedmedia-dismiss": "Bezárás",
-    "timedmedia-download": "Fájl letöltése",
-    "timedmedia-play-media": "Média lejátszása",
-    "timedmedia-desc-link": "Fájlinformációk",
-    "timedmedia-oggThumb-version": "Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.",
-    "timedmedia-oggThumb-failed": "Az oggThumb nem tudta elkészíteni a bélyegképet.",
-    "timedmedia-source-file-desc": "Eredeti $1, $2 × $3 ($4)",
-    "timedmedia-derivative-desc-160p.ogv": "Alacsony sávszélességű Ogg videó (160P)",
-    "timedmedia-derivative-desc-720p.ogv": "Magas minőségű, letölthető Ogg videó (720P)",
-    "timedmedia-derivative-desc-720p.webm": "Magas minőségű, letölthető WebM (720P)"
+	"@metadata": {
+		"authors": [
+			"Dani",
+			"Glanthor Reviol",
+			"Tgr"
+		]
+	},
+	"timedmedia-desc": "JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz",
+	"timedmedia-ogg-short-audio": "Ogg $1 hangfájl, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 videofájl, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 médiafájl, $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 hangfájl, hossza: $2, $3",
+	"timedmedia-ogg-long-video": "Ogg $1 videófájl, hossza $2, $4×$5 képpont, $3",
+	"timedmedia-ogg-long-multiplexed": "Ogg egyesített audió- és videófájl, $1, hossz: $2, $4×$5 képpont, $3 összesen",
+	"timedmedia-ogg-long-general": "Ogg médiafájl, hossza: $2, $3",
+	"timedmedia-ogg-long-error": "Érvénytelen ogg fájl: $1",
+	"timedmedia-no-player-js": "Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />\n<a href=\"$1\">Letöltheted a klipet</a>, vagy <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.",
+	"timedmedia-more": "Tovább...",
+	"timedmedia-dismiss": "Bezárás",
+	"timedmedia-download": "Fájl letöltése",
+	"timedmedia-play-media": "Média lejátszása",
+	"timedmedia-desc-link": "Fájlinformációk",
+	"timedmedia-oggThumb-version": "Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.",
+	"timedmedia-oggThumb-failed": "Az oggThumb nem tudta elkészíteni a bélyegképet.",
+	"timedmedia-source-file-desc": "Eredeti $1, $2 × $3 ($4)",
+	"timedmedia-derivative-desc-160p.ogv": "Alacsony sávszélességű Ogg videó (160P)",
+	"timedmedia-derivative-desc-720p.ogv": "Magas minőségű, letölthető Ogg videó (720P)",
+	"timedmedia-derivative-desc-720p.webm": "Magas minőségű, letölthető WebM (720P)"
 }
