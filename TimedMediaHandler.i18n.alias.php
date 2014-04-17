@@ -29,6 +29,11 @@ $specialPageAliases['de'] = array(
 	'TimedMediaHandler' => array( 'TimedMedia-Steuerungsprogramm' ),
 );
 
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'TimedMediaHandler' => array( 'MısnayoğéMedyayaZemanın' ),
+);
+
 /** Hebrew (עברית) */
 $specialPageAliases['he'] = array(
 	'TimedMediaHandler' => array( 'מדיה_מתוזמנת' ),
