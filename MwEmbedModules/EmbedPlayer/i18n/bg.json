@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"DCLXVI"
 		]
 	},
+	"mwe-embedplayer-credit-title": "Заглавие: $1",
+	"mwe-embedplayer-credit-date": "Дата: $1",
+	"mwe-embedplayer-credit-author": "Автор: $1",
 	"mwe-embedplayer-close_btn": "Затваряне"
 }
