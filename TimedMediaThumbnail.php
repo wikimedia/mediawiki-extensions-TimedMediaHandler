@@ -198,8 +198,16 @@ class TimedMediaThumbnail {
 			"width" => $options['width'],
 			"height" => $options['height']
 		);
-		$scaledThumb = $thumbFile->getHandler()->doTransform( $thumbFile,
-			$options['dstPath'], $options['dstPath'], $thumbParams );
+		$handler = $thumbFile->getHandler();
+		if ( !$handler ) {
+			return false;
+		}
+		$scaledThumb = $handler->doTransform(
+			$thumbFile,
+			$options['dstPath'],
+			$options['dstPath'],
+			$thumbParams
+		);
 
 		if ( !$scaledThumb || $scaledThumb->isError() ) {
 			return $scaledThumb;
