@@ -34,6 +34,11 @@ $specialPageAliases['diq'] = array(
 	'TimedMediaHandler' => array( 'MısnayoğéMedyayaZemanın' ),
 );
 
+/** Estonian (eesti) */
+$specialPageAliases['et'] = array(
+	'TimedMediaHandler' => array( 'Ajastatud_meediafailide_töötleja' ),
+);
+
 /** Hebrew (עברית) */
 $specialPageAliases['he'] = array(
 	'TimedMediaHandler' => array( 'מדיה_מתוזמנת' ),
