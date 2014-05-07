@@ -22,7 +22,7 @@
 	"timedmedia-wav-pcm-required": "Mabalinmo laeng ti agikarga ti PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "MP4 $1 a video apapeles, $2",
 	"timedmedia-mp4-long-video": "MP4 nga audio/video a papeles, $1, kaatiddog $2, $4 × $5 a piksel, $3 amin-amin",
-	"timedmedia-no-player-js": "Pasensia, ti pagbasabasam ket mabalin a nabaldado ti JavaScript wenno awan ti nasuportaran a mangay-ayam.<br />\nMabalinmo ti <a href=\"$1\">agikarga ti sigpit</a> wenno <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">agikarga ti maysa a magay-ayam</a> tapno maay-ayam ti sigpit iti pagbasabasam.",
+	"timedmedia-no-player-js": "Pasensia, ti pagbasabasam ket mabalin a nabaldado ti JavaScript wenno awan ti nasuportaran a mangay-ayam.<br />\nMabalinmo ti <a href=\"$1\">agikarga ti sigpit</a> wenno <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">agikarga ti maysa a magay-ayam</a> tapno maay-ayam ti sigpit iti pagbasabasam.",
 	"timedmedia-more": "Adu pay...",
 	"timedmedia-dismiss": "Irikep",
 	"timedmedia-download": "Ikarga ti papeles",

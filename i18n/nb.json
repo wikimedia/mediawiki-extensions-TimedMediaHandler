@@ -24,7 +24,7 @@
 	"timedmedia-wav-pcm-required": "Du kan kun laste opp PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "MP4 $1 videofil, $2",
 	"timedmedia-mp4-long-video": "MP4-fil for lyd/video, $1, lengde $2, $4 × $5 piksler, $3 totalt",
-	"timedmedia-no-player-js": "Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />\nDu kan <a href=\"$1\">laste ned klippet</a> eller <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">laste ned en spiller</a> for å spille av klippet i nettleseren din.",
+	"timedmedia-no-player-js": "Beklager, nettleseren din har enten deaktivert JavaScript eller har ingen støttet spiller.<br />\nDu kan <a href=\"$1\">laste ned klippet</a> eller <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">laste ned en spiller</a> for å spille av klippet i nettleseren din.",
 	"timedmedia-more": "Mer …",
 	"timedmedia-dismiss": "Lukk",
 	"timedmedia-download": "Last ned fil",

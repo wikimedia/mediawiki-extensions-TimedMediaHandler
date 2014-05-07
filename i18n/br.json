@@ -17,7 +17,7 @@
 	"timedmedia-ogg-long-error": "Restr ogg direizh : $1",
 	"timedmedia-webm-short-video": "Restr video WebM $1, $2",
 	"timedmedia-webm-long-video": "Restr video/son WebM, $1, pad $2, $4 × $5 piksel, $3 en holl",
-	"timedmedia-no-player-js": "Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n'eo ket skoret lenner ebet gantañ.<br />\n<a href=\"$1\">Pellgargañ ar c'hlip</a> a c'hallit pe <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">pellgargañ ul lenner</a> da lenn ar c'hlip gant ho merdeer.",
+	"timedmedia-no-player-js": "Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n'eo ket skoret lenner ebet gantañ.<br />\n<a href=\"$1\">Pellgargañ ar c'hlip</a> a c'hallit pe <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">pellgargañ ul lenner</a> da lenn ar c'hlip gant ho merdeer.",
 	"timedmedia-more": "Muioc'h...",
 	"timedmedia-dismiss": "Serriñ",
 	"timedmedia-download": "Pellgargañ ar restr",

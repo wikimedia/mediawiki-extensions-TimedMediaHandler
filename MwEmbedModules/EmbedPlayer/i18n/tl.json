@@ -63,7 +63,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Pindutin ang <b>shift ⌘ F</b> upang mapalitan at malipatan ang buong panooran",
 	"mwe-embedplayer-do_not_warn_again": "Sa hinaharap, huwag ipakita ang mensaheng ito",
 	"mwe-embedplayer-playerSelect": "Mga pampaandar",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Basahin ito</a> bago ibaon.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Basahin ito</a> bago ibaon.",
 	"mwe-embedplayer-embed_site_or_blog": "Ibaon sa isang pahina",
 	"mwe-embedplayer-related_videos": "Kaugnay na mga bidyo",
 	"mwe-embedplayer-seeking": "hinahanap",

@@ -32,7 +32,7 @@
 	"timedmedia-wav-pcm-required": "Du kannst nur PCM-WAV-Dateien hochladen (Pulse Code Modulation).",
 	"timedmedia-mp4-short-video": "MP4-$1-Videodatei, $2",
 	"timedmedia-mp4-long-video": "MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 insgesamt",
-	"timedmedia-no-player-js": "Entschuldige, aber dein Browser hat entweder JavaScript deaktiviert oder keine unterstützte Abspielsoftware.<br />\nDu kannst <a href=\"$1\">den Clip herunterladen</a> oder <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.",
+	"timedmedia-no-player-js": "Entschuldige, aber dein Browser hat entweder JavaScript deaktiviert oder keine unterstützte Abspielsoftware.<br />\nDu kannst <a href=\"$1\">den Clip herunterladen</a> oder <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abzuspielen.",
 	"timedmedia-more": "Optionen …",
 	"timedmedia-dismiss": "Schließen",
 	"timedmedia-download": "Datei herunterladen",

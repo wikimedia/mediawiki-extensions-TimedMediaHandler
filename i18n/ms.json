@@ -23,7 +23,7 @@
 	"timedmedia-wav-pcm-required": "Anda boleh memuat naik WAV PCM (Pulse Code Modulation) sahaja.",
 	"timedmedia-mp4-short-video": "fail video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "fail audio/video MP4, $1, tempoh $2, $4×$5 piksel, $3 keseluruhannya",
-	"timedmedia-no-player-js": "Maaf, pelayar anda sama ada telah dimatikan JavaScript-nya ataupun tidak mempunyai sebarang pemain yang disokong.<br />\nAnda boleh <a href=\"$1\">memuat turun sedutan</a> itu atau <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">memuat turun pemain</a> yang boleh memutarkan sedutan berkenaan dalam pelayar anda.",
+	"timedmedia-no-player-js": "Maaf, pelayar anda sama ada telah dimatikan JavaScript-nya ataupun tidak mempunyai sebarang pemain yang disokong.<br />\nAnda boleh <a href=\"$1\">memuat turun sedutan</a> itu atau <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">memuat turun pemain</a> yang boleh memutarkan sedutan berkenaan dalam pelayar anda.",
 	"timedmedia-more": "Lagi…",
 	"timedmedia-dismiss": "Tutup",
 	"timedmedia-download": "Muat turun fail",

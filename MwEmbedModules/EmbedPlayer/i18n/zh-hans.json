@@ -67,7 +67,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "按<b>Shift ⌘ F</b>切换至全屏",
 	"mwe-embedplayer-do_not_warn_again": "以后不再显示该信息",
 	"mwe-embedplayer-playerSelect": "播放器",
-	"mwe-embedplayer-read_before_embed": "嵌入前请<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">阅读本文</a>。",
+	"mwe-embedplayer-read_before_embed": "嵌入前请<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">阅读本文</a>。",
 	"mwe-embedplayer-embed_site_or_blog": "嵌入页面",
 	"mwe-embedplayer-embed_wiki": "嵌入wiki",
 	"mwe-embedplayer-related_videos": "相关视频",

@@ -21,7 +21,7 @@
 	"timedmedia-flac-short-audio": "Аўдыёфайл FLAC, $1",
 	"timedmedia-flac-long-audio": "Аўдыёфайл FLAC, працягласьць $1, усяго $2",
 	"timedmedia-mp4-short-video": "MP4 $1 відэафайл, $2",
-	"timedmedia-no-player-js": "Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />\nВы можаце <a href=\"$1\">загрузіць кліп</a> ці <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.",
+	"timedmedia-no-player-js": "Прабачце, але ў Вашым браўзэры адключаны JavaScript альбо няма неабходнага прайгравальніка.<br />\nВы можаце <a href=\"$1\">загрузіць кліп</a> ці <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">загрузіць прайгравальнік</a> для прайграваньня кліпу ў Вашым браўзэры.",
 	"timedmedia-more": "Болей…",
 	"timedmedia-dismiss": "Назад",
 	"timedmedia-download": "Загрузіць файл",

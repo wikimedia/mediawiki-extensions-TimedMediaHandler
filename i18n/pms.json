@@ -25,7 +25,7 @@
 	"timedmedia-wav-pcm-required": "A peul mach carié dij WAV PCM (Modolassion d'ampulsion codificà).",
 	"timedmedia-mp4-short-video": "Archivi filmà MP4 $1, $2",
 	"timedmedia-mp4-long-video": "MP4 archivi sonor/filmà, $1, longheur $2, $4 x $5 pontin, $3 an tut",
-	"timedmedia-no-player-js": "Darmagi, sò navigador a l'ha JavaScript disabilità o a sopòrta pa ël riprodutor.<br />\nA peul <a href=\"$1\">dëscarié la senëtta</a> o <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.",
+	"timedmedia-no-player-js": "Darmagi, sò navigador a l'ha JavaScript disabilità o a sopòrta pa ël riprodutor.<br />\nA peul <a href=\"$1\">dëscarié la senëtta</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">dëscarié un riprodutor</a> për visualisé la senëtta su sò navigador.",
 	"timedmedia-more": "Dë pì...",
 	"timedmedia-dismiss": "sëré",
 	"timedmedia-download": "Dëscarié l'archivi",

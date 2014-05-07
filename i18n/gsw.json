@@ -17,7 +17,7 @@
 	"timedmedia-ogg-long-error": "Uugiltigi Ogg-Datei: $1",
 	"timedmedia-webm-short-video": "WebM-$1-Videodatei, $2",
 	"timedmedia-webm-long-video": "WebM-Audio-/Video-Datei, $1, Längei: $2, $4×$5 Pixel, $3 insgsamt",
-	"timedmedia-no-player-js": "Excusez, aber Dyy Browser het entwäder JavaScript deaktiviert oder kei unterstitzti Abspilsoftware.<br />\nDu chasch <a href=\"$1\">dr Clip abelade</a> oder <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.",
+	"timedmedia-no-player-js": "Excusez, aber Dyy Browser het entwäder JavaScript deaktiviert oder kei unterstitzti Abspilsoftware.<br />\nDu chasch <a href=\"$1\">dr Clip abelade</a> oder <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.",
 	"timedmedia-more": "Meh …",
 	"timedmedia-dismiss": "Zuemache",
 	"timedmedia-download": "Datei spychere",

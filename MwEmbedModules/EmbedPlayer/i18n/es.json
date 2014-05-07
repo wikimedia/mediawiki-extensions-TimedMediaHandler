@@ -67,7 +67,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Presione <b>shift ⌘ F</b> para activar o desactivarl a pantalla completa",
 	"mwe-embedplayer-do_not_warn_again": "No mostrar este mensaje en el futuro.",
 	"mwe-embedplayer-playerSelect": "Reproductores",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Leer esto</a> antes de insertar.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Leer esto</a> antes de insertar.",
 	"mwe-embedplayer-embed_site_or_blog": "Insertar en una página",
 	"mwe-embedplayer-embed_wiki": "Incrustar en un wiki",
 	"mwe-embedplayer-related_videos": "Videos relacionados",

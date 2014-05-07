@@ -32,7 +32,7 @@
 	"timedmedia-wav-pcm-required": "Ви можете тільки завантажити PCM (імпульсно-кодова модуляція) WAV.",
 	"timedmedia-mp4-short-video": "MP4 $1 відео-файл, $2",
 	"timedmedia-mp4-long-video": "MP4 аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3",
-	"timedmedia-no-player-js": "На жаль, у Вашому браузері вимкнено JavaScript і не підтримується жодного програвача.<br />\nВи можете <a href=\"$1\">завантажити ролик</a> або <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">завантажити програвач</a> для відтворенні ролику у браузері.",
+	"timedmedia-no-player-js": "На жаль, у Вашому браузері вимкнено JavaScript і не підтримується жодного програвача.<br />\nВи можете <a href=\"$1\">завантажити ролик</a> або <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">завантажити програвач</a> для відтворенні ролику у браузері.",
 	"timedmedia-more": "Більше…",
 	"timedmedia-dismiss": "Закрити",
 	"timedmedia-download": "Завантажити файл",

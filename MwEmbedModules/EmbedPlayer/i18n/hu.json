@@ -58,7 +58,7 @@
 	"mwe-embedplayer-for_best_experience": "A jobb videolejátszási élményhez <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5-öt támogató böngészőt</a> ajánlunk.",
 	"mwe-embedplayer-do_not_warn_again": "Eltüntetés egyelőre.",
 	"mwe-embedplayer-playerSelect": "Lejátszók",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Olvasd el ezt</a>, mielőtt beillesztenéd.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Olvasd el ezt</a>, mielőtt beillesztenéd.",
 	"mwe-embedplayer-embed_site_or_blog": "Beágyazás egy lapra",
 	"mwe-embedplayer-related_videos": "Kapcsolódó videók",
 	"mwe-embedplayer-seeking": "keresés",

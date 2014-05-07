@@ -15,7 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg egyesített audió- és videófájl, $1, hossz: $2, $4×$5 képpont, $3 összesen",
 	"timedmedia-ogg-long-general": "Ogg médiafájl, hossza: $2, $3",
 	"timedmedia-ogg-long-error": "Érvénytelen ogg fájl: $1",
-	"timedmedia-no-player-js": "Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />\n<a href=\"$1\">Letöltheted a klipet</a>, vagy <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.",
+	"timedmedia-no-player-js": "Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />\n<a href=\"$1\">Letöltheted a klipet</a>, vagy <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.",
 	"timedmedia-more": "Tovább...",
 	"timedmedia-dismiss": "Bezárás",
 	"timedmedia-download": "Fájl letöltése",

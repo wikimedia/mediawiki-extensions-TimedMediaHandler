@@ -64,7 +64,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "לחיצה על <b>shift ⌘ F</b> מפעילה מסך מלא",
 	"mwe-embedplayer-do_not_warn_again": "לא להציג את ההודעה הזאת שוב",
 	"mwe-embedplayer-playerSelect": "נגנים",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">אנא קִראו</a> לפני הטמעה.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">אנא קִראו</a> לפני הטמעה.",
 	"mwe-embedplayer-embed_site_or_blog": "הטמעה באתר או בבלוג שלכם",
 	"mwe-embedplayer-embed_wiki": "להטמיע בוויקי",
 	"mwe-embedplayer-related_videos": "סרטונים קשורים",

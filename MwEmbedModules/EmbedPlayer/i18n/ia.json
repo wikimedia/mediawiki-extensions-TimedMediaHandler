@@ -61,7 +61,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Preme <b>shift ⌘ F</b> pro alternar plen schermo",
 	"mwe-embedplayer-do_not_warn_again": "In le futuro, non monstrar iste message",
 	"mwe-embedplayer-playerSelect": "Reproductores",
-	"mwe-embedplayer-read_before_embed": "Per favor lege le <a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">notas de securitate super incastramento remote</a> ante de incastrar un cosa!",
+	"mwe-embedplayer-read_before_embed": "Per favor lege le <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">notas de securitate super incastramento remote</a> ante de incastrar un cosa!",
 	"mwe-embedplayer-embed_site_or_blog": "Incastrar in un pagina",
 	"mwe-embedplayer-related_videos": "Videos connexe",
 	"mwe-embedplayer-seeking": "cercante",

@@ -67,7 +67,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Aperte <b>shift ⌘ F</b> para ativar ou desativar o modo de tela inteira",
 	"mwe-embedplayer-do_not_warn_again": "No futuro, não mostrar esta mensagem",
 	"mwe-embedplayer-playerSelect": "Tocadores",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Leia isto</a> antes de incorporar.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Leia isto</a> antes de incorporar.",
 	"mwe-embedplayer-embed_site_or_blog": "Incorporar em uma página",
 	"mwe-embedplayer-embed_wiki": "Incorporar em uma wiki",
 	"mwe-embedplayer-related_videos": "Vídeos relacionados",

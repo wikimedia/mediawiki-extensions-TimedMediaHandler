@@ -27,7 +27,7 @@
 	"timedmedia-flac-long-audio": "Plik dźwiękowy FLAC, długość $1, przepływność $2",
 	"timedmedia-wav-short-audio": "Plik audio WAV, $1",
 	"timedmedia-wav-long-audio": "Plik dźwiękowy WAV, długość $1, przepływność $2",
-	"timedmedia-no-player-js": "Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />\nMożesz <a href=\"$1\">pobrać plik</a> lub <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.",
+	"timedmedia-no-player-js": "Niestety, Twoja przeglądarka ma wyłączoną obsługę JavaScript lub nie wspiera odtwarzania.<br />\nMożesz <a href=\"$1\">pobrać plik</a> lub <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">pobrać odtwarzacz</a> pozwalający oglądać wideo w przeglądarce.",
 	"timedmedia-more": "Więcej...",
 	"timedmedia-dismiss": "Zamknij",
 	"timedmedia-download": "Pobierz plik",

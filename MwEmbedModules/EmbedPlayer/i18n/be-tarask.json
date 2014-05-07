@@ -67,7 +67,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Націсьніце <b>shift ⌘ F</b> для пераходу ў поўнаэкранны рэжым",
 	"mwe-embedplayer-do_not_warn_again": "Не паказваць гэтае паведамленьне ў будучыні",
 	"mwe-embedplayer-playerSelect": "Прайгравальнікі",
-	"mwe-embedplayer-read_before_embed": "Калі ласка, <a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">прачытайце гэта</a> перад устаўкай!",
+	"mwe-embedplayer-read_before_embed": "Калі ласка, <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">прачытайце гэта</a> перад устаўкай!",
 	"mwe-embedplayer-embed_site_or_blog": "Уставіць на старонку",
 	"mwe-embedplayer-embed_wiki": "Уставіць у вікі",
 	"mwe-embedplayer-related_videos": "Зьвязаныя відэа",

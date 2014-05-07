@@ -64,7 +64,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Trykk <b>shift ⌘ F</b> for å vise i fullskjerm",
 	"mwe-embedplayer-do_not_warn_again": "Ikke vis denne meldingen i fremtiden",
 	"mwe-embedplayer-playerSelect": "Spillere",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Les dette</a> før du bygger inn.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Les dette</a> før du bygger inn.",
 	"mwe-embedplayer-embed_site_or_blog": "Bygg inn på en side",
 	"mwe-embedplayer-embed_wiki": "Bygg inn på en wiki",
 	"mwe-embedplayer-related_videos": "Relaterte videoer",

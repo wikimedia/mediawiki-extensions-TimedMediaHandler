@@ -19,7 +19,7 @@
 	"timedmedia-webm-long-video": "Awdio-/widejodataja WebM, $1, dołhosć $2, $4 x $5 pikselow, $3 dohromady",
 	"timedmedia-mp4-short-video": "MP4 $1 widejodataja, $2",
 	"timedmedia-mp4-long-video": "MP4 awdio-/widejodataja, $1, dołhosć $2, $4 × $5 pikselow, $3 dohromady",
-	"timedmedia-no-player-js": "Twój wobhladowak je pak JavaScript znjemóžnił pak nima podpěrowany wothrawak.<br />\nMóžeš <a href=\"$1\">klip sćahnyć</a> abo <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.",
+	"timedmedia-no-player-js": "Twój wobhladowak je pak JavaScript znjemóžnił pak nima podpěrowany wothrawak.<br />\nMóžeš <a href=\"$1\">klip sćahnyć</a> abo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">wothrawak sćahnyć</a>, zo by klip w swojim wobhladowaku wothrawał.",
 	"timedmedia-more": "Wjace ...",
 	"timedmedia-dismiss": "Začinić",
 	"timedmedia-download": "Dataju sćahnyć",

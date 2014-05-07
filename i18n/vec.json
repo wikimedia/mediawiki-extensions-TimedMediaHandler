@@ -18,7 +18,7 @@
 	"timedmedia-webm-long-video": "File audio/video WebM $1, durata $2, dimension $4×$5 pixel, conplesivamente $3",
 	"timedmedia-mp4-short-video": "File video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "File audio/video MP4 $1, durata $2, dimension $4×$5 pixel, conplesivamente $3",
-	"timedmedia-no-player-js": "El to browser el gà JavaScript destacà, opure no'l gà nissun riprodutor suportà.<br />\nTe pol <a href=\"$1\">descargar el file multimediale</a> o <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">un riprodutor</a> par farlo 'ndar sul to browser.",
+	"timedmedia-no-player-js": "El to browser el gà JavaScript destacà, opure no'l gà nissun riprodutor suportà.<br />\nTe pol <a href=\"$1\">descargar el file multimediale</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">un riprodutor</a> par farlo 'ndar sul to browser.",
 	"timedmedia-more": "Altro...",
 	"timedmedia-dismiss": "Sara",
 	"timedmedia-download": "Descarga el file",

@@ -27,7 +27,7 @@
 	"timedmedia-wav-pcm-required": "アップロードできるのは PCM (パルス符号変調) WAV のみです。",
 	"timedmedia-mp4-short-video": "MP4 $1 動画ファイル、$2",
 	"timedmedia-mp4-long-video": "MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3",
-	"timedmedia-no-player-js": "申し訳ありませんが、あなたのブラウザーではJavaScriptが無効になっているか、対応しているプレーヤーがありません。<br />\n再生するには、<a href=\"$1\">クリップをダウンロード</a>するか、<a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">プレーヤーをダウンロード</a>する必要があります。",
+	"timedmedia-no-player-js": "申し訳ありませんが、あなたのブラウザーではJavaScriptが無効になっているか、対応しているプレーヤーがありません。<br />\n再生するには、<a href=\"$1\">クリップをダウンロード</a>するか、<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">プレーヤーをダウンロード</a>する必要があります。",
 	"timedmedia-more": "その他…",
 	"timedmedia-dismiss": "閉じる",
 	"timedmedia-download": "ファイルをダウンロードする",

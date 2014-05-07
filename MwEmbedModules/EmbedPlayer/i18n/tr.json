@@ -58,7 +58,7 @@
 	"mwe-embedplayer-for_best_experience": "Daha iyi bir video oynatma deneyimi için önerimiz:<br /><a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">Firefox 3.5</a>.",
 	"mwe-embedplayer-do_not_warn_again": "Gelecekte bu iletiyi gösterme",
 	"mwe-embedplayer-playerSelect": "Oynatıcılar",
-	"mwe-embedplayer-read_before_embed": "Lütfen gerçekten gömmeden <a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">uzaktan gömme hakkındaki güvenlik notlarını</a> okuyun!",
+	"mwe-embedplayer-read_before_embed": "Lütfen gerçekten gömmeden <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">uzaktan gömme hakkındaki güvenlik notlarını</a> okuyun!",
 	"mwe-embedplayer-embed_site_or_blog": "Bir sayfaya gömün",
 	"mwe-embedplayer-embed_wiki": "Bir viki üzerinde göm",
 	"mwe-embedplayer-related_videos": "İlgili videolar",

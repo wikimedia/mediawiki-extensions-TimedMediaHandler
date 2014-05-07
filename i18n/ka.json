@@ -23,7 +23,7 @@
 	"timedmedia-wav-short-audio": "WAV აუდიო ფაილი, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 ვიდეო ფაილი, $2",
 	"timedmedia-mp4-long-video": "MP4 აუდიო/ვიდეო ფაილი, $1, სიგრძე $2, $4 × $5 პიქსელი, $3 სრული",
-	"timedmedia-no-player-js": "სამწუხაროდ, თქვენ ბრაუზერში გამორთულია JavaScript ან არ არის საჭირო დამკვრელი.<br />\nთქვენ შეგიძლიათ <a href=\"$1\">გადმოწეროთ კლიპი</a> ან <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">გადმოწეროთ დამკვრელი</a> კლიპის ბრაუზერში დასაკრავად.",
+	"timedmedia-no-player-js": "სამწუხაროდ, თქვენ ბრაუზერში გამორთულია JavaScript ან არ არის საჭირო დამკვრელი.<br />\nთქვენ შეგიძლიათ <a href=\"$1\">გადმოწეროთ კლიპი</a> ან <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">გადმოწეროთ დამკვრელი</a> კლიპის ბრაუზერში დასაკრავად.",
 	"timedmedia-more": "მეტი...",
 	"timedmedia-dismiss": "დახურვა",
 	"timedmedia-download": "ფაილის ჩამოტვირთვა",

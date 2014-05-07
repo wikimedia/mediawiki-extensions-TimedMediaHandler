@@ -68,7 +68,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "فشار دادن <b> کلید مبدل ⌘ F</b> به دکمه تمام صفحه",
 	"mwe-embedplayer-do_not_warn_again": "در آینده، این پیام را نشان ندهید",
 	"mwe-embedplayer-playerSelect": "بازیکنان",
-	"mwe-embedplayer-read_before_embed": "<ahref=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\"> این را </a> قبل از جاسازی بخوانید.",
+	"mwe-embedplayer-read_before_embed": "<ahref=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\"> این را </a> قبل از جاسازی بخوانید.",
 	"mwe-embedplayer-embed_site_or_blog": "قرار دادن در یک صفحه",
 	"mwe-embedplayer-embed_wiki": "قرار دادن در یک ویکی",
 	"mwe-embedplayer-related_videos": "مرتبط شدن ویدیو‌ها",

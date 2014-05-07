@@ -28,7 +28,7 @@
 	"timedmedia-wav-long-audio": "Ficheiro de áudio WAV, duração $1, $2",
 	"timedmedia-mp4-short-video": "Vídeo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Áudio/vídeo MP$, $1, duração $2, $4 × $5 pixels, $3",
-	"timedmedia-no-player-js": "Desculpe, mas ou o seu navegador está com o JavaScript desactivado ou não tem nenhum dos leitores suportados.<br />\nPode fazer a <a href=\"$1\">descarga do vídeo</a> ou o <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">de um leitor</a> para assistir ao vídeo no seu navegador.",
+	"timedmedia-no-player-js": "Desculpe, mas ou o seu navegador está com o JavaScript desactivado ou não tem nenhum dos leitores suportados.<br />\nPode fazer a <a href=\"$1\">descarga do vídeo</a> ou o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">de um leitor</a> para assistir ao vídeo no seu navegador.",
 	"timedmedia-more": "Mais...",
 	"timedmedia-dismiss": "Fechar",
 	"timedmedia-download": "Fazer descarga do ficheiro",

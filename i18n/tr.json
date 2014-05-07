@@ -27,7 +27,7 @@
 	"timedmedia-wav-pcm-required": "Yalnızca PCM (Darbeli Kod Modülasyonu) WAV yükleyebilirsiniz.",
 	"timedmedia-mp4-short-video": "MP4 $1 video dosyası, $2",
 	"timedmedia-mp4-long-video": "MP4 ses/video dosyası, $1, süre $2, $4 × $5 piksel, $3 tümü",
-	"timedmedia-no-player-js": "Üzgünüm, ancak tarayıcınızın JavaScript ayarları devre dışı olarak ayarlanmış olabilir veya uygun bir oynatıcı yok.<br />\nİsterseniz <a href=\"$1\">klibi indirebilir</a> veya tarayıcınız için <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">oynatıcıyı buradan indirebilirsiniz</a>.",
+	"timedmedia-no-player-js": "Üzgünüm, ancak tarayıcınızın JavaScript ayarları devre dışı olarak ayarlanmış olabilir veya uygun bir oynatıcı yok.<br />\nİsterseniz <a href=\"$1\">klibi indirebilir</a> veya tarayıcınız için <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">oynatıcıyı buradan indirebilirsiniz</a>.",
 	"timedmedia-more": "Daha...",
 	"timedmedia-dismiss": "Kapat",
 	"timedmedia-download": "Dosya indir",

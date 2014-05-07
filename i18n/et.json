@@ -24,7 +24,7 @@
 	"timedmedia-wav-pcm-required": "Saad üles laadida ainult impulssmodulatsiooniga (PCM) WAV-faile.",
 	"timedmedia-mp4-short-video": "$1-tüüpi MP4-videofail, $2",
 	"timedmedia-mp4-long-video": "MP4-fail (heli ja video), $1, kestus: $2, $4×$5 pikslit, üldbitikiirus: $3",
-	"timedmedia-no-player-js": "Kahjuks on sinu veebilehitsejas JavaScript keelatud või puudub sul sobiv esitustarkvara.<br />\nSaad <a href=\"$1\">lõigu alla laadida</a> või <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">laadida alla tarkvara</a>, millega lõik veebilehitsejas esitada.",
+	"timedmedia-no-player-js": "Kahjuks on sinu veebilehitsejas JavaScript keelatud või puudub sul sobiv esitustarkvara.<br />\nSaad <a href=\"$1\">lõigu alla laadida</a> või <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">laadida alla tarkvara</a>, millega lõik veebilehitsejas esitada.",
 	"timedmedia-more": "Lisa...",
 	"timedmedia-dismiss": "Sule",
 	"timedmedia-download": "Laadi fail alla",

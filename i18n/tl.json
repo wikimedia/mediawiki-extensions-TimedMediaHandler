@@ -16,7 +16,7 @@
 	"timedmedia-ogg-long-error": "Hindi tanggap na talaksang ''ogg'': $1",
 	"timedmedia-webm-short-video": "$1 na talaksan ng bidyo ng WebM, $2",
 	"timedmedia-webm-long-video": "Talaksang pamparinig/bidyo ng WebM, $1, haba $2, $4 × $5 mga piksel, $3 lahat-lahat",
-	"timedmedia-no-player-js": "Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />\nMaaari kang <a href=\"$1\">magkargang pababa ng kaputol</a> o <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.",
+	"timedmedia-no-player-js": "Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />\nMaaari kang <a href=\"$1\">magkargang pababa ng kaputol</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.",
 	"timedmedia-more": "Marami pa…",
 	"timedmedia-dismiss": "Isara",
 	"timedmedia-download": "Ikarga ang talaksan",

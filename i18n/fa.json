@@ -31,7 +31,7 @@
 	"timedmedia-wav-pcm-required": "شما فقط می توانید PCM و WAV را بار کنید.",
 	"timedmedia-mp4-short-video": "MP4  $1 پروندهٔ ویدئویی، $2",
 	"timedmedia-mp4-long-video": "پرونده‌های صوتی یا تصویری با قالب $1، زمان $2، $4 × $5 پیکسل و $3 به طورکلی",
-	"timedmedia-no-player-js": "با عرض پوزش، نرم افزار جاوا اسکریپت برروی مرورگر شما فعال نیست، و یا مرورگر شما از این نرم افزار پشتیبانی نمی کند.<br />\nشما میتوانید <a href=\"$1\">این ویدیو را دانلود</a> و یا <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">یک پخش کننده</a> برای اجرای این ویدیو دانلود نمایید.",
+	"timedmedia-no-player-js": "با عرض پوزش، نرم افزار جاوا اسکریپت برروی مرورگر شما فعال نیست، و یا مرورگر شما از این نرم افزار پشتیبانی نمی کند.<br />\nشما میتوانید <a href=\"$1\">این ویدیو را دانلود</a> و یا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">یک پخش کننده</a> برای اجرای این ویدیو دانلود نمایید.",
 	"timedmedia-more": "بیشتر...",
 	"timedmedia-dismiss": "بستن",
 	"timedmedia-download": "دریافت پرونده",

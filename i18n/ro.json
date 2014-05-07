@@ -23,7 +23,7 @@
 	"timedmedia-flac-long-audio": "fișier audio FLAC, lungime $1, $2 per ansmablu",
 	"timedmedia-mp4-short-video": "fișier video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "fișier audio/video MP4, $1, lungime $2, $4 × $5 pixeli, $3 per ansamblu",
-	"timedmedia-no-player-js": "Ne pare rău, însă navigatorul dumneavoastră fie are JavaScript dezactivat, fie nu conține niciun player suportat.<br />\nPuteți <a href=\"$1\">descărca clipul</a> sau puteți <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">descărca un player</a> pentru a-l reda direct în navigator.",
+	"timedmedia-no-player-js": "Ne pare rău, însă navigatorul dumneavoastră fie are JavaScript dezactivat, fie nu conține niciun player suportat.<br />\nPuteți <a href=\"$1\">descărca clipul</a> sau puteți <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descărca un player</a> pentru a-l reda direct în navigator.",
 	"timedmedia-more": "Mai mult…",
 	"timedmedia-dismiss": "Închide",
 	"timedmedia-download": "Descarcă fișierul",

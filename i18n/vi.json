@@ -24,7 +24,7 @@
 	"timedmedia-wav-pcm-required": "Bạn chỉ có thể tải lên các tập tin WAV PCM (Pulse Code Modulation).",
 	"timedmedia-mp4-short-video": "tập tin video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "tập tin âm thanh/video MP4, $1, dài $2, $4×$5 điểm ảnh, $3 tất cả",
-	"timedmedia-no-player-js": "Rất tiếc, hoặc JavaScript bị tắt trong trình duyệt của bạn hoặc trình duyệt không có trình chơi nào được hỗ trợ.<br />\nBạn có thể <a href=\"$1\">tải về đoạn âm hoặc đoạn video</a> hay <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download?uselang=vi\">tải về một trình chơi</a> để chơi đoạn âm hoặc đoạn video trong trình duyệt.",
+	"timedmedia-no-player-js": "Rất tiếc, hoặc JavaScript bị tắt trong trình duyệt của bạn hoặc trình duyệt không có trình chơi nào được hỗ trợ.<br />\nBạn có thể <a href=\"$1\">tải về đoạn âm hoặc đoạn video</a> hay <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download?uselang=vi\">tải về một trình chơi</a> để chơi đoạn âm hoặc đoạn video trong trình duyệt.",
 	"timedmedia-more": "Thêm nữa…",
 	"timedmedia-dismiss": "Đóng",
 	"timedmedia-download": "Tải tập tin xuống",

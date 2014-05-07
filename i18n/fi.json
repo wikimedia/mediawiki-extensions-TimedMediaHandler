@@ -23,7 +23,7 @@
 	"timedmedia-webm-long-video": "WebM-ääni-/videotiedosto, $1, pituus $2, $4×$5 pikseliä, yhteensä $3",
 	"timedmedia-mp4-short-video": "MP4 $1 -videotiedosto, $2",
 	"timedmedia-mp4-long-video": "MP4-ääni-/videotiedosto, $1, pituus $2, $4×$5 pikseliä, yhteensä $3",
-	"timedmedia-no-player-js": "Valitettavasti selaimessasi on joko JavaScript pois päältä tai sille ei ole tuettua soitinta.<br />\nVoit <a href=\"$1\">ladata leikkeen</a> tai <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">ladata soittimen</a> toistaaksesi sen selaimessasi.",
+	"timedmedia-no-player-js": "Valitettavasti selaimessasi on joko JavaScript pois päältä tai sille ei ole tuettua soitinta.<br />\nVoit <a href=\"$1\">ladata leikkeen</a> tai <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ladata soittimen</a> toistaaksesi sen selaimessasi.",
 	"timedmedia-more": "Lisää…",
 	"timedmedia-dismiss": "Sulje",
 	"timedmedia-download": "Lataa",

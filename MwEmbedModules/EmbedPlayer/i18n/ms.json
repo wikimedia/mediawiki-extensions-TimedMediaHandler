@@ -63,7 +63,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Tekan <b>shift ⌘ F</b> untuk ke skrin penuh",
 	"mwe-embedplayer-do_not_warn_again": "Jangan paparkan mesej ini lagi",
 	"mwe-embedplayer-playerSelect": "Pemain",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Baca ini</a> sebelum menyiratkan video.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Baca ini</a> sebelum menyiratkan video.",
 	"mwe-embedplayer-embed_site_or_blog": "Siratkan pada halaman",
 	"mwe-embedplayer-embed_wiki": "Siratkan pada wiki",
 	"mwe-embedplayer-related_videos": "Video-video berkaitan",

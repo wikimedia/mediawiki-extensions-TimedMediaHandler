@@ -26,7 +26,7 @@
 	"timedmedia-wav-pcm-required": "您僅可上載PCM（流派代碼調試）WAV。",
 	"timedmedia-mp4-short-video": "MP4 $1視訊檔案，$2",
 	"timedmedia-mp4-long-video": "MP4音訊/視訊檔案，$1，長度$2，$4×$5像素，共$3",
-	"timedmedia-no-player-js": "抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />\n您可以<a href=\"$1\">下載這個片段</a>或<a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">下載一個播放器</a>以在瀏覽器中播放片段。",
+	"timedmedia-no-player-js": "抱歉，您的瀏覽器的JavaScript已關閉或沒有可以支持的播放器。<br />\n您可以<a href=\"$1\">下載這個片段</a>或<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">下載一個播放器</a>以在瀏覽器中播放片段。",
 	"timedmedia-more": "更多...",
 	"timedmedia-dismiss": "關閉",
 	"timedmedia-download": "下載檔案",

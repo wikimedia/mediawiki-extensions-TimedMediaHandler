@@ -65,7 +65,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "全画面表示を切り替えるには <b>shift &#x2318; F</b> を押してください",
 	"mwe-embedplayer-do_not_warn_again": "今後、このメッセージを表示しない",
 	"mwe-embedplayer-playerSelect": "プレーヤー",
-	"mwe-embedplayer-read_before_embed": "埋め込む前に<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">注意事項</a>をお読みください。",
+	"mwe-embedplayer-read_before_embed": "埋め込む前に<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">注意事項</a>をお読みください。",
 	"mwe-embedplayer-embed_site_or_blog": "ページに埋め込む",
 	"mwe-embedplayer-embed_wiki": "ウィキに埋め込む",
 	"mwe-embedplayer-related_videos": "関連する動画",

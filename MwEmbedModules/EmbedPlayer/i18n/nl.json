@@ -66,7 +66,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Typ <b>SHIRT+⌘+F</b> voor volledig scherm of terug",
 	"mwe-embedplayer-do_not_warn_again": "Dit bericht niet meer weergeven.",
 	"mwe-embedplayer-playerSelect": "Spelers",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Lees dit</a> voordat u gaat embedden (Engels)!",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Lees dit</a> voordat u gaat embedden (Engels)!",
 	"mwe-embedplayer-embed_site_or_blog": "Toevoegen aan een pagina",
 	"mwe-embedplayer-embed_wiki": "Toevoegen aan een pagina",
 	"mwe-embedplayer-related_videos": "Gerelateerde video's",

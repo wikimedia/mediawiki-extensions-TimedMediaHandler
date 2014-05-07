@@ -65,7 +65,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Tryck på <b>SKIFT ⌘ f</b> för att växla till helskärm",
 	"mwe-embedplayer-do_not_warn_again": "Visa inte detta meddelande fortsättningsvis",
 	"mwe-embedplayer-playerSelect": "Spelare",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Läs detta</a> innan inbäddning.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Läs detta</a> innan inbäddning.",
 	"mwe-embedplayer-embed_site_or_blog": "Bädda in på en sida",
 	"mwe-embedplayer-embed_wiki": "Bädda in på en wiki",
 	"mwe-embedplayer-related_videos": "Relaterade videos",

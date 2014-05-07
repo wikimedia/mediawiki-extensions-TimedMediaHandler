@@ -40,7 +40,7 @@
 	"timedmedia-wav-pcm-required": "Vous ne pouvez télécharger que des WAV PCM (Modulation d’impulsion codée).",
 	"timedmedia-mp4-short-video": "Fichier vidéo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Fichier audio/vidéo MP4, $1, taille $2, $4 x $5 pixels, $3 au total",
-	"timedmedia-no-player-js": "Désolé, soit votre navigateur a JavaScript désactivé, soit il ne dispose d’aucun lecteur pris en charge.<br />\nVous pouvez <a href=\"$1\">télécharger le clip</a> ou <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">télécharger un lecteur</a> pour lire le clip dans votre navigateur.",
+	"timedmedia-no-player-js": "Désolé, soit votre navigateur a JavaScript désactivé, soit il ne dispose d’aucun lecteur pris en charge.<br />\nVous pouvez <a href=\"$1\">télécharger le clip</a> ou <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">télécharger un lecteur</a> pour lire le clip dans votre navigateur.",
 	"timedmedia-more": "Plus…",
 	"timedmedia-dismiss": "Fermer",
 	"timedmedia-download": "Télécharger le fichier",

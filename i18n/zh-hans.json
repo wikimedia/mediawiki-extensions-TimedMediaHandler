@@ -30,7 +30,7 @@
 	"timedmedia-wav-pcm-required": "您只能上传脉冲编码调制（PCM）WAV。",
 	"timedmedia-mp4-short-video": "MP4 $1视频文件，$2",
 	"timedmedia-mp4-long-video": "MP4音频/视频文件，$1，长度$2，$4 × $5像素，$3 overall",
-	"timedmedia-no-player-js": "抱歉，您的浏览器禁用了JavaScript或没有任何可支持的播放器。<br />\n您可以<a href=\"$1\">下载这个片段</a>或<a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">下载一个播放器</a>以在浏览器中播放片段。",
+	"timedmedia-no-player-js": "抱歉，您的浏览器禁用了JavaScript或没有任何可支持的播放器。<br />\n您可以<a href=\"$1\">下载这个片段</a>或<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">下载一个播放器</a>以在浏览器中播放片段。",
 	"timedmedia-more": "更多...",
 	"timedmedia-dismiss": "关闭",
 	"timedmedia-download": "下载文件",

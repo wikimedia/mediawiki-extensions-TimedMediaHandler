@@ -22,7 +22,7 @@
 	"timedmedia-wav-pcm-required": "Tu pote solmente incargar PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "File video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "File audio/video MP4 $1, durata $2, dimensiones $4 × $5 pixels, $3 in total",
-	"timedmedia-no-player-js": "Pardono, tu systema o ha JavaScript disactivate o non ha un reproductor supportate.<br />\nTu pote <a href=\"$1\">discargar le clip</a> o <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">discargar un reproductor</a> pro reproducer le clip in tu navigator.",
+	"timedmedia-no-player-js": "Pardono, tu systema o ha JavaScript disactivate o non ha un reproductor supportate.<br />\nTu pote <a href=\"$1\">discargar le clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">discargar un reproductor</a> pro reproducer le clip in tu navigator.",
 	"timedmedia-more": "Plus…",
 	"timedmedia-dismiss": "Clauder",
 	"timedmedia-download": "Discargar file",

@@ -64,7 +64,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "전체 화면으로 전환하려면 <b>shift ⌘ F</b>를 누르세요",
 	"mwe-embedplayer-do_not_warn_again": "나중에 이 메시지를 보여주지 않음",
 	"mwe-embedplayer-playerSelect": "플레이어",
-	"mwe-embedplayer-read_before_embed": "포함하기 전에 <a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">이 글을 읽으세요</a>.",
+	"mwe-embedplayer-read_before_embed": "포함하기 전에 <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">이 글을 읽으세요</a>.",
 	"mwe-embedplayer-embed_site_or_blog": "문서에 포함",
 	"mwe-embedplayer-embed_wiki": "위키에 포함",
 	"mwe-embedplayer-related_videos": "관련 동영상",

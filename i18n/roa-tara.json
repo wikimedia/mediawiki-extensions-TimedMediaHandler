@@ -22,7 +22,7 @@
 	"timedmedia-wav-pcm-required": "Tu puè sulamende carecà WAV de tipe PCM (Codece de Modulazione Pulsate).",
 	"timedmedia-mp4-short-video": "MP4 $1 file video, $2",
 	"timedmedia-mp4-long-video": "File MP4 audio/video, $1, lunghezze $2, $4 × $5 pixel, $3 in totale",
-	"timedmedia-no-player-js": "Ne dispiace, 'u browser tune tène 'u JavaScript disabbilitate o non ge tène 'n'esecutore supportate.<br />\nTu puè <a href=\"$1\">scarecà 'u video</a> o <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">scarecà 'n'esecutore</a> pe 'ndrucà 'u video sus a 'u browser tune.",
+	"timedmedia-no-player-js": "Ne dispiace, 'u browser tune tène 'u JavaScript disabbilitate o non ge tène 'n'esecutore supportate.<br />\nTu puè <a href=\"$1\">scarecà 'u video</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">scarecà 'n'esecutore</a> pe 'ndrucà 'u video sus a 'u browser tune.",
 	"timedmedia-more": "De cchiù...",
 	"timedmedia-dismiss": "Chiude",
 	"timedmedia-download": "Scareche stu file",

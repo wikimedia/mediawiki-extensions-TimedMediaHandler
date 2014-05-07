@@ -19,7 +19,7 @@
 	"timedmedia-ogg-long-error": "ملف Ogg غير صحيح: $1",
 	"timedmedia-webm-short-video": "نسق WebM، $1 ملف فيديو $2",
 	"timedmedia-webm-long-video": "ملف صوت/فيديو بنسق WebM , $1, الطول $2, $4×$5 بكسل، $3 إجمالا",
-	"timedmedia-no-player-js": "عذرا، متصفحك إما انه لا يدعم الجافا سكريبت أو انها معطلة.<br />\nتستطيع <a href=\"$1\">تحميل المقطع</a> أو <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">تحميل مشغل</a> يستطيع تشغيل المقطع على متصفحك.",
+	"timedmedia-no-player-js": "عذرا، متصفحك إما انه لا يدعم الجافا سكريبت أو انها معطلة.<br />\nتستطيع <a href=\"$1\">تحميل المقطع</a> أو <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">تحميل مشغل</a> يستطيع تشغيل المقطع على متصفحك.",
 	"timedmedia-more": "المزيد...",
 	"timedmedia-dismiss": "أغلق",
 	"timedmedia-download": "نزل الملف",

@@ -24,7 +24,7 @@
 	"timedmedia-wav-pcm-required": "U kunt alleen PCM (Pulse Code Modulation) WAV uploaden.",
 	"timedmedia-mp4-short-video": "MP4 $1 videobestand, $2",
 	"timedmedia-mp4-long-video": "MP4 audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal",
-	"timedmedia-no-player-js": "Uw systeem heeft JavaScript uitgeschakeld of er is geen ondersteunde mediaspeler.<br />\nU kunt <a href=\"$1\">de clip downloaden</a> of <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.",
+	"timedmedia-no-player-js": "Uw systeem heeft JavaScript uitgeschakeld of er is geen ondersteunde mediaspeler.<br />\nU kunt <a href=\"$1\">de clip downloaden</a> of <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">een mediaspeler downloaden</a> om de clip af te spelen in uw browser.",
 	"timedmedia-more": "Meer…",
 	"timedmedia-dismiss": "Sluiten",
 	"timedmedia-download": "Bestand downloaden",

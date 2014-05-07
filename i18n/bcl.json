@@ -23,7 +23,7 @@
 	"timedmedia-wav-pcm-required": "Ika makakarga sana nin PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "MP$ $1 sagunson nin bidyo, $2",
 	"timedmedia-mp4-long-video": "MP4 sagunson nin audio/bidyo, $1, an laba $2, $4 x $5 piksel, $3 sa bilog na kagabsan",
-	"timedmedia-no-player-js": "Sori po, an saimong pangilyaw baya pinagpundo an JavaScript o mayo gayod nin arinmang pinagsuportaran na parapaandar. <br /> Ika <a href=\"$1\">makakapagkarga nin klip</a> o baya <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">magkarga nin sarong parapaandar</a> tanganing paandaron an klip kan saimong kilyawan.",
+	"timedmedia-no-player-js": "Sori po, an saimong pangilyaw baya pinagpundo an JavaScript o mayo gayod nin arinmang pinagsuportaran na parapaandar. <br /> Ika <a href=\"$1\">makakapagkarga nin klip</a> o baya <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">magkarga nin sarong parapaandar</a> tanganing paandaron an klip kan saimong kilyawan.",
 	"timedmedia-more": "Dakolon pa..",
 	"timedmedia-dismiss": "Isara",
 	"timedmedia-download": "Ikarga an sagunson",

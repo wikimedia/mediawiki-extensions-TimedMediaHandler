@@ -57,7 +57,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "ටොගල පූර්ණ තිරය සඳහා <b>shift ⌘ F</b> ඔබන්න",
 	"mwe-embedplayer-do_not_warn_again": "ඉදිරියේදී, මෙම පණිවුඩය පෙන්වන්න එපා",
 	"mwe-embedplayer-playerSelect": "වාදක",
-	"mwe-embedplayer-read_before_embed": "එබ්බීම පෙර <a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">මෙය කියවන්න</a>.",
+	"mwe-embedplayer-read_before_embed": "එබ්බීම පෙර <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">මෙය කියවන්න</a>.",
 	"mwe-embedplayer-embed_site_or_blog": "පිටුවක ඔබ්බවන්න",
 	"mwe-embedplayer-related_videos": "ආශ්‍රිත වීඩියෝ",
 	"mwe-embedplayer-seeking": "ඉලියමින්",

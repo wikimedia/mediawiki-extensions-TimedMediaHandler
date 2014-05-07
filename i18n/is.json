@@ -19,7 +19,7 @@
 	"timedmedia-webm-long-video": "WebM myndbandaskrá, $1, lengd $2, $4 × $5 dílar, $3 samanlagt",
 	"timedmedia-mp4-short-video": "MP4 $1 myndbandaskrá, $2",
 	"timedmedia-mp4-long-video": "MP4 myndbandaskrá, $1, lengd $2, $4 × $5 dílar, $3 samanlagt",
-	"timedmedia-no-player-js": "Því miður hefur vafrinn þinn annaðhvort óvirkan JavaScript eða engan studdann spilara.<br />\nÞú getur <a href=\"$1\">hlaðið niður skránni</a> eða <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">hlaðið niður spilara</a> til þess að spila skránna í vafranum.",
+	"timedmedia-no-player-js": "Því miður hefur vafrinn þinn annaðhvort óvirkan JavaScript eða engan studdann spilara.<br />\nÞú getur <a href=\"$1\">hlaðið niður skránni</a> eða <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">hlaðið niður spilara</a> til þess að spila skránna í vafranum.",
 	"timedmedia-more": "Meira...",
 	"timedmedia-dismiss": "Loka",
 	"timedmedia-download": "Sækja skrá",

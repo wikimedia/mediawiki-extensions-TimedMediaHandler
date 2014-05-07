@@ -16,7 +16,7 @@
 	"timedmedia-ogg-long-multiplexed": "Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo",
 	"timedmedia-ogg-long-general": "Multimídia Ogg, $2 de duração, $3",
 	"timedmedia-ogg-long-error": "Arquivo ogg inválido: $1",
-	"timedmedia-no-player-js": "Desculpe, seu navegador ou está com JavaScript desabilitado ou não tem nenhum \"player\" suportado.<br />\nVocê pode <a href=\"$1\">descarregar o clipe</a> ou <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">descarregar um \"player\"</a> para executar o clipe em seu navegador.",
+	"timedmedia-no-player-js": "Desculpe, seu navegador ou está com JavaScript desabilitado ou não tem nenhum \"player\" suportado.<br />\nVocê pode <a href=\"$1\">descarregar o clipe</a> ou <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descarregar um \"player\"</a> para executar o clipe em seu navegador.",
 	"timedmedia-more": "Mais...",
 	"timedmedia-dismiss": "Fechar",
 	"timedmedia-download": "Descarregar arquivo",

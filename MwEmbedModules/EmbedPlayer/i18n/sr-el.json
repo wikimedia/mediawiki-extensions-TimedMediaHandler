@@ -61,7 +61,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "Pritisnite <b>Shift ⌘ F</b> za prebacivanje na ceo ekran",
 	"mwe-embedplayer-do_not_warn_again": "Ne prikazuj ovu poruku ponovo",
 	"mwe-embedplayer-playerSelect": "Izvođači",
-	"mwe-embedplayer-read_before_embed": "<a href=\"http://mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Pročitajte ovo</a> pre ugrađivanja.",
+	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Pročitajte ovo</a> pre ugrađivanja.",
 	"mwe-embedplayer-embed_site_or_blog": "Ugradi u stranicu",
 	"mwe-embedplayer-related_videos": "Srodni video-snimci",
 	"mwe-embedplayer-seeking": "tražim",
