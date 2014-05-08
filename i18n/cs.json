@@ -5,7 +5,8 @@
 			"Li-sung",
 			"Matěj Grabovský",
 			"Mormegil",
-			"Paxt"
+			"Paxt",
+			"Matěj Suchánek"
 		]
 	},
 	"timedmedia-desc": "Obsluha zvuků, videa a časovaného textu s podporou formátů WebM, Ogg Theora, Vorbis, srt",
@@ -21,7 +22,7 @@
 	"timedmedia-webm-long-video": "audio/video soubor WebM, $1, délka $2, $4×$5 pixelů, celkem $3",
 	"timedmedia-mp4-short-video": "Videosoubor MP4 $1, $2",
 	"timedmedia-mp4-long-video": "audio/video soubor MP4, $1, délka $2, $4×$5 pixelů, celkem $3",
-	"timedmedia-no-player-js": "Je mi líto, ale váš prohlížeč má buď vypnutý JavaScript, nebo nemáte žádný podporovaný přehrávač.<br />\nMůžete si <a href=\"$1\">stáhnout klip</a> nebo si <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download/cs\">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.",
+	"timedmedia-no-player-js": "Je mi líto, ale váš prohlížeč má buď vypnutý JavaScript, nebo nemáte žádný podporovaný přehrávač.<br />\nMůžete si <a href=\"$1\">stáhnout klip</a> nebo si <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.",
 	"timedmedia-more": "Více...",
 	"timedmedia-dismiss": "Zavřít",
 	"timedmedia-download": "Stáhnout soubor",
