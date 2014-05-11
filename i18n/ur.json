@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Muhammad Shuaib"
 		]
 	},
+	"timedmedia-no-player-js": "معذرت، آپ کے براؤزر میں جاواسکرپٹ فعال نہیں یا کوئی معاون پلیئر شامل نہیں ہے۔<br />\nاس کلپ کو اپنے براؤزر میں چلانے کے لیے آپ <a href=\"$1\">کلپ کو ڈاؤنلوڈ</a> کرلیں یا </a> or <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">پلیئر ڈاؤنلوڈ</a> کرلیں۔",
 	"timedmedia-more": "مزید...",
 	"timedmedia-dismiss": "بند",
 	"timedmedia-download": "فائل ڈاؤن لوڈ ، اتارنا",
