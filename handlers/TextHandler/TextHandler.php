@@ -203,10 +203,14 @@ class TextHandler {
 		$params = new FauxRequest( $this->getTextPagesQuery() );
 		$api = new ApiMain( $params );
 		$api->profileIn();
-		$module = new ForeignApiQueryAllPages( $this->file->getRepo()->getSlaveDB(), $api, 'allpages' );
+		$query = new ApiQuery( $api, 'foo', 'bar' );
+		$query->profileIn();
+		$module = new ForeignApiQueryAllPages( $this->file->getRepo()->getSlaveDB(), $query, 'allpages' );
 		$module->profileIn();
 		$module->execute();
 		$module->profileOut();
+		$query->profileOut();
+		$api->profileOut();
 
 		$data = $module->getResultData();
 		// Get the list of language Names
