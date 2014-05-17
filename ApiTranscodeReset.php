@@ -145,7 +145,7 @@ class ApiTranscodeReset extends ApiBase {
 		return array(
 			'title' => 'The media file title',
 			'transcodekey' => 'The transcode key you wish to reset',
-			'token' => 'You can get one of these through prop=info',
+			'token' => 'An edit token obtained via action=tokens',
 		);
 	}
 
