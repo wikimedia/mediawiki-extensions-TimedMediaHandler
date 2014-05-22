@@ -116,7 +116,7 @@ mw.ready(function() {
 
   //disable logging for timeupdate
   setLogging('timeupdate', false);
-  $('input[name=timeupdate]').attr('checked', false);
+  $('input[name=timeupdate]').prop( 'checked', false );
 
   logME('* the media player is ready');
  

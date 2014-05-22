@@ -39,11 +39,13 @@
 
 		var rewriteElementCount = 0;
 		$( this ).each( function(inx, playerElement){
-			var skinName ='';
+			var skinName = '',
+				profile = $.client.profile();
+
 			// we have javascript ( disable controls )
 			$( playerElement ).removeAttr( 'controls' );
 			// Add an overlay loader ( firefox has its own native loading spinner )
-			if( !$.browser.mozilla ){
+			if ( profile.name !== 'firefox' ){
 				$( playerElement )
 					.parent()
 					.getAbsoluteOverlaySpinner()

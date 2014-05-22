@@ -104,7 +104,8 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	addControls: function() {
 		// Set up local pointer to the embedPlayer
-		var embedPlayer = this.embedPlayer;
+		var embedPlayer = this.embedPlayer,
+			profile = $.client.profile();
 
 		// Set up local controlBuilder
 		var _this = this;
@@ -138,7 +139,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Add the controls to the interface
 		embedPlayer.getInterface().append( $controlBar );
 
-        if ( $.browser.mozilla && parseFloat( $.browser.version ) < 2 ) {
+        if ( profile.name === 'firefox' && profile.versionNumber < 2 ) {
 			embedPlayer.triggerHelper( 'resizeIframeContainer', [ {'height' : embedPlayer.height + $controlBar.height() - 1} ] );
         }
 
@@ -408,7 +409,8 @@ mw.PlayerControlBuilder.prototype = {
 	doFullScreenPlayer: function( callback ) {
 		mw.log("PlayerControlBuilder:: doFullScreenPlayer" );
 		// Setup pointer to control builder :
-		var _this = this;
+		var _this = this,
+			profile = $.client.profile();
 
 		// Store the page vertical scroll
 		var doc =  window.document;
@@ -458,7 +460,7 @@ mw.PlayerControlBuilder.prototype = {
 			// There is a bug with mozfullscreenchange event in all versions of firefox with supportsFullScreen
 			// https://bugzilla.mozilla.org/show_bug.cgi?id=724816
 			// so we have to have an extra binding to check for size change and then restore.
-			if( $.browser.mozilla ){
+			if( profile.name === 'firefox' ){
 				_this.fullscreenRestoreCheck = setInterval( function(){
 					if( fullscreenHeight && $(window).height() < fullscreenHeight ){
 						// Mozilla triggered size change:
@@ -787,8 +789,8 @@ mw.PlayerControlBuilder.prototype = {
 			return ;
 		}
 		// Safari does not have a DOM fullscreen ( no subtitles, no controls )
-		if( $.browser.safari && ! /chrome/.test( navigator.userAgent.toLowerCase() ) ){
-			return ;
+		if ( $.client.profile().name === 'safari' ) {
+			return;
 		}
 
 		// OSX has a different short cut than windows and liux
@@ -949,9 +951,10 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	addControlBindings: function( ) {
 		// Set up local pointer to the embedPlayer
-		var embedPlayer = this.embedPlayer;
-		var _this = this;
-		var $interface = embedPlayer.getInterface();
+		var embedPlayer = this.embedPlayer,
+			_this = this,
+			$interface = embedPlayer.getInterface(),
+			profile = $.client.profile();
 
 		_this.onControlBar = false;
 
@@ -1126,7 +1129,7 @@ mw.PlayerControlBuilder.prototype = {
 		}
 
 		// Do png fix for ie6
-		if ( $.browser.msie && $.browser.version <= 6 ) {
+		if ( profile.name === 'msie' && profile.versionNumber <= 6 ) {
 			$( '#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
 		}
 

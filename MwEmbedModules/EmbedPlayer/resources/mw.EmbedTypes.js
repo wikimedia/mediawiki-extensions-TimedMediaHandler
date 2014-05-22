@@ -152,7 +152,7 @@ mw.EmbedTypes = {
 
 		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
-		var uniqueMimesOnly = $.browser.opera || $.browser.safari;
+		var uniqueMimesOnly = $.client.test( { opera: null, safari: null } );
 
 		// Opera will switch off javaEnabled in preferences if java can't be
 		// found. And it doesn't register an application/x-java-applet mime type like
@@ -167,7 +167,7 @@ mw.EmbedTypes = {
 		}
 
 		// ActiveX plugins
-		if ( $.browser.msie ) {
+		if ( $.client.profile().name === 'msie' ) {
 			 // VLC
 			 //if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
 			 //	 this.mediaPlayers.addPlayer( vlcPlayer );

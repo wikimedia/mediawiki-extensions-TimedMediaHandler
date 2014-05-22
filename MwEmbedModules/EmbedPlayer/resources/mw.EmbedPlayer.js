@@ -580,7 +580,9 @@
 		 * @return {Number} pixel height of the video
 		 */
 		getPlayerWidth: function() {
-	        if ( $.browser.mozilla && parseFloat( $.browser.version ) < 2 ) {
+			var profile = $.client.profile();
+
+	        if ( profile.name === 'firefox' && profile.versionNumber < 2 ) {
 	            return ( $( this ).parent().parent().width() );
 	        }
 			return $( this ).width();
@@ -1613,10 +1615,11 @@
 		updatePosterHTML: function () {
 			mw.log( 'EmbedPlayer:updatePosterHTML::' + this.id );
 			
-			var _this = this;
-			var thumb_html = '';
-			var class_atr = '';
-			var style_atr = '';
+			var _this = this,
+				thumb_html = '',
+				class_atr = '',
+				style_atr = '',
+				profile = $.client.profile();
 
 			if( this.isImagePlayScreen() ){
 				this.addPlayScreenWithNativeOffScreen();
@@ -1632,11 +1635,11 @@
 				var $vid = $( '#' + this.pid ).show();
 				$vid.attr( 'poster', posterSrc );
 				// Add a quick timeout hide / show ( firefox 4x bug with native poster updates )
-				if( $.browser.mozilla ){
+				if ( profile.name === 'firefox' ){
 					$vid.hide();
-					setTimeout(function(){
+					setTimeout( function () {
 						$vid.show();
-					},0);
+					}, 0);
 				}
 			} else {
 				// hide the pid if present:
