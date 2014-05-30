@@ -23,7 +23,7 @@
 	"timedmedia-wav-pcm-required": "Можете да подигате само WAV-податотеки со PCM (импулсна кодна модулација).",
 	"timedmedia-mp4-short-video": "MP4 $1 видеоснимка, $2",
 	"timedmedia-mp4-long-video": "MP4 аудио/видео снимка, $1, времетраење $2, $4 × $5 пиксели, вкупно $3",
-	"timedmedia-no-player-js": "Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />\nМожете да го <a href=\"$1\">преземете клипот</a> или <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.",
+	"timedmedia-no-player-js": "За жал, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />\nМожете да го <a href=\"$1\">преземете клипот</a> или <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.",
 	"timedmedia-more": "Повеќе...",
 	"timedmedia-dismiss": "Затвори",
 	"timedmedia-download": "Преземи податотека",
