@@ -9,7 +9,8 @@
 			"Kv75",
 			"MaxSem",
 			"Okras",
-			"Александр Сигачёв"
+			"Александр Сигачёв",
+			"NBS"
 		]
 	},
 	"timedmedia-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -95,7 +96,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 аудио-файл Ogg|$1 аудио-файлов Ogg|$1 аудио-файла Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 аудио-файл FLAC|$1 аудио-файлов FLAC|$1 аудио-файла FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудио-файл WAV|$1 аудио-файлов WAV|$1 аудио-файла WAV}}",
-	"right-transcode-reset": "Сбросить неудавшиеся или транскодированные видео, чтобы они встали в очередь заданий снова.",
-	"right-transcode-status": "Просмотр [[Special:TimedMediaHandler|информации о текущем ходе перекодирования]]",
+	"right-transcode-reset": "сброс неудавшихся или транскодированных видео, чтобы они встали в очередь заданий снова",
+	"right-transcode-status": "просмотр [[Special:TimedMediaHandler|информации о текущем ходе перекодирования]]",
 	"action-transcode-status": "просмотр текущего статуса перекодирования"
 }
