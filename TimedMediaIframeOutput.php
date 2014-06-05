@@ -60,7 +60,7 @@ class TimedMediaIframeOutput {
 		);
 		$videoTransform = $file->transform( $params );
 
-		$wgOut->addModules( array( 'embedPlayerIframeStyle') );
+		$wgOut->addModules( array( 'embedPlayerIframeStyle', 'mw.EmbedPlayer' ) );
 		$wgOut->sendCacheControl();
 	?>
 <!DOCTYPE html>
@@ -72,8 +72,8 @@ class TimedMediaIframeOutput {
 		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
 	?>
 	<?php
-		echo $wgOut->getHeadLinks();
-		echo $wgOut->getHeadItems();
+		echo implode( "\n", $wgOut->getHeadLinksArray() );
+		echo implode( "\n", $wgOut->getHeadLinksArray() );
 	?>
 	<style type="text/css">
 		html, body {
@@ -95,19 +95,13 @@ class TimedMediaIframeOutput {
 		}
 	</style>
 	<?php echo $wgOut->getHeadScripts(); ?>
-	<?php
-	echo Html::inlineScript(
-	ResourceLoader::makeLoaderConditionalScript(
-			Xml::encodeJsCall( 'mw.loader.go', array() )
-		)
-	);
-	?>
 	</head>
 <body>
 	<img src="<?php echo $videoTransform->getUrl() ?>" id="bgimage" ></img>
 	<div id="videoContainer" style="visibility:hidden">
 		<?php echo $videoTransform->toHtml(); ?>
 	</div>
+	<?php echo $wgOut->getBottomScripts(); ?>
 	<script>
 		// Turn off rewrite selector
 		mw.setConfig('EmbedPlayer.RewriteSelector', '');
