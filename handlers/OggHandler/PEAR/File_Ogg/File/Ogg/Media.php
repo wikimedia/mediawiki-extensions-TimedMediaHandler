@@ -118,7 +118,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
             // NOTE: Equals characters are strictly prohibited in either the COMMENT or DATA parts.
             $comment        = explode("=", fread($this->_filePointer, $comment_length['data']));
             $comment_title  = (string) $comment[0];
-            $comment_value  = (string) utf8_decode($comment[1]);
+            $comment_value  = (string) $comment[1];
 
             // Check if the comment type (e.g. ARTIST) already exists.  If it does,
             // take the new value, and the existing value (or array) and insert it
