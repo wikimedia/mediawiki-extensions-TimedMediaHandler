@@ -13,7 +13,8 @@
 				'scripts' => 'resources/mw.EmbedTypes.js',
 				'dependencies' =>  array(
 					'mw.MediaPlayers',
-					'mediawiki.Uri'
+					'mediawiki.Uri',
+					'jquery.client',
 				)
 			),
 			"mw.EmbedPlayer" => array(
