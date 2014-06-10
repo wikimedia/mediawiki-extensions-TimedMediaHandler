@@ -15,5 +15,6 @@
 	"mwe-timedtext-textcat-meta": "Ajastatud metaandmed",
 	"mwe-timedtext-textcat-lrc": "Laulusõnad",
 	"mwe-timedtext-language-subtitles-for-clip": "Lõigu $2 $1 alltiitrid",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Lõigu $2 jaoks ei leitud $1 alltiitreid"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Lõigu $2 jaoks ei leitud $1 alltiitreid",
+	"mwe-timedtext-no-subs": "Alltiitreid pole saadaval"
 }
