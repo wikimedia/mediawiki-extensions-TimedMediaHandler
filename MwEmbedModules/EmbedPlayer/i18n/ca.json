@@ -1,12 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pitort"
+			"Pitort",
+			"Vriullop"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Títol: $1",
 	"mwe-embedplayer-credit-date": "Data: $1",
 	"mwe-embedplayer-credit-author": "Autor: $1",
+	"mwe-embedplayer-nocredits": "Sense crèdits disponibles",
+	"mwe-embedplayer-loading_plugin": "Carregant el connector...",
+	"mwe-embedplayer-play_clip": "Reprodueix el tall",
+	"mwe-embedplayer-pause_clip": "Posa en pausa",
+	"mwe-embedplayer-volume_control": "Control de volum",
+	"mwe-embedplayer-player_options": "Opcions del reproductor",
+	"mwe-embedplayer-timed_text": "Text sincronitzat",
+	"mwe-embedplayer-player_fullscreen": "Pantalla completa",
+	"mwe-embedplayer-current_clip_msg": "Continua reproduint",
+	"mwe-embedplayer-paused": "en pausa",
+	"mwe-embedplayer-download_full": "Descàrrega del fitxer audiovisual:",
+	"mwe-embedplayer-download_right_click": "Per descarregar, cliqueu el botó dret i seleccioneu <i>Desa l'enllaç com a...</i>",
+	"mwe-embedplayer-download": "Descàrrega",
+	"mwe-embedplayer-share": "Compartir",
+	"mwe-embedplayer-credits": "Crèdits",
+	"mwe-embedplayer-share_this_video": "Compartiu aquest multimèdia",
+	"mwe-embedplayer-menu_btn": "Menú",
+	"mwe-embedplayer-close_btn": "Tanca",
+	"mwe-embedplayer-download-warn": "No s'ha detectat cap reproductor compatible: per tenir un reproductor integrat al navegador, descarregueu la [$1 darrera versió de Firefox]",
+	"mwe-embedplayer-do_not_warn_again": "No mostris més aquest missatge en el futur",
+	"mwe-embedplayer-playerSelect": "Reproductors",
+	"mwe-embedplayer-embed_site_or_blog": "Incrustat en una pàgina",
+	"mwe-embedplayer-embed_wiki": "Incrustat en un wiki",
 	"mwe-embedplayer-video-h264": "Vídeo H.264",
 	"mwe-embedplayer-video-webm": "Vídeo WebM",
 	"mwe-embedplayer-video-flv": "Vídeo flaix",
