@@ -129,7 +129,7 @@ class TimedTextPage extends Article {
 	}
 
 	function doRedirectToPageForm(){
-		$lang = $this->getContext()->getLang();
+		$lang = $this->getContext()->getLanguage();
 		$out = $this->getContext()->getOutput();
 
 		// Set the page title:
