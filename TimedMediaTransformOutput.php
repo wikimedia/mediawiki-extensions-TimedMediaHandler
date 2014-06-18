@@ -115,8 +115,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @throws MWException
 	 */
 	function toHtml( $options = array() ) {
-		global $wgMinimumVideoPlayerSize;
-
 		if ( count( func_get_args() ) == 2 ) {
 			throw new MWException( __METHOD__ .' called in the old style' );
 		}
@@ -130,11 +128,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->width = $options['override-width'];
 		}
 
-
-		// Check if the video is too small to play inline ( instead do a pop-up dialog )
-		// If we're filling the window (e.g. during an iframe embed) one probably doesn't want the pop up.
-		// Also the pop up is broken in that case.
-		if( $this->getPlayerWidth() <= $wgMinimumVideoPlayerSize && $this->isVideo && !$this->fillwindow ){
+		if ( $this->useImagePopUp() ) {
 			$res = $this->getImagePopUp();
 		} else {
 			$res = $this->getHtmlMediaTagOutput();
@@ -142,6 +136,23 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->width = $oldWidth;
 		$this->height = $oldHeight;
 		return $res;
+	}
+
+	/**
+	 * Helper to determine if to use pop up dialog for videos
+	 *
+	 * @return boolean
+	 */
+	private function useImagePopUp() {
+		global  $wgMinimumVideoPlayerSize;
+		// Check if the video is too small to play inline ( instead do a pop-up dialog )
+		// If we're filling the window (e.g. during an iframe embed) one probably doesn't want the pop up.
+		// Also the pop up is broken in that case.
+		return $this->isVideo
+			&& !$this->fillwindow
+			&& $this->getPlayerWidth() < $wgMinimumVideoPlayerSize
+			// Do not do pop-up if its going to be the same size as inline player anyways
+			&& $this->getPlayerWidth() < $this->getPopupPlayerWidth();
 	}
 
 	/**
@@ -202,6 +213,18 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
 		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize);
 	}
+
+	/**
+	 * Helper function to get pop up width
+	 *
+	 * Silly function because array index operations aren't allowed
+	 * on function calls before php 5.4
+	 */
+	private function getPopupPlayerWidth() {
+		list( $popUpWidth ) = $this->getPopupPlayerSize();
+		return $popUpWidth;
+	}
+
 	static function sortMediaByBandwidth( $a, $b){
 		return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
 	}
