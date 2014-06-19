@@ -95,6 +95,11 @@ class TimedMediaIframeOutput {
 		}
 	</style>
 	<?php echo $wgOut->getHeadScripts(); ?>
+	<script>
+		// Turn off rewrite selector. This prevents automatic conversion of
+		// <video> tags, since we are going to do that ourselves later.
+		mw.setConfig('EmbedPlayer.RewriteSelector', '');
+	</script>
 	</head>
 <body>
 	<img src="<?php echo $videoTransform->getUrl() ?>" id="bgimage" ></img>
@@ -103,8 +108,6 @@ class TimedMediaIframeOutput {
 	</div>
 	<?php echo $wgOut->getBottomScripts(); ?>
 	<script>
-		// Turn off rewrite selector
-		mw.setConfig('EmbedPlayer.RewriteSelector', '');
 		// only enable fullscreen if enabled in iframe
 		mw.setConfig('EmbedPlayer.EnableFullscreen', document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || false );
 		$('#bgimage').remove();
