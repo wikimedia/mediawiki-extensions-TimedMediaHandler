@@ -37,7 +37,10 @@ class TestOggHandler extends MediaWikiMediaTestCase {
 					'Artist' => array( 'Brian', 'Bawolff' ),
 					'Software' => array( 'Lavf55.10.2' )
 				)
-			)
+			),
+			array( 'broken-file.ogg',
+				array()
+			),
 		);
 	}
 }

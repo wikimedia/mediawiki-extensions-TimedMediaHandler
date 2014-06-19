@@ -75,7 +75,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	public function getCommonMetaArray( File $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
-			return false;
+			return array();
 		}
 		wfProfileIn( __METHOD__ );
 
