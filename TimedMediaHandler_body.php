@@ -96,15 +96,33 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
+	 * Used by thumb.php to find url parameters
+	 *
 	 * @param $str string
-	 * @return array
+	 * @return array|bool Array of thumbnail parameters, or false if string cannot be parsed
 	 */
 	function parseParamString( $str ) {
-		$m = false;
-		if ( preg_match( '/^seek=([\d.]+)$/', $str, $m ) ) {
-			return array( 'thumbtime' => $m[0] );
+		$params = array();
+		if ( preg_match( '/^(mid|(\d*)px-)*(seek=([\d.]+))*$/', $str, $matches ) ) {
+			$size = $thumbtime = null;
+			if ( isset( $matches[2] ) ) {
+				$size = $matches[2];
+			}
+			if ( isset( $matches[4] ) ) {
+				$thumbtime = $matches[4];
+			}
+
+			if ( !is_null( $size ) && $size !== '' ) {
+				$params['width'] = (int) $size;
+			}
+			if ( !is_null( $thumbtime ) ) {
+				$params['thumbtime'] = (float) $thumbtime;
+			}
+			return $params; // valid thumbnail URL
+		} else {
+			// invalid parameter string
+			return false;
 		}
-		return array();
 	}
 
 	/**
@@ -457,32 +475,5 @@ class TimedMediaHandler extends MediaHandler {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Handler for the ExtractThumbParameters hook
-	 *
-	 * @param $thumbname string URL-decoded basename of URI
-	 * @param &$params Array Currently parsed thumbnail params
-	 * @return bool
-	 */
-	public static function onExtractThumbParameters( $thumbname, array &$params ) {
-		global $wgTmhFileExtensions;
-		$supported = '/\.(?:' . implode( '|', $wgTmhFileExtensions ) . ')$/i';
-		if ( !preg_match( $supported, $params['f'] ) ) {
-			return true; // not a supported extension
-		}
-		// Check if the parameters can be extracted from the thumbnail name...
-		if ( preg_match( '!^(mid|(\d*)px-)*(seek=([\d.]+))*-[^/]*$!', $thumbname, $matches ) ) {
-			list( /* all */, $sizeFull, $size, $timeFull, $thumbtime ) = $matches;
-			if ( $size != null ) {
-				$params['width'] = $size;
-			}
-			if ( $thumbtime != null ) {
-				$params['thumbtime'] = $thumbtime;
-			}
-			return false; // valid thumbnail URL
-		}
-		return true; // pass through to next handler
 	}
 }
