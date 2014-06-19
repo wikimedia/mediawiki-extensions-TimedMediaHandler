@@ -320,7 +320,11 @@ class OggHandlerTMH extends TimedMediaHandler {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
-			return wfMessage( 'timedmedia-ogg-long-error', $unpacked['error']['message'] )->text();
+			if ( isset( $unpacked['error']['message'] ) ) {
+				return wfMessage( 'timedmedia-ogg-long-error', $unpacked['error']['message'] )->text();
+			} else {
+				return wfMessage( 'timedmedia-ogg-long-no-streams' )->text();
+			}
 		}
 		if ( array_intersect( $streamTypes,$wgMediaVideoTypes  ) ) {
 			if ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
