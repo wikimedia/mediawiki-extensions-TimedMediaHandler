@@ -4,7 +4,8 @@
 			"Armando-Martin",
 			"Crazymadlover",
 			"Translationista",
-			"Fitoschido"
+			"Fitoschido",
+			"Koavf"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -62,7 +63,7 @@
 	"mwe-embedplayer-ogg-player-selected": "(seleccionado)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Para una mejor experiencia de reproducción de vídeo recomendamos un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navegador de vídeo html5</a>.",
-	"mwe-embedplayer-download-warn": "Se detectó un reproductor no compatible con el explorador, para reproducción integrada en el  navegador descargue la [$1 última versión de Firefox]",
+	"mwe-embedplayer-download-warn": "Se detectó un reproductor no compatible con el explorador: para reproducción integrada en el  navegador descargue la [$1 última versión de Firefox]",
 	"mwe-embedplayer-fullscreen-tip": "Presione <b>F11</b> para activar o desactivar la pantalla completa del <i>navegador web</i>",
 	"mwe-embedplayer-fullscreen-tip-osx": "Presione <b>shift ⌘ F</b> para activar o desactivarl a pantalla completa",
 	"mwe-embedplayer-do_not_warn_again": "No mostrar este mensaje en el futuro.",
