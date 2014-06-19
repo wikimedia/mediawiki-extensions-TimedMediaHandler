@@ -112,18 +112,23 @@ class OggHandlerTMH extends TimedMediaHandler {
 			if ( !isset( $stream['comments'] ) ) {
 				continue;
 			}
-			foreach( $stream['comments'] as $name => $value ) {
-				$trimmedValue = trim( $value );
-				if ( $trimmedValue === '' ) {
-					continue;
-				}
-				$lowerName = strtolower( $name );
-				if ( isset( $metadataMap[$lowerName] ) ) {
-					$convertedName = $metadataMap[$lowerName];
-					if ( !isset( $props[$convertedName] ) ) {
-						$props[$convertedName] = array();
+			foreach( $stream['comments'] as $name => $rawValue ) {
+				// $value will be an array if the file has
+				// a multiple tags with the same name. Otherwise it
+				// is a string.
+				foreach( (array) $rawValue as $value ) {
+					$trimmedValue = trim( $value );
+					if ( $trimmedValue === '' ) {
+						continue;
 					}
-					$props[$convertedName][] = $trimmedValue;
+					$lowerName = strtolower( $name );
+					if ( isset( $metadataMap[$lowerName] ) ) {
+						$convertedName = $metadataMap[$lowerName];
+						if ( !isset( $props[$convertedName] ) ) {
+							$props[$convertedName] = array();
+						}
+						$props[$convertedName][] = $trimmedValue;
+					}
 				}
 			}
 
