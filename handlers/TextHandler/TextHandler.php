@@ -52,7 +52,7 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 	 * @param string $titlePart Title part with spaces
 	 * @return string Title part with underscores
 	 */
-	public function titlePartToKey( $titlePart ) {
+	public function titlePartToKey( $titlePart, $defaultNamespace = NS_MAIN ) {
 		return substr( $this->titleToKey( $titlePart . 'x' ), 0, -1 );
 	}
 }
