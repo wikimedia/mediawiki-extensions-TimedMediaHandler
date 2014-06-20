@@ -15,6 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg-liitfail (heli ja video), $1, kestus: $2, $4×$5 pikslit, üldbitikiirus: $3",
 	"timedmedia-ogg-long-general": "Ogg-fail, kestus: $2, $3",
 	"timedmedia-ogg-long-error": "Vigane Ogg-fail: $1",
+	"timedmedia-ogg-long-no-streams": "Ogg-meediafail. Hoiatus: Selles failis ei kasutata ühtegi tuvastatud kodekit.",
 	"timedmedia-webm-short-video": "$1-tüüpi WebM-videofail, $2",
 	"timedmedia-webm-long-video": "WebM-fail (heli ja video), $1, kestus: $2, $4×$5 pikslit, üldbitikiirus: $3",
 	"timedmedia-flac-short-audio": "FLAC-helifail, $1",

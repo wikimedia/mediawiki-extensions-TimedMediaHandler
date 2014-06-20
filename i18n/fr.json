@@ -31,6 +31,7 @@
 	"timedmedia-ogg-long-multiplexed": "Fichier multiplexé audio/vidéo Ogg, $1, durée $2, $4&nbsp;×&nbsp;$5 pixels, $3 au total",
 	"timedmedia-ogg-long-general": "Fichier média Ogg, durée $2, $3",
 	"timedmedia-ogg-long-error": "Fichier Ogg invalide : $1",
+	"timedmedia-ogg-long-no-streams": "Fichier de média ogg. Attention : Aucun des codecs utilisés dans ce fichier n’est reconnu.",
 	"timedmedia-webm-short-video": "Fichier vidéo WebM $1, $2",
 	"timedmedia-webm-long-video": "Fichier audio/vidéo WebM, $1, longueur $2, $4 x $5 pixels, $3 l'ensemble",
 	"timedmedia-flac-short-audio": "Fichier audio FLAC, $1",

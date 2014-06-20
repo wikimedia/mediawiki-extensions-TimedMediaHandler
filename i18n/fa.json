@@ -22,6 +22,7 @@
 	"timedmedia-ogg-long-multiplexed": "پرونده صوتی/تصویری پیچیده Ogg، $1، مدت $2، $4×$5 پیکسل، $3 در مجموع",
 	"timedmedia-ogg-long-general": "پرونده Ogg، مدت $2، $3",
 	"timedmedia-ogg-long-error": "پروندهٔ Ogg نامجاز: $1",
+	"timedmedia-ogg-long-no-streams": "پروندهٔ رسانه‌ای Ogg. هشدار: هیچ‌یک از این کدک‌های استفاده‌شده در این پرونده‌ها شناخته‌شده نیستند.",
 	"timedmedia-webm-short-video": "رسانهٔ وب  $1 پروندهٔ ویدئویی، $2",
 	"timedmedia-webm-long-video": "رسانهٔ وب پروندهٔ صوتی/تصویری، $1، مدت $2، $4 × $5 پیکسل، $3 کلی",
 	"timedmedia-flac-short-audio": "پروندهٔ صوتی اف‌ال‌ای‌سی، $1",

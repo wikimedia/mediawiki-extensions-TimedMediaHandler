@@ -14,6 +14,7 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg мултиплексирана аудио/видео снимка, $1, времетраење $2, $4 × $5 пиксели, вкупно $3",
 	"timedmedia-ogg-long-general": "Мултимедијална податотека Ogg, времетраење $2, $3",
 	"timedmedia-ogg-long-error": "Оштетена Ogg-податотека: $1",
+	"timedmedia-ogg-long-no-streams": "Ogg-податотека. Предупредување: Не препознав ниеден од користените кодеци.",
 	"timedmedia-webm-short-video": "WebM $1 видеоснимка, $2",
 	"timedmedia-webm-long-video": "WebM аудио/видео снимка, $1, должина: $2, $4 × $5 пиксели, вкупно $3",
 	"timedmedia-flac-short-audio": "Аудиоподатотека FLAC, $1",
