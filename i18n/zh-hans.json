@@ -21,6 +21,7 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg多工声音/视频文件，$1，长度$2，$4 × $5像素，共$3",
 	"timedmedia-ogg-long-general": "Ogg媒体文件，长度$2，$3",
 	"timedmedia-ogg-long-error": "无效的ogg文件：$1",
+	"timedmedia-ogg-long-no-streams": "Ogg媒体文件。警告：没有认可用于此文件的编解码器。",
 	"timedmedia-webm-short-video": "WebM $1视频文件，$2",
 	"timedmedia-webm-long-video": "WebM音频/视频文件，$1，长度$2，$4 × $5像素，共$3",
 	"timedmedia-flac-short-audio": "FLAC音频文件，$1",

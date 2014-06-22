@@ -8,7 +8,8 @@
 			"Lokal Profil",
 			"Rotsee",
 			"Skalman",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Abbedabb"
 		]
 	},
 	"timedmedia-desc": "Hanterare för ljud-, video- och tidsbestämd text, med stöd för format WebM, Ogg Theora, Vorbis, srt",
@@ -20,6 +21,7 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg multiplexad ljud/video-fil, $1, längd $2, $4×$5 pixel, $3 totalt",
 	"timedmedia-ogg-long-general": "Ogg mediafil, längd $2, $3",
 	"timedmedia-ogg-long-error": "Felaktig Ogg-fil: $1",
+	"timedmedia-ogg-long-no-streams": "Ogg-mediafil. Varning: Ingen av de omkodare som används i denna fil kunde identifieras.",
 	"timedmedia-webm-short-video": "WebM $1 videofil, $2",
 	"timedmedia-webm-long-video": "WebM-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt",
 	"timedmedia-flac-short-audio": "FLAC-ljudfil, $1",
