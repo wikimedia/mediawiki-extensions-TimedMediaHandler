@@ -15,6 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "tập tin Ogg có âm thanh và video ghép kênh, $1, dài $2, $4×$5 điểm ảnh, $3 tất cả",
 	"timedmedia-ogg-long-general": "tập tin phương tiện Ogg, dài $2, $3",
 	"timedmedia-ogg-long-error": "Tập tin Ogg có lỗi: $1",
+	"timedmedia-ogg-long-no-streams": "Tập tin phương tiện Ogg. Chú ý: Không có công nhận codec nào trong tập tin này.",
 	"timedmedia-webm-short-video": "tập tin video WebM $1, $2",
 	"timedmedia-webm-long-video": "tập tin WebM có âm thanh và video ghép kênh, $1, dài $2, $4×$5 điểm ảnh, $3 tất cả",
 	"timedmedia-flac-short-audio": "tập tin âm thanh FLAC, $1",
