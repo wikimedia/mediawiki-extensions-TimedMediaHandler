@@ -8,7 +8,8 @@
 			"Opraco",
 			"Vitorvicentevalente",
 			"Waldir",
-			"555"
+			"555",
+			"Tooguether"
 		]
 	},
 	"timedmedia-desc": "Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt",
@@ -20,6 +21,7 @@
 	"timedmedia-ogg-long-multiplexed": "Áudio/vídeo Ogg multifacetado, $1, $2 de duração, $4×$5 pixels, $3 no todo",
 	"timedmedia-ogg-long-general": "Multimédia Ogg, $2 de duração, $3",
 	"timedmedia-ogg-long-error": "Ficheiro ogg inválido: $1",
+	"timedmedia-ogg-long-no-streams": "Arquivo de mídia OGG. Aviso: Nenhum dos codecs utilizados neste arquivo são reconhecidos.",
 	"timedmedia-webm-short-video": "Vídeo WebM $1, $2",
 	"timedmedia-webm-long-video": "Áudio/vídeo WebM, $1, $2 de duração, $4 × $5 pixels, $3 no todo",
 	"timedmedia-flac-short-audio": "Ficheiro de áudio FLAC, $1",
