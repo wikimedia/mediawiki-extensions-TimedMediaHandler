@@ -43,7 +43,7 @@ class TimedMediaIframeOutput {
 	 * @throws MWException
 	 */
 	static function outputIframe( $title ) {
-		global $wgEnableIframeEmbed, $wgOut, $wgUser;
+		global $wgEnableIframeEmbed, $wgOut, $wgUser, $wgBreakFrames;
 
 		if( !$wgEnableIframeEmbed ){
 			return false;
@@ -59,6 +59,10 @@ class TimedMediaIframeOutput {
 			'fillwindow' => true
 		);
 		$videoTransform = $file->transform( $params );
+
+		// Definitely do not want to break frames
+		$wgBreakFrames = false;
+		$wgOut->allowClickjacking();
 
 		$wgOut->addModules( array( 'embedPlayerIframeStyle', 'mw.EmbedPlayer' ) );
 		$wgOut->sendCacheControl();
