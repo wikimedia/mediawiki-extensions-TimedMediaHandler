@@ -3,7 +3,8 @@
 		"authors": [
 			"MaxSem",
 			"Okras",
-			"Александр Сигачёв"
+			"Александр Сигачёв",
+			"Kaganer"
 		]
 	},
 	"mwe-timedtext-editor": "Редактор синхронизированного текста",
@@ -25,7 +26,7 @@
 	"mwe-timedtext-loading-text": "Загрузка текста…",
 	"mwe-timedtext-textcat-cc": "Субтитры-описания",
 	"mwe-timedtext-textcat-sub": "Субтитры",
-	"mwe-timedtext-textcat-tad": "Аудио-описание",
+	"mwe-timedtext-textcat-tad": "Описание аудиофайла",
 	"mwe-timedtext-textcat-ktv": "Караоке",
 	"mwe-timedtext-textcat-tik": "Текстовые карточки",
 	"mwe-timedtext-textcat-ar": "Активные области",
