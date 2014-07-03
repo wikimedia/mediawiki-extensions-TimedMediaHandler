@@ -181,8 +181,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return Xml::tags( 'div' , array(
 				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 				'class' => 'PopUpMediaTransform',
-				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
-							$this->getPlayerHeight() . "px",
+				'style' => "width:" . $this->getPlayerWidth() . "px;",
 				'videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize(), $autoPlay ),
 				),
 			Xml::tags( 'img', array(
@@ -200,7 +199,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				),
 				Xml::tags( 'span', array(
 						'class' => 'play-btn-large'
-					), '&nbsp;' )
+					),
+					// Have some sort of text for lynx & screen readers.
+					Html::element(
+						'span',
+						array( 'class' => 'mw-tmh-playtext' ),
+						wfMessage( 'timedmedia-play-media' )->text()
+					)
+				)
 			)
 		);
 	}

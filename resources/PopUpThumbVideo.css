@@ -17,6 +17,12 @@
 	position : relative;
 	display: inline-block;
 }
+/* Should hopefully be only visible to screen readers */
+.mw-tmh-playtext {
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
 
 li.gallerybox div.thumb div.PopUpMediaTransform {
         margin: 0 auto;
