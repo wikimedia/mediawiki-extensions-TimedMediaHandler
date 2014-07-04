@@ -22,6 +22,7 @@
 	"timedmedia-ogg-long-multiplexed": "мультиплексный аудио/видеофайл Ogg, $1, длительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, $3 всего",
 	"timedmedia-ogg-long-general": "медиа-файл Ogg, длительность $2, $3",
 	"timedmedia-ogg-long-error": "неправильный Ogg-файл: $1",
+	"timedmedia-ogg-long-no-streams": "Мультимедиа-файл ogg. Предупреждение: Ни один из кодеков, используемых в этом файле, не определён.",
 	"timedmedia-webm-short-video": "WebM $1 видео-файл, $2",
 	"timedmedia-webm-long-video": "WebM аудио/видео файл, $1, продолжительность $2, $4 × $5 {{PLURAL:$5|пиксель|пикселей|пикселя}}, всего $3",
 	"timedmedia-flac-short-audio": "Аудиофайл FLAC, $1",
