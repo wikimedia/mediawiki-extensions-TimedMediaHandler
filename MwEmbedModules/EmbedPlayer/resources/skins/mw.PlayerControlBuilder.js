@@ -1354,6 +1354,11 @@ mw.PlayerControlBuilder.prototype = {
 			return false;
 		}
 
+		// Not a lot of good options for an iPhone
+		if( this.embedPlayer.instanceOf == 'VLCApp' ){
+			return false;
+		}
+
 		// Chrome's webM support is oky though:
 		if( /chrome/.test(navigator.userAgent.toLowerCase() ) &&
 			mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'video/webm' ).length ){
