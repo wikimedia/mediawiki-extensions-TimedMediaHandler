@@ -11,7 +11,8 @@
 			"Prima klasy4na",
 			"Steve.rusyn",
 			"SteveR",
-			"Тест"
+			"Тест",
+			"Ата"
 		]
 	},
 	"timedmedia-desc": "Оброблювач для аудіо, відео і субтитрів з підтримкою форматів WebM, Ogg Theora, Vorbis, srt",
@@ -23,6 +24,7 @@
 	"timedmedia-ogg-long-multiplexed": "мультиплексний аудіо/відео-файл ogg, $1, довжина $2, $4×$5 пікселів, $3 усього",
 	"timedmedia-ogg-long-general": "медіа-файл Ogg, довжина $2, $3",
 	"timedmedia-ogg-long-error": "Неправильний Ogg-файл: $1",
+	"timedmedia-ogg-long-no-streams": "Медіафайл Ogg. Застереження: Не розпізнано жоден з кодеків, використаних у цьому файлі.",
 	"timedmedia-webm-short-video": "WebM $1 відео-файл, $2",
 	"timedmedia-webm-long-video": "WebM аудіо/відео файл, $1, тривалість $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, всього $3",
 	"timedmedia-flac-short-audio": "FLAC аудіо-файл,$1",
