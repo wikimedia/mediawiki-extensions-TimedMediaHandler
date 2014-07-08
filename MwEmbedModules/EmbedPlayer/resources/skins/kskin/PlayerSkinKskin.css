@@ -5,6 +5,12 @@
 	color: #FFF;
 	background-color: #000;
 }
+.k-player .videoHolder a {
+	color: #0645AD;
+}
+.k-player .videoHolder a:visited {
+	color: #0B0080;
+}
 .k-player .ui-widget-content {
 	color: #555;
 	z-index: 1503;
