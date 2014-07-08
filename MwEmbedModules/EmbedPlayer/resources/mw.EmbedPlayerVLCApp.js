@@ -7,9 +7,9 @@
 mw.EmbedPlayerVLCApp = {
 	// List of supported features (or lack thereof)
 	 supports: {
-		'playHead':false,
-		'pause':false,
-		'stop':true,
+		'playHead':false, /* The seek slider */
+		'pause':true, /* Play pause button in control bar */
+		'stop':true, /* Does this actually do anything?? */
 		'fullscreen':false,
 		'timeDisplay':false,
 		'volumeControl':false
