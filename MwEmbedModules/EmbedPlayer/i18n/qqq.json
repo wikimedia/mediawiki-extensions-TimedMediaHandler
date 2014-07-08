@@ -22,6 +22,7 @@
 	"mwe-embedplayer-close_btn": "{{Identical|Close}}",
 	"mwe-embedplayer-ogg-player-mp3Native": "name of mp3 player in configuration screen",
 	"mwe-embedplayer-ogg-player-aacNative": "name of AAC player in configuration screen",
+	"mwe-embedplayer-ogg-player-VLCApp": "Name for launching video in external VLC app, in the media player configuration screen. Only shown on iPhones/iPads"
 	"mwe-embedplayer-ogg-player-cortado": "{{optional}}",
 	"mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
 	"mwe-embedplayer-for_best_experience": "Shown when user's browser doesn't support playing videos. Parameters:\n* $1 - An empty &lt;a&gt; tag. Don't use this parameter.",
@@ -29,5 +30,11 @@
 	"mwe-embedplayer-do_not_warn_again": "Standard message for disabling\nfuture identical warnings messages",
 	"mwe-embedplayer-playerSelect": "{{Identical|Player}}",
 	"mwe-embedplayer-embed_site_or_blog": "title for iframe embed code in share dialog",
-	"mwe-embedplayer-embed_wiki": "title for wiki embed code in share dialog"
+	"mwe-embedplayer-embed_wiki": "title for wiki embed code in share dialog",
+	"mwe-embedplayer-vlcapp-intro": "Shown where a video would be on the page, on iPhones/iPads. Parameter $1 is a link to the App store page for the vlc app, with the text contianed in the mwe-embedplayer-vlcapp-vlcapplinktext message. This message is followed by a bulleted list of links consisting of the messages: mwe-embedplayer-vlcapp-downloadapp, mwe-embedplayer-vlcapp-openvideo, mwe-embedplayer-vlcapp-openvideo. See also the related mwe-embedplayer-vlcapp-vlcapppopup message.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "Text of the $1 parameter of mwe-embedplayer-vlcapp-intro. Will be linked to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 (the download page for the vlc app).",
+	"mwe-embedplayer-vlcapp-downloadapp": "First bullet point after the mwe-embedplayer-vlcapp-intro. Links to the download page for installing the vlc app ( https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 ).",
+	"mwe-embedplayer-vlcapp-openvideo": "Second bullet point after the mwe-embedplayer-vlcapp-intro. Link will open the video in the VLC app, if the app is installed",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Third bullet point after the mwe-embedplayer-vlcapp-intro. Linked directly to the video file",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8."
 }
