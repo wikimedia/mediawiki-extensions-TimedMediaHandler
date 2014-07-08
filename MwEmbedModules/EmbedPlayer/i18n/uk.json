@@ -81,5 +81,6 @@
 	"mwe-embedplayer-video-3gp": "3GP-відео",
 	"mwe-embedplayer-video-mpeg": "MPEG-відео",
 	"mwe-embedplayer-video-msvideo": "AVI-відео",
-	"mwe-embedplayer-missing-source": "Не знайдено джерело відео"
+	"mwe-embedplayer-missing-source": "Не знайдено джерело відео",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Завантажити це відео"
 }

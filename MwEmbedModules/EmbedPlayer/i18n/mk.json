@@ -51,6 +51,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264-изведувач",
 	"mwe-embedplayer-ogg-player-webmNative": "Изведувач WebM (HTML5)",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Општ Ogg-приклучок",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Прилог VLC за iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Приклучок QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -78,5 +79,11 @@
 	"mwe-embedplayer-video-3gp": "3gp видео",
 	"mwe-embedplayer-video-mpeg": "MPEG видео",
 	"mwe-embedplayer-video-msvideo": "AVI видео",
-	"mwe-embedplayer-missing-source": "Не е пронајден извор на снимката."
+	"mwe-embedplayer-missing-source": "Не е пронајден извор на снимката.",
+	"mwe-embedplayer-vlcapp-intro": "За да ги гледате видеата на оваа страница на iPhone или iPad, ќе ви треба бесплатниот прилог $1.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "Прилог VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Преземете го прилогот VLC app од App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Отвори го видеово во прилогот VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Преземи го видеово",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "За да гледате видеа на странцава, ќе ви треба бесплатниот прилог VLC. Да го преземам сега?"
 }

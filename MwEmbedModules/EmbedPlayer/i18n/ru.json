@@ -54,6 +54,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "Проигрыватель HTML5 H.264",
 	"mwe-embedplayer-ogg-player-webmNative": "Проигрыватель HTML5 WebM",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Общий плагин Ogg",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Приложение VLC для iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Плагин QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
@@ -82,5 +83,11 @@
 	"mwe-embedplayer-video-3gp": "3GP-видео",
 	"mwe-embedplayer-video-mpeg": "MPEG-видео",
 	"mwe-embedplayer-video-msvideo": "AVI-видео",
-	"mwe-embedplayer-missing-source": "Не найден источник видео"
+	"mwe-embedplayer-missing-source": "Не найден источник видео",
+	"mwe-embedplayer-vlcapp-intro": "Для просмотра видео с этого сайта на iPhone или iPad вам нужно бесплатное приложение $1.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "Приложение VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Загрузить приложение VLC из App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Открыть это видео в приложении VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Скачать это видео",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Для воспроизведения видео на этом сайте вам необходимо бесплатное приложение VLC. Установить сейчас?"
 }
