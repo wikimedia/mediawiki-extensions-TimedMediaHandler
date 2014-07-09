@@ -56,6 +56,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "Reproductor HTML5 H.264",
 	"mwe-embedplayer-ogg-player-webmNative": "Reproductor WebM HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Plugin Ogg genérico",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "aplicación VLC para iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Plugin QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
@@ -84,5 +85,11 @@
 	"mwe-embedplayer-video-3gp": "Vídeo 3GP",
 	"mwe-embedplayer-video-mpeg": "Vídeo MPEG",
 	"mwe-embedplayer-video-msvideo": "Vídeo AVI",
-	"mwe-embedplayer-missing-source": "No se encontró ningún vídeo de origen."
+	"mwe-embedplayer-missing-source": "No se encontró ningún vídeo de origen.",
+	"mwe-embedplayer-vlcapp-intro": "Para ver videos de este sitio en un iPhone o iPad, necesitas la $1 gratuita.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "aplicación VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Descargar la aplicación VLC desde la App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Abre este video en la aplicación VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Descarga este video",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproducir videos en este sitio, necesitas la aplicación gratuita VLC. ¿Instalar ahora?"
 }

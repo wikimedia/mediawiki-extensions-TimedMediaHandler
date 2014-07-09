@@ -73,5 +73,6 @@
 	"mwe-embedplayer-video-flv": "Флеш видео",
 	"mwe-embedplayer-video-ogg": "Ogg видео",
 	"mwe-embedplayer-video-audio": "Ogg аудио",
-	"mwe-embedplayer-missing-source": "Није пронађен извор снимка."
+	"mwe-embedplayer-missing-source": "Није пронађен извор снимка.",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Преузми овај видео"
 }

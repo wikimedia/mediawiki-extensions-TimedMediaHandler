@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Emperyan"
+			"Emperyan",
+			"Sayginer"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Başlık: $1",
@@ -73,5 +74,10 @@
 	"mwe-embedplayer-video-3gp": "3GP video",
 	"mwe-embedplayer-video-mpeg": "MPEG video",
 	"mwe-embedplayer-video-msvideo": "AVI video",
-	"mwe-embedplayer-missing-source": "Video kaynağı bulunamadı"
+	"mwe-embedplayer-missing-source": "Video kaynağı bulunamadı",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC uygulaması",
+	"mwe-embedplayer-vlcapp-downloadapp": "VLC uygulamasını App Store'dan indir",
+	"mwe-embedplayer-vlcapp-openvideo": "Bu videoyu VLC uygulamasıyla aç",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Bu videoyu indir",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Bu sitedeki videoları oynatmak için, ücretsiz olan VLC uygulaması gerekiyor. Şimdi yüklensin mi?"
 }

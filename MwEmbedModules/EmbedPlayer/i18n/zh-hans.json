@@ -5,7 +5,8 @@
 			"Shizhao",
 			"Xiaomingyan",
 			"Yfdyh000",
-			"乌拉跨氪"
+			"乌拉跨氪",
+			"NigelSoft"
 		]
 	},
 	"mwe-embedplayer-credit-title": "标题：$1",
@@ -82,5 +83,6 @@
 	"mwe-embedplayer-video-3gp": "3GP视频",
 	"mwe-embedplayer-video-mpeg": "MPEG视频",
 	"mwe-embedplayer-video-msvideo": "AVI视频",
-	"mwe-embedplayer-missing-source": "未找到源视频"
+	"mwe-embedplayer-missing-source": "未找到源视频",
+	"mwe-embedplayer-vlcapp-downloadvideo": "下载这个视频"
 }
