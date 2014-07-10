@@ -676,8 +676,10 @@ mw.EmbedPlayerNative = {
 				$( vid ).bind( 'loadedmetadata' + switchBindPostfix, function(){
 					$( vid ).unbind( 'loadedmetadata' + switchBindPostfix);
 					mw.log("EmbedPlayerNative:: playerSwitchSource> loadedmetadata callback for:" + src + ' switchCallback: ' + switchCallback );
-					// Update the duration ( if not android 4 which gives bad duration )
-					if( !mw.isAndroid40() ){
+					// Only update duration if we didn't get it server side
+					// Some browsers report bad duration (e.g. Android native browser)
+					// So avoid using the browser detected value if possible.
+					if ( !_this.duration && isFinite( vid.duration ) ) {
 						_this.duration = vid.duration;
 					}
 					// keep going towards playback! if  switchCallback has not been called yet
@@ -1024,8 +1026,10 @@ mw.EmbedPlayerNative = {
 
 		if ( this.playerElement && !isNaN( this.playerElement.duration ) && isFinite( this.playerElement.duration) ) {
 			mw.log( 'EmbedPlayerNative :onloadedmetadata metadata ready Update duration:' + this.playerElement.duration + ' old dur: ' + this.getDuration() );
-			// update duration if not android 4 ( gives bad duration )
-			if( !mw.isAndroid40() ){
+			// Only update duration if we didn't get it server side
+			// Some browsers report bad duration (e.g. Android native browser)
+			// So avoid using the browser detected value if possible.
+			if( !this.duration && this.playerElement && isFinite( this.playerElement.duration ) ) {
 				this.duration = this.playerElement.duration;
 			}
 		}
