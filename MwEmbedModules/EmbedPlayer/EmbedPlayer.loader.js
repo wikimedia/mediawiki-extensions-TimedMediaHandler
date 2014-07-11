@@ -37,7 +37,7 @@
 			'mw.EmbedPlayer'
 		];
 
-		mw.loader.using( 'jquery.client', function() {
+		mw.loader.using( [ 'jquery.client', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' ], function() {
 			$( playerSet ).each( function( inx, playerElement ) {
 				// we have javascript ( disable controls )
 				$( playerElement ).removeAttr( 'controls' );
