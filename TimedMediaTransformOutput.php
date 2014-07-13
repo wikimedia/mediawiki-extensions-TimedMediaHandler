@@ -244,6 +244,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function getHtmlMediaTagOutput( $sizeOverride = array(), $autoPlay = false ){
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
+		reset( $mediaSources ); // do not rely on auto-resetting of arrays under HHVM
 		$firstSource = current( $mediaSources );
 
 		if( !$firstSource['src'] ){
