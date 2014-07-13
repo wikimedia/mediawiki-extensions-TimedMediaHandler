@@ -115,7 +115,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return boolean success
 	 */
 	public function run() {
-		global $wgVersion;
+		global $wgVersion, $wgFFmpeg2theoraLocation;
 		// get a local pointer to the file
 		$file = $this->getFile();
 
@@ -186,9 +186,9 @@ class WebVideoTranscodeJob extends Job {
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
 			$status = $this->ffmpegEncode( $options );
-		} elseif( $options['videoCodec'] == 'theora' ){
+		} elseif( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation !== false ){
 			$status = $this->ffmpeg2TheoraEncode( $options );
-		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'h264' ){
+		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'h264' || ( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation === false ) ){
 			// Check for twopass:
 			if( isset( $options['twopass'] ) ){
 				// ffmpeg requires manual two pass
@@ -345,6 +345,8 @@ class WebVideoTranscodeJob extends Job {
 			$cmd.= $this->ffmpegAddWebmVideoOptions( $options, $pass );
 		} elseif( $options['videoCodec'] == 'h264'){
 			$cmd.= $this->ffmpegAddH264VideoOptions( $options, $pass );
+		} elseif( $options['videoCodec'] == 'theora'){
+			$cmd.= $this->ffmpegAddTheoraVideoOptions( $options, $pass );
 		}
 		// Add size options:
 		$cmd .= $this->ffmpegAddVideoSizeOptions( $options ) ;
@@ -523,6 +525,58 @@ class WebVideoTranscodeJob extends Job {
 
 		// Output WebM
 		$cmd.=" -f webm";
+
+		return $cmd;
+	}
+
+	/**
+	 * Adds ffmpeg/avconv shell options for ogg
+	 *
+	 * Used only when $wgFFmpeg2theoraLocation set to false.
+	 * Warning: does not create Ogg skeleton metadata track.
+	 *
+	 * @param $options
+	 * @param $pass
+	 * @return string
+	 */
+	function ffmpegAddTheoraVideoOptions( $options, $pass ){
+		global $wgFFmpegThreads;
+
+		// Get a local pointer to the file object
+		$file = $this->getFile();
+
+		$cmd =' -threads ' . intval( $wgFFmpegThreads );
+
+		// Check for video quality:
+		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
+			// Map 0-10 to 63-0, higher values worse quality
+			$quality = 63 - intval( intval( $options['videoQuality'] )/10 * 63 );
+			$cmd .= " -qmin " . wfEscapeShellArg( $quality );
+			$cmd .= " -qmax " . wfEscapeShellArg( $quality );
+		}
+
+		// Check for video bitrate:
+		if ( isset( $options['videoBitrate'] ) ) {
+			$cmd.= " -qmin 1 -qmax 51";
+			$cmd.= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
+		}
+		// Set the codec:
+		$cmd.= " -vcodec theora";
+
+		// Check for keyframeInterval
+		if( isset( $options['keyframeInterval'] ) ){
+			$cmd.= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
+			$cmd.= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeInterval'] );
+		}
+		if( isset( $options['deinterlace'] ) ){
+			$cmd.= ' -deinterlace';
+		}
+		if( isset( $options['framerate'] ) ) {
+			$cmd.= ' -r ' . wfEscapeShellArg( $options['framerate'] );
+		}
+
+		// Output Ogg
+		$cmd.=" -f ogg";
 
 		return $cmd;
 	}

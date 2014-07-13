@@ -95,6 +95,8 @@ $wgTranscodeBackgroundSizeLimit = 3 * 1024 * 1024; // 3GB
 $wgFFmpegThreads = 1;
 
 // The location of ffmpeg2theora (transcoding)
+// Set to false to use avconv/ffmpeg to produce Ogg Theora transcodes instead;
+// beware this will disable Ogg skeleton metadata generation.
 $wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of oggThumb binary ( used instead of ffmpeg )
