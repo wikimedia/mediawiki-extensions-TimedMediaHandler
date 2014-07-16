@@ -201,6 +201,8 @@ ini_set( 'include_path',
 
 // getID3 provides metadata for mp4 and webm files:
 $wgAutoloadClasses['getID3'] = "$timedMediaDir/libs/getid3/getid3.php";
+$wgAutoloadClasses['getid3_exception'] = "$timedMediaDir/libs/getid3/getid3.php";
+$wgAutoloadClasses['getid3_handler'] = "$timedMediaDir/libs/getid3/getid3.php";
 
 // ID3 Metadata Handler
 $wgAutoloadClasses['ID3Handler'] = "$timedMediaDir/handlers/ID3Handler/ID3Handler.php";
@@ -214,6 +216,7 @@ $wgAutoloadClasses['FLACHandler'] = "$timedMediaDir/handlers/FLACHandler/FLACHan
 $wgAutoloadClasses['WAVHandler'] = "$timedMediaDir/handlers/WAVHandler/WAVHandler.php";
 
 // Text handler
+$wgAutoloadClasses['ForeignApiQueryAllPages'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
 $wgAutoloadClasses['TimedTextPage'] = "$timedMediaDir/TimedTextPage.php";
 
