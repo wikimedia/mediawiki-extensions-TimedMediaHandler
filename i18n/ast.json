@@ -14,6 +14,7 @@
 	"timedmedia-ogg-long-multiplexed": "Ficheru de soníu/videu ogg multiplexáu, $1, llonxitú $2, $4×$5 píxeles, $3",
 	"timedmedia-ogg-long-general": "Archivu multimedia ogg, llonxitú $2, $3",
 	"timedmedia-ogg-long-error": "Ficheru Ogg inválidu: $1",
+	"timedmedia-ogg-long-no-streams": "Ficheru multimedia Ogg. Atención: Nun se reconoció nengún codec de los usaos nesti ficheru.",
 	"timedmedia-webm-short-video": "Ficheru de videu  WebM $1, $2",
 	"timedmedia-webm-long-video": "Ficheru de soníu/videu  WebM, $1, llonxitú $2, $4 × $5 pixels, $3 total",
 	"timedmedia-flac-short-audio": "Ficheru de soníu FLAC, $1",
