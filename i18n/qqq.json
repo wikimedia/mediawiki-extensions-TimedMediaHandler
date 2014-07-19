@@ -114,5 +114,9 @@
 	"timedmedia-wav-audios": "Number of WAV audio files, displayed on [[Special:TimedMediaHandler]]. Parameters:\n* $1 - the number of files\n{{Related|Timedmedia-format-type}}",
 	"right-transcode-reset": "{{doc-right|transcode-reset}}",
 	"right-transcode-status": "{{doc-right|transcode-status}}",
-	"action-transcode-status": "{{doc-action|transcode-status}}"
+	"action-transcode-status": "{{doc-action|transcode-status}}",
+	"orphanedtimedtext": "{{doc-special|OrphanedTimedText}}",
+	"orphanedtimedtext-summary": "Summary of Special:OrphanedTimedText.",
+	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end."
+
 }

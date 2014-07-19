@@ -149,6 +149,7 @@ class TimedMediaHandlerHooks {
 		$wgHooks[ 'NewRevisionFromEditComplete' ][] = 'TimedMediaHandlerHooks::onNewRevisionFromEditComplete';
 
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::checkSchemaUpdates';
+		$wgHooks['wgQueryPages'][] = 'TimedMediaHandlerHooks::onwgQueryPages';
 		return true;
 	}
 
@@ -413,4 +414,8 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	public static function onwgQueryPages( $qp ) {
+		$qp[] = array( 'SpecialOrphanedTimedText', 'OrphanedTimedText' );
+		return true;
+	}
 }
