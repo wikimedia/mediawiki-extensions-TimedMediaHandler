@@ -18,5 +18,8 @@
     "mwe-timedtext-textcat-lrc": "Lyrics",
     "mwe-timedtext-textcat-lin": "Linguistic markup",
     "mwe-timedtext-textcat-cue": "Cue points",
-    "mwe-timedtext-no-subs": "No text tracks available"
+    "mwe-timedtext-no-subs": "No text tracks available",
+    "mwe-timedtext-language-subtitles-for-clip": "$1 subtitles for clip: $2",
+    "mwe-timedtext-language-no-subtitles-for-clip": "No $1 subtitles were found for clip: $2",
+    "mwe-timedtext-upload-timed-text": "Add subtitles"
 }
