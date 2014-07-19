@@ -51,6 +51,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "Reproductor H.264 HTML5",
 	"mwe-embedplayer-ogg-player-webmNative": "Reproductor WebM HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Complementu Ogg xenéricu",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "app VLC pa iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Complementu QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "ActiveX QuickTime",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -78,5 +79,11 @@
 	"mwe-embedplayer-video-3gp": "Videu 3GP",
 	"mwe-embedplayer-video-mpeg": "Videu MPEG",
 	"mwe-embedplayer-video-msvideo": "Videu AVI",
-	"mwe-embedplayer-missing-source": "Nun s'alcontró'l videu orixinal."
+	"mwe-embedplayer-missing-source": "Nun s'alcontró'l videu orixinal.",
+	"mwe-embedplayer-vlcapp-intro": "Pa ver videos d'esti sitiu nun iPhone o iPad, necesites la $1 de baldre.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "app VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Descarga la app VLC dende la App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Abri esti videu na app VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Descarga esti videu",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Pa reproducir videos d'esti sitiu, necesites la app de baldre VLC. ¿Instalala agora?"
 }
