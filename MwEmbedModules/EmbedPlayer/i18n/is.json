@@ -44,7 +44,7 @@
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
 	"mwe-embedplayer-ogg-player-kplayer": "Kaltura-spilari",
 	"mwe-embedplayer-ogg-player-selected": "(valið)",
-	"mwe-embedplayer-download-warn": "Enginn samhæfður spilari fannst. Til þess að spila myndbandið í vafranum vinsamlegst sóttu [$1 nýjasta Firefox]",
+	"mwe-embedplayer-download-warn": "Enginn samhæfður spilari fannst. Til þess að spila myndbandið í  \tvafranum vinsamlegst sóttu [$1 nýjasta Firefox]",
 	"mwe-embedplayer-fullscreen-tip": "Til þess að fylla út í skjáinn, smelltu á <b>F11</b>",
 	"mwe-embedplayer-fullscreen-tip-osx": "Til þess að fylla út í skjáinn, smelltu á <b>shift ⌘ F</b>",
 	"mwe-embedplayer-do_not_warn_again": "Ekki sýna þessi skilaboð framvegis",
