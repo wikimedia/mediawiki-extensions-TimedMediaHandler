@@ -6,7 +6,8 @@
 			"Xiaomingyan",
 			"Yfdyh000",
 			"乌拉跨氪",
-			"NigelSoft"
+			"NigelSoft",
+			"Liuxinyu970226"
 		]
 	},
 	"mwe-embedplayer-credit-title": "标题：$1",
@@ -56,6 +57,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264播放器",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM播放器",
 	"mwe-embedplayer-ogg-player-oggPlugin": "通用Ogg插件",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "用于iOS的VLC应用程序",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime插件",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -84,5 +86,9 @@
 	"mwe-embedplayer-video-mpeg": "MPEG视频",
 	"mwe-embedplayer-video-msvideo": "AVI视频",
 	"mwe-embedplayer-missing-source": "未找到源视频",
-	"mwe-embedplayer-vlcapp-downloadvideo": "下载这个视频"
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC应用程序",
+	"mwe-embedplayer-vlcapp-downloadapp": "从App Store下载VLC应用程序",
+	"mwe-embedplayer-vlcapp-openvideo": "使用VLC应用程序打开此视频",
+	"mwe-embedplayer-vlcapp-downloadvideo": "下载这个视频",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "要在此站点播放视频，您需要免费的VLC应用程序。现在安装？"
 }

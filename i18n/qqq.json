@@ -118,5 +118,4 @@
 	"orphanedtimedtext": "{{doc-special|OrphanedTimedText}}",
 	"orphanedtimedtext-summary": "Summary of Special:OrphanedTimedText.",
 	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end."
-
 }
