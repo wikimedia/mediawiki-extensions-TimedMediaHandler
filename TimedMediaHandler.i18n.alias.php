@@ -12,6 +12,7 @@ $specialPageAliases = array();
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'TimedMediaHandler' => array( 'TimedMediaHandler' ),
+	'OrphanedTimedText' => array( 'OrphanedTimedText' ),
 );
 
 /** Arabic (العربية) */

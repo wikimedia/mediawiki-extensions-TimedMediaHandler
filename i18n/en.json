@@ -111,5 +111,8 @@
     "timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV audio file|$1 WAV audio files}}",
     "right-transcode-reset": "Reset failed or transcoded videos so they are inserted into the job queue again",
     "right-transcode-status": "View [[Special:TimedMediaHandler|information about the current transcode activity]]",
-    "action-transcode-status": "view the current transcoding status"
+    "action-transcode-status": "view the current transcoding status",
+    "orphanedtimedtext": "Orphaned TimedText pages",
+    "orphanedtimedtext-summary": "List of [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] pages which do not have a corresponding file.",
+    "orphanedtimedtext-unsupported": "This special page is only supported on MySQL databases."
 }
