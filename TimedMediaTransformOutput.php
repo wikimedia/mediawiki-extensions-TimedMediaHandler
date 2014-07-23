@@ -231,7 +231,41 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $popUpWidth;
 	}
 
-	static function sortMediaByBandwidth( $a, $b){
+	/**
+	 * Sort media by bandwidth, but with things not wide enough at end
+	 *
+	 * The list should be in preferred source order, so we want the file
+	 * with the lowest bitrate (to save bandwidth) first, but we also want
+	 * appropriate resolution files before the 160p transcodes.
+	 */
+	private function sortMediaByBandwidth( $a, $b ) {
+		$width = $this->getPlayerWidth();
+		$maxWidth = $this->getPopupPlayerWidth();
+		if ( $this->useImagePopUp() || $width > $maxWidth ) {
+			// If its a pop-up player than we should use the pop up player size
+			// if its a normal player, but has a bigger width than the pop-up
+			// player, then we use the pop-up players width as the target width
+			// as that is equivalent to the max transcode size. Otherwise this
+			// will suggest the original file as the best source, which seems like
+			// a potentially bad idea, as it could be anything size wise.
+			$width = $maxWidth;
+		}
+
+		if ( $a['width'] < $width && $b['width'] >= $width ) {
+			// $a is not wide enough but $b is
+			// so we consider $a > $b as we want $b before $a
+			return 1;
+		}
+		if ( $a['width'] >= $width && $b['width'] < $width ) {
+			// $b not wide enough, so $a must be preferred.
+			return -1;
+		}
+		if ( $a['width'] < $width && $b['width'] < $width && $a['width'] != $b['width'] ) {
+			// both are too small. Go with the one closer to the target width
+			return ( $a['width'] < $b['width'] ) ? -1 : 1;
+		}
+		// Both are big enough, or both equally to small. Go with the one
+		// that has a lower bit-rate (as it will be faster to download).
 		return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
 	}
 	/**
@@ -254,7 +288,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		// Sort sources by bandwidth least to greatest ( so default selection on resource constrained
 		// browsers ( without js? ) go with minimal source.
-		uasort( $mediaSources, 'TimedMediaTransformOutput::sortMediaByBandwidth' );
+		usort( $mediaSources, array( $this, 'sortMediaByBandwidth' ) );
 
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = Array( 'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate', 'disablecontrols' );
