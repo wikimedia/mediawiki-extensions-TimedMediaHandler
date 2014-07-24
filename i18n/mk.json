@@ -104,5 +104,8 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|Една WAV-аудиоснимка|$1 WAV-аудиоснимки}}",
 	"right-transcode-reset": "Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.",
 	"right-transcode-status": "Преглед на [[Special:TimedMediaHandler|информации за тековните активности во прекодирањето]]",
-	"action-transcode-status": "преглед на тековниот статус на прекодирањето"
+	"action-transcode-status": "преглед на тековниот статус на прекодирањето",
+	"orphanedtimedtext": "Осамени страници со TimedText",
+	"orphanedtimedtext-summary": "Список на страници со [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] што немаат своја податотека.",
+	"orphanedtimedtext-unsupported": "Оваа специјална страница е поддржана само на MySQL-бази."
 }

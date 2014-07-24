@@ -92,5 +92,6 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 ficheiro de áudio FLAC|$1 ficheiros de áudio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 ficheiro de áudio WAV|$1 ficheiros de áudio WAV}}",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|informação sobre a actividade actual de transcodificação]]",
-	"action-transcode-status": "ver o estado actual de transcodificação"
+	"action-transcode-status": "ver o estado actual de transcodificação",
+	"orphanedtimedtext-unsupported": "Esta página especial só é suportada nas bases de dados MySQL."
 }

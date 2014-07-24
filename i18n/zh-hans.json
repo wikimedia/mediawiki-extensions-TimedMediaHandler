@@ -101,5 +101,8 @@
 	"timedmedia-wav-audios": "$1个WAV音频文件",
 	"right-transcode-reset": "重置已失败或已转码的视频将其再次加入到作业队列中。",
 	"right-transcode-status": "查看[[Special:TimedMediaHandler|当前转码活动的信息]]",
-	"action-transcode-status": "查看当前的转码状态"
+	"action-transcode-status": "查看当前的转码状态",
+	"orphanedtimedtext": "孤立的TimedText页面",
+	"orphanedtimedtext-summary": "没有对应文件的[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]页面的列表。",
+	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。"
 }

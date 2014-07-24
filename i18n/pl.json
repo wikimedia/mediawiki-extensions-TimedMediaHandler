@@ -85,5 +85,7 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} WAV",
 	"right-transcode-reset": "Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań",
 	"right-transcode-status": "Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]",
-	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania"
+	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania",
+	"orphanedtimedtext": "Osierocone strony TimedText",
+	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL."
 }

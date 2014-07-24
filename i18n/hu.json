@@ -3,7 +3,8 @@
 		"authors": [
 			"Dani",
 			"Glanthor Reviol",
-			"Tgr"
+			"Tgr",
+			"Csega"
 		]
 	},
 	"timedmedia-desc": "JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz",
@@ -26,5 +27,6 @@
 	"timedmedia-source-file-desc": "Eredeti $1, $2 × $3 ($4)",
 	"timedmedia-derivative-desc-160p.ogv": "Alacsony sávszélességű Ogg videó (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "Magas minőségű, letölthető Ogg videó (720P)",
-	"timedmedia-derivative-desc-720p.webm": "Magas minőségű, letölthető WebM (720P)"
+	"timedmedia-derivative-desc-720p.webm": "Magas minőségű, letölthető WebM (720P)",
+	"orphanedtimedtext": "Árva TimedText lapok"
 }

@@ -56,5 +56,6 @@
 	"timedmedia-audios": "{{PLURAL:$1|$1 Audio-Fichier|$1 Audio-Fichieren}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg Audio-Fichier|$1 Ogg Audio-Fichieren}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC Audio-Fichier|$1 FLAC Audio-Fichieren}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV Audio-Fichier|$1 WAV Audio-Fichieren}}"
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV Audio-Fichier|$1 WAV Audio-Fichieren}}",
+	"orphanedtimedtext-unsupported": "Dës Spezialsäit funktionéiert nëmme mat MySQL Datebanken."
 }
