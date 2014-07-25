@@ -5,7 +5,8 @@
 			"Justincheng12345",
 			"Liuxinyu970226",
 			"Mark85296341",
-			"Simon Shek"
+			"Simon Shek",
+			"LNDDYL"
 		]
 	},
 	"timedmedia-desc": "帶有WebM，Ogg Theora、Vorbis，srt格式支持的音頻、視頻和同步文本處理器",
@@ -75,7 +76,7 @@
 	"timedmedia-subtitle-new-go": "提交",
 	"timedmedia-subtitle-language": "$1（$2）字幕",
 	"timedmedia-subtitle-no-video": "當前字幕頁面沒有關聯的視頻",
-	"timedmedia-subtitle-no-subtitles": "當前沒有這個視頻的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯這個頁面]以添加",
+	"timedmedia-subtitle-no-subtitles": "當前沒有這個影片的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯這個頁面]以添加",
 	"timedmedia-subtitle-remote": "本檔案的字幕位於$1",
 	"timedmedia-subtitle-remote-link": "您可於$2查看[$1 該檔案的描述頁]",
 	"timedmediahandler": "定時媒體處理器",

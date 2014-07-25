@@ -99,5 +99,6 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудиофайл WAV|$1 аудиофайлов WAV|$1 аудиофайла WAV}}",
 	"right-transcode-reset": "сброс неудавшихся или транскодированных видео, чтобы они встали в очередь заданий снова",
 	"right-transcode-status": "просмотр [[Special:TimedMediaHandler|информации о текущем ходе перекодирования]]",
-	"action-transcode-status": "просмотр текущего статуса перекодирования"
+	"action-transcode-status": "просмотр текущего статуса перекодирования",
+	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL."
 }

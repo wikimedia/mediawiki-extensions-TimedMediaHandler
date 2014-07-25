@@ -28,6 +28,7 @@ $specialPageAliases['arz'] = array(
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'TimedMediaHandler' => array( 'TimedMedia-Steuerungsprogramm' ),
+	'OrphanedTimedText' => array( 'Verwaister_TimedText' ),
 );
 
 /** Zazaki (Zazaki) */

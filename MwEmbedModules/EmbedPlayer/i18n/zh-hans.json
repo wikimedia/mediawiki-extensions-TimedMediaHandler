@@ -86,6 +86,7 @@
 	"mwe-embedplayer-video-mpeg": "MPEG视频",
 	"mwe-embedplayer-video-msvideo": "AVI视频",
 	"mwe-embedplayer-missing-source": "未找到源视频",
+	"mwe-embedplayer-vlcapp-intro": "为了在iPhone或iPad上访问此站点时播放视频，您需要免费的$1。",
 	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC应用程序",
 	"mwe-embedplayer-vlcapp-downloadapp": "从App Store下载VLC应用程序",
 	"mwe-embedplayer-vlcapp-openvideo": "使用VLC应用程序打开此视频",
