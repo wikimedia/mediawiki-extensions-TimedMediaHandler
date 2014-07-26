@@ -69,4 +69,5 @@ $specialPageAliases['vi'] = array(
 /** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = array(
 	'TimedMediaHandler' => array( '定时媒体处理器' ),
+	'OrphanedTimedText' => array( '孤立定时文本' ),
 );
