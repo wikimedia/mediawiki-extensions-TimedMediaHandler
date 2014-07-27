@@ -15,6 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen",
 	"timedmedia-ogg-long-general": "Ogg mediefil, lengde $2, $3",
 	"timedmedia-ogg-long-error": "Ugyldig Ogg-fil: $1",
+	"timedmedia-ogg-long-no-streams": "Ogg-mediafil. Advarsel: Ingen av omkoderne brukt i denne filen ble gjenkjent.",
 	"timedmedia-webm-short-video": "WebM $1 videofil, $2",
 	"timedmedia-webm-long-video": "WebM lyd-/videofil, $1, lengde $2, $4 × $5 piksler, $3 til sammen",
 	"timedmedia-flac-short-audio": "FLAC-lydfil, $1",
@@ -91,5 +92,8 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV-lydfil|$1 WAV-lydfiler}}",
 	"right-transcode-reset": "Nullstill feilede eller omkodede videoer så de blir gjeninnsatt i jobbkøen.",
 	"right-transcode-status": "Vis [[Special:TimedMediaHandler|informasjon om pågående omkodinger]]",
-	"action-transcode-status": "vise pågående omkodingsstatus"
+	"action-transcode-status": "vise pågående omkodingsstatus",
+	"orphanedtimedtext": "Foreldreløse TimedText-sider",
+	"orphanedtimedtext-summary": "Liste over [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-sider som ikke har tilknytning til noen fil.",
+	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser."
 }

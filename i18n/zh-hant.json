@@ -19,7 +19,7 @@
 	"timedmedia-ogg-long-general": "Ogg 媒體檔案，長度 $2，$3",
 	"timedmedia-ogg-long-error": "無效的ogg檔案：$1",
 	"timedmedia-webm-short-video": "WebM $1視頻文件，$2",
-	"timedmedia-webm-long-video": "WebM音頻/視頻文件，$1，長度$2，$4 × $5像素，共$3",
+	"timedmedia-webm-long-video": "WebM音訊/視訊檔案，$1，長度$2，$4 × $5畫素，共$3",
 	"timedmedia-flac-short-audio": "FLAC音頻檔案，$1",
 	"timedmedia-flac-long-audio": "FLAC音頻檔案，長$1，寬$2",
 	"timedmedia-wav-short-audio": "WAV音頻檔案，$1",
@@ -78,7 +78,7 @@
 	"timedmedia-subtitle-no-video": "當前字幕頁面沒有關聯的視頻",
 	"timedmedia-subtitle-no-subtitles": "當前沒有這個影片的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯這個頁面]以添加",
 	"timedmedia-subtitle-remote": "本檔案的字幕位於$1",
-	"timedmedia-subtitle-remote-link": "您可於$2查看[$1 該檔案的描述頁]",
+	"timedmedia-subtitle-remote-link": "您可於$2檢視[$1 該檔案的描述頁]",
 	"timedmediahandler": "定時媒體處理器",
 	"timedmedia-videos": "$1個視頻",
 	"timedmedia-ogg-videos": "$1個Ogg視頻",
@@ -93,6 +93,6 @@
 	"timedmedia-flac-audios": "$1個FLAC音頻檔案",
 	"timedmedia-wav-audios": "$1個WAV音頻檔案",
 	"right-transcode-reset": "重設失敗或轉碼視頻以將其再插入作業佇列中。",
-	"right-transcode-status": "查看[[Special:TimedMediaHandler|當前轉碼活動的資訊]]",
+	"right-transcode-status": "檢視[[Special:TimedMediaHandler|當前轉碼活動的資訊]]",
 	"action-transcode-status": "查看當前轉碼狀態"
 }

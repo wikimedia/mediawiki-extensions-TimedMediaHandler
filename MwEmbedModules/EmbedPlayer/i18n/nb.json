@@ -52,13 +52,14 @@
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264-spiller",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM-avspiller",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Generisk Ogg-utvidelse",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "appen VLC for iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-utvidelse",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
 	"mwe-embedplayer-ogg-player-kplayer": "Kaltura-spiller",
 	"mwe-embedplayer-ogg-player-selected": "(valgt)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
-	"mwe-embedplayer-for_best_experience": "For en bedre avspillingsopplevelse anbefaler vi en <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">html5 videoleser</a>.",
+	"mwe-embedplayer-for_best_experience": "For en bedre avspillingsopplevelse anbefaler vi en <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5-videofremviser</a>.",
 	"mwe-embedplayer-download-warn": "Ingen kompatibel mediespiller for nettleseren ble funnet: for avspilling i nettleseren kan du laste ned [$1 nyeste utgave av Firefox]",
 	"mwe-embedplayer-fullscreen-tip": "Trykk <b>F11</b> for å sette <i>nettleseren</i> i fullskjermmodus",
 	"mwe-embedplayer-fullscreen-tip-osx": "Trykk <b>shift ⌘ F</b> for å vise i fullskjerm",
@@ -79,5 +80,11 @@
 	"mwe-embedplayer-video-3gp": "3GP-video",
 	"mwe-embedplayer-video-mpeg": "MPEG-video",
 	"mwe-embedplayer-video-msvideo": "AVI-video",
-	"mwe-embedplayer-missing-source": "Ingen kildevideo ble funnet"
+	"mwe-embedplayer-missing-source": "Ingen kildevideo ble funnet",
+	"mwe-embedplayer-vlcapp-intro": "For å spille av videoer fra dette nettstedet på en iPhone eller iPad, trenger du $1 (gratis).",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "appen VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Last ned appen VLC fra App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Åpne denne videoen i VLC-appen",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Last ned denne videoen",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "For å spille av videoer på dette nettstedet, trenger du appen VLC (gratis). Vil du installere nå?"
 }
