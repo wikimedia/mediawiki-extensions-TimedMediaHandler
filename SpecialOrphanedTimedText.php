@@ -44,7 +44,13 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @param $par String subpage
 	 */
 	public function execute( $par ) {
-		if ( !$this->canExecute() ) {
+		global $wgEnableLocalTimedText;
+
+		if ( !$wgEnableLocalTimedText ) {
+			$this->setHeaders();
+			$this->getOutput()->addWikiMsg( 'orphanedtimedtext-notimedtext' );
+			return;
+		} elseif ( !$this->canExecuteQuery() ) {
 			$this->setHeaders();
 			$this->outputHeader();
 			$this->getOutput()->addWikiMsg( 'orphanedtimedtext-unsupported' );
@@ -79,9 +85,20 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 *
 	 * @return bool
 	 */
-	private function canExecute() {
+	private function canExecuteQuery() {
 		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->getType() === 'mysql';
+	}
+
+	/**
+	 * Can we execute this special page
+	 *
+	 * That is, db is mysql, and TimedText namespace enabled.
+	 */
+	private function canExecute() {
+		global $wgEnableLocalTimedText;
+
+		return $this->canExecuteQuery() && $wgEnableLocalTimedText;
 	}
 
 	/**
