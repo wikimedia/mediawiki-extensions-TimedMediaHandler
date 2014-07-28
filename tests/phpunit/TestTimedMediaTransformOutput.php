@@ -1,6 +1,9 @@
 <?php
 class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 
+	private $sortMethod;
+	private $thumbObj;
+
 	function getFilePath() {
 		return __DIR__ . '/media';
 	}
@@ -13,6 +16,8 @@ class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 		$reflectionProperty = $reflection->getProperty( 'transformVia404' );
 		$reflectionProperty->setAccessible( true );
 		$reflectionProperty->setValue( $this->repo, true );
+
+		$this->setMWGlobals( 'wgMinimumVideoPlayerSize', '400' );
 	}
 
 	/**
@@ -45,6 +50,93 @@ class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 			array( 300, 800, true ),
 			array( 300, 200, false ),
 			array( 300, 300, false )
+		);
+	}
+
+	/**
+	 * @param $thumbWidth int Requested width
+	 * @param $sources array
+	 * @param $sortedSources array
+	 * @dataProvider providerSortMediaByBandwidth
+	 */
+	function testSortMediaByBandwidth( $thumbWidth, $sources, $sortedSources ) {
+		$params = array(
+			'width' => $thumbWidth,
+			'height' => $thumbWidth * 9 / 16,
+			'isVideo' => true,
+			'fillwindow' => false,
+			'file' => new FakeDimensionFile( array( 1820, 1024 ) )
+		);
+		$this->thumbObj = new TimedMediaTransformOutput( $params );
+
+		$reflection = new ReflectionClass( $this->thumbObj );
+		$this->sortMethod = $reflection->getMethod( 'sortMediaByBandwidth' );
+		$this->sortMethod->setAccessible( true );
+
+		usort( $sources, array( $this, 'callSortMethodHelper' ) );
+		$this->assertEquals( $sortedSources, $sources );
+	}
+
+	public function callSortMethodHelper( $a, $b ) {
+		return $this->sortMethod->invoke( $this->thumbObj, $a, $b );
+	}
+
+
+	function providerSortMediaByBandwidth() {
+		return array(
+			array(
+				600,
+				array(
+					array( 'width' => 1000, 'bandwidth' => 2000 ),
+					array( 'width' => 1000, 'bandwidth' => 7000 ),
+					array( 'width' => 1000, 'bandwidth' => 1000 ),
+				),
+				array(
+					array( 'width' => 1000, 'bandwidth' => 1000 ),
+					array( 'width' => 1000, 'bandwidth' => 2000 ),
+					array( 'width' => 1000, 'bandwidth' => 7000 ),
+				),
+			),
+			array(
+				600,
+				array(
+					array( 'width' => 200, 'bandwidth' => 2000 ),
+					array( 'width' => 1000, 'bandwidth' => 7000 ),
+					array( 'width' => 200, 'bandwidth' => 1000 ),
+				),
+				array(
+					array( 'width' => 1000, 'bandwidth' => 7000 ),
+					array( 'width' => 200, 'bandwidth' => 1000 ),
+					array( 'width' => 200, 'bandwidth' => 2000 ),
+				),
+			),
+			array(
+				/* Pop up viewer in this case */
+				100,
+				array(
+					array( 'width' => 700, 'bandwidth' => 2000 ),
+					array( 'width' => 1000, 'bandwidth' => 7000 ),
+					array( 'width' => 700, 'bandwidth' => 1000 ),
+				),
+				array(
+					array( 'width' => 1000, 'bandwidth' => 7000 ),
+					array( 'width' => 700, 'bandwidth' => 1000 ),
+					array( 'width' => 700, 'bandwidth' => 2000 ),
+				),
+			),
+			array(
+				600,
+				array(
+					array( 'width' => 700, 'bandwidth' => 2000 ),
+					array( 'width' => 800, 'bandwidth' => 7000 ),
+					array( 'width' => 1000, 'bandwidth' => 1000 ),
+				),
+				array(
+					array( 'width' => 1000, 'bandwidth' => 1000 ),
+					array( 'width' => 700, 'bandwidth' => 2000 ),
+					array( 'width' => 800, 'bandwidth' => 7000 ),
+				),
+			),
 		);
 	}
 }
