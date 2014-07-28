@@ -4,7 +4,8 @@
 			"Justincheng12345",
 			"Mark85296341",
 			"Simon Shek",
-			"StephDC"
+			"StephDC",
+			"LNDDYL"
 		]
 	},
 	"mwe-embedplayer-credit-title": "標題：$1",
@@ -12,7 +13,7 @@
 	"mwe-embedplayer-credit-author": "作者：$1",
 	"mwe-embedplayer-nocredits": "未署名",
 	"mwe-embedplayer-loading_plugin": "正在載入外掛程式...",
-	"mwe-embedplayer-select_playback": "設置播放參數",
+	"mwe-embedplayer-select_playback": "設定回放偏好",
 	"mwe-embedplayer-link_back": "反連",
 	"mwe-embedplayer-error_swap_vid": "錯誤：mwEmbed無法轉換用於mwEmbed介面的視訊標籤",
 	"mwe-embedplayer-add_to_end_of_sequence": "添加至序列末尾",
