@@ -104,5 +104,6 @@
 	"action-transcode-status": "den aktuellen Transkodierungstatus anzusehen",
 	"orphanedtimedtext": "Verwaiste TimedText-Seiten",
 	"orphanedtimedtext-summary": "Liste der [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-Seiten, die keine entsprechende Datei haben.",
-	"orphanedtimedtext-unsupported": "Diese Spezialseite wird nur auf MySQL-Datenbanken unterstützt."
+	"orphanedtimedtext-unsupported": "Diese Spezialseite wird nur auf MySQL-Datenbanken unterstützt.",
+	"orphanedtimedtext-notimedtext": "TimedText ist auf diesem Wiki nicht aktiviert."
 }

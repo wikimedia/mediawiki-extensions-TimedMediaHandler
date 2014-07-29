@@ -54,6 +54,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "Lettore HTML5 H.264",
 	"mwe-embedplayer-ogg-player-webmNative": "Lettore HTML5 WebM",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Plugin generico Ogg",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC per iOS app",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime plugin",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -81,5 +82,9 @@
 	"mwe-embedplayer-video-3gp": "Video 3GP",
 	"mwe-embedplayer-video-mpeg": "Video MPEG",
 	"mwe-embedplayer-video-msvideo": "Video AVI",
-	"mwe-embedplayer-missing-source": "Non è stata trovata alcuna sorgente video"
+	"mwe-embedplayer-missing-source": "Non è stata trovata alcuna sorgente video",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC app",
+	"mwe-embedplayer-vlcapp-downloadapp": "Scarica l'app VLC da App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Apri questo video nell'app VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Scarica questo video"
 }

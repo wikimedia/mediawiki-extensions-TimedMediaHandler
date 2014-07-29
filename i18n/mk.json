@@ -107,5 +107,6 @@
 	"action-transcode-status": "преглед на тековниот статус на прекодирањето",
 	"orphanedtimedtext": "Осамени страници со TimedText",
 	"orphanedtimedtext-summary": "Список на страници со [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] што немаат своја податотека.",
-	"orphanedtimedtext-unsupported": "Оваа специјална страница е поддржана само на MySQL-бази."
+	"orphanedtimedtext-unsupported": "Оваа специјална страница е поддржана само на MySQL-бази.",
+	"orphanedtimedtext-notimedtext": "TimedText не е овозможен на ова вики."
 }

@@ -97,5 +97,6 @@
 	"action-transcode-status": "הצגת מצב המרת־המשנה",
 	"orphanedtimedtext": "דפי טקסט מתוזמן יתומים",
 	"orphanedtimedtext-summary": "רשימה של כל דפי [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] שלא משויך להם קובץ.",
-	"orphanedtimedtext-unsupported": "הדף המיוחד הזה נתמך רק במסדי נתונים MySQL."
+	"orphanedtimedtext-unsupported": "הדף המיוחד הזה נתמך רק במסדי נתונים MySQL.",
+	"orphanedtimedtext-notimedtext": "ההרחבה TimedText אינה מופעלת בוויקי הזה."
 }
