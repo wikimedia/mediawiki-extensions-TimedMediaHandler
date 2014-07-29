@@ -117,5 +117,6 @@
 	"action-transcode-status": "{{doc-action|transcode-status}}",
 	"orphanedtimedtext": "{{doc-special|OrphanedTimedText}}",
 	"orphanedtimedtext-summary": "Summary of Special:OrphanedTimedText.",
-	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end."
+	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end.",
+	"orphanedtimedtext-notimedtext": "Shown on Special:OrphanedTimedText if the TimedText namespace is disabled on that wiki (i.e. $wgEnableLocalTimedText is set to false). Note, do not use <nowiki>{{ns:TimedText}}</nowiki> in this message."
 }
