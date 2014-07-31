@@ -104,5 +104,6 @@
 	"action-transcode-status": "查看当前的转码状态",
 	"orphanedtimedtext": "孤立的TimedText页面",
 	"orphanedtimedtext-summary": "没有对应文件的[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]页面的列表。",
-	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。"
+	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
+	"orphanedtimedtext-notimedtext": "TimedText在此wiki未启用。"
 }
