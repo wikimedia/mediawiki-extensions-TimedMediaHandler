@@ -94,5 +94,5 @@
 	"timedmedia-wav-audios": "$1個WAV音訊檔案",
 	"right-transcode-reset": "重設失敗或轉碼視訊以將其再插入作業佇列中。",
 	"right-transcode-status": "檢視[[Special:TimedMediaHandler|當前轉碼活動的資訊]]",
-	"action-transcode-status": "查看當前轉碼狀態"
+	"action-transcode-status": "檢視當前轉碼狀態"
 }

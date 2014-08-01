@@ -93,5 +93,8 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 ficheiro de áudio WAV|$1 ficheiros de áudio WAV}}",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|informação sobre a actividade actual de transcodificação]]",
 	"action-transcode-status": "ver o estado actual de transcodificação",
-	"orphanedtimedtext-unsupported": "Esta página especial só é suportada nas bases de dados MySQL."
+	"orphanedtimedtext": "Páginas Legendagem órfãs",
+	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que não têm um ficheiro correspondente.",
+	"orphanedtimedtext-unsupported": "Esta página especial só é suportada nas bases de dados MySQL.",
+	"orphanedtimedtext-notimedtext": "O domínio Legendagem não está habilitado nesta wiki."
 }

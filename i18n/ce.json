@@ -24,5 +24,6 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 аудио-файл FLAC|$1 аудио-файлаш FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудио-файл WAV|$1 аудио-файлаш WAV}}",
 	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
-	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]"
+	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]",
+	"orphanedtimedtext-notimedtext": "TimedText хӀокху вики чохь латина дац."
 }
