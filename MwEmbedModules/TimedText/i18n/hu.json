@@ -2,23 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Dani",
-			"Glanthor Reviol"
+			"Glanthor Reviol",
+			"Misibacsi"
 		]
 	},
-	"mwe-timedtext-stage-transcribe": "Átírás",
-	"mwe-timedtext-stage-sync": "Szinkronizálás",
-	"mwe-timedtext-stage-translate": "Fordítás",
-	"mwe-timedtext-stage-upload": "Helyi fájl feltöltése",
-	"mwe-timedtext-select-language": "Nyelv kiválasztása",
-	"mwe-timedtext-file-language": "Feliratfájl nyelve",
 	"mwe-timedtext-back-btn": "Vissza",
-	"mwe-timedtext-choose-text": "Szöveg választása",
-	"mwe-timedtext-upload-timed-text": "Felirat feltöltése",
-	"mwe-timedtext-loading-text-edit": "Időzítettszöveg-szerkesztő betöltése",
-	"mwe-timedtext-search": "Klip keresése",
-	"mwe-timedtext-layout": "Elrendezés",
-	"mwe-timedtext-layout-ontop": "A videó felett",
-	"mwe-timedtext-layout-below": "A videó alatt",
 	"mwe-timedtext-layout-off": "Feliratok elrejtése",
 	"mwe-timedtext-loading-text": "Szöveg betöltése…",
 	"mwe-timedtext-textcat-cc": "Feliratok",
@@ -30,5 +18,6 @@
 	"mwe-timedtext-textcat-meta": "Időzített metaadatok",
 	"mwe-timedtext-textcat-trx": "Átirat",
 	"mwe-timedtext-textcat-lrc": "Dalszöveg",
-	"mwe-timedtext-textcat-lin": "Nyelvi jelölés"
+	"mwe-timedtext-textcat-lin": "Nyelvi jelölés",
+	"mwe-timedtext-upload-timed-text": "Felirat hozzáadása"
 }
