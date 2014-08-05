@@ -98,5 +98,9 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV-ljudfil|$1 WAV-ljudfiler}}",
 	"right-transcode-reset": "Återställ misslyckade eller transkodade videor så att de åter infogas i jobbkön.",
 	"right-transcode-status": "Visa [[Special:TimedMediaHandler|information om den aktuella transkodningsaktivitetet]]",
-	"action-transcode-status": "visa den aktuella transkodningsstatusen"
+	"action-transcode-status": "visa den aktuella transkodningsstatusen",
+	"orphanedtimedtext": "Föräldralösa TimedText-sidor",
+	"orphanedtimedtext-summary": "Lista över [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sidor som inte har en motsvarande fil.",
+	"orphanedtimedtext-unsupported": "Denna special-sida har bara stöd på MySQL-databaser.",
+	"orphanedtimedtext-notimedtext": "TimedText är inte aktiverat på denna wiki."
 }
