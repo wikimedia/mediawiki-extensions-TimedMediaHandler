@@ -18,7 +18,7 @@
 							'content' : $videoContainer,
 							'close' : function(){
 								// On close pause the video on close ( so that playback does not continue )
-								var domEl = $( thisref ).find( 'video,audio' ).get(0);
+								var domEl = $( this ).find( 'video,audio' ).get(0);
 								if( domEl && domEl.pause ) {
 									domEl.pause();
 								}
