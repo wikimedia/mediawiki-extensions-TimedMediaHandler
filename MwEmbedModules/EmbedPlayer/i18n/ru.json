@@ -4,7 +4,8 @@
 			"Eleferen",
 			"MaxSem",
 			"Okras",
-			"Александр Сигачёв"
+			"Александр Сигачёв",
+			"Kaganer"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Название: $1",
@@ -33,7 +34,7 @@
 	"mwe-embedplayer-download_right_click": "Чтобы загрузить, нажмите правую кнопку и выберите «Сохранить объект как…»",
 	"mwe-embedplayer-download_clip": "Загрузить видео",
 	"mwe-embedplayer-download_text": "Загрузить текст",
-	"mwe-embedplayer-download": "Загрузить",
+	"mwe-embedplayer-download": "Скачать",
 	"mwe-embedplayer-share": "Поделиться",
 	"mwe-embedplayer-credits": "Создатели",
 	"mwe-embedplayer-about-library": "О проигрывателе Kaltura",
