@@ -91,5 +91,9 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 ficheru de soníu WAV|$1 ficheros de soníu WAV}}",
 	"right-transcode-reset": "Reaniciar los videos fallíos o trescodificaos pa que vuelvan a ponese na cola de trabayos.",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre l'actividá de trescodificación actual]]",
-	"action-transcode-status": "ver l'estáu actual de la trescodificación"
+	"action-transcode-status": "ver l'estáu actual de la trescodificación",
+	"orphanedtimedtext": "Páxines güérfanes de TimedText",
+	"orphanedtimedtext-summary": "Llista de páxines de [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que nun tienen el correspondiente ficheru.",
+	"orphanedtimedtext-unsupported": "Esta páxina especial sólo tien sofitu con bases de datos MySQL.",
+	"orphanedtimedtext-notimedtext": "TimedText nun ta activáu nesta wiki."
 }
