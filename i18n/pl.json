@@ -87,5 +87,6 @@
 	"right-transcode-status": "Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]",
 	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania",
 	"orphanedtimedtext": "Osierocone strony TimedText",
-	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL."
+	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL.",
+	"orphanedtimedtext-notimedtext": "TimedText nie jest włączony w tej wiki."
 }
