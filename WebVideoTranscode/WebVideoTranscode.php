@@ -920,7 +920,7 @@ class WebVideoTranscode {
 		$maxSize = self::getMaxSize( $targetMaxSize );
 		$sourceWidth = intval( $file->getWidth() );
 		$sourceHeight = intval( $file->getHeight() );
-		$sourceAspect = intval( $sourceWidth ) / intval( $sourceHeight );
+		$sourceAspect = $sourceWidth / $sourceHeight;
 		$targetWidth = $sourceWidth;
 		$targetHeight = $sourceHeight;
 		if ( $sourceAspect <= $maxSize['aspect'] ) {
