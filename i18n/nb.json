@@ -95,5 +95,6 @@
 	"action-transcode-status": "vise pågående omkodingsstatus",
 	"orphanedtimedtext": "Foreldreløse TimedText-sider",
 	"orphanedtimedtext-summary": "Liste over [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-sider som ikke har tilknytning til noen fil.",
-	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser."
+	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser.",
+	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien."
 }

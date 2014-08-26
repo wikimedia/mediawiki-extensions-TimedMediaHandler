@@ -83,8 +83,10 @@
 	"mwe-embedplayer-video-mpeg": "Video MPEG",
 	"mwe-embedplayer-video-msvideo": "Video AVI",
 	"mwe-embedplayer-missing-source": "Non è stata trovata alcuna sorgente video",
+	"mwe-embedplayer-vlcapp-intro": "Per poter visualizzare i video da questo sito su un iPhone o iPad, è necessaria $1 gratuita.",
 	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC app",
 	"mwe-embedplayer-vlcapp-downloadapp": "Scarica l'app VLC da App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Apri questo video nell'app VLC",
-	"mwe-embedplayer-vlcapp-downloadvideo": "Scarica questo video"
+	"mwe-embedplayer-vlcapp-downloadvideo": "Scarica questo video",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Per riprodurre i video su questo sito, è necessaria l'app VLC. Installarla ora?"
 }
