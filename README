@@ -31,12 +31,6 @@ forget to su as a webserver user):
 
   php runJobs.php --type webVideoTranscode --maxjobs 1
 
-As a convenience, the extension provides a wrapper script which will check for
-new jobs every 5 minutes. The script is WebVideoJobRunner.php in maintenance
-folder (do not forget to run it as the webserver user)::
-
-  WebVideoJobRunner.php
-
 
 == Kaltura HTML5 player library ==
 
