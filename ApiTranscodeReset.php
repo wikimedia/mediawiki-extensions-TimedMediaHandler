@@ -122,14 +122,6 @@ class ApiTranscodeReset extends ApiBase {
 		return 'Users with the \'transcode-reset\' right can reset and re-run a transcode job';
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'missingpermission', 'info' => 'You don\'t have permission to reset transcodes'),
-			array( 'code' => 'disabledtranscode', 'info' => 'Transcode is disabled on this wiki' ),
-			array( 'invalidtitle', 'title' ),
-		) );
-	}
-
 	protected function getAllowedParams() {
 		return array(
 			'title' => array(
