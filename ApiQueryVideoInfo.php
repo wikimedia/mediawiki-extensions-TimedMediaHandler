@@ -29,9 +29,14 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	static function getInfo( $file, $prop, $result, $thumbParams = null, $version = 'latest' ) {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams = null );
-		if( isset( $prop['derivatives'] ) ){
-			$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'fullurl') );
-			$result->setIndexedTagName( $vals['derivatives'], "derivative" );
+		if( isset( $prop['derivatives'] ) ) {
+			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
+				$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'fullurl') );
+				$result->setIndexedTagName( $vals['derivatives'], "derivative" );
+			} else {
+				// Non-TMH file, no derivatives.
+				$vals['derivatives'] = array();
+			}
 		}
 		return $vals;
 	}
