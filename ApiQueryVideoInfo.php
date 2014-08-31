@@ -31,6 +31,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams = null );
 		if( isset( $prop['derivatives'] ) ){
 			$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'fullurl') );
+			$result->setIndexedTagName( $vals['derivatives'], "derivative" );
 		}
 		return $vals;
 	}
