@@ -920,6 +920,10 @@ class WebVideoTranscode {
 		$maxSize = self::getMaxSize( $targetMaxSize );
 		$sourceWidth = intval( $file->getWidth() );
 		$sourceHeight = intval( $file->getHeight() );
+		if ( $sourceHeight === 0 ) {
+			// Audio file
+			return array( 0, 0 );
+		}
 		$sourceAspect = $sourceWidth / $sourceHeight;
 		$targetWidth = $sourceWidth;
 		$targetHeight = $sourceHeight;
