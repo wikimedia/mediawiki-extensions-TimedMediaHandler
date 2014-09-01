@@ -805,7 +805,7 @@ class WebVideoTranscode {
 						$file->getHandler()->getFramerate( $file );
 		// Setup the url src:
 		$src = in_array( 'fullurl', $options) ?  wfExpandUrl( $src ) : $src;
-		return array(
+		$fields = array(
 				'src' => $src,
 				'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
 				'type' => self::$derivativeSettings[ $transcodeKey ][ 'type' ],
@@ -818,8 +818,12 @@ class WebVideoTranscode {
 				"height" => intval( $height ),
 				// a "ready" transcode should have a bitrate:
 				"bandwidth" => intval( self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate'] ),
-				"framerate" => floatval( $framerate ),
 			);
+
+		if ( !$file->getHandler()->isAudio( $file ) ) {
+			$fields += array( "framerate" => floatval( $framerate ) );
+		}
+		return $fields;
 	}
 
 	/**
