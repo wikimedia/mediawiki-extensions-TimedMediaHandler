@@ -54,6 +54,7 @@ $specialPageAliases['ko'] = array(
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'TimedMediaHandler' => array( 'СинхронизираниСнимки' ),
+	'OrphanedTimedText' => array( 'ОсамениСинхронизации' ),
 );
 
 /** Malayalam (മലയാളം) */

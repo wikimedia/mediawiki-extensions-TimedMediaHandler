@@ -99,5 +99,9 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 پوشه‌ٔ صوتی دبلیو‌ای‌وی|$1 پوشه‌های صوتی دبلیو‌ای‌وی}}",
 	"right-transcode-reset": "تنظیم مجدد انجام‌نشده‌ها یا ویدئوهای فراکدشده اعمال شد. در نتیجه مجدداً آنها در صف کار قرار گرفتند.",
 	"right-transcode-status": "مشاهدهٔ [[Special:TimedMediaHandler|اطلاعات در مورد فعالیت فراکد]]",
-	"action-transcode-status": "نمایش وضعیت فراکدگذاری کنونی"
+	"action-transcode-status": "نمایش وضعیت فراکدگذاری کنونی",
+	"orphanedtimedtext": "صفحه‌های TimedText یتیم",
+	"orphanedtimedtext-summary": "فهرست صفحه‌های [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] که دارای پروندهٔ متناظر نیستند.",
+	"orphanedtimedtext-unsupported": "این صفحهٔ خاص فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده‌است.",
+	"orphanedtimedtext-notimedtext": "TimedText در این ویکی فعال نشده است."
 }

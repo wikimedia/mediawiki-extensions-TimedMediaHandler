@@ -3,7 +3,8 @@
 		"authors": [
 			"Minh Nguyen",
 			"Vinhtantran",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Trần Nguyễn Minh Huy"
 		]
 	},
 	"timedmedia-desc": "Bộ trình bày các tập tin âm thanh, video, và phụ đề hỗ trợ WebM, Ogg Theora, Vorbis, và srt",
@@ -103,5 +104,9 @@
 	"timedmedia-wav-audios": "$1 tập tin âm thanh WAV",
 	"right-transcode-reset": "Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng nó lại vào hàng đợi việc.",
 	"right-transcode-status": "Xem [[Special:TimedMediaHandler|thông tin về hoạt động chuyển mã đang xảy ra]]",
-	"action-transcode-status": "xem trạng thái chuyển mã hiện tại"
+	"action-transcode-status": "xem trạng thái chuyển mã hiện tại",
+	"orphanedtimedtext": "Các trang TimedText mồ côi",
+	"orphanedtimedtext-summary": "Danh sách trang [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] không có tập tin tương ứng.",
+	"orphanedtimedtext-unsupported": "Trang đặc biệt này chỉ được hỗ trợ trên cơ sở dữ liệu MySQL.",
+	"orphanedtimedtext-notimedtext": "TimedText không được kích hoạt trên wiki này."
 }
