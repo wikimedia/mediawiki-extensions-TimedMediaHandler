@@ -51,6 +51,8 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	 *
 	*/
 	protected function tearDown() {
+		parent::tearDown();
+
 		$testMediaFiles = $this->mediaFilesProvider();
 		foreach( $testMediaFiles as $file ){
 			$file = $file[0];
