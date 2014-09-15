@@ -4,7 +4,8 @@
 			"Dani",
 			"Glanthor Reviol",
 			"Tgr",
-			"Csega"
+			"Csega",
+			"Samat"
 		]
 	},
 	"timedmedia-desc": "JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz",
@@ -28,5 +29,6 @@
 	"timedmedia-derivative-desc-160p.ogv": "Alacsony sávszélességű Ogg videó (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "Magas minőségű, letölthető Ogg videó (720P)",
 	"timedmedia-derivative-desc-720p.webm": "Magas minőségű, letölthető WebM (720P)",
+	"right-transcode-status": "[[Special:TimedMediaHandler|a legutóbbi átkódolási események információinak]] megtekintése",
 	"orphanedtimedtext": "Árva TimedText lapok"
 }
