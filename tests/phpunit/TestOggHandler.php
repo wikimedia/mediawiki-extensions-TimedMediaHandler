@@ -43,4 +43,25 @@ class TestOggHandler extends MediaWikiMediaTestCase {
 			),
 		);
 	}
+
+	/**
+	 * @dataProvider providerGetWebType
+	 * @param $filename String name of file
+	 * @param $expected String Mime type (including codecs)
+	 */
+	function testGetWebType( $filename, $expected ) {
+		$testFile = $this->dataFile( $filename, 'application/ogg' );
+		$this->assertEquals( $expected, $this->handler->getWebType( $testFile ) );
+	}
+
+	function providerGetWebType() {
+		return array(
+			array( 'test5seconds.electricsheep.300x400.ogv', 'video/ogg; codecs="theora"' ),
+			array( 'doubleTag.oga', 'audio/ogg; codecs="vorbis"' ),
+			// XXX: This behaviour is somewhat questionable. It perhaps should be
+			// application/ogg in this case.
+			array( 'broken-file.ogg', 'audio/ogg' ),
+		);
+	}
+
 }
