@@ -44,10 +44,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	function getUrl( $sizeOverride = false ){
-		global $wgVersion, $wgScriptPath, $wgStylePath;
+		global $wgVersion, $wgResourceBasePath, $wgStylePath;
 		// Needs to be 1.24c because version_compare() works in confusing ways
 		if ( version_compare( $wgVersion, '1.24c', '>=' ) ) {
-			$url = "$wgScriptPath/assets/file-type-icons/fileicon-ogg.png";
+			$url = "$wgResourceBasePath/resources/assets/file-type-icons/fileicon-ogg.png";
 		} else {
 			$url = "$wgStylePath/common/images/icons/fileicon-ogg.png";
 		}
