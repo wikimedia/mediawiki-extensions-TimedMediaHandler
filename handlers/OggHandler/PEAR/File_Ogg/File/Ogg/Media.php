@@ -30,12 +30,19 @@ require_once('File/Ogg/Bitstream.php');
 abstract class File_Ogg_Media extends File_Ogg_Bitstream
 {
     /**
+     * Maximum size of header comment to parse.
+     * Set to 1 MB by default. Make sure this is less than your PHP memory_limit.
+     */
+    const COMMENT_MAX_SIZE = 1000000;
+
+    /**
      * Array to hold each of the comments.
      *
      * @access  private
      * @var     array
      */
     var $_comments = array();
+
     /**
      * Vendor string for the stream.
      *
@@ -114,6 +121,12 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
         for ($i = 0; $i < $comment_list_length['data']; ++$i) {
             // Unpack the length of this comment.
             $comment_length = unpack("Vdata", fread($this->_filePointer, 4));
+
+            // If the comment length is greater than specified limit, skip it.
+            if ( $comment_length['data'] > self::COMMENT_MAX_SIZE ) {
+                continue;
+            }
+
             // Comments are in the format 'ARTIST=Super Furry Animals', so split it on the equals character.
             // NOTE: Equals characters are strictly prohibited in either the COMMENT or DATA parts.
             $comment        = explode("=", fread($this->_filePointer, $comment_length['data']));
