@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rancher"
+			"Rancher",
+			"Milicevic01"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Naslov: $1",
@@ -71,5 +72,6 @@
 	"mwe-embedplayer-video-flv": "Fleš video",
 	"mwe-embedplayer-video-ogg": "Ogg video",
 	"mwe-embedplayer-video-audio": "Ogg audio",
-	"mwe-embedplayer-missing-source": "Nije pronađen izvor snimka."
+	"mwe-embedplayer-missing-source": "Nije pronađen izvor snimka.",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Preuzmi ovaj video"
 }
