@@ -3,26 +3,13 @@
 		"authors": [
 			"Justincheng12345",
 			"Mark85296341",
-			"Simon Shek"
+			"Simon Shek",
+			"LNDDYL"
 		]
 	},
-	"mwe-timedtext-editor": "字幕編輯器",
-	"mwe-timedtext-stage-transcribe": "字幕",
-	"mwe-timedtext-stage-sync": "同步",
-	"mwe-timedtext-stage-translate": "翻譯",
-	"mwe-timedtext-stage-upload": "從本地上傳",
-	"mwe-timedtext-select-language": "選擇語言",
-	"mwe-timedtext-file-language": "字幕語言",
 	"mwe-timedtext-back-btn": "返回",
-	"mwe-timedtext-choose-text": "選擇文字",
-	"mwe-timedtext-upload-timed-text": "添加字幕",
-	"mwe-timedtext-loading-text-edit": "正在載入字幕編輯器",
-	"mwe-timedtext-search": "搜索剪輯",
-	"mwe-timedtext-layout": "布局",
-	"mwe-timedtext-layout-ontop": "於視頻上方",
-	"mwe-timedtext-layout-below": "視頻下方",
 	"mwe-timedtext-layout-off": "隱藏字幕",
-	"mwe-timedtext-loading-text": "正在讀取文本……",
+	"mwe-timedtext-loading-text": "正在讀取文字……",
 	"mwe-timedtext-textcat-cc": "標題",
 	"mwe-timedtext-textcat-sub": "副標題",
 	"mwe-timedtext-textcat-tad": "音訊說明",
@@ -35,12 +22,8 @@
 	"mwe-timedtext-textcat-lrc": "歌詞",
 	"mwe-timedtext-textcat-lin": "語言標記",
 	"mwe-timedtext-textcat-cue": "暗點",
+	"mwe-timedtext-no-subs": "沒有文本軌道",
 	"mwe-timedtext-language-subtitles-for-clip": "片段的$1字幕文件：$2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "沒有找到片段的$1字幕文件：$2",
-	"mwe-timedtext-request-subs": "請求字幕",
-	"mwe-timedtext-no-subs": "沒有文本軌道",
-	"mwe-timedtext-request-subs-desc": "添加此視頻的字幕請求",
-	"mwe-timedtext-request-subs-done": "已添加此視頻的字幕請求。[$1 查看所有字幕請求]",
-	"mwe-timedtext-request-subs-fail": "未能添加字幕請求。您登錄了嗎？",
-	"mwe-timedtext-request-already-done": "已請求此視頻的字幕。[$1 查看所有字幕請求]"
+	"mwe-timedtext-upload-timed-text": "添加字幕"
 }
