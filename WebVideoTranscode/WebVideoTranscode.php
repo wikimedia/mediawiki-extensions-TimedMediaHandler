@@ -30,17 +30,20 @@ class WebVideoTranscode {
 	const ENC_OGV_360P = '360p.ogv';
 	const ENC_OGV_480P = '480p.ogv';
 	const ENC_OGV_720P = '720p.ogv';
+	const ENC_OGV_1080P = '1080p.ogv';
 
 	// WebM profiles:
 	const ENC_WEBM_160P = '160p.webm';
 	const ENC_WEBM_360P = '360p.webm';
 	const ENC_WEBM_480P = '480p.webm';
 	const ENC_WEBM_720P = '720p.webm';
+	const ENC_WEBM_1080P = '1080p.webm';
 
 	// mp4 profiles:
 	const ENC_H264_320P = '320p.mp4';
 	const ENC_H264_480P = '480p.mp4';
 	const ENC_H264_720P = '720p.mp4';
+	const ENC_H264_1080P = '1080p.mp4';
 
 	const ENC_OGG_VORBIS = 'ogg';
 	const ENC_OGG_OPUS = 'opus';
@@ -114,6 +117,17 @@ class WebVideoTranscode {
 				'type'                       => 'video/ogg; codecs="theora, vorbis"',
 			),
 
+		WebVideoTranscode::ENC_OGV_1080P =>
+			array(
+				'maxSize'                    => '1920x1080',
+				'videoQuality'               => 6,
+				'audioQuality'               => 3,
+				'noUpscaling'                => 'true',
+				'keyframeInterval'           => '128',
+				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
+			),
+
 		// WebM transcode:
 		WebVideoTranscode::ENC_WEBM_160P =>
 			array(
@@ -164,6 +178,15 @@ class WebVideoTranscode {
 				'videoCodec'                 => 'vp8',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
+		WebVideoTranscode::ENC_WEBM_1080P =>
+			 array(
+				'maxSize'                    => '1920x1080',
+				'videoQuality'               => 7,
+				'audioQuality'               => 3,
+				'noUpscaling'                => 'true',
+				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
+			),
 
 		// Losly defined per PCF guide to mp4 profiles:
 		// https://develop.participatoryculture.org/index.php/ConversionMatrix
@@ -200,6 +223,18 @@ class WebVideoTranscode {
 				'videoCodec' => 'h264',
 				'preset' => '720p',
 				'videoBitrate' => '2500k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '128k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			),
+
+		WebVideoTranscode::ENC_H264_1080P =>
+			array(
+				'maxSize' => '1920x1080',
+				'videoCodec' => 'h264',
+				'preset' => '1080p',
+				'videoBitrate' => '5000k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '128k',
