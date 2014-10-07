@@ -156,7 +156,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
 		WebVideoTranscode::ENC_WEBM_720P =>
-			 array(
+			array(
 				'maxSize'                    => '1280x720',
 				'videoQuality'               => 7,
 				'audioQuality'               => 3,
@@ -283,8 +283,9 @@ class WebVideoTranscode {
 	/**
 	 * Get url for a transcode.
 	 *
-	 * @param $file
-	 * @param $suffix Transcode key
+	 * @param $file File
+	 * @param $suffix string Transcode key
+	 * @return string
 	 */
 	static public function getTranscodedUrlForFile( $file, $suffix = '' ) {
 		return $file->getTranscodedUrl( self::getTranscodeFileBaseName( $file, $suffix ) );
@@ -785,8 +786,6 @@ class WebVideoTranscode {
 	 * @return array
 	 */
 	static public function getDerivativeSourceAttributes($file, $transcodeKey, $options = array() ){
-		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
-
 		$fileName = $file->getTitle()->getDbKey();
 
 		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
@@ -976,13 +975,12 @@ class WebVideoTranscode {
 	 */
 	public static function getMaxSize( $targetMaxSize ){
 		$maxSize = array();
-		$targetMaxSize = explode('x', $targetMaxSize);
-		if (count($targetMaxSize) == 1) {
-			$maxSize['width'] = intval($targetMaxSize[0]);
-			$maxSize['height'] = intval($targetMaxSize[0]);
+		$targetMaxSize = explode( 'x', $targetMaxSize );
+		$maxSize['width'] = intval( $targetMaxSize[0] );
+		if ( count( $targetMaxSize ) == 1 ) {
+			$maxSize['height'] = intval( $targetMaxSize[0] );
 		} else {
-			$maxSize['width'] = intval($targetMaxSize[0]);
-			$maxSize['height'] = intval($targetMaxSize[1]);
+			$maxSize['height'] = intval( $targetMaxSize[1] );
 		}
 		// check for zero size ( audio )
 		if( $maxSize['width'] === 0 || $maxSize['height'] == 0 ){
