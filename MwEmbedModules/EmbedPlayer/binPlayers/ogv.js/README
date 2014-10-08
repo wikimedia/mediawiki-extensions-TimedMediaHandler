@@ -1,0 +1,13 @@
+Source & credits for ogv.js wrapper: https://github.com/brion/ogv.js
+
+Contains libogg, libvorbis, libtheora, and libopus -- see COPYING-*.txt
+
+
+ogv.js contains the OgvJsPlayer wrapper class and some dependencies.
+The low-level codec payload lives in ogv-codec.js and is loaded on demand.
+
+Highly recommended to enable gzip compression on the web server for .js files,
+as it cuts the transfer size down for the codec down to about 1/4.
+
+dynamicaudio.swf is a thin linear PCM audio output shim used by ogv.js when the
+W3C Web Audio API is not available, as on IE 10/11.
