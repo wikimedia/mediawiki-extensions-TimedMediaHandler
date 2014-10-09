@@ -6,7 +6,8 @@
 			"Joseph",
 			"Mach",
 			"Runningfridgesrule",
-			"Srhat"
+			"Srhat",
+			"Sayginer"
 		]
 	},
 	"timedmedia-desc": "Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği",
@@ -60,6 +61,8 @@
 	"timedmedia-source-file-desc": "Orijinal $1 dosyası, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Orijinal $1 dosyası ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg videosu düşük bant genişliği (160P)",
+	"timedmedia-derivative-desc-1080p.webm": "Full HD indirilebilir WebM (1080P)",
+	"timedmedia-derivative-desc-1080p.mp4": "Full HD kalitede MP4 (1080P)",
 	"timedmedia-subtitle-new-go": "Git",
 	"timedmedia-videos": "{{PLURAL:$1|$1 video|$1 video}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg videosu|$1 Ogg videosu}}",
