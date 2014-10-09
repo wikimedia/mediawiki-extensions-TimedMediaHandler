@@ -380,7 +380,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		$mediaAttr = array(
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
-			'style' => "width:{$width};height:{$height}",
+			'style' => "width:{$width}",
 			// Get the correct size:
 			'poster' => $posterUrl,
 
@@ -391,6 +391,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// tell browser to not load the video before
 			'preload'=>'none',
 		);
+
+		if ( $this->isVideo ) {
+			$mediaAttr['style'] .= "height:{$height}";
+		}
+
 		if( $autoPlay === true ){
 			$mediaAttr['autoplay'] = 'true';
 		}
