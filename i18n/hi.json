@@ -3,7 +3,8 @@
 		"authors": [
 			"Kaustubh",
 			"Shyam",
-			"Siddhartha Ghai"
+			"Siddhartha Ghai",
+			"संजीव कुमार"
 		]
 	},
 	"timedmedia-desc": "ऑग थियोरा और वॉर्बिस फ़ाईल्सके लिये चालक, जावास्क्रीप्ट प्लेयर के साथ",
@@ -19,6 +20,9 @@
 	"timedmedia-dismiss": "बंद करें",
 	"timedmedia-download": "फ़ाईल डाउनलोड करें",
 	"timedmedia-desc-link": "इस फ़ाईलके बारे में",
+	"timedmedia-derivative-desc-1080p.ogv": "पूर्ण उच्च परिभाषा डाउनलोड करने योग्य ओजीजी वीडियो (१०८०पी)",
+	"timedmedia-derivative-desc-1080p.webm": "पूर्ण उच्च परिभाषा के साथ डाउनलोड करने योग्य वेब-एम (१०८०पी)",
+	"timedmedia-derivative-desc-1080p.mp4": "पूर्ण उच्च परिभाषा गुणवता एमपी४ (१०८०पी)",
 	"timedmedia-audios": "{{PLURAL:$1|$1 ऑडियो फ़ाइल|$1 ऑडियो फ़ाइलें}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ऑडियो फ़ाइल|$1 Ogg ऑडियो फ़ाइलें}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ऑडियो फ़ाइल|$1 FLAC ऑडियो फ़ाइलें}}",
