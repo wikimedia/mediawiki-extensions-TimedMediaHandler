@@ -4,7 +4,8 @@
 			"Eduardo.mps",
 			"Giro720",
 			"Luckas",
-			"Opraco"
+			"Opraco",
+			"Guilhermemau"
 		]
 	},
 	"timedmedia-desc": "Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
@@ -30,6 +31,8 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 segundo|$1 segundos}}",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Fonte $1",
+	"timedmedia-derivative-desc-1080p.webm": "WebM para download de Full HD (1080p)",
+	"timedmedia-derivative-desc-1080p.mp4": "Qualidade total do HD MP4 (1080 P)",
 	"timedmedia-subtitle-new-go": "Ir",
 	"timedmedia-file": "Arquivo"
 }

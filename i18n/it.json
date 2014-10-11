@@ -7,7 +7,8 @@
 			"Darth Kule",
 			"F. Cosoleto",
 			"Gianfranco",
-			"Raoli"
+			"Raoli",
+			"Peg60"
 		]
 	},
 	"timedmedia-desc": "Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt",
@@ -75,7 +76,7 @@
 	"timedmedia-derivative-desc-320p.mp4": "MP4 per dispositivi compatibili (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "MP4 trasmettibile in streaming via Web (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "MP4 in qualità HD (720P)",
-	"timedmedia-derivative-desc-1080p.mp4": "MP4 qualità Full HD (1080P)",
+	"timedmedia-derivative-desc-1080p.mp4": "MP4 di qualità Full HD (1080P)",
 	"timedmedia-subtitle-new": "Creare una nuova traduzione o modificare esistenti",
 	"timedmedia-subtitle-new-desc": "Seleziona la lingua e premi il pulsante '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Vai",
