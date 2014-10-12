@@ -3,7 +3,8 @@
 		"authors": [
 			"McDutchie",
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"Romaine"
 		]
 	},
 	"timedmedia-desc": "Handelt audio, video en ondertitels af met ondersteuning voor WebM, Ogg Theora, Vorbis en srt",
@@ -67,6 +68,7 @@
 	"timedmedia-derivative-desc-480p.ogv": "Te webstreamen Ogg video (480P)",
 	"timedmedia-derivative-720p.ogv": "Ogg 720P",
 	"timedmedia-derivative-desc-720p.ogv": "Hoge kwaliteit downloadbare Ogg video (720P)",
+	"timedmedia-derivative-desc-1080p.ogv": "Full HD downloadbare Ogg video (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "Web streamable WebM (160P)",
 	"timedmedia-derivative-360p.webm": "WebM 360P",
 	"timedmedia-derivative-desc-360p.webm": "Te webstreamen WebM (360P)",
@@ -74,9 +76,11 @@
 	"timedmedia-derivative-desc-480p.webm": "Te webstreamen WebM (480P)",
 	"timedmedia-derivative-720p.webm": "WebM 720P",
 	"timedmedia-derivative-desc-720p.webm": "Hoge kwaliteit downloadbare WebM (720P)",
+	"timedmedia-derivative-desc-1080p.webm": "Full HD downloadbare WebM (1080P)",
 	"timedmedia-derivative-desc-320p.mp4": "Apparaatvriendelijke MP4 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "Te webstreamen MP4 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD-kwaliteit MP4 (720P)",
+	"timedmedia-derivative-desc-1080p.mp4": "Full HD-kwaliteit MP4 (1080P)",
 	"timedmedia-subtitle-new": "Nieuw vertaling maken of bestaande bewerken",
 	"timedmedia-subtitle-new-desc": "Selecteer een taal en klik op de knop '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "OK",

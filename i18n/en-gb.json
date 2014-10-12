@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Captaindogfish"
 		]
 	},
-	"timedmedia-ogg-long-no-streams": "Ogg media file. Warning: None of the codecs used in this file are recognised."
+	"timedmedia-ogg-long-no-streams": "Ogg media file. Warning: None of the codecs used in this file are recognised.",
+	"timedmedia-derivative-desc-1080p.ogv": "Full HD downloadable Ogg video (1080P)",
+	"timedmedia-derivative-desc-1080p.webm": "Full HD downloadable WebM (1080P)",
+	"timedmedia-derivative-desc-1080p.mp4": "Full HD quality MP4 (1080P)"
 }

@@ -61,6 +61,7 @@
 	"timedmedia-source-file-desc": "Orijinal $1 dosyası, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Orijinal $1 dosyası ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg videosu düşük bant genişliği (160P)",
+	"timedmedia-derivative-desc-1080p.ogv": "Full HD indirilebilir Ogg video (1080P)",
 	"timedmedia-derivative-desc-1080p.webm": "Full HD indirilebilir WebM (1080P)",
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD kalitede MP4 (1080P)",
 	"timedmedia-subtitle-new-go": "Git",
