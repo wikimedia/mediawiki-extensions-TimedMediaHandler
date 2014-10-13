@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"නන්දිමිතුරු",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Susith Chandira Gts"
 		]
 	},
 	"timedmedia-desc": "Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ",
@@ -52,13 +53,16 @@
 	"timedmedia-derivative-desc-360p.ogv": "ජාල ශ්‍රෝතමය Ogg වීඩියෝව (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "ජාල ශ්‍රෝතමය Ogg වීඩියෝව (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "උසස් ගුණත්වයේ බාගතහැකි Ogg වීඩියෝව (720P)",
+	"timedmedia-derivative-desc-1080p.ogv": "බාගත කළහැකි Full HD Ogg වීඩියෝ පට (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "ජාල ශ්‍රෝතමය WebM (160P)",
 	"timedmedia-derivative-desc-360p.webm": "ජාල ශ්‍රෝතමය WebM (360P)",
 	"timedmedia-derivative-desc-480p.webm": "ජාල ශ්‍රෝතමය WebM (480P)",
 	"timedmedia-derivative-desc-720p.webm": "උසස් ගුණත්වයේ බාගතහැකි WebM (720P)",
+	"timedmedia-derivative-desc-1080p.webm": "බාගත කළහැකි Full HD WebM (1080P)",
 	"timedmedia-derivative-desc-320p.mp4": "උපාංග-හිතකාමී MP4 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "ජාල ශ්‍රෝතමය MP4 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD ගුණත්වයේ MP4 (720P)",
+	"timedmedia-derivative-desc-1080p.mp4": "Full HD තත්වයේ MP4 (1080P)",
 	"timedmedia-subtitle-new": "නව පරිවර්තනයක් තනන්න හෝ පවත්නා එකක් සංස්කරණය කරන්න",
 	"timedmedia-subtitle-new-go": "යන්න",
 	"timedmedia-subtitle-language": "$1 ($2) උපශීර්ෂ",
