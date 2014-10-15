@@ -80,5 +80,11 @@
 	"mwe-embedplayer-video-3gp": "3ജി.പി. ചലച്ചിത്രം",
 	"mwe-embedplayer-video-mpeg": "എംപെഗ് ചലച്ചിത്രം",
 	"mwe-embedplayer-video-msvideo": "എ.വി.ഐ. ചലച്ചിത്രം",
-	"mwe-embedplayer-missing-source": "സ്രോതസ്സ് ചലച്ചിത്രം കണ്ടെത്താനായില്ല"
+	"mwe-embedplayer-missing-source": "സ്രോതസ്സ് ചലച്ചിത്രം കണ്ടെത്താനായില്ല",
+	"mwe-embedplayer-vlcapp-intro": "ഈ സൈറ്റിൽ നിന്നുമുള്ള ചലച്ചിത്രങ്ങൾ ഐഫോണിലോ ഐപാഡിലോ കാണുന്നതിനായി സൗജന്യ $1 ആവശ്യമാണ്.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "വി.എൽ.സി. ആപ്",
+	"mwe-embedplayer-vlcapp-downloadapp": "ആപ് സ്റ്റോറിൽ നിന്നും വി.എൽ.സി. ആപ് ഡൗൺലോഡ് ചെയ്യുക",
+	"mwe-embedplayer-vlcapp-openvideo": "ഈ ചലച്ചിത്രം വി.എൽ.സി. ആപിൽ തുറക്കുക",
+	"mwe-embedplayer-vlcapp-downloadvideo": "ചലച്ചിത്രം ഡൗൺലോഡ് ചെയ്യുക",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "ഈ സൈറ്റിൽ ചലച്ചിത്രങ്ങൾ പ്രദർശിപ്പിക്കാൻ, സൗജന്യ വി.എൽ.സി. ആപ് ആവശ്യമാണ്. ഇൻസ്റ്റോൾ ചെയ്യണോ?"
 }

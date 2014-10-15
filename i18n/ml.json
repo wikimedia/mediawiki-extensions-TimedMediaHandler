@@ -68,6 +68,7 @@
 	"timedmedia-derivative-desc-480p.ogv": "വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (480ബി)",
 	"timedmedia-derivative-720p.ogv": "ഓഗ് 720പി",
 	"timedmedia-derivative-desc-720p.ogv": "ഉന്നത ഗുണമേന്മയിൽ ഡൗൺലോഡ് ചെയ്യാവുന്ന ഓഗ് ചലച്ചിത്രം (720ബി)",
+	"timedmedia-derivative-desc-1080p.ogv": "പൂർണ്ണ എച്ച്.ഡി. ഡൗൺലോഡ് ചെയ്യാവുന്ന ഓഗ് ചലച്ചിത്രം (1080 പി)",
 	"timedmedia-derivative-160p.webm": "വെബ്എം 160പി",
 	"timedmedia-derivative-desc-160p.webm": "വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (160ബി)",
 	"timedmedia-derivative-360p.webm": "വെബ്എം 360പി",
@@ -76,9 +77,11 @@
 	"timedmedia-derivative-desc-480p.webm": "വെബിലൂടെ എടുക്കാവുന്ന വെബ്എം (360ബി)",
 	"timedmedia-derivative-720p.webm": "വെബ്എം 720പി",
 	"timedmedia-derivative-desc-720p.webm": "ഉന്നത ഗുണമേന്മയിൽ ഡൗൺലോഡ് ചെയ്യാവുന്ന വെബ്എം (720ബി)",
+	"timedmedia-derivative-desc-1080p.webm": "പൂർണ്ണ എച്ച്.ഡി. ഡൗൺലോഡ് ചെയ്യാവുന്ന വെബ്എം (1080 പി)",
 	"timedmedia-derivative-desc-320p.mp4": "ഉപകരണ-സുഹൃദ് എംപി4 (320ബി)",
 	"timedmedia-derivative-desc-480p.mp4": "വെബിലൂടെ എടുക്കാവുന്ന എംപി4 (480ബി)",
 	"timedmedia-derivative-desc-720p.mp4": "എച്ച്.ഡി. ഗുണമേന്മയുള്ള എംപി4 (720ബി)",
+	"timedmedia-derivative-desc-1080p.mp4": "പൂർണ്ണ എച്ച്.ഡി. ഡൗൺലോഡ് ചെയ്യാവുന്ന എംപി4 (1080 പി)",
 	"timedmedia-derivative-ogg": "ഓഗ് വോർബിസ്",
 	"timedmedia-derivative-desc-ogg": "ഓഗ് വോർബിസ്",
 	"timedmedia-derivative-opus": "ഓപസ്",
@@ -111,5 +114,8 @@
 	"right-transcode-reset": "പുനഃക്രമീകരണം പരാജയപ്പെട്ടു അല്ലെങ്കിൽ ട്രാൻസ്കോഡ് ചെയ്ത ചലച്ചിത്രങ്ങൾ ജോബ് ക്യൂവിലേയ്ക്ക് വീണ്ടും ചേർത്തു",
 	"right-transcode-status": "[[Special:TimedMediaHandler|ഇപ്പോഴത്തെ ട്രാൻസ്കോഡ് പ്രവർത്തനത്തിന്റെ വിവരങ്ങൾ]] കാണുക",
 	"action-transcode-status": "ഇപ്പോഴത്തെ ട്രാൻസ്കോഡിങ് സ്ഥിതി കാണുക",
-	"orphanedtimedtext-unsupported": "മൈഎസ്ക്യുഎൽ ഡേറ്റാബേസുകളെ മാത്രമേ ഈ പ്രത്യേകതാൾ പിന്തുണയ്ക്കുന്നുള്ളു."
+	"orphanedtimedtext": "ഉപയോഗിക്കപ്പെടാത്ത സമയാനുസൃതയെഴുത്ത് താളുകൾ",
+	"orphanedtimedtext-summary": "ബന്ധപ്പെട്ട പ്രമാണങ്ങൾ ഇല്ലാത്ത [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] താളുകളുടെ പട്ടിക.",
+	"orphanedtimedtext-unsupported": "മൈഎസ്ക്യുഎൽ ഡേറ്റാബേസുകളെ മാത്രമേ ഈ പ്രത്യേകതാൾ പിന്തുണയ്ക്കുന്നുള്ളു.",
+	"orphanedtimedtext-notimedtext": "സമയാനുസൃതയെഴുത്ത് ഈ വിക്കിയിൽ സജ്ജമാക്കിയിട്ടില്ല."
 }

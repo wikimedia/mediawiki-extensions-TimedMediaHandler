@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bonevarluri"
+			"Bonevarluri",
+			"Mogoeilor"
 		]
 	},
 	"timedmedia-ogg-short-audio": "جانیا دنگ اوگ $1،$2",
 	"timedmedia-wav-pcm-required": "شما فقط تونیت پی سی ام نه سوار بکید",
+	"timedmedia-more": "بیشتر....",
+	"timedmedia-dismiss": "بسن",
 	"timedmedia-download": "گرتن جانیا",
 	"timedmedia-desc-link": "دباره ای جانیا",
 	"timedmedia-percent-done": "د حدود $1% انجوم بی",
