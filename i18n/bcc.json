@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mostafadaneshvar"
+			"Mostafadaneshvar",
+			"Baloch Afghanistan"
 		]
 	},
 	"timedmedia-desc": "دسگیره په فایلان Ogg Theora و Vorbis, گون پخش کنوک جاوا اسکرسیپت",
@@ -13,8 +14,11 @@
 	"timedmedia-ogg-long-multiplexed": "اوجی جی چند دابی فایل صوت/تصویر, $1, طول $2, $4×$5 پیکسل, $3 کل",
 	"timedmedia-ogg-long-general": "اوجی جی فایل مدیا, طول $2, $3",
 	"timedmedia-ogg-long-error": "نامعتبرین فایل اوجی جی: $1",
-	"timedmedia-more": "گیشتر...",
-	"timedmedia-dismiss": "بندگ",
-	"timedmedia-download": "ایرگیزگ فایل",
-	"timedmedia-desc-link": "ای فایل باره"
+	"timedmedia-more": "گیشتیر...",
+	"timedmedia-dismiss": "بستین",
+	"timedmedia-download": "ئیر کورتین پایلی",
+	"timedmedia-desc-link": "ای فایل باره",
+	"timedmedia-subtitle-new-go": "برا",
+	"orphanedtimedtext": "یتیم TimedText دیمان",
+	"orphanedtimedtext-summary": "ها دیمانی لیست که [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] متناظرین پایل ندارنت ."
 }
