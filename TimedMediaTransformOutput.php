@@ -393,7 +393,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		);
 
 		if ( $this->isVideo ) {
-			$mediaAttr['style'] .= "height:{$height}";
+			$mediaAttr['style'] .= ";height:{$height}";
 		}
 
 		if( $autoPlay === true ){
