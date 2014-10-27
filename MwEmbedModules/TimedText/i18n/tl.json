@@ -4,21 +4,7 @@
 			"AnakngAraw"
 		]
 	},
-	"mwe-timedtext-editor": "Inoorasang patnugot ng teksto",
-	"mwe-timedtext-stage-transcribe": "Ilapat upang mabasa",
-	"mwe-timedtext-stage-sync": "Isabay",
-	"mwe-timedtext-stage-translate": "Isalinwika",
-	"mwe-timedtext-stage-upload": "Ikargang paitaas mula sa katutubong talaksan",
-	"mwe-timedtext-select-language": "Piliin ang wika",
-	"mwe-timedtext-file-language": "Wika ng talaksan ng kabahaging pamagat",
 	"mwe-timedtext-back-btn": "Bumalik",
-	"mwe-timedtext-choose-text": "Pumili ng teksto",
-	"mwe-timedtext-upload-timed-text": "Magdagdag ng kabahaging mga pamagat",
-	"mwe-timedtext-loading-text-edit": "Ikinakarga ang patnugot ng inoorasang teksto",
-	"mwe-timedtext-search": "Maghanap ng putol",
-	"mwe-timedtext-layout": "Kaayusan",
-	"mwe-timedtext-layout-ontop": "Sa ibabaw ng bidyo",
-	"mwe-timedtext-layout-below": "Sa ilalim ng bidyo",
 	"mwe-timedtext-layout-off": "Itago ang kabahaging mga pamagat",
 	"mwe-timedtext-loading-text": "Ikinakarga ang teksto ...",
 	"mwe-timedtext-key-language": "$1, $2",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Titik ng awit",
 	"mwe-timedtext-textcat-lin": "Markang-pantaas ng lingguwistika",
 	"mwe-timedtext-textcat-cue": "Mga tuldok ng pahiwatig",
+	"mwe-timedtext-no-subs": "Walang makukuhang mga bakas ng teksto",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 kabahaging mga pamagat para sa putol na: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Walang natagpuang $1 kabahaging mga pamagat para sa putol na: $2",
-	"mwe-timedtext-request-subs": "Humiling ng sipi ng salin",
-	"mwe-timedtext-no-subs": "Walang makukuhang mga bakas ng teksto",
-	"mwe-timedtext-request-subs-desc": "Magdagdag ng isang kahilingan para sa talaksang ito ng bidyong upang maisulat",
-	"mwe-timedtext-request-subs-done": "Naidagdag ang kahilingan ng transkripsiyon. [$1 Tingnan ang lahat ng mga hiling ng pagpapasulat]",
-	"mwe-timedtext-request-subs-fail": "Nabigo sa pagdaragdag ng kahilingan ng pagpapasulat. Nakalagda ka ba?",
-	"mwe-timedtext-request-already-done": "Nahiling na ang isang transkripsiyon ng bidyong ito. [$1 Tingnan ang lahat ng mga hiling ng pagpapasulat]"
+	"mwe-timedtext-upload-timed-text": "Magdagdag ng kabahaging mga pamagat"
 }

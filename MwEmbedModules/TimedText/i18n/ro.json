@@ -5,21 +5,7 @@
 			"Stelistcristi"
 		]
 	},
-	"mwe-timedtext-editor": "Editor de subtitrare sincronizată",
-	"mwe-timedtext-stage-transcribe": "Transcriere",
-	"mwe-timedtext-stage-sync": "Sincronizare",
-	"mwe-timedtext-stage-translate": "Traducere",
-	"mwe-timedtext-stage-upload": "Încărcare dintr-un fișier local",
-	"mwe-timedtext-select-language": "Selectare limbă",
-	"mwe-timedtext-file-language": "Limba fișierului de subtitrare",
 	"mwe-timedtext-back-btn": "Înapoi",
-	"mwe-timedtext-choose-text": "Alege textul",
-	"mwe-timedtext-upload-timed-text": "Adaugă subtitrări",
-	"mwe-timedtext-loading-text-edit": "Se încarcă editorul de subtitrare sincronizată",
-	"mwe-timedtext-search": "Caută un clip",
-	"mwe-timedtext-layout": "Aspect",
-	"mwe-timedtext-layout-ontop": "În partea de sus a videoclipului",
-	"mwe-timedtext-layout-below": "În partea de jos a videoclipului",
 	"mwe-timedtext-layout-off": "Ascunde subtitrările",
 	"mwe-timedtext-loading-text": "Se încarcă textul...",
 	"mwe-timedtext-textcat-cc": "Legende",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Versuri",
 	"mwe-timedtext-textcat-lin": "Etichete lingvistice",
 	"mwe-timedtext-textcat-cue": "Puncte de tac",
+	"mwe-timedtext-no-subs": "Niciun text de piesă disponibil",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtitrare în limba $1 pentru clip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Nu s-a găsit nicio subtitrare în limba $1 pentru clip: $2",
-	"mwe-timedtext-request-subs": "Cere o transcripție",
-	"mwe-timedtext-no-subs": "Niciun text de piesă disponibil",
-	"mwe-timedtext-request-subs-desc": "Adăugați o cerere de transcripție pentru acest fișier video",
-	"mwe-timedtext-request-subs-done": "Cerere de transcripție adăugată. [$1 Vezi toate cererile de transcripție]",
-	"mwe-timedtext-request-subs-fail": "Nu s-a putut adăuga cererea de transcripție. Sunteți autentificat?",
-	"mwe-timedtext-request-already-done": "O transcripție pentru acest videoclip a fost deja solicitată. [$1 Vezi toate cererile de transcripție]"
+	"mwe-timedtext-upload-timed-text": "Adaugă subtitrări"
 }

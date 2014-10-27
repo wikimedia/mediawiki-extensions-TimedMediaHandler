@@ -4,21 +4,7 @@
 			"Anakmalaysia"
 		]
 	},
-	"mwe-timedtext-editor": "Editor sari kata bermasa",
-	"mwe-timedtext-stage-transcribe": "Transkripkan",
-	"mwe-timedtext-stage-sync": "Segerakkan",
-	"mwe-timedtext-stage-translate": "Terjemah",
-	"mwe-timedtext-stage-upload": "Muat naik dari fail tempatan",
-	"mwe-timedtext-select-language": "Pilih bahasa",
-	"mwe-timedtext-file-language": "Bahasa fail sarikata",
 	"mwe-timedtext-back-btn": "Kembali",
-	"mwe-timedtext-choose-text": "Pilih teks",
-	"mwe-timedtext-upload-timed-text": "Letak sari kata",
-	"mwe-timedtext-loading-text-edit": "Editor sari kata sedang dimuatkan",
-	"mwe-timedtext-search": "Cari klip",
-	"mwe-timedtext-layout": "Susun atur",
-	"mwe-timedtext-layout-ontop": "Di atas video",
-	"mwe-timedtext-layout-below": "Di bawah video",
 	"mwe-timedtext-layout-off": "Sorokkan sari kata",
 	"mwe-timedtext-loading-text": "Teks sedang dimuatkan...",
 	"mwe-timedtext-textcat-cc": "Kapsyen",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "Lirik",
 	"mwe-timedtext-textcat-lin": "Penanda linguistik",
 	"mwe-timedtext-textcat-cue": "Titik kiu",
+	"mwe-timedtext-no-subs": "Tidak terdapat runut teks",
 	"mwe-timedtext-language-subtitles-for-clip": "Sari kata $1 untuk klip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Tidak terdapat sari kata $1 untuk klip: $2",
-	"mwe-timedtext-request-subs": "Mohon transkripsi",
-	"mwe-timedtext-no-subs": "Tidak terdapat runut teks",
-	"mwe-timedtext-request-subs-desc": "Mohon transkripsi untuk fail video ini",
-	"mwe-timedtext-request-subs-done": "Permohonan transkripsi ditambah. [$1 Lihat semua permohonan transkripsi]",
-	"mwe-timedtext-request-subs-fail": "Permohonan transkripsi gagal ditambah. Sudahkah anda log masuk?",
-	"mwe-timedtext-request-already-done": "Sudah dimohon transkripsi untuk video ini. [$1 Lihat semua permohonan transkripsi]"
+	"mwe-timedtext-upload-timed-text": "Letak sari kata"
 }

@@ -5,19 +5,7 @@
 			"Soued031"
 		]
 	},
-	"mwe-timedtext-stage-transcribe": "Ëmschreiwen",
-	"mwe-timedtext-stage-sync": "Synchroniséieren",
-	"mwe-timedtext-stage-translate": "Iwwersetzen",
-	"mwe-timedtext-stage-upload": "E lokale Fichier eroplueden",
-	"mwe-timedtext-select-language": "Sprooch eraussichen",
-	"mwe-timedtext-file-language": "Sprooch vum Fichier mat den Ënnertitelen",
 	"mwe-timedtext-back-btn": "Zréck",
-	"mwe-timedtext-choose-text": "Text eraussichen",
-	"mwe-timedtext-upload-timed-text": "Ënnertitelen derbäisetzen",
-	"mwe-timedtext-search": "Clip sichen",
-	"mwe-timedtext-layout": "Layout",
-	"mwe-timedtext-layout-ontop": "Iwwer dem Video",
-	"mwe-timedtext-layout-below": "Ënner dem Video",
 	"mwe-timedtext-layout-off": "Ënnertitele verstoppen",
 	"mwe-timedtext-loading-text": "Text gëtt gelueden ...",
 	"mwe-timedtext-textcat-sub": "Ënnertitelen",
@@ -30,5 +18,6 @@
 	"mwe-timedtext-textcat-lin": "Linguistesch Markéierung",
 	"mwe-timedtext-textcat-cue": "Referenz-Punkten",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 Ënnertitele fir de Clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Keng $1 Ënnertitele goufe fonnt fir de Clip: $2"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Keng $1 Ënnertitele goufe fonnt fir de Clip: $2",
+	"mwe-timedtext-upload-timed-text": "Ënnertitelen derbäisetzen"
 }

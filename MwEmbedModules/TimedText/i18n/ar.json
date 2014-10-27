@@ -5,20 +5,10 @@
 			"روخو"
 		]
 	},
-	"mwe-timedtext-stage-transcribe": "دون",
-	"mwe-timedtext-stage-sync": "تزامن",
-	"mwe-timedtext-stage-translate": "ترجمة",
-	"mwe-timedtext-stage-upload": "رفع من ملف محلي",
-	"mwe-timedtext-select-language": "اختر اللغة",
-	"mwe-timedtext-file-language": "عنوان ملف اللغة الفرعي",
 	"mwe-timedtext-back-btn": "رجوع",
-	"mwe-timedtext-choose-text": "اختر نص",
-	"mwe-timedtext-upload-timed-text": "إضافة الترجمات",
-	"mwe-timedtext-search": "البحث عن مقطع",
-	"mwe-timedtext-layout": "مخرجات",
-	"mwe-timedtext-layout-ontop": "في أعلى الفيديو",
 	"mwe-timedtext-layout-off": "إخفاء الترجمات",
 	"mwe-timedtext-loading-text": "جاري تحميل النص...",
 	"mwe-timedtext-textcat-cc": "نصوص توضيحية",
-	"mwe-timedtext-textcat-cue": "نقاط تلميح"
+	"mwe-timedtext-textcat-cue": "نقاط تلميح",
+	"mwe-timedtext-upload-timed-text": "إضافة الترجمات"
 }

@@ -4,21 +4,7 @@
 			"Toliño"
 		]
 	},
-	"mwe-timedtext-editor": "Editor de textos sincronizados",
-	"mwe-timedtext-stage-transcribe": "Transcribir",
-	"mwe-timedtext-stage-sync": "Sincronizar",
-	"mwe-timedtext-stage-translate": "Traducir",
-	"mwe-timedtext-stage-upload": "Cargar un ficheiro local",
-	"mwe-timedtext-select-language": "Seleccionar a lingua",
-	"mwe-timedtext-file-language": "Lingua do ficheiro de subtítulos",
 	"mwe-timedtext-back-btn": "Volver",
-	"mwe-timedtext-choose-text": "Escolla o texto",
-	"mwe-timedtext-upload-timed-text": "Engadir subtítulos",
-	"mwe-timedtext-loading-text-edit": "Cargando o editor de texto sincronizado",
-	"mwe-timedtext-search": "Buscar un vídeo",
-	"mwe-timedtext-layout": "Disposición",
-	"mwe-timedtext-layout-ontop": "Na parte superior do vídeo",
-	"mwe-timedtext-layout-below": "Na parte inferior do vídeo",
 	"mwe-timedtext-layout-off": "Agochar os subtítulos",
 	"mwe-timedtext-loading-text": "Cargando o texto...",
 	"mwe-timedtext-textcat-cc": "Pés de foto",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "Letra",
 	"mwe-timedtext-textcat-lin": "Formato lingüístico",
 	"mwe-timedtext-textcat-cue": "Puntos de sinal",
+	"mwe-timedtext-no-subs": "Non hai pistas de texto dispoñibles",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtítulos en $1 para o vídeo: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Non se atoparon os subtítulos en $1 para o vídeo: $2",
-	"mwe-timedtext-request-subs": "Solicitar a transcrición",
-	"mwe-timedtext-no-subs": "Non hai pistas de texto dispoñibles",
-	"mwe-timedtext-request-subs-desc": "Engadir unha solicitude de transcrición deste ficheiro de vídeo",
-	"mwe-timedtext-request-subs-done": "Solicitude de transcrición engadida. [$1 Ollar todas as solicitudes]",
-	"mwe-timedtext-request-subs-fail": "Erro ao engadir a solicitude de transcrición. Accedeu ao sistema?",
-	"mwe-timedtext-request-already-done": "Xa se solicitou a transcrición deste vídeo. [$1 Ollar todas as solicitudes]"
+	"mwe-timedtext-upload-timed-text": "Engadir subtítulos"
 }

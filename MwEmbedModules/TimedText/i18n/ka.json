@@ -4,21 +4,7 @@
 			"David1010"
 		]
 	},
-	"mwe-timedtext-editor": "სინქრონიზირებული ტექსტის რედაქტირება",
-	"mwe-timedtext-stage-transcribe": "სტენოგრამა",
-	"mwe-timedtext-stage-sync": "სინქრონიზაცია",
-	"mwe-timedtext-stage-translate": "თარგმნა",
-	"mwe-timedtext-stage-upload": "ლოკალური ფაილებიდან ატვირთვა",
-	"mwe-timedtext-select-language": "აირჩიეთ ენა",
-	"mwe-timedtext-file-language": "სუბტიტრების ფაილის ენა",
 	"mwe-timedtext-back-btn": "უკან",
-	"mwe-timedtext-choose-text": "აირჩიეთ ტექსტი",
-	"mwe-timedtext-upload-timed-text": "სუბტიტრების დამატება",
-	"mwe-timedtext-loading-text-edit": "სინქრონიზირებული ტექსტის რედაქტორის ჩატვირთვა",
-	"mwe-timedtext-search": "კლიპის ძიება",
-	"mwe-timedtext-layout": "მდებარეობა",
-	"mwe-timedtext-layout-ontop": "ვიდეოს ზევით",
-	"mwe-timedtext-layout-below": "ვიდეოს ქვევით",
 	"mwe-timedtext-layout-off": "სუბტიტრების დამალვა",
 	"mwe-timedtext-loading-text": "იტვირთება ტექსტი ...",
 	"mwe-timedtext-textcat-cc": "წარწერები",
@@ -34,5 +20,5 @@
 	"mwe-timedtext-textcat-lin": "ლინგვისტური დანამატი",
 	"mwe-timedtext-textcat-cue": "ნიშნული წერტილები",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 სუბტიტრები კლიპისათვის: $2",
-	"mwe-timedtext-request-subs": "ტრანსკრიფციის მოთხოვნა"
+	"mwe-timedtext-upload-timed-text": "სუბტიტრების დამატება"
 }

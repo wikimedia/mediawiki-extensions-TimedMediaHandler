@@ -7,21 +7,7 @@
 			"Verdy p"
 		]
 	},
-	"mwe-timedtext-editor": "Éditeur de texte synchronisé",
-	"mwe-timedtext-stage-transcribe": "Transcrire",
-	"mwe-timedtext-stage-sync": "Synchroniser",
-	"mwe-timedtext-stage-translate": "Traduire",
-	"mwe-timedtext-stage-upload": "Téléverser un fichier local",
-	"mwe-timedtext-select-language": "Sélectionner la langue",
-	"mwe-timedtext-file-language": "Langue du fichier de sous-titres",
 	"mwe-timedtext-back-btn": "Arrière",
-	"mwe-timedtext-choose-text": "Choisissez le texte",
-	"mwe-timedtext-upload-timed-text": "Ajouter des sous-titres",
-	"mwe-timedtext-loading-text-edit": "Chargement de l'éditeur de texte synchronisé",
-	"mwe-timedtext-search": "Recherche un clip",
-	"mwe-timedtext-layout": "Disposition",
-	"mwe-timedtext-layout-ontop": "En haut de la vidéo",
-	"mwe-timedtext-layout-below": "En dessous de la vidéo",
 	"mwe-timedtext-layout-off": "Masquer les sous-titres",
 	"mwe-timedtext-loading-text": "Chargement du texte ...",
 	"mwe-timedtext-textcat-cc": "Légendes",
@@ -36,12 +22,8 @@
 	"mwe-timedtext-textcat-lrc": "Paroles",
 	"mwe-timedtext-textcat-lin": "Balisage linguistique",
 	"mwe-timedtext-textcat-cue": "Points de repère",
+	"mwe-timedtext-no-subs": "Aucun texte de piste disponible",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 sous-titres pour clip : $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
-	"mwe-timedtext-request-subs": "Demande de transcription",
-	"mwe-timedtext-no-subs": "Aucun texte de piste disponible",
-	"mwe-timedtext-request-subs-desc": "Ajouter une demande de transcription de ce fichier vidéo",
-	"mwe-timedtext-request-subs-done": "Demande de transcription ajoutée. [$1 Voir toutes demandes de transcription]",
-	"mwe-timedtext-request-subs-fail": "Impossible d'ajouter la demande de transcription. Êtes-vous connecté ?",
-	"mwe-timedtext-request-already-done": "Une transcription de cette vidéo a déjà été demandée. [$1 Voir toutes les demandes de transcription]"
+	"mwe-timedtext-upload-timed-text": "Ajouter des sous-titres"
 }

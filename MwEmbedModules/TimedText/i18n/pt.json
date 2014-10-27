@@ -8,21 +8,7 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"mwe-timedtext-editor": "Editor de legendas",
-	"mwe-timedtext-stage-transcribe": "Transcrever",
-	"mwe-timedtext-stage-sync": "Sincronizar",
-	"mwe-timedtext-stage-translate": "Traduzir",
-	"mwe-timedtext-stage-upload": "Carregar a partir de ficheiro local",
-	"mwe-timedtext-select-language": "Escolher o idioma",
-	"mwe-timedtext-file-language": "Idioma do ficheiro de legendas",
 	"mwe-timedtext-back-btn": "Voltar",
-	"mwe-timedtext-choose-text": "Escolher texto",
-	"mwe-timedtext-upload-timed-text": "Adicionar legendas",
-	"mwe-timedtext-loading-text-edit": "A carregar o editor de legendas",
-	"mwe-timedtext-search": "Procurar clipe",
-	"mwe-timedtext-layout": "Posição",
-	"mwe-timedtext-layout-ontop": "Acima do vídeo",
-	"mwe-timedtext-layout-below": "Abaixo do vídeo",
 	"mwe-timedtext-layout-off": "Ocultar legendas",
 	"mwe-timedtext-loading-text": "A carregar o texto ...",
 	"mwe-timedtext-textcat-cc": "Títulos",
@@ -37,12 +23,8 @@
 	"mwe-timedtext-textcat-lrc": "Letra",
 	"mwe-timedtext-textcat-lin": "Marcação linguística",
 	"mwe-timedtext-textcat-cue": "Pontos de entrada",
+	"mwe-timedtext-no-subs": "Não há nenhuma faixa de texto disponível",
 	"mwe-timedtext-language-subtitles-for-clip": "Legendas em $1 para o clipe: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Não foram encontradas legendas em $1 para o clipe: $2",
-	"mwe-timedtext-request-subs": "Pedir transcrição",
-	"mwe-timedtext-no-subs": "Não há nenhuma faixa de texto disponível",
-	"mwe-timedtext-request-subs-desc": "Adicionar um pedido para este ficheiro de vídeo ser transcrito",
-	"mwe-timedtext-request-subs-done": "O pedido de transcrição foi adicionado. [$1 Ver todos os pedidos de transcrição]",
-	"mwe-timedtext-request-subs-fail": "Não foi possível adicionar o pedido de transcrição. Está autenticado?",
-	"mwe-timedtext-request-already-done": "Já foi pedida anteriormente uma transcrição deste vídeo. [$1 Ver todos os pedidos de transcrição]"
+	"mwe-timedtext-upload-timed-text": "Adicionar legendas"
 }

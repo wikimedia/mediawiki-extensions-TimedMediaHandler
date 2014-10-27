@@ -6,16 +6,11 @@
 			"Silvonen"
 		]
 	},
-	"mwe-timedtext-stage-translate": "Käännä",
-	"mwe-timedtext-stage-upload": "Lataa paikallisesti tiedostosta",
-	"mwe-timedtext-select-language": "Valitse kieli",
-	"mwe-timedtext-file-language": "Tekstitystiedoston kieli",
 	"mwe-timedtext-back-btn": "Takaisin",
-	"mwe-timedtext-choose-text": "Valitse teksti",
-	"mwe-timedtext-upload-timed-text": "Lisää tekstitys",
 	"mwe-timedtext-layout-off": "Piilota tekstitys",
 	"mwe-timedtext-loading-text": "Ladataan tekstiä...",
 	"mwe-timedtext-textcat-cc": "Kuvatekstit",
 	"mwe-timedtext-textcat-sub": "Tekstitykset",
-	"mwe-timedtext-textcat-ktv": "Karaoke"
+	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-upload-timed-text": "Lisää tekstitys"
 }

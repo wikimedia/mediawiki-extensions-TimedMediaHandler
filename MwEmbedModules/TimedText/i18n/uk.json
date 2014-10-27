@@ -5,21 +5,7 @@
 			"Тест"
 		]
 	},
-	"mwe-timedtext-editor": "Редактор субтитрів",
-	"mwe-timedtext-stage-transcribe": "Стенограма",
-	"mwe-timedtext-stage-sync": "Синхронізувати",
-	"mwe-timedtext-stage-translate": "Перекласти",
-	"mwe-timedtext-stage-upload": "Завантажити з локального файлу",
-	"mwe-timedtext-select-language": "Оберіть мову",
-	"mwe-timedtext-file-language": "Мова файлу субтитрів",
 	"mwe-timedtext-back-btn": "Назад",
-	"mwe-timedtext-choose-text": "Оберіть текст",
-	"mwe-timedtext-upload-timed-text": "Додати субтитри",
-	"mwe-timedtext-loading-text-edit": "Завантаження редактору синхронізованого тексту",
-	"mwe-timedtext-search": "Пошук кліпу",
-	"mwe-timedtext-layout": "Розташування",
-	"mwe-timedtext-layout-ontop": "Угорі відео",
-	"mwe-timedtext-layout-below": "Унизу відео",
 	"mwe-timedtext-layout-off": "Приховати субтитри",
 	"mwe-timedtext-loading-text": "Завантаження тексту…",
 	"mwe-timedtext-textcat-cc": "Субтитри-підписи",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Слова пісні",
 	"mwe-timedtext-textcat-lin": "Лінгвістична розмітка",
 	"mwe-timedtext-textcat-cue": "Знакові точки",
+	"mwe-timedtext-no-subs": "Немає текстових доріжок",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 — субтитри для кліпу: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Не знайдено субтитрів $1 для кліпу: $2",
-	"mwe-timedtext-request-subs": "Запитати транскрипцію",
-	"mwe-timedtext-no-subs": "Немає текстових доріжок",
-	"mwe-timedtext-request-subs-desc": "Додати запит на транскрипцію цього відео",
-	"mwe-timedtext-request-subs-done": "Запит на транскрипцію додано. [$1 Переглянути усі запити на транскрипцію]",
-	"mwe-timedtext-request-subs-fail": "Не вдалося додати запит на транскрипцію. Ви увійшли до системи?",
-	"mwe-timedtext-request-already-done": "Транскрипцію цього відео уже було запитано. [$1 Переглянути усі запити на транскрипцію]"
+	"mwe-timedtext-upload-timed-text": "Додати субтитри"
 }

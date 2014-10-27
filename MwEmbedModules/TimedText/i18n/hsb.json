@@ -4,21 +4,7 @@
 			"Michawiki"
 		]
 	},
-	"mwe-timedtext-editor": "Editor za synchronizowany tekst",
-	"mwe-timedtext-stage-transcribe": "Přepisać",
-	"mwe-timedtext-stage-sync": "Synchronizować",
-	"mwe-timedtext-stage-translate": "Přełožić",
-	"mwe-timedtext-stage-upload": "Z lokalneje dataje nahrać",
-	"mwe-timedtext-select-language": "Rěč wubrać",
-	"mwe-timedtext-file-language": "Rěč dataje podtitula",
 	"mwe-timedtext-back-btn": "Wróćo",
-	"mwe-timedtext-choose-text": "Tekst wubrać",
-	"mwe-timedtext-upload-timed-text": "Podtitule přidać",
-	"mwe-timedtext-loading-text-edit": "Editor za synchronizowany tekst so startuje",
-	"mwe-timedtext-search": "Klip pytać",
-	"mwe-timedtext-layout": "Wusměrjenje",
-	"mwe-timedtext-layout-ontop": "Nad widejom",
-	"mwe-timedtext-layout-below": "Pod widejom",
 	"mwe-timedtext-layout-off": "Podtitule schować",
 	"mwe-timedtext-loading-text": "Tekst so začituje...",
 	"mwe-timedtext-textcat-cc": "Nadpisma",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "Spěwowy tekst",
 	"mwe-timedtext-textcat-lin": "Rěčespytne wopisanje",
 	"mwe-timedtext-textcat-cue": "Zastupne dypki",
+	"mwe-timedtext-no-subs": "Žane podtitule k dispoziciji",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Žane podtitule $1 za klip namakane: $2",
-	"mwe-timedtext-request-subs": "Transkripciju požadać",
-	"mwe-timedtext-no-subs": "Žane podtitule k dispoziciji",
-	"mwe-timedtext-request-subs-desc": "Požadanje za transkripciju tuteje widejodataje přidać",
-	"mwe-timedtext-request-subs-done": "Požadanje wo transkripciju přidate. [$1 Hlej wšě požadanja wo transkripciju]",
-	"mwe-timedtext-request-subs-fail": "Přidawanje požadanje wo transkripciju je so njeporadźiło. Sy so přizjewił?",
-	"mwe-timedtext-request-already-done": "Transkripcija tutoho wideja je so hižo požadała. [$1 Hlej wšě požadanja wo transkripciju]"
+	"mwe-timedtext-upload-timed-text": "Podtitule přidać"
 }

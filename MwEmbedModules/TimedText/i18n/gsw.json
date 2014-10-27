@@ -5,21 +5,7 @@
 			"Als-Holder"
 		]
 	},
-	"mwe-timedtext-editor": "Timed Text-Editor",
-	"mwe-timedtext-stage-transcribe": "Abschrift mache",
-	"mwe-timedtext-stage-sync": "Synchronisiere",
-	"mwe-timedtext-stage-translate": "Ibersetze",
-	"mwe-timedtext-stage-upload": "Vun ere lokale Datei uffelade",
-	"mwe-timedtext-select-language": "Sproch wehle",
-	"mwe-timedtext-file-language": "Sproch vu dr Untertitel",
 	"mwe-timedtext-back-btn": "Zruck",
-	"mwe-timedtext-choose-text": "Text uuswehle",
-	"mwe-timedtext-upload-timed-text": "Untertitel uffelade",
-	"mwe-timedtext-loading-text-edit": "Am Lade vum Ächtzyt-Text-Editor",
-	"mwe-timedtext-search": "Videoclip sueche",
-	"mwe-timedtext-layout": "Uusrichtig",
-	"mwe-timedtext-layout-ontop": "Iber em Videoclip",
-	"mwe-timedtext-layout-below": "Unter em Videoclip",
 	"mwe-timedtext-layout-off": "Untertitel uusblände",
 	"mwe-timedtext-loading-text": "Am Lade vum Text ...",
 	"mwe-timedtext-textcat-cc": "Bschryybige",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Liedtext",
 	"mwe-timedtext-textcat-lin": "Sprochwisseschaftligi Bschryybig",
 	"mwe-timedtext-textcat-cue": "Cue-Pinkt",
+	"mwe-timedtext-no-subs": "Untertitel sin nit verfiegbar",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 Untertitel gfunde fir dr Videoclip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Kei $1 Untertitel gfunde fir dr Videoclip: $2",
-	"mwe-timedtext-request-subs": "Untertitel aafordre",
-	"mwe-timedtext-no-subs": "Untertitel sin nit verfiegbar",
-	"mwe-timedtext-request-subs-desc": "E Aafroog stelle, dass für des Video Untertitel gmacht werde",
-	"mwe-timedtext-request-subs-done": "D Aafroog für e Untertitelig isch dezuegfiegt worde. [$1 Alli Aafrooge zur Untertitelung aaluege]",
-	"mwe-timedtext-request-subs-fail": "Die Aafroog für e Untertitelig het nit chönne dezuegfiegt worde. Bisch aagmolde?",
-	"mwe-timedtext-request-already-done": "Es git scho e Aafroog, dass de Video untertitelt wird. [$1 Alli Aafrooge zur Untertitelig aaluege]"
+	"mwe-timedtext-upload-timed-text": "Untertitel uffelade"
 }

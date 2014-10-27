@@ -8,21 +8,7 @@
 			"Translationista"
 		]
 	},
-	"mwe-timedtext-editor": "Editor de texto temporizado",
-	"mwe-timedtext-stage-transcribe": "Transcribir",
-	"mwe-timedtext-stage-sync": "Sincronizar",
-	"mwe-timedtext-stage-translate": "Traducir",
-	"mwe-timedtext-stage-upload": "Subir desde un archivo local",
-	"mwe-timedtext-select-language": "Seleccionar idioma",
-	"mwe-timedtext-file-language": "Idioma del archivo de subtítulo",
 	"mwe-timedtext-back-btn": "Atrás",
-	"mwe-timedtext-choose-text": "Escoger texto",
-	"mwe-timedtext-upload-timed-text": "Añadir subtítulos",
-	"mwe-timedtext-loading-text-edit": "Cargando el editor de texto sincronizado",
-	"mwe-timedtext-search": "Buscar clip",
-	"mwe-timedtext-layout": "Composición:",
-	"mwe-timedtext-layout-ontop": "En la parte superior del vídeo",
-	"mwe-timedtext-layout-below": "Debajo del vídeo",
 	"mwe-timedtext-layout-off": "Ocultar subtítulos",
 	"mwe-timedtext-loading-text": "Cargando texto ...",
 	"mwe-timedtext-textcat-cc": "Leyendas",
@@ -37,12 +23,8 @@
 	"mwe-timedtext-textcat-lrc": "Letra",
 	"mwe-timedtext-textcat-lin": "Marcador lingüístico",
 	"mwe-timedtext-textcat-cue": "Puntos de referencia",
+	"mwe-timedtext-no-subs": "No hay pistas de texto disponibles",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 subtítulos para el clip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "No se ha encontrado subtítulos $1 para el clip: $2",
-	"mwe-timedtext-request-subs": "Solicitar la transcripción",
-	"mwe-timedtext-no-subs": "No hay pistas de texto disponibles",
-	"mwe-timedtext-request-subs-desc": "Añadir una solicitud de transcripción de este archivo de vídeo",
-	"mwe-timedtext-request-subs-done": "Solicitud de transcripción añadida. [$1 Ver todas las solicitudes de transcripción]",
-	"mwe-timedtext-request-subs-fail": "Error al añadir la solicitud de transcripción. ¿Ha iniciado sesión?",
-	"mwe-timedtext-request-already-done": "Ya se solicitó la transcripción de este vídeo. [$1 Ver todas las solicitudes de transcripción]"
+	"mwe-timedtext-upload-timed-text": "Añadir subtítulos"
 }

@@ -8,21 +8,7 @@
 			"555"
 		]
 	},
-	"mwe-timedtext-editor": "Editor de legendas",
-	"mwe-timedtext-stage-transcribe": "Transcrever",
-	"mwe-timedtext-stage-sync": "Sincronizar",
-	"mwe-timedtext-stage-translate": "Traduzir",
-	"mwe-timedtext-stage-upload": "Enviar arquivo local",
-	"mwe-timedtext-select-language": "Selecionar idioma",
-	"mwe-timedtext-file-language": "Idioma do arquivo de legendas",
 	"mwe-timedtext-back-btn": "Voltar",
-	"mwe-timedtext-choose-text": "Escolher texto",
-	"mwe-timedtext-upload-timed-text": "Adicionar legendas",
-	"mwe-timedtext-loading-text-edit": "Carregando editor de legendas",
-	"mwe-timedtext-search": "Procurar clipe",
-	"mwe-timedtext-layout": "Posição",
-	"mwe-timedtext-layout-ontop": "Sobre o vídeo",
-	"mwe-timedtext-layout-below": "Abaixo do vídeo",
 	"mwe-timedtext-layout-off": "Ocultar legendas",
 	"mwe-timedtext-loading-text": "Carregando o texto ...",
 	"mwe-timedtext-textcat-cc": "Títulos",
@@ -37,12 +23,8 @@
 	"mwe-timedtext-textcat-lrc": "Letra",
 	"mwe-timedtext-textcat-lin": "Marcação linguística",
 	"mwe-timedtext-textcat-cue": "Pontos de entrada",
+	"mwe-timedtext-no-subs": "Não há nenhum texto disponível",
 	"mwe-timedtext-language-subtitles-for-clip": "Legendas em $1 para o clipe: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Não foram encontradas legendas em $1 para o clipe: $2",
-	"mwe-timedtext-request-subs": "Solicitar transcrição",
-	"mwe-timedtext-no-subs": "Não há nenhum texto disponível",
-	"mwe-timedtext-request-subs-desc": "Adicionar um pedido para que este arquivo de vídeo seja transcrito",
-	"mwe-timedtext-request-subs-done": "O pedido de transcrição foi adicionado. [$1 Veja todos os pedidos de transcrição]",
-	"mwe-timedtext-request-subs-fail": "Falha ao adicionar um pedido de transcrição. Você está autenticado?",
-	"mwe-timedtext-request-already-done": "Já foi feito um pedido de transcrição para este vídeo. [$1 Veja todos os pedidos de transcrição]"
+	"mwe-timedtext-upload-timed-text": "Adicionar legendas"
 }

@@ -5,21 +5,7 @@
 			"Y-M D"
 		]
 	},
-	"mwe-timedtext-editor": "Embanner testennoù sinkronelaet",
-	"mwe-timedtext-stage-transcribe": "Treuzskrivañ",
-	"mwe-timedtext-stage-sync": "Kempredañ",
-	"mwe-timedtext-stage-translate": "Treiñ",
-	"mwe-timedtext-stage-upload": "Kargañ eus ur restr lec'hel",
-	"mwe-timedtext-select-language": "Dibab ar yezh",
-	"mwe-timedtext-file-language": "Yezh ar restr istitloù",
 	"mwe-timedtext-back-btn": "Distreiñ",
-	"mwe-timedtext-choose-text": "Dibab an destenn",
-	"mwe-timedtext-upload-timed-text": "Enporzhiañ istitloù",
-	"mwe-timedtext-loading-text-edit": "O kargañ an embanner testennoù sinkronelaet",
-	"mwe-timedtext-search": "Klask ar c'hlip",
-	"mwe-timedtext-layout": "Pajennaozañ",
-	"mwe-timedtext-layout-ontop": "E penn ar video",
-	"mwe-timedtext-layout-below": "Dindan ar video",
 	"mwe-timedtext-layout-off": "Kuzhat an istitloù",
 	"mwe-timedtext-loading-text": "O kargañ an destenn...",
 	"mwe-timedtext-textcat-cc": "Alc'hwezioù",
@@ -36,9 +22,5 @@
 	"mwe-timedtext-textcat-cue": "Poent lec'hiañ",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 istitl evit ar c'hlip : $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
-	"mwe-timedtext-request-subs": "Goulenn treuzkrivadur",
-	"mwe-timedtext-request-subs-desc": "Goulenn ma vo treuzskrivet ar restr video-mañ",
-	"mwe-timedtext-request-subs-done": "Ouzhpennet eo bet ar goulenn treuzskrivañ. [$1 Gwelet an holl c'houlennoù treuzskrivañ]",
-	"mwe-timedtext-request-subs-fail": "N'eus ket bet gallet ouzhpennañ ar goulenn treuzskrivañ. Ha kevreet oc'h ?",
-	"mwe-timedtext-request-already-done": "Goulennet eo bet treuzskrivañ ar video-mañ c'hoazh. [$1 Gwelet an holl c'houlennoù treuzskrivañ]"
+	"mwe-timedtext-upload-timed-text": "Enporzhiañ istitloù"
 }

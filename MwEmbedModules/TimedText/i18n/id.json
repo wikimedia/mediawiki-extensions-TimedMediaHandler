@@ -5,21 +5,7 @@
 			"IvanLanin"
 		]
 	},
-	"mwe-timedtext-editor": "Penyunting teks berjangka waktu",
-	"mwe-timedtext-stage-transcribe": "Transkripsikan",
-	"mwe-timedtext-stage-sync": "Sinkronisasikan",
-	"mwe-timedtext-stage-translate": "Terjemahkan",
-	"mwe-timedtext-stage-upload": "Unggah dari berkas lokal",
-	"mwe-timedtext-select-language": "Pilih bahasa",
-	"mwe-timedtext-file-language": "Bahasa berkas subjudul",
 	"mwe-timedtext-back-btn": "Kembali",
-	"mwe-timedtext-choose-text": "Pilih teks",
-	"mwe-timedtext-upload-timed-text": "Unggah teks film",
-	"mwe-timedtext-loading-text-edit": "Memuat penyunting teks berjangka waktu",
-	"mwe-timedtext-search": "Cari klip",
-	"mwe-timedtext-layout": "Tampilan",
-	"mwe-timedtext-layout-ontop": "Di atas video",
-	"mwe-timedtext-layout-below": "Di bawah video",
 	"mwe-timedtext-layout-off": "Sembunyikan subjudul",
 	"mwe-timedtext-loading-text": "Memuat teks ...",
 	"mwe-timedtext-textcat-cc": "Keterangan",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Lirik",
 	"mwe-timedtext-textcat-lin": "Ubahan linguistik",
 	"mwe-timedtext-textcat-cue": "Titik acuan",
+	"mwe-timedtext-no-subs": "Jalur teks tidak tersedia",
 	"mwe-timedtext-language-subtitles-for-clip": "Subjudul $1 untuk klip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Tidak ada subjudul $1 yang ditemukan untuk klip: $2",
-	"mwe-timedtext-request-subs": "Minta transkripsi",
-	"mwe-timedtext-no-subs": "Jalur teks tidak tersedia",
-	"mwe-timedtext-request-subs-desc": "Berikan permintaan transkripsi untuk berkas video ini",
-	"mwe-timedtext-request-subs-done": "Permintaan transkripsi ditambahkan. [$1 Lihat semua permintaan]",
-	"mwe-timedtext-request-subs-fail": "Gagal menambah permintaan transkripsi. Apakah Anda masuk log?",
-	"mwe-timedtext-request-already-done": "Transkripsi dari video ini telah diminta. [$1 Lihat semua permintaan]"
+	"mwe-timedtext-upload-timed-text": "Unggah teks film"
 }

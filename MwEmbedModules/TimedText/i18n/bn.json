@@ -5,24 +5,11 @@
 			"Bellayet"
 		]
 	},
-	"mwe-timedtext-editor": "টাইমড টেক্সট এডিটর",
-	"mwe-timedtext-stage-transcribe": "লিপিবদ্ধ",
-	"mwe-timedtext-stage-sync": "সিঙ্ক করুন",
-	"mwe-timedtext-stage-translate": "অনুবাদ",
-	"mwe-timedtext-stage-upload": "স্থানীয় ফাইল থেকে আপলোড করুন",
-	"mwe-timedtext-select-language": "ভাষা নির্বাচন",
-	"mwe-timedtext-file-language": "ভাষার উপশিরোনাম ফাইল",
 	"mwe-timedtext-back-btn": "পিছনে",
-	"mwe-timedtext-choose-text": "টেক্সট নির্বাচন করুন",
-	"mwe-timedtext-upload-timed-text": "উপশিরোনাম যুক্ত করুন",
-	"mwe-timedtext-loading-text-edit": "টাইমড টেক্সট এডিটর লোড করা হচ্ছে",
-	"mwe-timedtext-search": "ক্লিপ অনুসন্ধান",
-	"mwe-timedtext-layout": "বহির্বিন্যাস",
-	"mwe-timedtext-layout-ontop": "ভিডিওর উপরে",
-	"mwe-timedtext-layout-below": "ভিডিওর নীচে",
 	"mwe-timedtext-layout-off": "উপশিরোনাম লুকাও",
 	"mwe-timedtext-loading-text": "টেক্সট লোড হচ্ছে ...",
 	"mwe-timedtext-textcat-cc": "পরিচয়লিপি",
 	"mwe-timedtext-textcat-sub": "উপশিরোনাম",
-	"mwe-timedtext-textcat-tad": "অডিও বিবরণ"
+	"mwe-timedtext-textcat-tad": "অডিও বিবরণ",
+	"mwe-timedtext-upload-timed-text": "উপশিরোনাম যুক্ত করুন"
 }

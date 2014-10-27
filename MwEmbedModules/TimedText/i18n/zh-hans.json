@@ -8,21 +8,7 @@
 			"Yfdyh000"
 		]
 	},
-	"mwe-timedtext-editor": "字幕编辑器",
-	"mwe-timedtext-stage-transcribe": "笔录",
-	"mwe-timedtext-stage-sync": "同步",
-	"mwe-timedtext-stage-translate": "翻译",
-	"mwe-timedtext-stage-upload": "上传本地文件",
-	"mwe-timedtext-select-language": "选择语言",
-	"mwe-timedtext-file-language": "字幕文件语言",
 	"mwe-timedtext-back-btn": "返回",
-	"mwe-timedtext-choose-text": "选择文本",
-	"mwe-timedtext-upload-timed-text": "添加字幕",
-	"mwe-timedtext-loading-text-edit": "正在载入字幕编辑器",
-	"mwe-timedtext-search": "搜索片段",
-	"mwe-timedtext-layout": "布局",
-	"mwe-timedtext-layout-ontop": "视频上方",
-	"mwe-timedtext-layout-below": "视频下方",
 	"mwe-timedtext-layout-off": "隐藏字幕",
 	"mwe-timedtext-loading-text": "正在载入文本...",
 	"mwe-timedtext-textcat-cc": "说明",
@@ -37,12 +23,8 @@
 	"mwe-timedtext-textcat-lrc": "歌词",
 	"mwe-timedtext-textcat-lin": "语言标记",
 	"mwe-timedtext-textcat-cue": "提示点",
+	"mwe-timedtext-no-subs": "没有可用的字幕",
 	"mwe-timedtext-language-subtitles-for-clip": "片段$2的$1字幕",
 	"mwe-timedtext-language-no-subtitles-for-clip": "没有找到片段$2的$1字幕",
-	"mwe-timedtext-request-subs": "请求字幕",
-	"mwe-timedtext-no-subs": "没有可用的字幕",
-	"mwe-timedtext-request-subs-desc": "添加该视频文件的字幕请求",
-	"mwe-timedtext-request-subs-done": "字幕请求已添加。[$1 查看所有字幕请求]",
-	"mwe-timedtext-request-subs-fail": "无法添加字幕请求。你登录了吗？",
-	"mwe-timedtext-request-already-done": "已有该视频的字幕请求。[$1 查看所有字幕请求]"
+	"mwe-timedtext-upload-timed-text": "添加字幕"
 }

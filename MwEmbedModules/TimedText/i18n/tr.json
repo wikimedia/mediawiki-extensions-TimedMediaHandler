@@ -4,17 +4,8 @@
 			"Emperyan"
 		]
 	},
-	"mwe-timedtext-editor": "Zamanlanmış metin editörü",
-	"mwe-timedtext-stage-transcribe": "Uyarla",
-	"mwe-timedtext-stage-sync": "Eşitle",
-	"mwe-timedtext-stage-translate": "Çevir",
-	"mwe-timedtext-select-language": "Dil seçin",
-	"mwe-timedtext-file-language": "Alt yazı dosya dili",
 	"mwe-timedtext-back-btn": "Geri",
-	"mwe-timedtext-choose-text": "Metin seç",
-	"mwe-timedtext-upload-timed-text": "Alt yazı ekle",
-	"mwe-timedtext-loading-text-edit": "Zamanlanmış metin editörü yükleniyor",
-	"mwe-timedtext-search": "Klip ara",
 	"mwe-timedtext-textcat-sub": "Alt yazılar",
-	"mwe-timedtext-no-subs": "Parça metni yok"
+	"mwe-timedtext-no-subs": "Parça metni yok",
+	"mwe-timedtext-upload-timed-text": "Alt yazı ekle"
 }

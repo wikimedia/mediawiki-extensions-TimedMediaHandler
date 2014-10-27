@@ -4,21 +4,7 @@
 			"Bjankuloski06"
 		]
 	},
-	"mwe-timedtext-editor": "Уредник на синхронизиран текст",
-	"mwe-timedtext-stage-transcribe": "Направи стенограм",
-	"mwe-timedtext-stage-sync": "Синхро",
-	"mwe-timedtext-stage-translate": "Преведи",
-	"mwe-timedtext-stage-upload": "Подигни од локална податотека",
-	"mwe-timedtext-select-language": "Одберете јазик",
-	"mwe-timedtext-file-language": "Јазик на податотеката со титл",
 	"mwe-timedtext-back-btn": "Назад",
-	"mwe-timedtext-choose-text": "Одберете текст",
-	"mwe-timedtext-upload-timed-text": "Стави титлови",
-	"mwe-timedtext-loading-text-edit": "Ги вчитувам уредникот на синхронизиран текст",
-	"mwe-timedtext-search": "Пребарај снимка",
-	"mwe-timedtext-layout": "Распоред",
-	"mwe-timedtext-layout-ontop": "Над снимката",
-	"mwe-timedtext-layout-below": "Под снимката",
 	"mwe-timedtext-layout-off": "Скриј титлови",
 	"mwe-timedtext-loading-text": "Го вчитувам текстот...",
 	"mwe-timedtext-textcat-cc": "Опис",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "Текст на песната",
 	"mwe-timedtext-textcat-lin": "Лингвистичко означување",
 	"mwe-timedtext-textcat-cue": "Моментни точки",
+	"mwe-timedtext-no-subs": "Нема титлови на располагање",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 — титлови за снимката: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Нема пронајдено титлови на $1 за снимката: $2",
-	"mwe-timedtext-request-subs": "Побарај транскрипција",
-	"mwe-timedtext-no-subs": "Нема титлови на располагање",
-	"mwe-timedtext-request-subs-desc": "Постави барање за транскрипција на оваа видеоснимка",
-	"mwe-timedtext-request-subs-done": "Барањето е поставено. [$1 Сите барања]",
-	"mwe-timedtext-request-subs-fail": "Не успеав да поставам барање за транскрипција. Дали сте најавени?",
-	"mwe-timedtext-request-already-done": "Веќе има поставено барање за транскрипција на оваа видеоснимка. [$1 Сите барања]"
+	"mwe-timedtext-upload-timed-text": "Стави титлови"
 }

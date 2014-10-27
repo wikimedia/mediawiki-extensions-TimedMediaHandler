@@ -4,21 +4,7 @@
 			"아라"
 		]
 	},
-	"mwe-timedtext-editor": "자막 편집기",
-	"mwe-timedtext-stage-transcribe": "복사",
-	"mwe-timedtext-stage-sync": "동기",
-	"mwe-timedtext-stage-translate": "번역",
-	"mwe-timedtext-stage-upload": "로컬 파일에서 올리기",
-	"mwe-timedtext-select-language": "언어 선택",
-	"mwe-timedtext-file-language": "자막 파일 언어",
 	"mwe-timedtext-back-btn": "뒤로",
-	"mwe-timedtext-choose-text": "텍스트 선택",
-	"mwe-timedtext-upload-timed-text": "자막 추가",
-	"mwe-timedtext-loading-text-edit": "자막 편집기 불러오는 중",
-	"mwe-timedtext-search": "클립 검색",
-	"mwe-timedtext-layout": "배치",
-	"mwe-timedtext-layout-ontop": "동영상 위",
-	"mwe-timedtext-layout-below": "동영상 아래",
 	"mwe-timedtext-layout-off": "자막 숨기기",
 	"mwe-timedtext-loading-text": "텍스트 불러오는 중 ...",
 	"mwe-timedtext-textcat-cc": "설명",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "가사",
 	"mwe-timedtext-textcat-lin": "언어 마크업",
 	"mwe-timedtext-textcat-cue": "큐 포인트",
+	"mwe-timedtext-no-subs": "사용할 수 있는 텍스트 트랙이 없습니다",
 	"mwe-timedtext-language-subtitles-for-clip": "클립에 대한 $1 자막: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "클립에 대한 $1 자막을 찾을 수 없습니다: $2",
-	"mwe-timedtext-request-subs": "복사 요청",
-	"mwe-timedtext-no-subs": "사용할 수 있는 텍스트 트랙이 없습니다",
-	"mwe-timedtext-request-subs-desc": "복사할 이 동영상 파일에 대한 요청 추가",
-	"mwe-timedtext-request-subs-done": "복사 요청을 추가했습니다. [$1 모든 복사 요청을 봅니다]",
-	"mwe-timedtext-request-subs-fail": "복사 요청을 추가하는 데 실패했습니다. 로그인하시겠습니까?",
-	"mwe-timedtext-request-already-done": "이 동영상의 복사를 이미 요청했습니다. [$1 모든 복사 요청을 봅니다]"
+	"mwe-timedtext-upload-timed-text": "자막 추가"
 }

@@ -6,21 +6,7 @@
 			"Purodha"
 		]
 	},
-	"mwe-timedtext-editor": "Ermöglicht die Nutzung des „Timed Text“-Editors",
-	"mwe-timedtext-stage-transcribe": "Abschrift anfertigen",
-	"mwe-timedtext-stage-sync": "Synchronisieren",
-	"mwe-timedtext-stage-translate": "Übersetzen",
-	"mwe-timedtext-stage-upload": "Aus einer lokalen Datei hochladen",
-	"mwe-timedtext-select-language": "Sprache auswählen",
-	"mwe-timedtext-file-language": "Sprache der Untertiteldatei",
 	"mwe-timedtext-back-btn": "Zurück",
-	"mwe-timedtext-choose-text": "Text auswählen",
-	"mwe-timedtext-upload-timed-text": "Untertitel hinzufügen",
-	"mwe-timedtext-loading-text-edit": "Lade den Editor für „Timed Text“",
-	"mwe-timedtext-search": "Suche den Videoclip",
-	"mwe-timedtext-layout": "Ausrichtung",
-	"mwe-timedtext-layout-ontop": "Oberhalb des Videoclips",
-	"mwe-timedtext-layout-below": "Unterhalb des Videoclips",
 	"mwe-timedtext-layout-off": "Untertitel ausblenden",
 	"mwe-timedtext-loading-text": "Text wird geladen …",
 	"mwe-timedtext-textcat-cc": "Legenden",
@@ -35,12 +21,8 @@
 	"mwe-timedtext-textcat-lrc": "Liedtext",
 	"mwe-timedtext-textcat-lin": "Sprachliche Beschreibung",
 	"mwe-timedtext-textcat-cue": "Cue-Punkte",
+	"mwe-timedtext-no-subs": "Es sind keine Untertitel verfügbar",
 	"mwe-timedtext-language-subtitles-for-clip": "Untertitel auf $1 für den Videoclip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Keine Untertitel auf $1 für den Videoclip gefunden: $2",
-	"mwe-timedtext-request-subs": "Untertitelung erbitten",
-	"mwe-timedtext-no-subs": "Es sind keine Untertitel verfügbar",
-	"mwe-timedtext-request-subs-desc": "Bitte zur Untertitelung dieses Videos hinzufügen",
-	"mwe-timedtext-request-subs-done": "Bitte zur Untertitelung wurde hinzugefügt. [$1 Alle Bitten zur Untertitelung ansehen]",
-	"mwe-timedtext-request-subs-fail": "Bitte zur Untertitelung konnte nicht hinzugefügt werden. Angemeldet?",
-	"mwe-timedtext-request-already-done": "Eine Bitte zur Untertitelung dieses Videos liegt bereits vor. [$1 Alle Bitten zur Untertitelung ansehen]"
+	"mwe-timedtext-upload-timed-text": "Untertitel hinzufügen"
 }

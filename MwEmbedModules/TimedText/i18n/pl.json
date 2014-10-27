@@ -7,21 +7,7 @@
 			"Sp5uhe"
 		]
 	},
-	"mwe-timedtext-editor": "Edytor napisów do filmu",
-	"mwe-timedtext-stage-transcribe": "Rozpisz",
-	"mwe-timedtext-stage-sync": "Synchronizacja",
-	"mwe-timedtext-stage-translate": "Przetłumacz",
-	"mwe-timedtext-stage-upload": "Prześlij z lokalnego pliku",
-	"mwe-timedtext-select-language": "Wybierz język",
-	"mwe-timedtext-file-language": "Język pliku z napisami do filmu",
 	"mwe-timedtext-back-btn": "Wstecz",
-	"mwe-timedtext-choose-text": "Wybierz tekst",
-	"mwe-timedtext-upload-timed-text": "Dodaj napisy",
-	"mwe-timedtext-loading-text-edit": "Ładowanie edytora tekstu ze znacznikami czasu",
-	"mwe-timedtext-search": "Szukaj klipu",
-	"mwe-timedtext-layout": "Układ",
-	"mwe-timedtext-layout-ontop": "Na górze filmu",
-	"mwe-timedtext-layout-below": "Poniżej obrazu",
 	"mwe-timedtext-layout-off": "Ukryj napisy",
 	"mwe-timedtext-loading-text": "Ładowanie tekstu...",
 	"mwe-timedtext-textcat-cc": "Podpisy",
@@ -36,12 +22,8 @@
 	"mwe-timedtext-textcat-lrc": "Teksty piosenek",
 	"mwe-timedtext-textcat-lin": "Znaczniki językowe",
 	"mwe-timedtext-textcat-cue": "Punkty kontrolne",
+	"mwe-timedtext-no-subs": "Nie ma dostępnych ścieżek tekstowych",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 napisy do filmu: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Nie odnaleziono $1 napisów do filmu: $2",
-	"mwe-timedtext-request-subs": "Poproś o transkrypcję",
-	"mwe-timedtext-no-subs": "Nie ma dostępnych ścieżek tekstowych",
-	"mwe-timedtext-request-subs-desc": "Dodaj prośbę transkrypcji dla tego pliku wideo",
-	"mwe-timedtext-request-subs-done": "Dodano prośbę transkrypcji. [ $1  Zobacz wszystkie prośby transkrypcji]",
-	"mwe-timedtext-request-subs-fail": "Nie udało się doanie prośby transkrypcji. Czy jesteś zalogowany?",
-	"mwe-timedtext-request-already-done": "Już złożono prośbę o transkrypcję tego wideo. [ $1  Zobacz wszystkie prośby transkrypcji]"
+	"mwe-timedtext-upload-timed-text": "Dodaj napisy"
 }

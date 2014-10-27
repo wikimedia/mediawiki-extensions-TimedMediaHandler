@@ -5,21 +5,7 @@
 			"Nghtwlkr"
 		]
 	},
-	"mwe-timedtext-editor": "Editor for tidsbestemt tekst",
-	"mwe-timedtext-stage-transcribe": "Transkriber",
-	"mwe-timedtext-stage-sync": "Synkroniser",
-	"mwe-timedtext-stage-translate": "Oversett",
-	"mwe-timedtext-stage-upload": "Last opp fra lokal fil",
-	"mwe-timedtext-select-language": "Velg språk",
-	"mwe-timedtext-file-language": "Undertekstfilspråk",
 	"mwe-timedtext-back-btn": "Tilbake",
-	"mwe-timedtext-choose-text": "Velg tekst",
-	"mwe-timedtext-upload-timed-text": "Legg til undertekster",
-	"mwe-timedtext-loading-text-edit": "Laster editor for tidsbestemt tekst",
-	"mwe-timedtext-search": "Søk klipp",
-	"mwe-timedtext-layout": "Oppsett",
-	"mwe-timedtext-layout-ontop": "Over video",
-	"mwe-timedtext-layout-below": "Under video",
 	"mwe-timedtext-layout-off": "Gjem undertekster",
 	"mwe-timedtext-loading-text": "Laster tekst ...",
 	"mwe-timedtext-textcat-cc": "Undertektster",
@@ -32,12 +18,8 @@
 	"mwe-timedtext-textcat-meta": "Tidsbestemt metadata",
 	"mwe-timedtext-textcat-trx": "Transkripsjon",
 	"mwe-timedtext-textcat-lrc": "Tekster",
+	"mwe-timedtext-no-subs": "Ingen tekstspor finnes",
 	"mwe-timedtext-language-subtitles-for-clip": "Undertekster på $1 for klippet: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Ingen undertekster på $1 ble funnet for klippet: $2",
-	"mwe-timedtext-request-subs": "Etterspør transkripsjon",
-	"mwe-timedtext-no-subs": "Ingen tekstspor finnes",
-	"mwe-timedtext-request-subs-desc": "Legg inn forespørsel om at denne videofilen blir transkribert",
-	"mwe-timedtext-request-subs-done": "Transkripsjonsforespørsel lagt til. [$1 Vis alle transkripsjonsforespørsler]",
-	"mwe-timedtext-request-subs-fail": "Transkripsjonsforespørselen kunne ikke lagres. Er du logget inn?",
-	"mwe-timedtext-request-already-done": "Transkripsjon av denne videoen har allerede blitt forespurt. [$1 Vis alle transkripsjonsforespørsler]"
+	"mwe-timedtext-upload-timed-text": "Legg til undertekster"
 }

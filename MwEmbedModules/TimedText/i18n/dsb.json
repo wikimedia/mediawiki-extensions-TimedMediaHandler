@@ -5,21 +5,7 @@
 			"Michawiki"
 		]
 	},
-	"mwe-timedtext-editor": "Editor za synchronizěrowany tekst",
-	"mwe-timedtext-stage-transcribe": "Pśepisaś",
-	"mwe-timedtext-stage-sync": "Synchronizěrowaś",
-	"mwe-timedtext-stage-translate": "Pśełožyś",
-	"mwe-timedtext-stage-upload": "Z lokalneje dataje nagraś",
-	"mwe-timedtext-select-language": "Rěc wubraś",
-	"mwe-timedtext-file-language": "Rěc dataje pódtitela",
 	"mwe-timedtext-back-btn": "Slědk",
-	"mwe-timedtext-choose-text": "Tekst wubraś",
-	"mwe-timedtext-upload-timed-text": "Pódtitele pśidaś",
-	"mwe-timedtext-loading-text-edit": "Editor za synchronizěrowany tekst se startujo",
-	"mwe-timedtext-search": "Klip pytaś",
-	"mwe-timedtext-layout": "Wusměrjenje",
-	"mwe-timedtext-layout-ontop": "Nad wideo",
-	"mwe-timedtext-layout-below": "Pód wideo",
 	"mwe-timedtext-layout-off": "Pódtitele schowaś",
 	"mwe-timedtext-loading-text": "Tekst se zacytujo...",
 	"mwe-timedtext-textcat-cc": "Wopisanja",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Spiwny tekst",
 	"mwe-timedtext-textcat-lin": "Rěcywědne wopisanje",
 	"mwe-timedtext-textcat-cue": "Zastupne dypki",
+	"mwe-timedtext-no-subs": "Žedne pódtitele k dispoziciji",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Žedne pódtitele $1 su se za klip namakali: $2",
-	"mwe-timedtext-request-subs": "Transkripciju pominaś",
-	"mwe-timedtext-no-subs": "Žedne pódtitele k dispoziciji",
-	"mwe-timedtext-request-subs-desc": "Póžedanje na transkripciju toś teje wideojoweje dataje pśidaś",
-	"mwe-timedtext-request-subs-done": "Póžedanje na transkripciju pśidane. [$1 Glědaj wšykne póžedanja na transkripciju]",
-	"mwe-timedtext-request-subs-fail": "Pśidawanje póžedanja na transkripciju njejo se raźiło. Sy se pśizjawił?",
-	"mwe-timedtext-request-already-done": "Póžedanje na transkripcija toś togo widea jo se južo stajiło. [$1 Glědaj wšykne póžedanja na transkripciju]"
+	"mwe-timedtext-upload-timed-text": "Pódtitele pśidaś"
 }

@@ -4,21 +4,7 @@
 			"Xuacu"
 		]
 	},
-	"mwe-timedtext-editor": "Editor de testu cronometráu",
-	"mwe-timedtext-stage-transcribe": "Trescribir",
-	"mwe-timedtext-stage-sync": "Sincronizar",
-	"mwe-timedtext-stage-translate": "Traducir",
-	"mwe-timedtext-stage-upload": "Subir dende un ficheru llocal",
-	"mwe-timedtext-select-language": "Escoyer llingua",
-	"mwe-timedtext-file-language": "Llingua del ficheru de subtítulos",
 	"mwe-timedtext-back-btn": "Anterior",
-	"mwe-timedtext-choose-text": "Escoyer testu",
-	"mwe-timedtext-upload-timed-text": "Añadir subtítulos",
-	"mwe-timedtext-loading-text-edit": "Cargando l'editor de testu cronometráu",
-	"mwe-timedtext-search": "Buscar clip",
-	"mwe-timedtext-layout": "Diseñu",
-	"mwe-timedtext-layout-ontop": "Na parte superior del videu",
-	"mwe-timedtext-layout-below": "Na parte inferior del videu",
 	"mwe-timedtext-layout-off": "Tapecer subtítulos",
 	"mwe-timedtext-loading-text": "Cargando'l testu...",
 	"mwe-timedtext-textcat-cc": "Lleendes",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "Lletra",
 	"mwe-timedtext-textcat-lin": "Formatu llingüísticu",
 	"mwe-timedtext-textcat-cue": "Puntos de referencia",
+	"mwe-timedtext-no-subs": "Nun hai pistes de testu disponibles",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtítulos en $1 pal videu: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Nun s'alcontraron los subtítulos en $1 pal videu: $2",
-	"mwe-timedtext-request-subs": "Solicitar trescripción",
-	"mwe-timedtext-no-subs": "Nun hai pistes de testu disponibles",
-	"mwe-timedtext-request-subs-desc": "Añadir una solicitú de trescripción d'esti ficheru de videu",
-	"mwe-timedtext-request-subs-done": "Solicitú de trescripción añadida. [$1 Ver toles solicitúes de trescripción]",
-	"mwe-timedtext-request-subs-fail": "Nun pudo añadise la solicitú de trescripción. ¿Anició sesión?",
-	"mwe-timedtext-request-already-done": "Yá se solicitó una trescripción d'esti videu. [$1 Ver toles solicitúes de trescripción]"
+	"mwe-timedtext-upload-timed-text": "Añadir subtítulos"
 }

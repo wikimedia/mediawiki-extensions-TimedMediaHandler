@@ -4,21 +4,7 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
-	"mwe-timedtext-editor": "කාලිත වදන් සකසුව",
-	"mwe-timedtext-stage-transcribe": "අනු ලැකීම",
-	"mwe-timedtext-stage-sync": "සමමුහුර්තකරණය",
-	"mwe-timedtext-stage-translate": "පරිවර්තනය කරන්න",
-	"mwe-timedtext-stage-upload": "ස්ථානික ගොනුවකින් උඩුගත කරන්න",
-	"mwe-timedtext-select-language": "භාෂාව තෝරන්න",
-	"mwe-timedtext-file-language": "උපසිරුස ගොනු භාෂාව",
 	"mwe-timedtext-back-btn": "ආපසු",
-	"mwe-timedtext-choose-text": "පාඨය තෝරන්න",
-	"mwe-timedtext-upload-timed-text": "උපශීර්ෂ එක් කරන්න",
-	"mwe-timedtext-loading-text-edit": "කාලිත පෙළ සකසනය පූරණය කරමින්",
-	"mwe-timedtext-search": "ක්ලිපය සොයන්න",
-	"mwe-timedtext-layout": "සැලැස්ම",
-	"mwe-timedtext-layout-ontop": "වීඩියෝවේ ඉහලම",
-	"mwe-timedtext-layout-below": "පහත වීඩියෝව",
 	"mwe-timedtext-layout-off": "උපශීර්ෂ සඟවන්න",
 	"mwe-timedtext-loading-text": "පෙළ පූරණය වෙමින් ...",
 	"mwe-timedtext-textcat-cc": "උපන්‍යාස",
@@ -33,7 +19,7 @@
 	"mwe-timedtext-textcat-lrc": "ගීපදවැල්",
 	"mwe-timedtext-textcat-lin": "භාෂාමය අධිකය",
 	"mwe-timedtext-textcat-cue": "ඉංගිත ගතිගුණ",
+	"mwe-timedtext-no-subs": "මීළඟ පථ ලබාගත නොහැක",
 	"mwe-timedtext-language-subtitles-for-clip": "ක්ලිපය සඳහා $1 උපසිරුස: $2",
-	"mwe-timedtext-request-subs": "පිටපත් කිරීම අයදින්න",
-	"mwe-timedtext-no-subs": "මීළඟ පථ ලබාගත නොහැක"
+	"mwe-timedtext-upload-timed-text": "උපශීර්ෂ එක් කරන්න"
 }

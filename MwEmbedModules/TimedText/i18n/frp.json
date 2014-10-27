@@ -4,21 +4,7 @@
 			"ChrisPtDe"
 		]
 	},
-	"mwe-timedtext-editor": "Èditor de tèxto sincronisâ",
-	"mwe-timedtext-stage-transcribe": "Transcrire",
-	"mwe-timedtext-stage-sync": "Sincronisar",
-	"mwe-timedtext-stage-translate": "Traduire",
-	"mwe-timedtext-stage-upload": "Tèlèchargiér un fichiér local",
-	"mwe-timedtext-select-language": "Chouèsir la lengoua",
-	"mwe-timedtext-file-language": "Lengoua du fichiér de sot-titros",
 	"mwe-timedtext-back-btn": "Tornar",
-	"mwe-timedtext-choose-text": "Chouèsésséd lo tèxto",
-	"mwe-timedtext-upload-timed-text": "Apondre des sot-titros",
-	"mwe-timedtext-loading-text-edit": "Chargement de l’èditor de tèxto sincronisâ",
-	"mwe-timedtext-search": "Rechèrche un clipe",
-	"mwe-timedtext-layout": "Misa en pâge",
-	"mwe-timedtext-layout-ontop": "D’amont la vidèô",
-	"mwe-timedtext-layout-below": "En-desot de la vidèô",
 	"mwe-timedtext-layout-off": "Cachiér los sot-titros",
 	"mwe-timedtext-loading-text": "Chargement du tèxto ...",
 	"mwe-timedtext-textcat-cc": "Lègendes",
@@ -33,8 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "Paroles",
 	"mwe-timedtext-textcat-lin": "Balisâjo lengouistico",
 	"mwe-timedtext-textcat-cue": "Pouents de repèro",
+	"mwe-timedtext-no-subs": "Gins de pista de tèxto disponibla",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 sot-titros por clipe : $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Nion sot-titro $1 at étâ trovâ por lo clipe : $2",
-	"mwe-timedtext-request-subs": "Demandar la transcripcion",
-	"mwe-timedtext-no-subs": "Gins de pista de tèxto disponibla"
+	"mwe-timedtext-upload-timed-text": "Apondre des sot-titros"
 }

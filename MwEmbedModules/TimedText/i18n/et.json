@@ -5,16 +5,14 @@
 			"Pikne"
 		]
 	},
-	"mwe-timedtext-editor": "Ajastatud teksti redaktor",
-	"mwe-timedtext-file-language": "Alltiitrite faili keel",
-	"mwe-timedtext-upload-timed-text": "Lisa alltiitrid",
 	"mwe-timedtext-layout-off": "Peida alltiitrid",
 	"mwe-timedtext-loading-text": "Teksti laadimine...",
 	"mwe-timedtext-textcat-sub": "Alltiitrid",
 	"mwe-timedtext-textcat-ktv": "Karaoke",
 	"mwe-timedtext-textcat-meta": "Ajastatud metaandmed",
 	"mwe-timedtext-textcat-lrc": "Laulusõnad",
+	"mwe-timedtext-no-subs": "Alltiitreid pole saadaval",
 	"mwe-timedtext-language-subtitles-for-clip": "Lõigu $2 $1 alltiitrid",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Lõigu $2 jaoks ei leitud $1 alltiitreid",
-	"mwe-timedtext-no-subs": "Alltiitreid pole saadaval"
+	"mwe-timedtext-upload-timed-text": "Lisa alltiitrid"
 }

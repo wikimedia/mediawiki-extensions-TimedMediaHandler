@@ -4,21 +4,7 @@
 			"Praveenp"
 		]
 	},
-	"mwe-timedtext-editor": "സമയമനുസരിച്ചുള്ള എഴുത്തിന്റെ തിരുത്തലുപകരണം",
-	"mwe-timedtext-stage-transcribe": "പകർത്തിയെഴുതുക",
-	"mwe-timedtext-stage-sync": "താദാമ്യപ്പെടുത്തുക",
-	"mwe-timedtext-stage-translate": "പരിഭാഷപ്പെടുത്തുക",
-	"mwe-timedtext-stage-upload": "പ്രാദേശിക പ്രമാണത്തിൽ നിന്നും അപ്‌ലോഡ് ചെയ്യുക",
-	"mwe-timedtext-select-language": "ഭാഷ തിരഞ്ഞെടുക്കുക",
-	"mwe-timedtext-file-language": "സംഭാഷണരേഖാ പ്രമാണത്തിന്റെ ഭാഷ",
 	"mwe-timedtext-back-btn": "പുറകോട്ട്",
-	"mwe-timedtext-choose-text": "എഴുത്ത് എടുക്കുക",
-	"mwe-timedtext-upload-timed-text": "സംഭാഷണരേഖ കൂട്ടിച്ചേർക്കുക",
-	"mwe-timedtext-loading-text-edit": "സമയാനുസൃതമായുള്ള എഴുത്ത് തിരുത്തലുപകരണം എടുക്കുന്നു",
-	"mwe-timedtext-search": "മീഡിയശകലത്തിൽ തിരയുക",
-	"mwe-timedtext-layout": "രൂപഘടന",
-	"mwe-timedtext-layout-ontop": "ചലച്ചത്രത്തിനുപരി",
-	"mwe-timedtext-layout-below": "ചലച്ചിത്രത്തിനു താഴെ",
 	"mwe-timedtext-layout-off": "സംഭാഷണരേഖ മറയ്ക്കുക",
 	"mwe-timedtext-loading-text": "എഴുത്ത് ശേഖരിക്കുന്നു...",
 	"mwe-timedtext-textcat-cc": "തലവാക്യം",
@@ -33,12 +19,8 @@
 	"mwe-timedtext-textcat-lrc": "വരികൾ",
 	"mwe-timedtext-textcat-lin": "ഭാഷാസംബന്ധിയായ അടയാളഭാഷ",
 	"mwe-timedtext-textcat-cue": "സൂചക ബിന്ദുക്കൾ",
+	"mwe-timedtext-no-subs": "എഴുത്തുകളുടെ വരി ലഭ്യമല്ല",
 	"mwe-timedtext-language-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖ: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2",
-	"mwe-timedtext-request-subs": "എഴുത്ത് ആവശ്യപ്പെടുക",
-	"mwe-timedtext-no-subs": "എഴുത്തുകളുടെ വരി ലഭ്യമല്ല",
-	"mwe-timedtext-request-subs-desc": "ഈ ചലച്ചിത്രപ്രമാണം എഴുതിരേഖപ്പെടുത്തുന്നതിനുള്ള അഭ്യർത്ഥന ചേർക്കുക",
-	"mwe-timedtext-request-subs-done": "എഴുതിരേഖപ്പെടുത്തുന്നതിനുള്ള അഭ്യർത്ഥന ചേർത്തിരിക്കുന്നു.  [$1 എല്ലാ എഴുതിരേഖപ്പെടുത്തൽ അഭ്യർത്ഥനകളും കാണുക]",
-	"mwe-timedtext-request-subs-fail": "എഴുതിരേഖപ്പെടുത്താനുള്ള അഭ്യർത്ഥന പരാജയപ്പെട്ടു. താങ്കൾ ലോഗിൻ ചെയ്തിട്ടുണ്ടോ?",
-	"mwe-timedtext-request-already-done": "ഈ ചലച്ചിത്രം എഴുതിരേഖപ്പെടുത്താനുള്ള അഭ്യർത്ഥന മുമ്പേ ഉണ്ട്. [$1 എല്ലാ എഴുതിരേഖപ്പെടുത്തൽ അഭ്യർത്ഥനകളും കാണുക]"
+	"mwe-timedtext-upload-timed-text": "സംഭാഷണരേഖ കൂട്ടിച്ചേർക്കുക"
 }

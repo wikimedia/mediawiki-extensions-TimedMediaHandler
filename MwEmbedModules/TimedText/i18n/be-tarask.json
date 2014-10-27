@@ -6,21 +6,7 @@
 			"Wizardist"
 		]
 	},
-	"mwe-timedtext-editor": "Рэдактар сынхранізаванага тэксту",
-	"mwe-timedtext-stage-transcribe": "Пераўтвараць",
-	"mwe-timedtext-stage-sync": "Сынхранізаваць",
-	"mwe-timedtext-stage-translate": "Перакласьці",
-	"mwe-timedtext-stage-upload": "Загрузіць з лякальнага файла",
-	"mwe-timedtext-select-language": "Выберыце мову",
-	"mwe-timedtext-file-language": "Мова файла субтытраў",
 	"mwe-timedtext-back-btn": "Вярнуцца",
-	"mwe-timedtext-choose-text": "Выберыце тэкст",
-	"mwe-timedtext-upload-timed-text": "Дадаць субтытры",
-	"mwe-timedtext-loading-text-edit": "Загрузка рэдактара сынхранізаванага тэксту",
-	"mwe-timedtext-search": "Пошук кліпу",
-	"mwe-timedtext-layout": "Разьмяшчэньне",
-	"mwe-timedtext-layout-ontop": "На версе відэа",
-	"mwe-timedtext-layout-below": "Унізе відэа",
 	"mwe-timedtext-layout-off": "Схаваць субтытры",
 	"mwe-timedtext-loading-text": "Загрузка тэксту…",
 	"mwe-timedtext-textcat-cc": "Субтытры",
@@ -35,12 +21,8 @@
 	"mwe-timedtext-textcat-lrc": "Словы",
 	"mwe-timedtext-textcat-lin": "Лінгвістычная разьметка",
 	"mwe-timedtext-textcat-cue": "Сыгнальныя кропкі",
+	"mwe-timedtext-no-subs": "Субтытраў няма",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 субтытры для кліпу: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Субтытры $1 для кліпу ня знойдзеныя: $2",
-	"mwe-timedtext-request-subs": "Запытаць транскрыпцыю",
-	"mwe-timedtext-no-subs": "Субтытраў няма",
-	"mwe-timedtext-request-subs-desc": "Дадаць запыт на транскрыпцыю гэтага відэа",
-	"mwe-timedtext-request-subs-done": "Запыт на транскрыпцыю зроблены. [$1 Усе запыты на транскрыпцыю]",
-	"mwe-timedtext-request-subs-fail": "Немагчыма дадаць запыт на транскрыпцыю. Ці ўвайшлі Вы ў сыстэму?",
-	"mwe-timedtext-request-already-done": "Запыт на транскрыпцыю відэа ўжо быў пададзены. [$1 Усе запыты на транскрыпцыю]"
+	"mwe-timedtext-upload-timed-text": "Дадаць субтытры"
 }

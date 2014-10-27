@@ -5,20 +5,7 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
-	"mwe-timedtext-editor": "Trình sửa văn bản đồng bộ",
-	"mwe-timedtext-stage-transcribe": "Chuyển mã",
-	"mwe-timedtext-stage-sync": "Đồng bộ",
-	"mwe-timedtext-stage-translate": "Biên dịch",
-	"mwe-timedtext-stage-upload": "Tải lên từ tập tin trên máy",
-	"mwe-timedtext-select-language": "Chọn ngôn ngữ",
-	"mwe-timedtext-file-language": "Ngôn ngữ tập tin phụ đề",
 	"mwe-timedtext-back-btn": "Quay lại",
-	"mwe-timedtext-choose-text": "Chọn văn bản",
-	"mwe-timedtext-upload-timed-text": "Thêm phụ đề",
-	"mwe-timedtext-loading-text-edit": "Đang tải trình sửa văn bản đồng bộ",
-	"mwe-timedtext-layout": "Bố trí",
-	"mwe-timedtext-layout-ontop": "Ở trên video",
-	"mwe-timedtext-layout-below": "Ở dưới video",
 	"mwe-timedtext-layout-off": "Ẩn phụ đề",
 	"mwe-timedtext-loading-text": "Đang tải văn bản…",
 	"mwe-timedtext-textcat-sub": "Phụ đề",
@@ -26,5 +13,6 @@
 	"mwe-timedtext-textcat-ktv": "Karaôkê",
 	"mwe-timedtext-textcat-meta": "Siêu dữ liệu đồng bộ",
 	"mwe-timedtext-textcat-lrc": "Lời hát",
-	"mwe-timedtext-textcat-lin": "Đánh dấu ngôn ngữ học"
+	"mwe-timedtext-textcat-lin": "Đánh dấu ngôn ngữ học",
+	"mwe-timedtext-upload-timed-text": "Thêm phụ đề"
 }

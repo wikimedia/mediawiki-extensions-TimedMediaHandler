@@ -5,21 +5,7 @@
 			"Dafer45"
 		]
 	},
-	"mwe-timedtext-editor": "Tidsbestämd textredigerare",
-	"mwe-timedtext-stage-transcribe": "Transkribera",
-	"mwe-timedtext-stage-sync": "Sync",
-	"mwe-timedtext-stage-translate": "Översätt",
-	"mwe-timedtext-stage-upload": "Ladda upp från lokal fil",
-	"mwe-timedtext-select-language": "Välj språk",
-	"mwe-timedtext-file-language": "Undertextfilspråk",
 	"mwe-timedtext-back-btn": "Tillbaka",
-	"mwe-timedtext-choose-text": "Välj text",
-	"mwe-timedtext-upload-timed-text": "Lägga till undertexter",
-	"mwe-timedtext-loading-text-edit": "Laddar tidsbestämd texteditor",
-	"mwe-timedtext-search": "Sök klipp",
-	"mwe-timedtext-layout": "Layout",
-	"mwe-timedtext-layout-ontop": "Ovanför video",
-	"mwe-timedtext-layout-below": "Under video",
 	"mwe-timedtext-layout-off": "Dölj undertexter",
 	"mwe-timedtext-loading-text": "Laddar text ...",
 	"mwe-timedtext-textcat-cc": "Undertexter",
@@ -34,12 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Texter",
 	"mwe-timedtext-textcat-lin": "Språkliga markeringar",
 	"mwe-timedtext-textcat-cue": "Referenspunkter",
+	"mwe-timedtext-no-subs": "Inga textspår finns",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 undertexter för klipp: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Inga $1 undertexter hittades för klipp: $2",
-	"mwe-timedtext-request-subs": "Begäran transkription",
-	"mwe-timedtext-no-subs": "Inga textspår finns",
-	"mwe-timedtext-request-subs-desc": "Lägga till en begäran om att denna videofil ska transkriberas",
-	"mwe-timedtext-request-subs-done": "Transkriptionsbegäran lades till. [$1 Se alla transkribeeringsbegäranden]",
-	"mwe-timedtext-request-subs-fail": "Det gick inte att lägga till transkriptionsbegäran. Är du inloggad?",
-	"mwe-timedtext-request-already-done": "En transkription av denna video har redan begärts. [$1  Se alla transkriberingsbegäranden]"
+	"mwe-timedtext-upload-timed-text": "Lägga till undertexter"
 }

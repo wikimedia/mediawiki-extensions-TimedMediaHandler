@@ -7,21 +7,7 @@
 			"Kaganer"
 		]
 	},
-	"mwe-timedtext-editor": "Редактор синхронизированного текста",
-	"mwe-timedtext-stage-transcribe": "Стенограмма",
-	"mwe-timedtext-stage-sync": "Синхро",
-	"mwe-timedtext-stage-translate": "Перевод",
-	"mwe-timedtext-stage-upload": "Загрузить из локального файла",
-	"mwe-timedtext-select-language": "Выберите язык",
-	"mwe-timedtext-file-language": "Язык файла субтитров",
 	"mwe-timedtext-back-btn": "Назад",
-	"mwe-timedtext-choose-text": "Выберите текст",
-	"mwe-timedtext-upload-timed-text": "Добавить субтитры",
-	"mwe-timedtext-loading-text-edit": "Загрузка редактора синхронизированного текста",
-	"mwe-timedtext-search": "Поиск клипа",
-	"mwe-timedtext-layout": "Положение",
-	"mwe-timedtext-layout-ontop": "В верху видео",
-	"mwe-timedtext-layout-below": "Внизу видео",
 	"mwe-timedtext-layout-off": "Скрыть субтитры",
 	"mwe-timedtext-loading-text": "Загрузка текста…",
 	"mwe-timedtext-textcat-cc": "Субтитры-описания",
@@ -36,12 +22,8 @@
 	"mwe-timedtext-textcat-lrc": "Слова песни",
 	"mwe-timedtext-textcat-lin": "Лингвистическая разметка",
 	"mwe-timedtext-textcat-cue": "Знаковые точки",
+	"mwe-timedtext-no-subs": "Нет текстовых дорожек",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 — субтитры для клипа: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Не найдено субтитров на $1 для клипа: $2",
-	"mwe-timedtext-request-subs": "Запрос транскрипции",
-	"mwe-timedtext-no-subs": "Нет текстовых дорожек",
-	"mwe-timedtext-request-subs-desc": "Добавить запрос на транскрипцию этого видео",
-	"mwe-timedtext-request-subs-done": "Добавлен запрос на транскрипцию. [$1 Просмотреть все запросы]",
-	"mwe-timedtext-request-subs-fail": "Не удалось добавить запрос на транскрипцию. Вы представились системе?",
-	"mwe-timedtext-request-already-done": "Транскрипция этого видео уже была запрошена. [$1 Просмотреть все запросы]"
+	"mwe-timedtext-upload-timed-text": "Добавить субтитры"
 }

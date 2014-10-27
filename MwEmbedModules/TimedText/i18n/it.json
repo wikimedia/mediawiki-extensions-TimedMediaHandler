@@ -7,21 +7,7 @@
 			"Gianfranco"
 		]
 	},
-	"mwe-timedtext-editor": "Editor sottotitoli",
-	"mwe-timedtext-stage-transcribe": "Trascrivi",
-	"mwe-timedtext-stage-sync": "Sincronizza",
-	"mwe-timedtext-stage-translate": "Traduci",
-	"mwe-timedtext-stage-upload": "Carica da file locale",
-	"mwe-timedtext-select-language": "Seleziona lingua",
-	"mwe-timedtext-file-language": "Lingua file sottotitoli",
 	"mwe-timedtext-back-btn": "Indietro",
-	"mwe-timedtext-choose-text": "Scegli il testo",
-	"mwe-timedtext-upload-timed-text": "Aggiungi sottotitoli",
-	"mwe-timedtext-loading-text-edit": "Caricamento editor sottotitoli",
-	"mwe-timedtext-search": "Ricerca clip",
-	"mwe-timedtext-layout": "Aspetto",
-	"mwe-timedtext-layout-ontop": "Sopra il video",
-	"mwe-timedtext-layout-below": "Sotto il video",
 	"mwe-timedtext-layout-off": "Nascondi sottotitoli",
 	"mwe-timedtext-loading-text": "Caricamento testo...",
 	"mwe-timedtext-textcat-cc": "Didascalie",
@@ -36,12 +22,8 @@
 	"mwe-timedtext-textcat-lrc": "Testi",
 	"mwe-timedtext-textcat-lin": "Markup linguistico",
 	"mwe-timedtext-textcat-cue": "Punti d'entrata",
+	"mwe-timedtext-no-subs": "Nessuna traccia di testo disponibile",
 	"mwe-timedtext-language-subtitles-for-clip": "sottotitoli in $1 per il filmato: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Sottotitoli in $1 non trovati per il filmato: $2",
-	"mwe-timedtext-request-subs": "Richiedi trascrizione",
-	"mwe-timedtext-no-subs": "Nessuna traccia di testo disponibile",
-	"mwe-timedtext-request-subs-desc": "Aggiungi una richiesta per la trascrizione di questo video",
-	"mwe-timedtext-request-subs-done": "Richiesta di trascrizione aggiunta. [$1 Vedi tutte le richieste di trascrizione]",
-	"mwe-timedtext-request-subs-fail": "Impossibile aggiungere la richiesta di trascrizione. Hai effettuato l'accesso?",
-	"mwe-timedtext-request-already-done": "Una trascrizione di questo video è già stata richiesta. [$1 Vedi tutte le richieste di trascrizione]"
+	"mwe-timedtext-upload-timed-text": "Aggiungi sottotitoli"
 }

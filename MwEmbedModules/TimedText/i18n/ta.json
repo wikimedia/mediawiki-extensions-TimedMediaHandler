@@ -6,19 +6,11 @@
 			"மதனாஹரன்"
 		]
 	},
-	"mwe-timedtext-stage-translate": "மொழிபெயர்க்கவும்",
-	"mwe-timedtext-select-language": "மொழியைத் தெரி",
-	"mwe-timedtext-file-language": "துணைத்தலைப்பு கோப்பு மொழி",
 	"mwe-timedtext-back-btn": "பின்செல்",
-	"mwe-timedtext-choose-text": "உரையைத் தெரி",
-	"mwe-timedtext-upload-timed-text": "துணைத்தலைப்புக்களைச் சேர்",
-	"mwe-timedtext-search": "துண்டைத் தேடு",
-	"mwe-timedtext-layout": "தளவமைப்பு",
-	"mwe-timedtext-layout-ontop": "காணொளியின் மேல்",
-	"mwe-timedtext-layout-below": "காணொளியின் கீழ்",
 	"mwe-timedtext-layout-off": "துணைத்தலைப்புக்களை மறை",
 	"mwe-timedtext-loading-text": "உரையை ஏற்றுகிறது ...",
 	"mwe-timedtext-textcat-sub": "துணைத்தலைப்புக்கள்",
 	"mwe-timedtext-textcat-tad": "ஒலித விவரணம்",
-	"mwe-timedtext-textcat-lrc": "பாடல் வரிகள்"
+	"mwe-timedtext-textcat-lrc": "பாடல் வரிகள்",
+	"mwe-timedtext-upload-timed-text": "துணைத்தலைப்புக்களைச் சேர்"
 }
