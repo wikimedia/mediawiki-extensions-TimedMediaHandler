@@ -118,6 +118,9 @@ class ApiTranscodeReset extends ApiBase {
 		return true;
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	protected function getDescription() {
 		return 'Users with the \'transcode-reset\' right can reset and re-run a transcode job';
 	}
@@ -133,6 +136,9 @@ class ApiTranscodeReset extends ApiBase {
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	protected function getParamDescription() {
 		return array(
 			'title' => 'The media file title',
@@ -149,6 +155,9 @@ class ApiTranscodeReset extends ApiBase {
 		return '';
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	protected function getExamples() {
 		return array(
 			'Reset all transcodes for Clip.webm :',
@@ -158,8 +167,15 @@ class ApiTranscodeReset extends ApiBase {
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiTranscodeReset.php 89751 $';
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=transcodereset&title=File:Clip.webm&token=123ABC'
+				=> 'apihelp-transcodereset-example-1',
+			'action=transcodereset&title=File:Clip.webm&transcodekey=360_560kbs.webm&token=123ABC'
+				=> 'apihelp-transcodereset-example-2',
+		);
 	}
-
 }

@@ -49,19 +49,31 @@ class ApiTranscodeStatus extends ApiQueryBase {
 		return array();
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return array(
 			'Get transcode status for a given file page'
 		);
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	protected function getExamples() {
 		return array (
 			'api.php?action=query&prop=transcodestatus&titles=File:Clip.webm',
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryFlagged.php 85713 2011-04-09 04:30:07Z aaron $';
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&prop=transcodestatus&titles=File:Clip.webm'
+				=> 'apihelp-query+transcodestatus-example-1',
+		);
 	}
 }
