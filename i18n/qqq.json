@@ -14,7 +14,8 @@
 			"Shirayuki",
 			"Siebrand",
 			"Umherirrender",
-			"아라"
+			"아라",
+			"Liuxinyu970226"
 		]
 	},
 	"timedmedia-desc": "{{desc|name=Timed Media Handler|url=https://www.mediawiki.org/wiki/Extension:TimedMediaHandler}}",
@@ -61,7 +62,7 @@
 	"timedmedia-days": "Used as the duration, as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-in-job-queue}}\n* {{msg-mw|Timedmedia-started-transcode}}\nParameters:\n* $1 - number of days\n{{Related|Timedmedia-days}}\n{{Identical|Day}}",
 	"timedmedia-hours": "Used as the duration, as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-in-job-queue}}\n* {{msg-mw|Timedmedia-started-transcode}}\nParameters:\n* $1 - number of hours\n{{Related|Timedmedia-days}}\n{{Identical|Hour}}",
 	"timedmedia-minutes": "Used as the duration, as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-in-job-queue}}\n* {{msg-mw|Timedmedia-started-transcode}}\nParameters:\n* $1 - minutes\n{{Related|Timedmedia-days}}\n{{Identical|Minute}}",
-	"timedmedia-seconds": "Used as the duration, as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-in-job-queue}}\n* {{msg-mw|Timedmedia-started-transcode}}\nParameters:\n* $1 - number of seconds\n{{Related|Timedmedia-days}}",
+	"timedmedia-seconds": "Used as the duration, as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-in-job-queue}}\n* {{msg-mw|Timedmedia-started-transcode}}\nParameters:\n* $1 - number of seconds\n{{Related|Timedmedia-days}}\n{{Identical|Second}}",
 	"timedmedia-reset": "Used as action link text and as dialog title.\n\nThe contents of the dialog is {{msg-mw|Timedmedia-reset-confirm}}.",
 	"timedmedia-reset-confirm": "Used as confirmation message in the dialog which has the title {{msg-mw|Timedmedia-reset}}.",
 	"timedmedia-reset-error": "Used as generic error message.",
