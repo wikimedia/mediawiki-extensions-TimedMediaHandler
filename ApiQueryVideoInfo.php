@@ -23,6 +23,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		parent::__construct( $query, $moduleName, $prefix );
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getDescription() {
 		return 'Extends imageinfo to include video source (derivatives) information';
 	}
@@ -53,9 +56,22 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		return $s;
 	}
 
+	/**
+	 * @deprecated since MediaWiki core 1.25
+	 */
 	public function getExamples() {
 		return array(
 			'api.php?action=query&titles=File:Folgers.ogv&prop=videoinfo',
+		);
+	}
+
+	/**
+	 * @see ApiBase::getExamplesMessages()
+	 */
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&titles=File:Folgers.ogv&prop=videoinfo'
+				=> 'apihelp-query+videoinfo-example-1',
 		);
 	}
 
@@ -202,39 +218,31 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	public function getAllowedParams() {
-		return array(
+		// Get imageinfo params
+		$params = array_intersect_key(
+			parent::getAllowedParams(),
+			array_flip( array(
+				'limit', 'start', 'end', 'urlwidth', 'urlheight', 'urlparam', 'continue'
+			) )
+		);
+		if ( defined( 'ApiBase::PARAM_HELP_MSG' ) ) {
+			foreach ( $params as $k => $v ) {
+				if ( !isset( $params[$k][ApiBase::PARAM_HELP_MSG] ) ) {
+					$params[$k][ApiBase::PARAM_HELP_MSG] = "apihelp-query+imageinfo-param-$k";
+				}
+			}
+		}
+
+		// Add our param
+		$params = array(
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_DFLT => 'timestamp|user',
-				ApiBase::PARAM_TYPE => self::getPropertyNames()
+				ApiBase::PARAM_TYPE => self::getPropertyNames(),
 			),
-			'limit' => array(
-				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_DFLT => 1,
-				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
-				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
-			),
-			'start' => array(
-				ApiBase::PARAM_TYPE => 'timestamp'
-			),
-			'end' => array(
-				ApiBase::PARAM_TYPE => 'timestamp'
-			),
-			'urlwidth' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => -1
-			),
-			'urlheight' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => -1
-			),
-			'urlparam' => array(
-				ApiBase::PARAM_DFLT => '',
-				ApiBase::PARAM_TYPE => 'string',
-			),
-			'continue' => null,
-		);
+		) + $params;
+
+		return $params;
 	}
 
 	/**
@@ -244,6 +252,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	 * (and not static::getPropertyDescriptions() ) which binds
 	 * to the static method in that class instead of the static
 	 * method of the same name in this class.
+	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getParamDescription() {
 		$params = parent::getParamDescription();
@@ -251,10 +260,4 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		$params['prop'] = self::getPropertyDescriptions( array(), $p );
 		return $params;
 	}
-
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id$';
-	}
-
 }

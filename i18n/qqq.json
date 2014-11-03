@@ -122,5 +122,15 @@
 	"orphanedtimedtext": "{{doc-special|OrphanedTimedText}}",
 	"orphanedtimedtext-summary": "Summary of Special:OrphanedTimedText.",
 	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end.",
-	"orphanedtimedtext-notimedtext": "Shown on Special:OrphanedTimedText if the TimedText namespace is disabled on that wiki (i.e. $wgEnableLocalTimedText is set to false). Note, do not use <nowiki>{{ns:TimedText}}</nowiki> in this message."
+	"orphanedtimedtext-notimedtext": "Shown on Special:OrphanedTimedText if the TimedText namespace is disabled on that wiki (i.e. $wgEnableLocalTimedText is set to false). Note, do not use <nowiki>{{ns:TimedText}}</nowiki> in this message.",
+	"apihelp-query+transcodestatus-description": "{{doc-apihelp-description|query+transcodestatus}}",
+	"apihelp-query+transcodestatus-example-1": "{{doc-apihelp-example|query+transcodestatus}}",
+	"apihelp-query+videoinfo-description": "{{doc-apihelp-description|query+videoinfo}}",
+	"apihelp-query+videoinfo-param-prop": "{{doc-apihelp-param|query+videoinfo|prop}}",
+	"apihelp-query+videoinfo-example-1": "{{doc-apihelp-example|query+videoinfo}}",
+	"apihelp-transcodereset-description": "{{doc-apihelp-description|transcodereset}}",
+	"apihelp-transcodereset-param-title": "{{doc-apihelp-param|transcodereset|title}}",
+	"apihelp-transcodereset-param-transcodekey": "{{doc-apihelp-param|transcodereset|transcodekey}}",
+	"apihelp-transcodereset-example-1": "{{doc-apihelp-example|transcodereset}}",
+	"apihelp-transcodereset-example-2": "{{doc-apihelp-example|transcodereset}}"
 }
