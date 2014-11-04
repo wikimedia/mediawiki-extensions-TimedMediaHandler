@@ -269,10 +269,16 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// both are too small. Go with the one closer to the target width
 			return ( $a['width'] < $b['width'] ) ? -1 : 1;
 		}
-		// Both are big enough, or both equally to small. Go with the one
+		// Both are big enough, or both equally too small. Go with the one
 		// that has a lower bit-rate (as it will be faster to download).
-		return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
+		if ( isset( $a['bandwidth'] ) && isset( $b['bandwidth'] ) ) {
+			return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
+		}
+
+		// We have no firm basis for a comparison, so consider them equal.
+		return 0;
 	}
+
 	/**
 	 * Call mediaWiki xml helper class to build media tag output from
 	 * supplied arrays
