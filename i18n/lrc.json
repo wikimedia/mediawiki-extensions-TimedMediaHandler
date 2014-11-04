@@ -11,8 +11,15 @@
 	"timedmedia-dismiss": "بسن",
 	"timedmedia-download": "گرتن جانیا",
 	"timedmedia-desc-link": "دباره ای جانیا",
+	"timedmedia-status": "حال وبال",
+	"timedmedia-status-unknown": "حال و بال نادیار",
+	"timedmedia-not-ready": "آماده نئ",
 	"timedmedia-percent-done": "د حدود $1% انجوم بی",
 	"timedmedia-days": "{{جمی:$1|1 روز|$1 روز}}",
+	"timedmedia-hours": "{{PLURAL:$1|$1 ساعت|$1 ساعت یا}}",
+	"timedmedia-minutes": "{{PLURAL:$1|$1 دیقه|$1 دیقه یا}}",
+	"timedmedia-seconds": "{{PLURAL:$1|$1 ثانیه|$1 ثانیه یا}}",
 	"timedmedia-source-file-desc": "اصلی $1 جانیا, $2 × $3 ($4)",
+	"timedmedia-subtitle-new-go": "رؤ",
 	"timedmedia-file": "جانیا"
 }

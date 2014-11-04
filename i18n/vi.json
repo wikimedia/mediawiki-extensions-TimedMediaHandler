@@ -4,7 +4,8 @@
 			"Minh Nguyen",
 			"Vinhtantran",
 			"පසිඳු කාවින්ද",
-			"Trần Nguyễn Minh Huy"
+			"Trần Nguyễn Minh Huy",
+			"Max20091"
 		]
 	},
 	"timedmedia-desc": "Bộ trình bày các tập tin âm thanh, video, và phụ đề hỗ trợ WebM, Ogg Theora, Vorbis, và srt",
@@ -68,7 +69,7 @@
 	"timedmedia-derivative-720p.ogv": "Ogg 720p",
 	"timedmedia-derivative-desc-720p.ogv": "Video Ogg chất lượng cao có thể tải về (720P)",
 	"timedmedia-derivative-1080p.ogv": "Ogg 1080p",
-	"timedmedia-derivative-desc-1080p.ogv": "Video Ogg độ nét cao đầy đủ có thể tải về (1080p)",
+	"timedmedia-derivative-desc-1080p.ogv": "Video Ogg Full HD có thể tải về (1080p)",
 	"timedmedia-derivative-160p.webm": "WebM 160p",
 	"timedmedia-derivative-desc-160p.webm": "WebM có thể truyền dòng trên Web (160P)",
 	"timedmedia-derivative-360p.webm": "WebM 360p",
@@ -78,7 +79,7 @@
 	"timedmedia-derivative-720p.webm": "WebM 720p",
 	"timedmedia-derivative-desc-720p.webm": "WebM chất lượng cao có thể tải về (720P)",
 	"timedmedia-derivative-1080p.webm": "WebM 1080p",
-	"timedmedia-derivative-desc-1080p.webm": "WebM độ nét cao đầy đủ có thể tải về (1080p)",
+	"timedmedia-derivative-desc-1080p.webm": "WebM Full HD có thể tải về (1080p)",
 	"timedmedia-derivative-320p.mp4": "H.264 320p",
 	"timedmedia-derivative-desc-320p.mp4": "MP4 thích hợp với thiết bị (320P)",
 	"timedmedia-derivative-480p.mp4": "H.264 480p",
@@ -86,7 +87,7 @@
 	"timedmedia-derivative-720p.mp4": "H.264 720p",
 	"timedmedia-derivative-desc-720p.mp4": "MP4 chất lượng HD (720P)",
 	"timedmedia-derivative-1080p.mp4": "H.264 1080p",
-	"timedmedia-derivative-desc-1080p.mp4": "MP4 độ nét cao đầy đủ (1080p)",
+	"timedmedia-derivative-desc-1080p.mp4": "MP4 Full HD (1080p)",
 	"timedmedia-subtitle-new": "Tạo bản dịch mới hoặc sửa đổi bản dịch đã tồn tại",
 	"timedmedia-subtitle-new-desc": "Chọn ngôn ngữ và bấm nút '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Tạo",
@@ -114,5 +115,6 @@
 	"orphanedtimedtext": "Các trang TimedText mồ côi",
 	"orphanedtimedtext-summary": "Danh sách trang [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] không có tập tin tương ứng.",
 	"orphanedtimedtext-unsupported": "Trang đặc biệt này chỉ được hỗ trợ trên cơ sở dữ liệu MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText không được kích hoạt trên wiki này."
+	"orphanedtimedtext-notimedtext": "TimedText không được kích hoạt trên wiki này.",
+	"apihelp-transcodereset-param-title": "Tên tập tin phương tiện."
 }
