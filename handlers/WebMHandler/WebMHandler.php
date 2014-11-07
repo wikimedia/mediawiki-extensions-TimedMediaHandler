@@ -120,9 +120,12 @@ class WebMHandler extends ID3Handler {
 			$streamTypes[] = 'Opus';
 		}
 		// id3 gives 'V_VP8' for what we call VP8
-		if( $metadata['video']['dataformat'] == 'vp8' ){
+		if( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'vp8' ){
 			$streamTypes[] =  'VP8';
-		} elseif( $metadata['video']['dataformat'] === 'vp9' || $metadata['video']['dataformat'] === 'V_VP9' ) {
+		} elseif( isset( $metadata['video'] ) &&
+			( $metadata['video']['dataformat'] === 'vp9'
+			|| $metadata['video']['dataformat'] === 'V_VP9'
+		) ) {
 			// Currently getID3 calls it V_VP9. That will probably change to vp9
 			// once getID3 actually gets support for the codec.
 			$streamTypes[] =  'VP9';
