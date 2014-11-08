@@ -44,6 +44,7 @@ $specialPageAliases['et'] = array(
 /** Hebrew (עברית) */
 $specialPageAliases['he'] = array(
 	'TimedMediaHandler' => array( 'מדיה_מתוזמנת' ),
+	'OrphanedTimedText' => array( 'טקסט_מתוזמן_יתום' ),
 );
 
 /** Korean (한국어) */
