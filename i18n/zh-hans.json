@@ -109,6 +109,7 @@
 	"orphanedtimedtext-summary": "没有对应文件的[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]页面的列表。",
 	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
 	"orphanedtimedtext-notimedtext": "TimedText在此wiki未启用。",
+	"apihelp-query+transcodestatus-example-1": "获得[[:File:Clip.webm]]的译码状态",
 	"apihelp-query+videoinfo-example-1": "检索有关[[:File:Folgers.ogv]]的信息",
 	"apihelp-transcodereset-param-title": "媒体文件标题。",
 	"apihelp-transcodereset-example-1": "重置[[:File:Clip.webm]]的所有译码"
