@@ -109,7 +109,7 @@ mw.processEmbedPlayers = function( playerSet, callback ) {
 			// player interface setup. like iframes asynchronous announcing its ready for
 			// bindings that can affect player setup.
 			mw.log("EmbedPlayer::addPlayerElement :trigger startPlayerBuildOut:" + inDomPlayer.id );
-			$( '#' + inDomPlayer.id ).triggerQueueCallback( 'startPlayerBuildOut', function(){
+			$( inDomPlayer ).triggerQueueCallback( 'startPlayerBuildOut', function(){
 				// Issue the checkPlayerSources call to the new player
 				// interface: make sure to use the element that is in the DOM:
 				inDomPlayer.checkPlayerSources();

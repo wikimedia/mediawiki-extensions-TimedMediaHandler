@@ -188,6 +188,10 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
+	 * Parser output hook only adds the required modules
+	 *
+	 * The core embedPlayer module lazy loaded by the loader modules
+	 *
 	 * @param $parser Parser
 	 * @param $file File
 	 */
@@ -197,26 +201,11 @@ class TimedMediaHandler extends MediaHandler {
 			return ;
 		}
 		$parserOutput->hasTimedMediaTransform = true;
-		$parserOutput->addOutputHook( 'TimedMediaHandler' );
-	}
-
-	/**
-	 * Parser output hook only adds the PopUpMediaTransform
-	 *
-	 * The core embedPlayer module is part of a "loaderScript" so it does not need to
-	 * be registered here.
-	 *
-	 * TODO move core loader to on-page script as to not include it on all pages.
-	 *
-	 * @param $outputPage OutputPage
-	 * @param $parserOutput
-	 * @param $data
-	 */
-	static function outputHook( $outputPage, $parserOutput, $data ) {
-		// Add the PopUpMediaTransform code
-		$outputPage->addModuleScripts( 'mw.PopUpMediaTransform' );
-		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform.styles' );
-		$outputPage->addModules( 'mw.TMHGalleryHook.js' );
+		$parserOutput->addModules( array(
+			'mw.MediaWikiPlayer.loader',
+			'mw.PopUpMediaTransform',
+			'mw.TMHGalleryHook.js',
+		) );
 		if ( $parserOutput ) {
 			// Not present when run from outputpage hooks, like File/Category etc...
 			$parserOutput->setExtensionData( 'mw_ext_TMH_hasTimedMediaTransform', true );
