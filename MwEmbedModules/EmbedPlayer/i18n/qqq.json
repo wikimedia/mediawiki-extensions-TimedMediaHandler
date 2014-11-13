@@ -28,6 +28,7 @@
 	"mwe-embedplayer-ogg-player-aacNative": "name of AAC player in configuration screen",
 	"mwe-embedplayer-ogg-player-cortado": "{{optional}}",
 	"mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "name of IE WebM plugin installer helper in configuration screen",
 	"mwe-embedplayer-for_best_experience": "Shown when user's browser doesn't support playing videos. Parameters:\n* $1 - An empty &lt;a&gt; tag. Don't use this parameter.",
 	"mwe-embedplayer-download-warn": "Parameters:\n* $1 - URL",
 	"mwe-embedplayer-do_not_warn_again": "Standard message for disabling\nfuture identical warnings messages",
@@ -39,5 +40,8 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "First bullet point after the mwe-embedplayer-vlcapp-intro. Links to the download page for installing the vlc app ( https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 ).",
 	"mwe-embedplayer-vlcapp-openvideo": "Second bullet point after the mwe-embedplayer-vlcapp-intro. Link will open the video in the VLC app, if the app is installed",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Third bullet point after the mwe-embedplayer-vlcapp-intro. Linked directly to the video file",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8."
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8.",
+	"mwe-embedplayer-iewebmprompt-intro": "Shown where a video would be on the page, on IE with no WebM or Ogg support. Followed by mwe-embedplayer-iewebmprompt-linktext",
+	"mwe-embedplayer-iewebmprompt-linktext": "Shown where a video would be on the page, on IE with no WebM or Ogg support. When clicked links to https://tools.google.com/dlpage/webmmf/",
+	"mwe-embedplayer-iewebmprompt-outro": "Shown where a video would be on the page, on IE with no WebM or Ogg support. Follows mwe-embedplayer-iewebmprompt-linktext"
 }
