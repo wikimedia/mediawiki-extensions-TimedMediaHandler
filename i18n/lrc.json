@@ -22,5 +22,6 @@
 	"timedmedia-source-file": "سرچشمه $1",
 	"timedmedia-source-file-desc": "اصلی $1 جانیا, $2 × $3 ($4)",
 	"timedmedia-subtitle-new-go": "رؤ",
+	"timedmedia-videos": "{{PLURAL:$1|$1 ویدیو|$1 ویدیویا}}",
 	"timedmedia-file": "جانیا"
 }
