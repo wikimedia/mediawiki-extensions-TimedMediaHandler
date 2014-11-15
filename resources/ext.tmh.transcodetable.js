@@ -1,23 +1,23 @@
 /**
 * Javascript to support transcode table on image page
 */
-$(document).ready(function(){
+$( document ).ready( function () {
 	var errorPopup, $errorLink;
 
 	errorPopup = function () {
 		// pop up dialog
-		mw.addDialog({
-			'width' : '640',
-			'height' : '480',
-			'title' : $(this).attr('title'),
-			'content' : $('<textarea />')
-				.css({
+		mw.addDialog( {
+			'width': '640',
+			'height': '480',
+			'title': $(this).attr( 'title' ),
+			'content': $('<textarea />')
+				.css( {
 					'width':'99%',
 					'height':'99%'
-				})
+				} )
 				.text( $(this).attr('data-error') )
-		})
-		.css('overflow', 'hidden');
+		} )
+		.css( 'overflow', 'hidden' );
 		return false;
 	}
 
@@ -25,32 +25,32 @@ $(document).ready(function(){
 	$( '.mw-filepage-transcodestatus .errorlink' ).click( errorPopup );
 	// New version.
 	$errorLink = $( '.mw-filepage-transcodestatus .mw-tmh-pseudo-error-link' );
-	$errorLink.wrapInner( function() {
-		var $this = $(this);
+	$errorLink.wrapInner( function () {
+		var $this = $( this );
 		return $( '<a />' ).attr( {
 			href: '#',
 			title: $this.text(),
-			'data-error': $this.attr('data-error')
+			'data-error': $this.attr( 'data-error' )
 		} ).click( errorPopup );
 	} );
 
 	// Reset transcode action:
-	$('.mw-filepage-transcodereset a').click( function(){
-		var tKey = $(this).attr('data-transcodekey');
+	$( '.mw-filepage-transcodereset a' ).click( function () {
+		var tKey = $( this ).attr( 'data-transcodekey' );
 		var buttons = {};
-		buttons[ mw.msg('mwe-ok') ] = function(){
+		buttons[ mw.msg( 'mwe-ok' ) ] = function () {
 			var _thisDialog = this;
 
 			// Only show cancel button while loading:
 			var cancelBtn = {};
-			cancelBtn[ mw.msg('mwe-cancel') ] = function() {
-				$(this).dialog("close");
+			cancelBtn[ mw.msg( 'mwe-cancel' ) ] = function () {
+				$(this).dialog( 'close' );
 			}
-			$( _thisDialog ).dialog( "option", "buttons", cancelBtn );
+			$( _thisDialog ).dialog( 'option', 'buttons', cancelBtn );
 
 			$( this ).loadingSpinner();
 
-			var apiUrl =  mw.config.get('wgServer') + mw.config.get( 'wgScriptPath' ) + '/api.php';
+			var apiUrl =  mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + '/api.php';
 			// Do an api post action:
 			$.post( apiUrl, {
 				'action' : 'transcodereset',
@@ -58,7 +58,7 @@ $(document).ready(function(){
 				'title' : mw.config.get('wgPageName'),
 				'token' : mw.user.tokens.get('editToken'),
 				'format' : 'json'
-			}, function( data ){
+			}, function ( data ) {
 				if( data && data['success'] ){
 					// refresh the page
 					window.location.reload();
@@ -69,23 +69,23 @@ $(document).ready(function(){
 						$( _thisDialog ).text( mw.msg( 'timedmedia-reset-error' ) );
 					}
 					var okBtn = {};
-					okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog("close"); }
-					$( _thisDialog ).dialog( "option", "buttons", okBtn );
+					okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog( 'close' ); }
+					$( _thisDialog ).dialog( 'option', 'buttons', okBtn );
 				}
 			})
 		};
-		buttons[ mw.msg('mwe-cancel') ] =function(){
-			$(this).dialog('close');
+		buttons[ mw.msg( 'mwe-cancel' ) ] = function () {
+			$( this ).dialog( 'close' );
 		}
 		// pop up dialog
-		mw.addDialog({
-			'width' : '400',
-			'height' : '200',
-			'title' : mw.msg('timedmedia-reset'),
-			'content' : mw.msg('timedmedia-reset-confirm'),
+		mw.addDialog( {
+			'width': '400',
+			'height': '200',
+			'title': mw.msg( 'timedmedia-reset' ),
+			'content': mw.msg( 'timedmedia-reset-confirm' ),
 			'buttons': buttons
-		})
-		.css('overflow', 'hidden');
+		} )
+		.css( 'overflow', 'hidden' );
 		return false;
 	})
 })
