@@ -54,7 +54,7 @@
 				var i, page, imageinfo;
 				if ( data.query.pages ) {
 					for ( i in data.query.pages ) {
-						if ( i == '-1' ) {
+						if ( i === '-1' ) {
 							callback( false );
 							return ;
 						}
@@ -84,14 +84,14 @@
 				);
 
 				// Set the duration
-				if ( imageinfo.metadata[2].name == 'length' ) {
+				if ( imageinfo.metadata[2].name === 'length' ) {
 					embedPlayer.duration = imageinfo.metadata[2].value;
 				}
 
 				// Set the width height
 				// Make sure we have an accurate aspect ratio
-				if ( imageinfo.height != 0 && imageinfo.width != 0 ) {
-					embedPlayer.height = parseInt( embedPlayer.width * ( imageinfo.height / imageinfo.width ) );
+				if ( imageinfo.height !== 0 && imageinfo.width !== 0 ) {
+					embedPlayer.height = parseInt( embedPlayer.width * ( imageinfo.height / imageinfo.width ), 10 );
 				}
 
 				// Update the css for the player interface
@@ -109,12 +109,12 @@
 		* @param {String} resourceHTML Resource wiki text page contents
 		*/
 		function doCreditLine( resourceHTML, articleUrl ) {
-			var authUrl, $page, $author, $links, $date, $authorLink,
-			imgSize = { },
-			// Get the title string ( again a "Title" like js object could help out here. )
-			titleStr = embedPlayer.apiTitleKey.replace( /_/g, ' ' ),
-			// Setup the initial credits line:
-			$creditLine = $( '<div />' );
+			var authUrl, $page, $author, $authorText, $links, $date, $authorLink,
+				imgSize = {},
+				// Get the title string ( again a "Title" like js object could help out here. )
+				titleStr = embedPlayer.apiTitleKey.replace( /_/g, ' ' ),
+				// Setup the initial credits line:
+				$creditLine = $( '<div />' );
 
 			// Add the title:
 			$creditLine.append(
@@ -139,7 +139,7 @@
 			$author = $page.find( '#fileinfotpl_aut' );
 			if ( $author.length ) {
 				// Get the real author sibling of fileinfotpl_aut
-				$authorText = $author.next()
+				$authorText = $author.next();
 				// Remove white space:
 				$authorText.find( 'br' ).remove();
 
@@ -155,7 +155,7 @@
 				}
 				$creditLine.append( $( '<br />' ),
 					mw.msg( 'mwe-embedplayer-credit-author', $authorText.html() )
-				)
+				);
 			}
 
 			// Look for date:
@@ -168,7 +168,7 @@
 				$date.find( 'br' ).remove();
 				$creditLine.append(  $( '<br />' ),
 					mw.msg( 'mwe-embedplayer-credit-date', $date.html() )
-				)
+				);
 			}
 
 			// Build out the image and credit line
@@ -176,7 +176,7 @@
 				imgSize.height = imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 80;
 			} else {
 				imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 120;
-				imgSize.height = parseInt( imgSize.width * ( embedPlayer.getHeight() / embedPlayer.getWidth() ) );
+				imgSize.height = parseInt( imgSize.width * ( embedPlayer.getHeight() / embedPlayer.getWidth() ), 10 );
 			}
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(
@@ -193,13 +193,13 @@
 				.append(
 					$creditLine
 				);
-		};
+		}
 
 		/**
 		 * Issues a request to populate the credits box
 		 */
 		function showCredits( $target, callback ) {
-			var apiUrl, fileTitle, request, articleUrl = '';
+			var apiUrl, fileTitle, request;
 			if ( $creditsCache ) {
 				$target.html( $creditsCache );
 				callback( true );
@@ -217,8 +217,7 @@
 				'maxage': 3600
 			};
 			mw.getJSON( apiUrl, request, function ( data ) {
-
-				descUrl = apiUrl.replace( 'api.php', 'index.php');
+				var descUrl = apiUrl.replace( 'api.php', 'index.php');
 				descUrl += '?title=' + encodeURIComponent( fileTitle );
 				if ( data && data.parse && data.parse.text && data.parse.text['*'] ) {
 					// TODO improve provider 'concept' to support page title link
@@ -229,14 +228,14 @@
 				$target.html( $creditsCache );
 				callback( true );
 			} );
-		};
+		}
 		/**
 		 * Adds embedPlayer Bindings
 		 */
 
 		// Show credits when requested
 		$( embedPlayer ).bindQueueCallback( 'showCredits', function ( $target, callback ) {
-			if ( $target.data( 'playerId') != embedPlayer.id ) {
+			if ( $target.data( 'playerId') !== embedPlayer.id ) {
 				// bad event trigger
 				return ;
 			}
@@ -246,7 +245,7 @@
 
 		// Show credits on clip complete:
 		$( embedPlayer ).bind( 'onEndedDone', function ( event, id ) {
-			if ( embedPlayer.id != id ) {
+			if ( embedPlayer.id !== id ) {
 				// possible event trigger error. ( skip )
 				return ;
 			}
@@ -281,10 +280,11 @@
 		});
 
 		$( embedPlayer ).bind( 'TimedText_BuildCCMenu', function ( event, $menu, id ) {
-			var pageTitle,
+			var _this,
+				pageTitle,
 				addTextPage,
 				$li;
-			if ( id != embedPlayer.id ) {
+			if ( id !== embedPlayer.id ) {
 				_this = $( '#' + id )[0].timedText;
 				embedPlayer = _this.embedPlayer;
 			}
@@ -320,7 +320,7 @@
 
 		$( embedPlayer ).bindQueueCallback( 'checkPlayerSourcesEvent', function ( callback ) {
 			// Only load source if none are available:
-			if ( embedPlayer.mediaElement.sources.length == 0 ) {
+			if ( embedPlayer.mediaElement.sources.length === 0 ) {
 				loadPlayerSources( callback );
 			} else {
 				// No source to load, issue callback directly
@@ -355,19 +355,19 @@
 		});
 
 		$( embedPlayer ).bind( 'getShareIframeSrc', function ( event, callback, id ) {
-			if ( id != embedPlayer.id ) {
+			if ( id !== embedPlayer.id ) {
 				embedPlayer = $( '#' + id )[0];
 			}
 			var iframeUrl = false;
 			// Do a special check for wikimediacommons provider as a known shared reop
-			if ( embedPlayer['data-mwprovider'] == 'wikimediacommons' ) {
+			if ( embedPlayer['data-mwprovider'] === 'wikimediacommons' ) {
 				iframeUrl = '//commons.wikimedia.org/wiki/File:' + decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/, '' );
 			} else {
 				// use the local wiki:
 				if ( mw.config.get( 'wgServer' ) && mw.config.get( 'wgArticlePath' ) ) {
 					iframeUrl =  mw.config.get( 'wgServer' ) +
 						mw.config.get( 'wgArticlePath' ).replace( /\$1/, 'File:' +
-							decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/, '' ) )
+							decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/, '' ) );
 				}
 			}
 			if ( iframeUrl ) {

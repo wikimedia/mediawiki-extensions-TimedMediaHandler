@@ -4,9 +4,10 @@
 ( function ( mw, $ ) {
 	$( document ).ready( function () {
 		$('.PopUpMediaTransform a').each( function () {
-			var parent = $( this ).parent();
+			var link, title,
+				parent = $( this ).parent();
 			if ( parent.attr( 'videopayload' ) ) {
-				$( this ).click( function ( event ) {
+				$( this ).click( function ( /*event*/ ) {
 					var thisref = this;
 
 					mw.loader.using( 'mw.MwEmbedSupport', function () {
@@ -32,8 +33,8 @@
 					return false;
 				} );
 			} else if ( parent.attr( 'data-videopayload' ) ) {
-				var link = $( this ).attr( 'href' ),
-					title = mw.Title.newFromImg( { src: link } );
+				link = $( this ).attr( 'href' );
+				title = mw.Title.newFromImg( { src: link } );
 				if ( title && title.getPrefixedDb() !== mw.config.get( 'wgPageName' ) ) {
 					$( this ).attr( 'href', title.getUrl() );
 				}
