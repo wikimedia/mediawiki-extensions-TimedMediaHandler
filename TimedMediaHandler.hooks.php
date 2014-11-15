@@ -78,7 +78,10 @@ class TimedMediaHandlerHooks {
 			'ext.tmh.transcodetable' => $baseExtensionResource + array(
 				'scripts' => 'resources/ext.tmh.transcodetable.js',
 				'styles' => 'resources/transcodeTable.css',
-				'dependencies' => 'mediawiki.api.edit',
+				'dependencies' => array(
+					'mediawiki.api.edit',
+					'mw.MwEmbedSupport',
+				),
 				'messages'=> array(
 					'mwe-ok',
 					'mwe-cancel',
