@@ -50,15 +50,12 @@ $( document ).ready( function () {
 
 			$( this ).loadingSpinner();
 
-			var apiUrl =  mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + '/api.php';
-			// Do an api post action:
-			$.post( apiUrl, {
+			var api = new mw.Api();
+			api.postWithEditToken( {
 				'action' : 'transcodereset',
 				'transcodekey' : tKey,
-				'title' : mw.config.get('wgPageName'),
-				'token' : mw.user.tokens.get('editToken'),
-				'format' : 'json'
-			}, function ( data ) {
+				'title' : mw.config.get('wgPageName')
+			} ).done( function ( data ) {
 				if( data && data['success'] ){
 					// refresh the page
 					window.location.reload();
@@ -72,7 +69,7 @@ $( document ).ready( function () {
 					okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog( 'close' ); }
 					$( _thisDialog ).dialog( 'option', 'buttons', okBtn );
 				}
-			})
+			} );
 		};
 		buttons[ mw.msg( 'mwe-cancel' ) ] = function () {
 			$( this ).dialog( 'close' );
