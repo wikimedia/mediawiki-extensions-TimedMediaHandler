@@ -109,7 +109,7 @@
 		* @param {String} resourceHTML Resource wiki text page contents
 		*/
 		function doCreditLine( resourceHTML, articleUrl ) {
-			var authUrl, $page, $author, $links, $date, $authorLink
+			var authUrl, $page, $author, $links, $date, $authorLink,
 			imgSize = { },
 			// Get the title string ( again a "Title" like js object could help out here. )
 			titleStr = embedPlayer.apiTitleKey.replace( /_/g, ' ' ),
