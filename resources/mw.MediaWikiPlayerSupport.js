@@ -91,7 +91,7 @@
 				// Set the width height
 				// Make sure we have an accurate aspect ratio
 				if ( imageinfo.height !== 0 && imageinfo.width !== 0 ) {
-					embedPlayer.height = parseInt( embedPlayer.width * ( imageinfo.height / imageinfo.width ), 10 );
+					embedPlayer.height = Math.floor( embedPlayer.width * ( imageinfo.height / imageinfo.width ) );
 				}
 
 				// Update the css for the player interface
@@ -176,7 +176,7 @@
 				imgSize.height = imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 80;
 			} else {
 				imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 120;
-				imgSize.height = parseInt( imgSize.width * ( embedPlayer.getHeight() / embedPlayer.getWidth() ), 10 );
+				imgSize.height = Math.floor( imgSize.width * ( embedPlayer.getHeight() / embedPlayer.getWidth() ) );
 			}
 			return $( '<div/>' ).addClass( 'creditline' )
 				.append(
