@@ -101,5 +101,7 @@
 	"orphanedtimedtext": "דפי טקסט מתוזמן יתומים",
 	"orphanedtimedtext-summary": "רשימה של כל דפי [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] שלא משויך להם קובץ.",
 	"orphanedtimedtext-unsupported": "הדף המיוחד הזה נתמך רק במסדי נתונים MySQL.",
-	"orphanedtimedtext-notimedtext": "ההרחבה TimedText אינה מופעלת בוויקי הזה."
+	"orphanedtimedtext-notimedtext": "ההרחבה TimedText אינה מופעלת בוויקי הזה.",
+	"apihelp-query+transcodestatus-description": "קבלת מצב ההמרה המשנית עבור דף הקובץ הנתון.",
+	"apihelp-query+transcodestatus-example-1": "קבלת מצב ההמרה המשנית עבור [[:File:Clip.webm]]"
 }
