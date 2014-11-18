@@ -56,19 +56,17 @@ $( document ).ready( function () {
 				'transcodekey' : tKey,
 				'title' : mw.config.get('wgPageName')
 			} ).done( function ( data ) {
-				if( data && data['success'] ){
-					// refresh the page
-					window.location.reload();
+				// refresh the page
+				window.location.reload();
+			} ).fail( function ( code, data ) {
+				if( data.error && data.error.info ){
+					$( _thisDialog ).text( data.error.info );
 				} else {
-					if( data.error && data.error.info ){
-						$( _thisDialog ).text( data.error.info );
-					} else {
-						$( _thisDialog ).text( mw.msg( 'timedmedia-reset-error' ) );
-					}
-					var okBtn = {};
-					okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog( 'close' ); }
-					$( _thisDialog ).dialog( 'option', 'buttons', okBtn );
+					$( _thisDialog ).text( mw.msg( 'timedmedia-reset-error' ) );
 				}
+				var okBtn = {};
+				okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog( 'close' ); }
+				$( _thisDialog ).dialog( 'option', 'buttons', okBtn );
 			} );
 		};
 		buttons[ mw.msg( 'mwe-cancel' ) ] = function () {
