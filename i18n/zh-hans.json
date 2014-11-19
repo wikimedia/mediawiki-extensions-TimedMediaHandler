@@ -112,6 +112,7 @@
 	"apihelp-query+transcodestatus-example-1": "获得[[:File:Clip.webm]]的译码状态",
 	"apihelp-query+videoinfo-example-1": "检索有关[[:File:Folgers.ogv]]的信息",
 	"apihelp-transcodereset-param-title": "媒体文件标题。",
+	"apihelp-transcodereset-param-transcodekey": "您希望重置的转码关键字。从[[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]获取。",
 	"apihelp-transcodereset-example-1": "重置[[:File:Clip.webm]]的所有译码",
 	"apihelp-transcodereset-example-2": "重置[[:File:Clip.webm]]的“360_560kbs.webm”转码关键字"
 }
