@@ -63,7 +63,9 @@ var aacNativePlayer = new mw.MediaPlayer( 'aacNative', [
 var webmNativePlayer = new mw.MediaPlayer( 'webmNative', [
 	'video/webm',
 	'video/webm; codecs="vp8"',
-	'video/webm; codecs="vp8, vorbis"'
+	'video/webm; codecs="vp8, vorbis"',
+	'audio/webm',
+	'audio/webm; codecs="vorbis"'
 ], 'Native' );
 
 // Image Overlay player ( extends native )

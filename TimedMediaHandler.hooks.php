@@ -37,6 +37,7 @@ class TimedMediaHandlerHooks {
 
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
+		$wgMediaHandlers['audio/webm'] = 'WebMHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 		$wgMediaHandlers['video/mp4'] = 'Mp4Handler';
 		$wgMediaHandlers['audio/x-flac'] = 'FLACHandler';
