@@ -21,6 +21,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	);
 	private $audioFormats = array(
 		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
+		'webm' => 'img_major_mime="audio" AND img_minor_mime = "webm"',
 		'flac' => 'img_major_mime="audio" AND img_minor_mime="x-flac"',
 		'wav' => 'img_major_mime="audio" AND img_minor_mime="wav"',
 	);
@@ -46,7 +47,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 			);
 			// Give grep a chance to find the usages: timedmedia-ogg-videos, timedmedia-webm-videos,
 			// timedmedia-ogg-audios, timedmedia-flac-audios, timedmedia-wav-audios
-			foreach ( $this->formats as $format => $condition ) {
+			$formats = $type == 'audios' ? $this->audioFormats : $this->formats;
+			foreach ( $formats as $format => $condition ) {
 				if ( $stats[ $type ][ $format ] ) {
 					$out->addHTML(
 						$this->msg( "timedmedia-$format-$type" )->numParams( $stats[ $type ][ $format ] )->escaped()
@@ -162,7 +164,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				$stats[ 'videos' ][ 'total' ] += $stats[ 'videos' ][ $format ];
 			}
 			$stats[ 'audios' ] = array( 'total' => 0 );
-			foreach( $this->formats as $format => $condition ) {
+			foreach( $this->audioFormats as $format => $condition ) {
 				$stats[ 'audios' ][ $format ] = (int)$dbr->selectField(
 					'image',
 					'COUNT(*)',
