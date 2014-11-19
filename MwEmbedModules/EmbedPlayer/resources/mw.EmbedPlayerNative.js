@@ -469,6 +469,11 @@ mw.EmbedPlayerNative = {
 				callback = null;
 			}
 		}
+		if( !vid ) {
+			callbackHandler();
+			_this.currentSeekTargetTime = seekTime.toFixed( 2 );
+			return;
+		}
 		// Check if player is ready for seek:
 		if( vid.readyState < 1 ){
 			// Try to seek for 4 seconds:
