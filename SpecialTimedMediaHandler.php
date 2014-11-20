@@ -84,7 +84,9 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				. "</h2>"
 			);
 			foreach( $allTranscodes as $key ) {
-				if ( $states[ $state ][ $key ] ) {
+				if ( isset( $states[ $state ] )
+					&& isset( $states[ $state ][ $key ] )
+					&& $states[ $state ][ $key ] ) {
 					$out->addHTML(
 						$states[ $state ][ $key ]
 						. ' '
