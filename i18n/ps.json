@@ -17,7 +17,9 @@
 	"timedmedia-days": "{{PLURAL:$1|1 ورځ|$1 ورځې}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 ساعت|$1 ساعتونه}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 دقيقه|دقيقې}}",
+	"timedmedia-source-audio-file-desc": "آرنۍ $1 دوتنه ($2)",
 	"timedmedia-subtitle-new-go": "ورځه",
 	"timedmedia-videos": "{{PLURAL:$1|$1 ويډيو|$1 ويډيوگانې}}",
-	"timedmedia-file": "دوتنه"
+	"timedmedia-file": "دوتنه",
+	"timedmedia-audios": "{{PLURAL:$1|$1 غږيزه دوتنه|$1 غږيزې دوتنې}}"
 }
