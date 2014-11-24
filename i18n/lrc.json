@@ -6,6 +6,10 @@
 		]
 	},
 	"timedmedia-ogg-short-audio": "جانیا دنگ اوگ $1،$2",
+	"timedmedia-ogg-short-video": "Ogg $1 جانیا ویدیو, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 جانیا وارسگر , $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 جانیا دنگ , درازا $2, $3",
+	"timedmedia-ogg-long-error": "جانیا دنگ اوگ نامعتور:$1",
 	"timedmedia-wav-pcm-required": "شما فقط تونیت پی سی ام نه سوار بکید",
 	"timedmedia-more": "بیشتر....",
 	"timedmedia-dismiss": "بسن",
