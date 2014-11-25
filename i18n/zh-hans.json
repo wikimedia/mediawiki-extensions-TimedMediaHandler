@@ -54,7 +54,7 @@
 	"timedmedia-in-job-queue": "添加到工作队列在$1前",
 	"timedmedia-unknown-target-size": "未知目标大小，$1已编码",
 	"timedmedia-days": "$1天",
-	"timedmedia-hours": "$1小时",
+	"timedmedia-hours": "{{PLURAL:$1|$1小时}}",
 	"timedmedia-minutes": "$1分",
 	"timedmedia-seconds": "$1秒",
 	"timedmedia-reset": "重置转码",
