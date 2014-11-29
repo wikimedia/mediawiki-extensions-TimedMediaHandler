@@ -22,7 +22,7 @@
 	"mwe-timedtext-textcat-lrc": "歌詞",
 	"mwe-timedtext-textcat-lin": "語言標記",
 	"mwe-timedtext-textcat-cue": "暗點",
-	"mwe-timedtext-no-subs": "沒有文本軌道",
+	"mwe-timedtext-no-subs": "無可用字幕",
 	"mwe-timedtext-language-subtitles-for-clip": "片段的$1字幕文件：$2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "沒有找到片段的$1字幕文件：$2",
 	"mwe-timedtext-upload-timed-text": "添加字幕"

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hugo.arg"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Pavadinimas: $1",
+	"mwe-embedplayer-credit-date": "Data: $1",
+	"mwe-embedplayer-credit-author": "Autorius: $1",
+	"mwe-embedplayer-timed_text": "Priskirtas tekstas",
+	"mwe-embedplayer-download": "Atsisiųsti",
+	"mwe-embedplayer-share": "Dalintis",
+	"mwe-embedplayer-credits": "Rinkmenos duomenys",
+	"mwe-embedplayer-kaltura-platform-title": "„Kaltura“ atvirojo kodo įrašų grotuvo platforma",
+	"mwe-embedplayer-close_btn": "Uždaryti"
+}
