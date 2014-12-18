@@ -105,5 +105,15 @@
 	"orphanedtimedtext": "Föräldralösa TimedText-sidor",
 	"orphanedtimedtext-summary": "Lista över [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sidor som inte har en motsvarande fil.",
 	"orphanedtimedtext-unsupported": "Denna special-sida har bara stöd på MySQL-databaser.",
-	"orphanedtimedtext-notimedtext": "TimedText är inte aktiverat på denna wiki."
+	"orphanedtimedtext-notimedtext": "TimedText är inte aktiverat på denna wiki.",
+	"apihelp-query+transcodestatus-description": "Hämta transkodningsstatusen för en viss filsida.",
+	"apihelp-query+transcodestatus-example-1": "Hämta transkodningsstatusen för [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Utökar imageinfo till att inkludera källinformation för video (derivat)",
+	"apihelp-query+videoinfo-param-prop": "Vilken videoinformation att hämta:\n;timestamp:Lägger till tidsstämpeln för den uppladdade versionen.\n;user:Lägger till användaren som laddade upp videoversionen.\n;userid:Lägger till användar-ID:et som laddade upp videoversionen.\n;comment:Kommentar för versionen.\n;parsedcomment:Tolka kommentaren för versionen.\n;canonicaltitle:Lägger till den kanoniska titeln för videofilen.\n;url:Ger URL:en till videon och beskrivningssidan.\n;size:Lägger till storleken på videon i bytes, dess höjd och vidd. Sidantal och varaktighet om applicerbart.\n;dimensions:Alias för size.\n;sha1:Lägger till SHA-1-hash för videon.\n;mime:Lägger till MIME-typ för videon.\n;thumbmime:Lägger till MIME-typ för videons miniatyr (kräver url och parametern $1urlwidth).\n;mediatype:Lägger till mediatyp för videon.\n;metadata:Listar Exif-metadata för versionen av videon.\n;commonmetadata:Listar filformatgenerisk metadata för versionen av videon.\n;extmetadata:Listar formaterad metadata kombinerad från flera källor. Resultaten är HTML-formaterade.\n;archivename:Lägger till filnamn för arkivversionen för icke-senaste versioner.\n;bitdepth:Lägger till bitdjup för versionen.\n;uploadwarning:Används av [[Special:Upload]]-sidan för att få information om en existerande fil. Ej avsedd för bruk utanför Mediawiki core.\n;derivatives:Lägger till en lista för de olika format- och kvalitetsversionerna för en audio- eller videofil som är tillgängliga.",
+	"apihelp-query+videoinfo-example-1": "Hämta information om [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-description": "Användare med \"transcode-reset\"-rättigheten kan återställa och köra om ett transkodningsjobb.",
+	"apihelp-transcodereset-param-title": "Mediefilens titel.",
+	"apihelp-transcodereset-param-transcodekey": "Den transkodningsnyckel du önskar återställa. Hämta från [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Återställ alla transkodningar för [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Återställ \"360_560kbs.webm\"-transkodningsnyckeln för [[:File:Clip.webm]]"
 }
