@@ -10,6 +10,8 @@
 	"timedmedia-ogg-short-general": "Ogg $1 جانیا وارسگر , $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 جانیا دنگ , درازا $2, $3",
 	"timedmedia-ogg-long-error": "جانیا دنگ اوگ نامعتور:$1",
+	"timedmedia-webm-short-video": "WebM $1 جانیا ویدیو, $2",
+	"timedmedia-flac-short-audio": "FLAC جانیا دنگدار , $1",
 	"timedmedia-wav-short-audio": "WAV جانیا دنگدار, $1",
 	"timedmedia-wav-pcm-required": "شما فقط تونیت پی سی ام نه سوار بکید",
 	"timedmedia-mp4-short-video": "MP4 $1 جانیا ویدیو, $2",
@@ -35,5 +37,6 @@
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg ویدیو|$1 Ogg ویدیویا}}",
 	"timedmedia-file": "جانیا",
 	"timedmedia-audios": "{{PLURAL:$1|$1 جانیا دنگدار|$1 جانیایا دنگدار}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 جانیا دنگ نگدار اُگ|$1 جانیایا دنگدار اُگ}}",
 	"apihelp-transcodereset-param-title": "داسون جانیا وارسگر."
 }
