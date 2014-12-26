@@ -35,5 +35,9 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "First bullet point after the mwe-embedplayer-vlcapp-intro. Links to the download page for installing the vlc app ( https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 ).",
 	"mwe-embedplayer-vlcapp-openvideo": "Second bullet point after the mwe-embedplayer-vlcapp-intro. Link will open the video in the VLC app, if the app is installed",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Third bullet point after the mwe-embedplayer-vlcapp-intro. Linked directly to the video file",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8."
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8.",
+	"mwe-embedplayer-share_this_video": "Header for the Share tab in the menu, when it's a video file.",
+	"mwe-embedplayer-share_this_audio": "Header for the Share tab in the menu, when it's an audio file.",
+	"mwe-embedplayer-download_full_video": "Header for the Download tab in the menu, when it's a video file.",
+	"mwe-embedplayer-download_full_audio": "Header for the Download tab in the menu, when it's an audio file."
 }

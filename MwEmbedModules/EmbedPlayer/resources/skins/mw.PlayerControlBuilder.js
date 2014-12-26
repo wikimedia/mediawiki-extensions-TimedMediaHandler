@@ -1939,7 +1939,9 @@ mw.PlayerControlBuilder.prototype = {
 
 		$shareInterface.append(
 			$( '<h2 />' )
-			.text( mw.msg( 'mwe-embedplayer-share_this_video' ) )
+			.text( embedPlayer.isAudio() ?
+				mw.msg( 'mwe-embedplayer-share_this_audio' ) :
+				mw.msg( 'mwe-embedplayer-share_this_video' ) )
 		);
 
 		if ( embed_wiki_code ) {
@@ -2161,7 +2163,9 @@ mw.PlayerControlBuilder.prototype = {
 		if( $mediaList.find('li').length != 0 ) {
 			$target.append(
 				$('<h2 />')
-				.text( mw.msg( 'mwe-embedplayer-download_full' ) ),
+				.text( embedPlayer.isAudio() ?
+					mw.msg( 'mwe-embedplayer-download_full_audio' ) :
+					mw.msg( 'mwe-embedplayer-download_full_video' ) ),
 				$mediaList
 			);
 		}
