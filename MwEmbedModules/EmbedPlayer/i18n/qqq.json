@@ -13,11 +13,15 @@
 	"mwe-embedplayer-player_fullscreen": "{{Identical|Full screen}}",
 	"mwe-embedplayer-seek_to": "Used as the Player status string. Parameters:\n* $1 - a time in the NPT format. NPT (Normal play time) is defined in [//www.ietf.org/rfc/rfc2326.txt RFC 2326].",
 	"mwe-embedplayer-paused": "{{Identical|Paused}}",
+	"mwe-embedplayer-download_full_video": "Header for the Download tab in the menu, when it's a video file.",
+	"mwe-embedplayer-download_full_audio": "Header for the Download tab in the menu, when it's an audio file.",
 	"mwe-embedplayer-download": "{{Identical|Download}}",
 	"mwe-embedplayer-share": "{{Identical|Share}}",
 	"mwe-embedplayer-credits": "{{Identical|Credit}}",
 	"mwe-embedplayer-about-library-desc": "Parameters:\n* $1 - URL",
 	"mwe-embedplayer-no-player": "This message means that there are no available players to play $1.\n* $1 - source media title",
+	"mwe-embedplayer-share_this_video": "Header for the Share tab in the menu, when it's a video file.",
+	"mwe-embedplayer-share_this_audio": "Header for the Share tab in the menu, when it's an audio file.",
 	"mwe-embedplayer-menu_btn": "{{Identical|Menu}}",
 	"mwe-embedplayer-close_btn": "{{Identical|Close}}",
 	"mwe-embedplayer-ogg-player-mp3Native": "name of mp3 player in configuration screen",
@@ -35,9 +39,5 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "First bullet point after the mwe-embedplayer-vlcapp-intro. Links to the download page for installing the vlc app ( https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 ).",
 	"mwe-embedplayer-vlcapp-openvideo": "Second bullet point after the mwe-embedplayer-vlcapp-intro. Link will open the video in the VLC app, if the app is installed",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Third bullet point after the mwe-embedplayer-vlcapp-intro. Linked directly to the video file",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8.",
-	"mwe-embedplayer-share_this_video": "Header for the Share tab in the menu, when it's a video file.",
-	"mwe-embedplayer-share_this_audio": "Header for the Share tab in the menu, when it's an audio file.",
-	"mwe-embedplayer-download_full_video": "Header for the Download tab in the menu, when it's a video file.",
-	"mwe-embedplayer-download_full_audio": "Header for the Download tab in the menu, when it's an audio file."
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Popup dialog box shown to user if they do not have the VLC app installed when trying to play a video on iPhone/iPad. Box will be presented with this message and two buttons (OK and cancel. Actual text of buttons may vary.) If user presses ok, they are redirected to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8."
 }
