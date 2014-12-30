@@ -186,7 +186,11 @@ class TextHandler {
 			$params = new FauxRequest( $this->getTextPagesQuery() );
 			$api = new ApiMain( $params );
 			$api->execute();
-			$data = $api->getResultData();
+			if ( defined( 'ApiResult::META_CONTENT' ) ) {
+				$data = ApiResult::removeMetadata( $api->getResult()->getResultData() );
+			} else {
+				$data = $api->getResultData();
+			}
 			wfDebug(print_r($data, true));
 			// Get the list of language Names
 			return $this->getTextTracksFromData( $data );
@@ -212,7 +216,11 @@ class TextHandler {
 		$query->profileOut();
 		$api->profileOut();
 
-		$data = $module->getResultData();
+		if ( defined( 'ApiResult::META_CONTENT' ) ) {
+			$data = ApiResult::removeMetadata( $module->getResult()->getResultData() );
+		} else {
+			$data = $module->getResultData();
+		}
 		// Get the list of language Names
 		return $this->getTextTracksFromData( $data );
 	}
