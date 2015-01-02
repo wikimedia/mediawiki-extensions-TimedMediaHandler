@@ -6,7 +6,8 @@
 			"Gomoko",
 			"IAlex",
 			"Nnemo",
-			"Peter17"
+			"Peter17",
+			"Windes"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titre : $1",
@@ -31,7 +32,7 @@
 	"mwe-embedplayer-seek_to": "Atteindre $1",
 	"mwe-embedplayer-paused": "en pause",
 	"mwe-embedplayer-download_segment": "Télécharger la sélection :",
-	"mwe-embedplayer-download_full": "Télécharger le fichier de la vidéo complète :",
+	"mwe-embedplayer-download_full_video": "Télécharger le fichier de la vidéo complète :",
 	"mwe-embedplayer-download_right_click": "Pour télécharger, cliquez-droit et sélectionnez <i>Enregistrer la cible du lien sous...</i>",
 	"mwe-embedplayer-download_clip": "Télécharger la vidéo",
 	"mwe-embedplayer-download_text": "Télécharger le texte",
@@ -44,6 +45,7 @@
 	"mwe-embedplayer-choose_player": "Choisir le lecteur vidéo",
 	"mwe-embedplayer-no-player": "Aucun lecteur disponible pour $1",
 	"mwe-embedplayer-share_this_video": "Partager cette vidéo",
+	"mwe-embedplayer-share_this_audio": "Partager ce fichier audio",
 	"mwe-embedplayer-video_credits": "Crédits de la vidéo",
 	"mwe-embedplayer-no-video_credits": "Aucun crédit disponible",
 	"mwe-embedplayer-kaltura-platform-title": "Plateforme vidéo en source ouverte Kaltura",

@@ -5,7 +5,8 @@
 			"Asaifm",
 			"Meno25",
 			"OsamaK",
-			"روخو"
+			"روخو",
+			"Abanima"
 		]
 	},
 	"timedmedia-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
@@ -30,11 +31,17 @@
 	"timedmedia-actions": "الإجراءات",
 	"timedmedia-not-ready": "غير جاهز",
 	"timedmedia-percent-done": "وصل لنسبة $1% انتهى",
+	"timedmedia-days": "{{PLURAL:$1|يوم واحد|يومين|$1 أيام|$1 يوماً|$1 يوم}}",
+	"timedmedia-hours": "{{PLURAL:$1|ساعة واحدة|ساعتين|$1 ساعات|$1 ساعة}}",
+	"timedmedia-minutes": "{{PLURAL:$1|دقيقة واحدة|دقيقتين|$1 دقائق|$1 دقيقة}}",
+	"timedmedia-seconds": "{{PLURAL:$1|ثانية واحدة|ثانيتين|$1 ثوان|$1 ثانية}}",
 	"timedmedia-ogg": "أو جي جي",
 	"timedmedia-source-file": "$1 مصدر",
+	"timedmedia-source-file-desc": "الأصل ملف $1، $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "الملف $1 الأصلي ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "انخفاض عرض النطاق الترددي أوج فيديو (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "تحميل أوج فيديو بجودة عالية  (720P)",
+	"timedmedia-subtitle-new": "أنشئ ترجمة جديدة أو حرر ترجمة موجودة",
 	"timedmedia-subtitle-new-desc": "قم بإختيار اللغة وإضغط على زر '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "اذهب",
 	"timedmedia-subtitle-language": "$1 ($2) ترجمات",

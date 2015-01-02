@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"David1010"
+			"David1010",
+			"MIKHEIL"
 		]
 	},
 	"mwe-embedplayer-credit-title": "სათაური: $1",
@@ -22,7 +23,8 @@
 	"mwe-embedplayer-seek_to": "გადასვლა $1",
 	"mwe-embedplayer-paused": "შეჩერებულია",
 	"mwe-embedplayer-download_segment": "არჩეულის ჩამოტვირთვა:",
-	"mwe-embedplayer-download_full": "მთლიანი ვიდეო-ფაილის ჩამოტვირთვა:",
+	"mwe-embedplayer-download_full_video": "მთლიანი ვიდეო-ფაილის ჩამოტვირთვა:",
+	"mwe-embedplayer-download_full_audio": "მთლიანი აუდიო-ფაილის ჩამოტვირთვა:",
 	"mwe-embedplayer-download_clip": "ვიდეოს ჩამოტვირთვა",
 	"mwe-embedplayer-download_text": "ტექსტის ჩამოტვირთვა",
 	"mwe-embedplayer-download": "ჩამოტვირთვა",
@@ -32,6 +34,7 @@
 	"mwe-embedplayer-clip_linkback": "კლიპის წყაროს გვერდი",
 	"mwe-embedplayer-choose_player": "აირჩიეთ ვიდეოდამკვრელი",
 	"mwe-embedplayer-share_this_video": "ამ ვიდეოს გაზიარება",
+	"mwe-embedplayer-share_this_audio": "ამ აუდიო-ფაილის გაზიარება",
 	"mwe-embedplayer-video_credits": "ვიდეოს შემქმნელები",
 	"mwe-embedplayer-menu_btn": "მენიუ",
 	"mwe-embedplayer-close_btn": "დახურვა",

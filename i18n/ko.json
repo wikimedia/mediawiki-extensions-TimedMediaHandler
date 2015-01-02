@@ -7,7 +7,8 @@
 			"ToePeu",
 			"아라",
 			"Hym411",
-			"Revi"
+			"Revi",
+			"IRTC1015"
 		]
 	},
 	"timedmedia-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",
@@ -94,7 +95,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|Ogg 오디오 파일 $1개}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|FLAC 오디오 파일 $1개}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|WAV 오디오 파일 $1개}}",
-	"right-transcode-reset": "초기화를 실패했거나 동영상이 코드 변환했기 때문에 다시 작업 대기열에 삽입됩니다.",
+	"right-transcode-reset": "변환됐거나 실패한 비디오를 작업 대기열에 다시 추가되도록 초기화",
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",
 	"action-transcode-status": "현재 코드 변환 상태 보기"
 }

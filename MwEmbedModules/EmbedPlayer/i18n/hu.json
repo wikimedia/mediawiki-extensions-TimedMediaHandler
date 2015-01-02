@@ -3,7 +3,8 @@
 		"authors": [
 			"Dani",
 			"Misibacsi",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Csega"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Cím: $1",
@@ -27,7 +28,8 @@
 	"mwe-embedplayer-seek_to": "$1 keresése",
 	"mwe-embedplayer-paused": "szüneteltetve",
 	"mwe-embedplayer-download_segment": "Kijelölés letöltése:",
-	"mwe-embedplayer-download_full": "Teljes videofájl letöltése:",
+	"mwe-embedplayer-download_full_video": "Teljes videofájl letöltése:",
+	"mwe-embedplayer-download_full_audio": "Teljes audiofájl letöltése:",
 	"mwe-embedplayer-download_right_click": "A letöltéshez kattints jobb gombbal, és <i>Cél mentése másként…</i>",
 	"mwe-embedplayer-download_clip": "Videó letöltése",
 	"mwe-embedplayer-download_text": "Szöveg letöltése",
@@ -40,6 +42,7 @@
 	"mwe-embedplayer-choose_player": "Videolejátszó választása",
 	"mwe-embedplayer-no-player": "Nincs megfelelő lejátszó a következőhöz: $1",
 	"mwe-embedplayer-share_this_video": "Videó megosztása",
+	"mwe-embedplayer-share_this_audio": "Audiofájl megosztása",
 	"mwe-embedplayer-video_credits": "A videó készítői",
 	"mwe-embedplayer-menu_btn": "Menü",
 	"mwe-embedplayer-close_btn": "Bezárás",

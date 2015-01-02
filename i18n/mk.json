@@ -95,7 +95,7 @@
 	"timedmedia-subtitle-no-subtitles": "Моментално нема $1 титлови за оваа видеоснимка. Можете да ги додадете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредувајќи ја страницава]",
 	"timedmedia-subtitle-remote": "Синхронизираниот текст за податотекава е вдомен во $1",
 	"timedmedia-subtitle-remote-link": "Можете да ја [$1 погледате описната страниац] на податотекава на $2",
-	"timedmediahandler": "ПоставувачНаУсогласениСнимки",
+	"timedmediahandler": "Поставувач на усогласени снимки",
 	"timedmedia-videos": "{{PLURAL:$1|$1 видео|$1 видеа}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg-видео|$1 Ogg-видеа}}",
 	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM-видео|$1 WebM-видеа}}",
