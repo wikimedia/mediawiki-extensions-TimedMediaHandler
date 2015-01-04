@@ -91,5 +91,7 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV-helifail|$1 WAV-helifaili}}",
 	"right-transcode-reset": "Lähtestada ebaõnnestunud või ümberkodeeritud videoid, nii et need lisatakse uuesti tööjärge",
 	"right-transcode-status": "Vaadata [[Special:TimedMediaHandler|teavet praegu aktiivsete ümberkodeeringute kohta]]",
-	"action-transcode-status": "vaadata praegust ümberkodeeringute olekut"
+	"action-transcode-status": "vaadata praegust ümberkodeeringute olekut",
+	"orphanedtimedtext": "Ajastatud teksti orbleheküljed",
+	"orphanedtimedtext-summary": "Loend nimeruumi [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] lehekülgedest, millele vastav fail puudub."
 }

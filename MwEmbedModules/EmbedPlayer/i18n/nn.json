@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Nghtwlkr",
-			"Njardarlogar"
+			"Njardarlogar",
+			"Gaute"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tittel: $1",
@@ -27,7 +28,8 @@
 	"mwe-embedplayer-seek_to": "Søk $1",
 	"mwe-embedplayer-paused": "stogga",
 	"mwe-embedplayer-download_segment": "Last ned utval:",
-	"mwe-embedplayer-download_full": "Last ned heile videofila:",
+	"mwe-embedplayer-download_full_video": "Last ned heile videofila:",
+	"mwe-embedplayer-download_full_audio": "Last ned heile lydfila:",
 	"mwe-embedplayer-download_right_click": "For å lasta ned, høgreklikk og vel <i>Lagra lenkje som...</i>",
 	"mwe-embedplayer-download_clip": "Last ned video",
 	"mwe-embedplayer-download_text": "Last ned tekst",
@@ -40,6 +42,7 @@
 	"mwe-embedplayer-choose_player": "Vel videospelar",
 	"mwe-embedplayer-no-player": "Ingen spelar tilgjengeleg for $1",
 	"mwe-embedplayer-share_this_video": "Del videoen",
+	"mwe-embedplayer-share_this_audio": "Del denne lydfila",
 	"mwe-embedplayer-video_credits": "Videogodskriving",
 	"mwe-embedplayer-no-video_credits": "Inga godskriving tilgjengeleg",
 	"mwe-embedplayer-kaltura-platform-title": "Kaltura, videoplattform med open kjeldekode",
