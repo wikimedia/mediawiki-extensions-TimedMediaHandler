@@ -3,7 +3,8 @@
 		"authors": [
 			"Ainali",
 			"Dafer45",
-			"Lokal Profil"
+			"Lokal Profil",
+			"WikiPhoenix"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titel: $1",
@@ -28,7 +29,8 @@
 	"mwe-embedplayer-seek_to": "Sök $1",
 	"mwe-embedplayer-paused": "pausad",
 	"mwe-embedplayer-download_segment": "Hämta urval:",
-	"mwe-embedplayer-download_full": "Ladda ner den fullständiga videofilen:",
+	"mwe-embedplayer-download_full_video": "Ladda ner den fullständiga videofilen:",
+	"mwe-embedplayer-download_full_audio": "Ladda ned fullständig ljudfil:",
 	"mwe-embedplayer-download_right_click": "För att ladda ner, högerklicka och välj <i>Spara länk som ...</i>",
 	"mwe-embedplayer-download_clip": "Ladda ner video",
 	"mwe-embedplayer-download_text": "Ladda ner text",
@@ -41,6 +43,7 @@
 	"mwe-embedplayer-choose_player": "Välj videouppspelare",
 	"mwe-embedplayer-no-player": "Ingen spelare tillgänglig för $1",
 	"mwe-embedplayer-share_this_video": "Dela denna video",
+	"mwe-embedplayer-share_this_audio": "Dela denna ljudfil",
 	"mwe-embedplayer-video_credits": "Videoerkännanden",
 	"mwe-embedplayer-no-video_credits": "Inga erkännanden tillgängliga",
 	"mwe-embedplayer-kaltura-platform-title": "Kaltura öppen källkod videoplattform",

@@ -5,7 +5,8 @@
 			"Nedergard",
 			"Nike",
 			"Silvonen",
-			"Tofu II"
+			"Tofu II",
+			"MrTapsa"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Otsikko: $1",
@@ -15,13 +16,15 @@
 	"mwe-embedplayer-player_options": "Soittimen asetukset",
 	"mwe-embedplayer-timed_text": "Ajastettu teksti",
 	"mwe-embedplayer-player_fullscreen": "Koko näyttö",
-	"mwe-embedplayer-download_full": "Lataa koko videotiedosto:",
+	"mwe-embedplayer-download_full_video": "Lataa koko videotiedosto:",
+	"mwe-embedplayer-download_full_audio": "Lataa koko äänitiedosto:",
 	"mwe-embedplayer-download_clip": "Lataa video",
 	"mwe-embedplayer-download_text": "Lataa teksti",
 	"mwe-embedplayer-download": "Lataa",
 	"mwe-embedplayer-share": "Jaa",
 	"mwe-embedplayer-about-library": "Tietoja Kaltura-soittimesta",
 	"mwe-embedplayer-share_this_video": "Jaa tämä video",
+	"mwe-embedplayer-share_this_audio": "Jaa tämä äänitiedosto",
 	"mwe-embedplayer-menu_btn": "Valikko",
 	"mwe-embedplayer-close_btn": "Sulje",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",

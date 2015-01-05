@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Susith Chandira Gts"
 		]
 	},
 	"mwe-embedplayer-credit-title": "මාතෘකාව: $1",
@@ -25,7 +26,8 @@
 	"mwe-embedplayer-seek_to": "$1 ඉලියන්න",
 	"mwe-embedplayer-paused": "විරාමගතයි",
 	"mwe-embedplayer-download_segment": "තේරීම බාගන්න:",
-	"mwe-embedplayer-download_full": "සම්පූර්ණ වීඩියෝ ගොනුව බාගන්න:",
+	"mwe-embedplayer-download_full_video": "සම්පූර්ණ වීඩියෝ ගොනුව බාගන්න:",
+	"mwe-embedplayer-download_full_audio": "පූර්ණ සංගීත ගොනුව බාගන්න:",
 	"mwe-embedplayer-download_right_click": "බාගත කිරීම සඳහා, දකුණ ක්ලික් කර <i>Save link as...</i> තෝරන්න",
 	"mwe-embedplayer-download_clip": "වීඩියෝව බාගන්න",
 	"mwe-embedplayer-download_text": "පාඨය බාගන්න",
@@ -37,6 +39,7 @@
 	"mwe-embedplayer-choose_player": "වීඩියෝ වාදකය තෝරන්න",
 	"mwe-embedplayer-no-player": "$1 සඳහා වාදකයක් ලබා ගත නොහැක",
 	"mwe-embedplayer-share_this_video": "මෙම වීඩියෝව හුවමාරු කරන්න",
+	"mwe-embedplayer-share_this_audio": "මෙම සංගීත ගොනුව හුවමාරු කරන්න",
 	"mwe-embedplayer-video_credits": "වීඩියෝ ස්තූතිය",
 	"mwe-embedplayer-no-video_credits": "ස්තූතිය ලබා ගත නොහැක",
 	"mwe-embedplayer-kaltura-platform-title": "Kaltura විවෘත මූලාශ්‍ර විදෘශ්‍ය කරළිය",
