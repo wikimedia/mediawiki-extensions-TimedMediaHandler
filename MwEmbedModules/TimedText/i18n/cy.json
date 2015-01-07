@@ -1,9 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lloffiwr"
+			"Lloffiwr",
+			"Robin Owain"
 		]
 	},
 	"mwe-timedtext-back-btn": "Yn ôl",
+	"mwe-timedtext-layout-off": "Cuddio'r isdeitlau",
+	"mwe-timedtext-loading-text": "Yn llwytho'r testun...",
+	"mwe-timedtext-textcat-cc": "Geiriad",
+	"mwe-timedtext-textcat-sub": "Isdeitlau",
+	"mwe-timedtext-textcat-tad": "Disgrifiad o'r sain",
+	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-tik": "Testun",
+	"mwe-timedtext-textcat-ar": "Ardaloedd gweithredolo",
+	"mwe-timedtext-textcat-nb": "Anodiad",
+	"mwe-timedtext-textcat-meta": "Metadata a amserwyd",
+	"mwe-timedtext-textcat-trx": "Trawsysgrif",
+	"mwe-timedtext-textcat-lrc": "Geiriau",
+	"mwe-timedtext-textcat-cue": "Cerrig milltir",
+	"mwe-timedtext-no-subs": "Dim traciau testun ar gael",
+	"mwe-timedtext-language-subtitles-for-clip": "$1 isdeitl ar gael ar gyfer clip: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Dim $1 isdeitl ar gael ar gyfer: $2",
 	"mwe-timedtext-upload-timed-text": "Ychwanegu isdeitlau"
 }
