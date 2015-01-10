@@ -117,11 +117,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @param $options array
 	 * @return string
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	function toHtml( $options = array() ) {
 		if ( count( func_get_args() ) == 2 ) {
-			throw new MWException( __METHOD__ .' called in the old style' );
+			throw new Exception( __METHOD__ .' called in the old style' );
 		}
 
 		$oldHeight = $this->height;
@@ -342,13 +342,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * Get poster.
 	 * @param $width Integer width of poster. Should not equal $this->width.
-	 * @throws MWException If $width is same as $this->width.
+	 * @throws Exception If $width is same as $this->width.
 	 * @return String|bool url for poster or false
 	 */
 	function getPoster ( $width ) {
 		if ( intval( $width ) === intval( $this->width ) ) {
 			// Prevent potential loop
-			throw new MWException( "Asked for poster in current size. Potential loop." );
+			throw new Exception( "Asked for poster in current size. Potential loop." );
 		}
 		$params = array( "width" => intval( $width ) );
 		$mto = $this->file->transform( $params );
