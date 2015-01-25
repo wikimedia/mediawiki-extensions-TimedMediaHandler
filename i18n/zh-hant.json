@@ -101,7 +101,7 @@
 	"right-transcode-status": "檢視 [[Special:TimedMediaHandler|目前轉碼活動的資訊]]",
 	"action-transcode-status": "檢視目前轉碼狀態",
 	"orphanedtimedtext": "孤立的 TimedText 頁面",
-	"orphanedtimedtext-summary": "未關聯任何檔案的 [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] 頁面清單",
+	"orphanedtimedtext-summary": "未關聯任何檔案的 [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] 頁面清單。",
 	"orphanedtimedtext-unsupported": "此特殊頁面僅支援使用 MySQL 資料庫。",
 	"orphanedtimedtext-notimedtext": "此 Wiki 未開啟 TimedText 功能。"
 }
