@@ -1,3 +1,4 @@
+.ui-dialog-content .mediaContainer { margin: 0 auto; }
 .mwPlayerContainer, video { width: 100%; height: 100%; }
 .mwPlayerContainer { position: relative; height: 100%; background: #000; }
 .videoHolder {
