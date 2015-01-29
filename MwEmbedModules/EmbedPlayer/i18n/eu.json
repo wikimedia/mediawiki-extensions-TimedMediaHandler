@@ -1,5 +1,12 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Izenburua: $1",
+	"mwe-embedplayer-credit-date": "Data: $1",
+	"mwe-embedplayer-credit-author": "Egilea: $1",
 	"mwe-embedplayer-player_fullscreen": "Pantaila osoan",
 	"mwe-embedplayer-paused": "pausatua",
 	"mwe-embedplayer-download": "Jaitsi",
