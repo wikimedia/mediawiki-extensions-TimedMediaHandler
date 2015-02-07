@@ -62,13 +62,16 @@
 	"timedmedia-derivative-desc-360p.ogv": "Nett-strømbar Ogg-video (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Nett-strømbar Ogg-video (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Høykvalitets nedlastbar Ogg-video (720P)",
+	"timedmedia-derivative-desc-1080p.ogv": "Nedlastbar Ogg-video i full HD (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "Nett-strømbar WebM (160P)",
 	"timedmedia-derivative-desc-360p.webm": "Nett-strømbar WebM (360P)",
 	"timedmedia-derivative-desc-480p.webm": "Nett-strømbar WebM (480P)",
 	"timedmedia-derivative-desc-720p.webm": "Høykvalitets nedlastbar WebM (720P)",
+	"timedmedia-derivative-desc-1080p.webm": "Nedlastbar WebM-video i full HD (1080P)",
 	"timedmedia-derivative-desc-320p.mp4": "Mobilvennlig MP4 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "Nett-strømbar MP4 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD-kvalitet MP4 (720P)",
+	"timedmedia-derivative-desc-1080p.mp4": "MP4-video i full HD (1080P)",
 	"timedmedia-subtitle-new": "Opprett ny oversettelse eller rediger eksisterende",
 	"timedmedia-subtitle-new-desc": "Velg språk eller trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
 	"timedmedia-subtitle-new-go": "Kjør",
@@ -96,5 +99,7 @@
 	"orphanedtimedtext": "Foreldreløse TimedText-sider",
 	"orphanedtimedtext-summary": "Liste over [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-sider som ikke har tilknytning til noen fil.",
 	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser.",
-	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien."
+	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien.",
+	"apihelp-query+transcodestatus-description": "Hent transkodingsstatus for en gitt filside.",
+	"apihelp-query+transcodestatus-example-1": "Hent transkodingsstatus for [[:File:Clip.webm]]"
 }
