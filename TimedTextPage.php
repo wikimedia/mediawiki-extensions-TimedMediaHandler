@@ -12,7 +12,6 @@ class TimedTextPage extends Article {
 	static private $videoWidth = 400;
 
 	public function view() {
-		wfProfileIn( __METHOD__ );
 		$request = $this->getContext()->getRequest();
 		$out = $this->getContext()->getOutput();
 		$user = $this->getContext()->getUser();
@@ -21,11 +20,9 @@ class TimedTextPage extends Article {
 
 		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || isset( $diff ) ) {
 			parent::view();
-			wfProfileOut( __METHOD__ );
 			return;
 		}
 		$this->renderOutput( $out );
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -33,7 +30,6 @@ class TimedTextPage extends Article {
 	 * @param $out OutputPage
 	 */
 	public function renderOutput( $out ){
-		wfProfileIn( __METHOD__ );
 		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBkey() );
 		$srt = array_pop( $titleParts );
@@ -48,7 +44,6 @@ class TimedTextPage extends Article {
 
 			if ( !$this->showDeletedRevisionHeader() ) {
 				wfDebug( __METHOD__ . ": cannot view deleted revision\n" );
-				wfProfileOut( __METHOD__ );
 				return;
 			}
 		}
@@ -64,7 +59,6 @@ class TimedTextPage extends Article {
 			} else {
 				$this->doLinkToRemote( $file );
 			}
-			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -77,13 +71,11 @@ class TimedTextPage extends Article {
 		$basefile = wfFindFile( $videoTitle );
 		if ( !$basefile ) {
 			$out->addHTML( wfMessage( 'timedmedia-subtitle-no-video' )->escaped() );
-			wfProfileOut( __METHOD__ );
 			return;
 		}
 
 		if( !$basefile->isLocal() ){
 			$this->doLinkToRemote( $basefile );
-			wfProfileOut( __METHOD__ );
 			return;
 		}
 
@@ -113,7 +105,6 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**

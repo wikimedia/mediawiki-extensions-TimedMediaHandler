@@ -611,7 +611,6 @@ class WebVideoTranscode {
 		global $wgTranscodeBackgroundTimeLimit;
 		$fileName = $file->getName();
 		if( ! isset( self::$transcodeState[$fileName] ) ){
-			wfProfileIn( __METHOD__ );
 			if ( $db === false ) {
 				$db = $file->repo->getSlaveDB();
 			}
@@ -656,7 +655,6 @@ class WebVideoTranscode {
 					array( 'LIMIT' => count( $overTimeout ) )
 				);
 			}
-			wfProfileOut( __METHOD__ );
 		}
 		return self::$transcodeState[ $fileName ];
 	}
@@ -868,8 +866,6 @@ class WebVideoTranscode {
 	public static function updateJobQueue( &$file, $transcodeKey ){
 		global $wgMemc;
 
-		wfProfileIn( __METHOD__ );
-
 		$fileName = $file->getTitle()->getDbKey();
 		$db = $file->repo->getMasterDB();
 
@@ -944,7 +940,6 @@ class WebVideoTranscode {
 				);
 			}
 		}
-		wfProfileOut( __METHOD__ );
 	}
 
 	/**
