@@ -31,7 +31,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	static function getInfo( $file, $prop, $result, $thumbParams = null, $version = 'latest' ) {
-		$vals = parent::getInfo( $file, $prop, $result, $thumbParams = null );
+		$vals = parent::getInfo( $file, $prop, $result, $thumbParams );
 		if( isset( $prop['derivatives'] ) ) {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
 				$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'fullurl') );
