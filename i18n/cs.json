@@ -47,6 +47,8 @@
 	"timedmedia-minutes": "$1 {{PLURAL:$1|minuta|minuty|minut}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
 	"timedmedia-reset": "Obnovit transkódování",
+	"timedmedia-source-file": "Zdrojový soubor $1",
+	"timedmedia-source-audio-file-desc": "Původní soubor $1 ($2)",
 	"timedmedia-subtitle-new": "Vytvoření nového překladu nebo editace stávajícího",
 	"timedmedia-subtitle-new-desc": "Nahraďte část '''$1''' svým [[:cs:ISO 639|kódem jazyka]] a stiskněte tlačítko '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Přejít",

@@ -25,6 +25,7 @@
 	"timedmedia-oggThumb-failed": "<code lang=\"en\">oggThumb</code> kunnt kei MiniBelldsche maache.",
 	"timedmedia-source-file": "Quell-Dattei em $1-Fommaat",
 	"timedmedia-source-file-desc": "Ojinaal $1-Dattei, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Ojinahl $1-Dattei ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "En Viddejo-Dattei met winnesch Bandbreide (160P) em <i lang=\"en\">Ogg</i>-Fommaat",
 	"timedmedia-derivative-desc-360p.ogv": "En Viddejo-Dattei em <i lang=\"en\">Ogg</i>-Fommaat (360p) för ene Dahteshtrohm övver et Nez",
 	"timedmedia-derivative-desc-480p.ogv": "En Viddejo-Dattei (met 480p) em <i lang=\"en\">Ogg</i>-Fommaat för ene Dahteshtrohm övver et Nez",
