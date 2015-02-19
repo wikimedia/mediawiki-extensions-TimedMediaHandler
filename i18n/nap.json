@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"C.R."
+		]
+	},
+	"timedmedia-no-player-js": "Spiacente, 'o browser vuosto tene 'o JavaScript stutato o nun tène nu secutore suppurtato.<br />\nPutite <a href=\"$1\">scarrecà 'o video</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">scarrecà nu secutore</a> pe' putè miette 'o play ô video int' 'o browser vuosto.",
+	"timedmedia-source-file": "$1 funte",
+	"timedmedia-source-audio-file-desc": "File origgenale $1 ($2)"
+}

@@ -30,6 +30,7 @@
 	"timedmedia-webm": "WebM",
 	"timedmedia-source-file": "Izvorni $1",
 	"timedmedia-source-file-desc": "Izvorni $1, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Tip datoteke $1 ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160p",
 	"timedmedia-derivative-desc-160p.ogv": "Niskopropusni .ogg video (160p)",
 	"timedmedia-derivative-360p.ogv": "Ogg 360p",

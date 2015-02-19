@@ -26,6 +26,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|నిమిషం|$1 నిమిషాలు}}",
 	"timedmedia-seconds": "{{PLURAL:$1|క్షణం|$1 క్షణాలు}}",
 	"timedmedia-source-file-desc": "అసలు $1, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "అసలు $1 దస్త్రం ($2)",
 	"timedmedia-subtitle-new-go": "వెళ్ళు",
 	"timedmedia-subtitle-language": "$1 ($2) ఉపశీర్షికలు",
 	"timedmedia-file": "దస్త్రం"

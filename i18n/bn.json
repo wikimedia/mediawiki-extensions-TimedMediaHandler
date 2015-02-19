@@ -3,7 +3,8 @@
 		"authors": [
 			"Bellayet",
 			"Zaheen",
-			"Aftab1995"
+			"Aftab1995",
+			"Aftabuzzaman"
 		]
 	},
 	"timedmedia-ogg-short-audio": "অগ $1 সাউন্ড ফাইল, $2",
@@ -16,6 +17,7 @@
 	"timedmedia-ogg-long-error": "অবৈধ অগ ফাইল: $1",
 	"timedmedia-mp4-short-video": "MP4 $1 ভিডিও ফাইল, $2",
 	"timedmedia-mp4-long-video": "MP4 অডিও/ভিডিও ফাইল, $1, দৈর্ঘ্য $2, $4 × $5 পিক্সেল, $3 সামগ্রিক",
+	"timedmedia-no-player-js": "দুঃখিত, আপনার ব্রাউজারে জাভাস্ক্রিপ্ট নিষ্ক্রিয় করা আছে অথবা কোনো সমর্থিত প্লেয়ার নেই। <br />\nআপনি আপনার ব্রাউজারে ক্লিপটি চালানোর জন্য <a href=\"$1\">ক্লিপটি ডাউনলোড করতে পারেন</a> বা <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">একটি প্লেয়ার ডাউনলোড</a> করতে পারেন।",
 	"timedmedia-more": "আরও...",
 	"timedmedia-dismiss": "বন্ধ",
 	"timedmedia-download": "ফাইল ডাউনলোড করুন",
@@ -35,6 +37,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|১ মিনিট|$1 মিনিট}}",
 	"timedmedia-seconds": "{{PLURAL:$1|১ সেকেন্ড|$1 সেকেন্ড}}",
 	"timedmedia-source-file": "$1 উৎস",
+	"timedmedia-source-audio-file-desc": "মূল $1 ফাইল ($2)",
 	"timedmedia-subtitle-new-go": "যাও",
 	"timedmedia-subtitle-language": "$1 ($2) সাবটাইটেল",
 	"timedmedia-videos": "{{PLURAL:$1|$1টি ভিডিও}}",

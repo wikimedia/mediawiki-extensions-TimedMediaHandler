@@ -7,7 +7,8 @@
 			"Pitort",
 			"SMP",
 			"Toniher",
-			"Vriullop"
+			"Vriullop",
+			"Joan manel"
 		]
 	},
 	"timedmedia-desc": "Gestor de fitxers de vídeo, àudio i text sincronitzat amb suport pels formats WebM, Ogg Theora, Vorbi i srt",
@@ -19,6 +20,7 @@
 	"timedmedia-ogg-long-multiplexed": "Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana",
 	"timedmedia-ogg-long-general": "Fitxer multimèdia OGG, llargada $2, $3",
 	"timedmedia-ogg-long-error": "Fitxer OGG invàlid: $1",
+	"timedmedia-no-player-js": "Ho sentim, el vostre navegador té el JavaScript desactivat o bé no té cap reproductor compatible instal·lat.<br />\nPodeu <a href=\"<span class=\" notranslate\"=\"\" translate=\"no\">$1</span>\">descarregar el clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descarregar un reproductor</a> per a veure el vídeo al vostre navegador.",
 	"timedmedia-more": "Més...",
 	"timedmedia-dismiss": "Tanca",
 	"timedmedia-download": "Descarrega el fitxer",
@@ -28,7 +30,9 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minuts}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 segon|$1 segons}}",
 	"timedmedia-mp4": "MP4",
+	"timedmedia-source-file": "Font $1",
 	"timedmedia-source-file-desc": "Arxiu original $1, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Fitxer original $1 ($2)",
 	"timedmedia-subtitle-language": "$1 ($2) subtítols",
 	"timedmedia-videos": "{{PLURAL:$1|$1 vídeo|$1 vídeos}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}",
