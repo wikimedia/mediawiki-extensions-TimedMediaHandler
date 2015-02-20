@@ -24,6 +24,11 @@ class TimedMediaHandlerHooks {
 			}
 		}
 
+		if( !class_exists( 'MwEmbedResourceManager' ) ) {
+			echo "TimedMediaHandler requires the MwEmbedSupport extension.\n";
+			exit( 1 );
+		}
+
 		// Register the Timed Media Handler javascript resources ( MwEmbed modules )
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
 		MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
