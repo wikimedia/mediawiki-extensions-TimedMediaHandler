@@ -5,11 +5,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-if( !class_exists( 'MwEmbedResourceManager' ) ) {
-	echo "TimedMediaHandler requires the MwEmbedSupport extension.\n";
-	exit( 1 );
-}
-
 // Set up the timed media handler dir:
 $timedMediaDir = __DIR__;
 // Include WebVideoTranscode (prior to config so that its defined transcode keys can be used in configuration)
