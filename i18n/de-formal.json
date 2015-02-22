@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln"
+		]
+	},
+	"timedmedia-no-player-js": "Entschuldige, aber für Ihren Browser ist entweder die Nutzung von JavaScript deaktiviert oder er verfügt über keine unterstützte Abspielsoftware.<br />\nSie können <a href=\"$1\">den Clip herunterladen</a> oder <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abspielen zu können."
+}
