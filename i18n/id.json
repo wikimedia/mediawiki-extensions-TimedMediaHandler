@@ -51,6 +51,7 @@
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Sumber $1",
 	"timedmedia-source-file-desc": "$1 asli, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Berkas ($2) asli $1",
 	"timedmedia-derivative-160p.ogv": "Ogg 160p",
 	"timedmedia-derivative-desc-160p.ogv": "Video Ogg lebar pita rendah (160P)",
 	"timedmedia-derivative-360p.ogv": "Ogg 360p",
