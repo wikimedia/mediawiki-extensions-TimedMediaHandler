@@ -204,8 +204,15 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 				$skip = false;
 			}
 
-			$data = $this->getResultData();
-			foreach ( $data['query']['pages'] as $pageid => $arr ) {
+			if ( defined( 'ApiResult::META_CONTENT' ) ) {
+				$pages = ApiResult::removeMetadataNonRecursive(
+					(array)$this->getResult()->getResultData( array( 'query', 'pages' ) )
+				);
+			} else {
+				$data = $this->getResultData();
+				$pages = $data['query']['pages'];
+			}
+			foreach ( $pages as $pageid => $arr ) {
 				if ( !isset( $arr['imagerepository'] ) ) {
 					$result->addValue(
 						array( 'query', 'pages', $pageid ),
