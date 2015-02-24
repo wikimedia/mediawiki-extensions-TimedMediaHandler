@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"පසිඳු කාවින්ද",
-			"Muhammad Shuaib"
+			"Muhammad Shuaib",
+			"عثمان خان شاہ"
 		]
 	},
 	"timedmedia-no-player-js": "معذرت، آپ کے براؤزر میں جاواسکرپٹ فعال نہیں یا کوئی معاون پلیئر شامل نہیں ہے۔<br />\nاس کلپ کو اپنے براؤزر میں چلانے کے لیے آپ <a href=\"$1\">کلپ کو ڈاؤنلوڈ</a> کرلیں یا </a> or <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">پلیئر ڈاؤنلوڈ</a> کرلیں۔",
@@ -14,5 +15,6 @@
 	"timedmedia-status": "حیثیت",
 	"timedmedia-status-unknown": "نامعلوم مقام",
 	"timedmedia-actions": "اعمال",
+	"timedmedia-source-file": "$1 مسودہ",
 	"timedmedia-file": "فائل"
 }
