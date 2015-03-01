@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"VASANTH S.N."
+			"VASANTH S.N.",
+			"Omshivaprakash"
 		]
 	},
 	"timedmedia-more": "ಹೆಚ್ಚು...",
@@ -9,6 +10,8 @@
 	"timedmedia-desc-link": "ಈ ಆಟದ ಬಗ್ಗೆ",
 	"timedmedia-status": "ಸ್ಥಾನಮಾನ",
 	"timedmedia-actions": "ಕ್ರಿಯೆಗಳು",
+	"timedmedia-source-file": "$1 ಮೂಲ",
+	"timedmedia-source-audio-file-desc": "ಅಸಲು $1 ಕಡತ ($2)",
 	"timedmedia-subtitle-new-go": "ಹೋಗು",
 	"timedmedia-file": "ಕಡತ"
 }

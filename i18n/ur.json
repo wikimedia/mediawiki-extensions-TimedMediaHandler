@@ -16,5 +16,6 @@
 	"timedmedia-status-unknown": "نامعلوم مقام",
 	"timedmedia-actions": "اعمال",
 	"timedmedia-source-file": "$1 مسودہ",
+	"timedmedia-source-audio-file-desc": "اصلی $1 ملف ($2)",
 	"timedmedia-file": "فائل"
 }
