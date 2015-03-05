@@ -17,6 +17,7 @@
 	"timedmedia-ogg-long-multiplexed": "Мултиплексирани .ogg аудио/видео снимак, $1, трајање $2, $4 × $5 пиксела, $3.",
 	"timedmedia-ogg-long-general": "Ogg медијска датотека, трајање $2, $3.",
 	"timedmedia-ogg-long-error": "Неисправна .ogg датотека: $1.",
+	"timedmedia-no-player-js": "Жао нам је, али вашем прегледач је онемогућена јаваскрипта или немате одговарајући плејер.<br />\nМожете <a href=\"$1\">преузети клип</a> или <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">преузети плејер</a> да репродукујете клип у вашем прегледачу.",
 	"timedmedia-more": "Више...",
 	"timedmedia-dismiss": "Затвори",
 	"timedmedia-download": "Преузми датотеку",

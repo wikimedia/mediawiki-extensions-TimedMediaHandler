@@ -39,6 +39,7 @@
 	"timedmedia-seconds": "$1 {{PLURAL:$1|sekúnda|sekúndur}}",
 	"timedmedia-source-file": "$1 uppruni",
 	"timedmedia-source-file-desc": "Upphafleg $1 skrá, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Upphafleg $1 skrá ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg myndband fyrir litla bandbreidd (160P)",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg myndbands streymi (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Ogg myndbands streymi (480P)",
