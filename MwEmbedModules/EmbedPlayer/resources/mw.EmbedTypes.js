@@ -91,6 +91,12 @@ var vlcAppPlayer = new mw.MediaPlayer( 'vlcAppPlayer', [
 	'video/webm; codecs="vp8, vorbis"',
 ], 'VLCApp' );
 
+var IEWebMPrompt = new mw.MediaPlayer( 'IEWebMPrompt', [
+	'video/webm',
+	'video/webm; codecs="vp8"',
+	'video/webm; codecs="vp8, vorbis"'
+], 'IEWebMPrompt' );
+
 // Generic plugin
 //var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
 
@@ -315,6 +321,20 @@ mw.EmbedTypes = {
 
 		if ( mw.isIOS() ) {
 			this.mediaPlayers.addPlayer( vlcAppPlayer );
+		}
+
+		// Note IE 11 doesn't identify itself as 'MSIE'.
+		// For simplicity just check for the rendering engine codename 'Trident'.
+		if ( navigator.userAgent.indexOf( 'Trident' ) != -1 ) {
+			if ( this.mediaPlayers.isSupportedPlayer( 'webmNative' ) ) {
+				// IE has the WebM components already, leave it be!
+			} else if ( navigator.userAgent.indexOf( 'ARM' ) != -1 ) {
+				// Windows RT doesn't allow installation of the WebM components.
+				// Don't tease the poor user.
+			} else {
+				// Prompt user to install the WebM media components for IE 9+
+				this.mediaPlayers.addPlayer( IEWebMPrompt );
+			}
 		}
 		// Allow extensions to detect and add their own "players"
 		mw.log("EmbedPlayer::trigger:embedPlayerUpdateMediaPlayersEvent");

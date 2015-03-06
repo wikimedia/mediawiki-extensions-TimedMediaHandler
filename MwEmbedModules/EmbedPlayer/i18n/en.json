@@ -52,6 +52,7 @@
     "mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM player",
     "mwe-embedplayer-ogg-player-oggPlugin": "Generic Ogg plugin",
     "mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC for iOS app",
+    "mwe-embedplayer-ogg-player-IEWebMPrompt": "IE WebM plugin downloader",
     "mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime plugin",
     "mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
     "mwe-embedplayer-ogg-player-cortado": "Java Cortado",
@@ -86,5 +87,8 @@
     "mwe-embedplayer-vlcapp-downloadapp": "Download the VLC app from the App Store",
     "mwe-embedplayer-vlcapp-openvideo": "Open this video in the VLC app",
     "mwe-embedplayer-vlcapp-downloadvideo": "Download this video",
-    "mwe-embedplayer-vlcapp-vlcapppopup": "To play videos on this site, you need the free VLC app. Install now?"
+    "mwe-embedplayer-vlcapp-vlcapppopup": "To play videos on this site, you need the free VLC app. Install now?",
+    "mwe-embedplayer-iewebmprompt-intro": "Oops! One more thing before you can play this video...",
+    "mwe-embedplayer-iewebmprompt-linktext": "Install WebM media components for Microsoft Internet Explorer",
+    "mwe-embedplayer-iewebmprompt-outro": "Reload this page after installing."
 }
