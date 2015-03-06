@@ -864,67 +864,41 @@ class WebVideoTranscode {
 	 * @param $transcodeKey String transcode key
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ){
-		global $wgMemc;
-
 		$fileName = $file->getTitle()->getDbKey();
 		$db = $file->repo->getMasterDB();
 
-		// Check if we need to update the transcode state:
 		$transcodeState = self::getTranscodeState( $file, $db );
-		// Check if the job has been added:
-		if( !isset( $transcodeState[ $transcodeKey ] )
-			|| is_null( $transcodeState[ $transcodeKey ]['time_addjob'] )
-		) {
-			// Avoid lock wait timeout due to duplicated work
-			$cKey = wfMemcKey( 'transcode', md5( $fileName ), $transcodeKey );
-			if ( !$wgMemc->lock( $cKey, 1 ) ) {
-				return; // assume another process is doing this
-			}
-			$unlocker = new ScopedCallback( function() use ( $cKey ) {
-				global $wgMemc;
-				$wgMemc->unlock( $cKey );
-			} );
 
-			// update the transcode state:
-			if( ! isset( $transcodeState[$transcodeKey] ) ){
-				// insert the transcode row with jobadd time
-				$db->insert(
-					'transcode',
-					array(
-						'transcode_image_name' => $fileName,
-						'transcode_key' => $transcodeKey,
-						'transcode_time_addjob' => $db->timestamp(),
-						'transcode_error' => "",
-						'transcode_final_bitrate' => 0
-					),
-					__METHOD__,
-					array( 'IGNORE' )
-				);
-			} else {
-				// update job start time
-				$db->update(
-					'transcode',
-					array(
-						'transcode_time_addjob' => $db->timestamp()
-					),
-					array(
-						'transcode_image_name' => $fileName,
-						'transcode_key' => $transcodeKey,
-					),
-					__METHOD__
-				);
+		// If the job hasn't been added yet, attempt to do so
+		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
+			$db->insert(
+				'transcode',
+				array(
+					'transcode_image_name' => $fileName,
+					'transcode_key' => $transcodeKey,
+					'transcode_time_addjob' => $db->timestamp(),
+					'transcode_error' => "",
+					'transcode_final_bitrate' => 0
+				),
+				__METHOD__,
+				array( 'IGNORE' )
+			);
+
+			if ( !$db->affectedRows() ) {
+				// There is already a row for that job added by another request, no need to continue
+				return;
 			}
-			// Add to job queue and update the db
+
 			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
 			) );
-			$jobId = $job->insert();
-			if( $jobId ){
+
+			if ( $job->insert() ) {
 				// Clear the state cache ( now that we have updated the page )
 				self::clearTranscodeCache( $fileName );
 			} else {
-				//adding job failed, update transcode
+				// Adding job failed, update transcode row
 				$db->update(
 					'transcode',
 					array(
