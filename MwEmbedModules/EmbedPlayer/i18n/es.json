@@ -6,7 +6,8 @@
 			"Translationista",
 			"Fitoschido",
 			"Koavf",
-			"Macofe"
+			"Macofe",
+			"Laurenslimb"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -31,7 +32,7 @@
 	"mwe-embedplayer-seek_to": "Buscar $1",
 	"mwe-embedplayer-paused": "en pausa",
 	"mwe-embedplayer-download_segment": "Descargar selección:",
-	"mwe-embedplayer-download_full": "Descargar archivo de video completo:",
+	"mwe-embedplayer-download_full_video": "Descargar archivo de video completo:",
 	"mwe-embedplayer-download_right_click": "Para descargar, haga click con el botón derecho del ratón y seleccione <i>Guardar enlace como...</i>",
 	"mwe-embedplayer-download_clip": "Descargar archivo",
 	"mwe-embedplayer-download_text": "Descargar texto",
@@ -91,5 +92,7 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Descargar la aplicación VLC desde la App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Abre este video en la aplicación VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Descarga este video",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproducir videos en este sitio, necesitas la aplicación gratuita VLC. ¿Instalar ahora?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproducir videos en este sitio, necesitas la aplicación gratuita VLC. ¿Instalar ahora?",
+	"mwe-embedplayer-iewebmprompt-intro": "¡Espere! Una cosa más antes de que pueda ver este vídeo...",
+	"mwe-embedplayer-iewebmprompt-linktext": "Instalar componentes multimedia de WebM para Microsoft Internet Explorer"
 }

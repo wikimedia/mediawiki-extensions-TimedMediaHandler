@@ -61,6 +61,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM播放器",
 	"mwe-embedplayer-ogg-player-oggPlugin": "通用Ogg插件",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "用于iOS的VLC应用程序",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "IE WebM插件下载器",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime插件",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -94,5 +95,8 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "从App Store下载VLC应用程序",
 	"mwe-embedplayer-vlcapp-openvideo": "使用VLC应用程序打开此视频",
 	"mwe-embedplayer-vlcapp-downloadvideo": "下载这个视频",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "要在该网站播放视频，您需要免费的VLC应用程序。现在安装？"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "要在该网站播放视频，您需要免费的VLC应用程序。现在安装？",
+	"mwe-embedplayer-iewebmprompt-intro": "哎呀！在您可以播放该视频前您还需要做一件事……",
+	"mwe-embedplayer-iewebmprompt-linktext": "为Microsoft Internet Explorer安装WebM媒体组件",
+	"mwe-embedplayer-iewebmprompt-outro": "在安装后重新加载此页面。"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"AnakngAraw",
-			"Sky Harbor"
+			"Sky Harbor",
+			"Leeheonjin"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Pamagat: $1",
@@ -27,7 +28,7 @@
 	"mwe-embedplayer-seek_to": "Hanapin ang $1",
 	"mwe-embedplayer-paused": "hininto",
 	"mwe-embedplayer-download_segment": "Ikargang pababa ang napili:",
-	"mwe-embedplayer-download_full": "Ikargang pababa ang buong talaksan ng bidyo:",
+	"mwe-embedplayer-download_full_video": "Ikargang pababa ang buong talaksan ng bidyo:",
 	"mwe-embedplayer-download_right_click": "Upang maikargang paibaba, pindutin ang kanan at piliin ang <i>Sagipin ang kawing bilang...</i>",
 	"mwe-embedplayer-download_clip": "Ikargang pababa ang bidyo",
 	"mwe-embedplayer-download_text": "Ikargang paibaba ang teksto",
@@ -77,5 +78,6 @@
 	"mwe-embedplayer-video-3gp": "Bidyong 3GP",
 	"mwe-embedplayer-video-mpeg": "Bidyong MPEG",
 	"mwe-embedplayer-video-msvideo": "Bidyong AVI",
-	"mwe-embedplayer-missing-source": "Walang natagpuang batayang bidyo"
+	"mwe-embedplayer-missing-source": "Walang natagpuang batayang bidyo",
+	"mwe-embedplayer-iewebmprompt-intro": "Ui! Isa pang bagay bago mo i-play itong video..."
 }

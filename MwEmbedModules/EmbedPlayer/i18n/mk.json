@@ -54,6 +54,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Изведувач WebM (HTML5)",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Општ Ogg-приклучок",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Извршник VLC за iOS",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Преземач на WebM-додаток за Internet Explorer",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Приклучок QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -87,5 +88,8 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Преземете го извршникот VLC од Продавницата за прилози (App Store)",
 	"mwe-embedplayer-vlcapp-openvideo": "Отвори го видеово во извршникот VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Преземи го видеово",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "За да гледате видеа на странцава, ќе ви треба бесплатниот извршник VLC. Да го преземам сега?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "За да гледате видеа на странцава, ќе ви треба бесплатниот извршник VLC. Да го преземам сега?",
+	"mwe-embedplayer-iewebmprompt-intro": "Упс! Уште нешто пред да го пуштите видеото...",
+	"mwe-embedplayer-iewebmprompt-linktext": "Воспоставете ги медиумските делови на WebM за Internet Explorer",
+	"mwe-embedplayer-iewebmprompt-outro": "Превчитај ја страницата по воспоставката."
 }
