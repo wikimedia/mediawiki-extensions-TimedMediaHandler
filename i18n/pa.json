@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gman124"
+			"Gman124",
+			"Babanwalia"
 		]
 	},
-	"timedmedia-more": "ਹੋਰ..."
+	"timedmedia-more": "ਹੋਰ...",
+	"timedmedia-source-file": "$1 ਸਰੋਤ"
 }
