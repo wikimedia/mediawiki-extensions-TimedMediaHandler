@@ -4,7 +4,8 @@
 			"Ainali",
 			"Dafer45",
 			"Lokal Profil",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Jenniesarina"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titel: $1",
@@ -90,5 +91,6 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Ladda ner VLC-appen från App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Öppna denna video i VLC-appen",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Ladda ner denna video",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "För att spela upp video på denna webbplats, behöver du den kostnadsfria VLC-appen. Installera nu?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "För att spela upp video på denna webbplats, behöver du den kostnadsfria VLC-appen. Installera nu?",
+	"mwe-embedplayer-iewebmprompt-intro": "Oops! En sak till innan du kan spela denna video..."
 }

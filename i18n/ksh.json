@@ -25,6 +25,7 @@
 	"timedmedia-oggThumb-failed": "<code lang=\"en\">oggThumb</code> kunnt kei MiniBelldsche maache.",
 	"timedmedia-status": "Zohschtand",
 	"timedmedia-status-unknown": "Onbikannte Zohschtand",
+	"timedmedia-direct-link": "Afflähjer eronger lahde",
 	"timedmedia-not-ready": "Nit parraht",
 	"timedmedia-started-transcode": "De Ömwandlong hät vör $1 bejonne. $2 sin jedonn.",
 	"timedmedia-percent-done": "öm de $1% jedonn",
@@ -75,5 +76,6 @@
 	"timedmedia-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Ogg Vorbis\">Ogg</i>-Fommaht",
 	"timedmedia-flac-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Free Lossless Audio Codec „Freije verloßfreie Kodehrer un Dekodehrer vun Töhn“\">FLAC</i>-Fommaht",
-	"timedmedia-wav-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"RIFF WAVE - Resource Interchange File Format - för de Wälle vun Töhn\">WAV</i>-Fommaht"
+	"timedmedia-wav-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"RIFF WAVE - Resource Interchange File Format - för de Wälle vun Töhn\">WAV</i>-Fommaht",
+	"apihelp-transcodereset-param-title": "De Övverschreff vun dä Mehdijedattei."
 }

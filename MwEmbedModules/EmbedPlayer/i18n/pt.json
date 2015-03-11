@@ -95,5 +95,7 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Descarregar a aplicação VLC a partir da App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Abrir este vídeo na aplicação VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Descarregar este vídeo",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproduzir vídeos neste sítio, precisa da aplicação gratuita VLC. Instalar agora?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproduzir vídeos neste sítio, precisa da aplicação gratuita VLC. Instalar agora?",
+	"mwe-embedplayer-iewebmprompt-intro": "Ops! Só mais uma coisa antes de poder ver o vídeo...",
+	"mwe-embedplayer-iewebmprompt-outro": "Recarregar esta página após a instalação."
 }
