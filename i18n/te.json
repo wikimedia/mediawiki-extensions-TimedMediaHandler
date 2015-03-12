@@ -3,7 +3,8 @@
 		"authors": [
 			"Kiranmayee",
 			"Veeven",
-			"వైజాసత్య"
+			"వైజాసత్య",
+			"రహ్మానుద్దీన్"
 		]
 	},
 	"timedmedia-ogg-short-audio": "Ogg $1 శ్రావ్యక ఫైలు, $2",
@@ -14,6 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "ఓగ్ మల్టిప్లెక్సుడ్ శ్రవణ/దృశ్యక ఫైలు, $1, నిడివి $2, $4×$5 పిక్సెళ్ళు, $3 మొత్తం",
 	"timedmedia-ogg-long-general": "Ogg మీడియా ఫైలు, నిడివి $2, $3",
 	"timedmedia-ogg-long-error": "తప్పుడు ogg ఫైలు: $1",
+	"timedmedia-no-player-js": "క్షమించాలి, మీ విహారిణిలో జావాస్క్రిప్ట్ అచేతనంగా ఉంది లేదా మీ విహారిణికి తగిన దృశ్యచాలకం అందుబాటులో లేదు.<br />\nమీరు <a href=\"$1\">మీరు వీడియో క్లిప్ ని దించుకోవచ్చు</a> లేదా <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">దృశ్యచాలకాన్ని</a> దింపుకొని ఈ వీడియో క్లిప్ ను మీ విహారిణిలో చూడవచ్చు.",
 	"timedmedia-more": "మరిన్ని...",
 	"timedmedia-dismiss": "మూసివేయి",
 	"timedmedia-download": "ఫైలుని దిగుమతి చేసుకోండి",
@@ -25,6 +27,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|గంట|$1 గంటలు}}",
 	"timedmedia-minutes": "{{PLURAL:$1|నిమిషం|$1 నిమిషాలు}}",
 	"timedmedia-seconds": "{{PLURAL:$1|క్షణం|$1 క్షణాలు}}",
+	"timedmedia-source-file": "$1 మూలం",
 	"timedmedia-source-file-desc": "అసలు $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "అసలు $1 దస్త్రం ($2)",
 	"timedmedia-subtitle-new-go": "వెళ్ళు",
