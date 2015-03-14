@@ -36,7 +36,7 @@
 	"timedmedia-wav-pcm-required": "Solo puedes cargar WAV del tipo PCM (''Pulse Code Modulation'', por sus siglas en inglés).",
 	"timedmedia-mp4-short-video": "Archivo de vídeo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Archivo de audio/vídeo MP4,  $1 , longitud  $2 ,  $4  ×  $5  píxeles,  $3  total",
-	"timedmedia-no-player-js": "Lo sentimos, pero tu navegador tiene JavaScript inhabilitado o no tiene ningún reproductor compatible instalado.<br />\nPuedes <a href=\"$1\">descargar el clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descargar un reproductor</a> para poder ver el vídeo en tu navegador.",
+	"timedmedia-no-player-js": "Tu navegador tiene JavaScript desactivado o no tiene un reproductor compatible.<br />\nPuedes <a href=\"$1\">descargar el vídeo</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descargar un reproductor</a> para ver el vídeo en tu navegador.",
 	"timedmedia-more": "Opciones...",
 	"timedmedia-dismiss": "Cerrar",
 	"timedmedia-download": "Descargar archivo",
