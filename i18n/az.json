@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cekli829"
+			"Cekli829",
+			"Dağlı95"
 		]
 	},
-	"timedmedia-status": "Status"
+	"timedmedia-no-player-js": "Bağışlayın, sizin veb brauzeriniz JavaScript texnologiyasını dəstəkləmir və ya bu əlavə deaktiv edilib.\nSiz dinləmək istədiyiniz faylı <a href=\"$1\">yükləyə</a> və ya brauzerinizə, <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">lazımlı əlavəni</a> quraşdıra bilərsiz.",
+	"timedmedia-status": "Status",
+	"timedmedia-source-file": "$1 mənbəyi"
 }

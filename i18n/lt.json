@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Homo",
-			"Matasg"
+			"Matasg",
+			"Hugo.arg"
 		]
 	},
 	"timedmedia-desc": "Įrankis groti Ogg Theora ir Vorbis failus su JavaScript grotuvu",
@@ -14,8 +15,11 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg sutankinta audio/video byla, $1, ilgis $2, $4×$5 pikseliai, $3 viso",
 	"timedmedia-ogg-long-general": "Ogg media byla, ilgis $2, $3",
 	"timedmedia-ogg-long-error": "Bloga ogg byla: $1",
+	"timedmedia-no-player-js": "Atsiprašome, bet jūsų naršyklėje arba išjungtas JavaScript, arba neturi jokio palaikomo grotuvo.<br />\nJūs galite <a href=\"$1\">atsisiųsti įrašą</a> arba <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">grotuvą</a>, kad galėtumėte leisti įrašą savo naršyklėje.",
 	"timedmedia-more": "Daugiau...",
 	"timedmedia-dismiss": "Uždaryti",
 	"timedmedia-download": "Atsisiųsti bylą",
-	"timedmedia-desc-link": "Apie šią bylą"
+	"timedmedia-desc-link": "Apie šią bylą",
+	"timedmedia-source-file": "$1 šaltinis",
+	"timedmedia-source-audio-file-desc": "Pirminė $1 rinkmena ($2)"
 }
