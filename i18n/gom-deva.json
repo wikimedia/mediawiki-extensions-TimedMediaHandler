@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Darshan kandolkar"
+			"Darshan kandolkar",
+			"Supriya kankumbikar"
 		]
 	},
-	"timedmedia-source-file": "$1 उगम"
+	"timedmedia-source-file": "$1 उगम",
+	"timedmedia-source-audio-file-desc": "मूळ $1 फायल ($2)"
 }
