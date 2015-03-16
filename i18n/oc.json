@@ -18,10 +18,13 @@
 	"timedmedia-flac-short-audio": "Fichièr àudio FLAC, $1",
 	"timedmedia-flac-long-audio": "Fichièr àudio FLAC, durada $1, debit $2 sus l’ensemble",
 	"timedmedia-wav-short-audio": "Fichièr àudio WAV, $1",
+	"timedmedia-no-player-js": "O planhèm, siá vòstre navigador a JavaScript de desactivat, siá dispausa pas de cap de lector de pres en carga.<br />\nPodètz <a href=\"$1\">telecargar lo clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">telecargar un lector</a> per legir lo clip dins vòstre navigador.",
 	"timedmedia-more": "Mai…",
 	"timedmedia-dismiss": "Tampar",
 	"timedmedia-download": "Telecargar lo fichièr",
 	"timedmedia-desc-link": "A prepaus d'aqueste fichièr",
+	"timedmedia-source-file": "Font $1",
+	"timedmedia-source-audio-file-desc": "Fichièr original $1 ($2)",
 	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-file": "Fichièr"
 }

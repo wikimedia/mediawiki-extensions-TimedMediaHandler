@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Pitort",
-			"Vriullop"
+			"Vriullop",
+			"Xavier Dengra"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Títol: $1",
@@ -18,7 +19,7 @@
 	"mwe-embedplayer-player_fullscreen": "Pantalla completa",
 	"mwe-embedplayer-current_clip_msg": "Continua reproduint",
 	"mwe-embedplayer-paused": "en pausa",
-	"mwe-embedplayer-download_full": "Descàrrega del fitxer audiovisual:",
+	"mwe-embedplayer-download_full_video": "Descàrrega del fitxer audiovisual:",
 	"mwe-embedplayer-download_right_click": "Per descarregar, cliqueu el botó dret i seleccioneu <i>Desa l'enllaç com a...</i>",
 	"mwe-embedplayer-download": "Descàrrega",
 	"mwe-embedplayer-share": "Compartir",
@@ -26,6 +27,7 @@
 	"mwe-embedplayer-share_this_video": "Compartiu aquest multimèdia",
 	"mwe-embedplayer-menu_btn": "Menú",
 	"mwe-embedplayer-close_btn": "Tanca",
+	"mwe-embedplayer-for_best_experience": "Per a una millor experiència de visualització es recomana un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download/ca\" target=\"_blank\">reproductor de vídeo HTML5</a>.",
 	"mwe-embedplayer-download-warn": "No s'ha detectat cap reproductor compatible: per tenir un reproductor integrat al navegador, descarregueu la [$1 darrera versió de Firefox]",
 	"mwe-embedplayer-do_not_warn_again": "No mostris més aquest missatge en el futur",
 	"mwe-embedplayer-playerSelect": "Reproductors",
