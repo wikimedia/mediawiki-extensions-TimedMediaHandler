@@ -56,9 +56,10 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * with comments from all the streams combined
 	 *
 	 * @param File $file
+	 * @param bool|IContextSource $context Context to use (optional)
 	 * @return array|bool
 	 */
-	public function formatMetadata( $file ) {
+	public function formatMetadata( $file, $context = false ) {
 		$meta = $this->getCommonMetaArray( $file );
 		if ( count( $meta ) === 0 ) {
 			return false;
