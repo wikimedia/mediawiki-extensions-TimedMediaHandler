@@ -64,7 +64,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 		if ( count( $meta ) === 0 ) {
 			return false;
 		}
-		return $this->formatMetadataHelper( $meta );
+		return $this->formatMetadataHelper( $meta, $context );
 	}
 
 	/**
