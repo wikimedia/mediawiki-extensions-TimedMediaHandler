@@ -848,9 +848,14 @@ class WebVideoTranscode {
 				// eventually we will define a manifest xml entry point.
 				"width" => intval( $width ),
 				"height" => intval( $height ),
-				// a "ready" transcode should have a bitrate:
-				"bandwidth" => intval( self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate'] ),
 			);
+
+		// a "ready" transcode should have a bitrate:
+		if ( isset( self::$transcodeState[$fileName] ) ) {
+			$fields["bandwidth"] = intval(
+				self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate']
+			);
+		}
 
 		if ( !$file->getHandler()->isAudio( $file ) ) {
 			$fields += array( "framerate" => floatval( $framerate ) );
