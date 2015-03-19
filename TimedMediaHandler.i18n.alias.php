@@ -18,6 +18,7 @@ $specialPageAliases['en'] = array(
 /** Arabic (العربية) */
 $specialPageAliases['ar'] = array(
 	'TimedMediaHandler' => array( 'معالج_الميديا_الزمنية' ),
+	'OrphanedTimedText' => array( 'نص_زمني_يتيم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */

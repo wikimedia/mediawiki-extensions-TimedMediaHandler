@@ -26,7 +26,7 @@
 	"mwe-embedplayer-seek_to": "Söhk bes: $1",
 	"mwe-embedplayer-paused": "aanjehallde",
 	"mwe-embedplayer-download_segment": "Ußwahl för erunger ze laade:",
-	"mwe-embedplayer-download_full": "Donn dä janze Viddejo erunge laade:",
+	"mwe-embedplayer-download_full_video": "Donn dä janze Viddejo erunge laade:",
 	"mwe-embedplayer-download_right_click": "Zom Eronger laade, kleck met dä rääschte Taßd_aan Dinge Muuß, un söhk „Afshpeishere onger&nbsp;…“ uß",
 	"mwe-embedplayer-download_clip": "Viddejo erunger lade",
 	"mwe-embedplayer-download_text": "Tex erungerlaade",
@@ -76,5 +76,6 @@
 	"mwe-embedplayer-video-3gp": "En <i lang=\"en\">3GP</i>-Viddejo-Dattei",
 	"mwe-embedplayer-video-mpeg": "En <i lang=\"en\">MPEG</i>-Viddejo-Dattei",
 	"mwe-embedplayer-video-msvideo": "En <i lang=\"en\">AVI</i>-Viddejo-Dattei",
-	"mwe-embedplayer-missing-source": "Mer han kein Viddejo-Quälle-Dattei jefonge"
+	"mwe-embedplayer-missing-source": "Mer han kein Viddejo-Quälle-Dattei jefonge",
+	"mwe-embedplayer-iewebmprompt-intro": "Eine Schrett mih, ih dat De dä Viddejo afschpelle kanns&nbsp;…"
 }

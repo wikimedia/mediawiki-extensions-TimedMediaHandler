@@ -1,5 +1,9 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Naudefj"
+		]
+	},
 	"mwe-embedplayer-credit-title": "Naam: $1",
 	"mwe-embedplayer-loading_plugin": "laai uitbreiding ...",
 	"mwe-embedplayer-add_to_end_of_sequence": "Voeg by aan die einde van die reeks",
@@ -7,7 +11,7 @@
 	"mwe-embedplayer-download": "Aflaai",
 	"mwe-embedplayer-share": "Deel",
 	"mwe-embedplayer-credits": "Krediete",
-	"mwe-embedplayer-menu_btn": "Keuseskerm",
+	"mwe-embedplayer-menu_btn": "Keuses",
 	"mwe-embedplayer-close_btn": "Sluit",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-uitbreiding",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
