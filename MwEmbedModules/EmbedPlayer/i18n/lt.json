@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hugo.arg",
-			"Gediminas"
+			"Gediminas",
+			"Pofka"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Pavadinimas: $1",
@@ -27,7 +28,7 @@
 	"mwe-embedplayer-seek_to": "Siekti $1",
 	"mwe-embedplayer-paused": "pristabdyta",
 	"mwe-embedplayer-download_segment": "Atsisiuntimo būdas:",
-	"mwe-embedplayer-download_full": "Atsisiųsti visą vaizdo įrašo rinkmeną:",
+	"mwe-embedplayer-download_full_video": "Atsisiųsti visą vaizdo įrašo rinkmeną:",
 	"mwe-embedplayer-download_right_click": "Atsisiuntimui spauskite dešiniuoju pelės mygtuku ir pasirinkite <i>Išsaugoti nuorodą kaip...</i>",
 	"mwe-embedplayer-download_clip": "Atsisiųsti vaizdo įrašą",
 	"mwe-embedplayer-download_text": "Atsisiųsti tekstą",
@@ -84,5 +85,6 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Atsisiųsti VLC taikomąją programą iš App Store internetinės krautuvės",
 	"mwe-embedplayer-vlcapp-openvideo": "Atverti šį vaizdo įrašą VLC taikomąja programa",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Atsisiųsti šį vaizdo įrašą",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Kad galėtumėte peržiūrėti vaizdo įrašus šioje svetainėje jums reikia nemokamos VLC taikomosios programos. Ar ją įrašyti dabar?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Kad galėtumėte peržiūrėti vaizdo įrašus šioje svetainėje jums reikia nemokamos VLC taikomosios programos. Ar ją įrašyti dabar?",
+	"mwe-embedplayer-iewebmprompt-intro": "Oi! Dar vienas dalykas prieš paleidžiant šį vaizdo įrašą..."
 }
