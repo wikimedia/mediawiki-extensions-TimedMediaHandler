@@ -251,10 +251,10 @@ $wgExtensionMessagesFiles['MwEmbed.TimedText'] = "$timedMediaDir/MwEmbedModules/
 $wgAutoloadClasses['SpecialTimedMediaHandler'] = "$timedMediaDir/SpecialTimedMediaHandler.php";
 $wgAutoloadClasses['SpecialOrphanedTimedText'] = "$timedMediaDir/SpecialOrphanedTimedText.php";
 
-// Register all Timed Media Handler hooks right after the cache check.
+// Register all Timed Media Handler hooks right after initial setup
 // This way if you set a variable like $wgTimedTextNS in LocalSettings.php after you include TimedMediaHandler
 // we can still read the variable values
-$wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::register';
+$wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';
 
 # add Special pages
 $wgSpecialPages['OrphanedTimedText'] = 'SpecialOrphanedTimedText';
