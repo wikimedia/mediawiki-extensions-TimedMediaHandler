@@ -215,7 +215,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 			foreach ( $pages as $pageid => $arr ) {
 				if ( !isset( $arr['imagerepository'] ) ) {
 					$result->addValue(
-						array( 'query', 'pages', $pageid ),
+						array( 'query', 'pages', intval( $pageid ) ),
 						'imagerepository', ''
 					);
 				}
