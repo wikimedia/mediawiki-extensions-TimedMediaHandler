@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kaustubh",
-			"V.narsikar"
+			"V.narsikar",
+			"Htt"
 		]
 	},
 	"timedmedia-desc": "ऑग थियोरा व वॉर्बिस संचिकांसाठीचा चालक, जावास्क्रीप्ट प्लेयर सकट",
@@ -18,6 +19,8 @@
 	"timedmedia-dismiss": "बंद करा",
 	"timedmedia-download": "संचिका अधिभारण करा",
 	"timedmedia-desc-link": "या संचिकेबद्दलची माहिती",
+	"timedmedia-source-file": "$1 स्रोत",
+	"timedmedia-source-audio-file-desc": "मूळ $1 संचिका ($2)",
 	"timedmediahandler": "टाईम्डमिडियाहॅंडलर",
 	"timedmedia-videos": "{{PLURAL:$1|$1 व्हीडिओ}}",
 	"timedmedia-audios": "{{PLURAL:$1|$1 ध्वनी संचिका}}",
