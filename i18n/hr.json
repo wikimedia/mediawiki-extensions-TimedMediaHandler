@@ -4,7 +4,8 @@
 			"CERminator",
 			"Dalibor Bosits",
 			"Ex13",
-			"SpeedyGonsales"
+			"SpeedyGonsales",
+			"Roberta F."
 		]
 	},
 	"timedmedia-desc": "Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
@@ -16,8 +17,10 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg multipleksirana zvučna/video datoteka, $1, duljine $2, $4×$5 piksela, $3 ukupno",
 	"timedmedia-ogg-long-general": "Ogg medijska datoteka, duljine $2, $3",
 	"timedmedia-ogg-long-error": "nevaljana ogg datoteka: $1",
+	"timedmedia-no-player-js": "Nažalost, u Vašem pregledniku isključen je JavaScript, ili nije dostupan na ovom projektu.<br />\nMožete <a href=\"<span class=\" notranslate\"=\"\" translate=\"no\">$1</span>\">preuzeti videozapis</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">učitati player</a> za reproduciranje videozapisa u pregledniku.",
 	"timedmedia-more": "Više...",
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Snimi datoteku",
-	"timedmedia-desc-link": "O ovoj datoteci"
+	"timedmedia-desc-link": "O ovoj datoteci",
+	"timedmedia-source-file": "Izvor $1"
 }

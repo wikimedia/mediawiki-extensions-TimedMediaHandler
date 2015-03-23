@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"सरोज कुमार ढकाल"
+			"सरोज कुमार ढकाल",
+			"बिप्लब आनन्द"
 		]
 	},
+	"timedmedia-source-file": "$1 श्रोत",
 	"timedmedia-source-file-desc": "मूल $1 फाईल, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "मूल $1 फाईल ($2)"
 }
