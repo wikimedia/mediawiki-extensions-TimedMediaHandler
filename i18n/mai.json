@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"बिप्लब आनन्द"
+		]
+	},
+	"timedmedia-no-player-js": "क्षमा करू, अहाँके ब्राउजर में या त जावास्क्रिप्ट अक्षम अछि या समर्थित प्लेयर नै अछि।<br />\nअहाँ <a href=\"$1\">क्लिपके डाउनलोड</a> कैर सकै छी वा क्लिपके अपन ब्राउजरमें चलावाक लेल <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">एक प्लेयर डाउनलोड</a> कैर सकै छी।",
+	"timedmedia-source-file": "$1 स्रोत",
+	"timedmedia-source-audio-file-desc": "मूल $1 फाइल ($2)"
+}
