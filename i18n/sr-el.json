@@ -15,7 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "Multipleksirani .ogg audio/video snimak, $1, trajanje $2, $4 × $5 piksela, $3.",
 	"timedmedia-ogg-long-general": "Ogg medijska datoteka, dužina $2, $3.",
 	"timedmedia-ogg-long-error": "Neispravna .ogg datoteka: $1.",
-	"timedmedia-no-player-js": "Žao nam je, ali vašem pregledač je onemogućena javaskripta ili nemate odgovarajući plejer.<br />\nMožete <a href=\"$1\">preuzeti klip</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">preuzeti plejer</a> da reprodukujete klip u vašem pregledaču.",
+	"timedmedia-no-player-js": "Žao nam je, ali vašem pregledaču je onemogućena javaskripta ili nemate odgovarajući plejer.<br />\nMožete <a href=\"$1\">preuzeti klip</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">preuzeti plejer</a> da reprodukujete klip u vašem pregledaču.",
 	"timedmedia-more": "Više...",
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Preuzmi datoteku",
