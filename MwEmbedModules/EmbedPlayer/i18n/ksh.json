@@ -50,6 +50,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5-<i lang=\"en\">H.264</i>-Affschpeller",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5-<i lang=\"en\">WebM</i>-Affschpeller",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Däm <i lang=\"en\">Ogg</i>-Shpeller sing Stanndatt-<i lang=\"en\">plugin</i>",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Et Zohsaprojramm <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"WebM\">WebM</i> för der <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Microsoft Internet Explorer\">IE</i> eronger lahde",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Dä <i lang=\"en\">QuickTime</i>-Shpeller als <i lang=\"en\">plugin</i>",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "Dä <i lang=\"en\">QuickTime</i>-Shpeller övver <i lang=\"en\">ActiveX</i>",
 	"mwe-embedplayer-ogg-player-cortado": "Dä <i lang=\"en\">Java Cortado</i> Shpeller",
@@ -77,5 +78,7 @@
 	"mwe-embedplayer-video-mpeg": "En <i lang=\"en\">MPEG</i>-Viddejo-Dattei",
 	"mwe-embedplayer-video-msvideo": "En <i lang=\"en\">AVI</i>-Viddejo-Dattei",
 	"mwe-embedplayer-missing-source": "Mer han kein Viddejo-Quälle-Dattei jefonge",
-	"mwe-embedplayer-iewebmprompt-intro": "Eine Schrett mih, ih dat De dä Viddejo afschpelle kanns&nbsp;…"
+	"mwe-embedplayer-iewebmprompt-intro": "Eine Schrett mih, ih dat De dä Viddejo afschpelle kanns&nbsp;…",
+	"mwe-embedplayer-iewebmprompt-linktext": "Donn de Ongerstözong för <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"WebM\">WebM</i> em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\">Microsoft Internet Explorer</i> eronger lahde un enschtallehre",
+	"mwe-embedplayer-iewebmprompt-outro": "Donn heh di Sigg nohm Enschtallehre norr_ens neu lahde."
 }

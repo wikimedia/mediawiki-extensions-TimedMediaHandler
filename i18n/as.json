@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"IKHazarika"
+		]
+	},
+	"timedmedia-no-player-js": "দুঃখিত, আপুনাৰ ব্ৰাইজাৰত নাইবা জাভা-স্ক্ৰিপ্ট নিষ্ক্ৰিয় কৰা হৈ আছে অথবা কোনো সমৰ্থিত প্লেয়াৰ নাই। </br>\nআপুনাৰ ব্ৰাউজাৰত ক্লিপটো প্লে' কৰিবলৈ <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">প্লে'য়াৰ এটা ডাউনল'ড কৰক</a> অথবা <a href=\"$1\">ক্লিপটো ডাউনল'ড কৰক</a> ।",
+	"timedmedia-source-file": "$1 উৎস",
+	"timedmedia-source-audio-file-desc": "প্ৰকৃত $1 ফাইল ($2)"
+}

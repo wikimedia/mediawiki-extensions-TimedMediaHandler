@@ -37,6 +37,7 @@
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Mammenn $1",
 	"timedmedia-source-file-desc": "Orin $1, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Restr orin $1 ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Video Ogg izelgas (160P)",
 	"timedmedia-derivative-desc-360p.ogv": "Video Ogg lennus war-eeun war ar Gwiad (360p)",
 	"timedmedia-derivative-desc-480p.ogv": "Video Ogg lennus war-eeun war ar Gwiad (480p)",

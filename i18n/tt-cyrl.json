@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Derslek"
 		]
 	},
 	"timedmedia-more": "Тулырак...",
@@ -9,5 +10,6 @@
 	"timedmedia-download": "Файлны алу",
 	"timedmedia-desc-link": "Файл турында мәгълүмат",
 	"timedmedia-oggThumb-version": "OggHandler $1 юрамасыннан да югарырак oggThumb тәэминатын сорый.",
-	"timedmedia-oggThumb-failed": "oggThumb нигезендә миниатюраны ясап булмады."
+	"timedmedia-oggThumb-failed": "oggThumb нигезендә миниатюраны ясап булмады.",
+	"timedmedia-source-file": "$1-нче чыганак"
 }
