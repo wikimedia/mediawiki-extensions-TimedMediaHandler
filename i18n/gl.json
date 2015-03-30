@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Toliño",
-			"Xosé"
+			"Xosé",
+			"Banjo"
 		]
 	},
 	"timedmedia-desc": "Manipulador de son, vídeo e texto sincronizado, con soporte para os formatos WebM, Ogg Theora, Vorbis e srt",
@@ -77,7 +78,7 @@
 	"timedmedia-subtitle-no-subtitles": "Actualmente non hai subtítulos en $1 para este vídeo; pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] para engadilos",
 	"timedmedia-subtitle-remote": "Os subtítulos deste ficheiro están aloxados en $1",
 	"timedmedia-subtitle-remote-link": "Pode [$1 ollar a páxina de descrición] deste ficheiro en $2",
-	"timedmediahandler": "TimedMediaHandler",
+	"timedmediahandler": "Extensión TimedMediaHandler",
 	"timedmedia-videos": "{{PLURAL:$1|$1 vídeo|$1 vídeos}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}",
 	"timedmedia-webm-videos": "{{PLURAL:$1|$1 vídeo WebM|$1 vídeos WebM}}",
