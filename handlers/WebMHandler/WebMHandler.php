@@ -92,7 +92,7 @@ class WebMHandler extends ID3Handler {
 		$baseType =  ( $file->getWidth() == 0 && $file->getHeight() == 0 )? 'audio' : 'video';
 
 		$streams = $this->getStreamTypes( $file );
-		if ( count( $streams ) === 0 ) {
+		if ( !$streams ) {
 			return $baseType . '/webm';
 		}
 
