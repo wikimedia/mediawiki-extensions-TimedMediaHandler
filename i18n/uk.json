@@ -12,7 +12,8 @@
 			"Steve.rusyn",
 			"SteveR",
 			"Тест",
-			"Ата"
+			"Ата",
+			"Piramidion"
 		]
 	},
 	"timedmedia-desc": "Оброблювач для аудіо, відео і субтитрів з підтримкою форматів WebM, Ogg Theora, Vorbis, srt",
@@ -99,7 +100,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 аудіо-файл Ogg|$1 аудіо-файлів Ogg|$1 аудіо-файли Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 аудіо-файл FLAC|$1 аудіо-файлів FLAC|$1 аудіо-файли FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудіо-файл WAV|$1 аудіо-файлів WAV|$1 аудіо-файли WAV}}",
-	"right-transcode-reset": "Скинуто невдалі або перекодовані відео, тож вони знову занесені в чергу завдань.",
+	"right-transcode-reset": "скидання невдалих або перекодованих відео із повторним занесенням їх в чергу завдань",
 	"right-transcode-status": "Перегляньте [[Special:TimedMediaHandler|інформацію про поточну перекодувальну діяльність]]",
 	"action-transcode-status": "Перегляд поточного стану перекодування"
 }
