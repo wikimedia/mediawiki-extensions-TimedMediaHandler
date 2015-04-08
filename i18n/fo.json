@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Spacebirdy"
+			"Spacebirdy",
+			"EileenSanda"
 		]
 	},
-	"timedmedia-more": "Meira..."
+	"timedmedia-more": "Meira...",
+	"timedmedia-source-file": "$1 kelda"
 }
