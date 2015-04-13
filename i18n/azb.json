@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amir a57"
+			"Amir a57",
+			"Koroğlu"
 		]
 	},
+	"timedmedia-no-player-js": "اوزگونلوک‌له، سیزین داراییجی‌نیزین جاوا ایسکریپت یازیلیمی چالیشماییر، یا دا سیزین دارییجی‌نیز بو یازیلیم‌دان آرداغلامیر.<br />\nسیز <a href=\"$1\">بو ویدیونو ایندیریب</a>  یا دا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">بیر اوینادیجی</a> ایندیره‌بیلرسینیز.",
 	"timedmedia-source-file": "$1 کوک",
 	"timedmedia-source-audio-file-desc": "اصلی  $1  فایل ( $2 )"
 }

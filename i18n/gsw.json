@@ -48,6 +48,7 @@
 	"timedmedia-reset-error": "Fääler bim Zruggsetze vo de Umschlüsselig.",
 	"timedmedia-source-file": "Quell ($1)",
 	"timedmedia-source-file-desc": "Original $1, $2 x $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Urspringligi $1-Datei ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg-Videodatei mit niidriger Dateübertragigsrate (160p)",
 	"timedmedia-derivative-desc-360p.ogv": "Webstreamingfähigi Ogg-Videodatei (360p)",
 	"timedmedia-derivative-desc-480p.ogv": "Webstreamingfähigi Ogg-Videodatei (480p)",
