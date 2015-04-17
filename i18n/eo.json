@@ -3,7 +3,8 @@
 		"authors": [
 			"Amikeco",
 			"ArnoLagrange",
-			"Yekrats"
+			"Yekrats",
+			"KuboF"
 		]
 	},
 	"timedmedia-desc": "Traktilo por sondosieroj, videoj, kaj horloĝigita teksto, kun formatsubteno por WebM kaj Ogg Theora kaj Vobis kaj srt.",
@@ -18,5 +19,7 @@
 	"timedmedia-more": "Pli...",
 	"timedmedia-dismiss": "Fermi",
 	"timedmedia-download": "Alŝuti dosieron",
-	"timedmedia-desc-link": "Pri ĉi tiu dosiero"
+	"timedmedia-desc-link": "Pri ĉi tiu dosiero",
+	"timedmedia-source-file": "Fonta $1-dosiero",
+	"timedmedia-source-audio-file-desc": "Origina $1-dosiero ($2)"
 }

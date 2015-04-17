@@ -24,7 +24,7 @@
 	"timedmedia-wav-pcm-required": "Namái pue xubir WAV tipu PCM (Pulse Code Modulation).",
 	"timedmedia-mp4-short-video": "Archivu de videu MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Ficheru de soníu/videu  MP4, $1, llonxitú $2, $4 × $5 pixels, $3 total",
-	"timedmedia-no-player-js": "Sentimoslo, o'l so navegador tien desactiváu JavaScript o nun tien un reproductor compatible.<br />\nPue <a href=\"$1\">descargar el clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descargar un reproductor</a> pa reproducir el clip nel so navegador.",
+	"timedmedia-no-player-js": "Sentimoslo, o'l to navegador tien desactiváu JavaScript o nun tienes un reproductor compatible.<br />\nPues <a href=\"$1\">descargar el clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descargar un reproductor</a> pa reproducir el clip nel to navegador.",
 	"timedmedia-more": "Más...",
 	"timedmedia-dismiss": "Zarrar",
 	"timedmedia-download": "Descargar archivu",
