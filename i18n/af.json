@@ -17,5 +17,7 @@
 	"timedmedia-dismiss": "Sluit",
 	"timedmedia-download": "Laai lêer af",
 	"timedmedia-desc-link": "Aangaande die lêer",
-	"timedmedia-minutes": "{{PLURAL:$1|$1 minuut|$1 minute}}"
+	"timedmedia-minutes": "{{PLURAL:$1|$1 minuut|$1 minute}}",
+	"timedmedia-source-file": "Bron van $1",
+	"timedmedia-source-audio-file-desc": "Oorspronklike $1-lêer ($2)"
 }
