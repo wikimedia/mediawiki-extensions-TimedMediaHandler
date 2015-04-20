@@ -205,9 +205,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 			}
 
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$pages = ApiResult::removeMetadataNonRecursive(
-					(array)$this->getResult()->getResultData( array( 'query', 'pages' ) )
-				);
+				$pages = (array)$this->getResult()->getResultData( array( 'query', 'pages' ), array( 'Strip' => 'base' ) );
 			} else {
 				$data = $this->getResultData();
 				$pages = $data['query']['pages'];

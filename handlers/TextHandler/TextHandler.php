@@ -187,7 +187,7 @@ class TextHandler {
 			$api = new ApiMain( $params );
 			$api->execute();
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$data = ApiResult::removeMetadata( $api->getResult()->getResultData() );
+				$data = $api->getResult()->getResultData( null, array( 'Strip' => 'all' ) );
 			} else {
 				$data = $api->getResultData();
 			}
@@ -217,7 +217,7 @@ class TextHandler {
 		$api->profileOut();
 
 		if ( defined( 'ApiResult::META_CONTENT' ) ) {
-			$data = ApiResult::removeMetadata( $module->getResult()->getResultData() );
+			$data = $module->getResult()->getResultData( null, array( 'Strip' => 'all' ) );
 		} else {
 			$data = $module->getResultData();
 		}
