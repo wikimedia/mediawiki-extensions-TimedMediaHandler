@@ -153,8 +153,11 @@ class WebVideoTranscodeJob extends Job {
 
 		$dbw = wfGetDB( DB_MASTER );
 
+		$jobStartTimeCache = $dbw->timestamp();
+
 		// Check if we have "already started" the transcode ( possible error )
-		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
+		$dbStartTime = $dbw->selectField( 'transcode',
+			'transcode_time_startwork',
 			array(
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
@@ -162,26 +165,27 @@ class WebVideoTranscodeJob extends Job {
 			__METHOD__,
 			array( 'ORDER BY' => 'transcode_id' )
 		);
-		if( ! is_null( $dbStartTime ) ){
+
+		// Insert the row if it does not exist, otherwise a transcode is queueing or running already
+		if ( $dbStartTime === false ) {
+			$dbw->insert(
+				'transcode',
+				array(
+					'transcode_image_name' => $file->getTitle()->getDbKey(),
+					'transcode_key' => $transcodeKey,
+					'transcode_time_startwork' => $jobStartTimeCache,
+					'transcode_error' => "",
+					'transcode_final_bitrate' => 0
+				),
+				__METHOD__,
+				array( 'IGNORE' )
+			);
+		} else {
 			$error = 'Error, running transcode job, for job that has already started';
 			$this->output( $error );
 			$this->setLastError( $error );
 			return false;
 		}
-
-		// Update the transcode table letting it know we have "started work":
-		$jobStartTimeCache = $dbw->timestamp();
-		$dbw->update(
-			'transcode',
-			array( 'transcode_time_startwork' => $jobStartTimeCache ),
-			array(
-				'transcode_image_name' => $this->getFile()->getName(),
-				'transcode_key' => $transcodeKey
-			),
-			__METHOD__,
-			array( 'ORDER BY' => 'transcode_id', 'LIMIT' => 1 )
-		);
-
 
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
