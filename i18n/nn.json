@@ -3,7 +3,8 @@
 		"authors": [
 			"Eirik",
 			"Harald Khan",
-			"Njardarlogar"
+			"Njardarlogar",
+			"Ranveig"
 		]
 	},
 	"timedmedia-desc": "Handteringsprogram for ljod, video og tidbunden tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt",
@@ -15,6 +16,7 @@
 	"timedmedia-ogg-long-multiplexed": "Samansett ogg lyd-/videofil, $1, lengd $2, $4×$5 pikslar, $3 til saman",
 	"timedmedia-ogg-long-general": "Ogg mediafil, lengd $2, $3",
 	"timedmedia-ogg-long-error": "Ugyldig Ogg-fil: $1",
+	"timedmedia-no-player-js": "Orsak. Nettleseren din har anten ikkje JavaScript aktiv eller har ingen støtta spelar.<br />\nDu kan <a href=\"$1\">laste ned klippet</a> eller <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">laste ned ein spelar</a> for å spele av klippet i nettlesaren din.",
 	"timedmedia-more": "Meir...",
 	"timedmedia-dismiss": "Lat att",
 	"timedmedia-download": "Last ned fila",
@@ -28,6 +30,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekund|$1 sekund}}",
 	"timedmedia-source-file": "$1-kjelde",
 	"timedmedia-source-file-desc": "Opphavleg $1, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Opphavleg $1-fil ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg-video med låg bandbreidd (160P)",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg-video som kan strøymast på nett (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Ogg-video som kan strøymast på nett (480P)",

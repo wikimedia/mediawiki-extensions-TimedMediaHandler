@@ -1,5 +1,9 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Arystanbek"
+		]
+	},
 	"timedmedia-ogg-short-audio": "Ogg $1 дыбыс файлы, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 бейне файлы, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 таспа файлы, $2",
@@ -11,5 +15,6 @@
 	"timedmedia-more": "Көбірек...",
 	"timedmedia-dismiss": "Жабу",
 	"timedmedia-download": "Файлды жүктеу",
-	"timedmedia-desc-link": "Бұл файл туралы"
+	"timedmedia-desc-link": "Бұл файл туралы",
+	"timedmedia-source-file": "$1 қайнар"
 }

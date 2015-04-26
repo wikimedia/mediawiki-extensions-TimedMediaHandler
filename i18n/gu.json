@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"KartikMistry"
+			"KartikMistry",
+			"Arbhatt"
 		]
 	},
 	"timedmedia-dismiss": "બંધ કરો",
-	"timedmedia-source-file": "$1 સ્ત્રોત"
+	"timedmedia-source-file": "$1 સ્ત્રોત",
+	"timedmedia-source-audio-file-desc": "મુળ આવૃત્તિ $1 ફાઇલ ($2)"
 }
