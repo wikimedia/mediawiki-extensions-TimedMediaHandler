@@ -3,7 +3,8 @@
 		"authors": [
 			"Nghtwlkr",
 			"Njardarlogar",
-			"Gaute"
+			"Gaute",
+			"Ranveig"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tittel: $1",
@@ -15,7 +16,7 @@
 	"mwe-embedplayer-link_back": "Lenkja attende",
 	"mwe-embedplayer-error_swap_vid": "Feil: mwEmbed kunne ikkje byta videomerket for mwEmbed-grensesnittet",
 	"mwe-embedplayer-add_to_end_of_sequence": "Legg til ved enden av sekvensen",
-	"mwe-embedplayer-missing_video_stream": "Videofila for strøyminga saknar",
+	"mwe-embedplayer-missing_video_stream": "Videofila for strøyminga manglar",
 	"mwe-embedplayer-play_clip": "Spel av klipp",
 	"mwe-embedplayer-pause_clip": "Stogg klipp",
 	"mwe-embedplayer-volume_control": "Volumstyring",

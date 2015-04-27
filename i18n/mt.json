@@ -4,5 +4,6 @@
 			"Leli Forte"
 		]
 	},
-	"timedmedia-more": "Aktar"
+	"timedmedia-more": "Aktar",
+	"timedmedia-source-file": "Sors $1"
 }
