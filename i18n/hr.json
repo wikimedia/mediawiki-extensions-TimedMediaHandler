@@ -5,7 +5,8 @@
 			"Dalibor Bosits",
 			"Ex13",
 			"SpeedyGonsales",
-			"Roberta F."
+			"Roberta F.",
+			"Fraxinus"
 		]
 	},
 	"timedmedia-desc": "Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
@@ -22,5 +23,6 @@
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Snimi datoteku",
 	"timedmedia-desc-link": "O ovoj datoteci",
-	"timedmedia-source-file": "Izvor $1"
+	"timedmedia-source-file": "Izvor $1",
+	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)"
 }
