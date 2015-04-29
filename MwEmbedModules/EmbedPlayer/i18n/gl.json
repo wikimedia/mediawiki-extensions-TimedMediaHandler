@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Elisardojm"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -26,7 +27,8 @@
 	"mwe-embedplayer-seek_to": "Buscar $1",
 	"mwe-embedplayer-paused": "en pausa",
 	"mwe-embedplayer-download_segment": "Descargar a selección:",
-	"mwe-embedplayer-download_full": "Descargar o ficheiro de vídeo completo:",
+	"mwe-embedplayer-download_full_video": "Descargar o ficheiro de vídeo completo:",
+	"mwe-embedplayer-download_full_audio": "Descargar o ficheiro de son completo:",
 	"mwe-embedplayer-download_right_click": "Para descargar, faga clic dereito e seleccione <i>Gardar a ligazón como...</i>",
 	"mwe-embedplayer-download_clip": "Descargar o vídeo",
 	"mwe-embedplayer-download_text": "Descargar o texto",
@@ -39,6 +41,7 @@
 	"mwe-embedplayer-choose_player": "Escolla o reprodutor de vídeo",
 	"mwe-embedplayer-no-player": "Non hai ningún reprodutor dispoñible para $1",
 	"mwe-embedplayer-share_this_video": "Compartir este vídeo",
+	"mwe-embedplayer-share_this_audio": "Compartir este ficheiro de son",
 	"mwe-embedplayer-video_credits": "Créditos do vídeo",
 	"mwe-embedplayer-no-video_credits": "Non hai créditos dispoñibles",
 	"mwe-embedplayer-kaltura-platform-title": "Plataforma de vídeo de código aberto Kaltura",
@@ -51,6 +54,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "Reprodutor H.264 HTML5",
 	"mwe-embedplayer-ogg-player-webmNative": "Reprodutor WebM HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Complemento xenérico Ogg",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC para aplicación iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Complemento QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "ActiveX QuickTime",
 	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
@@ -79,5 +83,14 @@
 	"mwe-embedplayer-video-3gp": "Vídeo 3gp",
 	"mwe-embedplayer-video-mpeg": "Vídeo MPEG",
 	"mwe-embedplayer-video-msvideo": "Vídeo AVI",
-	"mwe-embedplayer-missing-source": "Non se atopou o vídeo de orixe."
+	"mwe-embedplayer-missing-source": "Non se atopou o vídeo de orixe.",
+	"mwe-embedplayer-vlcapp-intro": "Para ver vídeos deste sitio nun iPhone ou iPad, necesita a $1 gratuíta.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "Aplicación VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Descargar a aplicación VLC desde a App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Abrir este vídeo na aplicación VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Descargar este vídeo",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproducir vídeos neste sitio, necesita a aplicación gratuíta VLC. Instalar agora?",
+	"mwe-embedplayer-iewebmprompt-intro": "Oops! Unha cousa máis antes de que poida ver este vídeo...",
+	"mwe-embedplayer-iewebmprompt-linktext": "Instalar compoñentes multimedia de WebM para Microsoft Internet Explorer",
+	"mwe-embedplayer-iewebmprompt-outro": "Recargar esta páxina despois da instalación."
 }
