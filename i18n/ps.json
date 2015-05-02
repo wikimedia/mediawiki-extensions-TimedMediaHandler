@@ -16,7 +16,7 @@
 	"timedmedia-status": "دريځ",
 	"timedmedia-actions": "چارې",
 	"timedmedia-days": "{{PLURAL:$1|1 ورځ|$1 ورځې}}",
-	"timedmedia-hours": "{{PLURAL:$1|1 ساعت|$1 ساعتونه}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 گړۍ|$1 گړۍ}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 دقيقه|دقيقې}}",
 	"timedmedia-source-file": "$1 سرچينه",
 	"timedmedia-source-audio-file-desc": "اصلي $1 دوتنه ($2)",
