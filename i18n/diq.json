@@ -34,6 +34,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 saniya|$1 saniyey}}",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 çıme",
+	"timedmedia-source-audio-file-desc": "Dosyaya $1 oricinale ($2)",
 	"timedmedia-subtitle-new-go": "Şo",
 	"timedmediahandler": "Programê kontroliê zemanê kontrolbiyayey",
 	"timedmedia-file": "Dosya"
