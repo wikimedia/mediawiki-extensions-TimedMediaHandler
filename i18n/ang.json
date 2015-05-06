@@ -4,5 +4,6 @@
 			"Gott wisst"
 		]
 	},
-	"timedmedia-source-file": "$1 fruma"
+	"timedmedia-source-file": "$1 fruma",
+	"timedmedia-source-audio-file-desc": "Frumlicu $1 ymele ($2)"
 }
