@@ -104,8 +104,7 @@ class WebVideoTranscodeJob extends Job {
 					'transcode_image_name' => $this->getFile()->getName(),
 					'transcode_key' => $transcodeKey
 			),
-			__METHOD__,
-			array( 'LIMIT' => 1 )
+			__METHOD__
 		);
 		$this->setLastError( $error );
 	}
@@ -162,8 +161,7 @@ class WebVideoTranscodeJob extends Job {
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
 			),
-			__METHOD__,
-			array( 'ORDER BY' => 'transcode_id' )
+			__METHOD__
 		);
 
 		// Insert the row if it does not exist, otherwise a transcode is queueing or running already
@@ -276,8 +274,7 @@ class WebVideoTranscodeJob extends Job {
 						'transcode_image_name' => $this->getFile()->getName(),
 						'transcode_key' => $transcodeKey,
 					),
-					__METHOD__,
-					array( 'LIMIT' => 1 )
+					__METHOD__
 				);
 				$dbw->commit( __METHOD__, 'flush' );
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );
