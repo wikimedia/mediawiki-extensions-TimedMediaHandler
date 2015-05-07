@@ -180,6 +180,7 @@ class WebVideoTranscodeJob extends Job {
 				__METHOD__,
 				array( 'IGNORE' )
 			);
+			$dbw->commit( __METHOD__, 'flush' );
 		} else {
 			$error = 'Error, running transcode job, for job that has already started';
 			$this->output( $error );
@@ -278,6 +279,7 @@ class WebVideoTranscodeJob extends Job {
 					__METHOD__,
 					array( 'LIMIT' => 1 )
 				);
+				$dbw->commit( __METHOD__, 'flush' );
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );
 			}
 		} else {
