@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pippinu"
+		]
+	},
+	"timedmedia-no-player-js": "Purtroppu lu to browser o havi lu JavaScript disattivatu o nun havi nuddu litturi suppurtatu.<br />\nTi poi <a href=\"$1\">scarricari lu spizzuni</a> o puru <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">scarricari nu litturi</a> pi' riprudùciri lu spizzuni ntô to browser.",
+	"timedmedia-source-file": "Surgenti $1",
+	"timedmedia-source-audio-file-desc": "File $1 origginali ($2)"
+}
