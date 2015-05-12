@@ -21,7 +21,7 @@ $specialPageAliases['ar'] = array(
 	'OrphanedTimedText' => array( 'نص_زمني_يتيم' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'TimedMediaHandler' => array( 'معالج_الميديا-الزمنيه' ),
 );
