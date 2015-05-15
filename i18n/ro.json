@@ -5,7 +5,8 @@
 			"KlaudiuMihaila",
 			"Mihai",
 			"Minisarm",
-			"Stelistcristi"
+			"Stelistcristi",
+			"ImGelu"
 		]
 	},
 	"timedmedia-desc": "Gestionar pentru fișiere audio, video și subtitrări sincronizate, cu suport pentru formatele WebM, Ogg Theora, Vorbis, srt",
@@ -23,7 +24,7 @@
 	"timedmedia-flac-long-audio": "fișier audio FLAC, lungime $1, $2 per ansmablu",
 	"timedmedia-mp4-short-video": "fișier video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "fișier audio/video MP4, $1, lungime $2, $4 × $5 pixeli, $3 per ansamblu",
-	"timedmedia-no-player-js": "Ne pare rău, însă navigatorul dumneavoastră fie are JavaScript dezactivat, fie nu conține niciun player suportat.<br />\nPuteți <a href=\"$1\">descărca clipul</a> sau puteți <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descărca un player</a> pentru a-l reda direct în navigator.",
+	"timedmedia-no-player-js": "Ne pare rău, însă navigatorul tău fie are JavaScript dezactivat, fie nu conține niciun player suportat.<br />\nPpți <a href=\"$1\">descărca clipul</a> sau poți <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descărca un player</a> pentru a-l reda direct în navigator.",
 	"timedmedia-more": "Mai mult…",
 	"timedmedia-dismiss": "Închide",
 	"timedmedia-download": "Descarcă fișierul",
@@ -55,7 +56,7 @@
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Sursă $1",
 	"timedmedia-source-file-desc": "Fișier $1 original, $2 × $3 ($4)",
-	"timedmedia-source-audio-file-desc": "Fișier $1 original ($2)",
+	"timedmedia-source-audio-file-desc": "Fișierul $1 original ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Videoclip Ogg cu lățime de bandă mică (160P)",
 	"timedmedia-derivative-desc-360p.ogv": "Videoclip Ogg pentru redare pe web (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Videoclip Ogg pentru redare pe web (480P)",
