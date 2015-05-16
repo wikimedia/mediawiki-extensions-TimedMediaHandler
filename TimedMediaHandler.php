@@ -259,7 +259,6 @@ $wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';
 # add Special pages
 $wgSpecialPages['OrphanedTimedText'] = 'SpecialOrphanedTimedText';
 $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
-$wgSpecialPageGroups['TimedMediaHandler'] = 'media';
 
 // Extension Credits
 $wgExtensionCredits['media'][] = array(

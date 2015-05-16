@@ -228,4 +228,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		}
 		return $states;
 	}
+
+	protected function getGroupName() {
+		return 'media';
+	}
 }
