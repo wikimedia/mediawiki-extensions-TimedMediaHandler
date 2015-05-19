@@ -106,5 +106,6 @@
 	"orphanedtimedtext": "Потерянные страницы TimedText",
 	"orphanedtimedtext-summary": "Список страниц [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], которые не имеют соответствующего файла.",
 	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText не включен в этой вики."
+	"orphanedtimedtext-notimedtext": "TimedText не включен в этой вики.",
+	"apihelp-transcodereset-param-title": "Заголовок медиафайла."
 }

@@ -106,5 +106,7 @@
 	"apihelp-query+videoinfo-example-1": "Faili [[:File:Folgers.ogv|Folgers.ogv]] teabe väljavõtt",
 	"apihelp-transcodereset-description": "Kasutajad, kellel on õigus \"transcode-reset\", saavad ümberkodeerimistööd lähtestada ja uuesti käitada.",
 	"apihelp-transcodereset-param-title": "Meediafaili pealkiri.",
-	"apihelp-transcodereset-param-transcodekey": "Lähtestatava ümberkodeerimise võti. Leitav päringuga [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]."
+	"apihelp-transcodereset-param-transcodekey": "Lähtestatava ümberkodeerimise võti. Leitav päringuga [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Lähtesta kõik faili [[:File:Clip.webm|Clip.webm]] ümberkodeeringud",
+	"apihelp-transcodereset-example-2": "Lähtesta faili [[:File:Clip.webm|Clip.webm]] ümberkodeerimisvõti '360_560kbs.webm'"
 }

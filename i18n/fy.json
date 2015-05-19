@@ -7,7 +7,7 @@
 	"timedmedia-more": "Mear…",
 	"timedmedia-dismiss": "Slute",
 	"timedmedia-days": "{{PLURAL:$1|1 dei|$1 dagen}}",
-	"timedmedia-hours": "{{PLURAL:$1|1 oere|$1 oeren}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 oere|$1 oere}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minút|$1 minuten}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekonde|$1 sekonden}}",
 	"timedmedia-source-file": "$1 boarne",
