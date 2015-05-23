@@ -658,7 +658,7 @@ function StreamFile(options) {
 			} else {
 				console.log("Unrecognized AudioProgressEvent format, no playbackTime or timestamp");
 			}
-			expectedTime = playbackTimeAtBufferHead + (bufferSize / context.sampleRate);
+			var expectedTime = playbackTimeAtBufferHead + (bufferSize / context.sampleRate);
 			if (expectedTime < playbackTime) {
 				// we may have lost some time while something ran too slow
 				lostTime += (playbackTime - expectedTime);
@@ -1435,7 +1435,8 @@ function WebGLFrameSink(canvas, videoInfo) {
  * @return boolean
  */
 WebGLFrameSink.isAvailable = function() {
-	var canvas = document.createElement('canvas');
+	var canvas = document.createElement('canvas'),
+		gl;
 	canvas.width = 1;
 	canvas.height = 1;
 	try {
@@ -1574,6 +1575,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		INITIAL: 'INITIAL',
 		SEEKING_END: 'SEEKING_END',
 		LOADED: 'LOADED',
+		READY: 'READY',
 		PLAYING: 'PLAYING',
 		PAUSED: 'PAUSED',
 		SEEKING: 'SEEKING',
@@ -1689,10 +1691,14 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 
 	function stopVideo() {
 		// kill the previous video if any
-		paused = true; // ?
+		state = State.INITIAL;
+		started = false;
+		paused = true;
 		ended = true;
-		
+		loadedMetadata = false;
 		continueVideo = null;
+		frameEndTimestamp = 0.0;
+		lastFrameDecodeTime = 0.0;
 		
 		if (stream) {
 			stream.abort();
@@ -1708,7 +1714,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		}
 		if (audioFeeder) {
 			audioFeeder.close();
-			audioFeeder = null;
+			audioFeeder = undefined;
 		}
 		if (nextProcessingTimer) {
 			clearTimeout(nextProcessingTimer);
@@ -2029,7 +2035,8 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		
 		var audioBufferedDuration = 0,
 			decodedSamples = 0,
-			audioState = null;
+			audioState = null,
+			audioPlaybackPosition = 0;
 
 		var n = 0;
 		while (true) {
@@ -2384,6 +2391,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		bufferTime = 0;
 		drawingTime = 0;
 		started = true;
+		ended = false;
 
 		// There's some kind of problem with the JIT in iOS 7 Safari
 		// that sometimes trips up on optimized Vorbis builds, at least
@@ -2514,6 +2522,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 					pingProcessing();
 				} else {
 					//throw new Error('wtf is this');
+					console.log('stream ended');
 					stream = null;
 			
 					// Let the read/decode/draw loop know we're out!
@@ -2909,4 +2918,4 @@ OgvJsPlayer.loadingNode = null,
 OgvJsPlayer.loadingCallbacks = [];
 
 
-window.OgvJsVersion = "Thu Feb 5 11:54:51 UTC 2015";
+window.OgvJsVersion = "Sat May 23 12:27:37 UTC 2015";
