@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Haqmar"
+			"Haqmar",
+			"Рустам Нурыев"
 		]
 	},
 	"timedmedia-days": "{{PLURAL:$1|1=$1 көн|$1 көн}}",
 	"timedmedia-hours": "{{PLURAL:$1|1=$1 сәғәт|$1 сәғәт}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1=$1 минут|$1 минут}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1=$1 секунд|$1 секунд}}"
+	"timedmedia-seconds": "{{PLURAL:$1|1=$1 секунд|$1 секунд}}",
+	"timedmedia-source-file": "$1 сығанаҡ",
+	"timedmedia-source-audio-file-desc": "Оригинал $1-файл ($2)"
 }

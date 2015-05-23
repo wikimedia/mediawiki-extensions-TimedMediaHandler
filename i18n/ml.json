@@ -117,5 +117,6 @@
 	"orphanedtimedtext": "ഉപയോഗിക്കപ്പെടാത്ത സമയാനുസൃതയെഴുത്ത് താളുകൾ",
 	"orphanedtimedtext-summary": "ബന്ധപ്പെട്ട പ്രമാണങ്ങൾ ഇല്ലാത്ത [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] താളുകളുടെ പട്ടിക.",
 	"orphanedtimedtext-unsupported": "മൈഎസ്ക്യുഎൽ ഡേറ്റാബേസുകളെ മാത്രമേ ഈ പ്രത്യേകതാൾ പിന്തുണയ്ക്കുന്നുള്ളു.",
-	"orphanedtimedtext-notimedtext": "സമയാനുസൃതയെഴുത്ത് ഈ വിക്കിയിൽ സജ്ജമാക്കിയിട്ടില്ല."
+	"orphanedtimedtext-notimedtext": "സമയാനുസൃതയെഴുത്ത് ഈ വിക്കിയിൽ സജ്ജമാക്കിയിട്ടില്ല.",
+	"apihelp-transcodereset-param-title": "മീഡിയ പ്രമാണത്തിന്റെ തലക്കെട്ട്."
 }

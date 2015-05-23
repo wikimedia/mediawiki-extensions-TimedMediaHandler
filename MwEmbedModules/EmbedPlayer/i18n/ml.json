@@ -26,7 +26,8 @@
 	"mwe-embedplayer-seek_to": "$1 നോക്കുക",
 	"mwe-embedplayer-paused": "തത്കാലം നിർത്തിവെച്ചിരിക്കുന്നു",
 	"mwe-embedplayer-download_segment": "തിരഞ്ഞെടുത്തത് ഡൗൺലോഡ് ചെയ്യുക:",
-	"mwe-embedplayer-download_full": "പൂർണ്ണ ചലച്ചിത്ര പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക:",
+	"mwe-embedplayer-download_full_video": "പൂർണ്ണ ചലച്ചിത്ര പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക:",
+	"mwe-embedplayer-download_full_audio": "പൂർണ്ണ ശബ്ദ പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക:",
 	"mwe-embedplayer-download_right_click": "ഡൗൺലോഡ് ചെയ്യുവാനായി, റൈറ്റ് ക്ലിക്ക് ചെയ്തശേഷം <i>Save link as...</i> എന്നതുപയോഗിക്കുക",
 	"mwe-embedplayer-download_clip": "ചലച്ചിത്രം ഡൗൺലോഡ് ചെയ്യുക",
 	"mwe-embedplayer-download_text": "എഴുത്ത് ഡൗൺലോഡ് ചെയ്യുക",
@@ -39,6 +40,7 @@
 	"mwe-embedplayer-choose_player": "ചലച്ചിത്ര പ്ലേയർ തിരഞ്ഞെടുക്കുക",
 	"mwe-embedplayer-no-player": "$1 എന്നതിനുള്ള പ്ലേയറുകൾ ലഭ്യമല്ല",
 	"mwe-embedplayer-share_this_video": "ഈ ചലച്ചിത്രം പങ്ക് വെയ്ക്കുക",
+	"mwe-embedplayer-share_this_audio": "ഈ ശബ്ദ പ്രമാണം പങ്ക് വെയ്ക്കുക",
 	"mwe-embedplayer-video_credits": "ചലച്ചിത്രത്തിനുള്ള കടപ്പാടുകൾ",
 	"mwe-embedplayer-no-video_credits": "കടപ്പാടുകൾ ലഭ്യമല്ല",
 	"mwe-embedplayer-kaltura-platform-title": "കൽടൂറ ഓപ്പൺ സോഴ്സ് ചലച്ചിത്ര പ്ലാറ്റ്‌ഫോം",
@@ -52,6 +54,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "എച്ച്.റ്റി.എം.എൽ.5 വെബ്‌എം പ്രവർത്തനോപകരണം",
 	"mwe-embedplayer-ogg-player-oggPlugin": "ജെനറിക് ഓഗ് പ്ലഗിൻ",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "ഐഒഎസ് ആപിനുള്ള വി.എൽ.സി.",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "ഐ.ഇ. വെബ്എം പ്ലഗിൻ ഡൗൺലോഡർ",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "ക്വിക്ക്റ്റൈം പ്ലഗിൻ",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "ക്വിക്ക്റ്റൈം ആക്റ്റീവ്‌‌എക്സ്",
 	"mwe-embedplayer-ogg-player-cortado": "ജാവ കോർറ്റാഡോ",
@@ -86,5 +89,8 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "ആപ് സ്റ്റോറിൽ നിന്നും വി.എൽ.സി. ആപ് ഡൗൺലോഡ് ചെയ്യുക",
 	"mwe-embedplayer-vlcapp-openvideo": "ഈ ചലച്ചിത്രം വി.എൽ.സി. ആപിൽ തുറക്കുക",
 	"mwe-embedplayer-vlcapp-downloadvideo": "ചലച്ചിത്രം ഡൗൺലോഡ് ചെയ്യുക",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "ഈ സൈറ്റിൽ ചലച്ചിത്രങ്ങൾ പ്രദർശിപ്പിക്കാൻ, സൗജന്യ വി.എൽ.സി. ആപ് ആവശ്യമാണ്. ഇൻസ്റ്റോൾ ചെയ്യണോ?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "ഈ സൈറ്റിൽ ചലച്ചിത്രങ്ങൾ പ്രദർശിപ്പിക്കാൻ, സൗജന്യ വി.എൽ.സി. ആപ് ആവശ്യമാണ്. ഇൻസ്റ്റോൾ ചെയ്യണോ?",
+	"mwe-embedplayer-iewebmprompt-intro": "അയ്യോ! ഈ ചലച്ചിത്രം പ്രവർത്തിക്കുന്നതിനു മുമ്പ് ചെയ്യേണ്ട ഒരു കാര്യം കൂടി...",
+	"mwe-embedplayer-iewebmprompt-linktext": "ഇന്റർനെറ്റ് എക്സ്പ്ലോററിനുള്ള വെബ്എം മീഡിയ ഭാഗങ്ങൾ ഇൻസ്റ്റോൾ ചെയ്യുക",
+	"mwe-embedplayer-iewebmprompt-outro": "ഇൻസ്റ്റോൾ ചെയ്ത ശേഷം ഈ താൾ വീണ്ടുമെടുക്കുക."
 }
