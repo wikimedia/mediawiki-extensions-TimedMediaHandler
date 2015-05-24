@@ -215,7 +215,7 @@ class TimedMediaHandler extends MediaHandler {
 	static function outputHook( $outputPage, $parserOutput, $data ) {
 		// Add the PopUpMediaTransform code
 		$outputPage->addModuleScripts( 'mw.PopUpMediaTransform' );
-		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform' );
+		$outputPage->addModuleStyles( 'mw.PopUpMediaTransform.styles' );
 		$outputPage->addModules( 'mw.TMHGalleryHook.js' );
 	}
 
