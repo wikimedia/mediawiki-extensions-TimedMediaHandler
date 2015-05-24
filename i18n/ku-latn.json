@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bikarhêner"
+			"Bikarhêner",
+			"George Animal"
 		]
 	},
+	"timedmedia-more": "Zêdetir...",
+	"timedmedia-dismiss": "Bigre",
+	"timedmedia-download": "Dosyeyê daxe",
+	"timedmedia-desc-link": "Di derbarê vê dosyeyê de",
 	"timedmedia-source-file": "çavkanî $1",
 	"timedmedia-source-audio-file-desc": "Dosyeye orijînal a $1 ($2)"
 }
