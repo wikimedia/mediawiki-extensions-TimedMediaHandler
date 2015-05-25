@@ -19,7 +19,8 @@
 			"Sherbrooke",
 			"Shirayuki",
 			"Urhixidur",
-			"Verdy p"
+			"Verdy p",
+			"Framafan"
 		]
 	},
 	"timedmedia-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec le support des formats WebM, Ogg Theora, Vorbis et srt",
@@ -124,5 +125,6 @@
 	"orphanedtimedtext": "Pages orphelines de TimedText",
 	"orphanedtimedtext-summary": "Liste des pages [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] qui n’ont pas de fichier correspondant.",
 	"orphanedtimedtext-unsupported": "Cette page spéciale n’est supportée que sur les bases de données MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki."
+	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki.",
+	"apihelp-transcodereset-param-title": "Le titre du fichier média."
 }
