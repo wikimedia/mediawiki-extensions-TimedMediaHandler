@@ -1309,4 +1309,4 @@
 		}
 	};
 
-} )( window.mediaWiki, window.jQuery );
+} )( mediaWiki, jQuery );

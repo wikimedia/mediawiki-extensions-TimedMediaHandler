@@ -2757,4 +2757,4 @@
 		}
 	};
 
-})( window.mw, window.jQuery );
+})( mw, jQuery );

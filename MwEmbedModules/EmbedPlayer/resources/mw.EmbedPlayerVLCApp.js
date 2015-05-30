@@ -98,4 +98,4 @@ mw.EmbedPlayerVLCApp = {
 	}
 };
 
-} )( window.mediaWiki, window.jQuery );
+} )( mediaWiki, jQuery );

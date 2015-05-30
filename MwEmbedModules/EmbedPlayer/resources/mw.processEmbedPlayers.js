@@ -344,4 +344,4 @@ mw.processEmbedPlayers = function( playerSet, callback ) {
 	}
 };
 
-})( window.mw, jQuery );
+})( mw, jQuery );

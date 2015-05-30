@@ -34,6 +34,7 @@
 
 	"predef": [
 		"mediaWiki",
+		"mw",
 		"jQuery"
 	]
 }

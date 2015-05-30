@@ -2710,4 +2710,4 @@ mw.PlayerControlBuilder.prototype = {
 	}
 };
 
-} )( window.mediaWiki, window.jQuery );
+} )( mediaWiki, jQuery );

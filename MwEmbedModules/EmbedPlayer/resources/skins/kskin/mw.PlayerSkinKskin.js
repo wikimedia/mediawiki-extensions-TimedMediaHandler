@@ -391,4 +391,4 @@ mw.PlayerSkinKskin = {
 
 };
 
-} )( window.mw, jQuery );
+} )( mw, jQuery );
