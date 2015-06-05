@@ -13,9 +13,6 @@ class OggHandlerTMH extends TimedMediaHandler {
 	function getMetadata( $image, $path ) {
 		$metadata = array( 'version' => self::METADATA_VERSION );
 
-		if ( !class_exists( 'File_Ogg' ) ) {
-			require( 'File/Ogg.php' );
-		}
 		try {
 			$f = new File_Ogg( $path );
 			$streams = array();
@@ -38,7 +35,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 			$metadata['length'] = $f->getLength();
 			// Get the offset of the file (in cases where the file is a segment copy)
 			$metadata['offset'] = $f->getStartOffset();
-		} catch ( PEAR_Exception $e ) {
+		} catch ( OggException $e ) {
 			// File not found, invalid stream, etc.
 			$metadata['error'] = array(
 				'message' => $e->getMessage(),

@@ -21,7 +21,6 @@
 // | Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA |
 // +----------------------------------------------------------------------------+
 
-require_once('File/Ogg/Bitstream.php');
 
 /**
  * Parent class for media bitstreams
@@ -86,12 +85,12 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
             // Check if this is the correct header.
             $packet = unpack("Cdata", fread($this->_filePointer, 1));
             if ($packet['data'] != $packetType)
-                throw new PEAR_Exception("Stream Undecodable", OGG_ERROR_UNDECODABLE);
+                throw new OggException("Stream Undecodable", OGG_ERROR_UNDECODABLE);
 
             // The following six characters should be equal to getIdentificationString()
             $id = $this->getIdentificationString();
             if ($id !== '' && fread($this->_filePointer, strlen($id)) !== $id)
-                throw new PEAR_Exception("Stream is undecodable due to a malformed header.", OGG_ERROR_UNDECODABLE);
+                throw new OggException("Stream is undecodable due to a malformed header.", OGG_ERROR_UNDECODABLE);
         } // else seek only, no common header
     }
 

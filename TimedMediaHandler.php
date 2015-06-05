@@ -197,10 +197,15 @@ $wgAutoloadClasses['ApiTestCaseVideoUpload'] = "$timedMediaDir/tests/phpunit/Api
 
 // Ogg Handler
 $wgAutoloadClasses['OggHandlerTMH'] = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
-ini_set( 'include_path',
-	"$timedMediaDir/handlers/OggHandler/PEAR/File_Ogg" .
-	PATH_SEPARATOR .
-	ini_get( 'include_path' ) );
+$wgAutoloadClasses['OggException'] = "$timedMediaDir/handlers/OggHandler/OggException.php";
+$wgAutoloadClasses['File_Ogg'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg.php";
+$wgAutoloadClasses['File_Ogg_Bitstream'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Bitstream.php";
+$wgAutoloadClasses['File_Ogg_Flac'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Flac.php";
+$wgAutoloadClasses['File_Ogg_Media'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Media.php";
+$wgAutoloadClasses['File_Ogg_Opus'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Opus.php";
+$wgAutoloadClasses['File_Ogg_Speex'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Speex.php";
+$wgAutoloadClasses['File_Ogg_Theora'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Theora.php";
+$wgAutoloadClasses['File_Ogg_Vorbis'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Vorbis.php";
 
 // getID3 provides metadata for mp4 and webm files:
 $wgAutoloadClasses['getID3'] = "$timedMediaDir/libs/getid3/getid3.php";

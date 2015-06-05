@@ -21,7 +21,6 @@
 // | Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA |
 // +----------------------------------------------------------------------------+
 
-require_once('File/Ogg/Media.php');
 
 /**
  * @author      David Grant <david@grant.org.uk>, Tim Starling <tstarling@wikimedia.org>
@@ -66,16 +65,16 @@ class File_Ogg_Flac extends File_Ogg_Media
         // Check if this is the correct header.
         $packet = unpack("Cdata", fread($this->_filePointer, 1));
         if ($packet['data'] != 0x7f)
-            throw new PEAR_Exception("Stream Undecodable", OGG_ERROR_UNDECODABLE);
+            throw new OggException("Stream Undecodable", OGG_ERROR_UNDECODABLE);
 
         // The following four characters should be "FLAC".
         if (fread($this->_filePointer, 4) != 'FLAC')
-            throw new PEAR_Exception("Stream is undecodable due to a malformed header.", OGG_ERROR_UNDECODABLE);
+            throw new OggException("Stream is undecodable due to a malformed header.", OGG_ERROR_UNDECODABLE);
 
         $version = unpack("Cmajor/Cminor", fread($this->_filePointer, 2));
         $this->_version = "{$version['major']}.{$version['minor']}";
         if ($version['major'] > 1) {
-            throw new PEAR_Exception("Cannot decode a version {$version['major']} FLAC stream", OGG_ERROR_UNDECODABLE);
+            throw new OggException("Cannot decode a version {$version['major']} FLAC stream", OGG_ERROR_UNDECODABLE);
         }
         $h = File_Ogg::_readBigEndian( $this->_filePointer,
             array(
@@ -125,7 +124,7 @@ class File_Ogg_Flac extends File_Ogg_Media
             )
         );
         if ($blockHeader['block_type'] != 4) {
-            throw new PEAR_Exception("Stream Undecodable", OGG_ERROR_UNDECODABLE);
+            throw new OggException("Stream Undecodable", OGG_ERROR_UNDECODABLE);
         }
 
         $this->_decodeBareCommentsHeader();

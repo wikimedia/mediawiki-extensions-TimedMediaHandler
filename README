@@ -123,21 +123,12 @@ See LICENSE.cortado, LICENSE.jheora and LICENSE.smoke for license information.
 == PEAR File_Ogg ==
 
 Tim Starling, a Wikimedia developer, forked the PEAR File_Ogg package and
-improved it significantly to support this extension. He has taken over
-maintainership of File_ogg  merged my changes into the latest release.
-
-Thus, the extension will now work with either the bundled File_Ogg class, or a
-File_Ogg package from PEAR since version 0.3.0 or greater.
+improved it significantly to support this extension.
 
 The PEAR bundle is licensed under the LGPL, you can get informations about
 this package on the pear webpage:
 
   http://pear.php.net/package/File_Ogg
-
-As per the usual convention, the PEAR base directory (the one with PEAR.php in
-it) must be in your include_path. Note you do not need to install PEAR, its
-included with the Timed Media Handler.
-
 
 == getID3 ==
 
