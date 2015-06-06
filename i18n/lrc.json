@@ -26,7 +26,7 @@
 	"timedmedia-actions": "کنشگریا",
 	"timedmedia-not-ready": "آماده نئ",
 	"timedmedia-percent-done": "د حدود $1% انجوم بی",
-	"timedmedia-days": "{{جمی:$1|1 روز|$1 روز}}",
+	"timedmedia-days": "{{PLURAL:$1|1 روز|$1 روز}}",
 	"timedmedia-hours": "{{PLURAL:$1|$1 ساعت|$1 ساعت یا}}",
 	"timedmedia-minutes": "{{PLURAL:$1|$1 دیقه|$1 دیقه یا}}",
 	"timedmedia-seconds": "{{PLURAL:$1|$1 ثانیه|$1 ثانیه یا}}",

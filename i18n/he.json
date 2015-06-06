@@ -103,5 +103,13 @@
 	"orphanedtimedtext-unsupported": "הדף המיוחד הזה נתמך רק במסדי נתונים MySQL.",
 	"orphanedtimedtext-notimedtext": "ההרחבה TimedText אינה מופעלת בוויקי הזה.",
 	"apihelp-query+transcodestatus-description": "קבלת מצב ההמרה המשנית עבור דף הקובץ הנתון.",
-	"apihelp-query+transcodestatus-example-1": "קבלת מצב ההמרה המשנית עבור [[:File:Clip.webm]]"
+	"apihelp-query+transcodestatus-example-1": "קבלת מצב ההמרה המשנית עבור [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "הרחבת imageinfo להכללת מידע על מקור הווידאו (נגזרות)",
+	"apihelp-query+videoinfo-param-prop": "איזה מידע לקבל על הווידאו:\n;timestamp:הוספת חותם זמן לגרסה שהולתה.\n;user:הוספת המשתמש שהעלה את גרסת הווידאו.\n;userid:הוספת מזהה המשתמש שהעלה את גרסת הווידאו.\n;comment:הערה על הגרסה.\n;parsedcomment:פענוח ההערה על הגרסה.\n;canonicaltitle:הוספת הכותרת הקנונית של שם קובץ הווידאו.\n;url:הוספת URL לווידאו ולדף התיאור.\n;size:הוספת הגודל של הווידאו בבתים, הגובה שלו והרוחב שלו. ספירת דפים ומשך מוספים כשזה מתאים.\n;dimensions:אותו דבר כמו size.\n;sha1:הוספת גיבוב SHA-1 של הווידאו.\n;mime:הוספת סוג MIME של הווידאו.\n;thumbmime:הוספת סוג MIME של התמונה הממוזערת של הווידאו (נדרש url והפרמטר $1urlwidth).\n;mediatype:הוספת סוג המדיה של הווידאו.\n;metadata:רשימת מטא־נתוני EXIF לגרסה של הווידאו.\n;commonmetadata:רשימת מטא־נתונים כללים של תסדיר הקובץ עבור גרסת הווידאו.\n;extmetadata:רשימת מטא־נתונים מעוצבים משולבים ממספר מקורות התוצאות מעוצבות עם HTML.\n;archivename:הוספת שם הקובץ של גרסת הארכיון עבור הגרסאות שאינן הגרסה האחרונה.\n;bitdepth:עומק הביטים של הגרסה.\n;uploadwarning:משמש את הדף [[Special:Upload]] כדי לקבל מידע על קובץ קיים. לא מיועד לשימוש מחוץ לליבת MediaWiki.\n;derivatives:הוספת מערך של גרסאות זמינות שונות מבחינת תסדיר ואיכות של קובץ שמע או וידאו.",
+	"apihelp-query+videoinfo-example-1": "אחזור מידע על [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-description": "משתמשים עם ההרשאה 'transcode-reset' יכולים לאפס ולהריץ מלחדש משימת המרת־משנה.",
+	"apihelp-transcodereset-param-title": "כותרת קובץ המדיה.",
+	"apihelp-transcodereset-param-transcodekey": "מפתח המרת־המשנה שברצונך לאפס. יש לאחזר אותו מ־[[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "איפוס כל המרות־המשנה עבור [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "איפוס מפתח המרת המשנה '<span dir=\"ltr\">360_560kbs.webm</span>' עבור [[:File:Clip.webm]]"
 }
