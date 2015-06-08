@@ -4,7 +4,8 @@
 			"An13sa",
 			"Joxemai",
 			"Theklan",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Subi"
 		]
 	},
 	"timedmedia-desc": "Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin",
@@ -18,6 +19,7 @@
 	"timedmedia-download": "Fitxategia jaitsi",
 	"timedmedia-desc-link": "Fitxategi honen inguruan",
 	"timedmedia-status": "Egoera",
+	"timedmedia-source-audio-file-desc": "Jatorrizko $1 fitxategia ($2)",
 	"timedmedia-subtitle-new-go": "Joan",
 	"timedmedia-file": "Fitxategia"
 }
