@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vikoula5"
+		]
+	},
+	"timedmedia-days": "{{PLURAL:$1|1 ass|$1 ussan}}"
+}
