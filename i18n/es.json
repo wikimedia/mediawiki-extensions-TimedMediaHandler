@@ -58,7 +58,7 @@
 	"timedmedia-percent-done": "Aproximadamente $1 % completado",
 	"timedmedia-in-job-queue": "Añadido a la cola de trabajos hace  $1",
 	"timedmedia-unknown-target-size": "Tamaño de archivo de destino desconocido,  $1 codificado",
-	"timedmedia-days": "{{PLURAL:$1|día|$1 días}}",
+	"timedmedia-days": "{{PLURAL:$1|1 día|$1 días}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 hora|$1 horas}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minutos}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 segundo|$1 segundos}}",
