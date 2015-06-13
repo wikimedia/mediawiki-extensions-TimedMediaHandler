@@ -275,16 +275,16 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $image File
+	 * @param $image UploadBase
 	 * @return bool
 	 */
-	public static function checkUploadComplete( &$image ){
-		$title = $image->getTitle();
+	public static function checkUploadComplete( $upload ){
+		$file = $upload->getLocalFile();
 		// Check that the file is a transcodable asset:
-		if( self::isTranscodableTitle( $title ) ){
-			// Remove all the transcode files and db states for this asset ( will be re-added the first time the asset is displayed )
-			$file = wfFindFile( $title );
+		if( $file && self::isTranscodableFile( $file ) ){
+			// Remove all the transcode files and db states for this asset
 			WebVideoTranscode::removeTranscodes( $file );
+			WebVideoTranscode::startJobQueue( $file );
 		}
 		return true;
 	}
@@ -329,7 +329,7 @@ class TimedMediaHandlerHooks {
 	}
 
 	/*
-	 * If file gets reverted to a previous version, remove transcodes.
+	 * If file gets reverted to a previous version, reset transcodes.
 	 */
 	public static function onNewRevisionFromEditComplete( $article, Revision $rev, $baseID, User $user ) {
 		if ( $baseID !== false ) {
@@ -338,6 +338,7 @@ class TimedMediaHandlerHooks {
 				$file = wfFindFile( $article->getTitle() );
 				if( self::isTranscodableFile( $file ) ){
 					WebVideoTranscode::removeTranscodes( $file );
+					WebVideoTranscode::startJobQueue( $file );
 				}
 			}
 		}
