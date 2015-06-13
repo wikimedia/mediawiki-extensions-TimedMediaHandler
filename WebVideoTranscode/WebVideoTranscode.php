@@ -864,29 +864,61 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * Update the job queue if the file is not already in the job queue
+	 * Update the job queue if the file is not already in the job queue:
 	 * @param $file File object
 	 * @param $transcodeKey String transcode key
 	 */
-	public static function updateJobQueue( LocalFile $file, $transcodeKey ) {
-		$dbr = $file->getRepo()->getSlaveDB();
+	public static function updateJobQueue( &$file, $transcodeKey ){
+		$fileName = $file->getTitle()->getDbKey();
+		$db = $file->repo->getMasterDB();
 
-		$transcodeState = self::getTranscodeState( $file, $dbr );
-		if ( $transcodeState ) {
-			// File has a row in the state table, so a job was added prior
-			return;
-		}
+		$transcodeState = self::getTranscodeState( $file, $db );
 
-		// NOTE: jobs of this type are de-duplicated
-		$job = new WebVideoTranscodeJob(
-			$file->getTitle(),
-			array(
+		// If the job hasn't been added yet, attempt to do so
+		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
+			$db->insert(
+				'transcode',
+				array(
+					'transcode_image_name' => $fileName,
+					'transcode_key' => $transcodeKey,
+					'transcode_time_addjob' => $db->timestamp(),
+					'transcode_error' => "",
+					'transcode_final_bitrate' => 0
+				),
+				__METHOD__,
+				array( 'IGNORE' )
+			);
+
+			if ( !$db->affectedRows() ) {
+				// There is already a row for that job added by another request, no need to continue
+				return;
+			}
+
+			$job = new WebVideoTranscodeJob( $file->getTitle(), array(
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
-			)
-		);
+			) );
 
-		JobQueueGroup::singleton()->push( $job );
+			if ( $job->insert() ) {
+				// Clear the state cache ( now that we have updated the page )
+				self::clearTranscodeCache( $fileName );
+			} else {
+				// Adding job failed, update transcode row
+				$db->update(
+					'transcode',
+					array(
+						'transcode_time_error' => $db->timestamp(),
+						'transcode_error' => "Failed to insert Job."
+					),
+					array(
+						'transcode_image_name' => $fileName,
+						'transcode_key' => $transcodeKey,
+					),
+					__METHOD__,
+					array( 'LIMIT' => 1 )
+				);
+			}
+		}
 	}
 
 	/**
