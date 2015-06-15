@@ -661,6 +661,8 @@ class WebVideoTranscode {
 
 	/**
 	 * Remove any transcode files and db states associated with a given $file
+	 * Note that if you want to see them again, you must re-queue them by calling
+	 * startJobQueue() or updateJobQueue().
 	 *
 	 * also remove the transcode files:
 	 * @param $file File Object
@@ -746,14 +748,14 @@ class WebVideoTranscode {
 
 	/**
 	 * Add a source to the sources list if the transcode job is ready
-	 * if the source is not found update the job queue
+	 *
+	 * If the source is not found, it will not be used yet...
+	 * Missing transcodes should be added by write tasks, not read tasks!
 	 */
 	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ){
 		// Check if the transcode is ready:
 		if( self::isTranscodeReady( $file, $transcodeKey ) ){
 			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
-		} else {
-			self::updateJobQueue( $file, $transcodeKey );
 		}
 	}
 
@@ -861,6 +863,20 @@ class WebVideoTranscode {
 			$fields += array( "framerate" => floatval( $framerate ) );
 		}
 		return $fields;
+	}
+
+	/**
+	 * Queue up all enabled transcodes if missing.
+	 * @param $file File object
+	 */
+	public static function startJobQueue( File $file ) {
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		$keys = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		foreach ( $keys as $tKey ) {
+			// Note the job queue will de-duplicate and handle various errors, so we
+			// can just blast out the full list here.
+			self::updateJobQueue( $file, $tKey );
+		}
 	}
 
 	/**

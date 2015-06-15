@@ -59,6 +59,9 @@ class ApiTranscodeReset extends ApiBase {
 		// All good do the transcode removal:
 		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
 
+		// Oh and we wanted to reset it, right? Trigger again.
+		WebVideoTranscode::updateJobQueue( $file, $transcodeKey );
+
 		$this->getResult()->addValue(null, 'success', 'removed transcode');
 	}
 
