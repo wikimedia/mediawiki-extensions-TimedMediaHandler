@@ -233,7 +233,6 @@ class WebVideoTranscode {
 			array(
 				'maxSize' => '1920x1080',
 				'videoCodec' => 'h264',
-				'preset' => '1080p',
 				'videoBitrate' => '5000k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
