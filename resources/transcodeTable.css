@@ -8,3 +8,7 @@
 .mw-filepage-transcodestatus .download-btn:hover {
 	background-position: 0 0;
 }
+.mw-filepage-transcodestatus .download-btn span {
+	/* Text hidden by the above image */
+	display: none;
+}
