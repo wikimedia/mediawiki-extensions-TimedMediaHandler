@@ -482,9 +482,9 @@ class WebVideoTranscode {
 
 	/**
 	 * Based on the $wgEnabledTranscodeSet set of enabled derivatives we
-	 * sync the database with $wgEnabledTranscodeSet and return sources that are ready
+	 * return sources that are ready.
 	 *
-	 * If no transcode is in progress or ready add the job to the jobQueue
+	 * This will not automatically update or queue anything!
 	 *
 	 * @param $file File object
 	 * @param $options array Options, a set of options:
@@ -509,77 +509,19 @@ class WebVideoTranscode {
 			return $sources;
 		}
 
+		// Now Check for derivatives
 		if( $file->getHandler()->isAudio( $file ) ){
-			$sourceCodec = $file->getHandler()->getStreamTypes( $file );
-			$sourceCodec = $sourceCodec ? strtolower( $sourceCodec[0] ) : '';
-			foreach( $wgEnabledAudioTranscodeSet as $transcodeKey ){
-				$codec = self::$derivativeSettings[$transcodeKey]['audioCodec'];
-				if ( $sourceCodec != $codec ) {
-					// Try and add the source
-					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
-				}
-			}
-			return $sources;
-		}
-
-		// Setup local variables
-		$fileName = $file->getName();
-
-		$addOggFlag = false;
-		$addWebMFlag = false;
-		$addH264Flag = false;
-
-		$ext = pathinfo( "$fileName", PATHINFO_EXTENSION);
-
-		// Check the source file for .webm extension
-		if( strtolower( $ext ) == 'mp4' ){
-
-		} else 	if( strtolower( $ext )== 'webm' ) {
-			$addWebMFlag = true;
+			$transcodeSet = $wgEnabledAudioTranscodeSet;
 		} else {
-			// If not webm assume ogg as the source file
-			$addOggFlag = true;
+			$transcodeSet = $wgEnabledTranscodeSet;
+		}
+		foreach( $transcodeSet as $transcodeKey ){
+			if ( self::isTranscodeEnabled( $file, $transcodeKey ) ) {
+				// Try and add the source
+				self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
+			}
 		}
 
-		// Now Check for derivatives and add to transcode table if missing:
-		foreach( $wgEnabledTranscodeSet as $transcodeKey ){
-			$codec =  self::$derivativeSettings[$transcodeKey]['videoCodec'];
-			// Check if we should add derivative to job queue
-			// Skip if target encode larger than source
-			if( self::isTargetLargerThanFile( $file, self::$derivativeSettings[$transcodeKey]['maxSize']) ){
-				continue;
-			}
-			// if we going to try add source for this derivative, update codec flags:
-			if( $codec == 'theora' ){
-				$addOggFlag = true;
-			}
-			if( $codec == 'vp8' ){
-				$addWebMFlag = true;
-			}
-			if( $codec == 'h264' ){
-				$addH264Flag = true;
-			}
-			// Try and add the source
-			self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
-		}
-		// Make sure we have at least one ogg, webm and h264 encode
-		// Note this only reflects any enabled derviatives in $wgEnabledTranscodeSet
-		if( !$addOggFlag || !$addWebMFlag || !$addH264Flag ){
-			foreach( $wgEnabledTranscodeSet as $transcodeKey ){
-				if( !$addOggFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'theora' ){
-					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
-					$addOggFlag = true;
-				}
-				if( !$addWebMFlag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'vp8' ){
-					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
-					$addWebMFlag = true;
-				}
-				if( !$addH264Flag && self::$derivativeSettings[$transcodeKey]['videoCodec'] == 'h264' ){
-					self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
-					$addH264Flag = true;
-				}
-			}
-		}
 		return $sources;
 	}
 
@@ -888,10 +830,90 @@ class WebVideoTranscode {
 	public static function startJobQueue( File $file ) {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
 		$keys = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+
+		// 'Natural sort' puts the transcodes in ascending order by resolution,
+		// which roughly gives us fastest-to-slowest order.
+		natsort($keys);
+
 		foreach ( $keys as $tKey ) {
 			// Note the job queue will de-duplicate and handle various errors, so we
 			// can just blast out the full list here.
 			self::updateJobQueue( $file, $tKey );
+		}
+	}
+
+	/**
+	 * Make sure all relevant transcodes for the given file are tracked in the
+	 * transcodes table; add entries for any missing ones.
+	 *
+	 * @param $file File object
+	 */
+	public static function cleanupTranscodes( File $file ) {
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+
+		$fileName = $file->getTitle()->getDbKey();
+		$db = $file->repo->getMasterDB();
+
+		$transcodeState = self::getTranscodeState( $file, $db );
+
+		$keys = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		foreach ( $keys as $transcodeKey ) {
+			if ( !self::isTranscodeEnabled( $file, $transcodeKey ) ) {
+				// This transcode is no longer enabled or erroneously included...
+				// Leave it in place, allowing it to be removed manually;
+				// it won't be used in playback and should be doing no harm.
+				continue;
+			}
+			if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
+				$db->insert(
+					'transcode',
+					array(
+						'transcode_image_name' => $fileName,
+						'transcode_key' => $transcodeKey,
+						'transcode_time_addjob' => null,
+						'transcode_error' => "",
+						'transcode_final_bitrate' => 0
+					),
+					__METHOD__,
+					array( 'IGNORE' )
+				);
+			}
+		}
+	}
+
+	/**
+	 * Check if the given transcode key is appropriate for the file.
+	 *
+	 * @param $file File object
+	 * @param $transcodeKey String transcode key
+	 * @return boolean
+	 */
+	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+
+		$audio = $file->getHandler()->isAudio( $file );
+		if ( $audio ) {
+			$keys = $wgEnabledAudioTranscodeSet;
+		} else {
+			$keys = $wgEnabledTranscodeSet;
+		}
+
+		if ( in_array( $transcodeKey, $keys ) ) {
+			$settings = self::$derivativeSettings[$transcodeKey];
+			if ( $audio ) {
+				$sourceCodecs = $file->getHandler()->getStreamTypes( $file );
+				$sourceCodec = $sourceCodecs ? strtolower( $sourceCodecs[0] ) : '';
+				return ( $sourceCodec !== $settings['audioCodec'] );
+			} else if ( self::isTargetLargerThanFile( $file, $settings['maxSize'] ) ) {
+				// Are we the smallest enabled transcode for this type?
+				// Then go ahead and make a wee little transcode for compat.
+				return self::isSmallestTranscodeForCodec( $transcodeKey );
+			} else {
+				return true;
+			}
+		} else {
+			// Transcode key is invalid or has been disabled.
+			return false;
 		}
 	}
 
@@ -905,6 +927,10 @@ class WebVideoTranscode {
 		$db = $file->repo->getMasterDB();
 
 		$transcodeState = self::getTranscodeState( $file, $db );
+
+		if ( !self::isTranscodeEnabled( $file, $transcodeKey ) ) {
+			return;
+		}
 
 		// If the job hasn't been added yet, attempt to do so
 		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
@@ -993,7 +1019,7 @@ class WebVideoTranscode {
 	 * Test if a given transcode target is larger than the source file
 	 *
 	 * @param $file File object
-	 * @param $targetMaxSize int
+	 * @param $targetMaxSize string
 	 * @return bool
 	 */
 	public static function isTargetLargerThanFile( &$file, $targetMaxSize ){
@@ -1009,9 +1035,36 @@ class WebVideoTranscode {
 	}
 
 	/**
+	 * Is the given transcode key the smallest configured transcode for
+	 * its video codec?
+	 */
+	public static function isSmallestTranscodeForCodec( $transcodeKey ) {
+		global $wgEnabledTranscodeSet;
+
+		$settings = self::$derivativeSettings[$transcodeKey];
+		$vcodec = $settings['videoCodec'];
+		$maxSize = self::getMaxSize( $settings['maxSize'] );
+
+		foreach ( $wgEnabledTranscodeSet as $tKey ) {
+			$tsettings = self::$derivativeSettings[$tKey];
+			if ( $tsettings['videoCodec'] === $vcodec ) {
+				$tmaxSize = self::getMaxSize( $tsettings['maxSize'] );
+				if ( $tmaxSize['width'] < $maxSize['width'] ) {
+					return false;
+				}
+				if ( $tmaxSize['height'] < $maxSize['height'] ) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Return maxSize array for given maxSize setting
 	 *
-	 * @param $targetMaxSize int
+	 * @param $targetMaxSize string
 	 * @return array
 	 */
 	public static function getMaxSize( $targetMaxSize ){
