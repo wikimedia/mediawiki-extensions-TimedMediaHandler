@@ -114,6 +114,7 @@
 	"timedmedia-subtitle-new-desc": "Refers to {{msg-mw|Timedmedia-subtitle-new-go}}.",
 	"timedmedia-subtitle-new-go": "Used as label for the Submit button.\n\nPreceded by (and used in) the description {{msg-mw|Timedmedia-subtitle-new-desc}}.\n{{Identical|Go}}",
 	"timedmedia-subtitle-language": "Subtitle names. Parameters are:\n* $1 - subtitle language\n* $2 - subtitle key\n{{Identical|Subtitle}}",
+	"timedmedia-subtitle-no-video": "Shown on a TimedText namespace page when there is no video for the page.",
 	"timedmedia-subtitle-no-subtitles": "Parameters:\n* $1 is a language name.",
 	"timedmedia-subtitle-remote": "Used as page title. Parameters:\n* $1 - the display name of the repository\nThe page body for this page title is:\n* {{msg-mw|timedmedia-subtitle-remote-link}}",
 	"timedmedia-subtitle-remote-link": "Used as page body. Parameters:\n* $1 - the description URL of the file\n* $2 - the display name of the repository\nThe page title for this message is:\n* {{msg-mw|timedmedia-subtitle-remote}}",
