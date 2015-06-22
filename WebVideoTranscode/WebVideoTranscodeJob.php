@@ -407,11 +407,11 @@ class WebVideoTranscodeJob extends Job {
 			// Add the two vpre types:
 			switch( $options['preset'] ){
 				case 'ipod320':
-					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -flags2 -wpred-dct8x8 -level 13 -maxrate 768k -bufsize 3M";
+					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -weightb 1 -level 13 -maxrate 768k -bufsize 3M";
 				break;
 				case '720p':
 				case 'ipod640':
-					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -refs 1 -flags2 -wpred-dct8x8 -level 30 -maxrate 10M -bufsize 10M";
+					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -refs 1 -weightb 1 -level 31 -maxrate 10M -bufsize 10M";
 				break;
 				default:
 					// in the default case just pass along the preset to ffmpeg
@@ -599,7 +599,6 @@ class WebVideoTranscodeJob extends Job {
 
 		if( isset( $options['audioCodec'] ) ){
 			$encoders = array(
-				'aac'		=> 'libvo_aacenc',
 				'vorbis'	=> 'libvorbis',
 				'opus'		=> 'libopus',
 				'mp3'		=> 'libmp3lame',
@@ -610,6 +609,10 @@ class WebVideoTranscodeJob extends Job {
 				$codec = $options['audioCodec'];
 			}
 			$cmd.= " -acodec " . wfEscapeShellArg( $codec );
+			if ( $codec === 'aac' ) {
+				// the aac encoder is currently "experimental" in libav 9? :P
+				$cmd .= ' -strict experimental';
+			}
 		} else {
 			// if no audio codec set use vorbis :
 			$cmd.= " -acodec libvorbis ";
