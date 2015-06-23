@@ -176,10 +176,11 @@ class WebVideoTranscodeJob extends Job {
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
 			),
-			__METHOD__,
-			array( 'ORDER BY' => 'transcode_id', 'LIMIT' => 1 )
+			__METHOD__
 		);
-
+		// Avoid contention and "server has gone away" errors as
+		// the transcode will take a very long time in some cases
+		$dbw->commit( __METHOD__, 'flush' );
 
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
