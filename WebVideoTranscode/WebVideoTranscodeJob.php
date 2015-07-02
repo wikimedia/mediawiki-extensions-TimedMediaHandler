@@ -199,7 +199,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			wfDebug( 'Error unknown codec:' . $options['videoCodec'] );
-			$status =  'Error unknown target encode codec:' . $options['codec'];
+			$status =  'Error unknown target encode codec:' . $options['videoCodec'];
 		}
 
 		// Remove any log files all useful info should be in status and or we are done with 2 passs encoding
