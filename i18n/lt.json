@@ -3,7 +3,8 @@
 		"authors": [
 			"Homo",
 			"Matasg",
-			"Hugo.arg"
+			"Hugo.arg",
+			"Albertas"
 		]
 	},
 	"timedmedia-desc": "Įrankis groti Ogg Theora ir Vorbis failus su JavaScript grotuvu",
@@ -20,6 +21,7 @@
 	"timedmedia-dismiss": "Uždaryti",
 	"timedmedia-download": "Atsisiųsti bylą",
 	"timedmedia-desc-link": "Apie šią bylą",
+	"timedmedia-status": "Būsena",
 	"timedmedia-source-file": "$1 šaltinis",
 	"timedmedia-source-audio-file-desc": "Pirminė $1 rinkmena ($2)"
 }
