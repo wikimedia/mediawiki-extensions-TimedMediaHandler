@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Lloffiwr",
-			"Ham II"
+			"Ham II",
+			"Xxglennxx"
 		]
 	},
 	"timedmedia-ogg-short-audio": "Ffeil sain Ogg $1, $2",
@@ -13,7 +14,7 @@
 	"timedmedia-ogg-long-error": "Ffeil Ogg annilys: $1",
 	"timedmedia-more": "Mwy…",
 	"timedmedia-dismiss": "Caeer",
-	"timedmedia-download": "Islwytho ffeil",
+	"timedmedia-download": "Lawrlwytho ffeil",
 	"timedmedia-play-media": "Chwarae'r ffeil gyfrwng",
 	"timedmedia-desc-link": "Ynglŷn â'r ffeil hon",
 	"timedmedia-status-header": "Statws trawsgodio",
