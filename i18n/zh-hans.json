@@ -112,7 +112,7 @@
 	"apihelp-query+transcodestatus-description": "获取指定文件页面的转码状态。",
 	"apihelp-query+transcodestatus-example-1": "获得[[:File:Clip.webm]]的译码状态",
 	"apihelp-query+videoinfo-description": "扩展图像信息以包含视频源（图像来源）信息",
-	"apihelp-query+videoinfo-param-prop": "要获取的视频信息：\n;timestamp:为上传版本添加时间戳。\n;user:添加上传视频版本的用户。\n;userid:添加上传视频版本的用户ID。\n;comment:对版本的注释。\n;parsedcomment:解析对版本的注释。\n;canonicaltitle:添加视频文件的规范标题。\n;url:提供至视频的URL及其说明页面。\n;size:添加视频大小（字节）、高度和宽度。如有需要会添加页面计数和持续时间。\n;dimensions:大小别名。\n;sha1:为视频添加SHA-1哈希值。\n;mime:添加视频的MIME类型。\n;thumbmime:添加视频缩略图的MIME类型（需要url和参数$1urlwidth）。\n;mediatype:添加视频媒体类型。\n;metadata:列举视频版本的EXIF元数据。\n;commonmetadata:列举特定文件格式的视频版本的元数据。\n;extmetadata:列举格式化元数据\n;archivename:为非最新版本添加存档版本的文件名。\n;bitdepth:添加版本的位深度。\n;uploadwarning:被[[Special:Upload]]页面使用以获取有关现有文件的信息。不用于MediaWiki核心以外代码。\n;derivatives:添加不同格式的阵列与音频或视频文件的可用高质量版本。",
+	"apihelp-query+videoinfo-param-prop": "要获取的视频信息：\n;timestamp:为上传版本添加时间戳。\n;user:添加上传视频版本的用户。\n;userid:添加上传视频版本的用户ID。\n;comment:对版本的注释。\n;parsedcomment:解析对版本的注释。\n;canonicaltitle:添加视频文件的规范标题。\n;url:提供至视频的URL及其说明页面。\n;size:添加视频大小（字节）、高度和宽度。如有需要会添加页面计数和持续时间。\n;dimensions:大小别名。\n;sha1:为视频添加SHA-1哈希值。\n;mime:添加视频的MIME类型。\n;thumbmime:添加视频缩略图的MIME类型（需要url和参数$1urlwidth）。\n;mediatype:添加视频媒体类型。\n;metadata:列举视频版本的EXIF元数据。\n;commonmetadata:列举特定文件格式的视频版本的元数据。\n;extmetadata:列举格式化元数据\n;archivename:为非最新版本添加存档版本的文件名。\n;bitdepth:添加版本的位深度。\n;uploadwarning:被[[Special:Upload]]页面使用以获取有关现有文件的信息。不适用于MediaWiki核心以外代码。\n;derivatives:添加不同格式的阵列与音频或视频文件的可用高质量版本。",
 	"apihelp-query+videoinfo-example-1": "检索有关[[:File:Folgers.ogv]]的信息",
 	"apihelp-transcodereset-description": "具有“transcode-reset”权限的用户可以重置和重新运行转码任务。",
 	"apihelp-transcodereset-param-title": "媒体文件标题。",
