@@ -1,8 +1,10 @@
 //
 // -- ogv.js
 // https://github.com/brion/ogv.js
-// Copyright (c) 2013-2014 Brion Vibber
+// Copyright (c) 2013-2015 Brion Vibber
 //
+
+(function() {
 
 // -- StreamFile.js
 
@@ -76,7 +78,7 @@ function StreamFile(options) {
 				bytesTotal = internal.getXHRRangeTotal(xhr);
 			} else {
 				var contentLength = xhr.getResponseHeader('Content-Length');
-				if (contentLength == null || contentLength == '') {
+				if (contentLength === null || contentLength === '') {
 					// Unknown file length... maybe streaming live?
 					bytesTotal = 0;
 				} else {
@@ -484,10 +486,10 @@ function StreamFile(options) {
 						// Zero length means end of stream.
 						ondone();
 					}
-				}
+				};
 				streamReader.onerror = function(event) {
 					onerror('mystery error streaming');
-				}
+				};
 				streamReader.readAsArrayBuffer(stream, bufferSize);
 			} else {
 				waitingForInput = true;
@@ -507,7 +509,7 @@ function StreamFile(options) {
 		var lastPosition = 0;
 		
 		// Is there a better way to do this conversion? :(
-		function stringToArrayBuffer(chunk) {
+		var stringToArrayBuffer = function(chunk) {
 			var len = chunk.length,
 				buffer = new ArrayBuffer(len),
 				bytes = new Uint8Array(buffer);
@@ -515,7 +517,7 @@ function StreamFile(options) {
 				bytes[i] = chunk.charCodeAt(i);
 			}
 			return buffer;
-		}
+		};
 		
 		internal.clearReadState = function() {
 			orig.clearReadState();
@@ -560,6 +562,8 @@ function StreamFile(options) {
 
 // -- AudioFeeder.js
 
+var AudioFeeder;
+
 (function() {
 	var global = this,
 		AudioContext = global.AudioContext || global.webkitAudioContext;
@@ -574,7 +578,7 @@ function StreamFile(options) {
 	 *                 'base' - Base URL to find additional resources in,
 	 *                          such as the Flash audio output shim
 	 */
-	function AudioFeeder(options) {
+	AudioFeeder = function(options) {
 		var self = this;
 		options = options || {};
 	
@@ -616,7 +620,8 @@ function StreamFile(options) {
 			playbackTimeAtBufferHead = -1,
 			targetRate,
 			dropped = 0,
-			lostTime = 0;
+			delayedTime = 0,
+			queuedTime = 0;
 
 		if(AudioContext) {
 			if (typeof options.audioContext !== 'undefined') {
@@ -629,9 +634,9 @@ function StreamFile(options) {
 			}
 
 			if (context.createScriptProcessor) {
-				node = context.createScriptProcessor(bufferSize, 0, outputChannels)
+				node = context.createScriptProcessor(bufferSize, 0, outputChannels);
 			} else if (context.createJavaScriptNode) {
-				node = context.createJavaScriptNode(bufferSize, 0, outputChannels)
+				node = context.createJavaScriptNode(bufferSize, 0, outputChannels);
 			} else {
 				throw new Error("Bad version of web audio API?");
 			}
@@ -658,10 +663,11 @@ function StreamFile(options) {
 			} else {
 				console.log("Unrecognized AudioProgressEvent format, no playbackTime or timestamp");
 			}
+			queuedTime += (bufferSize / context.sampleRate);
 			var expectedTime = playbackTimeAtBufferHead + (bufferSize / context.sampleRate);
 			if (expectedTime < playbackTime) {
 				// we may have lost some time while something ran too slow
-				lostTime += (playbackTime - expectedTime);
+				delayedTime += (playbackTime - expectedTime);
 			}
 			playbackTimeAtBufferHead = playbackTime;
 			var inputBuffer = popNextBuffer(bufferSize);
@@ -673,13 +679,14 @@ function StreamFile(options) {
 					inputBuffer = popNextBuffer(bufferSize);
 				}
 			}
+			var channel, input, output, i;
 			if (!muted && inputBuffer) {
 				bufferHead += (bufferSize / context.sampleRate);
 				playbackTimeAtBufferHead += (bufferSize / context.sampleRate);
-				for (var channel = 0; channel < outputChannels; channel++) {
-					var input = inputBuffer[channel],
-						output = event.outputBuffer.getChannelData(channel);
-					for (var i = 0; i < Math.min(bufferSize, input.length); i++) {
+				for (channel = 0; channel < outputChannels; channel++) {
+					input = inputBuffer[channel];
+					output = event.outputBuffer.getChannelData(channel);
+					for (i = 0; i < Math.min(bufferSize, input.length); i++) {
 						output[i] = input[i];
 					}
 				}
@@ -691,9 +698,9 @@ function StreamFile(options) {
 				} else {
 					dropped++;
 				}
-				for (var channel = 0; channel < outputChannels; channel++) {
-					var output = event.outputBuffer.getChannelData(channel);
-					for (var i = 0; i < bufferSize; i++) {
+				for (channel = 0; channel < outputChannels; channel++) {
+					output = event.outputBuffer.getChannelData(channel);
+					for (i = 0; i < bufferSize; i++) {
 						output[i] = 0;
 					}
 				}
@@ -801,19 +808,19 @@ function StreamFile(options) {
 				var resamples = !muted ? resampleFlash(samplesPerChannel) : resampleFlashMuted(samplesPerChannel);
 				var flashElement = this.flashaudio.flashElement;
 				if(resamples.length > 0) {
-					var str = hexString(resamples.buffer)
+					var str = hexString(resamples.buffer);
 					//console.log(str.length + ' bytes sent to Flash');
 					if (flashElement.write) {
 						flashElement.write(str);
 					} else {
-						console.log('NOT YET READY');
+						//console.log('NOT YET READY');
 						self.waitUntilReady(function() {
 							flashElement.write(str);
 						});
 					}
 				}
 			} else if (buffers) {
-				samples = resample(samplesPerChannel);
+				var samples = resample(samplesPerChannel);
 				pushSamples(samples);
 			} else {
 				console.log('no valid whatsit');
@@ -823,19 +830,19 @@ function StreamFile(options) {
 	
 		function samplesQueued() {
 			if (buffers) {
-				var samplesQueued = 0;
+				var numSamplesQueued = 0;
 				buffers.forEach(function(buffer) {
-					samplesQueued += buffer[0].length;
+					numSamplesQueued += buffer[0].length;
 				});
 			
-				var bufferedSamples = samplesQueued;
+				var bufferedSamples = numSamplesQueued;
 				var remainingSamples = Math.floor(Math.max(0, (playbackTimeAtBufferHead - context.currentTime)) * context.sampleRate);
 			
 				return bufferedSamples + remainingSamples;
 			} else {
 				return 0;
 			}
-		};
+		}
 	
 		/**
 		 * @return {
@@ -850,21 +857,23 @@ function StreamFile(options) {
 				if (flashElement.write) {
 					return flashElement.getPlaybackState();
 				} else {
-					console.log('getPlaybackState USED TOO EARLY');
+					//console.log('getPlaybackState USED TOO EARLY');
 					return {
 						playbackPosition: 0,
 						samplesQueued: 0,
-						dropped: 0
+						dropped: 0,
+						delayed: 0
 					};
 				}
 			} else {
 				return {
-					playbackPosition: context.currentTime - (dropped * bufferSize / context.sampleRate) - lostTime,
+					playbackPosition: queuedTime - Math.max(0, playbackTimeAtBufferHead - context.currentTime),
 					samplesQueued: samplesQueued(),
-					dropped: dropped
-				}
+					dropped: dropped,
+					delayed: delayedTime
+				};
 			}
-		}
+		};
 	
 		this.mute = function() {
 			this.muted = muted = true;
@@ -872,7 +881,7 @@ function StreamFile(options) {
 	
 		this.unmute = function() {
 			this.muted = muted = false;
-		}
+		};
 		
 		this.close = function() {
 			this.stop();
@@ -888,23 +897,23 @@ function StreamFile(options) {
 		};
 	
 		this.waitUntilReady = function(callback) {
+			var times = 0,
+				maxTimes = 100;
+			function pingFlashPlugin() {
+				setTimeout(function doPingFlashPlugin() {
+					times++;
+					if (self.flashaudio && self.flashaudio.flashElement.write) {
+						callback(this);
+					} else if (times > maxTimes) {
+						console.log("Failed to initialize Flash audio shim");
+						self.close();
+						callback(null);
+					} else {
+						pingFlashPlugin();
+					}
+				}, 20);
+			}
 			if (self.flashaudio) {
-				var times = 0,
-					maxTimes = 100;
-				function pingFlashPlugin() {
-					setTimeout(function doPingFlashPlugin() {
-						times++;
-						if (self.flashaudio && self.flashaudio.flashElement.write) {
-							callback(this);
-						} else if (times > maxTimes) {
-							console.log("Failed to initialize Flash audio shim");
-							self.close();
-							callback(null);
-						} else {
-							pingFlashPlugin();
-						}
-					}, 20);
-				}
 				pingFlashPlugin();
 			} else {
 				setTimeout(callback, 0);
@@ -936,7 +945,7 @@ function StreamFile(options) {
 		 * A callback when we find we're out of buffered data.
 		 */
 		this.onstarved = null;
-	}
+	};
 	
 	AudioFeeder.sharedAudioContext = null;
 	AudioFeeder.initSharedAudioContext = function() {
@@ -960,9 +969,6 @@ function StreamFile(options) {
 			}
 		}
 	};
-	
-	global.AudioFeeder = AudioFeeder;
-
 
 
 	/** Flash fallback **/
@@ -1023,8 +1029,8 @@ function StreamFile(options) {
 			var self = this;
 			self.id = DynamicAudio.nextId++;
 
-			if (opts && typeof opts['swf'] !== 'undefined') {
-				self.swf = opts['swf'];
+			if (opts && typeof opts.swf !== 'undefined') {
+				self.swf = opts.swf;
 			}
 
 
@@ -1032,11 +1038,11 @@ function StreamFile(options) {
 			self.flashWrapper.id = 'dynamicaudio-flashwrapper-'+self.id;
 			// Credit to SoundManager2 for this:
 			var s = self.flashWrapper.style;
-			s['position'] = 'fixed';
-			s['width'] = '11px'; // must be at least 6px for flash to run fast
-			s['height'] = '11px';
-			s['bottom'] = s['left'] = '0px';
-			s['overflow'] = 'hidden';
+			s.position = 'fixed';
+			s.width = '11px'; // must be at least 6px for flash to run fast
+			s.height = '11px';
+			s.bottom = s.left = '0px';
+			s.overflow = 'hidden';
 			self.flashElement = document.createElement('div');
 			self.flashElement.id = 'dynamicaudio-flashelement-'+self.id;
 			self.flashWrapper.appendChild(self.flashElement);
@@ -1062,7 +1068,7 @@ function StreamFile(options) {
 function FrameSink(canvas, videoInfo) {
 	var self = this,
 		ctx = canvas.getContext('2d'),
-		imageData = ctx.createImageData(videoInfo.frameWidth, videoInfo.frameHeight);
+		imageData = null;
 
 	
 /**
@@ -1176,17 +1182,26 @@ function convertYCbCr(ybcbr, output) {
 }
 
 
-	// Prefill the alpha to opaque
-	var data = imageData.data,
-		pixelCount = videoInfo.frameWidth * videoInfo.frameHeight * 4;
-	for (var i = 0; i < pixelCount; i += 4) {
-		data[i + 3] = 255;
+	function initImageData(width, height) {
+		imageData = ctx.createImageData(width, height)
+
+		// Prefill the alpha to opaque
+		var data = imageData.data,
+			pixelCount = width * height * 4;
+		for (var i = 0; i < pixelCount; i += 4) {
+			data[i + 3] = 255;
+		}
 	}
 
 	/**
 	 * Actually draw a frame into the canvas.
 	 */
 	self.drawFrame = function drawFrame(yCbCrBuffer) {
+		if (imageData == null ||
+				imageData.width != yCbCrBuffer.width ||
+				imageData.height != yCbCrBuffer.height) {
+			initImageData(yCbCrBuffer.width, yCbCrBuffer.height);
+		}
 		convertYCbCr(yCbCrBuffer, imageData.data);
 
 		ctx.putImageData(imageData,
@@ -1215,7 +1230,7 @@ function WebGLFrameSink(canvas, videoInfo) {
 		gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'),
 		debug = false; // swap this to enable more error checks, which can slow down rendering
 	
-	if (gl == null) {
+	if (gl === null) {
 		throw new Error('WebGL unavailable');
 	}
 
@@ -1223,7 +1238,7 @@ function WebGLFrameSink(canvas, videoInfo) {
 	function checkError() {
 		if (debug) {
 			err = gl.getError();
-			if (err != 0) {
+			if (err !== 0) {
 				throw new Error("GL error " + err);
 			}
 		}
@@ -1278,8 +1293,6 @@ function WebGLFrameSink(canvas, videoInfo) {
 		gl.activeTexture(register);
 		checkError();
 		gl.bindTexture(gl.TEXTURE_2D, texture);
-		checkError();
-		gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
 		checkError();
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
 		checkError();
@@ -1365,8 +1378,8 @@ function WebGLFrameSink(canvas, videoInfo) {
 			// Warning: assumes that the stride for Cb and Cr is the same size in output pixels
 			var textureX0 = videoInfo.picX / texWidth;
 			var textureX1 = (videoInfo.picX + videoInfo.picWidth) / texWidth;
-			var textureY0 = videoInfo.picY / texHeight;
-			var textureY1 = (videoInfo.picY + videoInfo.picHeight) / texHeight;
+			var textureY0 = (videoInfo.picY + videoInfo.picHeight) / texHeight;
+			var textureY1 = videoInfo.picY / texHeight;
 			var textureRectangle = new Float32Array([
 				textureX0, textureY0,
 				textureX1, textureY0,
@@ -1453,7 +1466,6 @@ WebGLFrameSink.isAvailable = function() {
 
 		gl.activeTexture(register);
 		gl.bindTexture(gl.TEXTURE_2D, texture);
-		gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -1528,7 +1540,52 @@ function Bisector(options) {
 }
 
 
-// -- OgvJsPlayer.js
+// -- OGVMediaType.js
+
+function OGVMediaType(contentType) {
+	contentType = '' + contentType;
+
+	var self = this;
+	self.major = null;
+	self.minor = null;
+	self.codecs = null;
+
+	function trim(str) {
+		return str.replace(/^\s+/, '').replace(/\s+$/, '');
+	}
+
+	function split(str, sep, limit) {
+		var bits = str.split(sep, limit).map(function(substr) {
+			return trim(substr);
+		});
+		if (typeof limit === 'number') {
+			while (bits.length < limit) {
+				bits.push(null);
+			}
+		}
+		return bits;
+	}
+
+	var parts = split(contentType, ';');
+	if (parts.length) {
+		var base = parts.shift();
+		if (base) {
+			var bits = split(base, '/', 2);
+			self.major = bits[0];
+			self.minor = bits[1];
+		}
+
+		parts.forEach(function(str) {
+			var matches = str.match(/^codecs\s*=\s*"(.*?)"$/);
+			if (matches) {
+				self.codecs = split(matches[1], ',');
+			}
+		});
+	}
+}
+
+
+// -- OGVPlayer.js
 
 /**
  * Constructor for an analogue of the TimeRanges class
@@ -1536,7 +1593,7 @@ function Bisector(options) {
  *
  * Pass an array of two-element arrays, each containing a start and end time.
  */
-OgvJsTimeRanges = window.OgvJsTimeRanges = function(ranges) {
+OGVTimeRanges = window.OGVTimeRanges = function(ranges) {
 	Object.defineProperty(this, 'length', {
 		get: function getLength() {
 			return ranges.length;
@@ -1547,9 +1604,9 @@ OgvJsTimeRanges = window.OgvJsTimeRanges = function(ranges) {
 	};
 	this.end = function(i) {
 		return ranges[i][1];
-	}
+	};
 	return this;
-}
+};
 
 /**
  * Player class -- instantiate one of these to get an 'ogvjs' HTML element
@@ -1560,16 +1617,24 @@ OgvJsTimeRanges = window.OgvJsTimeRanges = function(ranges) {
  *                 'webGL': bool; pass true to use WebGL acceleration if available
  *                 'forceWebGL': bool; pass true to require WebGL even if not detected
  */
-OgvJsPlayer = window.OgvJsPlayer = function(options) {
+OGVPlayer = window.OGVPlayer = function(options) {
 	options = options || {};
+
+	var codecClassName = null,
+		codecClassFile = null,
+		codecClass = null;
+
 	var webGLdetected = WebGLFrameSink.isAvailable();
-	var useWebGL = !!options.webGL && webGLdetected;
+	var useWebGL = (options.webGL !== false) && webGLdetected;
 	if(!!options.forceWebGL) {
 		useWebGL = true;
 		if(!webGLdetected) {
 			console.log("No support for WebGL detected, but WebGL forced on!");
 		}
 	}
+
+	// Experimental option
+	var enableWebM = !!options.enableWebM;
 	
 	var State = {
 		INITIAL: 'INITIAL',
@@ -1623,8 +1688,38 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	} else {
 		getTimestamp = window.performance.now.bind(window.performance);
 	}
+	function time(cb) {
+		var start = getTimestamp();
+		cb();
+		var delta = getTimestamp() - start;
+		lastFrameDecodeTime += delta;
+		return delta;
+	}
 
-	var placeboCodec, codec, audioFeeder;
+	function fireEvent(eventName, props) {
+		var event;
+		props = props || {};
+
+		if (typeof window.Event == 'function') {
+			// standard event creation
+			event = new CustomEvent(eventName);
+		} else {
+			// IE back-compat mode
+			// https://msdn.microsoft.com/en-us/library/dn905219%28v=vs.85%29.aspx
+			event = document.createEvent('Event');
+			event.initEvent(eventName, false, false);
+		}
+
+		for (var prop in props) {
+			if (props.hasOwnProperty(prop)) {
+				event[prop] = props[prop];
+			}
+		}
+
+		self.dispatchEvent(event);
+	}
+
+	var codec, audioFeeder;
 	var muted = false,
 		initialAudioPosition = 0.0,
 		initialAudioOffset = 0.0;
@@ -1687,7 +1782,8 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		drawingTime = 0, // ms
 		totalJitter = 0; // sum of ms we're off from expected frame delivery time
 	// Benchmark data that doesn't clear
-	var droppedAudio = 0; // number of times we were starved for audio
+	var droppedAudio = 0, // number of times we were starved for audio
+		delayedAudio = 0; // seconds audio processing was delayed by blocked CPU
 
 	function stopVideo() {
 		// kill the previous video if any
@@ -1703,10 +1799,6 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		if (stream) {
 			stream.abort();
 			stream = null;
-		}
-		if (placeboCodec) {
-			placeboCodec.destroy();
-			placeboCodec = null;
 		}
 		if (codec) {
 			codec.destroy();
@@ -1750,15 +1842,9 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			thumbnail = null;
 		}
 
-		var start, delta;
-
-		start = getTimestamp();
-
-		frameSink.drawFrame(yCbCrBuffer);
-
-		delta = getTimestamp() - start;
-		lastFrameDecodeTime += delta;
-		drawingTime += delta;
+		drawingTime += time(function() {
+			frameSink.drawFrame(yCbCrBuffer);
+		});
 
 		framesProcessed++;
 		framesPlayed++;
@@ -1780,12 +1866,10 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			jitter = Math.abs(wallClockTime - 1000 / fps);
 		totalJitter += jitter;
 
-		if (self.onframecallback) {
-			self.onframecallback({
-				cpuTime: lastFrameDecodeTime,
-				clockTime: wallClockTime
-			});
-		}
+		fireEvent('framecallback', {
+			cpuTime: lastFrameDecodeTime,
+			clockTime: wallClockTime
+		});
 		lastFrameDecodeTime = 0;
 		lastFrameTimestamp = newFrameTimestamp;
 	}
@@ -1821,7 +1905,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	}
 
 	function seek(toTime) {
-		if (stream.bytesTotal == 0) {
+		if (stream.bytesTotal === 0) {
 			throw new Error('Cannot bisect a non-seekable stream');
 		}
 		state = State.SEEKING;
@@ -1886,8 +1970,9 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			} else if (codec.frameTimestamp < 0 || codec.frameTimestamp + frameDuration < seekTargetTime) {
 				// Haven't found a time yet, or haven't reached the target time.
 				// Decode it in case we're at our keyframe or a following intraframe...
-				codec.decodeFrame();
-				codec.dequeueFrame();
+				if (codec.decodeFrame()) {
+					codec.dequeueFrame();
+				}
 				return true;
 			} else {
 				// Reached or surpassed the target time. 
@@ -1907,8 +1992,9 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			if (codec.audioTimestamp < 0 || codec.audioTimestamp + frameDuration < seekTargetTime) {
 				// Haven't found a time yet, or haven't reached the target time.
 				// Decode it so when we reach the target we've got consistent data.
-				codec.decodeAudio();
-				codec.dequeueAudio();
+				if (codec.decodeAudio()) {
+					codec.dequeueAudio();
+				}
 				return true;
 			} else {
 				continueSeekedPlayback();
@@ -1943,12 +2029,14 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			// Haven't found a time yet.
 			// Decode in case we're at our keyframe or a following intraframe...
 			if (codec.frameReady) {
-				codec.decodeFrame();
-				codec.dequeueFrame();
+				if (codec.decodeFrame()) {
+					codec.dequeueFrame();
+				}
 			}
 			if (codec.audioReady) {
-				codec.decodeAudio();
-				codec.dequeueAudio();
+				if (codec.decodeAudio()) {
+					codec.dequeueAudio();
+				}
 			}
 			return true;
 		} else if (timestamp - frameDuration > bisectTargetTime) {
@@ -1984,54 +2072,8 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	}
 	
 
-	/**
-	 * In IE, pushing data to the Flash shim is expensive.
-	 * Combine multiple small Vorbis packet outputs into
-	 * larger buffers so we don't have to make as many calls.
-	 */
-	function joinAudioBuffers(buffers) {
-		if (buffers.length == 1) {
-			return buffers[0];
-		}
-		var sampleCount = 0,
-			channelCount = buffers[0].length,
-			i,
-			c,
-			out = [];
-		for (i = 0; i < buffers.length; i++) {
-			sampleCount += buffers[i][0].length;
-		}
-		for (c = 0; c < channelCount; c++) {
-			var channelOut = new Float32Array(sampleCount);
-			var position = 0;
-			for (i = 0; i < buffers.length; i++) {
-				var channelIn = buffers[i][c];
-				channelOut.set(channelIn, position);
-				position += channelIn.length;
-			}
-			out.push(channelOut);
-		}
-		return out;
-	}
-
 	function doProcessing() {
 		nextProcessingTimer = null;
-		
-		var audioBuffers = [];
-		function queueAudio() {
-			if (audioBuffers.length > 0) {
-				var start = getTimestamp();
-				audioFeeder.bufferData(joinAudioBuffers(audioBuffers));
-				var delta = (getTimestamp() - start);
-				lastFrameDecodeTime += delta;
-				bufferTime += delta;
-
-				if (!codec.hasVideo) {
-					framesProcessed++; // pretend!
-					doFrameComplete();
-				}
-			}
-		}
 		
 		var audioBufferedDuration = 0,
 			decodedSamples = 0,
@@ -2049,16 +2091,12 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			}
 
 			if (state == State.INITIAL) {
-				if (placeboCodec) {
-					placeboCodec.process();
-				}
 				var more = codec.process();
 
 				if (loadedMetadata) {
 					// we just fell over from headers into content; call onloadedmetadata etc
 					if (!codec.hasVideo && !codec.hasAudio) {
 						throw new Error('No audio or video found, something is wrong');
-						return;
 					}
 					if (duration === null) {
 						if (stream.seekable) {
@@ -2069,7 +2107,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 							stream.readBytes();
 							return;
 						} else {
-							console.log('Stream not seekable and no x-content-duration; assuming infinite stream.');
+							// Stream not seekable and no x-content-duration; assuming infinite stream.
 							state = State.LOADED;
 							continue;
 						}
@@ -2100,8 +2138,9 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 				}
 				if (codec.hasAudio && codec.audioReady) {
 					lastSeenTimestamp = Math.max(lastSeenTimestamp, codec.audioTimestamp);
-					codec.decodeAudio();
-					codec.dequeueAudio();
+					if (codec.decodeAudio()) {
+						codec.dequeueAudio();
+					}
 				}
 				
 				if (!more) {
@@ -2113,9 +2152,6 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 						// We are at the end!
 						if (lastSeenTimestamp > 0) {
 							duration = lastSeenTimestamp;
-							console.log('detected duration ' + duration + ' from end');
-						} else {
-							console.log('did not find a duration');
 						}
 						
 						// Ok, seek back to the beginning and resync the streams.
@@ -2133,9 +2169,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			
 			if (state == State.LOADED) {
 				state = State.READY;
-				if (self.onloadedmetadata) {
-					self.onloadedmetadata();
-				}
+				fireEvent('loadedmetadata');
 				if (paused) {
 					// Paused? stop here.
 					return;
@@ -2148,7 +2182,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			if (state == State.READY) {
 				state = State.PLAYING;
 				lastFrameTimestamp = getTimestamp();
-				targetFrameTime = lastFrameTimestamp + 1000.0 / fps
+				targetFrameTime = lastFrameTimestamp + 1000.0 / fps;
 				if (codec.hasAudio) {
 					initAudioFeeder();
 					audioFeeder.waitUntilReady(function() {
@@ -2185,19 +2219,12 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			// Process until we run out of data or
 			// completely decode a video frame...
 			var currentTime = getTimestamp();
-			var start = getTimestamp();
-			
-			if (placeboCodec) {
-				placeboCodec.process();
-			}
-			var more = codec.process();
-			
-			var delta = (getTimestamp() - start);
-			lastFrameDecodeTime += delta;
-			demuxingTime += delta;
+			var more;
+			demuxingTime += time(function() {
+				more = codec.process();
+			});
 
 			if (!more) {
-				queueAudio();
 				if (stream) {
 					// Ran out of buffered input
 					stream.readBytes();
@@ -2212,9 +2239,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 					setTimeout(function() {
 						stopVideo();
 						ended = true;
-						if (self.onended) {
-							self.onended();
-						}
+						fireEvent('ended');
 					}, finalDelay);
 				}
 				return;
@@ -2231,6 +2256,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 					audioPlaybackPosition = getAudioTime(audioState);
 					audioBufferedDuration = (audioState.samplesQueued / audioFeeder.targetRate) * 1000;
 					droppedAudio = audioState.dropped;
+					delayedAudio = audioState.delayed;
 				}
 
 				// Drive on the audio clock!
@@ -2241,27 +2267,29 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 
 				var startTimeSpent = getTimestamp();
 				if (codec.audioReady && readyForAudio) {
-					var start = getTimestamp();
-					var ok = codec.decodeAudio();
-					var delta = (getTimestamp() - start);
-					lastFrameDecodeTime += delta;
-					audioDecodingTime += delta;
+					var ok;
+					audioDecodingTime += time(function() {
+						ok = codec.decodeAudio();
+					});
 
-					var start = getTimestamp();
 					if (ok) {
 						var buffer = codec.dequeueAudio();
-						//audioFeeder.bufferData(buffer);
-						audioBuffers.push(buffer);
-						audioBufferedDuration += (buffer[0].length / audioInfo.rate) * 1000;
-						decodedSamples += buffer[0].length;
+						if (buffer) {
+							// Keep track of how much time we spend queueing audio as well
+							// This is slow when using the Flash shim on IE 10/11
+							bufferTime += time(function() {
+								audioFeeder.bufferData(buffer);
+							});
+							audioBufferedDuration += (buffer[0].length / audioInfo.rate) * 1000;
+							decodedSamples += buffer[0].length;
+						}
 					}
 				}
 				if (codec.frameReady && readyForFrame) {
-					var start = getTimestamp();
-					var ok = codec.decodeFrame();
-					var delta = (getTimestamp() - start);
-					lastFrameDecodeTime += delta;
-					videoDecodingTime += delta;
+					var ok;
+					videoDecodingTime += time(function() {
+						ok = codec.decodeFrame();
+					});
 					if (ok) {
 						processFrame();
 						drawFrame();
@@ -2291,37 +2319,21 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 				
 				var nextDelay = Math.min.apply(Math, nextDelays);
 				if (nextDelays.length > 0) {
-					if (placeboCodec) {
-						// We've primed the JIT compiler... or something... by now;
-						// throw away the placebo copy.
-						placeboCodec.destroy();
-						placeboCodec = null;
+					if (!codec.hasVideo) {
+						framesProcessed++; // pretend!
+						doFrameComplete();
 					}
-
-					// Keep track of how much time we spend queueing audio as well
-					// This is slow when using the Flash shim on IE 10/11
-					var start = getTimestamp();
-					queueAudio();
-					var delta = getTimestamp() - start;
-					pingProcessing(Math.max(0, nextDelay - delta));
+					pingProcessing(Math.max(0, nextDelay));
 					return;
 				}
 			} else if (codec.hasVideo) {
 				// Video-only: drive on the video clock
 				if (codec.frameReady && getTimestamp() >= targetFrameTime) {
-					if (placeboCodec) {
-						// We've primed the JIT compiler... or something... by now;
-						// throw away the placebo copy.
-						placeboCodec.destroy();
-						placeboCodec = null;
-					}
-
 					// it's time to draw
-					var start = getTimestamp();
-					var ok = codec.decodeFrame();
-					var delta = (getTimestamp() - start);
-					lastFrameDecodeTime += delta;
-					videoDecodingTime += delta;
+					var ok;
+					videoDecodingTime += time(function() {
+						ok = codec.decodeFrame();
+					});
 					if (ok) {
 						processFrame();
 						drawFrame();
@@ -2393,28 +2405,16 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 		started = true;
 		ended = false;
 
-		// There's some kind of problem with the JIT in iOS 7 Safari
-		// that sometimes trips up on optimized Vorbis builds, at least
-		// on my iPad 3 (A5X SoC).
-		//
-		// Exercising some of the ogg & vorbis library code paths with
-		// a second decoder for the first few packets of data seems to
-		// be enough to work around this.
-		//
-		// Non-deterministic debugging ROCKS!
-		//
-		placeboCodec = new OgvJs(options);
-
-		codec = new OgvJs(options);
+		codec = new codecClass(options);
 		codec.oninitvideo = function(info) {
 			videoInfo = info;
 			fps = info.fps;
 			targetPerFrameTime = 1000 / fps;
 			
-			if (width == 0) {
+			if (width === 0) {
 				self.style.width = self.videoWidth + 'px';
 			}
-			if (height == 0) {
+			if (height === 0) {
 				self.style.height = self.videoHeight + 'px';
 			}
 			
@@ -2441,41 +2441,53 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	}
 	
 	function loadCodec(callback) {
-		if (typeof window.OgvJs == 'function') {
+		// @todo fix this proper
+		if (enableWebM && self.src.match(/\.webm$/i)) {
+			codecClassName = 'OGVWebMDecoder';
+			codecClassFile = 'webm-codec.js';
+		} else {
+			codecClassName = 'OGVOggDecoder';
+			codecClassFile = 'ogv-codec.js';
+		}
+		codecClass = window[codecClassName];
+		if (typeof codecClass === 'function') {
 			if (callback) {
 				callback();
 			}
-		} else if (OgvJsPlayer.loadingNode !== null) {
+		} else if (OGVPlayer.loadingNode !== null) {
 			if (callback) {
-				OgvJsPlayer.loadingCallbacks.push(callback);
+				OGVPlayer.loadingCallbacks.push(callback);
 			}
 		} else {
 			if (callback) {
-				OgvJsPlayer.loadingCallbacks.push(callback);
+				OGVPlayer.loadingCallbacks.push(callback);
 			}
-			OgvJsPlayer.loadingNode = document.createElement('script');
-			document.querySelector('head').appendChild(OgvJsPlayer.loadingNode);
+			OGVPlayer.loadingNode = document.createElement('script');
+			document.querySelector('head').appendChild(OGVPlayer.loadingNode);
 
-			var url = 'ogv-codec.js';
+			var url = codecClassFile;
 			if (options.base) {
 				url = options.base + '/' + url;
 			}
-			if (typeof window.OgvJsVersion === 'string') {
-				url = url + '?version=' + encodeURIComponent(window.OgvJsVersion);
+			if (typeof window.OGVVersion === 'string') {
+				url = url + '?version=' + encodeURIComponent(window.OGVVersion);
 			}
 			
-			OgvJsPlayer.loadingNode.onload = function() {
-				if (typeof window.OgvJs === 'function') {
-					OgvJsPlayer.loadingCallbacks.forEach(function(cb) {
+			OGVPlayer.loadingNode.addEventListener('load', function() {
+				codecClass = window[codecClassName];
+				if (typeof codecClass === 'function') {
+					OGVPlayer.loadingCallbacks.forEach(function(cb) {
 						cb();
 					});
-					OgvJsPlayer.loadingNode.onload = null;
-					OgvJsPlayer.loadingCallbacks.splice(0, OgvJsPlayer.loadingCallbacks.length);
+					OGVPlayer.loadingNode.onload = null;
+					OGVPlayer.loadingCallbacks.splice(0, OGVPlayer.loadingCallbacks.length);
+					OGVPlayer.loadingNode.parentNode.removeChild(OGVPlayer.loadingNode);
+					OGVPlayer.loadingNode = null;
 				} else {
-					throw new Error('Could not load ogv-codec.js');
+					throw new Error('Could not load ' + codecClassFile);
 				}
-			};
-			OgvJsPlayer.loadingNode.src = url;
+			});
+			OGVPlayer.loadingNode.src = url;
 		}
 	}
 	
@@ -2508,9 +2520,6 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			onread: function(data) {
 				// Pass chunk into the codec's buffer
 				codec.receiveInput(data);
-				if (placeboCodec) {
-					placeboCodec.receiveInput(data);
-				}
 
 				// Continue the read/decode/draw loop...
 				pingProcessing();
@@ -2521,8 +2530,6 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 				} else if (state == State.SEEKING_END) {
 					pingProcessing();
 				} else {
-					//throw new Error('wtf is this');
-					console.log('stream ended');
 					stream = null;
 			
 					// Let the read/decode/draw loop know we're out!
@@ -2538,23 +2545,33 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	/**
 	 * HTMLMediaElement canPlayType method
 	 */
-	self.canPlayType = function(type) {
-		// @todo: implement better parsing
-		if (type === 'audio/ogg; codecs="vorbis"') {
-			return 'probably';
-		} else if (type === 'audio/ogg; codecs="opus"') {
-			return 'probably';
-		} else if (type.match(/^audio\/ogg\b/)) {
-			return 'maybe';
-		} else if (type === 'video/ogg; codecs="theora"') {
-			return 'probably';
-		} else if (type === 'video/ogg; codecs="theora,vorbis"') {
-			return 'probably';
-		} else if (type === 'video/ogg; codecs="theora,opus"') {
-			return 'probably';
-		} else if (type.match(/^video\/ogg\b/)) {
-			return 'maybe';
+	self.canPlayType = function(contentType) {
+		var type = new OGVMediaType(contentType);
+		if (type.minor === 'ogg' &&
+			(type.major === 'audio' || type.major === 'video' || type.major === 'application')) {
+			if (type.codecs) {
+				var supported = ['vorbis', 'opus', 'theora'],
+					knownCodecs = 0,
+					unknownCodecs = 0;
+				type.codecs.forEach(function(codec) {
+					if (supported.indexOf(codec) >= 0) {
+						knownCodecs++;
+					} else {
+						unknownCodecs++;
+					}
+				});
+				if (knownCodecs == 0) {
+					return '';
+				} else if (unknownCodecs > 0) {
+					return '';
+				}
+				// All listed codecs are ones we know. Neat!
+				return 'probably';
+			} else {
+				return 'maybe';
+			}
 		} else {
+			// @todo when webm support is more complete, handle it
 			return '';
 		}
 	};
@@ -2564,7 +2581,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	 */
 	self.play = function() {
 		if (!audioOptions.audioContext) {
-			OgvJsPlayer.initSharedAudioContext();
+			OGVPlayer.initSharedAudioContext();
 		}
 		
 		if (!stream) {
@@ -2582,16 +2599,14 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 						startAudio();
 					}
 					pingProcessing(0);
-				}
+				};
 				if (!started) {
 					loadCodec(startProcessingVideo);
 				} else {
 					continueVideo();
 				}
 			}
-			if (self.onplay) {
-				self.onplay();
-			}
+			fireEvent('play');
 		}
 	};
 	
@@ -2608,6 +2623,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			bufferTime: bufferTime,
 			drawingTime: drawingTime,
 			droppedAudio: droppedAudio,
+			delayedAudio: delayedAudio,
 			jitter: totalJitter / framesProcessed
 		};
 	};
@@ -2635,9 +2651,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 				stopAudio();
 			}
 			paused = true;
-			if (self.onpause) {
-				self.onpause();
-			}
+			fireEvent('pause');
 		}
 	};
 	
@@ -2664,7 +2678,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			} else {
 				estimatedBufferTime = 0;
 			}
-			return new OgvJsTimeRanges([[0, estimatedBufferTime]]);
+			return new OGVTimeRanges([[0, estimatedBufferTime]]);
 		}
 	});
 	
@@ -2674,9 +2688,9 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	Object.defineProperty(self, "seekable", {
 		get: function getSeekable() {
 			if (duration === null) {
-				return new OgvJsTimeRanges([]);
+				return new OGVTimeRanges([]);
 			} else {
-				return new OgvJsTimeRanges([[0, duration]]);
+				return new OGVTimeRanges([[0, duration]]);
 			}
 		}
 	});
@@ -2691,7 +2705,7 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 			} else {
 				if (codec && codec.hasAudio && audioFeeder) {
 					if (paused) {
-						return initialAudioOffset - initialAudioPosition;
+						return initialAudioOffset;
 					} else {
 						return getAudioTime();
 					}
@@ -2791,14 +2805,14 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 				thumbnail.style.left = '0';
 				thumbnail.style.width = '100%';
 				thumbnail.style.height = '100%';
-				thumbnail.onload = function() {
-					if (width == 0) {
+				thumbnail.addEventListener('load', function() {
+					if (width === 0) {
 						self.style.width = thumbnail.naturalWidth + 'px';
 					}
-					if (height == 0) {
+					if (height === 0) {
 						self.style.height = thumbnail.naturalHeight + 'px';
 					}
-				}
+				});
 				self.appendChild(thumbnail);
 			}
 		}
@@ -2908,14 +2922,20 @@ OgvJsPlayer = window.OgvJsPlayer = function(options) {
 	self.onended = null;
 	
 	return self;
-}
+};
 
-OgvJsPlayer.initSharedAudioContext = function() {
+OGVPlayer.initSharedAudioContext = function() {
 	AudioFeeder.initSharedAudioContext();
 };
 
-OgvJsPlayer.loadingNode = null,
-OgvJsPlayer.loadingCallbacks = [];
+OGVPlayer.loadingNode = null;
+OGVPlayer.loadingCallbacks = [];
 
 
-window.OgvJsVersion = "Sat May 23 12:27:37 UTC 2015";
+// exports
+this.OGVMediaType = OGVMediaType;
+this.OGVTimeRanges = OGVTimeRanges;
+this.OGVPlayer = OGVPlayer;
+
+})();
+window.OGVVersion = "0.9-20150707015605-1d409d9";

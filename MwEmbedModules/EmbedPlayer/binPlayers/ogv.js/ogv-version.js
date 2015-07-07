@@ -1,1 +1,1 @@
-window.OgvJsVersion = "Sat May 23 12:27:37 UTC 2015";
+window.OGVVersion = "0.9-20150707015605-1d409d9";
