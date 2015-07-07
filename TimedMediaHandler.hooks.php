@@ -102,6 +102,18 @@ class TimedMediaHandlerHooks {
 				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js',
 			),
 		);
+
+		// Add OgvJs-related modules for Safari/IE/Edge Ogg playback
+		$wgResourceModules += array(
+			'ext.tmh.OgvJsSupport' => $baseExtensionResource + array(
+				'scripts' => array(
+					'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv-support.js',
+					'resources/ext.tmh.OgvJsSupport.js',
+				),
+				'targets' => array( 'mobile', 'desktop' ),
+			),
+		);
+
 		// Setup a hook for iframe embed handling:
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
 

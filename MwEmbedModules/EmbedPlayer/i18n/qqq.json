@@ -29,6 +29,8 @@
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "name of IE WebM plugin installer helper in configuration screen",
 	"mwe-embedplayer-ogg-player-cortado": "{{optional}}",
 	"mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "name of IE WebM plugin installer helper in configuration screen",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "name of ogv.js Ogg JavaScript player in configuration screen",
 	"mwe-embedplayer-for_best_experience": "Shown when user's browser doesn't support playing videos. Parameters:\n* $1 - An empty &lt;a&gt; tag. Don't use this parameter.",
 	"mwe-embedplayer-download-warn": "Parameters:\n* $1 - URL",
 	"mwe-embedplayer-do_not_warn_again": "Standard message for disabling\nfuture identical warnings messages",

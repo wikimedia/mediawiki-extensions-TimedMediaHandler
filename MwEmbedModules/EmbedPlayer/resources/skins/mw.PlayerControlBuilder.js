@@ -1358,6 +1358,9 @@ mw.PlayerControlBuilder.prototype = {
 		if( this.embedPlayer.instanceOf == 'VLCApp' ){
 			return false;
 		}
+		if( this.embedPlayer.instanceOf == 'OgvJs' ){
+			return false;
+		}
 
 		// Chrome's webM support is oky though:
 		if( /chrome/.test(navigator.userAgent.toLowerCase() ) &&
@@ -2218,12 +2221,17 @@ mw.PlayerControlBuilder.prototype = {
 				})
 			);
 		}
+		var addedSources = {};
 		$.each( this.embedPlayer.mediaElement.getPlayableSources(), function( sourceIndex, source ) {
 			// Output the player select code:
 			var supportingPlayers = mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( source.getMIMEType() );
 			for ( var i = 0; i < supportingPlayers.length ; i++ ) {
-				if( supportingPlayers[i].library == 'Native' ){
-					addToSourceMenu( source );
+				var lib = supportingPlayers[i].library;
+				if( lib === 'Native' || lib === 'OgvJs' ){ // @fixme use supports.sourceSwitch ... if preloaded?
+					if ( !( source.getSrc() in addedSources ) ) {
+						addedSources[source.getSrc()] = true;
+						addToSourceMenu( source );
+					}
 				}
 			}
 		});

@@ -35,6 +35,9 @@
 	"predef": [
 		"mediaWiki",
 		"mw",
-		"jQuery"
+		"jQuery",
+		"OGVVersion",
+		"OGVSupport",
+		"OGVPlayer"
 	]
 }

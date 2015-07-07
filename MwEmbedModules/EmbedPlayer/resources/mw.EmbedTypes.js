@@ -97,6 +97,17 @@ var IEWebMPrompt = new mw.MediaPlayer( 'IEWebMPrompt', [
 	'video/webm; codecs="vp8, vorbis"'
 ], 'IEWebMPrompt' );
 
+var ogvJsPlayer = new mw.MediaPlayer( 'ogvJsPlayer', [
+	'video/ogg',
+	'video/ogg; codecs="theora"',
+	'video/ogg; codecs="theora, vorbis"',
+	'video/ogg; codecs="theora, opus"',
+	'audio/ogg',
+	'audio/ogg; codecs="vorbis"',
+	'audio/ogg; codecs="opus"',
+	'application/ogg'
+], 'OgvJs' );
+
 // Generic plugin
 //var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
 
@@ -338,6 +349,23 @@ mw.EmbedTypes = {
 				this.mediaPlayers.addPlayer( IEWebMPrompt );
 			}
 		}
+
+		// ogv.js compatibility detection...
+		if ( OGVCompat.supported( 'OGVPlayer' ) ) {
+			// ogv.js emscripten version
+			//
+			// Works in:
+			// * Safari 6.1+ on Mac OS X
+			// * Safari on iOS 8+ (best on 64-bit devices)
+			// * IE 10/11 on Windows 7/8/8.1 (requires Flash for audio)
+			// * Edge on Windows 10 (no plugins needed)
+			//
+			// Current Firefox, Chrome, Opera all work great too, but use
+			// native playback by default of course!
+			//
+			this.mediaPlayers.addPlayer( ogvJsPlayer );
+		}
+
 		// Allow extensions to detect and add their own "players"
 		mw.log("EmbedPlayer::trigger:embedPlayerUpdateMediaPlayersEvent");
 		$( mw ).trigger( 'embedPlayerUpdateMediaPlayersEvent' , this.mediaPlayers );

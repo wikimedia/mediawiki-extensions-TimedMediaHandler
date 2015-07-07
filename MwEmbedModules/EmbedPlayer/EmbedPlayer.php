@@ -2,7 +2,12 @@
 	global $wgVideoPlayerSkinModule;
 	// Register all the EmbedPlayer modules
 	return array(
-			"mw.MediaElement" => array( 'scripts' => 'resources/mw.MediaElement.js' ),
+			"mw.MediaElement" => array(
+				'scripts' => 'resources/mw.MediaElement.js',
+				'dependencies' => array(
+					'ext.tmh.OgvJsSupport',
+				)
+			),
 			"mw.MediaPlayer" => array( 'scripts' => 'resources/mw.MediaPlayer.js' ),
 			"mw.MediaPlayers" => array(
 				'scripts' => 'resources/mw.MediaPlayers.js',
@@ -71,6 +76,13 @@
 			"mw.EmbedPlayerIEWebMPrompt" => array(
 				'scripts' => 'resources/mw.EmbedPlayerIEWebMPrompt.js',
 				'styles' => 'resources/mw.EmbedPlayerIEWebMPrompt.css',
+			),
+			"mw.EmbedPlayerOgvJs" => array(
+				'scripts' => 'resources/mw.EmbedPlayerOgvJs.js',
+				'dependencies' => array(
+					'jquery.spinner',
+					'ext.tmh.OgvJsSupport',
+				),
 			),
 			"mw.EmbedPlayerImageOverlay" => array( 'scripts'=> "resources/mw.EmbedPlayerImageOverlay.js" ),
 

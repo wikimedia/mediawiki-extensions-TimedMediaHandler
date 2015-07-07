@@ -255,10 +255,11 @@ mw.MediaElement.prototype = {
 
 		// Prefer native playback ( and prefer WebM over ogg and h.264 )
 		var namedSourceSet = {};
+		var useBogoSlow = false; // use benchmark only for ogv.js
 		$.each( playableSources, function(inx, source ){
 			var mimeType = source.mimeType;
 			var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
-			if ( player && player.library == 'Native'	) {
+			if ( player && ( player.library == 'Native' || player.library == 'OgvJs' ) ) {
 				switch( player.id	){
 					case 'mp3Native':
 						var shortName = 'mp3';
@@ -267,6 +268,10 @@ mw.MediaElement.prototype = {
 						var shortName = 'aac';
 						break;
 					case 'oggNative':
+						var shortName = 'ogg';
+						break;
+					case 'ogvJsPlayer':
+						useBogoSlow = true;
 						var shortName = 'ogg';
 						break;
 					case 'webmNative':
@@ -309,9 +314,19 @@ mw.MediaElement.prototype = {
 					// select based on size:
 					// Set via embed resolution closest to relative to display size
 					var minSizeDelta = null;
+
+					// unless we're really slow...
+					var isBogoSlow = useBogoSlow && OGVCompat.isSlow();
+
 					if( this.parentEmbedId ){
 						var displayWidth = $('#' + this.parentEmbedId).width();
 						$.each( namedSourceSet[ codec ], function(inx, source ){
+							if ( ( isBogoSlow && source.height > 240 )
+								|| (useBogoSlow && source.height > 360 ) ) {
+								// On iOS or slow Windows devices, large videos decoded in JavaScript are a bad idea!
+								// continue
+								return true;
+							}
 							if( source.width && displayWidth ){
 								var sizeDelta =  Math.abs( source.width - displayWidth );
 								mw.log('MediaElement::autoSelectSource: size delta : ' + sizeDelta + ' for s:' + source.width );
