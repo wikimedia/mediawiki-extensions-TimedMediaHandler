@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"CERminator",
-			"Palapa"
+			"Palapa",
+			"Semso98"
 		]
 	},
 	"timedmedia-desc": "Upravljač za zvuk, video i vremenski tekst sa podrškom formata za WebM, Ogg Theora, Vorbis, srt",
@@ -24,7 +25,7 @@
 	"timedmedia-oggThumb-version": "OggHandler zahtijeva oggThumb verziju $1 ili kasniju.",
 	"timedmedia-oggThumb-failed": "oggThumb nije uspio napraviti smanjeni pregled.",
 	"timedmedia-source-file": "$1 izvor",
-	"timedmedia-source-file-desc": "Original $1, $2 × $3 ($4)",
+	"timedmedia-source-file-desc": "Originalna $1 datoteka, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)",
 	"timedmedia-subtitle-language": "$1 ($2) podnaslovi"
 }
