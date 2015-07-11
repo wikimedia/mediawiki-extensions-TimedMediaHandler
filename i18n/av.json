@@ -4,5 +4,6 @@
 			"Gazimagomedov"
 		]
 	},
-	"timedmedia-source-file": "$1 ицц"
+	"timedmedia-source-file": "$1 ицц",
+	"timedmedia-source-audio-file-desc": "Аслияб $1-файл ($2)"
 }
