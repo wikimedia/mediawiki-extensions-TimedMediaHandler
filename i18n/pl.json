@@ -77,6 +77,8 @@
 	"timedmedia-subtitle-new": "Utwórz nowe tłumaczenie lub edytuj istniejące",
 	"timedmedia-subtitle-new-go": "Przejdź",
 	"timedmediahandler": "TimedMediaHandler",
+	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 film Ogg|$1 filmy Ogg|$1 filmów Ogg}}",
+	"timedmedia-webm-videos": "{{PLURAL:$1|$1 film WebM|$1 filmy WebM|$1 filmów WebM}}",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 trwające transkodowanie|$1 trwające transkodowania|$1 trwających transkodowań}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce",
@@ -91,5 +93,7 @@
 	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania",
 	"orphanedtimedtext": "Osierocone strony TimedText",
 	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText nie jest włączony w tej wiki."
+	"orphanedtimedtext-notimedtext": "TimedText nie jest włączony w tej wiki.",
+	"apihelp-query+videoinfo-example-1": "Pobierz informacji o [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-param-title": "Tytuł pliku multimedialnego."
 }
