@@ -26,5 +26,6 @@
 	"timedmedia-source-file": "Font $1",
 	"timedmedia-source-audio-file-desc": "Fichièr original $1 ($2)",
 	"timedmediahandler": "TimedMediaHandler",
-	"timedmedia-file": "Fichièr"
+	"timedmedia-file": "Fichièr",
+	"right-transcode-reset": "Reïnicializar las vidèos en fracàs o transcodadas per que sián inseridas tornamai dins la fila dels trabalhs"
 }
