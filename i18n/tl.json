@@ -49,6 +49,7 @@
 	"timedmedia-webm": "WebM",
 	"timedmedia-source-file": "$1 pinagkukunan",
 	"timedmedia-source-file-desc": "Orihinal na $1, $2 × $3 ( $4)",
+	"timedmedia-source-audio-file-desc": "Orihinal na talaksang $1 ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160P",
 	"timedmedia-derivative-desc-160p.ogv": "Mababang lapad ng paha ng bidyo ng Ogg (160P)",
 	"timedmedia-derivative-360p.ogv": "Ogg 360P",
