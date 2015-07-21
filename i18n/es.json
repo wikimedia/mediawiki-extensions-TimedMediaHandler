@@ -54,7 +54,7 @@
 	"timedmedia-not-ready": "No está listo",
 	"timedmedia-completed-on": "Transcodificación completada $1",
 	"timedmedia-error-on": "Error de transcodificación a $1",
-	"timedmedia-started-transcode": "Transcodificación comenzada hace  $1. $2",
+	"timedmedia-started-transcode": "Transcodificación comenzada hace $1. $2",
 	"timedmedia-percent-done": "Aproximadamente $1 % completado",
 	"timedmedia-in-job-queue": "Añadido a la cola de trabajos hace  $1",
 	"timedmedia-unknown-target-size": "Tamaño de archivo de destino desconocido,  $1 codificado",
