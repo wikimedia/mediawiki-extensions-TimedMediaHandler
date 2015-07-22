@@ -66,7 +66,8 @@ class TranscodeStatusTable {
 			$o.='<td>';
 			$o.= ( !is_null( $state['time_success'] ) ) ?
 				'<a href="'.self::getSourceUrl( $file, $transcodeKey ) .'" title="'.wfMessage
-				('timedmedia-download' )->escaped() .'"><div class="download-btn"></div></a></td>' :
+				('timedmedia-download' )->escaped() .'"><div class="download-btn"><span>' .
+				wfMessage('timedmedia-download' )->escaped(). '</span></div></a></td>' :
 				wfMessage('timedmedia-not-ready' )->escaped();
 			$o.='</td>';
 
