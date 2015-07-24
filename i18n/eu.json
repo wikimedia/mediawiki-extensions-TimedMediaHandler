@@ -5,7 +5,8 @@
 			"Joxemai",
 			"Theklan",
 			"පසිඳු කාවින්ද",
-			"Subi"
+			"Subi",
+			"Sator"
 		]
 	},
 	"timedmedia-desc": "Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin",
@@ -19,6 +20,7 @@
 	"timedmedia-download": "Fitxategia jaitsi",
 	"timedmedia-desc-link": "Fitxategi honen inguruan",
 	"timedmedia-status": "Egoera",
+	"timedmedia-source-file": "$1 iturri",
 	"timedmedia-source-audio-file-desc": "Jatorrizko $1 fitxategia ($2)",
 	"timedmedia-subtitle-new-go": "Joan",
 	"timedmedia-file": "Fitxategia"
