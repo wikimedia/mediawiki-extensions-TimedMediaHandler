@@ -1,1 +1,1 @@
-window.OGVVersion = "0.9-20150707015605-1d409d9";
+this.OGVVersion = "0.9.5-20150803105811-0d8c3c3";
