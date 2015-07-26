@@ -24,10 +24,12 @@
 									domEl.pause();
 								}
 								return true;
+							},
+							'open': function() {
+								$( this ).find( 'video, audio' ).embedPlayer();
 							}
 						})
 						.css( 'overflow', 'hidden' )
-						.find( 'video, audio' ).embedPlayer();
 					} );
 					// don't follow file link
 					return false;
