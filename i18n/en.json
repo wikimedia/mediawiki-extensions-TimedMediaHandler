@@ -60,6 +60,8 @@
 	"timedmedia-source-audio-file-desc": "Original $1 file ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160P",
 	"timedmedia-derivative-desc-160p.ogv": "Low bandwidth Ogg video (160P)",
+	"timedmedia-derivative-240p.ogv": "Ogg 240P",
+	"timedmedia-derivative-desc-240p.ogv": "Web streamable Ogg video (240P)",
 	"timedmedia-derivative-360p.ogv": "Ogg 360P",
 	"timedmedia-derivative-desc-360p.ogv": "Web streamable Ogg video (360P)",
 	"timedmedia-derivative-480p.ogv": "Ogg 480P",

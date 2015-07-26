@@ -76,6 +76,8 @@
 	"timedmedia-source-audio-file-desc": "Source file description. Parameters:\n* $1 - file type; any one of the following messages:\n** {{msg-mw|Timedmedia-ogg}}\n** {{msg-mw|Timedmedia-webm}}\n** {{msg-mw|Timedmedia-mp4}}\n** {{msg-mw|Timedmedia-flac}}\n** {{msg-mw|Timedmedia-wav}}\n* $2 - human readable bitrate\nSee also:\n* {{msg-mw|Timedmedia-source-file-desc}} - for video file",
 	"timedmedia-derivative-160p.ogv": "{{optional}}  A type of media format encoding",
 	"timedmedia-derivative-desc-160p.ogv": "{{optional}} A type of media format encoding",
+	"timedmedia-derivative-240p.ogv": "{{optional}}  A type of media format encoding",
+	"timedmedia-derivative-desc-240p.ogv": "{{optional}} A type of media format encoding",
 	"timedmedia-derivative-360p.ogv": "{{optional}}  A type of media format encoding",
 	"timedmedia-derivative-desc-360p.ogv": "{{optional}} A type of media format encoding",
 	"timedmedia-derivative-480p.ogv": "{{optional}}  A type of media format encoding",

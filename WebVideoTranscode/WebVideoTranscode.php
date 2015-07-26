@@ -27,6 +27,7 @@ class WebVideoTranscode {
 
 	// Ogg Profiles
 	const ENC_OGV_160P = '160p.ogv';
+	const ENC_OGV_240P = '240p.ogv';
 	const ENC_OGV_360P = '360p.ogv';
 	const ENC_OGV_480P = '480p.ogv';
 	const ENC_OGV_720P = '720p.ogv';
@@ -77,10 +78,24 @@ class WebVideoTranscode {
 				'videoCodec'                 => 'theora',
 				'type'                       => 'video/ogg; codecs="theora, vorbis"',
 			),
+		WebVideoTranscode::ENC_OGV_240P =>
+			array(
+				'maxSize'                    => '426x240',
+				'videoBitrate'               => '512',
+				'audioQuality'               => '0',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				//'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
+			),
 		WebVideoTranscode::ENC_OGV_360P =>
 			array(
 				'maxSize'                    => '640x360',
-				'videoBitrate'               => '512',
+				'videoBitrate'               => '1024',
 				'audioQuality'               => '1',
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
@@ -94,7 +109,7 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_OGV_480P =>
 			array(
 				'maxSize'                    => '854x480',
-				'videoBitrate'               => '1024',
+				'videoBitrate'               => '2048',
 				'audioQuality'               => '2',
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
