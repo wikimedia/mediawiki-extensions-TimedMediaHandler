@@ -163,8 +163,7 @@ class WebVideoTranscodeJob extends Job {
 		if( ! is_null( $dbStartTime ) ){
 			$error = 'Error, running transcode job, for job that has already started';
 			$this->output( $error );
-			$this->setLastError( $error );
-			return false;
+			return true;
 		}
 
 		// Update the transcode table letting it know we have "started work":
