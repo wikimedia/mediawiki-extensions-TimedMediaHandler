@@ -18,9 +18,7 @@ if( is_file( $loaderPath ) ){
 }
 // Bootstrap some js code to make the "loader" work in stand alone tests:
 // Note this has to be wrapped in a document.write to run after other document.writes
-$pageStartupScript = Html::inlineScript(
-	ResourceLoader::makeLoaderConditionalScript(
-		Xml::encodeJsCall( 'mw.loader.go', array() )
-	)
+$pageStartupScript = ResourceLoader::makeInlineScript(
+	Xml::encodeJsCall( 'mw.loader.go', array() )
 );
 echo Xml::encodeJsCall( 'document.write', array( $pageStartupScript ) );
