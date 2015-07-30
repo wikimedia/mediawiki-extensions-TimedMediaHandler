@@ -61,13 +61,16 @@
 	"timedmedia-derivative-desc-360p.ogv": "Videu Ogg tresmitible pela web (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Videu Ogg tresmitible pela web (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Videu Ogg descargable d'alta calida (720P)",
+	"timedmedia-derivative-desc-1080p.ogv": "Videu Ogg descargable'n Full HD (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "Videu WebM tresmitible pela web (160P)",
 	"timedmedia-derivative-desc-360p.webm": "Videu WebM tresmitible pela web (360P)",
 	"timedmedia-derivative-desc-480p.webm": "Videu WebM tresmitible pela web (480P)",
 	"timedmedia-derivative-desc-720p.webm": "Videu WebM descargable d'alta calida (720P)",
+	"timedmedia-derivative-desc-1080p.webm": "WebM descargable'n Full HD (1080P)",
 	"timedmedia-derivative-desc-320p.mp4": "MP4 compatible colos preseos (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "MP4 tresmitible pela web (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "MP4 de calidá HD (720P)",
+	"timedmedia-derivative-desc-1080p.mp4": "MP4 de calidá Full HD (1080P)",
 	"timedmedia-subtitle-new": "Crear una traducción nueva o editar la esistente",
 	"timedmedia-subtitle-new-desc": "Seleicione la llingua y calque nel botón '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Dir",
@@ -95,5 +98,8 @@
 	"orphanedtimedtext": "Páxines güérfanes de TimedText",
 	"orphanedtimedtext-summary": "Llista de páxines de [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que nun tienen el correspondiente ficheru.",
 	"orphanedtimedtext-unsupported": "Esta páxina especial sólo tien sofitu con bases de datos MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText nun ta activáu nesta wiki."
+	"orphanedtimedtext-notimedtext": "TimedText nun ta activáu nesta wiki.",
+	"apihelp-query+transcodestatus-description": "Recibir l'estáu de transcode pa una páxina de ficheru determinada.",
+	"apihelp-query+transcodestatus-example-1": "Recibir l'estáu de transcode pa [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Estende imageinfo pa incluir la información de fonte de videu (derivaos)"
 }
