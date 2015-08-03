@@ -61,6 +61,7 @@
 	"timedmedia-source-file-desc": "קובץ $1 מקורי, $2 × $3&rlm; ($4)",
 	"timedmedia-source-audio-file-desc": "קובץ $1 מקורי ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "וידאו Ogg (160P)&lrm; לרוחב פס נמוך",
+	"timedmedia-derivative-desc-240p.ogv": "וידאו Ogg (240P)&lrm; לנגינה שוטפת מהרשת",
 	"timedmedia-derivative-desc-360p.ogv": "וידאו Ogg (360P)&lrm; לנגינה שוטפת מהרשת",
 	"timedmedia-derivative-desc-480p.ogv": "וידאו Ogg (480P)&lrm; לנגינה שוטפת מהרשת",
 	"timedmedia-derivative-desc-720p.ogv": "וידאו Ogg (720P)&lrm; באיכות גבוהה שניתן להורדה",
