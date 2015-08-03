@@ -2169,6 +2169,7 @@ OGVWrapperCodec = (function(options) {
 	};
 
 	self.flush = function(callback) {
+		inputQueue.splice(0, inputQueue.length);
 		demuxer.flush(callback);
 	};
 
@@ -2199,17 +2200,21 @@ function OGVProxyClass(initialProps, methods) {
 		var transferables = (function() {
 			var buffer = new ArrayBuffer(1024),
 				bytes = new Uint8Array(buffer);
-			worker.postMessage({
-				action: 'transferTest',
-				bytes: bytes
-			}, [buffer]);
-			if (buffer.byteLength) {
-				// No transferable support
-				console.log('no transferable?');
+			try {
+				worker.postMessage({
+					action: 'transferTest',
+					bytes: bytes
+				}, [buffer]);
+				if (buffer.byteLength) {
+					// No transferable support
+					console.log('no transferable?');
+					return false;
+				} else {
+					console.log('buffers can be transferred');
+					return true;
+				}
+			} catch (e) {
 				return false;
-			} else {
-				console.log('buffers can be transferred');
-				return true;
 			}
 		})();
 
@@ -3893,4 +3898,4 @@ this.OGVPlayer = OGVPlayer;
 
 })();
 
-this.OGVVersion = "0.9.5-20150803105811-0d8c3c3";
+this.OGVVersion = "0.9.6-20150803181846-e59aac8";

@@ -198,4 +198,4 @@ OGVCompat = {
 
 })();
 
-this.OGVVersion = "0.9.5-20150803105811-0d8c3c3";
+this.OGVVersion = "0.9.6-20150803181846-e59aac8";
