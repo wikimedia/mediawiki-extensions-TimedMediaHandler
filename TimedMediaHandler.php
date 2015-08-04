@@ -29,7 +29,7 @@ $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
 $wgMwEmbedModuleConfig['EmbedPlayer.EnableOptionsMenu'] = true;
 
 // TMH needs java ( no h.264 or mp3 derivatives )
-$wgMwEmbedModuleConfig['EmbedPlayer.DisableJava' ] = false;
+$wgMwEmbedModuleConfig['EmbedPlayer.DisableJava' ] = true;
 $wgMwEmbedModuleConfig['EmbedPlayer.DisableHTML5FlashFallback' ] = true;
 
 // The text interface should always be shown
