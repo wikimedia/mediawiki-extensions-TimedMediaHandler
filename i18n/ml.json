@@ -3,7 +3,8 @@
 		"authors": [
 			"Praveenp",
 			"Shijualex",
-			"Vssun"
+			"Vssun",
+			"Santhosh.thottingal"
 		]
 	},
 	"timedmedia-desc": "ഓഗ് തിയോറ, വോർബിസ്, എസ്.ആർ.ടി, വെബ്എം തുടങ്ങിയവയ്ക്കുള്ള പിന്തുണയടക്കമുള്ള ശബ്ദ, ചലച്ചിത്ര, സമയമനുസരിച്ച് പ്രദർശിപ്പിക്കുന്ന എഴുത്തുകൾ എന്നിവയ്ക്കുള്ള കൈകാര്യോപകരണം",
@@ -62,6 +63,7 @@
 	"timedmedia-source-audio-file-desc": "യഥാർത്ഥ പ്രമാണം $1 ($2)",
 	"timedmedia-derivative-160p.ogv": "ഓഗ് 160പി",
 	"timedmedia-derivative-desc-160p.ogv": "കുറഞ്ഞ ബാൻഡ്‌വിഡ്ത് ഓഗ് ചലച്ചിത്രം (160ബി)",
+	"timedmedia-derivative-desc-240p.ogv": "വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (240P)",
 	"timedmedia-derivative-360p.ogv": "ഓഗ് 360പി",
 	"timedmedia-derivative-desc-360p.ogv": "വെബിലൂടെ എടുക്കാവുന്ന ഓഗ് ചലച്ചിത്രം (360ബി)",
 	"timedmedia-derivative-480p.ogv": "ഓഗ് 480പി",

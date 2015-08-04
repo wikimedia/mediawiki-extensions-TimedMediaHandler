@@ -41,6 +41,7 @@
 	"timedmedia-source-file": "Quell ($1)",
 	"timedmedia-source-file-desc": "Original $1 Fichier, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Original $1 Fichier ($2)",
+	"timedmedia-derivative-desc-240p.ogv": "Ogg-Video (240P) deen iwwer de Web gestreamt gi kann",
 	"timedmedia-derivative-desc-720p.mp4": "HD-Qualitéit MP4 (720P)",
 	"timedmedia-subtitle-new": "Nei Iwwersetzung maachen oder eng déi et gëtt änneren",
 	"timedmedia-subtitle-new-desc": "Sicht d'Sprooch eraus an dréckt de Knäppchen ''{{int:Timedmedia-subtitle-new-go}}'''",

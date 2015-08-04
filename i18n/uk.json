@@ -69,6 +69,7 @@
 	"timedmedia-source-file-desc": "Оригінальний $1 файл, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Оригінальний $1 файл ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg-відео низької якості (160P)",
+	"timedmedia-derivative-desc-240p.ogv": "Потокове Ogg-відео (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Потокове Ogg-відео (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Потокове Ogg-відео (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Високоякісне Ogg-відео (720P) для завантаження",

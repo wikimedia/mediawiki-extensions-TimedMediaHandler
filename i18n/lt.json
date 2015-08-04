@@ -59,6 +59,7 @@
 	"timedmedia-source-file-desc": "Originalus $1 failas, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Pirminė $1 rinkmena ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Žemo pralaidumo Ogg video (160P)",
+	"timedmedia-derivative-desc-240p.ogv": "Internetu transliuotinas Ogg video (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Internetu transliuotinas Ogg video (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Internetu transliuotinas Ogg video (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Aukštos kokybės atsisiųstinas Ogg video (720P)",
