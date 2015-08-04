@@ -27,7 +27,7 @@ mw.MediaPlayer.prototype = {
 	// Mime types supported by this player
 	supportedTypes:null,
 
-	// Player library ie: native, vlc, java etc.
+	// Player library ie: native, vlc etc.
 	library:null,
 
 	// Flag stores the mediaPlayer load state
