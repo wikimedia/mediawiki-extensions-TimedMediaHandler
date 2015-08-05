@@ -128,13 +128,15 @@ $wgEnableLocalTimedText = true;
  * -Derivative should be listed min to max
  */
 $wgEnabledTranscodeSet = array(
-	// Small WebM version for default small embed size thumbs
+
+	// WebM VP8/Vorbis
+	// primary free/open video format
+	// supported by Chrome/Firefox/Opera but not Safari/IE/Edge
+
+	// Medium-bitrate web streamable WebM video
 	WebVideoTranscode::ENC_WEBM_360P,
 
-	// Ogg fallback for IE/cortado
-	WebVideoTranscode::ENC_OGV_480P,
-
-	// A web streamable WebM video
+	// Moderate-bitrate web streamable WebM video
 	WebVideoTranscode::ENC_WEBM_480P,
 
 	// A high quality WebM stream
@@ -142,7 +144,33 @@ $wgEnabledTranscodeSet = array(
 
 	// A full-HD high quality WebM stream
 	WebVideoTranscode::ENC_WEBM_1080P,
+
+
+	// Ogg Theora/Vorbis
+	// Fallback for Safari/IE/Edge with ogv.js
+	//
+	// Requires twice the bitrate for same quality as VP8,
+	// and JS decoder can be slow, so shift to smaller sizes.
+
+	// Low-bitrate Ogg stream
+	WebVideoTranscode::ENC_OGV_160P,
+
+	// Medium-bitrate Ogg stream
+	WebVideoTranscode::ENC_OGV_240P,
+
+	// Moderate-bitrate Ogg stream
+	WebVideoTranscode::ENC_OGV_360P,
+
+	// High-bitrate Ogg stream
+	WebVideoTranscode::ENC_OGV_480P,
+
 /*
+	// MP4 H.264/AAC
+	// Primary format for the Apple/Microsoft world
+	//
+	// Check patent licensing issues in your country before use!
+	// Similar to WebM in quality/bitrate
+
 	// A least common denominator h.264 stream; first gen iPhone, iPods, early android etc.
 	WebVideoTranscode::ENC_H264_320P,
 
