@@ -50,6 +50,7 @@
     "mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC player",
     "mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 player",
     "mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM player",
+    "mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9 player",
     "mwe-embedplayer-ogg-player-oggPlugin": "Generic Ogg plugin",
     "mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC for iOS app",
     "mwe-embedplayer-ogg-player-IEWebMPrompt": "IE WebM plugin downloader",

@@ -10,7 +10,7 @@
 
 			// The preferred media codec preference
 			// Note user selected format order
-			'EmbedPlayer.CodecPreference' => array( 'webm', 'h264', 'ogg' ),
+			'EmbedPlayer.CodecPreference' => array( 'vp9', 'webm', 'h264', 'ogg' ),
 
 			// If video tag support should be disabled all-together, used to test
 			// fallback decoding methods and direct file links

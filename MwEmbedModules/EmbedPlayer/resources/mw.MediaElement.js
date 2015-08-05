@@ -277,6 +277,9 @@ mw.MediaElement.prototype = {
 					case 'webmNative':
 						var shortName = 'webm';
 						break;
+					case 'vp9Native':
+						var shortName = 'vp9';
+						break;
 					case 'h264Native':
 						var shortName = 'h264';
 						break;

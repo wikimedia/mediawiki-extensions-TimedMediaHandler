@@ -186,7 +186,7 @@ class WebVideoTranscodeJob extends Job {
 			$status = $this->ffmpegEncode( $options );
 		} elseif( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation !== false ){
 			$status = $this->ffmpeg2TheoraEncode( $options );
-		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'h264' || ( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation === false ) ){
+		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' || $options['videoCodec'] == 'h264' || ( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation === false ) ){
 			// Check for twopass:
 			if( isset( $options['twopass'] ) ){
 				// ffmpeg requires manual two pass
@@ -339,7 +339,7 @@ class WebVideoTranscodeJob extends Job {
 
 		if ( isset( $options['novideo'] )  ) {
 			$cmd.= " -vn ";
-		} elseif( $options['videoCodec'] == 'vp8' ){
+		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ){
 			$cmd.= $this->ffmpegAddWebmVideoOptions( $options, $pass );
 		} elseif( $options['videoCodec'] == 'h264'){
 			$cmd.= $this->ffmpegAddH264VideoOptions( $options, $pass );
@@ -508,7 +508,14 @@ class WebVideoTranscodeJob extends Job {
 			$cmd.= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
 		}
 		// Set the codec:
-		$cmd.= " -vcodec libvpx";
+		if ( $options['videoCodec'] === 'vp9' ) {
+			$cmd.= " -vcodec libvpx-vp9";
+			if ( isset( $options['tileColumns'] ) ) {
+				$cmd.= ' -tile-columns ' . wfEscapeShellArg( $options['tileColumns'] );
+			}
+		} else {
+			$cmd.= " -vcodec libvpx";
+		}
 
 		// Check for keyframeInterval
 		if( isset( $options['keyframeInterval'] ) ){
