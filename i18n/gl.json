@@ -61,6 +61,7 @@
 	"timedmedia-source-audio-file-desc": "Ficheiro $1 orixinal ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160P",
 	"timedmedia-derivative-desc-160p.ogv": "Vídeo Ogg de baixo ancho de banda (160P)",
+	"timedmedia-derivative-desc-240p.ogv": "Vídeo Ogg para a web (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Vídeo Ogg para a web (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Vídeo Ogg para a web (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Vídeo Ogg de alta calidade que se pode descargar (720P)",
