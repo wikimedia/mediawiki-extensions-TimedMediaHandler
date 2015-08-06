@@ -7,7 +7,8 @@
 			"Nike",
 			"Pxos",
 			"Str4nd",
-			"VezonThunder"
+			"VezonThunder",
+			"Pitke"
 		]
 	},
 	"timedmedia-desc": "Käsittelijä äänelle, videolle ja tekstitykselle. Tukee muotoja WebM, Ogg Theora, Vorbis ja srt.",
@@ -46,6 +47,7 @@
 	"timedmedia-source-file-desc": "Alkuperäinen $1-tiedosto, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Alkuperäinen $1-tiedosto ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Pienen kaistanleveyden Ogg-video (160p)",
+	"timedmedia-derivative-desc-240p.ogv": "Streamautuva Ogg-video (240p)",
 	"timedmedia-derivative-desc-360p.ogv": "verkossa suoratoistettavaa Ogg-videota (360p)",
 	"timedmedia-derivative-desc-480p.ogv": "Verkossa suoratoistettava Ogg-video (480p)",
 	"timedmedia-derivative-desc-720p.ogv": "Korkealaatuinen ladattava Ogg-video (720p)",
