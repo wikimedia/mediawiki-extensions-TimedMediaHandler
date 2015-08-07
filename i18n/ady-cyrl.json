@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"GR44 Luc"
+			"GR44 Luc",
+			"TheRossatron"
 		]
 	},
+	"timedmedia-source-file": "Лъапсэу $1",
 	"timedmedia-source-audio-file-desc": "Оригинал $1-файлыр ($2)"
 }

@@ -14,6 +14,7 @@
 			"Umherirrender"
 		]
 	},
+	"extensionname-timedmedia": "TimedMediaHandler",
 	"timedmedia-desc": "Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) bereit, welches die Formate WebM, Ogg Theora, Ogg Vorbis und SubRip unterstützt",
 	"timedmedia-ogg-short-audio": "Ogg-$1-Audiodatei, $2",
 	"timedmedia-ogg-short-video": "Ogg-$1-Videodatei, $2",

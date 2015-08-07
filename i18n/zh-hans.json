@@ -12,6 +12,7 @@
 			"乌拉跨氪"
 		]
 	},
+	"extensionname-timedmedia": "TimedMediaHandler",
 	"timedmedia-desc": "音频、视频和字幕的处理程序，支持WebM，Ogg Theora、Vorbis，srt格式",
 	"timedmedia-ogg-short-audio": "Ogg $1声音文件，$2",
 	"timedmedia-ogg-short-video": "Ogg $1视频文件，$2",
