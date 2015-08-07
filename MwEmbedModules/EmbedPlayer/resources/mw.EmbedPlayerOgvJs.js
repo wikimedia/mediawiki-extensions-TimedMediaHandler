@@ -17,7 +17,7 @@ mw.EmbedPlayerOgvJs = {
 		'timeDisplay' : true,
 		'volumeControl' : false,
 		'overlays': true,
-		'timedText': false
+		'timedText': true
 	},
 
 	/**
@@ -88,6 +88,21 @@ mw.EmbedPlayerOgvJs = {
 			player.addEventListener('ended', function() {
 				_this.onClipDone();
 			});
+
+			// simulate timeupdate events, needed for subtitles
+			// @todo switch this to native timeupdate event when available upstream
+			var lastTime = 0,
+				timeupdateInterval = 0.25;
+			player.addEventListener( 'framecallback', function( event ) {
+				var player = _this.getPlayerElement(),
+					now = player ? player.currentTime : lastTime;
+				// Don't spam time updates on every frame
+				if ( Math.abs( now - lastTime ) >= timeupdateInterval ) {
+					lastTime = now;
+					$( _this ).trigger( 'timeupdate', [event, _this.id] );
+				}
+			});
+
 			$( _this ).empty().append( player );
 			player.play();
 
