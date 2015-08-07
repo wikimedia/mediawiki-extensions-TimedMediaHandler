@@ -299,4 +299,5 @@ $wgExtensionCredits['media'][] = array(
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmedia-desc',
 	'version'        => '0.4.0',
+	'license-name'   => 'GPL-2.0+',
 );
