@@ -970,7 +970,11 @@ var AudioFeeder;
 				return 0;
 			}
 		}
-	
+
+		var cachedFlashState = null,
+			cachedFlashTime = 0,
+			cachedFlashInterval = 40; // resync state no more often than every X ms
+
 		/**
 		 * @return {
 		 *   playbackPosition: {number} seconds, with a system-provided base time
@@ -982,7 +986,21 @@ var AudioFeeder;
 			if (this.flashaudio) {
 				var flashElement = this.flashaudio.flashElement;
 				if (flashElement.write) {
-					var state = flashElement.getPlaybackState();
+					var now = Date.now(),
+						delta = now - cachedFlashTime,
+						state;
+					if (cachedFlashState && delta < cachedFlashInterval) {
+						state = {
+							playbackPosition: cachedFlashState.playbackPosition + delta / 1000,
+							samplesQueued: cachedFlashState.samplesQueued - delta * targetRate / 1000,
+							dropped: cachedFlashState.dropped,
+							delayed: cachedFlashState.delayed
+						};
+					} else {
+						state = flashElement.getPlaybackState();
+						cachedFlashState = state;
+						cachedFlashTime = now;
+					}
 					state.samplesQueued += flashBuffer.length / 2;
 					return state;
 				} else {
@@ -1660,8 +1678,11 @@ WebGLFrameSink.isAvailable = function() {
 		gl;
 	canvas.width = 1;
 	canvas.height = 1;
+	var options = {
+		failIfMajorPerformanceCaveat: true
+	};
 	try {
-		gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+		gl = canvas.getContext('webgl', options) || canvas.getContext('experimental-webgl', options);
 	} catch (e) {
 		return false;
 	}
@@ -3898,4 +3919,4 @@ this.OGVPlayer = OGVPlayer;
 
 })();
 
-this.OGVVersion = "0.9.6-20150803181846-e59aac8";
+this.OGVVersion = "0.9.7-20150807173714-b6160a5";

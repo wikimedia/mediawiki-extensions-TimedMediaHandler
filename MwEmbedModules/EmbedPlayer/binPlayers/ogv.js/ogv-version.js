@@ -1,1 +1,1 @@
-this.OGVVersion = "0.9.6-20150803181846-e59aac8";
+this.OGVVersion = "0.9.7-20150807173714-b6160a5";
