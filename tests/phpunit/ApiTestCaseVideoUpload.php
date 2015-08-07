@@ -93,7 +93,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 		// get a session object
 		$session = $this->doLogin();
 		// Update the global user:
-		$wgUser = self::$users['uploader']->user;
+		$wgUser = self::$users['uploader']->getUser();
 
 		// Upload the media file:
 		$fileName = basename( $file['filePath'] );
