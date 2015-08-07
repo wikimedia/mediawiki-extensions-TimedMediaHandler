@@ -1233,7 +1233,8 @@
 				'bottom': 0,
 				'right': 0,
 				'position': 'absolute',
-				'direction': this.getCurrentLangDir()
+				'direction': this.getCurrentLangDir(),
+				'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' )
 			};
 
 			if( $captionsOverlayTarget.length == 0 ){
