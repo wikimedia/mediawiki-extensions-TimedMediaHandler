@@ -100,11 +100,14 @@ class TimedMediaIframeOutput {
 	</style>
 	<?php echo $wgOut->getHeadScripts(); ?>
 	<script>
-		mw.loader.using( 'mw.MwEmbedSupport', function() {
-			mw.setConfig('EmbedPlayer.RewriteSelector', '');
+		window.RLQ = window.RLQ || [];
+		window.RLQ.push( function() {
+			mw.loader.using( 'mw.MwEmbedSupport', function() {
+				mw.setConfig('EmbedPlayer.RewriteSelector', '');
+			} );
+			// Turn off rewrite selector. This prevents automatic conversion of
+			// <video> tags, since we are going to do that ourselves later.
 		} );
-		// Turn off rewrite selector. This prevents automatic conversion of
-		// <video> tags, since we are going to do that ourselves later.
 	</script>
 	</head>
 <body>
@@ -114,27 +117,29 @@ class TimedMediaIframeOutput {
 	</div>
 	<?php echo $wgOut->getBottomScripts(); ?>
 	<script>
-		mw.loader.using( 'mw.MwEmbedSupport', function() {
-			// only enable fullscreen if enabled in iframe
-			mw.setConfig('EmbedPlayer.EnableFullscreen', document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || false );
-			$('#bgimage').remove();
+		window.RLQ.push( function() {
+			mw.loader.using( 'mw.MwEmbedSupport', function() {
+				// only enable fullscreen if enabled in iframe
+				mw.setConfig('EmbedPlayer.EnableFullscreen', document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || false );
+				$('#bgimage').remove();
 
-			mw.setConfig( 'EmbedPlayer.IsIframeServer', true );
+				mw.setConfig( 'EmbedPlayer.IsIframeServer', true );
 
-			// rewrite player
-			$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' ).embedPlayer(function(){
+				// rewrite player
+				$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' ).embedPlayer(function(){
 
-				// Bind window resize to reize the player:
-				var fitPlayer = function(){
-					$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
-					[0].updateLayout();
-				}
+					// Bind window resize to reize the player:
+					var fitPlayer = function(){
+						$( '#<?php echo TimedMediaTransformOutput::PLAYER_ID_PREFIX . '0' ?>' )
+						[0].updateLayout();
+					}
 
-				$( window ).resize( fitPlayer );
-				$('#videoContainer').css({
-					'visibility':'visible'
+					$( window ).resize( fitPlayer );
+					$('#videoContainer').css({
+						'visibility':'visible'
+					} );
+					fitPlayer();
 				} );
-				fitPlayer();
 			} );
 		} );
 	</script>
