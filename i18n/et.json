@@ -58,6 +58,7 @@
 	"timedmedia-source-file-desc": "Algne $1-fail, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Algne $1-fail ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Väikse ribalaiusega Ogg-video (160P)",
+	"timedmedia-derivative-desc-240p.ogv": "Võrgus voogedastatav Ogg-video (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Võrgus voogedastatav Ogg-video (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "Võrgus voogedastatav Ogg-video (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Kõrge kvaliteediga allalaaditav Ogg-video (720P)",

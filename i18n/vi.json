@@ -62,6 +62,7 @@
 	"timedmedia-source-audio-file-desc": "Tập tin $1 gốc ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160p",
 	"timedmedia-derivative-desc-160p.ogv": "Video Ogg băng thông thấp (160P)",
+	"timedmedia-derivative-desc-240p.ogv": "Video Ogg có thể truyền dòng trên Web (240P)",
 	"timedmedia-derivative-360p.ogv": "Ogg 360p",
 	"timedmedia-derivative-desc-360p.ogv": "Video Ogg có thể truyền dòng trên Web (360P)",
 	"timedmedia-derivative-480p.ogv": "Ogg 480p",
