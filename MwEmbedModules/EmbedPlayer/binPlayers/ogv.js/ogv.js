@@ -3141,6 +3141,10 @@ OGVPlayer = window.OGVPlayer = function(options) {
 							} else {
 								// Check in when the audio buffer runs low again...
 								nextDelays.push((audioBufferedDuration - bufferDuration) * 1000);
+
+								// @todo figure out why the above doesn't do the job reliably
+								// with Flash audio shim on IE!
+								nextDelays.push(bufferDuration * 1000 / 4);
 							}
 						} else {
 							// No audio; drive on the general clock.
@@ -3919,4 +3923,4 @@ this.OGVPlayer = OGVPlayer;
 
 })();
 
-this.OGVVersion = "0.9.7-20150807173714-b6160a5";
+this.OGVVersion = "0.9.8-20150810180140-2e779a7";
