@@ -4,5 +4,7 @@
 			"Hugo.arg"
 		]
 	},
-	"timedmedia-download": "Atsėsiōstė faila"
+	"timedmedia-download": "Atsėsiōstė faila",
+	"timedmedia-source-file": "$1 kėlmie",
+	"timedmedia-source-audio-file-desc": "Pėrms $1 skvarmou ($2)"
 }
