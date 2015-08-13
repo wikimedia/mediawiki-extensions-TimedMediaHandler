@@ -38,6 +38,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|১ সেকেন্ড|$1 সেকেন্ড}}",
 	"timedmedia-source-file": "$1 উৎস",
 	"timedmedia-source-audio-file-desc": "মূল $1 ফাইল ($2)",
+	"timedmedia-derivative-desc-240p.ogv": "ওয়েব স্ট্রিমযোগ্য অগ ভিডিও (২৪০P)",
 	"timedmedia-subtitle-new-go": "যাও",
 	"timedmedia-subtitle-language": "$1 ($2) সাবটাইটেল",
 	"timedmedia-videos": "{{PLURAL:$1|$1টি ভিডিও}}",
