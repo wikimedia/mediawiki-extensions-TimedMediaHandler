@@ -2,13 +2,6 @@
 
 	var support = mw.OgvJsSupport = {
 		/**
-		 * We have to load the large JS module outside of ResourceLoader, so
-		 * have to do manual cache-busting. Update this with the commit number
-		 * of the ogv.js version when updating libraries.
-		 */
-		version: OGVVersion,
-
-		/**
 		 * Ensure that the OGVPlayer class is loaded before continuing.
 		 *
 		 * @return jQuery.Deferred
@@ -16,14 +9,10 @@
 		loadOgvJs: function() {
 			return $.Deferred( function( deferred ) {
 				if ( typeof OGVPlayer === 'undefined' ) {
-					$.ajax({
-						dataType: 'script',
-						cache: true,
-						url: support.findScript( 'ogv.js' )
-					}).done(function() {
+					mw.loader.using( 'ext.tmh.OgvJs', function() {
 						OGVLoader.base = support.basePath();
 						deferred.resolve();
-					});
+					} );
 				} else {
 					deferred.resolve();
 				}
@@ -39,11 +28,6 @@
 			var ext = mw.config.get( 'wgExtensionAssetsPath' ),
 				binPlayers = ext + '/TimedMediaHandler/MwEmbedModules/EmbedPlayer/binPlayers';
 			return binPlayers + '/ogv.js';
-		},
-
-		findScript: function( script ) {
-			var url = support.basePath() + '/' + script + '?version=' + encodeURIComponent( support.version );
-			return url;
 		},
 
 		/**

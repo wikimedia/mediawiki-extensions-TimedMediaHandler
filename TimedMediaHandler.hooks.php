@@ -112,6 +112,13 @@ class TimedMediaHandlerHooks {
 				),
 				'targets' => array( 'mobile', 'desktop' ),
 			),
+			'ext.tmh.OgvJs' => $baseExtensionResource + array(
+				'scripts' => array(
+					'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv.js',
+				),
+				'dependencies' => 'ext.tmh.OgvJsSupport',
+				'targets' => array( 'mobile', 'desktop' ),
+			),
 		);
 
 		// Setup a hook for iframe embed handling:
