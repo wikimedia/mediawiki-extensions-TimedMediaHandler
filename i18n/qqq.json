@@ -51,6 +51,8 @@
 	"timedmedia-status": "Used as column header.\n{{Identical|Status}}",
 	"timedmedia-status-unknown": "Used as status message on error.\n{{Identical|Unknown status}}",
 	"timedmedia-transcodeinfo": "A table column header for description of Transcode derivative",
+	"timedmedia-transcodebitrate": "A table column header for description of transcode bitrate",
+	"timedmedia-transcodeduration": "A table column header for description of transcode encoding time",
 	"timedmedia-actions": "Used as column header.\n{{Identical|Action}}",
 	"timedmedia-direct-link": "Used as column header.",
 	"timedmedia-not-ready": "State of a given transcode job being not yet complete or not yet ready",

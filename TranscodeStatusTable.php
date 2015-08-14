@@ -28,14 +28,16 @@ class TranscodeStatusTable {
 
 		$o.= Xml::openElement( 'table', array( 'class' => 'wikitable mw-filepage-transcodestatus' ) ) . "\n"
 			. '<tr>'
-			. '<th>' . wfMessage( 'timedmedia-status' )->escaped() . '</th>'
 			. '<th>' . wfMessage( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
+			. '<th>' . wfMessage( 'timedmedia-transcodebitrate' )->escaped() . '</th>'
 			. '<th>' . wfMessage( 'timedmedia-direct-link' )->escaped() . '</th>';
 
 		if( $wgUser->isAllowed( 'transcode-reset' ) ) {
 			$o.= '<th>' . wfMessage( 'timedmedia-actions' )->escaped() . '</th>';
 		}
 
+		$o.= '<th>' . wfMessage( 'timedmedia-status' )->escaped() . '</th>';
+		$o.= '<th>' . wfMessage( 'timedmedia-transcodeduration' )->escaped() . '</th>';
 		$o.= "</tr>\n";
 
 		$o.= self::getTranscodeRows( $file );
@@ -45,22 +47,63 @@ class TranscodeStatusTable {
 	}
 
 	/**
+	 * Get the video or audio codec for the defined transcode,
+	 * for grouping/sorting purposes.
+	 */
+	public static function codecFromTranscodeKey( $key ) {
+		if ( isset( WebVideoTranscode::$derivativeSettings[$key] ) ) {
+			$settings = WebVideoTranscode::$derivativeSettings[$key];
+			if ( isset( $settings['videoCodec'] ) ) {
+				return $settings['videoCodec'];
+			} else if ( isset( $settings['audioCodec'] ) ) {
+				return $settings['audioCodec'];
+			} else {
+				// this this shouldn't happen...
+				// fall through
+			}
+		} else {
+			// derivative type no longer defined or invalid def?
+			// fall through
+		}
+		return $key;
+	}
+
+	/**
 	 * @param $file File
 	 * @return string
 	 */
 	public static function getTranscodeRows( $file ){
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$o='';
 
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
+		uksort( $transcodeRows, function( $a, $b ) {
+			$formatOrder = array( 'vp9', 'vp8', 'h264', 'theora', 'opus', 'vorbis', 'aac' );
+
+			$aFormat = self::codecFromTranscodeKey( $a );
+			$bFormat = self::codecFromTranscodeKey( $b );
+			$aIndex = array_search( $aFormat, $formatOrder );
+			$bIndex = array_search( $bFormat, $formatOrder );
+
+			if ( $aIndex === false && $bIndex === false ) {
+				return -strnatcmp( $a, $b );
+			} else if ( $aIndex === false ) {
+				return 1;
+			} else if ( $bIndex === false ) {
+				return -1;
+			} else if ( $aIndex === $bIndex ) {
+				return -strnatcmp( $a, $b );
+			} else {
+				return ( $aIndex - $bIndex );
+			}
+		} );
+
 		foreach( $transcodeRows as $transcodeKey => $state ){
 			$o.='<tr>';
-			// Status:
-			$o.='<td>' . self::getStatusMsg( $file, $state ) . '</td>';
-
 			// Encode info:
-			$o.='<td>' . wfMessage('timedmedia-derivative-desc-' . $transcodeKey )->escaped() . '</td>';
+			$o.='<td>' . wfMessage('timedmedia-derivative-' . $transcodeKey )->escaped() . '</td>';
+			$o.='<td>' . self::getTranscodeBitrate( $file, $state ) . '</td>';
 
 			// Download file
 			$o.='<td>';
@@ -78,6 +121,11 @@ class TranscodeStatusTable {
 					htmlspecialchars( $transcodeKey ). '">' . wfMessage('timedmedia-reset')->escaped() .
 					'</a></td>';
 			}
+
+			// Status:
+			$o.='<td>' . self::getStatusMsg( $file, $state ) . '</td>';
+			$o.='<td>' . self::getTranscodeDuration( $file, $state ) . '</td>';
+
 			$o.='</tr>';
 		}
 		return $o;
@@ -90,6 +138,38 @@ class TranscodeStatusTable {
 	 */
 	public static function getSourceUrl( $file, $transcodeKey ){
 		return WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
+	}
+
+	/**
+	 * @param $file File
+	 * @param $state
+	 * @return string
+	 */
+	public static function getTranscodeDuration( $file, $state ) {
+		global $wgLang;
+		if( !is_null( $state['time_success'] ) ) {
+			$startTime = wfTimestamp( TS_UNIX, $state['time_startwork'] );
+			$endTime = wfTimestamp( TS_UNIX, $state['time_success'] );
+			$delta = $endTime - $startTime;
+			$duration = $wgLang->formatTimePeriod( $delta );
+			return $duration;
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * @param $file File
+	 * @param $state
+	 * @return string
+	 */
+	public static function getTranscodeBitrate( $file, $state ) {
+		global $wgLang;
+		if( !is_null( $state['time_success'] ) ) {
+			return $wgLang->formatBitrate( $state['final_bitrate'] );
+		} else {
+			return '';
+		}
 	}
 
 	/**
