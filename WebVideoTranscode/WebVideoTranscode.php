@@ -33,12 +33,18 @@ class WebVideoTranscode {
 	const ENC_OGV_720P = '720p.ogv';
 	const ENC_OGV_1080P = '1080p.ogv';
 
-	// WebM profiles:
+	// WebM VP8/Vorbis profiles:
 	const ENC_WEBM_160P = '160p.webm';
 	const ENC_WEBM_360P = '360p.webm';
 	const ENC_WEBM_480P = '480p.webm';
 	const ENC_WEBM_720P = '720p.webm';
 	const ENC_WEBM_1080P = '1080p.webm';
+
+	// WebM VP9/Opus profiles:
+	const ENC_VP9_360P = '360p.vp9.webm';
+	const ENC_VP9_480P = '480p.vp9.webm';
+	const ENC_VP9_720P = '720p.vp9.webm';
+	const ENC_VP9_1080P = '1080p.vp9.webm';
 
 	// mp4 profiles:
 	const ENC_H264_320P = '320p.mp4';
@@ -201,6 +207,62 @@ class WebVideoTranscode {
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
+			),
+
+		// WebM VP9 transcode:
+		WebVideoTranscode::ENC_VP9_360P =>
+			array(
+				'maxSize'                    => '640x360',
+				'videoBitrate'               => '256',
+				'audioQuality'               => '1',
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
+			),
+		WebVideoTranscode::ENC_VP9_480P =>
+			array(
+				'maxSize'                    => '854x480',
+				'videoBitrate'               => '512',
+				'audioQuality'               => '2',
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
+			),
+		WebVideoTranscode::ENC_VP9_720P =>
+			array(
+				'maxSize'                    => '1280x720',
+				'videoBitrate'               => '1024',
+				'audioQuality'               => 3,
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'tileColumns'                => '2',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
+			),
+		WebVideoTranscode::ENC_VP9_1080P =>
+			 array(
+				'maxSize'                    => '1920x1080',
+				'videoBitrate'               => '2048',
+				'audioQuality'               => 3,
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'tileColumns'                => '4',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
 			),
 
 		// Losly defined per PCF guide to mp4 profiles:

@@ -26,6 +26,8 @@
 	"mwe-embedplayer-close_btn": "{{Identical|Close}}",
 	"mwe-embedplayer-ogg-player-mp3Native": "name of mp3 player in configuration screen",
 	"mwe-embedplayer-ogg-player-aacNative": "name of AAC player in configuration screen",
+	"mwe-embedplayer-ogg-player-webmNative": "name of WebM player in configuration screen",
+	"mwe-embedplayer-ogg-player-vp9Native": "name of VP9 player in configuration screen",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "name of IE WebM plugin installer helper in configuration screen",
 	"mwe-embedplayer-ogg-player-cortado": "{{optional}}",
 	"mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
