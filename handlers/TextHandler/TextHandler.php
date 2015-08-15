@@ -245,8 +245,9 @@ class TextHandler {
 				$subTitle = Title::newFromText( $page['title'] ) ;
 				$tileParts = explode( '.', $page['title'] );
 				if( count( $tileParts) >= 3 ){
-					/*$subtitle_extension = */ array_pop( $tileParts );
+					$timedTextExtension = array_pop( $tileParts );
 					$languageKey = array_pop( $tileParts );
+					$contentType = $this->getContentType( $timedTextExtension );
 				} else {
 					continue;
 				}
@@ -259,10 +260,10 @@ class TextHandler {
 					'kind' => 'subtitles',
 					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
 					'data-mwprovider' => $providerName,
-					'type' => 'text/x-srt',
+					'type' => $contentType,
 					// @todo Should eventually add special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-					'src' => $this->getFullURL( $page['title'] ),
+					'src' => $this->getFullURL( $page['title'], $contentType ),
 					'srclang' =>  $languageKey,
 					'data-dir' => Language::factory( $languageKey )->getDir(),
 					'label' => wfMessage('timedmedia-subtitle-language',
@@ -274,19 +275,28 @@ class TextHandler {
 		return $textTracks;
 	}
 
-	function getFullURL( $pageTitle ){
+	function getContentType( $timedTextExtension ) {
+		if ( $timedTextExtension === 'srt' ) {
+			return 'text/x-srt';
+		} else if ( $timedTextExtension === 'vtt' ) {
+			return 'text/vtt';
+		}
+		return '';
+	}
+
+	function getFullURL( $pageTitle, $contentType ){
 		if( $this->file->isLocal() ) {
 			$subTitle =  Title::newFromText( $pageTitle ) ;
 			return $subTitle->getFullURL( array(
 				'action' => 'raw',
-				'ctype' => 'text/x-srt'
+				'ctype' => $contentType
 			));
 		//} elseif( $this->file->repo instanceof ForeignDBViaLBRepo ){
 		} else {
 			$query = 'title=' . wfUrlencode( $pageTitle ) . '&';
 			$query .= wfArrayToCgi( array(
 				'action' => 'raw',
-				'ctype' => 'text/x-srt'
+				'ctype' => $contentType
 			) );
 			// Note: This will return false if scriptDirUrl is not set for repo.
 			return $this->file->repo->makeUrl( $query );
