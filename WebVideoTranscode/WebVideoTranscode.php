@@ -204,7 +204,7 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_WEBM_720P =>
 			array(
 				'maxSize'                    => '1280x720',
-				'videoQuality'               => 7,
+				'videoBitrate'               => '2048',
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
@@ -213,7 +213,7 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_WEBM_1080P =>
 			 array(
 				'maxSize'                    => '1920x1080',
-				'videoQuality'               => 7,
+				'videoBitrate'               => '4096',
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
@@ -222,7 +222,7 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_WEBM_2160P =>
 			 array(
 				'maxSize'                    => '4096x2160',
-				'videoQuality'               => 7,
+				'videoBitrate'               => '16384',
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
