@@ -144,22 +144,7 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
-		$timedTextExtension = '.srt';
-		$timedTextTile = Title::newFromText( $this->getTitle()->getDBkey() . '.'.
-			'LANG' . $timedTextExtension, NS_TIMEDTEXT )->getFullText();
-		$out->addScript(
-			Html::InlineScript(
-				'$(function() {' .
-					'$("#timedmedia-tt-go").click(function(){' .
-						'var articlePath = mw.config.get( "wgArticlePath" );' .
-						'var paramSep = (articlePath.indexOf("?")===-1) ? "?" : "&";' .
-						'var title = ' . json_encode( $timedTextTile ) . '.replace("LANG", $("#timedmedia-tt-input").val());'.
-						'window.location = articlePath.replace(/\$1/, mw.util.wikiUrlencode( title ) + ' .
-						' paramSep + "action=edit" )  ' .
-					'});' .
-				'});'
-			)
-		);
+		$out->addModules( 'ext.tmh.TimedTextSelector' );
 	}
 
 	/**

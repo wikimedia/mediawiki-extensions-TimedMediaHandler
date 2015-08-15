@@ -90,6 +90,9 @@ class TimedMediaHandlerHooks {
 					'timedmedia-reset-confirm'
 				)
 			),
+			'ext.tmh.TimedTextSelector' =>  $baseExtensionResource + array(
+				'scripts' => 'resources/ext.tmh.TimedTextSelector.js',
+			),
 			"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + array(
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
 				'dependencies'=> 'mw.Api',
