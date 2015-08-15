@@ -20,6 +20,8 @@
 	"timedmedia-download": "Fitxategia jaitsi",
 	"timedmedia-desc-link": "Fitxategi honen inguruan",
 	"timedmedia-status": "Egoera",
+	"timedmedia-transcodeinfo": "Formatua",
+	"timedmedia-direct-link": "Jaitsi",
 	"timedmedia-source-file": "$1 iturri",
 	"timedmedia-source-audio-file-desc": "Jatorrizko $1 fitxategia ($2)",
 	"timedmedia-subtitle-new-go": "Joan",
