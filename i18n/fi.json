@@ -37,6 +37,7 @@
 	"timedmedia-transcodeinfo": "Muoto",
 	"timedmedia-actions": "Toiminnot",
 	"timedmedia-not-ready": "Ei valmis",
+	"timedmedia-completed-on": "Valmistui $1",
 	"timedmedia-started-transcode": "Alkoi $1 sitten. $2",
 	"timedmedia-percent-done": "Noin $1% valmiina",
 	"timedmedia-in-job-queue": "Lisättiin työjonoon $1 sitten",
