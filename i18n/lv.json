@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Papuass",
-			"Xil"
+			"Xil",
+			"Silraks"
 		]
 	},
 	"timedmedia-more": "Vairāk...",
@@ -11,7 +12,9 @@
 	"timedmedia-desc-link": "Par šo failu",
 	"timedmedia-status": "Statuss",
 	"timedmedia-status-unknown": "Nezināms statuss",
+	"timedmedia-transcodeinfo": "Formāts",
 	"timedmedia-actions": "Darbības",
+	"timedmedia-direct-link": "Lejupielādēt",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 avots",
 	"timedmedia-subtitle-new-go": "Aiziet!",

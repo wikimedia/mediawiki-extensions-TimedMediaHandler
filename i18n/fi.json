@@ -36,6 +36,7 @@
 	"timedmedia-status-unknown": "Tuntematon tila",
 	"timedmedia-transcodeinfo": "Muoto",
 	"timedmedia-actions": "Toiminnot",
+	"timedmedia-direct-link": "Lataa",
 	"timedmedia-not-ready": "Ei valmis",
 	"timedmedia-completed-on": "Valmistui $1",
 	"timedmedia-started-transcode": "Alkoi $1 sitten. $2",

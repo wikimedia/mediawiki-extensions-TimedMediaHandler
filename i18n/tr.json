@@ -8,7 +8,8 @@
 			"Runningfridgesrule",
 			"Srhat",
 			"Sayginer",
-			"Stultiwikia"
+			"Stultiwikia",
+			"Mavrikant"
 		]
 	},
 	"timedmedia-desc": "Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği",
@@ -41,7 +42,7 @@
 	"timedmedia-update-status": "Transkodu durumunu güncelle",
 	"timedmedia-status": "Durum",
 	"timedmedia-status-unknown": "Bilinmeyen durum",
-	"timedmedia-transcodeinfo": "Transkod türev tanımı",
+	"timedmedia-transcodeinfo": "Format",
 	"timedmedia-actions": "İşlemler",
 	"timedmedia-direct-link": "Türevi indir",
 	"timedmedia-not-ready": "Hazır değil",
