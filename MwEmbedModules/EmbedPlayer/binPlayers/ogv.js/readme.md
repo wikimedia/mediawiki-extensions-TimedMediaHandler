@@ -7,6 +7,12 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compi
 
 ## Updates
 
+* 0.9.9
+ * auto-detect resource base dir
+ * fixes for calling play() immediately
+ * fixes for opus
+ * console cleanup
+ * misc fixes
 * 0.9.8
  * quick fix for IE audio stuttering
 * 0.9.7
@@ -62,7 +68,7 @@ The API isn't quite complete, but works pretty well.
 ogv.js requires a fast JS engine with typed arrays, and either Web Audio or Flash for audio playback.
 
 The primary target browsers are (testing 360p/30fps):
-* Safari 6.1/7/8 on Mac OS X 10.7/10.8/10.9
+* Safari 6.1/7/8 on Mac OS X 10.7-10.10
 * Safari on iOS 8 64-bit
 * Edge on Windows 10 desktop/tablet
 * Internet Explorer 10/11 on Windows 7/8/8.1 (desktop/tablet)
@@ -77,18 +83,11 @@ Older versions of Safari have flaky JIT compilers. IE 9 and below lack typed arr
 (Note that Windows and Mac OS X can support Ogg and WebM by installing codecs or alternate browsers with built-in support, but this is not possible on iOS, Windows RT, or Windows 10 Mobile.)
 
 Testing browsers (these support .ogv natively):
-* Firefox 39
-* Chrome 43
+* Firefox 40
+* Chrome 44
 
 
 ## Usage
-
-Currently, ogv.js must be informed if its resources are not in the same path as the master document:
-
-```
-  // If ogv-demuxer-ogg.js, dynamicaudio.swf etc are in another dir, tell us!
-  OGVLoader.base = '/path/to/resources';
-```
 
 The `OGVPlayer` class implements a player, and supports a subset of the events, properties and methods from [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) and [HTMLVideoElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement).
 
@@ -126,6 +125,13 @@ If you need a URL versioning/cache-buster parameter for dynamic loading of `ogv.
   var script = document.createElement('script');
   script.src = 'ogv.js?version=' + encodeURIComponent(OGVVersion);
   document.querySelector('head').appendChild(script);
+```
+
+Usually, ogv.js will auto-detect the path to its resources based on the script element that loads ogv.js or ogv-support.js. If you load ogv.js through a non-customary bundler (such as MediaWiki's ResourceLoader) you may need to override this manually before instantiating players:
+
+```
+  // Path to ogv-demuxer-ogg.js, ogv-worker-audio.js, dynamicaudio.swf etc
+  OGVLoader.base = '/path/to/resources';
 ```
 
 

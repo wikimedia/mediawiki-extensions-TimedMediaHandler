@@ -45,7 +45,6 @@
 	var scriptStatus = {},
 		scriptCallbacks = {};
 	function loadWebScript(src, callback) {
-		console.log('loading web js', src);
 		if (scriptStatus[src] == 'done') {
 			callback();
 		} else if (scriptStatus[src] == 'loading') {
@@ -71,8 +70,34 @@
 		}
 	}
 
+	function defaultBase() {
+		if (typeof global.window === 'object') {
+
+			// for browser, try to autodetect
+			var scriptNodes = document.querySelectorAll('script'),
+				regex = /^(?:(.*)\/)ogv(?:-support)?\.js(?:\?|#|$)/,
+				path;
+			for (var i = 0; i < scriptNodes.length; i++) {
+				path = scriptNodes[i].getAttribute('src');
+				if (path) {
+					matches = path.match(regex);
+					if (matches) {
+						return matches[1];
+					}
+				}
+			}
+
+		} else {
+
+			// for workers, assume current directory
+			// if not a worker, too bad.
+			return '';
+
+		}
+	}
+
 	OGVLoader = {
-		base: '',
+		base: defaultBase(),
 
 		loadClass: function(className, callback, options) {
 			options = options || {};
@@ -192,14 +217,14 @@ function OGVWorkerSupport(propList, handlers) {
 	handlers.construct = function(args, callback) {
 		var className = args[0],
 			options = args[1];
-		console.log('construct', args);
+
 		OGVLoader.loadClass(className, function(classObj) {
 			self.target = new classObj(options);
 			callback();
 		});
 	};
 
-	addEventListener('message', function(event) {
+	addEventListener('message', function workerOnMessage(event) {
 		var data = event.data;
 	
 		if (data && data.action == 'transferTest') {
@@ -289,4 +314,4 @@ proxy = new OGVWorkerSupport([
 		});
 	}
 });
-this.OGVVersion = "0.9.8-20150810180140-2e779a7";
+this.OGVVersion = "0.9.9-20150817053807-7c4f8ee";

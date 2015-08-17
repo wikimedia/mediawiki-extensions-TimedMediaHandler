@@ -55,7 +55,6 @@
 	var scriptStatus = {},
 		scriptCallbacks = {};
 	function loadWebScript(src, callback) {
-		console.log('loading web js', src);
 		if (scriptStatus[src] == 'done') {
 			callback();
 		} else if (scriptStatus[src] == 'loading') {
@@ -81,8 +80,34 @@
 		}
 	}
 
+	function defaultBase() {
+		if (typeof global.window === 'object') {
+
+			// for browser, try to autodetect
+			var scriptNodes = document.querySelectorAll('script'),
+				regex = /^(?:(.*)\/)ogv(?:-support)?\.js(?:\?|#|$)/,
+				path;
+			for (var i = 0; i < scriptNodes.length; i++) {
+				path = scriptNodes[i].getAttribute('src');
+				if (path) {
+					matches = path.match(regex);
+					if (matches) {
+						return matches[1];
+					}
+				}
+			}
+
+		} else {
+
+			// for workers, assume current directory
+			// if not a worker, too bad.
+			return '';
+
+		}
+	}
+
 	OGVLoader = {
-		base: '',
+		base: defaultBase(),
 
 		loadClass: function(className, callback, options) {
 			options = options || {};
@@ -704,7 +729,6 @@ var AudioFeeder;
 		// Look for W3C Audio API
 		if (!AudioContext) {
 			// use Flash fallback
-			console.log("No W3C Web Audio API available");
 			var flashOptions = {};
 			if (typeof options.base === 'string') {
 				flashOptions.swf = options.base + '/dynamicaudio.swf?version=' + OGVVersion;
@@ -2048,8 +2072,6 @@ OGVWrapperCodec = (function(options) {
 			callback(result);
 		}
 
-		//console.log('process check...', self.hasAudio, demuxer.audioReady, demuxer.audioTimestamp, self.hasVideo, demuxer.frameReady, demuxer.frameTimestamp);
-
 		function doProcessData() {
 			if (inputQueue.length) {
 				var data = inputQueue.shift();
@@ -2069,7 +2091,6 @@ OGVWrapperCodec = (function(options) {
 		if (demuxer.loadedMetadata && !loadedDemuxerMetadata) {
 
 			// Demuxer just reached its metadata. Load the relevant codecs!
-			console.log('processing: loading codecs');
 			loadAudioCodec(function() {
 				loadVideoCodec(function() {
 					loadedDemuxerMetadata = true;
@@ -2084,24 +2105,20 @@ OGVWrapperCodec = (function(options) {
 
 			if (audioDecoder.loadedMetadata) {
 
-				console.log('processing: loaded audio metadata');
 				loadedAudioMetadata = true;
 				loadedAllMetadata = loadedAudioMetadata && loadedVideoMetadata;
 				finish(true);
 
 			} else if (demuxer.audioReady) {
 
-				console.log('processing: found audio header');
 				demuxer.dequeueAudioPacket(function(packet) {
 					audioDecoder.processHeader(packet, function(ret) {
-						console.log('audioDecoder.processHeader', ret);
 						finish(true);
 					});
 				});
 
 			} else {
 
-				console.log('processing: need more audio headers');
 				doProcessData();
 
 			}
@@ -2110,14 +2127,12 @@ OGVWrapperCodec = (function(options) {
 
 			if (videoDecoder.loadedMetadata) {
 
-				console.log('processing: loaded video metadata');
 				loadedVideoMetadata = true;
 				loadedAllMetadata = loadedAudioMetadata && loadedVideoMetadata;
 				finish(true);
 
 			} else if (demuxer.frameReady) {
 
-				console.log('processing: found video header');
 				processing = true;
 				demuxer.dequeueVideoPacket(function(packet) {
 					videoDecoder.processHeader(packet, function() {
@@ -2127,7 +2142,6 @@ OGVWrapperCodec = (function(options) {
 
 			} else {
 
-				console.log('processing: need more video headers');
 				doProcessData();
 
 			}
@@ -2135,7 +2149,6 @@ OGVWrapperCodec = (function(options) {
 		} else if (loadedVideoMetadata && !self.loadedMetadata && loadedAllMetadata) {
 
 			// Ok we've found all the metadata there is. Enjoy.
-			console.log('processing: found all metadata');
 			loadedMetadata = true;
 			finish(true);
 
@@ -2228,10 +2241,8 @@ function OGVProxyClass(initialProps, methods) {
 				}, [buffer]);
 				if (buffer.byteLength) {
 					// No transferable support
-					console.log('no transferable?');
 					return false;
 				} else {
-					console.log('buffers can be transferred');
 					return true;
 				}
 			} catch (e) {
@@ -2290,7 +2301,7 @@ function OGVProxyClass(initialProps, methods) {
 			}
 		};
 
-		worker.addEventListener('message', function(event) {
+		worker.addEventListener('message', function proxyOnMessage(event) {
 			processingQueue--;
 			if (event.data.action !== 'callback') {
 				// ignore
@@ -2616,13 +2627,12 @@ OGVPlayer = window.OGVPlayer = function(options) {
 	var poster = '', thumbnail;
 
 	function stopVideo() {
-		console.log("STOPPING");
+		log("STOPPING");
 		// kill the previous video if any
 		state = State.INITIAL;
 		started = false;
 		paused = true;
 		ended = true;
-		continueVideo = null;
 		frameEndTimestamp = 0.0;
 		audioEndTimestamp = 0.0;
 		lastFrameDecodeTime = 0.0;
@@ -2644,8 +2654,6 @@ OGVPlayer = window.OGVPlayer = function(options) {
 			nextProcessingTimer = null;
 		}
 	}
-	
-	var continueVideo = null;
 	
 	var lastFrameTime = getTimestamp(),
 		frameEndTimestamp = 0.0,
@@ -2910,19 +2918,34 @@ OGVPlayer = window.OGVPlayer = function(options) {
 	}
 
 	var depth = 0,
-		useTailCalls = true,
+		useImmediate = options.useImmediate && !!window.setImmediate,
+		useTailCalls = !useImmediate,
 		pendingFrame = 0,
 		pendingAudio = 0;
 
+	function tailCall(func) {
+		if (useImmediate) {
+			setImmediate(func);
+		} else if (!useTailCalls) {
+			setTimeout(func, 0);
+		} else {
+			func();
+		}
+	}
+
 	function doProcessing() {
 		nextProcessingTimer = null;
-		depth++;
-		if (depth > 1 && !useTailCalls) {
+
+		if (isProcessing()) {
+			// Called async while waiting for something else to complete...
+			// let it finish, then we'll get called again to continue.
+			return;
+		}
+
+		if (depth > 0 && !useTailCalls) {
 			throw new Error('REENTRANCY FAIL: doProcessing recursing unexpectedly');
 		}
-		if (isProcessing()) {
-			throw new Error('REENTRANCY FAIL: doProcessing called while waiting on codec or input');
-		}
+		depth++;
 
 		if (actionQueue.length) {
 			// data or user i/o to process in our serialized event stream
@@ -2970,7 +2993,7 @@ OGVPlayer = window.OGVPlayer = function(options) {
 					}
 				} else if (!more) {
 					// Read more data!
-					console.log('reading more cause we are out of data');
+					log('reading more cause we are out of data');
 					readBytesAndWait();
 				} else {
 					// Keep processing headers
@@ -3018,27 +3041,42 @@ OGVPlayer = window.OGVPlayer = function(options) {
 		} else if (state == State.LOADED) {
 
 			state = State.READY;
-			fireEvent('loadedmetadata');
 			if (paused) {
 				// Paused? stop here.
+				log('pausing stopping at loaded');
 			} else {
 				// Not paused? Continue on to play processing.
-				pingProcessing();
+				log('not paused so continuing');
+				pingProcessing(0);
 			}
+			fireEvent('loadedmetadata');
 
 		} else if (state == State.READY) {
 
-			state = State.PLAYING;
-			lastFrameTimestamp = getTimestamp();
-			if (codec.hasAudio) {
-				initAudioFeeder();
-				audioFeeder.waitUntilReady(function() {
+			if (paused) {
+
+				// Paused? stop here.
+				log('paused while in ready');
+
+			} else {
+
+				function finishStartPlaying() {
+					log('finishStartPlaying');
+
+					state = State.PLAYING;
+					lastFrameTimestamp = getTimestamp();
+
 					startPlayback(0.0);
 					pingProcessing(0);
-				});
-			} else {
-				startPlayback(0.0);
-				pingProcessing(0);
+					fireEvent('play');
+				}
+
+				if (codec.hasAudio) {
+					initAudioFeeder();
+					audioFeeder.waitUntilReady(finishStartPlaying);
+				} else {
+					finishStartPlaying();
+				}
 			}
 
 		} else if (state == State.SEEKING) {
@@ -3082,7 +3120,7 @@ OGVPlayer = window.OGVPlayer = function(options) {
 						if (pendingAudio || pendingFrame || finalDelay > 0) {
 							pingProcessing(Math.max(0, finalDelay));
 						} else {
-							console.log("ENDING NOW");
+							log("ENDING NOW");
 							stopVideo();
 							ended = true;
 							fireEvent('ended');
@@ -3224,7 +3262,7 @@ OGVPlayer = window.OGVPlayer = function(options) {
 									yCbCrBuffer = codec.frameBuffer;
 								} else {
 									// Bad packet or something.
-									console.log('Bad video packet or something');
+									log('Bad video packet or something');
 								}
 								pendingFrame--;
 								if (!isProcessing()) {
@@ -3281,7 +3319,7 @@ OGVPlayer = window.OGVPlayer = function(options) {
 							} else if (pendingFrame || pendingAudio) {
 								log('waiting on pending events');
 							} else {
-								console.log('we may be lost');
+								log('we may be lost');
 							}
 						}
 					}
@@ -3322,12 +3360,12 @@ OGVPlayer = window.OGVPlayer = function(options) {
 			nextProcessingTimer = null;
 		}
 		var fudge = -1 / 256;
-		if (delay > fudge || !useTailCalls) {
+		if (delay > fudge) {
 			//log('pingProcessing delay: ' + delay);
 			nextProcessingTimer = setTimeout(doProcessing, delay);
 		} else {
 			//log('pingProcessing tail call (' + delay + ')');
-			doProcessing(); // warning: tail recursion is possible
+			tailCall(doProcessing);
 		}
 	}
 
@@ -3400,7 +3438,7 @@ OGVPlayer = window.OGVPlayer = function(options) {
 				waitingOnInput = false;
 
 				// Save chunk to pass into the codec's buffer
-				actionQueue.push(function() {
+				actionQueue.push(function doReceiveInput() {
 					codec.receiveInput(data, function() {
 						pingProcessing();
 					});
@@ -3420,7 +3458,7 @@ OGVPlayer = window.OGVPlayer = function(options) {
 				} else if (state == State.SEEKING_END) {
 					pingProcessing();
 				} else {
-					console.log('closing stream (done)');
+					log('closing stream (done)');
 					stream = null;
 
 					if (isProcessing()) {
@@ -3478,38 +3516,40 @@ OGVPlayer = window.OGVPlayer = function(options) {
 		if (!audioOptions.audioContext) {
 			OGVPlayer.initSharedAudioContext();
 		}
-		
-		if (!stream) {
-			self.load();
-		}
-		
+
 		if (paused) {
 			startedPlaybackInDocument = document.body.contains(self);
+
 			paused = false;
-			actionQueue.push(function() {
-				startPlayback();
-				fireEvent('play');
-				pingProcessing(0);
-			});
-			if (continueVideo) {
-				continueVideo();
-			} else {
-				continueVideo = function() {
-					if (isProcessing()) {
-						// waiting on the codec already
-					} else {
-						pingProcessing();
-					}
-				};
-				if (!started) {
-					loadCodec(startProcessingVideo);
+
+			if (started) {
+
+				log('.play() while already started');
+
+				actionQueue.push(function() {
+					startPlayback();
+					fireEvent('play');
+					pingProcessing(0);
+				});
+				if (isProcessing()) {
+					// waiting on the codec already
 				} else {
-					continueVideo();
+					pingProcessing();
 				}
+
+			} else {
+
+				log('.play() before started');
+
+				// Let playback begin when metadata loading is complete
+				if (!stream) {
+					self.load();
+				}
+
 			}
 		}
 	};
-	
+
 	/**
 	 * custom getPlaybackStats method
 	 */
@@ -3923,4 +3963,4 @@ this.OGVPlayer = OGVPlayer;
 
 })();
 
-this.OGVVersion = "0.9.8-20150810180140-2e779a7";
+this.OGVVersion = "0.9.9-20150817053807-7c4f8ee";
