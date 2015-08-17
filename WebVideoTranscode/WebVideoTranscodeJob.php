@@ -931,6 +931,7 @@ class WebVideoTranscodeJob extends Job {
 		'videoQuality'=> "-v",
 		'videoBitrate'	=> "-V",
 		'twopass'		=> "--two-pass",
+		'optimize'		=> "--optimize",
 		'framerate'		=> "-F",
 		'aspect'		=> "--aspect",
 		'starttime'		=> "--starttime",
