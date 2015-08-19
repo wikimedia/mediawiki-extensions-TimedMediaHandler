@@ -81,7 +81,7 @@ class WebVideoTranscode {
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
+				//'twopass'                    => 'true', // temporarily disabled for broken ffmpeg2theora
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
@@ -96,7 +96,7 @@ class WebVideoTranscode {
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
+				//'twopass'                    => 'true', // temporarily disabled for broken ffmpeg2theora
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
@@ -111,7 +111,7 @@ class WebVideoTranscode {
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
+				//'twopass'                    => 'true', // temporarily disabled for broken ffmpeg2theora
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
@@ -126,7 +126,7 @@ class WebVideoTranscode {
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
+				//'twopass'                    => 'true', // temporarily disabled for broken ffmpeg2theora
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
 				'bufDelay'                   => '256',
@@ -140,7 +140,7 @@ class WebVideoTranscode {
 				'videoQuality'               => 6,
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
+				//'twopass'                    => 'true', // temporarily disabled for broken ffmpeg2theora
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
 				'videoCodec'                 => 'theora',
@@ -153,7 +153,7 @@ class WebVideoTranscode {
 				'videoQuality'               => 6,
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
-				'twopass'                    => 'true',
+				//'twopass'                    => 'true', // temporarily disabled for broken ffmpeg2theora
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
 				'videoCodec'                 => 'theora',
