@@ -9,7 +9,8 @@
 			"Hym411",
 			"Revi",
 			"IRTC1015",
-			"Hwangjy9"
+			"Hwangjy9",
+			"Kurousagi"
 		]
 	},
 	"timedmedia-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",
@@ -49,7 +50,7 @@
 	"timedmedia-not-ready": "준비하지 않음",
 	"timedmedia-completed-on": "$1 완료",
 	"timedmedia-error-on": "$1에 오류",
-	"timedmedia-started-transcode": "$1 전에 시작했습니다. $2",
+	"timedmedia-started-transcode": "$1 전에 시작되었습니다. $2",
 	"timedmedia-percent-done": "약 $1% 완료",
 	"timedmedia-in-job-queue": "$1 전에 작업 대기열에 추가됨",
 	"timedmedia-unknown-target-size": "알 수 없는 대상 크기, $1 인코드함",

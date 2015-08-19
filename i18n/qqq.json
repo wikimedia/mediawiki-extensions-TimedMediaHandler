@@ -56,7 +56,7 @@
 	"timedmedia-transcodeduration": "A table column header for description of transcode encoding time",
 	"timedmedia-transcodeinfo": "A table column header for description of Transcode derivative\n{{Identical|Format}}",
 	"timedmedia-actions": "Used as column header.\n{{Identical|Action}}",
-	"timedmedia-direct-link": "Used as column header.",
+	"timedmedia-direct-link": "Used as column header.\n{{Identical|Download}}",
 	"timedmedia-not-ready": "State of a given transcode job being not yet complete or not yet ready",
 	"timedmedia-completed-on": "Completed transcode message. Parameters:\n* $1 - the timestamp (time and date) that the transcode was completed",
 	"timedmedia-error-on": "Parameters:\n* $1 - timestamp",

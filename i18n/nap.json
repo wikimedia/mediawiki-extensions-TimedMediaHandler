@@ -1,10 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"C.R."
+			"C.R.",
+			"Chelin"
 		]
 	},
+	"timedmedia-ogg-short-audio": "File audio Ogg $1, $2",
+	"timedmedia-ogg-short-video": "File video Ogg $1, $2",
+	"timedmedia-ogg-short-general": "File multimediale Ogg $1, $2",
+	"timedmedia-ogg-long-audio": "File audio Ogg $1, durata $2, $3",
+	"timedmedia-ogg-long-video": "File video Ogg $1, durata $2, dimenziune $4×$5 pixel, $3",
 	"timedmedia-no-player-js": "Spiacente, 'o browser vuosto tene 'o JavaScript stutato o nun tène nu secutore suppurtato.<br />\nPutite <a href=\"$1\">scarrecà 'o video</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">scarrecà nu secutore</a> pe' putè miette 'o play ô video int' 'o browser vuosto.",
+	"timedmedia-more": "Ato...",
+	"timedmedia-dismiss": "Chiure",
+	"timedmedia-download": "Scarreca 'o file",
+	"timedmedia-status": "Stato",
+	"timedmedia-status-unknown": "Stato scanusciuto",
+	"timedmedia-transcodeinfo": "Furmato",
+	"timedmedia-actions": "Aziune",
+	"timedmedia-direct-link": "Scarreca",
+	"timedmedia-completed-on": "$1 fernuto",
 	"timedmedia-source-file": "$1 funte",
 	"timedmedia-source-audio-file-desc": "File origgenale $1 ($2)"
 }

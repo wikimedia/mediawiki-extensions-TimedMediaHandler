@@ -105,7 +105,7 @@
 	"timedmedia-derivative-desc-2160p.mp4": "Полноразделна 4К квалитетна MP4-видеоснимка (2160п)",
 	"timedmedia-subtitle-new": "Создај нов превод или измени постоечки",
 	"timedmedia-subtitle-new-desc": "Изберете јазик и стиснете на копчето '''{{int:Timedmedia-subtitle-new-go}}'''",
-	"timedmedia-subtitle-new-go": "Оди",
+	"timedmedia-subtitle-new-go": "Дај",
 	"timedmedia-subtitle-language": "$1 ($2) титлови",
 	"timedmedia-subtitle-no-video": "Нема видеоснимка поврзана со тековната страница со титлови",
 	"timedmedia-subtitle-no-subtitles": "Моментално нема $1 титлови за оваа видеоснимка. Можете да ги додадете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредувајќи ја страницава]",
