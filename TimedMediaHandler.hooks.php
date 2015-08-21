@@ -13,7 +13,7 @@ class TimedMediaHandlerHooks {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$wgParserOutputHooks, $wgTimedTextNS, $wgFileExtensions, $wgTmhEnableMp4Uploads,
-		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir, $wgCortadoJarFile,
+		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir,
 		$wgEnableLocalTimedText, $wgTmhFileExtensions;
 
 		// Remove mp4 if not enabled:
@@ -36,9 +36,6 @@ class TimedMediaHandlerHooks {
 		// Set the default webPath for this embed player extension
 		$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath .
 			'/' . basename ( $timedMediaDir ) . '/MwEmbedModules/EmbedPlayer';
-
-		// Register java cortado path config:
-		$wgMwEmbedModuleConfig['wgCortadoJarFile'] = $wgCortadoJarFile;
 
 		// Setup media Handlers:
 		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';

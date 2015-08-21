@@ -29,7 +29,6 @@
 	"mwe-embedplayer-ogg-player-webmNative": "name of WebM player in configuration screen",
 	"mwe-embedplayer-ogg-player-vp9Native": "name of VP9 player in configuration screen",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "name of IE WebM plugin installer helper in configuration screen",
-	"mwe-embedplayer-ogg-player-cortado": "{{optional}}",
 	"mwe-embedplayer-ogg-player-selected": "{{Identical|Selected}}",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "name of IE WebM plugin installer helper in configuration screen",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "name of ogv.js Ogg JavaScript player in configuration screen",

@@ -21,16 +21,6 @@ var kplayer = new mw.MediaPlayer('kplayer', [
 	'audio/mpeg'
 ], 'Kplayer');
 
-// Java based player
-var cortadoPlayer = new mw.MediaPlayer( 'cortado', [
-	'video/ogg',
-	'video/ogg; codecs="theora"',
-	'video/ogg; codecs="theora, vorbis"',
-	'audio/ogg',
-	'audio/ogg; codecs="vorbis"',
-	'application/ogg'
-], 'Java' );
-
 // Native html5 players
 var oggNativePlayer = new mw.MediaPlayer( 'oggNative', [
 	'video/ogg',
@@ -167,12 +157,6 @@ mw.EmbedTypes = {
 			this.mediaPlayers.addPlayer( kplayer );
 		}
 	},
-	addJavaPlayer: function(){
-		if( !mw.config.get( 'EmbedPlayer.DisableJava' ) ){
-			mw.log("EmbedTypes::addJavaPlayer: adding cortadoPlayer");
-			this.mediaPlayers.addPlayer( cortadoPlayer );
-		}
-	},
 	/**
 	 * Detects what plug-ins the client supports
 	 */
@@ -182,22 +166,8 @@ mw.EmbedTypes = {
 		// All players support for playing "images"
 		this.mediaPlayers.addPlayer( imageOverlayPlayer );
 
-		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
-		// search navigator.mimeTypes to see if it's installed
-		try{
-			var javaEnabled = navigator.javaEnabled();
-		} catch ( e ){
-
-		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
 		var uniqueMimesOnly = $.client.test( { opera: null, safari: null } );
-
-		// Opera will switch off javaEnabled in preferences if java can't be
-		// found. And it doesn't register an application/x-java-applet mime type like
-		// Mozilla does.
-		if ( javaEnabled && ( navigator.appName == 'Opera' ) ) {
-			this.addJavaPlayer();
-		}
 
 		// Use core mw.supportsFlash check:
 		if( mw.supportsFlash() ){
@@ -210,11 +180,6 @@ mw.EmbedTypes = {
 			 //if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
 			 //	 this.mediaPlayers.addPlayer( vlcPlayer );
 			 //}
-
-			 // Java ActiveX
-			 if ( this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
-				 this.addJavaPlayer();
-			 }
 
 			 // quicktime (currently off)
 			 // if ( this.testActiveX(
@@ -305,11 +270,6 @@ mw.EmbedTypes = {
 				//	this.mediaPlayers.addPlayer( vlcPlayer );
 				//	continue;
 				//}
-
-				if ( type == 'application/x-java-applet' ) {
-					this.addJavaPlayer();
-					continue;
-				}
 
 				if ( (type == 'video/mpeg' || type == 'video/x-msvideo') ){
 					//pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
