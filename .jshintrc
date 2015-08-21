@@ -38,6 +38,7 @@
 		"jQuery",
 		"OGVVersion",
 		"OGVSupport",
-		"OGVPlayer"
+		"OGVPlayer",
+		"OGVLoader"
 	]
 }

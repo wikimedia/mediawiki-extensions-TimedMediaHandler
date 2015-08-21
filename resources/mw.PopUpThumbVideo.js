@@ -27,7 +27,7 @@
 								$( this ).find( 'video, audio' ).embedPlayer();
 							}
 						})
-						.css( 'overflow', 'hidden' )
+						.css( 'overflow', 'hidden' );
 					} );
 					// don't follow file link
 					return false;
