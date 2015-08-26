@@ -8,7 +8,8 @@
 			"SMP",
 			"Toniher",
 			"Vriullop",
-			"Joan manel"
+			"Joan manel",
+			"Macofe"
 		]
 	},
 	"timedmedia-desc": "Gestor de fitxers de vídeo, àudio i text sincronitzat amb suport pels formats WebM, Ogg Theora, Vorbi i srt",
@@ -25,6 +26,8 @@
 	"timedmedia-dismiss": "Tanca",
 	"timedmedia-download": "Descarrega el fitxer",
 	"timedmedia-desc-link": "Informació del fitxer",
+	"timedmedia-transcodeinfo": "Format",
+	"timedmedia-direct-link": "Descarregar",
 	"timedmedia-days": "{{PLURAL:$1|1 dia|$1 dies}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 hora|$1 hores}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minuts}}",

@@ -9,7 +9,8 @@
 			"Vitorvicentevalente",
 			"Waldir",
 			"555",
-			"Tooguether"
+			"Tooguether",
+			"Macofe"
 		]
 	},
 	"timedmedia-desc": "Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt",
@@ -42,7 +43,7 @@
 	"timedmedia-update-status": "Actualizar o estado da transcodificação",
 	"timedmedia-status": "Estado",
 	"timedmedia-status-unknown": "Estado desconhecido",
-	"timedmedia-transcodeinfo": "Descrição do ficheiro transcodificado",
+	"timedmedia-transcodeinfo": "Formato",
 	"timedmedia-actions": "Acções",
 	"timedmedia-direct-link": "Descarga do ficheiro transcodificado",
 	"timedmedia-not-ready": "Ainda não está pronto",
