@@ -39,6 +39,7 @@
 	"timedmedia-update-status": "Cập nhật trạng thái chuyển mã",
 	"timedmedia-status": "Trạng thái",
 	"timedmedia-status-unknown": "Trạng thái không rõ",
+	"timedmedia-transcodebitrate": "Tốc độ bit",
 	"timedmedia-transcodeduration": "Thời gian mã hóa",
 	"timedmedia-transcodeinfo": "Định dạng",
 	"timedmedia-actions": "Tác vụ",

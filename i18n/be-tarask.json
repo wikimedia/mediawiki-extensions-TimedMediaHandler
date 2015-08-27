@@ -66,5 +66,6 @@
 	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-videos": "{{PLURAL:$1|$1}} відэа",
 	"timedmedia-file": "Файл",
-	"right-transcode-reset": "скіданьне няўдалых або транскадаваных відэа, каб яны ізноў трапілі ў чаргу заданьняў"
+	"right-transcode-reset": "скіданьне няўдалых або транскадаваных відэа, каб яны ізноў трапілі ў чаргу заданьняў",
+	"right-transcode-status": "прагляд [[Special:TimedMediaHandler|зьвестак пра актуальны стан перакадаваньня]]"
 }
