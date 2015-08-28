@@ -15,5 +15,6 @@
 	"timedmedia-dismiss": "Mbylle",
 	"timedmedia-download": "Shkarko skedën",
 	"timedmedia-desc-link": "Rreth kësaj skede",
-	"timedmedia-source-file": "$1 burimi"
+	"timedmedia-source-file": "$1 burimi",
+	"timedmedia-source-audio-file-desc": "Skedari $1 orgjinal ($2)"
 }
