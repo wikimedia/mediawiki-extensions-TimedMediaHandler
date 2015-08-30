@@ -133,6 +133,12 @@ $wgEnabledTranscodeSet = array(
 	// primary free/open video format
 	// supported by Chrome/Firefox/Opera but not Safari/IE/Edge
 
+	// Very low-bitrate web streamable WebM video
+	WebVideoTranscode::ENC_WEBM_160P,
+
+	// Low-bitrate web streamable WebM video
+	WebVideoTranscode::ENC_WEBM_240P,
+
 	// Medium-bitrate web streamable WebM video
 	WebVideoTranscode::ENC_WEBM_360P,
 
@@ -173,6 +179,12 @@ $wgEnabledTranscodeSet = array(
 	//
 	// Check patent licensing issues in your country before use!
 	// Similar to WebM in quality/bitrate
+
+	// Very low
+	WebVideoTranscode::ENC_H264_160P,
+
+	// Low
+	WebVideoTranscode::ENC_H264_240P,
 
 	// A least common denominator h.264 stream; first gen iPhone, iPods, early android etc.
 	WebVideoTranscode::ENC_H264_320P,

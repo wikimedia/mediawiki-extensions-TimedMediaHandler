@@ -35,6 +35,7 @@ class WebVideoTranscode {
 
 	// WebM VP8/Vorbis profiles:
 	const ENC_WEBM_160P = '160p.webm';
+	const ENC_WEBM_240P = '240p.webm';
 	const ENC_WEBM_360P = '360p.webm';
 	const ENC_WEBM_480P = '480p.webm';
 	const ENC_WEBM_720P = '720p.webm';
@@ -42,6 +43,8 @@ class WebVideoTranscode {
 	const ENC_WEBM_2160P = '2160p.webm';
 
 	// WebM VP9/Opus profiles:
+	const ENC_VP9_160P = '160p.vp9.webm';
+	const ENC_VP9_240P = '240p.vp9.webm';
 	const ENC_VP9_360P = '360p.vp9.webm';
 	const ENC_VP9_480P = '480p.vp9.webm';
 	const ENC_VP9_720P = '720p.vp9.webm';
@@ -49,6 +52,8 @@ class WebVideoTranscode {
 	const ENC_VP9_2160P = '2160p.vp9.webm';
 
 	// mp4 profiles:
+	const ENC_H264_160P = '160p.mp4';
+	const ENC_H264_240P = '240p.mp4';
 	const ENC_H264_320P = '320p.mp4';
 	const ENC_H264_480P = '480p.mp4';
 	const ENC_H264_720P = '720p.mp4';
@@ -164,6 +169,20 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_WEBM_160P =>
 			array(
 				'maxSize'                    => '288x160',
+				'videoBitrate'               => '128',
+				'audioQuality'               => '-1',
+				'samplerate'                 => '44100',
+				'channels'                   => '2',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
+			),
+		WebVideoTranscode::ENC_WEBM_240P =>
+			array(
+				'maxSize'                    => '426x240',
 				'videoBitrate'               => '256',
 				'audioQuality'               => '-1',
 				'samplerate'                 => '44100',
@@ -230,6 +249,32 @@ class WebVideoTranscode {
 			),
 
 		// WebM VP9 transcode:
+		WebVideoTranscode::ENC_VP9_160P =>
+			array(
+				'maxSize'                    => '288x160',
+				'videoBitrate'               => '80',
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'audioCodec'                 => 'opus',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
+			),
+		WebVideoTranscode::ENC_VP9_240P =>
+			array(
+				'maxSize'                    => '426x240',
+				'videoBitrate'               => '128',
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'audioCodec'                 => 'opus',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
+			),
 		WebVideoTranscode::ENC_VP9_360P =>
 			array(
 				'maxSize'                    => '640x360',
@@ -306,6 +351,28 @@ class WebVideoTranscode {
 		// https://developer.apple.com/library/ios/#documentation/networkinginternet/conceptual/streamingmediaguide/UsingHTTPLiveStreaming/UsingHTTPLiveStreaming.html#//apple_ref/doc/uid/TP40008332-CH102-DontLinkElementID_24
 		// @codingStandardsIgnoreEnd
 
+		WebVideoTranscode::ENC_H264_160P =>
+			array(
+				'maxSize' => '288x160',
+				'videoCodec' => 'h264',
+				'preset' => 'ipod320',
+				'videoBitrate' => '160k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '40k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			),
+		WebVideoTranscode::ENC_H264_240P =>
+			array(
+				'maxSize' => '426x240',
+				'videoCodec' => 'h264',
+				'preset' => 'ipod320',
+				'videoBitrate' => '256k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '40k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			),
 		WebVideoTranscode::ENC_H264_320P =>
 			array(
 				'maxSize' => '480x320',
@@ -317,7 +384,6 @@ class WebVideoTranscode {
 				'audioBitrate' => '40k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
-
 		WebVideoTranscode::ENC_H264_480P =>
 			array(
 				'maxSize' => '640x480',
@@ -329,7 +395,6 @@ class WebVideoTranscode {
 				'audioBitrate' => '64k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
-
 		WebVideoTranscode::ENC_H264_720P =>
 			array(
 				'maxSize' => '1280x720',
@@ -341,7 +406,6 @@ class WebVideoTranscode {
 				'audioBitrate' => '128k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
-
 		WebVideoTranscode::ENC_H264_1080P =>
 			array(
 				'maxSize' => '1920x1080',
