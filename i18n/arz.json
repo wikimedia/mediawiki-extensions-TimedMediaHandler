@@ -18,5 +18,7 @@
 	"timedmedia-more": "أكتر...",
 	"timedmedia-dismiss": "اقفل",
 	"timedmedia-download": "نزل الملف",
-	"timedmedia-desc-link": "عن الملف دا"
+	"timedmedia-desc-link": "عن الملف دا",
+	"timedmedia-source-file": "$1 مصدر",
+	"timedmedia-source-audio-file-desc": "الملف $1 الأصل ($2)"
 }
