@@ -10,7 +10,8 @@
 			"Waldir",
 			"555",
 			"Tooguether",
-			"Macofe"
+			"Macofe",
+			"Fúlvio"
 		]
 	},
 	"timedmedia-desc": "Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt",
@@ -45,11 +46,11 @@
 	"timedmedia-status-unknown": "Estado desconhecido",
 	"timedmedia-transcodeinfo": "Formato",
 	"timedmedia-actions": "Acções",
-	"timedmedia-direct-link": "Descarga do ficheiro transcodificado",
+	"timedmedia-direct-link": "Descarregar",
 	"timedmedia-not-ready": "Ainda não está pronto",
-	"timedmedia-completed-on": "Transcodificação de $1 terminada",
-	"timedmedia-error-on": "Erro na transcodificação em $1",
-	"timedmedia-started-transcode": "A transcodificação foi iniciada há $1. $2",
+	"timedmedia-completed-on": "Terminada a $1",
+	"timedmedia-error-on": "Erro em $1",
+	"timedmedia-started-transcode": "Iniciou há $1 atrás. $2",
 	"timedmedia-percent-done": "O progresso é cerca de $1%",
 	"timedmedia-in-job-queue": "Adicionado à fila de tarefas há $1",
 	"timedmedia-unknown-target-size": "Dimensão do destino desconhecida; $1 codificados",
