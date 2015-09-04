@@ -39,7 +39,7 @@
 	"timedmedia-not-ready": "Не гатовы",
 	"timedmedia-completed-on": "Завершана $1",
 	"timedmedia-error-on": "Памылка ў $1",
-	"timedmedia-started-transcode": "Транскадаваньне пачалося $1 таму. $2",
+	"timedmedia-started-transcode": "Пачалося $1 таму. $2",
 	"timedmedia-percent-done": "Гатова каля $1%",
 	"timedmedia-in-job-queue": "Дададзена ў чаргу заданьняў $1 таму",
 	"timedmedia-unknown-target-size": "Выніковы памер невядомы, $1 закадавана",

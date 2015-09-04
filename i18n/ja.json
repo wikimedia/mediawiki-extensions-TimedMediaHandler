@@ -6,7 +6,8 @@
 			"JtFuruhata",
 			"Kahusi",
 			"Shirayuki",
-			"青子守歌"
+			"青子守歌",
+			"Otokoume"
 		]
 	},
 	"timedmedia-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -38,8 +39,13 @@
 	"timedmedia-oggThumb-failed": "oggThumb によるサムネイル作成に失敗しました。",
 	"timedmedia-status": "状態",
 	"timedmedia-status-unknown": "不明な状態",
+	"timedmedia-transcodebitrate": "ビットレート",
+	"timedmedia-transcodeduration": "エンコード時間",
+	"timedmedia-transcodeinfo": "形式",
 	"timedmedia-actions": "操作",
+	"timedmedia-direct-link": "ダウンロード",
 	"timedmedia-not-ready": "準備ができていません",
+	"timedmedia-error-on": "$1 でのエラー",
 	"timedmedia-percent-done": "約 $1% 完了",
 	"timedmedia-in-job-queue": "$1前にジョブ キューに追加されました",
 	"timedmedia-days": "{{PLURAL:$1|$1 日}}",
@@ -80,5 +86,6 @@
 	"timedmedia-audios": "{{PLURAL:$1|$1 件の音声ファイル}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 件の Ogg 音声ファイル}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 件の FLAC 音声ファイル}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 件の WAV 音声ファイル}}"
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 件の WAV 音声ファイル}}",
+	"apihelp-transcodereset-param-title": "メディアファイルのタイトル。"
 }
