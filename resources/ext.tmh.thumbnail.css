@@ -1,0 +1,9 @@
+.mediaContainer,
+.PopUpMediaTransform {
+	position : relative;
+	display: block;
+}
+.thumb .mediaContainer,
+.thumb .PopUpMediaTransform {
+	margin: 0 auto;
+}

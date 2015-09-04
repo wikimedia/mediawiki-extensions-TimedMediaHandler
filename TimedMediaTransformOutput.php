@@ -321,7 +321,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// Build the video tag output:
 		$s = Xml::tags( 'div' , array(
 				'class' => 'mediaContainer',
-				'style' => 'position:relative;display:block;width:'. $width
+				'style' => 'width:'. $width
 			),
 			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
 				// The set of media sources:

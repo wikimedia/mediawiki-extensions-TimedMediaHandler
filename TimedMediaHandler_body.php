@@ -201,6 +201,7 @@ class TimedMediaHandler extends MediaHandler {
 			return ;
 		}
 		$parserOutput->hasTimedMediaTransform = true;
+		$parserOutput->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 		$parserOutput->addModules( array(
 			'mw.MediaWikiPlayer.loader',
 			'mw.PopUpMediaTransform',

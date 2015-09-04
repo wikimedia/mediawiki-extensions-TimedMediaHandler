@@ -370,7 +370,6 @@ mw.PlayerControlBuilder.prototype = {
 	getPlayButtonPosition: function() {
 		var _this = this;
 		return {
-			'position' : 'absolute',
 			'left' : '50%',
 			'top' : '50%',
 			'margin-left' : - .5 * this.getComponentWidth( 'playButtonLarge' ),
