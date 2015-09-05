@@ -50,6 +50,7 @@
 	"timedmedia-subtitle-no-video": "لا يوجد فيديو مقترن بصفحة ترجمة أو نصوص الفيديو الحالية.",
 	"timedmedia-subtitle-no-subtitles": "لا توجد نصوص أو ترجمات في  $1 لهذا الفيديو، يمكنك [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة] وإضافتهم.",
 	"timedmedia-subtitle-remote-link": "يمكنك [$1 مطالعة صفحة الوصف] لهذا الملف على $2",
+	"timedmediahandler": "معالج الميديا الزمنية",
 	"timedmedia-videos": "{{PLURAL:$1|ملف فيديو واحد|ملفا فيديو|$1 ملفات فيديو|$1 ملف فيديو}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} فيديو Ogg",
 	"timedmedia-webm-videos": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} فيديو WebM",

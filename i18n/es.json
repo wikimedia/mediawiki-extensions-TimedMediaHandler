@@ -64,7 +64,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minutos}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 segundo|$1 segundos}}",
 	"timedmedia-reset": "Reiniciar la transcodificación",
-	"timedmedia-reset-confirm": "Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.<br /><br />\n¿Está seguro de que desea continuar?",
+	"timedmedia-reset-confirm": "Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.<br /><br />\n¿Estás seguro de que quieres continuar?",
 	"timedmedia-reset-error": "Error al restablecer el trabajo de transcodificación.",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Fuente $1",
