@@ -39,6 +39,9 @@
 					// Browser fullscreen api support:
 					'fullScreenApi',
 
+					// Kinda need this
+					'mw.MwEmbedSupport',
+
 					// We always end up loading native player
 					'mw.EmbedPlayerNative',
 
