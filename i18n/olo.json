@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mashoi7"
+		]
+	},
+	"timedmedia-no-player-js": "Pahakse mielekse sinun livaimes libo JavaScript ei ole käytös, libo sit ei ole tuvettuu soitindu.<br />\nVoit <a href=\"$1\">lad'd'ata palan</a> libo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">lad'd'ata soittimen</a> ku soittua pala sinun livaimes.",
+	"timedmedia-source-file": "$1 lähteh",
+	"timedmedia-source-audio-file-desc": "Alguperäine $1 failu ($2)"
+}
