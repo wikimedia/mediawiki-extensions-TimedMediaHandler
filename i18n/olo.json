@@ -5,6 +5,14 @@
 		]
 	},
 	"timedmedia-no-player-js": "Pahakse mielekse sinun livaimes libo JavaScript ei ole käytös, libo sit ei ole tuvettuu soitindu.<br />\nVoit <a href=\"$1\">lad'd'ata palan</a> libo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">lad'd'ata soittimen</a> ku soittua pala sinun livaimes.",
+	"timedmedia-more": "Enämbi...",
+	"timedmedia-dismiss": "Salbua",
+	"timedmedia-play-media": "Soita medii",
+	"timedmedia-desc-link": "Täh failah näh",
+	"timedmedia-status": "Stuatussu",
+	"timedmedia-status-unknown": "Tundematoi stuatussu",
 	"timedmedia-source-file": "$1 lähteh",
-	"timedmedia-source-audio-file-desc": "Alguperäine $1 failu ($2)"
+	"timedmedia-source-audio-file-desc": "Alguperäine $1 failu ($2)",
+	"timedmedia-subtitle-new-go": "Mene",
+	"timedmedia-file": "Failu"
 }
