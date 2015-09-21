@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Huslåke"
+			"Huslåke",
+			"Jyllanj"
 		]
 	},
 	"timedmedia-desc": "Håndlær før Ogg Theora og Vorbis filer, ve JavaScript spæler",
-	"timedmedia-ogg-short-audio": "Ogg $1 sond file, $2",
-	"timedmedia-ogg-short-video": "Ogg $1 video file, $2",
-	"timedmedia-ogg-short-general": "Ogg $1 media file, $2",
-	"timedmedia-ogg-long-audio": "Ogg $1 sond file, duråsje $2, $3",
-	"timedmedia-ogg-long-video": "Ogg $1 video file, duråsje $2, $4×$5 piksel, $3",
-	"timedmedia-ogg-long-multiplexed": "Ogg multipleksen audio/video file, $1, duråsje $2, $4×$5 piksler, $3 åverål",
-	"timedmedia-ogg-long-general": "Ogg $1 media file, duråsje $2, $3",
-	"timedmedia-ogg-long-error": "Ugyldegt ogg file: $2",
-	"timedmedia-more": "Mære...",
-	"timedmedia-dismiss": "Slut",
-	"timedmedia-download": "Nærlæĝ billet",
-	"timedmedia-desc-link": "Åver dette file"
+	"timedmedia-ogg-short-audio": "Ogg $1 lydfile, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 videofil, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 mediafil, $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 lydfil, længd $2, $3",
+	"timedmedia-ogg-long-video": "Ogg $1 videofil, længd $2, $4×$5 pixel, $3",
+	"timedmedia-ogg-long-multiplexed": "Sammelsatt Ogg-lyd- å -videofil, $1, længd $2, $4×$5 pixel, $3 sammeltj",
+	"timedmedia-ogg-long-general": "Ogg mediafil, længd $2, $3",
+	"timedmedia-ogg-long-error": "Udjylji Ogg-fil: $1",
+	"timedmedia-more": "Mier...",
+	"timedmedia-dismiss": "Lokk",
+	"timedmedia-download": "Lägg fil nier",
+	"timedmedia-desc-link": "Om fili"
 }

@@ -34,6 +34,8 @@
 	"timedmedia-update-status": "Aggiorne 'u state d'a codifeche",
 	"timedmedia-status": "State",
 	"timedmedia-status-unknown": "State scanusciute",
+	"timedmedia-transcodebitrate": "Bitrate",
+	"timedmedia-transcodeduration": "Tiembe de codifiche",
 	"timedmedia-transcodeinfo": "Formate",
 	"timedmedia-actions": "Aziune",
 	"timedmedia-direct-link": "Scareche",

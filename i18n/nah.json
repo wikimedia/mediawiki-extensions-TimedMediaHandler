@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fluence"
+			"Fluence",
+			"Taresi"
 		]
 	},
 	"timedmedia-more": "Huehca ōmpa...",
 	"timedmedia-download": "Tictemōz tlahcuilōlli",
-	"timedmedia-desc-link": "Inīn tlahcuilōltechcopa"
+	"timedmedia-desc-link": "Inīn tlahcuilōltechcopa",
+	"timedmedia-source-file": "$1 mēyalli"
 }
