@@ -139,6 +139,8 @@
 	padding: 0px;
 	/* @noflip */
 	right: 16px;
+	/* Add scroll bar to list */
+	overflow: auto;
 }
 
 .ui-dialog-content .k-player ul.fg-menu{
