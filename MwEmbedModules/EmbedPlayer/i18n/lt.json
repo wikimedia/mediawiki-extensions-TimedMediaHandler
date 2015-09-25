@@ -3,7 +3,8 @@
 		"authors": [
 			"Hugo.arg",
 			"Gediminas",
-			"Pofka"
+			"Pofka",
+			"Zygimantus"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Pavadinimas: $1",
@@ -51,8 +52,10 @@
 	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC grotuvas",
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 grotuvas",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM grotuvas",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9 leistuvas",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Bendrasis Ogg įskiepis",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC, skirtas iOS taikomajai programai",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript Ogg leistuvas",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime įskiepis",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
