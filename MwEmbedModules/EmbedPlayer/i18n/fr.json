@@ -7,7 +7,8 @@
 			"IAlex",
 			"Nnemo",
 			"Peter17",
-			"Windes"
+			"Windes",
+			"Orlodrim"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titre : $1",
@@ -33,6 +34,7 @@
 	"mwe-embedplayer-paused": "en pause",
 	"mwe-embedplayer-download_segment": "Télécharger la sélection :",
 	"mwe-embedplayer-download_full_video": "Télécharger le fichier de la vidéo complète :",
+	"mwe-embedplayer-download_full_audio": "Télécharger le fichier audio complet :",
 	"mwe-embedplayer-download_right_click": "Pour télécharger, cliquez-droit et sélectionnez <i>Enregistrer la cible du lien sous...</i>",
 	"mwe-embedplayer-download_clip": "Télécharger la vidéo",
 	"mwe-embedplayer-download_text": "Télécharger le texte",
@@ -61,7 +63,6 @@
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC pour application iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Module QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "ActiveX QuickTime",
-	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
 	"mwe-embedplayer-ogg-player-kplayer": "Lecteur Kaltura",
 	"mwe-embedplayer-ogg-player-selected": "(sélectionné)",
