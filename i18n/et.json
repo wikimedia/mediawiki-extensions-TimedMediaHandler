@@ -6,7 +6,7 @@
 			"Silvar"
 		]
 	},
-	"timedmedia-desc": "WebM-, srt- ning Theora- ja Vorbis-tüüpi Ogg-vormingu toega heli-, video- ja ajastatud teksti käsitseja",
+	"timedmediahandler-desc": "WebM-, srt- ning Theora- ja Vorbis-tüüpi Ogg-vormingu toega heli-, video- ja ajastatud teksti käsitseja",
 	"timedmedia-ogg-short-audio": "$1-tüüpi Ogg-helifail, $2",
 	"timedmedia-ogg-short-video": "$1-tüüpi Ogg-videofail, $2",
 	"timedmedia-ogg-short-general": "$1-tüüpi Ogg-fail, $2",
@@ -56,7 +56,7 @@
 	"timedmedia-reset": "Lähtesta ümberkodeering",
 	"timedmedia-reset-confirm": "Ümberkodeeringu lähtestamisel eemaldatakse kõik olemasolevad failid (kui neid on) ja see lisatakse uuesti tööjärge. Uus ümberkodeering kestab mõnda aega.<br /><br />\nKas oled kindel, et tahad jätkata?",
 	"timedmedia-reset-error": "Ümberkodeeringu lähtestamisel ilmnes tõrge.",
-	"timedmedia-source-file": "Allikas ($1)",
+	"timedmedia-source-file": "$1 (lähtefail)",
 	"timedmedia-source-file-desc": "Algne $1-fail, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Algne $1-fail ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Väikse ribalaiusega Ogg-video (160P)",

@@ -4,7 +4,8 @@
 			"Amire80",
 			"EugeneZelenko",
 			"Shirayuki",
-			"Umherirrender"
+			"Umherirrender",
+			"Pikne"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}",
@@ -17,7 +18,7 @@
 	"mwe-embedplayer-download_full_audio": "Header for the Download tab in the menu, when it's an audio file.",
 	"mwe-embedplayer-download": "{{Identical|Download}}",
 	"mwe-embedplayer-share": "{{Identical|Share}}",
-	"mwe-embedplayer-credits": "{{Identical|Credit}}",
+	"mwe-embedplayer-credits": "Tooltip text and title for a menu section which shows file title, author and date.\n{{Identical|Credit}}",
 	"mwe-embedplayer-about-library-desc": "Parameters:\n* $1 - URL",
 	"mwe-embedplayer-no-player": "This message means that there are no available players to play $1.\n* $1 - source media title",
 	"mwe-embedplayer-share_this_video": "Header for the Share tab in the menu, when it's a video file.",
