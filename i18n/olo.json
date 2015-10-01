@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mashoi7"
+			"Mashoi7",
+			"Ilja.mos"
 		]
 	},
 	"timedmedia-no-player-js": "Pahakse mielekse sinun livaimes libo JavaScript ei ole käytös, libo sit ei ole tuvettuu soitindu.<br />\nVoit <a href=\"$1\">lad'd'ata palan</a> libo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">lad'd'ata soittimen</a> ku soittua pala sinun livaimes.",
@@ -14,7 +15,7 @@
 	"timedmedia-days": "{{PLURAL:$1|1 päivy|$1 päiviä}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 čuassu|$1 čuassuu}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuuttu|$1 minuuttua}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1 sekuntu|$1 sekuntua}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1 sekundu|$1 sekundua}}",
 	"timedmedia-source-file": "$1 lähteh",
 	"timedmedia-source-audio-file-desc": "Alguperäine $1 failu ($2)",
 	"timedmedia-subtitle-new-go": "Mene",
