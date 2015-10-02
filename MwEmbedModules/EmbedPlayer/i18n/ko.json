@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Priviet",
-			"아라"
+			"아라",
+			"Hwangjy9"
 		]
 	},
 	"mwe-embedplayer-credit-title": "제목: $1",
@@ -51,7 +52,9 @@
 	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC 플레이어",
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 플레이어",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM 플레이어",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9 플레이어",
 	"mwe-embedplayer-ogg-player-oggPlugin": "일반 Ogg 플러그인",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "자바스크립트 Ogg 플레이어",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime 플러그인",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
