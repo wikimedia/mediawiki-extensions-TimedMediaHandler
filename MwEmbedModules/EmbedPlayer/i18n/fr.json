@@ -62,6 +62,7 @@
 	"mwe-embedplayer-ogg-player-vp9Native": "Lecteur VP9 HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Module générique Ogg",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC pour application iOS",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Installeur du plugin WebM pour IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Lecteur Ogg JavaScript",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Module QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "ActiveX QuickTime",
@@ -96,5 +97,8 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Télécharger l’application VLC depuis l’App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Ouvrir cette vidéo dans l’application VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Télécharger cette vidéo",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Pour jouer des vidéos sur ce site, vous avez besoin de l’application gratuite VLC. L’installer maintenant ?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Pour jouer des vidéos sur ce site, vous avez besoin de l’application gratuite VLC. L’installer maintenant ?",
+	"mwe-embedplayer-iewebmprompt-intro": "Désolé, il manque quelque chose pour que vous puissiez lire cette vidéo...",
+	"mwe-embedplayer-iewebmprompt-linktext": "Installer les composants multimédias WebM pour Microsoft Internet Explorer",
+	"mwe-embedplayer-iewebmprompt-outro": "Recharger cette page après l’installation."
 }
