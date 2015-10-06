@@ -3,7 +3,8 @@
 		"authors": [
 			"Arent",
 			"Siebrand",
-			"Southparkfan"
+			"Southparkfan",
+			"Sjoerddebruin"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Naam: $1",
@@ -28,7 +29,7 @@
 	"mwe-embedplayer-seek_to": "Zoeken naar $1",
 	"mwe-embedplayer-paused": "gepauzeerd",
 	"mwe-embedplayer-download_segment": "Selectie downloaden:",
-	"mwe-embedplayer-download_full": "Volledig videobestand downloaden:",
+	"mwe-embedplayer-download_full_video": "Volledig videobestand downloaden:",
 	"mwe-embedplayer-download_right_click": "Klik rechts en selecteer <i>Koppeling opslaan als...</i> om het bestand te downloaden",
 	"mwe-embedplayer-download_clip": "Video downloaden",
 	"mwe-embedplayer-download_text": "Tekst downloaden",
@@ -52,10 +53,11 @@
 	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC-speler",
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264-speler",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM-speler",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9-speler",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Algemene Ogg-plugin",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript Ogg-speler",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-plugin",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
-	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
 	"mwe-embedplayer-ogg-player-kplayer": "Kaltura mediaspeler",
 	"mwe-embedplayer-ogg-player-selected": "(geselecteerd)",
