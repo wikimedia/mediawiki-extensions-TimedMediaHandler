@@ -91,6 +91,7 @@
 	"timedmedia-derivative-desc-480p.mp4": "Webbströmningsbar MP4 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD-kvalitet MP4 (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "MP4 med kvalitet i full HD (1080P)",
+	"timedmedia-derivative-desc-2160p.mp4": "MP4 med kvalitet i full 4K (2160P)",
 	"timedmedia-subtitle-new": "Skapa ny översättning eller redigera befintlig",
 	"timedmedia-subtitle-new-desc": "Välj språk och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Gå",

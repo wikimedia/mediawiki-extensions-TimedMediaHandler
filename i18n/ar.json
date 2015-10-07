@@ -9,7 +9,7 @@
 			"Abanima"
 		]
 	},
-	"timedmedia-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
+	"timedmediahandler-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
 	"timedmedia-ogg-short-audio": "Ogg $1 ملف صوت، $2",
 	"timedmedia-ogg-short-video": "Ogg $1 ملف فيديو، $2",
 	"timedmedia-ogg-short-general": "Ogg $1 ملف ميديا، $2",
