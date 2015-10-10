@@ -9,7 +9,7 @@
 			"ImGelu"
 		]
 	},
-	"timedmedia-desc": "Gestionar pentru fișiere audio, video și subtitrări sincronizate, cu suport pentru formatele WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Gestionar pentru fișiere audio, video și subtitrări sincronizate, cu suport pentru formatele WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "fișier audio ogg $1, $2",
 	"timedmedia-ogg-short-video": "fișier video ogg $1, $2",
 	"timedmedia-ogg-short-general": "fișier media ogg $1, $2",
