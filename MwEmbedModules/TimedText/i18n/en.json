@@ -1,25 +1,25 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "mwe-timedtext-back-btn": "Back",
-    "mwe-timedtext-layout-off": "Hide subtitles",
-    "mwe-timedtext-loading-text": "Loading text ...",
-    "mwe-timedtext-key-language": "$1, $2",
-    "mwe-timedtext-textcat-cc": "Captions",
-    "mwe-timedtext-textcat-sub": "Subtitles",
-    "mwe-timedtext-textcat-tad": "Audio description",
-    "mwe-timedtext-textcat-ktv": "Karaoke",
-    "mwe-timedtext-textcat-tik": "Ticker text",
-    "mwe-timedtext-textcat-ar": "Active regions",
-    "mwe-timedtext-textcat-nb": "Annotation",
-    "mwe-timedtext-textcat-meta": "Timed metadata",
-    "mwe-timedtext-textcat-trx": "Transcript",
-    "mwe-timedtext-textcat-lrc": "Lyrics",
-    "mwe-timedtext-textcat-lin": "Linguistic markup",
-    "mwe-timedtext-textcat-cue": "Cue points",
-    "mwe-timedtext-no-subs": "No text tracks available",
-    "mwe-timedtext-language-subtitles-for-clip": "$1 subtitles for clip: $2",
-    "mwe-timedtext-language-no-subtitles-for-clip": "No $1 subtitles were found for clip: $2",
-    "mwe-timedtext-upload-timed-text": "Add subtitles"
+	"@metadata": {
+		"authors": []
+	},
+	"mwe-timedtext-back-btn": "Back",
+	"mwe-timedtext-layout-off": "Hide subtitles",
+	"mwe-timedtext-loading-text": "Loading text ...",
+	"mwe-timedtext-key-language": "$1, $2",
+	"mwe-timedtext-textcat-cc": "Captions",
+	"mwe-timedtext-textcat-sub": "Subtitles",
+	"mwe-timedtext-textcat-tad": "Audio description",
+	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-tik": "Ticker text",
+	"mwe-timedtext-textcat-ar": "Active regions",
+	"mwe-timedtext-textcat-nb": "Annotation",
+	"mwe-timedtext-textcat-meta": "Timed metadata",
+	"mwe-timedtext-textcat-trx": "Transcript",
+	"mwe-timedtext-textcat-lrc": "Lyrics",
+	"mwe-timedtext-textcat-lin": "Linguistic markup",
+	"mwe-timedtext-textcat-cue": "Cue points",
+	"mwe-timedtext-no-subs": "No text tracks available",
+	"mwe-timedtext-language-subtitles-for-clip": "$1 subtitles for clip: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "No $1 subtitles were found for clip: $2",
+	"mwe-timedtext-upload-timed-text": "Add subtitles"
 }
