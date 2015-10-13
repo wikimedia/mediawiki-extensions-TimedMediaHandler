@@ -12,7 +12,7 @@
 			"Sp5uhe"
 		]
 	},
-	"timedmedia-desc": "Obsługa plików audio, wideo i napisów filmowych w formatach WebM, Ogg Theora, Vorbis i srt",
+	"timedmediahandler-desc": "Obsługa plików audio, wideo i napisów filmowych w formatach WebM, Ogg Theora, Vorbis i srt",
 	"timedmedia-ogg-short-audio": "Plik dźwiękowy Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Plik wideo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Plik multimedialny Ogg $1, $2",
@@ -46,7 +46,7 @@
 	"timedmedia-not-ready": "Niegotowe",
 	"timedmedia-completed-on": "Ukończono $1",
 	"timedmedia-error-on": "Błąd o $1",
-	"timedmedia-started-transcode": "Konwersja rozpoczęła się $1 temu. $2",
+	"timedmedia-started-transcode": "Rozpoczęto $1 temu. $2",
 	"timedmedia-percent-done": "Ukończono ok. $1%",
 	"timedmedia-in-job-queue": "Dodano do kolejki $1 temu",
 	"timedmedia-unknown-target-size": "Rozmiar docelowy nieznany, $1 zakodowane",
