@@ -9,7 +9,7 @@
 			"Dj"
 		]
 	},
-	"timedmedia-desc": "JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz",
+	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!JavaScript nyelven írt lejátszó Ogg Theora és Vorbis fájlokhoz",
 	"timedmedia-ogg-short-audio": "Ogg $1 hangfájl, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 videofájl, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 médiafájl, $2",

@@ -4,7 +4,7 @@
 			"Cedric31"
 		]
 	},
-	"timedmedia-desc": "Supòrt pels fichièrs Ogg Theora e Vorbis, amb un lector Javascript",
+	"timedmediahandler-desc": "!!FUZZY!!Supòrt pels fichièrs Ogg Theora e Vorbis, amb un lector Javascript",
 	"timedmedia-ogg-short-audio": "Fichièr son Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Fichièr vidèo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Fichièr mèdia Ogg $1, $2",

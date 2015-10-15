@@ -11,7 +11,7 @@
 			"Steenth"
 		]
 	},
-	"timedmedia-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 lydfil, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 videofil, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 mediafil, $2",

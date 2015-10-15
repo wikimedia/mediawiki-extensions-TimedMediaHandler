@@ -7,7 +7,7 @@
 			"Elisardojm"
 		]
 	},
-	"timedmedia-desc": "Manipulador de son, vídeo e texto sincronizado, con soporte para os formatos WebM, Ogg Theora, Vorbis e srt",
+	"timedmediahandler-desc": "Manipulador de son, vídeo e texto sincronizado, con soporte para os formatos WebM, Ogg Theora, Vorbis e srt",
 	"timedmedia-ogg-short-audio": "Ficheiro de son Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Ficheiro de vídeo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Ficheiro multimedia Ogg $1, $2",

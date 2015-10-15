@@ -12,7 +12,7 @@
 			"Macofe"
 		]
 	},
-	"timedmedia-desc": "Gestor de fitxers de vídeo, àudio i text sincronitzat amb suport pels formats WebM, Ogg Theora, Vorbi i srt",
+	"timedmediahandler-desc": "Gestor de fitxers de vídeo, àudio i text sincronitzat amb suport pels formats WebM, Ogg Theora, Vorbi i srt",
 	"timedmedia-ogg-short-audio": "Fitxer OGG d'àudio $1, $2",
 	"timedmedia-ogg-short-video": "Fitxer OGG de vídeo $1, $2",
 	"timedmedia-ogg-short-general": "Fitxer multimèdia OGG $1, $2",

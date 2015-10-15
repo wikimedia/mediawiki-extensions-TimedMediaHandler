@@ -4,7 +4,7 @@
 			"Purodha"
 		]
 	},
-	"timedmedia-desc": "E Projamm (<i lang=\"en\">handler</i>) för Meedije met Zickaandeil\n— Viddejos, Tondatteieje, <i lang=\"en\">timedText</i> (Ongertittelle) —\nmet Ongershtözung för de Fommaate <i lang=\"en\">WebM</i>, <i lang=\"en\">Ogg Theora</i>, <i lang=\"en\">Vorbis</i> un <i lang=\"en\">srt</i>.",
+	"timedmediahandler-desc": "E Projamm (<i lang=\"en\">handler</i>) för Meedije met Zickaandeil\n— Viddejos, Tondatteieje, <i lang=\"en\">timedText</i> (Ongertittelle) —\nmet Ongershtözung för de Fommaate <i lang=\"en\">WebM</i>, <i lang=\"en\">Ogg Theora</i>, <i lang=\"en\">Vorbis</i> un <i lang=\"en\">srt</i>.",
 	"timedmedia-ogg-short-audio": "<i lang=\"en\">Ogg $1</i> Tondatei, $2",
 	"timedmedia-ogg-short-video": "<i lang=\"en\">Ogg $1</i> Viddejodatei, $2",
 	"timedmedia-ogg-short-general": "<i lang=\"en\">Ogg $1</i> Medijedatei, $2",

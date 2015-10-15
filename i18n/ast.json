@@ -5,7 +5,7 @@
 			"Xuacu"
 		]
 	},
-	"timedmedia-desc": "Remanador de soníu, videu y testu cronometráu, con sofitu pa los formatos WebM, Ogg Theora, Vorbis y srt",
+	"timedmediahandler-desc": "Remanador de soníu, videu y testu cronometráu, con sofitu pa los formatos WebM, Ogg Theora, Vorbis y srt",
 	"timedmedia-ogg-short-audio": "Archivu de soníu ogg $1, $2",
 	"timedmedia-ogg-short-video": "Archivu de videu ogg $1, $2",
 	"timedmedia-ogg-short-general": "Archivu multimedia ogg $1, $2",

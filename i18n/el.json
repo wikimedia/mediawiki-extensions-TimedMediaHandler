@@ -9,7 +9,7 @@
 			"Geraki"
 		]
 	},
-	"timedmedia-desc": "Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript",
+	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript",
 	"timedmedia-ogg-short-audio": "Αρχείο ήχου Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Αρχείο βίντεο Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Αρχείο μέσων Ogg $1, $2",

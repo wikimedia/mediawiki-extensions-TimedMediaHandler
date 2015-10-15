@@ -5,8 +5,8 @@
 			"Brest"
 		]
 	},
-	"extensionname-timedmedia": "Титлови",
-	"timedmedia-desc": "Обработувач за аудио, видео и титлови, со поддршка за форматите WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-extensionname": "Титлови",
+	"timedmediahandler-desc": "Обработувач за аудио, видео и титлови, со поддршка за форматите WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 звучна податотека, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 видеоснимка, $2",
 	"timedmedia-ogg-short-general": "Мултимедијална податотека Ogg $1, $2",

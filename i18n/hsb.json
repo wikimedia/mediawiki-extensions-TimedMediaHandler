@@ -6,7 +6,7 @@
 			"Reedy"
 		]
 	},
-	"timedmedia-desc": "Wodźenski program za awdio, widejo a timedText z podpěru za formaty WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Wodźenski program za awdio, widejo a timedText z podpěru za formaty WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Awdiodataja Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Widejodataja Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Ogg medijowa dataja $1, $2",

@@ -7,7 +7,7 @@
 			"Wizardist"
 		]
 	},
-	"timedmedia-desc": "Апрацоўшчык аўдыё, відэа і субтытраў у фарматах WebM, Ogg Theora, Vorbis і SRT",
+	"timedmediahandler-desc": "Апрацоўшчык аўдыё, відэа і субтытраў у фарматах WebM, Ogg Theora, Vorbis і SRT",
 	"timedmedia-ogg-short-audio": "Аўдыё-файл Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Відэа-файл у фармаце Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Мэдыяфайл Ogg $1, $2",

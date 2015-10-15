@@ -8,7 +8,7 @@
 			"YaronSh"
 		]
 	},
-	"timedmedia-desc": "מטפל במדיה מתוזמנת – וידאו, שמע, טקסט מתוזמן – עם תמיכה בתסדירי WebM&rlm;, Ogg Theora&rlm;, Vorbis ו־srt",
+	"timedmediahandler-desc": "מטפל במדיה מתוזמנת – וידאו, שמע, טקסט מתוזמן – עם תמיכה בתסדירי WebM&rlm;, Ogg Theora&rlm;, Vorbis ו־srt",
 	"timedmedia-ogg-short-audio": "קובץ שמע $1 של Ogg, $2",
 	"timedmedia-ogg-short-video": "קובץ וידאו $1 של Ogg, $2",
 	"timedmedia-ogg-short-general": "קובץ מדיה $1 של Ogg, $2",

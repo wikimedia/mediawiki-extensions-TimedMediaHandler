@@ -8,7 +8,7 @@
 			"გიორგიმელა"
 		]
 	},
-	"timedmedia-desc": "აუდიოს, ვიდეოს და სუბტიტრების დამამუშავებელი, შემდეგი ფორმატების მხარდაჭერით: WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "აუდიოს, ვიდეოს და სუბტიტრების დამამუშავებელი, შემდეგი ფორმატების მხარდაჭერით: WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 ხმოვანი ფაილი, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 ვიდეო ფაილი, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 მედია ფაილი, $2",

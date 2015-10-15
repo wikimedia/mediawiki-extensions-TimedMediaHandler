@@ -10,7 +10,7 @@
 			"Teoo3"
 		]
 	},
-	"timedmedia-desc": "Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
+	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
 	"timedmedia-ogg-short-audio": "Ogg $1 zvučna datoteka, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 video datoteka, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 medijska datoteka, $2",

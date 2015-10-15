@@ -23,7 +23,7 @@
 	"mwe-embedplayer-seek_to": "Sæki $1",
 	"mwe-embedplayer-paused": "í bið",
 	"mwe-embedplayer-download_segment": "Hlaða niður hluta:",
-	"mwe-embedplayer-download_full": "Hlaða niður allri skránni:",
+	"mwe-embedplayer-download_full_video": "Hlaða niður allri skránni:",
 	"mwe-embedplayer-download_right_click": "Til að hlaða niður, hægri smelltu og veldu <i>Vista tengil sem...</i>",
 	"mwe-embedplayer-download_clip": "Sækja myndband",
 	"mwe-embedplayer-download_text": "Hlaða niður texta",

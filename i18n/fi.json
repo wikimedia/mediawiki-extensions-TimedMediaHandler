@@ -11,7 +11,7 @@
 			"Pitke"
 		]
 	},
-	"timedmedia-desc": "Käsittelijä äänelle, videolle ja tekstitykselle. Tukee muotoja WebM, Ogg Theora, Vorbis ja srt.",
+	"timedmediahandler-desc": "Käsittelijä äänelle, videolle ja tekstitykselle. Tukee muotoja WebM, Ogg Theora, Vorbis ja srt.",
 	"timedmedia-ogg-short-audio": "Ogg $1 -äänitiedosto, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 -videotiedosto, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 -mediatiedosto, $2",

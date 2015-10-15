@@ -60,7 +60,6 @@
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "aplicación VLC para iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Plugin QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
-	"mwe-embedplayer-ogg-player-cortado": "Java Cortado",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
 	"mwe-embedplayer-ogg-player-kplayer": "Reproductor Kaltura",
 	"mwe-embedplayer-ogg-player-selected": "(seleccionado)",
@@ -93,7 +92,7 @@
 	"mwe-embedplayer-vlcapp-openvideo": "Abre este video en la aplicación VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Descarga este video",
 	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproducir videos en este sitio, necesitas la aplicación gratuita VLC. ¿Instalar ahora?",
-	"mwe-embedplayer-iewebmprompt-intro": "¡Espere! Una cosa más antes de que pueda ver este vídeo...",
+	"mwe-embedplayer-iewebmprompt-intro": "¡Espera! Una cosa más antes de que puedas ver este vídeo...",
 	"mwe-embedplayer-iewebmprompt-linktext": "Instalar componentes multimedia de WebM para Microsoft Internet Explorer",
 	"mwe-embedplayer-iewebmprompt-outro": "Recargar esta página después de la instalación."
 }

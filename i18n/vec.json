@@ -5,7 +5,7 @@
 			"GatoSelvadego"
 		]
 	},
-	"timedmedia-desc": "Gestor pa' i file audio, video e có sototitołi; formati suportai: WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Gestor pa' i file audio, video e có sototitołi; formati suportai: WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "File audio Ogg $1, $2",
 	"timedmedia-ogg-short-video": "File video Ogg $1, $2",
 	"timedmedia-ogg-short-general": "File multimedial Ogg $1, $2",

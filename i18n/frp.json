@@ -4,7 +4,7 @@
 			"ChrisPtDe"
 		]
 	},
-	"timedmedia-desc": "Assistance por los fichiérs mèdia que dèfilont (ôdiô, vidèô et tèxto sincronisâ) avouéc transcodâjo en WebM, Ogg Theora, Vorbis et srt.",
+	"timedmediahandler-desc": "Assistance por los fichiérs mèdia que dèfilont (ôdiô, vidèô et tèxto sincronisâ) avouéc transcodâjo en WebM, Ogg Theora, Vorbis et srt.",
 	"timedmedia-ogg-short-audio": "Fichiér son Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Fichiér vidèô Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Fichiér mèdia Ogg $1, $2",

@@ -6,7 +6,7 @@
 			"Y-M D"
 		]
 	},
-	"timedmedia-desc": "Skor video, son ha testenn sinkronelaet gant ar furmadoù WebM, Ogg Theora hag SRT skoret",
+	"timedmediahandler-desc": "Skor video, son ha testenn sinkronelaet gant ar furmadoù WebM, Ogg Theora hag SRT skoret",
 	"timedmedia-ogg-short-audio": "Restr son Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Restr video Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Restr media Ogg $1, $2",

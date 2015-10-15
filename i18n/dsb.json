@@ -4,7 +4,7 @@
 			"Michawiki"
 		]
 	},
-	"timedmedia-desc": "Wóźeński program za awdio, wideo a timedText, z formatoweju pódpěru za WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Wóźeński program za awdio, wideo a timedText, z formatoweju pódpěru za WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 awdiodataja, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 wideodataja, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 medijowa dataja, $2",

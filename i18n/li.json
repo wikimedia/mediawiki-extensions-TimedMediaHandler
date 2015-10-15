@@ -5,7 +5,7 @@
 			"Ooswesthoesbes"
 		]
 	},
-	"timedmedia-desc": "Handelt Ogg Theora- en Vorbis-bestande aaf met 'n JavaScript-mediaspeler",
+	"timedmediahandler-desc": "!!FUZZY!!Handelt Ogg Theora- en Vorbis-bestande aaf met 'n JavaScript-mediaspeler",
 	"timedmedia-ogg-short-audio": "Ogg $1 geluidsbestandj, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 videobestandj, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 mediabestandj, $2",

@@ -29,7 +29,7 @@
 	"mwe-embedplayer-seek_to": "Salta a $1",
 	"mwe-embedplayer-paused": "in pausa",
 	"mwe-embedplayer-download_segment": "Scarica selezione:",
-	"mwe-embedplayer-download_full": "Scarica file video completo:",
+	"mwe-embedplayer-download_full_video": "Scarica file video completo:",
 	"mwe-embedplayer-download_right_click": "Per scaricare, fare clic col destro e selezionare <i>Salva link con nome...</i>",
 	"mwe-embedplayer-download_clip": "Scarica video",
 	"mwe-embedplayer-download_text": "Scarica testo",

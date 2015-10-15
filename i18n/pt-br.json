@@ -9,7 +9,7 @@
 			"Fasouzafreitas"
 		]
 	},
-	"timedmedia-desc": "Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
+	"timedmediahandler-desc": "!!FUZZY!!Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
 	"timedmedia-ogg-short-audio": "Arquivo de áudio Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Arquivo de vídeo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Arquivo multimídia Ogg $1, $2",

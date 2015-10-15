@@ -18,7 +18,7 @@
 			"Macofe"
 		]
 	},
-	"timedmedia-desc": "Manipulador de sonido, vídeo y texto sincronizado, con soporte para los formatos WebM, Ogg Theora, Vorbis y srt",
+	"timedmediahandler-desc": "Manipulador de sonido, vídeo y texto sincronizado, con soporte para los formatos WebM, Ogg Theora, Vorbis y srt",
 	"timedmedia-ogg-short-audio": "Archivo de sonido Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Archivo de video Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Archivo Ogg $1, $2",

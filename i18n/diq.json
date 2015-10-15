@@ -9,7 +9,7 @@
 			"Xoser"
 		]
 	},
-	"timedmedia-desc": "Qen dê dosyayan dê WebM, Ogg Theora, Vorbis, srt rêxo desti veng dekerdış u nuşte ronayış",
+	"timedmediahandler-desc": "Qen dê dosyayan dê WebM, Ogg Theora, Vorbis, srt rêxo desti veng dekerdış u nuşte ronayış",
 	"timedmedia-ogg-short-audio": "Ogg $1 dosyaya vengi, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 dosyaya filmi, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 dosyaya medyayi, $2",

@@ -30,7 +30,7 @@
 	"mwe-embedplayer-seek_to": "Procurar $1",
 	"mwe-embedplayer-paused": "pausado",
 	"mwe-embedplayer-download_segment": "Download da seleção:",
-	"mwe-embedplayer-download_full": "Donwload do arquivo completo:",
+	"mwe-embedplayer-download_full_video": "Donwload do arquivo completo:",
 	"mwe-embedplayer-download_right_click": "Para fazer donwload, clique com o botão direito e selecione <i>Salvar link como...</i>",
 	"mwe-embedplayer-download_clip": "Download de vídeo",
 	"mwe-embedplayer-download_text": "Download do texto",

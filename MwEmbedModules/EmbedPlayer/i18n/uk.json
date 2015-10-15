@@ -29,7 +29,7 @@
 	"mwe-embedplayer-seek_to": "Перейти до $1",
 	"mwe-embedplayer-paused": "пауза",
 	"mwe-embedplayer-download_segment": "Вибір завантаження:",
-	"mwe-embedplayer-download_full": "Завантажити весь відео-файл:",
+	"mwe-embedplayer-download_full_video": "Завантажити весь відео-файл:",
 	"mwe-embedplayer-download_right_click": "Для завантаження, натисніть праву кнопку миші і оберіть «Зберегти об'єкт як…»",
 	"mwe-embedplayer-download_clip": "Завантажити відео",
 	"mwe-embedplayer-download_text": "Завантажити текст",

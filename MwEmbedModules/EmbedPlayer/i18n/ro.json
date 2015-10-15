@@ -27,7 +27,7 @@
 	"mwe-embedplayer-seek_to": "Derulează la $1",
 	"mwe-embedplayer-paused": "în pauză",
 	"mwe-embedplayer-download_segment": "Descarcă selecția:",
-	"mwe-embedplayer-download_full": "Descărcare videoclip întreg:",
+	"mwe-embedplayer-download_full_video": "Descărcare videoclip întreg:",
 	"mwe-embedplayer-download_right_click": "Pentru a descărca, faceți clic dreapta și selectați <i>Salvează legătura ca...</i>",
 	"mwe-embedplayer-download_clip": "Descarcă videoclipul",
 	"mwe-embedplayer-download_text": "Descărcare subtitrare",

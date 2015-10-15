@@ -6,7 +6,7 @@
 			"Rancher"
 		]
 	},
-	"timedmedia-desc": "Obrađivač za zvuk, video i usklađeni tekst, s podrškom za formate WebM, Ogg Theora, Vorbis i SRT",
+	"timedmediahandler-desc": "Obrađivač za zvuk, video i usklađeni tekst, s podrškom za formate WebM, Ogg Theora, Vorbis i SRT",
 	"timedmedia-ogg-short-audio": "Ogg $1 zvučna datoteka, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 video-snimak, $2.",
 	"timedmedia-ogg-short-general": "Ogg $1 medijska datoteka, $2.",

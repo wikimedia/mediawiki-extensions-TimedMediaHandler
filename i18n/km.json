@@ -8,7 +8,7 @@
 			"គីមស៊្រុន"
 		]
 	},
-	"timedmedia-desc": "គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript",
+	"timedmediahandler-desc": "!!FUZZY!!គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript",
 	"timedmedia-ogg-short-audio": "ឯកសារ សំឡេង Ogg $1, $2",
 	"timedmedia-ogg-short-video": "ឯកសារវីដេអូ Ogg $1, $2",
 	"timedmedia-ogg-short-general": "ឯកសារមេឌាOgg $1, $2",

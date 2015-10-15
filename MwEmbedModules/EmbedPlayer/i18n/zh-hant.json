@@ -30,7 +30,7 @@
 	"mwe-embedplayer-seek_to": "尋找$1",
 	"mwe-embedplayer-paused": "暫停",
 	"mwe-embedplayer-download_segment": "下載選段：",
-	"mwe-embedplayer-download_full": "下載完整的影片檔：",
+	"mwe-embedplayer-download_full_video": "下載完整的影片檔：",
 	"mwe-embedplayer-download_right_click": "下載請按右鍵並選擇<i>連結另存為...</i>",
 	"mwe-embedplayer-download_clip": "下載影片",
 	"mwe-embedplayer-download_text": "下載字幕",

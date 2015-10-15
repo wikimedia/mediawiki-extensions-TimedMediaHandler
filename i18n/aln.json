@@ -4,7 +4,7 @@
 			"Mdupont"
 		]
 	},
-	"timedmedia-desc": "Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis",
+	"timedmediahandler-desc": "!!FUZZY!!Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis",
 	"timedmedia-ogg-short-audio": "Ogg tingull $1 fotografi, $2",
 	"timedmedia-ogg-short-video": "video file Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 media file, $2",

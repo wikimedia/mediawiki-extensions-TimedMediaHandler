@@ -7,7 +7,7 @@
 			"Romaine"
 		]
 	},
-	"timedmedia-desc": "Handelt audio, video en ondertitels af met ondersteuning voor WebM, Ogg Theora, Vorbis en srt",
+	"timedmediahandler-desc": "Handelt audio, video en ondertitels af met ondersteuning voor WebM, Ogg Theora, Vorbis en srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 geluidsbestand, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 videobestand, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 mediabestand, $2",

@@ -5,7 +5,7 @@
 			"Psubhashish"
 		]
 	},
-	"timedmedia-desc": "ଅଡିଓ, ଭିଡ଼ିଓ ଏବଂ ସାମୟିକ ଲେଖା ଗୁଡିକ ପାଇଁ ୱେବଏମ, ଓଜିଜି ଥିଓରା, ଭୋରବିସ, ଏସଆରଟି (WebM, Ogg Theora, Vorbis, srt) ସହାୟତା ଥିବା ପରିଚାଳନା କାରୀ",
+	"timedmediahandler-desc": "ଅଡିଓ, ଭିଡ଼ିଓ ଏବଂ ସାମୟିକ ଲେଖା ଗୁଡିକ ପାଇଁ ୱେବଏମ, ଓଜିଜି ଥିଓରା, ଭୋରବିସ, ଏସଆରଟି (WebM, Ogg Theora, Vorbis, srt) ସହାୟତା ଥିବା ପରିଚାଳନା କାରୀ",
 	"timedmedia-ogg-short-audio": "Ogg $1 ଶବ୍ଦ ଫାଇଲ, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 ଭିଡ଼ିଓ ଫାଇଲ, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 ମିଡ଼ିଆ ଫାଇଲ, $2",

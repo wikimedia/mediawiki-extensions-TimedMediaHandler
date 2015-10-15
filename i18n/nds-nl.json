@@ -4,7 +4,7 @@
 			"Servien"
 		]
 	},
-	"timedmedia-desc": "Haandelt audio, video en ondertitels aof mit ondersteuning veur WebM, Ogg Theora, Vorbis en srt",
+	"timedmediahandler-desc": "Haandelt audio, video en ondertitels aof mit ondersteuning veur WebM, Ogg Theora, Vorbis en srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 geluudsbestaand, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 videobestaand, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 mediabestaand, $2",

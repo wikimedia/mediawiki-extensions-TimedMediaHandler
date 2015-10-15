@@ -14,8 +14,8 @@
 			"Mehran"
 		]
 	},
-	"extensionname-timedmedia": "هدایت‌کننده رسانهٔ زمان‌دار",
-	"timedmedia-desc": "به دست گیرندهٔ پرونده‌های صوتی، تصویری و متن‌های زمان‌بندی شده با پشتیبانی از Ogg Theora ،Vorbis و srt",
+	"timedmediahandler-extensionname": "هدایت‌کننده رسانهٔ زمان‌دار",
+	"timedmediahandler-desc": "به دست گیرندهٔ پرونده‌های صوتی، تصویری و متن‌های زمان‌بندی شده با پشتیبانی از Ogg Theora ،Vorbis و srt",
 	"timedmedia-ogg-short-audio": "پرونده صوتی Ogg $1، $2",
 	"timedmedia-ogg-short-video": "پرونده تصویری Ogg $1، $2",
 	"timedmedia-ogg-short-general": "پرونده Ogg $1، $2",

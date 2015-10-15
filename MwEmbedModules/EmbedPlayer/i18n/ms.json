@@ -26,7 +26,7 @@
 	"mwe-embedplayer-seek_to": "Cari $1",
 	"mwe-embedplayer-paused": "dihentikan sejenak",
 	"mwe-embedplayer-download_segment": "Muat turun pilihan:",
-	"mwe-embedplayer-download_full": "Muat turun fail video selengkapnya:",
+	"mwe-embedplayer-download_full_video": "Muat turun fail video selengkapnya:",
 	"mwe-embedplayer-download_right_click": "Untuk memuat turun, klik kanan dan pilih <i>Save link as...</i>",
 	"mwe-embedplayer-download_clip": "Muat turun video",
 	"mwe-embedplayer-download_text": "Muat turun teks",

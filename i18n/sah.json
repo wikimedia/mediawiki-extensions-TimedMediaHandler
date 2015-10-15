@@ -4,7 +4,7 @@
 			"HalanTul"
 		]
 	},
-	"timedmedia-desc": "Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя",
+	"timedmediahandler-desc": "!!FUZZY!!Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя",
 	"timedmedia-ogg-short-audio": "Звуковой файл Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Видео-файл Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Медиа-файл Ogg $1, $2",

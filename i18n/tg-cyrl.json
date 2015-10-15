@@ -4,7 +4,7 @@
 			"Ibrahim"
 		]
 	},
-	"timedmedia-desc": "Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
+	"timedmediahandler-desc": "!!FUZZY!!Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
 	"timedmedia-ogg-short-audio": "Ogg $1 парвандаи савтӣ, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 парвандаи наворӣ, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 парвандаи расона, $2",

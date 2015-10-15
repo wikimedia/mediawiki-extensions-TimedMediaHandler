@@ -7,7 +7,7 @@
 			"StanProg"
 		]
 	},
-	"timedmedia-desc": "Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript",
+	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript",
 	"timedmedia-ogg-short-audio": "Ogg $1 звуков файл, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 видео файл, $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 звуков файл, продължителност $2, $3",

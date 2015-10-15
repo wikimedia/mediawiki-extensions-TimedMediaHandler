@@ -6,7 +6,7 @@
 			"Spacebirdy"
 		]
 	},
-	"timedmedia-desc": "Rekill fyrir hljóð, myndbönd og texta myndbanda með stuðningi við skráarsniðin WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Rekill fyrir hljóð, myndbönd og texta myndbanda með stuðningi við skráarsniðin WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 hljóðskrá, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 myndbandskrá, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 margmiðlunarskrá, $2",

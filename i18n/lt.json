@@ -7,7 +7,7 @@
 			"Albertas"
 		]
 	},
-	"timedmedia-desc": "Audio, video ir teksto su laiku doroklė, kuri palaiko WebM, Ogg Theora, Vorbis, srt formatus",
+	"timedmediahandler-desc": "Audio, video ir teksto su laiku doroklė, kuri palaiko WebM, Ogg Theora, Vorbis, srt formatus",
 	"timedmedia-ogg-short-audio": "Ogg $1 garso byla, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 video byla, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 medija byla, $2",

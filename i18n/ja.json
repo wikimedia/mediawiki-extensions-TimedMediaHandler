@@ -10,7 +10,7 @@
 			"Otokoume"
 		]
 	},
-	"timedmedia-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
+	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
 	"timedmedia-ogg-short-audio": "Ogg $1 音声ファイル、$2",
 	"timedmedia-ogg-short-video": "Ogg $1 動画ファイル、$2",
 	"timedmedia-ogg-short-general": "Ogg $1 メディアファイル、$2",

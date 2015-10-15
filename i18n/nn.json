@@ -7,7 +7,7 @@
 			"Ranveig"
 		]
 	},
-	"timedmedia-desc": "Handteringsprogram for ljod, video og tidbunden tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Handteringsprogram for ljod, video og tidbunden tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1-lydfil, $2",
 	"timedmedia-ogg-short-video": "Ogg $1-videofil, $2",
 	"timedmedia-ogg-short-general": "Ogg $1-mediafil, $2",

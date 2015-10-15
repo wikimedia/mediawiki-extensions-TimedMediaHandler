@@ -4,7 +4,7 @@
 			"Lam-ang"
 		]
 	},
-	"timedmedia-desc": "Panagtengngel para iti audio, video ken naorasan a testo, nga adda ti porma a suporta para iti WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Panagtengngel para iti audio, video ken naorasan a testo, nga adda ti porma a suporta para iti WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 a mangeg a papeles, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 a video a papeles, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 a midia a papeles, $2",

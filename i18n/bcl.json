@@ -5,7 +5,7 @@
 			"Geopoet"
 		]
 	},
-	"timedmedia-desc": "Parakapot para sa audio, bidyo asin pinag-orasan na teksto, na igwa nin pormat kan suporta para sa WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Parakapot para sa audio, bidyo asin pinag-orasan na teksto, na igwa nin pormat kan suporta para sa WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 sagunson nin tanog, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 sagunson nin bidyo, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 sagunson nin midya, $2",

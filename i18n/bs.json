@@ -6,7 +6,7 @@
 			"Semso98"
 		]
 	},
-	"timedmedia-desc": "Upravljač za zvuk, video i vremenski tekst sa podrškom formata za WebM, Ogg Theora, Vorbis, srt",
+	"timedmediahandler-desc": "Upravljač za zvuk, video i vremenski tekst sa podrškom formata za WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 zvučna datoteka, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 video datoteka, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 medijalna datoteka, $2",
