@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"පසිඳු කාවින්ද",
-			"DCLXVI"
+			"DCLXVI",
+			"Termininja"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Заглавие: $1",
 	"mwe-embedplayer-credit-date": "Дата: $1",
 	"mwe-embedplayer-credit-author": "Автор: $1",
-	"mwe-embedplayer-close_btn": "Затваряне"
+	"mwe-embedplayer-menu_btn": "Меню",
+	"mwe-embedplayer-close_btn": "Затвори"
 }
