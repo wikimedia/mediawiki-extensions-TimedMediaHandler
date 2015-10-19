@@ -7,7 +7,6 @@
  * @author Michael Dale
  */
 
-
 class TestTimeParsing extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test time string to np2

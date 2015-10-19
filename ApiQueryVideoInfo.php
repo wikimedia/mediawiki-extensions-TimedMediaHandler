@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreStart
 /**
  * Extends imageinfo with support for videoinfo sources property.
  *
@@ -6,12 +7,14 @@
  * see: http://www.mediawiki.org/wiki/User:Catrope/Extension_review/TimedMediaHandler#ApiQueryVideoInfo.php
  *
  */
+// @codingStandardsIgnoreEnd
 
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	public function __construct( $query, $moduleName, $prefix = 'vi' ) {
 		// We allow a subclass to override the prefix, to create a related API module.
-		// Some other parts of MediaWiki construct this with a null $prefix, which used to be ignored when this only took two arguments
+		// Some other parts of MediaWiki construct this with a null $prefix,
+		// which used to be ignored when this only took two arguments
 		if ( is_null( $prefix ) ) {
 			$prefix = 'vi';
 		}
@@ -27,9 +30,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	static function getInfo( $file, $prop, $result, $thumbParams = null, $version = 'latest' ) {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams );
-		if( isset( $prop['derivatives'] ) ) {
+		if ( isset( $prop['derivatives'] ) ) {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
-				$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'fullurl') );
+				$vals['derivatives'] = WebVideoTranscode::getSources( $file, array( 'fullurl' ) );
 				$result->setIndexedTagName( $vals['derivatives'], "derivative" );
 			} else {
 				// Non-TMH file, no derivatives.
@@ -47,7 +50,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	public static function getPropertyDescriptions( $filter = array(), $modulePrefix = '' ) {
 		$s = parent::getPropertyDescriptions( $filter, $modulePrefix );
+		// @codingStandardsIgnoreStart
 		$s[] = ' derivatives   - Adds an array of the different format and quality versions of an audio or video file that are available.';
+		// @codingStandardsIgnoreEnd
 		return $s;
 	}
 
@@ -172,7 +177,8 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 				$oldies = $img->getHistory( $params['limit'] - $count + 1, $start, $params['end'] );
 				foreach ( $oldies as $oldie ) {
 					if ( ++$count > $params['limit'] ) {
-						// We've reached the extra one which shows that there are additional pages to be had. Stop here...
+						// We've reached the extra one which shows that there are additional pages to be had.
+						// Stop here...
 						// Only set a query-continue if there was only one title
 						if ( count( $pageIds[NS_FILE] ) == 1 ) {
 							$this->setContinueEnumParameter( 'start',
@@ -200,7 +206,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 			}
 
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$pages = (array)$this->getResult()->getResultData( array( 'query', 'pages' ), array( 'Strip' => 'base' ) );
+				$pages = (array)$this->getResult()->getResultData(
+					array( 'query', 'pages' ), array( 'Strip' => 'base' )
+				);
 			} else {
 				$data = $this->getResultData();
 				$pages = $data['query']['pages'];

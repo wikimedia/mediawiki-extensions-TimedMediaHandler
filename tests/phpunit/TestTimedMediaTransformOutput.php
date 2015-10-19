@@ -1,4 +1,5 @@
 <?php
+
 class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 
 	private $sortMethod;

@@ -15,7 +15,7 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 	 * Broken as per bug 61878
 	 * @group Broken
 	 */
-	function testTranscodeJobs( $file ){
+	function testTranscodeJobs( $file ) {
 		// Upload the file to the mediaWiki system
 		$result = $this->uploadFile( $file );
 
@@ -27,7 +27,7 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 			'prop' => 'videoinfo',
 			'viprop' => "derivatives",
 		);
-		list($result,,) = $this->doApiRequest( $params );
+		list( $result,, ) = $this->doApiRequest( $params );
 
 		// Get the $derivatives:
 		$derivatives = $this->getDerivativesFromResult( $result );
@@ -46,12 +46,12 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		// Make sure we target at least one ogg and one webm:
 		$hasOgg = $hasWebM = false;
 		$targetEncodes = array();
-		foreach( $res as $row ){
+		foreach ( $res as $row ) {
 			$codec = WebVideoTranscode::$derivativeSettings[ $row->transcode_key ]['videoCodec'];
-			if( $codec == 'theora' ){
+			if ( $codec == 'theora' ) {
 				$hasOgg = true;
 			}
-			if( $codec == 'vp8' ){
+			if ( $codec == 'vp8' ) {
 				$hasWebM = true;
 			}
 			if ( $codec == 'vp9' ) {
@@ -70,15 +70,15 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		) );
 
 		// Now check if the derivatives were created:
-		list($result,,) = $this->doApiRequest( $params );
+		list( $result,, ) = $this->doApiRequest( $params );
 		$derivatives = $this->getDerivativesFromResult( $result );
 
 		// Check that every requested encode was encoded:
-		foreach( $targetEncodes as $transcodeKey => $row ){
+		foreach ( $targetEncodes as $transcodeKey => $row ) {
 			$targetEncodeFound = false;
-			foreach( $derivatives as $derv ){
+			foreach ( $derivatives as $derv ) {
 				// The transcode key is always the last part of the file name:
-				if( substr( $derv['src'], -1 * strlen( $transcodeKey ) ) == $transcodeKey ){
+				if ( substr( $derv['src'], -1 * strlen( $transcodeKey ) ) == $transcodeKey ) {
 					$targetEncodeFound = true;
 				}
 			}
@@ -89,17 +89,21 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 	}
 
 	// Run Transcode job
-	function runTranscodeJobs(){
+	function runTranscodeJobs() {
 		$dbw = wfGetDB( DB_MASTER );
 		$type = 'webVideoTranscode';
 		// Set the condition to only run the webVideoTranscode
 		$conds = array( "job_cmd" => $type );
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
+
+			// @codingStandardsIgnoreStart
 			for ( ; ; ) {
+			// @codingStandardsIgnoreEnd
 				$job = Job::pop_type( $type );
-				if ( !$job )
+				if ( !$job ) {
 					break;
+				}
 
 				wfWaitForSlaves( 5 );
 				$t = microtime( true );
@@ -111,7 +115,7 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		}
 	}
 
-	function getDerivativesFromResult( $result ){
+	function getDerivativesFromResult( $result ) {
 		// Only the source should be listed initially:
 		$this->assertTrue( isset( $result['query']['pages'] ) );
 		$page = current( $result['query']['pages'] );

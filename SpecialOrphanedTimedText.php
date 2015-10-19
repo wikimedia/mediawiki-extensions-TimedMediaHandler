@@ -216,7 +216,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		}
 
 		$filesToLookFor = array();
-		foreach( $res as $row ) {
+		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->namespace, $row->title );
 			$fileTitle = $this->getCorrespondingFile( $title );
 			if ( !$fileTitle ) {

@@ -5,9 +5,9 @@
  */
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
-	$IP = dirname( __FILE__ ) . '/../../..';
+	$IP = __DIR__ . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 class MoveTranscoded extends Maintenance {
 
@@ -16,7 +16,6 @@ class MoveTranscoded extends Maintenance {
 		$this->mDescription = "move transcoded files from thumb to transcoded container.";
 	}
 	public function execute() {
-		global $wgEnabledTranscodeSet;
 
 		$this->output( "Move transcoded files:\n" );
 		$dbr = wfGetDB( DB_SLAVE );
@@ -30,11 +29,11 @@ class MoveTranscoded extends Maintenance {
 			$oldPath = $file->getThumbPath( $file->getName() . '.' . $row->transcode_key );
 
 			$newPath = WebVideoTranscode::getDerivativeFilePath( $file, $row->transcode_key );
-			if ($oldPath != $newPath) {
-				if( $file->repo->fileExists( $oldPath ) ){
-					if( $file->repo->fileExists( $newPath ) ){
+			if ( $oldPath != $newPath ) {
+				if ( $file->repo->fileExists( $oldPath ) ) {
+					if ( $file->repo->fileExists( $newPath ) ) {
 						$res = $file->repo->quickPurge( $oldPath );
-						if( !$res ){
+						if ( !$res ) {
 							wfDebug( "Could not delete file $oldPath\n" );
 						} else {
 							$this->output( "deleted $oldPath, exists in transcoded container\n" );
@@ -53,4 +52,4 @@ class MoveTranscoded extends Maintenance {
 }
 
 $maintClass = 'MoveTranscoded'; // Tells it to run the class
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

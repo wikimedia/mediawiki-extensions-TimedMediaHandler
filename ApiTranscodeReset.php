@@ -11,12 +11,12 @@ class ApiTranscodeReset extends ApiBase {
 	public function execute() {
 		global $wgUser, $wgEnableTranscode, $wgWaitTimeForTranscodeReset;
 		// Check if transcoding is enabled on this wiki at all:
-		if( !$wgEnableTranscode ){
+		if ( !$wgEnableTranscode ) {
 			$this->dieUsage( 'Transcode is disabled on this wiki', 'disabledtranscode' );
 		}
 
 		// Confirm the user has the transcode-reset right
-		if( !$wgUser->isAllowed( 'transcode-reset' ) ){
+		if ( !$wgUser->isAllowed( 'transcode-reset' ) ) {
 			$this->dieUsage( 'You don\'t have permission to reset transcodes', 'missingpermission' );
 		}
 		$params = $this->extractRequestParams();
@@ -27,17 +27,20 @@ class ApiTranscodeReset extends ApiBase {
 			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
 		}
 		// Make sure the title can be transcoded
-		if( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ){
+		if ( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ) {
 			$this->dieUsageMsg( array( 'invalidtranscodetitle', $params['title'] ) );
 		}
 		$transcodeKey = false;
 		// Make sure its a enabled transcode key we are trying to remove:
 		// ( if you update your transcode keys the api is not how you purge the database of expired keys )
-		if( isset( $params['transcodekey'] ) ){
+		if ( isset( $params['transcodekey'] ) ) {
 			global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-			$transcodeSet = array_merge($wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet);
-			if( !in_array( $params['transcodekey'], $transcodeSet ) ){
-				$this->dieUsage( 'Invalid or disabled transcode key: ' . htmlspecialchars( $params['transcodekey'] ) , 'badtranscodekey' );
+			$transcodeSet = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+			if ( !in_array( $params['transcodekey'], $transcodeSet ) ) {
+				$this->dieUsage(
+					'Invalid or disabled transcode key: ' . htmlspecialchars( $params['transcodekey'] ),
+						'badtranscodekey'
+				);
 			} else {
 				$transcodeKey = $params['transcodekey'];
 			}
@@ -46,10 +49,10 @@ class ApiTranscodeReset extends ApiBase {
 		// Don't reset if less than 1 hour has passed and we have no error )
 		$file = wfFindFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
-		if( $timeSinceLastReset < $wgWaitTimeForTranscodeReset){
+		if ( $timeSinceLastReset < $wgWaitTimeForTranscodeReset ) {
 			$this->dieUsage( 'Not enough time has passed since the last reset of this transcode. ' .
-				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset  ) .
-				' until this transcode can be reset', 'notenoughtimereset');
+				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset ) .
+				' until this transcode can be reset', 'notenoughtimereset' );
 		}
 
 		// All good do the transcode removal:
@@ -58,7 +61,7 @@ class ApiTranscodeReset extends ApiBase {
 		// Oh and we wanted to reset it, right? Trigger again.
 		WebVideoTranscode::updateJobQueue( $file, $transcodeKey );
 
-		$this->getResult()->addValue(null, 'success', 'removed transcode');
+		$this->getResult()->addValue( null, 'success', 'removed transcode' );
 	}
 
 	/**
@@ -66,11 +69,11 @@ class ApiTranscodeReset extends ApiBase {
 	 * @param $transcodeKey
 	 * @return int|string
 	 */
-	static public function checkTimeSinceLastRest( $file, $transcodeKey ){
+	public static function checkTimeSinceLastRest( $file, $transcodeKey ) {
 		global $wgWaitTimeForTranscodeReset;
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $file );
-		if( $transcodeKey ){
-			if( ! $transcodeStates[$transcodeKey] ){
+		if ( $transcodeKey ) {
+			if ( ! $transcodeStates[$transcodeKey] ) {
 				// transcode key not found
 				return $wgWaitTimeForTranscodeReset + 1;
 			}
@@ -79,9 +82,9 @@ class ApiTranscodeReset extends ApiBase {
 		// least wait is set to reset time:
 		$leastWait = $wgWaitTimeForTranscodeReset + 1;
 		// else check for lowest reset time
-		foreach($transcodeStates as $state ){
+		foreach ( $transcodeStates as $state ) {
 			$ctime = self::getStateResetTime( $state );
-			if( $ctime < $leastWait){
+			if ( $ctime < $leastWait ) {
 				$leastWait = $ctime;
 			}
 		}
@@ -92,16 +95,16 @@ class ApiTranscodeReset extends ApiBase {
 	 * @param $state
 	 * @return int|string
 	 */
-	static public function getStateResetTime( $state ){
+	public static function getStateResetTime( $state ) {
 		global $wgWaitTimeForTranscodeReset;
 		$db = wfGetDB( DB_SLAVE );
 		// if an error return waitTime +1
-		if( !is_null( $state['time_error']) ){
+		if ( !is_null( $state['time_error'] ) ) {
 			return $wgWaitTimeForTranscodeReset + 1;
 		}
 		// return wait time from most recent event
-		foreach( array( 'time_success', 'time_startwork', 'time_addjob' ) as $timeField ){
-			if( !is_null( $state[ $timeField ] )){
+		foreach ( array( 'time_success', 'time_startwork', 'time_addjob' ) as $timeField ) {
+			if ( !is_null( $state[ $timeField ] ) ) {
 				return $db->timestamp() - $db->timestamp( $state[ $timeField ] );
 			}
 		}
@@ -158,23 +161,27 @@ class ApiTranscodeReset extends ApiBase {
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	protected function getExamples() {
+		// @codingStandardsIgnoreStart
 		return array(
 			'Reset all transcodes for Clip.webm :',
 			'    api.php?action=transcodereset&title=File:Clip.webm&token=%2B\\',
 			'Reset the \'360_560kbs.webm\' transcode key for clip.webm. Get a list of transcode keys via a \'transcodestatus\' query',
 			'    api.php?action=transcodereset&title=File:Clip.webm&transcodekey=360_560kbs.webm&token=%2B\\',
 		);
+		// @codingStandardsIgnoreEnd
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
+		// @codingStandardsIgnoreStart
 		return array(
 			'action=transcodereset&title=File:Clip.webm&token=123ABC'
 				=> 'apihelp-transcodereset-example-1',
 			'action=transcodereset&title=File:Clip.webm&transcodekey=360_560kbs.webm&token=123ABC'
 				=> 'apihelp-transcodereset-example-2',
 		);
+		// @codingStandardsIgnoreEnd
 	}
 }

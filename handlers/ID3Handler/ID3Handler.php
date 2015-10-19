@@ -15,12 +15,18 @@ class ID3Handler extends TimedMediaHandler {
 		$getID3 = new getID3();
 
 		// Don't grab stuff we don't use:
-		$getID3->option_tag_id3v1         = false;  // Read and process ID3v1 tags
-		$getID3->option_tag_id3v2         = false;  // Read and process ID3v2 tags
-		$getID3->option_tag_lyrics3       = false;  // Read and process Lyrics3 tags
-		$getID3->option_tag_apetag        = false;  // Read and process APE tags
-		$getID3->option_tags_process      = false;  // Copy tags to root key 'tags' and encode to $this->encoding
-		$getID3->option_tags_html         = false;  // Copy tags to root key 'tags_html' properly translated from various encodings to HTML entities
+		// Read and process ID3v1 tags
+		$getID3->option_tag_id3v1 = false;
+		// Read and process ID3v2 tags
+		$getID3->option_tag_id3v2 = false;
+		// Read and process Lyrics3 tags
+		$getID3->option_tag_lyrics3 = false;
+		// Read and process APE tags
+		$getID3->option_tag_apetag = false;
+		// Copy tags to root key 'tags' and encode to $this->encoding
+		$getID3->option_tags_process = false;
+		// Copy tags to root key 'tags_html' properly translated from various encodings to HTML entities
+		$getID3->option_tags_html = false;
 
 		// Analyze file to get metadata structure:
 		$id3 = $getID3->analyze( $path );
@@ -28,7 +34,7 @@ class ID3Handler extends TimedMediaHandler {
 		// remove file paths
 		unset( $id3['filename'] );
 		unset( $id3['filepath'] );
-		unset( $id3['filenamepath']);
+		unset( $id3['filenamepath'] );
 
 		// Update the version
 		$id3['version'] = self::METADATA_VERSION;
@@ -65,7 +71,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param $file File
 	 * @return mixed
 	 */
-	function getBitrate( $file ){
+	function getBitrate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['bitrate'] ) ) {
 			return 0;
@@ -91,13 +97,13 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param $file File
 	 * @return bool|int
 	 */
-	function getFramerate( $file ){
+	function getFramerate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return 0;
 		} else {
 			// return the frame rate of the first found video stream:
-			if( isset( $metadata['video'] )
+			if ( isset( $metadata['video'] )
 				&& isset( $metadata['video']['frame_rate'] ) ) {
 				return $metadata['video']['frame_rate'];
 			}

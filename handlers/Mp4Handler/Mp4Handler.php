@@ -31,11 +31,11 @@ class Mp4Handler extends ID3Handler {
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if( isset( $metadata['video']['resolution_x'])
+		if ( isset( $metadata['video']['resolution_x'] )
 				&&
-			isset( $metadata['video']['resolution_y'])
+			isset( $metadata['video']['resolution_y'] )
 		){
-			return array (
+			return array(
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']
 			);
@@ -54,20 +54,22 @@ class Mp4Handler extends ID3Handler {
 	 * @param $file File
 	 */
 	function getWebType( $file ) {
+		// @codingStandardsIgnoreStart
 		/**
 		 * h.264 profile types:
-			H.264 Simple baseline profile video (main and extended video compatible) level 3 and Low-Complexity AAC audio in MP4 container:
-			type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
-
-			H.264 Extended profile video (baseline-compatible) level 3 and Low-Complexity AAC audio in MP4 container:
-			type='video/mp4; codecs="avc1.58A01E, mp4a.40.2"'
-
-			H.264 Main profile video level 3 and Low-Complexity AAC audio in MP4 container
-			type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'
-
-			H.264 ‘High’ profile video (incompatible with main, baseline, or extended profiles) level 3 and Low-Complexity AAC audio in MP4 container
-			type='video/mp4; codecs="avc1.64001E, mp4a.40.2"'
+		 *  H.264 Simple baseline profile video (main and extended video compatible) level 3 and Low-Complexity AAC audio in MP4 container:
+		 *  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+		 *
+		 *  H.264 Extended profile video (baseline-compatible) level 3 and Low-Complexity AAC audio in MP4 container:
+		 *  type='video/mp4; codecs="avc1.58A01E, mp4a.40.2"'
+		 *
+		 *  H.264 Main profile video level 3 and Low-Complexity AAC audio in MP4 container
+		 *  type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'
+		 *
+		 *  H.264 ‘High’ profile video (incompatible with main, baseline, or extended profiles) level 3 and Low-Complexity AAC audio in MP4 container
+		 *  type='video/mp4; codecs="avc1.64001E, mp4a.40.2"'
 		 */
+		// @codingStandardsIgnoreEnd
 		// all h.264 encodes are currently simple profile
 		return 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
 	}
@@ -81,18 +83,18 @@ class Mp4Handler extends ID3Handler {
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'mp4' ){
-			if( isset( $metadata['audio']['codec'] )
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'mp4' ) {
+			if ( isset( $metadata['audio']['codec'] )
 				&&
-				strpos( $metadata['audio']['codec'] , 'AAC' ) !== false
-			){
+				strpos( $metadata['audio']['codec'], 'AAC' ) !== false
+			) {
 				$streamTypes[] =  'AAC';
 			} else {
 				$streamTypes[] = $metadata['audio']['codec'];
 			}
 		}
 		// id3 gives 'V_VP8' for what we call VP8
-		if( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'quicktime' ){
+		if ( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'quicktime' ) {
 			$streamTypes[] =  'h.264';
 		}
 
@@ -123,17 +125,17 @@ class Mp4Handler extends ID3Handler {
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-		return wfMessage('timedmedia-mp4-long-video',
+		return wfMessage(
+			'timedmedia-mp4-long-video',
 			implode( '/', $streamTypes )
-		)->timeperiodParams(
-			$this->getLength( $file )
-		)->bitrateParams(
-			$this->getBitRate( $file )
-		)->numParams(
-			$file->getWidth(),
-			$file->getHeight()
-		)->text();
-
+			)->timeperiodParams(
+				$this->getLength( $file )
+			)->bitrateParams(
+				$this->getBitRate( $file )
+			)->numParams(
+				$file->getWidth(),
+				$file->getHeight()
+			)->text();
 	}
 
 }

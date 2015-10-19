@@ -1,13 +1,16 @@
 <?php
 
 if ( !defined( 'MEDIAWIKI' ) ) {
+	// @codingStandardsIgnoreStart
 	echo "This is the TimedMediaHandler extension. Please see the README file for installation instructions.\n";
+	// @codingStandardsIgnoreEnd
 	exit( 1 );
 }
 
 // Set up the timed media handler dir:
 $timedMediaDir = __DIR__;
-// Include WebVideoTranscode (prior to config so that its defined transcode keys can be used in configuration)
+// Include WebVideoTranscode
+// (prior to config so that its defined transcode keys can be used in configuration)
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
 
 // Add the rest transcode right:
@@ -76,7 +79,8 @@ $wgTranscodeBackgroundPriority = 19;
 // The total amout of time a transcoding shell command can take:
 $wgTranscodeBackgroundTimeLimit = 3600 * 8;
 // Maximum amount of virtual memory available to transcoding processes in KB
-$wgTranscodeBackgroundMemoryLimit = 2 * 1024 * 1024; // 2GB avconv, ffmpeg2theora mmap resources so virtual memory needs to be high enough
+// 2GB avconv, ffmpeg2theora mmap resources so virtual memory needs to be high enough
+$wgTranscodeBackgroundMemoryLimit = 2 * 1024 * 1024;
 // Maximum file size transcoding processes can create, in KB
 $wgTranscodeBackgroundSizeLimit = 3 * 1024 * 1024; // 3GB
 
@@ -117,7 +121,8 @@ $wgEnableLocalTimedText = true;
  *
  * -These transcodes are *in addition to* the source file.
  * -Only derivatives with smaller width than the source asset size will be created
- * -Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet
+ * -Regardless of source size at least one WebM and Ogg source
+ *  will be created from the $wgEnabledTranscodeSet
  * -Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed
  * -Derivative should be listed min to max
  */
@@ -145,7 +150,7 @@ $wgEnabledTranscodeSet = array(
 
 	// Ogg Theora/Vorbis
 	// Fallback for Safari/IE/Edge with ogv.js
-	//
+
 	// Requires twice the bitrate for same quality as VP8,
 	// and JS decoder can be slow, so shift to smaller sizes.
 
@@ -188,14 +193,14 @@ $wgEnabledTranscodeSet = array(
 $wgEnabledAudioTranscodeSet = array(
 	WebVideoTranscode::ENC_OGG_VORBIS,
 
-	//opus support must be available in avconv
-	//WebVideoTranscode::ENC_OGG_OPUS,
+	// opus support must be available in avconv
+	// WebVideoTranscode::ENC_OGG_OPUS,
 
-	//avconv needs libmp3lame support
-	//WebVideoTranscode::ENC_MP3,
+	// avconv needs libmp3lame support
+	// WebVideoTranscode::ENC_MP3,
 
-	//avconv needs libvo_aacenc support
-	//WebVideoTranscode::ENC_AAC,
+	// avconv needs libvo_aacenc support
+	// WebVideoTranscode::ENC_AAC,
 );
 
 // If mp4 source assets can be ingested:
@@ -204,7 +209,6 @@ $wgTmhEnableMp4Uploads = false;
 // Two-pass encoding for .ogv Theora transcodes is flaky as of October 2015.
 // Enable this only if testing with latest theora libraries!
 // See tracking bug: https://phabricator.wikimedia.org/T115883
-//
 $wgTmhTheoraTwoPassEncoding = false;
 
 /******************* CONFIGURATION ENDS HERE **********************/
@@ -227,19 +231,27 @@ $wgAutoloadClasses['TimedMediaThumbnail'] = "$timedMediaDir/TimedMediaThumbnail.
 $wgAutoloadClasses['TranscodeStatusTable'] = "$timedMediaDir/TranscodeStatusTable.php";
 
 // Testing:
-$wgAutoloadClasses['ApiTestCaseVideoUpload'] = "$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
+$wgAutoloadClasses['ApiTestCaseVideoUpload'] =
+	"$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
 
 // Ogg Handler
 $wgAutoloadClasses['OggHandlerTMH'] = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
 $wgAutoloadClasses['OggException'] = "$timedMediaDir/handlers/OggHandler/OggException.php";
 $wgAutoloadClasses['File_Ogg'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg.php";
-$wgAutoloadClasses['File_Ogg_Bitstream'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Bitstream.php";
-$wgAutoloadClasses['File_Ogg_Flac'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Flac.php";
-$wgAutoloadClasses['File_Ogg_Media'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Media.php";
-$wgAutoloadClasses['File_Ogg_Opus'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Opus.php";
-$wgAutoloadClasses['File_Ogg_Speex'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Speex.php";
-$wgAutoloadClasses['File_Ogg_Theora'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Theora.php";
-$wgAutoloadClasses['File_Ogg_Vorbis'] = "$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Vorbis.php";
+$wgAutoloadClasses['File_Ogg_Bitstream'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Bitstream.php";
+$wgAutoloadClasses['File_Ogg_Flac'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Flac.php";
+$wgAutoloadClasses['File_Ogg_Media'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Media.php";
+$wgAutoloadClasses['File_Ogg_Opus'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Opus.php";
+$wgAutoloadClasses['File_Ogg_Speex'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Speex.php";
+$wgAutoloadClasses['File_Ogg_Theora'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Theora.php";
+$wgAutoloadClasses['File_Ogg_Vorbis'] =
+	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Vorbis.php";
 
 // getID3 provides metadata for mp4 and webm files:
 $wgAutoloadClasses['getID3'] = "$timedMediaDir/libs/getid3/getid3.php";
@@ -258,12 +270,14 @@ $wgAutoloadClasses['FLACHandler'] = "$timedMediaDir/handlers/FLACHandler/FLACHan
 $wgAutoloadClasses['WAVHandler'] = "$timedMediaDir/handlers/WAVHandler/WAVHandler.php";
 
 // Text handler
-$wgAutoloadClasses['ForeignApiQueryAllPages'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
+$wgAutoloadClasses['ForeignApiQueryAllPages'] =
+	"$timedMediaDir/handlers/TextHandler/TextHandler.php";
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
 $wgAutoloadClasses['TimedTextPage'] = "$timedMediaDir/TimedTextPage.php";
 
 // Transcode support
-$wgAutoloadClasses['WebVideoTranscodeJob'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
+$wgAutoloadClasses['WebVideoTranscodeJob'] =
+	"$timedMediaDir/WebVideoTranscode/WebVideoTranscodeJob.php";
 
 // API modules:
 $wgAutoloadClasses['ApiQueryVideoInfo'] = "$timedMediaDir/ApiQueryVideoInfo.php";
@@ -277,8 +291,10 @@ $wgAPIModules['transcodereset'] = 'ApiTranscodeReset';
 
 // Localization
 $wgMessagesDirs['TimedMediaHandler'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] = "$timedMediaDir/TimedMediaHandler.i18n.magic.php";
-$wgExtensionMessagesFiles['TimedMediaHandlerAliases'] = "$timedMediaDir/TimedMediaHandler.i18n.alias.php";
+$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] =
+	"$timedMediaDir/TimedMediaHandler.i18n.magic.php";
+$wgExtensionMessagesFiles['TimedMediaHandlerAliases'] =
+	"$timedMediaDir/TimedMediaHandler.i18n.alias.php";
 // Inlcude module locationlizations
 $wgMessagesDirs['MwEmbed.EmbedPlayer'] = __DIR__ . '/MwEmbedModules/EmbedPlayer/i18n';
 $wgMessagesDirs['MwEmbed.TimedText'] = __DIR__ . '/MwEmbedModules/TimedText/i18n';
@@ -288,8 +304,8 @@ $wgAutoloadClasses['SpecialTimedMediaHandler'] = "$timedMediaDir/SpecialTimedMed
 $wgAutoloadClasses['SpecialOrphanedTimedText'] = "$timedMediaDir/SpecialOrphanedTimedText.php";
 
 // Register all Timed Media Handler hooks right after initial setup
-// This way if you set a variable like $wgTimedTextNS in LocalSettings.php after you include TimedMediaHandler
-// we can still read the variable values
+// This way if you set a variable like $wgTimedTextNS in LocalSettings.php
+// after you include TimedMediaHandler we can still read the variable values
 $wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';
 
 # add Special pages
@@ -298,12 +314,18 @@ $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
 
 // Extension Credits
 $wgExtensionCredits['media'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'TimedMediaHandler',
-	'namemsg'        => 'timedmediahandler-extensionname',
-	'author'         => array( 'Michael Dale', 'Tim Starling', 'James Heinrich', 'Jan Gerber', 'Brion Vibber' ),
-	'url'            => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
+	'path' => __FILE__,
+	'name' => 'TimedMediaHandler',
+	'namemsg' => 'timedmediahandler-extensionname',
+	'author' => array(
+		'Michael Dale',
+		'Tim Starling',
+		'James Heinrich',
+		'Jan Gerber',
+		'Brion Vibber'
+	),
+	'url' => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmediahandler-desc',
-	'version'        => '0.4.0',
-	'license-name'   => 'GPL-2.0+',
+	'version' => '0.4.0',
+	'license-name' => 'GPL-2.0+',
 );

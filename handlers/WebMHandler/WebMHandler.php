@@ -39,37 +39,35 @@ class WebMHandler extends ID3Handler {
 				&&
 			isset( $metadata['video']['display_y'] )
 		){
-			$size = array (
+			$size = array(
 				$metadata['video']['display_x'],
 				$metadata['video']['display_y']
 			);
-		}
-		elseif ( isset( $metadata['video']['resolution_x'] )
-				&&
-			isset( $metadata['video']['resolution_y'] )
-		){
-			$size = array (
+		} elseif ( isset( $metadata['video']['resolution_x'] )
+			&& isset( $metadata['video']['resolution_y'] )
+		) {
+			$size = array(
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']
 			);
-			if ( isset($metadata['video']['crop_top']) ) {
+			if ( isset( $metadata['video']['crop_top'] ) ) {
 				$size[1] -= $metadata['video']['crop_top'];
 			}
-			if ( isset($metadata['video']['crop_bottom']) ) {
+			if ( isset( $metadata['video']['crop_bottom'] ) ) {
 				$size[1] -= $metadata['video']['crop_bottom'];
 			}
-			if ( isset($metadata['video']['crop_left']) ) {
+			if ( isset( $metadata['video']['crop_left'] ) ) {
 				$size[0] -= $metadata['video']['crop_left'];
 			}
-			if ( isset($metadata['video']['crop_right']) ) {
+			if ( isset( $metadata['video']['crop_right'] ) ) {
 				$size[0] -= $metadata['video']['crop_right'];
 			}
 		}
 		if ( $size[0] && $size[1] && isset( $metadata['video']['display_aspect_ratio'] ) ) {
-			//for wide images (i.e. 16:9) take native height as base
+			// for wide images (i.e. 16:9) take native height as base
 			if ( $metadata['video']['display_aspect_ratio'] >= 1 ) {
 				$size[0] = intval( $size[1] * $metadata['video']['display_aspect_ratio'] );
-			} else { //for tall images (i.e. 9:16) take width as base
+			} else { // for tall images (i.e. 9:16) take width as base
 				$size[1] = intval( $size[0] / $metadata['video']['display_aspect_ratio'] );
 			}
 		}
@@ -112,7 +110,7 @@ class WebMHandler extends ID3Handler {
 			return false;
 		}
 		// id3 gives 'V_VP8' for what we call VP8
-		if( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'vp8' ){
+		if ( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'vp8' ) {
 			$streamTypes[] =  'VP8';
 		} elseif( isset( $metadata['video'] ) &&
 			( $metadata['video']['dataformat'] === 'vp9'
@@ -122,7 +120,7 @@ class WebMHandler extends ID3Handler {
 			// once getID3 actually gets support for the codec.
 			$streamTypes[] =  'VP9';
 		}
-		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'vorbis' ){
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'vorbis' ) {
 			$streamTypes[] =  'Vorbis';
 		} elseif ( isset( $metadata['audio'] ) &&
 			( $metadata['audio']['dataformat'] == 'opus'
@@ -161,15 +159,15 @@ class WebMHandler extends ID3Handler {
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-		return wfMessage('timedmedia-webm-long-video',
+		return wfMessage(
+			'timedmedia-webm-long-video',
 			implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength($file) ),
+			$wgLang->formatTimePeriod( $this->getLength( $file ) ),
 			$wgLang->formatBitrate( $this->getBitRate( $file ) )
-		)->numParams(
-			$file->getWidth(),
-			$file->getHeight()
-		)->text();
-
+			)->numParams(
+				$file->getWidth(),
+				$file->getHeight()
+			)->text();
 	}
 
 }

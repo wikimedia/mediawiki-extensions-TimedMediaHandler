@@ -1,4 +1,5 @@
 <?php
+
 class TestOggHandler extends MediaWikiMediaTestCase {
 
 	/** @var OggHandlerTMH */

@@ -5,17 +5,17 @@ class TimedMediaThumbnail {
 	 * @param $options array()
 	 * @return bool|MediaTransformError
 	 */
-	static function get( $options ){
-		if( !is_dir( dirname( $options['dstPath'] ) ) ){
+	static function get( $options ) {
+		if ( !is_dir( dirname( $options['dstPath'] ) ) ) {
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
 		}
 
 		wfDebug( "Creating video thumbnail at " .  $options['dstPath']  . "\n" );
-		if(
+		if (
 			isset( $options['width'] ) && isset( $options['height'] ) &&
 			$options['width'] != $options['file']->getWidth() &&
 			$options['height'] != $options['file']->getHeight()
-		){
+		) {
 			return self::resizeThumb( $options );
 		}
 		// try OggThumb, and fallback to ffmpeg
@@ -38,12 +38,12 @@ class TimedMediaThumbnail {
 		global $wgOggThumbLocation;
 
 		// Check that the file is 'ogg' format
-		if( $options['file']->getHandler()->getMetadataType( $options['file'] ) != 'ogg' ){
+		if ( $options['file']->getHandler()->getMetadataType( $options['file'] ) != 'ogg' ) {
 			return false;
 		}
 
 		// Check for $wgOggThumbLocation
-		if( !$wgOggThumbLocation || !is_file( $wgOggThumbLocation ) ){
+		if ( !$wgOggThumbLocation || !is_file( $wgOggThumbLocation ) ) {
 			return false;
 		}
 
@@ -54,8 +54,8 @@ class TimedMediaThumbnail {
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation )
 			. ' -t ' . floatval( $time );
 		// Set the output size if set in options:
-		if( isset( $options['width'] ) && isset( $options['height'] ) ){
-			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
+		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
+			$cmd .= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
 		}
 		$cmd .= ' -n ' . wfEscapeShellArg( $dstPath ) .
 			' ' . wfEscapeShellArg( $videoPath ) . ' 2>&1';
@@ -85,10 +85,10 @@ class TimedMediaThumbnail {
 	 * @param $options array
 	 * @return bool|MediaTransformError
 	 */
-	static function tryFfmpegThumb( $options ){
+	static function tryFfmpegThumb( $options ) {
 		global $wgFFmpegLocation, $wgMaxShellMemory;
 
-		if( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ){
+		if ( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ) {
 			return false;
 		}
 
@@ -112,12 +112,12 @@ class TimedMediaThumbnail {
 			$seekoffset = 3;
 		}
 
-		if($offset > $seekoffset) {
-			$cmd .= ' -ss ' . floatval($offset - $seekoffset);
+		if ( $offset > $seekoffset ) {
+			$cmd .= ' -ss ' . floatval( $offset - $seekoffset );
 			$offset = $seekoffset;
 		}
 
-		//try to get temorary local url to file
+		// try to get temorary local url to file
 		$backend = $options['file']->getRepo()->getBackend();
 		// getFileHttpUrl was only added in mw 1.21, dont fail if it does not exist
 		if ( method_exists( $backend, 'getFileHttpUrl' ) ) {
@@ -135,12 +135,12 @@ class TimedMediaThumbnail {
 		$cmd .= ' -ss ' . $offset . ' ';
 
 		// Set the output size if set in options:
-		if( isset( $options['width'] ) && isset( $options['height'] ) ){
-			$cmd.= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
+		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
+			$cmd .= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
 		}
 
-			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
-			# No audio, one frame
+		// MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
+		// No audio, one frame
 		$cmd .= ' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $options['dstPath'] ) . ' 2>&1';
 
@@ -152,7 +152,9 @@ class TimedMediaThumbnail {
 		}
 		$returnText = $cmd . "\nwgMaxShellMemory: $wgMaxShellMemory\n" . $returnText;
 		// Return error box
-		return new MediaTransformError( 'thumbnail_error', $options['width'], $options['height'], $returnText );
+		return new MediaTransformError(
+			'thumbnail_error', $options['width'], $options['height'], $returnText
+		);
 	}
 
 	/**
@@ -162,8 +164,8 @@ class TimedMediaThumbnail {
 	static function resizeThumb( $options ) {
 		$file = $options['file'];
 		$params = array();
-		foreach( array( 'start', 'thumbtime' ) as $key ) {
-			if(  isset( $options[ $key ] ) ) {
+		foreach ( array( 'start', 'thumbtime' ) as $key ) {
+			if ( isset( $options[ $key ] ) ) {
 				$params[ $key ] = $options[ $key ];
 			}
 		}
@@ -177,7 +179,7 @@ class TimedMediaThumbnail {
 		if ( class_exists( 'PoolCounterWorkViaCallback' ) ) {
 			$work = new PoolCounterWorkViaCallback( 'TMHTransformFrame',
 				'_tmh:frame:' . $poolKey,
-				array( 'doWork' => function() use ($file, $params) {
+				array( 'doWork' => function() use ( $file, $params ) {
 					return $file->transform( $params, File::RENDER_NOW );
 				} ) );
 			$thumb = $work->execute();
@@ -219,20 +221,22 @@ class TimedMediaThumbnail {
 	 * @param $options array
 	 * @return bool|float|int
 	 */
-	static function getThumbTime( $options ){
+	static function getThumbTime( $options ) {
 		$length = $options['file']->getLength();
 
 		// If start time param isset use that for the thumb:
-		if(  isset( $options['start'] ) ) {
+		if ( isset( $options['start'] ) ) {
 			$thumbtime = TimedMediaHandler::parseTimeString( $options['start'], $length );
-			if( $thumbtime !== false )
+			if ( $thumbtime !== false ) {
 				return $thumbtime;
+			}
 		}
 		// else use thumbtime
 		if ( isset( $options['thumbtime'] ) ) {
 			$thumbtime = TimedMediaHandler::parseTimeString( $options['thumbtime'], $length );
-			if( $thumbtime !== false )
+			if ( $thumbtime !== false ) {
 				return $thumbtime;
+			}
 		}
 		// Seek to midpoint by default, it tends to be more interesting than the start
 		return $length / 2;

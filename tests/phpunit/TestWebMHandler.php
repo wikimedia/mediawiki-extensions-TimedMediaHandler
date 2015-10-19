@@ -1,4 +1,5 @@
 <?php
+
 class TestWebMHandler extends MediaWikiMediaTestCase {
 
 	/** @var OggHandlerTMH */
@@ -30,7 +31,6 @@ class TestWebMHandler extends MediaWikiMediaTestCase {
 			array( 'bear-vp9-opus.webm', array( 'VP9', 'Opus' ) )
 		);
 	}
-
 
 	/**
 	 * @dataProvider providerGetWebType

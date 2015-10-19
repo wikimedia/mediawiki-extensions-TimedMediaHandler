@@ -32,7 +32,7 @@ class FLACHandler extends ID3Handler {
 			return false;
 		}
 
-		if( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'flac' ){
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'flac' ) {
 			$streamTypes[] =  'FLAC';
 		}
 
@@ -64,8 +64,8 @@ class FLACHandler extends ID3Handler {
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-		return wfMessage('timedmedia-flac-long-audio',
-			$wgLang->formatTimePeriod( $this->getLength($file) ),
+		return wfMessage( 'timedmedia-flac-long-audio',
+			$wgLang->formatTimePeriod( $this->getLength( $file ) ),
 			$wgLang->formatBitrate( $this->getBitRate( $file ) )
 		)->text();
 

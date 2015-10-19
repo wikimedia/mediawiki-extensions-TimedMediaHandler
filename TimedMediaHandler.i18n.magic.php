@@ -5,6 +5,7 @@
  * @file
  * @ingroup Extensions
  */
+// @codingStandardsIgnoreFile
 
 $magicWords = array();
 
@@ -12,9 +13,9 @@ $magicWords['en'] = array(
 	'timedmedia_noplayer'  => array( 0, 'noplayer' ),
 	'timedmedia_noicon'    => array( 0, 'noicon' ),
 	'timedmedia_thumbtime' => array( 0, 'thumbtime=$1' ),
-	'timedmedia_starttime' => array( 0, 'start=$1'),
-	'timedmedia_endtime'   => array( 0, 'end=$1'),
-	'timedmedia_disablecontrols'   => array( 0, 'disablecontrols=$1'),
+	'timedmedia_starttime' => array( 0, 'start=$1' ),
+	'timedmedia_endtime'   => array( 0, 'end=$1' ),
+	'timedmedia_disablecontrols'   => array( 0, 'disablecontrols=$1' ),
 );
 
 $magicWords['af'] = array(

@@ -58,14 +58,15 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 }
 
 class TextHandler {
-	var $remoteNs = null;//lazy init remote Namespace number
+	// lazy init remote Namespace number
+	public $remoteNs = null;
 
 	/**
 	 * @var File
 	 */
 	protected $file;
 
-	function __construct( $file ){
+	function __construct( $file ) {
 		$this->file = $file;
 	}
 
@@ -73,10 +74,10 @@ class TextHandler {
 	 * Get the timed text tracks elements as an associative array
 	 * @return array|mixed
 	 */
-	function getTracks(){
-		if( $this->file->isLocal() ){
+	function getTracks() {
+		if ( $this->file->isLocal() ) {
 			return $this->getLocalTextSources();
-		} elseif ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ){
+		} elseif ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ) {
 			return $this->getForeignDBTextSources();
 		} else {
 			return $this->getRemoteTextSources();
@@ -86,9 +87,9 @@ class TextHandler {
 	/**
 	 * @return bool|int|null
 	 */
-	function getTimedTextNamespace(){
+	function getTimedTextNamespace() {
 		global $wgEnableLocalTimedText;
-		if( $this->file->isLocal() ) {
+		if ( $this->file->isLocal() ) {
 			if ( $wgEnableLocalTimedText ) {
 				return NS_TIMEDTEXT;
 			} else {
@@ -103,7 +104,7 @@ class TextHandler {
 			// failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
 			return NS_TIMEDTEXT;
 		} else {
-			if( $this->remoteNs !== null ){
+			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
 			}
 			// Get the namespace data from the image api repo:
@@ -111,12 +112,12 @@ class TextHandler {
 			$data = $this->file->getRepo()->fetchImageQuery( array(
 				'meta' =>'siteinfo',
 				'siprop' => 'namespaces'
-			));
+			) );
 
-			if( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ){
+			if ( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ) {
 				// get the ~last~ timed text namespace defined
-				foreach( $data['query']['namespaces'] as $ns ){
-					if( $ns['*'] == 'TimedText' ){
+				foreach ( $data['query']['namespaces'] as $ns ) {
+					if ( $ns['*'] == 'TimedText' ) {
 						$this->remoteNs = $ns['id'];
 					}
 				}
@@ -129,10 +130,10 @@ class TextHandler {
 	/**
 	 * @return array|bool
 	 */
-	function getTextPagesQuery(){
+	function getTextPagesQuery() {
 		$ns = $this->getTimedTextNamespace();
-		if( $ns === false ){
-			wfDebug("Repo: " . $this->file->repo->getName() . " does not have a TimedText namesapce \n");
+		if ( $ns === false ) {
+			wfDebug( "Repo: " . $this->file->repo->getName() . " does not have a TimedText namesapce \n" );
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
@@ -148,24 +149,26 @@ class TextHandler {
 	/**
 	 * @return array|mixed
 	 */
-	function getRemoteTextSources(){
+	function getRemoteTextSources() {
 		global $wgMemc;
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
 		if ( $this->file->getRepo()->descriptionCacheExpiry > 0 ) {
-			wfDebug("Attempting to get text tracks from cache...");
-			$key = $this->file->getRepo()->getLocalCacheKey( 'RemoteTextTracks', 'url', $this->file->getName() );
-			$obj = $wgMemc->get($key);
-			if ($obj) {
-				wfDebug("success!\n");
+			wfDebug( "Attempting to get text tracks from cache..." );
+			$key = $this->file->getRepo()->getLocalCacheKey(
+				'RemoteTextTracks', 'url', $this->file->getName()
+			);
+			$obj = $wgMemc->get( $key );
+			if ( $obj ) {
+				wfDebug( "success!\n" );
 				return $obj;
 			}
-			wfDebug("miss\n");
+			wfDebug( "miss\n" );
 		}
-		wfDebug("Get text tracks from remote api \n");
+		wfDebug( "Get text tracks from remote api \n" );
 		$query = $this->getTextPagesQuery();
 
 		// Error in getting timed text namespace return empty array;
-		if( $query === false ){
+		if ( $query === false ) {
 			return array();
 		}
 		$data = $this->file->getRepo()->fetchImageQuery( $query );
@@ -179,7 +182,7 @@ class TextHandler {
 	/**
 	 * @return array
 	 */
-	function getLocalTextSources(){
+	function getLocalTextSources() {
 		global $wgEnableLocalTimedText;
 		if ( $wgEnableLocalTimedText ) {
 			// Init $this->textTracks
@@ -191,7 +194,7 @@ class TextHandler {
 			} else {
 				$data = $api->getResultData();
 			}
-			wfDebug(print_r($data, true));
+			wfDebug( print_r( $data, true ) );
 			// Get the list of language Names
 			return $this->getTextTracksFromData( $data );
 		} else {
@@ -202,7 +205,7 @@ class TextHandler {
 	/**
 	 * @return array|mixed
 	 */
-	function getForeignDBTextSources(){
+	function getForeignDBTextSources() {
 		// Init $this->textTracks
 		$params = new FauxRequest( $this->getTextPagesQuery() );
 		$api = new ApiMain( $params );
@@ -229,22 +232,22 @@ class TextHandler {
 	 * @param $data
 	 * @return array
 	 */
-	function getTextTracksFromData( $data ){
+	function getTextTracksFromData( $data ) {
 		$textTracks = array();
 		$providerName = $this->file->repo->getName();
 		// commons is called shared in production. normalize it to wikimediacommons
-		if( $providerName == 'shared' ){
+		if ( $providerName == 'shared' ) {
 			$providerName = 'wikimediacommons';
 		}
 		// Provider name should be the same as the interwiki map
 		// @@todo more testing with this:
 
 		$langNames = Language::fetchLanguageNames( null, 'mw' );
-		if( $data['query'] && $data['query']['allpages'] ){
-			foreach( $data['query']['allpages'] as $page ){
-				$subTitle = Title::newFromText( $page['title'] ) ;
+		if ( $data['query'] && $data['query']['allpages'] ) {
+			foreach ( $data['query']['allpages'] as $page ) {
+				$subTitle = Title::newFromText( $page['title'] );
 				$tileParts = explode( '.', $page['title'] );
-				if( count( $tileParts) >= 3 ){
+				if ( count( $tileParts ) >= 3 ) {
 					$timedTextExtension = array_pop( $tileParts );
 					$languageKey = array_pop( $tileParts );
 					$contentType = $this->getContentType( $timedTextExtension );
@@ -252,7 +255,7 @@ class TextHandler {
 					continue;
 				}
 				// If there is no valid language continue:
-				if( !isset( $langNames[ $languageKey ] ) ){
+				if ( !isset( $langNames[ $languageKey ] ) ) {
 					continue;
 				}
 				$namespacePrefix = "TimedText:";
@@ -266,7 +269,7 @@ class TextHandler {
 					'src' => $this->getFullURL( $page['title'], $contentType ),
 					'srclang' =>  $languageKey,
 					'data-dir' => Language::factory( $languageKey )->getDir(),
-					'label' => wfMessage('timedmedia-subtitle-language',
+					'label' => wfMessage( 'timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
 						$languageKey )->text()
 				);
@@ -278,20 +281,20 @@ class TextHandler {
 	function getContentType( $timedTextExtension ) {
 		if ( $timedTextExtension === 'srt' ) {
 			return 'text/x-srt';
-		} else if ( $timedTextExtension === 'vtt' ) {
+		} elseif ( $timedTextExtension === 'vtt' ) {
 			return 'text/vtt';
 		}
 		return '';
 	}
 
-	function getFullURL( $pageTitle, $contentType ){
-		if( $this->file->isLocal() ) {
-			$subTitle =  Title::newFromText( $pageTitle ) ;
+	function getFullURL( $pageTitle, $contentType ) {
+		if ( $this->file->isLocal() ) {
+			$subTitle =  Title::newFromText( $pageTitle );
 			return $subTitle->getFullURL( array(
 				'action' => 'raw',
 				'ctype' => $contentType
-			));
-		//} elseif( $this->file->repo instanceof ForeignDBViaLBRepo ){
+			) );
+		// } elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ) {
 		} else {
 			$query = 'title=' . wfUrlencode( $pageTitle ) . '&';
 			$query .= wfArrayToCgi( array(

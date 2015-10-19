@@ -1,4 +1,5 @@
 <?php
+
 class TestTimedMediaHandler extends MediaWikiTestCase {
 
 	/** @var TimedMediaHandler */

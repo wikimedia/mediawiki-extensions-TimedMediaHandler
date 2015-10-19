@@ -30,7 +30,7 @@ class TimedTextPage extends Article {
 	 * Render TimedText to given output
 	 * @param $out OutputPage
 	 */
-	public function renderOutput( $out ){
+	public function renderOutput( $out ) {
 		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBkey() );
 		$timedTextExtension = array_pop( $titleParts );
@@ -54,8 +54,10 @@ class TimedTextPage extends Article {
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBkey(), NS_FILE );
 		$file = wfFindFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
-		if( !in_array( $timedTextExtension, self::$knownTimedTextExtensions ) && $file && $file->exists() ){
-			if( $file->isLocal() ){
+		if ( !in_array( $timedTextExtension, self::$knownTimedTextExtensions ) &&
+			$file && $file->exists()
+		) {
+			if ( $file->isLocal() ) {
 				$this->doRedirectToPageForm( $fileTitle );
 			} else {
 				$this->doLinkToRemote( $file );
@@ -66,7 +68,7 @@ class TimedTextPage extends Article {
 		// Check for File name with text extension ( from remaning parts of title )
 		// i.e TimedText:myfile.ogg.en.srt
 
-		$videoTitle = Title::newFromText( implode('.', $titleParts ), NS_FILE );
+		$videoTitle = Title::newFromText( implode( '.', $titleParts ), NS_FILE );
 
 		// Check for remote file
 		$basefile = wfFindFile( $videoTitle );
@@ -75,7 +77,7 @@ class TimedTextPage extends Article {
 			return;
 		}
 
-		if( !$basefile->isLocal() ){
+		if ( !$basefile->isLocal() ) {
 			$this->doLinkToRemote( $basefile );
 			return;
 		}
@@ -83,7 +85,7 @@ class TimedTextPage extends Article {
 		// Look up the language name:
 		$language = $out->getLanguage()->getCode();
 		$languages = Language::fetchLanguageNames( $language, 'all' );
-		if( isset( $languages[ $languageKey ] ) ) {
+		if ( isset( $languages[ $languageKey ] ) ) {
 			$languageName = $languages[ $languageKey ];
 		} else {
 			$languageName = $languageKey;
@@ -93,7 +95,7 @@ class TimedTextPage extends Article {
 		$message = $this->exists() ?
 			'mwe-timedtext-language-subtitles-for-clip' :
 			'mwe-timedtext-language-no-subtitles-for-clip';
-		$out->setPageTitle( wfMessage($message, $languageName, $videoTitle ) );
+		$out->setPageTitle( wfMessage( $message, $languageName, $videoTitle ) );
 
 		// Get the video with with a max of 600 pixel page
 		$out->addHTML(
@@ -102,7 +104,7 @@ class TimedTextPage extends Article {
 					xml::tags( 'td', array( 'valign' => 'top',  'width' => self::$videoWidth ),
 						$this->getVideoHTML( $videoTitle )
 					) .
-					xml::tags( 'td', array( 'valign' => 'top' ) , $this->getTimedTextHTML( $languageName ) )
+					xml::tags( 'td', array( 'valign' => 'top' ), $this->getTimedTextHTML( $languageName ) )
 				)
 			)
 		);
@@ -112,15 +114,15 @@ class TimedTextPage extends Article {
 	 * Timed text or file is hosted on remote repo, Add a short description and link to foring repo
 	 * @param $file File the base file
 	 */
-	function doLinkToRemote( $file ){
+	function doLinkToRemote( $file ) {
 		$output = $this->getContext()->getOutput();
 		$output->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',
 			$file->getRepo()->getDisplayName() ) );
 		$output->addHTML( wfMessage( 'timedmedia-subtitle-remote-link',
-			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName()  ) );
+			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName() ) );
 	}
 
-	function doRedirectToPageForm(){
+	function doRedirectToPageForm() {
 		$lang = $this->getContext()->getLanguage();
 		$out = $this->getContext()->getOutput();
 
@@ -133,7 +135,7 @@ class TimedTextPage extends Article {
 		$langSelect = Xml::languageSelector( $language, false, null, $attrs, null );
 
 		$out->addHTML(
-			Xml::tags('div', array( 'style' => 'text-align:center' ),
+			Xml::tags( 'div', array( 'style' => 'text-align:center' ),
 				Xml::tags( 'div', null,
 					wfMessage( 'timedmedia-subtitle-new-desc', $lang->getCode() )->parse()
 				) .
@@ -152,13 +154,13 @@ class TimedTextPage extends Article {
 	 * @param $videoTitle string
 	 * @return String
 	 */
-	private function getVideoHTML( $videoTitle ){
+	private function getVideoHTML( $videoTitle ) {
 		// Get the video embed:
 		$file = wfFindFile( $videoTitle );
-		if( !$file ){
+		if ( !$file ) {
 			return wfMessage( 'timedmedia-subtitle-no-video' )->escaped();
 		} else {
-			$videoTransform= $file->transform(
+			$videoTransform = $file->transform(
 				array(
 					'width' => self::$videoWidth
 				)
@@ -173,8 +175,8 @@ class TimedTextPage extends Article {
 	 * @param $languageName string
 	 * @return Message|string
 	 */
-	private function getTimedTextHTML( $languageName ){
-		if( !$this->exists() ){
+	private function getTimedTextHTML( $languageName ) {
+		if ( !$this->exists() ) {
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
 		return Xml::element(

@@ -8,21 +8,21 @@
  */
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
-	$IP = dirname( __FILE__ ) . '/../../..';
+	$IP = __DIR__ . '/../../..';
 }
-require_once( "$IP/maintenance/Maintenance.php" );
+require_once "$IP/maintenance/Maintenance.php";
 
 class RetryTranscodes extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( "key", "retry all failed transcodes for given key", false, true );
-		$this->addOption( "error", "retry all failed transcodes matching error substring", false, true);
+		$this->addOption( "error", "retry all failed transcodes matching error substring", false, true );
 		$this->mDescription = "retry transcodes for given key or error";
 	}
 	public function execute() {
 		if ( !$this->hasOption( "error" ) && !$this->hasOption( "key" ) ) {
-			$this->output("You have to provide --key and/or --error\n");
+			$this->output( "You have to provide --key and/or --error\n" );
 			return;
 		}
 		$dbw = wfGetDB( DB_MASTER );
@@ -47,9 +47,9 @@ class RetryTranscodes extends Maintenance {
 					array( 'transcode_id' => $ids ), __METHOD__ );
 				wfWaitForSlaves();
 			}
-		} while ($ids);
+		} while ( $ids );
 	}
 }
 
 $maintClass = 'RetryTranscodes'; // Tells it to run the class
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once ( RUN_MAINTENANCE_IF_MAIN );
