@@ -403,6 +403,7 @@ class TimedMediaHandlerHooks {
 			'TestVideoThumbnail.php',
 			'TestVideoTranscode.php',
 			'TestOggHandler.php',
+			'TestWebMHandler.php',
 			'TestTimedMediaTransformOutput.php',
 			'TestTimedMediaHandler.php'
 		);

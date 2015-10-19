@@ -1,5 +1,5 @@
 <?php
-class TestOggHandler extends MediaWikiMediaTestCase {
+class TestWebMHandler extends MediaWikiMediaTestCase {
 
 	/** @var OggHandlerTMH */
 	private $handler;
@@ -27,7 +27,7 @@ class TestOggHandler extends MediaWikiMediaTestCase {
 		return array(
 			array( 'shuttle10seconds.1080x608.webm', array( 'VP8' ) ),
 			array( 'VP9-tractor.webm', array( 'VP9' ) ),
-			array( 'bear-vp9-opus.webm', array( 'Opus', 'VP9' ) )
+			array( 'bear-vp9-opus.webm', array( 'VP9', 'Opus' ) )
 		);
 	}
 
@@ -46,7 +46,7 @@ class TestOggHandler extends MediaWikiMediaTestCase {
 		return array(
 			array( 'shuttle10seconds.1080x608.webm', 'video/webm; codecs="vp8"' ),
 			array( 'VP9-tractor.webm', 'video/webm; codecs="vp9"' ),
-			array( 'bear-vp9-opus.webm', 'video/webm; codecs="opus, vp9"' )
+			array( 'bear-vp9-opus.webm', 'video/webm; codecs="vp9, opus"' )
 		);
 	}
 }
