@@ -14,13 +14,22 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers, $wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces,
 		$wgParserOutputHooks, $wgTimedTextNS, $wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgExtensionAssetsPath, $wgMwEmbedModuleConfig, $timedMediaDir,
-		$wgEnableLocalTimedText, $wgTmhFileExtensions;
+		$wgEnableLocalTimedText, $wgTmhFileExtensions, $wgTmhTheoraTwoPassEncoding;
 
 		// Remove mp4 if not enabled:
 		if( $wgTmhEnableMp4Uploads === false ){
 			$index = array_search( 'mp4', $wgFileExtensions );
 			if ( $index !== false ) {
 				array_splice( $wgFileExtensions, $index, 1 );
+			}
+		}
+
+		// Enable experimental 2-pass Theora encoding if enabled:
+		if( $wgTmhTheoraTwoPassEncoding ) {
+			foreach( WebVideoTranscode::$derivativeSettings as $key => &$settings ) {
+				if( isset( $settings['videoCodec'] ) && $settings['videoCodec'] === 'theora' ) {
+					$settings['twopass'] = 'true';
+				}
 			}
 		}
 
