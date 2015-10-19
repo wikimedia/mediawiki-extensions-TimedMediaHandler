@@ -61,7 +61,8 @@ class TimedMediaHandlerHooks {
 		$wgResourceModules+= array(
 			'mw.PopUpMediaTransform' => $baseExtensionResource + array(
 				'scripts' => 'resources/mw.PopUpThumbVideo.js',
-				'dependencies' => array( 'mw.MwEmbedSupport', 'mediawiki.Title' ),
+				'dependencies' => array( 'mw.MwEmbedSupport', 'mediawiki.Title', 'mw.PopUpMediaTransform.styles' ),
+				'position' => 'top',
 			),
 			'mw.PopUpMediaTransform.styles' => $baseExtensionResource + array(
 				'position' => 'top',
@@ -74,6 +75,13 @@ class TimedMediaHandlerHooks {
 			),
 			'embedPlayerIframeStyle'=> $baseExtensionResource + array(
 				'styles' => 'resources/embedPlayerIframe.css',
+			),
+			'ext.tmh.embedPlayerIframe' => $baseExtensionResource + array(
+				'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
+				'dependencies' => array(
+					'jquery.embedPlayer',
+					'mw.MwEmbedSupport',
+				),
 			),
 			'ext.tmh.transcodetable' => $baseExtensionResource + array(
 				'scripts' => 'resources/ext.tmh.transcodetable.js',
@@ -95,11 +103,19 @@ class TimedMediaHandlerHooks {
 			),
 			"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + array(
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-				'dependencies'=> 'mw.Api',
+				'dependencies'=> array(
+					'mw.Api',
+					'mw.MwEmbedSupport',
+				),
 			),
 			// adds support MediaWikiPlayerSupport player bindings
-			"mw.MediaWikiPlayer.loader" =>  $baseExtensionResource + array(
-				'loaderScripts' => 'resources/mw.MediaWikiPlayer.loader.js',
+			"mw.MediaWikiPlayer.loader" => $baseExtensionResource + array(
+				'scripts' => 'resources/mw.MediaWikiPlayer.loader.js',
+				'dependencies' => array(
+					"mw.EmbedPlayer.loader",
+					"mw.TimedText.loader",
+				),
+				'position' => 'top',
 			),
 		);
 
@@ -132,9 +148,6 @@ class TimedMediaHandlerHooks {
 
 		// When image page is deleted so that we remove transcode settings / files.
 		$wgHooks['FileDeleteComplete'][] = 'TimedMediaHandlerHooks::onFileDeleteComplete';
-
-		// Add parser hook
-		$wgParserOutputHooks['TimedMediaHandler'] = array( 'TimedMediaHandler', 'outputHook' );
 
 		// Use a BeforePageDisplay hook to load the styles in pages that pull in media dynamically.
 		// (Special:Upload, for example, when there is an "existing file" warning.)
@@ -183,6 +196,7 @@ class TimedMediaHandlerHooks {
 
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::checkSchemaUpdates';
 		$wgHooks['wgQueryPages'][] = 'TimedMediaHandlerHooks::onwgQueryPages';
+		$wgHooks['RejectParserCacheValue'][] = 'TimedMediaHandlerHooks::rejectParserCacheValue';
 		return true;
 	}
 
@@ -194,7 +208,11 @@ class TimedMediaHandlerHooks {
 	public static function onImageOpenShowImageInlineBefore( $imagePage, $out ) {
 		$handler = $imagePage->getDisplayedFile()->getHandler();
 		if ( $handler !== false && $handler instanceof TimedMediaHandler ) {
-			TimedMediaHandler::outputHook( $out, null, null );
+			$out->addModules( array(
+				'mw.MediaWikiPlayer.loader',
+				'mw.PopUpMediaTransform',
+				'mw.TMHGalleryHook.js',
+			) );
 		}
 		return true;
 	}
@@ -444,8 +462,10 @@ class TimedMediaHandlerHooks {
 		}
 
 		if ( $addModules ) {
-			$out->addModuleScripts( 'mw.PopUpMediaTransform' );
-			$out->addModuleStyles( 'mw.PopUpMediaTransform.styles' );
+			$out->addModules( array(
+				'mw.MediaWikiPlayer.loader',
+				'mw.PopUpMediaTransform',
+			) );
 		}
 
 		return true;
@@ -470,6 +490,24 @@ class TimedMediaHandlerHooks {
 
 	public static function onwgQueryPages( $qp ) {
 		$qp[] = array( 'SpecialOrphanedTimedText', 'OrphanedTimedText' );
+		return true;
+	}
+
+	/**
+	 * Return false here to evict existing parseroutput cache
+	 */
+	public static function rejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
+		if(
+			$parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' )
+			|| isset( $parserOutput->hasTimedMediaTransform )
+		) {
+			/* page has old style TMH elements */
+			if ( !in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules() ) ) {
+				wfDebug( 'Bad TMH parsercache value, throw this out.' );
+				$wikiPage->getTitle()->purgeSquid();
+				return false;
+			}
+		}
 		return true;
 	}
 }

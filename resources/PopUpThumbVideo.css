@@ -1,4 +1,4 @@
-.PopUpMediaTransform a .play-btn-large{
+.PopUpMediaTransform a .play-btn-large {
 	position : absolute;
 	top: 50%;
 	left : 50%;
@@ -9,7 +9,7 @@
 	/* @embed */
 	background-image:url('player_big_play_button.png');
 }
-.PopUpMediaTransform a .play-btn-large :hover{
+.PopUpMediaTransform a .play-btn-large :hover {
 	/* @embed */
 	background-image:url('player_big_play_button_hover.png');
 }

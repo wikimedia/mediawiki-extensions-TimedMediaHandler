@@ -7,7 +7,8 @@
 			'styles' => "resources/mw.style.TimedText.css",
 			'dependencies' => array(
 				'mw.EmbedPlayer',
-				'mw.TextSource'
+				'mw.TextSource',
+				'mw.MwEmbedSupport',
 			),
 			'messageDir' => 'i18n',
 		),

@@ -1,30 +1,7 @@
 /**
-* EmbedPlayer loader
+* $.fn.embedPlayer
 */
 ( function( mw, $ ) {
-	/**
-	* Add a DOM ready check for player tags
-	*/
-	$( function() {
-		var $selected = $( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
-		if ( $selected.length ) {
-			var inx = 0;
-			var checkSetDone = function() {
-				if ( inx < $selected.length ) {
-					// put in timeout to avoid browser lockup, and function stack
-					$selected.slice( inx, inx + 1 ).embedPlayer( function() {
-						setTimeout( function() {
-							checkSetDone();
-						}, 5 );
-					} );
-				}
-				inx++;
-			};
-
-			checkSetDone();
-		}
-	} );
-
 	/**
 	* Add the mwEmbed jQuery loader wrapper
 	*/
@@ -59,8 +36,12 @@
 
 			// Do the request and process the playerElements with updated dependency set
 			mw.loader.using( dependencySet, function() {
-				// Setup the enhanced language:
-				mw.processEmbedPlayers( playerSet, readyCallback );
+				// Delay actual player setup to the next exectution run, because
+				// wikipage.content can fire before the content is attached, and that
+				// breaks something deep inside the player setup.
+				setTimeout( function() {
+					mw.processEmbedPlayers( playerSet, readyCallback );
+				} );
 			}, function( e ) {
 				throw new Error( 'Error loading EmbedPlayer dependency set: ' + e.message );
 			} );

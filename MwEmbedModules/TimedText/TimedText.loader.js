@@ -19,7 +19,9 @@
 	// On new embed player check if we need to add timedText
 	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
 		if( mw.isTimedTextSupported( embedPlayer ) ){
-			embedPlayer.timedText = new mw.TimedText( embedPlayer );
+			mw.loader.using( 'mw.TimedText', function () {
+				embedPlayer.timedText = new mw.TimedText( embedPlayer );
+			} );
 		}
 	});
 
