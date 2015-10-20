@@ -88,6 +88,7 @@ class TimedMediaHandlerHooks {
 			),
 			'embedPlayerIframeStyle'=> $baseExtensionResource + array(
 				'styles' => 'resources/embedPlayerIframe.css',
+				'position' => 'bottom',
 			),
 			'ext.tmh.embedPlayerIframe' => $baseExtensionResource + array(
 				'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
