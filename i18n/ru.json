@@ -44,6 +44,7 @@
 	"timedmedia-update-status": "Обновить статус декодирования",
 	"timedmedia-status": "Состояние",
 	"timedmedia-status-unknown": "Неизвестное состояние",
+	"timedmedia-transcodebitrate": "Битрейт",
 	"timedmedia-transcodeinfo": "Формат",
 	"timedmedia-actions": "Действия",
 	"timedmedia-direct-link": "Скачать",
