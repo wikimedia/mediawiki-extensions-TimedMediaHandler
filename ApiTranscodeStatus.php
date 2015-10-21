@@ -7,11 +7,6 @@
  * on the image page.
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( "ApiBase.php" );
-}
-
 class ApiTranscodeStatus extends ApiQueryBase {
 	public function execute() {
 		$pageIds = $this->getPageSet()->getAllTitlesByNamespace();
