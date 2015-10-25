@@ -471,7 +471,7 @@ class TimedMediaHandlerHooks {
 		if ( $title->isSpecialPage() ) {
 			list( $name, /* subpage */ ) = SpecialPageFactory::resolveAlias( $title->getDBkey() );
 			if ( stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
-				|| $name === 'Search' || $name === 'GlobalUsage' ) {
+				|| $name === 'Search' || $name === 'GlobalUsage' || $name === 'Upload' ) {
 					$addModules = true;
 			}
 		}
