@@ -170,6 +170,10 @@ class TimedMediaHandlerHooks {
 		// Make sure modules are loaded on image pages that don't have a media file in the wikitext.
 		$wgHooks['ImageOpenShowImageInlineBefore'][] = 'TimedMediaHandlerHooks::onImageOpenShowImageInlineBefore';
 
+		// Make sure modules are loaded for the image history of image pages.
+		// This is needed when ImageOpenShowImageInlineBefore is not triggered (diff previews). Bug: T63923
+		$wgHooks['ImagePageFileHistoryLine'][] = 'TimedMediaHandlerHooks::onImagePageFileHistoryLine';
+
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
 		if ( isset( $wgExcludeFromThumbnailPurge ) ) {
@@ -215,12 +219,34 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $imagePage ImagePage
-	 * @param $wgOut OutputPage
+	 * @param ImagePage $imagePage the imagepage that is being rendered
+	 * @param OutputPage $out the output for this imagepage
 	 * @return bool
 	 */
-	public static function onImageOpenShowImageInlineBefore( $imagePage, $out ) {
-		$handler = $imagePage->getDisplayedFile()->getHandler();
+	public static function onImageOpenShowImageInlineBefore( &$imagePage, &$out ) {
+		$file = $imagePage->getDisplayedFile();
+		return TimedMediaHandlerHooks::onImagePageHooks( $file, $out );
+	}
+
+	/**
+	 * @param ImagePage $imagePage that is being rendered
+	 * @param File $file the (old) file added in this history entry
+	 * @param string &$line the HTML of the history line
+	 * @param string &$css the CSS class of the history line
+	 * @return bool
+	 */
+	public static function onImagePageFileHistoryLine( $imagePage, $file, &$line, &$css ) {
+		$out = $imagePage->getContext()->getOutput();
+		return TimedMediaHandlerHooks::onImagePageHooks( $file, $out );
+	}
+
+	/**
+	 * @param File $file the file that is being rendered
+	 * @param OutputPage $wgOut the output to which this file is being rendered
+	 * @return bool
+	 */
+	private static function onImagePageHooks( $file, $out ) {
+		$handler = $file->getHandler();
 		if ( $handler !== false && $handler instanceof TimedMediaHandler ) {
 			$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 			$out->addModules( array(
