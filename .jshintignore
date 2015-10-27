@@ -1,4 +1,6 @@
 MwEmbedModules
+resources/videojs
+resources/videojs-resolution-switcher
 
 node_modules
 vendor

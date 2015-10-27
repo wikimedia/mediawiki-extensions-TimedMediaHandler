@@ -1,0 +1,20 @@
+diff --git a/resources/videojs/video.js b/resources/videojs/video.js
+index a053c48..2240487 100644
+--- a/resources/videojs/video.js
++++ b/resources/videojs/video.js
+@@ -18655,15 +18655,6 @@ var videojs = function videojs(id, options, ready) {
+   return tag['player'] || new _player2['default'](tag, options, ready);
+ };
+ 
+-// Add default styles
+-var style = Dom.$('.vjs-styles-defaults');
+-if (!style) {
+-  style = stylesheet.createStyleElement('vjs-styles-defaults');
+-  var head = Dom.$('head');
+-  head.insertBefore(style, head.firstChild);
+-  stylesheet.setTextContent(style, '\n    .video-js {\n      width: 300px;\n      height: 150px;\n    }\n\n    .vjs-fluid {\n      padding-top: 56.25%\n    }\n  ');
+-}
+-
+ // Run Auto-load players
+ // You have to wait at least once in case this script is loaded after your video in the DOM (weird behavior only with minified version)
+ setup.autoSetupTimeout(1, videojs);

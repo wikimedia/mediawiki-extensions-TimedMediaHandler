@@ -123,6 +123,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @throws Exception
 	 */
 	function toHtml( $options = array() ) {
+		global $wgTmhWebPlayer;
+
 		if ( count( func_get_args() ) == 2 ) {
 			throw new Exception( __METHOD__ .' called in the old style' );
 		}
@@ -136,7 +138,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->width = $options['override-width'];
 		}
 
-		if ( $this->useImagePopUp() ) {
+		if ( $this->useImagePopUp() && $wgTmhWebPlayer === 'mwembed' ) {
 			$res = $this->getImagePopUp();
 		} else {
 			$res = $this->getHtmlMediaTagOutput();
@@ -290,6 +292,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	function getHtmlMediaTagOutput( $sizeOverride = array(), $autoPlay = false ) {
+		global $wgTmhWebPlayer;
+
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		reset( $mediaSources ); // do not rely on auto-resetting of arrays under HHVM
@@ -323,6 +327,24 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		} else {
 			$width .= 'px';
 		}
+
+		if ( $wgTmhWebPlayer === 'videojs' ) {
+			// Build the video tag output:
+			$s = Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
+				// The set of media sources:
+				self::htmlTagSet( 'source', $mediaSources ) .
+
+				// Timed text:
+				self::htmlTagSet( 'track',
+					$this->file ? $this->getTextHandler()->getTracks() : null ) .
+
+				// Fallback text displayed for browsers without js and without video tag support:
+				/// XXX note we may want to replace this with an image and download link play button
+				wfMessage( 'timedmedia-no-player-js', $firstSource['src'] )->text()
+			);
+			return $s;
+		} // else mwEmbed player
+
 		// Build the video tag output:
 		$s = Xml::tags( 'div', array(
 				'class' => 'mediaContainer',
@@ -370,6 +392,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return array
 	 */
 	function getMediaAttr( $sizeOverride = false, $autoPlay = false ) {
+		global $wgVideoPlayerSkin, $wgTmhWebPlayer;
+
 		// Normalize values
 		$length = floatval( $this->length );
 		$offset = floatval( $this->offset );
@@ -390,7 +414,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		$mediaAttr = array(
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
-			'style' => "width:{$width}",
 			// Get the correct size:
 			'poster' => $posterUrl,
 
@@ -402,16 +425,37 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			'preload'=>'none',
 		);
 
-		if ( $this->isVideo ) {
-			$mediaAttr['style'] .= ";height:{$height}";
-		}
-
 		if ( $autoPlay === true ) {
 			$mediaAttr['autoplay'] = 'true';
 		}
 
-		// MediaWiki uses the kSkin class
-		$mediaAttr['class'] = 'kskin';
+		if ( $wgTmhWebPlayer === 'videojs' ) {
+			$mediaAttr['class'] = 'video-js ' . $wgVideoPlayerSkin;
+			$mediaAttr['width'] = $width;
+			if ( $this->isVideo ) {
+				$mediaAttr['height'] = $height;
+			} else {
+				unset( $mediaAttr['height'] );
+				unset( $mediaAttr['poster'] );
+			}
+
+			if ( $this->disablecontrols ) {
+				$mediaAttr[ 'controls' ] = false;
+			}
+		} else {
+			$mediaAttr['style'] = "width:{$width}";
+
+			if ( $this->isVideo ) {
+				$mediaAttr['style'] .= ";height:{$height}";
+			}
+
+			// MediaWiki uses the kSkin class
+			$mediaAttr['class'] = 'kskin';
+
+			if ( $this->disablecontrols ) {
+				$mediaAttr[ 'data-disablecontrols' ] = $this->disablecontrols;
+			}
+		}
 
 		if ( $this->file ) {
 			// Custom data-attributes
@@ -442,9 +486,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$mediaAttr[ 'data-startoffset' ] = $offset;
 			}
 		}
-		if ( $this->disablecontrols ) {
-			$mediaAttr[ 'data-disablecontrols' ] = $this->disablecontrols;
-		}
+
 		return $mediaAttr;
 	}
 
@@ -452,13 +494,17 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return null
 	 */
 	function getMediaSources() {
+		global $wgTmhWebPlayer;
+
 		if ( !$this->sources ) {
 			// Generate transcode jobs ( and get sources that are already transcoded)
 			// At a minimum this should return the source video file.
 			$this->sources = WebVideoTranscode::getSources( $this->file );
 			// Check if we have "start or end" times and append the temporal url fragment hash
-			foreach ( $this->sources as &$source ) {
-				$source['src'] .= $this->getTemporalUrlHash();
+			if ( $wgTmhWebPlayer !== 'videojs' ) {
+				foreach ( $this->sources as &$source ) {
+					$source['src'] .= $this->getTemporalUrlHash();
+				}
 			}
 		}
 		return $this->sources;

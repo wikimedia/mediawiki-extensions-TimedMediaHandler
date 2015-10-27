@@ -1,0 +1,61 @@
+/* We hide the native controls, before we load the custom controls  */
+audio.video-js::-webkit-media-controls,
+video.video-js::-webkit-media-controls {
+	visibility: hidden;
+}
+/* Make video-js behave like standard <video><audio> elements */
+.video-js.video-js:not( .vjs-fullscreen ) {
+	display: inline-block;
+	vertical-align: initial;
+}
+/* Resets styling on the resolution button. Our content linewraps */
+.vjs-resolution-button ul.vjs-menu-content.vjs-menu-content {
+	margin-left: -6em;
+	width: 100% !important;
+}
+
+/* Audio player skin */
+.video-js.vjs-audio {
+	height: 3em;
+
+	.vjs-big-play-button {
+		display: none;
+	}
+	.vjs-control-bar {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.vjs-loading-spinner {
+		display: none;
+	}
+
+	&.vjs-waiting .vjs-progress-holder:not( .vjs-seeking ) {
+		height: .5em;
+		background-image: repeating-linear-gradient(
+			-45deg,
+			#73859f,
+			#73859f 11px,
+			#eee 10px,
+			#eee 20px
+		);
+		border-radius: 3px;
+		background-size: 28px 28px;
+
+		transition: height .5s;
+		animation: vjs-slider-indeterminate .5s linear infinite;
+
+		.vjs-play-progress {
+			display: none;
+		}
+	}
+}
+@keyframes vjs-slider-indeterminate {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 28px 0;
+	}
+}
