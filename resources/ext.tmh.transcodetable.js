@@ -1,90 +1,74 @@
-/**
+/*!
 * Javascript to support transcode table on image page
 */
-( function ( mw, $ ) {
+/*global OO*/
+( function ( mw, $, OO ) {
 	$( document ).ready( function () {
-		var errorPopup, $errorLink;
+		function errorPopup( event ) {
+			var tKey = $( event.target ).attr( 'data-transcodekey' ),
+				messageDialog = new OO.ui.MessageDialog(),
+				windowManager = new OO.ui.WindowManager();
 
-		errorPopup = function () {
-			// pop up dialog
-			mw.addDialog( {
-				'width': '640',
-				'height': '480',
-				'title': $(this).attr( 'title' ),
-				'content': $('<textarea />')
-					.css( {
-						'width':'99%',
-						'height':'99%'
-					} )
-					.text( $(this).attr('data-error') )
-			} )
-			.css( 'overflow', 'hidden' );
-			return false;
-		};
+			event.preventDefault();
+			$( 'body' ).append( windowManager.$element );
+			windowManager.addWindows( [ messageDialog ] );
 
-		// Old version. Need to keep for a little while in case of cached pages.
-		$( '.mw-filepage-transcodestatus .errorlink' ).click( errorPopup );
-		// New version.
-		$errorLink = $( '.mw-filepage-transcodestatus .mw-tmh-pseudo-error-link' );
-		$errorLink.wrapInner( function () {
-			var $this = $( this );
-			return $( '<a />' ).attr( {
-				href: '#',
-				title: $this.text(),
-				'data-error': $this.attr( 'data-error' )
-			} ).click( errorPopup );
-		} );
-
-		// Reset transcode action:
-		$( '.mw-filepage-transcodereset a' ).click( function () {
-			var tKey = $( this ).attr( 'data-transcodekey' ),
-			buttons = {};
-
-			buttons[ mw.msg( 'mwe-ok' ) ] = function () {
-				var api,
-					_thisDialog = this,
-					cancelBtn = {};
-
-				// Only show cancel button while loading:
-				cancelBtn[ mw.msg( 'mwe-cancel' ) ] = function () {
-					$(this).dialog( 'close' );
-				};
-				$( _thisDialog ).dialog( 'option', 'buttons', cancelBtn );
-
-				$( this ).loadingSpinner();
-
-				api = new mw.Api();
-				api.postWithEditToken( {
-					'action' : 'transcodereset',
-					'transcodekey' : tKey,
-					'title' : mw.config.get('wgPageName')
-				} ).done( function () {
-					// Refresh the page
-					location.reload();
-				} ).fail( function ( code, data ) {
-					if( data.error && data.error.info ){
-						$( _thisDialog ).text( data.error.info );
-					} else {
-						$( _thisDialog ).text( mw.msg( 'timedmedia-reset-error' ) );
+			// Configure the message dialog when it is opened with the window manager's openWindow() method.
+			windowManager.openWindow( messageDialog, {
+				title: mw.msg( 'timedmedia-reset' ),
+				message: $( [
+						document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
+						document.createElement( 'br' ),
+						document.createElement( 'br' ),
+						document.createTextNode( mw.msg( 'timedmedia-reset-areyousure' ) )
+					] ),
+				actions: [
+					{
+						action: 'reset',
+						label: mw.msg( 'timedmedia-reset-button-reset' ),
+						flags: [ 'primary', 'destructive' ]
+					},
+					{
+						action: 'cancel',
+						label: mw.msg( 'timedmedia-reset-button-cancel' ),
+						flags: 'safe'
 					}
-					var okBtn = {};
-					okBtn[ mw.msg('mwe-ok') ] = function() { $(this).dialog( 'close' ); };
-					$( _thisDialog ).dialog( 'option', 'buttons', okBtn );
+				]
+			} ).then( function ( opened ) {
+				opened.then( function ( closing, data ) {
+					var api;
+					if ( data && data.action === 'reset' ) {
+						api = new mw.Api();
+						api.postWithEditToken( {
+							action: 'transcodereset',
+							transcodekey: tKey,
+							title: mw.config.get( 'wgPageName' )
+						} ).done( function () {
+							// Refresh the page
+							location.reload();
+						} ).fail( function ( code, data ) {
+							var errorText;
+							if ( data.error && data.error.info ) {
+								errorText = data.error.info;
+							} else {
+								errorText = mw.msg( 'timedmedia-reset-error' );
+							}
+							windowManager.openWindow( messageDialog, {
+								message: errorText,
+								actions: [
+									{
+										action: 'ok',
+										label: mw.msg( 'timedmedia-reset-button-dismiss' ),
+										flags: 'safe'
+									}
+								]
+							} );
+						} );
+					}
 				} );
-			};
-			buttons[ mw.msg( 'mwe-cancel' ) ] = function () {
-				$( this ).dialog( 'close' );
-			};
-			// pop up dialog
-			mw.addDialog( {
-				'width': '400',
-				'height': '200',
-				'title': mw.msg( 'timedmedia-reset' ),
-				'content': mw.msg( 'timedmedia-reset-confirm' ),
-				'buttons': buttons
-			} )
-			.css( 'overflow', 'hidden' );
-			return false;
-		});
-	});
-} )( mediaWiki, jQuery );
+			} );
+		}
+
+		$( '.mw-filepage-transcodereset a' ).click( errorPopup );
+	} );
+} )( mediaWiki, jQuery, OO );
