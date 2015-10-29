@@ -10,7 +10,8 @@
 			"Revi",
 			"IRTC1015",
 			"Hwangjy9",
-			"Kurousagi"
+			"Kurousagi",
+			"Yearning"
 		]
 	},
 	"timedmediahandler-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",
@@ -59,8 +60,11 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1분|$1분}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1초|$1초}}",
 	"timedmedia-reset": "코드 변환 초기화",
-	"timedmedia-reset-confirm": "코드 변환을 초기화하면 기존 파일이 (있는 경우) 제거되며, 작업 대기열로 코드 변환을 다시 추가합니다. 다시 변환하는 데 다소 시간이 걸릴 것입니다. <br /><br />\n계속하겠습니까?",
+	"timedmedia-reset-button-cancel": "초기화하지 않음",
+	"timedmedia-reset-button-dismiss": "숨기기",
+	"timedmedia-reset-button-reset": "초기화",
 	"timedmedia-reset-error": "코드 변환 작업을 초기화하는 데 오류가 났습니다.",
+	"timedmedia-reset-explanation": "코드 변환을 초기화하면 기존 파일이 (있는 경우) 제거되며, 작업 대기열로 코드 변환을 다시 추가합니다. 다시 변환하는 데 다소 시간이 걸릴 것입니다. <br /><br />\n계속하겠습니까?",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 원본",
 	"timedmedia-source-file-desc": "원본 $1 파일, $2 × $3 ($4)",

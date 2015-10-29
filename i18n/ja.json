@@ -7,7 +7,8 @@
 			"Kahusi",
 			"Shirayuki",
 			"青子守歌",
-			"Otokoume"
+			"Otokoume",
+			"Sujiniku"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -52,6 +53,8 @@
 	"timedmedia-hours": "{{PLURAL:$1|$1 時間}}",
 	"timedmedia-minutes": "{{PLURAL:$1|$1 分}}",
 	"timedmedia-seconds": "{{PLURAL:$1|$1 秒}}",
+	"timedmedia-reset-button-cancel": "リセットしない",
+	"timedmedia-reset-button-reset": "リセット",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 ソース",
 	"timedmedia-source-file-desc": "オリジナル $1 ファイル、$2 × $3 ($4)",
