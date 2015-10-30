@@ -43,6 +43,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 Sekonn|$1 Sekonnen}}",
 	"timedmedia-reset": "Transcode zrécksetzen",
 	"timedmedia-reset-areyousure": "Sidd Dir sécher datt Dir Iech wëllt virufueren?",
+	"timedmedia-reset-button-cancel": "Net zrécksetzen",
 	"timedmedia-reset-button-dismiss": "Verwerfen",
 	"timedmedia-reset-button-reset": "Zrécksetzen",
 	"timedmedia-mp4": "MP4",
