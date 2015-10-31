@@ -6,10 +6,11 @@
 			"Luckas",
 			"Opraco",
 			"Guilhermemau",
-			"Fasouzafreitas"
+			"Fasouzafreitas",
+			"Eduardo Addad de Oliveira"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
+	"timedmediahandler-desc": "Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
 	"timedmedia-ogg-short-audio": "Arquivo de áudio Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Arquivo de vídeo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Arquivo multimídia Ogg $1, $2",
@@ -30,6 +31,10 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 hora|$1 horas}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minutos}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 segundo|$1 segundos}}",
+	"timedmedia-reset-areyousure": "Tem certeza de que quer aposentar-se?",
+	"timedmedia-reset-button-cancel": "Não reiniciar",
+	"timedmedia-reset-button-dismiss": "Dispensar",
+	"timedmedia-reset-button-reset": "Reiniciar",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Fonte $1",
 	"timedmedia-source-audio-file-desc": "Arquivo $1 original ($2)",
