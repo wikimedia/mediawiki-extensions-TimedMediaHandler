@@ -53,8 +53,11 @@
 	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC-spiller",
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264-spiller",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM-avspiller",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9-avspiller",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Generisk Ogg-utvidelse",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "appen VLC for iOS",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "IE WebM-utvidelsesnedlaster",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript Ogg-avspiller",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-utvidelse",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -88,5 +91,8 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Last ned appen VLC fra App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Åpne denne videoen i VLC-appen",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Last ned denne videoen",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "For å spille av videoer på dette nettstedet, trenger du appen VLC (gratis). Vil du installere nå?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "For å spille av videoer på dette nettstedet, trenger du appen VLC (gratis). Vil du installere nå?",
+	"mwe-embedplayer-iewebmprompt-intro": "Oops! En ting til før du kan spille av denne videoen…",
+	"mwe-embedplayer-iewebmprompt-linktext": "Installer WebM-komponenter for Microsoft Internet Explorer",
+	"mwe-embedplayer-iewebmprompt-outro": "Gjenoppfrisk denne siden etter installering."
 }

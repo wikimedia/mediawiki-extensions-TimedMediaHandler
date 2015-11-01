@@ -35,6 +35,7 @@
 	"timedmedia-reset-button-cancel": "Não reiniciar",
 	"timedmedia-reset-button-dismiss": "Dispensar",
 	"timedmedia-reset-button-reset": "Reiniciar",
+	"timedmedia-reset-explanation": "A redefinição da transcode irá remover qualquer arquivo existente (se houver), e ele vai voltar a adicionar o transcode para a fila de trabalho. Vai levar algum tempo para re-transcodificação.",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Fonte $1",
 	"timedmedia-source-audio-file-desc": "Arquivo $1 original ($2)",
