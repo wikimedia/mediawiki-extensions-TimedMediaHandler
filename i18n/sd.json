@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aursani"
+			"Aursani",
+			"Mehtab ahmed"
 		]
 	},
+	"timedmedia-reset-areyousure": "ڇا توهانکي يقين آهي ته توهان اڳتي وڌڻ ٿا چاهيو؟",
+	"timedmedia-reset-button-cancel": "ٻيهر ترتيب نه ڪريو",
+	"timedmedia-reset-button-dismiss": "ختم ڪريو.",
+	"timedmedia-reset-button-reset": "ٻيهر ترتيب ڪريو",
 	"timedmedia-source-file": "$1 ذريعو",
 	"timedmedia-source-audio-file-desc": "اصلوڪو $1 فائيل ($2)"
 }
