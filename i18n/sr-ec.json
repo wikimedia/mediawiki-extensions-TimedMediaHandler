@@ -5,7 +5,8 @@
 			"Millosh",
 			"Rancher",
 			"Sasa Stefanovic",
-			"Михајло Анђелковић"
+			"Михајло Анђелковић",
+			"Сербијана"
 		]
 	},
 	"timedmediahandler-desc": "Обрађивач за звук, видео и усклађени текст, с подршком за формате WebM, Ogg Theora, Vorbis и SRT",
@@ -27,13 +28,13 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 минут|$1 минута}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 секунд|$1 секунде|$1 секунди}}",
 	"timedmedia-reset": "Поништи прекодирање",
-	"timedmedia-reset-confirm": "Поништавање овог прекодирања ће уклонити постојећу датотеку (ако постоји) и вратити прекодирање на списак задатака. Ова радња може да потраје. <br /><br />\nЖелите ли да наставите?",
 	"timedmedia-reset-error": "Грешка при поништавању задатака за прекодирање.",
+	"timedmedia-reset-explanation": "Поништавање овог прекодирања ће уклонити постојећу датотеку (ако постоји) и вратити прекодирање на списак задатака. Ова радња може да потраје.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "Изворни $1",
-	"timedmedia-source-file-desc": "Изворни $1, $2 × $3 ($4)",
+	"timedmedia-source-file-desc": "Изворна датотека $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Тип датотеке $1 ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160п",
 	"timedmedia-derivative-desc-160p.ogv": "Нископропусни .ogg видео (160п)",
