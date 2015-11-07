@@ -7,11 +7,6 @@
  *
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( "ApiBase.php" );
-}
-
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	public function __construct( $query, $moduleName, $prefix = 'vi' ) {
