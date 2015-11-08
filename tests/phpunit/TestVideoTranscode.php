@@ -54,6 +54,9 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 			if( $codec == 'vp8' ){
 				$hasWebM = true;
 			}
+			if ( $codec == 'vp9' ) {
+				$hasWebM = true;
+			}
 			$targetEncodes[ $row->transcode_key ] = $row;
 		};
 		// Make sure we have ogg and webm:
