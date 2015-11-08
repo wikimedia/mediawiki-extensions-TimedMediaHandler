@@ -9,12 +9,13 @@
 			"Sator"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin",
+	"timedmediahandler-desc": "Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin",
 	"timedmedia-ogg-short-audio": "Ogg $1 soinu fitxategia, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 bideo fitxategia, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 media fitxategia, $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 soinu fitxategia, $2 iraupea, $3",
 	"timedmedia-ogg-long-error": "ogg fitxategi okerra: $1",
+	"timedmedia-no-player-js": "Barka, zure nabigatzaileak JavaScript ezgaituta du ez media hau ikusteko tresnarik.<br />\n<a href=\"$1\">Klipa jaitsi</a> dezakezu edo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ikusteko tresna bat jaitsi</a> zure nabigatzailean jo ahal izateko.",
 	"timedmedia-more": "Gehiago...",
 	"timedmedia-dismiss": "Itxi",
 	"timedmedia-download": "Fitxategia jaitsi",
