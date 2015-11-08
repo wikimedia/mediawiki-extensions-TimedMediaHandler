@@ -1,6 +1,6 @@
-( function( mw, $ ) {
+( function ( mw, $ ) {
 	// only enable fullscreen if enabled in iframe
-	mw.setConfig('EmbedPlayer.EnableFullscreen', document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || false );
+	mw.setConfig( 'EmbedPlayer.EnableFullscreen', document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || false );
 
 	mw.setConfig( 'EmbedPlayer.IsIframeServer', true );
 
@@ -9,7 +9,7 @@
 		var $players = $( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
 		$players.embedPlayer( function () {
 			$( '#videoContainer' ).css( {
-				'visibility':'visible'
+				visibility: 'visible'
 			} );
 			$( '#bgimage' ).remove();
 		} );

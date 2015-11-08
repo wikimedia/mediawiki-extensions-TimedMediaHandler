@@ -1,30 +1,30 @@
-( function( $, mw ) {
+( function ( $, mw ) {
 
 	var support = mw.OgvJsSupport = {
 		/**
 		 * Ensure that the OGVPlayer class is loaded before continuing.
 		 *
-		 * @return jQuery.Deferred
+		 * @return {jQuery.Deferred}
 		 */
-		loadOgvJs: function() {
-			return $.Deferred( function( deferred ) {
+		loadOgvJs: function () {
+			return $.Deferred( function ( deferred ) {
 				if ( typeof OGVPlayer === 'undefined' ) {
-					mw.loader.using( 'ext.tmh.OgvJs', function() {
+					mw.loader.using( 'ext.tmh.OgvJs', function () {
 						OGVLoader.base = support.basePath();
 						deferred.resolve();
 					} );
 				} else {
 					deferred.resolve();
 				}
-			});
+			} );
 		},
 
 		/**
 		 * Get the base path of ogv.js and friends.
 		 *
-		 * @return string
+		 * @return {string}
 		 */
-		basePath: function() {
+		basePath: function () {
 			var ext = mw.config.get( 'wgExtensionAssetsPath' ),
 				binPlayers = ext + '/TimedMediaHandler/MwEmbedModules/EmbedPlayer/binPlayers';
 			return binPlayers + '/ogv.js';
@@ -38,9 +38,9 @@
 		 * audio is left disabled and won't work when we start things up after an
 		 * asynchronous code load.
 		 *
-		 * @return AudioContext
+		 * @return {AudioContext|null}
 		 */
-		initAudioContext: function() {
+		initAudioContext: function () {
 			var AudioContext = window.AudioContext || window.webkitAudioContext;
 			if ( AudioContext ) {
 				var context = new AudioContext(),
