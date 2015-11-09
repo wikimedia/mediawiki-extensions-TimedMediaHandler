@@ -5,7 +5,8 @@
 			"Vinhtantran",
 			"පසිඳු කාවින්ද",
 			"Trần Nguyễn Minh Huy",
-			"Max20091"
+			"Max20091",
+			"Nguyên Lê"
 		]
 	},
 	"timedmediahandler-desc": "Bộ trình bày các tập tin âm thanh, video, và phụ đề hỗ trợ WebM, Ogg Theora, Vorbis, và srt",
@@ -56,6 +57,7 @@
 	"timedmedia-minutes": "$1 phút",
 	"timedmedia-seconds": "$1 giây",
 	"timedmedia-reset": "Đặt lại chuyển mã",
+	"timedmedia-reset-button-reset": "Mặc định lại",
 	"timedmedia-reset-error": "Lỗi khi đặt lại việc chuyển mã.",
 	"timedmedia-reset-explanation": "Việc đặt lại chuyển mã sẽ xóa tập tin nào hiện có, nếu có, và sẽ lại thêm việc chuyển mã vào hàng đợi việc. Việc chuyển mã lại sẽ mất một chút thì giờ.",
 	"timedmedia-mp4": "MP4",
