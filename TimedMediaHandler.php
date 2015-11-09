@@ -322,7 +322,8 @@ $wgExtensionCredits['media'][] = array(
 		'Tim Starling',
 		'James Heinrich',
 		'Jan Gerber',
-		'Brion Vibber'
+		'Brion Vibber',
+		'Derk-Jan Hartman'
 	),
 	'url' => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmediahandler-desc',
