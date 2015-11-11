@@ -3,10 +3,11 @@
 		"authors": [
 			"Helix84",
 			"TomášPolonec",
-			"Wizzard"
+			"Wizzard",
+			"Teslaton"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom",
+	"timedmediahandler-desc": "Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom",
 	"timedmedia-ogg-short-audio": "Zvukový súbor ogg $1, $2",
 	"timedmedia-ogg-short-video": "Video súbor ogg $1, $2",
 	"timedmedia-ogg-short-general": "Multimediálny súbor ogg $1, $2",
@@ -19,6 +20,7 @@
 	"timedmedia-more": "viac...",
 	"timedmedia-dismiss": "Zatvoriť",
 	"timedmedia-download": "Stiahnuť súbor",
+	"timedmedia-play-media": "Prehrať súbor",
 	"timedmedia-desc-link": "O tomto súbore",
 	"timedmedia-source-file": "Zdroj $1",
 	"timedmedia-source-audio-file-desc": "Pôvodný súbor $1 ($2)"

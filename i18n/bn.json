@@ -29,7 +29,7 @@
 	"timedmedia-status-unknown": "অবস্থা অজানা",
 	"timedmedia-transcodeinfo": "ব্যুৎপন্ন বর্ণনা ট্রান্সকোড",
 	"timedmedia-actions": "কার্য",
-	"timedmedia-direct-link": "ব্যুৎপন্ন ডাউনলোড করুন",
+	"timedmedia-direct-link": "ডাউনলোড",
 	"timedmedia-not-ready": "তৈরি নয়",
 	"timedmedia-percent-done": "প্রায় $1% করা হয়েছে",
 	"timedmedia-days": "{{PLURAL:$1|১ দিন|$1 দিন}}",
