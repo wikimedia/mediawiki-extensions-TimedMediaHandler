@@ -34,6 +34,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 eurvezh|$1 eurvezh}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 vunutenn|$1 munutenn}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|eilenn|eilenn}}",
+	"timedmedia-reset-button-reset": "Adderaouekaat",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Mammenn $1",
 	"timedmedia-source-file-desc": "Orin $1, $2 × $3 ($4)",
