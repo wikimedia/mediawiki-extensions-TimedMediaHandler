@@ -60,7 +60,7 @@
 	"timedmedia-reset": "Transkodu sıfırla",
 	"timedmedia-reset-button-reset": "Sıfırla",
 	"timedmedia-reset-error": "Transkodlama işinde sıfırlama hatası.",
-	"timedmedia-reset-explanation": "Bu transkodu sıfırladığınız takdirde (eğer varsa), mevcut dosyalar kaldırılacak ve yeniden iş kuyruğuna alınacaktır. Bu yeniden kodlama biraz zaman alacaktır.<br /><br />\nDevam etmek istediğinize emin misiniz?",
+	"timedmedia-reset-explanation": "Bu transkodu sıfırladığınız takdirde (eğer varsa), mevcut dosyalar kaldırılacak ve yeniden iş kuyruğuna alınacaktır. Bu yeniden kodlama biraz zaman alacaktır.",
 	"timedmedia-source-file": "$1 kaynağı",
 	"timedmedia-source-file-desc": "Orijinal $1 dosyası, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Orijinal $1 dosyası ($2)",
