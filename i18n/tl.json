@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"AnakngAraw",
-			"Sky Harbor"
+			"Sky Harbor",
+			"Leeheonjin"
 		]
 	},
 	"timedmediahandler-desc": "Tagahawak para sa audio, bidyo at inoorasang teksto, na may pagtangkilik ng anyo para sa WebM, Ogg Theora, Vorbis, srt",
@@ -43,8 +44,10 @@
 	"timedmedia-minutes": "{{PLURAL:$1|minuto|$1 mga minuto}}",
 	"timedmedia-seconds": "{{PLURAL:$1|segundo|$1 mga segundo}}",
 	"timedmedia-reset": "Itakdang muli ang transkodigo",
-	"timedmedia-reset-confirm": "Ang muling pagtatakda ng transkodigong ito ay magtatanggal ng anumang umiiral na talaksan (kung naroroon), at muling nitong idaragdag ang transkodigo sa pila ng trabaho. Gugugol ito ng ilang panahon upang muling maitranskodigo. <br /><br />\nNakatitiyak ka ba na nais mong magpatuloy?",
+	"timedmedia-reset-button-cancel": "Huwag itakdang-muli (reset)",
+	"timedmedia-reset-button-reset": "Muling itakda",
 	"timedmedia-reset-error": "Kamalian sa gawain ng muling pagtatakda ng transkodigo.",
+	"timedmedia-reset-explanation": "Ang muling pagtatakda ng transkodigong ito ay magtatanggal ng anumang umiiral na talaksan (kung naroroon), at muling nitong idaragdag ang transkodigo sa pila ng trabaho. Gugugol ito ng ilang panahon upang muling maitranskodigo. <br /><br />\nNakatitiyak ka ba na nais mong magpatuloy?",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
 	"timedmedia-source-file": "$1 pinagkukunan",
