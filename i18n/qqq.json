@@ -151,6 +151,7 @@
 	"timedmedia-derivative-state-active": "currently active transcoes\nParameters are:\n* $1 number of transcodes",
 	"timedmedia-derivative-state-queued": "queued transcode jobs\nParameters are:\n* $1 number of transcodes",
 	"timedmedia-derivative-state-failed": "failed transcode jobs\nParameters are:\n* $1 number of transcodes",
+	"timedmedia-no-derivatives": "Shown on file description page instead of a table with the transcoded derivates if this file does not require transcoding.",
 	"timedmedia-file": "Used as table column header.\n{{Identical|File}}",
 	"timedmedia-audios": "Number of audio files on [[Special:TimedMediaHandler]]. Parameters:\n* $1 - number of audio files\n{{Related|Timedmedia-format-type}}",
 	"timedmedia-ogg-audios": "Number of ogg audio files, displayed on [[Special:TimedMediaHandler]]. Parameters:\n* $1 - the number of files\n{{Related|Timedmedia-format-type}}",
