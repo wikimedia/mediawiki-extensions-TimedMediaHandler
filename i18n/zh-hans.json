@@ -116,6 +116,7 @@
 	"timedmedia-derivative-state-active": "$1个正在运行的转码任务",
 	"timedmedia-derivative-state-queued": "$1个队列中的转码任务",
 	"timedmedia-derivative-state-failed": "$1次转码失败",
+	"timedmedia-no-derivatives": "不需要转码。",
 	"timedmedia-file": "文件",
 	"timedmedia-audios": "$1个音频文件",
 	"timedmedia-ogg-audios": "$1个Ogg音频文件",

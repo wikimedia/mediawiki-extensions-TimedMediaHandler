@@ -10,7 +10,8 @@
 			"MaxSem",
 			"Okras",
 			"Александр Сигачёв",
-			"NBS"
+			"NBS",
+			"Frhdkazan"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -96,6 +97,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 запущенное декодирование|$1 запущенных декодирования|$1 запущенных декодирований}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 поставленное в очередь декодирование|$1 поставленных в очередь декодирования|$1 поставленных в очередь декодирований}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 неудавшееся декодирование|$1 неудавшихся декодирования|$1 неудавшихся декодирований}}",
+	"timedmedia-no-derivatives": "Транскодирования не требуется.",
 	"timedmedia-file": "Файл",
 	"timedmedia-audios": "{{PLURAL:$1|$1 аудиофайл|$1 аудиофайла|$1 аудиофайлов̟}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 аудиофайл Ogg|$1 аудиофайла Ogg|$1 аудиофайлов Ogg}}",
