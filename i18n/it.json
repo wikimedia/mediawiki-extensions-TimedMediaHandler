@@ -107,6 +107,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in esecuzione",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coda",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}",
+	"timedmedia-no-derivatives": "Nessuna transcodifica richiesta.",
 	"timedmedia-file": "File",
 	"timedmedia-audios": "{{PLURAL:$1|$1 file audio}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 file audio Ogg}}",

@@ -102,6 +102,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 vykdomas perkodavimas|$1 vykdomi perkodavimai}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 ieškomas perkodavimas|$1 ieškomi perkodavimai}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nepavykęs perkodavimas|$1 nepavykę perkodavimai}}",
+	"timedmedia-no-derivatives": "Perkodavimo nereikalaujama.",
 	"timedmedia-file": "Failas",
 	"timedmedia-audios": "{{PLURAL:$1|$1 audio failas|$1 audio failai}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg audio failas|$1 Ogg audio failai}}",
