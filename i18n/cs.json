@@ -6,7 +6,8 @@
 			"Matěj Grabovský",
 			"Mormegil",
 			"Paxt",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Cvanca"
 		]
 	},
 	"timedmediahandler-desc": "Obsluha zvuků, videa a časovaného textu s podporou formátů WebM, Ogg Theora, Vorbis, srt",
@@ -48,6 +49,7 @@
 	"timedmedia-minutes": "$1 {{PLURAL:$1|minuta|minuty|minut}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
 	"timedmedia-reset": "Obnovit transkódování",
+	"timedmedia-reset-button-dismiss": "Zavřít",
 	"timedmedia-source-file": "Zdrojový soubor $1",
 	"timedmedia-source-audio-file-desc": "Původní soubor $1 ($2)",
 	"timedmedia-subtitle-new": "Vytvoření nového překladu nebo editace stávajícího",

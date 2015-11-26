@@ -4,6 +4,7 @@
 			"Saimawnkham"
 		]
 	},
+	"timedmedia-no-player-js": "ၸႂ်ဢမ်ႇလီ​တေႉၶႃႈ။ တူဝ်ပိုတ်ႇဝႅပ်ႉၸဝ်ႈၵဝ်ႇၼႆႉ ထုၵ်ႇဢိုတ်းဝႆႉ JavaScript  ဢမ်ႇၼၼ် မၼ်းတေဢမ်ႇၵမ်ႉထႅမ်ပၼ် ၸၢၵ်ႈပိုတ်ႇ။<br />\nၸဝ်ႈၵဝ်ႇ ၸၢင်ႈ <a href=\"$1\">လူတ်ႇလူင်းဢဝ် ၾၢႆႇ</a> or <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">လူတ်ႇလူင်းဢဝ် ၸၢၵ်ႈပိုတ်ႇ</a> တွၼ်ႈတႃႇပိုတ်ႇ ၾၢႆႇ ၵႃႈတီႈၼႂ်း တူဝ်ပိုတ်ႇဝႅပ်ႉ ၸဝ်ႈၵဝ်ႇၼၼ်ႉ။",
 	"timedmedia-source-file": "ငဝ်ႈငႃႇ $1",
 	"timedmedia-source-audio-file-desc": "ၾၢႆႇငဝ်ႈတိုၼ်း $1 ၾၢႆႇ ($2)"
 }
