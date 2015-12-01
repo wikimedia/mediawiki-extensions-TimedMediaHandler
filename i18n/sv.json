@@ -9,7 +9,8 @@
 			"Rotsee",
 			"Skalman",
 			"WikiPhoenix",
-			"Abbedabb"
+			"Abbedabb",
+			"Fader"
 		]
 	},
 	"timedmediahandler-desc": "Hanterare för ljud-, video- och tidsbestämd text, med stöd för format WebM, Ogg Theora, Vorbis, srt",
@@ -60,8 +61,10 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minuter}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekund|$1 sekunder}}",
 	"timedmedia-reset": "Nollställ transkodningen",
-	"timedmedia-reset-confirm": "Nollställning av denna transkodning tar bort alla befintliga filer (om närvarande), och lägger åter till transkodningen till jobbkön. Det kommer att ta tid att om-transkoda.<br /><br />\nÄr du säker på att du vill fortsätta?",
+	"timedmedia-reset-button-cancel": "Återställ inte",
+	"timedmedia-reset-button-reset": "Återställ",
 	"timedmedia-reset-error": "Fel i nollställningen av transkod-jobbet.",
+	"timedmedia-reset-explanation": "Nollställning av denna transkodning tar bort alla befintliga filer (om närvarande), och lägger åter till transkodningen till jobbkön. Det kommer att ta tid att om-transkoda.<br /><br />\nÄr du säker på att du vill fortsätta?",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 Källa",
 	"timedmedia-source-file-desc": "Ursprunglig $1-fil, $2 × $3 ($4)",

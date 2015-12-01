@@ -20,6 +20,7 @@
 	"timedmedia-days": "{{PLURAL:$1|1 ورځ|$1 ورځې}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 گړۍ|$1 گړۍ}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 دقيقه|دقيقې}}",
+	"timedmedia-reset-button-dismiss": "تړل",
 	"timedmedia-reset-button-reset": "بياايښودل",
 	"timedmedia-source-file": "$1 سرچينه",
 	"timedmedia-source-audio-file-desc": "اصلي $1 دوتنه ($2)",
