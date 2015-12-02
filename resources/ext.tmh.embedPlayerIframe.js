@@ -16,4 +16,4 @@
 	};
 
 	$( iframePlayerInit );
-} )( mediaWiki, jQuery );
+}( mediaWiki, jQuery ) );
