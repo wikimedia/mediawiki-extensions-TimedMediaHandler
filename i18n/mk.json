@@ -126,6 +126,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 прекодирање во тек|$1 прекодирања во тек}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 прекодирање во редица на чекање|$1 прекодирања во редица на чекање}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 неуспешно прекодирање|$1 неуспешни прекодирања}}",
+	"timedmedia-no-derivatives": "Не се бара прекодирање.",
 	"timedmedia-file": "Податотека",
 	"timedmedia-audios": "{{PLURAL:$1|Една аудиоснимка|$1 аудиоснимки}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|Една Ogg-аудиоснимка|$1 Ogg-аудиоснимки}}",
