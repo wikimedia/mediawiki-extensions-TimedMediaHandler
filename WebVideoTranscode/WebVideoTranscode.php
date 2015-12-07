@@ -555,7 +555,7 @@ class WebVideoTranscode {
 			'action' => 'query',
 			'prop' => 'videoinfo',
 			'viprop' => 'derivatives',
-			'titles' => MWNamespace::getCanonicalName( NS_FILE ) .':'. $file->getTitle()->mTextform
+			'titles' => MWNamespace::getCanonicalName( NS_FILE ) .':'. $file->getTitle()->getText()
 		);
 
 		$data = $file->repo->fetchImageQuery( $query );
