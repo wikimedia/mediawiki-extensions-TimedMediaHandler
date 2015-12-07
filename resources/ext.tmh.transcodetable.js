@@ -71,4 +71,4 @@
 
 		$( '.mw-filepage-transcodereset a' ).click( errorPopup );
 	} );
-} )( mediaWiki, jQuery, OO );
+}( mediaWiki, jQuery, OO ) );

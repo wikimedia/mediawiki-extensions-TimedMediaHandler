@@ -32,13 +32,12 @@
 	// Legacy
 	"nomen": true,
 
-	"predef": [
-		"mediaWiki",
-		"mw",
-		"jQuery",
-		"OGVVersion",
-		"OGVSupport",
-		"OGVPlayer",
-		"OGVLoader"
-	]
+	"globals": {
+		"mediaWiki": false,
+		"jQuery": false,
+		"OGVVersion": false,
+		"OGVSupport": false,
+		"OGVPlayer": false,
+		"OGVLoader": false
+	}
 }

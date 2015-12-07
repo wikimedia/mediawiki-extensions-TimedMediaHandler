@@ -5,4 +5,4 @@
 			$.merge( dependencySet, [ 'mw.MediaWikiPlayerSupport' ] );
 		}
 	} );
-} )( mediaWiki, jQuery );
+}( mediaWiki, jQuery ) );
