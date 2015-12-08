@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hosseinblue"
+		]
+	},
+	"timedmedia-no-player-js": "با عرض پوزش، نرم افزار جاوا اسکریپت برروی مرورگر شما فعال نیست، و یا مرورگر شما از این نرم افزار پشتیبانی نمی کند.<br />\nشما میتوانید <a href=\"$1\">این ویدیو را دانلود</a> و یا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">یک پخش کننده</a> برای اجرای این ویدیو دانلود نمایید.",
+	"timedmedia-source-file": "$1 مبدأ/بِنچۀک",
+	"timedmedia-source-audio-file-desc": "Original $1 file ($2)"
+}
