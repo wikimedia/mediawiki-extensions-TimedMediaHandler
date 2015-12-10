@@ -16,6 +16,14 @@
 		plugins: {
 			videoJsResolutionSwitcher: {
 				sourceOrder: true
+			},
+			responsiveLayout: {
+				layoutMap: [
+					{ layoutClassName: 'vjs-layout-tiny', width: 3 },
+					{ layoutClassName: 'vjs-layout-x-small', width: 4 },
+					{ layoutClassName: 'vjs-layout-small', width: 5 },
+					{ layoutClassName: 'defaults', width: 6 }
+				]
 			}
 		},
 		ogvjs: {
