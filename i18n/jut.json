@@ -19,5 +19,6 @@
 	"timedmedia-dismiss": "Lokk",
 	"timedmedia-download": "Lägg fil nier",
 	"timedmedia-desc-link": "Om fili",
-	"timedmedia-source-file": "$1 tjelj"
+	"timedmedia-source-file": "$1 tjelj",
+	"timedmedia-source-audio-file-desc": "Urspruwli $1 fil ($2)"
 }
