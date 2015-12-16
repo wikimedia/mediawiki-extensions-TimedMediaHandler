@@ -7,10 +7,11 @@
 			"SpeedyGonsales",
 			"Roberta F.",
 			"Fraxinus",
-			"Teoo3"
+			"Teoo3",
+			"MaGa"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
+	"timedmediahandler-desc": "Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",
 	"timedmedia-ogg-short-audio": "Ogg $1 zvučna datoteka, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 video datoteka, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 medijska datoteka, $2",
@@ -24,6 +25,7 @@
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Snimi datoteku",
 	"timedmedia-desc-link": "O ovoj datoteci",
+	"timedmedia-actions": "Radnje",
 	"timedmedia-source-file": "Izvor $1",
 	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)",
 	"timedmedia-derivative-desc-2160p.vp9.webm": "Full 4K streamable WebM VP9 (2160P)",
