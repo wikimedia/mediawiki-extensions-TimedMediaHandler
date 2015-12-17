@@ -101,6 +101,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 trescodificación activa|$1 trescodificaciones actives}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 trescodificación|$1 trescodificaciones}} na cola",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 trescodificación fallida|$1 trescodificaciones fallíes}}",
+	"timedmedia-no-derivatives": "Nun rique trescodificación.",
 	"timedmedia-file": "Ficheru",
 	"timedmedia-audios": "{{PLURAL:$1|$1 ficheru de soníu|$1 ficheros de soníu}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 ficheru de soníu Ogg|$1 ficheros de soníu Ogg}}",
