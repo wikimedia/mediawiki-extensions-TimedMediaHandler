@@ -53,7 +53,11 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 	 * @return string Title part with underscores
 	 */
 	public function titlePartToKey( $titlePart, $defaultNamespace = NS_MAIN ) {
-		return substr( $this->titleToKey( $titlePart . 'x' ), 0, -1 );
+		$t = Title::newFromText( $titlePart . 'x' );
+		if ( !$t ) {
+			$this->dieUsageMsg( array( 'invalidtitle', $titlePart ) );
+		}
+		return substr( $t->getPrefixedDBkey(), 0, -1 );
 	}
 }
 
