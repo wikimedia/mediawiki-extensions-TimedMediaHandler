@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Obaid Raza"
 		]
 	},
+	"mwe-embedplayer-credit-title": "عنوان: $1",
+	"mwe-embedplayer-credit-date": "تاریخ: $1",
+	"mwe-embedplayer-credit-author": "مصنف: $1",
+	"mwe-embedplayer-nocredits": "کریڈٹ موجود نہیں",
+	"mwe-embedplayer-loading_plugin": "پلگ ان لوڈ ہو رہی ہے ۔ ۔ ۔",
 	"mwe-embedplayer-download": "ڈاؤن لوڈ ، اتارنا",
 	"mwe-embedplayer-share": "حصہ",
 	"mwe-embedplayer-credits": "کریڈٹ",
