@@ -6,25 +6,20 @@
 	$( document ).ready( function () {
 		function errorPopup( event ) {
 			var tKey = $( event.target ).attr( 'data-transcodekey' ),
-				messageDialog = new OO.ui.MessageDialog(),
-				windowManager = new OO.ui.WindowManager();
-
-			event.preventDefault();
-			$( 'body' ).append( windowManager.$element );
-			windowManager.addWindows( [ messageDialog ] );
-
-			// Configure the message dialog when it is opened with the window manager's openWindow() method.
-			windowManager.openWindow( messageDialog, {
-				title: mw.msg( 'timedmedia-reset' ),
-				message: $( [
+				message = $( [
 						document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
 						document.createElement( 'br' ),
 						document.createElement( 'br' ),
 						document.createTextNode( mw.msg( 'timedmedia-reset-areyousure' ) )
-					] ),
+				] );
+
+			event.preventDefault();
+
+			OO.ui.confirm( message, {
+				title: mw.msg( 'timedmedia-reset' ),
 				actions: [
 					{
-						action: 'reset',
+						action: 'accept',
 						label: mw.msg( 'timedmedia-reset-button-reset' ),
 						flags: [ 'primary', 'destructive' ]
 					},
@@ -34,38 +29,35 @@
 						flags: 'safe'
 					}
 				]
-			} ).then( function ( opened ) {
-				opened.then( function ( closing, data ) {
-					var api;
-					if ( data && data.action === 'reset' ) {
-						api = new mw.Api();
-						api.postWithEditToken( {
-							action: 'transcodereset',
-							transcodekey: tKey,
-							title: mw.config.get( 'wgPageName' )
-						} ).done( function () {
-							// Refresh the page
-							location.reload();
-						} ).fail( function ( code, data ) {
-							var errorText;
-							if ( data.error && data.error.info ) {
-								errorText = data.error.info;
-							} else {
-								errorText = mw.msg( 'timedmedia-reset-error' );
-							}
-							windowManager.openWindow( messageDialog, {
-								message: errorText,
-								actions: [
-									{
-										action: 'ok',
-										label: mw.msg( 'timedmedia-reset-button-dismiss' ),
-										flags: 'safe'
-									}
-								]
-							} );
+			} ).done( function ( confirmed ) {
+				var api;
+				if ( confirmed ) {
+					api = new mw.Api();
+					api.postWithEditToken( {
+						action: 'transcodereset',
+						transcodekey: tKey,
+						title: mw.config.get( 'wgPageName' )
+					} ).done( function () {
+						// Refresh the page
+						location.reload();
+					} ).fail( function ( code, data ) {
+						var errorText;
+						if ( data.error && data.error.info ) {
+							errorText = data.error.info;
+						} else {
+							errorText = mw.msg( 'timedmedia-reset-error' );
+						}
+						OO.ui.alert( errorText, {
+							actions: [
+								{
+									action: 'ok',
+									label: mw.msg( 'timedmedia-reset-button-dismiss' ),
+									flags: 'safe'
+								}
+							]
 						} );
-					}
-				} );
+					} );
+				}
 			} );
 		}
 
