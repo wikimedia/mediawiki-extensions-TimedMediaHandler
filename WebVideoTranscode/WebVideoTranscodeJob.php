@@ -302,7 +302,8 @@ class WebVideoTranscodeJob extends Job {
 		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
 		$url = WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
-		SquidUpdate::purge( array( $url ) );
+		$update = new CdnCacheUpdate( array( $url ) );
+		$update->doUpdate();
 
 		if ( $status !== true ) {
 			$this->setLastError( $status );

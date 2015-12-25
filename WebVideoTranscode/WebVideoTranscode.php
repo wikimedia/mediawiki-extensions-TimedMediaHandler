@@ -768,7 +768,8 @@ class WebVideoTranscode {
 			}
 		}
 
-		SquidUpdate::purge( $urlsToPurge );
+		$update = new CdnCacheUpdate( $urlsToPurge );
+		DeferredUpdates::addUpdate( $update );
 
 		// Build the sql query:
 		$dbw = wfGetDB( DB_MASTER );
