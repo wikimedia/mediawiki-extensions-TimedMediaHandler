@@ -12,11 +12,14 @@
 				inline: false
 			}
 		},
-		techOrder: [ 'html5' ],
+		techOrder: [ 'html5', 'ogvjs' ],
 		plugins: {
 			videoJsResolutionSwitcher: {
 				sourceOrder: true
 			}
+		},
+		ogvjs: {
+			base: mw.OgvJsSupport.basePath()
 		}
 	};
 

@@ -35,7 +35,7 @@ module.exports = function ( grunt ) {
 		},
 		exec: {
 			'npm-update-videojs': {
-				cmd: 'npm update video.js videojs-resolution-switcher',
+				cmd: 'npm update video.js videojs-resolution-switcher videojs-ogvjs',
 				callback: function ( error, stdout, stderr ) {
 					grunt.log.write( stdout );
 					if ( stderr ) {
@@ -63,6 +63,12 @@ module.exports = function ( grunt ) {
 				],
 				dest: 'resources/videojs/'
 			},
+			'videojs-ogvjs': {
+				expand: true,
+				cwd: 'node_modules/videojs-ogvjs/dist/',
+				src: [ '**' ],
+				dest: 'resources/videojs-ogvjs/'
+			},
 			'videojs-resolution-switcher': {
 				expand: true,
 				cwd: 'node_modules/videojs-resolution-switcher/lib/',
@@ -83,7 +89,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'patch:video.js' ] );
+	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'patch:video.js' ] );
 	grunt.registerTask( 'test', [ 'jshint', 'jscs', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };
