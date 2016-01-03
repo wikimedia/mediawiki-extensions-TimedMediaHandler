@@ -4,7 +4,7 @@
 			"Ibrahim"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
+	"timedmediahandler-desc": "Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
 	"timedmedia-ogg-short-audio": "Ogg $1 парвандаи савтӣ, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 парвандаи наворӣ, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 парвандаи расона, $2",
@@ -16,5 +16,7 @@
 	"timedmedia-more": "Бештар...",
 	"timedmedia-dismiss": "Бастан",
 	"timedmedia-download": "Боргирии парванда",
-	"timedmedia-desc-link": "Дар бораи ин парванда"
+	"timedmedia-desc-link": "Дар бораи ин парванда",
+	"timedmedia-source-file": "$1 манбаъ",
+	"timedmedia-source-audio-file-desc": "Аслӣ $1 парванда ($2)"
 }
