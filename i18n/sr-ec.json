@@ -64,7 +64,10 @@
 	"timedmedia-derivative-desc-480p.webm": "WebM за емитовање (480п)",
 	"timedmedia-derivative-720p.webm": "WebM 720п",
 	"timedmedia-derivative-desc-720p.webm": "Висококвалитетни WebM за преузимање (720п)",
+	"timedmedia-subtitle-new-go": "Иди",
 	"timedmedia-subtitle-language": "$1 ($2) титлови",
 	"timedmedia-subtitle-no-video": "Нема видео-снимака повезаних са текућом страницом с титловима",
-	"timedmedia-subtitle-no-subtitles": "Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]"
+	"timedmedia-subtitle-no-subtitles": "Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]",
+	"timedmedia-no-derivatives": "Нема других формата.",
+	"timedmedia-file": "Датотека"
 }
