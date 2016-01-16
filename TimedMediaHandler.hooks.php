@@ -9,11 +9,28 @@
 
 class TimedMediaHandlerHooks {
 
+	// Register TimedMediaHandler namespace IDs
+	// These are configurable due to Commons history: T123823
+	// These need to be before registerhooks due to: T123695
+	public static function onSetupAfterCache() {
+		global $wgEnableLocalTimedText, $wgExtraNamespaces, $wgTimedTextNS;
+		if ( $wgEnableLocalTimedText ) {
+			define( "NS_TIMEDTEXT", $wgTimedTextNS );
+			define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1 );
+
+			$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
+			$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
+		} else {
+			$wgTimedTextNS = false;
+		}
+		return true;
+	}
+
 	// Register TimedMediaHandler Hooks
 	public static function register() {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
-		$wgResourceModules, $wgExcludeFromThumbnailPurge, $wgExtraNamespaces, $wgParserOutputHooks,
-		$wgTimedTextNS, $wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
+		$wgResourceModules, $wgExcludeFromThumbnailPurge, $wgParserOutputHooks,
+		$wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
 		$wgTmhTheoraTwoPassEncoding, $wgTmhWebPlayer;
 
@@ -267,17 +284,10 @@ class TimedMediaHandlerHooks {
 		 * Add support for the "TimedText" NameSpace
 		 */
 		if ( $wgEnableLocalTimedText ) {
-			define( "NS_TIMEDTEXT", $wgTimedTextNS );
-			define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1 );
-
-			$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
-			$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
-
 			// Check for timed text page:
 			$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
 			$wgHooks[ 'ArticleContentOnDiff' ][] = 'TimedMediaHandlerHooks::checkForTimedTextDiff';
 		} else {
-			$wgTimedTextNS = false;
 			// overwrite TimedText.ShowInterface for video with mw-provider=local
 			$wgMwEmbedModuleConfig['TimedText.ShowInterface.local'] = 'off';
 		}
