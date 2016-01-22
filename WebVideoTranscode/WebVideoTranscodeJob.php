@@ -180,7 +180,7 @@ class WebVideoTranscodeJob extends Job {
 		);
 		// Avoid contention and "server has gone away" errors as
 		// the transcode will take a very long time in some cases
-		$dbw->commit( __METHOD__, 'flush' );
+		wfGetLBFactory()->commitAll( __METHOD__ );
 
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
@@ -211,7 +211,7 @@ class WebVideoTranscodeJob extends Job {
 		$this->removeFfmpegLogFiles();
 
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
-		// Confirm the in memory $jobStartTimeCache matches db start time
+		// Confirm that the in memory $jobStartTimeCache matches db start time
 		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
 			array(
 				'transcode_image_name' => $this->getFile()->getName(),
@@ -252,6 +252,9 @@ class WebVideoTranscodeJob extends Job {
 				$storeOptions['headers']['X-Content-Duration'] = floatval( $file->getLength() );
 			}
 
+			// Avoid "server has gone away" errors as copying can be slow
+			wfGetLBFactory()->commitAll( __METHOD__ );
+
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
 			$result = $file->getRepo()->quickImport(
 				$this->getTargetEncodePath(), // temp file
@@ -284,6 +287,7 @@ class WebVideoTranscodeJob extends Job {
 					),
 					__METHOD__
 				);
+				// Commit to reduce contention
 				$dbw->commit( __METHOD__, 'flush' );
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );
 			}
