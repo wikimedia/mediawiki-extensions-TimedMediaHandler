@@ -367,7 +367,7 @@ class WebVideoTranscode {
 		WebVideoTranscode::ENC_OGG_VORBIS =>
 			array(
 				'audioCodec'                 => 'vorbis',
-				'audioQuality'               => '1',
+				'audioQuality'               => '3',
 				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
