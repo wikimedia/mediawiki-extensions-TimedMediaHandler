@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Klenje"
+			"Klenje",
+			"Tocaibon"
 		]
 	},
 	"timedmediahandler-desc": "Gjestôr pai files audio, video e di test cul timp, cun supuart pai formâts WebM, Ogg Theora, Vorbis, srt",
@@ -14,10 +15,13 @@
 	"timedmedia-ogg-long-general": "File multimediâl Ogg, durade $2, $3",
 	"timedmedia-ogg-long-error": "File ogg no valit: $1",
 	"timedmedia-webm-short-video": "File video WebM $1, $2",
+	"timedmedia-no-player-js": "Il to browser nol à JavaScript o lu à disabilitât.<br />\nTu piedis <a href=\"$1\">discjamâ le clip multimediâl</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">un player</a> par viodi la clip sul to browser.",
 	"timedmedia-more": "Altri...",
 	"timedmedia-dismiss": "Siere",
 	"timedmedia-download": "Discjame il file",
 	"timedmedia-desc-link": "Informazions su chest file",
 	"timedmedia-status": "Stât",
-	"timedmedia-actions": "Azions"
+	"timedmedia-actions": "Azions",
+	"timedmedia-source-file": "Risultive $1",
+	"timedmedia-source-audio-file-desc": "Originâl $1 file ($2)"
 }
