@@ -118,5 +118,6 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV audiobestand|$1 WAV audiobestanden}}",
 	"right-transcode-reset": "Video's waarvoor transcoderen mislukt is of die al getranscodeerd zijn opnieuw in de jobqueue plaatsen.",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken",
-	"action-transcode-status": "huidige transcoderingsstatus te bekijken"
+	"action-transcode-status": "huidige transcoderingsstatus te bekijken",
+	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki."
 }
