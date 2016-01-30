@@ -55,6 +55,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 seconde|$1 seconden}}",
 	"timedmedia-reset": "Transcodering opnieuw instellen",
 	"timedmedia-reset-areyousure": "Weet u zeker dat u wilt doorgaan?",
+	"timedmedia-reset-button-cancel": "Niet terugzetten",
 	"timedmedia-reset-button-dismiss": "Sluiten",
 	"timedmedia-reset-button-reset": "Herstellen",
 	"timedmedia-reset-error": "Er is een fout opgetreden tijdens het opnieuw instellen van de transcoderingstaak.",
