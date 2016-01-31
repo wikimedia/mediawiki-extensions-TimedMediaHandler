@@ -1,8 +1,19 @@
 {
-	"@metadata": [],
-	"mwe-embedplayer-player_fullscreen": "Puni ekran",
-	"mwe-embedplayer-paused": "zaustavljeno",
-	"mwe-embedplayer-download": "Učitavanje",
+	"@metadata": {
+		"authors": [
+			"Srdjan m"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Naslov: $1",
+	"mwe-embedplayer-credit-date": "Datum: $1",
+	"mwe-embedplayer-credit-author": "Autor: $1",
+	"mwe-embedplayer-play_clip": "Pusti klip",
+	"mwe-embedplayer-pause_clip": "Pauziraj klip",
+	"mwe-embedplayer-volume_control": "Jačina tona",
+	"mwe-embedplayer-timed_text": "Titlovi",
+	"mwe-embedplayer-player_fullscreen": "Cijeli ekran",
+	"mwe-embedplayer-paused": "pauzirano",
+	"mwe-embedplayer-download": "Preuzmi",
 	"mwe-embedplayer-share": "Dijeli",
 	"mwe-embedplayer-credits": "Zasluge",
 	"mwe-embedplayer-share_this_video": "Dijeli ovaj video",

@@ -3,12 +3,17 @@
 		"authors": [
 			"පසිඳු කාවින්ද",
 			"DCLXVI",
-			"Termininja"
+			"Termininja",
+			"Vodnokon4e"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Заглавие: $1",
 	"mwe-embedplayer-credit-date": "Дата: $1",
 	"mwe-embedplayer-credit-author": "Автор: $1",
+	"mwe-embedplayer-share_this_video": "Сподели видеозаписа",
+	"mwe-embedplayer-share_this_audio": "Сподели аудиофайла",
 	"mwe-embedplayer-menu_btn": "Меню",
-	"mwe-embedplayer-close_btn": "Затвори"
+	"mwe-embedplayer-close_btn": "Затвори",
+	"mwe-embedplayer-ogg-player-vlc-player": "VLC плейър",
+	"mwe-embedplayer-ogg-player-oggNative": "HTML5 Ogg плейър"
 }
