@@ -3,7 +3,8 @@
 		"authors": [
 			"Shirayuki",
 			"青子守歌",
-			"Sujiniku"
+			"Sujiniku",
+			"Otokoume"
 		]
 	},
 	"mwe-embedplayer-credit-title": "タイトル: $1",
@@ -29,6 +30,7 @@
 	"mwe-embedplayer-paused": "一時停止中",
 	"mwe-embedplayer-download_segment": "ダウンロード方法を選択:",
 	"mwe-embedplayer-download_full_video": "動画ファイル全体をダウンロード:",
+	"mwe-embedplayer-download_full_audio": "音声ファイルをダウンロードします:",
 	"mwe-embedplayer-download_right_click": "ダウンロードするには、右クリックして<i>名前を付けてリンク先を保存</i>を選んでください",
 	"mwe-embedplayer-download_clip": "動画をダウンロード",
 	"mwe-embedplayer-download_text": "テキストをダウンロード",
