@@ -307,7 +307,7 @@ $wgAutoloadClasses['SpecialOrphanedTimedText'] = "$timedMediaDir/SpecialOrphaned
 // This way if you set a variable like $wgTimedTextNS in LocalSettings.php
 // after you include TimedMediaHandler we can still read the variable values
 // See also T123695 and T123823
-$wgHooks['SetupAfterCache'][] = 'TimedMediaHandlerHooks::onSetupAfterCache';
+$wgHooks['CanonicalNamespaces'][] = 'TimedMediaHandlerHooks::addCanonicalNamespaces';
 
 // Register remaining Timed Media Handler hooks right after initial setup
 $wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';

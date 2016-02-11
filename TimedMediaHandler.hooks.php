@@ -12,14 +12,16 @@ class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler namespace IDs
 	// These are configurable due to Commons history: T123823
 	// These need to be before registerhooks due to: T123695
-	public static function onSetupAfterCache() {
-		global $wgEnableLocalTimedText, $wgExtraNamespaces, $wgTimedTextNS;
+	public static function addCanonicalNamespaces( array &$list ) {
+		global $wgEnableLocalTimedText, $wgTimedTextNS;
 		if ( $wgEnableLocalTimedText ) {
-			define( "NS_TIMEDTEXT", $wgTimedTextNS );
-			define( "NS_TIMEDTEXT_TALK", $wgTimedTextNS +1 );
+			if ( !defined( 'NS_TIMEDTEXT' ) ) {
+				define( 'NS_TIMEDTEXT', $wgTimedTextNS );
+				define( 'NS_TIMEDTEXT_TALK', $wgTimedTextNS +1 );
+			}
 
-			$wgExtraNamespaces[NS_TIMEDTEXT] = "TimedText";
-			$wgExtraNamespaces[NS_TIMEDTEXT_TALK] = "TimedText_talk";
+			$list[NS_TIMEDTEXT] = 'TimedText';
+			$list[NS_TIMEDTEXT_TALK] = 'TimedText_talk';
 		} else {
 			$wgTimedTextNS = false;
 		}
