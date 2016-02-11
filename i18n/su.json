@@ -15,5 +15,7 @@
 	"timedmedia-more": "Lianna...",
 	"timedmedia-dismiss": "Tutup",
 	"timedmedia-download": "Bedol",
-	"timedmedia-desc-link": "Ngeunaan ieu koropak"
+	"timedmedia-desc-link": "Ngeunaan ieu koropak",
+	"timedmedia-source-file": "$1 sumber",
+	"timedmedia-source-audio-file-desc": "Berkas $1 orisinil ($2)"
 }

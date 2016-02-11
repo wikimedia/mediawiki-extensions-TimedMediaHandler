@@ -91,5 +91,8 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 件の Ogg 音声ファイル}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 件の FLAC 音声ファイル}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 件の WAV 音声ファイル}}",
+	"orphanedtimedtext": "孤立している字幕ページ",
+	"orphanedtimedtext-summary": "以下のページは、対応するファイルが存在しない[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]の一覧です。",
+	"orphanedtimedtext-notimedtext": "このウィキでは字幕が有効になっていません。",
 	"apihelp-transcodereset-param-title": "メディアファイルのタイトル。"
 }
