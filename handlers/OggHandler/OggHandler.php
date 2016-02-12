@@ -360,7 +360,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @param $file File
 	 * @return float|int
 	 */
-	function getBitRate( &$file ){
+	function getBitRate( $file ){
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$unpacked || isset( $unpacked['error'] ) ) {
