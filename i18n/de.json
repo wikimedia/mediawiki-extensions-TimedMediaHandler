@@ -11,7 +11,8 @@
 			"MichaelFrey",
 			"Raimond Spekking",
 			"The Evil IP address",
-			"Umherirrender"
+			"Umherirrender",
+			"XenonX3"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -34,7 +35,7 @@
 	"timedmedia-wav-pcm-required": "Du kannst nur PCM-WAV-Dateien hochladen (Pulse Code Modulation).",
 	"timedmedia-mp4-short-video": "MP4-$1-Videodatei, $2",
 	"timedmedia-mp4-long-video": "MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 insgesamt",
-	"timedmedia-no-player-js": "Entschuldige, aber für deinen Browser ist entweder die Nutzung von JavaScript deaktiviert oder er verfügt über keine unterstützte Abspielsoftware.<br />\nDu kannst <a href=\"$1\">den Clip herunterladen</a> oder <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abspielen zu können.",
+	"timedmedia-no-player-js": "Für deinen Browser ist entweder die Nutzung von JavaScript deaktiviert oder er verfügt über keine unterstützte Abspielsoftware.<br />\nDu kannst <a href=\"$1\">den Clip herunterladen</a> oder <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">eine Abspielsoftware herunterladen</a>, um den Clip im Browser abspielen zu können.",
 	"timedmedia-more": "Optionen …",
 	"timedmedia-dismiss": "Schließen",
 	"timedmedia-download": "Datei herunterladen",
