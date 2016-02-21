@@ -310,6 +310,10 @@ $wgAutoloadClasses['SpecialOrphanedTimedText'] = "$timedMediaDir/SpecialOrphaned
 // See also T123695 and T123823
 $wgHooks['CanonicalNamespaces'][] = 'TimedMediaHandlerHooks::addCanonicalNamespaces';
 
+// We register some modules dynamically, since they depend on the configuration
+$wgHooks['ResourceLoaderRegisterModules'][] =
+	'TimedMediaHandlerHooks::resourceLoaderRegisterModules';
+
 // Register remaining Timed Media Handler hooks right after initial setup
 $wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';
 
