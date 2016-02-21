@@ -31,7 +31,7 @@ class TimedMediaHandlerHooks {
 	// Register TimedMediaHandler Hooks
 	public static function register() {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
-		$wgResourceModules, $wgExcludeFromThumbnailPurge, $wgParserOutputHooks,
+		$wgResourceModules, $wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
 		$wgTmhTheoraTwoPassEncoding, $wgTmhWebPlayer;
