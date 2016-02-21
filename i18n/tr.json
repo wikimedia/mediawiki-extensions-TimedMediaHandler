@@ -79,5 +79,7 @@
 	"timedmedia-audios": "{{PLURAL:$1|$1 ses dosyası|$1 ses dosyası}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ses dosyası|$1 Ogg ses dosyası}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ses dosyası|$1 FLAC ses dosyası}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}"
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}",
+	"orphanedtimedtext": "Orphaned Zamanlamalı İçerik sayfaları",
+	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sayfaları listesinde herhangi bir içerik bulunmuyor."
 }
