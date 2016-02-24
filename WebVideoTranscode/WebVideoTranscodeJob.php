@@ -18,12 +18,11 @@
  */
 
 class WebVideoTranscodeJob extends Job {
+	/** @var TempFSFile */
 	public $targetEncodeFile = null;
+	/** @var string */
 	public $sourceFilePath = null;
-
-	/**
-	 * @var File
-	 */
+	/** @var File */
 	public $file;
 
 	public function __construct( $title, $params, $id = 0 ) {
