@@ -44,7 +44,7 @@
 	"timedmedia-percent-done": "Герггара хьесапехь $1% кхочушдина",
 	"timedmedia-in-job-queue": "Да дезарг $1 хьалхо рогӀе диллина",
 	"timedmedia-days": "{{PLURAL:$1|$1 де}}",
-	"timedmedia-hours": "{{PLURAL:$1|1 сахьт}}",
+	"timedmedia-hours": "{{PLURAL:$1|$1 сахьт}}",
 	"timedmedia-minutes": "{{PLURAL:$1|$1 минот}}",
 	"timedmedia-seconds": "{{PLURAL:$1|$1 секунд}}",
 	"timedmedia-reset": "Юху кодяр тӀехдалийтар",
