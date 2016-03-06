@@ -133,6 +133,9 @@
 	"apihelp-query+transcodestatus-description": "Ruft den Umschlüsselungsstatus für eine angegebene Dateiseite ab.",
 	"apihelp-query+transcodestatus-example-1": "Ruft den Transkodierungsstatus für [[:File:Clip.webm]] ab",
 	"apihelp-query+videoinfo-example-1": "Ruft Informationen über [[:File:Folgers.ogv]] ab",
+	"apihelp-transcodereset-description": "Benutzer mit dem Recht „transcode-reset“ können Umschlüsselungsaufträge zurücksetzen und neu starten",
 	"apihelp-transcodereset-param-title": "Der Titel der Mediendatei.",
-	"apihelp-transcodereset-example-1": "Setzt alle Umschlüsselungen für [[:File:Clip.webm]] zurück"
+	"apihelp-transcodereset-param-transcodekey": "Der Umschlüsselungsschlüssel, der zurückgesetzt werden soll. Von [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]] abrufen.",
+	"apihelp-transcodereset-example-1": "Setzt alle Umschlüsselungen für [[:File:Clip.webm]] zurück",
+	"apihelp-transcodereset-example-2": "Setzt den Umschlüsselungsschlüssel „360_560kbs.webm“ für [[:File:Clip.webm]] zurück"
 }
