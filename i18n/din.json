@@ -4,5 +4,6 @@
 			"Dinkawiki"
 		]
 	},
-	"timedmedia-source-file": "$1 tënëyök"
+	"timedmedia-source-file": "$1 tënëyök",
+	"timedmedia-source-audio-file-desc": "Makec $1 tueŋ ($2)"
 }
