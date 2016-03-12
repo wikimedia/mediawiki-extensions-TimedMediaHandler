@@ -11,7 +11,8 @@
 			"Reza1615",
 			"جواد",
 			"پاناروما",
-			"Mehran"
+			"Mehran",
+			"Dalba"
 		]
 	},
 	"timedmediahandler-extensionname": "هدایت‌کننده رسانهٔ زمان‌دار",
@@ -58,11 +59,11 @@
 	"timedmedia-unknown-target-size": "اندازهٔ هدف ناشناخته، $1 رمزی",
 	"timedmedia-days": "{{PLURAL:$1|1 روز|$1 روز}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 ساعت|$1 ساعت}}",
-	"timedmedia-minutes": "{{PLURAL:$1|1 دقیقه|$1 دقیقه}}",
+	"timedmedia-minutes": "{{PLURAL:$1|۱ دقیقه|$1 دقیقه}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 ثانیه|$1 ثانیه}}",
 	"timedmedia-reset": "تنظیم مجدد فراکد",
-	"timedmedia-reset-confirm": "تنظیم مجدد فراکد پرونده‌های موجود را حذف خواهد کرد و فراکد را در صف کار خواهد افزود. این کار مقداری زمان لازم دارد.<br /><br />\nآیا می‌خواهید ادامه دهید؟",
 	"timedmedia-reset-error": "خطا در بازنشانی کار فراکد.",
+	"timedmedia-reset-explanation": "تنظیم مجدد فراکد پرونده‌های موجود را حذف خواهد کرد و فراکد را در صف کار خواهد افزود. این کار مقداری زمان لازم دارد.<br /><br />\nآیا می‌خواهید ادامه دهید؟",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 مبدأ",
 	"timedmedia-source-file-desc": "اصلی $1 پرونده، $2 × $3 ($4)",
