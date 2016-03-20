@@ -7,7 +7,8 @@
 			"Mormegil",
 			"Paxt",
 			"Matěj Suchánek",
-			"Cvanca"
+			"Cvanca",
+			"Urbanecm"
 		]
 	},
 	"timedmediahandler-desc": "Obsluha zvuků, videa a časovaného textu s podporou formátů WebM, Ogg Theora, Vorbis, srt",
@@ -72,6 +73,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 zvukový soubor|$1 zvukové soubory|$1 zvukových souborů}} Ogg",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 zvukový soubor|$1 zvukové soubory|$1 zvukových souborů}} FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 zvukový soubor|$1 zvukové soubory|$1 zvukových souborů}} WAV",
+	"right-transcode-reset": "Restartovat zpracování videí, pokud skončilo chybou",
 	"right-transcode-status": "Zobrazení [[Special:TimedMediaHandler|informací o probíhajícím transkódování]]",
 	"action-transcode-status": "vidět aktuální stav transkódování"
 }

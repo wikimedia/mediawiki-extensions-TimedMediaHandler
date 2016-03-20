@@ -3,10 +3,11 @@
 		"authors": [
 			"Haqmar",
 			"Рустам Нурыев",
-			"Sagan"
+			"Sagan",
+			"Азат Хәлилов"
 		]
 	},
-	"timedmedia-no-player-js": "Ҡыҙғанышҡа ҡаршы һеҙҙең браузерҙа JavaScript һүндерелгән, йәки яраған проигрыватель юҡ.<br />\nСез <a href=\"$1\">роликты тейәй</a> йәки уны уйнатыу өсөн<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">проигрыватель</a> тейәй алаһығыҙ.",
+	"timedmedia-no-player-js": "Ҡыҙғанышҡа ҡаршы һеҙҙең браузерҙа JavaScript һүндерелгән, йәки яраған уйнатҡыс юҡ.<br />\nСез <a href=\"$1\">роликты тейәй</a> йәки уны уйнатыу өсөн<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">проигрыватель</a> тейәй алаһығыҙ.",
 	"timedmedia-days": "{{PLURAL:$1|1=$1 көн|$1 көн}}",
 	"timedmedia-hours": "{{PLURAL:$1|1=$1 сәғәт|$1 сәғәт}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1=$1 минут|$1 минут}}",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Arystanbek"
+			"Arystanbek",
+			"Batyrbek.kz"
 		]
 	},
 	"timedmedia-ogg-short-audio": "Ogg $1 дыбыс файлы, $2",
@@ -30,7 +31,7 @@
 	"timedmedia-days": "{{PLURAL:$1|1 күн|$1 күн}}",
 	"timedmedia-hours": "{{PLURAL:$1|бір сағат|$1 сағат}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 минут|$1 минут}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1секунт|$1 секунт}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1секунд|$1 секунд}}",
 	"timedmedia-source-file": "$1 қайнар",
 	"timedmedia-derivative-desc-160p.ogv": "Төменгі сапалы Ogg видео (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "Жоғары сападағы түсірілетін Ogg видео (720P)",
