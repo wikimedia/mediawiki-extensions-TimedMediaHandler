@@ -159,7 +159,9 @@ class TimedMediaHandler extends MediaHandler {
 			);
 		}
 		// Make sure we don't try and up-scale the asset:
-		if ( isset( $params['width'] ) && (int)$params['width'] > $size['width'] ) {
+		if ( !$this->isAudio( $image ) && isset( $params['width'] )
+			&& (int)$params['width'] > $size['width']
+		) {
 			$params['width'] = $size['width'];
 		}
 
