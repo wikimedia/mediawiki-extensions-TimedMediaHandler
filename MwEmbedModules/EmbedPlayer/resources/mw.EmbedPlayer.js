@@ -2644,7 +2644,7 @@
 			//mw.log( 'EmbedPlayer: updatePlayHead: '+ perc);
 			if( this.getInterface() ){
 				var $playHead = this.getInterface().find( '.play_head' );
-				if ( !this.useNativePlayerControls() && $playHead.length != 0 ) {
+				if ( !this.useNativePlayerControls() && $playHead.length != 0, $.contains( document, $playHead[0] ) ) {
 					var val = parseInt( perc * 1000 );
 					$playHead.slider( 'value', val );
 				}
