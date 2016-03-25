@@ -14,7 +14,7 @@
     "grunt-jsonlint": "1.0.7",
     "grunt-patch": "^0.1.7",
     "jscs-preset-wikimedia": "~1.0.0",
-    "video.js": "^5.3.0",
-    "videojs-resolution-switcher": "^0.2.2"
+    "video.js": "^5.8.6",
+    "videojs-resolution-switcher": "^0.4.1"
   }
 }
