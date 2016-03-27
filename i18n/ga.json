@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Spacebirdy",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Tem"
 		]
 	},
 	"timedmedia-more": "Níos mó...",
 	"timedmedia-dismiss": "Dún",
 	"timedmedia-actions": "Gníomhartha",
+	"timedmedia-source-file": "Foinse $1",
 	"timedmedia-subtitle-new-go": "Gabh",
 	"timedmedia-file": "Comhad"
 }
