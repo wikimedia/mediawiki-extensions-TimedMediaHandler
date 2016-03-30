@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .video-js .vjs-big-play-button:before, .video-js .vjs-control:before, .video-js .vjs-modal-dialog, .vjs-modal-dialog .vjs-modal-dialog-content {
   position: absolute;
   top: 0;
@@ -578,7 +577,7 @@ body.vjs-full-window {
   opacity: 1;
   visibility: visible; }
 
-@media �screen {
+@media \0screen {
   .vjs-user-inactive.vjs-playing .vjs-control-bar :before {
     content: ""; } }
 
