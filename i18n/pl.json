@@ -90,7 +90,7 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}",
 	"timedmedia-file": "Plik",
-	"timedmedia-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}}",
+	"timedmedia-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|$1 plików dźwiękowych}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} Ogg",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} WAV",
