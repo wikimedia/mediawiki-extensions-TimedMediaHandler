@@ -3,7 +3,8 @@
 		"authors": [
 			"AnakngAraw",
 			"Sky Harbor",
-			"Leeheonjin"
+			"Leeheonjin",
+			"Jojit fb"
 		]
 	},
 	"timedmediahandler-desc": "Tagahawak para sa audio, bidyo at inoorasang teksto, na may pagtangkilik ng anyo para sa WebM, Ogg Theora, Vorbis, srt",
@@ -83,5 +84,5 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 tumatakbong transkodigo|$1 tumatakbong mga transkodigo}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 nakapilang transkodigo|$1 nakapilang mga transkodigo}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nabigong transkodigo|$1 nabigong mga transkodigo}}",
-	"timedmedia-file": "Talaksan"
+	"timedmedia-file": "File"
 }
