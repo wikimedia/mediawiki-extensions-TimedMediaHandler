@@ -21,7 +21,7 @@
 	"timedmedia-no-player-js": "Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />\nMaaari kang <a href=\"$1\">magkargang pababa ng kaputol</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.",
 	"timedmedia-more": "Marami pa…",
 	"timedmedia-dismiss": "Isara",
-	"timedmedia-download": "Ikarga ang talaksan",
+	"timedmedia-download": "I-download ang file",
 	"timedmedia-play-media": "Paandarin ang midya",
 	"timedmedia-desc-link": "Tungkol sa talaksang ito",
 	"timedmedia-oggThumb-version": "Nangangailangan ang OggHandler ng bersyong $1 o mas luma ng oggThumb.",
