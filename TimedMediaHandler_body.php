@@ -300,10 +300,11 @@ class TimedMediaHandler extends MediaHandler {
 		}
 		$hours = floor( $time / 3600 );
 		$min = floor( ( $time / 60 ) % 60 );
-		$sec = ( $time % 60 );
-		$ms = ( $time - round( $time, 3 ) != 0 ) ? '.' .( $time - round( $time, 3 ) ) : '';
+		$sec = floor( $time % 60 );
+		$ms = floor( $time * 1000 % 1000 );
+		$ms = ( $ms != 0 ) ? sprintf( '.%03d', $ms ) : '';
 
-		return "{$hours}:{$min}:{$sec}{$ms}";
+		return sprintf( '%02d:%02d:%02d%s', $hours, $min, $sec, $ms );
 	}
 
 	/**
