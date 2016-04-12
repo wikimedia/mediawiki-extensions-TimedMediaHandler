@@ -40,6 +40,7 @@ class WebVideoTranscode {
 	const ENC_WEBM_480P = '480p.webm';
 	const ENC_WEBM_720P = '720p.webm';
 	const ENC_WEBM_1080P = '1080p.webm';
+	const ENC_WEBM_1440P = '1440p.webm';
 	const ENC_WEBM_2160P = '2160p.webm';
 
 	// WebM VP9/Opus profiles:
@@ -49,15 +50,18 @@ class WebVideoTranscode {
 	const ENC_VP9_480P = '480p.vp9.webm';
 	const ENC_VP9_720P = '720p.vp9.webm';
 	const ENC_VP9_1080P = '1080p.vp9.webm';
+	const ENC_VP9_1440P = '1440p.vp9.webm';
 	const ENC_VP9_2160P = '2160p.vp9.webm';
 
 	// mp4 profiles:
 	const ENC_H264_160P = '160p.mp4';
 	const ENC_H264_240P = '240p.mp4';
 	const ENC_H264_320P = '320p.mp4';
+	const ENC_H264_360P = '360p.mp4';
 	const ENC_H264_480P = '480p.mp4';
 	const ENC_H264_720P = '720p.mp4';
 	const ENC_H264_1080P = '1080p.mp4';
+	const ENC_H264_1440P = '1440p.mp4';
 	const ENC_H264_2160P = '2160p.mp4';
 
 	const ENC_OGG_VORBIS = 'ogg';
@@ -194,6 +198,19 @@ class WebVideoTranscode {
 				'videoCodec'                 => 'vp8',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			),
+		WebVideoTranscode::ENC_WEBM_240P =>
+			array(
+				'maxSize'                    => '426x240',
+				'videoBitrate'               => '256',
+				'audioQuality'               => '1',
+				'samplerate'                 => '44100',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
+			),
 		WebVideoTranscode::ENC_WEBM_360P =>
 			array(
 				'maxSize'                    => '640x360',
@@ -233,6 +250,15 @@ class WebVideoTranscode {
 			 array(
 				'maxSize'                    => '1920x1080',
 				'videoBitrate'               => '4096',
+				'audioQuality'               => 3,
+				'noUpscaling'                => 'true',
+				'videoCodec'                 => 'vp8',
+				'type'                       => 'video/webm; codecs="vp8, vorbis"',
+			),
+		WebVideoTranscode::ENC_WEBM_1440P =>
+			 array(
+				'maxSize'                    => '2560x1440',
+				'videoBitrate'               => '8192',
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true',
 				'videoCodec'                 => 'vp8',
@@ -329,6 +355,20 @@ class WebVideoTranscode {
 				'tileColumns'                => '4',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			),
+		WebVideoTranscode::ENC_VP9_1440P =>
+			 array(
+				'maxSize'                    => '2560x1440',
+				'videoBitrate'               => '4096',
+				'samplerate'                 => '48000',
+				'noUpscaling'                => 'true',
+				'twopass'                    => 'true',
+				'keyframeInterval'           => '128',
+				'bufDelay'                   => '256',
+				'videoCodec'                 => 'vp9',
+				'audioCodec'                 => 'opus',
+				'tileColumns'                => '4',
+				'type'                       => 'video/webm; codecs="vp9, opus"',
+			),
 		WebVideoTranscode::ENC_VP9_2160P =>
 			 array(
 				'maxSize'                    => '4096x2160',
@@ -355,40 +395,50 @@ class WebVideoTranscode {
 			array(
 				'maxSize' => '288x160',
 				'videoCodec' => 'h264',
-				'preset' => 'ipod320',
 				'videoBitrate' => '160k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '40k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
+
 		WebVideoTranscode::ENC_H264_240P =>
 			array(
 				'maxSize' => '426x240',
 				'videoCodec' => 'h264',
-				'preset' => 'ipod320',
 				'videoBitrate' => '256k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '40k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
+
 		WebVideoTranscode::ENC_H264_320P =>
 			array(
 				'maxSize' => '480x320',
 				'videoCodec' => 'h264',
-				'preset' => 'ipod320',
 				'videoBitrate' => '400k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '40k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			),
+
+		WebVideoTranscode::ENC_H264_360P =>
+			array(
+				'maxSize' => '640x360',
+				'videoCodec' => 'h264',
+				'videoBitrate' => '512k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '64k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			),
+
 		WebVideoTranscode::ENC_H264_480P =>
 			array(
-				'maxSize' => '640x480',
+				'maxSize' => '854x480',
 				'videoCodec' => 'h264',
-				'preset' => 'ipod640',
 				'videoBitrate' => '1200k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
@@ -399,7 +449,6 @@ class WebVideoTranscode {
 			array(
 				'maxSize' => '1280x720',
 				'videoCodec' => 'h264',
-				'preset' => '720p',
 				'videoBitrate' => '2500k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
@@ -411,6 +460,16 @@ class WebVideoTranscode {
 				'maxSize' => '1920x1080',
 				'videoCodec' => 'h264',
 				'videoBitrate' => '5000k',
+				'audioCodec' => 'aac',
+				'channels' => '2',
+				'audioBitrate' => '128k',
+				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			),
+		WebVideoTranscode::ENC_H264_1440P =>
+			array(
+				'maxSize' => '2560x1440',
+				'videoCodec' => 'h264',
+				'videoBitrate' => '16384k',
 				'audioCodec' => 'aac',
 				'channels' => '2',
 				'audioBitrate' => '128k',
