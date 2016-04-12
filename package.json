@@ -16,6 +16,7 @@
     "jscs-preset-wikimedia": "~1.0.0",
     "video.js": "^5.8.6",
     "videojs-ogvjs": "^1.0.6",
-    "videojs-resolution-switcher": "^0.4.1"
+    "videojs-resolution-switcher": "^0.4.1",
+    "videojs-responsive-layout": "^1.1.0"
   }
 }

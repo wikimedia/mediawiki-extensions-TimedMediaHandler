@@ -1,6 +1,7 @@
 MwEmbedModules
 resources/videojs
 resources/videojs-resolution-switcher
+resources/videojs-responsive-layout
 
 node_modules
 vendor
