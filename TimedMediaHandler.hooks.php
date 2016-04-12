@@ -289,7 +289,7 @@ class TimedMediaHandlerHooks {
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
 
 		// When an upload completes ( check clear any existing transcodes )
-		$wgHooks['UploadComplete'][] = 'TimedMediaHandlerHooks::checkUploadComplete';
+		$wgHooks['FileUpload'][] = 'TimedMediaHandlerHooks::onFileUpload';
 
 		// When an image page is moved:
 		$wgHooks['TitleMove'][] = 'TimedMediaHandlerHooks::checkTitleMove';
@@ -491,11 +491,10 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $image UploadBase
+	 * @param $file LocalFile object
 	 * @return bool
 	 */
-	public static function checkUploadComplete( $upload ) {
-		$file = $upload->getLocalFile();
+	public static function onFileUpload( $file, $reupload, $hasNewPageContent ) {
 		// Check that the file is a transcodable asset:
 		if ( $file && self::isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
