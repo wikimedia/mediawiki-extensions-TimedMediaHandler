@@ -1,8 +1,8 @@
 diff --git a/resources/videojs/video.js b/resources/videojs/video.js
-index 507cf17..b4261e0 100644
+index 03daf68..473c1f9 100644
 --- a/resources/videojs/video.js
 +++ b/resources/videojs/video.js
-@@ -19794,15 +19794,6 @@ var videojs = function videojs(id, options, ready) {
+@@ -19811,15 +19811,6 @@ var videojs = function videojs(id, options, ready) {
    return tag['player'] || _player2['default'].players[tag.playerId] || new _player2['default'](tag, options, ready);
  };
  
