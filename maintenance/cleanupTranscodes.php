@@ -18,14 +18,15 @@ class CleanupTranscodes extends Maintenance {
 		$this->mDescription = "cleanup transcodes left over after changing encoding profiles.";
 	}
 	public function execute() {
-		global $wgEnabledTranscodeSet;
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		$transcodeSet = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 
 		if ( $this->hasOption( "all" ) ) {
 			$where = array();
 		} elseif ( $this->hasOption( "key" ) ) {
 			$where = array( 'transcode_key' =>  $this->getOption( 'key' ) );
 		} else {
-			$where = 'transcode_key NOT IN ("'. implode( '", "', $wgEnabledTranscodeSet ).'")';
+			$where = 'transcode_key NOT IN ("'. implode( '", "', $transcodeSet ).'")';
 		}
 		$this->output( "Cleanup transcodes:\n" );
 		$dbr = wfGetDB( DB_SLAVE );
