@@ -6,7 +6,7 @@
 			"Pras"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Sing ngurusi berkas Ogg Theora lan Vorbis mawa pamain JavaScript",
+	"timedmediahandler-desc": "Sing ngurusi berkas Ogg Theora lan Vorbis mawa pamain JavaScript",
 	"timedmedia-ogg-short-audio": "Berkas swara $1 ogg, $2",
 	"timedmedia-ogg-short-video": "Berkas vidéo $1 ogg, $2",
 	"timedmedia-ogg-short-general": "Berkas média $1 ogg, $2",
@@ -15,6 +15,7 @@
 	"timedmedia-ogg-long-multiplexed": "Berkas audio/vidéo multiplexed ogg, $1, dawané $2, $4×$5 piksel, $3 gunggungé",
 	"timedmedia-ogg-long-general": "Berkas média ogg, dawané $2, $3",
 	"timedmedia-ogg-long-error": "Berkas ogg ora absah: $1",
+	"timedmedia-no-player-js": "Nyuwun pangapura, pangluron sampéyan bokmanawa JavaScripté mati utawa tanpa sengkuyungan panguruban.<br />\nSampéyan bisa <a href=\"$1\">ngundhuh cuplikan iki</a> utawa <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ngudhuh panguruban</a> kanggo ngurubaké cuplikan iku sarana pangluron sampéyan.",
 	"timedmedia-more": "Luwih akèh...",
 	"timedmedia-dismiss": "Tutup",
 	"timedmedia-download": "Undhuh berkas",
@@ -44,6 +45,7 @@
 	"timedmedia-reset-error": "Kasalahan nalika nyetèl ulang tugas transkodhé.",
 	"timedmedia-source-file": "Sumber $1",
 	"timedmedia-source-file-desc": "$1 asli, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Barkas $1 asli ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Vidio Ogg bandwidth cilik (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "Vidio Ogg sing bisa diundhuh mawa kualitas dhuwur (720P)",
 	"timedmedia-derivative-desc-720p.webm": "WebM sing bisa diundhuh mawa kualitas dhuwur (720P)",
