@@ -815,11 +815,11 @@ class WebVideoTranscode {
 			// Populate the per transcode state cache
 			foreach ( $res as $row ) {
 				// strip the out the "transcode_" from keys
-				$trascodeState = array();
+				$transcodeState = array();
 				foreach ( $row as $k => $v ) {
-					$trascodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
+					$transcodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
 				}
-				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $trascodeState;
+				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $transcodeState;
 				if ( $row->transcode_time_startwork != null
 					&& $row->transcode_time_startwork < $over
 					&& $row->transcode_time_success == null
