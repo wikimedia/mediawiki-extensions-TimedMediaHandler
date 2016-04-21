@@ -125,6 +125,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|Eine laufende Umschlüsselung|$1 laufende Umschlüsselungen}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|Eine nicht gestartete Umschlüsselung|$1 nicht gestartete Umschlüsselungen}}",
 	"timedmedia-no-derivatives": "Keine Umschlüsselung erforderlich.",
 	"timedmedia-file": "Datei",
 	"timedmedia-audios": "{{PLURAL:$1|Eine Audiodatei|$1 Audiodateien}}",

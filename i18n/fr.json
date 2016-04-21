@@ -137,6 +137,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodage en cours|$1 transcodages en cours}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodage en file d'attente|$1 transcodages en file d'attente}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodage échoué|$1 transcodages échoués}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 paramètre de transcodage non initialisé|$1 paramètres de transcodage non initialisés}}",
 	"timedmedia-no-derivatives": "Aucune transcodification nécessaire.",
 	"timedmedia-file": "Fichier",
 	"timedmedia-audios": "{{PLURAL:$1|$1 fichier audio|$1 fichiers audio}}",
