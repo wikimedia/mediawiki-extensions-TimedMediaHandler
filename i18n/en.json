@@ -151,6 +151,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 running transcode|$1 running transcodes}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 queued transcode|$1 queued transcodes}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 failed transcode|$1 failed transcodes}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 uninitialized transcode|$1 uninitialized transcodes}}",
 	"timedmedia-no-derivatives": "No transcoding required.",
 	"timedmedia-file": "File",
 	"timedmedia-audios": "{{PLURAL:$1|$1 audio file|$1 audio files}}",

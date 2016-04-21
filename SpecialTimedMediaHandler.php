@@ -12,8 +12,9 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	// @codingStandardsIgnoreStart
 	private $transcodeStates = array(
 		'active' => 'transcode_time_startwork IS NOT NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
-		'failed' => 'transcode_error != "" AND transcode_time_success IS NULL',
-		'queued' => 'transcode_time_startwork IS NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
+		'failed' => 'transcode_time_startwork IS NOT NULL AND transcode_time_error IS NOT NULL',
+		'queued' => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NULL',
+		'missing' => 'transcode_time_addjob IS NULL',
 	);
 	// @codingStandardsIgnoreEnd
 	private $formats = array(
@@ -62,7 +63,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$states = $this->getStates();
 		$this->renderState( $out, 'transcodes', $states, false );
 		foreach ( $this->transcodeStates as $state => $condition ) {
-			$this->renderState( $out, $state, $states );
+			$this->renderState( $out, $state, $states, $state !== 'missing' );
 		}
 	}
 
@@ -78,7 +79,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		if ( $states[ $state ][ 'total' ] ) {
 			// Give grep a chance to find the usages:
 			// timedmedia-derivative-state-transcodes, timedmedia-derivative-state-active,
-			// timedmedia-derivative-state-queued, timedmedia-derivative-state-failed
+			// timedmedia-derivative-state-queued, timedmedia-derivative-state-failed,
+			// timedmedia-derivative-state-missing
 			$out->addHTML(
 				"<h2>"
 				. $this->msg(
@@ -227,6 +229,9 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				$key = $row->transcode_key;
 				$states[ 'transcodes' ][ $key ] = $row->count;
 				$states[ 'transcodes' ][ $key ] -= $states[ 'queued' ][ $key ];
+				$states[ 'transcodes' ][ $key ] -= $states[ 'missing' ][ $key ];
+				$states[ 'transcodes' ][ $key ] -= $states[ 'active' ][ $key ];
+				$states[ 'transcodes' ][ $key ] -= $states[ 'failed' ][ $key ];
 				$states[ 'transcodes' ][ 'total' ] += $states[ 'transcodes' ][ $key ];
 			}
 			$wgMemc->add( $memcKey, $states, 60 );
