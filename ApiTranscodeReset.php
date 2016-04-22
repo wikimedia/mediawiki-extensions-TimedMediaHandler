@@ -24,11 +24,11 @@ class ApiTranscodeReset extends ApiBase {
 		// Make sure we have a valid Title
 		$titleObj = Title::newFromText( $params['title'] );
 		if ( !$titleObj || $titleObj->isExternal() ) {
-			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
+			$this->dieUsageMsg( [ 'invalidtitle', $params['title'] ] );
 		}
 		// Make sure the title can be transcoded
 		if ( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ) {
-			$this->dieUsageMsg( array( 'invalidtranscodetitle', $params['title'] ) );
+			$this->dieUsageMsg( [ 'invalidtranscodetitle', $params['title'] ] );
 		}
 		$transcodeKey = false;
 		// Make sure its a enabled transcode key we are trying to remove:
@@ -103,7 +103,7 @@ class ApiTranscodeReset extends ApiBase {
 			return $wgWaitTimeForTranscodeReset + 1;
 		}
 		// return wait time from most recent event
-		foreach ( array( 'time_success', 'time_startwork', 'time_addjob' ) as $timeField ) {
+		foreach ( [ 'time_success', 'time_startwork', 'time_addjob' ] as $timeField ) {
 			if ( !is_null( $state[ $timeField ] ) ) {
 				return $db->timestamp() - $db->timestamp( $state[ $timeField ] );
 			}
@@ -128,25 +128,25 @@ class ApiTranscodeReset extends ApiBase {
 	}
 
 	protected function getAllowedParams() {
-		return array(
-			'title' => array(
+		return [
+			'title' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true
-			),
+			],
 			'transcodekey' => null,
 			'token' => null,
-		);
+		];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	protected function getParamDescription() {
-		return array(
+		return [
 			'title' => 'The media file title',
 			'transcodekey' => 'The transcode key you wish to reset',
 			'token' => 'An edit token obtained via action=tokens',
-		);
+		];
 	}
 
 	public function needsToken() {

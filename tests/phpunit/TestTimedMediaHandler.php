@@ -21,28 +21,28 @@ class TestTimedMediaHandler extends MediaWikiTestCase {
 	}
 
 	function providerParseParamString() {
-		return array(
-			array(
+		return [
+			[
 				'mid',
-				array(),
-			),
-			array(
+				[],
+			],
+			[
 				'220px-',
-				array( 'width' => 220 ),
-			),
-			array(
+				[ 'width' => 220 ],
+			],
+			[
 				'seek=30',
-				array( 'thumbtime' => 30.0 ),
-			),
-			array(
+				[ 'thumbtime' => 30.0 ],
+			],
+			[
 				'seek=15.72',
-				array( 'thumbtime' => 15.72 ),
-			),
-			array(
+				[ 'thumbtime' => 15.72 ],
+			],
+			[
 				'180px-seek=15',
-				array( 'thumbtime' => 15, 'width' => 180 ),
-			),
-		);
+				[ 'thumbtime' => 15, 'width' => 180 ],
+			],
+		];
 
 	}
 }

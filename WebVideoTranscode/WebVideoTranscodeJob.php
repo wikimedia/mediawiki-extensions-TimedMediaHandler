@@ -96,14 +96,14 @@ class WebVideoTranscodeJob extends Job {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update(
 			'transcode',
-			array(
+			[
 				'transcode_time_error' => $dbw->timestamp(),
 				'transcode_error' => $error
-			),
-			array(
+			],
+			[
 					'transcode_image_name' => $this->getFile()->getName(),
 					'transcode_key' => $transcodeKey
-			),
+			],
 			__METHOD__
 		);
 		$this->setLastError( $error );
@@ -154,10 +154,10 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check if we have "already started" the transcode ( possible error )
 		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
-			array(
+			[
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			),
+			],
 			__METHOD__
 		);
 		if ( !is_null( $dbStartTime ) ) {
@@ -170,11 +170,11 @@ class WebVideoTranscodeJob extends Job {
 		$jobStartTimeCache = $dbw->timestamp();
 		$dbw->update(
 			'transcode',
-			array( 'transcode_time_startwork' => $jobStartTimeCache ),
-			array(
+			[ 'transcode_time_startwork' => $jobStartTimeCache ],
+			[
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			),
+			],
 			__METHOD__
 		);
 		// Avoid contention and "server has gone away" errors as
@@ -212,10 +212,10 @@ class WebVideoTranscodeJob extends Job {
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm that the in memory $jobStartTimeCache matches db start time
 		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
-			array(
+			[
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			)
+			]
 		);
 
 		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
@@ -275,15 +275,15 @@ class WebVideoTranscodeJob extends Job {
 				// Update the transcode table with success time:
 				$dbw->update(
 					'transcode',
-					array(
+					[
 						'transcode_error' => '',
 						'transcode_time_success' => $dbw->timestamp(),
 						'transcode_final_bitrate' => $bitrate
-					),
-					array(
+					],
+					[
 						'transcode_image_name' => $this->getFile()->getName(),
 						'transcode_key' => $transcodeKey,
-					),
+					],
 					__METHOD__
 				);
 				// Commit to reduce contention
@@ -305,7 +305,7 @@ class WebVideoTranscodeJob extends Job {
 		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
 		$url = WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
-		$update = new CdnCacheUpdate( array( $url ) );
+		$update = new CdnCacheUpdate( [ $url ] );
 		$update->doUpdate();
 
 		if ( $status !== true ) {
@@ -477,12 +477,12 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Handle crop:
-		$optionMap = array(
+		$optionMap = [
 			'cropTop' => '-croptop',
 			'cropBottom' => '-cropbottom',
 			'cropLeft' => '-cropleft',
 			'cropRight' => '-cropright'
-		);
+		];
 		foreach ( $optionMap as $name => $cmdArg ) {
 			if ( isset( $options[$name] ) ) {
 				$cmd .= " $cmdArg " .  wfEscapeShellArg( $options[$name] );
@@ -630,11 +630,11 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		if ( isset( $options['audioCodec'] ) ) {
-			$encoders = array(
+			$encoders = [
 				'vorbis'	=> 'libvorbis',
 				'opus'		=> 'libopus',
 				'mp3'		=> 'libmp3lame',
-			);
+			];
 			if ( isset( $encoders[ $options['audioCodec'] ] ) ) {
 				$codec = $encoders[ $options['audioCodec'] ];
 			} else {
@@ -734,13 +734,13 @@ class WebVideoTranscodeJob extends Job {
 		// Check if background tasks are enabled
 		if ( $wgEnableNiceBackgroundTranscodeJobs === false ) {
 			// Directly execute the shell command:
-			$limits = array(
+			$limits = [
 				"filesize" => $wgTranscodeBackgroundSizeLimit,
 				"memory" => $wgTranscodeBackgroundMemoryLimit,
 				"time" => $wgTranscodeBackgroundTimeLimit
-			);
-			return wfShellExec( $cmd . ' 2>&1', $retval, array(), $limits,
-				array( 'profileMethod' => $caller ) );
+			];
+			return wfShellExec( $cmd . ' 2>&1', $retval, [], $limits,
+				[ 'profileMethod' => $caller ] );
 		}
 
 		$encodingLog = $this->getTargetEncodePath() . '.stdout.log';
@@ -803,13 +803,13 @@ class WebVideoTranscodeJob extends Job {
 		// global $wgTranscodeBackgroundPriority;
 		// $status =
 		// wfShellExec( 'nice -n ' . $wgTranscodeBackgroundPriority . ' '. $cmd . ' 2>&1', $retval );
-		$limits = array(
+		$limits = [
 			"filesize" => $wgTranscodeBackgroundSizeLimit,
 			"memory" => $wgTranscodeBackgroundMemoryLimit,
 			"time" => $wgTranscodeBackgroundTimeLimit
-		);
-		$status = wfShellExec( $cmd . ' 2>&1', $retval, array(), $limits,
-			array( 'profileMethod' => $caller ) );
+		];
+		$status = wfShellExec( $cmd . ' 2>&1', $retval, [], $limits,
+			[ 'profileMethod' => $caller ] );
 
 		// Output the status:
 		wfSuppressWarnings();
@@ -953,7 +953,7 @@ class WebVideoTranscodeJob extends Job {
 	 * This lets us share a common api between firefogg and WebVideoTranscode
 	 * also see: http://firefogg.org/dev/index.html
 	 */
-	 public static $foggMap = array(
+	 public static $foggMap = [
 		// video
 		'width'			=> "--width",
 		'height'		=> "--height",
@@ -972,9 +972,9 @@ class WebVideoTranscodeJob extends Job {
 		'cropLeft'		=> "--cropleft",
 		'cropRight'		=> "--cropright",
 		'keyframeInterval'=> "--keyint",
-		'denoise'		=> array( "--pp", "de" ),
+		'denoise'		=> [ "--pp", "de" ],
 		'deinterlace'	=> "--deinterlace",
-		'novideo'		=> array( "--novideo", "--no-skeleton" ),
+		'novideo'		=> [ "--novideo", "--no-skeleton" ],
 		'bufDelay'		=> "--buf-delay",
 		// audio
 		'audioQuality'	=> "-a",
@@ -991,6 +991,6 @@ class WebVideoTranscodeJob extends Job {
 		'copyright'		=> "--copyright",
 		'license'		=> "--license",
 		'contact'		=> "--contact"
-	);
+	];
 
 }

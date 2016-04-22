@@ -8,7 +8,6 @@
  * TODO On "new" timedtext language save purge all pages where file exists
  */
 
-
 /**
  * Subclass ApiMain but query other db
  */
@@ -55,7 +54,7 @@ class ForeignApiQueryAllPages extends ApiQueryAllPages {
 	public function titlePartToKey( $titlePart, $defaultNamespace = NS_MAIN ) {
 		$t = Title::newFromText( $titlePart . 'x' );
 		if ( !$t ) {
-			$this->dieUsageMsg( array( 'invalidtitle', $titlePart ) );
+			$this->dieUsageMsg( [ 'invalidtitle', $titlePart ] );
 		}
 		return substr( $t->getPrefixedDBkey(), 0, -1 );
 	}
@@ -113,10 +112,10 @@ class TextHandler {
 			}
 			// Get the namespace data from the image api repo:
 			// fetchImageQuery query caches results
-			$data = $this->file->getRepo()->fetchImageQuery( array(
+			$data = $this->file->getRepo()->fetchImageQuery( [
 				'meta' =>'siteinfo',
 				'siprop' => 'namespaces'
-			) );
+			] );
 
 			if ( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ) {
 				// get the ~last~ timed text namespace defined
@@ -141,13 +140,13 @@ class TextHandler {
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
-		return array(
+		return [
 			'action' => 'query',
 			'list' => 'allpages',
 			'apnamespace' => $ns,
 			'aplimit' => 300,
 			'apprefix' => $this->file->getTitle()->getDBkey()
-		);
+		];
 	}
 
 	/**
@@ -173,7 +172,7 @@ class TextHandler {
 
 		// Error in getting timed text namespace return empty array;
 		if ( $query === false ) {
-			return array();
+			return [];
 		}
 		$data = $this->file->getRepo()->fetchImageQuery( $query );
 		$textTracks = $this->getTextTracksFromData( $data );
@@ -194,7 +193,7 @@ class TextHandler {
 			$api = new ApiMain( $params );
 			$api->execute();
 			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$data = $api->getResult()->getResultData( null, array( 'Strip' => 'all' ) );
+				$data = $api->getResult()->getResultData( null, [ 'Strip' => 'all' ] );
 			} else {
 				$data = $api->getResultData();
 			}
@@ -202,7 +201,7 @@ class TextHandler {
 			// Get the list of language Names
 			return $this->getTextTracksFromData( $data );
 		} else {
-			return array();
+			return [];
 		}
 	}
 
@@ -224,7 +223,7 @@ class TextHandler {
 		$api->profileOut();
 
 		if ( defined( 'ApiResult::META_CONTENT' ) ) {
-			$data = $module->getResult()->getResultData( null, array( 'Strip' => 'all' ) );
+			$data = $module->getResult()->getResultData( null, [ 'Strip' => 'all' ] );
 		} else {
 			$data = $module->getResultData();
 		}
@@ -237,7 +236,7 @@ class TextHandler {
 	 * @return array
 	 */
 	function getTextTracksFromData( $data ) {
-		$textTracks = array();
+		$textTracks = [];
 		$providerName = $this->file->repo->getName();
 		// commons is called shared in production. normalize it to wikimediacommons
 		if ( $providerName == 'shared' ) {
@@ -263,7 +262,7 @@ class TextHandler {
 					continue;
 				}
 				$namespacePrefix = "TimedText:";
-				$textTracks[] = array(
+				$textTracks[] = [
 					'kind' => 'subtitles',
 					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
 					'data-mwprovider' => $providerName,
@@ -276,7 +275,7 @@ class TextHandler {
 					'label' => wfMessage( 'timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
 						$languageKey )->text()
-				);
+				];
 			}
 		}
 		return $textTracks;
@@ -294,17 +293,17 @@ class TextHandler {
 	function getFullURL( $pageTitle, $contentType ) {
 		if ( $this->file->isLocal() ) {
 			$subTitle =  Title::newFromText( $pageTitle );
-			return $subTitle->getFullURL( array(
+			return $subTitle->getFullURL( [
 				'action' => 'raw',
 				'ctype' => $contentType
-			) );
+			] );
 		// } elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ) {
 		} else {
 			$query = 'title=' . wfUrlencode( $pageTitle ) . '&';
-			$query .= wfArrayToCgi( array(
+			$query .= wfArrayToCgi( [
 				'action' => 'raw',
 				'ctype' => $contentType
-			) );
+			] );
 			// Note: This will return false if scriptDirUrl is not set for repo.
 			return $this->file->repo->makeUrl( $query );
 		}

@@ -15,15 +15,15 @@ class TranscodeStatusTable {
 		global $wgOut;
 
 		// Add transcode table css and javascript:
-		$wgOut->addModules( array( 'ext.tmh.transcodetable' ) );
+		$wgOut->addModules( [ 'ext.tmh.transcodetable' ] );
 
 		$o = '<h2 id="transcodestatus">' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
 		// Give the user a purge page link
 		$o .= Linker::link(
 			$file->getTitle(),
 			wfMessage( 'timedmedia-update-status' )->escaped(),
-			array(),
-			array( 'action'=> 'purge' )
+			[],
+			[ 'action'=> 'purge' ]
 		);
 
 		$o .= self::getTranscodesTable( $file );
@@ -68,7 +68,7 @@ class TranscodeStatusTable {
 		}
 
 		uksort( $transcodeRows, function( $a, $b ) {
-			$formatOrder = array( 'vp9', 'vp8', 'h264', 'theora', 'opus', 'vorbis', 'aac' );
+			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'opus', 'vorbis', 'aac' ];
 
 			$aFormat = self::codecFromTranscodeKey( $a );
 			$bFormat = self::codecFromTranscodeKey( $b );
@@ -89,7 +89,7 @@ class TranscodeStatusTable {
 		} );
 
 		$o .= Xml::openElement( 'table',
-			array( 'class' => 'wikitable mw-filepage-transcodestatus' )
+			[ 'class' => 'wikitable mw-filepage-transcodestatus' ]
 		) . "\n"
 			. '<tr>'
 			. '<th>' . wfMessage( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
@@ -193,12 +193,12 @@ class TranscodeStatusTable {
 		}
 		// Check for error:
 		if ( !is_null( $state['time_error'] ) ) {
-			$attribs = array();
+			$attribs = [];
 			if ( !is_null( $state['error'] ) ) {
-				$attribs = array(
+				$attribs = [
 					'class' => 'mw-tmh-pseudo-error-link',
 					'data-error' => $state['error'],
-				);
+				];
 			}
 
 			return Html::rawElement( 'span', $attribs,

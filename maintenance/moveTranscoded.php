@@ -19,7 +19,7 @@ class MoveTranscoded extends Maintenance {
 
 		$this->output( "Move transcoded files:\n" );
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'transcode', '*', array(), __METHOD__ );
+		$res = $dbr->select( 'transcode', '*', [], __METHOD__ );
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->transcode_image_name, NS_FILE );
 			$file = wfLocalFile( $title );

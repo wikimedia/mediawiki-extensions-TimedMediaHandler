@@ -30,8 +30,8 @@ class ApiTranscodeStatus extends ApiQueryBase {
 						unset( $val['image_name'] );
 						unset( $val['key'] );
 					}
-					$result->addValue( array(
-						'query', 'pages', $img->getTitle()->getArticleID() ), 'transcodestatus', $transcodeStatus
+					$result->addValue( [
+						'query', 'pages', $img->getTitle()->getArticleID() ], 'transcodestatus', $transcodeStatus
 					);
 				}
 			}
@@ -43,34 +43,34 @@ class ApiTranscodeStatus extends ApiQueryBase {
 	}
 
 	public function getAllowedParams() {
-		return array();
+		return [];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	public function getDescription() {
-		return array(
+		return [
 			'Get transcode status for a given file page'
-		);
+		];
 	}
 
 	/**
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	protected function getExamples() {
-		return array(
+		return [
 			'api.php?action=query&prop=transcodestatus&titles=File:Clip.webm',
-		);
+		];
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
-		return array(
+		return [
 			'action=query&prop=transcodestatus&titles=File:Clip.webm'
 				=> 'apihelp-query+transcodestatus-example-1',
-		);
+		];
 	}
 }

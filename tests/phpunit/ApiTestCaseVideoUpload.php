@@ -19,10 +19,10 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	 * @return Array set of test files with associated metadata
 	 */
 	static function mediaFilesProvider() {
-		return array(
-			array(
+		return [
+			[
 				// Double wrap the file array to match phpunit data provider conventions
-				array(
+				[
 					'mime' => 'application/ogg',
 					'filePath' => __DIR__ . '/media/test5seconds.electricsheep.300x400.ogv',
 					"size" => 301477,
@@ -31,10 +31,10 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 					"mediatype" => "VIDEO",
 					"bandwidth" => 452216,
 					"framerate" => 30
-				)
-			),
-			array(
-				array(
+				]
+			],
+			[
+				[
 					'mime' => 'video/webm',
 					'filePath' => __DIR__ . '/media/shuttle10seconds.1080x608.webm',
 					"size" => 699018,
@@ -43,9 +43,9 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 					"mediatype" => "VIDEO",
 					"bandwidth" => 522142,
 					"framerate" => 29.97
-				)
-			)
-		);
+				]
+			]
+		];
 	}
 	/**
 	 * Fixture -- run after every test
@@ -69,20 +69,20 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	protected function doLogin( $user = 'sysop' ) {
 		$user = self::$users['uploader'];
 
-		$params = array(
+		$params = [
 			'action' => 'login',
 			'lgname' => $user->username,
 			'lgpassword' => $user->password
-		);
+		];
 		list( $result, , $session ) = $this->doApiRequest( $params );
 		$token = $result['login']['token'];
 
-		$params = array(
+		$params = [
 			'action' => 'login',
 			'lgtoken' => $token,
 			'lgname' => $user->username,
 			'lgpassword' => $user->password
-		);
+		];
 		list( $result, , $session ) = $this->doApiRequest( $params, $session );
 		return $session;
 	}
@@ -108,7 +108,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 			$this->markTestIncomplete( "Couldn't upload file!\n" );
 		}
 
-		$params = array(
+		$params = [
 			'action' => 'upload',
 			'filename' => $fileName,
 			'file' => 'dummy content',
@@ -116,7 +116,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 			'text'	=> "This is the page text for $fileName",
 			// This uploadFile function supports video tests not a test upload warnings
 			'ignorewarnings' => true
-		);
+		];
 
 		try {
 			list( $result, , ) = $this->doApiRequestWithToken( $params, $session );

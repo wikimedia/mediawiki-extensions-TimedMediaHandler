@@ -53,8 +53,8 @@ $wgWaitTimeForTranscodeReset = 3600;
 $wgMinimumVideoPlayerSize = 200;
 
 // Set the supported ogg codecs:
-$wgMediaVideoTypes = array( 'Theora', 'VP8' );
-$wgMediaAudioTypes = array( 'Vorbis', 'Speex', 'FLAC', 'Opus' );
+$wgMediaVideoTypes = [ 'Theora', 'VP8' ];
+$wgMediaAudioTypes = [ 'Vorbis', 'Speex', 'FLAC', 'Opus' ];
 
 // Default skin for mwEmbed player
 $wgVideoPlayerSkinModule = 'mw.PlayerSkinKskin';
@@ -106,7 +106,7 @@ $wgTimedTextNS = 710;
 
 // Set TimedText namespace for ForeignDBViaLBRepo on a per wikiID basis
 // $wgTimedTextForeignNamespaces = array( 'commonswiki' => 102 );
-$wgTimedTextForeignNamespaces = array();
+$wgTimedTextForeignNamespaces = [];
 
 // Set to false to disable local TimedText,
 // you still get subtitles for videos from foreign repos
@@ -127,7 +127,7 @@ $wgEnableLocalTimedText = true;
  * -Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed
  * -Derivative should be listed min to max
  */
-$wgEnabledTranscodeSet = array(
+$wgEnabledTranscodeSet = [
 
 	// WebM VP8/Vorbis
 	// primary free/open video format
@@ -153,7 +153,6 @@ $wgEnabledTranscodeSet = array(
 
 	// A 4K full high quality WebM stream
 	// WebVideoTranscode::ENC_WEBM_2160P,
-
 
 	// Ogg Theora/Vorbis
 	// Fallback for Safari/IE/Edge with ogv.js
@@ -201,9 +200,9 @@ $wgEnabledTranscodeSet = array(
 	// A 4K high quality stream; higher end phones, tablets, smart tvs
 	WebVideoTranscode::ENC_H264_2160P,
 */
-);
+];
 
-$wgEnabledAudioTranscodeSet = array(
+$wgEnabledAudioTranscodeSet = [
 	WebVideoTranscode::ENC_OGG_VORBIS,
 
 	// opus support must be available in avconv
@@ -214,7 +213,7 @@ $wgEnabledAudioTranscodeSet = array(
 
 	// avconv needs libvo_aacenc support
 	// WebVideoTranscode::ENC_AAC,
-);
+];
 
 // If mp4 source assets can be ingested:
 $wgTmhEnableMp4Uploads = false;
@@ -226,11 +225,10 @@ $wgTmhTheoraTwoPassEncoding = false;
 
 /******************* CONFIGURATION ENDS HERE **********************/
 
-
 // List of extensions handled by Timed Media Handler since its referenced in a few places.
 // you should not modify this variable
 
-$wgTmhFileExtensions = array( 'ogg', 'ogv', 'oga', 'flac', 'opus', 'wav', 'webm', 'mp4' );
+$wgTmhFileExtensions = [ 'ogg', 'ogv', 'oga', 'flac', 'opus', 'wav', 'webm', 'mp4' ];
 
 $wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
@@ -334,20 +332,20 @@ $wgSpecialPages['OrphanedTimedText'] = 'SpecialOrphanedTimedText';
 $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
 
 // Extension Credits
-$wgExtensionCredits['media'][] = array(
+$wgExtensionCredits['media'][] = [
 	'path' => __FILE__,
 	'name' => 'TimedMediaHandler',
 	'namemsg' => 'timedmediahandler-extensionname',
-	'author' => array(
+	'author' => [
 		'Michael Dale',
 		'Tim Starling',
 		'James Heinrich',
 		'Jan Gerber',
 		'Brion Vibber',
 		'Derk-Jan Hartman'
-	),
+	],
 	'url' => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmediahandler-desc',
 	'version' => '0.5.0',
 	'license-name' => 'GPL-2.0+',
-);
+];

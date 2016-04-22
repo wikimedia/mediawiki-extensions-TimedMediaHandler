@@ -21,12 +21,12 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 
 		// Check for derivatives ( should trigger adding jobs )
 		$fileName = basename( $file['filePath'] );
-		$params = array(
+		$params = [
 			'action' => 'query',
 			'titles' => 'File:' . $fileName,
 			'prop' => 'videoinfo',
 			'viprop' => "derivatives",
-		);
+		];
 		list( $result,, ) = $this->doApiRequest( $params );
 
 		// Get the $derivatives:
@@ -40,12 +40,12 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		// Check if the transcode jobs were added:
 		// get results: query jobs table
 		$db = wfGetDB( DB_MASTER );
-		$res = $db->select( 'transcode', '*', array(
+		$res = $db->select( 'transcode', '*', [
 			'transcode_image_name' => ucfirst( $fileName )
-		) );
+		] );
 		// Make sure we target at least one ogg and one webm:
 		$hasOgg = $hasWebM = false;
-		$targetEncodes = array();
+		$targetEncodes = [];
 		foreach ( $res as $row ) {
 			$codec = WebVideoTranscode::$derivativeSettings[ $row->transcode_key ]['videoCodec'];
 			if ( $codec == 'theora' ) {
@@ -65,9 +65,9 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		// Now run the transcode job queue
 		$this->runTranscodeJobs();
 
-		$res = $db->select( 'transcode', '*', array(
+		$res = $db->select( 'transcode', '*', [
 			'transcode_image_name' => ucfirst( $fileName )
-		) );
+		] );
 
 		// Now check if the derivatives were created:
 		list( $result,, ) = $this->doApiRequest( $params );
@@ -93,7 +93,7 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		$dbw = wfGetDB( DB_MASTER );
 		$type = 'webVideoTranscode';
 		// Set the condition to only run the webVideoTranscode
-		$conds = array( "job_cmd" => $type );
+		$conds = [ "job_cmd" => $type ];
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 
