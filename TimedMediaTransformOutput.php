@@ -431,9 +431,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		if ( $wgTmhWebPlayer === 'videojs' ) {
 			$mediaAttr['class'] = 'video-js ' . $wgVideoPlayerSkin;
-			$mediaAttr['width'] = $width;
+			$mediaAttr['width'] = intval( $width );
 			if ( $this->isVideo ) {
-				$mediaAttr['height'] = $height;
+				$mediaAttr['height'] = intval( $height );
 			} else {
 				unset( $mediaAttr['height'] );
 				unset( $mediaAttr['poster'] );
