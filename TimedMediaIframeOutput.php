@@ -58,9 +58,9 @@ class TimedMediaIframeOutput {
 			// file was removed, show wiki page with warning
 			return false;
 		}
-		$params = array(
+		$params = [
 			'fillwindow' => true
-		);
+		];
 		$videoTransform = $file->transform( $params );
 
 		// Definitely do not want to break frames
@@ -69,7 +69,7 @@ class TimedMediaIframeOutput {
 		$wgOut->disallowUserJs();
 
 		if ( $wgTmhWebPlayer == 'mwembed' ) {
-			$wgOut->addModules( array( 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ) );
+			$wgOut->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
 		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
 			$wgOut->addModuleStyles( 'ext.tmh.player.styles' );
 			$wgOut->addModules( 'ext.tmh.player' );
@@ -92,7 +92,7 @@ class TimedMediaIframeOutput {
 		);
 		echo implode( "\n", $links["html"] );
 
-		echo Html::element( 'meta', array( 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ) );
+		echo Html::element( 'meta', [ 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ] );
 	?>
 	<?php echo "\n" . $wgOut->getHeadScripts(); ?>
 	</head>

@@ -32,24 +32,24 @@ class WebMHandler extends ID3Handler {
 			return false;
 		}
 
-		$size = array( false, false );
+		$size = [ false, false ];
 		// display_x/display_y is only set if DisplayUnit
 		// is pixels, otherwise display_aspect_ratio is set
 		if ( isset( $metadata['video']['display_x'] )
 				&&
 			isset( $metadata['video']['display_y'] )
 		){
-			$size = array(
+			$size = [
 				$metadata['video']['display_x'],
 				$metadata['video']['display_y']
-			);
+			];
 		} elseif ( isset( $metadata['video']['resolution_x'] )
 			&& isset( $metadata['video']['resolution_y'] )
 		) {
-			$size = array(
+			$size = [
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']
-			);
+			];
 			if ( isset( $metadata['video']['crop_top'] ) ) {
 				$size[1] -= $metadata['video']['crop_top'];
 			}
@@ -104,7 +104,7 @@ class WebMHandler extends ID3Handler {
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
-		$streamTypes = array();
+		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;

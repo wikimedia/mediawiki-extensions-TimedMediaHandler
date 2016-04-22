@@ -34,66 +34,66 @@ class TimedMediaHandlerHooks {
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		global $wgTmhWebPlayer;
 
-		$baseExtensionResource = array(
+		$baseExtensionResource = [
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'TimedMediaHandler',
-		);
+		];
 
 		if ( $wgTmhWebPlayer === 'mwembed' ) {
-			$resourceModules = array(
-				'mw.PopUpMediaTransform' => $baseExtensionResource + array(
+			$resourceModules = [
+				'mw.PopUpMediaTransform' => $baseExtensionResource + [
 						'scripts' => 'resources/mw.PopUpThumbVideo.js',
-						'dependencies' => array(
+						'dependencies' => [
 							'mw.MwEmbedSupport',
 							'mediawiki.Title',
 							'mw.PopUpMediaTransform.styles'
-						),
+						],
 						'position' => 'top',
-					),
-				'mw.PopUpMediaTransform.styles' => $baseExtensionResource + array(
+					],
+				'mw.PopUpMediaTransform.styles' => $baseExtensionResource + [
 						'position' => 'top',
 						'styles' => 'resources/PopUpThumbVideo.css',
-					),
-				'mw.TMHGalleryHook.js' => $baseExtensionResource + array(
+					],
+				'mw.TMHGalleryHook.js' => $baseExtensionResource + [
 						'scripts' => 'resources/mw.TMHGalleryHook.js',
 						// position top needed as it needs to load before mediawiki.page.gallery
 						'position' => 'top',
-					),
-				'embedPlayerIframeStyle'=> $baseExtensionResource + array(
+					],
+				'embedPlayerIframeStyle'=> $baseExtensionResource + [
 						'styles' => 'resources/embedPlayerIframe.css',
 						'position' => 'bottom',
-					),
-				'ext.tmh.embedPlayerIframe' => $baseExtensionResource + array(
+					],
+				'ext.tmh.embedPlayerIframe' => $baseExtensionResource + [
 						'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
-						'dependencies' => array(
+						'dependencies' => [
 							'jquery.embedPlayer',
 							'mw.MwEmbedSupport',
-						),
-					),
-				"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + array(
+						],
+					],
+				"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + [
 						'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-						'dependencies'=> array(
+						'dependencies'=> [
 							'mw.Api',
 							'mw.MwEmbedSupport',
-						),
-					),
+						],
+					],
 				// adds support MediaWikiPlayerSupport player bindings
-				"mw.MediaWikiPlayer.loader" => $baseExtensionResource + array(
+				"mw.MediaWikiPlayer.loader" => $baseExtensionResource + [
 						'scripts' => 'resources/mw.MediaWikiPlayer.loader.js',
-						'dependencies' => array(
+						'dependencies' => [
 							"mw.EmbedPlayer.loader",
 							"mw.TimedText.loader",
-						),
+						],
 						'position' => 'top',
-					),
-			);
+					],
+			];
 		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
-			$resourceModules = array(
-				'ext.tmh.video-js' => $baseExtensionResource + array(
+			$resourceModules = [
+				'ext.tmh.video-js' => $baseExtensionResource + [
 						'scripts' => 'resources/videojs/video.js',
 						'styles' => 'resources/videojs/video-js.css',
-						'targets' => array( 'mobile', 'desktop' ),
-						'languageScripts' => array(
+						'targets' => [ 'mobile', 'desktop' ],
+						'languageScripts' => [
 							'ar' => 'resources/videojs/lang/ar.js',
 							'ba' => 'resources/videojs/lang/ba.js',
 							'bg' => 'resources/videojs/lang/bg.js',
@@ -123,16 +123,16 @@ class TimedMediaHandlerHooks {
 							'vi' => 'resources/videojs/lang/vi.js',
 							'zh-CN' => 'resources/videojs/lang/zh-CN.js',
 							'zh-TW' => 'resources/videojs/lang/zh-TW.js',
-						),
-					),
-				'ext.tmh.videojs-ogvjs' => $baseExtensionResource + array(
+						],
+					],
+				'ext.tmh.videojs-ogvjs' => $baseExtensionResource + [
 						'scripts' => 'resources/videojs-ogvjs/videojs-ogvjs.js',
-						'targets' => array( 'mobile', 'desktop' ),
-						'dependencies' => array(
+						'targets' => [ 'mobile', 'desktop' ],
+						'dependencies' => [
 							'ext.tmh.video-js',
 							'ext.tmh.OgvJs',
-						),
-					),
+						],
+					],
 				// 'ext.tmh.videojs-offset' => $baseExtensionResource + array(
 				// 'scripts' => 'resources/videojs-offset/videojs-offset.js',
 				// 'targets' => array( 'mobile', 'desktop' ),
@@ -140,36 +140,36 @@ class TimedMediaHandlerHooks {
 				// 'ext.tmh.video-js',
 				// ),
 				// ),
-				'ext.tmh.videojs-resolution-switcher' => $baseExtensionResource + array(
+				'ext.tmh.videojs-resolution-switcher' => $baseExtensionResource + [
 						'scripts' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js',
 						'styles' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css',
-						'targets' => array( 'mobile', 'desktop' ),
-						'dependencies' => array(
+						'targets' => [ 'mobile', 'desktop' ],
+						'dependencies' => [
 							'ext.tmh.video-js',
-						),
-					),
-				'ext.tmh.videojs-responsive-layout' => $baseExtensionResource + array(
+						],
+					],
+				'ext.tmh.videojs-responsive-layout' => $baseExtensionResource + [
 						'scripts' => 'resources/videojs-responsive-layout/videojs-responsive-layout.js',
-						'targets' => array( 'mobile', 'desktop' ),
-						'dependencies' => array(
+						'targets' => [ 'mobile', 'desktop' ],
+						'dependencies' => [
 							'ext.tmh.video-js',
-						),
-					),
-				'ext.tmh.player' => $baseExtensionResource + array(
+						],
+					],
+				'ext.tmh.player' => $baseExtensionResource + [
 						'scripts' => 'resources/ext.tmh.player.js',
-						'targets' => array( 'mobile', 'desktop' ),
-						'dependencies' => array(
+						'targets' => [ 'mobile', 'desktop' ],
+						'dependencies' => [
 							'ext.tmh.video-js',
 							'ext.tmh.videojs-resolution-switcher',
 							'ext.tmh.videojs-ogvjs',
 							'ext.tmh.videojs-responsive-layout',
 							// 'ext.tmh.videojs-offset',
-						),
-					),
-				'ext.tmh.player.styles' => $baseExtensionResource + array(
+						],
+					],
+				'ext.tmh.player.styles' => $baseExtensionResource + [
 						'styles' => 'resources/ext.tmh.player.styles.less',
-					)
-			);
+					]
+			];
 		}
 
 		$resourceLoader->register( $resourceModules );
@@ -238,24 +238,24 @@ class TimedMediaHandlerHooks {
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
-		$baseExtensionResource = array(
+		$baseExtensionResource = [
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'TimedMediaHandler',
-		);
+		];
 
-		$wgResourceModules += array(
-			'ext.tmh.thumbnail.styles' => $baseExtensionResource + array(
+		$wgResourceModules += [
+			'ext.tmh.thumbnail.styles' => $baseExtensionResource + [
 				'styles' => 'resources/ext.tmh.thumbnail.css',
 				'position' => 'top',
-			),
-			'ext.tmh.transcodetable' => $baseExtensionResource + array(
+			],
+			'ext.tmh.transcodetable' => $baseExtensionResource + [
 				'scripts' => 'resources/ext.tmh.transcodetable.js',
 				'styles' => 'resources/transcodeTable.css',
-				'dependencies' => array(
+				'dependencies' => [
 					'mediawiki.api.edit',
 					'oojs-ui',
-				),
-				'messages'=> array(
+				],
+				'messages'=> [
 					'timedmedia-reset-button-cancel',
 					'timedmedia-reset-button-dismiss',
 					'timedmedia-reset-button-reset',
@@ -263,27 +263,27 @@ class TimedMediaHandlerHooks {
 					'timedmedia-reset',
 					'timedmedia-reset-areyousure',
 					'timedmedia-reset-explanation',
-				)
-			),
-			'ext.tmh.TimedTextSelector' =>  $baseExtensionResource + array(
+				]
+			],
+			'ext.tmh.TimedTextSelector' =>  $baseExtensionResource + [
 				'scripts' => 'resources/ext.tmh.TimedTextSelector.js',
-			),
+			],
 			// Add OgvJs-related modules for Safari/IE/Edge Ogg playback
-			'ext.tmh.OgvJsSupport' => $baseExtensionResource + array(
-				'scripts' => array(
+			'ext.tmh.OgvJsSupport' => $baseExtensionResource + [
+				'scripts' => [
 					'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv-support.js',
 					'resources/ext.tmh.OgvJsSupport.js',
-				),
-				'targets' => array( 'mobile', 'desktop' ),
-			),
-			'ext.tmh.OgvJs' => $baseExtensionResource + array(
-				'scripts' => array(
+				],
+				'targets' => [ 'mobile', 'desktop' ],
+			],
+			'ext.tmh.OgvJs' => $baseExtensionResource + [
+				'scripts' => [
 					'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv.js',
-				),
+				],
 				'dependencies' => 'ext.tmh.OgvJsSupport',
-				'targets' => array( 'mobile', 'desktop' ),
-			),
-		);
+				'targets' => [ 'mobile', 'desktop' ],
+			],
+		];
 
 		// Setup a hook for iframe embed handling:
 		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
@@ -382,11 +382,11 @@ class TimedMediaHandlerHooks {
 		if ( $handler !== false && $handler instanceof TimedMediaHandler ) {
 			if ( $wgTmhWebPlayer === 'mwembed' ) {
 				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
-				$out->addModules( array(
+				$out->addModules( [
 					'mw.MediaWikiPlayer.loader',
 					'mw.PopUpMediaTransform',
 					'mw.TMHGalleryHook.js',
-				) );
+				] );
 			} elseif ( $wgTmhWebPlayer === 'videojs' ) {
 				$out->addModuleStyles( 'ext.tmh.player.styles' );
 				$out->addModules( 'ext.tmh.player' );
@@ -594,7 +594,7 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testDir = __DIR__ . '/tests/phpunit/';
-		$testFiles = array(
+		$testFiles = [
 			'TestTimeParsing.php',
 			'TestApiUploadVideo.php',
 			'TestVideoThumbnail.php',
@@ -603,7 +603,7 @@ class TimedMediaHandlerHooks {
 			'TestWebMHandler.php',
 			'TestTimedMediaTransformOutput.php',
 			'TestTimedMediaHandler.php'
-		);
+		];
 		foreach ( $testFiles as $fileName ) {
 			$files[] = $testDir . $fileName;
 		}
@@ -652,10 +652,10 @@ class TimedMediaHandlerHooks {
 
 		if ( $wgTmhWebPlayer === 'mwembed' ) {
 			$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
-			$out->addModules( array(
+			$out->addModules( [
 				'mw.MediaWikiPlayer.loader',
 				'mw.PopUpMediaTransform',
-			) );
+			] );
 		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
 			$out->addModuleStyles( 'ext.tmh.player.styles' );
 			$out->addModules( 'ext.tmh.player' );
@@ -672,8 +672,8 @@ class TimedMediaHandlerHooks {
 		case 'sqlite':
 			 // Initial install tables
 			$updater->addExtensionTable( 'transcode', "$base/TimedMediaHandler.sql" );
-			$updater->addExtensionUpdate( array( 'addIndex', 'transcode', 'transcode_name_key',
-				"$base/archives/transcode_name_key.sql", true ) );
+			$updater->addExtensionUpdate( [ 'addIndex', 'transcode', 'transcode_name_key',
+				"$base/archives/transcode_name_key.sql", true ] );
 			break;
 		case 'postgres':
 			// TODO
@@ -683,7 +683,7 @@ class TimedMediaHandlerHooks {
 	}
 
 	public static function onwgQueryPages( $qp ) {
-		$qp[] = array( 'SpecialOrphanedTimedText', 'OrphanedTimedText' );
+		$qp[] = [ 'SpecialOrphanedTimedText', 'OrphanedTimedText' ];
 		return true;
 	}
 

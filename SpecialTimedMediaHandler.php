@@ -17,16 +17,16 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		'missing' => 'transcode_time_addjob IS NULL',
 	);
 	// @codingStandardsIgnoreEnd
-	private $formats = array(
+	private $formats = [
 		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
 		'webm' => 'img_major_mime="video" AND img_minor_mime = "webm"',
-	);
-	private $audioFormats = array(
+	];
+	private $audioFormats = [
 		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
 		'webm' => 'img_major_mime="audio" AND img_minor_mime = "webm"',
 		'flac' => 'img_major_mime="audio" AND img_minor_mime="x-flac"',
 		'wav' => 'img_major_mime="audio" AND img_minor_mime="wav"',
-	);
+	];
 
 	public function __construct( $request = null, $par = null ) {
 		parent::__construct( 'TimedMediaHandler', 'transcode-status' );
@@ -40,7 +40,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 		$stats = $this->getStats();
 
-		foreach ( array( 'audios', 'videos' ) as $type ) {
+		foreach ( [ 'audios', 'videos' ] as $type ) {
 			// for grep timedmedia-audios, timedmedia-videos
 			$out->addHTML(
 				"<h2>"
@@ -111,16 +111,16 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$files = $wgMemc->get( $memcKey );
 		if ( !$files ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$files = array();
+			$files = [];
 			$res = $dbr->select(
 				'transcode',
 				'*',
 				$this->transcodeStates[ $state ],
 				__METHOD__,
-				array( 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' )
+				[ 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' ]
 			);
 			foreach ( $res as $row ) {
-				$transcode = array();
+				$transcode = [];
 				foreach ( $row as $k => $v ) {
 					$transcode[ str_replace( 'transcode_', '', $k ) ] = $v;
 				}
@@ -161,8 +161,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$stats = $wgMemc->get( $memcKey );
 		if ( !$stats ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$stats = array();
-			$stats[ 'videos' ] = array( 'total' => 0 );
+			$stats = [];
+			$stats[ 'videos' ] = [ 'total' => 0 ];
 			foreach ( $this->formats as $format => $condition ) {
 				$stats[ 'videos' ][ $format ] = (int)$dbr->selectField(
 					'image',
@@ -172,7 +172,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				);
 				$stats[ 'videos' ][ 'total' ] += $stats[ 'videos' ][ $format ];
 			}
-			$stats[ 'audios' ] = array( 'total' => 0 );
+			$stats[ 'audios' ] = [ 'total' => 0 ];
 			foreach ( $this->audioFormats as $format => $condition ) {
 				$stats[ 'audios' ][ $format ] = (int)$dbr->selectField(
 					'image',
@@ -194,10 +194,10 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$states = $wgMemc->get( $memcKey );
 		if ( !$states ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			$states = array();
-			$states[ 'transcodes' ] = array( 'total' => 0 );
+			$states = [];
+			$states[ 'transcodes' ] = [ 'total' => 0 ];
 			foreach ( $this->transcodeStates as $state => $condition ) {
-				$states[ $state ] = array( 'total' => 0 );
+				$states[ $state ] = [ 'total' => 0 ];
 				foreach ( $allTranscodes as $type ) {
 					// Important to pre-initialize, as can give
 					// warnings if you don't have a lot of things in transcode table.
@@ -205,13 +205,13 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				}
 			}
 			foreach ( $this->transcodeStates as $state => $condition ) {
-				$cond = array( 'transcode_key' => $allTranscodes );
+				$cond = [ 'transcode_key' => $allTranscodes ];
 				$cond[] = $condition;
 				$res = $dbr->select( 'transcode',
-					array( 'COUNT(*) as count', 'transcode_key' ),
+					[ 'COUNT(*) as count', 'transcode_key' ],
 					$cond,
 					__METHOD__,
-					array( 'GROUP BY' => 'transcode_key' )
+					[ 'GROUP BY' => 'transcode_key' ]
 				);
 				foreach ( $res as $row ) {
 					$key = $row->transcode_key;
@@ -220,10 +220,10 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				}
 			}
 			$res = $dbr->select( 'transcode',
-				array( 'COUNT(*) as count', 'transcode_key' ),
-				array( 'transcode_key' => $allTranscodes ),
+				[ 'COUNT(*) as count', 'transcode_key' ],
+				[ 'transcode_key' => $allTranscodes ],
 				__METHOD__,
-				array( 'GROUP BY' => 'transcode_key' )
+				[ 'GROUP BY' => 'transcode_key' ]
 			);
 			foreach ( $res as $row ) {
 				$key = $row->transcode_key;

@@ -16,10 +16,10 @@ class ResetTranscodes extends Maintenance {
 		$this->mDescription = "Reset stalled transcodes, that are no longer in the job queue.";
 	}
 	public function execute() {
-		$where = array(
+		$where = [
 			"transcode_time_startwork" => null,
 			"transcode_time_error" => null
-		);
+		];
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'transcode', '*', $where, __METHOD__ );
 		foreach ( $res as $row ) {
@@ -27,10 +27,10 @@ class ResetTranscodes extends Maintenance {
 			// re-insert WebVideoTranscodeJob,
 			// will only be added if not in queue
 			// due to deduplication
-			$job = new WebVideoTranscodeJob( $title, array(
+			$job = new WebVideoTranscodeJob( $title, [
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $row->transcode_key,
-			) );
+			] );
 			$job->insert();
 		}
 	}

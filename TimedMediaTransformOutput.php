@@ -19,9 +19,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
 	function __construct( $conf ) {
-		$options = array( 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
+		$options = [ 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
 			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow',
-			'sources', 'disablecontrols' );
+			'sources', 'disablecontrols' ];
 		foreach ( $options as $key ) {
 			if ( isset( $conf[ $key ] ) ) {
 				$this->$key = $conf[$key];
@@ -122,7 +122,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 * @throws Exception
 	 */
-	function toHtml( $options = array() ) {
+	function toHtml( $options = [] ) {
 		global $wgTmhWebPlayer;
 
 		if ( count( func_get_args() ) == 2 ) {
@@ -188,32 +188,32 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function getImagePopUp() {
 		// pop up videos set the autoplay attribute to true:
 		$autoPlay = true;
-		return Xml::tags( 'div', array(
+		return Xml::tags( 'div', [
 				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . $this->getPlayerWidth() . "px;",
 				'videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize(), $autoPlay ),
-				),
-			Xml::tags( 'img', array(
+				],
+			Xml::tags( 'img', [
 				'alt' => $this->file->getTitle(),
 				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
 							$this->getPlayerHeight() . "px",
 				'src' =>  $this->getUrl(),
-			), '' )
+			], '' )
 			.
 			// For javascript disabled browsers provide a link to the asset:
-			Xml::tags( 'a', array(
+			Xml::tags( 'a', [
 					'href'=> $this->file->getUrl(),
 					'title' => wfMessage( 'timedmedia-play-media' )->escaped(),
 					'target' => 'new'
-				),
-				Xml::tags( 'span', array(
+				],
+				Xml::tags( 'span', [
 						'class' => 'play-btn-large'
-					),
+					],
 					// Have some sort of text for lynx & screen readers.
 					Html::element(
 						'span',
-						array( 'class' => 'mw-tmh-playtext' ),
+						[ 'class' => 'mw-tmh-playtext' ],
 						wfMessage( 'timedmedia-play-media' )->text()
 					)
 				)
@@ -291,7 +291,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param $autoPlay boolean sets the autoplay attribute
 	 * @return string
 	 */
-	function getHtmlMediaTagOutput( $sizeOverride = array(), $autoPlay = false ) {
+	function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
 		global $wgTmhWebPlayer;
 
 		// Try to get the first source src attribute ( usually this should be the source file )
@@ -306,12 +306,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		// Sort sources by bandwidth least to greatest ( so default selection on resource constrained
 		// browsers ( without js? ) go with minimal source.
-		usort( $mediaSources, array( $this, 'sortMediaByBandwidth' ) );
+		usort( $mediaSources, [ $this, 'sortMediaByBandwidth' ] );
 
 		// We prefix some source attributes with data- to pass along to the javascript player
-		$prefixedSourceAttr = array(
+		$prefixedSourceAttr = [
 			'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate', 'disablecontrols'
-		);
+		];
 		foreach ( $mediaSources as &$source ) {
 			foreach ( $source as $attr => $val ) {
 				if ( in_array( $attr, $prefixedSourceAttr ) ) {
@@ -346,10 +346,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		} // else mwEmbed player
 
 		// Build the video tag output:
-		$s = Xml::tags( 'div', array(
+		$s = Xml::tags( 'div', [
 				'class' => 'mediaContainer',
 				'style' => 'width:'. $width
-			),
+			],
 			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
 				// The set of media sources:
 				self::htmlTagSet( 'source', $mediaSources ) .
@@ -377,7 +377,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Prevent potential loop
 			throw new Exception( "Asked for poster in current size. Potential loop." );
 		}
-		$params = array( "width" => intval( $width ) );
+		$params = [ "width" => intval( $width ) ];
 		$mto = $this->file->transform( $params );
 		if ( $mto ) {
 			return $mto->getUrl();
@@ -412,7 +412,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$height .= 'px';
 		}
 
-		$mediaAttr = array(
+		$mediaAttr = [
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			// Get the correct size:
 			'poster' => $posterUrl,
@@ -423,7 +423,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Since we will reload the item with javascript,
 			// tell browser to not load the video before
 			'preload'=>'none',
-		);
+		];
 
 		if ( $autoPlay === true ) {
 			$mediaAttr['autoplay'] = 'true';
@@ -459,11 +459,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		if ( $this->file ) {
 			// Custom data-attributes
-			$mediaAttr += array(
+			$mediaAttr += [
 				'data-durationhint' => $length,
 				'data-startoffset' => $offset,
 				'data-mwtitle' => $this->file->getTitle()->getDBkey()
-			);
+			];
 
 			// Add api provider:
 			if ( $this->file->isLocal() ) {

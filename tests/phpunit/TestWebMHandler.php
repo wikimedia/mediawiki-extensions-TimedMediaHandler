@@ -25,11 +25,11 @@ class TestWebMHandler extends MediaWikiMediaTestCase {
 	}
 
 	function providerGetStreamTypes() {
-		return array(
-			array( 'shuttle10seconds.1080x608.webm', array( 'VP8' ) ),
-			array( 'VP9-tractor.webm', array( 'VP9' ) ),
-			array( 'bear-vp9-opus.webm', array( 'VP9', 'Opus' ) )
-		);
+		return [
+			[ 'shuttle10seconds.1080x608.webm', [ 'VP8' ] ],
+			[ 'VP9-tractor.webm', [ 'VP9' ] ],
+			[ 'bear-vp9-opus.webm', [ 'VP9', 'Opus' ] ]
+		];
 	}
 
 	/**
@@ -43,10 +43,10 @@ class TestWebMHandler extends MediaWikiMediaTestCase {
 	}
 
 	function providerGetWebType() {
-		return array(
-			array( 'shuttle10seconds.1080x608.webm', 'video/webm; codecs="vp8"' ),
-			array( 'VP9-tractor.webm', 'video/webm; codecs="vp9"' ),
-			array( 'bear-vp9-opus.webm', 'video/webm; codecs="vp9, opus"' )
-		);
+		return [
+			[ 'shuttle10seconds.1080x608.webm', 'video/webm; codecs="vp8"' ],
+			[ 'VP9-tractor.webm', 'video/webm; codecs="vp9"' ],
+			[ 'bear-vp9-opus.webm', 'video/webm; codecs="vp9, opus"' ]
+		];
 	}
 }

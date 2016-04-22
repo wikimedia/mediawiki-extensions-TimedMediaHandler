@@ -25,7 +25,7 @@ class FLACHandler extends ID3Handler {
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
-		$streamTypes = array();
+		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 
 		if ( !$metadata || isset( $metadata['error'] ) ) {

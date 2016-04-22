@@ -124,16 +124,16 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return Array Standard query info values.
 	 */
 	function getQueryInfo() {
-		$tables = array( 'page', 'image' );
-		$fields = array(
+		$tables = [ 'page', 'image' ];
+		$fields = [
 			'namespace' => 'page_namespace',
 			'title' => 'page_title',
 			'value' => 0,
-		);
-		$conds = array(
+		];
+		$conds = [
 			'img_name' => null,
 			'page_namespace' => NS_TIMEDTEXT,
-		);
+		];
 
 		// Now for the complicated bit
 		// Note: This bit is mysql specific. Probably could do something
@@ -142,22 +142,22 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		// this in standard sql, or in sqlite.
 		$baseCond = 'substr( page_title, 1, length( page_title ) - '
 			. "length( substring_index( page_title, '.' ,-2 ) ) - 1 )";
-		$joinConds = array(
-			'image' => array(
+		$joinConds = [
+			'image' => [
 				'LEFT OUTER JOIN',
 				 $baseCond . ' = img_name'
-			)
-		);
-		return array(
+			]
+		];
+		return [
 			'tables' => $tables,
 			'fields' => $fields,
 			'conds' => $conds,
 			'join_conds' => $joinConds
-		);
+		];
 	}
 
 	public function getOrderFields() {
-		return array( 'namespace', 'title' );
+		return [ 'namespace', 'title' ];
 	}
 
 	/**
@@ -215,14 +215,14 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 			return;
 		}
 
-		$filesToLookFor = array();
+		$filesToLookFor = [];
 		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->namespace, $row->title );
 			$fileTitle = $this->getCorrespondingFile( $title );
 			if ( !$fileTitle ) {
 				continue;
 			}
-			$filesToLookFor[] = array( 'title' => $fileTitle, 'ignoreRedirect' => true );
+			$filesToLookFor[] = [ 'title' => $fileTitle, 'ignoreRedirect' => true ];
 		}
 		$this->existingFiles = RepoGroup::singleton()->getLocalRepo()->findFiles( $filesToLookFor );
 		$res->seek( 0 );
@@ -251,7 +251,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 			}
 			return $link;
 		} else {
-			return Html::element( 'span', array( 'class' => 'mw-invalidtitle' ),
+			return Html::element( 'span', [ 'class' => 'mw-invalidtitle' ],
 				Linker::getInvalidTitleDescription( $this->getContext(), $row->namespace, $row->title ) );
 		}
 	}

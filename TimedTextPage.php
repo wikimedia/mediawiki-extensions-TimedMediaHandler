@@ -10,7 +10,7 @@
 class TimedTextPage extends Article {
 	// The width of the video plane:
 	static private $videoWidth = 400;
-	static private $knownTimedTextExtensions = array( 'srt', 'vtt' );
+	static private $knownTimedTextExtensions = [ 'srt', 'vtt' ];
 
 	public function view() {
 		$request = $this->getContext()->getRequest();
@@ -99,12 +99,12 @@ class TimedTextPage extends Article {
 
 		// Get the video with with a max of 600 pixel page
 		$out->addHTML(
-			xml::tags( 'table', array( 'style'=> 'border:none' ),
+			xml::tags( 'table', [ 'style'=> 'border:none' ],
 				xml::tags( 'tr', null,
-					xml::tags( 'td', array( 'valign' => 'top',  'width' => self::$videoWidth ),
+					xml::tags( 'td', [ 'valign' => 'top',  'width' => self::$videoWidth ],
 						$this->getVideoHTML( $videoTitle )
 					) .
-					xml::tags( 'td', array( 'valign' => 'top' ), $this->getTimedTextHTML( $languageName ) )
+					xml::tags( 'td', [ 'valign' => 'top' ], $this->getTimedTextHTML( $languageName ) )
 				)
 			)
 		);
@@ -131,17 +131,17 @@ class TimedTextPage extends Article {
 
 		// Look up the language name:
 		$language = $out->getLanguage()->getCode();
-		$attrs = array( 'id' => 'timedmedia-tt-input' );
+		$attrs = [ 'id' => 'timedmedia-tt-input' ];
 		$langSelect = Xml::languageSelector( $language, false, null, $attrs, null );
 
 		$out->addHTML(
-			Xml::tags( 'div', array( 'style' => 'text-align:center' ),
+			Xml::tags( 'div', [ 'style' => 'text-align:center' ],
 				Xml::tags( 'div', null,
 					wfMessage( 'timedmedia-subtitle-new-desc', $lang->getCode() )->parse()
 				) .
 				$langSelect[1] .
 				Xml::tags( 'button',
-					array( 'id' => 'timedmedia-tt-go' ),
+					[ 'id' => 'timedmedia-tt-go' ],
 					wfMessage( 'timedmedia-subtitle-new-go' )->escaped()
 				)
 			)
@@ -161,9 +161,9 @@ class TimedTextPage extends Article {
 			return wfMessage( 'timedmedia-subtitle-no-video' )->escaped();
 		} else {
 			$videoTransform = $file->transform(
-				array(
+				[
 					'width' => self::$videoWidth
-				)
+				]
 			);
 			return $videoTransform->toHTML();
 		}
@@ -181,7 +181,7 @@ class TimedTextPage extends Article {
 		}
 		return Xml::element(
 			'pre',
-			array( 'style' => 'margin-top: 0px;' ),
+			[ 'style' => 'margin-top: 0px;' ],
 			$this->getContent(),
 			false
 		);

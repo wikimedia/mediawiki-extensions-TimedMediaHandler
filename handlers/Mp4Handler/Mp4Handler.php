@@ -35,12 +35,12 @@ class Mp4Handler extends ID3Handler {
 				&&
 			isset( $metadata['video']['resolution_y'] )
 		){
-			return array(
+			return [
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']
-			);
+			];
 		}
-		return array( false, false );
+		return [ false, false ];
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Mp4Handler extends ID3Handler {
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
-		$streamTypes = array();
+		$streamTypes = [];
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;

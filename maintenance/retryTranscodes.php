@@ -26,7 +26,7 @@ class RetryTranscodes extends Maintenance {
 			return;
 		}
 		$dbw = wfGetDB( DB_MASTER );
-		$cond = array();
+		$cond = [];
 		$cond[] = 'transcode_time_error IS NOT NULL';
 		if ( $this->hasOption( "key" ) ) {
 			$cond['transcode_key'] = $this->getOption( 'key' );
@@ -37,14 +37,14 @@ class RetryTranscodes extends Maintenance {
 		}
 		do {
 			$res = $dbw->select( 'transcode', 'transcode_id',
-				$cond, __METHOD__, array( 'LIMIT' => 100 ) );
-			$ids = array();
+				$cond, __METHOD__, [ 'LIMIT' => 100 ] );
+			$ids = [];
 			foreach ( $res as $row ) {
 				$ids[] = $row->transcode_id;
 			}
 			if ( $ids ) {
 				$dbw->delete( 'transcode',
-					array( 'transcode_id' => $ids ), __METHOD__ );
+					[ 'transcode_id' => $ids ], __METHOD__ );
 				wfWaitForSlaves();
 			}
 		} while ( $ids );

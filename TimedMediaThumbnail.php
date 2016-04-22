@@ -121,9 +121,9 @@ class TimedMediaThumbnail {
 		$backend = $options['file']->getRepo()->getBackend();
 		// getFileHttpUrl was only added in mw 1.21, dont fail if it does not exist
 		if ( method_exists( $backend, 'getFileHttpUrl' ) ) {
-			$src = $backend->getFileHttpUrl( array(
+			$src = $backend->getFileHttpUrl( [
 				'src' =>  $options['file']->getPath()
-			) );
+			] );
 		} else {
 			$src = null;
 		}
@@ -163,8 +163,8 @@ class TimedMediaThumbnail {
 	 */
 	static function resizeThumb( $options ) {
 		$file = $options['file'];
-		$params = array();
-		foreach ( array( 'start', 'thumbtime' ) as $key ) {
+		$params = [];
+		foreach ( [ 'start', 'thumbtime' ] as $key ) {
 			if ( isset( $options[ $key ] ) ) {
 				$params[ $key ] = $options[ $key ];
 			}
@@ -173,15 +173,15 @@ class TimedMediaThumbnail {
 		$params["height"] = $file->getHeight();
 
 		$poolKey = $file->getRepo()->getSharedCacheKey( 'file', md5( $file->getName() ) );
-		$posOptions = array_flip( array( 'start', 'thumbtime' ) );
+		$posOptions = array_flip( [ 'start', 'thumbtime' ] );
 		$poolKey = wfAppendQuery( $poolKey, array_intersect_key( $options, $posOptions ) );
 
 		if ( class_exists( 'PoolCounterWorkViaCallback' ) ) {
 			$work = new PoolCounterWorkViaCallback( 'TMHTransformFrame',
 				'_tmh:frame:' . $poolKey,
-				array( 'doWork' => function() use ( $file, $params ) {
+				[ 'doWork' => function() use ( $file, $params ) {
 					return $file->transform( $params, File::RENDER_NOW );
-				} ) );
+				} ] );
 			$thumb = $work->execute();
 		} else {
 			$thumb = $file->transform( $params, File::RENDER_NOW );
@@ -196,10 +196,10 @@ class TimedMediaThumbnail {
 		}
 		$thumbFile = new UnregisteredLocalFile( $file->getTitle(),
 			RepoGroup::singleton()->getLocalRepo(), $src, false );
-		$thumbParams = array(
+		$thumbParams = [
 			"width" => $options['width'],
 			"height" => $options['height']
-		);
+		];
 		$handler = $thumbFile->getHandler();
 		if ( !$handler ) {
 			return false;

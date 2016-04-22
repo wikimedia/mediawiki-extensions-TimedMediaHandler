@@ -27,13 +27,13 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return array
 	 */
 	function getParamMap() {
-		return array(
+		return [
 			'img_width' => 'width',
 			'timedmedia_thumbtime' => 'thumbtime',
 			'timedmedia_starttime' => 'start',
 			'timedmedia_endtime' => 'end',
 			'timedmedia_disablecontrols' => 'disablecontrols',
-		);
+		];
 	}
 
 	/**
@@ -51,7 +51,7 @@ class TimedMediaHandler extends MediaHandler {
 		} elseif ( $name == 'disablecontrols' ) {
 			$values = explode( ',', $value );
 			foreach ( $values as $v ) {
-				if ( !in_array( $v, array( 'options', 'timedText', 'fullscreen' ) ) ) {
+				if ( !in_array( $v, [ 'options', 'timedText', 'fullscreen' ] ) ) {
 					return false;
 				}
 			}
@@ -101,7 +101,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return array|bool Array of thumbnail parameters, or false if string cannot be parsed
 	 */
 	function parseParamString( $str ) {
-		$params = array();
+		$params = [];
 		if ( preg_match( '/^(mid|(\d*)px-)*(seek=([\d.]+))*$/', $str, $matches ) ) {
 			$size = $thumbtime = null;
 			if ( isset( $matches[2] ) ) {
@@ -130,7 +130,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return bool
 	 */
 	function normaliseParams( $image, &$params ) {
-		$timeParam = array( 'thumbtime', 'start', 'end' );
+		$timeParam = [ 'thumbtime', 'start', 'end' ];
 		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach ( $timeParam as $pn ) {
 			if ( isset( $params[$pn] ) && $params[$pn] !== false ) {
@@ -148,15 +148,15 @@ class TimedMediaHandler extends MediaHandler {
 
 		if ( $this->isAudio( $image ) ) {
 			// Assume a default for audio files
-			$size = array(
+			$size = [
 				'width' => 220,
 				'height' => 23,
-			);
+			];
 		} else {
-			$size = array(
+			$size = [
 				'width' => $image->getWidth(),
 				'height' => $image->getHeight(),
-			);
+			];
 		}
 		// Make sure we don't try and up-scale the asset:
 		if ( !$this->isAudio( $image ) && isset( $params['width'] )
@@ -206,11 +206,11 @@ class TimedMediaHandler extends MediaHandler {
 		$parserOutput->hasTimedMediaTransform = true;
 		if ( $wgTmhWebPlayer == 'mwembed' ) {
 			$parserOutput->addModuleStyles( 'ext.tmh.thumbnail.styles' );
-			$parserOutput->addModules( array(
+			$parserOutput->addModules( [
 				'mw.MediaWikiPlayer.loader',
 				'mw.PopUpMediaTransform',
 				'mw.TMHGalleryHook.js',
-			) );
+			] );
 		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
 			$parserOutput->addModuleStyles( 'ext.tmh.player.styles' );
 			$parserOutput->addModules( 'ext.tmh.player' );
@@ -258,7 +258,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return string
 	 */
 	public static function getTimePassedMsg( $timePassed ) {
-		$t = array();
+		$t = [];
 		$t['days'] = floor( $timePassed/60/60/24 );
 		$t['hours'] = floor( $timePassed/60/60 )%24;
 		$t['minutes'] = floor( $timePassed/60 )%60;
@@ -274,7 +274,7 @@ class TimedMediaHandler extends MediaHandler {
 			}
 		}
 		if ( count( $t ) == 0 ) {
-			$t = array( wfMessage( 'timedmedia-seconds', 0 )->text() );
+			$t = [ wfMessage( 'timedmedia-seconds', 0 )->text() ];
 		}
 
 		global $wgLang;
@@ -338,7 +338,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return array
 	 */
 	function getThumbType( $ext, $mime, $params = null ) {
-		return array( 'jpg', 'image/jpeg' );
+		return [ 'jpg', 'image/jpeg' ];
 	}
 
 	/**
@@ -376,7 +376,7 @@ class TimedMediaHandler extends MediaHandler {
 			$targetHeight = $params['height'];
 			$targetWidth = round( $params['height'] * $srcWidth / $srcHeight );
 		}
-		$options = array(
+		$options = [
 			'file' => $file,
 			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
@@ -390,7 +390,7 @@ class TimedMediaHandler extends MediaHandler {
 			'end' => isset( $params['end'] ) ? $params['end'] : false,
 			'fillwindow' => isset( $params['fillwindow'] ) ? $params['fillwindow'] : false,
 			'disablecontrols' => isset ( $params['disablecontrols'] ) ? $params['disablecontrols'] : false
-		);
+		];
 
 		// No thumbs for audio
 		if ( !$options['isVideo'] ) {

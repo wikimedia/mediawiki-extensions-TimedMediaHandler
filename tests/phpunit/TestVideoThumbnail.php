@@ -19,18 +19,18 @@ class TestVideoThumbnail extends ApiTestCaseVideoUpload {
 
 		// Do a API request and check for valid thumbnails:
 		$fileName = basename( $file['filePath'] );
-		$params = array(
+		$params = [
 			'action' => 'query',
 			'titles' => 'File:' . $fileName,
 			'prop' => 'imageinfo',
 			'iiprop'	=> "url|size|thumbmime",
-		);
+		];
 
 		// Do a request for a small ( 200px ) thumbnail
 		list( $result,, ) = $this->doApiRequest(
-			array_merge( $params, array(
+			array_merge( $params, [
 					'iiurlwidth' => '200'
-				)
+				]
 			)
 		);
 
@@ -62,10 +62,10 @@ class TestVideoThumbnail extends ApiTestCaseVideoUpload {
 
 		// Test a larger thumbnail with 1 second time offset
 		list( $result,, ) = $this->doApiRequest(
-			array_merge( $params, array(
+			array_merge( $params, [
 					'iiurlwidth' => '600',
 					'iiurlparam' => '1'
-				)
+				]
 			)
 		);
 		$page = current( $result['query']['pages'] );
