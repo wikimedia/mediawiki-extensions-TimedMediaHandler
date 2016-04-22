@@ -112,6 +112,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodificación activa|$1 transcodificacións activas}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificación|$1 transcodificacións}} na cola",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificacións fallidas}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 parámetro de transcodificación non inicializado|$1 parámetros de transcodificación non inicializados}}",
 	"timedmedia-no-derivatives": "Non é precisa transcodificación.",
 	"timedmedia-file": "Ficheiro",
 	"timedmedia-audios": "{{PLURAL:$1|$1 ficheiro|$1 ficheiros}} de son",
