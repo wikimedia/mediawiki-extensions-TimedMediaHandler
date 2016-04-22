@@ -310,7 +310,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = [
-			'width', 'height', 'title', 'shorttitle', 'bandwidth', 'framerate', 'disablecontrols'
+			'width',
+			'height',
+			'title',
+			'shorttitle',
+			'bandwidth',
+			'framerate',
+			'disablecontrols',
+			'transcodekey',
 		];
 		foreach ( $mediaSources as &$source ) {
 			foreach ( $source as $attr => $val ) {
