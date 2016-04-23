@@ -112,6 +112,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|המרה משנית אחת רצה|$1 המרות משניות רצות}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|המרה משנית אחת בתור|$1 המרות משניות בתור}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|המרות משנית אחת נכשלה|$1 המרות משניות נכשלו}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|המרת־משנה אחת שלא אותחלה|$1 המרות־משנה שלא אותחלו}}",
 	"timedmedia-no-derivatives": "אין צורך בהמרת־משנה.",
 	"timedmedia-file": "קובץ",
 	"timedmedia-audios": "{{PLURAL:$1|קובץ שמע אחד|$1 קובצי שמע}}",
