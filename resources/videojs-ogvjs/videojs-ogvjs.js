@@ -1,7 +1,7 @@
 /**
  * videojs-ogvjs
- * @version 1.0.6
- * @copyright 2015 Derk-Jan Hartman
+ * @version 1.1.1
+ * @copyright 2016 Derk-Jan Hartman
  * @license (MIT OR Apache-2.0)
  */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.videojsOgvjs = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -57,13 +57,22 @@ var Ogvjs = (function (_Tech) {
 
     _get(Object.getPrototypeOf(Ogvjs.prototype), 'constructor', this).call(this, options, ready);
 
+    // Set initial state of player
+    this.el_.src = options.source.src;
+    Ogvjs.setIfAvailable(this.el_, 'autoplay', options.autoplay);
+    Ogvjs.setIfAvailable(this.el_, 'loop', options.loop);
+    Ogvjs.setIfAvailable(this.el_, 'poster', options.poster);
+    Ogvjs.setIfAvailable(this.el_, 'preload', options.preload);
+
     this.triggerReady();
   }
 
   /*
-   * Check if Ogvjs video is supported by this browser/device
+   * Only set a value on an element if it has that property
    *
-   * @return {Boolean}
+   * @param {Element} el
+   * @param {String} name
+   * @param value
    */
 
   /**
@@ -75,7 +84,7 @@ var Ogvjs = (function (_Tech) {
   _createClass(Ogvjs, [{
     key: 'dispose',
     value: function dispose() {
-      // Ogvjs.disposeMediaElement(this.el_);
+      this.el_.removeEventListener('framecallback', this.onFrameUpdate);
       _get(Object.getPrototypeOf(Ogvjs.prototype), 'dispose', this).call(this);
     }
 
@@ -98,12 +107,15 @@ var Ogvjs = (function (_Tech) {
 
       var el = new _OGVPlayer2['default'](options);
 
-      // simulate timeupdate events, needed for subtitles
-      // @todo switch this to native timeupdate event when available upstream
-      this.lastTime = 0;
-      el.addEventListener('framecallback', this.onFrameUpdate.bind(this));
-      el.src = this.options_.source.src;
+      if (!el.hasOwnProperty('preload')) {
+        // simulate timeupdate events for older ogv.js versions pre 1.1 versions
+        // needed for subtitles. preload is only defined in 1.1 and later,
+        this.lastTime = 0;
+        el.addEventListener('framecallback', this.onFrameUpdate.bind(this));
+      }
+
       el.className += ' vjs-tech';
+      options.tag = el;
 
       return el;
     }
@@ -218,7 +230,7 @@ var Ogvjs = (function (_Tech) {
   }, {
     key: 'volume',
     value: function volume() {
-      return this.el_.volume ? this.el_.volume : 1;
+      return this.el_.hasOwnProperty('volume') ? this.el_.volume : 1;
     }
 
     /**
@@ -230,7 +242,7 @@ var Ogvjs = (function (_Tech) {
   }, {
     key: 'setVolume',
     value: function setVolume(percentAsDecimal) {
-      if (this.el_.volume) {
+      if (this.el_.hasOwnProperty('volume')) {
         this.el_.volume = percentAsDecimal;
       }
     }
@@ -244,7 +256,7 @@ var Ogvjs = (function (_Tech) {
   }, {
     key: 'muted',
     value: function muted() {
-      return this.el_.muted ? this.el_.muted : false;
+      return this.el_.muted;
     }
 
     /**
@@ -256,9 +268,7 @@ var Ogvjs = (function (_Tech) {
   }, {
     key: 'setMuted',
     value: function setMuted(muted) {
-      if (this.el_.muted) {
-        this.el_.muted = muted;
-      }
+      this.el_.muted = !!muted;
     }
 
     /**
@@ -283,73 +293,6 @@ var Ogvjs = (function (_Tech) {
     key: 'height',
     value: function height() {
       return this.el_.offsetHeight;
-    }
-
-    /**
-     * Get if there is fullscreen support
-     *
-     * @return {Boolean}
-     * @method supportsFullScreen
-     */
-  }, {
-    key: 'supportsFullScreen',
-    value: function supportsFullScreen() {
-      if (typeof this.el_.webkitEnterFullScreen === 'function') {
-        var userAgent = window.navigator.userAgent;
-
-        // Seems to be broken in Chromium/Chrome && Safari in Leopard
-        if (/Android/.test(userAgent) || !/Chrome|Mac OS X 10.5/.test(userAgent)) {
-          return true;
-        }
-      }
-      return false;
-    }
-
-    /**
-     * Request to enter fullscreen
-     *
-     * @method enterFullScreen
-     */
-  }, {
-    key: 'enterFullScreen',
-    value: function enterFullScreen() {
-      var video = this.el_;
-
-      if ('webkitDisplayingFullscreen' in video) {
-        this.one('webkitbeginfullscreen', function () {
-          this.one('webkitendfullscreen', function () {
-            this.trigger('fullscreenchange', { isFullscreen: false });
-          });
-
-          this.trigger('fullscreenchange', { isFullscreen: true });
-        });
-      }
-
-      if (video.paused && video.networkState <= video.HAVE_METADATA) {
-        // attempt to prime the video element for programmatic access
-        // this isn't necessary on the desktop but shouldn't hurt
-        this.el_.play();
-
-        // playing and pausing synchronously during the transition to fullscreen
-        // can get iOS ~6.1 devices into a play/pause loop
-        this.setTimeout(function () {
-          video.pause();
-          video.webkitEnterFullScreen();
-        }, 0);
-      } else {
-        video.webkitEnterFullScreen();
-      }
-    }
-
-    /**
-     * Request to exit fullscreen
-     *
-     * @method exitFullScreen
-     */
-  }, {
-    key: 'exitFullScreen',
-    value: function exitFullScreen() {
-      this.el_.webkitExitFullScreen();
     }
 
     /**
@@ -438,7 +381,11 @@ var Ogvjs = (function (_Tech) {
      * @return {String}
      * @method preload
      */
-    // preload() { return this.el_.preload; }
+  }, {
+    key: 'preload',
+    value: function preload() {
+      return this.el_.preload || 'none';
+    }
 
     /**
      * Set preload attribute
@@ -446,63 +393,92 @@ var Ogvjs = (function (_Tech) {
      * @param {String} val Value for preload attribute
      * @method setPreload
      */
-    // setPreload(val) { this.el_.preload = val; }
+  }, {
+    key: 'setPreload',
+    value: function setPreload(val) {
+      if (this.el_.hasOwnProperty('preload')) {
+        this.el_.preload = val;
+      }
+    }
 
     /**
      * Get autoplay attribute
      *
-     * @return {String}
+     * @return {Boolean}
      * @method autoplay
      */
-    // autoplay() { return this.el_.autoplay; }
+  }, {
+    key: 'autoplay',
+    value: function autoplay() {
+      return this.el_.autoplay || false;
+    }
 
     /**
      * Set autoplay attribute
      *
-     * @param {String} val Value for preload attribute
+     * @param {Boolean} val Value for preload attribute
      * @method setAutoplay
      */
-    // setAutoplay(val) { this.el_.autoplay = val; }
+  }, {
+    key: 'setAutoplay',
+    value: function setAutoplay(val) {
+      if (this.el_.hasOwnProperty('autoplay')) {
+        this.el_.autoplay = !!val;
+        return;
+      }
+    }
 
     /**
      * Get controls attribute
      *
-     * @return {String}
+     * @return {Boolean}
      * @method controls
      */
   }, {
     key: 'controls',
     value: function controls() {
-      return this.el_.controls;
+      return this.el_controls || false;
     }
 
     /**
      * Set controls attribute
      *
-     * @param {String} val Value for controls attribute
+     * @param {Boolean} val Value for controls attribute
      * @method setControls
      */
   }, {
     key: 'setControls',
     value: function setControls(val) {
-      this.el_.controls = !!val;
+      if (this.el_.hasOwnProperty('controls')) {
+        this.el_.controls = !!val;
+      }
     }
 
     /**
      * Get loop attribute
      *
-     * @return {String}
+     * @return {Boolean}
      * @method loop
      */
-    // loop() { return this.el_.loop; }
+  }, {
+    key: 'loop',
+    value: function loop() {
+      return this.el_.loop || false;
+    }
 
     /**
      * Set loop attribute
      *
-     * @param {String} val Value for loop attribute
+     * @param {Boolean} val Value for loop attribute
      * @method setLoop
      */
-    // setLoop(val) { this.el_.loop = val; }
+  }, {
+    key: 'setLoop',
+    value: function setLoop(val) {
+      if (this.el_.hasOwnProperty('loop')) {
+        this.el_.loop = !!val;
+      }
+    }
 
     /**
      * Get error value
@@ -562,7 +538,11 @@ var Ogvjs = (function (_Tech) {
      * @return {Boolean}
      * @method defaultMuted
      */
-    // defaultMuted() { return this.el_.defaultMuted; }
+  }, {
+    key: 'defaultMuted',
+    value: function defaultMuted() {
+      return this.el_.defaultMuted || false;
+    }
 
     /**
      * Get desired speed at which the media resource is to play
@@ -570,7 +550,11 @@ var Ogvjs = (function (_Tech) {
      * @return {Number}
      * @method playbackRate
      */
-    // playbackRate() { return this.el_.playbackRate; }
+  }, {
+    key: 'playbackRate',
+    value: function playbackRate() {
+      return this.el_.playbackRate || 1;
+    }
 
     /**
      * Returns a TimeRanges object that represents the ranges of the
@@ -579,7 +563,11 @@ var Ogvjs = (function (_Tech) {
      * timeline that has been reached through normal playback
      * @see https://html.spec.whatwg.org/multipage/embedded-content.html#dom-media-played
      */
-    // played() { return this.el_.played; }
+  }, {
+    key: 'played',
+    value: function played() {
+      return this.el_.played;
+    }
 
     /**
      * Set desired speed at which the media resource is to play
@@ -587,7 +575,13 @@ var Ogvjs = (function (_Tech) {
      * @param {Number} val Speed at which the media resource is to play
      * @method setPlaybackRate
      */
-    // setPlaybackRate(val) { this.el_.playbackRate = val; }
+  }, {
+    key: 'setPlaybackRate',
+    value: function setPlaybackRate(val) {
+      if (this.el_.hasOwnProperty('playbackRate')) {
+        this.el_.playbackRate = val;
+      }
+    }
 
     /**
      * Get the current state of network activity for the element, from
@@ -600,7 +594,11 @@ var Ogvjs = (function (_Tech) {
      * @return {Number}
      * @method networkState
      */
-    // networkState() { return this.el_.networkState; }
+  }, {
+    key: 'networkState',
+    value: function networkState() {
+      return this.el_.networkState;
+    }
 
     /**
      * Get a value that expresses the current state of the element
@@ -615,7 +613,11 @@ var Ogvjs = (function (_Tech) {
      * @return {Number}
      * @method readyState
      */
-    // readyState() { return this.el_.readyState; }
+  }, {
+    key: 'readyState',
+    value: function readyState() {
+      return this.el_.readyState;
+    }
 
     /**
      * Get width of video
@@ -645,6 +647,17 @@ var Ogvjs = (function (_Tech) {
   return Ogvjs;
 })(Tech);
 
+Ogvjs.setIfAvailable = function (el, name, value) {
+  if (el.hasOwnProperty(name)) {
+    el[name] = value;
+  }
+};
+
+/*
+ * Check if Ogvjs video is supported by this browser/device
+ *
+ * @return {Boolean}
+ */
 Ogvjs.isSupported = function () {
   return _OGVCompat2['default'].supported('OGVPlayer');
 };
@@ -666,7 +679,9 @@ Ogvjs.canPlaySource = function (srcObj) {
  * @return {Boolean}
  */
 Ogvjs.canControlVolume = function () {
-  return false;
+  var p = new _OGVPlayer2['default']();
+
+  return p.hasOwnProperty('volume');
 };
 
 /*
@@ -728,38 +743,6 @@ Ogvjs.prototype.featuresProgressEvents = true;
  * @type {Boolean}
  */
 Ogvjs.prototype.featuresNativeTextTracks = Ogvjs.supportsNativeTextTracks();
-
-Ogvjs.disposeMediaElement = function (el) {
-  if (!el) {
-    return;
-  }
-
-  if (el.parentNode) {
-    el.parentNode.removeChild(el);
-  }
-
-  // remove any child track or source nodes to prevent their loading
-  while (el.hasChildNodes()) {
-    el.removeChild(el.firstChild);
-  }
-
-  // remove any src reference. not setting `src=''` because that causes a warning
-  // in firefox
-  el.removeAttribute('src');
-
-  // force the media element to update its loading state by calling load()
-  // however IE on Windows 7N has a bug that throws an error so need a try/catch (#793)
-  if (typeof el.load === 'function') {
-    // wrapping in an iife so it's not deoptimized (#1060#discussion_r10324473)
-    (function () {
-      try {
-        el.load();
-      } catch (e) {
-        // not supported
-      }
-    })();
-  }
-};
 
 Tech.registerTech('Ogvjs', Ogvjs);
 exports['default'] = Ogvjs;

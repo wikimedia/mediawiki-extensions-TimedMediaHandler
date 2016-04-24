@@ -66,7 +66,7 @@ module.exports = function ( grunt ) {
 			'videojs-ogvjs': {
 				expand: true,
 				cwd: 'node_modules/videojs-ogvjs/dist/',
-				src: [ '**' ],
+				src: [ '**', '!**/*.min.js' ],
 				dest: 'resources/videojs-ogvjs/'
 			},
 			'videojs-resolution-switcher': {
