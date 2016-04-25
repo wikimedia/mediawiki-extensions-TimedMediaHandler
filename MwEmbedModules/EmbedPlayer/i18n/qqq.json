@@ -5,10 +5,11 @@
 			"EugeneZelenko",
 			"Shirayuki",
 			"Umherirrender",
-			"Pikne"
+			"Pikne",
+			"Liuxinyu970226"
 		]
 	},
-	"mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}",
+	"mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}\n{{Identical|Title}}",
 	"mwe-embedplayer-credit-date": "Parameters:\n* $1 - date\n{{Identical|Date}}",
 	"mwe-embedplayer-credit-author": "Parameters:\n* $1 - author\n{{Identical|Author}}",
 	"mwe-embedplayer-player_fullscreen": "{{Identical|Full screen}}",
