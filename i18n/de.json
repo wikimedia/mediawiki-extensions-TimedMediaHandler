@@ -74,7 +74,7 @@
 	"timedmedia-source-file": "Quelle ($1)",
 	"timedmedia-source-file-desc": "Original $1-Datei, $2 x $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Ursprüngliche $1-Datei ($2)",
-	"timedmedia-derivative-160p.ogv": "Ogg (160p)",
+	"timedmedia-derivative-160p.ogv": "Ogg 160P",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg-Videodatei mit niedriger Datenübertragungsrate (160p)",
 	"timedmedia-derivative-desc-240p.ogv": "Kleine OGG-Videodatei (240p)",
 	"timedmedia-derivative-desc-360p.ogv": "OGG-Videodatei (360p)",
