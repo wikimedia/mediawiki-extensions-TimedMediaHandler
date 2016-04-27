@@ -49,7 +49,7 @@
 	"timedmedia-derivative-desc-160p.ogv": "Vidio Ogg bandwidth cilik (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "Vidio Ogg sing bisa diundhuh mawa kualitas dhuwur (720P)",
 	"timedmedia-derivative-desc-720p.webm": "WebM sing bisa diundhuh mawa kualitas dhuwur (720P)",
-	"timedmedia-subtitle-new": "Gawé terjemahan anyar utawa sunting sing wis ana",
+	"timedmedia-subtitle-new": "Gawé jejarwan anyar utawa besut sing ana",
 	"timedmedia-subtitle-new-desc": "Ganti bagéyan '''$1''' nganggo [[:en:ISO 639|kodhé basa]] Sampéyan lan pencèt tombol '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Nuju",
 	"timedmedia-subtitle-language": "Subjudhul $1 ($2)",
