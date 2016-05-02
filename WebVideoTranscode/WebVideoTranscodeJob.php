@@ -177,9 +177,15 @@ class WebVideoTranscodeJob extends Job {
 			],
 			__METHOD__
 		);
+
+		$lbFactory = MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		// Avoid contention and "server has gone away" errors as
 		// the transcode will take a very long time in some cases
-		wfGetLBFactory()->commitAll( __METHOD__ );
+		$lbFactory->commitAll( __METHOD__ );
+		// We can't just leave the connection open either or it will
+		// eat up resources and block new connections, so make sure
+		// everything is dead and gone.
+		$lbFactory->closeAll();
 
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
@@ -208,6 +214,9 @@ class WebVideoTranscodeJob extends Job {
 		// Remove any log files,
 		// all useful info should be in status and or we are done with 2 passs encoding
 		$this->removeFfmpegLogFiles();
+
+		// Reconnect to the database...
+		$dbw = wfGetDB( DB_MASTER );
 
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm that the in memory $jobStartTimeCache matches db start time
@@ -253,6 +262,7 @@ class WebVideoTranscodeJob extends Job {
 
 			// Avoid "server has gone away" errors as copying can be slow
 			wfGetLBFactory()->commitAll( __METHOD__ );
+			MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->closeAll();
 
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
 			$result = $file->getRepo()->quickImport(
@@ -260,6 +270,7 @@ class WebVideoTranscodeJob extends Job {
 				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ), // storage
 				$storeOptions
 			);
+
 			if ( !$result->isOK() ) {
 				// no need to invalidate all pages with video.
 				// Because all pages remain valid ( no $transcodeKey derivative )
@@ -272,6 +283,8 @@ class WebVideoTranscodeJob extends Job {
 					intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8
 				);
 				// wfRestoreWarnings();
+				// Reconnect to the database...
+				$dbw = wfGetDB( DB_MASTER );
 				// Update the transcode table with success time:
 				$dbw->update(
 					'transcode',
