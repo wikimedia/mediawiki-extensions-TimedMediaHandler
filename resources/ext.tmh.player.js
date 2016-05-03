@@ -117,7 +117,7 @@
 				// this.on( 'play', growPlayer );
 				// this.on( 'ended', shrinkPlayer );
 				/* More custom stuff goes here */
-			} );
+			} ).replayButton(); // Enable the replaybutton plugin
 		} );
 	}
 

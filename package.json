@@ -18,5 +18,8 @@
     "videojs-ogvjs": "^1.1.0",
     "videojs-resolution-switcher": "^0.4.2",
     "videojs-responsive-layout": "^1.1.0"
+  },
+  "dependencies": {
+    "videojs-replay": "^1.1.0"
   }
 }
