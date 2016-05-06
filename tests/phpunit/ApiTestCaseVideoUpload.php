@@ -71,8 +71,8 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 
 		$params = [
 			'action' => 'login',
-			'lgname' => $user->username,
-			'lgpassword' => $user->password
+			'lgname' => $user->getUser()->getName(),
+			'lgpassword' => $user->getPassword()
 		];
 		list( $result, , $session ) = $this->doApiRequest( $params );
 		$token = $result['login']['token'];
@@ -80,8 +80,8 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 		$params = [
 			'action' => 'login',
 			'lgtoken' => $token,
-			'lgname' => $user->username,
-			'lgpassword' => $user->password
+			'lgname' => $user->getUser()->getName(),
+			'lgpassword' => $user->getPassword()
 		];
 		list( $result, , $session ) = $this->doApiRequest( $params, $session );
 		return $session;
