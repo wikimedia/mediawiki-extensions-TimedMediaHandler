@@ -32,12 +32,23 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 				$vals['derivatives'] = [];
 			}
 		}
+		if ( isset( $prop['timedtext'] ) ) {
+			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
+				$handler = new TextHandler( $file );
+				$vals['timedtext'] = $handler->getTracks();
+				$result->setIndexedTagName( $vals['timedtext'], "timedtext" );
+			} else {
+				// Non-TMH file, no timedtext.
+				$vals['timedtext'] = [];
+			}
+		}
 		return $vals;
 	}
 
 	public static function getPropertyMessages( $filter = [] ) {
 		$pm = parent::getPropertyMessages( $filter );
 		$pm['derivatives'] = 'apihelp-query+videoinfo-paramvalue-prop-derivatives';
+		$pm['timedtext'] = 'apihelp-query+videoinfo-paramvalue-prop-timedtext';
 		return array_diff_key( $pm, array_flip( $filter ) );
 	}
 
@@ -46,7 +57,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	 */
 	protected function getExamplesMessages() {
 		return [
-			'action=query&titles=File:Folgers.ogv&prop=videoinfo'
+			'action=query&titles=File:Folgers.ogv&prop=videoinfo&viprop=derivatives'
 				=> 'apihelp-query+videoinfo-example-1',
 		];
 	}

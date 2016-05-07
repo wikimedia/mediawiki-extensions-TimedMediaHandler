@@ -263,15 +263,15 @@ class TextHandler {
 				}
 				$namespacePrefix = "TimedText:";
 				$textTracks[] = [
-					'kind' => 'subtitles',
-					'data-mwtitle' => $namespacePrefix . $subTitle->getDBkey(),
-					'data-mwprovider' => $providerName,
-					'type' => $contentType,
 					// @todo Should eventually add special entry point and output proper WebVTT format:
 					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
 					'src' => $this->getFullURL( $page['title'], $contentType ),
+					'kind' => 'subtitles',
+					'type' => $contentType,
+					'title' => $namespacePrefix . $subTitle->getDBkey(),
+					'provider' => $providerName,
 					'srclang' =>  $languageKey,
-					'data-dir' => Language::factory( $languageKey )->getDir(),
+					'dir' => Language::factory( $languageKey )->getDir(),
 					'label' => wfMessage( 'timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
 						$languageKey )->text()
