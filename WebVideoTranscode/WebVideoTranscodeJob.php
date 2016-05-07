@@ -184,9 +184,9 @@ class WebVideoTranscodeJob extends Job {
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
 			$status = $this->ffmpegEncode( $options );
-		} elseif( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation !== false ) {
+		} elseif ( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation !== false ) {
 			$status = $this->ffmpeg2TheoraEncode( $options );
-		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
+		} elseif ( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
 			$options['videoCodec'] == 'h264' ||
 				( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation === false )
 		) {
@@ -360,11 +360,11 @@ class WebVideoTranscodeJob extends Job {
 
 		if ( isset( $options['novideo'] ) ) {
 			$cmd .= " -vn ";
-		} elseif( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ) {
+		} elseif ( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ) {
 			$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
-		} elseif( $options['videoCodec'] == 'h264' ) {
+		} elseif ( $options['videoCodec'] == 'h264' ) {
 			$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
-		} elseif( $options['videoCodec'] == 'theora' ) {
+		} elseif ( $options['videoCodec'] == 'theora' ) {
 			$cmd .= $this->ffmpegAddTheoraVideoOptions( $options, $pass );
 		}
 		// Add size options:

@@ -112,7 +112,7 @@ class WebMHandler extends ID3Handler {
 		// id3 gives 'V_VP8' for what we call VP8
 		if ( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'vp8' ) {
 			$streamTypes[] =  'VP8';
-		} elseif( isset( $metadata['video'] ) &&
+		} elseif ( isset( $metadata['video'] ) &&
 			( $metadata['video']['dataformat'] === 'vp9'
 			|| $metadata['video']['dataformat'] === 'V_VP9'
 		) ) {
