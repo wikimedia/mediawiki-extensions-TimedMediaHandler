@@ -335,42 +335,29 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$width .= 'px';
 		}
 
+		// Build the video tag output:
+		$s = Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
+			// The set of media sources:
+			self::htmlTagSet( 'source', $mediaSources ) .
+
+			// Timed text:
+			self::htmlTagSet( 'track',
+				$this->file ? $this->getTextHandler()->getTracks() : null ) .
+
+			// Fallback text displayed for browsers without js and without video tag support:
+			/// XXX note we may want to replace this with an image and download link play button
+			wfMessage( 'timedmedia-no-player-js', $firstSource['src'] )->text()
+		);
+
 		if ( $wgTmhWebPlayer === 'videojs' ) {
-			// Build the video tag output:
-			$s = Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
-				// The set of media sources:
-				self::htmlTagSet( 'source', $mediaSources ) .
-
-				// Timed text:
-				self::htmlTagSet( 'track',
-					$this->file ? $this->getTextHandler()->getTracks() : null ) .
-
-				// Fallback text displayed for browsers without js and without video tag support:
-				/// XXX note we may want to replace this with an image and download link play button
-				wfMessage( 'timedmedia-no-player-js', $firstSource['src'] )->text()
-			);
 			return $s;
 		} // else mwEmbed player
 
 		// Build the video tag output:
-		$s = Xml::tags( 'div', [
-				'class' => 'mediaContainer',
-				'style' => 'width:'. $width
-			],
-			Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
-				// The set of media sources:
-				self::htmlTagSet( 'source', $mediaSources ) .
-
-				// Timed text:
-				self::htmlTagSet( 'track',
-					$this->file ? $this->getTextHandler()->getTracks() : null ) .
-
-				// Fallback text displayed for browsers without js and without video tag support:
-				/// XXX note we may want to replace this with an image and download link play button
-				wfMessage( 'timedmedia-no-player-js', $firstSource['src'] )->text()
-			)
-		);
-		return $s;
+		return Xml::tags( 'div', [
+			'class' => 'mediaContainer',
+			'style' => 'width:'. $width
+		], $s );
 	}
 
 	/**
