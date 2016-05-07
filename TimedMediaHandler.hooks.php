@@ -133,13 +133,6 @@ class TimedMediaHandlerHooks {
 							'ext.tmh.OgvJs',
 						],
 					],
-				// 'ext.tmh.videojs-offset' => $baseExtensionResource + array(
-				// 'scripts' => 'resources/videojs-offset/videojs-offset.js',
-				// 'targets' => array( 'mobile', 'desktop' ),
-				// 'dependencies' => array(
-				// 'ext.tmh.video-js',
-				// ),
-				// ),
 				'ext.tmh.videojs-resolution-switcher' => $baseExtensionResource + [
 						'scripts' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js',
 						'styles' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css',
@@ -163,7 +156,6 @@ class TimedMediaHandlerHooks {
 							'ext.tmh.videojs-resolution-switcher',
 							'ext.tmh.videojs-ogvjs',
 							'ext.tmh.videojs-responsive-layout',
-							// 'ext.tmh.videojs-offset',
 						],
 					],
 				'ext.tmh.player.styles' => $baseExtensionResource + [

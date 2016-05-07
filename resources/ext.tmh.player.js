@@ -1,7 +1,6 @@
 
 ( function ( $, mw, videojs ) {
-	var globalConfig, audioConfig, playerConfig,
-		start, end, $source;
+	var globalConfig, audioConfig, playerConfig, $source;
 
 	globalConfig = {
 		language: mw.config.get( 'wgUserLanguage' ),
@@ -111,9 +110,6 @@
 				$source.attr( 'res', $source.data( 'height' ) );
 				$source.attr( 'label', $source.data( 'shorttitle' ) );
 			} );
-			// FIXME offset plugin  is currently disabled, not yet 5.* compatible
-			start = $( videoplayer ).data( 'start' );
-			end = $( videoplayer ).data( 'end' );
 
 			// Launch the player
 			videojs( videoplayer, playerConfig ).ready( function () {
