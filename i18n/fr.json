@@ -155,7 +155,7 @@
 	"apihelp-query+transcodestatus-example-1": "Obtenir l’état de transcodage pour [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-description": "Étends imageinfo pour inclure les informations sur la source (et dérivées) vidéo",
 	"apihelp-query+videoinfo-example-1": "Récupérer des informations sur [[:File:Folgers.ogv]]",
-	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Ajoute un tableau des versions disponibles de différents format et qualité d’un fichier audio ou vidéo.",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Ajoute un tableau des versions disponibles des différents formats et qualités d’un fichier audio ou vidéo.",
 	"apihelp-transcodereset-description": "Les utilisateurs avec le droit 'transcode-reset' peuvent réinitialiser et relancer une tâche de transcodage.",
 	"apihelp-transcodereset-param-title": "Le titre du fichier média.",
 	"apihelp-transcodereset-param-transcodekey": "La clé du transcodage que vous voulez réinitialiser. Récupéré depuis [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
