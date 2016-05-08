@@ -11,15 +11,15 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @return string
 	 */
 	function getMetadata( $image, $path ) {
-		$metadata = array( 'version' => self::METADATA_VERSION );
+		$metadata = [ 'version' => self::METADATA_VERSION ];
 
 		try {
 			$f = new File_Ogg( $path );
-			$streams = array();
+			$streams = [];
 			foreach ( $f->listStreams() as $streamIDs ) {
 				foreach ( $streamIDs as $streamID ) {
 					$stream = $f->getStream( $streamID );
-					$streams[$streamID] = array(
+					$streams[$streamID] = [
 						'serial' => $stream->getSerial(),
 						'group' => $stream->getGroup(),
 						'type' => $stream->getType(),
@@ -28,7 +28,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 						'size' => $stream->getSize(),
 						'header' => $stream->getHeader(),
 						'comments' => $stream->getComments()
-					);
+					];
 				}
 			}
 			$metadata['streams'] = $streams;
@@ -37,10 +37,10 @@ class OggHandlerTMH extends TimedMediaHandler {
 			$metadata['offset'] = $f->getStartOffset();
 		} catch ( OggException $e ) {
 			// File not found, invalid stream, etc.
-			$metadata['error'] = array(
+			$metadata['error'] = [
 				'message' => $e->getMessage(),
 				'code' => $e->getCode()
-			);
+			];
 		}
 		return serialize( $metadata );
 	}
@@ -73,12 +73,12 @@ class OggHandlerTMH extends TimedMediaHandler {
 	public function getCommonMetaArray( File $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
-			return array();
+			return [];
 		}
 
 		// See http://www.xiph.org/vorbis/doc/v-comment.html
 		// http://age.hobba.nl/audio/mirroredpages/ogg-tagging.html
-		$metadataMap = array(
+		$metadataMap = [
 			'title' => 'ObjectName',
 			'artist' => 'Artist',
 			'performer' => 'Artist',
@@ -95,25 +95,25 @@ class OggHandlerTMH extends TimedMediaHandler {
 			'source_ohash' => 'OriginalDocumentID',
 			'comment' => 'UserComment',
 			'language' => 'LanguageCode',
-		);
+		];
 
-		$props = array();
+		$props = [];
 
-		foreach( $metadata['streams'] as $stream ) {
+		foreach ( $metadata['streams'] as $stream ) {
 			if ( isset( $stream['vendor'] ) ) {
 				if ( !isset( $props['Software'] ) ) {
-					$props['Software'] = array();
+					$props['Software'] = [];
 				}
 				$props['Software'][] = trim( $stream['vendor'] );
 			}
 			if ( !isset( $stream['comments'] ) ) {
 				continue;
 			}
-			foreach( $stream['comments'] as $name => $rawValue ) {
+			foreach ( $stream['comments'] as $name => $rawValue ) {
 				// $value will be an array if the file has
 				// a multiple tags with the same name. Otherwise it
 				// is a string.
-				foreach( (array) $rawValue as $value ) {
+				foreach ( (array) $rawValue as $value ) {
 					$trimmedValue = trim( $value );
 					if ( $trimmedValue === '' ) {
 						continue;
@@ -122,7 +122,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 					if ( isset( $metadataMap[$lowerName] ) ) {
 						$convertedName = $metadataMap[$lowerName];
 						if ( !isset( $props[$convertedName] ) ) {
-							$props[$convertedName] = array();
+							$props[$convertedName] = [];
 						}
 						$props[$convertedName][] = $trimmedValue;
 					}
@@ -131,7 +131,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 
 		}
 		// properties might be duplicated across streams
-		foreach( $props as &$type ) {
+		foreach ( $props as &$type ) {
 			$type = array_unique( $type );
 			$type = array_values( $type );
 		}
@@ -162,17 +162,17 @@ class OggHandlerTMH extends TimedMediaHandler {
 				$pictureWidth = $stream['header']['PICW'];
 				$parNumerator = $stream['header']['PARN'];
 				$parDenominator = $stream['header']['PARD'];
-				if( $parNumerator && $parDenominator ) {
+				if ( $parNumerator && $parDenominator ) {
 					// Compensate for non-square pixel aspect ratios
 					$pictureWidth = $pictureWidth * $parNumerator / $parDenominator;
 				}
-				return array(
+				return [
 					intval( $pictureWidth ),
 					intval( $stream['header']['PICH'] )
-				);
+				];
 			}
 		}
-		return array( false, false );
+		return [ false, false ];
 	}
 
 	/**
@@ -215,7 +215,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
-		$streamTypes = array();
+		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
@@ -230,9 +230,9 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @param $file File
 	 * @return int
 	 */
-	function getOffset( $file ){
+	function getOffset( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['offset']) ) {
+		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['offset'] ) ) {
 			return 0;
 		} else {
 			return $metadata['offset'];
@@ -260,24 +260,24 @@ class OggHandlerTMH extends TimedMediaHandler {
 	public function getStreamHeaders( $metadata ) {
 		$metadata = $this->unpackMetadata( $metadata );
 		if ( $metadata && !isset( $metadata['error'] ) && isset( $metadata['length'] ) ) {
-			return array( 'X-Content-Duration' => floatval( $metadata[ 'length' ] ) );
+			return [ 'X-Content-Duration' => floatval( $metadata[ 'length' ] ) ];
 		}
-		return array();
+		return [];
 	}
 
 	/**
 	 * @param $file File
 	 * @return float|int
 	 */
-	function getFramerate( $file ){
+	function getFramerate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return 0;
 		} else {
 			// Return the first found theora stream framerate:
 			foreach ( $metadata['streams'] as $stream ) {
-				if( $stream['type'] == 'Theora' ){
-					return  $stream['header']['FRN'] / $stream['header']['FRD'];
+				if ( $stream['type'] == 'Theora' ){
+					return $stream['header']['FRN'] / $stream['header']['FRD'];
 				}
 			}
 			return 0;
@@ -323,7 +323,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 				return wfMessage( 'timedmedia-ogg-long-no-streams' )->text();
 			}
 		}
-		if ( array_intersect( $streamTypes,$wgMediaVideoTypes  ) ) {
+		if ( array_intersect( $streamTypes, $wgMediaVideoTypes ) ) {
 			if ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
 				$msg = 'timedmedia-ogg-long-multiplexed';
 			} else {
@@ -341,8 +341,9 @@ class OggHandlerTMH extends TimedMediaHandler {
 		} else {
 			$length = $this->getLength( $file );
 			foreach ( $unpacked['streams'] as $stream ) {
-				if( isset( $stream['size'] ) )
+				if ( isset( $stream['size'] ) ) {
 					$size += $stream['size'];
+				}
 			}
 		}
 		return wfMessage(
@@ -360,7 +361,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @param $file File
 	 * @return float|int
 	 */
-	function getBitRate( $file ){
+	function getBitRate( $file ) {
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$unpacked || isset( $unpacked['error'] ) ) {
@@ -369,8 +370,9 @@ class OggHandlerTMH extends TimedMediaHandler {
 			$length = $this->getLength( $file );
 			if ( isset( $unpacked['streams'] ) ) {
 				foreach ( $unpacked['streams'] as $stream ) {
-					if( isset( $stream['size'] ) )
+					if ( isset( $stream['size'] ) ) {
 						$size += $stream['size'];
+					}
 				}
 			}
 		}
