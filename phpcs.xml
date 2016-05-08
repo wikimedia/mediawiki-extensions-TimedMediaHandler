@@ -6,6 +6,6 @@
 	<arg name="encoding" value="utf8"/>
 	<exclude-pattern>libs</exclude-pattern>
 	<exclude-pattern>MwEmbedModules</exclude-pattern>
-	<exclude-pattern>handlers/OggHandler</exclude-pattern>
+	<exclude-pattern>handlers/OggHandler/File_Ogg</exclude-pattern>
 	<exclude-pattern>vendor</exclude-pattern>
 </ruleset>
