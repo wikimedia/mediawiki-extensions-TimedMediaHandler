@@ -1,8 +1,17 @@
-/* We hide the native controls, before we load the custom controls  */
-audio.video-js::-webkit-media-controls,
-video.video-js::-webkit-media-controls {
-	visibility: hidden;
+.client-js {
+	/* We force the size of player to avoid reflows after loading the JS */
+	audio.video-js {
+		height: 3em;
+		font-size: 10px;
+	}
+
+	/* We hide the native controls, before we load the custom controls  */
+	audio.video-js::-webkit-media-controls,
+	video.video-js::-webkit-media-controls {
+		display: none;
+	}
 }
+
 /* Make video-js behave like standard <video><audio> elements */
 .video-js.video-js:not( .vjs-fullscreen ) {
 	display: inline-block;
