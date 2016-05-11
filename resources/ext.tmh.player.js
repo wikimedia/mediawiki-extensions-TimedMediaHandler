@@ -23,7 +23,8 @@
 					{ layoutClassName: 'vjs-layout-small', width: 5 },
 					{ layoutClassName: 'defaults', width: 6 }
 				]
-			}
+			},
+			replayButton: {}
 		},
 		ogvjs: {
 			base: mw.OgvJsSupport.basePath()
@@ -117,7 +118,7 @@
 				// this.on( 'play', growPlayer );
 				// this.on( 'ended', shrinkPlayer );
 				/* More custom stuff goes here */
-			} ).replayButton(); // Enable the replaybutton plugin
+			} );
 		} );
 	}
 
