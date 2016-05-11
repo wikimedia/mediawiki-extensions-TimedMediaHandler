@@ -40,7 +40,6 @@
 	"timedmedia-wav-pcm-required": "Message shown at upload if user tries to upload a WAV file using a codec that is not PCM",
 	"timedmedia-mp4-short-video": "File details for MP4 video files, short version.\nParameters:\n* $1 - stream type names (slash separated) - e.g. AAC/h.264\n* $2 - duration of the video (localized) - e.g. 1m34s\nSee also:\n* {{msg-mw|Timedmedia-mp4-long-video}}",
 	"timedmedia-mp4-long-video": "File details for MP4 multiplexed audio/video files, long version.\n\nShown after the filename in the image description page.\n\nParameters:\n* $1 - stream type names (slash separated) - e.g. AAC/h.264\n* $2 - duration (localized) - e.g. 1m34s\n* $3 - bit-rate (localized) - e.g. 97kbps\n* $4 - width of the video (in pixels)\n* $5 - height of the video (in pixels)\nSee also:\n* {{msg-mw|Timedmedia-mp4-short-video}}",
-	"timedmedia-no-player-js": "Used as fallback text displayed for browsers without js and without video tag support.\n\nParameters:\n* $1 - media source URL",
 	"timedmedia-more": "Unused at this time.\n{{Identical|More...}}",
 	"timedmedia-dismiss": "Unused at this time.\n{{Identical|Close}}",
 	"timedmedia-download": "Used as tooltip for the Download button.\n{{Identical|Download}}",

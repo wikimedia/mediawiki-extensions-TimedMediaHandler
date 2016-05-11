@@ -342,11 +342,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 			// Timed text:
 			self::htmlTagSet( 'track',
-				$this->file ? $this->getTextHandler()->getTracks() : null ) .
-
-			// Fallback text displayed for browsers without js and without video tag support:
-			/// XXX note we may want to replace this with an image and download link play button
-			wfMessage( 'timedmedia-no-player-js', $firstSource['src'] )->text()
+				$this->file ? $this->getTextHandler()->getTracks() : null )
 		);
 
 		if ( $wgTmhWebPlayer === 'videojs' ) {
