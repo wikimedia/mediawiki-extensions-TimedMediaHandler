@@ -35,7 +35,7 @@ module.exports = function ( grunt ) {
 		},
 		exec: {
 			'npm-update-videojs': {
-				cmd: 'npm update video.js videojs-resolution-switcher videojs-ogvjs videojs-responsive-layout',
+				cmd: 'npm update video.js videojs-resolution-switcher videojs-ogvjs videojs-responsive-layout videojs-replay',
 				callback: function ( error, stdout, stderr ) {
 					grunt.log.write( stdout );
 					if ( stderr ) {
@@ -80,6 +80,12 @@ module.exports = function ( grunt ) {
 				cwd: 'node_modules/videojs-responsive-layout/dist/',
 				src: [ '**' ],
 				dest: 'resources/videojs-responsive-layout/'
+			},
+			'videojs-replay': {
+				expand: true,
+				cwd: 'node_modules/videojs-replay/dist/',
+				src: [ '**', '!**/*.min.js' ],
+				dest: 'resources/videojs-replay/'
 			}
 		},
 		patch: {
@@ -95,7 +101,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'patch:video.js' ] );
+	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'copy:videojs-replay', 'patch:video.js' ] );
 	grunt.registerTask( 'test', [ 'jshint', 'jscs', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };
