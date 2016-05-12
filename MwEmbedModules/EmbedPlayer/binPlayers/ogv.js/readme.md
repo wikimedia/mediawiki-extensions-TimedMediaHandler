@@ -7,6 +7,20 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compi
 
 ## Updates
 
+* 1.1.1 - 2016-05-18
+ * fix for regression when hitting 'play' during loading
+ * fix for Theora streams with pathologically high frequency of dupe frames
+ * fix for unmuting after muted play on iOS
+ * when playback starts muted, drive on timer instead of audio clock
+ * update to audio-feeder 0.4.0
+ * much cleaner audio behavior on pause/continue
+ * revert "release audio resources during pause/seek"
+ * pause event now fired before ended
+ * avoid infinite 'ended' events
+ * fix slight a/v sync loss after pause/play
+ * release audio resources during pause/seek
+ * fix occasional loss of a/v sync after source switch
+ * loadeddata event now fired
 * 1.1.0 - 2016-05-10
  * fixed background tab audio performance
  * fixed race condition in poster removal
@@ -246,7 +260,18 @@ IE doesn't support Web Audio, but does bundle the Flash player in Windows 8/8.1/
 A/V synchronization is performed on files with both audio and video, and seems to
 actually work. Yay!
 
-Note that autoplay doesn't work on iOS Safari due to limitations with starting audio playback from event handlers.
+Note that autoplay with audio doesn't work on iOS Safari due to limitations with starting audio playback from event handlers; if playback is started outside an event handler, the player will hang due to broken audio.
+
+As of 1.1.1, muting before script-triggered playback allows things to work:
+
+```
+  player = new OGVPlayer();
+  player.muted = true;
+  player.src = 'path/to/file-with-audio.ogv';
+  player.play();
+```
+
+You can then unmute the video in response to a touch or click handler. Alternately if audio is not required, do not include an audio track in the file.
 
 
 *WebM*
