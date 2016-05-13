@@ -171,6 +171,7 @@ class TimedMediaHandlerHooks {
 					],
 				'ext.tmh.player.styles' => $baseExtensionResource + [
 						'styles' => 'resources/ext.tmh.player.styles.less',
+						'targets' => [ 'mobile', 'desktop' ],
 					]
 			];
 		}
