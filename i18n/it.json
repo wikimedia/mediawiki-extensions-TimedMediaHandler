@@ -30,7 +30,6 @@
 	"timedmedia-wav-pcm-required": "Puoi caricare solo PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "File video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "File audio/video MP4 $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3",
-	"timedmedia-no-player-js": "Si sta utilizzando un browser che ha JavaScript disattivato oppure non ha alcun riproduttore supportato.<br />\nÈ possibile <a href=\"$1\">scaricare il clip multimediale</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">un riproduttore</a> per riprodurre il clip nel proprio browser.",
 	"timedmedia-more": "Altro...",
 	"timedmedia-dismiss": "Chiudi",
 	"timedmedia-download": "Scarica il file",

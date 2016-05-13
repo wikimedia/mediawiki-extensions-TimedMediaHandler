@@ -20,7 +20,6 @@
 	"timedmedia-flac-long-audio": "FLAC-audiofichier, Längt $1, $2 am Ganzen",
 	"timedmedia-wav-short-audio": "WAV-Audiofichier, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 Videofichier, $2",
-	"timedmedia-no-player-js": "Pardon, Äre Browser huet entweder JavaScript ausgeschalt oder en huet kee Player-Programm deen ënnerstëtzt gëtt.<br />\nDir kënnt <a href=\"$1\"> de Clip eroflueden</a> oder <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">e Player-Programm erofluede</a> fir de Clip an Ärem Browser ze spillen.",
 	"timedmedia-more": "Méi ...",
 	"timedmedia-dismiss": "Zoumaachen",
 	"timedmedia-download": "Fichier eroflueden",
