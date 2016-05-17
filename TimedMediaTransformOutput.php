@@ -14,6 +14,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	public $start;
 	public $end;
 	public $fillwindow;
+	protected $playerClass;
 
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
@@ -21,7 +22,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function __construct( $conf ) {
 		$options = [ 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
 			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow',
-			'sources', 'disablecontrols' ];
+			'sources', 'disablecontrols', 'playerClass' ];
 		foreach ( $options as $key ) {
 			if ( isset( $conf[ $key ] ) ) {
 				$this->$key = $conf[$key];
@@ -460,6 +461,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			if ( $this->disablecontrols ) {
 				$mediaAttr[ 'data-disablecontrols' ] = $this->disablecontrols;
 			}
+		}
+
+		// Additional class-name provided by Transform caller
+		if ( $this->playerClass ) {
+			$mediaAttr[ 'class' ] .= ' ' . $this->playerClass;
 		}
 
 		if ( $this->file ) {
