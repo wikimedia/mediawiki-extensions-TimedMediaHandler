@@ -286,7 +286,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Call mediaWiki xml helper class to build media tag output from
-	 * supplied arrays
+	 * supplied arrays.
+	 *
+	 * This function is also called by the Score extension, in which case
+	 * there is no connection to a file object.
+	 *
 	 * @param $sizeOverride array
 	 * @param $autoPlay boolean sets the autoplay attribute
 	 * @return string
@@ -327,7 +331,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				}
 			}
 		}
-		$mediaTracks = $this->getTextHandler()->getTracks();
+		$mediaTracks = $this->file ? $this->getTextHandler()->getTracks() : null;
 		foreach ( $mediaTracks as &$track ) {
 			foreach ( $track as $attr => $val ) {
 				if ( $attr === 'title' || $attr === 'provider' ) {
