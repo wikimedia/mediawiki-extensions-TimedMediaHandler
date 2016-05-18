@@ -12,11 +12,16 @@
 	}
 }
 
-/* Make video-js behave like standard <video><audio> elements */
-.video-js.video-js:not( .vjs-fullscreen ) {
+/*
+ * Make video-js behave like standard <video><audio> elements
+ * The thumbinner check works around a width interaction for
+ * thumbnail style adjustments in Minerva mobile skin.
+ */
+*:not(.thumbinner) > .video-js.video-js:not( .vjs-fullscreen ) {
 	display: inline-block;
 	vertical-align: initial;
 }
+
 /* Resets styling on the resolution button. Our content linewraps */
 .vjs-resolution-button ul.vjs-menu-content.vjs-menu-content {
 	margin-left: -6em;
