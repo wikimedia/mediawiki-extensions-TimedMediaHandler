@@ -102,9 +102,9 @@ Simple audio element
 !! wikitext
 [[File:Audio.oga]]
 !! html
-<div class="mediaContainer" style="width:180px"><audio id="mwe_player_14" poster="/resources/assets/file-type-icons/fileicon-ogg.png" controls="" preload="none" style="width:180px" class="kskin" data-durationhint="0.99875" data-startoffset="0" data-mwtitle="Audio.oga" data-mwprovider="local"><source src="http://example.com/images/4/41/Audio.oga" type="audio/ogg; codecs=&quot;vorbis&quot;" data-title="Original Ogg file (41 kbps)" data-shorttitle="Ogg source" data-width="0" data-height="0" data-bandwidth="41107"/></audio></div>
+<div class="mediaContainer" style="width:180px"><audio id="mwe_player_14" controls="" preload="none" style="width:180px" class="kskin" data-durationhint="0.99875" data-startoffset="0" data-mwtitle="Audio.oga" data-mwprovider="local"><source src="http://example.com/images/4/41/Audio.oga" type="audio/ogg; codecs=&quot;vorbis&quot;" data-title="Original Ogg file (41 kbps)" data-shorttitle="Ogg source" data-width="0" data-height="0" data-bandwidth="41107"/></audio></div>
 
 !! html+tidy
-<div class="mediaContainer" style="width:180px"><audio id="mwe_player_13" poster="/resources/assets/file-type-icons/fileicon-ogg.png" controls="" preload="none" style="width:180px" class="kskin" data-durationhint="0.99875" data-startoffset="0" data-mwtitle="Audio.oga" data-mwprovider="local">
+<div class="mediaContainer" style="width:180px"><audio id="mwe_player_13" controls="" preload="none" style="width:180px" class="kskin" data-durationhint="0.99875" data-startoffset="0" data-mwtitle="Audio.oga" data-mwprovider="local">
 <source src="http://example.com/images/4/41/Audio.oga" type="audio/ogg; codecs=&quot;vorbis&quot;" data-title="Original Ogg file (41 kbps)" data-shorttitle="Ogg source" data-width="0" data-height="0" data-bandwidth="41107" /></audio></div>
 !!end
