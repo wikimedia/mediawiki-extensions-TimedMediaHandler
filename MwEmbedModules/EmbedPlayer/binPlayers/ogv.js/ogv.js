@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		OGVLoader = __webpack_require__(3),
 		OGVMediaType = __webpack_require__(7),
 		OGVPlayer = __webpack_require__(8),
-		OGVVersion = ("1.1.0-20160511164402-3888a9b");
+		OGVVersion = ("1.1.1-20160518171756-f2fe5bd");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -287,7 +287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.1.0-20160511164402-3888a9b");
+	var OGVVersion = ("1.1.1-20160518171756-f2fe5bd");
 
 	(function() {
 		var global = this;
@@ -778,6 +778,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			INITIAL: 'INITIAL',
 			SEEKING_END: 'SEEKING_END',
 			LOADED: 'LOADED',
+			PRELOAD: 'PRELOAD',
 			READY: 'READY',
 			PLAYING: 'PLAYING',
 			SEEKING: 'SEEKING',
@@ -904,6 +905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			// audioFeeder will call us when buffers need refilling,
 			// without any throttling.
 			audioFeeder.onbufferlow = function audioCallback() {
+				log('onbufferlow');
 				if (isProcessing()) {
 					// We're waiting on input or other async processing;
 					// we'll get triggered later.
@@ -918,6 +920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			// the very beginning of playback when we haven't buffered any data yet.
 			// @todo pre-buffer a little data to avoid needing this
 			audioFeeder.onstarved = function () {
+				log('onstarved');
 				if (isProcessing()) {
 					// We're waiting on input or other async processing;
 					// we'll get triggered later.
@@ -1025,12 +1028,14 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (codec) {
 				codec.close();
 				codec = null;
+				pendingFrame = 0;
+				pendingAudio = 0;
 			}
 			videoInfo = null;
 			audioInfo = null;
 			if (audioFeeder) {
 				audioFeeder.close();
-				audioFeeder = undefined;
+				audioFeeder = null;
 			}
 			if (nextProcessingTimer) {
 				clearTimeout(nextProcessingTimer);
@@ -1044,6 +1049,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				yCbCrBuffer = null;
 			}
 			// @todo set playback position, may need to fire timeupdate if wasnt previously 0
+			initialPlaybackPosition = 0;
+			initialPlaybackOffset = 0;
 			duration = null; // do not fire durationchange
 			// timeline offset to 0?
 		}
@@ -1130,6 +1137,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					actionQueue.splice(0, actionQueue.length);
 				} else {
 					stopPlayback();
+					if (audioFeeder) {
+						audioFeeder.flush();
+					}
 				}
 				state = State.SEEKING;
 				seekTargetTime = toTime;
@@ -1498,19 +1508,33 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			} else if (state == State.LOADED) {
 
-				state = State.READY;
-				if (paused) {
-					// Paused? stop here.
-					log('pausing stopping at loaded');
-				} else {
-					// Not paused? Continue on to play processing.
-					log('not paused so continuing');
-					pingProcessing(0);
-				}
+				state = State.PRELOAD;
 				fireEvent('loadedmetadata');
 				fireEvent('durationchange');
 				if (codec.hasVideo) {
 					fireEvent('resize');
+				}
+				pingProcessing(0);
+
+			} else if (state == State.PRELOAD) {
+
+				if ((codec.frameReady || !codec.hasVideo) &&
+				    (codec.audioReady || !codec.hasAudio)) {
+
+					state = State.READY;
+					fireEvent('loadeddata');
+					pingProcessing(0);
+				} else {
+					codec.process(function doProcessPreload(more) {
+						if (more) {
+							pingProcessing();
+						} else if (streamEnded) {
+							// Ran out of data before data available...?
+							ended = true;
+						} else {
+							readBytesAndWait();
+						}
+					});
 				}
 
 			} else if (state == State.READY) {
@@ -1534,7 +1558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						fireEvent('playing');
 					}
 
-					if (codec.hasAudio) {
+					if (codec.hasAudio && !audioFeeder && !muted) {
 						initAudioFeeder();
 						audioFeeder.waitUntilReady(finishStartPlaying);
 					} else {
@@ -1575,28 +1599,27 @@ return /******/ (function(modules) { // webpackBootstrap
 						} else if (pendingAudio || pendingFrame) {
 							// Still more to decode
 							// We'll be pinged when they come back
+						} else if (ended) {
+							log('Unexpectedly processing after ended');
 						} else {
 							// Ran out of stream!
 							log('Ran out of stream!');
 							var finalDelay = 0;
 							if (codec.hasAudio) {
-								audioState = audioFeeder.getPlaybackState();
-								audioBufferedDuration = (audioState.samplesQueued / audioFeeder.targetRate);
-								finalDelay = audioBufferedDuration * 1000;
+								finalDelay = audioFeeder.durationBuffered * 1000;
 							}
 							if (finalDelay > 0) {
 								log('ending pending ' + finalDelay + ' ms');
 								pingProcessing(Math.max(0, finalDelay));
 							} else {
 								log("ENDING NOW");
-								if (audioFeeder) {
-									audioFeeder.stop();
-								}
+								stopPlayback();
 								initialPlaybackOffset = Math.max(audioEndTimestamp, frameEndTimestamp);
 								ended = true;
 								// @todo implement loop behavior
 								paused = true;
-								fireEvent('ended');
+								fireEventAsync('pause');
+								fireEventAsync('ended');
 							}
 						}
 					} else if (paused) {
@@ -1657,6 +1680,10 @@ return /******/ (function(modules) { // webpackBootstrap
 								// No audio; drive on the general clock.
 								// @fixme account for dropped frame times...
 								playbackPosition = getPlaybackTime();
+
+								// If playing muted with no audio output device,
+								// just keep up with audio in general.
+								readyForAudioDecode = codec.audioReady && (audioEndTimestamp < playbackPosition);
 							}
 
 							if (codec.hasVideo) {
@@ -1723,18 +1750,21 @@ return /******/ (function(modules) { // webpackBootstrap
 								frameEndTimestamp = codec.frameTimestamp;
 								var pendingFramePing = false;
 								codec.decodeFrame(function processingDecodeFrame(ok) {
+									pendingFrame--;
 									log('decoded frame');
 									var delta = getTimestamp() - videoStartTime;
 									videoDecodingTime += delta;
 									lastFrameDecodeTime += delta;
-									if (ok) {
+									if (ok && codec.frameBuffer.duplicate) {
+										// Dupe frame! No need to draw anything.
+										doFrameComplete();
+									} else if (ok) {
 										// Save the buffer until it's time to draw
 										yCbCrBuffer = codec.frameBuffer;
 									} else {
 										// Bad packet or something.
 										log('Bad video packet or something');
 									}
-									pendingFrame--;
 									if (!isProcessing()) {
 										pingProcessing();
 									}
@@ -1762,7 +1792,9 @@ return /******/ (function(modules) { // webpackBootstrap
 											// Keep track of how much time we spend queueing audio as well
 											// This is slow when using the Flash shim on IE 10/11
 											bufferTime += time(function() {
-												audioFeeder.bufferData(buffer);
+												if (audioFeeder) {
+													audioFeeder.bufferData(buffer);
+												}
 											});
 											audioBufferedDuration += (buffer[0].length / audioInfo.rate) * 1000;
 											if (!codec.hasVideo) {
@@ -1996,7 +2028,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * HTMLMediaElement play method
 		 */
 		self.play = function() {
-			if (!audioOptions.audioContext) {
+			if (!muted && !audioOptions.audioContext) {
 				OGVPlayer.initSharedAudioContext();
 			}
 
@@ -2005,7 +2037,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				paused = false;
 
-				if (started || loading) {
+				if (started && codec && codec.loadedMetadata) {
 
 					if (ended && stream && byteLength) {
 
@@ -2016,17 +2048,16 @@ return /******/ (function(modules) { // webpackBootstrap
 						log('.play() while already started');
 					}
 
-					actionQueue.push(function() {
-						startPlayback();
-						fireEvent('play');
-						fireEvent('playing');
-						pingProcessing(0);
-					});
+					state = State.READY;
 					if (isProcessing()) {
 						// waiting on the codec already
 					} else {
 						pingProcessing();
 					}
+
+				} else if (loading) {
+
+					log('.play() while loading');
 
 				} else {
 
@@ -2231,6 +2262,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				muted = val;
 				if (audioFeeder) {
 					audioFeeder.muted = muted;
+				} else if (started && !muted && codec && codec.hasAudio) {
+					log('unmuting: switching from timer to audio clock');
+					initAudioFeeder();
+					startPlayback(audioEndTimestamp);
 				}
 				fireEventAsync('volumechange');
 			}
@@ -2881,6 +2916,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -4550,6 +4588,17 @@ return /******/ (function(modules) { // webpackBootstrap
 			};
 
 			/**
+			 * Flush any queued data out of the system.
+			 */
+			AudioFeeder.prototype.flush = function() {
+				if (this._backend) {
+					this._backend.flush();
+				} else {
+					throw 'Invalid state: AudioFeeder cannot flush before init';
+				}
+			}
+
+			/**
 			 * Close out the audio channel. The AudioFeeder instance will no
 			 * longer be usable after closing.
 			 *
@@ -4643,10 +4692,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		  }
 		  this.channels = numChannels;
 		  this.bufferSize = bufferSize;
+		  this.flush();
+		}
+
+		/**
+		 * Flush any data out of the queue, resetting to empty state.
+		 */
+		BufferQueue.prototype.flush = function() {
 		  this._buffers = [];
 		  this._pendingBuffer = this.createBuffer(this.bufferSize);
 		  this._pendingPos = 0;
-		}
+		};
 
 		/**
 		 * Count how many samples are queued up
@@ -4731,6 +4787,33 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		/**
+		 * Unshift the given sample buffer onto the beginning of the buffer queue.
+		 *
+		 * @param {SampleBuffer} sampleData - an audio buffer to prepend
+		 * @throws exception on invalid input
+		 *
+		 * @todo this is currently pretty inefficient as it rechunks all the buffers.
+		 */
+		BufferQueue.prototype.prependBuffer = function(sampleData) {
+		  if (!this.validate(sampleData)) {
+		    throw "Invalid audio buffer passed to BufferQueue.prependBuffer";
+		  }
+
+		  // Since everything is pre-chunked in the queue, we're going to have
+		  // to pull everything out and re-append it.
+		  var buffers = this._buffers.slice(0)
+		  buffers.push(this.trimBuffer(this._pendingBuffer, 0, this._pendingPos));
+
+		  this.flush();
+		  this.appendBuffer(sampleData);
+
+		  // Now put back any old buffers, dividing them up into chunks.
+		  for (var i = 0; i < buffers.length; i++) {
+		    this.appendBuffer(buffers[i]);
+		  }
+		};
+
+		/**
 		 * Shift out a buffer from the head of the queue, containing a maximum of
 		 * {@link BufferQueue#bufferSize} samples; if there are not enough samples
 		 * you may get a shorter buffer. Call {@link BufferQueue#sampleCount} to
@@ -4742,7 +4825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  if (this._buffers.length) {
 		    return this._buffers.shift();
 		  } else {
-		    var trimmed = this.trimBuffer(this._pendingBuffer, this._pendingPos);
+		    var trimmed = this.trimBuffer(this._pendingBuffer, 0, this._pendingPos);
 		    this._pendingBuffer = this.createBuffer(this.bufferSize);
 		    this._pendingPos = 0;
 		    return trimmed;
@@ -4752,20 +4835,22 @@ return /******/ (function(modules) { // webpackBootstrap
 		/**
 		 * Trim a buffer down to a given maximum sample count.
 		 * Any additional samples will simply be cropped off of the view.
+		 * If no trimming is required, the same buffer will be returned.
 		 *
 		 * @param {SampleBuffer} sampleData - input data
+		 * @param {number} start - sample number to start at
 		 * @param {number} maxSamples - count of samples to crop to
 		 * @returns {SampleBuffer} - output data with at most maxSamples samples
 		 */
-		BufferQueue.prototype.trimBuffer = function(sampleData, maxSamples) {
+		BufferQueue.prototype.trimBuffer = function(sampleData, start, maxSamples) {
 		  var bufferLength = sampleData[0].length,
-		    end = Math.min(maxSamples, bufferLength);
-		  if (end > bufferLength) {
+		    end = start + Math.min(maxSamples, bufferLength);
+		  if (start == 0 && end >= bufferLength) {
 		    return sampleData;
 		  } else {
 		    var output = [];
 		    for (var i = 0; i < this.channels; i++) {
-		      output[i] = sampleData[i].subarray(0, end);
+		      output[i] = sampleData[i].subarray(start, end);
 		    }
 		    return output;
 		  }
@@ -4830,6 +4915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		    this._queuedTime = 0;
 		    this._delayedTime = 0;
 		    this._dropped = 0;
+		    this._liveBuffer = this._bufferQueue.createBuffer(this.bufferSize);
 
 		    // @todo support new audio worker mode too
 		    if (context.createScriptProcessor) {
@@ -4955,6 +5041,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		    }
 		    for (channel = 0; channel < this.channels; channel++) {
 		      input = inputBuffer[channel];
+
+		      // Save this buffer data for later in case we pause
+		      this._liveBuffer[channel].set(inputBuffer[channel]);
+
+		      // And play it out with volume applied...
 		      output = event.outputBuffer.getChannelData(channel);
 		      for (i = 0; i < input.length; i++) {
 		        output[i] = input[i] * volume;
@@ -5052,9 +5143,25 @@ return /******/ (function(modules) { // webpackBootstrap
 		   */
 		  WebAudioBackend.prototype.stop = function() {
 		    if (this._node) {
+		      var timeRemaining = this._timeAwaitingPlayback();
+		      if (timeRemaining > 0) {
+		        // We have some leftover samples that got queued but didn't get played.
+		        // Unshift them back onto the beginning of the buffer.
+		        this._bufferQueue.prependBuffer(
+		          this._bufferQueue.trimBuffer(this._liveBuffer,
+		            Math.round(timeRemaining * this.targetRate)));
+		        this._playbackTimeAtBufferTail -= timeRemaining;
+		      }
 		      this._node.onaudioprocess = null;
 		      this._node.disconnect();
 		    }
+		  };
+
+		  /**
+		   * Flush any queued data out of the system.
+		   */
+		  WebAudioBackend.prototype.flush = function() {
+		    this._bufferQueue.flush();
 		  };
 
 		  /**
@@ -5066,7 +5173,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		    this.stop();
 
 		    this._context = null;
-		    this._buffers = null;
 		  };
 
 		  /**
@@ -5511,6 +5617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		   */
 		  FlashBackend.prototype.start = function() {
 		    this._flashaudio.flashElement.start();
+		    this._cachedFlashState = null;
 		  };
 
 		  /**
@@ -5519,6 +5626,15 @@ return /******/ (function(modules) { // webpackBootstrap
 		   */
 		  FlashBackend.prototype.stop = function() {
 		    this._flashaudio.flashElement.stop();
+		    this._cachedFlashState = null;
+		  };
+
+		  /**
+		   * Flush any queued data out of the system.
+		   */
+		  FlashBackend.prototype.flush = function() {
+		    this._flashaudio.flashElement.flush();
+		    this._cachedFlashState = null;
 		  };
 
 		  /**
@@ -5678,7 +5794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* 5 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		module.exports = __webpack_require__.p + "dynamicaudio.swf?version=abc1b0f4d043aa84ad25093f7fdaffe8";
+		module.exports = __webpack_require__.p + "dynamicaudio.swf?version=6e7e05c14196b3ea0651bcc21c5938a7";
 
 	/***/ }
 	/******/ ])
@@ -5689,7 +5805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=abc1b0f4d043aa84ad25093f7fdaffe8";
+	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=6e7e05c14196b3ea0651bcc21c5938a7";
 
 /***/ },
 /* 20 */
@@ -5758,7 +5874,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.1.0-20160511164402-3888a9b")),
+			suffix = '?version=' + encodeURIComponent(("1.1.1-20160518171756-f2fe5bd")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,
@@ -6087,14 +6203,33 @@ return /******/ (function(modules) { // webpackBootstrap
 			var timestamp = self.frameTimestamp,
 				keyframeTimestamp = self.keyframeTimestamp;
 			demuxer.dequeueVideoPacket(function(packet) {
-				videoDecoder.processFrame(packet, function(ok) {
+				function finish(ok) {
 					// hack
 					if (self.frameBuffer) {
 						self.frameBuffer.timestamp = timestamp;
 						self.frameBuffer.keyframeTimestamp = keyframeTimestamp;
 					}
 					callback(ok);
-				});
+				}
+				if (packet.byteLength === 0) {
+					//
+					// Zero-byte packets in Theora mean dupe frames.
+					//
+					// Going through the decoder worker is expensive in Edge
+					// for pathological cases such as "1000 fps" files created
+					// in some sort of super-mutant-creating transcoding accident.
+					//
+					// Skip the worker and just return a dupe frame immediately.
+					//
+					if (self.frameBuffer) {
+						self.frameBuffer.duplicate = true;
+						finish(true);
+					} else {
+						finish(false);
+					}
+				} else {
+					videoDecoder.processFrame(packet, finish);
+				}
 			});
 		};
 
