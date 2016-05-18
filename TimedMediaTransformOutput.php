@@ -443,10 +443,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				unset( $mediaAttr['height'] );
 				unset( $mediaAttr['poster'] );
 			}
-
-			if ( $this->disablecontrols ) {
-				$mediaAttr[ 'controls' ] = false;
-			}
 		} else {
 			$mediaAttr['style'] = "width:{$width}";
 
@@ -456,10 +452,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 			// MediaWiki uses the kSkin class
 			$mediaAttr['class'] = 'kskin';
+		}
 
-			if ( $this->disablecontrols ) {
-				$mediaAttr[ 'data-disablecontrols' ] = $this->disablecontrols;
-			}
+		// Used by Score extension and to disable specific controls from wikicode
+		if ( $this->disablecontrols ) {
+			$mediaAttr[ 'data-disablecontrols' ] = $this->disablecontrols;
 		}
 
 		if ( $this->file ) {
