@@ -87,7 +87,6 @@ class WebVideoTranscode {
 				'videoBitrate'               => '160',
 				'framerate'                  => '15',
 				'audioQuality'               => '-1',
-				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
@@ -102,7 +101,6 @@ class WebVideoTranscode {
 				'maxSize'                    => '426x240',
 				'videoBitrate'               => '512',
 				'audioQuality'               => '0',
-				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
@@ -117,7 +115,6 @@ class WebVideoTranscode {
 				'maxSize'                    => '640x360',
 				'videoBitrate'               => '1024',
 				'audioQuality'               => '1',
-				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
@@ -132,7 +129,6 @@ class WebVideoTranscode {
 				'maxSize'                    => '854x480',
 				'videoBitrate'               => '2048',
 				'audioQuality'               => '2',
-				'samplerate'                 => '44100',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true',
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
