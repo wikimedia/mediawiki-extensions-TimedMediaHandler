@@ -8,61 +8,10 @@
  * TODO On "new" timedtext language save purge all pages where file exists
  */
 
-/**
- * Subclass ApiMain but query other db
- */
-class ForeignApiQueryAllPages extends ApiQueryAllPages {
-	public function __construct( $mDb, $query, $moduleName ) {
-		global $wgTimedTextForeignNamespaces;
-
-		$this->foreignDb = $mDb;
-
-		$wikiID = $this->foreignDb->getWikiID();
-		if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {
-			$this->foreignNs = $wgTimedTextForeignNamespaces[ $wikiID ];
-		} else {
-			$this->foreignNs = NS_TIMEDTEXT;
-		}
-		parent::__construct( $query, $moduleName, 'ap' );
-	}
-
-	protected function getDB() {
-		return $this->foreignDb;
-	}
-
-	protected function parseMultiValue( $valueName, $value, $allowMultiple, $allowedValues ) {
-		// foreignnNs might not be defined localy,
-		// catch the undefined error here
-		if ( $valueName == 'apnamespace'
-			&& $value == $this->foreignNs
-			&& $allowMultiple == false
-		) {
-			return $this->foreignNs;
-		}
-		return parent::parseMultiValue( $valueName, $value, $allowMultiple, $allowedValues );
-	}
-
-	/**
-	 * An alternative to titleToKey() that doesn't trim trailing spaces
-	 *
-	 *
-	 * @FIXME: I'M A BIG HACK
-	 *
-	 * @param string $titlePart Title part with spaces
-	 * @return string Title part with underscores
-	 */
-	public function titlePartToKey( $titlePart, $defaultNamespace = NS_MAIN ) {
-		$t = Title::newFromText( $titlePart . 'x' );
-		if ( !$t ) {
-			$this->dieUsageMsg( [ 'invalidtitle', $titlePart ] );
-		}
-		return substr( $t->getPrefixedDBkey(), 0, -1 );
-	}
-}
-
 class TextHandler {
 	// lazy init remote Namespace number
 	public $remoteNs = null;
+	public $remoteNsName = null;
 
 	/**
 	 * @var File
@@ -105,7 +54,11 @@ class TextHandler {
 				return $wgTimedTextForeignNamespaces[ $wikiID ];
 			}
 			// failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
-			return NS_TIMEDTEXT;
+			if ( $wgEnableLocalTimedText ) {
+				return NS_TIMEDTEXT;
+			} else {
+				return false;
+			}
 		} else {
 			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
@@ -120,8 +73,11 @@ class TextHandler {
 			if ( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ) {
 				// get the ~last~ timed text namespace defined
 				foreach ( $data['query']['namespaces'] as $ns ) {
-					if ( $ns['*'] == 'TimedText' ) {
+					if ( isset( $ns['canonical'] ) && $ns['canonical'] === 'TimedText' ) {
 						$this->remoteNs = $ns['id'];
+						$this->remoteNsName = $ns['*'];
+						wfDebug( "Discovered remoteNs: $this->remoteNs and name: $this->remoteNsName \n" );
+						break;
 					}
 				}
 			}
@@ -131,25 +87,59 @@ class TextHandler {
 	}
 
 	/**
-	 * @return array|bool
+	 * Retrieve a list of TimedText pages in the database that start with
+	 * the name of the file associated with this handler.
+	 *
+	 * If the file is on a foreign repo, will query the ForeignDb
+	 *
+	 * @return ResultWrapper|bool
 	 */
-	function getTextPagesQuery() {
+	function getTextPages() {
 		$ns = $this->getTimedTextNamespace();
 		if ( $ns === false ) {
-			wfDebug( "Repo: " . $this->file->repo->getName() . " does not have a TimedText namesapce \n" );
+			wfDebug( 'Repo: ' . $this->file->repo->getName() . " does not have a TimedText namespace \n" );
+			// No timed text namespace, don't try to look up timed text tracks
+			return false;
+		}
+		$dbr = $this->file->getRepo()->getSlaveDB();
+		$prefix = $this->file->getTitle()->getDBkey();
+		return $dbr->select(
+			'page',
+			[ 'page_namespace', 'page_title' ],
+			[
+				'page_namespace' => $ns,
+				'page_title ' . $dbr->buildLike( $prefix, $dbr->anyString() )
+			],
+			__METHOD__,
+			[
+				'LIMIT' => 300,
+				'ORDER BY' => 'page_title'
+			]
+		);
+	}
+
+	/**
+	 * Build the api query to find TimedText pages belonging to a remote file
+	 * @return array|bool
+	 */
+	function getRemoteTextPagesQuery() {
+		$ns = $this->getTimedTextNamespace();
+		if ( $ns === false ) {
+			wfDebug( 'Repo: ' . $this->file->repo->getName() . " does not have a TimedText namespace \n" );
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
 		return [
 			'action' => 'query',
-			'list' => 'allpages',
-			'apnamespace' => $ns,
-			'aplimit' => 300,
-			'apprefix' => $this->file->getTitle()->getDBkey()
+			'titles' => $this->file->getTitle()->getPrefixedDBkey(),
+			'prop' => 'videoinfo',
+			'viprop' => 'timedtext',
+			'formatversion' => '2',
 		];
 	}
 
 	/**
+	 * Retrieve the text sources belonging to a remote file
 	 * @return array|mixed
 	 */
 	function getRemoteTextSources() {
@@ -168,7 +158,7 @@ class TextHandler {
 			wfDebug( "miss\n" );
 		}
 		wfDebug( "Get text tracks from remote api \n" );
-		$query = $this->getTextPagesQuery();
+		$query = $this->getRemoteTextPagesQuery();
 
 		// Error in getting timed text namespace return empty array;
 		if ( $query === false ) {
@@ -183,99 +173,111 @@ class TextHandler {
 	}
 
 	/**
+	 * Retrieve the text sources belonging to a foreign db accessible file
+	 * @return array
+	 */
+	function getForeignDBTextSources() {
+		$data = $this->getTextPages();
+		if ( $data !== false ) {
+			return $this->getTextTracksFromRows( $data );
+		}
+		return [];
+	}
+
+	/**
+	 * Retrieve the text sources belonging to a local file
 	 * @return array
 	 */
 	function getLocalTextSources() {
 		global $wgEnableLocalTimedText;
 		if ( $wgEnableLocalTimedText ) {
-			// Init $this->textTracks
-			$params = new FauxRequest( $this->getTextPagesQuery() );
-			$api = new ApiMain( $params );
-			$api->execute();
-			if ( defined( 'ApiResult::META_CONTENT' ) ) {
-				$data = $api->getResult()->getResultData( null, [ 'Strip' => 'all' ] );
-			} else {
-				$data = $api->getResultData();
+			$data = $this->getTextPages();
+			if ( $data !== false ) {
+				return $this->getTextTracksFromRows( $data );
 			}
-			wfDebug( print_r( $data, true ) );
-			// Get the list of language Names
-			return $this->getTextTracksFromData( $data );
-		} else {
-			return [];
 		}
+		return [];
 	}
 
 	/**
-	 * @return array|mixed
+	 * Build an array of track information using a Database result
+	 * Handles both local and foreign Db results
+	 *
+	 * @param ResultWrapper $data Database result with page titles
+	 * @return array
 	 */
-	function getForeignDBTextSources() {
-		// Init $this->textTracks
-		$params = new FauxRequest( $this->getTextPagesQuery() );
-		$api = new ApiMain( $params );
-		$api->profileIn();
-		$query = new ApiQuery( $api, 'foo', 'bar' );
-		$query->profileIn();
-		$module = new ForeignApiQueryAllPages( $this->file->getRepo()->getSlaveDB(), $query, 'allpages' );
-		$module->profileIn();
-		$module->execute();
-		$module->profileOut();
-		$query->profileOut();
-		$api->profileOut();
-
-		if ( defined( 'ApiResult::META_CONTENT' ) ) {
-			$data = $module->getResult()->getResultData( null, [ 'Strip' => 'all' ] );
-		} else {
-			$data = $module->getResultData();
+	function getTextTracksFromRows( ResultWrapper $data ) {
+		$textTracks = [];
+		$providerName = $this->file->repo->getName();
+		// commons is called shared in production. normalize it to wikimediacommons
+		if ( $providerName === 'shared' ) {
+			$providerName = 'wikimediacommons';
 		}
-		// Get the list of language Names
-		return $this->getTextTracksFromData( $data );
+		// Provider name should be the same as the interwiki map
+
+		if ( !$this->file->isLocal() ) {
+			$namespaceName = $this->getForeignNamespaceName();
+		}
+		$langNames = Language::fetchLanguageNames( null, 'mw' );
+
+		foreach ( $data as $row ) {
+			// Note, the namespace ID of this title might be 'unknown'
+			// to our configuration if this is called in ForeignDb situations
+			if ( $this->file->isLocal() ) {
+				$subTitle = Title::newFromRow( $row );
+			} else {
+				$subTitle = new ForeignTitle( $row->page_namespace, $namespaceName, $row->page_title );
+			}
+			$titleParts = explode( '.', $row->page_title );
+			if ( count( $titleParts ) >= 3 ) {
+				$timedTextExtension = array_pop( $titleParts );
+				$languageKey = array_pop( $titleParts );
+				$contentType = $this->getContentType( $timedTextExtension );
+			} else {
+				continue;
+			}
+			// If there is no valid language continue:
+			if ( !isset( $langNames[ $languageKey ] ) ) {
+				continue;
+			}
+
+			$textTracks[] = [
+				// @todo Should eventually add special entry point and output proper WebVTT format:
+				// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
+				'src' => $this->getFullURL( $subTitle, $contentType ),
+				'kind' => 'subtitles',
+				'type' => $contentType,
+				'title' => $this->getPrefixedDBkey( $subTitle ),
+				'provider' => $providerName,
+				'srclang' =>  $languageKey,
+				'dir' => Language::factory( $languageKey )->getDir(),
+				'label' => wfMessage( 'timedmedia-subtitle-language',
+					$langNames[ $languageKey ],
+					$languageKey )->text()
+			];
+		}
+		return $textTracks;
 	}
 
 	/**
-	 * @param $data
+	 * Build an array of track information using an API result
+	 * @param mixed $data JSON decoded result from a query API request
 	 * @return array
 	 */
 	function getTextTracksFromData( $data ) {
 		$textTracks = [];
-		$providerName = $this->file->repo->getName();
-		// commons is called shared in production. normalize it to wikimediacommons
-		if ( $providerName == 'shared' ) {
-			$providerName = 'wikimediacommons';
-		}
-		// Provider name should be the same as the interwiki map
-		// @@todo more testing with this:
-
-		$langNames = Language::fetchLanguageNames( null, 'mw' );
-		if ( $data['query'] && $data['query']['allpages'] ) {
-			foreach ( $data['query']['allpages'] as $page ) {
-				$subTitle = Title::newFromText( $page['title'] );
-				$tileParts = explode( '.', $page['title'] );
-				if ( count( $tileParts ) >= 3 ) {
-					$timedTextExtension = array_pop( $tileParts );
-					$languageKey = array_pop( $tileParts );
-					$contentType = $this->getContentType( $timedTextExtension );
-				} else {
-					continue;
+		if ( $data !== null && $data['query'] && $data['query']['pages'] ) {
+			foreach ( $data['query']['pages'] as $page ) {
+				if ( $page['videoinfo'] ) {
+					foreach ( $page['videoinfo'] as $info ) {
+						if ( $info['timedtext'] ) {
+							foreach ( $info['timedtext'] as $track ) {
+								// Add validation ?
+								$textTracks[] = $track;
+							}
+						}
+					}
 				}
-				// If there is no valid language continue:
-				if ( !isset( $langNames[ $languageKey ] ) ) {
-					continue;
-				}
-				$namespacePrefix = "TimedText:";
-				$textTracks[] = [
-					// @todo Should eventually add special entry point and output proper WebVTT format:
-					// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-					'src' => $this->getFullURL( $page['title'], $contentType ),
-					'kind' => 'subtitles',
-					'type' => $contentType,
-					'title' => $namespacePrefix . $subTitle->getDBkey(),
-					'provider' => $providerName,
-					'srclang' =>  $languageKey,
-					'dir' => Language::factory( $languageKey )->getDir(),
-					'label' => wfMessage( 'timedmedia-subtitle-language',
-						$langNames[ $languageKey ],
-						$languageKey )->text()
-				];
 			}
 		}
 		return $textTracks;
@@ -290,16 +292,49 @@ class TextHandler {
 		return '';
 	}
 
+	function getForeignNamespaceName() {
+		global $wgEnableLocalTimedText;
+		if ( $this->remoteNs !== null ) {
+			return $this->remoteNsName;
+		}
+		/* Else, we use the canonical namespace, since we can't look up the actual one */
+		if ( $wgEnableLocalTimedText ) {
+			return strtr( MWNamespace::getCanonicalName( NS_TIMEDTEXT ), ' ', '_' );
+		} else {
+			// Assume the default name if no local TimedText.
+			return 'TimedText';
+		}
+	}
+
+	/**
+	 * Retrieve a namespace prefixed and underscored title
+	 * @param Title|ForeignTitle $pageTitle
+	 * @return string
+	 */
+	function getPrefixedDBkey( $pageTitle ) {
+		if ( $pageTitle instanceof Title ) {
+			return TitleFormatter::getPrefixedDBkey( $pageTitle );
+		} elseif ( $pageTitle instanceof ForeignTitle ) {
+			return $pageTitle->getFullText();
+		}
+		return null;
+	}
+
+	/**
+	 * Retrieve a url to the raw subtitle file
+	 * Only use for local and foreignDb requests
+	 *
+	 * @param Title|ForeignTitle $pageTitle
+	 * @return string
+	 */
 	function getFullURL( $pageTitle, $contentType ) {
-		if ( $this->file->isLocal() ) {
-			$subTitle =  Title::newFromText( $pageTitle );
-			return $subTitle->getFullURL( [
+		if ( $pageTitle instanceof Title ) {
+			return $pageTitle->getFullURL( [
 				'action' => 'raw',
 				'ctype' => $contentType
 			] );
-		// } elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ) {
-		} else {
-			$query = 'title=' . wfUrlencode( $pageTitle ) . '&';
+		} elseif ( $pageTitle instanceof ForeignTitle ) {
+			$query = 'title=' . wfUrlencode( $pageTitle->getFullText() ) . '&';
 			$query .= wfArrayToCgi( [
 				'action' => 'raw',
 				'ctype' => $contentType
@@ -307,5 +342,6 @@ class TextHandler {
 			// Note: This will return false if scriptDirUrl is not set for repo.
 			return $this->file->repo->makeUrl( $query );
 		}
+		return null;
 	}
 }
