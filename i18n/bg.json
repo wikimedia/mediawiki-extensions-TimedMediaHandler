@@ -4,7 +4,8 @@
 			"Borislav",
 			"DCLXVI",
 			"Spiritia",
-			"StanProg"
+			"StanProg",
+			"Лорд Бъмбъри"
 		]
 	},
 	"timedmediahandler-desc": "Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript",
@@ -14,11 +15,11 @@
 	"timedmedia-ogg-long-video": "Ogg $1 видео файл, продължителност $2, $4×$5 пиксела, $3",
 	"timedmedia-ogg-long-general": "Мултимедиен файл в ogg формат с дължина $2, $3",
 	"timedmedia-ogg-long-error": "Невалиден ogg файл: $1",
-	"timedmedia-no-player-js": "За съжаление, браузъра ви има изключен JavaScript или не разполага с необходимия плейър.<br />\nМожете да <a href=\"$1\">изтеглите клипа</a> или <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">да изтеглите плейър</a> за да пуснете клипа в браузъра си.",
 	"timedmedia-more": "Повече...",
 	"timedmedia-dismiss": "Затваряне",
 	"timedmedia-download": "Изтегляне на файла",
 	"timedmedia-desc-link": "Информация за файла",
+	"timedmedia-percent-done": "Около $1% завършени",
 	"timedmedia-source-file": "Източник на $1",
 	"timedmedia-source-audio-file-desc": "Оригинален $1-файл ($2)"
 }
