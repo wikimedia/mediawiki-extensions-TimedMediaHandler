@@ -1106,6 +1106,9 @@ class WebVideoTranscode {
 				);
 			}
 		}
+
+		// Remove from local WebVideoTranscode cache:
+		self::clearTranscodeCache( $fileName );
 	}
 
 	/**
