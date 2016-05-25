@@ -111,6 +111,7 @@
 				$source.attr( 'res', $source.data( 'height' ) );
 				$source.attr( 'label', $source.data( 'shorttitle' ) );
 			} );
+			$videoplayer.parent( '.thumbinner' ).addClass( 'mw-overflow' );
 
 			// Launch the player
 			videojs( videoplayer, playerConfig ).ready( function () {
