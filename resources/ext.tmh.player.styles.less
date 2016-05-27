@@ -12,6 +12,13 @@
 	}
 }
 
+div.thumbinner.mw-overflow {
+	/* We want to overflow, but we need to make sure we still
+	 * create a new block formatting context */
+	overflow: visible;
+	display: table-cell;
+}
+
 /*
  * Make video-js behave like standard <video><audio> elements
  * The thumbinner check works around a width interaction for
