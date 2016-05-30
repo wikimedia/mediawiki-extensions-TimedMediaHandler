@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adam-Yourist"
+			"Adam-Yourist",
+			"ElizaMag"
 		]
 	},
 	"timedmedia-source-file": "Хьаст $1",
-	"timedmedia-source-audio-file-desc": "Шийггара вIашагIъела $1-файл ($2)"
+	"timedmedia-source-audio-file-desc": "Шийггара вIашагIъела (оригинальни) $1-файл ($2)"
 }
