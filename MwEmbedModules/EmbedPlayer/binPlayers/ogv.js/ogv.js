@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		OGVLoader = __webpack_require__(3),
 		OGVMediaType = __webpack_require__(7),
 		OGVPlayer = __webpack_require__(8),
-		OGVVersion = ("1.1.1-20160518171756-f2fe5bd");
+		OGVVersion = ("1.1.3-20160627181101-5f064cc");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -287,7 +287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.1.1-20160518171756-f2fe5bd");
+	var OGVVersion = ("1.1.3-20160627181101-5f064cc");
 
 	(function() {
 		var global = this;
@@ -425,13 +425,73 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				var proxyClass = info.proxy,
-					workerScript = info.worker;
+					workerScript = info.worker,
+					codecUrl = urlForScript(scriptMap[className]),
+					workerUrl = urlForScript(workerScript),
+					worker;
 
 				var construct = function(options) {
-					var worker = new Worker(urlForScript(workerScript));
 					return new proxyClass(worker, className, options);
 				};
-				callback(construct);
+
+				if (workerUrl.match(/^https?:|\/\//i)) {
+					// Can't load workers natively cross-domain, but if CORS
+					// is set up we can fetch the worker stub and the desired
+					// class and load them from a blob.
+					var getCodec,
+						getWorker,
+						codecResponse,
+						workerResponse,
+						codecLoaded = false,
+						workerLoaded = false,
+						blob;
+
+					function completionCheck() {
+						if ((codecLoaded == true) && (workerLoaded == true)) {
+							try {
+								blob = new Blob([codecResponse + " " + workerResponse], {type: 'application/javascript'});
+							} catch (e) { // Backwards-compatibility
+								window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+								blob = new BlobBuilder();
+								blob.append(codecResponse + " " + workerResponse);
+								blob = blob.getBlob();
+							}
+							// Create the web worker
+							worker = new Worker(URL.createObjectURL(blob));
+							callback(construct);
+						}
+					}
+
+					// Load the codec
+					getCodec = new XMLHttpRequest();
+					getCodec.open("GET", codecUrl, true);
+					getCodec.onreadystatechange = function() {
+						if(getCodec.readyState == 4 && getCodec.status == 200) {
+							codecResponse = getCodec.responseText;
+							// Update the codec response loaded flag
+							codecLoaded = true;
+							completionCheck();
+						}
+					};
+					getCodec.send();
+
+					// Load the worker
+					getWorker = new XMLHttpRequest();
+					getWorker.open("GET", workerUrl, true);
+					getWorker.onreadystatechange = function() {
+						if(getWorker.readyState == 4 && getWorker.status == 200) {
+							workerResponse = getWorker.responseText;
+							// Update the worker response loaded flag
+							workerLoaded = true;
+							completionCheck();
+						}
+					};
+					getWorker.send();
+				} else {
+					// Local URL; load it directly for simplicity.
+					worker = new Worker(workerUrl);
+					callback(construct);
+				}
 			}
 		};
 
@@ -449,7 +509,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVDecoderAudioProxy = OGVProxyClass({
 		loadedMetadata: false,
 		audioFormat: null,
-		audioBuffer: null
+		audioBuffer: null,
+		cpuTime: 0
 	}, {
 		init: function(callback) {
 			this.proxy('init', [], callback);
@@ -615,7 +676,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVDecoderVideoProxy = OGVProxyClass({
 		loadedMetadata: false,
 		videoFormat: null,
-		frameBuffer: null
+		frameBuffer: null,
+		cpuTime: 0
 	}, {
 		init: function(callback) {
 			this.proxy('init', [], callback);
@@ -689,27 +751,27 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate) {var WebGLFrameSink = __webpack_require__(11);
-	var FrameSink = __webpack_require__(15);
+	var WebGLFrameSink = __webpack_require__(9);
+	var FrameSink = __webpack_require__(13);
 
 	// -- OGVLoader.js
 	var OGVLoader = __webpack_require__(3);
 
 	// -- StreamFile.js
-	var StreamFile = __webpack_require__(17);
+	var StreamFile = __webpack_require__(15);
 
 	// -- AudioFeeder.js
-	var AudioFeeder = __webpack_require__(18),
-		dynamicaudio_swf = __webpack_require__(19);
+	var AudioFeeder = __webpack_require__(16),
+		dynamicaudio_swf = __webpack_require__(17);
 
 	// -- Bisector.js
-	var Bisector = __webpack_require__(20);
+	var Bisector = __webpack_require__(18);
 
 	// -- OGVMediaType.js
 	var OGVMediaType = __webpack_require__(7);
 
 	// -- OGVWrapperCodec.js
-	var OGVWrapperCodec = __webpack_require__(21);
+	var OGVWrapperCodec = __webpack_require__(19);
 
 	// -- OGVDecoderAudioProxy.js
 	var OGVDecoderAudioProxy = __webpack_require__(4);
@@ -782,7 +844,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			READY: 'READY',
 			PLAYING: 'PLAYING',
 			SEEKING: 'SEEKING',
-			ENDED: 'ENDED'
+			ENDED: 'ENDED',
+			ERROR: 'ERROR'
 		}, state = State.INITIAL;
 
 		var SeekState = {
@@ -806,7 +869,13 @@ return /******/ (function(modules) { // webpackBootstrap
 			// Try passing a pre-created audioContext in?
 			audioOptions.audioContext = options.audioContext;
 		}
+		// Buffer in largeish chunks to survive long CPU spikes on slow CPUs (eg, 32-bit iOS)
+		audioOptions.bufferSize = 8192;
+
 		codecOptions.worker = enableWorker;
+		if (typeof options.memoryLimit === 'number') {
+			codecOptions.memoryLimit = options.memoryLimit;
+		}
 
 		var canvas = document.createElement('canvas');
 		var frameSink;
@@ -841,18 +910,20 @@ return /******/ (function(modules) { // webpackBootstrap
 		var then = getTimestamp();
 		function log(msg) {
 			if (options.debug) {
-				/*
 				var now = getTimestamp(),
 					delta = now - then;
 
-				console.log('+' + delta + 'ms proc: ' + msg);
-				then = now;
-				*/
-				console.log('OGVPlayer: ' + msg);
+				//console.log('+' + delta + 'ms ' + msg);
+				//then = now;
+				
+				if (!options.debugFilter || msg.match(options.debugFilter)) {
+					console.log('[' + (Math.round(delta * 10) / 10) + 'ms] ' + msg);
+				}
 			}
 		}
 
 		function fireEvent(eventName, props) {
+			log('fireEvent ' + eventName);
 			var event;
 			props = props || {};
 
@@ -882,6 +953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		}
 		function fireEventAsync(eventName, props) {
+			log('fireEventAsync ' + eventName);
 			setTimeout(function() {
 				fireEvent(eventName, props);
 			}, 0);
@@ -894,10 +966,24 @@ return /******/ (function(modules) { // webpackBootstrap
 			audioFeeder = null;
 		var muted = false,
 			initialPlaybackPosition = 0.0,
-			initialPlaybackOffset = 0.0;
+			initialPlaybackOffset = 0.0,
+			prebufferingAudio = false,
+			stoppedForLateFrame = false;
 		function initAudioFeeder() {
 			audioFeeder = new AudioFeeder( audioOptions );
 			audioFeeder.init(audioInfo.channels, audioInfo.rate);
+
+			// At our requested 8192 buffer size, bufferDuration should be
+			// about 185ms at 44.1 kHz or 170ms at 48 kHz output, covering
+			// 4-6 frames at 24-30fps.
+			//
+			// 2 or 3 buffers' worth will be in flight at any given time;
+			// be warned that durationBuffered includes that in-flight stuff.
+			//
+			// Set our bufferThreshold to a full 1s for plenty of extra headroom,
+			// and make sure we've queued up twice that when we're operating.
+			audioFeeder.bufferThreshold = 1;
+
 			audioFeeder.volume = self.volume;
 			audioFeeder.muted = self.muted;
 
@@ -906,7 +992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			// without any throttling.
 			audioFeeder.onbufferlow = function audioCallback() {
 				log('onbufferlow');
-				if (isProcessing()) {
+				if ((stream && stream.waiting) || pendingAudio) {
 					// We're waiting on input or other async processing;
 					// we'll get triggered later.
 				} else {
@@ -942,15 +1028,18 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (offset !== undefined) {
 				initialPlaybackOffset = offset;
 			}
+			// Clear the late flag if it was set.
+			prebufferingAudio = false;
+			stoppedForLateFrame = false;
 			log('continuing at ' + initialPlaybackPosition + ', ' + initialPlaybackOffset);
 		}
 
 		function stopPlayback() {
+			initialPlaybackOffset = getPlaybackTime();
+			log('pausing at ' + initialPlaybackOffset);
 			if (audioFeeder) {
 				audioFeeder.stop();
 			}
-			initialPlaybackOffset = getPlaybackTime();
-			log('pausing at ' + initialPlaybackOffset);
 		}
 
 		/**
@@ -959,46 +1048,52 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * @return {number} seconds since file start
 		 */
 		function getPlaybackTime(state) {
-			var position;
-			if (audioFeeder) {
-				state = state || audioFeeder.getPlaybackState();
-				position = state.playbackPosition;
+			if (prebufferingAudio || stoppedForLateFrame || paused) {
+				return initialPlaybackOffset;
 			} else {
-				position = getTimestamp() / 1000;
+				var position;
+				if (audioFeeder) {
+					state = state || audioFeeder.getPlaybackState();
+					position = state.playbackPosition;
+				} else {
+					// @fixme handle paused/stoped time better
+					position = getTimestamp() / 1000;
+				}
+				return (position - initialPlaybackPosition) + initialPlaybackOffset;
 			}
-			return (position - initialPlaybackPosition) + initialPlaybackOffset;
 		}
 
 		var currentSrc = '',
 			stream,
 			streamEnded = false,
+			dataEnded = false,
 			byteLength = 0,
 			duration = null,
 			lastSeenTimestamp = null,
 			nextProcessingTimer,
+			nextFrameTimer = null,
 			loading = false,
 			started = false,
 			paused = true,
 			ended = false,
-			startedPlaybackInDocument = false,
-			waitingOnInput = false;
+			startedPlaybackInDocument = false;
 
 		var framesPlayed = 0;
 		// Benchmark data, exposed via getPlaybackStats()
 		var framesProcessed = 0, // frames
 			targetPerFrameTime = 1000 / 60, // ms
+			actualPerFrameTime = 0, // ms
 			totalFrameTime = 0, // ms
 			totalFrameCount = 0, // frames
 			playTime = 0, // ms
-			demuxingTime = 0, // ms
-			videoDecodingTime = 0, // ms
-			audioDecodingTime = 0, // ms
 			bufferTime = 0, // ms
 			drawingTime = 0, // ms
+			proxyTime = 0, // ms
 			totalJitter = 0; // sum of ms we're off from expected frame delivery time
 		// Benchmark data that doesn't clear
 		var droppedAudio = 0, // number of times we were starved for audio
-			delayedAudio = 0; // seconds audio processing was delayed by blocked CPU
+			delayedAudio = 0, // seconds audio processing was delayed by blocked CPU
+			lateFrames = 0;   // number of times a frame was late and we had to halt audio
 		var poster = '', thumbnail;
 
 		// called when stopping old video on load()
@@ -1013,6 +1108,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			frameEndTimestamp = 0.0;
 			audioEndTimestamp = 0.0;
 			lastFrameDecodeTime = 0.0;
+			stoppedForLateFrame = false;
+			prebufferingAudio = false;
 
 			// Abort all queued actions
 			actionQueue.splice(0, actionQueue.length);
@@ -1023,13 +1120,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				stream.abort();
 				stream = null;
 				streamEnded = false;
-				waitingOnInput = false;
 			}
 			if (codec) {
 				codec.close();
 				codec = null;
 				pendingFrame = 0;
 				pendingAudio = 0;
+				dataEnded = false;
 			}
 			videoInfo = null;
 			audioInfo = null;
@@ -1041,12 +1138,16 @@ return /******/ (function(modules) { // webpackBootstrap
 				clearTimeout(nextProcessingTimer);
 				nextProcessingTimer = null;
 			}
+			if (nextFrameTimer) {
+				clearTimeout(nextFrameTimer);
+				nextFrameTimer = null;
+			}
 			if (frameSink) {
 				frameSink.clear();
 				frameSink = null;
 			}
-			if (yCbCrBuffer) {
-				yCbCrBuffer = null;
+			if (decodedFrames) {
+				decodedFrames.splice(0, decodedFrames.length);
 			}
 			// @todo set playback position, may need to fire timeupdate if wasnt previously 0
 			initialPlaybackPosition = 0;
@@ -1058,9 +1159,22 @@ return /******/ (function(modules) { // webpackBootstrap
 		var lastFrameTime = getTimestamp(),
 			frameEndTimestamp = 0.0,
 			audioEndTimestamp = 0.0,
-			yCbCrBuffer = null;
-		var lastFrameDecodeTime = 0.0;
-		var lastFrameTimestamp = 0.0;
+			decodedFrames = [];
+		var lastFrameDecodeTime = 0.0,
+			lastFrameVideoCpuTime = 0,
+			lastFrameAudioCpuTime = 0,
+			lastFrameDemuxerCpuTime = 0,
+			lastFrameDrawingTime = 0,
+			lastFrameBufferTime = 0,
+			lastFrameProxyTime = 0,
+			lastVideoCpuTime = 0,
+			lastAudioCpuTime = 0,
+			lastDemuxerCpuTime = 0,
+			lastBufferTime = 0,
+			lastProxyTime = 0,
+			lastDrawingTime = 0;
+		var lastFrameTimestamp = 0.0,
+			currentVideoCpuTime = 0.0;
 
 		var lastTimeUpdate = 0, // ms
 			timeUpdateInterval = 250; // ms
@@ -1076,21 +1190,58 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var newFrameTimestamp = getTimestamp(),
 				wallClockTime = newFrameTimestamp - lastFrameTimestamp,
-				jitter = Math.abs(wallClockTime - targetPerFrameTime);
-			totalJitter += jitter;
+				//jitter = wallClockTime - targetPerFrameTime;
+				jitter = actualPerFrameTime - targetPerFrameTime;
+			totalJitter += Math.abs(jitter);
 			playTime += wallClockTime;
 
-			fireEvent('framecallback', {
+			var timing = {
 				cpuTime: lastFrameDecodeTime,
-				clockTime: wallClockTime
-			});
+				drawingTime: drawingTime - lastFrameDrawingTime,
+				bufferTime: bufferTime - lastFrameBufferTime,
+				proxyTime: proxyTime - lastFrameProxyTime,
+				
+				demuxerTime: 0,
+				videoTime: 0,
+				audioTime: 0,
+				//clockTime: wallClockTime
+				clockTime: actualPerFrameTime,
 
+				late: stoppedForLateFrame
+			};
+			if (codec) {
+				timing.demuxerTime = (codec.demuxerCpuTime - lastFrameDemuxerCpuTime);
+				timing.videoTime += (currentVideoCpuTime - lastFrameVideoCpuTime);
+				timing.audioTime += (codec.audioCpuTime - lastFrameAudioCpuTime);
+			}
+			timing.cpuTime += timing.demuxerTime;
 			lastFrameDecodeTime = 0;
 			lastFrameTimestamp = newFrameTimestamp;
+			if (codec) {
+				lastFrameVideoCpuTime = currentVideoCpuTime;
+				lastFrameAudioCpuTime = codec.audioCpuTime;
+				lastFrameDemuxerCpuTime = codec.demuxerCpuTime;
+			} else {
+				lastFrameVideoCpuTime = 0;
+				lastFrameAudioCpuTime = 0;
+				lastFrameDemuxerCpuTime = 0;
+			}
+			lastFrameDrawingTime = drawingTime;
+			lastFrameBufferTime = bufferTime;
+			lastFrameProxyTime = proxyTime;
+
+			function n(x) {
+				return Math.round(x * 10) / 10;
+			}
+			log('drew frame ' + frameEndTimestamp + ': ' +
+				'clock time ' + n(wallClockTime) + ' (jitter ' + n(jitter) + ') ' +
+				'cpu: ' + n(timing.cpuTime) + ' (mux: ' + n(timing.demuxerTime) + ' buf: ' + n(timing.bufferTime) + ' draw: ' + n(timing.drawingTime) + ' proxy: ' + n(timing.proxyTime) + ') ' +
+				'vid: ' + n(timing.videoTime) + ' aud: ' + n(timing.audioTime));
+			fireEventAsync('framecallback', timing);
 
 			if (!lastTimeUpdate || (newFrameTimestamp - lastTimeUpdate) >= timeUpdateInterval) {
 				lastTimeUpdate = newFrameTimestamp;
-				fireEvent('timeupdate');
+				fireEventAsync('timeupdate');
 			}
 		}
 
@@ -1116,7 +1267,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						lastFrameSkipped = false;
 						codec.flush(function() {
 							stream.seek(position);
-							readBytesAndWait();
 						});
 						return true;
 					}
@@ -1126,69 +1276,94 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		function seek(toTime) {
+			log('requested seek to ' + toTime);
 			if (stream.bytesTotal === 0) {
 				throw new Error('Cannot bisect a non-seekable stream');
 			}
-			function prepForSeek() {
-				if (waitingOnInput) {
+			function prepForSeek(callback) {
+				if (stream) { //} && stream.waiting) {
 					stream.abort();
-					waitingOnInput = false;
-					// clear any queued input/seek-start
-					actionQueue.splice(0, actionQueue.length);
-				} else {
-					stopPlayback();
-					if (audioFeeder) {
-						audioFeeder.flush();
-					}
+				}
+				// clear any queued input/seek-start
+				actionQueue.splice(0, actionQueue.length);
+				stopPlayback();
+				prebufferingAudio = false;
+				stoppedForLateFrame = false;
+				if (audioFeeder) {
+					audioFeeder.flush();
 				}
 				state = State.SEEKING;
 				seekTargetTime = toTime;
+				if (codec) {
+					codec.flush(callback);
+				} else {
+					callback();
+				}
 			}
 
 			// Abort any previous seek or play suitably
-			prepForSeek();
+			prepForSeek(function() {
+				if (isProcessing()) {
+					// already waiting on input
+				} else {
+					// start up the new load *after* event loop churn
+					pingProcessing(0);
+				}
+			});
 
 			actionQueue.push(function() {
 				// Just in case another async task stopped us...
-				prepForSeek();
-				streamEnded = false;
-				ended = false;
-				state = State.SEEKING;
-				seekTargetTime = toTime;
-				seekTargetKeypoint = -1;
-				lastFrameSkipped = false;
-				lastSeekPosition = -1;
+				prepForSeek(function() {
+					streamEnded = false;
+					dataEnded = false;
+					ended = false;
+					state = State.SEEKING;
+					seekTargetTime = toTime;
+					seekTargetKeypoint = -1;
+					lastFrameSkipped = false;
+					lastSeekPosition = -1;
 
-				codec.flush(function() {
-					codec.getKeypointOffset(toTime, function(offset) {
-						if (offset > 0) {
-							// This file has an index!
-							//
-							// Start at the keypoint, then decode forward to the desired time.
-							//
+					decodedFrames.splice(0, decodedFrames.length);
+					pendingFrame = 0;
+					pendingAudio = 0;
+
+					codec.seekToKeypoint(toTime, function(seeking) {
+						if (seeking) {
 							seekState = SeekState.LINEAR_TO_TARGET;
-							stream.seek(offset);
-							readBytesAndWait();
-						} else {
-							// No index.
-							//
-							// Bisect through the file finding our target time, then we'll
-							// have to do it again to reach the keypoint, and *then* we'll
-							// have to decode forward back to the desired time.
-							//
-							seekState = SeekState.BISECT_TO_TARGET;
-							startBisection(seekTargetTime);
+							fireEventAsync('seeking');
+							if (isProcessing()) {
+								// wait for i/o
+							} else {
+								pingProcessing();
+							}
+							return;
 						}
+						// Use the old interface still implemented on ogg demuxer
+						codec.getKeypointOffset(toTime, function(offset) {
+							if (offset > 0) {
+								// This file has an index!
+								//
+								// Start at the keypoint, then decode forward to the desired time.
+								//
+								seekState = SeekState.LINEAR_TO_TARGET;
+								stream.seek(offset);
+								readBytesAndWait();
+							} else {
+								// No index.
+								//
+								// Bisect through the file finding our target time, then we'll
+								// have to do it again to reach the keypoint, and *then* we'll
+								// have to decode forward back to the desired time.
+								//
+								seekState = SeekState.BISECT_TO_TARGET;
+								startBisection(seekTargetTime);
+							}
 
-						fireEvent('seeking');
+							fireEvent('seeking');
+						});
 					});
 				});
 			});
-			if (isProcessing()) {
-				// already waiting on input
-			} else {
-				pingProcessing(0);
-			}
 		}
 
 		function continueSeekedPlayback() {
@@ -1204,14 +1379,14 @@ return /******/ (function(modules) { // webpackBootstrap
 			initialPlaybackOffset = seekTargetTime;
 
 			function finishedSeeking() {
+				lastTimeUpdate = seekTargetTime;
+				fireEventAsync('timeupdate');
+				fireEventAsync('seeked');
 				if (isProcessing()) {
 					// wait for whatever's going on to complete
 				} else {
-					pingProcessing(0);
+					pingProcessing();
 				}
-				lastTimeUpdate = seekTargetTime;
-				fireEvent('timeupdate');
-				fireEvent('seeked');
 			}
 
 			if (paused) {
@@ -1228,7 +1403,6 @@ return /******/ (function(modules) { // webpackBootstrap
 								thumbnail = null;
 							}
 							frameSink.drawFrame(codec.frameBuffer);
-							yCbCrBuffer = null;
 						}
 						finishedSeeking();
 					} );
@@ -1250,11 +1424,13 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 
 			if (codec.hasVideo) {
-				if (!codec.frameReady) {
+				if (pendingFrame) {
+					// wait
+				} else if (!codec.frameReady) {
 					// Haven't found a frame yet, process more data
 					pingProcessing();
 					return;
-				} else if (codec.frameTimestamp < 0 || codec.frameTimestamp + frameDuration < seekTargetTime) {
+				} else if (codec.frameTimestamp + frameDuration < seekTargetTime) {
 					// Haven't found a time yet, or haven't reached the target time.
 					// Decode it in case we're at our keyframe or a following intraframe...
 					codec.decodeFrame(function() {
@@ -1273,12 +1449,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			}
 			if (codec.hasAudio) {
-				if (!codec.audioReady) {
+				if (pendingAudio) {
+					// wait
+					return;
+				} if (!codec.audioReady) {
 					// Haven't found an audio packet yet, process more data
 					pingProcessing();
 					return;
-				}
-				if (codec.audioTimestamp < 0 || codec.audioTimestamp + frameDuration < seekTargetTime) {
+				} else if (codec.audioTimestamp + frameDuration < seekTargetTime) {
 					// Haven't found a time yet, or haven't reached the target time.
 					// Decode it so when we reach the target we've got consistent data.
 					codec.decodeAudio(function() {
@@ -1384,20 +1562,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		var depth = 0,
-			useImmediate = options.useImmediate && !!window.setImmediate,
-			useTailCalls = !useImmediate,
+			needProcessing = false,
 			pendingFrame = 0,
-			pendingAudio = 0;
-
-		function tailCall(func) {
-			if (useImmediate) {
-				setImmediate(func);
-			} else if (!useTailCalls) {
-				setTimeout(func, 0);
-			} else {
-				func();
-			}
-		}
+			pendingAudio = 0,
+			framePipelineDepth = 1,
+			audioPipelineDepth = 2;
 
 		function doProcessing() {
 			nextProcessingTimer = null;
@@ -1405,13 +1574,32 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (isProcessing()) {
 				// Called async while waiting for something else to complete...
 				// let it finish, then we'll get called again to continue.
-				return;
+				//return;
+				//throw new Error('REENTRANCY FAIL: doProcessing during processing');
 			}
 
-			if (depth > 0 && !useTailCalls) {
+			if (depth > 0) {
 				throw new Error('REENTRANCY FAIL: doProcessing recursing unexpectedly');
 			}
-			depth++;
+			var iters = 0;
+			do {
+				needProcessing = false;
+				depth++;
+				doProcessingLoop();
+				depth--;
+				
+				if (needProcessing && isProcessing()) {
+					throw new Error('REENTRANCY FAIL: waiting on input or codec but asked to keep processing');
+				}
+				if (++iters > 500) {
+					log('stuck in processing loop; breaking with timer');
+					needProcessing = 0;
+					pingProcessing(0);
+				}
+			} while (needProcessing);
+		}
+
+		function doProcessingLoop() {
 
 			if (actionQueue.length) {
 				// data or user i/o to process in our serialized event stream
@@ -1423,96 +1611,103 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			} else if (state == State.INITIAL) {
 
-				codec.process(function processInitial(more) {
-					if (codec.loadedMetadata) {
-						// we just fell over from headers into content; call onloadedmetadata etc
-						if (!codec.hasVideo && !codec.hasAudio) {
-							throw new Error('No audio or video found, something is wrong');
-						}
-						if (codec.hasAudio) {
-							audioInfo = codec.audioFormat;
-						}
-						if (codec.hasVideo) {
-							videoInfo = codec.videoFormat;
-							setupVideo();
-						}
-						if (!isNaN(codec.duration)) {
-							duration = codec.duration;
-						}
-						if (duration === null) {
-							if (stream.seekable) {
-								state = State.SEEKING_END;
-								lastSeenTimestamp = -1;
-								codec.flush(function() {
-									stream.seek(Math.max(0, stream.bytesTotal - 65536 * 2));
-									readBytesAndWait();
-								});
-							} else {
-								// Stream not seekable and no x-content-duration; assuming infinite stream.
-								state = State.LOADED;
-								pingProcessing();
-							}
+				if (codec.loadedMetadata) {
+					// we just fell over from headers into content; call onloadedmetadata etc
+					if (!codec.hasVideo && !codec.hasAudio) {
+						throw new Error('No audio or video found, something is wrong');
+					}
+					if (codec.hasAudio) {
+						audioInfo = codec.audioFormat;
+					}
+					if (codec.hasVideo) {
+						videoInfo = codec.videoFormat;
+						setupVideo();
+					}
+					if (!isNaN(codec.duration)) {
+						duration = codec.duration;
+					}
+					if (duration === null) {
+						if (stream.seekable) {
+							state = State.SEEKING_END;
+							lastSeenTimestamp = -1;
+							codec.flush(function() {
+								stream.seek(Math.max(0, stream.bytesTotal - 65536 * 2));
+								readBytesAndWait();
+							});
 						} else {
-							// We already know the duration.
+							// Stream not seekable and no x-content-duration; assuming infinite stream.
 							state = State.LOADED;
 							pingProcessing();
 						}
-					} else if (!more) {
-						// Read more data!
-						log('reading more cause we are out of data');
-						readBytesAndWait();
 					} else {
-						// Keep processing headers
+						// We already know the duration.
+						state = State.LOADED;
 						pingProcessing();
 					}
-				});
+				} else {
+					codec.process(function processInitial(more) {
+						if (more) {
+							// Keep processing headers
+							pingProcessing();
+						} else {
+							// Read more data!
+							log('reading more cause we are out of data');
+							readBytesAndWait();
+						}
+					});
+				}
 
 			} else if (state == State.SEEKING_END) {
 
 				// Look for the last item.
-				codec.process(function processSeekingEnd(more) {
-					if (codec.hasVideo && codec.frameReady) {
-						lastSeenTimestamp = Math.max(lastSeenTimestamp, codec.frameTimestamp);
-						codec.discardFrame(function() {
-							pingProcessing();
-						});
-					} else if (codec.hasAudio && codec.audioReady) {
-						lastSeenTimestamp = Math.max(lastSeenTimestamp, codec.audioTimestamp);
-						codec.decodeAudio(function() {
-							pingProcessing();
-						});
-					} else if (!more) {
-						// Read more data!
-						if (stream.bytesRead < stream.bytesTotal) {
-							readBytesAndWait();
-						} else {
-							// We are at the end!
-							log('seek-duration: we are at the end');
-							if (lastSeenTimestamp > 0) {
-								duration = lastSeenTimestamp;
-							}
-
-							// Ok, seek back to the beginning and resync the streams.
-							state = State.LOADED;
-							codec.flush(function() {
-								stream.seek(0);
-								streamEnded = false;
-								readBytesAndWait();
-							});
-						}
-					} else {
-						// Keep processing headers
+				if (codec.frameReady) {
+					log('saw frame with ' + codec.frameTimestamp);
+					lastSeenTimestamp = Math.max(lastSeenTimestamp, codec.frameTimestamp);
+					codec.discardFrame(function() {
 						pingProcessing();
-					}
-				});
+					});
+				} else if (codec.audioReady) {
+					log('saw audio with ' + codec.audioTimestamp);
+					lastSeenTimestamp = Math.max(lastSeenTimestamp, codec.audioTimestamp);
+					codec.discardAudio(function() {
+						pingProcessing();
+					});
+				} else {
+					codec.process(function processSeekingEnd(more) {
+						if (more) {
+							// Keep processing headers
+							pingProcessing();
+						} else {
+							// Read more data!
+							if (stream.bytesRead < stream.bytesTotal) {
+								readBytesAndWait();
+							} else {
+								// We are at the end!
+								log('seek-duration: we are at the end: ' + lastSeenTimestamp);
+								if (lastSeenTimestamp > 0) {
+									duration = lastSeenTimestamp;
+								}
+
+								// Ok, seek back to the beginning and resync the streams.
+								state = State.LOADED;
+								codec.flush(function() {
+									stream.seek(0);
+									streamEnded = false;
+									dataEnded = false;
+									readBytesAndWait();
+								});
+							}
+						}
+					});
+				}
 
 			} else if (state == State.LOADED) {
 
 				state = State.PRELOAD;
-				fireEvent('loadedmetadata');
-				fireEvent('durationchange');
+				fireEventAsync('loadedmetadata');
+				fireEventAsync('durationchange');
 				if (codec.hasVideo) {
-					fireEvent('resize');
+					fireEventAsync('resize');
 				}
 				pingProcessing(0);
 
@@ -1522,8 +1717,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				    (codec.audioReady || !codec.hasAudio)) {
 
 					state = State.READY;
-					fireEvent('loadeddata');
-					pingProcessing(0);
+					fireEventAsync('loadeddata');
+					pingProcessing();
 				} else {
 					codec.process(function doProcessPreload(more) {
 						if (more) {
@@ -1552,10 +1747,15 @@ return /******/ (function(modules) { // webpackBootstrap
 						state = State.PLAYING;
 						lastFrameTimestamp = getTimestamp();
 
-						startPlayback();
+						if (codec.hasAudio && audioFeeder) {
+							// Pre-queue audio before we start the clock
+							prebufferingAudio = true;
+						} else {
+							startPlayback();
+						}
 						pingProcessing(0);
-						fireEvent('play');
-						fireEvent('playing');
+						fireEventAsync('play');
+						fireEventAsync('playing');
 					}
 
 					if (codec.hasAudio && !audioFeeder && !muted) {
@@ -1568,114 +1768,94 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			} else if (state == State.SEEKING) {
 
-				codec.process(function processSeeking(more) {
-					if (!more) {
-						readBytesAndWait();
-					} else if (seekState == SeekState.NOT_SEEKING) {
-						throw new Error('seeking in invalid state (not seeking?)');
-					} else if (seekState == SeekState.BISECT_TO_TARGET) {
-						doProcessBisectionSeek();
-					} else if (seekState == SeekState.BISECT_TO_KEYPOINT) {
-						doProcessBisectionSeek();
-					} else if (seekState == SeekState.LINEAR_TO_TARGET) {
-						doProcessLinearSeeking();
-					}
-				});
+				if ((codec.hasVideo && codec.frameTimestamp < 0)
+				 || (codec.hasAudio && codec.audioTimestamp < 0)
+				) {
+					codec.process(function processSeeking(more) {
+						if (more) {
+							pingProcessing();
+						} else {
+							readBytesAndWait();
+						}
+					});
+				} else if (seekState == SeekState.NOT_SEEKING) {
+					throw new Error('seeking in invalid state (not seeking?)');
+				} else if (seekState == SeekState.BISECT_TO_TARGET) {
+					doProcessBisectionSeek();
+				} else if (seekState == SeekState.BISECT_TO_KEYPOINT) {
+					doProcessBisectionSeek();
+				} else if (seekState == SeekState.LINEAR_TO_TARGET) {
+					doProcessLinearSeeking();
+				} else {
+					throw new Error('Invalid seek state ' + seekState);
+				}
 
 			} else if (state == State.PLAYING) {
 
-				var demuxStartTime = getTimestamp();
-				codec.process(function doProcessPlay(more) {
-					var delta = getTimestamp() - demuxStartTime;
-					demuxingTime += delta;
-					lastFrameDecodeTime += delta;
+				function doProcessPlay() {
 
 					//console.log(more, codec.audioReady, codec.frameReady, codec.audioTimestamp, codec.frameTimestamp);
 
-					if (!more) {
-						if (!streamEnded) {
-							// Ran out of buffered input
-							readBytesAndWait();
-						} else if (pendingAudio || pendingFrame) {
-							// Still more to decode
-							// We'll be pinged when they come back
-						} else if (ended) {
-							log('Unexpectedly processing after ended');
-						} else {
-							// Ran out of stream!
-							log('Ran out of stream!');
-							var finalDelay = 0;
-							if (codec.hasAudio) {
-								finalDelay = audioFeeder.durationBuffered * 1000;
-							}
-							if (finalDelay > 0) {
-								log('ending pending ' + finalDelay + ' ms');
-								pingProcessing(Math.max(0, finalDelay));
-							} else {
-								log("ENDING NOW");
-								stopPlayback();
-								initialPlaybackOffset = Math.max(audioEndTimestamp, frameEndTimestamp);
-								ended = true;
-								// @todo implement loop behavior
-								paused = true;
-								fireEventAsync('pause');
-								fireEventAsync('ended');
-							}
-						}
-					} else if (paused) {
+					if (paused) {
 
 						// ok we're done for now!
+						log('paused during playback; stopping loop');
 
 					} else {
 
-						if (!((codec.audioReady || !codec.hasAudio) && (codec.frameReady || !codec.frameReady))) {
+						if ((!codec.hasAudio || codec.audioReady || pendingAudio || dataEnded) &&
+							(!codec.hasVideo || codec.frameReady || pendingFrame || decodedFrames.length || dataEnded)
+						) {
 
-							log('need more data');
-
-							// Have to process some more pages to find data.
-							pingProcessing();
-
-						} else {
-
-							var audioBufferedDuration = 0,
-								audioDecodingDuration = 0,
-								audioState = null,
+							var audioState = null,
 								playbackPosition = 0,
-								nextDelays = [],
 								readyForAudioDecode,
+								audioEnded = false,
 								readyForFrameDraw,
-								readyForFrameDecode;
+								frameDelay = 0,
+								readyForFrameDecode,
+								// timers never fire earlier than 4ms
+								timerMinimum = 4,
+								// ok to draw a couple ms early
+								fudgeDelta = timerMinimum;
+
 
 							if (codec.hasAudio && audioFeeder) {
 								// Drive on the audio clock!
+
 								audioState = audioFeeder.getPlaybackState();
 								playbackPosition = getPlaybackTime(audioState);
+								audioEnded = (dataEnded && audioFeeder.durationBuffered == 0);
 
-								audioBufferedDuration = (audioState.samplesQueued / audioFeeder.targetRate);
-								//audioBufferedDuration = audioEndTimestamp - playbackPosition; // @fixme?
+								if (prebufferingAudio && (audioFeeder.durationBuffered >= audioFeeder.bufferThreshold * 2 || dataEnded)) {
+									log('prebuffering audio done; buffered to ' + audioFeeder.durationBuffered);
+									startPlayback(playbackPosition);
+									prebufferingAudio = false;
+								}
 
-								//console.log('audio buffered', audioBufferedDuration, audioDecodingDuration);
-
+								if (audioState.dropped != droppedAudio) {
+									log('dropped ' + (audioState.dropped - droppedAudio));
+								}
+								if (audioState.delayed != delayedAudio) {
+									log('delayed ' + (audioState.delayed - delayedAudio));
+								}
 								droppedAudio = audioState.dropped;
 								delayedAudio = audioState.delayed;
-								//readyForAudioDecode = audioState.samplesQueued <= (audioFeeder.bufferSize * 2);
-								var bufferDuration = (audioFeeder.bufferSize / audioFeeder.targetRate) * 2;
-								readyForAudioDecode = codec.audioReady && (audioBufferedDuration <= bufferDuration);
+								
+								readyForAudioDecode = audioFeeder.durationBuffered <=
+									audioFeeder.bufferThreshold * 2;
 
-								// Check in when all audio runs out
-								if (pendingAudio) {
-									// We'll check in when done decoding
+								if (!readyForAudioDecode) {
+									// just to skip the remaining items in debug log
 								} else if (!codec.audioReady) {
 									// NEED MOAR BUFFERS
-									nextDelays.push(-1);
-								} else if (codec.hasVideo && (playbackPosition - frameEndTimestamp) > bufferDuration) {
-									// don't get too far ahead of the video if it's slow!
 									readyForAudioDecode = false;
-									// wait for audioFeeder to ping us
-								} else {
-									// Check in when the audio buffer runs low again...
-									// wait for audioFeeder to ping us
+								} else if (pendingAudio >= audioPipelineDepth) {
+									// We'll check in when done decoding
+									log('audio decode disabled: ' + pendingAudio + ' packets in flight');
+									readyForAudioDecode = false;
 								}
+
 							} else {
 								// No audio; drive on the general clock.
 								// @fixme account for dropped frame times...
@@ -1687,35 +1867,137 @@ return /******/ (function(modules) { // webpackBootstrap
 							}
 
 							if (codec.hasVideo) {
-								var fudgeDelta = 0.1,
-									frameDelay = (frameEndTimestamp - playbackPosition) * 1000;
-
-								frameDelay = Math.max(0, frameDelay);
+								frameDelay = (frameEndTimestamp - playbackPosition) * 1000;
+								actualPerFrameTime = targetPerFrameTime - frameDelay;
+								//frameDelay = Math.max(0, frameDelay);
 								frameDelay = Math.min(frameDelay, targetPerFrameTime);
 
-								readyForFrameDraw = !!yCbCrBuffer && !pendingFrame && (frameDelay <= fudgeDelta);
-								readyForFrameDecode = !yCbCrBuffer && !pendingFrame && codec.frameReady;
+								readyForFrameDraw = decodedFrames.length > 0;
+								readyForFrameDecode = (pendingFrame == 0) && (decodedFrames.length <= framePipelineDepth) && codec.frameReady;
 
-								// @todo use requestAnimationFrame instead of timers here
-								if (yCbCrBuffer) {
-									// Check in when the decoded frame is due
-									nextDelays.push(frameDelay);
-								} else if (pendingFrame) {
-									// We'll check in when done decoding
-								} else if (!codec.frameReady) {
-									// need more data!
-									nextDelays.push(-1);
+								var audioSyncThreshold = targetPerFrameTime;
+								if (prebufferingAudio) {
+									if (readyForFrameDecode) {
+										log('decoding a frame during prebuffering');
+									}
+									readyForFrameDraw = false;
+								} else if (readyForFrameDraw && dataEnded && audioEnded) {
+									// If audio timeline reached end, make sure the last frame draws
+									log('audio timeline ended? ready to draw frame');
+								} else if (-frameDelay >= audioSyncThreshold) {
+									// late frame!
+									if (!stoppedForLateFrame) {
+										log('late frame at ' + playbackPosition + ': ' + (-frameDelay) + ' expected ' + audioSyncThreshold);
+										lateFrames++;
+										stopPlayback();
+										stoppedForLateFrame = true;
+									}
+								} else if (readyForFrameDraw && stoppedForLateFrame && !readyForFrameDecode && !readyForAudioDecode && frameDelay > fudgeDelta) {
+									// catching up, ok if we were early
+									log('late frame recovery reached ' + frameDelay);
+									startPlayback(playbackPosition);
+									stoppedForLateFrame = false;
+									readyForFrameDraw = false; // go back through the loop again
+								} else if (readyForFrameDraw && stoppedForLateFrame) {
+									// draw asap
+								} else if (readyForFrameDraw && frameDelay <= fudgeDelta) {
+									// on time! draw
 								} else {
-									// Check in when the decoded frame is due
-									nextDelays.push(frameDelay);
+									// not yet
+									readyForFrameDraw = false;
 								}
 							}
 
-							log([playbackPosition, frameEndTimestamp, audioEndTimestamp, readyForFrameDraw, readyForFrameDecode, readyForAudioDecode].join(', '));
+							//log([playbackPosition, frameEndTimestamp, audioEndTimestamp, readyForFrameDraw, readyForFrameDecode, readyForAudioDecode].join(', '));
 
-							if (readyForFrameDraw) {
+							if (readyForFrameDecode) {
 
-								log('ready to draw frame');
+								log('play loop: ready to decode frame; thread depth: ' + pendingFrame + ', have buffered: ' + decodedFrames.length);
+
+								if (videoInfo.fps == 0 && (codec.frameTimestamp - frameEndTimestamp) > 0) {
+									// WebM doesn't encode a frame rate
+									targetPerFrameTime = (codec.frameTimestamp - frameEndTimestamp) * 1000;
+								}
+								totalFrameTime += targetPerFrameTime;
+								totalFrameCount++;
+								
+								var nextFrameEndTimestamp = codec.frameTimestamp;
+								pendingFrame++;
+								var frameDecodeTime = time(function() {
+									codec.decodeFrame(function processingDecodeFrame(ok) {
+										log('play loop callback: decoded frame');
+										pendingFrame--;
+										if (ok) {
+											// Save the buffer until it's time to draw
+											decodedFrames.push({
+												yCbCrBuffer: codec.frameBuffer,
+												videoCpuTime: codec.videoCpuTime,
+												frameEndTimestamp: nextFrameEndTimestamp
+											});
+										} else {
+											// Bad packet or something.
+											log('Bad video packet or something');
+										}
+										pingProcessing();
+									});
+								});
+								if (pendingFrame) {
+									proxyTime += frameDecodeTime;
+									// We can process something else while that's running
+									pingProcessing();
+								}
+
+							} else if (readyForAudioDecode) {
+
+								log('play loop: ready for audio; depth: ' + pendingAudio);
+
+								pendingAudio++;
+								var nextAudioEndTimestamp = codec.audioTimestamp;
+								var audioDecodeTime = time(function() {
+									codec.decodeAudio(function processingDecodeAudio(ok) {
+										pendingAudio--;
+										log('play loop callback: decoded audio');
+										audioEndTimestamp = nextAudioEndTimestamp;
+
+										if (ok) {
+											var buffer = codec.audioBuffer;
+											if (buffer) {
+												// Keep track of how much time we spend queueing audio as well
+												// This is slow when using the Flash shim on IE 10/11
+												bufferTime += time(function() {
+													if (audioFeeder) {
+														audioFeeder.bufferData(buffer);
+													}
+												});
+												if (!codec.hasVideo) {
+													framesProcessed++; // pretend!
+													doFrameComplete();
+												}
+											}
+										}
+										pingProcessing();
+									});
+								});
+								if (pendingAudio) {
+									proxyTime += audioDecodeTime;
+									// We can process something else while that's running
+									if (codec.audioReady) {
+										pingProcessing();
+									} else {
+										// Trigger a demux immediately if we need it;
+										// audio processing is our mostly-idle time
+										doProcessPlayDemux();
+									}
+								}
+
+							} else if (readyForFrameDraw) {
+
+								log('play loop: ready to draw frame');
+
+								if (nextFrameTimer) {
+									clearTimeout(nextFrameTimer);
+									nextFrameTimer = null;
+								}
 
 								// Ready to draw the decoded frame...
 								if (thumbnail) {
@@ -1723,10 +2005,16 @@ return /******/ (function(modules) { // webpackBootstrap
 									thumbnail = null;
 								}
 
-								drawingTime += time(function() {
-									frameSink.drawFrame(yCbCrBuffer);
-								});
-								yCbCrBuffer = null;
+								var frame = decodedFrames.shift();
+								frameEndTimestamp = frame.frameEndTimestamp;
+								currentVideoCpuTime = frame.videoCpuTime;
+
+								var dupe = frame.yCbCrBuffer.duplicate;
+								if (!dupe) {
+									drawingTime += time(function() {
+										frameSink.drawFrame(frame.yCbCrBuffer);
+									});
+								}
 
 								framesProcessed++;
 								framesPlayed++;
@@ -1735,117 +2023,110 @@ return /******/ (function(modules) { // webpackBootstrap
 
 								pingProcessing();
 
-							} else if (readyForFrameDecode) {
+							} else if (decodedFrames.length && !nextFrameTimer && !prebufferingAudio) {
 
-								log('ready to decode frame');
-
-								var videoStartTime = getTimestamp();
-								pendingFrame++;
-								if (videoInfo.fps == 0 && (codec.frameTimestamp - frameEndTimestamp) > 0) {
-									// WebM doesn't encode a frame rate
-									targetPerFrameTime = (codec.frameTimestamp - frameEndTimestamp) * 1000;
-								}
-								totalFrameTime += targetPerFrameTime;
-								totalFrameCount++;
-								frameEndTimestamp = codec.frameTimestamp;
-								var pendingFramePing = false;
-								codec.decodeFrame(function processingDecodeFrame(ok) {
-									pendingFrame--;
-									log('decoded frame');
-									var delta = getTimestamp() - videoStartTime;
-									videoDecodingTime += delta;
-									lastFrameDecodeTime += delta;
-									if (ok && codec.frameBuffer.duplicate) {
-										// Dupe frame! No need to draw anything.
-										doFrameComplete();
-									} else if (ok) {
-										// Save the buffer until it's time to draw
-										yCbCrBuffer = codec.frameBuffer;
-									} else {
-										// Bad packet or something.
-										log('Bad video packet or something');
-									}
-									if (!isProcessing()) {
-										pingProcessing();
-									}
-								});
-								if (!isProcessing()) {
+								if (frameDelay < timerMinimum) {
+									// Either we're very close or the frame rate is
+									// insanely high (infamous '1000fps bug')
+									// Timer will take 4ms anyway, so just check in now.
+									log('play loop: very short timer, so going back in');
 									pingProcessing();
+								} else {
+									var targetTimer = frameDelay - timerMinimum;
+									// @todo consider using requestAnimationFrame
+									log('play loop: setting a timer for drawing ' + targetTimer);
+									nextFrameTimer = setTimeout(function() {
+										nextFrameTimer = null;
+										pingProcessing();
+									}, targetTimer);
 								}
 
-							} else if (readyForAudioDecode) {
-
-								log('ready for audio');
-
-								var audioStartTime = getTimestamp();
-								pendingAudio++;
-								audioEndTimestamp = codec.audioTimestamp;
-								codec.decodeAudio(function processingDecodeAudio(ok) {
-									log('decoded audio');
-									var delta = getTimestamp() - audioStartTime;
-									audioDecodingTime += delta;
-									lastFrameDecodeTime += delta;
-
-									if (ok) {
-										var buffer = codec.audioBuffer;
-										if (buffer) {
-											// Keep track of how much time we spend queueing audio as well
-											// This is slow when using the Flash shim on IE 10/11
-											bufferTime += time(function() {
-												if (audioFeeder) {
-													audioFeeder.bufferData(buffer);
-												}
-											});
-											audioBufferedDuration += (buffer[0].length / audioInfo.rate) * 1000;
-											if (!codec.hasVideo) {
-												framesProcessed++; // pretend!
-												doFrameComplete();
-											}
-										}
-									}
-									pendingAudio--;
-									if (!isProcessing()) {
-										pingProcessing();
-									}
-								});
-								if (!isProcessing()) {
-									pingProcessing();
+							} else if (dataEnded && !(pendingAudio || pendingFrame || decodedFrames.length)) {
+								log('play loop: playback reached end of data ' + [pendingAudio, pendingFrame, decodedFrames.length]);
+								var finalDelay = 0;
+								if (codec.hasAudio && audioFeeder) {
+									finalDelay = audioFeeder.durationBuffered * 1000;
+								}
+								if (finalDelay > 0) {
+									log('play loop: ending pending ' + finalDelay + ' ms');
+									pingProcessing(Math.max(0, finalDelay));
+								} else {
+									log('play loop: ENDING NOW: playback time ' + getPlaybackTime() + '; frameEndTimestamp: ' + frameEndTimestamp);
+									stopPlayback();
+									stoppedForLateFrame = false;
+									prebufferingAudio = false;
+									initialPlaybackOffset = Math.max(audioEndTimestamp, frameEndTimestamp);
+									ended = true;
+									// @todo implement loop behavior
+									paused = true;
+									fireEventAsync('pause');
+									fireEventAsync('ended');
 								}
 
 							} else {
 
-								var nextDelay = Math.min.apply(Math, nextDelays);
-								if (nextDelays.length > 0) {
-									log('idle: ' + nextDelay + ' - ' + nextDelays.join(','));
-									pingProcessing(Math.max(0, nextDelay));
-								} else if (pendingFrame || pendingAudio || audioFeeder) {
-									log('waiting on pending events');
-								} else {
-									log('we may be lost');
-								}
+								log('play loop: waiting on async/timers');
+
 							}
+
+						} else {
+
+							log('play loop: demuxing');
+
+							doProcessPlayDemux();
 						}
 					}
-				});
+				}
+				
+				function doProcessPlayDemux() {
+					var wasFrameReady = codec.frameReady,
+						wasAudioReady = codec.audioReady;
+					codec.process(function doProcessPlayDemuxHandler(more) {
+						if ((codec.frameReady && !wasFrameReady) || (codec.audioReady && !wasAudioReady)) {
+							log('demuxer has packets');
+							pingProcessing();
+						} else if (more) {
+							// Have to process some more pages to find data.
+							log('demuxer processing to find more packets');
+							pingProcessing();
+						} else {
+							log('demuxer ran out of data');
+							if (!streamEnded) {
+								// Ran out of buffered input
+								log('demuxer loading more data');
+								readBytesAndWait();
+							} else {
+								// Ran out of stream!
+								log('demuxer reached end of data stream');
+								dataEnded = true;
+								pingProcessing();
+							}
+						}
+					});
+				}
+
+				doProcessPlay();
+
+			} else if (state == State.ERROR) {
+
+				// Nothing to do.
+				console.log("Reached error state. Sorry bout that.");
 
 			} else {
 
 				throw new Error('Unexpected OGVPlayer state ' + state);
 
 			}
-
-			depth--;
 		}
 
 		/**
-		 * Are we waiting on an async operation we can't interrupt?
+		 * Are we waiting on an async operation that will return later?
 		 */
 		function isProcessing() {
-			return waitingOnInput || (codec && codec.processing);
+			return (stream && stream.waiting) || (codec && codec.processing);
 		}
 
 		function readBytesAndWait() {
-			waitingOnInput = true;
 			stream.readBytes();
 		}
 
@@ -1853,23 +2134,36 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (delay === undefined) {
 				delay = -1;
 			}
+			/*
 			if (isProcessing()) {
 				// We'll get pinged again when whatever we were doing returns...
 				log('REENTRANCY FAIL: asked to pingProcessing() while already waiting');
 				return;
 			}
+			*/
+			if (stream && stream.waiting) {
+				// wait for this input pls
+				log('waiting on input');
+				return;
+			}
 			if (nextProcessingTimer) {
-				//log('canceling old processing timer');
+				log('canceling old processing timer');
 				clearTimeout(nextProcessingTimer);
 				nextProcessingTimer = null;
 			}
 			var fudge = -1 / 256;
 			if (delay > fudge) {
 				//log('pingProcessing delay: ' + delay);
-				nextProcessingTimer = setTimeout(doProcessing, delay);
-			} else {
+				nextProcessingTimer = setTimeout(function() {
+					// run through pingProcessing again to check
+					// in case some io started asynchronously in the meantime
+					pingProcessing();
+				}, delay);
+			} else if (depth) {
 				//log('pingProcessing tail call (' + delay + ')');
-				tailCall(doProcessing);
+				needProcessing = true;
+			} else {
+				doProcessing();
 			}
 		}
 
@@ -1882,15 +2176,33 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 
 			framesProcessed = 0;
-			demuxingTime = 0;
-			videoDecodingTime = 0;
-			audioDecodingTime = 0;
 			bufferTime = 0;
 			drawingTime = 0;
+			proxyTime = 0;
 			started = true;
 			ended = false;
 
 			codec = new codecClass(codecOptions);
+			lastVideoCpuTime = 0;
+			lastAudioCpuTime = 0;
+			lastDemuxerCpuTime = 0;
+			lastBufferTime = 0;
+			lastDrawingTime = 0;
+			lastProxyTime = 0;
+			lastFrameVideoCpuTime = 0;
+			lastFrameAudioCpuTime = 0;
+			lastFrameDemuxerCpuTime = 0;
+			lastFrameBufferTime = 0;
+			lastFrameProxyTime = 0;
+			lastFrameDrawingTime = 0;
+			currentVideoCpuTime = 0;
+			codec.onseek = function(offset) {
+				if (stream) {
+					console.log('SEEKING TO', offset);
+					stream.seek(offset);
+					//readBytesAndWait();
+				}
+			};
 			codec.init(function() {
 				readBytesAndWait();
 			});
@@ -1930,9 +2242,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				// @todo networkState == NETWORK_LOADING
 				stream = new StreamFile({
 					url: self.src,
-					bufferSize: 65536 * 4,
+					bufferSize: 32768, //65536 * 4,
 					onstart: function() {
-						waitingOnInput = false;
 						loading = false;
 
 						// @todo handle failure / unrecognized type
@@ -1950,8 +2261,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						loadCodec(startProcessingVideo);
 					},
 					onread: function(data) {
-						log('got input');
-						waitingOnInput = false;
+						log('got input ' + [data.byteLength]);
 
 						// Save chunk to pass into the codec's buffer
 						actionQueue.push(function doReceiveInput() {
@@ -1967,8 +2277,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						}
 					},
 					ondone: function() {
-						waitingOnInput = false;
-
 						// @todo record doneness in networkState
 						log('stream is at end!');
 						streamEnded = true;
@@ -1983,9 +2291,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					onerror: function(err) {
 						// @todo handle failure to initialize
 						console.log("reading error: " + err);
+						stopPlayback();
+						state = State.ERROR;
 					}
 				});
-				waitingOnInput = true;
 			});
 			pingProcessing(0);
 		};
@@ -2037,7 +2346,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				paused = false;
 
-				if (started && codec && codec.loadedMetadata) {
+				if (state == State.SEEKING) {
+
+					// Seeking? Just make sure we know to pick up after.
+
+				} else if (started && codec && codec.loadedMetadata) {
 
 					if (ended && stream && byteLength) {
 
@@ -2080,24 +2393,29 @@ return /******/ (function(modules) { // webpackBootstrap
 				targetPerFrameTime: targetPerFrameTime,
 				framesProcessed: framesProcessed,
 				playTime: playTime,
-				demuxingTime: demuxingTime,
-				videoDecodingTime: videoDecodingTime,
-				audioDecodingTime: audioDecodingTime,
-				bufferTime: bufferTime,
-				drawingTime: drawingTime,
+				demuxingTime: codec ? (codec.demuxerCpuTime - lastDemuxerCpuTime) : 0,
+				videoDecodingTime: codec ? (codec.videoCpuTime - lastVideoCpuTime) : 0,
+				audioDecodingTime: codec ? (codec.audioCpuTime - lastAudioCpuTime) : 0,
+				bufferTime: bufferTime - lastBufferTime,
+				drawingTime: drawingTime - lastDrawingTime,
+				proxyTime: proxyTime - lastProxyTime,
 				droppedAudio: droppedAudio,
 				delayedAudio: delayedAudio,
-				jitter: totalJitter / framesProcessed
+				jitter: totalJitter / framesProcessed,
+				lateFrames: lateFrames
 			};
 		};
 		self.resetPlaybackStats = function() {
 			framesProcessed = 0;
 			playTime = 0;
-			demuxingTime = 0;
-			videoDecodingTime = 0;
-			audioDecodingTime = 0;
-			bufferTime = 0;
-			drawingTime = 0;
+			if (codec) {
+				lastDemuxerCpuTime = codec.demuxerCpuTime;
+				lastVideoCpuTime = codec.videoCpuTime;
+				lastAudioCpuTime = codec.audioCpuTime;
+			}
+			lastBufferTime = bufferTime;
+			lastDrawingTime = drawingTime;
+			lastProxyTime = proxyTime;
 			totalJitter = 0;
 			totalFrameTime = 0;
 			totalFrameCount = 0;
@@ -2119,6 +2437,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				clearTimeout(nextProcessingTimer);
 				nextProcessingTimer = null;
 				stopPlayback();
+				prebufferingAudio = false;
+				stoppedForLateFrame = false;
 				paused = true;
 				fireEvent('pause');
 			}
@@ -2476,7 +2796,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		 */
 		Object.defineProperty(self, "error", {
 			get: function getError() {
-				return null;
+				if (state === State.ERROR) {
+					return "error occurred in media procesing";
+				} else {
+					return null;
+				}
 			}
 		});
 		/**
@@ -2515,7 +2839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		Object.defineProperty(self, "networkState", {
 			get: function getNetworkState() {
 				if (stream) {
-					if (waitingOnInput) {
+					if (stream.waiting) {
 						return OGVPlayer.NETWORK_LOADING;
 					} else {
 						return OGVPlayer.NETWORK_IDLE;
@@ -2755,11 +3079,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	OGVPlayer.styleManager = new StyleManager();
 
 	// IE 10/11 and Edge 12 don't support object-fit.
-	// Chrome 43 supports it but it doesn't work on <canvas>!
-	// Safari for iOS 8/9 supports it but positions our <canvas> incorrectly >:(
 	// Also just for fun, IE 10 doesn't support 'auto' sizing on canvas. o_O
-	//OGVPlayer.supportsObjectFit = (typeof document.createElement('div').style.objectFit === 'string');
-	OGVPlayer.supportsObjectFit = false;
+	OGVPlayer.supportsObjectFit = (typeof document.createElement('div').style.objectFit === 'string');
+	if (OGVPlayer.supportsObjectFit && navigator.userAgent.match(/iPhone|iPad|iPod Touch/)) {
+		// Safari for iOS 8/9 supports it but positions our <canvas> incorrectly when using WebGL >:(
+		OGVPlayer.supportsObjectFit = false;
+	}
 	if (OGVPlayer.supportsObjectFit) {
 		OGVPlayer.updatePositionOnResize = function() {
 			// no-op
@@ -2819,197 +3144,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = OGVPlayer;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9).setImmediate))
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(10).nextTick;
-	var apply = Function.prototype.apply;
-	var slice = Array.prototype.slice;
-	var immediateIds = {};
-	var nextImmediateId = 0;
-
-	// DOM APIs, for completeness
-
-	exports.setTimeout = function() {
-	  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-	};
-	exports.setInterval = function() {
-	  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-	};
-	exports.clearTimeout =
-	exports.clearInterval = function(timeout) { timeout.close(); };
-
-	function Timeout(id, clearFn) {
-	  this._id = id;
-	  this._clearFn = clearFn;
-	}
-	Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-	Timeout.prototype.close = function() {
-	  this._clearFn.call(window, this._id);
-	};
-
-	// Does not start the time, just sets up the members needed.
-	exports.enroll = function(item, msecs) {
-	  clearTimeout(item._idleTimeoutId);
-	  item._idleTimeout = msecs;
-	};
-
-	exports.unenroll = function(item) {
-	  clearTimeout(item._idleTimeoutId);
-	  item._idleTimeout = -1;
-	};
-
-	exports._unrefActive = exports.active = function(item) {
-	  clearTimeout(item._idleTimeoutId);
-
-	  var msecs = item._idleTimeout;
-	  if (msecs >= 0) {
-	    item._idleTimeoutId = setTimeout(function onTimeout() {
-	      if (item._onTimeout)
-	        item._onTimeout();
-	    }, msecs);
-	  }
-	};
-
-	// That's not how node.js implements it but the exposed api is the same.
-	exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
-	  var id = nextImmediateId++;
-	  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
-
-	  immediateIds[id] = true;
-
-	  nextTick(function onNextTick() {
-	    if (immediateIds[id]) {
-	      // fn.call() is faster so we optimize for the common use-case
-	      // @see http://jsperf.com/call-apply-segu
-	      if (args) {
-	        fn.apply(null, args);
-	      } else {
-	        fn.call(null);
-	      }
-	      // Prevent ids from leaking
-	      exports.clearImmediate(id);
-	    }
-	  });
-
-	  return id;
-	};
-
-	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
-	  delete immediateIds[id];
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9).setImmediate, __webpack_require__(9).clearImmediate))
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-
-	var process = module.exports = {};
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-
-	function cleanUpNextTick() {
-	    if (!draining || !currentQueue) {
-	        return;
-	    }
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = setTimeout(cleanUpNextTick);
-	    draining = true;
-
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    clearTimeout(timeout);
-	}
-
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
-	    }
-	};
-
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-
-	function noop() {}
-
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var YCBCR_VERTEX_SHADER = __webpack_require__(12);
-	var YCBCR_FRAGMENT_SHADER = __webpack_require__(13);
-	var YCBCR_STRIPE_FRAGMENT_SHADER = __webpack_require__(14);
+	var YCBCR_VERTEX_SHADER = __webpack_require__(10);
+	var YCBCR_FRAGMENT_SHADER = __webpack_require__(11);
+	var YCBCR_STRIPE_FRAGMENT_SHADER = __webpack_require__(12);
 
 	/**
 	 * Warning: canvas must not have been used for 2d drawing prior!
@@ -3310,7 +3452,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		canvas.width = 1;
 		canvas.height = 1;
 		var options = {
-			failIfMajorPerformanceCaveat: true
+			// Still dithering on whether to use this.
+			// Recommend avoiding it, as it's overly conservative
+			//failIfMajorPerformanceCaveat: true
 		};
 		try {
 			gl = canvas.getContext('webgl', options) || canvas.getContext('experimental-webgl', options);
@@ -3361,35 +3505,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = "attribute vec2 aPosition;\nattribute vec2 aLumaPosition;\nattribute vec2 aChromaPosition;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n    gl_Position = vec4(aPosition, 0, 1);\n    vLumaPosition = aLumaPosition;\n    vChromaPosition = aChromaPosition;\n}\n"
 
 
 /***/ },
-/* 13 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = "// inspired by https://github.com/mbebenita/Broadway/blob/master/Player/canvas.js\n\nprecision mediump float;\nuniform sampler2D uTextureY;\nuniform sampler2D uTextureCb;\nuniform sampler2D uTextureCr;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n   // Y, Cb, and Cr planes are uploaded as LUMINANCE textures.\n   float fY = texture2D(uTextureY, vLumaPosition).x;\n   float fCb = texture2D(uTextureCb, vChromaPosition).x;\n   float fCr = texture2D(uTextureCr, vChromaPosition).x;\n\n   // Premultipy the Y...\n   float fYmul = fY * 1.1643828125;\n\n   // And convert that to RGB!\n   gl_FragColor = vec4(\n     fYmul + 1.59602734375 * fCr - 0.87078515625,\n     fYmul - 0.39176171875 * fCb - 0.81296875 * fCr + 0.52959375,\n     fYmul + 2.017234375   * fCb - 1.081390625,\n     1\n   );\n}\n"
 
 
 /***/ },
-/* 14 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = "// inspired by https://github.com/mbebenita/Broadway/blob/master/Player/canvas.js\n// extra 'stripe' texture fiddling to work around IE 11's poor performance on gl.LUMINANCE and gl.ALPHA textures\n\nprecision mediump float;\nuniform sampler2D uStripeLuma;\nuniform sampler2D uStripeChroma;\nuniform sampler2D uTextureY;\nuniform sampler2D uTextureCb;\nuniform sampler2D uTextureCr;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n   // Y, Cb, and Cr planes are mapped into a pseudo-RGBA texture\n   // so we can upload them without expanding the bytes on IE 11\n   // which doesn\\'t allow LUMINANCE or ALPHA textures.\n   // The stripe textures mark which channel to keep for each pixel.\n   vec4 vStripeLuma = texture2D(uStripeLuma, vLumaPosition);\n   vec4 vStripeChroma = texture2D(uStripeChroma, vChromaPosition);\n\n   // Each texture extraction will contain the relevant value in one\n   // channel only.\n   vec4 vY = texture2D(uTextureY, vLumaPosition) * vStripeLuma;\n   vec4 vCb = texture2D(uTextureCb, vChromaPosition) * vStripeChroma;\n   vec4 vCr = texture2D(uTextureCr, vChromaPosition) * vStripeChroma;\n\n   // Now assemble that into a YUV vector, and premultipy the Y...\n   vec3 YUV = vec3(\n     (vY.x  + vY.y  + vY.z  + vY.w) * 1.1643828125,\n     (vCb.x + vCb.y + vCb.z + vCb.w),\n     (vCr.x + vCr.y + vCr.z + vCr.w)\n   );\n   // And convert that to RGB!\n   gl_FragColor = vec4(\n     YUV.x + 1.59602734375 * YUV.z - 0.87078515625,\n     YUV.x - 0.39176171875 * YUV.y - 0.81296875 * YUV.z + 0.52959375,\n     YUV.x + 2.017234375   * YUV.y - 1.081390625,\n     1\n   );\n}\n"
 
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * @param HTMLCanvasElement canvas
 	 * @constructor
 	 */
-	var YCbCr = __webpack_require__(16);
+	var YCbCr = __webpack_require__(14);
 
 	function FrameSink(canvas, videoInfo) {
 		var self = this,
@@ -3463,7 +3607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/**
@@ -3582,7 +3726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/**
@@ -3609,19 +3753,29 @@ return /******/ (function(modules) { // webpackBootstrap
 			ondone = options.ondone || function(){},
 			onerror = options.onerror || function(){},
 			bufferSize = options.bufferSize || 8192,
-			minBufferSize = options.minBufferSize || 65536,
 			seekPosition = options.seekPosition || 0,
 			bufferPosition = seekPosition,
 			chunkSize = options.chunkSize || 1024 * 1024, // read/buffer up to a megabyte at a time
 			waitingForInput = false,
 			doneBuffering = false,
 			bytesTotal = 0,
-			bytesRead = 0,
 			buffers = [],
 			cachever = 0,
 			responseHeaders = {};
 
-
+		// Wrapper for array buffers, to allow extending backing store
+		function BufferWrapper(buffer) {
+			this.byteLength = buffer.byteLength;
+			this.buffer = buffer;
+		}
+		BufferWrapper.prototype.getBuffer = function() {
+			return this.buffer;
+		};
+		BufferWrapper.prototype.split = function(position, callback) {
+			var a = new BufferWrapper(this.buffer.slice(0, position)),
+				b = new BufferWrapper(this.buffer.slice(position));
+			callback(a, b);
+		};
 
 		// -- internal private methods
 		var internal = {
@@ -3698,6 +3852,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var xhr = internal.xhr = new XMLHttpRequest();
 				xhr.open("GET", getUrl);
 
+				xhr.streamReaderStarted = false;
 				internal.setXHROptions(xhr);
 
 				var range = null;
@@ -3715,48 +3870,17 @@ return /******/ (function(modules) { // webpackBootstrap
 					xhr.setRequestHeader('Range', range);
 				}
 
-				bytesRead = 0;
-
-				xhr.onreadystatechange = function(event) {
-					if (xhr.readyState == 2) {
-						if (xhr.status == 206) {
-							var foundPosition = internal.getXHRRangeStart(xhr);
-							if (seekPosition != foundPosition) {
-								//
-								// Safari sometimes messes up and gives us the wrong chunk.
-								// Seems to be a general problem with Safari and cached XHR ranges.
-								//
-								// Interestingly, it allows you to request _later_ ranges successfully,
-								// but when requesting _earlier_ ranges it returns the latest one retrieved.
-								// So we only need to update the cache-buster when we rewind and actually
-								// get an incorrect range.
-								//
-								// https://bugs.webkit.org/show_bug.cgi?id=82672
-								//
-								console.log('Expected start at ' + seekPosition + ' but got ' + foundPosition +
-									'; working around Safari range caching bug: https://bugs.webkit.org/show_bug.cgi?id=82672');
-								cachever++;
-								internal.abortXHR(xhr);
-								internal.openXHR();
-								return;
-							}
-						}
-						if (!started) {
-							internal.setBytesTotal(xhr);
-							internal.processResponseHeaders(xhr);
-							started = true;
-							onstart();
-						}
-						//internal.onXHRHeadersReceived(xhr);
-						// @todo check that partial content was supported if relevant
-					} else if (xhr.readyState == 3) {
-						internal.onXHRLoading(xhr);
-					} else if (xhr.readyState == 4) {
-						// Complete.
-						internal.onXHRLoading(xhr);
-						internal.onXHRDone(xhr);
+				xhr.onprogress = function(event) {
+					if (xhr.readyState >= 2 && !xhr.streamReaderStarted) {
+						internal.onXHRStart(xhr, event);
+					} else if (xhr.readyState >= 3) {
+						internal.onXHRLoading(xhr, event);
 					}
 				};
+
+				xhr.onloadend = function(event) {
+					internal.onXHRDone(xhr, event);
+				}
 
 				xhr.send();
 			},
@@ -3789,33 +3913,88 @@ return /******/ (function(modules) { // webpackBootstrap
 				throw new Error('abstract function');
 			},
 
-			/*
-			onXHRHeadersReceived: function(xhr) {
+			onXHRStart: function(xhr, event) {
+				xhr.streamReaderStarted = true;
+				//console.log('status is ' + xhr.status + '; content range is ' + xhr.getResponseHeader('Content-Range') + ' (start at ' + seekPosition + ')');
+				if (xhr.status == 206) {
+					var foundPosition = internal.getXHRRangeStart(xhr);
+					if (seekPosition != foundPosition) {
+						//
+						// Safari sometimes messes up and gives us the wrong chunk.
+						// Seems to be a general problem with Safari and cached XHR ranges.
+						//
+						// Interestingly, it allows you to request _later_ ranges successfully,
+						// but when requesting _earlier_ ranges it returns the latest one retrieved.
+						// So we only need to update the cache-buster when we rewind and actually
+						// get an incorrect range.
+						//
+						// https://bugs.webkit.org/show_bug.cgi?id=82672
+						//
+						console.log('Expected start at ' + seekPosition + ' but got ' + foundPosition +
+							'; working around Safari range caching bug (' + cachever + '): https://bugs.webkit.org/show_bug.cgi?id=82672');
+						cachever++;
+						internal.abortXHR(xhr);
+						internal.openXHR();
+						return;
+					}
+				}
+				if (seekPosition && xhr.status != 206) {
+					var code = xhr.status;
+					internal.abortXHR(xhr);
+					onerror('HTTP seek failed; unexpected status code ' + code);
+					return;
+				}
 				if (xhr.status >= 400) {
-					// errrorrrrrrr
-					console.log("HTTP " + xhr.status + ": " +xhr.statusText);
-					onerror();
-					xhr.abort();
-				} else {
+					onerror('HTTP error; status code ' + xhr.status);
+					return;
+				}
+				if (!started) {
 					internal.setBytesTotal(xhr);
 					internal.processResponseHeaders(xhr);
 					started = true;
 					onstart();
 				}
+				if (xhr.readyState >= 3) {
+					internal.onXHRLoading(xhr, event);
+				}
+				//internal.onXHRHeadersReceived(xhr);
+				// @todo check that partial content was supported if relevant
 			},
-			*/
 
-			onXHRLoading: function(xhr) {
+			onXHRLoading: function(xhr, event) {
 				throw new Error('abstract function');
 			},
 
-			onXHRDone: function(xhr) {
+			onXHRDone: function(xhr, event) {
 				doneBuffering = true;
+				if (waitingForInput && !internal.dataToRead()) {
+					if (internal.advance()) {
+						return;
+					}
+				}
+				internal.onXHRLoading(xhr, event);
 			},
 
 			abortXHR: function(xhr) {
-				xhr.onreadystatechange = null;
+				// These events do get called after abort.
+				// Let's not and say we did?
+				xhr.onprogress = null;
+				xhr.onloadend = null;
 				xhr.abort();
+			},
+
+			advance: function() {
+				if (doneBuffering &&
+					self.bytesBuffered - self.bytesRead < chunkSize &&
+					seekPosition + chunkSize < self.bytesTotal
+				) {
+					seekPosition += chunkSize;
+					internal.clearReadState();
+					internal.openXHR();
+					return true;
+				} else {
+					return false;
+				}
 			},
 
 			bufferData: function(buffer) {
@@ -3850,8 +4029,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					byteLength += bufferIn.byteLength;
 				}
 
-				while (byteLength < minBufferSize) {
-					var needBytes = minBufferSize - byteLength,
+				var min = bufferSize;
+				while (byteLength < min) {
+					var needBytes = min - byteLength,
 						nextBuffer = buffers.shift();
 					if (!nextBuffer) {
 						break;
@@ -3859,26 +4039,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					if (needBytes >= nextBuffer.byteLength) {
 						// if it fits, it sits
-						stuff(nextBuffer);
+						stuff(nextBuffer.getBuffer());
 					} else {
 						// Split the buffer and requeue the rest
-						var croppedBuffer = nextBuffer.slice(0, needBytes),
-							remainderBuffer = nextBuffer.slice(needBytes);
-						buffers.unshift(remainderBuffer);
-						stuff(croppedBuffer);
+						nextBuffer.split(needBytes, function(croppedBuffer, remainderBuffer) {
+							buffers.unshift(remainderBuffer);
+							stuff(croppedBuffer.getBuffer());
+						});
 						break;
 					}
 				}
 
-				bytesRead += byteLength;
 				bufferPosition += byteLength;
 				return bufferOut.slice(0, byteLength);
 			},
 
 			clearReadState: function() {
-				bytesRead = 0;
 				doneBuffering = false;
-				waitingForInput = true;
 			},
 
 			clearBuffers: function() {
@@ -3892,9 +4069,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (waitingForInput) {
 					waitingForInput = false;
 					onread(internal.popBuffer());
-					if (doneBuffering && !internal.dataToRead()) {
-						internal.onReadDone();
-					}
 				}
 			},
 
@@ -3911,17 +4085,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		// -- Public methods
 		self.readBytes = function() {
+			if (waitingForInput) {
+				throw new Error('StreamFile re-entrancy fail; readBytes called while waiting for data');
+			}
 			if (internal.dataToRead()) {
 				var buffer = internal.popBuffer();
+				internal.advance();
 				onread(buffer);
-				if (doneBuffering && self.bytesBuffered < Math.min(bufferPosition + chunkSize, self.bytesTotal)) {
-					seekPosition += chunkSize;
-					internal.clearReadState();
-					internal.openXHR();
-				}
 			} else if (doneBuffering) {
 				// We're out of data!
-				internal.onReadDone();
+				if (!internal.advance()) {
+					internal.onReadDone();
+				}
 			} else {
 				// Nothing queued...
 				waitingForInput = true;
@@ -3932,8 +4107,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (internal.xhr) {
 				internal.abortXHR(internal.xhr);
 				internal.xhr = null;
-				internal.clearBuffers();
 			}
+			internal.clearBuffers();
+			waitingForInput = false;
 		};
 
 		self.seek = function(bytePosition) {
@@ -3972,13 +4148,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		Object.defineProperty(self, 'bytesRead', {
 			get: function() {
-				return seekPosition + bytesRead;
+				return bufferPosition;
 			}
 		});
 
 		Object.defineProperty(self, 'seekable', {
 			get: function() {
 				return (self.bytesTotal > 0);
+			}
+		});
+
+		Object.defineProperty(self, 'waiting', {
+			get: function() {
+				return waitingForInput;
 			}
 		});
 
@@ -3992,24 +4174,20 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (internal.tryMethod('moz-chunked-arraybuffer')) {
 			internal.setXHROptions = function(xhr) {
 				xhr.responseType = 'moz-chunked-arraybuffer';
-
-				xhr.onprogress = function() {
-					// xhr.response is a per-chunk ArrayBuffer
-					internal.bufferData(xhr.response);
-				};
 			};
 
-			internal.abortXHR = function(xhr) {
-				xhr.onprogress = null;
-				orig.abortXHR(xhr);
-			};
-
-			internal.onXHRLoading = function(xhr) {
+			internal.onXHRLoading = function(xhr, event) {
 				// we have to get from the 'progress' event
+				// xhr.response is a per-chunk ArrayBuffer
+				if (xhr.response) {
+					internal.bufferData(new BufferWrapper(xhr.response));
+				}
 			};
 
-		} else if (internal.tryMethod('ms-stream')) {
+		} else if (options.useMSStream && internal.tryMethod('ms-stream')) {
 			// IE 10 supports returning a Stream from XHR.
+			// This seems unreliable in practice as the connections tend to die
+			// unexpectedly; recommend using the chunking even if it's primitive.
 
 			// Don't bother reading in chunks, MSStream handles it for us
 			chunkSize = 0;
@@ -4019,6 +4197,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			internal.setXHROptions = function(xhr) {
 				xhr.responseType = 'ms-stream';
+				// onprogress doesn't get fired with ms-stream?
+				xhr.onreadystatechange = function(event) {
+					if (xhr.readyState >= 2 && !xhr.streamReaderStarted) {
+						internal.onXHRStart(xhr, event);
+					} else if (xhr.readyState >= 3) {
+						internal.onXHRLoading(xhr, event);
+					}
+				}
 			};
 
 			internal.abortXHR = function(xhr) {
@@ -4034,9 +4220,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				orig.abortXHR(xhr);
 			};
 
-			internal.onXHRLoading = function(xhr) {
+			internal.onXHRLoading = function(xhr, event) {
 				// Transfer us over to the StreamReader...
 				stream = xhr.response;
+				xhr.onprogress = null;
+				xhr.onloadend = null;
 				xhr.onreadystatechange = null;
 				if (waitingForInput) {
 					waitingForInput = false;
@@ -4051,13 +4239,19 @@ return /******/ (function(modules) { // webpackBootstrap
 			};
 
 			self.readBytes = function() {
+				if (waitingForInput) {
+					throw new Error('StreamFile re-entrancy fail; readBytes called while waiting for data');
+				}
 				if (stream) {
-					streamReader = new MSStreamReader();
-					streamReader.onload = function(event) {
+					// Save the current position in case the stream died
+					// and we have to restart it...
+					var currentPosition = self.bytesRead;
+
+					var reader = streamReader = new MSStreamReader();
+					reader.onload = function(event) {
 						var buffer = event.target.result,
 							len = buffer.byteLength;
 						if (len > 0) {
-							bytesRead += len;
 							bufferPosition += len;
 							onread(buffer);
 						} else {
@@ -4065,8 +4259,10 @@ return /******/ (function(modules) { // webpackBootstrap
 							ondone();
 						}
 					};
-					streamReader.onerror = function(event) {
-						onerror('mystery error streaming');
+					reader.onerror = function(event) {
+						console.log('MSStreamReader error: ' + reader.error + '; trying to recover');
+						self.seek(currentPosition);
+						self.readBytes();
 					};
 					streamReader.readAsArrayBuffer(stream, bufferSize);
 				} else {
@@ -4082,9 +4278,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			internal.setXHROptions = function(xhr) {
 				xhr.responseType = "text";
 				xhr.overrideMimeType('text/plain; charset=x-user-defined');
+				xhr.streamReaderLastPosition = 0;
 			};
-
-			var lastPosition = 0;
 
 			// Is there a better way to do this conversion? :(
 			var stringToArrayBuffer = function(chunk) {
@@ -4097,18 +4292,36 @@ return /******/ (function(modules) { // webpackBootstrap
 				return buffer;
 			};
 
-			internal.clearReadState = function() {
-				orig.clearReadState();
-				lastPosition = 0;
+			// Wrapper for buffers, to let us lazy-extract the binary data
+			function StringBufferWrapper(xhr, start, end) {
+				this.start = start;
+				this.end = end;
+				this.byteLength = end - start;
+				this.xhr = xhr;
+			}
+			StringBufferWrapper.prototype.getBuffer = function() {
+				var str = this.xhr.responseText,
+					chunk = str.slice(this.start, this.end),
+					buffer = stringToArrayBuffer(chunk);
+				return buffer;
+			};
+			StringBufferWrapper.prototype.split = function(position, callback) {
+				var a = new StringBufferWrapper(this.xhr, this.start, this.start + position),
+					b = new StringBufferWrapper(this.xhr, this.start + position, this.end)
+				callback(a, b);
 			};
 
-			internal.onXHRLoading = function(xhr) {
-				// xhr.responseText is a binary string of entire file so far
-				var str = xhr.responseText;
-				if (lastPosition < str.length) {
-					var chunk = str.slice(lastPosition),
-						buffer = stringToArrayBuffer(chunk);
-					lastPosition = str.length;
+			internal.onXHRLoading = function(xhr, event) {
+				var position;
+				if (typeof event.loaded === 'number') {
+					position = event.loaded;
+				} else {
+					// xhr.responseText is a binary string of entire file so far
+					position = xhr.responseText.length;
+				}
+				if (xhr.streamReaderLastPosition < position) {
+					var buffer = new StringBufferWrapper(xhr, xhr.streamReaderLastPosition, position);
+					xhr.streamReaderLastPosition = position;
 					internal.bufferData(buffer);
 				}
 			};
@@ -4141,7 +4354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 18 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -4891,6 +5104,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		    this._context = context;
 
+
+		    /*
+		     * Optional audio node can be provided to connect the feeder to
+		     * @type {AudioNode}
+		     */
+		    this.output = options.output || context.destination
+
 		    /**
 		     * Actual sample rate supported for output, in Hz
 		     * @type {number}
@@ -5133,7 +5353,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		   */
 		  WebAudioBackend.prototype.start = function() {
 		    this._node.onaudioprocess = this._audioProcess.bind(this);
-		    this._node.connect(this._context.destination);
+		    this._node.connect(this.output);
 		    this._playbackTimeAtBufferTail = this._context.currentTime;
 		  };
 
@@ -5147,9 +5367,18 @@ return /******/ (function(modules) { // webpackBootstrap
 		      if (timeRemaining > 0) {
 		        // We have some leftover samples that got queued but didn't get played.
 		        // Unshift them back onto the beginning of the buffer.
-		        this._bufferQueue.prependBuffer(
-		          this._bufferQueue.trimBuffer(this._liveBuffer,
-		            Math.round(timeRemaining * this.targetRate)));
+		        // @todo make this not a horrible hack
+		        var samplesRemaining = Math.round(timeRemaining * this.rate),
+		            samplesAvailable = this._liveBuffer ? this._liveBuffer[0].length : 0;
+		        if (samplesRemaining > samplesAvailable) {
+		          //console.log('liveBuffer size ' + samplesRemaining + ' vs ' + samplesAvailable);
+		          this._bufferQueue.prependBuffer(this._liveBuffer);
+		          this._bufferQueue.prependBuffer(
+		            this._bufferQueue.createBuffer(samplesRemaining - samplesAvailable));
+		        } else {
+		          this._bufferQueue.prependBuffer(
+		            this._bufferQueue.trimBuffer(this._liveBuffer, samplesAvailable - samplesRemaining, samplesRemaining));
+		        }
 		        this._playbackTimeAtBufferTail -= timeRemaining;
 		      }
 		      this._node.onaudioprocess = null;
@@ -5341,11 +5570,15 @@ return /******/ (function(modules) { // webpackBootstrap
 		            callback.apply(this);
 		        }
 		    };
+		    this.onlog = function(msg) {
+		        console.log('AudioFeeder FlashBackend: ' + msg);
+		    }
 
 		    this.bufferThreshold = this.bufferSize * 2;
 
 		    var events = {
 		        'ready': 'sync',
+		        'log': 'sync',
 		        'starved': 'sync',
 		        'bufferlow': 'async'
 		    };
@@ -5358,7 +5591,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		            if (method === 'async') {
 		                nextTick(callback.bind(this));
 		            } else {
-		                callback.apply(this);
+		                callback.apply(this, Array.prototype.slice.call(arguments, 1));
 		                this._flushFlashBuffer();
 		            }
 		        }
@@ -5461,6 +5694,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		 	});
 
 		  /**
+		   * Are we paused/idle?
+		   * @type {boolean}
+		   * @access private
+		   */
+		  FlashBackend.prototype._paused = true;
+
+		  /**
 		   * Pass the currently configured muted+volume state down to the Flash plugin
 		   * @access private
 		   */
@@ -5527,6 +5767,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		    var chunk = this._flashBuffer,
 		      flashElement = this._flashaudio.flashElement;
 
+		    if (this._cachedFlashState) {
+		        this._cachedFlashState.samplesQueued += chunk.length / 8;
+		    }
 		    this._flashBuffer = '';
 		    this._flushTimeout = null;
 
@@ -5567,13 +5810,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		  FlashBackend.prototype.getPlaybackState = function() {
 		    if (this._flashaudio && this._flashaudio.flashElement && this._flashaudio.flashElement.write) {
 		      var now = Date.now(),
-		        delta = now - this._cachedFlashTime,
+		        delta = this._paused ? 0 : (now - this._cachedFlashTime),
 		        state;
 		      if (this._cachedFlashState && delta < this._cachedFlashInterval) {
 		        var cachedFlashState = this._cachedFlashState;
 		        state = {
 		          playbackPosition: cachedFlashState.playbackPosition + delta / 1000,
-		          samplesQueued: cachedFlashState.samplesQueued - Math.max(0, Math.round(delta * this.rate / 1000)),
+		          samplesQueued: cachedFlashState.samplesQueued -
+		            Math.max(0, Math.round(delta * this.rate / 1000)),
 		          dropped: cachedFlashState.dropped,
 		          delayed: cachedFlashState.delayed
 		        };
@@ -5582,7 +5826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		        this._cachedFlashState = state;
 		        this._cachedFlashTime = now;
 		      }
-		      state.samplesQueued += this._flashBuffer.length / 2;
+		      state.samplesQueued += this._flashBuffer.length / 8;
 		      return state;
 		    } else {
 		      //console.log('getPlaybackState USED TOO EARLY');
@@ -5617,6 +5861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		   */
 		  FlashBackend.prototype.start = function() {
 		    this._flashaudio.flashElement.start();
+		    this._paused = false;
 		    this._cachedFlashState = null;
 		  };
 
@@ -5626,6 +5871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		   */
 		  FlashBackend.prototype.stop = function() {
 		    this._flashaudio.flashElement.stop();
+		    this._paused = true;
 		    this._cachedFlashState = null;
 		  };
 
@@ -5794,7 +6040,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* 5 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		module.exports = __webpack_require__.p + "dynamicaudio.swf?version=6e7e05c14196b3ea0651bcc21c5938a7";
+		module.exports = __webpack_require__.p + "dynamicaudio.swf?version=e187c46551bc31edb18fea80fdc3e941";
 
 	/***/ }
 	/******/ ])
@@ -5802,13 +6048,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	;
 
 /***/ },
-/* 19 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=6e7e05c14196b3ea0651bcc21c5938a7";
+	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=e187c46551bc31edb18fea80fdc3e941";
 
 /***/ },
-/* 20 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -5857,7 +6103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 21 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -5874,13 +6120,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.1.1-20160518171756-f2fe5bd")),
+			suffix = '?version=' + encodeURIComponent(("1.1.3-20160627181101-5f064cc")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,
 			demuxer = null,
 			videoDecoder = null,
-			audioDecoder = null;
+			audioDecoder = null,
+			flushIter = 0;
+
+		// Wrapper for callbacks to drop them after a flush
+		function flushSafe(func) {
+			var savedFlushIter = flushIter;
+			return function(arg) {
+				if (flushIter <= savedFlushIter) {
+					func(arg);
+				}
+			};
+		}
 
 		var loadedMetadata = false;
 		Object.defineProperty(self, 'loadedMetadata', {
@@ -5891,9 +6148,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		Object.defineProperty(self, 'processing', {
 			get: function() {
-				return processing
+				return processing/*
 					|| (videoDecoder && videoDecoder.processing)
-					|| (audioDecoder && audioDecoder.processing);
+					|| (audioDecoder && audioDecoder.processing)*/;
 			}
 		});
 
@@ -6006,6 +6263,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			processing = true;
 			OGVLoader.loadClass(demuxerClassName, function(demuxerClass) {
 				demuxer = new demuxerClass();
+				demuxer.onseek = function(offset) {
+					if (self.onseek) {
+						self.onseek(offset);
+					}
+				};
 				demuxer.init(function() {
 					processing = false;
 					callback();
@@ -6028,10 +6290,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		};
 
-		var inputQueue = [];
 		self.receiveInput = function(data, callback) {
-			inputQueue.push(data);
-			callback();
+			demuxer.receiveInput(data, callback);
 		};
 
 		var audioClassMap = {
@@ -6075,6 +6335,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					if (demuxer.videoFormat) {
 						videoOptions.videoFormat = demuxer.videoFormat;
 					}
+					if (options.memoryLimit) {
+						videoOptions.memoryLimit = options.memoryLimit;
+					}
 					videoDecoder = new videoCodecClass(videoOptions);
 					videoDecoder.init(function() {
 						loadedVideoMetadata = videoDecoder.loadedMetadata;
@@ -6099,25 +6362,27 @@ return /******/ (function(modules) { // webpackBootstrap
 				throw new Error('reentrancy fail on OGVWrapperCodec.process');
 			}
 			processing = true;
+
+			var videoPacketCount = demuxer.videoPackets.length,
+				audioPacketCount = demuxer.audioPackets.length,
+				start = (window.performance ? performance.now() : Date.now());
 			function finish(result) {
 				processing = false;
+				var delta = (window.performance ? performance.now() : Date.now()) - start;
+				if (delta > 8) {
+					console.log('slow demux in ' + delta + ' ms; ' +
+						(demuxer.videoPackets.length - videoPacketCount) + ' +video packets, ' +
+						(demuxer.audioPackets.length - audioPacketCount) + ' +audio packets');
+				}
+				//console.log('demux returned ' + (result ? 'true' : 'false') + '; ' + demuxer.videoPackets.length + '; ' + demuxer.audioPackets.length);
 				callback(result);
 			}
 
 			function doProcessData() {
-				if (inputQueue.length) {
-					var data = inputQueue.shift();
-					demuxer.process(data, function(more) {
-						if (!more && inputQueue.length) {
-							// we've got more to process already
-							more = true;
-						}
-						finish(more);
-					});
-				} else {
-					// out of data! ask for more
-					finish(false);
-				}
+				videoPacketCount = demuxer.videoPackets.length,
+				audioPacketCount = demuxer.audioPackets.length,
+				start = (window.performance ? performance.now() : Date.now());
+				demuxer.process(finish);
 			}
 
 			if (demuxer.loadedMetadata && !loadedDemuxerMetadata) {
@@ -6200,16 +6465,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		self.decodeFrame = function(callback) {
-			var timestamp = self.frameTimestamp,
+			var cb = flushSafe(callback),
+				timestamp = self.frameTimestamp,
 				keyframeTimestamp = self.keyframeTimestamp;
 			demuxer.dequeueVideoPacket(function(packet) {
 				function finish(ok) {
 					// hack
-					if (self.frameBuffer) {
-						self.frameBuffer.timestamp = timestamp;
-						self.frameBuffer.keyframeTimestamp = keyframeTimestamp;
+					if (videoDecoder.frameBuffer) {
+						videoDecoder.frameBuffer.timestamp = timestamp;
+						videoDecoder.frameBuffer.keyframeTimestamp = keyframeTimestamp;
 					}
-					callback(ok);
+					cb(ok);
 				}
 				if (packet.byteLength === 0) {
 					//
@@ -6221,8 +6487,16 @@ return /******/ (function(modules) { // webpackBootstrap
 					//
 					// Skip the worker and just return a dupe frame immediately.
 					//
-					if (self.frameBuffer) {
-						self.frameBuffer.duplicate = true;
+					var lastFrame = videoDecoder.frameBuffer;
+					if (lastFrame) {
+						var nextFrame = {};
+						for (var key in lastFrame) {
+							if (lastFrame.hasOwnProperty(key)) {
+								nextFrame[key] = lastFrame[key];
+							}
+						}
+						nextFrame.duplicate = true;
+						videoDecoder.frameBuffer = nextFrame;
 						finish(true);
 					} else {
 						finish(false);
@@ -6234,10 +6508,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		self.decodeAudio = function(callback) {
+			var cb = flushSafe(callback);
 			demuxer.dequeueAudioPacket(function(packet) {
-				audioDecoder.processAudio(packet, function(ok) {
-					callback(ok);
-				});
+				audioDecoder.processAudio(packet, cb);
 			});
 		}
 
@@ -6254,13 +6527,47 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		self.flush = function(callback) {
-			inputQueue.splice(0, inputQueue.length);
+			flushIter++;
 			demuxer.flush(callback);
 		};
 
 		self.getKeypointOffset = function(timeSeconds, callback) {
 			demuxer.getKeypointOffset(timeSeconds, callback);
 		};
+
+		self.seekToKeypoint = function(timeSeconds, callback) {
+			demuxer.seekToKeypoint(timeSeconds, flushSafe(callback));
+		}
+
+		self.onseek = null;
+
+		Object.defineProperty(self, "demuxerCpuTime", {
+			get: function() {
+				if (demuxer) {
+					return demuxer.cpuTime;
+				} else {
+					return 0;
+				}
+			}
+		});
+		Object.defineProperty(self, "audioCpuTime", {
+			get: function() {
+				if (audioDecoder) {
+					return audioDecoder.cpuTime;
+				} else {
+					return 0;
+				}
+			}
+		});
+		Object.defineProperty(self, "videoCpuTime", {
+			get: function() {
+				if (videoDecoder) {
+					return videoDecoder.cpuTime;
+				} else {
+					return 0;
+				}
+			}
+		});
 
 		return self;
 	});

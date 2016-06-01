@@ -55,7 +55,8 @@
 	var proxy = new OGVWorkerSupport([
 		'loadedMetadata',
 		'videoFormat',
-		'frameBuffer'
+		'frameBuffer',
+		'cpuTime'
 	], {
 		init: function(args, callback) {
 			this.target.init(callback);
@@ -245,7 +246,7 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.1.1-20160518171756-f2fe5bd");
+	var OGVVersion = ("1.1.3-20160627181101-5f064cc");
 
 	(function() {
 		var global = this;
@@ -383,13 +384,73 @@
 				}
 
 				var proxyClass = info.proxy,
-					workerScript = info.worker;
+					workerScript = info.worker,
+					codecUrl = urlForScript(scriptMap[className]),
+					workerUrl = urlForScript(workerScript),
+					worker;
 
 				var construct = function(options) {
-					var worker = new Worker(urlForScript(workerScript));
 					return new proxyClass(worker, className, options);
 				};
-				callback(construct);
+
+				if (workerUrl.match(/^https?:|\/\//i)) {
+					// Can't load workers natively cross-domain, but if CORS
+					// is set up we can fetch the worker stub and the desired
+					// class and load them from a blob.
+					var getCodec,
+						getWorker,
+						codecResponse,
+						workerResponse,
+						codecLoaded = false,
+						workerLoaded = false,
+						blob;
+
+					function completionCheck() {
+						if ((codecLoaded == true) && (workerLoaded == true)) {
+							try {
+								blob = new Blob([codecResponse + " " + workerResponse], {type: 'application/javascript'});
+							} catch (e) { // Backwards-compatibility
+								window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+								blob = new BlobBuilder();
+								blob.append(codecResponse + " " + workerResponse);
+								blob = blob.getBlob();
+							}
+							// Create the web worker
+							worker = new Worker(URL.createObjectURL(blob));
+							callback(construct);
+						}
+					}
+
+					// Load the codec
+					getCodec = new XMLHttpRequest();
+					getCodec.open("GET", codecUrl, true);
+					getCodec.onreadystatechange = function() {
+						if(getCodec.readyState == 4 && getCodec.status == 200) {
+							codecResponse = getCodec.responseText;
+							// Update the codec response loaded flag
+							codecLoaded = true;
+							completionCheck();
+						}
+					};
+					getCodec.send();
+
+					// Load the worker
+					getWorker = new XMLHttpRequest();
+					getWorker.open("GET", workerUrl, true);
+					getWorker.onreadystatechange = function() {
+						if(getWorker.readyState == 4 && getWorker.status == 200) {
+							workerResponse = getWorker.responseText;
+							// Update the worker response loaded flag
+							workerLoaded = true;
+							completionCheck();
+						}
+					};
+					getWorker.send();
+				} else {
+					// Local URL; load it directly for simplicity.
+					worker = new Worker(workerUrl);
+					callback(construct);
+				}
 			}
 		};
 
@@ -407,7 +468,8 @@
 	var OGVDecoderAudioProxy = OGVProxyClass({
 		loadedMetadata: false,
 		audioFormat: null,
-		audioBuffer: null
+		audioBuffer: null,
+		cpuTime: 0
 	}, {
 		init: function(callback) {
 			this.proxy('init', [], callback);
@@ -573,7 +635,8 @@
 	var OGVDecoderVideoProxy = OGVProxyClass({
 		loadedMetadata: false,
 		videoFormat: null,
-		frameBuffer: null
+		frameBuffer: null,
+		cpuTime: 0
 	}, {
 		init: function(callback) {
 			this.proxy('init', [], callback);

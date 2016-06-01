@@ -7,34 +7,20 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compi
 
 ## Updates
 
-* 1.1.1 - 2016-05-18
- * fix for regression when hitting 'play' during loading
- * fix for Theora streams with pathologically high frequency of dupe frames
- * fix for unmuting after muted play on iOS
- * when playback starts muted, drive on timer instead of audio clock
- * update to audio-feeder 0.4.0
- * much cleaner audio behavior on pause/continue
- * revert "release audio resources during pause/seek"
- * pause event now fired before ended
- * avoid infinite 'ended' events
- * fix slight a/v sync loss after pause/play
- * release audio resources during pause/seek
- * fix occasional loss of a/v sync after source switch
- * loadeddata event now fired
-* 1.1.0 - 2016-05-10
- * fixed background tab audio performance
- * fixed race condition in poster removal
- * updated audio-feeder to 0.3.0
- * refactored parts of build using webpack
- * reduction in unnecessary globals
- * added stubs for standard properties
- * volume property now works
- * seeking is much more reliable
- * switching sources is much more reliable
- * Chrome input corruption bug fixed
- * console spam on oggs without skeleton track fixed
-* 1.0 - 2015-09-04
- * initial stable release, as used on Wikipedia
+1.1.3 - 2016-06027
+* fix play-during-seek bug that interacted with video.js badly
+
+1.1.2 - 2016-06-27
+* better a/v sync
+* muted autoplay works on iOS
+* numerous seeking-related race-condition fixes
+* more consistent performance on low-end machines
+* supports cross-domain hosting of worker and Flash audio shim
+* seeking now works in WebM as well as Ogg
+* cleaner multithreading
+* lots of little fixes
+
+See more details and history in [CHANGES.md](https://github.com/brion/ogv.js/blob/master/CHANGES.md)
 
 ## Current status
 
@@ -43,7 +29,7 @@ Since August 2015, ogv.js can be seen in action [on Wikipedia and Wikimedia Comm
 See also a standalone demo with performance metrics at https://brionv.com/misc/ogv.js/demo/
 
 * streaming: yes (with Range header)
-* seeking: yes for Ogg (with Range header), no for WebM
+* seeking: yes for Ogg and WebM (with Range header)
 * color: yes
 * audio: yes, with a/v sync (requires Web Audio or Flash)
 * background threading: yes (video, audio decoders in Workers)
@@ -167,7 +153,7 @@ Entry points:
 
 These entry points may be loaded directly from a script element, or concatenated into a larger project, or otherwise loaded as you like.
 
-Further code modules are loaded at runtime, which must be available with their defined names together in a directory. Currently the files should be hosted same-origin to the web page that includes them, or the worker threads and Flash audio shim may not load correctly.
+Further code modules are loaded at runtime, which must be available with their defined names together in a directory. If the files are not hosted same-origin to the web page that includes them, you will need to set up appropriate CORS headers to allow loading of the worker JS modules.
 
 Dynamically loaded assets:
 * `ogv-worker-audio.js` and `ogv-worker-video.js` are Worker entry points, used to run video and audio decoders in the background.
@@ -229,9 +215,7 @@ There is some overhead in extracting data out of each emscripten module's heap a
 
 *Streaming download*
 
-In IE and Edge, the (MS-prefixed) Stream/StreamReader interface is used to read data on demand into ArrayBuffer objects.
-
-In Firefox, the 'moz-chunked-array' responseType on XHR is used to read data as ArrayBuffer chunks during download. Safari and Chrome use a 'binary string' read which requires manually converting input to ArrayBuffer chunks.
+In Firefox, the 'moz-chunked-array' responseType on XHR is used to read data as ArrayBuffer chunks during download. Safari and Chrome use a 'binary string' read which requires manually converting input to ArrayBuffer chunks. In IE and Edge have an (MS-prefixed) Stream/StreamReader interface which can be used to read data on demand into ArrayBuffer objects, but it has proved problematic especially with intermediate proxies; as of 1.1.2 IE and Edge use the same chunked binary-string method as Safari and Chrome.
 
 The Firefox and Safari/Chrome cases have been hacked up to do streaming buffering by chunking the requests at up to a megabyte each, using the HTTP Range header. For cross-site playback, this requires CORS setup to whitelist the Range header!
 
@@ -244,7 +228,7 @@ Seeking is implemented via the HTTP Range: header.
 
 For Ogg files with keyframe indices in a skeleton index, seeking is very fast. Otherwise,  a bisection search is used to locate the target frame or audio position, which is very slow over the internet as it creates a lot of short-lived HTTP requests.
 
-For WebM files, seeking is not yet supported; this will require refactoring the demuxer modules to present a synchronous i/o abstraction to the demuxer library.
+For WebM files with cues, efficient seeking is supported as well as of 1.1.2.
 
 As with chunked streaming, cross-site playback requires CORS support for the Range header.
 
@@ -276,9 +260,7 @@ You can then unmute the video in response to a touch or click handler. Alternate
 
 *WebM*
 
-WebM support was added in June 2015, and is currently very experimental. Not everything works yet, and performance is pretty bad. See [issue tracker for WebM milestone](https://github.com/brion/ogv.js/milestones/WebM%20playback) on the GitHub page.
-
-The i/o model of the nestegg WebM container demuxing library is a bit different from what ogv.js was designed around so seeking is not yet supported and it may sometimes cut off partway through a file. Needs more work.
+WebM support was added in June 2015, with some major issues finally worked out in May 2016. It remains experimental, but should be fully enabled in the future once a few more bugs are worked out. Beware that performance of WebM VP8 decoding is much slower than Ogg Theora.
 
 To enable, set `enableWebM: true` in your `options` array.
 
@@ -313,3 +295,5 @@ libogg, libvorbis, libtheora, libopus, nestegg, and libvpx are available under t
 Based on build scripts from https://github.com/devongovett/ogg.js
 
 [AudioFeeder](https://github.com/brion/audio-feeder)'s dynamicaudio.as and other Flash-related bits are based on code under BSD license, (c) 2010 Ben Firshman.
+
+See [AUTHORS.md](https://github.com/brion/ogv.js/blob/master/AUTHORS.md) and/or the git history for a list of contributors.
