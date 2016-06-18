@@ -119,7 +119,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|קובץ שמע FLAC אחד|$1 קובצי שמע FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|קובץ שמע WAV אחד|$1 קובצי שמע WAV}}",
 	"right-transcode-reset": "אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל והכנסתם מחדש לתור המשימות",
-	"right-transcode-status": "צפייה ב[[Special:TimedMediaHandler|מידע על פעילות המרת־המשנה הנוכחית]]",
+	"right-transcode-status": "צפייה במידע על פעילות המרת־המשנה הנוכחית",
 	"action-transcode-status": "להציג את מצב המרת־המשנה",
 	"orphanedtimedtext": "דפי טקסט מתוזמן יתומים",
 	"orphanedtimedtext-summary": "רשימה של כל דפי [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] שלא משויך להם קובץ.",
