@@ -172,6 +172,14 @@ $wgEnabledTranscodeSet = [
 	// High-bitrate Ogg stream
 	WebVideoTranscode::ENC_OGV_480P,
 
+	// Variable-bitrate HD Ogg stream
+	// for ogv.js on reasonably speedy machines
+	WebVideoTranscode::ENC_OGV_720P,
+
+	// Variable-bitrate HD Ogg stream
+	// for ogv.js on reasonably speedy machines
+	WebVideoTranscode::ENC_OGV_1080P,
+
 /*
 	// MP4 H.264/AAC
 	// Primary format for the Apple/Microsoft world
