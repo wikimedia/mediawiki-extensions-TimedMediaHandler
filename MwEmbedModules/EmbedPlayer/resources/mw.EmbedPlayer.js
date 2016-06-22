@@ -18,6 +18,9 @@
 		// id: Auto-populated if unset
 		"id" : null,
 
+		// class: Auto-populated if unset
+		"class": null,
+
 		// Width: alternate to "style" to set player width
 		"width" : null,
 
@@ -1177,7 +1180,8 @@
 				// build the interface wrapper
 				this.$interface = $( this ).wrap(
 					$('<div />')
-					.addClass( 'mwPlayerContainer ' + this.controlBuilder.playerClass )
+					.addClass( 'mwPlayerContainer ' + this[ 'class' ] + ' ' + this.controlBuilder.playerClass )
+					.removeClass( this.skinName )
 					.append(
 						$('<div />').addClass( 'videoHolder' )
 					)
