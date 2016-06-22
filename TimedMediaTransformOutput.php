@@ -407,9 +407,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
 
-		// The poster url:
-		$posterUrl = $this->getUrl( $sizeOverride );
-
 		if ( $this->fillwindow ) {
 			$width = '100%';
 			$height = '100%';
@@ -421,7 +418,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$mediaAttr = [
 			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
 			// Get the correct size:
-			'poster' => $posterUrl,
+			'poster' => $this->getUrl( $sizeOverride ),
 
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
 			// it updates the controls attribute of the embed video
@@ -435,6 +432,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr['autoplay'] = 'true';
 		}
 
+		if ( !$this->isVideo ) {
+			// audio element doesn't have poster attribute
+			unset( $mediaAttr[ 'poster' ] );
+		}
+
 		if ( $wgTmhWebPlayer === 'videojs' ) {
 			$mediaAttr['class'] = 'video-js ' . $wgVideoPlayerSkin;
 			$mediaAttr['width'] = intval( $width );
@@ -442,7 +444,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$mediaAttr['height'] = intval( $height );
 			} else {
 				unset( $mediaAttr['height'] );
-				unset( $mediaAttr['poster'] );
 			}
 		} else {
 			$mediaAttr['style'] = "width:{$width}";
