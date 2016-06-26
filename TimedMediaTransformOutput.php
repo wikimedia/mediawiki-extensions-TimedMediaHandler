@@ -445,6 +445,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			} else {
 				unset( $mediaAttr['height'] );
 			}
+			if ( $this->fillwindow ) {
+				unset( $mediaAttr['width'] );
+				unset( $mediaAttr['height'] );
+				$mediaAttr[ 'class' ] .= ' vjs-fluid';
+				$mediaAttr[ 'data-player' ] = 'fillwindow';
+			}
 		} else {
 			$mediaAttr['style'] = "width:{$width}";
 

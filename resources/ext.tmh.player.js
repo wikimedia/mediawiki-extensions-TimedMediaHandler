@@ -76,5 +76,12 @@
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		$content.find( '.video-js' ).loadVideoPlayer();
 	} );
+	$( function () {
+		// The iframe mode
+		$( '#bgimage' ).remove();
+		if ( $( '.video-js[data-player="fillwindow"]' ).length > 0 ) {
+			$( '.video-js[data-player="fillwindow"]' ).loadVideoPlayer();
+		}
+	} );
 
 } )( jQuery, mediaWiki, videojs );

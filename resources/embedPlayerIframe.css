@@ -18,6 +18,9 @@ img#bgimage {
 	width:100%;
 	height:100%;
 }
+.mediaContainer {
+	visibility: hidden;
+}
 .mediaContainer .videoHolder {
 	position: static;
 }

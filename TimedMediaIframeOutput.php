@@ -71,8 +71,8 @@ class TimedMediaIframeOutput {
 		if ( $wgTmhWebPlayer == 'mwembed' ) {
 			$wgOut->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
 		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
-			$wgOut->addModuleStyles( 'ext.tmh.player.styles' );
 			$wgOut->addModules( 'ext.tmh.player' );
+			$wgOut->addModuleStyles( 'ext.tmh.player.styles' );
 		}
 		$wgOut->addModuleStyles( 'embedPlayerIframeStyle' );
 		$wgOut->sendCacheControl();
@@ -97,9 +97,7 @@ class TimedMediaIframeOutput {
 	?>
 <body>
 		<img src="<?php echo $videoTransform->getUrl(); ?>" id="bgimage" ></img>
-		<div id="videoContainer" style="visibility:hidden">
-			<?php echo $videoTransform->toHtml(); ?>
-		</div>
+		<?php echo $videoTransform->toHtml(); ?>
 	<?php echo $wgOut->getBottomScripts(); ?>
 </body>
 </html>

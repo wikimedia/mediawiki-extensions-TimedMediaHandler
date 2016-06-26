@@ -59,10 +59,6 @@ class TimedMediaHandlerHooks {
 						// position top needed as it needs to load before mediawiki.page.gallery
 						'position' => 'top',
 					],
-				'embedPlayerIframeStyle'=> $baseExtensionResource + [
-						'styles' => 'resources/embedPlayerIframe.css',
-						'position' => 'bottom',
-					],
 				'ext.tmh.embedPlayerIframe' => $baseExtensionResource + [
 						'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
 						'dependencies' => [
@@ -181,7 +177,7 @@ class TimedMediaHandlerHooks {
 				'ext.tmh.player.styles' => $baseExtensionResource + [
 						'styles' => 'resources/ext.tmh.player.styles.less',
 						'targets' => [ 'mobile', 'desktop' ],
-					]
+					],
 			];
 		}
 
@@ -294,6 +290,10 @@ class TimedMediaHandlerHooks {
 					'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv.js',
 				],
 				'dependencies' => 'ext.tmh.OgvJsSupport',
+				'targets' => [ 'mobile', 'desktop' ],
+			],
+			'embedPlayerIframeStyle'=> $baseExtensionResource + [
+				'styles' => 'resources/embedPlayerIframe.css',
 				'targets' => [ 'mobile', 'desktop' ],
 			],
 		];
