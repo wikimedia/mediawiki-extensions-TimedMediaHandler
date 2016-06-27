@@ -158,6 +158,14 @@ class TimedMediaHandlerHooks {
 						'ext.tmh.video-js',
 					],
 				],
+				'ext.tmh.mw-info-button' => $baseExtensionResource + [
+					'scripts' => 'resources/mw-info-button/mw-info-button.js',
+					'styles' => 'resources/mw-info-button/mw-info-button.css',
+					'targets' => [ 'mobile', 'desktop' ],
+					'dependencies' => [
+						'ext.tmh.video-js',
+					],
+				],
 				'ext.tmh.player' => $baseExtensionResource + [
 						'scripts' => 'resources/ext.tmh.player.js',
 						'targets' => [ 'mobile', 'desktop' ],
@@ -167,6 +175,7 @@ class TimedMediaHandlerHooks {
 							'ext.tmh.videojs-ogvjs',
 							'ext.tmh.videojs-responsive-layout',
 							'ext.tmh.videojs-replay',
+							'ext.tmh.mw-info-button',
 						],
 					],
 				'ext.tmh.player.styles' => $baseExtensionResource + [

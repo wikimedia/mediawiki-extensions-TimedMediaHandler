@@ -24,7 +24,8 @@
 					{ layoutClassName: 'defaults', width: 6 }
 				]
 			},
-			replayButton: {}
+			replayButton: {},
+			infoButton: {}
 		},
 		ogvjs: {
 			base: mw.OgvJsSupport.basePath()

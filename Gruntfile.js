@@ -17,6 +17,7 @@ module.exports = function ( grunt ) {
 				'**/*.js',
 				'!MwEmbedModules/**',
 				'!resources/videojs*/**',
+				'!resources/mw-info-button/**',
 				'!node_modules/**'
 			]
 		},
