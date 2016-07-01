@@ -11,7 +11,8 @@
 			"Okras",
 			"Александр Сигачёв",
 			"NBS",
-			"Frhdkazan"
+			"Frhdkazan",
+			"Mailman"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -33,7 +34,6 @@
 	"timedmedia-wav-pcm-required": "Вы можете загрузить только PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "MP4 $1 видео-файл, $2",
 	"timedmedia-mp4-long-video": "Аудио/видеофайл MP4 $1, длина — $2, $4 × $5 пикселей, битрейт — $3",
-	"timedmedia-no-player-js": "К сожалению, в вашем браузере отключён JavaScript, или не имеется требуемого проигрывателя.<br />\nВы можете <a href=\"$1\">загрузить ролик</a> или <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">загрузить проигрыватель</a> для воспроизведения ролика в браузере.",
 	"timedmedia-more": "Больше…",
 	"timedmedia-dismiss": "Скрыть",
 	"timedmedia-download": "Загрузить файл",
@@ -63,6 +63,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|$1 секунда|$1 секунды|$1 секунд}}",
 	"timedmedia-reset": "Перезапуск декодирования",
 	"timedmedia-reset-areyousure": "Вы уверены, что хотите продолжить?",
+	"timedmedia-reset-button-cancel": "Не сбрасывать",
 	"timedmedia-reset-button-dismiss": "Закрыть",
 	"timedmedia-reset-button-reset": "Сбросить",
 	"timedmedia-reset-error": "Ошибка при перезапуске декодирования.",
@@ -109,6 +110,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 запущенное декодирование|$1 запущенных декодирования|$1 запущенных декодирований}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 поставленное в очередь декодирование|$1 поставленных в очередь декодирования|$1 поставленных в очередь декодирований}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 неудавшееся декодирование|$1 неудавшихся декодирования|$1 неудавшихся декодирований}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 неинициализированная задача по транскодированнию|$1 неинициализированных задач по транскодированнию}}",
 	"timedmedia-no-derivatives": "Транскодирования не требуется.",
 	"timedmedia-file": "Файл",
 	"timedmedia-audios": "{{PLURAL:$1|$1 аудиофайл|$1 аудиофайла|$1 аудиофайлов̟}}",
@@ -122,5 +124,8 @@
 	"orphanedtimedtext-summary": "Список страниц [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], которые не имеют соответствующего файла.",
 	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText не включен в этой вики.",
-	"apihelp-transcodereset-param-title": "Заголовок медиафайла."
+	"apihelp-query+transcodestatus-description": "Получить статус транскодированния для данного файла.",
+	"apihelp-query+transcodestatus-example-1": "Получить статус транскодированния для файла [[:File:Clip.webm|Clip.webm]].",
+	"apihelp-transcodereset-param-title": "Заголовок медиафайла.",
+	"apihelp-transcodereset-example-1": "Сбросить все задачи по транскодированнию для файла [[:File:Clip.webm|Clip.webm]]."
 }
