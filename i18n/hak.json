@@ -4,5 +4,6 @@
 			"Hakka"
 		]
 	},
-	"timedmedia-source-file": "$1 lòi-ngièn tóng-on"
+	"timedmedia-source-file": "$1 lòi-ngièn tóng-on",
+	"timedmedia-source-audio-file-desc": "Ngièn-sṳ́  $1 vùn-khien ($2)"
 }
