@@ -3,7 +3,8 @@
 		"authors": [
 			"BeginaFelicysym",
 			"Sp5uhe",
-			"Dvorapa"
+			"Dvorapa",
+			"XnIcRaM"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tytuł – $1",
@@ -73,7 +74,7 @@
 	"mwe-embedplayer-video-flv": "Wideo we Flash",
 	"mwe-embedplayer-video-ogg": "Wideo w Ogg",
 	"mwe-embedplayer-video-audio": "Dźwięk w Ogg",
-	"mwe-embedplayer-audio-mpeg": "Audio MPEG",
+	"mwe-embedplayer-audio-mpeg": "MPEG audio",
 	"mwe-embedplayer-video-3gp": "Wideo 3GP",
 	"mwe-embedplayer-video-mpeg": "Wideo MPEG",
 	"mwe-embedplayer-video-msvideo": "Wideo AVI",
