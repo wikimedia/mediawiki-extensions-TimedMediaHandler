@@ -33,6 +33,7 @@
 	"timedmedia-seconds": "$1 second{{PLURAL:$1|a|es}}",
 	"timedmedia-source-file": "Sôrsa $1",
 	"timedmedia-source-file-desc": "Originâl $1, $2 × $3 ($4)",
+	"timedmedia-source-audio-file-desc": "Fichiér originâl $1 ($2)",
 	"timedmedia-subtitle-language": "sot-titros en $1 ($2)",
 	"timedmedia-file": "Fichiér"
 }
