@@ -368,10 +368,11 @@ class TimedMediaHandler extends MediaHandler {
 			'file' => $file,
 			'length' => $this->getLength( $file ),
 			'offset' => $this->getOffset( $file ),
-			// Thumbnail width and height for audio files is hardcoded to match the dimensions of the
-			// filetype icon, see TimedMediaTransformOutput::getUrl(). Overridden for video below.
-			'width' => 120,
-			'height' => 120,
+			// Default thumbnail width and height for audio files is hardcoded to match the dimensions of
+			// the filetype icon, see TimedMediaTransformOutput::getUrl(). Overridden for video below.
+			'width' => isset( $params['width'] ) ? $params['width'] : 120,
+			// Height is ignored for audio files anyway, and $params['height'] might be set to 0
+			'height' => isset( $params['width'] ) ? $params['width'] : 120,
 			'isVideo' => !$this->isAudio( $file ),
 			'thumbtime' => isset(
 				$params['thumbtime']
