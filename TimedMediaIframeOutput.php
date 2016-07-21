@@ -76,26 +76,25 @@ class TimedMediaIframeOutput {
 		}
 		$wgOut->addModuleStyles( 'embedPlayerIframeStyle' );
 		$wgOut->sendCacheControl();
-	?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title><?php echo $title->getText(); ?></title>
-	<?php
-		echo implode( "\n", $wgOut->getHeadLinksArray() );
-	?>
-	<?php
-		// In place of buildCssLinks, because we don't want to pull in all the skin CSS etc.
-		$links = $wgOut->makeResourceLoaderLink(
-			'embedPlayerIframeStyle', ResourceLoaderModule::TYPE_STYLES
-		);
-		echo implode( "\n", $links["html"] );
+		$rlClient = $wgOut->getRlClient();
 
-		echo Html::element( 'meta', [ 'name' => 'ResourceLoaderDynamicStyles', 'content' => '' ] );
+		// Stripped-down version of OutputPage::headElement()
+		// No skin modules are enqueued because we never call $wgOut->output()
+		$pieces = [
+			Html::htmlHeader( $rlClient->getDocumentAttributes() ),
+
+			Html::openElement( 'head' ),
+
+			Html::element( 'meta', [ 'charset' => 'UTF-8' ] ),
+			Html::element( 'title', null, $title->getText() ),
+			$wgOut->getRlClient()->getHeadHtml(),
+			implode( "\n", $wgOut->getHeadLinksArray() ),
+
+			Html::closeElement( 'head' ),
+		];
+
+		echo implode( "\n", $pieces );
 	?>
-	<?php echo "\n" . $wgOut->getHeadScripts(); ?>
-	</head>
 <body>
 		<img src="<?php echo $videoTransform->getUrl(); ?>" id="bgimage" ></img>
 		<div id="videoContainer" style="visibility:hidden">
