@@ -3,7 +3,8 @@
 		"authors": [
 			"Priviet",
 			"아라",
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ykhwong"
 		]
 	},
 	"mwe-embedplayer-credit-title": "제목: $1",
@@ -18,7 +19,7 @@
 	"mwe-embedplayer-missing_video_stream": "이 스트림에 대한 동영상 파일이 없습니다",
 	"mwe-embedplayer-play_clip": "클립 재생",
 	"mwe-embedplayer-pause_clip": "클립 일시 정지",
-	"mwe-embedplayer-volume_control": "음량 컨트롤",
+	"mwe-embedplayer-volume_control": "음량 조절",
 	"mwe-embedplayer-player_options": "플레이어 설정",
 	"mwe-embedplayer-timed_text": "자막",
 	"mwe-embedplayer-player_fullscreen": "전체 화면",
