@@ -6,10 +6,11 @@
 			"Omnipaedista",
 			"ZaDiak",
 			"Evropi",
-			"Geraki"
+			"Geraki",
+			"Protnet"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Χειριστής για αρχεία Ogg Theora και Vorbis, με αναπαραγωγέα JavaScript",
+	"timedmediahandler-desc": "Χειριστής για ήχο, βίντεο και χρονισμένο κείμενο, με υποστήριξη μορφής για WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Αρχείο ήχου Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Αρχείο βίντεο Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Αρχείο μέσων Ogg $1, $2",
@@ -18,7 +19,6 @@
 	"timedmedia-ogg-long-multiplexed": "Αρχείο πολυπλεκτικού ήχου/βίντεο Ogg, $1, διάρκεια $2, $4×$5 pixels, $3 ολικά",
 	"timedmedia-ogg-long-general": "Αρχείο μέσων Ogg, διάρκεια $2, $3",
 	"timedmedia-ogg-long-error": "Άκυρο αρχείο ogg: $1",
-	"timedmedia-no-player-js": "Συγνώμη, το πρόγραμμα περιήγησής σας είτε έχει την JavaScript απενεργοποιημένη ή δεν έχει οποιοδήποτε υποστηριζόμενο player.<br />\nΜπορείτε να <a href=\"$1\">κατεβάστε το κλιπ</a> ή να <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">κάνετε λήψη ενός player</a> για να αναπαράγετε το κλιπ στον browser σας.",
 	"timedmedia-more": "Περισσότερα...",
 	"timedmedia-dismiss": "Κλείσιμο",
 	"timedmedia-download": "Κατεβάστε το αρχείο",
