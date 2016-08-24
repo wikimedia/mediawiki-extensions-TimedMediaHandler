@@ -15,7 +15,6 @@
 	"timedmedia-ogg-long-multiplexed": "Berkas audio/vidéo multiplexed ogg, $1, dawané $2, $4×$5 piksel, $3 gunggungé",
 	"timedmedia-ogg-long-general": "Berkas média ogg, dawané $2, $3",
 	"timedmedia-ogg-long-error": "Berkas ogg ora absah: $1",
-	"timedmedia-no-player-js": "Nyuwun pangapura, pangluron sampéyan bokmanawa JavaScripté mati utawa tanpa sengkuyungan panguruban.<br />\nSampéyan bisa <a href=\"$1\">ngundhuh cuplikan iki</a> utawa <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ngudhuh panguruban</a> kanggo ngurubaké cuplikan iku sarana pangluron sampéyan.",
 	"timedmedia-more": "Luwih akèh...",
 	"timedmedia-dismiss": "Tutup",
 	"timedmedia-download": "Undhuh berkas",
@@ -63,5 +62,5 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transkodhé lumangsung|$1 transkodhé lumangsung}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodhé ngantri|$1 transkodhé ngantri}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transkodhé gagal|$1 transkodhé gagal}}",
-	"timedmedia-file": "Berkas"
+	"timedmedia-file": "Barkas"
 }
