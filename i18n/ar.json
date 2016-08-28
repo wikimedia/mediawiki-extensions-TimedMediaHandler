@@ -54,7 +54,7 @@
 	"timedmedia-source-file-desc": "الأصل ملف $1، $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "الملف $1 الأصلي ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "انخفاض عرض النطاق الترددي أوج فيديو (160P)",
-	"timedmedia-derivative-desc-720p.ogv": "تحميل أوج فيديو بجودة عالية  (720P)",
+	"timedmedia-derivative-desc-720p.ogv": "تحميل أوج فيديو بجودة عالية (720P)",
 	"timedmedia-subtitle-new": "أنشئ ترجمة جديدة أو حرر ترجمة موجودة",
 	"timedmedia-subtitle-new-desc": "قم بإختيار اللغة وإضغط على زر '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "اذهب",

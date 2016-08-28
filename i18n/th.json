@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pon44695"
+		]
+	},
+	"timedmedia-source-file": "แหล่ง $1",
+	"timedmedia-source-audio-file-desc": "ไฟล์ต้นฉบับ $1 ($2)"
+}
