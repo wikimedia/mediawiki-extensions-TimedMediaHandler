@@ -4,7 +4,8 @@
 			"BeginaFelicysym",
 			"Sp5uhe",
 			"Dvorapa",
-			"XnIcRaM"
+			"XnIcRaM",
+			"Chrumps"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tytuł – $1",
@@ -59,7 +60,7 @@
 	"mwe-embedplayer-ogg-player-selected": "(zaznaczone)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Dla lepszego odtwarzania filmów polecamy [przeglądarkę video html5 $1</a>.",
-	"mwe-embedplayer-download-warn": "Nie odnaleziono zgodnego odtwarzacza dla przeglądarki, aby odtworzyć tą zawartość w przeglądarce należy pobrać [$1 najnowszą wersjęFirefox]",
+	"mwe-embedplayer-download-warn": "Nie odnaleziono zgodnego odtwarzacza dla przeglądarki, należy pobrać [$1 najnowszą wersję Firefox]",
 	"mwe-embedplayer-fullscreen-tip": "Naciśnij klawisz <b>F11</b> by przełączyć <i>przeglądarkę</i> w tryb pełnoekranowy",
 	"mwe-embedplayer-fullscreen-tip-osx": "Naciśnij klawisze <b>shift ⌘ f</b> aby przełączyć w tryb pełnoekranowy",
 	"mwe-embedplayer-do_not_warn_again": "W przyszłości nie pokazuj tego komunikatu",
