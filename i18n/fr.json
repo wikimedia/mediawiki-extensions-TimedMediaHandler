@@ -148,7 +148,7 @@
 	"action-transcode-status": "afficher l’état de transcodage actuel",
 	"orphanedtimedtext": "Pages orphelines de TimedText",
 	"orphanedtimedtext-summary": "Liste des pages [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] qui n’ont pas de fichier correspondant.",
-	"orphanedtimedtext-unsupported": "Cette page spéciale n’est supportée que sur les bases de données MySQL.",
+	"orphanedtimedtext-unsupported": "Cette page spéciale n’est prise en charge que sur les bases de données MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki.",
 	"apihelp-query+transcodestatus-description": "Obtenir l’état de transcodage pour une page de fichier donné.",
 	"apihelp-query+transcodestatus-example-1": "Obtenir l’état de transcodage pour [[:File:Clip.webm]]",
