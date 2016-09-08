@@ -336,6 +336,7 @@ class TimedMediaHandlerHooks {
 		// Add unit tests
 		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 		$wgHooks['ParserTestTables'][] = 'TimedMediaHandlerHooks::onParserTestTables';
+		$wgHooks['ParserTestGlobals'][] = 'TimedMediaHandlerHooks::onParserTestGlobals';
 
 		/**
 		 * Add support for the "TimedText" NameSpace
@@ -631,6 +632,13 @@ class TimedMediaHandlerHooks {
 	public static function onParserTestTables( &$tables ) {
 		$tables[] = 'transcode';
 		return true;
+	}
+
+	/**
+	 * Hook to reset player serial so that parser tests are not order-dependent
+	 */
+	public static function onParserTestGlobals( &$globals ) {
+		TimedMediaTransformOutput::resetSerialForTest();
 	}
 
 	/**

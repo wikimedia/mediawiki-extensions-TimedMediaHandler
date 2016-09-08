@@ -544,4 +544,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->hashTime = $hash;
 		return $this->hashTime;
 	}
+
+	public static function resetSerialForTest() {
+		self::$serial = 1;
+	}
 }
