@@ -4,7 +4,8 @@
 			"Arent",
 			"Siebrand",
 			"Southparkfan",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Naam: $1",
@@ -39,7 +40,7 @@
 	"mwe-embedplayer-about-library": "Over de Kalturaspeler",
 	"mwe-embedplayer-about-library-desc": "De HTML5-bibliotheek van Kaltura zorgt dat u nu kunt profiteren van de HTML5-labels <nowiki><video></nowiki> en <nowiki><audio></nowiki> met een consistent uiterlijk van de speler in alle veelgebruikte browsers.\n\n[$1 Meer over de bibliotheek van de Kaltura-speler].",
 	"mwe-embedplayer-clip_linkback": "Bronpagina van de clip",
-	"mwe-embedplayer-choose_player": "Mediaspeler kiezen",
+	"mwe-embedplayer-choose_player": "Kies een videospeler",
 	"mwe-embedplayer-no-player": "Geen speler beschikbaar voor $1",
 	"mwe-embedplayer-share_this_video": "Deze video delen",
 	"mwe-embedplayer-video_credits": "Naamsvermeldingen video",
