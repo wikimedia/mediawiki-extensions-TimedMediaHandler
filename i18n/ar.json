@@ -63,6 +63,7 @@
 	"timedmedia-reset-button-dismiss": "تجاهل",
 	"timedmedia-reset-button-reset": "إعادة ضبط",
 	"timedmedia-reset-error": "خطأ في إعادة ضبط شغل التكويد.",
+	"timedmedia-reset-explanation": "إعادة ضبط هذا التكويد سيزيل أي ملف موجود (لو موجود)، وسيعيد إضافة التكويد لطابور الشغل. سيستغرق بعض الوقت لإعادة التكويد.",
 	"timedmedia-ogg": "أو جي جي",
 	"timedmedia-source-file": "$1 مصدر",
 	"timedmedia-source-file-desc": "الأصل ملف $1، $2 × $3 ($4)",
@@ -132,6 +133,7 @@
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "يضيف مصفوفة بالعناوين الفرعية، التعليقات والوصوفات لملف أوديو أو فيديو متوفر",
 	"apihelp-transcodereset-description": "المستخدمون بصلاحية 'transcode-reset' يمكنهم إعادة ضبط وإعادة تشغيل وظيفة تكويد.",
 	"apihelp-transcodereset-param-title": "عنوان ملف الميديا.",
+	"apihelp-transcodereset-param-transcodekey": "مفتاح التكويد الذي تود إعادة ضبطه. اجلب من [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "إعادة ضبط كل التكويدات ل[[:File:Clip.webm]]",
 	"apihelp-transcodereset-example-2": "إعادة ضبط مفتاح التكويد '360_560kbs.webm' ل [[:File:Clip.webm]]"
 }
