@@ -332,7 +332,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				}
 			}
 		}
-		$mediaTracks = $this->file ? $this->getTextHandler()->getTracks() : null;
+		$mediaTracks = $this->file ? $this->getTextHandler()->getTracks() : [];
 		foreach ( $mediaTracks as &$track ) {
 			foreach ( $track as $attr => $val ) {
 				if ( $attr === 'title' || $attr === 'provider' ) {
