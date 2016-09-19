@@ -11,7 +11,8 @@
 			"555",
 			"Tooguether",
 			"Macofe",
-			"Fúlvio"
+			"Fúlvio",
+			"Mansil"
 		]
 	},
 	"timedmediahandler-desc": "Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt",
@@ -61,7 +62,7 @@
 	"timedmedia-reset-areyousure": "Tem certeza de que deseja continuar?",
 	"timedmedia-reset-button-reset": "Reiniciar",
 	"timedmedia-reset-error": "Ocorreu um erro ao reiniciar a tarefa de transcodificação",
-	"timedmedia-reset-explanation": "Reiniciar esta transcodificação elimina qualquer ficheiro existente e volta a adicionar a transcodificação à fila de tarefas. A nova transcodificação irá demorar algum tempo.",
+	"timedmedia-reset-explanation": "Se reiniciar esta conversão de codificação irá remover qualquer ficheiro existente (se presente), e este irá readicionar a conversão de codificação à fila de tarefas. Esta irá demorar algum tempo.",
 	"timedmedia-source-file": "Fonte $1",
 	"timedmedia-source-file-desc": "Ficheiro $1 original, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Ficheiro $1 original ($2)",
