@@ -152,9 +152,9 @@
 				return null;
 			} else {
 				var copy = copyObject(buffer);
-				copy.bytesY = copyByteArray(buffer.bytesY);
-				copy.bytesCb = copyByteArray(buffer.bytesCb);
-				copy.bytesCr = copyByteArray(buffer.bytesCr);
+				copy.y.bytes = copyByteArray(buffer.y.bytes);
+				copy.u.bytes = copyByteArray(buffer.u.bytes);
+				copy.v.bytes = copyByteArray(buffer.v.bytes);
 				return copy;
 			}
 		}
@@ -212,9 +212,9 @@
 								propVal = copyFrameBuffer(propVal);
 								props[propName] = propVal;
 								if (propVal) {
-									transfers.push(propVal.bytesY.buffer);
-									transfers.push(propVal.bytesCb.buffer);
-									transfers.push(propVal.bytesCr.buffer);
+									transfers.push(propVal.y.bytes.buffer);
+									transfers.push(propVal.u.bytes.buffer);
+									transfers.push(propVal.v.bytes.buffer);
 								}
 							} else {
 								props[propName] = propVal;
@@ -246,7 +246,7 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.1.3-20160627181101-5f064cc");
+	var OGVVersion = ("1.2.0-20160919145031-b4b9f58");
 
 	(function() {
 		var global = this;

@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		OGVLoader = __webpack_require__(3),
 		OGVMediaType = __webpack_require__(7),
 		OGVPlayer = __webpack_require__(8),
-		OGVVersion = ("1.1.3-20160627181101-5f064cc");
+		OGVVersion = ("1.2.0-20160919145031-b4b9f58");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -287,7 +287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.1.3-20160627181101-5f064cc");
+	var OGVVersion = ("1.2.0-20160919145031-b4b9f58");
 
 	(function() {
 		var global = this;
@@ -751,27 +751,26 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLFrameSink = __webpack_require__(9);
-	var FrameSink = __webpack_require__(13);
+	var YUVCanvas = __webpack_require__(9);
 
 	// -- OGVLoader.js
 	var OGVLoader = __webpack_require__(3);
 
 	// -- StreamFile.js
-	var StreamFile = __webpack_require__(15);
+	var StreamFile = __webpack_require__(16);
 
 	// -- AudioFeeder.js
-	var AudioFeeder = __webpack_require__(16),
-		dynamicaudio_swf = __webpack_require__(17);
+	var AudioFeeder = __webpack_require__(17),
+		dynamicaudio_swf = __webpack_require__(18);
 
 	// -- Bisector.js
-	var Bisector = __webpack_require__(18);
+	var Bisector = __webpack_require__(19);
 
 	// -- OGVMediaType.js
 	var OGVMediaType = __webpack_require__(7);
 
 	// -- OGVWrapperCodec.js
-	var OGVWrapperCodec = __webpack_require__(19);
+	var OGVWrapperCodec = __webpack_require__(20);
 
 	// -- OGVDecoderAudioProxy.js
 	var OGVDecoderAudioProxy = __webpack_require__(4);
@@ -818,13 +817,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		var codecClass = null,
 			codecType = null;
 
-		var webGLdetected = WebGLFrameSink.isAvailable();
-		var useWebGL = (options.webGL !== false) && webGLdetected;
+		var canvasOptions = {};
+		if (options.webGL !== undefined) {
+			// @fixme confirm format of webGL option
+			canvasOptions.webGL = options.webGL;
+		}
 		if(!!options.forceWebGL) {
-			useWebGL = true;
-			if(!webGLdetected) {
-				console.log("No support for WebGL detected, but WebGL forced on!");
-			}
+			canvasOptions.webGL = 'required';
 		}
 
 		// Experimental options
@@ -1267,6 +1266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						lastFrameSkipped = false;
 						codec.flush(function() {
 							stream.seek(position);
+							readBytesAndWait();
 						});
 						return true;
 					}
@@ -1554,19 +1554,15 @@ return /******/ (function(modules) { // webpackBootstrap
 			});
 			OGVPlayer.updatePositionOnResize();
 
-			if (useWebGL) {
-				frameSink = new WebGLFrameSink(canvas, videoInfo);
-			} else {
-				frameSink = new FrameSink(canvas, videoInfo);
-			}
+			frameSink = YUVCanvas.attach(canvas);
 		}
 
 		var depth = 0,
 			needProcessing = false,
 			pendingFrame = 0,
 			pendingAudio = 0,
-			framePipelineDepth = 1,
-			audioPipelineDepth = 2;
+			framePipelineDepth = 3,
+			audioPipelineDepth = 3;
 
 		function doProcessing() {
 			nextProcessingTimer = null;
@@ -1889,8 +1885,16 @@ return /******/ (function(modules) { // webpackBootstrap
 									if (!stoppedForLateFrame) {
 										log('late frame at ' + playbackPosition + ': ' + (-frameDelay) + ' expected ' + audioSyncThreshold);
 										lateFrames++;
-										stopPlayback();
-										stoppedForLateFrame = true;
+										if (decodedFrames.length > 1) {
+											log('late frame has a neighbor; skipping to next frame');
+											decodedFrames.shift();
+											frameEndTimestamp = decodedFrames[0].frameEndTimestamp;
+											framesProcessed++; // pretend!
+											doFrameComplete();
+										} else {
+											stopPlayback();
+											stoppedForLateFrame = true;
+										}
 									}
 								} else if (readyForFrameDraw && stoppedForLateFrame && !readyForFrameDecode && !readyForAudioDecode && frameDelay > fudgeDelta) {
 									// catching up, ok if we were early
@@ -1914,9 +1918,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 								log('play loop: ready to decode frame; thread depth: ' + pendingFrame + ', have buffered: ' + decodedFrames.length);
 
-								if (videoInfo.fps == 0 && (codec.frameTimestamp - frameEndTimestamp) > 0) {
+								var endy = decodedFrames.length ? decodedFrames[decodedFrames.length - 1].frameEndTimestamp : frameEndTimestamp;
+								if (videoInfo.fps == 0 && (codec.frameTimestamp - endy) > 0) {
 									// WebM doesn't encode a frame rate
-									targetPerFrameTime = (codec.frameTimestamp - frameEndTimestamp) * 1000;
+									targetPerFrameTime = (codec.frameTimestamp - endy) * 1000;
 								}
 								totalFrameTime += targetPerFrameTime;
 								totalFrameCount++;
@@ -3149,584 +3154,848 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var YCBCR_VERTEX_SHADER = __webpack_require__(10);
-	var YCBCR_FRAGMENT_SHADER = __webpack_require__(11);
-	var YCBCR_STRIPE_FRAGMENT_SHADER = __webpack_require__(12);
+	/*
+	Copyright (c) 2014-2016 Brion Vibber <brion@pobox.com>
 
-	/**
-	 * Warning: canvas must not have been used for 2d drawing prior!
-	 *
-	 * @param HTMLCanvasElement canvas
-	 * @constructor
-	 */
-	function WebGLFrameSink(canvas, videoInfo) {
-		var self = this,
-			gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'),
-			debug = false; // swap this to enable more error checks, which can slow down rendering
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+	the Software, and to permit persons to whom the Software is furnished to do so,
+	subject to the following conditions:
 
-		if (gl === null) {
-			throw new Error('WebGL unavailable');
-		}
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
 
-		// GL!
-		function checkError() {
-			if (debug) {
-				err = gl.getError();
-				if (err !== 0) {
-					throw new Error("GL error " + err);
-				}
-			}
-		}
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	MPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+	FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+	COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*/
+	(function() {
+	  "use strict";
 
-		function compileShader(type, source) {
-			var shader = gl.createShader(type);
-			gl.shaderSource(shader, source);
-			gl.compileShader(shader);
+	  var FrameSink = __webpack_require__(10),
+	    SoftwareFrameSink = __webpack_require__(11),
+	    WebGLFrameSink = __webpack_require__(14);
 
-			if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-				var err = gl.getShaderInfoLog(shader);
-				gl.deleteShader(shader);
-				throw new Error('GL shader compilation for ' + type + ' failed: ' + err);
-			}
+	  /**
+	   * @typedef {Object} YUVCanvasOptions
+	   * @property {boolean} webGL - Whether to use WebGL to draw to the canvas and accelerate color space conversion. If left out, defaults to auto-detect.
+	   */
 
-			return shader;
-		}
+	  var YUVCanvas = {
+	    FrameSink: FrameSink,
 
+	    SoftwareFrameSink: SoftwareFrameSink,
 
-		var vertexShader,
-			fragmentShader,
-			program,
-			buffer,
-			err;
+	    WebGLFrameSink: WebGLFrameSink,
 
-		// In the world of GL there are no rectangles.
-		// There are only triangles.
-		// THERE IS NO SPOON.
-		var rectangle = new Float32Array([
-			// First triangle (top left, clockwise)
-			-1.0, -1.0,
-			+1.0, -1.0,
-			-1.0, +1.0,
+	    /**
+	     * Attach a suitable FrameSink instance to an HTML5 canvas element.
+	     *
+	     * This will take over the drawing context of the canvas and may turn
+	     * it into a WebGL 3d canvas if possible. Do not attempt to use the
+	     * drawing context directly after this.
+	     *
+	     * @param {HTMLCanvasElement} canvas - HTML canvas element to attach to
+	     * @param {YUVCanvasOptions} options - map of options
+	     * @returns {FrameSink} - instance of suitable subclass.
+	     */
+	    attach: function(canvas, options) {
+	      options = options || {};
+	      var webGL = ('webGL' in options) ? options.webGL : WebGLFrameSink.isAvailable();
+	      if (webGL) {
+	        return new WebGLFrameSink(canvas, options);
+	      } else {
+	        return new SoftwareFrameSink(canvas, options);
+	      }
+	    }
+	  };
 
-			// Second triangle (bottom right, clockwise)
-			-1.0, +1.0,
-			+1.0, -1.0,
-			+1.0, +1.0
-		]);
-
-		var textures = {};
-		function attachTexture(name, register, index, width, height, data) {
-			var texture,
-				texWidth = WebGLFrameSink.stripe ? (width / 4) : width,
-				format = WebGLFrameSink.stripe ? gl.RGBA : gl.LUMINANCE,
-				filter = WebGLFrameSink.stripe ? gl.NEAREST : gl.LINEAR;
-
-			if (textures[name]) {
-				// Reuse & update the existing texture
-				texture = textures[name];
-			} else {
-				textures[name] = texture = gl.createTexture();
-				checkError();
-
-				gl.uniform1i(gl.getUniformLocation(program, name), index);
-				checkError();
-			}
-			gl.activeTexture(register);
-			checkError();
-			gl.bindTexture(gl.TEXTURE_2D, texture);
-			checkError();
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-			checkError();
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-			checkError();
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
-			checkError();
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
-			checkError();
-
-			gl.texImage2D(
-				gl.TEXTURE_2D,
-				0, // mip level
-				format, // internal format
-				texWidth,
-				height,
-				0, // border
-				format, // format
-				gl.UNSIGNED_BYTE, //type
-				data // data!
-			);
-			checkError();
-
-			return texture;
-		}
-
-		function buildStripe(width, height) {
-			var len = width * height,
-				out = new Uint32Array(len);
-			for (var i = 0; i < len; i += 4) {
-				out[i    ] = 0x000000ff;
-				out[i + 1] = 0x0000ff00;
-				out[i + 2] = 0x00ff0000;
-				out[i + 3] = 0xff000000;
-			}
-			return new Uint8Array(out.buffer);
-		}
-
-		function init(yCbCrBuffer) {
-			vertexShader = compileShader(gl.VERTEX_SHADER, YCBCR_VERTEX_SHADER);
-			if (WebGLFrameSink.stripe) {
-				fragmentShader = compileShader(gl.FRAGMENT_SHADER, YCBCR_STRIPE_FRAGMENT_SHADER);
-			} else {
-				fragmentShader = compileShader(gl.FRAGMENT_SHADER, YCBCR_FRAGMENT_SHADER);
-			}
-
-			program = gl.createProgram();
-			gl.attachShader(program, vertexShader);
-			checkError();
-
-			gl.attachShader(program, fragmentShader);
-			checkError();
-
-			gl.linkProgram(program);
-			if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-				var err = gl.getProgramInfoLog(program);
-				gl.deleteProgram(program);
-				throw new Error('GL program linking failed: ' + err);
-			}
-
-			gl.useProgram(program);
-			checkError();
-
-			if (WebGLFrameSink.stripe) {
-				attachTexture(
-					'uStripeLuma',
-					gl.TEXTURE3,
-					3,
-					yCbCrBuffer.strideY * 4,
-					yCbCrBuffer.height,
-					buildStripe(yCbCrBuffer.strideY, yCbCrBuffer.height)
-				);
-				checkError();
-
-				attachTexture(
-					'uStripeChroma',
-					gl.TEXTURE4,
-					4,
-					yCbCrBuffer.strideCb * 4,
-					yCbCrBuffer.height >> yCbCrBuffer.vdec,
-					buildStripe(yCbCrBuffer.strideCb, yCbCrBuffer.height >> yCbCrBuffer.vdec)
-				);
-				checkError();
-			}
-		}
-
-		self.drawFrame = function(yCbCrBuffer) {
-			if (!program) {
-				init(yCbCrBuffer);
-			}
-
-			// Set up the rectangle and draw it
-
-			//
-			// Set up geometry
-			//
-
-			buffer = gl.createBuffer();
-			checkError();
-
-			gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-			checkError();
-
-			gl.bufferData(gl.ARRAY_BUFFER, rectangle, gl.STATIC_DRAW);
-			checkError();
-
-			var positionLocation = gl.getAttribLocation(program, 'aPosition');
-			checkError();
-
-			gl.enableVertexAttribArray(positionLocation);
-			checkError();
-
-			gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-			checkError();
-
-
-			// Set up the texture geometry...
-			function setupTexturePosition(varname, texWidth, texHeight) {
-				// Warning: assumes that the stride for Cb and Cr is the same size in output pixels
-				var textureX0 = videoInfo.picX / texWidth;
-				var textureX1 = (videoInfo.picX + videoInfo.picWidth) / texWidth;
-				var textureY0 = (videoInfo.picY + videoInfo.picHeight) / texHeight;
-				var textureY1 = videoInfo.picY / texHeight;
-				var textureRectangle = new Float32Array([
-					textureX0, textureY0,
-					textureX1, textureY0,
-					textureX0, textureY1,
-					textureX0, textureY1,
-					textureX1, textureY0,
-					textureX1, textureY1
-				]);
-
-				var texturePositionBuffer = gl.createBuffer();
-				gl.bindBuffer(gl.ARRAY_BUFFER, texturePositionBuffer);
-				checkError();
-
-				gl.bufferData(gl.ARRAY_BUFFER, textureRectangle, gl.STATIC_DRAW);
-				checkError();
-
-				var texturePositionLocation = gl.getAttribLocation(program, varname);
-				checkError();
-
-				gl.enableVertexAttribArray(texturePositionLocation);
-				checkError();
-
-				gl.vertexAttribPointer(texturePositionLocation, 2, gl.FLOAT, false, 0, 0);
-				checkError();
-			}
-			setupTexturePosition('aLumaPosition', yCbCrBuffer.strideY, yCbCrBuffer.height);
-			setupTexturePosition('aChromaPosition', yCbCrBuffer.strideCb << yCbCrBuffer.hdec, yCbCrBuffer.height);
-
-			// Create the textures...
-			var textureY = attachTexture(
-				'uTextureY',
-				gl.TEXTURE0,
-				0,
-				yCbCrBuffer.strideY,
-				yCbCrBuffer.height,
-				yCbCrBuffer.bytesY
-			);
-			var textureCb = attachTexture(
-				'uTextureCb',
-				gl.TEXTURE1,
-				1,
-				yCbCrBuffer.strideCb,
-				yCbCrBuffer.height >> yCbCrBuffer.vdec,
-				yCbCrBuffer.bytesCb
-			);
-			var textureCr = attachTexture(
-				'uTextureCr',
-				gl.TEXTURE2,
-				2,
-				yCbCrBuffer.strideCr,
-				yCbCrBuffer.height >> yCbCrBuffer.vdec,
-				yCbCrBuffer.bytesCr
-			);
-
-			// Aaaaand draw stuff.
-			gl.drawArrays(gl.TRIANGLES, 0, rectangle.length / 2);
-			checkError();
-		};
-		
-		self.clear = function() {
-			gl.clearColor(0.0, 0.0, 0.0, 0.0);
-			gl.clear(gl.COLOR_BUFFER_BIT);
-		};
-
-		// @fixme make the clearing work reliably
-		self.clear();
-		gl.viewport(0, 0, canvas.width, canvas.height);
-		self.clear();
-
-		return self;
-	}
-
-	// For Windows; luminance and alpha textures are ssllooww to upload,
-	// so we pack into RGBA and unpack in the shaders.
-	//
-	// This seems to affect all browsers on Windows, probably due to fun
-	// mismatches between GL and D3D.
-	WebGLFrameSink.stripe = (function() {
-		if (navigator.userAgent.indexOf('Windows') !== -1) {
-			return true;
-		}
-		return false;
+	  module.exports = YUVCanvas;
 	})();
-
-	/**
-	 * Static function to check if WebGL will be available with appropriate features.
-	 *
-	 * @return boolean
-	 */
-	WebGLFrameSink.isAvailable = function() {
-		var canvas = document.createElement('canvas'),
-			gl;
-		canvas.width = 1;
-		canvas.height = 1;
-		var options = {
-			// Still dithering on whether to use this.
-			// Recommend avoiding it, as it's overly conservative
-			//failIfMajorPerformanceCaveat: true
-		};
-		try {
-			gl = canvas.getContext('webgl', options) || canvas.getContext('experimental-webgl', options);
-		} catch (e) {
-			return false;
-		}
-		if (gl) {
-			var register = gl.TEXTURE0,
-				width = 4,
-				height = 4,
-				texture = gl.createTexture(),
-				data = new Uint8Array(width * height),
-				texWidth = WebGLFrameSink.stripe ? (width / 4) : width,
-				format = WebGLFrameSink.stripe ? gl.RGBA : gl.LUMINANCE,
-				filter = WebGLFrameSink.stripe ? gl.NEAREST : gl.LINEAR;
-
-			gl.activeTexture(register);
-			gl.bindTexture(gl.TEXTURE_2D, texture);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
-			gl.texImage2D(
-				gl.TEXTURE_2D,
-				0, // mip level
-				format, // internal format
-				texWidth,
-				height,
-				0, // border
-				format, // format
-				gl.UNSIGNED_BYTE, //type
-				data // data!
-			);
-
-			var err = gl.getError();
-			if (err) {
-				// Doesn't support luminance textures?
-				return false;
-			} else {
-				return true;
-			}
-		} else {
-			return false;
-		}
-	};
-
-	module.exports = WebGLFrameSink;
 
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "attribute vec2 aPosition;\nattribute vec2 aLumaPosition;\nattribute vec2 aChromaPosition;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n    gl_Position = vec4(aPosition, 0, 1);\n    vLumaPosition = aLumaPosition;\n    vChromaPosition = aChromaPosition;\n}\n"
+	(function() {
+	  "use strict";
+
+	  /**
+	   * Create a YUVCanvas and attach it to an HTML5 canvas element.
+	   *
+	   * This will take over the drawing context of the canvas and may turn
+	   * it into a WebGL 3d canvas if possible. Do not attempt to use the
+	   * drawing context directly after this.
+	   *
+	   * @param {HTMLCanvasElement} canvas - HTML canvas element to attach to
+	   * @param {YUVCanvasOptions} options - map of options
+	   * @throws exception if WebGL requested but unavailable
+	   * @constructor
+	   * @abstract
+	   */
+	  function FrameSink(canvas, options) {
+	    throw new Error('abstract');
+	  }
+
+	  /**
+	   * Draw a single YUV frame on the underlying canvas, converting to RGB.
+	   * If necessary the canvas will be resized to the optimal pixel size
+	   * for the given buffer's format.
+	   *
+	   * @param {YUVBuffer} buffer - the YUV buffer to draw
+	   * @see {@link https://www.npmjs.com/package/yuv-buffer|yuv-buffer} for format
+	   */
+	  FrameSink.prototype.drawFrame = function(buffer) {
+	    throw new Error('abstract');
+	  };
+
+	  /**
+	   * Clear the canvas using appropriate underlying 2d or 3d context.
+	   */
+	  FrameSink.prototype.clear = function() {
+	    throw new Error('abstract');
+	  };
+
+	  module.exports = FrameSink;
+
+	})();
 
 
 /***/ },
 /* 11 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "// inspired by https://github.com/mbebenita/Broadway/blob/master/Player/canvas.js\n\nprecision mediump float;\nuniform sampler2D uTextureY;\nuniform sampler2D uTextureCb;\nuniform sampler2D uTextureCr;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n   // Y, Cb, and Cr planes are uploaded as LUMINANCE textures.\n   float fY = texture2D(uTextureY, vLumaPosition).x;\n   float fCb = texture2D(uTextureCb, vChromaPosition).x;\n   float fCr = texture2D(uTextureCr, vChromaPosition).x;\n\n   // Premultipy the Y...\n   float fYmul = fY * 1.1643828125;\n\n   // And convert that to RGB!\n   gl_FragColor = vec4(\n     fYmul + 1.59602734375 * fCr - 0.87078515625,\n     fYmul - 0.39176171875 * fCb - 0.81296875 * fCr + 0.52959375,\n     fYmul + 2.017234375   * fCb - 1.081390625,\n     1\n   );\n}\n"
+	/*
+	Copyright (c) 2014-2016 Brion Vibber <brion@pobox.com>
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+	the Software, and to permit persons to whom the Software is furnished to do so,
+	subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	MPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+	FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+	COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*/
+	(function() {
+		"use strict";
+
+		var FrameSink = __webpack_require__(10),
+			YCbCr = __webpack_require__(12);
+
+		/**
+		 * @param {HTMLCanvasElement} canvas - HTML canvas eledment to attach to
+		 * @constructor
+		 */
+		function SoftwareFrameSink(canvas) {
+			var self = this,
+				ctx = canvas.getContext('2d'),
+				imageData = null,
+				resampleCanvas = null,
+				resampleContext = null;
+
+
+
+			function initImageData(width, height) {
+				imageData = ctx.createImageData(width, height);
+
+				// Prefill the alpha to opaque
+				var data = imageData.data,
+					pixelCount = width * height * 4;
+				for (var i = 0; i < pixelCount; i += 4) {
+					data[i + 3] = 255;
+				}
+			}
+
+			function initResampleCanvas(cropWidth, cropHeight) {
+				resampleCanvas = document.createElement('canvas');
+				resampleCanvas.width = cropWidth;
+				resampleCanvas.height = cropHeight;
+				resampleContext = resampleCanvas.getContext('2d');
+			}
+
+			/**
+			 * Actually draw a frame into the canvas.
+			 * @param {YUVFrame} buffer - YUV frame buffer object to draw
+			 */
+			self.drawFrame = function drawFrame(buffer) {
+				var format = buffer.format;
+
+				if (canvas.width !== format.displayWidth || canvas.height || format.displayHeight) {
+					// Keep the canvas at the right size...
+					canvas.width = format.displayWidth;
+					canvas.height = format.displayHeight;
+				}
+
+				if (imageData === null ||
+						imageData.width != format.width ||
+						imageData.height != format.height) {
+					initImageData(format.width, format.height);
+				}
+
+				// YUV -> RGB over the entire encoded frame
+				YCbCr.convertYCbCr(buffer, imageData.data);
+
+				var resample = (format.cropWidth != format.displayWidth || format.cropHeight != format.displayHeight);
+				var drawContext;
+				if (resample) {
+					// hack for non-square aspect-ratio
+					// putImageData doesn't resample, so we have to draw in two steps.
+					if (!resampleCanvas) {
+						initResampleCanvas(format.cropWidth, format.cropHeight);
+					}
+					drawContext = resampleContext;
+				} else {
+					drawContext = ctx;
+				}
+
+				// Draw cropped frame to either the final or temporary canvas
+				drawContext.putImageData(imageData,
+								         0, 0,
+												 format.cropLeft, format.cropTop,
+												 format.cropWidth, format.cropHeight);
+
+				if (resample) {
+					ctx.drawImage(resampleCanvas, 0, 0, format.displayWidth, format.displayHeight);
+				}
+			};
+
+			self.clear = function() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+			};
+
+			return self;
+		}
+
+		SoftwareFrameSink.prototype = Object.create(FrameSink.prototype);
+
+		module.exports = SoftwareFrameSink;
+	})();
 
 
 /***/ },
 /* 12 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "// inspired by https://github.com/mbebenita/Broadway/blob/master/Player/canvas.js\n// extra 'stripe' texture fiddling to work around IE 11's poor performance on gl.LUMINANCE and gl.ALPHA textures\n\nprecision mediump float;\nuniform sampler2D uStripeLuma;\nuniform sampler2D uStripeChroma;\nuniform sampler2D uTextureY;\nuniform sampler2D uTextureCb;\nuniform sampler2D uTextureCr;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n   // Y, Cb, and Cr planes are mapped into a pseudo-RGBA texture\n   // so we can upload them without expanding the bytes on IE 11\n   // which doesn\\'t allow LUMINANCE or ALPHA textures.\n   // The stripe textures mark which channel to keep for each pixel.\n   vec4 vStripeLuma = texture2D(uStripeLuma, vLumaPosition);\n   vec4 vStripeChroma = texture2D(uStripeChroma, vChromaPosition);\n\n   // Each texture extraction will contain the relevant value in one\n   // channel only.\n   vec4 vY = texture2D(uTextureY, vLumaPosition) * vStripeLuma;\n   vec4 vCb = texture2D(uTextureCb, vChromaPosition) * vStripeChroma;\n   vec4 vCr = texture2D(uTextureCr, vChromaPosition) * vStripeChroma;\n\n   // Now assemble that into a YUV vector, and premultipy the Y...\n   vec3 YUV = vec3(\n     (vY.x  + vY.y  + vY.z  + vY.w) * 1.1643828125,\n     (vCb.x + vCb.y + vCb.z + vCb.w),\n     (vCr.x + vCr.y + vCr.z + vCr.w)\n   );\n   // And convert that to RGB!\n   gl_FragColor = vec4(\n     YUV.x + 1.59602734375 * YUV.z - 0.87078515625,\n     YUV.x - 0.39176171875 * YUV.y - 0.81296875 * YUV.z + 0.52959375,\n     YUV.x + 2.017234375   * YUV.y - 1.081390625,\n     1\n   );\n}\n"
+	/*
+	Copyright (c) 2014-2016 Brion Vibber <brion@pobox.com>
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+	the Software, and to permit persons to whom the Software is furnished to do so,
+	subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	MPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+	FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+	COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*/
+	(function() {
+		"use strict";
+
+		var depower = __webpack_require__(13);
+
+		/**
+		 * Basic YCbCr->RGB conversion
+		 *
+		 * @author Brion Vibber <brion@pobox.com>
+		 * @copyright 2014-2016
+		 * @license MIT-style
+		 *
+		 * @param {YUVFrame} buffer - input frame buffer
+		 * @param {Uint8ClampedArray} output - array to draw RGBA into
+		 * Assumes that the output array already has alpha channel set to opaque.
+		 */
+		function convertYCbCr(buffer, output) {
+			var width = buffer.format.width,
+				height = buffer.format.height,
+				hdec = depower(buffer.format.width / buffer.format.chromaWidth),
+				vdec = depower(buffer.format.height / buffer.format.chromaHeight),
+				bytesY = buffer.y.bytes,
+				bytesCb = buffer.u.bytes,
+				bytesCr = buffer.v.bytes,
+				strideY = buffer.y.stride,
+				strideCb = buffer.u.stride,
+				strideCr = buffer.v.stride,
+				outStride = 4 * width,
+				YPtr = 0, Y0Ptr = 0, Y1Ptr = 0,
+				CbPtr = 0, CrPtr = 0,
+				outPtr = 0, outPtr0 = 0, outPtr1 = 0,
+				colorCb = 0, colorCr = 0,
+				multY = 0, multCrR = 0, multCbCrG = 0, multCbB = 0,
+				x = 0, y = 0, xdec = 0, ydec = 0;
+
+			if (hdec == 1 && vdec == 1) {
+				// Optimize for 4:2:0, which is most common
+				outPtr0 = 0;
+				outPtr1 = outStride;
+				ydec = 0;
+				for (y = 0; y < height; y += 2) {
+					Y0Ptr = y * strideY;
+					Y1Ptr = Y0Ptr + strideY;
+					CbPtr = ydec * strideCb;
+					CrPtr = ydec * strideCr;
+					for (x = 0; x < width; x += 2) {
+						colorCb = bytesCb[CbPtr++];
+						colorCr = bytesCr[CrPtr++];
+
+						// Quickie YUV conversion
+						// https://en.wikipedia.org/wiki/YCbCr#ITU-R_BT.2020_conversion
+						// multiplied by 256 for integer-friendliness
+						multCrR   = (409 * colorCr) - 57088;
+						multCbCrG = (100 * colorCb) + (208 * colorCr) - 34816;
+						multCbB   = (516 * colorCb) - 70912;
+
+						multY = (298 * bytesY[Y0Ptr++]);
+						output[outPtr0++] = (multY + multCrR) >> 8;
+						output[outPtr0++] = (multY - multCbCrG) >> 8;
+						output[outPtr0++] = (multY + multCbB) >> 8;
+						outPtr0++;
+
+						multY = (298 * bytesY[Y0Ptr++]);
+						output[outPtr0++] = (multY + multCrR) >> 8;
+						output[outPtr0++] = (multY - multCbCrG) >> 8;
+						output[outPtr0++] = (multY + multCbB) >> 8;
+						outPtr0++;
+
+						multY = (298 * bytesY[Y1Ptr++]);
+						output[outPtr1++] = (multY + multCrR) >> 8;
+						output[outPtr1++] = (multY - multCbCrG) >> 8;
+						output[outPtr1++] = (multY + multCbB) >> 8;
+						outPtr1++;
+
+						multY = (298 * bytesY[Y1Ptr++]);
+						output[outPtr1++] = (multY + multCrR) >> 8;
+						output[outPtr1++] = (multY - multCbCrG) >> 8;
+						output[outPtr1++] = (multY + multCbB) >> 8;
+						outPtr1++;
+					}
+					outPtr0 += outStride;
+					outPtr1 += outStride;
+					ydec++;
+				}
+			} else {
+				outPtr = 0;
+				for (y = 0; y < height; y++) {
+					xdec = 0;
+					ydec = y >> vdec;
+					YPtr = y * strideY;
+					CbPtr = ydec * strideCb;
+					CrPtr = ydec * strideCr;
+
+					for (x = 0; x < width; x++) {
+						xdec = x >> hdec;
+						colorCb = bytesCb[CbPtr + xdec];
+						colorCr = bytesCr[CrPtr + xdec];
+
+						// Quickie YUV conversion
+						// https://en.wikipedia.org/wiki/YCbCr#ITU-R_BT.2020_conversion
+						// multiplied by 256 for integer-friendliness
+						multCrR   = (409 * colorCr) - 57088;
+						multCbCrG = (100 * colorCb) + (208 * colorCr) - 34816;
+						multCbB   = (516 * colorCb) - 70912;
+
+						multY = 298 * bytesY[YPtr++];
+						output[outPtr++] = (multY + multCrR) >> 8;
+						output[outPtr++] = (multY - multCbCrG) >> 8;
+						output[outPtr++] = (multY + multCbB) >> 8;
+						outPtr++;
+					}
+				}
+			}
+		}
+
+		module.exports = {
+			convertYCbCr: convertYCbCr
+		};
+	})();
 
 
 /***/ },
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	/**
-	 * @param HTMLCanvasElement canvas
-	 * @constructor
-	 */
-	var YCbCr = __webpack_require__(14);
+	/*
+	Copyright (c) 2014-2016 Brion Vibber <brion@pobox.com>
 
-	function FrameSink(canvas, videoInfo) {
-		var self = this,
-			ctx = canvas.getContext('2d'),
-			imageData = null,
-			resampleCanvas = null,
-			resampleContext = null;
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+	the Software, and to permit persons to whom the Software is furnished to do so,
+	subject to the following conditions:
 
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
 
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	MPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+	FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+	COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*/
+	(function() {
+	  "use strict";
 
-		function initImageData(width, height) {
-			imageData = ctx.createImageData(width, height);
+	  /**
+	   * Convert a ratio into a bit-shift count; for instance a ratio of 2
+	   * becomes a bit-shift of 1, while a ratio of 1 is a bit-shift of 0.
+	   *
+	   * @author Brion Vibber <brion@pobox.com>
+	   * @copyright 2016
+	   * @license MIT-style
+	   *
+	   * @param {number} ratio - the integer ratio to convert.
+	   * @returns {number} - number of bits to shift to multiply/divide by the ratio.
+	   * @throws exception if given a non-power-of-two
+	   */
+	  function depower(ratio) {
+	    var shiftCount = 0,
+	      n = ratio >> 1;
+	    while (n != 0) {
+	      n = n >> 1;
+	      shiftCount++
+	    }
+	    if (ratio !== (1 << shiftCount)) {
+	      throw 'chroma plane dimensions must be power of 2 ratio to luma plane dimensions; got ' + ratio;
+	    }
+	    return shiftCount;
+	  }
 
-			// Prefill the alpha to opaque
-			var data = imageData.data,
-				pixelCount = width * height * 4;
-			for (var i = 0; i < pixelCount; i += 4) {
-				data[i + 3] = 255;
-			}
-		}
-
-		function initResampleCanvas() {
-			resampleCanvas = document.createElement('canvas');
-			resampleCanvas.width = videoInfo.picWidth;
-			resampleCanvas.height = videoInfo.picHeight;
-			resampleContext = resampleCanvas.getContext('2d');
-		}
-
-		/**
-		 * Actually draw a frame into the canvas.
-		 */
-		self.drawFrame = function drawFrame(yCbCrBuffer) {
-			if (imageData === null ||
-					imageData.width != yCbCrBuffer.width ||
-					imageData.height != yCbCrBuffer.height) {
-				initImageData(yCbCrBuffer.width, yCbCrBuffer.height);
-			}
-			YCbCr.convertYCbCr(yCbCrBuffer, imageData.data);
-
-			var resample = (videoInfo.picWidth != videoInfo.displayWidth || videoInfo.picHeight != videoInfo.displayHeight);
-			var drawContext;
-			if (resample) {
-				// hack for non-square aspect-ratio
-				// putImageData doesn't resample, so we have to draw in two steps.
-				if (!resampleCanvas) {
-					initResampleCanvas();
-				}
-				drawContext = resampleContext;
-			} else {
-				drawContext = ctx;
-			}
-
-			drawContext.putImageData(imageData,
-							         0, 0,
-							         videoInfo.picX, videoInfo.picY,
-							         videoInfo.picWidth, videoInfo.picHeight);
-
-			if (resample) {
-				ctx.drawImage(resampleCanvas, 0, 0, videoInfo.displayWidth, videoInfo.displayHeight);
-			}
-		};
-
-		self.clear = function() {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-		};
-
-		return self;
-	}
-
-	module.exports = FrameSink;
+	  module.exports = depower;
+	})();
 
 
 /***/ },
 /* 14 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Basic YCbCr->RGB conversion
-	 *
-	 * @author Brion Vibber <brion@pobox.com>
-	 * @copyright 2014
-	 * @license MIT-style
-	 *
-	 * @param ybcbr {bytesY, bytesCb, bytesCr, strideY, strideCb, strideCr, width, height, hdec, vdec}
-	 * @param TypedArray output: CanvasPixelArray or Uint8ClampedArray to draw RGBA into
-	 * Assumes that the output array already has alpha channel set to opaque.
-	 */
-	function convertYCbCr(ybcbr, output) {
-		var width = ybcbr.width,
-			height = ybcbr.height,
-			hdec = ybcbr.hdec,
-			vdec = ybcbr.vdec,
-			bytesY = ybcbr.bytesY,
-			bytesCb = ybcbr.bytesCb,
-			bytesCr = ybcbr.bytesCr,
-			strideY = ybcbr.strideY,
-			strideCb = ybcbr.strideCb,
-			strideCr = ybcbr.strideCr,
-			outStride = 4 * width,
-			YPtr = 0, Y0Ptr = 0, Y1Ptr = 0,
-			CbPtr = 0, CrPtr = 0,
-			outPtr = 0, outPtr0 = 0, outPtr1 = 0,
-			colorCb = 0, colorCr = 0,
-			multY = 0, multCrR = 0, multCbCrG = 0, multCbB = 0,
-			x = 0, y = 0, xdec = 0, ydec = 0;
+	/*
+	Copyright (c) 2014-2016 Brion Vibber <brion@pobox.com>
 
-		if (hdec == 1 && vdec == 1) {
-			// Optimize for 4:2:0, which is most common
-			outPtr0 = 0;
-			outPtr1 = outStride;
-			ydec = 0;
-			for (y = 0; y < height; y += 2) {
-				Y0Ptr = y * strideY;
-				Y1Ptr = Y0Ptr + strideY;
-				CbPtr = ydec * strideCb;
-				CrPtr = ydec * strideCr;
-				for (x = 0; x < width; x += 2) {
-					colorCb = bytesCb[CbPtr++];
-					colorCr = bytesCr[CrPtr++];
+	Permission is hereby granted, free of charge, to any person obtaining a copy of
+	this software and associated documentation files (the "Software"), to deal in
+	the Software without restriction, including without limitation the rights to
+	use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+	the Software, and to permit persons to whom the Software is furnished to do so,
+	subject to the following conditions:
 
-					// Quickie YUV conversion
-					// https://en.wikipedia.org/wiki/YCbCr#ITU-R_BT.2020_conversion
-					// multiplied by 256 for integer-friendliness
-					multCrR   = (409 * colorCr) - 57088;
-					multCbCrG = (100 * colorCb) + (208 * colorCr) - 34816;
-					multCbB   = (516 * colorCb) - 70912;
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
 
-					multY = (298 * bytesY[Y0Ptr++]);
-					output[outPtr0++] = (multY + multCrR) >> 8;
-					output[outPtr0++] = (multY - multCbCrG) >> 8;
-					output[outPtr0++] = (multY + multCbB) >> 8;
-					outPtr0++;
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	MPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+	FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+	COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+	IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*/
+	(function() {
+		"use strict";
 
-					multY = (298 * bytesY[Y0Ptr++]);
-					output[outPtr0++] = (multY + multCrR) >> 8;
-					output[outPtr0++] = (multY - multCbCrG) >> 8;
-					output[outPtr0++] = (multY + multCbB) >> 8;
-					outPtr0++;
+		var FrameSink = __webpack_require__(10),
+			shaders = __webpack_require__(15);
 
-					multY = (298 * bytesY[Y1Ptr++]);
-					output[outPtr1++] = (multY + multCrR) >> 8;
-					output[outPtr1++] = (multY - multCbCrG) >> 8;
-					output[outPtr1++] = (multY + multCbB) >> 8;
-					outPtr1++;
+		/**
+		 * Warning: canvas must not have been used for 2d drawing prior!
+		 *
+		 * @param {HTMLCanvasElement} canvas - HTML canvas element to attach to
+		 * @constructor
+		 */
+		function WebGLFrameSink(canvas) {
+			var self = this,
+				gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'),
+				debug = false; // swap this to enable more error checks, which can slow down rendering
 
-					multY = (298 * bytesY[Y1Ptr++]);
-					output[outPtr1++] = (multY + multCrR) >> 8;
-					output[outPtr1++] = (multY - multCbCrG) >> 8;
-					output[outPtr1++] = (multY + multCbB) >> 8;
-					outPtr1++;
-				}
-				outPtr0 += outStride;
-				outPtr1 += outStride;
-				ydec++;
+			if (gl === null) {
+				throw new Error('WebGL unavailable');
 			}
-		} else {
-			outPtr = 0;
-			for (y = 0; y < height; y++) {
-				xdec = 0;
-				ydec = y >> vdec;
-				YPtr = y * strideY;
-				CbPtr = ydec * strideCb;
-				CrPtr = ydec * strideCr;
 
-				for (x = 0; x < width; x++) {
-					xdec = x >> hdec;
-					colorCb = bytesCb[CbPtr + xdec];
-					colorCr = bytesCr[CrPtr + xdec];
-
-					// Quickie YUV conversion
-					// https://en.wikipedia.org/wiki/YCbCr#ITU-R_BT.2020_conversion
-					// multiplied by 256 for integer-friendliness
-					multCrR   = (409 * colorCr) - 57088;
-					multCbCrG = (100 * colorCb) + (208 * colorCr) - 34816;
-					multCbB   = (516 * colorCb) - 70912;
-
-					multY = 298 * bytesY[YPtr++];
-					output[outPtr++] = (multY + multCrR) >> 8;
-					output[outPtr++] = (multY - multCbCrG) >> 8;
-					output[outPtr++] = (multY + multCbB) >> 8;
-					outPtr++;
+			// GL!
+			function checkError() {
+				if (debug) {
+					err = gl.getError();
+					if (err !== 0) {
+						throw new Error("GL error " + err);
+					}
 				}
 			}
+
+			function compileShader(type, source) {
+				var shader = gl.createShader(type);
+				gl.shaderSource(shader, source);
+				gl.compileShader(shader);
+
+				if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+					var err = gl.getShaderInfoLog(shader);
+					gl.deleteShader(shader);
+					throw new Error('GL shader compilation for ' + type + ' failed: ' + err);
+				}
+
+				return shader;
+			}
+
+
+			var vertexShader,
+				fragmentShader,
+				program,
+				buf,
+				err;
+
+			// In the world of GL there are no rectangles.
+			// There are only triangles.
+			// THERE IS NO SPOON.
+			var rectangle = new Float32Array([
+				// First triangle (top left, clockwise)
+				-1.0, -1.0,
+				+1.0, -1.0,
+				-1.0, +1.0,
+
+				// Second triangle (bottom right, clockwise)
+				-1.0, +1.0,
+				+1.0, -1.0,
+				+1.0, +1.0
+			]);
+
+			var textures = {};
+			function attachTexture(name, register, index, width, height, data) {
+				var texture,
+					texWidth = WebGLFrameSink.stripe ? (width / 4) : width,
+					format = WebGLFrameSink.stripe ? gl.RGBA : gl.LUMINANCE,
+					filter = WebGLFrameSink.stripe ? gl.NEAREST : gl.LINEAR;
+
+				if (textures[name]) {
+					// Reuse & update the existing texture
+					texture = textures[name];
+				} else {
+					textures[name] = texture = gl.createTexture();
+					checkError();
+
+					gl.uniform1i(gl.getUniformLocation(program, name), index);
+					checkError();
+				}
+				gl.activeTexture(register);
+				checkError();
+				gl.bindTexture(gl.TEXTURE_2D, texture);
+				checkError();
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+				checkError();
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+				checkError();
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+				checkError();
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
+				checkError();
+
+				gl.texImage2D(
+					gl.TEXTURE_2D,
+					0, // mip level
+					format, // internal format
+					texWidth,
+					height,
+					0, // border
+					format, // format
+					gl.UNSIGNED_BYTE, //type
+					data // data!
+				);
+				checkError();
+
+				return texture;
+			}
+
+			function buildStripe(width, height) {
+				var len = width * height,
+					out = new Uint32Array(len);
+				for (var i = 0; i < len; i += 4) {
+					out[i    ] = 0x000000ff;
+					out[i + 1] = 0x0000ff00;
+					out[i + 2] = 0x00ff0000;
+					out[i + 3] = 0xff000000;
+				}
+				return new Uint8Array(out.buffer);
+			}
+
+			function init(buffer) {
+				vertexShader = compileShader(gl.VERTEX_SHADER, shaders.vertex);
+				if (WebGLFrameSink.stripe) {
+					fragmentShader = compileShader(gl.FRAGMENT_SHADER, shaders.fragmentStripe);
+				} else {
+					fragmentShader = compileShader(gl.FRAGMENT_SHADER, shaders.fragment);
+				}
+
+				program = gl.createProgram();
+				gl.attachShader(program, vertexShader);
+				checkError();
+
+				gl.attachShader(program, fragmentShader);
+				checkError();
+
+				gl.linkProgram(program);
+				if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+					var err = gl.getProgramInfoLog(program);
+					gl.deleteProgram(program);
+					throw new Error('GL program linking failed: ' + err);
+				}
+
+				gl.useProgram(program);
+				checkError();
+
+				if (WebGLFrameSink.stripe) {
+					attachTexture(
+						'uStripeLuma',
+						gl.TEXTURE3,
+						3,
+						buffer.y.stride * 4,
+						buffer.format.height,
+						buildStripe(buffer.y.stride, buffer.format.height)
+					);
+					checkError();
+
+					attachTexture(
+						'uStripeChroma',
+						gl.TEXTURE4,
+						4,
+						buffer.u.stride * 4,
+						buffer.format.chromaHeight,
+						buildStripe(buffer.u.stride, buffer.format.chromaHeight)
+					);
+					checkError();
+				}
+			}
+
+			/**
+			 * Actually draw a frame.
+			 * @param {YUVFrame} buffer - YUV frame buffer object
+			 */
+			self.drawFrame = function(buffer) {
+				var format = buffer.format;
+
+				if (canvas.width !== format.displayWidth || canvas.height !== format.displayHeight) {
+					// Keep the canvas at the right size...
+					canvas.width = format.displayWidth;
+					canvas.height = format.displayHeight;
+					self.clear();
+				}
+
+				if (!program) {
+					init(buffer);
+				}
+
+				// Set up the rectangle and draw it
+
+				//
+				// Set up geometry
+				//
+
+				buf = gl.createBuffer();
+				checkError();
+
+				gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+				checkError();
+
+				gl.bufferData(gl.ARRAY_BUFFER, rectangle, gl.STATIC_DRAW);
+				checkError();
+
+				var positionLocation = gl.getAttribLocation(program, 'aPosition');
+				checkError();
+
+				gl.enableVertexAttribArray(positionLocation);
+				checkError();
+
+				gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+				checkError();
+
+
+				// Set up the texture geometry...
+				function setupTexturePosition(varname, texWidth) {
+					// Warning: assumes that the stride for Cb and Cr is the same size in output pixels
+					var textureX0 = format.cropLeft / texWidth;
+					var textureX1 = (format.cropLeft + format.cropWidth) / texWidth;
+					var textureY0 = (format.cropTop + format.cropHeight) / format.height;
+					var textureY1 = format.cropTop / format.height;
+					var textureRectangle = new Float32Array([
+						textureX0, textureY0,
+						textureX1, textureY0,
+						textureX0, textureY1,
+						textureX0, textureY1,
+						textureX1, textureY0,
+						textureX1, textureY1
+					]);
+
+					var texturePositionBuffer = gl.createBuffer();
+					gl.bindBuffer(gl.ARRAY_BUFFER, texturePositionBuffer);
+					checkError();
+
+					gl.bufferData(gl.ARRAY_BUFFER, textureRectangle, gl.STATIC_DRAW);
+					checkError();
+
+					var texturePositionLocation = gl.getAttribLocation(program, varname);
+					checkError();
+
+					gl.enableVertexAttribArray(texturePositionLocation);
+					checkError();
+
+					gl.vertexAttribPointer(texturePositionLocation, 2, gl.FLOAT, false, 0, 0);
+					checkError();
+				}
+				setupTexturePosition('aLumaPosition', buffer.y.stride);
+				setupTexturePosition('aChromaPosition', buffer.u.stride * format.width / format.chromaWidth);
+
+				// Create the textures...
+				var textureY = attachTexture(
+					'uTextureY',
+					gl.TEXTURE0,
+					0,
+					buffer.y.stride,
+					format.height,
+					buffer.y.bytes
+				);
+				var textureCb = attachTexture(
+					'uTextureCb',
+					gl.TEXTURE1,
+					1,
+					buffer.u.stride,
+					format.chromaHeight,
+					buffer.u.bytes
+				);
+				var textureCr = attachTexture(
+					'uTextureCr',
+					gl.TEXTURE2,
+					2,
+					buffer.v.stride,
+					format.chromaHeight,
+					buffer.v.bytes
+				);
+
+				// Aaaaand draw stuff.
+				gl.drawArrays(gl.TRIANGLES, 0, rectangle.length / 2);
+				checkError();
+			};
+
+			self.clear = function() {
+				gl.viewport(0, 0, canvas.width, canvas.height);
+				gl.clearColor(0.0, 0.0, 0.0, 0.0);
+				gl.clear(gl.COLOR_BUFFER_BIT);
+			};
+
+			self.clear();
+
+			return self;
 		}
-	}
 
-	module.exports = {
-		convertYCbCr: convertYCbCr
-	};
+		// For Windows; luminance and alpha textures are ssllooww to upload,
+		// so we pack into RGBA and unpack in the shaders.
+		//
+		// This seems to affect all browsers on Windows, probably due to fun
+		// mismatches between GL and D3D.
+		WebGLFrameSink.stripe = (function() {
+			if (navigator.userAgent.indexOf('Windows') !== -1) {
+				return true;
+			}
+			return false;
+		})();
+
+		/**
+		 * Static function to check if WebGL will be available with appropriate features.
+		 *
+		 * @returns {boolean} - true if available
+		 */
+		WebGLFrameSink.isAvailable = function() {
+			var canvas = document.createElement('canvas'),
+				gl;
+			canvas.width = 1;
+			canvas.height = 1;
+			var options = {
+				// Still dithering on whether to use this.
+				// Recommend avoiding it, as it's overly conservative
+				//failIfMajorPerformanceCaveat: true
+			};
+			try {
+				gl = canvas.getContext('webgl', options) || canvas.getContext('experimental-webgl', options);
+			} catch (e) {
+				return false;
+			}
+			if (gl) {
+				var register = gl.TEXTURE0,
+					width = 4,
+					height = 4,
+					texture = gl.createTexture(),
+					data = new Uint8Array(width * height),
+					texWidth = WebGLFrameSink.stripe ? (width / 4) : width,
+					format = WebGLFrameSink.stripe ? gl.RGBA : gl.LUMINANCE,
+					filter = WebGLFrameSink.stripe ? gl.NEAREST : gl.LINEAR;
+
+				gl.activeTexture(register);
+				gl.bindTexture(gl.TEXTURE_2D, texture);
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+				gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
+				gl.texImage2D(
+					gl.TEXTURE_2D,
+					0, // mip level
+					format, // internal format
+					texWidth,
+					height,
+					0, // border
+					format, // format
+					gl.UNSIGNED_BYTE, //type
+					data // data!
+				);
+
+				var err = gl.getError();
+				if (err) {
+					// Doesn't support luminance textures?
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		};
+
+		WebGLFrameSink.prototype = Object.create(FrameSink.prototype);
+
+		module.exports = WebGLFrameSink;
+	})();
 
 
 /***/ },
 /* 15 */
+/***/ function(module, exports) {
+
+	module.exports = {
+	  vertex: "attribute vec2 aPosition;\nattribute vec2 aLumaPosition;\nattribute vec2 aChromaPosition;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n    gl_Position = vec4(aPosition, 0, 1);\n    vLumaPosition = aLumaPosition;\n    vChromaPosition = aChromaPosition;\n}\n",
+	  fragment: "// inspired by https://github.com/mbebenita/Broadway/blob/master/Player/canvas.js\n\nprecision mediump float;\nuniform sampler2D uTextureY;\nuniform sampler2D uTextureCb;\nuniform sampler2D uTextureCr;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n   // Y, Cb, and Cr planes are uploaded as LUMINANCE textures.\n   float fY = texture2D(uTextureY, vLumaPosition).x;\n   float fCb = texture2D(uTextureCb, vChromaPosition).x;\n   float fCr = texture2D(uTextureCr, vChromaPosition).x;\n\n   // Premultipy the Y...\n   float fYmul = fY * 1.1643828125;\n\n   // And convert that to RGB!\n   gl_FragColor = vec4(\n     fYmul + 1.59602734375 * fCr - 0.87078515625,\n     fYmul - 0.39176171875 * fCb - 0.81296875 * fCr + 0.52959375,\n     fYmul + 2.017234375   * fCb - 1.081390625,\n     1\n   );\n}\n",
+	  fragmentStripe: "// inspired by https://github.com/mbebenita/Broadway/blob/master/Player/canvas.js\n// extra 'stripe' texture fiddling to work around IE 11's poor performance on gl.LUMINANCE and gl.ALPHA textures\n\nprecision mediump float;\nuniform sampler2D uStripeLuma;\nuniform sampler2D uStripeChroma;\nuniform sampler2D uTextureY;\nuniform sampler2D uTextureCb;\nuniform sampler2D uTextureCr;\nvarying vec2 vLumaPosition;\nvarying vec2 vChromaPosition;\nvoid main() {\n   // Y, Cb, and Cr planes are mapped into a pseudo-RGBA texture\n   // so we can upload them without expanding the bytes on IE 11\n   // which doesn\\'t allow LUMINANCE or ALPHA textures.\n   // The stripe textures mark which channel to keep for each pixel.\n   vec4 vStripeLuma = texture2D(uStripeLuma, vLumaPosition);\n   vec4 vStripeChroma = texture2D(uStripeChroma, vChromaPosition);\n\n   // Each texture extraction will contain the relevant value in one\n   // channel only.\n   vec4 vY = texture2D(uTextureY, vLumaPosition) * vStripeLuma;\n   vec4 vCb = texture2D(uTextureCb, vChromaPosition) * vStripeChroma;\n   vec4 vCr = texture2D(uTextureCr, vChromaPosition) * vStripeChroma;\n\n   // Now assemble that into a YUV vector, and premultipy the Y...\n   vec3 YUV = vec3(\n     (vY.x  + vY.y  + vY.z  + vY.w) * 1.1643828125,\n     (vCb.x + vCb.y + vCb.z + vCb.w),\n     (vCr.x + vCr.y + vCr.z + vCr.w)\n   );\n   // And convert that to RGB!\n   gl_FragColor = vec4(\n     YUV.x + 1.59602734375 * YUV.z - 0.87078515625,\n     YUV.x - 0.39176171875 * YUV.y - 0.81296875 * YUV.z + 0.52959375,\n     YUV.x + 2.017234375   * YUV.y - 1.081390625,\n     1\n   );\n}\n"
+	};
+
+
+/***/ },
+/* 16 */
 /***/ function(module, exports) {
 
 	/**
@@ -4354,7 +4623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -6048,13 +6317,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=e187c46551bc31edb18fea80fdc3e941";
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	/**
@@ -6103,7 +6372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6120,7 +6389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.1.3-20160627181101-5f064cc")),
+			suffix = '?version=' + encodeURIComponent(("1.2.0-20160919145031-b4b9f58")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,
