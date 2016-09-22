@@ -46,7 +46,7 @@ class TimedMediaIframeOutput {
 	 * @throws Exception
 	 */
 	static function outputIframe( $title ) {
-		global $wgEnableIframeEmbed, $wgOut, $wgBreakFrames, $wgTmhWebPlayer;
+		global $wgEnableIframeEmbed, $wgOut, $wgBreakFrames;
 
 		if ( !$wgEnableIframeEmbed ) {
 			return false;
@@ -68,13 +68,16 @@ class TimedMediaIframeOutput {
 		$wgOut->allowClickjacking();
 		$wgOut->disallowUserJs();
 
-		if ( $wgTmhWebPlayer == 'mwembed' ) {
+		if ( TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
 			$wgOut->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
 			$wgOut->addModuleStyles( 'embedPlayerIframeStyle' );
-		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
+		}
+
+		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
 			$wgOut->addModules( 'ext.tmh.player' );
 			$wgOut->addModuleStyles( 'ext.tmh.player.styles' );
 		}
+
 		$wgOut->sendCacheControl();
 		$rlClient = $wgOut->getRlClient();
 

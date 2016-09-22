@@ -165,6 +165,8 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg audio file|$1 Ogg audio files}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC audio file|$1 FLAC audio files}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV audio file|$1 WAV audio files}}",
+	"beta-feature-timedmediahandler-message-videojs": "Video.js",
+	"beta-feature-timedmediahandler-description-videojs": "Updated audio/video player with cleaner look and mobile compatibility.",
 	"right-transcode-reset": "Reset failed or transcoded videos so they are inserted into the job queue again",
 	"right-transcode-status": "View [[Special:TimedMediaHandler|information about the current transcode activity]]",
 	"action-transcode-status": "view the current transcoding status",

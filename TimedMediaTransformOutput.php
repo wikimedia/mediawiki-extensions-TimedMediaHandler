@@ -124,8 +124,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @throws Exception
 	 */
 	function toHtml( $options = [] ) {
-		global $wgTmhWebPlayer;
-
 		if ( count( func_get_args() ) == 2 ) {
 			throw new Exception( __METHOD__ .' called in the old style' );
 		}
@@ -139,7 +137,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->width = $options['override-width'];
 		}
 
-		if ( $this->useImagePopUp() && $wgTmhWebPlayer === 'mwembed' ) {
+		if ( $this->useImagePopUp() && TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
 			$res = $this->getImagePopUp();
 		} else {
 			$res = $this->getHtmlMediaTagOutput();
@@ -297,8 +295,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
-		global $wgTmhWebPlayer;
-
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		reset( $mediaSources ); // do not rely on auto-resetting of arrays under HHVM
@@ -363,7 +359,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			self::htmlTagSet( 'track', $mediaTracks )
 		);
 
-		if ( $wgTmhWebPlayer === 'videojs' ) {
+		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
 			return $s;
 		} // else mwEmbed player
 
@@ -400,7 +396,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return array
 	 */
 	function getMediaAttr( $sizeOverride = false, $autoPlay = false ) {
-		global $wgVideoPlayerSkin, $wgTmhWebPlayer;
+		global $wgVideoPlayerSkin;
 
 		// Normalize values
 		$length = floatval( $this->length );
@@ -439,7 +435,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			unset( $mediaAttr[ 'poster' ] );
 		}
 
-		if ( $wgTmhWebPlayer === 'videojs' ) {
+		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
 			// Note: do not add 'video-js' class before the runtime transform!
 			$mediaAttr['class'] = $wgVideoPlayerSkin;
 			$mediaAttr['width'] = $this->fillwindow ? '100%' : intval( $width );

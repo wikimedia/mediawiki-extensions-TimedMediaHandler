@@ -32,164 +32,157 @@ class TimedMediaHandlerHooks {
 	// But for now we register them dynamically, because they are config dependent,
 	// while we have two players
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
-		global $wgTmhWebPlayer;
-
 		$baseExtensionResource = [
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'TimedMediaHandler',
 		];
 
-		if ( $wgTmhWebPlayer === 'mwembed' ) {
-			$resourceModules = [
-				'mw.PopUpMediaTransform' => $baseExtensionResource + [
-						'scripts' => 'resources/mw.PopUpThumbVideo.js',
-						'dependencies' => [
-							'mw.MwEmbedSupport',
-							'mediawiki.Title',
-							'mw.PopUpMediaTransform.styles'
-						],
-						'position' => 'top',
+		$resourceModules = [
+			'mw.PopUpMediaTransform' => $baseExtensionResource + [
+					'scripts' => 'resources/mw.PopUpThumbVideo.js',
+					'dependencies' => [
+						'mw.MwEmbedSupport',
+						'mediawiki.Title',
+						'mw.PopUpMediaTransform.styles'
 					],
-				'mw.PopUpMediaTransform.styles' => $baseExtensionResource + [
-						'position' => 'top',
-						'styles' => 'resources/PopUpThumbVideo.css',
+					'position' => 'top',
+				],
+			'mw.PopUpMediaTransform.styles' => $baseExtensionResource + [
+					'position' => 'top',
+					'styles' => 'resources/PopUpThumbVideo.css',
+				],
+			'mw.TMHGalleryHook.js' => $baseExtensionResource + [
+					'scripts' => 'resources/mw.TMHGalleryHook.js',
+					// position top needed as it needs to load before mediawiki.page.gallery
+					'position' => 'top',
+				],
+			'ext.tmh.embedPlayerIframe' => $baseExtensionResource + [
+					'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
+					'dependencies' => [
+						'jquery.embedPlayer',
+						'mw.MwEmbedSupport',
 					],
-				'mw.TMHGalleryHook.js' => $baseExtensionResource + [
-						'scripts' => 'resources/mw.TMHGalleryHook.js',
-						// position top needed as it needs to load before mediawiki.page.gallery
-						'position' => 'top',
+				],
+			"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + [
+					'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
+					'dependencies'=> [
+						'mw.Api',
+						'mw.MwEmbedSupport',
 					],
-				'ext.tmh.embedPlayerIframe' => $baseExtensionResource + [
-						'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
-						'dependencies' => [
-							'jquery.embedPlayer',
-							'mw.MwEmbedSupport',
-						],
+				],
+			// adds support MediaWikiPlayerSupport player bindings
+			"mw.MediaWikiPlayer.loader" => $baseExtensionResource + [
+					'scripts' => 'resources/mw.MediaWikiPlayer.loader.js',
+					'dependencies' => [
+						"mw.EmbedPlayer.loader",
+						"mw.TimedText.loader",
 					],
-				"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + [
-						'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-						'dependencies'=> [
-							'mw.Api',
-							'mw.MwEmbedSupport',
-						],
+					'position' => 'top',
+				],
+			'ext.tmh.video-js' => $baseExtensionResource + [
+					'scripts' => 'resources/videojs/video.js',
+					'styles' => 'resources/videojs/video-js.css',
+					'targets' => [ 'mobile', 'desktop' ],
+					'languageScripts' => [
+						'ar' => 'resources/videojs/lang/ar.js',
+						'ba' => 'resources/videojs/lang/ba.js',
+						'bg' => 'resources/videojs/lang/bg.js',
+						'ca' => 'resources/videojs/lang/ca.js',
+						'cs' => 'resources/videojs/lang/cs.js',
+						'da' => 'resources/videojs/lang/da.js',
+						'de' => 'resources/videojs/lang/de.js',
+						'el' => 'resources/videojs/lang/el.js',
+						'en' => 'resources/videojs/lang/en.js',
+						'es' => 'resources/videojs/lang/es.js',
+						'fa' => 'resources/videojs/lang/fa.js',
+						'fi' => 'resources/videojs/lang/fi.js',
+						'fr' => 'resources/videojs/lang/fr.js',
+						'hr' => 'resources/videojs/lang/hr.js',
+						'hu' => 'resources/videojs/lang/hu.js',
+						'it' => 'resources/videojs/lang/it.js',
+						'ja' => 'resources/videojs/lang/ja.js',
+						'ko' => 'resources/videojs/lang/ko.js',
+						'nb' => 'resources/videojs/lang/nb.js',
+						'nl' => 'resources/videojs/lang/nl.js',
+						'nn' => 'resources/videojs/lang/nn.js',
+						'pl' => 'resources/videojs/lang/pl.js',
+						'pt-BR' => 'resources/videojs/lang/pt-BR.js',
+						'ru' => 'resources/videojs/lang/ru.js',
+						'sr' => 'resources/videojs/lang/sr.js',
+						'sv' => 'resources/videojs/lang/sv.js',
+						'tr' => 'resources/videojs/lang/tr.js',
+						'uk' => 'resources/videojs/lang/uk.js',
+						'vi' => 'resources/videojs/lang/vi.js',
+						'zh-CN' => 'resources/videojs/lang/zh-CN.js',
+						'zh-TW' => 'resources/videojs/lang/zh-TW.js',
 					],
-				// adds support MediaWikiPlayerSupport player bindings
-				"mw.MediaWikiPlayer.loader" => $baseExtensionResource + [
-						'scripts' => 'resources/mw.MediaWikiPlayer.loader.js',
-						'dependencies' => [
-							"mw.EmbedPlayer.loader",
-							"mw.TimedText.loader",
-						],
-						'position' => 'top',
+				],
+			'ext.tmh.videojs-ogvjs' => $baseExtensionResource + [
+					'scripts' => 'resources/videojs-ogvjs/videojs-ogvjs.js',
+					'targets' => [ 'mobile', 'desktop' ],
+					'dependencies' => [
+						'ext.tmh.video-js',
+						'ext.tmh.OgvJs',
 					],
-			];
-		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
-			$resourceModules = [
-				'ext.tmh.video-js' => $baseExtensionResource + [
-						'scripts' => 'resources/videojs/video.js',
-						'styles' => 'resources/videojs/video-js.css',
-						'targets' => [ 'mobile', 'desktop' ],
-						'languageScripts' => [
-							'ar' => 'resources/videojs/lang/ar.js',
-							'ba' => 'resources/videojs/lang/ba.js',
-							'bg' => 'resources/videojs/lang/bg.js',
-							'ca' => 'resources/videojs/lang/ca.js',
-							'cs' => 'resources/videojs/lang/cs.js',
-							'da' => 'resources/videojs/lang/da.js',
-							'de' => 'resources/videojs/lang/de.js',
-							'el' => 'resources/videojs/lang/el.js',
-							'en' => 'resources/videojs/lang/en.js',
-							'es' => 'resources/videojs/lang/es.js',
-							'fa' => 'resources/videojs/lang/fa.js',
-							'fi' => 'resources/videojs/lang/fi.js',
-							'fr' => 'resources/videojs/lang/fr.js',
-							'hr' => 'resources/videojs/lang/hr.js',
-							'hu' => 'resources/videojs/lang/hu.js',
-							'it' => 'resources/videojs/lang/it.js',
-							'ja' => 'resources/videojs/lang/ja.js',
-							'ko' => 'resources/videojs/lang/ko.js',
-							'nb' => 'resources/videojs/lang/nb.js',
-							'nl' => 'resources/videojs/lang/nl.js',
-							'nn' => 'resources/videojs/lang/nn.js',
-							'pl' => 'resources/videojs/lang/pl.js',
-							'pt-BR' => 'resources/videojs/lang/pt-BR.js',
-							'ru' => 'resources/videojs/lang/ru.js',
-							'sr' => 'resources/videojs/lang/sr.js',
-							'sv' => 'resources/videojs/lang/sv.js',
-							'tr' => 'resources/videojs/lang/tr.js',
-							'uk' => 'resources/videojs/lang/uk.js',
-							'vi' => 'resources/videojs/lang/vi.js',
-							'zh-CN' => 'resources/videojs/lang/zh-CN.js',
-							'zh-TW' => 'resources/videojs/lang/zh-TW.js',
-						],
-					],
-				'ext.tmh.videojs-ogvjs' => $baseExtensionResource + [
-						'scripts' => 'resources/videojs-ogvjs/videojs-ogvjs.js',
-						'targets' => [ 'mobile', 'desktop' ],
-						'dependencies' => [
-							'ext.tmh.video-js',
-							'ext.tmh.OgvJs',
-						],
-					],
-				'ext.tmh.videojs-resolution-switcher' => $baseExtensionResource + [
-						'scripts' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js',
-						'styles' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css',
-						'targets' => [ 'mobile', 'desktop' ],
-						'dependencies' => [
-							'ext.tmh.video-js',
-						],
-					],
-				'ext.tmh.videojs-responsive-layout' => $baseExtensionResource + [
-						'scripts' => 'resources/videojs-responsive-layout/videojs-responsive-layout.js',
-						'targets' => [ 'mobile', 'desktop' ],
-						'dependencies' => [
-							'ext.tmh.video-js',
-						],
-					],
-				'ext.tmh.videojs-replay' => $baseExtensionResource + [
-					'scripts' => 'resources/videojs-replay/videojs-replay.js',
-					'styles' => 'resources/videojs-replay/videojs-replay.css',
+				],
+			'ext.tmh.videojs-resolution-switcher' => $baseExtensionResource + [
+					'scripts' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js',
+					'styles' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css',
 					'targets' => [ 'mobile', 'desktop' ],
 					'dependencies' => [
 						'ext.tmh.video-js',
 					],
 				],
-				'ext.tmh.mw-info-button' => $baseExtensionResource + [
-					'scripts' => 'resources/mw-info-button/mw-info-button.js',
-					'styles' => 'resources/mw-info-button/mw-info-button.css',
+			'ext.tmh.videojs-responsive-layout' => $baseExtensionResource + [
+					'scripts' => 'resources/videojs-responsive-layout/videojs-responsive-layout.js',
 					'targets' => [ 'mobile', 'desktop' ],
 					'dependencies' => [
 						'ext.tmh.video-js',
 					],
 				],
-				'ext.tmh.player' => $baseExtensionResource + [
-						'scripts' => 'resources/ext.tmh.player.js',
-						'targets' => [ 'mobile', 'desktop' ],
-						'dependencies' => [
-							'ext.tmh.video-js',
-							'ext.tmh.videojs-resolution-switcher',
-							'ext.tmh.videojs-ogvjs',
-							'ext.tmh.videojs-responsive-layout',
-							'ext.tmh.videojs-replay',
-							'ext.tmh.mw-info-button',
-						],
-						'messages' => [
-							'timedmedia-resolution-160',
-							'timedmedia-resolution-240',
-							'timedmedia-resolution-360',
-							'timedmedia-resolution-480',
-							'timedmedia-resolution-720',
-							'timedmedia-resolution-1080',
-							'timedmedia-resolution-1440',
-							'timedmedia-resolution-2160',
-						],
+			'ext.tmh.videojs-replay' => $baseExtensionResource + [
+				'scripts' => 'resources/videojs-replay/videojs-replay.js',
+				'styles' => 'resources/videojs-replay/videojs-replay.css',
+				'targets' => [ 'mobile', 'desktop' ],
+				'dependencies' => [
+					'ext.tmh.video-js',
+				],
+			],
+			'ext.tmh.mw-info-button' => $baseExtensionResource + [
+				'scripts' => 'resources/mw-info-button/mw-info-button.js',
+				'styles' => 'resources/mw-info-button/mw-info-button.css',
+				'targets' => [ 'mobile', 'desktop' ],
+				'dependencies' => [
+					'ext.tmh.video-js',
+				],
+			],
+			'ext.tmh.player' => $baseExtensionResource + [
+					'scripts' => 'resources/ext.tmh.player.js',
+					'targets' => [ 'mobile', 'desktop' ],
+					'dependencies' => [
+						'ext.tmh.video-js',
+						'ext.tmh.videojs-resolution-switcher',
+						'ext.tmh.videojs-ogvjs',
+						'ext.tmh.videojs-responsive-layout',
+						'ext.tmh.videojs-replay',
+						'ext.tmh.mw-info-button',
 					],
-				'ext.tmh.player.styles' => $baseExtensionResource + [
-						'styles' => 'resources/ext.tmh.player.styles.less',
-						'targets' => [ 'mobile', 'desktop' ],
+					'messages' => [
+						'timedmedia-resolution-160',
+						'timedmedia-resolution-240',
+						'timedmedia-resolution-360',
+						'timedmedia-resolution-480',
+						'timedmedia-resolution-720',
+						'timedmedia-resolution-1080',
+						'timedmedia-resolution-1440',
+						'timedmedia-resolution-2160',
 					],
-			];
-		}
+				],
+			'ext.tmh.player.styles' => $baseExtensionResource + [
+					'styles' => 'resources/ext.tmh.player.styles.less',
+					'targets' => [ 'mobile', 'desktop' ],
+				],
+		];
 
 		$resourceLoader->register( $resourceModules );
 		return true;
@@ -227,7 +220,7 @@ class TimedMediaHandlerHooks {
 			}
 		}
 
-		if ( $wgTmhWebPlayer === 'mwembed' ) {
+		if ( self::activePlayerMode() === 'mwembed' ) {
 			if ( !class_exists( 'MwEmbedResourceManager' ) ) {
 				echo "TimedMediaHandler requires the MwEmbedSupport extension.\n";
 				exit( 1 );
@@ -400,18 +393,18 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	private static function onImagePageHooks( $file, $out ) {
-		global $wgTmhWebPlayer;
-
 		$handler = $file->getHandler();
 		if ( $handler !== false && $handler instanceof TimedMediaHandler ) {
-			if ( $wgTmhWebPlayer === 'mwembed' ) {
+			if ( self::activePlayerMode() === 'mwembed' ) {
 				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 				$out->addModules( [
 					'mw.MediaWikiPlayer.loader',
 					'mw.PopUpMediaTransform',
 					'mw.TMHGalleryHook.js',
 				] );
-			} elseif ( $wgTmhWebPlayer === 'videojs' ) {
+			}
+
+			if ( self::activePlayerMode() === 'videojs' ) {
 				$out->addModuleStyles( 'ext.tmh.player.styles' );
 				$out->addModules( 'ext.tmh.player' );
 			}
@@ -663,7 +656,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	static function pageOutputHook( &$out, &$sk ) {
-		global $wgTimedTextNS, $wgTmhWebPlayer;
+		global $wgTimedTextNS;
 
 		$title = $out->getTitle();
 		$namespace = $title->getNamespace();
@@ -681,13 +674,15 @@ class TimedMediaHandlerHooks {
 			}
 		}
 
-		if ( $wgTmhWebPlayer === 'mwembed' ) {
+		if ( self::activePlayerMode() === 'mwembed' ) {
 			$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 			$out->addModules( [
 				'mw.MediaWikiPlayer.loader',
 				'mw.PopUpMediaTransform',
 			] );
-		} elseif ( $wgTmhWebPlayer === 'videojs' ) {
+		}
+
+		if ( self::activePlayerMode() === 'videojs' ) {
 			$out->addModuleStyles( 'ext.tmh.player.styles' );
 			$out->addModules( 'ext.tmh.player' );
 		}
@@ -722,14 +717,13 @@ class TimedMediaHandlerHooks {
 	 * Return false here to evict existing parseroutput cache
 	 */
 	public static function rejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
-		global $wgTmhWebPlayer;
 		if (
 			$parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' )
 			|| isset( $parserOutput->hasTimedMediaTransform )
 		) {
 			/* page has old style TMH elements */
 			if (
-				$wgTmhWebPlayer === 'mwembed' &&
+				self::activePlayerMode() === 'mwembed' &&
 				!in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules() )
 			) {
 				wfDebug( 'Bad TMH parsercache value, throw this out.' );
@@ -738,5 +732,50 @@ class TimedMediaHandlerHooks {
 			}
 		}
 		return true;
+	}
+
+	public static function changePageRenderingHash( &$hash, User $user, &$forOptions ) {
+		if ( self::activePlayerMode() === 'videojs' ) {
+			if ( $user->getOption( 'tmh-videojs' ) === '1' ) {
+				$hash .= '!tmh-videojs';
+				return true;
+			}
+		}
+	}
+
+	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
+		global $wgTmhUseBetaFeatures, $wgExtensionAssetsPath;
+
+		if ( $wgTmhUseBetaFeatures ) {
+			$prefs['tmh-videojs'] = [
+				// The first two are message keys
+				'label-message' => 'beta-feature-timedmediahandler-message-videojs',
+				'desc-message' => 'beta-feature-timedmediahandler-description-videojs',
+				// Paths to images that represents the feature.
+				// The image is usually different for ltr and rtl languages.
+				// Images for specific languages can also specified using the language code.
+				'screenshot' => [
+					'ltr' => "$wgExtensionAssetsPath/TimedMediaHandler/resources/BetaFeature_TMH_VIDEOJS.svg",
+					'rtl' => "$wgExtensionAssetsPath/TimedMediaHandler/resources/BetaFeature_TMH_VIDEOJS.svg",
+				],
+				// Link to information on the feature
+				'info-link' => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
+				// Link to discussion about the feature
+				'discussion-link' => 'https://www.mediawiki.org/wiki/Extension_talk:TimedMediaHandler',
+			];
+		}
+		return true;
+	}
+
+	public static function activePlayerMode() {
+		global $wgTmhWebPlayer, $wgTmhUseBetaFeatures, $wgUser;
+		$context = new RequestContext();
+		if ( $wgTmhUseBetaFeatures && class_exists( 'BetaFeatures' ) &&
+			$wgUser->isSafeToLoad() && BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
+		) {
+			return 'videojs';
+		} else {
+			return $wgTmhWebPlayer;
+		}
 	}
 }
