@@ -53,9 +53,19 @@
 				// We remove the fullscreen button
 				playerConfig = $.extend( true, {}, playerConfig, audioConfig );
 			}
+			// Future interactions go faster if we've preloaded a little
+			var preload = 'metadata';
+			if ( videoplayer.canPlayType( 'video/webm; codecs=vp8,vorbis' ) === '' ) {
+				// ogv.js currently is expensive to start up:
+				// https://github.com/brion/ogv.js/issues/438
+				preload = 'none';
+			}
+			if ( index >= 10 ) {
+				// On pages with many videos, like Category pages, don't preload em all
+				preload = 'none';
+			}
 			$( videoplayer ).attr( {
-				/* Don't preload on pages with many videos, like Category pages */
-				preload: ( index < 10 ) ? 'auto' : 'metadata'
+				preload: preload
 			} ).find( 'source' ).each( function () {
 				// FIXME would be better if we can configure the plugin to make use of our preferred attributes
 				$source = $( this );
