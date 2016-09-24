@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		OGVLoader = __webpack_require__(3),
 		OGVMediaType = __webpack_require__(7),
 		OGVPlayer = __webpack_require__(8),
-		OGVVersion = ("1.2.0-20160919145031-b4b9f58");
+		OGVVersion = ("1.2.1-20160924234040-a1a879e");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -287,7 +287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.2.0-20160919145031-b4b9f58");
+	var OGVVersion = ("1.2.1-20160924234040-a1a879e");
 
 	(function() {
 		var global = this;
@@ -2014,12 +2014,9 @@ return /******/ (function(modules) { // webpackBootstrap
 								frameEndTimestamp = frame.frameEndTimestamp;
 								currentVideoCpuTime = frame.videoCpuTime;
 
-								var dupe = frame.yCbCrBuffer.duplicate;
-								if (!dupe) {
-									drawingTime += time(function() {
-										frameSink.drawFrame(frame.yCbCrBuffer);
-									});
-								}
+								drawingTime += time(function() {
+									frameSink.drawFrame(frame.yCbCrBuffer);
+								});
 
 								framesProcessed++;
 								framesPlayed++;
@@ -2233,17 +2230,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * https://www.w3.org/TR/html5/embedded-content-0.html#concept-media-load-algorithm
 		 */
 		self.load = function() {
+			prepForLoad();
+		};
+
+		function prepForLoad(preload) {
 			stopVideo();
 
-			// @todo networkState = self.NETWORK_NO_SOURCE;
-			// @todo show poster
-			// @todo set 'delay load event flag'
-
-			currentSrc = '';
-			loading = true;
-
-			actionQueue.push(function() {
-
+			function doLoad() {
 				// @todo networkState == NETWORK_LOADING
 				stream = new StreamFile({
 					url: self.src,
@@ -2300,9 +2293,24 @@ return /******/ (function(modules) { // webpackBootstrap
 						state = State.ERROR;
 					}
 				});
+			}
+
+			// @todo networkState = self.NETWORK_NO_SOURCE;
+			// @todo show poster
+			// @todo set 'delay load event flag'
+
+			currentSrc = '';
+			loading = true;
+			actionQueue.push(function() {
+				if (preload && self.preload === 'none') {
+					// Done for now, we'll pick up if someone hits play() or load()
+					loading = false;
+				} else {
+					doLoad();
+				}
 			});
 			pingProcessing(0);
-		};
+		}
 
 		/**
 		 * HTMLMediaElement canPlayType method
@@ -2474,7 +2482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			set: function setSrc(val) {
 				self.setAttribute('src', val);
 				loading = false; // just in case?
-				self.load();
+				prepForLoad("interactive");
 			}
 		});
 
@@ -2810,14 +2818,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		});
 		/**
 	 	 * @property preload {string}
-		 * @todo implement
 		 */
 		Object.defineProperty(self, "preload", {
 			get: function getPreload() {
-				return 'auto';
+				return self.getAttribute('preload') || '';
 			},
 			set: function setPreload(val) {
-				// ignore
+				self.setAttribute('preload', val);
 			}
 		});
 
@@ -4025,6 +4032,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			seekPosition = options.seekPosition || 0,
 			bufferPosition = seekPosition,
 			chunkSize = options.chunkSize || 1024 * 1024, // read/buffer up to a megabyte at a time
+			userAgent = navigator ? navigator.userAgent : '',
+			useMSStream = options.useMSStream || !!userAgent.match(/MSIE 10\./),
 			waitingForInput = false,
 			doneBuffering = false,
 			bytesTotal = 0,
@@ -4453,7 +4462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			};
 
-		} else if (options.useMSStream && internal.tryMethod('ms-stream')) {
+		} else if (useMSStream && internal.tryMethod('ms-stream')) {
 			// IE 10 supports returning a Stream from XHR.
 			// This seems unreliable in practice as the connections tend to die
 			// unexpectedly; recommend using the chunking even if it's primitive.
@@ -6389,7 +6398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.2.0-20160919145031-b4b9f58")),
+			suffix = '?version=' + encodeURIComponent(("1.2.1-20160924234040-a1a879e")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,
@@ -6738,41 +6747,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				timestamp = self.frameTimestamp,
 				keyframeTimestamp = self.keyframeTimestamp;
 			demuxer.dequeueVideoPacket(function(packet) {
-				function finish(ok) {
+				videoDecoder.processFrame(packet, function(ok) {
 					// hack
 					if (videoDecoder.frameBuffer) {
 						videoDecoder.frameBuffer.timestamp = timestamp;
 						videoDecoder.frameBuffer.keyframeTimestamp = keyframeTimestamp;
 					}
 					cb(ok);
-				}
-				if (packet.byteLength === 0) {
-					//
-					// Zero-byte packets in Theora mean dupe frames.
-					//
-					// Going through the decoder worker is expensive in Edge
-					// for pathological cases such as "1000 fps" files created
-					// in some sort of super-mutant-creating transcoding accident.
-					//
-					// Skip the worker and just return a dupe frame immediately.
-					//
-					var lastFrame = videoDecoder.frameBuffer;
-					if (lastFrame) {
-						var nextFrame = {};
-						for (var key in lastFrame) {
-							if (lastFrame.hasOwnProperty(key)) {
-								nextFrame[key] = lastFrame[key];
-							}
-						}
-						nextFrame.duplicate = true;
-						videoDecoder.frameBuffer = nextFrame;
-						finish(true);
-					} else {
-						finish(false);
-					}
-				} else {
-					videoDecoder.processFrame(packet, finish);
-				}
+				});
 			});
 		};
 

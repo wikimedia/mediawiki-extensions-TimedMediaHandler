@@ -11831,50 +11831,6 @@ function _oggz_auto_calculate_gp_backwards(i1, i2, i3, i4, i5, i6) {
  return 0;
 }
 
-function _processDecoding(i1, i2) {
- i1 = i1 | 0;
- i2 = i2 | 0;
- var i3 = 0, i4 = 0, i5 = 0, i6 = 0, d7 = 0.0, i8 = 0, i9 = 0, i10 = 0, i11 = 0, i12 = 0, i13 = 0;
- i3 = STACKTOP;
- STACKTOP = STACKTOP + 16 | 0;
- i4 = i3 + 8 | 0;
- i5 = i3;
- i6 = _oggz_tell_units(HEAP32[1328] | 0) | 0;
- d7 = (+(i6 >>> 0) + 4294967296.0 * +(tempRet0 | 0)) / 1.0e3;
- i6 = _oggz_tell_granulepos(HEAP32[1328] | 0) | 0;
- i8 = tempRet0;
- i9 = _oggz_get_granuleshift(HEAP32[1328] | 0, i2) | 0;
- i10 = i4;
- HEAP32[i10 >> 2] = 0;
- HEAP32[i10 + 4 >> 2] = 0;
- i10 = i5;
- HEAP32[i10 >> 2] = 0;
- HEAP32[i10 + 4 >> 2] = 0;
- _oggz_get_granulerate(HEAP32[1328] | 0, i2, i4, i5) | 0;
- i10 = i5;
- i5 = HEAP32[i10 >> 2] | 0;
- i11 = HEAP32[i10 + 4 >> 2] | 0;
- i10 = i4;
- i4 = HEAP32[i10 >> 2] | 0;
- i12 = HEAP32[i10 + 4 >> 2] | 0;
- if ((HEAP32[1331] | 0) == (i2 | 0)) {
-  i10 = _bitshift64Ashr(i6 | 0, i8 | 0, i9 | 0) | 0;
-  _ogvjs_callback_video_packet(HEAP32[i1 >> 2] | 0, HEAP32[i1 + 4 >> 2] | 0, +d7, +((+(i10 >>> 0) + 4294967296.0 * +(tempRet0 | 0)) * (+(i5 >>> 0) + 4294967296.0 * +(i11 | 0)) / (+(i4 >>> 0) + 4294967296.0 * +(i12 | 0))));
-  i13 = 1;
-  STACKTOP = i3;
-  return i13 | 0;
- }
- if ((HEAP32[1332] | 0) != (i2 | 0)) {
-  i13 = 0;
-  STACKTOP = i3;
-  return i13 | 0;
- }
- _ogvjs_callback_audio_packet(HEAP32[i1 >> 2] | 0, HEAP32[i1 + 4 >> 2] | 0, +d7);
- i13 = 1;
- STACKTOP = i3;
- return i13 | 0;
-}
-
 function _oggz_auto_read_bos_page(i1, i2, i3, i4) {
  i1 = i1 | 0;
  i2 = i2 | 0;
@@ -11962,6 +11918,47 @@ function _oggz_io_read(i1, i2, i3) {
  i11 = HEAP32[i5 >> 2] | 0;
  STACKTOP = i4;
  return i11 | 0;
+}
+
+function _processDecoding(i1, i2) {
+ i1 = i1 | 0;
+ i2 = i2 | 0;
+ var i3 = 0, i4 = 0, i5 = 0, i6 = 0, d7 = 0.0, i8 = 0, i9 = 0, i10 = 0, d11 = 0.0, i12 = 0;
+ i3 = STACKTOP;
+ STACKTOP = STACKTOP + 16 | 0;
+ i4 = i3 + 8 | 0;
+ i5 = i3;
+ i6 = _oggz_tell_units(HEAP32[1328] | 0) | 0;
+ d7 = (+(i6 >>> 0) + 4294967296.0 * +(tempRet0 | 0)) / 1.0e3;
+ i6 = _oggz_tell_granulepos(HEAP32[1328] | 0) | 0;
+ i8 = tempRet0;
+ i9 = _oggz_get_granuleshift(HEAP32[1328] | 0, i2) | 0;
+ i10 = i4;
+ HEAP32[i10 >> 2] = 0;
+ HEAP32[i10 + 4 >> 2] = 0;
+ i10 = i5;
+ HEAP32[i10 >> 2] = 0;
+ HEAP32[i10 + 4 >> 2] = 0;
+ _oggz_get_granulerate(HEAP32[1328] | 0, i2, i4, i5) | 0;
+ i10 = _bitshift64Ashr(i6 | 0, i8 | 0, i9 | 0) | 0;
+ i9 = i5;
+ i5 = i4;
+ d11 = (+(i10 >>> 0) + 4294967296.0 * +(tempRet0 | 0)) * (+((HEAP32[i9 >> 2] | 0) >>> 0) + 4294967296.0 * +(HEAP32[i9 + 4 >> 2] | 0)) / (+((HEAP32[i5 >> 2] | 0) >>> 0) + 4294967296.0 * +(HEAP32[i5 + 4 >> 2] | 0));
+ if ((HEAP32[1331] | 0) == (i2 | 0) ? (i5 = HEAP32[i1 + 4 >> 2] | 0, (i5 | 0) > 0) : 0) {
+  _ogvjs_callback_video_packet(HEAP32[i1 >> 2] | 0, i5 | 0, +d7, +d11);
+  i12 = 1;
+  STACKTOP = i3;
+  return i12 | 0;
+ }
+ if ((HEAP32[1332] | 0) != (i2 | 0)) {
+  i12 = 0;
+  STACKTOP = i3;
+  return i12 | 0;
+ }
+ _ogvjs_callback_audio_packet(HEAP32[i1 >> 2] | 0, HEAP32[i1 + 4 >> 2] | 0, +d7);
+ i12 = 1;
+ STACKTOP = i3;
+ return i12 | 0;
 }
 
 function _oggz_auto_read_bos_packet(i1, i2, i3, i4) {

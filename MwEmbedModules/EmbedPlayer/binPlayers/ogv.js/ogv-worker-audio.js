@@ -247,7 +247,7 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.2.0-20160919145031-b4b9f58");
+	var OGVVersion = ("1.2.1-20160924234040-a1a879e");
 
 	(function() {
 		var global = this;
