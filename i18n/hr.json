@@ -20,7 +20,6 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg multipleksirana zvučna/video datoteka, $1, duljine $2, $4×$5 piksela, $3 ukupno",
 	"timedmedia-ogg-long-general": "Ogg medijska datoteka, duljine $2, $3",
 	"timedmedia-ogg-long-error": "nevaljana ogg datoteka: $1",
-	"timedmedia-no-player-js": "Nažalost, u Vašem pregledniku isključen je JavaScript, ili nije dostupan na ovom projektu.<br />\nMožete <a href=\"<span class=\" notranslate\"=\"\" translate=\"no\">$1</span>\">preuzeti videozapis</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">učitati player</a> za reproduciranje videozapisa u pregledniku.",
 	"timedmedia-more": "Više...",
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Snimi datoteku",
@@ -28,6 +27,6 @@
 	"timedmedia-actions": "Radnje",
 	"timedmedia-source-file": "Izvor $1",
 	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)",
-	"timedmedia-derivative-desc-2160p.vp9.webm": "Full 4K streamable WebM VP9 (2160P)",
-	"timedmedia-derivative-desc-2160p.mp4": "MP4 pune 4K kvalitete (2160P)"
+	"timedmedia-derivative-desc-2160p.vp9.webm": "4K UHD VP9 (2160P)",
+	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)"
 }
