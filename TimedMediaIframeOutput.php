@@ -96,7 +96,6 @@ class TimedMediaIframeOutput {
 		echo implode( "\n", $pieces );
 	?>
 <body>
-		<img src="<?php echo $videoTransform->getUrl(); ?>" id="bgimage" ></img>
 		<div id="videoContainer">
 			<?php echo $videoTransform->toHtml(); ?>
 		</div>
