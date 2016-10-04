@@ -16,6 +16,7 @@
 	"timedmedia-actions": "اعمال",
 	"timedmedia-source-file": "$1 مسودہ",
 	"timedmedia-source-audio-file-desc": "اصلی $1 ملف ($2)",
+	"timedmediahandler": "وقتی میڈیا کا ہدایت کار",
 	"timedmedia-file": "فائل",
 	"right-transcode-reset": "ناکام یا ٹرانس کوڈ شدہ ویڈیو کی ترتیب نو (اس کے بعد ان ویڈیو کو کاموں کی صف میں دوبارہ شامل کر دیا جاتا ہے)۔",
 	"right-transcode-status": "[[Special:TimedMediaHandler|ٹرانس کوڈ کی حالیہ سرگرمی کی معلومات]] کا مشاہدہ",
