@@ -323,6 +323,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			'framerate',
 			'disablecontrols',
 			'transcodekey',
+			'label',
+			'res',
 		];
 		foreach ( $mediaSources as &$source ) {
 			foreach ( $source as $attr => $val ) {
@@ -438,7 +440,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 
 		if ( $wgTmhWebPlayer === 'videojs' ) {
-			$mediaAttr['class'] = 'video-js ' . $wgVideoPlayerSkin;
+			// Note: do not add 'video-js' class before the runtime transform!
+			$mediaAttr['class'] = $wgVideoPlayerSkin;
 			$mediaAttr['width'] = intval( $width );
 			if ( $this->isVideo ) {
 				$mediaAttr['height'] = intval( $height );
