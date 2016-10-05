@@ -289,8 +289,8 @@ class TextHandler {
 	}
 
 	function getForeignNamespaceName() {
-		if ( $this->$remoteNs !== null ) {
-			return $this->$remoteNsName;
+		if ( $this->remoteNs !== null ) {
+			return $this->remoteNsName;
 		}
 		/* Else, we use the canonical namespace, since we can't look up the actual one */
 		return strtr( MWNamespace::getCanonicalName( NS_TIMEDTEXT ), ' ', '_' );
