@@ -290,6 +290,8 @@ $wgAutoloadClasses['FLACHandler'] = "$timedMediaDir/handlers/FLACHandler/FLACHan
 $wgAutoloadClasses['WAVHandler'] = "$timedMediaDir/handlers/WAVHandler/WAVHandler.php";
 
 // Text handler
+$wgAutoloadClasses['ForeignApiQueryAllPages'] =
+	"$timedMediaDir/handlers/TextHandler/TextHandler.php";
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
 $wgAutoloadClasses['TimedTextPage'] = "$timedMediaDir/TimedTextPage.php";
 
