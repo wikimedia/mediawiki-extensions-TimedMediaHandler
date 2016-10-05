@@ -442,15 +442,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $wgTmhWebPlayer === 'videojs' ) {
 			// Note: do not add 'video-js' class before the runtime transform!
 			$mediaAttr['class'] = $wgVideoPlayerSkin;
-			$mediaAttr['width'] = intval( $width );
+			$mediaAttr['width'] = $this->fillwindow ? '100%' : intval( $width );
 			if ( $this->isVideo ) {
-				$mediaAttr['height'] = intval( $height );
+				$mediaAttr['height'] = $this->fillwindow ? '100%' : intval( $height );
 			} else {
 				unset( $mediaAttr['height'] );
 			}
 			if ( $this->fillwindow ) {
-				unset( $mediaAttr['width'] );
-				unset( $mediaAttr['height'] );
 				$mediaAttr[ 'class' ] .= ' vjs-fluid';
 				$mediaAttr[ 'data-player' ] = 'fillwindow';
 			}

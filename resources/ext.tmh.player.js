@@ -139,7 +139,6 @@
 	} );
 	$( function () {
 		// The iframe mode
-		$( '#bgimage' ).remove();
 		$( '#videoContainer video,#videoContainer audio' ).loadVideoPlayer();
 	} );
 

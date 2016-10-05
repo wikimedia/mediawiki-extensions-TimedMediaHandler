@@ -12,14 +12,7 @@ html, body {
 	padding: 0;
 }
 img#bgimage {
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-}
-#videoContainer {
-	visibility: hidden;
+	display: none;
 }
 #videoContainer .videoHolder {
 	position: static;
