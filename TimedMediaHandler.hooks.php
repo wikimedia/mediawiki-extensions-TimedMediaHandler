@@ -173,6 +173,16 @@ class TimedMediaHandlerHooks {
 							'ext.tmh.videojs-replay',
 							'ext.tmh.mw-info-button',
 						],
+						'messages' => [
+							'timedmedia-resolution-160',
+							'timedmedia-resolution-240',
+							'timedmedia-resolution-360',
+							'timedmedia-resolution-480',
+							'timedmedia-resolution-720',
+							'timedmedia-resolution-1080',
+							'timedmedia-resolution-1440',
+							'timedmedia-resolution-2160',
+						],
 					],
 				'ext.tmh.player.styles' => $baseExtensionResource + [
 						'styles' => 'resources/ext.tmh.player.styles.less',
