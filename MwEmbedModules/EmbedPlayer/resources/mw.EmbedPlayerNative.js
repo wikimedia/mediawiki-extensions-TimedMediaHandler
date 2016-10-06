@@ -266,6 +266,7 @@ mw.EmbedPlayerNative = {
 				}, 10 );
 			};
 		}
+		this.setPlayerElementVolume( this.volume );
 		// Some mobile devices ( iOS need a load call before play will work )
 		if ( !_this.loop ) {
 			vid.load();

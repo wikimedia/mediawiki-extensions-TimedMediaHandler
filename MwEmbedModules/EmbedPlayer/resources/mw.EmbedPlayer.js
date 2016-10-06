@@ -2479,6 +2479,10 @@
 			// Update the previous volume
 			_this.previousVolume = _this.volume;
 
+			if ( !this.getPlayerElement() ) {
+				return
+			};
+
 			// Update the volume from the player element
 			_this.volume = this.getPlayerElementVolume();
 
