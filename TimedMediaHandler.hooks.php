@@ -674,17 +674,19 @@ class TimedMediaHandlerHooks {
 			}
 		}
 
-		if ( self::activePlayerMode() === 'mwembed' ) {
-			$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
-			$out->addModules( [
-				'mw.MediaWikiPlayer.loader',
-				'mw.PopUpMediaTransform',
-			] );
-		}
+		if ( $addModules ) {
+			if ( self::activePlayerMode() === 'mwembed' ) {
+				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
+				$out->addModules( [
+					'mw.MediaWikiPlayer.loader',
+					'mw.PopUpMediaTransform',
+				] );
+			}
 
-		if ( self::activePlayerMode() === 'videojs' ) {
-			$out->addModuleStyles( 'ext.tmh.player.styles' );
-			$out->addModules( 'ext.tmh.player' );
+			if ( self::activePlayerMode() === 'videojs' ) {
+				$out->addModuleStyles( 'ext.tmh.player.styles' );
+				$out->addModules( 'ext.tmh.player' );
+			}
 		}
 
 		return true;
