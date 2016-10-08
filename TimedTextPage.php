@@ -182,7 +182,7 @@ class TimedTextPage extends Article {
 		return Xml::element(
 			'pre',
 			[ 'style' => 'margin-top: 0px;' ],
-			$this->getContent(),
+			ContentHandler::getContentText( $this->getContentObject() ),
 			false
 		);
 	}
