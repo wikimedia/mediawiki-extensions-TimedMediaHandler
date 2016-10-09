@@ -96,6 +96,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 ficheiro de áudio Ogg|$1 ficheiros de áudio Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 ficheiro de áudio FLAC|$1 ficheiros de áudio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 ficheiro de áudio WAV|$1 ficheiros de áudio WAV}}",
+	"beta-feature-timedmediahandler-description-videojs": "Reprodutor de áudio/vídeo atualizado com aspeto mais limpo e compatibilidade móvel.",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|informação sobre a actividade actual de transcodificação]]",
 	"action-transcode-status": "ver o estado actual de transcodificação",
 	"orphanedtimedtext": "Páginas Legendagem órfãs",

@@ -17,6 +17,8 @@
 	"timedmedia-direct-link": "Lejupielādēt",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 avots",
+	"timedmedia-resolution-720": "HD 720p",
+	"timedmedia-resolution-1080": "HD 1080p",
 	"timedmedia-subtitle-new-go": "Aiziet!",
 	"timedmedia-subtitle-language": "$1 ($2) subtitri"
 }

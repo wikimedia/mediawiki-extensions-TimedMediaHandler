@@ -7,7 +7,8 @@
 			"Mark85296341",
 			"Simon Shek",
 			"LNDDYL",
-			"Cwlin0416"
+			"Cwlin0416",
+			"1233thehongkonger"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM，Ogg Theora、Vorbis，srt",
@@ -29,7 +30,6 @@
 	"timedmedia-wav-pcm-required": "您僅可上傳 PCM (Pulse Code Modulation) WAV。",
 	"timedmedia-mp4-short-video": "MP4 $1 影片檔，$2",
 	"timedmedia-mp4-long-video": "MP4 音訊/影片檔案，$1，長度 $2，$4 × $5 畫素，共 $3",
-	"timedmedia-no-player-js": "抱歉，您的瀏覽器未開啟 JavaScript 或沒有支援的播放程式。<br />\n您可 <a href=\"$1\">下載該片段</a> 或 <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">下載播放器</a> 以在您的瀏覽器中播放。",
 	"timedmedia-more": "更多...",
 	"timedmedia-dismiss": "關閉",
 	"timedmedia-download": "下載檔案",
@@ -68,7 +68,7 @@
 	"timedmedia-source-audio-file-desc": "原始 $1 檔案 ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "低頻寬 Ogg 影片 (160P)",
 	"timedmedia-derivative-desc-240p.ogv": "網站可串流 Ogg 影片 (240P)",
-	"timedmedia-derivative-desc-360p.ogv": "網站可串流 Ogg 影片 (360P)",
+	"timedmedia-derivative-desc-360p.ogv": "Ogg 影片 (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "網站可串流 Ogg 影片 (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "高畫質可下載 Ogg 影片 (720P)",
 	"timedmedia-derivative-desc-1080p.ogv": "Full HD 可下載 Ogg 影像 (1080P)",
@@ -88,6 +88,7 @@
 	"timedmedia-derivative-desc-720p.mp4": "高清品質 MP4 (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD 品質 MP4 (1080P)",
 	"timedmedia-derivative-desc-2160p.mp4": "Full 4K 品質 MP4 (2160P)",
+	"timedmedia-resolution-1440": "超高清1440p",
 	"timedmedia-subtitle-new": "建立新翻譯或編輯現有翻譯",
 	"timedmedia-subtitle-new-desc": "請選擇語言後點選 '''{{int:Timedmedia-subtitle-new-go}}''' 按鈕",
 	"timedmedia-subtitle-new-go": "執行",
