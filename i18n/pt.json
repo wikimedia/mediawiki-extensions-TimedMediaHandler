@@ -41,7 +41,7 @@
 	"timedmedia-oggThumb-version": "O oggHandler requer a versão $1 do oggThumb ou posterior.",
 	"timedmedia-oggThumb-failed": "O oggThumb não conseguiu criar a miniatura.",
 	"timedmedia-status-header": "Estado da transcodificação",
-	"timedmedia-update-status": "Actualizar o estado da transcodificação",
+	"timedmedia-update-status": "Atualizar o estado da transcodificação",
 	"timedmedia-status": "Estado",
 	"timedmedia-status-unknown": "Estado desconhecido",
 	"timedmedia-transcodeinfo": "Formato",
@@ -102,5 +102,5 @@
 	"orphanedtimedtext": "Páginas Legendagem órfãs",
 	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que não têm um ficheiro correspondente.",
 	"orphanedtimedtext-unsupported": "Esta página especial só é suportada nas bases de dados MySQL.",
-	"orphanedtimedtext-notimedtext": "O domínio Legendagem não está habilitado nesta wiki."
+	"orphanedtimedtext-notimedtext": "O domínio Legendagem não foi ativado nesta wiki."
 }
