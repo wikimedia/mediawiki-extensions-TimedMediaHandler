@@ -357,6 +357,10 @@ class File_Ogg
      */
     function _decodePageHeader($pageData, $pageOffset, $groupId)
     {
+        // Don't blindly substr() and unpack() if data is cut off
+        if (strlen($pageData) < 27)
+            return (false);
+
         // Extract the various bits and pieces found in each packet header.
         if (substr($pageData, 0, 4) != OGG_CAPTURE_PATTERN)
             return (false);
@@ -379,6 +383,11 @@ class File_Ogg
         $page_sequence   = unpack("Vdata", substr($pageData, 18, 4));
         $checksum        = unpack("Vdata", substr($pageData, 22, 4));
         $page_segments   = unpack("Cdata", substr($pageData, 26, 1));
+
+        // Header is extended with segment lengths; make sure we have data.
+        if (strlen($pageData) < 27 + $page_segments['data'])
+            return (false);
+
         $segments_total  = 0;
         for ($i = 0; $i < $page_segments['data']; ++$i) {
             $segment_length = unpack("Cdata", substr($pageData, 26 + ($i + 1), 1));
