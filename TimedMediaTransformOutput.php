@@ -334,11 +334,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		foreach ( $mediaTracks as &$track ) {
 			foreach ( $track as $attr => $val ) {
 				if ( $attr === 'title' || $attr === 'provider' ) {
-					$source[ 'data-mw' . $attr ] = $val;
-					unset( $source[ $attr ] );
+					$track[ 'data-mw' . $attr ] = $val;
+					unset( $track[ $attr ] );
 				} elseif ( $attr === 'dir' ) {
-					$source[ 'data-' . $attr ] = $val;
-					unset( $source[ $attr ] );
+					$track[ 'data-' . $attr ] = $val;
+					unset( $track[ $attr ] );
 				}
 			}
 		}
