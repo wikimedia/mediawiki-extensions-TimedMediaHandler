@@ -313,7 +313,7 @@ class TextHandler {
 	 */
 	function getPrefixedDBkey( $pageTitle ) {
 		if ( $pageTitle instanceof Title ) {
-			return TitleFormatter::getPrefixedDBkey( $pageTitle );
+			return $pageTitle->getPrefixedDBkey();
 		} elseif ( $pageTitle instanceof ForeignTitle ) {
 			return $pageTitle->getFullText();
 		}
