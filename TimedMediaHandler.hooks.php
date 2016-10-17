@@ -162,10 +162,10 @@ class TimedMediaHandlerHooks {
 					'dependencies' => [
 						'ext.tmh.video-js',
 						'ext.tmh.videojs-resolution-switcher',
-						'ext.tmh.videojs-ogvjs',
 						'ext.tmh.videojs-responsive-layout',
 						'ext.tmh.videojs-replay',
 						'ext.tmh.mw-info-button',
+						'ext.tmh.OgvJsSupport',
 					],
 					'messages' => [
 						'timedmedia-resolution-160',

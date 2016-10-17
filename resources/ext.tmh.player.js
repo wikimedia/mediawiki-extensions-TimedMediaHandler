@@ -11,7 +11,7 @@
 				inline: false
 			}
 		},
-		techOrder: [ 'html5', 'ogvjs' ],
+		techOrder: [ 'html5' ],
 		plugins: {
 			videoJsResolutionSwitcher: {
 				sourceOrder: true,
@@ -34,9 +34,6 @@
 			},
 			replayButton: {},
 			infoButton: {}
-		},
-		ogvjs: {
-			base: mw.OgvJsSupport.basePath()
 		}
 	};
 
@@ -48,11 +45,11 @@
 
 	/**
 	 * Load video players for a jQuery collection
-     */
+	 */
 	function loadVideoPlayer() {
-		var videoplayer, $videoplayer;
+		var videoplayer, $videoplayer, $collection = this;
 
-		this.each( function ( index ) {
+		function loadSinglePlayer( index ) {
 			videoplayer = this;
 			$videoplayer = $( this );
 			if ( $videoplayer.closest( '.video-js' ).size() ) {
@@ -67,7 +64,7 @@
 			}
 			// Future interactions go faster if we've preloaded a little
 			var preload = 'metadata';
-			if ( videoplayer.canPlayType( 'video/webm; codecs=vp8,vorbis' ) === '' ) {
+			if ( !mw.OgvJsSupport.canPlayNatively() ) {
 				// ogv.js currently is expensive to start up:
 				// https://github.com/brion/ogv.js/issues/438
 				preload = 'none';
@@ -129,8 +126,21 @@
 			videojs( videoplayer, playerConfig ).ready( function () {
 				/* More custom stuff goes here */
 			} );
+		}
+
+		if ( !mw.OgvJsSupport.canPlayNatively() ) {
+			globalConfig.ogvjs = {
+				base: mw.OgvJsSupport.basePath()
+			};
+			globalConfig.techOrder.push( 'ogvjs' );
+		}
+		mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' ).then( function () {
+			$collection.each( loadSinglePlayer );
 		} );
 	}
+
+	// Preload the ogv.js module if we're going to need it...
+	mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' );
 
 	$.fn.loadVideoPlayer = loadVideoPlayer;
 
