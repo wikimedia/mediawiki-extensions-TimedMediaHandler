@@ -4,12 +4,14 @@
 		/**
 		 * Ensure that the OGVPlayer class is loaded before continuing.
 		 *
+		 * @param {string?} mod - optional module name override
 		 * @return {jQuery.Deferred}
 		 */
-		loadOgvJs: function () {
+		loadOgvJs: function ( mod ) {
+			mod = mod || 'ext.tmh.OgvJs';
 			return $.Deferred( function ( deferred ) {
 				if ( typeof OGVPlayer === 'undefined' ) {
-					mw.loader.using( 'ext.tmh.OgvJs', function () {
+					mw.loader.using( mod, function () {
 						OGVLoader.base = support.basePath();
 						deferred.resolve();
 					} );
@@ -17,6 +19,38 @@
 					deferred.resolve();
 				}
 			} );
+		},
+
+		/**
+		 * Check if native Ogg playback is available.
+		 *
+		 * @return {boolean}
+		 */
+		canPlayNatively: function () {
+			var el = document.createElement( 'video' );
+			if ( el && el.canPlayType && el.canPlayType( 'application/ogg' ) ) {
+				return true;
+			}
+			return false;
+		},
+
+		/**
+		 * Check if native Ogg playback is available, and if not
+		 * then loads the OGVPlayer class before resolving.
+		 *
+		 * @param {string?} mod - optional module name override
+		 * @return {jQuery.Deferred}
+		 */
+		loadIfNeeded: function ( mod ) {
+			mod = mod || 'ext.tmh.OgvJs';
+			if ( this.canPlayNatively() ) {
+				// Has native ogg playback support, resolve immediately.
+				return $.Deferred( function ( deferred ) {
+					deferred.resolve();
+				} );
+			} else {
+				return this.loadOgvJs( mod );
+			}
 		},
 
 		/**
