@@ -277,11 +277,6 @@ $wgAutoloadClasses['File_Ogg_Theora'] =
 $wgAutoloadClasses['File_Ogg_Vorbis'] =
 	"$timedMediaDir/handlers/OggHandler/File_Ogg/File/Ogg/Vorbis.php";
 
-// getID3 provides metadata for mp4 and webm files:
-$wgAutoloadClasses['getID3'] = "$timedMediaDir/libs/getid3/getid3.php";
-$wgAutoloadClasses['getid3_exception'] = "$timedMediaDir/libs/getid3/getid3.php";
-$wgAutoloadClasses['getid3_handler'] = "$timedMediaDir/libs/getid3/getid3.php";
-
 // ID3 Metadata Handler
 $wgAutoloadClasses['ID3Handler'] = "$timedMediaDir/handlers/ID3Handler/ID3Handler.php";
 // Mp4 / h264 Handler
@@ -363,3 +358,7 @@ $wgExtensionCredits['media'][] = [
 	'version' => '0.5.0',
 	'license-name' => 'GPL-2.0+',
 ];
+
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
+}
