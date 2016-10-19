@@ -82,6 +82,7 @@ class TimedMediaHandlerHooks {
 			'ext.tmh.video-js' => $baseExtensionResource + [
 					'scripts' => 'resources/videojs/video.js',
 					'styles' => 'resources/videojs/video-js.css',
+					'noflip' => true,
 					'targets' => [ 'mobile', 'desktop' ],
 					'languageScripts' => [
 						'ar' => 'resources/videojs/lang/ar.js',
