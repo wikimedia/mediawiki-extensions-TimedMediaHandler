@@ -51,6 +51,7 @@
 	"timedmedia-update-status": "Actualizar el estado de transcodificación",
 	"timedmedia-status": "Estado",
 	"timedmedia-status-unknown": "Estado desconocido",
+	"timedmedia-transcodebitrate": "Tasa de bits",
 	"timedmedia-transcodeduration": "Tiempo de codificación",
 	"timedmedia-transcodeinfo": "Formato",
 	"timedmedia-actions": "Acciones",
