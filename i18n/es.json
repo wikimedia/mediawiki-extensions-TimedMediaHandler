@@ -21,7 +21,7 @@
 			"Codynguyen1116"
 		]
 	},
-	"timedmediahandler-desc": "Manipulador de sonido, vídeo y texto sincronizado, con soporte para los formatos WebM, Ogg Theora, Vorbis y srt",
+	"timedmediahandler-desc": "Manipulador de sonido, vídeo y texto sincronizado, compatible con los formatos WebM, Ogg Theora, Vorbis y srt",
 	"timedmedia-ogg-short-audio": "Archivo de sonido Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Archivo de video Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Archivo Ogg $1, $2",
@@ -108,6 +108,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodificación activa|$1 transcodificaciones activas}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}} en la cola",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificaciones fallidas}}",
+	"timedmedia-no-derivatives": "No se necesita ninguna conversión.",
 	"timedmedia-file": "Archivo",
 	"timedmedia-audios": "{{PLURAL:$1|$1 archivo|$1 archivos}} de audio",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 archivo|$1 archivos}} de audio Ogg",
@@ -120,6 +121,8 @@
 	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que no tienen un archivo correspondiente.",
 	"orphanedtimedtext-unsupported": "Esta página especial sólo está soportada en base de datos MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText no se activó en este wiki.",
+	"apihelp-query+transcodestatus-description": "Obtener el estado de conversión de una página de archivo concreta.",
+	"apihelp-query+transcodestatus-example-1": "Obtener el estado de conversión de [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-example-1": "Obtener información sobre [[:File:Folgers.ogv]]",
 	"apihelp-transcodereset-param-title": "El título del archivo multimedia."
 }
