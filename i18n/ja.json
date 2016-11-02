@@ -8,7 +8,8 @@
 			"Shirayuki",
 			"青子守歌",
 			"Otokoume",
-			"Sujiniku"
+			"Sujiniku",
+			"Irus"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -90,6 +91,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 件の Ogg 音声ファイル}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 件の FLAC 音声ファイル}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 件の WAV 音声ファイル}}",
+	"action-transcode-status": "現在のトランスコードステータスを表示",
 	"orphanedtimedtext": "孤立しているTimedTextページ",
 	"orphanedtimedtext-summary": "以下のページは、対応するファイルが存在しない[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]の一覧です。",
 	"orphanedtimedtext-notimedtext": "このウィキでは字幕が有効になっていません。",

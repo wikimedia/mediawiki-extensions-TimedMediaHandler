@@ -93,6 +93,8 @@
 	"timedmedia-derivative-desc-1080p.mp4": "Pilnai HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-resolution-160": "Žema 160p",
+	"timedmedia-resolution-240": "Žema 240p",
 	"timedmedia-subtitle-new": "Sukurti naują vertimą arba redaguoti egzistuojantį",
 	"timedmedia-subtitle-new-desc": "Pasirinkite kalbą ir paspauskite '''{{int:Timedmedia-subtitle-new-go}}''' mygtuką",
 	"timedmedia-subtitle-new-go": "Vykdyti",
