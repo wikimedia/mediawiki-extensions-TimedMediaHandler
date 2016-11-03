@@ -256,7 +256,8 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * @static
 	 * @param $timePassed
-	 * @return string
+	 * @return string|array As from Message::listParam if available, otherwise
+	 *  a corresponding string in the language from $wgLang.
 	 */
 	public static function getTimePassedMsg( $timePassed ) {
 		$t = [];
@@ -271,15 +272,21 @@ class TimedMediaHandler extends MediaHandler {
 			} else {
 				// Give grep a chance to find the usages:
 				// timedmedia-days, timedmedia-hours, timedmedia-minutes,timedmedia-seconds
-				$t[$k] = wfMessage( 'timedmedia-' . $k, $v )->text();
+				$t[$k] = wfMessage( 'timedmedia-' . $k, $v );
 			}
 		}
 		if ( count( $t ) == 0 ) {
-			$t = [ wfMessage( 'timedmedia-seconds', 0 )->text() ];
+			$t = [ wfMessage( 'timedmedia-seconds', 0 ) ];
 		}
 
-		global $wgLang;
-		return $wgLang->commaList( $t );
+		if ( is_callable( [ 'Message', 'listParam' ] ) ) {
+			return Message::listParam( $t, 'comma' );
+		} else {
+			global $wgLang;
+			return $wgLang->commaList( array_map( function ( $m ) {
+				return $m->text();
+			}, $t ) );
+		}
 	}
 
 	/**

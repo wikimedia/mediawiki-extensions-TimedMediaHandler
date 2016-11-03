@@ -187,6 +187,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "Title of TimedMediaHandler VideoJS section in beta features page.",
 	"right-transcode-reset": "{{doc-right|transcode-reset}}",
 	"right-transcode-status": "{{doc-right|transcode-status}}",
+	"action-transcode-reset": "{{doc-action|transcode-reset}}",
 	"action-transcode-status": "{{doc-action|transcode-status}}",
 	"orphanedtimedtext": "{{doc-special|OrphanedTimedText}}",
 	"orphanedtimedtext-summary": "Summary of Special:OrphanedTimedText.",
@@ -202,5 +203,9 @@
 	"apihelp-transcodereset-param-title": "{{doc-apihelp-param|transcodereset|title}}",
 	"apihelp-transcodereset-param-transcodekey": "{{doc-apihelp-param|transcodereset|transcodekey}}",
 	"apihelp-transcodereset-example-1": "{{doc-apihelp-example|transcodereset}}",
-	"apihelp-transcodereset-example-2": "{{doc-apihelp-example|transcodereset}}"
+	"apihelp-transcodereset-example-2": "{{doc-apihelp-example|transcodereset}}",
+	"apierror-timedmedia-badtranscodekey": "{{doc-apierror}}\n\nParameters:\n* $1 - Key supplied",
+	"apierror-timedmedia-disabledtranscode": "{{doc-apierror}}",
+	"apierror-timedmedia-invalidtranscodetitle": "{{doc-apierror}}\n\nParameters:\n* $1 - Title supplied",
+	"apierror-timedmedia-notenoughtimereset": "{{doc-apierror}}\n\nParameters:\n* $1 - Time until reset (e.g. \"{{int:timedmedia-minutes|1}}{{int:comma-separator}}{{int:timedmedia-seconds|42}}\"), uses the following messages:\n** {{msg-mw|Timedmedia-days}}\n** {{msg-mw|Timedmedia-hours}}\n** {{msg-mw|Timedmedia-minutes}}\n** {{msg-mw|Timedmedia-seconds}}\n** {{msg-mw|Comma-separator}}"
 }
