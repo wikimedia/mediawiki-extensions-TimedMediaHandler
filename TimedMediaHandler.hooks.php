@@ -39,108 +39,108 @@ class TimedMediaHandlerHooks {
 
 		$resourceModules = [
 			'mw.PopUpMediaTransform' => $baseExtensionResource + [
-					'scripts' => 'resources/mw.PopUpThumbVideo.js',
-					'dependencies' => [
-						'mw.MwEmbedSupport',
-						'mediawiki.Title',
-						'mw.PopUpMediaTransform.styles'
-					],
-					'position' => 'top',
+				'scripts' => 'resources/mw.PopUpThumbVideo.js',
+				'dependencies' => [
+					'mw.MwEmbedSupport',
+					'mediawiki.Title',
+					'mw.PopUpMediaTransform.styles'
 				],
+				'position' => 'top',
+			],
 			'mw.PopUpMediaTransform.styles' => $baseExtensionResource + [
-					'position' => 'top',
-					'styles' => 'resources/PopUpThumbVideo.css',
-				],
+				'position' => 'top',
+				'styles' => 'resources/PopUpThumbVideo.css',
+			],
 			'mw.TMHGalleryHook.js' => $baseExtensionResource + [
-					'scripts' => 'resources/mw.TMHGalleryHook.js',
-					// position top needed as it needs to load before mediawiki.page.gallery
-					'position' => 'top',
-				],
+				'scripts' => 'resources/mw.TMHGalleryHook.js',
+				// position top needed as it needs to load before mediawiki.page.gallery
+				'position' => 'top',
+			],
 			'ext.tmh.embedPlayerIframe' => $baseExtensionResource + [
-					'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
-					'dependencies' => [
-						'jquery.embedPlayer',
-						'mw.MwEmbedSupport',
-					],
+				'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
+				'dependencies' => [
+					'jquery.embedPlayer',
+					'mw.MwEmbedSupport',
 				],
+			],
 			"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + [
-					'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-					'dependencies'=> [
-						'mw.Api',
-						'mw.MwEmbedSupport',
-					],
+				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
+				'dependencies'=> [
+					'mw.Api',
+					'mw.MwEmbedSupport',
 				],
+			],
 			// adds support MediaWikiPlayerSupport player bindings
 			"mw.MediaWikiPlayer.loader" => $baseExtensionResource + [
-					'scripts' => 'resources/mw.MediaWikiPlayer.loader.js',
-					'dependencies' => [
-						"mw.EmbedPlayer.loader",
-						"mw.TimedText.loader",
-					],
-					'position' => 'top',
+				'scripts' => 'resources/mw.MediaWikiPlayer.loader.js',
+				'dependencies' => [
+					"mw.EmbedPlayer.loader",
+					"mw.TimedText.loader",
 				],
+				'position' => 'top',
+			],
 			'ext.tmh.video-js' => $baseExtensionResource + [
-					'scripts' => 'resources/videojs/video.js',
-					'styles' => 'resources/videojs/video-js.css',
-					'noflip' => true,
-					'targets' => [ 'mobile', 'desktop' ],
-					'languageScripts' => [
-						'ar' => 'resources/videojs/lang/ar.js',
-						'ba' => 'resources/videojs/lang/ba.js',
-						'bg' => 'resources/videojs/lang/bg.js',
-						'ca' => 'resources/videojs/lang/ca.js',
-						'cs' => 'resources/videojs/lang/cs.js',
-						'da' => 'resources/videojs/lang/da.js',
-						'de' => 'resources/videojs/lang/de.js',
-						'el' => 'resources/videojs/lang/el.js',
-						'en' => 'resources/videojs/lang/en.js',
-						'es' => 'resources/videojs/lang/es.js',
-						'fa' => 'resources/videojs/lang/fa.js',
-						'fi' => 'resources/videojs/lang/fi.js',
-						'fr' => 'resources/videojs/lang/fr.js',
-						'hr' => 'resources/videojs/lang/hr.js',
-						'hu' => 'resources/videojs/lang/hu.js',
-						'it' => 'resources/videojs/lang/it.js',
-						'ja' => 'resources/videojs/lang/ja.js',
-						'ko' => 'resources/videojs/lang/ko.js',
-						'nb' => 'resources/videojs/lang/nb.js',
-						'nl' => 'resources/videojs/lang/nl.js',
-						'nn' => 'resources/videojs/lang/nn.js',
-						'pl' => 'resources/videojs/lang/pl.js',
-						'pt-BR' => 'resources/videojs/lang/pt-BR.js',
-						'ru' => 'resources/videojs/lang/ru.js',
-						'sr' => 'resources/videojs/lang/sr.js',
-						'sv' => 'resources/videojs/lang/sv.js',
-						'tr' => 'resources/videojs/lang/tr.js',
-						'uk' => 'resources/videojs/lang/uk.js',
-						'vi' => 'resources/videojs/lang/vi.js',
-						'zh-CN' => 'resources/videojs/lang/zh-CN.js',
-						'zh-TW' => 'resources/videojs/lang/zh-TW.js',
-					],
+				'scripts' => 'resources/videojs/video.js',
+				'styles' => 'resources/videojs/video-js.css',
+				'noflip' => true,
+				'targets' => [ 'mobile', 'desktop' ],
+				'languageScripts' => [
+					'ar' => 'resources/videojs/lang/ar.js',
+					'ba' => 'resources/videojs/lang/ba.js',
+					'bg' => 'resources/videojs/lang/bg.js',
+					'ca' => 'resources/videojs/lang/ca.js',
+					'cs' => 'resources/videojs/lang/cs.js',
+					'da' => 'resources/videojs/lang/da.js',
+					'de' => 'resources/videojs/lang/de.js',
+					'el' => 'resources/videojs/lang/el.js',
+					'en' => 'resources/videojs/lang/en.js',
+					'es' => 'resources/videojs/lang/es.js',
+					'fa' => 'resources/videojs/lang/fa.js',
+					'fi' => 'resources/videojs/lang/fi.js',
+					'fr' => 'resources/videojs/lang/fr.js',
+					'hr' => 'resources/videojs/lang/hr.js',
+					'hu' => 'resources/videojs/lang/hu.js',
+					'it' => 'resources/videojs/lang/it.js',
+					'ja' => 'resources/videojs/lang/ja.js',
+					'ko' => 'resources/videojs/lang/ko.js',
+					'nb' => 'resources/videojs/lang/nb.js',
+					'nl' => 'resources/videojs/lang/nl.js',
+					'nn' => 'resources/videojs/lang/nn.js',
+					'pl' => 'resources/videojs/lang/pl.js',
+					'pt-BR' => 'resources/videojs/lang/pt-BR.js',
+					'ru' => 'resources/videojs/lang/ru.js',
+					'sr' => 'resources/videojs/lang/sr.js',
+					'sv' => 'resources/videojs/lang/sv.js',
+					'tr' => 'resources/videojs/lang/tr.js',
+					'uk' => 'resources/videojs/lang/uk.js',
+					'vi' => 'resources/videojs/lang/vi.js',
+					'zh-CN' => 'resources/videojs/lang/zh-CN.js',
+					'zh-TW' => 'resources/videojs/lang/zh-TW.js',
 				],
+			],
 			'ext.tmh.videojs-ogvjs' => $baseExtensionResource + [
-					'scripts' => 'resources/videojs-ogvjs/videojs-ogvjs.js',
-					'targets' => [ 'mobile', 'desktop' ],
-					'dependencies' => [
-						'ext.tmh.video-js',
-						'ext.tmh.OgvJs',
-					],
+				'scripts' => 'resources/videojs-ogvjs/videojs-ogvjs.js',
+				'targets' => [ 'mobile', 'desktop' ],
+				'dependencies' => [
+					'ext.tmh.video-js',
+					'ext.tmh.OgvJs',
 				],
+			],
 			'ext.tmh.videojs-resolution-switcher' => $baseExtensionResource + [
-					'scripts' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js',
-					'styles' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css',
-					'targets' => [ 'mobile', 'desktop' ],
-					'dependencies' => [
-						'ext.tmh.video-js',
-					],
+				'scripts' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js',
+				'styles' => 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css',
+				'targets' => [ 'mobile', 'desktop' ],
+				'dependencies' => [
+					'ext.tmh.video-js',
 				],
+			],
 			'ext.tmh.videojs-responsive-layout' => $baseExtensionResource + [
-					'scripts' => 'resources/videojs-responsive-layout/videojs-responsive-layout.js',
-					'targets' => [ 'mobile', 'desktop' ],
-					'dependencies' => [
-						'ext.tmh.video-js',
-					],
+				'scripts' => 'resources/videojs-responsive-layout/videojs-responsive-layout.js',
+				'targets' => [ 'mobile', 'desktop' ],
+				'dependencies' => [
+					'ext.tmh.video-js',
 				],
+			],
 			'ext.tmh.videojs-replay' => $baseExtensionResource + [
 				'scripts' => 'resources/videojs-replay/videojs-replay.js',
 				'styles' => 'resources/videojs-replay/videojs-replay.css',
@@ -158,31 +158,31 @@ class TimedMediaHandlerHooks {
 				],
 			],
 			'ext.tmh.player' => $baseExtensionResource + [
-					'scripts' => 'resources/ext.tmh.player.js',
-					'targets' => [ 'mobile', 'desktop' ],
-					'dependencies' => [
-						'ext.tmh.video-js',
-						'ext.tmh.videojs-resolution-switcher',
-						'ext.tmh.videojs-responsive-layout',
-						'ext.tmh.videojs-replay',
-						'ext.tmh.mw-info-button',
-						'ext.tmh.OgvJsSupport',
-					],
-					'messages' => [
-						'timedmedia-resolution-160',
-						'timedmedia-resolution-240',
-						'timedmedia-resolution-360',
-						'timedmedia-resolution-480',
-						'timedmedia-resolution-720',
-						'timedmedia-resolution-1080',
-						'timedmedia-resolution-1440',
-						'timedmedia-resolution-2160',
-					],
+				'scripts' => 'resources/ext.tmh.player.js',
+				'targets' => [ 'mobile', 'desktop' ],
+				'dependencies' => [
+					'ext.tmh.video-js',
+					'ext.tmh.videojs-resolution-switcher',
+					'ext.tmh.videojs-responsive-layout',
+					'ext.tmh.videojs-replay',
+					'ext.tmh.mw-info-button',
+					'ext.tmh.OgvJsSupport',
 				],
+				'messages' => [
+					'timedmedia-resolution-160',
+					'timedmedia-resolution-240',
+					'timedmedia-resolution-360',
+					'timedmedia-resolution-480',
+					'timedmedia-resolution-720',
+					'timedmedia-resolution-1080',
+					'timedmedia-resolution-1440',
+					'timedmedia-resolution-2160',
+				],
+			],
 			'ext.tmh.player.styles' => $baseExtensionResource + [
-					'styles' => 'resources/ext.tmh.player.styles.less',
-					'targets' => [ 'mobile', 'desktop' ],
-				],
+				'styles' => 'resources/ext.tmh.player.styles.less',
+				'targets' => [ 'mobile', 'desktop' ],
+			],
 		];
 
 		$resourceLoader->register( $resourceModules );
@@ -392,7 +392,7 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * @param File $file the file that is being rendered
-	 * @param OutputPage $wgOut the output to which this file is being rendered
+	 * @param OutputPage $out the output to which this file is being rendered
 	 * @return bool
 	 */
 	private static function onImagePageHooks( $file, $out ) {
@@ -507,6 +507,10 @@ class TimedMediaHandlerHooks {
 		return false;
 	}
 
+	/**
+	 * @param $title Title
+	 * @return bool
+	 */
 	public static function isTimedMediaHandlerTitle( $title ) {
 		if ( !$title->inNamespace( NS_FILE ) ) {
 			return false;
@@ -590,8 +594,11 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
-	/*
+	/**
 	 * If file gets reverted to a previous version, reset transcodes.
+	 *
+	 * @param $article Article
+	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete(
 		$article, Revision $rev, $baseID, User $user
@@ -613,6 +620,9 @@ class TimedMediaHandlerHooks {
 	 * When a user asks for a purge, perhaps through our handy "update transcode status"
 	 * link, make sure we've got the updated set of transcodes. This'll allow a user or
 	 * automated process to see their status and reset them.
+	 *
+	 * @param $article Article
+	 * @return bool
 	 */
 	public static function onArticlePurge( $article ) {
 		if ( $article->getTitle()->getNamespace() == NS_FILE ) {
@@ -636,7 +646,7 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Hook to add list of PHPUnit test cases.
-	 * @param $files Array of files
+	 * @param $files array of files
 	 * @return bool
 	 */
 	public static function registerUnitTests( array &$files ) {
@@ -747,6 +757,10 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Return false here to evict existing parseroutput cache
+	 * @param $parserOutput ParserOutput
+	 * @param $wikiPage WikiPage
+	 * @param $parserOptions
+	 * @return bool
 	 */
 	public static function rejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
 		if (
