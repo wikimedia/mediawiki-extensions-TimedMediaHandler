@@ -28,6 +28,7 @@
 	"timedmedia-flac-long-audio": "Plik dźwiękowy FLAC, długość $1, przepływność $2",
 	"timedmedia-wav-short-audio": "Plik audio WAV, $1",
 	"timedmedia-wav-long-audio": "Plik dźwiękowy WAV, długość $1, przepływność $2",
+	"timedmedia-wav-pcm-required": "Możesz przesyłać tylko pliki WAV w formacie PCM.",
 	"timedmedia-more": "Więcej...",
 	"timedmedia-dismiss": "Zamknij",
 	"timedmedia-download": "Pobierz plik",
