@@ -108,7 +108,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Criar nova tradução ou editar existente",
-	"timedmedia-subtitle-new-desc": "Seleccione o idioma e pressione o botão '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Selecione o idioma e pressione o botão '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Enviar",
 	"timedmedia-subtitle-language": "Legendas em $1 ($2)",
 	"timedmedia-subtitle-no-video": "Não existe nenhum vídeo associado à atual página de legendas",
