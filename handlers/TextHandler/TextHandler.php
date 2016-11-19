@@ -268,7 +268,7 @@ class TextHandler {
 		$textTracks = [];
 		if ( $data !== null && $data['query'] && $data['query']['pages'] ) {
 			foreach ( $data['query']['pages'] as $page ) {
-				if ( $page['videoinfo'] ) {
+				if ( isset( $page['videoinfo'] ) && $page['videoinfo'] ) {
 					foreach ( $page['videoinfo'] as $info ) {
 						if ( $info['timedtext'] ) {
 							foreach ( $info['timedtext'] as $track ) {
