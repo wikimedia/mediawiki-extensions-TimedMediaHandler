@@ -9,9 +9,14 @@
 
 class TimedMediaHandlerHooks {
 
-	// Register TimedMediaHandler namespace IDs
-	// These are configurable due to Commons history: T123823
-	// These need to be before registerhooks due to: T123695
+	/**
+	 * Register TimedMediaHandler namespace IDs
+	 * These are configurable due to Commons history: T123823
+	 * These need to be before registerhooks due to: T123695
+	 *
+	 * @param array $list
+	 * @return bool
+	 */
 	public static function addCanonicalNamespaces( array &$list ) {
 		global $wgEnableLocalTimedText, $wgTimedTextNS;
 		if ( $wgEnableLocalTimedText ) {
@@ -28,9 +33,14 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
-	// At some point these should be registered in extension.json
-	// But for now we register them dynamically, because they are config dependent,
-	// while we have two players
+	/**
+	 * At some point these should be registered in extension.json
+	 * But for now we register them dynamically, because they are config dependent,
+	 * while we have two players
+	 *
+	 * @param ResourceLoader $resourceLoader
+	 * @return bool
+	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		$baseExtensionResource = [
 			'localBasePath' => __DIR__,
@@ -189,13 +199,17 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
-	// Register TimedMediaHandler Hooks
+	/**
+	 * Register TimedMediaHandler Hooks
+	 *
+	 * @return bool
+	 */
 	public static function register() {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
 		$wgResourceModules, $wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
-		$wgTmhTheoraTwoPassEncoding, $wgTmhWebPlayer, $wgWikimediaJenkinsCI;
+		$wgTmhTheoraTwoPassEncoding, $wgWikimediaJenkinsCI;
 
 		// set config for parser tests
 		if ( isset( $wgWikimediaJenkinsCI ) && $wgWikimediaJenkinsCI  === true ) {
@@ -443,6 +457,10 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param SkinTemplate $sktemplate
+	 * @param array $links
+	 */
 	public static function onSkinTemplateNavigation( SkinTemplate &$sktemplate, array &$links ) {
 		if ( self::isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
 			$ttTitle = Title::makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
@@ -554,6 +572,7 @@ class TimedMediaHandlerHooks {
 		}
 		return true;
 	}
+
 	/**
 	 * Handle moved titles
 	 *
@@ -732,6 +751,10 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param DatabaseUpdater $updater
+	 * @return bool
+	 */
 	public static function checkSchemaUpdates( DatabaseUpdater $updater ) {
 		$base = __DIR__;
 
@@ -750,6 +773,10 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param array $qp
+	 * @return bool
+	 */
 	public static function onwgQueryPages( $qp ) {
 		$qp[] = [ 'SpecialOrphanedTimedText', 'OrphanedTimedText' ];
 		return true;
@@ -780,6 +807,12 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @param $hash
+	 * @param User $user
+	 * @param $forOptions
+	 * @return bool
+	 */
 	public static function changePageRenderingHash( &$hash, User $user, &$forOptions ) {
 		if ( self::activePlayerMode() === 'videojs' ) {
 			if ( $user->getOption( 'tmh-videojs' ) === '1' ) {
@@ -789,6 +822,11 @@ class TimedMediaHandlerHooks {
 		}
 	}
 
+	/**
+	 * @param $user
+	 * @param $prefs
+	 * @return bool
+	 */
 	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
 		global $wgTmhUseBetaFeatures, $wgExtensionAssetsPath;
 
@@ -813,6 +851,9 @@ class TimedMediaHandlerHooks {
 		return true;
 	}
 
+	/**
+	 * @return string
+	 */
 	public static function activePlayerMode() {
 		global $wgTmhWebPlayer, $wgTmhUseBetaFeatures, $wgUser;
 		$context = new RequestContext();
