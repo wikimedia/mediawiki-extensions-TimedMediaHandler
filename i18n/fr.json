@@ -21,7 +21,8 @@
 			"Urhixidur",
 			"Verdy p",
 			"Framafan",
-			"Wladek92"
+			"Wladek92",
+			"Derugon"
 		]
 	},
 	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec le support des formats WebM, Ogg Theora, Vorbis et srt",
@@ -96,7 +97,7 @@
 	"timedmedia-derivative-desc-160p.webm": "WebM à bande étroite (160p)",
 	"timedmedia-derivative-desc-240p.webm": "Petit WebM (240P)",
 	"timedmedia-derivative-360p.webm": "WebM 360p",
-	"timedmedia-derivative-desc-360p.webm": "WebM lisible en continu depuis le web (360p)",
+	"timedmedia-derivative-desc-360p.webm": "WebM (360p)",
 	"timedmedia-derivative-480p.webm": "WebM 480p",
 	"timedmedia-derivative-desc-480p.webm": "WebM SD (480p)",
 	"timedmedia-derivative-720p.webm": "WebM 720p",
