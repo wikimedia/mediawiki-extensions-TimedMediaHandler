@@ -31,7 +31,7 @@ class ResetTranscodes extends Maintenance {
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $row->transcode_key,
 			] );
-			$job->insert();
+			JobQueueGroup::singleton()->push( $job );
 		}
 	}
 }

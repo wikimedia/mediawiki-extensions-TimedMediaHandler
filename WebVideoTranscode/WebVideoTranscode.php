@@ -1187,10 +1187,11 @@ class WebVideoTranscode {
 				'transcodeKey' => $transcodeKey,
 			] );
 
-			if ( $job->insert() ) {
+			try {
+				JobQueueGroup::singleton()->push( $job );
 				// Clear the state cache ( now that we have updated the page )
 				self::clearTranscodeCache( $fileName );
-			} else {
+			} catch ( Exception $ex ) {
 				// Adding job failed, update transcode row
 				$db->update(
 					'transcode',
