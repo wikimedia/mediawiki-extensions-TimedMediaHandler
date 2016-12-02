@@ -53,6 +53,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minutt|$1 minutter}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekund|$1 sekunder}}",
 	"timedmedia-reset": "Nullstill omkoding",
+	"timedmedia-reset-areyousure": "Er du sikker på at du vil fortsette?",
 	"timedmedia-reset-button-dismiss": "Lukk",
 	"timedmedia-reset-button-reset": "Nullstill",
 	"timedmedia-reset-error": "Det oppsto en feil ved forsøk på å nullstille omkodingsjobben.",
@@ -106,6 +107,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg-lydfil|$1 Ogg-lydfiler}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC-lydfil|$1 FLAC-lydfiler}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV-lydfil|$1 WAV-lydfiler}}",
+	"beta-feature-timedmediahandler-description-videojs": "Oppdatert lyd- og videospiller med renere utseende og mobilkompatibilitet.",
 	"right-transcode-reset": "Nullstill feilede eller omkodede videoer så de blir gjeninnsatt i jobbkøen.",
 	"right-transcode-status": "Vis [[Special:TimedMediaHandler|informasjon om pågående omkodinger]]",
 	"action-transcode-status": "vise pågående omkodingsstatus",
@@ -115,5 +117,6 @@
 	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien.",
 	"apihelp-query+transcodestatus-description": "Hent transkodingsstatus for en gitt filside.",
 	"apihelp-query+transcodestatus-example-1": "Hent transkodingsstatus for [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-example-1": "Hent informasjon om [[:File:Folgers.ogv]]",
 	"apihelp-transcodereset-param-title": "Mediefiltittelen"
 }
