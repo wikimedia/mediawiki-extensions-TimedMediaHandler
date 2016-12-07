@@ -1,7 +1,7 @@
 <?php
 
 class TimedMediaTransformOutput extends MediaTransformOutput {
-	private static $serial = 0;
+	protected static $serial = 0;
 
 	// Video file sources object lazy init in getSources()
 	// TODO these vars should probably be private
@@ -187,8 +187,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function getImagePopUp() {
 		// pop up videos set the autoplay attribute to true:
 		$autoPlay = true;
+		$id = TimedMediaTransformOutput::$serial;
+		TimedMediaTransformOutput::$serial++;
+
 		return Xml::tags( 'div', [
-				'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
+				'id' => self::PLAYER_ID_PREFIX . $id,
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . $this->getPlayerWidth() . "px;",
 				'videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize(), $autoPlay ),
@@ -413,8 +416,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$height .= 'px';
 		}
 
+		$id = TimedMediaTransformOutput::$serial;
+		TimedMediaTransformOutput::$serial++;
 		$mediaAttr = [
-			'id' => self::PLAYER_ID_PREFIX . TimedMediaTransformOutput::$serial++,
+			'id' => self::PLAYER_ID_PREFIX . $id,
 			// Get the correct size:
 			'poster' => $this->getUrl( $sizeOverride ),
 
