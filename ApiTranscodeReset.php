@@ -12,23 +12,46 @@ class ApiTranscodeReset extends ApiBase {
 		global $wgUser, $wgEnableTranscode, $wgWaitTimeForTranscodeReset;
 		// Check if transcoding is enabled on this wiki at all:
 		if ( !$wgEnableTranscode ) {
-			$this->dieUsage( 'Transcode is disabled on this wiki', 'disabledtranscode' );
+			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+				$this->dieWithError( 'apierror-timedmedia-disabledtranscode', 'disabledtranscode' );
+			} else {
+				$this->dieUsage( 'Transcode is disabled on this wiki', 'disabledtranscode' );
+			}
 		}
 
 		// Confirm the user has the transcode-reset right
-		if ( !$wgUser->isAllowed( 'transcode-reset' ) ) {
-			$this->dieUsage( 'You don\'t have permission to reset transcodes', 'missingpermission' );
+		if ( is_callable( [ $this, 'checkUserRightsAny' ] ) ) {
+			$this->checkUserRightsAny( 'transcode-reset' );
+		} else {
+			if ( !$wgUser->isAllowed( 'transcode-reset' ) ) {
+				$this->dieUsage( 'You don\'t have permission to reset transcodes', 'missingpermission' );
+			}
 		}
 		$params = $this->extractRequestParams();
 
 		// Make sure we have a valid Title
 		$titleObj = Title::newFromText( $params['title'] );
 		if ( !$titleObj || $titleObj->isExternal() ) {
-			$this->dieUsageMsg( [ 'invalidtitle', $params['title'] ] );
+			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['title'] ) ] );
+			} else {
+				$this->dieUsageMsg( [ 'invalidtitle', $params['title'] ] );
+			}
 		}
 		// Make sure the title can be transcoded
 		if ( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ) {
-			$this->dieUsageMsg( [ 'invalidtranscodetitle', $params['title'] ] );
+			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+				$this->dieWithError(
+					[
+						'apierror-timedmedia-invalidtranscodetitle',
+						wfEscapeWikiText( $titleObj->getPrefixedText() )
+					],
+					'invalidtranscodetitle'
+				);
+			} else {
+				$this->dieUsage( "{$titleObj->getPrefixedText()} is not transcodable.",
+					'invalidtranscodetitle' );
+			}
 		}
 		$transcodeKey = false;
 		// Make sure its a enabled transcode key we are trying to remove:
@@ -37,10 +60,17 @@ class ApiTranscodeReset extends ApiBase {
 			global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
 			$transcodeSet = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 			if ( !in_array( $params['transcodekey'], $transcodeSet ) ) {
-				$this->dieUsage(
-					'Invalid or disabled transcode key: ' . htmlspecialchars( $params['transcodekey'] ),
+				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+					$this->dieWithError(
+						[ 'apierror-timedmedia-badtranscodekey', wfEscapeWikiText( $params['transcodekey'] ) ],
 						'badtranscodekey'
-				);
+					);
+				} else {
+					$this->dieUsage(
+						'Invalid or disabled transcode key: ' . htmlspecialchars( $params['transcodekey'] ),
+						'badtranscodekey'
+					);
+				}
 			} else {
 				$transcodeKey = $params['transcodekey'];
 			}
@@ -50,9 +80,16 @@ class ApiTranscodeReset extends ApiBase {
 		$file = wfFindFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
 		if ( $timeSinceLastReset < $wgWaitTimeForTranscodeReset ) {
-			$this->dieUsage( 'Not enough time has passed since the last reset of this transcode. ' .
-				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset ) .
-				' until this transcode can be reset', 'notenoughtimereset' );
+			$msg = wfMessage(
+				'apierror-timedmedia-notenoughtimereset',
+				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset )
+			);
+			if ( is_callable( [ $this, 'dieWithError' ] ) ) {
+				$this->dieWithError( $msg, 'notenoughtimereset' );
+			} else {
+				$this->dieUsage( $msg->inLanguage( 'en' )->useDatabase( false )->text(),
+					'notenoughtimereset' );
+			}
 		}
 
 		// All good do the transcode removal:
