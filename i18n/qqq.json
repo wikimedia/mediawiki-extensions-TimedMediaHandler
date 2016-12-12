@@ -204,8 +204,8 @@
 	"apihelp-transcodereset-param-transcodekey": "{{doc-apihelp-param|transcodereset|transcodekey}}",
 	"apihelp-transcodereset-example-1": "{{doc-apihelp-example|transcodereset}}",
 	"apihelp-transcodereset-example-2": "{{doc-apihelp-example|transcodereset}}",
-	"apierror-timedmedia-badtranscodekey": "{{doc-apierror}}\n\nParameters:\n* $1 - Key supplied",
 	"apierror-timedmedia-disabledtranscode": "{{doc-apierror}}",
 	"apierror-timedmedia-invalidtranscodetitle": "{{doc-apierror}}\n\nParameters:\n* $1 - Title supplied",
+	"apierror-timedmedia-badtranscodekey": "{{doc-apierror}}\n\nParameters:\n* $1 - Key supplied",
 	"apierror-timedmedia-notenoughtimereset": "{{doc-apierror}}\n\nParameters:\n* $1 - Time until reset (e.g. \"{{int:timedmedia-minutes|1}}{{int:comma-separator}}{{int:timedmedia-seconds|42}}\"), uses the following messages:\n** {{msg-mw|Timedmedia-days}}\n** {{msg-mw|Timedmedia-hours}}\n** {{msg-mw|Timedmedia-minutes}}\n** {{msg-mw|Timedmedia-seconds}}\n** {{msg-mw|Comma-separator}}"
 }

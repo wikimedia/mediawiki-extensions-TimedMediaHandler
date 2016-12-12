@@ -144,6 +144,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "更新的音视频播放器，具有清晰的外观和移动兼容性。",
 	"right-transcode-reset": "重置已失败或已转码的视频将其再次加入到作业队列中",
 	"right-transcode-status": "查看[[Special:TimedMediaHandler|当前转码活动的信息]]",
+	"action-transcode-reset": "重置转码",
 	"action-transcode-status": "查看当前的转码状态",
 	"orphanedtimedtext": "孤立的TimedText页面",
 	"orphanedtimedtext-summary": "没有对应文件的[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]页面的列表。",
@@ -159,5 +160,9 @@
 	"apihelp-transcodereset-param-title": "媒体文件标题。",
 	"apihelp-transcodereset-param-transcodekey": "您希望重置的转码关键字。从[[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]获取。",
 	"apihelp-transcodereset-example-1": "重置[[:File:Clip.webm]]的所有译码",
-	"apihelp-transcodereset-example-2": "重置[[:File:Clip.webm]]的“360_560kbs.webm”转码关键字"
+	"apihelp-transcodereset-example-2": "重置[[:File:Clip.webm]]的“360_560kbs.webm”转码关键字",
+	"apierror-timedmedia-disabledtranscode": "转码在本wiki被停用。",
+	"apierror-timedmedia-invalidtranscodetitle": "$1不可转码。",
+	"apierror-timedmedia-badtranscodekey": "无效或被禁用的转码关键词：$1",
+	"apierror-timedmedia-notenoughtimereset": "在此次转码上次重置以来，没有过去足够时间。$1直到此次转码可以被重置。"
 }

@@ -129,6 +129,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "נגן צלילים וסרטים מעודכן עם מראה נקי יותר ותאימות למכשירים ניידים.",
 	"right-transcode-reset": "אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל והכנסתם מחדש לתור המשימות",
 	"right-transcode-status": "צפייה ב[[Special:TimedMediaHandler|מידע על פעילות המרת־המשנה הנוכחית]]",
+	"action-transcode-reset": "לאתחל המרה משנית",
 	"action-transcode-status": "לצפות במצב המרת־המשנה הנוכחי",
 	"orphanedtimedtext": "דפי טקסט מתוזמן יתומים",
 	"orphanedtimedtext-summary": "רשימה של כל דפי [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] שלא משויך להם קובץ.",
@@ -144,5 +145,7 @@
 	"apihelp-transcodereset-param-title": "כותרת קובץ המדיה.",
 	"apihelp-transcodereset-param-transcodekey": "מפתח המרת־המשנה שברצונך לאפס. יש לאחזר אותו מ־[[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "איפוס כל המרות־המשנה עבור [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "איפוס מפתח המרת המשנה '<span dir=\"ltr\">360_560kbs.webm</span>' עבור [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "איפוס מפתח המרת המשנה '<span dir=\"ltr\">360_560kbs.webm</span>' עבור [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "המרה משניות כבויה בוויקי הזה.",
+	"apierror-timedmedia-invalidtranscodetitle": "אי־אפשר לעשות המרה משנית ל{{GRAMMAR:תחילית|$1}}."
 }

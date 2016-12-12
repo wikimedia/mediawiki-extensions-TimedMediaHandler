@@ -142,6 +142,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "Aktualisierter Audio-/Video-Player mit einem saubereren Aussehen und der Kompatibilität für Mobilgeräte.",
 	"right-transcode-reset": "Fehlgeschlagene oder erfolgreiche Umschlüsselungen von Video-Dateien zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten",
+	"action-transcode-reset": "Transkodierungen zurückzusetzen",
 	"action-transcode-status": "den aktuellen Transkodierungstatus anzusehen",
 	"orphanedtimedtext": "Verwaiste TimedText-Seiten",
 	"orphanedtimedtext-summary": "Liste der [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-Seiten, die keine entsprechende Datei haben.",
@@ -157,5 +158,9 @@
 	"apihelp-transcodereset-param-title": "Der Titel der Mediendatei.",
 	"apihelp-transcodereset-param-transcodekey": "Der Umschlüsselungsschlüssel, der zurückgesetzt werden soll. Von [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]] abrufen.",
 	"apihelp-transcodereset-example-1": "Setzt alle Umschlüsselungen für [[:File:Clip.webm]] zurück",
-	"apihelp-transcodereset-example-2": "Setzt den Umschlüsselungsschlüssel „360_560kbs.webm“ für [[:File:Clip.webm]] zurück"
+	"apihelp-transcodereset-example-2": "Setzt den Umschlüsselungsschlüssel „360_560kbs.webm“ für [[:File:Clip.webm]] zurück",
+	"apierror-timedmedia-disabledtranscode": "Transkodierungen sind auf diesem Wiki deaktiviert.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 ist nicht transkodierbar.",
+	"apierror-timedmedia-badtranscodekey": "Ungültiger oder deaktivierter Transkodierungsschlüssel: $1",
+	"apierror-timedmedia-notenoughtimereset": "Seit dem letzten Zurücksetzen dieser Transkodierung ist nicht genug Zeit verstrichen. Warte $1, bis diese Transkodierung zurückgesetzt werden kann."
 }

@@ -6,7 +6,8 @@
 			"Gorizon",
 			"Marmase",
 			"Mirzali",
-			"Xoser"
+			"Xoser",
+			"1917 Ekim Devrimi"
 		]
 	},
 	"timedmediahandler-desc": "Qen dê dosyayan dê WebM, Ogg Theora, Vorbis, srt rêxo desti veng dekerdış u nuşte ronayış",
@@ -18,7 +19,6 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg dosyaya filmi/vengi yo multiexed, $1, mudde $2, $4×$5 piksel, $3 bıumumi",
 	"timedmedia-ogg-long-general": "Ogg dosyaya medyayi, mudde $2, $3",
 	"timedmedia-ogg-long-error": "dosyaya oggi yo nemeqbul: $1",
-	"timedmedia-no-player-js": "İdari xeta, browser de şoma de jawacsript dewre ra veciyayo ynna barkerde kayder çıniyo.<br />\nWazenê se<a href=\"$1\">klibi ronê</a> yana qandê browserde xo<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">jew kayder şenê ronê</a>.",
 	"timedmedia-more": "hema....",
 	"timedmedia-dismiss": "Racnê",
 	"timedmedia-download": "dosya biyar war",
@@ -38,5 +38,6 @@
 	"timedmedia-source-audio-file-desc": "Dosyaya $1 oricinale ($2)",
 	"timedmedia-subtitle-new-go": "Şo",
 	"timedmediahandler": "Programê kontroliê zemanê kontrolbiyayey",
-	"timedmedia-file": "Dosya"
+	"timedmedia-file": "Dosya",
+	"apierror-timedmedia-disabledtranscode": "Ena transkod ena wiki dı dewre ra vet a."
 }

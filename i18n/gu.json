@@ -5,10 +5,10 @@
 			"Arbhatt",
 			"Dsvyas",
 			"NehalDaveND",
-			"Ashok modhvadia"
+			"Ashok modhvadia",
+			"Kevin Kovadia"
 		]
 	},
-	"timedmedia-no-player-js": "માફ કરશો, તમારા બ્રાઉઝરમાં જાવાસ્ક્રિપ્ટ સક્રિય નથી અથવા તો સપોર્ટેડ પ્લેયર નથી.<br />\nતમે <a href=\"$1\">ક્લિપ ડાઉનલોડ</a> કરી શકો છો અથવા આ ક્લિપને તમારા બ્રાઉઝરમાં ચલાવવા માટે <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">એક પ્લેયર ડાઉનલોડ</a> કરી શકો છો.",
 	"timedmedia-more": "વધુ...",
 	"timedmedia-dismiss": "બંધ કરો",
 	"timedmedia-download": "ફાઈલ ડાઉનલોડ કરો",
@@ -19,5 +19,7 @@
 	"timedmedia-source-file": "$1 સ્રોત",
 	"timedmedia-source-audio-file-desc": "મુળ આવૃત્તિ $1 ફાઇલ ($2)",
 	"timedmedia-subtitle-new-go": "જાઓ",
-	"timedmedia-file": "ફાઇલ"
+	"timedmedia-file": "ફાઇલ",
+	"action-transcode-reset": "રીસેટ ટ્રાંસ્કોડ કરો",
+	"apierror-timedmedia-disabledtranscode": "ટ્રાંસ્કોડ આ વિકિ પર નિષ્ક્રિય છે."
 }

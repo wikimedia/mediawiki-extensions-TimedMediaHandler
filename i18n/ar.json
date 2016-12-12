@@ -129,6 +129,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "لاعب صوت/فيديو محدث بتصميم أفضل وتوافق مع المحمول.",
 	"right-transcode-reset": "إعادة الضبط فشلت أو الفيديوات المكودة بحيث تم إدخالها إلى job queue مجددا",
 	"right-transcode-status": "عرض [[Special:TimedMediaHandler|المعلومات حول نشاط التكويد الحالي]]",
+	"action-transcode-reset": "إعادة ضبط التحويلات",
 	"action-transcode-status": "عرض حالة التكويد الحالية",
 	"orphanedtimedtext": "صفحات TimedText يتيمة",
 	"orphanedtimedtext-summary": "قائمة بصفحات [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]  التي ليس لديها ملف موافق.",
@@ -144,5 +145,9 @@
 	"apihelp-transcodereset-param-title": "عنوان ملف الميديا.",
 	"apihelp-transcodereset-param-transcodekey": "مفتاح التكويد الذي تود إعادة ضبطه. اجلب من [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "إعادة ضبط كل التكويدات ل[[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "إعادة ضبط مفتاح التكويد '360_560kbs.webm' ل [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "إعادة ضبط مفتاح التكويد '360_560kbs.webm' ل [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "التحويل معطل على هذه الويكي.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 لا يمكن تحويلها.",
+	"apierror-timedmedia-badtranscodekey": "مفتاح تحويل غير صحيح أو معطل: $1",
+	"apierror-timedmedia-notenoughtimereset": "لم يمر وقت كاف منذ آخر إعادة ضبط لهذا التحويل. $1 حتى يمكن إعادة ضبط هذا التحويل."
 }
