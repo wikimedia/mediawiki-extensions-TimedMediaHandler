@@ -161,6 +161,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "Надграден аудио/видео изведувач со почист изглед и поголема складност со мобилни уреди.",
 	"right-transcode-reset": "Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.",
 	"right-transcode-status": "Преглед на [[Special:TimedMediaHandler|информации за тековните активности во прекодирањето]]",
+	"action-transcode-reset": "поништување на прекодирања",
 	"action-transcode-status": "преглед на тековниот статус на прекодирањето",
 	"orphanedtimedtext": "Осамени страници со титлови",
 	"orphanedtimedtext-summary": "Список на страници со [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] што немаат своја податотека.",
@@ -176,5 +177,9 @@
 	"apihelp-transcodereset-param-title": "Наслов на податотеката.",
 	"apihelp-transcodereset-param-transcodekey": "Клучот на прекодирањето што сакате да го напарвите одново. Преземи од [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Врати ги по основно сите прекодирања на [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "Врати го по основно клучот „360_560kbs.webm“ за прекодирањето на [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "Врати го по основно клучот „360_560kbs.webm“ за прекодирањето на [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Прекодирањето е оневозможено на ова вики.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 не може да се прекодира.",
+	"apierror-timedmedia-badtranscodekey": "Неважечки или оневозможен клуч за прекодирање: $1",
+	"apierror-timedmedia-notenoughtimereset": "Не помина довоно време од последното поништување на прекодирањево. Почекајте $1 за да можете да го поништите."
 }
