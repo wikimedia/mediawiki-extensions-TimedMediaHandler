@@ -138,6 +138,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "Оновлений аудіо- й відеоплеєр із чистішим виглядом і сумісністю з мобільними пристроями.",
 	"right-transcode-reset": "скидання невдалих або транскодованих відео із повторним занесенням їх в чергу завдань",
 	"right-transcode-status": "перегляд [[Special:TimedMediaHandler|інформації про поточну діяльність із транскодування]]",
+	"action-transcode-reset": "скидання перекодувань",
 	"action-transcode-status": "перегляд поточного стану транскодування",
 	"orphanedtimedtext": "Сторінки-сироти TimedText",
 	"orphanedtimedtext-summary": "Список сторінок [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], які не мають відповідного файлу.",
@@ -153,5 +154,9 @@
 	"apihelp-transcodereset-param-title": "Заголовок медіафайлу.",
 	"apihelp-transcodereset-param-transcodekey": "Перекодувати ключ, який Ви хочете скинути. Вибірка з [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Скинути всі транскодування для [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "Скинути ключ транскодування «360_560kbs.webm» для [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "Скинути ключ транскодування «360_560kbs.webm» для [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Перекодування вимкнене в цій вікі.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 недоступна для перекодування.",
+	"apierror-timedmedia-badtranscodekey": "Недійсний або вимкнений ключ перекодування: $1",
+	"apierror-timedmedia-notenoughtimereset": "Недостатньо часу минуло з останнього скидання цього перекодування. $1 має минути, перш ніж це перекодування можна буде скинути ще раз."
 }
