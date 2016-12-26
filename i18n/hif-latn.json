@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abdul Kadir"
+		]
+	},
+	"timedmedia-source-file": "$1 source",
+	"timedmedia-source-audio-file-desc": "Original $1 file ($2)"
+}

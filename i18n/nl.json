@@ -120,5 +120,7 @@
 	"right-transcode-reset": "Video's waarvoor transcoderen mislukt is of die al getranscodeerd zijn opnieuw in de jobqueue plaatsen.",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken",
 	"action-transcode-status": "huidige transcoderingsstatus te bekijken",
-	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki."
+	"orphanedtimedtext-unsupported": "Deze speciale pagina wordt alleen ondersteund op MySQL databases.",
+	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki.",
+	"apihelp-transcodereset-param-title": "De titel van het mediabestand."
 }
