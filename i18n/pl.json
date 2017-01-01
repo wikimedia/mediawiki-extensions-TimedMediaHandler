@@ -10,7 +10,8 @@
 			"Przemub",
 			"Rzuwig",
 			"Sp5uhe",
-			"The Polish"
+			"The Polish",
+			"Woytecr"
 		]
 	},
 	"timedmediahandler-desc": "Obsługa plików audio, wideo i napisów filmowych w formatach WebM, Ogg Theora, Vorbis i srt",
@@ -103,6 +104,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Utwórz nowe tłumaczenie lub edytuj istniejące",
+	"timedmedia-subtitle-new-desc": "Wybierz język i kliknij przycisk '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Przejdź",
 	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-videos": "{{PLURAL:$1|$1 film|$1 filmy|$1 filmów}}",
@@ -112,17 +114,21 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 trwające transkodowanie|$1 trwające transkodowania|$1 trwających transkodowań}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}} w kolejce",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}",
+	"timedmedia-no-derivatives": "Transkodowanie nie jest wymagane.",
 	"timedmedia-file": "Plik",
 	"timedmedia-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|$1 plików dźwiękowych}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} Ogg",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} WAV",
+	"beta-feature-timedmediahandler-description-videojs": "Uaktualniony odtwarzacz audio/video z bardziej przejrzystym wyglądem i wsparciem dla urządzeń mobilnych.",
 	"right-transcode-reset": "Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań",
 	"right-transcode-status": "Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]",
 	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania",
 	"orphanedtimedtext": "Osierocone strony TimedText",
 	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText nie jest włączony w tej wiki.",
+	"apihelp-query+transcodestatus-description": "Otrzymaj informację o stanie transkodowania dla podanej strony pliku.",
+	"apihelp-query+transcodestatus-example-1": "Otrzymaj informacje o stanie transkodowania dla [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-example-1": "Pobierz informacji o [[:File:Folgers.ogv]]",
 	"apihelp-transcodereset-param-title": "Tytuł pliku multimedialnego."
 }
