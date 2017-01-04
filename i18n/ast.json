@@ -126,6 +126,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "Reproductor de soníu/videu con aspeutu llimpiu y compatibilidá col móvil.",
 	"right-transcode-reset": "Reaniciar los videos fallíos o trescodificaos pa que vuelvan a ponese na cola de trabayos.",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre l'actividá de trescodificación actual]]",
+	"action-transcode-reset": "reaniciar les trescodificaciones",
 	"action-transcode-status": "ver l'estáu actual de la trescodificación",
 	"orphanedtimedtext": "Páxines güérfanes de TimedText",
 	"orphanedtimedtext-summary": "Llista de páxines de [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que nun tienen el correspondiente ficheru.",
@@ -141,5 +142,9 @@
 	"apihelp-transcodereset-param-title": "Títulu del ficheru de multimedia.",
 	"apihelp-transcodereset-param-transcodekey": "La clave del transcode que quies reaniciar. Cuéyela de [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Reaniciar tolos transcodes de [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "Reaniciar la clave transcode '360_560kbs.webm' de [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "Reaniciar la clave transcode '360_560kbs.webm' de [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "La trescodificación ta desactivada nesta wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 nun ye trescodificable.",
+	"apierror-timedmedia-badtranscodekey": "Clave de trescodificación inválida o desactivada: $1",
+	"apierror-timedmedia-notenoughtimereset": "Nun pasó tiempu bastante dende l'últimu reaniciu d'esta trescodificación. $1 fasta que pueda reaniciase esta trescodificación."
 }

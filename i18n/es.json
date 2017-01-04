@@ -18,7 +18,8 @@
 			"Macofe",
 			"Lemondoge",
 			"Indiralena",
-			"Codynguyen1116"
+			"Codynguyen1116",
+			"Dgstranz"
 		]
 	},
 	"timedmediahandler-desc": "Manipulador de sonido, vídeo y texto sincronizado, compatible con los formatos WebM, Ogg Theora, Vorbis y srt",
@@ -124,5 +125,6 @@
 	"apihelp-query+transcodestatus-description": "Obtener el estado de conversión de una página de archivo concreta.",
 	"apihelp-query+transcodestatus-example-1": "Obtener el estado de conversión de [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-example-1": "Obtener información sobre [[:File:Folgers.ogv]]",
-	"apihelp-transcodereset-param-title": "El título del archivo multimedia."
+	"apihelp-transcodereset-param-title": "El título del archivo multimedia.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 no es transcodificable."
 }
