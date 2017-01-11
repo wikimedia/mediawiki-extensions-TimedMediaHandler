@@ -54,7 +54,7 @@
 	"mwe-embedplayer-ogg-player-kplayer": "Le reproductor Kaltura",
 	"mwe-embedplayer-ogg-player-selected": "(seligite)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
-	"mwe-embedplayer-for_best_experience": "Pro un melior experientia de reproduction de video, nos recommenda:<br /><a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">Firefox 3.5</a>.",
+	"mwe-embedplayer-for_best_experience": "Pro un melior experientia de reproduction de video, nos recommenda un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navigator con supporto de video HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Nulle lector compatibile esseva detegite in le navigator del web. Pro reproduction in le navigator, per favor discarga le [$1 ultime version de Firefox].",
 	"mwe-embedplayer-fullscreen-tip": "Preme <b>F11</b> pro alternar le <i>navigator del web</i> in plen schermo",
 	"mwe-embedplayer-fullscreen-tip-osx": "Preme <b>shift ⌘ F</b> pro alternar plen schermo",
