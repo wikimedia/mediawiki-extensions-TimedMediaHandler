@@ -340,6 +340,9 @@ $wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';
 $wgSpecialPages['OrphanedTimedText'] = 'SpecialOrphanedTimedText';
 $wgSpecialPages['TimedMediaHandler'] = 'SpecialTimedMediaHandler';
 
+$wgLogTypes[] = 'timedmediahandler';
+$wgLogActionsHandlers['timedmediahandler/resettranscode'] = 'LogFormatter';
+
 // Extension Credits
 $wgExtensionCredits['media'][] = [
 	'path' => __FILE__,
