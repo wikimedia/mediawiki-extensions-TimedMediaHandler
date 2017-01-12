@@ -98,6 +98,14 @@ class ApiTranscodeReset extends ApiBase {
 		// Oh and we wanted to reset it, right? Trigger again.
 		WebVideoTranscode::updateJobQueue( $file, $transcodeKey );
 
+		$logEntry = new ManualLogEntry( 'timedmediahandler', 'resettranscode' );
+		$logEntry->setPerformer( $this->getUser() );
+		$logEntry->setTarget( $titleObj );
+		$logEntry->setParameters( [
+			'4::transcodekey' => $transcodeKey,
+		] );
+		$logid = $logEntry->insert();
+
 		$this->getResult()->addValue( null, 'success', 'removed transcode' );
 	}
 
