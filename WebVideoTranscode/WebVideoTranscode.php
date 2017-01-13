@@ -538,8 +538,8 @@ class WebVideoTranscode {
 	 * Get the name to use as the base name for the transcode.
 	 *
 	 * Swift has problems where the url-encoded version of
-	 * the path (ie 'filename.ogv/filename.ogv.720p.webm' )
-	 * is greater that > 1024 bytes, so shorten in that case.
+	 * the path (ie '0/00/filename.ogv/filename.ogv.720p.webm' )
+	 * is greater than > 1024 bytes, so shorten in that case.
 	 *
 	 * Future versions might respect FileRepo::$abbrvThreshold.
 	 *
@@ -549,7 +549,8 @@ class WebVideoTranscode {
 	 */
 	public static function getTranscodeFileBaseName( $file, $suffix = '' ) {
 		$name = $file->getName();
-		if ( strlen( urlencode( $name ) ) * 2 + 12 > 1024 ) {
+		$length = strlen( urlencode( '0/00/' . $name . '/' . $name . '.' . $suffix ) );
+		if ( $length > 1024 ) {
 			return 'transcode' . '.' . $suffix;
 		} else {
 			return $name . '.' . $suffix;
