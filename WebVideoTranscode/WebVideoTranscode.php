@@ -88,7 +88,7 @@ class WebVideoTranscode {
 				'framerate'                  => '15',
 				'audioQuality'               => '-1',
 				'channels'                   => '2',
-				'noUpscaling'                => 'true',
+				'noUpscaling'                => 'true', // also caps to source frame rate
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
@@ -100,9 +100,10 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '426x240',
 				'videoBitrate'               => '512',
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '0',
 				'channels'                   => '2',
-				'noUpscaling'                => 'true',
+				'noUpscaling'                => 'true', // also caps to source frame rate
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
@@ -114,9 +115,10 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '640x360',
 				'videoBitrate'               => '1024',
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '1',
 				'channels'                   => '2',
-				'noUpscaling'                => 'true',
+				'noUpscaling'                => 'true', // also caps to source frame rate
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
@@ -128,9 +130,10 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '854x480',
 				'videoBitrate'               => '2048',
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '2',
 				'channels'                   => '2',
-				'noUpscaling'                => 'true',
+				'noUpscaling'                => 'true', // also caps to source frame rate
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
@@ -143,8 +146,9 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '1280x720',
 				'videoQuality'               => 6,
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => 3,
-				'noUpscaling'                => 'true',
+				'noUpscaling'                => 'true', // also caps to source frame rate
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
@@ -156,8 +160,9 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '1920x1080',
 				'videoQuality'               => 6,
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => 3,
-				'noUpscaling'                => 'true',
+				'noUpscaling'                => 'true', // also caps to source frame rate
 				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
 				'optimize'                   => 'true',
 				'keyframeInterval'           => '128',
