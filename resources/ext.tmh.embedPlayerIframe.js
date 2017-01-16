@@ -11,7 +11,6 @@
 			$( '#videoContainer' ).css( {
 				visibility: 'visible'
 			} );
-			$( '#bgimage' ).remove();
 		} );
 	};
 

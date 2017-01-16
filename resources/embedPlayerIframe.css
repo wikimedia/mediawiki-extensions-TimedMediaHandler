@@ -11,9 +11,6 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
-img#bgimage {
-	display: none;
-}
 #videoContainer .videoHolder {
 	position: static;
 }
