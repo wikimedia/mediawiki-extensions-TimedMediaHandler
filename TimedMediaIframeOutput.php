@@ -70,13 +70,13 @@ class TimedMediaIframeOutput {
 
 		if ( TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
 			$wgOut->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
-			$wgOut->addModuleStyles( 'embedPlayerIframeStyle' );
 		}
 
 		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
 			$wgOut->addModules( 'ext.tmh.player' );
 			$wgOut->addModuleStyles( 'ext.tmh.player.styles' );
 		}
+		$wgOut->addModuleStyles( 'embedPlayerIframeStyle' );
 
 		$wgOut->sendCacheControl();
 		$rlClient = $wgOut->getRlClient();
