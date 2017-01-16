@@ -7,11 +7,7 @@
 	var iframePlayerInit = function () {
 		// rewrite player, normally done by mw.EmbedPlayer.loader upon wikipage.content hook
 		var $players = $( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
-		$players.embedPlayer( function () {
-			$( '#videoContainer' ).css( {
-				visibility: 'visible'
-			} );
-		} );
+		$players.embedPlayer();
 	};
 
 	$( iframePlayerInit );
