@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Malafaya"
+			"Malafaya",
+			"Cgboeree"
 		]
 	},
-	"timedmedia-more": "Plu…"
+	"timedmedia-more": "Plu…",
+	"timedmedia-source-file": "$1 fonte",
+	"timedmedia-source-audio-file-desc": "Original $1 fix ($2)"
 }
