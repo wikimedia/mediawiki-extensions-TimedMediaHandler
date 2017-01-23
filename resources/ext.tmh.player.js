@@ -1,4 +1,4 @@
-
+/* global videojs */
 ( function ( $, mw, videojs ) {
 	var globalConfig, audioConfig, playerConfig;
 
@@ -15,7 +15,7 @@
 		plugins: {
 			videoJsResolutionSwitcher: {
 				sourceOrder: true,
-				customSourcePicker: function ( player, sources/*, label */ ) {
+				customSourcePicker: function ( player, sources/* , label */ ) {
 					// Resolution switcher gets confused by preload=none on ogv.js
 					if ( player.preload() === 'none' ) {
 						player.preload( 'metadata' );
@@ -47,11 +47,13 @@
 	 * Load video players for a jQuery collection
 	 */
 	function loadVideoPlayer() {
-		var videoplayer, $videoplayer, $collection = this;
+		var $collection = this;
 
 		function loadSinglePlayer( index ) {
-			videoplayer = this;
-			$videoplayer = $( this );
+			var i, l, preload, resolutions, playerHeight, defaultRes,
+				videoplayer = this,
+				$videoplayer = $( this );
+
 			if ( $videoplayer.closest( '.video-js' ).size() ) {
 				// This player has already been transformed.
 				return;
@@ -63,7 +65,7 @@
 				playerConfig = $.extend( true, {}, playerConfig, audioConfig );
 			}
 			// Future interactions go faster if we've preloaded a little
-			var preload = 'metadata';
+			preload = 'metadata';
 			if ( !mw.OgvJsSupport.canPlayNatively() ) {
 				// ogv.js currently is expensive to start up:
 				// https://github.com/brion/ogv.js/issues/438
@@ -74,19 +76,20 @@
 				preload = 'none';
 			}
 
-			var resolutions = [];
+			resolutions = [];
 
 			$( videoplayer ).attr( {
 				preload: preload
 			} ).find( 'source' ).each( function () {
 				// FIXME would be better if we can configure the plugin to make use of our preferred attributes
-				var $source = $( this ),
+				var matches,
+					$source = $( this ),
 					transcodeKey = $source.data( 'transcodekey' ),
 					res = parseInt( $source.data( 'height' ), 10 ),
 					label = $source.data( 'shorttitle' );
 
 				if ( transcodeKey ) {
-					var matches = transcodeKey.match( /^(\d+)p\./ );
+					matches = transcodeKey.match( /^(\d+)p\./ );
 					if ( matches ) {
 						// Video derivative of fixed size.
 						res = parseInt( matches[ 1 ], 10 );
@@ -104,12 +107,12 @@
 
 			// Pick the first resolution at least the size of the player,
 			// unless they're all too small.
-			var playerHeight = $( videoplayer ).height();
+			playerHeight = $( videoplayer ).height();
 			resolutions.sort( function ( a, b ) {
 				return a - b;
 			} );
-			var defaultRes;
-			for ( var i = 0; i < resolutions.length; i++ ) {
+			defaultRes;
+			for ( i = 0, l = resolutions.length; i < l; i++ ) {
 				defaultRes = resolutions[ i ];
 				if ( defaultRes >= playerHeight ) {
 					break;
@@ -152,4 +155,4 @@
 		$( '#videoContainer video,#videoContainer audio' ).loadVideoPlayer();
 	} );
 
-} )( jQuery, mediaWiki, videojs );
+}( jQuery, mediaWiki, videojs ) );

@@ -1,16 +1,15 @@
 /*!
 * Javascript to support transcode table on image page
 */
-/*global OO*/
 ( function ( mw, $, OO ) {
 	$( document ).ready( function () {
 		function errorPopup( event ) {
 			var tKey = $( event.target ).attr( 'data-transcodekey' ),
 				message = $( [
-						document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
-						document.createElement( 'br' ),
-						document.createElement( 'br' ),
-						document.createTextNode( mw.msg( 'timedmedia-reset-areyousure' ) )
+					document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
+					document.createElement( 'br' ),
+					document.createElement( 'br' ),
+					document.createTextNode( mw.msg( 'timedmedia-reset-areyousure' ) )
 				] );
 
 			event.preventDefault();

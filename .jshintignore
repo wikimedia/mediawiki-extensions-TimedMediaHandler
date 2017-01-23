@@ -1,8 +1,0 @@
-MwEmbedModules
-resources/videojs
-resources/videojs-resolution-switcher
-resources/videojs-responsive-layout
-resources/mw-info-button
-
-node_modules
-vendor

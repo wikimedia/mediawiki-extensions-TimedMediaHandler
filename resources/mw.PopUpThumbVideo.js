@@ -7,7 +7,7 @@
 			var link, title,
 				parent = $( this ).parent();
 			if ( parent.attr( 'videopayload' ) ) {
-				$( this ).click( function ( /*event*/ ) {
+				$( this ).click( function ( /* event*/ ) {
 					var thisref = this;
 
 					mw.loader.using( 'mw.MwEmbedSupport', function () {

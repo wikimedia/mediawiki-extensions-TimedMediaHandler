@@ -1,3 +1,4 @@
+/* global OGVLoader */
 ( function ( $, mw ) {
 
 	var support = mw.OgvJsSupport = {
@@ -75,10 +76,11 @@
 		 * @return {AudioContext|null}
 		 */
 		initAudioContext: function () {
-			var AudioContext = window.AudioContext || window.webkitAudioContext;
+			var context, node,
+				AudioContext = window.AudioContext || window.webkitAudioContext;
 			if ( AudioContext ) {
-				var context = new AudioContext(),
-					node;
+				context = new AudioContext();
+
 				if ( context.createScriptProcessor ) {
 					node = context.createScriptProcessor( 1024, 0, 2 );
 				} else if ( context.createJavaScriptNode ) {
