@@ -32,7 +32,7 @@ div.thumbinner.mw-overflow {
 /* Resets styling on the resolution button. Our content linewraps */
 .vjs-resolution-button ul.vjs-menu-content.vjs-menu-content {
 	margin-left: -6em;
-	width: 100% !important;
+	width: 100% !important; /* stylelint-disable-line declaration-no-important */
 }
 
 /* Audio player skin */
@@ -53,25 +53,20 @@ div.thumbinner.mw-overflow {
 	}
 
 	&.vjs-waiting .vjs-progress-holder:not( .vjs-seeking ) {
-		height: .5em;
-		background-image: repeating-linear-gradient(
-			-45deg,
-			#73859f,
-			#73859f 11px,
-			#eee 10px,
-			#eee 20px
-		);
+		height: 0.5em;
+		background-image: repeating-linear-gradient( -45deg, #73859f, #73859f 11px, #eee 10px, #eee 20px );
 		border-radius: 3px;
 		background-size: 28px 28px;
 
-		transition: height .5s;
-		animation: vjs-slider-indeterminate .5s linear infinite;
+		transition: height 0.5s;
+		animation: vjs-slider-indeterminate 0.5s linear infinite;
 
 		.vjs-play-progress {
 			display: none;
 		}
 	}
 }
+
 @keyframes vjs-slider-indeterminate {
 	0% {
 		background-position: 0 0;

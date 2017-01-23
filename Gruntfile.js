@@ -6,11 +6,24 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-exec' );
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
 	grunt.loadNpmTasks( 'grunt-patcher' );
+	grunt.loadNpmTasks( 'grunt-stylelint' );
 
 	grunt.initConfig( {
 		eslint: {
 			all: [
 				'**/*.js',
+				'!MwEmbedModules/**',
+				'!resources/videojs*/**',
+				'!resources/mw-info-button/**',
+				'!node_modules/**'
+			]
+		},
+		stylelint: {
+			options: {
+				syntax: 'less'
+			},
+			all: [
+				'**/*.{css,less}',
 				'!MwEmbedModules/**',
 				'!resources/videojs*/**',
 				'!resources/mw-info-button/**',
@@ -97,6 +110,6 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'copy:videojs-replay', 'patch:video.js' ] );
-	grunt.registerTask( 'test', [ 'eslint', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };

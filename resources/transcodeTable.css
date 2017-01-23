@@ -1,13 +1,15 @@
 .mw-filepage-transcodestatus .download-btn {
-	background-image: url('download_sprite.png');
+	background-image: url( download_sprite.png );
 	width: 49px;
 	height: 36px;
-	background-repeat:no-repeat;
+	background-repeat: no-repeat;
 	background-position: -50px;
 }
+
 .mw-filepage-transcodestatus .download-btn:hover {
 	background-position: 0 0;
 }
+
 .mw-filepage-transcodestatus .download-btn span {
 	/* Text hidden by the above image */
 	display: none;
