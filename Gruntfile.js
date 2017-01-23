@@ -25,7 +25,8 @@ module.exports = function ( grunt ) {
 			src: '<%= jshint.all %>'
 		},
 		banana: {
-			all: 'i18n/'
+			all: 'i18n/',
+			EmbedPlayer: 'MwEmbedModules/EmbedPlayer/i18n/'
 		},
 		jsonlint: {
 			all: [
