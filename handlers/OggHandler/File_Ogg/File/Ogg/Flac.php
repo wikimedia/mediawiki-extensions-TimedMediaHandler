@@ -42,8 +42,32 @@ class File_Ogg_Flac extends File_Ogg_Media
         parent::__construct($streamSerial, $streamData, $filePointer);
         $this->_decodeHeader();
         $this->_decodeCommentsHeader();
-        $this->_streamLength    = $this->_streamInfo['total_samples']
-            / $this->_streamInfo['sample_rate'];
+
+        if ($this->_streamInfo['total_samples'] > 0) {
+            $this->_streamLength    = $this->_streamInfo['total_samples']
+                                    / $this->_streamInfo['sample_rate'];
+        } else {
+            // Header may have 0 for total_samples in which case we have to check.
+            // https://xiph.org/flac/format.html#metadata_block_streaminfo
+              $endSec =  $this->getSecondsFromGranulePos( $this->_lastGranulePos );
+              $startSec = $this->getSecondsFromGranulePos( $this->_firstGranulePos );
+
+            //make sure the offset is worth taking into account oggz_chop related hack
+            if( $startSec > 1) {
+                $this->_streamLength = $endSec - $startSec;
+                $this->_startOffset = $startSec;
+            } else {
+                $this->_streamLength = $endSec;
+            }
+        }
+
+        $this->_avgBitrate      = $this->_streamLength ? ($this->_streamSize * 8) / $this->_streamLength : 0;
+    }
+
+    function getSecondsFromGranulePos( $granulePos ){
+        return (( '0x' . substr( $granulePos, 0, 8 ) ) * pow(2, 32)
+              + ( '0x' . substr( $granulePos, 8, 8 ) ))
+              / $this->_streamInfo['sample_rate'];
     }
 
     /**
