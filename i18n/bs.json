@@ -3,7 +3,8 @@
 		"authors": [
 			"CERminator",
 			"Palapa",
-			"Semso98"
+			"Semso98",
+			"Srdjan m"
 		]
 	},
 	"timedmediahandler-desc": "Upravljač za zvuk, video i vremenski tekst sa podrškom formata za WebM, Ogg Theora, Vorbis, srt",
@@ -17,7 +18,6 @@
 	"timedmedia-ogg-long-error": "Nevaljana ogg datoteka: $1",
 	"timedmedia-wav-long-audio": "WAV audio datoteka, dužina $1, $2 sveukupno",
 	"timedmedia-wav-pcm-required": "Možete postaviti samo PCM (Pulse Code Modulation) WAV.",
-	"timedmedia-no-player-js": "Žao nam je, vaš preglednik ili je onemogućio JavaScript ili nema nijednog podržanog playera.<br />\nMožete <a href=\"$1\">učitati klip</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">učitati player</a> za reproduciranje klipa u vašem pregledniku.",
 	"timedmedia-more": "Više...",
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Učitaj datoteku",
@@ -27,5 +27,6 @@
 	"timedmedia-source-file": "$1 izvor",
 	"timedmedia-source-file-desc": "Originalna $1 datoteka, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)",
-	"timedmedia-subtitle-language": "$1 ($2) podnaslovi"
+	"timedmedia-subtitle-language": "$1 ($2) podnaslovi",
+	"log-name-timedmediahandler": "Zapisnik TimedMediaHandlera"
 }
