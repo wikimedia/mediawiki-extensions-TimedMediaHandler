@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Malafaya"
+			"Malafaya",
+			"Joao Xavier"
 		]
 	},
 	"timedmedia-ogg-long-error": "Ne-valida Ogg-arkivo: $1",
 	"timedmedia-more": "Plus…",
 	"timedmedia-dismiss": "Klozar",
-	"timedmedia-desc-link": "Pri ca arkivo"
+	"timedmedia-desc-link": "Pri ca arkivo",
+	"timedmedia-source-file": "Arkivo-fonto $1",
+	"timedmedia-source-audio-file-desc": "Originala $1 arkivo ($2)"
 }
