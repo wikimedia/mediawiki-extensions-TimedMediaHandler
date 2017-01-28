@@ -112,5 +112,6 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|WAV 오디오 파일 $1개}}",
 	"right-transcode-reset": "변환됐거나 실패한 비디오를 작업 대기열에 다시 추가되도록 초기화",
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",
-	"action-transcode-status": "현재 코드 변환 상태 보기"
+	"action-transcode-status": "현재 코드 변환 상태 보기",
+	"log-name-timedmediahandler": "TimedMediaHandler 기록"
 }
