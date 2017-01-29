@@ -22,7 +22,8 @@
 			"Verdy p",
 			"Framafan",
 			"Wladek92",
-			"Derugon"
+			"Derugon",
+			"The RedBurn"
 		]
 	},
 	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec le support des formats WebM, Ogg Theora, Vorbis et srt",
@@ -74,7 +75,7 @@
 	"timedmedia-reset": "Réinitialiser le transcodage",
 	"timedmedia-reset-areyousure": "Êtes-vous sûr de vouloir continuer ?",
 	"timedmedia-reset-button-cancel": "Ne pas réinitialiser",
-	"timedmedia-reset-button-dismiss": "Rejeter",
+	"timedmedia-reset-button-dismiss": "Fermer",
 	"timedmedia-reset-button-reset": "Réinitialiser",
 	"timedmedia-reset-error": "Erreur en réinitialisant le travail de transcodage.",
 	"timedmedia-reset-explanation": "Remettre à zéro ce transcodage supprimera tout fichier existant (s’il y en a) et ajoutera de nouveau le transcodage à la file de travaux. Cela prendra un certain temps pour être transcodé de nouveau.",
