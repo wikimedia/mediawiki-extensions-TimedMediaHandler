@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stavanger7"
+		]
+	},
+	"timedmedia-source-file": "Fonte $1",
+	"timedmedia-source-audio-file-desc": "Original file $1 ($2)"
+}
