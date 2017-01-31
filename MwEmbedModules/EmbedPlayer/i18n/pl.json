@@ -79,5 +79,7 @@
 	"mwe-embedplayer-video-3gp": "Wideo 3GP",
 	"mwe-embedplayer-video-mpeg": "Wideo MPEG",
 	"mwe-embedplayer-video-msvideo": "Wideo AVI",
-	"mwe-embedplayer-missing-source": "Nie ustalono źródła obrazu."
+	"mwe-embedplayer-missing-source": "Nie ustalono źródła obrazu.",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Pobierz ten film",
+	"mwe-embedplayer-iewebmprompt-outro": "Po zakończeniu instalacji odśwież stronę."
 }
