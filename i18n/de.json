@@ -144,7 +144,7 @@
 	"right-transcode-status": "[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten",
 	"action-transcode-reset": "Transkodierungen zurückzusetzen",
 	"action-transcode-status": "den aktuellen Transkodierungstatus anzusehen",
-	"log-name-timedmediahandler": "TimedMediaHandler-Logbuch",
+	"log-name-timedmediahandler": "Zeitgesteuerte-Medien-Logbuch",
 	"log-description-timedmediahandler": "Dies ist ein Logbuch der Aktionen bezüglich Transkodierungen von zeitgesteuerten Medien.",
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|hat}} eine Transkodierung von $3 in das Format „$4“ zurückgesetzt",
 	"orphanedtimedtext": "Verwaiste TimedText-Seiten",
