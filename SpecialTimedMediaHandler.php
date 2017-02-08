@@ -114,7 +114,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 			$files = [];
 			$res = $dbr->select(
 				'transcode',
-				'*',
+				[ 'transcode_image_name', 'transcode_key' ],
 				$this->transcodeStates[ $state ],
 				__METHOD__,
 				[ 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' ]
