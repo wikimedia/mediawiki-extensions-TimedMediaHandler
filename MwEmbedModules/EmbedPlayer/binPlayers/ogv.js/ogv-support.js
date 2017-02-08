@@ -53,7 +53,7 @@
 	(function() {
 
 	  var OGVCompat = __webpack_require__(1),
-	    OGVVersion = ("1.2.1-20160924234040-a1a879e");
+	    OGVVersion = ("1.3.0-20170208200618-aa493c31");
 
 	  if (window) {
 	    // 1.0-compat globals

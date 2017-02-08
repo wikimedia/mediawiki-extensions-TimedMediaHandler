@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		OGVLoader = __webpack_require__(3),
 		OGVMediaType = __webpack_require__(7),
 		OGVPlayer = __webpack_require__(8),
-		OGVVersion = ("1.2.1-20160924234040-a1a879e");
+		OGVVersion = ("1.3.0-20170208200618-aa493c31");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -287,7 +287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.2.1-20160924234040-a1a879e");
+	var OGVVersion = ("1.3.0-20170208200618-aa493c31");
 
 	(function() {
 		var global = this;
@@ -751,26 +751,28 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var YUVCanvas = __webpack_require__(9);
+	__webpack_require__(9).polyfill();
+
+	var YUVCanvas = __webpack_require__(12);
 
 	// -- OGVLoader.js
 	var OGVLoader = __webpack_require__(3);
 
 	// -- StreamFile.js
-	var StreamFile = __webpack_require__(16);
+	var StreamFile = __webpack_require__(19);
 
 	// -- AudioFeeder.js
-	var AudioFeeder = __webpack_require__(17),
-		dynamicaudio_swf = __webpack_require__(18);
+	var AudioFeeder = __webpack_require__(30),
+		dynamicaudio_swf = __webpack_require__(31);
 
 	// -- Bisector.js
-	var Bisector = __webpack_require__(19);
+	var Bisector = __webpack_require__(32);
 
 	// -- OGVMediaType.js
 	var OGVMediaType = __webpack_require__(7);
 
 	// -- OGVWrapperCodec.js
-	var OGVWrapperCodec = __webpack_require__(20);
+	var OGVWrapperCodec = __webpack_require__(33);
 
 	// -- OGVDecoderAudioProxy.js
 	var OGVDecoderAudioProxy = __webpack_require__(4);
@@ -867,6 +869,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		if (typeof options.audioContext !== 'undefined') {
 			// Try passing a pre-created audioContext in?
 			audioOptions.audioContext = options.audioContext;
+		}
+		if (typeof options.audioDestination !== 'undefined') {
+			// Try passing a pre-created audioContext in?
+			audioOptions.output = options.audioDestination;
 		}
 		// Buffer in largeish chunks to survive long CPU spikes on slow CPUs (eg, 32-bit iOS)
 		audioOptions.bufferSize = 8192;
@@ -991,7 +997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			// without any throttling.
 			audioFeeder.onbufferlow = function audioCallback() {
 				log('onbufferlow');
-				if ((stream && stream.waiting) || pendingAudio) {
+				if ((stream && (stream.buffering || stream.seeking)) || pendingAudio) {
 					// We're waiting on input or other async processing;
 					// we'll get triggered later.
 				} else {
@@ -1065,6 +1071,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		var currentSrc = '',
 			stream,
 			streamEnded = false,
+			seekCancel = {},
+			readCancel = {},
+			errorMessage = null,
 			dataEnded = false,
 			byteLength = 0,
 			duration = null,
@@ -1253,11 +1262,31 @@ return /******/ (function(modules) { // webpackBootstrap
 			lastFrameSkipped,
 			seekBisector;
 
+		function Cancel(msg) {
+			Error.call(this, msg);
+		}
+		Cancel.prototype = Object.create(Error);
+
+		function seekStream(offset) {
+			if (stream.seeking) {
+				seekCancel.cancel(new Cancel('cancel for new seek'));
+			}
+			if (stream.buffering) {
+				readCancel.cancel(new Cancel('cancel for new seek'));
+			}
+			streamEnded = false;
+			dataEnded = false;
+			ended = false;
+			stream.seek(offset, seekCancel).then(function() {
+				setTimeout(readBytesAndWait, 0);
+			}).catch(onStreamError);
+		}
+
 		function startBisection(targetTime) {
 			bisectTargetTime = targetTime;
 			seekBisector = new Bisector({
 				start: 0,
-				end: stream.bytesTotal - 1,
+				end: stream.length - 1,
 				process: function(start, end, position) {
 					if (position == lastSeekPosition) {
 						return false;
@@ -1265,8 +1294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						lastSeekPosition = position;
 						lastFrameSkipped = false;
 						codec.flush(function() {
-							stream.seek(position);
-							readBytesAndWait();
+							seekStream(position);
 						});
 						return true;
 					}
@@ -1277,12 +1305,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		function seek(toTime) {
 			log('requested seek to ' + toTime);
-			if (stream.bytesTotal === 0) {
+			if (!stream.seekable) {
 				throw new Error('Cannot bisect a non-seekable stream');
 			}
 			function prepForSeek(callback) {
-				if (stream) { //} && stream.waiting) {
-					stream.abort();
+				if (stream && stream.buffering) {
+					readCancel.cancel(new Cancel('cancel for new seek'));
+				}
+				if (stream && stream.seeking) {
+					seekCancel.cancel(new Cancel('cancel for new seek'));
 				}
 				// clear any queued input/seek-start
 				actionQueue.splice(0, actionQueue.length);
@@ -1331,11 +1362,8 @@ return /******/ (function(modules) { // webpackBootstrap
 						if (seeking) {
 							seekState = SeekState.LINEAR_TO_TARGET;
 							fireEventAsync('seeking');
-							if (isProcessing()) {
-								// wait for i/o
-							} else {
-								pingProcessing();
-							}
+
+							// wait for i/o to trigger readBytesAndWait
 							return;
 						}
 						// Use the old interface still implemented on ogg demuxer
@@ -1346,8 +1374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								// Start at the keypoint, then decode forward to the desired time.
 								//
 								seekState = SeekState.LINEAR_TO_TARGET;
-								stream.seek(offset);
-								readBytesAndWait();
+								seekStream(offset);
 							} else {
 								// No index.
 								//
@@ -1512,7 +1539,11 @@ return /******/ (function(modules) { // webpackBootstrap
 					// wait for new data to come in
 				} else {
 					log('close enough (left)');
-					seekTargetTime = codec.frameTimestamp;
+
+					// We're having trouble finding a new packet position;
+					// likely it's an audio file with lots of small packets.
+					// Since we can't find an earlier packet, just continue here.
+					seekTargetTime = timestamp;
 					continueSeekedPlayback();
 				}
 			} else if (timestamp + frameDuration / 2 < bisectTargetTime) {
@@ -1520,8 +1551,12 @@ return /******/ (function(modules) { // webpackBootstrap
 					// wait for new data to come in
 				} else {
 					log('close enough (right)');
-					seekTargetTime = codec.frameTimestamp;
-					continueSeekedPlayback();
+
+					// We're having trouble finding a new packet position;
+					// likely it's an audio file with lots of small packets.
+					// Switch to linear mode to find the final target.
+					seekState = SeekState.LINEAR_TO_TARGET;
+					pingProcessing();
 				}
 			} else {
 				// Reached the bisection target!
@@ -1627,8 +1662,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							state = State.SEEKING_END;
 							lastSeenTimestamp = -1;
 							codec.flush(function() {
-								stream.seek(Math.max(0, stream.bytesTotal - 65536 * 2));
-								readBytesAndWait();
+								seekStream(Math.max(0, stream.length - 65536 * 2));
 							});
 						} else {
 							// Stream not seekable and no x-content-duration; assuming infinite stream.
@@ -1675,7 +1709,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							pingProcessing();
 						} else {
 							// Read more data!
-							if (stream.bytesRead < stream.bytesTotal) {
+							if (!stream.eof) {
 								readBytesAndWait();
 							} else {
 								// We are at the end!
@@ -1687,10 +1721,9 @@ return /******/ (function(modules) { // webpackBootstrap
 								// Ok, seek back to the beginning and resync the streams.
 								state = State.LOADED;
 								codec.flush(function() {
-									stream.seek(0);
 									streamEnded = false;
 									dataEnded = false;
-									readBytesAndWait();
+									seekStream(0);
 								});
 							}
 						}
@@ -2125,11 +2158,49 @@ return /******/ (function(modules) { // webpackBootstrap
 		 * Are we waiting on an async operation that will return later?
 		 */
 		function isProcessing() {
-			return (stream && stream.waiting) || (codec && codec.processing);
+			return (stream && (stream.buffering || stream.seeking)) || (codec && codec.processing);
 		}
 
 		function readBytesAndWait() {
-			stream.readBytes();
+			if (stream.buffering || stream.seeking) {
+				log('readBytesAndWait during i/o');
+				return;
+			}
+			stream.read(32768, readCancel).then(function(data) {
+				log('got input ' + [data.byteLength]);
+
+				if (data.byteLength) {
+					// Save chunk to pass into the codec's buffer
+					actionQueue.push(function doReceiveInput() {
+						codec.receiveInput(data, function() {
+							pingProcessing();
+						});
+					});
+				}
+				if (stream.eof) {
+					// @todo record doneness in networkState
+					log('stream is at end!');
+					streamEnded = true;
+				}
+				if (isProcessing()) {
+					// We're waiting on the codec already...
+				} else {
+					// Let the read/decode/draw loop know we're out!
+					pingProcessing();
+				}
+			}).catch(onStreamError);
+		}
+
+		function onStreamError(err) {
+			if (err instanceof Cancel) {
+				// do nothing
+				log('i/o promise canceled; ignoring');
+			} else {
+				log("i/o error: " + err);
+				errorMessage = 'i/o error: ' + err;
+				state = State.ERROR;
+				stopPlayback();
+			}
 		}
 
 		function pingProcessing(delay) {
@@ -2201,8 +2272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			codec.onseek = function(offset) {
 				if (stream) {
 					console.log('SEEKING TO', offset);
-					stream.seek(offset);
-					//readBytesAndWait();
+					seekStream(offset);
 				}
 			};
 			codec.init(function() {
@@ -2240,59 +2310,25 @@ return /******/ (function(modules) { // webpackBootstrap
 				// @todo networkState == NETWORK_LOADING
 				stream = new StreamFile({
 					url: self.src,
-					bufferSize: 32768, //65536 * 4,
-					onstart: function() {
-						loading = false;
-
-						// @todo handle failure / unrecognized type
-
-						currentSrc = self.src;
-
-						// Fire off the read/decode/draw loop...
-						byteLength = stream.bytesTotal;
-
-						// If we get X-Content-Duration, that's as good as an explicit hint
-						var durationHeader = stream.getResponseHeader('X-Content-Duration');
-						if (typeof durationHeader === 'string') {
-							duration = parseFloat(durationHeader);
-						}
-						loadCodec(startProcessingVideo);
-					},
-					onread: function(data) {
-						log('got input ' + [data.byteLength]);
-
-						// Save chunk to pass into the codec's buffer
-						actionQueue.push(function doReceiveInput() {
-							codec.receiveInput(data, function() {
-								pingProcessing();
-							});
-						});
-
-						if (isProcessing()) {
-							// We're waiting on the codec already...
-						} else {
-							pingProcessing();
-						}
-					},
-					ondone: function() {
-						// @todo record doneness in networkState
-						log('stream is at end!');
-						streamEnded = true;
-
-						if (isProcessing()) {
-							// We're waiting on the codec already...
-						} else {
-							// Let the read/decode/draw loop know we're out!
-							pingProcessing();
-						}
-					},
-					onerror: function(err) {
-						// @todo handle failure to initialize
-						console.log("reading error: " + err);
-						stopPlayback();
-						state = State.ERROR;
-					}
+					cacheSize: 16 * 1024 * 1024,
 				});
+				stream.load().then(function() {
+					loading = false;
+
+					// @todo handle failure / unrecognized type
+
+					currentSrc = self.src;
+
+					// Fire off the read/decode/draw loop...
+					byteLength = stream.seekable ? stream.length : 0;
+
+					// If we get X-Content-Duration, that's as good as an explicit hint
+					var durationHeader = stream.headers['x-content-duration'];
+					if (typeof durationHeader === 'string') {
+						duration = parseFloat(durationHeader);
+					}
+					loadCodec(startProcessingVideo);
+				}).catch(onStreamError);
 			}
 
 			// @todo networkState = self.NETWORK_NO_SOURCE;
@@ -2491,13 +2527,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		 */
 		Object.defineProperty(self, "buffered", {
 			get: function getBuffered() {
-				var estimatedBufferTime;
+				var ranges;
 				if (stream && byteLength && duration) {
-					estimatedBufferTime = (stream.bytesBuffered / byteLength) * duration;
+					ranges = stream.getBufferedRanges().map(function(range) {
+						return range.map(function(offset) {
+							return (offset / stream.length) * duration;
+						});
+					});
 				} else {
-					estimatedBufferTime = 0;
+					ranges = [[0, 0]];
 				}
-				return new OGVTimeRanges([[0, estimatedBufferTime]]);
+				return new OGVTimeRanges(ranges);
 			}
 		});
 
@@ -2810,7 +2850,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		Object.defineProperty(self, "error", {
 			get: function getError() {
 				if (state === State.ERROR) {
-					return "error occurred in media procesing";
+					if (errorMessage) {
+						return errorMessage;
+					} else {
+						return "error occurred in media procesing";
+					}
 				} else {
 					return null;
 				}
@@ -3161,6 +3205,1361 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var require;/* WEBPACK VAR INJECTION */(function(process, global) {/*!
+	 * @overview es6-promise - a tiny implementation of Promises/A+.
+	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+	 * @license   Licensed under MIT license
+	 *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
+	 * @version   4.0.5
+	 */
+
+	(function (global, factory) {
+	     true ? module.exports = factory() :
+	    typeof define === 'function' && define.amd ? define(factory) :
+	    (global.ES6Promise = factory());
+	}(this, (function () { 'use strict';
+
+	function objectOrFunction(x) {
+	  return typeof x === 'function' || typeof x === 'object' && x !== null;
+	}
+
+	function isFunction(x) {
+	  return typeof x === 'function';
+	}
+
+	var _isArray = undefined;
+	if (!Array.isArray) {
+	  _isArray = function (x) {
+	    return Object.prototype.toString.call(x) === '[object Array]';
+	  };
+	} else {
+	  _isArray = Array.isArray;
+	}
+
+	var isArray = _isArray;
+
+	var len = 0;
+	var vertxNext = undefined;
+	var customSchedulerFn = undefined;
+
+	var asap = function asap(callback, arg) {
+	  queue[len] = callback;
+	  queue[len + 1] = arg;
+	  len += 2;
+	  if (len === 2) {
+	    // If len is 2, that means that we need to schedule an async flush.
+	    // If additional callbacks are queued before the queue is flushed, they
+	    // will be processed by this flush that we are scheduling.
+	    if (customSchedulerFn) {
+	      customSchedulerFn(flush);
+	    } else {
+	      scheduleFlush();
+	    }
+	  }
+	};
+
+	function setScheduler(scheduleFn) {
+	  customSchedulerFn = scheduleFn;
+	}
+
+	function setAsap(asapFn) {
+	  asap = asapFn;
+	}
+
+	var browserWindow = typeof window !== 'undefined' ? window : undefined;
+	var browserGlobal = browserWindow || {};
+	var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
+	var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && ({}).toString.call(process) === '[object process]';
+
+	// test for web worker but not in IE10
+	var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
+
+	// node
+	function useNextTick() {
+	  // node version 0.10.x displays a deprecation warning when nextTick is used recursively
+	  // see https://github.com/cujojs/when/issues/410 for details
+	  return function () {
+	    return process.nextTick(flush);
+	  };
+	}
+
+	// vertx
+	function useVertxTimer() {
+	  if (typeof vertxNext !== 'undefined') {
+	    return function () {
+	      vertxNext(flush);
+	    };
+	  }
+
+	  return useSetTimeout();
+	}
+
+	function useMutationObserver() {
+	  var iterations = 0;
+	  var observer = new BrowserMutationObserver(flush);
+	  var node = document.createTextNode('');
+	  observer.observe(node, { characterData: true });
+
+	  return function () {
+	    node.data = iterations = ++iterations % 2;
+	  };
+	}
+
+	// web worker
+	function useMessageChannel() {
+	  var channel = new MessageChannel();
+	  channel.port1.onmessage = flush;
+	  return function () {
+	    return channel.port2.postMessage(0);
+	  };
+	}
+
+	function useSetTimeout() {
+	  // Store setTimeout reference so es6-promise will be unaffected by
+	  // other code modifying setTimeout (like sinon.useFakeTimers())
+	  var globalSetTimeout = setTimeout;
+	  return function () {
+	    return globalSetTimeout(flush, 1);
+	  };
+	}
+
+	var queue = new Array(1000);
+	function flush() {
+	  for (var i = 0; i < len; i += 2) {
+	    var callback = queue[i];
+	    var arg = queue[i + 1];
+
+	    callback(arg);
+
+	    queue[i] = undefined;
+	    queue[i + 1] = undefined;
+	  }
+
+	  len = 0;
+	}
+
+	function attemptVertx() {
+	  try {
+	    var r = require;
+	    var vertx = __webpack_require__(11);
+	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
+	    return useVertxTimer();
+	  } catch (e) {
+	    return useSetTimeout();
+	  }
+	}
+
+	var scheduleFlush = undefined;
+	// Decide what async method to use to triggering processing of queued callbacks:
+	if (isNode) {
+	  scheduleFlush = useNextTick();
+	} else if (BrowserMutationObserver) {
+	  scheduleFlush = useMutationObserver();
+	} else if (isWorker) {
+	  scheduleFlush = useMessageChannel();
+	} else if (browserWindow === undefined && "function" === 'function') {
+	  scheduleFlush = attemptVertx();
+	} else {
+	  scheduleFlush = useSetTimeout();
+	}
+
+	function then(onFulfillment, onRejection) {
+	  var _arguments = arguments;
+
+	  var parent = this;
+
+	  var child = new this.constructor(noop);
+
+	  if (child[PROMISE_ID] === undefined) {
+	    makePromise(child);
+	  }
+
+	  var _state = parent._state;
+
+	  if (_state) {
+	    (function () {
+	      var callback = _arguments[_state - 1];
+	      asap(function () {
+	        return invokeCallback(_state, child, callback, parent._result);
+	      });
+	    })();
+	  } else {
+	    subscribe(parent, child, onFulfillment, onRejection);
+	  }
+
+	  return child;
+	}
+
+	/**
+	  `Promise.resolve` returns a promise that will become resolved with the
+	  passed `value`. It is shorthand for the following:
+
+	  ```javascript
+	  let promise = new Promise(function(resolve, reject){
+	    resolve(1);
+	  });
+
+	  promise.then(function(value){
+	    // value === 1
+	  });
+	  ```
+
+	  Instead of writing the above, your code now simply becomes the following:
+
+	  ```javascript
+	  let promise = Promise.resolve(1);
+
+	  promise.then(function(value){
+	    // value === 1
+	  });
+	  ```
+
+	  @method resolve
+	  @static
+	  @param {Any} value value that the returned promise will be resolved with
+	  Useful for tooling.
+	  @return {Promise} a promise that will become fulfilled with the given
+	  `value`
+	*/
+	function resolve(object) {
+	  /*jshint validthis:true */
+	  var Constructor = this;
+
+	  if (object && typeof object === 'object' && object.constructor === Constructor) {
+	    return object;
+	  }
+
+	  var promise = new Constructor(noop);
+	  _resolve(promise, object);
+	  return promise;
+	}
+
+	var PROMISE_ID = Math.random().toString(36).substring(16);
+
+	function noop() {}
+
+	var PENDING = void 0;
+	var FULFILLED = 1;
+	var REJECTED = 2;
+
+	var GET_THEN_ERROR = new ErrorObject();
+
+	function selfFulfillment() {
+	  return new TypeError("You cannot resolve a promise with itself");
+	}
+
+	function cannotReturnOwn() {
+	  return new TypeError('A promises callback cannot return that same promise.');
+	}
+
+	function getThen(promise) {
+	  try {
+	    return promise.then;
+	  } catch (error) {
+	    GET_THEN_ERROR.error = error;
+	    return GET_THEN_ERROR;
+	  }
+	}
+
+	function tryThen(then, value, fulfillmentHandler, rejectionHandler) {
+	  try {
+	    then.call(value, fulfillmentHandler, rejectionHandler);
+	  } catch (e) {
+	    return e;
+	  }
+	}
+
+	function handleForeignThenable(promise, thenable, then) {
+	  asap(function (promise) {
+	    var sealed = false;
+	    var error = tryThen(then, thenable, function (value) {
+	      if (sealed) {
+	        return;
+	      }
+	      sealed = true;
+	      if (thenable !== value) {
+	        _resolve(promise, value);
+	      } else {
+	        fulfill(promise, value);
+	      }
+	    }, function (reason) {
+	      if (sealed) {
+	        return;
+	      }
+	      sealed = true;
+
+	      _reject(promise, reason);
+	    }, 'Settle: ' + (promise._label || ' unknown promise'));
+
+	    if (!sealed && error) {
+	      sealed = true;
+	      _reject(promise, error);
+	    }
+	  }, promise);
+	}
+
+	function handleOwnThenable(promise, thenable) {
+	  if (thenable._state === FULFILLED) {
+	    fulfill(promise, thenable._result);
+	  } else if (thenable._state === REJECTED) {
+	    _reject(promise, thenable._result);
+	  } else {
+	    subscribe(thenable, undefined, function (value) {
+	      return _resolve(promise, value);
+	    }, function (reason) {
+	      return _reject(promise, reason);
+	    });
+	  }
+	}
+
+	function handleMaybeThenable(promise, maybeThenable, then$$) {
+	  if (maybeThenable.constructor === promise.constructor && then$$ === then && maybeThenable.constructor.resolve === resolve) {
+	    handleOwnThenable(promise, maybeThenable);
+	  } else {
+	    if (then$$ === GET_THEN_ERROR) {
+	      _reject(promise, GET_THEN_ERROR.error);
+	    } else if (then$$ === undefined) {
+	      fulfill(promise, maybeThenable);
+	    } else if (isFunction(then$$)) {
+	      handleForeignThenable(promise, maybeThenable, then$$);
+	    } else {
+	      fulfill(promise, maybeThenable);
+	    }
+	  }
+	}
+
+	function _resolve(promise, value) {
+	  if (promise === value) {
+	    _reject(promise, selfFulfillment());
+	  } else if (objectOrFunction(value)) {
+	    handleMaybeThenable(promise, value, getThen(value));
+	  } else {
+	    fulfill(promise, value);
+	  }
+	}
+
+	function publishRejection(promise) {
+	  if (promise._onerror) {
+	    promise._onerror(promise._result);
+	  }
+
+	  publish(promise);
+	}
+
+	function fulfill(promise, value) {
+	  if (promise._state !== PENDING) {
+	    return;
+	  }
+
+	  promise._result = value;
+	  promise._state = FULFILLED;
+
+	  if (promise._subscribers.length !== 0) {
+	    asap(publish, promise);
+	  }
+	}
+
+	function _reject(promise, reason) {
+	  if (promise._state !== PENDING) {
+	    return;
+	  }
+	  promise._state = REJECTED;
+	  promise._result = reason;
+
+	  asap(publishRejection, promise);
+	}
+
+	function subscribe(parent, child, onFulfillment, onRejection) {
+	  var _subscribers = parent._subscribers;
+	  var length = _subscribers.length;
+
+	  parent._onerror = null;
+
+	  _subscribers[length] = child;
+	  _subscribers[length + FULFILLED] = onFulfillment;
+	  _subscribers[length + REJECTED] = onRejection;
+
+	  if (length === 0 && parent._state) {
+	    asap(publish, parent);
+	  }
+	}
+
+	function publish(promise) {
+	  var subscribers = promise._subscribers;
+	  var settled = promise._state;
+
+	  if (subscribers.length === 0) {
+	    return;
+	  }
+
+	  var child = undefined,
+	      callback = undefined,
+	      detail = promise._result;
+
+	  for (var i = 0; i < subscribers.length; i += 3) {
+	    child = subscribers[i];
+	    callback = subscribers[i + settled];
+
+	    if (child) {
+	      invokeCallback(settled, child, callback, detail);
+	    } else {
+	      callback(detail);
+	    }
+	  }
+
+	  promise._subscribers.length = 0;
+	}
+
+	function ErrorObject() {
+	  this.error = null;
+	}
+
+	var TRY_CATCH_ERROR = new ErrorObject();
+
+	function tryCatch(callback, detail) {
+	  try {
+	    return callback(detail);
+	  } catch (e) {
+	    TRY_CATCH_ERROR.error = e;
+	    return TRY_CATCH_ERROR;
+	  }
+	}
+
+	function invokeCallback(settled, promise, callback, detail) {
+	  var hasCallback = isFunction(callback),
+	      value = undefined,
+	      error = undefined,
+	      succeeded = undefined,
+	      failed = undefined;
+
+	  if (hasCallback) {
+	    value = tryCatch(callback, detail);
+
+	    if (value === TRY_CATCH_ERROR) {
+	      failed = true;
+	      error = value.error;
+	      value = null;
+	    } else {
+	      succeeded = true;
+	    }
+
+	    if (promise === value) {
+	      _reject(promise, cannotReturnOwn());
+	      return;
+	    }
+	  } else {
+	    value = detail;
+	    succeeded = true;
+	  }
+
+	  if (promise._state !== PENDING) {
+	    // noop
+	  } else if (hasCallback && succeeded) {
+	      _resolve(promise, value);
+	    } else if (failed) {
+	      _reject(promise, error);
+	    } else if (settled === FULFILLED) {
+	      fulfill(promise, value);
+	    } else if (settled === REJECTED) {
+	      _reject(promise, value);
+	    }
+	}
+
+	function initializePromise(promise, resolver) {
+	  try {
+	    resolver(function resolvePromise(value) {
+	      _resolve(promise, value);
+	    }, function rejectPromise(reason) {
+	      _reject(promise, reason);
+	    });
+	  } catch (e) {
+	    _reject(promise, e);
+	  }
+	}
+
+	var id = 0;
+	function nextId() {
+	  return id++;
+	}
+
+	function makePromise(promise) {
+	  promise[PROMISE_ID] = id++;
+	  promise._state = undefined;
+	  promise._result = undefined;
+	  promise._subscribers = [];
+	}
+
+	function Enumerator(Constructor, input) {
+	  this._instanceConstructor = Constructor;
+	  this.promise = new Constructor(noop);
+
+	  if (!this.promise[PROMISE_ID]) {
+	    makePromise(this.promise);
+	  }
+
+	  if (isArray(input)) {
+	    this._input = input;
+	    this.length = input.length;
+	    this._remaining = input.length;
+
+	    this._result = new Array(this.length);
+
+	    if (this.length === 0) {
+	      fulfill(this.promise, this._result);
+	    } else {
+	      this.length = this.length || 0;
+	      this._enumerate();
+	      if (this._remaining === 0) {
+	        fulfill(this.promise, this._result);
+	      }
+	    }
+	  } else {
+	    _reject(this.promise, validationError());
+	  }
+	}
+
+	function validationError() {
+	  return new Error('Array Methods must be provided an Array');
+	};
+
+	Enumerator.prototype._enumerate = function () {
+	  var length = this.length;
+	  var _input = this._input;
+
+	  for (var i = 0; this._state === PENDING && i < length; i++) {
+	    this._eachEntry(_input[i], i);
+	  }
+	};
+
+	Enumerator.prototype._eachEntry = function (entry, i) {
+	  var c = this._instanceConstructor;
+	  var resolve$$ = c.resolve;
+
+	  if (resolve$$ === resolve) {
+	    var _then = getThen(entry);
+
+	    if (_then === then && entry._state !== PENDING) {
+	      this._settledAt(entry._state, i, entry._result);
+	    } else if (typeof _then !== 'function') {
+	      this._remaining--;
+	      this._result[i] = entry;
+	    } else if (c === Promise) {
+	      var promise = new c(noop);
+	      handleMaybeThenable(promise, entry, _then);
+	      this._willSettleAt(promise, i);
+	    } else {
+	      this._willSettleAt(new c(function (resolve$$) {
+	        return resolve$$(entry);
+	      }), i);
+	    }
+	  } else {
+	    this._willSettleAt(resolve$$(entry), i);
+	  }
+	};
+
+	Enumerator.prototype._settledAt = function (state, i, value) {
+	  var promise = this.promise;
+
+	  if (promise._state === PENDING) {
+	    this._remaining--;
+
+	    if (state === REJECTED) {
+	      _reject(promise, value);
+	    } else {
+	      this._result[i] = value;
+	    }
+	  }
+
+	  if (this._remaining === 0) {
+	    fulfill(promise, this._result);
+	  }
+	};
+
+	Enumerator.prototype._willSettleAt = function (promise, i) {
+	  var enumerator = this;
+
+	  subscribe(promise, undefined, function (value) {
+	    return enumerator._settledAt(FULFILLED, i, value);
+	  }, function (reason) {
+	    return enumerator._settledAt(REJECTED, i, reason);
+	  });
+	};
+
+	/**
+	  `Promise.all` accepts an array of promises, and returns a new promise which
+	  is fulfilled with an array of fulfillment values for the passed promises, or
+	  rejected with the reason of the first passed promise to be rejected. It casts all
+	  elements of the passed iterable to promises as it runs this algorithm.
+
+	  Example:
+
+	  ```javascript
+	  let promise1 = resolve(1);
+	  let promise2 = resolve(2);
+	  let promise3 = resolve(3);
+	  let promises = [ promise1, promise2, promise3 ];
+
+	  Promise.all(promises).then(function(array){
+	    // The array here would be [ 1, 2, 3 ];
+	  });
+	  ```
+
+	  If any of the `promises` given to `all` are rejected, the first promise
+	  that is rejected will be given as an argument to the returned promises's
+	  rejection handler. For example:
+
+	  Example:
+
+	  ```javascript
+	  let promise1 = resolve(1);
+	  let promise2 = reject(new Error("2"));
+	  let promise3 = reject(new Error("3"));
+	  let promises = [ promise1, promise2, promise3 ];
+
+	  Promise.all(promises).then(function(array){
+	    // Code here never runs because there are rejected promises!
+	  }, function(error) {
+	    // error.message === "2"
+	  });
+	  ```
+
+	  @method all
+	  @static
+	  @param {Array} entries array of promises
+	  @param {String} label optional string for labeling the promise.
+	  Useful for tooling.
+	  @return {Promise} promise that is fulfilled when all `promises` have been
+	  fulfilled, or rejected if any of them become rejected.
+	  @static
+	*/
+	function all(entries) {
+	  return new Enumerator(this, entries).promise;
+	}
+
+	/**
+	  `Promise.race` returns a new promise which is settled in the same way as the
+	  first passed promise to settle.
+
+	  Example:
+
+	  ```javascript
+	  let promise1 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      resolve('promise 1');
+	    }, 200);
+	  });
+
+	  let promise2 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      resolve('promise 2');
+	    }, 100);
+	  });
+
+	  Promise.race([promise1, promise2]).then(function(result){
+	    // result === 'promise 2' because it was resolved before promise1
+	    // was resolved.
+	  });
+	  ```
+
+	  `Promise.race` is deterministic in that only the state of the first
+	  settled promise matters. For example, even if other promises given to the
+	  `promises` array argument are resolved, but the first settled promise has
+	  become rejected before the other promises became fulfilled, the returned
+	  promise will become rejected:
+
+	  ```javascript
+	  let promise1 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      resolve('promise 1');
+	    }, 200);
+	  });
+
+	  let promise2 = new Promise(function(resolve, reject){
+	    setTimeout(function(){
+	      reject(new Error('promise 2'));
+	    }, 100);
+	  });
+
+	  Promise.race([promise1, promise2]).then(function(result){
+	    // Code here never runs
+	  }, function(reason){
+	    // reason.message === 'promise 2' because promise 2 became rejected before
+	    // promise 1 became fulfilled
+	  });
+	  ```
+
+	  An example real-world use case is implementing timeouts:
+
+	  ```javascript
+	  Promise.race([ajax('foo.json'), timeout(5000)])
+	  ```
+
+	  @method race
+	  @static
+	  @param {Array} promises array of promises to observe
+	  Useful for tooling.
+	  @return {Promise} a promise which settles in the same way as the first passed
+	  promise to settle.
+	*/
+	function race(entries) {
+	  /*jshint validthis:true */
+	  var Constructor = this;
+
+	  if (!isArray(entries)) {
+	    return new Constructor(function (_, reject) {
+	      return reject(new TypeError('You must pass an array to race.'));
+	    });
+	  } else {
+	    return new Constructor(function (resolve, reject) {
+	      var length = entries.length;
+	      for (var i = 0; i < length; i++) {
+	        Constructor.resolve(entries[i]).then(resolve, reject);
+	      }
+	    });
+	  }
+	}
+
+	/**
+	  `Promise.reject` returns a promise rejected with the passed `reason`.
+	  It is shorthand for the following:
+
+	  ```javascript
+	  let promise = new Promise(function(resolve, reject){
+	    reject(new Error('WHOOPS'));
+	  });
+
+	  promise.then(function(value){
+	    // Code here doesn't run because the promise is rejected!
+	  }, function(reason){
+	    // reason.message === 'WHOOPS'
+	  });
+	  ```
+
+	  Instead of writing the above, your code now simply becomes the following:
+
+	  ```javascript
+	  let promise = Promise.reject(new Error('WHOOPS'));
+
+	  promise.then(function(value){
+	    // Code here doesn't run because the promise is rejected!
+	  }, function(reason){
+	    // reason.message === 'WHOOPS'
+	  });
+	  ```
+
+	  @method reject
+	  @static
+	  @param {Any} reason value that the returned promise will be rejected with.
+	  Useful for tooling.
+	  @return {Promise} a promise rejected with the given `reason`.
+	*/
+	function reject(reason) {
+	  /*jshint validthis:true */
+	  var Constructor = this;
+	  var promise = new Constructor(noop);
+	  _reject(promise, reason);
+	  return promise;
+	}
+
+	function needsResolver() {
+	  throw new TypeError('You must pass a resolver function as the first argument to the promise constructor');
+	}
+
+	function needsNew() {
+	  throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.");
+	}
+
+	/**
+	  Promise objects represent the eventual result of an asynchronous operation. The
+	  primary way of interacting with a promise is through its `then` method, which
+	  registers callbacks to receive either a promise's eventual value or the reason
+	  why the promise cannot be fulfilled.
+
+	  Terminology
+	  -----------
+
+	  - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
+	  - `thenable` is an object or function that defines a `then` method.
+	  - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
+	  - `exception` is a value that is thrown using the throw statement.
+	  - `reason` is a value that indicates why a promise was rejected.
+	  - `settled` the final resting state of a promise, fulfilled or rejected.
+
+	  A promise can be in one of three states: pending, fulfilled, or rejected.
+
+	  Promises that are fulfilled have a fulfillment value and are in the fulfilled
+	  state.  Promises that are rejected have a rejection reason and are in the
+	  rejected state.  A fulfillment value is never a thenable.
+
+	  Promises can also be said to *resolve* a value.  If this value is also a
+	  promise, then the original promise's settled state will match the value's
+	  settled state.  So a promise that *resolves* a promise that rejects will
+	  itself reject, and a promise that *resolves* a promise that fulfills will
+	  itself fulfill.
+
+
+	  Basic Usage:
+	  ------------
+
+	  ```js
+	  let promise = new Promise(function(resolve, reject) {
+	    // on success
+	    resolve(value);
+
+	    // on failure
+	    reject(reason);
+	  });
+
+	  promise.then(function(value) {
+	    // on fulfillment
+	  }, function(reason) {
+	    // on rejection
+	  });
+	  ```
+
+	  Advanced Usage:
+	  ---------------
+
+	  Promises shine when abstracting away asynchronous interactions such as
+	  `XMLHttpRequest`s.
+
+	  ```js
+	  function getJSON(url) {
+	    return new Promise(function(resolve, reject){
+	      let xhr = new XMLHttpRequest();
+
+	      xhr.open('GET', url);
+	      xhr.onreadystatechange = handler;
+	      xhr.responseType = 'json';
+	      xhr.setRequestHeader('Accept', 'application/json');
+	      xhr.send();
+
+	      function handler() {
+	        if (this.readyState === this.DONE) {
+	          if (this.status === 200) {
+	            resolve(this.response);
+	          } else {
+	            reject(new Error('getJSON: `' + url + '` failed with status: [' + this.status + ']'));
+	          }
+	        }
+	      };
+	    });
+	  }
+
+	  getJSON('/posts.json').then(function(json) {
+	    // on fulfillment
+	  }, function(reason) {
+	    // on rejection
+	  });
+	  ```
+
+	  Unlike callbacks, promises are great composable primitives.
+
+	  ```js
+	  Promise.all([
+	    getJSON('/posts'),
+	    getJSON('/comments')
+	  ]).then(function(values){
+	    values[0] // => postsJSON
+	    values[1] // => commentsJSON
+
+	    return values;
+	  });
+	  ```
+
+	  @class Promise
+	  @param {function} resolver
+	  Useful for tooling.
+	  @constructor
+	*/
+	function Promise(resolver) {
+	  this[PROMISE_ID] = nextId();
+	  this._result = this._state = undefined;
+	  this._subscribers = [];
+
+	  if (noop !== resolver) {
+	    typeof resolver !== 'function' && needsResolver();
+	    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+	  }
+	}
+
+	Promise.all = all;
+	Promise.race = race;
+	Promise.resolve = resolve;
+	Promise.reject = reject;
+	Promise._setScheduler = setScheduler;
+	Promise._setAsap = setAsap;
+	Promise._asap = asap;
+
+	Promise.prototype = {
+	  constructor: Promise,
+
+	  /**
+	    The primary way of interacting with a promise is through its `then` method,
+	    which registers callbacks to receive either a promise's eventual value or the
+	    reason why the promise cannot be fulfilled.
+	  
+	    ```js
+	    findUser().then(function(user){
+	      // user is available
+	    }, function(reason){
+	      // user is unavailable, and you are given the reason why
+	    });
+	    ```
+	  
+	    Chaining
+	    --------
+	  
+	    The return value of `then` is itself a promise.  This second, 'downstream'
+	    promise is resolved with the return value of the first promise's fulfillment
+	    or rejection handler, or rejected if the handler throws an exception.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      return user.name;
+	    }, function (reason) {
+	      return 'default name';
+	    }).then(function (userName) {
+	      // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
+	      // will be `'default name'`
+	    });
+	  
+	    findUser().then(function (user) {
+	      throw new Error('Found user, but still unhappy');
+	    }, function (reason) {
+	      throw new Error('`findUser` rejected and we're unhappy');
+	    }).then(function (value) {
+	      // never reached
+	    }, function (reason) {
+	      // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
+	      // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
+	    });
+	    ```
+	    If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      throw new PedagogicalException('Upstream error');
+	    }).then(function (value) {
+	      // never reached
+	    }).then(function (value) {
+	      // never reached
+	    }, function (reason) {
+	      // The `PedgagocialException` is propagated all the way down to here
+	    });
+	    ```
+	  
+	    Assimilation
+	    ------------
+	  
+	    Sometimes the value you want to propagate to a downstream promise can only be
+	    retrieved asynchronously. This can be achieved by returning a promise in the
+	    fulfillment or rejection handler. The downstream promise will then be pending
+	    until the returned promise is settled. This is called *assimilation*.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      return findCommentsByAuthor(user);
+	    }).then(function (comments) {
+	      // The user's comments are now available
+	    });
+	    ```
+	  
+	    If the assimliated promise rejects, then the downstream promise will also reject.
+	  
+	    ```js
+	    findUser().then(function (user) {
+	      return findCommentsByAuthor(user);
+	    }).then(function (comments) {
+	      // If `findCommentsByAuthor` fulfills, we'll have the value here
+	    }, function (reason) {
+	      // If `findCommentsByAuthor` rejects, we'll have the reason here
+	    });
+	    ```
+	  
+	    Simple Example
+	    --------------
+	  
+	    Synchronous Example
+	  
+	    ```javascript
+	    let result;
+	  
+	    try {
+	      result = findResult();
+	      // success
+	    } catch(reason) {
+	      // failure
+	    }
+	    ```
+	  
+	    Errback Example
+	  
+	    ```js
+	    findResult(function(result, err){
+	      if (err) {
+	        // failure
+	      } else {
+	        // success
+	      }
+	    });
+	    ```
+	  
+	    Promise Example;
+	  
+	    ```javascript
+	    findResult().then(function(result){
+	      // success
+	    }, function(reason){
+	      // failure
+	    });
+	    ```
+	  
+	    Advanced Example
+	    --------------
+	  
+	    Synchronous Example
+	  
+	    ```javascript
+	    let author, books;
+	  
+	    try {
+	      author = findAuthor();
+	      books  = findBooksByAuthor(author);
+	      // success
+	    } catch(reason) {
+	      // failure
+	    }
+	    ```
+	  
+	    Errback Example
+	  
+	    ```js
+	  
+	    function foundBooks(books) {
+	  
+	    }
+	  
+	    function failure(reason) {
+	  
+	    }
+	  
+	    findAuthor(function(author, err){
+	      if (err) {
+	        failure(err);
+	        // failure
+	      } else {
+	        try {
+	          findBoooksByAuthor(author, function(books, err) {
+	            if (err) {
+	              failure(err);
+	            } else {
+	              try {
+	                foundBooks(books);
+	              } catch(reason) {
+	                failure(reason);
+	              }
+	            }
+	          });
+	        } catch(error) {
+	          failure(err);
+	        }
+	        // success
+	      }
+	    });
+	    ```
+	  
+	    Promise Example;
+	  
+	    ```javascript
+	    findAuthor().
+	      then(findBooksByAuthor).
+	      then(function(books){
+	        // found books
+	    }).catch(function(reason){
+	      // something went wrong
+	    });
+	    ```
+	  
+	    @method then
+	    @param {Function} onFulfilled
+	    @param {Function} onRejected
+	    Useful for tooling.
+	    @return {Promise}
+	  */
+	  then: then,
+
+	  /**
+	    `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
+	    as the catch block of a try/catch statement.
+	  
+	    ```js
+	    function findAuthor(){
+	      throw new Error('couldn't find that author');
+	    }
+	  
+	    // synchronous
+	    try {
+	      findAuthor();
+	    } catch(reason) {
+	      // something went wrong
+	    }
+	  
+	    // async with promises
+	    findAuthor().catch(function(reason){
+	      // something went wrong
+	    });
+	    ```
+	  
+	    @method catch
+	    @param {Function} onRejection
+	    Useful for tooling.
+	    @return {Promise}
+	  */
+	  'catch': function _catch(onRejection) {
+	    return this.then(null, onRejection);
+	  }
+	};
+
+	function polyfill() {
+	    var local = undefined;
+
+	    if (typeof global !== 'undefined') {
+	        local = global;
+	    } else if (typeof self !== 'undefined') {
+	        local = self;
+	    } else {
+	        try {
+	            local = Function('return this')();
+	        } catch (e) {
+	            throw new Error('polyfill failed because global object is unavailable in this environment');
+	        }
+	    }
+
+	    var P = local.Promise;
+
+	    if (P) {
+	        var promiseToString = null;
+	        try {
+	            promiseToString = Object.prototype.toString.call(P.resolve());
+	        } catch (e) {
+	            // silently ignored
+	        }
+
+	        if (promiseToString === '[object Promise]' && !P.cast) {
+	            return;
+	        }
+	    }
+
+	    local.Promise = Promise;
+	}
+
+	// Strange compat..
+	Promise.polyfill = polyfill;
+	Promise.Promise = Promise;
+
+	return Promise;
+
+	})));
+	//# sourceMappingURL=es6-promise.map
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), (function() { return this; }())))
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	// shim for using process in browser
+	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+
+
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+
+
+
+	}
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+
+	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = runTimeout(cleanUpNextTick);
+	    draining = true;
+
+	    var len = queue.length;
+	    while(len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    runClearTimeout(timeout);
+	}
+
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        runTimeout(drainQueue);
+	    }
+	};
+
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+
+	function noop() {}
+
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+
+	process.cwd = function () { return '/' };
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	/* (ignored) */
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/*
 	Copyright (c) 2014-2016 Brion Vibber <brion@pobox.com>
 
@@ -3184,9 +4583,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 	  "use strict";
 
-	  var FrameSink = __webpack_require__(10),
-	    SoftwareFrameSink = __webpack_require__(11),
-	    WebGLFrameSink = __webpack_require__(14);
+	  var FrameSink = __webpack_require__(13),
+	    SoftwareFrameSink = __webpack_require__(14),
+	    WebGLFrameSink = __webpack_require__(17);
 
 	  /**
 	   * @typedef {Object} YUVCanvasOptions
@@ -3227,7 +4626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 10 */
+/* 13 */
 /***/ function(module, exports) {
 
 	(function() {
@@ -3275,7 +4674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3301,8 +4700,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var FrameSink = __webpack_require__(10),
-			YCbCr = __webpack_require__(12);
+		var FrameSink = __webpack_require__(13),
+			YCbCr = __webpack_require__(15);
 
 		/**
 		 * @param {HTMLCanvasElement} canvas - HTML canvas eledment to attach to
@@ -3395,7 +4794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3421,7 +4820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var depower = __webpack_require__(13);
+		var depower = __webpack_require__(16);
 
 		/**
 		 * Basic YCbCr->RGB conversion
@@ -3540,7 +4939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/*
@@ -3596,7 +4995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3622,8 +5021,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var FrameSink = __webpack_require__(10),
-			shaders = __webpack_require__(15);
+		var FrameSink = __webpack_require__(13),
+			shaders = __webpack_require__(18);
 
 		/**
 		 * Warning: canvas must not have been used for 2d drawing prior!
@@ -3991,7 +5390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -4002,637 +5401,1782 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 16 */
-/***/ function(module, exports) {
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var EventEmitter = __webpack_require__(20);
+	var CachePool = __webpack_require__(21);
+	var Backend = __webpack_require__(24);
 
 	/**
-	 * Quickie wrapper around XHR to fetch a file as array buffer chunks.
-	 *
-	 * Call streamFile.readBytes() after an onread event's data has been
-	 * processed to trigger the next read.
-	 *
-	 * IE 10: uses MSStream / MSStreamReader for true streaming
-	 * Firefox: uses moz-chunked-arraybuffer to buffer & deliver during download
-	 * Safari, Chrome: uses binary string to buffer & deliver during download
-	 *
-	 * @author Brion Vibber <brion@pobox.com>
-	 * @copyright 2014
-	 * @license MIT-style
+	 * @typedef {Object} StreamFileOptions
+	 * @property {string} url - the URL to fetch
+	 * @property {number} chunkSize - max size of each chunked HTTP request / readahead target
+	 * @property {number} cacheSize - max amount of data to keep buffered in memory for seeks
 	 */
-	function StreamFile(options) {
-		var self = this,
-			url = options.url,
-			started = false,
-			onstart = options.onstart || function(){},
-			onbuffer = options.onbuffer || function(){},
-			onread = options.onread || function(){},
-			ondone = options.ondone || function(){},
-			onerror = options.onerror || function(){},
-			bufferSize = options.bufferSize || 8192,
-			seekPosition = options.seekPosition || 0,
-			bufferPosition = seekPosition,
-			chunkSize = options.chunkSize || 1024 * 1024, // read/buffer up to a megabyte at a time
-			userAgent = navigator ? navigator.userAgent : '',
-			useMSStream = options.useMSStream || !!userAgent.match(/MSIE 10\./),
-			waitingForInput = false,
-			doneBuffering = false,
-			bytesTotal = 0,
-			buffers = [],
-			cachever = 0,
-			responseHeaders = {};
-
-		// Wrapper for array buffers, to allow extending backing store
-		function BufferWrapper(buffer) {
-			this.byteLength = buffer.byteLength;
-			this.buffer = buffer;
-		}
-		BufferWrapper.prototype.getBuffer = function() {
-			return this.buffer;
-		};
-		BufferWrapper.prototype.split = function(position, callback) {
-			var a = new BufferWrapper(this.buffer.slice(0, position)),
-				b = new BufferWrapper(this.buffer.slice(position));
-			callback(a, b);
-		};
-
-		// -- internal private methods
-		var internal = {
-			/**
-			 * @var {XMLHttpRequest}
-			 */
-			xhr: null,
-
-			/**
-			 * Test if a given responseType value is valid on an XHR
-			 *
-			 * @return boolean
-			 */
-			tryMethod: function(rt) {
-				var xhr = new XMLHttpRequest();
-				xhr.open("GET", url);
-				try {
-					// Set the response type and see if it explodes!
-					xhr.responseType = rt;
-				} catch (e) {
-					// Safari 6 throws a DOM Exception on invalid setting
-					return false;
-				}
-				// Other browsers just don't accept the setting, so check
-				// whether it made it through.
-				return (xhr.responseType == rt);
-			},
-
-			setBytesTotal: function(xhr) {
-				if (xhr.status == 206) {
-					bytesTotal = internal.getXHRRangeTotal(xhr);
-				} else {
-					var contentLength = xhr.getResponseHeader('Content-Length');
-					if (contentLength === null || contentLength === '') {
-						// Unknown file length... maybe streaming live?
-						bytesTotal = 0;
-					} else {
-						bytesTotal = parseInt(contentLength, 10);
-					}
-				}
-			},
-
-			// Save HTTP response headers from the HEAD request for later
-			processResponseHeaders: function(xhr) {
-				responseHeaders = {};
-				var allResponseHeaders = xhr.getAllResponseHeaders(),
-					headerLines = allResponseHeaders.split(/\n/);
-				headerLines.forEach(function(line) {
-					var bits = line.split(/:\s*/, 2);
-					if (bits.length > 1) {
-						var name = bits[0].toLowerCase(),
-							value = bits[1];
-						responseHeaders[name] = value;
-					}
-				});
-			},
-
-			openXHR: function() {
-				var getUrl = url;
-				if (cachever) {
-					//
-					// Safari sometimes messes up and gives us the wrong chunk.
-					// Seems to be a general problem with Safari and cached XHR ranges.
-					//
-					// Interestingly, it allows you to request _later_ ranges successfully,
-					// but when requesting _earlier_ ranges it returns the latest one retrieved.
-					// So we only need to update the cache-buster when we rewind.
-					//
-					// https://bugs.webkit.org/show_bug.cgi?id=82672
-					//
-					getUrl += '?ogvjs_cachever=' + cachever;
-				}
-
-				var xhr = internal.xhr = new XMLHttpRequest();
-				xhr.open("GET", getUrl);
-
-				xhr.streamReaderStarted = false;
-				internal.setXHROptions(xhr);
-
-				var range = null;
-				if (seekPosition || chunkSize) {
-					range = 'bytes=' + seekPosition + '-';
-				}
-				if (chunkSize) {
-					if (bytesTotal) {
-						range += Math.min(seekPosition + chunkSize, bytesTotal) - 1;
-					} else {
-						range += (seekPosition + chunkSize) - 1;
-					}
-				}
-				if (range !== null) {
-					xhr.setRequestHeader('Range', range);
-				}
-
-				xhr.onprogress = function(event) {
-					if (xhr.readyState >= 2 && !xhr.streamReaderStarted) {
-						internal.onXHRStart(xhr, event);
-					} else if (xhr.readyState >= 3) {
-						internal.onXHRLoading(xhr, event);
-					}
-				};
-
-				xhr.onloadend = function(event) {
-					internal.onXHRDone(xhr, event);
-				}
-
-				xhr.send();
-			},
-
-			getXHRRangeMatches: function(xhr) {
-				// Note Content-Range must be whitelisted for CORS requests
-				var contentRange = xhr.getResponseHeader('Content-Range');
-				return contentRange && contentRange.match(/^bytes (\d+)-(\d+)\/(\d+)/);
-			},
-
-			getXHRRangeStart: function(xhr) {
-				var matches = internal.getXHRRangeMatches(xhr);
-				if (matches) {
-					return parseInt(matches[1], 10);
-				} else {
-					return 0;
-				}
-			},
-
-			getXHRRangeTotal: function(xhr) {
-				var matches = internal.getXHRRangeMatches(xhr);
-				if (matches) {
-					return parseInt(matches[3], 10);
-				} else {
-					return 0;
-				}
-			},
-
-			setXHROptions: function(xhr) {
-				throw new Error('abstract function');
-			},
-
-			onXHRStart: function(xhr, event) {
-				xhr.streamReaderStarted = true;
-				//console.log('status is ' + xhr.status + '; content range is ' + xhr.getResponseHeader('Content-Range') + ' (start at ' + seekPosition + ')');
-				if (xhr.status == 206) {
-					var foundPosition = internal.getXHRRangeStart(xhr);
-					if (seekPosition != foundPosition) {
-						//
-						// Safari sometimes messes up and gives us the wrong chunk.
-						// Seems to be a general problem with Safari and cached XHR ranges.
-						//
-						// Interestingly, it allows you to request _later_ ranges successfully,
-						// but when requesting _earlier_ ranges it returns the latest one retrieved.
-						// So we only need to update the cache-buster when we rewind and actually
-						// get an incorrect range.
-						//
-						// https://bugs.webkit.org/show_bug.cgi?id=82672
-						//
-						console.log('Expected start at ' + seekPosition + ' but got ' + foundPosition +
-							'; working around Safari range caching bug (' + cachever + '): https://bugs.webkit.org/show_bug.cgi?id=82672');
-						cachever++;
-						internal.abortXHR(xhr);
-						internal.openXHR();
-						return;
-					}
-				}
-				if (seekPosition && xhr.status != 206) {
-					var code = xhr.status;
-					internal.abortXHR(xhr);
-					onerror('HTTP seek failed; unexpected status code ' + code);
-					return;
-				}
-				if (xhr.status >= 400) {
-					onerror('HTTP error; status code ' + xhr.status);
-					return;
-				}
-				if (!started) {
-					internal.setBytesTotal(xhr);
-					internal.processResponseHeaders(xhr);
-					started = true;
-					onstart();
-				}
-				if (xhr.readyState >= 3) {
-					internal.onXHRLoading(xhr, event);
-				}
-				//internal.onXHRHeadersReceived(xhr);
-				// @todo check that partial content was supported if relevant
-			},
-
-			onXHRLoading: function(xhr, event) {
-				throw new Error('abstract function');
-			},
-
-			onXHRDone: function(xhr, event) {
-				doneBuffering = true;
-				if (waitingForInput && !internal.dataToRead()) {
-					if (internal.advance()) {
-						return;
-					}
-				}
-				internal.onXHRLoading(xhr, event);
-			},
-
-			abortXHR: function(xhr) {
-				// These events do get called after abort.
-				// Let's not and say we did?
-				xhr.onprogress = null;
-				xhr.onloadend = null;
-				xhr.abort();
-			},
-
-			advance: function() {
-				if (doneBuffering &&
-					self.bytesBuffered - self.bytesRead < chunkSize &&
-					seekPosition + chunkSize < self.bytesTotal
-				) {
-					seekPosition += chunkSize;
-					internal.clearReadState();
-					internal.openXHR();
-					return true;
-				} else {
-					return false;
-				}
-			},
-
-			bufferData: function(buffer) {
-				if (buffer) {
-					buffers.push(buffer);
-					onbuffer();
-
-					internal.readNextChunk();
-				}
-			},
-
-			bytesBuffered: function() {
-				var bytes = 0;
-				buffers.forEach(function(buffer) {
-					bytes += buffer.byteLength;
-				});
-				return bytes;
-			},
-
-			dataToRead: function() {
-				return internal.bytesBuffered() > 0;
-			},
-
-			popBuffer: function() {
-				var bufferOut = new ArrayBuffer(bufferSize),
-					bytesOut = new Uint8Array(bufferOut),
-					byteLength = 0;
-
-				function stuff(bufferIn) {
-					var bytesIn = new Uint8Array(bufferIn);
-					bytesOut.set(bytesIn, byteLength);
-					byteLength += bufferIn.byteLength;
-				}
-
-				var min = bufferSize;
-				while (byteLength < min) {
-					var needBytes = min - byteLength,
-						nextBuffer = buffers.shift();
-					if (!nextBuffer) {
-						break;
-					}
-
-					if (needBytes >= nextBuffer.byteLength) {
-						// if it fits, it sits
-						stuff(nextBuffer.getBuffer());
-					} else {
-						// Split the buffer and requeue the rest
-						nextBuffer.split(needBytes, function(croppedBuffer, remainderBuffer) {
-							buffers.unshift(remainderBuffer);
-							stuff(croppedBuffer.getBuffer());
-						});
-						break;
-					}
-				}
-
-				bufferPosition += byteLength;
-				return bufferOut.slice(0, byteLength);
-			},
-
-			clearReadState: function() {
-				doneBuffering = false;
-			},
-
-			clearBuffers: function() {
-				internal.clearReadState();
-				buffers.splice(0, buffers.length);
-				bufferPosition = seekPosition;
-			},
-
-			// Read the next binary buffer out of the buffered data
-			readNextChunk: function() {
-				if (waitingForInput) {
-					waitingForInput = false;
-					onread(internal.popBuffer());
-				}
-			},
-
-			onReadDone: function() {
-				ondone();
-			},
-
-			// See if we can seek within already-buffered data
-			quickSeek: function(pos) {
-				return false;
-			}
-
-		};
-
-		// -- Public methods
-		self.readBytes = function() {
-			if (waitingForInput) {
-				throw new Error('StreamFile re-entrancy fail; readBytes called while waiting for data');
-			}
-			if (internal.dataToRead()) {
-				var buffer = internal.popBuffer();
-				internal.advance();
-				onread(buffer);
-			} else if (doneBuffering) {
-				// We're out of data!
-				if (!internal.advance()) {
-					internal.onReadDone();
-				}
-			} else {
-				// Nothing queued...
-				waitingForInput = true;
-			}
-		};
-
-		self.abort = function() {
-			if (internal.xhr) {
-				internal.abortXHR(internal.xhr);
-				internal.xhr = null;
-			}
-			internal.clearBuffers();
-			waitingForInput = false;
-		};
-
-		self.seek = function(bytePosition) {
-			if (internal.quickSeek(bytePosition)) {
-				//console.log('quick seek successful');
-			} else {
-				self.abort();
-				seekPosition = bytePosition;
-				internal.clearBuffers();
-				internal.openXHR();
-			}
-		};
-
-		self.getResponseHeader = function(headerName) {
-			var lowerName = headerName.toLowerCase(),
-				value = responseHeaders[lowerName];
-			if (value === undefined) {
-				return null;
-			} else {
-				return value;
-			}
-		};
-
-		// -- public properties
-		Object.defineProperty(self, 'bytesTotal', {
-			get: function() {
-				return bytesTotal;
-			}
-		});
-
-		Object.defineProperty(self, 'bytesBuffered', {
-			get: function() {
-				return bufferPosition + internal.bytesBuffered();
-			}
-		});
-
-		Object.defineProperty(self, 'bytesRead', {
-			get: function() {
-				return bufferPosition;
-			}
-		});
-
-		Object.defineProperty(self, 'seekable', {
-			get: function() {
-				return (self.bytesTotal > 0);
-			}
-		});
-
-		Object.defineProperty(self, 'waiting', {
-			get: function() {
-				return waitingForInput;
-			}
-		});
-
-		// Handy way to call super functions
-		var orig = {};
-		for (var prop in internal) {
-			orig[prop] = internal[prop];
-		}
-
-		// -- Backend selection and method overrides
-		if (internal.tryMethod('moz-chunked-arraybuffer')) {
-			internal.setXHROptions = function(xhr) {
-				xhr.responseType = 'moz-chunked-arraybuffer';
-			};
-
-			internal.onXHRLoading = function(xhr, event) {
-				// we have to get from the 'progress' event
-				// xhr.response is a per-chunk ArrayBuffer
-				if (xhr.response) {
-					internal.bufferData(new BufferWrapper(xhr.response));
-				}
-			};
-
-		} else if (useMSStream && internal.tryMethod('ms-stream')) {
-			// IE 10 supports returning a Stream from XHR.
-			// This seems unreliable in practice as the connections tend to die
-			// unexpectedly; recommend using the chunking even if it's primitive.
-
-			// Don't bother reading in chunks, MSStream handles it for us
-			chunkSize = 0;
-
-			var stream, streamReader;
-			var restarted = false;
-
-			internal.setXHROptions = function(xhr) {
-				xhr.responseType = 'ms-stream';
-				// onprogress doesn't get fired with ms-stream?
-				xhr.onreadystatechange = function(event) {
-					if (xhr.readyState >= 2 && !xhr.streamReaderStarted) {
-						internal.onXHRStart(xhr, event);
-					} else if (xhr.readyState >= 3) {
-						internal.onXHRLoading(xhr, event);
-					}
-				}
-			};
-
-			internal.abortXHR = function(xhr) {
-				restarted = true;
-				if (streamReader) {
-					streamReader.abort();
-					streamReader = null;
-				}
-				if (stream) {
-					stream.msClose();
-					stream = null;
-				}
-				orig.abortXHR(xhr);
-			};
-
-			internal.onXHRLoading = function(xhr, event) {
-				// Transfer us over to the StreamReader...
-				stream = xhr.response;
-				xhr.onprogress = null;
-				xhr.onloadend = null;
-				xhr.onreadystatechange = null;
-				if (waitingForInput) {
-					waitingForInput = false;
-					self.readBytes();
-				}
-			};
-
-			internal.bytesBuffered = function() {
-				// We don't know how much ahead is buffered, it's opaque.
-				// Just return what we've read.
-				return 0;
-			};
-
-			self.readBytes = function() {
-				if (waitingForInput) {
-					throw new Error('StreamFile re-entrancy fail; readBytes called while waiting for data');
-				}
-				if (stream) {
-					// Save the current position in case the stream died
-					// and we have to restart it...
-					var currentPosition = self.bytesRead;
-
-					var reader = streamReader = new MSStreamReader();
-					reader.onload = function(event) {
-						var buffer = event.target.result,
-							len = buffer.byteLength;
-						if (len > 0) {
-							bufferPosition += len;
-							onread(buffer);
-						} else {
-							// Zero length means end of stream.
-							ondone();
-						}
-					};
-					reader.onerror = function(event) {
-						console.log('MSStreamReader error: ' + reader.error + '; trying to recover');
-						self.seek(currentPosition);
-						self.readBytes();
-					};
-					streamReader.readAsArrayBuffer(stream, bufferSize);
-				} else {
-					waitingForInput = true;
-				}
-			};
-
-		} else if ((new XMLHttpRequest()).overrideMimeType !== undefined) {
-
-			// Use old binary string method since we can read reponseText
-			// progressively and extract ArrayBuffers from that.
-
-			internal.setXHROptions = function(xhr) {
-				xhr.responseType = "text";
-				xhr.overrideMimeType('text/plain; charset=x-user-defined');
-				xhr.streamReaderLastPosition = 0;
-			};
-
-			// Is there a better way to do this conversion? :(
-			var stringToArrayBuffer = function(chunk) {
-				var len = chunk.length,
-					buffer = new ArrayBuffer(len),
-					bytes = new Uint8Array(buffer);
-				for (var i = 0; i < len; i++) {
-					bytes[i] = chunk.charCodeAt(i);
-				}
-				return buffer;
-			};
-
-			// Wrapper for buffers, to let us lazy-extract the binary data
-			function StringBufferWrapper(xhr, start, end) {
-				this.start = start;
-				this.end = end;
-				this.byteLength = end - start;
-				this.xhr = xhr;
-			}
-			StringBufferWrapper.prototype.getBuffer = function() {
-				var str = this.xhr.responseText,
-					chunk = str.slice(this.start, this.end),
-					buffer = stringToArrayBuffer(chunk);
-				return buffer;
-			};
-			StringBufferWrapper.prototype.split = function(position, callback) {
-				var a = new StringBufferWrapper(this.xhr, this.start, this.start + position),
-					b = new StringBufferWrapper(this.xhr, this.start + position, this.end)
-				callback(a, b);
-			};
-
-			internal.onXHRLoading = function(xhr, event) {
-				var position;
-				if (typeof event.loaded === 'number') {
-					position = event.loaded;
-				} else {
-					// xhr.responseText is a binary string of entire file so far
-					position = xhr.responseText.length;
-				}
-				if (xhr.streamReaderLastPosition < position) {
-					var buffer = new StringBufferWrapper(xhr, xhr.streamReaderLastPosition, position);
-					xhr.streamReaderLastPosition = position;
-					internal.bufferData(buffer);
-				}
-			};
-
-			/*
-			internal.quickSeek = function(pos) {
-				var bufferedPos = pos - seekPosition;
-				if (bufferedPos < 0) {
-					return false;
-				} else if (bufferedPos >= internal.xhr.responseText.length) {
-					return false;
-				} else {
-					lastPosition = bufferedPos;
-					bytesRead = lastPosition;
-					setTimeout(function() {
-						onbuffer()
-					}, 0);
-					return true;
-				}
-			};
-			*/
-		} else {
-			throw new Error("No streaming HTTP input method found.");
-		}
-
-		internal.openXHR();
-	}
+
+	/**
+	 * Utility class for chunked streaming of large files via XMLHttpRequest.
+	 * Provides an abstraction of a seekable input stream, backed by in-memory
+	 * caching, and some convenient promise-based i/o methods.
+	 * @param {StreamFileOptions} options
+	 * @constructor
+	 */
+
+	var StreamFile = function () {
+	  function StreamFile(_ref) {
+	    var _ref$url = _ref.url;
+	    var url = _ref$url === undefined ? '' : _ref$url;
+	    var _ref$chunkSize = _ref.chunkSize;
+	    var chunkSize = _ref$chunkSize === undefined ? 1 * 1024 * 1024 : _ref$chunkSize;
+	    var _ref$cacheSize = _ref.cacheSize;
+	    var cacheSize = _ref$cacheSize === undefined ? 0 : _ref$cacheSize;
+
+	    _classCallCheck(this, StreamFile);
+
+	    // InputStream public API
+	    this.length = -1;
+	    this.loaded = false;
+	    this.loading = false;
+	    this.seekable = false;
+	    this.buffering = false;
+	    this.seeking = false;
+
+	    Object.defineProperties(this, {
+	      /**
+	       * Byte offset of the read head
+	       */
+	      offset: {
+	        get: function get() {
+	          return this._cache.readOffset;
+	        }
+	      },
+
+	      /**
+	       * Is the read head at the end of the file?
+	       */
+	      eof: {
+	        get: function get() {
+	          return this.length === this._cache.readOffset;
+	        }
+	      }
+	    });
+
+	    // StreamFile public API
+	    this.url = url;
+	    this.headers = {};
+
+	    // Private
+	    this._cache = new CachePool({
+	      cacheSize: cacheSize
+	    });
+
+	    this._backend = null;
+	    this._cachever = 0;
+	    this._chunkSize = chunkSize;
+	  }
+
+	  /**
+	   * Open the file, get metadata, and start buffering some data.
+	   * On success, loaded will become true, headers may be filled out,
+	   * and length may be available.
+	   *
+	   * @param {CancelToken?} cancelToken - optional cancellation token
+	   * @returns {Promise}
+	   */
+
+
+	  _createClass(StreamFile, [{
+	    key: 'load',
+	    value: function load(cancelToken) {
+	      var _this = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (_this.loading) {
+	          throw new Error('cannot load when loading');
+	        }
+	        if (_this.loaded) {
+	          throw new Error('cannot load when loaded');
+	        }
+	        _this.loading = true;
+	        _this._openBackend(cancelToken).then(function (backend) {
+	          // Save metadata from the first set...
+	          // Beware this._backend may be null already,
+	          // if the first segment was very short!
+	          _this.seekable = backend.seekable;
+	          _this.headers = backend.headers;
+	          _this.length = backend.length;
+	          _this.loaded = true;
+	          _this.loading = false;
+	          resolve();
+	        }).catch(function (err) {
+	          _this.loading = false;
+	          reject(err);
+	        });
+	      });
+	    }
+
+	    /**
+	     * Create a backend and wait for it to load.
+	     * The returned 'backend' object may be null if there is no data to read.
+	     *
+	     * @returns {Promise}
+	     */
+
+	  }, {
+	    key: '_openBackend',
+	    value: function _openBackend(cancelToken) {
+	      var _this2 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (_this2._backend) {
+	          resolve(_this2._backend);
+	        } else if (_this2.eof) {
+	          reject(new Error('cannot open at end of file'));
+	        } else {
+	          var cache = _this2._cache;
+	          var max = _this2._chunkSize;
+
+	          // Seek forward to the next unread point, up to chunk size
+	          var readable = cache.bytesReadable(max);
+	          var readTail = cache.readOffset + readable;
+	          cache.seekWrite(readTail);
+
+	          // Did we already cache the entire file?
+	          if (_this2.length >= 0 && readTail >= _this2.length) {
+	            resolve(null);
+	            return;
+	          }
+
+	          // Do we have space to write within that chunk?
+	          var writable = cache.bytesWritable(max);
+	          if (writable === 0) {
+	            // Nothing to read/write within the current readahead area.
+	            resolve(null);
+	          } else {
+	            (function () {
+	              var backend = _this2._backend = new Backend({
+	                url: _this2.url,
+	                offset: _this2._cache.writeOffset,
+	                length: writable,
+	                cachever: _this2._cachever
+	              });
+
+	              var oncomplete = null;
+	              if (cancelToken) {
+	                cancelToken.cancel = function (err) {
+	                  _this2._backend = null;
+	                  backend.abort();
+	                  reject(err);
+	                };
+	              }
+
+	              var checkOpen = function checkOpen() {
+	                if (backend !== _this2._backend) {
+	                  oncomplete();
+	                  reject(new Error('invalid state'));
+	                } else {
+	                  backend.on('buffer', function (buffer) {
+	                    if (backend === _this2._backend) {
+	                      _this2._cache.write(buffer);
+	                    }
+	                  });
+	                  backend.on('done', function () {
+	                    if (backend === _this2._backend) {
+	                      if (_this2.length === -1) {
+	                        // save length on those final thingies
+	                        _this2.length = _this2._backend.offset + _this2._backend.bytesRead;
+	                      }
+	                      _this2._backend = null;
+	                    }
+	                  });
+	                  resolve(backend);
+	                }
+	              };
+
+	              var checkError = function checkError(err) {
+	                if (backend !== _this2._backend) {
+	                  reject(new Error('invalid state'));
+	                } else {
+	                  _this2._backend = null;
+	                  reject(err);
+	                }
+	              };
+
+	              oncomplete = function oncomplete() {
+	                backend.off('open', checkOpen);
+	                backend.off('error', checkError);
+	                if (cancelToken) {
+	                  cancelToken.cancel = function () {};
+	                }
+	              };
+	              backend.on('open', checkOpen);
+	              backend.on('error', checkError);
+	              backend.on('cachever', function () {
+	                _this2._cachever++;
+	              });
+
+	              backend.load();
+	            })();
+	          }
+	        }
+	      });
+	    }
+
+	    /**
+	     * If we have empty space within the readahead area and there is not already
+	     * a download backend in place, create one and start it loading in background.
+	     * @returns {Promise}
+	     */
+
+	  }, {
+	    key: '_readAhead',
+	    value: function _readAhead(cancelToken) {
+	      var _this3 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (_this3._backend || _this3.eof) {
+	          // do nothing
+	          resolve();
+	        } else {
+	          _this3._openBackend(cancelToken).then(function () {
+	            resolve();
+	          }).catch(function (err) {
+	            reject(err);
+	          });
+	        }
+	      });
+	    }
+
+	    /**
+	     * Seek the read position to a new location in the file, asynchronously.
+	     * After succesful completion, reads will continue at the new offset.
+	     * May fail due to network problems, invalid input, or bad state.
+	     * @param {number} offset - target byte offset from beginning of file
+	     * @param {CancelToken?} cancelToken - optional cancellation token
+	     * @returns {Promise} - resolved when ready to read at the new position
+	     */
+
+	  }, {
+	    key: 'seek',
+	    value: function seek(offset, cancelToken) {
+	      var _this4 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (!_this4.loaded || _this4.buffering || _this4.seeking) {
+	          throw new Error('invalid state');
+	        } else if (offset !== (offset | 0) || offset < 0) {
+	          throw new Error('invalid input');
+	        } else if (_this4.length >= 0 && offset > _this4.length) {
+	          throw new Error('seek past end of file');
+	        } else if (!_this4.seekable) {
+	          throw new Error('seek on non-seekable stream');
+	        } else {
+	          if (_this4._backend) {
+	            // @todo if a short seek forward, just keep reading?
+	            _this4.abort();
+	          }
+	          _this4._cache.seekRead(offset);
+	          _this4._cache.seekWrite(offset);
+
+	          // Fire off a download if necessary.
+	          _this4._readAhead(cancelToken).then(resolve).catch(reject);
+	        }
+	      });
+	    }
+
+	    /**
+	     * Read up to the requested number of bytes, or until end of file is reached,
+	     * and advance the read head.
+	     *
+	     * May wait on network activity if data is not yet available.
+	     *
+	     * @param {number} nbytes - max number of bytes to read
+	     * @returns {ArrayBuffer} - between 0 and nbytes of data, inclusive
+	     */
+
+	  }, {
+	    key: 'read',
+	    value: function read(nbytes, cancelToken) {
+	      var _this5 = this;
+
+	      return this.buffer(nbytes, cancelToken).then(function () {
+	        return _this5.readSync(nbytes);
+	      });
+	    }
+
+	    /**
+	     * Read up to the requested number of bytes, or however much is available
+	     * in the buffer until the next empty segment, and advance the read head.
+	     *
+	     * Returns immediately.
+	     *
+	     * @param {number} nbytes - max number of bytes to read
+	     * @returns {ArrayBuffer} - between 0 and nbytes of data, inclusive
+	     */
+
+	  }, {
+	    key: 'readSync',
+	    value: function readSync(nbytes) {
+	      if (!this.loaded || this.buffering || this.seeking) {
+	        throw new Error('invalid state');
+	      } else if (nbytes !== (nbytes | 0) || nbytes < 0) {
+	        throw new Error('invalid input');
+	      }
+	      var buffer = this._cache.read(nbytes);
+
+	      // Trigger readahead if necessary.
+	      this._readAhead();
+
+	      return buffer;
+	    }
+
+	    /**
+	     * Wait until the given number of bytes are available to read, or end of file.
+	     * @param {number} nbytes - max bytes to wait for
+	     * @param {Object?} cancelToken - optional cancellation token
+	     */
+
+	  }, {
+	    key: 'buffer',
+	    value: function buffer(nbytes, cancelToken) {
+	      var _this6 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (!_this6.loaded || _this6.buffering || _this6.seeking) {
+	          throw new Error('invalid state');
+	        } else if (nbytes !== (nbytes | 0) || nbytes < 0) {
+	          throw new Error('invalid input');
+	        }
+	        var end = _this6._clampToLength(_this6.offset + nbytes);
+	        var readable = end - _this6.offset;
+
+	        if (_this6.bytesAvailable(readable) >= readable) {
+	          // Requested data is immediately available.
+	          resolve();
+	        } else {
+	          _this6.buffering = true;
+
+	          // If we don't already have a backend open, start downloading.
+	          _this6._openBackend(cancelToken).then(function (backend) {
+	            if (backend) {
+	              return backend.bufferToOffset(end, cancelToken).then(function () {
+	                // We might have to roll over to another download,
+	                // so loop back around!
+	                _this6.buffering = false;
+	                return _this6.buffer(nbytes, cancelToken);
+	              });
+	            } else {
+	              // No more data to read.
+	              return Promise.resolve();
+	            }
+	          }).then(function () {
+	            _this6.buffering = false;
+	            resolve();
+	          }).catch(function (err) {
+	            _this6.buffering = false;
+	            reject(err);
+	          });
+	        }
+	      });
+	    }
+
+	    /**
+	     * Number of bytes available to read immediately from the current offset.
+	     * This is the max number of bytes that can be returned from a read() call.
+	     * @returns {boolean}
+	     */
+
+	  }, {
+	    key: 'bytesAvailable',
+	    value: function bytesAvailable() {
+	      var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+
+	      return this._cache.bytesReadable(max);
+	    }
+
+	    /**
+	     * Abort any currently running downloads.
+	     */
+
+	  }, {
+	    key: 'abort',
+	    value: function abort() {
+	      if (this._backend) {
+	        this._backend.abort();
+	        this._backend = null;
+	      }
+	    }
+
+	    /**
+	     * Return an array of byte ranges that are buffered.
+	     * Each range is a two-element array of start and end.
+	     * @returns {Array<Array<number>>}
+	     */
+
+	  }, {
+	    key: 'getBufferedRanges',
+	    value: function getBufferedRanges() {
+	      return this._cache.ranges();
+	    }
+
+	    // ------
+	    // private methods
+	    // ------
+
+	  }, {
+	    key: '_clampToLength',
+	    value: function _clampToLength(offset) {
+	      if (this.length < 0) {
+	        return offset;
+	      } else {
+	        return Math.min(this.length, offset);
+	      }
+	    }
+	  }]);
+
+	  return StreamFile;
+	}();
 
 	module.exports = StreamFile;
 
 
 /***/ },
-/* 17 */
+/* 20 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	// just the bits we need
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var TinyEvents = function () {
+	  function TinyEvents() {
+	    _classCallCheck(this, TinyEvents);
+
+	    this._e = {};
+	  }
+
+	  _createClass(TinyEvents, [{
+	    key: "on",
+	    value: function on(name, handler) {
+	      (this._e[name] || (this._e[name] = [])).push(handler);
+	    }
+	  }, {
+	    key: "off",
+	    value: function off(name, handler) {
+	      var l = this._e[name] || [];
+	      var i = l.indexOf(handler);
+	      if (handler >= 0) {
+	        l.splice(i, 1);
+	      }
+	    }
+	  }, {
+	    key: "emit",
+	    value: function emit(name, arg) {
+	      (this._e[name] || []).slice().forEach(function (f) {
+	        return f(arg);
+	      });
+	    }
+	  }]);
+
+	  return TinyEvents;
+	}();
+
+	module.exports = TinyEvents;
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	module.exports = __webpack_require__(22);
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var CacheItem = __webpack_require__(23);
+
+	/**
+	 * Seekable, readable, writable buffer cache to represent a file.
+	 * @todo add max cache size and LRU cache expiration
+	 *
+	 * Internally, will always contain entries from 0 to some given out point.
+	 * Each item may either contain data, or be empty.
+	 * Empty ranges cannot be copied out via read(), non-empty ranges can.
+	 * Empty ranges can be filled up with write(), non-empty ranges cannot.
+	 *
+	 * Internal invariants:
+	 * - head and tail are always present, may be same for empty
+	 * - tail item is always empty/eof
+	 * - non-empty items are never 0 bytes
+	 * - adjacent list items are always continguous
+	 * - empty items are never adjacent to each other
+	 */
+
+	var CachePool = function () {
+	  function CachePool() {
+	    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+	    var _ref$cacheSize = _ref.cacheSize;
+	    var cacheSize = _ref$cacheSize === undefined ? 0 : _ref$cacheSize;
+
+	    _classCallCheck(this, CachePool);
+
+	    var eof = new CacheItem({ eof: true });
+	    this.head = eof;
+	    this.tail = eof;
+	    this.readOffset = 0;
+	    this.readCursor = eof;
+	    this.writeOffset = 0;
+	    this.writeCursor = eof;
+	    this.cacheSize = cacheSize;
+	  }
+
+	  /**
+	   * Is the read cursor at the end of the file?
+	   */
+
+
+	  _createClass(CachePool, [{
+	    key: 'bytesReadable',
+
+
+	    /**
+	     * Count how many bytes are available from the given offset.
+	     * @param {number} max - optional maximum to read
+	     * @returns {number} 0 or more
+	     */
+	    value: function bytesReadable() {
+	      var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+
+	      var offset = this.readOffset;
+	      var cursor = this.readCursor;
+	      var last = cursor.last(function (item) {
+	        return !item.empty && item.start <= offset + max;
+	      });
+	      if (last) {
+	        return Math.min(max, last.end - offset);
+	      }
+	      return 0;
+	    }
+
+	    /**
+	     * Count how many bytes are available to write.
+	     * @param {number} max - optional maximum to write
+	     * @returns {number} 0 or more, or +Infinity
+	     */
+
+	  }, {
+	    key: 'bytesWritable',
+	    value: function bytesWritable() {
+	      var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+
+	      var offset = this.writeOffset;
+	      var cursor = this.writeCursor;
+	      if (cursor.eof) {
+	        return max;
+	      }
+	      var last = cursor.last(function (item) {
+	        return item.empty && item.start <= offset + max;
+	      });
+	      if (last) {
+	        return Math.min(max, last.end - offset);
+	      }
+	      return 0;
+	    }
+
+	    /**
+	     * Move the read head to a given offset. The read head can move beyond the
+	     * currently known end of the file, but cannot move before 0.
+	     * @param {number} offset - bytes from beginning of virtual file to read from
+	     */
+
+	  }, {
+	    key: 'seekRead',
+	    value: function seekRead(offset) {
+	      var target = this.head.first(function (item) {
+	        return item.contains(offset);
+	      });
+	      if (!target) {
+	        throw new Error('read seek out of range');
+	      }
+	      this.readOffset = offset;
+	      this.readCursor = target;
+	    }
+
+	    /**
+	     * Move the write head to a given offset. The write head can move beyond the
+	     * currently known end of the file, but cannot move before 0.
+	     * @param {number} offset - bytes from beginning of virtual file to write to
+	     */
+
+	  }, {
+	    key: 'seekWrite',
+	    value: function seekWrite(offset) {
+	      var target = this.head.first(function (item) {
+	        return item.contains(offset);
+	      });
+	      if (!target) {
+	        throw new Error('write seek out of range');
+	      }
+	      this.writeOffset = offset;
+	      this.writeCursor = target;
+	    }
+
+	    /**
+	     * Read up to the requested number of bytes, or however much is available
+	     * in the buffer until the next empty segment, and advance the read head.
+	     *
+	     * Returns immediately.
+	     *
+	     * @param {number} nbytes - max number of bytes to read
+	     * @returns {ArrayBuffer} - between 0 and nbytes of data, inclusive
+	     */
+
+	  }, {
+	    key: 'read',
+	    value: function read(nbytes) {
+	      var len = this.bytesReadable(nbytes);
+	      var dest = new Uint8Array(len);
+	      var start = this.readOffset;
+	      var end = start + len;
+
+	      var readHead = start;
+	      var writeHead = 0;
+	      for (var item = this.readCursor; item; item = item.next) {
+	        if (item.empty) {
+	          break;
+	        }
+	        if (item.start >= end) {
+	          break;
+	        }
+	        var readTail = Math.min(end, item.end);
+	        var chunk = dest.subarray(readHead - start, readTail - start);
+	        item.readBytes(chunk, readHead, readTail);
+	        readHead = readTail;
+	      }
+	      this.readOffset = readHead;
+	      this.readCursor = this.readCursor.first(function (item) {
+	        return item.contains(readHead);
+	      });
+
+	      return dest.buffer;
+	    }
+
+	    /**
+	     * Write a data buffer at the write head and advance the write head.
+	     * The data must fit in the available empty space in the buffer cache.
+	     * @param {ArrayBuffer|String} buffer
+	     */
+
+	  }, {
+	    key: 'write',
+	    value: function write(buffer) {
+	      var item = this.bufferItem(buffer);
+	      var cursor = this.writeCursor;
+
+	      if (!cursor.empty) {
+	        throw new Error('write cursor not empty');
+	      }
+	      if (!cursor.contains(item.end) && cursor.end !== item.end) {
+	        throw new Error('write cursor too small');
+	      }
+
+	      if (cursor.start < item.start) {
+	        this.split(cursor, item.start);
+	        cursor = this.writeCursor;
+	      }
+
+	      if (item.end < cursor.end || cursor.eof) {
+	        this.split(cursor, item.end);
+	        cursor = this.writeCursor;
+	      }
+
+	      this.splice(cursor, cursor, item, item);
+	      this.writeOffset = item.end;
+	      this.writeCursor = item.next;
+
+	      this.gc();
+	    }
+	  }, {
+	    key: 'bufferItem',
+	    value: function bufferItem(buffer) {
+	      if (buffer instanceof ArrayBuffer) {
+	        return new CacheItem({
+	          start: this.writeOffset,
+	          end: this.writeOffset + buffer.byteLength,
+	          buffer: buffer
+	        });
+	      } else if (typeof buffer === 'string') {
+	        return new CacheItem({
+	          start: this.writeOffset,
+	          end: this.writeOffset + buffer.length,
+	          string: buffer
+	        });
+	      } else {
+	        throw new Error('invalid input to write');
+	      }
+	    }
+	  }, {
+	    key: 'split',
+	    value: function split(oldItem, offset) {
+	      var items = oldItem.split(offset);
+	      this.splice(oldItem, oldItem, items[0], items[1]);
+	    }
+
+	    /**
+	     * Return an array of arrays of consolidated cached ranges
+	     */
+
+	  }, {
+	    key: 'ranges',
+	    value: function ranges() {
+	      var ranges = [];
+
+	      for (var item = this.head; item; item = item.next) {
+	        if (item.empty) {
+	          continue;
+	        }
+	        var start = item;
+	        item = item.last(function (i) {
+	          return !i.empty;
+	        });
+	        ranges.push([start.start, item.end]);
+	      }
+
+	      return ranges;
+	    }
+	  }, {
+	    key: 'gc',
+	    value: function gc() {
+	      // Simple gc: look at anything not between read head and write head,
+	      // and discard the oldest items until we have room
+	      var cachedBytes = 0;
+	      var candidates = [];
+	      for (var item = this.head; item; item = item.next) {
+	        if (!item.empty) {
+	          cachedBytes += item.length;
+	          if (item.end < this.readOffset || item.start > this.readOffset + this.chunkSize) {
+	            // Not in the 'hot' readahead range
+	            candidates.push(item);
+	          }
+	        }
+	      }
+	      if (cachedBytes > this.cacheSize) {
+	        candidates.sort(function (a, b) {
+	          return a.timestamp - b.timestamp;
+	        });
+
+	        for (var i = 0; i < candidates.length; i++) {
+	          var _item = candidates[i];
+	          if (cachedBytes <= this.cacheSize) {
+	            break;
+	          }
+	          this.remove(_item);
+	          cachedBytes -= _item.length;
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'remove',
+	    value: function remove(item) {
+	      var replacement = new CacheItem({
+	        start: item.start,
+	        end: item.end
+	      });
+	      this.splice(item, item, replacement, replacement);
+	      item = replacement;
+
+	      // Consolidate adjacent ranges
+	      if (item.prev && item.prev.empty) {
+	        item = this.consolidate(item.prev);
+	      }
+	      if (item.next && item.next.empty && !item.next.eof) {
+	        item = this.consolidate(item);
+	      }
+	      if (item.start === 0) {
+	        this.head = item;
+	      }
+	    }
+	  }, {
+	    key: 'consolidate',
+	    value: function consolidate(first) {
+	      var last = first.last(function (item) {
+	        return item.empty && !item.eof;
+	      });
+	      var replacement = new CacheItem({
+	        start: first.start,
+	        end: last.end
+	      });
+	      this.splice(first, last, replacement, replacement);
+	      return replacement;
+	    }
+	  }, {
+	    key: 'splice',
+	    value: function splice(oldHead, oldTail, newHead, newTail) {
+	      var _this = this;
+
+	      if (oldHead.start !== newHead.start) {
+	        throw new Error('invalid splice head');
+	      }
+	      if (oldTail.end !== newTail.end) {
+	        if (oldTail.eof && newTail.eof) {
+	          // only eof is expandable
+	        } else {
+	          throw new Error('invalid splice tail');
+	        }
+	      }
+	      var prev = oldHead.prev;
+	      var next = oldTail.next;
+
+	      oldHead.prev = null;
+	      oldTail.next = null;
+
+	      if (prev) {
+	        prev.next = newHead;
+	        newHead.prev = prev;
+	      }
+	      if (next) {
+	        next.prev = newTail;
+	        newTail.next = next;
+	      }
+
+	      if (oldHead === this.head) {
+	        this.head = newHead;
+	      }
+	      if (oldTail === this.tail) {
+	        this.tail = newTail;
+	      }
+	      this.readCursor = this.head.first(function (item) {
+	        return item.contains(_this.readOffset);
+	      });
+	      this.writeCursor = this.head.first(function (item) {
+	        return item.contains(_this.writeOffset);
+	      });
+	    }
+	  }, {
+	    key: 'eof',
+	    get: function get() {
+	      return this.readCursor.eof;
+	    }
+	  }]);
+
+	  return CachePool;
+	}();
+
+	module.exports = CachePool;
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Double-linked list cache items
+	 */
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var CacheItem = function () {
+	  function CacheItem() {
+	    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+	    var _ref$buffer = _ref.buffer;
+	    var buffer = _ref$buffer === undefined ? undefined : _ref$buffer;
+	    var _ref$string = _ref.string;
+	    var string = _ref$string === undefined ? undefined : _ref$string;
+	    var _ref$start = _ref.start;
+	    var start = _ref$start === undefined ? 0 : _ref$start;
+	    var _ref$end = _ref.end;
+	    var end = _ref$end === undefined ? start + (buffer ? buffer.byteLength : string ? string.length : 0) : _ref$end;
+	    var _ref$prev = _ref.prev;
+	    var prev = _ref$prev === undefined ? null : _ref$prev;
+	    var _ref$next = _ref.next;
+	    var next = _ref$next === undefined ? null : _ref$next;
+	    var _ref$eof = _ref.eof;
+	    var eof = _ref$eof === undefined ? false : _ref$eof;
+	    var _ref$empty = _ref.empty;
+	    var empty = _ref$empty === undefined ? !(buffer || string) : _ref$empty;
+	    var _ref$timestamp = _ref.timestamp;
+	    var timestamp = _ref$timestamp === undefined ? Date.now() : _ref$timestamp;
+
+	    _classCallCheck(this, CacheItem);
+
+	    this.start = start;
+	    this.end = end;
+	    this.prev = prev;
+	    this.next = next;
+	    this.eof = eof;
+	    this.empty = empty;
+	    this.timestamp = timestamp;
+	    this.buffer = buffer;
+	    this.string = string;
+	    Object.defineProperty(this, 'length', {
+	      get: function get() {
+	        return this.end - this.start;
+	      }
+	    });
+	  }
+
+	  /**
+	   * True if this cache item contains the given byte offset.
+	   * False if outside.
+	   */
+
+
+	  _createClass(CacheItem, [{
+	    key: 'contains',
+	    value: function contains(offset) {
+	      return offset >= this.start && (offset < this.end || this.eof);
+	    }
+	  }, {
+	    key: 'readBytes',
+	    value: function readBytes(dest, start, end) {
+	      var readHead = start - this.start;
+	      var len = end - start;
+	      if (this.buffer) {
+	        var sourceBytes = new Uint8Array(this.buffer, readHead, len);
+	        dest.set(sourceBytes);
+	      } else if (this.string) {
+	        var chunk = this.string;
+	        for (var i = 0; i < len; i++) {
+	          dest[i] = chunk.charCodeAt(readHead + i);
+	        }
+	      } else {
+	        throw new Error('invalid state');
+	      }
+	      this.timestamp = Date.now();
+	    }
+	  }, {
+	    key: 'split',
+	    value: function split(offset) {
+	      if (!this.empty || !this.contains(offset)) {
+	        throw new Error('invalid split');
+	      }
+	      var a = new CacheItem({
+	        start: this.start,
+	        end: offset
+	      });
+	      var b = new CacheItem({
+	        start: offset,
+	        end: this.eof ? offset : this.end,
+	        eof: this.eof
+	      });
+	      a.next = b;
+	      b.prev = a;
+	      return [a, b];
+	    }
+
+	    /**
+	     * Iterate forwards, returning the first element matching the callback.
+	     * @param {function} callback - return true for a match on item
+	     * @returns {CacheItem|null} - matching item or null if none found
+	     */
+
+	  }, {
+	    key: 'first',
+	    value: function first(callback) {
+	      for (var item = this; item; item = item.next) {
+	        if (callback(item)) {
+	          return item;
+	        }
+	      }
+	      return null;
+	    }
+
+	    /**
+	     * Iterate forwards, returning the last element matching the callback before
+	     * reaching one that doesn't match or we find the end.
+	     * @param {function} callback - return true for a match on item
+	     * @returns {CacheItem|null} - matching item or null if none found
+	     */
+
+	  }, {
+	    key: 'last',
+	    value: function last(callback) {
+	      var last = null;
+	      for (var item = this; item; item = item.next) {
+	        if (!callback(item)) {
+	          break;
+	        }
+	        last = item;
+	      }
+	      return last;
+	    }
+	  }]);
+
+	  return CacheItem;
+	}();
+
+	module.exports = CacheItem;
+
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var MozChunkedBackend = __webpack_require__(25);
+	var MSStreamBackend = __webpack_require__(28);
+	var BinaryStringBackend = __webpack_require__(29);
+
+	function autoselect() {
+	  if (MozChunkedBackend.supported()) {
+	    return MozChunkedBackend;
+	  } else if (MSStreamBackend.supported()) {
+	    return MSStreamBackend;
+	  } else if (BinaryStringBackend.supported()) {
+	    return BinaryStringBackend;
+	  } else {
+	    return null;
+	  }
+	}
+
+	var backendClass = null;
+
+	function instantiate(options) {
+	  if (!backendClass) {
+	    backendClass = autoselect();
+	  }
+	  if (!backendClass) {
+	    throw new Error('No supported backend class');
+	  }
+	  return new backendClass(options);
+	}
+
+	module.exports = instantiate;
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var DownloadBackend = __webpack_require__(26);
+
+	var type = 'moz-chunked-arraybuffer';
+
+	var MozChunkedBackend = function (_DownloadBackend) {
+	  _inherits(MozChunkedBackend, _DownloadBackend);
+
+	  function MozChunkedBackend() {
+	    _classCallCheck(this, MozChunkedBackend);
+
+	    return _possibleConstructorReturn(this, (MozChunkedBackend.__proto__ || Object.getPrototypeOf(MozChunkedBackend)).apply(this, arguments));
+	  }
+
+	  _createClass(MozChunkedBackend, [{
+	    key: 'initXHR',
+	    value: function initXHR() {
+	      _get(MozChunkedBackend.prototype.__proto__ || Object.getPrototypeOf(MozChunkedBackend.prototype), 'initXHR', this).call(this);
+	      this.xhr.responseType = type;
+	    }
+	  }, {
+	    key: 'onXHRProgress',
+	    value: function onXHRProgress() {
+	      var buffer = this.xhr.response;
+	      this.bytesRead += buffer.byteLength;
+	      this.emit('buffer', buffer);
+	    }
+	  }]);
+
+	  return MozChunkedBackend;
+	}(DownloadBackend);
+
+	MozChunkedBackend.supported = function () {
+	  try {
+	    var xhr = new XMLHttpRequest();
+	    xhr.responseType = type;
+	    return xhr.responseType === type;
+	  } catch (e) {
+	    return false;
+	  }
+	};
+
+	module.exports = MozChunkedBackend;
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Backend = __webpack_require__(27);
+
+	/**
+	 * Backend for progressive downloading.
+	 * Subclasses handle details of strings/buffers.
+	 */
+
+	var DownloadBackend = function (_Backend) {
+	  _inherits(DownloadBackend, _Backend);
+
+	  function DownloadBackend() {
+	    _classCallCheck(this, DownloadBackend);
+
+	    return _possibleConstructorReturn(this, (DownloadBackend.__proto__ || Object.getPrototypeOf(DownloadBackend)).apply(this, arguments));
+	  }
+
+	  _createClass(DownloadBackend, [{
+	    key: 'bufferToOffset',
+	    value: function bufferToOffset(end, cancelToken) {
+	      var _this2 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (_this2.eof || _this2.offset >= end) {
+	          resolve();
+	        } else {
+	          (function () {
+	            var oncomplete = null;
+	            if (cancelToken) {
+	              cancelToken.cancel = function (reason) {
+	                _this2.abort();
+	                oncomplete();
+	                reject(reason);
+	              };
+	            }
+
+	            var checkBuffer = function checkBuffer() {
+	              if (_this2.offset >= end && !_this2.eof) {
+	                oncomplete();
+	                resolve();
+	              }
+	            };
+	            var checkDone = function checkDone() {
+	              oncomplete();
+	              resolve();
+	            };
+	            var checkError = function checkError() {
+	              oncomplete();
+	              reject(new Error('error streaming'));
+	            };
+
+	            oncomplete = function oncomplete() {
+	              _this2.buffering = false;
+	              _this2.off('buffer', checkBuffer);
+	              _this2.off('done', checkDone);
+	              _this2.off('error', checkError);
+	            };
+
+	            _this2.buffering = true;
+	            _this2.on('buffer', checkBuffer);
+	            _this2.on('done', checkDone);
+	            _this2.on('error', checkError);
+	          })();
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'initXHR',
+	    value: function initXHR() {
+	      _get(DownloadBackend.prototype.__proto__ || Object.getPrototypeOf(DownloadBackend.prototype), 'initXHR', this).call(this);
+	    }
+	  }, {
+	    key: 'onXHRStart',
+	    value: function onXHRStart() {
+	      var _this3 = this;
+
+	      // Event handlers to drive output
+	      this.xhr.addEventListener('progress', function () {
+	        return _this3.onXHRProgress();
+	      });
+	      this.xhr.addEventListener('error', function () {
+	        return _this3.onXHRError();
+	      });
+	      this.xhr.addEventListener('load', function () {
+	        return _this3.onXHRLoad();
+	      });
+
+	      this.emit('open');
+	    }
+	  }, {
+	    key: 'onXHRProgress',
+	    value: function onXHRProgress() {
+	      throw new Error('abstract');
+	    }
+	  }, {
+	    key: 'onXHRError',
+	    value: function onXHRError() {
+	      this.emit('error');
+	    }
+	  }, {
+	    key: 'onXHRLoad',
+	    value: function onXHRLoad() {
+	      this.eof = true;
+	      this.emit('done');
+	    }
+	  }]);
+
+	  return DownloadBackend;
+	}(Backend);
+
+	module.exports = DownloadBackend;
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TinyEvents = __webpack_require__(20);
+
+	/**
+	 * Extract the file's total length from the XHR returned headers.
+	 * @returns {number} - byte length or -1
+	 * @access private
+	 */
+	function getXHRLength(xhr) {
+	  if (xhr.status == 206) {
+	    return getXHRRangeTotal(xhr);
+	  } else {
+	    var contentLength = xhr.getResponseHeader('Content-Length');
+	    if (contentLength === null || contentLength === '') {
+	      // Unknown file length... maybe streaming live?
+	      return -1;
+	    } else {
+	      return parseInt(contentLength, 10);
+	    }
+	  }
+	}
+
+	/**
+	 * Extract the range chunk info from the XHR returned headers.
+	 * @returns {Array} - byte length or -1
+	 * @access private
+	 */
+	function getXHRRangeMatches(xhr) {
+	  // Note Content-Range must be whitelisted for CORS requests
+	  var contentRange = xhr.getResponseHeader('Content-Range');
+	  return contentRange && contentRange.match(/^bytes (\d+)-(\d+)\/(\d+)/);
+	}
+
+	/**
+	 * Extract the chunk start position from the XHR returned headers.
+	 * @returns {number} - byte position or 0
+	 * @access private
+	 */
+	function getXHRRangeStart(xhr) {
+	  var matches = getXHRRangeMatches(xhr);
+	  if (matches) {
+	    return parseInt(matches[1], 10);
+	  } else {
+	    return 0;
+	  }
+	}
+
+	/**
+	 * Extract the file's total length from the XHR returned headers.
+	 * @returns {number} - byte length or -1
+	 * @access private
+	 */
+	function getXHRRangeTotal(xhr) {
+	  var matches = getXHRRangeMatches(xhr);
+	  if (matches) {
+	    return parseInt(matches[3], 10);
+	  } else {
+	    return -1;
+	  }
+	}
+
+	/**
+	 * Record the HTTP headers from the initial request, in case some are useful.
+	 * @returns {Object} map of headers
+	 * @access private
+	 */
+	function getXHRHeaders(xhr) {
+	  var headers = {};
+	  var headerLines = xhr.getAllResponseHeaders().split(/\n/);
+	  headerLines.forEach(function (line) {
+	    var bits = line.split(/:\s*/, 2);
+	    if (bits.length > 1) {
+	      headers[bits[0].toLowerCase()] = bits[1];
+	    }
+	  });
+	  return headers;
+	}
+
+	/**
+	 * Represents a single HTTP request pass through part of a URL.
+	 *
+	 * Subclasses handle details of chunking/strings/streams and provide
+	 * a unified internal API.
+	 *
+	 * Events sent:
+	 * - 'open' - called when file metadata ready
+	 * - 'buffer' - passes a BufferSegment in with some new data
+	 * - 'done' - called at end of file
+	 * - 'error' - called in case of error
+	 * - 'cachever' - triggered when old Safari caching bug found
+	 */
+
+	var Backend = function (_TinyEvents) {
+	  _inherits(Backend, _TinyEvents);
+
+	  function Backend(_ref) {
+	    var url = _ref.url;
+	    var offset = _ref.offset;
+	    var length = _ref.length;
+	    var _ref$cachever = _ref.cachever;
+	    var cachever = _ref$cachever === undefined ? 0 : _ref$cachever;
+
+	    _classCallCheck(this, Backend);
+
+	    var _this = _possibleConstructorReturn(this, (Backend.__proto__ || Object.getPrototypeOf(Backend)).call(this));
+
+	    _this.url = url;
+	    _this.offset = offset;
+	    _this.length = length;
+	    _this.cachever = cachever;
+
+	    _this.loaded = false;
+	    _this.seekable = false;
+	    _this.headers = {};
+	    _this.eof = false;
+	    _this.bytesRead = 0;
+	    _this.xhr = new XMLHttpRequest();
+	    return _this;
+	  }
+
+	  _createClass(Backend, [{
+	    key: 'load',
+	    value: function load(cancelToken) {
+	      var _this2 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        var oncomplete = null;
+	        var checkOpen = function checkOpen() {
+	          // There doesn't seem to be a good match for readyState 2 on the XHR2 events model.
+	          if (_this2.xhr.readyState == 2) {
+	            if (_this2.xhr.status == 206) {
+	              // Partial content -- we are streamable
+	              var foundPosition = getXHRRangeStart(_this2.xhr);
+	              if (_this2.offset != foundPosition) {
+	                //
+	                // Safari sometimes messes up and gives us the wrong chunk.
+	                // Seems to be a general problem with Safari and cached XHR ranges.
+	                //
+	                // Interestingly, it allows you to request _later_ ranges successfully,
+	                // but when requesting _earlier_ ranges it returns the latest one retrieved.
+	                // So we only need to update the cache-buster when we rewind and actually
+	                // get an incorrect range.
+	                //
+	                // https://bugs.webkit.org/show_bug.cgi?id=82672
+	                //
+	                console.log('Expected start at ' + _this2.offset + ' but got ' + foundPosition + '; working around Safari range caching bug: https://bugs.webkit.org/show_bug.cgi?id=82672');
+	                _this2.cachever++;
+	                _this2.emit('cachever');
+	                _this2.abort();
+	                oncomplete();
+	                _this2.load(cancelToken).then(resolve).catch(reject);
+	                return;
+	              }
+	              _this2.seekable = true;
+	            }
+	            if (_this2.xhr.status >= 200 && _this2.xhr.status < 300) {
+	              _this2.length = getXHRLength(_this2.xhr);
+	              _this2.headers = getXHRHeaders(_this2.xhr);
+	              _this2.onXHRStart();
+	            } else {
+	              oncomplete();
+	              reject(new Error('HTTP error ' + _this2.xhr.status));
+	            }
+	          }
+	        };
+	        var checkError = function checkError() {
+	          oncomplete();
+	          reject(new Error('network error'));
+	        };
+	        var checkBackendOpen = function checkBackendOpen() {
+	          oncomplete();
+	          resolve();
+	        };
+	        if (cancelToken) {
+	          cancelToken.cancel = function (reason) {
+	            _this2.abort();
+	            oncomplete();
+	            reject(reason);
+	          };
+	        }
+	        oncomplete = function oncomplete() {
+	          _this2.xhr.removeEventListener('readystatechange', checkOpen);
+	          _this2.xhr.removeEventListener('error', checkError);
+	          _this2.off('open', checkBackendOpen);
+	          if (cancelToken) {
+	            cancelToken.cancel = function () {};
+	          }
+	        };
+
+	        _this2.initXHR();
+
+	        // Events for the open promise
+	        _this2.xhr.addEventListener('readystatechange', checkOpen);
+	        _this2.xhr.addEventListener('error', checkError);
+	        _this2.on('open', checkBackendOpen);
+
+	        _this2.xhr.send();
+	      });
+	    }
+
+	    /**
+	     * Wait until we download up to the given offset, reach eof, or error out.
+	     * Actual data will be returned via 'buffer' events in the meantime.
+	     *
+	     * Note that MSStream backend will need this to be called explicitly,
+	     * while the other backends download progressively even without a call.
+	     */
+
+	  }, {
+	    key: 'bufferToOffset',
+	    value: function bufferToOffset(end, cancelToken) {
+	      return Promise.reject(new Error('abstract'));
+	    }
+	  }, {
+	    key: 'abort',
+	    value: function abort() {
+	      this.xhr.abort();
+	    }
+
+	    // ---------------
+	    // Private methods
+	    // ---------------
+
+	  }, {
+	    key: 'initXHR',
+	    value: function initXHR() {
+	      var getUrl = this.url;
+	      if (this.cachever) {
+	        //
+	        // Safari sometimes messes up and gives us the wrong chunk.
+	        // Seems to be a general problem with Safari and cached XHR ranges.
+	        //
+	        // Interestingly, it allows you to request _later_ ranges successfully,
+	        // but when requesting _earlier_ ranges it returns the latest one retrieved.
+	        // So we only need to update the cache-buster when we rewind.
+	        //
+	        // https://bugs.webkit.org/show_bug.cgi?id=82672
+	        //
+	        getUrl += '?buggy_cachever=' + this.cachever;
+	      }
+
+	      this.xhr.open("GET", getUrl);
+
+	      var range = null;
+	      if (this.offset || this.length) {
+	        range = 'bytes=' + this.offset + '-';
+	      }
+	      if (this.length) {
+	        range += this.offset + this.length - 1;
+	      }
+	      if (range !== null) {
+	        this.xhr.setRequestHeader('Range', range);
+	      }
+	    }
+	  }, {
+	    key: 'onXHRStart',
+	    value: function onXHRStart() {
+	      throw new Error('abstract');
+	    }
+	  }]);
+
+	  return Backend;
+	}(TinyEvents);
+
+	module.exports = Backend;
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Backend = __webpack_require__(27);
+
+	var type = 'ms-stream';
+
+	var MSStreamBackend = function (_Backend) {
+	  _inherits(MSStreamBackend, _Backend);
+
+	  function MSStreamBackend(options) {
+	    _classCallCheck(this, MSStreamBackend);
+
+	    var _this = _possibleConstructorReturn(this, (MSStreamBackend.__proto__ || Object.getPrototypeOf(MSStreamBackend)).call(this, options));
+
+	    _this.stream = null;
+	    _this.streamReader = null;
+	    return _this;
+	  }
+
+	  _createClass(MSStreamBackend, [{
+	    key: 'initXHR',
+	    value: function initXHR() {
+	      _get(MSStreamBackend.prototype.__proto__ || Object.getPrototypeOf(MSStreamBackend.prototype), 'initXHR', this).call(this);
+	      this.xhr.responseType = type;
+	    }
+	  }, {
+	    key: 'onXHRStart',
+	    value: function onXHRStart() {
+	      var _this2 = this;
+
+	      var checkProgress = function checkProgress() {
+	        if (_this2.xhr.readyState === 3) {
+	          // We don't get the stream until readyState 3, and it's gone after load.
+	          _this2.stream = _this2.xhr.response;
+	          _this2.xhr.removeEventListener('readystatechange', checkProgress);
+	          _this2.emit('open');
+	        }
+	      };
+	      this.xhr.addEventListener('readystatechange', checkProgress);
+	    }
+	  }, {
+	    key: 'waitForStream',
+	    value: function waitForStream(cancelToken) {
+	      var _this3 = this;
+
+	      return new Promise(function (resolve, reject) {
+	        if (_this3.stream) {
+	          resolve(_this3.stream);
+	        } else {
+	          (function () {
+	            var oncomplete = null;
+	            if (cancelToken) {
+	              cancelToken.cancel = function (err) {
+	                oncomplete();
+	                reject(err);
+	              };
+	            }
+	            var checkStart = function checkStart() {
+	              resolve(_this3.stream);
+	            };
+	            oncomplete = function oncomplete() {
+	              cancelToken.cancel = function () {};
+	              _this3.off('open', checkStart);
+	            };
+	            _this3.on('open', checkStart);
+	          })();
+	        }
+	      });
+	    }
+
+	    /**
+	     * Trigger further download of bytes
+	     * @returns {Promise}
+	     */
+
+	  }, {
+	    key: 'bufferToOffset',
+	    value: function bufferToOffset(end, cancelToken) {
+	      var _this4 = this;
+
+	      return this.waitForStream(cancelToken).then(function (stream) {
+	        return new Promise(function (resolve, reject) {
+	          if (_this4.streamReader) {
+	            throw new Error('cannot trigger read when reading');
+	          }
+	          if (_this4.offset >= end || _this4.eof) {
+	            resolve();
+	          } else {
+	            var nbytes = end - _this4.offset;
+	            _this4.streamReader = new MSStreamReader();
+	            _this4.streamReader.onload = function (event) {
+	              _this4.streamReader = null;
+	              var buffer = event.target.result;
+	              if (buffer.byteLength > 0) {
+	                _this4.bytesRead += buffer.byteLength;
+	                _this4.emit('buffer', buffer);
+	              } else {
+	                // Zero length means end of stream.
+	                _this4.eof = true;
+	                _this4.emit('done');
+	              }
+	              resolve();
+	            };
+	            _this4.streamReader.onerror = function () {
+	              _this4.streamReader = null;
+	              _this4.stream = null;
+	              _this4.emit('error');
+	              reject(new Error('mystery error streaming'));
+	            };
+	            if (cancelToken) {
+	              cancelToken.cancel = function (reason) {
+	                _this4.streamReader.abort();
+	                _this4.streamReader = null;
+	                _this4.stream = null;
+	                _this4.emit('error');
+	                reject(reason);
+	              };
+	            }
+	            _this4.streamReader.readAsArrayBuffer(stream, nbytes);
+	          }
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'abort',
+	    value: function abort() {
+	      if (this.streamReader) {
+	        this.streamReader.abort();
+	        this.streamReader = null;
+	      }
+	      if (this.stream) {
+	        this.stream.msClose();
+	        this.stream = null;
+	      }
+	      _get(MSStreamBackend.prototype.__proto__ || Object.getPrototypeOf(MSStreamBackend.prototype), 'abort', this).call(this);
+	    }
+	  }]);
+
+	  return MSStreamBackend;
+	}(Backend);
+
+	MSStreamBackend.supported = function () {
+	  try {
+	    var xhr = new XMLHttpRequest();
+	    xhr.responseType = type;
+	    return xhr.responseType === type;
+	  } catch (e) {
+	    return false;
+	  }
+	};
+
+	module.exports = MSStreamBackend;
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var DownloadBackend = __webpack_require__(26);
+
+	var BinaryStringBackend = function (_DownloadBackend) {
+	  _inherits(BinaryStringBackend, _DownloadBackend);
+
+	  function BinaryStringBackend() {
+	    _classCallCheck(this, BinaryStringBackend);
+
+	    return _possibleConstructorReturn(this, (BinaryStringBackend.__proto__ || Object.getPrototypeOf(BinaryStringBackend)).apply(this, arguments));
+	  }
+
+	  _createClass(BinaryStringBackend, [{
+	    key: "initXHR",
+	    value: function initXHR() {
+	      _get(BinaryStringBackend.prototype.__proto__ || Object.getPrototypeOf(BinaryStringBackend.prototype), "initXHR", this).call(this);
+	      this.xhr.responseType = "text";
+	      this.xhr.overrideMimeType('text/plain; charset=x-user-defined');
+	    }
+	  }, {
+	    key: "onXHRProgress",
+	    value: function onXHRProgress() {
+	      var slice = this.xhr.responseText.slice(this.bytesRead);
+	      if (slice.length > 0) {
+	        this.bytesRead += slice.length;
+	        this.emit('buffer', slice);
+	      }
+	    }
+	  }, {
+	    key: "onXHRLoad",
+	    value: function onXHRLoad() {
+	      // We may or may not get that final event
+	      this.onXHRProgress();
+	      _get(BinaryStringBackend.prototype.__proto__ || Object.getPrototypeOf(BinaryStringBackend.prototype), "onXHRLoad", this).call(this);
+	    }
+	  }]);
+
+	  return BinaryStringBackend;
+	}(DownloadBackend);
+
+	BinaryStringBackend.supported = function () {
+	  try {
+	    var xhr = new XMLHttpRequest();
+	    return !!xhr.overrideMimeType;
+	  } catch (e) {
+	    return false;
+	  }
+	};
+
+	module.exports = BinaryStringBackend;
+
+
+/***/ },
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -6326,13 +8870,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	;
 
 /***/ },
-/* 18 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=e187c46551bc31edb18fea80fdc3e941";
 
 /***/ },
-/* 19 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/**
@@ -6381,7 +8925,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 20 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6398,7 +8942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.2.1-20160924234040-a1a879e")),
+			suffix = '?version=' + encodeURIComponent(("1.3.0-20170208200618-aa493c31")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,
