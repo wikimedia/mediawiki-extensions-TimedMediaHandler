@@ -261,6 +261,8 @@ class TimedMediaHandlerHooks {
 
 		// Add transcode job class:
 		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';
+		// Same class with different queue priority:
+		$wgJobClasses['webVideoTranscodePrioritized'] = 'WebVideoTranscodeJob';
 
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';

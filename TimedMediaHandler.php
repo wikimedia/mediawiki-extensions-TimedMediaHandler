@@ -244,6 +244,15 @@ $wgTmhFileExtensions = [ 'ogg', 'ogv', 'oga', 'flac', 'opus', 'wav', 'webm', 'mp
 
 $wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
+// Transcode resolutions higher than this will run in the low-priority queue
+// This'll give us SD transcodes as fast as possible, then do HD later.
+$wgTmhPriorityResolutionThreshold = 480;
+
+// Transcodes of files longer than this (seconds) will run in the low-priority
+// queue; defaults to 15 minutes.
+// This'll mean long videos won't flood the high-priority queue.
+$wgTmhPriorityLengthThreshold = 900;
+
 // Timed Media Handler AutoLoad Classes:
 $wgAutoloadClasses['TimedMediaHandler'] = "$timedMediaDir/TimedMediaHandler_body.php";
 $wgAutoloadClasses['TimedMediaHandlerHooks'] = "$timedMediaDir/TimedMediaHandler.hooks.php";

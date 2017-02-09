@@ -1159,6 +1159,8 @@ class WebVideoTranscode {
 	 * @param $transcodeKey String transcode key
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ) {
+		global $wgTmhPriorityResolutionThreshold, $wgTmhPriorityLengthThreshold;
+
 		$fileName = $file->getTitle()->getDbKey();
 		$db = $file->repo->getMasterDB();
 
@@ -1188,9 +1190,19 @@ class WebVideoTranscode {
 				return;
 			}
 
+			// Set the priority
+			$transcodeHeight = 0;
+			$matches = [];
+			if ( preg_match( '/^(\d+)p/', $transcodeKey, $matches ) ) {
+				$transcodeHeight = intval( $matches[0] );
+			}
+			$prioritized = ( $transcodeHeight <= $wgTmhPriorityResolutionThreshold )
+				&& ( $file->getLength() <= $wgTmhPriorityLengthThreshold );
+
 			$job = new WebVideoTranscodeJob( $file->getTitle(), [
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
+				'prioritized' => $prioritized
 			] );
 
 			try {

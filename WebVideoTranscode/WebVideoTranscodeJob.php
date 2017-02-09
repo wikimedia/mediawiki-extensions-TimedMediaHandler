@@ -26,7 +26,12 @@ class WebVideoTranscodeJob extends Job {
 	public $file;
 
 	public function __construct( $title, $params, $id = 0 ) {
-		parent::__construct( 'webVideoTranscode', $title, $params, $id );
+		if ( isset( $params['prioritized'] ) && $params['prioritized'] ) {
+			$command = 'webVideoTranscodePrioritized';
+		} else {
+			$command = 'webVideoTranscode';
+		}
+		parent::__construct( $command, $title, $params, $id );
 		$this->removeDuplicates = true;
 	}
 
