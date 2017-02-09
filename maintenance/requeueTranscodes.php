@@ -26,7 +26,7 @@ class RequeueTranscodes extends Maintenance {
 	public function execute() {
 		$this->output( "Cleanup transcodes:\n" );
 		$dbr = wfGetDB( DB_SLAVE );
-		$where = [ 'img_media_type' => 'VIDEO' ];
+		$where = [ 'img_media_type' => [ 'AUDIO', 'VIDEO' ] ];
 		if ( $this->hasOption( 'file' ) ) {
 			$title = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
 			if ( !$title ) {
