@@ -22,6 +22,7 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "all", "re-queue all output formats", false, false );
 		$this->addOption( "audio", "process audio files (defaults to all media types)", false, false );
 		$this->addOption( "video", "process video files (defaults to all media types)", false, false );
+		$this->addOption( "throttle", "throttle on the queue", false, false );
 		$this->mDescription = "re-queue existing and missing media transcodes.";
 	}
 
@@ -115,7 +116,23 @@ class RequeueTranscodes extends Maintenance {
 				}
 				if ( !array_key_exists( $key, $state ) || !$state[$key]['time_addjob'] ) {
 					$this->output( ".. queueing $key\n" );
+
+					if ( $this->hasOption( 'throttle' ) ) {
+						$startSize = WebVideoTranscode::getQueueSize( $file, $key );
+					}
+
 					WebVideoTranscode::updateJobQueue( $file, $key );
+					if ( $this->hasOption( 'throttle' ) ) {
+						while ( true ) {
+							$size = WebVideoTranscode::getQueueSize( $file, $key );
+							if ( $size > $startSize ) {
+								$this->output( ".. waiting (queue size $size)\n" );
+								sleep( 1 );
+							} else {
+								break;
+							}
+						}
+					}
 				}
 			}
 		}
