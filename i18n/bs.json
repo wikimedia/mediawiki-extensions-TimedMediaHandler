@@ -28,5 +28,9 @@
 	"timedmedia-source-file-desc": "Originalna $1 datoteka, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)",
 	"timedmedia-subtitle-language": "$1 ($2) podnaslovi",
+	"right-transcode-reset": "Resetiranje neuspješno postavljenih ili već transkodiranih videozapisa tako da ih se ponovo ubaci u red poslova",
+	"right-transcode-status": "Pregledanje [[Special:TimedMediaHandler|podataka o trenutnom stanju transkodiranja]]",
+	"action-transcode-reset": "resetirate transkodiranje",
+	"action-transcode-status": "pregledate trenutno stanje transkodiranja",
 	"log-name-timedmediahandler": "Zapisnik TimedMediaHandlera"
 }
