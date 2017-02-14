@@ -1,10 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomada"
+			"Gomada",
+			"Ghybu"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Sernav: $1",
 	"mwe-embedplayer-credit-date": "Dîrok: $1",
-	"mwe-embedplayer-credit-author": "Xwedî: $1"
+	"mwe-embedplayer-credit-author": "Xwedî: $1",
+	"mwe-embedplayer-download": "Daxîne",
+	"mwe-embedplayer-share": "Parve bike",
+	"mwe-embedplayer-credits": "Xwedî",
+	"mwe-embedplayer-menu_btn": "Menû",
+	"mwe-embedplayer-close_btn": "Bigre"
 }
