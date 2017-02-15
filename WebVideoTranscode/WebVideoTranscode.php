@@ -1159,8 +1159,6 @@ class WebVideoTranscode {
 	 * @param $transcodeKey String transcode key
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ) {
-		global $wgTmhPriorityResolutionThreshold, $wgTmhPriorityLengthThreshold;
-
 		$fileName = $file->getTitle()->getDbKey();
 		$db = $file->repo->getMasterDB();
 
@@ -1191,13 +1189,7 @@ class WebVideoTranscode {
 			}
 
 			// Set the priority
-			$transcodeHeight = 0;
-			$matches = [];
-			if ( preg_match( '/^(\d+)p/', $transcodeKey, $matches ) ) {
-				$transcodeHeight = intval( $matches[0] );
-			}
-			$prioritized = ( $transcodeHeight <= $wgTmhPriorityResolutionThreshold )
-				&& ( $file->getLength() <= $wgTmhPriorityLengthThreshold );
+			$prioritized = self::isTranscodePrioritized( $file, $transcodeKey );
 
 			$job = new WebVideoTranscodeJob( $file->getTitle(), [
 				'transcodeMode' => 'derivative',
@@ -1225,6 +1217,44 @@ class WebVideoTranscode {
 					[ 'LIMIT' => 1 ]
 				);
 			}
+		}
+	}
+
+	/**
+	 * Check if this transcode belongs to the high-priority queue.
+	 * @param $file File
+	 * @param $transcodeKey string
+	 * @return boolean
+	 */
+	public static function isTranscodePrioritized( File $file, $transcodeKey ) {
+		global $wgTmhPriorityResolutionThreshold, $wgTmhPriorityLengthThreshold;
+
+		$transcodeHeight = 0;
+		$matches = [];
+		if ( preg_match( '/^(\d+)p/', $transcodeKey, $matches ) ) {
+			$transcodeHeight = intval( $matches[0] );
+		}
+		return ( $transcodeHeight <= $wgTmhPriorityResolutionThreshold )
+			&& ( $file->getLength() <= $wgTmhPriorityLengthThreshold );
+	}
+
+	/**
+	 * Return job queue length for the queue that will run this transcode.
+	 * @param $file File
+	 * @param $transcodeKey string
+	 * @return int
+	 */
+	public static function getQueueSize( File $file, $transcodeKey ) {
+		if ( WebVideoTranscode::isTranscodePrioritized( $file, $transcodeKey ) ) {
+			$queue = 'webVideoTranscodePrioritized';
+		} else {
+			$queue = 'webVideoTranscode';
+		}
+		$sizes = JobQueueGroup::singleton()->getQueueSizes();
+		if ( isset( $sizes[$queue] ) ) {
+			return $sizes[$queue];
+		} else {
+			return 0;
 		}
 	}
 
