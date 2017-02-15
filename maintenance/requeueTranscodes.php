@@ -20,13 +20,26 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "missing", "queue formats that were never started",
 			false, false );
 		$this->addOption( "all", "re-queue all output formats", false, false );
+		$this->addOption( "audio", "process audio files (defaults to all media types)", false, false );
+		$this->addOption( "video", "process video files (defaults to all media types)", false, false );
 		$this->mDescription = "re-queue existing and missing media transcodes.";
 	}
 
 	public function execute() {
 		$this->output( "Cleanup transcodes:\n" );
 		$dbr = wfGetDB( DB_SLAVE );
-		$where = [ 'img_media_type' => [ 'AUDIO', 'VIDEO' ] ];
+		$types = [];
+		if ( $this->hasOption( 'audio' ) ) {
+			$types[] = 'AUDIO';
+		}
+		if ( $this->hasOption( 'video' ) ) {
+			$types[] = 'VIDEO';
+		}
+		if ( !$types ) {
+			// Default to all if none specified
+			$types = [ 'AUDIO', 'VIDEO' ];
+		}
+		$where = [ 'img_media_type' => $types ];
 		if ( $this->hasOption( 'file' ) ) {
 			$title = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
 			if ( !$title ) {
