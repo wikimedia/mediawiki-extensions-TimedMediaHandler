@@ -118,6 +118,7 @@
 	"right-transcode-reset": "Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre la actividad de transcodificación actual]]",
 	"action-transcode-status": "ver el estado de transcodificación actual",
+	"log-name-timedmediahandler": "Registro de TimedMediaHandler (Controlador Multimedia Temporizado)",
 	"orphanedtimedtext": "Páginas TimedText huérfanas",
 	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que no tienen un archivo correspondiente.",
 	"orphanedtimedtext-unsupported": "Esta página especial sólo está soportada en base de datos MySQL.",

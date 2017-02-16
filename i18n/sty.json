@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Khanmarat"
+		]
+	},
+	"timedmedia-source-file": "$1 аҡма",
+	"timedmedia-source-audio-file-desc": "Оригиналь $1-файл ($2)"
+}

@@ -23,7 +23,8 @@
 			"Framafan",
 			"Wladek92",
 			"Derugon",
-			"The RedBurn"
+			"The RedBurn",
+			"Dgstranz"
 		]
 	},
 	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec le support des formats WebM, Ogg Theora, Vorbis et srt",
@@ -158,7 +159,7 @@
 	"right-transcode-status": "Afficher [[Special:TimedMediaHandler|l'information sur l'activité de transcodage actuelle]]",
 	"action-transcode-reset": "réinitialiser le transcodage",
 	"action-transcode-status": "afficher l’état de transcodage actuel",
-	"log-name-timedmediahandler": "Journal du gestionnaire des médias tempporisés (TimedMediaHandler)",
+	"log-name-timedmediahandler": "Journal du gestionnaire des médias temporisés (TimedMediaHandler)",
 	"log-description-timedmediahandler": "C'est un journal des actions concernant les transcodages temporisés de médias.",
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|a modifié}} un transcodage de $3 en format \"$4\"",
 	"orphanedtimedtext": "Pages orphelines de TimedText",
