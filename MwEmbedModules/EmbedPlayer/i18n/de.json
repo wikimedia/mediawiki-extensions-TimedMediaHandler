@@ -3,7 +3,8 @@
 		"authors": [
 			"Kghbln",
 			"Metalhead64",
-			"Purodha"
+			"Purodha",
+			"Umherirrender"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titel: $1",
@@ -37,7 +38,7 @@
 	"mwe-embedplayer-share": "Teilen",
 	"mwe-embedplayer-credits": "Urheberschaft",
 	"mwe-embedplayer-about-library": "Über den Kaltura-Player",
-	"mwe-embedplayer-about-library-desc": "Kalturas HTML5-Medienbibliothek ermöglicht es die Vorteile der beiden HTML5-Tags <code><nowiki><video></nowiki></code> und  <code><nowiki><audio></nowiki></code> mit einem einheitlichen Player-Interface bei allen führenden Webbrowsern nutzen zu können.\n\n[$1 Weitere Informationen zu Kalturas HTML5-Medienbibliothek].",
+	"mwe-embedplayer-about-library-desc": "Kalturas HTML5-Medienbibliothek ermöglicht es die Vorteile der beiden HTML5-Tags <code><nowiki><video></nowiki></code> und <code><nowiki><audio></nowiki></code> mit einem einheitlichen Player-Interface bei allen führenden Webbrowsern nutzen zu können.\n\n[$1 Weitere Informationen zu Kalturas HTML5-Medienbibliothek].",
 	"mwe-embedplayer-clip_linkback": "Clip-Quellseite",
 	"mwe-embedplayer-choose_player": "Videoplayer auswählen",
 	"mwe-embedplayer-no-player": "Es ist für $1 kein Player verfügbar",

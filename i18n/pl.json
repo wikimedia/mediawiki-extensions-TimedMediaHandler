@@ -57,6 +57,7 @@
 	"timedmedia-minutes": "$1 {{PLURAL:$1|minuta|minuty|minut}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|sekunda|sekundy|sekund}}",
 	"timedmedia-reset": "Resetuj konwersję",
+	"timedmedia-reset-areyousure": "Czy na pewno chcesz kontynuować?",
 	"timedmedia-reset-button-cancel": "Nie resetuj",
 	"timedmedia-reset-button-dismiss": "Zamknij",
 	"timedmedia-reset-button-reset": "Zresetuj",

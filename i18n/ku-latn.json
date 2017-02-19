@@ -11,6 +11,6 @@
 	"timedmedia-download": "Dosyeyê daxe",
 	"timedmedia-desc-link": "Di derbarê vê dosyeyê de",
 	"timedmedia-days": "{{PLURAL:$1|rojek|$1 roj}}",
-	"timedmedia-source-file": "çavkanî $1",
+	"timedmedia-source-file": "$1 çavkanî",
 	"timedmedia-source-audio-file-desc": "Dosyeye orijînal a $1 ($2)"
 }
