@@ -550,4 +550,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	public static function resetSerialForTest() {
 		self::$serial = 1;
 	}
+
+	/**
+	 * @return array
+	 */
+	public function getAPIData() {
+		return [ 'derivatives' => WebVideoTranscode::getSources( $this->file, [ 'fullurl' ] ) ];
+	}
 }
