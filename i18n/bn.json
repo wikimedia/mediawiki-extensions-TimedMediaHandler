@@ -4,7 +4,8 @@
 			"Bellayet",
 			"Zaheen",
 			"Aftab1995",
-			"Aftabuzzaman"
+			"Aftabuzzaman",
+			"Elias Ahmmad"
 		]
 	},
 	"timedmedia-ogg-short-audio": "অগ $1 শব্দ ফাইল, $2",
@@ -73,7 +74,7 @@
 	"timedmedia-no-derivatives": "কোন ট্রান্সকোডের প্রয়োজন নেই।",
 	"timedmedia-file": "ফাইল",
 	"timedmedia-audios": "{{PLURAL:$1|$1টি অডিও ফাইল}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1টি অগ অডিও ফাইল}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1টি Ogg অডিও ফাইল}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1টি FLAC অডিও ফাইল}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1টি WAV অডিও ফাইল}}",
 	"action-transcode-status": "বর্তমান ট্রান্সকোডিংয়ের অবস্থা দেখুন",
