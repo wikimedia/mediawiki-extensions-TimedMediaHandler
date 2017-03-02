@@ -36,9 +36,10 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
 				$handler = new TextHandler( $file );
 				$vals['timedtext'] = $handler->getTracks();
-				foreach ( $vals['timedtext'] as $track ) {
+				foreach ( $vals['timedtext'] as &$track ) {
 					$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
 				}
+				unset( $track );
 				$result->setIndexedTagName( $vals['timedtext'], "timedtext" );
 			} else {
 				// Non-TMH file, no timedtext.

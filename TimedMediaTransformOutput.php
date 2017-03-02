@@ -555,6 +555,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return array
 	 */
 	public function getAPIData() {
-		return [ 'derivatives' => WebVideoTranscode::getSources( $this->file, [ 'fullurl' ] ) ];
+		$vals = [
+			'derivatives' => WebVideoTranscode::getSources( $this->file, [ 'fullurl' ] ),
+			'timedtext' => $this->getTextHandler()->getTracks(),
+		];
+		foreach ( $vals['timedtext'] as &$track ) {
+			$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
+		}
+		unset( $track );
+		return $vals;
 	}
 }
