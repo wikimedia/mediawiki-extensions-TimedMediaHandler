@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Danmichaelo",
-			"Nghtwlkr"
+			"Nghtwlkr",
+			"Jon Harald Søby"
 		]
 	},
 	"mwe-timedtext-back-btn": "Tilbake",
@@ -18,6 +19,8 @@
 	"mwe-timedtext-textcat-meta": "Tidsbestemt metadata",
 	"mwe-timedtext-textcat-trx": "Transkripsjon",
 	"mwe-timedtext-textcat-lrc": "Tekster",
+	"mwe-timedtext-textcat-lin": "Språklig markering",
+	"mwe-timedtext-textcat-cue": "Referansepunkter",
 	"mwe-timedtext-no-subs": "Ingen tekstspor finnes",
 	"mwe-timedtext-language-subtitles-for-clip": "Undertekster på $1 for klippet: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Ingen undertekster på $1 ble funnet for klippet: $2",
