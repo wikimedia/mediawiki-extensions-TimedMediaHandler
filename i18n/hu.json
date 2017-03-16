@@ -21,7 +21,6 @@
 	"timedmedia-ogg-long-error": "Érvénytelen ogg fájl: $1",
 	"timedmedia-webm-short-video": "WebM $1 videofájl, $2",
 	"timedmedia-webm-long-video": "WebM audió-/videófájl, $1, $2 hosszú, $4 × $5 képpont, átlagosan $3",
-	"timedmedia-no-player-js": "Sajnáljuk, a böngésződben vagy le van tiltva a JavaScript, vagy nincs egyetlen támogatott lejátszója sem.<br />\n<a href=\"$1\">Letöltheted a klipet</a>, vagy <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">letölthetsz egy lejátszót</a> a böngészőben való megtekintéshez.",
 	"timedmedia-more": "Tovább...",
 	"timedmedia-dismiss": "Bezárás",
 	"timedmedia-download": "Fájl letöltése",
@@ -33,8 +32,8 @@
 	"timedmedia-source-file-desc": "Eredeti $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Eredeti $1 fájl ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Alacsony sávszélességű Ogg videó (160P)",
-	"timedmedia-derivative-desc-720p.ogv": "Magas minőségű, letölthető Ogg videó (720P)",
-	"timedmedia-derivative-desc-720p.webm": "Magas minőségű, letölthető WebM (720P)",
+	"timedmedia-derivative-desc-720p.ogv": "HD Ogg videó (720P)",
+	"timedmedia-derivative-desc-720p.webm": "HD WebM (720P)",
 	"timedmedia-subtitle-language": "$1 ($2) feliratok",
 	"right-transcode-status": "[[Special:TimedMediaHandler|a legutóbbi átkódolási események információinak]] megtekintése",
 	"orphanedtimedtext": "Árva TimedText lapok"
