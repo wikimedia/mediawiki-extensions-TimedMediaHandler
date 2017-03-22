@@ -129,7 +129,11 @@
 	"beta-feature-timedmediahandler-description-videojs": "Reprodutor de son/vídeo con aspecto actualizado e compatibilidade móbil.",
 	"right-transcode-reset": "Restablecer os vídeos transcodificados erroneamente para incluílos de novo na cola de traballo.",
 	"right-transcode-status": "Ollar a [[Special:TimedMediaHandler|información sobre a actividade de transcodificación actual]]",
+	"action-transcode-reset": "reinicializar a transcodificación",
 	"action-transcode-status": "ollar o estado da transcodificación actual",
+	"log-name-timedmediahandler": "Rexistro de TimedMediaHandler (Controlador Multimedia Temporizado)",
+	"log-description-timedmediahandler": "Este é un rexistro de accións asociadas a transcodificacións temporizadas de ficheiros multimedia.",
+	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|inicializou}} unha transcodificación de $3 en formato \"$4\"",
 	"orphanedtimedtext": "Páxinas orfas de TimedText",
 	"orphanedtimedtext-summary": "Lista de páxinas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que non teñen un ficheiro correspondente.",
 	"orphanedtimedtext-unsupported": "Esta páxina especial só está soportada en bases de datos MySQL.",
@@ -144,5 +148,9 @@
 	"apihelp-transcodereset-param-title": "Título do ficheiro multimedia.",
 	"apihelp-transcodereset-param-transcodekey": "A chave transcode que quere resetear. Collida de [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Resetear todos os transcodes para [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "Resetear a clave transcode '360_560kbs.webm' de [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "Resetear a clave transcode '360_560kbs.webm' de [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "A transcodificación está desactivada neste wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 non é transcodificable.",
+	"apierror-timedmedia-badtranscodekey": "Clave de transcodificación incorrecta ou inactivaː $1",
+	"apierror-timedmedia-notenoughtimereset": "Non pasou tempo abondo dende a última reinicialización desta transcodificación. Falta $1 ata que a transcodificación poida ser reinicializada."
 }
