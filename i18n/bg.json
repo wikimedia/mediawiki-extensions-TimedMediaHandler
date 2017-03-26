@@ -5,7 +5,8 @@
 			"DCLXVI",
 			"Spiritia",
 			"StanProg",
-			"Лорд Бъмбъри"
+			"Лорд Бъмбъри",
+			"Termininja"
 		]
 	},
 	"timedmediahandler-desc": "Приложение за файлове тип Ogg Theora и Vorbis, с плейър на JavaScript",
@@ -21,5 +22,8 @@
 	"timedmedia-desc-link": "Информация за файла",
 	"timedmedia-percent-done": "Около $1% завършени",
 	"timedmedia-source-file": "Източник на $1",
-	"timedmedia-source-audio-file-desc": "Оригинален $1-файл ($2)"
+	"timedmedia-source-audio-file-desc": "Оригинален $1-файл ($2)",
+	"timedmediahandler": "Аудио и видео файлове",
+	"log-name-timedmediahandler": "Дневник на timed media transcodes",
+	"log-description-timedmediahandler": "Това е дневник на действия, свързани с timed media transcodes."
 }
