@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Benoit Rochon"
+			"Benoit Rochon",
+			"Jeannette Coocoo"
 		]
 	},
+	"timedmedia-source-file": "$1 otcimikan",
 	"timedmedia-source-audio-file-desc": "Nictam $1 masinahikaniwoc ($2)"
 }
