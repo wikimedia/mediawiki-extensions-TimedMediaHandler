@@ -558,6 +558,9 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			$cmd .= " -vcodec libvpx";
+			if ( isset( $options['slices'] ) ) {
+				$cmd .= ' -slices ' . wfEscapeShellArg( $options['slices'] );
+			}
 		}
 
 		// Check for keyframeInterval
