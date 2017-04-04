@@ -351,8 +351,6 @@ class TimedMediaHandlerHooks {
 			$wgExcludeFromThumbnailPurge[] = 'log';
 		}
 
-		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::loadExtensionSchemaUpdates';
-
 		// Add unit tests
 		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 		$wgHooks['ParserTestTables'][] = 'TimedMediaHandlerHooks::onParserTestTables';
@@ -652,16 +650,6 @@ class TimedMediaHandlerHooks {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
 		}
-		return true;
-	}
-
-	/**
-	 * Adds the transcode sql
-	 * @param $updater DatabaseUpdater
-	 * @return bool
-	 */
-	public static function loadExtensionSchemaUpdates( $updater ) {
-		$updater->addExtensionTable( 'transcode', __DIR__ . '/TimedMediaHandler.sql' );
 		return true;
 	}
 
