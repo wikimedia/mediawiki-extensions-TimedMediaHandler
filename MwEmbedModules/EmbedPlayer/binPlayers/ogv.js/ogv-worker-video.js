@@ -110,7 +110,8 @@
 		var self = this;
 		self.target = null;
 
-		var sentProps = {};
+		var sentProps = {},
+			pendingEvents = [];
 
 		function copyObject(obj) {
 			var copy = {};
@@ -135,28 +136,59 @@
 			}
 		}
 
-		function copyByteArray(bytes) {
-			var heap = bytes.buffer;
-			if (typeof heap.slice === 'function') {
-				var extract = heap.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
-				return new Uint8Array(extract);
-			} else {
-				// Hella slow in IE 10/11!
-				// But only game in town on IE 10.
-				return new Uint8Array(bytes);
-			}
-		}
+		function handleEvent(data) {
+			handlers[data.action].call(self, data.args, function(args) {
+				args = args || [];
 
-		function copyFrameBuffer(buffer) {
-			if (buffer == null) {
-				return null;
-			} else {
-				var copy = copyObject(buffer);
-				copy.y.bytes = copyByteArray(buffer.y.bytes);
-				copy.u.bytes = copyByteArray(buffer.u.bytes);
-				copy.v.bytes = copyByteArray(buffer.v.bytes);
-				return copy;
-			}
+				// Collect and send any changed properties...
+				var props = {},
+					transfers = [];
+				propList.forEach(function(propName) {
+					var propVal = self.target[propName];
+
+					if (sentProps[propName] !== propVal) {
+						// Save this value for later reference...
+						sentProps[propName] = propVal;
+
+						if (propName == 'duration' && isNaN(propVal) && isNaN(sentProps[propName])) {
+							// NaN is not === itself. Nice!
+							// no need to update it here.
+						} else if (propName == 'audioBuffer') {
+							// Don't send the entire emscripten heap!
+							propVal = copyAudioBuffer(propVal);
+							props[propName] = propVal;
+							if (propVal) {
+								for (var i = 0; i < propVal.length; i++) {
+									transfers.push(propVal[i].buffer);
+								}
+							}
+						} else if (propName == 'frameBuffer') {
+							// We already extract ahead of time now,
+							// so transfer the small buffers.
+							props[propName] = propVal;
+							if (propVal) {
+								transfers.push(propVal.y.bytes.buffer);
+								transfers.push(propVal.u.bytes.buffer);
+								transfers.push(propVal.v.bytes.buffer);
+							}
+						} else {
+							props[propName] = propVal;
+						}
+					}
+				});
+
+				var out = {
+					action: 'callback',
+					callbackId: data.callbackId,
+					args: args,
+					props: props
+				};
+				if (transferables) {
+					postMessage(out, transfers);
+				} else {
+					postMessage(out);
+				}
+			});
 		}
 
 		handlers.construct = function(args, callback) {
@@ -166,74 +198,31 @@
 			OGVLoader.loadClass(className, function(classObj) {
 				self.target = new classObj(options);
 				callback();
+				while (pendingEvents.length) {
+					handleEvent(pendingEvents.shift());
+				}
 			});
 		};
 
 		addEventListener('message', function workerOnMessage(event) {
 			var data = event.data;
-
-			if (data && data.action == 'transferTest') {
-				// ignore
+			if (!data || typeof data !== 'object') {
+				// invalid
 				return;
-			}
-
-			if (typeof data !== 'object' || typeof data.action !== 'string' || typeof data.callbackId !== 'string' || typeof data.args !== 'object') {
+			} else if (data.action == 'transferTest') {
+				// ignore
+			} else if (typeof data.action !== 'string' || typeof data.callbackId !== 'string' || typeof data.args !== 'object') {
 				console.log('invalid message data', data);
 			} else if (!(data.action in handlers)) {
 				console.log('invalid message action', data.action);
+			} else if (data.action == 'construct') {
+				// always handle constructor
+				handleEvent(data);
+			} else if (!self.target) {
+				// queue until constructed
+				pendingEvents.push(data);
 			} else {
-				handlers[data.action].call(self, data.args, function(args) {
-					args = args || [];
-
-					// Collect and send any changed properties...
-					var props = {},
-						transfers = [];
-					propList.forEach(function(propName) {
-						var propVal = self.target[propName];
-
-						if (sentProps[propName] !== propVal) {
-							// Save this value for later reference...
-							sentProps[propName] = propVal;
-
-							if (propName == 'duration' && isNaN(propVal) && isNaN(sentProps[propName])) {
-								// NaN is not === itself. Nice!
-								// no need to update it here.
-							} else if (propName == 'audioBuffer') {
-								// Don't send the entire emscripten heap!
-								propVal = copyAudioBuffer(propVal);
-								props[propName] = propVal;
-								if (propVal) {
-									for (var i = 0; i < propVal.length; i++) {
-										transfers.push(propVal[i].buffer);
-									}
-								}
-							} else if (propName == 'frameBuffer') {
-								// Don't send the entire emscripten heap!
-								propVal = copyFrameBuffer(propVal);
-								props[propName] = propVal;
-								if (propVal) {
-									transfers.push(propVal.y.bytes.buffer);
-									transfers.push(propVal.u.bytes.buffer);
-									transfers.push(propVal.v.bytes.buffer);
-								}
-							} else {
-								props[propName] = propVal;
-							}
-						}
-					});
-
-					var out = {
-						action: 'callback',
-						callbackId: data.callbackId,
-						args: args,
-						props: props
-					};
-					if (transferables) {
-						postMessage(out, transfers);
-					} else {
-						postMessage(out);
-					}
-				});
+				handleEvent(data);
 			}
 		});
 
@@ -246,26 +235,42 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.3.0-20170208200618-aa493c31");
+	var OGVVersion = ("1.4.1-20170407171329-c48dd8c2");
 
 	(function() {
 		var global = this;
 
 		var scriptMap = {
 			OGVDemuxerOgg: 'ogv-demuxer-ogg.js',
+			OGVDemuxerOggW: 'ogv-demuxer-ogg-wasm.js',
 			OGVDemuxerWebM: 'ogv-demuxer-webm.js',
+			OGVDemuxerWebMW: 'ogv-demuxer-webm-wasm.js',
 			OGVDecoderAudioOpus: 'ogv-decoder-audio-opus.js',
+			OGVDecoderAudioOpusW: 'ogv-decoder-audio-opus-wasm.js',
 			OGVDecoderAudioVorbis: 'ogv-decoder-audio-vorbis.js',
+			OGVDecoderAudioVorbisW: 'ogv-decoder-audio-vorbis-wasm.js',
 			OGVDecoderVideoTheora: 'ogv-decoder-video-theora.js',
-			OGVDecoderVideoVP8: 'ogv-decoder-video-vp8.js'
+			OGVDecoderVideoTheoraW: 'ogv-decoder-video-theora-wasm.js',
+			OGVDecoderVideoVP8: 'ogv-decoder-video-vp8.js',
+			OGVDecoderVideoVP8W: 'ogv-decoder-video-vp8-wasm.js',
+			OGVDecoderVideoVP8MT: 'ogv-decoder-video-vp8-mt.js',
+			OGVDecoderVideoVP9: 'ogv-decoder-video-vp9.js',
+			OGVDecoderVideoVP9W: 'ogv-decoder-video-vp9-wasm.js',
+			OGVDecoderVideoVP9MT: 'ogv-decoder-video-vp9-mt.js'
 		};
 
 	  // @fixme make this less awful
 		var proxyTypes = {
 			OGVDecoderAudioOpus: 'audio',
+			OGVDecoderAudioOpusW: 'audio',
 			OGVDecoderAudioVorbis: 'audio',
+			OGVDecoderAudioVorbisW: 'audio',
 			OGVDecoderVideoTheora: 'video',
-			OGVDecoderVideoVP8: 'video'
+			OGVDecoderVideoTheoraW: 'video',
+			OGVDecoderVideoVP8: 'video',
+			OGVDecoderVideoVP8W: 'video',
+			OGVDecoderVideoVP9: 'video',
+			OGVDecoderVideoVP9W: 'video'
 		};
 		var proxyInfo = {
 			audio: {
@@ -290,7 +295,9 @@
 		function urlForScript(scriptName) {
 			if (scriptName) {
 				var base = OGVLoader.base;
-				if (base) {
+				if (base === undefined) {
+					base = '';
+				} else {
 					base += '/';
 				}
 				return base + scriptName + '?version=' + encodeURIComponent(OGVVersion);
@@ -327,12 +334,30 @@
 			}
 		}
 
+		function loadWebAssembly(src, callback) {
+			if (!src.match(/-wasm\.js/)) {
+				callback(null);
+			} else {
+				var wasmSrc = src.replace(/-wasm\.js/, '-wasm.wasm');
+				var xhr = new XMLHttpRequest();
+				xhr.responseType = 'arraybuffer';
+				xhr.onload = function() {
+					callback(xhr.response);
+				};
+				xhr.onerror = function() {
+					callback(null);
+				};
+				xhr.open('GET', wasmSrc);
+				xhr.send();
+			}
+		}
+
 		function defaultBase() {
 			if (typeof global.window === 'object') {
 
 				// for browser, try to autodetect
 				var scriptNodes = document.querySelectorAll('script'),
-					regex = /^(?:(.*)\/)ogv(?:-support)?\.js(?:\?|#|$)/,
+					regex = /^(?:|(.*)\/)ogv(?:-support)?\.js(?:\?|#|$)/,
 					path,
 					matches;
 				for (var i = 0; i < scriptNodes.length; i++) {
@@ -345,11 +370,13 @@
 					}
 				}
 
+				return undefined; // current dir
+
 			} else {
 
 				// for workers, assume current directory
 				// if not a worker, too bad.
-				return '';
+				return undefined;
 
 			}
 		}
@@ -361,18 +388,30 @@
 				options = options || {};
 				if (options.worker) {
 					this.workerProxy(className, callback);
-				} else if (typeof global[className] === 'function') {
-					// already loaded!
-					callback(global[className]);
-				} else if (typeof global.window === 'object') {
-					loadWebScript(urlForClass(className), function() {
-						callback(global[className]);
-					});
-				} else if (typeof global.importScripts === 'function') {
-					// worker has convenient sync importScripts
-					global.importScripts(urlForClass(className));
-					callback(global[className]);
+					return;
 				}
+				var url = urlForClass(className);
+				loadWebAssembly(url, function(wasmBinary) {
+					function wasmClassWrapper(options) {
+						options = options || {};
+						if (wasmBinary !== null) {
+							options.wasmBinary = wasmBinary;
+						}
+						return new global[className](options);
+					}
+					if (typeof global[className] === 'function') {
+						// already loaded!
+						callback(wasmClassWrapper);
+					} else if (typeof global.window === 'object') {
+						loadWebScript(url, function() {
+							callback(wasmClassWrapper);
+						});
+					} else if (typeof global.importScripts === 'function') {
+						// worker has convenient sync importScripts
+						global.importScripts(url);
+						callback(wasmClassWrapper);
+					}
+				});
 			},
 
 			workerProxy: function(className, callback) {
