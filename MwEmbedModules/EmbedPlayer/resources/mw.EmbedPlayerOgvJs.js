@@ -178,14 +178,15 @@ mw.EmbedPlayerOgvJs = {
 		var _this = this;
 		var src = source.getSrc();
 		var vid = this.getPlayerElement();
-		if ( typeof vid.stop !== 'undefined' ) {
-			vid.stop();
+
+		vid.src = source.src;
+		if ( switchCallback ) {
+			switchCallback();
 		}
 
-		switchCallback();
-
-		// Currently have to tear down the player and make a new one
-		this.embedPlayerHTML( doneCallback );
+		if ( doneCallback ) {
+			doneCallback();
+		}
 	},
 
 	/**
