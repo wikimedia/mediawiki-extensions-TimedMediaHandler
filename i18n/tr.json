@@ -10,7 +10,8 @@
 			"Sayginer",
 			"Stultiwikia",
 			"Mavrikant",
-			"HakanIST"
+			"HakanIST",
+			"Vito Genovese"
 		]
 	},
 	"timedmediahandler-desc": "Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği",
@@ -31,7 +32,6 @@
 	"timedmedia-wav-pcm-required": "Yalnızca PCM (Darbeli Kod Modülasyonu) WAV yükleyebilirsiniz.",
 	"timedmedia-mp4-short-video": "MP4 $1 video dosyası, $2",
 	"timedmedia-mp4-long-video": "MP4 ses/video dosyası, $1, süre $2, $4 × $5 piksel, $3 tümü",
-	"timedmedia-no-player-js": "Üzgünüz, tarayıcınızda JavaScript devredışı veya yüklü bir oynatıcı yok.<br />\nİsterseniz <a href=\"$1\">klibi indirebilir</a> veya tarayıcınız için <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">oynatıcıyı buradan indirebilirsiniz</a>.",
 	"timedmedia-more": "Daha...",
 	"timedmedia-dismiss": "Kapat",
 	"timedmedia-download": "Dosya indir",
@@ -80,6 +80,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ses dosyası|$1 Ogg ses dosyası}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ses dosyası|$1 FLAC ses dosyası}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}",
+	"log-name-timedmediahandler": "TimedMediaHandler günlüğü",
 	"orphanedtimedtext": "Orphaned Zamanlamalı İçerik sayfaları",
 	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sayfaları listesinde herhangi bir içerik bulunmuyor."
 }
