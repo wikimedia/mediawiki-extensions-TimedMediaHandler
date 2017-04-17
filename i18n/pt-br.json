@@ -7,10 +7,11 @@
 			"Opraco",
 			"Guilhermemau",
 			"Fasouzafreitas",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Felipe L. Ewald"
 		]
 	},
-	"timedmediahandler-desc": "Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript",
+	"timedmediahandler-desc": "Handler para áudio, vídeo e texto temporizado, com suporte a formato para WebM, Ogg Theora, Vorbis e srt",
 	"timedmedia-ogg-short-audio": "Arquivo de áudio Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Arquivo de vídeo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Arquivo multimídia Ogg $1, $2",
@@ -19,7 +20,6 @@
 	"timedmedia-ogg-long-multiplexed": "áudio/vídeo Ogg multifacetado, $1, com $2 de duração e $4 × $5 pixels, a $3 no todo",
 	"timedmedia-ogg-long-general": "multimídia Ogg com $2 de duração, a $3",
 	"timedmedia-ogg-long-error": "Arquivo ogg inválido: $1",
-	"timedmedia-no-player-js": "Desculpe, seu navegador ou está com JavaScript desabilitado ou não tem nenhum \"player\" suportado.<br />\nVocê pode <a href=\"$1\">descarregar o clipe</a> ou <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">descarregar um \"player\"</a> para executar o clipe em seu navegador.",
 	"timedmedia-more": "Mais...",
 	"timedmedia-dismiss": "Fechar",
 	"timedmedia-download": "Descarregar arquivo",
@@ -27,6 +27,7 @@
 	"timedmedia-oggThumb-version": "O oggHandler requer o oggThumb versão $1 ou posterior.",
 	"timedmedia-oggThumb-failed": "O oggThumb não conseguiu criar a miniatura.",
 	"timedmedia-actions": "Ações",
+	"timedmedia-error-on": "Erro em $1",
 	"timedmedia-days": "{{PLURAL:$1|1 dia|$1 dias}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 hora|$1 horas}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minutos}}",
@@ -41,6 +42,13 @@
 	"timedmedia-source-audio-file-desc": "Arquivo $1 original ($2)",
 	"timedmedia-derivative-desc-1080p.webm": "WebM para download de Full HD (1080p)",
 	"timedmedia-derivative-desc-1080p.mp4": "Qualidade total do HD MP4 (1080 P)",
+	"timedmedia-resolution-360": "SD 360p",
+	"timedmedia-resolution-480": "SD 480p",
+	"timedmedia-resolution-720": "HD 720p",
+	"timedmedia-resolution-1080": "HD 1080p",
+	"timedmedia-resolution-1440": "UHD 1440p",
+	"timedmedia-resolution-2160": "UHD 2160p",
+	"timedmedia-subtitle-new": "Criar nova tradução ou editar existente",
 	"timedmedia-subtitle-new-go": "Ir",
 	"timedmedia-file": "Arquivo"
 }
