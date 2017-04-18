@@ -4,12 +4,14 @@
 			"පසිඳු කාවින්ද",
 			"DCLXVI",
 			"Termininja",
-			"Vodnokon4e"
+			"Vodnokon4e",
+			"StanProg"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Заглавие: $1",
 	"mwe-embedplayer-credit-date": "Дата: $1",
 	"mwe-embedplayer-credit-author": "Автор: $1",
+	"mwe-embedplayer-share": "Споделяне",
 	"mwe-embedplayer-share_this_video": "Сподели видеозаписа",
 	"mwe-embedplayer-share_this_audio": "Сподели аудиофайла",
 	"mwe-embedplayer-menu_btn": "Меню",
