@@ -207,7 +207,7 @@ class TimedMediaHandlerHooks {
 	public static function register() {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
 		$wgResourceModules, $wgExcludeFromThumbnailPurge,
-		$wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
+		$wgFileExtensions, $wgTmhEnableMp3Uploads, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
 		$wgTmhTheoraTwoPassEncoding, $wgWikimediaJenkinsCI;
 
@@ -216,6 +216,14 @@ class TimedMediaHandlerHooks {
 			global $wgEnableTranscode, $wgFFmpegLocation;
 			$wgEnableTranscode = false;
 			$wgFFmpegLocation = '/usr/bin/ffmpeg';
+		}
+
+		// Remove mp3 if not enabled:
+		if ( $wgTmhEnableMp3Uploads === false ) {
+			$index = array_search( 'mp3', $wgFileExtensions );
+			if ( $index !== false ) {
+				array_splice( $wgFileExtensions, $index, 1 );
+			}
 		}
 
 		// Remove mp4 if not enabled:
@@ -258,6 +266,7 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['audio/x-flac'] = 'FLACHandler';
 		$wgMediaHandlers['audio/flac'] = 'FLACHandler';
 		$wgMediaHandlers['audio/wav'] = 'WAVHandler';
+		$wgMediaHandlers['audio/mpeg'] = 'Mp3Handler';
 
 		// Add transcode job class:
 		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';

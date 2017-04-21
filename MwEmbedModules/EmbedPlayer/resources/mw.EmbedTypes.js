@@ -137,21 +137,6 @@ mw.EmbedTypes = {
 		return this.mediaPlayers;
 	},
 
-	/**
-	 * If the browsers supports a given mimetype
-	 *
-	 * @param {String}
-	 *      mimeType Mime type for browser plug-in check
-	 */
-	supportedMimeType: function( mimeType ) {
-		for ( var i =0; i < navigator.plugins.length; i++ ) {
-			var plugin = navigator.plugins[i];
-			if ( typeof plugin[ mimeType ] != "undefined" ){
-				return true;
-			}
-		}
-		return false;
-	},
 	addFlashPlayer: function(){
 		if( !mw.config.get( 'EmbedPlayer.DisableHTML5FlashFallback' ) ){
 			this.mediaPlayers.addPlayer( kplayer );
@@ -208,7 +193,7 @@ mw.EmbedTypes = {
 					}
 
 					// Test for MP3:
-					if ( this.supportedMimeType('audio/mpeg') ) {
+					if ( dummyvid.canPlayType('audio/mpeg') ) {
 							this.mediaPlayers.addPlayer( mp3NativePlayer );
 					}
 

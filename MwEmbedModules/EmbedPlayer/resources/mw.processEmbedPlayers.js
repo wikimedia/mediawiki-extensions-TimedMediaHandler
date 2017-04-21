@@ -151,6 +151,7 @@ mw.processEmbedPlayers = function( playerSet, callback ) {
 		}
 		// If we don't have a native player don't wait for metadata
 		if( !mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'oggNative') &&
+			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'mp3Native') &&
 			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'webmNative') &&
 			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'h264Native' ) &&
 			!mw.EmbedTypes.getMediaPlayers().isSupportedPlayer( 'appleVdnPlayer' ) )
