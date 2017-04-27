@@ -12,11 +12,11 @@ page, or any wiki page while still using the same syntax as for images.
 To install this extension, add the following to the end of your
 LocalSettings.php:
 
-	// You need mwEmbedSupport ( if not already added )
-	require( "$IP/extensions/MwEmbedSupport/MwEmbedSupport.php" );
+  // You need mwEmbedSupport ( if not already added )
+  wfLoadExtension( 'MwEmbedSupport' );
 
-	// TimedMediaHandler
-    require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
+  // TimedMediaHandler
+  require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
 
 == Running Transcodes ==
