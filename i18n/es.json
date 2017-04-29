@@ -26,7 +26,7 @@
 	"timedmedia-ogg-short-audio": "Archivo de sonido Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Archivo de video Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Archivo Ogg $1, $2",
-	"timedmedia-ogg-long-audio": "Archivo de sonido Ogg $1, tamaño $2, $3",
+	"timedmedia-ogg-long-audio": "Archivo de sonido Ogg $1; duración de $2; $3",
 	"timedmedia-ogg-long-video": "Archivo de video Ogg $1, tamaño $2, $4×$5 píxeles, $3",
 	"timedmedia-ogg-long-multiplexed": "Archivo Ogg de audio/video multiplexado, $1, tamaño $2, $4×$5 píxeles, $3 en todo",
 	"timedmedia-ogg-long-general": "Archivo Ogg. tamaño $2, $3",
