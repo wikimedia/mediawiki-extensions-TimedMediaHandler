@@ -170,4 +170,20 @@ class WebMHandler extends ID3Handler {
 			)->text();
 	}
 
+	/**
+	* Get useful response headers for GET/HEAD requests for a file with the given metadata
+	* @param $metadata Array Contains this handler's unserialized getMetadata() for a file
+	* @return Array
+	*/
+	public function getContentHeaders( $metadata ) {
+		$dimensions = $this->getImageSize( null, null, $metadata );
+
+		if ( !$dimensions || !$dimensions[0] || !$dimensions[1] ) {
+			return [];
+		}
+
+		$dimensionsMetadata = [ 'width' => $dimensions[0], 'height' => $dimensions[1] ];
+
+		return parent::getContentHeaders( $dimensionsMetadata );
+	}
 }
