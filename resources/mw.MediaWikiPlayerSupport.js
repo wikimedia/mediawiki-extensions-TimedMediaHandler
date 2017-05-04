@@ -341,7 +341,7 @@
 				return;
 			}
 			// Load via api
-			apiUrl = mw.getApiProviderURL( source.mwprovider ),
+			apiUrl = mw.getApiProviderURL( source.mwprovider );
 			// Get the image page ( cache for 1 hour )
 			request = {
 				action: 'parse',

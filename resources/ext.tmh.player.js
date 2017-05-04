@@ -111,7 +111,6 @@
 			resolutions.sort( function ( a, b ) {
 				return a - b;
 			} );
-			defaultRes;
 			for ( i = 0, l = resolutions.length; i < l; i++ ) {
 				defaultRes = resolutions[ i ];
 				if ( defaultRes >= playerHeight ) {
