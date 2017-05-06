@@ -6,5 +6,11 @@
 		]
 	},
 	"mwe-timedtext-back-btn": "Atzera",
-	"mwe-timedtext-textcat-ktv": "Karaokea"
+	"mwe-timedtext-layout-off": "Ezkutatu azpitituluak",
+	"mwe-timedtext-loading-text": "Testua kargatzen...",
+	"mwe-timedtext-textcat-sub": "Azpitituluak",
+	"mwe-timedtext-textcat-ktv": "Karaokea",
+	"mwe-timedtext-textcat-trx": "Transkripzioa",
+	"mwe-timedtext-textcat-lrc": "Hitzak",
+	"mwe-timedtext-upload-timed-text": "Gehitu azpitituluak"
 }
