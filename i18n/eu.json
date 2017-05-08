@@ -15,7 +15,6 @@
 	"timedmedia-ogg-short-general": "Ogg $1 media fitxategia, $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 soinu fitxategia, $2 iraupea, $3",
 	"timedmedia-ogg-long-error": "ogg fitxategi okerra: $1",
-	"timedmedia-no-player-js": "Barka, zure nabigatzaileak JavaScript ezgaituta du ez media hau ikusteko tresnarik.<br />\n<a href=\"$1\">Klipa jaitsi</a> dezakezu edo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ikusteko tresna bat jaitsi</a> zure nabigatzailean jo ahal izateko.",
 	"timedmedia-more": "Gehiago...",
 	"timedmedia-dismiss": "Itxi",
 	"timedmedia-download": "Fitxategia jaitsi",
@@ -27,5 +26,12 @@
 	"timedmedia-source-file": "$1 iturri",
 	"timedmedia-source-audio-file-desc": "Jatorrizko $1 fitxategia ($2)",
 	"timedmedia-subtitle-new-go": "Joan",
-	"timedmedia-file": "Fitxategia"
+	"timedmedia-videos": "{{PLURAL:$1|Bideo $1|$1 bideo}}",
+	"timedmedia-ogg-videos": "{{PLURAL:$1|Ogg bideo $1|$1 Ogg bideo}}",
+	"timedmedia-webm-videos": "{{PLURAL:$1|WebM bideo $1|$1 WebM bideo}}",
+	"timedmedia-file": "Fitxategia",
+	"timedmedia-audios": "{{PLURAL:$1|Soinu-fitxategi $1|$1 soinu-fitxategi}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|Ogg soinu-fitxategi $1|$1 Ogg soinu-fitxategi}}",
+	"timedmedia-flac-audios": "{{PLURAL:$1|FLAC soinu-fitxategi $1|$1 FLAC soinu-fitxategi}}",
+	"timedmedia-wav-audios": "{{PLURAL:$1|WAV soinu-fitxategi $1|$1 WAW soinu-fitxategi}}"
 }

@@ -18,6 +18,7 @@
 	"timedmedia-ogg-long-multiplexed": "ऑग ध्वनी/चित्र फ़ाईल, $1, लंबाई $2, $4×$5 पिक्सेल्स, $3 कुल",
 	"timedmedia-ogg-long-general": "ऑग मीडिया फ़ाईल, लंबाई $2, $3",
 	"timedmedia-ogg-long-error": "गलत ऑग फ़ाईल: $1",
+	"timedmedia-webm-short-video": "WebM $1 वीडियो फ़ाइल, $2",
 	"timedmedia-wav-short-audio": "WAV ध्वनि फ़ाइल, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 वीडियो फ़ाइल, $2",
 	"timedmedia-more": "और...",
