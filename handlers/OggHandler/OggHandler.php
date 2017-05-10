@@ -176,15 +176,17 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $metadata
+	 * @param string $metadata
+	 * @param bool $unserialize
 	 * @return bool|mixed
 	 */
-	function unpackMetadata( $metadata ) {
-		wfSuppressWarnings();
-		$unser = unserialize( $metadata );
-		wfRestoreWarnings();
-		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
-			return $unser;
+	function unpackMetadata( $metadata, $unserialize = true ) {
+		if ( $unserialize ) {
+			$metadata = MediaWiki\quietCall( 'unserialize', $metadata );
+		}
+
+		if ( isset( $metadata['version'] ) && $metadata['version'] == self::METADATA_VERSION ) {
+			return $metadata;
 		} else {
 			return false;
 		}
@@ -254,15 +256,28 @@ class OggHandlerTMH extends TimedMediaHandler {
 
 	/**
 	* Get useful response headers for GET/HEAD requests for a file with the given metadata
-	* @param $metadata mixed Result this handlers getMetadata() for a file
+	* @param $metadata Array Contains this handler's unserialized getMetadata() for a file
 	* @return Array
 	*/
-	public function getStreamHeaders( $metadata ) {
-		$metadata = $this->unpackMetadata( $metadata );
+	public function getContentHeaders( $metadata ) {
+		$packedMetadata = $metadata;
+		$result = [];
+		$metadata = $this->unpackMetadata( $metadata, false );
+
 		if ( $metadata && !isset( $metadata['error'] ) && isset( $metadata['length'] ) ) {
-			return [ 'X-Content-Duration' => floatval( $metadata[ 'length' ] ) ];
+			$result = [ 'X-Content-Duration' => floatval( $metadata[ 'length' ] ) ];
 		}
-		return [];
+
+		$dimensions = $this->getImageSize( null, null, $packedMetadata );
+
+		if ( !$dimensions || !$dimensions[0] || !$dimensions[1] ) {
+			$dimensionsHeaders = [];
+		} else {
+			$dimensionsMetadata = [ 'width' => $dimensions[0], 'height' => $dimensions[1] ];
+			$dimensionsHeaders = parent::getContentHeaders( $dimensionsMetadata );
+		}
+
+		return array_merge( $result, $dimensionsHeaders );
 	}
 
 	/**
