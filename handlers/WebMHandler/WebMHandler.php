@@ -19,7 +19,7 @@ class WebMHandler extends ID3Handler {
 	 * Get the "media size"
 	 * @param $file File
 	 * @param $path string
-	 * @param $metadata bool
+	 * @param $metadata bool|string|array
 	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
@@ -27,7 +27,11 @@ class WebMHandler extends ID3Handler {
 		if ( $metadata === false ) {
 			$metadata = $file->getMetadata();
 		}
-		$metadata = $this->unpackMetadata( $metadata );
+
+		if ( is_string( $metadata ) ) {
+			$metadata = $this->unpackMetadata( $metadata );
+		}
+
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}

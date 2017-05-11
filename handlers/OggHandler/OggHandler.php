@@ -144,7 +144,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 *
 	 * @param $file File
 	 * @param $path string
-	 * @param $metadata bool
+	 * @param $metadata bool|string|array
 	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
@@ -153,7 +153,11 @@ class OggHandlerTMH extends TimedMediaHandler {
 		if ( $metadata === false ) {
 			$metadata = $file->getMetadata();
 		}
-		$metadata = $this->unpackMetadata( $metadata );
+
+		if ( is_string( $metadata ) ) {
+			$metadata = $this->unpackMetadata( $metadata );
+		}
+
 		if ( isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
 			return false;
 		}
