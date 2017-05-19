@@ -842,9 +842,11 @@ class TimedMediaHandlerHooks {
 					'rtl' => "$wgExtensionAssetsPath/TimedMediaHandler/resources/BetaFeature_TMH_VIDEOJS.svg",
 				],
 				// Link to information on the feature
-				'info-link' => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
+				'info-link' =>
+					'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler/VideoJS_Player',
 				// Link to discussion about the feature
-				'discussion-link' => 'https://www.mediawiki.org/wiki/Extension_talk:TimedMediaHandler',
+				'discussion-link' =>
+					'https://www.mediawiki.org/wiki/Extension_talk:TimedMediaHandler/VideoJS_Player',
 			];
 		}
 		return true;
