@@ -227,6 +227,9 @@ $wgEnabledAudioTranscodeSet = [
 	// WebVideoTranscode::ENC_AAC,
 ];
 
+// If mp3 source assets can be ingested:
+$wgTmhEnableMp3Uploads = false;
+
 // If mp4 source assets can be ingested:
 $wgTmhEnableMp4Uploads = false;
 
@@ -240,7 +243,7 @@ $wgTmhTheoraTwoPassEncoding = false;
 // List of extensions handled by Timed Media Handler since its referenced in a few places.
 // you should not modify this variable
 
-$wgTmhFileExtensions = [ 'ogg', 'ogv', 'oga', 'flac', 'opus', 'wav', 'webm', 'mp4' ];
+$wgTmhFileExtensions = [ 'ogg', 'ogv', 'oga', 'flac', 'opus', 'wav', 'webm', 'mp4', 'mp3' ];
 
 $wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
@@ -296,6 +299,8 @@ $wgAutoloadClasses['WebMHandler'] = "$timedMediaDir/handlers/WebMHandler/WebMHan
 $wgAutoloadClasses['FLACHandler'] = "$timedMediaDir/handlers/FLACHandler/FLACHandler.php";
 // WAV Handler
 $wgAutoloadClasses['WAVHandler'] = "$timedMediaDir/handlers/WAVHandler/WAVHandler.php";
+// Mp3 Handler
+$wgAutoloadClasses['Mp3Handler'] = "$timedMediaDir/handlers/Mp3Handler/Mp3Handler.php";
 
 // Text handler
 $wgAutoloadClasses['TextHandler'] = "$timedMediaDir/handlers/TextHandler/TextHandler.php";
