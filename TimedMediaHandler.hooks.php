@@ -789,19 +789,17 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function rejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
-		if (
-			$parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' )
-			|| isset( $parserOutput->hasTimedMediaTransform )
-		) {
-			/* page has old style TMH elements */
-			if (
-				self::activePlayerMode() === 'mwembed' &&
+		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) && (
+			(
+				self::defaultPlayerMode() === 'mwembed' &&
 				!in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules() )
-			) {
-				wfDebug( 'Bad TMH parsercache value, throw this out.' );
-				$wikiPage->getTitle()->purgeSquid();
-				return false;
-			}
+			) || (
+				self::defaultPlayerMode() === 'videojs' &&
+				!in_array( 'ext.tmh.video-js', $parserOutput->getModules() )
+			)
+		) ) {
+			$wikiPage->getTitle()->purgeSquid();
+			return false;
 		}
 		return true;
 	}
@@ -851,17 +849,29 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
+	 * Return the configured player mode for this user
 	 * @return string
 	 */
 	public static function activePlayerMode() {
-		global $wgTmhWebPlayer, $wgTmhUseBetaFeatures, $wgUser;
+		global $wgTmhUseBetaFeatures, $wgUser;
 		$context = new RequestContext();
 		if ( $wgTmhUseBetaFeatures && class_exists( 'BetaFeatures' ) &&
 			$wgUser->isSafeToLoad() && BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
 		) {
 			return 'videojs';
 		} else {
-			return $wgTmhWebPlayer;
+			return self::defaultPlayerMode();
 		}
+	}
+
+	/**
+	 * Return the default configured player mode
+	 * This mode is used for anonymous users
+	 * @since 1.30
+	 * @return string
+	 */
+	public static function defaultPlayerMode() {
+		global $wgTmhWebPlayer;
+		return $wgTmhWebPlayer;
 	}
 }

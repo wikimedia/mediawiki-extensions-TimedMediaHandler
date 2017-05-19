@@ -198,28 +198,23 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	function parserTransformHook( $parser, $file ) {
 		$parserOutput = $parser->getOutput();
-		if ( isset( $parserOutput->hasTimedMediaTransform ) ) {
+		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) ) {
 			return;
 		}
-		$parserOutput->hasTimedMediaTransform = true;
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
+		$activePlayerMode = TimedMediaHandlerHooks::activePlayerMode();
+		if ( $activePlayerMode === 'mwembed' ) {
 			$parserOutput->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 			$parserOutput->addModules( [
 				'mw.MediaWikiPlayer.loader',
 				'mw.PopUpMediaTransform',
 				'mw.TMHGalleryHook.js',
 			] );
-		}
-
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+		} elseif ( $activePlayerMode === 'videojs' ) {
 			$parserOutput->addModuleStyles( 'ext.tmh.player.styles' );
 			$parserOutput->addModules( 'ext.tmh.player' );
 		}
 
-		if ( $parserOutput ) {
-			// Not present when run from outputpage hooks, like File/Category etc...
-			$parserOutput->setExtensionData( 'mw_ext_TMH_hasTimedMediaTransform', true );
-		}
+		$parserOutput->setExtensionData( 'mw_ext_TMH_hasTimedMediaTransform', true );
 	}
 
 	/**
