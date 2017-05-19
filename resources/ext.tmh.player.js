@@ -54,7 +54,7 @@
 				videoplayer = this,
 				$videoplayer = $( this );
 
-			if ( $videoplayer.closest( '.video-js' ).size() ) {
+			if ( $videoplayer.closest( '.video-js' ).length ) {
 				// This player has already been transformed.
 				return;
 			}
