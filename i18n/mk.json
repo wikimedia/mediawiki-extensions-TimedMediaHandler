@@ -23,6 +23,8 @@
 	"timedmedia-wav-short-audio": "Аудиоподатотека WAV, $1",
 	"timedmedia-wav-long-audio": "Аудиоподатотека WAV, времетраење: $1, вкупно $2",
 	"timedmedia-wav-pcm-required": "Можете да подигате само WAV-податотеки со PCM (импулсна кодна модулација).",
+	"timedmedia-mp3-short-audio": "Аудиоподатотека MP3, $1",
+	"timedmedia-mp3-long-audio": "Аудиоподатотека MP3, времетраење $1, вкупно $2",
 	"timedmedia-mp4-short-video": "MP4 $1 видеоснимка, $2",
 	"timedmedia-mp4-long-video": "MP4 аудио/видео снимка, $1, времетраење $2, $4 × $5 пиксели, вкупно $3",
 	"timedmedia-more": "Повеќе...",

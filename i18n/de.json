@@ -33,6 +33,8 @@
 	"timedmedia-wav-short-audio": "WAV-Audiodatei, $1",
 	"timedmedia-wav-long-audio": "WAV-Audiodatei, Länge: $1, $2 insgesamt",
 	"timedmedia-wav-pcm-required": "Du kannst nur PCM-WAV-Dateien hochladen (Pulse Code Modulation).",
+	"timedmedia-mp3-short-audio": "MP3-Audiodatei, $1",
+	"timedmedia-mp3-long-audio": "MP3-Audiodatei, Länge $1, $2 insgesamt",
 	"timedmedia-mp4-short-video": "MP4-$1-Videodatei, $2",
 	"timedmedia-mp4-long-video": "MP4-Audio-/Video-Datei, $1, Länge $2, $4 × $5 Pixel, $3 insgesamt",
 	"timedmedia-more": "Optionen …",

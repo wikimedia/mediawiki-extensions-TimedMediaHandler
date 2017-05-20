@@ -7,7 +7,8 @@
 			"Csega",
 			"Samat",
 			"Dj",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Urbalazs"
 		]
 	},
 	"timedmediahandler-desc": "Audió-, videó- és feliratkezelő, WebM-, Ogg Theora-, Ogg Vorbis- és srt-támogatással",
@@ -15,12 +16,16 @@
 	"timedmedia-ogg-short-video": "Ogg $1 videofájl, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 médiafájl, $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 hangfájl, hossza: $2, $3",
-	"timedmedia-ogg-long-video": "Ogg $1 videófájl, hossza $2, $4×$5 képpont, $3",
-	"timedmedia-ogg-long-multiplexed": "Ogg egyesített audió- és videófájl, $1, hossz: $2, $4×$5 képpont, $3 összesen",
+	"timedmedia-ogg-long-video": "Ogg $1 videófájl, hossza $2, $4 × $5 képpont, $3",
+	"timedmedia-ogg-long-multiplexed": "Ogg egyesített audió- és videófájl, $1, hossz: $2, $4 × $5 képpont, $3 összesen",
 	"timedmedia-ogg-long-general": "Ogg médiafájl, hossza: $2, $3",
 	"timedmedia-ogg-long-error": "Érvénytelen ogg fájl: $1",
 	"timedmedia-webm-short-video": "WebM $1 videofájl, $2",
 	"timedmedia-webm-long-video": "WebM audió-/videófájl, $1, $2 hosszú, $4 × $5 képpont, átlagosan $3",
+	"timedmedia-wav-short-audio": "WAV audiofájl, $1",
+	"timedmedia-wav-long-audio": "WAV hangfájl, hossz: $1, összesen: $2",
+	"timedmedia-mp3-short-audio": "MP3 hangfájl, $1",
+	"timedmedia-mp3-long-audio": "MP3 hangfájl, hossz: $1, összesen: $2",
 	"timedmedia-more": "Tovább...",
 	"timedmedia-dismiss": "Bezárás",
 	"timedmedia-download": "Fájl letöltése",

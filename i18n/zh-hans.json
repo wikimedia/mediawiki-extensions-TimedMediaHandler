@@ -31,6 +31,8 @@
 	"timedmedia-wav-short-audio": "WAV音频文件，$1",
 	"timedmedia-wav-long-audio": "WAV音频文件，总共长$1，码率$2",
 	"timedmedia-wav-pcm-required": "您只能上传脉冲编码调制（PCM）WAV。",
+	"timedmedia-mp3-short-audio": "MP3音频文件，$1",
+	"timedmedia-mp3-long-audio": "MP3音频文件，总共长$1，码率$2",
 	"timedmedia-mp4-short-video": "MP4 $1视频文件，$2",
 	"timedmedia-mp4-long-video": "MP4音频/视频文件，$1，长度$2，$4 × $5像素，$3 overall",
 	"timedmedia-more": "更多...",

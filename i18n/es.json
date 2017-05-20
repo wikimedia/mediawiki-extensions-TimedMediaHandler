@@ -39,6 +39,8 @@
 	"timedmedia-wav-short-audio": "Archivo de audio WAV, $1",
 	"timedmedia-wav-long-audio": "Archivo de audio WAV, duración: $1, $2 en general",
 	"timedmedia-wav-pcm-required": "Solo puedes cargar WAV del tipo PCM (''Pulse Code Modulation'', por sus siglas en inglés).",
+	"timedmedia-mp3-short-audio": "Archivo de audio MP3, $1",
+	"timedmedia-mp3-long-audio": "Archivo de audio MP3, duración $1, $2 en total",
 	"timedmedia-mp4-short-video": "Archivo de vídeo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Archivo de audio/vídeo MP4,  $1 , longitud  $2 ,  $4  ×  $5  píxeles,  $3  total",
 	"timedmedia-more": "Opciones...",

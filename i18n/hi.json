@@ -28,9 +28,12 @@
 	"timedmedia-status": "स्थिति",
 	"timedmedia-status-unknown": "अज्ञात स्थिति",
 	"timedmedia-transcodebitrate": "बिट दर",
+	"timedmedia-transcodeduration": "इनकोड समय",
 	"timedmedia-transcodeinfo": "प्रारूप",
 	"timedmedia-actions": "क्रियाएँ",
 	"timedmedia-direct-link": "डाउनलोड करें",
+	"timedmedia-not-ready": "तैयार नहीं",
+	"timedmedia-completed-on": "$1 पूरा हुआ",
 	"timedmedia-error-on": "$1 में त्रुटि",
 	"timedmedia-started-transcode": "$1 पहले शुरू। $2",
 	"timedmedia-percent-done": "$1% पूर्ण हुआ",
@@ -83,5 +86,6 @@
 	"timedmedia-audios": "{{PLURAL:$1|$1 ऑडियो फ़ाइल|$1 ऑडियो फ़ाइलें}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ऑडियो फ़ाइल|$1 Ogg ऑडियो फ़ाइलें}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ऑडियो फ़ाइल|$1 FLAC ऑडियो फ़ाइलें}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}"
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}",
+	"apihelp-transcodereset-param-title": "मीडिया फ़ाइल का शीर्षक"
 }

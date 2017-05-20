@@ -6,7 +6,8 @@
 			"Rancher",
 			"Sasa Stefanovic",
 			"Михајло Анђелковић",
-			"Сербијана"
+			"Сербијана",
+			"Obsuser"
 		]
 	},
 	"timedmediahandler-desc": "Обрађивач за звук, видео и усклађени текст, с подршком за формате WebM, Ogg Theora, Vorbis и SRT",
@@ -20,8 +21,9 @@
 	"timedmedia-ogg-long-error": "Неисправна .ogg датотека: $1.",
 	"timedmedia-webm-short-video": "WebM $1 видео датотека, $2",
 	"timedmedia-webm-long-video": "Аудио/видео датотека WebM, $1, трајање $2, $4 × $5 пиксела, битрејт $3",
+	"timedmedia-mp3-short-audio": "MP3 аудио-датотека, $1",
+	"timedmedia-mp3-long-audio": "MP3 аудио-датотека, дужина $1, $2 укупно",
 	"timedmedia-mp4-long-video": "Аудио/видео датотека MP4, $1, трајање $2, $4 × $5 пиксела, битрејт $3",
-	"timedmedia-no-player-js": "Жао нам је, али вашем прегледачу је онемогућена јаваскрипта или немате одговарајући плејер.<br />\nМожете <a href=\"$1\">преузети клип</a> или <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">преузети плејер</a> да репродукујете клип у вашем прегледачу.",
 	"timedmedia-more": "Више...",
 	"timedmedia-dismiss": "Затвори",
 	"timedmedia-download": "Преузми датотеку",

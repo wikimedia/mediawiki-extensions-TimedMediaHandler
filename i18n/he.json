@@ -25,6 +25,8 @@
 	"timedmedia-wav-short-audio": "קובץ שמע WAV‏, $1",
 	"timedmedia-wav-long-audio": "קובץ שמע WAV, אורך $1, סך הכול $2",
 	"timedmedia-wav-pcm-required": "אפשר להעלות רק קובצי WAV בתסדיר PCM‏ (Pulse Code Modulation).",
+	"timedmedia-mp3-short-audio": "קובץ שמע MP3, $1",
+	"timedmedia-mp3-long-audio": "קובץ שמע MP3, אורך $1, סה״כ $2",
 	"timedmedia-mp4-short-video": "קובץ וידאו MP4 $1&rlm;, $2",
 	"timedmedia-mp4-long-video": "קובץ שמע ווידאו של MP4&rlm;, $1, באורך $2, $4 × $5 פיסקלים, $3 בסך הכול",
 	"timedmedia-more": "עוד…",
