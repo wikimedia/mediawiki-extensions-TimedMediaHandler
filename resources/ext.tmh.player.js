@@ -1,6 +1,6 @@
 /* global videojs */
 ( function ( $, mw, videojs ) {
-	var globalConfig, audioConfig, playerConfig;
+	var globalConfig, videoConfig, audioConfig, playerConfig;
 
 	globalConfig = {
 		language: mw.config.get( 'wgUserLanguage' ),
@@ -13,17 +13,6 @@
 		},
 		techOrder: [ 'html5' ],
 		plugins: {
-			videoJsResolutionSwitcher: {
-				sourceOrder: true,
-				customSourcePicker: function ( player, sources/* , label */ ) {
-					// Resolution switcher gets confused by preload=none on ogv.js
-					if ( player.preload() === 'none' ) {
-						player.preload( 'metadata' );
-					}
-					player.src( sources );
-					return player;
-				}
-			},
 			responsiveLayout: {
 				layoutMap: [
 					{ layoutClassName: 'vjs-layout-tiny', width: 3 },
@@ -34,6 +23,22 @@
 			},
 			replayButton: {},
 			infoButton: {}
+		}
+	};
+
+	videoConfig = {
+		plugins: {
+			videoJsResolutionSwitcher: {
+				sourceOrder: true,
+				customSourcePicker: function ( player, sources/* , label */ ) {
+					// Resolution switcher gets confused by preload=none on ogv.js
+					if ( player.preload() === 'none' ) {
+						player.preload( 'metadata' );
+					}
+					player.src( sources );
+					return player;
+				}
+			}
 		}
 	};
 
@@ -52,18 +57,17 @@
 		function loadSinglePlayer( index ) {
 			var i, l, preload, resolutions, playerHeight, defaultRes,
 				videoplayer = this,
-				$videoplayer = $( this );
+				$videoplayer = $( this ),
+				isAudio = videoplayer.tagName.toLowerCase() === 'audio';
 
 			if ( $videoplayer.closest( '.video-js' ).length ) {
 				// This player has already been transformed.
 				return;
 			}
+
 			playerConfig = $.extend( {}, globalConfig );
-			if ( videoplayer.tagName.toLowerCase() === 'audio' ) {
-				// We hide the big play button, show the controlbar with CSS
-				// We remove the fullscreen button
-				playerConfig = $.extend( true, {}, playerConfig, audioConfig );
-			}
+			playerConfig = $.extend( true, {}, playerConfig, isAudio ? audioConfig : videoConfig );
+
 			// Future interactions go faster if we've preloaded a little
 			preload = 'metadata';
 			if ( !mw.OgvJsSupport.canPlayNatively() ) {
@@ -117,7 +121,7 @@
 					break;
 				}
 			}
-			if ( defaultRes ) {
+			if ( !isAudio && defaultRes ) {
 				playerConfig.plugins.videoJsResolutionSwitcher[ 'default' ] = defaultRes;
 			}
 
