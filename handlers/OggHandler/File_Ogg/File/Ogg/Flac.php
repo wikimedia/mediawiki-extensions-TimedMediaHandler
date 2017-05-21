@@ -65,8 +65,8 @@ class File_Ogg_Flac extends File_Ogg_Media
     }
 
     function getSecondsFromGranulePos( $granulePos ){
-        return (( '0x' . substr( $granulePos, 0, 8 ) ) * pow(2, 32)
-              + ( '0x' . substr( $granulePos, 8, 8 ) ))
+        return (intval(substr( $granulePos, 0, 8 ), 16 ) * pow(2, 32)
+              + intval(substr( $granulePos, 8, 8 ), 16 ))
               / $this->_streamInfo['sample_rate'];
     }
 

@@ -185,8 +185,8 @@ class File_Ogg_Vorbis extends File_Ogg_Media
         $this->_avgBitrate      = $this->_streamLength ? ($this->_streamSize * 8) / $this->_streamLength : 0;
     }
 	function getSecondsFromGranulePos( $granulePos ){
-		return (( '0x' . substr( $granulePos, 0, 8 ) ) * pow(2, 32)
-            + ( '0x' . substr( $granulePos, 8, 8 ) ))
+		return (intval(substr( $granulePos, 0, 8 ), 16) * pow(2, 32)
+            + intval( substr( $granulePos, 8, 8 ), 16 ))
             / $this->_idHeader['audio_sample_rate'];
 	}
     /**

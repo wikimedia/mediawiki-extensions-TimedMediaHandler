@@ -43,13 +43,13 @@ class File_Ogg_Speex extends File_Ogg_Media
         $this->_decodeHeader();
         $this->_decodeCommentsHeader();
         $endSec =
-            (( '0x' . substr( $this->_lastGranulePos, 0, 8 ) ) * pow(2, 32)
-            + ( '0x' . substr( $this->_lastGranulePos, 8, 8 ) ))
+            (intval(substr( $this->_lastGranulePos, 0, 8 ), 16 ) * pow(2, 32)
+            + intval(substr( $this->_lastGranulePos, 8, 8 ), 16 ))
             / $this->_header['rate'];
 
          $startSec	 =
-            (( '0x' . substr( $this->_firstGranulePos, 0, 8 ) ) * pow(2, 32)
-            + ( '0x' . substr( $this->_firstGranulePos, 8, 8 ) ))
+            (intval(substr( $this->_firstGranulePos, 0, 8 ), 16 ) * pow(2, 32)
+            + intval(substr( $this->_firstGranulePos, 8, 8 ), 16 ))
             / $this->_header['rate'];
 
          //make sure the offset is worth taking into account oggz_chop related hack
