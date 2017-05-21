@@ -13,7 +13,8 @@
 			"NBS",
 			"Frhdkazan",
 			"Mailman",
-			"Facenapalm"
+			"Facenapalm",
+			"Av6"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -33,6 +34,7 @@
 	"timedmedia-wav-short-audio": "Аудиофайл WAV, $1",
 	"timedmedia-wav-long-audio": "Аудиофайл WAV, длина — $1, битрейт — $2",
 	"timedmedia-wav-pcm-required": "Вы можете загрузить только PCM (Pulse Code Modulation) WAV.",
+	"timedmedia-mp3-short-audio": "Аудиофайл MP3, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 видео-файл, $2",
 	"timedmedia-mp4-long-video": "Аудио/видеофайл MP4 $1, длина — $2, $4 × $5 пикселей, битрейт — $3",
 	"timedmedia-more": "Больше…",
