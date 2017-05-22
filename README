@@ -68,7 +68,7 @@ Some old versions of FFmpeg had a bug which made it extremely slow to seek in
 large theora videos in order to generate a thumbnail.  If you are using an old
 version of FFmpeg and find that performance is extremely poor (tens of seconds)
 to generate thumbnails of theora videos that are several minutes or more in
-length. Please update to a more recent version.
+length, please update to a more recent version.
 
 In MediaWiki configuration, after the require line in LocalSettings.php, you
 will have to specify the FFmpeg binary location with:
@@ -82,7 +82,7 @@ Default being `/usr/bin/avconv`.
 
 We use ffmpeg2theora for extract metadata from videos, you will need a copy on
 your server. For best experience, use the latest release of ffmpeg2theora. At a
-minimum you need to use ffmpeg2thoera 0.27.
+minimum you need to use ffmpeg2theora 0.27.
 
 You can download static ffmpeg2theora builds for multiple platforms at:
 http://firefogg.org/nightly/
@@ -93,8 +93,7 @@ Set the ffmpeg2theora binary location with:
 
 Default being `/usr/bin/ffmpeg2theora`.
 
-oggThumb
--------
+== oggThumb ==
 
 We use oggvideotools for creating still images of videos, you will need a copy on your
 server.
@@ -110,7 +109,7 @@ Download oggThumb from: http://dev.streamnik.de/oggvideotools.html
 Tim Starling, a Wikimedia developer, forked the PEAR File_Ogg package and
 improved it significantly to support this extension.
 
-The PEAR bundle is licensed under the LGPL, you can get informations about
+The PEAR bundle is licensed under the LGPL, you can get information about
 this package on the pear webpage:
 
   http://pear.php.net/package/File_Ogg
