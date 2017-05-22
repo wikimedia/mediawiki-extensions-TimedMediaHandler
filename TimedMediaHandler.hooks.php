@@ -825,26 +825,27 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
-		global $wgTmhUseBetaFeatures, $wgExtensionAssetsPath;
+		global $wgTmhUseBetaFeatures;
+
+		$coreConfig = RequestContext::getMain()->getConfig();
+		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . "/TimedMediaHandler";
 
 		if ( $wgTmhUseBetaFeatures ) {
 			$prefs['tmh-videojs'] = [
-				// The first two are message keys
 				'label-message' => 'beta-feature-timedmediahandler-message-videojs',
 				'desc-message' => 'beta-feature-timedmediahandler-description-videojs',
-				// Paths to images that represents the feature.
-				// The image is usually different for ltr and rtl languages.
-				// Images for specific languages can also specified using the language code.
 				'screenshot' => [
-					'ltr' => "$wgExtensionAssetsPath/TimedMediaHandler/resources/BetaFeature_TMH_VIDEOJS.svg",
-					'rtl' => "$wgExtensionAssetsPath/TimedMediaHandler/resources/BetaFeature_TMH_VIDEOJS.svg",
+					'ltr' => "$iconpath/resources/betafeatures-icon-VideoJS-ltr.svg",
+					'rtl' => "$iconpath/resources/betafeatures-icon-VideoJS-rtl.svg",
 				],
-				// Link to information on the feature
 				'info-link' =>
 					'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler/VideoJS_Player',
-				// Link to discussion about the feature
 				'discussion-link' =>
 					'https://www.mediawiki.org/wiki/Extension_talk:TimedMediaHandler/VideoJS_Player',
+				'requirements' => [
+					'javascript' => true
+				],
+
 			];
 		}
 		return true;
