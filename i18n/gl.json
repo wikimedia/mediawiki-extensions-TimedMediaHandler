@@ -24,6 +24,8 @@
 	"timedmedia-wav-short-audio": "Ficheiro de son WAV, $1",
 	"timedmedia-wav-long-audio": "Ficheiro de son WAV, duración $1, $2 total",
 	"timedmedia-wav-pcm-required": "Unicamente pode cargar WAV PCM (modulación por código de pulsos).",
+	"timedmedia-mp3-short-audio": "Ficheiro de son MP3, $1",
+	"timedmedia-mp3-long-audio": "Ficheiro de son MP3, duración $1, $2 en total",
 	"timedmedia-mp4-short-video": "Ficheiro de vídeo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Ficheiro MP4 de son/vídeo, $1, duración $2, $4×$5 píxeles, $3 total",
 	"timedmedia-more": "Máis...",

@@ -62,5 +62,6 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transkodhé lumangsung|$1 transkodhé lumangsung}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodhé ngantri|$1 transkodhé ngantri}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transkodhé gagal|$1 transkodhé gagal}}",
-	"timedmedia-file": "Barkas"
+	"timedmedia-file": "Barkas",
+	"beta-feature-timedmediahandler-description-videojs": "Deleng barkas vidhio sarana panyetèlan anyar kanthi rupa sing luwih cetha lan cocog kanggo sèlulèr."
 }

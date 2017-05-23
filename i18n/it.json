@@ -29,6 +29,8 @@
 	"timedmedia-wav-short-audio": "File audio WAV, $1",
 	"timedmedia-wav-long-audio": "File audio WAV, durata $1, complessivamente $2",
 	"timedmedia-wav-pcm-required": "Puoi caricare solo PCM (Pulse Code Modulation) WAV.",
+	"timedmedia-mp3-short-audio": "File audio MP3, $1",
+	"timedmedia-mp3-long-audio": "File audio MP3, durata $1, complessivamente $2",
 	"timedmedia-mp4-short-video": "File video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "File audio/video MP4 $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3",
 	"timedmedia-more": "Altro...",

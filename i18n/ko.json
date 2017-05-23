@@ -112,6 +112,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|Ogg 오디오 파일 $1개}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|FLAC 오디오 파일 $1개}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|WAV 오디오 파일 $1개}}",
+	"beta-feature-timedmediahandler-description-videojs": "더 깔끔한 외양과 모바일 호환성을 갖춘 최신의 플레이어로 동영상 파일을 봅니다.",
 	"right-transcode-reset": "변환됐거나 실패한 비디오를 작업 대기열에 다시 추가되도록 초기화",
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",
 	"action-transcode-status": "현재 코드 변환 상태 보기",

@@ -156,7 +156,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 fichier audio Ogg|$1 fichiers audio Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 fichier audio FLAC|$1 fichiers audio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 fichier audio WAV|$1 fichiers audio WAV}}",
-	"beta-feature-timedmediahandler-description-videojs": "Lecteur audio/vidéo mis à jour avec un aspect plus propre et la compatibilité mobile.",
+	"beta-feature-timedmediahandler-description-videojs": "Visualiser des fichiers vidéo dans un lecteur moderne avec un aspect plus propre et la compatibilité mobile.",
 	"right-transcode-reset": "Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux",
 	"right-transcode-status": "Afficher [[Special:TimedMediaHandler|l'information sur l'activité de transcodage actuelle]]",
 	"action-transcode-reset": "réinitialiser le transcodage",
