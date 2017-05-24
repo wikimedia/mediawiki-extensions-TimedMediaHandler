@@ -128,7 +128,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 ficheiro|$1 ficheiros}} de son Ogg",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 ficheiro|$1 ficheiros}} de son FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 ficheiro|$1 ficheiros}} de son WAV",
-	"beta-feature-timedmediahandler-description-videojs": "Reprodutor de son/vídeo con aspecto actualizado e compatibilidade móbil.",
+	"beta-feature-timedmediahandler-description-videojs": "Visualizar ficheiros de vídeo nun lector moderno cun aspecto actualizado e compatibilidade móbil.",
 	"right-transcode-reset": "Restablecer os vídeos transcodificados erroneamente para incluílos de novo na cola de traballo.",
 	"right-transcode-status": "Ollar a [[Special:TimedMediaHandler|información sobre a actividade de transcodificación actual]]",
 	"action-transcode-reset": "reinicializar a transcodificación",
