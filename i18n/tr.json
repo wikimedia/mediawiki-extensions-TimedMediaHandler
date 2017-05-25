@@ -11,7 +11,8 @@
 			"Stultiwikia",
 			"Mavrikant",
 			"HakanIST",
-			"Vito Genovese"
+			"Vito Genovese",
+			"Bulgu"
 		]
 	},
 	"timedmediahandler-desc": "Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği",
@@ -45,7 +46,7 @@
 	"timedmedia-status-unknown": "Bilinmeyen durum",
 	"timedmedia-transcodeinfo": "Format",
 	"timedmedia-actions": "İşlemler",
-	"timedmedia-direct-link": "Türevi indir",
+	"timedmedia-direct-link": "İndir",
 	"timedmedia-not-ready": "Hazır değil",
 	"timedmedia-completed-on": "Tamamlanan transkodu $1",
 	"timedmedia-error-on": "$1 üzerinde çapraz kodlama hatası",
