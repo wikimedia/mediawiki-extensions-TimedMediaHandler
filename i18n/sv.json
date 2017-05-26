@@ -30,6 +30,8 @@
 	"timedmedia-wav-short-audio": "WAV-ljudfil, $1",
 	"timedmedia-wav-long-audio": "WAV-ljudfil, längd $1, $2 total",
 	"timedmedia-wav-pcm-required": "Du kan enbart ladda upp PCM (Pulskodsmodulerad) WAV",
+	"timedmedia-mp3-short-audio": "MP3-ljudfil, $1",
+	"timedmedia-mp3-long-audio": "MP3-ljudfil, längd $1, $2 totalt",
 	"timedmedia-mp4-short-video": "MP4 $1 videofil, $2",
 	"timedmedia-mp4-long-video": "MP4-fil för ljud/video, $1, längd $2, $4 × $5 pixlar, $3 totalt",
 	"timedmedia-more": "Mer...",

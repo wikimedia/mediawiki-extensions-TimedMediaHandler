@@ -8,7 +8,8 @@
 			"روخو",
 			"Abanima",
 			"Maroen1990",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Mido"
 		]
 	},
 	"timedmediahandler-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
@@ -126,7 +127,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|ملف صوتي واحد بصيغة أوغ|$1 ملف صوتي بصيغة أوغ}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} صوتي FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} صوتي WAV",
-	"beta-feature-timedmediahandler-description-videojs": "لاعب صوت/فيديو محدث بتصميم أفضل وتوافق مع المحمول.",
+	"beta-feature-timedmediahandler-description-videojs": "شاهد ملفات الفيديو في مشغل عصري وواجهة واضحة متوافقة أيضا مع الجوال.",
 	"right-transcode-reset": "إعادة الضبط فشلت أو الفيديوات المكودة بحيث تم إدخالها إلى job queue مجددا",
 	"right-transcode-status": "عرض [[Special:TimedMediaHandler|المعلومات حول نشاط التكويد الحالي]]",
 	"action-transcode-reset": "إعادة ضبط التحويلات",
