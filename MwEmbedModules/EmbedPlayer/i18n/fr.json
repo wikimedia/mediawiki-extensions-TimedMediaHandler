@@ -8,7 +8,8 @@
 			"Nnemo",
 			"Peter17",
 			"Windes",
-			"Orlodrim"
+			"Orlodrim",
+			"Urhixidur"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titre : $1",
@@ -62,7 +63,7 @@
 	"mwe-embedplayer-ogg-player-vp9Native": "Lecteur VP9 HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Module générique Ogg",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC pour application iOS",
-	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Installeur du plugin WebM pour IE",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Téléchargeur de greffons WebM pour IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Lecteur Ogg JavaScript",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Module QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "ActiveX QuickTime",
