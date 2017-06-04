@@ -19,6 +19,7 @@
 	"timedmedia-webm-short-video": "WebM $1 ভিডিও ফাইল, $2",
 	"timedmedia-webm-long-video": "WebM অডিও/ভিডিও ফাইল, $1, দৈর্ঘ্য $2, $4 × $5 পিক্সেল, সামগ্রিকভাবে $3",
 	"timedmedia-mp3-short-audio": "MP3 অডিও ফাইল, $1",
+	"timedmedia-mp3-long-audio": "MP3 অডিও ফাইল, দৈর্ঘ্য $1, মোট $2",
 	"timedmedia-mp4-short-video": "MP4 $1 ভিডিও ফাইল, $2",
 	"timedmedia-mp4-long-video": "MP4 অডিও/ভিডিও ফাইল, $1, দৈর্ঘ্য $2, $4 × $5 পিক্সেল, সামগ্রিকভাবে $3",
 	"timedmedia-more": "আরও...",
