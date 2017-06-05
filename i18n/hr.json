@@ -31,5 +31,6 @@
 	"timedmedia-derivative-desc-2160p.vp9.webm": "4K UHD VP9 (2160P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
 	"log-name-timedmediahandler": "Evidencija TimedMediaHandlerovih titlova",
-	"log-description-timedmediahandler": "Ova stranica sadržava evidencije postavljanja titlova vezanu uz programsku opremu i uporabu TimedMediaHandlerovih transkôdova."
+	"log-description-timedmediahandler": "Ova stranica sadržava evidencije postavljanja titlova vezanu uz programsku opremu i uporabu TimedMediaHandlerovih transkôdova.",
+	"orphanedtimedtext": "Stranice siročad s TimedText titlovima"
 }

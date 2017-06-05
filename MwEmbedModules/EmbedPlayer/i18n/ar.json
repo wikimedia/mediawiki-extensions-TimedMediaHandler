@@ -4,7 +4,8 @@
 			"Alzahrani",
 			"Meno25",
 			"OsamaK",
-			"روخو"
+			"روخو",
+			"Mido"
 		]
 	},
 	"mwe-embedplayer-credit-title": "عنوان: $1",
@@ -40,7 +41,7 @@
 	"mwe-embedplayer-menu_btn": "قائمة",
 	"mwe-embedplayer-close_btn": "أغلق",
 	"mwe-embedplayer-ogg-player-vlc-player": "المشغل VLC",
-	"mwe-embedplayer-ogg-player-quicktime-mozilla": "اضافة لبرنامج كويك تايم",
+	"mwe-embedplayer-ogg-player-quicktime-mozilla": "إضافة لبرنامج كويك تايم",
 	"mwe-embedplayer-ogg-player-kplayer": "مشغل كالشورا",
 	"mwe-embedplayer-ogg-player-selected": "(مختار)",
 	"mwe-embedplayer-for_best_experience": "للحصول على أفضل تجربة لعرض الفيديو نحن ننصح بـ <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">مستعرض HTML5 للفيديو</a>",

@@ -118,7 +118,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 archivo|$1 archivos}} de audio Ogg",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 archivo|$1 archivos}} de audio FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 archivo|$1 archivos}} de audio WAV",
-	"beta-feature-timedmediahandler-description-videojs": "Vea los archivos de vídeo en un reproductor moderno con aspecto más limpio y compatibilidad para dispositivos móviles.",
+	"beta-feature-timedmediahandler-description-videojs": "Mira vídeos en un reproductor más moderno, despejado y compatible con dispositivos móviles.",
 	"right-transcode-reset": "Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre la actividad de transcodificación actual]]",
 	"action-transcode-status": "ver el estado de transcodificación actual",
