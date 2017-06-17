@@ -122,6 +122,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} Ogg",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 plik dźwiękowy|$1 pliki dźwiękowe|plików dźwiękowych}} WAV",
+	"beta-feature-timedmediahandler-message-videojs": "Nowy odtwarzacz filmów",
 	"beta-feature-timedmediahandler-description-videojs": "Uaktualniony odtwarzacz audio/video z bardziej przejrzystym wyglądem i wsparciem dla urządzeń mobilnych.",
 	"right-transcode-reset": "Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań",
 	"right-transcode-status": "Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]",
