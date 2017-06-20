@@ -5,7 +5,8 @@
 			"MaxSem",
 			"Okras",
 			"Александр Сигачёв",
-			"Kaganer"
+			"Kaganer",
+			"Facenapalm"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Название: $1",
@@ -56,9 +57,11 @@
 	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC-проигрыватель",
 	"mwe-embedplayer-ogg-player-h264Native": "Проигрыватель HTML5 H.264",
 	"mwe-embedplayer-ogg-player-webmNative": "Проигрыватель HTML5 WebM",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9-проигрыватель",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Общий плагин Ogg",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Приложение VLC для iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Загрузчик плагина IE WebM",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript Ogg-проигрыватель",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Плагин QuickTime",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",

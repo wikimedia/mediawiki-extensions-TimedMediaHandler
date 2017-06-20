@@ -41,7 +41,7 @@
 	"timedmedia-days": "{{PLURAL:$1|1 дан|$1 дана}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 сат|$1 сата|$1 сати}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 минут|$1 минута}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1 секунд|$1 секунде|$1 секунди}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1 секунд|$1 секунда|$1 секунди}}",
 	"timedmedia-reset": "Поништи прекодирање",
 	"timedmedia-reset-button-dismiss": "Одбаци",
 	"timedmedia-reset-error": "Грешка при поништавању задатака за прекодирање.",

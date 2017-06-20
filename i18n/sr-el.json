@@ -3,7 +3,8 @@
 		"authors": [
 			"Michaello",
 			"Milicevic01",
-			"Rancher"
+			"Rancher",
+			"Obsuser"
 		]
 	},
 	"timedmediahandler-desc": "Obrađivač za zvuk, video i usklađeni tekst, s podrškom za formate WebM, Ogg Theora, Vorbis i SRT",
@@ -18,7 +19,6 @@
 	"timedmedia-webm-short-video": "WebM $1 video datoteka, $2",
 	"timedmedia-webm-long-video": "Audio/video datoteka WebM, $1, trajanje $2, $4 × $5 piksela, bitrejt $3",
 	"timedmedia-mp4-long-video": "Audio/video datoteka MP4, $1, trajanje $2, $4 × $5 piksela, bitrejt $3",
-	"timedmedia-no-player-js": "Žao nam je, ali vašem pregledaču je onemogućena javaskripta ili nemate odgovarajući plejer.<br />\nMožete <a href=\"$1\">preuzeti klip</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">preuzeti plejer</a> da reprodukujete klip u vašem pregledaču.",
 	"timedmedia-more": "Više...",
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Preuzmi datoteku",
@@ -36,7 +36,7 @@
 	"timedmedia-days": "{{PLURAL:$1|1 dan|$1 dana}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 sat|$1 sata|$1 sati}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minuta}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1 sekund|$1 sekunde|$1 sekundi}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1 sekund|$1 sekunda|$1 sekundi}}",
 	"timedmedia-reset": "Poništi prekodiranje",
 	"timedmedia-reset-button-dismiss": "Odbaci",
 	"timedmedia-reset-error": "Greška pri poništavanju zadataka za prekodiranje.",
