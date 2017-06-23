@@ -12,7 +12,8 @@
 	"mwe-embedplayer-seek_to": "Дехьа гӀо $1",
 	"mwe-embedplayer-download_clip": "Чуяккха видео",
 	"mwe-embedplayer-download_text": "Чудаккха йоза",
-	"mwe-embedplayer-download": "Чуяккха",
+	"mwe-embedplayer-download": "Схьаэца",
 	"mwe-embedplayer-close_btn": "ДӀачӀагӀа",
-	"mwe-embedplayer-seeking": "лахар"
+	"mwe-embedplayer-seeking": "лахар",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Схьаэца хӀара видео"
 }
