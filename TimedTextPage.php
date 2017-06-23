@@ -99,12 +99,12 @@ class TimedTextPage extends Article {
 
 		// Get the video with with a max of 600 pixel page
 		$out->addHTML(
-			xml::tags( 'table', [ 'style'=> 'border:none' ],
-				xml::tags( 'tr', null,
-					xml::tags( 'td', [ 'valign' => 'top',  'width' => self::$videoWidth ],
+			Xml::tags( 'table', [ 'style'=> 'border:none' ],
+				Xml::tags( 'tr', null,
+					Xml::tags( 'td', [ 'valign' => 'top',  'width' => self::$videoWidth ],
 						$this->getVideoHTML( $videoTitle )
 					) .
-					xml::tags( 'td', [ 'valign' => 'top' ], $this->getTimedTextHTML( $languageName ) )
+					Xml::tags( 'td', [ 'valign' => 'top' ], $this->getTimedTextHTML( $languageName ) )
 				)
 			)
 		);
