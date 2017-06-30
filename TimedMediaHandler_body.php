@@ -475,20 +475,4 @@ class TimedMediaHandler extends MediaHandler {
 			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}
 	}
-
-	public function filterThumbnailPurgeList( &$files, $options ) {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-
-		$transcodeSet = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
-
-		// dont remove derivatives on normal purge
-		foreach ( array_slice( $files, 1 ) as $key => $file ) {
-			foreach ( $transcodeSet as $transcodeKey ) {
-				if ( preg_match( '/' . preg_quote( $transcodeKey ) . '$/', $file ) ) {
-					unset( $files[$key] );
-					break;
-				}
-			}
-		}
-	}
 }
