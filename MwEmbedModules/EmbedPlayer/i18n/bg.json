@@ -12,10 +12,10 @@
 	"mwe-embedplayer-credit-date": "Дата: $1",
 	"mwe-embedplayer-credit-author": "Автор: $1",
 	"mwe-embedplayer-share": "Споделяне",
-	"mwe-embedplayer-share_this_video": "Сподели видеозаписа",
-	"mwe-embedplayer-share_this_audio": "Сподели аудиофайла",
+	"mwe-embedplayer-share_this_video": "Споделяне на видеозаписа",
+	"mwe-embedplayer-share_this_audio": "Споделяне на аудиофайла",
 	"mwe-embedplayer-menu_btn": "Меню",
-	"mwe-embedplayer-close_btn": "Затвори",
+	"mwe-embedplayer-close_btn": "Затваряне",
 	"mwe-embedplayer-ogg-player-vlc-player": "VLC плейър",
 	"mwe-embedplayer-ogg-player-oggNative": "HTML5 Ogg плейър"
 }
