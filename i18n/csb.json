@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaszeba"
+		]
+	},
+	"timedmedia-source-file": "Zdrój $1",
+	"timedmedia-source-audio-file-desc": "Òryginalny lopk $1 ($2)"
+}
