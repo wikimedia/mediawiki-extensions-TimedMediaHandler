@@ -126,7 +126,6 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 		}
 
 		return $result;
-
 	}
 
 }

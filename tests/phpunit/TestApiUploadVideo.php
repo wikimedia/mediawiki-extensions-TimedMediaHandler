@@ -21,7 +21,6 @@ class TestApiUploadVideo extends ApiTestCaseVideoUpload {
 	 * @dataProvider mediaFilesProvider
 	 */
 	public function testUploadVideoFiles( $file ) {
-
 		$result = $this->uploadFile( $file );
 
 		// Run asserts
@@ -30,7 +29,6 @@ class TestApiUploadVideo extends ApiTestCaseVideoUpload {
 		$this->assertEquals( filesize( $file['filePath'] ),
 			(int)$result['upload']['imageinfo']['size'] );
 		$this->assertEquals( $file['mime'], $result['upload']['imageinfo']['mime'] );
-
 	}
 
 }

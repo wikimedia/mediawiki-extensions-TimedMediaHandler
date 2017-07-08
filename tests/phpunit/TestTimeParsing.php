@@ -42,6 +42,5 @@ class TestTimeParsing extends PHPUnit_Framework_TestCase {
 		// Test failures:
 		$this->assertEquals( TimedMediaHandler::parseTimeString( '1:1:1:1' ), false );
 		$this->assertEquals( TimedMediaHandler::parseTimeString( 'abc' ), false );
-
 	}
 }

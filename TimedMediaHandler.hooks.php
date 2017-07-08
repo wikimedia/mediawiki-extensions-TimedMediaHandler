@@ -760,7 +760,7 @@ class TimedMediaHandlerHooks {
 		switch ( $updater->getDB()->getType() ) {
 		case 'mysql':
 		case 'sqlite':
-			 // Initial install tables
+			// Initial install tables
 			$updater->addExtensionTable( 'transcode', "$base/TimedMediaHandler.sql" );
 			$updater->addExtensionUpdate( [ 'addIndex', 'transcode', 'transcode_name_key',
 				"$base/archives/transcode_name_key.sql", true ] );

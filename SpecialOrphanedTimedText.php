@@ -145,7 +145,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		$joinConds = [
 			'image' => [
 				'LEFT OUTER JOIN',
-				 $baseCond . ' = img_name'
+				$baseCond . ' = img_name'
 			]
 		];
 		return [

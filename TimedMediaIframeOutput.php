@@ -30,7 +30,6 @@ class TimedMediaIframeOutput {
 			$wgEnableIframeEmbed &&
 			$doOutput
 		) {
-
 			if ( self::outputIframe( $title ) ) {
 				// Turn off output of anything other than the iframe
 				$wgOut->disable();

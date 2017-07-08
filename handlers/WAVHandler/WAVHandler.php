@@ -82,7 +82,6 @@ class WAVHandler extends ID3Handler {
 			$wgLang->formatTimePeriod( $this->getLength( $file ) ),
 			$wgLang->formatBitrate( $this->getBitRate( $file ) )
 		)->text();
-
 	}
 
 }

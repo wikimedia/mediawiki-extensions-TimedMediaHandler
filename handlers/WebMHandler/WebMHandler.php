@@ -42,7 +42,7 @@ class WebMHandler extends ID3Handler {
 		if ( isset( $metadata['video']['display_x'] )
 				&&
 			isset( $metadata['video']['display_y'] )
-		){
+		) {
 			$size = [
 				$metadata['video']['display_x'],
 				$metadata['video']['display_y']

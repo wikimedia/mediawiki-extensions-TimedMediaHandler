@@ -112,10 +112,10 @@ class TimedMediaHandler extends MediaHandler {
 			}
 
 			if ( !is_null( $size ) && $size !== '' ) {
-				$params['width'] = (int) $size;
+				$params['width'] = (int)$size;
 			}
 			if ( !is_null( $thumbtime ) ) {
-				$params['thumbtime'] = (float) $thumbtime;
+				$params['thumbtime'] = (float)$thumbtime;
 			}
 			return $params; // valid thumbnail URL
 		} else {
