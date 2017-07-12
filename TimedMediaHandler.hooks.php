@@ -1,12 +1,13 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Hooks for TimedMediaHandler extension
  *
  * @file
  * @ingroup Extensions
  */
-
 class TimedMediaHandlerHooks {
 
 	/**

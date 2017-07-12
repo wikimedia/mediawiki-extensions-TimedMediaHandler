@@ -268,8 +268,9 @@ $wgAutoloadClasses['TranscodeStatusTable'] = "$timedMediaDir/TranscodeStatusTabl
 // Testing:
 $wgAutoloadClasses['ApiTestCaseVideoUpload'] =
 	"$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
-// Temporarily disabled during migration of mock objects
-// $wgParserTestFiles[] = "$timedMediaDir/tests/parserTests.txt";
+$wgAutoloadClasses['MockOggHandler'] = "$timedMediaDir/tests/phpunit/mocks/MockOggHandler.php";
+$wgParserTestFiles[] = "$timedMediaDir/tests/parserTests.txt";
+$wgParserTestMediaHandlers['application/ogg'] = MockOggHandler::class;
 
 // Ogg Handler
 $wgAutoloadClasses['OggHandlerTMH'] = "$timedMediaDir/handlers/OggHandler/OggHandler.php";
