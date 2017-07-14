@@ -27,7 +27,7 @@
 			"Dgstranz"
 		]
 	},
-	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec le support des formats WebM, Ogg Theora, Vorbis et srt",
+	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec prise en charge des formats WebM, Ogg Theora, Vorbis et srt",
 	"timedmedia-ogg-short-audio": "Fichier son Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Fichier vidéo Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Fichier média Ogg $1, $2",
