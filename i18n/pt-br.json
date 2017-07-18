@@ -11,6 +11,7 @@
 			"Felipe L. Ewald"
 		]
 	},
+	"timedmediahandler-extensionname": "TimedMediaHandler",
 	"timedmediahandler-desc": "Handler para áudio, vídeo e texto temporizado, com suporte a formato para WebM, Ogg Theora, Vorbis e srt",
 	"timedmedia-ogg-short-audio": "Arquivo de áudio Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Arquivo de vídeo Ogg $1, $2",
@@ -48,6 +49,11 @@
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "Fonte $1",
 	"timedmedia-source-audio-file-desc": "Arquivo $1 original ($2)",
+	"timedmedia-derivative-160p.ogv": "Ogg 160P",
+	"timedmedia-derivative-240p.ogv": "Ogg 240P",
+	"timedmedia-derivative-360p.ogv": "Ogg 360P",
+	"timedmedia-derivative-480p.ogv": "Ogg 480P",
+	"timedmedia-derivative-720p.ogv": "Ogg 720P",
 	"timedmedia-derivative-desc-1080p.webm": "Full HD WebM (1080P)",
 	"timedmedia-derivative-160p.vp9.webm": "VP9 160P",
 	"timedmedia-derivative-240p.vp9.webm": "VP9 240P",
@@ -78,6 +84,8 @@
 	"timedmedia-derivative-desc-mp3": "MP3",
 	"timedmedia-derivative-m4a": "AAC",
 	"timedmedia-derivative-desc-m4a": "AAC",
+	"timedmedia-resolution-160": "Baixo 160p",
+	"timedmedia-resolution-240": "Baixo 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
 	"timedmedia-resolution-720": "HD 720p",
@@ -87,5 +95,6 @@
 	"timedmedia-subtitle-new": "Criar nova tradução ou editar existente",
 	"timedmedia-subtitle-new-go": "Ir",
 	"timedmedia-subtitle-language": "$1 ($2) legendas",
+	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-file": "Arquivo"
 }
