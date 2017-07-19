@@ -18,5 +18,6 @@
 	"timedmedia-dismiss": "Sloet",
 	"timedmedia-download": "Bestandj downloade",
 	"timedmedia-desc-link": "Euver dit bestandj",
-	"timedmedia-source-file": "Brón van $1"
+	"timedmedia-source-file": "Brón van $1",
+	"timedmedia-source-audio-file-desc": "Origineel $1-bestandj ($2)"
 }
