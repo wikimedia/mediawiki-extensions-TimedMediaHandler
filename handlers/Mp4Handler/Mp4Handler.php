@@ -34,7 +34,7 @@ class Mp4Handler extends ID3Handler {
 		if ( isset( $metadata['video']['resolution_x'] )
 				&&
 			isset( $metadata['video']['resolution_y'] )
-		){
+		) {
 			return [
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']

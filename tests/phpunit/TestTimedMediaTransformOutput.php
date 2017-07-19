@@ -42,7 +42,6 @@ class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 
 		$actual = $reflMethod->invoke( $thumbnail );
 		$this->assertEquals( $actual, $expectPopup );
-
 	}
 
 	function providerIsPopUp() {

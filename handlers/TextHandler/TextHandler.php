@@ -47,7 +47,7 @@ class TextHandler {
 			} else {
 				return false;
 			}
-		} elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ){
+		} elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ) {
 			global $wgTimedTextForeignNamespaces;
 			$wikiID = $this->file->getRepo()->getSlaveDB()->getWikiID();
 			if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {

@@ -113,7 +113,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 				// $value will be an array if the file has
 				// a multiple tags with the same name. Otherwise it
 				// is a string.
-				foreach ( (array) $rawValue as $value ) {
+				foreach ( (array)$rawValue as $value ) {
 					$trimmedValue = trim( $value );
 					if ( $trimmedValue === '' ) {
 						continue;
@@ -287,7 +287,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 		} else {
 			// Return the first found theora stream framerate:
 			foreach ( $metadata['streams'] as $stream ) {
-				if ( $stream['type'] == 'Theora' ){
+				if ( $stream['type'] == 'Theora' ) {
 					return $stream['header']['FRN'] / $stream['header']['FRD'];
 				}
 			}

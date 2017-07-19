@@ -57,7 +57,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	private function getTargetEncodePath() {
-		if ( !$this->targetEncodeFile ){
+		if ( !$this->targetEncodeFile ) {
 			$file = $this->getFile();
 			$transcodeKey = $this->params[ 'transcodeKey' ];
 			$this->targetEncodeFile = WebVideoTranscode::getTargetEncodeFile( $file, $transcodeKey );
@@ -202,7 +202,7 @@ class WebVideoTranscodeJob extends Job {
 				( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation === false )
 		) {
 			// Check for twopass:
-			if ( isset( $options['twopass'] ) ){
+			if ( isset( $options['twopass'] ) ) {
 				// ffmpeg requires manual two pass
 				$status = $this->ffmpegEncode( $options, 1 );
 				if ( $status && !is_string( $status ) ) {
@@ -856,7 +856,7 @@ class WebVideoTranscodeJob extends Job {
 		$fileIsNotGrowing = false;
 
 		$this->output( "Encoding with pid: $pid \npcntl_waitpid: " .
-			pcntl_waitpid( $pid, $status, WNOHANG or WUNTRACED ) .
+			pcntl_waitpid( $pid, $status, WNOHANG | WUNTRACED ) .
 			"\nisProcessRunning: " . self::isProcessRunningKillZombie( $pid ) . "\n" );
 
 		// Check that the child process is still running
@@ -968,13 +968,13 @@ class WebVideoTranscodeJob extends Job {
 		return true;
 	}
 
-	 /**
+	/**
 	 * Mapping between firefogg api and ffmpeg2theora command line
 	 *
 	 * This lets us share a common api between firefogg and WebVideoTranscode
 	 * also see: http://firefogg.org/dev/index.html
 	 */
-	 public static $foggMap = [
+	public static $foggMap = [
 		// video
 		'width'			=> "--width",
 		'height'		=> "--height",

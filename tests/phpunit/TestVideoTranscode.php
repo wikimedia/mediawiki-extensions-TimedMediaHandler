@@ -85,7 +85,6 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 			// Test that target encode was found:
 			$this->assertTrue( $targetEncodeFound );
 		}
-
 	}
 
 	// Run Transcode job
@@ -96,7 +95,6 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		$conds = [ "job_cmd" => $type ];
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
-
 			// @codingStandardsIgnoreStart
 			for ( ; ; ) {
 			// @codingStandardsIgnoreEnd

@@ -234,7 +234,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
 		WebVideoTranscode::ENC_WEBM_1080P =>
-			 [
+			[
 				'maxSize'                    => '1920x1080',
 				'videoBitrate'               => '4096',
 				'audioQuality'               => 3,
@@ -244,7 +244,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
 		WebVideoTranscode::ENC_WEBM_1440P =>
-			 [
+			[
 				'maxSize'                    => '2560x1440',
 				'videoBitrate'               => '8192',
 				'audioQuality'               => 3,
@@ -254,7 +254,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
 		WebVideoTranscode::ENC_WEBM_2160P =>
-			 [
+			[
 				'maxSize'                    => '4096x2160',
 				'videoBitrate'               => '16384',
 				'audioQuality'               => 3,
@@ -334,7 +334,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
 		WebVideoTranscode::ENC_VP9_1080P =>
-			 [
+			[
 				'maxSize'                    => '1920x1080',
 				'videoBitrate'               => '2048',
 				'samplerate'                 => '48000',
@@ -348,7 +348,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
 		WebVideoTranscode::ENC_VP9_1440P =>
-			 [
+			[
 				'maxSize'                    => '2560x1440',
 				'videoBitrate'               => '4096',
 				'samplerate'                 => '48000',
@@ -362,7 +362,7 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
 		WebVideoTranscode::ENC_VP9_2160P =>
-			 [
+			[
 				'maxSize'                    => '4096x2160',
 				'videoBitrate'               => '8192',
 				'samplerate'                 => '48000',
@@ -702,7 +702,6 @@ class WebVideoTranscode {
 		}
 
 		return $sources;
-
 	}
 
 	/**
@@ -758,7 +757,6 @@ class WebVideoTranscode {
 	 * @return bool
 	 */
 	public static function isTranscodeReady( $file, $transcodeKey ) {
-
 		// Check if we need to populate the transcodeState cache:
 		$transcodeState = self::getTranscodeState( $file );
 
@@ -852,7 +850,6 @@ class WebVideoTranscode {
 	 * @param $transcodeKey String Optional transcode key to remove only this key
 	 */
 	public static function removeTranscodes( &$file, $transcodeKey = false ) {
-
 		// if transcode key is non-false, non-null:
 		if ( $transcodeKey ) {
 			// only remove the requested $transcodeKey

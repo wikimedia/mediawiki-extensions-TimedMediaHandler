@@ -24,7 +24,7 @@ $wgTmhUseBetaFeatures = false;
 // Configure the webplayer. Allowed values: mwembed, videojs
 $wgTmhWebPlayer = 'mwembed';
 
-/*** MwEmbed module configuration: *********************************/
+/* MwEmbed module configuration: */
 
 // Show a warning to the user if they are not using an html5 browser with high quality ogg support
 $wgMwEmbedModuleConfig['EmbedPlayer.DirectFileLinkWarning'] = true;
@@ -41,7 +41,7 @@ $wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'always';
 // Show the add text link:
 $wgMwEmbedModuleConfig['TimedText.ShowAddTextLink'] = true;
 
-/*** Timed Media Handler configuration ****************************/
+/* Timed Media Handler configuration */
 
 // Which users can restart failed or expired transcode jobs:
 $wgGroupPermissions['sysop']['transcode-reset'] = true;
@@ -238,7 +238,7 @@ $wgTmhEnableMp4Uploads = false;
 // See tracking bug: https://phabricator.wikimedia.org/T115883
 $wgTmhTheoraTwoPassEncoding = false;
 
-/******************* CONFIGURATION ENDS HERE **********************/
+/* CONFIGURATION ENDS HERE */
 
 // List of extensions handled by Timed Media Handler since its referenced in a few places.
 // you should not modify this variable

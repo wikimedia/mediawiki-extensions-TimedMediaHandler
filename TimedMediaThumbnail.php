@@ -69,8 +69,8 @@ class TimedMediaThumbnail {
 			// a challenge.
 			$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
 			if ( count( $lines ) > 0
-				&& preg_match( '/invalid option -- \'n\'$/', $lines[0] ) )
-			{
+				&& preg_match( '/invalid option -- \'n\'$/', $lines[0] )
+			) {
 				$returnText = wfMessage( 'timedmedia-oggThumb-version', '0.9' )->inContentLanguage()->text();
 			} else {
 				$returnText = wfMessage( 'timedmedia-oggThumb-failed' )->inContentLanguage()->text();
@@ -179,7 +179,7 @@ class TimedMediaThumbnail {
 		if ( class_exists( 'PoolCounterWorkViaCallback' ) ) {
 			$work = new PoolCounterWorkViaCallback( 'TMHTransformFrame',
 				'_tmh:frame:' . $poolKey,
-				[ 'doWork' => function() use ( $file, $params ) {
+				[ 'doWork' => function () use ( $file, $params ) {
 					return $file->transform( $params, File::RENDER_NOW );
 				} ] );
 			$thumb = $work->execute();

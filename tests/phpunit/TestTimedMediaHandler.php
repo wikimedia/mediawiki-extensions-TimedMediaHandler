@@ -43,6 +43,5 @@ class TestTimedMediaHandler extends MediaWikiTestCase {
 				[ 'thumbtime' => 15, 'width' => 180 ],
 			],
 		];
-
 	}
 }
