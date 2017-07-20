@@ -154,6 +154,7 @@
 	"orphanedtimedtext-unsupported": "Diese Spezialseite wird nur auf MySQL-Datenbanken unterstützt.",
 	"orphanedtimedtext-notimedtext": "TimedText ist auf diesem Wiki nicht aktiviert.",
 	"apihelp-query+transcodestatus-description": "Ruft den Umschlüsselungsstatus für eine angegebene Dateiseite ab.",
+	"apihelp-query+transcodestatus-summary": "Ruft den Transkodierungsstatus für eine angegebene Dateiseite ab.",
 	"apihelp-query+transcodestatus-example-1": "Ruft den Transkodierungsstatus für [[:File:Clip.webm]] ab",
 	"apihelp-query+videoinfo-description": "Erweitert die Bildinformationen um Informationen zur Videoquelle (Derivate)",
 	"apihelp-query+videoinfo-example-1": "Ruft Informationen über [[:File:Folgers.ogv]] ab",
