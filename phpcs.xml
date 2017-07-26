@@ -10,8 +10,7 @@
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc"/>
 	<arg name="encoding" value="UTF-8"/>
-	<exclude-pattern>libs</exclude-pattern>
-	<exclude-pattern>MwEmbedModules</exclude-pattern>
-	<exclude-pattern>handlers/OggHandler/File_Ogg</exclude-pattern>
-	<exclude-pattern>vendor</exclude-pattern>
+	<exclude-pattern type="relative">^libs</exclude-pattern>
+	<exclude-pattern type="relative">^MwEmbedModules</exclude-pattern>
+	<exclude-pattern type="relative">^handlers/OggHandler/File_Ogg</exclude-pattern>
 </ruleset>

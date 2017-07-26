@@ -398,7 +398,7 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function onImageOpenShowImageInlineBefore( &$imagePage, &$out ) {
 		$file = $imagePage->getDisplayedFile();
-		return TimedMediaHandlerHooks::onImagePageHooks( $file, $out );
+		return self::onImagePageHooks( $file, $out );
 	}
 
 	/**
@@ -410,7 +410,7 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function onImagePageFileHistoryLine( $imagePage, $file, &$line, &$css ) {
 		$out = $imagePage->getContext()->getOutput();
-		return TimedMediaHandlerHooks::onImagePageHooks( $file, $out );
+		return self::onImagePageHooks( $file, $out );
 	}
 
 	/**
