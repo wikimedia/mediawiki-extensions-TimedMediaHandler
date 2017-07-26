@@ -187,8 +187,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	function getImagePopUp() {
 		// pop up videos set the autoplay attribute to true:
 		$autoPlay = true;
-		$id = TimedMediaTransformOutput::$serial;
-		TimedMediaTransformOutput::$serial++;
+		$id = self::$serial;
+		self::$serial++;
 
 		return Xml::tags( 'div', [
 				'id' => self::PLAYER_ID_PREFIX . $id,
@@ -416,8 +416,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$height .= 'px';
 		}
 
-		$id = TimedMediaTransformOutput::$serial;
-		TimedMediaTransformOutput::$serial++;
+		$id = self::$serial;
+		self::$serial++;
 		$mediaAttr = [
 			'id' => self::PLAYER_ID_PREFIX . $id,
 			// Get the correct size:
