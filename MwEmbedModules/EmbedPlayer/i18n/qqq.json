@@ -6,7 +6,8 @@
 			"Shirayuki",
 			"Umherirrender",
 			"Pikne",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Hamilton Abreu"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}\n{{Identical|Title}}",
@@ -90,7 +91,7 @@
 	"mwe-embedplayer-video-mpeg": "Title of a source, description for a mime type, used with javascript",
 	"mwe-embedplayer-video-msvideo": "Title of a source, description for a mime type, used with javascript",
 	"mwe-embedplayer-missing-source": "May unused",
-	"mwe-embedplayer-vlcapp-intro": "Shown where a video would be on the page, on iPhones/iPads. Parameter $1 is a link to the App store page for the vlc app, with the text contianed in the mwe-embedplayer-vlcapp-vlcapplinktext message. This message is followed by a bulleted list of links consisting of the messages: mwe-embedplayer-vlcapp-downloadapp, mwe-embedplayer-vlcapp-openvideo, mwe-embedplayer-vlcapp-openvideo. See also the related mwe-embedplayer-vlcapp-vlcapppopup message.",
+	"mwe-embedplayer-vlcapp-intro": "Shown where a video would be on the page, on iPhones/iPads. Parameter $1 is a link to the App store page for the vlc app, with the text contained in the mwe-embedplayer-vlcapp-vlcapplinktext message. This message is followed by a bulleted list of links consisting of the messages: mwe-embedplayer-vlcapp-downloadapp, mwe-embedplayer-vlcapp-openvideo, mwe-embedplayer-vlcapp-openvideo. See also the related mwe-embedplayer-vlcapp-vlcapppopup message.",
 	"mwe-embedplayer-vlcapp-vlcapplinktext": "Text of the $1 parameter of mwe-embedplayer-vlcapp-intro. Will be linked to https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 (the download page for the vlc app).",
 	"mwe-embedplayer-vlcapp-downloadapp": "First bullet point after the mwe-embedplayer-vlcapp-intro. Links to the download page for installing the vlc app ( https://itunes.apple.com/us/app/vlc-for-ios/id650377962?mt=8 ).",
 	"mwe-embedplayer-vlcapp-openvideo": "Second bullet point after the mwe-embedplayer-vlcapp-intro. Link will open the video in the VLC app, if the app is installed",
