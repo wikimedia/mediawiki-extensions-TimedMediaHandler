@@ -4,6 +4,16 @@
 			"Saraiki"
 		]
 	},
+	"timedmedia-more": "ٻئے۔۔۔",
+	"timedmedia-dismiss": "بند کرو",
+	"timedmedia-download": "فائل لہاوݨ، ڈاؤن لوڈ کرݨ",
+	"timedmedia-status": "حالت",
+	"timedmedia-status-unknown": "نامعلوم حالت",
+	"timedmedia-transcodeinfo": "فارمیٹ",
+	"timedmedia-actions": "کم",
+	"timedmedia-direct-link": "ڈاؤن لوڈ ، لہاوݨ",
 	"timedmedia-source-file": "$1 مسودہ",
-	"timedmedia-source-audio-file-desc": "اصلی$1 فائل ($2)"
+	"timedmedia-source-audio-file-desc": "اصلی$1 فائل ($2)",
+	"timedmedia-subtitle-new-go": "ڄلو",
+	"timedmedia-file": "فائل"
 }
