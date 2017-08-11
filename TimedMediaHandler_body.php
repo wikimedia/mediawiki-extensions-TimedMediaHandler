@@ -68,14 +68,14 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
-		$paramString ='';
-		$paramString.= ( isset( $params['width'] ) )?  $params['width'] . 'px' : '';
-		$paramString.= ( $paramString != '' )? '-' : '';
+		$paramString = '';
+		$paramString .= ( isset( $params['width'] ) ) ? $params['width'] . 'px' : '';
+		$paramString .= ( $paramString != '' ) ? '-' : '';
 
 		// Get the raw thumbTime from thumbtime or start param
-		if ( isset ( $params['thumbtime'] ) ) {
+		if ( isset( $params['thumbtime'] ) ) {
 			$thumbTime = $params['thumbtime'];
-		} elseif ( isset ( $params['start'] ) ) {
+		} elseif ( isset( $params['start'] ) ) {
 			$thumbTime = $params['start'];
 		} else {
 			$thumbTime = false;
@@ -256,10 +256,10 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public static function getTimePassedMsg( $timePassed ) {
 		$t = [];
-		$t['days'] = floor( $timePassed/60/60/24 );
-		$t['hours'] = floor( $timePassed/60/60 )%24;
-		$t['minutes'] = floor( $timePassed/60 )%60;
-		$t['seconds'] = $timePassed%60;
+		$t['days'] = floor( $timePassed / 60 / 60 / 24 );
+		$t['hours'] = floor( $timePassed / 60 / 60 ) % 24;
+		$t['minutes'] = floor( $timePassed / 60 ) % 60;
+		$t['seconds'] = $timePassed % 60;
 
 		foreach ( $t as $k => $v ) {
 			if ( $v == 0 ) {
@@ -383,7 +383,7 @@ class TimedMediaHandler extends MediaHandler {
 			'start' => isset( $params['start'] ) ? $params['start'] : false,
 			'end' => isset( $params['end'] ) ? $params['end'] : false,
 			'fillwindow' => isset( $params['fillwindow'] ) ? $params['fillwindow'] : false,
-			'disablecontrols' => isset ( $params['disablecontrols'] ) ? $params['disablecontrols'] : false
+			'disablecontrols' => isset( $params['disablecontrols'] ) ? $params['disablecontrols'] : false
 		];
 
 		// No thumbs for audio

@@ -652,7 +652,7 @@ class WebVideoTranscode {
 	public static function getRemoteSources( &$file, $options = [] ) {
 		global $wgMemc;
 		// Setup source attribute options
-		$dataPrefix = in_array( 'nodata', $options )? '': 'data-';
+		$dataPrefix = in_array( 'nodata', $options ) ? '' : 'data-';
 
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
 		if ( $file->repo->descriptionCacheExpiry > 0 ) {
@@ -946,7 +946,7 @@ class WebVideoTranscode {
 	 */
 	public static function getPrimarySourceAttributes( $file, $options = [] ) {
 		global $wgLang;
-		$src = in_array( 'fullurl', $options )?  wfExpandUrl( $file->getUrl() ) : $file->getUrl();
+		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
 		$bitrate = $file->getHandler()->getBitrate( $file );
 		$metadataType = $file->getHandler()->getMetadataType( $file );
@@ -1013,11 +1013,11 @@ class WebVideoTranscode {
 			);
 		}
 
-		$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) )?
+		$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) ) ?
 						self::$derivativeSettings[$transcodeKey]['framerate'] :
 						$file->getHandler()->getFramerate( $file );
 		// Setup the url src:
-		$src = in_array( 'fullurl', $options ) ?  wfExpandUrl( $src ) : $src;
+		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $src ) : $src;
 		$fields = [
 				'src' => $src,
 				'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
@@ -1110,7 +1110,7 @@ class WebVideoTranscode {
 	 *
 	 * @param $file File object
 	 * @param $transcodeKey String transcode key
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
@@ -1212,7 +1212,7 @@ class WebVideoTranscode {
 	 * Check if this transcode belongs to the high-priority queue.
 	 * @param $file File
 	 * @param $transcodeKey string
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTranscodePrioritized( File $file, $transcodeKey ) {
 		global $wgTmhPriorityResolutionThreshold, $wgTmhPriorityLengthThreshold;
@@ -1277,8 +1277,8 @@ class WebVideoTranscode {
 			}
 		}
 		// some players do not like uneven frame sizes
-		$targetWidth += $targetWidth%2;
-		$targetHeight += $targetHeight%2;
+		$targetWidth += $targetWidth % 2;
+		$targetHeight += $targetHeight % 2;
 		return [ $targetWidth, $targetHeight ];
 	}
 

@@ -23,7 +23,7 @@ class TranscodeStatusTable {
 			$file->getTitle(),
 			wfMessage( 'timedmedia-update-status' )->escaped(),
 			[],
-			[ 'action'=> 'purge' ]
+			[ 'action' => 'purge' ]
 		);
 
 		$o .= self::getTranscodesTable( $file );
@@ -133,7 +133,7 @@ class TranscodeStatusTable {
 
 			$o .= '</tr>';
 		}
-		$o .=  Xml::closeElement( 'table' );
+		$o .= Xml::closeElement( 'table' );
 
 		return $o;
 	}

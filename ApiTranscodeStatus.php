@@ -25,7 +25,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 				if ( TimedMediaHandlerHooks::isTranscodableTitle( $img->getTitle() ) ) {
 					$transcodeStatus = WebVideoTranscode::getTranscodeState( $img );
 					// remove useless properties
-					foreach ( $transcodeStatus as $key=>&$val ) {
+					foreach ( $transcodeStatus as $key => &$val ) {
 						unset( $val['id'] );
 						unset( $val['image_name'] );
 						unset( $val['key'] );

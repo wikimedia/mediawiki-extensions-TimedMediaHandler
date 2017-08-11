@@ -149,7 +149,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				. '</tr>'
 				. "\n";
 		}
-		$table .=  '</table>';
+		$table .= '</table>';
 		return $table;
 	}
 
@@ -157,7 +157,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
 		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
 
-		$memcKey= wfMemcKey( 'TimedMediaHandler', 'stats', '1' /* version */ );
+		$memcKey = wfMemcKey( 'TimedMediaHandler', 'stats', '1' /* version */ );
 		$stats = $wgMemc->get( $memcKey );
 		if ( !$stats ) {
 			$dbr = wfGetDB( DB_SLAVE );

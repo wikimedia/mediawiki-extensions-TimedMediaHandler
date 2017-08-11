@@ -207,7 +207,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 * @param $file File
 	 */
 	function getWebType( $file ) {
-		$baseType =  ( $file->getWidth() == 0 && $file->getHeight() == 0 )? 'audio' : 'video';
+		$baseType = ( $file->getWidth() == 0 && $file->getHeight() == 0 ) ? 'audio' : 'video';
 		$baseType .= '/ogg';
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

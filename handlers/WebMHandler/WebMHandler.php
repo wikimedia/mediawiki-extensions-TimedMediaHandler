@@ -91,7 +91,7 @@ class WebMHandler extends ID3Handler {
 	 * @return String
 	 */
 	function getWebType( $file ) {
-		$baseType =  ( $file->getWidth() == 0 && $file->getHeight() == 0 )? 'audio' : 'video';
+		$baseType = ( $file->getWidth() == 0 && $file->getHeight() == 0 ) ? 'audio' : 'video';
 
 		$streams = $this->getStreamTypes( $file );
 		if ( !$streams ) {
@@ -115,17 +115,17 @@ class WebMHandler extends ID3Handler {
 		}
 		// id3 gives 'V_VP8' for what we call VP8
 		if ( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'vp8' ) {
-			$streamTypes[] =  'VP8';
+			$streamTypes[] = 'VP8';
 		} elseif ( isset( $metadata['video'] ) &&
 			( $metadata['video']['dataformat'] === 'vp9'
 			|| $metadata['video']['dataformat'] === 'V_VP9'
 		) ) {
 			// Currently getID3 calls it V_VP9. That will probably change to vp9
 			// once getID3 actually gets support for the codec.
-			$streamTypes[] =  'VP9';
+			$streamTypes[] = 'VP9';
 		}
 		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'vorbis' ) {
-			$streamTypes[] =  'Vorbis';
+			$streamTypes[] = 'Vorbis';
 		} elseif ( isset( $metadata['audio'] ) &&
 			( $metadata['audio']['dataformat'] == 'opus'
 			|| $metadata['audio']['dataformat'] == 'A_OPUS'

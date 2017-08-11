@@ -22,7 +22,7 @@ class TimedMediaHandlerHooks {
 		if ( $wgEnableLocalTimedText ) {
 			if ( !defined( 'NS_TIMEDTEXT' ) ) {
 				define( 'NS_TIMEDTEXT', $wgTimedTextNS );
-				define( 'NS_TIMEDTEXT_TALK', $wgTimedTextNS +1 );
+				define( 'NS_TIMEDTEXT_TALK', $wgTimedTextNS + 1 );
 			}
 
 			$list[NS_TIMEDTEXT] = 'TimedText';
@@ -73,9 +73,9 @@ class TimedMediaHandlerHooks {
 					'mw.MwEmbedSupport',
 				],
 			],
-			"mw.MediaWikiPlayerSupport" =>  $baseExtensionResource + [
+			"mw.MediaWikiPlayerSupport" => $baseExtensionResource + [
 				'scripts' => 'resources/mw.MediaWikiPlayerSupport.js',
-				'dependencies'=> [
+				'dependencies' => [
 					'mw.Api',
 					'mw.MwEmbedSupport',
 				],
@@ -212,7 +212,7 @@ class TimedMediaHandlerHooks {
 		$wgTmhTheoraTwoPassEncoding, $wgWikimediaJenkinsCI;
 
 		// set config for parser tests
-		if ( isset( $wgWikimediaJenkinsCI ) && $wgWikimediaJenkinsCI  === true ) {
+		if ( isset( $wgWikimediaJenkinsCI ) && $wgWikimediaJenkinsCI === true ) {
 			global $wgEnableTranscode, $wgFFmpegLocation;
 			$wgEnableTranscode = false;
 			$wgFFmpegLocation = '/usr/bin/ffmpeg';
@@ -293,7 +293,7 @@ class TimedMediaHandlerHooks {
 					'mediawiki.api.edit',
 					'oojs-ui',
 				],
-				'messages'=> [
+				'messages' => [
 					'timedmedia-reset-button-cancel',
 					'timedmedia-reset-button-dismiss',
 					'timedmedia-reset-button-reset',
@@ -303,7 +303,7 @@ class TimedMediaHandlerHooks {
 					'timedmedia-reset-explanation',
 				]
 			],
-			'ext.tmh.TimedTextSelector' =>  $baseExtensionResource + [
+			'ext.tmh.TimedTextSelector' => $baseExtensionResource + [
 				'scripts' => 'resources/ext.tmh.TimedTextSelector.js',
 			],
 			// Add OgvJs-related modules for Safari/IE/Edge Ogg playback
@@ -321,7 +321,7 @@ class TimedMediaHandlerHooks {
 				'dependencies' => 'ext.tmh.OgvJsSupport',
 				'targets' => [ 'mobile', 'desktop' ],
 			],
-			'embedPlayerIframeStyle'=> $baseExtensionResource + [
+			'embedPlayerIframeStyle' => $baseExtensionResource + [
 				'styles' => 'resources/embedPlayerIframe.css',
 				'targets' => [ 'mobile', 'desktop' ],
 			],
@@ -523,7 +523,7 @@ class TimedMediaHandlerHooks {
 		$mediaType = $handler->getMetadataType( $file );
 		// If ogg or webm format and not audio we can "transcode" this file
 		$isAudio = $handler instanceof TimedMediaHandler && $handler->isAudio( $file );
-		if ( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType =='mp4' )
+		if ( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType == 'mp4' )
 			&& !$isAudio
 		) {
 			return true;

@@ -116,7 +116,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * Run the transcode request
-	 * @return boolean success
+	 * @return bool success
 	 */
 	public function run() {
 		global $wgVersion, $wgFFmpeg2theoraLocation;
@@ -213,7 +213,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} else {
 			wfDebug( 'Error unknown codec:' . $options['videoCodec'] );
-			$status =  'Error unknown target encode codec:' . $options['videoCodec'];
+			$status = 'Error unknown target encode codec:' . $options['videoCodec'];
 		}
 
 		// Remove any log files,
@@ -285,7 +285,7 @@ class WebVideoTranscodeJob extends Job {
 				$status = false;
 			} else {
 				$bitrate = round(
-					intval( filesize( $this->getTargetEncodePath() ) /  $file->getLength() ) * 8
+					intval( filesize( $this->getTargetEncodePath() ) / $file->getLength() ) * 8
 				);
 				// wfRestoreWarnings();
 				// Reconnect to the database...
@@ -333,7 +333,7 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	function removeFfmpegLogFiles() {
-		$path =  $this->getTargetEncodePath();
+		$path = $this->getTargetEncodePath();
 		$dir = dirname( $path );
 		if ( is_dir( $dir ) ) {
 			$dh = opendir( $dir );
@@ -396,7 +396,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		// Check for end time:
 		if ( isset( $options['endtime'] ) ) {
-			$cmd .= ' -t ' . intval( $options['endtime'] )  - intval( $options['starttime'] );
+			$cmd .= ' -t ' . intval( $options['endtime'] ) - intval( $options['starttime'] );
 		}
 
 		if ( $pass == 1 || isset( $options['noaudio'] ) ) {
@@ -466,7 +466,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -b " . wfEscapeShellArg( $options['videoBitrate'] );
 		}
 		// Output mp4
-		$cmd .=" -f mp4";
+		$cmd .= " -f mp4";
 		return $cmd;
 	}
 
@@ -521,7 +521,7 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		$cmd =' -threads ' . intval( $wgFFmpegThreads );
+		$cmd = ' -threads ' . intval( $wgFFmpegThreads );
 
 		// check for presets:
 		if ( isset( $options['preset'] ) ) {
@@ -535,7 +535,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Add the boiler plate vp8 ffmpeg command:
-		$cmd .=" -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000";
+		$cmd .= " -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000";
 
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
@@ -573,7 +573,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Output WebM
-		$cmd .=" -f webm";
+		$cmd .= " -f webm";
 
 		return $cmd;
 	}
@@ -594,7 +594,7 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		$cmd =' -threads ' . intval( $wgFFmpegThreads );
+		$cmd = ' -threads ' . intval( $wgFFmpegThreads );
 
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
@@ -625,7 +625,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Output Ogg
-		$cmd .=" -f ogg";
+		$cmd .= " -f ogg";
 
 		return $cmd;
 	}
@@ -636,7 +636,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	function ffmpegAddAudioOptions( $options, $pass ) {
-		$cmd ='';
+		$cmd = '';
 		if ( isset( $options['audioQuality'] ) ) {
 			$cmd .= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
 		}
@@ -901,7 +901,7 @@ class WebVideoTranscodeJob extends Job {
 
 			// Check if we have global job run-time has been exceeded:
 			if (
-				$wgTranscodeBackgroundTimeLimit && time() - $startTime  > $wgTranscodeBackgroundTimeLimit
+				$wgTranscodeBackgroundTimeLimit && time() - $startTime > $wgTranscodeBackgroundTimeLimit
 			) {
 				$errorMsg = "Encoding exceeded max job run time ( "
 					. TimedMediaHandler::seconds2npt( $wgTranscodeBackgroundTimeLimit ) . " ), kill process.";
@@ -929,8 +929,8 @@ class WebVideoTranscodeJob extends Job {
 
 		// return the encoding log contents ( will be inserted into error table if an error )
 		// ( will be ignored and removed if success )
-		if ( $errorMsg!= '' ) {
-			$errorMsg .="\n\n";
+		if ( $errorMsg != '' ) {
+			$errorMsg .= "\n\n";
 		}
 		return $errorMsg . file_get_contents( $encodingLog );
 	}
@@ -980,7 +980,7 @@ class WebVideoTranscodeJob extends Job {
 		'height'		=> "--height",
 		'maxSize'		=> "--max_size",
 		'noUpscaling'	=> "--no-upscaling",
-		'videoQuality'=> "-v",
+		'videoQuality' => "-v",
 		'videoBitrate'	=> "-V",
 		'twopass'		=> "--two-pass",
 		'optimize'		=> "--optimize",
@@ -992,7 +992,7 @@ class WebVideoTranscodeJob extends Job {
 		'cropBottom'	=> "--cropbottom",
 		'cropLeft'		=> "--cropleft",
 		'cropRight'		=> "--cropright",
-		'keyframeInterval'=> "--keyint",
+		'keyframeInterval' => "--keyint",
 		'denoise'		=> [ "--pp", "de" ],
 		'deinterlace'	=> "--deinterlace",
 		'novideo'		=> [ "--novideo", "--no-skeleton" ],

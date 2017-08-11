@@ -28,7 +28,7 @@ class Mp3Handler extends ID3Handler {
 			return false;
 		}
 		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'mp3' ) {
-			$streamTypes[] =  'MP3';
+			$streamTypes[] = 'MP3';
 		}
 		return $streamTypes;
 	}

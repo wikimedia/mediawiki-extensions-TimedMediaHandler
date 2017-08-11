@@ -200,12 +200,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				'alt' => $this->file->getTitle(),
 				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
 							$this->getPlayerHeight() . "px",
-				'src' =>  $this->getUrl(),
+				'src' => $this->getUrl(),
 			], '' )
 			.
 			// For javascript disabled browsers provide a link to the asset:
 			Xml::tags( 'a', [
-					'href'=> $this->file->getUrl(),
+					'href' => $this->file->getUrl(),
 					'title' => wfMessage( 'timedmedia-play-media' )->escaped(),
 					'target' => 'new'
 				],
@@ -406,7 +406,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$offset = floatval( $this->offset );
 
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
-		$height = $sizeOverride ? $sizeOverride[1]: $this->getPlayerHeight();
+		$height = $sizeOverride ? $sizeOverride[1] : $this->getPlayerHeight();
 
 		if ( $this->fillwindow ) {
 			$width = '100%';
@@ -425,10 +425,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
 			// it updates the controls attribute of the embed video
-			'controls'=> 'true',
+			'controls' => 'true',
 			// Since we will reload the item with javascript,
 			// tell browser to not load the video before
-			'preload'=>'none',
+			'preload' => 'none',
 		];
 
 		if ( $autoPlay === true ) {

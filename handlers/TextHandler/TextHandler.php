@@ -66,7 +66,7 @@ class TextHandler {
 			// Get the namespace data from the image api repo:
 			// fetchImageQuery query caches results
 			$data = $this->file->getRepo()->fetchImageQuery( [
-				'meta' =>'siteinfo',
+				'meta' => 'siteinfo',
 				'siprop' => 'namespaces'
 			] );
 
@@ -249,7 +249,7 @@ class TextHandler {
 				'type' => $contentType,
 				'title' => $this->getPrefixedDBkey( $subTitle ),
 				'provider' => $providerName,
-				'srclang' =>  $languageKey,
+				'srclang' => $languageKey,
 				'dir' => Language::factory( $languageKey )->getDir(),
 				'label' => wfMessage( 'timedmedia-subtitle-language',
 					$langNames[ $languageKey ],

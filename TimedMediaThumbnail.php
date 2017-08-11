@@ -122,7 +122,7 @@ class TimedMediaThumbnail {
 		// getFileHttpUrl was only added in mw 1.21, dont fail if it does not exist
 		if ( method_exists( $backend, 'getFileHttpUrl' ) ) {
 			$src = $backend->getFileHttpUrl( [
-				'src' =>  $options['file']->getPath()
+				'src' => $options['file']->getPath()
 			] );
 		} else {
 			$src = null;

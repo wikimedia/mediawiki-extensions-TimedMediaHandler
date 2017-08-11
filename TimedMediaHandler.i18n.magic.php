@@ -18,15 +18,15 @@ $magicWords['en'] = [
 ];
 
 $magicWords['af'] = [
-	'timedmedia_noplayer'=> [ '0', 'geenspeler', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'geenikoon', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'geenspeler', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'geenikoon', 'noicon' ],
 	'timedmedia_starttime' => [ '0', 'begin=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'einde=$1', 'end=$1' ],
 ];
 
 $magicWords['ar'] = [
-	'timedmedia_noplayer'=> [ '0', 'لابرنامج', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'لاأيقونة', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'لابرنامج', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'لاأيقونة', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'وقت_التصغير=$1', 'thumbtime=$1' ],
 	'timedmedia_starttime' => [ '0', 'بداية=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'نهاية=$1', 'end=$1' ],
@@ -38,8 +38,8 @@ $magicWords['arc'] = [
 ];
 
 $magicWords['arz'] = [
-	'timedmedia_noplayer'=> [ '0', 'لابرنامج', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'لاأيقونة', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'لابرنامج', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'لاأيقونة', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'وقت_التصغير=$1', 'thumbtime=$1' ],
 	'timedmedia_starttime' => [ '0', 'بداية=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'نهاية=$1', 'end=$1' ],
@@ -51,8 +51,8 @@ $magicWords['ko'] = [
 ];
 
 $magicWords['ml'] = [
-	'timedmedia_noplayer'=> [ '0', 'പ്ലേയറില്ല', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'ഐകോണില്ല', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'പ്ലേയറില്ല', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'ഐകോണില്ല', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'ലഘുരൂപസമയം=$1', 'thumbtime=$1' ],
 	'timedmedia_starttime' => [ '0', 'തുടങ്ങുക=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'നിർത്തുക=$1', 'end=$1' ],
@@ -65,22 +65,22 @@ $magicWords['mr'] = [
 ];
 
 $magicWords['nds-nl'] = [
-	'timedmedia_noplayer'=> [ '0', 'gienspeuler', 'geenspeler', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'gienicoon', 'geenicoon', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'gienspeuler', 'geenspeler', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'gienicoon', 'geenicoon', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'miniatuurtied=$1', 'miniatuurtijd=$1', 'thumbtime=$1' ],
 	'timedmedia_endtime' => [ '0', 'einde=$1', 'eind=$1', 'end=$1' ],
 ];
 
 $magicWords['nl'] = [
-	'timedmedia_noplayer'=> [ '0', 'geenspeler', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'geenicoon', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'geenspeler', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'geenicoon', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'miniatuurtijd=$1', 'thumbtime=$1' ],
 	'timedmedia_endtime' => [ '0', 'eind=$1', 'end=$1' ],
 ];
 
 $magicWords['ru'] = [
-	'timedmedia_noplayer'=> [ '0', 'нетпроигрывателя', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'нетзначка', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'нетпроигрывателя', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'нетзначка', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'времямини=$1', 'thumbtime=$1' ],
 	'timedmedia_starttime' => [ '0', 'начало=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'окончание=$1', 'end=$1' ],
@@ -88,8 +88,8 @@ $magicWords['ru'] = [
 ];
 
 $magicWords['uk'] = [
-	'timedmedia_noplayer'=> [ '0', 'немаєпрогравача', 'нетпроигрывателя', 'noplayer' ],
-	'timedmedia_noicon'=> [ '0', 'немаєзначка', 'нетзначка', 'noicon' ],
+	'timedmedia_noplayer' => [ '0', 'немаєпрогравача', 'нетпроигрывателя', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'немаєзначка', 'нетзначка', 'noicon' ],
 	'timedmedia_thumbtime' => [ '0', 'часміні=$1', 'времямини=$1', 'thumbtime=$1' ],
 	'timedmedia_starttime' => [ '0', 'початок=$1', 'начало=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'закінчення=$1', 'окончание=$1', 'end=$1' ],
