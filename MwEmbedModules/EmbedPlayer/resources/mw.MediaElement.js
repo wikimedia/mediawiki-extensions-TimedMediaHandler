@@ -310,46 +310,45 @@ mw.MediaElement.prototype = {
 				if( !  namedSourceSet[ codec ] ){
 					continue;
 				}
-				if( namedSourceSet[ codec ].length == 1 ){
-					mw.log('MediaElement::autoSelectSource: Set 1 source via EmbedPlayer.CodecPreference: ' + namedSourceSet[ codec ][0].getTitle() );
-					return setSelectedSource( namedSourceSet[ codec ][0] );
-				} else if( namedSourceSet[ codec ].length > 1 ) {
-					// select based on size:
-					// Set via embed resolution closest to relative to display size
-					var minSizeDelta = null;
+				// select based on size:
+				// Set via embed resolution closest to relative to display size
+				var minSizeDelta = null;
 
-					// unless we're really slow...
-					var isBogoSlow = useBogoSlow && OGVCompat.isSlow();
+				// unless we're really slow...
+				var isBogoSlow = useBogoSlow && OGVCompat.isSlow();
 
-					if( this.parentEmbedId ){
-						var displayWidth = $('#' + this.parentEmbedId).width();
-						$.each( namedSourceSet[ codec ], function(inx, source ){
-							if ( ( isBogoSlow && source.height > 240 )
-								|| (useBogoSlow && source.height > 360 ) ) {
-								// On iOS or slow Windows devices, large videos decoded in JavaScript are a bad idea!
+				if( this.parentEmbedId ){
+					var displayWidth = $('#' + this.parentEmbedId).width();
+					$.each( namedSourceSet[ codec ], function(inx, source ){
+						if ( ( isBogoSlow && source.height > 240 )
+							|| (useBogoSlow && source.height > 360 ) ) {
+							// On iOS or slow Windows devices, large videos decoded in JavaScript are a bad idea!
+							// continue
+							return true;
+						}
+						if( source.width && displayWidth ){
+							if ( source.width > displayWidth ) {
+								// Bigger than the space to display?
+								// Skip it unless it's the only one that fits.
 								// continue
 								return true;
 							}
-							if( source.width && displayWidth ){
-								var sizeDelta =  Math.abs( source.width - displayWidth );
-								mw.log('MediaElement::autoSelectSource: size delta : ' + sizeDelta + ' for s:' + source.width );
-								if( minSizeDelta == null ||  sizeDelta < minSizeDelta){
-									minSizeDelta = sizeDelta;
-									setSelectedSource( source );
-								}
+							var sizeDelta =  Math.abs( source.width - displayWidth );
+							mw.log('MediaElement::autoSelectSource: size delta : ' + sizeDelta + ' for s:' + source.width );
+							if( minSizeDelta == null ||  sizeDelta < minSizeDelta){
+								minSizeDelta = sizeDelta;
+								setSelectedSource( source );
 							}
-						});
-					}
-					// If we found a source via display size return:
-					if ( this.selectedSource ) {
-						mw.log('MediaElement::autoSelectSource: from  ' + this.selectedSource.mimeType + ' because of resolution:' + this.selectedSource.width + ' close to: ' + displayWidth );
-						return this.selectedSource;
-					}
-					// if no size info is set just select the first source:
-					if( namedSourceSet[ codec ][0] ){
-						return setSelectedSource( namedSourceSet[ codec ][0] );
-					}
+						}
+						// Fall through to next one...
+					});
 				}
+				// If we found a source via display size return:
+				if ( this.selectedSource ) {
+					mw.log('MediaElement::autoSelectSource: from  ' + this.selectedSource.mimeType + ' because of resolution:' + this.selectedSource.width + ' close to: ' + displayWidth );
+					return this.selectedSource;
+				}
+				// else fall through to defaults...
 			};
 		}
 
