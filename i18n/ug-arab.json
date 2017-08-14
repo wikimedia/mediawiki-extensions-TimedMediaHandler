@@ -1,13 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sahran"
+			"Sahran",
+			"Uzdil"
 		]
 	},
 	"timedmedia-dismiss": "ياپ",
 	"timedmedia-status": "ھالەت",
 	"timedmedia-actions": "مەشغۇلات",
 	"timedmedia-not-ready": "تەييار ئەمەس",
-	"timedmedia-subtitle-new-go": "يۆتكەل",
+	"timedmedia-source-file": "$1 مەنبە ھۆججەت",
+	"timedmedia-subtitle-new-go": "يوللاش",
 	"timedmedia-file": "ھۆججەت"
 }

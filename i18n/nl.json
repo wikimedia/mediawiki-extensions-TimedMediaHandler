@@ -25,6 +25,8 @@
 	"timedmedia-wav-short-audio": "WAV-audiobestand, $1",
 	"timedmedia-wav-long-audio": "WAV-audiobestand, lengte $1, $2 gemiddeld",
 	"timedmedia-wav-pcm-required": "U kunt alleen PCM (Pulse Code Modulation) WAV uploaden.",
+	"timedmedia-mp3-short-audio": "MP3-audiobestand, $1",
+	"timedmedia-mp3-long-audio": "MP3-audiobestand, lengte $1, $2 gemiddeld",
 	"timedmedia-mp4-short-video": "MP4 $1 videobestand, $2",
 	"timedmedia-mp4-long-video": "MP4 audio/videobestand, $1, lengte $2, $4x$5 pixels, $3 totaal",
 	"timedmedia-more": "Meer…",
