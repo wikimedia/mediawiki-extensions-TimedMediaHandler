@@ -197,12 +197,17 @@ mw.EmbedPlayerOgvJs = {
 		this.currentTime = time;
 		this.previousTime = time; // prevent weird double-seek. MwEmbedPlyer is weird!
 
-		// Run the onSeeking interface update
-		this.controlBuilder.onSeek();
-		// @todo add proper events upstream
 		if( this.seeking ){
-			this.seeking = false;
-			$( this ).trigger( 'seeked' );
+			// Run the onSeeking interface update
+			this.controlBuilder.onSeek();
+			var _this = this;
+			function onseeked(event) {
+				_this.seeking = false;
+				_this.hideSpinner();
+				$( _this ).trigger( 'seeked' );
+				this.removeEventListener( 'seeked', onseeked );
+			}
+			this.playerElement.addEventListener( 'seeked', onseeked );
 		}
 		if ( $.isFunction( callback ) ) {
 			callback();
