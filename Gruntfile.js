@@ -15,7 +15,8 @@ module.exports = function ( grunt ) {
 				'!MwEmbedModules/**',
 				'!resources/videojs*/**',
 				'!resources/mw-info-button/**',
-				'!node_modules/**'
+				'!node_modules/**',
+				'!vendor/**'
 			]
 		},
 		stylelint: {
@@ -27,7 +28,8 @@ module.exports = function ( grunt ) {
 				'!MwEmbedModules/**',
 				'!resources/videojs*/**',
 				'!resources/mw-info-button/**',
-				'!node_modules/**'
+				'!node_modules/**',
+				'!vendor/**'
 			]
 		},
 		banana: {
@@ -39,7 +41,8 @@ module.exports = function ( grunt ) {
 			all: [
 				'*.json',
 				'**/*.json',
-				'!node_modules/**'
+				'!node_modules/**',
+				'!vendor/**'
 			]
 		},
 		exec: {
