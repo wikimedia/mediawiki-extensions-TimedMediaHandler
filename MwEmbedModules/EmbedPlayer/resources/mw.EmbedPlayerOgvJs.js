@@ -41,7 +41,9 @@ mw.EmbedPlayerOgvJs = {
 	 * @return OGVPlayer
 	 */
 	_ogvJsInit: function() {
-		var options = {};
+		var options = {
+			enableWebM: true
+		};
 		if ( this._iOSAudioContext ) {
 			// Reuse the audio context we opened earlier
 			options.audioContext = this._iOSAudioContext;

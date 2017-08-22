@@ -94,6 +94,16 @@ var IEWebMPrompt = new mw.MediaPlayer( 'IEWebMPrompt', [
 ], 'IEWebMPrompt' );
 
 var ogvJsPlayer = new mw.MediaPlayer( 'ogvJsPlayer', [
+	'video/webm',
+	'video/webm; codecs="vp8"',
+	'video/webm; codecs="vp8, vorbis"',
+	'video/webm; codecs="vp8, opus"',
+	'video/webm; codecs="vp9"',
+	'video/webm; codecs="vp9, vorbis"',
+	'video/webm; codecs="vp9, opus"',
+	'audio/webm',
+	'audio/webm; codecs="vorbis"',
+	'audio/webm; codecs="opus"',
 	'video/ogg',
 	'video/ogg; codecs="theora"',
 	'video/ogg; codecs="theora, vorbis"',
