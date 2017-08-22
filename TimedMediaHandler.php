@@ -135,7 +135,8 @@ $wgEnabledTranscodeSet = [
 
 	// WebM VP8/Vorbis
 	// primary free/open video format
-	// supported by Chrome/Firefox/Opera but not Safari/IE/Edge
+	// supported by Chrome/Firefox/Opera natively
+	// plays back in Safari/IE/Edge via ogv.js
 
 	// Very low-bitrate web streamable WebM video
 	WebVideoTranscode::ENC_WEBM_160P,
@@ -158,8 +159,10 @@ $wgEnabledTranscodeSet = [
 	// A 4K full high quality WebM stream
 	// WebVideoTranscode::ENC_WEBM_2160P,
 
+/*
 	// Ogg Theora/Vorbis
-	// Fallback for Safari/IE/Edge with ogv.js
+	// Optional fallback for Safari/IE/Edge with ogv.js
+	// Faster to encode & play back than WebM but less efficient.
 
 	// Requires twice the bitrate for same quality as VP8,
 	// and JS decoder can be slow, so shift to smaller sizes.
@@ -183,6 +186,7 @@ $wgEnabledTranscodeSet = [
 	// Variable-bitrate HD Ogg stream
 	// for ogv.js on reasonably speedy machines
 	WebVideoTranscode::ENC_OGV_1080P,
+*/
 
 /*
 	// MP4 H.264/AAC
