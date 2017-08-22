@@ -132,6 +132,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 file audio Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 file audio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 file audio WAV}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 file audio WebM}}",
 	"right-transcode-reset": "Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.",
 	"right-transcode-status": "Visualizza [[Special:TimedMediaHandler|informazioni sull'attuale attività di transcodifica]]",
 	"action-transcode-status": "visualizzare l'attuale stato della transcodifica",

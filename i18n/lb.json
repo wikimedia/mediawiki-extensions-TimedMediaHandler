@@ -81,6 +81,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg Audio-Fichier|$1 Ogg Audio-Fichieren}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC Audio-Fichier|$1 FLAC Audio-Fichieren}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV Audio-Fichier|$1 WAV Audio-Fichieren}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM Audio-Fichier|$1 WebM Audio-Fichieren}}",
 	"orphanedtimedtext-unsupported": "Dës Spezialsäit funktionéiert nëmme mat MySQL Datebanken.",
 	"orphanedtimedtext-notimedtext": "TimedText ass op dëser Wiki net aktivéiert.",
 	"apihelp-transcodereset-param-title": "Den Titel vum Mediefichier."

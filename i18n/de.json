@@ -141,6 +141,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|Eine OGG-Audiodatei|$1 OGG-Audiodateien}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|Eine FLAC-Audiodatei|$1 FLAC-Audiodateien}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|Eine WAV-Audiodatei|$1 WAV-Audiodateien}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|Eine WebM-Audiodatei|$1 WebM-Audiodateien}}",
 	"beta-feature-timedmediahandler-description-videojs": "Betrachte Videodateien in einem modernen Spieler mit einem saubereren Aussehen und der Kompatibilität für mobile Endgeräte.",
 	"right-transcode-reset": "Fehlgeschlagene oder erfolgreiche Umschlüsselungen von Video-Dateien zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten",
