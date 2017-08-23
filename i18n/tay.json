@@ -4,6 +4,9 @@
 			"Translatealcd"
 		]
 	},
+	"timedmedia-dismiss": "Ql’iy",
+	"timedmedia-reset-button-dismiss": "Ql’iy",
 	"timedmedia-source-file": "$1 inkhula na biru’ ka ssliyan ana nanu’ na zyuwaw",
-	"timedmedia-source-audio-file-desc": "Cin’ringan $1 biru’ na zayzyuwaw  ($2)"
+	"timedmedia-source-audio-file-desc": "Cin’ringan $1 biru’ na zayzyuwaw  ($2)",
+	"timedmedia-file": "Biru’ na zayzyuwaw"
 }

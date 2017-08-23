@@ -125,6 +125,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 ficheru de soníu Ogg|$1 ficheros de soníu Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 ficheru de soníu FLAC|$1 ficheros de soníu FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 ficheru de soníu WAV|$1 ficheros de soníu WAV}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 ficheru de soníu WebM|$1 ficheros de soníu WebM}}",
 	"beta-feature-timedmediahandler-description-videojs": "Ver ficheros de videu nun reproductor con aspeutu llimpiu y compatibilidá col móvil.",
 	"right-transcode-reset": "Reaniciar los videos fallíos o trescodificaos pa que vuelvan a ponese na cola de trabayos.",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre l'actividá de trescodificación actual]]",
