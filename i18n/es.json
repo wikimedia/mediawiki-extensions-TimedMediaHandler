@@ -127,7 +127,7 @@
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|restableció}} una conversión de $3 al formato «$4»",
 	"orphanedtimedtext": "Páginas TimedText huérfanas",
 	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que no tienen un archivo correspondiente.",
-	"orphanedtimedtext-unsupported": "Esta página especial sólo está soportada en base de datos MySQL.",
+	"orphanedtimedtext-unsupported": "Esta página especial sólo se admite en base de datos MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText no se activó en este wiki.",
 	"apihelp-query+transcodestatus-description": "Obtener el estado de conversión de una página de archivo concreta.",
 	"apihelp-query+transcodestatus-example-1": "Obtener el estado de conversión de [[:File:Clip.webm]]",
