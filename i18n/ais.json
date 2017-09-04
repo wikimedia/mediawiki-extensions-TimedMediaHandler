@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bunukwiki"
+			"Bunukwiki",
+			"Tokoabibi"
 		]
 	},
 	"timedmedia-more": "yadah...",
 	"timedmedia-transcodeinfo": "tatudungay a kenis",
 	"timedmedia-actions": "saungay",
-	"timedmedia-direct-link": "syacay",
+	"timedmedia-direct-link": "patasasa'",
 	"timedmedia-reset-button-dismiss": "edeben",
 	"timedmedia-source-file": "$1 saangangan",
 	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)"
