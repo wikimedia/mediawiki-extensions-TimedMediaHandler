@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Translatealcd"
+			"Translatealcd",
+			"Hitaypayan"
 		]
 	},
 	"timedmedia-dismiss": "Ql’iy",
+	"timedmedia-update-status": "Psqgiqas quw zyuwaw na sinbah banggo’",
 	"timedmedia-reset-button-dismiss": "Ql’iy",
 	"timedmedia-source-file": "$1 inkhula na biru’ ka ssliyan ana nanu’ na zyuwaw",
 	"timedmedia-source-audio-file-desc": "Cin’ringan $1 biru’ na zayzyuwaw  ($2)",
