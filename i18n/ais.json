@@ -11,5 +11,6 @@
 	"timedmedia-direct-link": "patasasa'",
 	"timedmedia-reset-button-dismiss": "edeben",
 	"timedmedia-source-file": "$1 saangangan",
-	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)"
+	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)",
+	"timedmedia-subtitle-language": "$1 ($2) mikilulay a satangahan"
 }
