@@ -224,11 +224,6 @@ mw.EmbedTypes = {
 						}
 
 					}
-					// For now if Android assume we support h264Native (FIXME
-					// test on real devices )
-					if ( mw.isAndroid2() ){
-						this.mediaPlayers.addPlayer( h264NativePlayer );
-					}
 
 					// Test for ogg
 					if ( dummyvid.canPlayType( 'video/ogg; codecs="theora, vorbis"' ) || 

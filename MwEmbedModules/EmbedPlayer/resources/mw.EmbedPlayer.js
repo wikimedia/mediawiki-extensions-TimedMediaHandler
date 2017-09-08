@@ -1698,8 +1698,7 @@
 		 * cases where a native player is dipalyed such as iPhone.
 		 */
 		isPersistantPlayBtn: function(){
-			return mw.isAndroid2() ||
-					( mw.isIphone() && mw.config.get( 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ) );
+			return ( mw.isIphone() && mw.config.get( 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ) );
 		},
 		/**
 		 * Checks if native controls should be used
@@ -1723,7 +1722,7 @@
 
 			// Do some device detection devices that don't support overlays
 			// and go into full screen once play is clicked:
-			if( mw.isAndroid2() || mw.isIpod()  || mw.isIphone() ){
+			if( mw.isIpod()  || mw.isIphone() ){
 				return true;
 			}
 
