@@ -8,12 +8,18 @@
 	},
 	"timedmedia-more": "yadah...",
 	"timedmedia-download": "patasasa’ tu tangan",
+	"timedmedia-play-media": "mipalaw tu myiti",
+	"timedmedia-status-header": "miliyaw kodo a setyitase",
+	"timedmedia-status-unknown": "caay kapulita ku setyitase",
 	"timedmedia-transcodeduration": "sakababalic a bangguay a demiad",
 	"timedmedia-transcodeinfo": "tatudungay a kenis",
 	"timedmedia-actions": "saungay",
 	"timedmedia-direct-link": "patasasa'",
+	"timedmedia-not-ready": "caay henay milasul",
+	"timedmedia-reset": "miliyaw patizeng nikasumad a mima",
 	"timedmedia-reset-button-dismiss": "edeben",
 	"timedmedia-source-file": "$1 saangangan",
 	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)",
-	"timedmedia-subtitle-language": "$1 ($2) mikilulay a satangahan"
+	"timedmedia-subtitle-language": "$1 ($2) mikilulay a satangahan",
+	"action-transcode-reset": "miliyaw patizeng nikasumad a mima"
 }
