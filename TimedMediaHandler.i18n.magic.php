@@ -45,6 +45,12 @@ $magicWords['arz'] = [
 	'timedmedia_endtime' => [ '0', 'نهاية=$1', 'end=$1' ],
 ];
 
+$magicWords['he'] = [
+	'timedmedia_thumbtime' => [ 0, 'זמן_חלונית=$1', 'thumbtime=$1' ],
+	'timedmedia_starttime' => [ 0, 'התחלה=$1', 'start=$1' ],
+	'timedmedia_endtime' => [ 0, 'סיום=$1', 'end=$1' ],
+];
+
 $magicWords['ko'] = [
 	'timedmedia_starttime' => [ '0', '시작=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', '끝=$1', 'end=$1' ],
