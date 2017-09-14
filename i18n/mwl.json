@@ -4,5 +4,8 @@
 			"MokaAkashiyaPT"
 		]
 	},
-	"timedmedia-subtitle-language": "Lhegendas an $1 ($2)"
+	"timedmedia-subtitle-language": "Lhegendas an $1 ($2)",
+	"timedmediahandler": "TimedMediaHandler",
+	"timedmedia-videos": "{{PLURAL:$1|$1 bídeo|$1 bídeos}}",
+	"timedmedia-audios": "{{PLURAL:$1|$1 fexeiro de áudio|$1 fexeiros de áudio}}"
 }
