@@ -141,6 +141,7 @@
 	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser.",
 	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien.",
 	"apihelp-query+transcodestatus-description": "Hent transkodingsstatus for en gitt filside.",
+	"apihelp-query+transcodestatus-summary": "Hent transkodingsstatis for ei gitt filside.",
 	"apihelp-query+transcodestatus-example-1": "Hent transkodingsstatus for [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-description": "Utvider imageinfo til å inkludere informasjon om videokilde (derivater)",
 	"apihelp-query+videoinfo-example-1": "Hent informasjon om [[:File:Folgers.ogv]]",
