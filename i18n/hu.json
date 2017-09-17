@@ -8,7 +8,8 @@
 			"Samat",
 			"Dj",
 			"Tacsipacsi",
-			"Urbalazs"
+			"Urbalazs",
+			"Rodrigo"
 		]
 	},
 	"timedmediahandler-desc": "Audió-, videó- és feliratkezelő, WebM-, Ogg Theora-, Ogg Vorbis- és srt-támogatással",
@@ -34,7 +35,7 @@
 	"timedmedia-oggThumb-version": "Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.",
 	"timedmedia-oggThumb-failed": "Az oggThumb nem tudta elkészíteni a bélyegképet.",
 	"timedmedia-source-file": "Forrás ($1)",
-	"timedmedia-source-file-desc": "Eredeti $1, $2 × $3 ($4)",
+	"timedmedia-source-file-desc": "Eredeti $1 fájl, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Eredeti $1 fájl ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Alacsony sávszélességű Ogg videó (160P)",
 	"timedmedia-derivative-desc-720p.ogv": "HD Ogg videó (720P)",
