@@ -8,11 +8,17 @@
 	"timedmedia-more": "Pzyux na’...",
 	"timedmedia-dismiss": "Ql’iy",
 	"timedmedia-update-status": "Psqgiqas quw zyuwaw na sinbah banggo’",
+	"timedmedia-transcodebitrate": "Pituret",
 	"timedmedia-transcodeinfo": "Ksu’",
 	"timedmedia-actions": "Mmtzyuwaw",
 	"timedmedia-direct-link": "Syacay",
 	"timedmedia-reset-button-dismiss": "Ql’iy",
 	"timedmedia-source-file": "$1 inkhula na biru’ ka ssliyan ana nanu’ na zyuwaw",
 	"timedmedia-source-audio-file-desc": "Cin’ringan $1 biru’ na zayzyuwaw  ($2)",
+	"timedmedia-derivative-desc-240p.ogv": "Pikcikuy Ogg video (240P)",
+	"timedmedia-derivative-desc-240p.webm": "Pkcikuy WebM (240P)",
+	"timedmedia-derivative-desc-240p.vp9.webm": "Pkcikuy VP9 (240P)",
+	"timedmedia-derivative-desc-240p.mp4": "Pkcikuy MP4 H.264 (240P)",
+	"timedmedia-subtitle-language": "$1 ($2) Mszik sa spzyang lalu’ kkayal",
 	"timedmedia-file": "Biru’ na zayzyuwaw"
 }

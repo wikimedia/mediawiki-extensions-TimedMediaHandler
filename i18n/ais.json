@@ -23,6 +23,8 @@
 	"timedmedia-reset-button-dismiss": "edeben",
 	"timedmedia-source-file": "$1 saangangan",
 	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)",
+	"timedmedia-resolution-1440": "mangasiw katingalaw 1440p",
 	"timedmedia-subtitle-language": "$1 ($2) mikilulay a satangahan",
-	"action-transcode-reset": "miliyaw patizeng nikasumad a mima"
+	"action-transcode-reset": "miliyaw patizeng nikasumad a mima",
+	"action-transcode-status": "ciwsace ayza nikasumad-mima setyitase"
 }
