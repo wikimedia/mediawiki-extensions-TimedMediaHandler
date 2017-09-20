@@ -5,13 +5,20 @@
 			"Hitaypayan"
 		]
 	},
+	"timedmedia-flac-short-audio": "FLAC tang’an na hngzyang, $1",
+	"timedmedia-wav-short-audio": "WAV tang’an na hngzyang, $1",
+	"timedmedia-mp3-short-audio": "MP3 tang’an na hngzyang, $1",
 	"timedmedia-more": "Pzyux na’...",
 	"timedmedia-dismiss": "Ql’iy",
+	"timedmedia-download": "Aniy syacay quw Tang’an",
 	"timedmedia-update-status": "Psqgiqas quw zyuwaw na sinbah banggo’",
+	"timedmedia-status-unknown": "Ini’ bqbaqiy ginlaylwan",
 	"timedmedia-transcodebitrate": "Pituret",
 	"timedmedia-transcodeinfo": "Ksu’",
 	"timedmedia-actions": "Mmtzyuwaw",
 	"timedmedia-direct-link": "Syacay",
+	"timedmedia-not-ready": "Ini’ ’nblaq mnaga’ na’",
+	"timedmedia-reset": "T’ringun kbalay lawziy cwan ma’",
 	"timedmedia-reset-button-dismiss": "Ql’iy",
 	"timedmedia-source-file": "$1 inkhula na biru’ ka ssliyan ana nanu’ na zyuwaw",
 	"timedmedia-source-audio-file-desc": "Cin’ringan $1 biru’ na zayzyuwaw  ($2)",
@@ -20,5 +27,10 @@
 	"timedmedia-derivative-desc-240p.vp9.webm": "Pkcikuy VP9 (240P)",
 	"timedmedia-derivative-desc-240p.mp4": "Pkcikuy MP4 H.264 (240P)",
 	"timedmedia-subtitle-language": "$1 ($2) Mszik sa spzyang lalu’ kkayal",
-	"timedmedia-file": "Biru’ na zayzyuwaw"
+	"timedmedia-file": "Biru’ na zayzyuwaw",
+	"timedmedia-audios": "{{PLURAL:$1|$1 tang’an na hngzyang}}",
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg tang’an na hngzyang}}",
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV tang’an na hngzyang}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM tang’an na hngzyang}}",
+	"action-transcode-reset": "t’ringun kbalay lawziy cwan ma’"
 }
