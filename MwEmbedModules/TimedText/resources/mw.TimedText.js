@@ -123,7 +123,7 @@
 				this.config = JSON.parse(  preferenceConfig );
 			}
 			// remove any old bindings on change media:
-			$( this.embedPlayer ).bind( 'onChangeMedia' + this.bindPostFix , function(){
+			$( this.embedPlayer ).on( 'onChangeMedia' + this.bindPostFix , function(){
 				_this.destroy();
 			});
 
@@ -153,14 +153,14 @@
 			// Check for timed text support:
 			_this.addInterface();
 
-			$( embedPlayer ).bind( 'timeupdate' + this.bindPostFix, function( event, jEvent, id ) {
+			$( embedPlayer ).on( 'timeupdate' + this.bindPostFix, function( event, jEvent, id ) {
 				// regain scope
 				_this = $('#' + id)[0].timedText;
 				// monitor text updates
 				_this.monitor();
 			} );
 
-			$( embedPlayer ).bind( 'firstPlay' + this.bindPostFix, function(event, id ) {
+			$( embedPlayer ).on( 'firstPlay' + this.bindPostFix, function(event, id ) {
 				// regain scope
 				_this = $('#' + id)[0].timedText;
 				// Will load and setup timedText sources (if not loaded already loaded )
@@ -170,7 +170,7 @@
 			} );
 
 			// Re-Initialize when changing media
-			$( embedPlayer ).bind( 'onChangeMedia' + this.bindPostFix, function() {
+			$( embedPlayer ).on( 'onChangeMedia' + this.bindPostFix, function() {
 				_this.destroy();
 				_this.updateLayout();
 				_this.setupTextSources();
@@ -178,7 +178,7 @@
 			} );
 
 			// Resize the timed text font size per window width
-			$( embedPlayer ).bind( 'onCloseFullScreen' + this.bindPostFix + ' onOpenFullScreen' + this.bindPostFix, function() {
+			$( embedPlayer ).on( 'onCloseFullScreen' + this.bindPostFix + ' onOpenFullScreen' + this.bindPostFix, function() {
 				// Check if we are in fullscreen or not, if so add an additional bottom offset of
 				// double the default bottom padding.
 				var textOffset = _this.embedPlayer.controlBuilder.inFullScreen ?
@@ -203,7 +203,7 @@
 			});
 
 			// Update the timed text size
-			$( embedPlayer ).bind( 'updateLayout'+ this.bindPostFix, function() {
+			$( embedPlayer ).on( 'updateLayout'+ this.bindPostFix, function() {
 				// If the the player resize action is an animation, animate text resize,
 				// else instantly adjust the css.
 				var textCss = _this.getInterfaceSizeTextCss( {
@@ -215,7 +215,7 @@
 			});
 
 			// Setup display binding
-			$( embedPlayer ).bind( 'onShowControlBar'+ this.bindPostFix, function(event, layout, id ){
+			$( embedPlayer ).on( 'onShowControlBar'+ this.bindPostFix, function(event, layout, id ){
 				// update embedPlayer ref:
 				var embedPlayer = $('#' + id )[0];
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
@@ -226,7 +226,7 @@
 				}
 			});
 
-			$( embedPlayer ).bind( 'onHideControlBar' + this.bindPostFix, function(event, layout, id ){
+			$( embedPlayer ).on( 'onHideControlBar' + this.bindPostFix, function(event, layout, id ){
 				var embedPlayer = $('#' + id )[0];
 				if ( embedPlayer.controlBuilder.isOverlayControls() ) {
 					// Move the text track down if present
@@ -236,7 +236,7 @@
 				}
 			});
 
-			$( embedPlayer ).bind( 'AdSupport_StartAdPlayback' + this.bindPostFix, function() {
+			$( embedPlayer ).on( 'AdSupport_StartAdPlayback' + this.bindPostFix, function() {
 				if ( $( '#textMenuContainer_' + embedPlayer.id ).length ) {
 					$( '#textMenuContainer_' + embedPlayer.id ).hide();
 				}
@@ -248,7 +248,7 @@
 				_this.setLayoutMode( 'off' );
 			} );
 
-			$( embedPlayer ).bind( 'AdSupport_EndAdPlayback' + this.bindPostFix, function() {
+			$( embedPlayer ).on( 'AdSupport_EndAdPlayback' + this.bindPostFix, function() {
 				var $textButton = embedPlayer.getInterface().find( '.timed-text' );
 				if ( $textButton.length ) {
 					_this.bindTextButton( $textButton );
@@ -260,7 +260,7 @@
 		addInterface: function(){
 			var _this = this;
 			// By default we include a button in the control bar.
-			$( _this.embedPlayer ).bind( 'addControlBarComponent' + this.bindPostFix, function(event, controlBar ){
+			$( _this.embedPlayer ).on( 'addControlBarComponent' + this.bindPostFix, function(event, controlBar ){
 				if( controlBar.supportedComponents['timedText'] !== false &&
 					_this.includeCaptionButton() ) {
 					controlBar.supportedComponents['timedText'] = true;
@@ -322,7 +322,7 @@
 		},
 		bindTextButton: function( $textButton ){
 			var _this = this;
-			$textButton.unbind('click.textMenu').bind('click.textMenu', function() {
+			$textButton.off('click.textMenu').on('click.textMenu', function() {
                 _this.showTextMenu();
             return true;
 			} );

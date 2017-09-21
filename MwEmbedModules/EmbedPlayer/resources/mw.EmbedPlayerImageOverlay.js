@@ -219,8 +219,8 @@ mw.EmbedPlayerImageOverlay = {
 			switchCallback( this );
 		}
 		// Wait for ended event to tr
-		$( this ).bind('ended.playerSwitchSource', function(){
-			$( _this ).unbind('ended.playerSwitchSource');
+		$( this ).on('ended.playerSwitchSource', function(){
+			$( _this ).off('ended.playerSwitchSource');
 			if( doneCallback ) {
 				doneCallback( this );
 			}

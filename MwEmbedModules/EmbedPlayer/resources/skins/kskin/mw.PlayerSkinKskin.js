@@ -180,8 +180,8 @@ mw.PlayerSkinKskin = {
 
 		// Options menu display:
 		this.$playerTarget.find( '.k-options' )
-		.unbind()
-		.click( function() {
+		.off()
+		.on( 'click', function() {
 			_this.checkMenuOverlay();
 			var $kmenu = _this.$playerTarget.find( '.k-menu' );
 			if ( $kmenu.is( ':visible' ) ) {

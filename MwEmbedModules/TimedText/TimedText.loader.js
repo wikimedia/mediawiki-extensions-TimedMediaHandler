@@ -11,13 +11,13 @@
 	*/
 	// Update the player loader request with timedText library if the embedPlayer
 	// includes timedText tracks.
-	$( mw ).bind( 'EmbedPlayerUpdateDependencies', function( event, playerElement, classRequest ) {
+	$( mw ).on( 'EmbedPlayerUpdateDependencies', function( event, playerElement, classRequest ) {
 		if( mw.isTimedTextSupported( playerElement ) ) {
 			classRequest = $.merge( classRequest, ['mw.TimedText'] );
 		}
 	} );
 	// On new embed player check if we need to add timedText
-	$( mw ).bind( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
+	$( mw ).on( 'EmbedPlayerNewPlayer', function( event, embedPlayer ){
 		if( mw.isTimedTextSupported( embedPlayer ) ){
 			mw.loader.using( 'mw.TimedText', function () {
 				embedPlayer.timedText = new mw.TimedText( embedPlayer );

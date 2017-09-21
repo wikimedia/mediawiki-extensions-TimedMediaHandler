@@ -98,10 +98,10 @@ mw.EmbedPlayerKplayer = {
 		$(_this).unbind( this.bindPostfix );
 
 		// Flash player loses its bindings once it changes sizes::
-		$(_this).bind('onOpenFullScreen' + this.bindPostfix , function() {
+		$(_this).on('onOpenFullScreen' + this.bindPostfix , function() {
 			_this.postEmbedActions();
 		});
-		$(_this).bind('onCloseFullScreen' + this.bindPostfix, function() {
+		$(_this).on('onCloseFullScreen' + this.bindPostfix, function() {
 			_this.postEmbedActions();
 		});
 	},

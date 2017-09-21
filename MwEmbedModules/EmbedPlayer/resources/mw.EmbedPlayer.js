@@ -366,16 +366,16 @@
 		/**
 		 * Bind helpers to help iOS retain bind context
 		 *
-		 * Yes, iOS will fail when you run $( embedPlayer ).bind()
-		 * but "work" when you run embedPlayer.bind() if the script urls are from diffrent "resources"
+		 * Yes, iOS will fail when you run $( embedPlayer ).on()
+		 * but "work" when you run .on() from script urls that are different "resources"
 		 */
 		bindHelper: function( name, callback ){
-			$( this ).bind( name, callback );
+			$( this ).on( name, callback );
 			return this;
 		},
 		unbindHelper: function( bindName ){
 			if( bindName ) {
-				$( this ).unbind( bindName );
+				$( this ).off( bindName );
 			}
 			return this;
 		},
@@ -443,7 +443,7 @@
 			this._playContorls = false;
 			// turn off hover:
 			this.getInterface().find( '.play-btn' )
-				.unbind('mouseenter mouseleave')
+				.off('mouseenter mouseleave')
 				.css('cursor', 'default' );
 
 			this.controlBuilder.disableSeekBar();
@@ -1363,8 +1363,8 @@
 			var $pBtn = this.getInterface().find('.play-btn-large')
 				.attr( 'title', mw.msg('mwe-embedplayer-play_clip') )
 				.show()
-				.unbind( 'click' )
-				.click( function() {
+				.off( 'click' )
+				.on( 'click', function() {
 					_this.triggerHelper( 'firstPlay', [ _this.id ] ); // To send stats event for play
 					_this.triggerHelper( 'playing' );
 					return true;
@@ -1524,7 +1524,7 @@
 
 			//If we are change playing media add a ready binding:
 			var bindName = 'playerReady.changeMedia';
-			$this.unbind( bindName ).bind( bindName, function(){
+			$this.off( bindName ).on( bindName, function(){
 				mw.log('EmbedPlayer::changeMedia playerReady callback');
 				// hide the loading spinner:
 				_this.hideSpinnerAndPlayBtn();
@@ -2050,8 +2050,8 @@
 
 			// If we have start time defined, start playing from that point
 			if( this.currentTime < this.startTime ) {
-				$this.bind('playing.startTime', function(){
-					$this.unbind('playing.startTime');
+				$this.on('playing.startTime', function(){
+					$this.off('playing.startTime');
 					if( !mw.isIOS() ){
 						_this.setCurrentTime( _this.startTime );
 						_this.startTime = 0;
@@ -2099,8 +2099,8 @@
 			this.hideSpinnerOncePlaying();
 
 			this.getInterface().find( '.play-btn' )
-			.unbind('click')
-			.click( function( ) {
+			.off('click')
+			.on( 'click', function( ) {
 				if( _this._playContorls ){
 					_this.pause();
 				}
@@ -2182,8 +2182,8 @@
 			.addClass( 'ui-icon-play' );
 
 			this.getInterface().find( '.play-btn' )
-			.unbind('click')
-			.click( function() {
+			.off('click')
+			.on( 'click', function() {
 				if( _this._playContorls ){
 					_this.play();
 				}

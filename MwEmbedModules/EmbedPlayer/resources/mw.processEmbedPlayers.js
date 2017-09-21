@@ -97,8 +97,8 @@ mw.processEmbedPlayers = function( playerSet, callback ) {
 			$( mw ).trigger ( 'EmbedPlayerNewPlayer', inDomPlayer );
 
 			// Add a player ready binding:
-			$( inDomPlayer ).bind( 'playerReady.swap', function(event, id){
-				$( inDomPlayer ).unbind( 'playerReady.swap' );
+			$( inDomPlayer ).on( 'playerReady.swap', function(event, id){
+				$( inDomPlayer ).off( 'playerReady.swap' );
 				areSelectedPlayersReady();
 			});
 
@@ -122,7 +122,7 @@ mw.processEmbedPlayers = function( playerSet, callback ) {
 					$( playerElement ).attr('width') + ') or duration: ' +
 					$( playerElement ).attr('duration')
 			);
-			$( playerElement ).bind( "loadedmetadata", runPlayerSwap );
+			$( playerElement ).on( "loadedmetadata", runPlayerSwap );
 
 			// Time-out of 5 seconds ( maybe still playable but no timely metadata )
 			setTimeout( runPlayerSwap, 5000 );

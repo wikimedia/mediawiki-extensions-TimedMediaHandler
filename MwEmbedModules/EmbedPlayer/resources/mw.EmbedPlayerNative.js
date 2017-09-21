@@ -284,7 +284,7 @@ mw.EmbedPlayerNative = {
 			return ;
 		}
 		$.each( _this.nativeEvents, function( inx, eventName ){
-			$( vid ).unbind( eventName + '.embedPlayerNative').bind( eventName + '.embedPlayerNative', function(){
+			$( vid ).off( eventName + '.embedPlayerNative').on( eventName + '.embedPlayerNative', function(){
 				if( _this._propagateEvents ){
 					var argArray = $.makeArray( arguments );
 					// always pass the current ref id as the last argument
@@ -504,11 +504,11 @@ mw.EmbedPlayerNative = {
 		var seekBind = 'seeked.nativeSeekBind';
 
 		// Remove any old listeners
-		$( vid ).unbind( seekBind );
+		$( vid ).off( seekBind );
 		// Bind a seeked listener for the callback
-		$( vid ).bind( seekBind, function( event ) {
+		$( vid ).on( seekBind, function( event ) {
 			// Remove the listener:
-			$( vid ).unbind( seekBind );
+			$( vid ).off( seekBind );
 
 			// Check if seeking to zero:
 			if( seekTime == 0 && vid.currentTime == 0 ){
@@ -656,7 +656,7 @@ mw.EmbedPlayerNative = {
 		if ( vid ) {
 			try {
 				// Remove all switch player bindings
-				$( vid ).unbind( switchBindPostfix );
+				$( vid ).off( switchBindPostfix );
 
 				// pause before switching source
 				vid.pause();
@@ -679,8 +679,8 @@ mw.EmbedPlayerNative = {
 				// hide the player offscreen while we switch
 				_this.hidePlayerOffScreen();
 				// restore position once we have metadata
-				$( vid ).bind( 'loadedmetadata' + switchBindPostfix, function(){
-					$( vid ).unbind( 'loadedmetadata' + switchBindPostfix);
+				$( vid ).on( 'loadedmetadata' + switchBindPostfix, function(){
+					$( vid ).off( 'loadedmetadata' + switchBindPostfix);
 					mw.log("EmbedPlayerNative:: playerSwitchSource> loadedmetadata callback for:" + src + ' switchCallback: ' + switchCallback );
 					// Only update duration if we didn't get it server side
 					// Some browsers report bad duration (e.g. Android native browser)
@@ -710,17 +710,17 @@ mw.EmbedPlayerNative = {
 				}
 
 				// once playing issue callbacks:
-				$( vid ).bind( 'playing' + switchBindPostfix, function(){
-					$( vid ).unbind( 'playing' + switchBindPostfix );
+				$( vid ).on( 'playing' + switchBindPostfix, function(){
+					$( vid ).off( 'playing' + switchBindPostfix );
 					mw.log("EmbedPlayerNative:: playerSwitchSource> playing callback");
 					handleSwitchCallback();
 				});
 
 				// Add the end binding if we have a post event:
 				if( $.isFunction( doneCallback ) ){
-					$( vid ).bind( 'ended' + switchBindPostfix , function( event ) {
+					$( vid ).on( 'ended' + switchBindPostfix , function( event ) {
 						// remove end binding:
-						$( vid ).unbind( switchBindPostfix );
+						$( vid ).off( switchBindPostfix );
 						// issue the doneCallback
 						doneCallback();
 
@@ -1075,7 +1075,7 @@ mw.EmbedPlayerNative = {
 	onClipDone: function(){
 		var _this = this;
 		// add clip done binding ( will only run on sequence complete )
-		$(this).unbind('onEndedDone.onClipDone').bind( 'onEndedDone.onClipDone', function(){
+		$(this).off('onEndedDone.onClipDone').on( 'onEndedDone.onClipDone', function(){
 			_this.addPlayScreenWithNativeOffScreen();
 			// if not a legitmate play screen don't keep the player offscreen when playback starts:
 			if( !_this.isImagePlayScreen() ){
