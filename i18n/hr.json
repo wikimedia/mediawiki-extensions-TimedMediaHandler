@@ -32,8 +32,8 @@
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
 	"timedmediahandler": "Upravljački program za prikazivanje medija u vremenskim odsječcima i s titlovima – TimedMediaHandler",
 	"timedmedia-videos": "{{PLURAL:$1|Jedna videodatoteka|$1 videodatoteke|$1 videodatoteka}}",
-	"timedmedia-audios": "{{PLURAL:$1|jedna zvučna datoteka|$1 zvučne datoteke|$1 zvučnih datoteka}}",
-	"log-name-timedmediahandler": "Evidencija TimedMediaHandlerovih titlova",
+	"timedmedia-audios": "{{PLURAL:$1|jedna audiodatoteka|$1 audiodatoteke|$1 audiodatoteka}}",
+	"log-name-timedmediahandler": "Evidencija medija s titlovima",
 	"log-description-timedmediahandler": "Ova stranica sadržava evidencije postavljanja titlova vezanu uz programsku opremu i uporabu TimedMediaHandlerovih transkôdova.",
 	"orphanedtimedtext": "Stranice siročad s TimedText titlovima"
 }
