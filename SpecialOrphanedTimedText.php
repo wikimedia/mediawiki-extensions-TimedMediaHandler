@@ -86,7 +86,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return bool
 	 */
 	private function canExecuteQuery() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		return $dbr->getType() === 'mysql';
 	}
 

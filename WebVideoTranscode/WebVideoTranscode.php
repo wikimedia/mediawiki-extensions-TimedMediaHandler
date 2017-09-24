@@ -911,7 +911,7 @@ class WebVideoTranscode {
 		// TODO if the video is used in over 500 pages add to 'job queue'
 		// TODO interwiki invalidation ?
 		$limit = 500;
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			[ 'imagelinks', 'page' ],
 			[ 'page_namespace', 'page_title' ],

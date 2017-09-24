@@ -110,7 +110,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$memcKey = wfMemcKey( 'TimedMediaHandler', 'files', $state );
 		$files = $wgMemc->get( $memcKey );
 		if ( !$files ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$files = [];
 			$res = $dbr->select(
 				'transcode',
@@ -160,7 +160,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$memcKey = wfMemcKey( 'TimedMediaHandler', 'stats', '1' /* version */ );
 		$stats = $wgMemc->get( $memcKey );
 		if ( !$stats ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$stats = [];
 			$stats[ 'videos' ] = [ 'total' => 0 ];
 			foreach ( $this->formats as $format => $condition ) {
@@ -193,7 +193,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 		$memcKey = wfMemcKey( 'TimedMediaHandler', 'states' );
 		$states = $wgMemc->get( $memcKey );
 		if ( !$states ) {
-			$dbr = wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_REPLICA );
 			$states = [];
 			$states[ 'transcodes' ] = [ 'total' => 0 ];
 			foreach ( $this->transcodeStates as $state => $condition ) {

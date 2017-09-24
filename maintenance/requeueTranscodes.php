@@ -28,7 +28,7 @@ class RequeueTranscodes extends Maintenance {
 
 	public function execute() {
 		$this->output( "Cleanup transcodes:\n" );
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 		$types = [];
 		if ( $this->hasOption( 'audio' ) ) {
 			$types[] = 'AUDIO';
