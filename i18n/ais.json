@@ -6,6 +6,10 @@
 			"Benel"
 		]
 	},
+	"timedmedia-ogg-short-video": "Ogg $1 iga tangan, $2",
+	"timedmedia-ogg-long-error": "la’cusay a Ogg tangan: $1",
+	"timedmedia-wav-short-audio": "WAV tangan nu ngiha’, $1",
+	"timedmedia-mp4-short-video": "MP4 $1 iga tangan, $2",
 	"timedmedia-more": "yadah...",
 	"timedmedia-dismiss": "edeben",
 	"timedmedia-download": "patasasa’ tu tangan",
@@ -21,12 +25,15 @@
 	"timedmedia-not-ready": "caay henay milasul",
 	"timedmedia-error-on": "i $1 mungangaw",
 	"timedmedia-percent-done": "maka malaheci tu $1%",
+	"timedmedia-unknown-target-size": "caay kapulita papatuzu'an hacica-tabaki，sakababalic tu banggu $1 tuway",
 	"timedmedia-reset": "miliyaw patizeng nikasumad a mima",
 	"timedmedia-reset-button-dismiss": "edeben",
 	"timedmedia-source-file": "$1 saangangan",
 	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)",
+	"timedmedia-derivative-desc-360p.ogv": "Ogg iga (360P)",
 	"timedmedia-resolution-1440": "mangasiw katingalaw 1440p",
 	"timedmedia-subtitle-language": "$1 ($2) mikilulay a satangahan",
+	"timedmedia-subtitle-remote": "tina tangan a saazih a sulit itiza i $1",
 	"action-transcode-reset": "miliyaw patizeng nikasumad a mima",
 	"action-transcode-status": "ciwsace ayza nikasumad-mima setyitase"
 }

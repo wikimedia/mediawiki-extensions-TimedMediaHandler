@@ -61,6 +61,8 @@
 	"timedmedia-minutes": "{{PLURAL:$1|۱ دقیقه|$1 دقیقه}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 ثانیه|$1 ثانیه}}",
 	"timedmedia-reset": "تنظیم مجدد فراکد",
+	"timedmedia-reset-button-dismiss": "نپذیرفتن",
+	"timedmedia-reset-button-reset": "از نو",
 	"timedmedia-reset-error": "خطا در بازنشانی کار فراکد.",
 	"timedmedia-reset-explanation": "تنظیم مجدد فراکد پرونده‌های موجود را حذف خواهد کرد و فراکد را در صف کار خواهد افزود. این کار مقداری زمان لازم دارد.<br /><br />\nآیا می‌خواهید ادامه دهید؟",
 	"timedmedia-mp4": "MP4",
