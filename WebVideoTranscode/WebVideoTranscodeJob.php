@@ -37,7 +37,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * Local function to debug output ( jobs don't have access to the maintenance output class )
-	 * @param $msg string
+	 * @param string $msg
 	 */
 	private function output( $msg ) {
 		print $msg . "\n";
@@ -93,8 +93,8 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * Update the transcode table with failure time and error
-	 * @param $transcodeKey string
-	 * @param $error string
+	 * @param string $transcodeKey
+	 * @param string $error
 	 *
 	 */
 	private function setTranscodeError( $transcodeKey, $error ) {
@@ -356,8 +356,8 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * Utility helper for ffmpeg and ffmpeg2theora mapping
-	 * @param $options array
-	 * @param $pass int
+	 * @param array $options
+	 * @param int $pass
 	 * @return bool|string
 	 */
 	function ffmpegEncode( $options, $pass=0 ) {
@@ -433,8 +433,8 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Adds ffmpeg shell options for h264
 	 *
-	 * @param $options
-	 * @param $pass
+	 * @param array $options
+	 * @param int $pass
 	 * @return string
 	 */
 	function ffmpegAddH264VideoOptions( $options, $pass ) {
@@ -511,8 +511,8 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Adds ffmpeg shell options for webm
 	 *
-	 * @param $options
-	 * @param $pass
+	 * @param array $options
+	 * @param int $pass
 	 * @return string
 	 */
 	function ffmpegAddWebmVideoOptions( $options, $pass ) {
@@ -584,8 +584,8 @@ class WebVideoTranscodeJob extends Job {
 	 * Used only when $wgFFmpeg2theoraLocation set to false.
 	 * Warning: does not create Ogg skeleton metadata track.
 	 *
-	 * @param $options
-	 * @param $pass
+	 * @param array $options
+	 * @param int $pass
 	 * @return string
 	 */
 	function ffmpegAddTheoraVideoOptions( $options, $pass ) {
@@ -631,8 +631,8 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * @param $options array
-	 * @param $pass
+	 * @param array $options
+	 * @param int $pass
 	 * @return string
 	 */
 	function ffmpegAddAudioOptions( $options, $pass ) {
@@ -675,7 +675,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * ffmpeg2Theora mapping is much simpler since it is the basis of the the firefogg API
-	 * @param $options array
+	 * @param array $options
 	 * @return bool|string
 	 */
 	function ffmpeg2TheoraEncode( $options ) {
@@ -739,8 +739,8 @@ class WebVideoTranscodeJob extends Job {
 	 * if $wgEnableBackgroundTranscodeJobs is enabled will mannage a background transcode task
 	 * else it just directly passes off to wfShellExec
 	 *
-	 * @param $cmd String Command to be run
-	 * @param $retval String, refrence variable to return the exit code
+	 * @param string $cmd Command to be run
+	 * @param string &$retval reference variable to return the exit code
 	 * @return string
 	 */
 	public function runShellExec( $cmd, &$retval ) {
@@ -801,10 +801,10 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * @param $cmd
-	 * @param $retval
-	 * @param $encodingLog
-	 * @param $retvalLog
+	 * @param string $cmd
+	 * @param string &$retval
+	 * @param string $encodingLog
+	 * @param string $retvalLog
 	 * @param string $caller The calling method
 	 */
 	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog, $caller ) {
@@ -841,10 +841,10 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * @param $pid
-	 * @param $retval
-	 * @param $encodingLog
-	 * @param $retvalLog
+	 * @param int $pid
+	 * @param string &$retval
+	 * @param string $encodingLog
+	 * @param string $retvalLog
 	 * @return string
 	 */
 	public function monitorTranscode( $pid, &$retval, $encodingLog, $retvalLog ) {
@@ -937,7 +937,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * check if proccess is running and not a zombie
-	 * @param $pid int
+	 * @param int $pid
 	 * @return bool
 	 */
 	public static function isProcessRunningKillZombie( $pid ) {
@@ -956,7 +956,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	* Kill Application PID
 	*
-	* @param $pid int
+	* @param int $pid
 	* @return bool
 	*/
 	public static function killProcess( $pid ) {

@@ -16,8 +16,8 @@ class TestWebMHandler extends MediaWikiMediaTestCase {
 
 	/**
 	 * @dataProvider providerGetStreamTypes
-	 * @param $filename String name of file
-	 * @param $expected array List of codecs in file
+	 * @param string $filename name of file
+	 * @param array $expected List of codecs in file
 	 */
 	function testGetStreamTypes( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'video/webm' );
@@ -34,8 +34,8 @@ class TestWebMHandler extends MediaWikiMediaTestCase {
 
 	/**
 	 * @dataProvider providerGetWebType
-	 * @param $filename String name of file
-	 * @param $expected String Mime type
+	 * @param string $filename name of file
+	 * @param string $expected Mime type
 	 */
 	function testGetWebType( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'video/webm' );

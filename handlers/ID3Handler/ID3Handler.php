@@ -7,7 +7,7 @@ class ID3Handler extends TimedMediaHandler {
 	const METADATA_VERSION = 2;
 
 	/**
-	 * @param $path string
+	 * @param string $path
 	 * @return array
 	 */
 	protected function getID3( $path ) {
@@ -43,8 +43,8 @@ class ID3Handler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
-	 * @param $path string
+	 * @param File $file
+	 * @param string $path
 	 * @return string
 	 */
 	function getMetadata( $file, $path ) {
@@ -53,7 +53,7 @@ class ID3Handler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $metadata
+	 * @param string $metadata
 	 * @return bool|mixed
 	 */
 	function unpackMetadata( $metadata ) {
@@ -68,7 +68,7 @@ class ID3Handler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return mixed
 	 */
 	function getBitrate( $file ) {
@@ -81,7 +81,7 @@ class ID3Handler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return int
 	 */
 	function getLength( $file ) {
@@ -94,7 +94,7 @@ class ID3Handler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return bool|int
 	 */
 	function getFramerate( $file ) {

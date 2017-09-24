@@ -58,6 +58,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
+	 * @return array
 	 */
 	protected function getExamplesMessages() {
 		return [

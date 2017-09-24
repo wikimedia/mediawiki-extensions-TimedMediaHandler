@@ -325,6 +325,7 @@ class TextHandler {
 	 * Only use for local and foreignDb requests
 	 *
 	 * @param Title|ForeignTitle $pageTitle
+	 * @param string $contentType
 	 * @return string
 	 */
 	function getFullURL( $pageTitle, $contentType ) {

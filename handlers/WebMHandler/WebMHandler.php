@@ -5,7 +5,7 @@
 class WebMHandler extends ID3Handler {
 
 	/**
-	 * @param $path string
+	 * @param string $path
 	 * @return array
 	 */
 	protected function getID3( $path ) {
@@ -17,9 +17,9 @@ class WebMHandler extends ID3Handler {
 
 	/**
 	 * Get the "media size"
-	 * @param $file File
-	 * @param $path string
-	 * @param $metadata bool|string|array
+	 * @param File $file
+	 * @param string $path
+	 * @param bool|string|array $metadata
 	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
@@ -79,7 +79,7 @@ class WebMHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file
+	 * @param File $file
 	 * @return string
 	 */
 	function getMetadataType( $file ) {
@@ -87,7 +87,7 @@ class WebMHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getWebType( $file ) {
@@ -104,7 +104,7 @@ class WebMHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
@@ -139,7 +139,7 @@ class WebMHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getShortDesc( $file ) {
@@ -154,7 +154,7 @@ class WebMHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getLongDesc( $file ) {

@@ -5,7 +5,7 @@
 class WAVHandler extends ID3Handler {
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return string
 	 */
 	function getMetadataType( $file ) {
@@ -13,7 +13,7 @@ class WAVHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getWebType( $file ) {
@@ -35,7 +35,7 @@ class WAVHandler extends ID3Handler {
 		return Status::newFatal( 'timedmedia-wav-pcm-required' );
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
@@ -54,7 +54,7 @@ class WAVHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getShortDesc( $file ) {
@@ -69,7 +69,7 @@ class WAVHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getLongDesc( $file ) {

@@ -69,8 +69,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 	/**
 	 * @param OutputPage $out
-	 * @param $state
-	 * @param $states
+	 * @param string $state
+	 * @param array $states
 	 * @param bool $showTable
 	 */
 	private function renderState( $out, $state, $states, $showTable = true ) {

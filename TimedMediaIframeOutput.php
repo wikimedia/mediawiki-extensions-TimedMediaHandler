@@ -12,8 +12,8 @@
 class TimedMediaIframeOutput {
 	/**
 	 * The iframe hook check file pages embedplayer=yes
-	 * @param $title Title
-	 * @param $article Article
+	 * @param Title &$title
+	 * @param Article &$article
 	 * @param bool $doOutput
 	 * @return bool
 	 */
@@ -41,7 +41,8 @@ class TimedMediaIframeOutput {
 
 	/**
 	 * Output an iframe
-	 * @param $title Title
+	 * @param Title $title
+	 * @return bool
 	 * @throws Exception
 	 */
 	static function outputIframe( $title ) {

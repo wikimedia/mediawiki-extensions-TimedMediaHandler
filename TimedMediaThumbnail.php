@@ -2,7 +2,7 @@
 class TimedMediaThumbnail {
 
 	/**
-	 * @param $options array()
+	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
 	static function get( $options ) {
@@ -30,7 +30,7 @@ class TimedMediaThumbnail {
 	 * Run oggThumb to generate a still image from a video file, using a frame
 	 * close to the given number of seconds from the start.
 	 *
-	 * @param $options array
+	 * @param array $options
 	 * @return bool|MediaTransformError
 	 *
 	 */
@@ -82,7 +82,7 @@ class TimedMediaThumbnail {
 	}
 
 	/**
-	 * @param $options array
+	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
 	static function tryFfmpegThumb( $options ) {
@@ -158,7 +158,7 @@ class TimedMediaThumbnail {
 	}
 
 	/**
-	 * @param $options array
+	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
 	static function resizeThumb( $options ) {
@@ -218,7 +218,7 @@ class TimedMediaThumbnail {
 	}
 
 	/**
-	 * @param $options array
+	 * @param array $options
 	 * @return bool|float|int
 	 */
 	static function getThumbTime( $options ) {

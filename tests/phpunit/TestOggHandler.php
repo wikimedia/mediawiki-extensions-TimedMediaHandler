@@ -16,8 +16,8 @@ class TestOggHandler extends MediaWikiMediaTestCase {
 
 	/**
 	 * @dataProvider providerGetCommonMetaArray
-	 * @param $filename String name of file
-	 * @param $expected Array
+	 * @param string $filename name of file
+	 * @param array $expected
 	 */
 	function testGetCommonMetaArray( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'application/ogg' );
@@ -47,8 +47,8 @@ class TestOggHandler extends MediaWikiMediaTestCase {
 
 	/**
 	 * @dataProvider providerGetWebType
-	 * @param $filename String name of file
-	 * @param $expected String Mime type (including codecs)
+	 * @param string $filename name of file
+	 * @param string $expected Mime type (including codecs)
 	 */
 	function testGetWebType( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'application/ogg' );

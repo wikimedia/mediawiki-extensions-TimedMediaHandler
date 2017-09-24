@@ -45,6 +45,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media transform thumbnail
+	 * @param bool|array $sizeOverride
 	 * @return string
 	 */
 	function getUrl( $sizeOverride = false ) {
@@ -119,7 +120,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 
 	/**
-	 * @param $options array
+	 * @param array $options
 	 * @return string
 	 * @throws Exception
 	 */
@@ -166,8 +167,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * XXX migrate this to the mediawiki Html class as 'tagSet' helper function
-	 * @param $tagName
-	 * @param $tagSet
+	 * @param string $tagName
+	 * @param array $tagSet
 	 * @return string
 	 */
 	static function htmlTagSet( $tagName, $tagSet ) {
@@ -225,6 +226,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get target popup player size
+	 * @return int
 	 */
 	function getPopupPlayerSize() {
 		// Get the max width from the enabled transcode settings:
@@ -293,8 +295,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * This function is also called by the Score extension, in which case
 	 * there is no connection to a file object.
 	 *
-	 * @param $sizeOverride array
-	 * @param $autoPlay boolean sets the autoplay attribute
+	 * @param array $sizeOverride
+	 * @param bool $autoPlay sets the autoplay attribute
 	 * @return string
 	 */
 	function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
@@ -375,7 +377,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get poster.
-	 * @param $width Integer width of poster. Should not equal $this->width.
+	 * @param int $width width of poster. Should not equal $this->width.
 	 * @throws Exception If $width is same as $this->width.
 	 * @return String|bool url for poster or false
 	 */
@@ -395,7 +397,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media attributes
-	 * @param $sizeOverride Array|bool of width and height
+	 * @param array|bool $sizeOverride Array of width and height
+	 * @param bool $autoPlay
 	 * @return array
 	 */
 	function getMediaAttr( $sizeOverride = false, $autoPlay = false ) {

@@ -5,7 +5,7 @@
 class Mp4Handler extends ID3Handler {
 
 	/**
-	 * @param $path string
+	 * @param string $path
 	 * @return array
 	 */
 	protected function getID3( $path ) {
@@ -17,9 +17,9 @@ class Mp4Handler extends ID3Handler {
 
 	/**
 	 * Get the "media size"
-	 * @param $file File
-	 * @param $path string
-	 * @param $metadata bool
+	 * @param File $file
+	 * @param string $path
+	 * @param bool $metadata
 	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
@@ -44,14 +44,15 @@ class Mp4Handler extends ID3Handler {
 	}
 
 	/**
-	 * @param $image
+	 * @param File $image
 	 * @return string
 	 */
 	function getMetadataType( $image ) {
 		return 'mp4';
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
+	 * @return string
 	 */
 	function getWebType( $file ) {
 		// @codingStandardsIgnoreStart
@@ -74,7 +75,7 @@ class Mp4Handler extends ID3Handler {
 		return 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
@@ -102,7 +103,7 @@ class Mp4Handler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getShortDesc( $file ) {
@@ -117,7 +118,7 @@ class Mp4Handler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getLongDesc( $file ) {

@@ -6,8 +6,8 @@ class OggHandlerTMH extends TimedMediaHandler {
 	const METADATA_VERSION = 2;
 
 	/**
-	 * @param $image File
-	 * @param $path string
+	 * @param File $image
+	 * @param string $path
 	 * @return string
 	 */
 	function getMetadata( $image, $path ) {
@@ -142,9 +142,9 @@ class OggHandlerTMH extends TimedMediaHandler {
 	/**
 	 * Get the "media size"
 	 *
-	 * @param $file File
-	 * @param $path string
-	 * @param $metadata bool|string|array
+	 * @param File $file
+	 * @param string $path
+	 * @param bool|string|array $metadata
 	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
@@ -197,14 +197,15 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $image
+	 * @param File $image
 	 * @return string
 	 */
 	function getMetadataType( $image ) {
 		return 'ogg';
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
+	 * @return string
 	 */
 	function getWebType( $file ) {
 		$baseType = ( $file->getWidth() == 0 && $file->getHeight() == 0 ) ? 'audio' : 'video';
@@ -217,7 +218,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 		return $baseType . '; codecs="' . $codecs  . '"';
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
@@ -233,7 +234,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return int
 	 */
 	function getOffset( $file ) {
@@ -246,7 +247,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return int
 	 */
 	function getLength( $file ) {
@@ -260,7 +261,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 
 	/**
 	* Get useful response headers for GET/HEAD requests for a file with the given metadata
-	* @param $metadata Array Contains this handler's unserialized getMetadata() for a file
+	* @param array $metadata Contains this handler's unserialized getMetadata() for a file
 	* @return Array
 	* @since 1.30
 	*/
@@ -277,7 +278,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return float|int
 	 */
 	function getFramerate( $file ) {
@@ -296,7 +297,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getShortDesc( $file ) {
@@ -319,7 +320,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getLongDesc( $file ) {
@@ -369,7 +370,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return float|int
 	 */
 	function getBitRate( $file ) {

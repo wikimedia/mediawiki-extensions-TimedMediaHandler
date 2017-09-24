@@ -522,8 +522,8 @@ class WebVideoTranscode {
 	];
 
 	/**
-	 * @param $file File
-	 * @param $transcodeKey string
+	 * @param File $file
+	 * @param string $transcodeKey
 	 * @return string
 	 */
 	public static function getDerivativeFilePath( $file, $transcodeKey ) {
@@ -556,8 +556,8 @@ class WebVideoTranscode {
 	/**
 	 * Get url for a transcode.
 	 *
-	 * @param $file File
-	 * @param $suffix string Transcode key
+	 * @param File $file
+	 * @param string $suffix Transcode key
 	 * @return string
 	 */
 	public static function getTranscodedUrlForFile( $file, $suffix = '' ) {
@@ -567,8 +567,8 @@ class WebVideoTranscode {
 	/**
 	 * Get temp file at target path for video encode
 	 *
-	 * @param $file File
-	 * @param $transcodeKey String
+	 * @param File &$file
+	 * @param string $transcodeKey
 	 *
 	 * @return TempFSFile at target encode path
 	 */
@@ -605,8 +605,8 @@ class WebVideoTranscode {
 	/**
 	 * Give a rough estimate on file size
 	 * Note this is not always accurate.. especially with variable bitrate codecs ;)
-	 * @param $file File
-	 * @param $transcodeKey string
+	 * @param File $file
+	 * @param string $transcodeKey
 	 * @return number
 	 */
 	public static function getProjectedFileSize( $file, $transcodeKey ) {
@@ -626,8 +626,8 @@ class WebVideoTranscode {
 	/**
 	 * Static function to get the set of video assets
 	 * Checks if the file is local or remote and grabs respective sources
-	 * @param $file File
-	 * @param $options array
+	 * @param File &$file
+	 * @param array $options
 	 * @return array|mixed
 	 */
 	public static function getSources( &$file , $options = [] ) {
@@ -645,8 +645,8 @@ class WebVideoTranscode {
 	 *	 <https://gerrit.wikimedia.org/r/#/c/117916/>
 	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
-	 * @param $file File
-	 * @param $options array
+	 * @param File &$file
+	 * @param array $options
 	 * @return array|mixed
 	 */
 	public static function getRemoteSources( &$file, $options = [] ) {
@@ -710,8 +710,8 @@ class WebVideoTranscode {
 	 *
 	 * This will not automatically update or queue anything!
 	 *
-	 * @param $file File object
-	 * @param $options array Options, a set of options:
+	 * @param File &$file File object
+	 * @param array $options Options, a set of options:
 	 * 					'nodata' Strips the data- attribute, useful when your output is not html
 	 * @return array an associative array of sources suitable for <source> tag output
 	 */
@@ -752,8 +752,8 @@ class WebVideoTranscode {
 	/**
 	 * Get the transcode state for a given filename and transcodeKey
 	 *
-	 * @param $fileName string
-	 * @param $transcodeKey string
+	 * @param string $file
+	 * @param string $transcodeKey
 	 * @return bool
 	 */
 	public static function isTranscodeReady( $file, $transcodeKey ) {
@@ -784,7 +784,8 @@ class WebVideoTranscode {
 	 * Populates the transcode table with the current DB state of transcodes
 	 * if transcodes are not found in the database their state is set to "false"
 	 *
-	 * @param {Object} File object
+	 * @param File $file File object
+	 * @param IDatabase|bool $db
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
 		global $wgTranscodeBackgroundTimeLimit;
@@ -846,8 +847,8 @@ class WebVideoTranscode {
 	 * startJobQueue() or updateJobQueue().
 	 *
 	 * also remove the transcode files:
-	 * @param $file File Object
-	 * @param $transcodeKey String Optional transcode key to remove only this key
+	 * @param File &$file File Object
+	 * @param string|bool $transcodeKey Optional transcode key to remove only this key
 	 */
 	public static function removeTranscodes( &$file, $transcodeKey = false ) {
 		// if transcode key is non-false, non-null:
@@ -901,7 +902,7 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * @param $titleObj Title
+	 * @param Title &$titleObj
 	 */
 	public static function invalidatePagesWithFile( &$titleObj ) {
 		wfDebug( "WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBkey() . "\n" );
@@ -940,8 +941,8 @@ class WebVideoTranscode {
 
 	/**
 	 * Get the primary "source" asset used for other derivatives
-	 * @param $file File
-	 * @param $options array
+	 * @param File $file
+	 * @param array $options
 	 * @return array
 	 */
 	public static function getPrimarySourceAttributes( $file, $options = [] ) {
@@ -994,9 +995,9 @@ class WebVideoTranscode {
 
 	/**
 	 * Get derivative "source" attributes
-	 * @param $file File
-	 * @param $transcodeKey string
-	 * @param $options array
+	 * @param File $file
+	 * @param string $transcodeKey
+	 * @param array $options
 	 * @return array
 	 */
 	public static function getDerivativeSourceAttributes( $file, $transcodeKey, $options = [] ) {
@@ -1046,7 +1047,7 @@ class WebVideoTranscode {
 
 	/**
 	 * Queue up all enabled transcodes if missing.
-	 * @param $file File object
+	 * @param File $file File object
 	 */
 	public static function startJobQueue( File $file ) {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
@@ -1067,7 +1068,7 @@ class WebVideoTranscode {
 	 * Make sure all relevant transcodes for the given file are tracked in the
 	 * transcodes table; add entries for any missing ones.
 	 *
-	 * @param $file File object
+	 * @param File $file File object
 	 */
 	public static function cleanupTranscodes( File $file ) {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
@@ -1108,8 +1109,8 @@ class WebVideoTranscode {
 	/**
 	 * Check if the given transcode key is appropriate for the file.
 	 *
-	 * @param $file File object
-	 * @param $transcodeKey String transcode key
+	 * @param File $file File object
+	 * @param string $transcodeKey transcode key
 	 * @return bool
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
@@ -1143,8 +1144,8 @@ class WebVideoTranscode {
 
 	/**
 	 * Update the job queue if the file is not already in the job queue:
-	 * @param $file File object
-	 * @param $transcodeKey String transcode key
+	 * @param File &$file File object
+	 * @param string $transcodeKey transcode key
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ) {
 		$fileName = $file->getTitle()->getDbKey();
@@ -1210,8 +1211,8 @@ class WebVideoTranscode {
 
 	/**
 	 * Check if this transcode belongs to the high-priority queue.
-	 * @param $file File
-	 * @param $transcodeKey string
+	 * @param File $file
+	 * @param string $transcodeKey
 	 * @return bool
 	 */
 	public static function isTranscodePrioritized( File $file, $transcodeKey ) {
@@ -1228,8 +1229,8 @@ class WebVideoTranscode {
 
 	/**
 	 * Return job queue length for the queue that will run this transcode.
-	 * @param $file File
-	 * @param $transcodeKey string
+	 * @param File $file
+	 * @param string $transcodeKey
 	 * @return int
 	 */
 	public static function getQueueSize( File $file, $transcodeKey ) {
@@ -1249,8 +1250,8 @@ class WebVideoTranscode {
 	/**
 	 * Transforms the size per a given "maxSize"
 	 *  if maxSize is > file, file size is used
-	 * @param $file File
-	 * @param $targetMaxSize int
+	 * @param File &$file
+	 * @param int $targetMaxSize
 	 * @return array
 	 */
 	public static function getMaxSizeTransform( &$file, $targetMaxSize ) {
@@ -1285,8 +1286,8 @@ class WebVideoTranscode {
 	/**
 	 * Test if a given transcode target is larger than the source file
 	 *
-	 * @param $file File object
-	 * @param $targetMaxSize string
+	 * @param File &$file File object
+	 * @param string $targetMaxSize
 	 * @return bool
 	 */
 	public static function isTargetLargerThanFile( &$file, $targetMaxSize ) {
@@ -1331,7 +1332,7 @@ class WebVideoTranscode {
 	/**
 	 * Return maxSize array for given maxSize setting
 	 *
-	 * @param $targetMaxSize string
+	 * @param string $targetMaxSize
 	 * @return array
 	 */
 	public static function getMaxSize( $targetMaxSize ) {

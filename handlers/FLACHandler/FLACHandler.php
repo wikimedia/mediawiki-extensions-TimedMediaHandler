@@ -5,7 +5,7 @@
 class FLACHandler extends ID3Handler {
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return string
 	 */
 	function getMetadataType( $file ) {
@@ -13,7 +13,7 @@ class FLACHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getWebType( $file ) {
@@ -21,7 +21,7 @@ class FLACHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
@@ -40,7 +40,7 @@ class FLACHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getShortDesc( $file ) {
@@ -55,7 +55,7 @@ class FLACHandler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getLongDesc( $file ) {

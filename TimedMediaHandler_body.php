@@ -12,9 +12,9 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Get an image size array like that returned by getimagesize(), or false if it
 	 * can't be determined.
-	 * @param $file File
-	 * @param $path string
-	 * @param $metadata bool
+	 * @param File $file
+	 * @param string $path
+	 * @param bool $metadata
 	 * @return array|bool
 	 */
 	function getImageSize( $file, $path, $metadata = false ) {
@@ -39,8 +39,8 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Validate a embed file parameters
 	 *
-	 * @param $name {String} Name of the param
-	 * @param $value {Mixed} Value to validated
+	 * @param string $name Name of the param
+	 * @param mixed $value Value to validated
 	 * @return bool
 	 */
 	function validateParam( $name, $value ) {
@@ -63,7 +63,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * TODO we should really have "$file" available here to validate the param string
-	 * @param $params array
+	 * @param array $params
 	 * @return string
 	 */
 	function makeParamString( $params ) {
@@ -97,7 +97,7 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Used by thumb.php to find url parameters
 	 *
-	 * @param $str string
+	 * @param string $str
 	 * @return array|bool Array of thumbnail parameters, or false if string cannot be parsed
 	 */
 	function parseParamString( $str ) {
@@ -125,8 +125,8 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $image File
-	 * @param $params array
+	 * @param File $image
+	 * @param array &$params
 	 * @return bool
 	 */
 	function normaliseParams( $image, &$params ) {
@@ -193,8 +193,8 @@ class TimedMediaHandler extends MediaHandler {
 	 *
 	 * The core embedPlayer module lazy loaded by the loader modules
 	 *
-	 * @param $parser Parser
-	 * @param $file File
+	 * @param Parser $parser
+	 * @param File $file
 	 */
 	function parserTransformHook( $parser, $file ) {
 		$parserOutput = $parser->getOutput();
@@ -219,8 +219,8 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * Utility functions
-	 * @param $timeString
-	 * @param $length
+	 * @param string $timeString
+	 * @param bool|int $length
 	 * @return bool|int
 	 */
 	public static function parseTimeString( $timeString, $length = false ) {
@@ -250,7 +250,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * @static
-	 * @param $timePassed
+	 * @param int $timePassed
 	 * @return string|array As from Message::listParam if available, otherwise
 	 *  a corresponding string in the language from $wgLang.
 	 */
@@ -289,7 +289,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * consist of hh:mm:ss.ms
 	 * also see: http://www.ietf.org/rfc/rfc2326.txt section 3.6
 	 *
-	 * @param $time Number Seconds to be converted to npt time format
+	 * @param number $time Seconds to be converted to npt time format
 	 * @return bool|string
 	 */
 	public static function seconds2npt( $time ) {
@@ -311,7 +311,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $metadata
+	 * @param string $metadata
 	 * @return bool|mixed
 	 */
 	function unpackMetadata( $metadata ) {
@@ -326,8 +326,8 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $image
-	 * @param $metadata
+	 * @param File $image
+	 * @param string $metadata
 	 * @return bool
 	 */
 	function isMetadataValid( $image, $metadata ) {
@@ -335,8 +335,8 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $ext
-	 * @param $mime
+	 * @param string $ext
+	 * @param string $mime
 	 * @param null $params
 	 * @return array
 	 */
@@ -346,7 +346,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * checks if a given file is an audio file
-	 * @param $file File
+	 * @param File $file
 	 * @return bool
 	 */
 	function isAudio( $file ) {
@@ -354,11 +354,11 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $file File
-	 * @param $dstPath String
-	 * @param $dstUrl String
-	 * @param $params array
-	 * @param $flags int
+	 * @param File $file
+	 * @param string $dstPath
+	 * @param string $dstUrl
+	 * @param array $params
+	 * @param int $flags
 	 * @return bool|MediaTransformError|MediaTransformOutput|TimedMediaTransformOutput
 	 */
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
@@ -428,7 +428,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $file
+	 * @param File $file
 	 * @return bool
 	 */
 	function canRender( $file ) {
@@ -436,7 +436,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $file
+	 * @param File $file
 	 * @return bool
 	 */
 	function mustRender( $file ) {
@@ -445,7 +445,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * Get a stream offset time
-	 * @param $file
+	 * @param File $file
 	 * @return int
 	 */
 	function getOffset( $file ) {
@@ -454,7 +454,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * Get length of a file
-	 * @param $file
+	 * @param File $file
 	 * @return int
 	 */
 	function getLength( $file ) {
@@ -462,7 +462,7 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getDimensionsString( $file ) {

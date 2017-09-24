@@ -5,20 +5,21 @@
 class Mp3Handler extends ID3Handler {
 
 	/**
-	 * @param $image
+	 * @param File $image
 	 * @return string
 	 */
 	function getMetadataType( $image ) {
 		return 'mp3';
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
+	 * @return string
 	 */
 	function getWebType( $file ) {
 		return 'audio/mpeg';
 	}
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return array|bool
 	 */
 	function getStreamTypes( $file ) {
@@ -34,7 +35,7 @@ class Mp3Handler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getShortDesc( $file ) {
@@ -49,7 +50,7 @@ class Mp3Handler extends ID3Handler {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return String
 	 */
 	function getLongDesc( $file ) {

@@ -28,7 +28,7 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Render TimedText to given output
-	 * @param $out OutputPage
+	 * @param OutputPage $out
 	 */
 	public function renderOutput( $out ) {
 		// parse page title:
@@ -112,7 +112,7 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Timed text or file is hosted on remote repo, Add a short description and link to foring repo
-	 * @param $file File the base file
+	 * @param File $file the base file
 	 */
 	function doLinkToRemote( $file ) {
 		$output = $this->getContext()->getOutput();
@@ -151,7 +151,7 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Gets the video HTML ( with the current language set as default )
-	 * @param $videoTitle string
+	 * @param string $videoTitle
 	 * @return String
 	 */
 	private function getVideoHTML( $videoTitle ) {
@@ -172,7 +172,7 @@ class TimedTextPage extends Article {
 	/**
 	 * Gets an HTML representation of the Timed Text
 	 *
-	 * @param $languageName string
+	 * @param string $languageName
 	 * @return Message|string
 	 */
 	private function getTimedTextHTML( $languageName ) {

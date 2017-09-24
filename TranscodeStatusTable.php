@@ -8,7 +8,7 @@
  */
 class TranscodeStatusTable {
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return string
 	 */
 	public static function getHTML( $file ) {
@@ -34,6 +34,8 @@ class TranscodeStatusTable {
 	/**
 	 * Get the video or audio codec for the defined transcode,
 	 * for grouping/sorting purposes.
+	 * @param string $key
+	 * @return string
 	 */
 	public static function codecFromTranscodeKey( $key ) {
 		if ( isset( WebVideoTranscode::$derivativeSettings[$key] ) ) {
@@ -54,7 +56,7 @@ class TranscodeStatusTable {
 	}
 
 	/**
-	 * @param $file File
+	 * @param File $file
 	 * @return string
 	 */
 	public static function getTranscodesTable( $file ) {
@@ -139,8 +141,8 @@ class TranscodeStatusTable {
 	}
 
 	/**
-	 * @param $file File
-	 * @param $transcodeKey string
+	 * @param File $file
+	 * @param string $transcodeKey
 	 * @return string
 	 */
 	public static function getSourceUrl( $file, $transcodeKey ) {
@@ -148,8 +150,8 @@ class TranscodeStatusTable {
 	}
 
 	/**
-	 * @param $file File
-	 * @param $state
+	 * @param File $file
+	 * @param array $state
 	 * @return string
 	 */
 	public static function getTranscodeDuration( $file, $state ) {
@@ -166,8 +168,8 @@ class TranscodeStatusTable {
 	}
 
 	/**
-	 * @param $file File
-	 * @param $state
+	 * @param File $file
+	 * @param array $state
 	 * @return string
 	 */
 	public static function getTranscodeBitrate( $file, $state ) {
@@ -180,8 +182,8 @@ class TranscodeStatusTable {
 	}
 
 	/**
-	 * @param $file File
-	 * @param $state
+	 * @param File $file
+	 * @param array $state
 	 * @return string
 	 */
 	public static function getStatusMsg( $file, $state ) {
