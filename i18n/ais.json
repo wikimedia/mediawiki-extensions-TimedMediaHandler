@@ -7,7 +7,9 @@
 		]
 	},
 	"timedmedia-ogg-short-video": "Ogg $1 iga tangan, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 myiti tangan, $2",
 	"timedmedia-ogg-long-error": "la’cusay a Ogg tangan: $1",
+	"timedmedia-webm-short-video": "WebM $1 iga tangan, $2",
 	"timedmedia-wav-short-audio": "WAV tangan nu ngiha’, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 iga tangan, $2",
 	"timedmedia-more": "yadah...",
@@ -35,5 +37,6 @@
 	"timedmedia-subtitle-language": "$1 ($2) mikilulay a satangahan",
 	"timedmedia-subtitle-remote": "tina tangan a saazih a sulit itiza i $1",
 	"action-transcode-reset": "miliyaw patizeng nikasumad a mima",
-	"action-transcode-status": "ciwsace ayza nikasumad-mima setyitase"
+	"action-transcode-status": "ciwsace ayza nikasumad-mima setyitase",
+	"apihelp-query+transcodestatus-description": "maala matuzu’ay tangan kasabelih a nikasumad-mima setyitase"
 }
