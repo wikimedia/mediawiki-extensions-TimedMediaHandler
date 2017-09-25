@@ -110,8 +110,8 @@ class ApiTranscodeReset extends ApiBase {
 	}
 
 	/**
-	 * @param $file
-	 * @param $transcodeKey
+	 * @param File $file
+	 * @param string|bool $transcodeKey
 	 * @return int|string
 	 */
 	public static function checkTimeSinceLastRest( $file, $transcodeKey ) {
@@ -137,7 +137,7 @@ class ApiTranscodeReset extends ApiBase {
 	}
 
 	/**
-	 * @param $state
+	 * @param array $state
 	 * @return int|string
 	 */
 	public static function getStateResetTime( $state ) {
@@ -218,6 +218,7 @@ class ApiTranscodeReset extends ApiBase {
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
+	 * @return array
 	 */
 	protected function getExamplesMessages() {
 		// @codingStandardsIgnoreStart

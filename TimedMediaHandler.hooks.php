@@ -13,7 +13,7 @@ class TimedMediaHandlerHooks {
 	 * These are configurable due to Commons history: T123823
 	 * These need to be before registerhooks due to: T123695
 	 *
-	 * @param array $list
+	 * @param array &$list
 	 * @return bool
 	 */
 	public static function addCanonicalNamespaces( array &$list ) {
@@ -37,7 +37,7 @@ class TimedMediaHandlerHooks {
 	 * But for now we register them dynamically, because they are config dependent,
 	 * while we have two players
 	 *
-	 * @param ResourceLoader $resourceLoader
+	 * @param ResourceLoader &$resourceLoader
 	 * @return bool
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
@@ -391,8 +391,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param ImagePage $imagePage the imagepage that is being rendered
-	 * @param OutputPage $out the output for this imagepage
+	 * @param ImagePage &$imagePage the imagepage that is being rendered
+	 * @param OutputPage &$out the output for this imagepage
 	 * @return bool
 	 */
 	public static function onImageOpenShowImageInlineBefore( &$imagePage, &$out ) {
@@ -438,8 +438,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $title Title
-	 * @param $article Article
+	 * @param Title &$title
+	 * @param Article &$article
 	 * @return bool
 	 */
 	public static function checkForTimedTextPage( &$title, &$article ) {
@@ -451,8 +451,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $diffEngine DifferenceEngine
-	 * @param $output OutputPage
+	 * @param DifferenceEngine $diffEngine
+	 * @param OutputPage $output
 	 * @return bool
 	 */
 	public static function checkForTimedTextDiff( $diffEngine, $output ) {
@@ -466,8 +466,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param SkinTemplate $sktemplate
-	 * @param array $links
+	 * @param SkinTemplate &$sktemplate
+	 * @param array &$links
 	 */
 	public static function onSkinTemplateNavigation( SkinTemplate &$sktemplate, array &$links ) {
 		if ( self::isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
@@ -482,7 +482,7 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Wraps the isTranscodableFile function
-	 * @param $title Title
+	 * @param Title $title
 	 * @return bool
 	 */
 	public static function isTranscodableTitle( $title ) {
@@ -495,7 +495,7 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Utility function to check if a given file can be "transcoded"
-	 * @param $file File object
+	 * @param File &$file File object
 	 * @return bool
 	 */
 	public static function isTranscodableFile( & $file ) {
@@ -534,7 +534,7 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $title Title
+	 * @param Title $title
 	 * @return bool
 	 */
 	public static function isTimedMediaHandlerTitle( $title ) {
@@ -554,8 +554,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $article Article
-	 * @param $html string
+	 * @param Article $article
+	 * @param string &$html
 	 * @return bool
 	 */
 	public static function checkForTranscodeStatus( $article, &$html ) {
@@ -568,7 +568,9 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $file LocalFile object
+	 * @param File $file LocalFile object
+	 * @param bool $reupload
+	 * @param bool $hasNewPageContent
 	 * @return bool
 	 */
 	public static function onFileUpload( $file, $reupload, $hasNewPageContent ) {
@@ -587,9 +589,9 @@ class TimedMediaHandlerHooks {
 	 * For now we just remove all the derivatives for the oldTitle. In the future we could
 	 * look at moving the files, but right now thumbs are not moved, so I don't want to be
 	 * inconsistent.
-	 * @param $title Title
-	 * @param $newTitle Title
-	 * @param $user User
+	 * @param Title $title
+	 * @param Title $newTitle
+	 * @param User $user
 	 * @return bool
 	 */
 	public static function checkTitleMove( $title, $newTitle, $user ) {
@@ -605,11 +607,11 @@ class TimedMediaHandlerHooks {
 	/**
 	 * Hook to FileDeleteComplete
 	 * remove transcodes on delete
-	 * @param $file File
-	 * @param $oldimage
-	 * @param $article Article
-	 * @param $user User
-	 * @param $reason string
+	 * @param File $file
+	 * @param File|bool $oldimage
+	 * @param Article $article
+	 * @param User $user
+	 * @param string $reason
 	 * @return bool
 	 */
 	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
@@ -624,7 +626,10 @@ class TimedMediaHandlerHooks {
 	/**
 	 * If file gets reverted to a previous version, reset transcodes.
 	 *
-	 * @param $article Article
+	 * @param Article $article
+	 * @param Revision $rev
+	 * @param int $baseID
+	 * @param User $user
 	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete(
@@ -648,7 +653,7 @@ class TimedMediaHandlerHooks {
 	 * link, make sure we've got the updated set of transcodes. This'll allow a user or
 	 * automated process to see their status and reset them.
 	 *
-	 * @param $article Article
+	 * @param Article $article
 	 * @return bool
 	 */
 	public static function onArticlePurge( $article ) {
@@ -663,7 +668,7 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Hook to add list of PHPUnit test cases.
-	 * @param $files array of files
+	 * @param array &$files array of files
 	 * @return bool
 	 */
 	public static function registerUnitTests( array &$files ) {
@@ -696,6 +701,7 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Hook to reset player serial so that parser tests are not order-dependent
+	 * @param array &$globals
 	 */
 	public static function onParserTestGlobals( &$globals ) {
 		TimedMediaTransformOutput::resetSerialForTest();
@@ -708,8 +714,8 @@ class TimedMediaHandlerHooks {
 	 * FIXME: There ought to be a better interface for determining whether the
 	 * page is liable to contain timed media.
 	 *
-	 * @param $out OutputPage
-	 * @param $sk
+	 * @param OutputPage &$out
+	 * @param Skin &$sk
 	 * @return bool
 	 */
 	static function pageOutputHook( &$out, &$sk ) {
@@ -782,9 +788,9 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Return false here to evict existing parseroutput cache
-	 * @param $parserOutput ParserOutput
-	 * @param $wikiPage WikiPage
-	 * @param $parserOptions
+	 * @param ParserOutput $parserOutput
+	 * @param WikiPage $wikiPage
+	 * @param ParserOutput $parserOptions
 	 * @return bool
 	 */
 	public static function rejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
@@ -804,9 +810,9 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $hash
+	 * @param string &$hash
 	 * @param User $user
-	 * @param $forOptions
+	 * @param array &$forOptions
 	 * @return bool
 	 */
 	public static function changePageRenderingHash( &$hash, User $user, &$forOptions ) {
@@ -819,8 +825,8 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param $user
-	 * @param $prefs
+	 * @param User $user
+	 * @param array &$prefs
 	 * @return bool
 	 */
 	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {

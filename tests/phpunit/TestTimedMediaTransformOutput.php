@@ -22,9 +22,9 @@ class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 	}
 
 	/**
-	 * @param $width int The requested width of the thumbnail
-	 * @param $minVideoSize int The min width a non-pop up video is acceptable
-	 * @param $expectPopup boolean Do we expect a pop up video
+	 * @param int $width The requested width of the thumbnail
+	 * @param int $minVideoSize The min width a non-pop up video is acceptable
+	 * @param bool $expectPopup Do we expect a pop up video
 	 *
 	 * @dataProvider providerIsPopUp
 	 */
@@ -54,9 +54,9 @@ class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
 	}
 
 	/**
-	 * @param $thumbWidth int Requested width
-	 * @param $sources array
-	 * @param $sortedSources array
+	 * @param int $thumbWidth Requested width
+	 * @param array $sources
+	 * @param array $sortedSources
 	 * @dataProvider providerSortMediaByBandwidth
 	 */
 	function testSortMediaByBandwidth( $thumbWidth, $sources, $sortedSources ) {
