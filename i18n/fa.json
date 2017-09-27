@@ -12,7 +12,8 @@
 			"جواد",
 			"پاناروما",
 			"Mehran",
-			"Dalba"
+			"Dalba",
+			"Ladsgroup"
 		]
 	},
 	"timedmediahandler-extensionname": "هدایت‌کننده رسانهٔ زمان‌دار",
@@ -48,7 +49,7 @@
 	"timedmedia-status-unknown": "وضعیت ناشناخته",
 	"timedmedia-transcodeinfo": "توضیحات اشتقاقی فراکد",
 	"timedmedia-actions": "فعالیت‌ها",
-	"timedmedia-direct-link": "دریافت اشتقاقی",
+	"timedmedia-direct-link": "بارگیری",
 	"timedmedia-not-ready": "آماده نیست",
 	"timedmedia-completed-on": "تکمیل فراکد $1",
 	"timedmedia-error-on": "خطا در فراکد در $1",
