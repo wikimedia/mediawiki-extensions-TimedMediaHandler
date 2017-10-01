@@ -72,7 +72,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minutos}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 segundo|$1 segundos}}",
 	"timedmedia-reset": "Restablecer conversión",
-	"timedmedia-reset-areyousure": "¿Estás seguro de que quieres continuar?",
+	"timedmedia-reset-areyousure": "¿Confirmas que quieres continuar?",
 	"timedmedia-reset-button-cancel": "No restablecer",
 	"timedmedia-reset-button-dismiss": "Descartar",
 	"timedmedia-reset-button-reset": "Restablecer",
