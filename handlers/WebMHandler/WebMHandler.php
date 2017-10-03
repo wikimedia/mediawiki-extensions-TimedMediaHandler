@@ -11,7 +11,13 @@ class WebMHandler extends ID3Handler {
 	protected function getID3( $path ) {
 		$id3 = parent::getID3( $path );
 		// Unset some parts of id3 that are too detailed and matroska specific:
-		unset( $id3['matroska'] );
+		// @todo include the basic file codec and other metadata too?
+		if ( isset( $id3['matroska'] ) ) {
+			$comments = $id3['matroska']['comments'];
+			$id3['matroska'] = [
+				'comments' => $comments
+			];
+		}
 		return $id3;
 	}
 
@@ -173,4 +179,53 @@ class WebMHandler extends ID3Handler {
 				$file->getHeight()
 			)->text();
 	}
+
+	/**
+	 * Display metadata box on file description page.
+	 *
+	 * Very basic, cribbed from OggHandlerTMH fow now.
+	 * Only shows the top-level writing/demuxing app comment.
+	 *
+	 * @param File $file
+	 * @param bool|IContextSource $context Context to use (optional)
+	 * @return array|bool
+	 */
+	public function formatMetadata( $file, $context = false ) {
+		$metadata = $file->getMetadata();
+
+		if ( is_string( $metadata ) ) {
+			$metadata = $this->unpackMetadata( $metadata );
+		}
+
+		if ( isset( $metadata['error'] ) ) {
+			return false;
+		}
+
+		if ( !$metadata ) {
+			return false;
+		}
+
+		$props = [];
+
+		if ( isset( $metadata['matroska'] ) && isset( $metadata['matroska']['comments'] ) ) {
+			$comments = $metadata['matroska']['comments'];
+			// Map comments from getid3's matroska handler to output format
+			// Localization of labels by FormatMetadata...
+			$map = [
+				'muxingapp' => 'Software',
+				'writingapp' => 'Software',
+			];
+			foreach ( $map as $commentTag => $propTag ) {
+				if ( isset( $comments[$commentTag] ) ) {
+					if ( !isset( $props[$propTag] ) ) {
+						$props[$propTag] = [];
+					}
+					$props[$propTag][] = $comments[$commentTag];
+				}
+			}
+		}
+
+		return $this->formatMetadataHelper( $props, $context );
+	}
+
 }
