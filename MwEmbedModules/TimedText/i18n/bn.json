@@ -2,14 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Aftab1995",
-			"Bellayet"
+			"Bellayet",
+			"Aftabuzzaman"
 		]
 	},
 	"mwe-timedtext-back-btn": "পিছনে",
 	"mwe-timedtext-layout-off": "উপশিরোনাম লুকাও",
-	"mwe-timedtext-loading-text": "টেক্সট লোড হচ্ছে ...",
+	"mwe-timedtext-loading-text": "পাঠ্য লোড হচ্ছে ...",
 	"mwe-timedtext-textcat-cc": "পরিচয়লিপি",
 	"mwe-timedtext-textcat-sub": "উপশিরোনাম",
 	"mwe-timedtext-textcat-tad": "অডিও বিবরণ",
+	"mwe-timedtext-textcat-ktv": "কারাওকে",
+	"mwe-timedtext-textcat-ar": "সক্রিয় অঞ্চল",
+	"mwe-timedtext-textcat-nb": "টীকারচনা",
+	"mwe-timedtext-textcat-meta": "সময়যুক্ত অধিউপাত্ত",
+	"mwe-timedtext-textcat-lrc": "পাঠ্য",
+	"mwe-timedtext-textcat-cue": "প্রবেশ বিন্দু",
+	"mwe-timedtext-language-subtitles-for-clip": "$2 ক্লিপের জন্য $1 সাবটাইটেল",
 	"mwe-timedtext-upload-timed-text": "উপশিরোনাম যুক্ত করুন"
 }
