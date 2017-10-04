@@ -17,7 +17,7 @@
 		mw.loader.using( [ 'jquery.client', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' ], function() {
 			$( playerSet ).each( function( inx, playerElement ) {
 				// we have javascript ( disable controls )
-				$( playerElement ).removeAttr( 'controls' );
+				$( playerElement ).prop( 'controls', false );
 				// Add an overlay loader ( firefox has its own native loading spinner )
 
 				if ( $.client.profile().name !== 'firefox' ) {
