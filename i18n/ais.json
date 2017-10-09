@@ -11,6 +11,7 @@
 	"timedmedia-ogg-long-audio": "Ogg $1 suni tangan, tanaya’ $2, $3",
 	"timedmedia-ogg-long-general": "Ogg myiti tangan, tanaya’ $2, $3",
 	"timedmedia-ogg-long-error": "la’cusay a Ogg tangan: $1",
+	"timedmedia-ogg-long-no-streams": "Ogg myiti tangan. patalaw: la’cus taazihan tina tangan pisaungay a sakababalic a banggu.",
 	"timedmedia-webm-short-video": "WebM $1 iga tangan, $2",
 	"timedmedia-flac-short-audio": "FLAC  tangan nu ngiha’, $1",
 	"timedmedia-flac-long-audio": "FLAC suni-tumiyac tangan, tanaya’ $1, pulung $2",
@@ -47,6 +48,7 @@
 	"timedmedia-derivative-desc-360p.ogv": "Ogg iga (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "calay-kakacawan(wangcan) kapah milikit Ogg iga (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "kakatingngalaw kapah patasasa’ Ogg iga (720P)",
+	"timedmedia-derivative-desc-1080p.ogv": "Full HD kapah patasasa’ Ogg iga (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "calay-kakacawan(wangcan) kapah milikit WebM (160P)",
 	"timedmedia-derivative-desc-480p.webm": "calay-kakacawan(wangcan) kapah milikit WebM (480P)",
 	"timedmedia-derivative-desc-720p.webm": "kakatingalaw kapah patasasa’ WebM (720P)",
@@ -74,5 +76,6 @@
 	"orphanedtimedtext": "kucacayay a TimedText kasabelih",
 	"orphanedtimedtext-unsupported": "tina sazumaay a kasabelih midama dada’ pisaungay MySQL kalunasulitan-sulu",
 	"orphanedtimedtext-notimedtext": "tina Wiki caay miwawah TimedText sasahicaan.",
-	"apihelp-query+transcodestatus-description": "maala matuzu’ay tangan kasabelih a nikasumad-mima setyitase"
+	"apihelp-query+transcodestatus-description": "maala matuzu’ay tangan kasabelih a nikasumad-mima setyitase",
+	"apihelp-query+transcodestatus-example-1": "maala [[:File:Clip.webm]] a nikasumad-mima setyitase"
 }
