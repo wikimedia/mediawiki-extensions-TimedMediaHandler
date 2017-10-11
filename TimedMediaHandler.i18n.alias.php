@@ -63,6 +63,12 @@ $specialPageAliases['ml'] = [
 	'TimedMediaHandler' => [ 'സമയാധിഷ്ഠിതമീഡിയകൈകാര്യോപകരണം' ],
 ];
 
+/** Urdu (اردو) */
+$specialPageAliases['ur'] = [
+	'TimedMediaHandler' => [ 'وقتی_میڈیا_ہدایت_کار' ],
+	'OrphanedTimedText' => [ 'یتیم_وقتی_متن' ],
+];
+
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = [
 	'TimedMediaHandler' => [ 'Bộ_xử_lý_phương_tiện_đồng_bộ', 'Bộ_xử_lí_phương_tiện_đồng_bộ' ],

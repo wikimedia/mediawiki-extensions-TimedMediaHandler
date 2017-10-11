@@ -101,3 +101,12 @@ $magicWords['uk'] = [
 	'timedmedia_endtime' => [ '0', 'закінчення=$1', 'окончание=$1', 'end=$1' ],
 	'timedmedia_disablecontrols' => [ '0', 'вимккнопки=$1', 'выклкнопки=$1', 'disablecontrols=$1' ],
 ];
+
+$magicWords['ur'] = [
+	'timedmedia_noplayer' => [ '0', 'پروگرام_نہیں', 'noplayer' ],
+	'timedmedia_noicon' => [ '0', 'آئیکون_نہیں', 'noicon' ],
+	'timedmedia_thumbtime' => [ '0', 'وقت_تصغیر=$1', 'thumbtime=$1' ],
+	'timedmedia_starttime' => [ '0', 'آغاز=$1', 'start=$1' ],
+	'timedmedia_endtime' => [ '0', 'اختتام=$1', 'end=$1' ],
+	'timedmedia_disablecontrols' => [ 0, 'کنٹرول_غیرفعال=$1',  'disablecontrols=$1' ],
+];
