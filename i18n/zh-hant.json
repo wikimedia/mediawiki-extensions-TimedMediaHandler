@@ -8,7 +8,8 @@
 			"Simon Shek",
 			"LNDDYL",
 			"Cwlin0416",
-			"1233thehongkonger"
+			"1233thehongkonger",
+			"蘭斯特"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM，Ogg Theora、Vorbis，srt",
@@ -97,7 +98,7 @@
 	"timedmedia-subtitle-no-subtitles": "此影片目前沒有 $1 的字幕，您可 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁面] 來增加字幕。",
 	"timedmedia-subtitle-remote": "此檔案的字幕位於 $1",
 	"timedmedia-subtitle-remote-link": "您可於 $2 檢視此檔案的 [$1 描述頁面]",
-	"timedmediahandler": "TimedMediaHandler",
+	"timedmediahandler": "定時媒體處理器",
 	"timedmedia-videos": "$1 個影片",
 	"timedmedia-ogg-videos": "$1 個 Ogg 影片",
 	"timedmedia-webm-videos": "$1 個 WebM 影片",
