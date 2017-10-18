@@ -209,7 +209,6 @@ class TranscodeStatusTable {
 			);
 		}
 
-		// $db = wfGetDB( DB_SLAVE );
 		// Check for started encoding
 		if ( !is_null( $state['time_startwork'] ) ) {
 			$timePassed = time() - wfTimestamp( TS_UNIX, $state['time_startwork'] );
