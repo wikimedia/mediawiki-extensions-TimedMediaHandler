@@ -33,6 +33,7 @@
 	"timedmedia-actions": "saungay",
 	"timedmedia-direct-link": "patasasa'",
 	"timedmedia-not-ready": "caay henay milasul",
+	"timedmedia-completed-on": "malaheci tuway $1",
 	"timedmedia-error-on": "i $1 mungangaw",
 	"timedmedia-started-transcode": "iayaw nu $1 miteka. $2",
 	"timedmedia-percent-done": "maka malaheci tu $1%",
