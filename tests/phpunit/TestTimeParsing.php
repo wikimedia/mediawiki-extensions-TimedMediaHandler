@@ -10,7 +10,7 @@
 class TestTimeParsing extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test time string to np2
-	*/
+	 */
 	function testSeconds2NptFormat() {
 		// Some time conversions:
 		$this->assertEquals( TimedMediaHandler::seconds2npt( 100 ), '00:01:40' );
@@ -26,7 +26,7 @@ class TestTimeParsing extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test time parsing to seconds
-	*/
+	 */
 	function testParseTimeString() {
 		// Some time conversions:
 		$this->assertEquals( TimedMediaHandler::parseTimeString( 100 ), 100 );

@@ -642,7 +642,7 @@ class WebVideoTranscode {
 	 * Grabs sources from the remote repo via ApiQueryVideoInfo.php entry point.
 	 *
 	 * TODO: This method could use some rethinking. See comments on PS1 of
-	 *	 <https://gerrit.wikimedia.org/r/#/c/117916/>
+	 * 	 <https://gerrit.wikimedia.org/r/#/c/117916/>
 	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
 	 * @param File &$file

@@ -954,11 +954,11 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	* Kill Application PID
-	*
-	* @param int $pid
-	* @return bool
-	*/
+	 * Kill Application PID
+	 *
+	 * @param int $pid
+	 * @return bool
+	 */
 	public static function killProcess( $pid ) {
 		exec( "kill -9 $pid" );
 		exec( "ps $pid", $processState );

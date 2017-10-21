@@ -51,7 +51,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	 * Fixture -- run after every test
 	 * Clean up temporary files etc.
 	 *
-	*/
+	 */
 	protected function tearDown() {
 		parent::tearDown();
 
