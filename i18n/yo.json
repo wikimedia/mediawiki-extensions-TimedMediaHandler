@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wikicology"
+			"Wikicology",
+			"Demmy"
 		]
 	},
-	"timedmedia-source-file": "Orísun",
-	"timedmedia-source-audio-file-desc": "Ojúlówó fáìlì"
+	"timedmedia-source-file": "Orísun $1",
+	"timedmedia-source-audio-file-desc": "Fáìlì $1 àtilẹ̀wá ($2)"
 }
