@@ -24,6 +24,6 @@
 	"timedmedia-source-file": "Източник на $1",
 	"timedmedia-source-audio-file-desc": "Оригинален $1-файл ($2)",
 	"timedmediahandler": "Аудио и видео файлове",
-	"log-name-timedmediahandler": "Дневник на timed media transcodes",
+	"log-name-timedmediahandler": "Дневник на TimedMediaHandler",
 	"log-description-timedmediahandler": "Това е дневник на действия, свързани с timed media transcodes."
 }
