@@ -20,7 +20,7 @@
 			"Robby"
 		]
 	},
-	"timedmediahandler-extensionname": "{{optional}}",
+	"timedmediahandler-extensionname": "{{name}}",
 	"timedmediahandler-desc": "{{desc|name=TimedMediaHandler|url=https://www.mediawiki.org/wiki/Extension:TimedMediaHandler}}",
 	"timedmedia-ogg-short-audio": "File details for Ogg sound (audio) files, short version.\nParameters:\n* $1 - stream type name. Any one of the following: Vorbis, Speex, FLAC\n* $2 - duration of the sound/audio (localized) - e.g. 1m34s\n{{Related|Timedmedia-ogg-short}}",
 	"timedmedia-ogg-short-video": "File details for Ogg video files, short version.\nParameters:\n* $1 - stream type name: Theora\n* $2 - duration of the video (localized) - e.g. 1m34s\n{{Related|Timedmedia-ogg-short}}",
