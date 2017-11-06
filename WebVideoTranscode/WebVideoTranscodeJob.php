@@ -541,17 +541,16 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -qmin " . wfEscapeShellArg( $quality );
 			$cmd .= " -qmax " . wfEscapeShellArg( $quality );
 		}
+		// libvpx-specific constant quality or constrained quality
+		// note the range is different between VP8 and VP9
+		if ( isset( $options['crf'] ) ) {
+			$cmd .= " -crf " . wfEscapeShellArg( $options['crf'] );
+		}
 
 		// Check for video bitrate:
 		if ( isset( $options['videoBitrate'] ) ) {
 			$cmd .= " -qmin 1 -qmax 51";
 			$cmd .= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
-		}
-		if ( isset( $options['vbr'] ) ) {
-			list( $min, $max, $buf ) = $options['vbr'];
-			$cmd .= " -minrate " . wfEscapeShellArg( $options['videoBitrate'] * 1000 * $min );
-			$cmd .= " -maxrate " . wfEscapeShellArg( $options['videoBitrate'] * 1000 * $max );
-			$cmd .= " -bufsize " . wfEscapeShellArg( $options['videoBitrate'] * 1000 * $buf );
 		}
 		// Set the codec:
 		if ( $options['videoCodec'] === 'vp9' ) {
@@ -573,7 +572,6 @@ class WebVideoTranscodeJob extends Job {
 		// Check for keyframeInterval
 		if ( isset( $options['keyframeInterval'] ) ) {
 			$cmd .= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
-			$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeInterval'] );
 		}
 		if ( isset( $options['deinterlace'] ) ) {
 			$cmd .= ' -deinterlace';
@@ -628,7 +626,6 @@ class WebVideoTranscodeJob extends Job {
 		// Check for keyframeInterval
 		if ( isset( $options['keyframeInterval'] ) ) {
 			$cmd .= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
-			$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeInterval'] );
 		}
 		if ( isset( $options['deinterlace'] ) ) {
 			$cmd .= ' -deinterlace';
