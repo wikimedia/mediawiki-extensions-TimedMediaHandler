@@ -534,9 +534,6 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 
-		// Add the boiler plate vp8 ffmpeg command:
-		$cmd .= " -skip_threshold 0 -bufsize 6000k -rc_init_occupancy 4000";
-
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
 			// Map 0-10 to 63-0, higher values worse quality
@@ -550,6 +547,12 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -qmin 1 -qmax 51";
 			$cmd .= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
 		}
+		if ( isset( $options['vbr'] ) ) {
+			list( $min, $max, $buf ) = $options['vbr'];
+			$cmd .= " -minrate " . wfEscapeShellArg( $options['videoBitrate'] * 1000 * $min );
+			$cmd .= " -maxrate " . wfEscapeShellArg( $options['videoBitrate'] * 1000 * $max );
+			$cmd .= " -bufsize " . wfEscapeShellArg( $options['videoBitrate'] * 1000 * $buf );
+		}
 		// Set the codec:
 		if ( $options['videoCodec'] === 'vp9' ) {
 			$cmd .= " -vcodec libvpx-vp9";
@@ -562,6 +565,10 @@ class WebVideoTranscodeJob extends Job {
 				$cmd .= ' -slices ' . wfEscapeShellArg( $options['slices'] );
 			}
 		}
+		if ( isset( $options['altref'] ) ) {
+			$cmd .= ' -auto-alt-ref 1';
+			$cmd .= ' -lag-in-frames 25';
+		}
 
 		// Check for keyframeInterval
 		if ( isset( $options['keyframeInterval'] ) ) {
@@ -570,6 +577,12 @@ class WebVideoTranscodeJob extends Job {
 		}
 		if ( isset( $options['deinterlace'] ) ) {
 			$cmd .= ' -deinterlace';
+		}
+		if ( $pass == 1 ) {
+			// Make first pass faster...
+			$cmd .= ' -speed 4';
+		} elseif ( isset( $options['speed'] ) ) {
+			$cmd .= ' -speed ' . wfEscapeShellArg( $options['speed'] );
 		}
 
 		// Output WebM
