@@ -1,11 +1,27 @@
 ogv.js
 ======
 
-Media decoder and player for Ogg Vorbis/Opus/Theora and (experimentally) WebM video.
+Media decoder and player for Ogg Vorbis/Opus/Theora and WebM video.
 
 Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compiled to JavaScript with Emscripten.
 
 ## Updates
+
+1.5.0 - 2017-11-09
+* cleaned up console logging
+* enable WebM by default
+* enable WebAssembly by default if available
+* allow memory growth on WebAssembly
+* build modules with -O3 instead of -O2
+* disabled experimental pthreads build for now
+* updated yuv-canvas
+    * improved image filtering/scaling on Windows
+    * work around broken object-fit on Edge 16
+* updated stream-file to 0.2.1
+    * fixes error on abort during network load
+
+1.4.2 - 2017-04-24
+* support 8-bit 4:2:2 and 4:4:4 subsampling in VP9
 
 1.4.1 - 2017-04-07
 * fix for seek shortly after initialization
@@ -75,11 +91,11 @@ See also a standalone demo with performance metrics at https://brionv.com/misc/o
 * [GPU accelerated drawing: yes (WebGL)](https://github.com/brion/ogv.js/wiki/GPU-acceleration)
 * GPU accelerated decoding: no
 * SIMD acceleration: no
-* Web Assembly: yes (experimental; set `options.wasm` to `true`)
-* multithreaded VP8, VP9: yes (experimental; set `options.threading` to `true`; requires `SharedArrayBuffer`)
+* Web Assembly: yes (with asm.js fallback)
+* multithreaded VP8, VP9: in development (experimental; add back to Makefile; set `options.threading` to `true`; requires `SharedArrayBuffer`)
 * controls: no (currently provided by demo or other UI harness)
 
-Ogg files are fairly well supported, but WebM is still experimental and is disabled by default.
+Ogg and WebM files are fairly well supported.
 
 
 ## Goals
@@ -94,23 +110,23 @@ The API isn't quite complete, but works pretty well.
 ogv.js requires a fast JS engine with typed arrays, and either Web Audio or Flash for audio playback.
 
 The primary target browsers are (testing 360p/30fps and up):
-* Safari 6.1/7/8/9/10 on Mac OS X 10.7-10.11
-* Safari on iOS 8/9/10 64-bit
+* Safari 6.1-12 on Mac OS X 10.7-10.13
+* Safari on iOS 8-11 64-bit
 * Edge on Windows 10 desktop/tablet
-* Internet Explorer 10/11 on Windows 7/8/8.1/10 (desktop/tablet)
+* Internet Explorer 10-11 on Windows 7-10 (desktop/tablet)
 
 And for lower-resolution files (testing 160p/15fps):
-* Safari on iOS 8/9/10 32-bit
+* Safari on iOS 8-10 32-bit
 * Edge on Windows 10 Mobile
-* Internet Explorer 10/11 on Windows RT
+* Internet Explorer 10-11 on Windows RT
 
 Older versions of Safari have flaky JIT compilers. IE 9 and below lack typed arrays.
 
 (Note that Windows and Mac OS X can support Ogg and WebM by installing codecs or alternate browsers with built-in support, but this is not possible on iOS, Windows RT, or Windows 10 Mobile.)
 
 Testing browsers (these support .ogv and .webm natively):
-* Firefox 52
-* Chrome 57
+* Firefox 56
+* Chrome 61
 
 
 ## Package installation
@@ -155,7 +171,8 @@ The `OGVPlayer` class implements a player, and supports a subset of the events, 
 
   // Or with options
   var player = new OGVPlayer({
-    enableWebM: true
+	debug: true,
+	debugFilter: /demuxer/
   });
 
   // Now treat it just like a video or audio element
@@ -204,17 +221,17 @@ Dynamically loaded assets:
 * `ogv-decoder-video-theora.js` is used in playing .ogg and .ogv video files.
 * `ogv-decoder-video-vp8.js` and `ogv-decoder-video-vp9.js` are used in playing .webm video files.
 * `*-wasm.js` and `*-wasm.wasm` files are the Web Assembly versions of the above modules.
-* `*-mt.js` are the multithreaded versions of some of the above modules.
+* `*-mt.js` are the multithreaded versions of some of the above modules, if built.
 * `dynamicaudio.swf` is the Flash audio shim, used for Internet Explorer 10/11.
 
-If you know you will never use particular formats or codecs you can skip bundling them; for instance if you only need to play Ogg files you don't need `ogv-demuxer-webm.js` or `ogv-decoder-video-vp8.js` which are only used for WebM. Web Assembly and multithreaded modules are experimental and can be left out if not enabled in your runtime options.
+If you know you will never use particular formats or codecs you can skip bundling them; for instance if you only need to play Ogg files you don't need `ogv-demuxer-webm.js` or `ogv-decoder-video-vp8.js` which are only used for WebM.
 
 
 ## Performance
 
 As of 2015, for SD-or-less resolution basic Ogg Theora decoding speed is reliable on desktop and newer high-end mobile devices; current high-end desktops and laptops can even reach HD resolutions. Older and low-end mobile devices may have difficulty on any but audio and the lowest-resolution video files.
 
-WebM is much slower, and remains experimental.
+WebM VP8/VP9 is slower, but works pretty well at a resolution step below Theora.
 
 *Low-res targets*
 
@@ -297,15 +314,13 @@ You can then unmute the video in response to a touch or click handler. Alternate
 
 *WebM*
 
-WebM support was added in June 2015, with some major issues finally worked out in May 2016. Initial VP9 support was added in February 2017. It remains experimental, but should be fully enabled in the future once a few more bugs are worked out.
+WebM support was added in June 2015, with some major issues finally worked out in May 2016. Initial VP9 support was added in February 2017. It's pretty stable in production use at Wikipedia and is enabled by default as of October 2015.
 
-To enable, set `enableWebM: true` in your `options` array.
-
-Beware that performance of WebM VP8 is much slower than Ogg Theora, and VP9 is slower still.
+Beware that performance of WebM VP8 is much slower than Ogg Theora, and VP9 is slightly slower still.
 
 For best WebM decode speed, consider encoding VP8 with "profile 1" (simple deblocking filter) which will sacrifice quality modestly, mainly in high-motion scenes. When encoding with ffmpeg, this is the `-profile:v 1` option to the `libvpx` codec.
 
-It is also recommended to use the `-slices` option for VP8, or `-tile-columns` for VP9, to maximize ability to use multithreaded decoding when available.
+It is also recommended to use the `-slices` option for VP8, or `-tile-columns` for VP9, to maximize ability to use multithreaded decoding when available in the future.
 
 
 ## Upstream library notes
@@ -319,18 +334,18 @@ libvpx is slightly modified to work around emscripten threading limitations in t
 
 ## Web Assembly
 
-Experimental Web Assembly (WASM) versions of the emscripten cross-compiled modules are also included, used if `options.wasm` is true.
+Web Assembly (WASM) versions of the emscripten cross-compiled modules are also included, used by default if WebAssembly support is available in the browser.
 
 The WASM versions of the modules are more compact than the cross-compiled asm.js-style JavaScript, and should download and parse faster. Some browsers may also compile the module differently, providing more consistent performance at the beginning of playback.
 
-Currently Firefox and Chrome are the only release versions of browsers that support Web Assembly, but it's available in Safari Technical Preview and behind the 'experimental JS options' flag in Edge in Windows 10 version 1703.
-
-If you are making a slim build and will not use the `wasm` option, you can leave out the `*-wasm.js` and `*-wasm.wasm` files.
+Safari 12 and Edge 16 include WASM support, as do current versions of Firefox and Chrome.
 
 
 ## Multithreading
 
-Experimental multithreaded VP8 and VP9 decoding up to 4 cores is available for VP8 and VP9 video, used if `options.threading` is true. This requires browser support for the new `SharedArrayBuffer` and `Atomics` APIs, currently available in Safari 10.1 / iOS 10.3 and in Firefox developer & nightly builds, and in Chrome behind a flag.
+Experimental multithreaded VP8 and VP9 decoding up to 4 cores is in development for VP8 and VP9 video, but not currently built due to needing a patched emscripten compiler.
+
+If built, multithreading is used if `options.threading` is true. This requires browser support for the new `SharedArrayBuffer` and `Atomics` APIs, currently available in Safari 10.1 / iOS 10.3, Edge 16, and current Firefox and Chrome builds.
 
 Threading is not currently compatible with Web Assembly.
 
@@ -338,7 +353,7 @@ Speedups will only be noticeable when using the "slices" or "token partitions" o
 
 Currently, getting a successful multithreaded build requires a [patch to the emscripten compiler](https://github.com/kripken/emscripten/pull/5016); without this patch, the resulting multithreaded modules will build but fail to initialize correctly.
 
-If you are making a slim build and will not use the `threading` option, you can leave out the `*-mt.js` files, as well as `pthread-main.js`.
+If you are making a slim build and will not use the `threading` option, you can leave out the `*-mt.js` files, as well as `pthread-main.js`. These are not currently included in the default build.
 
 
 ## Building JS components
@@ -346,7 +361,7 @@ If you are making a slim build and will not use the `threading` option, you can 
 Building ogv.js is known to work on Mac OS X and Linux (tested Ubuntu 15.04).
 
 1. You will need autoconf, automake, libtool, pkg-config, and node (nodejs). These can be installed through Homebrew on Mac OS X, or through distribution-specific methods on Linux.
-2. Install [Emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/Tutorial.html); currently using the incoming branch (of what will be 1.38) for distribution builds for latest WASM support, plus [multithreading patch](https://github.com/kripken/emscripten/pull/5016)
+2. Install [Emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/Tutorial.html); currently building with 1.37.22. (For pthreads builds, emscripten needs a [multithreading patch](https://github.com/kripken/emscripten/pull/5016))
 3. `git submodule update --init`
 4. Run `npm install` to install build utilities
 5. Run `make js` to configure and build the libraries and the C wrapper
