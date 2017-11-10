@@ -42,13 +42,13 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var OGVWorkerSupport = __webpack_require__(2);
 
@@ -77,9 +77,9 @@
 
 	module.exports = proxy;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var OGVLoader = __webpack_require__(3);
 
@@ -196,11 +196,13 @@
 				options = args[1];
 
 			OGVLoader.loadClass(className, function(classObj) {
-				self.target = new classObj(options);
-				callback();
-				while (pendingEvents.length) {
-					handleEvent(pendingEvents.shift());
-				}
+				classObj(options).then(function(target) {
+					self.target = target;
+					callback();
+					while (pendingEvents.length) {
+						handleEvent(pendingEvents.shift());
+					}
+				});
 			});
 		};
 
@@ -231,11 +233,11 @@
 	module.exports = OGVWorkerSupport;
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.4.1-20170407171329-c48dd8c2");
+	var OGVVersion = ("1.5.0-20171109103951-47c6ee5c");
 
 	(function() {
 		var global = this;
@@ -334,24 +336,6 @@
 			}
 		}
 
-		function loadWebAssembly(src, callback) {
-			if (!src.match(/-wasm\.js/)) {
-				callback(null);
-			} else {
-				var wasmSrc = src.replace(/-wasm\.js/, '-wasm.wasm');
-				var xhr = new XMLHttpRequest();
-				xhr.responseType = 'arraybuffer';
-				xhr.onload = function() {
-					callback(xhr.response);
-				};
-				xhr.onerror = function() {
-					callback(null);
-				};
-				xhr.open('GET', wasmSrc);
-				xhr.send();
-			}
-		}
-
 		function defaultBase() {
 			if (typeof global.window === 'object') {
 
@@ -391,27 +375,27 @@
 					return;
 				}
 				var url = urlForClass(className);
-				loadWebAssembly(url, function(wasmBinary) {
-					function wasmClassWrapper(options) {
-						options = options || {};
-						if (wasmBinary !== null) {
-							options.wasmBinary = wasmBinary;
-						}
-						return new global[className](options);
-					}
-					if (typeof global[className] === 'function') {
-						// already loaded!
-						callback(wasmClassWrapper);
-					} else if (typeof global.window === 'object') {
-						loadWebScript(url, function() {
-							callback(wasmClassWrapper);
-						});
-					} else if (typeof global.importScripts === 'function') {
-						// worker has convenient sync importScripts
-						global.importScripts(url);
-						callback(wasmClassWrapper);
-					}
-				});
+				function classWrapper(options) {
+					options = options || {};
+					options.locateFile = function(filename) {
+						// Allow secondary resources like the .wasm payload
+						// to be loaded by the emscripten code.
+						return urlForScript(filename);
+					};
+					return new global[className](options);
+				}
+				if (typeof global[className] === 'function') {
+					// already loaded!
+					callback(classWrapper);
+				} else if (typeof global.window === 'object') {
+					loadWebScript(url, function() {
+						callback(classWrapper);
+					});
+				} else if (typeof global.importScripts === 'function') {
+					// worker has convenient sync importScripts
+					global.importScripts(url);
+					callback(classWrapper);
+				}
 			},
 
 			workerProxy: function(className, callback) {
@@ -456,7 +440,9 @@
 							}
 							// Create the web worker
 							worker = new Worker(URL.createObjectURL(blob));
-							callback(construct);
+							callback(function(options) {
+								return Promise.resolve(new construct(options));
+							})
 						}
 					}
 
@@ -488,7 +474,9 @@
 				} else {
 					// Local URL; load it directly for simplicity.
 					worker = new Worker(workerUrl);
-					callback(construct);
+					callback(function(options) {
+						return Promise.resolve(new construct(options));
+					})
 				}
 			}
 		};
@@ -498,9 +486,9 @@
 	})();
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var OGVProxyClass = __webpack_require__(5);
 
@@ -530,9 +518,9 @@
 	module.exports = OGVDecoderAudioProxy;
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Proxy object for web worker interface for codec classes.
@@ -665,9 +653,9 @@
 
 	module.exports = OGVProxyClass;
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var OGVProxyClass = __webpack_require__(5);
 
@@ -696,5 +684,5 @@
 
 	module.exports = OGVDecoderVideoProxy;
 
-/***/ }
+/***/ })
 /******/ ]);

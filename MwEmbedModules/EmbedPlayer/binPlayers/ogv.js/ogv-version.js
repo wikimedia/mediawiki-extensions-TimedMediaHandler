@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	//
 	// -- ogv-support.js
@@ -52,7 +52,7 @@
 
 	(function() {
 
-	  var OGVVersion = ("1.4.1-20170407171329-c48dd8c2");
+	  var OGVVersion = ("1.5.0-20171109103951-47c6ee5c");
 
 	  if (window) {
 	    // 1.0-compat globals
@@ -66,5 +66,5 @@
 	})();
 
 
-/***/ }
+/***/ })
 /******/ ]);
