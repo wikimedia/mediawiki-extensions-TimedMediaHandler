@@ -1007,6 +1007,7 @@ class WebVideoTranscodeJob extends Job {
 		'deinterlace'	=> "--deinterlace",
 		'novideo'		=> [ "--novideo", "--no-skeleton" ],
 		'bufDelay'		=> "--buf-delay",
+		'softTarget'	=> "--soft-target",
 		// audio
 		'audioQuality'	=> "-a",
 		'audioBitrate'	=> "-A",

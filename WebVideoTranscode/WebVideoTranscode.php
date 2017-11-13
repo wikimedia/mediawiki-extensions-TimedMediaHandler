@@ -32,6 +32,8 @@ class WebVideoTranscode {
 	const ENC_OGV_480P = '480p.ogv';
 	const ENC_OGV_720P = '720p.ogv';
 	const ENC_OGV_1080P = '1080p.ogv';
+	const ENC_OGV_1440P = '1440p.ogv';
+	const ENC_OGV_2160P = '2160p.ogv';
 
 	// WebM VP8/Vorbis profiles:
 	const ENC_WEBM_160P = '160p.webm';
@@ -84,8 +86,9 @@ class WebVideoTranscode {
 		self::ENC_OGV_160P =>
 			[
 				'maxSize'                    => '288x160',
-				'videoBitrate'               => '160',
-				'framerate'                  => '15',
+				'videoBitrate'               => '256',
+				'softTarget'                 => 'true',
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '-1',
 				'channels'                   => '2',
 				'noUpscaling'                => 'true', // also caps to source frame rate
@@ -100,6 +103,7 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '426x240',
 				'videoBitrate'               => '512',
+				'softTarget'                 => 'true',
 				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '0',
 				'channels'                   => '2',
@@ -115,6 +119,7 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '640x360',
 				'videoBitrate'               => '1024',
+				'softTarget'                 => 'true',
 				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '1',
 				'channels'                   => '2',
@@ -130,6 +135,7 @@ class WebVideoTranscode {
 			[
 				'maxSize'                    => '854x480',
 				'videoBitrate'               => '2048',
+				'softTarget'                 => 'true',
 				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => '2',
 				'channels'                   => '2',
@@ -145,7 +151,8 @@ class WebVideoTranscode {
 		self::ENC_OGV_720P =>
 			[
 				'maxSize'                    => '1280x720',
-				'videoQuality'               => 6,
+				'videoBitrate'               => '4096',
+				'softTarget'                 => 'true',
 				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true', // also caps to source frame rate
@@ -159,7 +166,38 @@ class WebVideoTranscode {
 		self::ENC_OGV_1080P =>
 			[
 				'maxSize'                    => '1920x1080',
-				'videoQuality'               => 6,
+				'videoBitrate'               => '8192',
+				'softTarget'                 => 'true',
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
+				'audioQuality'               => 3,
+				'noUpscaling'                => 'true', // also caps to source frame rate
+				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
+				'optimize'                   => 'true',
+				'keyframeInterval'           => '128',
+				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
+			],
+
+		self::ENC_OGV_1440P =>
+			[
+				'maxSize'                    => '2560x1440',
+				'videoBitrate'               => '16384',
+				'softTarget'                 => 'true',
+				'framerate'                  => '60', // max to reduce "1000fps bug" problems
+				'audioQuality'               => 3,
+				'noUpscaling'                => 'true', // also caps to source frame rate
+				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
+				'optimize'                   => 'true',
+				'keyframeInterval'           => '128',
+				'videoCodec'                 => 'theora',
+				'type'                       => 'video/ogg; codecs="theora, vorbis"',
+			],
+
+		self::ENC_OGV_2160P =>
+			[
+				'maxSize'                    => '3840x2160',
+				'videoBitrate'               => '32768',
+				'softTarget'                 => 'true',
 				'framerate'                  => '60', // max to reduce "1000fps bug" problems
 				'audioQuality'               => 3,
 				'noUpscaling'                => 'true', // also caps to source frame rate
