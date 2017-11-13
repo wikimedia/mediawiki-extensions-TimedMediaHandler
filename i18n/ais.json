@@ -88,6 +88,7 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nikasumad-mima mungangaw}}",
 	"timedmedia-audios": "{{PLURAL:$1|$1 ngiha’ tangan}}",
 	"right-transcode-reset": "miliyaw patizeng mungangaw tuway saca nikasumad-mima a iga, miliyaw pasilsilen i salaylay",
+	"right-transcode-status": "miciwsace [[Special:TimedMediaHandler|ayza nikasumad-mima saungay nu binawlan a cesyun]]",
 	"action-transcode-reset": "miliyaw patizeng nikasumad a mima",
 	"action-transcode-status": "ciwsace ayza nikasumad-mima setyitase",
 	"orphanedtimedtext": "kucacayay a TimedText kasabelih",
