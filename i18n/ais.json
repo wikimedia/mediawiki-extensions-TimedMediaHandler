@@ -6,6 +6,7 @@
 			"Benel"
 		]
 	},
+	"timedmediahandler-desc": "ngiha’, iga atu saazih a sulit sulimet cengse, madamaay a kese yamalyilu  WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg $1 ngiha tangan, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 iga tangan, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 myiti tangan, $2",
@@ -52,6 +53,7 @@
 	"timedmedia-reset": "miliyaw patizeng nikasumad a mima",
 	"timedmedia-reset-button-dismiss": "edeben",
 	"timedmedia-reset-error": "imahini miliyaw patizeng nikasumad-mima a kawaw sa mungangaw.",
+	"timedmedia-reset-explanation": "miliyaw patizeng nikasumad-mima a misipu sacahamin masinga’ay tu tangan, atu miliyaw tu tangan micunus nikasumad-mima kasalaylay nu kawaw. tina maydih malawpes ku hatizaay tatukian a miliyaw tu baluhay nikasumad-mima.",
 	"timedmedia-source-file": "$1 saangangan",
 	"timedmedia-source-file-desc": "$1 saayaway a tangan, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "saayaway $1 tangan ($2)",
@@ -76,6 +78,7 @@
 	"timedmedia-derivative-desc-2160p.mp4": "Full 4K tatudungay MP4 (2160P)",
 	"timedmedia-resolution-1440": "mangasiw katingalaw 1440p",
 	"timedmedia-subtitle-new": "patizeng baluhay belih nu kamu  saca mikawaway-kalumyiti ayzaay a belih",
+	"timedmedia-subtitle-new-desc": "pipili’ tu kamu satu mipecec '''{{int:Timedmedia-subtitle-new-go}}''' pipenecan",
 	"timedmedia-subtitle-language": "$1 ($2) saazih a sulit",
 	"timedmedia-subtitle-no-video": "inayi’ iga mahizaay nu saazih a sulit kasabelih.",
 	"timedmedia-subtitle-remote": "tina tangan a saazih a sulit itiza i $1",
