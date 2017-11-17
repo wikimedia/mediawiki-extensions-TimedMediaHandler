@@ -11,7 +11,7 @@
 	} );
 
 	// Add mediaWiki player support to target embedPlayer
-	$( mw ).bind( 'EmbedPlayerNewPlayer', function ( event, embedPlayer ) {
+	$( mw ).on( 'EmbedPlayerNewPlayer', function ( event, embedPlayer ) {
 		mw.addMediaWikiPlayerSupport( embedPlayer );
 	} );
 
@@ -250,7 +250,7 @@
 		} );
 
 		// Show credits on clip complete:
-		$( embedPlayer ).bind( 'onEndedDone', function ( event, id ) {
+		$( embedPlayer ).on( 'onEndedDone', function ( event, id ) {
 			var cb;
 			if ( embedPlayer.id !== id ) {
 				// possible event trigger error. ( skip )
@@ -268,7 +268,7 @@
 			cb.showMenuItem( 'credits' );
 		} );
 
-		$( embedPlayer ).bind( 'showInlineDownloadLink', function () {
+		$( embedPlayer ).on( 'showInlineDownloadLink', function () {
 			// Add recommend HTML5 player if we have non-native playback:
 			if ( embedPlayer.controlBuilder.checkNativeWarning() ) {
 				embedPlayer.controlBuilder.addWarningBinding(
@@ -286,7 +286,7 @@
 			}
 		} );
 
-		$( embedPlayer ).bind( 'TimedText_BuildCCMenu', function ( event, $menu, id ) {
+		$( embedPlayer ).on( 'TimedText_BuildCCMenu', function ( event, $menu, id ) {
 			var thisep,
 				pageTitle,
 				addTextPage,
@@ -362,7 +362,7 @@
 			} );
 		} );
 
-		$( embedPlayer ).bind( 'getShareIframeSrc', function ( event, callback, id ) {
+		$( embedPlayer ).on( 'getShareIframeSrc', function ( event, callback, id ) {
 			var iframeUrl = false;
 			if ( id !== embedPlayer.id ) {
 				embedPlayer = $( '#' + id )[ 0 ];

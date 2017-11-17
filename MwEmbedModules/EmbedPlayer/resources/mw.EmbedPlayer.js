@@ -745,7 +745,7 @@
 			}
 			// Set up the new embedObj
 			mw.log( 'EmbedPlayer::updatePlaybackInterface: embedding with ' + this.selectedPlayer.library );
-			this.selectedPlayer.load( function() {
+			this.selectedPlayer.on('load', function() {
 				_this.updateLoadedPlayerInterface( callback );
 			});
 		},
@@ -1651,7 +1651,7 @@
 				// Poster support is not very consistent in browsers use a jpg poster image:
 				$( this )
 					.html(
-					$( '<img />' )
+					$( '<img>' )
 					.css({
 				    	'position': 'absolute',
 				    	'top': 0,
@@ -1663,7 +1663,7 @@
 						'src' : posterSrc
 					})
 					.addClass( 'playerPoster' )
-					.load(function(){
+					.on('load', function(){
 						_this.applyIntrinsicAspect();
 					})
 				).show();

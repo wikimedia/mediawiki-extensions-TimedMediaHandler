@@ -136,7 +136,7 @@
 		},
 		destroy: function(){
 			// remove any old player bindings;
-			$( this.embedPlayer ).unbind( this.bindPostFix );
+			$( this.embedPlayer ).off( this.bindPostFix );
 			// Clear out enabled sources:
 			this.enabledSources = [];
 			// Clear out text sources:
@@ -242,7 +242,7 @@
 				}
 				var $textButton = embedPlayer.getInterface().find( '.timed-text' );
 				if ( $textButton.length ) {
-					$textButton.unbind( 'click' );
+					$textButton.off( 'click' );
 				}
 				_this.lastLayout = _this.getLayoutMode();
 				_this.setLayoutMode( 'off' );
