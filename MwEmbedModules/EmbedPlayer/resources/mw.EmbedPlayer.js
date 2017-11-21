@@ -745,7 +745,8 @@
 			}
 			// Set up the new embedObj
 			mw.log( 'EmbedPlayer::updatePlaybackInterface: embedding with ' + this.selectedPlayer.library );
-			this.selectedPlayer.on('load', function() {
+			// Note this is not a jQuery event handler, but a call with a callback:
+			this.selectedPlayer.load(function() {
 				_this.updateLoadedPlayerInterface( callback );
 			});
 		},
