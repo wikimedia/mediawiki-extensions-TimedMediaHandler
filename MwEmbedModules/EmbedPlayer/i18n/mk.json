@@ -13,7 +13,7 @@
 	"mwe-embedplayer-link_back": "Обратна врска",
 	"mwe-embedplayer-error_swap_vid": "Грешка: mwEmbed не можеше да ја смени видео-ознаката за mwEmbed-посредникот",
 	"mwe-embedplayer-add_to_end_of_sequence": "Додај на крајот од низата",
-	"mwe-embedplayer-missing_video_stream": "Видео-податотеката за овој канал недостасува",
+	"mwe-embedplayer-missing_video_stream": "Видео-податотеката за овој тек недостасува",
 	"mwe-embedplayer-play_clip": "Пушти ја снимката",
 	"mwe-embedplayer-pause_clip": "Паузирај снимка",
 	"mwe-embedplayer-volume_control": "Регулирање гласност",
