@@ -272,7 +272,7 @@ mw.MediaElement.prototype = {
 						break;
 					case 'ogvJsPlayer':
 						useBogoSlow = true;
-						var shortName = 'ogg';
+						var shortName = 'ogvjs';
 						break;
 					case 'webmNative':
 						var shortName = 'webm';
