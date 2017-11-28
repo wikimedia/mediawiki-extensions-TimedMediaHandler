@@ -225,7 +225,7 @@ $wgEnabledAudioTranscodeSet = [
 	// WebVideoTranscode::ENC_OGG_OPUS,
 
 	// avconv needs libmp3lame support
-	// WebVideoTranscode::ENC_MP3,
+	WebVideoTranscode::ENC_MP3,
 
 	// avconv needs libvo_aacenc support
 	// WebVideoTranscode::ENC_AAC,
