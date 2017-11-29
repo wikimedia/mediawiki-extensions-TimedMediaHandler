@@ -232,7 +232,7 @@ $wgEnabledAudioTranscodeSet = [
 ];
 
 // If mp3 source assets can be ingested:
-$wgTmhEnableMp3Uploads = false;
+$wgTmhEnableMp3Uploads = true;
 
 // If mp4 source assets can be ingested:
 $wgTmhEnableMp4Uploads = false;
