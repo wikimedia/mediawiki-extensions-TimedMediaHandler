@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Albinus",
-			"Ramjit Tudu"
+			"Ramjit Tudu",
+			"Manik Soren"
 		]
 	},
 	"timedmedia-download": "ᱨᱮᱫ ᱟᱹᱛᱩᱨᱟᱬᱜᱚ",
 	"timedmedia-desc-link": "ᱱᱚᱶᱟ ᱨᱮᱫ ᱵᱟᱵᱚᱫᱽ ᱛᱮ",
-	"timedmedia-source-file": "$1 oṛ",
+	"timedmedia-source-file": "$1 ᱯᱷᱮᱰᱟᱛ ᱦᱚᱨ",
 	"timedmedia-source-audio-file-desc": "Mul $1 Phayel($2)",
 	"timedmedia-file": "ᱨᱮᱫ"
 }
