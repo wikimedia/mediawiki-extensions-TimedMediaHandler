@@ -13,11 +13,11 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg-emultiplext geluuds-/videobestaand, $1, lengte $2, $4×$5 pixels, $3 totaal",
 	"timedmedia-ogg-long-general": "Ogg-mediabestaand, lengte $2, $3",
 	"timedmedia-ogg-long-error": "Ongeldig Ogg-bestaand: $1",
-	"timedmedia-no-player-js": "Joew systeem hef JavaScript uutstaon of der is gien ondersteunde mediaspeuler.<br />\nJe kunnen <a href=\"$1\">de klip neerlaojen</a> of <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">n mediaspeuler neerlaojen</a> um de klip aof te speulen in joew webkieker.",
 	"timedmedia-more": "Meer...",
 	"timedmedia-dismiss": "Sluten",
 	"timedmedia-download": "Bestaand neerlaojen",
 	"timedmedia-desc-link": "Over dit bestaand",
+	"timedmedia-days": "{{PLURAL:$1|1 dag|$1 dagen}}",
 	"timedmedia-source-file": "Bron van $1",
 	"timedmedia-source-audio-file-desc": "Oorspronkelik $1-bestaand ($2)",
 	"timedmediahandler": "Timed Media Handler"
