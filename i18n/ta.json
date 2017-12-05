@@ -10,7 +10,6 @@
 	},
 	"timedmedia-ogg-long-general": "Ogg  ஊடக கோப்பு,  நீளம்   $2 , $3",
 	"timedmedia-ogg-long-error": "செல்லாத ogg கோப்பு: $1",
-	"timedmedia-no-player-js": "மன்னிக்கவும், உங்கள் உலாவியில் ஜாவாஸ்கிரிப்ட் முடக்கப்பட்டிருக்கின்றது அல்லது தகுந்த இயக்கி இல்லை.<br />\nநீங்கள் <a href=\"$1\">இக்கோப்பினை தரவிரக்கம் செய்யலாம்</a> அல்லது <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">தகுந்த இயக்கியினை தரவிரக்கம் செய்து</a> இதனை உங்கள் உலாவியில் ஓட்டலாம்.",
 	"timedmedia-more": "மேலும்...",
 	"timedmedia-dismiss": "மூடுக",
 	"timedmedia-download": "கோப்பை பதிவிறக்கம் செய்",

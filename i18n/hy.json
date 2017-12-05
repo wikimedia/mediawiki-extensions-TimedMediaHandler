@@ -5,7 +5,6 @@
 			"Vahe Gharakhanyan"
 		]
 	},
-	"timedmedia-no-player-js": "Ցավոք, ձեր վեբդիտարկիչում անջատված է JavaScript-ը կամ բացակայում է աջակցվող նվագարկիչ:<br />\nԴուք կարող եք <a href=\"<span class=\" notranslate\"=\"\" translate=\"no\">$1</span>\">ներբեռնել տեսահոլովակը</a> կամ <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">նվագարկիչ</a>:",
 	"timedmedia-source-file": "$1 աղբյուր",
 	"timedmedia-source-audio-file-desc": "Սկզբնական $1 նիշք ($2)"
 }

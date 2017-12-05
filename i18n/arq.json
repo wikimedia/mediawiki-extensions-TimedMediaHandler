@@ -4,7 +4,6 @@
 			"Oldstoneage"
 		]
 	},
-	"timedmedia-no-player-js": "اعدُرنا، الفلّاك فيه JavaScript محبّس ولا ما فيه حتا قرّاي موالم.<br />\nتنجم <a href=\"$1\">تتيليشارجي الفيديو</a> ولا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">نزّل عندك قرّاي يكون موالم</a> باش تفوّت الفيديو فل فلّاك تاعك.",
 	"timedmedia-source-file": "$1 مصدر",
 	"timedmedia-source-audio-file-desc": "فيشي $1 أصلي ($2)"
 }

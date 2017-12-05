@@ -15,7 +15,6 @@
 	"timedmedia-wav-short-audio": "WAV جانیا دنگدار, $1",
 	"timedmedia-wav-pcm-required": "شما فقط تونیت پی سی ام نه سوار بکید",
 	"timedmedia-mp4-short-video": "MP4 $1 جانیا ویدیو, $2",
-	"timedmedia-no-player-js": "د بدبختی دوارته نیئر د لحاظ جاوا نیسسه ناکشتگر بیه یا شایت حامیندار هیچ دنگیاری نئ.<br />\nشما می تونیت<a href=\"$1\">کلیپ نه بگریت</a> یا<a <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">یه گل دنگیار نه بگریت</a> سی یه که کلیپ نه د دوارته نیئرتو به ونیت..",
 	"timedmedia-more": "بیشتر....",
 	"timedmedia-dismiss": "بسن",
 	"timedmedia-download": "گرتن جانیا",

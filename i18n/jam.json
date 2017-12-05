@@ -4,7 +4,6 @@
 			"Katxis"
 		]
 	},
-	"timedmedia-no-player-js": "Sari, yu brouza aida ab JavaScript disiebl ar no ab no supuotid plyea.<br /> Yu kiah <a href=\"$1\">dongluod di klip</a> ar <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">dongluod wah plyea</a> fi plie di klip ina yu brouza.‎",
 	"timedmedia-source-file": "$1 suos",
 	"timedmedia-source-audio-file-desc": "Orijinal $1 fail ($2)‎"
 }

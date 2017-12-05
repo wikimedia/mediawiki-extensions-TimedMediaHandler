@@ -4,7 +4,6 @@
 			"Чаховіч Уладзіслаў"
 		]
 	},
-	"timedmedia-no-player-js": "На жаль, у вашым браўзеры адключаны JavaScript, ці не маецца патрабаванага прайгравальніка.<br />\nВы можаце <a href=\"$1\">загрузіць ролік</a> ці <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">загрузіць прайгравальнік</a> для прайгравання роліка ў браўзеры.",
 	"timedmedia-source-file": "Крыніца $1",
 	"timedmedia-source-audio-file-desc": "Арыгінальны $1-файл ($2)"
 }

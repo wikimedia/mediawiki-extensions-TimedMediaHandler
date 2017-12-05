@@ -4,7 +4,6 @@
 			"Jagwar"
 		]
 	},
-	"timedmedia-no-player-js": "Miala tsiny indrindra, na tsy mampiasa JavaScript ny mpitety tranonkalanao, na tsy manana mpamaky zaka ilay izy.<br />\nAzonao atao ny <a href=\"$1\">mampidina ilay kilipy</a> na <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">mampidina mpamaky iray</a> hamakiana ilay kilipy eo amin'ny mpitetinao.",
 	"timedmedia-source-file": "Fango $1",
 	"timedmedia-source-audio-file-desc": "Rakitra niaviana $1 ($2)"
 }

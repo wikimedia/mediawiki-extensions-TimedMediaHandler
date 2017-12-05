@@ -4,7 +4,6 @@
 			"The Discoverer"
 		]
 	},
-	"timedmedia-no-player-js": "Maf korchem, tujea browserant ek tor JavaScript dublem asa vo somorthit player nam.<br />\nTum <a href=\"$1\">clipik download</a> korunk shoktai vo clip tujea browseran cholovpak <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ek playerak download</a> korunk shoktai.",
 	"timedmedia-source-file": "$1 strot",
 	"timedmedia-source-file-desc": "Mul $1 fail, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Mul $1 fail ($2)"

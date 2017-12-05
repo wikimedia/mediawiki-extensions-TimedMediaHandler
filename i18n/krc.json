@@ -5,7 +5,6 @@
 			"Ernác"
 		]
 	},
-	"timedmedia-no-player-js": "Джарсыугъа, сизни браузеригизде JavaScript джукъланыбды неда керекли ойнатыучу джокъду.<br />\nСиз <a href=\"$1\">клипни эндирирге</a> неда клипни браузерде ойнатыр ючюн <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ойнатыучу эндирирге</a> боллукъсуз.",
 	"timedmedia-more": "Энтда…",
 	"timedmedia-source-file": "$1 къайнагъы",
 	"timedmedia-source-audio-file-desc": "Оригинал $1-файл ($2)"

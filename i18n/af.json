@@ -6,7 +6,7 @@
 			"Arnobarnard"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!!!FUZZY!!Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler",
+	"timedmediahandler-desc": "Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler",
 	"timedmedia-ogg-short-audio": "Ogg $1 klanklêer, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 video lêer, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 medialêer, $2",
@@ -14,7 +14,6 @@
 	"timedmedia-ogg-long-video": "Ogg $1 videolêer, lengte $2, $4×$5 pixels, $3",
 	"timedmedia-ogg-long-general": "Ogg medialêer, lengte $2, $3",
 	"timedmedia-ogg-long-error": "Ongeldige Ogg-lêer: $1",
-	"timedmedia-no-player-js": "Jammer, u blaaier het of JavaScript gedeaktiveer of het nie enige ondersteunde speler nie.<br />\nU kan <a href=\"$1\">die knipsel aflaai</a> of <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">'n speler aflaai</a> om die knipsel te speel in u blaaier.",
 	"timedmedia-more": "Meer…",
 	"timedmedia-dismiss": "Sluit",
 	"timedmedia-download": "Laai lêer af",

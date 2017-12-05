@@ -4,6 +4,5 @@
 			"Tisave"
 		]
 	},
-	"timedmedia-no-player-js": "Eskize, men swa JavaScript navigatè ou deyaktive oswa li pa gen okenn mwayen pou ouvri fichye sa a.<br />\nOu ka <a href=\"$1\">telechaje fichye a</a> oswa <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">chèche yon lojisyèl</a> pou ouvri fichye a nan navigatè ou.",
 	"timedmedia-source-file": "Referans $1"
 }

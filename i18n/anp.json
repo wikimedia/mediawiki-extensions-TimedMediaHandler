@@ -4,7 +4,6 @@
 			"Angpradesh"
 		]
 	},
-	"timedmedia-no-player-js": "क्षमा करऽ, आपन॑ ब्राउज़र जावास्क्रिप्ट अक्षम छै या कोनो भी समर्थित प्लेयर नै छै.<br />\nतोंय <a href=\"$1\">क्लिप डाउनलोड करऽ </a> या <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">प्लेयर डाउनलोड करऽ</a> आपनऽ ब्राउज़र मं॑ क्लिप खेलै लेली.",
 	"timedmedia-source-file": "$1 स्रोत",
 	"timedmedia-source-audio-file-desc": "मूल $1 फ़ाइल ($2)"
 }

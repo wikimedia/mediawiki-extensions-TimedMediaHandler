@@ -8,7 +8,8 @@
 			"Jon Harald Søby",
 			"Peter Alberti",
 			"Simeondahl",
-			"Steenth"
+			"Steenth",
+			"SimmeD"
 		]
 	},
 	"timedmediahandler-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",
@@ -29,7 +30,6 @@
 	"timedmedia-wav-pcm-required": "Du kan kun uploade PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "Mp4 $1 videofil, $2",
 	"timedmedia-mp4-long-video": "Mp4-fil for audio/video, $1, længde $2, $4 × $5 pixel, $3 samlet",
-	"timedmedia-no-player-js": "Beklager, men din browser har enten deaktiveret JavaScript eller har ikke en afspiller, som vi understøtter.<br />\nDu kan enten <a href=\"$1\">hente klippet</a> eller <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">hente en afspiller</a> til at afspille klippet i din browser.",
 	"timedmedia-more": "Mere...",
 	"timedmedia-dismiss": "Luk",
 	"timedmedia-download": "Download fil",

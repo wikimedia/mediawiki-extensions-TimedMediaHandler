@@ -4,7 +4,7 @@
 			"HalanTul"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя",
+	"timedmediahandler-desc": "Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя",
 	"timedmedia-ogg-short-audio": "Звуковой файл Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Видео-файл Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Медиа-файл Ogg $1, $2",
@@ -13,7 +13,6 @@
 	"timedmedia-ogg-long-multiplexed": "мультиплексный аудио/видео-файл Ogg, $1, уһуна $2, $4×$5 пииксэллээх, барыта $3",
 	"timedmedia-ogg-long-general": "медиа-файл Ogg, уһуна $2, $3",
 	"timedmedia-ogg-long-error": "сыыһа Ogg-файл: $1",
-	"timedmedia-no-player-js": "Хомойуох иһин, браузергар JavaScript араарылла сылдьар, эбэтэр ону үлэлэтэр тэрил суох эбит.<br />\nЭн <a href=\"$1\">ролигы хачайданан ылан көрүөххүн</a> биитэр <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">оонньотор тэрили хачайданан</a> браузергар көрүөххүн сөп.",
 	"timedmedia-more": "Өссө...",
 	"timedmedia-dismiss": "Кистээ/сап",
 	"timedmedia-download": "Билэни хачайдаа",

@@ -4,7 +4,6 @@
 			"Akerbeltz"
 		]
 	},
-	"timedmedia-no-player-js": "Tha sinn duilich ach tha JavaScript à comas sa bhrabhsair agad no chan eil cluicheadair agad ris a bheil taic.<br />\n’S urrainn dhut <a href=\"$1\">an cliop a luchdadh a-nuas</a> no <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">cluicheadaire a luchdadh a-nuas</a> a chluicheas e sa bhrabhsair agad.",
 	"timedmedia-source-file": "Tùs ($1)",
 	"timedmedia-source-audio-file-desc": "Am faidhle $1 tùsail ($2)"
 }

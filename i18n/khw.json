@@ -4,7 +4,6 @@
 			"Rachitrali"
 		]
 	},
-	"timedmedia-no-player-js": "معذرت، تہ براؤزرا جاواسکرپٹ فعال نیکی یا کیہ معاون پلیئر شامل نیکی۔<br />\nھیہ کلپو تان براؤزرا چلئیکو بچے تو ھیہ <a href=\"$1\">کلپو ڈاؤنلوڈ</a> کورے یا </a> or <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\">پلیئر ڈاؤنلوڈ</a> کورے۔",
 	"timedmedia-source-file": "$1 مسودہ",
 	"timedmedia-source-audio-file-desc": "اصلی $1 فائل($2)"
 }

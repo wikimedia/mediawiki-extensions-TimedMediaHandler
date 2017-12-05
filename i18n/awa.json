@@ -4,7 +4,6 @@
 			"1AnuraagPandey"
 		]
 	},
-	"timedmedia-no-player-js": "क्षमा करें, आपके ब्राउज़र में या तो जावास्क्रिप्ट अक्षम है या समर्थित प्लेयर नहीं है।<br />\nआप <a href=\"$1\">क्लिप को डाउनलोड</a> कर सकते हैं अथवा क्लिप को अपने ब्राउज़र में चलाने के लिए <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">एक प्लेयर डाउनलोड</a> कर सकते हैं।",
 	"timedmedia-source-file": "$1 स्रोत",
 	"timedmedia-source-audio-file-desc": "मूल $1 फ़ाइल ($2)"
 }

@@ -5,7 +5,6 @@
 			"Sarvaturi"
 		]
 	},
-	"timedmedia-no-player-js": "Purtroppu lu tò browser o havi lu JavaScript disattivatu o nun havi nuddu litturi suppurtatu.<br />\nTi poi <a href=\"$1\">scarricari lu spizzuni</a> o puru <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">scarricari nu litturi</a> p'arriprudùciri lu spizzuni ntô tò browser.",
 	"timedmedia-source-file": "Surgenti $1",
 	"timedmedia-source-audio-file-desc": "File $1 origginali ($2)",
 	"orphanedtimedtext": "Pàggini suttatìtuli òrfani"

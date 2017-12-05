@@ -4,7 +4,8 @@
 			"BeginaFelicysym",
 			"Leinad",
 			"Shadown",
-			"Sp5uhe"
+			"Sp5uhe",
+			"Matma Rex"
 		]
 	},
 	"mwe-timedtext-back-btn": "Wstecz",
@@ -23,7 +24,7 @@
 	"mwe-timedtext-textcat-lin": "Znaczniki językowe",
 	"mwe-timedtext-textcat-cue": "Punkty kontrolne",
 	"mwe-timedtext-no-subs": "Nie ma dostępnych ścieżek tekstowych",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 napisy do filmu: $2",
+	"mwe-timedtext-language-subtitles-for-clip": "Napisy w języku „$1” do filmu $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Nie odnaleziono $1 napisów do filmu: $2",
 	"mwe-timedtext-upload-timed-text": "Dodaj napisy"
 }

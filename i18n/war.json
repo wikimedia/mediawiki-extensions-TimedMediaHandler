@@ -4,7 +4,6 @@
 			"JinJian"
 		]
 	},
-	"timedmedia-no-player-js": "Pasaylo-a, an imo browser in bangin waray ginpaandar an JavaScript o waray bisan ano nga nasuporta nga player.<br />\nIkaw in puydi <a href=\"$1\">mag-download han clip</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">mag-download han player</a> para paandaron an clip ha imo browser.",
 	"timedmedia-source-file": "$1 tinitikangan",
 	"timedmedia-source-audio-file-desc": "Orihinal $1 file ($2)"
 }

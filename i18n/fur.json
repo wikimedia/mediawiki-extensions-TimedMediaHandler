@@ -15,7 +15,6 @@
 	"timedmedia-ogg-long-general": "File multimediâl Ogg, durade $2, $3",
 	"timedmedia-ogg-long-error": "File ogg no valit: $1",
 	"timedmedia-webm-short-video": "File video WebM $1, $2",
-	"timedmedia-no-player-js": "Il to browser nol à JavaScript o lu à disabilitât.<br />\nTu piedis <a href=\"$1\">discjamâ le clip multimediâl</a> o <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">un player</a> par viodi la clip sul to browser.",
 	"timedmedia-more": "Altri...",
 	"timedmedia-dismiss": "Siere",
 	"timedmedia-download": "Discjame il file",

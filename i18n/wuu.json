@@ -5,7 +5,6 @@
 			"飞舞回堂前"
 		]
 	},
-	"timedmedia-no-player-js": "对弗起，你个浏览器禁用仔JavaScript或呒不任何支持个播放器。<br />\n你可以<a href=\"$1\">下载箇只片段</a>或<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">下载一只播放器</a>好勒浏览器里播放片段。",
 	"timedmedia-hours": "{{PLURAL:$1|$1个钟头}}",
 	"timedmedia-source-file": "$1原始文件",
 	"timedmedia-source-audio-file-desc": "原始$1文件 ($2)"

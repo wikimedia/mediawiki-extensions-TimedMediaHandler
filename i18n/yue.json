@@ -14,7 +14,6 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg 多工聲／畫檔，$1，長度$2，$4×$5像素，總共$3",
 	"timedmedia-ogg-long-general": "Ogg 媒檔，長度$2，$3",
 	"timedmedia-ogg-long-error": "無效嘅ogg檔: $1",
-	"timedmedia-no-player-js": "對唔住，你個瀏覽器無開到 JavaScript 或者無支援嘅播放程式。<br />\n你可以 <a href=\"$1\">下載條片</a> 或者 <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">下載播放程式</a> 等你個瀏覽器都可以播。",
 	"timedmedia-more": "更多...",
 	"timedmedia-dismiss": "閂",
 	"timedmedia-download": "下載檔案",

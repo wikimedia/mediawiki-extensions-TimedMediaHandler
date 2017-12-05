@@ -14,7 +14,6 @@
 	"timedmedia-ogg-long-multiplexed": "Sammelsatt Ogg-lyd- å -videofil, $1, længd $2, $4×$5 pixel, $3 sammeltj",
 	"timedmedia-ogg-long-general": "Ogg mediafil, længd $2, $3",
 	"timedmedia-ogg-long-error": "Udjylji Ogg-fil: $1",
-	"timedmedia-no-player-js": "Beklawe, men dej browser hår entjen deaktiviirtj JavaScript elle hår ett i åspølle, som wi unjestötte.<br />\nDu kan entjen <a href=\"$1\">hentj klippe</a> elle <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">hentj i åspølle</a> te å åspøll klippe i dej browser.",
 	"timedmedia-more": "Mier...",
 	"timedmedia-dismiss": "Lokk",
 	"timedmedia-download": "Lägg fil nier",

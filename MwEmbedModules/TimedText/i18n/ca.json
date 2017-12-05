@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pitort"
+			"Pitort",
+			"Vriullop"
 		]
 	},
 	"mwe-timedtext-back-btn": "Enrere",
-	"mwe-timedtext-textcat-sub": "Subtítols"
+	"mwe-timedtext-textcat-sub": "Subtítols",
+	"mwe-timedtext-no-subs": "No hi ha pistes de text disponibles",
+	"mwe-timedtext-upload-timed-text": "Afegeix subtítols"
 }

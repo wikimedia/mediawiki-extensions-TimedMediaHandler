@@ -4,7 +4,6 @@
 			"Silovan"
 		]
 	},
-	"timedmedia-no-player-js": "თქვან ბრაუზერს გოთიშილ რე JavaScript ვარდა ვა რე ოხვილური პროგრამა.<br />\nთქვა შეგილებუნა <a href=\"$1\">გეგნოჭარათ კლიპი</a> ვარდა <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">გეგნოჭარათ პროგრამა</a> კლიპიშ ბრაუზერს ორჩქილეთ/ოძირაფალო.",
 	"timedmedia-source-file": "წყუ $1",
 	"timedmedia-source-audio-file-desc": "ორიგინალი $1 ფაილი ($2)"
 }

@@ -4,7 +4,7 @@
 			"Mdupont"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis",
+	"timedmediahandler-desc": "Mbajtës për mediat në kohën e duhur (video, audio, timedText) me transcoding të ZQM Theora / Vorbis",
 	"timedmedia-ogg-short-audio": "Ogg tingull $1 fotografi, $2",
 	"timedmedia-ogg-short-video": "video file Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 media file, $2",
@@ -13,7 +13,6 @@
 	"timedmedia-ogg-long-multiplexed": "ZQM multiplexed audio / video file, $1, gjatë $2, $4 × $5 pixels, $3 e përgjithshme",
 	"timedmedia-ogg-long-general": "Ogg media file, gjatë $2, $3",
 	"timedmedia-ogg-long-error": "E pavlefshme Ogg file: $1",
-	"timedmedia-no-player-js": "Na vjen keq, browser-i juaj ose ka JavaScript paaftë ose nuk ka asnjë lojtar të mbështetur. <br /> Ju mund të <a href=\"$1\">shkarkoni clip</a> ose <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">shkarkoni një lojtar</a> për të luajtur clip në shfletuesin tuaj.",
 	"timedmedia-more": "Më shumë ...",
 	"timedmedia-dismiss": "Afër",
 	"timedmedia-download": "Shkarko file",

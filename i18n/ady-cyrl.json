@@ -6,7 +6,6 @@
 			"Amire80"
 		]
 	},
-	"timedmedia-no-player-js": "Къытфэгъэгъу, е уи броузерым и JavaScript гъэкӀосагъэ, е гъэлъэгъуалъэ тэрэз тетэп.<br />\n<a href=\"$1\">Клипыр къипщэн</a> е <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">гъэлъэгъуалъэ тебгъэуцон</a> плъэкӀыщт, уи броузерым ущеплъынэу.",
 	"timedmedia-source-file": "Лъапсэу $1",
 	"timedmedia-source-audio-file-desc": "Оригинал $1-файлыр ($2)"
 }

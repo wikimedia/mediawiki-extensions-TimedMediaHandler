@@ -15,7 +15,6 @@
 	"timedmedia-ogg-long-multiplexed": "ऑग ध्वनी/चित्र संचिका, $1, लांबी $2, $4×$5 पिक्सेल्स, $3 एकूण",
 	"timedmedia-ogg-long-general": "ऑग मीडिया संचिका, लांबी $2, $3",
 	"timedmedia-ogg-long-error": "चुकीची ऑग संचिका: $1",
-	"timedmedia-no-player-js": "माफ करा,आपल्या न्याहाळकात एक तर जावास्क्रिप्ट अक्षम आहे किंवा त्यात सहाय्यीभूत प्लेअर नाहीत.<br /> आपण, <a href=\"$1\">क्लिपचे अधिभारण करु शकता</a>किंवा, आपल्या न्याहाळकात ती क्लिप चालविण्यासाठी<a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">त्यासाठीच्या प्लेअरचे अधिभारण करु शकता.</a>",
 	"timedmedia-more": "आणखी...",
 	"timedmedia-dismiss": "बंद करा",
 	"timedmedia-download": "संचिका अधिभारण करा",

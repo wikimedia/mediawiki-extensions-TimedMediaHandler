@@ -24,7 +24,6 @@
 	"timedmedia-wav-pcm-required": "Naložite lahko samo PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "Videodatoteka MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Avdio-/videodatoteka MP4, $1, dolžine $2, $4 × $5 pik, skupaj $3",
-	"timedmedia-no-player-js": "Oprostite, vaš brskalnik ima onemogočen JavaScript ali pa nima nobenega podprtega predvajalnika.<br />\nPosnetek lahko <a href=\"$1\">snamete</a> ali <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">prenesete predvajalnik</a> za predvajanje posnetka v svojem brskalniku.",
 	"timedmedia-more": "Več ...",
 	"timedmedia-dismiss": "Zapri",
 	"timedmedia-download": "Prenesi",

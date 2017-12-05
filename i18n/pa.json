@@ -6,7 +6,6 @@
 			"Satdeep gill"
 		]
 	},
-	"timedmedia-no-player-js": "ਮੁਆਫ਼ ਕਰਨਾ, ਜਾਂ ਤਾਂ ਤੁਹਾਡੇ ਬਰਾਊਜ਼ਰ ਉੱਤੇ ਜਾਵਾਸਕ੍ਰਿਪਟ ਚਾਲੂ ਨਹੀਂ ਜਾਂ ਫ਼ਿਰ ਕੋਈ ਹੋਰ ਸਹਾਇਕ ਪਲੇਅਰ ਮੌਜੂਦ ਨਹੀਂ ਹੈ।<br />\nਤੁਸੀਂ <a href=\"$1\">ਕਲਿੱਪ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦੇ ਹੋ</a> ਜਾਂ <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ਕੋਈ ਪਲੇਅਰ ਡਾਊਨਲੋਡ ਕਰਕੇ</a> ਇਹ ਕਲਿੱਪ ਆਪਣੇ ਬਰਾਊਜ਼ਰ ਵਿੱਚ ਚਲਾ ਸਕਦੇ ਹੋ।",
 	"timedmedia-more": "ਹੋਰ...",
 	"timedmedia-source-file": "$1 ਸਰੋਤ",
 	"timedmedia-source-audio-file-desc": "ਮੂਲ $1 ਫ਼ਾਈਲ ($2)"

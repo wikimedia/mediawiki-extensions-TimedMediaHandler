@@ -16,7 +16,6 @@
 	"timedmedia-ogg-long-multiplexed": "Samansett ogg lyd-/videofil, $1, lengd $2, $4×$5 pikslar, $3 til saman",
 	"timedmedia-ogg-long-general": "Ogg mediafil, lengd $2, $3",
 	"timedmedia-ogg-long-error": "Ugyldig Ogg-fil: $1",
-	"timedmedia-no-player-js": "Orsak. Nettleseren din har anten ikkje JavaScript aktiv eller har ingen støtta spelar.<br />\nDu kan <a href=\"$1\">laste ned klippet</a> eller <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">laste ned ein spelar</a> for å spele av klippet i nettlesaren din.",
 	"timedmedia-more": "Meir...",
 	"timedmedia-dismiss": "Lat att",
 	"timedmedia-download": "Last ned fila",

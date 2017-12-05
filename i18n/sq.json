@@ -10,7 +10,6 @@
 	"timedmedia-ogg-short-general": "Skedë mediatike Ogg $1, $2",
 	"timedmedia-ogg-long-audio": "Skedë zanore Ogg $1, kohëzgjatja $2, $3",
 	"timedmedia-ogg-long-video": "Skedë pamore Ogg $1, kohëzgjatja $2, $4×$5 pixel, $3",
-	"timedmedia-no-player-js": "Na vjen keq, browser-i juaj ose ka të çaktivizuar JavaScript ose nuk ka mbështetje për ndonjë player.<br />\nJu mund të <a href=\"$1\">shkarkoni klipin</a> ose <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">shkarkoni një player</a> për të luajtur klipin në shfletuesin tuaj.",
 	"timedmedia-more": "Më shumë...",
 	"timedmedia-dismiss": "Mbylle",
 	"timedmedia-download": "Shkarko skedën",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Base",
-			"Тест"
+			"Тест",
+			"Piramidion"
 		]
 	},
 	"mwe-timedtext-back-btn": "Назад",
@@ -21,7 +22,7 @@
 	"mwe-timedtext-textcat-lin": "Лінгвістична розмітка",
 	"mwe-timedtext-textcat-cue": "Знакові точки",
 	"mwe-timedtext-no-subs": "Немає текстових доріжок",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 — субтитри для кліпу: $2",
+	"mwe-timedtext-language-subtitles-for-clip": "Субтитри мовою «$1» для кліпу: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Не знайдено субтитрів $1 для кліпу: $2",
 	"mwe-timedtext-upload-timed-text": "Додати субтитри"
 }

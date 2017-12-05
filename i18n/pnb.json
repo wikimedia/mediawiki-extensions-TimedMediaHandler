@@ -4,7 +4,6 @@
 			"Khalid Mahmood"
 		]
 	},
-	"timedmedia-no-player-js": "تواڈے براؤزر تے جاواسکرپٹ کم نہیں کر ریا یا فیر ہور پلئیر نہیں <br />\nتسیں <a href=\"$1\">کلپ ڈاؤنلوڈ کرسکدے او</a> یا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">یا اپنے براؤزر وچ کلپ چلان لئی پلیئر ڈاؤنلوڈ کرو</a> .",
 	"timedmedia-source-file": "$1 مڈھ",
 	"timedmedia-source-audio-file-desc": "اصلی$1 فائل ($2)"
 }

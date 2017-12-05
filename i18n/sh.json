@@ -4,7 +4,6 @@
 			"OC Ripper"
 		]
 	},
-	"timedmedia-no-player-js": "Žao nam je, vaš preglednik ili je onemogućio JavaScript ili nema nijednog podržanog playera.<br />\nMožete <a href=\"$1\">učitati klip</a> ili <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">učitati player</a> za reproduciranje klipa u vašem pregledniku.",
 	"timedmedia-source-file": "$1 izvor",
 	"timedmedia-source-audio-file-desc": "Originalna $1 datoteka ($2)"
 }

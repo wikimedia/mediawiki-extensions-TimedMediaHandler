@@ -4,7 +4,6 @@
 			"Võrok"
 		]
 	},
-	"timedmedia-no-player-js": "Kah'os om suq võrgokaejan JavaScript keelet vai olõ-õi sul tarvilist näütämistarkvarra.<br />\nSaat <a href=\"$1\">lõigu alla laatiq</a> vai <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">laatiq alla tarkvara</a>, minka lõiku võrgokaejan näüdädäq.",
 	"timedmedia-source-file": "Läteq $1",
 	"timedmedia-source-audio-file-desc": "Alguperäne $1-fail ($2)"
 }

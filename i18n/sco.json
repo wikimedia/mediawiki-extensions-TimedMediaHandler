@@ -6,7 +6,6 @@
 		]
 	},
 	"timedmedia-ogg-long-no-streams": "Ogg media file. Warnishment: Nane o the codecs uised in this file ar recognized.",
-	"timedmedia-no-player-js": "Sorry, yer brouser either haes JavaScript disabled or daes nae hae ony supportit player.<br />\nYe can <a href=\"$1\">dounload the clip</a> or <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">dounload a player</a> tae play the clip in yer brouser.",
 	"timedmedia-source-file": "$1 soorce",
 	"timedmedia-source-audio-file-desc": "Oreeginal $1 file ($2)",
 	"timedmedia-audios": "{{PLURAL:$1|$1 audio file|$1 audio files}}",

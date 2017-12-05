@@ -16,7 +16,6 @@
 	"timedmedia-ogg-long-multiplexed": "Kunigita aŭdio/video Ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute",
 	"timedmedia-ogg-long-general": "Ogg-mediodosiero, longeco $2, $3",
 	"timedmedia-ogg-long-error": "Malvalida Ogg-dosiero: $1",
-	"timedmedia-no-player-js": "Pardonu, estas malŝaltita Ĝavoskripto en via foliumilo aŭ ĝi enhavas neniun subtenatan ludilon<br />\nVi povas <a href=\"$1\">elŝuti la videaĵon</a> aŭ <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">elŝuti ludilon</a> por povi ludi la videaĵon en via foliumilo.",
 	"timedmedia-more": "Pli...",
 	"timedmedia-dismiss": "Fermi",
 	"timedmedia-download": "Alŝuti dosieron",

@@ -8,7 +8,6 @@
 		]
 	},
 	"timedmedia-ogg-long-error": "Ἄκυρα ἀρχεῖα ogg: $1",
-	"timedmedia-no-player-js": "Λυπούμεθα, υμέτερος φυλλομετρητής εκάτερον διαθέτει JavaScript ἀπενεργοποιημένη ἤ οὐδέν ὐποστήριξη παρέχει δια ἀναπαραγωγή.\nΔύνασθαι <a href=\"$1\">κατεβάσματος της ἀκολουθίας</a> ἤ <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">κατεβάσματος ἐφαρμογής</a> διά τήν ἀναπαραγωγή τής ἀκολουθίας εἴς τόν φυλλομετρητή σας.",
 	"timedmedia-more": "πλέον...",
 	"timedmedia-dismiss": "Κλῄειν",
 	"timedmedia-source-file": "$1 Πηγή",

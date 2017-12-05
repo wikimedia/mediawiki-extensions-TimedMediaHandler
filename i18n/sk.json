@@ -16,7 +16,6 @@
 	"timedmedia-ogg-long-multiplexed": "Multiplexovaný zvukový/video súbor ogg, $1, dĺžka $2, $4×$5 pixelov, $3 celkom",
 	"timedmedia-ogg-long-general": "Multimediálny súbor ogg, dĺžka $2, $3",
 	"timedmedia-ogg-long-error": "Neplatný súbor ogg: $1",
-	"timedmedia-no-player-js": "Je nám ľúto, ale váš prehliadač má buď vypnutý JavaScript, alebo nemáte žiadny podporovaný prehrávač.<br />\nMôžete si <a href=\"$1\">stiahnuť klip</a> alebo si <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">stiahnuť prehrávač</a>, ktorým si klip prehrajete v prehliadači.",
 	"timedmedia-more": "viac...",
 	"timedmedia-dismiss": "Zatvoriť",
 	"timedmedia-download": "Stiahnuť súbor",

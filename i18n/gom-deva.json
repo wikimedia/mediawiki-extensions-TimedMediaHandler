@@ -6,7 +6,6 @@
 			"Vaishali Parab"
 		]
 	},
-	"timedmedia-no-player-js": "माफ करचें, तुमच्या ब्रावजरांत  एक तर जावास्क्रिप्ट दुबळें आसा वा समर्थीत प्लेयर ना।<br />\nतुमी <a href=\"$1\">क्लीप डाउनलोड</a> करुं शकतात वा क्लीप तुमच्या ब्रावजरान चलोवपाक <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">एक प्लेयर डाउनलोड</a> करुं शकतात.",
 	"timedmedia-source-file": "$1 उगम",
 	"timedmedia-source-audio-file-desc": "मूळ $1 फायल ($2)"
 }

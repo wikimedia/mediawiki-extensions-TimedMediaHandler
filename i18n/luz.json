@@ -4,7 +4,6 @@
 			"علی ساکی لرستانی"
 		]
 	},
-	"timedmedia-no-player-js": "ۉاسی ۉبخشیت،مرۉرگر ایشا ۉھ صۉرت جاۉا اسکریپت غیرفعال ۉابیدھ ۉ هیچ پلیر پشتیبانی نارھ.<br /> ایشا ۉا کلیژ ری ای ایترید <a href=\"$1\">download the clip</a> or <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">download a player</a> کلیپنه مئنه مرۉرگر خۉتۉن پخش کنیت.",
 	"timedmedia-source-file": "$1 سرچشمه",
 	"timedmedia-source-audio-file-desc": "اصلی $1 فایل ($2)"
 }

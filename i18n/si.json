@@ -4,10 +4,11 @@
 			"නන්දිමිතුරු",
 			"පසිඳු කාවින්ද",
 			"Susith Chandira Gts",
-			"හරිත"
+			"හරිත",
+			1100100
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ",
+	"timedmediahandler-desc": "Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ",
 	"timedmedia-ogg-short-audio": "Ogg $1 ශ්‍රව්‍ය ගොනුව, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 දෘශ්‍ය ගොනුව, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 මාධ්‍ය ගොනුව, $2",
@@ -20,7 +21,6 @@
 	"timedmedia-webm-long-video": "WebM ශ්‍රව්‍ය/දෘශ්‍ය ගොනුව, $1, දිග $2, $4 × $5 පික්සල්, $3 සමස්ථය",
 	"timedmedia-mp4-short-video": "MP4 $1 දෘශ්‍ය ගොනුව, $2",
 	"timedmedia-mp4-long-video": "MP4 ශ්‍රව්‍ය/දෘශ්‍ය ගොනුව, $1, දිග $2, $4 × $5 පික්සල්, $3 සමස්ථය",
-	"timedmedia-no-player-js": "සමාවන්න, ඔබේ ගවේෂකයේ ජාවාස්ක්‍රිප්ට් අක්‍රීය වී ඇත නැතහොත් කිසිදු අනුග්‍රහය දක්වන ප්ලේයරයක් ඔබ සතුව නැත.<br />\nඔබේ ගවේෂකයෙහි වීඩියෝව ධාවනය කිරීමට <a href=\"$1\">වීඩියෝව බාගත කිරීම</a> හෝ <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">ප්ලේයරය බාගත කිරීම</a> සිදු කළ හැකිය.",
 	"timedmedia-more": "ඉතිරිය…",
 	"timedmedia-dismiss": "වසන්න",
 	"timedmedia-download": "ගොනුව බා ගන්න",

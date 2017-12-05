@@ -4,7 +4,7 @@
 			"Juanpabl"
 		]
 	},
-	"timedmediahandler-desc": "!!FUZZY!!Maneyador de fichers sincronizatos (vidio, son y texto sincronizato) con transcodificación Ogg Theora/Vorbis",
+	"timedmediahandler-desc": "Maneyador de fichers sincronizatos (vidio, son y texto sincronizato) con transcodificación Ogg Theora/Vorbis",
 	"timedmedia-ogg-short-audio": "Fichero de son ogg $1, $2",
 	"timedmedia-ogg-short-video": "Fichero de vidio ogg $1, $2",
 	"timedmedia-ogg-short-general": "Fichero multimedia ogg $1, $2",

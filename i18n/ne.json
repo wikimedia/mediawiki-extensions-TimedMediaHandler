@@ -10,7 +10,6 @@
 	"timedmedia-ogg-short-audio": "Ogg $1 ध्वनि फाइल, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 विडियो फाइल, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 मीडिया फाइल, $2",
-	"timedmedia-no-player-js": "माफ गर्नुहोला, तपाईंको ब्राउजरमा या त जावास्क्रिप्ट अक्षम छ या समर्थित प्लेयर छैन ।<br />\nतपाईं <a href=\"$1\">क्लिपलाई डाउनलोड</a> गर्न सक्नुहुन्छ अथवा क्लिपलाई आफ्नो ब्राउजरमा चलाउनको लागि <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">एक प्लेयर डाउनलोड</a> गर्न सक्नु हुन्छ ।",
 	"timedmedia-more": "थप...",
 	"timedmedia-dismiss": "बन्ध गर्ने",
 	"timedmedia-download": "डाउनलोड गर्ने फाइल",

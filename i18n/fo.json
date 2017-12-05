@@ -5,7 +5,6 @@
 			"EileenSanda"
 		]
 	},
-	"timedmedia-no-player-js": "Halt okkum til góðar, tín brovsari hevur antin gjørt JavaScript óvirkið ella hevur ongan avspælara ið virkar her.<br />\nTú kanst <a href=\"$1\">taka klippið niður</a> ella <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">taka niður ein avspælara</a> sum kann spæla klippið í tínum internetkaga.",
 	"timedmedia-more": "Meira...",
 	"timedmedia-source-file": "$1 kelda",
 	"timedmedia-source-audio-file-desc": "Uppruna $1 fíla ($2)"

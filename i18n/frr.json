@@ -4,7 +4,6 @@
 			"Murma174"
 		]
 	},
-	"timedmedia-no-player-js": "Bi dan browser as det brüken faan JavaScript deaktiwiaret wurden of hi koon det ianfach ei ufspele.<br />\nDü könst <a href=\"$1\">det video deelloose</a> of <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">en software deelloose</a>, am det video uun dan browser uftuspelin.",
 	"timedmedia-source-file": "$1-kwel",
 	"timedmedia-source-audio-file-desc": "Originaal $1-datei ($2)",
 	"timedmediahandler": "Timed Media Handler"

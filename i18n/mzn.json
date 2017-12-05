@@ -4,7 +4,6 @@
 			"محک"
 		]
 	},
-	"timedmedia-no-player-js": "بَخشِنّی، جاوا اسکریپت ِنرم افزار شمه بروزر دله فعال نی‌یه، یا شمه بروزر این نرم افزار ره ساپورت نکانده.<br />\nشما توندی <a href=\"$1\">این ویدیو ره دانلود</a> و یا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">اتا پلیر</a> این ویدیو ره هارشی‌ین وسّه دانلود هاکنین.",
 	"timedmedia-source-file": "$1 مبدأ",
 	"timedmedia-source-audio-file-desc": "اصلی  $1  پرونده ( $2 )"
 }

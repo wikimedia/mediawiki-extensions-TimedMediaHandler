@@ -5,7 +5,6 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
-	"timedmedia-no-player-js": "אנטשולדיגט, אײַער בלעטערער אדער האט JavaScript אומאקטיווירט אדער האט נישט קיין  געשטיצטן שפילער.<br />\nאיר קענט <a href=\"$1\">אראפלאדן דעם פילמקליפ</a> אדער <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">אראפלאדן א שפילער</a> צו שפילן דעם קליפ אין אײַער בלעטערער.",
 	"timedmedia-dismiss": "שליסן",
 	"timedmedia-download": "אראָפלאָדן טעקע",
 	"timedmedia-status": "סטאַטוס",

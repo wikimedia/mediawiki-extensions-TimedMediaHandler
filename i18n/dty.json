@@ -6,7 +6,6 @@
 			"राम प्रसाद जोशी"
 		]
 	},
-	"timedmedia-no-player-js": "माफ गर्या, तमरो ब्राउजरमी या त जावास्क्रिप्ट अक्षम छ या समर्थित प्लेयर छैन ।<br />\nतमी <a href=\"$1\">क्लिपलाई डाउनलोड</a> गद्द सक्द्याहौ अथवा क्लिपलाई आफ्नो ब्राउजरमी चलाउनको लागि <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">एक प्लेयर डाउनलोड</a> गद्द सक्द्या हौ ।",
 	"timedmedia-source-file": "$1 श्रोत",
 	"timedmedia-source-audio-file-desc": "खास $1 चित्र ($2)"
 }

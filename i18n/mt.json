@@ -4,7 +4,6 @@
 			"Leli Forte"
 		]
 	},
-	"timedmedia-no-player-js": "Jiddispjaċina li l-browser tiegħek jew m'għandux JavaScript attivat jew m'għandu l-ebda player supportat.<br />\nTista' <a href=\"$1\"> tniżżel il-vidjow</a> jew <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">tniżżel player</a> biex tara l-vidjow fuq il-browser tiegħek.",
 	"timedmedia-more": "Aktar",
 	"timedmedia-source-file": "Sors $1",
 	"timedmedia-source-audio-file-desc": "Fajl oriġinali $1 ($2)"

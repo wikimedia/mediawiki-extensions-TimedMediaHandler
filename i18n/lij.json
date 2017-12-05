@@ -4,7 +4,6 @@
 			"Giromin Cangiaxo"
 		]
 	},
-	"timedmedia-no-player-js": "O teu navegatô o g'ha o JavaScript disattivou ò che dunque o no g'ha un riprodutô compatibbile.<br />Ti peu <a href=\"$1\">scaregâ o clip murtimediâ</a> opû <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">un riprodutô</a> pe riprodue o clip into teu navegatô",
 	"timedmedia-source-file": "Sorgente $1",
 	"timedmedia-source-audio-file-desc": "File originale $1 ($2)"
 }

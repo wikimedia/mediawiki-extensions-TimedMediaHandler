@@ -6,7 +6,6 @@
 			"Muhammed taha"
 		]
 	},
-	"timedmedia-no-player-js": "ببوورە، وێبگەرەکەت یان JavaScript لە کار خستووە یان playerی پێویستی نییە.<br />\nدەتوانیت <a href=\"$1\">کلیپەکە داگریت</a> یان <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">playerێک داگریت</a> بۆ ئەوەی لە وێبگەڕەکەتدا بیخەیتە سەر.",
 	"timedmedia-source-file": "$1 سەرچاوە",
 	"timedmedia-source-audio-file-desc": "پەڕگەی $1 بنەڕەتی ($2)",
 	"right-transcode-reset": "ڕێکخستنەوەی ڤیدیۆ سەرنەکوتووەکان یان ترانسکۆدکراوەکان ھەتا دیسان بچنەوە ناو ڕیزی کارەوە.",

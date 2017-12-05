@@ -5,7 +5,6 @@
 			"Ibrahim khashrowdi"
 		]
 	},
-	"timedmedia-no-player-js": "بخشایت اۆڑی، شمی بروزیر ئی سرا جاوا اسکریپت ئی سافٹ ایر پئال نه اینت ، و یا که شمی بروزیر شه ای پورمت ئا پُشتیوانی ئه نه کنت .<br />\nشما ئه توانیت <a href=\"$1\">که ای ویڈیو ئا ائیر بکنیت</a> و یا <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">یک پخش کنۆک</a> ئی په ای ویڈیو یی اجرا ئا ائیر بکنیت.",
 	"timedmedia-source-file": "$1 زهي",
 	"timedmedia-source-audio-file-desc": "اورجینال  $1  فایل ( $2 )"
 }

@@ -13,7 +13,6 @@
 	"timedmedia-ogg-long-audio": "Ffeil sain Ogg $1, yn para $2, $3",
 	"timedmedia-ogg-long-video": "Ffeil fideo Ogg $1, yn para $2, $4 × $5 picsel, $3",
 	"timedmedia-ogg-long-error": "Ffeil Ogg annilys: $1",
-	"timedmedia-no-player-js": "Ymddiheurwn, gall fod eich porwr analluogi JavaScript disabled neu heb y chwaraewr priodol.<br/>\nGallwch <a href=\"$1\">lawrlwytho'r clip</a> neu <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">lawrlwytho chwaraewr</a> er mwyn chwrae'r clip yn eich porwr.",
 	"timedmedia-more": "Mwy…",
 	"timedmedia-dismiss": "Caeer",
 	"timedmedia-download": "Lawrlwytho ffeil",

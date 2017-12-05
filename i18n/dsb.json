@@ -15,7 +15,6 @@
 	"timedmedia-ogg-long-error": "Njepłaśiwa Ogg-dataja: $1",
 	"timedmedia-webm-short-video": "WebM $1 wideodataja, $2",
 	"timedmedia-webm-long-video": "WebM dataja awdio/wideo, $1, dłujkosć $2, $4 x $5, $3 dogromady",
-	"timedmedia-no-player-js": "Twój wobglědowak jo bóžko pak JavaScript znjemóžnił abo njama njepódpěrany wótegrawak.<br />\nMóžoš  <a href=\"$1\">klip ześěgnuś</a> abo <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">wótgrawak ześěgnuś</a>, aby klip w swójom wobglědowaku wótegrał.",
 	"timedmedia-more": "Wěcej...",
 	"timedmedia-dismiss": "Zacyniś",
 	"timedmedia-download": "Dataju ześěgnuś",

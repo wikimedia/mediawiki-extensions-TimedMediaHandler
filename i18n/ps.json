@@ -7,7 +7,6 @@
 	"timedmedia-ogg-short-audio": "Ogg $1 غږيزه دوتنه، $2",
 	"timedmedia-ogg-short-video": "Ogg $1 ويډيويي دوتنه، $2",
 	"timedmedia-ogg-short-general": "Ogg $1 رسنيزه دوتنه، $2",
-	"timedmedia-no-player-js": "بخښنه دې وي، يا خو ستاسې په کتنمل باندې جاواسکرېپټ ناچارن دی او يا هم تاسې کوم ملاتړلی غږونکی نه لری.<br />\nتاسې <a href=\"$1\">کلېپ ښکته کولی شئ</a> او يا هم يو داسې <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\">غږونکی ښکته کړئ</a> چې کلېپ په کتنمل باندې وغږوي.",
 	"timedmedia-more": "نور...",
 	"timedmedia-dismiss": "تړل",
 	"timedmedia-download": "دوتنه ښکته کول",
