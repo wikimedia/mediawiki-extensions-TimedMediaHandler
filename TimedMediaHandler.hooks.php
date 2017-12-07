@@ -653,10 +653,10 @@ class TimedMediaHandlerHooks {
 	 * link, make sure we've got the updated set of transcodes. This'll allow a user or
 	 * automated process to see their status and reset them.
 	 *
-	 * @param Article $article
+	 * @param WikiPage $article
 	 * @return bool
 	 */
-	public static function onArticlePurge( $article ) {
+	public static function onArticlePurge( WikiPage $article ) {
 		if ( $article->getTitle()->getNamespace() == NS_FILE ) {
 			$file = wfFindFile( $article->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
