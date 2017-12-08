@@ -626,19 +626,20 @@ class TimedMediaHandlerHooks {
 	/**
 	 * If file gets reverted to a previous version, reset transcodes.
 	 *
-	 * @param Article $article
+	 * @param WikiPage $wikiPage
 	 * @param Revision $rev
 	 * @param int $baseID
 	 * @param User $user
+	 *
 	 * @return bool
 	 */
 	public static function onNewRevisionFromEditComplete(
-		$article, Revision $rev, $baseID, User $user
+		WikiPage $wikiPage, Revision $rev, $baseID, User $user
 	) {
 		if ( $baseID !== false ) {
 			// Check if the article is a file and remove transcode files:
-			if ( $article->getTitle()->getNamespace() == NS_FILE ) {
-				$file = wfFindFile( $article->getTitle() );
+			if ( $wikiPage->getTitle()->getNamespace() == NS_FILE ) {
+				$file = wfFindFile( $wikiPage->getTitle() );
 				if ( self::isTranscodableFile( $file ) ) {
 					WebVideoTranscode::removeTranscodes( $file );
 					WebVideoTranscode::startJobQueue( $file );
