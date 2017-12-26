@@ -447,7 +447,7 @@ mw.EmbedPlayerNative = {
 	/**
 	* Set the current time with a callback
 	*
-	* @param {Float} position
+	* @param {Float} seekTime
 	* 		Seconds to set the time to
 	* @param {Function} callback
 	* 		Function called once time has been set.
@@ -891,7 +891,7 @@ mw.EmbedPlayerNative = {
 	/**
 	* Load the video stream with a callback fired once the video is "loaded"
 	*
-	* @parma {Function} callbcak Function called once video is loaded
+	* @param {Function} callback Function called once video is loaded
 	*/
 	load: function( callback ) {
 		this.getPlayerElement();

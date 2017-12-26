@@ -754,7 +754,7 @@
 		 * Update a loaded player interface by setting local methods to the
 		 * updated player prototype methods
 		 *
-		 * @parma {function}
+		 * @param {function}
 		 * 		callback function called once player has been loaded
 		 */
 		updateLoadedPlayerInterface: function( callback ){
