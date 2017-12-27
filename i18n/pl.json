@@ -31,6 +31,8 @@
 	"timedmedia-wav-long-audio": "Plik dźwiękowy WAV, długość $1, przepływność $2",
 	"timedmedia-wav-pcm-required": "Możesz przesyłać tylko pliki WAV w formacie PCM.",
 	"timedmedia-mp3-short-audio": "Plik audio MP3, $1",
+	"timedmedia-mp3-long-audio": "Plik dźwiękowy MP3, długość $1, przepływność $2",
+	"timedmedia-mp4-short-video": "Plik wideo MP4 $1, $2",
 	"timedmedia-more": "Więcej...",
 	"timedmedia-dismiss": "Zamknij",
 	"timedmedia-download": "Pobierz plik",
