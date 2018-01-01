@@ -71,7 +71,7 @@
 	"timedmedia-subtitle-new-go": "Lass",
 	"timedmedia-subtitle-language": "$1 ($2) Ënnertitelen",
 	"timedmedia-subtitle-no-video": "Et ass kee Video mat der aktueller Säit vun Ënnertitelen associéiert.",
-	"timedmedia-subtitle-no-subtitles": "Et sinn elo keng Ënnertitelen op $1 fir dëse Video, Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} dës Säit änneren] fir se derbäizesetzen",
+	"timedmedia-subtitle-no-subtitles": "Et sinn elo keng Ënnertitelen op $1 fir dëse Video, Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} dës Säit änneren] fir se dobäizesetzen.",
 	"timedmedia-subtitle-remote-link": "Dir kënnt [$1 d'Beschreiwungssäit] fir dëse Fichier op $2 gesinn",
 	"timedmedia-videos": "{{PLURAL:$1|$1 Video|$1 Videoen}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg Video|$1 Ogg Videoen}}",
