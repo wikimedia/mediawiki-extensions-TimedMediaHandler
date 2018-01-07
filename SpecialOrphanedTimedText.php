@@ -58,7 +58,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 			$this->getOutput()->addWikiMsg( 'orphanedtimedtext-unsupported' );
 			return;
 		}
-		return parent::execute( $par );
+		parent::execute( $par );
 	}
 
 	/**
