@@ -119,7 +119,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return bool success
 	 */
 	public function run() {
-		global $wgVersion, $wgFFmpeg2theoraLocation;
+		global $wgVersion;
 		// get a local pointer to the file
 		$file = $this->getFile();
 
@@ -195,11 +195,8 @@ class WebVideoTranscodeJob extends Job {
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
 			$status = $this->ffmpegEncode( $options );
-		} elseif ( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation !== false ) {
-			$status = $this->ffmpeg2TheoraEncode( $options );
 		} elseif ( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
-			$options['videoCodec'] == 'h264' ||
-				( $options['videoCodec'] == 'theora' && $wgFFmpeg2theoraLocation === false )
+			$options['videoCodec'] == 'h264'
 		) {
 			// Check for twopass:
 			if ( isset( $options['twopass'] ) ) {
@@ -355,7 +352,7 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * Utility helper for ffmpeg and ffmpeg2theora mapping
+	 * Utility helper for ffmpeg mapping
 	 * @param array $options
 	 * @param int $pass
 	 * @return bool|string
@@ -382,8 +379,6 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
 		} elseif ( $options['videoCodec'] == 'h264' ) {
 			$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
-		} elseif ( $options['videoCodec'] == 'theora' ) {
-			$cmd .= $this->ffmpegAddTheoraVideoOptions( $options, $pass );
 		}
 		// Add size options:
 		$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
@@ -590,57 +585,6 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * Adds ffmpeg/avconv shell options for ogg
-	 *
-	 * Used only when $wgFFmpeg2theoraLocation set to false.
-	 * Warning: does not create Ogg skeleton metadata track.
-	 *
-	 * @param array $options
-	 * @param int $pass
-	 * @return string
-	 */
-	function ffmpegAddTheoraVideoOptions( $options, $pass ) {
-		global $wgFFmpegThreads;
-
-		// Get a local pointer to the file object
-		$file = $this->getFile();
-
-		$cmd = ' -threads ' . intval( $wgFFmpegThreads );
-
-		// Check for video quality:
-		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
-			// Map 0-10 to 63-0, higher values worse quality
-			$quality = 63 - intval( intval( $options['videoQuality'] ) / 10 * 63 );
-			$cmd .= " -qmin " . wfEscapeShellArg( $quality );
-			$cmd .= " -qmax " . wfEscapeShellArg( $quality );
-		}
-
-		// Check for video bitrate:
-		if ( isset( $options['videoBitrate'] ) ) {
-			$cmd .= " -qmin 1 -qmax 51";
-			$cmd .= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
-		}
-		// Set the codec:
-		$cmd .= " -vcodec theora";
-
-		// Check for keyframeInterval
-		if ( isset( $options['keyframeInterval'] ) ) {
-			$cmd .= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
-		}
-		if ( isset( $options['deinterlace'] ) ) {
-			$cmd .= ' -deinterlace';
-		}
-		if ( isset( $options['framerate'] ) ) {
-			$cmd .= ' -r ' . wfEscapeShellArg( $options['framerate'] );
-		}
-
-		// Output Ogg
-		$cmd .= " -f ogg";
-
-		return $cmd;
-	}
-
-	/**
 	 * @param array $options
 	 * @param int $pass
 	 * @return string
@@ -681,67 +625,6 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -acodec libvorbis ";
 		}
 		return $cmd;
-	}
-
-	/**
-	 * ffmpeg2Theora mapping is much simpler since it is the basis of the the firefogg API
-	 * @param array $options
-	 * @return bool|string
-	 */
-	function ffmpeg2TheoraEncode( $options ) {
-		global $wgFFmpeg2theoraLocation, $wgTranscodeBackgroundMemoryLimit;
-
-		if ( !is_file( $this->getSourceFilePath() ) ) {
-			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
-		}
-
-		// Set up the base command
-		$cmd = wfEscapeShellArg(
-			$wgFFmpeg2theoraLocation
-		) . ' ' . wfEscapeShellArg( $this->getSourceFilePath() );
-
-		$file = $this->getFile();
-
-		if ( isset( $options['maxSize'] ) ) {
-			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
-			$options['width'] = $width;
-			$options['height'] = $height;
-			$options['aspect'] = $width . ':' . $height;
-			unset( $options['maxSize'] );
-		}
-
-		// Add in the encode settings
-		foreach ( $options as $key => $val ) {
-			if ( isset( self::$foggMap[$key] ) ) {
-				if ( is_array( self::$foggMap[$key] ) ) {
-					$cmd .= ' '. implode( ' ', self::$foggMap[$key] );
-				} elseif ( $val == 'true' || $val === true ) {
-					$cmd .= ' '. self::$foggMap[$key];
-				} elseif ( $val == 'false' || $val === false ) {
-					// ignore "false" flags
-				} else {
-					// normal get/set value
-					$cmd .= ' '. self::$foggMap[$key] . ' ' . wfEscapeShellArg( $val );
-				}
-			}
-		}
-
-		// Add the output target:
-		$outputFile = $this->getTargetEncodePath();
-		$cmd .= ' -o ' . wfEscapeShellArg( $outputFile );
-
-		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
-
-		$retval = 0;
-		$shellOutput = $this->runShellExec( $cmd, $retval );
-
-		// ffmpeg2theora returns 0 status on some errors, so also check for file
-		if ( $retval != 0 || !is_file( $outputFile ) || filesize( $outputFile ) === 0 ) {
-			return $cmd .
-				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
-				$shellOutput;
-		}
-		return true;
 	}
 
 	/**
@@ -977,52 +860,5 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
-
-	/**
-	 * Mapping between firefogg api and ffmpeg2theora command line
-	 *
-	 * This lets us share a common api between firefogg and WebVideoTranscode
-	 * also see: http://firefogg.org/dev/index.html
-	 */
-	public static $foggMap = [
-		// video
-		'width'			=> "--width",
-		'height'		=> "--height",
-		'maxSize'		=> "--max_size",
-		'noUpscaling'	=> "--no-upscaling",
-		'videoQuality' => "-v",
-		'videoBitrate'	=> "-V",
-		'twopass'		=> "--two-pass",
-		'optimize'		=> "--optimize",
-		'framerate'		=> "-F",
-		'aspect'		=> "--aspect",
-		'starttime'		=> "--starttime",
-		'endtime'		=> "--endtime",
-		'cropTop'		=> "--croptop",
-		'cropBottom'	=> "--cropbottom",
-		'cropLeft'		=> "--cropleft",
-		'cropRight'		=> "--cropright",
-		'keyframeInterval' => "--keyint",
-		'denoise'		=> [ "--pp", "de" ],
-		'deinterlace'	=> "--deinterlace",
-		'novideo'		=> [ "--novideo", "--no-skeleton" ],
-		'bufDelay'		=> "--buf-delay",
-		'softTarget'	=> "--soft-target",
-		// audio
-		'audioQuality'	=> "-a",
-		'audioBitrate'	=> "-A",
-		'samplerate'	=> "-H",
-		'channels'		=> "-c",
-		'noaudio'		=> "--noaudio",
-		// metadata
-		'artist'		=> "--artist",
-		'title'			=> "--title",
-		'date'			=> "--date",
-		'location'		=> "--location",
-		'organization'	=> "--organization",
-		'copyright'		=> "--copyright",
-		'license'		=> "--license",
-		'contact'		=> "--contact"
-	];
 
 }

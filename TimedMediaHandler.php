@@ -84,18 +84,13 @@ $wgTranscodeBackgroundPriority = 19;
 // The total amout of time a transcoding shell command can take:
 $wgTranscodeBackgroundTimeLimit = 3600 * 8;
 // Maximum amount of virtual memory available to transcoding processes in KB
-// 2GB avconv, ffmpeg2theora mmap resources so virtual memory needs to be high enough
+// 2GB: ffmpeg/avconv mmap resources so virtual memory needs to be high enough
 $wgTranscodeBackgroundMemoryLimit = 2 * 1024 * 1024;
 // Maximum file size transcoding processes can create, in KB
 $wgTranscodeBackgroundSizeLimit = 3 * 1024 * 1024; // 3GB
 
 // Number of threads to use in avconv for transcoding
 $wgFFmpegThreads = 1;
-
-// The location of ffmpeg2theora (transcoding)
-// Set to false to use avconv/ffmpeg to produce Ogg Theora transcodes instead;
-// beware this will disable Ogg skeleton metadata generation.
-$wgFFmpeg2theoraLocation = '/usr/bin/ffmpeg2theora';
 
 // Location of oggThumb binary ( used instead of ffmpeg )
 $wgOggThumbLocation = '/usr/bin/oggThumb';
@@ -160,35 +155,6 @@ $wgEnabledTranscodeSet = [
 	// WebVideoTranscode::ENC_WEBM_2160P,
 
 /*
-	// Ogg Theora/Vorbis
-	// Optional fallback for Safari/IE/Edge with ogv.js
-	// Faster to encode & play back than WebM but less efficient.
-
-	// Requires twice the bitrate for same quality as VP8,
-	// and JS decoder can be slow, so shift to smaller sizes.
-
-	// Low-bitrate Ogg stream
-	WebVideoTranscode::ENC_OGV_160P,
-
-	// Medium-bitrate Ogg stream
-	WebVideoTranscode::ENC_OGV_240P,
-
-	// Moderate-bitrate Ogg stream
-	WebVideoTranscode::ENC_OGV_360P,
-
-	// High-bitrate Ogg stream
-	WebVideoTranscode::ENC_OGV_480P,
-
-	// Variable-bitrate HD Ogg stream
-	// for ogv.js on reasonably speedy machines
-	WebVideoTranscode::ENC_OGV_720P,
-
-	// Variable-bitrate HD Ogg stream
-	// for ogv.js on reasonably speedy machines
-	WebVideoTranscode::ENC_OGV_1080P,
-*/
-
-/*
 	// MP4 H.264/AAC
 	// Primary format for the Apple/Microsoft world
 	//
@@ -236,11 +202,6 @@ $wgTmhEnableMp3Uploads = true;
 
 // If mp4 source assets can be ingested:
 $wgTmhEnableMp4Uploads = false;
-
-// Two-pass encoding for .ogv Theora transcodes is flaky as of October 2015.
-// Enable this only if testing with latest theora libraries!
-// See tracking bug: https://phabricator.wikimedia.org/T115883
-$wgTmhTheoraTwoPassEncoding = false;
 
 /* CONFIGURATION ENDS HERE */
 

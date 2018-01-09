@@ -19,6 +19,16 @@ LocalSettings.php:
   require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
 
+== Updates in 2018 ==
+
+Ogg Theora (.ogv) video output has been removed due to ongoing issues with
+ffmpeg2theora and libtheora packaging. WebM is now be used as the preferred
+royalty-free video output by default. Ogg files are still supported, but
+videos will be transcoded to WebM.
+
+If your LocalSettings.php used one of the WebVideoTranscode::ENC_OGV_160P etc
+constants, you may need to remove them after updating to a current version.
+
 == Running Transcodes ==
 
 Transcoding a video to another resolution or format takes a good amount which
@@ -30,6 +40,7 @@ The job can be run using the MediaWiki maintenance/runJobs.php utility (do not
 forget to su as a webserver user):
 
   php runJobs.php --type webVideoTranscode --maxjobs 1
+  php runJobs.php --type webVideoTranscodePrioritized --maxjobs 1
 
 
 == Kaltura HTML5 player library ==
@@ -41,26 +52,19 @@ For more information about the player library visit:
   http://www.html5video.org/kaltura-player/docs
 
 
-== Libav ==
+== ffmpeg ==
 
-We use Libav for two purposes:
+We use ffmpeg for two purposes:
  - creating still images of videos (aka thumbnails)
- - transcoding WebM, H.264 videos
+ - transcoding between WebM, Ogg and/or H.264 videos
 
-Wikimedia currently uses libav as shipped in Ubuntu 12.04 (libav 0.8.x).
-For best experience use that or any later release from http://libav.org.
+Wikimedia currently uses ffmpeg as shipped in Debian 9.
+For best experience use that or any later release from http://ffmpeg.org
 
 On Ubuntu/Debian:
-  apt-get install libav-tools
+  apt-get install ffmpeg
 
-For H.264 support:
-  apt-get install libav-tools libavcodec-extra-53
-
-If you operating system does not include the required libav software,
-you can download static builds for multiple platforms at:
-  http://firefogg.org/nightly/
-
-You can also build libav/ffmpeg from source.
+You can also build ffmpeg from source.
 Guide for building ffmpeg with H.264 for Ubuntu:
 https://ffmpeg.org/trac/ffmpeg/wiki/UbuntuCompilationGuide
 
@@ -77,21 +81,6 @@ will have to specify the FFmpeg binary location with:
 
 Default being `/usr/bin/avconv`.
 
-
-== ffmpeg2theora ==
-
-We use ffmpeg2theora for extract metadata from videos, you will need a copy on
-your server. For best experience, use the latest release of ffmpeg2theora. At a
-minimum you need to use ffmpeg2theora 0.27.
-
-You can download static ffmpeg2theora builds for multiple platforms at:
-http://firefogg.org/nightly/
-
-Set the ffmpeg2theora binary location with:
-
-    $wgFFmpeg2theoraLocation = '/path/to/ffmpeg2theora';
-
-Default being `/usr/bin/ffmpeg2theora`.
 
 == oggThumb ==
 
