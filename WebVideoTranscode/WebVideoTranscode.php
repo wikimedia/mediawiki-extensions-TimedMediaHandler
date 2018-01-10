@@ -25,15 +25,8 @@ class WebVideoTranscode {
 	* $messages['timedmedia-derivative-200_200kbs.ogv'] => 'Ogg 200';
 	*/
 
-	// Ogg Profiles
-	const ENC_OGV_160P = '160p.ogv';
-	const ENC_OGV_240P = '240p.ogv';
-	const ENC_OGV_360P = '360p.ogv';
-	const ENC_OGV_480P = '480p.ogv';
-	const ENC_OGV_720P = '720p.ogv';
-	const ENC_OGV_1080P = '1080p.ogv';
-	const ENC_OGV_1440P = '1440p.ogv';
-	const ENC_OGV_2160P = '2160p.ogv';
+	// Note: Ogg video profiles have been removed as of January 2018.
+	// Use WebM output for royalty-free codec output.
 
 	// WebM VP8/Vorbis profiles:
 	const ENC_WEBM_160P = '160p.webm';
@@ -83,130 +76,6 @@ class WebVideoTranscode {
 	* http://firefogg.org/dev/index.html
 	*/
 	public static $derivativeSettings = [
-		self::ENC_OGV_160P =>
-			[
-				'maxSize'                    => '288x160',
-				'videoBitrate'               => '256',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => '-1',
-				'channels'                   => '2',
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'bufDelay'                   => '256',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-		self::ENC_OGV_240P =>
-			[
-				'maxSize'                    => '426x240',
-				'videoBitrate'               => '512',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => '0',
-				'channels'                   => '2',
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'bufDelay'                   => '256',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-		self::ENC_OGV_360P =>
-			[
-				'maxSize'                    => '640x360',
-				'videoBitrate'               => '1024',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => '1',
-				'channels'                   => '2',
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'bufDelay'                   => '256',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-		self::ENC_OGV_480P =>
-			[
-				'maxSize'                    => '854x480',
-				'videoBitrate'               => '2048',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => '2',
-				'channels'                   => '2',
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'bufDelay'                   => '256',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-
-		self::ENC_OGV_720P =>
-			[
-				'maxSize'                    => '1280x720',
-				'videoBitrate'               => '4096',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => 3,
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-
-		self::ENC_OGV_1080P =>
-			[
-				'maxSize'                    => '1920x1080',
-				'videoBitrate'               => '8192',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => 3,
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-
-		self::ENC_OGV_1440P =>
-			[
-				'maxSize'                    => '2560x1440',
-				'videoBitrate'               => '16384',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => 3,
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
-
-		self::ENC_OGV_2160P =>
-			[
-				'maxSize'                    => '3840x2160',
-				'videoBitrate'               => '32768',
-				'softTarget'                 => 'true',
-				'framerate'                  => '60', // max to reduce "1000fps bug" problems
-				'audioQuality'               => 3,
-				'noUpscaling'                => 'true', // also caps to source frame rate
-				'twopass'                    => 'false', // will be overridden by $wgTmhTheoraTwoPassEncoding
-				'optimize'                   => 'true',
-				'keyframeInterval'           => '128',
-				'videoCodec'                 => 'theora',
-				'type'                       => 'video/ogg; codecs="theora, vorbis"',
-			],
 
 		// WebM transcode:
 		self::ENC_WEBM_160P =>

@@ -208,7 +208,7 @@ class TimedMediaHandlerHooks {
 		$wgResourceModules, $wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp3Uploads, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
-		$wgTmhTheoraTwoPassEncoding, $wgWikimediaJenkinsCI;
+		$wgWikimediaJenkinsCI;
 
 		// set config for parser tests
 		if ( isset( $wgWikimediaJenkinsCI ) && $wgWikimediaJenkinsCI === true ) {
@@ -230,15 +230,6 @@ class TimedMediaHandlerHooks {
 			$index = array_search( 'mp4', $wgFileExtensions );
 			if ( $index !== false ) {
 				array_splice( $wgFileExtensions, $index, 1 );
-			}
-		}
-
-		// Enable experimental 2-pass Theora encoding if enabled:
-		if ( $wgTmhTheoraTwoPassEncoding ) {
-			foreach ( WebVideoTranscode::$derivativeSettings as $key => &$settings ) {
-				if ( isset( $settings['videoCodec'] ) && $settings['videoCodec'] === 'theora' ) {
-					$settings['twopass'] = 'true';
-				}
 			}
 		}
 
