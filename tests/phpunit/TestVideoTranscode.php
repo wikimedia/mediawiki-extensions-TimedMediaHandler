@@ -12,6 +12,7 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 	 *  Test if a transcode job is added for a file once requested
 	 *
 	 * @dataProvider mediaFilesProvider
+	 * @param array $file
 	 * Broken as per bug 61878
 	 * @group Broken
 	 */
@@ -87,7 +88,6 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		}
 	}
 
-	// Run Transcode job
 	function runTranscodeJobs() {
 		$dbw = wfGetDB( DB_MASTER );
 		$type = 'webVideoTranscode';

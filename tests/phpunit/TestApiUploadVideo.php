@@ -19,6 +19,7 @@ class TestApiUploadVideo extends ApiTestCaseVideoUpload {
 
 	/**
 	 * @dataProvider mediaFilesProvider
+	 * @param array $file
 	 */
 	public function testUploadVideoFiles( $file ) {
 		$result = $this->uploadFile( $file );

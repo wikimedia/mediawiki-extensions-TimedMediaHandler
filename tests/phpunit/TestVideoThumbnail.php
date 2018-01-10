@@ -10,6 +10,7 @@ class TestVideoThumbnail extends ApiTestCaseVideoUpload {
 	 * Once video files are uploaded test thumbnail generating
 	 *
 	 * @dataProvider mediaFilesProvider
+	 * @param array $file
 	 * Broken as per bug 61877
 	 * @group Broken
 	 */

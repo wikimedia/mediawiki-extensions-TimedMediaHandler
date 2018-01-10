@@ -721,6 +721,7 @@ class WebVideoTranscode {
 	 *
 	 * @param File $file File object
 	 * @param IDatabase|bool $db
+	 * @return array
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
 		global $wgTranscodeBackgroundTimeLimit;
@@ -866,6 +867,10 @@ class WebVideoTranscode {
 	 *
 	 * If the source is not found, it will not be used yet...
 	 * Missing transcodes should be added by write tasks, not read tasks!
+	 * @param array &$file
+	 * @param array &$sources
+	 * @param string $transcodeKey
+	 * @param string $dataPrefix
 	 */
 	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ) {
 		// Check if the transcode is ready:
@@ -1240,6 +1245,8 @@ class WebVideoTranscode {
 	/**
 	 * Is the given transcode key the smallest configured transcode for
 	 * its video codec?
+	 * @param string $transcodeKey
+	 * @return true
 	 */
 	public static function isSmallestTranscodeForCodec( $transcodeKey ) {
 		global $wgEnabledTranscodeSet;
