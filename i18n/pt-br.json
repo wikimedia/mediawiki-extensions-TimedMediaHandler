@@ -176,6 +176,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 arquivo de áudio Ogg|$1 arquivos de áudio Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 arquivo de áudio FLAC|$1 arquivos de áudio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 arquivo de áudio WAV|$1 arquivos de áudio WAV}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 arquivo de áudio WebM|$1 arquivos de áudio WebM}}",
 	"beta-feature-timedmediahandler-message-videojs": "Novo reprodutor de vídeo",
 	"beta-feature-timedmediahandler-description-videojs": "Assista a arquivos de vídeo em um player moderno com um aspecto mais limpo e compatibilidade móvel.",
 	"right-transcode-reset": "Redefinir vídeos com falha ou transcodificados para que eles sejam inseridos novamente na fila de trabalho",
