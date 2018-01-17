@@ -9,7 +9,8 @@
 			"Abanima",
 			"Maroen1990",
 			"محمد أحمد عبد الفتاح",
-			"Mido"
+			"Mido",
+			"Sonic N800"
 		]
 	},
 	"timedmediahandler-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
@@ -52,7 +53,7 @@
 	"timedmedia-not-ready": "غير جاهز",
 	"timedmedia-completed-on": "انتهت$1",
 	"timedmedia-error-on": "خطأ: $1",
-	"timedmedia-started-transcode": "بدأ منذ $1. $2",
+	"timedmedia-started-transcode": "بدأ قبل $1. $2",
 	"timedmedia-percent-done": "وصل لنسبة $1% انتهى",
 	"timedmedia-in-job-queue": "تمت الإضافة إلى طابور المهام منذ $1",
 	"timedmedia-unknown-target-size": "حجم هدف غير معروف، $1 مكود",
