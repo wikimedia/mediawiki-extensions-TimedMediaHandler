@@ -676,7 +676,8 @@ Ogvjs.isSupported = function () {
  * @return {String}         'probably', 'maybe', or '' (empty string)
  */
 Ogvjs.canPlayType = function (type) {
-  return type.indexOf('/ogg') !== -1 ? 'maybe' : '';
+  var p = new _OGVPlayer2['default']();
+  return p.canPlayType(type);
 };
 
 /*

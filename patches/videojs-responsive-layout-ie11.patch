@@ -1,0 +1,35 @@
+--- ../videojs-responsive-layout-orig/dist/videojs-responsive-layout.js	2018-01-19 13:21:57.656956800 -0800
++++ dist/videojs-responsive-layout.js	2018-01-19 13:32:57.388188200 -0800
+@@ -211,7 +211,7 @@
+     var layoutDefinition = layouter.options.layoutMap[layouter.currentLayout_];
+ 
+     if (layoutDefinition.layoutClassName !== 'defaults') {
+-      _videoJs2['default'].addClass(el, layoutDefinition.layoutClassName);
++      (_videoJs2['default'].dom || _videoJs2['default']).addClass(el, layoutDefinition.layoutClassName);
+     }
+     layouter.options.layoutMap.forEach(function (element, index) {
+       if (index !== layouter.currentLayout_ && element.layoutClassName !== 'defaults') {
+@@ -336,11 +336,12 @@
+       var controlBarWidth = 0;
+       var cbElements = this.el.querySelectorAll('.vjs-control-bar > *');
+ 
+-      Array.from(cbElements).forEach(function (el) {
++      for (var i = 0; i < cbElements.length; i++) {
++        var el = cbElements[i];
+         if (_isElementVisible(el)) {
+           controlBarWidth += _getElementOuterWidth(el);
+         }
+-      });
++      }
+       return controlBarWidth;
+     }
+ 
+@@ -425,7 +426,7 @@
+ };
+ 
+ // Register the plugin with video.js.
+-_videoJs2['default'].plugin('responsiveLayout', responsiveLayout);
++(_videoJs2['default'].registerPlugin || _videoJs2['default'].plugin)('responsiveLayout', responsiveLayout);
+ 
+ exports['default'] = responsiveLayout;
+ module.exports = exports['default'];

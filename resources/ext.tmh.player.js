@@ -5,8 +5,7 @@
 	globalConfig = {
 		language: mw.config.get( 'wgUserLanguage' ),
 		controlBar: {
-			liveDisplay: false,
-			volumeMenuButton: {
+			volumePanel: {
 				vertical: true,
 				inline: false
 			}
@@ -21,7 +20,6 @@
 					{ layoutClassName: 'defaults', width: 6 }
 				]
 			},
-			replayButton: {},
 			infoButton: {}
 		}
 	};
@@ -136,7 +134,10 @@
 
 		if ( !mw.OgvJsSupport.canPlayNatively() ) {
 			globalConfig.ogvjs = {
-				base: mw.OgvJsSupport.basePath()
+				base: mw.OgvJsSupport.basePath(),
+
+				// Disable WebAssembly on iOS 11.2.2, where it's broken.
+				wasm: ( typeof WebAssembly === 'object' ) && !( navigator.userAgent.match( /(iPhone|iPad); CPU OS 11_2_2/ ) )
 			};
 			globalConfig.techOrder.push( 'ogvjs' );
 		}

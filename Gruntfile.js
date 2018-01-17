@@ -47,7 +47,7 @@ module.exports = function ( grunt ) {
 		},
 		exec: {
 			'npm-update-videojs': {
-				cmd: 'npm update ogv video.js videojs-resolution-switcher videojs-ogvjs videojs-responsive-layout videojs-replay',
+				cmd: 'npm update ogv video.js videojs-resolution-switcher-v6 videojs-ogvjs videojs-responsive-layout',
 				callback: function ( error, stdout, stderr ) {
 					grunt.log.write( stdout );
 					if ( stderr ) {
@@ -79,7 +79,9 @@ module.exports = function ( grunt ) {
 					'!*.zip',
 					'!**/*.min.js',
 					'!**/*.min.css',
-					'!**/*.js.map'
+					'!**/*.js.map',
+					'!**/*.cjs.js',
+					'!**/*.es.js'
 				],
 				dest: 'resources/videojs/'
 			},
@@ -91,7 +93,7 @@ module.exports = function ( grunt ) {
 			},
 			'videojs-resolution-switcher': {
 				expand: true,
-				cwd: 'node_modules/videojs-resolution-switcher/lib/',
+				cwd: 'node_modules/videojs-resolution-switcher-v6/lib/',
 				src: [ '**' ],
 				dest: 'resources/videojs-resolution-switcher/'
 			},
@@ -100,28 +102,37 @@ module.exports = function ( grunt ) {
 				cwd: 'node_modules/videojs-responsive-layout/dist/',
 				src: [ '**' ],
 				dest: 'resources/videojs-responsive-layout/'
-			},
-			'videojs-replay': {
-				expand: true,
-				cwd: 'node_modules/videojs-replay/dist/',
-				src: [ '**', '!**/*.min.js' ],
-				dest: 'resources/videojs-replay/'
 			}
 		},
 		patch: {
-			'video.js': {
+			videojs: {
 				options: {
-					patch: 'patches/videojs.defaults.patch'
+					patch: 'patches/videojs-responsive-classes.patch'
 				},
 				files: {
-					'resources/videojs/video.js': 'resources/videojs/video.js'
+					'resources/videojs/video-js.css': 'resources/videojs/video-js.css'
 				}
-
+			},
+			'videojs-ogvjs': {
+				options: {
+					patch: 'patches/videojs-ogvjs-webm.patch'
+				},
+				files: {
+					'resources/videojs-ogvjs/videojs-ogvjs.js': 'resources/videojs-ogvjs/videojs-ogvjs.js'
+				}
+			},
+			'videojs-responsive-layout': {
+				options: {
+					patch: 'patches/videojs-responsive-layout-ie11.patch'
+				},
+				files: {
+					'resources/videojs-responsive-layout/videojs-responsive-layout.js': 'resources/videojs-responsive-layout/videojs-responsive-layout.js'
+				}
 			}
 		}
 	} );
 
-	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'copy:videojs-replay', 'patch:video.js' ] );
+	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'patch:videojs', 'patch:videojs-ogvjs', 'patch:videojs-responsive-layout' ] );
 	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
