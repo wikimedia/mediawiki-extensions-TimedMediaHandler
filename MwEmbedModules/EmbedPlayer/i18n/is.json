@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Snævar"
+			"Snævar",
+			"Sveinn í Felli"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titill: $1",
@@ -60,5 +61,6 @@
 	"mwe-embedplayer-audio-mpeg": "MPEG-hljóðskrá",
 	"mwe-embedplayer-video-3gp": "3GP-myndband",
 	"mwe-embedplayer-video-mpeg": "MPEG-myndband",
-	"mwe-embedplayer-video-msvideo": "AVI-myndband"
+	"mwe-embedplayer-video-msvideo": "AVI-myndband",
+	"mwe-embedplayer-iewebmprompt-linktext": "Setja upp WebM-margmiðlunareiningar fyrir Microsoft Internet Explorer"
 }
