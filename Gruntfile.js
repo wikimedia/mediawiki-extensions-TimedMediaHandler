@@ -47,7 +47,7 @@ module.exports = function ( grunt ) {
 		},
 		exec: {
 			'npm-update-videojs': {
-				cmd: 'npm update video.js videojs-resolution-switcher videojs-ogvjs videojs-responsive-layout videojs-replay',
+				cmd: 'npm update ogv video.js videojs-resolution-switcher videojs-ogvjs videojs-responsive-layout videojs-replay',
 				callback: function ( error, stdout, stderr ) {
 					grunt.log.write( stdout );
 					if ( stderr ) {
@@ -61,6 +61,14 @@ module.exports = function ( grunt ) {
 			}
 		},
 		copy: {
+			'ogv.js': {
+				expand: true,
+				cwd: 'node_modules/ogv/dist/',
+				src: [
+					'**'
+				],
+				dest: 'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/'
+			},
 			'video.js': {
 				expand: true,
 				cwd: 'node_modules/video.js/dist/',
@@ -114,6 +122,7 @@ module.exports = function ( grunt ) {
 	} );
 
 	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'copy:videojs-replay', 'patch:video.js' ] );
+	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };

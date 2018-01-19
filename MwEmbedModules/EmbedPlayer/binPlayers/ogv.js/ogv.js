@@ -57,20 +57,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	//
 	// -- ogv.js
 	// https://github.com/brion/ogv.js
-	// Copyright (c) 2013-2016 Brion Vibber
+	// Copyright (c) 2013-2017 Brion Vibber
 	//
 
 	var OGVCompat = __webpack_require__(1),
 		OGVLoader = __webpack_require__(3),
-		OGVMediaType = __webpack_require__(7),
-		OGVPlayer = __webpack_require__(8),
-		OGVVersion = ("1.5.0-20171109103951-47c6ee5c");
+		OGVMediaError = __webpack_require__(7),
+		OGVMediaType = __webpack_require__(9),
+		OGVPlayer = __webpack_require__(10),
+		OGVTimeRanges = __webpack_require__(35),
+		OGVVersion = ("1.5.4-20180119185727-50eda5d7");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
 		window.OGVCompat = OGVCompat;
 		window.OGVLoader = OGVLoader;
+		window.OGVMediaError = OGVMediaError; // exposed for testing, for now
 		window.OGVMediaType = OGVMediaType;
+		window.OGVTimeRanges = OGVTimeRanges; // exposed for testing, for now
 		window.OGVPlayer = OGVPlayer;
 		window.OGVVersion = OGVVersion;
 	}
@@ -287,7 +291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.5.0-20171109103951-47c6ee5c");
+	var OGVVersion = ("1.5.4-20180119185727-50eda5d7");
 
 	(function() {
 		var global = this;
@@ -430,7 +434,12 @@ return /******/ (function(modules) { // webpackBootstrap
 					options.locateFile = function(filename) {
 						// Allow secondary resources like the .wasm payload
 						// to be loaded by the emscripten code.
-						return urlForScript(filename);
+						if (filename.slice(0, 5) === 'data:') {
+							// emscripten 1.37.25 loads memory initializers as data: URI
+							return filename;
+						} else {
+							return urlForScript(filename);
+						}
 					};
 					return new global[className](options);
 				}
@@ -736,6 +745,48 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var extend = __webpack_require__(8);
+
+	var OGVMediaErrorConstants = {
+		MEDIA_ERR_ABORTED: 1,
+		MEDIA_ERR_NETWORK: 2,
+		MEDIA_ERR_DECODE: 3,
+		MEDIA_ERR_SRC_NOT_SUPPORTED: 4
+	};
+
+	/**
+	 * Constructor for analogue of the MediaError class
+	 * returned by HTMLMediaElement.error property
+	 */
+	function OGVMediaError(code, message) {
+		this.code = code;
+		this.message = message;
+	};
+	extend(OGVMediaError, OGVMediaErrorConstants);
+	extend(OGVMediaError.prototype, OGVMediaErrorConstants);
+
+	module.exports = OGVMediaError;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+	function extend(dest, src) {
+		for (prop in src) {
+			if (src.hasOwnProperty(prop)) {
+				dest[prop] = src[prop];
+			}
+		}
+	}
+
+	module.exports = extend;
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 	function OGVMediaType(contentType) {
@@ -784,84 +835,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(9).polyfill();
+	// OGVPlayer.js
 
-	var YUVCanvas = __webpack_require__(12);
+	// External deps
+	__webpack_require__(11).polyfill();
+	var YUVCanvas = __webpack_require__(14),
+		StreamFile = __webpack_require__(21),
+		AudioFeeder = __webpack_require__(32),
+		dynamicaudio_swf = __webpack_require__(33);
 
-	// -- OGVLoader.js
-	var OGVLoader = __webpack_require__(3);
-
-	// -- StreamFile.js
-	var StreamFile = __webpack_require__(19);
-
-	// -- AudioFeeder.js
-	var AudioFeeder = __webpack_require__(30),
-		dynamicaudio_swf = __webpack_require__(31);
-
-	// -- Bisector.js
-	var Bisector = __webpack_require__(32);
-
-	// -- OGVMediaType.js
-	var OGVMediaType = __webpack_require__(7);
-
-	// -- OGVWrapperCodec.js
-	var OGVWrapperCodec = __webpack_require__(33);
-
-	// -- OGVDecoderAudioProxy.js
-	var OGVDecoderAudioProxy = __webpack_require__(4);
-
-	// -- OGVDecoderVideoProxy.js
-	var OGVDecoderVideoProxy = __webpack_require__(6);
-
-	/**
-	 * Constructor for an analogue of the TimeRanges class
-	 * returned by various HTMLMediaElement properties
-	 *
-	 * Pass an array of two-element arrays, each containing a start and end time.
-	 */
-	// FIXME: not use window scope if possible here
-	var OGVTimeRanges = window.OGVTimeRanges = function(ranges) {
-		Object.defineProperty(this, 'length', {
-			get: function getLength() {
-				return ranges.length;
-			}
-		});
-		this.start = function(i) {
-			return ranges[i][0];
-		};
-		this.end = function(i) {
-			return ranges[i][1];
-		};
-		return this;
-	};
-
-	var OGVMediaErrorConstants = {
-		MEDIA_ERR_ABORTED: 1,
-		MEDIA_ERR_NETWORK: 2,
-		MEDIA_ERR_DECODE: 3,
-		MEDIA_ERR_SRC_NOT_SUPPORTED: 4
-	};
-	function extend(dest, src) {
-		for (prop in src) {
-			if (src.hasOwnProperty(prop)) {
-				dest[prop] = src[prop];
-			}
-		}
-	}
-
-	/**
-	 * Constructor for analogue of the MediaError class
-	 * returned by HTMLMediaElement.error property
-	 */
-	var OGVMediaError = window.OGVMediaError = function(code, message) {
-		this.code = code;
-		this.message = message;
-	};
-	extend(OGVMediaError, OGVMediaErrorConstants);
-	extend(OGVMediaError.prototype, OGVMediaErrorConstants);
+	// Internal deps
+	var OGVLoader = __webpack_require__(3),
+		Bisector = __webpack_require__(34),
+		extend = __webpack_require__(8),
+		OGVMediaError = __webpack_require__(7)
+		OGVMediaType = __webpack_require__(9),
+		OGVTimeRanges = __webpack_require__(35),
+		OGVWrapperCodec = __webpack_require__(36),
+		OGVDecoderAudioProxy = __webpack_require__(4),
+		OGVDecoderVideoProxy = __webpack_require__(6);
 
 	/**
 	 * Player class -- instantiate one of these to get an 'ogvjs' HTML element
@@ -875,7 +870,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *                     'delay-audio' (pre-1.3.2 behavior) stop audio when behind, then play all frames to catch up
 	 *                     'skip-frames' (default) to preserve audio, skipping frames until the next sync point (keyframe)
 	 */
-	var OGVPlayer = function(options) {
+	function OGVPlayer(options) {
 		options = options || {};
 
 		var instanceId = 'ogvjs' + (++OGVPlayer.instanceCount);
@@ -1005,7 +1000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				//console.log('+' + delta + 'ms ' + msg);
 				//then = now;
-				
+
 				if (!options.debugFilter || msg.match(options.debugFilter)) {
 					console.log('[' + (Math.round(delta * 10) / 10) + 'ms] ' + msg);
 				}
@@ -1307,7 +1302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				drawingTime: drawingTime - lastFrameDrawingTime,
 				bufferTime: bufferTime - lastFrameBufferTime,
 				proxyTime: proxyTime - lastFrameProxyTime,
-				
+
 				demuxerTime: 0,
 				videoTime: 0,
 				audioTime: 0,
@@ -1765,7 +1760,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				depth++;
 				doProcessingLoop();
 				depth--;
-				
+
 				if (needProcessing && isProcessing()) {
 					throw new Error('REENTRANCY FAIL: waiting on input or codec but asked to keep processing');
 				}
@@ -2017,7 +2012,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								}
 								droppedAudio = audioState.dropped;
 								delayedAudio = audioState.delayed;
-								
+
 								readyForAudioDecode = audioFeeder.durationBuffered <=
 									audioFeeder.bufferThreshold * 2;
 
@@ -2188,7 +2183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								}
 								totalFrameTime += targetPerFrameTime;
 								totalFrameCount++;
-								
+
 								var nextFrameEndTimestamp = frameEndTimestamp = codec.frameTimestamp;
 								pendingFrame++;
 								pendingFrames.push({
@@ -2357,7 +2352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						}
 					}
 				}
-				
+
 				function doProcessPlayDemux() {
 					var wasFrameReady = codec.frameReady,
 						wasAudioReady = codec.audioReady;
@@ -2491,7 +2486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var videoInfo,
 			audioInfo;
 
-		function startProcessingVideo() {
+		function startProcessingVideo(firstBuffer) {
 			if (started || codec) {
 				return;
 			}
@@ -2524,22 +2519,40 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			};
 			codec.init(function() {
-				readBytesAndWait();
+				codec.receiveInput(firstBuffer, readBytesAndWait);
 			});
 		}
 
 		function loadCodec(callback) {
 			// @todo use the demuxer and codec interfaces directly
 
-			// @todo fix detection proper
-			if (currentSrc.match(/\.webm$/i)) {
-				codecOptions.type = 'video/webm';
-			} else {
-				codecOptions.type = 'video/ogg';
-			}
+			stream.read(1024).then(function(buf) {
+				var hdr = new Uint8Array(buf);
+				if (hdr.length > 4 &&
+					  hdr[0] == 'O'.charAt(0) &&
+					  hdr[1] == 'g'.charAt(0) &&
+					  hdr[2] == 'g'.charAt(0) &&
+					  hdr[3] == 'S'.charAt(0)
+				) {
+					// Ogg stream
+					codecOptions.type = 'video/ogg';
+				} else if (hdr.length > 4 &&
+					         hdr[0] == 0x1a &&
+					         hdr[1] == 0x45 &&
+								   hdr[2] == 0xdf &&
+								   hdr[3] == 0xa3
+				) {
+					// Matroska or WebM
+					codecOptions.type = 'video/webm';
+				} else {
+					// @todo handle unknown file types gracefully
+					codecOptions.type = 'video/ogg';
+				}
 
-			codecClass = OGVWrapperCodec;
-			callback();
+				codecClass = OGVWrapperCodec;
+				// Pass that first buffer in to the demuxer!
+				callback(buf);
+			});
 		}
 
 		/**
@@ -2601,11 +2614,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		 */
 		self.canPlayType = function(contentType) {
 			var type = new OGVMediaType(contentType);
-			if (type.minor === 'ogg' &&
-				(type.major === 'audio' || type.major === 'video' || type.major === 'application')) {
+			function checkTypes(supported) {
 				if (type.codecs) {
-					var supported = ['vorbis', 'opus', 'theora'],
-						knownCodecs = 0,
+					var knownCodecs = 0,
 						unknownCodecs = 0;
 					type.codecs.forEach(function(codec) {
 						if (supported.indexOf(codec) >= 0) {
@@ -2624,8 +2635,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				} else {
 					return 'maybe';
 				}
+			}
+			if (type.minor === 'ogg' &&
+				(type.major === 'audio' || type.major === 'video' || type.major === 'application')) {
+				return checkTypes(['vorbis', 'opus', 'theora']);
+			} else if (type.minor === 'webm' &&
+				(type.major === 'audio' || type.major === 'video')) {
+				return checkTypes(['vorbis', 'opus', 'vp8', 'vp9']);
 			} else {
-				// @todo when webm support is more complete, handle it
 				return '';
 			}
 		};
@@ -2756,445 +2773,465 @@ return /******/ (function(modules) { // webpackBootstrap
 			seek(+seekToTime, SeekMode.FAST);
 		};
 
-		/**
-		 * HTMLMediaElement src property
-		 */
-		Object.defineProperty(self, "src", {
-			get: function getSrc() {
-				return self.getAttribute('src') || '';
-			},
-			set: function setSrc(val) {
-				self.setAttribute('src', val);
-				loading = false; // just in case?
-				prepForLoad("interactive");
-			}
-		});
-
-		/**
-		 * HTMLMediaElement buffered property
-		 */
-		Object.defineProperty(self, "buffered", {
-			get: function getBuffered() {
-				var ranges;
-				if (stream && byteLength && duration) {
-					ranges = stream.getBufferedRanges().map(function(range) {
-						return range.map(function(offset) {
-							return (offset / stream.length) * duration;
-						});
-					});
-				} else {
-					ranges = [[0, 0]];
-				}
-				return new OGVTimeRanges(ranges);
-			}
-		});
-
-		/**
-		 * HTMLMediaElement seekable property
-		 */
-		Object.defineProperty(self, "seekable", {
-			get: function getSeekable() {
-				if (self.duration < Infinity && stream && stream.seekable && codec && codec.seekable) {
-					return new OGVTimeRanges([[0, duration]]);
-				} else {
-					return new OGVTimeRanges([]);
-				}
-			}
-		});
-
-		/**
-		 * HTMLMediaElement currentTime property
-		 */
-		Object.defineProperty(self, "currentTime", {
-			get: function getCurrentTime() {
-				if (state == State.SEEKING) {
-					return seekTargetTime;
-				} else {
-					if (codec) {
-						if (state == State.PLAYING && !paused) {
-							return getPlaybackTime();
-						} else {
-							return initialPlaybackOffset;
-						}
-					} else {
-						return initialSeekTime;
-					}
-				}
-			},
-			set: function setCurrentTime(val) {
-				seek(val, SeekMode.EXACT);
-			}
-		});
-
-		/**
-		 * HTMLMediaElement duration property
-		 */
-		Object.defineProperty(self, "duration", {
-			get: function getDuration() {
-				if (codec && codec.loadedMetadata) {
-					if (duration !== null) {
-						return duration;
-					} else {
-						return Infinity;
-					}
-				} else {
-					return NaN;
-				}
-			}
-		});
-
-		/**
-		 * HTMLMediaElement paused property
-		 */
-		Object.defineProperty(self, "paused", {
-			get: function getPaused() {
-				return paused;
-			}
-		});
-
-		/**
-		 * HTMLMediaElement ended property
-		 */
-		Object.defineProperty(self, "ended", {
-			get: function getEnded() {
-				return ended;
-			}
-		});
-
-		/**
-		 * HTMLMediaElement ended property
-		 */
-		Object.defineProperty(self, "seeking", {
-			get: function getSeeking() {
-				return (state == State.SEEKING);
-			}
-		});
-
-		/**
-		 * HTMLMediaElement muted property
-		 */
-		Object.defineProperty(self, "muted", {
-			get: function getMuted() {
-				return muted;
-			},
-			set: function setMuted(val) {
-				muted = val;
-				if (audioFeeder) {
-					audioFeeder.muted = muted;
-				} else if (started && !muted && codec && codec.hasAudio) {
-					log('unmuting: switching from timer to audio clock');
-					initAudioFeeder();
-					startPlayback(audioEndTimestamp);
-				}
-				fireEventAsync('volumechange');
-			}
-		});
-
-		Object.defineProperty(self, "poster", {
-			get: function getPoster() {
-				return poster;
-			},
-			set: function setPoster(val) {
-				poster = val;
-				if (!started) {
-					if (thumbnail) {
-						self.removeChild(thumbnail);
-					}
-					thumbnail = new Image();
-					thumbnail.src = poster;
-					thumbnail.className = 'ogvjs-poster';
-					thumbnail.style.position = 'absolute';
-					thumbnail.style.top = '0';
-					thumbnail.style.left = '0';
-					thumbnail.style.width = '100%';
-					thumbnail.style.height = '100%';
-					thumbnail.style.objectFit = 'contain';
-					thumbnail.style.visibility = 'hidden';
-					thumbnail.addEventListener('load', function() {
-						if (thumbnail === this) {
-							OGVPlayer.styleManager.appendRule('.' + instanceId, {
-								width: thumbnail.naturalWidth + 'px',
-								height: thumbnail.naturalHeight + 'px'
-							});
-							OGVPlayer.updatePositionOnResize();
-							thumbnail.style.visibility = 'visible';
-						}
-					});
-					self.appendChild(thumbnail);
-				}
-			}
-		});
-
-		// Video metadata properties...
-		Object.defineProperty(self, "videoWidth", {
-			get: function getVideoWidth() {
-				if (videoInfo) {
-					return videoInfo.displayWidth;
-				} else {
-					return 0;
-				}
-			}
-		});
-		Object.defineProperty(self, "videoHeight", {
-			get: function getVideoHeight() {
-				if (videoInfo) {
-					return videoInfo.displayHeight;
-				} else {
-					return 0;
-				}
-			}
-		});
-		Object.defineProperty(self, "ogvjsVideoFrameRate", {
-			get: function getOgvJsVideoFrameRate() {
-				if (videoInfo) {
-					if (videoInfo.fps == 0) {
-						return totalFrameCount / (totalFrameTime / 1000);
-					} else {
-						return videoInfo.fps;
-					}
-				} else {
-					return 0;
-				}
-			}
-		});
-
-		// Audio metadata properties...
-		Object.defineProperty(self, "ogvjsAudioChannels", {
-			get: function getOgvJsAudioChannels() {
-				if (audioInfo) {
-					return audioInfo.channels;
-				} else {
-					return 0;
-				}
-			}
-		});
-		Object.defineProperty(self, "ogvjsAudioSampleRate", {
-			get: function getOgvJsAudioChannels() {
-				if (audioInfo) {
-					return audioInfo.rate;
-				} else {
-					return 0;
-				}
-			}
-		});
-
 		// Display size...
 		var width = 0, height = 0;
-		/**
-		 * @property width
-		 * @todo reflect to the width attribute?
-		 */
-		Object.defineProperty(self, "width", {
-			get: function getWidth() {
-				return width;
-			},
-			set: function setWidth(val) {
-				width = parseInt(val, 10);
-				self.style.width = width + 'px';
-				OGVPlayer.updatePositionOnResize();
-			}
-		});
-
-		/**
-		 * @property height
-		 * @todo reflect to the height attribute?
-		 */
-		Object.defineProperty(self, "height", {
-			get: function getHeight() {
-				return height;
-			},
-			set: function setHeight(val) {
-				height = parseInt(val, 10);
-				self.style.height = height + 'px';
-				OGVPlayer.updatePositionOnResize();
-			}
-		});
-
-		/**
-		 * @property autoplay {boolean} stub prop
-		 * @todo reflect to the autoplay attribute?
-		 * @todo implement actual autoplay behavior
-		 */
-		Object.defineProperty(self, "autoplay", {
-			get: function getAutoplay() {
-				return false;
-			},
-			set: function setAutoplay(val) {
-				// ignore
-			}
-		});
-
-		/**
-		 * @property controls {boolean} stub prop
-		 * @todo reflect to the controls attribute?
-		 * @todo implement actual control behavior
-		 */
-		Object.defineProperty(self, "controls", {
-			get: function getControls() {
-				return false;
-			},
-			set: function setControls(val) {
-				// ignore
-			}
-		});
-
-		/**
-		 * @property loop {boolean} stub prop
-		 * @todo reflect to the controls attribute?
-		 * @todo implement actual loop behavior
-		 */
-		Object.defineProperty(self, "loop", {
-			get: function getLoop() {
-				return false;
-			},
-			set: function setLoop(val) {
-				// ignore
-			}
-		});
-
-		/**
-		 * @property crossOrigin {string|null} stub prop
-		 * @todo reflect to the crossorigin attribute?
-		 * @todo implement actual behavior
-		 */
-		Object.defineProperty(self, "crossOrigin", {
-			get: function getCrossOrigin() {
-				return null;
-			},
-			set: function setCrossOrigin(val) {
-				// ignore
-			}
-		});
-
-		/**
-		 * Returns the URL to the currently-playing resource.
-		 * @property currentSrc {string|null}
-		 */
-		Object.defineProperty(self, "currentSrc", {
-			get: function getCurrentSrc() {
-				// @todo return absolute URL per spec
-				return currentSrc;
-			}
-		});
-
-		Object.defineProperty(self, "defaultMuted", {
-			get: function getDefaultMuted() {
-				return false;
-			}
-		});
-
-		Object.defineProperty(self, "defaultPlaybackRate", {
-			get: function getDefaultPlaybackRate() {
-				return 1;
-			}
-		});
-
-		/**
-		 * @property error {string|null}
-		 * @todo implement
-		 */
-		Object.defineProperty(self, "error", {
-			get: function getError() {
-				if (state === State.ERROR) {
-					if (mediaError) {
-						return mediaError;
-					} else {
-						return new OGVMediaError("unknown error occurred in media procesing");
-					}
-				} else {
-					return null;
-				}
-			}
-		});
-		/**
-	 	 * @property preload {string}
-		 */
-		Object.defineProperty(self, "preload", {
-			get: function getPreload() {
-				return self.getAttribute('preload') || '';
-			},
-			set: function setPreload(val) {
-				self.setAttribute('preload', val);
-			}
-		});
-
-		/**
-		 * @property readyState {number}
-		 * @todo return more accurate info about availability of data
-		 */
-		Object.defineProperty(self, "readyState", {
-			get: function getReadyState() {
-				if (stream && codec && codec.loadedMetadata) {
-					// for now we don't really calc this stuff
-					// just pretend we have lots of data coming in already
-					return OGVPlayer.HAVE_ENOUGH_DATA;
-				} else {
-					return OGVPlayer.HAVE_NOTHING;
-				}
-			}
-		});
-
-		/**
-		 * @property networkState {number}
-		 * @todo implement
-		 */
-		Object.defineProperty(self, "networkState", {
-			get: function getNetworkState() {
-				if (stream) {
-					if (stream.waiting) {
-						return OGVPlayer.NETWORK_LOADING;
-					} else {
-						return OGVPlayer.NETWORK_IDLE;
-					}
-				} else {
-					if (self.readyState == OGVPlayer.HAVE_NOTHING) {
-						return OGVPlayer.NETWORK_EMPTY;
-					} else {
-						return OGVPlayer.NETWORK_NO_SOURCE;
-					}
-				}
-			}
-		});
-
-		/**
-		 * @property playbackRate {number}
-		 * @todo implement
-		 */
-		Object.defineProperty(self, "playbackRate", {
-			get: function getPlaybackRate() {
-				return 1;
-			},
-			set: function setPlaybackRate(val) {
-				// ignore
-			}
-		});
-
-		/**
-		 * @property played {OGVTimeRanges}
-		 * @todo implement correctly more or less
-		 */
-		Object.defineProperty(self, "played", {
-			get: function getPlayed() {
-				return new OGVTimeRanges([[0, self.currentTime]]);
-			}
-		});
-
 		var _volume = 1;
 
-		/**
-		 * @property volume {number}
-		 * @todo implement
-		 */
-		Object.defineProperty(self, "volume", {
-			get: function getVolume() {
-				return _volume;
-			},
-			set: function setVolume(val) {
-				_volume = +val;
-				if (audioFeeder) {
-					audioFeeder.volume = _volume;
+		Object.defineProperties(self, {
+			/**
+			 * HTMLMediaElement src property
+			 */
+			"src": {
+				get: function getSrc() {
+					return self.getAttribute('src') || '';
+				},
+				set: function setSrc(val) {
+					self.setAttribute('src', val);
+					loading = false; // just in case?
+					prepForLoad("interactive");
 				}
-				fireEventAsync('volumechange');
+			},
+
+			/**
+			 * HTMLMediaElement buffered property
+			 */
+			"buffered": {
+				get: function getBuffered() {
+					var ranges;
+					if (stream && byteLength && duration) {
+						ranges = stream.getBufferedRanges().map(function(range) {
+							return range.map(function(offset) {
+								return (offset / stream.length) * duration;
+							});
+						});
+					} else {
+						ranges = [[0, 0]];
+					}
+					return new OGVTimeRanges(ranges);
+				}
+			},
+
+			/**
+			 * HTMLMediaElement seekable property
+			 */
+			"seekable": {
+				get: function getSeekable() {
+					if (self.duration < Infinity && stream && stream.seekable && codec && codec.seekable) {
+						return new OGVTimeRanges([[0, duration]]);
+					} else {
+						return new OGVTimeRanges([]);
+					}
+				}
+			},
+
+			/**
+			 * HTMLMediaElement currentTime property
+			 */
+			"currentTime": {
+				get: function getCurrentTime() {
+					if (state == State.SEEKING) {
+						return seekTargetTime;
+					} else {
+						if (codec) {
+							if (state == State.PLAYING && !paused) {
+								return getPlaybackTime();
+							} else {
+								return initialPlaybackOffset;
+							}
+						} else {
+							return initialSeekTime;
+						}
+					}
+				},
+				set: function setCurrentTime(val) {
+					seek(val, SeekMode.EXACT);
+				}
+			},
+
+			/**
+			 * HTMLMediaElement duration property
+			 */
+			"duration": {
+				get: function getDuration() {
+					if (codec && codec.loadedMetadata) {
+						if (duration !== null) {
+							return duration;
+						} else {
+							return Infinity;
+						}
+					} else {
+						return NaN;
+					}
+				}
+			},
+
+			/**
+			 * HTMLMediaElement paused property
+			 */
+			"paused": {
+				get: function getPaused() {
+					return paused;
+				}
+			},
+
+			/**
+			 * HTMLMediaElement ended property
+			 */
+			"ended": {
+				get: function getEnded() {
+					return ended;
+				}
+			},
+
+			/**
+			 * HTMLMediaElement ended property
+			 */
+			"seeking": {
+				get: function getSeeking() {
+					return (state == State.SEEKING);
+				}
+			},
+
+			/**
+			 * HTMLMediaElement muted property
+			 */
+			"muted": {
+				get: function getMuted() {
+					return muted;
+				},
+				set: function setMuted(val) {
+					muted = val;
+					if (audioFeeder) {
+						audioFeeder.muted = muted;
+					} else if (started && !muted && codec && codec.hasAudio) {
+						log('unmuting: switching from timer to audio clock');
+						initAudioFeeder();
+						startPlayback(audioEndTimestamp);
+					}
+					fireEventAsync('volumechange');
+				}
+			},
+
+			/**
+			 * HTMLMediaElement poster property
+			 */
+			"poster": {
+				get: function getPoster() {
+					return poster;
+				},
+				set: function setPoster(val) {
+					poster = val;
+					if (!started) {
+						if (thumbnail) {
+							self.removeChild(thumbnail);
+						}
+						thumbnail = new Image();
+						thumbnail.src = poster;
+						thumbnail.className = 'ogvjs-poster';
+						thumbnail.style.position = 'absolute';
+						thumbnail.style.top = '0';
+						thumbnail.style.left = '0';
+						thumbnail.style.width = '100%';
+						thumbnail.style.height = '100%';
+						thumbnail.style.objectFit = 'contain';
+						thumbnail.style.visibility = 'hidden';
+						thumbnail.addEventListener('load', function() {
+							if (thumbnail === this) {
+								OGVPlayer.styleManager.appendRule('.' + instanceId, {
+									width: thumbnail.naturalWidth + 'px',
+									height: thumbnail.naturalHeight + 'px'
+								});
+								OGVPlayer.updatePositionOnResize();
+								thumbnail.style.visibility = 'visible';
+							}
+						});
+						self.appendChild(thumbnail);
+					}
+				}
+			},
+
+			/**
+			 * HTMLMediaElement video width property
+			 */
+			"videoWidth": {
+				get: function getVideoWidth() {
+					if (videoInfo) {
+						return videoInfo.displayWidth;
+					} else {
+						return 0;
+					}
+				}
+			},
+
+			/**
+			 * HTMLMediaElement video height property
+			 */
+			"videoHeight": {
+				get: function getVideoHeight() {
+					if (videoInfo) {
+						return videoInfo.displayHeight;
+					} else {
+						return 0;
+					}
+				}
+			},
+
+			/**
+			 * Custom video framerate property
+			 */
+			"ogvjsVideoFrameRate": {
+				get: function getOgvJsVideoFrameRate() {
+					if (videoInfo) {
+						if (videoInfo.fps == 0) {
+							return totalFrameCount / (totalFrameTime / 1000);
+						} else {
+							return videoInfo.fps;
+						}
+					} else {
+						return 0;
+					}
+				}
+			},
+
+			/**
+			 * Custom audio metadata property
+			 */
+			"ogvjsAudioChannels": {
+				get: function getOgvJsAudioChannels() {
+					if (audioInfo) {
+						return audioInfo.channels;
+					} else {
+						return 0;
+					}
+				}
+			},
+
+			/**
+			 * Custom audio metadata property
+			 */
+			"ogvjsAudioSampleRate": {
+				get: function getOgvJsAudioChannels() {
+					if (audioInfo) {
+						return audioInfo.rate;
+					} else {
+						return 0;
+					}
+				}
+			},
+
+			/**
+			 * @property width
+			 * @todo reflect to the width attribute?
+			 */
+			"width": {
+				get: function getWidth() {
+					return width;
+				},
+				set: function setWidth(val) {
+					width = parseInt(val, 10);
+					self.style.width = width + 'px';
+					OGVPlayer.updatePositionOnResize();
+				}
+			},
+
+			/**
+			 * @property height
+			 * @todo reflect to the height attribute?
+			 */
+			"height": {
+				get: function getHeight() {
+					return height;
+				},
+				set: function setHeight(val) {
+					height = parseInt(val, 10);
+					self.style.height = height + 'px';
+					OGVPlayer.updatePositionOnResize();
+				}
+			},
+
+			/**
+			 * @property autoplay {boolean} stub prop
+			 * @todo reflect to the autoplay attribute?
+			 * @todo implement actual autoplay behavior
+			 */
+			"autoplay": {
+				get: function getAutoplay() {
+					return false;
+				},
+				set: function setAutoplay(val) {
+					// ignore
+				}
+			},
+
+			/**
+			 * @property controls {boolean} stub prop
+			 * @todo reflect to the controls attribute?
+			 * @todo implement actual control behavior
+			 */
+			"controls": {
+				get: function getControls() {
+					return false;
+				},
+				set: function setControls(val) {
+					// ignore
+				}
+			},
+
+			/**
+			 * @property loop {boolean} stub prop
+			 * @todo reflect to the controls attribute?
+			 * @todo implement actual loop behavior
+			 */
+			"loop": {
+				get: function getLoop() {
+					return false;
+				},
+				set: function setLoop(val) {
+					// ignore
+				}
+			},
+
+			/**
+			 * @property crossOrigin {string|null} stub prop
+			 * @todo reflect to the crossorigin attribute?
+			 * @todo implement actual behavior
+			 */
+			"crossOrigin": {
+				get: function getCrossOrigin() {
+					return null;
+				},
+				set: function setCrossOrigin(val) {
+					// ignore
+				}
+			},
+
+			/**
+			 * Returns the URL to the currently-playing resource.
+			 * @property currentSrc {string|null}
+			 */
+			"currentSrc": {
+				get: function getCurrentSrc() {
+					// @todo return absolute URL per spec
+					return currentSrc;
+				}
+			},
+
+			"defaultMuted": {
+				get: function getDefaultMuted() {
+					return false;
+				}
+			},
+
+			"defaultPlaybackRate": {
+				get: function getDefaultPlaybackRate() {
+					return 1;
+				}
+			},
+
+			/**
+			 * @property error {OGVMediaError|null}
+			 */
+			"error": {
+				get: function getError() {
+					if (state === State.ERROR) {
+						if (mediaError) {
+							return mediaError;
+						} else {
+							return new OGVMediaError("unknown error occurred in media procesing");
+						}
+					} else {
+						return null;
+					}
+				}
+			},
+
+			/**
+		 	 * @property preload {string}
+			 */
+			"preload": {
+				get: function getPreload() {
+					return self.getAttribute('preload') || '';
+				},
+				set: function setPreload(val) {
+					self.setAttribute('preload', val);
+				}
+			},
+
+			/**
+			 * @property readyState {number}
+			 * @todo return more accurate info about availability of data
+			 */
+			"readyState": {
+				get: function getReadyState() {
+					if (stream && codec && codec.loadedMetadata) {
+						// for now we don't really calc this stuff
+						// just pretend we have lots of data coming in already
+						return OGVPlayer.HAVE_ENOUGH_DATA;
+					} else {
+						return OGVPlayer.HAVE_NOTHING;
+					}
+				}
+			},
+
+			/**
+			 * @property networkState {number}
+			 * @todo implement
+			 */
+			"networkState": {
+				get: function getNetworkState() {
+					if (stream) {
+						if (stream.waiting) {
+							return OGVPlayer.NETWORK_LOADING;
+						} else {
+							return OGVPlayer.NETWORK_IDLE;
+						}
+					} else {
+						if (self.readyState == OGVPlayer.HAVE_NOTHING) {
+							return OGVPlayer.NETWORK_EMPTY;
+						} else {
+							return OGVPlayer.NETWORK_NO_SOURCE;
+						}
+					}
+				}
+			},
+
+			/**
+			 * @property playbackRate {number}
+			 * @todo implement
+			 */
+			"playbackRate": {
+				get: function getPlaybackRate() {
+					return 1;
+				},
+				set: function setPlaybackRate(val) {
+					// ignore
+				}
+			},
+
+			/**
+			 * @property played {OGVTimeRanges}
+			 * @todo implement correctly more or less
+			 */
+			"played": {
+				get: function getPlayed() {
+					return new OGVTimeRanges([[0, self.currentTime]]);
+				}
+			},
+
+			/**
+			 * @property volume {number}
+			 */
+			"volume": {
+				get: function getVolume() {
+					return _volume;
+				},
+				set: function setVolume(val) {
+					_volume = +val;
+					if (audioFeeder) {
+						audioFeeder.volume = _volume;
+					}
+					fireEventAsync('volumechange');
+				}
 			}
 		});
 
@@ -3441,7 +3478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(process, global) {/*!
@@ -3449,7 +3486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
 	 *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
-	 * @version   4.1.1
+	 * @version   v4.2.2+97478eb6
 	 */
 
 	(function (global, factory) {
@@ -3467,7 +3504,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return typeof x === 'function';
 	}
 
-	var _isArray = undefined;
+
+
+	var _isArray = void 0;
 	if (Array.isArray) {
 	  _isArray = Array.isArray;
 	} else {
@@ -3479,8 +3518,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isArray = _isArray;
 
 	var len = 0;
-	var vertxNext = undefined;
-	var customSchedulerFn = undefined;
+	var vertxNext = void 0;
+	var customSchedulerFn = void 0;
 
 	var asap = function asap(callback, arg) {
 	  queue[len] = callback;
@@ -3509,7 +3548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var browserWindow = typeof window !== 'undefined' ? window : undefined;
 	var browserGlobal = browserWindow || {};
 	var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
-	var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && ({}).toString.call(process) === '[object process]';
+	var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && {}.toString.call(process) === '[object process]';
 
 	// test for web worker but not in IE10
 	var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
@@ -3581,7 +3620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function attemptVertx() {
 	  try {
 	    var r = require;
-	    var vertx = __webpack_require__(11);
+	    var vertx = __webpack_require__(13);
 	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	    return useVertxTimer();
 	  } catch (e) {
@@ -3589,7 +3628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-	var scheduleFlush = undefined;
+	var scheduleFlush = void 0;
 	// Decide what async method to use to triggering processing of queued callbacks:
 	if (isNode) {
 	  scheduleFlush = useNextTick();
@@ -3604,8 +3643,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	function then(onFulfillment, onRejection) {
-	  var _arguments = arguments;
-
 	  var parent = this;
 
 	  var child = new this.constructor(noop);
@@ -3616,13 +3653,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var _state = parent._state;
 
+
 	  if (_state) {
-	    (function () {
-	      var callback = _arguments[_state - 1];
-	      asap(function () {
-	        return invokeCallback(_state, child, callback, parent._result);
-	      });
-	    })();
+	    var callback = arguments[_state - 1];
+	    asap(function () {
+	      return invokeCallback(_state, child, callback, parent._result);
+	    });
 	  } else {
 	    subscribe(parent, child, onFulfillment, onRejection);
 	  }
@@ -3814,6 +3850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _subscribers = parent._subscribers;
 	  var length = _subscribers.length;
 
+
 	  parent._onerror = null;
 
 	  _subscribers[length] = child;
@@ -3833,8 +3870,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return;
 	  }
 
-	  var child = undefined,
-	      callback = undefined,
+	  var child = void 0,
+	      callback = void 0,
 	      detail = promise._result;
 
 	  for (var i = 0; i < subscribers.length; i += 3) {
@@ -3868,10 +3905,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function invokeCallback(settled, promise, callback, detail) {
 	  var hasCallback = isFunction(callback),
-	      value = undefined,
-	      error = undefined,
-	      succeeded = undefined,
-	      failed = undefined;
+	      value = void 0,
+	      error = void 0,
+	      succeeded = void 0,
+	      failed = void 0;
 
 	  if (hasCallback) {
 	    value = tryCatch(callback, detail);
@@ -3896,14 +3933,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (promise._state !== PENDING) {
 	    // noop
 	  } else if (hasCallback && succeeded) {
-	      resolve(promise, value);
-	    } else if (failed) {
-	      reject(promise, error);
-	    } else if (settled === FULFILLED) {
-	      fulfill(promise, value);
-	    } else if (settled === REJECTED) {
-	      reject(promise, value);
-	    }
+	    resolve(promise, value);
+	  } else if (failed) {
+	    reject(promise, error);
+	  } else if (settled === FULFILLED) {
+	    fulfill(promise, value);
+	  } else if (settled === REJECTED) {
+	    reject(promise, value);
+	  }
 	}
 
 	function initializePromise(promise, resolver) {
@@ -3930,97 +3967,107 @@ return /******/ (function(modules) { // webpackBootstrap
 	  promise._subscribers = [];
 	}
 
-	function Enumerator$1(Constructor, input) {
-	  this._instanceConstructor = Constructor;
-	  this.promise = new Constructor(noop);
-
-	  if (!this.promise[PROMISE_ID]) {
-	    makePromise(this.promise);
-	  }
-
-	  if (isArray(input)) {
-	    this.length = input.length;
-	    this._remaining = input.length;
-
-	    this._result = new Array(this.length);
-
-	    if (this.length === 0) {
-	      fulfill(this.promise, this._result);
-	    } else {
-	      this.length = this.length || 0;
-	      this._enumerate(input);
-	      if (this._remaining === 0) {
-	        fulfill(this.promise, this._result);
-	      }
-	    }
-	  } else {
-	    reject(this.promise, validationError());
-	  }
+	function validationError() {
+	  return new Error('Array Methods must be provided an Array');
 	}
 
 	function validationError() {
 	  return new Error('Array Methods must be provided an Array');
 	}
 
-	Enumerator$1.prototype._enumerate = function (input) {
-	  for (var i = 0; this._state === PENDING && i < input.length; i++) {
-	    this._eachEntry(input[i], i);
+	var Enumerator = function () {
+	  function Enumerator(Constructor, input) {
+	    this._instanceConstructor = Constructor;
+	    this.promise = new Constructor(noop);
+
+	    if (!this.promise[PROMISE_ID]) {
+	      makePromise(this.promise);
+	    }
+
+	    if (isArray(input)) {
+	      this.length = input.length;
+	      this._remaining = input.length;
+
+	      this._result = new Array(this.length);
+
+	      if (this.length === 0) {
+	        fulfill(this.promise, this._result);
+	      } else {
+	        this.length = this.length || 0;
+	        this._enumerate(input);
+	        if (this._remaining === 0) {
+	          fulfill(this.promise, this._result);
+	        }
+	      }
+	    } else {
+	      reject(this.promise, validationError());
+	    }
 	  }
-	};
 
-	Enumerator$1.prototype._eachEntry = function (entry, i) {
-	  var c = this._instanceConstructor;
-	  var resolve$$1 = c.resolve;
+	  Enumerator.prototype._enumerate = function _enumerate(input) {
+	    for (var i = 0; this._state === PENDING && i < input.length; i++) {
+	      this._eachEntry(input[i], i);
+	    }
+	  };
 
-	  if (resolve$$1 === resolve$1) {
-	    var _then = getThen(entry);
+	  Enumerator.prototype._eachEntry = function _eachEntry(entry, i) {
+	    var c = this._instanceConstructor;
+	    var resolve$$1 = c.resolve;
 
-	    if (_then === then && entry._state !== PENDING) {
-	      this._settledAt(entry._state, i, entry._result);
-	    } else if (typeof _then !== 'function') {
+
+	    if (resolve$$1 === resolve$1) {
+	      var _then = getThen(entry);
+
+	      if (_then === then && entry._state !== PENDING) {
+	        this._settledAt(entry._state, i, entry._result);
+	      } else if (typeof _then !== 'function') {
+	        this._remaining--;
+	        this._result[i] = entry;
+	      } else if (c === Promise$1) {
+	        var promise = new c(noop);
+	        handleMaybeThenable(promise, entry, _then);
+	        this._willSettleAt(promise, i);
+	      } else {
+	        this._willSettleAt(new c(function (resolve$$1) {
+	          return resolve$$1(entry);
+	        }), i);
+	      }
+	    } else {
+	      this._willSettleAt(resolve$$1(entry), i);
+	    }
+	  };
+
+	  Enumerator.prototype._settledAt = function _settledAt(state, i, value) {
+	    var promise = this.promise;
+
+
+	    if (promise._state === PENDING) {
 	      this._remaining--;
-	      this._result[i] = entry;
-	    } else if (c === Promise$2) {
-	      var promise = new c(noop);
-	      handleMaybeThenable(promise, entry, _then);
-	      this._willSettleAt(promise, i);
-	    } else {
-	      this._willSettleAt(new c(function (resolve$$1) {
-	        return resolve$$1(entry);
-	      }), i);
+
+	      if (state === REJECTED) {
+	        reject(promise, value);
+	      } else {
+	        this._result[i] = value;
+	      }
 	    }
-	  } else {
-	    this._willSettleAt(resolve$$1(entry), i);
-	  }
-	};
 
-	Enumerator$1.prototype._settledAt = function (state, i, value) {
-	  var promise = this.promise;
-
-	  if (promise._state === PENDING) {
-	    this._remaining--;
-
-	    if (state === REJECTED) {
-	      reject(promise, value);
-	    } else {
-	      this._result[i] = value;
+	    if (this._remaining === 0) {
+	      fulfill(promise, this._result);
 	    }
-	  }
+	  };
 
-	  if (this._remaining === 0) {
-	    fulfill(promise, this._result);
-	  }
-	};
+	  Enumerator.prototype._willSettleAt = function _willSettleAt(promise, i) {
+	    var enumerator = this;
 
-	Enumerator$1.prototype._willSettleAt = function (promise, i) {
-	  var enumerator = this;
+	    subscribe(promise, undefined, function (value) {
+	      return enumerator._settledAt(FULFILLED, i, value);
+	    }, function (reason) {
+	      return enumerator._settledAt(REJECTED, i, reason);
+	    });
+	  };
 
-	  subscribe(promise, undefined, function (value) {
-	    return enumerator._settledAt(FULFILLED, i, value);
-	  }, function (reason) {
-	    return enumerator._settledAt(REJECTED, i, reason);
-	  });
-	};
+	  return Enumerator;
+	}();
 
 	/**
 	  `Promise.all` accepts an array of promises, and returns a new promise which
@@ -4069,8 +4116,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  fulfilled, or rejected if any of them become rejected.
 	  @static
 	*/
-	function all$1(entries) {
-	  return new Enumerator$1(this, entries).promise;
+	function all(entries) {
+	  return new Enumerator(this, entries).promise;
 	}
 
 	/**
@@ -4138,7 +4185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  @return {Promise} a promise which settles in the same way as the first passed
 	  promise to settle.
 	*/
-	function race$1(entries) {
+	function race(entries) {
 	  /*jshint validthis:true */
 	  var Constructor = this;
 
@@ -4305,262 +4352,283 @@ return /******/ (function(modules) { // webpackBootstrap
 	  ```
 
 	  @class Promise
-	  @param {function} resolver
+	  @param {Function} resolver
 	  Useful for tooling.
 	  @constructor
 	*/
-	function Promise$2(resolver) {
-	  this[PROMISE_ID] = nextId();
-	  this._result = this._state = undefined;
-	  this._subscribers = [];
 
-	  if (noop !== resolver) {
-	    typeof resolver !== 'function' && needsResolver();
-	    this instanceof Promise$2 ? initializePromise(this, resolver) : needsNew();
+	var Promise$1 = function () {
+	  function Promise(resolver) {
+	    this[PROMISE_ID] = nextId();
+	    this._result = this._state = undefined;
+	    this._subscribers = [];
+
+	    if (noop !== resolver) {
+	      typeof resolver !== 'function' && needsResolver();
+	      this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+	    }
 	  }
-	}
-
-	Promise$2.all = all$1;
-	Promise$2.race = race$1;
-	Promise$2.resolve = resolve$1;
-	Promise$2.reject = reject$1;
-	Promise$2._setScheduler = setScheduler;
-	Promise$2._setAsap = setAsap;
-	Promise$2._asap = asap;
-
-	Promise$2.prototype = {
-	  constructor: Promise$2,
 
 	  /**
-	    The primary way of interacting with a promise is through its `then` method,
-	    which registers callbacks to receive either a promise's eventual value or the
-	    reason why the promise cannot be fulfilled.
-	  
-	    ```js
-	    findUser().then(function(user){
-	      // user is available
-	    }, function(reason){
-	      // user is unavailable, and you are given the reason why
-	    });
-	    ```
-	  
-	    Chaining
-	    --------
-	  
-	    The return value of `then` is itself a promise.  This second, 'downstream'
-	    promise is resolved with the return value of the first promise's fulfillment
-	    or rejection handler, or rejected if the handler throws an exception.
-	  
-	    ```js
-	    findUser().then(function (user) {
-	      return user.name;
-	    }, function (reason) {
-	      return 'default name';
-	    }).then(function (userName) {
-	      // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
-	      // will be `'default name'`
-	    });
-	  
-	    findUser().then(function (user) {
-	      throw new Error('Found user, but still unhappy');
-	    }, function (reason) {
-	      throw new Error('`findUser` rejected and we're unhappy');
-	    }).then(function (value) {
-	      // never reached
-	    }, function (reason) {
-	      // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
-	      // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
-	    });
-	    ```
-	    If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-	  
-	    ```js
-	    findUser().then(function (user) {
-	      throw new PedagogicalException('Upstream error');
-	    }).then(function (value) {
-	      // never reached
-	    }).then(function (value) {
-	      // never reached
-	    }, function (reason) {
-	      // The `PedgagocialException` is propagated all the way down to here
-	    });
-	    ```
-	  
-	    Assimilation
-	    ------------
-	  
-	    Sometimes the value you want to propagate to a downstream promise can only be
-	    retrieved asynchronously. This can be achieved by returning a promise in the
-	    fulfillment or rejection handler. The downstream promise will then be pending
-	    until the returned promise is settled. This is called *assimilation*.
-	  
-	    ```js
-	    findUser().then(function (user) {
-	      return findCommentsByAuthor(user);
-	    }).then(function (comments) {
-	      // The user's comments are now available
-	    });
-	    ```
-	  
-	    If the assimliated promise rejects, then the downstream promise will also reject.
-	  
-	    ```js
-	    findUser().then(function (user) {
-	      return findCommentsByAuthor(user);
-	    }).then(function (comments) {
-	      // If `findCommentsByAuthor` fulfills, we'll have the value here
-	    }, function (reason) {
-	      // If `findCommentsByAuthor` rejects, we'll have the reason here
-	    });
-	    ```
-	  
-	    Simple Example
-	    --------------
-	  
-	    Synchronous Example
-	  
-	    ```javascript
-	    let result;
-	  
-	    try {
-	      result = findResult();
-	      // success
-	    } catch(reason) {
+	  The primary way of interacting with a promise is through its `then` method,
+	  which registers callbacks to receive either a promise's eventual value or the
+	  reason why the promise cannot be fulfilled.
+	   ```js
+	  findUser().then(function(user){
+	    // user is available
+	  }, function(reason){
+	    // user is unavailable, and you are given the reason why
+	  });
+	  ```
+	   Chaining
+	  --------
+	   The return value of `then` is itself a promise.  This second, 'downstream'
+	  promise is resolved with the return value of the first promise's fulfillment
+	  or rejection handler, or rejected if the handler throws an exception.
+	   ```js
+	  findUser().then(function (user) {
+	    return user.name;
+	  }, function (reason) {
+	    return 'default name';
+	  }).then(function (userName) {
+	    // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
+	    // will be `'default name'`
+	  });
+	   findUser().then(function (user) {
+	    throw new Error('Found user, but still unhappy');
+	  }, function (reason) {
+	    throw new Error('`findUser` rejected and we're unhappy');
+	  }).then(function (value) {
+	    // never reached
+	  }, function (reason) {
+	    // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
+	    // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
+	  });
+	  ```
+	  If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
+	   ```js
+	  findUser().then(function (user) {
+	    throw new PedagogicalException('Upstream error');
+	  }).then(function (value) {
+	    // never reached
+	  }).then(function (value) {
+	    // never reached
+	  }, function (reason) {
+	    // The `PedgagocialException` is propagated all the way down to here
+	  });
+	  ```
+	   Assimilation
+	  ------------
+	   Sometimes the value you want to propagate to a downstream promise can only be
+	  retrieved asynchronously. This can be achieved by returning a promise in the
+	  fulfillment or rejection handler. The downstream promise will then be pending
+	  until the returned promise is settled. This is called *assimilation*.
+	   ```js
+	  findUser().then(function (user) {
+	    return findCommentsByAuthor(user);
+	  }).then(function (comments) {
+	    // The user's comments are now available
+	  });
+	  ```
+	   If the assimliated promise rejects, then the downstream promise will also reject.
+	   ```js
+	  findUser().then(function (user) {
+	    return findCommentsByAuthor(user);
+	  }).then(function (comments) {
+	    // If `findCommentsByAuthor` fulfills, we'll have the value here
+	  }, function (reason) {
+	    // If `findCommentsByAuthor` rejects, we'll have the reason here
+	  });
+	  ```
+	   Simple Example
+	  --------------
+	   Synchronous Example
+	   ```javascript
+	  let result;
+	   try {
+	    result = findResult();
+	    // success
+	  } catch(reason) {
+	    // failure
+	  }
+	  ```
+	   Errback Example
+	   ```js
+	  findResult(function(result, err){
+	    if (err) {
 	      // failure
-	    }
-	    ```
-	  
-	    Errback Example
-	  
-	    ```js
-	    findResult(function(result, err){
-	      if (err) {
-	        // failure
-	      } else {
-	        // success
-	      }
-	    });
-	    ```
-	  
-	    Promise Example;
-	  
-	    ```javascript
-	    findResult().then(function(result){
+	    } else {
 	      // success
-	    }, function(reason){
+	    }
+	  });
+	  ```
+	   Promise Example;
+	   ```javascript
+	  findResult().then(function(result){
+	    // success
+	  }, function(reason){
+	    // failure
+	  });
+	  ```
+	   Advanced Example
+	  --------------
+	   Synchronous Example
+	   ```javascript
+	  let author, books;
+	   try {
+	    author = findAuthor();
+	    books  = findBooksByAuthor(author);
+	    // success
+	  } catch(reason) {
+	    // failure
+	  }
+	  ```
+	   Errback Example
+	   ```js
+	   function foundBooks(books) {
+	   }
+	   function failure(reason) {
+	   }
+	   findAuthor(function(author, err){
+	    if (err) {
+	      failure(err);
 	      // failure
-	    });
-	    ```
-	  
-	    Advanced Example
-	    --------------
-	  
-	    Synchronous Example
-	  
-	    ```javascript
-	    let author, books;
-	  
-	    try {
-	      author = findAuthor();
-	      books  = findBooksByAuthor(author);
-	      // success
-	    } catch(reason) {
-	      // failure
-	    }
-	    ```
-	  
-	    Errback Example
-	  
-	    ```js
-	  
-	    function foundBooks(books) {
-	  
-	    }
-	  
-	    function failure(reason) {
-	  
-	    }
-	  
-	    findAuthor(function(author, err){
-	      if (err) {
-	        failure(err);
-	        // failure
-	      } else {
-	        try {
-	          findBoooksByAuthor(author, function(books, err) {
-	            if (err) {
-	              failure(err);
-	            } else {
-	              try {
-	                foundBooks(books);
-	              } catch(reason) {
-	                failure(reason);
-	              }
+	    } else {
+	      try {
+	        findBoooksByAuthor(author, function(books, err) {
+	          if (err) {
+	            failure(err);
+	          } else {
+	            try {
+	              foundBooks(books);
+	            } catch(reason) {
+	              failure(reason);
 	            }
-	          });
-	        } catch(error) {
-	          failure(err);
-	        }
-	        // success
+	          }
+	        });
+	      } catch(error) {
+	        failure(err);
 	      }
-	    });
-	    ```
-	  
-	    Promise Example;
-	  
-	    ```javascript
-	    findAuthor().
-	      then(findBooksByAuthor).
-	      then(function(books){
-	        // found books
-	    }).catch(function(reason){
-	      // something went wrong
-	    });
-	    ```
-	  
-	    @method then
-	    @param {Function} onFulfilled
-	    @param {Function} onRejected
-	    Useful for tooling.
-	    @return {Promise}
+	      // success
+	    }
+	  });
+	  ```
+	   Promise Example;
+	   ```javascript
+	  findAuthor().
+	    then(findBooksByAuthor).
+	    then(function(books){
+	      // found books
+	  }).catch(function(reason){
+	    // something went wrong
+	  });
+	  ```
+	   @method then
+	  @param {Function} onFulfilled
+	  @param {Function} onRejected
+	  Useful for tooling.
+	  @return {Promise}
 	  */
-	  then: then,
 
 	  /**
-	    `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
-	    as the catch block of a try/catch statement.
+	  `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
+	  as the catch block of a try/catch statement.
+	  ```js
+	  function findAuthor(){
+	  throw new Error('couldn't find that author');
+	  }
+	  // synchronous
+	  try {
+	  findAuthor();
+	  } catch(reason) {
+	  // something went wrong
+	  }
+	  // async with promises
+	  findAuthor().catch(function(reason){
+	  // something went wrong
+	  });
+	  ```
+	  @method catch
+	  @param {Function} onRejection
+	  Useful for tooling.
+	  @return {Promise}
+	  */
+
+
+	  Promise.prototype.catch = function _catch(onRejection) {
+	    return this.then(null, onRejection);
+	  };
+
+	  /**
+	    `finally` will be invoked regardless of the promise's fate just as native
+	    try/catch/finally behaves
+	  
+	    Synchronous example:
 	  
 	    ```js
-	    function findAuthor(){
-	      throw new Error('couldn't find that author');
+	    findAuthor() {
+	      if (Math.random() > 0.5) {
+	        throw new Error();
+	      }
+	      return new Author();
 	    }
 	  
-	    // synchronous
 	    try {
-	      findAuthor();
-	    } catch(reason) {
-	      // something went wrong
+	      return findAuthor(); // succeed or fail
+	    } catch(error) {
+	      return findOtherAuther();
+	    } finally {
+	      // always runs
+	      // doesn't affect the return value
 	    }
+	    ```
 	  
-	    // async with promises
+	    Asynchronous example:
+	  
+	    ```js
 	    findAuthor().catch(function(reason){
-	      // something went wrong
+	      return findOtherAuther();
+	    }).finally(function(){
+	      // author was either found, or not
 	    });
 	    ```
 	  
-	    @method catch
-	    @param {Function} onRejection
-	    Useful for tooling.
+	    @method finally
+	    @param {Function} callback
 	    @return {Promise}
 	  */
-	  'catch': function _catch(onRejection) {
-	    return this.then(null, onRejection);
-	  }
-	};
+
+
+	  Promise.prototype.finally = function _finally(callback) {
+	    var promise = this;
+	    var constructor = promise.constructor;
+
+	    return promise.then(function (value) {
+	      return constructor.resolve(callback()).then(function () {
+	        return value;
+	      });
+	    }, function (reason) {
+	      return constructor.resolve(callback()).then(function () {
+	        throw reason;
+	      });
+	    });
+	  };
+
+	  return Promise;
+	}();
+
+	Promise$1.prototype.then = then;
+	Promise$1.all = all;
+	Promise$1.race = race;
+	Promise$1.resolve = resolve$1;
+	Promise$1.reject = reject$1;
+	Promise$1._setScheduler = setScheduler;
+	Promise$1._setAsap = setAsap;
+	Promise$1._asap = asap;
 
 	/*global self*/
-	function polyfill$1() {
-	    var local = undefined;
+	function polyfill() {
+	    var local = void 0;
 
 	    if (typeof global !== 'undefined') {
 	        local = global;
@@ -4589,23 +4657,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 
-	    local.Promise = Promise$2;
+	    local.Promise = Promise$1;
 	}
 
 	// Strange compat..
-	Promise$2.polyfill = polyfill$1;
-	Promise$2.Promise = Promise$2;
+	Promise$1.polyfill = polyfill;
+	Promise$1.Promise = Promise$1;
 
-	return Promise$2;
+	return Promise$1;
 
 	})));
 
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), (function() { return this; }())))
+
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12), (function() { return this; }())))
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -4795,13 +4865,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports) {
 
 	/* (ignored) */
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -4827,9 +4897,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 	  "use strict";
 
-	  var FrameSink = __webpack_require__(13),
-	    SoftwareFrameSink = __webpack_require__(14),
-	    WebGLFrameSink = __webpack_require__(17);
+	  var FrameSink = __webpack_require__(15),
+	    SoftwareFrameSink = __webpack_require__(16),
+	    WebGLFrameSink = __webpack_require__(19);
 
 	  /**
 	   * @typedef {Object} YUVCanvasOptions
@@ -4870,7 +4940,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports) {
 
 	(function() {
@@ -4918,7 +4988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -4944,8 +5014,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var FrameSink = __webpack_require__(13),
-			YCbCr = __webpack_require__(15);
+		var FrameSink = __webpack_require__(15),
+			YCbCr = __webpack_require__(17);
 
 		/**
 		 * @param {HTMLCanvasElement} canvas - HTML canvas eledment to attach to
@@ -5038,7 +5108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -5064,7 +5134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var depower = __webpack_require__(16);
+		var depower = __webpack_require__(18);
 
 		/**
 		 * Basic YCbCr->RGB conversion
@@ -5183,7 +5253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 	/*
@@ -5239,7 +5309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -5265,8 +5335,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var FrameSink = __webpack_require__(13),
-			shaders = __webpack_require__(18);
+		var FrameSink = __webpack_require__(15),
+			shaders = __webpack_require__(20);
 
 		/**
 		 * Warning: canvas must not have been used for 2d drawing prior!
@@ -5588,7 +5658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 
 				if (formatUpdate) {
-					function setupTexturePosition(buffer, location, texWidth) {
+					var setupTexturePosition = function(buffer, location, texWidth) {
 						// Warning: assumes that the stride for Cb and Cr is the same size in output pixels
 						var textureX0 = format.cropLeft / texWidth;
 						var textureX1 = (format.cropLeft + format.cropWidth) / texWidth;
@@ -5605,7 +5675,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 						gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
 						gl.bufferData(gl.ARRAY_BUFFER, textureRectangle, gl.STATIC_DRAW);
-					}
+					};
 					setupTexturePosition(
 						lumaPositionBuffer,
 						lumaPositionLocation,
@@ -5751,7 +5821,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -5763,7 +5833,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5772,9 +5842,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var EventEmitter = __webpack_require__(20);
-	var CachePool = __webpack_require__(21);
-	var Backend = __webpack_require__(24);
+	var EventEmitter = __webpack_require__(22);
+	var CachePool = __webpack_require__(23);
+	var Backend = __webpack_require__(26);
 
 	/**
 	 * @typedef {Object} StreamFileOptions
@@ -5918,7 +5988,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 
 	          // Do we have space to write within that chunk?
-	          var writable = cache.bytesWritable(max);
+	          // Don't go beyond the end of the file, or it will confuse
+	          // some browsers (Safari with blob URLs).
+	          var writable = _this2._clampToLength(cache.writeOffset + cache.bytesWritable(max)) - cache.writeOffset;
+
 	          if (writable === 0) {
 	            // Nothing to read/write within the current readahead area.
 	            resolve(null);
@@ -6240,7 +6313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -6288,16 +6361,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = __webpack_require__(22);
+	module.exports = __webpack_require__(24);
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6306,7 +6379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var CacheItem = __webpack_require__(23);
+	var CacheItem = __webpack_require__(25);
 
 	/**
 	 * Seekable, readable, writable buffer cache to represent a file.
@@ -6680,7 +6753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -6828,14 +6901,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var MozChunkedBackend = __webpack_require__(25);
-	var MSStreamBackend = __webpack_require__(28);
-	var BinaryStringBackend = __webpack_require__(29);
+	var MozChunkedBackend = __webpack_require__(27);
+	var MSStreamBackend = __webpack_require__(30);
+	var BinaryStringBackend = __webpack_require__(31);
 
 	function autoselect() {
 	  if (MozChunkedBackend.supported()) {
@@ -6865,7 +6938,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6880,7 +6953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var DownloadBackend = __webpack_require__(26);
+	var DownloadBackend = __webpack_require__(28);
 
 	var type = 'moz-chunked-arraybuffer';
 
@@ -6925,7 +6998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6940,7 +7013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Backend = __webpack_require__(27);
+	var Backend = __webpack_require__(29);
 
 	/**
 	 * Backend for progressive downloading.
@@ -7051,7 +7124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7064,7 +7137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var TinyEvents = __webpack_require__(20);
+	var TinyEvents = __webpack_require__(22);
 
 	/**
 	 * Extract the file's total length from the XHR returned headers.
@@ -7131,7 +7204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function getXHRHeaders(xhr) {
 	  var headers = {};
-	  var headerLines = xhr.getAllResponseHeaders().split(/\n/);
+	  var headerLines = xhr.getAllResponseHeaders().split(/\r?\n/);
 	  headerLines.forEach(function (line) {
 	    var bits = line.split(/:\s*/, 2);
 	    if (bits.length > 1) {
@@ -7336,7 +7409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7351,7 +7424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Backend = __webpack_require__(27);
+	var Backend = __webpack_require__(29);
 
 	var type = 'ms-stream';
 
@@ -7502,7 +7575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7517,7 +7590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var DownloadBackend = __webpack_require__(26);
+	var DownloadBackend = __webpack_require__(28);
 
 	var BinaryStringBackend = function (_DownloadBackend) {
 	  _inherits(BinaryStringBackend, _DownloadBackend);
@@ -7569,7 +7642,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -9263,13 +9336,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	;
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=0f98a83acdc72cf30968c16a018e1cf1";
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports) {
 
 	/**
@@ -9318,7 +9391,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 33 */
+/* 35 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Constructor for an analogue of the TimeRanges class
+	 * returned by various HTMLMediaElement properties
+	 *
+	 * Pass an array of two-element arrays, each containing a start and end time.
+	 */
+	function OGVTimeRanges(ranges) {
+		Object.defineProperty(this, 'length', {
+			get: function getLength() {
+				return ranges.length;
+			}
+		});
+		this.start = function(i) {
+			return ranges[i][0];
+		};
+		this.end = function(i) {
+			return ranges[i][1];
+		};
+		return this;
+	};
+
+	module.exports = OGVTimeRanges;
+
+
+/***/ }),
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -9335,7 +9436,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.5.0-20171109103951-47c6ee5c")),
+			suffix = '?version=' + encodeURIComponent(("1.5.4-20180119185727-50eda5d7")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,
@@ -9476,7 +9577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		// - public methods
 		self.init = function(callback) {
 			var demuxerClassName;
-			if (options.type === 'video/webm') {
+			if (options.type === 'video/webm' || options.type === 'audio/webm') {
 				demuxerClassName = options.wasm ? 'OGVDemuxerWebMW' : 'OGVDemuxerWebM';
 			} else {
 				demuxerClassName = options.wasm ? 'OGVDemuxerOggW' : 'OGVDemuxerOgg';
