@@ -5,7 +5,8 @@
 			"Dianakc",
 			"Giro720",
 			"Luckas",
-			"Luckas Blade"
+			"Luckas Blade",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -82,5 +83,9 @@
 	"mwe-embedplayer-video-3gp": "Vídeo 3GP",
 	"mwe-embedplayer-video-mpeg": "Vídeo MPEG",
 	"mwe-embedplayer-video-msvideo": "Vídeo AVI",
-	"mwe-embedplayer-missing-source": "Nenhum vídeo foi encontrado"
+	"mwe-embedplayer-missing-source": "Nenhum vídeo foi encontrado",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Para reproduzir vídeos neste site, precisa da aplicação gratuita VLC. Instalar agora?",
+	"mwe-embedplayer-iewebmprompt-intro": "Ops! Só mais uma coisa antes de poder ver o vídeo...",
+	"mwe-embedplayer-iewebmprompt-linktext": "Instalar componentes multimédia WebM para o Microsoft Internet Explorer",
+	"mwe-embedplayer-iewebmprompt-outro": "Recarregar esta página após a instalação."
 }
