@@ -237,7 +237,7 @@
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.5.0-20171109103951-47c6ee5c");
+	var OGVVersion = ("1.5.4-20180119185727-50eda5d7");
 
 	(function() {
 		var global = this;
@@ -380,7 +380,12 @@
 					options.locateFile = function(filename) {
 						// Allow secondary resources like the .wasm payload
 						// to be loaded by the emscripten code.
-						return urlForScript(filename);
+						if (filename.slice(0, 5) === 'data:') {
+							// emscripten 1.37.25 loads memory initializers as data: URI
+							return filename;
+						} else {
+							return urlForScript(filename);
+						}
 					};
 					return new global[className](options);
 				}
