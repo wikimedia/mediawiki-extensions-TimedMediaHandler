@@ -42,7 +42,7 @@
       var selection = this.player_.currentResolution();
       this.selected(this.options_.label === selection.label);
     };
-    videojs.registerComponent('ResolutionMenuItem', ResolutionMenuItem);
+    MenuItem.registerComponent('ResolutionMenuItem', ResolutionMenuItem);
 
     /*
      * Resolution menu button
@@ -96,7 +96,7 @@
     ResolutionMenuButton.prototype.buildCSSClass = function(){
       return MenuButton.prototype.buildCSSClass.call( this ) + ' vjs-resolution-button';
     };
-    videojs.registerComponent('ResolutionMenuButton', ResolutionMenuButton);
+    MenuButton.registerComponent('ResolutionMenuButton', ResolutionMenuButton);
 
     /**
      * Initialize the plugin.
@@ -174,17 +174,17 @@
         if(this.player_.techName_ !== 'Youtube' && this.player_.preload() === 'none' && this.player_.techName_ !== 'Flash') {
           handleSeekEvent = 'timeupdate';
         }
-        player
-          .setSourcesSanitized(sources, label, customSourcePicker || settings.customSourcePicker)
-          .one(handleSeekEvent, function() {
-            player.currentTime(currentTime);
+        player.setSourcesSanitized(sources, label, customSourcePicker || settings.customSourcePicker);
+        player.one(handleSeekEvent, function() {
+          player.currentTime(currentTime);
+          player.handleTechSeeked_();
+          if(!isPaused){
+            // Start playing and hide loadingSpinner (flash issue ?)
+            player.play();
             player.handleTechSeeked_();
-            if(!isPaused){
-              // Start playing and hide loadingSpinner (flash issue ?)
-              player.play().handleTechSeeked_();
-            }
-            player.trigger('resolutionchange');
-          });
+          }
+          player.trigger('resolutionchange');
+        });
         return player;
       };
 

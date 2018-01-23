@@ -150,14 +150,6 @@ class TimedMediaHandlerHooks {
 					'ext.tmh.video-js',
 				],
 			],
-			'ext.tmh.videojs-replay' => $baseExtensionResource + [
-				'scripts' => 'resources/videojs-replay/videojs-replay.js',
-				'styles' => 'resources/videojs-replay/videojs-replay.css',
-				'targets' => [ 'mobile', 'desktop' ],
-				'dependencies' => [
-					'ext.tmh.video-js',
-				],
-			],
 			'ext.tmh.mw-info-button' => $baseExtensionResource + [
 				'scripts' => 'resources/mw-info-button/mw-info-button.js',
 				'styles' => 'resources/mw-info-button/mw-info-button.css',
@@ -173,7 +165,6 @@ class TimedMediaHandlerHooks {
 					'ext.tmh.video-js',
 					'ext.tmh.videojs-resolution-switcher',
 					'ext.tmh.videojs-responsive-layout',
-					'ext.tmh.videojs-replay',
 					'ext.tmh.mw-info-button',
 					'ext.tmh.OgvJsSupport',
 				],

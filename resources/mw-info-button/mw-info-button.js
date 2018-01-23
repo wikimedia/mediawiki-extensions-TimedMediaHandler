@@ -45,6 +45,6 @@
     };
 
     // register the plugin
-    videojs.plugin('infoButton', infoButton);
+    videojs.registerPlugin('infoButton', infoButton);
   })(window, videojs, mediaWiki);
 })();

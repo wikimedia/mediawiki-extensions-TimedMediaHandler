@@ -1,0 +1,12 @@
+--- ../videojs-ogvjs-orig/dist/videojs-ogvjs.js	2018-01-19 12:16:43.203158000 -0800
++++ dist/videojs-ogvjs.js	2018-01-19 12:24:42.615509000 -0800
+@@ -676,7 +676,8 @@
+  * @return {String}         'probably', 'maybe', or '' (empty string)
+  */
+ Ogvjs.canPlayType = function (type) {
+-  return type.indexOf('/ogg') !== -1 ? 'maybe' : '';
++  var p = new _OGVPlayer2['default']();
++  return p.canPlayType(type);
+ };
+ 
+ /*
