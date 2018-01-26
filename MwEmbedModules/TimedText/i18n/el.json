@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"Nikosgranturismogt"
 		]
 	},
 	"mwe-timedtext-back-btn": "Επιστροφή",
@@ -19,6 +20,8 @@
 	"mwe-timedtext-textcat-lrc": "Στίχοι",
 	"mwe-timedtext-textcat-lin": "Γλωσσολογική σύνταξη",
 	"mwe-timedtext-textcat-cue": "Cue points",
+	"mwe-timedtext-no-subs": "Δεν υπάρχουν διαθέσιμα κομμάτια κειμένου",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 υπότιτλοι για το βίντεο: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2",
+	"mwe-timedtext-upload-timed-text": "Προσθήκη υποτίτλων"
 }
