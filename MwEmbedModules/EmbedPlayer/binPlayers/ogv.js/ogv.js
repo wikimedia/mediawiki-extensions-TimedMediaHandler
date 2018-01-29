@@ -62,11 +62,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var OGVCompat = __webpack_require__(1),
 		OGVLoader = __webpack_require__(3),
-		OGVMediaError = __webpack_require__(7),
-		OGVMediaType = __webpack_require__(9),
-		OGVPlayer = __webpack_require__(10),
-		OGVTimeRanges = __webpack_require__(35),
-		OGVVersion = ("1.5.4-20180119185727-50eda5d7");
+		OGVMediaError = __webpack_require__(8),
+		OGVMediaType = __webpack_require__(10),
+		OGVPlayer = __webpack_require__(11),
+		OGVTimeRanges = __webpack_require__(36),
+		OGVVersion = ("1.5.6-20180129165148-b88769a3");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -291,10 +291,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.5.4-20180119185727-50eda5d7");
+	var OGVVersion = ("1.5.6-20180129165148-b88769a3");
 
 	(function() {
 		var global = this;
+		var WebAssemblyCheck = __webpack_require__(4);
 
 		var scriptMap = {
 			OGVDemuxerOgg: 'ogv-demuxer-ogg.js',
@@ -330,11 +331,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		var proxyInfo = {
 			audio: {
-				proxy: __webpack_require__(4),
+				proxy: __webpack_require__(5),
 				worker: 'ogv-worker-audio.js',
 			},
 			video: {
-				proxy: __webpack_require__(6),
+				proxy: __webpack_require__(7),
 				worker: 'ogv-worker-video.js'
 			}
 		}
@@ -421,6 +422,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		var OGVLoader = {
 			base: defaultBase(),
+
+			wasmSupported: function() {
+				return WebAssemblyCheck.wasmSupported();
+			},
 
 			loadClass: function(className, callback, options) {
 				options = options || {};
@@ -547,9 +552,73 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+	
+	function testSafariWebAssemblyBug() {
+	  /*
+	    Source of module at https://github.com/brion/min-wasm-fail
+	    (module
+	      (memory 1)
+	      (func $test (param $loc i32) (result i32)
+	        ;; Safari on iOS 11.2.5 returns 0 when asked to modify and read loc 4
+	        ;; via a parameter. If using an i32.const or a local for the location,
+	        ;; it works as expected.
+	        get_local $loc
+	        i32.const 1
+	        i32.store
+	        get_local $loc
+	        i32.load
+	      )
+	      (export "test" (func $test))
+	    )
+	  */
+	  var bin = new Uint8Array([0,97,115,109,1,0,0,0,1,6,1,96,1,127,1,127,3,2,1,0,5,3,1,0,1,7,8,1,4,116,101,115,116,0,0,10,16,1,14,0,32,0,65,1,54,2,0,32,0,40,2,0,11]);
+	  var mod = new WebAssembly.Module(bin);
+	  var inst = new WebAssembly.Instance(mod, {});
+
+	  // test storing to and loading from a non-zero location via a parameter.
+	  // Safari on iOS 11.2.5 returns 0 unexpectedly at non-zero locations
+	  return (inst.exports.test(4) !== 0);
+	}
+
+	var tested = false, testResult;
+
+	var WebAssemblyCheck = {
+	  /**
+	   * Check if WebAssembly appears to be present and working.
+	   * Tests for presence of the APIs, and runs a test for a known bug
+	   * in Safari/WebKit on iOS 11.2.2-11.2.5.
+	   *
+	   * @return boolean do we think wasm will work on this device?
+	   */
+	  wasmSupported: function() {
+	    if (!tested) {
+	      try {
+	        if (typeof WebAssembly === 'object') {
+	          testResult = testSafariWebAssemblyBug();
+	        } else {
+	          testResult = false;
+	        }
+	      } catch (e) {
+	        // Something else went wrong with compilation.
+	        console.log('Exception while testing WebAssembly', e);
+	        testResult = false;
+	      }
+	      tested = true;
+	    }
+	    return testResult;
+	  }
+	};
+
+	module.exports = WebAssemblyCheck;
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVProxyClass = __webpack_require__(5);
+	var OGVProxyClass = __webpack_require__(6);
 
 	var OGVDecoderAudioProxy = OGVProxyClass({
 		loadedMetadata: false,
@@ -578,7 +647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 	/**
@@ -713,10 +782,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = OGVProxyClass;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVProxyClass = __webpack_require__(5);
+	var OGVProxyClass = __webpack_require__(6);
 
 	var OGVDecoderVideoProxy = OGVProxyClass({
 		loadedMetadata: false,
@@ -744,10 +813,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = OGVDecoderVideoProxy;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var extend = __webpack_require__(8);
+	var extend = __webpack_require__(9);
 
 	var OGVMediaErrorConstants = {
 		MEDIA_ERR_ABORTED: 1,
@@ -771,7 +840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 	function extend(dest, src) {
@@ -786,7 +855,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 	function OGVMediaType(contentType) {
@@ -835,28 +904,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// OGVPlayer.js
 
 	// External deps
-	__webpack_require__(11).polyfill();
-	var YUVCanvas = __webpack_require__(14),
-		StreamFile = __webpack_require__(21),
-		AudioFeeder = __webpack_require__(32),
-		dynamicaudio_swf = __webpack_require__(33);
+	__webpack_require__(12).polyfill();
+	var YUVCanvas = __webpack_require__(15),
+		StreamFile = __webpack_require__(22),
+		AudioFeeder = __webpack_require__(33),
+		dynamicaudio_swf = __webpack_require__(34);
 
 	// Internal deps
 	var OGVLoader = __webpack_require__(3),
-		Bisector = __webpack_require__(34),
-		extend = __webpack_require__(8),
-		OGVMediaError = __webpack_require__(7)
-		OGVMediaType = __webpack_require__(9),
-		OGVTimeRanges = __webpack_require__(35),
-		OGVWrapperCodec = __webpack_require__(36),
-		OGVDecoderAudioProxy = __webpack_require__(4),
-		OGVDecoderVideoProxy = __webpack_require__(6);
+		Bisector = __webpack_require__(35),
+		extend = __webpack_require__(9),
+		OGVMediaError = __webpack_require__(8)
+		OGVMediaType = __webpack_require__(10),
+		OGVTimeRanges = __webpack_require__(36),
+		OGVWrapperCodec = __webpack_require__(37),
+		OGVDecoderAudioProxy = __webpack_require__(5),
+		OGVDecoderVideoProxy = __webpack_require__(7);
 
 	/**
 	 * Player class -- instantiate one of these to get an 'ogvjs' HTML element
@@ -895,7 +964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		// Use the WebAssembly build by default if available;
 		// it should load and compile faster than asm.js.
-		var enableWASM = !!window.WebAssembly;
+		var enableWASM = OGVLoader.wasmSupported();
 		if (typeof options.wasm !== 'undefined') {
 			enableWASM = !!options.wasm;
 		}
@@ -1414,6 +1483,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			if (stream && !stream.seekable) {
 				throw new Error('Cannot seek a non-seekable stream');
+			}
+
+			if (codec && !codec.seekable) {
+				throw new Error('Cannot seek in a non-seekable file');
 			}
 
 			function prepForSeek(callback) {
@@ -3478,7 +3551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(process, global) {/*!
@@ -3620,7 +3693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function attemptVertx() {
 	  try {
 	    var r = require;
-	    var vertx = __webpack_require__(13);
+	    var vertx = __webpack_require__(14);
 	    vertxNext = vertx.runOnLoop || vertx.runOnContext;
 	    return useVertxTimer();
 	  } catch (e) {
@@ -4672,10 +4745,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), (function() { return this; }())))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 	// shim for using process in browser
@@ -4865,13 +4938,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 	/* (ignored) */
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -4897,9 +4970,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 	  "use strict";
 
-	  var FrameSink = __webpack_require__(15),
-	    SoftwareFrameSink = __webpack_require__(16),
-	    WebGLFrameSink = __webpack_require__(19);
+	  var FrameSink = __webpack_require__(16),
+	    SoftwareFrameSink = __webpack_require__(17),
+	    WebGLFrameSink = __webpack_require__(20);
 
 	  /**
 	   * @typedef {Object} YUVCanvasOptions
@@ -4940,7 +5013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 	(function() {
@@ -4988,7 +5061,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -5014,8 +5087,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var FrameSink = __webpack_require__(15),
-			YCbCr = __webpack_require__(17);
+		var FrameSink = __webpack_require__(16),
+			YCbCr = __webpack_require__(18);
 
 		/**
 		 * @param {HTMLCanvasElement} canvas - HTML canvas eledment to attach to
@@ -5108,7 +5181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -5134,7 +5207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var depower = __webpack_require__(18);
+		var depower = __webpack_require__(19);
 
 		/**
 		 * Basic YCbCr->RGB conversion
@@ -5253,7 +5326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 	/*
@@ -5309,7 +5382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -5335,8 +5408,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	(function() {
 		"use strict";
 
-		var FrameSink = __webpack_require__(15),
-			shaders = __webpack_require__(20);
+		var FrameSink = __webpack_require__(16),
+			shaders = __webpack_require__(21);
 
 		/**
 		 * Warning: canvas must not have been used for 2d drawing prior!
@@ -5821,7 +5894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 	module.exports = {
@@ -5833,7 +5906,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -5842,9 +5915,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var EventEmitter = __webpack_require__(22);
-	var CachePool = __webpack_require__(23);
-	var Backend = __webpack_require__(26);
+	var EventEmitter = __webpack_require__(23);
+	var CachePool = __webpack_require__(24);
+	var Backend = __webpack_require__(27);
 
 	/**
 	 * @typedef {Object} StreamFileOptions
@@ -6313,7 +6386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -6361,16 +6434,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = __webpack_require__(24);
+	module.exports = __webpack_require__(25);
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6379,7 +6452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var CacheItem = __webpack_require__(25);
+	var CacheItem = __webpack_require__(26);
 
 	/**
 	 * Seekable, readable, writable buffer cache to represent a file.
@@ -6753,7 +6826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -6901,14 +6974,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var MozChunkedBackend = __webpack_require__(27);
-	var MSStreamBackend = __webpack_require__(30);
-	var BinaryStringBackend = __webpack_require__(31);
+	var MozChunkedBackend = __webpack_require__(28);
+	var MSStreamBackend = __webpack_require__(31);
+	var BinaryStringBackend = __webpack_require__(32);
 
 	function autoselect() {
 	  if (MozChunkedBackend.supported()) {
@@ -6938,7 +7011,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6953,7 +7026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var DownloadBackend = __webpack_require__(28);
+	var DownloadBackend = __webpack_require__(29);
 
 	var type = 'moz-chunked-arraybuffer';
 
@@ -6998,7 +7071,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7013,7 +7086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Backend = __webpack_require__(29);
+	var Backend = __webpack_require__(30);
 
 	/**
 	 * Backend for progressive downloading.
@@ -7124,7 +7197,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7137,7 +7210,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var TinyEvents = __webpack_require__(22);
+	var TinyEvents = __webpack_require__(23);
 
 	/**
 	 * Extract the file's total length from the XHR returned headers.
@@ -7409,7 +7482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7424,7 +7497,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Backend = __webpack_require__(29);
+	var Backend = __webpack_require__(30);
 
 	var type = 'ms-stream';
 
@@ -7575,7 +7648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -7590,7 +7663,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var DownloadBackend = __webpack_require__(28);
+	var DownloadBackend = __webpack_require__(29);
 
 	var BinaryStringBackend = function (_DownloadBackend) {
 	  _inherits(BinaryStringBackend, _DownloadBackend);
@@ -7642,7 +7715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -9336,13 +9409,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=0f98a83acdc72cf30968c16a018e1cf1";
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports) {
 
 	/**
@@ -9391,7 +9464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 	/**
@@ -9419,7 +9492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -9436,7 +9509,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.5.4-20180119185727-50eda5d7")),
+			suffix = '?version=' + encodeURIComponent(("1.5.6-20180129165148-b88769a3")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,

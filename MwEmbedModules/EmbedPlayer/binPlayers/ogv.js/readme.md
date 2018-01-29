@@ -7,6 +7,31 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compi
 
 ## Updates
 
+1.5.6 - 2018-01-29
+* detect and work around WebAssembly failure on iOS 11.2.2/11.2.5
+
+1.5.5 - 2018-01-22
+* allow linear seeking on WebM files without cues, such as audio/webm
+
+1.5.4 - 2018-01-19
+* updated yuv-canvas to 1.2.1
+    * fixes playback on iOS 9
+* fix loading of WebM files under 256kb
+
+1.5.3 - 2018-01-18
+* fix canPlayType() to recognize WebM
+* updated build chain to emscripten 1.37.28
+* minor internal source cleanup
+
+1.5.2 - 2017-12-09
+* use magic bytes sniffing to choose demuxer
+    * fixes WebM in blobs and in Safari
+* update to stream-file 0.2.3
+    * fixes error loading blob URLs in Safari
+
+1.5.1 - 2017-12-05
+* use Content-Type to choose demuxer instead of URL extension (rolled back in 1.5.2)
+
 1.5.0 - 2017-11-09
 * cleaned up console logging
 * enable WebM by default
@@ -282,7 +307,7 @@ Seeking is implemented via the HTTP Range: header.
 
 For Ogg files with keyframe indices in a skeleton index, seeking is very fast. Otherwise,  a bisection search is used to locate the target frame or audio position, which is very slow over the internet as it creates a lot of short-lived HTTP requests.
 
-For WebM files with cues, efficient seeking is supported as well as of 1.1.2.
+For WebM files with cues, efficient seeking is supported as well as of 1.1.2. WebM files without cues can be seeked in 1.5.5, but inefficiently via linear seek from the beginning. This is fine for small audio-only files, but might be improved for large files with a bisection in future.
 
 As with chunked streaming, cross-site playback requires CORS support for the Range header.
 

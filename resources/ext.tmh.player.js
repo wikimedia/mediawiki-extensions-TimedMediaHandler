@@ -134,10 +134,7 @@
 
 		if ( !mw.OgvJsSupport.canPlayNatively() ) {
 			globalConfig.ogvjs = {
-				base: mw.OgvJsSupport.basePath(),
-
-				// Disable WebAssembly on iOS 11.2.2, where it's broken.
-				wasm: ( typeof WebAssembly === 'object' ) && !( navigator.userAgent.match( /(iPhone|iPad); CPU OS 11_2_[2-5]/ ) )
+				base: mw.OgvJsSupport.basePath()
 			};
 			globalConfig.techOrder.push( 'ogvjs' );
 		}
