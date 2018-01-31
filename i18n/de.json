@@ -12,7 +12,8 @@
 			"Raimond Spekking",
 			"The Evil IP address",
 			"Umherirrender",
-			"XenonX3"
+			"XenonX3",
+			"Debenben"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -162,6 +163,7 @@
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Ergänzt eine Reihe unterschiedlicher verfügbarer Format- und Qualitätsversionen einer Audio- oder Videodatei.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Ergänzt ein Array der verfügbaren Untertitel, Überschriften und Beschreibungen einer Audio- oder Videodatei.",
 	"apihelp-transcodereset-description": "Benutzer mit dem Recht „transcode-reset“ können Umschlüsselungsaufträge zurücksetzen und neu starten",
+	"apihelp-transcodereset-summary": "Benutzer mit dem Recht „transcode-reset“ können Umschlüsselungsaufträge zurücksetzen und neu starten.",
 	"apihelp-transcodereset-param-title": "Der Titel der Mediendatei.",
 	"apihelp-transcodereset-param-transcodekey": "Der Umschlüsselungsschlüssel, der zurückgesetzt werden soll. Von [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]] abrufen.",
 	"apihelp-transcodereset-example-1": "Setzt alle Umschlüsselungen für [[:File:Clip.webm]] zurück",
