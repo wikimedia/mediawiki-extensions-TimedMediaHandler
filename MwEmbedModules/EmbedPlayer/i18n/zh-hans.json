@@ -72,7 +72,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "为了得到更好的视频播放体验，我们推荐<a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5视频浏览器</a>。",
 	"mwe-embedplayer-download-warn": "检测到播放器和浏览器不兼容：为了能在浏览器中播放，请下载[$1 最新Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "按<b>F11</b>切换浏览器至全屏",
+	"mwe-embedplayer-fullscreen-tip": "按<b>F11</b>切换<i>浏览器</i>至全屏",
 	"mwe-embedplayer-fullscreen-tip-osx": "按<b>Shift ⌘ F</b>切换至全屏",
 	"mwe-embedplayer-do_not_warn_again": "以后不再显示该信息",
 	"mwe-embedplayer-playerSelect": "播放器",
