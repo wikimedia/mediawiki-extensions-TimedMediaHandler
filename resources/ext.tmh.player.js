@@ -56,7 +56,8 @@
 			var i, l, preload, resolutions, playerHeight, defaultRes,
 				videoplayer = this,
 				$videoplayer = $( this ),
-				isAudio = videoplayer.tagName.toLowerCase() === 'audio';
+				isAudio = videoplayer.tagName.toLowerCase() === 'audio',
+				nonNativeSources = [];
 
 			if ( $videoplayer.closest( '.video-js' ).length ) {
 				// This player has already been transformed.
@@ -80,47 +81,67 @@
 
 			resolutions = [];
 
-			$( videoplayer ).attr( {
+			$videoplayer.attr( {
 				preload: preload
-			} ).find( 'source' ).each( function () {
-				// FIXME would be better if we can configure the plugin to make use of our preferred attributes
-				var matches,
-					$source = $( this ),
-					transcodeKey = $source.data( 'transcodekey' ),
-					res = parseInt( $source.data( 'height' ), 10 ),
-					label = $source.data( 'shorttitle' );
+			} );
 
-				if ( transcodeKey ) {
-					matches = transcodeKey.match( /^(\d+)p\./ );
-					if ( matches ) {
-						// Video derivative of fixed size.
-						res = parseInt( matches[ 1 ], 10 );
-						label = mw.message( 'timedmedia-resolution-' + res ).text();
+			if ( isAudio ) {
+				// Audio: manipulate source elements to preferred order.
+				// This means preferring native-playback over ogv.js-playback
+				// so we don't go loading it when we don't need it.
+				$videoplayer.find( 'source' ).each( function () {
+					if ( !videoplayer.canPlayType( this.type ) ) {
+						nonNativeSources.push( this );
 					}
-				} else {
-					// Original source; sort to top and never auto-select.
-					res = 99999;
-					label = $source.data( 'shorttitle' );
-				}
-				$source.attr( 'res', res );
-				$source.attr( 'label', label );
-				resolutions.push( res );
-			} );
+				} );
 
-			// Pick the first resolution at least the size of the player,
-			// unless they're all too small.
-			playerHeight = $( videoplayer ).height();
-			resolutions.sort( function ( a, b ) {
-				return a - b;
-			} );
-			for ( i = 0, l = resolutions.length; i < l; i++ ) {
-				defaultRes = resolutions[ i ];
-				if ( defaultRes >= playerHeight ) {
-					break;
+				$.each( nonNativeSources, function () {
+					$( this ).detach().appendTo( $videoplayer );
+				} );
+			} else {
+				// Video: extract the relevant resolutions from source elements
+				// and pass them into the videoJsResolutionSwitcher plugin in
+				// our preferred order and labeling.
+				$( videoplayer ).find( 'source' ).each( function () {
+					// FIXME would be better if we can configure the plugin to make use of our preferred attributes
+					var matches,
+						$source = $( this ),
+						transcodeKey = $source.data( 'transcodekey' ),
+						res = parseInt( $source.data( 'height' ), 10 ),
+						label = $source.data( 'shorttitle' );
+
+					if ( transcodeKey ) {
+						matches = transcodeKey.match( /^(\d+)p\./ );
+						if ( matches ) {
+							// Video derivative of fixed size.
+							res = parseInt( matches[ 1 ], 10 );
+							label = mw.message( 'timedmedia-resolution-' + res ).text();
+						}
+					} else {
+						// Original source; sort to top and never auto-select.
+						res = 99999;
+						label = $source.data( 'shorttitle' );
+					}
+					$source.attr( 'res', res );
+					$source.attr( 'label', label );
+					resolutions.push( res );
+				} );
+
+				// Pick the first resolution at least the size of the player,
+				// unless they're all too small.
+				playerHeight = $( videoplayer ).height();
+				resolutions.sort( function ( a, b ) {
+					return a - b;
+				} );
+				for ( i = 0, l = resolutions.length; i < l; i++ ) {
+					defaultRes = resolutions[ i ];
+					if ( defaultRes >= playerHeight ) {
+						break;
+					}
 				}
-			}
-			if ( !isAudio && defaultRes ) {
-				playerConfig.plugins.videoJsResolutionSwitcher.default = defaultRes;
+				if ( !isAudio && defaultRes ) {
+					playerConfig.plugins.videoJsResolutionSwitcher.default = defaultRes;
+				}
 			}
 
 			$videoplayer.parent( '.thumbinner' ).addClass( 'mw-overflow' );
