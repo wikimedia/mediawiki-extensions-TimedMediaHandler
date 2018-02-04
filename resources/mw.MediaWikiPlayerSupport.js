@@ -82,8 +82,8 @@
 				// Add the media src
 				embedPlayer.mediaElement.tryAddSource(
 					$( '<source />' )
-					.attr( 'src', imageinfo.url )
-					.get( 0 )
+						.attr( 'src', imageinfo.url )
+						.get( 0 )
 				);
 
 				// Set the duration
@@ -125,11 +125,12 @@
 					mw.msg( 'mwe-embedplayer-credit-title',
 						// get the link
 						$( '<div>' ).append(
-							$( '<a/>' ).attr( {
-								href: articleUrl,
-								title: titleStr
-							} )
-							.text( titleStr )
+							$( '<a/>' )
+								.attr( {
+									href: articleUrl,
+									title: titleStr
+								} )
+								.text( titleStr )
 						)[ 0 ].innerHTML
 					)
 				)
@@ -305,9 +306,8 @@
 
 				pageTitle = 'TimedText:' +
 					decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^File:|^Image:/, '' );
-				addTextPage = mw.getApiProviderURL( apiProvider )
-									.replace( 'api.php', 'index.php' ) +
-									'?title=' + encodeURIComponent( pageTitle );
+				addTextPage = mw.getApiProviderURL( apiProvider ).replace( 'api.php', 'index.php' ) +
+					'?title=' + encodeURIComponent( pageTitle );
 
 				$li = $.getLineItem( mw.msg( 'mwe-timedtext-upload-timed-text' ), 'script', function () {
 					window.location = addTextPage;

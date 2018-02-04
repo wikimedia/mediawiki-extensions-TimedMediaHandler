@@ -120,7 +120,7 @@
 				}
 			}
 			if ( !isAudio && defaultRes ) {
-				playerConfig.plugins.videoJsResolutionSwitcher[ 'default' ] = defaultRes;
+				playerConfig.plugins.videoJsResolutionSwitcher.default = defaultRes;
 			}
 
 			$videoplayer.parent( '.thumbinner' ).addClass( 'mw-overflow' );
