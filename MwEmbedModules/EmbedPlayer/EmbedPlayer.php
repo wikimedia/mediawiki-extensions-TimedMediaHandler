@@ -6,7 +6,6 @@
 			"mw.EmbedPlayer.loader" => array(
 				'scripts' => 'resources/mw.EmbedPlayer.loader.js',
 				'dependencies' => 'jquery.embedPlayer',
-				'position' => 'top',
 			),
 			"mw.MediaElement" => array(
 				'scripts' => 'resources/mw.MediaElement.js',

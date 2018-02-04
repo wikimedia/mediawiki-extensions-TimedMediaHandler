@@ -54,16 +54,12 @@ class TimedMediaHandlerHooks {
 					'mediawiki.Title',
 					'mw.PopUpMediaTransform.styles'
 				],
-				'position' => 'top',
 			],
 			'mw.PopUpMediaTransform.styles' => $baseExtensionResource + [
-				'position' => 'top',
 				'styles' => 'resources/PopUpThumbVideo.css',
 			],
 			'mw.TMHGalleryHook.js' => $baseExtensionResource + [
 				'scripts' => 'resources/mw.TMHGalleryHook.js',
-				// position top needed as it needs to load before mediawiki.page.gallery
-				'position' => 'top',
 			],
 			'ext.tmh.embedPlayerIframe' => $baseExtensionResource + [
 				'scripts' => 'resources/ext.tmh.embedPlayerIframe.js',
@@ -86,7 +82,6 @@ class TimedMediaHandlerHooks {
 					"mw.EmbedPlayer.loader",
 					"mw.TimedText.loader",
 				],
-				'position' => 'top',
 			],
 			'ext.tmh.video-js' => $baseExtensionResource + [
 				'scripts' => 'resources/videojs/video.js',
