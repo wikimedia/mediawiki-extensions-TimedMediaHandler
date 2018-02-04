@@ -9,7 +9,8 @@
 			"Matěj Suchánek",
 			"Cvanca",
 			"Urbanecm",
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Ilimanaq29"
 		]
 	},
 	"timedmediahandler-desc": "Obsluha zvuků, videa a časovaného textu s podporou formátů WebM, Ogg Theora, Vorbis, srt",
@@ -75,5 +76,7 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 zvukový soubor|$1 zvukové soubory|$1 zvukových souborů}} WAV",
 	"right-transcode-reset": "Restartovat zpracování videí, pokud skončilo chybou",
 	"right-transcode-status": "Zobrazení [[Special:TimedMediaHandler|informací o probíhajícím transkódování]]",
-	"action-transcode-status": "vidět aktuální stav transkódování"
+	"action-transcode-status": "vidět aktuální stav transkódování",
+	"log-name-timedmediahandler": "Kniha časovaného zpracování médií",
+	"log-description-timedmediahandler": "Toto je kniha akcí vztahujících se k časovaným překódováním médií."
 }
