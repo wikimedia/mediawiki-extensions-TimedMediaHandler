@@ -10,11 +10,11 @@ body {
 	padding: 0;
 }
 
-#videoContainer .videoHolder { /* stylelint-disable-line selector-no-id */
+#videoContainer .videoHolder { /* stylelint-disable-line selector-max-id */
 	position: static;
 }
 
-#videoContainer { /* stylelint-disable-line selector-no-id */
+#videoContainer { /* stylelint-disable-line selector-max-id */
 	width: 100%;
 	height: 100%;
 	background-color: #000;

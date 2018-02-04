@@ -19,7 +19,7 @@ $wgAvailableRights[] = 'transcode-status';
 
 // Controls weather to enable videojs beta feature
 // Requires the BetaFeature extension be installed.
-$wgTmhUseBetaFeatures = false;
+$wgTmhUseBetaFeatures = true;
 
 // Configure the webplayer. Allowed values: mwembed, videojs
 $wgTmhWebPlayer = 'mwembed';
