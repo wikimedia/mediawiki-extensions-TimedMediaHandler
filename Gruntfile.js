@@ -129,11 +129,19 @@ module.exports = function ( grunt ) {
 				files: {
 					'resources/videojs-responsive-layout/videojs-responsive-layout.js': 'resources/videojs-responsive-layout/videojs-responsive-layout.js'
 				}
+			},
+			'videojs-resolution-switcher': {
+				options: {
+					patch: 'patches/videojs-resolution-switcher-v6.patch'
+				},
+				files: {
+					'resources/videojs-resolution-switcher/videojs-resolution-switcher.js': 'resources/videojs-resolution-switcher/videojs-resolution-switcher.js'
+				}
 			}
 		}
 	} );
 
-	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'patch:videojs', 'patch:videojs-ogvjs', 'patch:videojs-responsive-layout' ] );
+	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'patch:videojs', 'patch:videojs-resolution-switcher', 'patch:videojs-ogvjs', 'patch:videojs-responsive-layout' ] );
 	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );

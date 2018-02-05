@@ -1,0 +1,26 @@
+diff --git a/resources/videojs-resolution-switcher/videojs-resolution-switcher.js b/resources/videojs-resolution-switcher/videojs-resolution-switcher.js
+index db42cb47..a9475921 100644
+--- a/resources/videojs-resolution-switcher/videojs-resolution-switcher.js
++++ b/resources/videojs-resolution-switcher/videojs-resolution-switcher.js
+@@ -58,11 +58,11 @@
+         this.controlText('Quality');
+ 
+         if(options.dynamicLabel){
+-          videojs.addClass(this.label, 'vjs-resolution-button-label');
++          videojs.dom.addClass(this.label, 'vjs-resolution-button-label');
+           this.el().appendChild(this.label);
+         }else{
+           var staticLabel = document.createElement('span');
+-          videojs.addClass(staticLabel, 'vjs-menu-icon');
++          videojs.dom.addClass(staticLabel, 'vjs-menu-icon');
+           this.el().appendChild(staticLabel);
+         }
+         player.on('updateSources', videojs.bind( this, this.update ) );
+@@ -362,6 +362,6 @@
+     };
+ 
+     // register the plugin
+-    videojs.plugin('videoJsResolutionSwitcher', videoJsResolutionSwitcher);
++    videojs.registerPlugin('videoJsResolutionSwitcher', videoJsResolutionSwitcher);
+   })(window, videojs);
+ })();
