@@ -263,8 +263,8 @@ class WebVideoTranscodeJob extends Job {
 			}
 
 			// Avoid "server has gone away" errors as copying can be slow
-			wfGetLBFactory()->commitAll( __METHOD__ );
-			MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->closeAll();
+			$lbFactory->commitAll( __METHOD__ );
+			$lbFactory->closeAll();
 
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
 			$result = $file->getRepo()->quickImport(
