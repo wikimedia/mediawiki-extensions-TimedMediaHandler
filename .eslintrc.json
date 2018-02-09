@@ -6,6 +6,15 @@
 	},
 	"globals": {
 		"mediaWiki": false,
-		"OO": false
+		"OO": false,
+		"OGVPlayer": false,
+		"OGVCompat": false
+	},
+	"rules": {
+		"one-var": "off",
+		"vars-on-top": "off",
+		"valid-jsdoc": "off",
+		"no-underscore-dangle": "off",
+		"camelcase": "off"
 	}
 }

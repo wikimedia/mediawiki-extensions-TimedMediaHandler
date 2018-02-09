@@ -12,9 +12,8 @@ module.exports = function ( grunt ) {
 		eslint: {
 			all: [
 				'**/*.js',
-				'!MwEmbedModules/**',
 				'!resources/videojs*/**',
-				'!resources/mw-info-button/**',
+				'!MwEmbedModules/EmbedPlayer/binPlayers/**',
 				'!node_modules/**',
 				'!vendor/**'
 			]

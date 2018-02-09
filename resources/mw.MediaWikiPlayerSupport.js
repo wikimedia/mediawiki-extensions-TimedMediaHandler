@@ -81,7 +81,7 @@
 
 				// Add the media src
 				embedPlayer.mediaElement.tryAddSource(
-					$( '<source />' )
+					$( '<source>' )
 						.attr( 'src', imageinfo.url )
 						.get( 0 )
 				);
@@ -117,7 +117,7 @@
 				// Get the title string ( again a "Title" like js object could help out here. )
 				titleStr = embedPlayer.apiTitleKey.replace( /_/g, ' ' ),
 				// Setup the initial credits line:
-				$creditLine = $( '<div />' );
+				$creditLine = $( '<div>' );
 
 			// Add the title:
 			$creditLine.append(
@@ -157,7 +157,7 @@
 						$authorLink.attr( 'href', authUrl );
 					} );
 				}
-				$creditLine.append( $( '<br />' ),
+				$creditLine.append( $( '<br>' ),
 					mw.msg( 'mwe-embedplayer-credit-author', $authorText.html() )
 				);
 			}
@@ -170,7 +170,7 @@
 
 				// remove white space:
 				$date.find( 'br' ).remove();
-				$creditLine.append( $( '<br />' ),
+				$creditLine.append( $( '<br>' ),
 					mw.msg( 'mwe-embedplayer-credit-date', $date.html() )
 				);
 			}
@@ -276,7 +276,7 @@
 					'EmbedPlayer.ShowNativeWarning',
 					mw.msg( 'mwe-embedplayer-for_best_experience',
 						$( '<div>' ).append(
-							$( '<a />' ).attr( {
+							$( '<a>' ).attr( {
 								href: 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
 								target: '_new'
 							} )

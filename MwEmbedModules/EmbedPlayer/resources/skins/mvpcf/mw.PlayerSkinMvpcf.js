@@ -1,7 +1,5 @@
-/*
-mvpcf skin config
-*/
+// mvpcf skin config
 
-mw.PlayerSkinMvpcf = {
-	playerClass : 'mv-player'
+mediaWiki.PlayerSkinMvpcf = {
+	playerClass: 'mv-player'
 };

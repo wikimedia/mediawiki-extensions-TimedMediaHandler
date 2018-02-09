@@ -1,11 +1,11 @@
 /**
 * $.fn.embedPlayer
 */
-( function( mw, $ ) {
+( function ( mw, $ ) {
 	/**
 	* Add the mwEmbed jQuery loader wrapper
 	*/
-	$.fn.embedPlayer = function( readyCallback ) {
+	$.fn.embedPlayer = function ( readyCallback ) {
 		var playerSet = this;
 		mw.log( 'jQuery.fn.embedPlayer :: ' + $( playerSet ).length );
 
@@ -14,8 +14,8 @@
 			'mw.EmbedPlayer'
 		];
 
-		mw.loader.using( [ 'jquery.client', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' ], function() {
-			$( playerSet ).each( function( inx, playerElement ) {
+		mw.loader.using( [ 'jquery.client', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' ], function () {
+			$( playerSet ).each( function ( inx, playerElement ) {
 				// we have javascript ( disable controls )
 				$( playerElement ).prop( 'controls', false );
 				// Add an overlay loader ( firefox has its own native loading spinner )
@@ -24,27 +24,27 @@
 					$( playerElement )
 						.parent()
 						.getAbsoluteOverlaySpinner()
-						.attr('id', 'loadingSpinner_' + $( playerElement ).attr('id') );
+						.attr( 'id', 'loadingSpinner_' + $( playerElement ).attr( 'id' ) );
 				}
 				// Allow other modules update the dependencies
 				$( mw ).trigger( 'EmbedPlayerUpdateDependencies',
-						[ playerElement, dependencySet ] );
+					[ playerElement, dependencySet ] );
 			} );
 
 			// Remove any duplicates in the dependencySet:
 			dependencySet = $.uniqueArray( dependencySet );
 
 			// Do the request and process the playerElements with updated dependency set
-			mw.loader.using( dependencySet, function() {
+			mw.loader.using( dependencySet, function () {
 				// Delay actual player setup to the next exectution run, because
 				// wikipage.content can fire before the content is attached, and that
 				// breaks something deep inside the player setup.
-				setTimeout( function() {
+				setTimeout( function () {
 					mw.processEmbedPlayers( playerSet, readyCallback );
 				} );
-			}, function( e ) {
+			}, function ( e ) {
 				throw new Error( 'Error loading EmbedPlayer dependency set: ' + e.message );
 			} );
 		} );
 	};
-} )( mediaWiki, jQuery );
+}( mediaWiki, jQuery ) );
