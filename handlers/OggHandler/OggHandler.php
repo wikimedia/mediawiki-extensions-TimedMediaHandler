@@ -186,7 +186,7 @@ class OggHandlerTMH extends TimedMediaHandler {
 	 */
 	function unpackMetadata( $metadata, $unserialize = true ) {
 		if ( $unserialize ) {
-			$metadata = MediaWiki\quietCall( 'unserialize', $metadata );
+			$metadata = Wikimedia\quietCall( 'unserialize', $metadata );
 		}
 
 		if ( isset( $metadata['version'] ) && $metadata['version'] == self::METADATA_VERSION ) {
