@@ -19,15 +19,15 @@
 				var startTime = urlParts.anchor.split('=')[1];
 
 				//update the input box:
-				$j('#startTime').val( startTime );
+				$('#startTime').val( startTime );
 				
 				// update current time then play: 
-				$j('#vid1')[0].currentTime = startTime;
-				$j('#vid1')[0].play();
+				$('#vid1')[0].currentTime = startTime;
+				$('#vid1')[0].play();
         	}
     		// bind button: 
-    		$j('#doPageSeek').click(function(){        		
-        		document.location = 'Player_ServerSeek.html?' + Math.random(1) + '#start=' + $j("#startTime").val();
+    		$('#doPageSeek').click(function(){        		
+        		document.location = 'Player_ServerSeek.html?' + Math.random(1) + '#start=' + $("#startTime").val();
     		});
     	});
     </script>

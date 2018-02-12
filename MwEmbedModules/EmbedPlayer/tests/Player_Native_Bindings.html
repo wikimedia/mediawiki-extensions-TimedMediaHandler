@@ -88,16 +88,16 @@ function setLogging(event, isActive, message) {
         message = e.logMessage;
       }
     });
-    $j('#myVid').bind( event, function() { logME('* ' + event + ' fired: ' + message); });
+    $('#myVid').bind( event, function() { logME('* ' + event + ' fired: ' + message); });
   } else {
-	 $j('#myVid').unbind( event );
+	 $('#myVid').unbind( event );
   }
 
 }
 
 mw.ready(function() {
 
-  var vid =  $j('#myVid');
+  var vid =  $('#myVid');
 
   // setup checkboxes to control logging
   $(mediaEvents).each(function (i, e) {
