@@ -494,7 +494,7 @@
 			}
 
 			// Bind escape to restore in page clip ( IE9 needs a secondary escape binding )
-			$( window ).keyup( function ( event ) {
+			$( window ).on( 'keyup', function ( event ) {
 				// Escape check
 				if ( event.keyCode === 27 ) {
 					self.restoreWindowPlayer();
@@ -729,7 +729,7 @@
 			} );
 
 			// Bind escape to restore in page clip
-			$( window ).keyup( function ( event ) {
+			$( window ).on( 'keyup', function ( event ) {
 			// Escape check
 				if ( event.keyCode === 27 ) {
 					self.restoreWindowPlayer();
@@ -809,7 +809,7 @@
 			// After 5 seconds,
 			setTimeout( hideTip, 5000 );
 			// Or if we catch an f11 button press
-			$( document ).keyup( function ( event ) {
+			$( document ).on( 'keyup', function ( event ) {
 				if ( event.keyCode === 122 ) {
 					hideTip();
 				}
@@ -1178,7 +1178,7 @@
 				}, dblClickTime );
 				return true;
 			}
-			// Add click binding: ( $(embedPlayer).click ) has scope issues )
+			// Add click binding: ( $(embedPlayer).on('click') ) has scope issues )
 			if ( embedPlayer.attachEvent ) {
 				embedPlayer.attachEvent( 'onclick', playerClickCb );
 			} else {
@@ -1433,7 +1433,7 @@
 							id: 'ffwarn_' + embedPlayer.id,
 							name: 'ffwarn_' + embedPlayer.id
 						} )
-						.click( function () {
+						.on( 'click', function () {
 							mw.log( 'WarningBindinng:: set ' + preferenceId + ' to hidewarning ' );
 							// Set up a cookie for 30 days:
 							$.cookie( preferenceId, 'hidewarning', { expires: 30 } );
@@ -1461,7 +1461,7 @@
 			var hoverOverDelay, $targetvol, userSlide, sliderConf,
 				embedPlayer = this.embedPlayer;
 
-			embedPlayer.getInterface().find( '.volume_control' ).unbind().buttonHover().click( function () {
+			embedPlayer.getInterface().find( '.volume_control' ).unbind().buttonHover().on( 'click', function () {
 				mw.log( 'Volume control toggle' );
 				embedPlayer.toggleMute();
 			} );
@@ -1696,7 +1696,7 @@
 						top: '2px',
 						right: '2px'
 					} )
-					.click( function () {
+					.on( 'click', function () {
 						self.closeMenuOverlay();
 						if ( closeCallback ) {
 							closeCallback();
@@ -1842,7 +1842,7 @@
 					$currentButton = $( '<button>' )
 						.addClass( 'alert-button' )
 						.text( label )
-						.click( function ( eventObject ) {
+						.on( 'click', function ( eventObject ) {
 							callback( eventObject );
 							embedPlayer.controlBuilder.closeAlert( alertObj.keepOverlay );
 						} );
@@ -1932,7 +1932,7 @@
 					$( '<textarea>' )
 						.attr( 'rows', 1 )
 						.html( embedWikiCode )
-						.click( function () {
+						.on( 'click', function () {
 							$( this ).select();
 						} ),
 					$( '<br>' )
@@ -1948,7 +1948,7 @@
 				$( '<textarea>' )
 					.attr( 'rows', 4 )
 					.html( embedCode )
-					.click( function () {
+					.on( 'click', function () {
 						$( this ).select();
 					} ),
 
@@ -2008,7 +2008,7 @@
 										.addClass( 'active' )
 										.text(
 											supportingPlayers[ i ].getName()
-										).click( function () {
+										).on( 'click', function () {
 											embedPlayer.controlBuilder.closeMenuOverlay();
 											// Don't follow the # link:
 											return false;
@@ -2025,7 +2025,7 @@
 								.addClass( 'ui-corner-all' )
 								.text( supportingPlayers[ i ].getName() )
 								// eslint-disable-next-line no-loop-func
-								.click( function () {
+								.on( 'click', function () {
 									var playableSources,
 										iparts = $( this ).attr( 'id' ).replace( /sc_/, '' ).split( '_' ),
 										sourceId = iparts[ 0 ],
@@ -2307,7 +2307,7 @@
 						)
 						// Play / pause binding
 						.buttonHover()
-						.click( function () {
+						.on( 'click', function () {
 							ctrlObj.embedPlayer.play();
 							// Don't follow the # link:
 							return false;
@@ -2373,7 +2373,7 @@
 					// Get dynamic position for big play button
 						.css( ctrlObj.getPlayButtonPosition() )
 					// Add play hook:
-						.click( function () {
+						.on( 'click', function () {
 							ctrlObj.embedPlayer.play();
 							return false; // Event Stop Propagation
 						} );
@@ -2503,7 +2503,7 @@
 							href: url,
 							target: '_new'
 						} )
-							.click( function () {
+							.on( 'click', function () {
 							// Update the url:
 								var newwin,
 									url = $( this ).attr( 'href' ),
@@ -2549,7 +2549,7 @@
 							} )
 							.append( $btn );
 					} else {
-						return $btn.click( function () {
+						return $btn.on( 'click', function () {
 							ctrlObj.embedPlayer.fullscreen();
 						} );
 					}

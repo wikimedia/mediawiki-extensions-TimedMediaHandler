@@ -112,7 +112,7 @@
 
 			// Add a binding to show loader once  clicked to show the loader
 			// bad ui to leave the play button displayed
-			this.$interface.find( '.play-btn-large' ).click( function () {
+			this.$interface.find( '.play-btn-large' ).on( 'click', function () {
 				self.$interface.find( '.play-btn-large' ).hide();
 				self.addPlayerSpinner();
 				self.hideSpinnerOncePlaying();

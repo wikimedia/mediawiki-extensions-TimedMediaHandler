@@ -285,7 +285,7 @@
 
 			// Add menu-items bindings:
 			for ( var menuItem in self.supportedMenuItems ) {
-				$playerTarget.find( '.k-' + menuItem + '-btn' ).click( function () {
+				$playerTarget.find( '.k-' + menuItem + '-btn' ).on( 'click', function () {
 
 					// Grab the context from the "clicked" menu item
 					var mk = $( this ).attr( 'rel' );
@@ -373,7 +373,7 @@
 						.attr( {
 							title: mw.msg( 'mwe-embedplayer-kaltura-platform-title' )
 						} )
-						.click( function () {
+						.on( 'click', function () {
 							window.location = 'http://html5video.org';
 						} )
 				);

@@ -60,6 +60,6 @@
 			} );
 		}
 
-		$( '.mw-filepage-transcodereset a' ).click( errorPopup );
+		$( '.mw-filepage-transcodereset a' ).on( 'click', errorPopup );
 	} );
 }( mediaWiki, jQuery, OO ) );
