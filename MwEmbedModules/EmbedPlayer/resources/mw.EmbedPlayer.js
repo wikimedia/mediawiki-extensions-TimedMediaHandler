@@ -1113,8 +1113,8 @@
 				this.showErrorMsg( this.getError() );
 				return;
 			}
-			// Auto play stopped ( no playerReady has already started playback ) and if not on an iPad with iOS > 3
-			if ( this.isStopped() && this.autoplay && ( !mw.isIOS() || mw.isIpad3() ) ) {
+			// Auto play stopped ( no playerReady has already started playback ) and if not on an iPad
+			if ( this.isStopped() && this.autoplay && !mw.isIOS() ) {
 				mw.log( 'EmbedPlayer::showPlayer::Do autoPlay' );
 				self.play();
 			}
@@ -1135,7 +1135,7 @@
 			}
 			*/
 
-			var offset = ( mw.isIOS() ) ? 5 : 0;
+			var offset = mw.isIOS() ? 5 : 0;
 
 			return height + offset;
 		},
@@ -1738,7 +1738,6 @@
 		},
 		isTouchDevice: function () {
 			return mw.isIpad() ||
-			mw.isAndroid40() ||
 			mw.isMobileChrome();
 		},
 		/**

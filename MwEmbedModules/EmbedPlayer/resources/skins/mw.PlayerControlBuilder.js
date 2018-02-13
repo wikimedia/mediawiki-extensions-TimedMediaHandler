@@ -289,7 +289,7 @@
 		 * @return {Object} CSS settings for fullscreen player
 		 */
 		getAspectPlayerWindowCss: function ( windowSize ) {
-			var targetWidth, targetHeight, offsetTop, offsetLeft, position,
+			var targetWidth, targetHeight, offsetTop, offsetLeft,
 				self = this;
 			// Setup target height width based on max window size
 			if ( !windowSize ) {
@@ -320,10 +320,9 @@
 			// if the video is very tall in a short window adjust the size:
 			offsetLeft = ( targetWidth < windowSize.width ) ? parseInt( windowSize.width - targetWidth ) / 2 : 0;
 
-			position = ( mw.isIOS4() && mw.isIphone() ) ? 'static' : 'absolute';
 			mw.log( 'PlayerControlBuilder::getAspectPlayerWindowCss: h:' + targetHeight + ' w:' + targetWidth + ' t:' + offsetTop + ' l:' + offsetLeft );
 			return {
-				position: position,
+				position: 'absolute',
 				height: parseInt( targetHeight ),
 				width: parseInt( targetWidth ),
 				top: parseInt( offsetTop ),
@@ -1067,11 +1066,6 @@
 					sensitivity: 100,
 					timeout: 1000,
 					over: function () {
-						// Clear timeout on IE9
-						if ( mw.isIE9() ) {
-							clearTimeout( self.hideControlBarCallback );
-							self.hideControlBarCallback = false;
-						}
 						// Show controls with a set timeout ( avoid fade in fade out on short mouse over )
 						self.showControlBar();
 						bindSpaceUp();
@@ -1082,28 +1076,8 @@
 					}
 				};
 
-				// Check if we should display the interface:
-				// special check for IE9 ( does not count hover on non-visiable inerface div
-				if ( mw.isIE9() ) {
-					$( embedPlayer.getPlayerElement() ).hoverIntent( hoverIntentConfig );
-
-					// Add hover binding to control bar
-					embedPlayer.getInterface().find( '.control-bar' ).hover( function () {
-						self.onControlBar = true;
-						embedPlayer.getInterface().find( '.control-bar' ).show();
-					}, function () {
-						if ( !self.hideControlBarCallback ) {
-							self.hideControlBarCallback = setTimeout( function () {
-								self.hideControlBar();
-							}, 1000 );
-						}
-						self.onControlBar = false;
-					} );
-
-				} else {
-					if ( !mw.isIpad() ) {
-						$interface.hoverIntent( hoverIntentConfig );
-					}
+				if ( !mw.isIpad() ) {
+					$interface.hoverIntent( hoverIntentConfig );
 				}
 
 			}
@@ -2517,12 +2491,8 @@
 							)
 							// Fullscreen binding:
 							.buttonHover();
-					// Link out to another window if iPad 3x ( broken iframe resize )
+					// Link out to another window if requested
 					if (
-						(
-							mw.config.get( 'EmbedPlayer.IsIframeServer' ) &&
-							mw.isIpad3()
-						) ||
 						mw.config.get( 'EmbedPlayer.NewWindowFullscreen' ) ||
 						( mw.config.get( 'EmbedPlayer.IsIframeServer' ) && mw.config.get( 'EmbedPlayer.EnableIframeApi' ) === false )
 					) {
