@@ -2,7 +2,7 @@
 * Javascript to support transcode table on image page
 */
 ( function ( mw, $, OO ) {
-	$( document ).ready( function () {
+	$( function () {
 		function errorPopup( event ) {
 			var tKey = $( event.target ).attr( 'data-transcodekey' ),
 				message = $( [
