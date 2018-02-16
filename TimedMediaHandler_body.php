@@ -275,7 +275,7 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		if ( is_callable( [ 'Message', 'listParam' ] ) ) {
-			return Message::listParam( $t, 'comma' );
+			return Message::listParam( array_values( $t ), 'comma' );
 		} else {
 			global $wgLang;
 			return $wgLang->commaList( array_map( function ( $m ) {
