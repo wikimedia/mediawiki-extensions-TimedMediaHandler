@@ -13,7 +13,8 @@
 			"پاناروما",
 			"Mehran",
 			"Dalba",
-			"Ladsgroup"
+			"Ladsgroup",
+			"Alifakoor"
 		]
 	},
 	"timedmediahandler-extensionname": "هدایت‌کننده رسانهٔ زمان‌دار",
@@ -34,6 +35,7 @@
 	"timedmedia-wav-short-audio": "پروندهٔ صوتی WAV، $1",
 	"timedmedia-wav-long-audio": "پروندهٔ صوتی WAV، مدت $1، $2 کلی",
 	"timedmedia-wav-pcm-required": "شما فقط می توانید PCM و WAV را بار کنید.",
+	"timedmedia-mp3-short-audio": "فایل صوتی ام‌پی‌تری ، $1",
 	"timedmedia-mp4-short-video": "MP4  $1 پروندهٔ ویدئویی، $2",
 	"timedmedia-mp4-long-video": "پرونده‌های صوتی یا تصویری با قالب $1، زمان $2، $4 × $5 پیکسل و $3 به طورکلی",
 	"timedmedia-more": "بیشتر...",

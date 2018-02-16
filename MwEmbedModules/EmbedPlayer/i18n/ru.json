@@ -6,7 +6,8 @@
 			"Okras",
 			"Александр Сигачёв",
 			"Kaganer",
-			"Facenapalm"
+			"Facenapalm",
+			"Putnik"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Название: $1",
@@ -97,6 +98,6 @@
 	"mwe-embedplayer-vlcapp-downloadvideo": "Скачать это видео",
 	"mwe-embedplayer-vlcapp-vlcapppopup": "Для воспроизведения видео на этом сайте вам необходимо бесплатное приложение VLC. Установить сейчас?",
 	"mwe-embedplayer-iewebmprompt-intro": "Упс! Ещё кое-что, прежде чем вы сможете просмотреть это видео…",
-	"mwe-embedplayer-iewebmprompt-linktext": "Установите медиа-компоненты WebM для Microsoft Internet Explorer",
+	"mwe-embedplayer-iewebmprompt-linktext": "Установите медиакомпоненты WebM для Microsoft Internet Explorer",
 	"mwe-embedplayer-iewebmprompt-outro": "После установки перезагрузите эту страницу."
 }
