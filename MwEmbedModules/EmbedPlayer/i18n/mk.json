@@ -37,7 +37,7 @@
 	"mwe-embedplayer-about-library": "За изведувачот Kaltura",
 	"mwe-embedplayer-about-library-desc": "HTML5-мултимедијалната библиотека на Kaltura ви овозможува уште веднаш да користите HTML5-ознаки <code><nowiki><video></nowiki></code> и <code><nowiki><audio></nowiki></code> со еднообразен и стандарден посредник за изведувачот кај сите најзастапени прелистувачи.\n\n[$1 Повеќе за библиотеката на изведувачот Kaltura].",
 	"mwe-embedplayer-clip_linkback": "Изворна страница на снимката",
-	"mwe-embedplayer-choose_player": "Одберете видео-изведувач",
+	"mwe-embedplayer-choose_player": "Одберете видеоизведувач",
 	"mwe-embedplayer-no-player": "Нема допстапен изведувач за $1",
 	"mwe-embedplayer-share_this_video": "Сподели ја снимкава",
 	"mwe-embedplayer-share_this_audio": "Сподели ја аудо-податотекава",
