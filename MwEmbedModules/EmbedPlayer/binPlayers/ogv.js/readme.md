@@ -7,6 +7,23 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compi
 
 ## Updates
 
+1.5.7 - 2018-02-19
+* fix for linear seek in audio/webm
+* updated build chain to emscripten 1.37.34
+* performance optimization for VP8 and VP9 on IE 11
+    * roughly 15-25% performance improvement
+    * uses direct multiplication instead of slow polyfill of Math.imul
+* performance optimization for VP8 loop filter
+    * roughly 10% performance improvement in Safari, Edge wasm builds
+    * smaller improvement in JS
+* performance optimization for Opus audio
+    * now compiled with optimization, about 4x faster
+* built module wrappers with closure compiler
+    * shaves a few kilobites off load size
+* updated audio-feeder to 0.4.9
+    * volume changes now apply immediately on IE
+    * float precision for audio on IE
+
 1.5.6 - 2018-01-29
 * detect and work around WebAssembly failure on iOS 11.2.2/11.2.5
 

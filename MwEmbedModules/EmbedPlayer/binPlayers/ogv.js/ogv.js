@@ -66,7 +66,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		OGVMediaType = __webpack_require__(10),
 		OGVPlayer = __webpack_require__(11),
 		OGVTimeRanges = __webpack_require__(36),
-		OGVVersion = ("1.5.6-20180129165148-b88769a3");
+		OGVVersion = ("1.5.7-20180219202209-808c5b29");
 
 	// Version 1.0's web-facing and test-facing interfaces
 	if (window) {
@@ -291,7 +291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.5.6-20180129165148-b88769a3");
+	var OGVVersion = ("1.5.7-20180219202209-808c5b29");
 
 	(function() {
 		var global = this;
@@ -446,6 +446,8 @@ return /******/ (function(modules) { // webpackBootstrap
 							return urlForScript(filename);
 						}
 					};
+					options.pthreadMainPrefixURL = OGVLoader.base + '/';
+					options.mainScriptUrlOrBlob = scriptMap[className];
 					return new global[className](options);
 				}
 				if (typeof global[className] === 'function') {
@@ -9073,30 +9075,28 @@ return /******/ (function(modules) { // webpackBootstrap
 		  }
 
 		  /**
-		   * Scaling and reordering of output for the Flash fallback.
+		   * Reordering of output for the Flash fallback.
 		   * Input data must be pre-resampled to the correct sample rate.
+		   * Mono input is doubled to stereo; more than 2 channels are dropped.
 		   *
 		   * @param {SampleBuffer} samples - input data as separate channels of 32-bit float
-		   * @returns {Int16Array} - interleaved stereo 16-bit signed integer output
+		   * @returns {Float32Array} - interleaved stereo 32-bit float output
 		   * @access private
 		   *
 		   * @todo handle input with higher channel counts better
-		   * @todo try sending floats to flash without losing precision?
 		   */
 		  FlashBackend.prototype._resampleFlash = function(samples) {
 		    var sampleincr = 1;
 		  	var samplecount = samples[0].length;
-		  	var newSamples = new Int16Array(samplecount * 2);
+		  	var newSamples = new Float32Array(samplecount * 2);
 		  	var chanLeft = samples[0];
 		  	var chanRight = this.channels > 1 ? samples[1] : chanLeft;
-		    var volume = this.muted ? 0 : this.volume;
-		  	var multiplier = volume * 16384; // smaller than 32768 to allow some headroom from those floats
 		  	for(var s = 0; s < samplecount; s++) {
 		  		var idx = (s * sampleincr) | 0;
 		  		var idx_out = s * 2;
-		  		// Use a smaller
-		  		newSamples[idx_out] = chanLeft[idx] * multiplier;
-		  		newSamples[idx_out + 1] = chanRight[idx] * multiplier;
+
+		  		newSamples[idx_out] = chanLeft[idx];
+		  		newSamples[idx_out + 1] = chanRight[idx];
 		  	}
 		  	return newSamples;
 		  };
@@ -9105,8 +9105,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		           '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 		  var hexBytes = [];
 		  for (var i = 0; i < 256; i++) {
-		    hexBytes[i] = hexDigits[(i & 0x0f)] +
-		            hexDigits[(i & 0xf0) >> 4];
+		    hexBytes[i] = hexDigits[(i & 0xf0) >> 4] +
+		                  hexDigits[(i & 0x0f)];
 		  }
 		  function hexString(buffer) {
 		    var samples = new Uint8Array(buffer);
@@ -9130,7 +9130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		      flashElement = this._flashaudio.flashElement;
 
 		    if (this._cachedFlashState) {
-		        this._cachedFlashState.samplesQueued += chunk.length / 8;
+		        this._cachedFlashState.samplesQueued += chunk.length / 16;
 		    }
 		    this._flashBuffer = '';
 		    this._flushTimeout = null;
@@ -9187,7 +9187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		        this._cachedFlashState = state;
 		        this._cachedFlashTime = now;
 		      }
-		      state.samplesQueued += this._flashBuffer.length / 8;
+		      state.samplesQueued += this._flashBuffer.length / 16;
 		      return state;
 		    } else {
 		      //console.log('getPlaybackState USED TOO EARLY');
@@ -9401,7 +9401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* 5 */
 	/***/ function(module, exports, __webpack_require__) {
 
-		module.exports = __webpack_require__.p + "dynamicaudio.swf?version=0f98a83acdc72cf30968c16a018e1cf1";
+		module.exports = __webpack_require__.p + "dynamicaudio.swf?version=ec7d049d2ab54389eec08413c2b2e9c7";
 
 	/***/ }
 	/******/ ])
@@ -9412,7 +9412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=0f98a83acdc72cf30968c16a018e1cf1";
+	module.exports = __webpack_require__.p + "dynamicaudio.swf?version=ec7d049d2ab54389eec08413c2b2e9c7";
 
 /***/ }),
 /* 35 */
@@ -9509,7 +9509,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var OGVWrapperCodec = (function(options) {
 		options = options || {};
 		var self = this,
-			suffix = '?version=' + encodeURIComponent(("1.5.6-20180129165148-b88769a3")),
+			suffix = '?version=' + encodeURIComponent(("1.5.7-20180219202209-808c5b29")),
 			base = (typeof options.base === 'string') ? (options.base + '/') : '',
 			type = (typeof options.type === 'string') ? options.type : 'video/ogg',
 			processing = false,

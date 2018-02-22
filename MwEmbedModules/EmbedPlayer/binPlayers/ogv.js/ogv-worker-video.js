@@ -237,7 +237,7 @@
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var OGVVersion = ("1.5.6-20180129165148-b88769a3");
+	var OGVVersion = ("1.5.7-20180219202209-808c5b29");
 
 	(function() {
 		var global = this;
@@ -392,6 +392,8 @@
 							return urlForScript(filename);
 						}
 					};
+					options.pthreadMainPrefixURL = OGVLoader.base + '/';
+					options.mainScriptUrlOrBlob = scriptMap[className];
 					return new global[className](options);
 				}
 				if (typeof global[className] === 'function') {
