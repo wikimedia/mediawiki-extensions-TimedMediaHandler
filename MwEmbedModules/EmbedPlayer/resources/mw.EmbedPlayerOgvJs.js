@@ -42,9 +42,7 @@
 		 * @return OGVPlayer
 		 */
 		_ogvJsInit: function () {
-			var options = {
-				wasm: false
-			};
+			var options = {};
 			if ( this._iOSAudioContext ) {
 			// Reuse the audio context we opened earlier
 				options.audioContext = this._iOSAudioContext;
