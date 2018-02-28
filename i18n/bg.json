@@ -20,6 +20,7 @@
 	"timedmedia-dismiss": "Затваряне",
 	"timedmedia-download": "Изтегляне на файла",
 	"timedmedia-desc-link": "Информация за файла",
+	"timedmedia-direct-link": "Изтегляне",
 	"timedmedia-percent-done": "Около $1% завършени",
 	"timedmedia-source-file": "Източник на $1",
 	"timedmedia-source-audio-file-desc": "Оригинален $1-файл ($2)",
