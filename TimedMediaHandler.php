@@ -337,7 +337,7 @@ $wgExtensionCredits['media'][] = [
 	'url' => 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler',
 	'descriptionmsg' => 'timedmediahandler-desc',
 	'version' => '0.5.0',
-	'license-name' => 'GPL-2.0+',
+	'license-name' => 'GPL-2.0-or-later',
 ];
 
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
