@@ -99,7 +99,7 @@ $wgOggThumbLocation = '/usr/bin/oggThumb';
 $wgFFmpegLocation = '/usr/bin/avconv';
 
 // The NS for TimedText (registered on MediaWiki.org)
-// http://www.mediawiki.org/wiki/Extension_namespace_registration
+// https://www.mediawiki.org/wiki/Extension_namespace_registration
 // Note commons pre-dates TimedMediaHandler and should set $wgTimedTextNS = 102 in LocalSettings.php
 $wgTimedTextNS = 710;
 

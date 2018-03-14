@@ -277,7 +277,7 @@
 					mw.msg( 'mwe-embedplayer-for_best_experience',
 						$( '<div>' ).append(
 							$( '<a>' ).attr( {
-								href: 'http://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
+								href: 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download',
 								target: '_new'
 							} )
 						)[ 0 ].innerHTML
