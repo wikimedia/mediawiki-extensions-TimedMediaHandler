@@ -132,7 +132,7 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} صوتي WAV",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 ملف صوت WebM|$1 ملفات صوت WebM}}",
 	"beta-feature-timedmediahandler-description-videojs": "شاهد ملفات الفيديو في مشغل عصري وواجهة واضحة متوافقة أيضا مع الجوال.",
-	"right-transcode-reset": "إعادة الضبط فشلت أو الفيديوات المكودة بحيث تم إدخالها إلى job queue مجددا",
+	"right-transcode-reset": "إعادة ضبط الفيديوات الفاشلة أو المكودة ليتم إدخالها إلى طابور المهام مجدداً",
 	"right-transcode-status": "عرض [[Special:TimedMediaHandler|المعلومات حول نشاط التكويد الحالي]]",
 	"action-transcode-reset": "إعادة ضبط التحويلات",
 	"action-transcode-status": "عرض حالة التكويد الحالية",
