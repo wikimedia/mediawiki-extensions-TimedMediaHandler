@@ -1,6 +1,6 @@
 /**
  * @license
- * Video.js 6.7.1 <http://videojs.com/>
+ * Video.js 6.7.3 <http://videojs.com/>
  * Copyright Brightcove, Inc. <https://www.brightcove.com/>
  * Available under Apache License Version 2.0
  * <https://github.com/videojs/video.js/blob/master/LICENSE>
@@ -16,7 +16,7 @@
 	(global.videojs = factory());
 }(this, (function () {
 
-var version = "6.7.1";
+var version = "6.7.3";
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -11360,6 +11360,7 @@ Tech.registerTech('Tech', Tech);
 Tech.defaultTechOrder_ = [];
 
 var middlewares = {};
+var middlewareInstances = {};
 
 var TERMINATOR = {};
 
@@ -11460,6 +11461,46 @@ function executeRight(mws, method, value, terminated) {
   }
 }
 
+function clearCacheForPlayer(player) {
+  middlewareInstances[player.id()] = null;
+}
+
+/**
+ * {
+ *  [playerId]: [[mwFactory, mwInstance], ...]
+ * }
+ */
+function getOrCreateFactory(player, mwFactory) {
+  var mws = middlewareInstances[player.id()];
+  var mw = null;
+
+  if (mws === undefined || mws === null) {
+    mw = mwFactory(player);
+    middlewareInstances[player.id()] = [[mwFactory, mw]];
+    return mw;
+  }
+
+  for (var i = 0; i < mws.length; i++) {
+    var _mws$i = mws[i],
+        mwf = _mws$i[0],
+        mwi = _mws$i[1];
+
+
+    if (mwf !== mwFactory) {
+      continue;
+    }
+
+    mw = mwi;
+  }
+
+  if (mw === null) {
+    mw = mwFactory(player);
+    mws.push([mwFactory, mw]);
+  }
+
+  return mw;
+}
+
 function setSourceHelper() {
   var src = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var middleware = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
@@ -11478,7 +11519,7 @@ function setSourceHelper() {
     // if we have an mwFactory, call it with the player to get the mw,
     // then call the mw's setSource method
   } else if (mwFactory) {
-    var mw = mwFactory(player);
+    var mw = getOrCreateFactory(player, mwFactory);
 
     mw.setSource(assign({}, src), function (err, _src) {
 
@@ -12421,11 +12462,22 @@ var LoadingSpinner = function (_Component) {
    * @return {Element}
    *         The dom element that gets created.
    */
-  LoadingSpinner.prototype.createEl = function createEl() {
-    return _Component.prototype.createEl.call(this, 'div', {
+  LoadingSpinner.prototype.createEl = function createEl$$1() {
+    var isAudio = this.player_.isAudio();
+    var playerType = this.localize(isAudio ? 'Audio Player' : 'Video Player');
+    var controlText = createEl('span', {
+      className: 'vjs-control-text',
+      innerHTML: this.localize('{1} is loading.', [playerType])
+    });
+
+    var el = _Component.prototype.createEl.call(this, 'div', {
       className: 'vjs-loading-spinner',
       dir: 'ltr'
     });
+
+    el.appendChild(controlText);
+
+    return el;
   };
 
   return LoadingSpinner;
@@ -14496,6 +14548,8 @@ var SeekBar = function (_Slider) {
       return;
     }
 
+    // Stop event propagation to prevent double fire in progress-control.js
+    event.stopPropagation();
     this.player_.scrubbing(true);
 
     this.videoWasPlaying = !this.player_.paused();
@@ -14565,6 +14619,8 @@ var SeekBar = function (_Slider) {
   SeekBar.prototype.handleMouseUp = function handleMouseUp(event) {
     _Slider.prototype.handleMouseUp.call(this, event);
 
+    // Stop event propagation to prevent double fire in progress-control.js
+    event.stopPropagation();
     this.player_.scrubbing(false);
 
     /**
@@ -14731,22 +14787,25 @@ var ProgressControl = function (_Component) {
 
   ProgressControl.prototype.handleMouseMove = function handleMouseMove(event) {
     var seekBar = this.getChild('seekBar');
-    var mouseTimeDisplay = seekBar.getChild('mouseTimeDisplay');
-    var seekBarEl = seekBar.el();
-    var seekBarRect = getBoundingClientRect(seekBarEl);
-    var seekBarPoint = getPointerPosition(seekBarEl, event).x;
 
-    // The default skin has a gap on either side of the `SeekBar`. This means
-    // that it's possible to trigger this behavior outside the boundaries of
-    // the `SeekBar`. This ensures we stay within it at all times.
-    if (seekBarPoint > 1) {
-      seekBarPoint = 1;
-    } else if (seekBarPoint < 0) {
-      seekBarPoint = 0;
-    }
+    if (seekBar) {
+      var mouseTimeDisplay = seekBar.getChild('mouseTimeDisplay');
+      var seekBarEl = seekBar.el();
+      var seekBarRect = getBoundingClientRect(seekBarEl);
+      var seekBarPoint = getPointerPosition(seekBarEl, event).x;
 
-    if (mouseTimeDisplay) {
-      mouseTimeDisplay.update(seekBarRect, seekBarPoint);
+      // The default skin has a gap on either side of the `SeekBar`. This means
+      // that it's possible to trigger this behavior outside the boundaries of
+      // the `SeekBar`. This ensures we stay within it at all times.
+      if (seekBarPoint > 1) {
+        seekBarPoint = 1;
+      } else if (seekBarPoint < 0) {
+        seekBarPoint = 0;
+      }
+
+      if (mouseTimeDisplay) {
+        mouseTimeDisplay.update(seekBarRect, seekBarPoint);
+      }
     }
   };
 
@@ -14775,7 +14834,9 @@ var ProgressControl = function (_Component) {
   ProgressControl.prototype.handleMouseSeek = function handleMouseSeek(event) {
     var seekBar = this.getChild('seekBar');
 
-    seekBar.handleMouseMove(event);
+    if (seekBar) {
+      seekBar.handleMouseMove(event);
+    }
   };
 
   /**
@@ -14847,6 +14908,11 @@ var ProgressControl = function (_Component) {
 
   ProgressControl.prototype.handleMouseDown = function handleMouseDown(event) {
     var doc = this.el_.ownerDocument;
+    var seekBar = this.getChild('seekBar');
+
+    if (seekBar) {
+      seekBar.handleMouseDown(event);
+    }
 
     this.on(doc, 'mousemove', this.throttledHandleMouseSeek);
     this.on(doc, 'touchmove', this.throttledHandleMouseSeek);
@@ -14867,6 +14933,11 @@ var ProgressControl = function (_Component) {
 
   ProgressControl.prototype.handleMouseUp = function handleMouseUp(event) {
     var doc = this.el_.ownerDocument;
+    var seekBar = this.getChild('seekBar');
+
+    if (seekBar) {
+      seekBar.handleMouseUp(event);
+    }
 
     this.off(doc, 'mousemove', this.throttledHandleMouseSeek);
     this.off(doc, 'touchmove', this.throttledHandleMouseSeek);
@@ -16380,8 +16451,9 @@ var MenuItem = function (_ClickableComponent) {
     var _this = possibleConstructorReturn(this, _ClickableComponent.call(this, player, options));
 
     _this.selectable = options.selectable;
+    _this.isSelected_ = options.selected || false;
 
-    _this.selected(options.selected);
+    _this.selected(_this.isSelected_);
 
     if (_this.selectable) {
       // TODO: May need to be either menuitemcheckbox or menuitemradio,
@@ -16454,11 +16526,13 @@ var MenuItem = function (_ClickableComponent) {
         // aria-checked isn't fully supported by browsers/screen readers,
         // so indicate selected state to screen reader in the control text.
         this.controlText(', selected');
+        this.isSelected_ = true;
       } else {
         this.removeClass('vjs-selected');
         this.el_.setAttribute('aria-checked', 'false');
         // Indicate un-selected state to screen reader
         this.controlText('');
+        this.isSelected_ = false;
       }
     }
   };
@@ -16611,7 +16685,13 @@ var TextTrackMenuItem = function (_MenuItem) {
 
 
   TextTrackMenuItem.prototype.handleTracksChange = function handleTracksChange(event) {
-    this.selected(this.track.mode === 'showing');
+    var shouldBeSelected = this.track.mode === 'showing';
+
+    // Prevent redundant selected() calls because they may cause
+    // screen readers to read the appended control text unnecessarily
+    if (shouldBeSelected !== this.isSelected_) {
+      this.selected(shouldBeSelected);
+    }
   };
 
   TextTrackMenuItem.prototype.handleSelectedLanguageChange = function handleSelectedLanguageChange(event) {
@@ -16703,18 +16783,22 @@ var OffTextTrackMenuItem = function (_TextTrackMenuItem) {
 
   OffTextTrackMenuItem.prototype.handleTracksChange = function handleTracksChange(event) {
     var tracks = this.player().textTracks();
-    var selected = true;
+    var shouldBeSelected = true;
 
     for (var i = 0, l = tracks.length; i < l; i++) {
       var track = tracks[i];
 
       if (this.options_.kinds.indexOf(track.kind) > -1 && track.mode === 'showing') {
-        selected = false;
+        shouldBeSelected = false;
         break;
       }
     }
 
-    this.selected(selected);
+    // Prevent redundant selected() calls because they may cause
+    // screen readers to read the appended control text unnecessarily
+    if (shouldBeSelected !== this.isSelected_) {
+      this.selected(shouldBeSelected);
+    }
   };
 
   OffTextTrackMenuItem.prototype.handleSelectedLanguageChange = function handleSelectedLanguageChange(event) {
@@ -18659,7 +18743,7 @@ var TextTrackSettings = function (_ModalDialog) {
 
   TextTrackSettings.prototype.createElFont_ = function createElFont_() {
     return createEl('div', {
-      className: 'vjs-track-settings-font">',
+      className: 'vjs-track-settings-font',
       innerHTML: ['<fieldset class="vjs-font-percent vjs-track-setting">', this.createElSelect_('fontPercent', '', 'legend'), '</fieldset>', '<fieldset class="vjs-edge-style vjs-track-setting">', this.createElSelect_('edgeStyle', '', 'legend'), '</fieldset>', '<fieldset class="vjs-font-family vjs-track-setting">', this.createElSelect_('fontFamily', '', 'legend'), '</fieldset>'].join('')
     });
   };
@@ -21249,6 +21333,8 @@ var Player = function (_Component) {
     if (this.tag) {
       this.tag = null;
     }
+
+    clearCacheForPlayer(this);
 
     // the actual .el_ is removed here
     _Component.prototype.dispose.call(this);
@@ -25415,20 +25501,31 @@ videojs.getPlayers = function () {
  */
 videojs.getPlayer = function (id) {
   var players = Player.players;
+  var tag = void 0;
 
   if (typeof id === 'string') {
-    return players[normalizeId(id)];
+    var nId = normalizeId(id);
+    var player = players[nId];
+
+    if (player) {
+      return player;
+    }
+
+    tag = $('#' + nId);
+  } else {
+    tag = id;
   }
 
-  if (isEl(id)) {
-    var player = id.player,
-        playerId = id.playerId;
+  if (isEl(tag)) {
+    var _tag = tag,
+        _player = _tag.player,
+        playerId = _tag.playerId;
 
     // Element may have a `player` property referring to an already created
     // player instance. If so, return that.
 
-    if (player || players[playerId]) {
-      return player || players[playerId];
+    if (_player || players[playerId]) {
+      return _player || players[playerId];
     }
   }
 };

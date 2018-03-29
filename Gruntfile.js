@@ -76,11 +76,13 @@ module.exports = function ( grunt ) {
 					'!alt/**',
 					'!examples/**',
 					'!*.zip',
+					'!*.swf',
 					'!**/*.min.js',
 					'!**/*.min.css',
 					'!**/*.js.map',
 					'!**/*.cjs.js',
-					'!**/*.es.js'
+					'!**/*.es.js',
+					'!ie8/**'
 				],
 				dest: 'resources/videojs/'
 			},
