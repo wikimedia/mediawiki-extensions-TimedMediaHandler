@@ -113,7 +113,7 @@
 	"timedmedia-subtitle-new-go": "برو",
 	"timedmedia-subtitle-language": "$1 ($2) زیرنویس‌ها",
 	"timedmedia-subtitle-no-video": "هیچ ویدئویی مرتبط با زیرعنوان این صفحه موجود نیست",
-	"timedmedia-subtitle-no-subtitles": "در حال حاضر زیرنویسی برای $1 در این ویدیو وجود ندارد، می‌توانید این صفحه را برای افزودن آن‌ها [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش کنید].",
+	"timedmedia-subtitle-no-subtitles": "در حال حاضر زیرنویسی برای $1 در این ویدئو وجود ندارد، می‌توانید این صفحه را برای افزودن آن‌ها [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش کنید].",
 	"timedmedia-subtitle-remote": "متن زمان‌دار برای پرونده ذخیره شده در $1",
 	"timedmedia-subtitle-remote-link": "شما می توانید [$1 توضیحات صفحه مشاهده کنید] برای این پرونده در $2",
 	"timedmediahandler": "هدایت‌کننده رسانهٔ زمان‌دار",
