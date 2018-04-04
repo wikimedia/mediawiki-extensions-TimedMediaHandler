@@ -14,7 +14,8 @@
 			"Mehran",
 			"Dalba",
 			"Ladsgroup",
-			"Alifakoor"
+			"Alifakoor",
+			"Mardetanha"
 		]
 	},
 	"timedmediahandler-extensionname": "هدایت‌کننده رسانهٔ زمان‌دار",
@@ -49,6 +50,7 @@
 	"timedmedia-update-status": "وضعیت به‌روزرسانی فراکد",
 	"timedmedia-status": "وضعیت",
 	"timedmedia-status-unknown": "وضعیت ناشناخته",
+	"timedmedia-transcodebitrate": "بیت‌ریت",
 	"timedmedia-transcodeinfo": "قالب",
 	"timedmedia-actions": "فعالیت‌ها",
 	"timedmedia-direct-link": "بارگیری",
@@ -64,6 +66,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|۱ دقیقه|$1 دقیقه}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 ثانیه|$1 ثانیه}}",
 	"timedmedia-reset": "تنظیم مجدد فراکد",
+	"timedmedia-reset-button-cancel": "ریست نکن",
 	"timedmedia-reset-button-dismiss": "نپذیرفتن",
 	"timedmedia-reset-button-reset": "از نو",
 	"timedmedia-reset-error": "خطا در بازنشانی کار فراکد.",
