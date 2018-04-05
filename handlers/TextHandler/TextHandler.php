@@ -8,6 +8,8 @@
  * TODO On "new" timedtext language save purge all pages where file exists
  */
 
+use Wikimedia\Rdbms\ResultWrapper;
+
 class TextHandler {
 	// lazy init remote Namespace number
 	public $remoteNs = null;

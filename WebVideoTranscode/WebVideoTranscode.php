@@ -8,6 +8,8 @@
  *  extends video tag output to provide all the available sources
  */
 
+use Wikimedia\Rdbms\IDatabase;
+
 /**
  * Main WebVideoTranscode Class hold some constants and config values
  */

@@ -7,6 +7,9 @@
  * @ingroup SpecialPage
  */
 
+use Wikimedia\Rdbms\IResultWrapper;
+use Wikimedia\Rdbms\IDatabase;
+
 /**
  * Lists TimedText pages that don't have a corresponding video.
  *
@@ -208,8 +211,8 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	/**
 	 * Preprocess result to do existence checks all at once.
 	 *
-	 * @param Database $db
-	 * @param ResultWraper $res
+	 * @param IDatabase $db
+	 * @param IResultWrapper $res
 	 */
 	public function preprocessResults( $db, $res ) {
 		parent::preprocessResults( $db, $res );
