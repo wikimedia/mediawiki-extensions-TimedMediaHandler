@@ -2615,7 +2615,7 @@
 							min: 0,
 							max: 1000,
 							start: function () {
-								var id = ( embedPlayer.pc !== null ) ? embedPlayer.pc.pp.id : embedPlayer.id;
+								var id = embedPlayer.pc ? embedPlayer.pc.pp.id : embedPlayer.id;
 								embedPlayer.userSlide = true;
 								$( id + ' .play-btn-large' ).fadeOut( 'fast' );
 								// If playlist always start at 0
