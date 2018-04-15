@@ -231,7 +231,7 @@ $wgAutoloadClasses['TranscodeStatusTable'] = "$timedMediaDir/TranscodeStatusTabl
 $wgAutoloadClasses['ApiTestCaseVideoUpload'] =
 	"$timedMediaDir/tests/phpunit/ApiTestCaseVideoUpload.php";
 $wgAutoloadClasses['MockOggHandler'] = "$timedMediaDir/tests/phpunit/mocks/MockOggHandler.php";
-$wgParserTestFiles[] = "$timedMediaDir/tests/parserTests.txt";
+$wgParserTestFiles[] = "$timedMediaDir/tests/parser/parserTests.txt";
 $wgParserTestMediaHandlers['application/ogg'] = MockOggHandler::class;
 
 // Ogg Handler
