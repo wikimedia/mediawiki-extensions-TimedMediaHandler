@@ -55,7 +55,7 @@
 	"timedmedia-not-ready": "Ainda não está pronto",
 	"timedmedia-completed-on": "Concluída a $1",
 	"timedmedia-error-on": "Erro em $1",
-	"timedmedia-started-transcode": "Iniciou há $1. $2",
+	"timedmedia-started-transcode": "Iniciada há $1. $2",
 	"timedmedia-percent-done": "O progresso é cerca de $1%",
 	"timedmedia-in-job-queue": "Adicionado à fila de tarefas há $1",
 	"timedmedia-unknown-target-size": "Dimensão do destino desconhecida; $1 codificados",
