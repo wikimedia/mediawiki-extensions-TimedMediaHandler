@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Чаховіч Уладзіслаў"
+			"Чаховіч Уладзіслаў",
+			"Artsiom91"
 		]
 	},
+	"timedmedia-dismiss": "Закрыць",
 	"timedmedia-source-file": "Крыніца $1",
 	"timedmedia-source-audio-file-desc": "Арыгінальны $1-файл ($2)"
 }
