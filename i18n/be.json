@@ -7,5 +7,7 @@
 	},
 	"timedmedia-dismiss": "Закрыць",
 	"timedmedia-source-file": "Крыніца $1",
-	"timedmedia-source-audio-file-desc": "Арыгінальны $1-файл ($2)"
+	"timedmedia-source-audio-file-desc": "Арыгінальны $1-файл ($2)",
+	"log-name-timedmediahandler": "Журнал TimedMediaHandler",
+	"log-description-timedmediahandler": "Гэта журнал падзей, якія адносяцца да сінхранізаваных перакадыровак медыя."
 }
