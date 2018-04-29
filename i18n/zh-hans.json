@@ -144,7 +144,7 @@
 	"timedmedia-flac-audios": "$1个FLAC音频文件",
 	"timedmedia-wav-audios": "$1个WAV音频文件",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1个WebM音频文件}}",
-	"beta-feature-timedmediahandler-message-videojs": "Video.js",
+	"beta-feature-timedmediahandler-message-videojs": "新视频播放器",
 	"beta-feature-timedmediahandler-description-videojs": "使用具有清晰的外观和移动兼容性的现代化播放器来观看视频文件。",
 	"right-transcode-reset": "重置已失败或已转码的视频将其再次加入到作业队列中",
 	"right-transcode-status": "查看[[Special:TimedMediaHandler|当前转码活动的信息]]",
