@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anok kutai jang"
+		]
+	},
+	"timedmedia-source-file": "Sumber $1",
+	"timedmedia-source-audio-file-desc": "Berkas ($2) asli $1"
+}
