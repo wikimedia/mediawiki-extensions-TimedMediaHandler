@@ -127,6 +127,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|קובץ שמע FLAC אחד|$1 קובצי שמע FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|קובץ שמע WAV אחד|$1 קובצי שמע WAV}}",
 	"timedmedia-webm-audios": "{{PLURAL:$1|קובץ שמע WebM אחד|$1 קובצי שמע WebM}}",
+	"beta-feature-timedmediahandler-message-videojs": "נגן סרטונים חדש",
 	"beta-feature-timedmediahandler-description-videojs": "צפייה בסרטונים באמצעות נגן מודרני הכולל מראה נקי יותר ותאימות למכשירים ניידים.",
 	"right-transcode-reset": "אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל והכנסתם מחדש לתור המשימות",
 	"right-transcode-status": "צפייה ב[[Special:TimedMediaHandler|מידע על פעילות המרת־המשנה הנוכחית]]",
