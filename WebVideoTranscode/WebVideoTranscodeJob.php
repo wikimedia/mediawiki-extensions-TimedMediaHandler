@@ -441,15 +441,13 @@ class WebVideoTranscodeJob extends Job {
 			// Add the two vpre types:
 			switch ( $options['preset'] ) {
 				case 'ipod320':
-					// @codingStandardsIgnoreStart
+					// phpcs:ignore Generic.Files.LineLength.TooLong
 					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -weightb 1 -level 13 -maxrate 768k -bufsize 3M";
-					// @codingStandardsIgnoreEnd
 				break;
 				case '720p':
 				case 'ipod640':
-					// @codingStandardsIgnoreStart
+					// phpcs:ignore Generic.Files.LineLength.TooLong
 					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -refs 1 -weightb 1 -level 31 -maxrate 10M -bufsize 10M";
-					// @codingStandardsIgnoreEnd
 				break;
 				default:
 					// in the default case just pass along the preset to ffmpeg

@@ -9,9 +9,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 // Include core class ApiTestCaseUpload ( not part of base autoLoader )
-// @codingStandardsIgnoreStart
+// phpcs:ignore MediaWiki.NamingConventions.ValidGlobalName.wgPrefix
 global $IP;
-// @codingStandardsIgnoreEnd
 require_once "$IP/tests/phpunit/includes/api/ApiTestCaseUpload.php";
 
 abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {

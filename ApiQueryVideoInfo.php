@@ -1,5 +1,4 @@
 <?php
-// @codingStandardsIgnoreStart
 /**
  * Extends imageinfo with support for videoinfo sources property.
  *
@@ -7,7 +6,6 @@
  * see: https://www.mediawiki.org/wiki/User:Catrope/Extension_review/TimedMediaHandler#ApiQueryVideoInfo.php
  *
  */
-// @codingStandardsIgnoreEnd
 
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 

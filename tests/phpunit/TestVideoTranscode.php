@@ -95,9 +95,7 @@ class TestVideoTranscode extends ApiTestCaseVideoUpload {
 		$conds = [ "job_cmd" => $type ];
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
-			// @codingStandardsIgnoreStart
 			for ( ; ; ) {
-			// @codingStandardsIgnoreEnd
 				$job = Job::pop_type( $type );
 				if ( !$job ) {
 					break;

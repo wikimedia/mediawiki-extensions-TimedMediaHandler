@@ -206,14 +206,14 @@ class ApiTranscodeReset extends ApiBase {
 	 * @deprecated since MediaWiki core 1.25
 	 */
 	protected function getExamples() {
-		// @codingStandardsIgnoreStart
-		return array(
+		return [
 			'Reset all transcodes for Clip.webm :',
 			'    api.php?action=transcodereset&title=File:Clip.webm&token=%2B\\',
-			'Reset the \'360_560kbs.webm\' transcode key for clip.webm. Get a list of transcode keys via a \'transcodestatus\' query',
-			'    api.php?action=transcodereset&title=File:Clip.webm&transcodekey=360_560kbs.webm&token=%2B\\',
-		);
-		// @codingStandardsIgnoreEnd
+			'Reset the \'360_560kbs.webm\' transcode key for clip.webm. ' .
+			'Get a list of transcode keys via a \'transcodestatus\' query',
+			'    api.php?action=transcodereset&title=File:Clip.webm' .
+			'&transcodekey=360_560kbs.webm&token=%2B\\',
+		];
 	}
 
 	/**
@@ -221,13 +221,11 @@ class ApiTranscodeReset extends ApiBase {
 	 * @return array
 	 */
 	protected function getExamplesMessages() {
-		// @codingStandardsIgnoreStart
-		return array(
+		return [
 			'action=transcodereset&title=File:Clip.webm&token=123ABC'
 				=> 'apihelp-transcodereset-example-1',
 			'action=transcodereset&title=File:Clip.webm&transcodekey=360_560kbs.webm&token=123ABC'
 				=> 'apihelp-transcodereset-example-2',
-		);
-		// @codingStandardsIgnoreEnd
+		];
 	}
 }
