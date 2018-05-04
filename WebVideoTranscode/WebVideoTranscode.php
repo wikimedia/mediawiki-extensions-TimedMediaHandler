@@ -313,12 +313,10 @@ class WebVideoTranscode {
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
 
-		// @codingStandardsIgnoreStart
 		// Losly defined per PCF guide to mp4 profiles:
 		// https://develop.participatoryculture.org/index.php/ConversionMatrix
 		// and apple HLS profile guide:
 		// https://developer.apple.com/library/ios/#documentation/networkinginternet/conceptual/streamingmediaguide/UsingHTTPLiveStreaming/UsingHTTPLiveStreaming.html#//apple_ref/doc/uid/TP40008332-CH102-DontLinkElementID_24
-		// @codingStandardsIgnoreEnd
 
 		self::ENC_H264_160P =>
 			[

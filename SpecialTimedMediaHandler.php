@@ -9,14 +9,13 @@
  */
 
 class SpecialTimedMediaHandler extends SpecialPage {
-	// @codingStandardsIgnoreStart
-	private $transcodeStates = array(
+	private $transcodeStates = [
+		// phpcs:ignore Generic.Files.LineLength.TooLong
 		'active' => 'transcode_time_startwork IS NOT NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
 		'failed' => 'transcode_time_startwork IS NOT NULL AND transcode_time_error IS NOT NULL',
 		'queued' => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NULL',
 		'missing' => 'transcode_time_addjob IS NULL',
-	);
-	// @codingStandardsIgnoreEnd
+	];
 	private $formats = [
 		'ogg' => 'img_major_mime="application" AND img_minor_mime = "ogg"',
 		'webm' => 'img_major_mime="video" AND img_minor_mime = "webm"',

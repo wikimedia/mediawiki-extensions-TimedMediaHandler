@@ -1,9 +1,8 @@
 <?php
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-	// @codingStandardsIgnoreStart
-	echo "This is the TimedMediaHandler extension. Please see the README file for installation instructions.\n";
-	// @codingStandardsIgnoreEnd
+	echo "This is the TimedMediaHandler extension. " .
+		"Please see the README file for installation instructions.\n";
 	exit( 1 );
 }
 
