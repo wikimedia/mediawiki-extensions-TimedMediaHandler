@@ -3,16 +3,6 @@
  * Abstract test class to support Video Tests with video uploads
  * @author dale
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit;
-}
-
-// Include core class ApiTestCaseUpload ( not part of base autoLoader )
-// phpcs:ignore MediaWiki.NamingConventions.ValidGlobalName.wgPrefix
-global $IP;
-require_once "$IP/tests/phpunit/includes/api/ApiTestCaseUpload.php";
-
 abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	/**
 	 * @return Array set of test files with associated metadata
