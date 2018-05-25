@@ -14,7 +14,8 @@
 			"Frhdkazan",
 			"Mailman",
 			"Facenapalm",
-			"Av6"
+			"Av6",
+			"Ole Yves"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -137,9 +138,15 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 аудиофайл Ogg|$1 аудиофайла Ogg|$1 аудиофайлов Ogg}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 аудиофайл FLAC|$1 аудиофайла FLAC|$1 аудиофайлов FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудиофайл WAV|$1 аудиофайла WAV|$1 аудиофайлов WAV}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 аудиофайл WebM|$1 аудиофайла WebM|$1 аудиофайлов WebM}}",
+	"beta-feature-timedmediahandler-description-videojs": "Просматривать видеофайлы в современном плеере с более чистым дизайном и поддержкой мобильных.",
 	"right-transcode-reset": "сброс неудавшихся или транскодированных видео, чтобы они встали в очередь заданий снова",
 	"right-transcode-status": "просмотр [[Special:TimedMediaHandler|информации о текущем ходе перекодирования]]",
+	"action-transcode-reset": "сбросить транскоды",
 	"action-transcode-status": "просмотр текущего статуса перекодирования",
+	"log-name-timedmediahandler": "Журнал TimedMediaHandler",
+	"log-description-timedmediahandler": "Это журнал действий, связанных с транскодированием синхронизированных медиа.",
+	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|сбросил|сбросила}} транскод $3 к формату «$4»",
 	"orphanedtimedtext": "Потерянные страницы TimedText",
 	"orphanedtimedtext-summary": "Список страниц [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], которые не имеют соответствующего файла.",
 	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL.",
