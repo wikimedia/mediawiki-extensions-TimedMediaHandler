@@ -15,7 +15,7 @@
  * @group Destructive
  * @group medium
  */
-class TestApiUploadVideo extends ApiTestCaseVideoUpload {
+class ApiUploadVideoTest extends ApiTestCaseVideoUpload {
 
 	/**
 	 * @dataProvider mediaFilesProvider

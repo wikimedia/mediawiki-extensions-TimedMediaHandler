@@ -1,6 +1,6 @@
 <?php
 
-class TestTimedMediaHandler extends MediaWikiTestCase {
+class TimedMediaHandlerTest extends MediaWikiTestCase {
 
 	/** @var TimedMediaHandler */
 	private $handler;

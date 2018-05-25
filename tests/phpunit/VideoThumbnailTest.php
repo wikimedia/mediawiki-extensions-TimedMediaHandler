@@ -4,7 +4,7 @@
  * @author dale
  * @group medium
  */
-class TestVideoThumbnail extends ApiTestCaseVideoUpload {
+class VideoThumbnailTest extends ApiTestCaseVideoUpload {
 
 	/**
 	 * Once video files are uploaded test thumbnail generating

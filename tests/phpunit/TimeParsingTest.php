@@ -7,7 +7,7 @@
  * @author Michael Dale
  */
 
-class TestTimeParsing extends PHPUnit\Framework\TestCase {
+class TimeParsingTest extends PHPUnit\Framework\TestCase {
 	/**
 	 * Test time string to np2
 	 */

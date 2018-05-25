@@ -1,6 +1,6 @@
 <?php
 
-class TestOggHandler extends MediaWikiMediaTestCase {
+class OggHandlerTest extends MediaWikiMediaTestCase {
 
 	/** @var OggHandlerTMH */
 	private $handler;

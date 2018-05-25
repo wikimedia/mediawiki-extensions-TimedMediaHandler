@@ -1,6 +1,6 @@
 <?php
 
-class TestTimedMediaTransformOutput extends MediaWikiMediaTestCase {
+class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 
 	private $sortMethod;
 	private $thumbObj;
