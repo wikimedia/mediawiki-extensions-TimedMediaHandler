@@ -705,7 +705,7 @@ class WebVideoTranscode {
 
 	/**
 	 * Clear the transcode state cache:
-	 * @param String $fileName Optional fileName to clear transcode cache for
+	 * @param String|null $fileName Optional fileName to clear transcode cache for
 	 */
 	public static function clearTranscodeCache( $fileName = null ) {
 		if ( $fileName ) {
