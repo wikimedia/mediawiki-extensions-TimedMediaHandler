@@ -3,7 +3,8 @@
 		"authors": [
 			"C.R.",
 			"Chelin",
-			"Candalua"
+			"Candalua",
+			"Ruthven"
 		]
 	},
 	"timedmediahandler-desc": "Gestore p' 'e file audio, video e teste temporizzate, cu 'e formate supportate pe WebM, Ogg Theora, Vorbis, srt",
@@ -58,7 +59,7 @@
 	"timedmedia-reset-button-dismiss": "Passa 'a vacca",
 	"timedmedia-reset-button-reset": "Reset",
 	"timedmedia-reset-error": "Errore pe' tramente ca se steva azzeranno 'a fatica 'e transcodifeca.",
-	"timedmedia-reset-explanation": "Resettanno sta transcodifica tuttuquante 'e file ch'esisteno mò (si ce stanno), e po' azzeccasse 'a transcodifica int'a 'o codece d' 'a fatica. Se pigliasse nu poco 'e tiempo pe' puté ffà 'o re-transcode.",
+	"timedmedia-reset-explanation": "Resettanno sta transcodifica scancellarrà tutt' 'e file ca ce stanno mo (si ce stanno), e azzeccarrà 'a transcodifica int'ê codece d' 'a fatica. Se pigliarrà nu poc' 'e tiempo pe fernì 'o re-transcode.",
 	"timedmedia-source-file": "$1 funte",
 	"timedmedia-source-file-desc": "File origgenale $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "File origgenale $1 ($2)",
@@ -107,7 +108,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 file audio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 file audio WAV}}",
 	"right-transcode-reset": "Appiccia n'ata vota 'e transcodifiche guaste 'e video ca songo state mise dint'a córa 'e fatiche n'ata vota",
-	"right-transcode-status": "Vide [[Special:TimedMediaHandler|'e nfurmaziune ncopp' 'a transcodifeca 'e mò]]",
+	"right-transcode-status": "Vide [[Special:TimedMediaHandler|'e nfurmaziune ncopp' 'a transcodifeca 'e mo]]",
 	"action-transcode-status": "vide 'o stato 'e transcodifeca 'e mo",
 	"orphanedtimedtext": "Paggene TimedText (sottotitule) urfanielle",
 	"orphanedtimedtext-summary": "Elenco 'e pagine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] ca nun teneno 'o file currispunnente.",
@@ -119,7 +120,7 @@
 	"apihelp-query+videoinfo-example-1": "Arrepiglia mò 'e nfurmaziune ncopp' 'o [[:File:Folgers.ogv]]",
 	"apihelp-transcodereset-description": "Utente c' 'o deritto 'e 'transcode-reset' putessero resettà e secutà n'ata vota na fatica 'e transcodifeca.",
 	"apihelp-transcodereset-param-title": "'O titolo d' 'o file media.",
-	"apihelp-transcodereset-param-transcodekey": "'A chiave 'e transcodifeca ca vulite re-appiccià. Arrepiglia mò [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-param-transcodekey": "'A chiave 'e transcodifeca ca vulite re-appiccià. Ascìatavella 'e [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Re-appiccia tuttuquante transcodes pe' [[:File:Clip.webm]]",
 	"apihelp-transcodereset-example-2": "Re-appiccia 'a chiave 'e transcodifeca '360_560kbs.webm' pe' [[:File:Clip.webm]]"
 }

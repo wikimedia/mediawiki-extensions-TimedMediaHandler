@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"Nikosgranturismogt"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Τίτλος: $1",
@@ -27,6 +28,7 @@
 	"mwe-embedplayer-paused": "σε παύση",
 	"mwe-embedplayer-download_segment": "Λήψη επιλογής:",
 	"mwe-embedplayer-download_full_video": "Κατεβάστε το πλήρες αρχείο βίντεο:",
+	"mwe-embedplayer-download_full_audio": "Κατεβάστε το πλήρες αρχείο βίντεο:",
 	"mwe-embedplayer-download_right_click": "Για να κατεβάσετε, κάντε δεξί κλικ και επιλέξτε <i>Αποθήκευση συνδέσμου ως ...</i>",
 	"mwe-embedplayer-download_clip": "Λήψη βίντεο",
 	"mwe-embedplayer-download_text": "Κατεβάστε το κείμενο",
@@ -38,6 +40,7 @@
 	"mwe-embedplayer-choose_player": "Επιλέξτε πρόγραμμα αναπαραγωγής βίντεο",
 	"mwe-embedplayer-no-player": "Κανένα πρόγραμμα αναπαραγωγής δεν διατίθεται για το $1",
 	"mwe-embedplayer-share_this_video": "Μοιραστείτε αυτό το βίντεο",
+	"mwe-embedplayer-share_this_audio": "Κοινοποίηση αυτού του αρχείου ήχου",
 	"mwe-embedplayer-video_credits": "Συντελεστές βίντεο",
 	"mwe-embedplayer-no-video_credits": "Δεν διατίθενται αναφορές",
 	"mwe-embedplayer-kaltura-platform-title": "Kaltura open source video platform",
@@ -45,8 +48,13 @@
 	"mwe-embedplayer-close_btn": "Κλείσιμο",
 	"mwe-embedplayer-ogg-player-vlc-player": "VLC player",
 	"mwe-embedplayer-ogg-player-oggNative": "HTML5 Ogg player",
+	"mwe-embedplayer-ogg-player-mp3Native": "HTML5 MP3 player",
+	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC player",
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 player",
+	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM player",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9 player",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Γενικό plugin Ogg",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript Ogg player",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime plugin",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -72,5 +80,12 @@
 	"mwe-embedplayer-video-3gp": "3GP βίντεο",
 	"mwe-embedplayer-video-mpeg": "MPEG βίντεο",
 	"mwe-embedplayer-video-msvideo": "AVI βίντεο",
-	"mwe-embedplayer-missing-source": "Δεν βρέθηκε πηγή βίντεο"
+	"mwe-embedplayer-missing-source": "Δεν βρέθηκε πηγή βίντεο",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "Εφαρμογή VLC",
+	"mwe-embedplayer-vlcapp-downloadapp": "Εφαρμογή της εφαρμογής VLC από το App Store",
+	"mwe-embedplayer-vlcapp-openvideo": "Άνοιγμα του βίντεο στην εφαρμογή VLC",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Λήψη αυτού του βίντεο",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Για να παίξετε βίντεο σε αυτό το χώρο, χρειάζεστε την δωρεάν εφαρμογή VLC. Εγκατάσταση τώρα;",
+	"mwe-embedplayer-iewebmprompt-intro": "Ουπς! Ένα πράγμα ακόμα που πριν μπορέσετε να παίξετε αυτό το βίντεο...",
+	"mwe-embedplayer-iewebmprompt-outro": "Επαναφόρτωση αυτής της σελίδας μετά την εγκατάσταση."
 }
