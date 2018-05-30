@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fryed-peach",
+			"Shirayuki",
+			"青子守歌"
+		]
+	},
+	"mwe-loading": "読み込み中 ...",
+	"mwe-size-kilobytes": "$1 KB",
+	"mwe-size-bytes": "$1 バイト",
+	"mwe-error_load_lib": "エラー: JavaScript $1 は参照不能か、$2 を定義していません。",
+	"mwe-apiproxy-setup": "API プロキシーをセットアップ中",
+	"mwe-load-drag-item": "ドラッグされた項目を読み込み中",
+	"mwe-ok": "OK",
+	"mwe-cancel": "中止",
+	"mwe-enable-gadget": "マルチメディアベータ(mwEmbed)を全ページで有効にする",
+	"mwe-enable-gadget-done": "マルチメディアベータのガジェットが有効です",
+	"mwe-must-login-gadget": "ガジェットを有効にするには<a target=\"_new\" href=\"$1\">ログイン</a>が必要です",
+	"mwe-test-plural": "{{PLURAL:$1|$1のテスト}}を実行する"
+}

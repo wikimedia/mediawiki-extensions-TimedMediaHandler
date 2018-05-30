@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"mwe-loading": "lueden ...",
+	"mwe-error_load_lib": "Feeler: JavaScript $1 konnt net ofgeruf ginn oder definéiert $2 net",
+	"mwe-apiproxy-setup": "API-Proxy astellen",
+	"mwe-load-drag-item": "Den agebonnen Objet gëtt gelueden",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Ofbriechen",
+	"mwe-enable-gadget": "Multimedia-Beta-Gadget (mwEmbed) fir all Säiten aktivéieren",
+	"mwe-enable-gadget-done": "De Multimedia-Beta-Gadget gouf aktivéiert",
+	"mwe-must-login-gadget": "Fir de Gadget aktivéieren ze kënne musst Dir Iech <a target=\"_new\" href=\"$1\">aloggen</a>",
+	"mwe-test-plural": "Ech hunn {{PLURAL:$1|$1 Test|$1 Tester}} gemaach"
+}

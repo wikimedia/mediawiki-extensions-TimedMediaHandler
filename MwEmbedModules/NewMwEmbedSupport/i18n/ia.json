@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"mwe-loading": "cargamento ...",
+	"mwe-error_load_lib": "Error: JavaScript $1 non esseva recuperabile o non defini $2",
+	"mwe-apiproxy-setup": "Configuration del proxy pro le API",
+	"mwe-load-drag-item": "Cargamento del file trahite",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Cancellar",
+	"mwe-enable-gadget": "Activar beta multimedia (mwEmbed) pro tote le paginas",
+	"mwe-enable-gadget-done": "Le gadget beta multimedia ha essite activate",
+	"mwe-must-login-gadget": "Pro activar le gadget tu debe <a target=\"_new\" href=\"$1\">aperir un session</a>",
+	"mwe-test-plural": "Io ha executate {{PLURAL:$1|$1 test|$1 tests}}"
+}

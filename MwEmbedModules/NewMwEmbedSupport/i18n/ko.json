@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kwj2772",
+			"아라"
+		]
+	},
+	"mwe-loading": "불러오는 중...",
+	"mwe-error_load_lib": "오류: 자바스크립트 $1(은)는 복구할 수 없거나 $2(이)가 정의하지 않았습니다",
+	"mwe-apiproxy-setup": "API 프록시 설정",
+	"mwe-load-drag-item": "드래그 항목 불러오는 중",
+	"mwe-ok": "확인",
+	"mwe-cancel": "취소",
+	"mwe-enable-gadget": "모든 문서에 멀티미디어 베타 (mwEmbed) 활성화",
+	"mwe-enable-gadget-done": "멀티미디어 베타 소도구가 활성화되었습니다",
+	"mwe-must-login-gadget": "소도구를 활성화하려면 <a target=\"_new\" href=\"$1\">로그인</a>을 해야 합니다",
+	"mwe-test-plural": "$1 테스트를 시행"
+}

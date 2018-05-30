@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Jim-by",
+			"Wizardist",
+			"Zedlik"
+		]
+	},
+	"mwe-loading": "загрузка …",
+	"mwe-error_load_lib": "Памылка: JavaScript $1 не даступны альбо не вызначае $2",
+	"mwe-apiproxy-setup": "Налада API-проксі",
+	"mwe-load-drag-item": "Загрузка перанесенага элемэнту",
+	"mwe-ok": "Добра",
+	"mwe-cancel": "Скасаваць",
+	"mwe-enable-gadget": "Уключыць бэта-мультымэдыя (mwEmbed) для ўсіх старонак",
+	"mwe-enable-gadget-done": "Дапаўненьне бэта-мультымэтыя ўключанае",
+	"mwe-must-login-gadget": "Для ўключэньня дапаўненьня Вам неабходна <a target=\"_new\" href=\"$1\">ўвайсьці ў сыстэму</a>",
+	"mwe-test-plural": "Я прайшоў $1 {{PLURAL:$1|тэст|тэсты|тэстаў}}"
+}

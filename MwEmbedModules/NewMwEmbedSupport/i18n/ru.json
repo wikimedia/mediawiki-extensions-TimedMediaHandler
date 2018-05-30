@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaganer",
+			"Александр Сигачёв"
+		]
+	},
+	"mwe-loading": "загрузка …",
+	"mwe-error_load_lib": "Ошибка. JavaScript $1 не доступен или не определяет $2",
+	"mwe-apiproxy-setup": "Настройка API-прокси",
+	"mwe-load-drag-item": "Загрузка перетащенного элемента",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Отмена",
+	"mwe-enable-gadget": "Включить бета-мультимедиа (mwEmbed) для всех страниц",
+	"mwe-enable-gadget-done": "Включён гаджет бета-мультимедиа",
+	"mwe-must-login-gadget": "Для включения гаджета вам следует <a target=\"_new\" href=\"$1\">представиться</a>.",
+	"mwe-test-plural": "Я прошёл {{PLURAL:$1|$1 проверку|$1 проверок|$1 проверки|1=проверку}}"
+}

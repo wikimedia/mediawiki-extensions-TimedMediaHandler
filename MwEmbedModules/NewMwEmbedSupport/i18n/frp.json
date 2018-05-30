@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"ChrisPtDe"
+		]
+	},
+	"mwe-loading": "Chargement ...",
+	"mwe-error_load_lib": "Fôta : JavaScript $1 at pas possu étre trovâ ou ben dèfenét pas $2",
+	"mwe-apiproxy-setup": "Configuracion du proxy API",
+	"mwe-load-drag-item": "Chargement de l’èlèment dèposeâ",
+	"mwe-ok": "D’acôrd",
+	"mwe-cancel": "Anular",
+	"mwe-enable-gadget": "Activar la bèta de l’outil multimèdia (mwEmbed) sur totes les pâges",
+	"mwe-enable-gadget-done": "La bèta de l’outil multimèdia est étâye activâye",
+	"mwe-must-login-gadget": "Por activar l’outil vos vos dête <a target=\"_new\" href=\"$1\">branchiér</a>",
+	"mwe-test-plural": "J’é ègzécutâ $1 èprôv{{PLURAL:$1|a|es}}"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joseph"
+		]
+	},
+	"mwe-loading": "yükleniyor ...",
+	"mwe-error_load_lib": "Hata: $1 JavaScripti erişilebilir değil ya da $2 tanımlı değil",
+	"mwe-apiproxy-setup": "API vekili ayarlanıyor",
+	"mwe-load-drag-item": "Sürüklenen öğe yükleniyor",
+	"mwe-ok": "Tamam",
+	"mwe-cancel": "İptal"
+}

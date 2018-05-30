@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Helix84"
+		]
+	},
+	"mwe-loading": "načítava sa ...",
+	"mwe-error_load_lib": "Error: JavaScript $1 nebolo možné získať alebo neobsahuje definíciu $2"
+}

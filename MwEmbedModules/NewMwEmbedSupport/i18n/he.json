@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Rotemliss",
+			"YaronSh"
+		]
+	},
+	"mwe-loading": "בטעינה ...",
+	"mwe-error_load_lib": "שגיאה: לא ניתן היה לטעון את ספריית ה־JavaScript בשם $1 או שהיא אינה מגדירה את $2",
+	"mwe-apiproxy-setup": "הגדרה של API proxy",
+	"mwe-load-drag-item": "טעינה של פריט שנגרר",
+	"mwe-ok": "אישור",
+	"mwe-cancel": "ביטול",
+	"mwe-enable-gadget": "הפעלת גרסה ניסיונית של mwEmbed להצגת מולטימדיה בכל הדפים",
+	"mwe-enable-gadget-done": "הופעל תוסף ניסיוני להצגת מולטימדיה",
+	"mwe-must-login-gadget": "כדי להפעיל את התוסף, צריך <a target=\"_new\" href=\"$1\">להתחבר לחשבון</a>",
+	"mwe-test-plural": "{{PLURAL:$1|הופעלה בדיקה אחת|הופעלו $1 בדיקות}}"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"David1010"
+		]
+	},
+	"mwe-loading": "იტვირთება…",
+	"mwe-size-gigabytes": "$1 გბ",
+	"mwe-size-megabytes": "$1 მბ",
+	"mwe-size-kilobytes": "$1 კ",
+	"mwe-size-bytes": "$1 ბ",
+	"mwe-apiproxy-setup": "API პროქსის პარამეტრები",
+	"mwe-ok": "კარგი",
+	"mwe-cancel": "გაუქმება",
+	"mwe-must-login-gadget": "გაჯეტის ჩასართავად თქვენ უნდა <a target=\"_new\" href=\"$1\">შეხვიდეთ</a>"
+}

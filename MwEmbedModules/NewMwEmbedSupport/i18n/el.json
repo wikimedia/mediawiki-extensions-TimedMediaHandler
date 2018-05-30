@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Crazymadlover",
+			"Evropi"
+		]
+	},
+	"mwe-loading": "φόρτωση ...",
+	"mwe-apiproxy-setup": "Ρύθμιση του μεσολαβητή ΔΠΕ (API)",
+	"mwe-load-drag-item": "Φόρτωση συρόμενου στοιχείου",
+	"mwe-ok": "Εντάξει",
+	"mwe-cancel": "Ακύρωση",
+	"mwe-enable-gadget": "Ενεργοποίηση του beta για τα πολυμέσα (mwEmbed) για όλες τις σελίδες",
+	"mwe-enable-gadget-done": "Ενεργοποιήθηκε η beta μικροεφαρμογή πολυμέσων",
+	"mwe-must-login-gadget": "Για να ενεργοποιήσετε τη μικροεφαρμογή πρέπει να κάνετε <a target=\"_new\" href=\"$1\">είσοδο</a>",
+	"mwe-test-plural": "Εκτέλεσα {{PLURAL:$1|$1 δοκιμή|$1 δοκιμές}}"
+}

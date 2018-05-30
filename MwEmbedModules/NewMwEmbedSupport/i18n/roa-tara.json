@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"mwe-loading": "Stoche a scareche…",
+	"mwe-error_load_lib": "Errore: 'U JavaScript $1 non g'ha state acchiate o non g'ha state definite $2",
+	"mwe-apiproxy-setup": "'Mbostazione de le API d'u proxy",
+	"mwe-load-drag-item": "Stoche a scareche le vôsce trascinabbile",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Annulle",
+	"mwe-enable-gadget": "Abbilite 'a beta multimedia (mwEmbed) pe tutte le pàggene",
+	"mwe-enable-gadget-done": "'U dispositive beta de multimedia ha state abbilitate",
+	"mwe-must-login-gadget": "Pe abbilità 'u dispositive tu a <a target=\"_new\" href=\"$1\">trasè</a>",
+	"mwe-test-plural": "Agghie eseguite {{PLURAL:$1|$1 test}}"
+}

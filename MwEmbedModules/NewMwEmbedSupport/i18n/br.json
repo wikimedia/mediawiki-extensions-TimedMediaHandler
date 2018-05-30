@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Fulup",
+			"Y-M D"
+		]
+	},
+	"mwe-loading": "o kargañ...",
+	"mwe-error_load_lib": "Fazi : n'eo ket bet kavet JavaScript $1 pe n'eo ket termenet gant $2",
+	"mwe-apiproxy-setup": "Kefluniadur ar proksi API",
+	"mwe-load-drag-item": "O kargañ an elfenn digargañ",
+	"mwe-ok": "Mat eo",
+	"mwe-cancel": "Nullañ",
+	"mwe-enable-gadget": "Gweredekaat liesvedia beta (mwEmbed) war an holl bajennoù",
+	"mwe-enable-gadget-done": "Gweredekaet eo bet ar gadjet liesvedia beta",
+	"mwe-must-login-gadget": "Evit gweredekaat ar gadjet e rankit <a target=\"_new\" href=\"$1\">kevreañ</a>",
+	"mwe-test-plural": "Sevenet em eus $1 amprouadenn{{PLURAL:$1||}}"
+}

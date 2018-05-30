@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"mwe-loading": "Вчитувам...",
+	"mwe-size-gigabytes": "$1 ГБ",
+	"mwe-size-megabytes": "$1 МБ",
+	"mwe-size-kilobytes": "$1 К",
+	"mwe-size-bytes": "$1 Б",
+	"mwe-error_load_lib": "Грешка: JavaScript $1 не е достапен или не определува $2",
+	"mwe-apiproxy-setup": "Поставувам API застапник (proxy)",
+	"mwe-load-drag-item": "Го вчитувам повлечениот елемент",
+	"mwe-ok": "ОК",
+	"mwe-cancel": "Откажи",
+	"mwe-enable-gadget": "Овозможи бета-мултимедија (mwEmbed) за сите страници",
+	"mwe-enable-gadget-done": "Овозможена е алатката за бета-мултимедија",
+	"mwe-must-login-gadget": "За да ја овозможите алатката морате да се <a target=\"_new\" href=\"$1\">најавите</a>",
+	"mwe-test-plural": "Направив {{PLURAL:$1|$1 проверка|$1 проверки}}"
+}

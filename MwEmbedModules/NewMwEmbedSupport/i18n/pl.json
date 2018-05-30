@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sp5uhe"
+		]
+	},
+	"mwe-loading": "ładowanie ...",
+	"mwe-error_load_lib": "Błąd – W plik JavaScript $1 brak jest możliwości pobrania oraz definicji $2",
+	"mwe-apiproxy-setup": "Konfiguracja proxy dla API",
+	"mwe-load-drag-item": "Ładowanie przeciągniętego elementu",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Anuluj",
+	"mwe-enable-gadget": "Włącz wersję testową multimediów (wmEmbed) na wszystkich stronach",
+	"mwe-enable-gadget-done": "Testowy gadżet multimediów został włączony",
+	"mwe-must-login-gadget": "Gadżet można włączyć dopiero po <a target=\"_new\" href=\"$1\">zalogowaniu się</a>",
+	"mwe-test-plural": "Wykonałem $1 {{PLURAL:$1|test|testy|testów}}"
+}

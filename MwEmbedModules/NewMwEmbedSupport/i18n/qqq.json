@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Fryed-peach",
+			"Nike",
+			"Raymond",
+			"Shirayuki",
+			"Umherirrender"
+		]
+	},
+	"mwe-apiproxy-setup": "Label for setup for API proxy.",
+	"mwe-enable-gadget": "Label for control to enable the gadget.",
+	"mwe-enable-gadget-done": "Label shown when the gadget has been enabled.",
+	"mwe-load-drag-item": "Message shown when loading the drag item.",
+	"mwe-loading": "Used in a Loading dialog.\n{{Identical|Loading}}",
+	"mwe-size-gigabytes": "{{optional}}\nParameters:\n* $1 - size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).\nSee also:\n* {{msg-mw|size-gigabytes}}\n* {{msg-mw|size-megabytes}}\n* {{msg-mw|size-kilobytes}}\n* {{msg-mw|size-bytes}}\n{{Related|Mwe-size}}",
+	"mwe-size-megabytes": "{{optional}}\nParameters:\n* $1 - size (in megabytes)\nSee also:\n* {{msg-mw|size-gigabytes}}\n* {{msg-mw|size-megabytes}}\n* {{msg-mw|size-kilobytes}}\n* {{msg-mw|size-bytes}}\n{{Related|Mwe-size}}",
+	"mwe-size-kilobytes": "{{optional}}\nParameters:\n* $1 - size (in kilobytes)\nSee also:\n* {{msg-mw|size-gigabytes}}\n* {{msg-mw|size-megabytes}}\n* {{msg-mw|size-kilobytes}}\n* {{msg-mw|size-bytes}}\n{{Related|Mwe-size}}",
+	"mwe-size-bytes": "{{optional}}\nParameters:\n* $1 - size (in bytes)\nSee also:\n* {{msg-mw|size-gigabytes}}\n* {{msg-mw|size-megabytes}}\n* {{msg-mw|size-kilobytes}}\n* {{msg-mw|size-bytes}}\n{{Related|Mwe-size}}",
+	"mwe-error_load_lib": "Parameters:\n* $1 - the JavaScript file that was not retrievable or does not define its class name\n* $2 - the class name that was associated with the JavaScript file that was not found or could not be retrieved",
+	"mwe-ok": "{{Identical|OK}}",
+	"mwe-cancel": "{{Identical|Cancel}}",
+	"mwe-must-login-gadget": "Unused at this time. Parameters:\n* $1 - URL",
+	"mwe-test-plural": "Unused at this time. Parameters:\n* $1 - number of tests"
+}
