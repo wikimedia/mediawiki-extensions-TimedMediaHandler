@@ -3,10 +3,12 @@
 		"authors": [
 			"Malafaya",
 			"Cgboeree",
-			"Katxis"
+			"Katxis",
+			"Mafcadio"
 		]
 	},
 	"timedmedia-more": "Plu…",
+	"timedmedia-reset-button-dismiss": "Dejeta",
 	"timedmedia-source-file": "fonte $1",
 	"timedmedia-source-audio-file-desc": "Fix orijinal $1 ($2)"
 }
