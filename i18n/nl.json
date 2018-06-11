@@ -119,9 +119,13 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg audiobestand|$1 Ogg audiobestanden}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC audiobestand|$1 FLAC audiobestanden}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV audiobestand|$1 WAV audiobestanden}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM audiobestand|$1 WebM audiobestanden}}",
 	"right-transcode-reset": "Video's waarvoor transcoderen mislukt is of die al getranscodeerd zijn opnieuw in de jobqueue plaatsen.",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken",
 	"action-transcode-status": "huidige transcoderingsstatus te bekijken",
+	"log-name-timedmediahandler": "TimedMediaHandler logboek",
+	"orphanedtimedtext": "Ongebruikte TimedTextpagina's",
+	"orphanedtimedtext-summary": "Lijst van [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] pagina's die geen bijbehorend bestand hebben.",
 	"orphanedtimedtext-unsupported": "Deze speciale pagina wordt alleen ondersteund op MySQL databases.",
 	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki.",
 	"apihelp-transcodereset-param-title": "De titel van het mediabestand."

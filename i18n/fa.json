@@ -67,6 +67,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|۱ دقیقه|$1 دقیقه}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 ثانیه|$1 ثانیه}}",
 	"timedmedia-reset": "تنظیم مجدد فراکد",
+	"timedmedia-reset-areyousure": "آیا مطمئن هستید که می‌خواهید ادامه دهید؟",
 	"timedmedia-reset-button-cancel": "ریست نکن",
 	"timedmedia-reset-button-dismiss": "نپذیرفتن",
 	"timedmedia-reset-button-reset": "از نو",
