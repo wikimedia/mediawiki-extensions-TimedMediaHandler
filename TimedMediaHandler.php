@@ -91,6 +91,16 @@ $wgTranscodeBackgroundSizeLimit = 3 * 1024 * 1024; // 3GB
 // Number of threads to use in avconv for transcoding
 $wgFFmpegThreads = 1;
 
+// Whether to enable macroblock row multithreading for VP9 (-row-mt 1)
+//
+// This allows increasing $wgFFmpegThreads to a larger number for VP9
+// transcodes; without it encoding will be limited to 4 threads for HD,
+// or less for low resolution.
+//
+// This requires libvpx 1.7 and a matching build of ffmpeg 3.3 or higher
+// or it will fail with an unrecognized option error.
+$wgFFmpegVP9RowMT = false;
+
 // Location of oggThumb binary ( used instead of ffmpeg )
 $wgOggThumbLocation = '/usr/bin/oggThumb';
 
