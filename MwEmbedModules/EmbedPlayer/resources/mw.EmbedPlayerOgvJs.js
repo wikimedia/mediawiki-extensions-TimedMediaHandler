@@ -24,15 +24,13 @@
 		/**
 		 * Perform setup in response to a play start command.
 		 * This means loading the code asynchronously if needed,
-		 * and enabling web audio for iOS Safari inside the event
+		 * and enabling web audio for Safari inside the event
 		 * handler.
 		 *
 		 * @return jQuery.Deferred
 		 */
 		_ogvJsPreInit: function () {
-			if ( mw.isIOS() ) {
-				this._initializeAudioForiOS();
-			}
+			this._initializeAudio();
 			return support.loadOgvJs();
 		},
 
@@ -43,21 +41,22 @@
 		 */
 		_ogvJsInit: function () {
 			var options = {};
-			if ( this._iOSAudioContext ) {
-			// Reuse the audio context we opened earlier
-				options.audioContext = this._iOSAudioContext;
+			if ( this._audioContext ) {
+				// Reuse the audio context we opened earlier
+				options.audioContext = this._audioContext;
 			}
 			return new OGVPlayer( options );
 		},
 
-		_iOSAudioContext: undefined,
+		_audioContext: undefined,
 
-		_initializeAudioForiOS: function () {
-		// iOS Safari Web Audio API must be initialized from an input event handler
-			if ( this._iOSAudioContext ) {
+		_initializeAudio: function () {
+			// iOS (and more recently macOS) Safari Web Audio API
+			// must be initialized from an input event handler
+			if ( this._audioContext ) {
 				return;
 			}
-			this._iOSAudioContext = support.initAudioContext();
+			this._audioContext = support.initAudioContext();
 		},
 
 		/**
@@ -73,9 +72,7 @@
 				} ) );
 
 			var self = this;
-			if ( mw.isIOS() ) {
-				self._initializeAudioForiOS();
-			}
+			self._initializeAudio();
 			support.loadOgvJs().done( function () {
 
 				var player = self._ogvJsInit();
