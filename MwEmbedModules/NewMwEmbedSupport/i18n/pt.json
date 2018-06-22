@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu",
+			"Helder.wiki",
+			"Luckas",
+			"Malafaya",
+			"Waldir"
+		]
+	},
+	"mwe-loading": "A carregar…",
+	"mwe-error_load_lib": "Erro: O JavaScript $1 não pode ser importado ou não define $2",
+	"mwe-apiproxy-setup": "A preparar o ''proxy'' da API",
+	"mwe-load-drag-item": "Carregando o objeto arrastado",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Cancelar",
+	"mwe-enable-gadget": "Ativar beta de multimídia (mwEmbed) para todas as páginas",
+	"mwe-enable-gadget-done": "Gadget beta de multimídia foi ativado",
+	"mwe-must-login-gadget": "Para ativar o gadget tem de estar <a target=\"_new\" href=\"$1\">autenticado</a>",
+	"mwe-test-plural": "Fiz $1 {{PLURAL:$1|teste|testes}}"
+}

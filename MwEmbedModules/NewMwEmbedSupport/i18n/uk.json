@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andriykopanytsia",
+			"Steve.rusyn",
+			"SteveR",
+			"Тест"
+		]
+	},
+	"mwe-loading": "Завантаження ...",
+	"mwe-error_load_lib": "Помилка: JavaScript $1 не підлягає відновленню або не визначає $2",
+	"mwe-apiproxy-setup": "Налаштування проксі API",
+	"mwe-load-drag-item": "Завантаження пересунутого елемента",
+	"mwe-ok": "Гаразд",
+	"mwe-cancel": "Скасувати",
+	"mwe-enable-gadget": "Увімкнути  бета-мультимедію (mwEmbed) для всіх сторінок",
+	"mwe-enable-gadget-done": "Увімкнена бета-версія мультимедійної новинки.",
+	"mwe-must-login-gadget": "Щоб увімкнути новинку, ви повинні <a target=\"_new\" href=\"$1\">увійти</a>",
+	"mwe-test-plural": "Я пройшов {{PLURAL:$1|$1 тест|$1 тести|тестів}}"
+}

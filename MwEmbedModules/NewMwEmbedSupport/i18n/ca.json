@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toniher"
+		]
+	},
+	"mwe-loading": "S'està carregant...",
+	"mwe-error_load_lib": "Error: no s'ha pogut recuperar el JavaScript $1 o no defineix $2",
+	"mwe-apiproxy-setup": "S'està configurant l'intermediari de l'API",
+	"mwe-load-drag-item": "S'està carregant l'element arrossegat",
+	"mwe-ok": "D'acord",
+	"mwe-cancel": "Cancel·la",
+	"mwe-enable-gadget": "Habilita la beta multimèdia (mwEmbed) per a totes les pàgines",
+	"mwe-enable-gadget-done": "S'ha habilitat el giny multimèdia beta",
+	"mwe-must-login-gadget": "Per habilitar el giny heu d'<a target=\"_new\" href=\"$1\">iniciar una sessió</a>",
+	"mwe-test-plural": "He executat {{PLURAL:$1|$1 test|$1 tests}}"
+}

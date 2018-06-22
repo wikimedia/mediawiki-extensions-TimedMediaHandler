@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Metalhead64"
+		]
+	},
+	"mwe-loading": "lade …",
+	"mwe-error_load_lib": "Fehler: JavaScript $1 war nicht abrufbar oder lässt $2 nicht zu",
+	"mwe-apiproxy-setup": "API-Proxy-Konfiguration",
+	"mwe-load-drag-item": "Lade das verschobene Element",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Abbrechen",
+	"mwe-enable-gadget": "Aktiviere die Beta-Version des Multimedia-Helferleins (mwEmbed) für alle Seiten",
+	"mwe-enable-gadget-done": "Beta-Version des Multimedia-Helferleins wurde aktiviert",
+	"mwe-must-login-gadget": "Um das Helferlein aktivieren zu können, musst du dich <a target=\"_new\" href=\"$1\">anmelden</a>",
+	"mwe-test-plural": "{{PLURAL:$1|$1 Test|$1 Tests}} durchlaufen"
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aspar",
+			"Erdemaslancan",
+			"Mirzali"
+		]
+	},
+	"mwe-loading": "bar beno...",
+	"mwe-error_load_lib": "xeta: $1 JavaScript re nêresiyeno ya zi pê $2yi şınasnaye niyo.",
+	"mwe-apiproxy-setup": "proxyê APIyi eyar beno",
+	"mwe-load-drag-item": "unsur bar beno",
+	"mwe-ok": "temam",
+	"mwe-cancel": "Bıtexelne"
+}

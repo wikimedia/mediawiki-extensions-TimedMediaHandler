@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"mwe-loading": "začituje so ...",
+	"mwe-size-gigabytes": "$1 GB",
+	"mwe-size-megabytes": "$1 MB",
+	"mwe-size-kilobytes": "$1 KB",
+	"mwe-size-bytes": "$1 B",
+	"mwe-error_load_lib": "Zmylk: JavaScript $1 njeda so wotwołać abo njedefinuje $2",
+	"mwe-apiproxy-setup": "Proksy API zarjadować",
+	"mwe-load-drag-item": "Wlečeny zapisk so začituje",
+	"mwe-ok": "W porjadku",
+	"mwe-cancel": "Přetorhnyć",
+	"mwe-enable-gadget": "Multimedia beta (mwEmbed) za wšě strony zmóžnić",
+	"mwe-enable-gadget-done": "Přisłušk za Multimedia beta je so zmóžnił",
+	"mwe-must-login-gadget": "Zo by přisłušk zmóžnił, dyrbiš so <a target=\"_new\" href=\"$1\">přizjewić</a>",
+	"mwe-test-plural": "Sym {{PLURAL:$1|$1 test|$1 testaj|testy|testow}} přewjedł"
+}

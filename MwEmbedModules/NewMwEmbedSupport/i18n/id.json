@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farras",
+			"Irwangatot",
+			"IvanLanin"
+		]
+	},
+	"mwe-loading": "memuat...",
+	"mwe-error_load_lib": "Kesalahan: JavaScript $1 tidak dapat diambil atau tidak mendefinisikan $2",
+	"mwe-apiproxy-setup": "Menyiapkan proksi API",
+	"mwe-load-drag-item": "Memuat butir terseret",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Batalkan",
+	"mwe-enable-gadget": "Aktifkan beta multimedia (mwEmbed) untuk semua halaman",
+	"mwe-enable-gadget-done": "Gadget beta multimedia telah diaktifkan",
+	"mwe-must-login-gadget": "Untuk mengaktifkan gadget Anda harus <a target=\"_new\" href=\"$1\">masuk log</a>",
+	"mwe-test-plural": "Saya menjalankan {{PLURAL:$1|$1 tes|$1 tes}}"
+}

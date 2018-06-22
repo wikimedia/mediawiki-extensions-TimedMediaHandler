@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia"
+		]
+	},
+	"mwe-loading": "Memuatkan...",
+	"mwe-error_load_lib": "Ralat: JavaScript $1 tidak dapat diperoleh atau tidak mentakrifkan $2",
+	"mwe-apiproxy-setup": "Menyiapkan proksi API",
+	"mwe-load-drag-item": "Perkara yang diseret sedang dimuatkan",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Batalkan",
+	"mwe-enable-gadget": "Bolehkan beta multimedia (mwEmbed) untuk semua halaman",
+	"mwe-enable-gadget-done": "Gajet beta multimedia telah dibolehkan",
+	"mwe-must-login-gadget": "Untuk membolehkan gajet, anda mesti <a target=\"_new\" href=\"$1\">log masuk</a>",
+	"mwe-test-plural": "Saya telah menjalankan $1 ujian"
+}

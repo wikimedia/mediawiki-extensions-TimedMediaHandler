@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnakngAraw"
+		]
+	},
+	"mwe-loading": "Ikinakarga...",
+	"mwe-size-gigabytes": "$1 GB",
+	"mwe-size-megabytes": "$1 MB",
+	"mwe-size-kilobytes": "$1 K",
+	"mwe-size-bytes": "$1 B",
+	"mwe-error_load_lib": "Kamalian: hindi makukuha ang JavaScript na $1 o hindi nagbigay kahulugan sa $2",
+	"mwe-apiproxy-setup": "Nagtatalaga ng pamalit na API",
+	"mwe-load-drag-item": "Ikinakarga ang hinilang bagay",
+	"mwe-ok": "Okey",
+	"mwe-cancel": "Huwag ituloy",
+	"mwe-enable-gadget": "Paganahin ang betang multimidya (mwEmbed) para sa lahat ng mga pahina",
+	"mwe-enable-gadget-done": "Pinagana ang gadyet na pangbetang multimidya",
+	"mwe-must-login-gadget": "Upang mapagana ang gadyet dapat kang <a target=\"_new\" href=\"$1\">lumagda</a>",
+	"mwe-test-plural": "Nagpatakbo ako ng {{PLURAL:$1|$1 pagsusulit|$1 mga pagsusulit}}"
+}

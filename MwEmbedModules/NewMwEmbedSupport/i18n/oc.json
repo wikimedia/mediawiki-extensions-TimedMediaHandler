@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"mwe-loading": "cargament ...",
+	"mwe-error_load_lib": "Error : JavaScript $1 a pas pogut èsser trobat o definís pas $2",
+	"mwe-apiproxy-setup": "Configuracion del proxy API",
+	"mwe-load-drag-item": "Cargament de l’element depausat",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Anullar"
+}

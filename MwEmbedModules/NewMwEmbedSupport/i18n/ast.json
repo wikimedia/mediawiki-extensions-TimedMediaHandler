@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"mwe-loading": "Cargando...",
+	"mwe-error_load_lib": "Error: el ficheru JavaScript $1 nun pudo recuperase o nun define $2",
+	"mwe-apiproxy-setup": "Configurando'l proxy de la API",
+	"mwe-load-drag-item": "Cargando l'elementu arrastráu",
+	"mwe-ok": "Aceutar",
+	"mwe-cancel": "Encaboxar",
+	"mwe-enable-gadget": "Activar multimedia beta (mwEmbed) en toles páxines",
+	"mwe-enable-gadget-done": "Activóse l'accesoriu multimedia beta",
+	"mwe-must-login-gadget": "P'activar l'accesoriu tien d'<a target=\"_new\" href=\"$1\">aniciar sesión</a>",
+	"mwe-test-plural": "Executé {{PLURAL:$1|$1 prueba|$1 pruebes}}"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"mwe-loading": "Bezig met laden…",
+	"mwe-error_load_lib": "Fout: JavaScript $1 kon niet opgehaald worden of definieert $2 niet",
+	"mwe-apiproxy-setup": "Bezig met het opzetten van een API-proxy",
+	"mwe-load-drag-item": "Bezig met het laden van het gesleepte bestand",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Annuleren",
+	"mwe-enable-gadget": "Multimedia beta (mwEmbed) voor alle pagina's inschakelen",
+	"mwe-enable-gadget-done": "Multimedia beta is ingeschakeld",
+	"mwe-must-login-gadget": "Om de uitbreiding in te schakelen, moet u <a target=\"_new\" href=\"$1\">aanmelden</a>",
+	"mwe-test-plural": "{{PLURAL:$1|$1 test|$1 tests}} uitgevoerd"
+}

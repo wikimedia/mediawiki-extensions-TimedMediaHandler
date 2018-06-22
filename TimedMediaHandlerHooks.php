@@ -216,14 +216,17 @@ class TimedMediaHandlerHooks {
 		}
 
 		if ( self::activePlayerMode() === 'mwembed' ) {
-			if ( !class_exists( 'MwEmbedResourceManager' ) ) {
-				echo "TimedMediaHandler requires the MwEmbedSupport extension.\n";
-				exit( 1 );
-			}
+			// Register the MwEmbedSupport infrastructure
+			NewMwEmbedResourceManager::register(
+				'extensions/TimedMediaHandler/MwEmbedModules/NewMwEmbedSupport'
+			);
+			NewMwEmbedResourceManager::register(
+				'extensions/TimedMediaHandler/MwEmbedModules/NewMediaWikiSupport'
+			);
 
 			// Register the Timed Media Handler javascript resources ( MwEmbed modules )
-			MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
-			MwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
+			NewMwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/EmbedPlayer' );
+			NewMwEmbedResourceManager::register( 'extensions/TimedMediaHandler/MwEmbedModules/TimedText' );
 
 			// Set the default webPath for this embed player extension
 			$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath .

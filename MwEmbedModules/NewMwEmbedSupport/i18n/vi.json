@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen",
+			"Vinhtantran"
+		]
+	},
+	"mwe-loading": "Đang tải…",
+	"mwe-size-kilobytes": "$1 kB",
+	"mwe-error_load_lib": "Lỗi: JavaScript $1 không truy xuất được hoặc không định nghĩa $2",
+	"mwe-apiproxy-setup": "Đang thiết lập proxy API",
+	"mwe-load-drag-item": "Đang tải các mục đã kéo",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Hủy bỏ",
+	"mwe-enable-gadget": "Kích hoạt đa phương tiện bản beta (mwEmbed) cho mọi trang",
+	"mwe-enable-gadget-done": "Công cụ đa năng đa phương tiện bản beta đã được kích hoạt",
+	"mwe-must-login-gadget": "Để kích hoạt công cụ đa năng bạn phải <a target=\"_new\" href=\"$1\">đăng nhập</a>",
+	"mwe-test-plural": "Tôi đã chạy {{PLURAL:$1|$1 mẫu thử|$1 mẫu thử}}"
+}

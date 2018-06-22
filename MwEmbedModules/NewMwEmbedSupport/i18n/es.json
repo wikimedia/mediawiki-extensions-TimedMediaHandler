@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Translationista"
+		]
+	},
+	"mwe-loading": "cargando ...",
+	"mwe-error_load_lib": "Error: JavaScript $1 no ha podido ser recuperado o no define $2",
+	"mwe-apiproxy-setup": "Configurando proxi de la API",
+	"mwe-load-drag-item": "Cargando el objeto arrastrado",
+	"mwe-ok": "Aceptar",
+	"mwe-cancel": "Cancelar",
+	"mwe-enable-gadget": "Habilitar multimedia beta (mwEmbed) en todas las páginas",
+	"mwe-enable-gadget-done": "Se ha habilitado el gadget multimedia beta",
+	"mwe-must-login-gadget": "Para habilitar el gadget debes <a target=\"_new\" href=\"$1\">ingresar</a>",
+	"mwe-test-plural": "Realicé {{PLURAL:$1|$1 prueba|$1 pruebas}}"
+}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"mwe-loading": "Cargando...",
+	"mwe-size-kilobytes": "$1 kB",
+	"mwe-error_load_lib": "Erro: o JavaScript $1 non se puido atopar ou non definía $2",
+	"mwe-apiproxy-setup": "Configurando o proxy API",
+	"mwe-load-drag-item": "Cargando o elemento arrastrado",
+	"mwe-ok": "Aceptar",
+	"mwe-cancel": "Cancelar",
+	"mwe-enable-gadget": "Activar a beta multimedia (mwEmbed) en todas as páxinas",
+	"mwe-enable-gadget-done": "Activouse o trebello beta multimedia",
+	"mwe-must-login-gadget": "Para activar o trebello ten que <a target=\"_new\" href=\"$1\">acceder ao sistema</a>",
+	"mwe-test-plural": "{{PLURAL:$1|Fíxose unha proba|Fixéronse $1 probas}}"
+}

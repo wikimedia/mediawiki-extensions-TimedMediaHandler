@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nghtwlkr"
+		]
+	},
+	"mwe-loading": "Laster ...",
+	"mwe-error_load_lib": "Feil: JavaScript $1 kunne ikke gjenhentes eller definerer ikke $2",
+	"mwe-apiproxy-setup": "Setter opp API-mellomtjener",
+	"mwe-load-drag-item": "Laster dratt element",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Avbryt",
+	"mwe-enable-gadget": "Aktiver multimedia-beta (mwEmbed) for alle sider",
+	"mwe-enable-gadget-done": "Skjermelement for multimedia-beta har blitt aktivert",
+	"mwe-must-login-gadget": "For å aktivere skjermelement må du <a target=\"_new\" href=\"$1\">logge inn</a>",
+	"mwe-test-plural": "Jeg kjørte {{PLURAL:$1|én test|$1 tester}}"
+}

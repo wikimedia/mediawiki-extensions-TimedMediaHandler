@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Naudefj"
+		]
+	},
+	"mwe-loading": "laai ...",
+	"mwe-error_load_lib": "Fout: JavaScript $1 kon nie gevind word of definieer nie $2 nie",
+	"mwe-apiproxy-setup": "Besig met die opstel van 'n API-proxy",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Kanselleer",
+	"mwe-test-plural": "Ek het {{PLURAL:$1|$1 toets|$1 toetse}} uitgevoer"
+}

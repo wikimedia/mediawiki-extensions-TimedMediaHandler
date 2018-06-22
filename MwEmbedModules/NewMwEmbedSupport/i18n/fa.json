@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Armin1392",
+			"Ebraminio",
+			"Mjbmr"
+		]
+	},
+	"mwe-loading": "در حال بارگیری ...",
+	"mwe-error_load_lib": "خطا: جاوااسکریپت $1 قابل اصلاح نیست یا $2 تعریف نمی‌شود",
+	"mwe-apiproxy-setup": "تنظیم پروکسی ای‌پی‌ال",
+	"mwe-load-drag-item": "در حال بارگذاری مورد کشیده شده",
+	"mwe-ok": "تأیید",
+	"mwe-cancel": "لغو",
+	"mwe-enable-gadget": "فعال‌ سازی چند رسانه‌ای بتا (ام‌وی جاسازی شده) برای همهٔ صفحات",
+	"mwe-enable-gadget-done": "ابزار چند رسانه‌ای بتا فعال شده‌است",
+	"mwe-must-login-gadget": "برای فعال کردن ابزار شما باید <a target=\"_new\" href=\"$1\">login</a>",
+	"mwe-test-plural": "من فرار کردم {{PLURAL:$1|$1 امتحان|$1 امتحان‌ها}}"
+}

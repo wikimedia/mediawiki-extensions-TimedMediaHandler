@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25",
+			"OsamaK"
+		]
+	},
+	"mwe-loading": "جاري التحميل...",
+	"mwe-size-gigabytes": "$1 جيجابايت",
+	"mwe-size-megabytes": "$1 ميجا بايت",
+	"mwe-size-kilobytes": "$1 كيلوبايت",
+	"mwe-size-bytes": "$1 بايت",
+	"mwe-ok": "موافق",
+	"mwe-cancel": "إلغاء"
+}

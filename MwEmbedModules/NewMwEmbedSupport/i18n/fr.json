@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"IAlex",
+			"Jean-Frédéric",
+			"PieRRoMaN",
+			"Verdy p"
+		]
+	},
+	"mwe-loading": "chargement ...",
+	"mwe-size-gigabytes": "$1&nbsp;Gio",
+	"mwe-size-megabytes": "$1&nbsp;Mio",
+	"mwe-size-kilobytes": "$1&nbsp;Kio",
+	"mwe-size-bytes": "$1&nbsp;o",
+	"mwe-error_load_lib": "Erreur : JavaScript $1 n'a pas pu être trouvé ou ne définit pas $2",
+	"mwe-apiproxy-setup": "Configuration du proxy API",
+	"mwe-load-drag-item": "Chargement de l’élément dépose",
+	"mwe-ok": "Valider",
+	"mwe-cancel": "Annuler",
+	"mwe-enable-gadget": "Activer beta multimédia (mwEmbed) sur toutes les pages",
+	"mwe-enable-gadget-done": "Le gadget multimédia beta a été activé",
+	"mwe-must-login-gadget": "Afin d'activer le gadget vous devez vous <a target=\"_new\" href=\"$1\">connecter</a>",
+	"mwe-test-plural": "J'ai exécuté {{PLURAL:$1|$1 test|$1 tests}}"
+}

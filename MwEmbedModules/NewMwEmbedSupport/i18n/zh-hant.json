@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Justincheng12345",
+			"Mark85296341",
+			"Waihorace"
+		]
+	},
+	"mwe-loading": "載入中...",
+	"mwe-error_load_lib": "錯誤：JavaScript $1 是不可檢索或未定義 $2",
+	"mwe-apiproxy-setup": "API 的代理設定",
+	"mwe-load-drag-item": "拖動項載入中",
+	"mwe-ok": "確定",
+	"mwe-cancel": "取消",
+	"mwe-enable-gadget": "在所有頁面啟用多媒體測試版（mwEmbed）。",
+	"mwe-enable-gadget-done": "小工具多媒體測試版已啟用",
+	"mwe-must-login-gadget": "要啟用小工具，你必須先<a target=\"_new\" href=\"$1\">登入</a>。",
+	"mwe-test-plural": "我執行了$1個測試"
+}

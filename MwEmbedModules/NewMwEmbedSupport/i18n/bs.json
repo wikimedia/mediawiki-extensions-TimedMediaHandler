@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator"
+		]
+	},
+	"mwe-loading": "učitavam ...",
+	"mwe-error_load_lib": "Greška: JavaScript $1 se ne može učitati ili nije definiran $2",
+	"mwe-apiproxy-setup": "Postavljanje API proksija",
+	"mwe-load-drag-item": "Učitavam povučenu stavku",
+	"mwe-ok": "U redu",
+	"mwe-cancel": "Odustani",
+	"mwe-enable-gadget": "Omogući beta verziju multimedije (mwEmbed) za sve stranice",
+	"mwe-enable-gadget-done": "Beta verzija multimedija dodatka je omogućena",
+	"mwe-must-login-gadget": "Da omogućite dodatak morate biti <a target=\"_new\" href=\"$1\">prijavljeni</a>",
+	"mwe-test-plural": "Pokrenuo sam {{PLURAL:$1|$1 provjeru|$1 provjere|$1 provjera}}"
+}

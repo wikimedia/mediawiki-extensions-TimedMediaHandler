@@ -8,6 +8,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Set up the timed media handler dir:
 $timedMediaDir = __DIR__;
+
+// Include NewMwEmbedResourceManager
+$wgAutoloadClasses['NewMwEmbedResourceManager'] =
+	"$timedMediaDir/includes/NewMwEmbedResourceManager.php";
+
 // Include WebVideoTranscode
 // (prior to config so that its defined transcode keys can be used in configuration)
 $wgAutoloadClasses['WebVideoTranscode'] = "$timedMediaDir/WebVideoTranscode/WebVideoTranscode.php";
@@ -290,6 +295,7 @@ $wgExtensionMessagesFiles['TimedMediaHandlerMagic'] =
 $wgExtensionMessagesFiles['TimedMediaHandlerAliases'] =
 	"$timedMediaDir/TimedMediaHandler.i18n.alias.php";
 // Inlcude module locationlizations
+$wgMessagesDirs['MwEmbed.NewMwEmbedSupport'] = __DIR__ . '/MwEmbedModules/NewMwEmbedSupport/i18n';
 $wgMessagesDirs['MwEmbed.EmbedPlayer'] = __DIR__ . '/MwEmbedModules/EmbedPlayer/i18n';
 $wgMessagesDirs['MwEmbed.TimedText'] = __DIR__ . '/MwEmbedModules/TimedText/i18n';
 
@@ -308,7 +314,12 @@ $wgHooks['CanonicalNamespaces'][] = 'TimedMediaHandlerHooks::addCanonicalNamespa
 
 // We register some modules dynamically, since they depend on the configuration
 $wgHooks['ResourceLoaderRegisterModules'][] =
+	'NewMwEmbedResourceManager::registerModules';
+$wgHooks['ResourceLoaderRegisterModules'][] =
 	'TimedMediaHandlerHooks::resourceLoaderRegisterModules';
+
+$wgHooks['ResourceLoaderGetConfigVars'][] =
+	'NewMwEmbedResourceManager::registerConfigVars';
 
 // Register remaining Timed Media Handler hooks right after initial setup
 $wgExtensionFunctions[] = 'TimedMediaHandlerHooks::register';

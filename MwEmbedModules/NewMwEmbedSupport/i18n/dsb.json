@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"mwe-loading": "zacytujo se ...",
+	"mwe-error_load_lib": "Zmólka: JavaScript $1 njejo wótwołujobny był abo njedefiněrujo $2",
+	"mwe-apiproxy-setup": "Proksy API zarědowaś",
+	"mwe-load-drag-item": "Wlecony zapisk se zacytujo",
+	"mwe-ok": "W pórědku",
+	"mwe-cancel": "Pśetergnuś",
+	"mwe-enable-gadget": "Multimedia beta (mwEmbed) za wšykne boki zmóžniś",
+	"mwe-enable-gadget-done": "Pśisłušk Multimedia beta jo se zmóžnił",
+	"mwe-must-login-gadget": "Aby pśisłušk zmóžnił, musyš se <a target=\"_new\" href=\"$1\">pśizjawiś</a>",
+	"mwe-test-plural": "Som {{PLURAL:$1|$1 test|$1 testa|$1 testy|$1 testow}} pśewjadł"
+}

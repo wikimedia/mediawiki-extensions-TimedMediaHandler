@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ainali",
+			"Dafer45",
+			"GameOn"
+		]
+	},
+	"mwe-loading": "Laddar…",
+	"mwe-error_load_lib": "Fel: JavaScript $1 var inte tillgänglig eller definierade inte $2",
+	"mwe-apiproxy-setup": "Konfigurerar API-proxy",
+	"mwe-load-drag-item": "Laddar draget objekt",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Avbryt",
+	"mwe-enable-gadget": "Aktivera multimedia beta (mwEmbed) på alla sidor",
+	"mwe-enable-gadget-done": "Multimedia beta finessen har aktiverats",
+	"mwe-must-login-gadget": "För att aktivera finessen måste du <a target=\"_new\" href=\"$1\">logga in</a>",
+	"mwe-test-plural": "Jag gjorde {{PLURAL:$1|$1 test|$1 test}}"
+}
