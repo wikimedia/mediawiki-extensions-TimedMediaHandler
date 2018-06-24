@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joseph"
+			"Joseph",
+			"Hedda"
 		]
 	},
 	"mwe-loading": "yükleniyor ...",
@@ -9,5 +10,9 @@
 	"mwe-apiproxy-setup": "API vekili ayarlanıyor",
 	"mwe-load-drag-item": "Sürüklenen öğe yükleniyor",
 	"mwe-ok": "Tamam",
-	"mwe-cancel": "İptal"
+	"mwe-cancel": "İptal",
+	"mwe-enable-gadget": "Tüm sayfalar için multimedya beta (mwEmbed) özelliğini etkinleştir",
+	"mwe-enable-gadget-done": "Multimedya beta gadget'ı etkinleştirildi",
+	"mwe-must-login-gadget": "Gadget'ı etkinleştirmek için <a target=\"_new\" href=\"$1\">giriş yapmalısınız</a>",
+	"mwe-test-plural": "{{PLURAL:$1|$1 test|$1 test}} gerçekleştirdim"
 }

@@ -3,13 +3,17 @@
 		"authors": [
 			"Aspar",
 			"Erdemaslancan",
-			"Mirzali"
+			"Mirzali",
+			"Marmase"
 		]
 	},
 	"mwe-loading": "bar beno...",
 	"mwe-error_load_lib": "xeta: $1 JavaScript re nêresiyeno ya zi pê $2yi şınasnaye niyo.",
 	"mwe-apiproxy-setup": "proxyê APIyi eyar beno",
-	"mwe-load-drag-item": "unsur bar beno",
-	"mwe-ok": "temam",
-	"mwe-cancel": "Bıtexelne"
+	"mwe-load-drag-item": "Unsur bar beno",
+	"mwe-ok": "Temam",
+	"mwe-cancel": "Bıtexelne",
+	"mwe-enable-gadget": "Multimedia beta (mwEmbed) pêro pelan rê feal kerê",
+	"mwe-enable-gadget-done": "Hacetê Multimedia beta biyo feal",
+	"mwe-must-login-gadget": "Seba haceti feal kerdene rê gani <a target=\"_new\" href=\"$1\">cı kewê</a>"
 }

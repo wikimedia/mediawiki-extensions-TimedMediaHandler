@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kening Aldgilles"
+			"Kening Aldgilles",
+			"Robin van der Vliet"
 		]
 	},
 	"mwe-ok": "Okee",
-	"mwe-cancel": "Ofbrekke"
+	"mwe-cancel": "Annulearje"
 }

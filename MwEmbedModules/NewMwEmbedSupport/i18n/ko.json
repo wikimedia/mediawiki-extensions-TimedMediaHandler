@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Kwj2772",
-			"아라"
+			"아라",
+			"Ykhwong"
 		]
 	},
 	"mwe-loading": "불러오는 중...",
-	"mwe-error_load_lib": "오류: 자바스크립트 $1(은)는 복구할 수 없거나 $2(이)가 정의하지 않았습니다",
+	"mwe-error_load_lib": "오류: 자바스크립트 $1은(는) 복구할 수 없거나 $2을(를) 정의하지 않았습니다",
 	"mwe-apiproxy-setup": "API 프록시 설정",
 	"mwe-load-drag-item": "드래그 항목 불러오는 중",
 	"mwe-ok": "확인",
