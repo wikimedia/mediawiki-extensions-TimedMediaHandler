@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wikitanvir"
+			"Wikitanvir",
+			"Aftabuzzaman"
 		]
 	},
-	"mwe-loading": "লোডিং ...",
+	"mwe-loading": "লোড করা হচ্ছে...",
 	"mwe-apiproxy-setup": "এপিআই প্রক্সি সেট করা হচ্ছে",
 	"mwe-ok": "ঠিক আছে",
-	"mwe-cancel": "বাতিল"
+	"mwe-cancel": "বাতিল",
+	"mwe-enable-gadget": "সব পাতার জন্য multimedia beta (mwEmbed) সক্রিয় করুন",
+	"mwe-test-plural": "আমি {{PLURAL:$1|$1টি পরীক্ষা}} চালিয়েছি"
 }
