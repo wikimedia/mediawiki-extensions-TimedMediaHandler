@@ -80,7 +80,8 @@
 				// Style icon to be applied
 				'class' => 'kaltura-icon',
 				// Style to be applied to the outer attribution button container div
-				'style' => array(),
+				// Use stdClass to force this to JSON encode as an object
+				'style' => new stdClass,
 				// An icon image url 16x16 image url or data url )
 				'iconurl' => false
 			),
