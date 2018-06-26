@@ -14,58 +14,6 @@ use Wikimedia\Rdbms\IDatabase;
  * Main WebVideoTranscode Class hold some constants and config values
  */
 class WebVideoTranscode {
-	/**
-	* Key constants for the derivatives,
-	* this key is appended to the derivative file name
-	*
-	* If you update the wgDerivativeSettings for one of these keys
-	* and want to re-generate the video you should also update the
-	* key constant. ( Or just run a maintenance script to delete all
-	* the assets for a given profile )
-	*
-	* Msg keys for derivatives are set as follows:
-	* $messages['timedmedia-derivative-200_200kbs.ogv'] => 'Ogg 200';
-	*/
-
-	// Note: Ogg video profiles have been removed as of January 2018.
-	// Use WebM output for royalty-free codec output.
-
-	// WebM VP8/Vorbis profiles:
-	const ENC_WEBM_160P = '160p.webm';
-	const ENC_WEBM_240P = '240p.webm';
-	const ENC_WEBM_360P = '360p.webm';
-	const ENC_WEBM_480P = '480p.webm';
-	const ENC_WEBM_720P = '720p.webm';
-	const ENC_WEBM_1080P = '1080p.webm';
-	const ENC_WEBM_1440P = '1440p.webm';
-	const ENC_WEBM_2160P = '2160p.webm';
-
-	// WebM VP9/Opus profiles:
-	const ENC_VP9_160P = '160p.vp9.webm';
-	const ENC_VP9_240P = '240p.vp9.webm';
-	const ENC_VP9_360P = '360p.vp9.webm';
-	const ENC_VP9_480P = '480p.vp9.webm';
-	const ENC_VP9_720P = '720p.vp9.webm';
-	const ENC_VP9_1080P = '1080p.vp9.webm';
-	const ENC_VP9_1440P = '1440p.vp9.webm';
-	const ENC_VP9_2160P = '2160p.vp9.webm';
-
-	// mp4 profiles:
-	const ENC_H264_160P = '160p.mp4';
-	const ENC_H264_240P = '240p.mp4';
-	const ENC_H264_320P = '320p.mp4';
-	const ENC_H264_360P = '360p.mp4';
-	const ENC_H264_480P = '480p.mp4';
-	const ENC_H264_720P = '720p.mp4';
-	const ENC_H264_1080P = '1080p.mp4';
-	const ENC_H264_1440P = '1440p.mp4';
-	const ENC_H264_2160P = '2160p.mp4';
-
-	const ENC_OGG_VORBIS = 'ogg';
-	const ENC_OGG_OPUS = 'opus';
-	const ENC_MP3 = 'mp3';
-	const ENC_AAC = 'm4a';
-
 	// Static cache of transcode state per instantiation
 	public static $transcodeState = [];
 
@@ -80,7 +28,7 @@ class WebVideoTranscode {
 	public static $derivativeSettings = [
 
 		// WebM transcode:
-		self::ENC_WEBM_160P =>
+		'160p.webm' =>
 			[
 				'maxSize'                    => '288x160',
 				'videoBitrate'               => '128',
@@ -93,7 +41,7 @@ class WebVideoTranscode {
 				'slices'                     => '2',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_240P =>
+		'240p.webm' =>
 			[
 				'maxSize'                    => '426x240',
 				'videoBitrate'               => '256',
@@ -106,7 +54,7 @@ class WebVideoTranscode {
 				'slices'                     => '2',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_360P =>
+		'360p.webm' =>
 			[
 				'maxSize'                    => '640x360',
 				'videoBitrate'               => '512',
@@ -119,7 +67,7 @@ class WebVideoTranscode {
 				'slices'                     => '2',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_480P =>
+		'480p.webm' =>
 			[
 				'maxSize'                    => '854x480',
 				'videoBitrate'               => '1024',
@@ -132,7 +80,7 @@ class WebVideoTranscode {
 				'slices'                     => '4',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_720P =>
+		'720p.webm' =>
 			[
 				'maxSize'                    => '1280x720',
 				'videoBitrate'               => '2048',
@@ -145,7 +93,7 @@ class WebVideoTranscode {
 				'speed'                      => '1',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_1080P =>
+		'1080p.webm' =>
 			[
 				'maxSize'                    => '1920x1080',
 				'videoBitrate'               => '4096',
@@ -158,7 +106,7 @@ class WebVideoTranscode {
 				'speed'                      => '1',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_1440P =>
+		'1440p.webm' =>
 			[
 				'maxSize'                    => '2560x1440',
 				'videoBitrate'               => '8192',
@@ -171,7 +119,7 @@ class WebVideoTranscode {
 				'speed'                      => '2',
 				'type'                       => 'video/webm; codecs="vp8, vorbis"',
 			],
-		self::ENC_WEBM_2160P =>
+		'2160p.webm' =>
 			[
 				'maxSize'                    => '3840x2160',
 				'videoBitrate'               => '16384',
@@ -186,7 +134,7 @@ class WebVideoTranscode {
 			],
 
 		// WebM VP9 transcode:
-		self::ENC_VP9_160P =>
+		'160p.vp9.webm' =>
 			[
 				'maxSize'                    => '288x160',
 				'videoBitrate'               => '80',
@@ -201,7 +149,7 @@ class WebVideoTranscode {
 				'audioCodec'                 => 'opus',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_240P =>
+		'240p.vp9.webm' =>
 			[
 				'maxSize'                    => '426x240',
 				'videoBitrate'               => '150',
@@ -216,7 +164,7 @@ class WebVideoTranscode {
 				'audioCodec'                 => 'opus',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_360P =>
+		'360p.vp9.webm' =>
 			[
 				'maxSize'                    => '640x360',
 				'videoBitrate'               => '320',
@@ -232,7 +180,7 @@ class WebVideoTranscode {
 				'tileColumns'                => '1',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_480P =>
+		'480p.vp9.webm' =>
 			[
 				'maxSize'                    => '854x480',
 				'videoBitrate'               => '640',
@@ -248,7 +196,7 @@ class WebVideoTranscode {
 				'tileColumns'                => '1',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_720P =>
+		'720p.vp9.webm' =>
 			[
 				'maxSize'                    => '1280x720',
 				'videoBitrate'               => '1280',
@@ -264,7 +212,7 @@ class WebVideoTranscode {
 				'tileColumns'                => '2',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_1080P =>
+		'1080p.vp9.webm' =>
 			[
 				'maxSize'                    => '1920x1080',
 				'videoBitrate'               => '2560',
@@ -280,7 +228,7 @@ class WebVideoTranscode {
 				'tileColumns'                => '4',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_1440P =>
+		'1440p.vp9.webm' =>
 			[
 				'maxSize'                    => '2560x1440',
 				'videoBitrate'               => '5120',
@@ -296,7 +244,7 @@ class WebVideoTranscode {
 				'tileColumns'                => '4',
 				'type'                       => 'video/webm; codecs="vp9, opus"',
 			],
-		self::ENC_VP9_2160P =>
+		'2160p.vp9.webm' =>
 			[
 				'maxSize'                    => '3840x2160',
 				'videoBitrate'               => '10240',
@@ -318,7 +266,7 @@ class WebVideoTranscode {
 		// and apple HLS profile guide:
 		// https://developer.apple.com/library/ios/#documentation/networkinginternet/conceptual/streamingmediaguide/UsingHTTPLiveStreaming/UsingHTTPLiveStreaming.html#//apple_ref/doc/uid/TP40008332-CH102-DontLinkElementID_24
 
-		self::ENC_H264_160P =>
+		'160p.mp4' =>
 			[
 				'maxSize' => '288x160',
 				'videoCodec' => 'h264',
@@ -329,7 +277,7 @@ class WebVideoTranscode {
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
 
-		self::ENC_H264_240P =>
+		'240p.mp4' =>
 			[
 				'maxSize' => '426x240',
 				'videoCodec' => 'h264',
@@ -340,7 +288,7 @@ class WebVideoTranscode {
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
 
-		self::ENC_H264_320P =>
+		'320p.mp4' =>
 			[
 				'maxSize' => '480x320',
 				'videoCodec' => 'h264',
@@ -351,7 +299,7 @@ class WebVideoTranscode {
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
 
-		self::ENC_H264_360P =>
+		'360p.mp4' =>
 			[
 				'maxSize' => '640x360',
 				'videoCodec' => 'h264',
@@ -362,7 +310,7 @@ class WebVideoTranscode {
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
 
-		self::ENC_H264_480P =>
+		'480p.mp4' =>
 			[
 				'maxSize' => '854x480',
 				'videoCodec' => 'h264',
@@ -372,7 +320,7 @@ class WebVideoTranscode {
 				'audioBitrate' => '64k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
-		self::ENC_H264_720P =>
+		'720p.mp4' =>
 			[
 				'maxSize' => '1280x720',
 				'videoCodec' => 'h264',
@@ -382,7 +330,7 @@ class WebVideoTranscode {
 				'audioBitrate' => '128k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
-		self::ENC_H264_1080P =>
+		'1080p.mp4' =>
 			[
 				'maxSize' => '1920x1080',
 				'videoCodec' => 'h264',
@@ -392,7 +340,7 @@ class WebVideoTranscode {
 				'audioBitrate' => '128k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
-		self::ENC_H264_1440P =>
+		'1440p.mp4' =>
 			[
 				'maxSize' => '2560x1440',
 				'videoCodec' => 'h264',
@@ -402,7 +350,7 @@ class WebVideoTranscode {
 				'audioBitrate' => '128k',
 				'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 			],
-		self::ENC_H264_2160P =>
+		'2160p.mp4' =>
 			[
 				'maxSize' => '4096x2160',
 				'videoCodec' => 'h264',
@@ -414,7 +362,7 @@ class WebVideoTranscode {
 			],
 
 		// Audio profiles
-		self::ENC_OGG_VORBIS =>
+		'ogg' =>
 			[
 				'audioCodec'                 => 'vorbis',
 				'audioQuality'               => '3',
@@ -424,7 +372,7 @@ class WebVideoTranscode {
 				'novideo'                    => 'true',
 				'type'                       => 'audio/ogg; codecs="vorbis"',
 			],
-		self::ENC_OGG_OPUS =>
+		'opus' =>
 			[
 				'audioCodec'                 => 'opus',
 				'audioQuality'               => '1',
@@ -434,7 +382,7 @@ class WebVideoTranscode {
 				'novideo'                    => 'true',
 				'type'                       => 'audio/ogg; codecs="opus"',
 			],
-		self::ENC_MP3 =>
+		'mp3' =>
 			[
 				'audioCodec'                 => 'mp3',
 				'audioQuality'               => '1',
@@ -444,7 +392,7 @@ class WebVideoTranscode {
 				'novideo'                    => 'true',
 				'type'                       => 'audio/mpeg',
 			],
-		self::ENC_AAC =>
+		'm4a' =>
 			[
 				'audioCodec'                 => 'aac',
 				'audioQuality'               => '1',

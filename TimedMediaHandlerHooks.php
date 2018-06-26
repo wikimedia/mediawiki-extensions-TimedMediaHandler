@@ -10,6 +10,10 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Register TimedMediaHandler namespace IDs
+	 *
+	 * This way if you set a variable like $wgTimedTextNS in LocalSettings.php
+	 * after you include TimedMediaHandler we can still read the variable values
+	 *
 	 * These are configurable due to Commons history: T123823
 	 * These need to be before registerhooks due to: T123695
 	 *
@@ -33,9 +37,9 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * At some point these should be registered in extension.json
+	 * TODO: At some point these should be registered in extension.json
 	 * But for now we register them dynamically, because they are config dependent,
-	 * while we have two players
+	 * while we have two players.
 	 *
 	 * @param ResourceLoader &$resourceLoader
 	 * @return bool
@@ -189,7 +193,7 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * Register TimedMediaHandler Hooks
+	 * Register remaining TimedMediaHandler hooks right after initial setup
 	 *
 	 * @return bool
 	 */
@@ -199,6 +203,8 @@ class TimedMediaHandlerHooks {
 		$wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
 		$wgWikimediaJenkinsCI;
+
+		$wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
 		// set config for parser tests
 		if ( isset( $wgWikimediaJenkinsCI ) && $wgWikimediaJenkinsCI === true ) {

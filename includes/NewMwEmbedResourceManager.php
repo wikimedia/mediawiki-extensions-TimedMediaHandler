@@ -107,6 +107,10 @@ class NewMwEmbedResourceManager {
 	/**
 	 * ResourceLoaderRegisterModules hook
 	 *
+	 * TODO: At some point these should be registered in extension.json
+	 * But for now we register them dynamically, because they are config dependent,
+	 * while we have two players.
+	 *
 	 * Adds any mwEmbedResources to the ResourceLoader
 	 * @param ResourceLoader &$resourceLoader
 	 * @return bool
