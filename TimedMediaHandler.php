@@ -108,7 +108,7 @@ $wgFFmpegLocation = '/usr/bin/avconv';
 $wgTimedTextNS = 710;
 
 // Set TimedText namespace for ForeignDBViaLBRepo on a per wikiID basis
-// $wgTimedTextForeignNamespaces = array( 'commonswiki' => 102 );
+// $wgTimedTextForeignNamespaces = [ 'commonswiki' => 102 ];
 $wgTimedTextForeignNamespaces = [];
 
 // Set to false to disable local TimedText,

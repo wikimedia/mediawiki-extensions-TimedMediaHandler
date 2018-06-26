@@ -1,42 +1,42 @@
 <?php
 	global $wgVideoPlayerSkinModule;
 	// Register all the EmbedPlayer modules
-	return array(
-			"jquery.embedPlayer" => array( 'scripts' => 'resources/jquery.embedPlayer.js' ),
-			"mw.EmbedPlayer.loader" => array(
+	return [
+			'jquery.embedPlayer' => [ 'scripts' => 'resources/jquery.embedPlayer.js' ],
+			'mw.EmbedPlayer.loader' => [
 				'scripts' => 'resources/mw.EmbedPlayer.loader.js',
 				'dependencies' => 'jquery.embedPlayer',
-			),
-			"mw.MediaElement" => array(
+			],
+			'mw.MediaElement' => [
 				'scripts' => 'resources/mw.MediaElement.js',
-				'dependencies' => array(
+				'dependencies' => [
 					'ext.tmh.OgvJsSupport',
-				),
-			),
-			"mw.MediaPlayer" => array( 'scripts' => 'resources/mw.MediaPlayer.js' ),
-			"mw.MediaPlayers" => array(
+				],
+			],
+			'mw.MediaPlayer' => [ 'scripts' => 'resources/mw.MediaPlayer.js' ],
+			'mw.MediaPlayers' => [
 				'scripts' => 'resources/mw.MediaPlayers.js',
 				'dependencies' => 'mw.MediaPlayer'
-			),
-			"mw.MediaSource" => array(
+			],
+			'mw.MediaSource' => [
 				'scripts' => 'resources/mw.MediaSource.js',
 				'dependencies' => 'mw.MwEmbedSupport',
-			),
-			"mw.EmbedTypes" => array(
+			],
+			'mw.EmbedTypes' => [
 				'scripts' => 'resources/mw.EmbedTypes.js',
-				'dependencies' =>  array(
+				'dependencies' =>  [
 					'mw.MediaPlayers',
 					'mediawiki.Uri',
 					'jquery.client',
-				)
-			),
-			"mw.EmbedPlayer" => array(
-				'scripts' => array(
-					"resources/mw.processEmbedPlayers.js",
-					"resources/mw.EmbedPlayer.js",
-					"resources/skins/mw.PlayerControlBuilder.js",
-				),
-				'dependencies' => array(
+				]
+			],
+			'mw.EmbedPlayer' => [
+				'scripts' => [
+					'resources/mw.processEmbedPlayers.js',
+					'resources/mw.EmbedPlayer.js',
+					'resources/skins/mw.PlayerControlBuilder.js',
+				],
+				'dependencies' => [
 					// mwEmbed support module
 					'mediawiki.client',
 					'mediawiki.UtilitiesTime',
@@ -71,41 +71,41 @@
 
 					// Set to mw.PlayerSkinKskin or mw.PlayerSkinMvpcf in config
 					$wgVideoPlayerSkinModule
-				),
-				'styles' => "resources/skins/EmbedPlayer.css",
+				],
+				'styles' => 'resources/skins/EmbedPlayer.css',
 				'messageDir' => 'i18n',
-			),
+			],
 
-			"mw.EmbedPlayerKplayer"	=> array( 'scripts'=> "resources/mw.EmbedPlayerKplayer.js" ),
-			"mw.EmbedPlayerGeneric"	=> array( 'scripts'=> "resources/mw.EmbedPlayerGeneric.js" ),
-			"mw.EmbedPlayerNative"	=> array( 'scripts'=> "resources/mw.EmbedPlayerNative.js" ),
-			"mw.EmbedPlayerVLCApp"	=> array(
-				'scripts'=> "resources/mw.EmbedPlayerVLCApp.js",
-				'dependencies' => array( 'mediawiki.Uri' )
-			),
-			"mw.EmbedPlayerIEWebMPrompt" => array(
+			'mw.EmbedPlayerKplayer'	=> [ 'scripts' => 'resources/mw.EmbedPlayerKplayer.js' ],
+			'mw.EmbedPlayerGeneric'	=> [ 'scripts' => 'resources/mw.EmbedPlayerGeneric.js' ],
+			'mw.EmbedPlayerNative'	=> [ 'scripts' => 'resources/mw.EmbedPlayerNative.js' ],
+			'mw.EmbedPlayerVLCApp'	=> [
+				'scripts' => 'resources/mw.EmbedPlayerVLCApp.js',
+				'dependencies' => [ 'mediawiki.Uri' ]
+			],
+			'mw.EmbedPlayerIEWebMPrompt' => [
 				'scripts' => 'resources/mw.EmbedPlayerIEWebMPrompt.js',
 				'styles' => 'resources/mw.EmbedPlayerIEWebMPrompt.css',
-			),
-			"mw.EmbedPlayerOgvJs" => array(
+			],
+			'mw.EmbedPlayerOgvJs' => [
 				'scripts' => 'resources/mw.EmbedPlayerOgvJs.js',
-				'dependencies' => array(
+				'dependencies' => [
 					'jquery.spinner',
 					'ext.tmh.OgvJsSupport',
-				),
-			),
-			"mw.EmbedPlayerImageOverlay" => array( 'scripts'=> "resources/mw.EmbedPlayerImageOverlay.js" ),
+				],
+			],
+			'mw.EmbedPlayerImageOverlay' => [ 'scripts' => 'resources/mw.EmbedPlayerImageOverlay.js' ],
 
-			"mw.EmbedPlayerVlc" => array( 'scripts'=> "resources/mw.EmbedPlayerVlc.js" ),
+			'mw.EmbedPlayerVlc' => [ 'scripts' => 'resources/mw.EmbedPlayerVlc.js' ],
 
-			"mw.PlayerSkinKskin" => array(
-				'scripts' => "resources/skins/kskin/mw.PlayerSkinKskin.js",
-				'styles' => "resources/skins/kskin/PlayerSkinKskin.css"
-			),
+			'mw.PlayerSkinKskin' => [
+				'scripts' => 'resources/skins/kskin/mw.PlayerSkinKskin.js',
+				'styles' => 'resources/skins/kskin/PlayerSkinKskin.css'
+			],
 
-			"mw.PlayerSkinMvpcf" => array(
-				'scripts'=> "resources/skins/mvpcf/mw.PlayerSkinMvpcf.js",
-				'styles'=> "resources/skins/mvpcf/PlayerSkinMvpcf.css"
-			),
-	);
+			'mw.PlayerSkinMvpcf' => [
+				'scripts' => 'resources/skins/mvpcf/mw.PlayerSkinMvpcf.js',
+				'styles' => 'resources/skins/mvpcf/PlayerSkinMvpcf.css'
+			],
+	];
 ?>

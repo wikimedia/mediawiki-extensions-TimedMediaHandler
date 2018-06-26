@@ -1,22 +1,22 @@
 <?php
 
 	// Register all the timedText modules
-	return array(
-		"mw.TimedText" => array(
-			'scripts' => "resources/mw.TimedText.js",
-			'styles' => "resources/mw.style.TimedText.css",
-			'dependencies' => array(
+	return [
+		'mw.TimedText' => [
+			'scripts' => 'resources/mw.TimedText.js',
+			'styles' => 'resources/mw.style.TimedText.css',
+			'dependencies' => [
 				'mw.EmbedPlayer',
 				'mw.TextSource',
 				'mw.MwEmbedSupport',
-			),
+			],
 			'messageDir' => 'i18n',
-		),
-		"mw.TextSource" => array(
-			'scripts' => "resources/mw.TextSource.js",
-			'dependencies' => array(
+		],
+		'mw.TextSource' => [
+			'scripts' => 'resources/mw.TextSource.js',
+			'dependencies' => [
 				'mediawiki.UtilitiesTime',
-				"mw.ajaxProxy",
-			)
-		)
-	);
+				'mw.ajaxProxy',
+			]
+		]
+	];

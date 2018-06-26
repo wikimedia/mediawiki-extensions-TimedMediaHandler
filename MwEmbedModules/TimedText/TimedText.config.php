@@ -4,12 +4,12 @@
 	 * $wgMwEmbedModuleConfig[ {configuration name} ] = value; format
 	 */
 
-	return array(
+	return [
 		// If the Timed Text interface should be displayed:
 		// 'always' Displays link and call to contribute always
 		// 'auto' Looks for child timed text elements or "apiTitleKey" & load interface
 		// 'off' Does not display the timed text interface
-		"TimedText.ShowInterface" => "auto",
+		'TimedText.ShowInterface' => 'auto',
 
 		/**
 		* If the "add timed text" link / interface should be exposed
@@ -28,4 +28,4 @@
 
 		// Height of black box below video.
 		'TimedText.BelowVideoBlackBoxHeight' => 40
-	);
+	];
