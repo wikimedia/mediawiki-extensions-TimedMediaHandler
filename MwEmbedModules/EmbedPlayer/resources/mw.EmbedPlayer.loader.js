@@ -9,6 +9,24 @@
 	var embedPlayerInit = function ( $content ) {
 		var $selected = $content.find( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
 		if ( $selected.length ) {
+
+			$selected.each( function( index, playerElement ) {
+				var $playerElement = $( playerElement );
+				var $parent = $playerElement.parent();
+				if ( !$playerElement.hasClass( 'kskin' ) ) {
+					// Hack for parsoid-style output without the styles
+					// Needed for NWE preview mode, which is parsoid-rendered.
+					// Note none of this is needed for videojs mode in future.
+					$parent.css( {
+						width: $( playerElement ).attr( 'width' ) + 'px',
+						height: $( playerElement ).attr( 'height' ) + 'px',
+						display: 'block'
+					} ).addClass( 'mediaContainer' )
+					$playerElement
+						.addClass( 'kskin' );
+				}
+			} );
+
 			var inx = 0;
 			var checkSetDone = function () {
 				if ( inx < $selected.length ) {
