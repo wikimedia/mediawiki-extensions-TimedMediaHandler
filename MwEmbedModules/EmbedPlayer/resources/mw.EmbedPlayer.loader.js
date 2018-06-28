@@ -12,7 +12,7 @@
 		var $selected = $content.find( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
 		if ( $selected.length ) {
 
-			$selected.each( function( index, playerElement ) {
+			$selected.each( function ( index, playerElement ) {
 				var $playerElement = $( playerElement );
 				var $parent = $playerElement.parent();
 				if ( !$playerElement.hasClass( 'kskin' ) ) {
@@ -23,7 +23,7 @@
 						width: $( playerElement ).attr( 'width' ) + 'px',
 						height: $( playerElement ).attr( 'height' ) + 'px',
 						display: 'block'
-					} ).addClass( 'mediaContainer' )
+					} ).addClass( 'mediaContainer' );
 					$playerElement
 						.addClass( 'kskin' );
 				}
@@ -31,7 +31,7 @@
 				if ( !playerElement.id ) {
 					// Parsoid doesn't give ids to videos in galleries, which confuses
 					// mwembed's spinners. Workaround needed for NWE preview mode.
-					playerElement.id = 'mwvid_noid' + (++assignedIndex);
+					playerElement.id = 'mwvid_noid' + ( ++assignedIndex );
 				}
 			} );
 
