@@ -2,6 +2,8 @@
 * EmbedPlayer loader
 */
 ( function ( mw ) {
+	var assignedIndex = 0;
+
 	/**
 	* Add a DOM ready check for player tags
 	* @param {jQuery}
@@ -24,6 +26,12 @@
 					} ).addClass( 'mediaContainer' )
 					$playerElement
 						.addClass( 'kskin' );
+				}
+
+				if ( !playerElement.id ) {
+					// Parsoid doesn't give ids to videos in galleries, which confuses
+					// mwembed's spinners. Workaround needed for NWE preview mode.
+					playerElement.id = 'mwvid_noid' + (++assignedIndex);
 				}
 			} );
 
