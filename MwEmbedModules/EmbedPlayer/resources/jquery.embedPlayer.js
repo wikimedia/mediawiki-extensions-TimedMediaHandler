@@ -6,13 +6,13 @@
 	* Add the mwEmbed jQuery loader wrapper
 	*/
 	$.fn.embedPlayer = function ( readyCallback ) {
-		var playerSet = this;
-		mw.log( 'jQuery.fn.embedPlayer :: ' + $( playerSet ).length );
+		var playerSet = this,
+			// Set up the embed video player class request: (include the skin js as well)
+			dependencySet = [
+				'mw.EmbedPlayer'
+			];
 
-		// Set up the embed video player class request: (include the skin js as well)
-		var dependencySet = [
-			'mw.EmbedPlayer'
-		];
+		mw.log( 'jQuery.fn.embedPlayer :: ' + $( playerSet ).length );
 
 		mw.loader.using( [ 'jquery.client', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' ], function () {
 			$( playerSet ).each( function ( inx, playerElement ) {

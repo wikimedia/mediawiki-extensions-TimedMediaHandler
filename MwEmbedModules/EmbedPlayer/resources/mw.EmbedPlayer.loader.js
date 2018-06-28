@@ -8,13 +8,14 @@
 	* Add a DOM ready check for player tags
 	* @param {jQuery}
 	*/
-	var embedPlayerInit = function ( $content ) {
-		var $selected = $content.find( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
-		if ( $selected.length ) {
+	function embedPlayerInit( $content ) {
+		var inx, checkSetDone,
+			$selected = $content.find( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
 
+		if ( $selected.length ) {
 			$selected.each( function ( index, playerElement ) {
-				var $playerElement = $( playerElement );
-				var $parent = $playerElement.parent();
+				var $playerElement = $( playerElement ),
+					$parent = $playerElement.parent();
 				if ( !$playerElement.hasClass( 'kskin' ) ) {
 					// Hack for parsoid-style output without the styles
 					// Needed for NWE preview mode, which is parsoid-rendered.
@@ -35,8 +36,8 @@
 				}
 			} );
 
-			var inx = 0;
-			var checkSetDone = function () {
+			inx = 0;
+			checkSetDone = function () {
 				if ( inx < $selected.length ) {
 					// put in timeout to avoid browser lockup, and function stack
 					$selected.eq( inx ).embedPlayer( function () {
@@ -50,7 +51,7 @@
 
 			checkSetDone();
 		}
-	};
+	}
 	mw.hook( 'wikipage.content' ).add( embedPlayerInit );
 
 }( mediaWiki ) );

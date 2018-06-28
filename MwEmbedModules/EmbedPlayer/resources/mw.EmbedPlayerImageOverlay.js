@@ -29,12 +29,13 @@
 		 * Build the player interface:
 		 */
 		init: function () {
+			var i;
 			// Check if features are already updated:
 			if ( this.native_instaceOf === 'Native' ) {
 				return;
 			}
 			// inherit mw.EmbedPlayerNative (
-			for ( var i in mw.EmbedPlayerNative ) {
+			for ( i in mw.EmbedPlayerNative ) {
 				if ( typeof mw.EmbedPlayerImageOverlay[ i ] !== 'undefined' ) {
 					this[ 'native_' + i ] = mw.EmbedPlayerNative[ i ];
 				} else {
@@ -88,6 +89,8 @@
 		*  Play function starts the video playback
 		*/
 		play: function () {
+			var vid;
+
 			mw.log( 'EmbedPlayerImageOverlay::play> lastPauseTime:' + this.lastPauseTime + ' ct: ' + this.currentTime );
 			this.applyIntrinsicAspect();
 			// Check for image duration
@@ -106,7 +109,7 @@
 			if ( !$( this ).data( 'previousInstanceOf' ) ) {
 				// Update the previousInstanceOf flag:
 				$( this ).data( 'previousInstanceOf', this.instanceOf );
-				var vid = this.getPlayerElement();
+				vid = this.getPlayerElement();
 				// populate the video with black video sources:
 				this.triggerHelper( 'AddEmptyBlackSources', [ vid ] );
 				// run play:
@@ -239,33 +242,33 @@
 		* Get the "embed" html for the html player
 		*/
 		embedPlayerHTML: function () {
-			var self = this;
+			var currentSoruceObj, $image,
+				self = this;
 			// remove any old imageOverlay:
 			this.$interface.find( '.imageOverlay' ).remove();
 			mw.log( 'EmbedPlayerImageOverlay :doEmbedHTML: ' + this.id );
 
-			var currentSoruceObj = this.selectedSource;
+			currentSoruceObj = this.selectedSource;
 
 			if ( !currentSoruceObj ) {
 				mw.log( 'Error:: EmbedPlayerImageOverlay:embedPlayerHTML> missing source' );
 				return;
 			}
-			var $image =
-				$( '<img>' )
-					.css( {
-						position: 'relative',
-						width: '100%',
-						height: '100%'
-					} )
-					.attr( {
-						src: currentSoruceObj.getSrc()
-					} )
-					.addClass( 'imageOverlay' )
-					.load( function () {
-					// reset clock time:
-						self.clockStartTime = new Date().getTime();
-						self.monitor();
-					} );
+			$image = $( '<img>' )
+				.css( {
+					position: 'relative',
+					width: '100%',
+					height: '100%'
+				} )
+				.attr( {
+					src: currentSoruceObj.getSrc()
+				} )
+				.addClass( 'imageOverlay' )
+				.load( function () {
+				// reset clock time:
+					self.clockStartTime = new Date().getTime();
+					self.monitor();
+				} );
 
 			// move the video element off screen:
 			$( this.getPlayerElement() ).css( {
@@ -284,27 +287,28 @@
 			this.applyIntrinsicAspect();
 		},
 		applyIntrinsicAspect: function () {
-			// var $this = this.$interface;
-			// Check if a image thumbnail is present:
-			/* if(  this.$interface && this.$interface.find('.imageOverlay').length ){
-				var img = this.$interface.find('.imageOverlay')[0];
-				var pHeight = $this.height();
-				// Check for intrinsic width and maintain aspect ratio
-				if( img.naturalWidth && img.naturalHeight ){
-					var pWidth = parseInt(  img.naturalWidth / img.naturalHeight * pHeight);
-					if( pWidth > $this.width() ){
-						pWidth = $this.width();
-						pHeight =  parseInt( img.naturalHeight / img.naturalWidth * pWidth );
-					}
-					$( img ).css({
-						'height' : pHeight + 'px',
-						'width':  pWidth + 'px',
-						'left': ( ( $this.width() - pWidth ) * .5 ) + 'px',
-						'top': ( ( $this.height() - pHeight ) * .5 ) + 'px',
-						'position' : 'absolute'
-					});
-				}
-			}*/
+			// var img, pHeight, pWidth,
+			// 	$interface = this.$interface;
+			// // Check if a image thumbnail is present:
+			// if ( $interface && $interface.find( '.imageOverlay' ).length ) {
+			// 	img = $interface.find( '.imageOverlay' )[ 0 ];
+			// 	pHeight = $interface.height();
+			// 	// Check for intrinsic width and maintain aspect ratio
+			// 	if ( img.naturalWidth && img.naturalHeight ) {
+			// 		pWidth = Math.floor( img.naturalWidth / img.naturalHeight * pHeight );
+			// 		if ( pWidth > $interface.width() ) {
+			// 			pWidth = $interface.width();
+			// 			pHeight = Math.floor( img.naturalHeight / img.naturalWidth * pWidth );
+			// 		}
+			// 		$( img ).css( {
+			// 			height: pHeight + 'px',
+			// 			width: pWidth + 'px',
+			// 			left: ( ( $interface.width() - pWidth ) * 0.5 ) + 'px',
+			// 			top: ( ( $interface.height() - pHeight ) * 0.5 ) + 'px',
+			// 			position: 'absolute'
+			// 		} );
+			// 	}
+			// }
 		}
 	};
 }( mediaWiki, jQuery ) );

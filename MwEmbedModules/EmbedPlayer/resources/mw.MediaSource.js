@@ -118,23 +118,24 @@
 		 * MediaSource constructor:
 		 */
 		init: function ( element ) {
-			var self = this;
+			var pUrl, sourceAttr, attrName,
+				self = this;
 			// mw.log('EmbedPlayer::adding mediaSource: ' + element);
 			this.src = $( element ).attr( 'src' );
 
 			// Set default URLTimeEncoding if we have a time url:
 			// not ideal way to discover if content is on an oggz_chop server.
 			// should check some other way.
-			var pUrl = new mw.Uri( this.src );
+			pUrl = new mw.Uri( this.src );
 			if ( typeof pUrl.query.t !== 'undefined' ) {
 				this.URLTimeEncoding = true;
 			}
 
-			var sourceAttr = mw.config.get( 'EmbedPlayer.SourceAttributes' );
+			sourceAttr = mw.config.get( 'EmbedPlayer.SourceAttributes' );
 			$.each( sourceAttr, function ( inx, attr ) {
 				if ( $( element ).attr( attr ) ) {
 				// strip data- from the attribute name
-					var attrName = ( attr.indexOf( 'data-' ) === 0 ) ? attr.substr( 5 ) : attr;
+					attrName = ( attr.indexOf( 'data-' ) === 0 ) ? attr.substr( 5 ) : attr;
 					self[ attrName ] = $( element ).attr( attr );
 				}
 			} );
@@ -266,10 +267,10 @@
 		 * @return {String} the URI of the source.
 		 */
 		getSrc: function ( serverSeekTime ) {
+			var endvar = '';
 			if ( !serverSeekTime || !this.URLTimeEncoding ) {
 				return this.src;
 			}
-			var endvar = '';
 			if ( this.endNpt ) {
 				endvar = '/' + this.endNpt;
 			}
@@ -283,6 +284,7 @@
 		 * @return {String} Title of the source.
 		 */
 		getTitle: function () {
+			var mimeType, fileName;
 			if ( this.title ) {
 				return this.title;
 			}
@@ -292,7 +294,7 @@
 			}
 
 			// Return a Title based on mime type:
-			var mimeType = this.getMIMEType().split( ';' )[ 0 ];
+			mimeType = this.getMIMEType().split( ';' )[ 0 ];
 			switch ( mimeType ) {
 				case 'video/h264' :
 				case 'video/mp4' :
@@ -317,7 +319,7 @@
 
 			// Return title based on file name:
 			try {
-				var fileName = new mw.Uri( mw.absoluteUrl( this.getSrc() ) ).path.split( '/' ).pop();
+				fileName = new mw.Uri( mw.absoluteUrl( this.getSrc() ) ).path.split( '/' ).pop();
 				if ( fileName ) {
 					return fileName;
 				}
@@ -330,11 +332,12 @@
 		 * Get a short title for the stream
 		 */
 		getShortTitle: function () {
+			var longTitle;
 			if ( this.shorttitle ) {
 				return this.shorttitle;
 			}
 			// Just use a short "long title"
-			var longTitle = this.getTitle();
+			longTitle = this.getTitle();
 			if ( longTitle.length > 20 ) {
 				longTitle = longTitle.substring( 0, 17 ) + '...';
 			}
@@ -347,11 +350,12 @@
 		 * Supports media_url?t=ntp_start/ntp_end url request format
 		 */
 		getURLDuration: function () {
-		// check if we have a URLTimeEncoding:
+			var annoURL, times;
+			// check if we have a URLTimeEncoding:
 			if ( this.URLTimeEncoding ) {
-				var annoURL = new mw.Uri( this.src );
+				annoURL = new mw.Uri( this.src );
 				if ( annoURL.query.t ) {
-					var times = annoURL.query.t.split( '/' );
+					times = annoURL.query.t.split( '/' );
 					this.startNpt = times[ 0 ];
 					this.endNpt = times[ 1 ];
 					this.startOffset = mw.npt2seconds( this.startNpt );
@@ -372,9 +376,9 @@
 		* @param String uri
 		*/
 		getExt: function ( uri ) {
-			var urlParts = new mw.Uri( uri );
-			// Get the extension from the url or from the relative name:
-			var ext = ( urlParts.file ) ? /[^.]+$/.exec( urlParts.file ) : /[^.]+$/.exec( uri );
+			var urlParts = new mw.Uri( uri ),
+				// Get the extension from the url or from the relative name:
+				ext = ( urlParts.file ) ? /[^.]+$/.exec( urlParts.file ) : /[^.]+$/.exec( uri );
 			// remove the hash string if present
 			ext = /[^#]*/g.exec( ext.toString() );
 			ext = ext || '';

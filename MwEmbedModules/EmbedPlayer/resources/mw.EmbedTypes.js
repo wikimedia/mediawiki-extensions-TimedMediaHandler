@@ -15,109 +15,110 @@
 	 * loaded post player detection
 	 */
 	// Flash based players:
-	var kplayer = new mw.MediaPlayer( 'kplayer', [
-		'video/x-flv',
-		'video/h264',
-		'video/mp4; codecs="avc1.42E01E"',
-		'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
-		'audio/mpeg'
-	], 'Kplayer' );
+	var
+		kplayer = new mw.MediaPlayer( 'kplayer', [
+			'video/x-flv',
+			'video/h264',
+			'video/mp4; codecs="avc1.42E01E"',
+			'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'audio/mpeg'
+		], 'Kplayer' ),
 
-	// Native html5 players
-	var oggNativePlayer = new mw.MediaPlayer( 'oggNative', [
-		'video/ogg',
-		'video/ogg; codecs="theora"',
-		'video/ogg; codecs="theora, vorbis"',
-		'audio/ogg',
-		'audio/ogg; codecs="vorbis"',
-		'application/ogg'
-	], 'Native' );
-	// Native html5 players
-	var opusNativePlayer = new mw.MediaPlayer( 'opusNative', [
-		'audio/ogg; codecs="opus"'
-	], 'Native' );
-	var h264NativePlayer = new mw.MediaPlayer( 'h264Native', [
-		'video/h264',
-		'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
-	], 'Native' );
-	var appleVdnPlayer = new mw.MediaPlayer( 'appleVdn', [
-		'application/vnd.apple.mpegurl',
-		'application/vnd.apple.mpegurl; codecs="avc1.42E01E"'
-	], 'Native' );
-	var mp3NativePlayer = new mw.MediaPlayer( 'mp3Native', [
-		'audio/mpeg',
-		'audio/mp3'
-	], 'Native' );
-	var aacNativePlayer = new mw.MediaPlayer( 'aacNative', [
-		'audio/mp4',
-		'audio/mp4; codecs="mp4a.40.5"'
-	], 'Native' );
-	var webmNativePlayer = new mw.MediaPlayer( 'webmNative', [
-		'video/webm',
-		'video/webm; codecs="vp8"',
-		'video/webm; codecs="vp8, vorbis"',
-		'audio/webm',
-		'audio/webm; codecs="vorbis"'
-	], 'Native' );
-	var vp9NativePlayer = new mw.MediaPlayer( 'vp9Native', [
-		'video/webm; codecs="vp9"',
-		'video/webm; codecs="vp9, opus"',
-		'video/webm; codecs="vp9, vorbis"',
-		'audio/webm; codecs="opus"'
-	], 'Native' );
+		// Native html5 players
+		oggNativePlayer = new mw.MediaPlayer( 'oggNative', [
+			'video/ogg',
+			'video/ogg; codecs="theora"',
+			'video/ogg; codecs="theora, vorbis"',
+			'audio/ogg',
+			'audio/ogg; codecs="vorbis"',
+			'application/ogg'
+		], 'Native' ),
+		// Native html5 players
+		opusNativePlayer = new mw.MediaPlayer( 'opusNative', [
+			'audio/ogg; codecs="opus"'
+		], 'Native' ),
+		h264NativePlayer = new mw.MediaPlayer( 'h264Native', [
+			'video/h264',
+			'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+		], 'Native' ),
+		appleVdnPlayer = new mw.MediaPlayer( 'appleVdn', [
+			'application/vnd.apple.mpegurl',
+			'application/vnd.apple.mpegurl; codecs="avc1.42E01E"'
+		], 'Native' ),
+		mp3NativePlayer = new mw.MediaPlayer( 'mp3Native', [
+			'audio/mpeg',
+			'audio/mp3'
+		], 'Native' ),
+		aacNativePlayer = new mw.MediaPlayer( 'aacNative', [
+			'audio/mp4',
+			'audio/mp4; codecs="mp4a.40.5"'
+		], 'Native' ),
+		webmNativePlayer = new mw.MediaPlayer( 'webmNative', [
+			'video/webm',
+			'video/webm; codecs="vp8"',
+			'video/webm; codecs="vp8, vorbis"',
+			'audio/webm',
+			'audio/webm; codecs="vorbis"'
+		], 'Native' ),
+		vp9NativePlayer = new mw.MediaPlayer( 'vp9Native', [
+			'video/webm; codecs="vp9"',
+			'video/webm; codecs="vp9, opus"',
+			'video/webm; codecs="vp9, vorbis"',
+			'audio/webm; codecs="opus"'
+		], 'Native' ),
 
-	// Image Overlay player ( extends native )
-	var imageOverlayPlayer = new mw.MediaPlayer( 'imageOverlay', [
-		'image/jpeg',
-		'image/png'
-	], 'ImageOverlay' );
+		// Image Overlay player ( extends native )
+		imageOverlayPlayer = new mw.MediaPlayer( 'imageOverlay', [
+			'image/jpeg',
+			'image/png'
+		], 'ImageOverlay' ),
 
-	// VLC player
-	// var vlcMimeList = ['video/ogg', 'audio/ogg', 'audio/mpeg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg', 'video/3gp'];
-	// var vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' );
+		// VLC player
+		// vlcMimeList = ['video/ogg', 'audio/ogg', 'audio/mpeg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg', 'video/3gp'],
+		// vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' ),
 
-	var vlcAppPlayer = new mw.MediaPlayer( 'vlcAppPlayer', [
-		'video/ogg',
-		'video/ogg; codecs="theora"',
-		'video/ogg; codecs="theora, vorbis"',
-		'audio/ogg',
-		'audio/ogg; codecs="vorbis"',
-		'audio/ogg; codecs="opus"',
-		'application/ogg',
-		'video/webm',
-		'video/webm; codecs="vp8"',
-		'video/webm; codecs="vp8, vorbis"'
-	], 'VLCApp' );
+		vlcAppPlayer = new mw.MediaPlayer( 'vlcAppPlayer', [
+			'video/ogg',
+			'video/ogg; codecs="theora"',
+			'video/ogg; codecs="theora, vorbis"',
+			'audio/ogg',
+			'audio/ogg; codecs="vorbis"',
+			'audio/ogg; codecs="opus"',
+			'application/ogg',
+			'video/webm',
+			'video/webm; codecs="vp8"',
+			'video/webm; codecs="vp8, vorbis"'
+		], 'VLCApp' ),
 
-	var IEWebMPrompt = new mw.MediaPlayer( 'IEWebMPrompt', [
-		'video/webm',
-		'video/webm; codecs="vp8"',
-		'video/webm; codecs="vp8, vorbis"'
-	], 'IEWebMPrompt' );
+		IEWebMPrompt = new mw.MediaPlayer( 'IEWebMPrompt', [
+			'video/webm',
+			'video/webm; codecs="vp8"',
+			'video/webm; codecs="vp8, vorbis"'
+		], 'IEWebMPrompt' ),
 
-	var ogvJsPlayer = new mw.MediaPlayer( 'ogvJsPlayer', [
-		'video/webm',
-		'video/webm; codecs="vp8"',
-		'video/webm; codecs="vp8, vorbis"',
-		'video/webm; codecs="vp8, opus"',
-		'video/webm; codecs="vp9"',
-		'video/webm; codecs="vp9, vorbis"',
-		'video/webm; codecs="vp9, opus"',
-		'audio/webm',
-		'audio/webm; codecs="vorbis"',
-		'audio/webm; codecs="opus"',
-		'video/ogg',
-		'video/ogg; codecs="theora"',
-		'video/ogg; codecs="theora, vorbis"',
-		'video/ogg; codecs="theora, opus"',
-		'audio/ogg',
-		'audio/ogg; codecs="vorbis"',
-		'audio/ogg; codecs="opus"',
-		'application/ogg'
-	], 'OgvJs' );
+		ogvJsPlayer = new mw.MediaPlayer( 'ogvJsPlayer', [
+			'video/webm',
+			'video/webm; codecs="vp8"',
+			'video/webm; codecs="vp8, vorbis"',
+			'video/webm; codecs="vp8, opus"',
+			'video/webm; codecs="vp9"',
+			'video/webm; codecs="vp9, vorbis"',
+			'video/webm; codecs="vp9, opus"',
+			'audio/webm',
+			'audio/webm; codecs="vorbis"',
+			'audio/webm; codecs="opus"',
+			'video/ogg',
+			'video/ogg; codecs="theora"',
+			'video/ogg; codecs="theora, vorbis"',
+			'video/ogg; codecs="theora, opus"',
+			'audio/ogg',
+			'audio/ogg; codecs="vorbis"',
+			'audio/ogg; codecs="opus"',
+			'application/ogg'
+		], 'OgvJs' );
 
-	// Generic plugin
-	// var oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
+		// Generic plugin
+		// oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' ),
 
 	mw.EmbedTypes = {
 
@@ -157,13 +158,14 @@
 		 * Detects what plug-ins the client supports
 		 */
 		detectPlayers: function () {
+			var dummyvid, i, type, semicolonPos, pluginName,
+				// Some browsers filter out duplicate mime types, hiding some plugins
+				uniqueMimesOnly = $.client.test( { opera: null, safari: null } );
+
 			mw.log( 'EmbedTypes::detectPlayers running detect' );
 
 			// All players support for playing "images"
 			this.mediaPlayers.addPlayer( imageOverlayPlayer );
-
-			// Some browsers filter out duplicate mime types, hiding some plugins
-			var uniqueMimesOnly = $.client.test( { opera: null, safari: null } );
 
 			// Use core mw.supportsFlash check:
 			if ( mw.supportsFlash() ) {
@@ -189,9 +191,9 @@
 					typeof HTMLVideoElement === 'function' // Opera
 				)
 			) {
-			// Test what codecs the native player supports:
+				// Test what codecs the native player supports:
 				try {
-					var dummyvid = document.createElement( 'video' );
+					dummyvid = document.createElement( 'video' );
 					if ( dummyvid.canPlayType ) {
 					// Add the webm player
 						if ( dummyvid.canPlayType( 'video/webm; codecs="vp8, vorbis"' ) ) {
@@ -243,14 +245,14 @@
 
 			// "navigator" plugins
 			if ( navigator.mimeTypes && navigator.mimeTypes.length > 0 ) {
-				for ( var i = 0; i < navigator.mimeTypes.length; i++ ) {
-					var type = navigator.mimeTypes[ i ].type;
-					var semicolonPos = type.indexOf( ';' );
+				for ( i = 0; i < navigator.mimeTypes.length; i++ ) {
+					type = navigator.mimeTypes[ i ].type;
+					semicolonPos = type.indexOf( ';' );
 					if ( semicolonPos > -1 ) {
 						type = type.substr( 0, semicolonPos );
 					}
 					// mw.log( 'on type: ' + type );
-					var pluginName = navigator.mimeTypes[ i ].enabledPlugin ? navigator.mimeTypes[ i ].enabledPlugin.name : '';
+					pluginName = navigator.mimeTypes[ i ].enabledPlugin ? navigator.mimeTypes[ i ].enabledPlugin.name : '';
 					if ( !pluginName ) {
 					// In case it is null or undefined
 						pluginName = '';
@@ -333,8 +335,8 @@
 		 * 		name Name of ActiveXObject to look for
 		 */
 		testActiveX: function ( name ) {
-			mw.log( 'EmbedPlayer::detect: test testActiveX: ' + name );
 			var hasObj = true;
+			mw.log( 'EmbedPlayer::detect: test testActiveX: ' + name );
 			try {
 				// No IE, not a class called "name", it's a variable
 				// eslint-disable-next-line no-new

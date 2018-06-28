@@ -60,27 +60,28 @@
 			optionsMenu: {
 				w: 0,
 				o: function ( ctrlObj ) {
-					var embedPlayer = ctrlObj.embedPlayer;
-					var $menuOverlay = $( '<div>' )
-						.addClass( 'overlay-win k-menu ui-widget-content' )
-						.css( {
-							width: '100%',
-							position: 'absolute',
-							top: '0px',
-							bottom: ( ctrlObj.getHeight() + 2 ) + 'px'
-						} );
+					var userAgent, topPos, menuItem, $menuBar, $menuScreens,
+						embedPlayer = ctrlObj.embedPlayer,
+						$menuOverlay = $( '<div>' )
+							.addClass( 'overlay-win k-menu ui-widget-content' )
+							.css( {
+								width: '100%',
+								position: 'absolute',
+								top: '0px',
+								bottom: ( ctrlObj.getHeight() + 2 ) + 'px'
+							} );
 
 					// Note safari can't display video overlays with text:
 					// see bug https://bugs.webkit.org/show_bug.cgi?id=48379
 
-					var userAgent = navigator.userAgent.toLowerCase();
+					userAgent = navigator.userAgent.toLowerCase();
 					if ( userAgent.indexOf( 'safari' ) !== -1 ) {
 						$menuOverlay.css( 'opacity', '0.9' );
 					}
 					// Setup menu offset ( if player height < getOverlayHeight )
 					// This displays the menu outside of the player on small embeds
 					if ( embedPlayer.getPlayerHeight() < ctrlObj.getOverlayHeight() ) {
-						var topPos = ( ctrlObj.isOverlayControls() ) ?
+						topPos = ( ctrlObj.isOverlayControls() ) ?
 							embedPlayer.getPlayerHeight() :
 							embedPlayer.getPlayerHeight() + ctrlObj.getHeight();
 
@@ -98,8 +99,7 @@
 						$( embedPlayer ).parents( '.thumbinner' ).css( 'overflow', 'visible' );
 					}
 
-					var menuItem,
-						$menuBar = $( '<ul>' ).addClass( 'k-menu-bar' );
+					$menuBar = $( '<ul>' ).addClass( 'k-menu-bar' );
 
 					// Don't include about player menu item ( FIXME should be moved to a init function )
 					delete ctrlObj.supportedMenuItems.aboutPlayerLibrary;
@@ -127,7 +127,7 @@
 					// Add the menuBar to the menuOverlay
 					$menuOverlay.append( $menuBar );
 
-					var $menuScreens = $( '<div>' )
+					$menuScreens = $( '<div>' )
 						.addClass( 'k-menu-screens' )
 						.css( {
 							position: 'absolute',
@@ -171,8 +171,9 @@
 		 * Adds the skin Control Bindings
 		 */
 		addSkinControlBindings: function () {
-			var embedPlayer = this.embedPlayer;
-			var self = this;
+			var $kmenu,
+				embedPlayer = this.embedPlayer,
+				self = this;
 
 			// Set up control bar pointer
 			this.$playerTarget = embedPlayer.$interface;
@@ -183,7 +184,7 @@
 				.off()
 				.on( 'click', function () {
 					self.checkMenuOverlay();
-					var $kmenu = self.$playerTarget.find( '.k-menu' );
+					$kmenu = self.$playerTarget.find( '.k-menu' );
 					if ( $kmenu.is( ':visible' ) ) {
 						self.closeMenuOverlay();
 					} else {
@@ -205,8 +206,8 @@
 		 * checks for menu overlay and runs menu bindings if unset
 		 */
 		checkMenuOverlay: function () {
-			var self = this;
-			var embedPlayer = this.embedPlayer;
+			var self = this,
+				embedPlayer = this.embedPlayer;
 			if ( self.$playerTarget.find( '.k-menu' ).length === 0 ) {
 				// Stop the player if it does not support overlays:
 				if ( !embedPlayer.supports.overlays ) {
@@ -222,10 +223,11 @@
 		 * Close the menu overlay
 		 */
 		closeMenuOverlay: function () {
+			var embedPlayer = this.embedPlayer,
+				$optionsMenu = embedPlayer.getInterface().find( '.k-options' ),
+				$kmenu = embedPlayer.getInterface().find( '.k-menu' );
+
 			mw.log( 'PlayerSkinKskin:: close menu overlay' );
-			var embedPlayer = this.embedPlayer;
-			var $optionsMenu = embedPlayer.getInterface().find( '.k-options' );
-			var $kmenu = embedPlayer.getInterface().find( '.k-menu' );
 			$kmenu.fadeOut( 'fast', function () {
 				$optionsMenu.find( 'span' )
 					.text( mw.msg( 'mwe-embedplayer-menu_btn' ) );
@@ -246,8 +248,8 @@
 		 * Show the menu overlay
 		 */
 		showMenuOverlay: function () {
-			var $optionsMenu = this.$playerTarget.find( '.k-options' );
-			var $kmenu = this.$playerTarget.find( '.k-menu' );
+			var $optionsMenu = this.$playerTarget.find( '.k-options' ),
+				$kmenu = this.$playerTarget.find( '.k-menu' );
 
 			$kmenu.fadeIn( 'fast', function () {
 				$optionsMenu.find( 'span' )
@@ -264,13 +266,14 @@
 		/**
 		 * Adds binding for the options menu
 		 *
-		 * @param {Object} $tp Target video container for
+		 * @param {jQuery} $tp Target video container for
 		 */
 		addMenuBinding: function () {
-			var self = this;
-			var embedPlayer = this.embedPlayer;
-			// Set local player target pointer:
-			var $playerTarget = embedPlayer.$interface;
+			var menuItem,
+				self = this,
+				embedPlayer = this.embedPlayer,
+				// Set local player target pointer:
+				$playerTarget = embedPlayer.$interface;
 
 			// Check if k-menu already exists:
 			if ( $playerTarget.find( '.k-menu' ).length !== 0 ) { return false; }
@@ -284,14 +287,13 @@
 			$playerTarget.find( '.k-menu' ).hide();
 
 			// Add menu-items bindings:
-			for ( var menuItem in self.supportedMenuItems ) {
+			for ( menuItem in self.supportedMenuItems ) {
 				$playerTarget.find( '.k-' + menuItem + '-btn' ).on( 'click', function () {
 
 					// Grab the context from the "clicked" menu item
-					var mk = $( this ).attr( 'rel' );
-
-					// hide all menu items
-					var $targetItem = $playerTarget.find( '.menu-' + mk );
+					var mk = $( this ).attr( 'rel' ),
+						// hide all menu items
+						$targetItem = $playerTarget.find( '.menu-' + mk );
 
 					// call the function showMenuItem
 					self.showMenuItem(	mk );
@@ -314,12 +316,12 @@
 		 * NOTE: this should be merged with parent mw.PlayerControlBuilder optionMenuItems
 		 * binding mode
 		 *
-		 * @param {String} menu_itme Menu item key to display
+		 * @param {string} menuItem Menu item key to display
 		 */
 		showMenuItem: function ( menuItem ) {
 			var embedPlayer = this.embedPlayer;
 			this.currentMenuItem = menuItem;
-			// handle special k-skin specific display;
+			// Handle special k-skin specific display;
 			switch ( menuItem ) {
 				case 'credits':
 					this.showCredits();
@@ -350,9 +352,10 @@
 		 * Show the credit screen ( presently specific to kaltura skin )
 		 */
 		showCredits: function () {
-		// Set up the shortcuts:
-			var embedPlayer = this.embedPlayer;
-			var $target = embedPlayer.$interface.find( '.menu-credits' );
+			// Set up the shortcuts:
+			var $creditBox,
+				embedPlayer = this.embedPlayer,
+				$target = embedPlayer.$interface.find( '.menu-credits' );
 
 			$target.empty().append(
 				$( '<h2>' )
@@ -378,7 +381,7 @@
 						} )
 				);
 			}
-			var $creditBox = $target.find( '.credits_box' );
+			$creditBox = $target.find( '.credits_box' );
 			$creditBox.data( 'playerId', embedPlayer.id );
 			$( embedPlayer ).triggerQueueCallback( 'showCredits', $creditBox, function ( addedCredits ) {
 				if ( !addedCredits ) {

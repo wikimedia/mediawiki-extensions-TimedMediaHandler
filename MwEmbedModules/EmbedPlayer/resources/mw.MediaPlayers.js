@@ -61,7 +61,8 @@
 		 *      player Player object to be added
 		 */
 		addPlayer: function ( player ) {
-			for ( var i = 0; i < this.players.length; i++ ) {
+			var i;
+			for ( i = 0; i < this.players.length; i++ ) {
 				if ( this.players[ i ].id === player.id ) {
 				// Player already found
 					return;
@@ -75,7 +76,8 @@
 		 * Checks if a player is supported by id
 		 */
 		isSupportedPlayer: function ( playerId ) {
-			for ( var i = 0; i < this.players.length; i++ ) {
+			var i;
+			for ( i = 0; i < this.players.length; i++ ) {
 				if ( this.players[ i ].id === playerId ) {
 					return true;
 				}
@@ -91,13 +93,15 @@
 		 * @return {Array} Array of players that support a the requested mime type
 		 */
 		getMIMETypePlayers: function ( mimeType ) {
-			var mimePlayers = [];
-			var self = this;
-			var baseMimeType = mimeType.split( ';' )[ 0 ];
+			var i,
+				mimePlayers = [],
+				self = this,
+				baseMimeType = mimeType.split( ';' )[ 0 ];
+
 			if ( this.defaultPlayers[ baseMimeType ] ) {
 				$.each( this.defaultPlayers[ baseMimeType ], function ( d ) {
 					var library = self.defaultPlayers[ baseMimeType ][ d ];
-					for ( var i = 0; i < self.players.length; i++ ) {
+					for ( i = 0; i < self.players.length; i++ ) {
 						if ( self.players[ i ].library === library && self.players[ i ].supportsMIMEType( mimeType ) ) {
 							mimePlayers.push( self.players[ i ] );
 						}
@@ -115,12 +119,14 @@
 		 * @return Player for mime type null if no player found
 		 */
 		defaultPlayer: function ( mimeType ) {
-		// mw.log( "get defaultPlayer for " + mimeType );
-			var mimePlayers = this.getMIMETypePlayers( mimeType );
+			var i,
+				mimePlayers = this.getMIMETypePlayers( mimeType );
+
+			// mw.log( "get defaultPlayer for " + mimeType );
 			if ( mimePlayers.length > 0 ) {
-			// Select the default player:
-				for ( var i = 0; i < mimePlayers.length; i++ ) {
-				// Check for native:
+				// Select the default player:
+				for ( i = 0; i < mimePlayers.length; i++ ) {
+					// Check for native:
 					if ( mimePlayers[ i ].librayr === 'Native' ) {
 						return mimePlayers[ i ];
 					}
@@ -168,8 +174,10 @@
 		 *      mimeType Mime type for the associated player stream
 		 */
 		setPlayerPreference: function ( playerId, mimeType ) {
-			var selectedPlayer = null;
-			for ( var i = 0; i < this.players.length; i++ ) {
+			var i,
+				selectedPlayer = null;
+
+			for ( i = 0; i < this.players.length; i++ ) {
 				if ( this.players[ i ].id === playerId ) {
 					selectedPlayer = this.players[ i ];
 					mw.log( 'EmbedPlayer::setPlayerPreference: choosing ' + playerId + ' for ' + mimeType );

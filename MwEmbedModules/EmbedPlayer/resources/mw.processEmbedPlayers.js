@@ -11,12 +11,14 @@
 	'use strict';
 
 	mw.processEmbedPlayers = function ( playerSet, callback ) {
+		var addedPlayersFlag,
+			// The player id list container
+			playerIdList = [];
+
 		mw.log( 'processEmbedPlayers:: playerSet: ', playerSet );
-		// The player id list container
-		var playerIdList = [];
 
 		// Check if the selected player set is ready if ready issue the parent callback
-		var areSelectedPlayersReady = function () {
+		function areSelectedPlayersReady() {
 			var playersLoaded = true;
 			$.each( playerIdList, function ( inx, playerId ) {
 				if ( !$( '#' + playerId )[ 0 ].playerReadyFlag ) {
@@ -29,7 +31,7 @@
 					callback();
 				}
 			}
-		};
+		}
 
 		/**
 		 * Adds a player element for the embedPlayer to rewrite
@@ -49,7 +51,8 @@
 		 * @param {Element}
 		 *      playerElement DOM element to be swapped
 		 */
-		var addPlayerElement = function ( playerElement ) {
+		function addPlayerElement( playerElement ) {
+			var waitForMeta, ranPlayerSwapFlag;
 			mw.log( 'EmbedPlayer:: addElement:: ' + playerElement.id );
 
 			// Be sure to "stop" the target ( Firefox 3x keeps playing
@@ -63,7 +66,7 @@
 
 			// DOM *could* load height, width and duration eventually, in some browsers
 			// By default, don't bother waiting for this.
-			var waitForMeta = false;
+			waitForMeta = false;
 
 			// if a plugin has told us not to waitForMeta, don't
 			if ( playerElement.waitForMeta !== false ) {
@@ -72,10 +75,11 @@
 				waitForMeta = waitForMetaCheck( playerElement );
 			}
 
-			var ranPlayerSwapFlag = false;
+			ranPlayerSwapFlag = false;
 
 			// Local callback to runPlayer swap once playerElement has metadata
-			var runPlayerSwap = function () {
+			function runPlayerSwap() {
+				var playerInterface, inDomPlayer;
 				// Don't run player swap twice
 				if ( ranPlayerSwapFlag ) {
 					return;
@@ -83,9 +87,9 @@
 				ranPlayerSwapFlag = true;
 				mw.log( 'processEmbedPlayers::runPlayerSwap::' + $( playerElement ).attr( 'id' ) );
 
-				var playerInterface = new mw.EmbedPlayer( playerElement );
+				playerInterface = new mw.EmbedPlayer( playerElement );
 				// eslint-disable-next-line no-use-before-define
-				var inDomPlayer = swapEmbedPlayerElement( playerElement, playerInterface );
+				inDomPlayer = swapEmbedPlayerElement( playerElement, playerInterface );
 
 				// IE/Edge with WebM components re-triggers autoplay after removal as well.
 				if ( playerElement.pause ) {
@@ -116,7 +120,7 @@
 				// interface: make sure to use the element that is in the DOM:
 					inDomPlayer.checkPlayerSources();
 				} );
-			};
+			}
 
 			if ( waitForMeta && mw.config.get( 'EmbedPlayer.WaitForMeta' ) ) {
 				mw.log( 'processEmbedPlayers::WaitForMeta ( video missing height (' +
@@ -133,7 +137,7 @@
 				runPlayerSwap();
 				return;
 			}
-		};
+		}
 
 		/**
 		 * Check if we should wait for metadata.
@@ -141,7 +145,7 @@
 		 * @return 	true if the size is "likely" to be updated by waiting for metadata
 		 * 			false if the size has been set via an attribute or is already loaded
 		 */
-		var waitForMetaCheck = function ( playerElement ) {
+		function waitForMetaCheck( playerElement ) {
 			var waitForMeta = false;
 
 			// Don't wait for metadata for non html5 media elements
@@ -215,7 +219,7 @@
 				// playerElement is not likely to update its meta data ( no src )
 				return false;
 			}
-		};
+		}
 
 		/**
 		 * swapEmbedPlayerElement
@@ -227,16 +231,18 @@
 		 * @param {Object}
 		 *      playerInterface Interface to swap into the target element
 		 */
-		var swapEmbedPlayerElement = function ( targetElement, playerInterface ) {
+		function swapEmbedPlayerElement( targetElement, playerInterface ) {
+			var method, dataAttributes, $spinner,
+				// Create a new element to swap the player interface into
+				swapPlayerElement = document.createElement( 'div' );
+
 			mw.log( 'processEmbedPlayers::swapEmbedPlayerElement: ' + targetElement.id );
-			// Create a new element to swap the player interface into
-			var swapPlayerElement = document.createElement( 'div' );
 
 			// Add a class that identifies all embedPlayers:
 			$( swapPlayerElement ).addClass( 'mwEmbedPlayer' );
 
 			// Get properties / methods from playerInterface:
-			for ( var method in playerInterface ) {
+			for ( method in playerInterface ) {
 				if ( method !== 'readyState' ) { // readyState crashes IE ( don't include )
 					swapPlayerElement[ method ] = playerInterface[ method ];
 				}
@@ -247,7 +253,7 @@
 			swapPlayerElement.style.position = 'relative';
 
 			// Copy any data attributes from the target player element over to the swapPlayerElement
-			var dataAttributes = mw.config.get( 'EmbedPlayer.DataAttributes' );
+			dataAttributes = mw.config.get( 'EmbedPlayer.DataAttributes' );
 			if ( dataAttributes ) {
 				$.each( dataAttributes, function ( attrName ) {
 					if ( $( targetElement ).data( attrName ) ) {
@@ -277,7 +283,6 @@
 				$( targetElement ).replaceWith( swapPlayerElement );
 			}
 
-			var $spinner;
 			// If we don't already have a loadSpiner add one:
 			if ( $( '#loadingSpinner_' + playerInterface.id ).length === 0 && $.client.profile().name !== 'firefox' ) {
 				if ( playerInterface.useNativePlayerControls() || playerInterface.isPersistentNativePlayer() ) {
@@ -289,10 +294,11 @@
 				$spinner.attr( 'id', 'loadingSpinner_' + playerInterface.id );
 			}
 			return swapPlayerElement;
-		};
+		}
 
 		// Add a loader for <div> embed player rewrites:
 		$( playerSet ).each( function ( index, playerElement ) {
+			var posterSrc, width, height;
 
 			// Make sure the playerElement has an id:
 			if ( !$( playerElement ).attr( 'id' ) ) {
@@ -307,11 +313,11 @@
 				playerElement.nodeName.toLowerCase() === 'div' &&
 				$( playerElement ).attr( 'poster' )
 			) {
-				var posterSrc = $( playerElement ).attr( 'poster' );
+				posterSrc = $( playerElement ).attr( 'poster' );
 
 				// Set image size:
-				var width = $( playerElement ).width();
-				var height = $( playerElement ).height();
+				width = $( playerElement ).width();
+				height = $( playerElement ).height();
 				if ( !width ) {
 					width = '100%';
 				}
@@ -333,7 +339,7 @@
 		} );
 
 		// Make sure we have user preference setup for setting preferences on video selection
-		var addedPlayersFlag = false;
+		addedPlayersFlag = false;
 		mw.log( 'processEmbedPlayers:: Do: ' + $( playerSet ).length + ' players ' );
 		// Add each selected element to the player manager:
 		$( playerSet ).each( function ( index, playerElement ) {

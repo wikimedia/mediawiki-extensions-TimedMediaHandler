@@ -5,7 +5,7 @@
 
 	mw.EmbedPlayerOgvJs = {
 
-	// Instance name:
+		// Instance name:
 		instanceOf: 'OgvJs',
 
 		// Supported feature set of the OGVPlayer widget:
@@ -27,7 +27,7 @@
 		 * and enabling web audio for Safari inside the event
 		 * handler.
 		 *
-		 * @return jQuery.Deferred
+		 * @return {jQuery.Deferred}
 		 */
 		_ogvJsPreInit: function () {
 			this._initializeAudio();
@@ -37,7 +37,7 @@
 		/**
 		 * Actually initialize the player.
 		 *
-		 * @return OGVPlayer
+		 * @return {OGVPlayer}
 		 */
 		_ogvJsInit: function () {
 			var options = {};
@@ -63,6 +63,7 @@
 		 * Output the the embed html
 		 */
 		embedPlayerHTML: function ( optionalCallback ) {
+			var self = this;
 
 			$( this )
 				.empty()
@@ -71,7 +72,6 @@
 					type: 'block'
 				} ) );
 
-			var self = this;
 			self._initializeAudio();
 			support.loadOgvJs().done( function () {
 
@@ -107,8 +107,8 @@
 		 * Get the embed player time
 		 */
 		getPlayerElementTime: function () {
-			this.getPlayerElement();
 			var currentTime = 0;
+			this.getPlayerElement();
 			if ( this.playerElement ) {
 				currentTime = this.playerElement.currentTime;
 			} else {
@@ -177,16 +177,16 @@
 
 		/**
 		 * Seek in the ogg stream
-		 * @param {Float} percentage Percentage to seek into the stream
+		 * @param {number} percentage Percentage to seek into the stream
 		 */
 		seek: function ( percentage ) {
 			this.setCurrentTime( percentage * parseFloat( this.getDuration() ) );
 		},
 
 		setCurrentTime: function ( time, callback ) {
+			var self = this;
 			this.getPlayerElement();
 
-			var self = this;
 			function onseeked() {
 				self.seeking = false;
 				self.hideSpinner();
@@ -212,9 +212,9 @@
 		},
 
 		/**
-	 * Toggle the Mute
-	 * calls parent_toggleMute to update the interface
-	 */
+		 * Toggle the Mute
+		 * calls parent_toggleMute to update the interface
+		 */
 		toggleMute: function () {
 			this.parent_toggleMute();
 			this.getPlayerElement();
@@ -222,34 +222,34 @@
 		},
 
 		/**
-	 * Update Volume
-	 *
-	 * @param {Float} percent Value between 0 and 1 to set audio volume
-	 */
-		setPlayerElementVolume: function ( percent ) {
+		 * Update Volume
+		 *
+		 * @param {number} volume Value between 0 and 1 to set audio volume
+		 */
+		setPlayerElementVolume: function ( volume ) {
 			if ( this.getPlayerElement() ) {
-			// Disable mute if positive volume
-				if ( percent !== 0 ) {
+				// Disable mute if positive volume
+				if ( volume !== 0 ) {
 					this.playerElement.muted = false;
 				}
-				this.playerElement.volume = percent;
+				this.playerElement.volume = volume;
 			}
 		},
 
 		/**
-	 * get Volume
-	 *
-	 * @return {Float}
-	 * 	Audio volume between 0 and 1.
-	 */
+		 * Get volume
+		 *
+		 * @return {number} Audio volume between 0 and 1.
+		 */
 		getPlayerElementVolume: function () {
 			if ( this.getPlayerElement() ) {
 				return this.playerElement.volume;
 			}
 		},
 		/**
-	 * get the native muted state
-	 */
+		 * Get the native muted state
+		 * @return {boolean}
+		 */
 		getPlayerElementMuted: function () {
 			if ( this.getPlayerElement() ) {
 				return this.playerElement.muted;

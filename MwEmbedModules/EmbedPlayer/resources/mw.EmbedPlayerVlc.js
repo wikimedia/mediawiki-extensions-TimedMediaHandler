@@ -66,7 +66,8 @@
 		 * Inserts the requested src to the embed instance
 		 */
 		postEmbedActions: function () {
-			var self = this;
+			var src, itemId,
+				self = this;
 			// Load a pointer to the vlc into the object (this.playerElement)
 			this.getPlayerElement();
 			if ( this.playerElement && this.playerElement.playlist ) {
@@ -76,10 +77,10 @@
 				this.playerElement.playlist.items.clear();
 
 				// VLC likes absolute urls:
-				var src = mw.absoluteUrl( this.getSrc() );
+				src = mw.absoluteUrl( this.getSrc() );
 
 				mw.log( 'EmbedPlayerVlc:: postEmbedActions play src:' + src );
-				var itemId = this.playerElement.playlist.add( src );
+				itemId = this.playerElement.playlist.add( src );
 				if ( itemId !== -1 ) {
 				// Play
 					this.playerElement.playlist.playItem( itemId );
@@ -131,13 +132,16 @@
 		 * @param {Float} percent Seek to this percent of the stream after playing
 		 */
 		doPlayThenSeek: function ( percent ) {
+			var seekCount,
+				self = this;
+
 			mw.log( 'EmbedPlayerVlc:: doPlayThenSeek' );
-			var self = this;
 			this.play();
-			var seekCount = 0;
-			var readyForSeek = function () {
+			seekCount = 0;
+			function readyForSeek() {
+				var newState;
 				self.getPlayerElement();
-				var newState = self.playerElement.input.state;
+				newState = self.playerElement.input.state;
 				// If playing we are ready to do the seek
 				if ( newState === 3 ) {
 					self.seek( percent );
@@ -149,7 +153,7 @@
 						mw.log( 'Error: EmbedPlayerVlc doPlayThenSeek failed' );
 					}
 				}
-			};
+			}
 			readyForSeek();
 		},
 
@@ -157,6 +161,7 @@
 		 * Updates the status time and player state
 		 */
 		monitor: function () {
+			var iter, msg, msgtype, newState;
 			this.getPlayerElement();
 			if ( !this.playerElement ) {
 				return;
@@ -165,10 +170,10 @@
 			try {
 				if ( this.playerElement.log.messages.count > 0 ) {
 				// there is one or more messages in the log
-					var iter = this.playerElement.log.messages.iterator();
+					iter = this.playerElement.log.messages.iterator();
 					while ( iter.hasNext ) {
-						var msg = iter.next();
-						var msgtype = msg.type.toString();
+						msg = iter.next();
+						msgtype = msg.type.toString();
 						if ( ( msg.severity === 1 ) && ( msgtype === 'input' ) ) {
 							mw.log( msg.message );
 						}
@@ -177,7 +182,7 @@
 					this.playerElement.log.messages.clear();
 				}
 
-				var newState = this.playerElement.input.state;
+				newState = this.playerElement.input.state;
 				if ( this.prevState !== newState ) {
 					if ( newState === 0 ) {
 					// current media has stopped

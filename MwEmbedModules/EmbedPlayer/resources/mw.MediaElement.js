@@ -91,12 +91,13 @@
 		 * @return {Array} mediaSource elements.
 		 */
 		getSources: function ( mimeFilter ) {
+			var i,
+				sourceSet = [];
 			if ( !mimeFilter ) {
 				return this.sources;
 			}
 			// Apply mime filter:
-			var sourceSet = [];
-			for ( var i = 0; i < this.sources.length; i++ ) {
+			for ( i = 0; i < this.sources.length; i++ ) {
 				if (
 					this.sources[ i ].mimeType &&
 					this.sources[ i ].mimeType.indexOf( mimeFilter ) !== -1
@@ -115,7 +116,8 @@
 		 * @return {MediaSource} The selected mediaSource or null if not found
 		 */
 		getSourceById: function ( sourceId ) {
-			for ( var i = 0; i < this.sources.length; i++ ) {
+			var i;
+			for ( i = 0; i < this.sources.length; i++ ) {
 				if ( this.sources[ i ].id === sourceId ) {
 					return this.sources[ i ];
 				}
@@ -130,10 +132,11 @@
 		 *      index Index of source element to set as selectedSource
 		 */
 		setSourceByIndex: function ( index ) {
+			var i,
+				oldSrc = this.selectedSource.getSrc(),
+				playableSources = this.getPlayableSources();
 			mw.log( 'EmbedPlayer::mediaElement:selectSource: ' + index );
-			var oldSrc = this.selectedSource.getSrc();
-			var playableSources = this.getPlayableSources();
-			for ( var i = 0; i < playableSources.length; i++ ) {
+			for ( i = 0; i < playableSources.length; i++ ) {
 				if ( i === index ) {
 					this.selectedSource = playableSources[ i ];
 					break;
@@ -160,18 +163,22 @@
 		 * id order
 		 */
 		autoSelectSource: function () {
+			var vndSources, desktopVdn, mobileVdn, bandwidthDelta, bandwidthTarget,
+				player, nativePlayableSources, namedSourceSet, useBogoSlow,
+				codecPref, i, codec, minSizeDelta, isBogoSlow, displayWidth, sizeDelta,
+				self = this,
+				// Select the default source
+				playableSources = this.getPlayableSources();
+
 			mw.log( 'EmbedPlayer::mediaElement::autoSelectSource' );
-			var self = this;
-			// Select the default source
-			var playableSources = this.getPlayableSources();
 			// Check if there are any playableSources
 			if ( playableSources.length === 0 ) {
 				return false;
 			}
-			var setSelectedSource = function ( source ) {
+			function setSelectedSource( source ) {
 				self.selectedSource = source;
 				return self.selectedSource;
-			};
+			}
 
 			// Set via module driven preference:
 			$( this ).trigger( 'onSelectSource', playableSources );
@@ -190,10 +197,9 @@
 			} );
 
 			// Set apple adaptive ( if available )
-			var vndSources = this.getPlayableSources( 'application/vnd.apple.mpegurl' );
+			vndSources = this.getPlayableSources( 'application/vnd.apple.mpegurl' );
 			if ( vndSources.length && mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'application/vnd.apple.mpegurl' ).length ) {
-			// Check for device flags:
-				var desktopVdn, mobileVdn;
+				// Check for device flags:
 				$.each( vndSources, function ( inx, source ) {
 				// Kaltura tags vdn sources with iphonenew
 					if ( source.getFlavorId() && source.getFlavorId().toLowerCase() === 'iphonenew' ) {
@@ -217,12 +223,12 @@
 
 			// Set via user bandwidth pref will always set source to closest bandwidth allocation while not going over  EmbedPlayer.UserBandwidth
 			if ( $.cookie( 'EmbedPlayer.UserBandwidth' ) ) {
-				var bandwidthDelta = 999999999;
-				var bandwidthTarget = $.cookie( 'EmbedPlayer.UserBandwidth' );
+				bandwidthDelta = 999999999;
+				bandwidthTarget = $.cookie( 'EmbedPlayer.UserBandwidth' );
 				$.each( playableSources, function ( inx, source ) {
 					if ( source.bandwidth ) {
 					// Check if a native source ( takes president over bandwidth selection )
-						var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.mimeType );
+						player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.mimeType );
 						if ( !player || player.library !== 'Native'	) {
 						// continue
 							return true;
@@ -243,18 +249,18 @@
 
 			// If we have at least one native source, throw out non-native sources
 			// for size based source selection:
-			var nativePlayableSources = [];
+			nativePlayableSources = [];
 			$.each( playableSources, function ( inx, source ) {
-				var mimeType = source.mimeType;
-				var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
+				var mimeType = source.mimeType,
+					player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
 				if ( player && player.library === 'Native'	) {
 					nativePlayableSources.push( source );
 				}
 			} );
 
 			// Prefer native playback ( and prefer WebM over ogg and h.264 )
-			var namedSourceSet = {};
-			var useBogoSlow = false; // use benchmark only for ogv.js
+			namedSourceSet = {};
+			useBogoSlow = false; // use benchmark only for ogv.js
 			$.each( playableSources, function ( inx, source ) {
 				var shortName,
 					mimeType = source.mimeType,
@@ -294,23 +300,23 @@
 				}
 			} );
 
-			var codecPref = mw.config.get( 'EmbedPlayer.CodecPreference' );
+			codecPref = mw.config.get( 'EmbedPlayer.CodecPreference' );
 
 			if ( codecPref ) {
-				for ( var i = 0; i < codecPref.length; i++ ) {
-					var codec = codecPref[ i ];
+				for ( i = 0; i < codecPref.length; i++ ) {
+					codec = codecPref[ i ];
 					if ( !namedSourceSet[ codec ] ) {
 						continue;
 					}
 					// select based on size:
 					// Set via embed resolution closest to relative to display size
-					var minSizeDelta = null;
+					minSizeDelta = null;
 
 					// unless we're really slow...
-					var isBogoSlow = useBogoSlow && OGVCompat.isSlow();
+					isBogoSlow = useBogoSlow && OGVCompat.isSlow();
 
 					if ( this.parentEmbedId ) {
-						var displayWidth = $( '#' + this.parentEmbedId ).width();
+						displayWidth = $( '#' + this.parentEmbedId ).width();
 						// eslint-disable-next-line no-loop-func
 						$.each( namedSourceSet[ codec ], function ( inx, source ) {
 							if ( ( isBogoSlow && source.height > 240 ) ||
@@ -326,7 +332,7 @@
 								// continue
 									return true;
 								}
-								var sizeDelta = Math.abs( source.width - displayWidth );
+								sizeDelta = Math.abs( source.width - displayWidth );
 								mw.log( 'MediaElement::autoSelectSource: size delta : ' + sizeDelta + ' for s:' + source.width );
 								if ( minSizeDelta === null || sizeDelta < minSizeDelta ) {
 									minSizeDelta = sizeDelta;
@@ -347,8 +353,8 @@
 
 			// Set h264 via native or flash fallback
 			$.each( playableSources, function ( inx, source ) {
-				var mimeType = source.mimeType;
-				var player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
+				var mimeType = source.mimeType,
+					player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
 				if ( mimeType === 'video/h264' &&
 				player &&
 				(
@@ -399,7 +405,8 @@
 		 * @return {Boolean} true if sources include MIME false if not.
 		 */
 		hasStreamOfMIMEType: function ( mimeType ) {
-			for ( var i = 0; i < this.sources.length; i++ ) {
+			var i;
+			for ( i = 0; i < this.sources.length; i++ ) {
 				if ( this.sources[ i ].getMIMEType() === mimeType ) {
 					return true;
 				}
@@ -428,11 +435,14 @@
 		 *      element <video>, <source> or <mediaSource> <text> element.
 		 */
 		tryAddSource: function ( element ) {
+			var i, source,
+				newSrc = $( element ).attr( 'src' );
+
 			// mw.log( 'mw.MediaElement::tryAddSource:' + $( element ).attr( "src" ) );
-			var newSrc = $( element ).attr( 'src' );
+
 			if ( newSrc ) {
 				// Make sure an existing element with the same src does not already exist:
-				for ( var i = 0; i < this.sources.length; i++ ) {
+				for ( i = 0; i < this.sources.length; i++ ) {
 					if ( this.sources[ i ].src === newSrc ) {
 						// Source already exists update any new attr:
 						this.sources[ i ].updateSource( element );
@@ -441,7 +451,7 @@
 				}
 			}
 			// Create a new source
-			var source = new mw.MediaSource( element );
+			source = new mw.MediaSource( element );
 
 			this.sources.push( source );
 			// mw.log( 'tryAddSource: added source ::' + source + 'sl:' + this.sources.length );
@@ -456,8 +466,9 @@
 		 * @return {Array} of playable media sources
 		 */
 		getPlayableSources: function ( mimeFilter ) {
-			var playableSources = [];
-			for ( var i = 0; i < this.sources.length; i++ ) {
+			var i,
+				playableSources = [];
+			for ( i = 0; i < this.sources.length; i++ ) {
 				if ( this.isPlayableType( this.sources[ i ].mimeType ) &&
 					( !mimeFilter || this.sources[ i ].mimeType.indexOf( mimeFilter ) !== -1 )
 				) {

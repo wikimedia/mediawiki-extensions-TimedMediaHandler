@@ -1,12 +1,9 @@
 /**
  * mediaPlayer represents a media player plugin.
  *
- * @param {String}
- *      id id used for the plugin.
- * @param {Array}
- *      supportedTypes an array of supported MIME types.
- * @param {String}
- *      library external script containing the plugin interface code.
+ * @param {string} id ID used for the plugin.
+ * @param {string[]} supportedTypes an array of supported MIME types.
+ * @param {string} library External script containing the plugin interface code.
  * @constructor
  */
 ( function ( mw ) {
@@ -35,16 +32,11 @@
 		/**
 		 * Checks support for a given MIME type
 		 *
-		 * @param {String}
-		 *      type Mime type to check against supportedTypes
-		 * @return {Boolean} true if mime type is supported false if mime type is
-		 *     unsupported
+		 * @param {string} type Mime type to check against supportedTypes
+		 * @return {boolean} The mime type is supported
 		 */
 		supportsMIMEType: function ( type ) {
-			for ( var i = 0; i < this.supportedTypes.length; i++ ) {
-				if ( this.supportedTypes[ i ] === type ) { return true; }
-			}
-			return false;
+			return this.supportedTypes.indexOf( type ) !== -1;
 		},
 
 		/**
