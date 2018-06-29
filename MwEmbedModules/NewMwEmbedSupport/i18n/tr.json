@@ -5,10 +5,10 @@
 			"Hedda"
 		]
 	},
-	"mwe-loading": "yükleniyor ...",
-	"mwe-error_load_lib": "Hata: $1 JavaScripti erişilebilir değil ya da $2 tanımlı değil",
+	"mwe-loading": "Yükleniyor...",
+	"mwe-error_load_lib": "Hata: $1 JavaScript'i erişilebilir değil ya da $2 tanımlı değil",
 	"mwe-apiproxy-setup": "API vekili ayarlanıyor",
-	"mwe-load-drag-item": "Sürüklenen öğe yükleniyor",
+	"mwe-load-drag-item": "Sürüklenen öge yükleniyor",
 	"mwe-ok": "Tamam",
 	"mwe-cancel": "İptal",
 	"mwe-enable-gadget": "Tüm sayfalar için multimedya beta (mwEmbed) özelliğini etkinleştir",
