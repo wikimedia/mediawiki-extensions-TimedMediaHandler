@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Meno25",
-			"OsamaK"
+			"OsamaK",
+			"ديفيد"
 		]
 	},
 	"mwe-loading": "جاري التحميل...",
@@ -10,6 +11,13 @@
 	"mwe-size-megabytes": "$1 ميجا بايت",
 	"mwe-size-kilobytes": "$1 كيلوبايت",
 	"mwe-size-bytes": "$1 بايت",
+	"mwe-error_load_lib": "خطأ: لم يكن جافا سكريبت $1 قابلا للاسترداد أو لم يعرف $2",
+	"mwe-apiproxy-setup": "إعداد بروكسي API",
+	"mwe-load-drag-item": "تحميل عنصر تم سحبه",
 	"mwe-ok": "موافق",
-	"mwe-cancel": "إلغاء"
+	"mwe-cancel": "إلغاء",
+	"mwe-enable-gadget": "تمكين الإصدار التجريبي للوسائط المتعددة (mwEmbed) لجميع الصفحات",
+	"mwe-enable-gadget-done": "تم تمكين أداة الوسائط المتعددة التجريبية",
+	"mwe-must-login-gadget": "لتمكين الأداة; يجب <a target=\"_new\" href=\"$1\">تسجيل الدخول</a>",
+	"mwe-test-plural": "قمت بتشغيل {{PLURAL:$1|$1 اختبار|$1 اختبارات}}$1"
 }
