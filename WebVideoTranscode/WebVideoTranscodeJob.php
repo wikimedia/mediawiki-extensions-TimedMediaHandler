@@ -509,12 +509,22 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	function ffmpegAddWebmVideoOptions( $options, $pass ) {
-		global $wgFFmpegThreads;
+		global $wgFFmpegThreads, $wgFFmpegVP9RowMT;
 
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
 		$cmd = ' -threads ' . intval( $wgFFmpegThreads );
+		if ( $wgFFmpegVP9RowMT && $options['videoCodec'] === 'vp9' ) {
+			// Macroblock row multithreading allows using more CPU cores
+			// for VP9 encoding. This is not yet the default, and the option
+			// will fail on a version of ffmpeg that is too old or is built
+			// against a libvpx that is too old, so we have to enable it
+			// conditionally for now.
+			//
+			// Requires libvpx 1.7 and ffmpeg 3.3.
+			$cmd .= ' -row-mt 1';
+		}
 
 		// check for presets:
 		if ( isset( $options['preset'] ) ) {
