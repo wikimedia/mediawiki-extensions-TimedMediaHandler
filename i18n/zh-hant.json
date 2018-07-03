@@ -9,7 +9,8 @@
 			"LNDDYL",
 			"Cwlin0416",
 			"1233thehongkonger",
-			"蘭斯特"
+			"蘭斯特",
+			"A2093064"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM，Ogg Theora、Vorbis，srt",
@@ -114,6 +115,8 @@
 	"right-transcode-reset": "重設已失敗或已輚碼的影片，將其重新排入序列中。",
 	"right-transcode-status": "檢視 [[Special:TimedMediaHandler|目前轉碼活動的資訊]]",
 	"action-transcode-status": "檢視目前轉碼狀態",
+	"log-name-timedmediahandler": "TimedMediaHandler日誌",
+	"log-description-timedmediahandler": "這是有關TimedMediaHandler的日誌。",
 	"orphanedtimedtext": "孤立的 TimedText 頁面",
 	"orphanedtimedtext-summary": "未關聯任何檔案的 [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] 頁面清單。",
 	"orphanedtimedtext-unsupported": "此特殊頁面僅支援使用 MySQL 資料庫。",
