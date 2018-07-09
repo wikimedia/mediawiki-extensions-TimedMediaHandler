@@ -42,7 +42,8 @@ module.exports = function ( grunt ) {
 		banana: {
 			all: 'i18n/',
 			EmbedPlayer: 'MwEmbedModules/EmbedPlayer/i18n/',
-			TimedText: 'MwEmbedModules/TimedText/i18n/'
+			TimedText: 'MwEmbedModules/TimedText/i18n/',
+			NewMwEmbedSupport: 'MwEmbedModules/NewMwEmbedSupport/i18n/'
 		},
 		jsonlint: {
 			all: [
