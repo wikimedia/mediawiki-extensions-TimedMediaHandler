@@ -9,7 +9,8 @@
 			"Peter Alberti",
 			"Simeondahl",
 			"Steenth",
-			"SimmeD"
+			"SimmeD",
+			"Cgtdk"
 		]
 	},
 	"timedmediahandler-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",
@@ -43,7 +44,7 @@
 	"timedmedia-status-unknown": "Ukendt status",
 	"timedmedia-transcodeinfo": "Afledt transcode beskrivelse",
 	"timedmedia-actions": "Handlinger",
-	"timedmedia-direct-link": "Hent derivat",
+	"timedmedia-direct-link": "Download",
 	"timedmedia-not-ready": "Ikke klar",
 	"timedmedia-completed-on": "Gennemført transcode $1",
 	"timedmedia-error-on": "Fejl i omkodning ved $1",
