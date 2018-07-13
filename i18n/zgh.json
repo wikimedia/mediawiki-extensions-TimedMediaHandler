@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amara-Amaziɣ"
+			"Amara-Amaziɣ",
+			"Brahim-essaidi"
 		]
 	},
-	"timedmedia-source-file": "ⴰⵙⴰⴳⵎ ⵏ $1"
+	"timedmedia-source-file": "ⴰⵙⴰⴳⵎ ⵏ $1",
+	"timedmedia-source-audio-file-desc": "ⴰⴼⴰⵢⵍⵓ $1 ⴰⵙⴰⵍⴰⵏ ($2)"
 }
