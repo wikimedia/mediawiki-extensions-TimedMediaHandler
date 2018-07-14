@@ -13,6 +13,7 @@ class RequeueTranscodes extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( "file", "re-queue selected formats only for the given file", false, true );
+		$this->addOption( "start", "(re)start batch at the given file", false, true );
 		$this->addOption( "key", "re-queue for given format key", false, true );
 		$this->addOption( "error", "re-queue formats that previously failed", false, false );
 		$this->addOption( "stalled", "re-queue formats that were started but not finished",
@@ -49,7 +50,16 @@ class RequeueTranscodes extends Maintenance {
 			}
 			$where['img_name'] = $title->getDBkey();
 		}
-		$res = $dbr->select( 'image', [ 'img_name' ], $where, __METHOD__ );
+		if ( $this->hasOption( 'start' ) ) {
+			$title = Title::newFromText( $this->getOption( 'start' ), NS_FILE );
+			if ( !$title ) {
+				$this->output( "Invalid --start option provided" );
+				return;
+			}
+			$where[] = 'img_name >= ' . $dbr->addQuotes( $title->getDBkey() );
+		}
+		$opts = [ 'ORDER BY' => 'img_media_type,img_name' ];
+		$res = $dbr->select( 'image', [ 'img_name' ], $where, __METHOD__, $opts );
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );
 			$file = wfLocalFile( $title );
