@@ -136,9 +136,10 @@ class RequeueTranscodes extends Maintenance {
 						while ( true ) {
 							$size = WebVideoTranscode::getQueueSize( $file, $key );
 							if ( $size > $startSize ) {
-								$this->output( ".. waiting (queue size $size)\n" );
+								$this->output( ".. (queue $size) " );
 								sleep( 1 );
 							} else {
+								$this->output( "\n" );
 								break;
 							}
 						}
