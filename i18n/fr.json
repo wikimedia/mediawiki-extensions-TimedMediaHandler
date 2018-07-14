@@ -157,6 +157,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 fichier audio FLAC|$1 fichiers audio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 fichier audio WAV|$1 fichiers audio WAV}}",
 	"timedmedia-webm-audios": "$1 fichier{{PLURAL:$1||s}} WebM audio",
+	"beta-feature-timedmediahandler-message-videojs": "Nouveau lecteur vidéo",
 	"beta-feature-timedmediahandler-description-videojs": "Visualiser des fichiers vidéo dans un lecteur moderne avec un aspect plus propre et la compatibilité mobile.",
 	"right-transcode-reset": "Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux",
 	"right-transcode-status": "Afficher [[Special:TimedMediaHandler|l'information sur l'activité de transcodage actuelle]]",
