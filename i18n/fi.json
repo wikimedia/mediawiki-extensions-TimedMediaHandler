@@ -75,5 +75,6 @@
 	"timedmedia-videos": "{{PLURAL:$1|$1 video|$1 videota}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videota}}",
 	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM-video|$1 WebM-videota}}",
-	"timedmedia-file": "Tiedosto"
+	"timedmedia-file": "Tiedosto",
+	"log-name-timedmediahandler": "TimedMediaHandler-toimintoloki"
 }
