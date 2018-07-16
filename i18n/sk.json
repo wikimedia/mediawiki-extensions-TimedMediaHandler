@@ -22,5 +22,7 @@
 	"timedmedia-play-media": "Prehrať súbor",
 	"timedmedia-desc-link": "O tomto súbore",
 	"timedmedia-source-file": "Zdroj $1",
-	"timedmedia-source-audio-file-desc": "Pôvodný súbor $1 ($2)"
+	"timedmedia-source-audio-file-desc": "Pôvodný súbor $1 ($2)",
+	"log-name-timedmediahandler": "Záznam časovaného spracovania médií",
+	"log-description-timedmediahandler": "Toto je záznam akcií, vzťahujúcich sa k časovanej konverzii médií."
 }
