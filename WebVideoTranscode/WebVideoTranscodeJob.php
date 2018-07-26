@@ -552,8 +552,18 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check for video bitrate:
 		if ( isset( $options['videoBitrate'] ) ) {
-			$cmd .= " -qmin 1 -qmax 51";
+			$qmin = isset( $options['qmin'] ) ? $options['qmin'] : 1;
+			$qmax = isset( $options['qmax'] ) ? $options['qmax'] : 51;
+			$cmd .= " -qmin " . wfEscapeShellArg( $qmin );
+			$cmd .= " -qmax " . wfEscapeShellArg( $qmax );
+
 			$cmd .= " -vb " . wfEscapeShellArg( $options['videoBitrate'] * 1000 );
+			if ( isset( $options['minrate'] ) ) {
+				$cmd .= " -minrate " . wfEscapeShellArg( $options['minrate'] * 1000 );
+			}
+			if ( isset( $options['maxrate'] ) ) {
+				$cmd .= " -maxrate " . wfEscapeShellArg( $options['maxrate'] * 1000 );
+			}
 		}
 		// Set the codec:
 		if ( $options['videoCodec'] === 'vp9' ) {
@@ -575,6 +585,9 @@ class WebVideoTranscodeJob extends Job {
 		// Check for keyframeInterval
 		if ( isset( $options['keyframeInterval'] ) ) {
 			$cmd .= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
+		}
+		if ( isset( $options['keyframeIntervalMin'] ) ) {
+			$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeIntervalMin'] );
 		}
 		if ( isset( $options['deinterlace'] ) ) {
 			$cmd .= ' -deinterlace';
