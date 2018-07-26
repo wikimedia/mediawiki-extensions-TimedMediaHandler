@@ -57,8 +57,7 @@ class ApiTranscodeReset extends ApiBase {
 		// Make sure its a enabled transcode key we are trying to remove:
 		// ( if you update your transcode keys the api is not how you purge the database of expired keys )
 		if ( isset( $params['transcodekey'] ) ) {
-			global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-			$transcodeSet = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+			$transcodeSet = WebVideoTranscode::enabledTranscodes();
 			if ( !in_array( $params['transcodekey'], $transcodeSet ) ) {
 				if ( is_callable( [ $this, 'dieWithError' ] ) ) {
 					$this->dieWithError(

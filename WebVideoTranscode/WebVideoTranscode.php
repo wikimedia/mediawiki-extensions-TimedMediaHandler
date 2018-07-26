@@ -472,9 +472,8 @@ class WebVideoTranscode {
 	 * @return int
 	 */
 	public static function getMaxSizeWebStream() {
-		global $wgEnabledTranscodeSet;
 		$maxSize = 0;
-		foreach ( $wgEnabledTranscodeSet as $transcodeKey ) {
+		foreach ( self::enabledVideoTranscodes() as $transcodeKey ) {
 			if ( isset( self::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ) {
 				$currentSize = self::$derivativeSettings[$transcodeKey]['maxSize'];
 				if ( $currentSize > $maxSize ) {
@@ -599,7 +598,7 @@ class WebVideoTranscode {
 	 * @return array an associative array of sources suitable for <source> tag output
 	 */
 	public static function getLocalSources( &$file , $options=[] ) {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgEnableTranscode;
+		global $wgEnableTranscode;
 		$sources = [];
 
 		// Add the original file:
@@ -618,9 +617,9 @@ class WebVideoTranscode {
 
 		// Now Check for derivatives
 		if ( $file->getHandler()->isAudio( $file ) ) {
-			$transcodeSet = $wgEnabledAudioTranscodeSet;
+			$transcodeSet = self::enabledAudioTranscodes();
 		} else {
-			$transcodeSet = $wgEnabledTranscodeSet;
+			$transcodeSet = self::enabledVideoTranscodes();
 		}
 		foreach ( $transcodeSet as $transcodeKey ) {
 			if ( self::isTranscodeEnabled( $file, $transcodeKey ) ) {
@@ -938,8 +937,7 @@ class WebVideoTranscode {
 	 * @param File $file File object
 	 */
 	public static function startJobQueue( File $file ) {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-		$keys = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		$keys = self::enabledTranscodes();
 
 		// 'Natural sort' puts the transcodes in ascending order by resolution,
 		// which roughly gives us fastest-to-slowest order.
@@ -959,14 +957,12 @@ class WebVideoTranscode {
 	 * @param File $file File object
 	 */
 	public static function cleanupTranscodes( File $file ) {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-
 		$fileName = $file->getTitle()->getDbKey();
 		$db = $file->repo->getMasterDB();
 
 		$transcodeState = self::getTranscodeState( $file, $db );
 
-		$keys = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		$keys = self::enabledTranscodes();
 		foreach ( $keys as $transcodeKey ) {
 			if ( !self::isTranscodeEnabled( $file, $transcodeKey ) ) {
 				// This transcode is no longer enabled or erroneously included...
@@ -1002,13 +998,11 @@ class WebVideoTranscode {
 	 * @return bool
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-
 		$audio = $file->getHandler()->isAudio( $file );
 		if ( $audio ) {
-			$keys = $wgEnabledAudioTranscodeSet;
+			$keys = self::enabledAudioTranscodes();
 		} else {
-			$keys = $wgEnabledTranscodeSet;
+			$keys = self::enabledVideoTranscodes();
 		}
 
 		if ( in_array( $transcodeKey, $keys ) ) {
@@ -1197,13 +1191,11 @@ class WebVideoTranscode {
 	 * @return true
 	 */
 	public static function isSmallestTranscodeForCodec( $transcodeKey ) {
-		global $wgEnabledTranscodeSet;
-
 		$settings = self::$derivativeSettings[$transcodeKey];
 		$vcodec = $settings['videoCodec'];
 		$maxSize = self::getMaxSize( $settings['maxSize'] );
 
-		foreach ( $wgEnabledTranscodeSet as $tKey ) {
+		foreach ( self::enabledVideoTranscodes() as $tKey ) {
 			$tsettings = self::$derivativeSettings[$tKey];
 			if ( $tsettings['videoCodec'] === $vcodec ) {
 				$tmaxSize = self::getMaxSize( $tsettings['maxSize'] );
@@ -1240,5 +1232,26 @@ class WebVideoTranscode {
 		}
 		$maxSize['aspect'] = $maxSize['width'] / $maxSize['height'];
 		return $maxSize;
+	}
+
+	private static function filterAndSort( $set ) {
+		$keys = array_keys( array_filter( $set ) );
+		natsort( $keys );
+		return $keys;
+	}
+
+	public static function enabledTranscodes() {
+		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		return self::filterAndSort( array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet ) );
+	}
+
+	public static function enabledVideoTranscodes() {
+		global $wgEnabledTranscodeSet;
+		return self::filterAndSort( $wgEnabledTranscodeSet );
+	}
+
+	public static function enabledAudioTranscodes() {
+		global $wgEnabledAudioTranscodeSet;
+		return self::filterAndSort( $wgEnabledAudioTranscodeSet );
 	}
 }

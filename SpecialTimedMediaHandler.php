@@ -73,8 +73,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	 * @param bool $showTable
 	 */
 	private function renderState( $out, $state, $states, $showTable = true ) {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		$allTranscodes = WebVideoTranscode::enabledTranscodes();
 		if ( $states[ $state ][ 'total' ] ) {
 			// Give grep a chance to find the usages:
 			// timedmedia-derivative-state-transcodes, timedmedia-derivative-state-active,
@@ -153,8 +152,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	private function getStats() {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
-		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		global $wgMemc;
+		$allTranscodes = WebVideoTranscode::enabledTranscodes();
 
 		$memcKey = wfMemcKey( 'TimedMediaHandler', 'stats', '1' /* version */ );
 		$stats = $wgMemc->get( $memcKey );
@@ -186,8 +185,8 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	private function getStates() {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet, $wgMemc;
-		$allTranscodes = array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet );
+		global $wgMemc;
+		$allTranscodes = WebVideoTranscode::enabledTranscodes();
 
 		$memcKey = wfMemcKey( 'TimedMediaHandler', 'states' );
 		$states = $wgMemc->get( $memcKey );
