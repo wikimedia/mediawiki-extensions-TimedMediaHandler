@@ -109,7 +109,6 @@
 	"timedmedia-derivative-desc-1080p.webm": "WebM HD complet (1080P)",
 	"timedmedia-derivative-desc-1440p.webm": "WebM UHD (1440P)",
 	"timedmedia-derivative-desc-2160p.webm": "WebM UHD complet (2160P)",
-	"timedmedia-derivative-desc-160p.vp9.webm": "VP9 à bande étroite (160P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "Petit VP9 (240P)",
 	"timedmedia-derivative-desc-360p.vp9.webm": "WebM VP9 (360P) lisible en continu sur le web",
 	"timedmedia-derivative-desc-480p.vp9.webm": "VP9 SD (480P)",

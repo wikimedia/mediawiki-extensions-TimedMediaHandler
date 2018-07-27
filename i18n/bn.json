@@ -54,7 +54,6 @@
 	"timedmedia-source-audio-file-desc": "মূল $1 ফাইল ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "স্বল্প ব্যান্ডউইথ অগ ভিডিও (১৬০P)",
 	"timedmedia-derivative-desc-240p.ogv": "ছোট অগ ভিডিও (২৪০P)",
-	"timedmedia-derivative-desc-160p.vp9.webm": "কম ব্যান্ডউইথ VP৯ (১৬০P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "ছোট VP৯ (২৪০P)",
 	"timedmedia-resolution-160": "নিন্ম ১৬০p",
 	"timedmedia-resolution-240": "নিন্ম ২৪০p",

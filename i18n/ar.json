@@ -85,7 +85,6 @@
 	"timedmedia-derivative-desc-1080p.webm": "HD كامل WebM (1080P)",
 	"timedmedia-derivative-desc-1440p.webm": "UHD WebM (1440P)",
 	"timedmedia-derivative-desc-2160p.webm": "UHD كامل WebM (2160P)",
-	"timedmedia-derivative-desc-160p.vp9.webm": "VP9 بحيز ترددات قليل (160P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "VP9 صغير (240P)",
 	"timedmedia-derivative-desc-480p.vp9.webm": "SD VP9 (480P)",
 	"timedmedia-derivative-desc-720p.vp9.webm": "HD VP9 (720P)",
