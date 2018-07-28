@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Azniv Stepanian"
+			"Azniv Stepanian",
+			"Rajemian"
 		]
 	},
-	"timedmedia-source-file": "$1 աղբիւր"
+	"timedmedia-source-file": "$1 աղբիւր",
+	"timedmedia-source-audio-file-desc": "Սկզբնական $1 նիշք ($2)"
 }
