@@ -383,6 +383,11 @@ class WebVideoTranscodeJob extends Job {
 		// Add size options:
 		$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
 
+		// Work around https://trac.ffmpeg.org/ticket/6375 in ffmpeg 3.4/4.0
+		// Sometimes caused transcode failures saying things like:
+		// "1 frames left in the queue on closing"
+		$cmd .= ' -max_muxing_queue_size 1024';
+
 		// Check for start time
 		if ( isset( $options['starttime'] ) ) {
 			$cmd .= ' -ss ' . wfEscapeShellArg( $options['starttime'] );
