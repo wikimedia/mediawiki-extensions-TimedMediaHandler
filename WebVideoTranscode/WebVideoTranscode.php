@@ -164,7 +164,7 @@ class WebVideoTranscode {
 		'120p.vp9.webm' =>
 			[
 				'maxSize'                    => '213x120',
-				'videoBitrate'               => '240', // target 60 x 4
+				'videoBitrate'               => '120', // target 60 x 2
 				'crf'                        => '35',
 				'qmin'                       => '8',
 				'twopass'                    => 'true',
@@ -180,7 +180,7 @@ class WebVideoTranscode {
 		'180p.vp9.webm' =>
 			[
 				'maxSize'                    => '320x180',
-				'videoBitrate'               => '400', // target 100 x 4
+				'videoBitrate'               => '200', // target 100 x 2
 				'crf'                        => '35',
 				'qmin'                       => '9',
 				'twopass'                    => 'true',
@@ -196,7 +196,7 @@ class WebVideoTranscode {
 		'240p.vp9.webm' =>
 			[
 				'maxSize'                    => '426x240',
-				'videoBitrate'               => '640', // target 160 x 4
+				'videoBitrate'               => '320', // target 160 x 2
 				'crf'                        => '35',
 				'qmin'                       => '11',
 				'twopass'                    => 'true',
@@ -212,7 +212,7 @@ class WebVideoTranscode {
 		'360p.vp9.webm' =>
 			[
 				'maxSize'                    => '640x360',
-				'videoBitrate'               => '1280', // target 320 x 4
+				'videoBitrate'               => '640', // target 320 x 2
 				'crf'                        => '35',
 				'qmin'                       => '12',
 				'twopass'                    => 'true',
@@ -229,7 +229,7 @@ class WebVideoTranscode {
 		'480p.vp9.webm' =>
 			[
 				'maxSize'                    => '854x480',
-				'videoBitrate'               => '2560', // target 640 x 4
+				'videoBitrate'               => '1280', // target 640 x 2
 				'crf'                        => '33',
 				'qmin'                       => '10',
 				'twopass'                    => 'true',
@@ -246,7 +246,7 @@ class WebVideoTranscode {
 		'720p.vp9.webm' =>
 			[
 				'maxSize'                    => '1280x720',
-				'videoBitrate'               => '5120', // target 1280 x 4
+				'videoBitrate'               => '2560', // target 1280 x 2
 				'crf'                        => '32',
 				'qmin'                       => '10',
 				'twopass'                    => 'true',
@@ -263,7 +263,7 @@ class WebVideoTranscode {
 		'1080p.vp9.webm' =>
 			[
 				'maxSize'                    => '1920x1080',
-				'videoBitrate'               => '10240', // target 2560 x 4
+				'videoBitrate'               => '5120', // target 2560 x 2
 				'crf'                        => '31',
 				'qmin'                       => '9',
 				'twopass'                    => 'true',
@@ -280,7 +280,7 @@ class WebVideoTranscode {
 		'1440p.vp9.webm' =>
 			[
 				'maxSize'                    => '2560x1440',
-				'videoBitrate'               => '20480', // target 5120 x 4
+				'videoBitrate'               => '10240', // target 5120 x 2
 				'crf'                        => '24',
 				'qmin'                       => '8',
 				'twopass'                    => 'true',
@@ -297,7 +297,7 @@ class WebVideoTranscode {
 		'2160p.vp9.webm' =>
 			[
 				'maxSize'                    => '3840x2160',
-				'videoBitrate'               => '40960', // target 10240 x 4
+				'videoBitrate'               => '20480', // target 10240 x 2
 				'crf'                        => '24',
 				'qmin'                       => '8',
 				'twopass'                    => 'true',
