@@ -65,5 +65,6 @@
 	"timedmedia-subtitle-no-video": "Nema video-snimaka povezanih sa tekućom stranicom s titlovima",
 	"timedmedia-subtitle-no-subtitles": "Trenutno nema $1 titlova za ovaj video-snimak. Možete da ih dodate tako što ćete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti stranicu]",
 	"timedmedia-no-derivatives": "Nema drugih formata.",
-	"timedmedia-file": "Datoteka"
+	"timedmedia-file": "Datoteka",
+	"log-name-timedmediahandler": "Dnevnik TimedMediaHandler-a"
 }
