@@ -1167,6 +1167,23 @@ class WebVideoTranscode {
 	 * @return int
 	 */
 	public static function getQueueSize( File $file, $transcodeKey ) {
+		// Warning: this won't treat the prioritized queue separately.
+		$db = $file->repo->getMasterDB();
+		$count = $db->selectField( 'transcode',
+			'COUNT(*)',
+			[
+				'transcode_time_addjob IS NOT NULL',
+				'transcode_time_startwork IS NULL',
+				'transcode_time_success IS NULL',
+				'transcode_time_error IS NULL',
+			],
+			__METHOD__
+		);
+		return intval( $count );
+
+		/*
+		// This fails in production at Wikimedia
+		// https://phabricator.wikimedia.org/T200813
 		if ( self::isTranscodePrioritized( $file, $transcodeKey ) ) {
 			$queue = 'webVideoTranscodePrioritized';
 		} else {
@@ -1178,6 +1195,7 @@ class WebVideoTranscode {
 		} else {
 			return 0;
 		}
+		*/
 	}
 
 	/**
