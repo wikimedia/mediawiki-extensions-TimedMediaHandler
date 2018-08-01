@@ -160,6 +160,7 @@
 	"apihelp-query+transcodestatus-summary": "Ruft den Transkodierungsstatus für eine angegebene Dateiseite ab.",
 	"apihelp-query+transcodestatus-example-1": "Ruft den Transkodierungsstatus für [[:File:Clip.webm]] ab",
 	"apihelp-query+videoinfo-description": "Erweitert die Bildinformationen um Informationen zur Videoquelle (Derivate)",
+	"apihelp-query+videoinfo-summary": "Erweitert imageinfo, um Videoquelleninformationen (Derivate) einzuschließen.",
 	"apihelp-query+videoinfo-example-1": "Ruft Informationen über [[:File:Folgers.ogv]] ab",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Ergänzt eine Reihe unterschiedlicher verfügbarer Format- und Qualitätsversionen einer Audio- oder Videodatei.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Ergänzt ein Array der verfügbaren Untertitel, Überschriften und Beschreibungen einer Audio- oder Videodatei.",
