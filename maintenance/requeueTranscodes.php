@@ -87,7 +87,7 @@ class RequeueTranscodes extends Maintenance {
 			$toRemove = [];
 			$state = WebVideoTranscode::getTranscodeState( $file, $dbw );
 			foreach ( $state as $key => $item ) {
-				if ( $this->hasOption( 'error' ) && ( $item['time_error'] || !$item['time_addjob'] ) ) {
+				if ( $this->hasOption( 'error' ) && $item['time_error'] ) {
 					$toRemove[] = $key;
 					continue;
 				}
