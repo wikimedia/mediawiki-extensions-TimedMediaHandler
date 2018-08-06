@@ -7,7 +7,8 @@
 			"Sasa Stefanovic",
 			"Михајло Анђелковић",
 			"Сербијана",
-			"Obsuser"
+			"Obsuser",
+			"BadDog"
 		]
 	},
 	"timedmediahandler-desc": "Обрађивач за звук, видео и усклађени текст, с подршком за формате WebM, Ogg Theora, Vorbis и SRT",
@@ -72,5 +73,5 @@
 	"timedmedia-subtitle-no-subtitles": "Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]",
 	"timedmedia-no-derivatives": "Нема других формата.",
 	"timedmedia-file": "Датотека",
-	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а"
+	"log-name-timedmediahandler": "Евиденција TimedMediaHandler-а"
 }
