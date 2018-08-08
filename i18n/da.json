@@ -10,7 +10,8 @@
 			"Simeondahl",
 			"Steenth",
 			"SimmeD",
-			"Cgtdk"
+			"Cgtdk",
+			"Saederup92"
 		]
 	},
 	"timedmediahandler-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",
@@ -42,7 +43,7 @@
 	"timedmedia-update-status": "Opdater transcode status",
 	"timedmedia-status": "Status",
 	"timedmedia-status-unknown": "Ukendt status",
-	"timedmedia-transcodeinfo": "Afledt transcode beskrivelse",
+	"timedmedia-transcodeinfo": "Format",
 	"timedmedia-actions": "Handlinger",
 	"timedmedia-direct-link": "Download",
 	"timedmedia-not-ready": "Ikke klar",
@@ -57,6 +58,8 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minutter}}",
 	"timedmedia-seconds": "{{PLURAL:$1|$1 sekund|$1 sekunder}}",
 	"timedmedia-reset": "Nulstil transkode",
+	"timedmedia-reset-button-cancel": "Nulstil ikke",
+	"timedmedia-reset-button-reset": "Nulstil",
 	"timedmedia-reset-error": "Fejl ved nulstilling af kode job.",
 	"timedmedia-reset-explanation": "Nulstilling af denne omkodning vil fjerne alle eksisterende filer (hvis der er nogen), og vil genindsætte omkodningen i jobkøen. Det vil tage nogen tid at omkode forfra.<br /><br />\nEr du sikker på, du vil fortsætte?",
 	"timedmedia-mp4": "MP4",
