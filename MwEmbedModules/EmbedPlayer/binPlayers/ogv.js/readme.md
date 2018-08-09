@@ -7,6 +7,20 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, and libnestegg compi
 
 ## Updates
 
+1.5.8 - 2018-08-08
+* fixes for a few stray globals
+* update buildchain to emscripten 1.38.11
+* update webpack to 4.x
+    * minified main ogv.js endpoints
+* opus built with --enable-float-approx
+* fix display of WebM files with resolution changes
+* fix green edges on some VP9 files
+* update opus to 1.2.1
+* update ogg to 1.3.3
+* update vorbis to 1.3.6
+* remove old 'delay-audio' A/V sync behavior mode
+* added video, audio bitrate to stats & demo
+
 1.5.7 - 2018-02-19
 * fix for linear seek in audio/webm
 * updated build chain to emscripten 1.37.34

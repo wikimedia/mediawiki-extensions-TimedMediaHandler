@@ -13,7 +13,7 @@
     "grunt-jsonlint": "1.1.0",
     "grunt-patcher": "1.0.0",
     "grunt-stylelint": "0.10.0",
-    "ogv": "^1.5.7",
+    "ogv": "^1.5.8",
     "stylelint": "9.3.0",
     "stylelint-config-wikimedia": "0.4.3",
     "video.js": "6.7.3",
