@@ -10,7 +10,8 @@
 			"Maroen1990",
 			"محمد أحمد عبد الفتاح",
 			"Mido",
-			"Sonic N800"
+			"Sonic N800",
+			"ديفيد"
 		]
 	},
 	"timedmediahandler-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
@@ -85,6 +86,8 @@
 	"timedmedia-derivative-desc-1080p.webm": "HD كامل WebM (1080P)",
 	"timedmedia-derivative-desc-1440p.webm": "UHD WebM (1440P)",
 	"timedmedia-derivative-desc-2160p.webm": "UHD كامل WebM (2160P)",
+	"timedmedia-derivative-desc-120p.vp9.webm": "أدنى عرض نطاق VP9 (120P)",
+	"timedmedia-derivative-desc-180p.vp9.webm": "عرض نطاق منخفض VP9 (180P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "VP9 صغير (240P)",
 	"timedmedia-derivative-desc-480p.vp9.webm": "SD VP9 (480P)",
 	"timedmedia-derivative-desc-720p.vp9.webm": "HD VP9 (720P)",
