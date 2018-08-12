@@ -7,7 +7,8 @@
 			"ZaDiak",
 			"Evropi",
 			"Geraki",
-			"Protnet"
+			"Protnet",
+			"Nikosgranturismogt"
 		]
 	},
 	"timedmediahandler-desc": "Χειριστής για ήχο, βίντεο και χρονισμένο κείμενο, με υποστήριξη μορφής για WebM, Ogg Theora, Vorbis, srt",
@@ -24,5 +25,6 @@
 	"timedmedia-download": "Κατεβάστε το αρχείο",
 	"timedmedia-desc-link": "Σχετικά με αυτό το αρχείο",
 	"timedmedia-source-file": "Πηγή $1",
-	"timedmedia-source-audio-file-desc": "Πρωτότυπο αρχείο $1 ($2)"
+	"timedmedia-source-audio-file-desc": "Πρωτότυπο αρχείο $1 ($2)",
+	"timedmedia-derivative-desc-180p.vp9.webm": "Χαμηλό εύρος VP9 (180P)"
 }
