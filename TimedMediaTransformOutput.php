@@ -207,7 +207,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// For javascript disabled browsers provide a link to the asset:
 			Xml::tags( 'a', [
 					'href' => $this->file->getUrl(),
-					'title' => wfMessage( 'timedmedia-play-media' )->escaped(),
+					'title' => wfMessage( 'timedmedia-play-media' )->text(),
 					'target' => 'new'
 				],
 				Xml::tags( 'span', [
