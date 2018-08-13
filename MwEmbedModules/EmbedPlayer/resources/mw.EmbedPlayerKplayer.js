@@ -316,10 +316,10 @@
 			mw.log( 'EmbedPlayerKalturaKplayer:: seek: ' + percentage + ' time:' + seekTime );
 			if ( this.supportsURLTimeEncoding() ) {
 
-			// Make sure we could not do a local seek instead:
+				// Make sure we could not do a local seek instead:
 				if ( !( percentage < this.bufferedPercent &&
 					this.playerElement.duration && !this.didSeekJump ) ) {
-				// We support URLTimeEncoding call parent seek:
+					// We support URLTimeEncoding call parent seek:
 					this.parent_seek( percentage );
 					return;
 				}
@@ -390,7 +390,7 @@
 					// Issue the seek to the flash player:
 					self.playerElement.sendNotification( 'doSeek', seekTime );
 				} else {
-				// Try to get player for 20 seconds:
+					// Try to get player for 20 seconds:
 					if ( getPlayerCount < 400 ) {
 						setTimeout( readyForSeek, 50 );
 						getPlayerCount++;

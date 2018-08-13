@@ -117,8 +117,8 @@
 			'application/ogg'
 		], 'OgvJs' );
 
-		// Generic plugin
-		// oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' ),
+	// Generic plugin
+	// oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' ),
 
 	mw.EmbedTypes = {
 
