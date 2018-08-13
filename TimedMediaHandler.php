@@ -16,6 +16,7 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 
 	// Keep i18n globals so mergeMessageFileList.php doesn't break
 	$wgMessagesDirs['TimedMediaHandler'] = __DIR__ . '/i18n';
+	$wgMessagesDirs['TimedMediaHandler.api'] = __DIR__ . '/i18n/api';
 	$wgMessagesDirs['MwEmbed.NewMwEmbedSupport'] = __DIR__ . '/i18n/MwEmbedSupport';
 	$wgMessagesDirs['MwEmbed.EmbedPlayer'] = __DIR__ . '/i18n/EmbedPlayer';
 	$wgMessagesDirs['MwEmbed.TimedText'] = __DIR__ . '/i18n/TimedText';

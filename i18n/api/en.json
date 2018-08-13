@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Brad Jorsch",
+			"TheDJ"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Get transcode status for a given file page.",
+	"apihelp-query+transcodestatus-summary": "Get transcode status for a given file page.",
+	"apihelp-query+transcodestatus-example-1": "Get transcode status for [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Extends imageinfo to include video source (derivatives) information",
+	"apihelp-query+videoinfo-summary": "Extends imageinfo to include video source (derivatives) information",
+	"apihelp-query+videoinfo-example-1": "Fetch information about [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adds an array of the different format and quality versions of an audio or video file that are available.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adds an array of the subtitles, captions and descriptions of an audio or video file that are available.",
+	"apihelp-transcodereset-description": "Users with the 'transcode-reset' right can reset and re-run a transcode job.",
+	"apihelp-transcodereset-summary": "Users with the 'transcode-reset' right can reset and re-run a transcode job.",
+	"apihelp-transcodereset-param-title": "The media file title.",
+	"apihelp-transcodereset-param-transcodekey": "The transcode key you wish to reset. Fetch from [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Reset all transcodes for [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Reset the '360_560kbs.webm' transcode key for [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Transcode is disabled on this wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 is not transcodable.",
+	"apierror-timedmedia-badtranscodekey": "Invalid or disabled transcode key: $1",
+	"apierror-timedmedia-notenoughtimereset": "Not enough time has passed since the last reset of this transcode. $1 until this transcode can be reset."
+}

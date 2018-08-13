@@ -53,6 +53,7 @@
 	"MessagesDirs": {
 		"TimedMediaHandler": [
 			"i18n",
+			"i18n/api",
 			"i18n/MwEmbedSupport",
 			"i18n/EmbedPlayer",
 			"i18n/TimedText"

@@ -1,5 +1,7 @@
 /* eslint-env node */
 module.exports = function ( grunt ) {
+	var conf = grunt.file.readJSON( 'extension.json' );
+
 	grunt.loadNpmTasks( 'grunt-banana-checker' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
@@ -33,12 +35,6 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
-		banana: {
-			all: 'i18n/',
-			EmbedPlayer: 'i18n/EmbedPlayer/',
-			TimedText: 'i18n/TimedText/',
-			NewMwEmbedSupport: 'i18n/MwEmbedSupport/'
-		},
 		jsonlint: {
 			all: [
 				'*.json',
@@ -47,6 +43,7 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
+		banana: conf.MessagesDirs,
 		exec: {
 			'npm-update-videojs': {
 				cmd: 'npm update ogv video.js videojs-resolution-switcher-v6 videojs-ogvjs videojs-responsive-layout',
