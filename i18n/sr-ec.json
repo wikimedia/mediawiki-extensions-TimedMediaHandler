@@ -43,7 +43,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 сат|$1 сата|$1 сати}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 минут|$1 минута}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 секунд|$1 секунда|$1 секунди}}",
-	"timedmedia-reset": "Поништи прекодирање",
+	"timedmedia-reset": "Ресетуј прекодирање",
 	"timedmedia-reset-button-dismiss": "Одбаци",
 	"timedmedia-reset-error": "Грешка при поништавању задатака за прекодирање.",
 	"timedmedia-reset-explanation": "Поништавање овог прекодирања ће уклонити постојећу датотеку (ако постоји) и вратити прекодирање на списак задатака. Ова радња може да потраје.",
