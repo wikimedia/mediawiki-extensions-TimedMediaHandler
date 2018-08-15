@@ -31,14 +31,6 @@ class NewMwEmbedResourceManager {
 				$filename = $localResourcePath . '/' . $resources['messageDir'] . '/en.json';
 				$resourceList[$name]['messages'] = self::readJSONFileMessageKeys( $filename );
 			}
-		};
-
-		// Check for module loader:
-		if ( is_file( $localResourcePath . '/' . $moduleName . '.loader.js' ) ) {
-			$resourceList['mw.' . $moduleName . '.loader'] = [
-				'scripts' => $moduleName . '.loader.js',
-				'position' => 'top',
-			];
 		}
 
 		// Check for module config ( @@TODO support per-module config )
