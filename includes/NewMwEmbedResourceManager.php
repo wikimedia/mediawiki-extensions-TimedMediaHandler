@@ -52,17 +52,6 @@ class NewMwEmbedResourceManager {
 
 		// Look for special 'messages' => 'moduleFile' key and load all modules file messages:
 		foreach ( $resourceList as $name => $resources ) {
-			if (
-				isset( $resources['messageFile'] ) &&
-				is_file( $localResourcePath . '/' . $resources['messageFile'] )
-			) {
-				$resourceList[$name]['messages'] = [];
-				include $localResourcePath . '/' . $resources['messageFile'];
-				foreach ( $messages['en'] as $msgKey => $na ) {
-					$resourceList[$name]['messages'][] = $msgKey;
-				}
-			}
-
 			if ( isset( $resources['messageDir'] ) ) {
 				$filename = $localResourcePath . '/' . $resources['messageDir'] . '/en.json';
 				$resourceList[$name]['messages'] = self::readJSONFileMessageKeys( $filename );
