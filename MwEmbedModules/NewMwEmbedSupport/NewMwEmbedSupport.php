@@ -13,7 +13,8 @@ return [
 			'jquery.mwEmbedUtil',
 			'mw.MwEmbedSupport.style',
 		],
-		'messageDir' => 'i18n',
+		'messages' => NewMwEmbedResourceManager::readJSONFileMessageKeys(
+			__DIR__ . '/i18n/en.json' ),
 	],
 	'Spinner' => [
 		'scripts' => 'jquery.loadingSpinner/Spinner.js',

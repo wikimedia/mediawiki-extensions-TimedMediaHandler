@@ -13,7 +13,8 @@
 				'mw.TextSource',
 				'mw.MwEmbedSupport',
 			],
-			'messageDir' => 'i18n',
+			'messages' => NewMwEmbedResourceManager::readJSONFileMessageKeys(
+				__DIR__ . '/i18n/en.json' ),
 		],
 		'mw.TextSource' => [
 			'scripts' => 'resources/mw.TextSource.js',

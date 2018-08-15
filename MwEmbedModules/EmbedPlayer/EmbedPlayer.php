@@ -73,7 +73,8 @@
 					$wgVideoPlayerSkinModule
 				],
 				'styles' => 'resources/skins/EmbedPlayer.css',
-				'messageDir' => 'i18n',
+				'messages' => NewMwEmbedResourceManager::readJSONFileMessageKeys(
+					__DIR__ . '/i18n/en.json' ),
 			],
 
 			'mw.EmbedPlayerKplayer'	=> [ 'scripts' => 'resources/mw.EmbedPlayerKplayer.js' ],
