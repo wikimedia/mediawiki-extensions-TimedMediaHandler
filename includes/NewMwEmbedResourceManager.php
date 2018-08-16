@@ -33,14 +33,12 @@ class NewMwEmbedResourceManager {
 			}
 		}
 
-		// Check for module config ( @@TODO support per-module config )
-		$configPath = $localResourcePath . '/' . $moduleName . '.config.php';
-		if ( is_file( $configPath ) ) {
-			self::$moduleConfig = array_merge( self::$moduleConfig, include $configPath );
-		}
-
 		// Add the resource list into the module set with its provided path
 		self::$moduleSet[$localResourcePath] = $resourceList;
+	}
+
+	public static function addConfigDefaults( array $vars ) {
+		self::$moduleConfig = array_merge( self::$moduleConfig, $vars );
 	}
 
 	/**
