@@ -25,14 +25,6 @@ class NewMwEmbedResourceManager {
 		// Get the mwEmbed module resource registration:
 		$resourceList = require $resourceListFilePath;
 
-		// Look for special 'messages' => 'moduleFile' key and load all modules file messages:
-		foreach ( $resourceList as $name => $resources ) {
-			if ( isset( $resources['messageDir'] ) ) {
-				$filename = $localResourcePath . '/' . $resources['messageDir'] . '/en.json';
-				$resourceList[$name]['messages'] = self::readJSONFileMessageKeys( $filename );
-			}
-		}
-
 		// Add the resource list into the module set with its provided path
 		self::$moduleSet[$localResourcePath] = $resourceList;
 	}
@@ -96,13 +88,9 @@ class NewMwEmbedResourceManager {
 	 * @return array with a 'messages' key, or empty array if the file doesn't exist
 	 */
 	public static function readJSONFileMessageKeys( $fileName ) {
-		if ( !is_readable( $fileName ) ) {
-			return [];
-		}
-
 		$json = file_get_contents( $fileName );
 		if ( $json === false ) {
-			return [];
+			throw new Exception( __METHOD__ . ": Unable to read JSON file:p $fileName" );
 		}
 
 		$data = FormatJson::decode( $json, true );
