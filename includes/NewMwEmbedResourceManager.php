@@ -77,35 +77,4 @@ class NewMwEmbedResourceManager {
 		// Continue module processing
 		return true;
 	}
-
-	/**
-	 * Read a JSON file containing localisation messages and returns the
-	 * message keys in it.
-	 * This is copied and adapted of LocalisationCache::readJSONFile().
-	 *
-	 * @param string $fileName Name of file to read
-	 * @throws Exception if there is a syntax error in the JSON file
-	 * @return array with a 'messages' key, or empty array if the file doesn't exist
-	 */
-	public static function readJSONFileMessageKeys( $fileName ) {
-		$json = file_get_contents( $fileName );
-		if ( $json === false ) {
-			throw new Exception( __METHOD__ . ": Unable to read JSON file:p $fileName" );
-		}
-
-		$data = FormatJson::decode( $json, true );
-		if ( $data === null ) {
-			throw new Exception( __METHOD__ . ": Invalid JSON file: $fileName" );
-		}
-
-		// Remove keys starting with '@', they're reserved for metadata and non-message data
-		foreach ( $data as $key => $unused ) {
-			if ( $key === '' || $key[0] === '@' ) {
-				unset( $data[$key] );
-			}
-		}
-
-		// Only array (message) keys needed.
-		return array_keys( $data );
-	}
 }
