@@ -124,10 +124,7 @@
 		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
 		"PageRenderingHash": "TimedMediaHandlerHooks::changePageRenderingHash",
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::addCanonicalNamespaces",
-		"ResourceLoaderRegisterModules": [
-			"NewMwEmbedResourceManager::registerModules",
-			"TimedMediaHandlerHooks::resourceLoaderRegisterModules"
-		],
+		"ResourceLoaderRegisterModules": "NewMwEmbedResourceManager::registerModules",
 		"ResourceLoaderGetConfigVars": "NewMwEmbedResourceManager::registerConfigVars"
 	},
 	"config": {
@@ -333,6 +330,218 @@
 			"value": {
 				"application/ogg": "MockOggHandler"
 			}
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "TimedMediaHandler"
+	},
+	"ResourceModules": {
+		"mw.PopUpMediaTransform": {
+				"scripts": "resources/mw.PopUpThumbVideo.js",
+				"dependencies": [
+						"mw.MwEmbedSupport",
+						"mediawiki.Title",
+						"mw.PopUpMediaTransform.styles"
+				]
+		},
+		"mw.PopUpMediaTransform.styles": {
+				"styles": "resources/PopUpThumbVideo.css"
+		},
+		"mw.TMHGalleryHook.js": {
+				"scripts": "resources/mw.TMHGalleryHook.js"
+		},
+		"ext.tmh.embedPlayerIframe": {
+				"scripts": "resources/ext.tmh.embedPlayerIframe.js",
+				"dependencies": [
+						"jquery.embedPlayer",
+						"mw.MwEmbedSupport"
+				]
+		},
+		"mw.MediaWikiPlayerSupport": {
+				"scripts": "resources/mw.MediaWikiPlayerSupport.js",
+				"dependencies": [
+						"mw.Api",
+						"mw.MwEmbedSupport"
+				]
+		},
+		"mw.MediaWikiPlayer.loader": {
+				"scripts": "resources/mw.MediaWikiPlayer.loader.js",
+				"dependencies": [
+						"mw.EmbedPlayer.loader",
+						"mw.TimedText.loader"
+				]
+		},
+		"ext.tmh.video-js": {
+				"scripts": "resources/videojs/video.js",
+				"styles": "resources/videojs/video-js.css",
+				"noflip": true,
+				"targets": [
+						"mobile",
+						"desktop"
+				],
+				"languageScripts": {
+						"ar": "resources/videojs/lang/ar.js",
+						"ba": "resources/videojs/lang/ba.js",
+						"bg": "resources/videojs/lang/bg.js",
+						"ca": "resources/videojs/lang/ca.js",
+						"cs": "resources/videojs/lang/cs.js",
+						"da": "resources/videojs/lang/da.js",
+						"de": "resources/videojs/lang/de.js",
+						"el": "resources/videojs/lang/el.js",
+						"en": "resources/videojs/lang/en.js",
+						"es": "resources/videojs/lang/es.js",
+						"fa": "resources/videojs/lang/fa.js",
+						"fi": "resources/videojs/lang/fi.js",
+						"fr": "resources/videojs/lang/fr.js",
+						"gl": "resources/videojs/lang/gl.js",
+						"he": "resources/videojs/lang/he.js",
+						"hr": "resources/videojs/lang/hr.js",
+						"hu": "resources/videojs/lang/hu.js",
+						"it": "resources/videojs/lang/it.js",
+						"ja": "resources/videojs/lang/ja.js",
+						"ko": "resources/videojs/lang/ko.js",
+						"nb": "resources/videojs/lang/nb.js",
+						"nl": "resources/videojs/lang/nl.js",
+						"nn": "resources/videojs/lang/nn.js",
+						"pl": "resources/videojs/lang/pl.js",
+						"pt": "resources/videojs/lang/pt-PT.js",
+						"pt-br": "resources/videojs/lang/pt-BR.js",
+						"ru": "resources/videojs/lang/ru.js",
+						"sk": "resources/videojs/lang/sk.js",
+						"sr": "resources/videojs/lang/sr.js",
+						"sv": "resources/videojs/lang/sv.js",
+						"tr": "resources/videojs/lang/tr.js",
+						"uk": "resources/videojs/lang/uk.js",
+						"vi": "resources/videojs/lang/vi.js",
+						"zh-cn": "resources/videojs/lang/zh-CN.js",
+						"zh-tw": "resources/videojs/lang/zh-TW.js"
+				}
+		},
+		"ext.tmh.videojs-ogvjs": {
+				"scripts": "resources/videojs-ogvjs/videojs-ogvjs.js",
+				"targets": [
+						"mobile",
+						"desktop"
+				],
+				"dependencies": [
+						"ext.tmh.video-js",
+						"ext.tmh.OgvJs"
+				]
+		},
+		"ext.tmh.videojs-resolution-switcher": {
+				"scripts": "resources/videojs-resolution-switcher/videojs-resolution-switcher.js",
+				"styles": "resources/videojs-resolution-switcher/videojs-resolution-switcher.css",
+				"targets": [
+						"mobile",
+						"desktop"
+				],
+				"dependencies": [
+						"ext.tmh.video-js"
+				]
+		},
+		"ext.tmh.videojs-responsive-layout": {
+				"scripts": "resources/videojs-responsive-layout/videojs-responsive-layout.js",
+				"targets": [
+						"mobile",
+						"desktop"
+				],
+				"dependencies": [
+						"ext.tmh.video-js"
+				]
+		},
+		"ext.tmh.mw-info-button": {
+				"scripts": "resources/mw-info-button/mw-info-button.js",
+				"styles": "resources/mw-info-button/mw-info-button.css",
+				"targets": [
+						"mobile",
+						"desktop"
+				],
+				"dependencies": [
+						"ext.tmh.video-js"
+				]
+		},
+		"ext.tmh.player": {
+				"scripts": "resources/ext.tmh.player.js",
+				"targets": [
+						"mobile",
+						"desktop"
+				],
+				"dependencies": [
+						"ext.tmh.video-js",
+						"ext.tmh.videojs-resolution-switcher",
+						"ext.tmh.videojs-responsive-layout",
+						"ext.tmh.mw-info-button",
+						"ext.tmh.OgvJsSupport"
+				],
+				"messages": [
+						"timedmedia-resolution-160",
+						"timedmedia-resolution-240",
+						"timedmedia-resolution-360",
+						"timedmedia-resolution-480",
+						"timedmedia-resolution-720",
+						"timedmedia-resolution-1080",
+						"timedmedia-resolution-1440",
+						"timedmedia-resolution-2160"
+				]
+		},
+		"ext.tmh.player.styles": {
+				"styles": "resources/ext.tmh.player.styles.less",
+				"targets": [
+						"mobile",
+						"desktop"
+				]
+		},
+		"ext.tmh.thumbnail.styles": {
+				"styles": "resources/ext.tmh.thumbnail.css",
+				"position": "top"
+		},
+		"ext.tmh.transcodetable": {
+				"scripts": "resources/ext.tmh.transcodetable.js",
+				"styles": "resources/transcodeTable.css",
+				"dependencies": [
+						"mediawiki.api.edit",
+						"oojs-ui"
+				],
+				"messages": [
+						"timedmedia-reset-button-cancel",
+						"timedmedia-reset-button-dismiss",
+						"timedmedia-reset-button-reset",
+						"timedmedia-reset-error",
+						"timedmedia-reset",
+						"timedmedia-reset-areyousure",
+						"timedmedia-reset-explanation"
+				]
+		},
+		"ext.tmh.TimedTextSelector": {
+				"scripts": "resources/ext.tmh.TimedTextSelector.js"
+		},
+		"ext.tmh.OgvJsSupport": {
+				"scripts": [
+						"MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv-support.js",
+						"resources/ext.tmh.OgvJsSupport.js"
+				],
+				"targets": [
+						"mobile",
+						"desktop"
+				]
+		},
+		"ext.tmh.OgvJs": {
+				"scripts": [
+						"MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv.js"
+				],
+				"dependencies": "ext.tmh.OgvJsSupport",
+				"targets": [
+						"mobile",
+						"desktop"
+				]
+		},
+		"embedPlayerIframeStyle": {
+				"styles": "resources/embedPlayerIframe.css",
+				"targets": [
+						"mobile",
+						"desktop"
+				]
 		}
 	},
 	"load_composer_autoloader": true,
