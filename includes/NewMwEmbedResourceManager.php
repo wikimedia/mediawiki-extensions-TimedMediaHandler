@@ -15,40 +15,15 @@ class NewMwEmbedResourceManager {
 	 * Register mwEmbeed resource set based on the
 	 *
 	 * Adds modules to ResourceLoader
-	 * @param string $mwEmbedResourcePath
+	 * @param string $resourceListFilePath
 	 * @throws Exception
 	 */
-	public static function register( $mwEmbedResourcePath ) {
-		// @codingStandardsIgnoreStart
-		global $IP;
-		// @codingStandardsIgnoreEnd
-		$localResourcePath = $IP . '/' . $mwEmbedResourcePath;
-		// Get the module name from the end of the path:
-		$modulePathParts = explode( '/', $mwEmbedResourcePath );
-		$moduleName = array_pop( $modulePathParts );
-		if ( !is_dir( $localResourcePath ) ) {
-			throw new Exception(
-				__METHOD__ . " not given readable path: " . htmlspecialchars( $localResourcePath )
-			);
-		}
+	public static function register( $resourceListFilePath ) {
+		$localResourcePath = dirname( $resourceListFilePath );
+		$moduleName = basename( $localResourcePath );
 
-		if ( substr( $mwEmbedResourcePath, -1 ) == '/' ) {
-			throw new Exception(
-				__METHOD__ . " path has trailing slash: " . htmlspecialchars( $localResourcePath )
-			);
-		}
-
-		// Check that resource file is present:
-		$resourceListFilePath = $localResourcePath . '/' . $moduleName . '.php';
-		if ( !is_file( $resourceListFilePath ) ) {
-			throw new Exception(
-				__METHOD__ . " mwEmbed Module is missing resource list: " . htmlspecialchars(
-					$resourceListFilePath
-				)
-			);
-		}
 		// Get the mwEmbed module resource registration:
-		$resourceList = include $resourceListFilePath;
+		$resourceList = require $resourceListFilePath;
 
 		// Look for special 'messages' => 'moduleFile' key and load all modules file messages:
 		foreach ( $resourceList as $name => $resources ) {
@@ -73,7 +48,7 @@ class NewMwEmbedResourceManager {
 		}
 
 		// Add the resource list into the module set with its provided path
-		self::$moduleSet[$mwEmbedResourcePath] = $resourceList;
+		self::$moduleSet[$localResourcePath] = $resourceList;
 	}
 
 	/**
@@ -105,26 +80,14 @@ class NewMwEmbedResourceManager {
 	 * @return bool
 	 */
 	public static function registerModules( &$resourceLoader ) {
-		// @codingStandardsIgnoreStart
-		global $IP;
-		// @codingStandardsIgnoreEnd
-		global $wgScriptPath;
-		// Register all the resources with the resource loader
-		foreach ( self::$moduleSet as $path => $modules ) {
-			// remove 'extension' prefix from path
-			$remoteExtPath = explode( '/', $path );
-			array_shift( $remoteExtPath );
-			$remoteExtPath = implode( '/', $remoteExtPath );
+		foreach ( self::$moduleSet as $localPath => $modules ) {
 			foreach ( $modules as $name => $resources ) {
-				$resources['remoteExtPath'] = $remoteExtPath;
+				$resources['localBasePath'] = $localPath;
+				$resources['remoteExtPath'] = 'TimedMediaHandler/MwEmbedModules/' . basename( $localPath );
 
-				// Running as mediawiki extension, so ResourceLoaderFileModule is used
-				// to add $wgScriptPath to path
-				$resourcePath = $wgScriptPath . '/' . $path;
 				$resourceLoader->register(
-					$name, new ResourceLoaderFileModule(
-						$resources, "$IP/$path", $resourcePath
-					)
+					$name,
+					new ResourceLoaderFileModule( $resources )
 				);
 			}
 		}
