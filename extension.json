@@ -31,17 +31,6 @@
 	"ExtensionFunctions": [
 		"TimedMediaHandlerHooks::register"
 	],
-	"FileExtensions": [
-		"ogg",
-		"ogv",
-		"oga",
-		"flac",
-		"opus",
-		"wav",
-		"webm",
-		"mp4",
-		"mp3"
-	],
 	"GroupPermissions": {
 		"sysop": {
 			"transcode-reset": true,
