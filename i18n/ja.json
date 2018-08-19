@@ -9,7 +9,8 @@
 			"青子守歌",
 			"Otokoume",
 			"Sujiniku",
-			"Irus"
+			"Irus",
+			"Suyama"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -29,6 +30,8 @@
 	"timedmedia-wav-short-audio": "WAV 音声ファイル、$1",
 	"timedmedia-wav-long-audio": "WAV 音声ファイル、長さ $1、全体で $2",
 	"timedmedia-wav-pcm-required": "アップロードできるのは PCM (パルス符号変調) WAV のみです。",
+	"timedmedia-mp3-short-audio": "MP3 音声ファイル、$1",
+	"timedmedia-mp3-long-audio": "MP3 音声ファイル、長さ $1、全体で $2",
 	"timedmedia-mp4-short-video": "MP4 $1 動画ファイル、$2",
 	"timedmedia-mp4-long-video": "MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3",
 	"timedmedia-more": "その他…",
@@ -47,6 +50,7 @@
 	"timedmedia-direct-link": "ダウンロード",
 	"timedmedia-not-ready": "準備ができていません",
 	"timedmedia-error-on": "$1 でのエラー",
+	"timedmedia-started-transcode": "$1 前に開始。 $2",
 	"timedmedia-percent-done": "約 $1% 完了",
 	"timedmedia-in-job-queue": "$1前にジョブ キューに追加されました",
 	"timedmedia-days": "{{PLURAL:$1|$1 日}}",
