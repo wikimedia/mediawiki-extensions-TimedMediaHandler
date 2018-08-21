@@ -44,7 +44,7 @@ class TimedMediaHandlerHooks {
 	public static function register() {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
 		$wgExcludeFromThumbnailPurge,
-		$wgFileExtensions, $wgTmhEnableMp4Uploads, $wgExtensionAssetsPath,
+		$wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
 		$wgWikimediaJenkinsCI;
 
@@ -83,10 +83,6 @@ class TimedMediaHandlerHooks {
 				require __DIR__ . '/MwEmbedModules/EmbedPlayer/EmbedPlayer.config.php',
 				require __DIR__ . '/MwEmbedModules/TimedText/TimedText.config.php'
 			) );
-
-			// Set the default webPath for this embed player extension
-			$wgMwEmbedModuleConfig['EmbedPlayer.WebPath'] = $wgExtensionAssetsPath .
-				'/' . basename( __DIR__ ) . '/MwEmbedModules/EmbedPlayer';
 		}
 
 		// Setup media Handlers:
