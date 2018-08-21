@@ -250,7 +250,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 
 		if ( $title instanceof Title ) {
 			$text = $wgContLang->convert( $title->getPrefixedText() );
-			$link = Linker::link( $title, htmlspecialchars( $text ) );
+			$link = $this->getLinkRenderer()->makeLink( $title, $text );
 			if ( $this->existenceCheck( $title ) ) {
 				// File got uploaded since this page was cached
 				$link = '<del>' . $link . '</del>';
