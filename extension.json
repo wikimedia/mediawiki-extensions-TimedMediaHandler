@@ -128,7 +128,7 @@
 			"value": "mwembed"
 		},
 		"MwEmbedModuleConfig": {
-			"description": "MwEmbed module configuration.\n\nEmbedPlayer.DirectFileLinkWarning: Show a warning to the user if they are not using an html5 browser with high quality ogg support\nEmbedPlayer.EnableOptionsMenu: Show the options menu\nTimedText.ShowInterface: The text interface should always be shown (even if there are no text tracks for that asset at render time)\nTimedText.ShowAddTextLink: Show the add text link",
+			"description": "MwEmbed module configuration.",
 			"public": true,
 			"value": {
 				"EmbedPlayer.DirectFileLinkWarning": true,
