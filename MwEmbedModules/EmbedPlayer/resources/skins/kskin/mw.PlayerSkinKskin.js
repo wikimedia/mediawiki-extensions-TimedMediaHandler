@@ -5,6 +5,8 @@
 ( function ( mw, $ ) {
 	'use strict';
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	mw.PlayerSkinKskin = {
 
 		// The parent class for all kskin css:
@@ -369,7 +371,7 @@
 					)
 			);
 
-			if ( mw.config.get( 'EmbedPlayer.KalturaAttribution' ) === true ) {
+			if ( config[ 'EmbedPlayer.KalturaAttribution' ] === true ) {
 				$target.append(
 					$( '<div>' )
 						.addClass( 'k-attribution' )

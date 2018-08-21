@@ -7,15 +7,16 @@
 ( function ( mw, $ ) {
 	'use strict';
 
-	/**
-	 * Setup local players and supported mime types In an ideal world we would query the plugin
-	 * to get what mime types it supports in practice not always reliable/available
-	 *
-	 * We can't cleanly store these values per library since player library is sometimes
-	 * loaded post player detection
-	 */
-	// Flash based players:
-	var
+	var config = mw.config.get( 'wgTimedMediaHandler' ),
+
+		/**
+		 * Setup local players and supported mime types.
+		 *
+		 * In an ideal world we would query the plugin to get what mime types it supports; in practice,
+		 * not always reliable/available. We can't cleanly store these values per library, since player
+		 * library is sometimes loaded post player detection
+		 */
+		// Flash based players:
 		kplayer = new mw.MediaPlayer( 'kplayer', [
 			'video/x-flv',
 			'video/h264',
@@ -150,7 +151,7 @@
 		},
 
 		addFlashPlayer: function () {
-			if ( !mw.config.get( 'EmbedPlayer.DisableHTML5FlashFallback' ) ) {
+			if ( !config[ 'EmbedPlayer.DisableHTML5FlashFallback' ] ) {
 				this.mediaPlayers.addPlayer( kplayer );
 			}
 		},
@@ -185,7 +186,7 @@
 				// this.mediaPlayers.addPlayer(quicktimeActiveXPlayer);
 			}
 			// <video> element
-			if ( !mw.config.get( 'EmbedPlayer.DisableVideoTagSupport' ) && // to support testing limited / old browsers
+			if ( !config[ 'EmbedPlayer.DisableVideoTagSupport' ] && // to support testing limited / old browsers
 				(
 					typeof HTMLVideoElement === 'object' || // Firefox, Safari
 					typeof HTMLVideoElement === 'function' // Opera

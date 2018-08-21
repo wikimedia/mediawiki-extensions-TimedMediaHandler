@@ -14,8 +14,10 @@
 ( function ( mw, $ ) {
 	'use strict';
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	// Merge in timed text related attributes:
-	mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
+	mw.mergeTMHConfig( 'EmbedPlayer.SourceAttributes', [
 		'srclang',
 		'kind',
 		'label'
@@ -185,8 +187,8 @@
 				// Check if we are in fullscreen or not, if so add an additional bottom offset of
 				// double the default bottom padding.
 				var textOffset = self.embedPlayer.controlBuilder.inFullScreen ?
-						mw.config.get( 'TimedText.BottomPadding' ) * 2 :
-						mw.config.get( 'TimedText.BottomPadding' ),
+						config[ 'TimedText.BottomPadding' ] * 2 :
+						config[ 'TimedText.BottomPadding' ],
 					textCss = self.getInterfaceSizeTextCss( {
 						width: embedPlayer.getInterface().width(),
 						height: embedPlayer.getInterface().height()
@@ -272,7 +274,7 @@
 			} );
 		},
 		includeCaptionButton: function () {
-			return mw.config.get( 'TimedText.ShowInterface' ) === 'always' ||
+			return config[ 'TimedText.ShowInterface' ] === 'always' ||
 				this.embedPlayer.getTextTracks().length;
 		},
 		/**
@@ -461,7 +463,7 @@
 				// NOTE: Button target should be an option or config
 				$menuButton.embedMenu( {
 					content: self.getMainMenu(),
-					zindex: mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+					zindex: config[ 'EmbedPlayer.FullScreenZIndex' ] + 2,
 					crumbDefaultText: ' ',
 					autoShow: autoShow,
 					keepPosition: true,
@@ -1127,7 +1129,7 @@
 					if ( addedCaption ) {
 						$( caption ).remove();
 					} else {
-						$( caption ).fadeOut( mw.config.get( 'EmbedPlayer.MonitorRate' ), function () { $( this ).remove(); } );
+						$( caption ).fadeOut( config[ 'EmbedPlayer.MonitorRate' ], function () { $( this ).remove(); } );
 					}
 				}
 			} );
@@ -1258,7 +1260,7 @@
 					right: 0,
 					position: 'absolute',
 					direction: this.getCurrentLangDir(),
-					'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' )
+					'z-index': config[ 'EmbedPlayer.FullScreenZIndex' ]
 				};
 
 			if ( $captionsOverlayTarget.length === 0 ) {
@@ -1302,7 +1304,7 @@
 				$( '<div>' ).addClass( 'captionContainer block' )
 					.css( {
 						width: '100%',
-						height: mw.config.get( 'TimedText.BelowVideoBlackBoxHeight' ) + 'px',
+						height: config[ 'TimedText.BelowVideoBlackBoxHeight' ] + 'px',
 						'background-color': '#000',
 						'text-align': 'center',
 						'padding-top': '5px'

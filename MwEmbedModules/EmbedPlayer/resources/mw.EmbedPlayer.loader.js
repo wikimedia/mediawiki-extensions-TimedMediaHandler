@@ -2,7 +2,8 @@
 * EmbedPlayer loader
 */
 ( function ( mw ) {
-	var assignedIndex = 0;
+	var assignedIndex = 0,
+		config = mw.config.get( 'wgTimedMediaHandler' );
 
 	/**
 	* Add a DOM ready check for player tags
@@ -10,7 +11,7 @@
 	*/
 	function embedPlayerInit( $content ) {
 		var inx, checkSetDone,
-			$selected = $content.find( mw.config.get( 'EmbedPlayer.RewriteSelector' ) );
+			$selected = $content.find( config[ 'EmbedPlayer.RewriteSelector' ] );
 
 		if ( $selected.length ) {
 			$selected.each( function ( index, playerElement ) {

@@ -6,6 +6,8 @@
 
 ( function ( mw, $ ) {
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	mw.EmbedPlayerImageOverlay = {
 
 		instanceOf: 'ImageOverlay',
@@ -121,7 +123,7 @@
 				// add another pause request after 500 ms ( iOS sometimes does not listen the first time )
 				setTimeout( function () {
 					vid.pause();
-				}, mw.config.get( 'EmbedPlayer.MonitorRate' ) * 2 );
+				}, config[ 'EmbedPlayer.MonitorRate' ] * 2 );
 			}
 			// call the parent play ( to update interface and call respective triggers )
 			this.parent_play();
@@ -139,7 +141,7 @@
 			if ( this.imageDuration ) {
 				this.duration = this.imageDuration;
 			} else {
-				this.duration = mw.config.get( 'EmbedPlayer.DefaultImageDuration' );
+				this.duration = config[ 'EmbedPlayer.DefaultImageDuration' ];
 			}
 			// make sure duration has type float:
 			this.duration = parseFloat( this.duration );

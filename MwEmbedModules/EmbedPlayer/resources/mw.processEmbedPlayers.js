@@ -10,6 +10,8 @@
 ( function ( mw, $ ) {
 	'use strict';
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	mw.processEmbedPlayers = function ( playerSet, callback ) {
 		var addedPlayersFlag,
 			// The player id list container
@@ -122,7 +124,7 @@
 				} );
 			}
 
-			if ( waitForMeta && mw.config.get( 'EmbedPlayer.WaitForMeta' ) ) {
+			if ( waitForMeta && config[ 'EmbedPlayer.WaitForMeta' ] ) {
 				mw.log( 'processEmbedPlayers::WaitForMeta ( video missing height (' +
 					$( playerElement ).attr( 'height' ) + '), width (' +
 					$( playerElement ).attr( 'width' ) + ') or duration: ' +
@@ -253,7 +255,7 @@
 			swapPlayerElement.style.position = 'relative';
 
 			// Copy any data attributes from the target player element over to the swapPlayerElement
-			dataAttributes = mw.config.get( 'EmbedPlayer.DataAttributes' );
+			dataAttributes = config[ 'EmbedPlayer.DataAttributes' ];
 			if ( dataAttributes ) {
 				$.each( dataAttributes, function ( attrName ) {
 					if ( $( targetElement ).data( attrName ) ) {

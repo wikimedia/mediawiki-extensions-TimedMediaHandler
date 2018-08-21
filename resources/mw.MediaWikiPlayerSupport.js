@@ -1,8 +1,10 @@
 ( function ( mw, $ ) {
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	/**
 	 * Merge in the default video attributes supported by embedPlayer:
 	 */
-	mw.mergeConfig( 'EmbedPlayer.Attributes', {
+	mw.mergeTMHConfig( 'EmbedPlayer.Attributes', {
 		// A apiTitleKey for looking up subtitles, credits and related videos
 		'data-mwtitle': null,
 
@@ -33,7 +35,7 @@
 		// Set local apiProvider via config if not defined
 		apiProvider = embedPlayer[ 'data-mwprovider' ];
 		if ( !apiProvider ) {
-			apiProvider = mw.config.get( 'EmbedPlayer.ApiProvider' );
+			apiProvider = config[ 'EmbedPlayer.ApiProvider' ];
 		}
 
 		/*!

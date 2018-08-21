@@ -7,6 +7,8 @@
 ( function ( mw, $ ) {
 	'use strict';
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	// Called from the kdp.swf
 	window.jsInterfaceReadyFunc = function () {
 		return true;
@@ -350,7 +352,7 @@
 						clearInterval( seekInterval );
 						this.triggerHelper( 'seeked' );
 					}
-				}, mw.config.get( 'EmbedPlayer.MonitorRate' ) );
+				}, config[ 'EmbedPlayer.MonitorRate' ] );
 
 			} else {
 				// try to do a play then seek:
