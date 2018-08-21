@@ -77,12 +77,6 @@ class TimedMediaHandlerHooks {
 			NewMwEmbedResourceManager::register(
 				__DIR__ . '/MwEmbedModules/TimedText/TimedText.php'
 			);
-			NewMwEmbedResourceManager::addConfigDefaults( array_merge(
-				require __DIR__ . '/MwEmbedModules/NewMwEmbedSupport/NewMwEmbedSupport.config.php',
-				require __DIR__ . '/MwEmbedModules/NewMediaWikiSupport/NewMediaWikiSupport.config.php',
-				require __DIR__ . '/MwEmbedModules/EmbedPlayer/EmbedPlayer.config.php',
-				require __DIR__ . '/MwEmbedModules/TimedText/TimedText.config.php'
-			) );
 		}
 
 		// Setup media Handlers:

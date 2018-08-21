@@ -29,10 +29,6 @@ class NewMwEmbedResourceManager {
 		self::$moduleSet[$localResourcePath] = $resourceList;
 	}
 
-	public static function addConfigDefaults( array $vars ) {
-		self::$moduleConfig = array_merge( self::$moduleConfig, $vars );
-	}
-
 	/**
 	 * @param array &$vars
 	 * @return array
