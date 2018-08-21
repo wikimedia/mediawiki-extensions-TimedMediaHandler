@@ -131,11 +131,8 @@
 			"description": "MwEmbed module configuration.",
 			"public": true,
 			"value": {
-				"AjaxRequestTimeout": 30,
-
 				"MediaWiki.DefaultProvider": "local",
 				"MediaWiki.ApiProviders": { "wikimediacommons": { "url": "//commons.wikimedia.org/w/api.php" } },
-				"MediaWiki.ApiPostActions": [ "login", "purge", "rollback", "delete", "undelete", "protect", "block", "unblock", "move", "edit", "upload", "emailuser", "import", "userrights" ],
 
 				"EmbedPlayer.OverlayControls": true,
 				"EmbedPlayer.CodecPreference": [ "vp9", "webm", "h264", "ogg", "mp3", "ogvjs" ],
@@ -148,19 +145,11 @@
 				"EmbedPlayer.EnableIpadNativeFullscreen": false,
 				"EmbedPlayer.iPhoneShowHTMLPlayScreen": true,
 				"EmbedPlayer.ForceLargeReplayButton": false,
-				"EmbedPlayer.LibraryPage": "http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library",
 				"EmbedPlayer.RewriteSelector": "video,audio,playlist",
 				"EmbedPlayer.DefaultSize": "400x300",
 				"EmbedPlayer.ControlsHeight": 31,
 				"EmbedPlayer.TimeDisplayWidth": 85,
 				"EmbedPlayer.KalturaAttribution": true,
-				"EmbedPlayer.AttributionButton": {
-					"title": "Kaltura html5 video library",
-					"href": "http://www.kaltura.com",
-					"class": "kaltura-icon",
-					"style": {},
-					"iconurl": false
-				},
 				"EmbedPlayer.EnableOptionsMenu": true,
 				"EmbedPlayer.EnableRightClick": true,
 				"EmbedPlayer.EnabledOptionsMenuItems": [ "playerSelect", "download", "share", "aboutPlayerLibrary" ],
@@ -173,7 +162,6 @@
 				"EmbedPlayer.NewWindowFullscreen": false,
 				"EmbedPlayer.FullscreenTip": true,
 				"EmbedPlayer.DirectFileLinkWarning": true,
-				"EmbedPlayer.FirefoxLink": "http://www.mozilla.com/en-US/firefox/upgrade.html?from=mwEmbed",
 				"EmbedPlayer.NativeControls": false,
 				"EmbedPlayer.NativeControlsMobileSafari": true,
 				"EmbedPlayer.FullScreenZIndex": 999998,
@@ -187,7 +175,6 @@
 				"EmbedPlayer.EnableIframeApi": true,
 				"EmbedPlayer.PageDomainIframe": true,
 				"EmbedPlayer.NotPlayableDownloadLink": true,
-				"EmbedPlayer.BlackPixel": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=",
 
 				"TimedText.ShowInterface": "always",
 				"TimedText.ShowAddTextLink": true,
