@@ -118,7 +118,7 @@
 	},
 	"config": {
 		"TmhUseBetaFeatures": {
-			"description": "Controls weather to enable videojs beta feature. Requires the BetaFeature extension be installed.",
+			"description": "Controls whether to enable videojs beta feature. Requires the BetaFeature extension be installed.",
 			"public": true,
 			"value": true
 		},
