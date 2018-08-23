@@ -98,6 +98,7 @@
 	"action-transcode-status": "現在のトランスコードステータスを表示",
 	"orphanedtimedtext": "孤立しているTimedTextページ",
 	"orphanedtimedtext-summary": "以下のページは、対応するファイルが存在しない[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]の一覧です。",
+	"orphanedtimedtext-unsupported": "この特別ページは MySQL データベースのみでサポートされます。",
 	"orphanedtimedtext-notimedtext": "このウィキでは字幕が有効になっていません。",
 	"apihelp-transcodereset-param-title": "メディアファイルのタイトル。"
 }
