@@ -7,7 +7,7 @@
 		<script>
 			( function ( mw ) {
 				mw.ready( function () {
-					mw.load( 'EmbedPlayer', function () {
+					mediaWiki.loader.using( 'EmbedPlayer', function () {
 						$( '#mwplayer' ).embedPlayer( {
 							poster: 'http://cdn.kaltura.org/apis/html5lib/kplayer-examples/media/bbb480.jpg',
 							sources: [ {
