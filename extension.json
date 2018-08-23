@@ -535,7 +535,7 @@
 			"scripts": "resources/ext.tmh.transcodetable.js",
 			"styles": "resources/transcodeTable.css",
 			"dependencies": [
-				"mediawiki.api.edit",
+				"mediawiki.api",
 				"oojs-ui"
 			],
 			"messages": [
