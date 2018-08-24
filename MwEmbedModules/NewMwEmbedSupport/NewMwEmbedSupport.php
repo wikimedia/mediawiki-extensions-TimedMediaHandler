@@ -59,7 +59,7 @@ return [
 	],
 	'mediawiki.absoluteUrl' => [
 		'scripts' => 'mediawiki/mediawiki.absoluteUrl.js',
-		'dependancies' => [ 'mediawiki.Uri' ],
+		'dependencies' => [ 'mediawiki.Uri' ],
 	],
 	'mw.ajaxProxy' => [
 		'scripts' => 'mediawiki/mediawiki.ajaxProxy.js'

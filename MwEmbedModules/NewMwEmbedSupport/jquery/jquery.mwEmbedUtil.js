@@ -24,8 +24,7 @@
 	};
 
 	/**
-	 * Shortcut to a themed button Should be depreciated for $.button
-	 * bellow
+	 * Shortcut to a themed button Should be deprecated for $.button bellow
 	 *
 	 * @param {string} msg
 	 * @param {string} styleClass

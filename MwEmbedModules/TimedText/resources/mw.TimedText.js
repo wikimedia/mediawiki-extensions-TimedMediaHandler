@@ -208,7 +208,7 @@
 
 			// Update the timed text size
 			$( embedPlayer ).on( 'updateLayout' + this.bindPostFix, function () {
-				// If the the player resize action is an animation, animate text resize,
+				// If the player resize action is an animation, animate text resize,
 				// else instantly adjust the css.
 				var textCss = self.getInterfaceSizeTextCss( {
 					width: embedPlayer.getPlayerWidth(),
@@ -1036,7 +1036,6 @@
 				// associative array of SUB etc categories. Each kind contains an array of textSources.
 				categorySourceList = {},
 				sourcesWithCategoryCount = 0,
-				// ( All sources should have a kind (depreciate )
 				sourcesWithoutCategory = [];
 
 			for ( i = 0; i < this.textSources.length; i++ ) {

@@ -743,7 +743,7 @@ Ogvjs.prototype.featuresVolumeControl = Ogvjs.canControlVolume();
 Ogvjs.prototype.featuresPlaybackRate = Ogvjs.canControlPlaybackRate();
 
 /*
- * Set the the tech's fullscreen resize support status.
+ * Set the tech's fullscreen resize support status.
  * HTML video is able to automatically resize when going to fullscreen.
  * (No longer appears to be used. Can probably be removed.)
  */

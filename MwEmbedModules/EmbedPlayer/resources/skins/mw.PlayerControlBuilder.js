@@ -489,7 +489,7 @@
 					this.doHybridNativeFullscreen();
 					return;
 				} else {
-				// make the player traget or iframe fullscreen
+				// make the player target or iframe fullscreen
 					this.doContextTargetFullscreen();
 				}
 			}

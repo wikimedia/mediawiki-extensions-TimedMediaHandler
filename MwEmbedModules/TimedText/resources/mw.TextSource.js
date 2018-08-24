@@ -408,7 +408,7 @@
 		getCaptionsFromMediaWikiSrt: function ( data ) {
 			var self = this,
 				captions = [ ],
-				curentCap = {
+				currentCap = {
 					content: ''
 				};
 			mw.log( 'TimedText::getCaptionsFromMediaWikiSrt:' );
@@ -454,11 +454,11 @@
 
 				// Check if we have reached the end of a multi line match
 				if ( parseInt( currentPtext ) === currentPtext ) {
-					if ( curentCap.content !== '' ) {
-						captions.push( curentCap );
+					if ( currentCap.content !== '' ) {
+						captions.push( currentCap );
 					}
 					// Clear out the current caption content
-					curentCap = {
+					currentCap = {
 						content: ''
 					};
 					return true;
@@ -469,17 +469,17 @@
 					.match( /(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/ );
 				if ( m ) {
 					// Update the currentCap:
-					curentCap = self.match2caption( m );
+					currentCap = self.match2caption( m );
 					return true;
 				}
-				// Else append contnet for the curentCap
+				// Else append contnet for the currentCap
 				if ( currentPtext !== '<br>' ) {
-					curentCap.content += currentPtext;
+					currentCap.content += currentPtext;
 				}
 			} );
 			// Push last subtitle:
-			if ( curentCap.length !== 0 ) {
-				captions.push( curentCap );
+			if ( currentCap.length !== 0 ) {
+				captions.push( currentCap );
 			}
 			mw.log( 'TimedText::getCaptionsFromMediaWikiSrt found ' + captions.length + ' captions' );
 			return captions;

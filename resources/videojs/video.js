@@ -3503,7 +3503,7 @@ var Component = function () {
 
   /**
    * Return the `Component`s DOM element. This is where children get inserted.
-   * This will usually be the the same as the element returned in {@link Component#el}.
+   * This will usually be the same as the element returned in {@link Component#el}.
    *
    * @return {Element}
    *         The content element for this `Component`.
@@ -10987,7 +10987,7 @@ var Tech = function (_Component) {
    *        `camelCase` or `TitleCase` name of the Tech to get
    *
    * @return {Tech|undefined}
-   *         The `Tech` or undefined if there was no tech with the name requsted.
+   *         The `Tech` or undefined if there was no tech with the name requested.
    */
 
 
@@ -14205,7 +14205,7 @@ var PlayProgressBar = function (_Component) {
   }
 
   /**
-   * Create the the DOM element for this class.
+   * Create the DOM element for this class.
    *
    * @return {Element}
    *         The element that was created.

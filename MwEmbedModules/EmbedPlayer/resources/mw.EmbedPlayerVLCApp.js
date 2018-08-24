@@ -86,7 +86,7 @@
 				}
 				if ( ( new Date() ).getTime() - 15000 > startTime ) {
 				// We switched to VLC more than fifteen seconds ago.
-				// Probably we succesfully switched and the other detection
+				// Probably we successfully switched and the other detection
 				// methods failed.
 					return;
 				}

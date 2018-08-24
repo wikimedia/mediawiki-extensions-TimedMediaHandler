@@ -60,7 +60,7 @@
 		},
 
 		/**
-		 * Output the the embed html
+		 * Output the embed html
 		 */
 		embedPlayerHTML: function ( optionalCallback ) {
 			var self = this;
