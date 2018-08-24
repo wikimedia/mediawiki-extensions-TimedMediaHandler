@@ -189,7 +189,7 @@
 				"EmbedPlayer.NotPlayableDownloadLink": true,
 				"EmbedPlayer.BlackPixel": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=",
 
-				"TimedText.ShowInterface": "auto",
+				"TimedText.ShowInterface": "always",
 				"TimedText.ShowAddTextLink": false,
 				"TimedText.ShowRequestTranscript": false,
 				"TimedText.NeedsTranscriptCategory": "Videos needing subtitles",
