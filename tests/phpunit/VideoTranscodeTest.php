@@ -3,6 +3,7 @@
  * @ingroup timedmedia
  * @author michael dale
  * @group medium
+ * @covers WebVideoTranscode
  */
 class VideoTranscodeTest extends ApiTestCaseVideoUpload {
 
@@ -15,6 +16,7 @@ class VideoTranscodeTest extends ApiTestCaseVideoUpload {
 	 * @param array $file
 	 * Broken as per bug 61878
 	 * @group Broken
+	 * @covers ApiQueryVideoInfo
 	 */
 	function testTranscodeJobs( $file ) {
 		// Upload the file to the mediaWiki system

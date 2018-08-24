@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @covers WebMHandler
+ */
 class WebMHandlerTest extends MediaWikiMediaTestCase {
 
 	/** @var OggHandlerTMH */

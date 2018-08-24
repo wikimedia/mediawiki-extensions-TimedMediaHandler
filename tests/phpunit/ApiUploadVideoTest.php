@@ -14,6 +14,7 @@
  * @group Database
  * @group Destructive
  * @group medium
+ * @coversNothing Covers core ApiUpload class
  */
 class ApiUploadVideoTest extends ApiTestCaseVideoUpload {
 

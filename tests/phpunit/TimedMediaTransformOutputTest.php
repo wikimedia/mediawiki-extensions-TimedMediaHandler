@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @covers TimedMediaTransformOutput
+ */
 class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 
 	private $sortMethod;

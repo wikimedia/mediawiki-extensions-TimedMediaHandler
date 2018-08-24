@@ -13,6 +13,7 @@ class VideoThumbnailTest extends ApiTestCaseVideoUpload {
 	 * @param array $file
 	 * Broken as per bug 61877
 	 * @group Broken
+	 * @covers ApiQueryVideoInfo
 	 */
 	function testApiThumbnails( $file ) {
 		// Upload the file to the mediaWiki system
