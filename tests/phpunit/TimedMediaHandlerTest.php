@@ -14,6 +14,7 @@ class TimedMediaHandlerTest extends MediaWikiTestCase {
 	 * @dataProvider providerParseParamString
 	 * @param string $str a thumbnail parameter string
 	 * @param array $expected Expected thumbnailing parameters
+	 * @covers TimedMediaHandler::parseParamString
 	 */
 	function testParseParamString( $str, $expected ) {
 		$result = $this->handler->parseParamString( $str );
