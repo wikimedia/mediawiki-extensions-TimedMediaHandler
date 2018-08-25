@@ -130,6 +130,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	}
 
 	private function getTranscodesTable( $state, $limit = 50 ) {
+		$linkRenderer = $this->getLinkRenderer();
 		$table = '<table class="wikitable">' . "\n"
 			. '<tr>'
 			. '<th>' . $this->msg( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
@@ -143,7 +144,7 @@ class SpecialTimedMediaHandler extends SpecialPage {
 				. '<td>' . $this->msg(
 					'timedmedia-derivative-desc-' . $transcode[ 'key' ]
 				)->escaped() . '</td>'
-				. '<td>' . Linker::link( $title, $transcode[ 'image_name' ] ) . '</td>'
+				. '<td>' . $linkRenderer->makeLink( $title, $transcode[ 'image_name' ] ) . '</td>'
 				. '</tr>'
 				. "\n";
 		}

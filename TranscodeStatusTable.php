@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * TranscodeStatusTable outputs a "transcode" status table to the ImagePage
  *
@@ -19,9 +22,9 @@ class TranscodeStatusTable {
 
 		$o = '<h2 id="transcodestatus">' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
 		// Give the user a purge page link
-		$o .= Linker::link(
+		$o .= MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 			$file->getTitle(),
-			wfMessage( 'timedmedia-update-status' )->escaped(),
+			wfMessage( 'timedmedia-update-status' )->text(),
 			[],
 			[ 'action' => 'purge' ]
 		);
