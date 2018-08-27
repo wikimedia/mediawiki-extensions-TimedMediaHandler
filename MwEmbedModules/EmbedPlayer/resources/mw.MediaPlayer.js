@@ -62,7 +62,8 @@
 		 */
 		load: function ( callback ) {
 			// Load player library ( upper case the first letter of the library )
-			mw.load( [
+
+			mediaWiki.loader.using( [
 				'mw.EmbedPlayer' + this.library.substr( 0, 1 ).toUpperCase() + this.library.substr( 1 )
 			], function () {
 				if ( callback ) {

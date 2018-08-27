@@ -33,19 +33,6 @@
 		$( callback );
 	};
 
-	/**
-	 * Aliased load function
-	 *
-	 * @param {string[]} resources Resources
-	 * @param {Function} callback Callback
-	 */
-	mw.load = function ( resources, callback ) {
-		mediaWiki.loader.using( resources, callback, function () {
-			// failed to load
-			mw.log( 'Failed to load resources:' + resources );
-		} );
-	};
-
 	mw.getEmbedPlayerPath = function () {
 		if ( mediaWiki.config.get( 'wgExtensionAssetsPath' ) ) {
 			return mediaWiki.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/MwEmbedModules/EmbedPlayer';
@@ -245,7 +232,7 @@
 		}
 
 		// Load the dialog resources
-		mw.load( uiRequest, function () {
+		mediaWiki.loader.using( uiRequest, function () {
 			$( '#mweDialog' ).dialog( options );
 		} );
 		return $( '#mweDialog' );

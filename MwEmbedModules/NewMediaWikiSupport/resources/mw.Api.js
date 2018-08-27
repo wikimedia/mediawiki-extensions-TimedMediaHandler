@@ -104,7 +104,7 @@
 				ranCallback = true;
 
 				// Load the proxy and issue the request
-				mw.load( 'ApiProxy', function () {
+				mediaWiki.loader.using( 'ApiProxy', function () {
 					mw.ApiProxy.doRequest( url, data, callback, timeoutCallback );
 				} );
 
