@@ -14,7 +14,9 @@
 ( function ( mw, $ ) {
 	'use strict';
 
-	mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
+	mw.mergeTMHConfig( 'EmbedPlayer.SourceAttributes', [
 		// source id
 		'id',
 
@@ -131,7 +133,7 @@
 				this.URLTimeEncoding = true;
 			}
 
-			sourceAttr = mw.config.get( 'EmbedPlayer.SourceAttributes' );
+			sourceAttr = config[ 'EmbedPlayer.SourceAttributes' ];
 			$.each( sourceAttr, function ( inx, attr ) {
 				if ( $( element ).attr( attr ) ) {
 				// strip data- from the attribute name

@@ -1,6 +1,8 @@
 /* global Spinner */
 
 ( function ( mw, $ ) {
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	/**
 	 * Set a given selector html to the loading spinner:
 	 *
@@ -12,7 +14,7 @@
 		$( this ).empty();
 
 		// If we have loader path defined, load an image
-		if ( mw.config.get( 'LoadingSpinner.ImageUrl' ) ) {
+		if ( config[ 'LoadingSpinner.ImageUrl' ] ) {
 			this.each( function () {
 				var $loadingSpinner,
 					$this = $( this ).empty();
@@ -21,7 +23,7 @@
 					$this.data( 'spinner', null );
 				}
 				if ( opts !== false ) {
-					$loadingSpinner = $( '<img />' ).attr( 'src', mw.config.get( 'LoadingSpinner.ImageUrl' ) ).load( function () {
+					$loadingSpinner = $( '<img />' ).attr( 'src', config[ 'LoadingSpinner.ImageUrl' ] ).load( function () {
 						// Set spinner position based on image dimension
 						$( this ).css( {
 							'margin-top': '-' + ( this.height / 2 ) + 'px',

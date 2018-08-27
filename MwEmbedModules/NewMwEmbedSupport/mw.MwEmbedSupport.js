@@ -33,24 +33,6 @@
 		$( callback );
 	};
 
-	mw.setConfig = function ( name, value ) {
-		mediaWiki.config.set( name, value );
-	};
-	mw.getConfig = function ( name, value ) {
-		return mediaWiki.config.get( name, value );
-	};
-	mw.setDefaultConfig = function ( name, value ) {
-		if ( mediaWiki.config.get( name ) === null ) {
-			mediaWiki.config.set( name, value );
-		}
-	};
-	/**
-	 * Set any pre-mwEmbed embed configuration
-	 */
-	if ( typeof window.preMwEmbedConfig !== 'undefined' ) {
-		mw.setConfig( window.preMwEmbedConfig );
-	}
-
 	/**
 	 * Aliased load function
 	 *
@@ -86,35 +68,33 @@
 	};
 
 	/**
-	 * Merge in a configuration value:
+	 * Over-ride some of the TMH configuration values by merging the object
 	 *
-	 * @param {string} name Config name
-	 * @param {Mixed} value Config value
+	 * @param {string} key Configuration key to over-write
+	 * @param {Mixed} newValue New configuration value to set
 	 */
-	mw.mergeConfig = function ( name, value ) {
-		var existingValue, i;
-		if ( typeof name === 'object' ) {
-			$.each( name, function ( inx, val ) {
-				mw.mergeConfig( inx, val );
-			} );
-			return;
-		}
-		existingValue = mediaWiki.config.get( name );
+	mw.mergeTMHConfig = function ( key, newValue ) {
+		var i,
+			config = mw.config.get( 'wgTimedMediaHandler' ),
+			existingValue = config[ key ];
+
+		// Simplest option; this is a novel key or a plain value, so just set it.
 		if ( !existingValue || typeof existingValue !== 'object' ) {
-			mw.setConfig( name, value );
+			config[ key ] = newValue;
 			return;
 		}
-		if ( typeof existingValue === 'object' ) {
-			if ( $.isArray( existingValue ) && $.isArray( value ) ) {
-				for ( i = 0; i < value.length; i++ ) {
-					existingValue.push( value[ i ] );
-				}
-				mw.setConfig( name, $.uniqueArray( existingValue ) );
-			} else {
-				mw.setConfig( name, $.extend( {}, existingValue, value ) );
+
+		// Complex option; this is an existing array we need to over-write with new keys where appropriate.
+		if ( Array.isArray( existingValue ) && Array.isArray( newValue ) ) {
+			for ( i = 0; i < newValue.length; i++ ) {
+				existingValue.push( newValue[ i ] );
 			}
+			config[ key ] = $.uniqueArray( existingValue );
 			return;
 		}
+
+		// Remaining option; this is an existing object but not an array, so just extend.
+		config[ key ] = $.extend( {}, existingValue, newValue );
 	};
 
 	/**

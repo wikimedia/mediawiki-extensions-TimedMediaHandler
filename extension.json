@@ -114,7 +114,7 @@
 		"PageRenderingHash": "TimedMediaHandlerHooks::changePageRenderingHash",
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::addCanonicalNamespaces",
 		"ResourceLoaderRegisterModules": "NewMwEmbedResourceManager::registerModules",
-		"ResourceLoaderGetConfigVars": "NewMwEmbedResourceManager::registerConfigVars"
+		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars"
 	},
 	"config": {
 		"TmhUseBetaFeatures": {

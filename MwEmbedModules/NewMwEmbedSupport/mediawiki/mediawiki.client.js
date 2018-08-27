@@ -8,6 +8,8 @@
 
 ( function ( mw ) {
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	mw.isMobileDevice = function () {
 		return ( mw.isIphone() || mw.isIpod() || mw.isIpad() || mw.isAndroid() );
 	};
@@ -99,7 +101,7 @@
 	 */
 	mw.supportsFlash = function () {
 		var majorVersion;
-		if ( mw.config.get( 'EmbedPlayer.DisableHTML5FlashFallback' ) ) {
+		if ( config[ 'EmbedPlayer.DisableHTML5FlashFallback' ] ) {
 			return false;
 		}
 

@@ -9,7 +9,6 @@
  */
 class NewMwEmbedResourceManager {
 	protected static $moduleSet = [];
-	protected static $moduleConfig = [];
 
 	/**
 	 * Register mwEmbeed resource set based on the
@@ -27,23 +26,6 @@ class NewMwEmbedResourceManager {
 
 		// Add the resource list into the module set with its provided path
 		self::$moduleSet[$localResourcePath] = $resourceList;
-	}
-
-	/**
-	 * @param array &$vars
-	 * @return array
-	 */
-	public static function registerConfigVars( &$vars ) {
-		// Allow localSettings.php to override any module config by updating $wgMwEmbedModuleConfig var
-		global $wgMwEmbedModuleConfig;
-		foreach ( self::$moduleConfig as $key => $value ) {
-			if ( !isset( $wgMwEmbedModuleConfig[$key] ) ) {
-				$wgMwEmbedModuleConfig[$key] = $value;
-			}
-		}
-		$vars = array_merge( $vars, $wgMwEmbedModuleConfig );
-
-		return $vars;
 	}
 
 	/**

@@ -6,6 +6,9 @@
 
 ( function ( mw, $ ) {
 	'use strict';
+
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	/**
 	 * mw.PlayerControlBuilder object
 	 * @param {Object} embedPlayer The embedPlayer element we are targeting
@@ -32,7 +35,7 @@
 		volumeLayout: 'vertical',
 
 		// Default control bar height
-		height: mw.config.get( 'EmbedPlayer.ControlsHeight' ),
+		height: config[ 'EmbedPlayer.ControlsHeight' ],
 
 		// Default supported components is merged with embedPlayer set of supported types
 		supportedComponents: {
@@ -173,19 +176,19 @@
 			this.supportedComponents = $.extend( this.supportedComponents, embedPlayer.supports );
 
 			// Check for Attribution button
-			if ( mw.config.get( 'EmbedPlayer.AttributionButton' ) && embedPlayer.attributionbutton ) {
+			if ( config[ 'EmbedPlayer.AttributionButton' ] && embedPlayer.attributionbutton ) {
 				this.supportedComponents.attributionButton = true;
 			}
 			// Check global fullscreen enabled flag
-			if ( mw.config.get( 'EmbedPlayer.EnableFullscreen' ) === false ) {
+			if ( config[ 'EmbedPlayer.EnableFullscreen' ] === false ) {
 				this.supportedComponents.fullscreen = false;
 			}
 			// Check if the options item is available
-			if ( mw.config.get( 'EmbedPlayer.EnableOptionsMenu' ) === false ) {
+			if ( config[ 'EmbedPlayer.EnableOptionsMenu' ] === false ) {
 				this.supportedComponents.options = false;
 			}
 			// Check for volume control
-			if ( mw.config.get( 'EmbedPlayer.EnableVolumeControl' ) === false ) {
+			if ( config[ 'EmbedPlayer.EnableVolumeControl' ] === false ) {
 				this.supportedComponents.volumeControl = false;
 			}
 
@@ -258,7 +261,7 @@
 				if ( componentId === 'playHead' ) {
 					continue;
 				}
-				if ( componentId === 'timeDisplay' && !mw.config.get( 'EmbedPlayer.EnableTimeDisplay' ) ) {
+				if ( componentId === 'timeDisplay' && !config[ 'EmbedPlayer.EnableTimeDisplay' ] ) {
 					continue;
 				}
 
@@ -266,7 +269,7 @@
 				if ( componentId === 'fullscreen' && this.embedPlayer.isAudio() ) {
 					continue;
 				}
-				// Skip sourceSwitch if width < smalles derivative
+				// Skip sourceSwitch if width < smallest derivative
 				if ( componentId === 'sourceSwitch' && this.availableWidth < 320 ) {
 					continue;
 				}
@@ -482,7 +485,7 @@
 				// Check for hybrid html controls / native fullscreen support:
 				vid = this.embedPlayer.getPlayerElement();
 				if (
-					mw.config.get( 'EmbedPlayer.EnableIpadNativeFullscreen' ) &&
+					config[ 'EmbedPlayer.EnableIpadNativeFullscreen' ] &&
 					vid && vid.webkitSupportsFullscreen
 				) {
 					this.doHybridNativeFullscreen();
@@ -561,7 +564,7 @@
 			// Make the $target fullscreen
 			$target
 				.css( {
-					'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' ),
+					'z-index': config[ 'EmbedPlayer.FullScreenZIndex' ],
 					position: playerCssPosition,
 					top: '0px',
 					left: '0px',
@@ -678,7 +681,7 @@
 				$( '<div>' )
 					.addClass( 'mw-fullscreen-overlay' )
 				// Set some arbitrary high z-index
-					.css( 'z-index', mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) )
+					.css( 'z-index', config[ 'EmbedPlayer.FullScreenZIndex' ] )
 					.hide()
 					.fadeIn( 'slow' )
 			);
@@ -696,7 +699,7 @@
 			// Change the z-index of the interface
 			$interface.css( {
 				position: 'fixed',
-				'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 1,
+				'z-index': config[ 'EmbedPlayer.FullScreenZIndex' ] + 1,
 				top: this.windowOffset.top,
 				left: this.windowOffset.left
 			} );
@@ -704,7 +707,7 @@
 			// If native persistent native player update z-index:
 			if ( embedPlayer.isPersistentNativePlayer() ) {
 				$( embedPlayer.getPlayerElement() ).css( {
-					'z-index': mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 1,
+					'z-index': config[ 'EmbedPlayer.FullScreenZIndex' ] + 1,
 					position: 'absolute'
 				} );
 			}
@@ -799,7 +802,7 @@
 			$targetTip.show();
 
 			function hideTip() {
-				mw.setConfig( 'EmbedPlayer.FullscreenTip', false );
+				config[ 'EmbedPlayer.FullscreenTip' ] = false;
 				$targetTip.fadeOut( 'fast' );
 			}
 
@@ -820,7 +823,7 @@
 		// ( avoid repatiave conditionals in getters )
 		getPlayerSize: function () {
 			var height = $( window ).height() - this.getHeight();
-			if ( mw.config.get( 'EmbedPlayer.IsIframeServer' ) ) {
+			if ( config[ 'EmbedPlayer.IsIframeServer' ] ) {
 				return {
 					height: height,
 					width: $( window ).width()
@@ -1190,7 +1193,7 @@
 		addRightClickBinding: function () {
 			var embedPlayer = this.embedPlayer;
 			// check config:
-			if ( mw.config.get( 'EmbedPlayer.EnableRightClick' ) === false ) {
+			if ( config[ 'EmbedPlayer.EnableRightClick' ] === false ) {
 				document.oncontextmenu = function () { return false; };
 				$( embedPlayer ).mousedown( function ( e ) {
 					if ( e.button === 2 ) {
@@ -1282,7 +1285,7 @@
 			}
 
 			// If the config is false
-			if ( mw.config.get( 'EmbedPlayer.OverlayControls' ) === false ) {
+			if ( config[ 'EmbedPlayer.OverlayControls' ] === false ) {
 				return false;
 			}
 
@@ -1308,7 +1311,7 @@
 		 * @return {boolean}
 		 */
 		checkNativeWarning: function () {
-			if ( mw.config.get( 'EmbedPlayer.ShowNativeWarning' ) === false ) {
+			if ( config[ 'EmbedPlayer.ShowNativeWarning' ] === false ) {
 				return false;
 			}
 
@@ -1438,7 +1441,7 @@
 							// Set up a cookie for 30 days:
 							$.cookie( preferenceId, 'hidewarning', { expires: 30 } );
 							// Set the current instance
-							mw.setConfig( preferenceId, false );
+							config[ preferenceId ] = false;
 							$( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
 							// set the local preference to false
 							self.addWarningFlag = false;
@@ -1529,11 +1532,13 @@
 		 * @return {jQuery}
 		 */
 		getOptionsMenu: function () {
-			var menuItemKey, $optionsMenu = $( '<ul>' );
+			var menuItemKey,
+				$optionsMenu = $( '<ul>' );
+
 			for ( menuItemKey in this.optionMenuItems ) {
 
 				// Make sure its supported in the current controlBuilder config:
-				if ( $.inArray( menuItemKey, mw.config.get( 'EmbedPlayer.EnabledOptionsMenuItems' ) ) === -1 ) {
+				if ( $.inArray( menuItemKey, config[ 'EmbedPlayer.EnabledOptionsMenuItems' ] ) === -1 ) {
 					continue;
 				}
 
@@ -1876,7 +1881,7 @@
 							mw.msg( 'mwe-embedplayer-about-library-desc',
 								$( '<div>' ).append(
 									$( '<a>' ).attr( {
-										href: mw.config.get( 'EmbedPlayer.LibraryPage' ),
+										href: config[ 'EmbedPlayer.LibraryPage' ],
 										target: '_new'
 									} )
 								)[ 0 ].innerHTML
@@ -2388,7 +2393,7 @@
 				position: 3,
 				o: function () {
 					var $icon,
-						buttonConfig = mw.config.get( 'EmbedPlayer.AttributionButton' );
+						buttonConfig = config[ 'EmbedPlayer.AttributionButton' ];
 					// Check for source ( by configuration convention this is a 16x16 image
 					if ( buttonConfig.iconurl ) {
 						$icon = $( '<img>' )
@@ -2434,7 +2439,7 @@
 			 * The time display area
 			 */
 			timeDisplay: {
-				w: mw.config.get( 'EmbedPlayer.TimeDisplayWidth' ),
+				w: config[ 'EmbedPlayer.TimeDisplayWidth' ],
 				position: 6,
 				o: function ( ctrlObj ) {
 					return $( '<div>' )
@@ -2463,7 +2468,7 @@
 						// Options binding:
 						.embedMenu( {
 							content: ctrlObj.getOptionsMenu(),
-							zindex: mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+							zindex: config[ 'EmbedPlayer.FullScreenZIndex' ] + 2,
 							positionOpts: {
 								directionV: 'up',
 								offsetY: 30,
@@ -2493,8 +2498,8 @@
 							.buttonHover();
 					// Link out to another window if requested
 					if (
-						mw.config.get( 'EmbedPlayer.NewWindowFullscreen' ) ||
-						( mw.config.get( 'EmbedPlayer.IsIframeServer' ) && mw.config.get( 'EmbedPlayer.EnableIframeApi' ) === false )
+						config[ 'EmbedPlayer.NewWindowFullscreen' ] ||
+						( config[ 'EmbedPlayer.IsIframeServer' ] && config[ 'EmbedPlayer.EnableIframeApi' ] === false )
 					) {
 					// Get the iframe url:
 						url = ctrlObj.embedPlayer.getIframeSourceUrl();
@@ -2571,7 +2576,7 @@
 							ctrlObj.embedPlayer.mediaElement.selectedSource.getShortTitle()
 						).embedMenu( {
 							content: ctrlObj.getSwitchSourceMenu(),
-							zindex: mw.config.get( 'EmbedPlayer.FullScreenZIndex' ) + 2,
+							zindex: config[ 'EmbedPlayer.FullScreenZIndex' ] + 2,
 							keepPosition: true,
 							targetMenuContainer: $menuContainer,
 							width: 130,

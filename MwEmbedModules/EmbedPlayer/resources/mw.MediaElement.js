@@ -13,6 +13,8 @@
 ( function ( mw, $ ) {
 	'use strict';
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	mw.MediaElement = function ( element ) {
 		this.init( element );
 	};
@@ -300,7 +302,7 @@
 				}
 			} );
 
-			codecPref = mw.config.get( 'EmbedPlayer.CodecPreference' );
+			codecPref = config[ 'EmbedPlayer.CodecPreference' ];
 
 			if ( codecPref ) {
 				for ( i = 0; i < codecPref.length; i++ ) {

@@ -3,6 +3,8 @@
 */
 
 ( function ( mw, $ ) {
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	/**
 	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* ( could also be named mw.apiRequest )
@@ -86,7 +88,7 @@
 					timeoutCallback();
 				}
 			}
-		}, mw.config.get( 'AjaxRequestTimeout' ) * 1000 );
+		}, config.AjaxRequestTimeout * 1000 );
 
 		// mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );
 
@@ -130,7 +132,7 @@
 	* @return {boolean} The request requires a post
 	*/
 	mw.checkRequestPost = function ( data ) {
-		if ( $.inArray( data.action, mw.config.get( 'MediaWiki.ApiPostActions' ) ) !== -1 ) {
+		if ( $.inArray( data.action, config[ 'MediaWiki.ApiPostActions' ] ) !== -1 ) {
 			return true;
 		}
 		if ( data.prop === 'info' && data.intoken ) {
@@ -171,10 +173,10 @@
 	* 	local wiki api if no apiProvider is set
 	*/
 	mw.getApiProviderURL = function ( providerId ) {
-		if ( mw.config.get( 'MediaWiki.ApiProviders' ) &&
-			mw.config.get( 'MediaWiki.ApiProviders' )[ providerId ]
+		if ( config[ 'MediaWiki.ApiProviders' ] &&
+			config[ 'MediaWiki.ApiProviders' ][ providerId ]
 		) {
-			return mw.config.get( 'MediaWiki.ApiProviders' )[ providerId ].url;
+			return config[ 'MediaWiki.ApiProviders' ][ providerId ].url;
 		}
 		return mw.getLocalApiUrl();
 	};

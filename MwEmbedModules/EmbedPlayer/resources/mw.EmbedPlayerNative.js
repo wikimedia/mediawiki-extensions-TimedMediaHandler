@@ -6,6 +6,8 @@
 ( function ( mw, $ ) {
 	'use strict';
 
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	mw.EmbedPlayerNative = {
 
 		// Instance Name
@@ -104,6 +106,7 @@
 		addPlayScreenWithNativeOffScreen: function () {
 			var posterSrc,
 				self = this;
+
 			// Hide the player offscreen:
 			this.hidePlayerOffScreen();
 			this.keepPlayerOffScreenFlag = true;
@@ -121,7 +124,7 @@
 
 			// Add an image poster:
 			posterSrc = ( this.poster ) ? this.poster :
-				mw.config.get( 'EmbedPlayer.BlackPixel' );
+				config[ 'EmbedPlayer.BlackPixel' ];
 
 			// Check if the poster is already present:
 			if ( $( this ).find( '.playerPoster' ).length ) {
@@ -228,6 +231,7 @@
 		postEmbedActions: function () {
 			var waitReadyStateCount, checkReadyState,
 				self = this,
+
 				// Setup local pointer:
 				vid = this.getPlayerElement();
 
@@ -239,11 +243,11 @@
 				$( vid ).attr( 'src', this.getSrc( this.currentTime ) );
 			}
 			// Update the WebKitPlaysInline value
-			if ( mw.config.get( 'EmbedPlayer.WebKitPlaysInline' ) ) {
+			if ( config[ 'EmbedPlayer.WebKitPlaysInline' ] ) {
 				$( vid ).attr( 'webkit-playsinline', 1 );
 			}
 			// Update the EmbedPlayer.WebKitAllowAirplay option:
-			if ( mw.config.get( 'EmbedPlayer.WebKitAllowAirplay' ) ) {
+			if ( config[ 'EmbedPlayer.WebKitAllowAirplay' ] ) {
 				$( vid ).attr( 'x-webkit-airplay', 'allow' );
 			}
 			// make sure to display native controls if enabled:
@@ -462,6 +466,7 @@
 		setCurrentTime: function ( seekTime, callback, callbackCount ) {
 			var vid, seekBind,
 				self = this;
+
 			if ( !callbackCount ) {
 				callbackCount = 0;
 			}
@@ -571,7 +576,7 @@
 						mw.log( 'EmbedPlayerNative:: Got possitive time:' + vid.currentTime.toFixed( 3 ) + ', trying to seek again' );
 						self.setCurrentTime( seekTime, callback, callbackCount + 1 );
 					} );
-				}, mw.config.get( 'EmbedPlayer.MonitorRate' ) );
+				}, config[ 'EmbedPlayer.MonitorRate' ] );
 			}
 		},
 		waitForPositiveCurrentTime: function ( callback ) {
@@ -999,7 +1004,7 @@
 			mw.log( 'EmbedPlayerNative:: OnPaused:: propagate:' + this._propagateEvents + ' time since play: ' + timeSincePlay + ' isNative=true' );
 			// Only trigger parent pause if more than MonitorRate time has gone by.
 			// Some browsers trigger native pause events when they "play" or after a src switch
-			if ( timeSincePlay > mw.config.get( 'EmbedPlayer.MonitorRate' ) ) {
+			if ( timeSincePlay > config[ 'EmbedPlayer.MonitorRate' ] ) {
 				self.parent_pause();
 			} else {
 				// continue playback:

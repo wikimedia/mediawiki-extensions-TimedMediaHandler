@@ -8,10 +8,13 @@
 */
 ( function ( mw, $ ) {
 	'use strict';
+
+	var config = mw.config.get( 'wgTimedMediaHandler' );
+
 	/**
 	 * Merge in the default video attributes supported by embedPlayer:
 	 */
-	mw.mergeConfig( 'EmbedPlayer.Attributes', {
+	mw.mergeTMHConfig( 'EmbedPlayer.Attributes', {
 		/*
 		 * Base html element attributes:
 		 */
@@ -145,7 +148,7 @@
 	 * The base source attribute checks also see:
 	 * http://dev.w3.org/html5/spec/Overview.html#the-source-element
 	 */
-	mw.mergeConfig( 'EmbedPlayer.SourceAttributes', [
+	mw.mergeTMHConfig( 'EmbedPlayer.SourceAttributes', [
 		// source id
 		'id',
 
@@ -271,7 +274,7 @@
 				self = this;
 			mw.log( 'EmbedPlayer: initEmbedPlayer: ' + $( element ).width() );
 
-			playerAttributes = mw.config.get( 'EmbedPlayer.Attributes' );
+			playerAttributes = config[ 'EmbedPlayer.Attributes' ];
 
 			// Store the rewrite element tag type
 			this.rewriteElementTagName = element.tagName.toLowerCase();
@@ -304,7 +307,7 @@
 			sn = $( element ).attr( 'class' );
 
 			if ( sn && sn !== '' ) {
-				skinList = mw.config.get( 'EmbedPlayer.SkinList' );
+				skinList = config[ 'EmbedPlayer.SkinList' ];
 				for ( n = 0; n < skinList.length; n++ ) {
 					if ( sn.indexOf( skinList[ n ].toLowerCase() ) !== -1 ) {
 						this.skinName = skinList[ n ];
@@ -313,12 +316,12 @@
 			}
 			// Set the default skin if unset:
 			if ( !this.skinName ) {
-				this.skinName = mw.config.get( 'EmbedPlayer.DefaultSkin' );
+				this.skinName = config[ 'EmbedPlayer.DefaultSkin' ];
 			}
 
 			// Support custom monitorRate Attribute ( if not use default )
 			if ( !this.monitorRate ) {
-				this.monitorRate = mw.config.get( 'EmbedPlayer.MonitorRate' );
+				this.monitorRate = config[ 'EmbedPlayer.MonitorRate' ];
 			}
 
 			// Make sure startOffset is cast as an float:
@@ -559,7 +562,7 @@
 					// values
 					( ( this.height === 150 || this.height === 64 ) && this.width === 300 )
 			) {
-				defaultSize = mw.config.get( 'EmbedPlayer.DefaultSize' ).split( 'x' );
+				defaultSize = config[ 'EmbedPlayer.DefaultSize' ].split( 'x' );
 				if ( isNaN( this.width ) ) {
 					this.width = defaultSize[ 0 ];
 				}
@@ -670,12 +673,13 @@
 		 */
 		setupSourcePlayer: function () {
 			var self = this;
+
 			mw.log( 'EmbedPlayer::setupSourcePlayer: ' + this.id + ' sources: ' + this.mediaElement.sources.length );
 
 			// Check for source replace configuration:
-			if ( mw.config.get( 'EmbedPlayer.ReplaceSources' ) ) {
+			if ( config[ 'EmbedPlayer.ReplaceSources' ] ) {
 				this.emptySources();
-				$.each( mw.config.get( 'EmbedPlayer.ReplaceSources' ), function ( inx, source ) {
+				$.each( config[ 'EmbedPlayer.ReplaceSources' ], function ( inx, source ) {
 					self.mediaElement.tryAddSource( source );
 				} );
 			}
@@ -944,6 +948,7 @@
 		postSequence: false,
 		onClipDone: function () {
 			var self = this;
+
 			// Don't run onclipdone if _propagateEvents is off
 			if ( !self._propagateEvents ) {
 				return;
@@ -1012,7 +1017,7 @@
 							self.pause();
 						}
 						// Check if have a force display of the large play button
-						if ( mw.config.get( 'EmbedPlayer.ForceLargeReplayButton' ) === true ) {
+						if ( config[ 'EmbedPlayer.ForceLargeReplayButton' ] === true ) {
 							self.addLargePlayBtn();
 						} else {
 							// Check if we should hide the large play button on end:
@@ -1144,9 +1149,10 @@
 		},
 		updateLayout: function () {
 			var windowHeight, newHeight, currentHeight;
+
 			// update image layout:
 			this.applyIntrinsicAspect();
-			if ( !mw.config.get( 'EmbedPlayer.IsIframeServer' ) ) {
+			if ( !config[ 'EmbedPlayer.IsIframeServer' ] ) {
 				// Use intrensic container size
 				return;
 			}
@@ -1266,10 +1272,11 @@
 		 */
 		showErrorMsg: function ( errorObj ) {
 			var alertObj;
+
 			// Remove a loading spinner
 			this.hideSpinnerAndPlayBtn();
 			if ( this.controlBuilder ) {
-				if ( mw.config.get( 'EmbedPlayer.ShowPlayerAlerts' ) ) {
+				if ( config[ 'EmbedPlayer.ShowPlayerAlerts' ] ) {
 					alertObj = $.extend( errorObj, {
 						isModal: true,
 						keepOverlay: true,
@@ -1334,7 +1341,7 @@
 
 			// Check if any sources are avaliable:
 			if ( this.mediaElement.sources.length === 0 ||
-				!mw.config.get( 'EmbedPlayer.NotPlayableDownloadLink' ) ) {
+				!config[ 'EmbedPlayer.NotPlayableDownloadLink' ] ) {
 				return;
 			}
 			// Set the isLink player flag:
@@ -1460,7 +1467,7 @@
 		 */
 		updatePosterSrc: function ( posterSrc ) {
 			if ( !posterSrc ) {
-				posterSrc = mw.config.get( 'EmbedPlayer.BlackPixel' );
+				posterSrc = config[ 'EmbedPlayer.BlackPixel' ];
 			}
 			this.poster = posterSrc;
 			this.updatePosterHTML();
@@ -1594,7 +1601,7 @@
 			return ( this.useNativePlayerControls() &&
 				!this.isLinkPlayer &&
 				mw.isIphone() &&
-				mw.config.get( 'EmbedPlayer.iPhoneShowHTMLPlayScreen' )
+				config[ 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ]
 			);
 		},
 		/**
@@ -1625,7 +1632,7 @@
 
 			// Set by default thumb value if not found
 			posterSrc = ( this.poster ) ? this.poster :
-				mw.config.get( 'EmbedPlayer.BlackPixel' );
+				config[ 'EmbedPlayer.BlackPixel' ];
 
 			// Update PersistentNativePlayer poster:
 			if ( this.isPersistentNativePlayer() ) {
@@ -1690,7 +1697,7 @@
 		 * cases where a native player is dipalyed such as iPhone.
 		 */
 		isPersistantPlayBtn: function () {
-			return ( mw.isIphone() && mw.config.get( 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ) );
+			return ( mw.isIphone() && config[ 'EmbedPlayer.iPhoneShowHTMLPlayScreen' ] );
 		},
 		/**
 		 * Checks if native controls should be used
@@ -1703,12 +1710,12 @@
 				return true;
 			}
 
-			if ( mw.config.get( 'EmbedPlayer.NativeControls' ) === true ) {
+			if ( config[ 'EmbedPlayer.NativeControls' ] === true ) {
 				return true;
 			}
 
 			// Check for special webkit property that allows inline iPhone playback:
-			if ( mw.config.get( 'EmbedPlayer.WebKitPlaysInline' ) === true && mw.isIphone() ) {
+			if ( config[ 'EmbedPlayer.WebKitPlaysInline' ] === true && mw.isIphone() ) {
 				return false;
 			}
 
@@ -1721,7 +1728,7 @@
 			// iPad can use html controls if its a persistantPlayer in the dom before loading )
 			// else it needs to use native controls:
 			if ( mw.isIpad() ) {
-				if ( mw.config.get( 'EmbedPlayer.EnableIpadHTMLControls' ) === true ) {
+				if ( config[ 'EmbedPlayer.EnableIpadHTMLControls' ] === true ) {
 					return false;
 				} else {
 					// Set warning that your trying to do iPad controls without
@@ -1774,7 +1781,7 @@
 			}
 
 			// iPhone in WebKitPlaysInline mode does not support clickable overlays as of iOS 5.0
-			if ( mw.config.get( 'EmbedPlayer.WebKitPlaysInline' ) && mw.isIphone() ) {
+			if ( config[ 'EmbedPlayer.WebKitPlaysInline' ] && mw.isIphone() ) {
 				return;
 			}
 			if ( this.getInterface().find( '.play-btn-large' ).length ) {
@@ -1812,7 +1819,7 @@
 		 * Gets code to embed the player remotely for "share" this player links
 		 */
 		getSharingEmbedCode: function () {
-			switch ( mw.config.get( 'EmbedPlayer.ShareEmbedMode' ) ) {
+			switch ( config[ 'EmbedPlayer.ShareEmbedMode' ] ) {
 				case 'iframe':
 					return this.getShareIframeObject();
 				case 'videojs':
@@ -2720,7 +2727,8 @@
 		 * @return {boolean} The src supports url time requests
 		 */
 		supportsURLTimeEncoding: function () {
-			var timeUrls = mw.config.get( 'EmbedPlayer.EnableURLTimeEncoding' );
+			var timeUrls = config[ 'EmbedPlayer.EnableURLTimeEncoding' ];
+
 			if ( timeUrls === 'none' ) {
 				return false;
 			} else if ( timeUrls === 'always' ) {
@@ -2731,7 +2739,7 @@
 					return ( this.instanceOf === 'Kplayer' );
 				}
 			} else {
-				mw.log( 'Error:: invalid config value for EmbedPlayer.EnableURLTimeEncoding:: ' + mw.config.get( 'EmbedPlayer.EnableURLTimeEncoding' ) );
+				mw.log( 'Error:: invalid config value for EmbedPlayer.EnableURLTimeEncoding:: ' + config[ 'EmbedPlayer.EnableURLTimeEncoding' ] );
 			}
 			return false;
 		}

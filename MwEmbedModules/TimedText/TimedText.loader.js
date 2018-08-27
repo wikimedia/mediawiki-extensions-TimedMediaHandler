@@ -3,6 +3,7 @@
 */
 // Scope everything in "mw" ( keeps the global namespace clean )
 ( function ( mw, $ ) {
+	var config = mw.config.get( 'wgTimedMediaHandler' );
 
 	/**
 	* Check if the video tags in the page support timed text
@@ -35,8 +36,8 @@
 		// EmbedPlayerUpdateDependencies passes video element with data attribute
 		// catch both
 		var mwprovider = embedPlayer[ 'data-mwprovider' ] || $( embedPlayer ).data( 'mwprovider' ),
-			showInterface = mw.config.get( 'TimedText.ShowInterface.' + mwprovider ) ||
-				mw.config.get( 'TimedText.ShowInterface' );
+			showInterface = config[ 'TimedText.ShowInterface.' + mwprovider ] ||
+				config[ 'TimedText.ShowInterface' ];
 
 		if ( showInterface === 'always' ) {
 			return true;

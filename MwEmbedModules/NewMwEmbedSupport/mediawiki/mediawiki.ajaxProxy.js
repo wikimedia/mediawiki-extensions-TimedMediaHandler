@@ -1,34 +1,36 @@
 ( function ( mw, $ ) {
 
-	// Setup ajaxProxy module
-	var ajaxProxy = function ( options ) {
-		var defaults;
+	var config = mw.config.get( 'wgTimedMediaHandler' ),
 
-		// Check if we have success callback
-		if ( !$.isFunction( options.success ) ) {
-			mw.log( 'mw.ajaxProxy :: Error: missing success callback.' );
-			return;
-		}
+		// Setup ajaxProxy module
+		ajaxProxy = function ( options ) {
+			var defaults;
 
-		// Check for url
-		if ( !options.url ) {
-			mw.log( 'mw.ajaxProxy :: Error: missing url to proxy.' );
-		}
+			// Check if we have success callback
+			if ( !$.isFunction( options.success ) ) {
+				mw.log( 'mw.ajaxProxy :: Error: missing success callback.' );
+				return;
+			}
 
-		// Setup default vars
-		defaults = {
-			error: function () {},
-			proxyUrl: mw.config.get( 'Mw.XmlProxyUrl' ),
-			proxyType: 'jsonp',
-			startWithProxy: false
+			// Check for url
+			if ( !options.url ) {
+				mw.log( 'mw.ajaxProxy :: Error: missing url to proxy.' );
+			}
+
+			// Setup default vars
+			defaults = {
+				error: function () {},
+				proxyUrl: config[ 'Mw.XmlProxyUrl' ],
+				proxyType: 'jsonp',
+				startWithProxy: false
+			};
+
+			// Merge options with defaults
+			this.options = $.extend( {}, defaults, options );
+
+			// Make request
+			this.ajax();
 		};
-
-		// Merge options with defaults
-		this.options = $.extend( {}, defaults, options );
-
-		// Make request
-		this.ajax();
-	};
 
 	ajaxProxy.prototype = {
 

@@ -654,4 +654,16 @@ class TimedMediaHandlerHooks {
 		global $wgTmhWebPlayer;
 		return $wgTmhWebPlayer;
 	}
+
+	/**
+	 * @param array &$vars
+	 * @return array
+	 */
+	public static function onResourceLoaderGetConfigVars( &$vars ) {
+		// Allow localSettings.php to override any module config by updating $wgMwEmbedModuleConfig var
+		global $wgMwEmbedModuleConfig;
+		$vars['wgTimedMediaHandler'] = $wgMwEmbedModuleConfig;
+
+		return $vars;
+	}
 }

@@ -9,7 +9,8 @@
 	</head>
 	<script type="text/javascript">
 		// Show the controls ( this is a theme demo )
-		mw.setConfig( 'EmbedPlayer.OverlayControls', false );
+		config = mw.config.get( 'wgTimedMediaHandler' );
+		config[ 'EmbedPlayer.OverlayControls' ] = false;
 	</script>
 	<body>
 		<h3> Sample Themable Player:</h3>
