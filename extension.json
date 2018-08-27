@@ -166,8 +166,6 @@
 				"EmbedPlayer.NativeControlsMobileSafari": true,
 				"EmbedPlayer.FullScreenZIndex": 999998,
 				"EmbedPlayer.ShareEmbedMode": "iframe",
-				"EmbedPlayer.SkinList": [ "mvpcf", "kskin" ],
-				"EmbedPlayer.DefaultSkin": "mvpcf",
 				"EmbedPlayer.MonitorRate": 250,
 				"EmbedPlayer.UseFlashOnAndroid": false,
 				"EmbedPlayer.EnableURLTimeEncoding": "flash",
@@ -211,11 +209,6 @@
 				"FLAC",
 				"Opus"
 			]
-		},
-		"VideoPlayerSkinModule": {
-			"description": "Default skin for mwEmbed player",
-			"public": true,
-			"value": "mw.PlayerSkinKskin"
 		},
 		"EnableIframeEmbed": {
 			"description": "Support iframe for remote embedding",

@@ -269,7 +269,7 @@
 		 * @param {Element} element DOM element that we are building the player interface for.
 		 */
 		init: function ( element ) {
-			var attr, sn, skinList, n,
+			var attr,
 				playerAttributes,
 				self = this;
 			mw.log( 'EmbedPlayer: initEmbedPlayer: ' + $( element ).width() );
@@ -302,21 +302,6 @@
 			// Hide "controls" if using native player controls:
 			if ( this.useNativePlayerControls() ) {
 				self.controls = true;
-			}
-			// Set the skin name from the class
-			sn = $( element ).attr( 'class' );
-
-			if ( sn && sn !== '' ) {
-				skinList = config[ 'EmbedPlayer.SkinList' ];
-				for ( n = 0; n < skinList.length; n++ ) {
-					if ( sn.indexOf( skinList[ n ].toLowerCase() ) !== -1 ) {
-						this.skinName = skinList[ n ];
-					}
-				}
-			}
-			// Set the default skin if unset:
-			if ( !this.skinName ) {
-				this.skinName = config[ 'EmbedPlayer.DefaultSkin' ];
 			}
 
 			// Support custom monitorRate Attribute ( if not use default )
@@ -1183,7 +1168,7 @@
 				this.$interface = $( this ).wrap(
 					$( '<div>' )
 						.addClass( 'mwPlayerContainer ' + this.class + ' ' + this.controlBuilder.playerClass )
-						.removeClass( this.skinName )
+						.removeClass( 'kskin' )
 						.append(
 							$( '<div>' ).addClass( 'videoHolder' )
 						)
@@ -1890,11 +1875,6 @@
 				params.poster = this.poster;
 			}
 
-			// Set the skin if set to something other than default
-			if ( this.skinName ) {
-				params.skin = this.skinName;
-			}
-
 			if ( this.duration ) {
 				params.durationHint = parseFloat( this.duration );
 			}
@@ -1924,12 +1904,8 @@
 					'&quot; ';
 			}
 
-			// Set the skin if set to something other than default
-			if ( this.skinName ) {
-				embedCode += 'class=&quot;' +
-					mw.html.escape( this.skinName ) +
-					'&quot; ';
-			}
+			// Set the skin
+			embedCode += 'class=&quot;kskin&quot; ';
 
 			if ( this.duration ) {
 				embedCode += 'durationHint=&quot;' + parseFloat( this.duration ) + '&quot; ';

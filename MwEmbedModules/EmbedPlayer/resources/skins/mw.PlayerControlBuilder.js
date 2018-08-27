@@ -83,14 +83,12 @@
 		 * @return {mw.PlayerControlBuilder}
 		 */
 		init: function ( embedPlayer ) {
-			var skinClass,
-				self = this;
+			var self = this;
 			this.embedPlayer = embedPlayer;
 			// Check for skin overrides for controlBuilder
-			skinClass = embedPlayer.skinName.substr( 0, 1 ).toUpperCase() + embedPlayer.skinName.substr( 1 );
-			if ( mw[ 'PlayerSkin' + skinClass ] ) {
+			if ( mw.PlayerSkinKskin ) {
 			// Clone as to not override prototype with the skin config
-				self = $.extend( true, {}, this, mw[ 'PlayerSkin' + skinClass ] );
+				self = $.extend( true, {}, this, mw.PlayerSkinKskin );
 			}
 			if ( self.embedPlayer.mediaElement.getPlayableSources().length <= 1 &&
 			self.supportedMenuItems.playerSelect ) {

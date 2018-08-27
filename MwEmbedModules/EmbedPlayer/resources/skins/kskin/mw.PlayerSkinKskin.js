@@ -21,8 +21,7 @@
 		// Volume control layout is horizontal
 		volumeLayout: 'horizontal',
 
-		// Skin "kskin" is specific for wikimedia we have an
-		// api Title key so the "credits" menu item can be showed.
+		// We have an api Title key so the "credits" menu item can be shown
 		supportedMenuItems: {
 			credits: true
 		},
