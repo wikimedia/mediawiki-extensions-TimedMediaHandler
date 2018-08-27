@@ -1467,7 +1467,7 @@
 		 */
 		updatePosterSrc: function ( posterSrc ) {
 			if ( !posterSrc ) {
-				posterSrc = config[ 'EmbedPlayer.BlackPixel' ];
+				posterSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 			}
 			this.poster = posterSrc;
 			this.updatePosterHTML();
@@ -1632,7 +1632,7 @@
 
 			// Set by default thumb value if not found
 			posterSrc = ( this.poster ) ? this.poster :
-				config[ 'EmbedPlayer.BlackPixel' ];
+				'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 
 			// Update PersistentNativePlayer poster:
 			if ( this.isPersistentNativePlayer() ) {

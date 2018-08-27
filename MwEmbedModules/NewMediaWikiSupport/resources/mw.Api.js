@@ -79,7 +79,6 @@
 				callback( data );
 			}
 		}
-		// Set the local timeout call based on AjaxRequestTimeout
 		setTimeout( function () {
 			if ( !ranCallback ) {
 				requestTimeOutFlag = true;
@@ -88,7 +87,7 @@
 					timeoutCallback();
 				}
 			}
-		}, config.AjaxRequestTimeout * 1000 );
+		}, 30 * 1000 /* 30s */ );
 
 		// mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );
 
@@ -132,7 +131,7 @@
 	* @return {boolean} The request requires a post
 	*/
 	mw.checkRequestPost = function ( data ) {
-		if ( $.inArray( data.action, config[ 'MediaWiki.ApiPostActions' ] ) !== -1 ) {
+		if ( $.inArray( data.action, [ 'login', 'purge', 'rollback', 'delete', 'undelete', 'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser', 'import', 'userrights' ] ) !== -1 ) {
 			return true;
 		}
 		if ( data.prop === 'info' && data.intoken ) {

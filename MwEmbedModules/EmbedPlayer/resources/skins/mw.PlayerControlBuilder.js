@@ -176,7 +176,7 @@
 			this.supportedComponents = $.extend( this.supportedComponents, embedPlayer.supports );
 
 			// Check for Attribution button
-			if ( config[ 'EmbedPlayer.AttributionButton' ] && embedPlayer.attributionbutton ) {
+			if ( embedPlayer.attributionbutton ) {
 				this.supportedComponents.attributionButton = true;
 			}
 			// Check global fullscreen enabled flag
@@ -1881,7 +1881,7 @@
 							mw.msg( 'mwe-embedplayer-about-library-desc',
 								$( '<div>' ).append(
 									$( '<a>' ).attr( {
-										href: config[ 'EmbedPlayer.LibraryPage' ],
+										href: 'http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library',
 										target: '_new'
 									} )
 								)[ 0 ].innerHTML
@@ -2393,7 +2393,13 @@
 				position: 3,
 				o: function () {
 					var $icon,
-						buttonConfig = config[ 'EmbedPlayer.AttributionButton' ];
+						buttonConfig = {
+							title: 'Kaltura html5 video library',
+							href: 'http://www.kaltura.com',
+							'class': 'kaltura-icon',
+							style: {},
+							iconurl: false
+						};
 					// Check for source ( by configuration convention this is a 16x16 image
 					if ( buttonConfig.iconurl ) {
 						$icon = $( '<img>' )

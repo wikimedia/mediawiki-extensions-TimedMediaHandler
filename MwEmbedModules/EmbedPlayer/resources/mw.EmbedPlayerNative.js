@@ -124,7 +124,7 @@
 
 			// Add an image poster:
 			posterSrc = ( this.poster ) ? this.poster :
-				config[ 'EmbedPlayer.BlackPixel' ];
+				'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
 
 			// Check if the poster is already present:
 			if ( $( this ).find( '.playerPoster' ).length ) {
