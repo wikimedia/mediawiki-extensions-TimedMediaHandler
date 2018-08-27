@@ -12,7 +12,8 @@
 			"Mavrikant",
 			"HakanIST",
 			"Vito Genovese",
-			"Bulgu"
+			"Bulgu",
+			"TmY e12"
 		]
 	},
 	"timedmediahandler-desc": "Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği",
@@ -81,6 +82,7 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ses dosyası|$1 Ogg ses dosyası}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ses dosyası|$1 FLAC ses dosyası}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}",
+	"right-transcode-reset": "Başarısız veya dönüştürülmüş videoları sıfırla, böylece iş kuyruğuna tekrar eklenirler.",
 	"log-name-timedmediahandler": "TimedMediaHandler günlüğü",
 	"orphanedtimedtext": "Orphaned Zamanlamalı İçerik sayfaları",
 	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sayfaları listesinde herhangi bir içerik bulunmuyor."

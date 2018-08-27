@@ -74,7 +74,7 @@
 	"mwe-embedplayer-video-webm": "WebM видео",
 	"mwe-embedplayer-video-flv": "Флеш видео",
 	"mwe-embedplayer-video-ogg": "Ogg видео",
-	"mwe-embedplayer-video-audio": "Ogg аудио",
+	"mwe-embedplayer-video-audio": "Ogg звук",
 	"mwe-embedplayer-missing-source": "Није пронађен извор снимка.",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Преузми овај видео"
 }
