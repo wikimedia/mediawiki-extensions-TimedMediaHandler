@@ -72,7 +72,6 @@
 		"TimedMediaHandlerAliases": "TimedMediaHandler.i18n.alias.php"
 	},
 	"AutoloadClasses": {
-		"NewMwEmbedResourceManager": "includes/NewMwEmbedResourceManager.php",
 		"WebVideoTranscode": "WebVideoTranscode/WebVideoTranscode.php",
 		"TimedMediaHandler": "TimedMediaHandler_body.php",
 		"TimedMediaHandlerHooks": "TimedMediaHandlerHooks.php",
@@ -113,7 +112,6 @@
 		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
 		"PageRenderingHash": "TimedMediaHandlerHooks::changePageRenderingHash",
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::addCanonicalNamespaces",
-		"ResourceLoaderRegisterModules": "NewMwEmbedResourceManager::registerModules",
 		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars"
 	},
 	"config": {
@@ -569,6 +567,312 @@
 			"targets": [
 				"mobile",
 				"desktop"
+			]
+		},
+
+		"mw.MwEmbedSupport": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/mw.MwEmbedSupport.js",
+			"dependencies": [
+				"jquery.triggerQueueCallback",
+				"Spinner",
+				"jquery.loadingSpinner",
+				"jquery.mwEmbedUtil",
+				"mw.MwEmbedSupport.style"
+			],
+			"messages": [
+				"mwe-loading",
+				"mwe-size-gigabytes",
+				"mwe-size-megabytes",
+				"mwe-size-kilobytes",
+				"mwe-size-bytes",
+				"mwe-error_load_lib",
+				"mwe-apiproxy-setup",
+				"mwe-load-drag-item",
+				"mwe-ok",
+				"mwe-cancel",
+				"mwe-enable-gadget",
+				"mwe-enable-gadget-done",
+				"mwe-must-login-gadget",
+				"mwe-test-plural"
+			]
+		},
+		"Spinner": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery.loadingSpinner/Spinner.js",
+			"dependencies": [ "mediawiki.util" ]
+		},
+		"iScroll": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/iscroll/src/iscroll.js"
+		},
+		"jquery.loadingSpinner": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery.loadingSpinner/jquery.loadingSpinner.js"
+		},
+		"mw.MwEmbedSupport.style": {
+			"styles": "MwEmbedModules/NewMwEmbedSupport/skins/common/MwEmbedCommonStyle.css",
+			"skinStyles": {
+				"kaltura-dark": "MwEmbedModules/NewMwEmbedSupport/skins/jquery.ui.themes/kaltura-dark/jquery-ui-1.7.2.css"
+			}
+		},
+		"mediawiki.UtilitiesTime": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.UtilitiesTime.js"
+		},
+		"mediawiki.client": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.client.js"
+		},
+		"mediawiki.absoluteUrl": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.absoluteUrl.js",
+			"dependencies": [
+				"mediawiki.Uri"
+			]
+		},
+		"mw.ajaxProxy": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.ajaxProxy.js"
+		},
+		"fullScreenApi": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/fullScreenApi/fullScreenApi.js"
+		},
+		"jquery.embedMenu": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery.embedMenu/jquery.embedMenu.js",
+			"styles": "MwEmbedModules/NewMwEmbedSupport/jquery.embedMenu/jquery.embedMenu.css"
+		},
+		"jquery.ui.touchPunch": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.ui.touchPunch.js",
+			"dependencies": [
+				"jquery.ui.core",
+				"jquery.ui.mouse"
+			]
+		},
+		"jquery.triggerQueueCallback": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.triggerQueueCallback.js"
+		},
+		"jquery.mwEmbedUtil": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.mwEmbedUtil.js"
+		},
+		"jquery.debouncedresize": {
+			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.debouncedresize.js"
+		},
+		"mw.Language.names": {
+			"scripts": "MwEmbedModules/NewMediaWikiSupport/resources/mw.Language.names.js"
+		},
+		"mw.Api": {
+			"scripts": "MwEmbedModules/NewMediaWikiSupport/resources/mw.Api.js"
+		},
+		"jquery.embedPlayer": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/jquery.embedPlayer.js"
+		},
+		"mw.EmbedPlayer.loader": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayer.loader.js",
+			"dependencies": "jquery.embedPlayer"
+		},
+		"mw.MediaElement": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaElement.js",
+			"dependencies": [
+				"ext.tmh.OgvJsSupport"
+			]
+		},
+		"mw.MediaPlayer": { "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaPlayer.js" },
+		"mw.MediaPlayers": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaPlayers.js",
+			"dependencies": "mw.MediaPlayer"
+		},
+		"mw.MediaSource": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaSource.js",
+			"dependencies": "mw.MwEmbedSupport"
+		},
+		"mw.EmbedTypes": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedTypes.js",
+			"dependencies": [
+				"mw.MediaPlayers",
+				"mediawiki.Uri",
+				"jquery.client"
+			]
+		},
+		"mw.EmbedPlayer": {
+			"scripts": [
+				"MwEmbedModules/EmbedPlayer/resources/mw.processEmbedPlayers.js",
+				"MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayer.js",
+				"MwEmbedModules/EmbedPlayer/resources/skins/mw.PlayerControlBuilder.js",
+				"MwEmbedModules/EmbedPlayer/resources/skins/kskin/mw.PlayerSkinKskin.js"
+			],
+			"dependencies": [
+				"mediawiki.client",
+				"mediawiki.UtilitiesTime",
+				"mediawiki.Uri",
+				"mediawiki.absoluteUrl",
+				"mediawiki.jqueryMsg",
+				"fullScreenApi",
+				"mw.MwEmbedSupport",
+				"mw.EmbedPlayerNative",
+				"mw.MediaElement",
+				"mw.MediaPlayers",
+				"mw.MediaSource",
+				"mw.EmbedTypes",
+				"jquery.client",
+				"jquery.hoverIntent",
+				"jquery.cookie",
+				"jquery.ui.mouse",
+				"jquery.debouncedresize",
+				"jquery.embedMenu",
+				"jquery.ui.slider",
+				"jquery.ui.touchPunch"
+				],
+			"styles": [
+				"MwEmbedModules/EmbedPlayer/resources/skins/EmbedPlayer.css",
+				"MwEmbedModules/EmbedPlayer/resources/skins/kskin/PlayerSkinKskin.css"
+			],
+			"messages": [
+				"mwe-embedplayer-credit-title",
+				"mwe-embedplayer-credit-date",
+				"mwe-embedplayer-credit-author",
+				"mwe-embedplayer-nocredits",
+				"mwe-embedplayer-loading_plugin",
+				"mwe-embedplayer-select_playback",
+				"mwe-embedplayer-link_back",
+				"mwe-embedplayer-error_swap_vid",
+				"mwe-embedplayer-add_to_end_of_sequence",
+				"mwe-embedplayer-missing_video_stream",
+				"mwe-embedplayer-play_clip",
+				"mwe-embedplayer-pause_clip",
+				"mwe-embedplayer-volume_control",
+				"mwe-embedplayer-player_options",
+				"mwe-embedplayer-timed_text",
+				"mwe-embedplayer-player_fullscreen",
+				"mwe-embedplayer-next_clip_msg",
+				"mwe-embedplayer-prev_clip_msg",
+				"mwe-embedplayer-current_clip_msg",
+				"mwe-embedplayer-seek_to",
+				"mwe-embedplayer-paused",
+				"mwe-embedplayer-download_segment",
+				"mwe-embedplayer-download_full_video",
+				"mwe-embedplayer-download_full_audio",
+				"mwe-embedplayer-download_right_click",
+				"mwe-embedplayer-download_clip",
+				"mwe-embedplayer-download_text",
+				"mwe-embedplayer-download",
+				"mwe-embedplayer-share",
+				"mwe-embedplayer-credits",
+				"mwe-embedplayer-about-library",
+				"mwe-embedplayer-about-library-desc",
+				"mwe-embedplayer-clip_linkback",
+				"mwe-embedplayer-choose_player",
+				"mwe-embedplayer-no-player",
+				"mwe-embedplayer-share_this_video",
+				"mwe-embedplayer-share_this_audio",
+				"mwe-embedplayer-video_credits",
+				"mwe-embedplayer-no-video_credits",
+				"mwe-embedplayer-kaltura-platform-title",
+				"mwe-embedplayer-menu_btn",
+				"mwe-embedplayer-close_btn",
+				"mwe-embedplayer-ogg-player-vlc-player",
+				"mwe-embedplayer-ogg-player-oggNative",
+				"mwe-embedplayer-ogg-player-mp3Native",
+				"mwe-embedplayer-ogg-player-aacNative",
+				"mwe-embedplayer-ogg-player-h264Native",
+				"mwe-embedplayer-ogg-player-webmNative",
+				"mwe-embedplayer-ogg-player-vp9Native",
+				"mwe-embedplayer-ogg-player-oggPlugin",
+				"mwe-embedplayer-ogg-player-vlcAppPlayer",
+				"mwe-embedplayer-ogg-player-IEWebMPrompt",
+				"mwe-embedplayer-ogg-player-ogvJsPlayer",
+				"mwe-embedplayer-ogg-player-quicktime-mozilla",
+				"mwe-embedplayer-ogg-player-quicktime-activex",
+				"mwe-embedplayer-ogg-player-flowplayer",
+				"mwe-embedplayer-ogg-player-kplayer",
+				"mwe-embedplayer-ogg-player-selected",
+				"mwe-embedplayer-ogg-player-omtkplayer",
+				"mwe-embedplayer-for_best_experience",
+				"mwe-embedplayer-download-warn",
+				"mwe-embedplayer-fullscreen-tip",
+				"mwe-embedplayer-fullscreen-tip-osx",
+				"mwe-embedplayer-do_not_warn_again",
+				"mwe-embedplayer-playerSelect",
+				"mwe-embedplayer-read_before_embed",
+				"mwe-embedplayer-embed_site_or_blog",
+				"mwe-embedplayer-embed_wiki",
+				"mwe-embedplayer-related_videos",
+				"mwe-embedplayer-seeking",
+				"mwe-embedplayer-buffering",
+				"mwe-embedplayer-video-h264",
+				"mwe-embedplayer-video-webm",
+				"mwe-embedplayer-video-flv",
+				"mwe-embedplayer-video-ogg",
+				"mwe-embedplayer-video-audio",
+				"mwe-embedplayer-audio-mpeg",
+				"mwe-embedplayer-video-3gp",
+				"mwe-embedplayer-video-mpeg",
+				"mwe-embedplayer-video-msvideo",
+				"mwe-embedplayer-missing-source",
+				"mwe-embedplayer-vlcapp-intro",
+				"mwe-embedplayer-vlcapp-vlcapplinktext",
+				"mwe-embedplayer-vlcapp-downloadapp",
+				"mwe-embedplayer-vlcapp-openvideo",
+				"mwe-embedplayer-vlcapp-downloadvideo",
+				"mwe-embedplayer-vlcapp-vlcapppopup",
+				"mwe-embedplayer-iewebmprompt-intro",
+				"mwe-embedplayer-iewebmprompt-linktext",
+				"mwe-embedplayer-iewebmprompt-outro"
+			]
+		},
+		"mw.EmbedPlayerKplayer": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerKplayer.js"
+		},
+		"mw.EmbedPlayerGeneric":{ "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerGeneric.js" },
+		"mw.EmbedPlayerNative":{ "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerNative.js" },
+		"mw.EmbedPlayerVLCApp": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerVLCApp.js",
+			"dependencies": [ "mediawiki.Uri" ]
+		},
+		"mw.EmbedPlayerIEWebMPrompt": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerIEWebMPrompt.js",
+			"styles": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerIEWebMPrompt.css"
+		},
+		"mw.EmbedPlayerOgvJs": {
+			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerOgvJs.js",
+			"dependencies": [
+				"jquery.spinner",
+				"ext.tmh.OgvJsSupport"
+			]
+		},
+		"mw.EmbedPlayerImageOverlay": { "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerImageOverlay.js" },
+		"mw.EmbedPlayerVlc": { "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerVlc.js" },
+		"mw.TimedText.loader": {
+			"scripts": "MwEmbedModules/TimedText/TimedText.loader.js"
+		},
+		"mw.TimedText": {
+			"scripts": "MwEmbedModules/TimedText/resources/mw.TimedText.js",
+			"styles": "MwEmbedModules/TimedText/resources/mw.style.TimedText.css",
+			"dependencies": [
+				"mw.EmbedPlayer",
+				"mw.TextSource",
+				"mw.MwEmbedSupport"
+			],
+			"messages": [
+				"mwe-timedtext-back-btn",
+				"mwe-timedtext-layout-off",
+				"mwe-timedtext-loading-text",
+				"mwe-timedtext-key-language",
+				"mwe-timedtext-textcat-cc",
+				"mwe-timedtext-textcat-sub",
+				"mwe-timedtext-textcat-tad",
+				"mwe-timedtext-textcat-ktv",
+				"mwe-timedtext-textcat-tik",
+				"mwe-timedtext-textcat-ar",
+				"mwe-timedtext-textcat-nb",
+				"mwe-timedtext-textcat-meta",
+				"mwe-timedtext-textcat-trx",
+				"mwe-timedtext-textcat-lrc",
+				"mwe-timedtext-textcat-lin",
+				"mwe-timedtext-textcat-cue",
+				"mwe-timedtext-no-subs",
+				"mwe-timedtext-language-subtitles-for-clip",
+				"mwe-timedtext-language-no-subtitles-for-clip",
+				"mwe-timedtext-upload-timed-text"
+			]
+		},
+		"mw.TextSource": {
+			"scripts": "MwEmbedModules/TimedText/resources/mw.TextSource.js",
+			"dependencies": [
+				"mediawiki.UtilitiesTime",
+				"mw.ajaxProxy"
 			]
 		}
 	},

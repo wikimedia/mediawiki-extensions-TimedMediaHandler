@@ -39,6 +39,8 @@ class TimedMediaHandlerHooks {
 	/**
 	 * Register remaining TimedMediaHandler hooks right after initial setup
 	 *
+	 * TODO: This function shouldn't need to exist.
+	 *
 	 * @return bool
 	 */
 	public static function register() {
@@ -63,20 +65,6 @@ class TimedMediaHandlerHooks {
 			if ( $index !== false ) {
 				array_splice( $wgFileExtensions, $index, 1 );
 			}
-		}
-
-		if ( self::activePlayerMode() === 'mwembed' ) {
-			NewMwEmbedResourceManager::register(
-				__DIR__ . '/MwEmbedModules/NewMwEmbedSupport/NewMwEmbedSupport.php'
-			);
-			NewMwEmbedResourceManager::register(
-				__DIR__ . '/MwEmbedModules/NewMediaWikiSupport/NewMediaWikiSupport.php'
-			);
-			NewMwEmbedResourceManager::register(
-				__DIR__ . '/MwEmbedModules/EmbedPlayer/EmbedPlayer.php' );
-			NewMwEmbedResourceManager::register(
-				__DIR__ . '/MwEmbedModules/TimedText/TimedText.php'
-			);
 		}
 
 		// Setup media Handlers:
