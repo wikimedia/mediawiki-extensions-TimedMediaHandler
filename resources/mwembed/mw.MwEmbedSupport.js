@@ -21,7 +21,6 @@
  */
 
 ( function ( mw, $ ) {
-
 	/**
 	 * mw.ready method
 	 * @deprecated
@@ -31,27 +30,6 @@
 		mw.log( 'Error mw.ready has been deprecated.' );
 		// use the native jQuery dom ready call:
 		$( callback );
-	};
-
-	mw.getEmbedPlayerPath = function () {
-		if ( mediaWiki.config.get( 'wgExtensionAssetsPath' ) ) {
-			return mediaWiki.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/MwEmbedModules/EmbedPlayer';
-		} else if ( mediaWiki.config.get( 'wgLoadScript' ) ) {
-			return mw.getMwEmbedPath() + 'modules/EmbedPlayer';
-		}
-	};
-
-	/**
-	 * legacy support to get the mwEmbed resource path:
-	 *
-	 * @return {string|boolean}
-	 */
-	mw.getMwEmbedPath = function () {
-		// check for wgExtensionAssetsPath path ( running in mediaWiki instance )
-		if ( mediaWiki.config.get( 'wgLoadScript' ) ) {
-			return mediaWiki.config.get( 'wgLoadScript' ).replace( 'load.php', '' );
-		}
-		return false;
 	};
 
 	/**

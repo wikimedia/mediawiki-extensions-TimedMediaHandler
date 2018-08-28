@@ -13,15 +13,8 @@ module.exports = function ( grunt ) {
 			all: [
 				'**/*.js',
 				'!resources/videojs*/**',
-				// TODO: Third party resources should be moved to "lib" folders
-				'!MwEmbedModules/EmbedPlayer/binPlayers/**',
-				'!MwEmbedModules/NewMwEmbedSupport/fullScreenApi/**',
-				'!MwEmbedModules/NewMwEmbedSupport/iscroll/**',
-				'!MwEmbedModules/NewMwEmbedSupport/fullScreenApi/**',
-				'!MwEmbedModules/NewMwEmbedSupport/jquery/jquery.debouncedresize.js',
-				'!MwEmbedModules/NewMwEmbedSupport/jquery/jquery.ui.touchPunch.js',
-				'!MwEmbedModules/NewMwEmbedSupport/jquery.embedMenu/**',
-				'!MwEmbedModules/NewMwEmbedSupport/jquery.loadingSpinner/Spinner.js',
+				// Third party resources
+				'!resources/mwembed/lib/**',
 				'!node_modules/**',
 				'!vendor/**'
 			]
@@ -32,9 +25,10 @@ module.exports = function ( grunt ) {
 			},
 			all: [
 				'**/*.{css,less}',
-				'!MwEmbedModules/**',
-				'!resources/videojs*/**',
 				'!resources/mw-info-button/**',
+				// Third party resources
+				'!resources/mwembed/**',
+				'!resources/videojs*/**',
 				'!node_modules/**',
 				'!vendor/**'
 			]
@@ -75,7 +69,7 @@ module.exports = function ( grunt ) {
 				src: [
 					'**'
 				],
-				dest: 'MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/'
+				dest: 'resources/mwembed/lib/binPlayers/ogv.js/'
 			},
 			'video.js': {
 				expand: true,

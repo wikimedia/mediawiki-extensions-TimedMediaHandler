@@ -60,9 +60,7 @@
 		 * @return {string}
 		 */
 		basePath: function () {
-			var ext = mw.config.get( 'wgExtensionAssetsPath' ),
-				binPlayers = ext + '/TimedMediaHandler/MwEmbedModules/EmbedPlayer/binPlayers';
-			return binPlayers + '/ogv.js';
+			return mw.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/resources/mwembed/lib/binPlayers/ogv.js';
 		},
 
 		/**
