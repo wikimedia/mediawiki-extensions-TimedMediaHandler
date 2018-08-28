@@ -16,6 +16,5 @@
 	<arg name="extensions" value="php,php5,inc"/>
 	<arg name="encoding" value="UTF-8"/>
 	<exclude-pattern type="relative">^libs</exclude-pattern>
-	<exclude-pattern type="relative">^MwEmbedModules</exclude-pattern>
 	<exclude-pattern type="relative">^handlers/OggHandler/File_Ogg</exclude-pattern>
 </ruleset>
