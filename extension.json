@@ -62,9 +62,6 @@
 		],
 		"MwEmbed.TimedText": [
 			"MwEmbedModules/TimedText/i18n"
-		],
-		"NewMwEmbedSupport": [
-			"MwEmbedModules/NewMwEmbedSupport/i18n/"
 		]
 	},
 	"ExtensionMessagesFiles": {
