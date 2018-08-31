@@ -1,5 +1,4 @@
 <?php
-	global $wgVideoPlayerSkinModule;
 	// Register all the EmbedPlayer modules
 	return [
 			'jquery.embedPlayer' => [ 'scripts' => 'resources/jquery.embedPlayer.js' ],
@@ -35,6 +34,7 @@
 					'resources/mw.processEmbedPlayers.js',
 					'resources/mw.EmbedPlayer.js',
 					'resources/skins/mw.PlayerControlBuilder.js',
+					'resources/skins/kskin/mw.PlayerSkinKskin.js',
 				],
 				'dependencies' => [
 					// mwEmbed support module
@@ -68,11 +68,11 @@
 					'jquery.embedMenu',
 					'jquery.ui.slider',
 					'jquery.ui.touchPunch',
-
-					// Set to mw.PlayerSkinKskin or mw.PlayerSkinMvpcf in config
-					$wgVideoPlayerSkinModule
 				],
-				'styles' => 'resources/skins/EmbedPlayer.css',
+				'styles' => [
+					'resources/skins/EmbedPlayer.css',
+					'resources/skins/kskin/PlayerSkinKskin.css',
+				],
 				'messages' =>[
 					"mwe-embedplayer-credit-title",
 					"mwe-embedplayer-credit-date",
@@ -188,15 +188,5 @@
 			'mw.EmbedPlayerImageOverlay' => [ 'scripts' => 'resources/mw.EmbedPlayerImageOverlay.js' ],
 
 			'mw.EmbedPlayerVlc' => [ 'scripts' => 'resources/mw.EmbedPlayerVlc.js' ],
-
-			'mw.PlayerSkinKskin' => [
-				'scripts' => 'resources/skins/kskin/mw.PlayerSkinKskin.js',
-				'styles' => 'resources/skins/kskin/PlayerSkinKskin.css'
-			],
-
-			'mw.PlayerSkinMvpcf' => [
-				'scripts' => 'resources/skins/mvpcf/mw.PlayerSkinMvpcf.js',
-				'styles' => 'resources/skins/mvpcf/PlayerSkinMvpcf.css'
-			],
 	];
 ?>
