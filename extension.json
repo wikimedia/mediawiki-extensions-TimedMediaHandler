@@ -55,13 +55,13 @@
 			"i18n"
 		],
 		"MwEmbed.NewMwEmbedSupport": [
-			"MwEmbedModules/NewMwEmbedSupport/i18n"
+			"i18n/MwEmbedSupport"
 		],
 		"MwEmbed.EmbedPlayer": [
-			"MwEmbedModules/EmbedPlayer/i18n"
+			"i18n/EmbedPlayer"
 		],
 		"MwEmbed.TimedText": [
-			"MwEmbedModules/TimedText/i18n"
+			"i18n/TimedText"
 		]
 	},
 	"ExtensionMessagesFiles": {
