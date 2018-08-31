@@ -6,6 +6,8 @@
  * @ingroup JobQueue
  */
 
+ use MediaWiki\Logger\LoggerFactory;
+
 /**
  * Job for web video transcode
  *
@@ -36,11 +38,11 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * Local function to debug output ( jobs don't have access to the maintenance output class )
+	 * Wrapper around debug logger
 	 * @param string $msg
 	 */
 	private function output( $msg ) {
-		print $msg . "\n";
+		LoggerFactory::getInstance( 'WebVideoTranscodeJob' )->debug( $msg );
 	}
 
 	/**
