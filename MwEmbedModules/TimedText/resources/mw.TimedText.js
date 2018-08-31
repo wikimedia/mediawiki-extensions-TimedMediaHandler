@@ -1087,7 +1087,7 @@
 					}
 				}
 			}
-			// Add any remaning sources that did nto have a category
+			// Add any remaning sources that did not have a category
 			for ( i = 0; i < sourcesWithoutCategory.length; i++ ) {
 				$langMenu.append( sourcesWithoutCategory[ i ] );
 			}
