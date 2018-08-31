@@ -190,14 +190,10 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return Title|null Title in File namespace. null on error.
 	 */
 	private function getCorrespondingFile( Title $timedText ) {
-		if ( !$timedText ) {
-			return false;
-		}
 		$titleParts = explode( '.', $timedText->getDBkey() );
 		array_pop( $titleParts );
 		array_pop( $titleParts );
-		$fileTitle = Title::makeTitleSafe( NS_FILE, implode( '.', $titleParts ) );
-		return $fileTitle;
+		return Title::makeTitleSafe( NS_FILE, implode( '.', $titleParts ) );
 	}
 
 	/**
