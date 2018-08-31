@@ -28,10 +28,10 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	$wgMessagesDirs['MwEmbed.TimedText'] =
 		__DIR__ . '/MwEmbedModules/TimedText/i18n';
 
-	/* wfWarn(
-	'Deprecated PHP entry point used for TimedMediaHandler extension. Please use wfLoadExtension '.
-	'instead, see https://www.mediawiki.org/wiki/Extension_registration for more details.'
-	); */
+	wfWarn(
+		'Deprecated PHP entry point used for TimedMediaHandler extension. Please use wfLoadExtension '.
+		'instead, see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	);
 	return true;
 }
 
