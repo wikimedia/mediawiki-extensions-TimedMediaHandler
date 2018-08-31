@@ -184,6 +184,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * @return string
+	 * @suppress SecurityCheck-DoubleEscaped see note inline
 	 */
 	function getImagePopUp() {
 		// pop up videos set the autoplay attribute to true:
@@ -195,6 +196,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				'id' => self::PLAYER_ID_PREFIX . $id,
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . $this->getPlayerWidth() . "px;",
+				// Note: getHtmlMediaTagOutput() returns HTML, which is getting double escaped here
 				'videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize(), $autoPlay ),
 				],
 			Xml::tags( 'img', [
@@ -297,7 +299,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 *
 	 * @param array $sizeOverride
 	 * @param bool $autoPlay sets the autoplay attribute
-	 * @return string
+	 * @return string HTML
 	 */
 	function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
 		// Try to get the first source src attribute ( usually this should be the source file )
