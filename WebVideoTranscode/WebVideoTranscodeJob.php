@@ -415,7 +415,7 @@ class WebVideoTranscodeJob extends Job {
 		if ( $pass == 1 ) {
 			$cmd .= ' /dev/null';
 		} else {
-			$cmd .= " " . $this->getTargetEncodePath();
+			$cmd .= " " . wfEscapeShellArg( $this->getTargetEncodePath() );
 		}
 
 		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
