@@ -30,6 +30,7 @@
 	"timedmedia-wav-short-audio": "WAV lydfil, $1",
 	"timedmedia-wav-long-audio": "WAV lydfil, varighed $1, $2 samlet",
 	"timedmedia-wav-pcm-required": "Du kan kun uploade PCM (Pulse Code Modulation) WAV.",
+	"timedmedia-mp3-short-audio": "MP3 lydfil, $1",
 	"timedmedia-mp4-short-video": "Mp4 $1 videofil, $2",
 	"timedmedia-mp4-long-video": "Mp4-fil for audio/video, $1, længde $2, $4 × $5 pixel, $3 samlet",
 	"timedmedia-more": "Mere...",
