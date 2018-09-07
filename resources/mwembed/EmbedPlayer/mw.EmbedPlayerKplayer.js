@@ -47,7 +47,9 @@
 			flashvars.autoPlay = 'true';
 			flashvars.loop = 'false';
 
-			playerPath = mw.absoluteUrl( mw.getEmbedPlayerPath() + '/binPlayers/kaltura-player' );
+			playerPath = mw.absoluteUrl(
+				mw.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/resources/mwembed/lib/binPlayers/kaltura-player'
+			);
 			flashvars.entryId = mw.absoluteUrl( self.getSrc() );
 
 			// Use a relative url if the protocol is file://

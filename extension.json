@@ -544,7 +544,7 @@
 		},
 		"ext.tmh.OgvJsSupport": {
 			"scripts": [
-				"MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv-support.js",
+				"resources/mwembed/lib/binPlayers/ogv.js/ogv-support.js",
 				"resources/ext.tmh.OgvJsSupport.js"
 			],
 			"targets": [
@@ -554,7 +554,7 @@
 		},
 		"ext.tmh.OgvJs": {
 			"scripts": [
-				"MwEmbedModules/EmbedPlayer/binPlayers/ogv.js/ogv.js"
+				"resources/mwembed/lib/binPlayers/ogv.js/ogv.js"
 			],
 			"dependencies": "ext.tmh.OgvJsSupport",
 			"targets": [
@@ -571,7 +571,7 @@
 		},
 
 		"mw.MwEmbedSupport": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/mw.MwEmbedSupport.js",
+			"scripts": "resources/mwembed/mw.MwEmbedSupport.js",
 			"dependencies": [
 				"jquery.triggerQueueCallback",
 				"Spinner",
@@ -597,89 +597,89 @@
 			]
 		},
 		"Spinner": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery.loadingSpinner/Spinner.js",
+			"scripts": "resources/mwembed/lib/Spinner.js",
 			"dependencies": [ "mediawiki.util" ]
 		},
 		"iScroll": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/iscroll/src/iscroll.js"
+			"scripts": "resources/mwembed/lib/iscroll/src/iscroll.js"
 		},
 		"jquery.loadingSpinner": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery.loadingSpinner/jquery.loadingSpinner.js"
+			"scripts": "resources/mwembed/jquery.loadingSpinner.js"
 		},
 		"mw.MwEmbedSupport.style": {
-			"styles": "MwEmbedModules/NewMwEmbedSupport/skins/common/MwEmbedCommonStyle.css",
+			"styles": "resources/mwembed/skins/common/MwEmbedCommonStyle.css",
 			"skinStyles": {
-				"kaltura-dark": "MwEmbedModules/NewMwEmbedSupport/skins/jquery.ui.themes/kaltura-dark/jquery-ui-1.7.2.css"
+				"kaltura-dark": "resources/mwembed/skins/jquery.ui.themes/kaltura-dark/jquery-ui-1.7.2.css"
 			}
 		},
 		"mediawiki.UtilitiesTime": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.UtilitiesTime.js"
+			"scripts": "resources/mwembed/mediawiki/mediawiki.UtilitiesTime.js"
 		},
 		"mediawiki.client": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.client.js"
+			"scripts": "resources/mwembed/mediawiki/mediawiki.client.js"
 		},
 		"mediawiki.absoluteUrl": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.absoluteUrl.js",
+			"scripts": "resources/mwembed/mediawiki/mediawiki.absoluteUrl.js",
 			"dependencies": [
 				"mediawiki.Uri"
 			]
 		},
 		"mw.ajaxProxy": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/mediawiki/mediawiki.ajaxProxy.js"
+			"scripts": "resources/mwembed/mediawiki/mediawiki.ajaxProxy.js"
 		},
 		"fullScreenApi": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/fullScreenApi/fullScreenApi.js"
+			"scripts": "resources/mwembed/lib/fullScreenApi.js"
 		},
 		"jquery.embedMenu": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery.embedMenu/jquery.embedMenu.js",
-			"styles": "MwEmbedModules/NewMwEmbedSupport/jquery.embedMenu/jquery.embedMenu.css"
+			"scripts": "resources/mwembed/lib/jquery.embedMenu/jquery.embedMenu.js",
+			"styles": "resources/mwembed/lib/jquery.embedMenu/jquery.embedMenu.css"
 		},
 		"jquery.ui.touchPunch": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.ui.touchPunch.js",
+			"scripts": "resources/mwembed/lib/jquery.ui.touchPunch.js",
 			"dependencies": [
 				"jquery.ui.core",
 				"jquery.ui.mouse"
 			]
 		},
 		"jquery.triggerQueueCallback": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.triggerQueueCallback.js"
+			"scripts": "resources/mwembed/jquery.triggerQueueCallback.js"
 		},
 		"jquery.mwEmbedUtil": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.mwEmbedUtil.js"
+			"scripts": "resources/mwembed/jquery.mwEmbedUtil.js"
 		},
 		"jquery.debouncedresize": {
-			"scripts": "MwEmbedModules/NewMwEmbedSupport/jquery/jquery.debouncedresize.js"
+			"scripts": "resources/mwembed/lib/jquery.debouncedresize.js"
 		},
 		"mw.Language.names": {
-			"scripts": "MwEmbedModules/NewMediaWikiSupport/resources/mw.Language.names.js"
+			"scripts": "resources/mwembed/mw.Language.names.js"
 		},
 		"mw.Api": {
-			"scripts": "MwEmbedModules/NewMediaWikiSupport/resources/mw.Api.js"
+			"scripts": "resources/mwembed/mw.Api.js"
 		},
 		"jquery.embedPlayer": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/jquery.embedPlayer.js"
+			"scripts": "resources/mwembed/EmbedPlayer/jquery.embedPlayer.js"
 		},
 		"mw.EmbedPlayer.loader": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayer.loader.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayer.loader.js",
 			"dependencies": "jquery.embedPlayer"
 		},
 		"mw.MediaElement": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaElement.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.MediaElement.js",
 			"dependencies": [
 				"ext.tmh.OgvJsSupport"
 			]
 		},
-		"mw.MediaPlayer": { "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaPlayer.js" },
+		"mw.MediaPlayer": { "scripts": "resources/mwembed/EmbedPlayer/mw.MediaPlayer.js" },
 		"mw.MediaPlayers": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaPlayers.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.MediaPlayers.js",
 			"dependencies": "mw.MediaPlayer"
 		},
 		"mw.MediaSource": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.MediaSource.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.MediaSource.js",
 			"dependencies": "mw.MwEmbedSupport"
 		},
 		"mw.EmbedTypes": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedTypes.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedTypes.js",
 			"dependencies": [
 				"mw.MediaPlayers",
 				"mediawiki.Uri",
@@ -688,10 +688,10 @@
 		},
 		"mw.EmbedPlayer": {
 			"scripts": [
-				"MwEmbedModules/EmbedPlayer/resources/mw.processEmbedPlayers.js",
-				"MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayer.js",
-				"MwEmbedModules/EmbedPlayer/resources/skins/mw.PlayerControlBuilder.js",
-				"MwEmbedModules/EmbedPlayer/resources/skins/kskin/mw.PlayerSkinKskin.js"
+				"resources/mwembed/EmbedPlayer/mw.processEmbedPlayers.js",
+				"resources/mwembed/EmbedPlayer/mw.EmbedPlayer.js",
+				"resources/mwembed/EmbedPlayer/skins/mw.PlayerControlBuilder.js",
+				"resources/mwembed/EmbedPlayer/skins/kskin/mw.PlayerSkinKskin.js"
 			],
 			"dependencies": [
 				"mediawiki.client",
@@ -716,8 +716,8 @@
 				"jquery.ui.touchPunch"
 				],
 			"styles": [
-				"MwEmbedModules/EmbedPlayer/resources/skins/EmbedPlayer.css",
-				"MwEmbedModules/EmbedPlayer/resources/skins/kskin/PlayerSkinKskin.css"
+				"resources/mwembed/EmbedPlayer/skins/EmbedPlayer.css",
+				"resources/mwembed/EmbedPlayer/skins/kskin/PlayerSkinKskin.css"
 			],
 			"messages": [
 				"mwe-embedplayer-credit-title",
@@ -813,33 +813,33 @@
 			]
 		},
 		"mw.EmbedPlayerKplayer": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerKplayer.js"
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerKplayer.js"
 		},
-		"mw.EmbedPlayerGeneric":{ "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerGeneric.js" },
-		"mw.EmbedPlayerNative":{ "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerNative.js" },
+		"mw.EmbedPlayerGeneric":{ "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerGeneric.js" },
+		"mw.EmbedPlayerNative":{ "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerNative.js" },
 		"mw.EmbedPlayerVLCApp": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerVLCApp.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVLCApp.js",
 			"dependencies": [ "mediawiki.Uri" ]
 		},
 		"mw.EmbedPlayerIEWebMPrompt": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerIEWebMPrompt.js",
-			"styles": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerIEWebMPrompt.css"
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerIEWebMPrompt.js",
+			"styles": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerIEWebMPrompt.css"
 		},
 		"mw.EmbedPlayerOgvJs": {
-			"scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerOgvJs.js",
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerOgvJs.js",
 			"dependencies": [
 				"jquery.spinner",
 				"ext.tmh.OgvJsSupport"
 			]
 		},
-		"mw.EmbedPlayerImageOverlay": { "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerImageOverlay.js" },
-		"mw.EmbedPlayerVlc": { "scripts": "MwEmbedModules/EmbedPlayer/resources/mw.EmbedPlayerVlc.js" },
+		"mw.EmbedPlayerImageOverlay": { "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js" },
+		"mw.EmbedPlayerVlc": { "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVlc.js" },
 		"mw.TimedText.loader": {
-			"scripts": "MwEmbedModules/TimedText/TimedText.loader.js"
+			"scripts": "resources/mwembed/TimedText.loader.js"
 		},
 		"mw.TimedText": {
-			"scripts": "MwEmbedModules/TimedText/resources/mw.TimedText.js",
-			"styles": "MwEmbedModules/TimedText/resources/mw.style.TimedText.css",
+			"scripts": "resources/mwembed/mw.TimedText.js",
+			"styles": "resources/mwembed/mw.style.TimedText.css",
 			"dependencies": [
 				"mw.EmbedPlayer",
 				"mw.TextSource",
@@ -869,7 +869,7 @@
 			]
 		},
 		"mw.TextSource": {
-			"scripts": "MwEmbedModules/TimedText/resources/mw.TextSource.js",
+			"scripts": "resources/mwembed/mw.TextSource.js",
 			"dependencies": [
 				"mediawiki.UtilitiesTime",
 				"mw.ajaxProxy"
