@@ -711,7 +711,7 @@
 				"jquery.embedMenu",
 				"jquery.ui.slider",
 				"jquery.ui.touchPunch"
-				],
+			],
 			"styles": [
 				"resources/mwembed/EmbedPlayer/skins/EmbedPlayer.css",
 				"resources/mwembed/EmbedPlayer/skins/kskin/PlayerSkinKskin.css"
