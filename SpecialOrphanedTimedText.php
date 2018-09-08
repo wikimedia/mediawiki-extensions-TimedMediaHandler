@@ -245,8 +245,10 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		$title = Title::makeTitleSafe( $row->namespace, $row->title );
 
 		if ( $title instanceof Title ) {
-			$text = $wgContLang->convert( $title->getPrefixedText() );
-			$link = $this->getLinkRenderer()->makeLink( $title, $text );
+			$text = $wgContLang->convert(
+				htmlspecialchars( $title->getPrefixedText() )
+			);
+			$link = $this->getLinkRenderer()->makeLink( $title, new HtmlArmor( $text ) );
 			if ( $this->existenceCheck( $title ) ) {
 				// File got uploaded since this page was cached
 				$link = '<del>' . $link . '</del>';
