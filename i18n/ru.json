@@ -144,7 +144,7 @@
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 аудиофайл WebM|$1 аудиофайла WebM|$1 аудиофайлов WebM}}",
 	"beta-feature-timedmediahandler-description-videojs": "Просматривать видеофайлы в современном плеере с более чистым дизайном и поддержкой мобильных.",
 	"right-transcode-reset": "сброс неудавшихся или транскодированных видео, чтобы они встали в очередь заданий снова",
-	"right-transcode-status": "просмотр [[Special:TimedMediaHandler|информации о текущем ходе перекодирования]]",
+	"right-transcode-status": "просмотр [[Special:TimedMediaHandler|информации о текущей активности перекодирования]]",
 	"action-transcode-reset": "сбросить транскоды",
 	"action-transcode-status": "просмотр текущего статуса перекодирования",
 	"log-name-timedmediahandler": "Журнал TimedMediaHandler",

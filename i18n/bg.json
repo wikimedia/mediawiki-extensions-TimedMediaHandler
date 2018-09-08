@@ -6,7 +6,8 @@
 			"Spiritia",
 			"StanProg",
 			"Лорд Бъмбъри",
-			"Termininja"
+			"Termininja",
+			"Vlad5250"
 		]
 	},
 	"timedmediahandler-desc": "Приложение за аудио, видео и timed text, поддържащ форматите WebM, Ogg Theora, Vorbis, srt",
@@ -25,6 +26,8 @@
 	"timedmedia-source-file": "Източник на $1",
 	"timedmedia-source-audio-file-desc": "Оригинален $1-файл ($2)",
 	"timedmediahandler": "Аудио и видео файлове",
+	"right-transcode-status": "Преглеждане на [[Special:TimedMediaHandler|информации за текущите активности по прекодирането]]",
+	"action-transcode-status": "преглед на актуалният статус на прекодирането",
 	"log-name-timedmediahandler": "Дневник на TimedMediaHandler",
 	"log-description-timedmediahandler": "Това е дневник на действия, свързани с timed media transcodes."
 }
