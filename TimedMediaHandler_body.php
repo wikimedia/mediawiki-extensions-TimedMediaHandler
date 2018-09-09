@@ -249,7 +249,6 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * @static
 	 * @param int $timePassed
 	 * @return string|array As from Message::listParam if available, otherwise
 	 *  a corresponding string in the language from $wgLang.
