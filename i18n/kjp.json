@@ -4,5 +4,6 @@
 			"Rul1902"
 		]
 	},
-	"timedmedia-source-file": "$1 အ်ုထိုဝ်"
+	"timedmedia-source-file": "$1 အ်ုထိုဝ်",
+	"timedmedia-source-audio-file-desc": "လါင်းလီ $1 ဖိုင်ႋ ($2)"
 }
