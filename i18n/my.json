@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ninjastrikers"
+			"Ninjastrikers",
+			"Dr Lotus Black"
 		]
 	},
+	"timedmedia-more": "ပို၍...",
 	"timedmedia-source-file": "$1 ရင်းမြစ်",
 	"timedmedia-source-audio-file-desc": "မူရင်း $1 ဖိုင် ($2)",
 	"timedmedia-file": "ဖိုင်"
