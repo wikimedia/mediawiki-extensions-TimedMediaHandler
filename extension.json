@@ -52,15 +52,9 @@
 	},
 	"MessagesDirs": {
 		"TimedMediaHandler": [
-			"i18n"
-		],
-		"MwEmbed.NewMwEmbedSupport": [
-			"i18n/MwEmbedSupport"
-		],
-		"MwEmbed.EmbedPlayer": [
-			"i18n/EmbedPlayer"
-		],
-		"MwEmbed.TimedText": [
+			"i18n",
+			"i18n/MwEmbedSupport",
+			"i18n/EmbedPlayer",
 			"i18n/TimedText"
 		]
 	},
