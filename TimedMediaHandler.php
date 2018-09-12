@@ -15,18 +15,15 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	wfLoadExtension( 'TimedMediaHandler' );
 
 	// Keep i18n globals so mergeMessageFileList.php doesn't break
-
 	$wgMessagesDirs['TimedMediaHandler'] = __DIR__ . '/i18n';
+	$wgMessagesDirs['MwEmbed.NewMwEmbedSupport'] = __DIR__ . '/i18n/MwEmbedSupport';
+	$wgMessagesDirs['MwEmbed.EmbedPlayer'] = __DIR__ . '/i18n/EmbedPlayer';
+	$wgMessagesDirs['MwEmbed.TimedText'] = __DIR__ . '/i18n/TimedText';
+
 	$wgExtensionMessagesFiles['TimedMediaHandlerMagic'] =
 		__DIR__ . '/TimedMediaHandler.i18n.magic.php';
 	$wgExtensionMessagesFiles['TimedMediaHandlerAliases'] =
 		__DIR__ . '/TimedMediaHandler.i18n.alias.php';
-	$wgMessagesDirs['MwEmbed.NewMwEmbedSupport'] =
-		__DIR__ . '/MwEmbedModules/NewMwEmbedSupport/i18n';
-	$wgMessagesDirs['MwEmbed.EmbedPlayer'] =
-		__DIR__ . '/MwEmbedModules/EmbedPlayer/i18n';
-	$wgMessagesDirs['MwEmbed.TimedText'] =
-		__DIR__ . '/MwEmbedModules/TimedText/i18n';
 
 	wfWarn(
 		'Deprecated PHP entry point used for TimedMediaHandler extension. Please use wfLoadExtension '.
