@@ -183,7 +183,7 @@ class WebMHandler extends ID3Handler {
 	/**
 	 * Display metadata box on file description page.
 	 *
-	 * Very basic, cribbed from OggHandlerTMH fow now.
+	 * Very basic, cribbed from OggHandler fow now.
 	 * Only shows the top-level writing/demuxing app comment.
 	 *
 	 * @param File $file

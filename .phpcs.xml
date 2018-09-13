@@ -3,17 +3,15 @@
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationProtected" />
 		<exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
-		<exclude name="MediaWiki.Files.ClassMatchesFilename.NotMatch" />
 		<exclude name="MediaWiki.Usage.ForbiddenFunctions.exec" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="Squiz.Scope.MethodScope.Missing" />
 	</rule>
 	<rule ref="Generic.Files.LineLength">
-		<exclude-pattern>TimedMediaHandler\.i18n\.*\.php</exclude-pattern>
+		<exclude-pattern>i18n/TimedMediaHandler\.i18n\.*\.php</exclude-pattern>
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc"/>
 	<arg name="encoding" value="UTF-8"/>
-	<exclude-pattern type="relative">^libs</exclude-pattern>
-	<exclude-pattern type="relative">^handlers/OggHandler/File_Ogg</exclude-pattern>
+	<exclude-pattern type="relative">^includes/handlers/OggHandler/File_Ogg</exclude-pattern>
 </ruleset>
