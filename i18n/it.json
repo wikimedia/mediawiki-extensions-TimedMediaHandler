@@ -138,11 +138,5 @@
 	"orphanedtimedtext": "Pagine sottotitoli orfane",
 	"orphanedtimedtext-summary": "Elenco di pagine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] che non hanno un file corrispondente.",
 	"orphanedtimedtext-unsupported": "Questa pagina speciale è supportata solo su database MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText non è abilitato su questo wiki.",
-	"apihelp-query+transcodestatus-description": "Ottieni lo stato della transcodifica per un determinato file.",
-	"apihelp-query+transcodestatus-example-1": "Ottieni lo stato della transcodifica per [[:File:Clip.webm]]",
-	"apihelp-query+videoinfo-example-1": "Ottieni informazioni su [[:File:Folgers.ogv]]",
-	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Aggiunge un array di diversi formati e versioni di qualità di un file audio o video che sono disponibili.",
-	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Aggiunge una matrice di sottotitoli, didascalie e descrizioni di un file audio o video disponibile.",
-	"apihelp-transcodereset-param-title": "Il titolo del file multimediale."
+	"orphanedtimedtext-notimedtext": "TimedText non è abilitato su questo wiki."
 }

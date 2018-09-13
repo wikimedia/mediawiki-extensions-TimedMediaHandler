@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tacsipacsi"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Egy adott fájllap átkódolási állapotának lekérése.",
+	"apihelp-query+transcodestatus-summary": "Egy adott fájllap átkódolási állapotának lekérése.",
+	"apihelp-query+transcodestatus-example-1": "[[:File:Clip.webm]] átkódolási állapotának lekérése.",
+	"apihelp-query+videoinfo-example-1": "Információk lekérése a [[:File:Folgers.ogv]] fájlról"
+}

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Brad Jorsch"
+			"Brad Jorsch",
+			"Umherirrender"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "{{doc-apihelp-description|query+transcodestatus}}",

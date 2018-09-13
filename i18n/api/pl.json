@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Woytecr"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Otrzymaj informację o stanie transkodowania dla podanej strony pliku.",
+	"apihelp-query+transcodestatus-example-1": "Otrzymaj informacje o stanie transkodowania dla [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-example-1": "Pobierz informacji o [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-param-title": "Tytuł pliku multimedialnego.",
+	"apierror-timedmedia-disabledtranscode": "Transkodowanie jest wyłączone w tej wiki.",
+	"apierror-timedmedia-badtranscodekey": "Nieprawidłowy lub wyłączony klucz przekodowywania: $1"
+}

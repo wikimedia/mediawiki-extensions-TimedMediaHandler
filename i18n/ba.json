@@ -101,6 +101,5 @@
 	"orphanedtimedtext": "TimedText юғалған биттәр.",
 	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] Ярышлы файлы булмаған биттәр исемлеге.",
 	"orphanedtimedtext-unsupported": "Был махсус бит MySQL база күрһәткестәре өсөн генә ҡулланыла.",
-	"orphanedtimedtext-notimedtext": "TimedText был викила тоҡанмаған.",
-	"apihelp-transcodereset-param-title": "Медиафайлдың исеме."
+	"orphanedtimedtext-notimedtext": "TimedText был викила тоҡанмаған."
 }

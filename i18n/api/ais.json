@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bunukwiki"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "maala matuzu’ay tangan kasabelih a nikasumad-mima setyitase",
+	"apihelp-query+transcodestatus-example-1": "maala [[:File:Clip.webm]] a nikasumad-mima setyitase"
+}

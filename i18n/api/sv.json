@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Hämta transkodningsstatusen för en viss filsida.",
+	"apihelp-query+transcodestatus-example-1": "Hämta transkodningsstatusen för [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Utökar imageinfo till att inkludera källinformation för video (derivat)",
+	"apihelp-query+videoinfo-example-1": "Hämta information om [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-description": "Användare med \"transcode-reset\"-rättigheten kan återställa och köra om ett transkodningsjobb.",
+	"apihelp-transcodereset-param-title": "Mediefilens titel.",
+	"apihelp-transcodereset-param-transcodekey": "Den transkodningsnyckel du önskar återställa. Hämta från [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Återställ alla transkodningar för [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Återställ \"360_560kbs.webm\"-transkodningsnyckeln för [[:File:Clip.webm]]"
+}

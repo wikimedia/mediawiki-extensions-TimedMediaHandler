@@ -81,6 +81,5 @@
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1টি WAV অডিও ফাইল}}",
 	"action-transcode-status": "বর্তমান ট্রান্সকোডিংয়ের অবস্থা দেখুন",
 	"log-name-timedmediahandler": "টাইমডমিডিয়াহ্যান্ডেলার লগ",
-	"log-description-timedmediahandler": "এটি সময়ানুযায়ী মিডিয়া ট্রান্সকোডের সাথে সম্পর্কিত কর্মের একটি লগ।",
-	"apihelp-transcodereset-param-title": "মিডিয়া ফাইলের শিরোনাম।"
+	"log-description-timedmediahandler": "এটি সময়ানুযায়ী মিডিয়া ট্রান্সকোডের সাথে সম্পর্কিত কর্মের একটি লগ।"
 }

@@ -38,6 +38,5 @@
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg ویدیو|$1 Ogg ویدیویا}}",
 	"timedmedia-file": "جانیا",
 	"timedmedia-audios": "{{PLURAL:$1|$1 جانیا دنگدار|$1 جانیایا دنگدار}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 جانیا دنگ نگدار اُگ|$1 جانیایا دنگدار اُگ}}",
-	"apihelp-transcodereset-param-title": "داسون جانیا وارسگر."
+	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 جانیا دنگ نگدار اُگ|$1 جانیایا دنگدار اُگ}}"
 }

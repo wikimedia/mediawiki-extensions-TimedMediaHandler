@@ -156,6 +156,5 @@
 	"orphanedtimedtext": "Các trang TimedText mồ côi",
 	"orphanedtimedtext-summary": "Danh sách trang [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] không có tập tin tương ứng.",
 	"orphanedtimedtext-unsupported": "Trang đặc biệt này chỉ được hỗ trợ trên cơ sở dữ liệu MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText không được kích hoạt trên wiki này.",
-	"apihelp-transcodereset-param-title": "Tên tập tin phương tiện."
+	"orphanedtimedtext-notimedtext": "TimedText không được kích hoạt trên wiki này."
 }

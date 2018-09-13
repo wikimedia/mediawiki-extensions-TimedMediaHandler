@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"C.R.",
+			"Ruthven"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Piglia 'o stato 'e transcodifeca pe' na paggena data.",
+	"apihelp-query+transcodestatus-example-1": "Piglia 'o stato transcode pe'  [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Spanne imageinfo pe' putè nzertà 'e nfurmaziune fonte 'e video (derivative)",
+	"apihelp-query+videoinfo-example-1": "Arrepiglia mò 'e nfurmaziune ncopp' 'o [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-description": "Utente c' 'o deritto 'e 'transcode-reset' putessero resettà e secutà n'ata vota na fatica 'e transcodifeca.",
+	"apihelp-transcodereset-param-title": "'O titolo d' 'o file media.",
+	"apihelp-transcodereset-param-transcodekey": "'A chiave 'e transcodifeca ca vulite re-appiccià. Ascìatavella 'e [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Re-appiccia tuttuquante transcodes pe' [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Re-appiccia 'a chiave 'e transcodifeca '360_560kbs.webm' pe' [[:File:Clip.webm]]"
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dgstranz",
+			"Fitoschido",
+			"Macofe",
+			"MarcoAurelio"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Obtener el estado de conversión de una página de archivo concreta.",
+	"apihelp-query+transcodestatus-summary": "Obtener el estado de transcodificación para un archivo en concreto.",
+	"apihelp-query+transcodestatus-example-1": "Obtener el estado de conversión de [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-example-1": "Obtener información sobre [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-param-title": "El título del archivo multimedia.",
+	"apierror-timedmedia-disabledtranscode": "La transcodificación está desactivada en este wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 no es transcodificable."
+}

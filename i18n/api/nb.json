@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Danmichaelo",
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Hent transkodingsstatus for en gitt filside.",
+	"apihelp-query+transcodestatus-summary": "Hent transkodingsstatis for ei gitt filside.",
+	"apihelp-query+transcodestatus-example-1": "Hent transkodingsstatus for [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Utvider imageinfo til å inkludere informasjon om videokilde (derivater)",
+	"apihelp-query+videoinfo-summary": "Utvider imageinfo til å inkludere informasjon om videokilder (derivativer)",
+	"apihelp-query+videoinfo-example-1": "Hent informasjon om [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Legger til en tabell over de forskjellige format- og kvalitetsversjonene av en lyd- eller videofil som er tilgjengelige.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Legger til en tabell over undertekstene, overskrifter og beskrivelser av en lyd- eller videofil som er tilgjengelige.",
+	"apihelp-transcodereset-description": "Brukere med rettigheten «transcode-reset» kan nullstille og kjøre omkodingsjobber på nytt.",
+	"apihelp-transcodereset-summary": "Brukere med rettigheten «transcode-reset» kan nullstille og kjøre omkodingsjobber på nytt.",
+	"apihelp-transcodereset-param-title": "Mediefiltittelen",
+	"apihelp-transcodereset-param-transcodekey": "Omkodingsnøkkelen du ønsker å nullstille. Hent fra [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Nullstill alle omkodinger for [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Nullstill «360_560kbs.webm»-omkodingsnøkkelen for [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Omkoding er slått av på denne wikien.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 kan ikke omkodes.",
+	"apierror-timedmedia-badtranscodekey": "Ugyldig eller deaktivert omkodingsnøkkel: $1",
+	"apierror-timedmedia-notenoughtimereset": "Ikke nok tid har gått siden den forrige nullstillingen av denne omkodingen. Det er $1 til denne omkodingen kan bli nullstilt."
+}

@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "קבלת מצב ההמרה המשנית עבור דף הקובץ הנתון.",
+	"apihelp-query+transcodestatus-summary": "קבלת מצב המרה משנית עבור דף הקובץ שניתן.",
+	"apihelp-query+transcodestatus-example-1": "קבלת מצב ההמרה המשנית עבור [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "הרחבת imageinfo להכללת מידע על מקור הווידאו (נגזרות)",
+	"apihelp-query+videoinfo-summary": "הרחבת מידע על תמונה (imageinfo) שיכלול את המידע על מקור הווידאו (נגזרים)",
+	"apihelp-query+videoinfo-example-1": "אחזור מידע על [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "הוספת מערך של הגרסאות הזמינות בתסדירים אחרים ובאיכויות אחרות של קובץ הווידאו או האודיו.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "הוספת מערך תת־כותרות, כיתובים ותיאורים של קובצי שמע ווידאו שזמינים.",
+	"apihelp-transcodereset-description": "משתמשים עם ההרשאה \"transcode-reset\" יכולים לאפס ולהריץ מלחדש משימת המרה משנית.",
+	"apihelp-transcodereset-summary": "משתמשים עם ההרשאה \"transcode-reset\" יכולים לאתחל ולהריץ מחדש משימת המרה משנית.",
+	"apihelp-transcodereset-param-title": "כותרת קובץ המדיה.",
+	"apihelp-transcodereset-param-transcodekey": "מפתח המרת־המשנה שברצונך לאפס. יש לאחזר אותו מ־[[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "איפוס כל המרות־המשנה עבור [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "איפוס מפתח המרת המשנה '<span dir=\"ltr\">360_560kbs.webm</span>' עבור [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "המרה משניות כבויה בוויקי הזה.",
+	"apierror-timedmedia-invalidtranscodetitle": "אי־אפשר לעשות המרה משנית ל{{GRAMMAR:תחילית|$1}}.",
+	"apierror-timedmedia-badtranscodekey": "מפתח המרה משנית בלתי־תקין או כבוי: $1",
+	"apierror-timedmedia-notenoughtimereset": "לא עבר מספיק זמן מאז האתחול האחרון של ההמרה המשנית הזאת. $1 עד שאפשר לאתחל את ההמרה המשנית הזאת."
+}

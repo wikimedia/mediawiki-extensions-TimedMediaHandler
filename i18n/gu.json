@@ -20,6 +20,5 @@
 	"timedmedia-source-audio-file-desc": "મુળ આવૃત્તિ $1 ફાઇલ ($2)",
 	"timedmedia-subtitle-new-go": "જાઓ",
 	"timedmedia-file": "ફાઇલ",
-	"action-transcode-reset": "રીસેટ ટ્રાંસ્કોડ કરો",
-	"apierror-timedmedia-disabledtranscode": "ટ્રાંસ્કોડ આ વિકિ પર નિષ્ક્રિય છે."
+	"action-transcode-reset": "રીસેટ ટ્રાંસ્કોડ કરો"
 }

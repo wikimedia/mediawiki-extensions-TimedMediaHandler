@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Albertas"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Gauti perkodavimo statusą pateiktajam failo puslapiui.",
+	"apihelp-query+transcodestatus-example-1": "Gauti perkodavimo būseną [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Papildo paveikslėlio informaciją, kad būtų pridėta video šaltinio (išvestinio) informacija",
+	"apihelp-query+videoinfo-example-1": "Gauti informaciją apie [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-description": "Naudotojai turintys 'perkodavimo-atsatymo' teises gali atstatyti ir pakartotinai paleisti perkodavimo užduotį.",
+	"apihelp-transcodereset-param-title": "Medijos failo pavadinimas.",
+	"apihelp-transcodereset-param-transcodekey": "Perkodavimo raktas, kurį norite atstatyti. Galite paimti iš [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Atstatyti visus [[:File:Clip.webm]] perkodavimus",
+	"apihelp-transcodereset-example-2": "Atstatyti '360_560kbs.webm' perkodavimo raktą [[:File:Clip.webm]]"
+}

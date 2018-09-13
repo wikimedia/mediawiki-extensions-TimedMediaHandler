@@ -52,6 +52,5 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg аудио файл|$1 Ogg аудио файл}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC аудио файл|$1 FLAC аудио файл}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV аудио файл|$1 WAV аудио файл}}",
-	"right-transcode-status": "[[Special:TimedMediaHandler|information about the current transcode activity]] көру",
-	"apihelp-transcodereset-param-title": "Медиа файл атауы."
+	"right-transcode-status": "[[Special:TimedMediaHandler|information about the current transcode activity]] көру"
 }

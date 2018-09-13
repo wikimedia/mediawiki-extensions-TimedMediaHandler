@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hosseinblue"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "گرفتن وضعیت کذگذاری برای یک صفحه مشخص شده.",
+	"apihelp-query+transcodestatus-example-1": "گرفتن وضعیت کدگذاری [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "گسترش اطلاعات تصویری به شامل شدن اطلاعات منبع تصویر (اشتقاق‌شده‌ها)",
+	"apihelp-query+videoinfo-example-1": "واکشی اطلاعاتی درباره [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-description": "کاربرهیی که دسترسی 'transcode-reset' می‌توانند یک کار کدگذاری را از نو کنند.",
+	"apihelp-transcodereset-param-title": "عنوان پرونده.",
+	"apihelp-transcodereset-param-transcodekey": "کلید کدگذاری که می‌خواهید از نو شود. گرفتن از [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "از نو کردن کدگذاری‌ها برای [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "از نو کردن کلید کدگذاری '360_560kbs.webm' برای [[:File:Clip.webm]]"
+}

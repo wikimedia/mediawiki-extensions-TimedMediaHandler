@@ -127,6 +127,5 @@
 	"orphanedtimedtext": "Ongebruikte TimedTextpagina's",
 	"orphanedtimedtext-summary": "Lijst van [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] pagina's die geen bijbehorend bestand hebben.",
 	"orphanedtimedtext-unsupported": "Deze speciale pagina wordt alleen ondersteund op MySQL databases.",
-	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki.",
-	"apihelp-transcodereset-param-title": "De titel van het mediabestand."
+	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki."
 }

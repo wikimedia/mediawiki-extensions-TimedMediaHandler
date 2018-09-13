@@ -103,7 +103,5 @@
 	"orphanedtimedtext": "kucacayay a TimedText kasabelih",
 	"orphanedtimedtext-summary": "inayi’ masasiket amahicahica tu tangan a [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] kasabelih piazihan-tu-sulit.",
 	"orphanedtimedtext-unsupported": "tina sazumaay a kasabelih midama dada’ pisaungay MySQL kalunasulitan-sulu",
-	"orphanedtimedtext-notimedtext": "tina Wiki caay miwawah TimedText sasahicaan.",
-	"apihelp-query+transcodestatus-description": "maala matuzu’ay tangan kasabelih a nikasumad-mima setyitase",
-	"apihelp-query+transcodestatus-example-1": "maala [[:File:Clip.webm]] a nikasumad-mima setyitase"
+	"orphanedtimedtext-notimedtext": "tina Wiki caay miwawah TimedText sasahicaan."
 }

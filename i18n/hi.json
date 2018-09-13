@@ -86,6 +86,5 @@
 	"timedmedia-audios": "{{PLURAL:$1|$1 ऑडियो फ़ाइल|$1 ऑडियो फ़ाइलें}}",
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ऑडियो फ़ाइल|$1 Ogg ऑडियो फ़ाइलें}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ऑडियो फ़ाइल|$1 FLAC ऑडियो फ़ाइलें}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}",
-	"apihelp-transcodereset-param-title": "मीडिया फ़ाइल का शीर्षक"
+	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}"
 }

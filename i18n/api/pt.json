@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Obter o estado da transcodificação de um dado ficheiro.",
+	"apihelp-query+transcodestatus-summary": "Obter o estado da transcodificação de um dado ficheiro.",
+	"apihelp-query+transcodestatus-example-1": "Obter o estado da transcodificação de [[:File:Clip.webm]].",
+	"apihelp-query+videoinfo-description": "Expande imageinfo para incluir informações sobre a fonte (e obras derivadas) do vídeo",
+	"apihelp-query+videoinfo-summary": "Expande imageinfo para incluir informações sobre a fonte (e obras derivadas) do vídeo",
+	"apihelp-query+videoinfo-example-1": "Obter informação sobre [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adiciona uma tabela das versões disponíveis de um ficheiro de áudio ou vídeo, com os diferentes formatos e padrões de qualidade.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adiciona uma tabela das versões disponíveis de um ficheiro de áudio ou vídeo, com os diferentes subtítulos, legendas e descrições.",
+	"apihelp-transcodereset-description": "Os utilizadores com o privilégio 'transcode-reset' podem reiniciar e voltar a executar uma tarefa de transcodificação.",
+	"apihelp-transcodereset-summary": "Os utilizadores com o privilégio 'transcode-reset' podem reiniciar e voltar a executar uma tarefa de transcodificação.",
+	"apihelp-transcodereset-param-title": "O título do ficheiro multimédia.",
+	"apihelp-transcodereset-param-transcodekey": "A chave de transcodificação que pretende reiniciar. Obter de [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Reiniciar todas as transcodificações de [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Reiniciar a chave de transcodificação '360_560kbs.webm' de [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "A transcodificação está desativada nesta wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 não é transcodificável.",
+	"apierror-timedmedia-badtranscodekey": "Chave de transcodificação inválida ou desativada: $1",
+	"apierror-timedmedia-notenoughtimereset": "Não passou tempo suficiente desde o último reinício desta transcodificação. Falta $1 até que a transcodificação possa ser reiniciada."
+}

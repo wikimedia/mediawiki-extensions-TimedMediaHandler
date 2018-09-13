@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion",
+			"Ата"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Отримати транскод-статус для даної сторінки файлу.",
+	"apihelp-query+transcodestatus-summary": "Отримати транскод-статус для даної сторінки файлу.",
+	"apihelp-query+transcodestatus-example-1": "Отримати транскод-статус для [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-description": "Розширює imageinfo і включає інформацію джерела відео (похідні)",
+	"apihelp-query+videoinfo-summary": "Розширює imageinfo і включає інформацію джерела відео (похідні)",
+	"apihelp-query+videoinfo-example-1": "Витяг інформації про [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Додає масив різних форматів та версій якості аудіо- чи відеофайлу, що є доступними.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Додає масив субтитрів, заголовків та описів аудіо- чи відеофайлів, які доступні.",
+	"apihelp-transcodereset-description": "Користувачі з правом «transcode-reset» можуть скинути і повторити задачу перекодування.",
+	"apihelp-transcodereset-summary": "Користувачі з правом «transcode-reset» можуть скинути і повторити задачу перекодування.",
+	"apihelp-transcodereset-param-title": "Заголовок медіафайлу.",
+	"apihelp-transcodereset-param-transcodekey": "Перекодувати ключ, який Ви хочете скинути. Вибірка з [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Скинути всі транскодування для [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Скинути ключ транскодування «360_560kbs.webm» для [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Перекодування вимкнене в цій вікі.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 недоступна для перекодування.",
+	"apierror-timedmedia-badtranscodekey": "Недійсний або вимкнений ключ перекодування: $1",
+	"apierror-timedmedia-notenoughtimereset": "Недостатньо часу минуло з останнього скидання цього перекодування. $1 має минути, перш ніж це перекодування можна буде скинути ще раз."
+}
