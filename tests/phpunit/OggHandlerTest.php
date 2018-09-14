@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @covers OggHandlerTMH
+ * @covers OggHandler
  */
 class OggHandlerTest extends MediaWikiMediaTestCase {
 
-	/** @var OggHandlerTMH */
+	/** @var OggHandler */
 	private $handler;
 
 	function getFilePath() {
@@ -14,7 +14,7 @@ class OggHandlerTest extends MediaWikiMediaTestCase {
 
 	function setUp() {
 		parent::setUp();
-		$this->handler = new OggHandlerTMH;
+		$this->handler = new OggHandler;
 	}
 
 	/**

@@ -68,7 +68,7 @@ class TimedMediaHandlerHooks {
 		}
 
 		// Setup media Handlers:
-		$wgMediaHandlers['application/ogg'] = 'OggHandlerTMH';
+		$wgMediaHandlers['application/ogg'] = 'OggHandler';
 		$wgMediaHandlers['audio/webm'] = 'WebMHandler';
 		$wgMediaHandlers['video/webm'] = 'WebMHandler';
 		$wgMediaHandlers['video/mp4'] = 'Mp4Handler';
@@ -520,15 +520,15 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function checkSchemaUpdates( DatabaseUpdater $updater ) {
-		$base = __DIR__;
+		$base = dirname( __DIR__ );
 
 		switch ( $updater->getDB()->getType() ) {
 		case 'mysql':
 		case 'sqlite':
 			// Initial install tables
-			$updater->addExtensionTable( 'transcode', "$base/TimedMediaHandler.sql" );
+			$updater->addExtensionTable( 'transcode', "$base/sql/TimedMediaHandler.sql" );
 			$updater->addExtensionUpdate( [ 'addIndex', 'transcode', 'transcode_name_key',
-				"$base/archives/transcode_name_key.sql", true ] );
+				"$base/sql/transcode_name_key.sql", true ] );
 			break;
 		case 'postgres':
 			// TODO

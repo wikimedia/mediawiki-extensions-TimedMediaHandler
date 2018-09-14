@@ -21,7 +21,7 @@
  * @ingroup Media
  */
 
-class MockOggHandler extends OggHandlerTMH {
+class MockOggHandler extends OggHandler {
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		# Important or height handling is wrong.
 		if ( !$this->normaliseParams( $file, $params ) ) {

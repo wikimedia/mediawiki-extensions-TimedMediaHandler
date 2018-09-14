@@ -5,7 +5,7 @@
  */
 class WebMHandlerTest extends MediaWikiMediaTestCase {
 
-	/** @var OggHandlerTMH */
+	/** @var OggHandler */
 	private $handler;
 
 	function getFilePath() {
