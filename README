@@ -13,7 +13,7 @@ To install this extension, add the following to the end of your
 LocalSettings.php:
 
   // TimedMediaHandler
-  require( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
+  wfLoadExtension( 'TimedMediaHandler' );
 
 
 == Updates in 2018 ==
