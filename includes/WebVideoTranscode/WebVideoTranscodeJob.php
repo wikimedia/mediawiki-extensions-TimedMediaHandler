@@ -359,7 +359,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param int $pass
 	 * @return bool|string
 	 */
-	function ffmpegEncode( $options, $pass=0 ) {
+	function ffmpegEncode( $options, $pass = 0 ) {
 		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
 
 		if ( !is_file( $this->getSourceFilePath() ) ) {
@@ -418,7 +418,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " " . wfEscapeShellArg( $this->getTargetEncodePath() );
 		}
 
-		$this->output( "Running cmd: \n\n" .$cmd . "\n" );
+		$this->output( "Running cmd: \n\n" . $cmd . "\n" );
 
 		// Right before we output remove the old file
 		$retval = 0;
@@ -503,7 +503,7 @@ class WebVideoTranscodeJob extends Job {
 		];
 		foreach ( $optionMap as $name => $cmdArg ) {
 			if ( isset( $options[$name] ) ) {
-				$cmd .= " $cmdArg " .  wfEscapeShellArg( $options[$name] );
+				$cmd .= " $cmdArg " . wfEscapeShellArg( $options[$name] );
 			}
 		}
 		return $cmd;
@@ -626,7 +626,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= ' -ab ' . intval( $options['audioBitrate'] ) * 1000;
 		}
 		if ( isset( $options['samplerate'] ) ) {
-			$cmd .= " -ar " .  wfEscapeShellArg( $options['samplerate'] );
+			$cmd .= " -ar " . wfEscapeShellArg( $options['samplerate'] );
 		}
 		if ( isset( $options['channels'] ) ) {
 			$cmd .= " -ac " . wfEscapeShellArg( $options['channels'] );
@@ -795,7 +795,7 @@ class WebVideoTranscodeJob extends Job {
 				) ? filesize( $this->getTargetEncodePath() ) : 0;
 				// Don't start checking for file growth until we have an initial positive file size:
 				if ( $newFileSize > 0 ) {
-					$this->output( $wgLang->formatSize( $newFileSize ). ' Total size, encoding ' .
+					$this->output( $wgLang->formatSize( $newFileSize ) . ' Total size, encoding ' .
 						$wgLang->formatSize( ( $newFileSize - $oldFileSize ) / 5 ) . ' per second' );
 					if ( $newFileSize == $oldFileSize ) {
 						if ( $fileIsNotGrowing ) {

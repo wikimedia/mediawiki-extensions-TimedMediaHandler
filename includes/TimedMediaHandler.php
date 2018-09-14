@@ -84,7 +84,7 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $thumbTime !== false ) {
 			$time = $this->parseTimeString( $thumbTime );
 			if ( $time !== false ) {
-				return $paramString. 'seek=' . $time;
+				return $paramString . 'seek=' . $time;
 			}
 		}
 
@@ -239,10 +239,11 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		if ( $time < 0 ) {
-			wfDebug( __METHOD__.": specified negative time, using zero\n" );
+			wfDebug( __METHOD__ . ": specified negative time, using zero\n" );
 			$time = 0;
 		} elseif ( $length !== false && $time > $length - 1 ) {
-			wfDebug( __METHOD__.": specified near-end or past-the-end time {$time}s, using end minus 1s\n" );
+			wfDebug( __METHOD__ .
+				": specified near-end or past-the-end time {$time}s, using end minus 1s\n" );
 			$time = $length - 1;
 		}
 		return $time;
@@ -293,11 +294,11 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public static function seconds2npt( $time ) {
 		if ( !is_numeric( $time ) ) {
-			wfDebug( __METHOD__.": trying to get npt time on NaN:" + $time );
+			wfDebug( __METHOD__ . ": trying to get npt time on NaN:" + $time );
 			return false;
 		}
 		if ( $time < 0 ) {
-			wfDebug( __METHOD__.": trying to time on negative value:" + $time );
+			wfDebug( __METHOD__ . ": trying to time on negative value:" + $time );
 			return false;
 		}
 		$hours = floor( $time / 3600 );

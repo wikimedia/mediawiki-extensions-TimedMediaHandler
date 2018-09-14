@@ -126,7 +126,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 */
 	function toHtml( $options = [] ) {
 		if ( count( func_get_args() ) == 2 ) {
-			throw new Exception( __METHOD__ .' called in the old style' );
+			throw new Exception( __METHOD__ . ' called in the old style' );
 		}
 
 		$oldHeight = $this->height;
@@ -373,7 +373,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// Build the video tag output:
 		return Xml::tags( 'div', [
 			'class' => 'mediaContainer',
-			'style' => 'width:'. $width
+			'style' => 'width:' . $width
 		], $s );
 	}
 

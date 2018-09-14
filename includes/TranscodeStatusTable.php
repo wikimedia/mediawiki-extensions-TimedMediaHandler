@@ -69,7 +69,7 @@ class TranscodeStatusTable {
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
 		if ( empty( $transcodeRows ) ) {
-			return '<p>'. wfMessage( 'timedmedia-no-derivatives' )->escaped() . '</p>';
+			return '<p>' . wfMessage( 'timedmedia-no-derivatives' )->escaped() . '</p>';
 		}
 
 		uksort( $transcodeRows, function ( $a, $b ) {
@@ -128,7 +128,7 @@ class TranscodeStatusTable {
 			if ( $wgUser->isAllowed( 'transcode-reset' ) ) {
 				// include reset transcode action buttons
 				$o .= '<td class="mw-filepage-transcodereset"><a href="#" data-transcodekey="' .
-					htmlspecialchars( $transcodeKey ). '">' . wfMessage( 'timedmedia-reset' )->escaped() .
+					htmlspecialchars( $transcodeKey ) . '">' . wfMessage( 'timedmedia-reset' )->escaped() .
 					'</a></td>';
 			}
 
