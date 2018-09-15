@@ -11,7 +11,7 @@
 	"mwe-apiproxy-setup": "Настройка на API-прокси",
 	"mwe-load-drag-item": "Зареждане на завлечен елемент",
 	"mwe-ok": "Добре",
-	"mwe-cancel": "Отказване",
+	"mwe-cancel": "Отказ",
 	"mwe-enable-gadget": "Включва не на бета мултимедия (mwEmbed) за всички страници",
 	"mwe-enable-gadget-done": "Бета джаджата за мултимедия е включена",
 	"mwe-must-login-gadget": "За да включите джаджа трябва да сте <a target=\"_new\" href=\"$1\">влезли</a>",

@@ -83,6 +83,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ses dosyası|$1 FLAC ses dosyası}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}",
 	"right-transcode-reset": "Başarısız veya dönüştürülmüş videoları sıfırla, böylece iş kuyruğuna tekrar eklenirler.",
+	"right-transcode-status": "[[Special:TimedMediaHandler|Geçerli kod dönüştürme etkinliği hakkındaki bilgileri]] görüntüle",
 	"log-name-timedmediahandler": "TimedMediaHandler günlüğü",
 	"orphanedtimedtext": "Orphaned Zamanlamalı İçerik sayfaları",
 	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sayfaları listesinde herhangi bir içerik bulunmuyor."
