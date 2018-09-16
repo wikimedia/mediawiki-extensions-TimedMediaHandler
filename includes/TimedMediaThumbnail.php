@@ -10,7 +10,7 @@ class TimedMediaThumbnail {
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
 		}
 
-		wfDebug( "Creating video thumbnail at " .  $options['dstPath']  . "\n" );
+		wfDebug( "Creating video thumbnail at " . $options['dstPath'] . "\n" );
 		if (
 			isset( $options['width'] ) && isset( $options['height'] ) &&
 			$options['width'] != $options['file']->getWidth() &&
@@ -136,7 +136,7 @@ class TimedMediaThumbnail {
 
 		// Set the output size if set in options:
 		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
-			$cmd .= ' -s '. intval( $options['width'] ) . 'x' . intval( $options['height'] );
+			$cmd .= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
 		}
 
 		// MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg

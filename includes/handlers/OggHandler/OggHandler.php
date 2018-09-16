@@ -215,7 +215,7 @@ class OggHandler extends TimedMediaHandler {
 			return $baseType;
 		}
 		$codecs = strtolower( implode( ", ", $streamTypes ) );
-		return $baseType . '; codecs="' . $codecs  . '"';
+		return $baseType . '; codecs="' . $codecs . '"';
 	}
 	/**
 	 * @param File $file

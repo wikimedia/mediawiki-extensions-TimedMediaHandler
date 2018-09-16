@@ -563,7 +563,7 @@ class WebVideoTranscode {
 	 * @param array $options
 	 * @return array|mixed
 	 */
-	public static function getSources( &$file , $options = [] ) {
+	public static function getSources( &$file, $options = [] ) {
 		if ( $file->isLocal() || $file->repo instanceof ForeignDBViaLBRepo ) {
 			return self::getLocalSources( $file, $options );
 		} else {
@@ -604,7 +604,7 @@ class WebVideoTranscode {
 			'action' => 'query',
 			'prop' => 'videoinfo',
 			'viprop' => 'derivatives',
-			'titles' => MWNamespace::getCanonicalName( NS_FILE ) .':'. $file->getTitle()->getText()
+			'titles' => MWNamespace::getCanonicalName( NS_FILE ) . ':' . $file->getTitle()->getText()
 		];
 
 		$data = $file->repo->fetchImageQuery( $query );
@@ -648,7 +648,7 @@ class WebVideoTranscode {
 	 * 					'nodata' Strips the data- attribute, useful when your output is not html
 	 * @return array an associative array of sources suitable for <source> tag output
 	 */
-	public static function getLocalSources( &$file , $options=[] ) {
+	public static function getLocalSources( &$file, $options = [] ) {
 		global $wgEnableTranscode;
 		$sources = [];
 
