@@ -7,6 +7,8 @@
 	"mwe-embedplayer-credit-title": "Titole: $1",
 	"mwe-embedplayer-credit-date": "Date: $1",
 	"mwe-embedplayer-credit-author": "Autore: $1",
+	"mwe-embedplayer-seek_to": "Zumbe sus a $1",
+	"mwe-embedplayer-paused": "in pause",
 	"mwe-embedplayer-download_clip": "Scareche 'u video",
 	"mwe-embedplayer-download_text": "Scareche 'u teste",
 	"mwe-embedplayer-download": "Scareche",
@@ -29,5 +31,6 @@
 	"mwe-embedplayer-audio-mpeg": "Audio MPEG",
 	"mwe-embedplayer-video-3gp": "Video 3GP",
 	"mwe-embedplayer-video-mpeg": "Video MPEG",
-	"mwe-embedplayer-video-msvideo": "Video AVI"
+	"mwe-embedplayer-video-msvideo": "Video AVI",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "app VLC"
 }

@@ -5,10 +5,22 @@
 		]
 	},
 	"mwe-timedtext-back-btn": "Rrete",
+	"mwe-timedtext-layout-off": "Scunne le sottotitole",
+	"mwe-timedtext-loading-text": "Stoche a careche 'u teste...",
+	"mwe-timedtext-textcat-cc": "'Ndestaziune",
+	"mwe-timedtext-textcat-sub": "Sotto titole",
+	"mwe-timedtext-textcat-tad": "Descrizione audie",
 	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-tik": "Teste in movimende",
+	"mwe-timedtext-textcat-ar": "Reggione attive",
 	"mwe-timedtext-textcat-nb": "Annotazione",
 	"mwe-timedtext-textcat-meta": "Metadate temborizzate",
 	"mwe-timedtext-textcat-trx": "Trascrive",
 	"mwe-timedtext-textcat-lrc": "Teste",
+	"mwe-timedtext-textcat-lin": "Segnalatore lenguisteche",
+	"mwe-timedtext-textcat-cue": "Punde de trasute",
+	"mwe-timedtext-no-subs": "Nisciuna tracce de teste disponibbile",
+	"mwe-timedtext-language-subtitles-for-clip": "sottotitole jndr'à $1 pu filmate: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Sottotitole jndr'à $1 non acchiate pu filmate: $2",
 	"mwe-timedtext-upload-timed-text": "Aggiunge le sottotitole"
 }
