@@ -11,7 +11,7 @@
 			"BadDog"
 		]
 	},
-	"timedmediahandler-desc": "Обрађивач за звук, видео и усклађени текст, с подршком за формате WebM, Ogg Theora, Vorbis и SRT",
+	"timedmediahandler-desc": "Управљач за звучне снимке, видео-снимке и временски текст, са подршком за формате WebM, Ogg Theora, Vorbis, SRT",
 	"timedmedia-ogg-short-audio": "Ogg $1 звучна датотека, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 видео-снимак, $2.",
 	"timedmedia-ogg-short-general": "Ogg $1 медијска датотека, $2.",
