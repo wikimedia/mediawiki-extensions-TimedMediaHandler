@@ -1,4 +1,9 @@
 {
-	"@metadata": [],
-	"timedmedia-dismiss": "Clôre"
+	"@metadata": {
+		"authors": [
+			"Reptilien.19831209BE1"
+		]
+	},
+	"timedmedia-dismiss": "Clôre",
+	"timedmedia-source-file": "Sourdant $1"
 }
