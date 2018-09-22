@@ -53,7 +53,7 @@
 	"timedmedia-subtitle-new-go": "Nuju",
 	"timedmedia-subtitle-language": "Subjudhul $1 ($2)",
 	"timedmedia-subtitle-no-video": "Ora ana vidio sing cocok karo kaca subjudhul saiki",
-	"timedmedia-subtitle-no-subtitles": "Sawetara durung ana subjudhul nèng $1 kanggo vidio iki, Sampéyan bisa [{{fullurl:{{FULLPAGENAME}}|action=edit}} nyunting kaca iki] kanggo nambahi",
+	"timedmedia-subtitle-no-subtitles": "Sawetara durung ana subjudhul nèng $1 kanggo vidio iki, panjenengan bisa [{{fullurl:{{FULLPAGENAME}}|action=edit}} nyunting kaca iki] kanggo nambahi",
 	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-videos": "{{PLURAL:$1|$1 vidio|$1 vidio}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 vidio Ogg|$1 vidio Ogg}}",
