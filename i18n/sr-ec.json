@@ -76,5 +76,5 @@
 	"right-transcode-status": "прегледање [[Special:TimedMediaHandler|информација о тренутном активношћу транскодирања]]",
 	"action-transcode-reset": "поново поставите транскодирање",
 	"action-transcode-status": "прегледате актуелни статус транскодирања",
-	"log-name-timedmediahandler": "Евиденција TimedMediaHandler-а"
+	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а"
 }
