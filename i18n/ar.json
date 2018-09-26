@@ -39,7 +39,7 @@
 	"timedmedia-dismiss": "أغلق",
 	"timedmedia-download": "نزل الملف",
 	"timedmedia-play-media": "تشغيل الوسائط",
-	"timedmedia-desc-link": "عن هذا الملف",
+	"timedmedia-desc-link": "حول هذا الملف",
 	"timedmedia-oggThumb-version": "OggHandler يتطلب oggThumb النسخة $1 أو أحدث.",
 	"timedmedia-oggThumb-failed": "oggThumb فشل في إنشاء الصورة المصغرة.",
 	"timedmedia-status-header": " احصائيات ترجمة الرموز",

@@ -7,7 +7,8 @@
 			"Pouyana",
 			"Reza1615",
 			"پاناروما",
-			"4nn1l2"
+			"4nn1l2",
+			"Ladsgroup"
 		]
 	},
 	"mwe-embedplayer-credit-title": "عنوان: $1",
@@ -84,5 +85,6 @@
 	"mwe-embedplayer-video-3gp": "ویدئو ۳‌جی‌پی",
 	"mwe-embedplayer-video-mpeg": "ویدئو ام‌پی‌ای‌جی",
 	"mwe-embedplayer-video-msvideo": "ویدئو ای‌وی‌آی",
-	"mwe-embedplayer-missing-source": "هیچ منبع ویدئویی پیدا نشد"
+	"mwe-embedplayer-missing-source": "هیچ منبع ویدئویی پیدا نشد",
+	"mwe-embedplayer-vlcapp-downloadvideo": "دریافت این ویدئو"
 }
