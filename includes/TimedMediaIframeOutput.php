@@ -59,7 +59,8 @@ class TimedMediaIframeOutput {
 			return false;
 		}
 		$params = [
-			'fillwindow' => true
+			'fillwindow' => true,
+			'width' => $file->getWidth()
 		];
 		$videoTransform = $file->transform( $params );
 
