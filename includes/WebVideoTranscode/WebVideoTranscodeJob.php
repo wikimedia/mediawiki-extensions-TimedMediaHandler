@@ -544,6 +544,10 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 
+		// Force to 4:2:0 chroma subsampling. Others are supported in Theora
+		// and in VP9 profile 1, but Chrome and Edge don't grok them.
+		$cmd .= ' -pix_fmt yuv420p';
+
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
 			// Map 0-10 to 63-0, higher values worse quality
