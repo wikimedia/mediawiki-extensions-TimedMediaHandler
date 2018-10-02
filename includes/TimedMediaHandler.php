@@ -294,11 +294,11 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public static function seconds2npt( $time ) {
 		if ( !is_numeric( $time ) ) {
-			wfDebug( __METHOD__ . ": trying to get npt time on NaN:" + $time );
+			wfDebug( __METHOD__ . ": trying to get npt time on NaN: " . $time );
 			return false;
 		}
 		if ( $time < 0 ) {
-			wfDebug( __METHOD__ . ": trying to time on negative value:" + $time );
+			wfDebug( __METHOD__ . ": trying to time on negative value: " . $time );
 			return false;
 		}
 		$hours = floor( $time / 3600 );
