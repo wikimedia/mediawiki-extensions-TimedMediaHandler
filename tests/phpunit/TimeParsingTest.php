@@ -21,8 +21,8 @@ class TimeParsingTest extends PHPUnit\Framework\TestCase {
 		$this->assertEquals( TimedMediaHandler::seconds2npt( 3601.05 ), '01:00:01.050' );
 
 		// Test failures:
-		$this->assertEquals( TimedMediaHandler::seconds2npt( 'foo' ), false );
-		$this->assertEquals( TimedMediaHandler::seconds2npt( -1 ), false );
+		$this->assertFalse( TimedMediaHandler::seconds2npt( 'foo' ) );
+		$this->assertFalse( TimedMediaHandler::seconds2npt( -1 ) );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class TimeParsingTest extends PHPUnit\Framework\TestCase {
 		$this->assertEquals( TimedMediaHandler::parseTimeString( 10, 9 ), 8 );
 
 		// Test failures:
-		$this->assertEquals( TimedMediaHandler::parseTimeString( '1:1:1:1' ), false );
-		$this->assertEquals( TimedMediaHandler::parseTimeString( 'abc' ), false );
+		$this->assertFalse( TimedMediaHandler::parseTimeString( '1:1:1:1' ) );
+		$this->assertFalse( TimedMediaHandler::parseTimeString( 'abc' ) );
 	}
 }
