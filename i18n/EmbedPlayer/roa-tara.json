@@ -7,6 +7,8 @@
 	"mwe-embedplayer-credit-title": "Titole: $1",
 	"mwe-embedplayer-credit-date": "Date: $1",
 	"mwe-embedplayer-credit-author": "Autore: $1",
+	"mwe-embedplayer-nocredits": "Nisciune credite disponibbile",
+	"mwe-embedplayer-loading_plugin": "Stoche a careche 'u plugin...",
 	"mwe-embedplayer-seek_to": "Zumbe sus a $1",
 	"mwe-embedplayer-paused": "in pause",
 	"mwe-embedplayer-download_clip": "Scareche 'u video",

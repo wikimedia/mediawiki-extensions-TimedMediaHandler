@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"mwe-embedplayer-credit-title": "Titel: $1",
+	"mwe-embedplayer-credit-date": "Dato: $1",
+	"mwe-embedplayer-credit-author": "Forfatter: $1",
+	"mwe-embedplayer-player_fullscreen": "Fuldskærm",
+	"mwe-embedplayer-share": "Del",
+	"mwe-embedplayer-share_this_video": "Del denne video",
+	"mwe-embedplayer-share_this_audio": "Del denne lydfil",
+	"mwe-embedplayer-menu_btn": "Menu",
+	"mwe-embedplayer-close_btn": "Luk"
+}

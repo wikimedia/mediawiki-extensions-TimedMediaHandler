@@ -4,5 +4,8 @@
 			"Joetaras"
 		]
 	},
+	"apihelp-query+transcodestatus-description": "Pigghie 'u state d'a transcodifeche pe 'nu file.",
+	"apihelp-query+transcodestatus-summary": "Pigghie 'u state d'a transcodifeche pe 'nu file.",
+	"apihelp-query+transcodestatus-example-1": "Pigghie 'u state d'a transcodifeche pe [[:File:Clip.webm]]",
 	"apihelp-transcodereset-param-title": "'U titole d'u file multimediale."
 }
