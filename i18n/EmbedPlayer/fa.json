@@ -8,7 +8,8 @@
 			"Reza1615",
 			"پاناروما",
 			"4nn1l2",
-			"Ladsgroup"
+			"Ladsgroup",
+			"Mardetanha"
 		]
 	},
 	"mwe-embedplayer-credit-title": "عنوان: $1",
@@ -34,6 +35,7 @@
 	"mwe-embedplayer-paused": "مکث",
 	"mwe-embedplayer-download_segment": "انتخاب دانلودː",
 	"mwe-embedplayer-download_full_video": "دریافت پروندهٔ ویدیویی کامل:",
+	"mwe-embedplayer-download_full_audio": "دانلود به عنوان فایل صوتی",
 	"mwe-embedplayer-download_right_click": "برای بارگیری، کلیک راست کنید و این گزینه را انتخاب کنید<i>Save link as...</i>",
 	"mwe-embedplayer-download_clip": "دریافت ویدئو",
 	"mwe-embedplayer-download_text": "دریافت متن",
@@ -46,6 +48,7 @@
 	"mwe-embedplayer-choose_player": "انتخاب دستگاه پخش ویدئو",
 	"mwe-embedplayer-no-player": "دسترسی به پخش‌کننده وجود ندارد $1",
 	"mwe-embedplayer-share_this_video": "این تصویر را به اشتراک گذارید",
+	"mwe-embedplayer-share_this_audio": "به اشتراک‌گذاری این فایل صوتی",
 	"mwe-embedplayer-video_credits": "اعتبارات ویدئو",
 	"mwe-embedplayer-no-video_credits": "هیچ اعتباری در دسترس نیست",
 	"mwe-embedplayer-kaltura-platform-title": "منبع باز صحنه ویدئو کالتُرا",
@@ -58,6 +61,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "پخش اچ.۲۶۴  اچ‌تی‌ام‌ال۵",
 	"mwe-embedplayer-ogg-player-webmNative": "پخش وب‌ام  اچ‌تی‌ام‌ال۵",
 	"mwe-embedplayer-ogg-player-oggPlugin": "پلاگین صوتی عمومی",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "وی‌ال‌سی برای اپ iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "پلاگین زمان زود",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "اکتیو‌ایکس زمان زود",
 	"mwe-embedplayer-ogg-player-flowplayer": "پخش جریان",
@@ -86,5 +90,7 @@
 	"mwe-embedplayer-video-mpeg": "ویدئو ام‌پی‌ای‌جی",
 	"mwe-embedplayer-video-msvideo": "ویدئو ای‌وی‌آی",
 	"mwe-embedplayer-missing-source": "هیچ منبع ویدئویی پیدا نشد",
-	"mwe-embedplayer-vlcapp-downloadvideo": "دریافت این ویدئو"
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "اپ وی‌ال‌سی",
+	"mwe-embedplayer-vlcapp-downloadvideo": "دریافت این ویدئو",
+	"mwe-embedplayer-iewebmprompt-outro": "بارگذاری مجدد صفحه بعد از نصب."
 }
