@@ -37,16 +37,15 @@
 			// Replace video with download in vlc link.
 			// the <span> ends up being not used as we get the html via .html()
 			$link = $( '<span></span>' ).append( $( '<a></a>' ).attr( 'href', appStoreUrl ).append(
-				mw.html.escape( mw.msg( 'mwe-embedplayer-vlcapp-vlcapplinktext' ) )
+				mw.message( 'mwe-embedplayer-vlcapp-vlcapplinktext' ).escaped()
 			) );
 			$( this ).html( $( '<div class="vlcapp-player"></div>' )
 				.width( this.getWidth() )
 				.height( this.getHeight() )
 				.append(
-				// mw.msg doesn't have rawParams() equivalent. Lame.
-					mw.html.escape(
-						mw.msg( 'mwe-embedplayer-vlcapp-intro' )
-					).replace( /\$1/g, $link.html() )
+					// mw.msg doesn't have rawParams() equivalent. Lame.
+					mw.message( 'mwe-embedplayer-vlcapp-intro' ).escaped()
+						.replace( /\$1/g, $link.html() )
 				).append( $( '<ul></ul>' )
 					.append( $( '<li></li>' ).append( $( '<a></a>' ).attr( 'href', appStoreUrl )
 						.text( mw.msg( 'mwe-embedplayer-vlcapp-downloadapp' ) ) )

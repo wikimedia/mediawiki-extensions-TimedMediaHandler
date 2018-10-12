@@ -59,6 +59,15 @@
 			"i18n/TimedText"
 		]
 	},
+	"RawHtmlMessages": [
+		"mwe-embedplayer-credit-title",
+		"mwe-embedplayer-credit-author",
+		"mwe-embedplayer-credit-date",
+		"mwe-embedplayer-for_best_experience",
+		"mwe-embedplayer-fullscreen-tip",
+		"mwe-embedplayer-fullscreen-tip-osx",
+		"mwe-embedplayer-about-library-desc"
+	],
 	"ExtensionMessagesFiles": {
 		"TimedMediaHandlerMagic": "i18n/TimedMediaHandler.i18n.magic.php",
 		"TimedMediaHandlerAliases": "i18n/TimedMediaHandler.i18n.alias.php"

@@ -2079,7 +2079,9 @@
 
 				} else {
 				// No player available:
-					$playerSelect.append( mw.msg( 'mwe-embedplayer-no-player', source.getTitle() ) );
+					$playerSelect.append(
+						mw.message( 'mwe-embedplayer-no-player', source.getTitle() ).escaped()
+					);
 				}
 			} );
 
@@ -2157,7 +2159,7 @@
 			if ( $textList.find( 'li' ).length !== 0 ) {
 				$target.append(
 					$( '<h2>' )
-						.html( mw.msg( 'mwe-embedplayer-download_text' ) ),
+						.html( mw.message( 'mwe-embedplayer-download_text' ).escaped() ),
 					$textList
 				);
 			}

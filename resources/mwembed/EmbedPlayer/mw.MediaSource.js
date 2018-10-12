@@ -283,7 +283,7 @@
 		/**
 		 * Title accessor function.
 		 *
-		 * @return {String} Title of the source.
+		 * @return {String} Source title. Unescaped plaintext, might be from untrusted source.
 		 */
 		getTitle: function () {
 			var mimeType, fileName;

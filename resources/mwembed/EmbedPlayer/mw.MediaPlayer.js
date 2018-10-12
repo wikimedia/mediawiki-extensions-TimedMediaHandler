@@ -41,6 +41,7 @@
 
 		/**
 		 * Get the "name" of the player from a predictable msg key
+		 * @return {String} Player name. Unescaped plaintext, might be from untrusted source.
 		 */
 		getName: function () {
 			// Give grep a chance to find the usages:
