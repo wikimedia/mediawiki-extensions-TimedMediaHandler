@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bjankuloski06",
-			"Brest"
+			"Brest",
+			"Vlad5250"
 		]
 	},
 	"timedmediahandler-extensionname": "Титлови",
@@ -167,7 +168,7 @@
 	"right-transcode-status": "Преглед на [[Special:TimedMediaHandler|информации за тековните активности во прекодирањето]]",
 	"action-transcode-reset": "поништување на прекодирања",
 	"action-transcode-status": "преглед на тековниот статус на прекодирањето",
-	"log-name-timedmediahandler": "Дневник на титлови",
+	"log-name-timedmediahandler": "Дневник на TimedMediaHandler",
 	"log-description-timedmediahandler": "Ова е дневник на дејства поврзани со претворањето за титлови.",
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|ја поврати}} претворената $3 на првичниот формат „$4“",
 	"orphanedtimedtext": "Осамени страници со титлови",

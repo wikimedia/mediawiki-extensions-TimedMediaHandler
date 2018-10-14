@@ -5,7 +5,8 @@
 			"Siebrand",
 			"Southparkfan",
 			"Sjoerddebruin",
-			"McDutchie"
+			"McDutchie",
+			"Mainframe98"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Naam: $1",
@@ -84,5 +85,6 @@
 	"mwe-embedplayer-video-3gp": "3GP-video",
 	"mwe-embedplayer-video-mpeg": "MPEG-video",
 	"mwe-embedplayer-video-msvideo": "AVI-video",
-	"mwe-embedplayer-missing-source": "Er is geen bronvideo gevonden."
+	"mwe-embedplayer-missing-source": "Er is geen bronvideo gevonden.",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Deze video downloaden"
 }
