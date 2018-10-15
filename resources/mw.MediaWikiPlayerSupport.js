@@ -124,7 +124,7 @@
 			// Add the title:
 			$creditLine.append(
 				$( '<span>' ).html(
-					mw.msg( 'mwe-embedplayer-credit-title',
+					mw.message( 'mwe-embedplayer-credit-title' ).escaped().replace( /\$1/g,
 						// get the link
 						$( '<div>' ).append(
 							$( '<a/>' )
