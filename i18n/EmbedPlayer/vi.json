@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Minh Nguyen"
+			"Minh Nguyen",
+			"Vinhtantran"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tựa: $1",
@@ -15,7 +16,7 @@
 	"mwe-embedplayer-pause_clip": "Tạm ngừng clip",
 	"mwe-embedplayer-volume_control": "Điều khiển âm lượng",
 	"mwe-embedplayer-player_options": "Tùy chọn trình chơi",
-	"mwe-embedplayer-timed_text": "Văn bản đồng bộ",
+	"mwe-embedplayer-timed_text": "Phụ đề",
 	"mwe-embedplayer-player_fullscreen": "Toàn màn hình",
 	"mwe-embedplayer-next_clip_msg": "Chơi clip sau",
 	"mwe-embedplayer-prev_clip_msg": "Chơi clip trước",
