@@ -26,6 +26,27 @@ videos will be transcoded to WebM.
 If your LocalSettings.php used one of the WebVideoTranscode::ENC_OGV_160P etc
 constants, you may need to remove them after updating to a current version.
 
+The $wgEnabledTranscodeSet and $wgEnabledAudioTranscodeSet config variables
+have changed! If you have manually configured them in LocalSetings.php, you
+MUST update them:
+
+First, the constants such as WebVideoTranscode::ENC_WEBM_480P are no longer
+defined to simplify integration with modern extension loading and configuration
+via extension.json. Instead, use the string values such as '480p.webm'.
+
+Second, the array structures have been flipped from a list to a map from keys
+to an enabled/disabled setting as a boolean like these:
+
+  $wgEnabledTranscodeSet = [
+      // To disable an on-by-default, set it to false:
+      [ '1080p.webm' => false ],
+
+      // To enable an off-by-default, set it to true:
+      [ '1440p.vp9.webm' => true ],
+  ];
+
+
+
 == Running Transcodes ==
 
 Transcoding a video to another resolution or format takes a good amount which
