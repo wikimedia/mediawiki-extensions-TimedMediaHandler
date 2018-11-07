@@ -39,13 +39,20 @@ to an enabled/disabled setting as a boolean like these:
 
   $wgEnabledTranscodeSet = [
       // To disable an on-by-default, set it to false:
-      [ '1080p.webm' => false ],
-
+      '1080p.webm' => false,
       // To enable an off-by-default, set it to true:
-      [ '1440p.vp9.webm' => true ],
+      '1440p.vp9.webm' => true,
   ];
 
+or item-by-item:
 
+  // To disable an on-by-default, set it to false:
+  $wgEnabledTranscodeSet['1080p.webm'] = false;
+  // To enable an off-by-default, set it to true:
+  $wgEnabledTranscodeSet['1440p.vp9.webm'] = true;
+
+Note that mp3 audio transcodes are enabled by default now, so this no longer
+needs to be manually added to $wgEnabledAudioTranscodeSet.
 
 == Running Transcodes ==
 
