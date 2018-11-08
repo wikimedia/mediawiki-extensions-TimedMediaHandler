@@ -4,11 +4,11 @@
 	"version": "0.6.0",
 	"author": [
 		"Michael Dale",
-		"Tim Starling",
-		"James Heinrich",
 		"Jan Gerber",
+		"Derk-Jan Hartman",
 		"Brion Vibber",
-		"Derk-Jan Hartman"
+		"Tim Starling",
+		"..."
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:TimedMediaHandler",
 	"descriptionmsg": "timedmediahandler-desc",
