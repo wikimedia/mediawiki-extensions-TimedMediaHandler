@@ -15,7 +15,7 @@ class VideoThumbnailTest extends ApiTestCaseVideoUpload {
 	 * @group Broken
 	 * @covers ApiQueryVideoInfo
 	 */
-	function testApiThumbnails( $file ) {
+	public function testApiThumbnails( $file ) {
 		// Upload the file to the mediaWiki system
 		$result = $this->uploadFile( $file );
 

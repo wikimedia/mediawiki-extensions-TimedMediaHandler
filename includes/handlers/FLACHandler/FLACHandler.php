@@ -8,7 +8,7 @@ class FLACHandler extends ID3Handler {
 	 * @param File $file
 	 * @return string
 	 */
-	function getMetadataType( $file ) {
+	public function getMetadataType( $file ) {
 		return 'flac';
 	}
 
@@ -16,7 +16,7 @@ class FLACHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getWebType( $file ) {
+	public function getWebType( $file ) {
 		return 'audio/flac';
 	}
 
@@ -24,7 +24,7 @@ class FLACHandler extends ID3Handler {
 	 * @param File $file
 	 * @return array|bool
 	 */
-	function getStreamTypes( $file ) {
+	public function getStreamTypes( $file ) {
 		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 
@@ -43,7 +43,7 @@ class FLACHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getShortDesc( $file ) {
+	public function getShortDesc( $file ) {
 		global $wgLang;
 
 		$streamTypes = $this->getStreamTypes( $file );
@@ -58,7 +58,7 @@ class FLACHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getLongDesc( $file ) {
+	public function getLongDesc( $file ) {
 		global $wgLang;
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

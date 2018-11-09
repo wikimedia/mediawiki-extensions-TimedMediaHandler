@@ -22,7 +22,7 @@
  */
 
 class MockOggHandler extends OggHandler {
-	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
+	public function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		# Important or height handling is wrong.
 		if ( !$this->normaliseParams( $file, $params ) ) {
 			return new TransformParameterError( $params );
@@ -75,28 +75,28 @@ class MockOggHandler extends OggHandler {
 		return new TimedMediaTransformOutput( $options );
 	}
 
-	function getLength( $file ) {
+	public function getLength( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return 0.99875;
 		}
 		return 4.3666666666667;
 	}
 
-	function getBitRate( $file ) {
+	public function getBitRate( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return 41107;
 		}
 		return 590013;
 	}
 
-	function getWebType( $file ) {
+	public function getWebType( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return "audio/ogg; codecs=\"vorbis\"";
 		}
 		return "video/ogg; codecs=\"theora\"";
 	}
 
-	function getFramerate( $file ) {
+	public function getFramerate( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return 0;
 		}

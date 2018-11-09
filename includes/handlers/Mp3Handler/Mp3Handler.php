@@ -8,21 +8,21 @@ class Mp3Handler extends ID3Handler {
 	 * @param File $image
 	 * @return string
 	 */
-	function getMetadataType( $image ) {
+	public function getMetadataType( $image ) {
 		return 'mp3';
 	}
 	/**
 	 * @param File $file
 	 * @return string
 	 */
-	function getWebType( $file ) {
+	public function getWebType( $file ) {
 		return 'audio/mpeg';
 	}
 	/**
 	 * @param File $file
 	 * @return array|bool
 	 */
-	function getStreamTypes( $file ) {
+	public function getStreamTypes( $file ) {
 		$streamTypes = [];
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -38,7 +38,7 @@ class Mp3Handler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getShortDesc( $file ) {
+	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
@@ -53,7 +53,7 @@ class Mp3Handler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getLongDesc( $file ) {
+	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );

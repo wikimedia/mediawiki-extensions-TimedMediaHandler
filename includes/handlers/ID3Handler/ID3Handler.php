@@ -47,7 +47,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param string $path
 	 * @return string
 	 */
-	function getMetadata( $file, $path ) {
+	public function getMetadata( $file, $path ) {
 		$id3 = $this->getID3( $path );
 		return serialize( $id3 );
 	}
@@ -56,7 +56,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param string $metadata
 	 * @return bool|mixed
 	 */
-	function unpackMetadata( $metadata ) {
+	public function unpackMetadata( $metadata ) {
 		wfSuppressWarnings();
 		$unser = unserialize( $metadata );
 		wfRestoreWarnings();
@@ -71,7 +71,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param File $file
 	 * @return mixed
 	 */
-	function getBitrate( $file ) {
+	public function getBitrate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['bitrate'] ) ) {
 			return 0;
@@ -84,7 +84,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param File $file
 	 * @return int
 	 */
-	function getLength( $file ) {
+	public function getLength( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['playtime_seconds'] ) ) {
 			return 0;
@@ -97,7 +97,7 @@ class ID3Handler extends TimedMediaHandler {
 	 * @param File $file
 	 * @return bool|int
 	 */
-	function getFramerate( $file ) {
+	public function getFramerate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return 0;

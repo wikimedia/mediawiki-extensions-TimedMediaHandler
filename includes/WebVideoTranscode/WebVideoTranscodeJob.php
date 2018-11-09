@@ -331,7 +331,7 @@ class WebVideoTranscodeJob extends Job {
 		return $status === true;
 	}
 
-	function removeFfmpegLogFiles() {
+	private function removeFfmpegLogFiles() {
 		$path = $this->getTargetEncodePath();
 		$dir = dirname( $path );
 		if ( is_dir( $dir ) ) {
@@ -359,7 +359,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param int $pass
 	 * @return bool|string
 	 */
-	function ffmpegEncode( $options, $pass = 0 ) {
+	private function ffmpegEncode( $options, $pass = 0 ) {
 		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
 
 		if ( !is_file( $this->getSourceFilePath() ) ) {
@@ -439,7 +439,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param int $pass
 	 * @return string
 	 */
-	function ffmpegAddH264VideoOptions( $options, $pass ) {
+	public function ffmpegAddH264VideoOptions( $options, $pass ) {
 		global $wgFFmpegThreads;
 		// Set the codec:
 		$cmd = " -threads " . intval( $wgFFmpegThreads ) . " -vcodec libx264";
@@ -470,7 +470,7 @@ class WebVideoTranscodeJob extends Job {
 		return $cmd;
 	}
 
-	function ffmpegAddVideoSizeOptions( $options ) {
+	private function ffmpegAddVideoSizeOptions( $options ) {
 		$cmd = '';
 		// Get a local pointer to the file object
 		$file = $this->getFile();
@@ -515,7 +515,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param int $pass
 	 * @return string
 	 */
-	function ffmpegAddWebmVideoOptions( $options, $pass ) {
+	private function ffmpegAddWebmVideoOptions( $options, $pass ) {
 		global $wgFFmpegThreads, $wgFFmpegVP9RowMT;
 
 		// Get a local pointer to the file object
@@ -621,7 +621,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @param int $pass
 	 * @return string
 	 */
-	function ffmpegAddAudioOptions( $options, $pass ) {
+	private function ffmpegAddAudioOptions( $options, $pass ) {
 		$cmd = '';
 		if ( isset( $options['audioQuality'] ) ) {
 			$cmd .= " -aq " . wfEscapeShellArg( $options['audioQuality'] );

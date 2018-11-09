@@ -5,7 +5,7 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * @return bool
 	 */
-	function isEnabled() {
+	public function isEnabled() {
 		return true;
 	}
 
@@ -17,7 +17,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param bool $metadata
 	 * @return array|bool
 	 */
-	function getImageSize( $file, $path, $metadata = false ) {
+	public function getImageSize( $file, $path, $metadata = false ) {
 		/* override by handler */
 		return false;
 	}
@@ -26,7 +26,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * Get the list of supported wikitext embed params
 	 * @return array
 	 */
-	function getParamMap() {
+	public function getParamMap() {
 		return [
 			'img_width' => 'width',
 			'timedmedia_thumbtime' => 'thumbtime',
@@ -43,7 +43,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param mixed $value Value to validated
 	 * @return bool
 	 */
-	function validateParam( $name, $value ) {
+	public function validateParam( $name, $value ) {
 		if ( $name == 'thumbtime' || $name == 'start' || $name == 'end' ) {
 			if ( $this->parseTimeString( $value ) === false ) {
 				return false;
@@ -66,7 +66,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param array $params
 	 * @return string
 	 */
-	function makeParamString( $params ) {
+	public function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
 		$paramString = '';
 		$paramString .= ( isset( $params['width'] ) ) ? $params['width'] . 'px' : '';
@@ -100,7 +100,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param string $str
 	 * @return array|bool Array of thumbnail parameters, or false if string cannot be parsed
 	 */
-	function parseParamString( $str ) {
+	public function parseParamString( $str ) {
 		$params = [];
 		if ( preg_match( '/^(mid|(\d*)px-)*(seek=([\d.]+))*$/', $str, $matches ) ) {
 			$size = $thumbtime = null;
@@ -129,7 +129,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param array &$params
 	 * @return bool
 	 */
-	function normaliseParams( $image, &$params ) {
+	public function normaliseParams( $image, &$params ) {
 		$timeParam = [ 'thumbtime', 'start', 'end' ];
 		// Parse time values if endtime or thumbtime can't be more than length -1
 		foreach ( $timeParam as $pn ) {
@@ -196,7 +196,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param Parser $parser
 	 * @param File $file
 	 */
-	function parserTransformHook( $parser, $file ) {
+	public function parserTransformHook( $parser, $file ) {
 		$parserOutput = $parser->getOutput();
 		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) ) {
 			return;
@@ -314,7 +314,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param string $metadata
 	 * @return bool|mixed
 	 */
-	function unpackMetadata( $metadata ) {
+	public function unpackMetadata( $metadata ) {
 		wfSuppressWarnings();
 		$unser = unserialize( $metadata );
 		wfRestoreWarnings();
@@ -330,7 +330,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param string $metadata
 	 * @return bool
 	 */
-	function isMetadataValid( $image, $metadata ) {
+	public function isMetadataValid( $image, $metadata ) {
 		return $this->unpackMetadata( $metadata ) !== false;
 	}
 
@@ -340,7 +340,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param null $params
 	 * @return array
 	 */
-	function getThumbType( $ext, $mime, $params = null ) {
+	public function getThumbType( $ext, $mime, $params = null ) {
 		return [ 'jpg', 'image/jpeg' ];
 	}
 
@@ -349,7 +349,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param File $file
 	 * @return bool
 	 */
-	function isAudio( $file ) {
+	public function isAudio( $file ) {
 		return ( $file->getWidth() == 0 && $file->getHeight() == 0 );
 	}
 
@@ -361,7 +361,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param int $flags
 	 * @return bool|MediaTransformError|MediaTransformOutput|TimedMediaTransformOutput
 	 */
-	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
+	public function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		# Important or height handling is wrong.
 		if ( !$this->normaliseParams( $file, $params ) ) {
 			return new TransformParameterError( $params );
@@ -431,7 +431,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param File $file
 	 * @return bool
 	 */
-	function canRender( $file ) {
+	public function canRender( $file ) {
 		return true;
 	}
 
@@ -439,7 +439,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param File $file
 	 * @return bool
 	 */
-	function mustRender( $file ) {
+	public function mustRender( $file ) {
 		return true;
 	}
 
@@ -448,7 +448,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param File $file
 	 * @return int
 	 */
-	function getOffset( $file ) {
+	public function getOffset( $file ) {
 		return 0;
 	}
 
@@ -457,7 +457,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param File $file
 	 * @return int
 	 */
-	function getLength( $file ) {
+	public function getLength( $file ) {
 		return $file->getLength();
 	}
 
@@ -465,7 +465,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getDimensionsString( $file ) {
+	public function getDimensionsString( $file ) {
 		global $wgLang;
 
 		if ( $file->getWidth() ) {

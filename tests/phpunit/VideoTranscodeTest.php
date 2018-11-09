@@ -18,7 +18,7 @@ class VideoTranscodeTest extends ApiTestCaseVideoUpload {
 	 * @group Broken
 	 * @covers ApiQueryVideoInfo
 	 */
-	function testTranscodeJobs( $file ) {
+	public function testTranscodeJobs( $file ) {
 		// Upload the file to the mediaWiki system
 		$result = $this->uploadFile( $file );
 
@@ -90,7 +90,7 @@ class VideoTranscodeTest extends ApiTestCaseVideoUpload {
 		}
 	}
 
-	function runTranscodeJobs() {
+	public function runTranscodeJobs() {
 		$dbw = wfGetDB( DB_MASTER );
 		$type = 'webVideoTranscode';
 		// Set the condition to only run the webVideoTranscode
@@ -113,7 +113,7 @@ class VideoTranscodeTest extends ApiTestCaseVideoUpload {
 		}
 	}
 
-	function getDerivativesFromResult( $result ) {
+	private function getDerivativesFromResult( $result ) {
 		// Only the source should be listed initially:
 		$this->assertTrue( isset( $result['query']['pages'] ) );
 		$page = current( $result['query']['pages'] );

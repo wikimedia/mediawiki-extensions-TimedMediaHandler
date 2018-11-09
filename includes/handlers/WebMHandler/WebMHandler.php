@@ -28,7 +28,7 @@ class WebMHandler extends ID3Handler {
 	 * @param bool|string|array $metadata
 	 * @return array|bool
 	 */
-	function getImageSize( $file, $path, $metadata = false ) {
+	public function getImageSize( $file, $path, $metadata = false ) {
 		// Just return the size of the first video stream
 		if ( $metadata === false ) {
 			$metadata = $file->getMetadata();
@@ -88,7 +88,7 @@ class WebMHandler extends ID3Handler {
 	 * @param File $file
 	 * @return string
 	 */
-	function getMetadataType( $file ) {
+	public function getMetadataType( $file ) {
 		return 'webm';
 	}
 
@@ -96,7 +96,7 @@ class WebMHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getWebType( $file ) {
+	public function getWebType( $file ) {
 		$baseType = ( $file->getWidth() == 0 && $file->getHeight() == 0 ) ? 'audio' : 'video';
 
 		$streams = $this->getStreamTypes( $file );
@@ -113,7 +113,7 @@ class WebMHandler extends ID3Handler {
 	 * @param File $file
 	 * @return array|bool
 	 */
-	function getStreamTypes( $file ) {
+	public function getStreamTypes( $file ) {
 		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -152,7 +152,7 @@ class WebMHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getShortDesc( $file ) {
+	public function getShortDesc( $file ) {
 		global $wgLang;
 
 		$streamTypes = $this->getStreamTypes( $file );
@@ -167,7 +167,7 @@ class WebMHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getLongDesc( $file ) {
+	public function getLongDesc( $file ) {
 		global $wgLang;
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

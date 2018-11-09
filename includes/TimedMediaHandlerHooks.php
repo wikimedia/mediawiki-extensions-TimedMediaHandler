@@ -478,7 +478,7 @@ class TimedMediaHandlerHooks {
 	 * @param Skin &$sk
 	 * @return bool
 	 */
-	static function pageOutputHook( &$out, &$sk ) {
+	public static function pageOutputHook( &$out, &$sk ) {
 		global $wgTimedTextNS;
 
 		$title = $out->getTitle();

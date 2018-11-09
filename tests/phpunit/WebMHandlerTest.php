@@ -8,11 +8,11 @@ class WebMHandlerTest extends MediaWikiMediaTestCase {
 	/** @var OggHandler */
 	private $handler;
 
-	function getFilePath() {
+	public function getFilePath() {
 		return __DIR__ . '/media';
 	}
 
-	function setUp() {
+	protected function setUp() {
 		parent::setUp();
 		$this->handler = new WebMHandler;
 	}
@@ -22,12 +22,12 @@ class WebMHandlerTest extends MediaWikiMediaTestCase {
 	 * @param string $filename name of file
 	 * @param array $expected List of codecs in file
 	 */
-	function testGetStreamTypes( $filename, $expected ) {
+	public function testGetStreamTypes( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'video/webm' );
 		$this->assertEquals( $expected, $this->handler->getStreamTypes( $testFile ) );
 	}
 
-	function providerGetStreamTypes() {
+	public function providerGetStreamTypes() {
 		return [
 			[ 'shuttle10seconds.1080x608.webm', [ 'VP8' ] ],
 			[ 'VP9-tractor.webm', [ 'VP9' ] ],
@@ -40,12 +40,12 @@ class WebMHandlerTest extends MediaWikiMediaTestCase {
 	 * @param string $filename name of file
 	 * @param string $expected Mime type
 	 */
-	function testGetWebType( $filename, $expected ) {
+	public function testGetWebType( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'video/webm' );
 		$this->assertEquals( $expected, $this->handler->getWebType( $testFile ) );
 	}
 
-	function providerGetWebType() {
+	public function providerGetWebType() {
 		return [
 			[ 'shuttle10seconds.1080x608.webm', 'video/webm; codecs="vp8"' ],
 			[ 'VP9-tractor.webm', 'video/webm; codecs="vp9"' ],

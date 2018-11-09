@@ -20,7 +20,7 @@ class TextHandler {
 	 */
 	protected $file;
 
-	function __construct( $file ) {
+	public function __construct( $file ) {
 		$this->file = $file;
 	}
 
@@ -28,7 +28,7 @@ class TextHandler {
 	 * Get the timed text tracks elements as an associative array
 	 * @return array|mixed
 	 */
-	function getTracks() {
+	public function getTracks() {
 		if ( $this->file->isLocal() ) {
 			return $this->getLocalTextSources();
 		} elseif ( $this->file->getRepo() instanceof ForeignDBViaLBRepo ) {
@@ -41,7 +41,7 @@ class TextHandler {
 	/**
 	 * @return bool|int|null
 	 */
-	function getTimedTextNamespace() {
+	public function getTimedTextNamespace() {
 		global $wgEnableLocalTimedText;
 		if ( $this->file->isLocal() ) {
 			if ( $wgEnableLocalTimedText ) {
@@ -96,7 +96,7 @@ class TextHandler {
 	 *
 	 * @return ResultWrapper|bool
 	 */
-	function getTextPages() {
+	public function getTextPages() {
 		$ns = $this->getTimedTextNamespace();
 		if ( $ns === false ) {
 			wfDebug( 'Repo: ' . $this->file->repo->getName() . " does not have a TimedText namespace \n" );
@@ -124,7 +124,7 @@ class TextHandler {
 	 * Build the api query to find TimedText pages belonging to a remote file
 	 * @return array|bool
 	 */
-	function getRemoteTextPagesQuery() {
+	public function getRemoteTextPagesQuery() {
 		$ns = $this->getTimedTextNamespace();
 		if ( $ns === false ) {
 			wfDebug( 'Repo: ' . $this->file->repo->getName() . " does not have a TimedText namespace \n" );
@@ -144,7 +144,7 @@ class TextHandler {
 	 * Retrieve the text sources belonging to a remote file
 	 * @return array|mixed
 	 */
-	function getRemoteTextSources() {
+	public function getRemoteTextSources() {
 		global $wgMemc;
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
 		if ( $this->file->getRepo()->descriptionCacheExpiry > 0 ) {
@@ -178,7 +178,7 @@ class TextHandler {
 	 * Retrieve the text sources belonging to a foreign db accessible file
 	 * @return array
 	 */
-	function getForeignDBTextSources() {
+	public function getForeignDBTextSources() {
 		$data = $this->getTextPages();
 		if ( $data !== false ) {
 			return $this->getTextTracksFromRows( $data );
@@ -190,7 +190,7 @@ class TextHandler {
 	 * Retrieve the text sources belonging to a local file
 	 * @return array
 	 */
-	function getLocalTextSources() {
+	public function getLocalTextSources() {
 		global $wgEnableLocalTimedText;
 		if ( $wgEnableLocalTimedText ) {
 			$data = $this->getTextPages();
@@ -208,7 +208,7 @@ class TextHandler {
 	 * @param ResultWrapper $data Database result with page titles
 	 * @return array
 	 */
-	function getTextTracksFromRows( ResultWrapper $data ) {
+	public function getTextTracksFromRows( ResultWrapper $data ) {
 		$textTracks = [];
 		$providerName = $this->file->repo->getName();
 		// commons is called shared in production. normalize it to wikimediacommons
@@ -266,7 +266,7 @@ class TextHandler {
 	 * @param mixed $data JSON decoded result from a query API request
 	 * @return array
 	 */
-	function getTextTracksFromData( $data ) {
+	public function getTextTracksFromData( $data ) {
 		$textTracks = [];
 		if ( $data !== null && $data['query'] && $data['query']['pages'] ) {
 			foreach ( $data['query']['pages'] as $page ) {
@@ -285,7 +285,7 @@ class TextHandler {
 		return $textTracks;
 	}
 
-	function getContentType( $timedTextExtension ) {
+	public function getContentType( $timedTextExtension ) {
 		if ( $timedTextExtension === 'srt' ) {
 			return 'text/x-srt';
 		} elseif ( $timedTextExtension === 'vtt' ) {
@@ -294,7 +294,7 @@ class TextHandler {
 		return '';
 	}
 
-	function getForeignNamespaceName() {
+	public function getForeignNamespaceName() {
 		global $wgEnableLocalTimedText;
 		if ( $this->remoteNs !== null ) {
 			return $this->remoteNsName;
@@ -313,7 +313,7 @@ class TextHandler {
 	 * @param Title|ForeignTitle $pageTitle
 	 * @return string
 	 */
-	function getPrefixedDBkey( $pageTitle ) {
+	public function getPrefixedDBkey( $pageTitle ) {
 		if ( $pageTitle instanceof Title ) {
 			return $pageTitle->getPrefixedDBkey();
 		} elseif ( $pageTitle instanceof ForeignTitle ) {
@@ -330,7 +330,7 @@ class TextHandler {
 	 * @param string $contentType
 	 * @return string
 	 */
-	function getFullURL( $pageTitle, $contentType ) {
+	public function getFullURL( $pageTitle, $contentType ) {
 		if ( $pageTitle instanceof Title ) {
 			return $pageTitle->getFullURL( [
 				'action' => 'raw',

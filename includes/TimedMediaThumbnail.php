@@ -5,7 +5,7 @@ class TimedMediaThumbnail {
 	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
-	static function get( $options ) {
+	public static function get( $options ) {
 		if ( !is_dir( dirname( $options['dstPath'] ) ) ) {
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
 		}
@@ -34,7 +34,7 @@ class TimedMediaThumbnail {
 	 * @return bool|MediaTransformError
 	 *
 	 */
-	static function tryOggThumb( $options ) {
+	private static function tryOggThumb( $options ) {
 		global $wgOggThumbLocation;
 
 		// Check that the file is 'ogg' format
@@ -85,7 +85,7 @@ class TimedMediaThumbnail {
 	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
-	static function tryFfmpegThumb( $options ) {
+	private static function tryFfmpegThumb( $options ) {
 		global $wgFFmpegLocation, $wgMaxShellMemory;
 
 		if ( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ) {
@@ -161,7 +161,7 @@ class TimedMediaThumbnail {
 	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
-	static function resizeThumb( $options ) {
+	private static function resizeThumb( $options ) {
 		$file = $options['file'];
 		$params = [];
 		foreach ( [ 'start', 'thumbtime' ] as $key ) {
@@ -221,7 +221,7 @@ class TimedMediaThumbnail {
 	 * @param array $options
 	 * @return bool|float|int
 	 */
-	static function getThumbTime( $options ) {
+	private static function getThumbTime( $options ) {
 		$length = $options['file']->getLength();
 
 		// If start time param isset use that for the thumb:

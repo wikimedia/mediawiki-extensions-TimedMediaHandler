@@ -114,7 +114,7 @@ class TimedTextPage extends Article {
 	 * Timed text or file is hosted on remote repo, Add a short description and link to foring repo
 	 * @param File $file the base file
 	 */
-	function doLinkToRemote( $file ) {
+	private function doLinkToRemote( $file ) {
 		$output = $this->getContext()->getOutput();
 		$output->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',
 			$file->getRepo()->getDisplayName() ) );
@@ -122,7 +122,7 @@ class TimedTextPage extends Article {
 			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName() ) );
 	}
 
-	function doRedirectToPageForm() {
+	private function doRedirectToPageForm() {
 		$lang = $this->getContext()->getLanguage();
 		$out = $this->getContext()->getOutput();
 

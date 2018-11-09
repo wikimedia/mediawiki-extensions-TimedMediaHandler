@@ -19,7 +19,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
-	function __construct( $conf ) {
+	public function __construct( $conf ) {
 		$options = [ 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
 			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow',
 			'sources', 'disablecontrols', 'playerClass' ];
@@ -35,7 +35,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @return TextHandler
 	 */
-	function getTextHandler() {
+	private function getTextHandler() {
 		if ( !$this->textHandler ) {
 			// Init an associated textHandler
 			$this->textHandler = new TextHandler( $this->file );
@@ -48,7 +48,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param bool|array $sizeOverride
 	 * @return string
 	 */
-	function getUrl( $sizeOverride = false ) {
+	public function getUrl( $sizeOverride = false ) {
 		global $wgVersion, $wgResourceBasePath, $wgStylePath;
 		// Needs to be 1.24c because version_compare() works in confusing ways
 		if ( version_compare( $wgVersion, '1.24c', '>=' ) ) {
@@ -78,14 +78,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * TODO get the local path
 	 * @return mixed
 	 */
-	function getPath() {
+	public function getPath() {
 		return $this->dstPath;
 	}
 
 	/**
 	 * @return int
 	 */
-	function getPlayerHeight() {
+	public function getPlayerHeight() {
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
 			return intval( $this->height );
@@ -98,7 +98,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @return int
 	 */
-	function getPlayerWidth() {
+	public function getPlayerWidth() {
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
 			return intval( $this->width );
@@ -115,7 +115,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @return string
 	 */
-	function getTagName() {
+	public function getTagName() {
 		return ( $this->isVideo ) ? 'video' : 'audio';
 	}
 
@@ -124,7 +124,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 * @throws Exception
 	 */
-	function toHtml( $options = [] ) {
+	public function toHtml( $options = [] ) {
 		if ( count( func_get_args() ) == 2 ) {
 			throw new Exception( __METHOD__ . ' called in the old style' );
 		}
@@ -171,7 +171,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param array $tagSet
 	 * @return string
 	 */
-	static function htmlTagSet( $tagName, $tagSet ) {
+	private static function htmlTagSet( $tagName, $tagSet ) {
 		if ( empty( $tagSet ) ) {
 			return '';
 		}
@@ -186,7 +186,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 * @suppress SecurityCheck-DoubleEscaped see note inline
 	 */
-	function getImagePopUp() {
+	private function getImagePopUp() {
 		// pop up videos set the autoplay attribute to true:
 		$autoPlay = true;
 		$id = self::$serial;
@@ -230,7 +230,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get target popup player size
 	 * @return int[]
 	 */
-	function getPopupPlayerSize() {
+	private function getPopupPlayerSize() {
 		// Get the max width from the enabled transcode settings:
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
 		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize );
@@ -302,7 +302,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param bool $autoPlay sets the autoplay attribute
 	 * @return string HTML
 	 */
-	function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
+	private function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		reset( $mediaSources ); // do not rely on auto-resetting of arrays under HHVM
@@ -384,7 +384,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @throws Exception If $width is same as $this->width.
 	 * @return String|bool url for poster or false
 	 */
-	function getPoster( $width ) {
+	private function getPoster( $width ) {
 		if ( intval( $width ) === intval( $this->width ) ) {
 			// Prevent potential loop
 			throw new Exception( "Asked for poster in current size. Potential loop." );
@@ -404,7 +404,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param bool $autoPlay
 	 * @return array
 	 */
-	function getMediaAttr( $sizeOverride = false, $autoPlay = false ) {
+	private function getMediaAttr( $sizeOverride = false, $autoPlay = false ) {
 		global $wgVideoPlayerSkin;
 
 		// Normalize values
@@ -516,7 +516,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @return array
 	 */
-	function getMediaSources() {
+	private function getMediaSources() {
 		if ( !$this->sources ) {
 			// Generate transcode jobs ( and get sources that are already transcoded)
 			// At a minimum this should return the source video file.
@@ -529,7 +529,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->sources;
 	}
 
-	function getTemporalUrlHash() {
+	private function getTemporalUrlHash() {
 		if ( $this->hashTime ) {
 			return $this->hashTime;
 		}

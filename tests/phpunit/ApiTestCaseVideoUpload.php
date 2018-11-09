@@ -7,7 +7,7 @@ abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
 	/**
 	 * @return Array set of test files with associated metadata
 	 */
-	static function mediaFilesProvider() {
+	public static function mediaFilesProvider() {
 		return [
 			[
 				// Double wrap the file array to match phpunit data provider conventions

@@ -8,11 +8,11 @@ class OggHandlerTest extends MediaWikiMediaTestCase {
 	/** @var OggHandler */
 	private $handler;
 
-	function getFilePath() {
+	public function getFilePath() {
 		return __DIR__ . '/media';
 	}
 
-	function setUp() {
+	protected function setUp() {
 		parent::setUp();
 		$this->handler = new OggHandler;
 	}
@@ -22,12 +22,12 @@ class OggHandlerTest extends MediaWikiMediaTestCase {
 	 * @param string $filename name of file
 	 * @param array $expected
 	 */
-	function testGetCommonMetaArray( $filename, $expected ) {
+	public function testGetCommonMetaArray( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'application/ogg' );
 		$this->assertEquals( $expected, $this->handler->getCommonMetaArray( $testFile ) );
 	}
 
-	function providerGetCommonMetaArray() {
+	public function providerGetCommonMetaArray() {
 		return [
 			[ 'test5seconds.electricsheep.300x400.ogv',
 				[
@@ -53,12 +53,12 @@ class OggHandlerTest extends MediaWikiMediaTestCase {
 	 * @param string $filename name of file
 	 * @param string $expected Mime type (including codecs)
 	 */
-	function testGetWebType( $filename, $expected ) {
+	public function testGetWebType( $filename, $expected ) {
 		$testFile = $this->dataFile( $filename, 'application/ogg' );
 		$this->assertEquals( $expected, $this->handler->getWebType( $testFile ) );
 	}
 
-	function providerGetWebType() {
+	public function providerGetWebType() {
 		return [
 			[ 'test5seconds.electricsheep.300x400.ogv', 'video/ogg; codecs="theora"' ],
 			[ 'doubleTag.oga', 'audio/ogg; codecs="vorbis"' ],

@@ -22,7 +22,7 @@ class Mp4Handler extends ID3Handler {
 	 * @param bool $metadata
 	 * @return array|bool
 	 */
-	function getImageSize( $file, $path, $metadata = false ) {
+	public function getImageSize( $file, $path, $metadata = false ) {
 		// Just return the size of the first video stream
 		if ( $metadata === false ) {
 			$metadata = $file->getMetadata();
@@ -47,14 +47,14 @@ class Mp4Handler extends ID3Handler {
 	 * @param File $image
 	 * @return string
 	 */
-	function getMetadataType( $image ) {
+	public function getMetadataType( $image ) {
 		return 'mp4';
 	}
 	/**
 	 * @param File $file
 	 * @return string
 	 */
-	function getWebType( $file ) {
+	public function getWebType( $file ) {
 		// @codingStandardsIgnoreStart
 		/**
 		 * h.264 profile types:
@@ -78,7 +78,7 @@ class Mp4Handler extends ID3Handler {
 	 * @param File $file
 	 * @return array|bool
 	 */
-	function getStreamTypes( $file ) {
+	public function getStreamTypes( $file ) {
 		$streamTypes = [];
 		$metadata = self::unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
@@ -106,7 +106,7 @@ class Mp4Handler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getShortDesc( $file ) {
+	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
@@ -121,7 +121,7 @@ class Mp4Handler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getLongDesc( $file ) {
+	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );

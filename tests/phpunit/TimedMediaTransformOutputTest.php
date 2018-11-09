@@ -8,7 +8,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 	private $sortMethod;
 	private $thumbObj;
 
-	function getFilePath() {
+	public function getFilePath() {
 		return __DIR__ . '/media';
 	}
 
@@ -31,7 +31,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 	 *
 	 * @dataProvider providerIsPopUp
 	 */
-	function testIsPopUp( $width, $minVideoSize, $expectPopup ) {
+	public function testIsPopUp( $width, $minVideoSize, $expectPopup ) {
 		$this->setMwGlobals( 'wgMinimumVideoPlayerSize', $minVideoSize );
 
 		// Note this file has a width of 400px and a height of 300px
@@ -47,7 +47,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $actual, $expectPopup );
 	}
 
-	function providerIsPopUp() {
+	public function providerIsPopUp() {
 		return [
 			[ 400, 800, false ],
 			[ 300, 800, true ],
@@ -62,7 +62,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 	 * @param array $sortedSources
 	 * @dataProvider providerSortMediaByBandwidth
 	 */
-	function testSortMediaByBandwidth( $thumbWidth, $sources, $sortedSources ) {
+	public function testSortMediaByBandwidth( $thumbWidth, $sources, $sortedSources ) {
 		$params = [
 			'width' => $thumbWidth,
 			'height' => $thumbWidth * 9 / 16,
@@ -84,7 +84,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		return $this->sortMethod->invoke( $this->thumbObj, $a, $b );
 	}
 
-	function providerSortMediaByBandwidth() {
+	public function providerSortMediaByBandwidth() {
 		return [
 			[
 				600,

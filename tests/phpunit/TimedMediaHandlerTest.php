@@ -5,7 +5,7 @@ class TimedMediaHandlerTest extends MediaWikiTestCase {
 	/** @var TimedMediaHandler */
 	private $handler;
 
-	function setUp() {
+	protected function setUp() {
 		$this->handler = new TimedMediaHandler;
 		parent::setUp();
 	}
@@ -16,12 +16,12 @@ class TimedMediaHandlerTest extends MediaWikiTestCase {
 	 * @param array $expected Expected thumbnailing parameters
 	 * @covers TimedMediaHandler::parseParamString
 	 */
-	function testParseParamString( $str, $expected ) {
+	public function testParseParamString( $str, $expected ) {
 		$result = $this->handler->parseParamString( $str );
 		$this->assertEquals( $result, $expected );
 	}
 
-	function providerParseParamString() {
+	public function providerParseParamString() {
 		return [
 			[
 				'mid',

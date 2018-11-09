@@ -8,7 +8,7 @@ class WAVHandler extends ID3Handler {
 	 * @param File $file
 	 * @return string
 	 */
-	function getMetadataType( $file ) {
+	public function getMetadataType( $file ) {
 		return 'wav';
 	}
 
@@ -16,11 +16,11 @@ class WAVHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getWebType( $file ) {
+	public function getWebType( $file ) {
 		return 'audio/wav';
 	}
 
-	function verifyUpload( $filename ) {
+	public function verifyUpload( $filename ) {
 		$metadata = $this->getID3( $filename );
 
 		if (
@@ -38,7 +38,7 @@ class WAVHandler extends ID3Handler {
 	 * @param File $file
 	 * @return array|bool
 	 */
-	function getStreamTypes( $file ) {
+	public function getStreamTypes( $file ) {
 		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 
@@ -57,7 +57,7 @@ class WAVHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getShortDesc( $file ) {
+	public function getShortDesc( $file ) {
 		global $wgLang;
 
 		$streamTypes = $this->getStreamTypes( $file );
@@ -72,7 +72,7 @@ class WAVHandler extends ID3Handler {
 	 * @param File $file
 	 * @return String
 	 */
-	function getLongDesc( $file ) {
+	public function getLongDesc( $file ) {
 		global $wgLang;
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

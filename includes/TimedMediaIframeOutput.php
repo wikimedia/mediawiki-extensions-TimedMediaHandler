@@ -17,7 +17,7 @@ class TimedMediaIframeOutput {
 	 * @param bool $doOutput
 	 * @return bool
 	 */
-	static function iframeHook( &$title, &$article, $doOutput = true ) {
+	public static function iframeHook( &$title, &$article, $doOutput = true ) {
 		global $wgRequest, $wgOut, $wgEnableIframeEmbed;
 		if ( !$wgEnableIframeEmbed ) {
 			// continue normal output iframes are "off" (maybe throw a warning in the future)
@@ -45,7 +45,7 @@ class TimedMediaIframeOutput {
 	 * @return bool
 	 * @throws Exception
 	 */
-	static function outputIframe( $title ) {
+	public static function outputIframe( $title ) {
 		global $wgEnableIframeEmbed, $wgOut, $wgBreakFrames;
 
 		if ( !$wgEnableIframeEmbed ) {

@@ -128,7 +128,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @note This uses "substring_index" which is a mysql extension.
 	 * @return Array Standard query info values.
 	 */
-	function getQueryInfo() {
+	public function getQueryInfo() {
 		$tables = [ 'page', 'image' ];
 		$fields = [
 			'namespace' => 'page_namespace',
