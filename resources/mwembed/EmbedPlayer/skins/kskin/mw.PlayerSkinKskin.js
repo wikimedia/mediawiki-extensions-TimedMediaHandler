@@ -332,7 +332,7 @@
 						this.getPlayerSelect()
 					);
 					break;
-				case 'download' :
+				case 'download':
 					embedPlayer.$interface.find( '.menu-download' ).text(
 						mw.msg( 'mwe-loading_txt' )
 					);

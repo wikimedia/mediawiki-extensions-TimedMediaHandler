@@ -13,6 +13,7 @@
 	"rules": {
 		"valid-jsdoc": "off",
 		"no-underscore-dangle": "off",
-		"camelcase": "off"
+		"camelcase": "off",
+		"max-len": "off"
 	}
 }

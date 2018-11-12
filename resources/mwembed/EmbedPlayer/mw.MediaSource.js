@@ -298,24 +298,24 @@
 			// Return a Title based on mime type:
 			mimeType = this.getMIMEType().split( ';' )[ 0 ];
 			switch ( mimeType ) {
-				case 'video/h264' :
-				case 'video/mp4' :
+				case 'video/h264':
+				case 'video/mp4':
 					return mw.msg( 'mwe-embedplayer-video-h264' );
-				case 'video/x-flv' :
+				case 'video/x-flv':
 					return mw.msg( 'mwe-embedplayer-video-flv' );
-				case 'video/webm' :
+				case 'video/webm':
 					return mw.msg( 'mwe-embedplayer-video-webm' );
-				case 'video/ogg' :
+				case 'video/ogg':
 					return mw.msg( 'mwe-embedplayer-video-ogg' );
-				case 'audio/ogg' :
+				case 'audio/ogg':
 					return mw.msg( 'mwe-embedplayer-video-audio' );
-				case 'audio/mpeg' :
+				case 'audio/mpeg':
 					return mw.msg( 'mwe-embedplayer-audio-mpeg' );
-				case 'video/3gp' :
+				case 'video/3gp':
 					return mw.msg( 'mwe-embedplayer-video-3gp' );
-				case 'video/mpeg' :
+				case 'video/mpeg':
 					return mw.msg( 'mwe-embedplayer-video-mpeg' );
-				case 'video/x-msvideo' :
+				case 'video/x-msvideo':
 					return mw.msg( 'mwe-embedplayer-video-msvideo' );
 			}
 
