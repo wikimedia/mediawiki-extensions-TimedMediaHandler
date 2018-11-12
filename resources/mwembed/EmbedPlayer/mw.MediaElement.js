@@ -9,7 +9,7 @@
  *      videoElement <video> element used for initialization.
  * @constructor
  */
-
+/* global OGVCompat */
 ( function () {
 	'use strict';
 

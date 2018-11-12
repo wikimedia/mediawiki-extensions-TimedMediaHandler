@@ -3,7 +3,7 @@
  * closely mirrors OggHandler so that its easier to share efforts in this area:
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
-/* global ActiveXObject */
+/* global ActiveXObject, OGVCompat */
 ( function () {
 	'use strict';
 

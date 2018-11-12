@@ -1,3 +1,4 @@
+/* global OGVPlayer */
 ( function () {
 	'use strict';
 

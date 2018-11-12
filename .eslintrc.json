@@ -6,9 +6,7 @@
 	"globals": {
 		"mw": false,
 		"$": false,
-		"OO": false,
-		"OGVPlayer": false,
-		"OGVCompat": false
+		"OO": false
 	},
 	"rules": {
 		"valid-jsdoc": "off",
