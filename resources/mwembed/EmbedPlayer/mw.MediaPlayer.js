@@ -6,7 +6,7 @@
  * @param {string} library External script containing the plugin interface code.
  * @constructor
  */
-( function ( mw ) {
+( function () {
 	'use strict';
 
 	mw.MediaPlayer = function ( id, supportedTypes, library ) {
@@ -64,7 +64,7 @@
 		load: function ( callback ) {
 			// Load player library ( upper case the first letter of the library )
 
-			mediaWiki.loader.using( [
+			mw.loader.using( [
 				'mw.EmbedPlayer' + this.library.substr( 0, 1 ).toUpperCase() + this.library.substr( 1 )
 			], function () {
 				if ( callback ) {
@@ -74,4 +74,4 @@
 		}
 	};
 
-}( mediaWiki ) );
+}() );

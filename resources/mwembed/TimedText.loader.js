@@ -2,7 +2,7 @@
 * TimedText loader.
 */
 // Scope everything in "mw" ( keeps the global namespace clean )
-( function ( mw, $ ) {
+( function () {
 	var config = mw.config.get( 'wgTimedMediaHandler' );
 
 	/**
@@ -53,4 +53,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

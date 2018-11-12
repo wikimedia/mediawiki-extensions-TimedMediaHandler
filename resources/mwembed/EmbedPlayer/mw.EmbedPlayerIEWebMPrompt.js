@@ -2,7 +2,7 @@
  * Show a prompt to install WebM plugin for IE 9+
  */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	mw.EmbedPlayerIEWebMPrompt = {
@@ -44,4 +44,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

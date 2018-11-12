@@ -1,7 +1,7 @@
 /**
 * $.fn.embedPlayer
 */
-( function ( mw, $ ) {
+( function () {
 	/**
 	* Add the mwEmbed jQuery loader wrapper
 	*/
@@ -47,4 +47,4 @@
 			} );
 		} );
 	};
-}( mediaWiki, jQuery ) );
+}() );

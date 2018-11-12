@@ -2,7 +2,7 @@
 * API Helper functions
 */
 
-( function ( mw, $ ) {
+( function () {
 	var config = mw.config.get( 'wgTimedMediaHandler' );
 
 	/**
@@ -103,7 +103,7 @@
 				ranCallback = true;
 
 				// Load the proxy and issue the request
-				mediaWiki.loader.using( 'ApiProxy', function () {
+				mw.loader.using( 'ApiProxy', function () {
 					mw.ApiProxy.doRequest( url, data, callback, timeoutCallback );
 				} );
 

@@ -1,7 +1,7 @@
 /**
 * EmbedPlayer loader
 */
-( function ( mw ) {
+( function () {
 	var assignedIndex = 0,
 		config = mw.config.get( 'wgTimedMediaHandler' );
 
@@ -55,4 +55,4 @@
 	}
 	mw.hook( 'wikipage.content' ).add( embedPlayerInit );
 
-}( mediaWiki ) );
+}() );

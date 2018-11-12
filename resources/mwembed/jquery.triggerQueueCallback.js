@@ -13,7 +13,7 @@
  * This is useful in cases where you have multiple modules that need to do asynchronous loads
  * before issuing the a callback.
  */
-( function ( mw, $ ) {
+( function () {
 	var eventArray = {};
 
 	$.fn.bindQueueCallback = function ( eventName, callback ) {
@@ -83,4 +83,4 @@
 			queuedCallback.callback.apply( queuedCallback.targetObject, triggerArgs );
 		} );
 	};
-}( mediaWiki, jQuery ) );
+}() );

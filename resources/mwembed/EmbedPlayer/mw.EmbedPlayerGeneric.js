@@ -2,7 +2,7 @@
 * Simple embed object for unknown application/ogg plugin
 */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	mw.EmbedPlayerGeneric = {
@@ -34,4 +34,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

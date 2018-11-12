@@ -7,7 +7,7 @@
 		videojs = window.videojs;
 	}
 
-	( function ( window, videojs, mw ) {
+	( function () {
 		var infoButton,
 			// defaults = {},
 			Button = videojs.getComponent( 'Button' ),
@@ -44,5 +44,5 @@
 
 		// register the plugin
 		videojs.registerPlugin( 'infoButton', infoButton );
-	}( window, videojs, mediaWiki ) );
+	}() );
 }() );

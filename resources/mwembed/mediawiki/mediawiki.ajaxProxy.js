@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function () {
 
 	var config = mw.config.get( 'wgTimedMediaHandler' ),
 
@@ -131,4 +131,4 @@
 	// Export our module to mw global object
 	mw.ajaxProxy = ajaxProxy;
 
-}( mediaWiki, jQuery ) );
+}() );

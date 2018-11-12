@@ -2,7 +2,7 @@
 * Skin js allows you to override contrlBuilder html/class output
 */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	var config = mw.config.get( 'wgTimedMediaHandler' );
@@ -393,4 +393,4 @@
 
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

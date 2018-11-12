@@ -3,7 +3,7 @@
  *
  * @constructor
  */
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	mw.MediaPlayers = function () {
@@ -199,4 +199,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

@@ -4,7 +4,7 @@
  * http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/OggHandler/OggPlayer.js
  */
 /* global ActiveXObject */
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	var config = mw.config.get( 'wgTimedMediaHandler' ),
@@ -349,4 +349,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

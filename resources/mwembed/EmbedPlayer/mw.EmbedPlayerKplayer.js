@@ -4,7 +4,7 @@
 
 /* global flashembed */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	var config = mw.config.get( 'wgTimedMediaHandler' );
@@ -464,7 +464,7 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );
 
 /* eslint-disable */
 /*

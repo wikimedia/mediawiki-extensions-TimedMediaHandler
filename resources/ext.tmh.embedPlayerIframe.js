@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function () {
 	var config = mw.config.get( 'wgTimedMediaHandler' ),
 		iframePlayerInit = function () {
 			// rewrite player, normally done by mw.EmbedPlayer.loader upon wikipage.content hook
@@ -11,4 +11,4 @@
 	config[ 'EmbedPlayer.IsIframeServer' ] = true;
 
 	$( iframePlayerInit );
-}( mediaWiki, jQuery ) );
+}() );

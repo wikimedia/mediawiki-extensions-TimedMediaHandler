@@ -11,7 +11,7 @@
  * http://dev.w3.org/html5/spec/Overview.html#the-source-element
  */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	var config = mw.config.get( 'wgTimedMediaHandler' );
@@ -467,4 +467,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

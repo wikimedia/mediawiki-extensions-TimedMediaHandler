@@ -1,5 +1,5 @@
 /* global videojs */
-( function ( $, mw, videojs ) {
+( function () {
 	var globalConfig, videoConfig, audioConfig, playerConfig;
 
 	globalConfig = {
@@ -177,4 +177,4 @@
 		$( '#videoContainer video,#videoContainer audio' ).loadVideoPlayer();
 	} );
 
-}( jQuery, mediaWiki, videojs ) );
+}() );

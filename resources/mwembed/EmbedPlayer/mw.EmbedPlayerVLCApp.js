@@ -2,7 +2,7 @@
  * Play the video using the vlc app on iOS
  */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	mw.EmbedPlayerVLCApp = {
@@ -99,4 +99,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

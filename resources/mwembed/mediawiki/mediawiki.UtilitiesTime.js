@@ -1,7 +1,7 @@
 /**
  * dependencies: [ mw ]
  */
-( function ( mw ) {
+( function () {
 
 	/**
 	 * Given a float number of seconds, returns npt format response. ( ignore
@@ -112,4 +112,4 @@
 		return ( hour * 3600 ) + ( min * 60 ) + sec;
 	};
 
-}( mediaWiki ) );
+}() );

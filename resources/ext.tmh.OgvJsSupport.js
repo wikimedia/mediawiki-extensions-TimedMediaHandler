@@ -1,5 +1,5 @@
 /* global OGVLoader */
-( function ( $, mw ) {
+( function () {
 
 	var support = mw.OgvJsSupport = {
 		/**
@@ -98,4 +98,4 @@
 		}
 	};
 
-}( jQuery, mediaWiki ) );
+}() );

@@ -4,7 +4,7 @@
 
 /* global fullScreenApi */
 
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	var config = mw.config.get( 'wgTimedMediaHandler' );
@@ -2708,4 +2708,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

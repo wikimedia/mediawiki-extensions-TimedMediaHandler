@@ -4,7 +4,7 @@
  * @param {Object} source Source object to extend
  * @param {Object} textProvider [Optional] The text provider interface ( to load source from api )
  */
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	mw.TextSource = function ( source ) {
@@ -521,4 +521,4 @@
 		}
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

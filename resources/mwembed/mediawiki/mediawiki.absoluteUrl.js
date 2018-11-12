@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function () {
 	/**
 	 * makeAbsolute takes makes the given
 	 * document.URL or a contextUrl param
@@ -38,4 +38,4 @@
 		}
 	};
 
-}( mediaWiki ) );
+}() );

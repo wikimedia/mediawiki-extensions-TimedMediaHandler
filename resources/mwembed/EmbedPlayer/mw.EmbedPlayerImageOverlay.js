@@ -4,7 +4,7 @@
  *  extends EmbedPlayerNative object image overlay support
  */
 
-( function ( mw, $ ) {
+( function () {
 
 	var config = mw.config.get( 'wgTimedMediaHandler' );
 
@@ -313,4 +313,4 @@
 			// }
 		}
 	};
-}( mediaWiki, jQuery ) );
+}() );

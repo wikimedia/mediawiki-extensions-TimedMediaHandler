@@ -1,4 +1,4 @@
-( function ( mw, $ ) {
+( function () {
 	'use strict';
 
 	var support = mw.OgvJsSupport;
@@ -258,4 +258,4 @@
 
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

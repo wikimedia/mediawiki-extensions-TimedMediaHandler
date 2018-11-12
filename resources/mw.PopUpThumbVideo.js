@@ -1,7 +1,7 @@
 /**
  * Simple script to add pop-up video dialog link support for video thumbnails
  */
-( function ( mw, $ ) {
+( function () {
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		$content.find( '.PopUpMediaTransform a' ).each( function () {
 			var link, title,
@@ -41,4 +41,4 @@
 			} /* else fall back to linking directly to media file */
 		} );
 	} );
-}( mediaWiki, jQuery ) );
+}() );

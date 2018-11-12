@@ -2,7 +2,7 @@
 * This could be replaced with a dynamic resource loader resource
 */
 
-( function ( mw ) {
+( function () {
 
 	if ( !mw.Language ) {
 		mw.Language = {};
@@ -371,4 +371,4 @@
 		"zu": "isiZulu"
 	};
 
-}( mediaWiki ) );
+}() );

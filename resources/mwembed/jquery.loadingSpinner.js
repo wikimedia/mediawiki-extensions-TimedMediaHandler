@@ -1,6 +1,6 @@
 /* global Spinner */
 
-( function ( mw, $ ) {
+( function () {
 	var config = mw.config.get( 'wgTimedMediaHandler' );
 
 	/**
@@ -86,4 +86,4 @@
 		return $spinner;
 	};
 
-}( mediaWiki, jQuery ) );
+}() );

@@ -6,7 +6,7 @@
 
 /* global ActiveXObject */
 
-( function ( mw ) {
+( function () {
 
 	var config = mw.config.get( 'wgTimedMediaHandler' );
 
@@ -146,4 +146,4 @@
 		return '0,0,0';
 	};
 
-}( mediaWiki ) );
+}() );

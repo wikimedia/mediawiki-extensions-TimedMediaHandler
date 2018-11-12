@@ -20,7 +20,7 @@
  * @dependencies
  */
 
-( function ( mw, $ ) {
+( function () {
 	/**
 	 * mw.ready method
 	 * @deprecated
@@ -210,7 +210,7 @@
 		}
 
 		// Load the dialog resources
-		mediaWiki.loader.using( uiRequest, function () {
+		mw.loader.using( uiRequest, function () {
 			$( '#mweDialog' ).dialog( options );
 		} );
 		return $( '#mweDialog' );
@@ -260,4 +260,4 @@
 		beacon.src = beaconUrl;
 	};
 
-}( mediaWiki, jQuery ) );
+}() );
