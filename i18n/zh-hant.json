@@ -138,7 +138,7 @@
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 個 WebM 音訊檔案|$1 個 WebM 音訊檔案}}",
 	"beta-feature-timedmediahandler-description-videojs": "以具有清晰外觀及相容手機的現代化播放器來觀賞影片。",
 	"right-transcode-reset": "重設已失敗或已轉碼的影片，將其重新排入任務序列中。",
-	"right-transcode-status": "檢視 [[Special:TimedMediaHandler|目前轉碼活動的資訊]]",
+	"right-transcode-status": "檢視[[Special:TimedMediaHandler|目前轉碼活動的資訊]]",
 	"action-transcode-reset": "重設轉碼",
 	"action-transcode-status": "檢視目前轉碼狀態",
 	"log-name-timedmediahandler": "TimedMediaHandler日誌",
