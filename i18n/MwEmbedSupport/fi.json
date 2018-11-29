@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Crt",
-			"Str4nd"
+			"Str4nd",
+			"Valtlait"
 		]
 	},
 	"mwe-loading": "Ladataan...",
@@ -10,6 +11,6 @@
 	"mwe-apiproxy-setup": "Pystytetään API-välityspalvelinta",
 	"mwe-ok": "OK",
 	"mwe-cancel": "Peruuta",
-	"mwe-must-login-gadget": "Sinun tulee <a target=\"_new\" href=\"$1\">kirjautua sisään</a>, jotta voisit käyttää pienoisohjelmaa",
+	"mwe-must-login-gadget": "Sinun tulee <a target=\"_new\" href=\"$1\">kirjautua sisään</a>, jotta voit käyttää pienoisohjelmaa",
 	"mwe-test-plural": "Ajoin {{PLURAL:$1|$1 testin|$1 testiä}}"
 }
