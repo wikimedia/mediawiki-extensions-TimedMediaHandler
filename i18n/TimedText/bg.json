@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Vlad5250"
 		]
 	},
-	"mwe-timedtext-back-btn": "Назад"
+	"mwe-timedtext-back-btn": "Назад",
+	"mwe-timedtext-loading-text": "Зареждане на текста...",
+	"mwe-timedtext-textcat-ktv": "Караоке",
+	"mwe-timedtext-textcat-nb": "Анотация"
 }

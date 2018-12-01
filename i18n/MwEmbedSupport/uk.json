@@ -4,7 +4,8 @@
 			"Andriykopanytsia",
 			"Steve.rusyn",
 			"SteveR",
-			"Тест"
+			"Тест",
+			"Vlad5250"
 		]
 	},
 	"mwe-loading": "Завантаження ...",
@@ -16,5 +17,5 @@
 	"mwe-enable-gadget": "Увімкнути  бета-мультимедію (mwEmbed) для всіх сторінок",
 	"mwe-enable-gadget-done": "Увімкнена бета-версія мультимедійної новинки.",
 	"mwe-must-login-gadget": "Щоб увімкнути новинку, ви повинні <a target=\"_new\" href=\"$1\">увійти</a>",
-	"mwe-test-plural": "Я пройшов {{PLURAL:$1|$1 тест|$1 тести|тестів}}"
+	"mwe-test-plural": "Я пройшов {{PLURAL:$1|$1 тест|$1 тести|$1 тестів}}"
 }

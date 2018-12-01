@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apihelp-transcodereset-param-title": "Заглавие на файла.",
+	"apierror-timedmedia-disabledtranscode": "Прекодирането е изключено в това уики."
+}
