@@ -70,7 +70,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "للحصول على أفضل تجربة لعرض الفيديو نحن ننصح بـ <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">مستعرض HTML5 للفيديو</a>",
 	"mwe-embedplayer-download-warn": "لم يتم اكتشاف مشغل متوافق في المتصفح: للتشغيل في المتصفح; يُرجَى تنزيل [$1 أحدث فيرفكس]",
-	"mwe-embedplayer-fullscreen-tip": "اضغط <b>F11</b> لتبديل <i>متصفح الوب</i> لوضع الشاشة الكاملة",
+	"mwe-embedplayer-fullscreen-tip": "اضغط <b>F11</b> لتبديل <i>متصفح الويب</i> لوضع الشاشة الكاملة",
 	"mwe-embedplayer-fullscreen-tip-osx": "اضغط <b>shift ⌘ F</b> لوضع شاشة كاملة",
 	"mwe-embedplayer-do_not_warn_again": "لا تظهر هذه الرسالة في المرة القادمة",
 	"mwe-embedplayer-playerSelect": "لاعبون",
