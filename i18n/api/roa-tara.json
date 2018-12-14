@@ -7,5 +7,19 @@
 	"apihelp-query+transcodestatus-description": "Pigghie 'u state d'a transcodifeche pe 'nu file.",
 	"apihelp-query+transcodestatus-summary": "Pigghie 'u state d'a transcodifeche pe 'nu file.",
 	"apihelp-query+transcodestatus-example-1": "Pigghie 'u state d'a transcodifeche pe [[:File:Clip.webm]]",
-	"apihelp-transcodereset-param-title": "'U titole d'u file multimediale."
+	"apihelp-query+videoinfo-description": "Estenne imageinfo pe 'ngludere le 'mbormaziune (derivate) d'a sorgende video",
+	"apihelp-query+videoinfo-summary": "Estenne imageinfo pe 'ngludere le 'mbormaziune (derivate) d'a sorgende video",
+	"apihelp-query+videoinfo-example-1": "Pigghie le 'mbormaziune sus a [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Aggiunge 'na matrice de formate diverse e versiune de qualitate de 'nu file audio o video ca sò disponibbele.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Agigunge 'na matrice de sottotitole, didascalie e descriziune de 'nu file audio o video disponibbele.",
+	"apihelp-transcodereset-description": "Le utinde cu le deritte 'transcode-reset' ponne azzerà e eseguì arrete 'na fatìe de traduzione.",
+	"apihelp-transcodereset-summary": "Le utinde cu le deritte 'transcode-reset' ponne azzerà e eseguì arrete 'na fatìe de traduzione.",
+	"apihelp-transcodereset-param-title": "'U titole d'u file multimediale.",
+	"apihelp-transcodereset-param-transcodekey": "'A chiave de codifeche ca vuè ccu azzere. Pigghie da [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Azzeere tutte le codifeche pe [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Azzere 'a chiave de codifeche '360_560kbs.webm' pe [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "'A codifeche jè disabbilitate sus a sta uicchi.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 non g'è traducibbele.",
+	"apierror-timedmedia-badtranscodekey": "Chiave de traduzione invalide o disabbilitate: $1",
+	"apierror-timedmedia-notenoughtimereset": "Non ha passate assaije tiembe da l'urteme azzeramende de sta codifeche. $1 fine a quanne sta codifeche pò essere azzerate."
 }
