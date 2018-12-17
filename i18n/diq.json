@@ -28,6 +28,7 @@
 	"timedmedia-status-unknown": "Weziyeto nêzanaye",
 	"timedmedia-transcodeinfo": "Şınasiya babetê transkodi",
 	"timedmedia-actions": "Kerdışi",
+	"timedmedia-direct-link": "Biya war",
 	"timedmedia-not-ready": "Hazır niyo",
 	"timedmedia-days": "{{PLURAL:$1|1 roce|$1 roci}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 seate|$1 seati}}",

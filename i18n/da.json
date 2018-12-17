@@ -48,7 +48,7 @@
 	"timedmedia-actions": "Handlinger",
 	"timedmedia-direct-link": "Download",
 	"timedmedia-not-ready": "Ikke klar",
-	"timedmedia-completed-on": "Gennemført transcode $1",
+	"timedmedia-completed-on": "Gennemført $1",
 	"timedmedia-error-on": "Fejl ved $1",
 	"timedmedia-started-transcode": "Startet $1 siden. $2",
 	"timedmedia-percent-done": "Cirka $1 % udført",
