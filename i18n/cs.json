@@ -10,7 +10,8 @@
 			"Cvanca",
 			"Urbanecm",
 			"Martin Urbanec",
-			"Ilimanaq29"
+			"Ilimanaq29",
+			"Patriccck"
 		]
 	},
 	"timedmediahandler-desc": "Obsluha zvuků, videa a časovaného textu s podporou formátů WebM, Ogg Theora, Vorbis, srt",
@@ -49,7 +50,7 @@
 	"timedmedia-transcodeduration": "Čas kódování",
 	"timedmedia-transcodeinfo": "Formát",
 	"timedmedia-actions": "Akce",
-	"timedmedia-direct-link": "Stažení",
+	"timedmedia-direct-link": "Stáhnout",
 	"timedmedia-not-ready": "Nepřipraveno",
 	"timedmedia-completed-on": "Dokončeno v $1",
 	"timedmedia-error-on": "Chyba v $1",
