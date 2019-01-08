@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Iwan Novirion"
+			"Iwan Novirion",
+			"Ardzun"
 		]
 	},
 	"timedmedia-transcodeinfo": "Deskripsi turunan transkoder",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
+	"timedmedia-source-file": "Sumber $1",
+	"timedmedia-source-audio-file-desc": "Berkas ($2) asali $1",
 	"timedmedia-derivative-160p.ogv": "Ogg 160p",
 	"timedmedia-derivative-360p.ogv": "Ogg 360p",
 	"timedmedia-derivative-480p.ogv": "Ogg 480p",
