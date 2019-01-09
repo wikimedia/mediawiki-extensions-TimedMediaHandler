@@ -90,6 +90,8 @@
 	"timedmedia-derivative-desc-1080p.webm": "Full HD WebM (1080P)",
 	"timedmedia-derivative-desc-1440p.webm": "UHD WebM (1440P)",
 	"timedmedia-derivative-desc-2160p.webm": "Full UHD WebM (2160P)",
+	"timedmedia-derivative-desc-120p.vp9.webm": "VP9 з найнижчою пропускною здатністю (120P)",
+	"timedmedia-derivative-desc-180p.vp9.webm": "VP9 з низькою пропускною здатністю (180P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "Невелике VP9 (240P)",
 	"timedmedia-derivative-desc-360p.vp9.webm": "Потокове WebM VP9 (360P)",
 	"timedmedia-derivative-desc-480p.vp9.webm": "SD VP9 (480P)",
