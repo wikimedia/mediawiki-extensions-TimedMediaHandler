@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cem Rize"
+		]
+	},
+	"timedmedia-source-file": "$1 kaynağı",
+	"timedmedia-source-audio-file-desc": "Orijinal $1 dosyası ($2)"
+}

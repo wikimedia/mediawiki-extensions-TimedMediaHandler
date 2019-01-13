@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Наслов: $1",
@@ -40,7 +41,7 @@
 	"mwe-embedplayer-choose_player": "Одберете видеоизведувач",
 	"mwe-embedplayer-no-player": "Нема допстапен изведувач за $1",
 	"mwe-embedplayer-share_this_video": "Сподели ја снимкава",
-	"mwe-embedplayer-share_this_audio": "Сподели ја аудо-податотекава",
+	"mwe-embedplayer-share_this_audio": "Сподели ја аудио-податотекава",
 	"mwe-embedplayer-video_credits": "За авторите на снимката",
 	"mwe-embedplayer-no-video_credits": "Нема авторски податоци",
 	"mwe-embedplayer-kaltura-platform-title": "Отворена видео-платформа Kaltura",
