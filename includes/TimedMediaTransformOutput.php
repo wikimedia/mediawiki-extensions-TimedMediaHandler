@@ -228,7 +228,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get target popup player size
-	 * @return int
+	 * @return int[]
 	 */
 	function getPopupPlayerSize() {
 		// Get the max width from the enabled transcode settings:
@@ -241,6 +241,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 *
 	 * Silly function because array index operations aren't allowed
 	 * on function calls before php 5.4
+	 * @return int
 	 */
 	private function getPopupPlayerWidth() {
 		list( $popUpWidth ) = $this->getPopupPlayerSize();
@@ -297,7 +298,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * This function is also called by the Score extension, in which case
 	 * there is no connection to a file object.
 	 *
-	 * @param array $sizeOverride
+	 * @param int[] $sizeOverride
 	 * @param bool $autoPlay sets the autoplay attribute
 	 * @return string HTML
 	 */
@@ -513,7 +514,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 
 	/**
-	 * @return null
+	 * @return array
 	 */
 	function getMediaSources() {
 		if ( !$this->sources ) {
