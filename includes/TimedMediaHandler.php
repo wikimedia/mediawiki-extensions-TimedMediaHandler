@@ -221,7 +221,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * Utility functions
 	 * @param string $timeString
 	 * @param bool|int $length
-	 * @return bool|int
+	 * @return false|int
 	 */
 	public static function parseTimeString( $timeString, $length = false ) {
 		$parts = explode( ':', $timeString );
@@ -289,8 +289,8 @@ class TimedMediaHandler extends MediaHandler {
 	 * consist of hh:mm:ss.ms
 	 * also see: http://www.ietf.org/rfc/rfc2326.txt section 3.6
 	 *
-	 * @param number $time Seconds to be converted to npt time format
-	 * @return bool|string
+	 * @param int $time Seconds to be converted to npt time format
+	 * @return false|string
 	 */
 	public static function seconds2npt( $time ) {
 		if ( !is_numeric( $time ) ) {

@@ -180,7 +180,7 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param string $metadata
+	 * @param string|array $metadata
 	 * @param bool $unserialize
 	 * @return bool|mixed
 	 */

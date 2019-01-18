@@ -504,7 +504,7 @@ class WebVideoTranscode {
 	 * @param File &$file
 	 * @param string $transcodeKey
 	 *
-	 * @return TempFSFile at target encode path
+	 * @return TempFSFile|false at target encode path
 	 */
 	public static function getTargetEncodeFile( &$file, $transcodeKey ) {
 		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
@@ -540,7 +540,7 @@ class WebVideoTranscode {
 	 * Note this is not always accurate.. especially with variable bitrate codecs ;)
 	 * @param File $file
 	 * @param string $transcodeKey
-	 * @return number
+	 * @return int
 	 */
 	public static function getProjectedFileSize( $file, $transcodeKey ) {
 		$settings = self::$derivativeSettings[$transcodeKey];
@@ -685,7 +685,7 @@ class WebVideoTranscode {
 	/**
 	 * Get the transcode state for a given filename and transcodeKey
 	 *
-	 * @param string $file
+	 * @param File $file
 	 * @param string $transcodeKey
 	 * @return bool
 	 */
@@ -865,12 +865,12 @@ class WebVideoTranscode {
 	 *
 	 * If the source is not found, it will not be used yet...
 	 * Missing transcodes should be added by write tasks, not read tasks!
-	 * @param array &$file
+	 * @param File &$file
 	 * @param array &$sources
 	 * @param string $transcodeKey
-	 * @param string $dataPrefix
+	 * @param array $dataPrefix
 	 */
-	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix = '' ) {
+	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix ) {
 		// Check if the transcode is ready:
 		if ( self::isTranscodeReady( $file, $transcodeKey ) ) {
 			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
@@ -1203,7 +1203,7 @@ class WebVideoTranscode {
 	 *  if maxSize is > file, file size is used
 	 * @param File &$file
 	 * @param int $targetMaxSize
-	 * @return array
+	 * @return int[]
 	 */
 	public static function getMaxSizeTransform( &$file, $targetMaxSize ) {
 		$maxSize = self::getMaxSize( $targetMaxSize );
