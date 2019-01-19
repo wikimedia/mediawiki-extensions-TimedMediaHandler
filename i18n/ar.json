@@ -14,6 +14,7 @@
 			"ديفيد"
 		]
 	},
+	"timedmediahandler-extensionname": "معالج الميديا الزمنية",
 	"timedmediahandler-desc": "مداول للصوتيات والمرئيات والنصوص المؤقتة والذي لديه القدرة على دعم ملفات بصيغة WebM وOgg Theora وVorbis وsrt",
 	"timedmedia-ogg-short-audio": "Ogg $1 ملف صوت، $2",
 	"timedmedia-ogg-short-video": "Ogg $1 ملف فيديو، $2",
@@ -133,6 +134,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} صوتي FLAC",
 	"timedmedia-wav-audios": "{{PLURAL:$1|ملف|ملفا|$1 ملفات|$1 ملف}} صوتي WAV",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 ملف صوت WebM|$1 ملفات صوت WebM}}",
+	"beta-feature-timedmediahandler-message-videojs": "برنامج الفيديو الجديد",
 	"beta-feature-timedmediahandler-description-videojs": "شاهد ملفات الفيديو في مشغل عصري وواجهة واضحة متوافقة أيضا مع المحمول.",
 	"right-transcode-reset": "إعادة ضبط الفيديوات الفاشلة أو المكودة ليتم إدخالها إلى طابور المهام مجدداً",
 	"right-transcode-status": "عرض [[Special:TimedMediaHandler|المعلومات حول نشاط التكويد الحالي]]",
