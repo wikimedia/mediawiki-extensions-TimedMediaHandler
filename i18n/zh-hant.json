@@ -136,6 +136,7 @@
 	"timedmedia-flac-audios": "$1 個 FLAC 音訊檔案",
 	"timedmedia-wav-audios": "$1 個 WAV 音訊檔案",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 個 WebM 音訊檔案|$1 個 WebM 音訊檔案}}",
+	"beta-feature-timedmediahandler-message-videojs": "新影片播放器",
 	"beta-feature-timedmediahandler-description-videojs": "以具有清晰外觀及相容手機的現代化播放器來觀賞影片。",
 	"right-transcode-reset": "重設已失敗或已轉碼的影片，將其重新排入任務序列中。",
 	"right-transcode-status": "檢視[[Special:TimedMediaHandler|目前轉碼活動的資訊]]",

@@ -4,7 +4,8 @@
 			"Priviet",
 			"아라",
 			"Hwangjy9",
-			"Ykhwong"
+			"Ykhwong",
+			"Comjun04"
 		]
 	},
 	"mwe-embedplayer-credit-title": "제목: $1",
@@ -83,5 +84,11 @@
 	"mwe-embedplayer-video-3gp": "3GP 동영상",
 	"mwe-embedplayer-video-mpeg": "MPEG 동영상",
 	"mwe-embedplayer-video-msvideo": "AVI 동영상",
-	"mwe-embedplayer-missing-source": "원본 동영상을 찾을 수 없습니다"
+	"mwe-embedplayer-missing-source": "원본 동영상을 찾을 수 없습니다",
+	"mwe-embedplayer-vlcapp-intro": "iPhone 혹은 iPad에서 이 사이트의 영상을 보려면, 무료 $1이(가) 필요합니다.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC 앱",
+	"mwe-embedplayer-vlcapp-downloadapp": "App Store에서 VLC 앱 내려받기",
+	"mwe-embedplayer-vlcapp-openvideo": "VLC 앱에서 이 영상 열기",
+	"mwe-embedplayer-vlcapp-downloadvideo": "이 영상 내려받기",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "이 사이트에서 영상을 재생하려면, 무료 VLC 앱이 필요합니다. 지금 설치할까요?"
 }
