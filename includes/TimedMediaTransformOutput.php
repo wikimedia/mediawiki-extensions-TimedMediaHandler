@@ -1,35 +1,72 @@
 <?php
 
 class TimedMediaTransformOutput extends MediaTransformOutput {
+	/** @var int */
 	protected static $serial = 0;
 
 	// Video file sources object lazy init in getSources()
 	// TODO these vars should probably be private
+	/** @var array|mixed|false|null */
 	public $sources = null;
+
+	/** @var null */
 	public $textTracks = null;
+
+	/** @var string|false|null */
 	public $hashTime = null;
+
+	/** @var TextHandler|null */
 	public $textHandler = null; // lazy init in getTextHandler
+
+	/** @var string|false|null */
 	public $disablecontrols = null;
 
+	/** @var mixed */
+	public $dstPath;
+
+	/** @var string|false */
+	public $thumbUrl;
+
+	/** @var string|false */
 	public $start;
+
+	/** @var string|false */
 	public $end;
+
+	/** @var float|false */
+	public $length;
+
+	/** @var float|false */
+	public $offset;
+
+	/** @var bool */
+	public $isVideo;
+
+	/** @var bool */
 	public $fillwindow;
+
+	/** @var string|false */
 	protected $playerClass;
 
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
 	public function __construct( $conf ) {
-		$options = [ 'file', 'dstPath', 'sources', 'thumbUrl', 'start', 'end',
-			'width', 'height', 'length', 'offset', 'isVideo', 'path', 'fillwindow',
-			'sources', 'disablecontrols', 'playerClass' ];
-		foreach ( $options as $key ) {
-			if ( isset( $conf[ $key ] ) ) {
-				$this->$key = $conf[$key];
-			} else {
-				$this->$key = false;
-			}
-		}
+		$this->file = $conf['file'] ?? false;
+		$this->dstPath = $conf['dstPath'] ?? false;
+		$this->sources = $conf['sources'] ?? false;
+		$this->thumbUrl = $conf['thumbUrl'] ?? false;
+		$this->start = $conf['start'] ?? false;
+		$this->end = $conf['end'] ?? false;
+		$this->width = $conf['width'] ?? false;
+		$this->height = $conf['height'] ?? false;
+		$this->length = $conf['length'] ?? false;
+		$this->offset = $conf['offset'] ?? false;
+		$this->isVideo = $conf['isVideo'] ?? false;
+		$this->path = $conf['path'] ?? false;
+		$this->fillwindow = $conf['fillwindow'] ?? false;
+		$this->disablecontrols = $conf['disablecontrols'] ?? false;
+		$this->playerClass = $conf['playerClass'] ?? false;
 	}
 
 	/**

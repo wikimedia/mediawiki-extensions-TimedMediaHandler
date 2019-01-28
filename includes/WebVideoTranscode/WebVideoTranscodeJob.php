@@ -26,6 +26,8 @@ class WebVideoTranscodeJob extends Job {
 	public $sourceFilePath = null;
 	/** @var File */
 	public $file;
+	/** @var FSFile|null */
+	public $source;
 
 	public function __construct( $title, $params, $id = 0 ) {
 		if ( isset( $params['prioritized'] ) && $params['prioritized'] ) {
