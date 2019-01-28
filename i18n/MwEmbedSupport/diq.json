@@ -4,7 +4,8 @@
 			"Aspar",
 			"Erdemaslancan",
 			"Mirzali",
-			"Marmase"
+			"Marmase",
+			"Orbot707"
 		]
 	},
 	"mwe-loading": "bar beno...",
@@ -15,5 +16,6 @@
 	"mwe-cancel": "Bıtexelne",
 	"mwe-enable-gadget": "Multimedia beta (mwEmbed) pêro pelan rê feal kerê",
 	"mwe-enable-gadget-done": "Hacetê Multimedia beta biyo feal",
-	"mwe-must-login-gadget": "Seba haceti feal kerdene rê gani <a target=\"_new\" href=\"$1\">cı kewê</a>"
+	"mwe-must-login-gadget": "Seba haceti feal kerdene rê gani <a target=\"_new\" href=\"$1\">cı kewê</a>",
+	"mwe-test-plural": "Mı {{PLURAL:$1|$1 test|$1 test}} kerd"
 }

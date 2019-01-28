@@ -68,7 +68,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Für eine bessere Videowiedergabe wird ein <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download/de\" target=\"_blank\">HTML5-Videobrowser</a> empfohlen.",
 	"mwe-embedplayer-download-warn": "Beim Browser wurde ein inkompatibles Wiedergabeprogramm erkannt. Für eine im Browser eingebettete Wiedergabe wird die Nutzung der [$1 neuesten Version von Mozilla Firefox] empfohlen.",
-	"mwe-embedplayer-fullscreen-tip": "Die Taste <b>F11</b> drücken, um zum Vollbildmodus des <i>Webbrowsers</i> umzuschalten.",
+	"mwe-embedplayer-fullscreen-tip": "Die Taste <b>F11</b> drücken, um zum Vollbildmodus umzuschalten.",
 	"mwe-embedplayer-fullscreen-tip-osx": "Die Tasten <b>UMSCHALT ⌘ F</b> drücken, um zum Vollbildmodus des <i>Webbrowsers</i> umzuschalten.",
 	"mwe-embedplayer-do_not_warn_again": "Diese Meldung in Zukunft nicht mehr anzeigen.",
 	"mwe-embedplayer-playerSelect": "Player",
