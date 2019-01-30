@@ -164,7 +164,7 @@
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM-аудиоснимка|$1 WebM-аудиоснимки}}",
 	"beta-feature-timedmediahandler-message-videojs": "Нов видеоизведувач",
 	"beta-feature-timedmediahandler-description-videojs": "Гледајте видеоснимки во современ изведувач со поуреден изглед и складност со мобилни уреди.",
-	"right-transcode-reset": "Презадавањето не успеа или има прекодирани видеа, па затоа повторно се ставени во редицата на задачи.",
+	"right-transcode-reset": "Поништување неуспешни или прекодирани видеа, па затоа повторно се ставени во редицата на задачи",
 	"right-transcode-status": "Преглед на [[Special:TimedMediaHandler|информации за тековните активности во прекодирањето]]",
 	"action-transcode-reset": "поништување на прекодирања",
 	"action-transcode-status": "преглед на тековниот статус на прекодирањето",

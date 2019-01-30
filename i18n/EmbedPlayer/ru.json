@@ -7,7 +7,8 @@
 			"Александр Сигачёв",
 			"Kaganer",
 			"Facenapalm",
-			"Putnik"
+			"Putnik",
+			"Vlad5250"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Название: $1",
@@ -71,7 +72,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Для лучшего воспроизведения видео мы рекомендуем <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">браузер, поддерживающий HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Не найдено встроенного в браузер проигрывателя, для воспроизведении в браузере загрузите [$1 последний Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Клавиша <b>F11</b> переводит <i>веб-браузер</i> в полноэкранный режим",
+	"mwe-embedplayer-fullscreen-tip": "Нажмите <b>F11</b> для перехода в полноэкранный режим",
 	"mwe-embedplayer-fullscreen-tip-osx": "Нажмите <b>shift ⌘ F</b> для перехода в полноэкранный режим",
 	"mwe-embedplayer-do_not_warn_again": "Не показывать это сообщение в будущем",
 	"mwe-embedplayer-playerSelect": "Проигрыватели",

@@ -31,7 +31,7 @@
 	"timedmedia-direct-link": "Biya war",
 	"timedmedia-not-ready": "Hazır niyo",
 	"timedmedia-days": "{{PLURAL:$1|1 roce|$1 roci}}",
-	"timedmedia-hours": "{{PLURAL:$1|1 seate|$1 seati}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 saete|$1 saeti}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 deqa|$1 deqey}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 saniya|$1 saniyey}}",
 	"timedmedia-mp4": "MP4",

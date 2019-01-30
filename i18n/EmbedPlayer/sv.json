@@ -66,7 +66,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "För en bättre videouppspelningsupplevelse rekommenderar vi en <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5 videowebbläsare</a>.",
 	"mwe-embedplayer-download-warn": "Ingen kompatibel mediaspelare i webbläsaren upptäcktes: för webbläsaruppspelning, hämta [$1 senaste Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Tryck på <b>F11</b> för att växla <i>webbläsaren</i> till helskärm",
+	"mwe-embedplayer-fullscreen-tip": "Tryck på <b>F11</b> för att växla till helskärm",
 	"mwe-embedplayer-fullscreen-tip-osx": "Tryck på <b>SKIFT ⌘ f</b> för att växla till helskärm",
 	"mwe-embedplayer-do_not_warn_again": "Visa inte detta meddelande fortsättningsvis",
 	"mwe-embedplayer-playerSelect": "Spelare",

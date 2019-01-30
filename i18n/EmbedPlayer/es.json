@@ -8,7 +8,8 @@
 			"Koavf",
 			"Macofe",
 			"Laurenslimb",
-			"Indiralena"
+			"Indiralena",
+			"Dschultz"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -72,7 +73,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Para una mejor experiencia de reproducción de vídeo recomendamos un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navegador de vídeo html5</a>.",
 	"mwe-embedplayer-download-warn": "Se detectó un reproductor no compatible con el explorador: para reproducción integrada en el navegador descargue la [$1 última versión de Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Presiona <b>F11</b> para activar o desactivar la pantalla completa del <i>navegador web</i>",
+	"mwe-embedplayer-fullscreen-tip": "Presiona <b>Mayús ⌘ F</b> para activar o desactivar la pantalla completa",
 	"mwe-embedplayer-fullscreen-tip-osx": "Presiona <b>Mayús ⌘ F</b> para activar o desactivar la pantalla completa",
 	"mwe-embedplayer-do_not_warn_again": "No mostrar este mensaje en el futuro.",
 	"mwe-embedplayer-playerSelect": "Reproductores",

@@ -73,7 +73,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Pour un meilleur visionnage de la vidéo, nous recommandons un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navigateur vidéo HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Aucun navigateur web compatible détecté: pour une lecteur intégré au navigateur, veuillez télécharger la [$1 dernière version de Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Appuyez sur <b>F11</b> pour basculer le <i>navigateur web</i> en mode plein écran",
+	"mwe-embedplayer-fullscreen-tip": "Appuyez sur <b>F11</b> pour basculer en mode plein écran",
 	"mwe-embedplayer-fullscreen-tip-osx": "Appuyez sur <b>maj ⌘ F</b> pour basculer en plein écran",
 	"mwe-embedplayer-do_not_warn_again": "Ne plus afficher ce message à l'avenir",
 	"mwe-embedplayer-playerSelect": "Lecteurs",
