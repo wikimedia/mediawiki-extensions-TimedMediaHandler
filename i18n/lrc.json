@@ -3,7 +3,8 @@
 		"authors": [
 			"Bonevarluri",
 			"Mogoeilor",
-			"Beyronvan"
+			"Beyronvan",
+			"Lorestani"
 		]
 	},
 	"timedmedia-ogg-short-audio": "جانیا دنگ اوگ $1،$2",
@@ -30,7 +31,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|$1 ساعت|$1 ساعت یا}}",
 	"timedmedia-minutes": "{{PLURAL:$1|$1 دیقه|$1 دیقه یا}}",
 	"timedmedia-seconds": "{{PLURAL:$1|$1 ثانیه|$1 ثانیه یا}}",
-	"timedmedia-source-file": "سٱرچٱشمٱ $1",
+	"timedmedia-source-file": "سٱرچشمٱ $1",
 	"timedmedia-source-file-desc": "اصلی $1 جانیا, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "جانیا اصلی$1 ($2)",
 	"timedmedia-subtitle-new-go": "رؤ",

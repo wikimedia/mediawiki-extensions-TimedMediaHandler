@@ -17,5 +17,5 @@
 	"mwe-enable-gadget": "Multimedia beta (mwEmbed) pêro pelan rê feal kerê",
 	"mwe-enable-gadget-done": "Hacetê Multimedia beta biyo feal",
 	"mwe-must-login-gadget": "Seba haceti feal kerdene rê gani <a target=\"_new\" href=\"$1\">cı kewê</a>",
-	"mwe-test-plural": "Mı {{PLURAL:$1|$1 test|$1 test}} kerd"
+	"mwe-test-plural": "Mı {{PLURAL:$1|$1 test ard|$1 testi ardi}} herune"
 }

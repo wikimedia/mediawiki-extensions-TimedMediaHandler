@@ -65,7 +65,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "動画再生品質の向上のために、<a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5 動画対応のブラウザー</a>をお勧めします。",
 	"mwe-embedplayer-download-warn": "互換性がないブラウザー内プレーヤーを検出しました: ブラウザー内で再生するには、[$1 最新版の Firefox] をダウンロードしてください",
-	"mwe-embedplayer-fullscreen-tip": "<i>ウェブ ブラウザー</i>の全画面表示を切り替えるには <b>F11</b> キーを押してください",
+	"mwe-embedplayer-fullscreen-tip": "全画面表示を切り替えるには <b>F11</b> キーを押してください",
 	"mwe-embedplayer-fullscreen-tip-osx": "全画面表示を切り替えるには <b>shift &#x2318; F</b> を押してください",
 	"mwe-embedplayer-do_not_warn_again": "今後、このメッセージを表示しない",
 	"mwe-embedplayer-playerSelect": "プレーヤー",
