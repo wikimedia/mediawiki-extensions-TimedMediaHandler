@@ -4,7 +4,8 @@
 			"EugeneZelenko",
 			"Jim-by",
 			"Wizardist",
-			"Zedlik"
+			"Zedlik",
+			"Red Winged Duck"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Назва: $1",
@@ -62,7 +63,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Для лепшага прайграваньня відэа мы рэкамэндуем <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">браўзэр з падтрымкай HTML5-відэа</a>.",
 	"mwe-embedplayer-download-warn": "Ня знойдзены ўбудаваны прайгравальнік: для прагляду ў браўзэры загрузіце [$1 апошнюю вэрсію Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Клявіша <b>F11</b> пераключае <i>вэб-браўзэр</i> у поўнаэкранны рэжым",
+	"mwe-embedplayer-fullscreen-tip": "Націсьніце <b>F11</b> для пераходу ў поўнаэкранны рэжым",
 	"mwe-embedplayer-fullscreen-tip-osx": "Націсьніце <b>shift ⌘ F</b> для пераходу ў поўнаэкранны рэжым",
 	"mwe-embedplayer-do_not_warn_again": "Не паказваць гэтае паведамленьне ў будучыні",
 	"mwe-embedplayer-playerSelect": "Прайгравальнікі",
