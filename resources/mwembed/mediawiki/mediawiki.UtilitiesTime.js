@@ -31,12 +31,14 @@
 			tm.seconds = Math.round( tm.seconds );
 		}
 		if ( tm.seconds < 10 ) {
-			tm.seconds = '0' +	tm.seconds;
+			tm.seconds = '0' + tm.seconds;
 		}
 		if ( tm.hours === 0 ) {
 			hoursStr = '';
 		} else {
-			if ( tm.minutes < 10 ) { tm.minutes = '0' + tm.minutes; }
+			if ( tm.minutes < 10 ) {
+				tm.minutes = '0' + tm.minutes;
+			}
 
 			hoursStr = tm.hours + ':';
 		}

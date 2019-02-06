@@ -21,12 +21,8 @@
 
 		// Check if the selected player set is ready if ready issue the parent callback
 		function areSelectedPlayersReady() {
-			var playersLoaded = true;
-			$.each( playerIdList, function ( inx, playerId ) {
-				if ( !$( '#' + playerId )[ 0 ].playerReadyFlag ) {
-					playersLoaded = false;
-					return false;
-				}
+			var playersLoaded = playerIdList.every( function ( playerId ) {
+				return $( '#' + playerId )[ 0 ].playerReadyFlag;
 			} );
 			if ( playersLoaded ) {
 				if ( callback ) {
@@ -144,8 +140,8 @@
 		/**
 		 * Check if we should wait for metadata.
 		 *
-		 * @return 	true if the size is "likely" to be updated by waiting for metadata
-		 * 			false if the size has been set via an attribute or is already loaded
+		 * @return true if the size is "likely" to be updated by waiting for metadata
+		 *         false if the size has been set via an attribute or is already loaded
 		 */
 		function waitForMetaCheck( playerElement ) {
 			var waitForMeta = false;
@@ -257,6 +253,7 @@
 			// Copy any data attributes from the target player element over to the swapPlayerElement
 			dataAttributes = config[ 'EmbedPlayer.DataAttributes' ];
 			if ( dataAttributes ) {
+				// eslint-disable-next-line jquery/no-each-util
 				$.each( dataAttributes, function ( attrName ) {
 					if ( $( targetElement ).data( attrName ) ) {
 						$( swapPlayerElement ).data( attrName, $( targetElement ).data( attrName ) );

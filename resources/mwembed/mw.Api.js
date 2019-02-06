@@ -13,19 +13,19 @@
 	* mw.getJSON( [url], data, callback, [timeoutCallback] );
 	*
 	* Lets you assume:
-	* 	url is optional
-	* 		( If the first argument is not a string we assume a local mediaWiki api request )
-	*   callback parameter is not needed for the request data
-	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
-	* 	format is set to "json" automatically
-	* 	automatically issues request over "POST" if the request api post type
-	*	automatically will setup apiProxy where request is cross domain
+	*   url is optional
+	*     ( If the first argument is not a string we assume a local mediaWiki api request )
+	*     callback parameter is not needed for the request data
+	*   url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
+	*   format is set to "json" automatically
+	*   automatically issues request over "POST" if the request api post type
+	*   automatically will setup apiProxy where request is cross domain
 	*
 	* @param {Mixed} url or data request
 	* @param {Mixed} data or callback
 	* @param {Function} callback function called on success
 	* @param {Function} callbackTimeout - optional function called on timeout
-	* 	Setting timeout callback also avoids default timed-out dialog for proxy requests
+	*   Setting timeout callback also avoids default timed-out dialog for proxy requests
 	*/
 	mw.getJSON = function () {
 		// Process the arguments:
@@ -92,7 +92,6 @@
 		// mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );
 
 		// Check if the request requires a "post"
-		// eslint-disable-next-line no-underscore-dangle
 		if ( mw.checkRequestPost( data ) || data._method === 'post' ) {
 
 			// Check if we need to setup a proxy
@@ -131,7 +130,7 @@
 	* @return {boolean} The request requires a post
 	*/
 	mw.checkRequestPost = function ( data ) {
-		if ( $.inArray( data.action, [ 'login', 'purge', 'rollback', 'delete', 'undelete', 'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser', 'import', 'userrights' ] ) !== -1 ) {
+		if ( [ 'login', 'purge', 'rollback', 'delete', 'undelete', 'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser', 'import', 'userrights' ].indexOf( data.action ) !== -1 ) {
 			return true;
 		}
 		if ( data.prop === 'info' && data.intoken ) {
@@ -146,10 +145,8 @@
 	/**
 	* Check if the url is a request for the local domain
 	*  relative paths are "local" domain
-	* @param {String} url Url for local domain
-	* @return {Boolean}
-	*	true if url domain is local or relative
-	* 	false if the domain is
+	* @param {string} url Url for local domain
+	* @return {boolean} The url domain is local or relative
 	*/
 	mw.isLocalDomain = function ( url ) {
 		if ( (
@@ -168,8 +165,8 @@
 	* Get the api url for a given content provider key
 	* @param {string} providerId
 	* @return {Mixed}
-	*	url for the provider
-	* 	local wiki api if no apiProvider is set
+	*   url for the provider
+	*   local wiki api if no apiProvider is set
 	*/
 	mw.getApiProviderURL = function ( providerId ) {
 		if ( config[ 'MediaWiki.ApiProviders' ] &&
@@ -182,15 +179,13 @@
 
 	/**
 	* Get Api URL from mediaWiki page defined variables
-	* @return {Mixed}
-	* 	api url
-	* 	false
+	* @return {string|boolean} Api URL, or false
 	*/
 	mw.getLocalApiUrl = function () {
 		if ( typeof mw.config.get( 'wgServer' ) !== 'undefined' &&
 			typeof mw.config.get( 'wgScriptPath' ) !== 'undefined'
 		) {
-			return	mw.config.get( 'wgServer' ) +
+			return mw.config.get( 'wgServer' ) +
 				mw.config.get( 'wgScriptPath' ) + '/api.php';
 		}
 		mw.log( 'Error trying to get local api url without ' );

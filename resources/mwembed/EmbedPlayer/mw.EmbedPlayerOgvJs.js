@@ -133,7 +133,7 @@
 
 		/**
 		 * Issue the doPlay request to the playerElement
-		 *	calls parent_play to update interface
+		 * calls parent_play to update interface
 		 */
 		play: function () {
 			this.getPlayerElement();
@@ -147,7 +147,7 @@
 
 		/**
 		 * Pause playback
-		 * 	calls parent_pause to update interface
+		 * calls parent_pause to update interface
 		 */
 		pause: function () {
 			this.getPlayerElement();
@@ -207,7 +207,7 @@
 				this.controlBuilder.onSeek();
 				this.playerElement.addEventListener( 'seeked', onseeked );
 			}
-			if ( $.isFunction( callback ) ) {
+			if ( typeof callback === 'function' ) {
 				callback();
 			}
 		},
@@ -219,7 +219,9 @@
 		toggleMute: function () {
 			this.parent_toggleMute();
 			this.getPlayerElement();
-			if ( this.playerElement ) { this.playerElement.muted = this.muted; }
+			if ( this.playerElement ) {
+				this.playerElement.muted = this.muted;
+			}
 		},
 
 		/**

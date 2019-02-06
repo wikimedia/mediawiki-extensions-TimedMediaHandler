@@ -266,9 +266,13 @@
 				if ( this.playerElement.log ) {
 					this.playerElement.log.messages.clear();
 				}
-				if ( this.playerElement.playlist && typeof this.playerElement.playlist.play === 'function' ) { this.playerElement.playlist.play(); }
+				if ( this.playerElement.playlist && typeof this.playerElement.playlist.play === 'function' ) {
+					this.playerElement.playlist.play();
+				}
 
-				if ( typeof this.playerElement.play === 'function' ) { this.playerElement.play(); }
+				if ( typeof this.playerElement.play === 'function' ) {
+					this.playerElement.play();
+				}
 
 				this.paused = false;
 

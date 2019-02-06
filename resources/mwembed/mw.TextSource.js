@@ -35,7 +35,7 @@
 		 */
 		init: function ( source, textProvider ) {
 			var i;
-			//	Inherits mediaSource
+			// Inherits mediaSource
 			for ( i in source ) {
 				this[ i ] = source[ i ];
 			}
@@ -62,7 +62,9 @@
 
 			// Setup up a callback ( in case it was not defined )
 			if ( !callback ) {
-				callback = function () { return; };
+				callback = function () {
+					return;
+				};
 			}
 
 			// Check if the captions have already been loaded:
@@ -123,7 +125,9 @@
 			for ( i = startIndex; i < this.captions.length; i++ ) {
 				caption = this.captions[ i ];
 				// Don't handle captions with 0 or -1 end time:
-				if ( caption.end === 0 || caption.end === -1 ) { continue; }
+				if ( caption.end === 0 || caption.end === -1 ) {
+					continue;
+				}
 
 				if ( time >= caption.start &&
 					time <= caption.end ) {
@@ -231,7 +235,7 @@
 				// Get text content by converting ttml node to html
 				var end, captionObj, $meta,
 					content = '';
-				$.each( p.childNodes, function ( inx, node ) {
+				Array.prototype.forEach.call( p.childNodes, function ( node ) {
 					content += self.convertTTML2HTML( node );
 				} );
 				// Get the end time:
@@ -322,7 +326,7 @@
 					}
 				}
 				nodeString += '<' + node.nodeName + ' style="' + styleVal + '" >';
-				$.each( node.childNodes, function ( inx, childNode ) {
+				Array.prototype.forEach.call( node.childNodes, function ( childNode ) {
 					nodeString += self.convertTTML2HTML( childNode );
 				} );
 				nodeString += '</' + node.nodeName + '>';
@@ -498,7 +502,7 @@
 			caption.start = this.timeParts2seconds( m[ 1 ], m[ 2 ], m[ 3 ], startMs );
 			caption.end = this.timeParts2seconds( m[ 5 ], m[ 6 ], m[ 7 ], endMs );
 			if ( m[ 9 ] ) {
-				caption.content = $.trim( m[ 9 ] );
+				caption.content = m[ 9 ].trim();
 			}
 			return caption;
 		},

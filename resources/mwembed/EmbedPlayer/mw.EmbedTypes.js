@@ -177,7 +177,7 @@
 			if ( $.client.profile().name === 'msie' ) {
 				// VLC
 				// if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-				//	 this.mediaPlayers.addPlayer( vlcPlayer );
+				//   this.mediaPlayers.addPlayer( vlcPlayer );
 				// }
 
 				// quicktime (currently off)
@@ -259,8 +259,8 @@
 						pluginName = '';
 					}
 					// if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
-					//	this.mediaPlayers.addPlayer( vlcPlayer );
-					//	continue;
+					//   this.mediaPlayers.addPlayer( vlcPlayer );
+					//   continue;
 					// }
 
 					if ( ( type === 'video/mpeg' || type === 'video/x-msvideo' ) ) {
@@ -332,8 +332,7 @@
 		/**
 		 * Test IE for activeX by name
 		 *
-		 * @param {String}
-		 * 		name Name of ActiveXObject to look for
+		 * @param {string} name Name of ActiveXObject to look for
 		 */
 		testActiveX: function ( name ) {
 			var hasObj = true;

@@ -100,7 +100,7 @@
 				flashvars
 			);
 			// Remove any old bindings:
-			$( self ).unbind( this.bindPostfix );
+			$( self ).off( this.bindPostfix );
 
 			// Flash player loses its bindings once it changes sizes::
 			$( self ).on( 'onOpenFullScreen' + this.bindPostfix, function () {
@@ -132,6 +132,7 @@
 					bytesDownloadedChange: 'onBytesDownloadedChange'
 				};
 
+				// eslint-disable-next-line jquery/no-each-util
 				$.each( bindEventMap, function ( bindName, localMethod ) {
 					self.bindPlayerFunction( bindName, localMethod );
 				} );
@@ -244,7 +245,9 @@
 					switchCallback();
 				}
 				setTimeout( function () {
-					if ( doneCallback ) { doneCallback(); }
+					if ( doneCallback ) {
+						doneCallback();
+					}
 				}, 100 );
 				return;
 			}
@@ -256,8 +259,12 @@
 				// waited for 2 seconds fail
 					if ( waitCount > 20 ) {
 						mw.log( 'Error: Failed to swtich player source!' );
-						if ( switchCallback ) { switchCallback(); }
-						if ( doneCallback ) { doneCallback(); }
+						if ( switchCallback ) {
+							switchCallback();
+						}
+						if ( doneCallback ) {
+							doneCallback();
+						}
 						return;
 					}
 
@@ -282,7 +289,7 @@
 
 					window[ gChangeMedia ] = function () {
 						mw.log( 'EmbedPlayerKplayer:: Media changed: ' + src );
-						if ( $.isFunction( switchCallback ) ) {
+						if ( typeof switchCallback === 'function' ) {
 							switchCallback( self );
 							switchCallback = null;
 						}
@@ -294,7 +301,7 @@
 					self.getPlayerElement().addJsListener( 'changeMedia', gChangeMedia );
 
 					window[ gDoneName ] = function () {
-						if ( $.isFunction( doneCallback ) ) {
+						if ( typeof doneCallback === 'function' ) {
 							doneCallback();
 							doneCallback = null;
 						}

@@ -22,8 +22,7 @@
 		/*
 		 * Embed this "fake" player
 		 *
-		 * @return {String}
-		 * 	embed code to link to VLC app
+		 * @return {string} embed code to link to VLC app
 		 */
 		embedPlayerHTML: function () {
 			var fileUrl = this.getSrc( this.seekTimeSec ),
@@ -39,7 +38,7 @@
 			$link = $( '<span></span>' ).append( $( '<a></a>' ).attr( 'href', appStoreUrl ).append(
 				mw.message( 'mwe-embedplayer-vlcapp-vlcapplinktext' ).escaped()
 			) );
-			$( this ).html( $( '<div class="vlcapp-player"></div>' )
+			$( this ).html( $( '<div>' ).addClass( 'vlcapp-player' )
 				.width( this.getWidth() )
 				.height( this.getHeight() )
 				.append(

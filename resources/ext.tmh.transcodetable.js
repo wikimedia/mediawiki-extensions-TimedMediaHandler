@@ -59,5 +59,6 @@ $( function () {
 		} );
 	}
 
+	// eslint-disable-next-line jquery/no-global-selector
 	$( '.mw-filepage-transcodereset a' ).on( 'click', errorPopup );
 } );

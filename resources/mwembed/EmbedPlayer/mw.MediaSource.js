@@ -134,7 +134,7 @@
 			}
 
 			sourceAttr = config[ 'EmbedPlayer.SourceAttributes' ];
-			$.each( sourceAttr, function ( inx, attr ) {
+			sourceAttr.forEach( function ( attr ) {
 				if ( $( element ).attr( attr ) ) {
 				// strip data- from the attribute name
 					attrName = ( attr.indexOf( 'data-' ) === 0 ) ? attr.substr( 5 ) : attr;
@@ -229,7 +229,7 @@
 		/**
 		 * Sets the duration and sets the end time if unset
 		 *
-		 * @param {Float}
+		 * @param {number}
 		 *      duration: in seconds
 		 */
 		setDuration: function ( duration ) {
@@ -253,8 +253,7 @@
 		},
 		/**
 		 * Update the local src
-		 * @param {String}
-		 * 		src The URL to the media asset
+		 * @param {String} src The URL to the media asset
 		 */
 		setSrc: function ( src ) {
 			this.src = src;

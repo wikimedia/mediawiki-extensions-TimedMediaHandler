@@ -23,7 +23,7 @@
 					$this.data( 'spinner', null );
 				}
 				if ( opts !== false ) {
-					$loadingSpinner = $( '<img />' ).attr( 'src', config[ 'LoadingSpinner.ImageUrl' ] ).load( function () {
+					$loadingSpinner = $( '<img>' ).attr( 'src', config[ 'LoadingSpinner.ImageUrl' ] ).on( 'load', function () {
 						// Set spinner position based on image dimension
 						$( this ).css( {
 							'margin-top': '-' + ( this.height / 2 ) + 'px',
@@ -49,7 +49,6 @@
 				thisSpinner.stop();
 			}
 			if ( opts !== false ) {
-				// eslint-disable-next-line no-new
 				new Spinner( $.extend( { color: $this.css( 'color' ) }, opts ) ).spin( this );
 			}
 		} );
@@ -82,7 +81,7 @@
 				.loadingSpinner(
 					spinOps
 				);
-		$( this ).append( $spinner	);
+		$( this ).append( $spinner );
 		return $spinner;
 	};
 

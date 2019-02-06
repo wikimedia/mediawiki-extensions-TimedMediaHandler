@@ -79,7 +79,7 @@
 
 		$( this ).trigger( triggerName, triggerArgs );
 
-		$.each( eventArray[ triggerName ], function ( idx, queuedCallback ) {
+		eventArray[ triggerName ].forEach( function ( queuedCallback ) {
 			queuedCallback.callback.apply( queuedCallback.targetObject, triggerArgs );
 		} );
 	};

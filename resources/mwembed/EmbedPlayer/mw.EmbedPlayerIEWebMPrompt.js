@@ -22,8 +22,7 @@
 		/*
 		 * Embed this "fake" player
 		 *
-		 * @return {String}
-		 * 	embed code to link to WebM plugin download
+		 * @return {string} embed code to link to WebM plugin download
 		 */
 		embedPlayerHTML: function () {
 			var pluginUrl = 'https://tools.google.com/dlpage/webmmf/',
@@ -34,7 +33,7 @@
 				.attr( 'href', pluginUrl )
 				.attr( 'target', '_blank' )
 				.text( mw.msg( 'mwe-embedplayer-iewebmprompt-linktext' ) );
-			$( this ).append( $( '<div class="iewebm-prompt"></div>' )
+			$( this ).append( $( '<div>' ).addClass( 'iewebm-prompt' )
 				.width( this.getWidth() )
 				.height( this.getHeight() )
 				.append( $( '<div>' ).text( mw.msg( 'mwe-embedplayer-iewebmprompt-intro' ) ) )

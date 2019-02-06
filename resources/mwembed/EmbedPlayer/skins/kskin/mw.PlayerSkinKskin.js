@@ -196,6 +196,8 @@
 							// Hide the others
 							self.$playerTarget.find( '.menu-screen' ).hide();
 							// Show credits
+							// FIXME: Use CSS transition
+							// eslint-disable-next-line jquery/no-fade
 							self.$playerTarget.find( '.menu-credits' ).fadeIn( 'fast' );
 						}
 					}
@@ -229,6 +231,8 @@
 				$kmenu = embedPlayer.getInterface().find( '.k-menu' );
 
 			mw.log( 'PlayerSkinKskin:: close menu overlay' );
+			// FIXME: Use CSS transition
+			// eslint-disable-next-line jquery/no-fade
 			$kmenu.fadeOut( 'fast', function () {
 				$optionsMenu.find( 'span' )
 					.text( mw.msg( 'mwe-embedplayer-menu_btn' ) );
@@ -252,10 +256,14 @@
 			var $optionsMenu = this.$playerTarget.find( '.k-options' ),
 				$kmenu = this.$playerTarget.find( '.k-menu' );
 
+			// FIXME: Use CSS transition
+			// eslint-disable-next-line jquery/no-fade
 			$kmenu.fadeIn( 'fast', function () {
 				$optionsMenu.find( 'span' )
 					.text( mw.msg( 'mwe-embedplayer-close_btn' ) );
 			} );
+			// FIXME: Use CSS transition
+			// eslint-disable-next-line jquery/no-fade
 			this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 
 			$( this.embedPlayer ).trigger( 'displayMenuOverlay' );
@@ -277,7 +285,9 @@
 				$playerTarget = embedPlayer.$interface;
 
 			// Check if k-menu already exists:
-			if ( $playerTarget.find( '.k-menu' ).length !== 0 ) { return false; }
+			if ( $playerTarget.find( '.k-menu' ).length !== 0 ) {
+				return false;
+			}
 
 			// Add options menu to top of player target children:
 			$playerTarget.append(
@@ -297,12 +307,14 @@
 						$targetItem = $playerTarget.find( '.menu-' + mk );
 
 					// call the function showMenuItem
-					self.showMenuItem(	mk );
+					self.showMenuItem( mk );
 
 					// Hide the others
 					$playerTarget.find( '.menu-screen' ).hide();
 
 					// Show the target menu item:
+					// FIXME: Use CSS transition
+					// eslint-disable-next-line jquery/no-fade
 					$targetItem.fadeIn( 'fast' );
 
 					// Don't follow the # link

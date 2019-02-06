@@ -20,16 +20,15 @@
 		instanceOf: 'Generic',
 
 		/*
-	* Generic embed html
-	*
-	* @return {String}
-	* 	embed code for generic ogg plugin
-	*/
+		 * Generic embed html
+		 *
+		 * @return {string} Embed code for generic ogg plugin
+		 */
 		embedPlayerHTML: function () {
 			$( this ).html(
 				'<object type="application/ogg" ' +
-			'width="' + this.getWidth() + '" height="' + this.getHeight() + '" ' +
-			'data="' + this.getSrc( this.seekTimeSec ) + '"></object>'
+				'width="' + this.getWidth() + '" height="' + this.getHeight() + '" ' +
+				'data="' + this.getSrc( this.seekTimeSec ) + '"></object>'
 			);
 		}
 	};

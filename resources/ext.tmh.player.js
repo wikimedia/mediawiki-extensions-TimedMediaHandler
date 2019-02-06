@@ -95,8 +95,8 @@
 					}
 				} );
 
-				$.each( nonNativeSources, function () {
-					$( this ).detach().appendTo( $videoplayer );
+				nonNativeSources.forEach( function ( source ) {
+					$( source ).detach().appendTo( $videoplayer );
 				} );
 			} else {
 				// Video: extract the relevant resolutions from source elements
@@ -174,7 +174,8 @@
 	} );
 	$( function () {
 		// The iframe mode
-		$( '#videoContainer video,#videoContainer audio' ).loadVideoPlayer();
+		// eslint-disable-next-line jquery/no-global-selector
+		$( '#videoContainer video, #videoContainer audio' ).loadVideoPlayer();
 	} );
 
 }() );

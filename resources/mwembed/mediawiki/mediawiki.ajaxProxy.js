@@ -7,7 +7,7 @@
 			var defaults;
 
 			// Check if we have success callback
-			if ( !$.isFunction( options.success ) ) {
+			if ( typeof options.success !== 'function' ) {
 				mw.log( 'mw.ajaxProxy :: Error: missing success callback.' );
 				return;
 			}

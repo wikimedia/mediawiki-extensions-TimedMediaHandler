@@ -2,10 +2,10 @@
  * The Core timed Text interface object
  *
  * handles class mappings for:
- * 	menu display ( jquery.ui themeable )
- * 	timed text loading request
+ *  menu display ( jquery.ui themeable )
+ *  timed text loading request
  *  timed text edit requests
- * 	timed text search & seek interface ( version 2 )
+ *  timed text search & seek interface ( version 2 )
  *
  * @author: Michael Dale
  *
@@ -409,8 +409,8 @@
 
 		/**
 		* Setups available text sources
-		*   loads text sources
-		* 	auto-selects a source based on the user language
+		*  loads text sources
+		*  auto-selects a source based on the user language
 		* @param {Function} callback Function to be called once text sources are setup.
 		*/
 		setupTextSources: function ( callback ) {
@@ -528,10 +528,9 @@
 				callback( this.textSources );
 				return;
 			}
-			this.textSources = [];
 			// load inline text sources:
-			$.each( this.embedPlayer.getTextTracks(), function ( inx, textSource ) {
-				self.textSources.push( new mw.TextSource( textSource ) );
+			this.textSources = this.embedPlayer.getTextTracks().map( function ( textSource ) {
+				return new mw.TextSource( textSource );
 			} );
 			// return the callback with sources
 			callback( self.textSources );
@@ -541,7 +540,7 @@
 		* Get the layout mode
 		*
 		* Takes into consideration:
-		* 	Playback method overlays support ( have to put subtitles below video )
+		*  Playback method overlays support ( have to put subtitles below video )
 		*
 		* @return {string}
 		*/
@@ -570,29 +569,25 @@
 			}
 			this.enabledSources = [];
 
-			setDefault = false;
 			// Check if any source is marked default:
-			$.each( this.textSources, function ( inx, source ) {
+			setDefault = this.textSources.some( function ( inx, source ) {
 				if ( source.default ) {
 					self.enableSource( source );
-					setDefault = true;
-					return false;
+					return true;
 				}
 			} );
 			if ( setDefault ) {
 				return true;
 			}
 
-			setLocalPref = false;
 			// Check if any source matches our "local" pref
-			$.each( this.textSources, function ( inx, source ) {
+			setLocalPref = this.textSources.some( function ( source ) {
 				if (
 					self.config.userLanguage === source.srclang.toLowerCase() &&
 					self.config.userKind === source.kind
 				) {
 					self.enableSource( source );
-					setLocalPref = true;
-					return false;
+					return true;
 				}
 			} );
 			if ( setLocalPref ) {
@@ -645,12 +640,9 @@
 				self.currentLangDir = null;
 				return;
 			}
-			sourceEnabled = false;
 			// Make sure the source is not already enabled
-			$.each( this.enabledSources, function ( inx, enabledSource ) {
-				if ( source.id === enabledSource.id ) {
-					sourceEnabled = true;
-				}
+			sourceEnabled = this.enabledSources.some( function ( enabledSource ) {
+				return source.id === enabledSource.id;
 			} );
 			if ( !sourceEnabled ) {
 				self.enabledSources.push( source );
@@ -707,7 +699,7 @@
 		loadEnabledSources: function () {
 			var self = this;
 			mw.log( 'TimedText:: loadEnabledSources ' + this.enabledSources.length );
-			$.each( this.enabledSources, function ( inx, enabledSource ) {
+			this.enabledSources.forEach( function ( enabledSource ) {
 				// check if the source requires ovelray ( ontop ) layout mode:
 				if ( enabledSource.isOverlay() && self.config.layout === 'ontop' ) {
 					self.setLayoutMode( 'ontop' );
@@ -724,24 +716,13 @@
 		* @return {boolean}
 		*/
 		isSourceEnabled: function ( source ) {
-			var isEnabled = false;
 			// no source is "enabled" if subtitles are "off"
 			if ( this.getLayoutMode() === 'off' ) {
 				return false;
 			}
-			$.each( this.enabledSources, function ( inx, enabledSource ) {
-				if ( source.id ) {
-					if ( source.id === enabledSource.id ) {
-						isEnabled = true;
-					}
-				}
-				if ( source.src ) {
-					if ( source.src === enabledSource.src ) {
-						isEnabled = true;
-					}
-				}
+			return this.enabledSources.some( function ( enabledSource ) {
+				return ( source.id && source.id === enabledSource.id ) || ( source.src && source.src === enabledSource.src );
 			} );
-			return isEnabled;
 		},
 
 		/**
@@ -806,16 +787,16 @@
 		*
 		* calls a few sub-functions:
 		* Basic menu layout:
-		*		Chose Language
-		*			All Subtiles here ( if we have categories list them )
-		*		Layout
-		*			Below video
-		*			Ontop video ( only available to supported plugins )
+		*   Chose Language
+		*     All Subtiles here ( if we have categories list them )
+		*   Layout
+		*     Below video
+		*     Ontop video ( only available to supported plugins )
 		* TODO features:
-		*		[ Search Text ]
-		*			[ This video ]
-		*			[ All videos ]
-		*		[ Chapters ] seek to chapter
+		*   [ Search Text ]
+		*     [ This video ]
+		*     [ All videos ]
+		*   [ Chapters ] seek to chapter
 		* @return {jQuery}
 		*/
 		getMainMenu: function () {
@@ -1012,8 +993,8 @@
 			this.buildMenu();
 			this.resizeInterface();
 
-			// add an empty catption:
-			this.displayTextTarget( $( '<span> ' ).text( '' ) );
+			// add an empty caption:
+			this.displayTextTarget( $( '<span>' ).text( '' ) );
 
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
@@ -1111,6 +1092,7 @@
 			activeCaptions = source.getCaptionForTime( time );
 			addedCaption = false;
 			// Show captions that are on:
+			// eslint-disable-next-line jquery/no-each-util
 			$.each( activeCaptions, function ( capId, caption ) {
 				var $cap = self.embedPlayer.getInterface().find( '.track[data-capId="' + capId + '"]' );
 				if ( caption.content !== $cap.html() ) {
@@ -1128,7 +1110,11 @@
 					if ( addedCaption ) {
 						$( caption ).remove();
 					} else {
-						$( caption ).fadeOut( config[ 'EmbedPlayer.MonitorRate' ], function () { $( this ).remove(); } );
+						// FIXME: Use CSS transition
+						// eslint-disable-next-line jquery/no-fade
+						$( caption ).fadeOut( config[ 'EmbedPlayer.MonitorRate' ], function () {
+							$( this ).remove();
+						} );
 					}
 				}
 			} );
@@ -1194,6 +1180,8 @@
 					source.getStyleCssById( caption.styleId )
 				);
 			}
+			// FIXME: Use CSS transition
+			// eslint-disable-next-line jquery/no-fade
 			$textTarget.fadeIn( 'fast' );
 		},
 		displayTextTarget: function ( $textTarget ) {

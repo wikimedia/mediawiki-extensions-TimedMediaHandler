@@ -99,8 +99,7 @@
 				baseMimeType = mimeType.split( ';' )[ 0 ];
 
 			if ( this.defaultPlayers[ baseMimeType ] ) {
-				$.each( this.defaultPlayers[ baseMimeType ], function ( d ) {
-					var library = self.defaultPlayers[ baseMimeType ][ d ];
+				this.defaultPlayers[ baseMimeType ].forEach( function ( library ) {
 					for ( i = 0; i < self.players.length; i++ ) {
 						if ( self.players[ i ].library === library && self.players[ i ].supportsMIMEType( mimeType ) ) {
 							mimePlayers.push( self.players[ i ] );
@@ -188,6 +187,7 @@
 			}
 			// Update All the player instances on the page
 			if ( selectedPlayer ) {
+				// eslint-disable-next-line jquery/no-global-selector
 				$( '.mwEmbedPlayer' ).each( function ( inx, playerTarget ) {
 					var embedPlayer = $( playerTarget ).get( 0 );
 					if ( embedPlayer.mediaElement.selectedSource &&

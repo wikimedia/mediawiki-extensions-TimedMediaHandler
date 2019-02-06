@@ -208,8 +208,12 @@
 			}
 
 			// Set default width height to 100% of parent container
-			if ( !cssSet.width ) { cssSet.width = '100%'; }
-			if ( !cssSet.height ) { cssSet.height = '100%'; }
+			if ( !cssSet.width ) {
+				cssSet.width = '100%';
+			}
+			if ( !cssSet.height ) {
+				cssSet.height = '100%';
+			}
 
 			// Also need to set the loop param directly for iPad / iPod
 			if ( this.loop ) {
@@ -218,7 +222,7 @@
 
 			tagName = this.isAudio() ? 'audio' : 'video';
 
-			return	$( '<' + tagName + '>' )
+			return $( '<' + tagName + '>' )
 				// Add the special nativeEmbedPlayer to avoid any rewrites of of this video tag.
 				.addClass( 'nativeEmbedPlayerPid' )
 				.attr( playerAttributes )
@@ -293,7 +297,7 @@
 				mw.log( ' Error: applyMediaElementBindings without player elemnet' );
 				return;
 			}
-			$.each( self.nativeEvents, function ( inx, eventName ) {
+			self.nativeEvents.forEach( function ( eventName ) {
 				$( vid ).off( eventName + '.embedPlayerNative' ).on( eventName + '.embedPlayerNative', function () {
 					var argArray;
 					if ( self._propagateEvents ) {
@@ -378,8 +382,7 @@
 
 		/**
 		* Do a native seek by updating the currentTime
-		* @param {float} percent
-		* 		Percent to seek to of full time
+		* @param {number} percent Percent to seek to of full time
 		*/
 		doNativeSeek: function ( percent, callback ) {
 			// If player already seeking, exit
@@ -421,8 +424,7 @@
 		/**
 		 * Seek in a existing stream, we first play then seek to work around issues with iPad seeking.
 		 *
-		 * @param {Float} percent
-		 * 		percent of the stream to seek to between 0 and 1
+		 * @param {number} percent percent of the stream to seek to between 0 and 1
 		 */
 		doPlayThenSeek: function ( percent ) {
 			var self = this,
@@ -458,10 +460,8 @@
 		/**
 		 * Set the current time with a callback
 		 *
-		 * @param {Float} seekTime
-		 * 		Seconds to set the time to
-		 * @param {Function} callback
-		 * 		Function called once time has been set.
+		 * @param {number} seekTime Seconds to set the time to
+		 * @param {Function} callback Function called once time has been set.
 		 */
 		setCurrentTime: function ( seekTime, callback, callbackCount ) {
 			var vid, seekBind,
@@ -478,7 +478,7 @@
 			vid = this.getPlayerElement();
 			// add a callback handler to null out callback:
 			function callbackHandler() {
-				if ( $.isFunction( callback ) ) {
+				if ( typeof callback === 'function' ) {
 					callback();
 					callback = null;
 				}
@@ -543,7 +543,7 @@
 					return;
 				}
 
-				if ( $.isFunction( callback ) ) {
+				if ( typeof callback === 'function' ) {
 				// if seek is within 5 seconds of the target assume success. ( key frame intervals can mess with seek accuracy )
 				// this only runs where the seek callback failed ( i.e broken html5 seek ? )
 					if ( Math.abs( vid.currentTime - seekTime ) < 5 ) {
@@ -592,7 +592,9 @@
 				mw.log( 'Error:: waitForPositiveCurrentTime failed to reach possitve time' );
 				callback();
 			} else {
-				setTimeout( function () { self.waitForPositiveCurrentTime( callback ); }, 50 );
+				setTimeout( function () {
+					self.waitForPositiveCurrentTime( callback );
+				}, 50 );
 			}
 		},
 		/**
@@ -653,11 +655,11 @@
 			this.isPauseLoading = false;
 			// Make sure the switch source is different:
 			if ( !src || src === vid.src ) {
-				if ( $.isFunction( switchCallback ) ) {
+				if ( typeof switchCallback === 'function' ) {
 					switchCallback( vid );
 				}
 				// Delay done callback to allow any non-blocking switch callback code to fully execute
-				if ( $.isFunction( doneCallback ) ) {
+				if ( typeof doneCallback === 'function' ) {
 					doneCallback();
 				}
 				return;
@@ -706,7 +708,7 @@
 						}
 						// keep going towards playback! if  switchCallback has not been called yet
 						// we need the "playing" event to trigger the switch callback
-						if ( $.isFunction( switchCallback ) ) {
+						if ( typeof switchCallback === 'function' ) {
 							vid.play();
 						}
 					} );
@@ -719,7 +721,7 @@
 						// Restore
 						vid.controls = orginalControlsState;
 						// check if we have a switch callback and issue it now:
-						if ( $.isFunction( switchCallback ) ) {
+						if ( typeof switchCallback === 'function' ) {
 							switchCallback( vid );
 							switchCallback = null;
 						}
@@ -733,7 +735,7 @@
 					} );
 
 					// Add the end binding if we have a post event:
-					if ( $.isFunction( doneCallback ) ) {
+					if ( typeof doneCallback === 'function' ) {
 						$( vid ).on( 'ended' + switchBindPostfix, function () {
 							// remove end binding:
 							$( vid ).off( switchBindPostfix );
@@ -743,7 +745,7 @@
 							// Support loop for older iOS
 							// Temporarly disabled pending more testing or refactor into a better place.
 							// if ( self.loop ) {
-							//	vid.play();
+							//   vid.play();
 							// }
 							return false;
 						} );
@@ -756,7 +758,7 @@
 					// give iOS 5 seconds to ~start~ loading media
 					setTimeout( function () {
 					// Check that the player got out of readyState 0
-						if ( vid.readyState === 0 && $.isFunction( switchCallback ) ) {
+						if ( vid.readyState === 0 && typeof switchCallback === 'function' ) {
 							mw.log( 'EmbedPlayerNative:: possible iOS play without gesture failed, issue callback' );
 							// hand off to the swtich callback method.
 							handleSwitchCallback();
@@ -854,13 +856,15 @@
 		toggleMute: function () {
 			this.parent_toggleMute();
 			this.getPlayerElement();
-			if ( this.playerElement ) { this.playerElement.muted = this.muted; }
+			if ( this.playerElement ) {
+				this.playerElement.muted = this.muted;
+			}
 		},
 
 		/**
 		 * Update Volume
 		 *
-		 * @param {Float} percent Value between 0 and 1 to set audio volume
+		 * @param {number} percent Value between 0 and 1 to set audio volume
 		 */
 		setPlayerElementVolume: function ( percent ) {
 			if ( this.getPlayerElement() ) {
@@ -875,8 +879,7 @@
 		/**
 		 * get Volume
 		 *
-		 * @return {Float}
-		 * 	Audio volume between 0 and 1.
+		 * @return {number} Audio volume between 0 and 1.
 		 */
 		getPlayerElementVolume: function () {
 			if ( this.getPlayerElement() ) {

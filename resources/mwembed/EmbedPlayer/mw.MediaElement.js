@@ -68,7 +68,7 @@
 		 *      endNpt End time in npt format
 		 */
 		updateSourceTimes: function ( startNpt, endNpt ) {
-			$.each( this.sources, function ( inx, mediaSource ) {
+			this.sources.forEach( function ( mediaSource ) {
 				mediaSource.updateSrcTime( startNpt, endNpt );
 			} );
 		},
@@ -78,7 +78,7 @@
 		 */
 		getTextTracks: function () {
 			var textTracks = [];
-			$.each( this.sources, function ( inx, source ) {
+			this.sources.forEach( function ( source ) {
 				if ( source.nodeName === 'track' || ( source.mimeType && source.mimeType.indexOf( 'text/' ) !== -1 ) ) {
 					textTracks.push( source );
 				}
@@ -166,8 +166,11 @@
 		 */
 		autoSelectSource: function () {
 			var vndSources, desktopVdn, mobileVdn, bandwidthDelta, bandwidthTarget,
-				player, nativePlayableSources, namedSourceSet, useBogoSlow,
+				player, namedSourceSet, useBogoSlow,
 				codecPref, i, codec, minSizeDelta, isBogoSlow, displayWidth, sizeDelta,
+				// FIXME: nativePlayableSources is unused
+				// eslint-disable-next-line no-unused-vars
+				nativePlayableSources,
 				self = this,
 				// Select the default source
 				playableSources = this.getPlayableSources();
@@ -191,10 +194,10 @@
 			}
 
 			// Set via marked default:
-			$.each( playableSources, function ( inx, source ) {
+			playableSources.forEach( function ( source ) {
 				if ( source.markedDefault ) {
 					mw.log( 'MediaElement::autoSelectSource: Set via marked default: ' + source.markedDefault );
-					return setSelectedSource( source );
+					setSelectedSource( source );
 				}
 			} );
 
@@ -202,7 +205,7 @@
 			vndSources = this.getPlayableSources( 'application/vnd.apple.mpegurl' );
 			if ( vndSources.length && mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'application/vnd.apple.mpegurl' ).length ) {
 				// Check for device flags:
-				$.each( vndSources, function ( inx, source ) {
+				vndSources.forEach( function ( source ) {
 				// Kaltura tags vdn sources with iphonenew
 					if ( source.getFlavorId() && source.getFlavorId().toLowerCase() === 'iphonenew' ) {
 						mobileVdn = source;
@@ -227,13 +230,13 @@
 			if ( $.cookie( 'EmbedPlayer.UserBandwidth' ) ) {
 				bandwidthDelta = 999999999;
 				bandwidthTarget = $.cookie( 'EmbedPlayer.UserBandwidth' );
-				$.each( playableSources, function ( inx, source ) {
+				playableSources.forEach( function ( source ) {
 					if ( source.bandwidth ) {
 					// Check if a native source ( takes president over bandwidth selection )
 						player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.mimeType );
-						if ( !player || player.library !== 'Native'	) {
-						// continue
-							return true;
+						if ( !player || player.library !== 'Native' ) {
+							// continue
+							return;
 						}
 
 						if ( Math.abs( source.bandwidth - bandwidthTarget ) < bandwidthDelta ) {
@@ -251,24 +254,21 @@
 
 			// If we have at least one native source, throw out non-native sources
 			// for size based source selection:
-			nativePlayableSources = [];
-			$.each( playableSources, function ( inx, source ) {
+			nativePlayableSources = playableSources.filter( function ( source ) {
 				var mimeType = source.mimeType,
 					player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
-				if ( player && player.library === 'Native'	) {
-					nativePlayableSources.push( source );
-				}
+				return player && player.library === 'Native';
 			} );
 
 			// Prefer native playback ( and prefer WebM over ogg and h.264 )
 			namedSourceSet = {};
 			useBogoSlow = false; // use benchmark only for ogv.js
-			$.each( playableSources, function ( inx, source ) {
+			playableSources.forEach( function ( source ) {
 				var shortName,
 					mimeType = source.mimeType,
 					player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
 				if ( player && ( player.library === 'Native' || player.library === 'OgvJs' ) ) {
-					switch ( player.id	) {
+					switch ( player.id ) {
 						case 'mp3Native':
 							shortName = 'mp3';
 							break;
@@ -320,19 +320,21 @@
 					if ( this.parentEmbedId ) {
 						displayWidth = $( '#' + this.parentEmbedId ).width();
 						// eslint-disable-next-line no-loop-func
-						$.each( namedSourceSet[ codec ], function ( inx, source ) {
-							if ( ( isBogoSlow && source.height > 240 ) ||
-							( useBogoSlow && source.height > 360 ) ) {
-							// On iOS or slow Windows devices, large videos decoded in JavaScript are a bad idea!
-							// continue
-								return true;
+						namedSourceSet[ codec ].forEach( function ( source ) {
+							if (
+								( isBogoSlow && source.height > 240 ) ||
+								( useBogoSlow && source.height > 360 )
+							) {
+								// On iOS or slow Windows devices, large videos decoded in JavaScript are a bad idea!
+								// continue
+								return;
 							}
 							if ( source.width && displayWidth ) {
 								if ( source.width > displayWidth ) {
-								// Bigger than the space to display?
-								// Skip it unless it's the only one that fits.
-								// continue
-									return true;
+									// Bigger than the space to display?
+									// Skip it unless it's the only one that fits.
+									// continue
+									return;
 								}
 								sizeDelta = Math.abs( source.width - displayWidth );
 								mw.log( 'MediaElement::autoSelectSource: size delta : ' + sizeDelta + ' for s:' + source.width );
@@ -341,7 +343,7 @@
 									setSelectedSource( source );
 								}
 							}
-						// Fall through to next one...
+							// Fall through to next one...
 						} );
 					}
 					// If we found a source via display size return:
@@ -354,19 +356,20 @@
 			}
 
 			// Set h264 via native or flash fallback
-			$.each( playableSources, function ( inx, source ) {
+			playableSources.forEach( function ( source ) {
 				var mimeType = source.mimeType,
 					player = mw.EmbedTypes.getMediaPlayers().defaultPlayer( mimeType );
-				if ( mimeType === 'video/h264' &&
-				player &&
-				(
-					player.library === 'Native' ||
-					player.library === 'Kplayer'
-				)
+				if (
+					mimeType === 'video/h264' &&
+					player &&
+					(
+						player.library === 'Native' ||
+						player.library === 'Kplayer'
+					)
 				) {
 					if ( source ) {
 						mw.log( 'MediaElement::autoSelectSource: Set h264 via native or flash fallback:' + source.getTitle() );
-						return setSelectedSource( source );
+						setSelectedSource( source );
 					}
 				}
 			} );
@@ -402,9 +405,8 @@
 		/**
 		 * Checks whether there is a stream of a specified MIME type.
 		 *
-		 * @param {String}
-		 *      mimeType MIME type to check.
-		 * @return {Boolean} true if sources include MIME false if not.
+		 * @param {string} mimeType MIME type to check.
+		 * @return {boolean} true if sources include MIME false if not.
 		 */
 		hasStreamOfMIMEType: function ( mimeType ) {
 			var i;

@@ -23,7 +23,7 @@
 		id: null,
 
 		// class: Auto-populated if unset
-		'class': null,
+		class: null,
 
 		// Width: alternate to "style" to set player width
 		width: null,
@@ -295,8 +295,12 @@
 					this[ attr ] = playerAttributes[ attr ];
 				}
 				// string -> boolean
-				if ( this[ attr ] === 'false' ) { this[ attr ] = false; }
-				if ( this[ attr ] === 'true' ) { this[ attr ] = true; }
+				if ( this[ attr ] === 'false' ) {
+					this[ attr ] = false;
+				}
+				if ( this[ attr ] === 'true' ) {
+					this[ attr ] = true;
+				}
 			}
 
 			// Hide "controls" if using native player controls:
@@ -664,7 +668,7 @@
 			// Check for source replace configuration:
 			if ( config[ 'EmbedPlayer.ReplaceSources' ] ) {
 				this.emptySources();
-				$.each( config[ 'EmbedPlayer.ReplaceSources' ], function ( inx, source ) {
+				config[ 'EmbedPlayer.ReplaceSources' ].forEach( function ( source ) {
 					self.mediaElement.tryAddSource( source );
 				} );
 			}
@@ -740,8 +744,7 @@
 		 * Update a loaded player interface by setting local methods to the
 		 * updated player prototype methods
 		 *
-		 * @param {function}
-		 * 		callback function called once player has been loaded
+		 * @param {function} callback function called once player has been loaded
 		 */
 		updateLoadedPlayerInterface: function ( callback ) {
 			var playerInterface, method,
@@ -770,7 +773,7 @@
 			// show player inline
 			self.showPlayer();
 			// Run the callback if provided
-			if ( callback && $.isFunction( callback ) ) {
+			if ( typeof callback === 'function' ) {
 				callback();
 			}
 		},
@@ -874,8 +877,7 @@
 		 * Seek function ( should be implemented by embedPlayer interface
 		 * playerNative, playerKplayer etc. ) embedPlayer seek only handles URL
 		 * time seeks
-		 * @param {Float}
-		 * 			percent of the video total length to seek to
+		 * @param {number} percent of the video total length to seek to
 		 */
 		seek: function ( percent ) {
 			var self = this;
@@ -920,7 +922,7 @@
 		 */
 		setCurrentTime: function ( time, callback ) {
 			mw.log( 'Error: EmbedPlayer, setCurrentTime not overriden' );
-			if ( $.isFunction( callback ) ) {
+			if ( typeof callback === 'function' ) {
 				callback();
 			}
 		},
@@ -1366,8 +1368,7 @@
 		/**
 		 * Update the video time request via a time request string
 		 *
-		 * @param {String}
-		 *      timeRequest video time to be updated
+		 * @param {string} timeRequest video time to be updated
 		 */
 		updateVideoTimeReq: function ( timeRequest ) {
 			var timeParts = timeRequest.split( '/' );
@@ -1378,10 +1379,8 @@
 		/**
 		 * Update Video time from provided startNpt and endNpt values
 		 *
-		 * @param {String}
-		 *      startNpt the new start time in npt format ( hh:mm:ss.ms )
-		 * @param {String}
-		 * 		endNpt the new end time in npt format ( hh:mm:ss.ms )
+		 * @param {string} startNpt the new start time in npt format ( hh:mm:ss.ms )
+		 * @param {string} endNpt the new end time in npt format ( hh:mm:ss.ms )
 		 */
 		updateVideoTime: function ( startNpt, endNpt ) {
 			// update media
@@ -1447,8 +1446,7 @@
 
 		/**
 		 * Update the poster source
-		 * @param {String}
-		 * 		posterSrc Poster src url
+		 * @param {string} posterSrc Poster src url
 		 */
 		updatePosterSrc: function ( posterSrc ) {
 			if ( !posterSrc ) {
@@ -1494,7 +1492,7 @@
 			// Clear out any player error ( both via attr and object property ):
 			this.setError( null );
 
-			//	Clear out any player display blocks
+			// Clear out any player display blocks
 			this[ 'data-blockPlayerDisplay' ] = null;
 			$this.attr( 'data-blockPlayerDisplay', '' );
 
@@ -2415,7 +2413,9 @@
 			if ( !this.isStopped() ) {
 				if ( !this.monitorInterval ) {
 					this.monitorInterval = setInterval( function () {
-						if ( self.monitor ) { self.monitor(); }
+						if ( self.monitor ) {
+							self.monitor();
+						}
 					}, this.monitorRate );
 				}
 			} else {
@@ -2542,7 +2542,11 @@
 				} else if ( this.paused ) {
 					this.controlBuilder.setStatus( mw.msg( 'mwe-embedplayer-paused' ) );
 				} else if ( this.isPlaying() ) {
-					if ( this.currentTime && !this.duration ) { this.controlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + ' /' ); } else { this.controlBuilder.setStatus( ' - - - ' ); }
+					if ( this.currentTime && !this.duration ) {
+						this.controlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + ' /' );
+					} else {
+						this.controlBuilder.setStatus( ' - - - ' );
+					}
 				} else {
 					this.controlBuilder.setStatus( this.getTimeRange() );
 				}
@@ -2681,7 +2685,7 @@
 			// TODO mediaElement should probably accept JSON
 			var myMediaElement, source,
 				$media = $( '<video>' );
-			$.each( videoFiles, function ( inx, source ) {
+			videoFiles.forEach( function ( source ) {
 				$media.append( $( '<source>' ).attr( {
 					src: source.src,
 					type: source.type

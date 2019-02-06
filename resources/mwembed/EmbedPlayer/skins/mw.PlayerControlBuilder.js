@@ -333,8 +333,7 @@
 
 		/**
 		 * Get the intrinsic aspect ratio of media ( width / height )
-		 * @return {float}
-		 * 			size object with width and height
+		 * @return {number} size object with width and height
 		 */
 		getIntrinsicAspect: function () {
 			var ss, img,
@@ -585,7 +584,7 @@
 			updateTargetSize();
 
 			// Bind orientation change to resize player ( if fullscreen )
-			$( context ).bind( 'orientationchange', function () {
+			$( context ).on( 'orientationchange', function () {
 				if ( self.isInFullScreen() ) {
 					updateTargetSize();
 				}
@@ -669,6 +668,7 @@
 				embedPlayer = this.embedPlayer,
 				$interface = embedPlayer.getInterface();
 			// Remove any old mw-fullscreen-overlay
+			// eslint-disable-next-line jquery/no-global-selector
 			$( '.mw-fullscreen-overlay' ).remove();
 
 			self.preFullscreenPlayerSize = this.getPlayerSize();
@@ -676,9 +676,11 @@
 			// Add the css fixed fullscreen black overlay as a sibling to the video element
 			// iOS4 does not respect z-index
 			$interface.after(
+				// FIXME: Use CSS transition
+				// eslint-disable-next-line jquery/no-fade
 				$( '<div>' )
 					.addClass( 'mw-fullscreen-overlay' )
-				// Set some arbitrary high z-index
+					// Set some arbitrary high z-index
 					.css( 'z-index', config[ 'EmbedPlayer.FullScreenZIndex' ] )
 					.hide()
 					.fadeIn( 'slow' )
@@ -714,7 +716,7 @@
 			self.parentsAbsolute = [];
 
 			// Hide the body scroll bar
-			$( 'body' ).css( 'overflow', 'hidden' );
+			$( document.body ).css( 'overflow', 'hidden' );
 
 			// Overflow hidden in fullscreen:
 			$interface.css( 'overlow', 'hidden' );
@@ -731,7 +733,7 @@
 
 			// Bind escape to restore in page clip
 			$( window ).on( 'keyup', function ( event ) {
-			// Escape check
+				// Escape check
 				if ( event.keyCode === 27 ) {
 					self.restoreWindowPlayer();
 				}
@@ -801,12 +803,14 @@
 
 			function hideTip() {
 				config[ 'EmbedPlayer.FullscreenTip' ] = false;
+				// FIXME: Use CSS transition
+				// eslint-disable-next-line jquery/no-fade
 				$targetTip.fadeOut( 'fast' );
 			}
 
 			// Hide fullscreen tip if:
 			// We leave fullscreen,
-			$( this.embedPlayer ).bind( 'onCloseFullScreen', hideTip );
+			$( this.embedPlayer ).on( 'onCloseFullScreen', hideTip );
 			// After 5 seconds,
 			setTimeout( hideTip, 5000 );
 			// Or if we catch an f11 button press
@@ -866,7 +870,7 @@
 			this.restoreContextPlayer();
 
 			// Restore scrolling on iPad
-			$( document ).unbind( 'touchend.fullscreen' );
+			$( document ).off( 'touchend.fullscreen' );
 
 			// Trigger the onCloseFullscreen event:
 			$( embedPlayer ).trigger( 'onCloseFullScreen' );
@@ -892,6 +896,9 @@
 					embedPlayer.getHeight() + self.getHeight();
 
 			mw.log( 'restoreWindowPlayer:: h:' + interfaceHeight + ' w:' + embedPlayer.getWidth() );
+			// FIXME: The following line is a no-op as the argument to $.remove is a selector,
+			// and 'slow' will match nothing.
+			// eslint-disable-next-line jquery/no-global-selector
 			$( '.mw-fullscreen-overlay' ).remove( 'slow' );
 
 			mw.log( 'restore embedPlayer:: ' + embedPlayer.getWidth() + ' h: ' + embedPlayer.getHeight() );
@@ -915,7 +922,7 @@
 					.css( topPos );
 			}
 			// Restore the body scroll bar
-			$( 'body' ).css( 'overflow', 'auto' );
+			$( document.body ).css( 'overflow', 'auto' );
 
 			// If native player restore z-index:
 			if ( embedPlayer.isPersistentNativePlayer() ) {
@@ -956,7 +963,7 @@
 			self.onControlBar = false;
 
 			// Remove any old interface bindings
-			$( embedPlayer ).unbind( this.bindPostfix );
+			$( embedPlayer ).off( this.bindPostfix );
 
 			self.addRightClickBinding();
 
@@ -964,37 +971,37 @@
 			self.addPlayerClickBindings();
 
 			// Bind into play.ctrl namespace ( so we can unbind without affecting other play bindings )
-			$( embedPlayer ).bind( 'onplay' + this.bindPostfix, function () { // Only bind once played
+			$( embedPlayer ).on( 'onplay' + this.bindPostfix, function () { // Only bind once played
 			// add right click binding again ( in case the player got swaped )
 				embedPlayer.controlBuilder.addRightClickBinding();
 			} );
 
-			$( embedPlayer ).bind( 'timeupdate' + this.bindPostfix, function () {
+			$( embedPlayer ).on( 'timeupdate' + this.bindPostfix, function () {
 				embedPlayer.updatePlayheadStatus();
 			} );
 
 			// Update buffer information
-			$( embedPlayer ).bind( 'progress' + this.bindPostfix, function ( event, jEvent, id ) {
+			$( embedPlayer ).on( 'progress' + this.bindPostfix, function ( event, jEvent, id ) {
 			// regain scope
 				var embedPlayer = $( '#' + id )[ 0 ];
 				embedPlayer.updateBufferStatus();
 			} );
 
 			// Bind to EnableInterfaceComponents
-			$( embedPlayer ).bind( 'onEnableInterfaceComponents' + this.bindPostfix, function () {
+			$( embedPlayer ).on( 'onEnableInterfaceComponents' + this.bindPostfix, function () {
 				embedPlayer.controlBuilder.controlsDisabled = false;
 				embedPlayer.controlBuilder.addPlayerClickBindings();
 			} );
 
 			// Bind to DisableInterfaceComponents
-			$( embedPlayer ).bind( 'onDisableInterfaceComponents' + this.bindPostfix, function () {
+			$( embedPlayer ).on( 'onDisableInterfaceComponents' + this.bindPostfix, function () {
 				embedPlayer.controlBuilder.controlsDisabled = true;
 				embedPlayer.controlBuilder.removePlayerClickBindings();
 			} );
 
 			// TODO select a player on the page
 			function bindSpaceUp() {
-				$( window ).bind( 'keyup' + self.bindPostfix, function ( e ) {
+				$( window ).on( 'keyup' + self.bindPostfix, function ( e ) {
 					if ( e.keyCode === 32 ) {
 						if ( embedPlayer.paused ) {
 							embedPlayer.play();
@@ -1007,7 +1014,7 @@
 			}
 
 			function bindSpaceDown() {
-				$( window ).unbind( 'keyup' + self.bindPostfix );
+				$( window ).off( 'keyup' + self.bindPostfix );
 			}
 
 			// Bind to resize event
@@ -1030,11 +1037,11 @@
 			if ( !self.isOverlayControls() ) {
 				$interface
 					.show()
-					.hover( bindSpaceUp, bindSpaceDown );
+					.on( 'mouseenter', bindSpaceUp )
+					.on( 'mouseleave', bindSpaceDown );
 
 				// include touch start pause binding
-				$( embedPlayer ).bind( 'touchstart' + this.bindPostfix, function () {
-					// eslint-disable-next-line no-underscore-dangle
+				$( embedPlayer ).on( 'touchstart' + this.bindPostfix, function () {
 					embedPlayer._playContorls = true;
 					mw.log( 'PlayerControlBuilder:: touchstart: isPause:' + embedPlayer.paused );
 					if ( embedPlayer.paused ) {
@@ -1045,7 +1052,7 @@
 				} );
 			} else { // hide show controls:
 			// Bind a startTouch to show controls
-				$( embedPlayer ).bind( 'touchstart' + this.bindPostfix, function () {
+				$( embedPlayer ).on( 'touchstart' + this.bindPostfix, function () {
 					if ( embedPlayer.getInterface().find( '.control-bar' ).is( ':visible' ) ) {
 						if ( embedPlayer.paused ) {
 							embedPlayer.play();
@@ -1116,8 +1123,8 @@
 		},
 		removePlayerClickBindings: function () {
 			$( this.embedPlayer )
-				.unbind( 'click' + this.bindPostfix )
-				.unbind( 'dblclick' + this.bindPostfix );
+				.off( 'click' + this.bindPostfix )
+				.off( 'dblclick' + this.bindPostfix );
 		},
 		addPlayerClickBindings: function () {
 			var dblClickTime, lastClickTime, didDblClick,
@@ -1135,7 +1142,7 @@
 
 			// Setup "dobuleclick" fullscreen binding to embedPlayer ( if enabled )
 			if ( this.supportedComponents.fullscreen ) {
-				$( embedPlayer ).bind( 'dblclick' + self.bindPostfix, function () {
+				$( embedPlayer ).on( 'dblclick' + self.bindPostfix, function () {
 					embedPlayer.fullscreen();
 				} );
 			}
@@ -1192,8 +1199,10 @@
 			var embedPlayer = this.embedPlayer;
 			// check config:
 			if ( config[ 'EmbedPlayer.EnableRightClick' ] === false ) {
-				document.oncontextmenu = function () { return false; };
-				$( embedPlayer ).mousedown( function ( e ) {
+				document.oncontextmenu = function () {
+					return false;
+				};
+				$( embedPlayer ).on( 'mousedown', function ( e ) {
 					if ( e.button === 2 ) {
 						return false;
 					}
@@ -1239,7 +1248,9 @@
 		 */
 		showControlBar: function ( keepOnScreen ) {
 			var animateDuration = 'fast';
-			if ( !this.embedPlayer ) { return; }
+			if ( !this.embedPlayer ) {
+				return;
+			}
 
 			if ( this.embedPlayer.getPlayerElement && !this.embedPlayer.isPersistentNativePlayer() ) {
 				$( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
@@ -1345,15 +1356,15 @@
 			// Check for h264 and or flash/flv source and playback support and don't show warning
 			if (
 				( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'video/h264' ).length &&
-			this.embedPlayer.mediaElement.getSources( 'video/h264' ).length )			||
-			( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'video/x-flv' ).length &&
-			this.embedPlayer.mediaElement.getSources( 'video/x-flv' ).length )			||
-			( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'application/vnd.apple.mpegurl' ).length &&
-			this.embedPlayer.mediaElement.getSources( 'application/vnd.apple.mpegurl' ).length )			||
-			( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'audio/mpeg' ).length &&
-			this.embedPlayer.mediaElement.getSources( 'audio/mpeg' ).length )
+				this.embedPlayer.mediaElement.getSources( 'video/h264' ).length ) ||
+				( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'video/x-flv' ).length &&
+				this.embedPlayer.mediaElement.getSources( 'video/x-flv' ).length ) ||
+				( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'application/vnd.apple.mpegurl' ).length &&
+				this.embedPlayer.mediaElement.getSources( 'application/vnd.apple.mpegurl' ).length ) ||
+				( mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( 'audio/mpeg' ).length &&
+				this.embedPlayer.mediaElement.getSources( 'audio/mpeg' ).length )
 			) {
-			// No firefox link if a h.264 or flash/flv stream is present
+				// No firefox link if a h.264 or flash/flv stream is present
 				return false;
 			}
 
@@ -1429,8 +1440,9 @@
 			if ( !hideDisableUi ) {
 
 				$targetWarning.append(
-					$( '<input type="checkbox">' )
+					$( '<input>' )
 						.attr( {
+							type: 'checkbox',
 							id: 'ffwarn_' + embedPlayer.id,
 							name: 'ffwarn_' + embedPlayer.id
 						} )
@@ -1440,6 +1452,8 @@
 							$.cookie( preferenceId, 'hidewarning', { expires: 30 } );
 							// Set the current instance
 							config[ preferenceId ] = false;
+							// FIXME: Use CSS transition
+							// eslint-disable-next-line jquery/no-fade
 							$( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
 							// set the local preference to false
 							self.addWarningFlag = false;
@@ -1479,6 +1493,8 @@
 						if ( embedPlayer && embedPlayer.isPlaying && embedPlayer.isPlaying() && !embedPlayer.supports.overlays ) {
 							$targetvol.removeClass( 'vol_container_top' ).addClass( 'vol_container_below' );
 						}
+						// FIXME: Use CSS transition
+						// eslint-disable-next-line jquery/no-fade
 						$targetvol.fadeIn( 'fast' );
 						hoverOverDelay = true;
 					},
@@ -1486,6 +1502,8 @@
 						hoverOverDelay = false;
 						setTimeout( function () {
 							if ( !hoverOverDelay ) {
+								// FIXME: Use CSS transition
+								// eslint-disable-next-line jquery/no-fade
 								$targetvol.fadeOut( 'fast' );
 							}
 						}, 500 );
@@ -1536,7 +1554,7 @@
 			for ( menuItemKey in this.optionMenuItems ) {
 
 				// Make sure its supported in the current controlBuilder config:
-				if ( $.inArray( menuItemKey, config[ 'EmbedPlayer.EnabledOptionsMenuItems' ] ) === -1 ) {
+				if ( config[ 'EmbedPlayer.EnabledOptionsMenuItems' ].indexOf( menuItemKey ) === -1 ) {
 					continue;
 				}
 
@@ -1551,15 +1569,15 @@
 		 * Allow the controlBuilder to do interface actions onDone
 		 */
 		onClipDone: function () {
-		// Related videos could be shown here
+			// Related videos could be shown here
 		},
 
 		/**
 		 * The ctrl builder updates the interface on seeking
 		 */
 		onSeek: function () {
-		// mw.log( "controlBuilder:: onSeek" );
-		// Update the interface:
+			// mw.log( "controlBuilder:: onSeek" );
+			// Update the interface:
 			this.setStatus( mw.msg( 'mwe-embedplayer-seeking' ) );
 			// add a loading spinner:
 			this.embedPlayer.addPlayerSpinner();
@@ -1579,13 +1597,12 @@
 		},
 
 		/**
-	* Option menu items
-	*
-	* @return
-	* 	'li' a li line item with click action for that menu item
-	*/
+		 * Option menu items
+		 *
+		 * @return {jQuery} An <li> line item with click action for that menu item
+		 */
 		optionMenuItems: {
-		// Share the video menu
+			// Share the video menu
 			share: function ( ctrlObj ) {
 				return $.getLineItem(
 					mw.msg( 'mwe-embedplayer-share' ),
@@ -1624,6 +1641,8 @@
 			this.displayOptionsMenuFlag = false;
 			// mw.log(' closeMenuOverlay: ' + this.displayOptionsMenuFlag);
 
+			// FIXME: Use CSS transition
+			// eslint-disable-next-line jquery/no-fade
 			$overlay.fadeOut( 'slow', function () {
 				$overlay.remove();
 			} );
@@ -1657,7 +1676,7 @@
 				self = this,
 				embedPlayer = this.embedPlayer;
 			mw.log( 'PlayerControlBuilder:: displayMenuOverlay' );
-			//	set the overlay display flag to true:
+			// set the overlay display flag to true:
 			this.displayOptionsMenuFlag = true;
 
 			if ( !this.supportedComponents.overlays ) {
@@ -1757,6 +1776,7 @@
 		 */
 		closeAlert: function ( keepOverlay ) {
 			var embedPlayer = this.embedPlayer,
+				// eslint-disable-next-line jquery/no-global-selector
 				$alert = $( '#alertContainer' );
 
 			mw.log( 'mw.PlayerControlBuilder::closeAlert' );
@@ -1783,7 +1803,7 @@
 		 * @return {boolean}
 		 */
 		displayAlert: function ( alertObj ) {
-			var callback, $container, $title, $message, $buttonsContainer, $buttonSet, buttonsNum,
+			var callback, $container, $title, $message, $buttonsContainer, buttonSet, buttonsNum,
 				embedPlayer = this.embedPlayer;
 
 			mw.log( 'PlayerControlBuilder::displayAlert:: ' + alertObj.title );
@@ -1831,17 +1851,17 @@
 			if ( alertObj.props && alertObj.props.buttonRowSpacing ) {
 				$buttonsContainer.css( 'margin-top', alertObj.props.buttonRowSpacing );
 			}
-			$buttonSet = alertObj.buttons || [];
+			buttonSet = alertObj.buttons || [];
 
 			// If no button was passed display just OK button
-			buttonsNum = $buttonSet.length;
+			buttonsNum = buttonSet.length;
 			if ( buttonsNum === 0 && !alertObj.noButtons ) {
-				$buttonSet = [ 'OK' ];
+				buttonSet = [ 'OK' ];
 				buttonsNum++;
 			}
 
-			$.each( $buttonSet, function ( i ) {
-				var label = this.toString(),
+			buttonSet.forEach( function ( button, i ) {
+				var label = button.toString(),
 					$currentButton = $( '<button>' )
 						.addClass( 'alert-button' )
 						.text( label )
@@ -1936,7 +1956,7 @@
 						.attr( 'rows', 1 )
 						.html( embedWikiCode )
 						.on( 'click', function () {
-							$( this ).select();
+							$( this ).trigger( 'select' );
 						} ),
 					$( '<br>' )
 				);
@@ -1952,7 +1972,7 @@
 					.attr( 'rows', 4 )
 					.html( embedCode )
 					.on( 'click', function () {
-						$( this ).select();
+						$( this ).trigger( 'select' );
 					} ),
 
 				$( '<br>' ),
@@ -1981,7 +2001,7 @@
 						.text( mw.msg( 'mwe-embedplayer-choose_player' ) )
 				);
 
-			$.each( embedPlayer.mediaElement.getPlayableSources(), function ( sourceId, source ) {
+			embedPlayer.mediaElement.getPlayableSources().forEach( function ( source, sourceId ) {
 
 				var $playerList, supportingPlayers, i, $playerLine,
 					isPlayable = ( typeof mw.EmbedTypes.getMediaPlayers().defaultPlayer( source.getMIMEType() ) === 'object' ),
@@ -2027,7 +2047,6 @@
 								} )
 								.addClass( 'ui-corner-all' )
 								.text( supportingPlayers[ i ].getName() )
-								// eslint-disable-next-line no-loop-func
 								.on( 'click', function () {
 									var playableSources,
 										iparts = $( this ).attr( 'id' ).replace( /sc_/, '' ).split( '_' ),
@@ -2056,14 +2075,11 @@
 									// Don't follow the # link:
 									return false;
 								} )
-								.hover(
-									function () {
-										$( this ).addClass( 'active' );
-									},
-									function () {
-										$( this ).removeClass( 'active' );
-									}
-								);
+								.on( 'mouseenter', function () {
+									$( this ).addClass( 'active' );
+								} ).on( 'mouseleave', function () {
+									$( this ).removeClass( 'active' );
+								} );
 						}
 
 						// Add the player line to the player list:
@@ -2113,7 +2129,7 @@
 
 			$mediaList = $( '<ul>' );
 			$textList = $( '<ul>' );
-			$.each( embedPlayer.mediaElement.getSources(), function ( index, source ) {
+			embedPlayer.mediaElement.getSources().forEach( function ( source ) {
 				var fileName, path, pathParts, $dlLine;
 				if ( source.getSrc() ) {
 					mw.log( 'showDownloadWithSources:: Add src: ' + source.getTitle() );
@@ -2206,7 +2222,7 @@
 				);
 			}
 			addedSources = {};
-			$.each( this.embedPlayer.mediaElement.getPlayableSources(), function ( sourceIndex, source ) {
+			this.embedPlayer.mediaElement.getPlayableSources().forEach( function ( source ) {
 				// Output the player select code:
 				var supportingPlayers = mw.EmbedTypes.getMediaPlayers().getMIMETypePlayers( source.getMIMEType() );
 				for ( i = 0; i < supportingPlayers.length; i++ ) {
@@ -2373,7 +2389,7 @@
 					return $( '<div>' )
 						.attr( {
 							title: mw.msg( 'mwe-embedplayer-play_clip' ),
-							'class': 'play-btn-large'
+							class: 'play-btn-large'
 						} )
 					// Get dynamic position for big play button
 						.css( ctrlObj.getPlayButtonPosition() )
@@ -2396,7 +2412,7 @@
 						buttonConfig = {
 							title: 'Kaltura html5 video library',
 							href: 'http://www.kaltura.com',
-							'class': 'kaltura-icon',
+							class: 'kaltura-icon',
 							style: {},
 							iconurl: false
 						};
@@ -2510,7 +2526,7 @@
 					// Get the iframe url:
 						url = ctrlObj.embedPlayer.getIframeSourceUrl();
 						// Change button into new window ( of the same url as the iframe ) :
-						return	$( '<a>' ).attr( {
+						return $( '<a>' ).attr( {
 							href: url,
 							target: '_new'
 						} )
@@ -2628,6 +2644,8 @@
 							start: function () {
 								var id = embedPlayer.pc ? embedPlayer.pc.pp.id : embedPlayer.id;
 								embedPlayer.userSlide = true;
+								// FIXME: Use CSS transition
+								// eslint-disable-next-line jquery/no-fade
 								$( id + ' .play-btn-large' ).fadeOut( 'fast' );
 								// If playlist always start at 0
 								embedPlayer.startTimeSec = ( embedPlayer.instanceOf === 'mvPlayList' ) ? 0 :

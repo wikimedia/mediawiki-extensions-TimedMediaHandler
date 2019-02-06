@@ -65,8 +65,8 @@
 		/**
 		 * The method called to "show the player"
 		 * For image overlay we want to:
-		 * 	Set black video urls for player source
-		 * 	Add an image overlay
+		 *   Set black video urls for player source
+		 *   Add an image overlay
 		 */
 		updatePosterHTML: function () {
 			var vid = this.getPlayerElement();
@@ -266,8 +266,8 @@
 					src: currentSoruceObj.getSrc()
 				} )
 				.addClass( 'imageOverlay' )
-				.load( function () {
-				// reset clock time:
+				.on( 'load', function () {
+					// reset clock time:
 					self.clockStartTime = new Date().getTime();
 					self.monitor();
 				} );
@@ -290,26 +290,26 @@
 		},
 		applyIntrinsicAspect: function () {
 			// var img, pHeight, pWidth,
-			// 	$interface = this.$interface;
+			//   $interface = this.$interface;
 			// // Check if a image thumbnail is present:
 			// if ( $interface && $interface.find( '.imageOverlay' ).length ) {
-			// 	img = $interface.find( '.imageOverlay' )[ 0 ];
-			// 	pHeight = $interface.height();
-			// 	// Check for intrinsic width and maintain aspect ratio
-			// 	if ( img.naturalWidth && img.naturalHeight ) {
-			// 		pWidth = Math.floor( img.naturalWidth / img.naturalHeight * pHeight );
-			// 		if ( pWidth > $interface.width() ) {
-			// 			pWidth = $interface.width();
-			// 			pHeight = Math.floor( img.naturalHeight / img.naturalWidth * pWidth );
-			// 		}
-			// 		$( img ).css( {
-			// 			height: pHeight + 'px',
-			// 			width: pWidth + 'px',
-			// 			left: ( ( $interface.width() - pWidth ) * 0.5 ) + 'px',
-			// 			top: ( ( $interface.height() - pHeight ) * 0.5 ) + 'px',
-			// 			position: 'absolute'
-			// 		} );
-			// 	}
+			//   img = $interface.find( '.imageOverlay' )[ 0 ];
+			//   pHeight = $interface.height();
+			//   // Check for intrinsic width and maintain aspect ratio
+			//   if ( img.naturalWidth && img.naturalHeight ) {
+			//     pWidth = Math.floor( img.naturalWidth / img.naturalHeight * pHeight );
+			//     if ( pWidth > $interface.width() ) {
+			//       pWidth = $interface.width();
+			//       pHeight = Math.floor( img.naturalHeight / img.naturalWidth * pWidth );
+			//     }
+			//     $( img ).css( {
+			//       height: pHeight + 'px',
+			//       width: pWidth + 'px',
+			//       left: ( ( $interface.width() - pWidth ) * 0.5 ) + 'px',
+			//       top: ( ( $interface.height() - pHeight ) * 0.5 ) + 'px',
+			//       position: 'absolute'
+			//     } );
+			//   }
 			// }
 		}
 	};

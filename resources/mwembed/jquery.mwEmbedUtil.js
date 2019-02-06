@@ -16,9 +16,9 @@
 		if ( arr.length === 0 || !!arr[ 0 ].nodeType ) {
 			return $.unique.apply( this, arguments );
 		} else {
-			// reduce the array to contain no dupes via grep/inArray
-			return $.grep( arr, function ( v, k ) {
-				return $.inArray( v, arr ) === k;
+			// reduce the array to contain no dupes via filter/indexOf
+			return arr.filter( function ( v, i, a ) {
+				return a.indexOf( v ) === i;
 			} );
 		}
 	};
@@ -47,7 +47,7 @@
 	// Shortcut to generate a jQuery button
 	mwDefaultButtonOptions = {
 		// The class name for the button link
-		'class': '',
+		class: '',
 
 		// The style properties for the button link
 		style: { },
@@ -92,14 +92,11 @@
 
 	// Shortcut to bind hover state
 	$.fn.buttonHover = function () {
-		$( this ).hover(
-			function () {
-				$( this ).addClass( 'ui-state-hover' );
-			},
-			function () {
-				$( this ).removeClass( 'ui-state-hover' );
-			}
-		);
+		$( this ).on( 'mouseenter', function () {
+			$( this ).addClass( 'ui-state-hover' );
+		} ).on( 'mouseleave', function () {
+			$( this ).removeClass( 'ui-state-hover' );
+		} );
 		return this;
 	};
 }() );

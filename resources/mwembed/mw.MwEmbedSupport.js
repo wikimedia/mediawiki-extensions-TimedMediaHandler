@@ -1,6 +1,8 @@
 // Add support for html5 / mwEmbed elements to IE
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-'video audio source track'.replace( /\w+/g, function ( n ) { document.createElement( n ); } );
+'video audio source track'.replace( /\w+/g, function ( n ) {
+	document.createElement( n );
+} );
 
 /**
  * NewMwEmbedSupport includes shared mwEmbed utilities that either
@@ -158,9 +160,11 @@
 	 * @return {jQuery} Dialog element
 	 */
 	mw.addDialog = function ( options ) {
-		var uiRequest, buttonMsg;
+		var uiRequest, buttonMsg,
+			// eslint-disable-next-line jquery/no-global-selector
+			$mweDialog = $( '#mweDialog' );
 		// Remove any other dialog
-		$( '#mweDialog' ).remove();
+		$mweDialog.remove();
 
 		if ( !options ) {
 			options = {};
@@ -178,18 +182,17 @@
 			mw.log( 'Error: mwEmbed addDialog missing required options ( title, content ) ' );
 		}
 
+		$mweDialog = $( '<div />' )
+			.attr( {
+				id: 'mweDialog',
+				title: options.title
+			} )
+			.css( {
+				display: 'none'
+			} )
+			.append( options.content );
 		// Append the dialog div on top:
-		$( 'body' ).append(
-			$( '<div />' )
-				.attr( {
-					id: 'mweDialog',
-					title: options.title
-				} )
-				.css( {
-					display: 'none'
-				} )
-				.append( options.content )
-		);
+		$( document.body ).append( $mweDialog );
 
 		// Build the uiRequest
 		uiRequest = [ 'jquery.ui.dialog' ];
@@ -211,15 +214,16 @@
 
 		// Load the dialog resources
 		mw.loader.using( uiRequest, function () {
-			$( '#mweDialog' ).dialog( options );
+			$mweDialog.dialog( options );
 		} );
-		return $( '#mweDialog' );
+		return $mweDialog;
 	};
 
 	/**
 	 * Close the loader dialog created with addLoaderDialog
 	 */
 	mw.closeLoaderDialog = function () {
+		// eslint-disable-next-line jquery/no-global-selector
 		$( '#mweDialog' ).dialog( 'destroy' ).remove();
 	};
 
