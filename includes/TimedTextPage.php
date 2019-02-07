@@ -9,8 +9,8 @@
  */
 class TimedTextPage extends Article {
 	// The width of the video plane:
-	static private $videoWidth = 400;
-	static private $knownTimedTextExtensions = [ 'srt', 'vtt' ];
+	private static $videoWidth = 400;
+	private static $knownTimedTextExtensions = [ 'srt', 'vtt' ];
 
 	public function view() {
 		$request = $this->getContext()->getRequest();

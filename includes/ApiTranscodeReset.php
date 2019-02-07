@@ -86,7 +86,7 @@ class ApiTranscodeReset extends ApiBase {
 		global $wgWaitTimeForTranscodeReset;
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $file );
 		if ( $transcodeKey ) {
-			if ( ! $transcodeStates[$transcodeKey] ) {
+			if ( !$transcodeStates[$transcodeKey] ) {
 				// transcode key not found
 				return $wgWaitTimeForTranscodeReset + 1;
 			}
