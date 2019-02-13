@@ -315,9 +315,9 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return bool|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
-		wfSuppressWarnings();
+		Wikimedia\suppressWarnings();
 		$unser = unserialize( $metadata );
-		wfRestoreWarnings();
+		Wikimedia\restoreWarnings();
 		if ( isset( $unser['version'] ) ) {
 			return $unser;
 		} else {

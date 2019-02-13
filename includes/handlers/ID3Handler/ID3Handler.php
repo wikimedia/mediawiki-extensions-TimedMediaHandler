@@ -57,9 +57,9 @@ class ID3Handler extends TimedMediaHandler {
 	 * @return bool|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
-		wfSuppressWarnings();
+		Wikimedia\suppressWarnings();
 		$unser = unserialize( $metadata );
-		wfRestoreWarnings();
+		Wikimedia\restoreWarnings();
 		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
 			return $unser;
 		} else {
