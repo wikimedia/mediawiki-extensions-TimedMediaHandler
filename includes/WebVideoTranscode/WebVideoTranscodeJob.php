@@ -286,7 +286,7 @@ class WebVideoTranscodeJob extends Job {
 				$bitrate = round(
 					intval( filesize( $this->getTargetEncodePath() ) / $file->getLength() ) * 8
 				);
-				// wfRestoreWarnings();
+				// Wikimedia\restoreWarnings();
 				// Reconnect to the database...
 				$dbw = wfGetDB( DB_MASTER );
 				// Update the transcode table with success time:
@@ -342,9 +342,9 @@ class WebVideoTranscodeJob extends Job {
 					$log_path = "$dir/$file";
 					$ext = strtolower( pathinfo( $log_path, PATHINFO_EXTENSION ) );
 					if ( $ext == 'log' && substr( $log_path, 0, strlen( $path ) ) == $path ) {
-						wfSuppressWarnings();
+						Wikimedia\suppressWarnings();
 						unlink( $log_path );
-						wfRestoreWarnings();
+						Wikimedia\restoreWarnings();
 					}
 					$file = readdir( $dh );
 				}
@@ -693,13 +693,13 @@ class WebVideoTranscodeJob extends Job {
 		$retvalLog = $this->getTargetEncodePath() . '.retval.log';
 		// Check that we can actually write to these files
 		// ( no point in running the encode if we can't write )
-		wfSuppressWarnings();
+		Wikimedia\suppressWarnings();
 		if ( !touch( $encodingLog ) || !touch( $retvalLog ) ) {
-			wfRestoreWarnings();
+			Wikimedia\restoreWarnings();
 			$retval = 1;
 			return "Error could not write to target location";
 		}
-		wfRestoreWarnings();
+		Wikimedia\restoreWarnings();
 
 		// Fork out a process for running the transcode
 		$pid = pcntl_fork();
@@ -758,11 +758,11 @@ class WebVideoTranscodeJob extends Job {
 			[ 'profileMethod' => $caller ] );
 
 		// Output the status:
-		wfSuppressWarnings();
+		Wikimedia\suppressWarnings();
 		file_put_contents( $encodingLog, $status );
 		// Output the retVal to the $retvalLog
 		file_put_contents( $retvalLog, $retval );
-		wfRestoreWarnings();
+		Wikimedia\restoreWarnings();
 	}
 
 	/**
@@ -845,9 +845,9 @@ class WebVideoTranscodeJob extends Job {
 
 		$returnPcntl = pcntl_wexitstatus( $status );
 		// check status
-		wfSuppressWarnings();
+		Wikimedia\suppressWarnings();
 		$returnCodeFile = file_get_contents( $retvalLog );
-		wfRestoreWarnings();
+		Wikimedia\restoreWarnings();
 
 		// File based exit code seems more reliable than pcntl_wexitstatus
 		$retval = $returnCodeFile;
