@@ -61,7 +61,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "За квалитетније прегледање снимака, препоручујемо вам <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5 видео прегледач</a>.",
 	"mwe-embedplayer-download-warn": "Није пронађен прикладан извођач за пуштање преко прегледача. Преузмите [$1 најновији Фајерфокс]",
-	"mwe-embedplayer-fullscreen-tip": "Притисните <b>F11</b> да пребаците <i>прегледач</i> на цео екран",
+	"mwe-embedplayer-fullscreen-tip": "Притисните <b>F11</b> да бисте пребацили на приказ целог екрана",
 	"mwe-embedplayer-fullscreen-tip-osx": "Притисните <b>Shift ⌘ F</b> за пребацивање на цео екран",
 	"mwe-embedplayer-do_not_warn_again": "У будућности, не приказуј ову поруку",
 	"mwe-embedplayer-playerSelect": "Извођачи",
