@@ -5,7 +5,8 @@
 			"Base",
 			"Ата",
 			"Тест",
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Назва: $1",
@@ -69,7 +70,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Для кращого відтворення відео рекомендуємо <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">html5 відео браузер</a>.",
 	"mwe-embedplayer-download-warn": "Не знайдено вбудованого програвача для браузера, для відтворення в браузері завантажте, будь ласка, [$1 останній Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Натисніть кнопку <b>F11</b> для перемикання <i>веб-браузера</i> в повноекранний режим",
+	"mwe-embedplayer-fullscreen-tip": "Натисніть кнопку <b>F11</b> для перемикання в повноекранний режим",
 	"mwe-embedplayer-fullscreen-tip-osx": "Натисніть кнопку <b>shift ⌘ F</b> для переходу у повноекранний режим",
 	"mwe-embedplayer-do_not_warn_again": "Не показувати це повідомлення у майбутньому",
 	"mwe-embedplayer-playerSelect": "Програвачі",

@@ -34,6 +34,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 saete|$1 saeti}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 deqa|$1 deqey}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 saniya|$1 saniyey}}",
+	"timedmedia-reset-button-dismiss": "Red ke",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 çıme",
 	"timedmedia-source-audio-file-desc": "Dosyaya $1 oricinale ($2)",
