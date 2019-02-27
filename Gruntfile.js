@@ -109,14 +109,6 @@ module.exports = function ( grunt ) {
 			}
 		},
 		patch: {
-			videojs: {
-				options: {
-					patch: 'patches/videojs-responsive-classes.patch'
-				},
-				files: {
-					'resources/videojs/video-js.css': 'resources/videojs/video-js.css'
-				}
-			},
 			'videojs-ogvjs': {
 				options: {
 					patch: 'patches/videojs-ogvjs-webm.patch'
@@ -144,7 +136,7 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'patch:videojs', 'patch:videojs-resolution-switcher', 'patch:videojs-ogvjs', 'patch:videojs-responsive-layout' ] );
+	grunt.registerTask( 'update-videojs', [ 'exec:npm-update-videojs', 'copy:video.js', 'copy:videojs-resolution-switcher', 'copy:videojs-ogvjs', 'copy:videojs-responsive-layout', 'patch:videojs-resolution-switcher', 'patch:videojs-ogvjs', 'patch:videojs-responsive-layout' ] );
 	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
