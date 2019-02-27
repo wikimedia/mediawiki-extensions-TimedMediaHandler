@@ -485,7 +485,8 @@
 				"desktop"
 			],
 			"dependencies": [
-				"ext.tmh.video-js"
+				"ext.tmh.video-js",
+				"mediawiki.Title"
 			]
 		},
 		"ext.tmh.player": {

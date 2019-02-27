@@ -34,10 +34,11 @@
 			var player = this;
 
 			player.ready( function () {
-				var link = mw.config.get( 'wgScript' ) + '?title=' +
-					mw.config.get( 'wgFormattedNamespaces' )[ '6' ] + ':' +
-					encodeURIComponent( player.el().getAttribute( 'data-mwtitle' ) ),
-					button = new InfoButton( Button, link );
+				var title = mw.Title.makeTitle(
+						mw.config.get( 'wgNamespaceIds' ).file,
+						player.el().getAttribute( 'data-mwtitle' )
+					),
+					button = new InfoButton( Button, title.getUrl() );
 				player.controlBar.infoButton = player.controlBar.addChild( button );
 			} );
 		};
