@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pon44695"
+			"Pon44695",
+			"Geonuch"
 		]
 	},
 	"timedmedia-source-file": "แหล่ง $1",
-	"timedmedia-source-audio-file-desc": "ไฟล์ต้นฉบับ $1 ($2)"
+	"timedmedia-source-audio-file-desc": "ไฟล์ต้นฉบับ $1 ($2)",
+	"right-transcode-status": "ดู[[Special:TimedMediaHandler|สารสนเทศเกี่ยวกับกิจกรรมทรานส์โคดปัจจุบัน]]"
 }
