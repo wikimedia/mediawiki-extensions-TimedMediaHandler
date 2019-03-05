@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mogoeilor"
+		]
+	},
+	"mwe-embedplayer-credit-title": "داسوݩ: $1",
+	"mwe-embedplayer-credit-date": "ڤیرگار: $1",
+	"mwe-embedplayer-download_text": "گرهڌن متن",
+	"mwe-embedplayer-download": "گرهڌن",
+	"mwe-embedplayer-share": "هومبٱئر کردن",
+	"mwe-embedplayer-menu_btn": "منو",
+	"mwe-embedplayer-close_btn": "بٱسدن",
+	"mwe-embedplayer-ogg-player-vlc-player": "VLC player",
+	"mwe-embedplayer-audio-mpeg": "MPEG audio"
+}
