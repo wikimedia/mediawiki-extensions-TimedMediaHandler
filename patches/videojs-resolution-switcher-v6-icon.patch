@@ -1,0 +1,16 @@
+diff --git a/resources/videojs-resolution-switcher/videojs-resolution-switcher.css b/resources/videojs-resolution-switcher/videojs-resolution-switcher.css
+index 3c7ef676..e21df893 100644
+--- a/resources/videojs-resolution-switcher/videojs-resolution-switcher.css
++++ b/resources/videojs-resolution-switcher/videojs-resolution-switcher.css
+@@ -1,10 +1,8 @@
+-.vjs-resolution-button .vjs-menu-icon:before {
++.vjs-resolution-button .vjs-icon-placeholder:before {
+   content: '\f110';
+   font-family: VideoJS;
+   font-weight: normal;
+   font-style: normal;
+-  font-size: 1.8em;
+-  line-height: 1.67em;
+ }
+ 
+ .vjs-resolution-button .vjs-resolution-button-label {
