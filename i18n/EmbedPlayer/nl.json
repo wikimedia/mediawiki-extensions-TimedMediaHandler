@@ -70,7 +70,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Voor een betere kwaliteitsbeleving adviseren we een <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5 videobrowser</a>.",
 	"mwe-embedplayer-download-warn": "Er is geen compatibele speler in de browser aangetroffen. Download de [$1 meest recente versie van Firefox] om dit bestand in de browser te kunnen afspelen.",
-	"mwe-embedplayer-fullscreen-tip": "Druk op <b>F11</b> om het volledige scherm in/uit te schakelen",
+	"mwe-embedplayer-fullscreen-tip": "Druk op <b>F11</b> om naar/uit volledig scherm te gaan",
 	"mwe-embedplayer-fullscreen-tip-osx": "Druk <b>SHIRT+⌘+F</b> om volledig scherm in/uit te schakelen",
 	"mwe-embedplayer-do_not_warn_again": "Dit bericht niet meer weergeven.",
 	"mwe-embedplayer-playerSelect": "Spelers",
