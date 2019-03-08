@@ -50130,7 +50130,7 @@
    * Handle all error conditions in one place and return an object
    * with all the information
    *
-   * @param {Error|null} error - if non-null signals an error occured with the XHR
+   * @param {Error|null} error - if non-null signals an error occurred with the XHR
    * @param {Object} request -  the XHR request that possibly generated the error
    */
 
