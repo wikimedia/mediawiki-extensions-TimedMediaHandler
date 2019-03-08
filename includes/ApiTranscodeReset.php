@@ -133,13 +133,6 @@ class ApiTranscodeReset extends ApiBase {
 		return true;
 	}
 
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	protected function getDescription() {
-		return 'Users with the \'transcode-reset\' right can reset and re-run a transcode job';
-	}
-
 	protected function getAllowedParams() {
 		return [
 			'title' => [
@@ -151,37 +144,12 @@ class ApiTranscodeReset extends ApiBase {
 		];
 	}
 
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	protected function getParamDescription() {
-		return [
-			'title' => 'The media file title',
-			'transcodekey' => 'The transcode key you wish to reset',
-			'token' => 'An edit token obtained via action=tokens',
-		];
-	}
-
 	public function needsToken() {
 		return 'csrf';
 	}
 
 	public function getTokenSalt() {
 		return '';
-	}
-
-	/**
-	 * @deprecated since MediaWiki core 1.25
-	 */
-	protected function getExamples() {
-		return [
-			'Reset all transcodes for Clip.webm :',
-			'    api.php?action=transcodereset&title=File:Clip.webm&token=%2B\\',
-			'Reset the \'360_560kbs.webm\' transcode key for clip.webm. ' .
-			'Get a list of transcode keys via a \'transcodestatus\' query',
-			'    api.php?action=transcodereset&title=File:Clip.webm' .
-			'&transcodekey=360_560kbs.webm&token=%2B\\',
-		];
 	}
 
 	/**
