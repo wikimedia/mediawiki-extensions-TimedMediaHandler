@@ -4,6 +4,9 @@
 			"Mogoeilor"
 		]
 	},
+	"timedmedia-ogg-short-audio": "Ogg $1 sound file, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 video file, $2",
+	"timedmedia-mp3-short-audio": "MP3 audio file, $1",
 	"timedmedia-more": "بیشتر....",
 	"timedmedia-dismiss": "بٱسدن",
 	"timedmedia-download": "گرهڌن جانیا",
@@ -22,6 +25,7 @@
 	"timedmedia-days": "{{PLURAL:$1|1 رۊز|$1 رۊزٱل}}",
 	"timedmedia-source-file": "سرچشمٱ $1",
 	"timedmedia-source-audio-file-desc": "جانیا ٱسلی$1 ($2)",
+	"timedmedia-derivative-desc-240p.ogv": "Small Ogg video (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg video (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "SD Ogg video (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "HD Ogg video (720P)",
