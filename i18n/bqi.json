@@ -22,6 +22,8 @@
 	"timedmedia-not-ready": "آماڌاْ نی",
 	"timedmedia-completed-on": "تٱموم ڤابی $1",
 	"timedmedia-error-on": "خٱتا میٛن $1",
+	"timedmedia-started-transcode": "ز$1 دیندا $2 شورۊ ڤابیڌاْ",
+	"timedmedia-percent-done": "نزیک $1% ٱنجوم ڤابی",
 	"timedmedia-days": "{{PLURAL:$1|1 رۊز|$1 رۊزٱل}}",
 	"timedmedia-source-file": "سرچشمٱ $1",
 	"timedmedia-source-audio-file-desc": "جانیا ٱسلی$1 ($2)",

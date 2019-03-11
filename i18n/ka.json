@@ -43,7 +43,7 @@
 	"timedmedia-started-transcode": "დეკოდირება გაშვებულია $1 წინ. $2",
 	"timedmedia-percent-done": "დაახლოებით $1% შესრულებულია",
 	"timedmedia-in-job-queue": "დამატებულია დავალებების რიგში $1 წინ",
-	"timedmedia-unknown-target-size": "უცნობი სამიზნო ზომა, $1 კოდირებისას",
+	"timedmedia-unknown-target-size": "უცნობი სამიზნე ზომა, $1 კოდირებისას",
 	"timedmedia-days": "{{PLURAL:$1|1 დღე|$1 დღე}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 საათი|$1 საათი}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 წუთი|$1 წუთი}}",
