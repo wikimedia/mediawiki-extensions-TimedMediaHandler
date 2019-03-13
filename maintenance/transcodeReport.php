@@ -108,7 +108,7 @@ class TranscodeReport extends Maintenance {
 						$bb = str_pad( $wgLang->formatBitrate( $b ), 10, " ", STR_PAD_LEFT );
 						$legend = "$aa - $bb";
 
-						$val = isset( $this->histo[$key][$bucket] ) ? $this->histo[$key][$bucket] : 0;
+						$val = $this->histo[$key][$bucket] ?? 0;
 						$bar = str_repeat( '*', ceil( $val * 72 / $max ) );
 
 						$this->output( $legend . " : " . $bar . "\n" );

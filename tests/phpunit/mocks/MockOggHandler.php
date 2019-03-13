@@ -37,7 +37,7 @@ class MockOggHandler extends OggHandler {
 			$srcHeight = 23;
 		}
 
-		$params['width'] = isset( $params['width'] ) ? $params['width'] : $srcWidth;
+		$params['width'] = $params['width'] ?? $srcWidth;
 
 		// if height overtakes width use height as max:
 		$targetWidth = $params['width'];
@@ -53,13 +53,11 @@ class MockOggHandler extends OggHandler {
 			'width' => $targetWidth,
 			'height' => $targetHeight,
 			'isVideo' => !$this->isAudio( $file ),
-			'thumbtime' => isset(
-				$params['thumbtime']
-			) ? $params['thumbtime'] : intval( $file->getLength() / 2 ),
-			'start' => isset( $params['start'] ) ? $params['start'] : false,
-			'end' => isset( $params['end'] ) ? $params['end'] : false,
-			'fillwindow' => isset( $params['fillwindow'] ) ? $params['fillwindow'] : false,
-			'disablecontrols' => isset( $params['disablecontrols'] ) ? $params['disablecontrols'] : false
+			'thumbtime' => $params['thumbtime'] ?? intval( $file->getLength() / 2 ),
+			'start' => $params['start'] ?? false,
+			'end' => $params['end'] ?? false,
+			'fillwindow' => $params['fillwindow'] ?? false,
+			'disablecontrols' => $params['disablecontrols'] ?? false
 		];
 
 		// No thumbs for audio

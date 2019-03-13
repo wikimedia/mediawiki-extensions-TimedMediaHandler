@@ -565,8 +565,8 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check for video bitrate:
 		if ( isset( $options['videoBitrate'] ) ) {
-			$qmin = isset( $options['qmin'] ) ? $options['qmin'] : 1;
-			$qmax = isset( $options['qmax'] ) ? $options['qmax'] : 51;
+			$qmin = $options['qmin'] ?? 1;
+			$qmax = $options['qmax'] ?? 51;
 			$cmd .= " -qmin " . wfEscapeShellArg( $qmin );
 			$cmd .= " -qmax " . wfEscapeShellArg( $qmax );
 

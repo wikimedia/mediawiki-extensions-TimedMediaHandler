@@ -373,17 +373,15 @@ class TimedMediaHandler extends MediaHandler {
 			'offset' => $this->getOffset( $file ),
 			// Default thumbnail width and height for audio files is hardcoded to match the dimensions of
 			// the filetype icon, see TimedMediaTransformOutput::getUrl(). Overridden for video below.
-			'width' => isset( $params['width'] ) ? $params['width'] : 120,
+			'width' => $params['width'] ?? 120,
 			// Height is ignored for audio files anyway, and $params['height'] might be set to 0
-			'height' => isset( $params['width'] ) ? $params['width'] : 120,
+			'height' => $params['width'] ?? 120,
 			'isVideo' => !$this->isAudio( $file ),
-			'thumbtime' => isset(
-				$params['thumbtime']
-			) ? $params['thumbtime'] : intval( $file->getLength() / 2 ),
-			'start' => isset( $params['start'] ) ? $params['start'] : false,
-			'end' => isset( $params['end'] ) ? $params['end'] : false,
-			'fillwindow' => isset( $params['fillwindow'] ) ? $params['fillwindow'] : false,
-			'disablecontrols' => isset( $params['disablecontrols'] ) ? $params['disablecontrols'] : false
+			'thumbtime' => $params['thumbtime'] ?? intval( $file->getLength() / 2 ),
+			'start' => $params['start'] ?? false,
+			'end' => $params['end'] ?? false,
+			'fillwindow' => $params['fillwindow'] ?? false,
+			'disablecontrols' => $params['disablecontrols'] ?? false
 		];
 
 		// No thumbs for audio
@@ -395,7 +393,7 @@ class TimedMediaHandler extends MediaHandler {
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 
-		$params['width'] = isset( $params['width'] ) ? $params['width'] : $srcWidth;
+		$params['width'] = $params['width'] ?? $srcWidth;
 
 		// if height overtakes width use height as max:
 		$targetWidth = $params['width'];
