@@ -9,7 +9,8 @@
 			"SandroHc",
 			"Vitorvicentevalente",
 			"Waldir",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"CaiusSPQR"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -73,7 +74,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Para uma melhor experiência de reprodução de vídeo recomendamos um <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navegador de vídeo HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Não foi detetado nenhum leitor compatível integrado no navegador: para reproduzir no navegador, descarregue a [$1 última versão do Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Carregue em <b>F11</b> para ativar ou desativar o modo de ecrã inteiro no navegador",
+	"mwe-embedplayer-fullscreen-tip": "Prima <b>F11</b> para ativar ou desativar o modo de ecrã inteiro",
 	"mwe-embedplayer-fullscreen-tip-osx": "Carregue em <b>shift ⌘ F</b> para ativar ou desativar o modo de ecrã inteiro",
 	"mwe-embedplayer-do_not_warn_again": "De futuro, não mostrar esta mensagem",
 	"mwe-embedplayer-playerSelect": "Leitores",
