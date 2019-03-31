@@ -14,7 +14,8 @@
 			"Тест",
 			"Ата",
 			"Piramidion",
-			"Dars"
+			"Dars",
+			"Gzhegozh"
 		]
 	},
 	"timedmediahandler-desc": "Оброблювач для аудіо, відео і субтитрів з підтримкою форматів WebM, Ogg Theora, Vorbis, srt",
@@ -120,7 +121,7 @@
 	"timedmedia-subtitle-new-go": "Перейти",
 	"timedmedia-subtitle-language": "$1 ($2) субтитри",
 	"timedmedia-subtitle-no-video": "Немає відео, пов'язаного з поточною сторінкою субтитрів",
-	"timedmedia-subtitle-no-subtitles": "В даний час немає субтитрів на $1 для цього відео, Ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} змінити цю сторінку] для їх додавання",
+	"timedmedia-subtitle-no-subtitles": "Наразі немає субтитрів на $1 для цього відео, Ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} змінити цю сторінку] для їхнього додавання",
 	"timedmedia-subtitle-remote": "Текст до цього файлу розміщений на $1",
 	"timedmedia-subtitle-remote-link": "Ви можете [$1 переглянути опис сторінки] для цього файлу на $2",
 	"timedmediahandler": "TimedMediaHandler",
