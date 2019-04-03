@@ -161,7 +161,7 @@
 	 */
 	mw.addDialog = function ( options ) {
 		var uiRequest, buttonMsg,
-			// eslint-disable-next-line jquery/no-global-selector
+			// eslint-disable-next-line no-jquery/no-global-selector
 			$mweDialog = $( '#mweDialog' );
 		// Remove any other dialog
 		$mweDialog.remove();
@@ -223,7 +223,7 @@
 	 * Close the loader dialog created with addLoaderDialog
 	 */
 	mw.closeLoaderDialog = function () {
-		// eslint-disable-next-line jquery/no-global-selector
+		// eslint-disable-next-line no-jquery/no-global-selector
 		$( '#mweDialog' ).dialog( 'destroy' ).remove();
 	};
 

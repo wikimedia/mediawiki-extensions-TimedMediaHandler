@@ -668,7 +668,7 @@
 				embedPlayer = this.embedPlayer,
 				$interface = embedPlayer.getInterface();
 			// Remove any old mw-fullscreen-overlay
-			// eslint-disable-next-line jquery/no-global-selector
+			// eslint-disable-next-line no-jquery/no-global-selector
 			$( '.mw-fullscreen-overlay' ).remove();
 
 			self.preFullscreenPlayerSize = this.getPlayerSize();
@@ -677,7 +677,7 @@
 			// iOS4 does not respect z-index
 			$interface.after(
 				// FIXME: Use CSS transition
-				// eslint-disable-next-line jquery/no-fade
+				// eslint-disable-next-line no-jquery/no-fade
 				$( '<div>' )
 					.addClass( 'mw-fullscreen-overlay' )
 					// Set some arbitrary high z-index
@@ -804,7 +804,7 @@
 			function hideTip() {
 				config[ 'EmbedPlayer.FullscreenTip' ] = false;
 				// FIXME: Use CSS transition
-				// eslint-disable-next-line jquery/no-fade
+				// eslint-disable-next-line no-jquery/no-fade
 				$targetTip.fadeOut( 'fast' );
 			}
 
@@ -898,7 +898,7 @@
 			mw.log( 'restoreWindowPlayer:: h:' + interfaceHeight + ' w:' + embedPlayer.getWidth() );
 			// FIXME: The following line is a no-op as the argument to $.remove is a selector,
 			// and 'slow' will match nothing.
-			// eslint-disable-next-line jquery/no-global-selector
+			// eslint-disable-next-line no-jquery/no-global-selector
 			$( '.mw-fullscreen-overlay' ).remove( 'slow' );
 
 			mw.log( 'restore embedPlayer:: ' + embedPlayer.getWidth() + ' h: ' + embedPlayer.getHeight() );
@@ -1453,7 +1453,7 @@
 							// Set the current instance
 							config[ preferenceId ] = false;
 							// FIXME: Use CSS transition
-							// eslint-disable-next-line jquery/no-fade
+							// eslint-disable-next-line no-jquery/no-fade
 							$( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
 							// set the local preference to false
 							self.addWarningFlag = false;
@@ -1494,7 +1494,7 @@
 							$targetvol.removeClass( 'vol_container_top' ).addClass( 'vol_container_below' );
 						}
 						// FIXME: Use CSS transition
-						// eslint-disable-next-line jquery/no-fade
+						// eslint-disable-next-line no-jquery/no-fade
 						$targetvol.fadeIn( 'fast' );
 						hoverOverDelay = true;
 					},
@@ -1503,7 +1503,7 @@
 						setTimeout( function () {
 							if ( !hoverOverDelay ) {
 								// FIXME: Use CSS transition
-								// eslint-disable-next-line jquery/no-fade
+								// eslint-disable-next-line no-jquery/no-fade
 								$targetvol.fadeOut( 'fast' );
 							}
 						}, 500 );
@@ -1642,7 +1642,7 @@
 			// mw.log(' closeMenuOverlay: ' + this.displayOptionsMenuFlag);
 
 			// FIXME: Use CSS transition
-			// eslint-disable-next-line jquery/no-fade
+			// eslint-disable-next-line no-jquery/no-fade
 			$overlay.fadeOut( 'slow', function () {
 				$overlay.remove();
 			} );
@@ -1776,7 +1776,7 @@
 		 */
 		closeAlert: function ( keepOverlay ) {
 			var embedPlayer = this.embedPlayer,
-				// eslint-disable-next-line jquery/no-global-selector
+				// eslint-disable-next-line no-jquery/no-global-selector
 				$alert = $( '#alertContainer' );
 
 			mw.log( 'mw.PlayerControlBuilder::closeAlert' );
@@ -2645,7 +2645,7 @@
 								var id = embedPlayer.pc ? embedPlayer.pc.pp.id : embedPlayer.id;
 								embedPlayer.userSlide = true;
 								// FIXME: Use CSS transition
-								// eslint-disable-next-line jquery/no-fade
+								// eslint-disable-next-line no-jquery/no-fade
 								$( id + ' .play-btn-large' ).fadeOut( 'fast' );
 								// If playlist always start at 0
 								embedPlayer.startTimeSec = ( embedPlayer.instanceOf === 'mvPlayList' ) ? 0 :

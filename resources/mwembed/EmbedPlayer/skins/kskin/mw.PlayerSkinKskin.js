@@ -197,7 +197,7 @@
 							self.$playerTarget.find( '.menu-screen' ).hide();
 							// Show credits
 							// FIXME: Use CSS transition
-							// eslint-disable-next-line jquery/no-fade
+							// eslint-disable-next-line no-jquery/no-fade
 							self.$playerTarget.find( '.menu-credits' ).fadeIn( 'fast' );
 						}
 					}
@@ -232,7 +232,7 @@
 
 			mw.log( 'PlayerSkinKskin:: close menu overlay' );
 			// FIXME: Use CSS transition
-			// eslint-disable-next-line jquery/no-fade
+			// eslint-disable-next-line no-jquery/no-fade
 			$kmenu.fadeOut( 'fast', function () {
 				$optionsMenu.find( 'span' )
 					.text( mw.msg( 'mwe-embedplayer-menu_btn' ) );
@@ -257,13 +257,13 @@
 				$kmenu = this.$playerTarget.find( '.k-menu' );
 
 			// FIXME: Use CSS transition
-			// eslint-disable-next-line jquery/no-fade
+			// eslint-disable-next-line no-jquery/no-fade
 			$kmenu.fadeIn( 'fast', function () {
 				$optionsMenu.find( 'span' )
 					.text( mw.msg( 'mwe-embedplayer-close_btn' ) );
 			} );
 			// FIXME: Use CSS transition
-			// eslint-disable-next-line jquery/no-fade
+			// eslint-disable-next-line no-jquery/no-fade
 			this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 
 			$( this.embedPlayer ).trigger( 'displayMenuOverlay' );
@@ -314,7 +314,7 @@
 
 					// Show the target menu item:
 					// FIXME: Use CSS transition
-					// eslint-disable-next-line jquery/no-fade
+					// eslint-disable-next-line no-jquery/no-fade
 					$targetItem.fadeIn( 'fast' );
 
 					// Don't follow the # link

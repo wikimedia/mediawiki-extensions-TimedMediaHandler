@@ -1092,7 +1092,7 @@
 			activeCaptions = source.getCaptionForTime( time );
 			addedCaption = false;
 			// Show captions that are on:
-			// eslint-disable-next-line jquery/no-each-util
+			// eslint-disable-next-line no-jquery/no-each-util
 			$.each( activeCaptions, function ( capId, caption ) {
 				var $cap = self.embedPlayer.getInterface().find( '.track[data-capId="' + capId + '"]' );
 				if ( caption.content !== $cap.html() ) {
@@ -1111,7 +1111,7 @@
 						$( caption ).remove();
 					} else {
 						// FIXME: Use CSS transition
-						// eslint-disable-next-line jquery/no-fade
+						// eslint-disable-next-line no-jquery/no-fade
 						$( caption ).fadeOut( config[ 'EmbedPlayer.MonitorRate' ], function () {
 							$( this ).remove();
 						} );
@@ -1181,7 +1181,7 @@
 				);
 			}
 			// FIXME: Use CSS transition
-			// eslint-disable-next-line jquery/no-fade
+			// eslint-disable-next-line no-jquery/no-fade
 			$textTarget.fadeIn( 'fast' );
 		},
 		displayTextTarget: function ( $textTarget ) {

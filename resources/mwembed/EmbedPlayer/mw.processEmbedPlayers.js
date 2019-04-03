@@ -253,7 +253,7 @@
 			// Copy any data attributes from the target player element over to the swapPlayerElement
 			dataAttributes = config[ 'EmbedPlayer.DataAttributes' ];
 			if ( dataAttributes ) {
-				// eslint-disable-next-line jquery/no-each-util
+				// eslint-disable-next-line no-jquery/no-each-util
 				$.each( dataAttributes, function ( attrName ) {
 					if ( $( targetElement ).data( attrName ) ) {
 						$( swapPlayerElement ).data( attrName, $( targetElement ).data( attrName ) );

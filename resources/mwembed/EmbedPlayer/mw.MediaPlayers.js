@@ -187,7 +187,7 @@
 			}
 			// Update All the player instances on the page
 			if ( selectedPlayer ) {
-				// eslint-disable-next-line jquery/no-global-selector
+				// eslint-disable-next-line no-jquery/no-global-selector
 				$( '.mwEmbedPlayer' ).each( function ( inx, playerTarget ) {
 					var embedPlayer = $( playerTarget ).get( 0 );
 					if ( embedPlayer.mediaElement.selectedSource &&
