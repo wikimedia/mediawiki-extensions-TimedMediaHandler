@@ -110,9 +110,9 @@
 		"SpecialOrphanedTimedText": "includes/SpecialOrphanedTimedText.php"
 	},
 	"Hooks": {
+		"CanonicalNamespaces": "TimedMediaHandlerHooks::onCanonicalNamespaces",
 		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
-		"PageRenderingHash": "TimedMediaHandlerHooks::changePageRenderingHash",
-		"CanonicalNamespaces": "TimedMediaHandlerHooks::addCanonicalNamespaces",
+		"PageRenderingHash": "TimedMediaHandlerHooks::onPageRenderingHash",
 		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars"
 	},
 	"config": {

@@ -18,9 +18,8 @@ class TimedMediaHandlerHooks {
 	 * These need to be before registerhooks due to: T123695
 	 *
 	 * @param array &$list
-	 * @return bool
 	 */
-	public static function addCanonicalNamespaces( array &$list ) {
+	public static function onCanonicalNamespaces( array &$list ) {
 		global $wgEnableLocalTimedText, $wgTimedTextNS;
 		if ( $wgEnableLocalTimedText ) {
 			if ( !defined( 'NS_TIMEDTEXT' ) ) {
@@ -33,7 +32,6 @@ class TimedMediaHandlerHooks {
 		} else {
 			$wgTimedTextNS = false;
 		}
-		return true;
 	}
 
 	/**
@@ -145,7 +143,7 @@ class TimedMediaHandlerHooks {
 
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::checkSchemaUpdates';
 		$wgHooks['wgQueryPages'][] = 'TimedMediaHandlerHooks::onwgQueryPages';
-		$wgHooks['RejectParserCacheValue'][] = 'TimedMediaHandlerHooks::rejectParserCacheValue';
+		$wgHooks['RejectParserCacheValue'][] = 'TimedMediaHandlerHooks::onRejectParserCacheValue';
 		return true;
 	}
 
@@ -538,7 +536,7 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param array $qp
+	 * @param array $qp FIXME Should this be by reference?
 	 * @return bool
 	 */
 	public static function onwgQueryPages( $qp ) {
@@ -553,7 +551,7 @@ class TimedMediaHandlerHooks {
 	 * @param ParserOutput $parserOptions
 	 * @return bool
 	 */
-	public static function rejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
+	public static function onRejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
 		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) && (
 			(
 				self::defaultPlayerMode() === 'mwembed' &&
@@ -573,13 +571,11 @@ class TimedMediaHandlerHooks {
 	 * @param string &$hash
 	 * @param User $user
 	 * @param array &$forOptions
-	 * @return bool
 	 */
-	public static function changePageRenderingHash( &$hash, User $user, &$forOptions ) {
+	public static function onPageRenderingHash( &$hash, User $user, &$forOptions ) {
 		if ( self::activePlayerMode() === 'videojs' ) {
 			if ( $user->getOption( 'tmh-videojs' ) === '1' ) {
 				$hash .= '!tmh-videojs';
-				return true;
 			}
 		}
 	}
@@ -587,7 +583,6 @@ class TimedMediaHandlerHooks {
 	/**
 	 * @param User $user
 	 * @param array &$prefs
-	 * @return bool
 	 */
 	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
 		global $wgTmhUseBetaFeatures;
@@ -613,7 +608,6 @@ class TimedMediaHandlerHooks {
 
 			];
 		}
-		return true;
 	}
 
 	/**
@@ -645,13 +639,10 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * @param array &$vars
-	 * @return array
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		// Allow localSettings.php to override any module config by updating $wgMwEmbedModuleConfig var
 		global $wgMwEmbedModuleConfig;
 		$vars['wgTimedMediaHandler'] = $wgMwEmbedModuleConfig;
-
-		return $vars;
 	}
 }
