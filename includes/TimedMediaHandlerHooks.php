@@ -45,17 +45,9 @@ class TimedMediaHandlerHooks {
 		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
 		$wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads,
-		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions,
-		$wgWikimediaJenkinsCI;
+		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions;
 
 		$wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
-
-		// set config for parser tests
-		if ( isset( $wgWikimediaJenkinsCI ) && $wgWikimediaJenkinsCI === true ) {
-			global $wgEnableTranscode, $wgFFmpegLocation;
-			$wgEnableTranscode = false;
-			$wgFFmpegLocation = '/usr/bin/ffmpeg';
-		}
 
 		// Remove mp4 if not enabled:
 		if ( $wgTmhEnableMp4Uploads === false ) {
@@ -119,7 +111,6 @@ class TimedMediaHandlerHooks {
 		// Add unit tests
 		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 		$wgHooks['ParserTestTables'][] = 'TimedMediaHandlerHooks::onParserTestTables';
-		$wgHooks['ParserTestGlobals'][] = 'TimedMediaHandlerHooks::onParserTestGlobals';
 
 		/**
 		 * Add support for the "TimedText" NameSpace
@@ -458,11 +449,14 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * Hook to reset player serial so that parser tests are not order-dependent
 	 * @param array &$globals
 	 */
 	public static function onParserTestGlobals( &$globals ) {
+		// reset player serial so that parser tests are not order-dependent
 		TimedMediaTransformOutput::resetSerialForTest();
+
+		$globals['wgEnableTranscode'] = false;
+		$globals['wgFFmpegLocation'] = '/usr/bin/ffmpeg';
 	}
 
 	/**
