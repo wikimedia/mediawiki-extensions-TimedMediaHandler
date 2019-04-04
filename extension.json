@@ -113,6 +113,7 @@
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::onCanonicalNamespaces",
 		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
 		"PageRenderingHash": "TimedMediaHandlerHooks::onPageRenderingHash",
+		"ParserTestGlobals": "TimedMediaHandlerHooks::onParserTestGlobals",
 		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars"
 	},
 	"config": {
