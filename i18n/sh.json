@@ -91,7 +91,7 @@
 	"right-transcode-status": "Pregledanje [[Special:TimedMediaHandler|informacija o trenutnom aktivnošću transkodiranja]]",
 	"action-transcode-reset": "poništivanje prekodiranja",
 	"action-transcode-status": "pregledate trenutni status transkodiranja",
-	"log-name-timedmediahandler": "Dnevnik TimedMediaHandlera",
+	"log-name-timedmediahandler": "Evidencija TimedMediaHandlera",
 	"logentry-timedmediahandler-resettranscode": "$1 je {{GENDER:$2|povratio|povratila}} transkod $3 na izvorni format \"$4\"",
 	"orphanedtimedtext": "Stranice siročad s titlovima",
 	"orphanedtimedtext-unsupported": "Ova je posebna stranica podržana samo na MySQL bazama podataka.",
