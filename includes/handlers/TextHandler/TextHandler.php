@@ -51,7 +51,7 @@ class TextHandler {
 			}
 		} elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ) {
 			global $wgTimedTextForeignNamespaces;
-			$wikiID = $this->file->getRepo()->getSlaveDB()->getDomainID();
+			$wikiID = $this->file->getRepo()->getReplicaDB()->getDomainID();
 			if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {
 				return $wgTimedTextForeignNamespaces[ $wikiID ];
 			}
@@ -103,7 +103,7 @@ class TextHandler {
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
-		$dbr = $this->file->getRepo()->getSlaveDB();
+		$dbr = $this->file->getRepo()->getReplicaDB();
 		$prefix = $this->file->getTitle()->getDBkey();
 		return $dbr->select(
 			'page',

@@ -726,7 +726,7 @@ class WebVideoTranscode {
 		$fileName = $file->getName();
 		if ( !isset( self::$transcodeState[$fileName] ) ) {
 			if ( $db === false ) {
-				$db = $file->repo->getSlaveDB();
+				$db = $file->repo->getReplicaDB();
 			}
 			// initialize the transcode state array
 			self::$transcodeState[ $fileName ] = [];
@@ -939,7 +939,7 @@ class WebVideoTranscode {
 	 * @return array
 	 */
 	public static function getDerivativeSourceAttributes( $file, $transcodeKey, $options = [] ) {
-		$fileName = $file->getTitle()->getDbKey();
+		$fileName = $file->getTitle()->getDBkey();
 
 		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
 
@@ -1008,7 +1008,7 @@ class WebVideoTranscode {
 	 * @param File $file File object
 	 */
 	public static function cleanupTranscodes( File $file ) {
-		$fileName = $file->getTitle()->getDbKey();
+		$fileName = $file->getTitle()->getDBkey();
 		$db = $file->repo->getMasterDB();
 
 		$transcodeState = self::getTranscodeState( $file, $db );
@@ -1081,7 +1081,7 @@ class WebVideoTranscode {
 	 * @param string $transcodeKey transcode key
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ) {
-		$fileName = $file->getTitle()->getDbKey();
+		$fileName = $file->getTitle()->getDBkey();
 		$db = $file->repo->getMasterDB();
 
 		$transcodeState = self::getTranscodeState( $file, $db );
