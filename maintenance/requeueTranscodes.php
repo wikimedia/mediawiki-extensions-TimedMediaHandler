@@ -24,7 +24,7 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "audio", "process audio files (defaults to all media types)", false, false );
 		$this->addOption( "video", "process video files (defaults to all media types)", false, false );
 		$this->addOption( "throttle", "throttle on the queue", false, false );
-		$this->mDescription = "re-queue existing and missing media transcodes.";
+		$this->addDescription( "re-queue existing and missing media transcodes." );
 	}
 
 	public function execute() {

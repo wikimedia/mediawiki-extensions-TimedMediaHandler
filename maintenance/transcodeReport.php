@@ -46,7 +46,7 @@ class TranscodeReport extends Maintenance {
 		$this->addOption( "histogram",
 			"produce a breakdown of bitrates for each video transcode resolution", false, false );
 		$this->addOption( "outliers", "include outliers with 0 or very long durations", false, false );
-		$this->mDescription = "build and show a CSV report on transcode derivative files.";
+		$this->addDescription( "build and show a CSV report on transcode derivative files." );
 	}
 
 	public function execute() {
