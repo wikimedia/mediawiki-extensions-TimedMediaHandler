@@ -4,7 +4,8 @@
 			"Helix84",
 			"TomášPolonec",
 			"Wizzard",
-			"Teslaton"
+			"Teslaton",
+			"Robert Važan"
 		]
 	},
 	"timedmediahandler-desc": "Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom",
@@ -22,7 +23,13 @@
 	"timedmedia-play-media": "Prehrať súbor",
 	"timedmedia-desc-link": "O tomto súbore",
 	"timedmedia-source-file": "Zdroj $1",
+	"timedmedia-source-file-desc": "Pôvodný súbor $1, $2×$3 ($4)",
 	"timedmedia-source-audio-file-desc": "Pôvodný súbor $1 ($2)",
+	"timedmedia-derivative-desc-160p.webm": "WebM v nízkej kvalite (160P)",
+	"timedmedia-derivative-desc-240p.webm": "Malé WebM (240P)",
+	"timedmedia-derivative-desc-120p.vp9.webm": "VP9 v najnižšej kvalite (120P)",
+	"timedmedia-derivative-desc-180p.vp9.webm": "VP9 v nízkej kvalite (180P)",
+	"timedmedia-derivative-desc-240p.vp9.webm": "Malé VP9 (240P)",
 	"log-name-timedmediahandler": "Záznam časovaného spracovania médií",
 	"log-description-timedmediahandler": "Toto je záznam akcií, vzťahujúcich sa k časovanej konverzii médií."
 }
