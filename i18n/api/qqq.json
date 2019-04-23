@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Brad Jorsch",
-			"Umherirrender"
+			"Umherirrender",
+			"Brion Vibber"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "{{doc-apihelp-description|query+transcodestatus}}",
@@ -13,6 +14,13 @@
 	"apihelp-query+videoinfo-example-1": "{{doc-apihelp-example|query+videoinfo}}",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "{{doc-apihelp-paramvalue|query+videoinfo|prop|derivatives}}",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "{{doc-apihelp-paramvalue|query+videoinfo|prop|timedtext}}",
+	"apihelp-timedtext-description": "{{doc-apihelp-description|timedtext}}",
+	"apihelp-timedtext-summary": "{{doc-apihelp-summary|timedtext}}",
+	"apihelp-timedtext-param-title": "{{doc-apihelp-param|title}}",
+	"apihelp-timedtext-param-pageid": "{{doc-apihelp-param|pageid}}",
+	"apihelp-timedtext-param-trackformat": "{{doc-apihelp-param|trackformat}}",
+	"apihelp-timedtext-param-lang": "{{doc-apihelp-param|lang}}",
+	"apihelp-timedtext-example-1": "{{doc-apihelp-example|timedtext}}",
 	"apihelp-transcodereset-description": "{{doc-apihelp-description|transcodereset}}",
 	"apihelp-transcodereset-summary": "{{doc-apihelp-summary|transcodereset}}",
 	"apihelp-transcodereset-param-title": "{{doc-apihelp-param|transcodereset|title}}",
@@ -22,5 +30,8 @@
 	"apierror-timedmedia-disabledtranscode": "{{doc-apierror}}",
 	"apierror-timedmedia-invalidtranscodetitle": "{{doc-apierror}}\n\nParameters:\n* $1 - Title supplied",
 	"apierror-timedmedia-badtranscodekey": "{{doc-apierror}}\n\nParameters:\n* $1 - Key supplied",
-	"apierror-timedmedia-notenoughtimereset": "{{doc-apierror}}\n\nParameters:\n* $1 - Time until reset (e.g. \"{{int:timedmedia-minutes|1}}{{int:comma-separator}}{{int:timedmedia-seconds|42}}\"), uses the following messages:\n** {{msg-mw|Timedmedia-days}}\n** {{msg-mw|Timedmedia-hours}}\n** {{msg-mw|Timedmedia-minutes}}\n** {{msg-mw|Timedmedia-seconds}}\n** {{msg-mw|Comma-separator}}"
+	"apierror-timedmedia-lang-notfound": "{{doc-apierror}}",
+        "apierror-timedmedia-no-timedtext-support": "{{doc-apierror}}",
+	"apierror-timedmedia-notenoughtimereset": "{{doc-apierror}}\n\nParameters:\n* $1 - Time until reset (e.g. \"{{int:timedmedia-minutes|1}}{{int:comma-separator}}{{int:timedmedia-seconds|42}}\"), uses the following messages:\n** {{msg-mw|Timedmedia-days}}\n** {{msg-mw|Timedmedia-hours}}\n** {{msg-mw|Timedmedia-minutes}}\n** {{msg-mw|Timedmedia-seconds}}\n** {{msg-mw|Comma-separator}}",
+	"apierror-timedmedia-notlocal": "{{doc-apierror}}"
 }

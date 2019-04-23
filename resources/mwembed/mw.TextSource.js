@@ -405,7 +405,7 @@
 		 *
 		 *  Also see https://bugzilla.wikimedia.org/show_bug.cgi?id=29126
 		 *
-		 * TODO move to mediaWiki specific module.
+		 * @todo remove this once old items out of cache
 		 * @param {string} data
 		 * @return {boolean} [description]
 		 */

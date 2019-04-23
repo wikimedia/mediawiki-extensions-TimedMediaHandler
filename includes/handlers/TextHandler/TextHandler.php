@@ -10,6 +10,10 @@
 
 use Wikimedia\Rdbms\ResultWrapper;
 
+use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
+use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
+use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
+
 class TextHandler {
 	// lazy init remote Namespace number
 	public $remoteNs = null;
@@ -20,8 +24,14 @@ class TextHandler {
 	 */
 	protected $file;
 
-	public function __construct( $file ) {
+	/**
+	 * @var array of string keys for subtitle formats
+	 */
+	protected $formats;
+
+	public function __construct( $file, $formats = [ 'vtt', 'srt' ] ) {
 		$this->file = $file;
+		$this->formats = $formats;
 	}
 
 	/**
@@ -210,12 +220,6 @@ class TextHandler {
 	 */
 	public function getTextTracksFromRows( ResultWrapper $data ) {
 		$textTracks = [];
-		$providerName = $this->file->repo->getName();
-		// commons is called shared in production. normalize it to wikimediacommons
-		if ( $providerName === 'shared' ) {
-			$providerName = 'wikimediacommons';
-		}
-		// Provider name should be the same as the interwiki map
 
 		if ( !$this->file->isLocal() ) {
 			$namespaceName = $this->getForeignNamespaceName();
@@ -243,20 +247,18 @@ class TextHandler {
 				continue;
 			}
 
-			$textTracks[] = [
-				// @todo Should eventually add special entry point and output proper WebVTT format:
-				// http://www.whatwg.org/specs/web-apps/current-work/webvtt.html
-				'src' => $this->getFullURL( $subTitle, $contentType ),
-				'kind' => 'subtitles',
-				'type' => $contentType,
-				'title' => $this->getPrefixedDBkey( $subTitle ),
-				'provider' => $providerName,
-				'srclang' => $languageKey,
-				'dir' => Language::factory( $languageKey )->getDir(),
-				'label' => wfMessage( 'timedmedia-subtitle-language',
-					$langNames[ $languageKey ],
-					$languageKey )->text()
-			];
+			foreach ( $this->formats as $format ) {
+				$textTracks[] = [
+					'src' => $this->getFullURL( $languageKey, $format ),
+					'kind' => 'subtitles',
+					'type' => $this->getContentType( $format ),
+					'srclang' => $languageKey,
+					'dir' => Language::factory( $languageKey )->getDir(),
+					'label' => wfMessage( 'timedmedia-subtitle-language',
+						$langNames[ $languageKey ],
+						$languageKey )->text()
+				];
+			}
 		}
 		return $textTracks;
 	}
@@ -268,15 +270,13 @@ class TextHandler {
 	 */
 	public function getTextTracksFromData( $data ) {
 		$textTracks = [];
-		if ( $data !== null && $data['query'] && $data['query']['pages'] ) {
-			foreach ( $data['query']['pages'] as $page ) {
-				if ( isset( $page['videoinfo'] ) && $page['videoinfo'] ) {
-					foreach ( $page['videoinfo'] as $info ) {
-						if ( $info['timedtext'] ) {
-							foreach ( $info['timedtext'] as $track ) {
-								// Add validation ?
-								$textTracks[] = $track;
-							}
+		foreach ( $data['query']['pages'] ?? [] as $page ) {
+			foreach ( $page['videoinfo'] ?? [] as $info ) {
+				foreach ( $info['timedtext'] ?? [] as $track ) {
+					foreach ( $this->formats as $format ) {
+						if ( $info['type'] ?? '' == $this->getContentType( $format ) ) {
+							// Add validation ?
+							$textTracks[] = $track;
 						}
 					}
 				}
@@ -326,25 +326,71 @@ class TextHandler {
 	 * Retrieve a url to the raw subtitle file
 	 * Only use for local and foreignDb requests
 	 *
-	 * @param Title|ForeignTitle $pageTitle
-	 * @param string $contentType
+	 * @param string $lang
+	 * @param string $format
 	 * @return string
 	 */
-	public function getFullURL( $pageTitle, $contentType ) {
-		if ( $pageTitle instanceof Title ) {
-			return $pageTitle->getFullURL( [
-				'action' => 'raw',
-				'ctype' => $contentType
-			] );
-		} elseif ( $pageTitle instanceof ForeignTitle ) {
-			$query = 'title=' . wfUrlencode( $pageTitle->getFullText() ) . '&';
-			$query .= wfArrayToCgi( [
-				'action' => 'raw',
-				'ctype' => $contentType
-			] );
-			// Note: This will return false if scriptDirUrl is not set for repo.
-			return $this->file->repo->makeUrl( $query );
+	public function getFullURL( $lang, $format ) {
+		$params = [
+			'action' => 'timedtext',
+			'title' => $this->file->getTitle(),
+			'lang' => $lang,
+			'trackformat' => $format,
+		];
+		if ( !$this->file->isLocal() ) {
+			$params['origin'] = '*';
 		}
-		return null;
+		$query = wfArrayToCgi( $params );
+
+		// Note: This will return false if scriptDirUrl is not set for repo.
+		return $this->file->repo->makeUrl( $query, 'api' );
+	}
+
+	/**
+	 * Convert subtitles between SubRIP (SRT) and WebVTT, laxly.
+	 *
+	 * @param string $from source format, one of 'srt' or 'vtt'
+	 * @param string $to destination format, one of 'srt' or 'vtt'
+	 * @param string $data source-formatted subtitles
+	 * @param TimedText\ParseError[] &$errors optional outparam to capture errors
+	 * @return string destination-formatted subtitles
+	 */
+	public static function convertSubtitles( $from, $to, $data, &$errors = [] ) {
+		// Note that we convert even if the format is the same, to ensure
+		// data format integrity.
+		//
+		// @todo cache the conversion in memcached
+		switch ( $from ) {
+			case 'srt':
+				$reader = new SrtReader();
+				break;
+			case 'vtt':
+				// @todo once VttReader is implemented, use it.
+				// For now throw an exception rather than a fatal error.
+				throw new MWException( 'vtt source pages are not yet supported' );
+			default:
+				throw new MWException( 'Unsupported timedtext filetype' );
+		}
+		switch ( $to ) {
+			case 'srt':
+				$writer = new SrtWriter();
+				break;
+			case 'vtt':
+				$writer = new VttWriter();
+				break;
+			default:
+				throw new MWException( 'Unsupported timedtext filetype' );
+		}
+		try {
+			$reader->read( $data );
+			$cues = $reader->getCues();
+			$errors = $reader->getErrors();
+
+			$newFile = $writer->write( $cues );
+			return $newFile;
+		} catch ( Exception $e ) {
+			throw new MWException( 'Timed text track conversion failed: ' .
+				$e->getMessage() );
+		}
 	}
 }

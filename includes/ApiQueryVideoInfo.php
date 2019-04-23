@@ -32,7 +32,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		}
 		if ( isset( $prop['timedtext'] ) ) {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
-				$handler = new TextHandler( $file );
+				$handler = new TextHandler( $file, [ 'srt', 'vtt' ] );
 				$vals['timedtext'] = $handler->getTracks();
 				foreach ( $vals['timedtext'] as &$track ) {
 					$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );

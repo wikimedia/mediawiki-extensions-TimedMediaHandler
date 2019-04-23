@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Brad Jorsch",
-			"TheDJ"
+			"TheDJ",
+			"Brion Vibber"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Get transcode status for a given file page.",
@@ -13,6 +14,13 @@
 	"apihelp-query+videoinfo-example-1": "Fetch information about [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adds an array of the different format and quality versions of an audio or video file that are available.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adds an array of the subtitles, captions and descriptions of an audio or video file that are available.",
+	"apihelp-timedtext-description": "Provides timed text content for usage by &lt;track&gt; elements",
+	"apihelp-timedtext-summary": "Provides timed text content for usage by $lt;track&gt; elements",
+	"apihelp-timedtext-param-title": "The media file title for which to retrieve timed text",
+	"apihelp-timedtext-param-pageid": "The pageid of the media file for which to retrieve timed text",
+	"apihelp-timedtext-param-trackformat": "The file format in which to return timed text",
+	"apihelp-timedtext-param-lang": "The language of the timed text to retrieve",
+	"apihelp-timedtext-example-1": "Fetch an SRT subtitle file in German for the file Example.ogv",
 	"apihelp-transcodereset-description": "Users with the 'transcode-reset' right can reset and re-run a transcode job.",
 	"apihelp-transcodereset-summary": "Users with the 'transcode-reset' right can reset and re-run a transcode job.",
 	"apihelp-transcodereset-param-title": "The media file title.",
@@ -22,5 +30,8 @@
 	"apierror-timedmedia-disabledtranscode": "Transcode is disabled on this wiki.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 is not transcodable.",
 	"apierror-timedmedia-badtranscodekey": "Invalid or disabled transcode key: $1",
-	"apierror-timedmedia-notenoughtimereset": "Not enough time has passed since the last reset of this transcode. $1 until this transcode can be reset."
+	"apierror-timedmedia-notenoughtimereset": "Not enough time has passed since the last reset of this transcode. $1 until this transcode can be reset.",
+	"apierror-timedmedia-lang-notfound": "Requested language not found",
+	"apierror-timedmedia-no-timedtext-support": "No TimedText support",
+	"apierror-timedmedia-notlocal": "File not local"
 }
