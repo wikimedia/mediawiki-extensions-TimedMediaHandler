@@ -74,8 +74,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 */
 	private function getTextHandler() {
 		if ( !$this->textHandler ) {
+			if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+				$format = 'vtt';
+			} else {
+				$format = 'srt';
+			}
 			// Init an associated textHandler
-			$this->textHandler = new TextHandler( $this->file );
+			$this->textHandler = new TextHandler( $this->file, [ $format ] );
 		}
 		return $this->textHandler;
 	}

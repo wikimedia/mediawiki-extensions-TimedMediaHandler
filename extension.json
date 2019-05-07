@@ -18,6 +18,7 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 	"APIModules": {
+		"timedtext": "ApiTimedText",
 		"transcodereset": "ApiTranscodeReset"
 	},
 	"APIPropModules": {
@@ -82,6 +83,7 @@
 		"TranscodeStatusTable": "includes/TranscodeStatusTable.php",
 
 		"ApiTestCaseVideoUpload": "tests/phpunit/ApiTestCaseVideoUpload.php",
+
 		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
 
 		"OggHandler": "includes/handlers/OggHandler/OggHandler.php",
@@ -104,10 +106,14 @@
 		"TimedTextPage": "includes/TimedTextPage.php",
 		"WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php",
 		"ApiQueryVideoInfo": "includes/ApiQueryVideoInfo.php",
+		"ApiTimedText": "includes/ApiTimedText.php",
 		"ApiTranscodeStatus": "includes/ApiTranscodeStatus.php",
 		"ApiTranscodeReset": "includes/ApiTranscodeReset.php",
 		"SpecialTimedMediaHandler": "includes/SpecialTimedMediaHandler.php",
 		"SpecialOrphanedTimedText": "includes/SpecialOrphanedTimedText.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\TimedMediaHandler\\TimedText\\": "includes/TimedText/"
 	},
 	"Hooks": {
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::onCanonicalNamespaces",

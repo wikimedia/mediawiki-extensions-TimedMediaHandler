@@ -336,6 +336,9 @@
 				callback();
 			}
 		} );
+
+		// @todo Remove this after old items gone from cache;
+		// was used for old indirect loader.
 		$( mw ).bindQueueCallback( 'TimedText_LoadTextSource', function ( source, callback ) {
 			var apiUrl, request;
 			if ( !source.mwtitle || !source.mwprovider ) {
