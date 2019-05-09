@@ -6,7 +6,6 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-exec' );
-	grunt.loadNpmTasks( 'grunt-jsonlint' );
 	grunt.loadNpmTasks( 'grunt-patcher' );
 	grunt.loadNpmTasks( 'grunt-stylelint' );
 
@@ -14,15 +13,14 @@ module.exports = function ( grunt ) {
 		eslint: {
 			options: {
 				reportUnusedDisableDirectives: true,
+				extensions: [ '.js', '.json' ],
 				cache: true
 			},
 			all: [
-				'**/*.js',
-				'!resources/videojs*/**',
+				'**/*.js{,on}',
 				// Third party resources
-				'!resources/mwembed/lib/**',
-				'!node_modules/**',
-				'!vendor/**'
+				'!resources/{videojs*,mwembed/lib}/**',
+				'!{vendor,node_modules}/**'
 			]
 		},
 		stylelint: {
@@ -35,14 +33,6 @@ module.exports = function ( grunt ) {
 				// Third party resources
 				'!resources/mwembed/**',
 				'!resources/videojs*/**',
-				'!node_modules/**',
-				'!vendor/**'
-			]
-		},
-		jsonlint: {
-			all: [
-				'*.json',
-				'**/*.json',
 				'!node_modules/**',
 				'!vendor/**'
 			]
@@ -157,6 +147,6 @@ module.exports = function ( grunt ) {
 		'patch:videojs-responsive-layout'
 	] );
 	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
-	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'jsonlint', 'banana' ] );
+	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };
