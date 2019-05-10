@@ -12,6 +12,13 @@
 	"apihelp-query+videoinfo-example-1": "Obter informação sobre [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adiciona uma tabela das versões disponíveis de um ficheiro de áudio ou vídeo, com os diferentes formatos e padrões de qualidade.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adiciona uma tabela das versões disponíveis de um ficheiro de áudio ou vídeo, com os diferentes subtítulos, legendas e descrições.",
+	"apihelp-timedtext-description": "Fornece conteúdo de legendas para ser usado por elementos &lt;track&gt;",
+	"apihelp-timedtext-summary": "Fornece conteúdo de legendas para ser usado por elementos &lt;track&gt;",
+	"apihelp-timedtext-param-title": "O título do ficheiro multimédia para o qual obter legendas",
+	"apihelp-timedtext-param-pageid": "O ''pageid'' do ficheiro multimédia para o qual obter legendas",
+	"apihelp-timedtext-param-trackformat": "O formato do ficheiro em que devolver as legendas",
+	"apihelp-timedtext-param-lang": "A língua das legendas a serem obtidas",
+	"apihelp-timedtext-example-1": "Obter um ficheiro de legendas SRT em alemão para o ficheiro Example.ogv",
 	"apihelp-transcodereset-description": "Os utilizadores com o privilégio 'transcode-reset' podem reiniciar e voltar a executar uma tarefa de transcodificação.",
 	"apihelp-transcodereset-summary": "Os utilizadores com o privilégio 'transcode-reset' podem reiniciar e voltar a executar uma tarefa de transcodificação.",
 	"apihelp-transcodereset-param-title": "O título do ficheiro multimédia.",
@@ -21,5 +28,8 @@
 	"apierror-timedmedia-disabledtranscode": "A transcodificação está desativada nesta wiki.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 não é transcodificável.",
 	"apierror-timedmedia-badtranscodekey": "Chave de transcodificação inválida ou desativada: $1",
-	"apierror-timedmedia-notenoughtimereset": "Não passou tempo suficiente desde o último reinício desta transcodificação. Falta $1 até que a transcodificação possa ser reiniciada."
+	"apierror-timedmedia-notenoughtimereset": "Não passou tempo suficiente desde o último reinício desta transcodificação. Falta $1 até que a transcodificação possa ser reiniciada.",
+	"apierror-timedmedia-lang-notfound": "A língua pedida não foi encontrada",
+	"apierror-timedmedia-no-timedtext-support": "Legendas TimedText não são suportadas",
+	"apierror-timedmedia-notlocal": "O ficheiro não é local"
 }

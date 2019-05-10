@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mnam23"
+		]
+	},
+	"apierror-timedmedia-lang-notfound": "Bahasa yang diinginkan tidak ditemukan",
+	"apierror-timedmedia-notlocal": "Berkas tidak lokal"
+}

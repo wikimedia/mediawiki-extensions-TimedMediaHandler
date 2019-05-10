@@ -4,5 +4,6 @@
 			"Robby"
 		]
 	},
-	"apihelp-transcodereset-param-title": "Den Titel vum Mediefichier."
+	"apihelp-transcodereset-param-title": "Den Titel vum Mediefichier.",
+	"apierror-timedmedia-notlocal": "Fichier net lokal"
 }

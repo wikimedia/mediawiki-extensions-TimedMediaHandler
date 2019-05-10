@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Obtenha o status da transcodificação para uma determinada página de arquivo.",
@@ -12,6 +13,13 @@
 	"apihelp-query+videoinfo-example-1": "Obter informações sobre [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adiciona uma matriz do formato e versões diferente de qualidade de um arquivo de áudio ou vídeo que estão disponíveis.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adiciona uma série de legendas, legendas e descrições de um arquivo de áudio ou vídeo que está disponível.",
+	"apihelp-timedtext-description": "Fornece conteúdo de legendas para ser usado por elementos &lt;track&gt;",
+	"apihelp-timedtext-summary": "Fornece conteúdo de legendas para ser usado por elementos &lt;track&gt;",
+	"apihelp-timedtext-param-title": "O título do arquivo multimédia para o qual obter legendas",
+	"apihelp-timedtext-param-pageid": "O ''pageid'' do arquivo multimédia para o qual obter legendas",
+	"apihelp-timedtext-param-trackformat": "O formato do arquivo em que devolver as legendas",
+	"apihelp-timedtext-param-lang": "A língua das legendas a serem obtidas",
+	"apihelp-timedtext-example-1": "Obter um arquivo de legendas SRT em alemão para o arquivo Example.ogv",
 	"apihelp-transcodereset-description": "Os usuários com o direito 'transcode-reset' podem reiniciar e re-executar um trabalho de transcodificação.",
 	"apihelp-transcodereset-summary": "Os usuários com o direito 'transcode-reset' podem reiniciar e re-executar um trabalho de transcodificação.",
 	"apihelp-transcodereset-param-title": "O título do arquivo de mídia.",
@@ -21,5 +29,8 @@
 	"apierror-timedmedia-disabledtranscode": "O Transcode está desativado nesta wiki.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 não é transcodificável.",
 	"apierror-timedmedia-badtranscodekey": "Chave de transcodificação inválida ou desabilitada: $1",
-	"apierror-timedmedia-notenoughtimereset": "Não houve tempo suficiente desde a última reposição desta transcodificação. $1 até esta transcodificação pode ser redefinida."
+	"apierror-timedmedia-notenoughtimereset": "Não houve tempo suficiente desde a última reposição desta transcodificação. $1 até esta transcodificação pode ser redefinida.",
+	"apierror-timedmedia-lang-notfound": "Idioma solicitado não encontrado",
+	"apierror-timedmedia-no-timedtext-support": "Legendas TimedText não são suportadas",
+	"apierror-timedmedia-notlocal": "O arquivo não é local"
 }

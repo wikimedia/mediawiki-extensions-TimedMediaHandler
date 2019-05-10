@@ -13,6 +13,13 @@
 	"apihelp-query+videoinfo-example-1": "Ruft Informationen über [[:File:Folgers.ogv]] ab",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Ergänzt eine Reihe unterschiedlicher verfügbarer Format- und Qualitätsversionen einer Audio- oder Videodatei.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Ergänzt ein Array der verfügbaren Untertitel, Überschriften und Beschreibungen einer Audio- oder Videodatei.",
+	"apihelp-timedtext-description": "Bietet „Timed Text“-Inhalte für die Nutzung durch &lt;track&gt;-Elemente",
+	"apihelp-timedtext-summary": "Bietet „Timed Text“-Inhalte für die Nutzung durch $lt;track&gt;-Elemente",
+	"apihelp-timedtext-param-title": "Der Titel der Mediendatei, für die „Timed Text“ abgerufen werden soll.",
+	"apihelp-timedtext-param-pageid": "Die Seitenkennung der Mediendatei, für die „Timed Text“ abgerufen werden soll.",
+	"apihelp-timedtext-param-trackformat": "Das Dateiformat, in dem „Timed Text“ zurückgegeben werden soll.",
+	"apihelp-timedtext-param-lang": "Die Sprache des abzurufenden „Timed Text“",
+	"apihelp-timedtext-example-1": "Ruft eine SRT-Untertiteldatei auf Deutsch für die Datei Example.ogv ab",
 	"apihelp-transcodereset-description": "Benutzer mit dem Recht „transcode-reset“ können Umschlüsselungsaufträge zurücksetzen und neu starten",
 	"apihelp-transcodereset-summary": "Benutzer mit dem Recht „transcode-reset“ können Umschlüsselungsaufträge zurücksetzen und neu starten.",
 	"apihelp-transcodereset-param-title": "Der Titel der Mediendatei.",
@@ -22,5 +29,8 @@
 	"apierror-timedmedia-disabledtranscode": "Transkodierungen sind auf diesem Wiki deaktiviert.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 ist nicht transkodierbar.",
 	"apierror-timedmedia-badtranscodekey": "Ungültiger oder deaktivierter Transkodierungsschlüssel: $1",
-	"apierror-timedmedia-notenoughtimereset": "Seit dem letzten Zurücksetzen dieser Transkodierung ist nicht genug Zeit verstrichen. Warte $1, bis diese Transkodierung zurückgesetzt werden kann."
+	"apierror-timedmedia-notenoughtimereset": "Seit dem letzten Zurücksetzen dieser Transkodierung ist nicht genug Zeit verstrichen. Warte $1, bis diese Transkodierung zurückgesetzt werden kann.",
+	"apierror-timedmedia-lang-notfound": "Die angeforderte Sprache wurde nicht gefunden",
+	"apierror-timedmedia-no-timedtext-support": "Keine Unterstützung für „Timed Text“",
+	"apierror-timedmedia-notlocal": "Datei nicht lokal"
 }

@@ -14,6 +14,13 @@
 	"apihelp-query+videoinfo-example-1": "Récupérer des informations sur [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Ajoute un tableau des versions disponibles des différents formats et qualités d’un fichier audio ou vidéo.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Ajoute un tableau des sous-titres, légendes et descriptions disponibles d’un fichier audio ou vidéo",
+	"apihelp-timedtext-description": "Fournit un contenu texte horodaté pour être utilisé par les éléments &lt;track&gt;",
+	"apihelp-timedtext-summary": "Fournit un contenu texte horodaté pour être utilisé par les éléments $lt;track&gt;",
+	"apihelp-timedtext-param-title": "Le titre du fichier de média pour lequel récupérer le texte horodaté",
+	"apihelp-timedtext-param-pageid": "Le pageid du fichier de média pour lequel récupérer le texte horodaté",
+	"apihelp-timedtext-param-trackformat": "Le format du fichier dans lequel renvoyer le texte horodaté",
+	"apihelp-timedtext-param-lang": "La langue du texte horodaté à récupérer",
+	"apihelp-timedtext-example-1": "Récupérer un fichier de sous-titre SRT en allemand pour le fichier Exemple.ogv",
 	"apihelp-transcodereset-description": "Les utilisateurs avec le droit 'transcode-reset' peuvent réinitialiser et relancer une tâche de transcodage.",
 	"apihelp-transcodereset-summary": "Les utilisateurs avec le droit 'transcode-reset' peuvent réinitialiser et relancer une tâche de transcodage.",
 	"apihelp-transcodereset-param-title": "Le titre du fichier média.",
@@ -23,5 +30,8 @@
 	"apierror-timedmedia-disabledtranscode": "Transcode est désactivé sur ce wiki.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 n'est pas transcodable.",
 	"apierror-timedmedia-badtranscodekey": "Clé de transcodage invalide ou inactive: $1",
-	"apierror-timedmedia-notenoughtimereset": "Il ne s'est pas écoulé assez de temps depuis la dernière réinitialisation de ce transcode. Il reste $1 pour que ce transcode puisse être réinitialisé."
+	"apierror-timedmedia-notenoughtimereset": "Il ne s'est pas écoulé assez de temps depuis la dernière réinitialisation de ce transcode. Il reste $1 pour que ce transcode puisse être réinitialisé.",
+	"apierror-timedmedia-lang-notfound": "Langue demandée non trouvée",
+	"apierror-timedmedia-no-timedtext-support": "Pas de support de TimedText",
+	"apierror-timedmedia-notlocal": "Fichier non local"
 }

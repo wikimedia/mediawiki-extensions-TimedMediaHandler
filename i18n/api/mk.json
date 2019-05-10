@@ -12,6 +12,13 @@
 	"apihelp-query+videoinfo-example-1": "Дај информации за [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Додава низа достапни верзии на вашата аудио или видео податотека со различен формат и квалитет.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Додава низа достапни титлови, текст и описи на аудио и видео податотека.",
+	"apihelp-timedtext-description": "Дава времеводена текстуална содржина за употреба од елементи &lt;track&gt;",
+	"apihelp-timedtext-summary": "Дава времеводена текстуална содржина за употреба од елементи $lt;track&gt;",
+	"apihelp-timedtext-param-title": "Наслов на податотеката за која се бара времеводен текст",
+	"apihelp-timedtext-param-pageid": "Назнака на страницата на податотеката за која се бара времеводениот текст",
+	"apihelp-timedtext-param-trackformat": "Податотечниот формат за кој се бара времеводениот текст",
+	"apihelp-timedtext-param-lang": "Јазик на бараниот времеводен текст",
+	"apihelp-timedtext-example-1": "Дај титловска податотека од SRT за германски за податотеката Example.ogv",
 	"apihelp-transcodereset-description": "Корисниците со правото „transcode-reset“ можат прекодирањата да ги вршат одново.",
 	"apihelp-transcodereset-summary": "Корисниците со правото „transcode-reset“ можат прекодирањата да ги вршат одново.",
 	"apihelp-transcodereset-param-title": "Наслов на податотеката.",
@@ -21,5 +28,8 @@
 	"apierror-timedmedia-disabledtranscode": "Прекодирањето е оневозможено на ова вики.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 не може да се прекодира.",
 	"apierror-timedmedia-badtranscodekey": "Неважечки или оневозможен клуч за прекодирање: $1",
-	"apierror-timedmedia-notenoughtimereset": "Не помина довоно време од последното поништување на прекодирањево. Почекајте $1 за да можете да го поништите."
+	"apierror-timedmedia-notenoughtimereset": "Не помина довоно време од последното поништување на прекодирањево. Почекајте $1 за да можете да го поништите.",
+	"apierror-timedmedia-lang-notfound": "Не го најдов побараниот јазик",
+	"apierror-timedmedia-no-timedtext-support": "Не поддржува Времеводен текст",
+	"apierror-timedmedia-notlocal": "Податотеката не е месна"
 }
