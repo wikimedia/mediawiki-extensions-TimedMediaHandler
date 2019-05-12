@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Piramidion",
-			"Ата"
+			"Ата",
+			"Vlad5250"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Отримати транскод-статус для даної сторінки файлу.",
@@ -22,5 +23,7 @@
 	"apierror-timedmedia-disabledtranscode": "Перекодування вимкнене в цій вікі.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 недоступна для перекодування.",
 	"apierror-timedmedia-badtranscodekey": "Недійсний або вимкнений ключ перекодування: $1",
-	"apierror-timedmedia-notenoughtimereset": "Недостатньо часу минуло з останнього скидання цього перекодування. $1 має минути, перш ніж це перекодування можна буде скинути ще раз."
+	"apierror-timedmedia-notenoughtimereset": "Недостатньо часу минуло з останнього скидання цього перекодування. $1 має минути, перш ніж це перекодування можна буде скинути ще раз.",
+	"apierror-timedmedia-no-timedtext-support": "Не підтримує TimedText",
+	"apierror-timedmedia-notlocal": "Файл не локальний"
 }
