@@ -13,6 +13,7 @@
 	"apihelp-query+videoinfo-example-1": "檢索有關 [[:File:Folgers.ogv]] 的資訊",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "添加可用音訊或影片檔案品質版本與其它格式的陣列。",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "在可用的音訊和影片檔案添加字幕、標題，和描述的陣列。",
+	"apihelp-timedtext-param-trackformat": "回傳字幕的檔案",
 	"apihelp-transcodereset-description": "具「transcode-reset」權限的使用者可以重新設定和重新執行轉碼任務。",
 	"apihelp-transcodereset-summary": "具「transcode-reset」權限的使用者可以重新設定和重新執行轉碼任務。",
 	"apihelp-transcodereset-param-title": "多媒體檔案標題。",
@@ -22,5 +23,6 @@
 	"apierror-timedmedia-disabledtranscode": "此 wiki 已關閉轉碼功能。",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 無法轉碼。",
 	"apierror-timedmedia-badtranscodekey": "無效或停用的轉碼鍵值：$1",
-	"apierror-timedmedia-notenoughtimereset": "自上一次重新設定此轉碼後，所經過的時間不夠。可在 $1 前重新設定此轉碼。"
+	"apierror-timedmedia-notenoughtimereset": "自上一次重新設定此轉碼後，所經過的時間不夠。可在 $1 前重新設定此轉碼。",
+	"apierror-timedmedia-lang-notfound": "找不到請求的語言"
 }

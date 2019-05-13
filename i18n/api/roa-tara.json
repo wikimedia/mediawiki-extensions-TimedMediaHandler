@@ -29,5 +29,7 @@
 	"apierror-timedmedia-invalidtranscodetitle": "$1 non g'è traducibbele.",
 	"apierror-timedmedia-badtranscodekey": "Chiave de traduzione invalide o disabbilitate: $1",
 	"apierror-timedmedia-notenoughtimereset": "Non ha passate assaije tiembe da l'urteme azzeramende de sta codifeche. $1 fine a quanne sta codifeche pò essere azzerate.",
-	"apierror-timedmedia-lang-notfound": "Lènghe cercate non acchiate"
+	"apierror-timedmedia-lang-notfound": "Lènghe cercate non acchiate",
+	"apierror-timedmedia-no-timedtext-support": "Nisciune TimedText jè supportate",
+	"apierror-timedmedia-notlocal": "File non locale"
 }
