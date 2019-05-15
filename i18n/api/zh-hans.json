@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"WhitePhosphorus",
-			"Yfdyh000"
+			"Yfdyh000",
+			"科劳"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "获取指定文件页面的转码状态。",
@@ -23,5 +24,6 @@
 	"apierror-timedmedia-disabledtranscode": "转码在本wiki被停用。",
 	"apierror-timedmedia-invalidtranscodetitle": "$1不可转码。",
 	"apierror-timedmedia-badtranscodekey": "无效或被禁用的转码关键词：$1",
-	"apierror-timedmedia-notenoughtimereset": "在此次转码上次重置以来，没有过去足够时间。$1直到此次转码可以被重置。"
+	"apierror-timedmedia-notenoughtimereset": "在此次转码上次重置以来，没有过去足够时间。$1直到此次转码可以被重置。",
+	"apierror-timedmedia-notlocal": "文件在本地不可用"
 }

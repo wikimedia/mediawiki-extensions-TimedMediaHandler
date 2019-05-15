@@ -7,7 +7,8 @@
 			"Minisarm",
 			"Stelistcristi",
 			"ImGelu",
-			"Strainu"
+			"Strainu",
+			"Andrei Stroe"
 		]
 	},
 	"timedmediahandler-desc": "Gestionar pentru fișiere audio, video și subtitrări sincronizate, cu suport pentru formatele WebM, Ogg Theora, Vorbis, srt",
@@ -53,7 +54,7 @@
 	"timedmedia-seconds": "{{PLURAL:$1|o secundă|$1 secunde|$1 de secunde}}",
 	"timedmedia-reset": "Reinițializează codificarea",
 	"timedmedia-reset-error": "Eroare la reinițializarea codificării.",
-	"timedmedia-reset-explanation": "Reinițializarea acestei codificări va elimina orice fișier existent (dacă există) și va readăuga codificarea la șirul de sarcini. Va dura ceva timp pentru a recodifica. <br /><br />\nSunteți sigur că doriți să continuați?",
+	"timedmedia-reset-explanation": "Reinițializarea acestei codificări va elimina orice fișier existent (dacă există) și va readăuga codificarea la șirul de sarcini. Va dura ceva timp pentru a recodifica.",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Sursă $1",
 	"timedmedia-source-file-desc": "Fișier $1 original, $2 × $3 ($4)",

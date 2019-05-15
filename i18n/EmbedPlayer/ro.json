@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Minisarm",
-			"Stelistcristi"
+			"Stelistcristi",
+			"Andrei Stroe"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titlu: $1",
@@ -60,7 +61,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Pentru o vizionare mai bună a videoclipului vă recomandăm un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navigator compatibil cu modulul video din HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Nu s-a detectat niciun player integrat în navigator compatibil: pentru a reda în navigator, vă rugăm să descărcați [$1 ultima versiune de Firefox].",
-	"mwe-embedplayer-fullscreen-tip": "Apăsați <b>F11</b> pentru a comuta <i>navigatorul</i> în modul ecran complet",
+	"mwe-embedplayer-fullscreen-tip": "Apăsați <b>F11</b> pentru a activa sau dezactiva modul ecran complet",
 	"mwe-embedplayer-fullscreen-tip-osx": "Apăsați <b>shift ⌘ F</b> pentru a comuta în modul ecran complet",
 	"mwe-embedplayer-do_not_warn_again": "Nu mai afișa acest mesaj în viitor",
 	"mwe-embedplayer-playerSelect": "Playere",
