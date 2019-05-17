@@ -5,7 +5,7 @@
  * @group medium
  * @covers WebVideoTranscode
  */
-class VideoTranscodeTest extends ApiTestCaseVideoUpload {
+class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
 	/**
 	 * Once video files are uploaded test transcoding

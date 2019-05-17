@@ -15,7 +15,7 @@
  * @group medium
  * @coversNothing Covers core ApiUpload class
  */
-class ApiUploadVideoTest extends ApiTestCaseVideoUpload {
+class ApiUploadVideoTest extends ApiVideoUploadTestCase {
 
 	/**
 	 * @dataProvider mediaFilesProvider

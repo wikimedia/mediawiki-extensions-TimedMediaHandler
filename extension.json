@@ -82,7 +82,7 @@
 		"TimedMediaThumbnail": "includes/TimedMediaThumbnail.php",
 		"TranscodeStatusTable": "includes/TranscodeStatusTable.php",
 
-		"ApiTestCaseVideoUpload": "tests/phpunit/ApiTestCaseVideoUpload.php",
+		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
 
 		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
 
