@@ -3,7 +3,7 @@
  * Abstract test class to support Video Tests with video uploads
  * @author dale
  */
-abstract class ApiTestCaseVideoUpload extends ApiTestCaseUpload {
+abstract class ApiVideoUploadTestCase extends ApiTestCaseUpload {
 	/**
 	 * @return Array set of test files with associated metadata
 	 */

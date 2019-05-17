@@ -1,7 +1,7 @@
 
 Some TimedMediaHandler testing notes:
 
-	We have a base class ApiTestCaseVideoUpload that establishes the uploads. Actual uploading
+	We have a base class ApiVideoUploadTestCase that establishes the uploads. Actual uploading
 	is tested in the core uploading support so we focus these tests on timed media handler functionality
 
  	We sometimes combine a few tests because fixtures don't play well with dataProvider
