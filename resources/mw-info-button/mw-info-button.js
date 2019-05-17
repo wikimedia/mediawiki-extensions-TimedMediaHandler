@@ -39,7 +39,10 @@
 						player.el().getAttribute( 'data-mwtitle' )
 					),
 					button = new InfoButton( Button, title.getUrl() );
-				player.controlBar.infoButton = player.controlBar.addChild( button );
+
+				if ( mw.config.get( 'wgTitle' ) !== player.el().getAttribute( 'data-mwtitle' ) ) {
+					player.controlBar.infoButton = player.controlBar.addChild( button );
+				}
 			} );
 		};
 
