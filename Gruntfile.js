@@ -37,7 +37,12 @@ module.exports = function ( grunt ) {
 				'!vendor/**'
 			]
 		},
-		banana: conf.MessagesDirs,
+		banana: {
+			options: {
+				requireLowerCase: false
+			},
+			all: conf.MessagesDirs.TimedMediaHandler
+		},
 		exec: {
 			'npm-update-videojs': {
 				cmd: 'npm update ogv video.js videojs-resolution-switcher-v6 videojs-ogvjs videojs-responsive-layout',
