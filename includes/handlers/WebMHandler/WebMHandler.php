@@ -13,10 +13,14 @@ class WebMHandler extends ID3Handler {
 		// Unset some parts of id3 that are too detailed and matroska specific:
 		// @todo include the basic file codec and other metadata too?
 		if ( isset( $id3['matroska'] ) ) {
-			$comments = $id3['matroska']['comments'];
-			$id3['matroska'] = [
-				'comments' => $comments
-			];
+			if ( isset( $id3['matroska']['comments'] ) ) {
+				$comments = $id3['matroska']['comments'];
+				$id3['matroska'] = [
+					'comments' => $comments
+				];
+			} else {
+				unset( $id3['matroska'] );
+			}
 		}
 		return $id3;
 	}
