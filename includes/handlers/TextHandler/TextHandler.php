@@ -274,7 +274,7 @@ class TextHandler {
 			foreach ( $page['videoinfo'] ?? [] as $info ) {
 				foreach ( $info['timedtext'] ?? [] as $track ) {
 					foreach ( $this->formats as $format ) {
-						if ( $info['type'] ?? '' == $this->getContentType( $format ) ) {
+						if ( $track['type'] ?? '' === $this->getContentType( $format ) ) {
 							// Add validation ?
 							$textTracks[] = $track;
 						}
