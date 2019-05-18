@@ -309,20 +309,6 @@ class TextHandler {
 	}
 
 	/**
-	 * Retrieve a namespace prefixed and underscored title
-	 * @param Title|ForeignTitle $pageTitle
-	 * @return string
-	 */
-	public function getPrefixedDBkey( $pageTitle ) {
-		if ( $pageTitle instanceof Title ) {
-			return $pageTitle->getPrefixedDBkey();
-		} elseif ( $pageTitle instanceof ForeignTitle ) {
-			return $pageTitle->getFullText();
-		}
-		return null;
-	}
-
-	/**
 	 * Retrieve a url to the raw subtitle file
 	 * Only use for local and foreignDb requests
 	 *
@@ -333,7 +319,7 @@ class TextHandler {
 	public function getFullURL( $lang, $format ) {
 		$params = [
 			'action' => 'timedtext',
-			'title' => $this->file->getTitle(),
+			'title' => $this->file->getTitle()->getPrefixedDBkey(),
 			'lang' => $lang,
 			'trackformat' => $format,
 		];
