@@ -500,6 +500,17 @@
 				"ext.tmh.video-js"
 			]
 		},
+		"ext.tmh.mw-audio-captions": {
+			"scripts": "resources/mw-audio-captions/mw-audio-captions.js",
+			"styles": "resources/mw-audio-captions/mw-audio-captions.less",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"dependencies": [
+				"ext.tmh.video-js"
+			]
+		},
 		"ext.tmh.mw-info-button": {
 			"scripts": "resources/mw-info-button/mw-info-button.js",
 			"styles": "resources/mw-info-button/mw-info-button.css",
@@ -522,6 +533,7 @@
 				"ext.tmh.video-js",
 				"ext.tmh.videojs-resolution-switcher",
 				"ext.tmh.mw-info-button",
+				"ext.tmh.mw-audio-captions",
 				"ext.tmh.OgvJsSupport"
 			],
 			"messages": [
