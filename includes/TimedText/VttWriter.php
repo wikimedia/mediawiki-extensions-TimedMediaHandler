@@ -29,7 +29,7 @@ class VttWriter extends Writer {
 	}
 
 	/**
-	 * @param Cue $cue cue to output
+	 * @param DOM\Cue $cue cue to output
 	 * @return string
 	 */
 	public function formatCue( DOM\Cue $cue ) {

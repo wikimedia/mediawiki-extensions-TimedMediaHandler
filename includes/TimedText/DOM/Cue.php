@@ -12,7 +12,7 @@ class Cue {
 	/** @var float */
 	public $end = 0.0;
 
-	/** @var DOM\Node[] */
+	/** @var Node[] */
 	public $nodes = [];
 
 	public function appendNode( Node $node ) {
