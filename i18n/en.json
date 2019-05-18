@@ -22,6 +22,8 @@
 	"timedmedia-wav-pcm-required": "You can only upload PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp3-short-audio": "MP3 audio file, $1",
 	"timedmedia-mp3-long-audio": "MP3 audio file, length $1, $2 overall",
+	"timedmedia-midi-short-audio": "MIDI audio file, $1",
+	"timedmedia-midi-long-audio": "MIDI audio file, length $1, $2 overall",
 	"timedmedia-mp4-short-video": "MP4 $1 video file, $2",
 	"timedmedia-mp4-long-video": "MP4 audio/video file, $1, length $2, $4 × $5 pixels, $3 overall",
 	"timedmedia-more": "More…",

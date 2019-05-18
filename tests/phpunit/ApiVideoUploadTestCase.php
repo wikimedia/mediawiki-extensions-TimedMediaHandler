@@ -33,6 +33,14 @@ abstract class ApiVideoUploadTestCase extends ApiTestCaseUpload {
 					"bandwidth" => 522142,
 					"framerate" => 29.97
 				]
+			],
+			[
+				[
+					'mime' => 'audio/midi',
+					'filePath' => __DIR__ . '/media/c-major.midi',
+					'size' => 262,
+					'mediatype' => "AUDIO"
+				]
 			]
 		];
 	}
