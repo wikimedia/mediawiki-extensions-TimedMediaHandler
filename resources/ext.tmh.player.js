@@ -12,20 +12,6 @@
 		},
 		techOrder: [ 'html5' ],
 		plugins: {
-			/*
-			// Disable this until it's fixed.
-			// Currently at small sizes it causes constant 'bouncing'
-			// between different layouts which is worse than a missing
-			// button or two.
-			responsiveLayout: {
-				layoutMap: [
-					{ layoutClassName: 'vjs-layout-tiny', width: 3 },
-					{ layoutClassName: 'vjs-layout-x-small', width: 4 },
-					{ layoutClassName: 'vjs-layout-small', width: 5 },
-					{ layoutClassName: 'defaults', width: 6 }
-				]
-			},
-			*/
 			infoButton: {}
 		}
 	};

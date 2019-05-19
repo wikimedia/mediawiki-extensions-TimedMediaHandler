@@ -45,7 +45,7 @@ module.exports = function ( grunt ) {
 		},
 		exec: {
 			'npm-update-videojs': {
-				cmd: 'npm update ogv video.js videojs-resolution-switcher-v6 videojs-ogvjs videojs-responsive-layout',
+				cmd: 'npm update ogv video.js videojs-resolution-switcher-v6 videojs-ogvjs',
 				callback: function ( error, stdout, stderr ) {
 					grunt.log.write( stdout );
 					if ( stderr ) {
@@ -96,12 +96,6 @@ module.exports = function ( grunt ) {
 				cwd: 'node_modules/videojs-resolution-switcher-v6/lib/',
 				src: [ '**' ],
 				dest: 'resources/videojs-resolution-switcher/'
-			},
-			'videojs-responsive-layout': {
-				expand: true,
-				cwd: 'node_modules/videojs-responsive-layout/dist/',
-				src: [ '**' ],
-				dest: 'resources/videojs-responsive-layout/'
 			}
 		},
 		patch: {
@@ -111,14 +105,6 @@ module.exports = function ( grunt ) {
 				},
 				files: {
 					'resources/videojs-ogvjs/videojs-ogvjs.js': 'resources/videojs-ogvjs/videojs-ogvjs.js'
-				}
-			},
-			'videojs-responsive-layout': {
-				options: {
-					patch: 'patches/videojs-responsive-layout-ie11.patch'
-				},
-				files: {
-					'resources/videojs-responsive-layout/videojs-responsive-layout.js': 'resources/videojs-responsive-layout/videojs-responsive-layout.js'
 				}
 			},
 			'videojs-resolution-switcher': {
@@ -145,11 +131,9 @@ module.exports = function ( grunt ) {
 		'copy:video.js',
 		'copy:videojs-resolution-switcher',
 		'copy:videojs-ogvjs',
-		'copy:videojs-responsive-layout',
 		'patch:videojs-resolution-switcher',
 		'patch:videojs-resolution-switcher-icon',
-		'patch:videojs-ogvjs',
-		'patch:videojs-responsive-layout'
+		'patch:videojs-ogvjs'
 	] );
 	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );
