@@ -36,6 +36,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 				$vals['timedtext'] = $handler->getTracks();
 				foreach ( $vals['timedtext'] as &$track ) {
 					$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
+					// We add origin anonymous for the benefit of
+					// InstantCommons, the primary user of this API
+					$track['src'] = wfAppendQuery( $track['src'], [ 'origin' => '*' ] );
 				}
 				unset( $track );
 				$result->setIndexedTagName( $vals['timedtext'], "timedtext" );
