@@ -109,7 +109,6 @@ class TimedMediaHandlerHooks {
 		}
 
 		// Add unit tests
-		$wgHooks['UnitTestsList'][] = 'TimedMediaHandlerHooks::registerUnitTests';
 		$wgHooks['ParserTestTables'][] = 'TimedMediaHandlerHooks::onParserTestTables';
 
 		/**
@@ -411,29 +410,6 @@ class TimedMediaHandlerHooks {
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
-		}
-		return true;
-	}
-
-	/**
-	 * Hook to add list of PHPUnit test cases.
-	 * @param array &$files array of files
-	 * @return bool
-	 */
-	public static function registerUnitTests( array &$files ) {
-		$testDir = __DIR__ . '/tests/phpunit/';
-		$testFiles = [
-			'TestTimeParsing.php',
-			'TestApiUploadVideo.php',
-			'TestVideoThumbnail.php',
-			'TestVideoTranscode.php',
-			'TestOggHandler.php',
-			'TestWebMHandler.php',
-			'TestTimedMediaTransformOutput.php',
-			'TestTimedMediaHandler.php'
-		];
-		foreach ( $testFiles as $fileName ) {
-			$files[] = $testDir . $fileName;
 		}
 		return true;
 	}
