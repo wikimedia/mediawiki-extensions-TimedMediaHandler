@@ -9,7 +9,7 @@ abstract class Reader {
 	abstract public function read( $input );
 
 	/**
-	 * @return Cue[]
+	 * @return DOM\Cue[]
 	 */
 	abstract public function getCues();
 
