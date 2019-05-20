@@ -113,6 +113,6 @@
 	"action-transcode-reset": "поново поставите транскодирање",
 	"action-transcode-status": "прегледате актуелни статус транскодирања",
 	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а",
-	"orphanedtimedtext-unsupported": "Ова специјална странице је подржана само на MySQL базама података.",
+	"orphanedtimedtext-unsupported": "Ова посебна странице је подржана само на MySQL базама података.",
 	"orphanedtimedtext-notimedtext": "TimedText није омогућен на овом викију."
 }
