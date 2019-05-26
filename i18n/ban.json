@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joseagush"
+			"Joseagush",
+			"NoiX180"
 		]
 	},
-	"timedmedia-source-file": "Sumber $1"
+	"timedmedia-source-file": "Wit $1"
 }
