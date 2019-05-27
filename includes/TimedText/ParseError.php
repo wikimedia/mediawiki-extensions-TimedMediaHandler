@@ -4,6 +4,7 @@ namespace MediaWiki\TimedMediaHandler\TimedText;
 
 class ParseError {
 	protected $line;
+	protected $input;
 	protected $error;
 
 	public function __construct( $line, $input, $error ) {
