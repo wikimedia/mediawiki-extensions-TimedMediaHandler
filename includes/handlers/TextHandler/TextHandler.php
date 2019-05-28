@@ -317,9 +317,20 @@ class TextHandler {
 	 * @return string
 	 */
 	public function getFullURL( $lang, $format ) {
+		$title = $this->file->getTitle();
+		// Note we need to use the canonical namespace in case this is a
+		// foreign DB repo (Wikimedia Commons style) in a different language
+		// than the current site.
+		$canonicalTitle = Title::makeName(
+			$title->getNamespace(),
+			$title->getDbKey(),
+			'', // fragment
+			'', // interwiki
+			true // canonical namespace
+		);
 		$params = [
 			'action' => 'timedtext',
-			'title' => $this->file->getTitle()->getPrefixedDBkey(),
+			'title' => $canonicalTitle,
 			'lang' => $lang,
 			'trackformat' => $format,
 		];
