@@ -146,7 +146,11 @@ class ApiTimedText extends ApiBase {
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {
 					$title = $page->getRedirectTarget();
-					$page = WikiPage::factory( $page );
+					if ( $title ) {
+						$page = WikiPage::factory( $title );
+					} else {
+						return null;
+					}
 				}
 				if ( $page->exists() ) {
 					return $page;
