@@ -58,7 +58,7 @@ class TimedTextPage extends Article {
 			$file && $file->exists()
 		) {
 			if ( $file->isLocal() ) {
-				$this->doRedirectToPageForm( $fileTitle );
+				$this->doRedirectToPageForm();
 			} else {
 				$this->doLinkToRemote( $file );
 			}
