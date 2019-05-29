@@ -150,7 +150,6 @@ class TranscodeReport extends Maintenance {
 		foreach ( $state as $key => $item ) {
 			if ( $item && $item['time_success'] ) {
 				$name = $file->getName();
-				$key = $key;
 				$bitrate = intval( $item['final_bitrate'] );
 				$size = intval( $bitrate * $duration / 8 );
 
