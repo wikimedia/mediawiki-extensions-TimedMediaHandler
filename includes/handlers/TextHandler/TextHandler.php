@@ -8,7 +8,7 @@
  * TODO On "new" timedtext language save purge all pages where file exists
  */
 
-use Wikimedia\Rdbms\ResultWrapper;
+use Wikimedia\Rdbms\IResultWrapper;
 
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
@@ -104,7 +104,7 @@ class TextHandler {
 	 *
 	 * If the file is on a foreign repo, will query the ForeignDb
 	 *
-	 * @return ResultWrapper|bool
+	 * @return IResultWrapper|bool
 	 */
 	public function getTextPages() {
 		$ns = $this->getTimedTextNamespace();
@@ -215,10 +215,10 @@ class TextHandler {
 	 * Build an array of track information using a Database result
 	 * Handles both local and foreign Db results
 	 *
-	 * @param ResultWrapper $data Database result with page titles
+	 * @param IResultWrapper $data Database result with page titles
 	 * @return array
 	 */
-	public function getTextTracksFromRows( ResultWrapper $data ) {
+	public function getTextTracksFromRows( IResultWrapper $data ) {
 		$textTracks = [];
 
 		if ( !$this->file->isLocal() ) {
