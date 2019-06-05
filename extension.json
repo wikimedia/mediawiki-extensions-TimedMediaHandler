@@ -81,11 +81,8 @@
 		"TimedMediaIframeOutput": "includes/TimedMediaIframeOutput.php",
 		"TimedMediaThumbnail": "includes/TimedMediaThumbnail.php",
 		"TranscodeStatusTable": "includes/TranscodeStatusTable.php",
-
 		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
-
 		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
-
 		"OggHandler": "includes/handlers/OggHandler/OggHandler.php",
 		"OggException": "includes/handlers/OggHandler/OggException.php",
 		"File_Ogg": "includes/handlers/OggHandler/File_Ogg/File/Ogg.php",
@@ -138,10 +135,20 @@
 			"public": true,
 			"value": {
 				"MediaWiki.DefaultProvider": "local",
-				"MediaWiki.ApiProviders": { "wikimediacommons": { "url": "//commons.wikimedia.org/w/api.php" } },
-
+				"MediaWiki.ApiProviders": {
+					"wikimediacommons": {
+						"url": "//commons.wikimedia.org/w/api.php"
+					}
+				},
 				"EmbedPlayer.OverlayControls": true,
-				"EmbedPlayer.CodecPreference": [ "vp9", "webm", "h264", "ogg", "mp3", "ogvjs" ],
+				"EmbedPlayer.CodecPreference": [
+					"vp9",
+					"webm",
+					"h264",
+					"ogg",
+					"mp3",
+					"ogvjs"
+				],
 				"EmbedPlayer.DisableVideoTagSupport": false,
 				"EmbedPlayer.DisableHTML5FlashFallback": true,
 				"EmbedPlayer.ReplaceSources": null,
@@ -158,7 +165,12 @@
 				"EmbedPlayer.KalturaAttribution": true,
 				"EmbedPlayer.EnableOptionsMenu": true,
 				"EmbedPlayer.EnableRightClick": true,
-				"EmbedPlayer.EnabledOptionsMenuItems": [ "playerSelect", "download", "share", "aboutPlayerLibrary" ],
+				"EmbedPlayer.EnabledOptionsMenuItems": [
+					"playerSelect",
+					"download",
+					"share",
+					"aboutPlayerLibrary"
+				],
 				"EmbedPlayer.WaitForMeta": true,
 				"EmbedPlayer.ShowNativeWarning": true,
 				"EmbedPlayer.ShowPlayerAlerts": true,
@@ -179,13 +191,12 @@
 				"EmbedPlayer.EnableIframeApi": true,
 				"EmbedPlayer.PageDomainIframe": true,
 				"EmbedPlayer.NotPlayableDownloadLink": true,
-
 				"TimedText.ShowInterface": "always",
 				"TimedText.ShowAddTextLink": true,
 				"TimedText.ShowRequestTranscript": false,
 				"TimedText.NeedsTranscriptCategory": "Videos needing subtitles",
 				"TimedText.BottomPadding": 10,
-				"TimedText.BelowVideoBlackBoxHeight":40
+				"TimedText.BelowVideoBlackBoxHeight": 40
 			}
 		},
 		"WaitTimeForTranscodeReset": {
@@ -519,8 +530,7 @@
 			]
 		},
 		"ext.tmh.thumbnail.styles": {
-			"styles": "resources/ext.tmh.thumbnail.css",
-			"position": "top"
+			"styles": "resources/ext.tmh.thumbnail.css"
 		},
 		"ext.tmh.transcodetable": {
 			"scripts": "resources/ext.tmh.transcodetable.js",
@@ -569,7 +579,6 @@
 				"desktop"
 			]
 		},
-
 		"mw.MwEmbedSupport": {
 			"scripts": "resources/mwembed/mw.MwEmbedSupport.js",
 			"dependencies": [
@@ -598,7 +607,9 @@
 		},
 		"Spinner": {
 			"scripts": "resources/mwembed/lib/Spinner.js",
-			"dependencies": [ "mediawiki.util" ]
+			"dependencies": [
+				"mediawiki.util"
+			]
 		},
 		"iScroll": {
 			"scripts": "resources/mwembed/lib/iscroll/src/iscroll.js"
@@ -669,7 +680,9 @@
 				"ext.tmh.OgvJsSupport"
 			]
 		},
-		"mw.MediaPlayer": { "scripts": "resources/mwembed/EmbedPlayer/mw.MediaPlayer.js" },
+		"mw.MediaPlayer": {
+			"scripts": "resources/mwembed/EmbedPlayer/mw.MediaPlayer.js"
+		},
 		"mw.MediaPlayers": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.MediaPlayers.js",
 			"dependencies": "mw.MediaPlayer"
@@ -815,11 +828,17 @@
 		"mw.EmbedPlayerKplayer": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerKplayer.js"
 		},
-		"mw.EmbedPlayerGeneric":{ "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerGeneric.js" },
-		"mw.EmbedPlayerNative":{ "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerNative.js" },
+		"mw.EmbedPlayerGeneric": {
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerGeneric.js"
+		},
+		"mw.EmbedPlayerNative": {
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerNative.js"
+		},
 		"mw.EmbedPlayerVLCApp": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVLCApp.js",
-			"dependencies": [ "mediawiki.Uri" ]
+			"dependencies": [
+				"mediawiki.Uri"
+			]
 		},
 		"mw.EmbedPlayerIEWebMPrompt": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerIEWebMPrompt.js",
@@ -832,8 +851,12 @@
 				"ext.tmh.OgvJsSupport"
 			]
 		},
-		"mw.EmbedPlayerImageOverlay": { "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js" },
-		"mw.EmbedPlayerVlc": { "scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVlc.js" },
+		"mw.EmbedPlayerImageOverlay": {
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js"
+		},
+		"mw.EmbedPlayerVlc": {
+			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVlc.js"
+		},
 		"mw.TimedText.loader": {
 			"scripts": "resources/mwembed/TimedText.loader.js"
 		},
