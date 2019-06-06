@@ -65,6 +65,7 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['audio/x-flac'] = 'FLACHandler';
 		$wgMediaHandlers['audio/flac'] = 'FLACHandler';
 		$wgMediaHandlers['audio/wav'] = 'WAVHandler';
+		$wgMediaHandlers['audio/midi'] = 'MidiHandler';
 		$wgMediaHandlers['audio/mpeg'] = 'Mp3Handler';
 
 		// Add transcode job class:

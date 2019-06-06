@@ -198,7 +198,11 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
-			$status = $this->ffmpegEncode( $options );
+			if ( $file->getMimeType() == 'audio/midi' ) {
+				$status = $this->midiToAudioEncode( $options );
+			} else {
+				$status = $this->ffmpegEncode( $options );
+			}
 		} elseif ( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
 			$options['videoCodec'] == 'h264'
 		) {
@@ -218,7 +222,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Remove any log files,
-		// all useful info should be in status and or we are done with 2 passs encoding
+		// all useful info should be in status and or we are done with 2 pass encoding
 		$this->removeFfmpegLogFiles();
 
 		// Reconnect to the database...
@@ -659,6 +663,90 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -acodec libvorbis ";
 		}
 		return $cmd;
+	}
+
+	/**
+	 * Utility helper for midi to an audio format conversion
+	 * @param array $options
+	 * @return bool|string
+	 */
+	private function midiToAudioEncode( $options ) {
+		global $wgTmhFluidsynthLocation, $wgFFmpegLocation, $wgTmhSoundfontLocation,
+			$wgTranscodeBackgroundMemoryLimit;
+
+		if ( !is_file( $this->getSourceFilePath() ) ) {
+			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
+		}
+
+		$outputFileExt = $options['audioCodec'] == 'vorbis' ? '' : '.wav';
+
+		// Set up the base command
+		$cmdArgs = [
+			wfEscapeShellArg( $wgTmhFluidsynthLocation ),
+			'-T',
+			$options['audioCodec'] == 'vorbis' ? 'oga' : 'wav', // wav for mp3
+			wfEscapeShellArg( $wgTmhSoundfontLocation ),
+			wfEscapeShellArg( $this->getSourceFilePath() ),
+			'-F',
+			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt )
+		];
+
+		$cmdString = implode( " ", $cmdArgs );
+
+		$retval = 0;
+		$shellOutput = $this->runShellExec( $cmdString, $retval );
+
+		// Fluidsynth doesn't give error codes - $retval always stays 0
+		if ( strpos( $shellOutput, "fluidsynth: error:" ) !== false ) {
+			return $cmdString .
+				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				$cmd->getStdout();
+		}
+
+		if ( $options['audioCodec'] == 'vorbis' ) {
+			return true;
+		} else {
+			// For mp3, convert wav (previous command) to mp3 with ffmpeg
+			$lameCmdArgs = [
+				wfEscapeShellArg( $wgFFmpegLocation ),
+				'-y',
+				'-i',
+				wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt ),
+				'-ss',
+				wfEscapeShellArg( $options['starttime'] ?? '0' ),
+			];
+
+			if ( isset( $options['audioQuality'] ) ) {
+				array_push( $lameCmdArgs, "-aq", wfEscapeShellArg( $options['audioQuality'] ) );
+			}
+			if ( isset( $options['audioBitrate'] ) ) {
+				array_push( $lameCmdArgs, "-ab", intval( $options['audioBitrate'] ) * 1000 );
+			}
+			if ( isset( $options['samplerate'] ) ) {
+				array_push( $lameCmdArgs, "-ar", wfEscapeShellArg( $options['samplerate'] ) );
+			}
+			if ( isset( $options['channels'] ) ) {
+				array_push( $lameCmdArgs, "-ac", wfEscapeShellArg( $options['channels'] ) );
+			}
+
+			array_push(
+				$lameCmdArgs,
+				"-acodec",
+				"libmp3lame",
+				wfEscapeShellArg( $this->getTargetEncodePath() )
+			);
+
+			$lameCmdString = implode( " ", $lameCmdArgs );
+
+			$shellOutput = $this->runShellExec( $lameCmdString, $retval );
+
+			if ( $retval != 0 ) { // Retval from fluidsynth command
+				return $lameCmdString .
+					"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+					$shellOutput;
+			}
+			return true;
+		}
 	}
 
 	/**
