@@ -9,7 +9,8 @@
 			"پاناروما",
 			"4nn1l2",
 			"Ladsgroup",
-			"Mardetanha"
+			"Mardetanha",
+			"Arash.pt"
 		]
 	},
 	"mwe-embedplayer-credit-title": "عنوان: $1",
@@ -91,6 +92,7 @@
 	"mwe-embedplayer-video-msvideo": "ویدئو ای‌وی‌آی",
 	"mwe-embedplayer-missing-source": "هیچ منبع ویدئویی پیدا نشد",
 	"mwe-embedplayer-vlcapp-vlcapplinktext": "اپ وی‌ال‌سی",
+	"mwe-embedplayer-vlcapp-openvideo": "این ویدیو را با برنامه VLC باز کن",
 	"mwe-embedplayer-vlcapp-downloadvideo": "دریافت این ویدئو",
 	"mwe-embedplayer-iewebmprompt-outro": "بارگذاری مجدد صفحه بعد از نصب."
 }

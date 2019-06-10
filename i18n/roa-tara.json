@@ -23,6 +23,8 @@
 	"timedmedia-wav-pcm-required": "Tu puè sulamende carecà WAV de tipe PCM (Codece de Modulazione Pulsate).",
 	"timedmedia-mp3-short-audio": "File audio MP3, $1",
 	"timedmedia-mp3-long-audio": "File audio MP3, lunghezze $1, in totale $2",
+	"timedmedia-midi-short-audio": "File audio MIDI, $1",
+	"timedmedia-midi-long-audio": "File audio MIDI, lunghezze $1, in totale $2",
 	"timedmedia-mp4-short-video": "MP4 $1 file video, $2",
 	"timedmedia-mp4-long-video": "File MP4 audio/video, $1, lunghezze $2, $4 × $5 pixel, $3 in totale",
 	"timedmedia-more": "De cchiù...",

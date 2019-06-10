@@ -31,6 +31,8 @@
 	"timedmedia-wav-pcm-required": "Você só pode carregar o WAV PCM (Pulse Code Modulation).",
 	"timedmedia-mp3-short-audio": "Arquivo de áudio MP3, $1",
 	"timedmedia-mp3-long-audio": "Arquivo de áudio MP3, comprimento $1 , $2 no total",
+	"timedmedia-midi-short-audio": "Arquivo de áudio MIDI, $1",
+	"timedmedia-midi-long-audio": "Arquivo de áudio MIDI, comprimento $1, $2 geral",
 	"timedmedia-mp4-short-video": "Arquivo de vídeo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Arquivo de áudio/vídeo MP4, $1 , comprimento $2, $4 × $5 pixels, $3 no total",
 	"timedmedia-more": "Mais...",

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jun Misugi"
+		]
+	},
+	"timedmedia-source-file": "$1 fonti",
+	"timedmedia-source-audio-file-desc": "$1 file originàriu ($2)"
+}

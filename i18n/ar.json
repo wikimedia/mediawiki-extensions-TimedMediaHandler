@@ -34,6 +34,8 @@
 	"timedmedia-wav-pcm-required": "أنت يمكنك أن ترفع فقط PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp3-short-audio": "ملف صوت MP3، $1",
 	"timedmedia-mp3-long-audio": "ملف صوت MP3، الطول $1، $2 إجمالا",
+	"timedmedia-midi-short-audio": "ملف صوت MIDI، $1",
+	"timedmedia-midi-long-audio": "ملف صوت MIDI، الطول $1، $2 إجمالا",
 	"timedmedia-mp4-short-video": "ام بي 4$1 ملف فيديو,$2",
 	"timedmedia-mp4-long-video": "ام بي 4 ملف صوت/فيديو بنسق WebM , $1, الطول $2, $4×$5 بكسل، $3 إجمالا",
 	"timedmedia-more": "المزيد...",

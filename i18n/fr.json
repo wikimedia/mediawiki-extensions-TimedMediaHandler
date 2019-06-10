@@ -46,6 +46,8 @@
 	"timedmedia-wav-pcm-required": "Vous ne pouvez téléverser que des WAV PCM (modulation d’impulsion codée).",
 	"timedmedia-mp3-short-audio": "Fichier audio MP3, $1",
 	"timedmedia-mp3-long-audio": "Fichier audio MP3, durée $1, $2 sur l’ensemble",
+	"timedmedia-midi-short-audio": "Fichier audio MIDI, $1",
+	"timedmedia-midi-long-audio": "Fichier audio MIDI, durée $1, $2 au total",
 	"timedmedia-mp4-short-video": "Fichier vidéo MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Fichier audio/vidéo MP4, $1, taille $2, $4 x $5 pixels, $3 sur l’ensemble",
 	"timedmedia-more": "Plus…",
