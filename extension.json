@@ -525,7 +525,9 @@
 				"ext.tmh.OgvJsSupport"
 			],
 			"messages": [
+				"timedmedia-resolution-120",
 				"timedmedia-resolution-160",
+				"timedmedia-resolution-180",
 				"timedmedia-resolution-240",
 				"timedmedia-resolution-360",
 				"timedmedia-resolution-480",
