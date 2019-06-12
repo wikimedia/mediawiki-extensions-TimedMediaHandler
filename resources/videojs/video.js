@@ -7930,6 +7930,9 @@
 
             mode = newMode;
 
+            if (mode !== 'disabled' && this.cues.length === 0) {
+              loadTrack(this.src, this);
+            }
             if (mode !== 'disabled') {
               this.tech_.ready(function () {
                 _this2.tech_.on('timeupdate', timeupdateHandler);
@@ -8022,7 +8025,10 @@
 
       if (settings.src) {
         _this.src = settings.src;
-        loadTrack(settings.src, _assertThisInitialized(_assertThisInitialized(_this)));
+        _this.loaded_ = true;
+        if (default_ || (settings.kind !== 'subtitles' && settings.kind !== 'captions')) {
+          loadTrack(_this.src, _assertThisInitialized(_assertThisInitialized(_this)));
+        }
       } else {
         _this.loaded_ = true;
       }
