@@ -10,7 +10,8 @@
 			"Otokoume",
 			"Sujiniku",
 			"Irus",
-			"Suyama"
+			"Suyama",
+			"Omotecho"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -78,6 +79,8 @@
 	"timedmedia-derivative-desc-480p.mp4": "SD MP4 H.264 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "フル HD MP4 H.264 (1080P)",
+	"timedmedia-resolution-120": "低120p",
+	"timedmedia-resolution-180": "低180p",
 	"timedmedia-subtitle-new": "翻訳の新規作成、または既存の翻訳の編集",
 	"timedmedia-subtitle-new-desc": "言語を選択して、'''{{int:Timedmedia-subtitle-new-go}}'''ボタンを押してください。",
 	"timedmedia-subtitle-new-go": "実行",

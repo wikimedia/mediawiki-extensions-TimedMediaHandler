@@ -5,5 +5,7 @@
 		]
 	},
 	"timedmedia-source-file": "$1 fonti",
-	"timedmedia-source-audio-file-desc": "$1 file originàriu ($2)"
+	"timedmedia-source-audio-file-desc": "$1 file originàriu ($2)",
+	"timedmedia-resolution-120": "Bàsciu 120p",
+	"timedmedia-resolution-180": "Bàsciu 180p"
 }

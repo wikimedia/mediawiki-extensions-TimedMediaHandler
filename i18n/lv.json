@@ -6,6 +6,8 @@
 			"Silraks"
 		]
 	},
+	"timedmedia-midi-short-audio": "MIDI audio fail, $1",
+	"timedmedia-midi-long-audio": "MIDI audio fails, ilgums $1, kopumā $2",
 	"timedmedia-more": "Vairāk...",
 	"timedmedia-dismiss": "Aizvērt",
 	"timedmedia-download": "Lejupielādēt failu",
