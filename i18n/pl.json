@@ -11,7 +11,8 @@
 			"Rzuwig",
 			"Sp5uhe",
 			"The Polish",
-			"Woytecr"
+			"Woytecr",
+			"Railfail536"
 		]
 	},
 	"timedmediahandler-desc": "Obsługa plików audio, wideo i napisów filmowych w formatach WebM, Ogg Theora, Vorbis i srt",
@@ -104,6 +105,7 @@
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
 	"timedmedia-resolution-160": "Niska 160p",
+	"timedmedia-resolution-180": "Niska 180p",
 	"timedmedia-resolution-240": "Niska 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",

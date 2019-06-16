@@ -6,9 +6,13 @@
 		]
 	},
 	"timedmedia-ogg-long-error": "Ne-valida Ogg-arkivo: $1",
+	"timedmedia-midi-short-audio": "Arkivo MIDI, $1",
+	"timedmedia-midi-long-audio": "Arkivo MIDI, longeso $1, entote $2",
 	"timedmedia-more": "Plus…",
 	"timedmedia-dismiss": "Klozar",
 	"timedmedia-desc-link": "Pri ca arkivo",
 	"timedmedia-source-file": "Arkivo-fonto $1",
-	"timedmedia-source-audio-file-desc": "Originala $1 arkivo ($2)"
+	"timedmedia-source-audio-file-desc": "Originala $1 arkivo ($2)",
+	"timedmedia-resolution-120": "Infra 120p",
+	"timedmedia-resolution-180": "Infra 180p"
 }
