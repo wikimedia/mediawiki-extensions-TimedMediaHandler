@@ -129,7 +129,7 @@
 	"timedmedia-subtitle-remote": "timedText für diese Datei befindet sich auf $1",
 	"timedmedia-subtitle-remote-link": "Du kannst [$1 die Beschreibungsseite] für diese Datei auf $2 ansehen",
 	"timedmediahandler": "Steuerungsprogramm für zeitgesteuerte Medien",
-	"timedmedia-videos": "{{PLURAL:$1|Ein Video|$1 Videos}}",
+	"timedmedia-videos": "{{PLURAL:$1|Eine Videodatei|$1 Videodateien}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|Ein Ogg-Video|$1 Ogg-Videos}}",
 	"timedmedia-webm-videos": "{{PLURAL:$1|Ein WebM-Video|$1 WebM-Videos}}",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}}",
