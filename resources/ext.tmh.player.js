@@ -94,7 +94,7 @@
 				// Video: extract the relevant resolutions from source elements
 				// and pass them into the videoJsResolutionSwitcher plugin in
 				// our preferred order and labeling.
-				$( videoplayer ).find( 'source' ).each( function () {
+				$videoplayer.find( 'source' ).each( function () {
 					// FIXME would be better if we can configure the plugin to make use of our preferred attributes
 					var matches,
 						$source = $( this ),
@@ -135,6 +135,8 @@
 					playerConfig.plugins.videoJsResolutionSwitcher.default = defaultRes;
 				}
 			}
+			// We remove SRT subtitles tracks as we can't handle them
+			$videoplayer.find( 'track[type="text/x-srt"]' ).remove();
 
 			$videoplayer.parent( '.thumbinner' ).addClass( 'mw-overflow' );
 
