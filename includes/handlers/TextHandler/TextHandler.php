@@ -247,13 +247,14 @@ class TextHandler {
 				continue;
 			}
 
+			$language = Language::factory( $languageKey );
 			foreach ( $this->formats as $format ) {
 				$textTracks[] = [
 					'src' => $this->getFullURL( $languageKey, $format ),
 					'kind' => 'subtitles',
 					'type' => $this->getContentType( $format ),
-					'srclang' => $languageKey,
-					'dir' => Language::factory( $languageKey )->getDir(),
+					'srclang' => $language->getHtmlCode(),
+					'dir' => $language->getDir(),
 					'label' => wfMessage( 'timedmedia-subtitle-language',
 						$langNames[ $languageKey ],
 						$languageKey )->text()
