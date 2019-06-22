@@ -3,6 +3,7 @@
 	var globalConfig, videoConfig, audioConfig, playerConfig;
 
 	globalConfig = {
+		responsive: true,
 		language: mw.config.get( 'wgUserLanguage' ),
 		controlBar: {
 			volumePanel: {
@@ -17,6 +18,26 @@
 	};
 
 	videoConfig = {
+		// Video interace breakpoints
+		// Encourage play/pause, fullscreen (to reach all controls) and info
+		// Subtitles are too small to read upto 400px or so anyway
+		// Resolution is already matched to current size
+		breakpoints: {
+			// most controls are 40px wide
+			// play and fullscreen
+			tiny: 159,
+			// from 160: play, volume, space, fullscreen [,info]
+			xsmall: 199,
+			// from 200: play, volume, position, fullscreen [,info]
+			small: 239,
+			// from 240: play, volume, position, resolution, fullscreen [,info]
+			medium: 299,
+			// from 300: play, volume, position, time remaining, resolution, fullscreen [,info]
+			large: 339,
+			// from 340: play, volume, position, time remaining, [CC,] resolution, fullscreen [,info]
+			xlarge: 1000,
+			huge: 2000
+		},
 		plugins: {
 			videoJsResolutionSwitcher: {
 				sourceOrder: true,
@@ -35,6 +56,23 @@
 	audioConfig = {
 		controlBar: {
 			fullscreenToggle: false
+		},
+		// Audio interface breakpoints
+		// play, volume, info and CC are most important here
+		breakpoints: {
+			// from 40: play only
+			tiny: 79,
+			// from 80: play and volume
+			xsmall: 119,
+			// from 120: play, volume [,info]
+			small: 199,
+			// from 200: play, volume, position [,CC] [,info]
+			medium: 259,
+			// from 260: play, volume, position, remaining [,CC] [,info]
+			large: 339,
+			// from 340: play, volume, position, remaining [,CC] [,info]
+			xlarge: 1000,
+			huge: 2000
 		}
 	};
 
