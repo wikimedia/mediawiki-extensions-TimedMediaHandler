@@ -15,7 +15,8 @@
 			"Ата",
 			"Piramidion",
 			"Dars",
-			"Gzhegozh"
+			"Gzhegozh",
+			"Vlad5250"
 		]
 	},
 	"timedmediahandler-desc": "Оброблювач для аудіо, відео і субтитрів з підтримкою форматів WebM, Ogg Theora, Vorbis, srt",
@@ -37,6 +38,8 @@
 	"timedmedia-wav-pcm-required": "Ви можете тільки завантажити PCM (імпульсно-кодова модуляція) WAV.",
 	"timedmedia-mp3-short-audio": "Аудіофайл MP3, $1",
 	"timedmedia-mp3-long-audio": "Аудіофайл WP3, тривалість — $1, швидкість — $2",
+	"timedmedia-midi-short-audio": "Аудіофайл MIDI, $1",
+	"timedmedia-midi-long-audio": "Аудіофайл MIDI, тривалість — $1, швидкість — $2",
 	"timedmedia-mp4-short-video": "MP4 $1 відеофайл, $2",
 	"timedmedia-mp4-long-video": "Аудіо-/відеофайл MP4, $1, тривалість — $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, швидкість — $3",
 	"timedmedia-more": "Більше…",
@@ -108,7 +111,9 @@
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-resolution-120": "Низька 120p",
 	"timedmedia-resolution-160": "Низька 160p",
+	"timedmedia-resolution-180": "Низька 180p",
 	"timedmedia-resolution-240": "Низька 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",

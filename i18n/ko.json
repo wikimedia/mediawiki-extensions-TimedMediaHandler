@@ -12,7 +12,8 @@
 			"Hwangjy9",
 			"Kurousagi",
 			"Yearning",
-			"Ykhwong"
+			"Ykhwong",
+			"Bluemersen"
 		]
 	},
 	"timedmediahandler-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",
@@ -105,7 +106,9 @@
 	"timedmedia-derivative-desc-1080p.mp4": "풀 HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-resolution-120": "낮은 120p",
 	"timedmedia-resolution-160": "낮은 160p",
+	"timedmedia-resolution-180": "낮은 180p",
 	"timedmedia-resolution-240": "낮은 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
@@ -136,6 +139,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|FLAC 오디오 파일 $1개}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|WAV 오디오 파일 $1개}}",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM 오디오 파일}}",
+	"beta-feature-timedmediahandler-message-videojs": "새로운 비디오 플레이어",
 	"beta-feature-timedmediahandler-description-videojs": "더 깔끔한 외양과 모바일 호환성을 갖춘 최신의 플레이어로 동영상 파일을 봅니다.",
 	"right-transcode-reset": "변환됐거나 실패한 비디오를 작업 대기열에 다시 추가되도록 초기화",
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",

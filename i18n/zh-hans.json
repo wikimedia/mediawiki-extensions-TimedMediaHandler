@@ -12,7 +12,8 @@
 			"乌拉跨氪",
 			"NeverBehave",
 			"WhitePhosphorus",
-			"Hanyanbo98"
+			"Hanyanbo98",
+			"佛壁灯"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -35,6 +36,8 @@
 	"timedmedia-wav-pcm-required": "您只能上传脉冲编码调制（PCM）WAV。",
 	"timedmedia-mp3-short-audio": "MP3音频文件，$1",
 	"timedmedia-mp3-long-audio": "MP3音频文件，总共长$1，码率$2",
+	"timedmedia-midi-short-audio": "MIDI音频文件，$1",
+	"timedmedia-midi-long-audio": "MIDI音频文件，长度$1，总计$2",
 	"timedmedia-mp4-short-video": "MP4 $1视频文件，$2",
 	"timedmedia-mp4-long-video": "MP4音频/视频文件，$1，长度$2，$4 × $5像素，$3 overall",
 	"timedmedia-more": "更多...",
@@ -114,7 +117,9 @@
 	"timedmedia-derivative-ogg": "Ogg Vorbis",
 	"timedmedia-derivative-desc-ogg": "Ogg Vorbis",
 	"timedmedia-derivative-desc-mp3": "MP3",
+	"timedmedia-resolution-120": "低清120p",
 	"timedmedia-resolution-160": "低分辨率160p",
+	"timedmedia-resolution-180": "低清180p",
 	"timedmedia-resolution-240": "低分辨率240p",
 	"timedmedia-resolution-360": "标准差360p",
 	"timedmedia-resolution-480": "标准差480p",

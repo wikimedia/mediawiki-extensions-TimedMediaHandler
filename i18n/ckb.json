@@ -3,11 +3,26 @@
 		"authors": [
 			"Calak",
 			"Asoxor",
-			"Muhammed taha"
+			"Muhammed taha",
+			"ئارام بکر"
 		]
 	},
+	"timedmedia-more": "زیاتر...",
+	"timedmedia-dismiss": "داخستن",
+	"timedmedia-download": "داگرتنی پەڕگە",
+	"timedmedia-play-media": "لێدانی ڕەنگاڵە",
+	"timedmedia-desc-link": "دەربارەی ئەم پەڕگە",
+	"timedmedia-status": "ڕەوش",
+	"timedmedia-status-unknown": "ڕەوشی نەزاندراو",
+	"timedmedia-actions": "کردەوەکان",
+	"timedmedia-direct-link": "داگرتن",
+	"timedmedia-not-ready": "ئامادە نییە",
 	"timedmedia-source-file": "$1 سەرچاوە",
 	"timedmedia-source-audio-file-desc": "پەڕگەی $1 بنەڕەتی ($2)",
+	"timedmedia-subtitle-new-go": "بڕۆ",
+	"timedmedia-file": "پەڕگە",
+	"beta-feature-timedmediahandler-message-videojs": "ڤیدیۆلێدەری نوێ",
+	"beta-feature-timedmediahandler-description-videojs": "بە گونجان لەگەڵ مۆبایل و سەیرکردنێکی پاکتر سەیری پەڕگە ڤیدیۆیەکان لە لێدەرێکی ھاوچەرخدا بکە.",
 	"right-transcode-reset": "ڕێکخستنەوەی ڤیدیۆ سەرنەکوتووەکان یان ترانسکۆدکراوەکان ھەتا دیسان بچنەوە ناو ڕیزی کارەوە.",
 	"right-transcode-status": "دیتنی [[تایبەت:TimedMediaHandler|زانیاری لەمەڕ چالاکیی ترانسکۆدی ھەنووکەیی]]"
 }

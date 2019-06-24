@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"ئارام بکر"
+		]
+	},
+	"mwe-embedplayer-credit-title": "ناونیشان: $1",
+	"mwe-embedplayer-credit-date": "ڕێکەوت: $1",
+	"mwe-embedplayer-credit-author": "دانەر: $1",
+	"mwe-embedplayer-download_clip": "داگرتنی ڤیدیۆ",
+	"mwe-embedplayer-download_text": "دابەراندنی دەق",
+	"mwe-embedplayer-download": "داگرتن",
+	"mwe-embedplayer-close_btn": "داخستن",
+	"mwe-embedplayer-playerSelect": "لێدەرەکان",
+	"mwe-embedplayer-vlcapp-downloadvideo": "داگرتنی ئەم ڤیدیۆ"
+}

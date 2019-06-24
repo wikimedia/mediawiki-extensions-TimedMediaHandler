@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stephenwanjau"
+			"Stephenwanjau",
+			"Yasen igra"
 		]
 	},
 	"timedmedia-download": "Pakua faili",
@@ -9,6 +10,7 @@
 	"timedmedia-status": "Hali",
 	"timedmedia-actions": "Vitendo",
 	"timedmedia-not-ready": "Haiko tayari",
+	"timedmedia-days": "{{PLURAL:$1|Siku 1|Siku $1}}",
 	"timedmedia-subtitle-new-go": "Nenda",
 	"timedmedia-file": "Faili"
 }
