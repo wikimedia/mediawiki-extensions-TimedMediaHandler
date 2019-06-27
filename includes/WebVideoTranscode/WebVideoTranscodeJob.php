@@ -700,7 +700,7 @@ class WebVideoTranscodeJob extends Job {
 		if ( strpos( $shellOutput, "fluidsynth: error:" ) !== false ) {
 			return $cmdString .
 				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
-				$cmd->getStdout();
+				$shellOutput;
 		}
 
 		if ( $options['audioCodec'] == 'vorbis' ) {
