@@ -23,6 +23,7 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "all", "re-queue all output formats", false, false );
 		$this->addOption( "audio", "process audio files (defaults to all media types)", false, false );
 		$this->addOption( "video", "process video files (defaults to all media types)", false, false );
+		$this->addOption( "mime", "mime type to filter on (e.g. audio/midi)", false, true );
 		$this->addOption( "throttle", "throttle on the queue", false, false );
 		$this->addDescription( "re-queue existing and missing media transcodes." );
 	}
@@ -42,6 +43,13 @@ class RequeueTranscodes extends Maintenance {
 			$types = [ 'AUDIO', 'VIDEO' ];
 		}
 		$where = [ 'img_media_type' => $types ];
+
+		if ( $this->hasOption( 'mime' ) ) {
+			list( $major, $minor ) = File::splitMime( $this->getOption( 'mime' ) );
+			$where['img_major_mime'] = $major;
+			$where['img_minor_mime'] = $minor;
+		}
+
 		if ( $this->hasOption( 'file' ) ) {
 			$title = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
 			if ( !$title ) {
