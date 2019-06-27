@@ -15,16 +15,14 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "file", "re-queue selected formats only for the given file", false, true );
 		$this->addOption( "start", "(re)start batch at the given file", false, true );
 		$this->addOption( "key", "re-queue for given format key", false, true );
-		$this->addOption( "error", "re-queue formats that previously failed", false, false );
-		$this->addOption( "stalled", "re-queue formats that were started but not finished",
-			false, false );
-		$this->addOption( "missing", "queue formats that were never started",
-			false, false );
-		$this->addOption( "all", "re-queue all output formats", false, false );
-		$this->addOption( "audio", "process audio files (defaults to all media types)", false, false );
-		$this->addOption( "video", "process video files (defaults to all media types)", false, false );
+		$this->addOption( "error", "re-queue formats that previously failed" );
+		$this->addOption( "stalled", "re-queue formats that were started but not finished" );
+		$this->addOption( "missing", "queue formats that were never started" );
+		$this->addOption( "all", "re-queue all output formats" );
+		$this->addOption( "audio", "process audio files (defaults to all media types)" );
+		$this->addOption( "video", "process video files (defaults to all media types)" );
 		$this->addOption( "mime", "mime type to filter on (e.g. audio/midi)", false, true );
-		$this->addOption( "throttle", "throttle on the queue", false, false );
+		$this->addOption( "throttle", "throttle on the queue" );
 		$this->addDescription( "re-queue existing and missing media transcodes." );
 	}
 
