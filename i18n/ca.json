@@ -30,10 +30,12 @@
 	"timedmedia-play-media": "Reprodueix",
 	"timedmedia-desc-link": "Informació del fitxer",
 	"timedmedia-status": "Estat",
+	"timedmedia-status-unknown": "Estat desconegut",
 	"timedmedia-transcodeinfo": "Format",
 	"timedmedia-actions": "Accions",
 	"timedmedia-direct-link": "Descarregar",
 	"timedmedia-not-ready": "Sense enllestir",
+	"timedmedia-percent-done": "Aproximadament $1% completat",
 	"timedmedia-days": "{{PLURAL:$1|1 dia|$1 dies}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 hora|$1 hores}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minuts}}",
@@ -49,5 +51,6 @@
 	"timedmedia-videos": "{{PLURAL:$1|$1 vídeo|$1 vídeos}}",
 	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}",
 	"timedmedia-webm-videos": "{{PLURAL:$1|$1 vídeo WebM|$1 vídeosWebM}}",
-	"timedmedia-file": "Fitxer"
+	"timedmedia-file": "Fitxer",
+	"beta-feature-timedmediahandler-message-videojs": "Reproductor de vídeos nou"
 }

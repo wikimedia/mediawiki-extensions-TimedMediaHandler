@@ -40,6 +40,7 @@
 	"timedmedia-wav-pcm-required": "Вы можете загрузить только PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp3-short-audio": "Аудиофайл MP3, $1",
 	"timedmedia-mp3-long-audio": "Аудиофайл MP3, длина — $1, битрейт — $2",
+	"timedmedia-midi-short-audio": "MIDI-аудиофайл, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 видео-файл, $2",
 	"timedmedia-mp4-long-video": "Аудио/видеофайл MP4 $1, длина — $2, $4 × $5 пикселей, битрейт — $3",
 	"timedmedia-more": "Больше…",

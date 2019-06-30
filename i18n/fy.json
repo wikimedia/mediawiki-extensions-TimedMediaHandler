@@ -14,5 +14,6 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekonde|$1 sekonden}}",
 	"timedmedia-source-file": "$1 boarne",
 	"timedmedia-source-audio-file-desc": "Orizjineel $1-bestân ($2)",
-	"timedmedia-file": "Bestân"
+	"timedmedia-file": "Bestân",
+	"beta-feature-timedmediahandler-message-videojs": "Nije fideospiler"
 }

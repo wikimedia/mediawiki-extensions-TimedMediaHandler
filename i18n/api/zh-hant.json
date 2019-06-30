@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
-			"Kly"
+			"Kly",
+			"神樂坂秀吉"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "取得指定檔案頁面的轉碼狀態。",
@@ -24,5 +25,6 @@
 	"apierror-timedmedia-invalidtranscodetitle": "$1 無法轉碼。",
 	"apierror-timedmedia-badtranscodekey": "無效或停用的轉碼鍵值：$1",
 	"apierror-timedmedia-notenoughtimereset": "自上一次重新設定此轉碼後，所經過的時間不夠。可在 $1 前重新設定此轉碼。",
-	"apierror-timedmedia-lang-notfound": "找不到請求的語言"
+	"apierror-timedmedia-lang-notfound": "找不到請求的語言",
+	"apierror-timedmedia-notlocal": "檔案在本地不可用"
 }
