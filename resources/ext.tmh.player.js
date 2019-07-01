@@ -163,6 +163,13 @@
 
 	$.fn.loadVideoPlayer = loadVideoPlayer;
 
+	// Add translations for the plugins
+	// video.js translations don't have region postfixes (yet)
+	videojs.addLanguage( mw.config.get( 'wgUserLanguage' ).split( '-' )[ 0 ], {
+		'More information': mw.msg( 'videojs-more-information' ),
+		Quality: mw.msg( 'videojs-quality' )
+	} );
+
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		$content.find( 'video,audio' ).loadVideoPlayer();
 	} );

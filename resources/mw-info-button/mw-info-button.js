@@ -12,10 +12,9 @@
 			// defaults = {},
 			Button = videojs.getComponent( 'Button' ),
 			InfoButton = videojs.extend( Button, {
-				constructor: function ( player, link ) {
-					this.link = link;
+				constructor: function ( player, options ) {
+					this.link = options.link;
 					Button.call( this, player, {} );
-					this.controlText( 'More information' );
 				},
 				handleClick: function () {
 					window.navigator.url = window.open( this.link, '_blank' );
@@ -24,6 +23,10 @@
 					return Button.prototype.buildCSSClass.call( this ) + ' mw-info-button';
 				}
 			} );
+
+		// Register the component with Video.js, so it can be used in players.
+		InfoButton.prototype.controlText_ = 'More information';
+		videojs.registerComponent( 'InfoButton', InfoButton );
 
 		/**
 		 * Initialize the plugin.
@@ -35,13 +38,12 @@
 
 			player.ready( function () {
 				var title = mw.Title.makeTitle(
-						mw.config.get( 'wgNamespaceIds' ).file,
-						player.el().getAttribute( 'data-mwtitle' )
-					),
-					button = new InfoButton( Button, title.getUrl() );
+					mw.config.get( 'wgNamespaceIds' ).file,
+					player.el().getAttribute( 'data-mwtitle' )
+				);
 
 				if ( mw.config.get( 'wgTitle' ) !== player.el().getAttribute( 'data-mwtitle' ) ) {
-					player.controlBar.infoButton = player.controlBar.addChild( button );
+					player.controlBar.infoButton = player.controlBar.addChild( 'InfoButton', { link: title.getUrl() } );
 				}
 			} );
 		};
