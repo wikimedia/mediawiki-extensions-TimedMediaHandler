@@ -82,7 +82,7 @@ class RequeueTranscodes extends Maintenance {
 		$transcodeSet = WebVideoTranscode::enabledTranscodes();
 		$dbw = wfGetDB( DB_MASTER );
 
-		$state = WebVideoTranscode::cleanupTranscodes( $file );
+		WebVideoTranscode::cleanupTranscodes( $file );
 
 		if ( $this->hasOption( "all" ) ) {
 			$toAdd = $toRemove = $transcodeSet;
