@@ -35,6 +35,35 @@ div.thumbinner.mw-overflow {
 	width: 100% !important; /* stylelint-disable-line declaration-no-important */
 }
 
+/* TODO this button needs to be reworked */
+.video-js:not( .vjs-fullscreen ).vjs-layout-small,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small,
+.video-js:not( .vjs-fullscreen ).vjs-layout-tiny {
+	div[ aria-label='Quality' ] {
+		display: none;
+	}
+}
+
+/* stylelint-disable no-descending-specificity */
+.video-js:not( .vjs-fullscreen ):not( .vjs-audio ).vjs-layout-large .vjs-subs-caps-button,
+.video-js:not( .vjs-fullscreen ):not( .vjs-audio ).vjs-layout-medium .vjs-subs-caps-button,
+.video-js:not( .vjs-fullscreen ).vjs-layout-medium .vjs-remaining-time,
+.video-js:not( .vjs-fullscreen ).vjs-audio.vjs-layout-small .vjs-progress-control,
+.video-js:not( .vjs-fullscreen ).vjs-layout-small .vjs-subs-caps-button,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small .vjs-progress-control,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small.vjs-audio .mw-info-button,
+.video-js:not( .vjs-fullscreen ).vjs-layout-tiny .vjs-volume-panel,
+.video-js:not( .vjs-fullscreen ).vjs-layout-tiny .mw-info-button {
+	display: none;
+}
+/* stylelint-enable */
+
+.video-js:not( .vjs-fullscreen ).vjs-layout-small .vjs-custom-control-spacer,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small .vjs-custom-control-spacer {
+	flex: auto;
+	display: block;
+}
+
 /* Audio player skin */
 .video-js.vjs-audio {
 	height: 3em;
