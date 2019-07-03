@@ -567,7 +567,8 @@
 			]
 		},
 		"ext.tmh.TimedTextSelector": {
-			"scripts": "resources/ext.tmh.TimedTextSelector.js"
+			"scripts": "resources/ext.tmh.TimedTextSelector.js",
+			"dependencies": "mediawiki.util"
 		},
 		"ext.tmh.OgvJsSupport": {
 			"scripts": [
