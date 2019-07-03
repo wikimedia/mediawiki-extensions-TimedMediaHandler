@@ -587,7 +587,7 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function activePlayerMode() {
 		global $wgTmhUseBetaFeatures, $wgUser;
-		$context = new RequestContext();
+		$context = RequestContext::getMain();
 		if ( $wgTmhUseBetaFeatures && ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' ) &&
 			$wgUser->isSafeToLoad() && BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
 		) {
