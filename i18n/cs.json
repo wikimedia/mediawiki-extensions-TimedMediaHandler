@@ -33,6 +33,8 @@
 	"timedmedia-wav-pcm-required": "Můžete načítat jen WAV soubory ve formátu PCM (pulse code modulation).",
 	"timedmedia-mp3-short-audio": "Zvukový soubor MP3, $1",
 	"timedmedia-mp3-long-audio": "Zvukový soubor MP3, $1, celkem $2",
+	"timedmedia-midi-short-audio": "Zvukový soubor MIDI, $1",
+	"timedmedia-midi-long-audio": "Zvukový soubor MIDI, délka $1, celkem $2",
 	"timedmedia-mp4-short-video": "Videosoubor MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Audio/video soubor MP4, $1, délka $2, $4×$5 pixelů, celkem $3",
 	"timedmedia-more": "Více…",
@@ -100,7 +102,9 @@
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-resolution-120": "Nízké 120p",
 	"timedmedia-resolution-160": "Nízké 160p",
+	"timedmedia-resolution-180": "Nízké 180p",
 	"timedmedia-resolution-240": "Nízké 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
@@ -143,5 +147,7 @@
 	"orphanedtimedtext": "Osiřelé stránky TimedText",
 	"orphanedtimedtext-summary": "Seznam stránek [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], které nemají odpovídající soubor.",
 	"orphanedtimedtext-unsupported": "Tato speciální stránka je podporována jen na databázi MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText není na této wiki zapnut."
+	"orphanedtimedtext-notimedtext": "TimedText není na této wiki zapnut.",
+	"videojs-more-information": "Více informací",
+	"videojs-quality": "Kvalita videa"
 }

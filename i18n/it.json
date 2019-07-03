@@ -142,5 +142,6 @@
 	"orphanedtimedtext": "Pagine sottotitoli orfane",
 	"orphanedtimedtext-summary": "Elenco di pagine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] che non hanno un file corrispondente.",
 	"orphanedtimedtext-unsupported": "Questa pagina speciale è supportata solo su database MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText non è abilitato su questo wiki."
+	"orphanedtimedtext-notimedtext": "TimedText non è abilitato su questo wiki.",
+	"videojs-more-information": "Ulteriori informazioni"
 }

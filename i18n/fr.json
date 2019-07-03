@@ -174,5 +174,7 @@
 	"orphanedtimedtext": "Pages orphelines de TimedText",
 	"orphanedtimedtext-summary": "Liste des pages [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] qui n’ont pas de fichier correspondant.",
 	"orphanedtimedtext-unsupported": "Cette page spéciale n’est prise en charge que sur les bases de données MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki."
+	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki.",
+	"videojs-more-information": "Plus d’informations",
+	"videojs-quality": "Qualité de vidéo"
 }

@@ -140,5 +140,7 @@
 	"orphanedtimedtext": "Pàggene de sottotitole orfane",
 	"orphanedtimedtext-summary": "Elenghe de le pàggene [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] ca non ge tènene 'nu file corrispondende.",
 	"orphanedtimedtext-unsupported": "Sta pàgena speciale jè supportate sulamende sus a le database MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText non g'è abbiltiate sus a sta uicchi."
+	"orphanedtimedtext-notimedtext": "TimedText non g'è abbiltiate sus a sta uicchi.",
+	"videojs-more-information": "Cchiù 'mbormaziune",
+	"videojs-quality": "Qualitate d'u video"
 }

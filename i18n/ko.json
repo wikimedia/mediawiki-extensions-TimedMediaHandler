@@ -145,5 +145,7 @@
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",
 	"action-transcode-status": "현재 코드 변환 상태 보기",
 	"log-name-timedmediahandler": "TimedMediaHandler 기록",
-	"orphanedtimedtext-notimedtext": "이 위키에 TimedText가 활성화되어 있지 않습니다."
+	"orphanedtimedtext-notimedtext": "이 위키에 TimedText가 활성화되어 있지 않습니다.",
+	"videojs-more-information": "추가 정보",
+	"videojs-quality": "동영상 품질"
 }

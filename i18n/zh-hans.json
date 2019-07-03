@@ -13,7 +13,8 @@
 			"NeverBehave",
 			"WhitePhosphorus",
 			"Hanyanbo98",
-			"佛壁灯"
+			"佛壁灯",
+			"神樂坂秀吉"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -163,5 +164,7 @@
 	"orphanedtimedtext": "孤立的TimedText页面",
 	"orphanedtimedtext-summary": "没有对应文件的[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]页面的列表。",
 	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
-	"orphanedtimedtext-notimedtext": "TimedText在此wiki未启用。"
+	"orphanedtimedtext-notimedtext": "TimedText在此wiki未启用。",
+	"videojs-more-information": "更多信息",
+	"videojs-quality": "视频品质"
 }

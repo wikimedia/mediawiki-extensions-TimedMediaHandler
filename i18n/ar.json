@@ -158,5 +158,7 @@
 	"orphanedtimedtext": "صفحات TimedText يتيمة",
 	"orphanedtimedtext-summary": "قائمة بصفحات [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]  التي ليس لديها ملف موافق.",
 	"orphanedtimedtext-unsupported": "هذه الصفحة الخاصة لا تدعمها إلا قواعد بيانات MySQL",
-	"orphanedtimedtext-notimedtext": "TimedText غير مفعل على هذا الويكي"
+	"orphanedtimedtext-notimedtext": "TimedText غير مفعل على هذا الويكي",
+	"videojs-more-information": "مزيد من المعلومات",
+	"videojs-quality": "جودة الفيديو"
 }
