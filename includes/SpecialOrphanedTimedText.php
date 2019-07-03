@@ -50,6 +50,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 */
 	public function execute( $par ) {
 		global $wgEnableLocalTimedText;
+		$this->addHelpLink( 'https://commons.wikimedia.org/wiki/Commons:Timed_Text', true );
 
 		if ( !$wgEnableLocalTimedText ) {
 			$this->setHeaders();
