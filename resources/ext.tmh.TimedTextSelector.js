@@ -1,6 +1,9 @@
 /* eslint-disable no-jquery/no-global-selector */
 $( function () {
 	$( '#timedmedia-tt-go' ).on( 'click', function () {
-		window.location = mw.config.get( 'wgScript' ) + '?title=' + mw.util.wikiUrlencode( mw.config.get( 'wgPageName' ) ) + '.' + $( '#timedmedia-tt-input' ).val() + '.srt&action=edit';
+		window.location = mw.util.getUrl(
+			mw.config.get( 'wgPageName' ) + '.' + $( '#timedmedia-tt-input' ).val() + '.srt',
+			{ action: 'edit' }
+		);
 	} );
 } );
