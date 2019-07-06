@@ -3,7 +3,7 @@
  * Abstract test class to support Video Tests with video uploads
  * @author dale
  */
-abstract class ApiVideoUploadTestCase extends ApiTestCaseUpload {
+abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	/**
 	 * @return Array set of test files with associated metadata
 	 */
@@ -14,24 +14,24 @@ abstract class ApiVideoUploadTestCase extends ApiTestCaseUpload {
 				[
 					'mime' => 'application/ogg',
 					'filePath' => __DIR__ . '/media/test5seconds.electricsheep.300x400.ogv',
-					"size" => 301477,
-					"width"  => 400,
-					"height" => 300,
-					"mediatype" => "VIDEO",
-					"bandwidth" => 452216,
-					"framerate" => 30
+					'size' => 301477,
+					'width' => 400,
+					'height' => 300,
+					'mediatype' => MEDIATYPE_VIDEO,
+					'bandwidth' => 449642,
+					'framerate' => 30,
 				]
 			],
 			[
 				[
 					'mime' => 'video/webm',
 					'filePath' => __DIR__ . '/media/shuttle10seconds.1080x608.webm',
-					"size" => 699018,
-					"width" => 1080,
-					"height" => 608,
-					"mediatype" => "VIDEO",
-					"bandwidth" => 522142,
-					"framerate" => 29.97
+					'size' => 699018,
+					'width' => 1080,
+					'height' => 608,
+					'mediatype' => MEDIATYPE_VIDEO,
+					'bandwidth' => 522142,
+					'framerate' => 29.97,
 				]
 			],
 			[
@@ -39,10 +39,15 @@ abstract class ApiVideoUploadTestCase extends ApiTestCaseUpload {
 					'mime' => 'audio/midi',
 					'filePath' => __DIR__ . '/media/c-major.midi',
 					'size' => 262,
-					'mediatype' => "AUDIO"
-				]
+					'mediatype' => MEDIATYPE_AUDIO,
+				],
 			]
 		];
+	}
+
+	protected function setUp() {
+		parent::setUp();
+		$this->tablesUsed[] = 'transcode';
 	}
 
 	/**
@@ -56,7 +61,7 @@ abstract class ApiVideoUploadTestCase extends ApiTestCaseUpload {
 		foreach ( $testMediaFiles as $file ) {
 			$file = $file[0];
 			// Clean up and delete all files
-			$this->deleteFileByFilename( $file['filePath'] );
+			$this->deleteFileByFilename( basename( $file['filePath'] ) );
 		}
 	}
 
