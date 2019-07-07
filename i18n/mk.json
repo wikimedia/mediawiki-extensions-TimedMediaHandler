@@ -180,5 +180,7 @@
 	"orphanedtimedtext": "Осамени страници со титлови",
 	"orphanedtimedtext-summary": "Список на страници со [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] што немаат своја податотека.",
 	"orphanedtimedtext-unsupported": "Оваа службена страница е поддржана само на MySQL-бази.",
-	"orphanedtimedtext-notimedtext": "Титловите не се овозможени на ова вики."
+	"orphanedtimedtext-notimedtext": "Титловите не се овозможени на ова вики.",
+	"videojs-more-information": "Повеќе информации",
+	"videojs-quality": "Квалитет на снимката"
 }

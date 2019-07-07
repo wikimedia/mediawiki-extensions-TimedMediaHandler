@@ -106,5 +106,6 @@
 	"right-transcode-reset": "Nulstil mislykkedes eller transkodede videoer så de er sat ind i jobkøen igen.",
 	"right-transcode-status": "Vis [[Special:TimedMediaHandler|information om den aktuelle omkodningsaktivitet]]",
 	"action-transcode-reset": "nulstil omkodinger",
-	"action-transcode-status": "få vist den aktuelle transkode status"
+	"action-transcode-status": "få vist den aktuelle transkode status",
+	"videojs-quality": "Videokvalitet"
 }
