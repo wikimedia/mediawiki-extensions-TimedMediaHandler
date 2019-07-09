@@ -105,9 +105,7 @@ class VttWriter extends Writer {
 	public function formatText( $text ) {
 		// < and > and & and friends are special, kinda like HTML
 		// but not exactly
-		$text = htmlspecialchars( $text, ENT_NOQUOTES | ENT_HTML5, 'utf-8' );
-
-		return $text;
+		return htmlspecialchars( $text, ENT_NOQUOTES | ENT_HTML5, 'utf-8' );
 	}
 
 	public function formatNodes( $nodes ) {
