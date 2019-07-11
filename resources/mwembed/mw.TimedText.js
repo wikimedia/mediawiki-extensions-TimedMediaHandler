@@ -877,10 +877,10 @@
 		 * @return {string|boolean}
 		 */
 		getLanguageName: function ( langKey ) {
-			if ( mw.Language.names[ langKey ] ) {
-				return mw.Language.names[ langKey ];
-			}
-			return false;
+			return mw.language.getData(
+				mw.config.get( 'wgUserLanguage' ),
+				'languageData'
+			)[ langKey ] || false;
 		},
 
 		/**
