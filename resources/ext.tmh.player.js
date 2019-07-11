@@ -13,7 +13,8 @@
 		},
 		techOrder: [ 'html5' ],
 		plugins: {
-			infoButton: {}
+			infoButton: {},
+			audioCaptions: {}
 		}
 	};
 
