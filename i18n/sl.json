@@ -3,7 +3,8 @@
 		"authors": [
 			"Dbc334",
 			"Eleassar",
-			"Rzuwig"
+			"Rzuwig",
+			"Janezdrilc"
 		]
 	},
 	"timedmediahandler-desc": "Upravljavec zvoka, videa in časovnega besedila s podprtimi oblikami WebM, Ogg Theora, Vorbis in SubRip",
@@ -50,6 +51,10 @@
 	"timedmedia-minutes": "$1 {{PLURAL:$1|minuta|minuti|minute|minut}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|sekunda|sekundi|sekunde|sekund}}",
 	"timedmedia-reset": "Ponastavi prekodiranje",
+	"timedmedia-reset-areyousure": "Si prepričan, da želiš nadaljevati?",
+	"timedmedia-reset-button-cancel": "Ne ponastavi",
+	"timedmedia-reset-button-dismiss": "Opusti",
+	"timedmedia-reset-button-reset": "Ponastavi",
 	"timedmedia-reset-error": "Napaka pri ponastavljanju prekodiranja.",
 	"timedmedia-reset-explanation": "Ob ponastavitvi tega prekodiranja se bodo izbrisale vse obstoječe datoteke (če obstajajo), prekodiranje pa se bo ponovno dodalo v čakalno vrsto. Ponovno prekodiranje bo vzelo nekaj časa.",
 	"timedmedia-mp4": "MP4",
@@ -89,7 +94,11 @@
 	"timedmedia-ogg-audios": "$1 {{PLURAL:$1|zvočna datoteka|zvočni datoteki|zvočne datoteke|zvočnih datotek}} Ogg",
 	"timedmedia-flac-audios": "$1 {{PLURAL:$1|zvočna datoteka|zvočni datoteki|zvočne datoteke|zvočnih datotek}} FLAC",
 	"timedmedia-wav-audios": "$1 {{PLURAL:$1|zvočna datoteka|zvočni datoteki|zvočne datoteke|zvočnih datotek}} WAV",
+	"beta-feature-timedmediahandler-message-videojs": "Novi video predvajalnik",
+	"beta-feature-timedmediahandler-description-videojs": "Glej video posnetke s sodobnim predvajalnikom čistejšega videza in kompatibilnostjo za telefone.",
 	"right-transcode-reset": "Ponastavitev neuspelih ali pretvorjenih videov, da so ponovno vstavljeni v čakalno vrsto opravil",
 	"right-transcode-status": "Ogled [[Special:TimedMediaHandler|informacij o trenutni dejavnosti pretvarjanja]]",
-	"action-transcode-status": "ogled trenutnega stanja pretvorbe"
+	"action-transcode-status": "ogled trenutnega stanja pretvorbe",
+	"videojs-more-information": "Več informacij",
+	"videojs-quality": "Kvaliteta videa"
 }

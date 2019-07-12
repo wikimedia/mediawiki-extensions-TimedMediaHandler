@@ -60,7 +60,7 @@
 	"timedmedia-webm": "WebM",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "Изворни $1",
-	"timedmedia-source-file-desc": "Првобитна $1 датотека, $2 × $3 ($4)",
+	"timedmedia-source-file-desc": "Оригинална $1 датотека, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Тип датотеке $1 ($2)",
 	"timedmedia-derivative-160p.ogv": "Ogg 160п",
 	"timedmedia-derivative-desc-160p.ogv": "Нископропусни .ogg видео (160п)",
