@@ -16,12 +16,7 @@ module.exports = function ( grunt ) {
 				extensions: [ '.js', '.json' ],
 				cache: true
 			},
-			all: [
-				'**/*.js{,on}',
-				// Third party resources
-				'!resources/{videojs*,mwembed/lib}/**',
-				'!{vendor,node_modules}/**'
-			]
+			all: '.'
 		},
 		stylelint: {
 			options: {
