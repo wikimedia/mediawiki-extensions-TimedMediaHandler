@@ -50,6 +50,7 @@ class Mp4Handler extends ID3Handler {
 	public function getMetadataType( $image ) {
 		return 'mp4';
 	}
+
 	/**
 	 * @param File $file
 	 * @return string
@@ -74,6 +75,7 @@ class Mp4Handler extends ID3Handler {
 		// all h.264 encodes are currently simple profile
 		return 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
 	}
+
 	/**
 	 * @param File $file
 	 * @return array|bool

@@ -11,6 +11,7 @@ class Mp3Handler extends ID3Handler {
 	public function getMetadataType( $image ) {
 		return 'mp3';
 	}
+
 	/**
 	 * @param File $file
 	 * @return string
@@ -18,6 +19,7 @@ class Mp3Handler extends ID3Handler {
 	public function getWebType( $file ) {
 		return 'audio/mpeg';
 	}
+
 	/**
 	 * @param File $file
 	 * @return array|bool

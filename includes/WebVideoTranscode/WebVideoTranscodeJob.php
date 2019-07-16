@@ -69,6 +69,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return $this->targetEncodeFile->getPath();
 	}
+
 	/**
 	 * purge temporary encode target
 	 */
@@ -514,6 +515,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return $cmd;
 	}
+
 	/**
 	 * Adds ffmpeg shell options for webm
 	 *

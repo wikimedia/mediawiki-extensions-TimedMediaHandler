@@ -30,6 +30,7 @@ class MidiHandler extends ID3Handler {
 			return Status::newGood();
 		}
 	}
+
 	/**
 	 * @param File $file
 	 * @return array|bool

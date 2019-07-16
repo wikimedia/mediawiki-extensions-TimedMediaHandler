@@ -203,6 +203,7 @@ class OggHandler extends TimedMediaHandler {
 	public function getMetadataType( $image ) {
 		return 'ogg';
 	}
+
 	/**
 	 * @param File $file
 	 * @return string
@@ -217,6 +218,7 @@ class OggHandler extends TimedMediaHandler {
 		$codecs = strtolower( implode( ", ", $streamTypes ) );
 		return $baseType . '; codecs="' . $codecs . '"';
 	}
+
 	/**
 	 * @param File $file
 	 * @return array|bool

@@ -34,6 +34,7 @@ class WAVHandler extends ID3Handler {
 
 		return Status::newFatal( 'timedmedia-wav-pcm-required' );
 	}
+
 	/**
 	 * @param File $file
 	 * @return array|bool
