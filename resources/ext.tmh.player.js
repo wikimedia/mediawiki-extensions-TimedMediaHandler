@@ -1,6 +1,6 @@
 /* global videojs */
 ( function () {
-	var globalConfig, videoConfig, audioConfig, playerConfig;
+	var globalConfig, videoConfig, audioConfig, playerConfig, activePlayers = [];
 
 	globalConfig = {
 		responsive: true,
@@ -76,6 +76,19 @@
 			huge: 2000
 		}
 	};
+
+	/**
+	 * Remove any detached players from previous live previews etc
+	 */
+	function disposeDetachedPlayers() {
+		activePlayers = activePlayers.filter( function ( player ) {
+			if ( !player.el().ownerDocument.body.contains( player.el() ) ) {
+				player.dispose();
+				return false;
+			}
+			return true;
+		} );
+	}
 
 	/**
 	 * Load video players for a jQuery collection
@@ -182,6 +195,7 @@
 			// Launch the player
 			$videoplayer.addClass( 'video-js' );
 			videojs( videoplayer, playerConfig ).ready( function () {
+				activePlayers.push( this );
 				/* More custom stuff goes here */
 			} );
 		}
@@ -210,6 +224,7 @@
 	} );
 
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+		disposeDetachedPlayers();
 		$content.find( 'video,audio' ).loadVideoPlayer();
 	} );
 	$( function () {
