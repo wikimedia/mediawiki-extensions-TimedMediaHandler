@@ -5,7 +5,8 @@
 			"Hosiryuhosi",
 			"Shirayuki",
 			"Yanajin66",
-			"青子守歌"
+			"青子守歌",
+			"Afaz"
 		]
 	},
 	"mwe-timedtext-back-btn": "戻る",
@@ -23,6 +24,7 @@
 	"mwe-timedtext-textcat-lrc": "歌詞",
 	"mwe-timedtext-textcat-lin": "言語マーク",
 	"mwe-timedtext-textcat-cue": "キューポイント",
+	"mwe-timedtext-no-subs": "使用可能なテキストトラックがありません",
 	"mwe-timedtext-language-subtitles-for-clip": "クリップ $2 の$1字幕",
 	"mwe-timedtext-language-no-subtitles-for-clip": "クリップ $2 には$1字幕がありません",
 	"mwe-timedtext-upload-timed-text": "字幕を追加"

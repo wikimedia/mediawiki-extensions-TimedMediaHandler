@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ibrahim"
+			"Ibrahim",
+			"ToJack"
 		]
 	},
 	"timedmediahandler-desc": "Ба дастгирандае барои парвандаҳои  Ogg Theora ва Vorbis, бо пахшкунандаи JavaScript",
@@ -18,5 +19,6 @@
 	"timedmedia-download": "Боргирии парванда",
 	"timedmedia-desc-link": "Дар бораи ин парванда",
 	"timedmedia-source-file": "$1 манбаъ",
-	"timedmedia-source-audio-file-desc": "Аслӣ $1 парванда ($2)"
+	"timedmedia-source-audio-file-desc": "Аслӣ $1 парванда ($2)",
+	"videojs-more-information": "Маълумоти бештар"
 }
