@@ -9,7 +9,8 @@
 			"Gianfranco",
 			"Raoli",
 			"Peg60",
-			"Matteocng"
+			"Matteocng",
+			"Sakretsu"
 		]
 	},
 	"timedmediahandler-desc": "Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt",
@@ -136,6 +137,8 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 file audio FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 file audio WAV}}",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 file audio WebM}}",
+	"beta-feature-timedmediahandler-message-videojs": "Nuovo lettore video",
+	"beta-feature-timedmediahandler-description-videojs": "Guarda file video con un lettore moderno dall'aspetto più pulito e compatibile con i dispositivi mobile.",
 	"right-transcode-reset": "Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.",
 	"right-transcode-status": "Visualizza [[Special:TimedMediaHandler|informazioni sull'attuale attività di transcodifica]]",
 	"action-transcode-status": "visualizzare l'attuale stato della transcodifica",
