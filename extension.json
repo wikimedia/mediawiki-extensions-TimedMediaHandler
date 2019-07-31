@@ -578,10 +578,6 @@
 				"timedmedia-reset-explanation"
 			]
 		},
-		"ext.tmh.TimedTextSelector": {
-			"scripts": "resources/ext.tmh.TimedTextSelector.js",
-			"dependencies": "mediawiki.util"
-		},
 		"ext.tmh.OgvJsSupport": {
 			"scripts": [
 				"resources/mwembed/lib/binPlayers/ogv.js/ogv-support.js",
