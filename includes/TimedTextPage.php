@@ -123,30 +123,50 @@ class TimedTextPage extends Article {
 	}
 
 	private function doRedirectToPageForm() {
-		$lang = $this->getContext()->getLanguage();
-		$out = $this->getContext()->getOutput();
+		$context = $this->getContext();
+		$lang = $context->getLanguage();
+		$out = $context->getOutput();
 
 		// Set the page title:
 		$out->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
 
-		// Look up the language name:
-		$language = $out->getLanguage()->getCode();
-		$attrs = [ 'id' => 'timedmedia-tt-input' ];
-		$langSelect = Xml::languageSelector( $language, false, null, $attrs, null );
+		$out->enableOOUI();
 
-		$out->addHTML(
-			Xml::tags( 'div', [ 'style' => 'text-align:center' ],
-				Xml::tags( 'div', null,
-					wfMessage( 'timedmedia-subtitle-new-desc', $lang->getCode() )->parse()
-				) .
-				$langSelect[1] .
-				Xml::tags( 'button',
-					[ 'id' => 'timedmedia-tt-go' ],
-					wfMessage( 'timedmedia-subtitle-new-go' )->escaped()
-				)
-			)
-		);
-		$out->addModules( 'ext.tmh.TimedTextSelector' );
+		$languages = Language::fetchLanguageNames( null, 'mwfile' );
+		$options = [];
+		foreach ( $languages as $code => $name ) {
+			$display = LanguageCode::bcp47( $code ) . ' - ' . $name;
+			$options[$display] = $code;
+		}
+
+		$formDescriptor = [
+			'lang' => [
+				'label-message' => 'timedmedia-subtitle-new-desc',
+				'required' => true,
+				'type' => 'select',
+				'options' => $options,
+				'default' => $lang->getCode(),
+			]
+		];
+
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $context );
+		$htmlForm
+			->setMethod( 'post' )
+			->setSubmitTextMsg( 'timedmedia-subtitle-new-go' )
+			->prepareForm()
+			->setSubmitCallback( [ $this, 'onSubmit' ] )
+			->show();
+	}
+
+	public function onSubmit( array $data ) {
+		if ( !empty( $data['lang'] ) ) {
+			$output = $this->getContext()->getOutput();
+			$output->redirect(
+				$output->getTitle()->getFullUrl() . '.' . $data['lang'] . '.srt?action=edit'
+			);
+			return true;
+		}
+		return false;
 	}
 
 	/**
