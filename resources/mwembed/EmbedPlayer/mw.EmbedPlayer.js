@@ -1588,7 +1588,7 @@
 			);
 		},
 		/**
-		 * Triggers widgetLoaded event - Needs to be triggered only once, at the first time playerReady is trigerred
+		 * Triggers widgetLoaded event - Needs to be triggered only once, at the first time playerReady is triggered
 		 */
 		triggerWidgetLoaded: function () {
 			if ( !this.widgetLoaded ) {
