@@ -18,7 +18,8 @@
 			"Ole Yves",
 			"Stjn",
 			"Vlad5250",
-			"Diralik"
+			"Diralik",
+			"Serhio Magpie"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -41,6 +42,7 @@
 	"timedmedia-mp3-short-audio": "Аудиофайл MP3, $1",
 	"timedmedia-mp3-long-audio": "Аудиофайл MP3, длина — $1, битрейт — $2",
 	"timedmedia-midi-short-audio": "MIDI-аудиофайл, $1",
+	"timedmedia-midi-long-audio": "Аудиофайл MIDI, длина — $1, битрейт — $2",
 	"timedmedia-mp4-short-video": "MP4 $1 видео-файл, $2",
 	"timedmedia-mp4-long-video": "Аудио/видеофайл MP4 $1, длина — $2, $4 × $5 пикселей, битрейт — $3",
 	"timedmedia-more": "Больше…",
@@ -112,7 +114,9 @@
 	"timedmedia-derivative-desc-1080p.mp4": "MP4 H.264 в Full HD (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "MP4 H.264-видео в 4K UHD (2160p)",
+	"timedmedia-resolution-120": "Низкое 120p",
 	"timedmedia-resolution-160": "Низкое 160p",
+	"timedmedia-resolution-180": "Низкое 180p",
 	"timedmedia-resolution-240": "Низкое 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
@@ -144,6 +148,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 аудиофайл FLAC|$1 аудиофайла FLAC|$1 аудиофайлов FLAC}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 аудиофайл WAV|$1 аудиофайла WAV|$1 аудиофайлов WAV}}",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 аудиофайл WebM|$1 аудиофайла WebM|$1 аудиофайлов WebM}}",
+	"beta-feature-timedmediahandler-message-videojs": "Новый проигрыватель видеофайлов",
 	"beta-feature-timedmediahandler-description-videojs": "Просматривать видеофайлы в современном плеере с более чистым дизайном и поддержкой мобильных.",
 	"right-transcode-reset": "Сброс неудавшихся или транскодированных видео, чтобы они встали в очередь заданий снова",
 	"right-transcode-status": "Просмотр [[Special:TimedMediaHandler|информации о текущей активности перекодирования]]",
@@ -155,5 +160,7 @@
 	"orphanedtimedtext": "Потерянные страницы TimedText",
 	"orphanedtimedtext-summary": "Список страниц [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], которые не имеют соответствующего файла.",
 	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText не включён в этой вики."
+	"orphanedtimedtext-notimedtext": "TimedText не включён в этой вики.",
+	"videojs-more-information": "Дополнительная информация",
+	"videojs-quality": "Качество"
 }

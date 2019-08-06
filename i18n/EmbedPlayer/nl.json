@@ -8,7 +8,8 @@
 			"McDutchie",
 			"Mainframe98",
 			"Mar(c)",
-			"Xbaked potatox"
+			"Xbaked potatox",
+			"Romaine"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Naam: $1",
@@ -90,5 +91,6 @@
 	"mwe-embedplayer-video-mpeg": "MPEG-video",
 	"mwe-embedplayer-video-msvideo": "AVI-video",
 	"mwe-embedplayer-missing-source": "Er is geen bronvideo gevonden.",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC app",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Deze video downloaden"
 }

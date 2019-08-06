@@ -1,7 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yekrats"
+			"Yekrats",
+			"Mirin"
 		]
-	}
+	},
+	"mwe-timedtext-back-btn": "Reen",
+	"mwe-timedtext-loading-text": "Ŝargante tekston...",
+	"mwe-timedtext-textcat-tad": "Priskribo de sono",
+	"mwe-timedtext-textcat-ar": "Aktivaj regionoj",
+	"mwe-timedtext-textcat-meta": "Sinkronizata metadateno",
+	"mwe-timedtext-textcat-lrc": "Kantoteksto",
+	"mwe-timedtext-textcat-lin": "Lingvistika marklingvaĵo"
 }
