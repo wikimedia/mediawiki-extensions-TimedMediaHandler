@@ -80,16 +80,16 @@ class ApiTimedText extends ApiBase {
 		if ( $ns != NS_FILE ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'invalidtitle' );
 		}
-		$this->file = wfFindFile( $page->getTitle() );
-		if ( !$this->file ) {
+		$file = wfFindFile( $page->getTitle() );
+		if ( !$file ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'timedtext-notfound' );
 		}
-		if ( !$this->file->isLocal() ) {
+		if ( !$file->isLocal() ) {
 			$this->dieWithError( 'apierror-timedmedia-notlocal', 'timedtext-notlocal' );
 		}
 
 		// Find subtitle [content] that goes with file
-		$page = $this->findTimedText( $langCode, $params['trackformat'] );
+		$page = $this->findTimedText( $file, $langCode, $params['trackformat'] );
 		if ( !$page ) {
 			$this->dieWithError( 'apierror-timedmedia-lang-notfound', 'timedtext-notfound' );
 		}
@@ -130,18 +130,18 @@ class ApiTimedText extends ApiBase {
 		$result->addValue( null, 'filename', $filename, ApiResult::NO_SIZE_CHECK );
 	}
 
-	protected function findTimedText( $langCode, $preferredFormat ) {
+	protected function findTimedText( $file, $langCode, $preferredFormat ) {
 		// In future, add 'vtt' as a supported input format as well.
 		$sourceFormats = [ 'srt' ];
 
-		$textHandler = new TextHandler( $this->file, $sourceFormats );
+		$textHandler = new TextHandler( $file, $sourceFormats );
 		$ns = $textHandler->getTimedTextNamespace();
 		if ( !$ns ) {
 			$this->dieWithError( 'apierror-timedmedia-no-timedtext-support', 'invalidconfig' );
 		}
 
 		foreach ( $sourceFormats as $format ) {
-			$dbkey = "{$this->file->getTitle()->getDbKey()}.{$langCode}.{$format}";
+			$dbkey = "{$file->getTitle()->getDbKey()}.{$langCode}.{$format}";
 			$page = WikiPage::factory( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {

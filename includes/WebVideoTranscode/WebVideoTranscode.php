@@ -14,7 +14,7 @@ use Wikimedia\Rdbms\IDatabase;
  * Main WebVideoTranscode Class hold some constants and config values
  */
 class WebVideoTranscode {
-	// Static cache of transcode state per instantiation
+	/** @var array Static cache of transcode state per instantiation */
 	public static $transcodeState = [];
 
 	/**
@@ -24,6 +24,7 @@ class WebVideoTranscode {
 	* client side encode settings at point of upload
 	*
 	* http://firefogg.org/dev/index.html
+	* @var array[]
 	*/
 	public static $derivativeSettings = [
 
@@ -553,7 +554,9 @@ class WebVideoTranscode {
 		}
 		// Else just return the size of the source video
 		// ( we have no idea how large the actual derivative size will be )
-		return $file->getLength() * $file->getHandler()->getBitrate( $file ) * 8;
+		$handler = $file->getHandler();
+		'@phan-var ID3Handler $handler';
+		return $file->getLength() * $handler->getBitrate( $file ) * 8;
 	}
 
 	/**
@@ -666,8 +669,10 @@ class WebVideoTranscode {
 			return $sources;
 		}
 
+		$handler = $file->getHandler();
+		'@phan-var ID3Handler $handler';
 		// Now Check for derivatives
-		if ( $file->getHandler()->isAudio( $file ) ) {
+		if ( $handler->isAudio( $file ) ) {
 			$transcodeSet = self::enabledAudioTranscodes();
 		} else {
 			$transcodeSet = self::enabledVideoTranscodes();
@@ -887,12 +892,14 @@ class WebVideoTranscode {
 		global $wgLang;
 		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
-		$bitrate = $file->getHandler()->getBitrate( $file );
-		$metadataType = $file->getHandler()->getMetadataType( $file );
+		$handler = $file->getHandler();
+		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
+		$bitrate = $handler->getBitrate( $file );
+		$metadataType = $handler->getMetadataType( $file );
 
 		// Give grep a chance to find the usages: timedmedia-ogg, timedmedia-webm,
 		// timedmedia-mp4, timedmedia-flac, timedmedia-wav
-		if ( $file->getHandler()->isAudio( $file ) ) {
+		if ( $handler->isAudio( $file ) ) {
 			$title = wfMessage( 'timedmedia-source-audio-file-desc',
 				wfMessage( 'timedmedia-' . $metadataType )->text() )
 				->params( $wgLang->formatBitrate( $bitrate ) )->text();
@@ -907,7 +914,7 @@ class WebVideoTranscode {
 		// timedmedia-mp4, timedmedia-flac, timedmedia-wav
 		$source = [
 			'src' => $src,
-			'type' => $file->getHandler()->getWebType( $file ),
+			'type' => $handler->getWebType( $file ),
 			'title' => $title,
 			"shorttitle" => wfMessage(
 				'timedmedia-source-file',
@@ -922,8 +929,8 @@ class WebVideoTranscode {
 		}
 
 		// For video include framerate:
-		if ( !$file->getHandler()->isAudio( $file ) ) {
-			$framerate = $file->getHandler()->getFramerate( $file );
+		if ( !$handler->isAudio( $file ) ) {
+			$framerate = $handler->getFramerate( $file );
 			if ( $framerate ) {
 				$source[ "framerate" ] = floatval( $framerate );
 			}
@@ -943,7 +950,9 @@ class WebVideoTranscode {
 
 		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
 
-		if ( $file->getHandler()->isAudio( $file ) ) {
+		$handler = $file->getHandler();
+		'@phan-var ID3Handler $handler';
+		if ( $handler->isAudio( $file ) ) {
 			$width = $height = 0;
 		} else {
 			list( $width, $height ) = self::getMaxSizeTransform(
@@ -952,9 +961,8 @@ class WebVideoTranscode {
 			);
 		}
 
-		$framerate = ( isset( self::$derivativeSettings[$transcodeKey]['framerate'] ) ) ?
-						self::$derivativeSettings[$transcodeKey]['framerate'] :
-						$file->getHandler()->getFramerate( $file );
+		$framerate = self::$derivativeSettings[$transcodeKey]['framerate']
+			?? $handler->getFramerate( $file );
 		// Setup the url src:
 		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $src ) : $src;
 		$fields = [
@@ -977,7 +985,7 @@ class WebVideoTranscode {
 			);
 		}
 
-		if ( !$file->getHandler()->isAudio( $file ) ) {
+		if ( !$handler->isAudio( $file ) ) {
 			$fields += [ "framerate" => floatval( $framerate ) ];
 		}
 		return $fields;
@@ -1049,7 +1057,9 @@ class WebVideoTranscode {
 	 * @return bool
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
-		$audio = $file->getHandler()->isAudio( $file );
+		$handler = $file->getHandler();
+		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
+		$audio = $handler->isAudio( $file );
 		if ( $audio ) {
 			$keys = self::enabledAudioTranscodes();
 		} else {
@@ -1059,7 +1069,7 @@ class WebVideoTranscode {
 		if ( in_array( $transcodeKey, $keys ) ) {
 			$settings = self::$derivativeSettings[$transcodeKey];
 			if ( $audio ) {
-				$sourceCodecs = $file->getHandler()->getStreamTypes( $file );
+				$sourceCodecs = $handler->getStreamTypes( $file );
 				$sourceCodec = $sourceCodecs ? strtolower( $sourceCodecs[0] ) : '';
 				return ( $sourceCodec !== $settings['audioCodec'] );
 			} elseif ( self::isTargetLargerThanFile( $file, $settings['maxSize'] ) ) {
@@ -1202,7 +1212,7 @@ class WebVideoTranscode {
 	 * Transforms the size per a given "maxSize"
 	 *  if maxSize is > file, file size is used
 	 * @param File &$file
-	 * @param int $targetMaxSize
+	 * @param string $targetMaxSize
 	 * @return int[]
 	 */
 	public static function getMaxSizeTransform( &$file, $targetMaxSize ) {
@@ -1297,9 +1307,10 @@ class WebVideoTranscode {
 		}
 		// check for zero size ( audio )
 		if ( $maxSize['width'] === 0 || $maxSize['height'] == 0 ) {
-			return 0;
+			$maxSize['aspect'] = 0;
+		} else {
+			$maxSize['aspect'] = $maxSize['width'] / $maxSize['height'];
 		}
-		$maxSize['aspect'] = $maxSize['width'] / $maxSize['height'];
 		return $maxSize;
 	}
 

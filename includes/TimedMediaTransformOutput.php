@@ -52,6 +52,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
 	public function __construct( $conf ) {
+		/** @phan-suppress-next-line PhanTypeMismatchProperty */
 		$this->file = $conf['file'] ?? false;
 		$this->dstPath = $conf['dstPath'] ?? false;
 		$this->sources = $conf['sources'] ?? false;
@@ -275,7 +276,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	private function getPopupPlayerSize() {
 		// Get the max width from the enabled transcode settings:
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
-		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize );
+		return WebVideoTranscode::getMaxSizeTransform( $this->file, (string)$maxImageSize );
 	}
 
 	/**
@@ -393,6 +394,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 		}
 
+		/** @phan-suppress-next-line PhanTypeInvalidDimOffset */
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		if ( $this->fillwindow ) {
 			$width = '100%';
