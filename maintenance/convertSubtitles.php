@@ -20,7 +20,8 @@ class ConvertSubtitles extends Maintenance {
 		$this->addOption( "file", "process a single given TimedText 'file'", false, true );
 		$this->addOption( "format", "output format, one of 'vtt' or 'srt'", false, true );
 		$this->addOption( "dump", "dump output to stdout along with status", false, false );
-		$this->mDescription = "convert one or more subtitle files and report on success.";
+		$this->addDescription( "convert one or more subtitle files and report on success." );
+		$this->requireExtension( 'TimedMediaHandler' );
 	}
 
 	public function execute() {

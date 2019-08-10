@@ -24,6 +24,7 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "mime", "mime type to filter on (e.g. audio/midi)", false, true );
 		$this->addOption( "throttle", "throttle on the queue" );
 		$this->addDescription( "re-queue existing and missing media transcodes." );
+		$this->requireExtension( 'TimedMediaHandler' );
 	}
 
 	public function execute() {
