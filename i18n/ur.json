@@ -16,11 +16,18 @@
 	"timedmedia-actions": "اقدامات",
 	"timedmedia-direct-link": "ڈاؤنلوڈ",
 	"timedmedia-not-ready": "تیار نہیں",
+	"timedmedia-reset-button-dismiss": "ہٹائیں",
+	"timedmedia-reset-button-reset": "دوبارہ مرتب کریں",
 	"timedmedia-source-file": "$1 مسودہ",
 	"timedmedia-source-audio-file-desc": "اصلی $1 فائل ($2)",
+	"timedmedia-subtitle-new-go": "چلیں",
 	"timedmediahandler": "وقتی میڈیا کا ہدایت کار",
 	"timedmedia-file": "فائل",
+	"beta-feature-timedmediahandler-message-videojs": "نیا ویڈیو پلیئر",
+	"beta-feature-timedmediahandler-description-videojs": "جدید موبائل دوست پلیئر میں ویڈیو فائلیں دیکھیں",
 	"right-transcode-reset": "ناکام یا ٹرانس کوڈ شدہ ویڈیو کی ترتیب نو (اس کے بعد ان ویڈیو کو کاموں کی صف میں دوبارہ شامل کر دیا جاتا ہے)۔",
 	"right-transcode-status": "[[Special:TimedMediaHandler|ٹرانس کوڈ کی حالیہ سرگرمی کی معلومات]] کا مشاہدہ",
-	"action-transcode-status": "ٹرانس کوڈ کی موجودہ صورت حال دیکھنے"
+	"action-transcode-status": "ٹرانس کوڈ کی موجودہ صورت حال دیکھنے",
+	"videojs-more-information": "مزید معلومات",
+	"videojs-quality": "ویڈیو کوالٹی"
 }
