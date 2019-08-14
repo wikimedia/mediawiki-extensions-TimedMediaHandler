@@ -523,22 +523,15 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function onRejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
-		// FIXME: This will evict from the parser cache if the site default is one
-		// value and the currently rendered value is the other, which will be the case
-		// when the user has opted into the beta feature, thus making renders of pages
-		// very slow for such users. Is this still needed? If so, it should then be
-		// adjusted take account of the user preference. — T230505
-
 		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) && (
 			(
-				self::defaultPlayerMode() === 'mwembed' &&
+				self::activePlayerMode() === 'mwembed' &&
 				!in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules() )
 			) || (
-				self::defaultPlayerMode() === 'videojs' &&
+				self::activePlayerMode() === 'videojs' &&
 				!in_array( 'ext.tmh.player', $parserOutput->getModules() )
 			)
 		) ) {
-			$wikiPage->getTitle()->purgeSquid();
 			return false;
 		}
 		return true;
