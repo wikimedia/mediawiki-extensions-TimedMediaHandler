@@ -60,6 +60,8 @@
 	"timedmedia-subtitle-new": "Създаване на нов превод или промяна на съществуващ",
 	"timedmediahandler": "Аудио и видео файлове",
 	"timedmedia-file": "Файл",
+	"beta-feature-timedmediahandler-message-videojs": "Нов видео плейър",
+	"beta-feature-timedmediahandler-description-videojs": "Гледане на видео файлове в модерен плейър с изчистен вид и съвместим с мобилни устройства.",
 	"right-transcode-status": "Преглеждане на [[Special:TimedMediaHandler|информация за текущите активности по прекодирането]]",
 	"action-transcode-reset": "анулиране на прекодирания",
 	"action-transcode-status": "преглед на актуалният статус на прекодирането",
