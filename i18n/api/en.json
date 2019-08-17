@@ -15,7 +15,7 @@
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adds an array of the different format and quality versions of an audio or video file that are available.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adds an array of the subtitles, captions and descriptions of an audio or video file that are available.",
 	"apihelp-timedtext-description": "Provides timed text content for usage by &lt;track&gt; elements",
-	"apihelp-timedtext-summary": "Provides timed text content for usage by $lt;track&gt; elements",
+	"apihelp-timedtext-summary": "Provides timed text content for usage by &lt;track&gt; elements",
 	"apihelp-timedtext-param-title": "The media file title for which to retrieve timed text",
 	"apihelp-timedtext-param-pageid": "The pageid of the media file for which to retrieve timed text",
 	"apihelp-timedtext-param-trackformat": "The file format in which to return timed text",
