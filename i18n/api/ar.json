@@ -15,7 +15,7 @@
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "يضيف مصفوفة بنسخ الجودة والصيغ لملف أوديو أو فيديو المتوفرة",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "يضيف مصفوفة بالعناوين الفرعية، التعليقات والوصوفات لملف أوديو أو فيديو متوفر",
 	"apihelp-timedtext-description": "يوفر محتوى نصيا مؤقتا للاستخدام بواسطة عناصر &lt;track&gt;",
-	"apihelp-timedtext-summary": "يوفر محتوى نصيا مؤقتا للاستخدام بواسطة عناصر $lt;track&gt;",
+	"apihelp-timedtext-summary": "يوفر محتوى نصيا مؤقتا للاستخدام بواسطة عناصر &lt;track&gt;",
 	"apihelp-timedtext-param-title": "عنوان ملف الوسائط الذي سيتم استرجاع نص التوقيت له",
 	"apihelp-timedtext-param-pageid": "معرف صفحة ملف الوسائط الذي سيتم استرجاع نص التوقيت له",
 	"apihelp-timedtext-param-trackformat": "صيغة الملف لإرجاع النص الموقوت",
