@@ -26,6 +26,8 @@
 	"timedmedia-wav-pcm-required": "Du kan kun laste opp PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp3-short-audio": "MP3-lydfil, $1",
 	"timedmedia-mp3-long-audio": "MP3-lydfil, lengde $1, $2 totalt",
+	"timedmedia-midi-short-audio": "MIDI-lydfil, $1",
+	"timedmedia-midi-long-audio": "MIDI-lydfil, lengde $1, $2 totalt",
 	"timedmedia-mp4-short-video": "MP4 $1 videofil, $2",
 	"timedmedia-mp4-long-video": "MP4-fil for lyd/video, $1, lengde $2, $4 × $5 piksler, $3 totalt",
 	"timedmedia-more": "Mer …",
@@ -97,7 +99,9 @@
 	"timedmedia-derivative-desc-1080p.mp4": "Full-HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-resolution-120": "Lav 120p",
 	"timedmedia-resolution-160": "Lav 160p",
+	"timedmedia-resolution-180": "Lav 180p",
 	"timedmedia-resolution-240": "Lav 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
@@ -140,5 +144,7 @@
 	"orphanedtimedtext": "Foreldreløse TimedText-sider",
 	"orphanedtimedtext-summary": "Liste over [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-sider som ikke har tilknytning til noen fil.",
 	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser.",
-	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien."
+	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien.",
+	"videojs-more-information": "Mer informasjon",
+	"videojs-quality": "Videokvalitet"
 }

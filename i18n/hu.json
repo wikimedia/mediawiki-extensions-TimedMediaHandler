@@ -9,7 +9,8 @@
 			"Dj",
 			"Tacsipacsi",
 			"Urbalazs",
-			"Rodrigo"
+			"Rodrigo",
+			"Bencemac"
 		]
 	},
 	"timedmediahandler-desc": "Audió-, videó- és feliratkezelő, WebM-, Ogg Theora-, Ogg Vorbis- és srt-támogatással",
@@ -114,5 +115,7 @@
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|visszaállította}} a(z) $3 fájl átkódolását „$4” formátumra",
 	"orphanedtimedtext": "Árva TimedText lapok",
 	"orphanedtimedtext-summary": "Olyan [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-lapok listája, amikhez nem tartozik fájl.",
-	"orphanedtimedtext-unsupported": "Ez a speciális lap csak MySQL adatbázisokon támogatott."
+	"orphanedtimedtext-unsupported": "Ez a speciális lap csak MySQL adatbázisokon támogatott.",
+	"videojs-more-information": "További információk",
+	"videojs-quality": "Videóminőség"
 }

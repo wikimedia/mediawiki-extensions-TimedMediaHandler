@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Danmichaelo",
-			"Nghtwlkr"
+			"Nghtwlkr",
+			"Jon Harald Søby"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tittel: $1",
@@ -66,7 +67,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "For en bedre avspillingsopplevelse anbefaler vi en <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5-videofremviser</a>.",
 	"mwe-embedplayer-download-warn": "Ingen kompatibel mediespiller for nettleseren ble funnet: for avspilling i nettleseren kan du laste ned [$1 nyeste utgave av Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Trykk <b>F11</b> for å sette <i>nettleseren</i> i fullskjermmodus",
+	"mwe-embedplayer-fullscreen-tip": "Trykk <b>F11</b> for å slå av/på fullskjerm",
 	"mwe-embedplayer-fullscreen-tip-osx": "Trykk <b>shift ⌘ F</b> for å vise i fullskjerm",
 	"mwe-embedplayer-do_not_warn_again": "Ikke vis denne meldingen i fremtiden",
 	"mwe-embedplayer-playerSelect": "Spillere",
