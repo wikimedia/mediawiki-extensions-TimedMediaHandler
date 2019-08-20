@@ -3131,7 +3131,7 @@
   function () {
     /**
      * A callback that is called when a component is ready. Does not have any
-     * paramters and any callback value will be ignored.
+     * parameters and any callback value will be ignored.
      *
      * @callback Component~ReadyCallback
      * @this Component
@@ -51829,7 +51829,7 @@
    *
    * @see https://bugzilla.mozilla.org/show_bug.cgi?id=548397
    * @param {HTMLElement} el the htmlelement to work on
-   * @param {string} the proprety to get the style for
+   * @param {string} the property to get the style for
    */
 
 
