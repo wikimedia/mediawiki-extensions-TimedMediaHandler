@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Krol111"
+			"Krol111",
+			"Uostofchuodnego"
 		]
 	},
-	"timedmedia-source-file": "Zdrzůdło ($1)",
-	"timedmedia-source-audio-file-desc": "Uoryginalny plik $1 ($2)"
+	"timedmedia-source-file": "Zdrzōdło ($1)",
+	"timedmedia-source-audio-file-desc": "Ôryginalny zbiōr $1 ($2)"
 }
