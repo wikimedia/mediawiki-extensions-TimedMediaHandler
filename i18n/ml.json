@@ -167,6 +167,7 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|ഒരു ഫ്ലാക് (FLAC) ശബ്ദപ്രമാണം|$1 ഫ്ലാക് (FLAC) ശബ്ദപ്രമാണങ്ങൾ}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|ഒരു വേവ് (WAV) ശബ്ദപ്രമാണം|$1 വേവ് (WAV) ശബ്ദപ്രമാണങ്ങൾ}}",
 	"timedmedia-webm-audios": "{{PLURAL:$1|ഒരു വെബ്എം ശബ്ദപ്രമാണം|$1 വെബ്എം ശബ്ദപ്രമാണങ്ങൾ}}",
+	"beta-feature-timedmediahandler-message-videojs": "നൂതന ചലച്ചിത്ര പ്രദർശിനി",
 	"beta-feature-timedmediahandler-description-videojs": "ഭംഗിയും മൊബൈൽ അനുരൂപതയുമുള്ള ആധുനിക പ്ലേയറിൽ ചലച്ചിത്രപ്രമാണങ്ങൾ കാണുക.",
 	"right-transcode-reset": "പുനഃക്രമീകരണം പരാജയപ്പെട്ടു അല്ലെങ്കിൽ ട്രാൻസ്കോഡ് ചെയ്ത ചലച്ചിത്രങ്ങൾ ജോബ് ക്യൂവിലേയ്ക്ക് വീണ്ടും ചേർത്തു",
 	"right-transcode-status": "[[Special:TimedMediaHandler|ഇപ്പോഴത്തെ ട്രാൻസ്കോഡ് പ്രവർത്തനത്തിന്റെ വിവരങ്ങൾ]] കാണുക",
@@ -177,5 +178,7 @@
 	"orphanedtimedtext": "ഉപയോഗിക്കപ്പെടാത്ത സമയാനുസൃതയെഴുത്ത് താളുകൾ",
 	"orphanedtimedtext-summary": "ബന്ധപ്പെട്ട പ്രമാണങ്ങൾ ഇല്ലാത്ത [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] താളുകളുടെ പട്ടിക.",
 	"orphanedtimedtext-unsupported": "മൈഎസ്ക്യുഎൽ ഡേറ്റാബേസുകളെ മാത്രമേ ഈ പ്രത്യേകതാൾ പിന്തുണയ്ക്കുന്നുള്ളു.",
-	"orphanedtimedtext-notimedtext": "സമയാനുസൃതയെഴുത്ത് ഈ വിക്കിയിൽ സജ്ജമാക്കിയിട്ടില്ല."
+	"orphanedtimedtext-notimedtext": "സമയാനുസൃതയെഴുത്ത് ഈ വിക്കിയിൽ സജ്ജമാക്കിയിട്ടില്ല.",
+	"videojs-more-information": "കൂടുതൽ വിവരങ്ങൾ",
+	"videojs-quality": "ചലച്ചിത്ര ഗുണമേന്മ"
 }
