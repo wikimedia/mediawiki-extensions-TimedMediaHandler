@@ -69,7 +69,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/API:Videoinfo';
+		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/API:Videoinfo';
 	}
 
 	public function getAllowedParams() {
