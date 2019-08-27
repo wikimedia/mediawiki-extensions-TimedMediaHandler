@@ -267,6 +267,7 @@ class WebVideoTranscodeJob extends Job {
 				strpos( $options['type'], '/ogg' ) !== false &&
 				$file->getLength()
 			) {
+				$storeOptions = [];
 				// Ogg files need a duration header for firefox
 				$storeOptions['headers']['X-Content-Duration'] = floatval( $file->getLength() );
 			}

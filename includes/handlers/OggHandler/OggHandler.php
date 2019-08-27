@@ -19,6 +19,7 @@ class OggHandler extends TimedMediaHandler {
 			foreach ( $f->listStreams() as $streamIDs ) {
 				foreach ( $streamIDs as $streamID ) {
 					$stream = $f->getStream( $streamID );
+					'@phan-var File_Ogg_Media $stream';
 					$streams[$streamID] = [
 						'serial' => $stream->getSerial(),
 						'group' => $stream->getGroup(),

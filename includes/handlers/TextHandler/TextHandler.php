@@ -13,6 +13,7 @@ use Wikimedia\Rdbms\IResultWrapper;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
+use MediaWiki\TimedMediaHandler\TimedText\ParseError;
 
 class TextHandler {
 	// lazy init remote Namespace number
@@ -75,9 +76,12 @@ class TextHandler {
 			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
 			}
+			$repo = $this->file->getRepo();
+			'@phan-var ForeignAPIRepo $repo';
+
 			// Get the namespace data from the image api repo:
 			// fetchImageQuery query caches results
-			$data = $this->file->getRepo()->fetchImageQuery( [
+			$data = $repo->fetchImageQuery( [
 				'meta' => 'siteinfo',
 				'siprop' => 'namespaces'
 			] );
@@ -156,10 +160,12 @@ class TextHandler {
 	 */
 	public function getRemoteTextSources() {
 		global $wgMemc;
+		$repo = $this->file->getRepo();
+		'@phan-var ForeignAPIRepo $repo';
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
-		if ( $this->file->getRepo()->descriptionCacheExpiry > 0 ) {
+		if ( $repo->descriptionCacheExpiry > 0 ) {
 			wfDebug( "Attempting to get text tracks from cache..." );
-			$key = $this->file->getRepo()->getLocalCacheKey(
+			$key = $repo->getLocalCacheKey(
 				'RemoteTextTracks', 'url', $this->file->getName()
 			);
 			$obj = $wgMemc->get( $key );
@@ -176,10 +182,10 @@ class TextHandler {
 		if ( $query === false ) {
 			return [];
 		}
-		$data = $this->file->getRepo()->fetchImageQuery( $query );
+		$data = $repo->fetchImageQuery( $query );
 		$textTracks = $this->getTextTracksFromData( $data );
-		if ( $data && $this->file->repo->descriptionCacheExpiry > 0 ) {
-			$wgMemc->set( $key, $textTracks, $this->file->repo->descriptionCacheExpiry );
+		if ( $data && $repo->descriptionCacheExpiry > 0 ) {
+			$wgMemc->set( $key, $textTracks, $repo->descriptionCacheExpiry );
 		}
 		return $textTracks;
 	}
@@ -350,7 +356,7 @@ class TextHandler {
 	 * @param string $from source format, one of 'srt' or 'vtt'
 	 * @param string $to destination format, one of 'srt' or 'vtt'
 	 * @param string $data source-formatted subtitles
-	 * @param TimedText\ParseError[] &$errors optional outparam to capture errors
+	 * @param ParseError[] &$errors optional outparam to capture errors
 	 * @return string destination-formatted subtitles
 	 */
 	public static function convertSubtitles( $from, $to, $data, &$errors = [] ) {
