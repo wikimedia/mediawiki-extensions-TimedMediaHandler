@@ -245,6 +245,6 @@ class ApiTimedText extends ApiBase {
 	}
 
 	public function getHelpUrls() {
-		return 'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler';
+		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler';
 	}
 }
