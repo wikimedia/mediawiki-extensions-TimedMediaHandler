@@ -29,5 +29,6 @@
 	"timedmedia-derivative-desc-mp3": "MP3",
 	"timedmedia-derivative-m4a": "AAC",
 	"timedmedia-derivative-desc-m4a": "AAC",
-	"timedmediahandler": "Daftar berkas media"
+	"timedmediahandler": "Daftar berkas media",
+	"beta-feature-timedmediahandler-message-videojs": "Pamuta video baru"
 }
