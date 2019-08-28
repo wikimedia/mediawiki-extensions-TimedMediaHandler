@@ -101,6 +101,7 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transkoder rusak}}",
 	"timedmedia-file": "Berkas",
 	"beta-feature-timedmediahandler-message-videojs": "Pemutar video baru",
+	"beta-feature-timedmediahandler-description-videojs": "Tonton berkas video di pemutar modern dengan tampilan yang lebih bersih dan kompatibilitas seluler.",
 	"right-transcode-reset": "Reset transkoder rusak ataupun yang tidak sehingga kembali dimasukkan dalam antrian.",
 	"right-transcode-status": "Lihat [[Special:TimedMediaHandler|informasi tentang aktifitas transkoder terkini]]",
 	"action-transcode-status": "lihat status transkoder terkini"

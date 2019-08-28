@@ -30,5 +30,6 @@
 	"timedmedia-derivative-m4a": "AAC",
 	"timedmedia-derivative-desc-m4a": "AAC",
 	"timedmediahandler": "Daftar berkas media",
-	"beta-feature-timedmediahandler-message-videojs": "Pamuta video baru"
+	"beta-feature-timedmediahandler-message-videojs": "Pamuta video baru",
+	"beta-feature-timedmediahandler-description-videojs": "Tonton file video pado pamuta modern jo tampilan nan labiah barasiah jo kompatibilitas seluler."
 }
