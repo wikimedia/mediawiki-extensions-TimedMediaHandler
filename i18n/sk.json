@@ -34,5 +34,6 @@
 	"beta-feature-timedmediahandler-message-videojs": "Nový prehrávač videa",
 	"beta-feature-timedmediahandler-description-videojs": "Pozerajte videá v modernom prehrávači s čistejším vzhľadom a mobilnou kompatibilitou.",
 	"log-name-timedmediahandler": "Záznam časovaného spracovania médií",
-	"log-description-timedmediahandler": "Toto je záznam akcií, vzťahujúcich sa k časovanej konverzii médií."
+	"log-description-timedmediahandler": "Toto je záznam akcií, vzťahujúcich sa k časovanej konverzii médií.",
+	"videojs-more-information": "Viac informácií"
 }
