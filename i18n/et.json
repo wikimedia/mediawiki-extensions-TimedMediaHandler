@@ -95,6 +95,10 @@
 	"timedmedia-derivative-desc-1080p.mp4": "Täiskõrglahutusega H.264-tüüpi MP4-video (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "Ultrakõrglahutusega H.264-tüüpi MP4-video (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K-ultratäiskõrglahutusega H.264-tüüpi MP4-video (2160P)",
+	"timedmedia-resolution-120": "Jäme 120p",
+	"timedmedia-resolution-160": "Jäme 160p",
+	"timedmedia-resolution-180": "Jäme 180p",
+	"timedmedia-resolution-240": "Jäme 240p",
 	"timedmedia-subtitle-new": "Uue tõlkega alustamine või olemasoleva muutmine",
 	"timedmedia-subtitle-new-desc": "Vali keel ja klõpsa nuppu '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Mine",
@@ -119,6 +123,8 @@
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC-helifail|$1 FLAC-helifaili}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV-helifail|$1 WAV-helifaili}}",
 	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM-helifail|$1 WebM-helifaili}}",
+	"beta-feature-timedmediahandler-message-videojs": "Uus videoesitaja",
+	"beta-feature-timedmediahandler-description-videojs": "Vaata videoid tänapäevase esitajaga, millel on korralikum väljanägemine ja mis ühildub mobiiliga.",
 	"right-transcode-reset": "Lähtestada ebaõnnestunud või ümberkodeeritud videoid, nii et need lisatakse uuesti tööjärge",
 	"right-transcode-status": "Vaadata [[Special:TimedMediaHandler|teavet praegu aktiivsete ümberkodeeringute kohta]]",
 	"action-transcode-reset": "ümberkodeeringuid lähtestada",
@@ -129,5 +135,7 @@
 	"orphanedtimedtext": "Ajastatud teksti orbleheküljed",
 	"orphanedtimedtext-summary": "Loend nimeruumi [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] lehekülgedest, millele vastav fail puudub.",
 	"orphanedtimedtext-unsupported": "Seda erilehekülge toetatakse ainult MySQL-andmebaasides.",
-	"orphanedtimedtext-notimedtext": "Ajastatud tekst pole selles vikis lubatud."
+	"orphanedtimedtext-notimedtext": "Ajastatud tekst pole selles vikis lubatud.",
+	"videojs-more-information": "Lisateave",
+	"videojs-quality": "Video kvaliteet"
 }
