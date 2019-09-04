@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Elisardojm",
-			"Navhy"
+			"Navhy",
+			"Iváns"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Obter o estado de transcode para unha páxina de ficheiro dado.",
