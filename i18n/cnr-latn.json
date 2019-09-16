@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bellatrix10"
+		]
+	},
+	"timedmedia-source-file": "$1 izvor",
+	"timedmedia-source-audio-file-desc": "Izvorna $1 datoteka ($2)"
+}
