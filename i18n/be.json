@@ -8,6 +8,8 @@
 	"timedmedia-dismiss": "Закрыць",
 	"timedmedia-source-file": "Крыніца $1",
 	"timedmedia-source-audio-file-desc": "Арыгінальны $1-файл ($2)",
+	"beta-feature-timedmediahandler-message-videojs": "Новы прайгравальнік відэафайлаў",
+	"beta-feature-timedmediahandler-description-videojs": "Праглядаць відэафайлы ў сучасным плэеры з болей чыстым дызайнам і падтрымкай мабільных.",
 	"log-name-timedmediahandler": "Журнал TimedMediaHandler",
 	"log-description-timedmediahandler": "Гэта журнал падзей, якія адносяцца да сінхранізаваных перакадыровак медыя."
 }
