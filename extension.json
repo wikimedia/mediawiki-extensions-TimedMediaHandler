@@ -400,7 +400,8 @@
 			"dependencies": [
 				"mw.MwEmbedSupport",
 				"mediawiki.Title",
-				"mw.PopUpMediaTransform.styles"
+				"mw.PopUpMediaTransform.styles",
+				"ext.tmh.OgvJsSupport"
 			]
 		},
 		"mw.PopUpMediaTransform.styles": {

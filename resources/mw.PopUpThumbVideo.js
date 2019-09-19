@@ -10,6 +10,10 @@
 				$( this ).on( 'click', function ( /* event*/ ) {
 					var thisref = this;
 
+					if ( !mw.OgvJsSupport.canPlayNatively() ) {
+						mw.OgvJsSupport.initAudioContext();
+					}
+
 					mw.loader.using( 'mw.MwEmbedSupport', function () {
 						var $videoContainer = $( $( thisref ).parent().attr( 'videopayload' ) );
 						mw.addDialog( {
