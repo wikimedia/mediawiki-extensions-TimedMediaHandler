@@ -43,7 +43,7 @@
 	"mwe-embedplayer-video-3gp": "3gp видео",
 	"mwe-embedplayer-video-mpeg": "MPEG видео",
 	"mwe-embedplayer-video-msvideo": "AVI видео",
-	"mwe-embedplayer-missing-source": "Не е намерен източник на видеозаписа",
+	"mwe-embedplayer-missing-source": "Не е намерено изходно видео",
 	"mwe-embedplayer-vlcapp-vlcapplinktext": "Приложение VLC",
 	"mwe-embedplayer-vlcapp-openvideo": "Отваряне на видеозаписа в приложението VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Изтегляне на видеозаписа"
