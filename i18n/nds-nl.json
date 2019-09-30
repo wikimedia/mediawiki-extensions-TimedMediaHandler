@@ -19,6 +19,6 @@
 	"timedmedia-desc-link": "Over dit bestaand",
 	"timedmedia-days": "{{PLURAL:$1|1 dag|$1 dagen}}",
 	"timedmedia-source-file": "Bron van $1",
-	"timedmedia-source-audio-file-desc": "Oorspronkelik $1-bestaand ($2)",
+	"timedmedia-source-audio-file-desc": "Oorsprungelik $1-bestand ($2)",
 	"timedmediahandler": "Timed Media Handler"
 }
