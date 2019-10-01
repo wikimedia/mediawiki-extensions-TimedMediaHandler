@@ -24,5 +24,6 @@
 	"timedmedia-resolution-1080": "HD 1080p",
 	"timedmedia-subtitle-new-go": "Aiziet!",
 	"timedmedia-subtitle-language": "$1 ($2) subtitri",
+	"beta-feature-timedmediahandler-message-videojs": "Jaunais video atskaņotājs",
 	"videojs-quality": "Video kvalitāte"
 }
