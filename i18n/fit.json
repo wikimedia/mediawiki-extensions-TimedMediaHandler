@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pyscowicz"
+		]
+	},
+	"timedmedia-source-file": "Lähe $1",
+	"timedmedia-source-audio-file-desc": "Alkuperäinen $1-fiili ($2)"
+}
