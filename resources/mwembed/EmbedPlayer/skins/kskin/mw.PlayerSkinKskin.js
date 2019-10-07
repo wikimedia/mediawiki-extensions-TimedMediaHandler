@@ -186,6 +186,7 @@
 				.on( 'click', function () {
 					self.checkMenuOverlay();
 					$kmenu = self.$playerTarget.find( '.k-menu' );
+					// eslint-disable-next-line no-jquery/no-sizzle
 					if ( $kmenu.is( ':visible' ) ) {
 						self.closeMenuOverlay();
 					} else {

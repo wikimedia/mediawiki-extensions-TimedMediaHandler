@@ -5,8 +5,8 @@
 		"wikimedia/jquery"
 	],
 	"globals": {
-		"mw": false,
-		"OO": false
+		"mw": "readonly",
+		"OO": "readonly"
 	},
 	"rules": {
 		"valid-jsdoc": "off",

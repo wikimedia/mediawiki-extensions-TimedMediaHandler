@@ -5,8 +5,8 @@
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		$content.find( '.PopUpMediaTransform a' ).each( function () {
 			var link, title,
-				parent = $( this ).parent();
-			if ( parent.attr( 'videopayload' ) ) {
+				$parent = $( this ).parent();
+			if ( $parent.attr( 'videopayload' ) ) {
 				$( this ).on( 'click', function ( /* event*/ ) {
 					var thisref = this;
 
@@ -36,7 +36,7 @@
 					// don't follow file link
 					return false;
 				} );
-			} else if ( parent.attr( 'data-videopayload' ) ) {
+			} else if ( $parent.attr( 'data-videopayload' ) ) {
 				link = $( this ).attr( 'href' );
 				title = mw.Title.newFromImg( { src: link } );
 				if ( title && title.getPrefixedDb() !== mw.config.get( 'wgPageName' ) ) {

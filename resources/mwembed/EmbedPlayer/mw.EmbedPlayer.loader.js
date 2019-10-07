@@ -17,6 +17,7 @@
 			$selected.each( function ( index, playerElement ) {
 				var $playerElement = $( playerElement ),
 					$parent = $playerElement.parent();
+				// eslint-disable-next-line no-jquery/no-class-state
 				if ( !$playerElement.hasClass( 'kskin' ) ) {
 					// Hack for parsoid-style output without the styles
 					// Needed for NWE preview mode, which is parsoid-rendered.

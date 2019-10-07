@@ -17,8 +17,8 @@
 		var audioCaptions,
 			activeTrack,
 			hideSubtitleTimer,
-			ourContainer,
-			ourFrame,
+			$ourContainer,
+			$ourFrame,
 			activeCues = [];
 
 		function renderCues() {
@@ -31,17 +31,17 @@
 				$subtitleDiv.attr( 'lang', activeTrack.language );
 			}
 			clearTimeout( hideSubtitleTimer );
-			ourFrame.toggleClass( 'hidden', activeCues.length === 0 );
-			ourFrame.find( '.caption-cue' ).remove();
-			ourFrame.append( $subtitleDiv );
+			$ourFrame.toggleClass( 'hidden', activeCues.length === 0 );
+			$ourFrame.find( '.caption-cue' ).remove();
+			$ourFrame.append( $subtitleDiv );
 		}
 
 		function setupScreen() {
-			ourFrame = $( '<div>' ).addClass( 'caption-region hidden' );
-			ourContainer = $( '<div>' )
+			$ourFrame = $( '<div>' ).addClass( 'caption-region hidden' );
+			$ourContainer = $( '<div>' )
 				.addClass( 'caption-container' )
-				.append( ourFrame );
-			$( document.body ).append( ourContainer );
+				.append( $ourFrame );
+			$( document.body ).append( $ourContainer );
 		}
 
 		function cueChange() {
@@ -97,13 +97,13 @@
 
 		function hideSubtitles() {
 			hideSubtitleTimer = setTimeout( function () {
-				ourFrame.toggleClass( 'hidden', true );
+				$ourFrame.toggleClass( 'hidden', true );
 			}, 2000 );
 		}
 
 		function showSubtitles() {
 			clearTimeout( hideSubtitleTimer );
-			ourFrame.toggleClass( 'hidden', activeCues.length === 0 );
+			$ourFrame.toggleClass( 'hidden', activeCues.length === 0 );
 		}
 
 		/**

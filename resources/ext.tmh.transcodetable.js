@@ -4,7 +4,7 @@
 $( function () {
 	function errorPopup( event ) {
 		var tKey = $( event.target ).attr( 'data-transcodekey' ),
-			message = $( [
+			$message = $( [
 				document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
 				document.createElement( 'br' ),
 				document.createElement( 'br' ),
@@ -13,7 +13,7 @@ $( function () {
 
 		event.preventDefault();
 
-		OO.ui.confirm( message, {
+		OO.ui.confirm( $message, {
 			title: mw.msg( 'timedmedia-reset' ),
 			actions: [
 				{

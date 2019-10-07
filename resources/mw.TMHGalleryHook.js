@@ -17,6 +17,7 @@
 		if ( $mwContainer.length ) {
 			// Add some padding, so caption doesn't overlap video controls if
 			// we are overlaying the caption on top of the image.
+			// eslint-disable-next-line no-jquery/no-class-state
 			if ( !info.$outerDiv.parent().hasClass( 'mw-gallery-packed' ) ) {
 				info.$outerDiv.find( 'div.gallerytext' ).css( 'padding-bottom', '20px' );
 			}

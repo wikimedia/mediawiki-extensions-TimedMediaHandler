@@ -1731,8 +1731,10 @@
 			// Since we check this early on sometimes the player
 			// has not yet been updated to the pid location
 			if ( $( '#' + this.pid ).length === 0 ) {
+				// eslint-disable-next-line no-jquery/no-class-state
 				return $( '#' + this.id ).hasClass( 'persistentNativePlayer' );
 			}
+			// eslint-disable-next-line no-jquery/no-class-state
 			return $( '#' + this.pid ).hasClass( 'persistentNativePlayer' );
 		},
 		isTouchDevice: function () {
