@@ -11,7 +11,8 @@
 			"Sujiniku",
 			"Irus",
 			"Suyama",
-			"Omotecho"
+			"Omotecho",
+			"Kkairri"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -33,6 +34,8 @@
 	"timedmedia-wav-pcm-required": "アップロードできるのは PCM (パルス符号変調) WAV のみです。",
 	"timedmedia-mp3-short-audio": "MP3 音声ファイル、$1",
 	"timedmedia-mp3-long-audio": "MP3 音声ファイル、長さ $1、全体で $2",
+	"timedmedia-midi-short-audio": "MIDI 音声ファイル、$1",
+	"timedmedia-midi-long-audio": "MIDI 音声ファイル、長さ $1、全体で $2",
 	"timedmedia-mp4-short-video": "MP4 $1 動画ファイル、$2",
 	"timedmedia-mp4-long-video": "MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3",
 	"timedmedia-more": "その他…",
@@ -98,10 +101,14 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 件の Ogg 音声ファイル}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 件の FLAC 音声ファイル}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 件の WAV 音声ファイル}}",
+	"timedmedia-webm-audios": "{{PLURAL:$1|$1 件の WebM 音声ファイル}}",
+	"beta-feature-timedmediahandler-description-videojs": "さっぱりとした見た目とモバイル端末との親和性を兼ねた最新のプレイヤーで動画ファイルを見る。",
 	"action-transcode-reset": "トランスコードのリセット",
 	"action-transcode-status": "現在のトランスコード状態の閲覧",
 	"orphanedtimedtext": "孤立しているTimedTextページ",
 	"orphanedtimedtext-summary": "以下のページは、対応するファイルが存在しない[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]の一覧です。",
 	"orphanedtimedtext-unsupported": "この特別ページは MySQL データベースのみでサポートされます。",
-	"orphanedtimedtext-notimedtext": "このウィキでは字幕が有効になっていません。"
+	"orphanedtimedtext-notimedtext": "このウィキでは字幕が有効になっていません。",
+	"videojs-more-information": "詳細情報",
+	"videojs-quality": "画質"
 }
