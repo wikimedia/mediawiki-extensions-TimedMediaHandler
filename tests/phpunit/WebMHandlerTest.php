@@ -12,7 +12,7 @@ class WebMHandlerTest extends MediaWikiMediaTestCase {
 		return __DIR__ . '/media';
 	}
 
-	protected function setUp() {
+	protected function setUp() : void {
 		parent::setUp();
 		$this->handler = new WebMHandler;
 	}

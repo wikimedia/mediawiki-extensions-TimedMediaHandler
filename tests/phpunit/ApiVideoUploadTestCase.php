@@ -45,7 +45,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		];
 	}
 
-	protected function setUp() {
+	protected function setUp() : void {
 		parent::setUp();
 		$this->tablesUsed[] = 'transcode';
 	}
@@ -54,7 +54,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	 * Fixture -- run after every test
 	 * Clean up temporary files etc.
 	 */
-	protected function tearDown() {
+	protected function tearDown() : void {
 		parent::tearDown();
 
 		$testMediaFiles = $this->mediaFilesProvider();

@@ -246,7 +246,7 @@ class TimedMediaHandlerHooks {
 	 * @param File &$file File object
 	 * @return bool
 	 */
-	public static function isTranscodableFile( & $file ) {
+	public static function isTranscodableFile( &$file ) {
 		global $wgEnableTranscode, $wgEnabledAudioTranscodeSet;
 
 		// don't show the transcode table if transcode is disabled
