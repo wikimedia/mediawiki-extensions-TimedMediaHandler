@@ -638,7 +638,7 @@ body.vjs-full-window {
 
 .video-js .vjs-control-text {
   border: 0;
-  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
   height: 1px;
   overflow: hidden;
   padding: 0;
@@ -1334,7 +1334,6 @@ video::-webkit-media-text-track-display {
 
 .vjs-text-track-settings .vjs-label {
   position: absolute;
-  clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
   display: block;
   margin: 0 0 5px 0;
