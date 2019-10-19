@@ -153,14 +153,14 @@
 	/**
 	 * Add a dialog window:
 	 *
-	 * @param {Object} options Options object, any jquery.ui.dialog option and:
+	 * @param {Object} options Options object, any jQuery UI Dialog option and:
 	 * @param {string} options.title Title string for the dialog
 	 * @param {string} options.content to be inserted in msg box
 	 * @param {Object} options.buttons A button object for the dialog. Can be a string for the close button
 	 * @return {jQuery} Dialog element
 	 */
 	mw.addDialog = function ( options ) {
-		var uiRequest, buttonMsg,
+		var buttonMsg,
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$mweDialog = $( '#mweDialog' );
 		// Remove any other dialog
@@ -194,15 +194,6 @@
 		// Append the dialog div on top:
 		$( document.body ).append( $mweDialog );
 
-		// Build the uiRequest
-		uiRequest = [ 'jquery.ui.dialog' ];
-		if ( options.draggable ) {
-			uiRequest.push( 'jquery.ui.draggable' );
-		}
-		if ( options.resizable ) {
-			uiRequest.push( 'jquery.ui.resizable' );
-		}
-
 		// Special button string
 		if ( typeof options.buttons === 'string' ) {
 			buttonMsg = options.buttons;
@@ -213,7 +204,7 @@
 		}
 
 		// Load the dialog resources
-		mw.loader.using( uiRequest, function () {
+		mw.loader.using( [ 'jquery.ui' ], function () {
 			$mweDialog.dialog( options );
 		} );
 		return $mweDialog;

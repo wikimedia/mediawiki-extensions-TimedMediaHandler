@@ -7,6 +7,7 @@
  * @ingroup SpecialPage
  */
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -241,12 +242,11 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return string
 	 */
 	public function formatResult( $skin, $row ) {
-		global $wgContLang;
-
 		$title = Title::makeTitleSafe( $row->namespace, $row->title );
 
 		if ( $title instanceof Title ) {
-			$text = $wgContLang->convert(
+			$contLang = MediaWikiServices::getInstance()->getContentLanguage();
+			$text = $contLang->convert(
 				htmlspecialchars( $title->getPrefixedText() )
 			);
 			$link = $this->getLinkRenderer()->makeLink( $title, new HtmlArmor( $text ) );

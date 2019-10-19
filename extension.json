@@ -15,7 +15,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "media",
 	"requires": {
-		"MediaWiki": ">= 1.32.0"
+		"MediaWiki": ">= 1.34.0"
 	},
 	"APIModules": {
 		"timedtext": "ApiTimedText",
@@ -675,8 +675,7 @@
 		"jquery.ui.touchPunch": {
 			"scripts": "resources/mwembed/lib/jquery.ui.touchPunch.js",
 			"dependencies": [
-				"jquery.ui.core",
-				"jquery.ui.mouse"
+				"jquery.ui"
 			]
 		},
 		"jquery.triggerQueueCallback": {
@@ -746,10 +745,9 @@
 				"jquery.client",
 				"jquery.hoverIntent",
 				"jquery.cookie",
-				"jquery.ui.mouse",
+				"jquery.ui",
 				"jquery.debouncedresize",
 				"jquery.embedMenu",
-				"jquery.ui.slider",
 				"jquery.ui.touchPunch"
 			],
 			"styles": [
