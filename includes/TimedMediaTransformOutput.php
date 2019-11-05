@@ -6,7 +6,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	// Video file sources object lazy init in getSources()
 	// TODO these vars should probably be private
-	/** @var array|mixed|false|null */
+	/** @var array[]|false|null */
 	public $sources = null;
 
 	/** @var null */
@@ -394,7 +394,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 		}
 
-		/** @phan-suppress-next-line PhanTypeInvalidDimOffset */
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		if ( $this->fillwindow ) {
 			$width = '100%';
@@ -567,6 +566,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->sources = WebVideoTranscode::getSources( $this->file );
 			// Check if we have "start or end" times and append the temporal url fragment hash
 			foreach ( $this->sources as &$source ) {
+				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
 				$source['src'] .= $this->getTemporalUrlHash();
 			}
 		}
@@ -605,14 +605,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return array
 	 */
 	public function getAPIData() {
-		$vals = [
-			'derivatives' => WebVideoTranscode::getSources( $this->file, [ 'fullurl' ] ),
-			'timedtext' => $this->getTextHandler()->getTracks(),
-		];
-		foreach ( $vals['timedtext'] as &$track ) {
+		$timedtext = $this->getTextHandler()->getTracks();
+		foreach ( $timedtext as &$track ) {
 			$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
 		}
 		unset( $track );
-		return $vals;
+		return [
+			'derivatives' => WebVideoTranscode::getSources( $this->file, [ 'fullurl' ] ),
+			'timedtext' => $timedtext,
+		];
 	}
 }

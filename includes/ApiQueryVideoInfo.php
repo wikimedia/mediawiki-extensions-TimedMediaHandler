@@ -33,15 +33,16 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		if ( isset( $prop['timedtext'] ) ) {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
 				$handler = new TextHandler( $file, [ 'srt', 'vtt' ] );
-				$vals['timedtext'] = $handler->getTracks();
-				foreach ( $vals['timedtext'] as &$track ) {
+				$timedtext = $handler->getTracks();
+				foreach ( $timedtext as &$track ) {
 					$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
 					// We add origin anonymous for the benefit of
 					// InstantCommons, the primary user of this API
 					$track['src'] = wfAppendQuery( $track['src'], [ 'origin' => '*' ] );
 				}
 				unset( $track );
-				$result->setIndexedTagName( $vals['timedtext'], "timedtext" );
+				$result->setIndexedTagName( $timedtext, "timedtext" );
+				$vals['timedtext'] = $timedtext;
 			} else {
 				// Non-TMH file, no timedtext.
 				$vals['timedtext'] = [];

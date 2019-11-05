@@ -14,7 +14,7 @@ use Wikimedia\Rdbms\IDatabase;
  * Main WebVideoTranscode Class hold some constants and config values
  */
 class WebVideoTranscode {
-	/** @var array Static cache of transcode state per instantiation */
+	/** @var array[] Static cache of transcode state per instantiation */
 	public static $transcodeState = [];
 
 	/**
@@ -724,7 +724,7 @@ class WebVideoTranscode {
 	 *
 	 * @param File $file File object
 	 * @param IDatabase|bool $db
-	 * @return array
+	 * @return array[]
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
 		global $wgTranscodeBackgroundTimeLimit;

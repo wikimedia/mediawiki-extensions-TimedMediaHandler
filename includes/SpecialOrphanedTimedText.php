@@ -178,7 +178,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	protected function existenceCheck( Title $title ) {
 		$fileTitle = $this->getCorrespondingFile( $title );
 		if ( !$fileTitle ) {
-			return $title && !$title->isKnown();
+			return !$title->isKnown();
 		}
 		return !$title->isKnown() ||
 			( isset( $this->existingFiles[ $fileTitle->getDBKey() ] )

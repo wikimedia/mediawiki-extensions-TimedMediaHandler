@@ -37,7 +37,7 @@ class TextHandler {
 
 	/**
 	 * Get the timed text tracks elements as an associative array
-	 * @return array|mixed
+	 * @return array[]
 	 */
 	public function getTracks() {
 		if ( $this->file->isLocal() ) {
@@ -156,7 +156,7 @@ class TextHandler {
 
 	/**
 	 * Retrieve the text sources belonging to a remote file
-	 * @return array|mixed
+	 * @return array[]
 	 */
 	public function getRemoteTextSources() {
 		global $wgMemc;
@@ -192,7 +192,7 @@ class TextHandler {
 
 	/**
 	 * Retrieve the text sources belonging to a foreign db accessible file
-	 * @return array
+	 * @return array[]
 	 */
 	public function getForeignDBTextSources() {
 		$data = $this->getTextPages();
@@ -204,7 +204,7 @@ class TextHandler {
 
 	/**
 	 * Retrieve the text sources belonging to a local file
-	 * @return array
+	 * @return array[]
 	 */
 	public function getLocalTextSources() {
 		global $wgEnableLocalTimedText;
@@ -222,7 +222,7 @@ class TextHandler {
 	 * Handles both local and foreign Db results
 	 *
 	 * @param IResultWrapper $data Database result with page titles
-	 * @return array
+	 * @return array[]
 	 */
 	public function getTextTracksFromRows( IResultWrapper $data ) {
 		$textTracks = [];
@@ -273,7 +273,7 @@ class TextHandler {
 	/**
 	 * Build an array of track information using an API result
 	 * @param mixed $data JSON decoded result from a query API request
-	 * @return array
+	 * @return array[]
 	 */
 	public function getTextTracksFromData( $data ) {
 		$textTracks = [];
