@@ -16,6 +16,7 @@
 	"apihelp-timedtext-summary": "מספק תוכן טקסט מתוזמן לשימוש ברכיבי &lt;track&gt;",
 	"apihelp-timedtext-param-title": "כותרת קובץ המדיה שצריך לאחזר טקסט מתוזמן עבורו",
 	"apihelp-timedtext-param-pageid": "מזהה הדף (pageid) של קובץ המדיה שצריך לאחזר טקסט מתוזמן עבורו",
+	"apihelp-timedtext-param-trackformat": "באיזה תסדיר קובץ להחזיר את הטקסט המתוזמן",
 	"apihelp-transcodereset-description": "משתמשים עם ההרשאה \"transcode-reset\" יכולים לאפס ולהריץ מלחדש משימת המרה משנית.",
 	"apihelp-transcodereset-summary": "משתמשים עם ההרשאה \"transcode-reset\" יכולים לאתחל ולהריץ מחדש משימת המרה משנית.",
 	"apihelp-transcodereset-param-title": "כותרת קובץ המדיה.",

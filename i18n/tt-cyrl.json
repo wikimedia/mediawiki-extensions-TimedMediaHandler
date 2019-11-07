@@ -3,12 +3,13 @@
 		"authors": [
 			"Ильнар",
 			"Derslek",
-			"Marat-avgust"
+			"Marat-avgust",
+			"Ерней"
 		]
 	},
 	"timedmedia-more": "Тулырак...",
 	"timedmedia-dismiss": "Ябу",
-	"timedmedia-download": "Файлны алу",
+	"timedmedia-download": "Файлны күчереп алу",
 	"timedmedia-play-media": "Медияфайл уйнату",
 	"timedmedia-desc-link": "Файл турында мәгълүмат",
 	"timedmedia-oggThumb-version": "OggHandler $1 юрамасыннан да югарырак oggThumb тәэминатын сорый.",
