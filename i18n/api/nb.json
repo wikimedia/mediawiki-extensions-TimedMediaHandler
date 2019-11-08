@@ -13,6 +13,13 @@
 	"apihelp-query+videoinfo-example-1": "Hent informasjon om [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Legger til en tabell over de forskjellige format- og kvalitetsversjonene av en lyd- eller videofil som er tilgjengelige.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Legger til en tabell over undertekstene, overskrifter og beskrivelser av en lyd- eller videofil som er tilgjengelige.",
+	"apihelp-timedtext-description": "Gir timet tekstinnhold for bruk av &lt;track&gt;-elementer",
+	"apihelp-timedtext-summary": "Gir timet tekstinnhold for bruk av &lt;track&gt;-elementer",
+	"apihelp-timedtext-param-title": "Mediefiltittelen timet tekst skal hentes for",
+	"apihelp-timedtext-param-pageid": "pageid for mediefilen det skal hentes timet tekst for",
+	"apihelp-timedtext-param-trackformat": "Filformatet timet tekst skal returneres i",
+	"apihelp-timedtext-param-lang": "Språket til den timede teksten som skal hentes",
+	"apihelp-timedtext-example-1": "Hent en SRT-undertekstfil på tysk for fila Example.ogv",
 	"apihelp-transcodereset-description": "Brukere med rettigheten «transcode-reset» kan nullstille og kjøre omkodingsjobber på nytt.",
 	"apihelp-transcodereset-summary": "Brukere med rettigheten «transcode-reset» kan nullstille og kjøre omkodingsjobber på nytt.",
 	"apihelp-transcodereset-param-title": "Mediefiltittelen",
@@ -22,5 +29,8 @@
 	"apierror-timedmedia-disabledtranscode": "Omkoding er slått av på denne wikien.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 kan ikke omkodes.",
 	"apierror-timedmedia-badtranscodekey": "Ugyldig eller deaktivert omkodingsnøkkel: $1",
-	"apierror-timedmedia-notenoughtimereset": "Ikke nok tid har gått siden den forrige nullstillingen av denne omkodingen. Det er $1 til denne omkodingen kan bli nullstilt."
+	"apierror-timedmedia-notenoughtimereset": "Ikke nok tid har gått siden den forrige nullstillingen av denne omkodingen. Det er $1 til denne omkodingen kan bli nullstilt.",
+	"apierror-timedmedia-lang-notfound": "Det etterspurte språket ble ikke funnet",
+	"apierror-timedmedia-no-timedtext-support": "Ingen TimedText-støtte",
+	"apierror-timedmedia-notlocal": "Fil ikke lokal"
 }

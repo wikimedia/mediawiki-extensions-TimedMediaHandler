@@ -17,6 +17,8 @@
 	"apihelp-timedtext-param-title": "כותרת קובץ המדיה שצריך לאחזר טקסט מתוזמן עבורו",
 	"apihelp-timedtext-param-pageid": "מזהה הדף (pageid) של קובץ המדיה שצריך לאחזר טקסט מתוזמן עבורו",
 	"apihelp-timedtext-param-trackformat": "באיזה תסדיר קובץ להחזיר את הטקסט המתוזמן",
+	"apihelp-timedtext-param-lang": "השפה של הטקסט המתוזמן שצריך לאחזר",
+	"apihelp-timedtext-example-1": "אחזור קובץ SRT עם כתוביות בגרמנית עבור הקובץ Example.ogv",
 	"apihelp-transcodereset-description": "משתמשים עם ההרשאה \"transcode-reset\" יכולים לאפס ולהריץ מלחדש משימת המרה משנית.",
 	"apihelp-transcodereset-summary": "משתמשים עם ההרשאה \"transcode-reset\" יכולים לאתחל ולהריץ מחדש משימת המרה משנית.",
 	"apihelp-transcodereset-param-title": "כותרת קובץ המדיה.",
@@ -26,5 +28,8 @@
 	"apierror-timedmedia-disabledtranscode": "המרה משניות כבויה בוויקי הזה.",
 	"apierror-timedmedia-invalidtranscodetitle": "אי־אפשר לעשות המרה משנית ל{{GRAMMAR:תחילית|$1}}.",
 	"apierror-timedmedia-badtranscodekey": "מפתח המרה משנית בלתי־תקין או כבוי: $1",
-	"apierror-timedmedia-notenoughtimereset": "לא עבר מספיק זמן מאז האתחול האחרון של ההמרה המשנית הזאת. $1 עד שאפשר לאתחל את ההמרה המשנית הזאת."
+	"apierror-timedmedia-notenoughtimereset": "לא עבר מספיק זמן מאז האתחול האחרון של ההמרה המשנית הזאת. $1 עד שאפשר לאתחל את ההמרה המשנית הזאת.",
+	"apierror-timedmedia-lang-notfound": "השפה המבוקשת לא נמצאה",
+	"apierror-timedmedia-no-timedtext-support": "אין תמיכה ב־TimedText",
+	"apierror-timedmedia-notlocal": "הקובץ אינו מקומי"
 }
