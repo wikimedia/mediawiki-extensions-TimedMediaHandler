@@ -9,12 +9,13 @@
 			"Peter17",
 			"Windes",
 			"Orlodrim",
-			"Urhixidur"
+			"Urhixidur",
+			"Verdy p"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titre : $1",
 	"mwe-embedplayer-credit-date": "Date : $1",
-	"mwe-embedplayer-credit-author": "Auteur : $1",
+	"mwe-embedplayer-credit-author": "Auteur : $1",
 	"mwe-embedplayer-nocredits": "Aucun crédit disponible",
 	"mwe-embedplayer-loading_plugin": "chargement du greffon ...",
 	"mwe-embedplayer-select_playback": "Définir les préférences de lecture",
