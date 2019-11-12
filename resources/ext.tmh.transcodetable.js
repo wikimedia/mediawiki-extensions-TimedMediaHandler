@@ -34,14 +34,15 @@ $( function () {
 				api.postWithEditToken( {
 					action: 'transcodereset',
 					transcodekey: tKey,
-					title: mw.config.get( 'wgPageName' )
+					title: mw.config.get( 'wgPageName' ),
+					errorformat: 'html'
 				} ).done( function () {
 					// Refresh the page
 					location.reload();
 				} ).fail( function ( code, data ) {
 					var errorText;
-					if ( data.error && data.error.info ) {
-						errorText = data.error.info;
+					if ( data.errors ) {
+						errorText = data.errors[ 0 ][ '*' ];
 					} else {
 						errorText = mw.msg( 'timedmedia-reset-error' );
 					}
