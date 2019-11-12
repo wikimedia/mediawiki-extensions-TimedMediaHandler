@@ -602,16 +602,36 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	}
 
 	/**
+	 * @param array|null $options An optional array of strings to tweak
+	 *   the values returned.  Currently valid keys are `"fullurl"`, which
+	 *   calls `wfExpandUrl(..., PROTO_CURRENT)` on all URLs returned, and
+	 *   `"withhash"`, which ensures that returned URLs have the temporal
+	 *   url hash appended (as `getMediaSources()` does).
 	 * @return array
 	 */
-	public function getAPIData() {
+	public function getAPIData( ?array $options = null ) {
+		$options = $options ?? [ 'fullurl' ];
+
 		$timedtext = $this->getTextHandler()->getTracks();
-		foreach ( $timedtext as &$track ) {
-			$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
+		if ( in_array( 'fullurl', $options ) ) {
+			foreach ( $timedtext as &$track ) {
+				$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
+			}
+			unset( $track );
 		}
-		unset( $track );
+
+		$derivatives = WebVideoTranscode::getSources( $this->file, $options );
+		if ( in_array( 'withhash', $options ) ) {
+			// Check if we have "start or end" times and append the temporal url fragment hash
+			foreach ( $derivatives as &$source ) {
+				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
+				$source['src'] .= $this->getTemporalUrlHash();
+			}
+			unset( $source );
+		}
+
 		return [
-			'derivatives' => WebVideoTranscode::getSources( $this->file, [ 'fullurl' ] ),
+			'derivatives' => $derivatives,
 			'timedtext' => $timedtext,
 		];
 	}
