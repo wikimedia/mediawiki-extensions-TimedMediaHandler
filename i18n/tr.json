@@ -69,7 +69,9 @@
 	"timedmedia-source-file-desc": "Orijinal $1 dosyası, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Orijinal $1 dosyası ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg videosu düşük bant genişliği (160P)",
-	"timedmedia-derivative-desc-1080p.ogv": "Full HD indirilebilir Ogg video (1080P)",
+	"timedmedia-derivative-desc-240p.ogv": "Küçük Ogg video (240P)",
+	"timedmedia-derivative-desc-480p.ogv": "SD Ogg video (480P)",
+	"timedmedia-derivative-desc-1080p.ogv": "Full HD Ogg video (1080P)",
 	"timedmedia-derivative-desc-1080p.webm": "Full HD indirilebilir WebM (1080P)",
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD kalitede MP4 (1080P)",
 	"timedmedia-subtitle-new-go": "Git",
@@ -83,9 +85,11 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ses dosyası|$1 Ogg ses dosyası}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ses dosyası|$1 FLAC ses dosyası}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}",
+	"beta-feature-timedmediahandler-description-videojs": "Video dosyalarını, daha düzgün bir görünüme ve taşınabilir cihaz uyumluluğuna sahip bir modern oynatıcıda görüntüleyin",
 	"right-transcode-reset": "Başarısız veya dönüştürülmüş videoları sıfırla, böylece iş kuyruğuna tekrar eklenirler.",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Geçerli kod dönüştürme etkinliği hakkındaki bilgileri]] görüntüle",
 	"log-name-timedmediahandler": "TimedMediaHandler günlüğü",
 	"orphanedtimedtext": "Orphaned Zamanlamalı İçerik sayfaları",
-	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sayfaları listesinde herhangi bir içerik bulunmuyor."
+	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sayfaları listesinde herhangi bir içerik bulunmuyor.",
+	"videojs-quality": "Video kalitesi"
 }
