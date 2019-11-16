@@ -139,11 +139,11 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param ImagePage &$imagePage the imagepage that is being rendered
-	 * @param OutputPage &$out the output for this imagepage
+	 * @param ImagePage $imagePage the imagepage that is being rendered
+	 * @param OutputPage $out the output for this imagepage
 	 * @return bool
 	 */
-	public static function onImageOpenShowImageInlineBefore( &$imagePage, &$out ) {
+	public static function onImageOpenShowImageInlineBefore( ImagePage $imagePage, OutputPage $out ) {
 		$file = $imagePage->getDisplayedFile();
 		return self::onImagePageHooks( $file, $out );
 	}
@@ -186,11 +186,11 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param Title &$title
-	 * @param Article &$article
+	 * @param Title $title
+	 * @param Article|null &$article
 	 * @return bool
 	 */
-	public static function checkForTimedTextPage( &$title, &$article ) {
+	public static function checkForTimedTextPage( Title $title, ?Article &$article ) {
 		global $wgTimedTextNS;
 		if ( $title->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $title );
@@ -443,11 +443,11 @@ class TimedMediaHandlerHooks {
 	 * FIXME: There ought to be a better interface for determining whether the
 	 * page is liable to contain timed media.
 	 *
-	 * @param OutputPage &$out
-	 * @param Skin &$sk
+	 * @param OutputPage $out
+	 * @param Skin $sk
 	 * @return bool
 	 */
-	public static function pageOutputHook( &$out, &$sk ) {
+	public static function pageOutputHook( OutputPage $out, Skin $sk ) {
 		global $wgTimedTextNS;
 
 		$title = $out->getTitle();
