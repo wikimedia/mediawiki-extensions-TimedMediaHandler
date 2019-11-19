@@ -8,7 +8,8 @@
 			"Лорд Бъмбъри",
 			"Termininja",
 			"Vlad5250",
-			"Ted Masters"
+			"Ted Masters",
+			"ShockD"
 		]
 	},
 	"timedmediahandler-desc": "Приложение за аудио, видео и timed text, поддържащ форматите WebM, Ogg Theora, Vorbis, srt",
@@ -32,6 +33,7 @@
 	"timedmedia-more": "Повече...",
 	"timedmedia-dismiss": "Затваряне",
 	"timedmedia-download": "Изтегляне на файла",
+	"timedmedia-play-media": "Възпроизвеждане на медиен файл",
 	"timedmedia-desc-link": "Информация за файла",
 	"timedmedia-status-header": "Състояние на прекодирането",
 	"timedmedia-update-status": "Актуализиране състоянието на прекодирането",
