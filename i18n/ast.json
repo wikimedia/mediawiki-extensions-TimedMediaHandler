@@ -24,6 +24,8 @@
 	"timedmedia-wav-pcm-required": "Namái pue xubir WAV tipu PCM (Pulse Code Modulation).",
 	"timedmedia-mp3-short-audio": "Ficheru de soníu MP3, $1",
 	"timedmedia-mp3-long-audio": "Ficheru de soníu MP3, duración $1, $2 total",
+	"timedmedia-midi-short-audio": "Ficheru de soníu MIDI, $1",
+	"timedmedia-midi-long-audio": "Ficheru de soníu MIDI, duración $1, $2 total",
 	"timedmedia-mp4-short-video": "Archivu de videu MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Ficheru de soníu/videu  MP4, $1, llonxitú $2, $4 × $5 pixels, $3 total",
 	"timedmedia-more": "Más...",
@@ -95,7 +97,9 @@
 	"timedmedia-derivative-desc-1080p.mp4": "MP4 H.264 Full HD (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "MP4 H.264 UHD (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "MP4 H.264 UHD 4K (2160P)",
+	"timedmedia-resolution-120": "Baxa 120p",
 	"timedmedia-resolution-160": "Baxa 160p",
+	"timedmedia-resolution-180": "Baxa 180p",
 	"timedmedia-resolution-240": "Baxa 240p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
@@ -138,5 +142,7 @@
 	"orphanedtimedtext": "Páxines güérfanes de TimedText",
 	"orphanedtimedtext-summary": "Llista de páxines de [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que nun tienen el correspondiente ficheru.",
 	"orphanedtimedtext-unsupported": "Esta páxina especial sólo tien sofitu con bases de datos MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText nun ta activáu nesta wiki."
+	"orphanedtimedtext-notimedtext": "TimedText nun ta activáu nesta wiki.",
+	"videojs-more-information": "Más información",
+	"videojs-quality": "Calidá de videu"
 }

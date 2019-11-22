@@ -65,7 +65,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Pa una meyor esperiencia de reproducción de videu recomendamos un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navegador de videu HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Nun se detectó nengún reproductor compatible integráu col navegador: pa una reproducción integrada nel navegador, descargue la [$1 última versión de Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Calque <b>F11</b> pa conmutar la pantalla completa del <i>navegador web</i>",
+	"mwe-embedplayer-fullscreen-tip": "Pulsia <b>F11</b> pa conmutar la pantalla completa",
 	"mwe-embedplayer-fullscreen-tip-osx": "Calque <b>mayús ⌘ F</b> pa conmutar la pantalla completa",
 	"mwe-embedplayer-do_not_warn_again": "Nun amosar esti mensaxe nel futuru",
 	"mwe-embedplayer-playerSelect": "Reproductores",
