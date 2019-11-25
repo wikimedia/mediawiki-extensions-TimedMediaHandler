@@ -5,7 +5,8 @@
 			"Dafer45",
 			"Lokal Profil",
 			"WikiPhoenix",
-			"Jenniesarina"
+			"Jenniesarina",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titel: $1",
@@ -57,7 +58,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 spelare",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM spelare",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Generiella Ogg-tillägg",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC för iOS-app",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC-app för iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-insticksmodul",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",

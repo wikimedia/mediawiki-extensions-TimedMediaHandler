@@ -7,7 +7,8 @@
 			"Luckas",
 			"Luckas Blade",
 			"Eduardo Addad de Oliveira",
-			"Tks4Fish"
+			"Tks4Fish",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -60,7 +61,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Tocador WebM em HTML5",
 	"mwe-embedplayer-ogg-player-vp9Native": "Leitor VP9 HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Plugin Ogg genérico",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC para aplicativo iOS",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Aplicativo VLC para iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Instalador do ''plugin'' WebM para o IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Leitor Ogg Javascript",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Plugin QuickTime",

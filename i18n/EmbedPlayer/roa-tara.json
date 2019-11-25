@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joetaras"
+			"Joetaras",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titole: $1",
@@ -54,7 +55,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Visualizzatore WebM de HTML5",
 	"mwe-embedplayer-ogg-player-vp9Native": "Reproduttore HTML5 VP9",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Plugin genereche Ogg",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC pe iOS app",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "App VLC pe iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Installatore plugin WebM pe IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Lettore JavaScript Ogg",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Plugin QuickTime",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titel: $1",
@@ -36,7 +37,7 @@
 	"mwe-embedplayer-menu_btn": "Menü",
 	"mwe-embedplayer-close_btn": "Zoumaachen",
 	"mwe-embedplayer-ogg-player-vlc-player": "VLC-Player",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC fir iOS-App",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC-App fir iOS",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-Plugin",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-kplayer": "Kaltura-Player",

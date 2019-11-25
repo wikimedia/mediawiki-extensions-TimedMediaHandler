@@ -4,7 +4,8 @@
 			"Kghbln",
 			"Metalhead64",
 			"Purodha",
-			"Umherirrender"
+			"Umherirrender",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titel: $1",
@@ -57,7 +58,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM-Player",
 	"mwe-embedplayer-ogg-player-vp9Native": "HTML5-VP9-Player",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Allgemeines Ogg-Plugin",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC für die iOS-App",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC-App für iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "IE-WebM-Plugin-Downloader",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript-OGG-Player",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime-Plugin",

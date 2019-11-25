@@ -10,7 +10,8 @@
 			"Vitorvicentevalente",
 			"Waldir",
 			"Athena in Wonderland",
-			"CaiusSPQR"
+			"CaiusSPQR",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -63,7 +64,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Leitor WebM HTML5",
 	"mwe-embedplayer-ogg-player-vp9Native": "Leitor VP9 HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "''Plugin'' Ogg genérico",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC para aplicação iOS",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Aplicação VLC para iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Instalador do ''plugin'' WebM para o IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Leitor Ogg Javascript",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "''Plugin'' QuickTime",

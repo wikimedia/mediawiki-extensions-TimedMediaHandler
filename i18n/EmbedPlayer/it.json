@@ -4,7 +4,8 @@
 			"Beta16",
 			"Darth Kule",
 			"F. Cosoleto",
-			"Gianfranco"
+			"Gianfranco",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titolo: $1",
@@ -57,7 +58,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Lettore HTML5 WebM",
 	"mwe-embedplayer-ogg-player-vp9Native": "Lettore HTML5 VP9",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Plugin generico Ogg",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC per iOS app",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "App VLC per iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Installatore plugin WebM per IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Lettore JavaScript Ogg",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime plugin",

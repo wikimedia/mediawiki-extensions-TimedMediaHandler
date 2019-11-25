@@ -9,7 +9,8 @@
 			"Macofe",
 			"Laurenslimb",
 			"Indiralena",
-			"Dschultz"
+			"Dschultz",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -62,7 +63,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Reproductor WebM HTML5",
 	"mwe-embedplayer-ogg-player-vp9Native": "Reproductor de VP9 HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Plugin Ogg genérico",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "aplicación VLC para iOS",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Aplicación VLC para iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Descargador de complemento WebM para IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Reproductor de Ogg JavaScript",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Plugin QuickTime",

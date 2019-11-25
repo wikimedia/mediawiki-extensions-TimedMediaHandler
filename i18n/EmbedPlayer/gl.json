@@ -4,7 +4,8 @@
 			"Toliño",
 			"Elisardojm",
 			"Navhy",
-			"Iváns"
+			"Iváns",
+			"McDutchie"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",
@@ -57,7 +58,7 @@
 	"mwe-embedplayer-ogg-player-webmNative": "Reprodutor WebM HTML5",
 	"mwe-embedplayer-ogg-player-vp9Native": "Lector VP9 HTML5",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Complemento xenérico Ogg",
-	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC para aplicación iOS",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Aplicación VLC para iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Instalador do plugin WebM para IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Lector Ogg JavaScript",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "Complemento QuickTime",
