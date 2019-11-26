@@ -1,0 +1,108 @@
+.client-js {
+	/* We force the size of player to avoid reflows after loading the JS */
+	audio.video-js {
+		height: 3em;
+		font-size: 10px;
+	}
+
+	/* We hide the native controls, before we load the custom controls  */
+	audio.video-js::-webkit-media-controls-panel,
+	video.video-js::-webkit-media-controls-panel {
+		display: none;
+	}
+}
+
+div.thumbinner.mw-overflow {
+	/* We want to overflow, but we need to make sure we still
+	 * create a new block formatting context */
+	overflow: visible;
+	display: table-cell;
+}
+
+/*
+ * Make video-js behave like standard <video><audio> elements
+ * The thumbinner check works around a width interaction for
+ * thumbnail style adjustments in Minerva mobile skin.
+ */
+*:not( .thumbinner ) > .video-js.video-js:not( .vjs-fullscreen ) {
+	display: inline-block;
+	vertical-align: initial;
+}
+
+/* Resets styling on the resolution button. Our content linewraps */
+.vjs-resolution-button ul.vjs-menu-content.vjs-menu-content {
+	margin-left: -6em;
+	width: 100% !important; /* stylelint-disable-line declaration-no-important */
+}
+
+/* TODO this button needs to be reworked */
+.video-js:not( .vjs-fullscreen ).vjs-layout-small,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small,
+.video-js:not( .vjs-fullscreen ).vjs-layout-tiny {
+	div[ aria-label='Quality' ] {
+		display: none;
+	}
+}
+
+/* stylelint-disable no-descending-specificity */
+.video-js:not( .vjs-fullscreen ):not( .vjs-audio ).vjs-layout-large .vjs-subs-caps-button,
+.video-js:not( .vjs-fullscreen ):not( .vjs-audio ).vjs-layout-medium .vjs-subs-caps-button,
+.video-js:not( .vjs-fullscreen ).vjs-layout-medium .vjs-remaining-time,
+.video-js:not( .vjs-fullscreen ).vjs-audio.vjs-layout-small .vjs-progress-control,
+.video-js:not( .vjs-fullscreen ).vjs-layout-small .vjs-subs-caps-button,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small .vjs-progress-control,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small.vjs-audio .mw-info-button,
+.video-js:not( .vjs-fullscreen ).vjs-layout-tiny .vjs-volume-panel,
+.video-js:not( .vjs-fullscreen ).vjs-layout-tiny .mw-info-button {
+	display: none;
+}
+/* stylelint-enable */
+
+.video-js:not( .vjs-fullscreen ).vjs-layout-small .vjs-custom-control-spacer,
+.video-js:not( .vjs-fullscreen ).vjs-layout-x-small .vjs-custom-control-spacer {
+	flex: auto;
+	display: block;
+}
+
+/* Audio player skin */
+.video-js.vjs-audio {
+	height: 3em;
+
+	.vjs-big-play-button {
+		display: none;
+	}
+
+	.vjs-control-bar {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.vjs-loading-spinner {
+		display: none;
+	}
+
+	&.vjs-waiting .vjs-progress-holder:not( .vjs-seeking ) {
+		height: 0.5em;
+		background-image: repeating-linear-gradient( -45deg, #73859f, #73859f 11px, #eee 10px, #eee 20px );
+		border-radius: 3px;
+		background-size: 28px 28px;
+		transition: height 0.5s;
+		animation: vjs-slider-indeterminate 0.5s linear infinite;
+
+		.vjs-play-progress {
+			display: none;
+		}
+	}
+}
+
+@keyframes vjs-slider-indeterminate {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: 28px 0;
+	}
+}

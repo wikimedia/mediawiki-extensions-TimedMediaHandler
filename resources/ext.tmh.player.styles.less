@@ -1,108 +1,124 @@
-.client-js {
-	/* We force the size of player to avoid reflows after loading the JS */
-	audio.video-js {
-		height: 3em;
-		font-size: 10px;
-	}
+@import 'mediawiki.mixins';
 
-	/* We hide the native controls, before we load the custom controls  */
-	audio.video-js::-webkit-media-controls-panel,
-	video.video-js::-webkit-media-controls-panel {
-		display: none;
-	}
-}
-
-div.thumbinner.mw-overflow {
-	/* We want to overflow, but we need to make sure we still
-	 * create a new block formatting context */
-	overflow: visible;
-	display: table-cell;
-}
-
-/*
- * Make video-js behave like standard <video><audio> elements
- * The thumbinner check works around a width interaction for
- * thumbnail style adjustments in Minerva mobile skin.
- */
-*:not( .thumbinner ) > .video-js.video-js:not( .vjs-fullscreen ) {
+.mw-tmh-player {
 	display: inline-block;
-	vertical-align: initial;
-}
+	position: relative;
 
-/* Resets styling on the resolution button. Our content linewraps */
-.vjs-resolution-button ul.vjs-menu-content.vjs-menu-content {
-	margin-left: -6em;
-	width: 100% !important; /* stylelint-disable-line declaration-no-important */
-}
-
-/* TODO this button needs to be reworked */
-.video-js:not( .vjs-fullscreen ).vjs-layout-small,
-.video-js:not( .vjs-fullscreen ).vjs-layout-x-small,
-.video-js:not( .vjs-fullscreen ).vjs-layout-tiny {
-	div[ aria-label='Quality' ] {
-		display: none;
+	.mw-tmh-play {
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-origin: 0 0;
+		background-repeat: no-repeat;
 	}
 }
 
-/* stylelint-disable no-descending-specificity */
-.video-js:not( .vjs-fullscreen ):not( .vjs-audio ).vjs-layout-large .vjs-subs-caps-button,
-.video-js:not( .vjs-fullscreen ):not( .vjs-audio ).vjs-layout-medium .vjs-subs-caps-button,
-.video-js:not( .vjs-fullscreen ).vjs-layout-medium .vjs-remaining-time,
-.video-js:not( .vjs-fullscreen ).vjs-audio.vjs-layout-small .vjs-progress-control,
-.video-js:not( .vjs-fullscreen ).vjs-layout-small .vjs-subs-caps-button,
-.video-js:not( .vjs-fullscreen ).vjs-layout-x-small .vjs-progress-control,
-.video-js:not( .vjs-fullscreen ).vjs-layout-x-small.vjs-audio .mw-info-button,
-.video-js:not( .vjs-fullscreen ).vjs-layout-tiny .vjs-volume-panel,
-.video-js:not( .vjs-fullscreen ).vjs-layout-tiny .mw-info-button {
-	display: none;
-}
-/* stylelint-enable */
+.mw-tmh-player.video {
+	/* Note as far as known, all player-compatible browser versions support SVG directly. */
+	/* Avoiding using .background-image-svg as it only embeds the PNG? */
 
-.video-js:not( .vjs-fullscreen ).vjs-layout-small .vjs-custom-control-spacer,
-.video-js:not( .vjs-fullscreen ).vjs-layout-x-small .vjs-custom-control-spacer {
-	flex: auto;
-	display: block;
-}
-
-/* Audio player skin */
-.video-js.vjs-audio {
-	height: 3em;
-
-	.vjs-big-play-button {
-		display: none;
+	.mw-tmh-play {
+		/* @embed */
+		.background-image( 'play-button.svg' );
 	}
 
-	.vjs-control-bar {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-	}
-
-	.vjs-loading-spinner {
-		display: none;
-	}
-
-	&.vjs-waiting .vjs-progress-holder:not( .vjs-seeking ) {
-		height: 0.5em;
-		background-image: repeating-linear-gradient( -45deg, #73859f, #73859f 11px, #eee 10px, #eee 20px );
-		border-radius: 3px;
-		background-size: 28px 28px;
-		transition: height 0.5s;
-		animation: vjs-slider-indeterminate 0.5s linear infinite;
-
-		.vjs-play-progress {
-			display: none;
-		}
+	.mw-tmh-play:hover,
+	.mw-tmh-play:active {
+		/* @embed */
+		.background-image( 'play-button-hover.svg' );
 	}
 }
 
-@keyframes vjs-slider-indeterminate {
-	0% {
-		background-position: 0 0;
+.mw-tmh-player-interstitial {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba( 255, 255, 255, 0.5 );
+	text-align: center;
+}
+
+.mw-tmh-player-progress {
+	// Duplicated from OOUI's ProgressBar widget
+	// Needed since we have to use it before loading OOUI
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	max-width: 50em;
+	background-color: #fff;
+	border: 1px solid #a2a9b1;
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.mw-tmh-player-progress-bar {
+	height: 1em;
+	-webkit-transition: width 100ms;
+	-moz-transition: width 100ms;
+	transition: width 100ms;
+
+	// Indeterminate mode animation
+	-webkit-animation: mw-tmh-player-progress-bar-slide 2s infinite linear;
+	-moz-animation: mw-tmh-player-progress-bar-slide 2s infinite linear;
+	animation: mw-tmh-player-progress-bar-slide 2s infinite linear;
+	width: 40%;
+	-webkit-transform: translate( -25% );
+	-moz-transform: translate( -25% );
+	-ms-transform: translate( -25% );
+	transform: translate( -25% );
+
+	// Enabled.
+	background-color: #36c;
+}
+
+@-webkit-keyframes mw-tmh-player-progress-bar-slide {
+	from {
+		-webkit-transform: translate( -100% );
+		-moz-transform: translate( -100% );
+		-ms-transform: translate( -100% );
+		transform: translate( -100% );
 	}
 
-	100% {
-		background-position: 28px 0;
+	to {
+		-webkit-transform: translate( 350% );
+		-moz-transform: translate( 350% );
+		-ms-transform: translate( 350% );
+		transform: translate( 350% );
+	}
+}
+
+@-moz-keyframes mw-tmh-player-progress-bar-slide {
+	from {
+		-webkit-transform: translate( -100% );
+		-moz-transform: translate( -100% );
+		-ms-transform: translate( -100% );
+		transform: translate( -100% );
+	}
+
+	to {
+		-webkit-transform: translate( 350% );
+		-moz-transform: translate( 350% );
+		-ms-transform: translate( 350% );
+		transform: translate( 350% );
+	}
+}
+
+@keyframes mw-tmh-player-progress-bar-slide {
+	from {
+		-webkit-transform: translate( -100% );
+		-moz-transform: translate( -100% );
+		-ms-transform: translate( -100% );
+		transform: translate( -100% );
+	}
+
+	to {
+		-webkit-transform: translate( 350% );
+		-moz-transform: translate( 350% );
+		-ms-transform: translate( 350% );
+		transform: translate( 350% );
 	}
 }
