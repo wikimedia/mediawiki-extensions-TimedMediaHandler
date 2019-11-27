@@ -67,11 +67,15 @@ module.exports = function ( grunt ) {
 				cwd: 'node_modules/video.js/dist/',
 				src: [
 					'**',
-					'!alt/**',
+					'!video.js',
+					'!alt/video.core.js',
+					'!alt/*.css',
+					'!alt/*.novtt.js',
+					'!alt/*.novtt.min.js',
 					'!examples/**',
 					'!*.zip',
 					'!*.swf',
-					'!**/*.min.js',
+					'!*.min.js',
 					'!**/*.min.css',
 					'!**/*.js.map',
 					'!**/*.cjs.js',
@@ -117,14 +121,6 @@ module.exports = function ( grunt ) {
 				files: {
 					'resources/videojs-resolution-switcher/videojs-resolution-switcher.css': 'resources/videojs-resolution-switcher/videojs-resolution-switcher.css'
 				}
-			},
-			'videojs-text-tracks-on-demand': {
-				options: {
-					patch: 'patches/videojs-text-tracks-on-demand.patch'
-				},
-				files: {
-					'resources/videojs/video.js': 'resources/videojs/video.js'
-				}
 			}
 		}
 	} );
@@ -136,8 +132,7 @@ module.exports = function ( grunt ) {
 		'copy:videojs-ogvjs',
 		'patch:videojs-resolution-switcher',
 		'patch:videojs-resolution-switcher-icon',
-		'patch:videojs-ogvjs',
-		'patch:videojs-text-tracks-on-demand'
+		'patch:videojs-ogvjs'
 	] );
 	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );

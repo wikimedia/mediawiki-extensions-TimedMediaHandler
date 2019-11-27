@@ -436,7 +436,7 @@
 			]
 		},
 		"ext.tmh.video-js": {
-			"scripts": "resources/videojs/video.js",
+			"scripts": "resources/videojs/alt/video.core.min.js",
 			"styles": "resources/videojs/video-js.css",
 			"noflip": true,
 			"targets": [

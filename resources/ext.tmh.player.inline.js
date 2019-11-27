@@ -1,7 +1,9 @@
 /* global videojs */
 ( function () {
-	var globalConfig, videoConfig, audioConfig, playerConfig, activePlayers = [];
-
+	var globalConfig, videoConfig, audioConfig, playerConfig, activePlayers = [], techOpt;
+	techOpt = {
+		preloadTextTracks: false
+	};
 	globalConfig = {
 		responsive: true,
 		language: mw.config.get( 'wgUserLanguage' ),
@@ -15,7 +17,8 @@
 		plugins: {
 			infoButton: {},
 			audioCaptions: {}
-		}
+		},
+		html5: techOpt
 	};
 
 	videoConfig = {
@@ -197,10 +200,10 @@
 		}
 
 		if ( !mw.OgvJsSupport.canPlayNatively() ) {
-			globalConfig.ogvjs = {
+			globalConfig.ogvjs = $.extend( techOpt, {
 				base: mw.OgvJsSupport.basePath(),
 				audioContext: mw.OgvJsSupport.initAudioContext()
-			};
+			} );
 			globalConfig.techOrder.push( 'ogvjs' );
 		}
 		return $.Deferred( function ( deferred ) {
