@@ -14,7 +14,8 @@
 			"Vito Genovese",
 			"Bulgu",
 			"TmY e12",
-			"ToprakM"
+			"ToprakM",
+			"BaRaN6161 TURK"
 		]
 	},
 	"timedmediahandler-desc": "Ses işleyicisi, video ve zamanlanmış metin formatları için WebM, Ogg Theora, Vorbis, srt desteği",
@@ -85,7 +86,8 @@
 	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ses dosyası|$1 Ogg ses dosyası}}",
 	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ses dosyası|$1 FLAC ses dosyası}}",
 	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ses dosyası|$1 WAV ses dosyası}}",
-	"beta-feature-timedmediahandler-description-videojs": "Video dosyalarını, daha düzgün bir görünüme ve taşınabilir cihaz uyumluluğuna sahip bir modern oynatıcıda görüntüleyin",
+	"beta-feature-timedmediahandler-message-videojs": "Yeni video oynatıcı",
+	"beta-feature-timedmediahandler-description-videojs": "Daha temiz bir görünüm ve mobil uyumluluk ile video dosyalarını modern bir oynatıcıda izleyin.",
 	"right-transcode-reset": "Başarısız veya dönüştürülmüş videoları sıfırla, böylece iş kuyruğuna tekrar eklenirler.",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Geçerli kod dönüştürme etkinliği hakkındaki bilgileri]] görüntüle",
 	"log-name-timedmediahandler": "TimedMediaHandler günlüğü",
