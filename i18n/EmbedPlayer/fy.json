@@ -2,9 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Robin0van0der0vliet",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"PiefPafPier"
 		]
 	},
-	"mwe-embedplayer-player_fullscreen": "Folsleinskerm",
+	"mwe-embedplayer-play_clip": "Fragmint ôfspylje",
+	"mwe-embedplayer-pause_clip": "Fragmint ûnderbrekke",
+	"mwe-embedplayer-volume_control": "Folumeregeler",
+	"mwe-embedplayer-player_options": "Spileropsjes",
+	"mwe-embedplayer-timed_text": "Undertitels",
+	"mwe-embedplayer-player_fullscreen": "Folslein skerm",
 	"mwe-embedplayer-close_btn": "Slute"
 }
