@@ -76,7 +76,7 @@ class SrtReader extends Reader {
 
 	protected function peek() {
 		if ( $this->pos < $this->len ) {
-			return $this->input{$this->pos};
+			return $this->input[$this->pos];
 		} else {
 			return '';
 		}
@@ -84,7 +84,7 @@ class SrtReader extends Reader {
 
 	protected function consume() {
 		if ( $this->pos < $this->len ) {
-			$c = $this->input{$this->pos++};
+			$c = $this->input[$this->pos++];
 			if ( $c === "\n" ) {
 				$this->line++;
 				$this->lineStart = $this->pos;
@@ -98,7 +98,7 @@ class SrtReader extends Reader {
 	protected function consumeWhile( $callback ) {
 		$str = '';
 		while ( $this->pos < $this->len ) {
-			$c = $this->input{$this->pos};
+			$c = $this->input[$this->pos];
 			if ( !$callback( $c ) ) {
 				break;
 			}
