@@ -11,12 +11,13 @@
 			"Orlodrim",
 			"Urhixidur",
 			"Verdy p",
-			"McDutchie"
+			"McDutchie",
+			"Thibaut120094"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Titre : $1",
 	"mwe-embedplayer-credit-date": "Date : $1",
-	"mwe-embedplayer-credit-author": "Auteur : $1",
+	"mwe-embedplayer-credit-author": "Auteur : $1",
 	"mwe-embedplayer-nocredits": "Aucun crédit disponible",
 	"mwe-embedplayer-loading_plugin": "chargement du greffon ...",
 	"mwe-embedplayer-select_playback": "Définir les préférences de lecture",
@@ -100,7 +101,7 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Télécharger l’application VLC depuis l’App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Ouvrir cette vidéo dans l’application VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Télécharger cette vidéo",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Pour jouer des vidéos sur ce site, vous avez besoin de l’application gratuite VLC. L’installer maintenant ?",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Pour jouer des vidéos sur ce site, vous avez besoin de l’application gratuite VLC. L’installer maintenant ?",
 	"mwe-embedplayer-iewebmprompt-intro": "Désolé, il manque quelque chose pour que vous puissiez lire cette vidéo...",
 	"mwe-embedplayer-iewebmprompt-linktext": "Installer les composants multimédias WebM pour Microsoft Internet Explorer",
 	"mwe-embedplayer-iewebmprompt-outro": "Recharger cette page après l’installation."

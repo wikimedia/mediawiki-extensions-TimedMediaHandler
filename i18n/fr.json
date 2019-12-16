@@ -24,7 +24,8 @@
 			"Wladek92",
 			"Derugon",
 			"The RedBurn",
-			"Dgstranz"
+			"Dgstranz",
+			"Thibaut120094"
 		]
 	},
 	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec prise en charge des formats WebM, Ogg Theora, Vorbis et srt",
@@ -78,7 +79,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 minute|$1 minutes}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 seconde|$1 secondes}}",
 	"timedmedia-reset": "Réinitialiser le transcodage",
-	"timedmedia-reset-areyousure": "Êtes-vous sûr de vouloir continuer ?",
+	"timedmedia-reset-areyousure": "Êtes-vous sûr de vouloir continuer ?",
 	"timedmedia-reset-button-cancel": "Ne pas réinitialiser",
 	"timedmedia-reset-button-dismiss": "Fermer",
 	"timedmedia-reset-button-reset": "Réinitialiser",
