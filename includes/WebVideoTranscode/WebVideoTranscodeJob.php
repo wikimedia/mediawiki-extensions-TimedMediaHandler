@@ -303,6 +303,7 @@ class WebVideoTranscodeJob extends Job {
 					'transcode',
 					[
 						'transcode_error' => '',
+						'transcode_time_error' => null,
 						'transcode_time_success' => $dbw->timestamp(),
 						'transcode_final_bitrate' => $bitrate
 					],
