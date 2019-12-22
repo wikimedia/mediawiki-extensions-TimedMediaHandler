@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jaeminlovetaejoon"
+			"Jaeminlovetaejoon",
+			"SawJaemin"
 		]
 	},
-	"timedmedia-source-file": "$1 တၢ်အခီၣ်ထံး"
+	"timedmedia-source-file": "$1 တၢ်အခီၣ်ထံး",
+	"timedmedia-source-audio-file-desc": "အခီၣ်ထံး $1 လံာ်တြံာ် ($2)"
 }
