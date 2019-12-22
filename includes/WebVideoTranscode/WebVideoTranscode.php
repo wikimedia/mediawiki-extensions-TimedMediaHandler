@@ -24,7 +24,7 @@ class WebVideoTranscode {
 	* client side encode settings at point of upload
 	*
 	* http://firefogg.org/dev/index.html
-	* @var array[]
+	* @var string[][]
 	*/
 	public static $derivativeSettings = [
 
@@ -86,7 +86,7 @@ class WebVideoTranscode {
 				'maxSize'                    => '1280x720',
 				'videoBitrate'               => '2048',
 				'crf'                        => '10',
-				'audioQuality'               => 3,
+				'audioQuality'               => '3',
 				'twopass'                    => 'true',
 				'keyframeInterval'           => '240',
 				'videoCodec'                 => 'vp8',
@@ -99,7 +99,7 @@ class WebVideoTranscode {
 				'maxSize'                    => '1920x1080',
 				'videoBitrate'               => '4096',
 				'crf'                        => '10',
-				'audioQuality'               => 3,
+				'audioQuality'               => '3',
 				'twopass'                    => 'true',
 				'keyframeInterval'           => '240',
 				'videoCodec'                 => 'vp8',
@@ -112,7 +112,7 @@ class WebVideoTranscode {
 				'maxSize'                    => '2560x1440',
 				'videoBitrate'               => '8192',
 				'crf'                        => '10',
-				'audioQuality'               => 3,
+				'audioQuality'               => '3',
 				'twopass'                    => 'true',
 				'keyframeInterval'           => '240',
 				'videoCodec'                 => 'vp8',
@@ -125,7 +125,7 @@ class WebVideoTranscode {
 				'maxSize'                    => '3840x2160',
 				'videoBitrate'               => '16384',
 				'crf'                        => '10',
-				'audioQuality'               => 3,
+				'audioQuality'               => '3',
 				'twopass'                    => 'true',
 				'keyframeInterval'           => '240',
 				'videoCodec'                 => 'vp8',
@@ -527,6 +527,7 @@ class WebVideoTranscode {
 		$maxSize = 0;
 		foreach ( self::enabledVideoTranscodes() as $transcodeKey ) {
 			if ( isset( self::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ) {
+				// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
 				$currentSize = self::$derivativeSettings[$transcodeKey]['maxSize'];
 				if ( $currentSize > $maxSize ) {
 					$maxSize = $currentSize;
@@ -541,6 +542,7 @@ class WebVideoTranscode {
 	 * Note this is not always accurate.. especially with variable bitrate codecs ;)
 	 * @param File $file
 	 * @param string $transcodeKey
+	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 * @return int
 	 */
 	public static function getProjectedFileSize( $file, $transcodeKey ) {
@@ -944,6 +946,7 @@ class WebVideoTranscode {
 	 * @param string $transcodeKey
 	 * @param array $options
 	 * @return array
+	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 */
 	public static function getDerivativeSourceAttributes( $file, $transcodeKey, $options = [] ) {
 		$fileName = $file->getTitle()->getDBkey();
@@ -1055,6 +1058,7 @@ class WebVideoTranscode {
 	 * @param File $file File object
 	 * @param string $transcodeKey transcode key
 	 * @return bool
+	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
 		$handler = $file->getHandler();
@@ -1267,7 +1271,8 @@ class WebVideoTranscode {
 	 * Is the given transcode key the smallest configured transcode for
 	 * its video codec?
 	 * @param string $transcodeKey
-	 * @return true
+	 * @return bool
+	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 */
 	public static function isSmallestTranscodeForCodec( $transcodeKey ) {
 		$settings = self::$derivativeSettings[$transcodeKey];

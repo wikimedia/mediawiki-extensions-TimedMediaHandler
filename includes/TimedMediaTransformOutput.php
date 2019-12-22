@@ -59,8 +59,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->thumbUrl = $conf['thumbUrl'] ?? false;
 		$this->start = $conf['start'] ?? false;
 		$this->end = $conf['end'] ?? false;
-		$this->width = $conf['width'] ?? false;
-		$this->height = $conf['height'] ?? false;
+		$this->width = $conf['width'] ?? 0;
+		$this->height = $conf['height'] ?? 0;
 		$this->length = $conf['length'] ?? false;
 		$this->offset = $conf['offset'] ?? false;
 		$this->isVideo = $conf['isVideo'] ?? false;
@@ -566,7 +566,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->sources = WebVideoTranscode::getSources( $this->file );
 			// Check if we have "start or end" times and append the temporal url fragment hash
 			foreach ( $this->sources as &$source ) {
-				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
 				$source['src'] .= $this->getTemporalUrlHash();
 			}
 		}
@@ -624,7 +623,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( in_array( 'withhash', $options ) ) {
 			// Check if we have "start or end" times and append the temporal url fragment hash
 			foreach ( $derivatives as &$source ) {
-				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
 				$source['src'] .= $this->getTemporalUrlHash();
 			}
 			unset( $source );
