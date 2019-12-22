@@ -194,7 +194,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * The core embedPlayer module lazy loaded by the loader modules
 	 *
 	 * @param Parser $parser
-	 * @param File $file
+	 * @param ?File $file
 	 */
 	public function parserTransformHook( $parser, $file ) {
 		$parserOutput = $parser->getOutput();
