@@ -204,6 +204,7 @@ class TimedMediaThumbnail {
 		);
 
 		if ( !$scaledThumb || $scaledThumb->isError() ) {
+			// @phan-suppress-next-line PhanTypeMismatchReturnNullable
 			return $scaledThumb;
 		}
 		return true;

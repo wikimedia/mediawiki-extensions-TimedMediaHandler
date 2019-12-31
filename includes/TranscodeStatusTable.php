@@ -160,8 +160,8 @@ class TranscodeStatusTable {
 	public static function getTranscodeDuration( $file, $state ) {
 		global $wgLang;
 		if ( !is_null( $state['time_success'] ) ) {
-			$startTime = wfTimestamp( TS_UNIX, $state['time_startwork'] );
-			$endTime = wfTimestamp( TS_UNIX, $state['time_success'] );
+			$startTime = (int)wfTimestamp( TS_UNIX, $state['time_startwork'] );
+			$endTime = (int)wfTimestamp( TS_UNIX, $state['time_success'] );
 			$delta = $endTime - $startTime;
 			$duration = $wgLang->formatTimePeriod( $delta );
 			return $duration;
@@ -209,13 +209,14 @@ class TranscodeStatusTable {
 
 			return Html::rawElement( 'span', $attribs,
 				wfMessage( 'timedmedia-error-on',
+					// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
 					$contLang->timeAndDate( $state['time_error'] ) )->escaped()
 			);
 		}
 
 		// Check for started encoding
 		if ( !is_null( $state['time_startwork'] ) ) {
-			$timePassed = time() - wfTimestamp( TS_UNIX, $state['time_startwork'] );
+			$timePassed = time() - (int)wfTimestamp( TS_UNIX, $state['time_startwork'] );
 			// Get the rough estimate of time done: ( this is not very costly considering everything else
 			// that happens in an action=purge video page request )
 			/*$filePath = WebVideoTranscode::getTargetEncodePath( $file, $state['key'] );
@@ -238,7 +239,7 @@ class TranscodeStatusTable {
 		}
 		// Check for job added ( but not started encoding )
 		if ( !is_null( $state['time_addjob'] ) ) {
-			$timePassed = time() - wfTimestamp( TS_UNIX, $state['time_addjob'] );
+			$timePassed = time() - (int)wfTimestamp( TS_UNIX, $state['time_addjob'] );
 			return wfMessage(
 				'timedmedia-in-job-queue',
 				TimedMediaHandler::getTimePassedMsg( $timePassed )

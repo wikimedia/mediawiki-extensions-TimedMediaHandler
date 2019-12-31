@@ -90,7 +90,7 @@ class TimedMediaIframeOutput {
 			Html::openElement( 'head' ),
 
 			Html::element( 'meta', [ 'charset' => 'UTF-8' ] ),
-			Html::element( 'title', null, $title->getText() ),
+			Html::element( 'title', [], $title->getText() ),
 			$wgOut->getRlClient()->getHeadHtml(),
 			implode( "\n", $wgOut->getHeadLinksArray() ),
 
