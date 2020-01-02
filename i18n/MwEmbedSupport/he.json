@@ -6,7 +6,7 @@
 			"YaronSh"
 		]
 	},
-	"mwe-loading": "בטעינה ...",
+	"mwe-loading": "בטעינה...",
 	"mwe-error_load_lib": "שגיאה: לא ניתן היה לטעון את ספריית ה־JavaScript בשם $1 או שהיא אינה מגדירה את $2",
 	"mwe-apiproxy-setup": "הגדרה של API proxy",
 	"mwe-load-drag-item": "טעינה של פריט שנגרר",

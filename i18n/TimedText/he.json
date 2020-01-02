@@ -22,7 +22,7 @@
 	"mwe-timedtext-textcat-lin": "סימון בלשני",
 	"mwe-timedtext-textcat-cue": "נקודות סימנית",
 	"mwe-timedtext-no-subs": "אין רצועת תמליל זמינה",
-	"mwe-timedtext-language-subtitles-for-clip": "כתוביות ב{{grammar:תחילית|$1}} עבור הסרטון $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "לא נמצאו כתוביות ב{{grammar:תחילית|$1}} עבור $2",
+	"mwe-timedtext-language-subtitles-for-clip": "כתוביות ב{{GRAMMAR:תחילית|$1}} עבור הסרטון $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "לא נמצאו כתוביות ב{{GRAMMAR:תחילית|$1}} עבור $2",
 	"mwe-timedtext-upload-timed-text": "הוספת כתוביות"
 }
