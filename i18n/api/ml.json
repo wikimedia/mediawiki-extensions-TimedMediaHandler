@@ -4,5 +4,7 @@
 			"Praveenp"
 		]
 	},
-	"apihelp-transcodereset-param-title": "മീഡിയ പ്രമാണത്തിന്റെ തലക്കെട്ട്."
+	"apihelp-transcodereset-param-title": "മീഡിയ പ്രമാണത്തിന്റെ തലക്കെട്ട്.",
+	"apierror-timedmedia-lang-notfound": "ആവശ്യപ്പെട്ട ഭാഷ കണ്ടെത്താനായില്ല",
+	"apierror-timedmedia-notlocal": "പ്രമാണം പ്രാദേശികമല്ല"
 }

@@ -41,7 +41,7 @@
 	"timedmedia-mp4-long-video": "Áudio/vídeo MP$, $1, duração $2, $4 × $5 píxeis, $3",
 	"timedmedia-more": "Mais...",
 	"timedmedia-dismiss": "Fechar",
-	"timedmedia-download": "Fazer descarga do ficheiro",
+	"timedmedia-download": "Descarregar ficheiro",
 	"timedmedia-play-media": "Reproduzir conteúdo",
 	"timedmedia-desc-link": "Sobre este ficheiro",
 	"timedmedia-oggThumb-version": "O OggHandler requer a versão $1 do oggThumb ou posterior.",
