@@ -81,6 +81,8 @@
 		"TimedMediaIframeOutput": "includes/TimedMediaIframeOutput.php",
 		"TimedMediaThumbnail": "includes/TimedMediaThumbnail.php",
 		"TranscodeStatusTable": "includes/TranscodeStatusTable.php",
+		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
+		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
 		"OggHandler": "includes/handlers/OggHandler/OggHandler.php",
 		"OggException": "includes/handlers/OggHandler/OggException.php",
 		"File_Ogg": "includes/handlers/OggHandler/File_Ogg/File/Ogg.php",
@@ -107,10 +109,6 @@
 		"ApiTranscodeReset": "includes/ApiTranscodeReset.php",
 		"SpecialTimedMediaHandler": "includes/SpecialTimedMediaHandler.php",
 		"SpecialOrphanedTimedText": "includes/SpecialOrphanedTimedText.php"
-	},
-	"TestAutoloadClasses": {
-		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
-		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\TimedMediaHandler\\TimedText\\": "includes/TimedText/"
