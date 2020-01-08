@@ -12,6 +12,7 @@
 		"valid-jsdoc": "off",
 		"no-underscore-dangle": "off",
 		"camelcase": "off",
-		"max-len": "off"
+		"max-len": "off",
+		"no-jquery/no-parse-html-literal": "warn"
 	}
 }
