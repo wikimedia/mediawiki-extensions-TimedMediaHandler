@@ -25,6 +25,7 @@
 			} );
 
 		// Register the component with Video.js, so it can be used in players.
+		// eslint-disable-next-line no-underscore-dangle
 		InfoButton.prototype.controlText_ = 'More information';
 		videojs.registerComponent( 'InfoButton', InfoButton );
 

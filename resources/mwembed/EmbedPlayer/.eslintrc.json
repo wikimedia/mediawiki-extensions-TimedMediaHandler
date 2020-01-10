@@ -1,0 +1,7 @@
+{
+	"extends": "../../../.eslintrc.json",
+	"rules": {
+		"camelcase": "off",
+		"no-underscore-dangle": "off"
+	}
+}

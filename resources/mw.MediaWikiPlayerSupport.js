@@ -127,7 +127,7 @@
 					mw.message( 'mwe-embedplayer-credit-title' ).escaped().replace( /\$1/g,
 						// get the link
 						$( '<div>' ).append(
-							$( '<a/>' )
+							$( '<a>' )
 								.attr( {
 									href: articleUrl,
 									title: titleStr
@@ -184,13 +184,13 @@
 				imgSize.width = ( embedPlayer.controlBuilder.getOverlayWidth() < 250 ) ? 45 : 120;
 				imgSize.height = Math.floor( imgSize.width * ( embedPlayer.getHeight() / embedPlayer.getWidth() ) );
 			}
-			return $( '<div/>' ).addClass( 'creditline' )
+			return $( '<div>' ).addClass( 'creditline' )
 				.append(
-					$( '<a/>' ).attr( {
+					$( '<a>' ).attr( {
 						href: articleUrl,
 						title: titleStr
 					} ).html(
-						$( '<img/>' ).attr( {
+						$( '<img>' ).attr( {
 							border: 0,
 							src: embedPlayer.poster
 						} ).css( imgSize )

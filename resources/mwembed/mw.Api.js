@@ -92,6 +92,7 @@
 		// mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );
 
 		// Check if the request requires a "post"
+		// eslint-disable-next-line no-underscore-dangle
 		if ( mw.checkRequestPost( data ) || data._method === 'post' ) {
 
 			// Check if we need to setup a proxy

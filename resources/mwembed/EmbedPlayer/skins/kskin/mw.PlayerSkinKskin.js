@@ -377,7 +377,7 @@
 				$( '<div>' )
 					.addClass( 'credits_box ui-corner-all' )
 					.append(
-						$( '<div/>' )
+						$( '<div>' )
 							.loadingSpinner()
 							.css( { position: 'absolute', top: '50%', left: '50%' } )
 					)

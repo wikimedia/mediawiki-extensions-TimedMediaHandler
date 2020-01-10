@@ -793,7 +793,7 @@
 				mw.msg( 'mwe-embedplayer-fullscreen-tip' );
 
 			$targetTip = this.addWarningBinding( 'EmbedPlayer.FullscreenTip',
-				$( '<h3/>' ).html(
+				$( '<h3>' ).html(
 					toolTipMsg
 				)
 			);

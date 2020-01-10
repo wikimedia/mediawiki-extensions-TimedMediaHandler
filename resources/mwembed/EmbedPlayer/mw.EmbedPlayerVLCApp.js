@@ -35,7 +35,7 @@
 
 			// Replace video with download in vlc link.
 			// the <span> ends up being not used as we get the html via .html()
-			$link = $( '<span></span>' ).append( $( '<a></a>' ).attr( 'href', appStoreUrl ).append(
+			$link = $( '<span>' ).append( $( '<a>' ).attr( 'href', appStoreUrl ).append(
 				mw.message( 'mwe-embedplayer-vlcapp-vlcapplinktext' ).escaped()
 			) );
 			$( this ).html( $( '<div>' ).addClass( 'vlcapp-player' )
@@ -45,12 +45,12 @@
 					// mw.msg doesn't have rawParams() equivalent. Lame.
 					mw.message( 'mwe-embedplayer-vlcapp-intro' ).escaped()
 						.replace( /\$1/g, $link.html() )
-				).append( $( '<ul></ul>' )
-					.append( $( '<li></li>' ).append( $( '<a></a>' ).attr( 'href', appStoreUrl )
+				).append( $( '<ul>' )
+					.append( $( '<li>' ).append( $( '<a>' ).attr( 'href', appStoreUrl )
 						.text( mw.msg( 'mwe-embedplayer-vlcapp-downloadapp' ) ) )
-					).append( $( '<li></li>' ).append( $( '<a></a>' ).attr( 'href', vlcUrl )
+					).append( $( '<li>' ).append( $( '<a>' ).attr( 'href', vlcUrl )
 						.text( mw.msg( 'mwe-embedplayer-vlcapp-openvideo' ) ) )
-					).append( $( '<li></li>' ).append( $( '<a></a>' ).attr( 'href', fileUrl )
+					).append( $( '<li>' ).append( $( '<a>' ).attr( 'href', fileUrl )
 						.text( mw.msg( 'mwe-embedplayer-vlcapp-downloadvideo' ) ) )
 					)
 				)

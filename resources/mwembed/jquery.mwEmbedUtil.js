@@ -79,8 +79,8 @@
 
 		// return the button:
 		$button.append(
-			$( '<span />' ).addClass( 'ui-icon ui-icon-' + options.icon ),
-			$( '<span />' ).addClass( 'btnText' )
+			$( '<span>' ).addClass( 'ui-icon ui-icon-' + options.icon ),
+			$( '<span>' ).addClass( 'btnText' )
 				.text( options.text )
 		)
 			.buttonHover(); // add buttonHover binding;

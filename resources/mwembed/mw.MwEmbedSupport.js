@@ -143,7 +143,7 @@
 		$dialog = mw.addDialog( {
 			title: dialogHtml,
 			content: dialogHtml + '<br>' +
-				$( '<div />' )
+				$( '<div>' )
 					.loadingSpinner()
 					.html()
 		} );
@@ -182,7 +182,7 @@
 			mw.log( 'Error: mwEmbed addDialog missing required options ( title, content ) ' );
 		}
 
-		$mweDialog = $( '<div />' )
+		$mweDialog = $( '<div>' )
 			.attr( {
 				id: 'mweDialog',
 				title: options.title
