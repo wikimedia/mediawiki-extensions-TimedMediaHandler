@@ -87,12 +87,17 @@
 	};
 
 	function showVideoPlayerDialog() {
-		var $video = this.clone();
-		return new $.Deferred( function ( deferred ) {
+		var $video = this.clone(),
+			isAudio = $video[ 0 ].nodeName.toLowerCase() === 'audio';
+		if ( isAudio ) {
+			$video.attr( 'poster', mw.config.get( 'wgExtensionAssetsPath' ) +
+				'/TimedMediaHandler/resources/poster-audio.svg' );
+		}
+		return $.Deferred( function ( deferred ) {
 			var NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 				windowManager = OO.ui.getWindowManager(),
 				dialog = new MediaDialog( {
-					size: 'larger',
+					size: isAudio ? 'medium' : 'larger',
 					$video: $video
 				} ),
 				win;

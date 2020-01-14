@@ -48,6 +48,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/** @var string|false */
 	protected $playerClass;
 
+	/** @var bool */
+	protected $inline;
+
 	// The prefix for player ids
 	const PLAYER_ID_PREFIX = 'mwe_player_';
 
@@ -68,6 +71,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->fillwindow = $conf['fillwindow'] ?? false;
 		$this->disablecontrols = $conf['disablecontrols'] ?? false;
 		$this->playerClass = $conf['playerClass'] ?? false;
+		$this->inline = $conf['inline'] ?? false;
 	}
 
 	/**
@@ -501,6 +505,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			if ( $this->fillwindow ) {
 				$mediaAttr[ 'class' ] .= ' vjs-fluid';
 				$mediaAttr[ 'data-player' ] = 'fillwindow';
+			}
+			if ( $this->inline ) {
+				$mediaAttr['class'] .= ' mw-tmh-inline';
+				$mediaAttr['playsinline'] = '';
 			}
 		} else {
 			$mediaAttr['style'] = "width:{$width}";

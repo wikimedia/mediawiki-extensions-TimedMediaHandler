@@ -381,7 +381,8 @@ class TimedMediaHandler extends MediaHandler {
 			'start' => $params['start'] ?? false,
 			'end' => $params['end'] ?? false,
 			'fillwindow' => $params['fillwindow'] ?? false,
-			'disablecontrols' => $params['disablecontrols'] ?? false
+			'disablecontrols' => $params['disablecontrols'] ?? false,
+			'inline' => $params['inline'] ?? false,
 		];
 
 		// No thumbs for audio

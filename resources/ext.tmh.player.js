@@ -16,27 +16,24 @@
 				$videoplayer = $( this ),
 				isAudio = videoplayer.tagName.toLowerCase() === 'audio',
 				videoLink,
-				$interstitial;
+				$interstitial,
+				// eslint-disable-next-line no-jquery/no-class-state
+				inline = $videoplayer.hasClass( 'mw-tmh-inline' ),
+				$placeholder;
 
 			if ( $videoplayer.closest( '.mw-tmh-player' ).length ) {
 				// This player has already been transformed.
 				return;
 			}
 
-			// Do not translate audio players for now, which work natively
-			// and don't require fancy custom features.
-			if ( isAudio ) {
-				return;
-			}
-
 			// Construct a file target link for middle-click / ctrl-click / right-click
 			videoLink = ( mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).file, $videoplayer.data( 'mwtitle' ) ) ).getUrl();
-			$( '<span>' )
+			$placeholder = $( '<span>' )
 				.addClass( 'mw-tmh-player' )
 				.addClass( isAudio ? 'audio' : 'video' )
 				.css( {
-					width: $videoplayer.width() + 'px',
-					height: $videoplayer.height() + 'px'
+					width: isAudio ? '220px' : $videoplayer.width() + 'px',
+					height: isAudio ? '30px' : $videoplayer.height() + 'px'
 				} )
 				.append( $videoplayer.clone()
 					.attr( 'controls', false )
@@ -60,12 +57,35 @@
 							}
 
 							currentlyPlaying = true;
-							mw.loader.using( 'ext.tmh.player.dialog', function () {
-								$interstitial.detach();
-								$videoplayer.showVideoPlayerDialog().then( function () {
-									currentlyPlaying = false;
+							if ( inline ) {
+								mw.loader.using( 'ext.tmh.player.inline', function () {
+									$placeholder.find( 'a' ).detach();
+									$placeholder.find( 'video,audio' ).replaceWith( $videoplayer );
+									$videoplayer.transformVideoPlayer().then( function ( $videojs ) {
+										var player = $videojs[ 0 ];
+										player.ready( function () {
+											// Use a setTimeout to ensure all ready callbacks have run before
+											// we start playback. This is important for the source selector
+											// plugin, which may change sources before playback begins.
+											//
+											// This is used instead of an event like `canplay` or `loadeddata`
+											// because some versions of EdgeHTML don't fire these events.
+											// Support: Edge 18
+											setTimeout( function () {
+												$interstitial.detach();
+												player.play();
+											}, 0 );
+										} );
+									} );
 								} );
-							} );
+							} else {
+								mw.loader.using( 'ext.tmh.player.dialog', function () {
+									$interstitial.detach();
+									$videoplayer.showVideoPlayerDialog().then( function () {
+										currentlyPlaying = false;
+									} );
+								} );
+							}
 						}
 						// @todo: this eats middle-click, should fix that
 						event.preventDefault();
@@ -80,13 +100,13 @@
 	$.fn.loadVideoPlayer = loadVideoPlayer;
 
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
-		$content.find( 'video' ).loadVideoPlayer();
+		$content.find( 'video, audio' ).loadVideoPlayer();
 	} );
 	$( function () {
 		// @fixme load and transform immediately for these?
 		// The iframe mode
 		// eslint-disable-next-line no-jquery/no-global-selector
-		$( '#videoContainer video' ).loadVideoPlayer();
+		$( '#videoContainer video, #videoContainer audio' ).loadVideoPlayer();
 	} );
 
 }() );
