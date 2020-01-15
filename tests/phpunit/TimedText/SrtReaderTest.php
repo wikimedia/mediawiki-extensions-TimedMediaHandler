@@ -5,8 +5,8 @@
  * @ingroup timedmedia
  */
 
-use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\DOM;
+use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 
 /**
  * @covers SrtReader::read
@@ -236,7 +236,7 @@ END;
 
 		$this->assertEquals( 2, count( $cues ) );
 
-		$this->assertEquals( '8', $cues[0]->id );
+		$this->assertSame( '8', $cues[0]->id );
 		$this->assertEquals( 33.041, $cues[0]->start );
 		$this->assertEquals( 35.689, $cues[0]->end );
 		$this->assertEquals(
@@ -257,7 +257,7 @@ END;
 			$this->flattenNode( $italic )
 		);
 
-		$this->assertEquals( '15', $cues[1]->id );
+		$this->assertSame( '15', $cues[1]->id );
 		$this->assertEquals(
 			'DeWitt: Calculations showed that radar equipment could be',
 			$this->flatten( $cues[1] )
@@ -293,7 +293,7 @@ END;
 
 		$this->assertEquals( 1, count( $cues ) );
 
-		$this->assertEquals( '16', $cues[0]->id );
+		$this->assertSame( '16', $cues[0]->id );
 		$this->assertEquals(
 			'Ein NASA-Team wickelt den Start für AT&T ab.',
 			$this->flatten( $cues[0] )

@@ -61,7 +61,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 				$hasWebM = true;
 			}
 			$targetEncodes[ $row->transcode_key ] = $row;
-		};
+		}
 		// Make sure we have ogg and webm:
 		$this->assertTrue( $hasOgg && $hasWebM );
 

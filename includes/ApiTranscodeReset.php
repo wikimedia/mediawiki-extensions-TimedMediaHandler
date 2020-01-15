@@ -115,12 +115,12 @@ class ApiTranscodeReset extends ApiBase {
 		global $wgWaitTimeForTranscodeReset;
 		$db = wfGetDB( DB_REPLICA );
 		// if an error return waitTime +1
-		if ( !is_null( $state['time_error'] ) ) {
+		if ( $state['time_error'] !== null ) {
 			return $wgWaitTimeForTranscodeReset + 1;
 		}
 		// return wait time from most recent event
 		foreach ( [ 'time_success', 'time_startwork', 'time_addjob' ] as $timeField ) {
-			if ( !is_null( $state[ $timeField ] ) ) {
+			if ( ( $state[ $timeField ] ) !== null ) {
 				return (int)$db->timestamp() - (int)$db->timestamp( $state[ $timeField ] );
 			}
 		}

@@ -18,14 +18,14 @@ class WebVideoTranscode {
 	public static $transcodeState = [];
 
 	/**
-	* Encoding parameters are set via firefogg encode api
-	*
-	* For clarity and compatibility with passing down
-	* client side encode settings at point of upload
-	*
-	* http://firefogg.org/dev/index.html
-	* @var string[][]
-	*/
+	 * Encoding parameters are set via firefogg encode api
+	 *
+	 * For clarity and compatibility with passing down
+	 * client side encode settings at point of upload
+	 *
+	 * http://firefogg.org/dev/index.html
+	 * @var string[][]
+	 */
 	public static $derivativeSettings = [
 
 		// WebM transcode:
@@ -705,7 +705,7 @@ class WebVideoTranscode {
 			return false;
 		}
 		// Else return boolean ready state ( if not null, then ready ):
-		return !is_null( $transcodeState[ $transcodeKey ]['time_success'] );
+		return ( $transcodeState[ $transcodeKey ]['time_success'] ) !== null;
 	}
 
 	/**

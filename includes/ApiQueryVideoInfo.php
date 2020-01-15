@@ -13,7 +13,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		// We allow a subclass to override the prefix, to create a related API module.
 		// Some other parts of MediaWiki construct this with a null $prefix,
 		// which used to be ignored when this only took two arguments
-		if ( is_null( $prefix ) ) {
+		if ( $prefix === null ) {
 			$prefix = 'vi';
 		}
 		parent::__construct( $query, $moduleName, $prefix );

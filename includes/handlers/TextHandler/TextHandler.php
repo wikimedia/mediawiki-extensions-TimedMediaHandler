@@ -8,12 +8,11 @@
  * TODO On "new" timedtext language save purge all pages where file exists
  */
 
-use Wikimedia\Rdbms\IResultWrapper;
-
+use MediaWiki\TimedMediaHandler\TimedText\ParseError;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
-use MediaWiki\TimedMediaHandler\TimedText\ParseError;
+use Wikimedia\Rdbms\IResultWrapper;
 
 class TextHandler {
 	// lazy init remote Namespace number

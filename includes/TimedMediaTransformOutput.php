@@ -194,7 +194,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * Helper to determine if to use pop up dialog for videos
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	private function useImagePopUp() {
 		global  $wgMinimumVideoPlayerSize;
@@ -354,7 +354,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( !$firstSource['src'] ) {
 			// XXX media handlers don't seem to work with exceptions..
 			return 'Error missing media source';
-		};
+		}
 
 		// Sort sources by bandwidth least to greatest ( so default selection on resource constrained
 		// browsers ( without js? ) go with minimal source.

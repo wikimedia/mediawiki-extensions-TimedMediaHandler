@@ -5,8 +5,8 @@
  * @ingroup timedmedia
  */
 
-use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\DOM;
+use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 
 /**
  * @covers SrtWriter::write

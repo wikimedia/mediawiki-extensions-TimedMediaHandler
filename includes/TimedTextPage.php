@@ -3,9 +3,9 @@
  * TimedText page display the current video with subtitles to the right.
  *
  * Future features for this page"
- *  @todo add srt download links
- *  @todo parse and validate srt files
- *  @todo link-in or include the universal subtitles editor
+ * @todo add srt download links
+ * @todo parse and validate srt files
+ * @todo link-in or include the universal subtitles editor
  */
 class TimedTextPage extends Article {
 	// The width of the video plane:
