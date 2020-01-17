@@ -108,6 +108,11 @@ class TimedTextPage extends Article {
 				)
 			)
 		);
+
+		if ( !$oldid ) {
+			// Set wgRevision at the end from what we actually fetched.
+			$out->setRevisionId( $this->getRevIdFetched() );
+		}
 	}
 
 	/**
