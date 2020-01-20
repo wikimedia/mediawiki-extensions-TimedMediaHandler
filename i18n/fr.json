@@ -25,7 +25,8 @@
 			"Derugon",
 			"The RedBurn",
 			"Dgstranz",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Pamputt"
 		]
 	},
 	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec prise en charge des formats WebM, Ogg Theora, Vorbis et srt",
@@ -115,7 +116,7 @@
 	"timedmedia-derivative-desc-120p.vp9.webm": "Bande passante la plus faible VP9 (120P)",
 	"timedmedia-derivative-desc-180p.vp9.webm": "Faible bande passante VP9 (180P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "Petit VP9 (240P)",
-	"timedmedia-derivative-desc-360p.vp9.webm": "WebM VP9 (360P) lisible en continu sur le web",
+	"timedmedia-derivative-desc-360p.vp9.webm": "VP9 (360P)",
 	"timedmedia-derivative-desc-480p.vp9.webm": "VP9 SD (480P)",
 	"timedmedia-derivative-desc-720p.vp9.webm": "VP9 HD (720P)",
 	"timedmedia-derivative-desc-1080p.vp9.webm": "VP9 HD complet (1080P)",
@@ -123,7 +124,7 @@
 	"timedmedia-derivative-desc-2160p.vp9.webm": "VP9 UHD 4K (2160P)",
 	"timedmedia-derivative-desc-160p.mp4": "MP4 H.264 pour faible débit (160P)",
 	"timedmedia-derivative-desc-240p.mp4": "Petit MP4 H.264 (240P)",
-	"timedmedia-derivative-desc-320p.mp4": "MP4 compatible matériel (320P)",
+	"timedmedia-derivative-desc-320p.mp4": "MP4 H.264 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "MP4 H.264 SD (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "MP4 H.264 HD (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "MP4 H.264 HD complet (1080P)",

@@ -16,7 +16,8 @@
 			"佛壁灯",
 			"神樂坂秀吉",
 			"予弦",
-			"A Retired User"
+			"A Retired User",
+			"Sunny00217"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -60,7 +61,7 @@
 	"timedmedia-actions": "操作",
 	"timedmedia-direct-link": "下载",
 	"timedmedia-not-ready": "未就绪",
-	"timedmedia-completed-on": "已完成$1",
+	"timedmedia-completed-on": "已完成於{{#iferror:{{#time:Y年n月d日 H:i (T)|$1}}|$1}}",
 	"timedmedia-error-on": "于$1错误",
 	"timedmedia-started-transcode": "于$1前开始。$2",
 	"timedmedia-percent-done": "大约$1%已完成",
