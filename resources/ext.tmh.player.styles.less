@@ -1,5 +1,11 @@
 @import 'mediawiki.mixins';
 
+/* Force a fixed size for audio to reduce FOUC */
+audio {
+	width: 220px;
+	height: 30px;
+}
+
 .mw-tmh-player {
 	display: inline-block;
 	position: relative;
@@ -16,20 +22,26 @@
 	}
 }
 
-.mw-tmh-player.video {
-	/* Note as far as known, all player-compatible browser versions support SVG directly. */
-	/* Avoiding using .background-image-svg as it only embeds the PNG? */
+/* Note as far as known, all player-compatible browser versions support SVG directly. */
+/* Avoiding using .background-image-svg as it only embeds the PNG? */
 
-	.mw-tmh-play {
-		/* @embed */
-		.background-image( 'play-button.svg' );
-	}
+.mw-tmh-player.video > .mw-tmh-play {
+	/* @embed */
+	.background-image( 'play-button.svg' );
+	opacity: 0.5;
+}
 
-	.mw-tmh-play:hover,
-	.mw-tmh-play:active {
-		/* @embed */
-		.background-image( 'play-button-hover.svg' );
-	}
+.mw-tmh-player.audio > .mw-tmh-play {
+	/* @embed */
+	.background-image( 'play-audio.svg' );
+	opacity: 0.5;
+}
+
+.mw-tmh-player.video > .mw-tmh-play:hover,
+.mw-tmh-player.video > .mw-tmh-play:active,
+.mw-tmh-player.audio > .mw-tmh-play:hover,
+.mw-tmh-player.audio > .mw-tmh-play:active {
+	opacity: 1;
 }
 
 .mw-tmh-player-interstitial {

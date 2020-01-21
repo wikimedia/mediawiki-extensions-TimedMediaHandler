@@ -2,7 +2,8 @@
 ( function () {
 	var globalConfig, videoConfig, audioConfig, playerConfig, activePlayers = [], techOpt;
 	techOpt = {
-		preloadTextTracks: false
+		preloadTextTracks: false,
+		nativeTextTracks: false
 	};
 	globalConfig = {
 		responsive: true,
@@ -15,8 +16,7 @@
 		},
 		techOrder: [ 'html5' ],
 		plugins: {
-			infoButton: {},
-			audioCaptions: {}
+			infoButton: {}
 		},
 		html5: techOpt
 	};

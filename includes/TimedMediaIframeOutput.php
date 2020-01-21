@@ -62,6 +62,9 @@ class TimedMediaIframeOutput {
 			'fillwindow' => true,
 			'width' => $file->getWidth()
 		];
+		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+			$params['inline'] = true;
+		}
 		$videoTransform = $file->transform( $params );
 
 		// Definitely do not want to break frames
