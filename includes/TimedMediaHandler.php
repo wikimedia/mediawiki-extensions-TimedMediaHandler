@@ -474,4 +474,13 @@ class TimedMediaHandler extends MediaHandler {
 			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}
 	}
+
+	/**
+	 * Returns true if the file contains an interlaced video track.
+	 * @param File $file
+	 * @return bool
+	 */
+	public function isInterlaced( $file ) {
+		return false;
+	}
 }

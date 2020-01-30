@@ -110,4 +110,22 @@ class ID3Handler extends TimedMediaHandler {
 			return false;
 		}
 	}
+
+	/**
+	 * Returns true if the file contains an interlaced video track.
+	 * @param File $file
+	 * @return bool
+	 */
+	public function isInterlaced( $file ) {
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
+		if ( !$metadata || isset( $metadata['error'] ) ) {
+			return false;
+		} else {
+			if ( isset( $metadata['video'] )
+				&& isset( $metadata['video']['interlaced'] ) ) {
+				return boolval( $metadata['video']['interlaced'] );
+			}
+			return false;
+		}
+	}
 }

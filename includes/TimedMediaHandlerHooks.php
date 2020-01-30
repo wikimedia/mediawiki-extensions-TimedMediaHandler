@@ -67,6 +67,7 @@ class TimedMediaHandlerHooks {
 		$wgMediaHandlers['audio/wav'] = 'WAVHandler';
 		$wgMediaHandlers['audio/midi'] = 'MidiHandler';
 		$wgMediaHandlers['audio/mpeg'] = 'Mp3Handler';
+		$wgMediaHandlers['video/mpeg'] = 'MPEGHandler';
 
 		// Add transcode job class:
 		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';
@@ -270,7 +271,8 @@ class TimedMediaHandlerHooks {
 		$mediaType = $handler->getMetadataType( $file );
 		// If ogg or webm format and not audio we can "transcode" this file
 		$isAudio = $handler instanceof TimedMediaHandler && $handler->isAudio( $file );
-		if ( ( $mediaType == 'webm' || $mediaType == 'ogg' || $mediaType == 'mp4' )
+		if ( ( $mediaType == 'webm' || $mediaType == 'ogg'
+				|| $mediaType == 'mp4' || $mediaType == 'mpeg' )
 			&& !$isAudio
 		) {
 			return true;

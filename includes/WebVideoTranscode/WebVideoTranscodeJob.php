@@ -398,6 +398,8 @@ class WebVideoTranscodeJob extends Job {
 		} elseif ( $options['videoCodec'] == 'h264' ) {
 			$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
 		}
+		// If necessary, add deinterlacing options
+		$cmd .= $this->ffmpegAddDeinterlaceOptions( $options );
 		// Add size options:
 		$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
 
@@ -630,6 +632,21 @@ class WebVideoTranscodeJob extends Job {
 
 		// Output WebM
 		$cmd .= " -f webm";
+
+		return $cmd;
+	}
+
+	/**
+	 * @param array $options
+	 * @return string
+	 */
+	private function ffmpegAddDeinterlaceOptions( $options ) {
+		$cmd = '';
+
+		$handler = $this->file->getHandler();
+		if ( $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file ) ) {
+			$cmd .= ' -vf yadif=0';
+		}
 
 		return $cmd;
 	}
