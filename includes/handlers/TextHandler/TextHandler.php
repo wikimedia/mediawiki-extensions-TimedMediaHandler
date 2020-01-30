@@ -237,7 +237,7 @@ class TextHandler {
 			if ( $this->file->isLocal() ) {
 				$subTitle = Title::newFromRow( $row );
 			} else {
-				// @phan-suppress-next-line PhanTypeMismatchArgument $namespaceName is set
+				// @phan-suppress-next-line PhanPossiblyUndeclaredVariable $namespaceName is set
 				$subTitle = new ForeignTitle( $row->page_namespace, $namespaceName, $row->page_title );
 			}
 			$titleParts = explode( '.', $row->page_title );

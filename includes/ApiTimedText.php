@@ -67,6 +67,7 @@ class ApiTimedText extends ApiBase {
 			$this->dieWithError(
 				[ 'apierror-invalidlang', $this->encodeParamName( 'lang' ) ], 'invalidlang'
 			);
+			throw new LogicException();
 		} else {
 			$langCode = $params['lang'];
 		}

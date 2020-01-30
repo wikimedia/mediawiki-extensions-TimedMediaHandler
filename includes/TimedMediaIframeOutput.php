@@ -27,7 +27,6 @@ class TimedMediaIframeOutput {
 		// Make sure we are in the right namespace and iframe=true was called:
 		if ( is_object( $title ) && $title->getNamespace() == NS_FILE &&
 			$wgRequest->getVal( 'embedplayer' ) == 'yes' &&
-			$wgEnableIframeEmbed &&
 			$doOutput
 		) {
 			if ( self::outputIframe( $title ) ) {

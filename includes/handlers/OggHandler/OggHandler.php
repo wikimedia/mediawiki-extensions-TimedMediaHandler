@@ -351,7 +351,7 @@ class OggHandler extends TimedMediaHandler {
 		}
 		$size = 0;
 		$unpacked = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$unpacked || isset( $metadata['error'] ) ) {
+		if ( !$unpacked || isset( $unpacked['error'] ) ) {
 			$length = 0;
 		} else {
 			$length = $this->getLength( $file );

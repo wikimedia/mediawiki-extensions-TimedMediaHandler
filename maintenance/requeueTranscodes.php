@@ -133,12 +133,11 @@ class RequeueTranscodes extends Maintenance {
 				if ( !array_key_exists( $key, $state ) || !$state[$key]['time_addjob'] ) {
 					$this->output( ".. queueing $key\n" );
 
-					if ( $this->hasOption( 'throttle' ) ) {
+					if ( !$this->hasOption( 'throttle' ) ) {
+						WebVideoTranscode::updateJobQueue( $file, $key );
+					} else {
 						$startSize = WebVideoTranscode::getQueueSize( $file, $key );
-					}
-
-					WebVideoTranscode::updateJobQueue( $file, $key );
-					if ( $this->hasOption( 'throttle' ) ) {
+						WebVideoTranscode::updateJobQueue( $file, $key );
 						while ( true ) {
 							$size = WebVideoTranscode::getQueueSize( $file, $key );
 							if ( $size > $startSize ) {
