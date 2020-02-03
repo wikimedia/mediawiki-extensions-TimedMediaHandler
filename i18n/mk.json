@@ -30,6 +30,8 @@
 	"timedmedia-midi-long-audio": "Звучна снимка MIDI, времетраење $1, вкупно $2",
 	"timedmedia-mp4-short-video": "Видеоснимка MP4 $1, $2",
 	"timedmedia-mp4-long-video": "Звучна/видео снимка MP4, $1, времетраење $2, $4 × $5 пиксели, вкупно $3",
+	"timedmedia-mpeg-short-video": "Видеоснимка MPEG $1, $2",
+	"timedmedia-mpeg-long-video": "Звучна/видео снимка MPEG, $1, времетраење $2, $4 × $5 пиксели, вкупно $3",
 	"timedmedia-more": "Повеќе...",
 	"timedmedia-dismiss": "Затвори",
 	"timedmedia-download": "Преземи податотека",

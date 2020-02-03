@@ -39,6 +39,8 @@
 	"timedmedia-midi-long-audio": "MIDI 音訊檔案，長度 $1，共 $2",
 	"timedmedia-mp4-short-video": "MP4 $1 影片檔，$2",
 	"timedmedia-mp4-long-video": "MP4 音訊/影片檔案，$1，長度 $2，$4 × $5 畫素，共 $3",
+	"timedmedia-mpeg-short-video": "MPEG $1 影片檔，$2",
+	"timedmedia-mpeg-long-video": "MPEG 音訊/影片檔案，$1，長度 $2，$4 × $5 畫素，共 $3",
 	"timedmedia-more": "更多...",
 	"timedmedia-dismiss": "關閉",
 	"timedmedia-download": "下載檔案",

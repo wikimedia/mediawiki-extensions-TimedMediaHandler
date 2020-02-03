@@ -41,6 +41,8 @@
 	"timedmedia-midi-long-audio": "MIDI ses dosyası, süre $1, $2 tümü",
 	"timedmedia-mp4-short-video": "MP4 $1 video dosyası, $2",
 	"timedmedia-mp4-long-video": "MP4 ses/video dosyası, $1, süre $2, $4 × $5 piksel, $3 tümü",
+	"timedmedia-mpeg-short-video": "MPEG $1 video dosyası, $2",
+	"timedmedia-mpeg-long-video": "MPEG ses/video dosyası, $1, uzunluk $2, $4 × $5 piksel, $3 genel",
 	"timedmedia-more": "Daha...",
 	"timedmedia-dismiss": "Kapat",
 	"timedmedia-download": "Dosya indir",
