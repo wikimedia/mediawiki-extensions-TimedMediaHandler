@@ -67,10 +67,9 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 
 	/**
 	 * Do login
-	 * @param string $user
 	 * @return array
 	 */
-	protected function doLogin( $user = 'sysop' ) {
+	private function login() {
 		$user = self::$users['uploader'];
 
 		$params = [
@@ -87,7 +86,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 			'lgname' => $user->getUser()->getName(),
 			'lgpassword' => $user->getPassword()
 		];
-		list( $result, , $session ) = $this->doApiRequest( $params, $session );
+		list( , , $session ) = $this->doApiRequest( $params, $session );
 		return $session;
 	}
 
@@ -99,7 +98,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	public function uploadFile( $file ) {
 		global $wgUser;
 		// get a session object
-		$session = $this->doLogin();
+		$session = $this->login();
 		// Update the global user:
 		$wgUser = self::$users['uploader']->getUser();
 
