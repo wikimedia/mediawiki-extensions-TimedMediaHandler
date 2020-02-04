@@ -36,6 +36,8 @@
 	"timedmedia-midi-long-audio": "File audio MIDI, durata $1, complessivamente $2",
 	"timedmedia-mp4-short-video": "File video MP4 $1, $2",
 	"timedmedia-mp4-long-video": "File audio/video MP4 $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3",
+	"timedmedia-mpeg-short-video": "File video MPEG $1, $2",
+	"timedmedia-mpeg-long-video": "File audio/video MPEG $1, durata $2, dimensioni $4×$5 pixel, complessivamente $3",
 	"timedmedia-more": "Altro...",
 	"timedmedia-dismiss": "Chiudi",
 	"timedmedia-download": "Scarica il file",

@@ -8,6 +8,8 @@
 	},
 	"timedmedia-midi-short-audio": "MIDI audio fail, $1",
 	"timedmedia-midi-long-audio": "MIDI audio fails, ilgums $1, kopumā $2",
+	"timedmedia-mpeg-short-video": "MPEG $1 video fails, $2",
+	"timedmedia-mpeg-long-video": "MPEG audio/video fails, $1, garums $2, $4 × $5 pikseļi, $3 kopā",
 	"timedmedia-more": "Vairāk...",
 	"timedmedia-dismiss": "Aizvērt",
 	"timedmedia-download": "Lejupielādēt failu",
