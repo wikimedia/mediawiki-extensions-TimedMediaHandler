@@ -22,6 +22,7 @@
 	"timedmedia-mp3-short-audio": "MP3 Audio-Fichier, $1",
 	"timedmedia-mp3-long-audio": "MP3-audio-Fichier, Längt $1, $2 am Ganzen",
 	"timedmedia-mp4-short-video": "MP4 $1 Videofichier, $2",
+	"timedmedia-mpeg-short-video": "MPEG $1 Videofichier, $2",
 	"timedmedia-more": "Méi ...",
 	"timedmedia-dismiss": "Zoumaachen",
 	"timedmedia-download": "Fichier eroflueden",

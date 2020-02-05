@@ -30,6 +30,8 @@
 	"timedmedia-midi-long-audio": "MIDI-lydfil, lengde $1, $2 totalt",
 	"timedmedia-mp4-short-video": "MP4 $1 videofil, $2",
 	"timedmedia-mp4-long-video": "MP4-fil for lyd/video, $1, lengde $2, $4 × $5 piksler, $3 totalt",
+	"timedmedia-mpeg-short-video": "MPEG-$1-videofil, $2",
+	"timedmedia-mpeg-long-video": "MPEG-lyd- eller videofil, $1, lengde $2, $4 × $5 piksler, $3",
 	"timedmedia-more": "Mer …",
 	"timedmedia-dismiss": "Lukk",
 	"timedmedia-download": "Last ned fil",

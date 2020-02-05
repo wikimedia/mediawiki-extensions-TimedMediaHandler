@@ -31,6 +31,8 @@
 	"timedmedia-midi-long-audio": "קובץ שמע MIDI, אורך $1, $2 סה\"כ",
 	"timedmedia-mp4-short-video": "קובץ וידאו MP4 $1&rlm;, $2",
 	"timedmedia-mp4-long-video": "קובץ שמע ווידאו של MP4&rlm;, $1, באורך $2, $4 × $5 פיסקלים, $3 בסך הכול",
+	"timedmedia-mpeg-short-video": "קובץ וידאו $1&rlm;, $2",
+	"timedmedia-mpeg-long-video": "קובץ שמע ווידאו MPEG&rlm;, $1, אורך $2, $4 × $5 פיקסלים, $3 בסך הכול",
 	"timedmedia-more": "עוד…",
 	"timedmedia-dismiss": "סגירה",
 	"timedmedia-download": "הורדת הקובץ",
