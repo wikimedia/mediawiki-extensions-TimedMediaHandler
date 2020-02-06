@@ -18,7 +18,8 @@
 			"予弦",
 			"A Retired User",
 			"Sunny00217",
-			"Xiplus"
+			"Xiplus",
+			"铁桶"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -62,7 +63,7 @@
 	"timedmedia-actions": "操作",
 	"timedmedia-direct-link": "下载",
 	"timedmedia-not-ready": "未就绪",
-	"timedmedia-completed-on": "已完成於$1",
+	"timedmedia-completed-on": "已完成于$1",
 	"timedmedia-error-on": "于$1错误",
 	"timedmedia-started-transcode": "于$1前开始。$2",
 	"timedmedia-percent-done": "大约$1%已完成",
