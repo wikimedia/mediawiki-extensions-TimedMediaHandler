@@ -8,6 +8,7 @@
  *  extends video tag output to provide all the available sources
  */
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -571,9 +572,11 @@ class WebVideoTranscode {
 	public static function getSources( &$file, $options = [] ) {
 		if ( $file->isLocal() || $file->repo instanceof ForeignDBViaLBRepo ) {
 			return self::getLocalSources( $file, $options );
-		} else {
+		} elseif ( $file instanceof ForeignAPIFile ) {
 			return self::getRemoteSources( $file, $options );
 		}
+
+		return [];
 	}
 
 	/**
@@ -583,60 +586,61 @@ class WebVideoTranscode {
 	 * 	 <https://gerrit.wikimedia.org/r/#/c/117916/>
 	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
-	 * @param File &$file
+	 * @param ForeignAPIFile &$file
 	 * @param array $options
 	 * @return array|mixed
 	 */
 	public static function getRemoteSources( &$file, $options = [] ) {
-		global $wgMemc;
-		// Setup source attribute options
-		$dataPrefix = in_array( 'nodata', $options ) ? '' : 'data-';
+		$regenerator = function () use ( $file, $options ) {
+			// Setup source attribute options
+			$dataPrefix = in_array( 'nodata', $options ) ? '' : 'data-';
 
-		// Use descriptionCacheExpiry as our expire for timed text tracks info
-		if ( $file->repo->descriptionCacheExpiry > 0 ) {
-			wfDebug( "Attempting to get sources from cache..." );
-			$key = $file->repo->getLocalCacheKey( 'WebVideoSources', 'url', $file->getName() );
-			$sources = $wgMemc->get( $key );
-			if ( $sources ) {
-				wfDebug( "Success found sources in local cache\n" );
-				return $sources;
+			wfDebug( "Get Video sources from remote api for " . $file->getName() . "\n" );
+			$query = [
+				'action' => 'query',
+				'prop' => 'videoinfo',
+				'viprop' => 'derivatives',
+				'titles' => MWNamespace::getCanonicalName( NS_FILE ) . ':' . $file->getTitle()->getText()
+			];
+
+			$data = $file->getRepo()->fetchImageQuery( $query );
+
+			if ( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )
+				&& $data['warnings']['query']['*'] == "Unrecognized value for parameter 'prop': videoinfo"
+			) {
+				// Commons does not yet have TimedMediaHandler.
+				// Use the normal file repo system single source:
+				return [ self::getPrimarySourceAttributes( $file, [ $dataPrefix ] ) ];
 			}
-			wfDebug( "source cache miss\n" );
-		}
 
-		wfDebug( "Get Video sources from remote api for " . $file->getName() . "\n" );
-		$query = [
-			'action' => 'query',
-			'prop' => 'videoinfo',
-			'viprop' => 'derivatives',
-			'titles' => MWNamespace::getCanonicalName( NS_FILE ) . ':' . $file->getTitle()->getText()
-		];
-
-		$data = $file->repo->fetchImageQuery( $query );
-
-		if ( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )
-			&& $data['warnings']['query']['*'] == "Unrecognized value for parameter 'prop': videoinfo"
-		) {
-			// Commons does not yet have TimedMediaHandler.
-			// Use the normal file repo system single source:
-			return [ self::getPrimarySourceAttributes( $file, [ $dataPrefix ] ) ];
-		}
-		$sources = [];
-		// Generate the source list from the data response:
-		if ( isset( $data['query'] ) && $data['query']['pages'] ) {
-			$vidResult = array_shift( $data['query']['pages'] );
-			if ( isset( $vidResult['videoinfo'] ) ) {
-				$derResult = array_shift( $vidResult['videoinfo'] );
-				$derivatives = $derResult['derivatives'];
-				foreach ( $derivatives as $derivativeSource ) {
-					$sources[] = $derivativeSource;
+			$sources = [];
+			// Generate the source list from the data response:
+			if ( isset( $data['query'] ) && $data['query']['pages'] ) {
+				$vidResult = array_shift( $data['query']['pages'] );
+				if ( isset( $vidResult['videoinfo'] ) ) {
+					$derResult = array_shift( $vidResult['videoinfo'] );
+					$derivatives = $derResult['derivatives'];
+					foreach ( $derivatives as $derivativeSource ) {
+						$sources[] = $derivativeSource;
+					}
 				}
 			}
-		}
 
-		// Update the cache:
-		if ( $sources && $file->repo->descriptionCacheExpiry > 0 ) {
-			$wgMemc->set( $key, $sources, $file->repo->descriptionCacheExpiry );
+			return $sources;
+		};
+
+		$repoInfo = $file->getRepo()->getInfo();
+		$cacheTTL = $repoInfo['descriptionCacheExpiry'] ?? 0;
+
+		if ( $cacheTTL > 0 ) {
+			$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+			$sources = $cache->getWithSetCallback(
+				$cache->makeKey( 'WebVideoSources-url', $file->getRepoName(), $file->getName() ),
+				$cacheTTL,
+				$regenerator
+			);
+		} else {
+			$sources = $regenerator();
 		}
 
 		return $sources;

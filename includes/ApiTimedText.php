@@ -146,7 +146,6 @@ class ApiTimedText extends ApiBase {
 
 		foreach ( $sourceFormats as $format ) {
 			$dbkey = "{$file->getTitle()->getDbKey()}.{$langCode}.{$format}";
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$page = WikiPage::factory( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {

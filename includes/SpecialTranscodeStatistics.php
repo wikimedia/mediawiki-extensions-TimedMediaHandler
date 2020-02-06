@@ -7,6 +7,7 @@
  * @file
  * @ingroup SpecialPage
  */
+use MediaWiki\MediaWikiServices;
 
 class SpecialTranscodeStatistics extends SpecialPage {
 	private $transcodeStates = [
@@ -73,29 +74,35 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	}
 
 	private function getTranscodes( $state, $limit = 50 ) {
-		global $wgMemc;
-		$memcKey = wfMemcKey( 'TimedMediaHandler', 'files', $state );
-		$files = $wgMemc->get( $memcKey );
-		if ( !$files ) {
-			$dbr = wfGetDB( DB_REPLICA );
-			$files = [];
-			$res = $dbr->select(
-				'transcode',
-				[ 'transcode_image_name', 'transcode_key' ],
-				$this->transcodeStates[ $state ],
-				__METHOD__,
-				[ 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' ]
-			);
-			foreach ( $res as $row ) {
-				$transcode = [];
-				foreach ( $row as $k => $v ) {
-					$transcode[ str_replace( 'transcode_', '', $k ) ] = $v;
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
+
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'TimedMediaHandler-files', $state ),
+			$cache::TTL_MINUTE,
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $state, $limit, $fname ) {
+				$dbr = wfGetDB( DB_REPLICA );
+				$setOpts += Database::getCacheSetOptions( $dbr );
+
+				$files = [];
+				$res = $dbr->select(
+					'transcode',
+					[ 'transcode_image_name', 'transcode_key' ],
+					$this->transcodeStates[ $state ],
+					$fname,
+					[ 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' ]
+				);
+				foreach ( $res as $row ) {
+					$transcode = [];
+					foreach ( $row as $k => $v ) {
+						$transcode[ str_replace( 'transcode_', '', $k ) ] = $v;
+					}
+					$files[] = $transcode;
 				}
-				$files[] = $transcode;
+
+				return $files;
 			}
-			$wgMemc->add( $memcKey, $files, 60 );
-		}
-		return $files;
+		);
 	}
 
 	private function getTranscodesTable( $state, $limit = 50 ) {
@@ -122,56 +129,63 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	}
 
 	private function getStates() {
-		global $wgMemc;
-		$allTranscodes = WebVideoTranscode::enabledTranscodes();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$fname = __METHOD__;
 
-		$memcKey = wfMemcKey( 'TimedMediaHandler', 'states' );
-		$states = $wgMemc->get( $memcKey );
-		if ( !$states ) {
-			$dbr = wfGetDB( DB_REPLICA );
-			$states = [];
-			$states[ 'transcodes' ] = [ 'total' => 0 ];
-			foreach ( $this->transcodeStates as $state => $condition ) {
-				$states[ $state ] = [ 'total' => 0 ];
-				foreach ( $allTranscodes as $type ) {
-					// Important to pre-initialize, as can give
-					// warnings if you don't have a lot of things in transcode table.
-					$states[ $state ][ $type ] = 0;
+		return $cache->getWithSetCallback(
+			$cache->makeKey( 'TimedMediaHandler-states' ),
+			$cache::TTL_MINUTE,
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $fname ) {
+				$dbr = wfGetDB( DB_REPLICA );
+				$setOpts += Database::getCacheSetOptions( $dbr );
+
+				$allTranscodes = WebVideoTranscode::enabledTranscodes();
+
+				$states = [];
+				$states[ 'transcodes' ] = [ 'total' => 0 ];
+				foreach ( $this->transcodeStates as $state => $condition ) {
+					$states[ $state ] = [ 'total' => 0 ];
+					foreach ( $allTranscodes as $type ) {
+						// Important to pre-initialize, as can give
+						// warnings if you don't have a lot of things in transcode table.
+						$states[ $state ][ $type ] = 0;
+					}
 				}
-			}
-			foreach ( $this->transcodeStates as $state => $condition ) {
-				$cond = [ 'transcode_key' => $allTranscodes ];
-				$cond[] = $condition;
+				foreach ( $this->transcodeStates as $state => $condition ) {
+					$cond = [ 'transcode_key' => $allTranscodes ];
+					$cond[] = $condition;
+					$res = $dbr->select( 'transcode',
+						[ 'COUNT(*) as count', 'transcode_key' ],
+						$cond,
+						$fname,
+						[ 'GROUP BY' => 'transcode_key' ]
+					);
+					foreach ( $res as $row ) {
+						$key = $row->transcode_key;
+						$states[ $state ][ $key ] = $row->count;
+						$states[ $state ][ 'total' ] += $states[ $state ][ $key ];
+					}
+				}
 				$res = $dbr->select( 'transcode',
 					[ 'COUNT(*) as count', 'transcode_key' ],
-					$cond,
-					__METHOD__,
+					[ 'transcode_key' => $allTranscodes ],
+					$fname,
 					[ 'GROUP BY' => 'transcode_key' ]
 				);
 				foreach ( $res as $row ) {
 					$key = $row->transcode_key;
-					$states[ $state ][ $key ] = $row->count;
-					$states[ $state ][ 'total' ] += $states[ $state ][ $key ];
+					$states[ 'transcodes' ][ $key ] = $row->count;
+					$states[ 'transcodes' ][ $key ] -= $states[ 'queued' ][ $key ];
+					$states[ 'transcodes' ][ $key ] -= $states[ 'missing' ][ $key ];
+					$states[ 'transcodes' ][ $key ] -= $states[ 'active' ][ $key ];
+					$states[ 'transcodes' ][ $key ] -= $states[ 'failed' ][ $key ];
+					$states[ 'transcodes' ][ 'total' ] += $states[ 'transcodes' ][ $key ];
 				}
-			}
-			$res = $dbr->select( 'transcode',
-				[ 'COUNT(*) as count', 'transcode_key' ],
-				[ 'transcode_key' => $allTranscodes ],
-				__METHOD__,
-				[ 'GROUP BY' => 'transcode_key' ]
-			);
-			foreach ( $res as $row ) {
-				$key = $row->transcode_key;
-				$states[ 'transcodes' ][ $key ] = $row->count;
-				$states[ 'transcodes' ][ $key ] -= $states[ 'queued' ][ $key ];
-				$states[ 'transcodes' ][ $key ] -= $states[ 'missing' ][ $key ];
-				$states[ 'transcodes' ][ $key ] -= $states[ 'active' ][ $key ];
-				$states[ 'transcodes' ][ $key ] -= $states[ 'failed' ][ $key ];
-				$states[ 'transcodes' ][ 'total' ] += $states[ 'transcodes' ][ $key ];
-			}
-			$wgMemc->add( $memcKey, $states, 60 );
-		}
-		return $states;
+
+				return $states;
+			},
+			[ 'lockTSE' => 30 ]
+		);
 	}
 
 	protected function getGroupName() {
