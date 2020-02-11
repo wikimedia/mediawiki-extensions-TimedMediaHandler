@@ -63,7 +63,5 @@
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new-go": "رۉ",
 	"timedmedia-subtitle-language": "$1 ($2) زیرنڤیس",
-	"timedmedia-videos": "{{PLURAL:$1|$1 ڤیدیو|$1 ڤیدیویٱل}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg video|$1 Ogg videos}}",
 	"timedmedia-file": "جانیا"
 }

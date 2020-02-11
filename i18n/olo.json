@@ -18,8 +18,5 @@
 	"timedmedia-source-file": "$1 lähteh",
 	"timedmedia-source-audio-file-desc": "Alguperäine $1 failu ($2)",
 	"timedmedia-subtitle-new-go": "Mene",
-	"timedmedia-videos": "{{PLURAL:$1|$1 videjo|$1 videjuo}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg-videjo|$1 Ogg-videjuo}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM-videjo|$1 WebM-videjuo}}",
 	"timedmedia-file": "Failu"
 }

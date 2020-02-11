@@ -44,13 +44,6 @@
 	"timedmedia-subtitle-new-desc": "Тілді таңдаңыз және '''{{int:Timedmedia-subtitle-new-go}}''' батырмасын басыңыз",
 	"timedmedia-subtitle-new-go": "Өту",
 	"timedmedia-subtitle-language": "$1 ($2) субтитрлер",
-	"timedmedia-videos": "{{PLURAL:$1|$1 видео|$1 видео}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg видео|$1 Ogg видео}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM видео|$1 WebM видео}}",
 	"timedmedia-file": "Файл",
-	"timedmedia-audios": "{{PLURAL:$1|$1 аудио файл|$1 аудио файл}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg аудио файл|$1 Ogg аудио файл}}",
-	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC аудио файл|$1 FLAC аудио файл}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV аудио файл|$1 WAV аудио файл}}",
 	"right-transcode-status": "[[Special:TimedMediaHandler|information about the current transcode activity]] көру"
 }

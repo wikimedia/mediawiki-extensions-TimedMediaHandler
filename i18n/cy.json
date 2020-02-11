@@ -43,9 +43,6 @@
 	"timedmedia-subtitle-language": "Isdeitlau $1 ($2)",
 	"timedmedia-subtitle-remote-link": "Gallwch [$1 weld tudalen ddisgrifio'r] ffeil hon ar $2",
 	"timedmediahandler": "TimedMediaHandler",
-	"timedmedia-videos": "{{PLURAL:$1|$1 fideo}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 fideo Ogg}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 fideo WebM}}",
 	"timedmedia-file": "Ffeil",
 	"action-transcode-status": "gweld statws presennol y trawsgodio"
 }

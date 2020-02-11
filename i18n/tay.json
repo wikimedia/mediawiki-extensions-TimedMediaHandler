@@ -31,9 +31,5 @@
 	"timedmedia-derivative-desc-240p.mp4": "Pkcikuy MP4 H.264 (240P)",
 	"timedmedia-subtitle-language": "$1 ($2) Mszik sa spzyang lalu’ kkayal",
 	"timedmedia-file": "Biru’ na zayzyuwaw",
-	"timedmedia-audios": "{{PLURAL:$1|$1 tang’an na hngzyang}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg tang’an na hngzyang}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV tang’an na hngzyang}}",
-	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM tang’an na hngzyang}}",
 	"action-transcode-reset": "t’ringun kbalay lawziy cwan ma’"
 }

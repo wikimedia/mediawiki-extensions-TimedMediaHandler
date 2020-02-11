@@ -48,9 +48,6 @@
 	"timedmedia-subtitle-new-desc": "Seleccioneu la llengua i premeu el botó '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Vés-hi",
 	"timedmedia-subtitle-language": "$1 ($2) subtítols",
-	"timedmedia-videos": "{{PLURAL:$1|$1 vídeo|$1 vídeos}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 vídeo Ogg|$1 vídeos Ogg}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 vídeo WebM|$1 vídeosWebM}}",
 	"timedmedia-file": "Fitxer",
 	"beta-feature-timedmediahandler-message-videojs": "Reproductor de vídeos nou"
 }

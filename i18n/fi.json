@@ -72,9 +72,6 @@
 	"timedmedia-subtitle-no-video": "Tähän tekstityssivuun ei liity videota",
 	"timedmedia-subtitle-no-subtitles": "Tälle videolle ei tällä hetkellä ole tekstityksiä kielellä $1. Voit [{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata tätä sivua] lisätäksesi ne.",
 	"timedmediahandler": "TimedMediaHandler",
-	"timedmedia-videos": "{{PLURAL:$1|$1 video|$1 videota}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg-video|$1 Ogg-videota}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM-video|$1 WebM-videota}}",
 	"timedmedia-file": "Tiedosto",
 	"beta-feature-timedmediahandler-message-videojs": "Uusi videosoitin",
 	"log-name-timedmediahandler": "TimedMediaHandler-toimintoloki"

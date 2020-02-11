@@ -86,15 +86,7 @@
 	"timedmedia-resolution-2160": "ultraaltdifina 2160p",
 	"timedmedia-subtitle-new": "Fari novan tradukon aŭ redakti ekzistantan tradukon",
 	"timedmedia-subtitle-new-go": "Ek",
-	"timedmedia-videos": "{{PLURAL:$1|$1 videaĵo|$1 videaĵoj}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg-videaĵo|$1 Ogg-videaĵoj}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM-videaĵo|$1 WebM-videaĵoj}}",
 	"timedmedia-file": "Dosiero",
-	"timedmedia-audios": "{{PLURAL:$1|$1 sondosiero|$1 sondosieroj}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg-sondosiero|$1 Ogg-sondosieroj}}",
-	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC-sondosiero|$1 FLAC-sondosieroj}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV-sondosiero|$1 WAV-sondosieroj}}",
-	"timedmedia-webm-audios": "{{PLURAL:$1|$1 WebM-sondosiero|$1 WebM-sondosieroj}}",
 	"videojs-more-information": "Pli da informo",
 	"videojs-quality": "Videa kvalito"
 }

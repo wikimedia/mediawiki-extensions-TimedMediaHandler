@@ -79,12 +79,5 @@
 	"timedmedia-subtitle-no-video": "वर्तमान उपशीर्षक पृष्ठ से कोई भी वीडियो जुड़ा नहीं है।",
 	"timedmedia-subtitle-no-subtitles": "इस वीडियो के लिए $1 में कोई उपशीर्षक नहीं है। आप [{{fullurl:{{FULLPAGENAME}}|action=edit}} इसे संपादित कर के] जोड़ सकते हैं।",
 	"timedmedia-subtitle-remote-link": "आप $2 में इस फ़ाइल का [$1 विवरण पृष्ठ देख सकते हो]",
-	"timedmedia-videos": "{{PLURAL:$1|$1 वीडियो}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg वीडियो}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM वीडियो}}",
-	"timedmedia-file": "फ़ाइल",
-	"timedmedia-audios": "{{PLURAL:$1|$1 ऑडियो फ़ाइल|$1 ऑडियो फ़ाइलें}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ऑडियो फ़ाइल|$1 Ogg ऑडियो फ़ाइलें}}",
-	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC ऑडियो फ़ाइल|$1 FLAC ऑडियो फ़ाइलें}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV ऑडियो फ़ाइल|$1 WAV ऑडियो फ़ाइलें}}"
+	"timedmedia-file": "फ़ाइल"
 }

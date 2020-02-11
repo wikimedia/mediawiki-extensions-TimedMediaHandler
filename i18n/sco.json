@@ -7,9 +7,5 @@
 	},
 	"timedmedia-ogg-long-no-streams": "Ogg media file. Warnishment: Nane o the codecs uised in this file ar recognized.",
 	"timedmedia-source-file": "$1 soorce",
-	"timedmedia-source-audio-file-desc": "Oreeginal $1 file ($2)",
-	"timedmedia-audios": "{{PLURAL:$1|$1 audio file|$1 audio files}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg audio file|$1 Ogg audio files}}",
-	"timedmedia-flac-audios": "{{PLURAL:$1|$1 FLAC audio file|$1 FLAC audio files}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 WAV audio file|$1 WAV audio files}}"
+	"timedmedia-source-audio-file-desc": "Oreeginal $1 file ($2)"
 }

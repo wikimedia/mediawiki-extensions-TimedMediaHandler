@@ -85,8 +85,5 @@
 	"timedmedia-subtitle-new-go": "Áfram",
 	"timedmedia-subtitle-language": "$1 ($2) skjátextar",
 	"timedmedia-subtitle-no-video": "Ekkert myndband tengist þessum myndbanda texta",
-	"timedmedia-videos": "{{PLURAL:$1|$1 myndband|$1 myndbönd}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 Ogg myndband|$1 Ogg myndbönd}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 WebM myndband|$1 WebM myndbönd}}",
 	"timedmedia-file": "Skrá"
 }

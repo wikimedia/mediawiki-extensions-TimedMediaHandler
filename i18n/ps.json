@@ -25,7 +25,5 @@
 	"timedmedia-source-audio-file-desc": "اصلي $1 دوتنه ($2)",
 	"timedmedia-subtitle-new-go": "ورځه",
 	"timedmedia-subtitle-language": "$1 ($2) لمنليکونه",
-	"timedmedia-videos": "{{PLURAL:$1|$1 ويډيو|$1 ويډيوگانې}}",
-	"timedmedia-file": "دوتنه",
-	"timedmedia-audios": "{{PLURAL:$1|$1 غږيزه دوتنه|$1 غږيزې دوتنې}}"
+	"timedmedia-file": "دوتنه"
 }

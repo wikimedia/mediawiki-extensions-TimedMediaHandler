@@ -25,8 +25,5 @@
 	"timedmedia-reset-button-reset": "पूर्ववत करा",
 	"timedmedia-source-file": "$1 स्रोत",
 	"timedmedia-source-audio-file-desc": "मूळ $1 संचिका ($2)",
-	"timedmediahandler": "टाईम्डमिडियाहॅंडलर",
-	"timedmedia-videos": "{{PLURAL:$1|$1 व्हीडिओ}}",
-	"timedmedia-audios": "{{PLURAL:$1|$1 ध्वनी संचिका}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 Ogg ध्वनी संचिका}}"
+	"timedmediahandler": "टाईम्डमिडियाहॅंडलर"
 }

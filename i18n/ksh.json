@@ -75,9 +75,5 @@
 	"timedmedia-subtitle-new-desc": "Söhg en Schprohch uß un klegg op „{{int:Timedmedia-subtitle-new-go}}“",
 	"timedmedia-subtitle-new-go": "Lohß Jonn!",
 	"timedmedia-subtitle-language": "Ongertittele en $1 ($2)",
-	"timedmedia-file": "Dattei",
-	"timedmedia-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Ogg Vorbis\">Ogg</i>-Fommaht",
-	"timedmedia-flac-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Free Lossless Audio Codec „Freije verloßfreie Kodehrer un Dekodehrer vun Töhn“\">FLAC</i>-Fommaht",
-	"timedmedia-wav-audios": "{{PLURAL:$1|Ein Tohndattei|$1 Tohndatteije|kein Tohndattei}} em <i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"RIFF WAVE - Resource Interchange File Format - för de Wälle vun Töhn\">WAV</i>-Fommaht"
+	"timedmedia-file": "Dattei"
 }

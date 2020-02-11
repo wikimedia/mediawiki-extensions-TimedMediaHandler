@@ -41,12 +41,5 @@
 	"timedmedia-source-audio-file-desc": "Dosyaya oricinale $1 ($2)",
 	"timedmedia-subtitle-new-go": "Şo",
 	"timedmediahandler": "Programê kontroliê zemanê kontrolbiyayey",
-	"timedmedia-videos": "{{PLURAL:$1|$1 video|$1 videoyi}}",
-	"timedmedia-ogg-videos": "{{PLURAL:$1|$1 videoyê Oggi|$1 videoyên Oggi}}",
-	"timedmedia-webm-videos": "{{PLURAL:$1|$1 videoyê WebMyi|$1 videoyên WebMyi}}",
-	"timedmedia-file": "Dosya",
-	"timedmedia-audios": "{{PLURAL:$1|$1 dosyaya vengi|$1 dosyeyê vengan}}",
-	"timedmedia-ogg-audios": "{{PLURAL:$1|$1 dosyaya vengiyê Oggi|$1 dosyeyê venganê Oggi}}",
-	"timedmedia-flac-audios": "{{PLURAL:$1|$1 dosyaya vengiyê FLACi|$1 dosyeyê venganê FLACi}}",
-	"timedmedia-wav-audios": "{{PLURAL:$1|$1 dosyaya vengiyê WAVi|$1 dosyeyê venganê WAVi}}"
+	"timedmedia-file": "Dosya"
 }
