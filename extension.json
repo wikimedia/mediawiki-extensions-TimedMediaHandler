@@ -49,7 +49,7 @@
 	],
 	"SpecialPages": {
 		"OrphanedTimedText": "SpecialOrphanedTimedText",
-		"TimedMediaHandler": "SpecialTimedMediaHandler"
+		"TranscodeStatistics": "SpecialTranscodeStatistics"
 	},
 	"MessagesDirs": {
 		"TimedMediaHandler": [
@@ -108,7 +108,7 @@
 		"ApiTimedText": "includes/ApiTimedText.php",
 		"ApiTranscodeStatus": "includes/ApiTranscodeStatus.php",
 		"ApiTranscodeReset": "includes/ApiTranscodeReset.php",
-		"SpecialTimedMediaHandler": "includes/SpecialTimedMediaHandler.php",
+		"SpecialTranscodeStatistics": "includes/SpecialTranscodeStatistics.php",
 		"SpecialOrphanedTimedText": "includes/SpecialOrphanedTimedText.php"
 	},
 	"AutoloadNamespaces": {

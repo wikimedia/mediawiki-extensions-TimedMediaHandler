@@ -1,6 +1,6 @@
 <?php
 /**
- * Special:TimedMediaHandler
+ * Special:TranscodeStatistics
  *
  * Show some information about unprocessed jobs
  *
@@ -8,7 +8,7 @@
  * @ingroup SpecialPage
  */
 
-class SpecialTimedMediaHandler extends SpecialPage {
+class SpecialTranscodeStatistics extends SpecialPage {
 	private $transcodeStates = [
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		'active' => 'transcode_time_startwork IS NOT NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
@@ -18,11 +18,12 @@ class SpecialTimedMediaHandler extends SpecialPage {
 	];
 
 	public function __construct( $request = null, $par = null ) {
-		parent::__construct( 'TimedMediaHandler', 'transcode-status' );
+		parent::__construct( 'TranscodeStatistics', 'transcode-status' );
 	}
 
 	public function execute( $par ) {
 		$this->setHeaders();
+		$this->checkPermissions();
 		$out = $this->getOutput();
 
 		$out->addModuleStyles( 'mediawiki.special' );
@@ -175,5 +176,9 @@ class SpecialTimedMediaHandler extends SpecialPage {
 
 	protected function getGroupName() {
 		return 'media';
+	}
+
+	public function isListed() {
+		return true;
 	}
 }
