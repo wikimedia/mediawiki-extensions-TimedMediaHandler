@@ -127,7 +127,7 @@
 	"timedmedia-subtitle-no-video": "目前沒有與字幕頁面相關的影片。",
 	"timedmedia-subtitle-no-subtitles": "此影片目前沒有 $1 的字幕，您可 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁面] 來增加字幕。",
 	"timedmedia-subtitle-remote": "此檔案的字幕位於 $1",
-	"timedmedia-subtitle-remote-link": "您可於 $2 檢視此檔案的 [$1 描述頁面]",
+	"timedmedia-subtitle-remote-link": "您可於$2檢視此檔案的[$1 描述頁面]",
 	"timedmediahandler": "定時媒體處理器",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 個轉碼工作}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 個正在執行的轉碼工作}}",

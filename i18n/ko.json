@@ -39,6 +39,8 @@
 	"timedmedia-midi-long-audio": "MIDI 소리 파일, 길이 $1, 대략 $2",
 	"timedmedia-mp4-short-video": "MP4 $1 동영상 파일, $2",
 	"timedmedia-mp4-long-video": "MP4 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3",
+	"timedmedia-mpeg-short-video": "MPEG $1 동영상 파일, $2",
+	"timedmedia-mpeg-long-video": "MPEG 소리/동영상 파일, $1, 길이 $2, $4 × $5픽셀, 대략 $3",
 	"timedmedia-more": "더 보기…",
 	"timedmedia-dismiss": "닫기",
 	"timedmedia-download": "파일 다운로드",
