@@ -5,7 +5,8 @@
 			"ArnoLagrange",
 			"Yekrats",
 			"KuboF",
-			"Mirin"
+			"Mirin",
+			"Robin van der Vliet"
 		]
 	},
 	"timedmediahandler-desc": "Traktilo por sondosieroj, videoj, kaj horloĝigita teksto, kun formatsubteno por WebM kaj Ogg Theora kaj Vobis kaj srt.",
@@ -16,7 +17,7 @@
 	"timedmedia-ogg-long-video": "Video Ogg-dosiero $1, longeco $2, $4×$5 pikseloj, $3 entute",
 	"timedmedia-ogg-long-multiplexed": "Kunigita aŭdio/video Ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute",
 	"timedmedia-ogg-long-general": "Ogg-mediodosiero, longeco $2, $3",
-	"timedmedia-ogg-long-error": "Malvalida Ogg-dosiero: $1",
+	"timedmedia-ogg-long-error": "Nevalida Ogg-dosiero: $1",
 	"timedmedia-webm-short-video": "WebM-$1-videodosiero, $2",
 	"timedmedia-flac-short-audio": "FLAC-sondosiero, $1",
 	"timedmedia-wav-short-audio": "WAV-sondosiero, $1",
