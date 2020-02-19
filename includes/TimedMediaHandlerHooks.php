@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Hooks for TimedMediaHandler extension
  *
@@ -461,7 +463,8 @@ class TimedMediaHandlerHooks {
 		}
 
 		if ( $title->isSpecialPage() ) {
-			list( $name, /* subpage */ ) = SpecialPageFactory::resolveAlias( $title->getDBkey() );
+			list( $name, /* subpage */ ) = MediaWikiServices::getInstance()
+				->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
 			if ( stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
 				|| $name === 'Search' || $name === 'GlobalUsage' || $name === 'Upload' ) {
 					$addModules = true;
