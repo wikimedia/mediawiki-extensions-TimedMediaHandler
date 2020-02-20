@@ -5,7 +5,8 @@
 			"बिप्लब आनन्द",
 			"NehalDaveND",
 			"राम प्रसाद जोशी",
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"हिमाल सुबेदी"
 		]
 	},
 	"timedmedia-ogg-short-audio": "Ogg $1 ध्वनि फाइल, $2",
@@ -18,6 +19,7 @@
 	"timedmedia-status": "स्थिति",
 	"timedmedia-status-unknown": "अज्ञात स्थिति",
 	"timedmedia-actions": "कार्यहरु",
+	"timedmedia-direct-link": "डाउनलोड गरिएकाे",
 	"timedmedia-source-file": "$1 श्रोत",
 	"timedmedia-source-file-desc": "मूल $1 फाईल, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "मूल $1 फाईल ($2)",
