@@ -301,6 +301,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * The list should be in preferred source order, so we want the file
 	 * with the lowest bitrate (to save bandwidth) first, but we also want
 	 * appropriate resolution files before the 160p transcodes.
+	 * @param array $a
+	 * @param array $b
+	 * @return int
 	 */
 	private function sortMediaByBandwidth( $a, $b ) {
 		$width = $this->getPlayerWidth();

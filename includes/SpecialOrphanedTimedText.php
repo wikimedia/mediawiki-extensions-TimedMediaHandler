@@ -101,6 +101,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * Can we execute this special page
 	 *
 	 * That is, db is mysql, and TimedText namespace enabled.
+	 * @return bool
 	 */
 	private function canExecute() {
 		global $wgEnableLocalTimedText;
@@ -189,6 +190,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	/**
 	 * Given a TimedText title, get the File title
 	 *
+	 * @param Title $timedText
 	 * @return Title|null Title in File namespace. null on error.
 	 */
 	private function getCorrespondingFile( Title $timedText ) {
