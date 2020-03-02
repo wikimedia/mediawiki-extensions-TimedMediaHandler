@@ -42,6 +42,8 @@
 	"timedmedia-midi-long-audio": "Аудіофайл MIDI, тривалість — $1, швидкість — $2",
 	"timedmedia-mp4-short-video": "MP4 $1 відеофайл, $2",
 	"timedmedia-mp4-long-video": "Аудіо-/відеофайл MP4, $1, тривалість — $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, швидкість — $3",
+	"timedmedia-mpeg-short-video": "Відеофайл MPEG $1, $2",
+	"timedmedia-mpeg-long-video": "Аудіо-/відеофайл MPEG, $1, тривалість — $2, $4 × $5 {{PLURAL:$5|піксель|пікселі|пікселів}}, швидкість — $3",
 	"timedmedia-more": "Більше…",
 	"timedmedia-dismiss": "Закрити",
 	"timedmedia-download": "Завантажити файл",

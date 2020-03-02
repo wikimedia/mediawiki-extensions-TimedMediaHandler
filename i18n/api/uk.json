@@ -14,6 +14,13 @@
 	"apihelp-query+videoinfo-example-1": "Витяг інформації про [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Додає масив різних форматів та версій якості аудіо- чи відеофайлу, що є доступними.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Додає масив субтитрів, заголовків та описів аудіо- чи відеофайлів, які доступні.",
+	"apihelp-timedtext-description": "Надає контент синхронізованого тексту для використання в елементах &lt;track&gt;",
+	"apihelp-timedtext-summary": "Надає контент синхронізованого тексту для використання в елементах &lt;track&gt;",
+	"apihelp-timedtext-param-title": "Назва медіафайлу, для якого слід отримати синхронізований текст",
+	"apihelp-timedtext-param-pageid": "Ідентифікатор сторінки медіафайлу, для якого слід отримати синхронізований текст",
+	"apihelp-timedtext-param-trackformat": "Формат файлу, в якому слід повернути синхронізований текст",
+	"apihelp-timedtext-param-lang": "Мова синхронізованого тексту, яку слід отримати",
+	"apihelp-timedtext-example-1": "Отримати SRT-файл із субтитрами німецькою мовою для файлу Example.ogv",
 	"apihelp-transcodereset-description": "Користувачі з правом «transcode-reset» можуть скинути і повторити задачу перекодування.",
 	"apihelp-transcodereset-summary": "Користувачі з правом «transcode-reset» можуть скинути і повторити задачу перекодування.",
 	"apihelp-transcodereset-param-title": "Заголовок медіафайлу.",
@@ -24,6 +31,7 @@
 	"apierror-timedmedia-invalidtranscodetitle": "$1 недоступна для перекодування.",
 	"apierror-timedmedia-badtranscodekey": "Недійсний або вимкнений ключ перекодування: $1",
 	"apierror-timedmedia-notenoughtimereset": "Недостатньо часу минуло з останнього скидання цього перекодування. $1 має минути, перш ніж це перекодування можна буде скинути ще раз.",
+	"apierror-timedmedia-lang-notfound": "Запитувану мову не знайдено",
 	"apierror-timedmedia-no-timedtext-support": "Не підтримує TimedText",
 	"apierror-timedmedia-notlocal": "Файл не локальний"
 }
