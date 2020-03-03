@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"हिमाल सुबेदी"
+			"हिमाल सुबेदी",
+			"पर्वत सुबेदी"
 		]
 	},
-	"mwe-embedplayer-download": "डाउनलोड गरिएकाे"
+	"mwe-embedplayer-download": "डाउनलोड गरिएकाे",
+	"mwe-embedplayer-choose_player": "श्रब्य दृश्य प्रवाहक चयन गर्नुहाेस्"
 }

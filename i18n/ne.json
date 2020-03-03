@@ -24,5 +24,6 @@
 	"timedmedia-source-file-desc": "मूल $1 फाईल, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "मूल $1 फाईल ($2)",
 	"timedmedia-subtitle-new-go": "जाने",
-	"timedmedia-file": "फाइल"
+	"timedmedia-file": "फाइल",
+	"beta-feature-timedmediahandler-message-videojs": "नयाँ श्रब्य दृश्य प्रवाहक"
 }
