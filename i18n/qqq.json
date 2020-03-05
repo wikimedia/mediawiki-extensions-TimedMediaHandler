@@ -180,7 +180,6 @@
 	"timedmedia-subtitle-no-subtitles": "Parameters:\n* $1 is a language name.",
 	"timedmedia-subtitle-remote": "Used as page title. Parameters:\n* $1 - the display name of the repository\nThe page body for this page title is:\n* {{msg-mw|timedmedia-subtitle-remote-link}}",
 	"timedmedia-subtitle-remote-link": "Used as page body. Parameters:\n* $1 - the description URL of the file\n* $2 - the display name of the repository\nThe page title for this message is:\n* {{msg-mw|timedmedia-subtitle-remote}}",
-	"timedmediahandler": "{{doc-special|TimedMediaHandler}}",
 	"timedmedia-derivative-state-transcodes": "Number of transcodes. Parameters:\n* $1 - number of transcodes",
 	"timedmedia-derivative-state-active": "currently active transcodes\nParameters are:\n* $1 number of transcodes",
 	"timedmedia-derivative-state-queued": "queued transcode jobs\nParameters are:\n* $1 number of transcodes",
@@ -202,5 +201,6 @@
 	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end.",
 	"orphanedtimedtext-notimedtext": "Shown on Special:OrphanedTimedText if the TimedText namespace is disabled on that wiki (i.e. $wgEnableLocalTimedText is set to false). Note, do not use <nowiki>{{ns:TimedText}}</nowiki> in this message.",
 	"videojs-more-information": "Used as tooltip for more information button in video.js toolbar",
-	"videojs-quality": "Used as tooltip for resolution selector in video.js toolbar"
+	"videojs-quality": "Used as tooltip for resolution selector in video.js toolbar",
+	"transcodestatistics": "{{doc-special|TranscodeStatistics}}"
 }

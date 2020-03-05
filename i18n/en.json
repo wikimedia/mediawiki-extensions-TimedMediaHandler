@@ -162,7 +162,6 @@
 	"timedmedia-subtitle-no-subtitles": "There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them.",
 	"timedmedia-subtitle-remote": "Timed text for this file is hosted on $1",
 	"timedmedia-subtitle-remote-link": "You can [$1 view the description page] for this file on $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcode|$1 transcodes}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 running transcode|$1 running transcodes}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 queued transcode|$1 queued transcodes}}",
@@ -184,5 +183,6 @@
 	"orphanedtimedtext-unsupported": "This special page is only supported on MySQL databases.",
 	"orphanedtimedtext-notimedtext": "TimedText is not enabled on this wiki.",
 	"videojs-more-information": "More information",
-	"videojs-quality": "Video quality"
+	"videojs-quality": "Video quality",
+	"transcodestatistics": "Transcode statistics"
 }
