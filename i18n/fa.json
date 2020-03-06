@@ -120,7 +120,6 @@
 	"timedmedia-subtitle-no-subtitles": "در حال حاضر زیرنویسی برای $1 در این ویدئو وجود ندارد، می‌توانید این صفحه را برای افزودن آن‌ها [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش کنید].",
 	"timedmedia-subtitle-remote": "متن زمان‌دار برای پرونده ذخیره شده در $1",
 	"timedmedia-subtitle-remote-link": "شما می توانید [$1 توضیحات صفحه مشاهده کنید] برای این پرونده در $2",
-	"timedmediahandler": "هدایت‌کننده رسانهٔ زمان‌دار",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 فراکدها|$1 فراکدها}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 درحال اجرای فراکدها|$1 در حال اجرای فراکدها}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 صف فراکدها|$1 صف فراکدها}}",

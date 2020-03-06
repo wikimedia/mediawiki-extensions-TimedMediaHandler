@@ -149,7 +149,6 @@
 	"timedmedia-subtitle-no-subtitles": "Hiện không có phụ đề nào bằng $1 cho video này. Bạn có thể [{{fullurl:{{FULLPAGENAME}}|action=edit}} sửa đổi trang này] để thêm phụ đề.",
 	"timedmedia-subtitle-remote": "Phụ đề của tập tin này được đặt tại $1",
 	"timedmedia-subtitle-remote-link": "Bạn có thể [$1 xem trang miêu tả] tập tin này trên $2",
-	"timedmediahandler": "Bộ xử lý phụ đề",
 	"timedmedia-derivative-state-transcodes": "$1 tập tin chuyển mã",
 	"timedmedia-derivative-state-active": "$1 tập tin đang chuyển mã",
 	"timedmedia-derivative-state-queued": "$1 tập tin chuyển mã trong hàng đợi",

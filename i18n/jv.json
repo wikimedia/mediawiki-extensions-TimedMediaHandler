@@ -54,7 +54,6 @@
 	"timedmedia-subtitle-language": "Subjudhul $1 ($2)",
 	"timedmedia-subtitle-no-video": "Ora ana vidio sing cocok karo kaca subjudhul saiki",
 	"timedmedia-subtitle-no-subtitles": "Sawetara durung ana subjudhul nèng $1 kanggo vidio iki, panjenengan bisa [{{fullurl:{{FULLPAGENAME}}|action=edit}} nyunting kaca iki] kanggo nambahi",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodhé|$1 transkodhé}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transkodhé lumangsung|$1 transkodhé lumangsung}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodhé ngantri|$1 transkodhé ngantri}}",

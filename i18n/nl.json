@@ -112,7 +112,6 @@
 	"timedmedia-subtitle-no-subtitles": "Er zijn op het moment geen ondertitels in het $1 voor deze video. U kunt [{{fullurl:{{FULLPAGENAME}}|action=edit}} deze pagina bewerken] om ze toe te voegen",
 	"timedmedia-subtitle-remote": "De ondertitels voor dit bestand komen van $1",
 	"timedmedia-subtitle-remote-link": "U kunt de [$1 beschrijvingspagina voor dit bestand] bekijken op $2",
-	"timedmediahandler": "Timed Media Handler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|één transcodering|$1 transcoderingen}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|één lopende transcodering|$1 lopende transcoderingen}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|één transcodering|$1 transcoderingen}} in de wachtrij",

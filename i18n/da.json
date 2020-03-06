@@ -90,7 +90,6 @@
 	"timedmedia-subtitle-no-subtitles": "Der er i øjeblikket ingen undertekster i $1 denne video du kan [{{fullurl: {{FULLPAGENAME}} |action = Rediger}} redigere denne side] for at tilføje dem",
 	"timedmedia-subtitle-remote": "Tidsbestemte tekst for denne fil er placeret på $1",
 	"timedmedia-subtitle-remote-link": "Du kan [$1 se beskrivelses siden] til denne fil på $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkode|$1 transkoder}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 kørende transcode|$1 kørende transcodes}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkode i kø|$1 transkoder i kø}}",

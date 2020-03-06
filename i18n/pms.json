@@ -76,7 +76,6 @@
 	"timedmedia-subtitle-no-subtitles": "A-i é al moment gnun sot-tìtoj an $1 për ës filmà, a peul [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifiché costa pàgina] për gionteje",
 	"timedmedia-subtitle-remote": "Ël test previst për cost archivi a l'é ospità dzor $1",
 	"timedmedia-subtitle-remote-link": "A peul [$1 vëdde la pàgina ëd descrission] ëd s'archivi dzor $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 trascodìfica|$1 trascodìfiche}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 trascodìfica|$1 trascodìfiche}} an esecussion",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 trascodìfica|$1 trascodìfiche}} an coa",

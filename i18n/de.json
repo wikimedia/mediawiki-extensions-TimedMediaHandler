@@ -134,7 +134,6 @@
 	"timedmedia-subtitle-no-subtitles": "Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.",
 	"timedmedia-subtitle-remote": "timedText für diese Datei befindet sich auf $1",
 	"timedmedia-subtitle-remote-link": "Du kannst [$1 die Beschreibungsseite] für diese Datei auf $2 ansehen",
-	"timedmediahandler": "Steuerungsprogramm für zeitgesteuerte Medien",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|Eine laufende Umschlüsselung|$1 laufende Umschlüsselungen}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|Eine Umschlüsselung|$1 Umschlüsselungen}} in der Warteschlange",
@@ -156,5 +155,6 @@
 	"orphanedtimedtext-unsupported": "Diese Spezialseite wird nur auf MySQL-Datenbanken unterstützt.",
 	"orphanedtimedtext-notimedtext": "TimedText ist auf diesem Wiki nicht aktiviert.",
 	"videojs-more-information": "Weitere Informationen",
-	"videojs-quality": "Videoqualität"
+	"videojs-quality": "Videoqualität",
+	"transcodestatistics": "Transkodierungs-Statistiken"
 }

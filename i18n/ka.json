@@ -78,7 +78,6 @@
 	"timedmedia-subtitle-no-subtitles": "ამჟამად $1 სუბტიტრები ამ ვიდეოსათვის არ არის, თქვენ შეგიძლიათ [{{fullurl:{{FULLPAGENAME}}|action=edit}} შეცვალოთ ეს გვერდი] მათ დასამატებლად",
 	"timedmedia-subtitle-remote": "ამ ფაილის დროებითი ტექსტი განთავსებულია $1-ზე",
 	"timedmedia-subtitle-remote-link": "თქვენ შეგიძლიათ [$1 იხილოთ ამ ფაილის აღწერის გვერდი] $2-ზე",
-	"timedmediahandler": "დროული მედია მართვის პროგრამა",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 დეკოდირებული|$1 დეკოდირებული}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|მიმდინარეობს $1 დეკოდირება|მიმდინარეობს $1 დეკოდირება}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|რიგშია $1 დეკოდირება|რიგშია $1 დეკოდირება}}",

@@ -115,7 +115,6 @@
 	"timedmedia-subtitle-no-subtitles": "Anguaño nun hai subtítulos en $1 pa esti videu, pue [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] p'amestalos",
 	"timedmedia-subtitle-remote": "El testu cronometráu d'esti ficheru ta agospiáu en $1",
 	"timedmedia-subtitle-remote-link": "Pue [$1 ver la páxina de descripción] d'esti ficheru en $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 trescodificación|$1 trescodificaciones}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 trescodificación activa|$1 trescodificaciones actives}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 trescodificación|$1 trescodificaciones}} na cola",

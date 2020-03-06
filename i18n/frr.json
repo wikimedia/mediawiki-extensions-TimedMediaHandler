@@ -5,6 +5,5 @@
 		]
 	},
 	"timedmedia-source-file": "$1-kwel",
-	"timedmedia-source-audio-file-desc": "Originaal $1-datei ($2)",
-	"timedmediahandler": "Timed Media Handler"
+	"timedmedia-source-audio-file-desc": "Originaal $1-datei ($2)"
 }

@@ -92,7 +92,6 @@
 	"timedmedia-subtitle-no-subtitles": "現在、この動画には$1の字幕はありませんが、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを編集]して追加できます。",
 	"timedmedia-subtitle-remote": "このファイルの字幕は$1でホストされています",
 	"timedmedia-subtitle-remote-link": "$2 でこのファイルの[$1 解説ページを閲覧]できます",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-file": "ファイル",
 	"beta-feature-timedmediahandler-description-videojs": "さっぱりとした見た目とモバイル端末との親和性を兼ねた最新のプレイヤーで動画ファイルを見る。",
 	"action-transcode-reset": "トランスコードのリセット",

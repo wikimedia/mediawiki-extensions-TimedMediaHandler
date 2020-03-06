@@ -70,7 +70,6 @@
 	"timedmedia-subtitle-no-subtitles": "Nó ghe xe al momento sototitołi in $1 par sto video, xe posibiłe [{{fullurl:{{FULLPAGENAME}}|action=edit}} canbiar sta pàjina] par xontarli",
 	"timedmedia-subtitle-remote": "I sototitołi par sto file i se cata so $1",
 	"timedmedia-subtitle-remote-link": "Te poi vardar ła [$1 pàjina de descrision] par sto file so $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodifega|$1 transcodifeghe}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodifega|$1 transcodifeghe}} in execusion",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodifega|$1 transcodifeghe}} in coa",

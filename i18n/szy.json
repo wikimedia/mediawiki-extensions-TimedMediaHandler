@@ -84,7 +84,6 @@
 	"timedmedia-subtitle-no-subtitles": "tina iga inayi’ $1 a saazih a sulit ayza, kapah kisu [{{fullurl:{{FULLPAGENAME}}|action=edit}} mikawaway-kalumyiti uyni a kasabelih] amicunus saazih a sulit",
 	"timedmedia-subtitle-remote": "tina tangan a saazih a sulit itiza i $1",
 	"timedmedia-subtitle-remote-link": "kapah kisu i $2 ciwsace tina tangan a [$1 sapuelac kasabelih]",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 nikasumad-mima a kawaw}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 imahini mitekaay a cwanma kawaw}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 i salaylaya cwanma kawaw}}",

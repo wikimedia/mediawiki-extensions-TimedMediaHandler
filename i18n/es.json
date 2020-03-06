@@ -130,7 +130,6 @@
 	"timedmedia-subtitle-no-subtitles": "Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos",
 	"timedmedia-subtitle-remote": "El texto programado para este archivo está alojado en $1",
 	"timedmedia-subtitle-remote-link": "Puedes [$1 ver la página de descripción] de este archivo en $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodificación activa|$1 transcodificaciones activas}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificación|$1 transcodificaciones}} en la cola",

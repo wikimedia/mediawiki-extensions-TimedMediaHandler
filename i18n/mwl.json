@@ -7,6 +7,5 @@
 	},
 	"timedmedia-source-file": "Fuonte $1",
 	"timedmedia-source-audio-file-desc": "Fexeiro $1 oureginal ($2)",
-	"timedmedia-subtitle-language": "Lhegendas an $1 ($2)",
-	"timedmediahandler": "TimedMediaHandler"
+	"timedmedia-subtitle-language": "Lhegendas an $1 ($2)"
 }

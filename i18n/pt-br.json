@@ -167,7 +167,6 @@
 	"timedmedia-subtitle-no-subtitles": "Atualmente não há legendas em $1 para este vídeo, você pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta página] para adicioná-las.",
 	"timedmedia-subtitle-remote": "O texto temporizado para este arquivo está hospedado em $1",
 	"timedmedia-subtitle-remote-link": "Você pode [$1 visualizar a página de descrição] para este arquivo em $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodificação|$1 transcodificações}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 executando a transcodificação|$1 executando as transcodificações}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificação |$1 transcodificações}} na fila",
@@ -189,5 +188,6 @@
 	"orphanedtimedtext-unsupported": "Esta página especial só é suportada em bancos de dados MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText não está habilitado nesta wiki.",
 	"videojs-more-information": "Mais informações",
-	"videojs-quality": "Qualidade de vídeo"
+	"videojs-quality": "Qualidade de vídeo",
+	"transcodestatistics": "Estatísticas de transcodificação"
 }

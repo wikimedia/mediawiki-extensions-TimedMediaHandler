@@ -84,7 +84,6 @@
 	"timedmedia-subtitle-no-video": "Ағымдағы биттең субтитрҙарына бәйле видео юҡ.",
 	"timedmedia-subtitle-remote": "Был файл өсөн субтитрҙар $1-ҙә урынлашҡан",
 	"timedmedia-subtitle-remote-link": "$2-лә  [$1 һүрәтләү битен ҡарарға] файлын ҡарай алаһығыҙ.",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 декодировка|$1 декодировкалар}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1сираттағы декодировка|$1 сираттағы декодировкалар}}",
 	"timedmedia-no-derivatives": "Транскодировка талап ителә.",

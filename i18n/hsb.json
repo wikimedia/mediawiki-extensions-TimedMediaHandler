@@ -70,7 +70,6 @@
 	"timedmedia-subtitle-no-subtitles": "Tuchwilu podtitule w $1 zu tute widejo njejsu, móžeš [{{fullurl:{{FULLPAGENAME}}|action=edit}} tutu stronu wobdźěłać], zo by je přidał",
 	"timedmedia-subtitle-remote": "timedText za tutu dataju je na $1",
 	"timedmedia-subtitle-remote-link": "Móžeš sej [$1 wopisansku stronu] za tutu dataja na $2 wobhladać",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 překodowanje|$1 překodowani|$1 překodowanja|$1 překodowanjow}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 běžne překodowanje|$1 běžnej překodowani|$1 běžne překodowanja|$1 běžnych překodowanjow}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 překodowanje|$1 překodowani|$1 překodowanja|$1 překodowanjow}} w čakanskim rynku",

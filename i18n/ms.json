@@ -77,7 +77,6 @@
 	"timedmedia-subtitle-no-subtitles": "Sekarang, tiada sari kata dalam $1 bagi video ini; anda boleh [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting halaman ini] untuk menambahkannya",
 	"timedmedia-subtitle-remote": "Teks termasa untuk fail ini dihoskan di $1",
 	"timedmedia-subtitle-remote-link": "Anda boleh [$1 membaca halaman keterangan] untuk fail ini di $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "$1 transkod",
 	"timedmedia-derivative-state-active": "$1 transkod aktif",
 	"timedmedia-derivative-state-queued": "$1 transkod berbaris",

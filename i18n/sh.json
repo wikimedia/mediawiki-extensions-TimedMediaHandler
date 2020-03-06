@@ -83,7 +83,6 @@
 	"timedmedia-subtitle-no-video": "Nema video-snimaka povezanih sa tekućom stranicom s titlovima",
 	"timedmedia-subtitle-no-subtitles": "Trenutno nema $1 titlova za ovaj video-snimak. Možete da ih dodate tako što ćete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti stranicu]",
 	"timedmedia-subtitle-remote-link": "Možete [$1 vidjeti stranicu s opisom] datoteke na $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-no-derivatives": "Nije potrebno prekodiranje.",
 	"timedmedia-file": "Datoteka",
 	"beta-feature-timedmediahandler-description-videojs": "Gledajte videozapise u savremenom reproduktoru preuređenog izgleda uz bolju kompatibilnost s mobilnim uređajima.",

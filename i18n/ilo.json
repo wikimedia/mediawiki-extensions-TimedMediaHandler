@@ -73,7 +73,6 @@
 	"timedmedia-subtitle-no-subtitles": "Awan dagiti agdama asubtitulo iti $1 para iti daytoy a video, mabalinmo ti [{{fullurl:{{FULLPAGENAME}}|action=edit}} agurnods ti daytoy a panid] tapno makanayonka kaniada",
 	"timedmedia-subtitle-remote": "Ti naorasan a teksto para iti daytoy a papeles ket naisangaili idiay $1",
 	"timedmedia-subtitle-remote-link": "Mabalinmo a [$1 kitaen ti deskripsion ti panid] para iti daytoy a papeles idiay $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 a transkodigo|dagiti $1 a transkodigo}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 nga agtartaray a transkodigo|dagiti $1 nga agtartaray a transkodigo}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 a naiyur-uray a transkodigo|dagiti $1 a naiyur-uray a transkodigo}}",

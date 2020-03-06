@@ -77,5 +77,6 @@
 	"timedmedia-file": "Fichier",
 	"orphanedtimedtext-unsupported": "Dës Spezialsäit funktionéiert nëmme mat MySQL Datebanken.",
 	"orphanedtimedtext-notimedtext": "TimedText ass op dëser Wiki net aktivéiert.",
-	"videojs-more-information": "Méi Informatiounen"
+	"videojs-more-information": "Méi Informatiounen",
+	"transcodestatistics": "TRanscode-Statistiken"
 }

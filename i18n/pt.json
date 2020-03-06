@@ -123,7 +123,6 @@
 	"timedmedia-subtitle-no-subtitles": "Neste momento não existem legendas em $1 para este vídeo. Pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar a página] e adicioná-las.",
 	"timedmedia-subtitle-remote": "A legenda para este ficheiro está alojada em $1",
 	"timedmedia-subtitle-remote-link": "Pode [$1 ver a página de descrição] para este ficheiro em $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodificação|$1 transcodificações}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodificação em andamento|$1 transcodificações em andamento}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificação em espera|$1 transcodificações em espera}}",

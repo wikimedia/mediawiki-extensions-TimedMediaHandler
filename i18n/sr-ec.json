@@ -105,7 +105,6 @@
 	"timedmedia-subtitle-no-subtitles": "Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]",
 	"timedmedia-subtitle-remote": "Временски текст за ову датотеку хостује се на $1",
 	"timedmedia-subtitle-remote-link": "Можете [$1 погледати страницу са описом] за ову датотеку на $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-no-derivatives": "Нема других формата.",
 	"timedmedia-file": "Датотека",
 	"beta-feature-timedmediahandler-message-videojs": "Нови видео-плејер",

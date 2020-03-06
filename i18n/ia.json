@@ -109,7 +109,6 @@
 	"timedmedia-subtitle-no-subtitles": "Il ha actualmente nulle subtitulos in $1 pro iste video. Tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina] pro adder los.",
 	"timedmedia-subtitle-remote": "Le subtitulos pro iste file es albergate sur $1",
 	"timedmedia-subtitle-remote-link": "Tu pote [$1 vider le pagina de description] pro iste file sur $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodification|$1 transcodificationes}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodification|$1 transcodificationes}} active",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodification|$1 transcodificationes}} in cauda",

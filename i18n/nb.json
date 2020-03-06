@@ -119,7 +119,6 @@
 	"timedmedia-subtitle-no-subtitles": "Det er for øyeblikket ingen undertekster på $1 for denne videoen. Du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere denne siden] for å legge de til",
 	"timedmedia-subtitle-remote": "Undertekster (timed text) for denne filen befinner seg på $1",
 	"timedmedia-subtitle-remote-link": "Du kan [$1 vise beskrivelsessiden] for denne filen på $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 omkoding|$1 omkodinger}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 pågående omkoding|$1 pågående omkodinger}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 omkoding|$1 omkodinger}} i kø",

@@ -132,7 +132,6 @@
 	"timedmedia-subtitle-no-subtitles": "В настоящее время нет субтитров на $1 для этого видео, Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} изменить эту страницу] для их добавления",
 	"timedmedia-subtitle-remote": "Субтитры для этого файла размещены на $1",
 	"timedmedia-subtitle-remote-link": "Вы можете [$1 посмотреть страницу описания] этого файла на $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 декодирование|$1 декодирования|$1 декодирований}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 запущенное декодирование|$1 запущенных декодирования|$1 запущенных декодирований}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 поставленное в очередь декодирование|$1 поставленных в очередь декодирования|$1 поставленных в очередь декодирований}}",

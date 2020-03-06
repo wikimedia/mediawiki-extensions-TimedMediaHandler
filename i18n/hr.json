@@ -78,7 +78,6 @@
 	"timedmedia-subtitle-language": "$1 ($2) podnaslovi",
 	"timedmedia-subtitle-no-video": "Nema video zapisa povezanog s trenutačnom stranicom podnapisa.",
 	"timedmedia-subtitle-no-subtitles": "Ne postoje podnaslovi u $1 za ovaj video zapis. Da biste ih dodali možete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti ovu stranicu].",
-	"timedmediahandler": "Upravljački program za prikazivanje medija u vremenskim odsječcima i s titlovima – TimedMediaHandler",
 	"timedmedia-file": "Datoteka",
 	"beta-feature-timedmediahandler-message-videojs": "Novi reproduktor video zapisa",
 	"beta-feature-timedmediahandler-description-videojs": "Gledajte video datoteke u modernom reproduktoru modernog izgleda i kompatibilnog s mobilnim uređajima.",

@@ -93,7 +93,6 @@
 	"timedmedia-subtitle-no-subtitles": "Nun ce stanno mò sottotitule dint'a $1 pe' stu video, putite [{{fullurl:{{FULLPAGENAME}}|action=cagnà}} 'a paggena] pe' putè azzeccà chiste.",
 	"timedmedia-subtitle-remote": "'O testo temporizzate pe' stu file fuje ospitato ncopp'a $1",
 	"timedmedia-subtitle-remote-link": "Putite [$1 vedé 'a paggena 'e descrizione] 'e stu file ncopp'a $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in esecuzzione",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coda",

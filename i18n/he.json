@@ -118,7 +118,6 @@
 	"timedmedia-subtitle-no-subtitles": "אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן",
 	"timedmedia-subtitle-remote": "טקסט מתוזמן עבור קובץ זה מאוחסן ב{{GRAMMAR:תחילית|$1}}",
 	"timedmedia-subtitle-remote-link": "אפשר [$1 להציג את דף התיאור] של הקובץ הזה בדף $2",
-	"timedmediahandler": "מדיה מתוזמנת",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|המרה משנית אחת|$1 המרות משניות}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|המרה משנית אחת רצה|$1 המרות משניות רצות}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|המרה משנית אחת בתור|$1 המרות משניות בתור}}",

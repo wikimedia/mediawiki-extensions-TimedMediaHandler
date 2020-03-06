@@ -130,7 +130,6 @@
 	"timedmedia-subtitle-no-subtitles": "لا توجد نصوص أو ترجمات في  $1 لهذا الفيديو، يمكنك [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة] وإضافتهم.",
 	"timedmedia-subtitle-remote": "Timed text لهذا الملف مستضاف على $1",
 	"timedmedia-subtitle-remote-link": "يمكنك [$1 مطالعة صفحة الوصف] لهذا الملف على $2",
-	"timedmediahandler": "معالج الميديا الزمنية",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 تكويد|$1 تكويدات}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 تكويد يعمل|$1 تكويدات تعمل}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 تكويد قيد الانتظار|$1 تكويدات قيد الانتظار}}",

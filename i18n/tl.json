@@ -82,7 +82,6 @@
 	"timedmedia-subtitle-language": "$1 ($2) kabahaging mga pamagat",
 	"timedmedia-subtitle-no-video": "Walang bidyo na may kaugnayan sa pangkasalukuyang pahina ng kabahaging pamagat",
 	"timedmedia-subtitle-no-subtitles": "Kasalukuyang walang mga kabahaging pamagat sa loob ng $1 para sa bidyong ito, maaari mong [{{fullurl:{{FULLPAGENAME}}|action=edit}} baguhin ang pahinang ito] upang maidagdag ang mga ito",
-	"timedmediahandler": "Inoorasang Panghawak ng Midya",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodigo|$1 mga transkodigo}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 tumatakbong transkodigo|$1 tumatakbong mga transkodigo}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 nakapilang transkodigo|$1 nakapilang mga transkodigo}}",

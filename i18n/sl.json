@@ -81,7 +81,6 @@
 	"timedmedia-subtitle-no-subtitles": "V jeziku $1 trenutno ni nobenih podnapisov za ta video; stran lahko [{{fullurl:{{FULLPAGENAME}}|action=edit}} odprete za urejanje] in jih dodate.",
 	"timedmedia-subtitle-remote": "Časovno besedilo datoteke gostuje na $1",
 	"timedmedia-subtitle-remote-link": "[$1 Ogledate si lahko opisno stran] datoteke na $2",
-	"timedmediahandler": "Upravljavec časovne predstavnosti",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|eno prekodiranje|dve prekodiranji|$1 prekodiranja|$1 prekodiranj}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|eno tekoče prekodiranje|dve tekoči prekodiranji|$1 prekodiranja|$1 prekodiranj}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|eno čakajoče prekodiranje|dve čakajoči prekodiranji|$1 čakajoča prekodiranja|$1 čakajočih prekodiranj}}",

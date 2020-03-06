@@ -65,7 +65,6 @@
 	"timedmedia-derivative-desc-720p.mp4": "MP4 HD-дикаллица (720P)",
 	"timedmedia-subtitle-new-go": "Кхочушдé",
 	"timedmedia-subtitle-language": "$1 ($2) субтитраш",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 юху кодяр}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 юху кодяр доладалийтар}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 юху кодяран рогӀехь ю}}",

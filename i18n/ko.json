@@ -126,7 +126,6 @@
 	"timedmedia-subtitle-no-subtitles": "현재 이 동영상에 대한 $1에 자막이 없습니다, 추가하려면 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 이 문서를 편집할] 수 있습니다.",
 	"timedmedia-subtitle-remote": "이 파일에 대한 자막은 $1에 호스트했습니다",
 	"timedmedia-subtitle-remote-link": "$2에 이 파일에 대한 [$1 설명 문서를 볼] 수 있습니다",
-	"timedmediahandler": "자막미디어핸들러",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|코드 변환 $1개}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|실행 중인 코드 변환 $1개}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|대기 중인 코드 변환 $1개}}",

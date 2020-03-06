@@ -69,7 +69,6 @@
 	"timedmedia-subtitle-no-subtitles": "ବର୍ତମାନ $1ରେ ଏହି ଭିଡିଓ ପାଇଁ କୌଣସି ସବଟାଇଟଲ ନାହିଁ, ଆପଣ [{{fullurl:{{FULLPAGENAME}}|action=edit}} ବଦଳାଇ] ଏହାକୁ ଯୋଡି ପାରିବେ",
 	"timedmedia-subtitle-remote": "ଏହି ଫାଇଲ ପାଇଁ ସାମୟିକ ଲେଖାଗୁଡିକ $1ରେ ଅଛି",
 	"timedmedia-subtitle-remote-link": "ଆପଣ $2ରେ ଥିବା ଏହି ଫାଇଲ ପାଇଁ [$1 ବିବରଣୀ ପୃଷ୍ଠା ଦେଖିପାରିବେ]",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 ଟ୍ରାନ୍ସକୋଡ|$1 ଟ୍ରାନ୍ସକୋଡଗୁଡିକ}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 ଚାଲୁଥିବା ଟ୍ରାନ୍ସକୋଡ|$1 ଚାଲୁଥିବା ଟ୍ରାନ୍ସକୋଡଗୁଡିକ}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 ଧାଡିରେ ଥିବା ଟ୍ରାନ୍ସକୋଡ|$1 ଧାଡିରେ ଥିବା ଟ୍ରାନ୍ସକୋଡଗୁଡିକ}}",

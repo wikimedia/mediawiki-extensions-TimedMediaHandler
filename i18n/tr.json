@@ -126,7 +126,6 @@
 	"timedmedia-subtitle-no-subtitles": "Şu anda bu video için $1 içinde altyazı yok, eklemek için [{{fullurl:{{FULLPAGENAME}}|action=edit}} bu sayfayı düzenleyebilirsiniz].",
 	"timedmedia-subtitle-remote": "Bu dosya için zamanlanmış metin $1 üzerinde barındırılıyor",
 	"timedmedia-subtitle-remote-link": "Bu dosya için $2 üzerinden [$1 açıklama sayfasını görüntüleyebilir]",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkod|$1 transkod}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 çalışan transkod|$1 çalışan transkod}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 kuyruğa alınmış kod dönüşümü|$1 kuyruğa alınmış kod dönüşümü}}",
@@ -148,5 +147,6 @@
 	"orphanedtimedtext-unsupported": "Bu özel sayfa yalnızca MySQL veritabanlarında desteklenir.",
 	"orphanedtimedtext-notimedtext": "Bu wikide TimedText etkinleştirilmedi.",
 	"videojs-more-information": "Daha fazla bilgi",
-	"videojs-quality": "Video kalitesi"
+	"videojs-quality": "Video kalitesi",
+	"transcodestatistics": "Kod dönüştürme istatistikleri"
 }

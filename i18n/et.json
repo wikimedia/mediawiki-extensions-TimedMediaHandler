@@ -107,7 +107,6 @@
 	"timedmedia-subtitle-no-subtitles": "Selle video alltiitrid puuduvad praegu selles keeles ($1). Saad seda lehekülge [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigeerida], et need lisada.",
 	"timedmedia-subtitle-remote": "Selle faili ajastatud tekst on hoidlas $1",
 	"timedmedia-subtitle-remote-link": "Selle faili [$1 kirjelduslehekülge] saad vaadata hoidlas $2.",
-	"timedmediahandler": "Ajastatud meediumifailide töötleja",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|Üks ümberkodeering|$1 ümberkodeeringut}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|Üks|$1}} täitmisel {{PLURAL:$1|ümberkodeering|ümberkodeeringut}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|Üks|$1}} ootel {{PLURAL:$1|ümberkodeering|ümberkodeeringut}}",

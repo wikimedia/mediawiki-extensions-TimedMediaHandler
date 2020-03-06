@@ -127,7 +127,6 @@
 	"timedmedia-subtitle-no-subtitles": "Det finns för närvarande ingen textning på $1 för denna video, du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida] för att lägga till dem",
 	"timedmedia-subtitle-remote": "Undertexter (timed text) för denna fil finns på $1",
 	"timedmedia-subtitle-remote-link": "Du kan [$1 visa beskrivningssidan] för denna fil på $2",
-	"timedmediahandler": "TimedMediaHandler",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodning|$1 transkodningar}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 aktiv transkodning|$1 aktiva transkodningar}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 köad transkodning|$1 köade transkodningar}}",

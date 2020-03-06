@@ -113,7 +113,6 @@
 	"timedmedia-subtitle-no-subtitles": "Non ge stonne sottotitole pe mò jndr'à $1 pe stu video, tu puè [{{fullurl:{{FULLPAGENAME}}|action=edit}} cangià sta pàgene] o aggiungerle",
 	"timedmedia-subtitle-remote": "'U teste temborizzate pe stu file jè ospitate sus a $1",
 	"timedmedia-subtitle-remote-link": "Tu puè [$1 'ndrucà 'a pàgene de descrizione] pe stu file sus a $2",
-	"timedmediahandler": "Gestore TimedMedia",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodifiche}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodifiche in esecuzione}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodifiche in code}}",
