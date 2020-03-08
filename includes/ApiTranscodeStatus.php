@@ -7,6 +7,8 @@
  * on the image page.
  */
 
+use MediaWiki\MediaWikiServices;
+
 class ApiTranscodeStatus extends ApiQueryBase {
 	public function execute() {
 		$pageIds = $this->getPageSet()->getAllTitlesByNamespace();
@@ -16,7 +18,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 			asort( $titles ); // Ensure the order is always the same
 
 			$result = $this->getResult();
-			$images = RepoGroup::singleton()->findFiles( $titles );
+			$images = MediaWikiServices::getInstance()->getRepoGroup()->findFiles( $titles );
 			/**
 			 * @var $img File
 			 */

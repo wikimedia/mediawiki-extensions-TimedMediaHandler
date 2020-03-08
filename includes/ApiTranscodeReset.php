@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Allows users with the 'transcode-reset' right to reset / re-run a transcode job.
  *
@@ -52,7 +54,7 @@ class ApiTranscodeReset extends ApiBase {
 
 		// Don't reset if less than 1 hour has passed and we have no error )
 		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-		$file = wfFindFile( $titleObj );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
 		if ( $timeSinceLastReset < $wgWaitTimeForTranscodeReset ) {
 			$msg = wfMessage(

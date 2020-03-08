@@ -9,6 +9,8 @@
  *
  */
 
+use MediaWiki\MediaWikiServices;
+
 class TimedMediaIframeOutput {
 	/**
 	 * The iframe hook check file pages embedplayer=yes
@@ -52,7 +54,7 @@ class TimedMediaIframeOutput {
 		}
 
 		// Setup the render parm
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		if ( !$file ) {
 			// file was removed, show wiki page with warning
 			return false;

@@ -230,7 +230,8 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 			}
 			$filesToLookFor[] = [ 'title' => $fileTitle, 'ignoreRedirect' => true ];
 		}
-		$this->existingFiles = RepoGroup::singleton()->getLocalRepo()->findFiles( $filesToLookFor );
+		$this->existingFiles = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+			->findFiles( $filesToLookFor );
 		$res->seek( 0 );
 	}
 

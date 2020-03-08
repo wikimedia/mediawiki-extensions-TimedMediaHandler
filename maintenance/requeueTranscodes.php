@@ -8,6 +8,8 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\MediaWikiServices;
+
 class RequeueTranscodes extends Maintenance {
 
 	public function __construct() {
@@ -67,9 +69,10 @@ class RequeueTranscodes extends Maintenance {
 		}
 		$opts = [ 'ORDER BY' => 'img_media_type,img_name' ];
 		$res = $dbr->select( 'image', [ 'img_name' ], $where, __METHOD__, $opts );
+		$localRepo = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo();
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );
-			$file = wfLocalFile( $title );
+			$file = $localRepo->newFile( $title );
 			$handler = $file ? $file->getHandler() : null;
 			if ( $file && $handler && $handler instanceof TimedMediaHandler ) {
 				$this->output( $file->getName() . "\n" );

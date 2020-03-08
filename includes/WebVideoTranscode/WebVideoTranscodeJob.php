@@ -53,7 +53,8 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function getFile() {
 		if ( !$this->file ) {
-			$this->file = wfLocalFile( $this->title );
+			$this->file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+				->newFile( $this->title );
 		}
 		return $this->file;
 	}

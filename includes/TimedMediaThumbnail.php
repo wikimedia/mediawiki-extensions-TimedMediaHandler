@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 class TimedMediaThumbnail {
 
 	/**
@@ -186,8 +189,9 @@ class TimedMediaThumbnail {
 		if ( !$src ) {
 			return false;
 		}
+		$localRepo = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo();
 		$thumbFile = new UnregisteredLocalFile( $file->getTitle(),
-			RepoGroup::singleton()->getLocalRepo(), $src, false );
+			$localRepo, $src, false );
 		$thumbParams = [
 			"width" => $options['width'],
 			"height" => $options['height']

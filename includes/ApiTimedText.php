@@ -24,6 +24,8 @@
  * @since 1.33
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Implements the timedtext module that outputs subtitle files
  * for consumption by <track> elements
@@ -81,7 +83,7 @@ class ApiTimedText extends ApiBase {
 		if ( $ns != NS_FILE ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'invalidtitle' );
 		}
-		$file = wfFindFile( $page->getTitle() );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $page->getTitle() );
 		if ( !$file ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'timedtext-notfound' );
 		}
