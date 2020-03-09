@@ -26,7 +26,8 @@
 			"The RedBurn",
 			"Dgstranz",
 			"Thibaut120094",
-			"Pamputt"
+			"Pamputt",
+			"MichelotFlorent"
 		]
 	},
 	"timedmediahandler-desc": "Gestionnaire pour les vidéos, enregistrements sonores et textes synchronisés, avec prise en charge des formats WebM, Ogg Theora, Vorbis et srt",
@@ -171,5 +172,6 @@
 	"orphanedtimedtext-unsupported": "Cette page spéciale n’est prise en charge que sur les bases de données MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki.",
 	"videojs-more-information": "Plus d’informations",
-	"videojs-quality": "Qualité de vidéo"
+	"videojs-quality": "Qualité de vidéo",
+	"transcodestatistics": "Statistiques de transcodage"
 }

@@ -152,5 +152,6 @@
 	"orphanedtimedtext-unsupported": "Ця спеціальна сторінка підтримується лише базами даних MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText не увімкнений у цій вікі.",
 	"videojs-more-information": "Більше інформації",
-	"videojs-quality": "Якість відео"
+	"videojs-quality": "Якість відео",
+	"transcodestatistics": "Статистика транскодування"
 }

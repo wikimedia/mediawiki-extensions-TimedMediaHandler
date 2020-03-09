@@ -64,7 +64,7 @@
 	"mwe-embedplayer-ogg-player-h264Native": "Lecteur H.264 HTML5",
 	"mwe-embedplayer-ogg-player-webmNative": "Lecteur WebM HTML5",
 	"mwe-embedplayer-ogg-player-vp9Native": "Lecteur VP9 HTML5",
-	"mwe-embedplayer-ogg-player-oggPlugin": "Module générique Ogg",
+	"mwe-embedplayer-ogg-player-oggPlugin": "Greffon générique Ogg",
 	"mwe-embedplayer-ogg-player-vlcAppPlayer": "Application VLC pour iOS",
 	"mwe-embedplayer-ogg-player-IEWebMPrompt": "Téléchargeur de greffons WebM pour IE",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "Lecteur Ogg JavaScript",

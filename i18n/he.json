@@ -139,5 +139,6 @@
 	"orphanedtimedtext-unsupported": "הדף המיוחד הזה נתמך רק במסדי נתונים MySQL.",
 	"orphanedtimedtext-notimedtext": "ההרחבה TimedText אינה מופעלת בוויקי הזה.",
 	"videojs-more-information": "מידע נוסף",
-	"videojs-quality": "איכות הווידאו"
+	"videojs-quality": "איכות הווידאו",
+	"transcodestatistics": "סטטיסטיקת המרה משנית"
 }

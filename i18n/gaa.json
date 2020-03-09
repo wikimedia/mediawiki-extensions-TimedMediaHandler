@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Benebiankie"
+			"Benebiankie",
+			"Mybluberet"
 		]
 	},
-	"timedmedia-source-file": "$1 heni ejɛ"
+	"timedmedia-source-file": "$1 heni ejɛ",
+	"timedmedia-source-audio-file-desc": "Klɛŋklɛŋ $1 faili ($2)"
 }

@@ -4,7 +4,8 @@
 			"Framafan",
 			"Gomoko",
 			"Wladek92",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Urhixidur"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Obtenir l’état de transcodage pour une page de fichier donné.",
@@ -33,6 +34,6 @@
 	"apierror-timedmedia-badtranscodekey": "Clé de transcodage invalide ou inactive: $1",
 	"apierror-timedmedia-notenoughtimereset": "Il ne s’est pas écoulé assez de temps depuis la dernière réinitialisation de ce transcode. Il reste $1 pour que ce transcode puisse être réinitialisé.",
 	"apierror-timedmedia-lang-notfound": "Langue demandée non trouvée",
-	"apierror-timedmedia-no-timedtext-support": "Pas de support de TimedText",
+	"apierror-timedmedia-no-timedtext-support": "Pas de prise en charge de TimedText",
 	"apierror-timedmedia-notlocal": "Fichier non local"
 }
