@@ -175,5 +175,6 @@
 	"orphanedtimedtext-unsupported": "Оваа службена страница е поддржана само на MySQL-бази.",
 	"orphanedtimedtext-notimedtext": "Титловите не се овозможени на ова вики.",
 	"videojs-more-information": "Повеќе информации",
-	"videojs-quality": "Квалитет на снимката"
+	"videojs-quality": "Квалитет на снимката",
+	"transcodestatistics": "Статистика за прекодирања"
 }
