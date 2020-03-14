@@ -240,7 +240,7 @@ class TimedMediaHandlerHooks {
 		if ( $title->getNamespace() != NS_FILE ) {
 			return false;
 		}
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		return self::isTranscodableFile( $file );
 	}
 
@@ -293,7 +293,7 @@ class TimedMediaHandlerHooks {
 		if ( !$title->inNamespace( NS_FILE ) ) {
 			return false;
 		}
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		// Can't find file
 		if ( !$file ) {
 			return false;
@@ -312,7 +312,7 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function checkForTranscodeStatus( $article, &$html ) {
 		// load the file:
-		$file = wfFindFile( $article->getTitle() );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
 		if ( self::isTranscodableFile( $file ) ) {
 			$html .= TranscodeStatusTable::getHTML( $file );
 		}
@@ -350,7 +350,7 @@ class TimedMediaHandlerHooks {
 		if ( self::isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
-			$file = wfFindFile( $title );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
@@ -391,7 +391,7 @@ class TimedMediaHandlerHooks {
 		if ( $baseID !== false ) {
 			// Check if the article is a file and remove transcode files:
 			if ( $wikiPage->getTitle()->getNamespace() == NS_FILE ) {
-				$file = wfFindFile( $wikiPage->getTitle() );
+				$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
 				if ( self::isTranscodableFile( $file ) ) {
 					WebVideoTranscode::removeTranscodes( $file );
 					WebVideoTranscode::startJobQueue( $file );
@@ -411,7 +411,7 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function onArticlePurge( WikiPage $article ) {
 		if ( $article->getTitle()->getNamespace() == NS_FILE ) {
-			$file = wfFindFile( $article->getTitle() );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
