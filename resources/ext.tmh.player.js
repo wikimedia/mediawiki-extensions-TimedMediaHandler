@@ -54,6 +54,14 @@
 							// during a click event to work on Safari, especially for iOS.
 							if ( !mw.OgvJsSupport.canPlayNatively() ) {
 								mw.OgvJsSupport.initAudioContext();
+
+								// Safari autoplay breakage hack for native audio playback
+								// Must force a play during the user gesture on the element
+								// we will use.
+								if ( isAudio ) {
+									videoplayer.play();
+									videoplayer.pause();
+								}
 							}
 
 							currentlyPlaying = true;
