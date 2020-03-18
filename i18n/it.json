@@ -135,6 +135,7 @@
 	"right-transcode-reset": "Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.",
 	"right-transcode-status": "Visualizza [[Special:TimedMediaHandler|informazioni sull'attuale attività di transcodifica]]",
 	"action-transcode-status": "visualizzare l'attuale stato della transcodifica",
+	"log-name-timedmediahandler": "TimedMediaHandler",
 	"orphanedtimedtext": "Pagine sottotitoli orfane",
 	"orphanedtimedtext-summary": "Elenco di pagine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] che non hanno un file corrispondente.",
 	"orphanedtimedtext-unsupported": "Questa pagina speciale è supportata solo su database MySQL.",
