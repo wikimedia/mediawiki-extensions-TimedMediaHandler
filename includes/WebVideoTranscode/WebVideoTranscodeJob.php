@@ -419,7 +419,8 @@ class WebVideoTranscodeJob extends Job {
 		}
 		// Check for end time:
 		if ( isset( $options['endtime'] ) ) {
-			$cmd .= ' -t ' . intval( $options['endtime'] ) - intval( $options['starttime'] );
+			$duration = intval( $options['endtime'] ) - intval( $options['starttime'] );
+			$cmd .= ' -t ' . $duration;
 		}
 
 		if ( $pass == 1 || isset( $options['noaudio'] ) ) {
