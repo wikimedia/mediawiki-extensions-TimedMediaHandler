@@ -98,7 +98,7 @@ class WebMHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getWebType( $file ) {
 		$baseType = ( $file->getWidth() == 0 && $file->getHeight() == 0 ) ? 'audio' : 'video';
@@ -154,7 +154,7 @@ class WebMHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getShortDesc( $file ) {
 		global $wgLang;
@@ -169,7 +169,7 @@ class WebMHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getLongDesc( $file ) {
 		global $wgLang;

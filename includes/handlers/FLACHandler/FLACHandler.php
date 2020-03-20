@@ -14,7 +14,7 @@ class FLACHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getWebType( $file ) {
 		return 'audio/flac';
@@ -41,7 +41,7 @@ class FLACHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getShortDesc( $file ) {
 		global $wgLang;
@@ -56,7 +56,7 @@ class FLACHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getLongDesc( $file ) {
 		global $wgLang;

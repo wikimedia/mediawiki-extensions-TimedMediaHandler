@@ -181,7 +181,7 @@ class TimedTextPage extends Article {
 	/**
 	 * Gets the video HTML ( with the current language set as default )
 	 * @param string $videoTitle
-	 * @return String
+	 * @return string
 	 */
 	private function getVideoHTML( $videoTitle ) {
 		// Get the video embed:

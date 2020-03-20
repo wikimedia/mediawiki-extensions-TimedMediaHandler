@@ -475,8 +475,8 @@ class WebVideoTranscode {
 	 * Future versions might respect FileRepo::$abbrvThreshold.
 	 *
 	 * @param File $file
-	 * @param String $suffix Optional suffix (e.g. transcode key).
-	 * @return String File name, or the string transcode.
+	 * @param string $suffix Optional suffix (e.g. transcode key).
+	 * @return string File name, or the string transcode.
 	 */
 	public static function getTranscodeFileBaseName( $file, $suffix = '' ) {
 		$name = $file->getName();
@@ -710,7 +710,7 @@ class WebVideoTranscode {
 
 	/**
 	 * Clear the transcode state cache:
-	 * @param String|null $fileName Optional fileName to clear transcode cache for
+	 * @param string|null $fileName Optional fileName to clear transcode cache for
 	 */
 	public static function clearTranscodeCache( $fileName = null ) {
 		if ( $fileName ) {
