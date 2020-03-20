@@ -53,30 +53,27 @@ class TextHandler {
 	 */
 	public function getTimedTextNamespace() {
 		global $wgEnableLocalTimedText;
+
+		$repo = $this->file->getRepo();
+
 		if ( $this->file->isLocal() ) {
 			if ( $wgEnableLocalTimedText ) {
 				return NS_TIMEDTEXT;
-			} else {
-				return false;
 			}
-		} elseif ( $this->file->repo instanceof ForeignDBViaLBRepo ) {
+		} elseif ( $repo instanceof ForeignDBViaLBRepo ) {
 			global $wgTimedTextForeignNamespaces;
-			$wikiID = $this->file->getRepo()->getReplicaDB()->getDomainID();
+			$wikiID = $repo->getReplicaDB()->getDomainID();
 			if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {
 				return $wgTimedTextForeignNamespaces[ $wikiID ];
 			}
 			// failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
 			if ( $wgEnableLocalTimedText ) {
 				return NS_TIMEDTEXT;
-			} else {
-				return false;
 			}
-		} else {
+		} elseif ( $repo instanceof ForeignAPIRepo ) {
 			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
 			}
-			$repo = $this->file->getRepo();
-			'@phan-var ForeignAPIRepo $repo';
 
 			// Get the namespace data from the image api repo:
 			// fetchImageQuery query caches results
@@ -99,6 +96,8 @@ class TextHandler {
 			// Return the remote Ns
 			return $this->remoteNs;
 		}
+
+		return false;
 	}
 
 	/**
@@ -109,14 +108,20 @@ class TextHandler {
 	 *
 	 * @return IResultWrapper|bool
 	 */
-	public function getTextPages() {
+	private function getTextPages() {
 		$ns = $this->getTimedTextNamespace();
 		if ( $ns === false ) {
-			wfDebug( 'Repo: ' . $this->file->repo->getName() . " does not have a TimedText namespace \n" );
+			wfDebug( 'Repo: ' . $this->file->getRepoName() . " does not have a TimedText namespace \n" );
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
-		$dbr = $this->file->getRepo()->getReplicaDB();
+
+		$repo = $this->file->getRepo();
+		if ( !( $repo instanceof LocalRepo ) ) {
+			return false;
+		}
+
+		$dbr = $repo->getReplicaDB();
 		$prefix = $this->file->getTitle()->getDBkey();
 		return $dbr->select(
 			'page',
@@ -140,7 +145,7 @@ class TextHandler {
 	public function getRemoteTextPagesQuery() {
 		$ns = $this->getTimedTextNamespace();
 		if ( $ns === false ) {
-			wfDebug( 'Repo: ' . $this->file->repo->getName() . " does not have a TimedText namespace \n" );
+			wfDebug( 'Repo: ' . $this->file->getRepoName() . " does not have a TimedText namespace \n" );
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
@@ -160,7 +165,6 @@ class TextHandler {
 	public function getRemoteTextSources() {
 		global $wgMemc;
 		$repo = $this->file->getRepo();
-		'@phan-var ForeignAPIRepo $repo';
 		// Use descriptionCacheExpiry as our expire for timed text tracks info
 		if ( $repo->descriptionCacheExpiry > 0 ) {
 			wfDebug( "Attempting to get text tracks from cache..." );
@@ -178,9 +182,10 @@ class TextHandler {
 		$query = $this->getRemoteTextPagesQuery();
 
 		// Error in getting timed text namespace return empty array;
-		if ( $query === false ) {
+		if ( $query === false || !( $repo instanceof ForeignAPIRepo ) ) {
 			return [];
 		}
+
 		$data = $repo->fetchImageQuery( $query );
 		$textTracks = $this->getTextTracksFromData( $data );
 		if ( $data && $repo->descriptionCacheExpiry > 0 ) {
@@ -347,7 +352,7 @@ class TextHandler {
 		$query = wfArrayToCgi( $params );
 
 		// Note: This will return false if scriptDirUrl is not set for repo.
-		return $this->file->repo->makeUrl( $query, 'api' );
+		return $this->file->getRepo()->makeUrl( $query, 'api' );
 	}
 
 	/**
