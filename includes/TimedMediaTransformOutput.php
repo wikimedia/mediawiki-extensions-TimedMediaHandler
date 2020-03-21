@@ -432,7 +432,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get poster.
 	 * @param int $width width of poster. Should not equal $this->width.
 	 * @throws Exception If $width is same as $this->width.
-	 * @return String|bool url for poster or false
+	 * @return string|bool url for poster or false
 	 */
 	private function getPoster( $width ) {
 		if ( intval( $width ) === intval( $this->width ) ) {

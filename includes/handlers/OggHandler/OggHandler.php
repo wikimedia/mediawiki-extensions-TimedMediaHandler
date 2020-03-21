@@ -301,7 +301,7 @@ class OggHandler extends TimedMediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getShortDesc( $file ) {
 		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
@@ -324,7 +324,7 @@ class OggHandler extends TimedMediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getLongDesc( $file ) {
 		global $wgLang, $wgMediaVideoTypes, $wgMediaAudioTypes;

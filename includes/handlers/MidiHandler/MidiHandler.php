@@ -14,7 +14,7 @@ class MidiHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getWebType( $file ) {
 		return 'audio/midi';
@@ -52,7 +52,7 @@ class MidiHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getShortDesc( $file ) {
 		global $wgLang;
@@ -68,7 +68,7 @@ class MidiHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getLongDesc( $file ) {
 		global $wgLang;

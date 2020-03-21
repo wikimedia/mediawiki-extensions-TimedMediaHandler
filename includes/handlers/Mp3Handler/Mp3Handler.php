@@ -38,7 +38,7 @@ class Mp3Handler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
@@ -53,7 +53,7 @@ class Mp3Handler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );

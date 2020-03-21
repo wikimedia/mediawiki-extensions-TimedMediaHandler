@@ -202,7 +202,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 
 	/**
 	 * What group to include this page in on Special:SpecialPages
-	 * @return String
+	 * @return string
 	 */
 	protected function getGroupName() {
 		return 'media';

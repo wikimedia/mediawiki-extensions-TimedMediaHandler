@@ -462,7 +462,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return String
+	 * @return string
 	 */
 	public function getDimensionsString( $file ) {
 		global $wgLang;
