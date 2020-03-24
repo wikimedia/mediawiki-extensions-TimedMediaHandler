@@ -191,8 +191,6 @@
 	"timedmedia-duration-hms": "Accessibility label for the duration of the media file, shown as a label on the placeholder to begin playback of the media file.\nParameters are:\n* $1 number of hours\n* $2 number of minutes\n* $3 number of seconds",
 	"timedmedia-duration-ms": "Accessibility label for the duration of the media file, shown as a label on the placeholder to begin playback of the media file.\nParameters are:\n* $1 number of minutes\n* $2 number of seconds",
 	"timedmedia-duration-s": "Accessibility label for the duration of the media file, shown as a label on the placeholder to begin playback of the media file.\nParameters are:\n* $1 number of seconds",
-	"beta-feature-timedmediahandler-message-videojs": "{{optional}}\nDescription of TimedMediaHandler VideoJS in beta features page.",
-	"beta-feature-timedmediahandler-description-videojs": "Title of TimedMediaHandler VideoJS section in beta features page.",
 	"right-transcode-reset": "{{doc-right|transcode-reset}}",
 	"right-transcode-status": "{{doc-right|transcode-status}}",
 	"action-transcode-reset": "{{doc-action|transcode-reset}}",

@@ -96,7 +96,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 */
 	private function getTextHandler() {
 		if ( !$this->textHandler ) {
-			if ( Hooks::activePlayerMode() === 'videojs' ) {
+			if ( Hooks::defaultPlayerMode() === 'videojs' ) {
 				$format = 'vtt';
 			} else {
 				$format = 'srt';
@@ -198,7 +198,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->width = $options['override-width'];
 		}
 
-		if ( $this->useImagePopUp() && Hooks::activePlayerMode() === 'mwembed' ) {
+		if ( $this->useImagePopUp() && Hooks::defaultPlayerMode() === 'mwembed' ) {
 			$res = $this->getImagePopUp();
 		} else {
 			$mediaAttr = $this->getMediaAttr( false, false, $classes );
@@ -420,7 +420,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		unset( $track );
 
 		$width = $mediaAttr['width'];
-		if ( Hooks::activePlayerMode() !== 'videojs' ) {
+		if ( Hooks::defaultPlayerMode() !== 'videojs' ) {
 			unset( $mediaAttr['width'] );
 		}
 
@@ -433,7 +433,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			self::htmlTagSet( 'track', $mediaTracks )
 		);
 
-		if ( Hooks::activePlayerMode() === 'videojs' ) {
+		if ( Hooks::defaultPlayerMode() === 'videojs' ) {
 			return $s;
 		}
 		// else mwEmbed player
@@ -515,7 +515,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr['loop'] = 'true';
 		}
 
-		if ( Hooks::activePlayerMode() === 'videojs' ) {
+		if ( Hooks::defaultPlayerMode() === 'videojs' ) {
 			// Note: do not add 'video-js' class before the runtime transform!
 			$mediaAttr['class'] = $wgVideoPlayerSkin;
 			$mediaAttr['width'] = (int)$width;

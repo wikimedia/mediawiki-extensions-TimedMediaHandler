@@ -5,10 +5,8 @@ namespace MediaWiki\TimedMediaHandler;
 use Article;
 use DatabaseUpdater;
 use DifferenceEngine;
-use ExtensionRegistry;
 use File;
 use ImagePage;
-use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
@@ -16,7 +14,6 @@ use MediaWiki\User\UserIdentity;
 use OutputPage;
 use ParserOptions;
 use ParserOutput;
-use RequestContext;
 use Skin;
 use SkinTemplate;
 use Title;
@@ -132,7 +129,7 @@ class Hooks {
 	private static function onImagePageHooks( $file, $out ) {
 		$handler = $file->getHandler();
 		if ( $handler instanceof TimedMediaHandler ) {
-			if ( self::activePlayerMode() === 'mwembed' ) {
+			if ( self::defaultPlayerMode() === 'mwembed' ) {
 				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 				$out->addModules( [
 					'mw.MediaWikiPlayer.loader',
@@ -141,7 +138,7 @@ class Hooks {
 				] );
 			}
 
-			if ( self::activePlayerMode() === 'videojs' ) {
+			if ( self::defaultPlayerMode() === 'videojs' ) {
 				$out->addModuleStyles( 'ext.tmh.player.styles' );
 				$out->addModules( 'ext.tmh.player' );
 			}
@@ -436,7 +433,7 @@ class Hooks {
 		}
 
 		if ( $addModules ) {
-			if ( self::activePlayerMode() === 'mwembed' ) {
+			if ( self::defaultPlayerMode() === 'mwembed' ) {
 				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 				$out->addModules( [
 					'mw.MediaWikiPlayer.loader',
@@ -444,7 +441,7 @@ class Hooks {
 				] );
 			}
 
-			if ( self::activePlayerMode() === 'videojs' ) {
+			if ( self::defaultPlayerMode() === 'videojs' ) {
 				$out->addModuleStyles( 'ext.tmh.player.styles' );
 				$out->addModules( 'ext.tmh.player' );
 			}
@@ -525,102 +522,13 @@ class Hooks {
 			// and this wiki switched its default to videojs,
 			self::defaultPlayerMode() === 'videojs' &&
 			// and this cache entry uses Kaltura still
-			in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true ) &&
-			// and we're viewed by a videojs beta user
-			self::hasEnabledVideojsBeta()
+			in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true )
 		) {
 			// Accept cache miss, regenerate now.
 			$useCache = false;
 		}
 
 		return $useCache;
-	}
-
-	/**
-	 * @param string &$hash
-	 * @param User $user
-	 * @param array &$forOptions
-	 */
-	public static function onPageRenderingHash( &$hash, User $user, &$forOptions ) {
-		// Performance: Do not vary or mass-invalidate the ParserCache when the
-		// default changes. When defaults change, we'll slowly propagate as things
-		// get edited, purged, or expire naturally from the cache.
-		//
-		// For users that opt-in to videojs ahead of time, we must use a dedicated
-		// hash as otherwise their pageviews would poison the cache for everyone else.
-		if ( self::defaultPlayerMode() !== 'videojs' && self::activePlayerMode() === 'videojs' ) {
-			$hash .= '!tmh-videojs';
-		}
-	}
-
-	/**
-	 * @param User $user
-	 * @param array &$prefs
-	 */
-	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$iconpath = $config->get( 'ExtensionAssetsPath' ) . "/TimedMediaHandler";
-
-		if ( $config->get( 'TmhUseBetaFeatures' ) ) {
-			$prefs['tmh-videojs'] = [
-				'label-message' => 'beta-feature-timedmediahandler-message-videojs',
-				'desc-message' => 'beta-feature-timedmediahandler-description-videojs',
-				'screenshot' => [
-					'ltr' => "$iconpath/resources/betafeatures-icon-VideoJS-ltr.svg",
-					'rtl' => "$iconpath/resources/betafeatures-icon-VideoJS-rtl.svg",
-				],
-				'info-link' =>
-					'https://www.mediawiki.org/wiki/Extension:TimedMediaHandler/VideoJS_Player',
-				'discussion-link' =>
-					'https://www.mediawiki.org/wiki/Extension_talk:TimedMediaHandler/VideoJS_Player',
-				'requirements' => [
-					'javascript' => true
-				],
-
-			];
-		}
-	}
-
-	/**
-	 * Add default preferences values
-	 *
-	 * @param array &$defaultOptions Array of preference keys and their default values.
-	 */
-	public static function onUserGetDefaultOptions( &$defaultOptions ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
-		if ( $config->get( 'TmhUseBetaFeatures' ) ) {
-			$defaultOptions['tmh-videojs'] = false;
-		}
-	}
-
-	/**
-	 * Whether this user has opt-ed into videojs via a beta feature.
-	 *
-	 * @return bool
-	 */
-	private static function hasEnabledVideojsBeta(): bool {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$context = RequestContext::getMain();
-
-		return (
-			$config->get( 'TmhUseBetaFeatures' )
-			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
-			&& $context->getUser()->isSafeToLoad()
-			&& BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
-		);
-	}
-
-	/**
-	 * Return the configured player mode for this user
-	 * @return string
-	 */
-	public static function activePlayerMode() {
-		if ( self::hasEnabledVideojsBeta() ) {
-			return 'videojs';
-		}
-
-		return self::defaultPlayerMode();
 	}
 
 	/**

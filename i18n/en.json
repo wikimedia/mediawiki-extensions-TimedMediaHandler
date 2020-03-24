@@ -172,8 +172,6 @@
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 hour|$1 hours}}, {{PLURAL:$2|$2 minute|$2 minutes}} and {{PLURAL:$3|$3 second|$3 seconds}}",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minute|$1 minutes}} and {{PLURAL:$2|$2 second|$2 seconds}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 second|$1 seconds}}",
-	"beta-feature-timedmediahandler-message-videojs": "New video player",
-	"beta-feature-timedmediahandler-description-videojs": "Watch video files in a modern player with a cleaner look and mobile compatibility.",
 	"right-transcode-reset": "Reset failed or transcoded videos so they are inserted into the job queue again",
 	"right-transcode-status": "View [[Special:TimedMediaHandler|information about the current transcode activity]]",
 	"action-transcode-reset": "reset transcodes",

@@ -125,15 +125,12 @@
 		"CanonicalNamespaces": "MediaWiki\\TimedMediaHandler\\Hooks::onCanonicalNamespaces",
 		"FileDeleteComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onFileDeleteComplete",
 		"FileUpload": "MediaWiki\\TimedMediaHandler\\Hooks::onFileUpload",
-		"GetBetaFeaturePreferences": "MediaWiki\\TimedMediaHandler\\Hooks::onGetBetaFeaturePreferences",
-		"UserGetDefaultOptions": "MediaWiki\\TimedMediaHandler\\Hooks::onUserGetDefaultOptions",
 		"ImageOpenShowImageInlineBefore": "MediaWiki\\TimedMediaHandler\\Hooks::onImageOpenShowImageInlineBefore",
 		"ImagePageAfterImageLinks": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTranscodeStatus",
 		"ImagePageFileHistoryLine": "MediaWiki\\TimedMediaHandler\\Hooks::onImagePageFileHistoryLine",
 		"LoadExtensionSchemaUpdates": "MediaWiki\\TimedMediaHandler\\Hooks::checkSchemaUpdates",
 		"MediaWikiPerformAction": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput::iframeHook",
 		"RevisionFromEditComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onRevisionFromEditComplete",
-		"PageRenderingHash": "MediaWiki\\TimedMediaHandler\\Hooks::onPageRenderingHash",
 		"ParserTestGlobals": "MediaWiki\\TimedMediaHandler\\Hooks::onParserTestGlobals",
 		"RejectParserCacheValue": "MediaWiki\\TimedMediaHandler\\Hooks::onRejectParserCacheValue",
 		"ResourceLoaderGetConfigVars": "MediaWiki\\TimedMediaHandler\\Hooks::onResourceLoaderGetConfigVars",
@@ -142,11 +139,6 @@
 		"wgQueryPages": "MediaWiki\\TimedMediaHandler\\Hooks::onwgQueryPages"
 	},
 	"config": {
-		"TmhUseBetaFeatures": {
-			"description": "Controls whether to enable videojs beta feature. Requires the BetaFeature extension be installed.",
-			"public": true,
-			"value": true
-		},
 		"TmhWebPlayer": {
 			"description": "Configure the webplayer. Allowed value: videojs",
 			"public": true,

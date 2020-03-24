@@ -77,7 +77,7 @@ class TimedMediaIframeOutput {
 			'fillwindow' => true,
 			'width' => $file->getWidth()
 		];
-		if ( Hooks::activePlayerMode() === 'videojs' ) {
+		if ( Hooks::defaultPlayerMode() === 'videojs' ) {
 			$params['inline'] = true;
 		}
 		$videoTransform = $file->transform( $params );
@@ -87,9 +87,9 @@ class TimedMediaIframeOutput {
 		$out->setPreventClickjacking( false );
 		$out->disallowUserJs();
 
-		if ( Hooks::activePlayerMode() === 'mwembed' ) {
+		if ( Hooks::defaultPlayerMode() === 'mwembed' ) {
 			$out->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
-		} elseif ( Hooks::activePlayerMode() === 'videojs' ) {
+		} elseif ( Hooks::defaultPlayerMode() === 'videojs' ) {
 			$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
 			$out->addModuleStyles( [ 'ext.tmh.player.inline.styles' ] );
 		}
