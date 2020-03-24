@@ -3,11 +3,14 @@
 		"authors": [
 			"Cekli829",
 			"Dağlı95",
-			"Wertuose"
+			"Wertuose",
+			"Toghrul Rahimli"
 		]
 	},
 	"timedmedia-status": "Status",
 	"timedmedia-seconds": "{{PLURAL:$1|1 saniyə|$1 saniyə}}",
 	"timedmedia-source-file": "$1 mənbəyi",
-	"timedmedia-source-audio-file-desc": "Orijinal $1-fayl ($2)"
+	"timedmedia-source-audio-file-desc": "Orijinal $1-fayl ($2)",
+	"beta-feature-timedmediahandler-message-videojs": "Yeni video pleyer",
+	"beta-feature-timedmediahandler-description-videojs": "Video fayllara daha təmiz və mobil telefonları dəstəkləyən müasir pleyerdən baxın."
 }
