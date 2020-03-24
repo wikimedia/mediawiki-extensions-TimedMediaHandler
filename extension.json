@@ -145,9 +145,9 @@
 			"value": true
 		},
 		"TmhWebPlayer": {
-			"description": "Configure the webplayer. Allowed values: mwembed, videojs",
+			"description": "Configure the webplayer. Allowed value: videojs",
 			"public": true,
-			"value": "mwembed"
+			"value": "videojs"
 		},
 		"MwEmbedModuleConfig": {
 			"description": "MwEmbed module configuration.",
