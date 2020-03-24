@@ -560,12 +560,13 @@ class TimedMediaHandlerHooks {
 	 * @param array &$prefs
 	 */
 	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
-		global $wgTmhUseBetaFeatures;
-
 		$coreConfig = RequestContext::getMain()->getConfig();
 		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . "/TimedMediaHandler";
 
-		if ( $wgTmhUseBetaFeatures ) {
+		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'timedmediahandler' );
+
+		if ( $tmhConfig->get( 'TmhUseBetaFeatures' ) ) {
 			$prefs['tmh-videojs'] = [
 				'label-message' => 'beta-feature-timedmediahandler-message-videojs',
 				'desc-message' => 'beta-feature-timedmediahandler-description-videojs',
@@ -590,10 +591,17 @@ class TimedMediaHandlerHooks {
 	 * @return string
 	 */
 	public static function activePlayerMode() {
-		global $wgTmhUseBetaFeatures, $wgUser;
+		global $wgUser;
+
+		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'timedmediahandler' );
+
 		$context = RequestContext::getMain();
-		if ( $wgTmhUseBetaFeatures && ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' ) &&
-			$wgUser->isSafeToLoad() && BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
+		if (
+			$tmhConfig->get( 'TmhUseBetaFeatures' )
+			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
+			&& $wgUser->isSafeToLoad()
+			&& BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
 		) {
 			return 'videojs';
 		} else {
