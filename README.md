@@ -6,8 +6,8 @@ page, or any wiki page while still using the same syntax as for images.
 
 * Broad support for input file formats
 * Transcoder to make video at web resolutions when embedding clips in a page
-* Include support for Timed Text per the w3c "track" recommendation
-* use Video.js javascript player for playback
+* Includes support for Timed Text per the W3C "track" recommendation
+* Uses the Video.js javascript player for playback
 
 After you installed this extension, add the following to the end of your
 `LocalSettings.php` to enable it:

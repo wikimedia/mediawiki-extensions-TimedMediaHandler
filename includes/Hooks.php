@@ -129,19 +129,8 @@ class Hooks {
 	private static function onImagePageHooks( $file, $out ) {
 		$handler = $file->getHandler();
 		if ( $handler instanceof TimedMediaHandler ) {
-			if ( self::defaultPlayerMode() === 'mwembed' ) {
-				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
-				$out->addModules( [
-					'mw.MediaWikiPlayer.loader',
-					'mw.PopUpMediaTransform',
-					'mw.TMHGalleryHook.js',
-				] );
-			}
-
-			if ( self::defaultPlayerMode() === 'videojs' ) {
-				$out->addModuleStyles( 'ext.tmh.player.styles' );
-				$out->addModules( 'ext.tmh.player' );
-			}
+			$out->addModuleStyles( 'ext.tmh.player.styles' );
+			$out->addModules( 'ext.tmh.player' );
 		}
 		return true;
 	}
@@ -433,18 +422,8 @@ class Hooks {
 		}
 
 		if ( $addModules ) {
-			if ( self::defaultPlayerMode() === 'mwembed' ) {
-				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
-				$out->addModules( [
-					'mw.MediaWikiPlayer.loader',
-					'mw.PopUpMediaTransform',
-				] );
-			}
-
-			if ( self::defaultPlayerMode() === 'videojs' ) {
-				$out->addModuleStyles( 'ext.tmh.player.styles' );
-				$out->addModules( 'ext.tmh.player' );
-			}
+			$out->addModuleStyles( 'ext.tmh.player.styles' );
+			$out->addModules( 'ext.tmh.player' );
 		}
 
 		return true;
@@ -519,8 +498,6 @@ class Hooks {
 		if (
 			// This page involves TMH,
 			$parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) &&
-			// and this wiki switched its default to videojs,
-			self::defaultPlayerMode() === 'videojs' &&
 			// and this cache entry uses Kaltura still
 			in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true )
 		) {
@@ -529,17 +506,6 @@ class Hooks {
 		}
 
 		return $useCache;
-	}
-
-	/**
-	 * Return the default configured player mode
-	 * This mode is used for anonymous users
-	 * @since 1.30
-	 * @return string
-	 */
-	public static function defaultPlayerMode() {
-		global $wgTmhWebPlayer;
-		return $wgTmhWebPlayer;
 	}
 
 	/**

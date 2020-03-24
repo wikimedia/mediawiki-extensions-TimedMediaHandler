@@ -217,18 +217,9 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) ) {
 			return;
 		}
-		$defaultPlayerMode = Hooks::defaultPlayerMode();
-		if ( $defaultPlayerMode === 'mwembed' ) {
-			$parserOutput->addModuleStyles( [ 'ext.tmh.thumbnail.styles' ] );
-			$parserOutput->addModules( [
-				'mw.MediaWikiPlayer.loader',
-				'mw.PopUpMediaTransform',
-				'mw.TMHGalleryHook.js',
-			] );
-		} elseif ( $defaultPlayerMode === 'videojs' ) {
-			$parserOutput->addModuleStyles( [ 'ext.tmh.player.styles' ] );
-			$parserOutput->addModules( [ 'ext.tmh.player' ] );
-		}
+
+		$parserOutput->addModuleStyles( [ 'ext.tmh.player.styles' ] );
+		$parserOutput->addModules( [ 'ext.tmh.player' ] );
 
 		$parserOutput->setExtensionData( 'mw_ext_TMH_hasTimedMediaTransform', true );
 	}

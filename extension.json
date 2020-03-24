@@ -139,11 +139,6 @@
 		"wgQueryPages": "MediaWiki\\TimedMediaHandler\\Hooks::onwgQueryPages"
 	},
 	"config": {
-		"TmhWebPlayer": {
-			"description": "Configure the webplayer. Allowed value: videojs",
-			"public": true,
-			"value": "videojs"
-		},
 		"MwEmbedModuleConfig": {
 			"description": "MwEmbed module configuration.",
 			"public": true,

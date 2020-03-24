@@ -74,12 +74,11 @@ class TimedMediaIframeOutput {
 			return false;
 		}
 		$params = [
+			'inline' => true,
 			'fillwindow' => true,
 			'width' => $file->getWidth()
 		];
-		if ( Hooks::defaultPlayerMode() === 'videojs' ) {
-			$params['inline'] = true;
-		}
+
 		$videoTransform = $file->transform( $params );
 
 		// Definitely do not want to break frames
@@ -87,13 +86,8 @@ class TimedMediaIframeOutput {
 		$out->setPreventClickjacking( false );
 		$out->disallowUserJs();
 
-		if ( Hooks::defaultPlayerMode() === 'mwembed' ) {
-			$out->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
-		} elseif ( Hooks::defaultPlayerMode() === 'videojs' ) {
-			$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
-			$out->addModuleStyles( [ 'ext.tmh.player.inline.styles' ] );
-		}
-		$out->addModuleStyles( 'embedPlayerIframeStyle' );
+		$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
+		$out->addModuleStyles( [ 'ext.tmh.player.inline.styles', 'embedPlayerIframeStyle' ] );
 
 		$out->sendCacheControl();
 		$rlClient = $out->getRlClient();

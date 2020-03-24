@@ -96,13 +96,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 */
 	private function getTextHandler() {
 		if ( !$this->textHandler ) {
-			if ( Hooks::defaultPlayerMode() === 'videojs' ) {
-				$format = 'vtt';
-			} else {
-				$format = 'srt';
-			}
 			// Init an associated textHandler
-			$this->textHandler = new TextHandler( $this->file, [ $format ] );
+			$this->textHandler = new TextHandler( $this->file, [ 'vtt' ] );
 		}
 		return $this->textHandler;
 	}
@@ -198,12 +193,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->width = $options['override-width'];
 		}
 
-		if ( $this->useImagePopUp() && Hooks::defaultPlayerMode() === 'mwembed' ) {
-			$res = $this->getImagePopUp();
-		} else {
-			$mediaAttr = $this->getMediaAttr( false, false, $classes );
-			$res = $this->getHtmlMediaTagOutput( $mediaAttr );
-		}
+		$mediaAttr = $this->getMediaAttr( false, false, $classes );
+		$res = $this->getHtmlMediaTagOutput( $mediaAttr );
 		$this->width = $oldWidth;
 		$this->height = $oldHeight;
 		return $this->linkWrap( [], $res );
@@ -420,9 +411,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		unset( $track );
 
 		$width = $mediaAttr['width'];
-		if ( Hooks::defaultPlayerMode() !== 'videojs' ) {
-			unset( $mediaAttr['width'] );
-		}
 
 		// Build the video tag output:
 		$s = Html::rawElement( $this->getTagName(), $mediaAttr,
@@ -433,16 +421,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			self::htmlTagSet( 'track', $mediaTracks )
 		);
 
-		if ( Hooks::defaultPlayerMode() === 'videojs' ) {
-			return $s;
-		}
-		// else mwEmbed player
-
-		// Build the video tag output:
-		return Xml::tags( 'div', [
-			'class' => 'mediaContainer',
-			'style' => 'width:' . $width
-		], $s );
+		return $s;
 	}
 
 	/**
@@ -515,42 +494,22 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr['loop'] = 'true';
 		}
 
-		if ( Hooks::defaultPlayerMode() === 'videojs' ) {
-			// Note: do not add 'video-js' class before the runtime transform!
-			$mediaAttr['class'] = $wgVideoPlayerSkin;
-			$mediaAttr['width'] = (int)$width;
-			if ( $this->isVideo ) {
-				$mediaAttr['height'] = (int)$height;
-			} else {
-				$mediaAttr['style'] = "width:${width}px;";
-				unset( $mediaAttr['height'] );
-			}
-			if ( $this->fillwindow ) {
-				$mediaAttr[ 'data-player' ] = 'fillwindow';
-			}
-			if ( $this->inline ) {
-				$mediaAttr['class'] .= ' mw-tmh-inline';
-				$mediaAttr['playsinline'] = '';
-				$mediaAttr['preload'] = 'auto';
-			}
+		// Note: do not add 'video-js' class before the runtime transform!
+		$mediaAttr['class'] = $wgVideoPlayerSkin;
+		$mediaAttr['width'] = (int)$width;
+		if ( $this->isVideo ) {
+			$mediaAttr['height'] = (int)$height;
 		} else {
-			if ( $this->fillwindow ) {
-				$width = '100%';
-				$height = '100%';
-			} else {
-				$width .= 'px';
-				$height .= 'px';
-			}
-
-			$mediaAttr['width'] = $width;
-			$mediaAttr['style'] = "width:$width";
-
-			if ( $this->isVideo ) {
-				$mediaAttr['style'] .= ";height:$height";
-			}
-
-			// MediaWiki uses the kSkin class
-			$mediaAttr['class'] = 'kskin';
+			$mediaAttr['style'] = "width:${width}px;";
+			unset( $mediaAttr['height'] );
+		}
+		if ( $this->fillwindow ) {
+			$mediaAttr[ 'data-player' ] = 'fillwindow';
+		}
+		if ( $this->inline ) {
+			$mediaAttr['class'] .= ' mw-tmh-inline';
+			$mediaAttr['playsinline'] = '';
+			$mediaAttr['preload'] = 'auto';
 		}
 
 		// Used by Score extension and to disable specific controls from wikicode
