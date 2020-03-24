@@ -18,7 +18,7 @@ module.exports = function ( grunt ) {
 				'**/*.{js,json}',
 				'!resources/mw-info-button/**',
 				// Third party resources
-				'!resources/mwembed/**',
+				'!resources/ogv.js/**',
 				'!resources/videojs*/**',
 				'!node_modules/**',
 				'!vendor/**'
@@ -32,7 +32,6 @@ module.exports = function ( grunt ) {
 				'**/*.{css,less}',
 				'!resources/mw-info-button/**',
 				// Third party resources
-				'!resources/mwembed/**',
 				'!resources/videojs*/**',
 				'!node_modules/**',
 				'!vendor/**'
@@ -51,7 +50,7 @@ module.exports = function ( grunt ) {
 				src: [
 					'**'
 				],
-				dest: 'resources/mwembed/lib/binPlayers/ogv.js/'
+				dest: 'resources/ogv.js/'
 			},
 			'video.js': {
 				expand: true,

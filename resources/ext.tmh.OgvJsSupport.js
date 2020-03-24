@@ -97,7 +97,7 @@
 			 * @return {string}
 			 */
 			basePath: function () {
-				return mw.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/resources/mwembed/lib/binPlayers/ogv.js';
+				return mw.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/resources/ogv.js';
 			},
 
 			/**

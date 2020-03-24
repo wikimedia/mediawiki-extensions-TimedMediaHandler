@@ -61,12 +61,6 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	public function execute( $par ) {
 		$this->addHelpLink( 'https://commons.wikimedia.org/wiki/Commons:Timed_Text', true );
 
-		if ( !$this->getConfig()->get( 'EnableLocalTimedText' ) ) {
-			$this->setHeaders();
-			$this->getOutput()->addWikiMsg( 'orphanedtimedtext-notimedtext' );
-			return;
-		}
-
 		if ( !$this->canExecuteQuery() ) {
 			$this->setHeaders();
 			$this->outputHeader();

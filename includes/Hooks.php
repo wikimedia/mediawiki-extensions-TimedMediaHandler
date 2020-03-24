@@ -12,8 +12,6 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
-use ParserOptions;
-use ParserOutput;
 use Skin;
 use SkinTemplate;
 use Title;
@@ -40,18 +38,14 @@ class Hooks {
 	 * @param array &$list
 	 */
 	public static function onCanonicalNamespaces( array &$list ) {
-		global $wgEnableLocalTimedText, $wgTimedTextNS;
-		if ( $wgEnableLocalTimedText ) {
-			if ( !defined( 'NS_TIMEDTEXT' ) ) {
-				define( 'NS_TIMEDTEXT', $wgTimedTextNS );
-				define( 'NS_TIMEDTEXT_TALK', $wgTimedTextNS + 1 );
-			}
-
-			$list[NS_TIMEDTEXT] = 'TimedText';
-			$list[NS_TIMEDTEXT_TALK] = 'TimedText_talk';
-		} else {
-			$wgTimedTextNS = false;
+		global $wgTimedTextNS;
+		if ( !defined( 'NS_TIMEDTEXT' ) ) {
+			define( 'NS_TIMEDTEXT', $wgTimedTextNS );
+			define( 'NS_TIMEDTEXT_TALK', $wgTimedTextNS + 1 );
 		}
+
+		$list[NS_TIMEDTEXT] = 'TimedText';
+		$list[NS_TIMEDTEXT_TALK] = 'TimedText_talk';
 	}
 
 	/**
@@ -65,7 +59,7 @@ class Hooks {
 		global $wgJobTypesExcludedFromDefaultQueue,
 		$wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads,
-		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions;
+		$wgTmhFileExtensions;
 
 		$wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
 
@@ -87,11 +81,6 @@ class Hooks {
 			// Also add the .log file ( used in two pass encoding )
 			// ( probably should move in-progress encodes out of web accessible directory )
 			$wgExcludeFromThumbnailPurge[] = 'log';
-		}
-
-		if ( !$wgEnableLocalTimedText ) {
-			// overwrite TimedText.ShowInterface for video with mw-provider=local
-			$wgMwEmbedModuleConfig['TimedText.ShowInterface.local'] = 'off';
 		}
 
 		// validate enabled transcodeset values
@@ -141,11 +130,6 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function checkForTimedTextPage( Title $title, ?Article &$article ) {
-		global $wgEnableLocalTimedText;
-		if ( !$wgEnableLocalTimedText ) {
-			return true;
-		}
-
 		global $wgTimedTextNS;
 		if ( $title->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $title );
@@ -159,11 +143,6 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function checkForTimedTextDiff( $diffEngine, $output ) {
-		global $wgEnableLocalTimedText;
-		if ( !$wgEnableLocalTimedText ) {
-			return true;
-		}
-
 		global $wgTimedTextNS;
 		if ( $output->getTitle()->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $output->getTitle() );
@@ -178,11 +157,6 @@ class Hooks {
 	 * @param array &$links
 	 */
 	public static function onSkinTemplateNavigation( SkinTemplate &$sktemplate, array &$links ) {
-		global $wgEnableLocalTimedText;
-		if ( !$wgEnableLocalTimedText ) {
-			return;
-		}
-
 		if ( self::isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
 			$ttTitle = Title::makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
 			if ( !$ttTitle ) {
@@ -465,55 +439,5 @@ class Hooks {
 	 */
 	public static function onwgQueryPages( &$qp ) {
 		$qp[] = [ SpecialOrphanedTimedText::class, 'OrphanedTimedText' ];
-	}
-
-	/**
-	 * Return false here to regenerate the ParserOutput even if there's a viable cache entry.
-	 *
-	 * This gets called on logged-in page views and CDN cache misses when there's an entry
-	 * that matches the page rendering hash and hasn't expired yet, allowing us to sometimes
-	 * reject it and regenerate it right away, ahead of its expiry date.
-	 *
-	 * @param ParserOutput $parserOutput
-	 * @param WikiPage $wikiPage
-	 * @param ParserOptions $parserOptions
-	 * @return bool
-	 */
-	public static function onRejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
-		// Per the onPageRenderingHash() handler below, when the default changes from
-		// Kaltura to videojs, we let take effect slowly during the natural rollover of
-		// canonical parser cache entries.
-		//
-		// For users that have opted-in to videojs (which is mostly a no-op when the default
-		// is videojs), trigger a regeneration right away if we encounter an older cache
-		// entry that contains Kaltura.
-		//
-		// Again, it's important that we don't do this unconditionally for all traffic, but
-		// we can let beta user pageviews speed up the regeneration cycle a little, and has
-		// the benefit of giving them a consistent post-transition experience, without
-		// any stale Kaltura pageviews between the default changing and the end of this
-		// transition period.
-		$useCache = true;
-
-		if (
-			// This page involves TMH,
-			$parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) &&
-			// and this cache entry uses Kaltura still
-			in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true )
-		) {
-			// Accept cache miss, regenerate now.
-			$useCache = false;
-		}
-
-		return $useCache;
-	}
-
-	/**
-	 * @param array &$vars
-	 */
-	public static function onResourceLoaderGetConfigVars( &$vars ) {
-		// Allow localSettings.php to override any module config by updating $wgMwEmbedModuleConfig var
-		global $wgMwEmbedModuleConfig;
-		$vars['wgTimedMediaHandler'] = $wgMwEmbedModuleConfig;
 	}
 }

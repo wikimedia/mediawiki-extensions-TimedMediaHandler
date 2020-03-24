@@ -57,14 +57,10 @@ class TextHandler {
 	 * @return false|int
 	 */
 	public function getTimedTextNamespace() {
-		global $wgEnableLocalTimedText;
-
 		$repo = $this->file->getRepo();
 
 		if ( $this->file->isLocal() ) {
-			if ( $wgEnableLocalTimedText ) {
-				return NS_TIMEDTEXT;
-			}
+			return NS_TIMEDTEXT;
 		} elseif ( $repo instanceof ForeignDBViaLBRepo ) {
 			global $wgTimedTextForeignNamespaces;
 			$wikiID = $repo->getReplicaDB()->getDomainID();
@@ -72,9 +68,7 @@ class TextHandler {
 				return $wgTimedTextForeignNamespaces[ $wikiID ];
 			}
 			// failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
-			if ( $wgEnableLocalTimedText ) {
-				return NS_TIMEDTEXT;
-			}
+			return NS_TIMEDTEXT;
 		} elseif ( $repo instanceof IForeignRepoWithMWApi ) {
 			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
@@ -234,12 +228,9 @@ class TextHandler {
 	 * @return array[]
 	 */
 	public function getLocalDbTextSources() {
-		global $wgEnableLocalTimedText;
-		if ( $wgEnableLocalTimedText ) {
-			$data = $this->getTextPagesFromDb();
-			if ( $data !== false ) {
-				return $this->getTextTracksFromRows( $data );
-			}
+		$data = $this->getTextPagesFromDb();
+		if ( $data !== false ) {
+			return $this->getTextTracksFromRows( $data );
 		}
 		return [];
 	}
@@ -332,18 +323,12 @@ class TextHandler {
 	}
 
 	public function getForeignNamespaceName() {
-		global $wgEnableLocalTimedText;
 		if ( $this->remoteNs !== null ) {
 			return $this->remoteNsName;
 		}
 		/* Else, we use the canonical namespace, since we can't look up the actual one */
-		if ( $wgEnableLocalTimedText ) {
-			$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
-			return str_replace( ' ', '_', $namespaceInfo->getCanonicalName( NS_TIMEDTEXT ) );
-		}
-
-		// Assume the default name if no local TimedText.
-		return 'TimedText';
+		$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
+		return str_replace( ' ', '_', $namespaceInfo->getCanonicalName( NS_TIMEDTEXT ) );
 	}
 
 	/**

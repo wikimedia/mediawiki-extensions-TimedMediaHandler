@@ -28,11 +28,6 @@ class ConvertSubtitles extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgEnableLocalTimedText;
-		if ( !$wgEnableLocalTimedText ) {
-			$this->fatalError( "Requires \$wgEnableLocalTimedText on.\n" );
-		}
-
 		global $wgTimedTextNS;
 
 		$dbr = wfGetDB( DB_REPLICA );

@@ -69,20 +69,9 @@
 		"TimedMediaHandler": [
 			"i18n",
 			"i18n/api",
-			"i18n/MwEmbedSupport",
-			"i18n/EmbedPlayer",
 			"i18n/TimedText"
 		]
 	},
-	"RawHtmlMessages": [
-		"mwe-embedplayer-credit-title",
-		"mwe-embedplayer-credit-author",
-		"mwe-embedplayer-credit-date",
-		"mwe-embedplayer-for_best_experience",
-		"mwe-embedplayer-fullscreen-tip",
-		"mwe-embedplayer-fullscreen-tip-osx",
-		"mwe-embedplayer-about-library-desc"
-	],
 	"ExtensionMessagesFiles": {
 		"TimedMediaHandlerMagic": "i18n/TimedMediaHandler.i18n.magic.php",
 		"TimedMediaHandlerAliases": "i18n/TimedMediaHandler.i18n.alias.php"
@@ -132,79 +121,18 @@
 		"MediaWikiPerformAction": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput::iframeHook",
 		"RevisionFromEditComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onRevisionFromEditComplete",
 		"ParserTestGlobals": "MediaWiki\\TimedMediaHandler\\Hooks::onParserTestGlobals",
-		"RejectParserCacheValue": "MediaWiki\\TimedMediaHandler\\Hooks::onRejectParserCacheValue",
-		"ResourceLoaderGetConfigVars": "MediaWiki\\TimedMediaHandler\\Hooks::onResourceLoaderGetConfigVars",
 		"SkinTemplateNavigation::Universal": "MediaWiki\\TimedMediaHandler\\Hooks::onSkinTemplateNavigation",
 		"TitleMove": "MediaWiki\\TimedMediaHandler\\Hooks::checkTitleMove",
 		"wgQueryPages": "MediaWiki\\TimedMediaHandler\\Hooks::onwgQueryPages"
 	},
 	"config": {
-		"MwEmbedModuleConfig": {
-			"description": "MwEmbed module configuration.",
-			"public": true,
-			"value": {
-				"MediaWiki.ApiProviders": {
-					"wikimediacommons": {
-						"url": "//commons.wikimedia.org/w/api.php"
-					}
-				},
-				"EmbedPlayer.OverlayControls": true,
-				"EmbedPlayer.CodecPreference": [
-					"vp9",
-					"webm",
-					"h264",
-					"ogg",
-					"mp3",
-					"ogvjs"
-				],
-				"EmbedPlayer.DisableVideoTagSupport": false,
-				"EmbedPlayer.DisableHTML5FlashFallback": true,
-				"EmbedPlayer.ReplaceSources": null,
-				"EmbedPlayer.EnableIpadHTMLControls": true,
-				"EmbedPlayer.WebKitPlaysInline": false,
-				"EmbedPlayer.EnableIpadNativeFullscreen": false,
-				"EmbedPlayer.iPhoneShowHTMLPlayScreen": true,
-				"EmbedPlayer.ForceLargeReplayButton": false,
-				"EmbedPlayer.RewriteSelector": "video,audio,playlist",
-				"EmbedPlayer.DefaultSize": "400x300",
-				"EmbedPlayer.ControlsHeight": 31,
-				"EmbedPlayer.TimeDisplayWidth": 85,
-				"EmbedPlayer.KalturaAttribution": true,
-				"EmbedPlayer.EnableOptionsMenu": true,
-				"EmbedPlayer.EnableRightClick": true,
-				"EmbedPlayer.EnabledOptionsMenuItems": [
-					"playerSelect",
-					"download",
-					"share",
-					"aboutPlayerLibrary"
-				],
-				"EmbedPlayer.WaitForMeta": true,
-				"EmbedPlayer.ShowNativeWarning": true,
-				"EmbedPlayer.ShowPlayerAlerts": true,
-				"EmbedPlayer.EnableFullscreen": true,
-				"EmbedPlayer.EnableTimeDisplay": true,
-				"EmbedPlayer.EnableVolumeControl": true,
-				"EmbedPlayer.NewWindowFullscreen": false,
-				"EmbedPlayer.FullscreenTip": true,
-				"EmbedPlayer.NativeControls": false,
-				"EmbedPlayer.FullScreenZIndex": 999998,
-				"EmbedPlayer.ShareEmbedMode": "iframe",
-				"EmbedPlayer.MonitorRate": 250,
-				"EmbedPlayer.EnableURLTimeEncoding": "flash",
-				"EmbedPlayer.EnableIframeApi": true,
-				"EmbedPlayer.NotPlayableDownloadLink": true,
-				"TimedText.ShowInterface": "always",
-				"TimedText.BottomPadding": 10,
-				"TimedText.BelowVideoBlackBoxHeight": 40
-			}
-		},
 		"WaitTimeForTranscodeReset": {
 			"description": "How long you have to wait between transcode resets for non-error transcodes",
 			"public": true,
 			"value": 3600
 		},
 		"MinimumVideoPlayerSize": {
-			"description": "Specific to the old mwembed player mode: the minimum size for an embed video player (smaller than this size uses a pop-up player)",
+			"description": "The minimum size for an embed video player (smaller than this size, it uses a pop-up player)",
 			"public": true,
 			"value": 200
 		},
@@ -289,11 +217,6 @@
 			"description": "Set TimedText namespace for ForeignDBViaLBRepo on a per wikiID basis like `$wgTimedTextForeignNamespaces = [ 'commonswiki' => 102 ];`.",
 			"public": true,
 			"value": []
-		},
-		"EnableLocalTimedText": {
-			"description": "Set to false to disable local TimedText. You still get subtitles for videos from foreign repos; to disable all TimedText, set `$wgMwEmbedModuleConfig['TimedText.ShowInterface'] = 'off';`",
-			"public": true,
-			"value": true
 		},
 		"EnabledTranscodeSet": {
 			"description": "Default enabled video transcodes\n\n- If set to empty array, no derivatives will be created\n- These transcodes are *in addition to* the source file.\n- Only derivatives with smaller width than the source asset size will be created\n- Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet\n- Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed\n- Derivative should be listed min to max\n\nAllowed values:\n* Values for WebM VP8/Vorbis, our primary free/open video format supported by Chrome/Firefox/Opera natively, and plays back in Safari/IE/Edge via ogv.js:\n** 160p.webm – Very low-bitrate web streamable WebM video\n** 240p.webm – Low-bitrate web streamable WebM video\n** 360p.webm – Medium-bitrate web streamable WebM video\n** 480p.webm – Moderate-bitrate web streamable WebM video\n** 720p.webm – A high quality WebM stream\n** 1080p.webm – A full-HD high quality WebM stream\n** 1440p.webm – A 2K full high quality WebM stream\n** 2160p.webm – A 4K full high quality WebM stream\n* Values for WebM VP9, our future free/open video format:\n** 160p.vp9.webm – Very low\n** 240p.vp9.webm – Low\n** 360p.vp9.webm – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.vp9.webm – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.vp9.webm – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.vp9.webm – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.vp9.webm – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.vp9.webm – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Values for MP4 H.264/AAC, the primary format for the Apple/Microsoft world. Check patent licensing issues in your country before use! Similar to WebM in quality/bitrate:\n** 160p.mp4 – Very low\n** 240p.mp4 – Low\n** 320p.mp4 – Pretty low\n** 360p.mp4 – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.mp4 – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.mp4 – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.mp4 – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.mp4 – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.mp4 – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Note: Ogg video profiles have been removed as of January 2018. Use WebM output for royalty-free codec output.",
@@ -394,44 +317,6 @@
 		"remoteExtPath": "TimedMediaHandler"
 	},
 	"ResourceModules": {
-		"mw.PopUpMediaTransform": {
-			"scripts": "resources/mw.PopUpThumbVideo.js",
-			"styles": "resources/PopUpThumbVideo.css",
-			"dependencies": [
-				"mw.MwEmbedSupport",
-				"mediawiki.Title",
-				"ext.tmh.OgvJsSupport"
-			]
-		},
-		"mw.TMHGalleryHook.js": {
-			"scripts": "resources/mw.TMHGalleryHook.js"
-		},
-		"ext.tmh.embedPlayerIframe": {
-			"scripts": "resources/ext.tmh.embedPlayerIframe.js",
-			"dependencies": [
-				"jquery.embedPlayer",
-				"mw.MwEmbedSupport"
-			]
-		},
-		"mw.MediaWikiPlayerSupport": {
-			"scripts": [
-				"resources/mwembed/mw.Api.js",
-				"resources/mw.MediaWikiPlayerSupport.js"
-			],
-			"dependencies": [
-				"mw.MwEmbedSupport"
-			]
-		},
-		"mw.MediaWikiPlayer.loader": {
-			"scripts": [
-				"resources/mwembed/EmbedPlayer/mw.EmbedPlayer.loader.js",
-				"resources/mwembed/TimedText.loader.js",
-				"resources/mw.MediaWikiPlayer.loader.js"
-			],
-			"dependencies": [
-				"jquery.embedPlayer"
-			]
-		},
 		"ext.tmh.video-js": {
 			"scripts": "resources/videojs/alt/video.core.min.js",
 			"styles": "resources/videojs/video-js.css",
@@ -620,7 +505,7 @@
 		},
 		"ext.tmh.OgvJsSupport": {
 			"scripts": [
-				"resources/mwembed/lib/binPlayers/ogv.js/ogv-support.js",
+				"resources/ogv.js/ogv-support.js",
 				"resources/ext.tmh.OgvJsSupport.js"
 			],
 			"targets": [
@@ -630,7 +515,7 @@
 		},
 		"ext.tmh.OgvJs": {
 			"scripts": [
-				"resources/mwembed/lib/binPlayers/ogv.js/ogv.js"
+				"resources/ogv.js/ogv.js"
 			],
 			"dependencies": "ext.tmh.OgvJsSupport",
 			"targets": [
@@ -643,217 +528,6 @@
 			"targets": [
 				"mobile",
 				"desktop"
-			]
-		},
-		"mw.MwEmbedSupport": {
-			"scripts": [
-				"resources/mwembed/jquery.triggerQueueCallback.js",
-				"resources/mwembed/jquery.mwEmbedUtil.js",
-				"resources/mwembed/lib/Spinner.js",
-				"resources/mwembed/jquery.loadingSpinner.js",
-				"resources/mwembed/mw.MwEmbedSupport.js"
-			],
-			"styles": "resources/mwembed/skins/common/MwEmbedCommonStyle.css",
-			"skinStyles": {
-				"kaltura-dark": "resources/mwembed/skins/jquery.ui.themes/kaltura-dark/jquery-ui-1.7.2.css"
-			},
-			"dependencies": [
-				"mediawiki.util"
-			],
-			"messages": [
-				"mwe-loading"
-			]
-		},
-		"mediawiki.UtilitiesTime": {
-			"scripts": "resources/mwembed/mediawiki/mediawiki.UtilitiesTime.js"
-		},
-		"jquery.embedPlayer": {
-			"scripts": "resources/mwembed/EmbedPlayer/jquery.embedPlayer.js"
-		},
-		"mw.EmbedPlayer": {
-			"scripts": [
-				"resources/mwembed/mediawiki/mediawiki.absoluteUrl.js",
-				"resources/mwembed/mediawiki/mediawiki.client.js",
-				"resources/mwembed/lib/fullScreenApi.js",
-				"resources/mwembed/lib/jquery.debouncedresize.js",
-				"resources/mwembed/lib/jquery.embedMenu/jquery.embedMenu.js",
-				"resources/mwembed/EmbedPlayer/mw.MediaPlayer.js",
-				"resources/mwembed/EmbedPlayer/mw.MediaPlayers.js",
-				"resources/mwembed/EmbedPlayer/mw.EmbedTypes.js",
-				"resources/mwembed/EmbedPlayer/mw.MediaElement.js",
-				"resources/mwembed/EmbedPlayer/mw.MediaSource.js",
-				"resources/mwembed/EmbedPlayer/mw.processEmbedPlayers.js",
-				"resources/mwembed/EmbedPlayer/mw.EmbedPlayer.js",
-				"resources/mwembed/EmbedPlayer/skins/mw.PlayerControlBuilder.js",
-				"resources/mwembed/EmbedPlayer/skins/kskin/mw.PlayerSkinKskin.js"
-			],
-			"dependencies": [
-				"mediawiki.UtilitiesTime",
-				"mediawiki.Uri",
-				"mediawiki.jqueryMsg",
-				"mw.MwEmbedSupport",
-				"mw.EmbedPlayerNative",
-				"jquery.client",
-				"jquery.hoverIntent",
-				"jquery.cookie",
-				"jquery.ui",
-				"ext.tmh.OgvJsSupport"
-			],
-			"styles": [
-				"resources/mwembed/lib/jquery.embedMenu/jquery.embedMenu.css",
-				"resources/mwembed/EmbedPlayer/skins/EmbedPlayer.css",
-				"resources/mwembed/EmbedPlayer/skins/kskin/PlayerSkinKskin.css"
-			],
-			"messages": [
-				"mwe-embedplayer-credit-title",
-				"mwe-embedplayer-credit-date",
-				"mwe-embedplayer-credit-author",
-				"mwe-embedplayer-nocredits",
-				"mwe-embedplayer-loading_plugin",
-				"mwe-embedplayer-select_playback",
-				"mwe-embedplayer-link_back",
-				"mwe-embedplayer-error_swap_vid",
-				"mwe-embedplayer-add_to_end_of_sequence",
-				"mwe-embedplayer-missing_video_stream",
-				"mwe-embedplayer-play_clip",
-				"mwe-embedplayer-pause_clip",
-				"mwe-embedplayer-volume_control",
-				"mwe-embedplayer-player_options",
-				"mwe-embedplayer-timed_text",
-				"mwe-embedplayer-player_fullscreen",
-				"mwe-embedplayer-next_clip_msg",
-				"mwe-embedplayer-prev_clip_msg",
-				"mwe-embedplayer-current_clip_msg",
-				"mwe-embedplayer-seek_to",
-				"mwe-embedplayer-paused",
-				"mwe-embedplayer-download_segment",
-				"mwe-embedplayer-download_full_video",
-				"mwe-embedplayer-download_full_audio",
-				"mwe-embedplayer-download_right_click",
-				"mwe-embedplayer-download_clip",
-				"mwe-embedplayer-download_text",
-				"mwe-embedplayer-download",
-				"mwe-embedplayer-share",
-				"mwe-embedplayer-credits",
-				"mwe-embedplayer-about-library",
-				"mwe-embedplayer-about-library-desc",
-				"mwe-embedplayer-clip_linkback",
-				"mwe-embedplayer-choose_player",
-				"mwe-embedplayer-no-player",
-				"mwe-embedplayer-share_this_video",
-				"mwe-embedplayer-share_this_audio",
-				"mwe-embedplayer-video_credits",
-				"mwe-embedplayer-no-video_credits",
-				"mwe-embedplayer-kaltura-platform-title",
-				"mwe-embedplayer-menu_btn",
-				"mwe-embedplayer-close_btn",
-				"mwe-embedplayer-ogg-player-oggNative",
-				"mwe-embedplayer-ogg-player-mp3Native",
-				"mwe-embedplayer-ogg-player-aacNative",
-				"mwe-embedplayer-ogg-player-h264Native",
-				"mwe-embedplayer-ogg-player-webmNative",
-				"mwe-embedplayer-ogg-player-vp9Native",
-				"mwe-embedplayer-ogg-player-vlcAppPlayer",
-				"mwe-embedplayer-ogg-player-IEWebMPrompt",
-				"mwe-embedplayer-ogg-player-ogvJsPlayer",
-				"mwe-embedplayer-ogg-player-quicktime-mozilla",
-				"mwe-embedplayer-ogg-player-quicktime-activex",
-				"mwe-embedplayer-ogg-player-flowplayer",
-				"mwe-embedplayer-ogg-player-kplayer",
-				"mwe-embedplayer-ogg-player-selected",
-				"mwe-embedplayer-ogg-player-omtkplayer",
-				"mwe-embedplayer-for_best_experience",
-				"mwe-embedplayer-download-warn",
-				"mwe-embedplayer-fullscreen-tip",
-				"mwe-embedplayer-fullscreen-tip-osx",
-				"mwe-embedplayer-do_not_warn_again",
-				"mwe-embedplayer-playerSelect",
-				"mwe-embedplayer-read_before_embed",
-				"mwe-embedplayer-embed_site_or_blog",
-				"mwe-embedplayer-embed_wiki",
-				"mwe-embedplayer-related_videos",
-				"mwe-embedplayer-seeking",
-				"mwe-embedplayer-video-h264",
-				"mwe-embedplayer-video-webm",
-				"mwe-embedplayer-video-flv",
-				"mwe-embedplayer-video-ogg",
-				"mwe-embedplayer-video-audio",
-				"mwe-embedplayer-audio-mpeg",
-				"mwe-embedplayer-video-3gp",
-				"mwe-embedplayer-video-mpeg",
-				"mwe-embedplayer-video-msvideo",
-				"mwe-embedplayer-missing-source",
-				"mwe-embedplayer-vlcapp-intro",
-				"mwe-embedplayer-vlcapp-vlcapplinktext",
-				"mwe-embedplayer-vlcapp-downloadapp",
-				"mwe-embedplayer-vlcapp-openvideo",
-				"mwe-embedplayer-vlcapp-downloadvideo",
-				"mwe-embedplayer-vlcapp-vlcapppopup",
-				"mwe-embedplayer-iewebmprompt-intro",
-				"mwe-embedplayer-iewebmprompt-linktext",
-				"mwe-embedplayer-iewebmprompt-outro"
-			]
-		},
-		"mw.EmbedPlayerKplayer": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerKplayer.js"
-		},
-		"mw.EmbedPlayerNative": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerNative.js"
-		},
-		"mw.EmbedPlayerVLCApp": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVLCApp.js",
-			"dependencies": [
-				"mediawiki.Uri"
-			]
-		},
-		"mw.EmbedPlayerIEWebMPrompt": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerIEWebMPrompt.js",
-			"styles": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerIEWebMPrompt.css"
-		},
-		"mw.EmbedPlayerOgvJs": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerOgvJs.js",
-			"dependencies": [
-				"jquery.spinner",
-				"ext.tmh.OgvJsSupport"
-			]
-		},
-		"mw.EmbedPlayerImageOverlay": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js"
-		},
-		"mw.TimedText": {
-			"scripts": [
-				"resources/mwembed/mediawiki/mediawiki.ajaxProxy.js",
-				"resources/mwembed/mw.TextSource.js",
-				"resources/mwembed/mw.TimedText.js"
-			],
-			"styles": "resources/mwembed/mw.style.TimedText.css",
-			"dependencies": [
-				"mediawiki.language.names",
-				"mw.EmbedPlayer",
-				"mediawiki.UtilitiesTime",
-				"mw.MwEmbedSupport"
-			],
-			"messages": [
-				"mwe-timedtext-back-btn",
-				"mwe-timedtext-layout-off",
-				"mwe-timedtext-loading-text",
-				"mwe-timedtext-key-language",
-				"mwe-timedtext-textcat-cc",
-				"mwe-timedtext-textcat-sub",
-				"mwe-timedtext-textcat-tad",
-				"mwe-timedtext-textcat-ktv",
-				"mwe-timedtext-textcat-tik",
-				"mwe-timedtext-textcat-ar",
-				"mwe-timedtext-textcat-nb",
-				"mwe-timedtext-textcat-meta",
-				"mwe-timedtext-textcat-trx",
-				"mwe-timedtext-textcat-lrc",
-				"mwe-timedtext-textcat-lin",
-				"mwe-timedtext-textcat-cue",
-				"mwe-timedtext-no-subs",
-				"mwe-timedtext-language-subtitles-for-clip",
-				"mwe-timedtext-language-no-subtitles-for-clip",
-				"mwe-timedtext-upload-timed-text"
 			]
 		}
 	},
