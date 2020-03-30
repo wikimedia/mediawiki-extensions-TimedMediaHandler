@@ -38,6 +38,8 @@
 	"timedmedia-midi-long-audio": "ملف صوت MIDI، الطول $1، $2 إجمالا",
 	"timedmedia-mp4-short-video": "ام بي 4$1 ملف فيديو,$2",
 	"timedmedia-mp4-long-video": "ام بي 4 ملف صوت/فيديو بنسق WebM , $1, الطول $2, $4×$5 بكسل، $3 إجمالا",
+	"timedmedia-mpeg-short-video": "MPEG $1 ملف فيديو، $2",
+	"timedmedia-mpeg-long-video": "صوت/ملف فيديوMPEG، $1، الطول $2، $4 × $5 بكسل، $3 إجمالا",
 	"timedmedia-more": "المزيد...",
 	"timedmedia-dismiss": "أغلق",
 	"timedmedia-download": "نزل الملف",
@@ -151,5 +153,6 @@
 	"orphanedtimedtext-unsupported": "هذه الصفحة الخاصة لا تدعمها إلا قواعد بيانات MySQL",
 	"orphanedtimedtext-notimedtext": "TimedText غير مفعل على هذا الويكي",
 	"videojs-more-information": "مزيد من المعلومات",
-	"videojs-quality": "جودة الفيديو"
+	"videojs-quality": "جودة الفيديو",
+	"transcodestatistics": "إحصاءات الترميز"
 }
