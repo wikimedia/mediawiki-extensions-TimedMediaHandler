@@ -108,5 +108,6 @@
 	"action-transcode-status": "преглед на актуалният статус на прекодирането",
 	"log-name-timedmediahandler": "Дневник на TimedMediaHandler",
 	"log-description-timedmediahandler": "Това е дневник на действия, свързани с timed media transcodes.",
-	"orphanedtimedtext-notimedtext": "TimedText не е включен на това уики."
+	"orphanedtimedtext-notimedtext": "TimedText не е включен на това уики.",
+	"transcodestatistics": "Статистика за прекодиранията"
 }
