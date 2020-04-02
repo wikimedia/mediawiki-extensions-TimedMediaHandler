@@ -83,5 +83,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "Gledajte video datoteke u modernom reproduktoru modernog izgleda i kompatibilnog s mobilnim uređajima.",
 	"log-name-timedmediahandler": "Evidencija medija s titlovima",
 	"log-description-timedmediahandler": "Ova stranica sadržava evidencije postavljanja titlova vezanu uz programsku opremu i uporabu TimedMediaHandlerovih transkôdova.",
-	"orphanedtimedtext": "Stranice siročad s TimedText titlovima"
+	"orphanedtimedtext": "Stranice siročad s TimedText titlovima",
+	"videojs-quality": "Kakvoća videa",
+	"transcodestatistics": "Statistika transkodiranja"
 }
