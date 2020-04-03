@@ -79,7 +79,7 @@
 	"timedmedia-subtitle-no-video": "Nema video zapisa povezanog s trenutačnom stranicom podnapisa.",
 	"timedmedia-subtitle-no-subtitles": "Ne postoje podnaslovi u $1 za ovaj video zapis. Da biste ih dodali možete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti ovu stranicu].",
 	"timedmedia-file": "Datoteka",
-	"beta-feature-timedmediahandler-message-videojs": "Novi reproduktor video zapisa",
+	"beta-feature-timedmediahandler-message-videojs": "Novi reproduktor videozapisa",
 	"beta-feature-timedmediahandler-description-videojs": "Gledajte video datoteke u modernom reproduktoru modernog izgleda i kompatibilnog s mobilnim uređajima.",
 	"log-name-timedmediahandler": "Evidencija medija s titlovima",
 	"log-description-timedmediahandler": "Ova stranica sadržava evidencije postavljanja titlova vezanu uz programsku opremu i uporabu TimedMediaHandlerovih transkôdova.",
