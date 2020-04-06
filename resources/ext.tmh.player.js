@@ -31,10 +31,6 @@
 			$placeholder = $( '<span>' )
 				.addClass( 'mw-tmh-player' )
 				.addClass( isAudio ? 'audio' : 'video' )
-				.css( {
-					width: isAudio ? '220px' : $videoplayer.width() + 'px',
-					height: isAudio ? '30px' : $videoplayer.height() + 'px'
-				} )
 				.append( $videoplayer.clone()
 					.attr( 'controls', false )
 					.attr( 'disabled', true )

@@ -1,7 +1,15 @@
 @import 'mediawiki.mixins';
 
+/* Shrink videos to fit rather than overflowing containers */
+video {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+}
+
 /* Force a fixed size for audio to reduce FOUC */
-audio {
+audio,
+.mw-tmh-player.audio {
 	width: 220px;
 	height: 30px;
 }
