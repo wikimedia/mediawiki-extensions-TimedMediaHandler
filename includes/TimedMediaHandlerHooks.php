@@ -80,7 +80,7 @@ class TimedMediaHandlerHooks {
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
 		// Setup a hook for iframe embed handling:
-		$wgHooks['ArticleFromTitle'][] = 'TimedMediaIframeOutput::iframeHook';
+		$wgHooks['MediaWikiPerformAction'][] = 'TimedMediaIframeOutput::iframeHook';
 
 		// When an upload completes ( check clear any existing transcodes )
 		$wgHooks['FileUpload'][] = 'TimedMediaHandlerHooks::onFileUpload';
