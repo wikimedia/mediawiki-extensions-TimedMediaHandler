@@ -1,19 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fúlvio",
 			"Giro720",
 			"Hamilton Abreu",
 			"Luckas",
+			"Macofe",
 			"Malafaya",
+			"Mansil",
 			"Opraco",
+			"Tooguether",
 			"Vitorvicentevalente",
 			"Waldir",
-			"555",
-			"Tooguether",
-			"Macofe",
-			"Fúlvio",
-			"Mansil",
-			"Waldyrious"
+			"Waldyrious",
+			555
 		]
 	},
 	"timedmediahandler-desc": "Tratamento de áudio, vídeo e legendagem, nos formatos WebM, Ogg Theora, Vorbis, srt",

@@ -1,11 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño",
 			"Elisardojm",
-			"Navhy",
 			"Iváns",
-			"McDutchie"
+			"McDutchie",
+			"Toliño"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Título: $1",

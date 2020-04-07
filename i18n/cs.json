@@ -2,16 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Chmee2",
-			"Li-sung",
-			"Matěj Grabovský",
-			"Mormegil",
-			"Paxt",
-			"Matěj Suchánek",
 			"Cvanca",
-			"Urbanecm",
-			"Martin Urbanec",
 			"Ilimanaq29",
-			"Patriccck"
+			"Li-sung",
+			"Martin Urbanec",
+			"Matěj Grabovský",
+			"Matěj Suchánek",
+			"Mormegil",
+			"Patriccck",
+			"Paxt",
+			"Urbanecm"
 		]
 	},
 	"timedmediahandler-desc": "Obsluha zvuků, videa a časovaného textu s podporou formátů WebM, Ogg Theora, Vorbis, srt",

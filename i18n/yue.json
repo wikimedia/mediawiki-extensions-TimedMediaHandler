@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yueman",
-			"CRCHF"
+			"CRCHF",
+			"Yueman"
 		]
 	},
 	"timedmediahandler-desc": "Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器",

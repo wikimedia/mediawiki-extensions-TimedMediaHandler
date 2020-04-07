@@ -1,19 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bluemersen",
+			"Hwangjy9",
+			"Hym411",
+			"IRTC1015",
 			"ITurtle",
+			"Kurousagi",
 			"Kwj2772",
 			"Priviet",
-			"ToePeu",
-			"아라",
-			"Hym411",
 			"Revi",
-			"IRTC1015",
-			"Hwangjy9",
-			"Kurousagi",
+			"ToePeu",
 			"Yearning",
 			"Ykhwong",
-			"Bluemersen"
+			"아라"
 		]
 	},
 	"timedmediahandler-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",

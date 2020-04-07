@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Debenben",
 			"Filzstift",
 			"G.Hagedorn",
 			"Geitost",
@@ -12,8 +13,7 @@
 			"Raimond Spekking",
 			"The Evil IP address",
 			"Umherirrender",
-			"XenonX3",
-			"Debenben"
+			"XenonX3"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",

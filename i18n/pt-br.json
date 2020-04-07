@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo.mps",
-			"Giro720",
-			"Luckas",
-			"Opraco",
-			"Guilhermemau",
-			"Fasouzafreitas",
 			"Eduardo Addad de Oliveira",
-			"Felipe L. Ewald"
+			"Eduardo.mps",
+			"Fasouzafreitas",
+			"Felipe L. Ewald",
+			"Giro720",
+			"Guilhermemau",
+			"Luckas",
+			"Opraco"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",

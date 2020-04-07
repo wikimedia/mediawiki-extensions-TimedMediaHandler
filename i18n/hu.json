@@ -1,16 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dani",
-			"Glanthor Reviol",
-			"Tgr",
+			"Bencemac",
 			"Csega",
-			"Samat",
+			"Dani",
 			"Dj",
-			"Tacsipacsi",
-			"Urbalazs",
+			"Glanthor Reviol",
 			"Rodrigo",
-			"Bencemac"
+			"Samat",
+			"Tacsipacsi",
+			"Tgr",
+			"Urbalazs"
 		]
 	},
 	"timedmediahandler-desc": "Audió-, videó- és feliratkezelő, WebM-, Ogg Theora-, Ogg Vorbis- és srt-támogatással",

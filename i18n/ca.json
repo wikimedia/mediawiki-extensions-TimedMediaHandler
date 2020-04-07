@@ -1,17 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abella",
 			"Aleator",
 			"Alvaro Vidal-Abarca",
+			"Fitoschido",
+			"Joan manel",
+			"Macofe",
 			"Paucabot",
 			"Pitort",
 			"SMP",
 			"Toniher",
-			"Vriullop",
-			"Joan manel",
-			"Macofe",
-			"Fitoschido",
-			"Abella"
+			"Vriullop"
 		]
 	},
 	"timedmediahandler-desc": "Gestor de fitxers de vídeo, àudio i text sincronitzat amb suport pels formats WebM, Ogg Theora, Vorbi i srt",

@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Andrei Stroe",
 			"Firilacroco",
+			"ImGelu",
 			"KlaudiuMihaila",
 			"Mihai",
 			"Minisarm",
 			"Stelistcristi",
-			"ImGelu",
-			"Strainu",
-			"Andrei Stroe"
+			"Strainu"
 		]
 	},
 	"timedmediahandler-desc": "Gestionar pentru fișiere audio, video și subtitrări sincronizate, cu suport pentru formatele WebM, Ogg Theora, Vorbis, srt",

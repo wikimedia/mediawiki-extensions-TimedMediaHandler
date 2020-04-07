@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Papuass",
-			"Xil",
-			"Silraks"
+			"Silraks",
+			"Xil"
 		]
 	},
 	"timedmedia-midi-short-audio": "MIDI audio fail, $1",

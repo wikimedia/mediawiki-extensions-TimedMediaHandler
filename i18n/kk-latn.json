@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"timedmedia-ogg-short-audio": "Ogg $1 dıbıs faýlı, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 beýne faýlı, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 taspa faýlı, $2",

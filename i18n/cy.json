@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lloffiwr",
 			"Ham II",
-			"Xxglennxx",
-			"Robin Owain"
+			"Lloffiwr",
+			"Robin Owain",
+			"Xxglennxx"
 		]
 	},
 	"timedmedia-ogg-short-audio": "Ffeil sain Ogg $1, $2",

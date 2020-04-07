@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"A Retired User",
 			"Cwlin0416",
 			"Kly",
-			"神樂坂秀吉",
 			"予弦",
-			"A Retired User"
+			"神樂坂秀吉"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "取得指定檔案頁面的轉碼狀態。",

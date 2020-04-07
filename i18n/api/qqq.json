@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Brad Jorsch",
-			"Umherirrender",
-			"Brion Vibber"
+			"Brion Vibber",
+			"Umherirrender"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "{{doc-apihelp-description|query+transcodestatus}}",

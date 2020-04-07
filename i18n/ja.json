@@ -3,16 +3,16 @@
 		"authors": [
 			"Aotake",
 			"Fryed-peach",
+			"Irus",
 			"JtFuruhata",
 			"Kahusi",
-			"Shirayuki",
-			"青子守歌",
-			"Otokoume",
-			"Sujiniku",
-			"Irus",
-			"Suyama",
+			"Kkairri",
 			"Omotecho",
-			"Kkairri"
+			"Otokoume",
+			"Shirayuki",
+			"Sujiniku",
+			"Suyama",
+			"青子守歌"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",

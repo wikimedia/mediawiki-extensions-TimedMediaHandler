@@ -2,16 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Byrial",
+			"Cgtdk",
 			"Christian List",
 			"Fnielsen",
 			"HenrikKbh",
 			"Jon Harald Søby",
 			"Peter Alberti",
+			"Saederup92",
 			"Simeondahl",
-			"Steenth",
 			"SimmeD",
-			"Cgtdk",
-			"Saederup92"
+			"Steenth"
 		]
 	},
 	"timedmediahandler-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",

@@ -5,11 +5,11 @@
 			"Beluga",
 			"Crt",
 			"Nike",
-			"Pxos",
-			"Str4nd",
-			"VezonThunder",
 			"Pitke",
-			"Pyscowicz"
+			"Pxos",
+			"Pyscowicz",
+			"Str4nd",
+			"VezonThunder"
 		]
 	},
 	"timedmediahandler-desc": "Käsittelijä äänelle, videolle ja tekstitykselle. Tukee muotoja WebM, Ogg Theora, Vorbis ja srt.",

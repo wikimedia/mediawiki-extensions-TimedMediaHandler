@@ -3,9 +3,9 @@
 		"authors": [
 			"Framafan",
 			"Gomoko",
-			"Wladek92",
 			"Thibaut120094",
-			"Urhixidur"
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Obtenir l’état de transcodage pour une page de fichier donné.",

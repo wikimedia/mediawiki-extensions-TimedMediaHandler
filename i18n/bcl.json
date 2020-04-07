@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brazal.dang",
 			"Filipinayzd",
-			"Geopoet",
-			"Brazal.dang"
+			"Geopoet"
 		]
 	},
 	"timedmediahandler-desc": "Parakapot para sa audio, bidyo asin pinag-orasan na teksto, na igwa nin pormat kan suporta para sa WebM, Ogg Theora, Vorbis, srt",

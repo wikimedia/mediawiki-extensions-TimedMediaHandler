@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Naudefj",
-			"SPQRobin",
 			"Arnobarnard",
-			"Joris Darlington Quarshie"
+			"Joris Darlington Quarshie",
+			"Naudefj",
+			"SPQRobin"
 		]
 	},
 	"timedmediahandler-desc": "Hanteer Ogg Theora- en Vorbis-lêers met 'n JavaScript-mediaspeler",

@@ -3,9 +3,9 @@
 		"authors": [
 			"Dgstranz",
 			"Fitoschido",
+			"Johny Weissmuller Jr",
 			"Macofe",
-			"MarcoAurelio",
-			"Johny Weissmuller Jr"
+			"MarcoAurelio"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Obtener el estado de conversión de una página de archivo concreta.",

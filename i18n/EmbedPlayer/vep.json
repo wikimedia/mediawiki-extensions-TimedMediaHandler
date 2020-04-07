@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"mwe-embedplayer-link_back": "Kosketuz tagaze",
 	"mwe-embedplayer-play_clip": "Väta klip",
 	"mwe-embedplayer-credits": "Tegijad",

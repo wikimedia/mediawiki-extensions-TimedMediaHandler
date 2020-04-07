@@ -3,11 +3,11 @@
 		"authors": [
 			"Amire80",
 			"EugeneZelenko",
-			"Shirayuki",
-			"Umherirrender",
-			"Pikne",
+			"Hamilton Abreu",
 			"Liuxinyu970226",
-			"Hamilton Abreu"
+			"Pikne",
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"mwe-embedplayer-credit-title": "Used as a part of the credit. Parameters:\n* $1 - title\nThis message is followed by the following messages:\n* {{msg-mw|mwe-embedplayer-credit-author}}\n* {{msg-mw|mwe-embedplayer-credit-date}}\n{{Identical|Title}}",

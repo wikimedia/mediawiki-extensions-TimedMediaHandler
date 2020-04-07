@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rancher",
-			"Михајло Анђелковић",
 			"BadDog",
 			"Obsuser",
-			"Zoranzoki21"
+			"Rancher",
+			"Zoranzoki21",
+			"Михајло Анђелковић"
 		]
 	},
 	"mwe-timedtext-back-btn": "Назад",

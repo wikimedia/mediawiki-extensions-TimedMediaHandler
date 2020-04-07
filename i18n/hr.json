@@ -1,16 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Anarhistička Maca",
+			"Bugoslav",
 			"CERminator",
 			"Dalibor Bosits",
 			"Ex13",
-			"SpeedyGonsales",
-			"Roberta F.",
 			"Fraxinus",
-			"Teoo3",
 			"MaGa",
-			"Bugoslav",
-			"Anarhistička Maca"
+			"Roberta F.",
+			"SpeedyGonsales",
+			"Teoo3"
 		]
 	},
 	"timedmediahandler-desc": "Poslužitelj za Ogg Theora i Vorbis datoteke, s JavaScript preglednikom",

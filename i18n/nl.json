@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mainframe98",
 			"McDutchie",
+			"Romaine",
 			"SPQRobin",
 			"Siebrand",
-			"Romaine",
-			"Sjoerddebruin",
-			"Mainframe98"
+			"Sjoerddebruin"
 		]
 	},
 	"timedmediahandler-desc": "Handelt audio, video en ondertitels af met ondersteuning voor WebM, Ogg Theora, Vorbis en srt",

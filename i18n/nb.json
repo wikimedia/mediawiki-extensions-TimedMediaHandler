@@ -2,9 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Danmichaelo",
+			"Jon Harald Søby",
 			"Laaknor",
-			"Nghtwlkr",
-			"Jon Harald Søby"
+			"Nghtwlkr"
 		]
 	},
 	"timedmediahandler-desc": "Håndteringsprogram for lyd, video og tidsbestemt tekst, med formatstøtte for WebM, Ogg Theora, Vorbis, srt",
