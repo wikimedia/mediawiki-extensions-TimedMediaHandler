@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Giromin Cangiaxo"
+		]
+	},
+	"mwe-loading": "Caregamento in corso...",
+	"mwe-error_load_lib": "Errô: o JavaScript $1 o no l'è recuperabbile ò o no definisce $2",
+	"mwe-apiproxy-setup": "Configuassion do proxy API",
+	"mwe-load-drag-item": "Caregamento de l'elemento rebelou",
+	"mwe-ok": "OK",
+	"mwe-cancel": "Anulla",
+	"mwe-enable-gadget": "Abillita murtimeddia beta (mwEmbed) pe tutte e paggine",
+	"mwe-enable-gadget-done": "L'angæzo murtimediâ beta o l'è stæto abilitou",
+	"mwe-must-login-gadget": "Pe abilitâ i angæxi ti devi <a target=\"_new\" href=\"$1\">intrâ</a>",
+	"mwe-test-plural": "Ho exeguio {{PLURAL:$1|$1 test}}"
+}

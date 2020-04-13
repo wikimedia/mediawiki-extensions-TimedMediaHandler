@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Conky77",
 			"Fierodelveneto"
 		]
 	},
@@ -70,7 +71,7 @@
 	"mwe-embedplayer-do_not_warn_again": "In futuro, no mostrar pì sto mesajo",
 	"mwe-embedplayer-playerSelect": "Letori",
 	"mwe-embedplayer-read_before_embed": "<a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">Lexi cuà</a> prima de ndar vanti.",
-	"mwe-embedplayer-embed_site_or_blog": "Inserisi drento na pajina",
+	"mwe-embedplayer-embed_site_or_blog": "Inserisi drento na pàjina",
 	"mwe-embedplayer-embed_wiki": "Inserisi drento n'te na Wiki",
 	"mwe-embedplayer-related_videos": "Video ligai a sto qua",
 	"mwe-embedplayer-seeking": "so' drio sercar",
@@ -93,5 +94,5 @@
 	"mwe-embedplayer-vlcapp-vlcapppopup": "Par vardare i video so sto sito, ła xé neçesaria l'app VCL. Vuto descargarla deso?",
 	"mwe-embedplayer-iewebmprompt-intro": "Ocio! Na ultima roba, prima de poder vardar el video...",
 	"mwe-embedplayer-iewebmprompt-linktext": "Descarga i componenti multimediałi WebM par Microsoft Internet Explorer",
-	"mwe-embedplayer-iewebmprompt-outro": "Ricarga sta pajina dopo l'instałasion."
+	"mwe-embedplayer-iewebmprompt-outro": "Ricarga sta pàjina dopo l'instałasion."
 }

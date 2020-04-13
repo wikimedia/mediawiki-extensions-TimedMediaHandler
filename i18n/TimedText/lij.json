@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Giromin Cangiaxo"
+		]
+	},
+	"mwe-timedtext-back-btn": "Inderê",
+	"mwe-timedtext-layout-off": "Ascondi i sottotittoli",
+	"mwe-timedtext-loading-text": "Caregamento do scrito...",
+	"mwe-timedtext-textcat-cc": "Didascalie",
+	"mwe-timedtext-textcat-sub": "Sottotittoli",
+	"mwe-timedtext-textcat-tad": "Descrission oudio",
+	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-tik": "Scrito in movimento",
+	"mwe-timedtext-textcat-ar": "Regioin ative",
+	"mwe-timedtext-textcat-nb": "Anotassion",
+	"mwe-timedtext-textcat-meta": "Metadæti sincronizæ",
+	"mwe-timedtext-textcat-trx": "Trascrission",
+	"mwe-timedtext-textcat-lrc": "Parolle",
+	"mwe-timedtext-textcat-lin": "Markup lengoistego",
+	"mwe-timedtext-textcat-cue": "Ponti de rifeimento",
+	"mwe-timedtext-no-subs": "Nisciun-a traccia de parolle disponibbile",
+	"mwe-timedtext-language-subtitles-for-clip": "sottotittoli in $1 pe-o filmou: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Sottotittoli in $1 non trovæ pe-o filmou: $2",
+	"mwe-timedtext-upload-timed-text": "Azonzi sottotittoli"
+}
