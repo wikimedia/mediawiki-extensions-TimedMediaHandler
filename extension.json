@@ -207,7 +207,7 @@
 			"value": 3600
 		},
 		"MinimumVideoPlayerSize": {
-			"description": "The minimum size for an embed video player (smaller than this size uses a pop-up player)",
+			"description": "Specific to the old mwembed player mode: the minimum size for an embed video player (smaller than this size uses a pop-up player)",
 			"public": true,
 			"value": 200
 		},
