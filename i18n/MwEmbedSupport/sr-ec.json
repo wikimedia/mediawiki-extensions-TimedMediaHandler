@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Milicevic01",
+			"Obsuser",
 			"Rancher",
 			"Михајло Анђелковић"
 		]
@@ -13,5 +14,5 @@
 	"mwe-size-bytes": "$1 B",
 	"mwe-ok": "У реду",
 	"mwe-cancel": "Откажи",
-	"mwe-test-plural": "Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}"
+	"mwe-test-plural": "Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 теста|$1 тестова}}"
 }

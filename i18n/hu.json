@@ -34,6 +34,8 @@
 	"timedmedia-midi-long-audio": "MIDI hangfájl, hossz: $1, összesen: $2",
 	"timedmedia-mp4-short-video": "MP4 $1 videofájl, $2",
 	"timedmedia-mp4-long-video": "MP4 audió-/videófájl, $1, $2 hosszú, $4 × $5 képpont, átlagosan $3",
+	"timedmedia-mpeg-short-video": "MPEG $1 videofájl, $2",
+	"timedmedia-mpeg-long-video": "MPEG audió-/videófájl, $1, $2 hosszú, $4×$5 képpont, átlagosan $3",
 	"timedmedia-more": "Tovább...",
 	"timedmedia-dismiss": "Bezárás",
 	"timedmedia-download": "Fájl letöltése",
@@ -104,10 +106,13 @@
 	"right-transcode-status": "[[Special:TimedMediaHandler|a legutóbbi átkódolási események információinak]] megtekintése",
 	"action-transcode-reset": "átkódolások visszaállítása",
 	"action-transcode-status": "aktuális átkódolási állapot megtekintése",
+	"log-name-timedmediahandler": "TimedMediaHandler-napló",
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|visszaállította}} a(z) $3 fájl átkódolását „$4” formátumra",
 	"orphanedtimedtext": "Árva TimedText lapok",
 	"orphanedtimedtext-summary": "Olyan [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-lapok listája, amikhez nem tartozik fájl.",
 	"orphanedtimedtext-unsupported": "Ez a speciális lap csak MySQL adatbázisokon támogatott.",
+	"orphanedtimedtext-notimedtext": "A TimedText nincs engedélyezve ezen a wikin.",
 	"videojs-more-information": "További információk",
-	"videojs-quality": "Videóminőség"
+	"videojs-quality": "Videóminőség",
+	"transcodestatistics": "Átkódolási statisztika"
 }
