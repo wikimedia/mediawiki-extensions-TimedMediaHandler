@@ -41,9 +41,15 @@
 	"mwe-embedplayer-close_btn": "Kip ke",
 	"mwe-embedplayer-ogg-player-vlc-player": "Kay kerdogê VLC",
 	"mwe-embedplayer-ogg-player-oggNative": "HTML5 Ogg kayker",
+	"mwe-embedplayer-ogg-player-mp3Native": "HTML5 MP3 kayfinayoğ",
+	"mwe-embedplayer-ogg-player-aacNative": "HTML5 AAC kayfinayoğ",
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 kayker",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM kayker",
+	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9 kayfinayoğ",
 	"mwe-embedplayer-ogg-player-oggPlugin": "Cenerik olekenê Ogg'i",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "VLC serva iOS app",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "IE WebM plugin ronayoğ",
+	"mwe-embedplayer-ogg-player-ogvJsPlayer": "JavaScript Ogg kayfinayoğ",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime plugin",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
@@ -66,5 +72,6 @@
 	"mwe-embedplayer-audio-mpeg": "MPEG audio",
 	"mwe-embedplayer-video-3gp": "3GP video",
 	"mwe-embedplayer-video-mpeg": "MPEG video",
-	"mwe-embedplayer-video-msvideo": "AVI video"
+	"mwe-embedplayer-video-msvideo": "AVI video",
+	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC app"
 }
