@@ -41,7 +41,7 @@ class TimedTextPage extends Article {
 
 		$oldid = $this->getOldID();
 		# Are we looking at an old revision
-		if ( $oldid && $this->mRevision ) {
+		if ( $oldid && $this->fetchRevisionRecord() ) {
 			$this->fetchContentObject();
 			$out->setRevisionId( $this->getRevIdFetched() );
 			$this->setOldSubtitle( $oldid );
