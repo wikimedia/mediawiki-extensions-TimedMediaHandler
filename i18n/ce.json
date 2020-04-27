@@ -70,6 +70,8 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 юху кодяран рогӀехь ю}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 кхочуш ца хилла юху кодяр}}",
 	"timedmedia-file": "Файл",
+	"beta-feature-timedmediahandler-message-videojs": "Видеофайлийн керла локхург",
+	"beta-feature-timedmediahandler-description-videojs": "Видеофайлашка хьажа керлачу плеер чохь, керла плееран дика дизайн ю, цул совнах телефонан верси а ловш ю.",
 	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
 	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|юху код хийцаран хааме]]",
 	"orphanedtimedtext": "Яйна агӀонаш TimedText",
