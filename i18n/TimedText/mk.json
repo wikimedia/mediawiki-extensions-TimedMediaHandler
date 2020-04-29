@@ -21,6 +21,6 @@
 	"mwe-timedtext-textcat-cue": "Моментни точки",
 	"mwe-timedtext-no-subs": "Нема титлови на располагање",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 — титлови за снимката: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Нема пронајдено титлови на $1 за снимката: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Не пронајдов титлови на $1 за снимката: $2",
 	"mwe-timedtext-upload-timed-text": "Стави титлови"
 }
