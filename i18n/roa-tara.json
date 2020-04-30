@@ -27,6 +27,8 @@
 	"timedmedia-midi-long-audio": "File audio MIDI, lunghezze $1, in totale $2",
 	"timedmedia-mp4-short-video": "MP4 $1 file video, $2",
 	"timedmedia-mp4-long-video": "File MP4 audio/video, $1, lunghezze $2, $4 × $5 pixel, $3 in totale",
+	"timedmedia-mpeg-short-video": "MPEG $1 file video, $2",
+	"timedmedia-mpeg-long-video": "File MPEG audio/video, $1, lunghezze $2, $4 × $5 pixel, $3 in totale",
 	"timedmedia-more": "De cchiù...",
 	"timedmedia-dismiss": "Chiude",
 	"timedmedia-download": "Scareche stu file",
@@ -133,5 +135,6 @@
 	"orphanedtimedtext-unsupported": "Sta pàgena speciale jè supportate sulamende sus a le database MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText non g'è abbiltiate sus a sta uicchi.",
 	"videojs-more-information": "Cchiù 'mbormaziune",
-	"videojs-quality": "Qualitate d'u video"
+	"videojs-quality": "Qualitate d'u video",
+	"transcodestatistics": "StatISTECHE d'a codifeche"
 }
