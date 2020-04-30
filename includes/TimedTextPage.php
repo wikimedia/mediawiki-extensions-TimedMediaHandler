@@ -96,7 +96,7 @@ class TimedTextPage extends Article {
 		}
 
 		// Set title
-		$message = $this->exists() ?
+		$message = $this->getPage()->exists() ?
 			'mwe-timedtext-language-subtitles-for-clip' :
 			'mwe-timedtext-language-no-subtitles-for-clip';
 		$out->setPageTitle( wfMessage( $message, $languageName, $videoTitle ) );
@@ -205,7 +205,7 @@ class TimedTextPage extends Article {
 	 * @return Message|string
 	 */
 	private function getTimedTextHTML( $languageName ) {
-		if ( !$this->exists() ) {
+		if ( !$this->getPage()->exists() ) {
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
 		return Xml::element(
