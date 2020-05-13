@@ -126,7 +126,6 @@ class WebVideoTranscodeJob extends Job {
 	 * @return bool success
 	 */
 	public function run() {
-		global $wgVersion;
 		// get a local pointer to the file
 		$file = $this->getFile();
 
@@ -271,7 +270,7 @@ class WebVideoTranscodeJob extends Job {
 		if ( $status === true && filesize( $this->getTargetEncodePath() ) > 0 ) {
 			$file = $this->getFile();
 			$storeOptions = null;
-			if ( version_compare( $wgVersion, '1.23c', '>' ) &&
+			if (
 				strpos( $options['type'], '/ogg' ) !== false &&
 				$file->getLength()
 			) {
