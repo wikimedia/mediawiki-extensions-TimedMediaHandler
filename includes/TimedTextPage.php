@@ -128,7 +128,7 @@ class TimedTextPage extends Article {
 		$output->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',
 			$file->getRepo()->getDisplayName() ) );
 		$output->addHTML( wfMessage( 'timedmedia-subtitle-remote-link',
-			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName() ) );
+			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName() )->parse() );
 	}
 
 	private function doRedirectToPageForm() {
