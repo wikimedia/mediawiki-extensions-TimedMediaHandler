@@ -40,9 +40,9 @@
 	"mwe-embedplayer-ogg-player-flowplayer": "Flowplayer",
 	"mwe-embedplayer-ogg-player-selected": "(seleccionat)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
-	"mwe-embedplayer-for_best_experience": "Per un melhor visionatge recomandam un <a href=\"//www.mediawiki.org/wiki/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navigador vidèo HTML5</a>.",
+	"mwe-embedplayer-for_best_experience": "Per un melhor visionatge recomandam un <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navigador vidèo HTML5</a>.",
 	"mwe-embedplayer-do_not_warn_again": "Afichar pas mai aqueste messatge a l'avenir",
-	"mwe-embedplayer-read_before_embed": "Legissètz <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">aquò</a> abans de procedir !",
+	"mwe-embedplayer-read_before_embed": "Legissètz <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Security_Notes_on_Remote_Embedding\" target=\"new\">aquò</a> abans de procedir !",
 	"mwe-embedplayer-embed_site_or_blog": "Integrar dins una pagina",
 	"mwe-embedplayer-related_videos": "Vidèos associadas",
 	"mwe-embedplayer-seeking": "recèrca"

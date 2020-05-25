@@ -51,7 +51,7 @@
 	"mwe-embedplayer-ogg-player-selected": "(নির্বাচিত)",
 	"mwe-embedplayer-do_not_warn_again": "ভবিষ্যতে, এই বার্তা প্রদর্শন করবেন না",
 	"mwe-embedplayer-playerSelect": "প্লেয়ারগুলি",
-	"mwe-embedplayer-read_before_embed": "এম্বেড করার আগে <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">এটি পড়ুন</a>।",
+	"mwe-embedplayer-read_before_embed": "এম্বেড করার আগে <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Security_Notes_on_Remote_Embedding\" target=\"new\">এটি পড়ুন</a>।",
 	"mwe-embedplayer-embed_site_or_blog": "একটি পাতায় এম্বেড করুন",
 	"mwe-embedplayer-embed_wiki": "একটি উইকিতে এম্বেড করুন",
 	"mwe-embedplayer-related_videos": "সম্পর্কিত ভিডিও",

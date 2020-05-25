@@ -55,7 +55,7 @@
 	"mwe-embedplayer-fullscreen-tip-osx": "დააჭირეთ <b>shift ⌘ F</b> სრულეკრანიან რეჟიმზე გადასასვლელად",
 	"mwe-embedplayer-do_not_warn_again": "მომავალში აღარ აჩვენო ეს შეტყობინება",
 	"mwe-embedplayer-playerSelect": "დამკვრელები",
-	"mwe-embedplayer-read_before_embed": "გთხოვთ, <a href=\"https://www.mediawiki.org/wiki/Security_Notes_on_Remote_Embedding\" target=\"new\">წაიკითხეთ ეს</a> ჩაშენებამდე!",
+	"mwe-embedplayer-read_before_embed": "გთხოვთ, <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Security_Notes_on_Remote_Embedding\" target=\"new\">წაიკითხეთ ეს</a> ჩაშენებამდე!",
 	"mwe-embedplayer-embed_site_or_blog": "გვერდში ჩადგმა",
 	"mwe-embedplayer-related_videos": "დაკავშირებული ვიდეოები",
 	"mwe-embedplayer-seeking": "ძიება",
