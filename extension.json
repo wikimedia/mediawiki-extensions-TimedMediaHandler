@@ -951,6 +951,18 @@
 			]
 		}
 	},
+	"MediaHandlers": {
+		"application/ogg": "OggHandler",
+		"audio/flac": "FLACHandler",
+		"audio/midi": "MidiHandler",
+		"audio/mpeg": "Mp3Handler",
+		"audio/wav": "WAVHandler",
+		"audio/webm": "WebMHandler",
+		"audio/x-flac": "FLACHandler",
+		"video/mp4": "Mp4Handler",
+		"video/mpeg": "MPEGHandler",
+		"video/webm": "WebMHandler"
+	},
 	"ConfigRegistry": {
 		"timedmediahandler": "GlobalVarConfig::newInstance"
 	},

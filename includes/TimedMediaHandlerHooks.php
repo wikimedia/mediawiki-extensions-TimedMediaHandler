@@ -44,7 +44,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function register() {
-		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue, $wgMediaHandlers,
+		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
 		$wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions;
@@ -58,18 +58,6 @@ class TimedMediaHandlerHooks {
 				array_splice( $wgFileExtensions, $index, 1 );
 			}
 		}
-
-		// Setup media Handlers:
-		$wgMediaHandlers['application/ogg'] = 'OggHandler';
-		$wgMediaHandlers['audio/webm'] = 'WebMHandler';
-		$wgMediaHandlers['video/webm'] = 'WebMHandler';
-		$wgMediaHandlers['video/mp4'] = 'Mp4Handler';
-		$wgMediaHandlers['audio/x-flac'] = 'FLACHandler';
-		$wgMediaHandlers['audio/flac'] = 'FLACHandler';
-		$wgMediaHandlers['audio/wav'] = 'WAVHandler';
-		$wgMediaHandlers['audio/midi'] = 'MidiHandler';
-		$wgMediaHandlers['audio/mpeg'] = 'Mp3Handler';
-		$wgMediaHandlers['video/mpeg'] = 'MPEGHandler';
 
 		// Add transcode job class:
 		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';
