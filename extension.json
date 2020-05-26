@@ -977,6 +977,10 @@
 		"video/mpeg": "MPEGHandler",
 		"video/webm": "WebMHandler"
 	},
+	"JobClasses": {
+		"webVideoTranscode": "WebVideoTranscodeJob",
+		"webVideoTranscodePrioritized": "WebVideoTranscodeJob"
+	},
 	"ConfigRegistry": {
 		"timedmediahandler": "GlobalVarConfig::newInstance"
 	},

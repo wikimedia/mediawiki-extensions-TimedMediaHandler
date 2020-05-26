@@ -44,7 +44,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function register() {
-		global $wgHooks, $wgJobClasses, $wgJobTypesExcludedFromDefaultQueue,
+		global $wgHooks, $wgJobTypesExcludedFromDefaultQueue,
 		$wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions;
@@ -58,11 +58,6 @@ class TimedMediaHandlerHooks {
 				array_splice( $wgFileExtensions, $index, 1 );
 			}
 		}
-
-		// Add transcode job class:
-		$wgJobClasses['webVideoTranscode'] = 'WebVideoTranscodeJob';
-		// Same class with different queue priority:
-		$wgJobClasses['webVideoTranscodePrioritized'] = 'WebVideoTranscodeJob';
 
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
