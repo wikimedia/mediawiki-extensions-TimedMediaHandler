@@ -67,30 +67,6 @@ class TimedMediaHandlerHooks {
 		// Transcode jobs must be explicitly requested from the job queue:
 		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
 
-		// Setup a hook for iframe embed handling:
-		$wgHooks['MediaWikiPerformAction'][] = 'TimedMediaIframeOutput::iframeHook';
-
-		// When an upload completes ( check clear any existing transcodes )
-		$wgHooks['FileUpload'][] = 'TimedMediaHandlerHooks::onFileUpload';
-
-		// When an image page is moved:
-		$wgHooks['TitleMove'][] = 'TimedMediaHandlerHooks::checkTitleMove';
-
-		// When image page is deleted so that we remove transcode settings / files.
-		$wgHooks['FileDeleteComplete'][] = 'TimedMediaHandlerHooks::onFileDeleteComplete';
-
-		// Use a BeforePageDisplay hook to load the styles in pages that pull in media dynamically.
-		// (Special:Upload, for example, when there is an "existing file" warning.)
-		$wgHooks['BeforePageDisplay'][] = 'TimedMediaHandlerHooks::pageOutputHook';
-
-		// Make sure modules are loaded on image pages that don't have a media file in the wikitext.
-		$wgHooks['ImageOpenShowImageInlineBefore'][] =
-			'TimedMediaHandlerHooks::onImageOpenShowImageInlineBefore';
-
-		// Bug T63923: Make sure modules are loaded for the image history of image pages.
-		// This is needed when ImageOpenShowImageInlineBefore is not triggered (diff previews).
-		$wgHooks['ImagePageFileHistoryLine'][] = 'TimedMediaHandlerHooks::onImagePageFileHistoryLine';
-
 		// Exclude transcoded assets from normal thumbnail purging
 		// ( a maintenance script could handle transcode asset purging)
 		if ( isset( $wgExcludeFromThumbnailPurge ) ) {
@@ -99,9 +75,6 @@ class TimedMediaHandlerHooks {
 			// ( probably should move in-progress encodes out of web accessible directory )
 			$wgExcludeFromThumbnailPurge[] = 'log';
 		}
-
-		// Add unit tests
-		$wgHooks['ParserTestTables'][] = 'TimedMediaHandlerHooks::onParserTestTables';
 
 		/**
 		 * Add support for the "TimedText" NameSpace
@@ -116,16 +89,6 @@ class TimedMediaHandlerHooks {
 			// overwrite TimedText.ShowInterface for video with mw-provider=local
 			$wgMwEmbedModuleConfig['TimedText.ShowInterface.local'] = 'off';
 		}
-
-		// Add transcode status to video asset pages:
-		$wgHooks['ImagePageAfterImageLinks'][] = 'TimedMediaHandlerHooks::checkForTranscodeStatus';
-		$wgHooks['NewRevisionFromEditComplete'][] =
-			'TimedMediaHandlerHooks::onNewRevisionFromEditComplete';
-		$wgHooks['ArticlePurge'][] = 'TimedMediaHandlerHooks::onArticlePurge';
-
-		$wgHooks['LoadExtensionSchemaUpdates'][] = 'TimedMediaHandlerHooks::checkSchemaUpdates';
-		$wgHooks['wgQueryPages'][] = 'TimedMediaHandlerHooks::onwgQueryPages';
-		$wgHooks['RejectParserCacheValue'][] = 'TimedMediaHandlerHooks::onRejectParserCacheValue';
 		return true;
 	}
 

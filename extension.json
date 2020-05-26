@@ -115,11 +115,25 @@
 		"MediaWiki\\TimedMediaHandler\\TimedText\\": "includes/TimedText/"
 	},
 	"Hooks": {
+		"ArticlePurge": "TimedMediaHandlerHooks::onArticlePurge",
+		"BeforePageDisplay": "TimedMediaHandlerHooks::pageOutputHook",
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::onCanonicalNamespaces",
+		"FileDeleteComplete": "TimedMediaHandlerHooks::onFileDeleteComplete",
+		"FileUpload": "TimedMediaHandlerHooks::onFileUpload",
 		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
+		"ImageOpenShowImageInlineBefore": "TimedMediaHandlerHooks::onImageOpenShowImageInlineBefore",
+		"ImagePageAfterImageLinks": "TimedMediaHandlerHooks::checkForTranscodeStatus",
+		"ImagePageFileHistoryLine": "TimedMediaHandlerHooks::onImagePageFileHistoryLine",
+		"LoadExtensionSchemaUpdates": "TimedMediaHandlerHooks::checkSchemaUpdates",
+		"MediaWikiPerformAction": "TimedMediaIframeOutput::iframeHook",
+		"NewRevisionFromEditComplete": "TimedMediaHandlerHooks::onNewRevisionFromEditComplete",
 		"PageRenderingHash": "TimedMediaHandlerHooks::onPageRenderingHash",
 		"ParserTestGlobals": "TimedMediaHandlerHooks::onParserTestGlobals",
-		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars"
+		"ParserTestTables": "TimedMediaHandlerHooks::onParserTestTables",
+		"RejectParserCacheValue": "TimedMediaHandlerHooks::onRejectParserCacheValue",
+		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars",
+		"TitleMove": "TimedMediaHandlerHooks::checkTitleMove",
+		"wgQueryPages": "TimedMediaHandlerHooks::onwgQueryPages"
 	},
 	"config": {
 		"TmhUseBetaFeatures": {
