@@ -44,7 +44,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function register() {
-		global $wgHooks, $wgJobTypesExcludedFromDefaultQueue,
+		global $wgJobTypesExcludedFromDefaultQueue,
 		$wgExcludeFromThumbnailPurge,
 		$wgFileExtensions, $wgTmhEnableMp4Uploads,
 		$wgMwEmbedModuleConfig, $wgEnableLocalTimedText, $wgTmhFileExtensions;
@@ -71,16 +71,7 @@ class TimedMediaHandlerHooks {
 			$wgExcludeFromThumbnailPurge[] = 'log';
 		}
 
-		/**
-		 * Add support for the "TimedText" NameSpace
-		 */
-		if ( $wgEnableLocalTimedText ) {
-			// Check for timed text page:
-			$wgHooks[ 'ArticleFromTitle' ][] = 'TimedMediaHandlerHooks::checkForTimedTextPage';
-			$wgHooks[ 'ArticleContentOnDiff' ][] = 'TimedMediaHandlerHooks::checkForTimedTextDiff';
-
-			$wgHooks[ 'SkinTemplateNavigation' ][] = 'TimedMediaHandlerHooks::onSkinTemplateNavigation';
-		} else {
+		if ( !$wgEnableLocalTimedText ) {
 			// overwrite TimedText.ShowInterface for video with mw-provider=local
 			$wgMwEmbedModuleConfig['TimedText.ShowInterface.local'] = 'off';
 		}
@@ -140,6 +131,11 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function checkForTimedTextPage( Title $title, ?Article &$article ) {
+		global $wgEnableLocalTimedText;
+		if ( !$wgEnableLocalTimedText ) {
+			return true;
+		}
+
 		global $wgTimedTextNS;
 		if ( $title->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $title );
@@ -153,6 +149,11 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function checkForTimedTextDiff( $diffEngine, $output ) {
+		global $wgEnableLocalTimedText;
+		if ( !$wgEnableLocalTimedText ) {
+			return true;
+		}
+
 		global $wgTimedTextNS;
 		if ( $output->getTitle()->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $output->getTitle() );
@@ -167,6 +168,11 @@ class TimedMediaHandlerHooks {
 	 * @param array &$links
 	 */
 	public static function onSkinTemplateNavigation( SkinTemplate &$sktemplate, array &$links ) {
+		global $wgEnableLocalTimedText;
+		if ( !$wgEnableLocalTimedText ) {
+			return;
+		}
+
 		if ( self::isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
 			$ttTitle = Title::makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
 			if ( !$ttTitle ) {

@@ -115,6 +115,8 @@
 		"MediaWiki\\TimedMediaHandler\\TimedText\\": "includes/TimedText/"
 	},
 	"Hooks": {
+		"ArticleContentOnDiff": "TimedMediaHandlerHooks::checkForTimedTextDiff",
+		"ArticleFromTitle": "TimedMediaHandlerHooks::checkForTimedTextPage",
 		"ArticlePurge": "TimedMediaHandlerHooks::onArticlePurge",
 		"BeforePageDisplay": "TimedMediaHandlerHooks::pageOutputHook",
 		"CanonicalNamespaces": "TimedMediaHandlerHooks::onCanonicalNamespaces",
@@ -132,6 +134,7 @@
 		"ParserTestTables": "TimedMediaHandlerHooks::onParserTestTables",
 		"RejectParserCacheValue": "TimedMediaHandlerHooks::onRejectParserCacheValue",
 		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars",
+		"SkinTemplateNavigation": "TimedMediaHandlerHooks::onSkinTemplateNavigation",
 		"TitleMove": "TimedMediaHandlerHooks::checkTitleMove",
 		"wgQueryPages": "TimedMediaHandlerHooks::onwgQueryPages"
 	},
