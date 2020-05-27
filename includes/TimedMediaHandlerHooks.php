@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Hooks for TimedMediaHandler extension
@@ -331,14 +333,14 @@ class TimedMediaHandlerHooks {
 	 * If file gets reverted to a previous version, reset transcodes.
 	 *
 	 * @param WikiPage $wikiPage
-	 * @param Revision $rev
+	 * @param RevisionRecord $rev
 	 * @param int $baseID
-	 * @param User $user
+	 * @param UserIdentity $user
 	 *
 	 * @return bool
 	 */
-	public static function onNewRevisionFromEditComplete(
-		WikiPage $wikiPage, Revision $rev, $baseID, User $user
+	public static function onRevisionFromEditComplete(
+		WikiPage $wikiPage, RevisionRecord $rev, $baseID, UserIdentity $user
 	) {
 		if ( $baseID !== false ) {
 			// Check if the article is a file and remove transcode files:

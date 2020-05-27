@@ -128,7 +128,7 @@
 		"ImagePageFileHistoryLine": "TimedMediaHandlerHooks::onImagePageFileHistoryLine",
 		"LoadExtensionSchemaUpdates": "TimedMediaHandlerHooks::checkSchemaUpdates",
 		"MediaWikiPerformAction": "TimedMediaIframeOutput::iframeHook",
-		"NewRevisionFromEditComplete": "TimedMediaHandlerHooks::onNewRevisionFromEditComplete",
+		"RevisionFromEditComplete": "TimedMediaHandlerHooks::onRevisionFromEditComplete",
 		"PageRenderingHash": "TimedMediaHandlerHooks::onPageRenderingHash",
 		"ParserTestGlobals": "TimedMediaHandlerHooks::onParserTestGlobals",
 		"ParserTestTables": "TimedMediaHandlerHooks::onParserTestTables",
