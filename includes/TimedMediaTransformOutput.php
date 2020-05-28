@@ -196,7 +196,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return bool
 	 */
 	private function useImagePopUp() {
-		global  $wgMinimumVideoPlayerSize;
+		global $wgMinimumVideoPlayerSize;
 		// Check if the video is too small to play inline ( instead do a pop-up dialog )
 		// If we're filling the window (e.g. during an iframe embed) one probably doesn't want the pop up.
 		// Also the pop up is broken in that case.
