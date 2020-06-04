@@ -385,6 +385,17 @@ class TimedMediaHandler extends MediaHandler {
 			'inline' => $params['inline'] ?? false,
 		];
 
+		// Allow start and end query string params on image pages (T203994)
+		if ( isset( $params['imagePageRequest'] ) ) {
+			$request = $params['imagePageRequest'];
+			if ( !$options['start'] ) {
+				$options['start'] = $request->getText( 'start' ) ?: false;
+			}
+			if ( !$options['end'] ) {
+				$options['end'] = $request->getText( 'end' ) ?: false;
+			}
+		}
+
 		// No thumbs for audio
 		if ( !$options['isVideo'] ) {
 			return new TimedMediaTransformOutput( $options );
