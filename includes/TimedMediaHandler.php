@@ -386,13 +386,13 @@ class TimedMediaHandler extends MediaHandler {
 		];
 
 		// Allow start and end query string params on image pages (T203994)
-		if ( isset( $params['imagePageRequest'] ) ) {
-			$request = $params['imagePageRequest'];
+		if ( isset( $params['imagePageParams'] ) ) {
+			$requestParams = $params['imagePageParams'];
 			if ( !$options['start'] ) {
-				$options['start'] = $request->getText( 'start' ) ?: false;
+				$options['start'] = $requestParams[ 'start' ] ?: false;
 			}
 			if ( !$options['end'] ) {
-				$options['end'] = $request->getText( 'end' ) ?: false;
+				$options['end'] = $requestParams[ 'end' ] ?: false;
 			}
 		}
 
