@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * @ingroup timedmedia
  * @author michael dale
@@ -96,6 +99,8 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		// Set the condition to only run the webVideoTranscode
 		$conds = [ "job_cmd" => $type ];
 
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 			for ( ; ; ) {
 				$job = Job::pop_type( $type );
@@ -103,7 +108,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 					break;
 				}
 
-				wfWaitForSlaves( 5 );
+				$lbFactory->waitForReplication( [ 'ifWritesSince' => 5 ] );
 				$t = microtime( true );
 				$offset = $job->id;
 				$status = $job->run();
