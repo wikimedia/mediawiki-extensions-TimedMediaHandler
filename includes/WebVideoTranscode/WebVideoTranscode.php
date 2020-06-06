@@ -804,7 +804,8 @@ class WebVideoTranscode {
 			// Remove any existing files ( regardless of their state )
 			$res = $file->repo->getMasterDB()->select( 'transcode',
 				[ 'transcode_key' ],
-				[ 'transcode_image_name' => $file->getName() ]
+				[ 'transcode_image_name' => $file->getName() ],
+				__METHOD__
 			);
 			$removeKeys = [];
 			foreach ( $res as $transcodeRow ) {

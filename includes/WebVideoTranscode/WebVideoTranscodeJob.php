@@ -242,7 +242,8 @@ class WebVideoTranscodeJob extends Job {
 			[
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			]
+			],
+			__METHOD__
 		);
 
 		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
