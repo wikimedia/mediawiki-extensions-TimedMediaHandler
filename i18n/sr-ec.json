@@ -50,7 +50,7 @@
 	"timedmedia-minutes": "{{PLURAL:$1|1 минут|$1 минута}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 секунд|$1 секунда|$1 секунди}}",
 	"timedmedia-reset": "Ресетуј прекодирање",
-	"timedmedia-reset-areyousure": "Да ли сте сигурни да желите да наставите?",
+	"timedmedia-reset-areyousure": "Желите ли заиста да наставите?",
 	"timedmedia-reset-button-cancel": "Не ресетуј",
 	"timedmedia-reset-button-dismiss": "Одбаци",
 	"timedmedia-reset-button-reset": "Ресетуј",
