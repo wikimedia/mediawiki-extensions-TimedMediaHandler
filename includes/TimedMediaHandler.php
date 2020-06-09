@@ -389,10 +389,10 @@ class TimedMediaHandler extends MediaHandler {
 		if ( isset( $params['imagePageParams'] ) ) {
 			$requestParams = $params['imagePageParams'];
 			if ( !$options['start'] ) {
-				$options['start'] = $requestParams[ 'start' ] ?: false;
+				$options['start'] = $requestParams[ 'start' ] ?? false;
 			}
 			if ( !$options['end'] ) {
-				$options['end'] = $requestParams[ 'end' ] ?: false;
+				$options['end'] = $requestParams[ 'end' ] ?? false;
 			}
 		}
 
