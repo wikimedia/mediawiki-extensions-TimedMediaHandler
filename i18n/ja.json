@@ -12,6 +12,7 @@
 			"Shirayuki",
 			"Sujiniku",
 			"Suyama",
+			"Tmv",
 			"青子守歌"
 		]
 	},
@@ -64,6 +65,7 @@
 	"timedmedia-reset-button-cancel": "リセットしない",
 	"timedmedia-reset-button-dismiss": "非表示",
 	"timedmedia-reset-button-reset": "リセット",
+	"timedmedia-reset-error": "トランスコードジョブのリセットでエラーが発生しました。",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 ソース",
 	"timedmedia-source-file-desc": "オリジナル $1 ファイル、$2 × $3 ($4)",
