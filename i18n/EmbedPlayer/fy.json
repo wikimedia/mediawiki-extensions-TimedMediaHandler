@@ -6,6 +6,12 @@
 			"Robin0van0der0vliet"
 		]
 	},
+	"mwe-embedplayer-credit-title": "Titel: $1",
+	"mwe-embedplayer-credit-date": "Datum: $1",
+	"mwe-embedplayer-credit-author": "Auteur: $1",
+	"mwe-embedplayer-nocredits": "Gjin ôftiteling beskikber",
+	"mwe-embedplayer-select_playback": "Ofspylfoarkar ynstelle",
+	"mwe-embedplayer-missing_video_stream": "It fideobestân foar dizze stream ûntbrekt",
 	"mwe-embedplayer-play_clip": "Fragmint ôfspylje",
 	"mwe-embedplayer-pause_clip": "Fragmint ûnderbrekke",
 	"mwe-embedplayer-volume_control": "Folumeregeler",
