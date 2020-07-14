@@ -109,11 +109,8 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 				}
 
 				$lbFactory->waitForReplication( [ 'ifWritesSince' => 5 ] );
-				$t = microtime( true );
 				$offset = $job->id;
 				$status = $job->run();
-				$t = microtime( true ) - $t;
-				$timeMs = intval( $t * 1000 );
 			}
 		}
 	}
