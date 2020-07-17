@@ -10,6 +10,9 @@
 	},
 	"rules": {
 		"valid-jsdoc": "off",
-		"max-len": "off"
+		"max-len": "off",
+		"array-callback-return": "warn",
+		"no-restricted-properties": "warn",
+		"no-unused-vars": "warn"
 	}
 }

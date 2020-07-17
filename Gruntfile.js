@@ -15,7 +15,15 @@ module.exports = function ( grunt ) {
 				extensions: [ '.js', '.json' ],
 				cache: true
 			},
-			all: '.'
+			all: [
+				'**/*.{js,json}',
+				'!resources/mw-info-button/**',
+				// Third party resources
+				'!resources/mwembed/**',
+				'!resources/videojs*/**',
+				'!node_modules/**',
+				'!vendor/**'
+			]
 		},
 		stylelint: {
 			options: {
