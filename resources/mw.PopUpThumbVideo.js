@@ -7,7 +7,7 @@
 			var link, title,
 				$parent = $( this ).parent();
 			if ( $parent.attr( 'videopayload' ) ) {
-				$( this ).on( 'click', function ( /* event*/ ) {
+				$( this ).on( 'click', function ( /* event */ ) {
 					var thisref = this;
 
 					if ( !mw.OgvJsSupport.canPlayNatively() ) {
