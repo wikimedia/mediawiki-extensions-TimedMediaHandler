@@ -94,6 +94,7 @@
 						// @todo: this eats middle-click, should fix that
 						event.preventDefault();
 					} )
+					.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 				);
 			$videoplayer.replaceWith( $placeholder );
 		}

@@ -528,6 +528,7 @@
 				"desktop"
 			],
 			"dependencies": [
+				"ext.tmh.player.styles",
 				"ext.tmh.OgvJsSupport",
 				"mediawiki.Title"
 			],

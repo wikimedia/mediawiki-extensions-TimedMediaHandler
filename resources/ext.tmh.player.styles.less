@@ -29,15 +29,29 @@ audio,
 		right: 0;
 		top: 0;
 		bottom: 0;
-		background-origin: 0 0;
-		background-repeat: no-repeat;
 	}
 }
 
 .mw-tmh-player.video > .mw-tmh-play {
 	/* @embed */
-	.background-image( 'play-button.svg' );
-	opacity: 0.5;
+	transition: background-color 120ms linear, opacity 100ms ease;
+	opacity: 0.6;
+
+	.mw-tmh-play-icon {
+		/* @embed */
+		background: rgba( 0, 0, 0, 0.6 ) url( play-invert.svg ) 12px 10px no-repeat;
+		background-position: center;
+		margin: auto;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
 }
 
 .mw-tmh-player.audio > .mw-tmh-play {
