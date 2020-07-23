@@ -7,5 +7,6 @@
 	},
 	"timedmedia-more": "كتر...",
 	"timedmedia-source-file": "$1 مصدر",
-	"timedmedia-source-audio-file-desc": "الملف $1 الأصلي ($2)"
+	"timedmedia-source-audio-file-desc": "الملف $1 الأصلي ($2)",
+	"beta-feature-timedmediahandler-message-videojs": "برناماج لڤيديو جديد"
 }

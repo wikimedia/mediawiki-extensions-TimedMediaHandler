@@ -140,5 +140,6 @@
 	"orphanedtimedtext-unsupported": "Denne spesialsiden er kun støttet for MySQL-databaser.",
 	"orphanedtimedtext-notimedtext": "TimedText er ikke påskrudd på denne wikien.",
 	"videojs-more-information": "Mer informasjon",
-	"videojs-quality": "Videokvalitet"
+	"videojs-quality": "Videokvalitet",
+	"transcodestatistics": "Omkodingsstatistikk"
 }
