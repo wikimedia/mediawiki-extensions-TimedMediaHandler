@@ -1,18 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"BaRaN6161 TURK",
 			"Hedda",
 			"Joseph"
 		]
 	},
-	"mwe-loading": "Yükleniyor...",
+	"mwe-loading": "Yükleniyor ...",
 	"mwe-error_load_lib": "Hata: $1 JavaScript'i erişilebilir değil ya da $2 tanımlı değil",
-	"mwe-apiproxy-setup": "API vekili ayarlanıyor",
+	"mwe-apiproxy-setup": "API proxy ayarlanıyor",
 	"mwe-load-drag-item": "Sürüklenen öge yükleniyor",
 	"mwe-ok": "Tamam",
 	"mwe-cancel": "İptal",
 	"mwe-enable-gadget": "Tüm sayfalar için multimedya beta (mwEmbed) özelliğini etkinleştir",
-	"mwe-enable-gadget-done": "Multimedya beta gadget'ı etkinleştirildi",
-	"mwe-must-login-gadget": "Gadget'ı etkinleştirmek için <a target=\"_new\" href=\"$1\">giriş yapmalısınız</a>",
-	"mwe-test-plural": "{{PLURAL:$1|$1 test|$1 test}} gerçekleştirdim"
+	"mwe-enable-gadget-done": "Multimedya beta küçük aracı etkinleştirildi",
+	"mwe-must-login-gadget": "Küçük aracı etkinleştirmek için <a target=\"_new\" href=\"$1\">oturum açmalısınız</a>",
+	"mwe-test-plural": "{{PLURAL:$1|$1 testi|$1 testi}} gerçekleştirdim"
 }
