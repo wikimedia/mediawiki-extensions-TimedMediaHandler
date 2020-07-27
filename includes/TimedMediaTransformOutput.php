@@ -7,7 +7,6 @@ use Html;
 use MediaTransformOutput;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use Xml;
 
 class TimedMediaTransformOutput extends MediaTransformOutput {
 	/** @var int */
@@ -232,52 +231,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$s .= Html::element( $tagName, $attr );
 		}
 		return $s;
-	}
-
-	/**
-	 * @return string
-	 * @suppress SecurityCheck-DoubleEscaped see note inline
-	 */
-	private function getImagePopUp() {
-		// pop up videos set the autoplay attribute to true:
-		$autoPlay = true;
-		$id = self::$serial;
-		self::$serial++;
-
-		$mediaAttr = $this->getMediaAttr( $this->getPopupPlayerSize(), $autoPlay );
-
-		return Xml::tags( 'div', [
-				'id' => self::PLAYER_ID_PREFIX . $id,
-				'class' => 'PopUpMediaTransform',
-				'style' => "width:" . $this->getPlayerWidth() . "px;",
-				// Note: getHtmlMediaTagOutput() returns HTML, which is getting double escaped here
-				'videopayload' => $this->getHtmlMediaTagOutput( $mediaAttr ),
-				],
-			Xml::tags( 'img', [
-				'alt' => $this->file->getTitle(),
-				'style' => "width:" . $this->getPlayerWidth() . "px;height:" .
-							$this->getPlayerHeight() . "px",
-				'src' => $this->getUrl(),
-			], '' )
-			.
-			// For javascript disabled browsers provide a link to the asset:
-			Xml::tags( 'a', [
-					'href' => $this->file->getUrl(),
-					'title' => wfMessage( 'timedmedia-play-media' )->text(),
-					'target' => 'new'
-				],
-				Xml::tags( 'span', [
-						'class' => 'play-btn-large'
-					],
-					// Have some sort of text for lynx & screen readers.
-					Html::element(
-						'span',
-						[ 'class' => 'mw-tmh-playtext' ],
-						wfMessage( 'timedmedia-play-media' )->text()
-					)
-				)
-			)
-		);
 	}
 
 	/**
