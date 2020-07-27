@@ -662,20 +662,7 @@
 				"mw.MwEmbedSupport.style"
 			],
 			"messages": [
-				"mwe-loading",
-				"mwe-size-gigabytes",
-				"mwe-size-megabytes",
-				"mwe-size-kilobytes",
-				"mwe-size-bytes",
-				"mwe-error_load_lib",
-				"mwe-apiproxy-setup",
-				"mwe-load-drag-item",
-				"mwe-ok",
-				"mwe-cancel",
-				"mwe-enable-gadget",
-				"mwe-enable-gadget-done",
-				"mwe-must-login-gadget",
-				"mwe-test-plural"
+				"mwe-loading"
 			]
 		},
 		"Spinner": {
