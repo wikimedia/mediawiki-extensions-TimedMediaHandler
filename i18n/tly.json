@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Erdemaslancan"
+			"Erdemaslancan",
+			"Гусейн"
 		]
 	},
+	"timedmedia-source-file": "Səvon $1",
 	"timedmedia-subtitle-new-go": "Давардеј"
 }
