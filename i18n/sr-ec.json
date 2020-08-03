@@ -98,7 +98,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Направи нови превод или уреди постојећи",
-	"timedmedia-subtitle-new-desc": "Одабери језик и кликни '''{{int:Timedmedia-subtitle-new-go}}''' дугме",
+	"timedmedia-subtitle-new-desc": "Изаберите језик па кликните на дугме '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Иди",
 	"timedmedia-subtitle-language": "$1 ($2) титлови",
 	"timedmedia-subtitle-no-video": "Нема видео-снимака повезаних са текућом страницом с титловима",
