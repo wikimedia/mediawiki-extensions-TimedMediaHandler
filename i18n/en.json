@@ -157,7 +157,7 @@
 	"timedmedia-subtitle-new": "Create new translation or edit existing",
 	"timedmedia-subtitle-new-desc": "Select language and press the '''{{int:Timedmedia-subtitle-new-go}}''' button",
 	"timedmedia-subtitle-new-go": "Go",
-	"timedmedia-subtitle-language": "$1 ($2) subtitles",
+	"timedmedia-subtitle-language": "$1 ($2)",
 	"timedmedia-subtitle-no-video": "There is no video associated with the current subtitle page.",
 	"timedmedia-subtitle-no-subtitles": "There are currently no subtitles in $1 for this video, you can [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page] to add them.",
 	"timedmedia-subtitle-remote": "Timed text for this file is hosted on $1",
