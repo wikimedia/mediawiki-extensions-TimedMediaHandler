@@ -153,10 +153,6 @@ class ApiTranscodeReset extends ApiBase {
 		return 'csrf';
 	}
 
-	public function getTokenSalt() {
-		return '';
-	}
-
 	/**
 	 * @see ApiBase::getExamplesMessages()
 	 * @return array
