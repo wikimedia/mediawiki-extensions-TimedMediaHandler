@@ -3,6 +3,7 @@
 		"authors": [
 			"CRCHF",
 			"Moon0319",
+			"Roy17",
 			"Yueman"
 		]
 	},
@@ -17,7 +18,7 @@
 	"timedmedia-ogg-long-error": "無效嘅ogg檔: $1",
 	"timedmedia-more": "多啲...",
 	"timedmedia-dismiss": "閂",
-	"timedmedia-download": "單撈快勞",
+	"timedmedia-download": "下載檔案",
 	"timedmedia-desc-link": "關於呢個檔案",
 	"timedmedia-source-file": "$1 來源檔",
 	"timedmedia-source-audio-file-desc": "原本 $1 檔案 （$2）"
