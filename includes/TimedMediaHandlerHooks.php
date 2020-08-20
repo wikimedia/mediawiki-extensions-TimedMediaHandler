@@ -78,6 +78,9 @@ class TimedMediaHandlerHooks {
 			// overwrite TimedText.ShowInterface for video with mw-provider=local
 			$wgMwEmbedModuleConfig['TimedText.ShowInterface.local'] = 'off';
 		}
+
+		// validate enabled transcodeset values
+		WebVideoTranscode::validateTranscodeConfiguration();
 		return true;
 	}
 

@@ -125,4 +125,29 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
 		return $videoInfo['derivatives'];
 	}
+
+	public function transcodeSetProvider() {
+		return [
+			[ [ '360p.webm' => true ], [], false ],
+			[ [ 'foobar' => true ], [], true ],
+			[ [], [ 'foobar' => true ], true ],
+		];
+	}
+
+	/**
+	 * @dataProvider transcodeSetProvider
+	 * @covers WebVideoTranscode
+	 */
+	public function testEnabledTranscodeSetConfiguration( $set, $audioSet, $exception ) {
+		$this->setMWGlobals( [
+			'wgEnabledTranscodeSet' => $set,
+			'wgEnabledAudioTranscodeSet' => $audioSet
+		] );
+		if ( $exception ) {
+			$this->expectException( \MWException::class );
+		}
+		WebVideoTranscode::validateTranscodeConfiguration();
+		// Silence testcase when everything is ok
+		$this->assertTrue( true );
+	}
 }
