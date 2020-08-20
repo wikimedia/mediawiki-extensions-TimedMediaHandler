@@ -386,7 +386,7 @@ class WebVideoTranscodeJob extends Job {
 		// Set up the base command
 		$cmd = wfEscapeShellArg(
 			$wgFFmpegLocation
-		) . ' -y -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
+		) . ' -nostdin -y -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
 
 		if ( isset( $options['vpre'] ) ) {
 			$cmd .= ' -vpre ' . wfEscapeShellArg( $options['vpre'] );

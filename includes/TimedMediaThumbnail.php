@@ -95,7 +95,7 @@ class TimedMediaThumbnail {
 			return false;
 		}
 
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -threads 1 ';
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -nostdin -threads 1 ';
 
 		$offset = intval( self::getThumbTime( $options ) );
 		/*
