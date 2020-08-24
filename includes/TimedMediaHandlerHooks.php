@@ -448,20 +448,25 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function checkSchemaUpdates( DatabaseUpdater $updater ) {
-		$base = dirname( __DIR__ );
-
-		switch ( $updater->getDB()->getType() ) {
-		case 'mysql':
-		case 'sqlite':
-			// Initial install tables
-			$updater->addExtensionTable( 'transcode', "$base/sql/TimedMediaHandler.sql" );
-			$updater->addExtensionUpdate( [ 'addIndex', 'transcode', 'transcode_name_key',
-				"$base/sql/transcode_name_key.sql", true ] );
-			break;
-		case 'postgres':
-			// TODO
-			break;
+		$dir = dirname( __DIR__ ) . '/sql/';
+		$dbType = $updater->getDB()->getType();
+		if ( $dbType === 'mysql' ) {
+			$updater->addExtensionTable( 'transcode',
+				$dir . 'tables-generated.sql'
+			);
+			$updater->addExtensionIndex( 'transcode', 'transcode_name_key',
+				$dir . 'transcode_name_key.sql'
+			);
+		} elseif ( $dbType === 'sqlite' ) {
+			$updater->addExtensionTable( 'transcode',
+				$dir . 'sqlite/tables-generated.sql'
+			);
+		} elseif ( $dbType === 'postgres' ) {
+			$updater->addExtensionTable( 'transcode',
+				$dir . 'postgres/tables-generated.sql'
+			);
 		}
+
 		return true;
 	}
 
