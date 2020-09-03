@@ -12,24 +12,23 @@ use MediaWiki\MediaWikiServices;
 class TranscodeStatusTable {
 	/**
 	 * @param File $file
+	 * @param IContextSource $context
 	 * @return string
 	 */
-	public static function getHTML( $file ) {
-		global $wgOut;
-
+	public static function getHTML( $file, IContextSource $context ) {
 		// Add transcode table css and javascript:
-		$wgOut->addModules( [ 'ext.tmh.transcodetable' ] );
+		$context->getOutput()->addModules( [ 'ext.tmh.transcodetable' ] );
 
 		$o = '<h2 id="transcodestatus">' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
 		// Give the user a purge page link
 		$o .= MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
 			$file->getTitle(),
-			wfMessage( 'timedmedia-update-status' )->text(),
+			$context->msg( 'timedmedia-update-status' )->text(),
 			[],
 			[ 'action' => 'purge' ]
 		);
 
-		$o .= self::getTranscodesTable( $file );
+		$o .= self::getTranscodesTable( $file, $context->getUser() );
 
 		return $o;
 	}
@@ -60,10 +59,10 @@ class TranscodeStatusTable {
 
 	/**
 	 * @param File $file
+	 * @param User $user
 	 * @return string
 	 */
-	public static function getTranscodesTable( $file ) {
-		global $wgUser;
+	public static function getTranscodesTable( $file, User $user ) {
 		$o = '';
 
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
@@ -101,7 +100,7 @@ class TranscodeStatusTable {
 			. '<th>' . wfMessage( 'timedmedia-transcodebitrate' )->escaped() . '</th>'
 			. '<th>' . wfMessage( 'timedmedia-direct-link' )->escaped() . '</th>';
 
-		if ( $wgUser->isAllowed( 'transcode-reset' ) ) {
+		if ( $user->isAllowed( 'transcode-reset' ) ) {
 			$o .= '<th>' . wfMessage( 'timedmedia-actions' )->escaped() . '</th>';
 		}
 
@@ -125,7 +124,7 @@ class TranscodeStatusTable {
 			$o .= '</td>';
 
 			// Check if we should include actions:
-			if ( $wgUser->isAllowed( 'transcode-reset' ) ) {
+			if ( $user->isAllowed( 'transcode-reset' ) ) {
 				// include reset transcode action buttons
 				$o .= '<td class="mw-filepage-transcodereset"><a href="#" data-transcodekey="' .
 					htmlspecialchars( $transcodeKey ) . '">' . wfMessage( 'timedmedia-reset' )->escaped() .

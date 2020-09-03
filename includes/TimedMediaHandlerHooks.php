@@ -268,7 +268,7 @@ class TimedMediaHandlerHooks {
 		// load the file:
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
 		if ( self::isTranscodableFile( $file ) ) {
-			$html .= TranscodeStatusTable::getHTML( $file );
+			$html .= TranscodeStatusTable::getHTML( $file, $article->getContext() );
 		}
 		return true;
 	}
