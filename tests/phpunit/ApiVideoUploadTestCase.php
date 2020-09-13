@@ -96,11 +96,8 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	 * @return array
 	 */
 	public function uploadFile( $file ) {
-		global $wgUser;
 		// get a session object
 		$session = $this->login();
-		// Update the global user:
-		$wgUser = self::$users['uploader']->getUser();
 
 		// Upload the media file:
 		$fileName = basename( $file['filePath'] );
@@ -124,7 +121,11 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		];
 
 		try {
-			list( $result, , ) = $this->doApiRequestWithToken( $params, $session );
+			list( $result, , ) = $this->doApiRequestWithToken(
+				$params,
+				$session,
+				self::$users['uploader']->getUser()
+			);
 		} catch ( Exception $e ) {
 			// Could not upload mark test that called uploadFile as incomplete
 			$this->markTestIncomplete( $e->getMessage() );
