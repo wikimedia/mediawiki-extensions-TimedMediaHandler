@@ -7,6 +7,7 @@
 			"KlaudiuMihaila",
 			"Mihai",
 			"Minisarm",
+			"NGC 54",
 			"Stelistcristi",
 			"Strainu"
 		]
@@ -86,5 +87,6 @@
 	"timedmedia-file": "Fișier",
 	"right-transcode-reset": "Reinițializează videoclipuri nereușit codificate pentru ca acestea să fie readăugate la șirul de sarcini.",
 	"right-transcode-status": "Vizualizează [[Special:TimedMediaHandler|informații despre activitatea curentă de codificare]]",
-	"action-transcode-status": "vizualizați statutul actual al codificării"
+	"action-transcode-status": "vizualizați statutul actual al codificării",
+	"log-name-timedmediahandler": "Jurnal TimedMediaHandler"
 }

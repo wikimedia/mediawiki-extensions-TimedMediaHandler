@@ -6,12 +6,5 @@
 			"Rancher"
 		]
 	},
-	"mwe-loading": "Učitavam…",
-	"mwe-size-gigabytes": "$1 GB",
-	"mwe-size-megabytes": "$1 MB",
-	"mwe-size-kilobytes": "$1 K",
-	"mwe-size-bytes": "$1 B",
-	"mwe-ok": "U redu",
-	"mwe-cancel": "Otkaži",
-	"mwe-test-plural": "Pokrenuo/la sam {{PLURAL:$1|$1 test|$1 testa|$1 testova}}"
+	"mwe-loading": "Učitavam…"
 }

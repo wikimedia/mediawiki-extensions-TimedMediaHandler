@@ -6,14 +6,5 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"mwe-loading": "লোড করা হচ্ছে...",
-	"mwe-error_load_lib": "ত্রুটি: জাভাস্ক্রিপ্ট $1 পুনরুদ্ধারযোগ্য ছিল না বা $2 সংজ্ঞায়িত করে না",
-	"mwe-apiproxy-setup": "এপিআই প্রক্সি নির্ধারণ করা হচ্ছে",
-	"mwe-load-drag-item": "টানা বস্তু লোড করা হচ্ছে",
-	"mwe-ok": "ঠিক আছে",
-	"mwe-cancel": "বাতিল",
-	"mwe-enable-gadget": "সব পাতার জন্য multimedia beta (mwEmbed) সক্রিয় করুন",
-	"mwe-enable-gadget-done": "মাল্টিমিডিয়া বেটা গ্যাজেট সক্ষম করা হয়েছে",
-	"mwe-must-login-gadget": "গ্যাজেট সক্ষম করতে আপনাকে অবশ্যই <a target=\"_new\" href=\"$1\">প্রবেশ</a> করতে হবে",
-	"mwe-test-plural": "আমি {{PLURAL:$1|$1টি পরীক্ষা}} চালিয়েছি"
+	"mwe-loading": "লোড করা হচ্ছে..."
 }

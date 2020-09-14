@@ -6,14 +6,5 @@
 			"Translationista"
 		]
 	},
-	"mwe-loading": "Cargando…",
-	"mwe-error_load_lib": "Error: no se puede recuperar el código JavaScript $1 o este no define $2",
-	"mwe-apiproxy-setup": "Configuración de proxy de API",
-	"mwe-load-drag-item": "Cargando el objeto arrastrado",
-	"mwe-ok": "Aceptar",
-	"mwe-cancel": "Cancelar",
-	"mwe-enable-gadget": "Habilitar multimedia beta (mwEmbed) en todas las páginas",
-	"mwe-enable-gadget-done": "Se ha habilitado el gadget multimedia beta",
-	"mwe-must-login-gadget": "<a target=\"_new\" href=\"$1\">Accede a tu cuenta</a> para activar el accesorio",
-	"mwe-test-plural": "Realicé {{PLURAL:$1|$1 prueba|$1 pruebas}}"
+	"mwe-loading": "Cargando…"
 }

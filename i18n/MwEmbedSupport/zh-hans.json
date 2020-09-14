@@ -5,14 +5,5 @@
 			"Xiaomingyan"
 		]
 	},
-	"mwe-loading": "正在加载...",
-	"mwe-error_load_lib": "错误：JavaScript $1不可检索，或未定义$2",
-	"mwe-apiproxy-setup": "配置API代理",
-	"mwe-load-drag-item": "正在加载拖放项",
-	"mwe-ok": "确定",
-	"mwe-cancel": "取消",
-	"mwe-enable-gadget": "为所有页面启用多媒体测试版（mwEmbed）",
-	"mwe-enable-gadget-done": "多媒体测试版小工具已启用",
-	"mwe-must-login-gadget": "要启用小工具，您必须先<a target=\"_new\" href=\"$1\">登录</a>。",
-	"mwe-test-plural": "我运行了{{PLURAL:$1|$1次测试}}"
+	"mwe-loading": "正在加载..."
 }
