@@ -134,7 +134,7 @@
 		"ParserTestTables": "TimedMediaHandlerHooks::onParserTestTables",
 		"RejectParserCacheValue": "TimedMediaHandlerHooks::onRejectParserCacheValue",
 		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars",
-		"SkinTemplateNavigation": "TimedMediaHandlerHooks::onSkinTemplateNavigation",
+		"SkinTemplateNavigation::Universal": "TimedMediaHandlerHooks::onSkinTemplateNavigation",
 		"TitleMove": "TimedMediaHandlerHooks::checkTitleMove",
 		"wgQueryPages": "TimedMediaHandlerHooks::onwgQueryPages"
 	},
