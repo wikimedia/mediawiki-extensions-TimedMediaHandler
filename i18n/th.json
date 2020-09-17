@@ -2,9 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Geonuch",
+			"Patsagorn Y.",
 			"Pon44695"
 		]
 	},
+	"timedmedia-ogg-short-audio": "ไฟล์เสียง Ogg $1 $2",
+	"timedmedia-ogg-short-video": "ไฟล์วีดีโอ Ogg $1 $2",
+	"timedmedia-ogg-short-general": "ไฟล์มีเดีย Ogg $1 $2",
+	"timedmedia-ogg-long-audio": "ไฟล์เสียง Ogg $1 ความยาว $2 $3",
+	"timedmedia-ogg-long-video": "ไฟล์วีดีโอ Ogg $1 ความยาว $2 ขนาด $4 × $5 บิตเรต $3",
+	"timedmedia-more": "เพิ่มเติม...",
+	"timedmedia-dismiss": "ปิด",
+	"timedmedia-download": "ดาวน์โหลดไฟล์",
+	"timedmedia-play-media": "เล่นมีเดีย",
 	"timedmedia-source-file": "แหล่ง $1",
 	"timedmedia-source-audio-file-desc": "ไฟล์ต้นฉบับ $1 ($2)",
 	"right-transcode-status": "ดู[[Special:TimedMediaHandler|สารสนเทศเกี่ยวกับกิจกรรมทรานส์โคดปัจจุบัน]]",
