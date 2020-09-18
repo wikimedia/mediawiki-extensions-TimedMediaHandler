@@ -6,6 +6,7 @@
 			"Pon44695"
 		]
 	},
+	"timedmediahandler-extensionname": "TimedMediaHandler",
 	"timedmedia-ogg-short-audio": "ไฟล์เสียง Ogg $1 $2",
 	"timedmedia-ogg-short-video": "ไฟล์วีดีโอ Ogg $1 $2",
 	"timedmedia-ogg-short-general": "ไฟล์มีเดีย Ogg $1 $2",
@@ -15,6 +16,12 @@
 	"timedmedia-dismiss": "ปิด",
 	"timedmedia-download": "ดาวน์โหลดไฟล์",
 	"timedmedia-play-media": "เล่นมีเดีย",
+	"timedmedia-desc-link": "เกี่ยวกับไฟล์นี้",
+	"timedmedia-oggThumb-version": "OggHandler จำเป็นต้องใช้ oggThumb เวอร์ชัน $1 หรือใหม่กว่า",
+	"timedmedia-oggThumb-failed": "ข้อผิดพลาดกับ oggThumb ขณะสร้างภาพขนาดย่อ",
+	"timedmedia-status": "สถานะ",
+	"timedmedia-status-unknown": "ไม่ทราบสถานะ",
+	"timedmedia-transcodebitrate": "บินเรต",
 	"timedmedia-source-file": "แหล่ง $1",
 	"timedmedia-source-audio-file-desc": "ไฟล์ต้นฉบับ $1 ($2)",
 	"right-transcode-status": "ดู[[Special:TimedMediaHandler|สารสนเทศเกี่ยวกับกิจกรรมทรานส์โคดปัจจุบัน]]",
