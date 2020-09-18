@@ -2152,7 +2152,7 @@
 					// Add link to time segment:
 					if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
 						$target.append( $dlLine );
-					} else if ( this.getMIMEType().indexOf( 'text' ) === 0 ) {
+					} else if ( source.getMIMEType().indexOf( 'text' ) === 0 ) {
 						// Add link to text list
 						$textList.append( $dlLine );
 					} else {
