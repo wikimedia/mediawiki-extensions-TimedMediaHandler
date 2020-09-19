@@ -35,8 +35,8 @@ use MediaWiki\MediaWikiServices;
  */
 class ApiTimedText extends ApiBase {
 
-	const CACHE_VERSION = 1;
-	const CACHE_TTL = 86400; // 24 hours
+	private const CACHE_VERSION = 1;
+	private const CACHE_TTL = 86400; // 24 hours
 
 	/**
 	 * URLs to this API endpoint are intended to be created internally and provided

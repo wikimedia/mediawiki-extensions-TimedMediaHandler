@@ -32,7 +32,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
      * Maximum size of header comment to parse.
      * Set to 1 MB by default. Make sure this is less than your PHP memory_limit.
      */
-    const COMMENT_MAX_SIZE = 1000000;
+    private const COMMENT_MAX_SIZE = 1000000;
 
     /**
      * Array to hold each of the comments.

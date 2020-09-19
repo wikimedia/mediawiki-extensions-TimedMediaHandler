@@ -3,7 +3,7 @@
  * ogg handler
  */
 class OggHandler extends TimedMediaHandler {
-	const METADATA_VERSION = 2;
+	private const METADATA_VERSION = 2;
 
 	/**
 	 * @param File $image
