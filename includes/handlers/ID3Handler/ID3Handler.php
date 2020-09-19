@@ -4,7 +4,7 @@
  */
 class ID3Handler extends TimedMediaHandler {
 	// XXX match GETID3_VERSION ( too bad version is not a getter )
-	const METADATA_VERSION = 2;
+	private const METADATA_VERSION = 2;
 
 	/**
 	 * @param string $path

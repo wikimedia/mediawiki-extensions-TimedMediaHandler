@@ -52,7 +52,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	protected $inline;
 
 	// The prefix for player ids
-	const PLAYER_ID_PREFIX = 'mwe_player_';
+	private const PLAYER_ID_PREFIX = 'mwe_player_';
 
 	public function __construct( $conf ) {
 		/** @phan-suppress-next-line PhanTypeMismatchProperty */
