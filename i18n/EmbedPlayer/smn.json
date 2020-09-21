@@ -4,5 +4,9 @@
 			"Yupik"
 		]
 	},
-	"mwe-embedplayer-menu_btn": "Valjiittâh"
+	"mwe-embedplayer-download_clip": "Luođii video",
+	"mwe-embedplayer-download_text": "Luođii teevstâ",
+	"mwe-embedplayer-download": "Luođii",
+	"mwe-embedplayer-menu_btn": "Valjiittâh",
+	"mwe-embedplayer-vlcapp-downloadvideo": "Luođii taam video"
 }

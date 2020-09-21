@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Trondtr"
+			"Trondtr",
+			"Yupik"
 		]
 	},
+	"timedmedia-download": "Luođii tiätuvuárhá",
+	"timedmedia-direct-link": "Luođii",
 	"timedmedia-source-file": "Käldee $1",
-	"timedmedia-source-audio-file-desc": "Algâalgâlâš $1-tiätuvuárkká ($2)"
+	"timedmedia-source-audio-file-desc": "Algâalgâlâš $1-tiätuvuárkká ($2)",
+	"timedmedia-file": "Tiätuvuárkká"
 }

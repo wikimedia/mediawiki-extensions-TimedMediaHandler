@@ -21,6 +21,7 @@
 	"timedmedia-ogg-long-general": "Αρχείο μέσων Ogg, διάρκεια $2, $3",
 	"timedmedia-ogg-long-error": "Άκυρο αρχείο ogg: $1",
 	"timedmedia-webm-short-video": "Αρχείο βίντεο WebM $1, $2",
+	"timedmedia-webm-long-video": "Αρχείο ήχου/βίντεο WebM, $1, διάρκεια $2, $4×$5 pixels, $3 ολικά",
 	"timedmedia-more": "Περισσότερα...",
 	"timedmedia-dismiss": "Κλείσιμο",
 	"timedmedia-download": "Κατεβάστε το αρχείο",
