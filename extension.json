@@ -705,12 +705,6 @@
 			"scripts": "resources/mwembed/lib/jquery.embedMenu/jquery.embedMenu.js",
 			"styles": "resources/mwembed/lib/jquery.embedMenu/jquery.embedMenu.css"
 		},
-		"jquery.ui.touchPunch": {
-			"scripts": "resources/mwembed/lib/jquery.ui.touchPunch.js",
-			"dependencies": [
-				"jquery.ui"
-			]
-		},
 		"jquery.triggerQueueCallback": {
 			"scripts": "resources/mwembed/jquery.triggerQueueCallback.js"
 		},
@@ -780,8 +774,7 @@
 				"jquery.cookie",
 				"jquery.ui",
 				"jquery.debouncedresize",
-				"jquery.embedMenu",
-				"jquery.ui.touchPunch"
+				"jquery.embedMenu"
 			],
 			"styles": [
 				"resources/mwembed/EmbedPlayer/skins/EmbedPlayer.css",
