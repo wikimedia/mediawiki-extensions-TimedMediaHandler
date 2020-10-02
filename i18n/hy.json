@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"Vahe Gharakhanyan",
 			"Xelgen"
 		]
 	},
+	"timedmedia-actions": "Գործողություններ",
 	"timedmedia-source-file": "$1 աղբյուր",
-	"timedmedia-source-audio-file-desc": "Սկզբնական $1 նիշք ($2)"
+	"timedmedia-source-audio-file-desc": "Սկզբնական $1 նիշք ($2)",
+	"timedmedia-file": "Նիշք"
 }
