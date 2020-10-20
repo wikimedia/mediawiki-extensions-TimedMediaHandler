@@ -2229,7 +2229,7 @@
 		 * must handle the actual media player action
 		 */
 		toggleMute: function () {
-			var percent;
+			var percent = 0;
 			mw.log( 'EmbedPlayer::toggleMute> (old state:) ' + this.muted );
 			if ( this.muted ) {
 				this.muted = false;
