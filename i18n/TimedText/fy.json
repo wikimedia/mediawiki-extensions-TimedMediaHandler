@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"PiefPafPier",
 			"Robin van der Vliet",
 			"Robin0van0der0vliet"
 		]
 	},
-	"mwe-timedtext-back-btn": "Foarige"
+	"mwe-timedtext-back-btn": "Foarige",
+	"mwe-timedtext-layout-off": "Undertitels ferbergje",
+	"mwe-timedtext-textcat-sub": "Undertitels",
+	"mwe-timedtext-upload-timed-text": "Undertitels tafoegje"
 }
