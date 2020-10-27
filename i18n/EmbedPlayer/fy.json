@@ -24,8 +24,10 @@
 	"mwe-embedplayer-current_clip_msg": "Dit fragmint fierder ôfspylje",
 	"mwe-embedplayer-seek_to": "$1 sykjen",
 	"mwe-embedplayer-paused": "ûnderbrutsen",
+	"mwe-embedplayer-download_segment": "Seleksje ynlade:",
 	"mwe-embedplayer-download_full_video": "Folslein fideobestân ynlade:",
 	"mwe-embedplayer-download_full_audio": "Folslein audiobestân ynlade:",
+	"mwe-embedplayer-download_right_click": "Ynlade mei rjochtsklik en selektearje <i>Keppeling bewarje as ...</i>",
 	"mwe-embedplayer-download_clip": "Fideo ynlade",
 	"mwe-embedplayer-download_text": "Tekst ynlade",
 	"mwe-embedplayer-download": "Ynlade",
@@ -74,6 +76,7 @@
 	"mwe-embedplayer-video-mpeg": "MPEG-fideo",
 	"mwe-embedplayer-video-msvideo": "AVI-fideo",
 	"mwe-embedplayer-vlcapp-vlcapplinktext": "VLC-app",
+	"mwe-embedplayer-vlcapp-downloadapp": "De VLC-app út 'e App Store ynlade",
 	"mwe-embedplayer-vlcapp-openvideo": "Dizze fideo yn de VLC-app iepenje",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Dizze fideo ynlade"
 }
