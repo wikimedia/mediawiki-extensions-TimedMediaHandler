@@ -12,7 +12,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 oere|$1 oeren}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minút|$1 minuten}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekonde|$1 sekonden}}",
-	"timedmedia-source-file": "$1 boarne",
+	"timedmedia-source-file": "$1-boarne",
 	"timedmedia-source-audio-file-desc": "Orizjineel $1-bestân ($2)",
 	"timedmedia-subtitle-language": "Undertiteling $1 ($2)",
 	"timedmedia-file": "Bestân",
