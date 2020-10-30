@@ -6,8 +6,18 @@
 			"Robin0van0der0vliet"
 		]
 	},
-	"mwe-timedtext-back-btn": "Foarige",
+	"mwe-timedtext-back-btn": "Werom",
 	"mwe-timedtext-layout-off": "Undertitels ferbergje",
+	"mwe-timedtext-loading-text": "Tekst laden ...",
 	"mwe-timedtext-textcat-sub": "Undertitels",
+	"mwe-timedtext-textcat-tad": "Audiobeskriuwing",
+	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-nb": "Annotaasje",
+	"mwe-timedtext-textcat-meta": "Folchtidige metadata",
+	"mwe-timedtext-textcat-trx": "Transkript",
+	"mwe-timedtext-textcat-lrc": "Lietteksten",
+	"mwe-timedtext-no-subs": "Gjin tekstspoaren beskikber",
+	"mwe-timedtext-language-subtitles-for-clip": "Undertiteling $1 foar fragmint: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Gjin ûndertiteling $1 fûn foar fragmint: $2",
 	"mwe-timedtext-upload-timed-text": "Undertitels tafoegje"
 }

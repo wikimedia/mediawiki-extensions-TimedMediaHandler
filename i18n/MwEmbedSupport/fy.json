@@ -2,9 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Kening Aldgilles",
+			"PiefPafPier",
 			"Robin van der Vliet"
 		]
 	},
-	"mwe-ok": "Okee",
-	"mwe-cancel": "Annulearje"
+	"mwe-loading": "Laden ..."
 }
