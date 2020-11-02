@@ -7,17 +7,22 @@
 		]
 	},
 	"mwe-timedtext-back-btn": "Werom",
-	"mwe-timedtext-layout-off": "Undertitels ferbergje",
+	"mwe-timedtext-layout-off": "Undertiteling ferbergje",
 	"mwe-timedtext-loading-text": "Tekst laden ...",
+	"mwe-timedtext-textcat-cc": "Byskriften",
 	"mwe-timedtext-textcat-sub": "Undertitels",
 	"mwe-timedtext-textcat-tad": "Audiobeskriuwing",
 	"mwe-timedtext-textcat-ktv": "Karaoke",
+	"mwe-timedtext-textcat-tik": "Rinnende tekst",
+	"mwe-timedtext-textcat-ar": "Aktive gebieten",
 	"mwe-timedtext-textcat-nb": "Annotaasje",
-	"mwe-timedtext-textcat-meta": "Folchtidige metadata",
+	"mwe-timedtext-textcat-meta": "Tiidstjoerde metadata",
 	"mwe-timedtext-textcat-trx": "Transkript",
 	"mwe-timedtext-textcat-lrc": "Lietteksten",
+	"mwe-timedtext-textcat-lin": "Taalkundige oantsjuttings",
+	"mwe-timedtext-textcat-cue": "Navigaasjepunten",
 	"mwe-timedtext-no-subs": "Gjin tekstspoaren beskikber",
 	"mwe-timedtext-language-subtitles-for-clip": "Undertiteling $1 foar fragmint: $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Gjin ûndertiteling $1 fûn foar fragmint: $2",
-	"mwe-timedtext-upload-timed-text": "Undertitels tafoegje"
+	"mwe-timedtext-upload-timed-text": "Undertiteling tafoegje"
 }

@@ -16,5 +16,7 @@
 	"timedmedia-more": "Has köp...",
 	"timedmedia-dismiss": "Ýap",
 	"timedmedia-download": "Faýl düşür",
-	"timedmedia-desc-link": "Bu faýl hakda"
+	"timedmedia-desc-link": "Bu faýl hakda",
+	"timedmedia-source-file": "$1 çeşmesi",
+	"timedmedia-source-audio-file-desc": "Asyl $1 faýly ($2)"
 }
