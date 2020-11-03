@@ -4,5 +4,6 @@
 			"Slaia"
 		]
 	},
+	"timedmedia-source-file": "$1 umbu",
 	"timedmedia-source-audio-file-desc": "Berkas asli $1 ($2)"
 }
