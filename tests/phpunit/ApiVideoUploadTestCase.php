@@ -5,7 +5,7 @@
  */
 abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	/**
-	 * @return Array set of test files with associated metadata
+	 * @return array set of test files with associated metadata
 	 */
 	public static function mediaFilesProvider() {
 		return [

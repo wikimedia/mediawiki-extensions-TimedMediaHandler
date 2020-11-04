@@ -144,6 +144,17 @@
 						if ( matches ) {
 							// Video derivative of fixed size.
 							res = parseInt( matches[ 1 ], 10 );
+							// Messages that can be used here:
+							// * timedmedia-resolution-120
+							// * timedmedia-resolution-160
+							// * timedmedia-resolution-180
+							// * timedmedia-resolution-240
+							// * timedmedia-resolution-360
+							// * timedmedia-resolution-480
+							// * timedmedia-resolution-720
+							// * timedmedia-resolution-1080
+							// * timedmedia-resolution-1440
+							// * timedmedia-resolution-2160
 							label = mw.message( 'timedmedia-resolution-' + res ).text();
 						}
 					} else {

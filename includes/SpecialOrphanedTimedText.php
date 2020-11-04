@@ -18,7 +18,7 @@ use Wikimedia\Rdbms\IResultWrapper;
  */
 class SpecialOrphanedTimedText extends PageQueryPage {
 
-	/** @var Array with keys being names of valid files */
+	/** @var array with keys being names of valid files */
 	private $existingFiles;
 
 	public function __construct( $name = 'OrphanedTimedText' ) {
@@ -129,7 +129,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * any extension, so things not ending in .srt arguably aren't oprhaned.
 	 *
 	 * @note This uses "substring_index" which is a mysql extension.
-	 * @return Array Standard query info values.
+	 * @return array Standard query info values.
 	 */
 	public function getQueryInfo() {
 		$tables = [ 'page', 'image' ];
