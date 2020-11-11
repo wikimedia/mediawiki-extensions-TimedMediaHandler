@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ArenaL5",
 			"Elisardojm",
 			"Iváns",
 			"McDutchie",
@@ -68,7 +69,7 @@
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Para unha mellor experiencia de reprodución de vídeo recomendamos un <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">navegador de vídeo HTML5</a>.",
 	"mwe-embedplayer-download-warn": "Non se detectou ningún reprodutor integrado compatible co navegador: Para ter unha mellor experiencia de reprodución de vídeo recomendamos a [$1 última versión do Firefox]",
-	"mwe-embedplayer-fullscreen-tip": "Prema <b>F11</b> para activar ou desactivar a pantalla completa do <i>navegador web</i>",
+	"mwe-embedplayer-fullscreen-tip": "Prema <b>F11</b> para activar ou desactivar a pantalla completa",
 	"mwe-embedplayer-fullscreen-tip-osx": "Prema <b>maiús ⌘ F</b> para activar ou desactivar a pantalla completa",
 	"mwe-embedplayer-do_not_warn_again": "Non amosar esta mensaxe no futuro.",
 	"mwe-embedplayer-playerSelect": "Reprodutores",
