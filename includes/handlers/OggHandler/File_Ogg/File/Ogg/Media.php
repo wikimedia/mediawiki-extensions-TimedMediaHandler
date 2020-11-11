@@ -121,8 +121,7 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
             // Unpack the length of this comment.
             $comment_length = unpack("Vdata", fread($this->_filePointer, 4));
 
-            // If the comment length is greater than specified limit, skip it.
-            if ( $comment_length['data'] > self::COMMENT_MAX_SIZE ) {
+            if ( $comment_length['data'] <= 0 || $comment_length['data'] > self::COMMENT_MAX_SIZE ) {
                 continue;
             }
 
