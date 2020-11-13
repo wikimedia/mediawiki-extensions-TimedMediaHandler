@@ -9,6 +9,8 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\SlotRecord;
 
 class TimedTextPage extends Article {
 	// The width of the video plane:
@@ -42,7 +44,6 @@ class TimedTextPage extends Article {
 		$oldid = $this->getOldID();
 		# Are we looking at an old revision
 		if ( $oldid && $this->fetchRevisionRecord() ) {
-			$this->fetchContentObject();
 			$out->setRevisionId( $this->getRevIdFetched() );
 			$this->setOldSubtitle( $oldid );
 
@@ -208,10 +209,25 @@ class TimedTextPage extends Article {
 		if ( !$this->getPage()->exists() ) {
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
+
+		$revision = $this->fetchRevisionRecord();
+		if ( !$revision ) {
+			return wfMessage( 'noarticletext', $languageName );
+		}
+
+		$content = $revision->getContent(
+			SlotRecord::MAIN,
+			RevisionRecord::FOR_THIS_USER,
+			$this->getContext()->getUser()
+		);
+		if ( !$content ) {
+			return wfMessage( 'rev-deleted-text-permission', $languageName );
+		}
+
 		return Xml::element(
 			'pre',
 			[ 'style' => 'margin-top: 0px;' ],
-			ContentHandler::getContentText( $this->getContentObject() ),
+			ContentHandler::getContentText( $content ),
 			false
 		);
 	}
