@@ -200,10 +200,10 @@ class TimedMediaHandlerHooks {
 
 	/**
 	 * Utility function to check if a given file can be "transcoded"
-	 * @param File &$file File object
+	 * @param File $file File object
 	 * @return bool
 	 */
-	public static function isTranscodableFile( &$file ) {
+	public static function isTranscodableFile( $file ) {
 		global $wgEnableTranscode, $wgEnabledAudioTranscodeSet;
 
 		// don't show the transcode table if transcode is disabled

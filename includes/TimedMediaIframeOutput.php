@@ -106,7 +106,6 @@ class TimedMediaIframeOutput {
 			Html::closeElement( 'head' ),
 		];
 
-		// @phan-suppress-next-line SecurityCheck-XSS False positive
 		echo implode( "\n", $pieces );
 	?>
 <body>
