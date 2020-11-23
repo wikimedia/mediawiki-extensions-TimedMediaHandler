@@ -13,6 +13,7 @@
 			"Sujiniku",
 			"Suyama",
 			"Tmv",
+			"What here area team",
 			"青子守歌"
 		]
 	},
@@ -98,6 +99,7 @@
 	"beta-feature-timedmediahandler-description-videojs": "さっぱりとした見た目とモバイル端末との親和性を兼ねた最新のプレイヤーで動画ファイルを見る。",
 	"action-transcode-reset": "トランスコードのリセット",
 	"action-transcode-status": "現在のトランスコード状態の閲覧",
+	"log-name-timedmediahandler": "TimedMediaHandler記録",
 	"orphanedtimedtext": "孤立しているTimedTextページ",
 	"orphanedtimedtext-summary": "以下のページは、対応するファイルが存在しない[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]の一覧です。",
 	"orphanedtimedtext-unsupported": "この特別ページは MySQL データベースのみでサポートされます。",
