@@ -25,13 +25,12 @@
 	mw.addMediaWikiPlayerSupport = function ( embedPlayer ) {
 		var apiTitleKey, apiProvider, $creditsCache = false;
 		// Set some local variables:
-		if ( !embedPlayer[ 'data-mwtitle' ] ) {
+		apiTitleKey = embedPlayer[ 'data-mwtitle' ];
+		if ( !apiTitleKey ) {
 			return;
-		} else {
-			apiTitleKey = embedPlayer[ 'data-mwtitle' ];
-			// legacy support ( set as attribute )
-			embedPlayer.apiTitleKey = apiTitleKey;
 		}
+		// legacy support ( set as attribute )
+		embedPlayer.apiTitleKey = apiTitleKey;
 		// Set local apiProvider via config if not defined
 		apiProvider = embedPlayer[ 'data-mwprovider' ];
 		if ( !apiProvider ) {
@@ -48,7 +47,7 @@
 			var request = {
 				prop: 'imageinfo',
 				// In case the user added File: or Image: to the apiKey:
-				titles: 'File:' + decodeURIComponent( apiTitleKey ).replace( /^(File:|Image:)/, '' ),
+				titles: 'File:' + apiTitleKey.replace( /^(File|Image):/, '' ),
 				iiprop: 'url|size|dimensions|metadata',
 				iiurlwidth: embedPlayer.getWidth(),
 				redirects: true // automatically resolve redirects
@@ -117,7 +116,7 @@
 			var authUrl, $page, $author, $authorText, $links, $date, $authorLink,
 				imgSize = {},
 				// Get the title string ( again a "Title" like js object could help out here. )
-				titleStr = embedPlayer.apiTitleKey.replace( /_/g, ' ' ),
+				titleStr = apiTitleKey.replace( /_/g, ' ' ),
 				// Setup the initial credits line:
 				$creditLine = $( '<div>' );
 
@@ -216,7 +215,7 @@
 			}
 			// Setup shortcuts:
 			apiUrl = mw.getApiProviderURL( apiProvider );
-			fileTitle = 'File:' + decodeURIComponent( apiTitleKey ).replace( /^File:|^Image:/, '' );
+			fileTitle = 'File:' + apiTitleKey.replace( /^(File|Image):/, '' );
 
 			// Get the image page ( cache for 1 hour )
 			request = {
@@ -299,7 +298,7 @@
 				embedPlayer = thisep.embedPlayer;
 			}
 			// Put in the "Make Transcript" link if config enabled and we have an api key
-			if ( embedPlayer.apiTitleKey ) {
+			if ( apiTitleKey ) {
 				// check if not already there:
 				if ( $menu.find( '.add-timed-text' ).length ) {
 					// add text link already present
@@ -307,7 +306,7 @@
 				}
 
 				pageTitle = 'TimedText:' +
-					decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^File:|^Image:/, '' );
+					apiTitleKey.replace( /^(File|Image):/, '' );
 				addTextPage = mw.getApiProviderURL( apiProvider ).replace( 'api.php', 'index.php' ) +
 					'?title=' + encodeURIComponent( pageTitle );
 
@@ -374,13 +373,13 @@
 			}
 			// Do a special check for wikimediacommons provider as a known shared reop
 			if ( embedPlayer[ 'data-mwprovider' ] === 'wikimediacommons' ) {
-				iframeUrl = '//commons.wikimedia.org/wiki/File:' + decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/, '' );
+				iframeUrl = '//commons.wikimedia.org/wiki/File:' + apiTitleKey.replace( /^(File|Image):/, '' );
 			} else {
 				// use the local wiki:
 				if ( mw.config.get( 'wgServer' ) && mw.config.get( 'wgArticlePath' ) ) {
 					iframeUrl = mw.config.get( 'wgServer' ) +
 						mw.config.get( 'wgArticlePath' ).replace( /\$1/, 'File:' +
-							decodeURIComponent( embedPlayer.apiTitleKey ).replace( /^(File:|Image:)/, '' ) );
+							apiTitleKey.replace( /^(File|Image):/, '' ) );
 				}
 			}
 			if ( iframeUrl ) {
