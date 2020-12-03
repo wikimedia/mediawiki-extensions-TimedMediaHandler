@@ -4,6 +4,7 @@
 			"Agony",
 			"Beluga",
 			"Crt",
+			"Moj",
 			"Nike",
 			"Pitke",
 			"Pxos",
@@ -73,5 +74,6 @@
 	"timedmedia-subtitle-no-subtitles": "Tälle videolle ei tällä hetkellä ole tekstityksiä kielellä $1. Voit [{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata tätä sivua] lisätäksesi ne.",
 	"timedmedia-file": "Tiedosto",
 	"beta-feature-timedmediahandler-message-videojs": "Uusi videosoitin",
+	"beta-feature-timedmediahandler-description-videojs": "Katsele videotiedostoja nykyaikaisemmassa soittimessa, jossa on selkeämpi ulkoasu ja joka on yhteensopivampi mobiililaitteiden kanssa.",
 	"log-name-timedmediahandler": "TimedMediaHandler-toimintoloki"
 }
