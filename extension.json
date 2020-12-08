@@ -41,6 +41,11 @@
 			"transcode-reset": true
 		}
 	},
+	"GrantPermissions": {
+		"uploadeditmovefile": {
+			"transcode-reset": true
+		}
+	},
 	"LogActionsHandlers": {
 		"timedmediahandler/resettranscode": "LogFormatter"
 	},
