@@ -195,9 +195,8 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 */
 	private function getCorrespondingFile( Title $timedText ) {
 		$titleParts = explode( '.', $timedText->getDBkey() );
-		array_pop( $titleParts );
-		array_pop( $titleParts );
-		return Title::makeTitleSafe( NS_FILE, implode( '.', $titleParts ) );
+		$baseParts = array_slice( $titleParts, 0, -2 );
+		return Title::makeTitleSafe( NS_FILE, implode( '.', $baseParts ) );
 	}
 
 	/**

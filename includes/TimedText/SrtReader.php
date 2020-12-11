@@ -13,6 +13,10 @@ class SrtReader extends Reader {
 	protected $input = '';
 	protected $len = 0;
 
+	/**
+	 * @var int[][]
+	 * @phan-var list<array{pos:int,line:int,lineStart:int}>
+	 */
 	protected $states = [];
 	protected $pos = 0;
 	protected $line = 0;
@@ -54,7 +58,7 @@ class SrtReader extends Reader {
 	}
 
 	protected function restoreState() {
-		if ( !count( $this->states ) ) {
+		if ( !$this->states ) {
 			throw new \Exception( 'No saved state to discard' );
 		}
 		$state = array_pop( $this->states );
