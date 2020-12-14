@@ -6,6 +6,7 @@
 		]
 	},
 	"timedmedia-more": "ہور…",
+	"timedmedia-days": "{{PLURAL:$1|1 دن|$1 دناں}}",
 	"timedmedia-source-file": "$1 مڈھ",
 	"timedmedia-source-audio-file-desc": "اصلی$1 فائل ($2)"
 }
