@@ -13,8 +13,9 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 
 class TimedTextPage extends Article {
-	// The width of the video plane:
+	/** @var int The width of the video plane */
 	private static $videoWidth = 400;
+	/** @var string[] */
 	private static $knownTimedTextExtensions = [ 'srt', 'vtt' ];
 
 	public function view() {

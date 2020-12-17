@@ -10,6 +10,7 @@
 use MediaWiki\MediaWikiServices;
 
 class SpecialTranscodeStatistics extends SpecialPage {
+	/** @var string[] */
 	private $transcodeStates = [
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		'active' => 'transcode_time_startwork IS NOT NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',

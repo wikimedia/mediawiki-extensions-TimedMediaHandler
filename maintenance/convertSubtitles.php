@@ -12,7 +12,9 @@ use MediaWiki\TimedMediaHandler\TimedText;
 
 class ConvertSubtitles extends Maintenance {
 
+	/** @var int */
 	private $count = 0;
+	/** @var int */
 	private $failed = 0;
 
 	public function __construct() {

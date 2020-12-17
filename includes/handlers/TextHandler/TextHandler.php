@@ -16,8 +16,9 @@ use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class TextHandler {
-	// lazy init remote Namespace number
+	/** @var int|null lazy init remote Namespace number */
 	public $remoteNs = null;
+	/** @var string|null lazy init remote Namespace name */
 	public $remoteNsName = null;
 
 	/**
@@ -52,7 +53,7 @@ class TextHandler {
 	}
 
 	/**
-	 * @return bool|int
+	 * @return false|int
 	 */
 	public function getTimedTextNamespace() {
 		global $wgEnableLocalTimedText;
@@ -112,7 +113,7 @@ class TextHandler {
 	 *
 	 * If the file is on a foreign repo, will query the ForeignDb
 	 *
-	 * @return IResultWrapper|bool
+	 * @return IResultWrapper|false
 	 */
 	private function getTextPagesFromDb() {
 		$ns = $this->getTimedTextNamespace();
@@ -148,7 +149,7 @@ class TextHandler {
 
 	/**
 	 * Build the api query to find TimedText pages belonging to a remote file
-	 * @return array|bool
+	 * @return array|false
 	 */
 	public function getRemoteTextPagesQuery() {
 		$ns = $this->getTimedTextNamespace();

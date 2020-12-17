@@ -84,7 +84,7 @@ class ApiTranscodeReset extends ApiBase {
 
 	/**
 	 * @param File $file
-	 * @param string|bool $transcodeKey
+	 * @param string|false $transcodeKey
 	 * @return int|string
 	 */
 	public static function checkTimeSinceLastRest( $file, $transcodeKey ) {

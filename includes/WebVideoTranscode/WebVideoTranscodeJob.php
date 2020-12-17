@@ -83,7 +83,7 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * @return string|bool
+	 * @return string|false
 	 */
 	private function getSourceFilePath() {
 		if ( !$this->sourceFilePath ) {
@@ -374,7 +374,7 @@ class WebVideoTranscodeJob extends Job {
 	 * Utility helper for ffmpeg mapping
 	 * @param array $options
 	 * @param int $pass
-	 * @return bool|string
+	 * @return true|string
 	 */
 	private function ffmpegEncode( $options, $pass = 0 ) {
 		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
@@ -699,7 +699,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Utility helper for midi to an audio format conversion
 	 * @param array $options
-	 * @return bool|string
+	 * @return true|string
 	 */
 	private function midiToAudioEncode( $options ) {
 		global $wgTmhFluidsynthLocation, $wgFFmpegLocation, $wgTmhSoundfontLocation,

@@ -729,7 +729,7 @@ class WebVideoTranscode {
 	 * if transcodes are not found in the database their state is set to "false"
 	 *
 	 * @param File $file File object
-	 * @param IDatabase|bool $db
+	 * @param IDatabase|false $db
 	 * @return array[]
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
@@ -793,7 +793,7 @@ class WebVideoTranscode {
 	 *
 	 * also remove the transcode files:
 	 * @param File &$file File Object
-	 * @param string|bool $transcodeKey Optional transcode key to remove only this key
+	 * @param string|false $transcodeKey Optional transcode key to remove only this key
 	 */
 	public static function removeTranscodes( &$file, $transcodeKey = false ) {
 		// if transcode key is non-false, non-null:

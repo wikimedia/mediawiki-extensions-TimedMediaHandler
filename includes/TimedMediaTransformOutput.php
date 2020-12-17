@@ -92,7 +92,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media transform thumbnail
-	 * @param bool|array $sizeOverride
+	 * @param false|array $sizeOverride
 	 * @return string
 	 */
 	public function getUrl( $sizeOverride = false ) {
@@ -426,7 +426,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * Get poster.
 	 * @param int $width width of poster. Should not equal $this->width.
-	 * @return string|bool url for poster or false
+	 * @return string|false url for poster or false
 	 * @throws Exception If $width is same as $this->width.
 	 */
 	private function getPoster( $width ) {
@@ -445,7 +445,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media attributes
-	 * @param array|bool $sizeOverride Array of width and height
+	 * @param array|false $sizeOverride Array of width and height
 	 * @param bool $autoPlay
 	 * @return array
 	 */

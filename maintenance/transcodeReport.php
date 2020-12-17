@@ -12,19 +12,27 @@ use MediaWiki\MediaWikiServices;
 
 class TranscodeReport extends Maintenance {
 
+	/** @var bool */
 	private $detail = false;
+	/** @var bool */
 	private $histogram = false;
+	/** @var bool */
 	private $outliers = false;
 
+	/** @var int[] */
 	private $count = [];
+	/** @var float[] */
 	private $duration = [];
+	/** @var int[] */
 	private $size = [];
 
-	// Don't count files claiming longer than 12hr duration
-	// These are (almost?) always broken files.
+	/**
+	 * @var int Don't count files claiming longer than 12hr duration
+	 * These are (almost?) always broken files.
+	 */
 	private $insaneDuration = 12 * 3600;
 
-	// max size for histogram breakdowns by res
+	/** @var float[] max size for histogram breakdowns by res */
 	private $max = [
 		120 => 0.125 * 1000 * 1000,
 		160 => 0.2 * 1000 * 1000,
@@ -37,7 +45,9 @@ class TranscodeReport extends Maintenance {
 		1440 => 10 * 1000 * 1000,
 		2160 => 20 * 1000 * 1000,
 	];
+	/** @var int */
 	private $buckets = 25;
+	/** @var array */
 	private $histo = [];
 
 	public function __construct() {

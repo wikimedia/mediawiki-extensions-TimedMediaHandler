@@ -14,8 +14,8 @@ class TimedMediaHandler extends MediaHandler {
 	 * can't be determined.
 	 * @param File $file
 	 * @param string $path
-	 * @param bool $metadata
-	 * @return array|bool
+	 * @param string|false $metadata
+	 * @return array|false
 	 */
 	public function getImageSize( $file, $path, $metadata = false ) {
 		/* override by handler */
@@ -98,7 +98,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * Used by thumb.php to find url parameters
 	 *
 	 * @param string $str
-	 * @return array|bool Array of thumbnail parameters, or false if string cannot be parsed
+	 * @return array|false Array of thumbnail parameters, or false if string cannot be parsed
 	 */
 	public function parseParamString( $str ) {
 		$params = [];
@@ -220,7 +220,7 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Utility functions
 	 * @param string $timeString
-	 * @param bool|int $length
+	 * @param false|int $length
 	 * @return false|int
 	 */
 	public static function parseTimeString( $timeString, $length = false ) {
@@ -312,7 +312,7 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * @param string $metadata
-	 * @return bool|mixed
+	 * @return false|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
 		Wikimedia\suppressWarnings();

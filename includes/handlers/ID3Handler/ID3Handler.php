@@ -54,7 +54,7 @@ class ID3Handler extends TimedMediaHandler {
 
 	/**
 	 * @param string $metadata
-	 * @return bool|mixed
+	 * @return false|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
 		Wikimedia\suppressWarnings();
@@ -95,7 +95,7 @@ class ID3Handler extends TimedMediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return bool|int
+	 * @return false|int
 	 */
 	public function getFramerate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );

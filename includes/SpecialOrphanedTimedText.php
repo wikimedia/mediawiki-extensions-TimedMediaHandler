@@ -240,7 +240,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * Based on parent class but with an existence check added.
 	 *
 	 * @param Skin $skin
-	 * @param object $row Result row
+	 * @param stdClass $row Result row
 	 * @return string
 	 */
 	public function formatResult( $skin, $row ) {

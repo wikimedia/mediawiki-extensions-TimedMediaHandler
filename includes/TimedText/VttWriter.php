@@ -14,6 +14,7 @@ class VttWriter extends Writer {
 	// todo: chapter markers -- is that the id?
 	// todo: metadata (json blobs)
 
+	/** @var true[] */
 	protected $usedIdentifiers = [];
 
 	/**

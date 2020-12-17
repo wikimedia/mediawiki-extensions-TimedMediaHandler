@@ -33,7 +33,7 @@ class MidiHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return array|bool
+	 * @return string[]|false
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];

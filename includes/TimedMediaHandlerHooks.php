@@ -314,7 +314,7 @@ class TimedMediaHandlerHooks {
 	 * Hook to FileDeleteComplete
 	 * remove transcodes on delete
 	 * @param File $file
-	 * @param File|bool $oldimage
+	 * @param File|false $oldimage
 	 * @param Article $article
 	 * @param User $user
 	 * @param string $reason

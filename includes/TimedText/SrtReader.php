@@ -7,10 +7,14 @@ namespace MediaWiki\TimedMediaHandler\TimedText;
  * Should accept a lot of sloppy syntax we have in our files.
  */
 class SrtReader extends Reader {
+	/** @var DOM\Cue[] */
 	protected $cues = [];
+	/** @var ParseError[] */
 	protected $errors = [];
 
+	/** @var string */
 	protected $input = '';
+	/** @var int */
 	protected $len = 0;
 
 	/**
@@ -18,15 +22,24 @@ class SrtReader extends Reader {
 	 * @phan-var list<array{pos:int,line:int,lineStart:int}>
 	 */
 	protected $states = [];
+	/** @var int */
 	protected $pos = 0;
+	/** @var int */
 	protected $line = 0;
+	/** @var int */
 	protected $lineStart = 0;
 
+	/** @var DOM\Cue|null */
 	protected $cue = null;
+	/** @var string */
 	protected $tag = '';
+	/** @var string */
 	protected $tagSource = '';
+	/** @var string */
 	protected $text = '';
+	/** @var DOM\InternalNode[] */
 	protected $stack = [];
+	/** @var DOM\InternalNode|null */
 	protected $current = null;
 
 	/**

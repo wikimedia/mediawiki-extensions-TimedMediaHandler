@@ -29,8 +29,8 @@ class WebMHandler extends ID3Handler {
 	 * Get the "media size"
 	 * @param File $file
 	 * @param string $path
-	 * @param bool|string|array $metadata
-	 * @return array|bool
+	 * @param false|string|array $metadata
+	 * @return array|false
 	 */
 	public function getImageSize( $file, $path, $metadata = false ) {
 		// Just return the size of the first video stream
@@ -115,7 +115,7 @@ class WebMHandler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return array|bool
+	 * @return string[]|false
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
@@ -195,8 +195,8 @@ class WebMHandler extends ID3Handler {
 	 * Only shows the top-level writing/demuxing app comment.
 	 *
 	 * @param File $file
-	 * @param bool|IContextSource $context Context to use (optional)
-	 * @return array|bool
+	 * @param false|IContextSource $context Context to use (optional)
+	 * @return array|false
 	 */
 	public function formatMetadata( $file, $context = false ) {
 		$metadata = $file->getMetadata();

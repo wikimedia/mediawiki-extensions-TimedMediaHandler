@@ -3,8 +3,11 @@
 namespace MediaWiki\TimedMediaHandler\TimedText;
 
 class ParseError {
+	/** @var int */
 	protected $line;
+	/** @var string */
 	protected $input;
+	/** @var string */
 	protected $error;
 
 	public function __construct( $line, $input, $error ) {
