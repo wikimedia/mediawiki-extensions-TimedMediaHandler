@@ -57,7 +57,7 @@ class ApiTranscodeReset extends ApiBase {
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
 		if ( $timeSinceLastReset < $wgWaitTimeForTranscodeReset ) {
-			$msg = wfMessage(
+			$msg = $this->msg(
 				'apierror-timedmedia-notenoughtimereset',
 				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset )
 			);
