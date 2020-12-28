@@ -4,6 +4,7 @@
 			"Gediminas",
 			"Hugo.arg",
 			"Pofka",
+			"Tomasdd",
 			"Zygimantus"
 		]
 	},
@@ -63,7 +64,7 @@
 	"mwe-embedplayer-ogg-player-selected": "(pasirinkta)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Geresnei vaizdo įrašo peržiūros kokybei siūlome <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5 palaikančią naršyklę</a>.",
-	"mwe-embedplayer-fullscreen-tip": "Spauskite <b>F11</b> mygtuką, kuris nustatys <i>naršyklę</i> pilno ekrano režimui",
+	"mwe-embedplayer-fullscreen-tip": "Spauskite <b>F11</b> mygtuką, kuris nustatys viso ekrano režimą",
 	"mwe-embedplayer-fullscreen-tip-osx": "Spauskite <b>shift ⌘ F</b>, kad pereitumėte į pilno ekrano režimą",
 	"mwe-embedplayer-do_not_warn_again": "Ateityje nerodyti šio pranešimo",
 	"mwe-embedplayer-playerSelect": "Grotuvai",

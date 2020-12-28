@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Salvemm el lombard"
+		]
+	},
+	"timedmedia-source-file": "Sorgent $1",
+	"timedmedia-source-audio-file-desc": "Fail orginal $1 ($2)"
+}

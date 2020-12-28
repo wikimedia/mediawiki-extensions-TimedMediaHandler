@@ -38,7 +38,7 @@
 	"mwe-embedplayer-share": "שיתוף",
 	"mwe-embedplayer-credits": "תודות",
 	"mwe-embedplayer-about-library": "על אודות הנגן קלטורה",
-	"mwe-embedplayer-about-library-desc": "ספריית לנגינת מדיה בתקן HTML5 של קלטורה מאפשרת לכם להשתמש בפקודות <code><nowiki><video></nowiki></code> ו־<code><nowiki><audio></nowiki></code> של HTML5 היום עם ממשק קבוע בכל הדפדפנים הנפוצים.\n\n[$1 מידע נוסף על ספריית נגן המדיה של קלטורה]",
+	"mwe-embedplayer-about-library-desc": "ספריית לנגינת מדיה בתקן HTML5 של קלטורה מאפשרת לכם להשתמש בתגי &lt;video&gt; ו־&lt;audio&gt; של HTML5 היום עם ממשק קבוע בכל הדפדפנים הנפוצים.\n\n[$1 מידע נוסף על ספריית נגן המדיה של קלטורה]",
 	"mwe-embedplayer-clip_linkback": "דף המקור של הסרטון",
 	"mwe-embedplayer-choose_player": "בחירת נגן וידאו",
 	"mwe-embedplayer-no-player": "הנגן עבור $1 אינו זמין",

@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Kambai Akau"
 		]
 	},
-	"timedmedia-source-file": "A̠vwuoneet $1",
-	"timedmedia-source-audio-file-desc": "A̠tsatsak $1 fail ($2)"
+	"timedmedia-source-file": "A̱vwuoneet $1",
+	"timedmedia-source-audio-file-desc": "A̱tsatsak $1 fail ($2)"
 }
