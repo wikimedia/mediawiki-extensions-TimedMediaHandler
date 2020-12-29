@@ -4,5 +4,13 @@
 			"Joanmp17"
 		]
 	},
-	"mwe-embedplayer-ogg-player-selected": "(ዝትመረጸ)"
+	"mwe-embedplayer-play_clip": "ክሊፕ ኣጻውት",
+	"mwe-embedplayer-pause_clip": "ክሊፕ ንግዚኡ ደው ኣብል",
+	"mwe-embedplayer-volume_control": "መቆጻጸሪ ድምጺ",
+	"mwe-embedplayer-player_fullscreen": "ምሉእ መርኣዪ",
+	"mwe-embedplayer-download": "ኣውርድ",
+	"mwe-embedplayer-share": "ኣካፍል",
+	"mwe-embedplayer-close_btn": "ዕጸው",
+	"mwe-embedplayer-ogg-player-selected": "(ዝተመርጸ)",
+	"mwe-embedplayer-playerSelect": "ተጻወትቲ"
 }
