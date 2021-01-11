@@ -11,7 +11,8 @@
 			"Matteocng",
 			"Peg60",
 			"Raoli",
-			"Sakretsu"
+			"Sakretsu",
+			"Valepert"
 		]
 	},
 	"timedmediahandler-desc": "Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt",
@@ -141,5 +142,6 @@
 	"orphanedtimedtext-summary": "Elenco di pagine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] che non hanno un file corrispondente.",
 	"orphanedtimedtext-unsupported": "Questa pagina speciale è supportata solo su database MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText non è abilitato su questo wiki.",
-	"videojs-more-information": "Ulteriori informazioni"
+	"videojs-more-information": "Ulteriori informazioni",
+	"transcodestatistics": "Statistiche di transcodifica"
 }
