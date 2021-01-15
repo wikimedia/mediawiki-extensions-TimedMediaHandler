@@ -135,7 +135,7 @@
 	"action-transcode-status": "vidět aktuální stav transkódování",
 	"log-name-timedmediahandler": "Kniha časovaného zpracování médií",
 	"log-description-timedmediahandler": "Toto je kniha akcí vztahujících se k časovaným překódováním médií.",
-	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|obnovil|obnovila}} transkódování souboru $3 do formátu „$4“",
+	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|obnovil|obnovila|obnovil(a)}} transkódování souboru $3 do formátu „$4“",
 	"orphanedtimedtext": "Osiřelé stránky TimedText",
 	"orphanedtimedtext-summary": "Seznam stránek [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], které nemají odpovídající soubor.",
 	"orphanedtimedtext-unsupported": "Tato speciální stránka je podporována jen na databázi MySQL.",

@@ -40,6 +40,8 @@
 	"timedmedia-midi-long-audio": "MIDI 音声ファイル、長さ $1、全体で $2",
 	"timedmedia-mp4-short-video": "MP4 $1 動画ファイル、$2",
 	"timedmedia-mp4-long-video": "MP4 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3",
+	"timedmedia-mpeg-short-video": "MPEG $1 動画ファイル、$2",
+	"timedmedia-mpeg-long-video": "MPEG 音声/動画ファイル、$1、長さ $2、$4 × $5 ピクセル、全体で $3",
 	"timedmedia-more": "その他…",
 	"timedmedia-dismiss": "閉じる",
 	"timedmedia-download": "ファイルをダウンロードする",
