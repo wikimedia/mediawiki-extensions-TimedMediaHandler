@@ -125,6 +125,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 در حال اجرای فراکدها|$1 در حال اجرای فراکدها}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 صف فراکدها|$1 صف فراکدها}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 فراکدهای اشتباه|$1 فراکدهای اشتباه}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 فراکدهای نامشخص|$1 فراکد نامشخص}}",
 	"timedmedia-file": "پرونده",
 	"beta-feature-timedmediahandler-message-videojs": "پخش‌کننده ویدئو جدید",
 	"right-transcode-reset": "تنظیم مجدد انجام‌نشده‌ها یا ویدئوهای فراکدشده اعمال شد. در نتیجه مجدداً آنها در صف کار قرار گرفتند.",
@@ -137,5 +138,6 @@
 	"orphanedtimedtext-unsupported": "این صفحهٔ خاص فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده‌است.",
 	"orphanedtimedtext-notimedtext": "TimedText در این ویکی فعال نشده است.",
 	"videojs-more-information": "اطلاعات بیشتر",
-	"videojs-quality": "کیفیت ویدئو"
+	"videojs-quality": "کیفیت ویدئو",
+	"transcodestatistics": "آمار فراکدها"
 }

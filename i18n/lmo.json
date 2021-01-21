@@ -84,7 +84,7 @@
 	"timedmedia-subtitle-new-go": "Và",
 	"timedmedia-subtitle-language": "$1 ($2) sot-titoi",
 	"timedmedia-subtitle-no-video": "A gh'è nissun video associad a la pagina atual di sottitoi.",
-	"timedmedia-subtitle-no-subtitles": "Adesedess a gh'è minga de sottitoi in  $1 per quell video chì, a l'è possibil [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifià quela pagina chì] per sgiontai",
+	"timedmedia-subtitle-no-subtitles": "Adesedess a gh'è minga de sottitoi in  $1 per quell video chì, a l'è possibil [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifià quella pagina chì] per sgiontai",
 	"timedmedia-subtitle-remote": "I sottitoi per quel fail chì a inn ospitad in su $1",
 	"timedmedia-subtitle-remote-link": "Te podet vardà [$1 la pagina de descrizzion] per quell fail chì in su $2",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}}",
