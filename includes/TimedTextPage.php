@@ -196,7 +196,7 @@ class TimedTextPage extends Article {
 					'width' => self::$videoWidth
 				]
 			);
-			return $videoTransform->toHTML();
+			return $videoTransform->toHtml();
 		}
 	}
 
