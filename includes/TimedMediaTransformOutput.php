@@ -459,14 +459,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1] : $this->getPlayerHeight();
 
-		if ( $this->fillwindow ) {
-			$width = '100%';
-			$height = '100%';
-		} else {
-			$width .= 'px';
-			$height .= 'px';
-		}
-
 		$id = self::$serial;
 		self::$serial++;
 		$mediaAttr = [
@@ -509,6 +501,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$mediaAttr['playsinline'] = '';
 			}
 		} else {
+			if ( $this->fillwindow ) {
+				$width = '100%';
+				$height = '100%';
+			} else {
+				$width .= 'px';
+				$height .= 'px';
+			}
+
 			$mediaAttr['style'] = "width:{$width}";
 
 			if ( $this->isVideo ) {
