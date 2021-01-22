@@ -1,12 +1,11 @@
 <?php
 
+use Wikimedia\TestingAccessWrapper;
+
 /**
  * @covers TimedMediaTransformOutput
  */
 class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
-
-	private $sortMethod;
-	private $thumbObj;
 
 	public function getFilePath() {
 		return __DIR__ . '/media';
@@ -16,10 +15,8 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		parent::setUp();
 
 		// Disable video thumbnail generation. Not needed for this test.
-		$reflection = new ReflectionClass( $this->repo );
-		$reflectionProperty = $reflection->getProperty( 'transformVia404' );
-		$reflectionProperty->setAccessible( true );
-		$reflectionProperty->setValue( $this->repo, true );
+		$repo = TestingAccessWrapper::newFromObject( $this->repo );
+		$repo->transformVia404 = true;
 
 		$this->setMWGlobals( 'wgMinimumVideoPlayerSize', '400' );
 	}
@@ -36,15 +33,9 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 
 		// Note this file has a width of 400px and a height of 300px
 		$file = $this->dataFile( 'test5seconds.electricsheep.300x400.ogv', 'application/ogg' );
-		$thumbnail = $file->transform( [ 'width' => $width ] );
+		$thumbnail = TestingAccessWrapper::newFromObject( $file->transform( [ 'width' => $width ] ) );
 		$this->assertTrue( $thumbnail && !$thumbnail->isError() );
-
-		$reflection = new ReflectionClass( $thumbnail );
-		$reflMethod = $reflection->getMethod( 'useImagePopUp' );
-		$reflMethod->setAccessible( true );
-
-		$actual = $reflMethod->invoke( $thumbnail );
-		$this->assertEquals( $actual, $expectPopup );
+		$this->assertEquals( $thumbnail->useImagePopUp(), $expectPopup );
 	}
 
 	public function providerIsPopUp() {
@@ -70,18 +61,10 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 			'fillwindow' => false,
 			'file' => new FakeDimensionFile( [ 1820, 1024 ] )
 		];
-		$this->thumbObj = new TimedMediaTransformOutput( $params );
+		$thumbObj = TestingAccessWrapper::newFromObject( new TimedMediaTransformOutput( $params ) );
 
-		$reflection = new ReflectionClass( $this->thumbObj );
-		$this->sortMethod = $reflection->getMethod( 'sortMediaByBandwidth' );
-		$this->sortMethod->setAccessible( true );
-
-		usort( $sources, [ $this, 'callSortMethodHelper' ] );
+		usort( $sources, [ $thumbObj, 'sortMediaByBandwidth' ] );
 		$this->assertEquals( $sortedSources, $sources );
-	}
-
-	public function callSortMethodHelper( $a, $b ) {
-		return $this->sortMethod->invoke( $this->thumbObj, $a, $b );
 	}
 
 	public function providerSortMediaByBandwidth() {
