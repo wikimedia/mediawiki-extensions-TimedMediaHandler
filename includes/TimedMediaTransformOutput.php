@@ -183,7 +183,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->useImagePopUp() && TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
 			$res = $this->getImagePopUp();
 		} else {
-			$res = $this->getHtmlMediaTagOutput();
+			$mediaAttr = $this->getMediaAttr();
+			$res = $this->getHtmlMediaTagOutput( $mediaAttr );
 		}
 		$this->width = $oldWidth;
 		$this->height = $oldHeight;
@@ -234,12 +235,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$id = self::$serial;
 		self::$serial++;
 
+		$mediaAttr = $this->getMediaAttr( $this->getPopupPlayerSize(), $autoPlay );
+
 		return Xml::tags( 'div', [
 				'id' => self::PLAYER_ID_PREFIX . $id,
 				'class' => 'PopUpMediaTransform',
 				'style' => "width:" . $this->getPlayerWidth() . "px;",
 				// Note: getHtmlMediaTagOutput() returns HTML, which is getting double escaped here
-				'videopayload' => $this->getHtmlMediaTagOutput( $this->getPopupPlayerSize(), $autoPlay ),
+				'videopayload' => $this->getHtmlMediaTagOutput( $mediaAttr ),
 				],
 			Xml::tags( 'img', [
 				'alt' => $this->file->getTitle(),
@@ -343,11 +346,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * This function is also called by the Score extension, in which case
 	 * there is no connection to a file object.
 	 *
-	 * @param int[] $sizeOverride
-	 * @param bool $autoPlay sets the autoplay attribute
+	 * @param array $mediaAttr The result of calling getMediaAttr()
 	 * @return string HTML
 	 */
-	private function getHtmlMediaTagOutput( $sizeOverride = [], $autoPlay = false ) {
+	private function getHtmlMediaTagOutput( array $mediaAttr ) {
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		reset( $mediaSources ); // do not rely on auto-resetting of arrays under HHVM
@@ -396,15 +398,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 		}
 
-		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
-		if ( $this->fillwindow ) {
-			$width = '100%';
-		} else {
-			$width .= 'px';
+		$width = $mediaAttr['width'];
+		if ( TimedMediaHandlerHooks::activePlayerMode() !== 'videojs' ) {
+			unset( $mediaAttr['width'] );
 		}
 
 		// Build the video tag output:
-		$s = Html::rawElement( $this->getTagName(), $this->getMediaAttr( $sizeOverride, $autoPlay ),
+		$s = Html::rawElement( $this->getTagName(), $mediaAttr,
 			// The set of media sources:
 			self::htmlTagSet( 'source', $mediaSources ) .
 
@@ -449,7 +449,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param bool $autoPlay
 	 * @return array
 	 */
-	private function getMediaAttr( $sizeOverride = false, $autoPlay = false ) {
+	private function getMediaAttr( $sizeOverride = false, $autoPlay = false ): array {
 		global $wgVideoPlayerSkin;
 
 		// Normalize values
@@ -509,6 +509,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				$height .= 'px';
 			}
 
+			$mediaAttr['width'] = $width;
 			$mediaAttr['style'] = "width:{$width}";
 
 			if ( $this->isVideo ) {
