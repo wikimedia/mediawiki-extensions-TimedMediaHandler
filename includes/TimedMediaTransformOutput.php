@@ -171,6 +171,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			throw new Exception( __METHOD__ . ' called in the old style' );
 		}
 
+		$classes = $options['img-class'] ?? '';
+
 		$oldHeight = $this->height;
 		$oldWidth = $this->width;
 		if ( isset( $options['override-height'] ) ) {
@@ -183,7 +185,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->useImagePopUp() && TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
 			$res = $this->getImagePopUp();
 		} else {
-			$mediaAttr = $this->getMediaAttr();
+			$mediaAttr = $this->getMediaAttr( false, false, $classes );
 			$res = $this->getHtmlMediaTagOutput( $mediaAttr );
 		}
 		$this->width = $oldWidth;
@@ -447,9 +449,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get the media attributes
 	 * @param array|false $sizeOverride Array of width and height
 	 * @param bool $autoPlay
+	 * @param string $classes
 	 * @return array
 	 */
-	private function getMediaAttr( $sizeOverride = false, $autoPlay = false ): array {
+	private function getMediaAttr(
+		$sizeOverride = false, $autoPlay = false, string $classes = ''
+	): array {
 		global $wgVideoPlayerSkin;
 
 		// Normalize values
@@ -528,6 +533,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		// Additional class-name provided by Transform caller
 		if ( $this->playerClass ) {
 			$mediaAttr[ 'class' ] .= ' ' . $this->playerClass;
+		}
+
+		if ( strlen( $classes ) > 0 ) {
+			$mediaAttr[ 'class' ] .= ' ' . $classes;
 		}
 
 		if ( $this->file ) {
