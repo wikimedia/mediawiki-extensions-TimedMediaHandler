@@ -146,7 +146,11 @@
 			}
 			this.mediaPlayers = new mw.MediaPlayers();
 			// detect available players
-			this.detectPlayers();
+			try {
+				this.detectPlayers();
+			} catch ( e ) {
+				// Uncaught TypeError: Illegal invocation
+			}
 			return this.mediaPlayers;
 		},
 

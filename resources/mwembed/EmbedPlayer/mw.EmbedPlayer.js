@@ -2287,7 +2287,12 @@
 			if ( this.supports.volumeControl &&
 				this.getInterface().find( '.volume-slider' ).length
 			) {
-				this.getInterface().find( '.volume-slider' ).slider( 'value', percent * 100 );
+				try {
+					this.getInterface().find( '.volume-slider' ).slider( 'value', percent * 100 );
+				} catch ( e ) {
+					// Error: cannot call methods on slider prior to initialization; attempted to call method 'value'
+					// The slider is not ready, do nothing and do not log error.
+				}
 			}
 		},
 

@@ -22,7 +22,8 @@
 		// Check if the selected player set is ready if ready issue the parent callback
 		function areSelectedPlayersReady() {
 			var playersLoaded = playerIdList.every( function ( playerId ) {
-				return $( '#' + playerId )[ 0 ].playerReadyFlag;
+				var player = $( '#' + playerId )[ 0 ];
+				return player && player.playerReadyFlag;
 			} );
 			if ( playersLoaded ) {
 				if ( callback ) {

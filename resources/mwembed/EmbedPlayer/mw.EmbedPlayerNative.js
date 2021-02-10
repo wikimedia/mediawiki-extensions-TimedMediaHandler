@@ -573,8 +573,10 @@
 				vid.play();
 				setTimeout( function () {
 					self.waitForPositiveCurrentTime( function () {
-						mw.log( 'EmbedPlayerNative:: Got possitive time:' + vid.currentTime.toFixed( 3 ) + ', trying to seek again' );
-						self.setCurrentTime( seekTime, callback, callbackCount + 1 );
+						if ( vid ) {
+							mw.log( 'EmbedPlayerNative:: Got possitive time:' + vid.currentTime.toFixed( 3 ) + ', trying to seek again' );
+							self.setCurrentTime( seekTime, callback, callbackCount + 1 );
+						}
 					} );
 				}, config[ 'EmbedPlayer.MonitorRate' ] );
 			}
