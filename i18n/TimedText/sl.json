@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dbc334"
+			"Dbc334",
+			"Eleassar"
 		]
 	},
-	"mwe-timedtext-back-btn": "Nazaj"
+	"mwe-timedtext-back-btn": "Nazaj",
+	"mwe-timedtext-textcat-cc": "Napisi"
 }
