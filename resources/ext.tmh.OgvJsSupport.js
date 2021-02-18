@@ -24,20 +24,38 @@
 			},
 
 			/**
-			 * Check if native Ogg playback is available.
+			 * Check if native WebM VP9 playback is available.
 			 *
 			 * @return {boolean}
 			 */
 			canPlayNatively: function () {
 				var el = document.createElement( 'video' );
-				if ( el && el.canPlayType && el.canPlayType( 'application/ogg' ) ) {
+				if ( el && el.canPlayType && el.canPlayType( 'video/webm; codecs="opus,vp9"' ) ) {
 					return true;
 				}
 				return false;
 			},
 
 			/**
-			 * Check if native Ogg playback is available, and if not
+			 * Check if ogv.js would be supported.
+			 *
+			 * @return {boolean}
+			 */
+			isSupported: function () {
+				return !!( window.WebAssembly && ( window.AudioContext || window.webkitAudioContext ) );
+			},
+
+			/**
+			 * Check if loading ogv.js would be needed, and would be supported.
+			 *
+			 * @return {boolean}
+			 */
+			isNeeded: function () {
+				return this.isSupported() && !this.canPlayNatively();
+			},
+
+			/**
+			 * Check if native WebM VP9 playback is available, and if not
 			 * then loads the OGVPlayer class before resolving.
 			 *
 			 * @param {string?} mod - optional module name override
@@ -45,13 +63,12 @@
 			 */
 			loadIfNeeded: function ( mod ) {
 				mod = mod || 'ext.tmh.OgvJs';
-				if ( this.canPlayNatively() ) {
-					// Has native ogg playback support, resolve immediately.
+				if ( this.isNeeded() ) {
+					return this.loadOgvJs( mod );
+				} else {
 					return $.Deferred( function ( deferred ) {
 						deferred.resolve();
 					} );
-				} else {
-					return this.loadOgvJs( mod );
 				}
 			},
 

@@ -1,4 +1,7 @@
-/*! videojs-resolution-switcher - 2015-7-26
+/**
+ * forked from:
+ *
+ * videojs-resolution-switcher - 2015-7-26
  * Copyright (c) 2016 Kasper Moskwiak
  * Modified by Pierre Kraft and Derk-Jan Hartman
  * Licensed under the Apache-2.0 license. */
@@ -127,6 +130,11 @@
             return true;
           }
         });
+        if (src.length == 0) {
+          // Return current src if no playable sources.
+          return player.src();
+        }
+
         //Sort sources
         this.currentSources = src.sort(compareResolutions);
         this.groupedSrc = bucketSources(this.currentSources);
@@ -263,6 +271,7 @@
       function chooseSrc(groupedSrc, src){
         var selectedRes = settings['default']; // use array access as default is a reserved keyword
         var selectedLabel = '';
+
         if (selectedRes === 'high') {
           selectedRes = src[0].res;
           selectedLabel = src[0].label;

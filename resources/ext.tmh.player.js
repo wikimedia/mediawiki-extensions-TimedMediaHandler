@@ -94,8 +94,8 @@
 						// @todo: this eats middle-click, should fix that
 						event.preventDefault();
 					} )
-				)
-				.replaceAll( $videoplayer );
+				);
+			$videoplayer.replaceWith( $placeholder );
 		}
 
 		$collection.each( loadSinglePlayer );

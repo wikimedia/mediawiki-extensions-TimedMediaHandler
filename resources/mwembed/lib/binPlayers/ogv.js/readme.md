@@ -7,6 +7,36 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, libnestegg and dav1d
 
 ## Updates
 
+1.8.1 - 2021-02-18
+* Fixed OGVCompat APIs to correctly return false without WebAssembly and Web Audio
+
+1.8.0 - 2021-02-09
+* Dropping IE support and Flash audio backend
+    * Updated to stream-file 0.3.0
+    * Updated to audio-feeder 0.5.0
+    * The old IE 10/11 support _no longer works_ due to the Flash plugin being disabled, and so is being removed
+* Drop es6-promise shim
+    * Now requires WebAssembly, which requires native Promise support
+* Build & fixes
+    * Demo fixed (removed test files that are now offline)
+    * Builds with emscripten 2.0.13
+    * Requires latest meson from git pending a fix hitting release
+
+1.7.0 - 2020-09-28
+* Builds with emscripten's LLVM upstream backend
+    * Updated to build with emscripten 2.0.4
+* Reduced amount of memory used between GC runs by reusing frame buffers
+* Removed `memoryLimit` option
+    * JS, Wasm, and threaded Wasm builds now all use dynamic memory growth
+* Updated dav1d
+* Updated libvpx to 1.8.1
+* Experimental SIMD builds of AV1 decoder optional, with `make SIMD=1`
+    * These work in Chrome with the "WebAssembly SIMD" flag enabled in chrome://flags/
+    * Significant speed boost when available.
+    * Available with and without multithreading.
+    * Must enable explicitly with `simd: true` in `options`.
+* Experimental SIMD work for VP9 as well, incomplete.
+
 1.6.1 - 2019-06-18
 * playbackSpeed attribute now supported
 * updated audio-feeder to 0.4.21;
@@ -71,15 +101,13 @@ The API isn't quite complete, but works pretty well.
 
 ## Compatibility
 
-ogv.js requires a fast JS engine with typed arrays, and either Web Audio or Flash for audio playback.
+ogv.js requires a fast JS engine with typed arrays, and Web Audio for audio playback.
 
 The primary target browsers are (testing 360p/30fps and up):
 * Safari 6.1-12 on Mac OS X 10.7-10.14
 * Safari on iOS 10-11 64-bit
-* Edge on Windows 10 desktop/tablet
-* Internet Explorer 10-11 on Windows 7-10 (desktop/tablet)
 
-Older versions of Safari have flaky JIT compilers. IE 9 and below lack typed arrays.
+Older versions of Safari have flaky JIT compilers. IE 9 and below lack typed arrays, and IE 10/11 no longer support an audio channel since the Flash plugin was sunset.
 
 (Note that Windows and Mac OS X can support Ogg and WebM by installing codecs or alternate browsers with built-in support, but this is not possible on iOS where all browsers are really Safari.)
 
@@ -92,12 +120,12 @@ Testing browsers (these support .ogv and .webm natively):
 
 Pre-built releases of ogv.js are available as [.zip downloads from the GitHub releases page](https://github.com/brion/ogv.js/releases) and through the npm package manager.
 
-You can load the `ogv.js` main entry point directly in a script tag, or bundle it through whatever build process you like. The other .js files and the .swf file (for audio in IE) must be made available for runtime loading, together in the same directory.
+You can load the `ogv.js` main entry point directly in a script tag, or bundle it through whatever build process you like. The other .js files must be made available for runtime loading, together in the same directory.
 
 ogv.js will try to auto-detect the path to its resources based on the script element that loads ogv.js or ogv-support.js. If you load ogv.js through another bundler (such as browserify or MediaWiki's ResourceLoader) you may need to override this manually before instantiating players:
 
 ```
-  // Path to ogv-demuxer-ogg.js, ogv-worker-audio.js, dynamicaudio.swf etc
+  // Path to ogv-demuxer-ogg.js, ogv-worker-audio.js, etc
   OGVLoader.base = '/path/to/resources';
 ```
 
@@ -151,7 +179,7 @@ To check for compatibility before creating a player, include `ogv-support.js` an
   }
 ```
 
-This will check for typed arrays, audio/Flash, blacklisted iOS versions, and super-slow/broken JIT compilers.
+This will check for typed arrays, web audio, blacklisted iOS versions, and super-slow/broken JIT compilers.
 
 If you need a URL versioning/cache-buster parameter for dynamic loading of `ogv.js`, you can use the `OGVVersion` symbol provided by `ogv-support.js` or the even tinier `ogv-version.js`:
 
@@ -173,20 +201,20 @@ These entry points may be loaded directly from a script element, or concatenated
 Further code modules are loaded at runtime, which must be available with their defined names together in a directory. If the files are not hosted same-origin to the web page that includes them, you will need to set up appropriate CORS headers to allow loading of the worker JS modules.
 
 Dynamically loaded assets:
-* `ogv-worker-audio.js`, `ogv-worker-video.js`, and `pthread-main.js` are Worker entry points, used to run video and audio decoders in the background.
-* `ogv-demuxer-ogg.js` is used in playing .ogg, .oga, and .ogv files.
-* `ogv-demuxer-webm.js` is used in playing .webm files.
-* `ogv-decoder-audio-vorbis.js` and `ogv-decoder-audio-opus.js` are used in playing both Ogg and WebM files containing audio.
-* `ogv-decoder-video-theora.js` is used in playing .ogg and .ogv video files.
-* `ogv-decoder-video-vp8.js` and `ogv-decoder-video-vp9.js` are used in playing .webm video files.
-* `*-wasm.js` and `*-wasm.wasm` files are the Web Assembly versions of the above modules.
-* `*-mt.js` are the multithreaded versions of some of the above modules, if built. They have additional support files.
-* `dynamicaudio.swf` is the Flash audio shim, used for Internet Explorer 10/11.
+* `ogv-worker-audio.js`, `ogv-worker-video.js`, and `*.worker.js` are Worker entry points, used to run video and audio decoders in the background.
+* `ogv-demuxer-ogg-wasm.js/.wasm` are used in playing .ogg, .oga, and .ogv files.
+* `ogv-demuxer-webm-wasm.js/.wasm` are used in playing .webm files.
+* `ogv-decoder-audio-vorbis-wasm.js/.wasm` and `ogv-decoder-audio-opus-wasm.js/.wasm` are used in playing both Ogg and WebM files containing audio.
+* `ogv-decoder-video-theora-wasm.js/.wasm` are used in playing .ogg and .ogv video files.
+* `ogv-decoder-video-vp8-wasm.js/.wasm` and `ogv-decoder-video-vp9-wasm.js/.wasm` are used in playing .webm video files.
+* `*-mt.js/.wasm` are the multithreaded versions of some of the above modules. They have additional support files.
 
-If you know you will never use particular formats or codecs you can skip bundling them; for instance if you only need to play Ogg files you don't need `ogv-demuxer-webm.js` or `ogv-decoder-video-vp8.js` which are only used for WebM.
+If you know you will never use particular formats or codecs you can skip bundling them; for instance if you only need to play Ogg files you don't need `ogv-demuxer-webm-wasm.js` or `ogv-decoder-video-vp8-wasm.js` which are only used for WebM.
 
 
 ## Performance
+
+(This section is somewhat out of date.)
 
 As of 2015, for SD-or-less resolution basic Ogg Theora decoding speed is reliable on desktop and newer high-end mobile devices; current high-end desktops and laptops can even reach HD resolutions. Older and low-end mobile devices may have difficulty on any but audio and the lowest-resolution video files.
 
@@ -247,11 +275,11 @@ As with chunked streaming, cross-site playback requires CORS support for the Ran
 
 *Audio output*
 
-Audio output is handled through the [AudioFeeder](https://github.com/brion/audio-feeder) library, which encapsulates use of Web Audio API or Flash depending on browser support:
+Audio output is handled through the [AudioFeeder](https://github.com/brion/audio-feeder) library, which encapsulates use of Web Audio API:
 
 Firefox, Safari, Chrome, and Edge support the W3C Web Audio API.
 
-IE doesn't support Web Audio, but does bundle the Flash player in Windows 8/8.1/RT. A small Flash shim is included here and used as a fallback -- thanks to Maik Merten for hacking some pieces together and getting this working!
+IE is no longer supported; the workaround using Flash no longer works due to sunsetting of the Flash plugin.
 
 A/V synchronization is performed on files with both audio and video, and seems to actually work. Yay!
 
@@ -298,13 +326,9 @@ The Ogg Skeleton library (libskeleton) is a bit ... unfinished and is slightly m
 libvpx is slightly modified to work around emscripten threading limitations in the VP8 decoder.
 
 
-## Web Assembly
+## WebAssembly
 
-Web Assembly (WASM) versions of the emscripten cross-compiled modules are also included, used by default if WebAssembly support is available in the browser.
-
-The WASM versions of the modules are more compact than the cross-compiled asm.js-style JavaScript, and should download and parse faster. Some browsers may also compile the module differently, providing more consistent performance at the beginning of playback.
-
-Safari 12 and Edge 16 include WASM support, as do current versions of Firefox and Chrome.
+WebAssembly (Wasm) builds are used exclusively as of 1.8.0, as Safari's Wasm support is pretty well established now and IE no longer works due to the Flash plugin deprecation.
 
 
 ## Multithreading
@@ -324,8 +348,8 @@ If you are making a slim build and will not use the `threading` option, you can 
 
 Building ogv.js is known to work on Mac OS X and Linux (tested Fedora 29 and Ubuntu 18.10 with Meson manually updated).
 
-1. You will need autoconf, automake, libtool, pkg-config, meson, ninja, and node (nodejs). These can be installed through Homebrew on Mac OS X, or through distribution-specific methods on Linux. For meson, you may need a newer version than your distro packages -- install it manually with `pip3`.
-2. Install [Emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/Tutorial.html); currently building with 1.38.27.
+1. You will need autoconf, automake, libtool, pkg-config, meson, ninja, and node (nodejs). These can be installed through Homebrew on Mac OS X, or through distribution-specific methods on Linux. For meson, you may need a newer version than your distro packages -- install it manually with `pip3` or from source.
+2. Install [Emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/Tutorial.html); currently building with 2.0.13.
 3. `git submodule update --init`
 4. Run `npm install` to install build utilities
 5. Run `make js` to configure and build the libraries and the C wrapper
@@ -341,7 +365,5 @@ If you did all the setup above, just run `make demo` or `make`. Look in build/de
 libogg, libvorbis, libtheora, libopus, nestegg, libvpx, and dav1d are available under their respective licenses, and the JavaScript and C wrapper code in this repo is licensed under MIT.
 
 Based on build scripts from https://github.com/devongovett/ogg.js
-
-[AudioFeeder](https://github.com/brion/audio-feeder)'s dynamicaudio.as and other Flash-related bits are based on code under BSD license, (c) 2010 Ben Firshman.
 
 See [AUTHORS.md](https://github.com/brion/ogv.js/blob/master/AUTHORS.md) and/or the git history for a list of contributors.

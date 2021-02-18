@@ -87,6 +87,8 @@
 
 	/**
 	 * Load video players for a jQuery collection
+	 *
+	 * @return {jQuery.Deferred}
 	 */
 	function loadVideoPlayer() {
 		var $collection = this;
@@ -172,15 +174,7 @@
 				playerHeight = $( videoplayer ).height();
 				if ( !mw.OgvJsSupport.canPlayNatively() ) {
 					// Don't pick high-res versions on ogv.js which may be slow.
-					if ( typeof WebAssembly === 'object' && typeof WebAssembly.Module === 'function' ) {
-						// We have WebAssembly, so it'll probably be fairly fast.
-						// Default to full SD resolution if it fits.
-						playerHeight = Math.min( playerHeight, 480 );
-					} else {
-						// No Wasm, must use the JS build of ogv.js which is slow.
-						// Especially if this is IE, use lower resolutions.
-						playerHeight = Math.min( playerHeight, 240 );
-					}
+					playerHeight = Math.min( playerHeight, 480 );
 				}
 				resolutions.sort( function ( a, b ) {
 					return a - b;
@@ -210,7 +204,7 @@
 			return vjs;
 		}
 
-		if ( !mw.OgvJsSupport.canPlayNatively() ) {
+		if ( mw.OgvJsSupport.isNeeded() ) {
 			globalConfig.ogvjs = $.extend( techOpt, {
 				base: mw.OgvJsSupport.basePath(),
 				audioContext: mw.OgvJsSupport.initAudioContext()
