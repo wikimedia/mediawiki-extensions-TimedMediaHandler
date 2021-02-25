@@ -585,6 +585,10 @@
 			var self = this,
 				vid = this.getPlayerElement();
 
+			if ( !vid ) {
+				mw.log.error( 'EmbedPlayerNative:: waitForPositiveCurrentTime failed to find player element' );
+				return;
+			}
 			this.waitForPositiveCurrentTimeCount++;
 			// Wait for playback for 10 seconds
 			if ( vid.currentTime > 0 ) {
@@ -930,6 +934,7 @@
 
 		/**
 		 * Get /update the playerElement value
+		 * @return {jQuery.Object|undefined} undefined if no associated DOM element can be found
 		 */
 		getPlayerElement: function () {
 			this.playerElement = $( '#' + this.pid ).get( 0 );
