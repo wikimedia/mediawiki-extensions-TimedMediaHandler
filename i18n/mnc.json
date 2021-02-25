@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chulsu463"
+			"Chulsu463",
+			"Foavi33"
 		]
 	},
-	"timedmedia-source-file": "$1 sekiyen"
+	"timedmedia-source-file": "$1 sekiyen",
+	"timedmedia-source-audio-file-desc": "dade $1 dangse ($2)"
 }
