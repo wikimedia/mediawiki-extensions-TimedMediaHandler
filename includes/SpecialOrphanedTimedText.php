@@ -247,8 +247,9 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		$title = Title::makeTitleSafe( $row->namespace, $row->title );
 
 		if ( $title instanceof Title ) {
-			$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-			$text = $contLang->convert(
+			$contLangConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+				->getLanguageConverter();
+			$text = $contLangConv->convert(
 				htmlspecialchars( $title->getPrefixedText() )
 			);
 			$link = $this->getLinkRenderer()->makeLink( $title, new HtmlArmor( $text ) );
