@@ -128,5 +128,6 @@
 	"orphanedtimedtext-unsupported": "Seda erilehekülge toetatakse ainult MySQL-andmebaasides.",
 	"orphanedtimedtext-notimedtext": "Ajastatud tekst pole selles vikis lubatud.",
 	"videojs-more-information": "Lisateave",
-	"videojs-quality": "Video kvaliteet"
+	"videojs-quality": "Video kvaliteet",
+	"transcodestatistics": "Ümberkodeerimise arvandmestik"
 }
