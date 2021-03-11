@@ -10,6 +10,7 @@
 	"mwe-timedtext-back-btn": "Arrière",
 	"mwe-timedtext-layout-off": "Masquer les sous-titres",
 	"mwe-timedtext-loading-text": "Chargement du texte ...",
+	"mwe-timedtext-key-language": "&#91;$1&#93; $2",
 	"mwe-timedtext-textcat-cc": "Légendes",
 	"mwe-timedtext-textcat-sub": "Sous-titres",
 	"mwe-timedtext-textcat-tad": "Description audio",
