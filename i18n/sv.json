@@ -10,6 +10,7 @@
 			"Lejonel",
 			"Lokal Profil",
 			"Rotsee",
+			"Sabelöga",
 			"Skalman",
 			"WikiPhoenix"
 		]
@@ -149,5 +150,6 @@
 	"orphanedtimedtext-unsupported": "Denna special-sida har bara stöd på MySQL-databaser.",
 	"orphanedtimedtext-notimedtext": "TimedText är inte aktiverat på denna wiki.",
 	"videojs-more-information": "Mer information",
-	"videojs-quality": "Videokvalitet"
+	"videojs-quality": "Videokvalitet",
+	"transcodestatistics": "Transkodningsstatistik"
 }
