@@ -571,11 +571,6 @@
 		 * @return {Number} pixel height of the video
 		 */
 		getPlayerWidth: function () {
-			var profile = $.client.profile();
-
-			if ( profile.name === 'firefox' && profile.versionNumber < 2 ) {
-				return ( $( this ).parent().parent().width() );
-			}
 			return $( this ).width();
 		},
 
