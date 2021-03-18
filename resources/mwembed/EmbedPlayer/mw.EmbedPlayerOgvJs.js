@@ -205,7 +205,9 @@
 			if ( this.seeking ) {
 				// Run the onSeeking interface update
 				this.controlBuilder.onSeek();
-				this.playerElement.addEventListener( 'seeked', onseeked );
+				if ( this.playerElement ) {
+					this.playerElement.addEventListener( 'seeked', onseeked );
+				}
 			}
 			if ( typeof callback === 'function' ) {
 				callback();

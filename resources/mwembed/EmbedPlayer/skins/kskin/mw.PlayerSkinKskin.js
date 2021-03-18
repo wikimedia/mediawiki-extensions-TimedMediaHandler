@@ -212,7 +212,8 @@
 		checkMenuOverlay: function () {
 			var self = this,
 				embedPlayer = this.embedPlayer;
-			if ( self.$playerTarget.find( '.k-menu' ).length === 0 ) {
+			// $playerTarget is only set inside addSkinControlBindings so many be undefined (T262484).
+			if ( self.$playerTarget && self.$playerTarget.find( '.k-menu' ).length === 0 ) {
 				// Stop the player if it does not support overlays:
 				if ( !embedPlayer.supports.overlays ) {
 					embedPlayer.stop();

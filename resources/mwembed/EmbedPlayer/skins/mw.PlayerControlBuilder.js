@@ -978,7 +978,9 @@
 			$( embedPlayer ).on( 'progress' + this.bindPostfix, function ( event, jEvent, id ) {
 			// regain scope
 				var embedPlayer = $( '#' + id )[ 0 ];
-				embedPlayer.updateBufferStatus();
+				if ( embedPlayer ) {
+					embedPlayer.updateBufferStatus();
+				}
 			} );
 
 			// Bind to EnableInterfaceComponents

@@ -162,16 +162,20 @@
 				// regain scope
 				self = $( '#' + id )[ 0 ].timedText;
 				// monitor text updates
-				self.monitor();
+				if ( self ) {
+					self.monitor();
+				}
 			} );
 
 			$( embedPlayer ).on( 'firstPlay' + this.bindPostFix, function ( event, id ) {
 				// regain scope
 				self = $( '#' + id )[ 0 ].timedText;
-				// Will load and setup timedText sources (if not loaded already loaded )
-				self.setupTextSources();
-				// Hide the caption menu if presently displayed
-				$( '#textMenuContainer_' + self.embedPlayer.id ).hide();
+				if ( self ) {
+					// Will load and setup timedText sources (if not loaded already loaded )
+					self.setupTextSources();
+					// Hide the caption menu if presently displayed
+					$( '#textMenuContainer_' + self.embedPlayer.id ).hide();
+				}
 			} );
 
 			// Re-Initialize when changing media
@@ -195,7 +199,7 @@
 					} );
 
 				mw.log( 'TimedText::set text size for: : ' + embedPlayer.getInterface().width() + ' = ' + textCss[ 'font-size' ] );
-				if ( embedPlayer.controlBuilder.isOverlayControls() && !embedPlayer.getInterface().find( '.control-bar' ).is( ':hidden' ) ) {
+				if ( embedPlayer && embedPlayer.controlBuilder.isOverlayControls() && !embedPlayer.getInterface().find( '.control-bar' ).is( ':hidden' ) ) {
 					textOffset += self.embedPlayer.controlBuilder.getHeight();
 				}
 				embedPlayer.getInterface().find( '.track' )
