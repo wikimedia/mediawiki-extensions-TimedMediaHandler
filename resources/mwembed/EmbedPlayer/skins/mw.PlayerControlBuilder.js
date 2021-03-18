@@ -113,8 +113,7 @@
 		// Set up local pointer to the embedPlayer
 			var $controlBar,
 				self = this,
-				embedPlayer = this.embedPlayer,
-				profile = $.client.profile();
+				embedPlayer = this.embedPlayer;
 
 			// Remove any old controls & old overlays:
 			embedPlayer.getInterface().find( '.control-bar,.overlay-win' ).remove();
@@ -144,10 +143,6 @@
 
 			// Add the controls to the interface
 			embedPlayer.getInterface().append( $controlBar );
-
-			if ( profile.name === 'firefox' && profile.versionNumber < 2 ) {
-				embedPlayer.triggerHelper( 'resizeIframeContainer', [ { height: embedPlayer.height + $controlBar.height() - 1 } ] );
-			}
 
 			// Add the Controls Component
 			this.addControlComponents();
@@ -957,8 +952,7 @@
 			var hoverIntentConfig,
 				embedPlayer = this.embedPlayer,
 				self = this,
-				$interface = embedPlayer.getInterface(),
-				profile = $.client.profile();
+				$interface = embedPlayer.getInterface();
 
 			self.onControlBar = false;
 
