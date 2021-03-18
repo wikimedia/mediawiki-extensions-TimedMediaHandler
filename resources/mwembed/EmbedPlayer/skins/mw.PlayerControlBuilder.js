@@ -1106,11 +1106,6 @@
 				);
 			}
 
-			// Do png fix for ie6
-			if ( profile.name === 'msie' && profile.versionNumber <= 6 ) {
-				$( '#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
-			}
-
 			this.doVolumeBinding();
 
 			// Check if we have any custom skin Bindings to run
