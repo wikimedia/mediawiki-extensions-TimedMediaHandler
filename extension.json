@@ -38,7 +38,8 @@
 			"transcode-status": true
 		},
 		"autoconfirmed": {
-			"transcode-reset": true
+			"transcode-reset": true,
+			"transcode-status": true
 		}
 	},
 	"GrantPermissions": {
