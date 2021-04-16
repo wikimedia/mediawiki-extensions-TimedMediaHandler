@@ -4,12 +4,19 @@
 			"Joanmp17"
 		]
 	},
+	"mwe-embedplayer-credit-title": "ኣርእስቲ፦ $1",
+	"mwe-embedplayer-credit-date": "ዕለት፦ $1",
+	"mwe-embedplayer-credit-author": "ደራሲ፦ $1",
 	"mwe-embedplayer-play_clip": "ክሊፕ ኣጻውት",
 	"mwe-embedplayer-pause_clip": "ክሊፕ ንግዚኡ ደው ኣብል",
 	"mwe-embedplayer-volume_control": "መቆጻጸሪ ድምጺ",
+	"mwe-embedplayer-player_options": "ኣማራጽታት ተጻወቲ",
 	"mwe-embedplayer-player_fullscreen": "ምሉእ መርኣዪ",
+	"mwe-embedplayer-download_clip": "ፋይል ኣውርድ",
+	"mwe-embedplayer-download_text": "ጽሑፍ ኣውርድ",
 	"mwe-embedplayer-download": "ኣውርድ",
 	"mwe-embedplayer-share": "ኣካፍል",
+	"mwe-embedplayer-menu_btn": "መምረጺ",
 	"mwe-embedplayer-close_btn": "ዕጸው",
 	"mwe-embedplayer-ogg-player-selected": "(ዝተመርጸ)",
 	"mwe-embedplayer-playerSelect": "ተጻወትቲ"
