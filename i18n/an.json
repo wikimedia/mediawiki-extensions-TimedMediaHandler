@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Juanpabl"
+			"Juanpabl",
+			"Willtron"
 		]
 	},
 	"timedmediahandler-desc": "Maneyador de fichers sincronizatos (vidio, son y texto sincronizato) con transcodificación Ogg Theora/Vorbis",
@@ -16,5 +17,6 @@
 	"timedmedia-more": "Más…",
 	"timedmedia-dismiss": "Zarrar",
 	"timedmedia-download": "Escargar fichero",
-	"timedmedia-desc-link": "Información sobre este fichero"
+	"timedmedia-desc-link": "Información sobre este fichero",
+	"timedmedia-source-audio-file-desc": "Fichero $1 orichinal ($2)"
 }
