@@ -91,7 +91,6 @@
 	"timedmedia-subtitle-new": "Új fordítás készítése vagy meglévő szerkesztése",
 	"timedmedia-subtitle-new-desc": "Válaszd ki a nyelvet, és kattints a '''{{int:Timedmedia-subtitle-new-go}}''' gombra",
 	"timedmedia-subtitle-new-go": "Mehet",
-	"timedmedia-subtitle-language": "$1 ($2) feliratok",
 	"timedmedia-subtitle-no-video": "Nem tartozik a jelenlegi feliratlaphoz videó.",
 	"timedmedia-subtitle-no-subtitles": "Jelenleg nincs $1 nyelvű felirat ehhez a videóhoz; [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted ezt a lapot] a hozzáadásához.",
 	"timedmedia-subtitle-remote": "Ennek a fájlnak az időzített szövege a(z) $1 wikin van tárolva",

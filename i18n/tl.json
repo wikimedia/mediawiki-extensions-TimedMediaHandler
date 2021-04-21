@@ -80,7 +80,6 @@
 	"timedmedia-subtitle-new": "Lumikha ng bagong salinwika o baguhin ang umiiral na",
 	"timedmedia-subtitle-new-desc": "Palitan ang bahaging '''$1''' ng iyong [[:en:ISO 639|kodigo ng wika]] at pindutin ang pindutang '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Gawin",
-	"timedmedia-subtitle-language": "$1 ($2) kabahaging mga pamagat",
 	"timedmedia-subtitle-no-video": "Walang bidyo na may kaugnayan sa pangkasalukuyang pahina ng kabahaging pamagat",
 	"timedmedia-subtitle-no-subtitles": "Kasalukuyang walang mga kabahaging pamagat sa loob ng $1 para sa bidyong ito, maaari mong [{{fullurl:{{FULLPAGENAME}}|action=edit}} baguhin ang pahinang ito] upang maidagdag ang mga ito",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodigo|$1 mga transkodigo}}",

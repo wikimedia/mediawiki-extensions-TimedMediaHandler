@@ -24,6 +24,5 @@
 	"timedmedia-oggThumb-failed": "oggThumb njejo mógł wobrazk napóraś.",
 	"timedmedia-source-file": "Žrědło ($1)",
 	"timedmedia-source-file-desc": "Originalna $1-dataja, $2 × $3 ($4)",
-	"timedmedia-derivative-desc-160p.ogv": "Niska šyrokosć pasma Ogg-widea (200p)",
-	"timedmedia-subtitle-language": "$1 ($2) pódtitele"
+	"timedmedia-derivative-desc-160p.ogv": "Niska šyrokosć pasma Ogg-widea (200p)"
 }

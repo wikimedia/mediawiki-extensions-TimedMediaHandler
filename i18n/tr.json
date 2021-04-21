@@ -122,7 +122,6 @@
 	"timedmedia-subtitle-new": "Yeni çeviri oluşturun veya mevcut olanı düzenleyin",
 	"timedmedia-subtitle-new-desc": "Dili seçin ve '''{{int:Timedmedia-subtitle-new-go}}''' düğmesine basın",
 	"timedmedia-subtitle-new-go": "Git",
-	"timedmedia-subtitle-language": "$1 ($2) altyazı",
 	"timedmedia-subtitle-no-video": "Geçerli altyazı sayfasıyla ilişkilendirilmiş video yok.",
 	"timedmedia-subtitle-no-subtitles": "Şu anda bu video için $1 içinde altyazı yok, eklemek için [{{fullurl:{{FULLPAGENAME}}|action=edit}} bu sayfayı düzenleyebilirsiniz].",
 	"timedmedia-subtitle-remote": "Bu dosya için zamanlanmış metin $1 üzerinde barındırılıyor",

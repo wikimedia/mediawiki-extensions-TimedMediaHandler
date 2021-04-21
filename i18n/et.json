@@ -102,7 +102,6 @@
 	"timedmedia-subtitle-new": "Uue tõlkega alustamine või olemasoleva muutmine",
 	"timedmedia-subtitle-new-desc": "Vali keel ja klõpsa nuppu '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Mine",
-	"timedmedia-subtitle-language": "$1 ($2) alltiitrid",
 	"timedmedia-subtitle-no-video": "Puudub selle alltiitrite leheküljega seotud video.",
 	"timedmedia-subtitle-no-subtitles": "Selle video alltiitrid puuduvad praegu selles keeles ($1). Saad seda lehekülge [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigeerida], et need lisada.",
 	"timedmedia-subtitle-remote": "Selle faili ajastatud tekst on hoidlas $1",

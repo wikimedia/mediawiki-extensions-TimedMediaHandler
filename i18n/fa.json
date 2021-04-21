@@ -116,7 +116,6 @@
 	"timedmedia-subtitle-new": "ترجمه جدیدی را ایجاد کنید یا در صورت وجود آن را ویرایش کنید.",
 	"timedmedia-subtitle-new-desc": " زبان را انتخاب کنید و دکمهٔ '''{{int:Timedmedia-subtitle-new-go}}''' را بفشارید",
 	"timedmedia-subtitle-new-go": "برو",
-	"timedmedia-subtitle-language": "$1 ($2) زیرنویس‌ها",
 	"timedmedia-subtitle-no-video": "هیچ ویدئویی مرتبط با زیرعنوان این صفحه موجود نیست",
 	"timedmedia-subtitle-no-subtitles": "در حال حاضر زیرنویسی برای $1 در این ویدئو وجود ندارد، می‌توانید این صفحه را برای افزودن آن‌ها [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش کنید].",
 	"timedmedia-subtitle-remote": "متن زمان‌دار برای پرونده ذخیره شده در $1",

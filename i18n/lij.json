@@ -107,7 +107,6 @@
 	"timedmedia-subtitle-new": "Creâ 'na noeuva tradussion ò modificâne un-a existente",
 	"timedmedia-subtitle-new-desc": "Selession-a a lengoa e sciacca o pomello'''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Vanni",
-	"timedmedia-subtitle-language": "$1 ($2) sottotittoli",
 	"timedmedia-subtitle-no-video": "No ghc'è nisciun viddeo associou a-a corente paggina di sottotittoli",
 	"timedmedia-subtitle-no-subtitles": "Po-u momento di sottotittoli in $1 pe questo viddeo no ghe n'è. Ti poeu [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificâ sta paggina] pe azonzighei.",
 	"timedmedia-subtitle-remote": "I sottotittoli pe questo file son ospitæ sciu $1",

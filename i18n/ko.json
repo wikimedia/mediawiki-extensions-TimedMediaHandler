@@ -122,7 +122,6 @@
 	"timedmedia-subtitle-new": "새 번역 만들기 또는 기존 번역 편집",
 	"timedmedia-subtitle-new-desc": "언어를 선택하고 '''{{int:Timedmedia-subtitle-new-go}}''' 버튼을 누르세요",
 	"timedmedia-subtitle-new-go": "가기",
-	"timedmedia-subtitle-language": "$1 ($2) 자막",
 	"timedmedia-subtitle-no-video": "현재 자막 페이지와 관련된 동영상이 없습니다",
 	"timedmedia-subtitle-no-subtitles": "현재 이 동영상에 대한 $1에 자막이 없습니다, 추가하려면 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 이 문서를 편집할] 수 있습니다.",
 	"timedmedia-subtitle-remote": "이 파일에 대한 자막은 $1에 호스트했습니다",

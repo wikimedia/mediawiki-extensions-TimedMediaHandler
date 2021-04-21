@@ -40,7 +40,6 @@
 	"timedmedia-derivative-desc-160p.ogv": "Fideo Ogg (160P) o led band isel",
 	"timedmedia-subtitle-new-desc": "Dewiswch iaith a gwasgu'r botwm '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Gwneler",
-	"timedmedia-subtitle-language": "Isdeitlau $1 ($2)",
 	"timedmedia-subtitle-remote-link": "Gallwch [$1 weld tudalen ddisgrifio'r] ffeil hon ar $2",
 	"timedmedia-file": "Ffeil",
 	"beta-feature-timedmediahandler-message-videojs": "Chwaraewr fideo newydd",

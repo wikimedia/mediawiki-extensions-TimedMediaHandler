@@ -161,7 +161,6 @@
 	"timedmedia-subtitle-new": "Crear na nova tradusion o canbiar una de chełe che ghe xe xà",
 	"timedmedia-subtitle-new-desc": "Siegli la lengua e struca el boton '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Và",
-	"timedmedia-subtitle-language": "$1 ($2) sototitołi",
 	"timedmedia-subtitle-no-video": "Nó ghe xe nisun video asocià a l'atuałe pàjina de i sototitołi",
 	"timedmedia-subtitle-no-subtitles": "Nó ghe xe al momento sototitołi in $1 par sto video, xe posibiłe [{{fullurl:{{FULLPAGENAME}}|action=edit}} canbiar sta pàjina] par xontarli",
 	"timedmedia-subtitle-remote": "I sototitołi par sto file i se cata so $1",

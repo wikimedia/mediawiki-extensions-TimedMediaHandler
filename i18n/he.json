@@ -113,7 +113,6 @@
 	"timedmedia-subtitle-new": "יצירת תרגום חדש או עריכת תרגום קיים",
 	"timedmedia-subtitle-new-desc": "נא לבחור שפה וללחוץ על כפתור '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "מעבר",
-	"timedmedia-subtitle-language": "כתוביות ב{{GRAMMAR:תחילית|$1}} ($2)",
 	"timedmedia-subtitle-no-video": "אין וידאו שמשויך לדף הכתוביות הנוכחי.",
 	"timedmedia-subtitle-no-subtitles": "אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן.",
 	"timedmedia-subtitle-remote": "טקסט מתוזמן עבור קובץ זה מאוחסן ב{{GRAMMAR:תחילית|$1}}",

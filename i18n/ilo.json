@@ -68,7 +68,6 @@
 	"timedmedia-subtitle-new": "Agpartuat ti baro a panagipatarus wenno urnosen ti adda",
 	"timedmedia-subtitle-new-desc": "Agpili ti pagsasao ken pinduten ti '''{{int:Timedmedia-subtitle-new-go}}''' a buton",
 	"timedmedia-subtitle-new-go": "Inkan",
-	"timedmedia-subtitle-language": "Dagiti $1 ($2) a subtitulo",
 	"timedmedia-subtitle-no-video": "Awan ti video a mainanig iti agdama a subtitulo ti panid",
 	"timedmedia-subtitle-no-subtitles": "Awan dagiti agdama asubtitulo iti $1 para iti daytoy a video, mabalinmo ti [{{fullurl:{{FULLPAGENAME}}|action=edit}} agurnods ti daytoy a panid] tapno makanayonka kaniada",
 	"timedmedia-subtitle-remote": "Ti naorasan a teksto para iti daytoy a papeles ket naisangaili idiay $1",

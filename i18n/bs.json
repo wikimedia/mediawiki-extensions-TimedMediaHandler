@@ -89,7 +89,6 @@
 	"timedmedia-resolution-1080": "HD (1080p)",
 	"timedmedia-resolution-1440": "UHD (1440p)",
 	"timedmedia-resolution-2160": "UHD (2160p)",
-	"timedmedia-subtitle-language": "$1 ($2) podnaslovi",
 	"beta-feature-timedmediahandler-message-videojs": "Novi videoreproduktor",
 	"beta-feature-timedmediahandler-description-videojs": "Gledajte videozapise u savremenom reproduktoru preuređenog izgleda uz bolju kompatibilnost s mobilnim uređajima.",
 	"right-transcode-reset": "Resetiranje neuspješno postavljenih ili već transkodiranih videozapisa tako da ih se ponovo ubaci u red poslova",

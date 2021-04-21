@@ -65,7 +65,6 @@
 	"timedmedia-subtitle-new": "Nowy přełožk wutworić abo eksistowacy wobdźěłać",
 	"timedmedia-subtitle-new-desc": "Wubjer rěč a klikń na tłóčatko '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "W porjadku",
-	"timedmedia-subtitle-language": "$1 ($2) podtitule",
 	"timedmedia-subtitle-no-video": "Widejo zwjazane z aktuelnej stronu podtitulow njeje",
 	"timedmedia-subtitle-no-subtitles": "Tuchwilu podtitule w $1 zu tute widejo njejsu, móžeš [{{fullurl:{{FULLPAGENAME}}|action=edit}} tutu stronu wobdźěłać], zo by je přidał",
 	"timedmedia-subtitle-remote": "timedText za tutu dataju je na $1",

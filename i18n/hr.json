@@ -75,7 +75,6 @@
 	"timedmedia-subtitle-new": "Započni novi prijevod ili uređuj postojeći",
 	"timedmedia-subtitle-new-desc": "Odaberite jezik i pritisnite '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Kreni",
-	"timedmedia-subtitle-language": "$1 ($2) podnaslovi",
 	"timedmedia-subtitle-no-video": "Nema video zapisa povezanog s trenutačnom stranicom podnapisa.",
 	"timedmedia-subtitle-no-subtitles": "Ne postoje podnaslovi u $1 za ovaj video zapis. Da biste ih dodali možete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti ovu stranicu].",
 	"timedmedia-file": "Datoteka",

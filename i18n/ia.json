@@ -104,7 +104,6 @@
 	"timedmedia-subtitle-new": "Crear un nove traduction o modificar le existente",
 	"timedmedia-subtitle-new-desc": "Selige un lingua e preme le button '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Va",
-	"timedmedia-subtitle-language": "$1 ($2) subtitulos",
 	"timedmedia-subtitle-no-video": "Il non ha video associate con le actual pagina de subtitulos",
 	"timedmedia-subtitle-no-subtitles": "Il ha actualmente nulle subtitulos in $1 pro iste video. Tu pote [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina] pro adder los.",
 	"timedmedia-subtitle-remote": "Le subtitulos pro iste file es albergate sur $1",

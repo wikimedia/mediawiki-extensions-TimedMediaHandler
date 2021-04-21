@@ -120,7 +120,6 @@
 	"timedmedia-subtitle-new": "Utwórz nowe tłumaczenie lub edytuj istniejące",
 	"timedmedia-subtitle-new-desc": "Wybierz język i kliknij przycisk '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Przejdź",
-	"timedmedia-subtitle-language": "$1 ($2) napisy",
 	"timedmedia-subtitle-remote-link": "Możesz [$1 zobaczyć stronę opisującą] ten plik na $2",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodowanie|$1 transkodowania|$1 transkodowań}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 trwające transkodowanie|$1 trwające transkodowania|$1 trwających transkodowań}}",

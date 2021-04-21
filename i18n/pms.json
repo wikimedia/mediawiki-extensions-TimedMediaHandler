@@ -71,7 +71,6 @@
 	"timedmedia-subtitle-new": "Creé na neuva tradussion o modifichene un-a esistenta",
 	"timedmedia-subtitle-new-desc": "Ch'a selession-a la lenga e ch'a sgnaca an sël boton '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Va",
-	"timedmedia-subtitle-language": "$1 ($2) sot-tìtoj",
 	"timedmedia-subtitle-no-video": "A-i é gnun filmà associà con la pagina corenta dël sot-tìtol",
 	"timedmedia-subtitle-no-subtitles": "A-i é al moment gnun sot-tìtoj an $1 për ës filmà, a peul [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifiché costa pàgina] për gionteje",
 	"timedmedia-subtitle-remote": "Ël test previst për cost archivi a l'é ospità dzor $1",

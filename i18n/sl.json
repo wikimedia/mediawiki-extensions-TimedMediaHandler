@@ -76,7 +76,6 @@
 	"timedmedia-subtitle-new": "Ustvarite nov prevod ali uredite obstoječega",
 	"timedmedia-subtitle-new-desc": "Izberite jezik in pritisnite gumb '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Pojdi",
-	"timedmedia-subtitle-language": "podnapisi v jeziku: $1 ($2)",
 	"timedmedia-subtitle-no-video": "S trenutno podnaslovno stranjo ni povezan noben videoposnetek",
 	"timedmedia-subtitle-no-subtitles": "V jeziku $1 trenutno ni nobenih podnapisov za ta video; stran lahko [{{fullurl:{{FULLPAGENAME}}|action=edit}} odprete za urejanje] in jih dodate.",
 	"timedmedia-subtitle-remote": "Časovno besedilo datoteke gostuje na $1",

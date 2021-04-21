@@ -43,7 +43,6 @@
 	"timedmedia-subtitle-new": "Жаңа аударма бастау немесе барын өңдеу",
 	"timedmedia-subtitle-new-desc": "Тілді таңдаңыз және '''{{int:Timedmedia-subtitle-new-go}}''' батырмасын басыңыз",
 	"timedmedia-subtitle-new-go": "Өту",
-	"timedmedia-subtitle-language": "$1 ($2) субтитрлер",
 	"timedmedia-file": "Файл",
 	"right-transcode-status": "[[Special:TimedMediaHandler|information about the current transcode activity]] көру"
 }

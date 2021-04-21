@@ -124,7 +124,6 @@
 	"timedmedia-subtitle-new": "Skapa ny översättning eller redigera befintlig",
 	"timedmedia-subtitle-new-desc": "Välj språk och tryck på knappen '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Gå",
-	"timedmedia-subtitle-language": "$1 ($2) undertexter",
 	"timedmedia-subtitle-no-video": "Det finns ingen video som är associerade med den aktuella undertextssidan",
 	"timedmedia-subtitle-no-subtitles": "Det finns för närvarande ingen textning på $1 för denna video, du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera denna sida] för att lägga till dem",
 	"timedmedia-subtitle-remote": "Undertexter (timed text) för denna fil finns på $1",

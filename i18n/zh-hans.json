@@ -137,7 +137,7 @@
 	"timedmedia-subtitle-new": "创建新翻译或编辑现有翻译",
 	"timedmedia-subtitle-new-desc": "选择语言然后按'''{{int:Timedmedia-subtitle-new-go}}'''按钮",
 	"timedmedia-subtitle-new-go": "提交",
-	"timedmedia-subtitle-language": "$1（$2）字幕",
+	"timedmedia-subtitle-language": "$1（$2）",
 	"timedmedia-subtitle-no-video": "当前字幕页面没有关联的视频。",
 	"timedmedia-subtitle-no-subtitles": "当前没有这个视频的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑这个页面]以添加",
 	"timedmedia-subtitle-remote": "本文件的字幕文件位于$1",

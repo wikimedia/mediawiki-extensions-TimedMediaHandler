@@ -70,7 +70,6 @@
 	"timedmedia-subtitle-new": "Magmukna nin baguhong dakit-taramon o liwaton an eksistido na",
 	"timedmedia-subtitle-new-desc": "Magpili nin lengguwahe asin pinduton an '''{{int:Timedmedia-subtitle-new-go}}''' na dutdutan",
 	"timedmedia-subtitle-new-go": "Magduman",
-	"timedmedia-subtitle-language": "$1 ($2) mga sub-titulo",
 	"timedmedia-subtitle-no-video": "Mayo tabing bidyo na asosyado na igwa nin sa ngunyan na subtitulo kan pahina",
 	"timedmedia-subtitle-no-subtitles": "Mayo tabi nin sa ngunyan na mga subtitulo sa $1 para kaining bidyo, ika tabi [{{fullurl:{{FULLPAGENAME}}|action=edit}} makapagliwat kaining pahina] tanganing maidugang sinda",
 	"timedmedia-subtitle-remote": "Pinag-orasang teksto para kaining sagunson iyo an pinagbunsod sa $1",

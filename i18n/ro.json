@@ -75,7 +75,6 @@
 	"timedmedia-subtitle-new": "Creare traducere nouă sau modificare una existentă",
 	"timedmedia-subtitle-new-desc": "Alegeți limba și apăsați butonul '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Du-te",
-	"timedmedia-subtitle-language": "Subtitrare în $1 ($2)",
 	"timedmedia-subtitle-no-video": "Nu există niciun videoclip asociat cu pagina curentă de subtitrare",
 	"timedmedia-subtitle-no-subtitles": "Nu există în acest moment subtitrări în limba $1 pentru acest videoclip. Puteți [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifica această pagină] pentru a le adăuga.",
 	"timedmedia-subtitle-remote": "Subtitrarea sincronizată a acestui fișier este găzduită la $1",

@@ -110,7 +110,6 @@
 	"timedmedia-subtitle-new": "Crear una traducción nueva o editar la esistente",
 	"timedmedia-subtitle-new-desc": "Seleicione la llingua y calque nel botón '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Dir",
-	"timedmedia-subtitle-language": "Subtítulos en $1 ($2)",
 	"timedmedia-subtitle-no-video": "Nun hai nengún videu asociáu cola páxina de subtítulos actual",
 	"timedmedia-subtitle-no-subtitles": "Anguaño nun hai subtítulos en $1 pa esti videu, pue [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] p'amestalos",
 	"timedmedia-subtitle-remote": "El testu cronometráu d'esti ficheru ta agospiáu en $1",

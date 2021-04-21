@@ -114,7 +114,6 @@
 	"timedmedia-subtitle-new": "Opprett ny oversettelse eller rediger eksisterende",
 	"timedmedia-subtitle-new-desc": "Velg språk eller trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
 	"timedmedia-subtitle-new-go": "Kjør",
-	"timedmedia-subtitle-language": "$1 ($2) undertekster",
 	"timedmedia-subtitle-no-video": "Det finnes ingen video koblet til den aktuelle undertekstsiden",
 	"timedmedia-subtitle-no-subtitles": "Det er for øyeblikket ingen undertekster på $1 for denne videoen. Du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigere denne siden] for å legge de til",
 	"timedmedia-subtitle-remote": "Undertekster (timed text) for denne filen befinner seg på $1",

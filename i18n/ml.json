@@ -146,7 +146,6 @@
 	"timedmedia-subtitle-new": "പുതിയ പരിഭാഷ തുടങ്ങുക അല്ലെങ്കിൽ നിലവിലുള്ളത് തിരുത്തുക",
 	"timedmedia-subtitle-new-desc": "ഭാഷ തിരഞ്ഞെടുത്ത്, '''{{int:Timedmedia-subtitle-new-go}}''' ബട്ടൺ അമർത്തുക",
 	"timedmedia-subtitle-new-go": "പോകൂ",
-	"timedmedia-subtitle-language": "$1 ($2) സംഭാഷണരേഖകൾ",
 	"timedmedia-subtitle-no-video": "ഇപ്പോഴത്തെ സംഭാഷണരേഖാ താളുമായി ചലച്ചിത്രങ്ങളൊന്നും ചേർത്തിട്ടില്ല",
 	"timedmedia-subtitle-no-subtitles": "ഈ ചലച്ചിത്രത്തിന് $1 ഭാഷയിൽ ഇപ്പോൾ സംഭാഷണരേഖയൊന്നും ഇല്ല, താങ്കൾക്ക് [{{fullurl:{{FULLPAGENAME}}|action=edit}} ഈ താൾ തിരുത്തി] അവ കൂട്ടിച്ചേർക്കാവുന്നതാണ്",
 	"timedmedia-subtitle-remote": "ഈ പ്രമാണത്തിനുള്ള സമയമനുസരിച്ചുള്ള എഴുത്ത് $1-ൽ ഹോസ്റ്റ് ചെയ്തിട്ടുണ്ട്.",

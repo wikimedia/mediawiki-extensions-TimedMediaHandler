@@ -73,7 +73,6 @@
 	"timedmedia-subtitle-new": "შექმენით ახალი თარგმანი ან დაარედაქტირეთ არსებული",
 	"timedmedia-subtitle-new-desc": "აირჩიეთ ენა და დააჭირეთ ღილაკს '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "მიდი",
-	"timedmedia-subtitle-language": "$1 ($2) სუბტიტრები",
 	"timedmedia-subtitle-no-video": "აქ არ არის ვიდეო, რომელიც დაკავშირებულია სუბტიტრების მიმდინარე გვერდთან",
 	"timedmedia-subtitle-no-subtitles": "ამჟამად $1 სუბტიტრები ამ ვიდეოსათვის არ არის, თქვენ შეგიძლიათ [{{fullurl:{{FULLPAGENAME}}|action=edit}} შეცვალოთ ეს გვერდი] მათ დასამატებლად",
 	"timedmedia-subtitle-remote": "ამ ფაილის დროებითი ტექსტი განთავსებულია $1-ზე",

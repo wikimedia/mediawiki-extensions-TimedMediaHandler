@@ -64,7 +64,6 @@
 	"timedmedia-derivative-desc-480p.mp4": "МогӀаман MP4-видео (480p)",
 	"timedmedia-derivative-desc-720p.mp4": "MP4 HD-дикаллица (720P)",
 	"timedmedia-subtitle-new-go": "Кхочушдé",
-	"timedmedia-subtitle-language": "$1 ($2) субтитраш",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 юху кодяр}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 юху кодяр доладалийтар}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 юху кодяран рогӀехь ю}}",

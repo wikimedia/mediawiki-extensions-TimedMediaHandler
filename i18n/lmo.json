@@ -83,7 +83,6 @@
 	"timedmedia-subtitle-new": "Crea una traduzzion noeuva o modìfichenn voeuna esistenta",
 	"timedmedia-subtitle-new-desc": "Scerniss foeura la lengua e schiscia el boton '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Và",
-	"timedmedia-subtitle-language": "$1 ($2) sot-titoi",
 	"timedmedia-subtitle-no-video": "A gh'è nissun video associad a la pagina atual di sottitoi.",
 	"timedmedia-subtitle-no-subtitles": "Al moment a gh'è minga de sot-titoi in  $1 per quell video chì, a l'è possibil [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifegà quella pagina chì] per sgiontài.",
 	"timedmedia-subtitle-remote": "I sottitoi per quel fail chì a inn ospitad in su $1",

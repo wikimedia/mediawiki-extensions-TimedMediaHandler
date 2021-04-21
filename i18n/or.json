@@ -64,7 +64,6 @@
 	"timedmedia-subtitle-new": "ନୂଆ ଅନୁବାଦ ଆରମ୍ଭ କରିବେ କିମ୍ବା ଆଗରୁଥିବା ଅନୁବାଦକୁ ବଦଳାଇବେ",
 	"timedmedia-subtitle-new-desc": "ଭାଷା ଚୟନ କରନ୍ତୁ ଏବଂ {{int:Timedmedia-subtitle-new-go}}'''ବଟନ ଦବାନ୍ତୁ",
 	"timedmedia-subtitle-new-go": "ଯିବେ",
-	"timedmedia-subtitle-language": "$1 ($2) ସବଟାଇଟଲ",
 	"timedmedia-subtitle-no-video": "ବର୍ତମାନର ସବଟାଇଟଲ ପୃଷ୍ଠା ସହ କୌଣସି ଭିଡିଓ ସଂଶ୍ଳିଷ୍ଟ ନାହିଁ",
 	"timedmedia-subtitle-no-subtitles": "ବର୍ତମାନ $1ରେ ଏହି ଭିଡିଓ ପାଇଁ କୌଣସି ସବଟାଇଟଲ ନାହିଁ, ଆପଣ [{{fullurl:{{FULLPAGENAME}}|action=edit}} ବଦଳାଇ] ଏହାକୁ ଯୋଡି ପାରିବେ",
 	"timedmedia-subtitle-remote": "ଏହି ଫାଇଲ ପାଇଁ ସାମୟିକ ଲେଖାଗୁଡିକ $1ରେ ଅଛି",

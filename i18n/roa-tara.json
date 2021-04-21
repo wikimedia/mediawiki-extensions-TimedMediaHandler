@@ -110,7 +110,6 @@
 	"timedmedia-subtitle-new": "Ccreje 'na traduziona nove o ne cange une esistende",
 	"timedmedia-subtitle-new-desc": "Scacchie 'na lènghe e cazze 'u buttone '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Véje",
-	"timedmedia-subtitle-language": "$1 ($2) sottotitele",
 	"timedmedia-subtitle-no-video": "Non ge stonne video associate cu 'u sottotitole d'a pàgene de mò",
 	"timedmedia-subtitle-no-subtitles": "Non ge stonne sottotitole pe mò jndr'à $1 pe stu video, tu puè [{{fullurl:{{FULLPAGENAME}}|action=edit}} cangià sta pàgene] o aggiungerle",
 	"timedmedia-subtitle-remote": "'U teste temborizzate pe stu file jè ospitate sus a $1",

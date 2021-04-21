@@ -164,7 +164,6 @@
 	"timedmedia-subtitle-new": "Tạo bản dịch mới hoặc sửa đổi bản dịch đã tồn tại",
 	"timedmedia-subtitle-new-desc": "Chọn ngôn ngữ và bấm nút '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Tạo",
-	"timedmedia-subtitle-language": "Phụ đề $1 ($2)",
 	"timedmedia-subtitle-no-video": "Không có video nào tương ứng với trang phụ đề này.",
 	"timedmedia-subtitle-no-subtitles": "Hiện không có phụ đề nào bằng $1 cho video này. Bạn có thể [{{fullurl:{{FULLPAGENAME}}|action=edit}} sửa đổi trang này] để thêm phụ đề.",
 	"timedmedia-subtitle-remote": "Phụ đề của tập tin này được đặt tại $1",

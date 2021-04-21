@@ -79,7 +79,6 @@
 	"timedmedia-resolution-1440": "mangasiw katingalaw 1440p",
 	"timedmedia-subtitle-new": "patizeng baluhay belih nu kamu  saca mikawaway-kalumyiti ayzaay a belih",
 	"timedmedia-subtitle-new-desc": "pipili’ tu kamu satu mipecec '''{{int:Timedmedia-subtitle-new-go}}''' pipenecan",
-	"timedmedia-subtitle-language": "$1 ($2) saazih a sulit",
 	"timedmedia-subtitle-no-video": "inayi’ iga mahizaay nu saazih a sulit kasabelih.",
 	"timedmedia-subtitle-no-subtitles": "tina iga inayi’ $1 a saazih a sulit ayza, kapah kisu [{{fullurl:{{FULLPAGENAME}}|action=edit}} mikawaway-kalumyiti uyni a kasabelih] amicunus saazih a sulit",
 	"timedmedia-subtitle-remote": "tina tangan a saazih a sulit itiza i $1",

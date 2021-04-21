@@ -62,7 +62,6 @@
 	"timedmedia-subtitle-new": "สร้างการแปลใหม่หรือแก้ไขที่มีอยู่",
 	"timedmedia-subtitle-new-desc": "เลือกภาษาแล้วกดปุ่ม '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "ไป",
-	"timedmedia-subtitle-language": "คำบรรยายภาษา$1 ($2)",
 	"timedmedia-subtitle-no-video": "ไม่มีวิดีโอที่สัมพันธ์กับหน้าคำบรรยายปัจจุบัน",
 	"timedmedia-subtitle-no-subtitles": "ไม่มีคำบรรยายในภาษา$1สำหรับวิดีโอนี้ในขณะนี้ คุณสามารถ[{{fullurl:{{FULLPAGENAME}}|action=edit}} แก้ไขหน้านี้]เพื่อเพิ่มคำบรรยายได้",
 	"timedmedia-subtitle-remote": "ข้อความบรรยายสำหรับไฟล์นี้ถูกโฮสต์อยู่บน $1",

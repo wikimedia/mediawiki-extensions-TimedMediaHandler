@@ -88,7 +88,6 @@
 	"timedmedia-subtitle-new": "Crìa na traduzione o cagna chella esistente",
 	"timedmedia-subtitle-new-desc": "Sceglie na lengua e clicca 'o buttone '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Vàje",
-	"timedmedia-subtitle-language": "$1 ($2) sottotitele",
 	"timedmedia-subtitle-no-video": "Nun ce stanno video ssuocie ch' 'e sottotitole d' 'e paggene 'e mò.",
 	"timedmedia-subtitle-no-subtitles": "Nun ce stanno mò sottotitule dint'a $1 pe' stu video, putite [{{fullurl:{{FULLPAGENAME}}|action=cagnà}} 'a paggena] pe' putè azzeccà chiste.",
 	"timedmedia-subtitle-remote": "'O testo temporizzate pe' stu file fuje ospitato ncopp'a $1",

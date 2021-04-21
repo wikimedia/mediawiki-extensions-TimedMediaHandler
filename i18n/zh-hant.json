@@ -123,7 +123,7 @@
 	"timedmedia-subtitle-new": "建立新翻譯或編輯現有翻譯",
 	"timedmedia-subtitle-new-desc": "請選擇語言後點選 '''{{int:Timedmedia-subtitle-new-go}}''' 按鈕",
 	"timedmedia-subtitle-new-go": "執行",
-	"timedmedia-subtitle-language": "$1（$2）字幕",
+	"timedmedia-subtitle-language": "$1（$2）",
 	"timedmedia-subtitle-no-video": "目前沒有與字幕頁面相關的影片。",
 	"timedmedia-subtitle-no-subtitles": "此影片目前沒有 $1 的字幕，您可 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁面] 來增加字幕。",
 	"timedmedia-subtitle-remote": "此檔案的字幕位於 $1",

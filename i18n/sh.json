@@ -79,7 +79,6 @@
 	"timedmedia-subtitle-new": "Napravi novi prijevod ili izmijeni postojeći",
 	"timedmedia-subtitle-new-desc": "Izaberite jezik i pritisnite dugme '''{{int: Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Daj",
-	"timedmedia-subtitle-language": "$1 ($2) titlovi",
 	"timedmedia-subtitle-no-video": "Nema video-snimaka povezanih sa tekućom stranicom s titlovima",
 	"timedmedia-subtitle-no-subtitles": "Trenutno nema $1 titlova za ovaj video-snimak. Možete da ih dodate tako što ćete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti stranicu]",
 	"timedmedia-subtitle-remote-link": "Možete [$1 vidjeti stranicu s opisom] datoteke na $2",

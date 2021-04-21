@@ -88,7 +88,6 @@
 	"timedmedia-derivative-m4a": "AAC",
 	"timedmedia-derivative-desc-m4a": "AAC",
 	"timedmedia-subtitle-new-go": "Lanjut",
-	"timedmedia-subtitle-language": "Teks film $1 ($2)",
 	"timedmedia-subtitle-no-video": "Tidak ada video yang terkait dengan halaman subjudul ini",
 	"timedmedia-subtitle-no-subtitles": "Saat ini tidak ada subjudul $1 untuk video ini. Anda dapat [{{fullurl: {{FULLPAGENAME}}|action=edit}} menyunting halaman ini] untuk menambahkannya",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkoder}}",

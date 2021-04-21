@@ -75,7 +75,6 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new-go": "जाएँ",
-	"timedmedia-subtitle-language": "$1 ($2) उपशीर्षक",
 	"timedmedia-subtitle-no-video": "वर्तमान उपशीर्षक पृष्ठ से कोई भी वीडियो जुड़ा नहीं है।",
 	"timedmedia-subtitle-no-subtitles": "इस वीडियो के लिए $1 में कोई उपशीर्षक नहीं है। आप [{{fullurl:{{FULLPAGENAME}}|action=edit}} इसे संपादित कर के] जोड़ सकते हैं।",
 	"timedmedia-subtitle-remote-link": "आप $2 में इस फ़ाइल का [$1 विवरण पृष्ठ देख सकते हो]",

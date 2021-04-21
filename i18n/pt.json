@@ -120,7 +120,6 @@
 	"timedmedia-subtitle-new": "Criar nova tradução ou editar existente",
 	"timedmedia-subtitle-new-desc": "Selecione a língua e pressione o botão '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Enviar",
-	"timedmedia-subtitle-language": "Legendas em $1 ($2)",
 	"timedmedia-subtitle-no-video": "Não existe nenhum vídeo associado à atual página de legendas",
 	"timedmedia-subtitle-no-subtitles": "Neste momento não existem legendas em $1 para este vídeo. Pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar a página] e adicioná-las.",
 	"timedmedia-subtitle-remote": "As legendas deste ficheiro estão alojadas em $1",

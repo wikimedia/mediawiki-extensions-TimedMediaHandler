@@ -129,7 +129,6 @@
 	"timedmedia-subtitle-new": "Neue Übersetzung erstellen oder vorhandene bearbeiten",
 	"timedmedia-subtitle-new-desc": "Wähle eine Sprache aus und klicke auf '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Los",
-	"timedmedia-subtitle-language": "$1 ($2) Untertitel",
 	"timedmedia-subtitle-no-video": "Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.",
 	"timedmedia-subtitle-no-subtitles": "Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.",
 	"timedmedia-subtitle-remote": "timedText für diese Datei befindet sich auf $1",

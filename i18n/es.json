@@ -125,7 +125,6 @@
 	"timedmedia-subtitle-new": "Crear una nueva traducción o editar una existente",
 	"timedmedia-subtitle-new-desc": "Selecciona el idioma y pulsa el botón '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Ir",
-	"timedmedia-subtitle-language": "Subtítulos en $1 ($2)",
 	"timedmedia-subtitle-no-video": "No hay ningún video asociado con la página actual de subtítulos",
 	"timedmedia-subtitle-no-subtitles": "Actualmente no hay subtítulos en  $1  para este video, puede [{{fullurl: {{FULLPAGENAME}} |action = edit}} editar esta página] para agregarlos",
 	"timedmedia-subtitle-remote": "El texto programado para este archivo está alojado en $1",
