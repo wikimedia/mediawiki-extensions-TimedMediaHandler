@@ -656,26 +656,20 @@
 			]
 		},
 		"mw.MwEmbedSupport": {
-			"scripts": "resources/mwembed/mw.MwEmbedSupport.js",
+			"scripts": [
+				"resources/mwembed/lib/Spinner.js",
+				"resources/mwembed/jquery.loadingSpinner.js",
+				"resources/mwembed/mw.MwEmbedSupport.js"
+			],
 			"dependencies": [
 				"jquery.triggerQueueCallback",
-				"Spinner",
-				"jquery.loadingSpinner",
 				"jquery.mwEmbedUtil",
+				"mediawiki.util",
 				"mw.MwEmbedSupport.style"
 			],
 			"messages": [
 				"mwe-loading"
 			]
-		},
-		"Spinner": {
-			"scripts": "resources/mwembed/lib/Spinner.js",
-			"dependencies": [
-				"mediawiki.util"
-			]
-		},
-		"jquery.loadingSpinner": {
-			"scripts": "resources/mwembed/jquery.loadingSpinner.js"
 		},
 		"mw.MwEmbedSupport.style": {
 			"styles": "resources/mwembed/skins/common/MwEmbedCommonStyle.css",
