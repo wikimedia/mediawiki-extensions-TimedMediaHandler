@@ -561,7 +561,10 @@
 		},
 		"ext.tmh.player.dialog": {
 			"scripts": "resources/ext.tmh.player.dialog.js",
-			"styles": "resources/ext.tmh.player.dialog.less",
+			"styles": [
+				"resources/ext.tmh.player.inline.styles.less",
+				"resources/ext.tmh.player.dialog.less"
+			],
 			"targets": [
 				"mobile",
 				"desktop"
@@ -569,8 +572,7 @@
 			"dependencies": [
 				"oojs-ui-core",
 				"oojs-ui-windows",
-				"ext.tmh.player.inline",
-				"ext.tmh.player.inline.styles"
+				"ext.tmh.player.inline"
 			]
 		},
 		"ext.tmh.player.inline": {
@@ -601,13 +603,6 @@
 		},
 		"ext.tmh.player.styles": {
 			"styles": "resources/ext.tmh.player.styles.less",
-			"targets": [
-				"mobile",
-				"desktop"
-			]
-		},
-		"ext.tmh.player.inline.styles": {
-			"styles": "resources/ext.tmh.player.inline.styles.less",
 			"targets": [
 				"mobile",
 				"desktop"
