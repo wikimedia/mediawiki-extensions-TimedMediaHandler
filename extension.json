@@ -448,9 +448,11 @@
 			]
 		},
 		"mw.MediaWikiPlayerSupport": {
-			"scripts": "resources/mw.MediaWikiPlayerSupport.js",
+			"scripts": [
+				"resources/mwembed/mw.Api.js",
+				"resources/mw.MediaWikiPlayerSupport.js"
+			],
 			"dependencies": [
-				"mw.Api",
 				"mw.MwEmbedSupport"
 			]
 		},
@@ -716,9 +718,6 @@
 		},
 		"jquery.debouncedresize": {
 			"scripts": "resources/mwembed/lib/jquery.debouncedresize.js"
-		},
-		"mw.Api": {
-			"scripts": "resources/mwembed/mw.Api.js"
 		},
 		"jquery.embedPlayer": {
 			"scripts": "resources/mwembed/EmbedPlayer/jquery.embedPlayer.js"
