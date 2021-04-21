@@ -677,9 +677,6 @@
 				"mediawiki.util"
 			]
 		},
-		"iScroll": {
-			"scripts": "resources/mwembed/lib/iscroll/src/iscroll.js"
-		},
 		"jquery.loadingSpinner": {
 			"scripts": "resources/mwembed/jquery.loadingSpinner.js"
 		},
