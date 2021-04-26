@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"OIS",
+			"Renan",
 			"Stavanger7"
 		]
 	},
 	"timedmedia-mpeg-short-video": "Videofile MPEG $1, $2",
 	"timedmedia-mpeg-long-video": "Audio- e videofile MPEG, $1, duration $2, $4 × $5 pixeles, $3 totalmen",
 	"timedmedia-source-file": "Fonte $1",
-	"timedmedia-source-audio-file-desc": "Original file $1 ($2)"
+	"timedmedia-source-audio-file-desc": "Original file $1 ($2)",
+	"log-name-timedmediahandler": "Diarium del TimedMediaHandler"
 }
