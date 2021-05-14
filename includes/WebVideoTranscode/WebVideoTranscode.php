@@ -765,7 +765,7 @@ class WebVideoTranscode {
 				}
 			}
 			if ( $overTimeout ) {
-				$dbw = wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_PRIMARY );
 				$dbw->update(
 					'transcode',
 					[
@@ -802,7 +802,7 @@ class WebVideoTranscode {
 			$removeKeys = [ $transcodeKey ];
 		} else {
 			// Remove any existing files ( regardless of their state )
-			$res = $file->repo->getMasterDB()->select( 'transcode',
+			$res = $file->repo->getPrimaryDB()->select( 'transcode',
 				[ 'transcode_key' ],
 				[ 'transcode_image_name' => $file->getName() ],
 				__METHOD__
@@ -830,7 +830,7 @@ class WebVideoTranscode {
 		DeferredUpdates::addUpdate( $update );
 
 		// Build the sql query:
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$deleteWhere = [ 'transcode_image_name' => $file->getName() ];
 		// Check if we are removing a specific transcode key
 		if ( $transcodeKey !== false ) {
@@ -1025,7 +1025,7 @@ class WebVideoTranscode {
 	 */
 	public static function cleanupTranscodes( File $file ) {
 		$fileName = $file->getTitle()->getDBkey();
-		$db = $file->repo->getMasterDB();
+		$db = $file->repo->getPrimaryDB();
 
 		$transcodeState = self::getTranscodeState( $file, $db );
 
@@ -1101,7 +1101,7 @@ class WebVideoTranscode {
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ) {
 		$fileName = $file->getTitle()->getDBkey();
-		$db = $file->repo->getMasterDB();
+		$db = $file->repo->getPrimaryDB();
 
 		$transcodeState = self::getTranscodeState( $file, $db );
 
@@ -1187,7 +1187,7 @@ class WebVideoTranscode {
 	 */
 	public static function getQueueSize( File $file, $transcodeKey ) {
 		// Warning: this won't treat the prioritized queue separately.
-		$db = $file->repo->getMasterDB();
+		$db = $file->repo->getPrimaryDB();
 		$count = $db->selectField( 'transcode',
 			'COUNT(*)',
 			[

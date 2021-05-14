@@ -141,7 +141,7 @@ class TranscodeReport extends Maintenance {
 	}
 
 	private function processFile( File $file ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		// Transcode table doesn't carry the file size, but does carry the final bitrate.
 		$handler = $file->getHandler();

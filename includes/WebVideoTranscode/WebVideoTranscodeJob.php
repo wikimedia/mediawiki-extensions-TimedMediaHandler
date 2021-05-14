@@ -105,7 +105,7 @@ class WebVideoTranscodeJob extends Job {
 	 *
 	 */
 	private function setTranscodeError( $transcodeKey, $error ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->update(
 			'transcode',
 			[
@@ -163,7 +163,7 @@ class WebVideoTranscodeJob extends Job {
 			$this->output( "Encoding to codec: " . $options['videoCodec'] );
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		// Check if we have "already started" the transcode ( possible error )
 		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
@@ -234,7 +234,7 @@ class WebVideoTranscodeJob extends Job {
 		$this->removeFfmpegLogFiles();
 
 		// Reconnect to the database...
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm that the in memory $jobStartTimeCache matches db start time
@@ -304,7 +304,7 @@ class WebVideoTranscodeJob extends Job {
 				);
 				// Wikimedia\restoreWarnings();
 				// Reconnect to the database...
-				$dbw = wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_PRIMARY );
 				// Update the transcode table with success time:
 				$dbw->update(
 					'transcode',

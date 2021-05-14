@@ -84,7 +84,7 @@ class RequeueTranscodes extends Maintenance {
 
 	public function processFile( File $file ) {
 		$transcodeSet = WebVideoTranscode::enabledTranscodes();
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		WebVideoTranscode::cleanupTranscodes( $file );
 

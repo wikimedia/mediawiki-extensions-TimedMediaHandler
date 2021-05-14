@@ -45,7 +45,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
 		// Check if the transcode jobs were added:
 		// get results: query jobs table
-		$db = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_PRIMARY );
 		$res = $db->select( 'transcode', '*', [
 			'transcode_image_name' => ucfirst( $fileName )
 		] );
@@ -94,7 +94,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 	}
 
 	public function runTranscodeJobs() {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$type = 'webVideoTranscode';
 		// Set the condition to only run the webVideoTranscode
 		$conds = [ "job_cmd" => $type ];
