@@ -130,7 +130,7 @@ class SrtReader extends Reader {
 	}
 
 	protected function consumeLine() {
-		return $this->consumeWhile( function ( $c ) {
+		return $this->consumeWhile( static function ( $c ) {
 			return $c !== "\n" && $c !== '';
 		} );
 	}
@@ -148,7 +148,7 @@ class SrtReader extends Reader {
 	}
 
 	protected function consumeSpace() {
-		return $this->consumeWhile( function ( $c ) {
+		return $this->consumeWhile( static function ( $c ) {
 			return $c === ' ' || $c === "\x09";
 		} );
 	}
