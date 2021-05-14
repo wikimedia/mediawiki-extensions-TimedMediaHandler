@@ -177,7 +177,7 @@ class TimedMediaThumbnail {
 
 		$work = new PoolCounterWorkViaCallback( 'TMHTransformFrame',
 			'_tmh:frame:' . $poolKey,
-			[ 'doWork' => function () use ( $file, $params ) {
+			[ 'doWork' => static function () use ( $file, $params ) {
 				return $file->transform( $params, File::RENDER_NOW );
 			} ] );
 		$thumb = $work->execute();

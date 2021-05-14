@@ -471,16 +471,16 @@ class WebVideoTranscodeJob extends Job {
 				case 'ipod320':
 					// phpcs:ignore Generic.Files.LineLength.TooLong
 					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -weightb 1 -level 13 -maxrate 768k -bufsize 3M";
-				break;
+					break;
 				case '720p':
 				case 'ipod640':
 					// phpcs:ignore Generic.Files.LineLength.TooLong
 					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -refs 1 -weightb 1 -level 31 -maxrate 10M -bufsize 10M";
-				break;
+					break;
 				default:
 					// in the default case just pass along the preset to ffmpeg
 					$cmd .= " -vpre " . wfEscapeShellArg( $options['preset'] );
-				break;
+					break;
 			}
 		}
 		if ( isset( $options['videoBitrate'] ) ) {
