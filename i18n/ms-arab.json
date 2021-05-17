@@ -4,6 +4,20 @@
 			"Tofeiku"
 		]
 	},
+	"timedmedia-dismiss": "توتوڤ",
+	"timedmedia-download": "موات تورون فاءيل",
+	"timedmedia-play-media": "ماءينکن ميديا",
+	"timedmedia-desc-link": "تنتڠ فاءيل اين",
+	"timedmedia-status": "ستاتوس",
+	"timedmedia-status-unknown": "ستاتوس تيدق دکتاهوءي",
+	"timedmedia-transcodeinfo": "فورمت",
+	"timedmedia-actions": "تيندقن",
+	"timedmedia-direct-link": "موات تورون",
+	"timedmedia-not-ready": "بلوم سديا",
+	"timedmedia-days": "{{PLURAL:$1|1 هاري|$1 هاري}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 جم|$1 جم}}",
+	"timedmedia-minutes": "{{PLURAL:$1|1 مينيت|$1 مينيت}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1 ساعت|$1 ساعت}}",
 	"timedmedia-source-file": "$1 سومبر",
 	"timedmedia-source-audio-file-desc": "فاءيل $1 اصلي ($2)"
 }
