@@ -21,7 +21,7 @@
 	"timedmedia-flac-long-audio": "Аудиофайл FLAC, йохалла — $1, битрейт — $2",
 	"timedmedia-wav-short-audio": "Аудиофайл FLAC, $1",
 	"timedmedia-wav-long-audio": "Аудиофайл WAV, йохалла — $1, битрейт — $2",
-	"timedmedia-wav-pcm-required": "Ахьа чуяккха мега PCM (Pulse Code Modulation) WAV.",
+	"timedmedia-wav-pcm-required": "Ахьа чуйаккха мега PCM (Pulse Code Modulation) WAV.",
 	"timedmedia-mp4-short-video": "WebM $1 видео-файл, $2",
 	"timedmedia-mp4-long-video": "Аудио/видеофайл MP4 $1, йохалла — $2, $4 × $5 пиксель, битрейт — $3",
 	"timedmedia-more": "Дукха…",
