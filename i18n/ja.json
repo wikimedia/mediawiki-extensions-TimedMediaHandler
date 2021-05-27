@@ -14,6 +14,7 @@
 			"Suyama",
 			"Tmv",
 			"What here area team",
+			"ネイ",
 			"青子守歌"
 		]
 	},
@@ -97,6 +98,7 @@
 	"timedmedia-subtitle-remote": "このファイルの字幕は$1でホストされています",
 	"timedmedia-subtitle-remote-link": "$2 でこのファイルの[$1 解説ページを閲覧]できます",
 	"timedmedia-file": "ファイル",
+	"beta-feature-timedmediahandler-message-videojs": "新しいビデオプレイヤー",
 	"beta-feature-timedmediahandler-description-videojs": "さっぱりとした見た目とモバイル端末との親和性を兼ねた最新のプレイヤーで動画ファイルを見る。",
 	"action-transcode-reset": "トランスコードのリセット",
 	"action-transcode-status": "現在のトランスコード状態の閲覧",
