@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-query+transcodestatus-description": "Obtener le stato de transcodification pro un pagina de file specificate.",
+	"apihelp-query+transcodestatus-summary": "Obtener le stato de transcodification pro un pagina de file specificate.",
+	"apihelp-query+transcodestatus-example-1": "Obtener le stato de transcodification pro [[:File:Clip.web]]",
+	"apihelp-query+videoinfo-description": "Extende imageinfo con information sur le fonte del video (obras derivate)",
+	"apihelp-query+videoinfo-summary": "Extende imageinfo con information sur le fonte del video (obras derivate)",
+	"apihelp-query+videoinfo-example-1": "Obtener information sur [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Adde un tabella con le differente formatos e qualitates disponibile de un file audio o video.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Adde un tabella con le subtitulos, legendas e descriptiones disponibile de un file audio o video.",
+	"apihelp-timedtext-description": "Forni texto chronometrate pro usar in elementos &lt;track&gt;",
+	"apihelp-timedtext-summary": "Forni texto chronometrate pro usar in elementos &lt;track&gt;",
+	"apihelp-timedtext-param-title": "Le titulo del file multimedial pro le qual recuperar texto chronometrate",
+	"apihelp-timedtext-param-pageid": "Le ID de pagina del file multimedial pro le qual recuperar texto chronometrate",
+	"apihelp-timedtext-param-trackformat": "Le formato de file in le qual reinviar le texto chronometrate",
+	"apihelp-timedtext-param-lang": "Le lingua del texto chronometrate a recuperar",
+	"apihelp-timedtext-example-1": "Obtener un file de subtitulos SRT in germano pro le file Example.ogv",
+	"apihelp-transcodereset-description": "Usatores con le derecto 'transcode-reset' pote reinitialisar e re-executar un travalio de transcodification.",
+	"apihelp-transcodereset-summary": "Usatores con le derecto 'transcode-reset' pote reinitialisar e re-executar un travalio de transcodification.",
+	"apihelp-transcodereset-param-title": "Le titulo del file multimedial.",
+	"apihelp-transcodereset-param-transcodekey": "Le clave de transcodification que tu vole reinitialisar. Obtene lo ab [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Reinitialisar tote le transcodificationes pro [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Reinitialisar le codice de transcodification '360_560kbs.webm' pro [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Le transcodification es disactivate sur iste wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 non es transcodificabile.",
+	"apierror-timedmedia-badtranscodekey": "Clave de transcodification invalide o disactivate: $1",
+	"apierror-timedmedia-notenoughtimereset": "Non ha passate tempore sufficiente post le ultime reinitialisation de iste transcodification. Resta $1 ante que iste transcodification pote esser reinitialisate.",
+	"apierror-timedmedia-lang-notfound": "Le lingua requestate non ha essite trovate",
+	"apierror-timedmedia-no-timedtext-support": "Nulle supporto de TimedText",
+	"apierror-timedmedia-notlocal": "File non local"
+}
