@@ -41,7 +41,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return bool
 	 */
 	public function isExpensive() {
-		return true;
+		return $this->canExecute();
 	}
 
 	/**
