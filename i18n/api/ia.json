@@ -6,7 +6,7 @@
 	},
 	"apihelp-query+transcodestatus-description": "Obtener le stato de transcodification pro un pagina de file specificate.",
 	"apihelp-query+transcodestatus-summary": "Obtener le stato de transcodification pro un pagina de file specificate.",
-	"apihelp-query+transcodestatus-example-1": "Obtener le stato de transcodification pro [[:File:Clip.web]]",
+	"apihelp-query+transcodestatus-example-1": "Obtener le stato de transcodification pro [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-description": "Extende imageinfo con information sur le fonte del video (obras derivate)",
 	"apihelp-query+videoinfo-summary": "Extende imageinfo con information sur le fonte del video (obras derivate)",
 	"apihelp-query+videoinfo-example-1": "Obtener information sur [[:File:Folgers.ogv]]",

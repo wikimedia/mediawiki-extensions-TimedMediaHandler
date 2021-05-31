@@ -67,9 +67,13 @@
 	"timedmedia-derivative-desc-480p.ogv": "Video SD Ogg (480P)",
 	"timedmedia-derivative-desc-720p.ogv": "Video HD Ogg (720P)",
 	"timedmedia-derivative-desc-160p.webm": "Nizkopasovni WebM (160P)",
+	"timedmedia-derivative-desc-240p.webm": "Mali WebM (240P)",
 	"timedmedia-derivative-desc-360p.webm": "WebM za pretakanje preko spleta (360P)",
 	"timedmedia-derivative-desc-480p.webm": "SD WebM (480P)",
 	"timedmedia-derivative-desc-720p.webm": "HD WebM (720P)",
+	"timedmedia-derivative-desc-120p.vp9.webm": "VP9 z najožjo pasovno širino (120P)",
+	"timedmedia-derivative-desc-240p.vp9.webm": "Mali VP9 (240P)",
+	"timedmedia-derivative-desc-160p.mp4": "Ozkopasovni MP4 H.264 (160P)",
 	"timedmedia-derivative-desc-320p.mp4": "Napravam prijazni MP4 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "SD MP4 H.264 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720P)",
@@ -84,6 +88,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|eno tekoče prekodiranje|dve tekoči prekodiranji|$1 prekodiranja|$1 prekodiranj}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|eno čakajoče prekodiranje|dve čakajoči prekodiranji|$1 čakajoča prekodiranja|$1 čakajočih prekodiranj}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|eno neuspelo prekodiranje|dve neuspeli prekodiranji|$1 neuspela prekodiranja|$1 neuspelih prekodiranj}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 neinicializirano transkodiranje|$1 neinicializirani transkodiranji|$1 neinicializirana transkodiranja|$1 neinicializirana transkodiranja}}",
 	"timedmedia-file": "Datoteka:",
 	"beta-feature-timedmediahandler-message-videojs": "Novi videopredvajalnik",
 	"beta-feature-timedmediahandler-description-videojs": "Predvajajte videoposnetke s sodobnim predvajalnikom čistejšega videza in združljivostjo z mobilnimi napravami.",
@@ -91,5 +96,6 @@
 	"right-transcode-status": "Ogled [[Special:TimedMediaHandler|informacij o trenutni dejavnosti pretvarjanja]]",
 	"action-transcode-status": "ogled trenutnega stanja pretvorbe",
 	"videojs-more-information": "Več informacij",
-	"videojs-quality": "Kvaliteta videa"
+	"videojs-quality": "Kvaliteta videa",
+	"transcodestatistics": "Statistika prekodiranja"
 }
