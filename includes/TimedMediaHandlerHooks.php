@@ -471,12 +471,10 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * @param array $qp FIXME Should this be by reference?
-	 * @return bool
+	 * @param array &$qp
 	 */
-	public static function onwgQueryPages( $qp ) {
-		$qp[] = [ 'SpecialOrphanedTimedText', 'OrphanedTimedText' ];
-		return true;
+	public static function onwgQueryPages( &$qp ) {
+		$qp[] = [ SpecialOrphanedTimedText::class, 'OrphanedTimedText' ];
 	}
 
 	/**
