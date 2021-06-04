@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Dibya Dutta",
-			"IKHazarika"
+			"IKHazarika",
+			"Simbu123"
 		]
 	},
 	"timedmedia-reset-button-cancel": "পূৰ্ৱবত নকৰিব",
 	"timedmedia-reset-button-reset": "পূৰ্ৱবত কৰক",
 	"timedmedia-source-file": "$1 উৎস",
-	"timedmedia-source-audio-file-desc": "প্ৰকৃত $1 ফাইল ($2)"
+	"timedmedia-source-audio-file-desc": "প্ৰকৃত $1 ফাইল ($2)",
+	"beta-feature-timedmediahandler-message-videojs": "নতুন ভিডিঅ' প্লেয়াৰ",
+	"beta-feature-timedmediahandler-description-videojs": "এক পৰিচ্ছন্ন ৰূপ আৰু ম'বাইল সামঞ্জস্যৰ সৈতে আধুনিক প্লেয়াৰত ভিডিঅ' ফাইলবোৰ চাওক।"
 }
