@@ -522,18 +522,6 @@
 				"ext.tmh.OgvJs"
 			]
 		},
-		"ext.tmh.mw-info-button": {
-			"scripts": "resources/mw-info-button/mw-info-button.js",
-			"styles": "resources/mw-info-button/mw-info-button.css",
-			"targets": [
-				"mobile",
-				"desktop"
-			],
-			"dependencies": [
-				"ext.tmh.video-js",
-				"mediawiki.Title"
-			]
-		},
 		"ext.tmh.player": {
 			"scripts": "resources/ext.tmh.player.js",
 			"targets": [
@@ -566,10 +554,12 @@
 		},
 		"ext.tmh.player.inline": {
 			"scripts": [
+				"resources/mw-info-button/mw-info-button.js",
 				"resources/videojs-resolution-switcher/videojs-resolution-switcher.js",
 				"resources/ext.tmh.player.inline.js"
 			],
 			"styles": [
+				"resources/mw-info-button/mw-info-button.css",
 				"resources/videojs-resolution-switcher/videojs-resolution-switcher.css"
 			],
 			"targets": [
@@ -578,7 +568,7 @@
 			],
 			"dependencies": [
 				"ext.tmh.video-js",
-				"ext.tmh.mw-info-button"
+				"mediawiki.Title"
 			],
 			"messages": [
 				"timedmedia-resolution-120",
