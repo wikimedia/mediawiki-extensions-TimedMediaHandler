@@ -6,5 +6,6 @@
 	},
 	"timedmedia-more": "Buter...",
 	"timedmedia-source-file": "Zdrojos $1",
+	"timedmedia-source-audio-file-desc": "Originalno suboris $1 ($2)",
 	"timedmedia-file": "Suboris"
 }
