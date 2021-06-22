@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Pippinu",
 			"Sarvaturi"
 		]
 	},
+	"timedmedia-actions": "Azzioni",
 	"timedmedia-source-file": "Surgenti $1",
 	"timedmedia-source-audio-file-desc": "File $1 origginali ($2)",
+	"timedmedia-file": "File",
 	"orphanedtimedtext": "Pàggini suttatìtuli òrfani"
 }

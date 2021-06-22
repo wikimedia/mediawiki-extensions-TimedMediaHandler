@@ -47,6 +47,8 @@
 	"timedmedia-midi-long-audio": "MIDI音频文件，长度$1，总计$2",
 	"timedmedia-mp4-short-video": "MP4 $1视频文件，$2",
 	"timedmedia-mp4-long-video": "MP4音频/视频文件，$1，长度$2，$4 × $5像素，$3 overall",
+	"timedmedia-mpeg-short-video": "MPEG $1视频文件，$2",
+	"timedmedia-mpeg-long-video": "MPEG音频/视频文件，$1，长度$2，$4 × $5像素，$3混合",
 	"timedmedia-more": "更多…",
 	"timedmedia-dismiss": "关闭",
 	"timedmedia-download": "下载文件",
@@ -163,5 +165,6 @@
 	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
 	"orphanedtimedtext-notimedtext": "TimedText在此wiki未启用。",
 	"videojs-more-information": "更多信息",
-	"videojs-quality": "视频品质"
+	"videojs-quality": "视频品质",
+	"transcodestatistics": "转码统计"
 }
