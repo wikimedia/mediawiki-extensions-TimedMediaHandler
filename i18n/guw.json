@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gadarawamo"
+			"Gadarawamo",
+			"Misteld"
 		]
 	},
-	"timedmedia-source-file": "$1 asisa"
+	"timedmedia-source-file": "$1 asisa",
+	"timedmedia-source-audio-file-desc": "Wepo vonọtaun $1 tọn ($2)"
 }
