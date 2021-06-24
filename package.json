@@ -15,6 +15,5 @@
 		"ogv": "^1.8.1",
 		"stylelint-config-wikimedia": "0.10.3",
 		"video.js": "7.7.4"
-	},
-	"dependencies": {}
+	}
 }
