@@ -548,8 +548,6 @@ class TimedMediaHandlerHooks {
 	 * @return string
 	 */
 	public static function activePlayerMode() {
-		global $wgUser;
-
 		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'timedmediahandler' );
 
@@ -557,7 +555,7 @@ class TimedMediaHandlerHooks {
 		if (
 			$tmhConfig->get( 'TmhUseBetaFeatures' )
 			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
-			&& $wgUser->isSafeToLoad()
+			&& $context->getUser()->isSafeToLoad()
 			&& BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
 		) {
 			return 'videojs';
