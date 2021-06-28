@@ -7,6 +7,7 @@
 		]
 	},
 	"timedmedia-actions": "Azzioni",
+	"timedmedia-days": "{{PLURAL:$1|1 jornu|$1 jorna}}",
 	"timedmedia-source-file": "Surgenti $1",
 	"timedmedia-source-audio-file-desc": "File $1 origginali ($2)",
 	"timedmedia-file": "File",
