@@ -6,6 +6,7 @@
 			"Sarvaturi"
 		]
 	},
+	"timedmedia-status": "Statu",
 	"timedmedia-actions": "Azzioni",
 	"timedmedia-days": "{{PLURAL:$1|1 jornu|$1 jorna}}",
 	"timedmedia-source-file": "Surgenti $1",
