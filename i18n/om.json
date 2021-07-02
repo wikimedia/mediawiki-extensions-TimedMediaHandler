@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ahrada2016",
 			"Maammee"
 		]
 	},
-	"timedmedia-source-file": "hidda $1"
+	"timedmedia-source-file": "hidda $1",
+	"timedmedia-source-audio-file-desc": "Orijinaala $1 harshama ($2)"
 }
