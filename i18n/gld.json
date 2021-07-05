@@ -4,5 +4,6 @@
 			"RFScott"
 		]
 	},
-	"timedmedia-source-file": "$1диади"
+	"timedmedia-source-file": "$1диади",
+	"timedmedia-source-audio-file-desc": "Оригинальнай $1-файл ($2)"
 }
