@@ -140,5 +140,6 @@
 	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText nie jest włączony w tej wiki.",
 	"videojs-more-information": "Więcej informacji",
-	"videojs-quality": "Jakość obrazu"
+	"videojs-quality": "Jakość obrazu",
+	"transcodestatistics": "Statystyki transkodowania"
 }
