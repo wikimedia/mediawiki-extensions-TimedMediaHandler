@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gazeb"
+			"Gazeb",
+			"Gramo6"
 		]
 	},
 	"timedmedia-more": "Веце...",
 	"timedmedia-dismiss": "Заперти",
+	"timedmedia-source-file": "Жерело $1",
 	"timedmedia-file": "Файл"
 }
