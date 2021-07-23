@@ -12,7 +12,7 @@ use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
  * @covers SrtReader::read
  */
 class SrtReaderTest extends PHPUnit\Framework\TestCase {
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->reader = new SrtReader;
 	}

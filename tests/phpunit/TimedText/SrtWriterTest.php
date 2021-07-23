@@ -12,7 +12,7 @@ use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
  * @covers SrtWriter::write
  */
 class SrtWriterTest extends PHPUnit\Framework\TestCase {
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->writer = new SrtWriter;
 	}

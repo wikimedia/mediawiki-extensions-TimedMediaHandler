@@ -5,7 +5,7 @@ class TimedMediaHandlerTest extends MediaWikiTestCase {
 	/** @var TimedMediaHandler */
 	private $handler;
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		$this->handler = new TimedMediaHandler;
 		parent::setUp();
 	}

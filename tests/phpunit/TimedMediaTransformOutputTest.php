@@ -11,7 +11,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		return __DIR__ . '/media';
 	}
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 
 		// Disable video thumbnail generation. Not needed for this test.
