@@ -106,7 +106,7 @@ class ApiTimedText extends ApiBase {
 			$filename .= '.' . $params['trackformat'];
 		}
 
-		$rawTimedText = $this->convertTimedText(
+		$rawTimedText = self::convertTimedText(
 			$timedTextExtension,
 			$params['trackformat'],
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
@@ -167,7 +167,7 @@ class ApiTimedText extends ApiBase {
 	/**
 	 * Fetch and convert or normalize the given timetext source.
 	 *
-	 * Uses the parser cache storage for caching output; if cached
+	 * Uses the main WAN cache storage for caching output; if cached
 	 * data is available it will be used instead of fetching and
 	 * converting the text anew.
 	 *
@@ -179,38 +179,31 @@ class ApiTimedText extends ApiBase {
 	 * @param WikiPage $page the TimedText page being loaded
 	 * @return string text of the output in desired format
 	 */
-	protected function convertTimedText( $from, $to, $page ) {
-		global $wgParserCacheType;
-
-		$cache = ObjectCache::getInstance( $wgParserCacheType );
+	protected static function convertTimedText( $from, $to, $page ) {
+		$revId = $page->getLatest();
+		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$key = $cache->makeKey(
 			'apitimedtext',
+			self::CACHE_VERSION,
 			$page->getTitle()->getDbKey(),
+			$revId,
 			$from,
 			$to
 		);
-		$cached = $cache->get( $key );
-
-		$revId = $page->getLatest();
-		if ( $cached === false
-			|| $cached['cache_version'] !== self::CACHE_VERSION
-			|| $cached['rev_id'] !== $revId
-		) {
-			// TODO convert to contentmodel
-			$rawTimedText = $page->getContent()->getNativeData();
-			$output = TextHandler::convertSubtitles(
-				$from,
-				$to,
-				$rawTimedText
-			);
-			$cached = [
-				'cache_version' => self::CACHE_VERSION,
-				'rev_id' => $revId,
-				'output' => $output,
-			];
-			$cache->set( $key, $cached, self::CACHE_TTL );
-		}
-		return $cached['output'];
+		return $cache->getWithSetCallback(
+			$key,
+			self::CACHE_TTL,
+			static function ( $cached, &$ttl ) use ( $from, $to, $page ) {
+				// TODO convert to contentmodel
+				$rawTimedText = $page->getContent()->getNativeData();
+				$output = TextHandler::convertSubtitles(
+					$from,
+					$to,
+					$rawTimedText
+				);
+				return $output;
+			}
+		);
 	}
 
 	public function getAllowedParams( $flags = 0 ) {
