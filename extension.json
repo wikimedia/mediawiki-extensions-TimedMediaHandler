@@ -137,7 +137,6 @@
 		"RevisionFromEditComplete": "TimedMediaHandlerHooks::onRevisionFromEditComplete",
 		"PageRenderingHash": "TimedMediaHandlerHooks::onPageRenderingHash",
 		"ParserTestGlobals": "TimedMediaHandlerHooks::onParserTestGlobals",
-		"ParserTestTables": "TimedMediaHandlerHooks::onParserTestTables",
 		"RejectParserCacheValue": "TimedMediaHandlerHooks::onRejectParserCacheValue",
 		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars",
 		"SkinTemplateNavigation::Universal": "TimedMediaHandlerHooks::onSkinTemplateNavigation",

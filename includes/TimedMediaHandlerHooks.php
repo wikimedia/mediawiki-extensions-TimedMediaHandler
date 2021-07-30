@@ -374,16 +374,6 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * Hook to add list of DB tables to copy when running parser tests
-	 * @param array &$tables
-	 * @return bool
-	 */
-	public static function onParserTestTables( &$tables ) {
-		$tables[] = 'transcode';
-		return true;
-	}
-
-	/**
 	 * @param array &$globals
 	 */
 	public static function onParserTestGlobals( &$globals ) {
