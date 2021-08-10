@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Base",
+			"DDPAT",
 			"Piramidion",
 			"Тест"
 		]
@@ -9,6 +10,7 @@
 	"mwe-timedtext-back-btn": "Назад",
 	"mwe-timedtext-layout-off": "Приховати субтитри",
 	"mwe-timedtext-loading-text": "Завантаження тексту…",
+	"mwe-timedtext-key-language": "$1, $2",
 	"mwe-timedtext-textcat-cc": "Субтитри-підписи",
 	"mwe-timedtext-textcat-sub": "Субтитри",
 	"mwe-timedtext-textcat-tad": "Аудіо-опис",
