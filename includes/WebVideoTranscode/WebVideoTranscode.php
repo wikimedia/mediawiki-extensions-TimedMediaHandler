@@ -596,11 +596,12 @@ class WebVideoTranscode {
 			$dataPrefix = in_array( 'nodata', $options ) ? '' : 'data-';
 
 			wfDebug( "Get Video sources from remote api for " . $file->getName() . "\n" );
+			$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
 			$query = [
 				'action' => 'query',
 				'prop' => 'videoinfo',
 				'viprop' => 'derivatives',
-				'titles' => MWNamespace::getCanonicalName( NS_FILE ) . ':' . $file->getTitle()->getText()
+				'titles' => $namespaceInfo->getCanonicalName( NS_FILE ) . ':' . $file->getTitle()->getText()
 			];
 
 			$data = $file->getRepo()->fetchImageQuery( $query );

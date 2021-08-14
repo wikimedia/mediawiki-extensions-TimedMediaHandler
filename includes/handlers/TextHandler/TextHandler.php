@@ -328,7 +328,8 @@ class TextHandler {
 		}
 		/* Else, we use the canonical namespace, since we can't look up the actual one */
 		if ( $wgEnableLocalTimedText ) {
-			return strtr( MWNamespace::getCanonicalName( NS_TIMEDTEXT ), ' ', '_' );
+			$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
+			return strtr( $namespaceInfo->getCanonicalName( NS_TIMEDTEXT ), ' ', '_' );
 		} else {
 			// Assume the default name if no local TimedText.
 			return 'TimedText';
