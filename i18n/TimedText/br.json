@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adriendelucca",
 			"Fulup",
 			"Y-M D"
 		]
@@ -22,5 +23,5 @@
 	"mwe-timedtext-textcat-cue": "Poent lec'hiañ",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 istitl evit ar c'hlip : $2",
 	"mwe-timedtext-language-no-subtitles-for-clip": "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
-	"mwe-timedtext-upload-timed-text": "Enporzhiañ istitloù"
+	"mwe-timedtext-upload-timed-text": "Ouzhpennañ istitloù"
 }
