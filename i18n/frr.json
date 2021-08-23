@@ -4,6 +4,8 @@
 			"Murma174"
 		]
 	},
+	"timedmedia-play-media": "Meediendatei ufspele",
 	"timedmedia-source-file": "$1-kwel",
-	"timedmedia-source-audio-file-desc": "Originaal $1-datei ($2)"
+	"timedmedia-source-audio-file-desc": "Originaal $1-datei ($2)",
+	"transcodestatistics": "Transkodiarang statistik"
 }
