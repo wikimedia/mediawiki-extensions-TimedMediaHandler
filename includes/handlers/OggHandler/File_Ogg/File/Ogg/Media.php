@@ -126,8 +126,8 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
             }
 
             // Comments are in the format 'ARTIST=Super Furry Animals', so split it on the equals character.
-            // NOTE: Equals characters are strictly prohibited in either the COMMENT or DATA parts.
-            $comment        = explode("=", fread($this->_filePointer, $comment_length['data']));
+            // NOTE: Equals characters are strictly prohibited in the title part of a comment
+            $comment        = explode("=", fread($this->_filePointer, $comment_length['data']), 2);
             $comment_title  = (string) $comment[0];
             $comment_value  = (string)( $comment[1] ?? '' );
 
