@@ -190,7 +190,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		$this->width = $oldWidth;
 		$this->height = $oldHeight;
-		return $res;
+		return $this->linkWrap( [], $res );
 	}
 
 	/**

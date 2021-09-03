@@ -96,7 +96,14 @@
 					} )
 					.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 				);
-			$videoplayer.replaceWith( $placeholder );
+
+			var enableLegacyMediaDOM = mw.config.get( 'wgParserEnableLegacyMediaDOM' );
+			if ( enableLegacyMediaDOM ) {
+				$videoplayer.replaceWith( $placeholder );
+			} else {
+				// Replace the span linkWrap gave us
+				$videoplayer.parent().replaceWith( $placeholder );
+			}
 		}
 
 		$collection.each( loadSinglePlayer );

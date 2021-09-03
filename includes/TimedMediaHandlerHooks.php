@@ -570,7 +570,8 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function onResourceLoaderGetConfigVars( &$vars ) {
 		// Allow localSettings.php to override any module config by updating $wgMwEmbedModuleConfig var
-		global $wgMwEmbedModuleConfig;
+		global $wgMwEmbedModuleConfig, $wgParserEnableLegacyMediaDOM;
 		$vars['wgTimedMediaHandler'] = $wgMwEmbedModuleConfig;
+		$vars['wgParserEnableLegacyMediaDOM'] = $wgParserEnableLegacyMediaDOM;
 	}
 }
