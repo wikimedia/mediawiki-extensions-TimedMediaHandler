@@ -45,7 +45,7 @@
 	"mwe-embedplayer-ogg-player-selected": "(vybraný)",
 	"mwe-embedplayer-ogg-player-omtkplayer": "OMTK Flash Vorbis",
 	"mwe-embedplayer-for_best_experience": "Pro příjemnější přehrávání videa doporučujeme <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">HTML5 prohlížeč videa</a>.",
-	"mwe-embedplayer-fullscreen-tip": "Stisknutím <b>F11</b> přepínáte celoobrazovkový režim <i>webového prohlížeče</i>",
+	"mwe-embedplayer-fullscreen-tip": "Stisknutím <b>F11</b> přepínáte celoobrazovkový režim",
 	"mwe-embedplayer-fullscreen-tip-osx": "Stisknutím <b>shift ⌘ F</b> přepínáte celoobrazovkový režim",
 	"mwe-embedplayer-do_not_warn_again": "Příště tuto zprávu nezobrazovat.",
 	"mwe-embedplayer-playerSelect": "Přehrávače",
