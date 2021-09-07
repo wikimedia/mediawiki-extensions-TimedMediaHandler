@@ -10,7 +10,7 @@ videojs.addLanguage('de', {
   "Loaded": "Geladen",
   "Progress": "Status",
   "Fullscreen": "Vollbild",
-  "Non-Fullscreen": "Kein Vollbild",
+  "Non-Fullscreen": "Vollbildmodus beenden",
   "Mute": "Ton aus",
   "Unmute": "Ton ein",
   "Playback Rate": "Wiedergabegeschwindigkeit",
@@ -83,5 +83,7 @@ videojs.addLanguage('de', {
   "Volume Level": "Lautstärke",
   "{1} is loading.": "{1} wird geladen.",
   "Seek to live, currently behind live": "Zur Live-Übertragung wechseln. Aktuell wird es nicht live abgespielt.",
-  "Seek to live, currently playing live": "Zur Live-Übertragung wechseln. Es wird aktuell live abgespielt."
+  "Seek to live, currently playing live": "Zur Live-Übertragung wechseln. Es wird aktuell live abgespielt.",
+  "Exit Picture-in-Picture": "Bild-im-Bild-Modus beenden",
+  "Picture-in-Picture": "Bild-im-Bild-Modus"
 });
