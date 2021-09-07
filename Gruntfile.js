@@ -44,21 +44,6 @@ module.exports = function ( grunt ) {
 			},
 			all: conf.MessagesDirs.TimedMediaHandler
 		},
-		exec: {
-			'npm-update-videojs': {
-				cmd: 'npm update ogv video.js videojs-resolution-switcher-v6',
-				callback: function ( error, stdout, stderr ) {
-					grunt.log.write( stdout );
-					if ( stderr ) {
-						grunt.log.write( 'Error: ' + stderr );
-					}
-
-					if ( error !== null ) {
-						grunt.log.error( 'update error: ' + error );
-					}
-				}
-			}
-		},
 		copy: {
 			'ogv.js': {
 				expand: true,
@@ -93,11 +78,8 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'update-videojs', [
-		'exec:npm-update-videojs',
-		'copy:video.js'
-	] );
-	grunt.registerTask( 'update-ogvjs', [ 'exec:npm-update-videojs', 'copy:ogv.js' ] );
+	grunt.registerTask( 'update-videojs', [ 'copy:video.js' ] );
+	grunt.registerTask( 'update-ogvjs', [ 'copy:ogv.js' ] );
 	grunt.registerTask( 'test', [ 'eslint', 'stylelint', 'banana' ] );
 	grunt.registerTask( 'default', 'test' );
 };
