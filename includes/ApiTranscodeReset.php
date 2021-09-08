@@ -27,7 +27,6 @@ class ApiTranscodeReset extends ApiBase {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['title'] ) ] );
 		}
 		// Make sure the title can be transcoded
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 		if ( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ) {
 			$this->dieWithError(
 				[
@@ -53,7 +52,6 @@ class ApiTranscodeReset extends ApiBase {
 		}
 
 		// Don't reset if less than 1 hour has passed and we have no error )
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
 		if ( $timeSinceLastReset < $wgWaitTimeForTranscodeReset ) {
@@ -72,7 +70,6 @@ class ApiTranscodeReset extends ApiBase {
 
 		$logEntry = new ManualLogEntry( 'timedmediahandler', 'resettranscode' );
 		$logEntry->setPerformer( $this->getUser() );
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 		$logEntry->setTarget( $titleObj );
 		$logEntry->setParameters( [
 			'4::transcodekey' => $transcodeKey,

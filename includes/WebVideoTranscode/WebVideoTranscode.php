@@ -1325,7 +1325,7 @@ class WebVideoTranscode {
 		return $maxSize;
 	}
 
-	private static function filterAndSort( $set ) {
+	private static function filterAndSort( array $set ) {
 		$keys = array_keys( array_filter( $set ) );
 		natsort( $keys );
 		return $keys;
@@ -1333,6 +1333,7 @@ class WebVideoTranscode {
 
 	public static function enabledTranscodes() {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable These globals are arrays
 		return self::filterAndSort( array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet ) );
 	}
 

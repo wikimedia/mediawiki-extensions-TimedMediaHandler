@@ -50,7 +50,6 @@ class VttWriter extends Writer {
 
 		// Must be globally unique
 		if ( isset( $usedMap[$id] ) ) {
-			$i = 2;
 			for ( $i = 2; ; $i++ ) {
 				$alt = "$id $i";
 				if ( !isset( $usedMap[$alt] ) ) {
