@@ -6,9 +6,20 @@
 		]
 	},
 	"timedmedia-more": "ပို၍...",
+	"timedmedia-dismiss": "ပိတ်ရန်",
+	"timedmedia-download": "ဖိုင်ဒေါင်းလုတ်ယူရန်",
+	"timedmedia-play-media": "မီဒီယာဖွင့်ရန်",
 	"timedmedia-desc-link": "ဤဖိုင်အကြောင်း",
+	"timedmedia-status": "အခြေအနေ",
+	"timedmedia-status-unknown": "အခြေအနေ မသိရ",
+	"timedmedia-actions": "ဆောင်ရွက်ချက်များ",
+	"timedmedia-direct-link": "ဒေါင်းလုဒ်",
+	"timedmedia-not-ready": "အဆင်သင့်မဖြစ်",
+	"timedmedia-completed-on": "ပြီးဆုံးသည် $1",
 	"timedmedia-source-file": "$1 ရင်းမြစ်",
 	"timedmedia-source-audio-file-desc": "မူရင်း $1 ဖိုင် ($2)",
+	"timedmedia-subtitle-new-desc": "ဘာသာစကားရွေးပြီး '''{{int:Timedmedia-subtitle-new-go}}''' ခလုတ်ကိုနှိပ်ပါ",
+	"timedmedia-subtitle-new-go": "သွားပါ",
 	"timedmedia-file": "ဖိုင်",
 	"beta-feature-timedmediahandler-message-videojs": "ဗီဒီယို ပလေယာ အသစ်"
 }
