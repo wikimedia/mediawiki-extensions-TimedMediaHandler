@@ -4,9 +4,26 @@
 			"Yupik"
 		]
 	},
+	"timedmedia-ogg-short-audio": "Ogg $1 -jiõnnteâttõs, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 -videoteâttõs, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 -mediateâttõs , $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 -jiõnnteâttõs, pešttmõš $2, $3",
+	"timedmedia-ogg-long-general": "Ogg -mediateâttõs, pešttmõš $2, $3",
+	"timedmedia-ogg-long-error": "Kuddteʹmes Ogg-teâttõs: $1",
+	"timedmedia-webm-short-video": "WebM $1 -videoteâttõs, $2",
+	"timedmedia-flac-short-audio": "FLAC-jiõnnteâttõs, $1",
+	"timedmedia-wav-short-audio": "WAV-jiõnnteâttõs, $1",
+	"timedmedia-mp3-short-audio": "MP3-jiõnnteâttõs, $1",
+	"timedmedia-midi-short-audio": "MIDI-jiõnnteâttõs, $1",
+	"timedmedia-mp4-short-video": "MP4 $1 -videoteâttõs, $2",
+	"timedmedia-mpeg-short-video": "MPEG $1 -videoteâttõs, $2",
 	"timedmedia-download": "Laadd teâttõõzz",
+	"timedmedia-desc-link": "Teâttõõzz teâđ",
 	"timedmedia-direct-link": "Laadd",
 	"timedmedia-error-on": "Vââʹǩǩ $1",
+	"timedmedia-source-file-desc": "Alggveärlaž $1-teâttõs, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Alggveärlaž $1-teâttõs ($2)",
-	"timedmedia-file": "Teâttõs"
+	"timedmedia-file": "Teâttõs",
+	"videojs-more-information": "Lââʹssteâđ",
+	"videojs-quality": "Videokvaliteʹtt"
 }
