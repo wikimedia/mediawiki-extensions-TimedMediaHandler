@@ -134,9 +134,6 @@
 		if ( [ 'login', 'purge', 'rollback', 'delete', 'undelete', 'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser', 'import', 'userrights' ].indexOf( data.action ) !== -1 ) {
 			return true;
 		}
-		if ( data.prop === 'info' && data.intoken ) {
-			return true;
-		}
 		if ( data.meta === 'userinfo' ) {
 			return true;
 		}
