@@ -70,7 +70,7 @@
 			// * mw.EmbedPlayerVLCApp
 			// * mw.EmbedPlayerIEWebMPrompt
 			// * mw.EmbedPlayerOgvJs
-			// Only created in commented out code, maybe should be removed T280746:
+			// No longer loaded anywhere, should be removed T280746:
 			// * mw.EmbedPlayerVlc
 			// * mw.EmbedPlayerGeneric
 			mw.loader.using( [
