@@ -63,7 +63,16 @@
 		 */
 		load: function ( callback ) {
 			// Load player library ( upper case the first letter of the library )
-
+			// Give grep a chance to find the usages for these modules, this can load:
+			// * mw.EmbedPlayerKplayer
+			// * mw.EmbedPlayerNative
+			// * mw.EmbedPlayerImageOverlay
+			// * mw.EmbedPlayerVLCApp
+			// * mw.EmbedPlayerIEWebMPrompt
+			// * mw.EmbedPlayerOgvJs
+			// Only created in commented out code, maybe should be removed T280746:
+			// * mw.EmbedPlayerVlc
+			// * mw.EmbedPlayerGeneric
 			mw.loader.using( [
 				'mw.EmbedPlayer' + this.library.substr( 0, 1 ).toUpperCase() + this.library.substr( 1 )
 			], function () {
