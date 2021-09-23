@@ -14,7 +14,7 @@
 
 		mw.log( 'jQuery.fn.embedPlayer :: ' + $( playerSet ).length );
 
-		mw.loader.using( [ 'jquery.client', 'jquery.mwEmbedUtil', 'mw.MwEmbedSupport' ], function () {
+		mw.loader.using( [ 'jquery.client', 'mw.MwEmbedSupport' ], function () {
 			$( playerSet ).each( function ( inx, playerElement ) {
 				// we have javascript ( disable controls )
 				$( playerElement ).prop( 'controls', false );
