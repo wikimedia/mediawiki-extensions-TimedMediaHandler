@@ -74,10 +74,6 @@
 			'image/png'
 		], 'ImageOverlay' ),
 
-		// VLC player
-		// vlcMimeList = ['video/ogg', 'audio/ogg', 'audio/mpeg', 'application/ogg', 'video/x-flv', 'video/mp4', 'video/h264', 'video/x-msvideo', 'video/mpeg', 'video/3gp'],
-		// vlcPlayer = new mw.MediaPlayer( 'vlc-player', vlcMimeList, 'Vlc' ),
-
 		vlcAppPlayer = new mw.MediaPlayer( 'vlcAppPlayer', [
 			'video/ogg',
 			'video/ogg; codecs="theora"',
@@ -118,9 +114,6 @@
 			'application/ogg'
 		], 'OgvJs' );
 
-	// Generic plugin
-	// oggPluginPlayer = new mw.MediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' ),
-
 	mw.EmbedTypes = {
 
 		// MediaPlayers object ( supports methods for quering set of browser players )
@@ -135,7 +128,7 @@
 		 * @constructor
 		 */
 		init: function () {
-		// detect supported types
+			// detect supported types
 			this.detect();
 			this.detect_done = true;
 		},
@@ -177,18 +170,6 @@
 				this.addFlashPlayer();
 			}
 
-			// ActiveX plugins
-			if ( $.client.profile().name === 'msie' ) {
-				// VLC
-				// if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-				//   this.mediaPlayers.addPlayer( vlcPlayer );
-				// }
-
-				// quicktime (currently off)
-				// if ( this.testActiveX(
-				// 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
-				// this.mediaPlayers.addPlayer(quicktimeActiveXPlayer);
-			}
 			// <video> element
 			if ( !config[ 'EmbedPlayer.DisableVideoTagSupport' ] && // to support testing limited / old browsers
 				(
@@ -233,7 +214,7 @@
 
 						// Test for ogg
 						if ( dummyvid.canPlayType( 'video/ogg; codecs="theora, vorbis"' ) ||
-						dummyvid.canPlayType( 'audio/ogg; codecs="vorbis"' )
+							dummyvid.canPlayType( 'audio/ogg; codecs="vorbis"' )
 						) {
 							this.mediaPlayers.addPlayer( oggNativePlayer );
 						}
@@ -259,36 +240,8 @@
 					// mw.log( 'on type: ' + type );
 					pluginName = navigator.mimeTypes[ i ].enabledPlugin ? navigator.mimeTypes[ i ].enabledPlugin.name : '';
 					if ( !pluginName ) {
-					// In case it is null or undefined
+						// In case it is null or undefined
 						pluginName = '';
-					}
-					// if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
-					//   this.mediaPlayers.addPlayer( vlcPlayer );
-					//   continue;
-					// }
-
-					if ( ( type === 'video/mpeg' || type === 'video/x-msvideo' ) ) {
-					// pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-					// this.mediaPlayers.addPlayer( vlcMozillaPlayer );
-					}
-
-					if ( type === 'application/ogg' ) {
-					// if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-						// this.mediaPlayers.addPlayer( vlcMozillaPlayer );
-					// else if ( pluginName.indexOf( 'QuickTime' ) > -1 )
-						// this.mediaPlayers.addPlayer(quicktimeMozillaPlayer);
-					// } else {
-						// this.mediaPlayers.addPlayer( oggPluginPlayer );
-					// }
-						continue;
-					} else if ( uniqueMimesOnly ) {
-						if ( type === 'application/x-vlc-player' ) {
-						// this.mediaPlayers.addPlayer( vlcMozillaPlayer );
-							continue;
-						} else if ( type === 'video/quicktime' ) {
-						// this.mediaPlayers.addPlayer(quicktimeMozillaPlayer);
-							continue;
-						}
 					}
 				}
 			}
@@ -301,29 +254,29 @@
 			// For simplicity just check for the rendering engine codename 'Trident'.
 			if ( navigator.userAgent.indexOf( 'Trident' ) !== -1 ) {
 				if ( this.mediaPlayers.isSupportedPlayer( 'webmNative' ) ) {
-				// IE has the WebM components already, leave it be!
+					// IE has the WebM components already, leave it be!
 				} else if ( navigator.userAgent.indexOf( 'ARM' ) !== -1 ) {
-				// Windows RT doesn't allow installation of the WebM components.
-				// Don't tease the poor user.
+					// Windows RT doesn't allow installation of the WebM components.
+					// Don't tease the poor user.
 				} else {
-				// Prompt user to install the WebM media components for IE 9+
+					// Prompt user to install the WebM media components for IE 9+
 					this.mediaPlayers.addPlayer( IEWebMPrompt );
 				}
 			}
 
 			// ogv.js compatibility detection...
 			if ( OGVCompat.supported( 'OGVPlayer' ) ) {
-			// ogv.js emscripten version
-			//
-			// Works in:
-			// * Safari 6.1+ on Mac OS X
-			// * Safari on iOS 8+ (best on 64-bit devices)
-			// * IE 10/11 on Windows 7/8/8.1 (requires Flash for audio)
-			// * Edge on Windows 10 (no plugins needed)
-			//
-			// Current Firefox, Chrome, Opera all work great too, but use
-			// native playback by default of course!
-			//
+				// ogv.js emscripten version
+				//
+				// Works in:
+				// * Safari 6.1+ on Mac OS X
+				// * Safari on iOS 8+ (best on 64-bit devices)
+				// * IE 10/11 on Windows 7/8/8.1 (requires Flash for audio)
+				// * Edge on Windows 10 (no plugins needed)
+				//
+				// Current Firefox, Chrome, Opera all work great too, but use
+				// native playback by default of course!
+				//
 				this.mediaPlayers.addPlayer( ogvJsPlayer );
 			}
 
@@ -339,16 +292,15 @@
 		 * @param {string} name Name of ActiveXObject to look for
 		 */
 		testActiveX: function ( name ) {
-			var hasObj = true;
 			mw.log( 'EmbedPlayer::detect: test testActiveX: ' + name );
 			try {
 				// No IE, not a class called "name", it's a variable
 				// eslint-disable-next-line no-new
 				new ActiveXObject( String( name ) );
+				return true;
 			} catch ( e ) {
-				hasObj = false;
+				return false;
 			}
-			return hasObj;
 		}
 	};
 
