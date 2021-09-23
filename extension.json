@@ -426,15 +426,12 @@
 	"ResourceModules": {
 		"mw.PopUpMediaTransform": {
 			"scripts": "resources/mw.PopUpThumbVideo.js",
+			"styles": "resources/PopUpThumbVideo.css",
 			"dependencies": [
 				"mw.MwEmbedSupport",
 				"mediawiki.Title",
-				"mw.PopUpMediaTransform.styles",
 				"ext.tmh.OgvJsSupport"
 			]
-		},
-		"mw.PopUpMediaTransform.styles": {
-			"styles": "resources/PopUpThumbVideo.css"
 		},
 		"mw.TMHGalleryHook.js": {
 			"scripts": "resources/mw.TMHGalleryHook.js"
