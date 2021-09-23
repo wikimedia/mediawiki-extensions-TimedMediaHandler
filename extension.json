@@ -647,19 +647,16 @@
 				"resources/mwembed/jquery.loadingSpinner.js",
 				"resources/mwembed/mw.MwEmbedSupport.js"
 			],
+			"styles": "resources/mwembed/skins/common/MwEmbedCommonStyle.css",
+			"skinStyles": {
+				"kaltura-dark": "resources/mwembed/skins/jquery.ui.themes/kaltura-dark/jquery-ui-1.7.2.css"
+			},
 			"dependencies": [
-				"mediawiki.util",
-				"mw.MwEmbedSupport.style"
+				"mediawiki.util"
 			],
 			"messages": [
 				"mwe-loading"
 			]
-		},
-		"mw.MwEmbedSupport.style": {
-			"styles": "resources/mwembed/skins/common/MwEmbedCommonStyle.css",
-			"skinStyles": {
-				"kaltura-dark": "resources/mwembed/skins/jquery.ui.themes/kaltura-dark/jquery-ui-1.7.2.css"
-			}
 		},
 		"mediawiki.UtilitiesTime": {
 			"scripts": "resources/mwembed/mediawiki/mediawiki.UtilitiesTime.js"
