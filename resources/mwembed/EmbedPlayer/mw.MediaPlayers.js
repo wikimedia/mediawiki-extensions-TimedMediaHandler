@@ -29,22 +29,20 @@
 			this.loadPreferences();
 
 			// Set up default players order for each library type
-			this.defaultPlayers[ 'video/x-flv' ] = [ 'Kplayer', 'Vlc' ];
-			this.defaultPlayers[ 'video/h264' ] = [ 'Native', 'Kplayer', 'Vlc' ];
+			this.defaultPlayers[ 'video/x-flv' ] = [ 'Kplayer' ];
+			this.defaultPlayers[ 'video/h264' ] = [ 'Native', 'Kplayer', ];
 
 			this.defaultPlayers[ 'application/vnd.apple.mpegurl' ] = [ 'Native' ];
 
-			this.defaultPlayers[ 'video/ogg' ] = [ 'Native', 'Vlc', 'OgvJs', 'Generic', 'VLCApp' ];
-			this.defaultPlayers[ 'audio/webm' ] = [ 'Native', 'Vlc', 'OgvJs', 'VLCApp', 'IEWebMPrompt' ];
-			this.defaultPlayers[ 'video/webm' ] = [ 'Native', 'Vlc', 'OgvJs', 'VLCApp', 'IEWebMPrompt' ];
-			this.defaultPlayers[ 'application/ogg' ] = [ 'Native', 'Vlc', 'OgvJs', 'Generic', 'VLCApp' ];
-			this.defaultPlayers[ 'audio/ogg' ] = [ 'Native', 'Vlc', 'OgvJs', 'VLCApp' ];
+			this.defaultPlayers[ 'video/ogg' ] = [ 'Native', 'OgvJs', 'VLCApp' ];
+			this.defaultPlayers[ 'audio/webm' ] = [ 'Native', 'OgvJs', 'VLCApp', 'IEWebMPrompt' ];
+			this.defaultPlayers[ 'video/webm' ] = [ 'Native', 'OgvJs', 'VLCApp', 'IEWebMPrompt' ];
+			this.defaultPlayers[ 'application/ogg' ] = [ 'Native', 'OgvJs', 'VLCApp' ];
+			this.defaultPlayers[ 'audio/ogg' ] = [ 'Native', 'OgvJs', 'VLCApp' ];
 			this.defaultPlayers[ 'audio/mpeg' ] = [ 'Native', 'Kplayer' ];
 			this.defaultPlayers[ 'audio/mp3' ] = [ 'Native', 'Kplayer' ];
 			this.defaultPlayers[ 'audio/mp4' ] = [ 'Native' ];
-			this.defaultPlayers[ 'video/mp4' ] = [ 'Native', 'Vlc' ];
-			this.defaultPlayers[ 'video/mpeg' ] = [ 'Vlc' ];
-			this.defaultPlayers[ 'video/x-msvideo' ] = [ 'Vlc' ];
+			this.defaultPlayers[ 'video/mp4' ] = [ 'Native' ];
 
 			// this.defaultPlayers['text/html'] = ['Html'];
 			// this.defaultPlayers['image/svg'] = ['ImageOverlay'];

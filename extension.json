@@ -735,14 +735,12 @@
 				"mwe-embedplayer-kaltura-platform-title",
 				"mwe-embedplayer-menu_btn",
 				"mwe-embedplayer-close_btn",
-				"mwe-embedplayer-ogg-player-vlc-player",
 				"mwe-embedplayer-ogg-player-oggNative",
 				"mwe-embedplayer-ogg-player-mp3Native",
 				"mwe-embedplayer-ogg-player-aacNative",
 				"mwe-embedplayer-ogg-player-h264Native",
 				"mwe-embedplayer-ogg-player-webmNative",
 				"mwe-embedplayer-ogg-player-vp9Native",
-				"mwe-embedplayer-ogg-player-oggPlugin",
 				"mwe-embedplayer-ogg-player-vlcAppPlayer",
 				"mwe-embedplayer-ogg-player-IEWebMPrompt",
 				"mwe-embedplayer-ogg-player-ogvJsPlayer",
@@ -763,7 +761,6 @@
 				"mwe-embedplayer-embed_wiki",
 				"mwe-embedplayer-related_videos",
 				"mwe-embedplayer-seeking",
-				"mwe-embedplayer-buffering",
 				"mwe-embedplayer-video-h264",
 				"mwe-embedplayer-video-webm",
 				"mwe-embedplayer-video-flv",
@@ -788,9 +785,6 @@
 		"mw.EmbedPlayerKplayer": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerKplayer.js"
 		},
-		"mw.EmbedPlayerGeneric": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerGeneric.js"
-		},
 		"mw.EmbedPlayerNative": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerNative.js"
 		},
@@ -813,9 +807,6 @@
 		},
 		"mw.EmbedPlayerImageOverlay": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js"
-		},
-		"mw.EmbedPlayerVlc": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerVlc.js"
 		},
 		"mw.TimedText.loader": {
 			"scripts": "resources/mwembed/TimedText.loader.js"
