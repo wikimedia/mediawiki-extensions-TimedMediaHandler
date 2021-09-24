@@ -641,13 +641,13 @@
 		},
 		"mw.MwEmbedSupport": {
 			"scripts": [
+				"resources/mwembed/jquery.triggerQueueCallback.js",
+				"resources/mwembed/jquery.mwEmbedUtil.js",
 				"resources/mwembed/lib/Spinner.js",
 				"resources/mwembed/jquery.loadingSpinner.js",
 				"resources/mwembed/mw.MwEmbedSupport.js"
 			],
 			"dependencies": [
-				"jquery.triggerQueueCallback",
-				"jquery.mwEmbedUtil",
 				"mediawiki.util",
 				"mw.MwEmbedSupport.style"
 			],
@@ -666,12 +666,6 @@
 		},
 		"mw.ajaxProxy": {
 			"scripts": "resources/mwembed/mediawiki/mediawiki.ajaxProxy.js"
-		},
-		"jquery.triggerQueueCallback": {
-			"scripts": "resources/mwembed/jquery.triggerQueueCallback.js"
-		},
-		"jquery.mwEmbedUtil": {
-			"scripts": "resources/mwembed/jquery.mwEmbedUtil.js"
 		},
 		"jquery.embedPlayer": {
 			"scripts": "resources/mwembed/EmbedPlayer/jquery.embedPlayer.js"
