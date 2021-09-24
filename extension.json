@@ -158,7 +158,6 @@
 			"description": "MwEmbed module configuration.",
 			"public": true,
 			"value": {
-				"MediaWiki.DefaultProvider": "local",
 				"MediaWiki.ApiProviders": {
 					"wikimediacommons": {
 						"url": "//commons.wikimedia.org/w/api.php"
@@ -176,7 +175,6 @@
 				"EmbedPlayer.DisableVideoTagSupport": false,
 				"EmbedPlayer.DisableHTML5FlashFallback": true,
 				"EmbedPlayer.ReplaceSources": null,
-				"EmbedPlayer.EnableFlavorSelector": false,
 				"EmbedPlayer.EnableIpadHTMLControls": true,
 				"EmbedPlayer.WebKitPlaysInline": false,
 				"EmbedPlayer.EnableIpadNativeFullscreen": false,
@@ -203,22 +201,14 @@
 				"EmbedPlayer.EnableVolumeControl": true,
 				"EmbedPlayer.NewWindowFullscreen": false,
 				"EmbedPlayer.FullscreenTip": true,
-				"EmbedPlayer.DirectFileLinkWarning": true,
 				"EmbedPlayer.NativeControls": false,
-				"EmbedPlayer.NativeControlsMobileSafari": true,
 				"EmbedPlayer.FullScreenZIndex": 999998,
 				"EmbedPlayer.ShareEmbedMode": "iframe",
 				"EmbedPlayer.MonitorRate": 250,
-				"EmbedPlayer.UseFlashOnAndroid": false,
 				"EmbedPlayer.EnableURLTimeEncoding": "flash",
-				"EmbedPLayer.IFramePlayer.DomainWhiteList": "*",
 				"EmbedPlayer.EnableIframeApi": true,
-				"EmbedPlayer.PageDomainIframe": true,
 				"EmbedPlayer.NotPlayableDownloadLink": true,
 				"TimedText.ShowInterface": "always",
-				"TimedText.ShowAddTextLink": true,
-				"TimedText.ShowRequestTranscript": false,
-				"TimedText.NeedsTranscriptCategory": "Videos needing subtitles",
 				"TimedText.BottomPadding": 10,
 				"TimedText.BelowVideoBlackBoxHeight": 40
 			}
