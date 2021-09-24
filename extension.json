@@ -651,9 +651,6 @@
 		"mediawiki.UtilitiesTime": {
 			"scripts": "resources/mwembed/mediawiki/mediawiki.UtilitiesTime.js"
 		},
-		"mw.ajaxProxy": {
-			"scripts": "resources/mwembed/mediawiki/mediawiki.ajaxProxy.js"
-		},
 		"jquery.embedPlayer": {
 			"scripts": "resources/mwembed/EmbedPlayer/jquery.embedPlayer.js"
 		},
@@ -856,10 +853,12 @@
 			]
 		},
 		"mw.TextSource": {
-			"scripts": "resources/mwembed/mw.TextSource.js",
+			"scripts": [
+				"resources/mwembed/mediawiki/mediawiki.ajaxProxy.js",
+				"resources/mwembed/mw.TextSource.js"
+			],
 			"dependencies": [
-				"mediawiki.UtilitiesTime",
-				"mw.ajaxProxy"
+				"mediawiki.UtilitiesTime"
 			]
 		}
 	},
