@@ -3,6 +3,7 @@
 		"authors": [
 			"Max20091",
 			"Minh Nguyen",
+			"NguoiDungKhongDinhDanh",
 			"Nguyên Lê",
 			"Trần Nguyễn Minh Huy",
 			"Vinhtantran",
@@ -177,7 +178,7 @@
 	"timedmedia-file": "Tập tin",
 	"beta-feature-timedmediahandler-message-videojs": "Trình phát video mới",
 	"beta-feature-timedmediahandler-description-videojs": "Xem tập tin video trong trình phát hiện đại có giao diện gọn và tương thích với thiết bị di động.",
-	"right-transcode-reset": "Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng nó lại vào hàng đợi việc.",
+	"right-transcode-reset": "Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng lại vào hàng đợi việc.",
 	"right-transcode-status": "Xem [[Special:TimedMediaHandler|thông tin về hoạt động chuyển mã đang xảy ra]]",
 	"action-transcode-reset": "đặt lại chuyển mã",
 	"action-transcode-status": "xem trạng thái chuyển mã hiện tại",
