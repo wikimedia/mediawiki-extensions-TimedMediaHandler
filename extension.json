@@ -443,10 +443,13 @@
 			]
 		},
 		"mw.MediaWikiPlayer.loader": {
-			"scripts": "resources/mw.MediaWikiPlayer.loader.js",
+			"scripts": [
+				"resources/mwembed/EmbedPlayer/mw.EmbedPlayer.loader.js",
+				"resources/mwembed/TimedText.loader.js",
+				"resources/mw.MediaWikiPlayer.loader.js"
+			],
 			"dependencies": [
-				"mw.EmbedPlayer.loader",
-				"mw.TimedText.loader"
+				"jquery.embedPlayer"
 			]
 		},
 		"ext.tmh.video-js": {
@@ -654,10 +657,6 @@
 		"jquery.embedPlayer": {
 			"scripts": "resources/mwembed/EmbedPlayer/jquery.embedPlayer.js"
 		},
-		"mw.EmbedPlayer.loader": {
-			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayer.loader.js",
-			"dependencies": "jquery.embedPlayer"
-		},
 		"mw.EmbedPlayer": {
 			"scripts": [
 				"resources/mwembed/mediawiki/mediawiki.absoluteUrl.js",
@@ -807,9 +806,6 @@
 		},
 		"mw.EmbedPlayerImageOverlay": {
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js"
-		},
-		"mw.TimedText.loader": {
-			"scripts": "resources/mwembed/TimedText.loader.js"
 		},
 		"mw.TimedText": {
 			"scripts": "resources/mwembed/mw.TimedText.js",

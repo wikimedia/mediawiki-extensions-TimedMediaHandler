@@ -1,7 +1,7 @@
 ( function () {
 	var config = mw.config.get( 'wgTimedMediaHandler' ),
 		iframePlayerInit = function () {
-			// rewrite player, normally done by mw.EmbedPlayer.loader upon wikipage.content hook
+			// rewrite player, normally done by mw.EmbedPlayer.loader.js upon wikipage.content hook
 			var $players = $( config[ 'EmbedPlayer.RewriteSelector' ] );
 			$players.embedPlayer();
 		};
