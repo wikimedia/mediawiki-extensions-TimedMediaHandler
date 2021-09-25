@@ -808,12 +808,16 @@
 			"scripts": "resources/mwembed/EmbedPlayer/mw.EmbedPlayerImageOverlay.js"
 		},
 		"mw.TimedText": {
-			"scripts": "resources/mwembed/mw.TimedText.js",
+			"scripts": [
+				"resources/mwembed/mediawiki/mediawiki.ajaxProxy.js",
+				"resources/mwembed/mw.TextSource.js",
+				"resources/mwembed/mw.TimedText.js"
+			],
 			"styles": "resources/mwembed/mw.style.TimedText.css",
 			"dependencies": [
 				"mediawiki.language.names",
 				"mw.EmbedPlayer",
-				"mw.TextSource",
+				"mediawiki.UtilitiesTime",
 				"mw.MwEmbedSupport"
 			],
 			"messages": [
@@ -837,15 +841,6 @@
 				"mwe-timedtext-language-subtitles-for-clip",
 				"mwe-timedtext-language-no-subtitles-for-clip",
 				"mwe-timedtext-upload-timed-text"
-			]
-		},
-		"mw.TextSource": {
-			"scripts": [
-				"resources/mwembed/mediawiki/mediawiki.ajaxProxy.js",
-				"resources/mwembed/mw.TextSource.js"
-			],
-			"dependencies": [
-				"mediawiki.UtilitiesTime"
 			]
 		}
 	},
