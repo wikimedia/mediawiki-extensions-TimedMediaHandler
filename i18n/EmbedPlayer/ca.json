@@ -31,7 +31,6 @@
 	"mwe-embedplayer-video_credits": "Crèdits del vídeo",
 	"mwe-embedplayer-menu_btn": "Menú",
 	"mwe-embedplayer-close_btn": "Tanca",
-	"mwe-embedplayer-ogg-player-vlc-player": "Reproductor VLC",
 	"mwe-embedplayer-ogg-player-kplayer": "Reproductor Kaltura",
 	"mwe-embedplayer-for_best_experience": "Per a una millor experiència de visualització es recomana un <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download/ca\" target=\"_blank\">reproductor de vídeo HTML5</a>.",
 	"mwe-embedplayer-download-warn": "No s'ha detectat cap reproductor compatible: per tenir un reproductor integrat al navegador, descarregueu la [$1 darrera versió de Firefox]",
