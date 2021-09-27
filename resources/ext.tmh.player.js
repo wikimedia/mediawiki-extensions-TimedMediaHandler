@@ -97,7 +97,8 @@
 					.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 				);
 
-			var enableLegacyMediaDOM = mw.config.get( 'wgParserEnableLegacyMediaDOM' );
+			// Config exported via package files, T60082
+			var enableLegacyMediaDOM = require( './config.json' ).ParserEnableLegacyMediaDOM;
 			if ( enableLegacyMediaDOM ) {
 				$videoplayer.replaceWith( $placeholder );
 			} else {

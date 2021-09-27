@@ -515,7 +515,13 @@
 			]
 		},
 		"ext.tmh.player": {
-			"scripts": "resources/ext.tmh.player.js",
+			"packageFiles": [
+				"resources/ext.tmh.player.js",
+				{
+					"name": "resources/config.json",
+					"config": [ "ParserEnableLegacyMediaDOM" ]
+				}
+			],
 			"targets": [
 				"mobile",
 				"desktop"
