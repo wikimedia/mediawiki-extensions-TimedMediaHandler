@@ -145,7 +145,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 
 		// Now for the complicated bit
 		// Note: This bit is mysql specific. Probably could do something
-		// equivalent in postgress via split_part or regex substr,
+		// equivalent in postgres via split_part or regex substr,
 		// but my sql-fu is not good enough to figure out how to do
 		// this in standard sql, or in sqlite.
 		$baseCond = 'substr( page_title, 1, length( page_title ) - '
