@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"ChoiChong"
+		]
+	},
+	"timedmedia-source-file": "$1原始文件",
+	"timedmedia-source-audio-file-desc": "原始$1文件 ($2)"
+}
