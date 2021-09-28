@@ -534,6 +534,20 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
+	 * Add default preferences values
+	 *
+	 * @param array &$defaultOptions Array of preference keys and their default values.
+	 */
+	public static function onUserGetDefaultOptions( &$defaultOptions ) {
+		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'timedmediahandler' );
+
+		if ( $tmhConfig->get( 'TmhUseBetaFeatures' ) ) {
+			$defaultOptions['tmh-videojs'] = false;
+		}
+	}
+
+	/**
 	 * Return the configured player mode for this user
 	 * @return string
 	 */

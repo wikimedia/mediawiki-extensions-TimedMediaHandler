@@ -129,6 +129,7 @@
 		"FileDeleteComplete": "TimedMediaHandlerHooks::onFileDeleteComplete",
 		"FileUpload": "TimedMediaHandlerHooks::onFileUpload",
 		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
+		"UserGetDefaultOptions": "TimedMediaHandlerHooks::onUserGetDefaultOptions",
 		"ImageOpenShowImageInlineBefore": "TimedMediaHandlerHooks::onImageOpenShowImageInlineBefore",
 		"ImagePageAfterImageLinks": "TimedMediaHandlerHooks::checkForTranscodeStatus",
 		"ImagePageFileHistoryLine": "TimedMediaHandlerHooks::onImagePageFileHistoryLine",
