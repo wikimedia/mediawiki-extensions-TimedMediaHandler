@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"JSantos",
 			"Joao Xavier"
 		]
 	},
+	"mwe-embedplayer-credit-date": "Datoː $1",
 	"mwe-embedplayer-credit-author": "Autoro: $1",
 	"mwe-embedplayer-download": "Deskargar",
 	"mwe-embedplayer-share": "Partigez",
