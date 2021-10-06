@@ -1932,8 +1932,8 @@
 			$shareInterface.append(
 				$( '<h2>' )
 					.text( embedPlayer.isAudio() ?
-						mw.msg( 'mwe-embedplayer-shareself_audio' ) :
-						mw.msg( 'mwe-embedplayer-shareself_video' ) )
+						mw.msg( 'mwe-embedplayer-share_this_audio' ) :
+						mw.msg( 'mwe-embedplayer-share_this_video' ) )
 			);
 
 			if ( embedWikiCode ) {
