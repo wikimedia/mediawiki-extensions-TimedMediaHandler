@@ -75,7 +75,7 @@ class TimedMediaIframeOutput {
 
 		// Definitely do not want to break frames
 		$wgBreakFrames = false;
-		$out->allowClickjacking();
+		$out->setPreventClickjacking( false );
 		$out->disallowUserJs();
 
 		if ( TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
