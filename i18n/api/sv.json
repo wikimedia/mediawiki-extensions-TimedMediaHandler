@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Felba",
 			"Lokal Profil",
 			"Sabelöga"
 		]
@@ -11,12 +12,25 @@
 	"apihelp-query+videoinfo-description": "Utökar imageinfo till att inkludera källinformation för video (derivat)",
 	"apihelp-query+videoinfo-summary": "Utökar imageinfo till att inkludera källinformation för video (derivat)",
 	"apihelp-query+videoinfo-example-1": "Hämta information om [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Lägger till en tabell över de olika format- och kvalitetsversioner av en ljud- eller videofil som finns tillgängliga.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Lägger till en tabell över de undertexter, rubriker och beskrivningar av en ljud- eller videofil som finns tillgängliga.",
+	"apihelp-timedtext-description": "Tillhandahåller tajmad textinnehåll för användande av &lt;track&gt; elements",
+	"apihelp-timedtext-summary": "Tillhandahåller tajmad textinnehåll för användande av &lt;track&gt; elements",
+	"apihelp-timedtext-param-title": "Mediefilsrubriken till vilken tajmad text ska hämtas för",
+	"apihelp-timedtext-param-pageid": "ID till sidan för mediafilen som tajmad text ska hämtas för",
+	"apihelp-timedtext-param-trackformat": "Filformatat som den tajmade texten ska återkommas i",
+	"apihelp-timedtext-param-lang": "Språket som den tajmade texten ska hämtas i",
+	"apihelp-timedtext-example-1": "Hämta en SRT-undertextfil på tyska för filen Example.ogv",
 	"apihelp-transcodereset-description": "Användare med \"transcode-reset\"-rättigheten kan återställa och köra om ett transkodningsjobb.",
 	"apihelp-transcodereset-summary": "Användare med \"transcode-reset\"-rättigheten kan återställa och köra om ett transkodningsjobb.",
 	"apihelp-transcodereset-param-title": "Mediefilens titel.",
 	"apihelp-transcodereset-param-transcodekey": "Den transkodningsnyckel du önskar återställa. Hämta från [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Återställ alla transkodningar för [[:File:Clip.webm]]",
 	"apihelp-transcodereset-example-2": "Återställ \"360_560kbs.webm\"-transkodningsnyckeln för [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Transcode är inaktiverat för denna wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 kan inte kodas om.",
+	"apierror-timedmedia-badtranscodekey": "Ogiltig eller inaktiverad omkodningsnyckel: $1",
+	"apierror-timedmedia-notenoughtimereset": "Det har inte gått tillräckligt med tid sedan det förra åretställandet av denna omkodning. $1 till att denna omkodning kan återställas.",
 	"apierror-timedmedia-lang-notfound": "Det efterfrågade språket hittades inte",
 	"apierror-timedmedia-no-timedtext-support": "Inget TimedText-stöd",
 	"apierror-timedmedia-notlocal": "Filen är inte lokal"
