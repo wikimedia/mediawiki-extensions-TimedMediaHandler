@@ -3,6 +3,7 @@
 		"authors": [
 			"Dgstranz",
 			"Fitoschido",
+			"Jakeukalane",
 			"Johny Weissmuller Jr",
 			"Macofe",
 			"MarcoAurelio"
@@ -14,6 +15,6 @@
 	"apihelp-query+videoinfo-example-1": "Obtener información sobre [[:File:Folgers.ogv]]",
 	"apihelp-timedtext-summary": "Proporciona contenido de texto cronometrado para su uso por parte de elementos &lt;track&gt;",
 	"apihelp-transcodereset-param-title": "El título del archivo multimedia.",
-	"apierror-timedmedia-disabledtranscode": "La transcodificación está desactivada en este wiki.",
+	"apierror-timedmedia-disabledtranscode": "La transcodificación está desactivada en esta wiki.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 no es transcodificable."
 }
