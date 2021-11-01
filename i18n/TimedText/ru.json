@@ -4,13 +4,14 @@
 			"Kaganer",
 			"MaxSem",
 			"Okras",
+			"Pacha Tchernof",
 			"Александр Сигачёв"
 		]
 	},
 	"mwe-timedtext-back-btn": "Назад",
 	"mwe-timedtext-layout-off": "Скрыть субтитры",
-	"mwe-timedtext-loading-text": "Загрузка текста…",
-	"mwe-timedtext-textcat-cc": "Субтитры-описания",
+	"mwe-timedtext-loading-text": "Загружается текст…",
+	"mwe-timedtext-textcat-cc": "Субтитры с описанием",
 	"mwe-timedtext-textcat-sub": "Субтитры",
 	"mwe-timedtext-textcat-tad": "Описание аудиофайла",
 	"mwe-timedtext-textcat-ktv": "Караоке",
@@ -18,12 +19,12 @@
 	"mwe-timedtext-textcat-ar": "Активные области",
 	"mwe-timedtext-textcat-nb": "Аннотация",
 	"mwe-timedtext-textcat-meta": "Синхронизированные метаданные",
-	"mwe-timedtext-textcat-trx": "Стенограмма",
+	"mwe-timedtext-textcat-trx": "Расшифровка",
 	"mwe-timedtext-textcat-lrc": "Слова песни",
 	"mwe-timedtext-textcat-lin": "Лингвистическая разметка",
 	"mwe-timedtext-textcat-cue": "Знаковые точки",
 	"mwe-timedtext-no-subs": "Нет текстовых дорожек",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 — субтитры для клипа: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Не найдено субтитров на $1 для клипа: $2",
+	"mwe-timedtext-language-subtitles-for-clip": "$1 — субтитры для файла: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "$1 — нет субтитров для файла: $2",
 	"mwe-timedtext-upload-timed-text": "Добавить субтитры"
 }
