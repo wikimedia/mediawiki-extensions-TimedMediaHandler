@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Khun Kt"
+			"Khun Kt",
+			"咽頭べさ"
 		]
 	},
-	"timedmedia-source-file": "$1 ရွီးခိုႏ"
+	"timedmedia-source-file": "$1 ရွီးခိုႏ",
+	"timedmedia-source-audio-file-desc": "မူအထျ့ꩻ $1 ဖုဲင် ($2)"
 }
