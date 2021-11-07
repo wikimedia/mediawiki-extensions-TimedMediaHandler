@@ -48,6 +48,10 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->tablesUsed[] = 'transcode';
+		$this->setMwGlobals( [
+			'wgUseInstantCommons' => false,
+			'wgForeignFileRepos' => []
+		] );
 	}
 
 	/**

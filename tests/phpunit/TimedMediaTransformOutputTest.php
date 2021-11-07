@@ -18,7 +18,11 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		$repo = TestingAccessWrapper::newFromObject( $this->repo );
 		$repo->transformVia404 = true;
 
-		$this->setMWGlobals( 'wgMinimumVideoPlayerSize', '400' );
+		$this->setMWGlobals( [
+			'wgMinimumVideoPlayerSize' => 400,
+			'wgUseInstantCommons' => false,
+			'wgForeignFileRepos' => []
+		] );
 	}
 
 	/**
