@@ -5,6 +5,8 @@
 		]
 	},
 	"mwe-embedplayer-credit-title": "Tìtulu: $1",
+	"mwe-embedplayer-credit-author": "Auturi: $1",
 	"mwe-embedplayer-download": "Scàrrica",
+	"mwe-embedplayer-menu_btn": "Menu",
 	"mwe-embedplayer-close_btn": "Chiudi"
 }
