@@ -8,6 +8,7 @@
 			"Ex13",
 			"Fraxinus",
 			"MaGa",
+			"Ponor",
 			"Roberta F.",
 			"SpeedyGonsales",
 			"Teoo3"
@@ -51,7 +52,7 @@
 	"timedmedia-direct-link": "Preuzmi",
 	"timedmedia-not-ready": "Nije spremno",
 	"timedmedia-completed-on": "Dovršeno $1",
-	"timedmedia-error-on": "Pogrješka na $1",
+	"timedmedia-error-on": "Pogreška na $1",
 	"timedmedia-started-transcode": "Započeto prije $1. $2",
 	"timedmedia-percent-done": "Dovršeno oko $1%",
 	"timedmedia-in-job-queue": "Dodano u red čekanja prije $1",
