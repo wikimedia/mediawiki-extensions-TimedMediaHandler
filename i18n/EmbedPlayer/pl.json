@@ -4,6 +4,7 @@
 			"BeginaFelicysym",
 			"Chrumps",
 			"Dvorapa",
+			"Matma Rex",
 			"Rail",
 			"Railfail536",
 			"Sp5uhe",
@@ -93,7 +94,7 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "Pobierz aplikację VLC z App Store",
 	"mwe-embedplayer-vlcapp-openvideo": "Otwórz to wideo w aplikacji VLC",
 	"mwe-embedplayer-vlcapp-downloadvideo": "Pobierz ten film",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "Aby uruchomić pliki wido na tej stronie potrzebujesz darmowej aplikacji VLC. Zainstalować ją teraz?",
+	"mwe-embedplayer-vlcapp-vlcapppopup": "Aby odtworzyć pliki wideo na tej stronie, konieczna jest darmowa aplikacja VLC. Zainstalować ją teraz?",
 	"mwe-embedplayer-iewebmprompt-intro": "Ups! Jeszcze jedna sprawa zanim będziesz mógł odtworzyć to wideo…",
 	"mwe-embedplayer-iewebmprompt-linktext": "Zainstaluj komponenty WebM dla Microsoft Internet Explorer",
 	"mwe-embedplayer-iewebmprompt-outro": "Po zakończeniu instalacji odśwież stronę."
