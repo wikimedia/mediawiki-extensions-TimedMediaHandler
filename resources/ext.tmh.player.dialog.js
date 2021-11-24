@@ -100,12 +100,16 @@
 					size: isAudio ? 'medium' : 'larger',
 					$video: $video
 				} ),
+				title,
 				win;
 
 			$( document.body ).append( windowManager.$element );
 			windowManager.addWindows( [ dialog ] );
+			if ( $video.data( 'mwtitle' ) ) {
+				title = mw.Title.newFromText( $video.data( 'mwtitle' ), NS_FILE ).getMainText();
+			}
 			win = windowManager.openWindow( dialog, {
-				title: ( new mw.Title( $video.data( 'mwtitle' ), NS_FILE ) ).getMainText()
+				title: title
 			} );
 
 			win.opened.then( function () {
