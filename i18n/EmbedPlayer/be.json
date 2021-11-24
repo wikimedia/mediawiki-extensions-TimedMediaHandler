@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Artsiom91"
+			"Artsiom91",
+			"ZlyiLev"
 		]
 	},
 	"mwe-embedplayer-credit-date": "Дата: $1",
-	"mwe-embedplayer-close_btn": "Закрыць"
+	"mwe-embedplayer-close_btn": "Закрыць",
+	"mwe-embedplayer-for_best_experience": "Для лепшага прайгравання відэа мы рэкамендуем <a href=\"https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler/Client_download\" target=\"_blank\">браўзер з падтрымкай HTML5-відэа</a>."
 }
