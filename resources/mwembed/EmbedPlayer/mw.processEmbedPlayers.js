@@ -164,6 +164,10 @@
 			) {
 				return false;
 			}
+			if ( playerElement.readyState > 0 ) {
+				// We are already loaded
+				return false;
+			}
 
 			// CSS video defaults ( firefox )
 			if (
