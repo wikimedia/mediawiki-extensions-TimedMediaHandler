@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Giromin Cangiaxo"
+			"Giromin Cangiaxo",
+			"N. Longo"
 		]
 	},
 	"timedmediahandler-desc": "Gestô pe-i file oudio, viddio e co-i sottotittoli, con formato suportou: WebM, Ogg Theora, Vorbis, srt",
@@ -63,9 +64,9 @@
 	"timedmedia-reset-button-reset": "Remposta",
 	"timedmedia-reset-error": "Errô inta rempostassion da transcodiffica.",
 	"timedmedia-reset-explanation": "Rempostando questa transcodiffica tutti i file existenti (se prezenti) saian scassæ e a transcodiffica a saiâ torna azonta a-a coa de travaggio. Pe fâla da cappo ghe voriâ 'n pô.",
-	"timedmedia-source-file": "Sorgente $1",
+	"timedmedia-source-file": "Fónte $1",
 	"timedmedia-source-file-desc": "File originâ $1, $2 × $3 ($4)",
-	"timedmedia-source-audio-file-desc": "File originale $1 ($2)",
+	"timedmedia-source-audio-file-desc": "File òriginâle $1 ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Viddio Ogg a bassa larghessa de banda (160P)",
 	"timedmedia-derivative-desc-240p.ogv": "Viddio Ogg picin (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Viddeo Ogg (360P)",
