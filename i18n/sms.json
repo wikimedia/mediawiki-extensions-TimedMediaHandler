@@ -21,6 +21,7 @@
 	"timedmedia-desc-link": "Teâttõõzz teâđ",
 	"timedmedia-direct-link": "Laadd",
 	"timedmedia-error-on": "Vââʹǩǩ $1",
+	"timedmedia-days": "{{PLURAL:$1|1 peiʹvv|$1 peeiʹv|$1 peiʹvved}}",
 	"timedmedia-source-file-desc": "Alggveärlaž $1-teâttõs, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Alggveärlaž $1-teâttõs ($2)",
 	"timedmedia-file": "Teâttõs",

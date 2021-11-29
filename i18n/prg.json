@@ -4,5 +4,6 @@
 			"Nērtiks Jōrgesuns"
 		]
 	},
-	"timedmedia-source-file": "$1 aps"
+	"timedmedia-source-file": "$1 aps",
+	"timedmedia-source-audio-file-desc": "Ōriginals zūrbrukis $1 ($2)"
 }
