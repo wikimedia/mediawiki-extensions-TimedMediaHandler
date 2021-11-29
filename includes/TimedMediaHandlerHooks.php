@@ -497,7 +497,8 @@ class TimedMediaHandlerHooks {
 	 */
 	public static function onPageRenderingHash( &$hash, User $user, &$forOptions ) {
 		if ( self::activePlayerMode() === 'videojs' ) {
-			if ( $user->getOption( 'tmh-videojs' ) === '1' ) {
+			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+			if ( $userOptionsLookup->getOption( $user, 'tmh-videojs' ) === '1' ) {
 				$hash .= '!tmh-videojs';
 			}
 		}
