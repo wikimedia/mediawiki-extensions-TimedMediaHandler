@@ -3,6 +3,7 @@
 		"authors": [
 			"IAlex",
 			"Peter17",
+			"Pols12",
 			"Tititou36",
 			"Verdy p"
 		]
@@ -24,7 +25,7 @@
 	"mwe-timedtext-textcat-lin": "Balisage linguistique",
 	"mwe-timedtext-textcat-cue": "Points de repère",
 	"mwe-timedtext-no-subs": "Aucun texte de piste disponible",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 sous-titres pour clip : $2",
+	"mwe-timedtext-language-subtitles-for-clip": "Sous-titres en $1 pour la vidéo « $2 »",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
 	"mwe-timedtext-upload-timed-text": "Ajouter des sous-titres"
 }
