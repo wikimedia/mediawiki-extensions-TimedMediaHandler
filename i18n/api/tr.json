@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"SaldırganSincap"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Belirli bir dosya sayfası için kod dönüştürme durumunu alın.",
@@ -22,7 +23,7 @@
 	"apihelp-transcodereset-description": "'transcode-reset' hakkına sahip kullanıcılar, bir transkod işini sıfırlayabilir ve yeniden çalıştırabilir.",
 	"apihelp-transcodereset-summary": "'transcode-reset' hakkına sahip kullanıcılar, bir transkod işini sıfırlayabilir ve yeniden çalıştırabilir.",
 	"apihelp-transcodereset-param-title": "Medya dosya başlığı.",
-	"apihelp-transcodereset-param-transcodekey": "Sıfırlamak istediğiniz şifre kodu anahtarı. [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]] üzerinden getirin.",
+	"apihelp-transcodereset-param-transcodekey": "Sıfırlamak istediğiniz transkodu anahtarı. [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]] üzerinden getirin.",
 	"apihelp-transcodereset-example-1": "[[:File:Clip.webm]] için tüm kod dönüştürmelerini sıfırla",
 	"apihelp-transcodereset-example-2": "[[:File:Clip.webm]] için '360_560kbs.webm' kod geçiş anahtarını sıfırlayın",
 	"apierror-timedmedia-disabledtranscode": "Bu vikide kod geçişi devre dışı.",
