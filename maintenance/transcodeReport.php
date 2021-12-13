@@ -29,8 +29,9 @@ class TranscodeReport extends Maintenance {
 	/**
 	 * @var int Don't count files claiming longer than 12hr duration
 	 * These are (almost?) always broken files.
+	 * Units in seconds.
 	 */
-	private $insaneDuration = 12 * 3600;
+	private const REALLY_LONG = 12 * 3600;
 
 	/** @var float[] max size for histogram breakdowns by res */
 	private $max = [
@@ -153,7 +154,7 @@ class TranscodeReport extends Maintenance {
 				// found a lot of these in .ogvs imported from open science data
 				return;
 			}
-			if ( $duration > $this->insaneDuration ) {
+			if ( $duration > self::REALLY_LONG ) {
 				// ignore outliers with super-long durations
 				// these are mostly weird trims of long live videos
 				return;
