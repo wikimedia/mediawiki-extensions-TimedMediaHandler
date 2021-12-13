@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Gazimagomedov",
+			"Omarov M.",
 			"Аль-Гимравий"
 		]
 	},
 	"timedmedia-source-file": "$1 ицц",
-	"timedmedia-source-audio-file-desc": "Аслияб $1-файл ($2)",
-	"timedmedia-subtitle-new-go": "ТӀубазабизе"
+	"timedmedia-source-audio-file-desc": "Оригиналияб $1-файл ($2)",
+	"timedmedia-subtitle-new-go": "ТІубазе"
 }
