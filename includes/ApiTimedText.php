@@ -24,7 +24,7 @@
  * @since 1.33
  */
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Languages\LanguageNameUtils;
 
 /**
  * Implements the timedtext module that outputs subtitle files
@@ -34,9 +34,37 @@ use MediaWiki\MediaWikiServices;
  * @emits error.code timedtext-notfound, invalidlang, invalid-title
  */
 class ApiTimedText extends ApiBase {
+	/** @var LanguageNameUtils */
+	private $languageNameUtils;
+
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/** @var WANObjectCache */
+	private $cache;
 
 	private const CACHE_VERSION = 1;
 	private const CACHE_TTL = 86400; // 24 hours
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param LanguageNameUtils $languageNameUtils
+	 * @param RepoGroup $repoGroup
+	 * @param WANObjectCache $cache
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		LanguageNameUtils $languageNameUtils,
+		RepoGroup $repoGroup,
+		WANObjectCache $cache
+	) {
+		parent::__construct( $main, $action );
+		$this->languageNameUtils = $languageNameUtils;
+		$this->repoGroup = $repoGroup;
+		$this->cache = $cache;
+	}
 
 	/**
 	 * URLs to this API endpoint are intended to be created internally and provided
@@ -65,7 +93,7 @@ class ApiTimedText extends ApiBase {
 
 		if ( $params['lang'] === null ) {
 			$langCode = false;
-		} elseif ( !Language::isValidCode( $params['lang'] ) ) {
+		} elseif ( !$this->languageNameUtils->isValidCode( $params['lang'] ) ) {
 			$this->dieWithError(
 				[ 'apierror-invalidlang', $this->encodeParamName( 'lang' ) ], 'invalidlang'
 			);
@@ -82,7 +110,7 @@ class ApiTimedText extends ApiBase {
 		if ( $ns != NS_FILE ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'invalidtitle' );
 		}
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $page->getTitle() );
+		$file = $this->repoGroup->findFile( $page->getTitle() );
 		if ( !$file ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'timedtext-notfound' );
 		}
@@ -105,7 +133,7 @@ class ApiTimedText extends ApiBase {
 			$filename .= '.' . $params['trackformat'];
 		}
 
-		$rawTimedText = self::convertTimedText(
+		$rawTimedText = $this->convertTimedText(
 			$timedTextExtension,
 			$params['trackformat'],
 			$page
@@ -177,10 +205,9 @@ class ApiTimedText extends ApiBase {
 	 * @param WikiPage $page the TimedText page being loaded
 	 * @return string text of the output in desired format
 	 */
-	protected static function convertTimedText( $from, $to, $page ) {
+	protected function convertTimedText( $from, $to, $page ) {
 		$revId = $page->getLatest();
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		$key = $cache->makeKey(
+		$key = $this->cache->makeKey(
 			'apitimedtext',
 			self::CACHE_VERSION,
 			$page->getTitle()->getDbKey(),
@@ -188,7 +215,7 @@ class ApiTimedText extends ApiBase {
 			$from,
 			$to
 		);
-		return $cache->getWithSetCallback(
+		return $this->cache->getWithSetCallback(
 			$key,
 			self::CACHE_TTL,
 			static function ( $cached, &$ttl ) use ( $from, $to, $page ) {

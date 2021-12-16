@@ -18,7 +18,14 @@
 		"MediaWiki": ">= 1.38.0"
 	},
 	"APIModules": {
-		"timedtext": "ApiTimedText",
+		"timedtext": {
+			"class": "ApiTimedText",
+			"services": [
+				"LanguageNameUtils",
+				"RepoGroup",
+				"MainWANObjectCache"
+			]
+		},
 		"transcodereset": "ApiTranscodeReset"
 	},
 	"APIPropModules": {
