@@ -1,7 +1,5 @@
 <?php
 /**
- * Created on Aug 17, 2015
- *
  * Copyright © 2015 Derk-Jan Hartman "hartman.wiki@gmail.com"
  * Updated 2017-2019 Brion Vibber <bvibber@wikimedia.org>
  *
