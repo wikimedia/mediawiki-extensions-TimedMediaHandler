@@ -179,7 +179,7 @@ class File_Ogg
      * Returns an interface to an Ogg physical stream.
      *
      * This method takes the path to a local file and examines it for a physical
-     * ogg bitsream.  After instantiation, the user should query the object for
+     * ogg bitstream.  After instantiation, the user should query the object for
      * the logical bitstreams held within the ogg container.
      *
      * @access  public
@@ -189,13 +189,13 @@ class File_Ogg
     {
         clearstatcache();
         if (! file_exists($fileLocation)) {
-            throw new OggException("Couldn't Open File.  Check File Path.", OGG_ERROR_INVALID_FILE);
+            throw new OggException("Couldn't Open File. Check File Path.", OGG_ERROR_INVALID_FILE);
         }
 
         // Open this file as a binary, and split the file into streams.
         $this->_filePointer = fopen($fileLocation, "rb");
-        if (!is_resource($this->_filePointer))
-            throw new OggException("Couldn't Open File.  Check File Permissions.", OGG_ERROR_INVALID_FILE);
+        if (!$this->_filePointer)
+            throw new OggException("Couldn't Open File. Check File Permissions.", OGG_ERROR_INVALID_FILE);
 
         // Check for a stream at the start
         $magic = fread($this->_filePointer, strlen(OGG_CAPTURE_PATTERN));
