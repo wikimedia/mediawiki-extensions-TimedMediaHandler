@@ -23,7 +23,8 @@
 			"services": [
 				"LanguageNameUtils",
 				"RepoGroup",
-				"MainWANObjectCache"
+				"MainWANObjectCache",
+				"WikiPageFactory"
 			]
 		},
 		"transcodereset": "ApiTranscodeReset"

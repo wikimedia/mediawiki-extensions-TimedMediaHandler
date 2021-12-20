@@ -23,6 +23,7 @@
  */
 
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Page\WikiPageFactory;
 
 /**
  * Implements the timedtext module that outputs subtitle files
@@ -41,6 +42,9 @@ class ApiTimedText extends ApiBase {
 	/** @var WANObjectCache */
 	private $cache;
 
+	/** @var WikiPageFactory */
+	private $wikiPageFactory;
+
 	private const CACHE_VERSION = 1;
 	private const CACHE_TTL = 86400; // 24 hours
 
@@ -50,18 +54,21 @@ class ApiTimedText extends ApiBase {
 	 * @param LanguageNameUtils $languageNameUtils
 	 * @param RepoGroup $repoGroup
 	 * @param WANObjectCache $cache
+	 * @param WikiPageFactory $wikiPageFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
 		LanguageNameUtils $languageNameUtils,
 		RepoGroup $repoGroup,
-		WANObjectCache $cache
+		WANObjectCache $cache,
+		WikiPageFactory $wikiPageFactory
 	) {
 		parent::__construct( $main, $action );
 		$this->languageNameUtils = $languageNameUtils;
 		$this->repoGroup = $repoGroup;
 		$this->cache = $cache;
+		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/**
@@ -170,12 +177,12 @@ class ApiTimedText extends ApiBase {
 
 		foreach ( $sourceFormats as $format ) {
 			$dbkey = "{$file->getTitle()->getDbKey()}.{$langCode}.{$format}";
-			$page = WikiPage::factory( Title::makeTitle( $ns, $dbkey ) );
+			$page = $this->wikiPageFactory->newFromTitle( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {
 					$title = $page->getRedirectTarget();
 					if ( $title ) {
-						$page = WikiPage::factory( $title );
+						$page = $this->wikiPageFactory->newFromTitle( $title );
 					} else {
 						return null;
 					}
