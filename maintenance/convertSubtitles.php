@@ -86,7 +86,8 @@ class ConvertSubtitles extends Maintenance {
 			$title = $page->getRedirectTarget();
 			$page = WikiPage::factory( $title );
 		}
-		$raw = $page->getContent()->getNativeData();
+		$content = $page->getContent();
+		$raw = $content instanceof TextContent ? $content->getText() : '';
 
 		$errors = [];
 		$out = TextHandler::convertSubtitles(

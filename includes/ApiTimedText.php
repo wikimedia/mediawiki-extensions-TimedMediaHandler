@@ -218,7 +218,8 @@ class ApiTimedText extends ApiBase {
 			self::CACHE_TTL,
 			static function ( $cached, &$ttl ) use ( $from, $to, $page ) {
 				// TODO convert to contentmodel
-				$rawTimedText = $page->getContent()->getNativeData();
+				$content = $page->getContent();
+				$rawTimedText = $content instanceof TextContent ? $content->getText() : '';
 				$output = TextHandler::convertSubtitles(
 					$from,
 					$to,
