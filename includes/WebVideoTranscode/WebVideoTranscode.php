@@ -1346,4 +1346,31 @@ class WebVideoTranscode {
 		global $wgEnabledAudioTranscodeSet;
 		return self::filterAndSort( $wgEnabledAudioTranscodeSet );
 	}
+
+	public static function validateTranscodeConfiguration() {
+		global $wgEnableTranscode,
+			$wgFFmpegLocation,
+			$wgTmhFluidsynthLocation,
+			$wgTmhSoundfontLocation;
+		foreach ( self::enabledTranscodes() as $transcodeKey ) {
+			if ( !isset( self::$derivativeSettings[ $transcodeKey ] ) ) {
+				throw new MWException(
+					__METHOD__ . ": Invalid key '$transcodeKey' specified in"
+						. " wgEnabledTranscodeSet or wgEnabledAudioTranscodeSet."
+				);
+			}
+		}
+		if ( !$wgEnableTranscode ) {
+			return;
+		}
+		foreach ( [
+			'wgFFmpegLocation' => $wgFFmpegLocation,
+			'wgTmhFluidsynthLocation' => $wgTmhFluidsynthLocation,
+			'wgTmhSoundfontLocation' => $wgTmhSoundfontLocation
+		] as $name => $executableLocation ) {
+			if ( $executableLocation && !is_executable( $executableLocation ) ) {
+				wfWarn( "Non-accesible or non-executable location set for $name" );
+			}
+		}
+	}
 }
