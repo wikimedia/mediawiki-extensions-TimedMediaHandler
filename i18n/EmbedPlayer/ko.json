@@ -3,6 +3,7 @@
 		"authors": [
 			"Comjun04",
 			"Hwangjy9",
+			"Kwj2772",
 			"Priviet",
 			"Ykhwong",
 			"아라"
@@ -31,6 +32,7 @@
 	"mwe-embedplayer-paused": "일시 정지함",
 	"mwe-embedplayer-download_segment": "선택 다운로드:",
 	"mwe-embedplayer-download_full_video": "전체 동영상 파일 다운로드:",
+	"mwe-embedplayer-download_full_audio": "전체 오디오 파일 다운로드:",
 	"mwe-embedplayer-download_right_click": "다운로드하려면 오른쪽을 클릭하고 <i>다른 이름으로 링크 저장...</i>을 선택하세요",
 	"mwe-embedplayer-download_clip": "동영상 다운로드",
 	"mwe-embedplayer-download_text": "텍스트 다운로드",
@@ -43,6 +45,7 @@
 	"mwe-embedplayer-choose_player": "동영상 플레이어 선택",
 	"mwe-embedplayer-no-player": "$1에 대해 사용 가능한 플레이어가 없습니다",
 	"mwe-embedplayer-share_this_video": "이 동영상 공유하기",
+	"mwe-embedplayer-share_this_audio": "이 오디오 파일 공유하기",
 	"mwe-embedplayer-video_credits": "동영상 제작진",
 	"mwe-embedplayer-no-video_credits": "사용 가능한 제작진이 없습니다",
 	"mwe-embedplayer-kaltura-platform-title": "Kaltura 오픈 소스 동영상 플랫폼",
@@ -54,6 +57,8 @@
 	"mwe-embedplayer-ogg-player-h264Native": "HTML5 H.264 플레이어",
 	"mwe-embedplayer-ogg-player-webmNative": "HTML5 WebM 플레이어",
 	"mwe-embedplayer-ogg-player-vp9Native": "HTML5 VP9 플레이어",
+	"mwe-embedplayer-ogg-player-vlcAppPlayer": "iOS 앱용 VLC",
+	"mwe-embedplayer-ogg-player-IEWebMPrompt": "IE WebM 플러그인 다운로더",
 	"mwe-embedplayer-ogg-player-ogvJsPlayer": "자바스크립트 Ogg 플레이어",
 	"mwe-embedplayer-ogg-player-quicktime-mozilla": "QuickTime 플러그인",
 	"mwe-embedplayer-ogg-player-quicktime-activex": "QuickTime ActiveX",
@@ -87,5 +92,7 @@
 	"mwe-embedplayer-vlcapp-downloadapp": "App Store에서 VLC 앱 내려받기",
 	"mwe-embedplayer-vlcapp-openvideo": "VLC 앱에서 이 영상 열기",
 	"mwe-embedplayer-vlcapp-downloadvideo": "이 영상 내려받기",
-	"mwe-embedplayer-vlcapp-vlcapppopup": "이 사이트에서 영상을 재생하려면, 무료 VLC 앱이 필요합니다. 지금 설치할까요?"
+	"mwe-embedplayer-vlcapp-vlcapppopup": "이 사이트에서 영상을 재생하려면, 무료 VLC 앱이 필요합니다. 지금 설치할까요?",
+	"mwe-embedplayer-iewebmprompt-linktext": "마이크로소프트 인터넷 익스플로러용 WebM 미디어 컴포넌트 설치",
+	"mwe-embedplayer-iewebmprompt-outro": "설치한 후 이 페이지 다시 불러오기"
 }
