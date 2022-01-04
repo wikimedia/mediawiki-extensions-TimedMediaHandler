@@ -182,10 +182,16 @@
 					dummyvid = document.createElement( 'video' );
 					if ( dummyvid.canPlayType ) {
 					// Add the webm player
-						if ( dummyvid.canPlayType( 'video/webm; codecs="vp8, vorbis"' ) ) {
+						if ( dummyvid.canPlayType( 'video/webm; codecs="vp8, vorbis"' ) || (
+							typeof MediaSource !== 'undefined' &&
+							MediaSource.isTypeSupported( 'video/webm; codecs="vp8, vorbis"' )
+						) ) {
 							this.mediaPlayers.addPlayer( webmNativePlayer );
 						}
-						if ( dummyvid.canPlayType( 'video/webm; codecs="vp9, opus"' ) ) {
+						if ( dummyvid.canPlayType( 'video/webm; codecs="vp9, opus"' ) || (
+							typeof MediaSource !== 'undefined' &&
+							MediaSource.isTypeSupported( 'video/webm; codecs="vp9, opus"' )
+						) ) {
 							this.mediaPlayers.addPlayer( vp9NativePlayer );
 						}
 

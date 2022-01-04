@@ -30,7 +30,12 @@
 			 */
 			canPlayNatively: function () {
 				var el = document.createElement( 'video' );
-				if ( el && el.canPlayType && el.canPlayType( 'video/webm; codecs="opus,vp9"' ) ) {
+				if ( el && el.canPlayType && (
+					el.canPlayType( 'video/webm; codecs="opus,vp9"' ) || (
+						// Safari 12 workaround, where safari incorrectly reports not to support opus on webm files
+						typeof MediaSource !== 'undefined' && MediaSource.isTypeSupported( 'video/webm; codecs="vp9, opus"' )
+					) )
+				) {
 					return true;
 				}
 				return false;
