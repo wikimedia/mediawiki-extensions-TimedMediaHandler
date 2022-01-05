@@ -7,10 +7,10 @@ CREATE TABLE transcode (
   transcode_image_name VARCHAR(255) NOT NULL,
   transcode_key VARCHAR(48) NOT NULL,
   transcode_error TEXT NOT NULL,
-  transcode_time_addjob VARCHAR(14) DEFAULT NULL,
-  transcode_time_startwork VARCHAR(14) DEFAULT NULL,
-  transcode_time_success VARCHAR(14) DEFAULT NULL,
-  transcode_time_error VARCHAR(14) DEFAULT NULL,
+  transcode_time_addjob TIMESTAMPTZ DEFAULT NULL,
+  transcode_time_startwork TIMESTAMPTZ DEFAULT NULL,
+  transcode_time_success TIMESTAMPTZ DEFAULT NULL,
+  transcode_time_error TIMESTAMPTZ DEFAULT NULL,
   transcode_final_bitrate INT NOT NULL,
   PRIMARY KEY(transcode_id)
 );

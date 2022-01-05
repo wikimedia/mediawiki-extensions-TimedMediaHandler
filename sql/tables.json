@@ -24,23 +24,23 @@
 			},
 			{
 				"name": "transcode_time_addjob",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_startwork",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_success",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_error",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_final_bitrate",
