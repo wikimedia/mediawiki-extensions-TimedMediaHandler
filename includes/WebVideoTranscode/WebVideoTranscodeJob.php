@@ -180,10 +180,10 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Update the transcode table letting it know we have "started work":
-		$jobStartTimeCache = $dbw->timestamp();
+		$jobStartTimeCache = wfTimestamp( TS_UNIX );
 		$dbw->update(
 			'transcode',
-			[ 'transcode_time_startwork' => $jobStartTimeCache ],
+			[ 'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ) ],
 			[
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
@@ -247,7 +247,7 @@ class WebVideoTranscodeJob extends Job {
 		);
 
 		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
-		if ( $dbw->timestamp( $jobStartTimeCache ) != $dbw->timestamp( $dbStartTime ) ) {
+		if ( $dbStartTime === null || $jobStartTimeCache !== wfTimestamp( TS_UNIX, $dbStartTime ) ) {
 			$this->output(
 				'Possible Error,
 					transcode task restarted, removed, or completed while transcode was in progress'
