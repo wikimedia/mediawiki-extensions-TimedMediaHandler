@@ -51,7 +51,8 @@
 
 	audioConfig = {
 		controlBar: {
-			fullscreenToggle: false
+			fullscreenToggle: false,
+			pictureInPictureToggle: false
 		},
 		// Audio interface breakpoints
 		// play, volume, info and CC are most important here
@@ -210,6 +211,8 @@
 				audioContext: mw.OgvJsSupport.initAudioContext()
 			} );
 			globalConfig.techOrder.push( 'ogvjs' );
+			// ogvjs tech does not support picture in picture
+			globalConfig.controlBar.pictureInPictureToggle = false;
 		}
 		return $.Deferred( function ( deferred ) {
 			mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' ).then( function () {
