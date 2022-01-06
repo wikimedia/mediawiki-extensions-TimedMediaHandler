@@ -460,6 +460,10 @@ class TimedMediaHandlerHooks {
 				$dir . 'postgres/tables-generated.sql'
 			);
 		}
+		$dirPatch = $dbType === 'mysql' ? $dir : $dir . $dbType . '/';
+		$updater->modifyExtensionField(
+			'transcode', 'transcode_time_error', $dirPatch . 'patch-transcode-transcode_timestamp.sql'
+		);
 
 		return true;
 	}
