@@ -204,6 +204,21 @@
 			} );
 			return vjs;
 		}
+		if ( videojs.browser.IS_SAFARI ) {
+			// Html5 on Safari has a broken canPlayType
+			var Html5 = videojs.getTech( 'Html5' );
+			var originalCanPlayType = Html5.nativeSourceHandler.canPlayType;
+			Html5.nativeSourceHandler.canPlayType = function ( mediaType ) {
+				switch ( mediaType ) {
+					case 'video/webm; codecs="vp9, opus"':
+						return ( typeof MediaSource !== 'undefined' && MediaSource.isTypeSupported( 'video/webm; codecs="vp9, opus"' ) ) ? 'probably' : '';
+					case 'video/webm; codecs="vp8, vorbis"':
+						return ( typeof MediaSource !== 'undefined' && MediaSource.isTypeSupported( 'video/webm; codecs="vp8, vorbis"' ) ) ? 'probably' : '';
+				}
+
+				return originalCanPlayType( mediaType );
+			};
+		}
 
 		if ( mw.OgvJsSupport.isNeeded() ) {
 			globalConfig.ogvjs = $.extend( techOpt, {

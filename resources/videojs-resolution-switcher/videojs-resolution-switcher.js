@@ -179,6 +179,9 @@
         // Probably because of https://github.com/videojs/video-js-swf/issues/124
         // If player preload is 'none' and then loadeddata not fired. So, we need timeupdate event for seek handle (timeupdate doesn't work properly with flash)
         var handleSeekEvent = 'loadeddata';
+        if(this.player_.preload() === 'metadata' && this.player_.techName_ !== 'Flash') {
+          handleSeekEvent = 'loadedmetadata';
+        }
         if(this.player_.techName_ !== 'Youtube' && this.player_.preload() === 'none' && this.player_.techName_ !== 'Flash') {
           handleSeekEvent = 'timeupdate';
         }

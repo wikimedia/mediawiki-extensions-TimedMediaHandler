@@ -124,7 +124,7 @@
 				// Select the default player:
 				for ( i = 0; i < mimePlayers.length; i++ ) {
 					// Check for native:
-					if ( mimePlayers[ i ].librayr === 'Native' ) {
+					if ( !this.preference[ mimeType ] && mimePlayers[ i ].library === 'Native' ) {
 						return mimePlayers[ i ];
 					}
 					// else check for preference
