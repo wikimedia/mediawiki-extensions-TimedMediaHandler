@@ -96,6 +96,12 @@ div.thumbinner.mw-overflow {
 			display: none;
 		}
 	}
+
+	&.vjs-user-inactive.vjs-playing .vjs-text-track-display { //.vjs-text-track-cue {
+		// Compensate for the fact that cue offset calculation is off,
+		// because it doesn't account for us force displaying the controlbar when user is inactive
+		bottom: 3em;
+	}
 }
 
 @keyframes vjs-slider-indeterminate {
