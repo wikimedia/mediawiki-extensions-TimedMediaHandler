@@ -21,6 +21,8 @@ audio,
 .mw-tmh-player {
 	display: inline-block;
 	position: relative;
+	/* fix height of inline-block T259549 */
+	line-height: 0;
 
 	.mw-tmh-play {
 		display: block;
