@@ -6,6 +6,9 @@
 		nativeTextTracks: false
 	};
 	globalConfig = {
+		// controls are intially hidden inside the dialog
+		// to avoid a flash of the native controls
+		controls: true,
 		responsive: true,
 		language: mw.config.get( 'wgUserLanguage' ),
 		controlBar: {
