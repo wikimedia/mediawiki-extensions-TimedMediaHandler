@@ -558,7 +558,8 @@
 				"oojs-ui-core",
 				"oojs-ui-windows",
 				"ext.tmh.player.inline"
-			]
+			],
+			"messages": [ "timedmedia-dialog-close" ]
 		},
 		"ext.tmh.player.inline": {
 			"scripts": [

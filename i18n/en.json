@@ -169,6 +169,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 uninitialized transcode|$1 uninitialized transcodes}}",
 	"timedmedia-no-derivatives": "No transcoding required.",
 	"timedmedia-file": "File",
+	"timedmedia-dialog-close": "Close media player",
 	"beta-feature-timedmediahandler-message-videojs": "New video player",
 	"beta-feature-timedmediahandler-description-videojs": "Watch video files in a modern player with a cleaner look and mobile compatibility.",
 	"right-transcode-reset": "Reset failed or transcoded videos so they are inserted into the job queue again",

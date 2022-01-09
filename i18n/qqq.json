@@ -188,6 +188,7 @@
 	"timedmedia-derivative-state-missing": "uninitialized transcodes\nParameters are:\n* $1 number of transcodes",
 	"timedmedia-no-derivatives": "Shown on file description page instead of a table with the transcoded derivates if this file does not require transcoding.",
 	"timedmedia-file": "Used as table column header.\n{{Identical|File}}",
+	"timedmedia-dialog-close": "Close button for the media player dialog",
 	"beta-feature-timedmediahandler-message-videojs": "{{optional}}\nDescription of TimedMediaHandler VideoJS in beta features page.",
 	"beta-feature-timedmediahandler-description-videojs": "Title of TimedMediaHandler VideoJS section in beta features page.",
 	"right-transcode-reset": "{{doc-right|transcode-reset}}",
