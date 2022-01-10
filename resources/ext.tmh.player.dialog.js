@@ -7,7 +7,7 @@
 	OO.inheritClass( MediaDialog, OO.ui.ProcessDialog );
 	MediaDialog.static.name = 'tmhMediaDialog';
 	MediaDialog.static.actions = [
-		{ icon: 'close', flags: 'safe' }
+		{ icon: 'close', title: mw.msg( 'timedmedia-dialog-close' ), flags: 'safe' }
 	];
 
 	MediaDialog.prototype.initialize = function () {

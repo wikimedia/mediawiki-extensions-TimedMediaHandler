@@ -37,8 +37,11 @@
 				)
 				.append( $( '<a>' )
 					.addClass( 'mw-tmh-play' )
-					.attr( 'href', videoLink )
-					.attr( 'title', mw.msg( 'timedmedia-play-media' ) )
+					.attr( {
+						href: videoLink,
+						title: mw.msg( 'timedmedia-play-media' ),
+						role: 'button'
+					} )
 					.on( 'click', function ( event ) {
 						if ( !currentlyPlaying ) {
 							$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
