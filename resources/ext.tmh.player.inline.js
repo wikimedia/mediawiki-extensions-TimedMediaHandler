@@ -74,6 +74,45 @@
 	};
 
 	/**
+	 * Select a default text track to enable
+	 * based on user language with fallback to content language
+	 *
+	 * @param {videojs.Player} player
+	 */
+	function selectDefaultTrack( player ) {
+		var track,
+			tl,
+			userLanguageTrack,
+			contentLanguageTrack,
+			tracks = player.textTracks();
+
+		for ( var i = 0; i < tracks.length; i++ ) {
+			track = tracks[ i ];
+
+			// For now we only support subtitles
+			// Also does not deal with language fallbacks
+			if ( track.kind === 'subtitles' ) {
+				tl = track.language.toLowerCase();
+				if ( tl === mw.config.get( 'wgUserLanguage' ).toLowerCase() ) {
+					userLanguageTrack = track;
+					break;
+				}
+				if ( tl === mw.config.get( 'wgUserLanguage' ).toLowerCase().split( '-' )[ 0 ] ) {
+					userLanguageTrack = track;
+				}
+				if ( tl === mw.config.get( 'wgContentLanguage' ).toLowerCase() ) {
+					contentLanguageTrack = track;
+				}
+			}
+		}
+		if ( userLanguageTrack ) {
+			userLanguageTrack.mode = 'showing';
+		} else if ( contentLanguageTrack ) {
+			contentLanguageTrack.mode = 'showing';
+		}
+	}
+
+	/**
 	 * Remove any detached players from previous live previews etc
 	 */
 	function disposeDetachedPlayers() {
@@ -200,6 +239,7 @@
 			vjs = videojs( videoplayer, playerConfig );
 			vjs.ready( function () {
 				activePlayers.push( this );
+				selectDefaultTrack( this );
 				/* More custom stuff goes here */
 			} );
 			return vjs;
