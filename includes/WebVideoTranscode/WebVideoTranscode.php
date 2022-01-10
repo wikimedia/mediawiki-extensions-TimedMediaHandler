@@ -1140,7 +1140,7 @@ class WebVideoTranscode {
 			] );
 
 			try {
-				JobQueueGroup::singleton()->push( $job );
+				MediaWikiServices::getInstance()->getJobQueueGroupFactory()->makeJobQueueGroup()->push( $job );
 				// Clear the state cache ( now that we have updated the page )
 				self::clearTranscodeCache( $fileName );
 			} catch ( Exception $ex ) {
@@ -1200,22 +1200,6 @@ class WebVideoTranscode {
 			__METHOD__
 		);
 		return intval( $count );
-
-		/*
-		// This fails in production at Wikimedia
-		// https://phabricator.wikimedia.org/T200813
-		if ( self::isTranscodePrioritized( $file, $transcodeKey ) ) {
-			$queue = 'webVideoTranscodePrioritized';
-		} else {
-			$queue = 'webVideoTranscode';
-		}
-		$sizes = JobQueueGroup::singleton()->getQueueSizes();
-		if ( isset( $sizes[$queue] ) ) {
-			return $sizes[$queue];
-		} else {
-			return 0;
-		}
-		*/
 	}
 
 	/**
