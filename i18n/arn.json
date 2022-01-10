@@ -4,5 +4,6 @@
 			"Manke ruLpa"
 		]
 	},
-	"timedmedia-source-audio-file-desc": "Llügun $1 eltukan $2"
+	"timedmedia-source-file": "$1 ñi chemngen",
+	"timedmedia-source-audio-file-desc": "Llügun $1 eltukawün $2"
 }

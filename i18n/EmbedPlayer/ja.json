@@ -4,6 +4,7 @@
 			"Otokoume",
 			"Shirayuki",
 			"Sujiniku",
+			"ひまり",
 			"青子守歌"
 		]
 	},
@@ -43,6 +44,7 @@
 	"mwe-embedplayer-choose_player": "動画のプレーヤーを選択",
 	"mwe-embedplayer-no-player": "$1 を再生できるプレーヤーはありません",
 	"mwe-embedplayer-share_this_video": "この動画を共有する",
+	"mwe-embedplayer-share_this_audio": "このオーディオファイルを共有",
 	"mwe-embedplayer-video_credits": "動画のクレジット",
 	"mwe-embedplayer-no-video_credits": "著作者情報はありません",
 	"mwe-embedplayer-kaltura-platform-title": "Kalturaオープンソース動画プラットフォーム",
@@ -81,5 +83,6 @@
 	"mwe-embedplayer-video-3gp": "3GP 動画",
 	"mwe-embedplayer-video-mpeg": "MPEG 動画",
 	"mwe-embedplayer-video-msvideo": "AVI 動画",
-	"mwe-embedplayer-missing-source": "ソースとなる動画が見つかりませんでした"
+	"mwe-embedplayer-missing-source": "ソースとなる動画が見つかりませんでした",
+	"mwe-embedplayer-vlcapp-downloadvideo": "このビデオをダウンロード"
 }
