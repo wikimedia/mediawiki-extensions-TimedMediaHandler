@@ -140,6 +140,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|Eine nicht gestartete Umschlüsselung|$1 nicht gestartete Umschlüsselungen}}",
 	"timedmedia-no-derivatives": "Keine Umschlüsselung erforderlich.",
 	"timedmedia-file": "Datei",
+	"timedmedia-dialog-close": "Mediaplayer schließen",
 	"beta-feature-timedmediahandler-message-videojs": "Neuer Videoplayer",
 	"beta-feature-timedmediahandler-description-videojs": "Betrachte Videodateien in einem modernen Spieler mit einem saubereren Aussehen und der Kompatibilität für mobile Endgeräte.",
 	"right-transcode-reset": "Fehlgeschlagene oder erfolgreiche Umschlüsselungen von Video-Dateien zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen",
