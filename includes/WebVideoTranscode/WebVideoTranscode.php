@@ -749,7 +749,7 @@ class WebVideoTranscode {
 					[ 'LIMIT' => 100 ]
 			);
 			$overTimeout = [];
-			$over = $db->timestamp( time() - ( 2 * $wgTranscodeBackgroundTimeLimit ) );
+			$over = time() - ( 2 * $wgTranscodeBackgroundTimeLimit );
 			// Populate the per transcode state cache
 			foreach ( $res as $row ) {
 				// strip the out the "transcode_" from keys
@@ -759,7 +759,7 @@ class WebVideoTranscode {
 				}
 				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $transcodeState;
 				if ( $row->transcode_time_startwork != null
-					&& $row->transcode_time_startwork < $over
+					&& wfTimestamp( TS_UNIX, $row->transcode_time_startwork ) < $over
 					&& $row->transcode_time_success == null
 					&& $row->transcode_time_error == null ) {
 					$overTimeout[] = $row->transcode_key;
