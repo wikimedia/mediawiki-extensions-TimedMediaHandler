@@ -26,13 +26,15 @@
 				return;
 			}
 
+			// Hide native controls, we will restore them later once videojs player loads.
+			$videoplayer.removeAttr( 'controls' );
+
 			// Construct a file target link for middle-click / ctrl-click / right-click
 			videoLink = ( mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).file, $videoplayer.data( 'mwtitle' ) ) ).getUrl();
 			$placeholder = $( '<span>' )
 				.addClass( 'mw-tmh-player' )
 				.addClass( isAudio ? 'audio' : 'video' )
 				.append( $videoplayer.clone()
-					.attr( 'controls', false )
 					.attr( 'disabled', true )
 				)
 				.append( $( '<a>' )
