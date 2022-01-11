@@ -14,6 +14,6 @@
 		"grunt-stylelint": "0.16.0",
 		"ogv": "1.8.4",
 		"stylelint-config-wikimedia": "0.11.1",
-		"video.js": "7.14.3"
+		"video.js": "7.17.0"
 	}
 }
