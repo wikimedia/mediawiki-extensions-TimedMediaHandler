@@ -7,6 +7,15 @@ Based around libogg, libvorbis, libtheora, libopus, libvpx, libnestegg and dav1d
 
 ## Updates
 
+1.8.6 - 2022-01-12
+* Bump to yuv-canvas
+* Fix demo for removal of video-canvas mode
+
+1.8.5 - 2022-01-11
+* Remove unnecessary user-agent checks
+* Remove flaky, obsolete support for faking CSS `object-fit`
+* Remove experimental support for streaming `<canvas>` into `<video>`
+
 1.8.4 - 2021-07-02
 * Fix for fix for OGVLoader.base fix
 

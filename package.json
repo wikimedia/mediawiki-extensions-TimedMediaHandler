@@ -12,7 +12,7 @@
 		"grunt-exec": "3.0.0",
 		"grunt-patcher": "1.0.0",
 		"grunt-stylelint": "0.16.0",
-		"ogv": "1.8.4",
+		"ogv": "1.8.6",
 		"stylelint-config-wikimedia": "0.11.1",
 		"video.js": "7.17.0"
 	}
