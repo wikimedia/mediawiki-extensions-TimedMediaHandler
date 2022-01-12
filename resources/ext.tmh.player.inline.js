@@ -17,6 +17,10 @@
 				inline: false
 			}
 		},
+		userActions: {
+			// https://docs.videojs.com/tutorial-options.html#useractions.hotkeys
+			hotkeys: true
+		},
 		techOrder: [ 'html5' ],
 		plugins: {
 			infoButton: {}

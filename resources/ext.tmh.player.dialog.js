@@ -72,6 +72,8 @@
 				setTimeout( function () {
 					$( indicator.$element ).detach();
 					player.play();
+					// Focus the player so that keyboard events work
+					player.el().focus();
 				}, 0 );
 			} );
 		} );
