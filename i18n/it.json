@@ -12,7 +12,8 @@
 			"Peg60",
 			"Raoli",
 			"Sakretsu",
-			"Valepert"
+			"Valepert",
+			"Valerio Bozzolan"
 		]
 	},
 	"timedmediahandler-desc": "Gestore per i file audio, video e con i sottotitoli; formati supportati: WebM, Ogg Theora, Vorbis, srt",
@@ -131,6 +132,7 @@
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|transcodifica non inizializzata|transcodifiche non inizializzate}}",
 	"timedmedia-no-derivatives": "Nessuna transcodifica richiesta.",
 	"timedmedia-file": "File",
+	"timedmedia-dialog-close": "Chiudi riproduttore multimediale",
 	"beta-feature-timedmediahandler-message-videojs": "Nuovo lettore video",
 	"beta-feature-timedmediahandler-description-videojs": "Guarda file video con un lettore moderno dall'aspetto più pulito e compatibile con i dispositivi mobili.",
 	"right-transcode-reset": "Reimposta i video difettosi o transcodificati così che possano essere inclusi nuovamente in coda di lavoro.",

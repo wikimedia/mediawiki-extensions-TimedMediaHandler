@@ -160,6 +160,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 незапочнато прекодирање|$1 незапочнати прекодирања}}",
 	"timedmedia-no-derivatives": "Не се бара прекодирање.",
 	"timedmedia-file": "Податотека",
+	"timedmedia-dialog-close": "Затвори го изведувачот",
 	"beta-feature-timedmediahandler-message-videojs": "Нов видеоизведувач",
 	"beta-feature-timedmediahandler-description-videojs": "Гледајте видеоснимки во современ изведувач со поуреден изглед и складност со мобилни уреди.",
 	"right-transcode-reset": "Поништување неуспешни или прекодирани видеа, па затоа повторно се ставени во редицата на задачи",

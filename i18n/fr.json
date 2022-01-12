@@ -196,6 +196,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 paramètre de transcodage non initialisé|$1 paramètres de transcodage non initialisés}}",
 	"timedmedia-no-derivatives": "Aucune transcodification nécessaire.",
 	"timedmedia-file": "Fichier",
+	"timedmedia-dialog-close": "Fermer le lecteur de média",
 	"beta-feature-timedmediahandler-message-videojs": "Nouveau lecteur vidéo",
 	"beta-feature-timedmediahandler-description-videojs": "Visualiser des fichiers vidéo dans un lecteur moderne avec un aspect plus propre et la compatibilité mobile.",
 	"right-transcode-reset": "Réinitialiser les vidéos en échec ou transcodées pour qu’elles soient de nouveau insérées dans la file des travaux",

@@ -126,6 +126,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|המרה משנית אחת שלא אותחלה|$1 המרות משניות שלא אותחלו}}",
 	"timedmedia-no-derivatives": "אין צורך בהמרה משנית.",
 	"timedmedia-file": "קובץ",
+	"timedmedia-dialog-close": "סגירת נגן המדיה",
 	"beta-feature-timedmediahandler-message-videojs": "נגן סרטונים חדש",
 	"beta-feature-timedmediahandler-description-videojs": "צפייה בסרטונים באמצעות נגן מודרני הכולל מראה נקי יותר ותאימות למכשירים ניידים.",
 	"right-transcode-reset": "אתחול סרטים שקידוד המשנה שלהם הושלם או נכשל והכנסתם מחדש לתור המשימות",

@@ -94,6 +94,7 @@
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|transcodifica non impostada per l'inviada|transcodifiche minga inmpostade per l'inviada}}",
 	"timedmedia-no-derivatives": "Nissuna transcodifica necessaria.",
 	"timedmedia-file": "Fail",
+	"timedmedia-dialog-close": "Sarra su el letor audio-visiv",
 	"beta-feature-timedmediahandler-description-videojs": "Guarda i fail video cont un letor moderno de l'aspet pussee luster e pussee compatibel coi dispositiv mobil.",
 	"right-transcode-reset": "Rimposta i video difetad o transcodificad de manera de podè vesser inclus anmò in la coa de laóo.",
 	"right-transcode-status": "Varda [[Special:TimedMediaHandler|i informazzion sora l'atività de transcodifica atual]]",
