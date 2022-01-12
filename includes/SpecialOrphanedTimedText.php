@@ -132,6 +132,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return array Standard query info values.
 	 */
 	public function getQueryInfo() {
+		global $wgTimedTextNS;
 		$tables = [ 'page', 'image' ];
 		$fields = [
 			'namespace' => 'page_namespace',
@@ -140,7 +141,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		];
 		$conds = [
 			'img_name' => null,
-			'page_namespace' => NS_TIMEDTEXT,
+			'page_namespace' => $wgTimedTextNS,
 		];
 
 		// Now for the complicated bit
