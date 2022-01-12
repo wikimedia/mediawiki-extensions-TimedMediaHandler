@@ -22,9 +22,9 @@ use MediaWiki\MediaWikiServices;
 
 class WebVideoTranscodeJob extends Job {
 	/** @var TempFSFile|null */
-	public $targetEncodeFile = null;
+	public $targetEncodeFile;
 	/** @var string|null|false */
-	public $sourceFilePath = null;
+	public $sourceFilePath;
 	/** @var File */
 	public $file;
 	/** @var FSFile|null */
@@ -202,15 +202,17 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check the codec see which encode method to call;
 		if ( isset( $options[ 'novideo' ] ) ) {
-			if ( $file->getMimeType() == 'audio/midi' ) {
+			if ( $file->getMimeType() === 'audio/midi' ) {
 				$status = $this->midiToAudioEncode( $options );
 			} else {
 				$status = $this->ffmpegEncode( $options );
 			}
+		} elseif (
 			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-		} elseif ( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
+			$options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
 			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
 			$options['videoCodec'] == 'h264'
+			// these comparisons could be strict if someone figures out how to shut up phan
 		) {
 			// Check for twopass:
 			if ( isset( $options['twopass'] ) ) {
@@ -277,7 +279,7 @@ class WebVideoTranscodeJob extends Job {
 			) {
 				$storeOptions = [];
 				// Ogg files need a duration header for firefox
-				$storeOptions['headers']['X-Content-Duration'] = floatval( $file->getLength() );
+				$storeOptions['headers']['X-Content-Duration'] = (float)$file->getLength();
 			}
 
 			// Avoid "server has gone away" errors as copying can be slow
@@ -286,8 +288,10 @@ class WebVideoTranscodeJob extends Job {
 
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
 			$result = $file->getRepo()->quickImport(
-				$this->getTargetEncodePath(), // temp file
-				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ), // storage
+				// temp file
+				$this->getTargetEncodePath(),
+				// storage
+				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ),
 				$storeOptions
 			);
 
@@ -300,7 +304,7 @@ class WebVideoTranscodeJob extends Job {
 				$status = false;
 			} else {
 				$bitrate = round(
-					intval( filesize( $this->getTargetEncodePath() ) / $file->getLength() ) * 8
+					(int)( filesize( $this->getTargetEncodePath() ) / $file->getLength() ) * 8
 				);
 				// Wikimedia\restoreWarnings();
 				// Reconnect to the database...
@@ -358,7 +362,7 @@ class WebVideoTranscodeJob extends Job {
 				while ( $file !== false ) {
 					$log_path = "$dir/$file";
 					$ext = strtolower( pathinfo( $log_path, PATHINFO_EXTENSION ) );
-					if ( $ext == 'log' && substr( $log_path, 0, strlen( $path ) ) == $path ) {
+					if ( $ext === 'log' && strpos( $log_path, $path ) === 0 ) {
 						Wikimedia\suppressWarnings();
 						unlink( $log_path );
 						Wikimedia\restoreWarnings();
@@ -394,9 +398,9 @@ class WebVideoTranscodeJob extends Job {
 
 		if ( isset( $options['novideo'] ) ) {
 			$cmd .= " -vn ";
-		} elseif ( $options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ) {
+		} elseif ( $options['videoCodec'] === 'vp8' || $options['videoCodec'] === 'vp9' ) {
 			$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
-		} elseif ( $options['videoCodec'] == 'h264' ) {
+		} elseif ( $options['videoCodec'] === 'h264' ) {
 			$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
 		}
 		// If necessary, add deinterlacing options
@@ -419,22 +423,22 @@ class WebVideoTranscodeJob extends Job {
 		}
 		// Check for end time:
 		if ( isset( $options['endtime'] ) ) {
-			$duration = intval( $options['endtime'] ) - intval( $options['starttime'] );
+			$duration = (int)$options['endtime'] - (int)$options['starttime'];
 			$cmd .= ' -t ' . $duration;
 		}
 
-		if ( $pass == 1 || isset( $options['noaudio'] ) ) {
+		if ( $pass === 1 || isset( $options['noaudio'] ) ) {
 			$cmd .= ' -an';
 		} else {
 			$cmd .= $this->ffmpegAddAudioOptions( $options, $pass );
 		}
 
-		if ( $pass != 0 ) {
+		if ( $pass !== 0 ) {
 			$cmd .= " -pass " . wfEscapeShellArg( (string)$pass );
 			$cmd .= " -passlogfile " . wfEscapeShellArg( $this->getTargetEncodePath() . '.log' );
 		}
 		// And the output target:
-		if ( $pass == 1 ) {
+		if ( $pass === 1 ) {
 			$cmd .= ' /dev/null';
 		} else {
 			$cmd .= " " . wfEscapeShellArg( $this->getTargetEncodePath() );
@@ -445,7 +449,7 @@ class WebVideoTranscodeJob extends Job {
 		// Right before we output remove the old file
 		$shellOutput = $this->runShellExec( $cmd, $retval );
 
-		if ( $retval != 0 ) {
+		if ( $retval !== 0 ) {
 			return $cmd .
 				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
 				$shellOutput;
@@ -463,7 +467,7 @@ class WebVideoTranscodeJob extends Job {
 	public function ffmpegAddH264VideoOptions( $options, $pass ) {
 		global $wgFFmpegThreads;
 		// Set the codec:
-		$cmd = " -threads " . intval( $wgFFmpegThreads ) . " -vcodec libx264";
+		$cmd = " -threads " . (int)$wgFFmpegThreads . " -vcodec libx264";
 		// Check for presets:
 		if ( isset( $options['preset'] ) ) {
 			// Add the two vpre types:
@@ -497,22 +501,18 @@ class WebVideoTranscodeJob extends Job {
 		$file = $this->getFile();
 
 		// Check for aspect ratio ( we don't do anything with this right now)
-		if ( isset( $options['aspect'] ) ) {
-			$aspectRatio = $options['aspect'];
-		} else {
-			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
-		}
+		$aspectRatio = $options['aspect'] ?? $file->getWidth() . ':' . $file->getHeight();
 		if ( isset( $options['maxSize'] ) ) {
 			// Get size transform ( if maxSize is > file, file size is used:
 
-			list( $width, $height ) = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
-			$cmd .= ' -s ' . intval( $width ) . 'x' . intval( $height );
+			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
+			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
 		} elseif (
 			( isset( $options['width'] ) && $options['width'] > 0 )
 			&&
 			( isset( $options['height'] ) && $options['height'] > 0 )
 		) {
-			$cmd .= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
+			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
 		}
 
 		// Handle crop:
@@ -543,7 +543,7 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		$cmd = ' -threads ' . intval( $wgFFmpegThreads );
+		$cmd = ' -threads ' . (int)$wgFFmpegThreads;
 		if ( $wgFFmpegVP9RowMT && $options['videoCodec'] === 'vp9' ) {
 			// Macroblock row multithreading allows using more CPU cores
 			// for VP9 encoding. This is not yet the default, and the option
@@ -557,11 +557,11 @@ class WebVideoTranscodeJob extends Job {
 
 		// check for presets:
 		if ( isset( $options['preset'] ) ) {
-			if ( $options['preset'] == "360p" ) {
+			if ( $options['preset'] === "360p" ) {
 				$cmd .= " -vpre libvpx-360p";
-			} elseif ( $options['preset'] == "720p" ) {
+			} elseif ( $options['preset'] === "720p" ) {
 				$cmd .= " -vpre libvpx-720p";
-			} elseif ( $options['preset'] == "1080p" ) {
+			} elseif ( $options['preset'] === "1080p" ) {
 				$cmd .= " -vpre libvpx-1080p";
 			}
 		}
@@ -573,7 +573,7 @@ class WebVideoTranscodeJob extends Job {
 		// Check for video quality:
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
 			// Map 0-10 to 63-0, higher values worse quality
-			$quality = 63 - intval( intval( $options['videoQuality'] ) / 10 * 63 );
+			$quality = 63 - (int)( (int)$options['videoQuality'] / 10 * 63 );
 			$cmd .= " -qmin " . wfEscapeShellArg( (string)$quality );
 			$cmd .= " -qmax " . wfEscapeShellArg( (string)$quality );
 		}
@@ -625,7 +625,7 @@ class WebVideoTranscodeJob extends Job {
 		if ( isset( $options['deinterlace'] ) ) {
 			$cmd .= ' -deinterlace';
 		}
-		if ( $pass == 1 ) {
+		if ( $pass === 1 ) {
 			// Make first pass faster...
 			$cmd .= ' -speed 4';
 		} elseif ( isset( $options['speed'] ) ) {
@@ -664,7 +664,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
 		}
 		if ( isset( $options['audioBitrate'] ) ) {
-			$cmd .= ' -ab ' . intval( $options['audioBitrate'] ) * 1000;
+			$cmd .= ' -ab ' . (int)$options['audioBitrate'] * 1000;
 		}
 		if ( isset( $options['samplerate'] ) ) {
 			$cmd .= " -ar " . wfEscapeShellArg( $options['samplerate'] );
@@ -679,11 +679,7 @@ class WebVideoTranscodeJob extends Job {
 				'opus'		=> 'libopus',
 				'mp3'		=> 'libmp3lame',
 			];
-			if ( isset( $encoders[ $options['audioCodec'] ] ) ) {
-				$codec = $encoders[ $options['audioCodec'] ];
-			} else {
-				$codec = $options['audioCodec'];
-			}
+			$codec = $encoders[$options['audioCodec']] ?? $options['audioCodec'];
 			$cmd .= " -acodec " . wfEscapeShellArg( $codec );
 			if ( $codec === 'aac' ) {
 				// the aac encoder is currently "experimental" in libav 9? :P
@@ -709,13 +705,13 @@ class WebVideoTranscodeJob extends Job {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
 		}
 
-		$outputFileExt = $options['audioCodec'] == 'vorbis' ? '' : '.wav';
+		$outputFileExt = $options['audioCodec'] === 'vorbis' ? '' : '.wav';
 
 		// Set up the base command
 		$cmdArgs = [
 			wfEscapeShellArg( $wgTmhFluidsynthLocation ),
 			'-T',
-			$options['audioCodec'] == 'vorbis' ? 'oga' : 'wav', // wav for mp3
+			$options['audioCodec'] === 'vorbis' ? 'oga' : 'wav', // wav for mp3
 			wfEscapeShellArg( $wgTmhSoundfontLocation ),
 			wfEscapeShellArg( $this->getSourceFilePath() ),
 			'-F',
@@ -730,54 +726,55 @@ class WebVideoTranscodeJob extends Job {
 		// Fluidsynth doesn't give error codes - $retval always stays 0
 		if ( strpos( $shellOutput, "fluidsynth: error:" ) !== false ) {
 			return $cmdString .
-				"\n\nExitcode: " . (string)$retval . "\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				"\n\nExitcode: " . $retval . "\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
 				$shellOutput;
 		}
 
-		if ( $options['audioCodec'] == 'vorbis' ) {
-			return true;
-		} else {
-			// For mp3, convert wav (previous command) to mp3 with ffmpeg
-			$lameCmdArgs = [
-				wfEscapeShellArg( $wgFFmpegLocation ),
-				'-y',
-				'-i',
-				wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt ),
-				'-ss',
-				wfEscapeShellArg( $options['starttime'] ?? '0' ),
-			];
-
-			if ( isset( $options['audioQuality'] ) ) {
-				array_push( $lameCmdArgs, "-aq", wfEscapeShellArg( $options['audioQuality'] ) );
-			}
-			if ( isset( $options['audioBitrate'] ) ) {
-				array_push( $lameCmdArgs, "-ab", intval( $options['audioBitrate'] ) * 1000 );
-			}
-			if ( isset( $options['samplerate'] ) ) {
-				array_push( $lameCmdArgs, "-ar", wfEscapeShellArg( $options['samplerate'] ) );
-			}
-			if ( isset( $options['channels'] ) ) {
-				array_push( $lameCmdArgs, "-ac", wfEscapeShellArg( $options['channels'] ) );
-			}
-
-			array_push(
-				$lameCmdArgs,
-				"-acodec",
-				"libmp3lame",
-				wfEscapeShellArg( $this->getTargetEncodePath() )
-			);
-
-			$lameCmdString = implode( " ", $lameCmdArgs );
-
-			$shellOutput = $this->runShellExec( $lameCmdString, $retval );
-
-			if ( $retval != 0 ) { // Retval from fluidsynth command
-				return $lameCmdString .
-					"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
-					$shellOutput;
-			}
+		if ( $options['audioCodec'] === 'vorbis' ) {
 			return true;
 		}
+
+		// For mp3, convert wav (previous command) to mp3 with ffmpeg
+		$lameCmdArgs = [
+			wfEscapeShellArg( $wgFFmpegLocation ),
+			'-y',
+			'-i',
+			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt ),
+			'-ss',
+			wfEscapeShellArg( $options['starttime'] ?? '0' ),
+		];
+
+		if ( isset( $options['audioQuality'] ) ) {
+			array_push( $lameCmdArgs, "-aq", wfEscapeShellArg( $options['audioQuality'] ) );
+		}
+		if ( isset( $options['audioBitrate'] ) ) {
+			array_push( $lameCmdArgs, "-ab", (int)$options['audioBitrate'] * 1000 );
+		}
+		if ( isset( $options['samplerate'] ) ) {
+			array_push( $lameCmdArgs, "-ar", wfEscapeShellArg( $options['samplerate'] ) );
+		}
+		if ( isset( $options['channels'] ) ) {
+			array_push( $lameCmdArgs, "-ac", wfEscapeShellArg( $options['channels'] ) );
+		}
+
+		array_push(
+			$lameCmdArgs,
+			"-acodec",
+			"libmp3lame",
+			wfEscapeShellArg( $this->getTargetEncodePath() )
+		);
+
+		$lameCmdString = implode( " ", $lameCmdArgs );
+
+		$shellOutput = $this->runShellExec( $lameCmdString, $retval );
+
+		// Retval from fluidsynth command
+		if ( $retval !== 0 ) {
+			return $lameCmdString .
+				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				$shellOutput;
+		}
+		return true;
 	}
 
 	/**
@@ -824,12 +821,14 @@ class WebVideoTranscodeJob extends Job {
 
 		// Fork out a process for running the transcode
 		$pid = pcntl_fork();
-		if ( $pid == -1 ) {
+		if ( $pid === -1 ) {
 			$errorMsg = '$wgEnableNiceBackgroundTranscodeJobs enabled but failed pcntl_fork';
 			$retval = 1;
 			$this->output( $errorMsg );
 			return $errorMsg;
-		} elseif ( $pid == 0 ) {
+		}
+
+		if ( $pid === 0 ) {
 			// we are the child
 			$this->runChildCmd( $cmd, $retval, $encodingLog, $retvalLog, $caller );
 			// dont remove any temp files in the child process, this is done
@@ -840,10 +839,10 @@ class WebVideoTranscodeJob extends Job {
 			}
 			// exit with the same code as the transcode:
 			exit( $retval );
-		} else {
-			// we are the parent monitor and return status
-			return $this->monitorTranscode( $pid, $retval, $encodingLog, $retvalLog );
 		}
+
+		// we are the parent monitor and return status
+		return $this->monitorTranscode( $pid, $retval, $encodingLog, $retvalLog );
 	}
 
 	/**
@@ -912,7 +911,7 @@ class WebVideoTranscodeJob extends Job {
 			// $this->output( "$pid is running" );
 
 			// Check that the target file is growing ( every 5 seconds )
-			if ( $loopCount == 10 ) {
+			if ( $loopCount === 10 ) {
 				// only run check if we are outputing to target file
 				// ( two pass encoding does not output to target on first pass )
 				clearstatcache();
@@ -923,7 +922,7 @@ class WebVideoTranscodeJob extends Job {
 				if ( $newFileSize > 0 ) {
 					$this->output( $wgLang->formatSize( $newFileSize ) . ' Total size, encoding ' .
 						$wgLang->formatSize( ( $newFileSize - $oldFileSize ) / 5 ) . ' per second' );
-					if ( $newFileSize == $oldFileSize ) {
+					if ( $newFileSize === $oldFileSize ) {
 						if ( $fileIsNotGrowing ) {
 							$errorMsg = "Target File is not increasing in size, kill process.";
 							$this->output( $errorMsg );
@@ -972,11 +971,11 @@ class WebVideoTranscodeJob extends Job {
 		Wikimedia\restoreWarnings();
 
 		// File based exit code seems more reliable than pcntl_wexitstatus
-		$retval = $returnCodeFile;
+		$retval = (int)$returnCodeFile;
 
 		// return the encoding log contents ( will be inserted into error table if an error )
 		// ( will be ignored and removed if success )
-		if ( $errorMsg != '' ) {
+		if ( $errorMsg !== '' ) {
 			$errorMsg .= "\n\n";
 		}
 		return $errorMsg . file_get_contents( $encodingLog );

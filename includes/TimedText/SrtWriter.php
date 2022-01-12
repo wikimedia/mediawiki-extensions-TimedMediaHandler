@@ -20,7 +20,7 @@ class SrtWriter extends Writer {
 	 * @return string
 	 */
 	public function formatCue( DOM\Cue $cue ) {
-		return intval( $cue->id ) .
+		return (int)$cue->id .
 			"\n" .
 			$this->formatTimestamp( $cue->start ) .
 			" --> " .
@@ -81,13 +81,14 @@ class SrtWriter extends Writer {
 
 			if ( $tag ) {
 				return "<$tag>$content</$tag>";
-			} else {
-				return $content;
 			}
-		} elseif ( $node instanceof DOM\TextNode ) {
-			return htmlspecialchars( $node->text, ENT_NOQUOTES | ENT_HTML5, 'utf-8' );
-		} else {
-			return '';
+			return $content;
 		}
+
+		if ( $node instanceof DOM\TextNode ) {
+			return htmlspecialchars( $node->text, ENT_NOQUOTES | ENT_HTML5, 'utf-8' );
+		}
+
+		return '';
 	}
 }

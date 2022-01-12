@@ -114,7 +114,7 @@ class TranscodeReport extends Maintenance {
 					$minBucket = min( array_keys( $this->histo[$key] ) );
 					$maxBucket = max( array_keys( $this->histo[$key] ) );
 					for ( $bucket = $minBucket; $bucket < $maxBucket; $bucket++ ) {
-						$res = intval( $key );
+						$res = (int)$key;
 						$a = floor( $bucket * $this->max[$res] / $this->buckets );
 						$b = floor( ( $bucket + 1 ) * $this->max[$res] / $this->buckets ) - 1;
 
@@ -149,7 +149,7 @@ class TranscodeReport extends Maintenance {
 		$duration = $handler->getLength( $file );
 
 		if ( !$this->outliers ) {
-			if ( $duration == 0 ) {
+			if ( $duration === 0 ) {
 				// ignore outliers with 0 duration
 				// found a lot of these in .ogvs imported from open science data
 				return;
@@ -165,8 +165,8 @@ class TranscodeReport extends Maintenance {
 		foreach ( $state as $key => $item ) {
 			if ( $item && $item['time_success'] ) {
 				$name = $file->getName();
-				$bitrate = intval( $item['final_bitrate'] );
-				$size = intval( $bitrate * $duration / 8 );
+				$bitrate = (int)$item['final_bitrate'];
+				$size = (int)( $bitrate * $duration / 8 );
 
 				if ( $this->detail ) {
 					$this->output( "$name\t$duration\t$key\t$size\t$bitrate\n" );
@@ -194,7 +194,7 @@ class TranscodeReport extends Maintenance {
 	}
 
 	private function bucket( $key, $bitrate ) {
-		$res = intval( $key );
+		$res = (int)$key;
 		$target = ( $bitrate / $this->max[$res] ) * $this->buckets;
 		if ( $target < 0 ) {
 			return 0;
@@ -202,7 +202,7 @@ class TranscodeReport extends Maintenance {
 		if ( $target >= $this->buckets ) {
 			return $this->buckets - 1;
 		}
-		return intval( floor( $target ) );
+		return (int)floor( $target );
 	}
 
 	private function recordForHistogram( $key, $duration, $bitrate ) {
@@ -220,5 +220,6 @@ class TranscodeReport extends Maintenance {
 	}
 }
 
-$maintClass = TranscodeReport::class; // Tells it to run the class
+// Tells it to run the class
+$maintClass = TranscodeReport::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

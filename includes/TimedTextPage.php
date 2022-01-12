@@ -21,11 +21,9 @@ class TimedTextPage extends Article {
 	public function view() {
 		$request = $this->getContext()->getRequest();
 		$out = $this->getContext()->getOutput();
-		$user = $this->getContext()->getUser();
-
 		$diff = $request->getVal( 'diff' );
 
-		if ( $this->getTitle()->getNamespace() != NS_TIMEDTEXT || isset( $diff ) ) {
+		if ( isset( $diff ) || $this->getTitle()->getNamespace() !== NS_TIMEDTEXT ) {
 			parent::view();
 			return;
 		}
@@ -60,8 +58,8 @@ class TimedTextPage extends Article {
 		$fileTitle = Title::newFromText( $this->getTitle()->getDBkey(), NS_FILE );
 		$file = $repoGroup->findFile( $fileTitle );
 		// Check for a valid srt page, present redirect form for the full title match:
-		if ( !in_array( $timedTextExtension, self::$knownTimedTextExtensions ) &&
-			$file && $file->exists()
+		if ( $file && $file->exists() &&
+			!in_array( $timedTextExtension, self::$knownTimedTextExtensions, true )
 		) {
 			if ( $file->isLocal() ) {
 				$this->doRedirectToPageForm();
@@ -91,11 +89,7 @@ class TimedTextPage extends Article {
 		// Look up the language name:
 		$language = $out->getLanguage()->getCode();
 		$languages = Language::fetchLanguageNames( $language, 'all' );
-		if ( isset( $languages[ $languageKey ] ) ) {
-			$languageName = $languages[ $languageKey ];
-		} else {
-			$languageName = $languageKey;
-		}
+		$languageName = $languages[$languageKey] ?? $languageKey;
 
 		// Set title
 		$message = $this->getPage()->exists() ?
@@ -190,14 +184,14 @@ class TimedTextPage extends Article {
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $videoTitle );
 		if ( !$file ) {
 			return wfMessage( 'timedmedia-subtitle-no-video' )->escaped();
-		} else {
-			$videoTransform = $file->transform(
-				[
-					'width' => self::$videoWidth
-				]
-			);
-			return $videoTransform->toHtml();
 		}
+
+		$videoTransform = $file->transform(
+			[
+				'width' => self::$videoWidth
+			]
+		);
+		return $videoTransform->toHtml();
 	}
 
 	/**

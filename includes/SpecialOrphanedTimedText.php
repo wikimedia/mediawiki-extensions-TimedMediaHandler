@@ -50,14 +50,15 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @param string $par subpage
 	 */
 	public function execute( $par ) {
-		global $wgEnableLocalTimedText;
 		$this->addHelpLink( 'https://commons.wikimedia.org/wiki/Commons:Timed_Text', true );
 
-		if ( !$wgEnableLocalTimedText ) {
+		if ( !$this->getConfig()->get( 'EnableLocalTimedText' ) ) {
 			$this->setHeaders();
 			$this->getOutput()->addWikiMsg( 'orphanedtimedtext-notimedtext' );
 			return;
-		} elseif ( !$this->canExecuteQuery() ) {
+		}
+
+		if ( !$this->canExecuteQuery() ) {
 			$this->setHeaders();
 			$this->outputHeader();
 			$this->getOutput()->addWikiMsg( 'orphanedtimedtext-unsupported' );
@@ -103,10 +104,8 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * That is, db is mysql, and TimedText namespace enabled.
 	 * @return bool
 	 */
-	private function canExecute() {
-		global $wgEnableLocalTimedText;
-
-		return $this->canExecuteQuery() && $wgEnableLocalTimedText;
+	private function canExecute(): bool {
+		return $this->canExecuteQuery() && $this->getConfig()->get( 'EnableLocalTimedText' );
 	}
 
 	/**
@@ -132,7 +131,6 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return array Standard query info values.
 	 */
 	public function getQueryInfo() {
-		global $wgTimedTextNS;
 		$tables = [ 'page', 'image' ];
 		$fields = [
 			'namespace' => 'page_namespace',
@@ -141,7 +139,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		];
 		$conds = [
 			'img_name' => null,
-			'page_namespace' => $wgTimedTextNS,
+			'page_namespace' => $this->getConfig()->get( 'TimedTextNS' ),
 		];
 
 		// Now for the complicated bit
@@ -259,9 +257,9 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 				$link = '<del>' . $link . '</del>';
 			}
 			return $link;
-		} else {
-			return Html::element( 'span', [ 'class' => 'mw-invalidtitle' ],
-				Linker::getInvalidTitleDescription( $this->getContext(), $row->namespace, $row->title ) );
 		}
+
+		return Html::element( 'span', [ 'class' => 'mw-invalidtitle' ],
+			Linker::getInvalidTitleDescription( $this->getContext(), $row->namespace, $row->title ) );
 	}
 }

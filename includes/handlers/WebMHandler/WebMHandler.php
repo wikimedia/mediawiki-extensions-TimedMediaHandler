@@ -49,16 +49,13 @@ class WebMHandler extends ID3Handler {
 		$size = [ false, false ];
 		// display_x/display_y is only set if DisplayUnit
 		// is pixels, otherwise display_aspect_ratio is set
-		if ( isset( $metadata['video']['display_x'] )
-				&&
-			isset( $metadata['video']['display_y'] )
+		if ( isset( $metadata['video']['display_x'], $metadata['video']['display_y'] )
 		) {
 			$size = [
 				$metadata['video']['display_x'],
 				$metadata['video']['display_y']
 			];
-		} elseif ( isset( $metadata['video']['resolution_x'] )
-			&& isset( $metadata['video']['resolution_y'] )
+		} elseif ( isset( $metadata['video']['resolution_x'], $metadata['video']['resolution_y'] )
 		) {
 			$size = [
 				$metadata['video']['resolution_x'],
@@ -80,9 +77,10 @@ class WebMHandler extends ID3Handler {
 		if ( $size[0] && $size[1] && isset( $metadata['video']['display_aspect_ratio'] ) ) {
 			// for wide images (i.e. 16:9) take native height as base
 			if ( $metadata['video']['display_aspect_ratio'] >= 1 ) {
-				$size[0] = intval( $size[1] * $metadata['video']['display_aspect_ratio'] );
-			} else { // for tall images (i.e. 9:16) take width as base
-				$size[1] = intval( $size[0] / $metadata['video']['display_aspect_ratio'] );
+				$size[0] = (int)( $size[1] * $metadata['video']['display_aspect_ratio'] );
+			} else {
+				// for tall images (i.e. 9:16) take width as base
+				$size[1] = (int)( $size[0] / $metadata['video']['display_aspect_ratio'] );
 			}
 		}
 		return $size;
@@ -101,7 +99,7 @@ class WebMHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getWebType( $file ) {
-		$baseType = ( $file->getWidth() == 0 && $file->getHeight() == 0 ) ? 'audio' : 'video';
+		$baseType = ( $file->getWidth() === 0 && $file->getHeight() === 0 ) ? 'audio' : 'video';
 
 		$streams = $this->getStreamTypes( $file );
 		if ( !$streams ) {
@@ -125,7 +123,7 @@ class WebMHandler extends ID3Handler {
 		}
 		// id3 gives 'V_VP8' for what we call VP8
 		if ( isset( $metadata['video'] ) ) {
-			if ( $metadata['video']['dataformat'] == 'vp8' ) {
+			if ( $metadata['video']['dataformat'] === 'vp8' ) {
 				$streamTypes[] = 'VP8';
 			} elseif ( $metadata['video']['dataformat'] === 'vp9'
 				|| $metadata['video']['dataformat'] === 'V_VP9'
@@ -138,10 +136,10 @@ class WebMHandler extends ID3Handler {
 			}
 		}
 		if ( isset( $metadata['audio'] ) ) {
-			if ( $metadata['audio']['dataformat'] == 'vorbis' ) {
+			if ( $metadata['audio']['dataformat'] === 'vorbis' ) {
 				$streamTypes[] = 'Vorbis';
-			} elseif ( $metadata['audio']['dataformat'] == 'opus'
-				|| $metadata['audio']['dataformat'] == 'A_OPUS'
+			} elseif ( $metadata['audio']['dataformat'] === 'opus'
+				|| $metadata['audio']['dataformat'] === 'A_OPUS'
 			) {
 				// Currently getID3 calls it A_OPUS. That will probably change to 'opus'
 				// once getID3 actually gets support for the codec.
@@ -215,7 +213,7 @@ class WebMHandler extends ID3Handler {
 
 		$props = [];
 
-		if ( isset( $metadata['matroska'] ) && isset( $metadata['matroska']['comments'] ) ) {
+		if ( isset( $metadata['matroska']['comments'] ) ) {
 			$comments = $metadata['matroska']['comments'];
 			// Map comments from getid3's matroska handler to output format
 			// Localization of labels by FormatMetadata...

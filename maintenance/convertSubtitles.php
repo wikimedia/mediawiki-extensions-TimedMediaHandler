@@ -121,5 +121,6 @@ class ConvertSubtitles extends Maintenance {
 	}
 }
 
-$maintClass = ConvertSubtitles::class; // Tells it to run the class
+// Tells it to run the class
+$maintClass = ConvertSubtitles::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

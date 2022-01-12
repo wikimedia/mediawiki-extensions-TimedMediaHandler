@@ -84,13 +84,13 @@ class VttWriter extends Writer {
 				$seconds,
 				$millis
 			);
-		} else {
-			return sprintf( "%02d:%02d.%03d",
-				$minutes,
-				$seconds,
-				$millis
-			);
 		}
+
+		return sprintf( "%02d:%02d.%03d",
+			$minutes,
+			$seconds,
+			$millis
+		);
 	}
 
 	public function fixNewlines( $text ) {
@@ -155,15 +155,19 @@ class VttWriter extends Writer {
 				$out .= $tag;
 				$out .= '>';
 				return $out;
-			} else {
-				return $content;
 			}
-		} elseif ( $node instanceof DOM\TextNode ) {
-			return $this->formatText( $node->text );
-		} elseif ( $node instanceof DOM\TimestampNode ) {
-			return '<' . $this->formatTimestamp( $node->timestamp ) . '>';
-		} else {
-			return '';
+
+			return $content;
 		}
+
+		if ( $node instanceof DOM\TextNode ) {
+			return $this->formatText( $node->text );
+		}
+
+		if ( $node instanceof DOM\TimestampNode ) {
+			return '<' . $this->formatTimestamp( $node->timestamp ) . '>';
+		}
+
+		return '';
 	}
 }

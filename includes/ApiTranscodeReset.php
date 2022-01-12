@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * Allows users with the 'transcode-reset' right to reset / re-run a transcode job.
@@ -10,10 +11,14 @@ use MediaWiki\MediaWikiServices;
  * @ingroup API
  */
 class ApiTranscodeReset extends ApiBase {
+	/**
+	 * @return void
+	 * @throws ApiUsageException
+	 * @throws MWException
+	 */
 	public function execute() {
-		global $wgEnableTranscode, $wgWaitTimeForTranscodeReset;
 		// Check if transcoding is enabled on this wiki at all:
-		if ( !$wgEnableTranscode ) {
+		if ( !$this->getConfig()->get( 'EnableTranscode' ) ) {
 			$this->dieWithError( 'apierror-timedmedia-disabledtranscode', 'disabledtranscode' );
 		}
 
@@ -41,7 +46,7 @@ class ApiTranscodeReset extends ApiBase {
 		// ( if you update your transcode keys the api is not how you purge the database of expired keys )
 		if ( isset( $params['transcodekey'] ) ) {
 			$transcodeSet = WebVideoTranscode::enabledTranscodes();
-			if ( !in_array( $params['transcodekey'], $transcodeSet ) ) {
+			if ( !in_array( $params['transcodekey'], $transcodeSet, true ) ) {
 				$this->dieWithError(
 					[ 'apierror-timedmedia-badtranscodekey', wfEscapeWikiText( $params['transcodekey'] ) ],
 					'badtranscodekey'
@@ -54,10 +59,11 @@ class ApiTranscodeReset extends ApiBase {
 		// Don't reset if less than 1 hour has passed and we have no error )
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
-		if ( $timeSinceLastReset < $wgWaitTimeForTranscodeReset ) {
+		$waitTimeForTranscodeReset = $this->getConfig()->get( 'WaitTimeForTranscodeReset' );
+		if ( $timeSinceLastReset < $waitTimeForTranscodeReset ) {
 			$msg = $this->msg(
 				'apierror-timedmedia-notenoughtimereset',
-				TimedMediaHandler::getTimePassedMsg( $wgWaitTimeForTranscodeReset - $timeSinceLastReset )
+				TimedMediaHandler::getTimePassedMsg( $waitTimeForTranscodeReset - $timeSinceLastReset )
 			);
 			$this->dieWithError( $msg, 'notenoughtimereset' );
 		}
@@ -74,7 +80,7 @@ class ApiTranscodeReset extends ApiBase {
 		$logEntry->setParameters( [
 			'4::transcodekey' => $transcodeKey,
 		] );
-		$logid = $logEntry->insert();
+		$logEntry->insert();
 
 		$this->getResult()->addValue( null, 'success', 'removed transcode' );
 	}
@@ -138,8 +144,8 @@ class ApiTranscodeReset extends ApiBase {
 	protected function getAllowedParams() {
 		return [
 			'title' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'transcodekey' => null,
 			'token' => null,

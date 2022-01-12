@@ -60,11 +60,10 @@ class ID3Handler extends TimedMediaHandler {
 		Wikimedia\suppressWarnings();
 		$unser = unserialize( $metadata );
 		Wikimedia\restoreWarnings();
-		if ( isset( $unser['version'] ) && $unser['version'] == self::METADATA_VERSION ) {
+		if ( isset( $unser['version'] ) && $unser['version'] === self::METADATA_VERSION ) {
 			return $unser;
-		} else {
-			return false;
 		}
+		return false;
 	}
 
 	/**
@@ -75,9 +74,8 @@ class ID3Handler extends TimedMediaHandler {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['bitrate'] ) ) {
 			return 0;
-		} else {
-			return $metadata['bitrate'];
 		}
+		return $metadata['bitrate'];
 	}
 
 	/**
@@ -88,9 +86,8 @@ class ID3Handler extends TimedMediaHandler {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['playtime_seconds'] ) ) {
 			return 0;
-		} else {
-			return $metadata['playtime_seconds'];
 		}
+		return $metadata['playtime_seconds'];
 	}
 
 	/**
@@ -101,14 +98,9 @@ class ID3Handler extends TimedMediaHandler {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return 0;
-		} else {
-			// return the frame rate of the first found video stream:
-			if ( isset( $metadata['video'] )
-				&& isset( $metadata['video']['frame_rate'] ) ) {
-				return $metadata['video']['frame_rate'];
-			}
-			return false;
 		}
+		// return the frame rate of the first found video stream:
+		return $metadata['video']['frame_rate'] ?? false;
 	}
 
 	/**
@@ -120,12 +112,7 @@ class ID3Handler extends TimedMediaHandler {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
-		} else {
-			if ( isset( $metadata['video'] )
-				&& isset( $metadata['video']['interlaced'] ) ) {
-				return boolval( $metadata['video']['interlaced'] );
-			}
-			return false;
 		}
+		return (bool)( $metadata['video']['interlaced'] ?? false );
 	}
 }

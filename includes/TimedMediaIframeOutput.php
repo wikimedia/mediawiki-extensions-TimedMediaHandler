@@ -2,7 +2,7 @@
 /**
  * Adds iframe output ( bug 25862 )
  *
- * This enables iframe based embeds of the wikimeia player with the following syntax:
+ * This enables iframe based embeds of the wikimedia player with the following syntax:
  *
  * <iframe src="http://commons.wikimedia.org/wiki/File:Folgers.ogv?embedplayer=yes"
  *     width="240" height="180" frameborder="0" ></iframe>
@@ -31,14 +31,13 @@ class TimedMediaIframeOutput {
 		}
 
 		// Make sure we are in the right namespace and iframe=true was called:
-		if ( is_object( $title ) && $title->getNamespace() == NS_FILE &&
-			$request->getVal( 'embedplayer' ) == 'yes'
+		if ( is_object( $title ) && $title->getNamespace() === NS_FILE &&
+			$request->getVal( 'embedplayer' ) === 'yes' &&
+			self::outputIframe( $title, $output )
 		) {
-			if ( self::outputIframe( $title, $output ) ) {
-				// Turn off output of anything other than the iframe
-				$output->disable();
-				return false;
-			}
+			// Turn off output of anything other than the iframe
+			$output->disable();
+			return false;
 		}
 
 		return true;
@@ -58,7 +57,7 @@ class TimedMediaIframeOutput {
 			return false;
 		}
 
-		// Setup the render parm
+		// Setup the render param
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		if ( !$file ) {
 			// file was removed, show wiki page with warning
