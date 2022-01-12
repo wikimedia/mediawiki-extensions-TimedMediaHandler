@@ -95,8 +95,6 @@
 		"TimedMediaIframeOutput": "includes/TimedMediaIframeOutput.php",
 		"TimedMediaThumbnail": "includes/TimedMediaThumbnail.php",
 		"TranscodeStatusTable": "includes/TranscodeStatusTable.php",
-		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
-		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
 		"OggHandler": "includes/handlers/OggHandler/OggHandler.php",
 		"OggException": "includes/handlers/OggHandler/OggException.php",
 		"File_Ogg": "includes/handlers/OggHandler/File_Ogg/File/Ogg.php",
@@ -127,6 +125,10 @@
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\TimedMediaHandler\\TimedText\\": "includes/TimedText/"
+	},
+	"TestAutoloadClasses": {
+		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
+		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php"
 	},
 	"Hooks": {
 		"ArticleContentOnDiff": "TimedMediaHandlerHooks::checkForTimedTextDiff",
