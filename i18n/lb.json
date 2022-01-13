@@ -74,6 +74,7 @@
 	"timedmedia-subtitle-no-subtitles": "Et sinn elo keng Ënnertitelen op $1 fir dëse Video, Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} dës Säit änneren] fir se derbäizesetzen.",
 	"timedmedia-subtitle-remote-link": "Dir kënnt [$1 d'Beschreiwungssäit] fir dëse Fichier op $2 gesinn",
 	"timedmedia-file": "Fichier",
+	"timedmedia-dialog-close": "Mediaplayer zoumaachen",
 	"orphanedtimedtext-unsupported": "Dës Spezialsäit funktionéiert nëmme mat MySQL Datebanken.",
 	"orphanedtimedtext-notimedtext": "TimedText ass op dëser Wiki net aktivéiert.",
 	"videojs-more-information": "Méi Informatiounen",
