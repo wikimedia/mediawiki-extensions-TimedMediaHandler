@@ -8,3 +8,15 @@
 .thumb .PopUpMediaTransform {
 	margin: 0 auto;
 }
+
+@supports ( aspect-ratio: 16 / 9 ) {
+	.mediaContainer,
+	.mediaContainer video,
+	.mediaContainer audio,
+	.PopUpMediaTransform,
+	.PopUpMediaTransform img {
+		width: auto;
+		max-width: 100%;
+		height: auto;
+	}
+}
