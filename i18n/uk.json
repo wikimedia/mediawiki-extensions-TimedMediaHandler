@@ -175,7 +175,6 @@
 	"timedmedia-subtitle-new": "Створити новий переклад або відредагувати наявний",
 	"timedmedia-subtitle-new-desc": "Виберіть мову та натисніть '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Перейти",
-	"timedmedia-subtitle-language": "$1 ($2)",
 	"timedmedia-subtitle-no-video": "Немає відео, пов'язаного з поточною сторінкою субтитрів",
 	"timedmedia-subtitle-no-subtitles": "Наразі немає субтитрів на $1 для цього відео, Ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} змінити цю сторінку] для їхнього додавання",
 	"timedmedia-subtitle-remote": "Текст до цього файлу розміщений на $1",
