@@ -273,7 +273,7 @@
 			"value": 19
 		},
 		"TranscodeBackgroundTimeLimit": {
-			"description": "The total amout of time a transcoding shell command can take",
+			"description": "The total amount of time a transcoding shell command can take",
 			"public": true,
 			"value": 28800
 		},
