@@ -239,7 +239,7 @@
 			// We remove SRT subtitles tracks as we can't handle them
 			$videoplayer.find( 'track[type="text/x-srt"]' ).remove();
 
-			$videoplayer.parent( '.thumbinner' ).addClass( 'mw-overflow' );
+			$videoplayer.closest( '.thumbinner' ).addClass( 'mw-overflow' );
 
 			// Launch the player
 			$videoplayer.addClass( 'video-js' );
