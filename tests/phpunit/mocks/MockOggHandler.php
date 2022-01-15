@@ -59,7 +59,9 @@ class MockOggHandler extends OggHandler {
 			'start' => $params['start'] ?? false,
 			'end' => $params['end'] ?? false,
 			'fillwindow' => $params['fillwindow'] ?? false,
-			'disablecontrols' => $params['disablecontrols'] ?? false
+			'disablecontrols' => $params['disablecontrols'] ?? false,
+			'loop' => $params['loop'] ?? false,
+			'muted' => $params['muted'] ?? false,
 		];
 
 		// No thumbs for audio
