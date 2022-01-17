@@ -125,6 +125,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 uinitialisert omkoding|$1 uinitialiserte omkodinger}}",
 	"timedmedia-no-derivatives": "Ingen omkoding nødvendig.",
 	"timedmedia-file": "Fil",
+	"timedmedia-dialog-close": "Lukk medieavspiller",
 	"beta-feature-timedmediahandler-message-videojs": "Ny videospiller",
 	"beta-feature-timedmediahandler-description-videojs": "Se videofiler i en moderne avspiller med renere utseende og mobilkompatabilitet.",
 	"right-transcode-reset": "Nullstille feilede eller omkodede videoer så de blir gjeninnsatt i jobbkøen.",

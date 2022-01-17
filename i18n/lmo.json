@@ -30,7 +30,7 @@
 	"timedmedia-mp4-long-video": "Fail audio/video MP4 $1, durada $2, grandezza $4×$5 picsel, in compless $3",
 	"timedmedia-mpeg-short-video": "Fail video MPEG $1, $2",
 	"timedmedia-mpeg-long-video": "Fail audio/video MPEG $1, durada $2, grandezza $4×$5 picsel, in compless $3",
-	"timedmedia-more": "Anmò...",
+	"timedmedia-more": "An'mò...",
 	"timedmedia-dismiss": "Sara su",
 	"timedmedia-download": "Descarega el fail",
 	"timedmedia-play-media": "Riproduss el fail audiovisiv",
