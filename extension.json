@@ -534,6 +534,7 @@
 		"ext.tmh.player": {
 			"packageFiles": [
 				"resources/ext.tmh.player.js",
+				"resources/ext.tmh.player.element.js",
 				{
 					"name": "resources/config.json",
 					"config": [ "ParserEnableLegacyMediaDOM" ]

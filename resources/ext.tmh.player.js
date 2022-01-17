@@ -1,132 +1,44 @@
-( function () {
+/**
+ * Load video players for a jQuery collection
+ * Not chainable
+ *
+ * @return {jQuery} The media element classes
+ * for each of the html elements in the collection
+ */
+/* eslint-disable no-implicit-globals */
+function loadVideoPlayer() {
+	var mediaElement,
+		MediaElement = require( './ext.tmh.player.element.js' );
 
-	/**
-	 * State to de-duplicate clicks if initial load takes time.
-	 */
-	var currentlyPlaying = false;
-
-	/**
-	 * Load video players for a jQuery collection
-	 */
-	function loadVideoPlayer() {
-		var $collection = this;
-
-		function loadSinglePlayer() {
-			var videoplayer = this,
-				$videoplayer = $( this ),
-				isAudio = videoplayer.tagName.toLowerCase() === 'audio',
-				videoLink,
-				$interstitial,
-				// eslint-disable-next-line no-jquery/no-class-state
-				inline = $videoplayer.hasClass( 'mw-tmh-inline' ),
-				$placeholder;
-
-			if ( $videoplayer.closest( '.mw-tmh-player' ).length ) {
-				// This player has already been transformed.
-				return;
-			}
-
-			// Hide native controls, we will restore them later once videojs player loads.
-			$videoplayer.removeAttr( 'controls' );
-
-			// Construct a file target link for middle-click / ctrl-click / right-click
-			videoLink = ( mw.Title.makeTitle( mw.config.get( 'wgNamespaceIds' ).file, $videoplayer.data( 'mwtitle' ) ) ).getUrl();
-			$placeholder = $( '<span>' )
-				.addClass( 'mw-tmh-player' )
-				.addClass( isAudio ? 'audio' : 'video' )
-				.append( $videoplayer.clone()
-					.attr( 'disabled', true )
-				)
-				.append( $( '<a>' )
-					.addClass( 'mw-tmh-play' )
-					.attr( {
-						href: videoLink,
-						title: mw.msg( 'timedmedia-play-media' ),
-						role: 'button'
-					} )
-					.on( 'click', function ( event ) {
-						if ( !currentlyPlaying ) {
-							$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
-								.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
-									.append( $( '<div>' ).addClass( 'mw-tmh-player-progress-bar' ) ) )
-								.appendTo( document.body );
-
-							// If we're using ogv.js, we have to initialize the audio context
-							// during a click event to work on Safari, especially for iOS.
-							if ( !mw.OgvJsSupport.canPlayNatively() ) {
-								mw.OgvJsSupport.initAudioContext();
-							}
-
-							// Safari autoplay breakage hack for native audio playback
-							// Must force a play during the user gesture on the element
-							// we will use.
-							var playPromise = videoplayer.play();
-							playPromise.then( function () {
-								videoplayer.pause();
-							}, function () {
-								videoplayer.pause();
-							} );
-
-							currentlyPlaying = true;
-							if ( inline ) {
-								mw.loader.using( 'ext.tmh.player.inline', function () {
-									$placeholder.find( 'a' ).detach();
-									$placeholder.find( 'video,audio' ).replaceWith( $videoplayer );
-									$videoplayer.transformVideoPlayer().then( function ( $videojs ) {
-										var player = $videojs[ 0 ];
-										player.ready( function () {
-											// Use a setTimeout to ensure all ready callbacks have run before
-											// we start playback. This is important for the source selector
-											// plugin, which may change sources before playback begins.
-											//
-											// This is used instead of an event like `canplay` or `loadeddata`
-											// because some versions of EdgeHTML don't fire these events.
-											// Support: Edge 18
-											setTimeout( function () {
-												$interstitial.detach();
-												player.play();
-											}, 0 );
-										} );
-									} );
-								} );
-							} else {
-								mw.loader.using( 'ext.tmh.player.dialog', function () {
-									$interstitial.detach();
-									$videoplayer.showVideoPlayerDialog().then( function () {
-										currentlyPlaying = false;
-									} );
-								} );
-							}
-						}
-						// @todo: this eats middle-click, should fix that
-						event.preventDefault();
-					} )
-					.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
-				);
-
-			// Config exported via package files, T60082
-			var enableLegacyMediaDOM = require( './config.json' ).ParserEnableLegacyMediaDOM;
-			if ( enableLegacyMediaDOM ) {
-				$videoplayer.replaceWith( $placeholder );
-			} else {
-				// Replace the span linkWrap gave us
-				$videoplayer.parent().replaceWith( $placeholder );
-			}
-		}
-
-		$collection.each( loadSinglePlayer );
-	}
-
-	$.fn.loadVideoPlayer = loadVideoPlayer;
-
-	mw.hook( 'wikipage.content' ).add( function ( $content ) {
-		$content.find( 'video, audio' ).loadVideoPlayer();
+	return this.map( function () {
+		mediaElement = new MediaElement( this );
+		mediaElement.load();
+		return mediaElement;
 	} );
-	$( function () {
-		// @fixme load and transform immediately for these?
-		// The iframe mode
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$( '#videoContainer video, #videoContainer audio' ).loadVideoPlayer();
-	} );
+}
 
-}() );
+$.fn.loadVideoPlayer = loadVideoPlayer;
+
+/**
+ * Main loader for content
+ */
+mw.hook( 'wikipage.content' ).add( function ( $content ) {
+	$content.find( 'video, audio' ).loadVideoPlayer();
+} );
+
+/**
+ * Loader for iframe mode
+ */
+$( function () {
+	// @fixme load and transform immediately for these?
+	// The iframe mode
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '#videoContainer video, #videoContainer audio' ).loadVideoPlayer();
+} );
+
+// exported object
+module.exports = {
+	configuration: require( './config.json' ),
+
+	MediaElement: require( './ext.tmh.player.element.js' )
+};
