@@ -554,9 +554,11 @@
 			]
 		},
 		"ext.tmh.player.dialog": {
-			"scripts": "resources/ext.tmh.player.dialog.js",
+			"packageFiles": [
+				"resources/ext.tmh.player.dialog.loader.js",
+				"resources/ext.tmh.player.dialog.js"
+			],
 			"styles": [
-				"resources/ext.tmh.player.inline.styles.less",
 				"resources/ext.tmh.player.dialog.less"
 			],
 			"targets": [
@@ -571,14 +573,15 @@
 			"messages": [ "timedmedia-dialog-close" ]
 		},
 		"ext.tmh.player.inline": {
-			"scripts": [
+			"packageFiles": [
+				"resources/ext.tmh.player.inline.js",
 				"resources/mw-info-button/mw-info-button.js",
-				"resources/videojs-resolution-switcher/videojs-resolution-switcher.js",
-				"resources/ext.tmh.player.inline.js"
+				"resources/videojs-resolution-switcher/videojs-resolution-switcher.js"
 			],
 			"styles": [
 				"resources/mw-info-button/mw-info-button.css",
-				"resources/videojs-resolution-switcher/videojs-resolution-switcher.css"
+				"resources/videojs-resolution-switcher/videojs-resolution-switcher.css",
+				"resources/ext.tmh.player.inline.styles.less"
 			],
 			"targets": [
 				"mobile",

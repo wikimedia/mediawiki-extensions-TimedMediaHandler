@@ -7,7 +7,7 @@
 			 * Ensure that the OGVPlayer class is loaded before continuing.
 			 *
 			 * @param {string?} mod - optional module name override
-			 * @return {Promise}
+			 * @return {jQuery.Promise}
 			 */
 			loadOgvJs: function ( mod ) {
 				mod = mod || 'ext.tmh.OgvJs';
@@ -64,7 +64,7 @@
 			 * then loads the OGVPlayer class before resolving.
 			 *
 			 * @param {string?} mod - optional module name override
-			 * @return {Promise}
+			 * @return {jQuery.Promise}
 			 */
 			loadIfNeeded: function ( mod ) {
 				mod = mod || 'ext.tmh.OgvJs';
@@ -118,9 +118,8 @@
 					node.disconnect();
 
 					return context;
-				} else {
-					return null;
 				}
+				return null;
 			}
 		};
 
