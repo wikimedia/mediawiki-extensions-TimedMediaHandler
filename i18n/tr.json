@@ -134,6 +134,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 başlatılmamış kod dönüşümü|$1 başlatılmamış kod dönüşümü}}",
 	"timedmedia-no-derivatives": "Kod dönüştürme gerekmez.",
 	"timedmedia-file": "Dosya",
+	"timedmedia-dialog-close": "Medya oynatıcıyı kapat",
 	"beta-feature-timedmediahandler-message-videojs": "Yeni video oynatıcı",
 	"beta-feature-timedmediahandler-description-videojs": "Daha temiz bir görünüm ve mobil uyumluluk ile video dosyalarını modern bir oynatıcıda izleyin.",
 	"right-transcode-reset": "Başarısız veya dönüştürülmüş videoları sıfırla, böylece iş kuyruğuna tekrar eklenirler.",
