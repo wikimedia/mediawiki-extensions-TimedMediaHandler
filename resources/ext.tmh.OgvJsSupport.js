@@ -7,7 +7,7 @@
 			 * Ensure that the OGVPlayer class is loaded before continuing.
 			 *
 			 * @param {string?} mod - optional module name override
-			 * @return {jQuery.Deferred}
+			 * @return {Promise}
 			 */
 			loadOgvJs: function ( mod ) {
 				mod = mod || 'ext.tmh.OgvJs';
@@ -20,7 +20,7 @@
 					} else {
 						deferred.resolve();
 					}
-				} );
+				} ).promise();
 			},
 
 			/**
@@ -64,7 +64,7 @@
 			 * then loads the OGVPlayer class before resolving.
 			 *
 			 * @param {string?} mod - optional module name override
-			 * @return {jQuery.Deferred}
+			 * @return {Promise}
 			 */
 			loadIfNeeded: function ( mod ) {
 				mod = mod || 'ext.tmh.OgvJs';
@@ -73,7 +73,7 @@
 				} else {
 					return $.Deferred( function ( deferred ) {
 						deferred.resolve();
-					} );
+					} ).promise();
 				}
 			},
 
