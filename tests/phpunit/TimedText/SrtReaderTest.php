@@ -168,32 +168,33 @@ END;
 			$this->flatten( $cues[0] ) );
 	}
 
-	/*
-	public function testStrayEmSpace() {
-		// from Commons' TimedText:Wolff-parkinson-white syndrome video.webm.ru.srt
-		$input = " \n" .
-			"13\n" .
-			"0:01:04,920 --> 0:01:09,860\n" .
-			"который останавливает импульс, чтобы убедиться, " .
-			"что все в порядке, прежде чем импульс пройдет через него, ";
+// public function testStrayEmSpace() {
+//		// from Commons' TimedText:Wolff-parkinson-white syndrome video.webm.ru.srt
+//		$input = " \n" .
+//			"13\n" .
+//			"0:01:04,920 --> 0:01:09,860\n" .
+//			"который останавливает импульс, чтобы убедиться, " .
+//			"что все в порядке, прежде чем импульс пройдет через него, ";
+//
+//		$this->reader->read( $input );
+//
+//		$cues = $this->reader->getCues();
+//		$errors = $this->reader->getErrors();
+//		$this->assertEmpty( $errors );
+//
+//		$this->assertEquals( 1, count( $cues ) );
+//		$this->assertEquals( 13, $cues[0]->id );
+//		$this->assertEquals( 64.92, $cues[0]->start );
+//		$this->assertEquals( 69.86, $cues[0]->end );
+//		$this->assertEquals(
+//			'который останавливает импульс, чтобы убедиться, ' .
+//			'что все в порядке, прежде чем импульс пройдет через него,',
+//			$this->flatten( $cues[0] ) );
+//	}
 
-		$this->reader->read( $input );
-
-		$cues = $this->reader->getCues();
-		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
-
-		$this->assertEquals( 1, count( $cues ) );
-		$this->assertEquals( 13, $cues[0]->id );
-		$this->assertEquals( 64.92, $cues[0]->start );
-		$this->assertEquals( 69.86, $cues[0]->end );
-		$this->assertEquals(
-			'который останавливает импульс, чтобы убедиться, ' .
-			'что все в порядке, прежде чем импульс пройдет через него,',
-			$this->flatten( $cues[0] ) );
-	}
-	*/
-
+	/**
+	 * @return void
+	 */
 	public function testBadFormatInTimes() {
 		// from Commons' TimedText:Soy Wikipediasta.webm.pt-br.srt
 		$input = <<<END

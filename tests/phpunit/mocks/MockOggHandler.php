@@ -41,7 +41,7 @@ class MockOggHandler extends OggHandler {
 
 		// if height overtakes width use height as max:
 		$targetWidth = $params['width'];
-		$targetHeight = $srcWidth == 0 ? $srcHeight : round( $params['width'] * $srcHeight / $srcWidth );
+		$targetHeight = $srcWidth ? round( $params['width'] * $srcHeight / $srcWidth ) : $srcHeight;
 		if ( isset( $params['height'] ) && $targetHeight > $params['height'] ) {
 			$targetHeight = $params['height'];
 			$targetWidth = round( $params['height'] * $srcWidth / $srcHeight );
@@ -53,7 +53,7 @@ class MockOggHandler extends OggHandler {
 			'width' => $targetWidth,
 			'height' => $targetHeight,
 			'isVideo' => !$this->isAudio( $file ),
-			'thumbtime' => $params['thumbtime'] ?? intval( $file->getLength() / 2 ),
+			'thumbtime' => $params['thumbtime'] ?? (int)( $file->getLength() / 2 ),
 			'start' => $params['start'] ?? false,
 			'end' => $params['end'] ?? false,
 			'fillwindow' => $params['fillwindow'] ?? false,

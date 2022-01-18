@@ -158,5 +158,6 @@ class RequeueTranscodes extends Maintenance {
 	}
 }
 
-$maintClass = RequeueTranscodes::class; // Tells it to run the class
+// Tells it to run the class
+$maintClass = RequeueTranscodes::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

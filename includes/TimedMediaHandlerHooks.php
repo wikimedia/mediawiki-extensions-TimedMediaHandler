@@ -56,7 +56,7 @@ class TimedMediaHandlerHooks {
 
 		// Remove mp4 if not enabled:
 		if ( $wgTmhEnableMp4Uploads === false ) {
-			$index = array_search( 'mp4', $wgFileExtensions );
+			$index = array_search( 'mp4', $wgFileExtensions, true );
 			if ( $index !== false ) {
 				array_splice( $wgFileExtensions, $index, 1 );
 			}
@@ -113,7 +113,7 @@ class TimedMediaHandlerHooks {
 	 */
 	private static function onImagePageHooks( $file, $out ) {
 		$handler = $file->getHandler();
-		if ( $handler !== false && $handler instanceof TimedMediaHandler ) {
+		if ( $handler instanceof TimedMediaHandler ) {
 			if ( self::activePlayerMode() === 'mwembed' ) {
 				$out->addModuleStyles( 'ext.tmh.thumbnail.styles' );
 				$out->addModules( [
@@ -195,7 +195,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function isTranscodableTitle( $title ) {
-		if ( $title->getNamespace() != NS_FILE ) {
+		if ( $title->getNamespace() !== NS_FILE ) {
 			return false;
 		}
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
@@ -231,8 +231,8 @@ class TimedMediaHandlerHooks {
 		$mediaType = $handler->getMetadataType( $file );
 		// If ogg or webm format and not audio we can "transcode" this file
 		$isAudio = $handler instanceof TimedMediaHandler && $handler->isAudio( $file );
-		if ( ( $mediaType == 'webm' || $mediaType == 'ogg'
-				|| $mediaType == 'mp4' || $mediaType == 'mpeg' )
+		if ( ( $mediaType === 'webm' || $mediaType === 'ogg'
+				|| $mediaType === 'mp4' || $mediaType === 'mpeg' )
 			&& !$isAudio
 		) {
 			return true;
@@ -325,10 +325,8 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
-		if ( !$oldimage ) {
-			if ( self::isTranscodableFile( $file ) ) {
-				WebVideoTranscode::removeTranscodes( $file );
-			}
+		if ( !$oldimage && self::isTranscodableFile( $file ) ) {
+			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
 	}
@@ -346,14 +344,12 @@ class TimedMediaHandlerHooks {
 	public static function onRevisionFromEditComplete(
 		WikiPage $wikiPage, RevisionRecord $rev, $baseID, UserIdentity $user
 	) {
-		if ( $baseID !== false ) {
-			// Check if the article is a file and remove transcode files:
-			if ( $wikiPage->getTitle()->getNamespace() == NS_FILE ) {
-				$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
-				if ( self::isTranscodableFile( $file ) ) {
-					WebVideoTranscode::removeTranscodes( $file );
-					WebVideoTranscode::startJobQueue( $file );
-				}
+		// Check if the article is a file and remove transcode files:
+		if ( ( $baseID !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
+			if ( self::isTranscodableFile( $file ) ) {
+				WebVideoTranscode::removeTranscodes( $file );
+				WebVideoTranscode::startJobQueue( $file );
 			}
 		}
 		return true;
@@ -368,7 +364,7 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function onArticlePurge( WikiPage $article ) {
-		if ( $article->getTitle()->getNamespace() == NS_FILE ) {
+		if ( $article->getTitle()->getNamespace() === NS_FILE ) {
 			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
@@ -411,10 +407,12 @@ class TimedMediaHandlerHooks {
 		}
 
 		if ( $title->isSpecialPage() ) {
-			list( $name, /* subpage */ ) = MediaWikiServices::getInstance()
+			[ $name, /* subpage */ ] = MediaWikiServices::getInstance()
 				->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
-			if ( stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
-				|| $name === 'Search' || $name === 'GlobalUsage' || $name === 'Upload' ) {
+			if (
+				$name === 'Search' || $name === 'GlobalUsage' || $name === 'Upload' ||
+				stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
+			) {
 					$addModules = true;
 			}
 		}
@@ -483,18 +481,15 @@ class TimedMediaHandlerHooks {
 	 * @return bool
 	 */
 	public static function onRejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
-		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) && (
-			(
-				self::activePlayerMode() === 'mwembed' &&
-				!in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules() )
-			) || (
-				self::activePlayerMode() === 'videojs' &&
-				!in_array( 'ext.tmh.player', $parserOutput->getModules() )
-			)
-		) ) {
-			return false;
-		}
-		return true;
+		return !( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) && (
+				(
+					self::activePlayerMode() === 'mwembed' &&
+					!in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true )
+				) || (
+					self::activePlayerMode() === 'videojs' &&
+					!in_array( 'ext.tmh.player', $parserOutput->getModules(), true )
+				)
+			) );
 	}
 
 	/**
@@ -572,9 +567,9 @@ class TimedMediaHandlerHooks {
 			&& BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
 		) {
 			return 'videojs';
-		} else {
-			return self::defaultPlayerMode();
 		}
+
+		return self::defaultPlayerMode();
 	}
 
 	/**

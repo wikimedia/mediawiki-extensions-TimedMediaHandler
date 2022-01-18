@@ -7,19 +7,19 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	// Video file sources object lazy init in getSources()
 	// TODO these vars should probably be private
 	/** @var array[]|false|null */
-	public $sources = null;
+	public $sources;
 
 	/** @var null */
-	public $textTracks = null;
+	public $textTracks;
 
 	/** @var string|false|null */
-	public $hashTime = null;
+	public $hashTime;
 
 	/** @var TextHandler|null */
-	public $textHandler = null; // lazy init in getTextHandler
+	public $textHandler; // lazy init in getTextHandler
 
 	/** @var string|false|null */
-	public $disablecontrols = null;
+	public $disablecontrols;
 
 	/** @var mixed */
 	public $dstPath;
@@ -106,7 +106,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 			// Update the $posterUrl to $sizeOverride ( if not an old file )
 			if ( !$this->file->isOld() && $sizeOverride &&
-				$sizeOverride[0] && intval( $sizeOverride[0] ) != intval( $this->width ) ) {
+				$sizeOverride[0] && (int)$sizeOverride[0] !== (int)$this->width ) {
 				$apiUrl = $this->getPoster( $sizeOverride[0] );
 				if ( $apiUrl ) {
 					$url = $apiUrl;
@@ -130,11 +130,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	public function getPlayerHeight() {
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
-			return intval( $this->height );
-		} else {
-			// Give sound files a height of 23px
-			return 23;
+			return (int)$this->height;
 		}
+		// Give sound files a height of 23px
+		return 23;
 	}
 
 	/**
@@ -143,15 +142,15 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	public function getPlayerWidth() {
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
-			return intval( $this->width );
-		} else {
-			// Give sound files a width of 300px ( if unsized )
-			if ( $this->width == 0 ) {
-				return 300;
-			}
-			// else give the target size down to 35 px wide
-			return ( $this->width < 35 ) ? 35 : intval( $this->width );
+			return (int)$this->width;
 		}
+
+		// Give sound files a width of 300px ( if unsized )
+		if ( !$this->width ) {
+			return 300;
+		}
+		// else give the target size, but at least 35px
+		return max( 35, (int)$this->width );
 	}
 
 	/**
@@ -167,7 +166,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @throws Exception
 	 */
 	public function toHtml( $options = [] ) {
-		if ( count( func_get_args() ) == 2 ) {
+		if ( count( func_get_args() ) === 2 ) {
 			throw new Exception( __METHOD__ . ' called in the old style' );
 		}
 
@@ -291,7 +290,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return int
 	 */
 	private function getPopupPlayerWidth() {
-		list( $popUpWidth ) = $this->getPopupPlayerSize();
+		[ $popUpWidth ] = $this->getPopupPlayerSize();
 		return $popUpWidth;
 	}
 
@@ -333,7 +332,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		// Both are big enough, or both equally too small. Go with the one
 		// that has a lower bit-rate (as it will be faster to download).
-		if ( isset( $a['bandwidth'] ) && isset( $b['bandwidth'] ) ) {
+		if ( isset( $a['bandwidth'], $b['bandwidth'] ) ) {
 			return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
 		}
 
@@ -381,12 +380,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		];
 		foreach ( $mediaSources as &$source ) {
 			foreach ( $source as $attr => $val ) {
-				if ( in_array( $attr, $prefixedSourceAttr ) ) {
+				if ( in_array( $attr, $prefixedSourceAttr, true ) ) {
 					$source[ 'data-' . $attr ] = $val;
 					unset( $source[ $attr ] );
 				}
 			}
 		}
+		unset( $source );
 		$mediaTracks = $this->file ? $this->getTextHandler()->getTracks() : [];
 		foreach ( $mediaTracks as &$track ) {
 			foreach ( $track as $attr => $val ) {
@@ -399,6 +399,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				}
 			}
 		}
+		unset( $track );
 
 		$width = $mediaAttr['width'];
 		if ( TimedMediaHandlerHooks::activePlayerMode() !== 'videojs' ) {
@@ -432,17 +433,17 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @throws Exception If $width is same as $this->width.
 	 */
 	private function getPoster( $width ) {
-		if ( intval( $width ) === intval( $this->width ) ) {
+		if ( (int)$width === (int)$this->width ) {
 			// Prevent potential loop
 			throw new Exception( "Asked for poster in current size. Potential loop." );
 		}
-		$params = [ "width" => intval( $width ) ];
+		$params = [ "width" => (int)$width ];
 		$mto = $this->file->transform( $params );
 		if ( $mto ) {
 			return $mto->getUrl();
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	/**
@@ -458,8 +459,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		global $wgVideoPlayerSkin;
 
 		// Normalize values
-		$length = floatval( $this->length );
-		$offset = floatval( $this->offset );
+		$length = (float)$this->length;
+		$offset = (float)$this->offset;
 
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1] : $this->getPlayerHeight();
@@ -491,9 +492,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
 			// Note: do not add 'video-js' class before the runtime transform!
 			$mediaAttr['class'] = $wgVideoPlayerSkin;
-			$mediaAttr['width'] = $this->fillwindow ? '100%' : intval( $width );
+			$mediaAttr['width'] = $this->fillwindow ? '100%' : (int)$width;
 			if ( $this->isVideo ) {
-				$mediaAttr['height'] = $this->fillwindow ? '100%' : intval( $height );
+				$mediaAttr['height'] = $this->fillwindow ? '100%' : (int)$height;
 			} else {
 				unset( $mediaAttr['height'] );
 			}
@@ -515,10 +516,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 
 			$mediaAttr['width'] = $width;
-			$mediaAttr['style'] = "width:{$width}";
+			$mediaAttr['style'] = "width:$width";
 
 			if ( $this->isVideo ) {
-				$mediaAttr['style'] .= ";height:{$height}";
+				$mediaAttr['style'] .= ";height:$height";
 			}
 
 			// MediaWiki uses the kSkin class
@@ -535,7 +536,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr[ 'class' ] .= ' ' . $this->playerClass;
 		}
 
-		if ( strlen( $classes ) > 0 ) {
+		if ( $classes !== '' ) {
 			$mediaAttr[ 'class' ] .= ' ' . $classes;
 		}
 
@@ -554,7 +555,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 				// Set the api provider name to "wikimediacommons" for shared ( instant commons convention )
 				// (provider names should have identified the provider instead of the provider type "shared")
 				$apiProviderName = $this->file->getRepoName();
-				if ( $apiProviderName == 'shared' ) {
+				if ( $apiProviderName === 'shared' ) {
 					$apiProviderName = 'wikimediacommons';
 				}
 			}
@@ -600,7 +601,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 		}
 		if ( $this->end ) {
-			if ( $hash == '' ) {
+			if ( $hash === '' ) {
 				$hash .= '#t=0';
 			}
 			$endSec = TimedMediaHandler::parseTimeString( $this->end );
@@ -628,7 +629,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$options = $options ?? [ 'fullurl' ];
 
 		$timedtext = $this->getTextHandler()->getTracks();
-		if ( in_array( 'fullurl', $options ) ) {
+		if ( in_array( 'fullurl', $options, true ) ) {
 			foreach ( $timedtext as &$track ) {
 				$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
 			}
@@ -636,7 +637,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 
 		$derivatives = WebVideoTranscode::getSources( $this->file, $options );
-		if ( in_array( 'withhash', $options ) ) {
+		if ( in_array( 'withhash', $options, true ) ) {
 			// Check if we have "start or end" times and append the temporal url fragment hash
 			foreach ( $derivatives as &$source ) {
 				$source['src'] .= $this->getTemporalUrlHash();

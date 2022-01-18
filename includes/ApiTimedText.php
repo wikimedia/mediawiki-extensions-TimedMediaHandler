@@ -24,6 +24,7 @@
 
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Page\WikiPageFactory;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * Implements the timedtext module that outputs subtitle files
@@ -45,8 +46,11 @@ class ApiTimedText extends ApiBase {
 	/** @var WikiPageFactory */
 	private $wikiPageFactory;
 
+	/** @var int version of the cache format */
 	private const CACHE_VERSION = 1;
-	private const CACHE_TTL = 86400; // 24 hours
+
+	/** @var int default 24 hours */
+	private const CACHE_TTL = 86400;
 
 	/**
 	 * @param ApiMain $main
@@ -86,12 +90,17 @@ class ApiTimedText extends ApiBase {
 	 *
 	 * @return ApiFormatRaw
 	 */
-	public function getCustomPrinter() {
+	public function getCustomPrinter(): ApiFormatRaw {
 		$printer = new ApiFormatRaw( $this->getMain(), null );
 		$printer->setFailWithHTTPError( true );
 		return $printer;
 	}
 
+	/**
+	 * @return void
+	 * @throws ApiUsageException
+	 * @throws MWException
+	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
@@ -112,7 +121,7 @@ class ApiTimedText extends ApiBase {
 		}
 
 		$ns = $page->getTitle()->getNamespace();
-		if ( $ns != NS_FILE ) {
+		if ( $ns !== NS_FILE ) {
 			$this->dieWithError( 'apierror-filedoesnotexist', 'invalidtitle' );
 		}
 		$file = $this->repoGroup->findFile( $page->getTitle() );
@@ -165,7 +174,14 @@ class ApiTimedText extends ApiBase {
 		$result->addValue( null, 'filename', $filename, ApiResult::NO_SIZE_CHECK );
 	}
 
-	protected function findTimedText( $file, $langCode, $preferredFormat ) {
+	/**
+	 * @param File $file
+	 * @param string $langCode
+	 * @param string $preferredFormat
+	 * @return WikiPage|null
+	 * @throws ApiUsageException
+	 */
+	protected function findTimedText( File $file, $langCode, $preferredFormat ) {
 		// In future, add 'vtt' as a supported input format as well.
 		$sourceFormats = [ 'srt' ];
 
@@ -176,7 +192,7 @@ class ApiTimedText extends ApiBase {
 		}
 
 		foreach ( $sourceFormats as $format ) {
-			$dbkey = "{$file->getTitle()->getDbKey()}.{$langCode}.{$format}";
+			$dbkey = "{$file->getTitle()->getDbKey()}.$langCode.$format";
 			$page = $this->wikiPageFactory->newFromTitle( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {
@@ -227,12 +243,11 @@ class ApiTimedText extends ApiBase {
 				// TODO convert to contentmodel
 				$content = $page->getContent();
 				$rawTimedText = $content instanceof TextContent ? $content->getText() : '';
-				$output = TextHandler::convertSubtitles(
+				return TextHandler::convertSubtitles(
 					$from,
 					$to,
 					$rawTimedText
 				);
-				return $output;
 			}
 		);
 	}
@@ -240,13 +255,13 @@ class ApiTimedText extends ApiBase {
 	public function getAllowedParams( $flags = 0 ) {
 		$ret = [
 			'title' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 			'pageid' => [
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'trackformat' => [
-				ApiBase::PARAM_TYPE => [ 'srt', 'vtt' ],
+				ParamValidator::PARAM_TYPE => [ 'srt', 'vtt' ],
 			],
 			// Note this is the target language of the track to load,
 			// and does not control things like the language of

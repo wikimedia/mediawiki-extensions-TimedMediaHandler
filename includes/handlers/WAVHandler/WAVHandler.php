@@ -25,9 +25,9 @@ class WAVHandler extends ID3Handler {
 
 		if (
 			isset( $metadata['audio'] )
-			&& $metadata['audio']['dataformat'] == 'wav'
-			&& ( $metadata['audio']['codec'] == 'Pulse Code Modulation (PCM)' ||
-				$metadata['audio']['codec'] == 'IEEE Float' )
+			&& $metadata['audio']['dataformat'] === 'wav'
+			&& ( $metadata['audio']['codec'] === 'Pulse Code Modulation (PCM)' ||
+				$metadata['audio']['codec'] === 'IEEE Float' )
 		) {
 			return Status::newGood();
 		}
@@ -47,7 +47,7 @@ class WAVHandler extends ID3Handler {
 			return false;
 		}
 
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'wav' ) {
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'wav' ) {
 			$streamTypes[] = 'WAV';
 		}
 

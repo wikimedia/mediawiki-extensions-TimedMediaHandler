@@ -26,11 +26,11 @@ class Mp3Handler extends ID3Handler {
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
-		$metadata = self::unpackMetadata( $file->getMetadata() );
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'mp3' ) {
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'mp3' ) {
 			$streamTypes[] = 'MP3';
 		}
 		return $streamTypes;

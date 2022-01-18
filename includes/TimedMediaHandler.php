@@ -44,11 +44,11 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return bool
 	 */
 	public function validateParam( $name, $value ) {
-		if ( $name == 'thumbtime' || $name == 'start' || $name == 'end' ) {
+		if ( $name === 'thumbtime' || $name === 'start' || $name === 'end' ) {
 			if ( $this->parseTimeString( $value ) === false ) {
 				return false;
 			}
-		} elseif ( $name == 'disablecontrols' ) {
+		} elseif ( $name === 'disablecontrols' ) {
 			$values = explode( ',', $value );
 			foreach ( $values as $v ) {
 				if ( !in_array( $v, [ 'options', 'timedText', 'fullscreen' ] ) ) {
@@ -68,9 +68,8 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
-		$paramString = '';
-		$paramString .= ( isset( $params['width'] ) ) ? $params['width'] . 'px' : '';
-		$paramString .= ( $paramString != '' ) ? '-' : '';
+		$paramString = ( isset( $params['width'] ) ) ? $params['width'] . 'px' : '';
+		$paramString .= ( $paramString !== '' ) ? '-' : '';
 
 		// Get the raw thumbTime from thumbtime or start param
 		if ( isset( $params['thumbtime'] ) ) {
@@ -118,10 +117,9 @@ class TimedMediaHandler extends MediaHandler {
 				$params['thumbtime'] = (float)$thumbtime;
 			}
 			return $params; // valid thumbnail URL
-		} else {
-			// invalid parameter string
-			return false;
 		}
+		// invalid parameter string
+		return false;
 	}
 
 	/**
@@ -138,7 +136,9 @@ class TimedMediaHandler extends MediaHandler {
 				$time = $this->parseTimeString( $params[$pn] );
 				if ( $time === false ) {
 					return false;
-				} elseif ( $time > $length - 1 ) {
+				}
+
+				if ( $time > $length - 1 ) {
 					$params[$pn] = $length - 1;
 				} elseif ( $time <= 0 ) {
 					$params[$pn] = 0;
@@ -165,7 +165,7 @@ class TimedMediaHandler extends MediaHandler {
 			$params['width'] = $size['width'];
 		}
 
-		if ( isset( $params['height'] ) && $params['height'] != -1 ) {
+		if ( isset( $params['height'] ) && $params['height'] !== -1 ) {
 			if ( $params['width'] * $size['height'] > $params['height'] * $size['width'] ) {
 				$params['width'] = self::fitBoxWidth( $size['width'], $size['height'], $params['height'] );
 			}
@@ -175,10 +175,10 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		// Make sure start time is not > than end time
-		if ( isset( $params['start'] )
-			&& isset( $params['end'] )
-			&& $params['start'] !== false
-			&& $params['end'] !== false
+		if (
+			isset( $params['start'], $params['end'] ) &&
+			$params['start'] !== false &&
+			$params['end'] !== false
 		) {
 			if ( $this->parseTimeString( $params['start'] ) > $this->parseTimeString( $params['end'] ) ) {
 				return false;
@@ -231,11 +231,11 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $partsCount > 3 ) {
 			return false;
 		}
-		for ( $i = 0; $i < $partsCount; $i++ ) {
-			if ( !is_numeric( $parts[$i] ) ) {
+		foreach ( $parts as $i => $iValue ) {
+			if ( !is_numeric( $iValue ) ) {
 				return false;
 			}
-			$time += floatval( $parts[$i] ) * pow( 60, $partsCount - $i - 1 );
+			$time += (float)$iValue * pow( 60, $partsCount - $i - 1 );
 		}
 
 		if ( $time < 0 ) {
@@ -262,7 +262,7 @@ class TimedMediaHandler extends MediaHandler {
 		$t['seconds'] = $timePassed % 60;
 
 		foreach ( $t as $k => $v ) {
-			if ( $v == 0 ) {
+			if ( !$v ) {
 				unset( $t[$k] );
 			} else {
 				// Give grep a chance to find the usages:
@@ -270,18 +270,18 @@ class TimedMediaHandler extends MediaHandler {
 				$t[$k] = wfMessage( 'timedmedia-' . $k, $v );
 			}
 		}
-		if ( count( $t ) == 0 ) {
+		if ( count( $t ) === 0 ) {
 			$t = [ wfMessage( 'timedmedia-seconds', 0 ) ];
 		}
 
 		if ( is_callable( [ 'Message', 'listParam' ] ) ) {
 			return Message::listParam( array_values( $t ), 'comma' );
-		} else {
-			global $wgLang;
-			return $wgLang->commaList( array_map( static function ( $m ) {
-				return $m->text();
-			}, $t ) );
 		}
+
+		global $wgLang;
+		return $wgLang->commaList( array_map( static function ( $m ) {
+			return $m->text();
+		}, $t ) );
 	}
 
 	/**
@@ -320,9 +320,9 @@ class TimedMediaHandler extends MediaHandler {
 		Wikimedia\restoreWarnings();
 		if ( isset( $unser['version'] ) ) {
 			return $unser;
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	/**
@@ -350,7 +350,7 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return bool
 	 */
 	public function isAudio( $file ) {
-		return ( $file->getWidth() == 0 && $file->getHeight() == 0 );
+		return ( !$file->getWidth() && !$file->getHeight() );
 	}
 
 	/**
@@ -377,7 +377,7 @@ class TimedMediaHandler extends MediaHandler {
 			// Height is ignored for audio files anyway, and $params['height'] might be set to 0
 			'height' => $params['width'] ?? 120,
 			'isVideo' => !$this->isAudio( $file ),
-			'thumbtime' => $params['thumbtime'] ?? intval( $file->getLength() / 2 ),
+			'thumbtime' => $params['thumbtime'] ?? (int)( $file->getLength() / 2 ),
 			'start' => $params['start'] ?? false,
 			'end' => $params['end'] ?? false,
 			'fillwindow' => $params['fillwindow'] ?? false,
@@ -409,7 +409,7 @@ class TimedMediaHandler extends MediaHandler {
 
 		// if height overtakes width use height as max:
 		$targetWidth = $params['width'];
-		$targetHeight = $srcWidth == 0 ? $srcHeight : round( $params['width'] * $srcHeight / $srcWidth );
+		$targetHeight = $srcWidth ? round( $params['width'] * $srcHeight / $srcWidth ) : $srcHeight;
 		if ( isset( $params['height'] ) && $targetHeight > $params['height'] ) {
 			$targetHeight = $params['height'];
 			$targetWidth = round( $params['height'] * $srcWidth / $srcHeight );
@@ -481,9 +481,9 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $file->getWidth() ) {
 			return wfMessage( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ) )
 				->numParams( $file->getWidth(), $file->getHeight() )->text();
-		} else {
-			return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 		}
+
+		return $wgLang->formatTimePeriod( $this->getLength( $file ) );
 	}
 
 	/**

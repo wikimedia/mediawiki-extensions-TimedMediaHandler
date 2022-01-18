@@ -26,18 +26,18 @@ class MPEGHandler extends ID3Handler {
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
-		$metadata = self::unpackMetadata( $file->getMetadata() );
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if ( isset( $metadata['audio'] ) && isset( $metadata['audio']['dataformat'] ) ) {
-			if ( $metadata['audio']['dataformat'] == 'mp2' ) {
+		if ( isset( $metadata['audio']['dataformat'] ) ) {
+			if ( $metadata['audio']['dataformat'] === 'mp2' ) {
 				$streamTypes[] = 'MPEG-2';
 			} else {
 				$streamTypes[] = $metadata['audio']['dataformat'];
 			}
 		}
-		if ( isset( $metadata['video'] ) && isset( $metadata['video']['codec'] ) ) {
+		if ( isset( $metadata['video']['codec'] ) ) {
 			$streamTypes[] = $metadata['video']['codec'];
 		}
 
@@ -60,16 +60,15 @@ class MPEGHandler extends ID3Handler {
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if ( isset( $metadata['video']['resolution_x'] )
-				&&
-			isset( $metadata['video']['resolution_y'] )
-				&&
-			isset( $metadata['video']['pixel_aspect_ratio'] )
-		) {
+		if ( isset(
+			$metadata['video']['resolution_x'],
+			$metadata['video']['resolution_y'],
+			$metadata['video']['pixel_aspect_ratio']
+		) ) {
 			$width = $metadata['video']['resolution_x'];
 			$height = $metadata['video']['resolution_y'];
 			$aspect = $metadata['video']['pixel_aspect_ratio'];
-			$width = intval( $width * $aspect );
+			$width = (int)( $width * $aspect );
 			return [
 				$width,
 				$height

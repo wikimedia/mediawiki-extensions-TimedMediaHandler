@@ -15,7 +15,7 @@ class TimedMediaThumbnail {
 
 		wfDebug( "Creating video thumbnail at " . $options['dstPath'] . "\n" );
 		if (
-			isset( $options['width'] ) && isset( $options['height'] ) &&
+			isset( $options['width'], $options['height'] ) &&
 			$options['width'] != $options['file']->getWidth() &&
 			$options['height'] != $options['file']->getHeight()
 		) {
@@ -41,7 +41,7 @@ class TimedMediaThumbnail {
 		global $wgOggThumbLocation;
 
 		// Check that the file is 'ogg' format
-		if ( $options['file']->getHandler()->getMetadataType( $options['file'] ) != 'ogg' ) {
+		if ( $options['file']->getHandler()->getMetadataType( $options['file'] ) !== 'ogg' ) {
 			return false;
 		}
 
@@ -55,10 +55,10 @@ class TimedMediaThumbnail {
 		$videoPath = $options['file']->getLocalRefPath();
 
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation )
-			. ' -t ' . floatval( $time );
+			. ' -t ' . (float)$time;
 		// Set the output size if set in options:
-		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
-			$cmd .= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
+		if ( isset( $options['width'], $options['height'] ) ) {
+			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
 		}
 		$cmd .= ' -n ' . wfEscapeShellArg( $dstPath ) .
 			' ' . wfEscapeShellArg( $videoPath ) . ' 2>&1';
@@ -97,7 +97,7 @@ class TimedMediaThumbnail {
 
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -nostdin -threads 1 ';
 
-		$offset = intval( self::getThumbTime( $options ) );
+		$offset = (int)self::getThumbTime( $options );
 		/*
 		This is a workaround until ffmpegs ogg demuxer properly seeks to keyframes.
 		Seek N seconds before offset and seek in decoded stream after that.
@@ -110,23 +110,23 @@ class TimedMediaThumbnail {
 
 		$framerate = $options['file']->getHandler()->getFramerate( $options['file'] );
 		if ( $framerate > 0 ) {
-			$seekoffset = 1 + intval( 64 / $framerate );
+			$seekoffset = 1 + (int)( 64 / $framerate );
 		} else {
 			$seekoffset = 3;
 		}
 
 		if ( $offset > $seekoffset ) {
-			$cmd .= ' -ss ' . floatval( $offset - $seekoffset );
+			$cmd .= ' -ss ' . (float)( $offset - $seekoffset );
 			$offset = $seekoffset;
 		}
 
-		// try to get temorary local url to file
+		// try to get temporary local url to file
 		$backend = $options['file']->getRepo()->getBackend();
 
 		$src = $backend->getFileHttpUrl( [
 			'src' => $options['file']->getPath()
 		] );
-		if ( $src == null ) {
+		if ( $src === null ) {
 			$src = $options['file']->getLocalRefPath();
 		}
 
@@ -134,8 +134,8 @@ class TimedMediaThumbnail {
 		$cmd .= ' -ss ' . $offset . ' ';
 
 		// Set the output size if set in options:
-		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
-			$cmd .= ' -s ' . intval( $options['width'] ) . 'x' . intval( $options['height'] );
+		if ( isset( $options['width'], $options['height'] ) ) {
+			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
 		}
 
 		// MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg

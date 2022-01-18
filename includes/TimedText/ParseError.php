@@ -11,9 +11,9 @@ class ParseError {
 	protected $error;
 
 	public function __construct( $line, $input, $error ) {
-		$this->line = intval( $line );
-		$this->input = strval( $input );
-		$this->error = strval( $error );
+		$this->line = (int)$line;
+		$this->input = (string)$input;
+		$this->error = (string)$error;
 	}
 
 	public function getLine() {

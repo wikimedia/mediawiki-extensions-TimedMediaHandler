@@ -17,9 +17,9 @@ use Wikimedia\Rdbms\IResultWrapper;
 
 class TextHandler {
 	/** @var int|null lazy init remote Namespace number */
-	public $remoteNs = null;
+	public $remoteNs;
 	/** @var string|null lazy init remote Namespace name */
-	public $remoteNsName = null;
+	public $remoteNsName;
 
 	/**
 	 * @var File
@@ -43,13 +43,14 @@ class TextHandler {
 	public function getTracks() {
 		if ( $this->file->isLocal() ) {
 			return $this->getLocalDbTextSources();
-		} elseif ( $this->file instanceof ForeignDBFile ) {
-			return $this->getForeignDbTextSources();
-		} elseif ( $this->file instanceof ForeignAPIFile ) {
-			return $this->getRemoteTextSources( $this->file );
-		} else {
-			return [];
 		}
+		if ( $this->file instanceof ForeignDBFile ) {
+			return $this->getForeignDbTextSources();
+		}
+		if ( $this->file instanceof ForeignAPIFile ) {
+			return $this->getRemoteTextSources( $this->file );
+		}
+		return [];
 	}
 
 	/**
@@ -86,7 +87,7 @@ class TextHandler {
 				'siprop' => 'namespaces'
 			] );
 
-			if ( isset( $data['query'] ) && isset( $data['query']['namespaces'] ) ) {
+			if ( isset( $data['query']['namespaces'] ) ) {
 				// get the ~last~ timed text namespace defined
 				foreach ( $data['query']['namespaces'] as $ns ) {
 					if ( isset( $ns['canonical'] ) && $ns['canonical'] === 'TimedText' ) {
@@ -124,9 +125,7 @@ class TextHandler {
 		}
 
 		$repo = $this->file->getRepo();
-		if ( $repo instanceof LocalRepo ||
-				$repo instanceof ForeignDBViaLBRepo ||
-				$repo instanceof ForeignDBRepo ) {
+		if ( $repo instanceof LocalRepo ) {
 			$dbr = $repo->getReplicaDB();
 			$prefix = $this->file->getTitle()->getDBkey();
 			return $dbr->select(
@@ -315,7 +314,8 @@ class TextHandler {
 	public function getContentType( $timedTextExtension ) {
 		if ( $timedTextExtension === 'srt' ) {
 			return 'text/x-srt';
-		} elseif ( $timedTextExtension === 'vtt' ) {
+		}
+		if ( $timedTextExtension === 'vtt' ) {
 			return 'text/vtt';
 		}
 		return '';
@@ -329,11 +329,11 @@ class TextHandler {
 		/* Else, we use the canonical namespace, since we can't look up the actual one */
 		if ( $wgEnableLocalTimedText ) {
 			$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
-			return strtr( $namespaceInfo->getCanonicalName( NS_TIMEDTEXT ), ' ', '_' );
-		} else {
-			// Assume the default name if no local TimedText.
-			return 'TimedText';
+			return str_replace( ' ', '_', $namespaceInfo->getCanonicalName( NS_TIMEDTEXT ) );
 		}
+
+		// Assume the default name if no local TimedText.
+		return 'TimedText';
 	}
 
 	/**
@@ -411,8 +411,7 @@ class TextHandler {
 			$cues = $reader->getCues();
 			$errors = $reader->getErrors();
 
-			$newFile = $writer->write( $cues );
-			return $newFile;
+			return $writer->write( $cues );
 		} catch ( Exception $e ) {
 			throw new MWException( 'Timed text track conversion failed: ' .
 				$e->getMessage() );

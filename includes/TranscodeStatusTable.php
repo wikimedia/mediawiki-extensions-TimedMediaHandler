@@ -44,16 +44,18 @@ class TranscodeStatusTable {
 			$settings = WebVideoTranscode::$derivativeSettings[$key];
 			if ( isset( $settings['videoCodec'] ) ) {
 				return $settings['videoCodec'];
-			} elseif ( isset( $settings['audioCodec'] ) ) {
-				return $settings['audioCodec'];
-			} else {
-				// this this shouldn't happen...
-				// fall through
 			}
-		} else {
-			// derivative type no longer defined or invalid def?
+
+			if ( isset( $settings['audioCodec'] ) ) {
+				return $settings['audioCodec'];
+			}
+			// else
+			// this this shouldn't happen...
 			// fall through
 		}
+		// else
+		// derivative type no longer defined or invalid def?
+		// fall through
 		return $key;
 	}
 
@@ -71,7 +73,7 @@ class TranscodeStatusTable {
 			return '<p>' . wfMessage( 'timedmedia-no-derivatives' )->escaped() . '</p>';
 		}
 
-		uksort( $transcodeRows, function ( $a, $b ) {
+		uksort( $transcodeRows, static function ( $a, $b ) {
 			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'opus', 'vorbis', 'aac' ];
 
 			$aFormat = self::codecFromTranscodeKey( $a );
@@ -81,15 +83,17 @@ class TranscodeStatusTable {
 
 			if ( $aIndex === false && $bIndex === false ) {
 				return -strnatcmp( $a, $b );
-			} elseif ( $aIndex === false ) {
-				return 1;
-			} elseif ( $bIndex === false ) {
-				return -1;
-			} elseif ( $aIndex === $bIndex ) {
-				return -strnatcmp( $a, $b );
-			} else {
-				return ( $aIndex - $bIndex );
 			}
+			if ( $aIndex === false ) {
+				return 1;
+			}
+			if ( $bIndex === false ) {
+				return -1;
+			}
+			if ( $aIndex === $bIndex ) {
+				return -strnatcmp( $a, $b );
+			}
+			return ( $aIndex - $bIndex );
 		} );
 
 		$o .= Xml::openElement( 'table',
@@ -156,17 +160,15 @@ class TranscodeStatusTable {
 	 * @param array $state
 	 * @return string
 	 */
-	public static function getTranscodeDuration( $file, $state ) {
+	public static function getTranscodeDuration( File $file, array $state ) {
 		global $wgLang;
 		if ( $state['time_success'] !== null ) {
 			$startTime = (int)wfTimestamp( TS_UNIX, $state['time_startwork'] );
 			$endTime = (int)wfTimestamp( TS_UNIX, $state['time_success'] );
 			$delta = $endTime - $startTime;
-			$duration = $wgLang->formatTimePeriod( $delta );
-			return $duration;
-		} else {
-			return '';
+			return $wgLang->formatTimePeriod( $delta );
 		}
+		return '';
 	}
 
 	/**
@@ -174,13 +176,12 @@ class TranscodeStatusTable {
 	 * @param array $state
 	 * @return string
 	 */
-	public static function getTranscodeBitrate( $file, $state ) {
+	public static function getTranscodeBitrate( File $file, array $state ) {
 		global $wgLang;
 		if ( $state['time_success'] !== null ) {
 			return $wgLang->formatBitrate( $state['final_bitrate'] );
-		} else {
-			return '';
 		}
+		return '';
 	}
 
 	/**

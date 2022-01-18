@@ -15,7 +15,8 @@ class ApiTranscodeStatus extends ApiQueryBase {
 		// Make sure we have files in the title set:
 		if ( !empty( $pageIds[NS_FILE] ) ) {
 			$titles = array_keys( $pageIds[NS_FILE] );
-			asort( $titles ); // Ensure the order is always the same
+			// Ensure the order is always the same
+			asort( $titles );
 
 			$result = $this->getResult();
 			$images = MediaWikiServices::getInstance()->getRepoGroup()->findFiles( $titles );
@@ -27,11 +28,10 @@ class ApiTranscodeStatus extends ApiQueryBase {
 				if ( TimedMediaHandlerHooks::isTranscodableTitle( $img->getTitle() ) ) {
 					$transcodeStatus = WebVideoTranscode::getTranscodeState( $img );
 					// remove useless properties
-					foreach ( $transcodeStatus as $key => &$val ) {
-						unset( $val['id'] );
-						unset( $val['image_name'] );
-						unset( $val['key'] );
+					foreach ( $transcodeStatus as &$val ) {
+						unset( $val['id'], $val['image_name'], $val['key'] );
 					}
+					unset( $val );
 					$result->addValue( [
 						'query', 'pages', $img->getTitle()->getArticleID() ], 'transcodestatus', $transcodeStatus
 					);

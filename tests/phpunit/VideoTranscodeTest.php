@@ -33,7 +33,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			'prop' => 'videoinfo',
 			'viprop' => "derivatives",
 		];
-		list( $result,, ) = $this->doApiRequest( $params );
+		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest( $params );
 
 		// Get the $derivatives:
 		$derivatives = $this->getDerivativesFromResult( $result );
@@ -54,13 +54,13 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		$targetEncodes = [];
 		foreach ( $res as $row ) {
 			$codec = WebVideoTranscode::$derivativeSettings[ $row->transcode_key ]['videoCodec'];
-			if ( $codec == 'theora' ) {
+			if ( $codec === 'theora' ) {
 				$hasOgg = true;
 			}
-			if ( $codec == 'vp8' ) {
+			if ( $codec === 'vp8' ) {
 				$hasWebM = true;
 			}
-			if ( $codec == 'vp9' ) {
+			if ( $codec === 'vp9' ) {
 				$hasWebM = true;
 			}
 			$targetEncodes[ $row->transcode_key ] = $row;
@@ -76,7 +76,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		] );
 
 		// Now check if the derivatives were created:
-		list( $result,, ) = $this->doApiRequest( $params );
+		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest( $params );
 		$derivatives = $this->getDerivativesFromResult( $result );
 
 		// Check that every requested encode was encoded:
@@ -84,7 +84,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			$targetEncodeFound = false;
 			foreach ( $derivatives as $derv ) {
 				// The transcode key is always the last part of the file name:
-				if ( substr( $derv['src'], -1 * strlen( $transcodeKey ) ) == $transcodeKey ) {
+				if ( substr( $derv['src'], -1 * strlen( $transcodeKey ) ) === $transcodeKey ) {
 					$targetEncodeFound = true;
 				}
 			}

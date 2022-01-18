@@ -29,7 +29,7 @@ class VideoThumbnailTest extends ApiVideoUploadTestCase {
 		];
 
 		// Do a request for a small ( 200px ) thumbnail
-		list( $result,, ) = $this->doApiRequest(
+		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest(
 			array_merge( $params, [
 					'iiurlwidth' => '200'
 				]
@@ -53,7 +53,7 @@ class VideoThumbnailTest extends ApiVideoUploadTestCase {
 		// Make sure the thumbnail url is valid and the correct size
 		// ( assuming php has getimagesize function )
 		if ( function_exists( 'getimagesize' ) ) {
-			list( $width ,,, ) = getimagesize( $imageInfo[ 'thumburl'] );
+			[ $width, , , ] = getimagesize( $imageInfo['thumburl'] );
 			$this->assertEquals( 200, $width );
 		}
 
@@ -63,7 +63,7 @@ class VideoThumbnailTest extends ApiVideoUploadTestCase {
 		 */
 
 		// Test a larger thumbnail with 1 second time offset
-		list( $result,, ) = $this->doApiRequest(
+		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest(
 			array_merge( $params, [
 					'iiurlwidth' => '600',
 					'iiurlparam' => '1'
@@ -76,7 +76,7 @@ class VideoThumbnailTest extends ApiVideoUploadTestCase {
 		$targetWidth = ( (int)$file['width'] < 600 ) ? (int)$file['width'] : 600;
 		$this->assertEquals( $targetWidth, (int)$imageInfo['thumbwidth'] );
 		if ( function_exists( 'getimagesize' ) ) {
-			list( $srcImageWidth ,,, ) = getimagesize( $imageInfo[ 'thumburl'] );
+			[ $srcImageWidth, , , ] = getimagesize( $imageInfo['thumburl'] );
 			$this->assertEquals( $targetWidth, $srcImageWidth );
 		}
 	}

@@ -2,6 +2,8 @@
 
 namespace MediaWiki\TimedMediaHandler\TimedText;
 
+use ReflectionClass;
+
 /**
  * A fairly lax SubRip (.srt) subtitle file reader.
  * Should accept a lot of sloppy syntax we have in our files.
@@ -30,7 +32,7 @@ class SrtReader extends Reader {
 	protected $lineStart = 0;
 
 	/** @var DOM\Cue|null */
-	protected $cue = null;
+	protected $cue;
 	/** @var string */
 	protected $tag = '';
 	/** @var string */
@@ -40,7 +42,7 @@ class SrtReader extends Reader {
 	/** @var DOM\InternalNode[] */
 	protected $stack = [];
 	/** @var DOM\InternalNode|null */
-	protected $current = null;
+	protected $current;
 
 	/**
 	 * @inheritDoc
@@ -48,7 +50,8 @@ class SrtReader extends Reader {
 	public function read( $input ) {
 		// Trim BOM if present.
 		$bom = "\xEF\xBB\xBF";
-		if ( substr( $input, 0, 3 ) === $bom ) {
+
+		if ( strncmp( $input, $bom, 3 ) === 0 ) {
 			$input = substr( $input, 3 );
 		}
 		$this->parse( $input );
@@ -94,9 +97,8 @@ class SrtReader extends Reader {
 	protected function peek() {
 		if ( $this->pos < $this->len ) {
 			return $this->input[$this->pos];
-		} else {
-			return '';
 		}
+		return '';
 	}
 
 	protected function consume() {
@@ -107,9 +109,8 @@ class SrtReader extends Reader {
 				$this->lineStart = $this->pos;
 			}
 			return $c;
-		} else {
-			return '';
 		}
+		return '';
 	}
 
 	protected function consumeWhile( $callback ) {
@@ -212,20 +213,15 @@ class SrtReader extends Reader {
 				$this->consume();
 
 				$digits = $this->consumeHexDigits();
-				if ( $digits === '' ) {
-					$this->restoreState();
-					return '';
-				}
-				$entity .= $digits;
 			} else {
 				// Decimal?
 				$digits = $this->consumeDigits();
-				if ( $digits === '' ) {
-					$this->restoreState();
-					return '';
-				}
-				$entity .= $digits;
 			}
+			if ( $digits === '' ) {
+				$this->restoreState();
+				return '';
+			}
+			$entity .= $digits;
 		} else {
 			// Named char reference.
 			$name = $this->consumeAlphanum();
@@ -268,7 +264,9 @@ class SrtReader extends Reader {
 				$this->consumeSpace();
 				$accumulator *= 60.0;
 				continue;
-			} elseif ( $c === ',' || $c === '.' ) {
+			}
+
+			if ( $c === ',' || $c === '.' ) {
 				$this->consume();
 				$millis = $this->consumeDigits();
 				if ( $millis === '' ) {
@@ -276,10 +274,8 @@ class SrtReader extends Reader {
 					return false;
 				}
 				$accumulator += ( (float)$millis / 1000.0 );
-				return $accumulator;
-			} else {
-				return $accumulator;
 			}
+			return $accumulator;
 		} while ( true );
 	}
 
@@ -317,7 +313,7 @@ class SrtReader extends Reader {
 	protected function pushStack( DOM\Node $node ) {
 		$this->current->appendNode( $node );
 		if ( $node instanceof DOM\InternalNode ) {
-			array_push( $this->stack, $node );
+			$this->stack[] = $node;
 			$this->current = $node;
 		}
 	}
@@ -338,10 +334,10 @@ class SrtReader extends Reader {
 
 		// Build a parser state -> method dispatch map
 		$map = [];
-		$class = new \ReflectionClass( self::class );
+		$class = new ReflectionClass( self::class );
 		foreach ( $class->getMethods() as $method ) {
 			$name = $method->getName();
-			if ( substr( $name, 0, 5 ) === 'state' ) {
+			if ( strncmp( $name, 'state', 5 ) === 0 ) {
 				$state = substr( $name, 5 );
 				$map[$state] = [ $this, $name ];
 			}
@@ -361,33 +357,38 @@ class SrtReader extends Reader {
 		$c = $this->peek();
 		if ( $c === '' ) {
 			return 'End';
-		} elseif ( \ctype_digit( $c ) ) {
+		}
+
+		if ( \ctype_digit( $c ) ) {
 			$this->cue = new DOM\Cue();
 			$this->cue->id = $this->consumeDigits();
 
 			$c = $this->peek();
 			if ( $c === '' ) {
 				return 'UnexpectedEnd';
-			} elseif ( \ctype_space( $c ) ) {
+			}
+
+			if ( \ctype_space( $c ) ) {
 				// It's supposed to be delimited by a line ending...
 				// But some input files are messy and squish on one line.
 				$this->consumeWhitespace();
 				return 'Timestamp';
-			} else {
-				$this->recordError( 'Expected newline after cue id' );
-				// @fixme consume until next double newline?
-				$this->consumeLine();
-				return 'Start';
 			}
-		} elseif ( \ctype_space( $c ) ) {
-			// Extra whitespace or blank lines are icky
-			$this->consumeWhitespace();
-			return 'Start';
-		} else {
-			$this->recordError( 'Expected digit cue id' );
+
+			$this->recordError( 'Expected newline after cue id' );
+			// @fixme consume until next double newline?
 			$this->consumeLine();
 			return 'Start';
 		}
+
+		if ( \ctype_space( $c ) ) {
+			// Extra whitespace or blank lines are icky
+			$this->consumeWhitespace();
+		} else {
+			$this->recordError( 'Expected digit cue id' );
+			$this->consumeLine();
+		}
+		return 'Start';
 	}
 
 	public function stateTimestamp() {
@@ -448,7 +449,9 @@ class SrtReader extends Reader {
 			$this->tag = '';
 			$this->tagSource = $c;
 			return 'TagStart';
-		} elseif ( $c === '&' ) {
+		}
+
+		if ( $c === '&' ) {
 			$entity = $this->consumeEntity();
 			if ( $entity === '' ) {
 				$this->consume();
@@ -457,15 +460,19 @@ class SrtReader extends Reader {
 				$this->text .= $entity;
 			}
 			return 'Text';
-		} elseif ( $c === '' ) {
+		}
+
+		if ( $c === '' ) {
 			return 'TextEnd';
-		} elseif ( $c === "\n" ) {
+		}
+
+		if ( $c === "\n" ) {
 			$this->consume();
 			return 'TextNewline';
-		} else {
-			$this->text .= $this->consumePlaintext();
-			return 'Text';
 		}
+
+		$this->text .= $this->consumePlaintext();
+		return 'Text';
 	}
 
 	public function stateTextNewline() {
@@ -473,10 +480,10 @@ class SrtReader extends Reader {
 		if ( $c === "\n" ) {
 			// Second newline terminates the cue text.
 			return 'TextEnd';
-		} else {
-			$this->text .= "\n";
-			return 'Text';
 		}
+
+		$this->text .= "\n";
+		return 'Text';
 	}
 
 	public function stateTagStart() {
@@ -485,9 +492,9 @@ class SrtReader extends Reader {
 			$this->consume();
 			$this->tagSource .= $c;
 			return 'TagCloseMain';
-		} else {
-			return 'TagMain';
 		}
+
+		return 'TagMain';
 	}
 
 	public function stateTagMain() {
@@ -495,17 +502,23 @@ class SrtReader extends Reader {
 		$this->tagSource .= $c;
 		if ( $c === ' ' || $c === "\x09" ) {
 			return 'TagSpace';
-		} elseif ( $c === '/' ) {
+		}
+
+		if ( $c === '/' ) {
 			return 'TagSelfClose';
-		} elseif ( $c === '>' ) {
+		}
+
+		if ( $c === '>' ) {
 			return 'TagEnd';
-		} elseif ( $c === '' ) {
+		}
+
+		if ( $c === '' ) {
 			$this->text = $this->tagSource;
 			return 'TextEnd';
-		} else {
-			$this->tag .= $c;
-			return 'TagMain';
 		}
+
+		$this->tag .= $c;
+		return 'TagMain';
 	}
 
 	public function stateTagSelfClose() {
@@ -521,15 +534,19 @@ class SrtReader extends Reader {
 			}
 			$this->current->appendNode( $node );
 			return 'Text';
-		} elseif ( $c === ' ' || $c === "\x09" ) {
+		}
+
+		if ( $c === ' ' || $c === "\x09" ) {
 			// bleeeeh
 			return 'TagSelfClose';
-		} elseif ( $c === '' ) {
-			return 'TextEnd';
-		} else {
-			$this->tag .= $c;
-			return 'TagSelfClose';
 		}
+
+		if ( $c === '' ) {
+			return 'TextEnd';
+		}
+
+		$this->tag .= $c;
+		return 'TagSelfClose';
 	}
 
 	public function stateTagCloseMain() {
@@ -558,17 +575,21 @@ class SrtReader extends Reader {
 				$this->current->appendNode( $node );
 			}
 			return 'Text';
-		} elseif ( $c === ' ' || $c === "\x09" ) {
+		}
+
+		if ( $c === ' ' || $c === "\x09" ) {
 			$node = new DOM\TextNode( $this->tagSource );
 			$this->current->appendNode( $node );
 			return 'Text';
-		} elseif ( $c === '' ) {
+		}
+
+		if ( $c === '' ) {
 			$this->text = $this->tagSource;
 			return 'TextEnd';
-		} else {
-			$this->tag .= $c;
-			return 'TagCloseMain';
 		}
+
+		$this->tag .= $c;
+		return 'TagCloseMain';
 	}
 
 	public function stateTagSpace() {
@@ -577,12 +598,14 @@ class SrtReader extends Reader {
 		// @todo accept some attributes
 		if ( $c === '>' ) {
 			return 'TagEnd';
-		} elseif ( $c === '' ) {
+		}
+
+		if ( $c === '' ) {
 			$this->text = $this->tagSource;
 			return 'TextEnd';
-		} else {
-			return 'TagSpace';
 		}
+
+		return 'TagSpace';
 	}
 
 	public function stateTagEnd() {

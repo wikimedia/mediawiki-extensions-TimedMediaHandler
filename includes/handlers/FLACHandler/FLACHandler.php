@@ -32,7 +32,7 @@ class FLACHandler extends ID3Handler {
 			return false;
 		}
 
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'flac' ) {
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'flac' ) {
 			$streamTypes[] = 'FLAC';
 		}
 

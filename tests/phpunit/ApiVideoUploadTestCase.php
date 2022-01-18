@@ -61,7 +61,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	protected function tearDown(): void {
 		parent::tearDown();
 
-		$testMediaFiles = $this->mediaFilesProvider();
+		$testMediaFiles = self::mediaFilesProvider();
 		foreach ( $testMediaFiles as $file ) {
 			$file = $file[0];
 			// Clean up and delete all files

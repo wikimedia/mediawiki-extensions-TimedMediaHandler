@@ -25,7 +25,7 @@ class MidiHandler extends ID3Handler {
 
 		if (
 			isset( $metadata['audio'] )
-			&& $metadata['audio']['dataformat'] == 'midi'
+			&& $metadata['audio']['dataformat'] === 'midi'
 		) {
 			return Status::newGood();
 		}
@@ -43,7 +43,7 @@ class MidiHandler extends ID3Handler {
 			return false;
 		}
 
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'midi' ) {
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'midi' ) {
 			$streamTypes[] = 'MIDI';
 		}
 

@@ -31,10 +31,10 @@ class Mp4Handler extends ID3Handler {
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if ( isset( $metadata['video']['resolution_x'] )
-				&&
-			isset( $metadata['video']['resolution_y'] )
-		) {
+		if ( isset(
+			$metadata['video']['resolution_x'],
+			$metadata['video']['resolution_y']
+		) ) {
 			return [
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']
@@ -82,11 +82,11 @@ class Mp4Handler extends ID3Handler {
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
-		$metadata = self::unpackMetadata( $file->getMetadata() );
+		$metadata = $this->unpackMetadata( $file->getMetadata() );
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] == 'mp4' ) {
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'mp4' ) {
 			if ( isset( $metadata['audio']['codec'] )
 				&&
 				strpos( $metadata['audio']['codec'], 'AAC' ) !== false
@@ -97,7 +97,7 @@ class Mp4Handler extends ID3Handler {
 			}
 		}
 		// id3 gives 'V_VP8' for what we call VP8
-		if ( isset( $metadata['video'] ) && $metadata['video']['dataformat'] == 'quicktime' ) {
+		if ( isset( $metadata['video'] ) && $metadata['video']['dataformat'] === 'quicktime' ) {
 			$streamTypes[] = 'h.264';
 		}
 
