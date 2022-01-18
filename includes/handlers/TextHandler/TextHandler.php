@@ -157,9 +157,17 @@ class TextHandler {
 			// No timed text namespace, don't try to look up timed text tracks
 			return false;
 		}
+		$canonicalTitle = Title::makeName(
+			$this->file->getTitle()->getNamespace(),
+			$this->file->getTitle()->getDbKey(),
+			'', // fragment
+			'', // interwiki
+			true // canonical namespace
+		);
 		return [
 			'action' => 'query',
-			'titles' => $this->file->getTitle()->getPrefixedDBkey(),
+			// For a remote wiki, we need to always use canonical namespace names
+			'titles' => $canonicalTitle,
 			'prop' => 'videoinfo',
 			'viprop' => 'timedtext',
 			'formatversion' => '2',
