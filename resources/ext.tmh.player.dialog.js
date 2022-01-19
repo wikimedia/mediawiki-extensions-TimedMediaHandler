@@ -56,10 +56,10 @@
 		this.content.$element.append( indicator.$element );
 
 		// We might cause a delayed load of videojs here.
-		this.videojsDeferred = this.$video.transformVideoPlayer();
+		this.videojsPromise = this.$video.transformVideoPlayer();
 
 		// Start playback when ready...
-		this.videojsDeferred.then( function ( $videojs ) {
+		this.videojsPromise.then( function ( $videojs ) {
 			var player = $videojs[ 0 ];
 			player.ready( function () {
 				// Use a setTimeout to ensure all ready callbacks have run before
@@ -80,7 +80,7 @@
 	};
 
 	MediaDialog.prototype.stop = function () {
-		this.videojsDeferred.then( function ( $videojs ) {
+		this.videojsPromise.then( function ( $videojs ) {
 			$videojs.each( function () {
 				this.pause();
 			} );
@@ -122,7 +122,7 @@
 				dialog.stop();
 				deferred.resolve();
 			} );
-		} );
+		} ).promise();
 	}
 	$.fn.showVideoPlayerDialog = showVideoPlayerDialog;
 

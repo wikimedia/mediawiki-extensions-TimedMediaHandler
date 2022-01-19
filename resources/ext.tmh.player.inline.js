@@ -135,7 +135,7 @@
 	/**
 	 * Load video players for a jQuery collection
 	 *
-	 * @return {jQuery.Deferred}
+	 * @return {Promise}
 	 */
 	function loadVideoPlayer() {
 		var $collection = this;
@@ -280,7 +280,7 @@
 			mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' ).then( function () {
 				deferred.resolve( $collection.map( loadSinglePlayer ) );
 			} );
-		} );
+		} ).promise();
 	}
 
 	// Preload the ogv.js module if we're going to need it...
