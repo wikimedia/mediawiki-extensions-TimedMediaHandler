@@ -12,7 +12,6 @@
 @supports ( aspect-ratio: 16 / 9 ) {
 	.mediaContainer,
 	.mediaContainer video,
-	.mediaContainer audio,
 	.PopUpMediaTransform,
 	.PopUpMediaTransform img {
 		box-sizing: border-box;
