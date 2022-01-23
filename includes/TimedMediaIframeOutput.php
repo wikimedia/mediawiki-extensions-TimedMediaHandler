@@ -32,7 +32,7 @@ class TimedMediaIframeOutput {
 
 		// Make sure we are in the right namespace and iframe=true was called:
 		if ( is_object( $title ) && $title->getNamespace() === NS_FILE &&
-			$request->getVal( 'embedplayer' ) === 'yes' &&
+			$request->getVal( 'embedplayer' ) &&
 			self::outputIframe( $title, $output )
 		) {
 			// Turn off output of anything other than the iframe
@@ -82,8 +82,8 @@ class TimedMediaIframeOutput {
 		}
 
 		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
-			$out->addModules( 'ext.tmh.player' );
-			$out->addModuleStyles( 'ext.tmh.player.styles' );
+			$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
+			$out->addModuleStyles( [ 'ext.tmh.player.inline.styles' ] );
 		}
 		$out->addModuleStyles( 'embedPlayerIframeStyle' );
 

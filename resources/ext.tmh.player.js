@@ -30,10 +30,20 @@ mw.hook( 'wikipage.content' ).add( function ( $content ) {
  * Loader for iframe mode
  */
 $( function () {
-	// @fixme load and transform immediately for these?
-	// The iframe mode
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '#videoContainer video, #videoContainer audio' ).loadVideoPlayer();
+	var $iframeElements = $( '#videoContainer video, #videoContainer audio' );
+	if ( !$iframeElements.length ) {
+		return;
+	}
+	// The iframe mode
+	mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
+		$iframeElements.transformVideoPlayer().then( function ( $videojs ) {
+			var player = $videojs[ 0 ];
+			player.ready( function () {
+				// Add further customizations here
+			} );
+		} );
+	} );
 } );
 
 // exported object
