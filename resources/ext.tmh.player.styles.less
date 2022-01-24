@@ -42,7 +42,6 @@ audio,
 }
 
 .mw-tmh-player.video > .mw-tmh-play {
-	/* @embed */
 	transition: background-color 120ms linear, opacity 100ms ease;
 	opacity: 0.8;
 
@@ -74,8 +73,10 @@ audio,
 
 .mw-tmh-player.video > .mw-tmh-play:hover,
 .mw-tmh-player.video > .mw-tmh-play:active,
+.mw-tmh-player.video > .mw-tmh-play:focus,
 .mw-tmh-player.audio > .mw-tmh-play:hover,
-.mw-tmh-player.audio > .mw-tmh-play:active {
+.mw-tmh-player.audio > .mw-tmh-play:active,
+.mw-tmh-player.audio > .mw-tmh-play:focus {
 	opacity: 1;
 }
 

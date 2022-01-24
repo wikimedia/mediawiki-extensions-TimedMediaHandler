@@ -51,7 +51,10 @@ MediaElement.prototype.load = function () {
 		.addClass( 'mw-tmh-player' )
 		.addClass( this.isAudio ? 'audio' : 'video' )
 		.append( this.$element.clone()
-			.attr( 'disabled', true )
+			.attr( {
+				disabled: '',
+				tabindex: -1
+			} )
 		)
 		.append( $( '<a>' )
 			.addClass( 'mw-tmh-play' )
@@ -61,6 +64,7 @@ MediaElement.prototype.load = function () {
 				role: 'button'
 			} )
 			.on( 'click', this.clickHandler.bind( this ) )
+			.on( 'keypress', this.keyPressHandler.bind( this ) )
 			.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 		);
 
@@ -88,13 +92,28 @@ MediaElement.prototype.getUrl = function () {
 };
 
 /**
+ * Key press handler for `<a role="button">` element to open a
+ * dialog and play a {MediaElement}.
+ *
+ * @param {MouseEvent} event
+ */
+MediaElement.prototype.keyPressHandler = function ( event ) {
+	if (
+		MediaElement.currentlyPlaying ||
+		( event.key !== ' ' && event.key !== 'Enter' )
+	) {
+		return;
+	}
+	this.playInlineOrOpenDialog();
+	event.preventDefault();
+};
+
+/**
  * Click handler to open dialog and play a {MediaElement}
  *
  * @param {MouseEvent} event
  */
 MediaElement.prototype.clickHandler = function ( event ) {
-	var mediaElement = this;
-
 	if (
 		MediaElement.currentlyPlaying ||
 		// not left click
@@ -105,6 +124,16 @@ MediaElement.prototype.clickHandler = function ( event ) {
 	) {
 		return;
 	}
+	this.playInlineOrOpenDialog();
+	event.preventDefault();
+};
+
+/**
+ * Method to load the player inline or open a dialog and
+ * play the element in the dialog.
+ */
+MediaElement.prototype.playInlineOrOpenDialog = function () {
+	var mediaElement = this;
 
 	MediaElement.$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
 		.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
@@ -157,7 +186,6 @@ MediaElement.prototype.clickHandler = function ( event ) {
 			MediaElement.currentlyPlaying = false;
 		} );
 	}
-	event.preventDefault();
 };
 
 module.exports = MediaElement;
