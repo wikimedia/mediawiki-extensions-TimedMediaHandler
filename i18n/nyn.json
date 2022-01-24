@@ -4,5 +4,6 @@
 			"Kakonjo"
 		]
 	},
-	"timedmedia-source-file": "$1 Ehibikuruga"
+	"timedmedia-source-file": "$1 Ehibikuruga",
+	"timedmedia-source-audio-file-desc": "Yenyini $1 fayiro ($2)"
 }
