@@ -1,5 +1,3 @@
-@import 'mediawiki.mixins';
-
 /* Shrink videos to fit rather than overflowing containers */
 video {
 	box-sizing: border-box;
@@ -36,9 +34,14 @@ audio,
 }
 
 .mw-tmh-player.audio > .mw-tmh-play {
-	/* @embed */
-	.background-image( 'play-audio.svg' );
-	opacity: 0.5;
+	.mw-tmh-play-icon {
+		/* @embed */
+		background: rgba( 0, 0, 0, 0.5 ) url( play-invert.svg ) no-repeat 10px;
+		transition: background-color 360ms ease-in-out;
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
 }
 
 .mw-tmh-player.video > .mw-tmh-play {
@@ -71,12 +74,15 @@ audio,
 	}
 }
 
-.mw-tmh-player.video > .mw-tmh-play:hover,
-.mw-tmh-player.video > .mw-tmh-play:active,
-.mw-tmh-player.video > .mw-tmh-play:focus,
 .mw-tmh-player.audio > .mw-tmh-play:hover,
 .mw-tmh-player.audio > .mw-tmh-play:active,
 .mw-tmh-player.audio > .mw-tmh-play:focus {
+	background-color: rgba( 0, 0, 0, 0.8 );
+}
+
+.mw-tmh-player.video > .mw-tmh-play:hover,
+.mw-tmh-player.video > .mw-tmh-play:active,
+.mw-tmh-player.video > .mw-tmh-play:focus {
 	opacity: 1;
 }
 
