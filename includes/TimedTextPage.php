@@ -2,23 +2,38 @@
 /**
  * TimedText page display the current video with subtitles to the right.
  *
- * Future features for this page"
+ * Future features for this page
  * @todo add srt download links
  * @todo parse and validate srt files
  * @todo link-in or include the universal subtitles editor
  */
 
+use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 
 class TimedTextPage extends Article {
-	/** @var int The width of the video plane */
+
+	/** @var int The width of the video plane. Must much the CSS */
 	private static $videoWidth = 400;
+
 	/** @var string[] */
 	private static $knownTimedTextExtensions = [ 'srt', 'vtt' ];
 
-	public function view() {
+	/**
+	 * @var LanguageNameUtils
+	 */
+	private $languageNameUtils;
+
+	public function __construct( Title $title, $oldId = null ) {
+		parent::__construct( $title, $oldId );
+		$services = MediaWikiServices::getInstance();
+		$this->languageNameUtils = $services->getLanguageNameUtils();
+	}
+
+	public function view(): void {
 		$request = $this->getContext()->getRequest();
 		$out = $this->getContext()->getOutput();
 		$diff = $request->getVal( 'diff' );
@@ -34,7 +49,7 @@ class TimedTextPage extends Article {
 	 * Render TimedText to given output
 	 * @param OutputPage $out
 	 */
-	public function renderOutput( $out ) {
+	public function renderOutput( OutputPage $out ): void {
 		// parse page title:
 		$titleParts = explode( '.', $this->getTitle()->getDBkey() );
 		$timedTextExtension = array_pop( $titleParts );
@@ -69,7 +84,7 @@ class TimedTextPage extends Article {
 			return;
 		}
 
-		// Check for File name with text extension ( from remaning parts of title )
+		// Check for File name with text extension ( from remaining parts of title )
 		// i.e TimedText:myfile.ogg.en.srt
 
 		$videoTitle = Title::newFromText( implode( '.', $titleParts ), NS_FILE );
@@ -88,7 +103,7 @@ class TimedTextPage extends Article {
 
 		// Look up the language name:
 		$language = $out->getLanguage()->getCode();
-		$languages = Language::fetchLanguageNames( $language, 'all' );
+		$languages = $this->languageNameUtils->getLanguageNames( $language, LanguageNameUtils::ALL );
 		$languageName = $languages[$languageKey] ?? $languageKey;
 
 		// Set title
@@ -97,17 +112,19 @@ class TimedTextPage extends Article {
 			'mwe-timedtext-language-no-subtitles-for-clip';
 		$out->setPageTitle( wfMessage( $message, $languageName, $videoTitle ) );
 
-		// Get the video with with a max of 600 pixel page
-		$out->addHTML(
-			Xml::tags( 'table', [ 'style' => 'border:none' ],
-				Xml::tags( 'tr', null,
-					Xml::tags( 'td', [ 'valign' => 'top',  'width' => self::$videoWidth ],
-						$this->getVideoHTML( $videoTitle )
-					) .
-					Xml::tags( 'td', [ 'valign' => 'top' ], $this->getTimedTextHTML( $languageName ) )
+		$out->addHtml(
+			Html::rawElement( 'div', [ 'class' => 'mw-timedtextpage-layout' ],
+				Html::rawElement( 'div', [ 'class' => 'mw-timedtextpage-video' ],
+					$this->getVideoHTML( $videoTitle )
+				) .
+				Html::rawElement(
+					'div',
+					[ 'class' => 'mw-timedtextpage-tt' ],
+					$this->getTimedTextHTML( $languageName )
 				)
 			)
 		);
+		$out->addModuleStyles( [ 'ext.tmh.timedtextpage.styles' ] );
 
 		if ( !$oldid ) {
 			// Set wgRevision at the end from what we actually fetched.
@@ -119,7 +136,7 @@ class TimedTextPage extends Article {
 	 * Timed text or file is hosted on remote repo, Add a short description and link to foring repo
 	 * @param File $file the base file
 	 */
-	private function doLinkToRemote( $file ) {
+	private function doLinkToRemote( File $file ): void {
 		$output = $this->getContext()->getOutput();
 		$output->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',
 			$file->getRepo()->getDisplayName() ) );
@@ -127,7 +144,7 @@ class TimedTextPage extends Article {
 			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName() )->parse() );
 	}
 
-	private function doRedirectToPageForm() {
+	private function doRedirectToPageForm(): void {
 		$context = $this->getContext();
 		$lang = $context->getLanguage();
 		$out = $context->getOutput();
@@ -137,7 +154,10 @@ class TimedTextPage extends Article {
 
 		$out->enableOOUI();
 
-		$languages = Language::fetchLanguageNames( null, 'mwfile' );
+		$languages = $this->languageNameUtils->getLanguageNames(
+			LanguageNameUtils::AUTONYMS,
+			LanguageNameUtils::SUPPORTED
+		);
 		$options = [];
 		foreach ( $languages as $code => $name ) {
 			$display = LanguageCode::bcp47( $code ) . ' - ' . $name;
@@ -163,7 +183,7 @@ class TimedTextPage extends Article {
 			->show();
 	}
 
-	public function onSubmit( array $data ) {
+	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
 			$output = $this->getContext()->getOutput();
 			$output->redirect(
@@ -176,10 +196,10 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Gets the video HTML ( with the current language set as default )
-	 * @param string $videoTitle
+	 * @param LinkTarget $videoTitle
 	 * @return string
 	 */
-	private function getVideoHTML( $videoTitle ) {
+	private function getVideoHTML( LinkTarget $videoTitle ): string {
 		// Get the video embed:
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $videoTitle );
 		if ( !$file ) {
@@ -200,7 +220,7 @@ class TimedTextPage extends Article {
 	 * @param string $languageName
 	 * @return Message|string
 	 */
-	private function getTimedTextHTML( $languageName ) {
+	private function getTimedTextHTML( string $languageName ) {
 		if ( !$this->getPage()->exists() ) {
 			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
 		}
@@ -219,11 +239,10 @@ class TimedTextPage extends Article {
 			return wfMessage( 'rev-deleted-text-permission', $languageName );
 		}
 
-		return Xml::element(
+		return Html::element(
 			'pre',
-			[ 'style' => 'margin-top: 0px;' ],
-			( $content instanceof TextContent ) ? $content->getText() : null,
-			false
+			[],
+			( $content instanceof TextContent ) ? $content->getText() : null
 		);
 	}
 }
