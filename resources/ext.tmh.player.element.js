@@ -47,15 +47,19 @@ MediaElement.prototype.load = function () {
 	// Hide native controls, we will restore them later once videojs player loads.
 	this.$element.removeAttr( 'controls' );
 
+	// Make a shallow clone, because we don't need <source> and <track> children
+	// for the placeholder and remove unneeded attributes and interactions
+	var $clonedVid = $( this.element.cloneNode() );
+	$clonedVid.attr( {
+		id: $clonedVid.attr( 'id' ) + '_placeholder',
+		disabled: '',
+		tabindex: -1
+	} ).removeAttr( 'src' );
+
 	this.$placeholder = $( '<span>' )
 		.addClass( 'mw-tmh-player' )
 		.addClass( this.isAudio ? 'audio' : 'video' )
-		.append( this.$element.clone()
-			.attr( {
-				disabled: '',
-				tabindex: -1
-			} )
-		)
+		.append( $clonedVid )
 		.append( $( '<a>' )
 			.addClass( 'mw-tmh-play' )
 			.attr( {
