@@ -204,5 +204,7 @@
 	"orphanedtimedtext-notimedtext": "Shown on Special:OrphanedTimedText if the TimedText namespace is disabled on that wiki (i.e. $wgEnableLocalTimedText is set to false). Note, do not use <nowiki>{{ns:TimedText}}</nowiki> in this message.",
 	"videojs-more-information": "Used as tooltip for more information button in video.js toolbar",
 	"videojs-quality": "Used as tooltip for resolution selector in video.js toolbar",
+	"videojs-captions-create": "Menu entry in the captions menu of the video player, to navigate to the create captions interface. In some languages captions are known as subtitles.",
+	"videojs-subtitles-create": "Menu entry in the subtitles menu of the video player, to navigate to the create subtitles interface.",
 	"transcodestatistics": "{{doc-special|TranscodeStatistics}}"
 }

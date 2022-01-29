@@ -167,6 +167,8 @@ InlinePlayer.lazyInit = function () {
 	mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' );
 	require( './mw-info-button/mw-info-button.js' );
 	require( './videojs-resolution-switcher/videojs-resolution-switcher.js' );
+	require( './mw-subtitles-button/mw-subtitles-create.js' );
+	require( './mw-subtitles-button/mw-subtitles-button.js' );
 
 	if ( videojs.browser.IS_SAFARI ) {
 		// Html5 on Safari has a broken canPlayType
@@ -198,7 +200,9 @@ InlinePlayer.lazyInit = function () {
 	// video.js translations don't have region postfixes (yet)
 	videojs.addLanguage( mw.config.get( 'wgUserLanguage' ).split( '-' )[ 0 ], {
 		'More information': mw.msg( 'videojs-more-information' ),
-		Quality: mw.msg( 'videojs-quality' )
+		Quality: mw.msg( 'videojs-quality' ),
+		'Create captions': mw.msg( 'videojs-captions-create' ),
+		'Create subtitles': mw.msg( 'videojs-subtitles-create' )
 	} );
 
 	InlinePlayer.initialized = true;

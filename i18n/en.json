@@ -185,5 +185,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText is not enabled on this wiki.",
 	"videojs-more-information": "More information",
 	"videojs-quality": "Video quality",
+	"videojs-subtitles-create": "Create subtitles",
+	"videojs-captions-create": "Create captions",
 	"transcodestatistics": "Transcode statistics"
 }
