@@ -43,6 +43,8 @@ MediaElement.prototype.load = function () {
 		// This player has already been transformed.
 		return;
 	}
+	// Get this state before modifying
+	var playing = this.originalIsPlaying();
 
 	// Hide native controls, we will restore them later once videojs player loads.
 	this.$element.removeAttr( 'controls' );
@@ -76,6 +78,22 @@ MediaElement.prototype.load = function () {
 		// Replace the span linkWrap gave us
 		this.$element.parent().replaceWith( this.$placeholder );
 	}
+
+	if ( playing ) {
+		this.playInlineOrOpenDialog();
+	}
+};
+
+/**
+ * Check if the original element is playing
+ *
+ * @return {boolean}
+ */
+MediaElement.prototype.originalIsPlaying = function () {
+	return this.element.readyState > 2 &&
+		this.element.currentTime > 0 &&
+		!this.element.paused &&
+		!this.element.ended;
 };
 
 /**
