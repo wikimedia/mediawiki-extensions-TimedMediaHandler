@@ -164,8 +164,8 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
 			mediaElement.$placeholder.find( 'a' ).detach();
 			mediaElement.$placeholder.find( 'video,audio' ).replaceWith( mediaElement.$element );
-			mediaElement.$element.transformVideoPlayer().then( function ( $videojs ) {
-				var player = $videojs[ 0 ];
+			mediaElement.$element.transformVideoPlayer().then( function ( $inlinePlayers ) {
+				var player = $inlinePlayers[ 0 ].videojsPlayer;
 				player.ready( function () {
 					// Use a setTimeout to ensure all ready callbacks have run before
 					// we start playback. This is important for the source selector

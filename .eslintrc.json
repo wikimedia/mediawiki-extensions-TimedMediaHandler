@@ -5,6 +5,9 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
+	"globals": {
+		"videojs": true
+	},
 	"rules": {
 		"valid-jsdoc": "off",
 		"max-len": "off",

@@ -1,3 +1,9 @@
+/**
+ * Styles-only module, added to all pages which include videojs mode
+ * Both click to load and inline page modes.
+ * This CSS should work both with and without JS and determines sizing etc
+ */
+
 /* Shrink videos to fit rather than overflowing containers */
 video {
 	box-sizing: border-box;
@@ -17,6 +23,7 @@ audio,
 	width: 90%;
 }
 
+/* Added by the ext.tmh.player after transforming the player */
 .mw-tmh-player {
 	display: inline-block;
 	position: relative;
@@ -44,6 +51,7 @@ audio,
 	}
 }
 
+/* Play button to load and play the video file in a media dialog */
 .mw-tmh-player.video > .mw-tmh-play {
 	transition: background-color 120ms linear, opacity 100ms ease;
 	opacity: 0.8;
@@ -86,6 +94,8 @@ audio,
 	opacity: 1;
 }
 
+/* All interstitial and progress loading is for the
+   load phase between click and opening of the MediaDialog */
 .mw-tmh-player-interstitial {
 	position: fixed;
 	left: 0;
