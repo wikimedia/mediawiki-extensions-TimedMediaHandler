@@ -186,6 +186,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 неініціалізоване транскодування|$1 неініціалізованих транскодування|$1 неініціалізованих транскодувань}}",
 	"timedmedia-no-derivatives": "Транскодування не потрібне.",
 	"timedmedia-file": "Файл",
+	"timedmedia-dialog-close": "Закрити медіа-програвач",
 	"beta-feature-timedmediahandler-message-videojs": "Новий відеопрогравач",
 	"beta-feature-timedmediahandler-description-videojs": "Переглядайте відеофайли у сучасному програвачі з чистішим виглядом і сумісністю з мобільними пристроями.",
 	"right-transcode-reset": "Скидання невдалих або транскодованих відео із повторним занесенням їх у чергу завдань",
