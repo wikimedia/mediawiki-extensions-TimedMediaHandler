@@ -492,19 +492,19 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
 			// Note: do not add 'video-js' class before the runtime transform!
 			$mediaAttr['class'] = $wgVideoPlayerSkin;
-			$mediaAttr['width'] = $this->fillwindow ? '100%' : (int)$width;
+			$mediaAttr['width'] = (int)$width;
 			if ( $this->isVideo ) {
-				$mediaAttr['height'] = $this->fillwindow ? '100%' : (int)$height;
+				$mediaAttr['height'] = (int)$height;
 			} else {
 				unset( $mediaAttr['height'] );
 			}
 			if ( $this->fillwindow ) {
-				$mediaAttr[ 'class' ] .= ' vjs-fluid';
 				$mediaAttr[ 'data-player' ] = 'fillwindow';
 			}
 			if ( $this->inline ) {
 				$mediaAttr['class'] .= ' mw-tmh-inline';
 				$mediaAttr['playsinline'] = '';
+				$mediaAttr['preload'] = 'auto';
 			}
 		} else {
 			if ( $this->fillwindow ) {

@@ -556,7 +556,6 @@
 		"ext.tmh.player.dialog": {
 			"scripts": "resources/ext.tmh.player.dialog.js",
 			"styles": [
-				"resources/ext.tmh.player.inline.styles.less",
 				"resources/ext.tmh.player.dialog.less"
 			],
 			"targets": [
@@ -577,6 +576,7 @@
 				"resources/ext.tmh.player.inline.js"
 			],
 			"styles": [
+				"resources/ext.tmh.player.inline.styles.less",
 				"resources/mw-info-button/mw-info-button.css",
 				"resources/videojs-resolution-switcher/videojs-resolution-switcher.css"
 			],
