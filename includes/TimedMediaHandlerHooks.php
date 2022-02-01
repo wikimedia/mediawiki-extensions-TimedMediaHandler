@@ -511,13 +511,10 @@ class TimedMediaHandlerHooks {
 	 * @param array &$prefs
 	 */
 	public static function onGetBetaFeaturePreferences( $user, &$prefs ) {
-		$coreConfig = RequestContext::getMain()->getConfig();
-		$iconpath = $coreConfig->get( 'ExtensionAssetsPath' ) . "/TimedMediaHandler";
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$iconpath = $config->get( 'ExtensionAssetsPath' ) . "/TimedMediaHandler";
 
-		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'timedmediahandler' );
-
-		if ( $tmhConfig->get( 'TmhUseBetaFeatures' ) ) {
+		if ( $config->get( 'TmhUseBetaFeatures' ) ) {
 			$prefs['tmh-videojs'] = [
 				'label-message' => 'beta-feature-timedmediahandler-message-videojs',
 				'desc-message' => 'beta-feature-timedmediahandler-description-videojs',
@@ -543,10 +540,9 @@ class TimedMediaHandlerHooks {
 	 * @param array &$defaultOptions Array of preference keys and their default values.
 	 */
 	public static function onUserGetDefaultOptions( &$defaultOptions ) {
-		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'timedmediahandler' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		if ( $tmhConfig->get( 'TmhUseBetaFeatures' ) ) {
+		if ( $config->get( 'TmhUseBetaFeatures' ) ) {
 			$defaultOptions['tmh-videojs'] = false;
 		}
 	}
@@ -556,12 +552,11 @@ class TimedMediaHandlerHooks {
 	 * @return string
 	 */
 	public static function activePlayerMode() {
-		$tmhConfig = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'timedmediahandler' );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$context = RequestContext::getMain();
 		if (
-			$tmhConfig->get( 'TmhUseBetaFeatures' )
+			$config->get( 'TmhUseBetaFeatures' )
 			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
 			&& $context->getUser()->isSafeToLoad()
 			&& BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
