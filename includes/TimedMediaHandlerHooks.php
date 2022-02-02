@@ -474,22 +474,48 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * Return false here to evict existing parseroutput cache
+	 * Return false here to regenerate the ParserOutput even if there's a viable cache entry.
+	 *
+	 * This gets called on logged-in page views and CDN cache misses when there's an entry
+	 * that matches the page rendering hash and hasn't expired yet, allowing us to sometimes
+	 * reject it and regenerate it right away, ahead of its expiry date.
+	 *
 	 * @param ParserOutput $parserOutput
 	 * @param WikiPage $wikiPage
 	 * @param ParserOutput $parserOptions
 	 * @return bool
 	 */
 	public static function onRejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {
-		return !( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) && (
-				(
-					self::activePlayerMode() === 'mwembed' &&
-					!in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true )
-				) || (
-					self::activePlayerMode() === 'videojs' &&
-					!in_array( 'ext.tmh.player', $parserOutput->getModules(), true )
-				)
-			) );
+		// Per the onPageRenderingHash() handler below, when the default changes from
+		// Kaltura to videojs, we let take effect slowly during the natural rollover of
+		// canonical parser cache entries.
+		//
+		// For users that have opted-in to videojs (which is mostly a no-op when the default
+		// is videojs), trigger a regeneration right away if we encounter an older cache
+		// entry that contains Kaltura.
+		//
+		// Again, it's important that we don't do this unconditionally for all traffic, but
+		// we can let beta user pageviews speed up the regeneration cycle a little, and has
+		// the benefit of giving them a consistent post-transition experience, without
+		// any stale Kaltura pageviews between the default changing and the end of this
+		// transition period.
+		$useCache = true;
+
+		if (
+			// This page involves TMH,
+			$parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) &&
+			// and this wiki switched its default to videojs,
+			self::defaultPlayerMode() === 'videojs' &&
+			// and this cache entry uses Kaltura still
+			in_array( 'mw.MediaWikiPlayer.loader', $parserOutput->getModules(), true ) &&
+			// and we're viewed by a videojs beta user
+			self::hasEnabledVideojsBeta()
+		) {
+			// Accept cache miss, regenerate now.
+			$useCache = false;
+		}
+
+		return $useCache;
 	}
 
 	/**
@@ -498,7 +524,13 @@ class TimedMediaHandlerHooks {
 	 * @param array &$forOptions
 	 */
 	public static function onPageRenderingHash( &$hash, User $user, &$forOptions ) {
-		if ( self::activePlayerMode() === 'videojs' ) {
+		// Performance: Do not vary or mass-invalidate the ParserCache when the
+		// default changes. When defaults change, we'll slowly propagate as things
+		// get edited, purged, or expire naturally from the cache.
+		//
+		// For users that opt-in to videojs ahead of time, we must use a dedicated
+		// hash as otherwise their pageviews would poison the cache for everyone else.
+		if ( self::defaultPlayerMode() !== 'videojs' && self::activePlayerMode() === 'videojs' ) {
 			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 			if ( $userOptionsLookup->getOption( $user, 'tmh-videojs' ) === '1' ) {
 				$hash .= '!tmh-videojs';
@@ -548,19 +580,28 @@ class TimedMediaHandlerHooks {
 	}
 
 	/**
-	 * Return the configured player mode for this user
-	 * @return string
+	 * Whether this user has opt-ed into videojs via a beta feature.
+	 *
+	 * @return bool
 	 */
-	public static function activePlayerMode() {
+	private static function hasEnabledVideojsBeta(): bool {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-
 		$context = RequestContext::getMain();
-		if (
+
+		return (
 			$config->get( 'TmhUseBetaFeatures' )
 			&& ExtensionRegistry::getInstance()->isLoaded( 'BetaFeatures' )
 			&& $context->getUser()->isSafeToLoad()
 			&& BetaFeatures::isFeatureEnabled( $context->getUser(), 'tmh-videojs' )
-		) {
+		);
+	}
+
+	/**
+	 * Return the configured player mode for this user
+	 * @return string
+	 */
+	public static function activePlayerMode() {
+		if ( self::hasEnabledVideojsBeta() ) {
 			return 'videojs';
 		}
 
