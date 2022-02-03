@@ -531,10 +531,7 @@ class TimedMediaHandlerHooks {
 		// For users that opt-in to videojs ahead of time, we must use a dedicated
 		// hash as otherwise their pageviews would poison the cache for everyone else.
 		if ( self::defaultPlayerMode() !== 'videojs' && self::activePlayerMode() === 'videojs' ) {
-			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-			if ( $userOptionsLookup->getOption( $user, 'tmh-videojs' ) === '1' ) {
-				$hash .= '!tmh-videojs';
-			}
+			$hash .= '!tmh-videojs';
 		}
 	}
 
