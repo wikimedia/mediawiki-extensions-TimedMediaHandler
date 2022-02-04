@@ -251,7 +251,12 @@ InlinePlayer.prototype.infuse = function () {
 
 		// Pick the first resolution at least the size of the player,
 		// unless they're all too small.
-		var playerHeight = this.$videoplayer.height();
+		var playerHeight = Math.min(
+			// Do not autoselect above 1080p due to bandwidth requirements
+			1080,
+			// Account for screen density
+			this.$videoplayer.height() * window.devicePixelRatio
+		);
 		if ( !mw.OgvJsSupport.canPlayNatively() ) {
 			// Don't pick high-res versions on ogv.js which may be slow.
 			playerHeight = Math.min( playerHeight, 480 );
