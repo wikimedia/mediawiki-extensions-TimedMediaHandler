@@ -73,8 +73,10 @@ MediaDialog.prototype.play = function () {
 	} );
 	this.content.$element.append( indicator.$element );
 
+	// We don't need a play button (autoplay) nor a poster
+	var options = { poster: false, bigPlayButton: false };
 	// We might cause a delayed load of videojs here.
-	this.videojsPromise = this.$video.transformVideoPlayer();
+	this.videojsPromise = this.$video.transformVideoPlayer( options );
 
 	// Start playback when ready...
 	this.videojsPromise.then( function ( $inlinePlayers ) {
