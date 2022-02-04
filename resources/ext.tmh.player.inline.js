@@ -109,6 +109,7 @@ InlinePlayer.videoConfig = {
  * @type  {Object} with videoJS options to initiate a videoJS player with
  */
 InlinePlayer.audioConfig = {
+	bigPlayButton: false,
 	controlBar: {
 		fullscreenToggle: false,
 		pictureInPictureToggle: false
