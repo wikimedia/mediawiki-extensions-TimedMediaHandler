@@ -54,58 +54,47 @@ audio,
 	}
 }
 
-.mw-tmh-player.audio > .mw-tmh-play {
+/* Play button to load and play the video and audio file in a media dialog */
+.mw-tmh-player.video .mw-tmh-play .mw-tmh-play-icon {
+	/* @embed */
+	background: rgba( 0, 0, 0, 0.8 ) url( play-invert.svg ) center no-repeat;
+	display: block;
+	margin: auto;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	transition: transform 120ms ease-out, background-color 120ms ease-out;
+}
+
+.mw-tmh-player.audio .mw-tmh-play .mw-tmh-play-icon {
+	/* @embed */
+	background: rgba( 0, 0, 0, 0.5 ) url( play-invert.svg ) no-repeat 10px;
+	transition: background-color 120ms ease-out;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.mw-tmh-player.video .mw-tmh-play:hover,
+.mw-tmh-player.video .mw-tmh-play:focus,
+.mw-tmh-player.video .mw-tmh-play:active {
 	.mw-tmh-play-icon {
-		/* @embed */
-		background: rgba( 0, 0, 0, 0.5 ) url( play-invert.svg ) no-repeat 10px;
-		transition: background-color 360ms ease-in-out;
-		display: block;
-		height: 100%;
-		width: 100%;
+		background-color: rgba( 0, 0, 0, 0.8 );
+		transform: scale( 1.1 );
 	}
 }
 
-/* Play button to load and play the video file in a media dialog */
-.mw-tmh-player.video > .mw-tmh-play {
-	transition: background-color 120ms linear, opacity 100ms ease;
-	opacity: 0.8;
-
+.mw-tmh-player.audio .mw-tmh-play:hover,
+.mw-tmh-player.audio .mw-tmh-play:focus,
+.mw-tmh-player.audio .mw-tmh-play:active {
 	.mw-tmh-play-icon {
-		/* @embed */
-		background: rgba( 0, 0, 0, 0.8 ) url( play-invert.svg ) no-repeat;
-		background-position: center;
-		margin: auto;
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		display: block;
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		border: 1px solid rgba( 255, 255, 255, 0.8 );
-		transition: width 120ms ease-out, height 120ms ease-out;
+		background-color: rgba( 0, 0, 0, 0.8 );
 	}
-}
-
-.mw-tmh-player.video:hover > .mw-tmh-play {
-	.mw-tmh-play-icon {
-		width: 54px;
-		height: 54px;
-	}
-}
-
-.mw-tmh-player.audio > .mw-tmh-play:hover,
-.mw-tmh-player.audio > .mw-tmh-play:active,
-.mw-tmh-player.audio > .mw-tmh-play:focus {
-	background-color: rgba( 0, 0, 0, 0.8 );
-}
-
-.mw-tmh-player.video > .mw-tmh-play:hover,
-.mw-tmh-player.video > .mw-tmh-play:active,
-.mw-tmh-player.video > .mw-tmh-play:focus {
-	opacity: 1;
 }
 
 /* All interstitial and progress loading is for the
