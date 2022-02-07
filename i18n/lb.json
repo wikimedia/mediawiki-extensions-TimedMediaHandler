@@ -5,6 +5,7 @@
 			"Robby"
 		]
 	},
+	"timedmediahandler-extensionname": "TimedMediaHandler",
 	"timedmediahandler-desc": "Steierungsprogramm fir Audio, Video an 'timed text', mat Ënnerstëtzung vun de Formater WebM, Ogg Theora, Vorbis, srt",
 	"timedmedia-ogg-short-audio": "Ogg-$1-Tounfichier, $2",
 	"timedmedia-ogg-short-video": "Ogg-$1-Videofichier, $2",
@@ -75,6 +76,8 @@
 	"timedmedia-subtitle-remote-link": "Dir kënnt [$1 d'Beschreiwungssäit] fir dëse Fichier op $2 gesinn",
 	"timedmedia-file": "Fichier",
 	"timedmedia-dialog-close": "Mediaplayer zoumaachen",
+	"beta-feature-timedmediahandler-message-videojs": "Neie Videoplayer",
+	"beta-feature-timedmediahandler-description-videojs": "Kuckt Video-Fichieren an engem moderne Player mat engem propperen Ausgesinn a compatibel mat mobillen Apparaten.",
 	"orphanedtimedtext-unsupported": "Dës Spezialsäit funktionéiert nëmme mat MySQL Datebanken.",
 	"orphanedtimedtext-notimedtext": "TimedText ass op dëser Wiki net aktivéiert.",
 	"videojs-more-information": "Méi Informatiounen",
