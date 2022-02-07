@@ -1,6 +1,7 @@
 {
 	"private": true,
 	"scripts": {
+		"minify:svg": "svgo --config=.svgo.config.js --quiet --folder resources/",
 		"test": "grunt test"
 	},
 	"devDependencies": {
@@ -14,6 +15,7 @@
 		"grunt-stylelint": "0.16.0",
 		"ogv": "1.8.6",
 		"stylelint-config-wikimedia": "0.11.1",
+		"svgo": "2.8.0",
 		"video.js": "7.17.0"
 	}
 }
