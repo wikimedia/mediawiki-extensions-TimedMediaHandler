@@ -638,6 +638,9 @@
 				"timedmedia-reset-explanation"
 			]
 		},
+		"ext.tmh.timedtextpage.styles": {
+			"styles": "resources/ext.tmh.timedtextpage.styles.less"
+		},
 		"ext.tmh.OgvJsSupport": {
 			"scripts": [
 				"resources/mwembed/lib/binPlayers/ogv.js/ogv-support.js",
