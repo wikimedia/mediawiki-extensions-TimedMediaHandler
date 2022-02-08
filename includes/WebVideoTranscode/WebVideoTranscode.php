@@ -572,7 +572,7 @@ class WebVideoTranscode {
 	public static function getSources( &$file, $options = [] ) {
 		if ( $file->isLocal() || $file->repo instanceof ForeignDBViaLBRepo ) {
 			return self::getLocalSources( $file, $options );
-		} elseif ( $file->getRepo() instanceof ForeignRepoWithMWApi ) {
+		} elseif ( $file->getRepo() instanceof IForeignRepoWithMWApi ) {
 			return self::getRemoteSources( $file, $options );
 		}
 
@@ -586,7 +586,7 @@ class WebVideoTranscode {
 	 * 	 <https://gerrit.wikimedia.org/r/#/c/117916/>
 	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
-	 * @param File &$file The File must belong to a repo that is an instance of ForeignRepoWithMWApi
+	 * @param File &$file The File must belong to a repo that is an instance of IForeignRepoWithMWApi
 	 * @param array $options
 	 * @return array|mixed
 	 */
@@ -604,9 +604,9 @@ class WebVideoTranscode {
 				'titles' => $namespaceInfo->getCanonicalName( NS_FILE ) . ':' . $file->getTitle()->getText()
 			];
 
-			/** @var ForeignRepoWithMWApi $repo */
+			/** @var IForeignRepoWithMWApi $repo */
 			$repo = $file->getRepo();
-			'@phan-var ForeignRepoWithMWApi $repo';
+			'@phan-var IForeignRepoWithMWApi $repo';
 			$data = $repo->fetchImageQuery( $query );
 
 			if ( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )

@@ -47,7 +47,7 @@ class TextHandler {
 		if ( $this->file instanceof ForeignDBFile ) {
 			return $this->getForeignDbTextSources();
 		}
-		if ( $this->file->getRepo() instanceof ForeignRepoWithMWApi ) {
+		if ( $this->file->getRepo() instanceof IForeignRepoWithMWApi ) {
 			return $this->getRemoteTextSources( $this->file );
 		}
 		return [];
@@ -75,7 +75,7 @@ class TextHandler {
 			if ( $wgEnableLocalTimedText ) {
 				return NS_TIMEDTEXT;
 			}
-		} elseif ( $repo instanceof ForeignRepoWithMWApi ) {
+		} elseif ( $repo instanceof IForeignRepoWithMWApi ) {
 			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
 			}
@@ -176,18 +176,18 @@ class TextHandler {
 
 	/**
 	 * Retrieve the text sources belonging to a remote file
-	 * @param File $file The File's repo must implement ForeignRepoWithMWApi
+	 * @param File $file The File's repo must implement IForeignRepoWithMWApi
 	 * @return array[]
 	 */
 	private function getRemoteTextSources( File $file ) {
 		$regenerator = function () use ( $file ) {
-			/** @var ForeignRepoWithMWApi $repo */
+			/** @var IForeignRepoWithMWApi $repo */
 			$repo = $file->getRepo();
-			'@phan-var ForeignRepoWithMWApi $repo';
+			'@phan-var IForeignRepoWithMWApi $repo';
 			wfDebug( "Get text tracks from remote api \n" );
 			$query = $this->getRemoteTextPagesQuery();
 			// Error in getting timed text namespace return empty array;
-			if ( $query === false || !( $repo instanceof ForeignRepoWithMWApi ) ) {
+			if ( $query === false || !( $repo instanceof IForeignRepoWithMWApi ) ) {
 				return [];
 			}
 
