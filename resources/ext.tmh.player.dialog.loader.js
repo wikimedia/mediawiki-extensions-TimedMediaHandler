@@ -18,6 +18,10 @@ function initMediaPlayerDialog( element ) {
 	if ( isAudio ) {
 		$video.attr( 'poster', mw.config.get( 'wgExtensionAssetsPath' ) +
 			'/TimedMediaHandler/resources/poster-audio.svg' );
+	} else {
+		// Do not show a poster when opening a dialog with autoplay
+		// This just causes yet another UI change
+		$video.removeAttr( 'poster' );
 	}
 	return $.Deferred( function ( deferred ) {
 		var NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
