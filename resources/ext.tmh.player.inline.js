@@ -10,9 +10,10 @@
  *
  * @constructor
  * @param {HTMLMediaElement} element
+ * @param {Object} options for the videoJS player
  */
-function InlinePlayer( element ) {
-	this.playerConfig = {};
+function InlinePlayer( element, options ) {
+	this.playerConfig = $.extend( {}, options );
 	this.videoplayer = element;
 	this.$videoplayer = $( element );
 	this.isAudio = element.tagName.toLowerCase() === 'audio';
@@ -217,12 +218,12 @@ InlinePlayer.prototype.infuse = function () {
 	}
 
 	InlinePlayer.lazyInit();
-	this.playerConfig = $.extend( {}, InlinePlayer.globalConfig );
 	this.playerConfig = $.extend(
 		true, // deep
 		{},
-		this.playerConfig,
-		this.isAudio ? InlinePlayer.audioConfig : InlinePlayer.videoConfig
+		InlinePlayer.globalConfig,
+		this.isAudio ? InlinePlayer.audioConfig : InlinePlayer.videoConfig,
+		this.playerConfig
 	);
 
 	// Future interactions go faster if we've preloaded a little
@@ -378,15 +379,16 @@ InlinePlayer.prototype.extractResolutions = function () {
 
 /**
  * @private
+ * @param {Object} videoJsOptions Override videoJS defaults of the InlinePlayer
  * @return {jQuery.Promise}
  */
-function transformVideoPlayer() {
+function transformVideoPlayer( videoJsOptions ) {
 	var $collection = this;
 
 	return $.Deferred( function ( deferred ) {
 		mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' ).then( function () {
 			deferred.resolve( $collection.map( function () {
-				var inlinePlayer = new InlinePlayer( this );
+				var inlinePlayer = new InlinePlayer( this, videoJsOptions );
 				inlinePlayer.infuse();
 				return inlinePlayer;
 			} ) );
