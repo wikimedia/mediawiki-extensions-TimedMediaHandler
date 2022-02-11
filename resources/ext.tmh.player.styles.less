@@ -11,18 +11,6 @@ video {
 	height: auto;
 	max-width: 100%;
 }
-// NOTE: this likely breaks when we switch from ParserEnableLegacyMediaDOM
-// to Parsoid DOM, because they moved the border
-video.thumbimage,
-audio.thumbimage,
-.thumb.mw-tmh-player.audio {
-	// Borders just look ugly on audio and video players
-	border: 0;
-	// to compensate for border being removed add a margin
-	// and make sure the audio player placeholder uses the same
-	margin: 1px;
-}
-
 /* Force a fixed size for audio to reduce FOUC */
 audio,
 .mw-tmh-player.audio {
@@ -30,6 +18,17 @@ audio,
 	height: 30px;
 	// Apple enforces a 31px height.. go away Apple.
 	--inline-controls-bar-height: 30px;
+}
+// NOTE: this likely breaks when we switch from ParserEnableLegacyMediaDOM
+// to Parsoid DOM, because they moved the border
+video.thumbimage,
+audio.thumbimage,
+.thumb .mw-tmh-player.audio {
+	// Borders just look ugly on audio and video players
+	border: 0;
+	// to compensate for border being removed add a margin
+	// and make sure the audio player placeholder uses the same
+	margin: 1px;
 }
 
 /* Galleryboxes are usually smaller than 220px, but can be different sizes. (T258622) */
