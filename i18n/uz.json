@@ -4,5 +4,6 @@
 			"Malikxan"
 		]
 	},
-	"timedmedia-source-file": "$1 manba"
+	"timedmedia-source-file": "$1 manba",
+	"timedmedia-source-audio-file-desc": "Original $1 fayli ($2)"
 }
