@@ -63,10 +63,9 @@ audio.thumbimage,
 	height: 50px;
 	border-radius: 50%;
 	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+	left: 50%;
+	top: 50%;
+	transform: translate( -50%, -50% );
 	transition: transform 120ms ease-out, background-color 120ms ease-out;
 }
 
@@ -84,7 +83,7 @@ audio.thumbimage,
 .mw-tmh-player.video .mw-tmh-play:active {
 	.mw-tmh-play-icon {
 		background-color: rgba( 0, 0, 0, 0.8 );
-		transform: scale( 1.1 );
+		transform: translate( -50%, -50% ) scale( 1.1 );
 	}
 }
 
@@ -93,6 +92,14 @@ audio.thumbimage,
 .mw-tmh-player.audio .mw-tmh-play:active {
 	.mw-tmh-play-icon {
 		background-color: rgba( 0, 0, 0, 0.8 );
+	}
+}
+
+@supports ( aspect-ratio: 1 / 1 ) {
+	.mw-tmh-player.video > .mw-tmh-play .mw-tmh-play-icon {
+		width: auto;
+		height: ~'min( 50px, 70% )';
+		aspect-ratio: 1 / 1;
 	}
 }
 
