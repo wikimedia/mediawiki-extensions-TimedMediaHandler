@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Lancine.kounfantoh.fofana",
 			"Lanciné.kounfantoh.fofana",
 			"Nafadji Mory Diané"
 		]
 	},
 	"timedmedia-source-file": "$1 ߛߎ߲",
-	"timedmedia-source-audio-file-desc": "ߞߐߕߐ߮ ߓߐߛߎ߲ߡߊ $1 ($2)"
+	"timedmedia-source-audio-file-desc": "ߞߐߕߐ߮ ߓߐߛߎ߲ߡߊ $1 ($2)",
+	"timedmedia-file": "ߞߐߕߐ߮"
 }
