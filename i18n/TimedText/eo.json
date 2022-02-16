@@ -2,14 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Mirin",
+			"Robin van der Vliet",
 			"Yekrats"
 		]
 	},
 	"mwe-timedtext-back-btn": "Reen",
+	"mwe-timedtext-layout-off": "Kaŝi subtekstojn",
 	"mwe-timedtext-loading-text": "Ŝargante tekston...",
+	"mwe-timedtext-textcat-sub": "Subtekstoj",
 	"mwe-timedtext-textcat-tad": "Priskribo de sono",
+	"mwe-timedtext-textcat-ktv": "Karaokeo",
 	"mwe-timedtext-textcat-ar": "Aktivaj regionoj",
+	"mwe-timedtext-textcat-nb": "Prinoto",
 	"mwe-timedtext-textcat-meta": "Sinkronizata metadateno",
+	"mwe-timedtext-textcat-trx": "Transskribo",
 	"mwe-timedtext-textcat-lrc": "Kantoteksto",
-	"mwe-timedtext-textcat-lin": "Lingvistika marklingvaĵo"
+	"mwe-timedtext-textcat-lin": "Lingvistika marklingvaĵo",
+	"mwe-timedtext-upload-timed-text": "Aldoni subtekstojn"
 }
