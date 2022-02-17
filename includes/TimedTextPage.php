@@ -186,9 +186,13 @@ class TimedTextPage extends Article {
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
 			$output = $this->getContext()->getOutput();
-			$output->redirect(
-				$output->getTitle()->getFullUrl() . '.' . $data['lang'] . '.srt?action=edit'
-			);
+			$target = $output->getTitle() . '.' . $data['lang'] . '.srt';
+			$targetFullUrl = $output->getTitle()->getFullUrl() . '.' . $data['lang'] . '.srt';
+			if ( Title::newFromText( $target )->exists() ) {
+				$output->redirect( $targetFullUrl );
+			} else {
+				$output->redirect( $targetFullUrl . '?action=edit' );
+			}
 			return true;
 		}
 		return false;
