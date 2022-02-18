@@ -213,5 +213,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText n’est pas activé sur ce wiki.",
 	"videojs-more-information": "Plus d’informations",
 	"videojs-quality": "Qualité de vidéo",
+	"videojs-subtitles-create": "Créer des sous-titres",
+	"videojs-captions-create": "Créer des légendes",
 	"transcodestatistics": "Statistiques de transcodage"
 }
