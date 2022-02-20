@@ -34,6 +34,61 @@ MediaElement.currentlyPlaying = false;
  */
 MediaElement.$interstitial = null;
 
+function secondsToComponents( totalSeconds ) {
+	totalSeconds = parseInt( totalSeconds, 10 );
+	var hours = Math.floor( totalSeconds / 3600 );
+	var minutes = Math.floor( ( totalSeconds % 3600 ) / 60 );
+	var seconds = totalSeconds % 60;
+	return {
+		hours: hours,
+		minutes: minutes,
+		seconds: seconds
+	};
+}
+
+function secondsToDurationString( totalSeconds ) {
+	var timeString;
+	var components = secondsToComponents( totalSeconds );
+	var hours = components.hours;
+	var minutes = components.minutes;
+	var seconds = components.seconds;
+
+	timeString = String( seconds );
+
+	if ( minutes || hours && !minutes ) {
+		if ( seconds < 10 ) {
+			timeString = '0' + timeString;
+		}
+
+		timeString = minutes + ':' + timeString;
+	} else if ( !hours ) {
+		timeString = '0:' + timeString;
+	}
+
+	if ( hours ) {
+		if ( minutes < 10 ) {
+			timeString = '0' + timeString;
+		}
+		timeString = hours + ':' + timeString;
+	}
+	return timeString;
+}
+
+function secondsToDurationLongString( totalSeconds ) {
+	var components = secondsToComponents( totalSeconds );
+	var hours = components.hours;
+	var minutes = components.minutes;
+	var seconds = components.seconds;
+
+	if ( hours ) {
+		return mw.msg( 'timedmedia-duration-hms', hours, minutes, seconds );
+	}
+	if ( minutes ) {
+		return mw.msg( 'timedmedia-duration-ms', minutes, seconds );
+	}
+	return mw.msg( 'timedmedia-duration-s', seconds );
+}
+
 /**
  * Load our customizations for the media element,
  * loading videojs inline or upon click inside a MediaDialog
@@ -79,6 +134,25 @@ MediaElement.prototype.load = function () {
 			.on( 'keypress', this.keyPressHandler.bind( this ) )
 			.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 		);
+
+	// Add duration label
+	if ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) {
+		var duration = this.$element.data( 'durationhint' );
+		var $duration = $( '<span>' )
+			.addClass( 'mw-tmh-duration mw-tmh-label' )
+			.attr( 'aria-label', secondsToDurationLongString( duration ) )
+			.text( secondsToDurationString( duration ) );
+		this.$placeholder.append( $duration );
+	}
+
+	// Add CC label
+	if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
+		var $ccLabel = $( '<span>' )
+			.addClass( 'mw-tmh-cc mw-tmh-label' )
+			.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
+			.text( 'CC' ); // This is used as an icon
+		this.$placeholder.append( $ccLabel );
+	}
 
 	// Config exported via package files, T60082
 	var enableLegacyMediaDOM = require( './config.json' ).ParserEnableLegacyMediaDOM;
