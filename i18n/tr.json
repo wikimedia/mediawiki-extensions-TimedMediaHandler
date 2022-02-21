@@ -150,5 +150,7 @@
 	"orphanedtimedtext-notimedtext": "Bu vikide TimedText etkinleştirilmedi.",
 	"videojs-more-information": "Daha fazla bilgi",
 	"videojs-quality": "Video kalitesi",
+	"videojs-subtitles-create": "Altyazıları oluştur",
+	"videojs-captions-create": "Altyazıları oluştur",
 	"transcodestatistics": "Kod dönüştürme istatistikleri"
 }

@@ -20,6 +20,7 @@
 			"Pacha Tchernof",
 			"Serhio Magpie",
 			"Stjn",
+			"Tanzun",
 			"Vlad5250",
 			"Александр Сигачёв"
 		]
@@ -155,5 +156,7 @@
 	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText не включён в этой вики.",
 	"videojs-more-information": "Дополнительная информация",
-	"videojs-quality": "Качество"
+	"videojs-quality": "Качество",
+	"videojs-subtitles-create": "Создать субтитры",
+	"videojs-captions-create": "Создать субтитры"
 }

@@ -9,7 +9,8 @@
 			"Giro720",
 			"Guilhermemau",
 			"Luckas",
-			"Opraco"
+			"Opraco",
+			"TheEduGobi"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -189,5 +190,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText não está habilitado nesta wiki.",
 	"videojs-more-information": "Mais informações",
 	"videojs-quality": "Qualidade de vídeo",
+	"videojs-subtitles-create": "Criar legendas",
+	"videojs-captions-create": "Criar legendas ocultas",
 	"transcodestatistics": "Estatísticas de transcodificação"
 }

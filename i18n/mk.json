@@ -176,5 +176,7 @@
 	"orphanedtimedtext-notimedtext": "Титловите не се овозможени на ова вики.",
 	"videojs-more-information": "Повеќе информации",
 	"videojs-quality": "Квалитет на снимката",
+	"videojs-subtitles-create": "Создај титлови",
+	"videojs-captions-create": "Создај толкување",
 	"transcodestatistics": "Статистика за прекодирања"
 }

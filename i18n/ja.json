@@ -117,5 +117,7 @@
 	"orphanedtimedtext-notimedtext": "このウィキでは字幕が有効になっていません。",
 	"videojs-more-information": "詳細情報",
 	"videojs-quality": "画質",
+	"videojs-subtitles-create": "字幕を作成する",
+	"videojs-captions-create": "キャプションを作成する",
 	"transcodestatistics": "トランスコードの統計"
 }
