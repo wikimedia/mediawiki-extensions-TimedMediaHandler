@@ -152,5 +152,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText tidak dinyalakan di wiki ini.",
 	"videojs-more-information": "Informasi lebih lanjut",
 	"videojs-quality": "Kualitas video",
+	"videojs-subtitles-create": "Membuat takarir",
+	"videojs-captions-create": "Membuat keterangan",
 	"transcodestatistics": "Statistik transkode"
 }
