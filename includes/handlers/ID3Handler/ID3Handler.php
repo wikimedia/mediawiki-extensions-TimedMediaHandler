@@ -1,4 +1,7 @@
 <?php
+
+use Wikimedia\AtEase\AtEase;
+
 /**
  * getID3 Metadata handler
  */
@@ -57,9 +60,9 @@ class ID3Handler extends TimedMediaHandler {
 	 * @return false|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$unser = unserialize( $metadata );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 		if ( isset( $unser['version'] ) && $unser['version'] === self::METADATA_VERSION ) {
 			return $unser;
 		}

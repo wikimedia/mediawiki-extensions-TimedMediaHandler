@@ -8,6 +8,7 @@
 
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\AtEase\AtEase;
 
 /**
  * Job for web video transcode
@@ -363,9 +364,9 @@ class WebVideoTranscodeJob extends Job {
 					$log_path = "$dir/$file";
 					$ext = strtolower( pathinfo( $log_path, PATHINFO_EXTENSION ) );
 					if ( $ext === 'log' && strpos( $log_path, $path ) === 0 ) {
-						Wikimedia\suppressWarnings();
+						AtEase::suppressWarnings();
 						unlink( $log_path );
-						Wikimedia\restoreWarnings();
+						AtEase::restoreWarnings();
 					}
 					$file = readdir( $dh );
 				}
@@ -811,13 +812,13 @@ class WebVideoTranscodeJob extends Job {
 		$retvalLog = $this->getTargetEncodePath() . '.retval.log';
 		// Check that we can actually write to these files
 		// ( no point in running the encode if we can't write )
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		if ( !touch( $encodingLog ) || !touch( $retvalLog ) ) {
-			Wikimedia\restoreWarnings();
+			AtEase::restoreWarnings();
 			$retval = 1;
 			return "Error could not write to target location";
 		}
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 
 		// Fork out a process for running the transcode
 		$pid = pcntl_fork();
@@ -878,11 +879,11 @@ class WebVideoTranscodeJob extends Job {
 			[ 'profileMethod' => $caller ] );
 
 		// Output the status:
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		file_put_contents( $encodingLog, $status );
 		// Output the retVal to the $retvalLog
 		file_put_contents( $retvalLog, $retval );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 	}
 
 	/**
@@ -966,9 +967,9 @@ class WebVideoTranscodeJob extends Job {
 
 		$returnPcntl = pcntl_wexitstatus( $status );
 		// check status
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$returnCodeFile = file_get_contents( $retvalLog );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 
 		// File based exit code seems more reliable than pcntl_wexitstatus
 		$retval = (int)$returnCodeFile;

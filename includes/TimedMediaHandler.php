@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\AtEase\AtEase;
+
 class TimedMediaHandler extends MediaHandler {
 
 	/**
@@ -315,9 +317,9 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return false|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$unser = unserialize( $metadata );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 		if ( isset( $unser['version'] ) ) {
 			return $unser;
 		}
