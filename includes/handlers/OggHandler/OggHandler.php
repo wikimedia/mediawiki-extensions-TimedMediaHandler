@@ -1,4 +1,7 @@
 <?php
+
+use Wikimedia\AtEase\AtEase;
+
 /**
  * ogg handler
  */
@@ -187,7 +190,7 @@ class OggHandler extends TimedMediaHandler {
 	 */
 	public function unpackMetadata( $metadata, $unserialize = true ) {
 		if ( $unserialize ) {
-			$metadata = Wikimedia\quietCall( 'unserialize', $metadata );
+			$metadata = AtEase::quietCall( 'unserialize', $metadata );
 		}
 
 		if ( isset( $metadata['version'] ) && $metadata['version'] === self::METADATA_VERSION ) {
