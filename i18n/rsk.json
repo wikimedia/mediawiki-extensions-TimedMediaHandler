@@ -4,5 +4,6 @@
 			"Keresturec"
 		]
 	},
-	"timedmedia-source-file": "Жридло $1"
+	"timedmedia-source-file": "Жридло $1",
+	"timedmedia-source-audio-file-desc": "Ориґинални $1 файл($2)"
 }
