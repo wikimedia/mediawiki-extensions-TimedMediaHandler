@@ -73,7 +73,7 @@
 	"timedmedia-unknown-target-size": "Неизвестный целевой размер, $1 при кодировке",
 	"timedmedia-days": "{{PLURAL:$1|$1 день|$1 дня|$1 дней}}",
 	"timedmedia-hours": "{{PLURAL:$1|$1 час|$1 часа|$1 часов}}",
-	"timedmedia-minutes": "{{PLURAL:$1|$1 минута|$1 минут|$1 минуты}}",
+	"timedmedia-minutes": "{{PLURAL:$1|$1 минута|$1 минуты|$1 минут}}",
 	"timedmedia-seconds": "{{PLURAL:$1|$1 секунда|$1 секунды|$1 секунд}}",
 	"timedmedia-reset": "Перезапуск декодирования",
 	"timedmedia-reset-areyousure": "Вы уверены, что хотите продолжить?",
@@ -130,7 +130,7 @@
 	"timedmedia-subtitle-new": "Создайте новый перевод или отредактируйте существующие",
 	"timedmedia-subtitle-new-desc": "Выберите язык и нажмите кнопку '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Перейти",
-	"timedmedia-subtitle-no-video": "Нет видео, связанного с текущей страницей субтитров",
+	"timedmedia-subtitle-no-video": "Не существует видео, связанного с этой страницей субтитров.",
 	"timedmedia-subtitle-no-subtitles": "В настоящее время для этого файла нет субтитров (язык: $1). Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} отредактировать эту страницу] и добавить их.",
 	"timedmedia-subtitle-remote": "Субтитры для этого файла размещены на $1",
 	"timedmedia-subtitle-remote-link": "Вы можете [$1 посмотреть страницу описания] этого файла на $2",
@@ -155,8 +155,8 @@
 	"orphanedtimedtext-summary": "Список страниц [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], которые не имеют соответствующего файла.",
 	"orphanedtimedtext-unsupported": "Это спецстраница поддерживается только для баз данных MySQL.",
 	"orphanedtimedtext-notimedtext": "TimedText не включён в этой вики.",
-	"videojs-more-information": "Дополнительная информация",
-	"videojs-quality": "Качество",
+	"videojs-more-information": "Подробнее",
+	"videojs-quality": "Качество видео",
 	"videojs-subtitles-create": "Создать субтитры",
 	"videojs-captions-create": "Создать субтитры"
 }
