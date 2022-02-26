@@ -7,7 +7,9 @@
  * @file
  * @ingroup SpecialPage
  */
+
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\Database;
 
 class SpecialTranscodeStatistics extends SpecialPage {
 	/** @var string[] */
