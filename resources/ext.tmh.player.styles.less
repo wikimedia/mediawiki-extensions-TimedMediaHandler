@@ -53,6 +53,30 @@ audio.thumbimage,
 	}
 }
 
+/* Labels on top of the placeholder */
+.mw-tmh-label {
+	display: inline-block;
+	line-height: 1;
+	position: absolute;
+	/* @noflip */
+	right: 1em;
+	font-weight: bold;
+	background-color: rgba( 0, 0, 0, 0.8 );
+	color: #fff;
+	border-radius: 0.3em;
+	padding: 0.5em;
+	cursor: pointer;
+
+	&.mw-tmh-duration {
+		bottom: 1em;
+	}
+
+	&.mw-tmh-cc {
+		font-size: 110%;
+		top: 1em;
+	}
+}
+
 /* Play button to load and play the video and audio file in a media dialog */
 .mw-tmh-player.video .mw-tmh-play .mw-tmh-play-icon {
 	/* @embed */

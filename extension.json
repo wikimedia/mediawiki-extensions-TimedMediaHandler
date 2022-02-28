@@ -550,7 +550,11 @@
 				"mediawiki.Title"
 			],
 			"messages": [
-				"timedmedia-play-media"
+				"timedmedia-play-media",
+				"timedmedia-subtitles-available",
+				"timedmedia-duration-hms",
+				"timedmedia-duration-ms",
+				"timedmedia-duration-s"
 			]
 		},
 		"ext.tmh.player.dialog": {
