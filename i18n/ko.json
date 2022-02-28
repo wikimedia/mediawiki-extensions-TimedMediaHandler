@@ -144,5 +144,7 @@
 	"orphanedtimedtext-notimedtext": "이 위키에 TimedText가 활성화되어 있지 않습니다.",
 	"videojs-more-information": "추가 정보",
 	"videojs-quality": "동영상 품질",
+	"videojs-subtitles-create": "자막 만들기",
+	"videojs-captions-create": "캡션 만들기",
 	"transcodestatistics": "트랜스코드 통계"
 }
