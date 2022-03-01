@@ -135,23 +135,23 @@ MediaElement.prototype.load = function () {
 			.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 		);
 
-	// Add duration label
 	if ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) {
+		// Add duration label
 		var duration = this.$element.data( 'durationhint' );
 		var $duration = $( '<span>' )
 			.addClass( 'mw-tmh-duration mw-tmh-label' )
 			.attr( 'aria-label', secondsToDurationLongString( duration ) )
 			.text( secondsToDurationString( duration ) );
 		this.$placeholder.append( $duration );
-	}
 
-	// Add CC label
-	if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
-		var $ccLabel = $( '<span>' )
-			.addClass( 'mw-tmh-cc mw-tmh-label' )
-			.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
-			.text( 'CC' ); // This is used as an icon
-		this.$placeholder.append( $ccLabel );
+		// Add CC label
+		if ( this.$element.find( 'track' ).length > 0 ) {
+			var $ccLabel = $( '<span>' )
+				.addClass( 'mw-tmh-cc mw-tmh-label' )
+				.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
+				.text( 'CC' ); // This is used as an icon
+			this.$placeholder.append( $ccLabel );
+		}
 	}
 
 	// Config exported via package files, T60082
