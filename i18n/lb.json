@@ -77,7 +77,7 @@
 	"timedmedia-subtitles-available": "Ënnertitelen disponibel",
 	"timedmedia-file": "Fichier",
 	"timedmedia-dialog-close": "Mediaplayer zoumaachen",
-	"timedmedia-duration-ms": "{{PLURAL:$1|$1 Minutt|$1 Minutten}} a(n) {{PLURAL:$1|$1 Sekon|$1 Sekonnen}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 Minutt|$1 Minutten}} a(n) {{PLURAL:$2|$2 Sekon|$2 Sekonnen}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 Sekonn|$1 Sekonnen}}",
 	"beta-feature-timedmediahandler-message-videojs": "Neie Videoplayer",
 	"beta-feature-timedmediahandler-description-videojs": "Kuckt Video-Fichieren an engem moderne Player mat engem propperen Ausgesinn a compatibel mat mobillen Apparaten.",
