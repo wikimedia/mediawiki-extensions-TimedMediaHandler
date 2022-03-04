@@ -286,6 +286,13 @@ InlinePlayer.prototype.infuse = function () {
 	this.$videoplayer.closest( '.thumbinner' ).addClass( 'mw-overflow' );
 	this.$videoplayer.addClass( 'video-js' );
 
+	if ( this.playerConfig.fill ) {
+		// In fill mode, remove any inline width/height
+		// from the inline player
+		this.videoplayer.style.removeProperty( 'width' );
+		this.videoplayer.style.removeProperty( 'height' );
+	}
+
 	// Launch the player
 	this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );
 	this.videojsPlayer.ready( function () {

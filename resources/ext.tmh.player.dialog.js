@@ -31,16 +31,6 @@ MediaDialog.prototype.initialize = function () {
 		expanded: true
 	} );
 
-	this.$video.css( {
-		display: 'block',
-		position: 'absolute',
-		top: '0',
-		bottom: '0',
-		width: '100%',
-		height: '100%',
-		background: 'black' // VideoJS has a solid black background, so avoid flicker.
-	} );
-
 	this.content.$element.append( this.$video );
 	this.$body.append( this.content.$element );
 };
@@ -74,7 +64,7 @@ MediaDialog.prototype.play = function () {
 	this.content.$element.append( indicator.$element );
 
 	// We don't need a play button (autoplay) nor a poster
-	var options = { poster: false, bigPlayButton: false };
+	var options = { poster: false, bigPlayButton: false, fill: true };
 	// We might cause a delayed load of videojs here.
 	this.videojsPromise = this.$video.transformVideoPlayer( options );
 

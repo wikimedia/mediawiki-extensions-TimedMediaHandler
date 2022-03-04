@@ -5,8 +5,15 @@
  */
 .client-js {
 	.video-js {
-		/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
-		font-size: 13px;
+		// We want a larger fontsize (than the default of 10px) to have bigger controls..
+		// Except when we are an audioplayer being loaded inline,
+		// where we need the height to be exactly 30px (3em 10px)
+		// (first is media dialog and embedplayer)
+		&.vjs-fill,
+		&:not( .vjs-audio ) {
+			/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
+			font-size: 13px;
+		}
 
 		&.thumbimage {
 			border: 0;
@@ -74,7 +81,9 @@ div.thumbinner.mw-overflow {
 
 /* Audio player skin */
 .video-js.vjs-audio {
-	height: 3em;
+	&:not( .vjs-fill ) {
+		height: 3em;
+	}
 
 	.vjs-control-bar {
 		display: -webkit-box;

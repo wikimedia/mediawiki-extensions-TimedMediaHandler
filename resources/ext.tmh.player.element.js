@@ -15,7 +15,6 @@ function MediaElement( element ) {
 	this.element = element;
 	this.$element = $( element );
 	this.isAudio = element.tagName.toLowerCase() === 'audio';
-	this.isInline = element.classList.contains( 'mw-tmh-inline' );
 	this.$placeholder = null;
 }
 
@@ -125,6 +124,7 @@ MediaElement.prototype.load = function () {
 	this.$placeholder = $( '<span>' )
 		.addClass( 'mw-tmh-player' )
 		.addClass( this.isAudio ? 'audio' : 'video' )
+		.attr( 'style', this.$element.attr( 'style' ) )
 		.append( $clonedVid )
 		.append( $( '<a>' )
 			.addClass( 'mw-tmh-play' )
@@ -196,6 +196,16 @@ MediaElement.prototype.getUrl = function () {
 	) ).getUrl();
 };
 
+MediaElement.prototype.isInline = function () {
+	if ( this.element.classList.contains( 'mw-tmh-inline' ) ) {
+		return true;
+	}
+	if ( this.isAudio && this.$element.find( 'track' ).length === 0 ) {
+		return true;
+	}
+	return false;
+};
+
 /**
  * Key press handler for `<a role="button">` element to open a
  * dialog and play a {MediaElement}.
@@ -261,7 +271,7 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 		mediaElement.element.pause();
 	} );
 
-	if ( this.isInline ) {
+	if ( this.isInline() ) {
 		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
 			mediaElement.$placeholder.find( 'a' ).detach();
 			mediaElement.$placeholder.find( 'video,audio' ).replaceWith( mediaElement.$element );
