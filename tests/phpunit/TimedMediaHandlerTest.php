@@ -18,7 +18,7 @@ class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testParseParamString( $str, $expected ) {
 		$result = $this->handler->parseParamString( $str );
-		$this->assertEquals( $result, $expected );
+		$this->assertEquals( $expected, $result );
 	}
 
 	public function providerParseParamString() {
