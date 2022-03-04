@@ -103,7 +103,6 @@ MediaElement.prototype.load = function () {
 
 	// Hide native controls, we will restore them later once videojs player loads.
 	this.$element.removeAttr( 'controls' );
-	var aspectRatio = this.$element.attr( 'width' ) + ' / ' + this.$element.attr( 'height' );
 
 	// Make a shallow clone, because we don't need <source> and <track> children
 	// for the placeholder and remove unneeded attributes and interactions
@@ -111,13 +110,17 @@ MediaElement.prototype.load = function () {
 	$clonedVid.attr( {
 		id: $clonedVid.attr( 'id' ) + '_placeholder',
 		disabled: '',
-		tabindex: -1,
+		tabindex: -1
+	} ).removeAttr( 'src' );
+
+	if ( !this.isAudio ) {
+		var aspectRatio = this.$element.attr( 'width' ) + ' / ' + this.$element.attr( 'height' );
 		// Chrome has a bug?? where it uses aspect-ration: auto width/height..
 		// They somehow fall back to an incorrect A/R when inserting the video
 		// if responsive height:auto is used (see our stylesheet)
 		// Possibly their AR only kicks in when the poster finished loading
-		style: 'aspect-ratio:' + aspectRatio
-	} ).removeAttr( 'src' );
+		$clonedVid.css( 'aspect-ratio', aspectRatio );
+	}
 
 	this.$placeholder = $( '<span>' )
 		.addClass( 'mw-tmh-player' )
