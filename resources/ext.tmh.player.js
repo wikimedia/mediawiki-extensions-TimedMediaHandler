@@ -37,8 +37,8 @@ $( function () {
 	}
 	// The iframe mode
 	mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-		$iframeElements.transformVideoPlayer().then( function ( $videojs ) {
-			var player = $videojs[ 0 ];
+		$iframeElements.transformVideoPlayer().then( function ( inlineplayers ) {
+			var player = inlineplayers[ 0 ].videojsPlayer;
 			player.ready( function () {
 				// Add further customizations here
 			} );
