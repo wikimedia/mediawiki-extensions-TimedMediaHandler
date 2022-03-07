@@ -5,6 +5,7 @@
 			"Aftabuzzaman",
 			"Bellayet",
 			"Elias Ahmmad",
+			"MdsShakil",
 			"Zaheen",
 			"আফতাবুজ্জামান"
 		]
@@ -102,5 +103,6 @@
 	"log-name-timedmediahandler": "টাইমডমিডিয়াহ্যান্ডেলার লগ",
 	"log-description-timedmediahandler": "এটি সময়ানুযায়ী মিডিয়া ট্রান্সকোডের সাথে সম্পর্কিত কর্মের একটি লগ।",
 	"videojs-more-information": "আরও তথ্য",
-	"videojs-quality": "ভিডিওর মান"
+	"videojs-quality": "ভিডিওর মান",
+	"transcodestatistics": "ট্রান্সকোড পরিসংখ্যান"
 }
