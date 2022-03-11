@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Iohanen",
 			"Midnight Gambler"
 		]
 	},
-	"timedmedia-source-file": "Quell ($1)"
+	"timedmedia-source-file": "Quell ($1)",
+	"timedmedia-source-audio-file-desc": "Uerspringliche $1-Datei ($2)"
 }

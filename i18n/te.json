@@ -31,6 +31,7 @@
 	"timedmedia-source-file-desc": "అసలు $1 దస్త్రం, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "అసలు $1 దస్త్రం ($2)",
 	"timedmedia-subtitle-new-go": "వెళ్ళు",
+	"timedmedia-subtitles-available": "సబ్‌టైటిళ్ళు ఉన్నాయి.",
 	"timedmedia-file": "దస్త్రం",
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 గంట|$1 గంటల}},\n{{PLURAL:$2|$2 నిమిషం|$2 నిమిషాల}}, {{PLURAL:$3|$3 సెకండు|$3 సెకండ్లు}}",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 నిమిషం|$1 నిమిషాల}}, {{PLURAL:$2|$2 సెకండు|$2 సెకండ్లు}}",
