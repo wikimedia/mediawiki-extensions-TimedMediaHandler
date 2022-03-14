@@ -12,4 +12,13 @@
 		// VideoJS has a solid black background, so avoid flicker.
 		background-color: #000;
 	}
+
+	video {
+		// We need the video element to fill the parent BEFORE videojs styling loads
+		// This influences resolution source picking in the dialog JS and avoids relayouting
+		background-color: #000;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 }
