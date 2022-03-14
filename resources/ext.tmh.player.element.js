@@ -266,9 +266,13 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 	// we will use.
 	var playPromise = this.element.play();
 	playPromise.then( function () {
-		mediaElement.element.pause();
+		setTimeout( function () {
+			mediaElement.element.pause();
+		}, 0 );
 	}, function () {
-		mediaElement.element.pause();
+		setTimeout( function () {
+			mediaElement.element.pause();
+		}, 0 );
 	} );
 
 	if ( this.isInline() ) {
