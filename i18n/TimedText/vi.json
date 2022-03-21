@@ -3,6 +3,7 @@
 		"authors": [
 			"Minh Nguyen",
 			"Thienhau2003",
+			"Vinhtantran",
 			"පසිඳු කාවින්ද"
 		]
 	},
@@ -14,10 +15,10 @@
 	"mwe-timedtext-textcat-tad": "Lời miêu tả âm thanh",
 	"mwe-timedtext-textcat-ktv": "Karaoke",
 	"mwe-timedtext-textcat-meta": "Siêu dữ liệu đồng bộ",
-	"mwe-timedtext-textcat-lrc": "Lời hát",
+	"mwe-timedtext-textcat-lrc": "Lời bài hát",
 	"mwe-timedtext-textcat-lin": "Đánh dấu ngôn ngữ học",
 	"mwe-timedtext-no-subs": "Không có văn bản phụ đề nào",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 phụ đề cho clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Không tìm thấy $1 phụ đề cho clip: $2",
+	"mwe-timedtext-language-subtitles-for-clip": "Phụ đề $1 cho clip: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Không tìm thấy phụ đề $1 cho clip: $2",
 	"mwe-timedtext-upload-timed-text": "Thêm phụ đề"
 }
