@@ -92,6 +92,7 @@
 	"timedmedia-subtitle-no-subtitles": "Der binne noch gjin ûndertitels yn it $1 foar dizze fideo. Jo kinne [{{fullurl:{{FULLPAGENAME}}|action=edit}} dizze side bewurkje] en foegje dy ta.",
 	"timedmedia-subtitle-remote": "De ûndertitels foar dit bestân steane op $1",
 	"timedmedia-subtitle-remote-link": "Jo kinne foar dit bestân [$1 de beskriuwingsside besjen] op $2",
+	"timedmedia-subtitles-available": "Undertitels beskikber.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transkodearring|$1 transkodearrings}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transkodearring oan 'e gong|$1 transkodearrings oan 'e gong}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transkodearring yn 'e wacht|$1 transkodearrings yn 'e wacht}}",
@@ -99,6 +100,10 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 transkodearring net opstart|$1 transkodearrings net opstart}}",
 	"timedmedia-no-derivatives": "Gjin transkodearring nedich.",
 	"timedmedia-file": "Bestân",
+	"timedmedia-dialog-close": "Mediaspiler slute",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1 oere|$1 oeren}}, {{PLURAL:$2|$2 minút|$2 minuten}} en {{PLURAL:$3|$3 sekonde|$3 sekonden}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minút|$1 minuten}} en {{PLURAL:$2|$2 sekonde|$2 sekonden}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 sekonde|$1 sekonden}}",
 	"beta-feature-timedmediahandler-message-videojs": "Nije fideospiler",
 	"beta-feature-timedmediahandler-description-videojs": "Fideobestannen besjen yn in moderne spiler mei in fris oansjoch en mobyl-freonlik.",
 	"right-transcode-reset": "Mislearre of transkodearre fideo's oerdwaan, sadat se wer yn 'e takewachtrige komme",
@@ -114,5 +119,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText is net ynskeakele op dizze wiki.",
 	"videojs-more-information": "Mear ynformaasje",
 	"videojs-quality": "Fideokwaliteit",
+	"videojs-subtitles-create": "Undertitels meitsje",
+	"videojs-captions-create": "Byskriften meitsje",
 	"transcodestatistics": "Transkodearringsstatistiken"
 }
