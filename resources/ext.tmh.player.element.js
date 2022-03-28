@@ -138,7 +138,7 @@ MediaElement.prototype.load = function () {
 			.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
 		);
 
-	if ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) {
+	if ( ( this.isAudio && this.$element.attr( 'width' ) >= 150 ) || ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) ) {
 		// Add duration label
 		var duration = this.$element.data( 'durationhint' );
 		var $duration = $( '<span>' )
@@ -147,8 +147,8 @@ MediaElement.prototype.load = function () {
 			.text( secondsToDurationString( duration ) );
 		this.$placeholder.append( $duration );
 
-		// Add CC label
-		if ( this.$element.find( 'track' ).length > 0 ) {
+		// Add CC label; currently skip for audio due to positioning limitations
+		if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
 			var $ccLabel = $( '<span>' )
 				.addClass( 'mw-tmh-cc mw-tmh-label' )
 				.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
