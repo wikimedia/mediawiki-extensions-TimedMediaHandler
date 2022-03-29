@@ -53,12 +53,10 @@ function secondsToDurationString( totalSeconds ) {
 	var seconds = components.seconds;
 
 	timeString = String( seconds );
-
+	if ( seconds < 10 ) {
+		timeString = '0' + timeString;
+	}
 	if ( minutes || hours && !minutes ) {
-		if ( seconds < 10 ) {
-			timeString = '0' + timeString;
-		}
-
 		timeString = minutes + ':' + timeString;
 	} else if ( !hours ) {
 		timeString = '0:' + timeString;
