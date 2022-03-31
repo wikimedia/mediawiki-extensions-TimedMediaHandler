@@ -255,11 +255,15 @@ InlinePlayer.prototype.infuse = function () {
 	} else {
 		resolutions = this.extractResolutions();
 
+		// Do not autoselect above 1080p due to bandwidth requirements.
+		// Also, note a fake res of 99999 is used to mark original files.
+		// Never auto-select an original unless it is the only file.
+		var maxRes = 1080;
+
 		// Pick the first resolution at least the size of the player,
 		// unless they're all too small.
 		var playerHeight = Math.min(
-			// Do not autoselect above 1080p due to bandwidth requirements
-			1080,
+			maxRes,
 			// Account for screen density
 			this.$videoplayer.height() * window.devicePixelRatio
 		);
@@ -271,9 +275,11 @@ InlinePlayer.prototype.infuse = function () {
 			return a - b;
 		} );
 		for ( var i = 0, l = resolutions.length; i < l; i++ ) {
-			defaultRes = resolutions[ i ];
-			if ( defaultRes >= playerHeight ) {
-				break;
+			if ( resolutions[ i ] <= maxRes ) {
+				defaultRes = resolutions[ i ];
+				if ( defaultRes >= playerHeight ) {
+					break;
+				}
 			}
 		}
 		if ( !this.isAudio && defaultRes ) {
