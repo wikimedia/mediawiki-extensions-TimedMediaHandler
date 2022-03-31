@@ -458,9 +458,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	): array {
 		global $wgVideoPlayerSkin;
 
-		// Normalize values
-		$length = (float)$this->length;
-		$offset = (float)$this->offset;
+		// Make sure we have pure floats values and round them up to whole seconds
+		$length = ceil( (float)$this->length );
 
 		$width = $sizeOverride ? $sizeOverride[0] : $this->getPlayerWidth();
 		$height = $sizeOverride ? $sizeOverride[1] : $this->getPlayerHeight();
@@ -541,14 +540,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr[ 'class' ] .= ' ' . $classes;
 		}
 
-		if ( $this->file ) {
-			// Custom data-attributes
-			$mediaAttr += [
-				'data-durationhint' => $length,
-				'data-startoffset' => $offset,
-				'data-mwtitle' => $this->file->getTitle()->getDBkey()
-			];
+		if ( $length ) {
+			$mediaAttr[ 'data-durationhint' ] = $length;
+		}
 
+		if ( $this->file ) {
 			// Add api provider:
 			if ( $this->file->isLocal() ) {
 				$apiProviderName = 'local';
@@ -560,15 +556,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 					$apiProviderName = 'wikimediacommons';
 				}
 			}
-			// XXX Note: will probably migrate mwprovider to an escaped api url.
-			$mediaAttr[ 'data-mwprovider' ] = $apiProviderName;
-		} else {
-			if ( $length ) {
-				$mediaAttr[ 'data-durationhint' ] = $length;
-			}
-			if ( $offset ) {
-				$mediaAttr[ 'data-startoffset' ] = $offset;
-			}
+			// Custom data-attributes
+			$mediaAttr += [
+				'data-mwtitle' => $this->file->getTitle()->getDBkey(),
+				// XXX Note: will probably migrate mwprovider to an escaped api url.
+				'data-mwprovider' => $apiProviderName,
+			];
 		}
 
 		return $mediaAttr;

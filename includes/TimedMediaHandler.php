@@ -242,8 +242,12 @@ class TimedMediaHandler extends MediaHandler {
 
 		if ( $time < 0 ) {
 			wfDebug( __METHOD__ . ": specified negative time, using zero\n" );
-			$time = 0;
-		} elseif ( $length !== false && $time > $length - 1 ) {
+			return 0;
+		}
+		// We don't need more than millisecond precisions
+		// And for duration (length) seconds precision is ok
+		$time = $length ? ceil( $time ) : round( $time, 3 );
+		if ( $length !== false && $time > $length - 1 ) {
 			wfDebug( __METHOD__ .
 				": specified near-end or past-the-end time {$time}s, using end minus 1s\n" );
 			$time = $length - 1;
