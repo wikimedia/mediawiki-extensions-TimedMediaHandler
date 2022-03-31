@@ -275,7 +275,7 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 
 	if ( this.isInline() ) {
 		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-			mediaElement.$placeholder.find( 'a' ).detach();
+			mediaElement.$placeholder.find( 'a, .mw-tmh-label' ).detach();
 			mediaElement.$placeholder.find( 'video,audio' ).replaceWith( mediaElement.$element );
 			mediaElement.$element.transformVideoPlayer().then( function ( $inlinePlayers ) {
 				var player = $inlinePlayers[ 0 ].videojsPlayer;
