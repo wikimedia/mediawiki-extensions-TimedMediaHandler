@@ -87,6 +87,7 @@
 	"timedmedia-subtitle-no-subtitles": "Al moment a gh'è minga de sot-titoi in  $1 per quell video chì, a l'è possibil [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifegà quella pagina chì] per sgiontài.",
 	"timedmedia-subtitle-remote": "I sottitoi per quel fail chì a inn ospitad in su $1",
 	"timedmedia-subtitle-remote-link": "Te podet vardà [$1 la pagina de descrizzion] per quell fail chì in su $2",
+	"timedmedia-subtitles-available": "Sottitoi disponibil.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in esecuzzion",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coa",
@@ -95,6 +96,9 @@
 	"timedmedia-no-derivatives": "Nissuna transcodifica necessaria.",
 	"timedmedia-file": "Fail",
 	"timedmedia-dialog-close": "Sarra su el letor audio-visiv",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1 ora|$1 ore}}, {{PLURAL:$2|$2 minut}} e {{PLURAL:$3|$3 segond}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minut}} e {{PLURAL:$2|$2 second}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 segond}}",
 	"beta-feature-timedmediahandler-description-videojs": "Guarda i fail video cont un letor moderno de l'aspet pussee luster e pussee compatibel coi dispositiv mobil.",
 	"right-transcode-reset": "Rimposta i video difetad o transcodificad de manera de podè vesser inclus anmò in la coa de laóo.",
 	"right-transcode-status": "Varda [[Special:TimedMediaHandler|i informazzion sora l'atività de transcodifica atual]]",
@@ -109,5 +113,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText a l'è minga ativad in su 'sto wiki chì.",
 	"videojs-more-information": "Di alter informazzion",
 	"videojs-quality": "Qualità del video",
+	"videojs-subtitles-create": "Crea sottitoi",
+	"videojs-captions-create": "Crea insegne",
 	"transcodestatistics": "Statistiche de transcodifica"
 }
