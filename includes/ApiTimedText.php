@@ -270,7 +270,7 @@ class ApiTimedText extends ApiBase {
 			// Should not default to user language or anything, since
 			// track URLs should be consistent and explicit.
 			'lang' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 		];
 		return $ret;
