@@ -22,15 +22,17 @@ class ApiTranscodeReset extends ApiBase {
 			$this->dieWithError( 'apierror-timedmedia-disabledtranscode', 'disabledtranscode' );
 		}
 
-		// Confirm the user has the transcode-reset right
-		$this->checkUserRightsAny( 'transcode-reset' );
 		$params = $this->extractRequestParams();
+		$titleObj = Title::newFromText( $params['title'] );
 
 		// Make sure we have a valid Title
-		$titleObj = Title::newFromText( $params['title'] );
 		if ( !$titleObj || $titleObj->isExternal() ) {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['title'] ) ] );
 		}
+
+		// Check that the user has permmission to reset transcodes on the file
+		$this->checkTitleUserPermissions( $titleObj, 'transcode-reset' );
+
 		// Make sure the title can be transcoded
 		if ( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ) {
 			$this->dieWithError(
