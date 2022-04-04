@@ -180,6 +180,7 @@
 	"timedmedia-subtitle-no-subtitles": "Наразі немає субтитрів на $1 для цього відео, Ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} змінити цю сторінку] для їхнього додавання",
 	"timedmedia-subtitle-remote": "Текст до цього файлу розміщений на $1",
 	"timedmedia-subtitle-remote-link": "Ви можете [$1 переглянути опис сторінки] для цього файлу на $2",
+	"timedmedia-subtitles-available": "Доступні субтитри.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|1=$1 транскодування|$1 транскодування|$1 транскодувань}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|1=$1 поточне транскодування|$1 поточні транскодування|$1 поточних транскодувань}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|1=$1 транскодування в черзі|$1 транскодування в черзі|$1 транскодувань в черзі}}",
@@ -188,6 +189,9 @@
 	"timedmedia-no-derivatives": "Транскодування не потрібне.",
 	"timedmedia-file": "Файл",
 	"timedmedia-dialog-close": "Закрити медіа-програвач",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1 година|$1 години|$1 годин}}, {{PLURAL:$2|$2 хвилина|$2 хвилини|$2 хвилин}} та {{PLURAL:$3|$3 секунда|$3 секунди|$3 секунд}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 година|$1 години|$1 годин}} та {{PLURAL:$2|$2 хвилина|$2 хвилини|$2 хвилин}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 секунда|$1 секунди|$1 секунд}}",
 	"beta-feature-timedmediahandler-message-videojs": "Новий відеопрогравач",
 	"beta-feature-timedmediahandler-description-videojs": "Переглядайте відеофайли у сучасному програвачі з чистішим виглядом і сумісністю з мобільними пристроями.",
 	"right-transcode-reset": "Скидання невдалих або транскодованих відео із повторним занесенням їх у чергу завдань",
@@ -203,5 +207,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText не увімкнений у цій вікі.",
 	"videojs-more-information": "Більше інформації",
 	"videojs-quality": "Якість відео",
+	"videojs-subtitles-create": "Створити субтитри",
+	"videojs-captions-create": "Створити субтитри",
 	"transcodestatistics": "Статистика транскодування"
 }
