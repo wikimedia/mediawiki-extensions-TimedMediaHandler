@@ -259,19 +259,28 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 		mw.OgvJsSupport.initAudioContext();
 	}
 
-	// Safari autoplay breakage hack for native audio playback
-	// Must force a play during the user gesture on the element
-	// we will use.
+	// Autoplay busting hack for native audio playback
+	// Must force a play during the user gesture on the element we will use.
+	// Our later, async loading of the modules can break the path
 	var playPromise = this.element.play();
-	playPromise.then( function () {
-		setTimeout( function () {
-			mediaElement.element.pause();
-		}, 0 );
-	}, function () {
-		setTimeout( function () {
-			mediaElement.element.pause();
-		}, 0 );
-	} );
+	if ( !playPromise ) {
+		// On older browsers, play() didn't return a promise yet.
+		this.element.pause();
+	} else {
+		// Edge 17+
+		// Chrome 50+
+		// Firefox 53+
+		// Safari 10+
+		playPromise.then( function () {
+			setTimeout( function () {
+				mediaElement.element.pause();
+			}, 0 );
+		}, function () {
+			setTimeout( function () {
+				mediaElement.element.pause();
+			}, 0 );
+		} );
+	}
 
 	if ( this.isInline() ) {
 		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
