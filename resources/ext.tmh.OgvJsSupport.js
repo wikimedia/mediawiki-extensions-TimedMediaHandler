@@ -103,6 +103,13 @@
 					return context;
 				}
 				if ( AudioContext ) {
+					// Workaround for iOS audio output channel issue
+					// If there's no <audio> or <video> Safari puts Web Audio onto
+					// the ringer channel instead of the media channel!
+					var el = document.createElement( 'audio' );
+					el.src = mw.config.get( 'wgExtensionAssetsPath' ) + '/TimedMediaHandler/resources/silence.mp3';
+					el.play();
+
 					context = new AudioContext();
 
 					if ( context.createScriptProcessor ) {
