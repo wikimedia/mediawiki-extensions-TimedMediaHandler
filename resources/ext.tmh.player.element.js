@@ -286,7 +286,10 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
 			mediaElement.$placeholder.find( 'a, .mw-tmh-label' ).detach();
 			mediaElement.$placeholder.find( 'video,audio' ).replaceWith( mediaElement.$element );
-			mediaElement.$element.transformVideoPlayer().then( function ( $inlinePlayers ) {
+			$.when(
+				mediaElement.$element.transformVideoPlayer(),
+				mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' )
+			).then( function ( $inlinePlayers ) {
 				var player = $inlinePlayers[ 0 ].videojsPlayer;
 				player.ready( function () {
 					// Use a setTimeout to ensure all ready callbacks have run before
@@ -305,7 +308,10 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 		} );
 	} else {
 		MediaElement.currentlyPlaying = true;
-		mw.loader.using( 'ext.tmh.player.dialog' ).then( function () {
+		$.when(
+			mw.loader.using( 'ext.tmh.player.dialog' ),
+			mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' )
+		).then( function () {
 			MediaElement.$interstitial.detach();
 			return mediaElement.$element.showVideoPlayerDialog();
 		} ).always( function () {
