@@ -1,6 +1,15 @@
 <?php
 
+namespace MediaWiki\TimedMediaHandler;
+
+use ApiBase;
+use ApiUsageException;
+use File;
+use ManualLogEntry;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MWException;
+use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -34,7 +43,7 @@ class ApiTranscodeReset extends ApiBase {
 		$this->checkTitleUserPermissions( $titleObj, 'transcode-reset' );
 
 		// Make sure the title can be transcoded
-		if ( !TimedMediaHandlerHooks::isTranscodableTitle( $titleObj ) ) {
+		if ( !Hooks::isTranscodableTitle( $titleObj ) ) {
 			$this->dieWithError(
 				[
 					'apierror-timedmedia-invalidtranscodetitle',

@@ -1,5 +1,14 @@
 <?php
 
+namespace MediaWiki\TimedMediaHandler;
+
+use File;
+use MediaHandler;
+use MediaTransformError;
+use MediaTransformOutput;
+use Message;
+use Parser;
+use TransformParameterError;
 use Wikimedia\AtEase\AtEase;
 
 class TimedMediaHandler extends MediaHandler {
@@ -47,7 +56,7 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public function validateParam( $name, $value ) {
 		if ( $name === 'thumbtime' || $name === 'start' || $name === 'end' ) {
-			if ( $this->parseTimeString( $value ) === false ) {
+			if ( self::parseTimeString( $value ) === false ) {
 				return false;
 			}
 		} elseif ( $name === 'disablecontrols' ) {
@@ -83,7 +92,7 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		if ( $thumbTime !== false ) {
-			$time = $this->parseTimeString( $thumbTime );
+			$time = self::parseTimeString( $thumbTime );
 			if ( $time !== false ) {
 				return $paramString . 'seek=' . $time;
 			}
@@ -135,7 +144,7 @@ class TimedMediaHandler extends MediaHandler {
 		foreach ( $timeParam as $pn ) {
 			if ( isset( $params[$pn] ) && $params[$pn] !== false ) {
 				$length = $this->getLength( $image );
-				$time = $this->parseTimeString( $params[$pn] );
+				$time = self::parseTimeString( $params[$pn] );
 				if ( $time === false ) {
 					return false;
 				}
@@ -182,7 +191,7 @@ class TimedMediaHandler extends MediaHandler {
 			$params['start'] !== false &&
 			$params['end'] !== false
 		) {
-			if ( $this->parseTimeString( $params['start'] ) > $this->parseTimeString( $params['end'] ) ) {
+			if ( self::parseTimeString( $params['start'] ) > self::parseTimeString( $params['end'] ) ) {
 				return false;
 			}
 		}
@@ -203,7 +212,7 @@ class TimedMediaHandler extends MediaHandler {
 		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) ) {
 			return;
 		}
-		$activePlayerMode = TimedMediaHandlerHooks::activePlayerMode();
+		$activePlayerMode = Hooks::activePlayerMode();
 		if ( $activePlayerMode === 'mwembed' ) {
 			$parserOutput->addModuleStyles( [ 'ext.tmh.thumbnail.styles' ] );
 			$parserOutput->addModules( [

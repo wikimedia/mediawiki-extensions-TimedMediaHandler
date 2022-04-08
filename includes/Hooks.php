@@ -1,9 +1,27 @@
 <?php
 
+namespace MediaWiki\TimedMediaHandler;
+
+use Article;
+use DatabaseUpdater;
+use DifferenceEngine;
+use ExtensionRegistry;
+use File;
+use ImagePage;
 use MediaWiki\Extension\BetaFeatures\BetaFeatures;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\User\UserIdentity;
+use OutputPage;
+use ParserOptions;
+use ParserOutput;
+use RequestContext;
+use Skin;
+use SkinTemplate;
+use Title;
+use User;
+use WikiPage;
 
 /**
  * Hooks for TimedMediaHandler extension
@@ -11,7 +29,7 @@ use MediaWiki\User\UserIdentity;
  * @file
  * @ingroup Extensions
  */
-class TimedMediaHandlerHooks {
+class Hooks {
 
 	/**
 	 * Register TimedMediaHandler namespace IDs
@@ -482,7 +500,7 @@ class TimedMediaHandlerHooks {
 	 *
 	 * @param ParserOutput $parserOutput
 	 * @param WikiPage $wikiPage
-	 * @param ParserOutput $parserOptions
+	 * @param ParserOptions $parserOptions
 	 * @return bool
 	 */
 	public static function onRejectParserCacheValue( $parserOutput, $wikiPage, $parserOptions ) {

@@ -9,7 +9,17 @@
  *
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
+use Exception;
+use Html;
+use MediaWiki;
 use MediaWiki\MediaWikiServices;
+use OutputPage;
+use Page;
+use Title;
+use User;
+use WebRequest;
 
 class TimedMediaIframeOutput {
 	/**
@@ -67,7 +77,7 @@ class TimedMediaIframeOutput {
 			'fillwindow' => true,
 			'width' => $file->getWidth()
 		];
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+		if ( Hooks::activePlayerMode() === 'videojs' ) {
 			$params['inline'] = true;
 		}
 		$videoTransform = $file->transform( $params );
@@ -77,11 +87,9 @@ class TimedMediaIframeOutput {
 		$out->setPreventClickjacking( false );
 		$out->disallowUserJs();
 
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
+		if ( Hooks::activePlayerMode() === 'mwembed' ) {
 			$out->addModules( [ 'mw.MediaWikiPlayer.loader', 'ext.tmh.embedPlayerIframe' ] );
-		}
-
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+		} elseif ( Hooks::activePlayerMode() === 'videojs' ) {
 			$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
 			$out->addModuleStyles( [ 'ext.tmh.player.inline.styles' ] );
 		}

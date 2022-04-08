@@ -21,6 +21,8 @@
  * @ingroup Media
  */
 
+use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
+
 class MockOggHandler extends OggHandler {
 	public function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		# Important or height handling is wrong.

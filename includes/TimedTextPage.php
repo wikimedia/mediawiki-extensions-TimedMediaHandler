@@ -8,11 +8,22 @@
  * @todo link-in or include the universal subtitles editor
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
+use Article;
+use File;
+use Html;
+use HTMLForm;
+use LanguageCode;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use Message;
+use OutputPage;
+use TextContent;
+use Title;
 
 class TimedTextPage extends Article {
 

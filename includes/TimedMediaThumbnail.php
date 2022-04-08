@@ -1,6 +1,12 @@
 <?php
 
+namespace MediaWiki\TimedMediaHandler;
+
+use File;
+use MediaTransformError;
 use MediaWiki\MediaWikiServices;
+use PoolCounterWorkViaCallback;
+use UnregisteredLocalFile;
 
 class TimedMediaThumbnail {
 

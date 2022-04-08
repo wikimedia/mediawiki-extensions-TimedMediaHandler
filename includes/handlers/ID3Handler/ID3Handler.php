@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use Wikimedia\AtEase\AtEase;
 
 /**

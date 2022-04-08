@@ -9,7 +9,7 @@ use MediaWiki\TimedMediaHandler\TimedText\DOM;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 
 /**
- * @covers SrtWriter::write
+ * @covers \MediaWiki\TimedMediaHandler\TimedText\SrtWriter::write
  */
 class VttWriterTest extends PHPUnit\Framework\TestCase {
 	public function setUp(): void {

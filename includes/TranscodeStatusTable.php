@@ -1,6 +1,14 @@
 <?php
 
+namespace MediaWiki\TimedMediaHandler;
+
+use File;
+use Html;
+use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use User;
+use Xml;
 
 /**
  * TranscodeStatusTable outputs a "transcode" status table to the ImagePage
@@ -65,8 +73,6 @@ class TranscodeStatusTable {
 	 * @return string
 	 */
 	public static function getTranscodesTable( $file, User $user ) {
-		$o = '';
-
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
 		if ( empty( $transcodeRows ) ) {
@@ -96,7 +102,7 @@ class TranscodeStatusTable {
 			return ( $aIndex - $bIndex );
 		} );
 
-		$o .= Xml::openElement( 'table',
+		$o = Xml::openElement( 'table',
 			[ 'class' => 'wikitable mw-filepage-transcodestatus' ]
 		) . "\n"
 			. '<tr>'

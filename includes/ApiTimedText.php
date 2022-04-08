@@ -22,9 +22,24 @@
  * @since 1.33
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
+use ApiBase;
+use ApiFormatRaw;
+use ApiMain;
+use ApiResult;
+use ApiUsageException;
+use File;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Page\WikiPageFactory;
+use MWException;
+use RepoGroup;
+use TextContent;
+use TextHandler;
+use Title;
+use WANObjectCache;
 use Wikimedia\ParamValidator\ParamValidator;
+use WikiPage;
 
 /**
  * Implements the timedtext module that outputs subtitle files
@@ -103,7 +118,6 @@ class ApiTimedText extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$result = $this->getResult();
 
 		if ( $params['lang'] === null ) {
 			$langCode = false;

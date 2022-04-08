@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use Wikimedia\AtEase\AtEase;
 
 /**
@@ -270,7 +271,6 @@ class OggHandler extends TimedMediaHandler {
 	 * @since 1.30
 	 */
 	public function getContentHeaders( $metadata ) {
-		$packedMetadata = $metadata;
 		$result = [];
 		$metadata = $this->unpackMetadata( $metadata, false );
 
