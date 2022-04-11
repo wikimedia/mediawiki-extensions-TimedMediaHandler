@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tomato Cream"
+		]
+	},
+	"mwe-timedtext-back-btn": "Назад",
+	"mwe-timedtext-layout-off": "Схаваць субцітры",
+	"mwe-timedtext-loading-text": "Загрузка тэксту...",
+	"mwe-timedtext-textcat-cc": "Субцітры (captions)",
+	"mwe-timedtext-textcat-sub": "Субцітры",
+	"mwe-timedtext-textcat-tad": "Аўдыё-апісанне",
+	"mwe-timedtext-textcat-ktv": "Караоке",
+	"mwe-timedtext-textcat-tik": "Тэкст бягучага радка",
+	"mwe-timedtext-textcat-ar": "Актыўныя рэгіёны",
+	"mwe-timedtext-textcat-nb": "Анатацыя",
+	"mwe-timedtext-textcat-meta": "Сінхранізаваныя мета-дадзеныя",
+	"mwe-timedtext-textcat-trx": "Расшыфроўка",
+	"mwe-timedtext-textcat-lrc": "Словы",
+	"mwe-timedtext-textcat-lin": "Лінгвістычная разметка",
+	"mwe-timedtext-textcat-cue": "Крокавыя кропкі",
+	"mwe-timedtext-no-subs": "Няма тэкставых трэкаў",
+	"mwe-timedtext-language-subtitles-for-clip": "Субцітры ($1) для кліпу: $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Субцітры ($1) для кліпу не знойдзеныя: $2",
+	"mwe-timedtext-upload-timed-text": "Дадаць субцітры"
+}

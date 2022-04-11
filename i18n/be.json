@@ -3,6 +3,7 @@
 		"authors": [
 			"Artsiom91",
 			"Chadyka",
+			"Tomato Cream",
 			"Чаховіч Уладзіслаў"
 		]
 	},
@@ -88,6 +89,7 @@
 	"timedmedia-subtitle-no-subtitles": "Зараз для гэтага відэа няма субцітраў на мове «$1», вы можаце [{{fullurl:{{FULLPAGENAME}}|action=edit}} правіць гэтую старонку], каб дадаць іх.",
 	"timedmedia-subtitle-remote": "Тэкст з часам для гэтага файла знаходзіцца на $1.",
 	"timedmedia-subtitle-remote-link": "Вы можаце [$1 праглядзець старонку апісання] гэтага файла на $2",
+	"timedmedia-subtitles-available": "Даступныя субцітры.",
 	"timedmedia-derivative-state-transcodes": "$1 {{PLURAL:$1|транскадзіроўка|транскадыроўкі|транскадзіровак}}",
 	"timedmedia-derivative-state-active": "$1 {{PLURAL:$1|бягучая транскадзіроўка|бягучых транскадыроўкі|бягучых транскадзіровак}}",
 	"timedmedia-derivative-state-queued": "$1 {{PLURAL:$1|транскадзіроўка ў|транскадыроўкі ў|транскадзіровак у}} чарзе",
@@ -96,6 +98,9 @@
 	"timedmedia-no-derivatives": "Транскадзіроўка не патрабуецца.",
 	"timedmedia-file": "Файл",
 	"timedmedia-dialog-close": "Закрыць прайгравальнік медыя",
+	"timedmedia-duration-hms": "$1 {{PLURAL:$1|гадзіна|гадзіны|гадзінаў}}, $2 {{PLURAL:$1|хвіліна|хвіліны|хвілінаў}}, і $3 {{PLURAL:$1|секунда|секунды|секундаў}}",
+	"timedmedia-duration-ms": "$1 {{PLURAL:$1|хвіліна|хвіліны|хвілінаў}} і $2 {{PLURAL:$1|секунда|секунды|секундаў}}",
+	"timedmedia-duration-s": "$1 {{PLURAL:$1|секунда|секунды|секундаў}}",
 	"beta-feature-timedmediahandler-message-videojs": "Новы прайгравальнік відэафайлаў",
 	"beta-feature-timedmediahandler-description-videojs": "Праглядаць відэафайлы ў сучасным плэеры з болей чыстым дызайнам і падтрымкай мабільных.",
 	"right-transcode-reset": "Перазапуск няўдалых або транскадзіраваных відэа, каб яны ізноў трапілі ў чаргу заданняў",
@@ -111,5 +116,7 @@
 	"orphanedtimedtext-notimedtext": "TimedText не ўключаны ў гэтай вікі.",
 	"videojs-more-information": "Больш інфармацыі",
 	"videojs-quality": "Якасць відэа",
+	"videojs-subtitles-create": "Стварыць субцітры (subtitles)",
+	"videojs-captions-create": "Стварыць субцітры (captions)",
 	"transcodestatistics": "Статыстыка транскодаў"
 }
