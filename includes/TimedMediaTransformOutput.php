@@ -1,5 +1,14 @@
 <?php
 
+namespace MediaWiki\TimedMediaHandler;
+
+use Exception;
+use Html;
+use MediaTransformOutput;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use TextHandler;
+use Xml;
+
 class TimedMediaTransformOutput extends MediaTransformOutput {
 	/** @var int */
 	protected static $serial = 0;
@@ -79,7 +88,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 */
 	private function getTextHandler() {
 		if ( !$this->textHandler ) {
-			if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+			if ( Hooks::activePlayerMode() === 'videojs' ) {
 				$format = 'vtt';
 			} else {
 				$format = 'srt';
@@ -181,7 +190,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$this->width = $options['override-width'];
 		}
 
-		if ( $this->useImagePopUp() && TimedMediaHandlerHooks::activePlayerMode() === 'mwembed' ) {
+		if ( $this->useImagePopUp() && Hooks::activePlayerMode() === 'mwembed' ) {
 			$res = $this->getImagePopUp();
 		} else {
 			$mediaAttr = $this->getMediaAttr( false, false, $classes );
@@ -402,7 +411,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		unset( $track );
 
 		$width = $mediaAttr['width'];
-		if ( TimedMediaHandlerHooks::activePlayerMode() !== 'videojs' ) {
+		if ( Hooks::activePlayerMode() !== 'videojs' ) {
 			unset( $mediaAttr['width'] );
 		}
 
@@ -415,9 +424,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			self::htmlTagSet( 'track', $mediaTracks )
 		);
 
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+		if ( Hooks::activePlayerMode() === 'videojs' ) {
 			return $s;
-		} // else mwEmbed player
+		}
+		// else mwEmbed player
 
 		// Build the video tag output:
 		return Xml::tags( 'div', [
@@ -488,7 +498,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			unset( $mediaAttr[ 'poster' ] );
 		}
 
-		if ( TimedMediaHandlerHooks::activePlayerMode() === 'videojs' ) {
+		if ( Hooks::activePlayerMode() === 'videojs' ) {
 			// Note: do not add 'video-js' class before the runtime transform!
 			$mediaAttr['class'] = $wgVideoPlayerSkin;
 			$mediaAttr['width'] = (int)$width;

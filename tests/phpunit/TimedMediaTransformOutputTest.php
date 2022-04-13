@@ -1,9 +1,10 @@
 <?php
 
+use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @covers TimedMediaTransformOutput
+ * @covers \MediaWiki\TimedMediaHandler\TimedMediaTransformOutput
  */
 class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 

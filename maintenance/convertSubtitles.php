@@ -30,8 +30,7 @@ class ConvertSubtitles extends Maintenance {
 	public function execute() {
 		global $wgEnableLocalTimedText;
 		if ( !$wgEnableLocalTimedText ) {
-			$this->error( "Requires \$wgEnableLocalTimedText on.\n" );
-			return false;
+			$this->fatalError( "Requires \$wgEnableLocalTimedText on.\n" );
 		}
 
 		global $wgTimedTextNS;
@@ -43,8 +42,7 @@ class ConvertSubtitles extends Maintenance {
 			if ( $file ) {
 				$where[] = 'page_title ' . $dbr->buildLike( $file->getDbKey() . '.', $dbr->anyString() );
 			} else {
-				$this->error( "Invalid file title\n" );
-				return;
+				$this->fatalError( "Invalid file title\n" );
 			}
 		}
 		$result = $dbr->select( 'page',

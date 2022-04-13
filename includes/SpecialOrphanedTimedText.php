@@ -7,7 +7,16 @@
  * @ingroup SpecialPage
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
+use Html;
+use HtmlArmor;
+use Linker;
 use MediaWiki\MediaWikiServices;
+use PageQueryPage;
+use Skin;
+use stdClass;
+use Title;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 

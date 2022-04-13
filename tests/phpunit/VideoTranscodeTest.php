@@ -1,12 +1,13 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 /**
  * @ingroup timedmedia
  * @author michael dale
  * @group medium
- * @covers WebVideoTranscode
+ * @covers \MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode
  */
 class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
@@ -19,7 +20,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 	 * @param array $file
 	 * Broken as per bug 61878
 	 * @group Broken
-	 * @covers ApiQueryVideoInfo
+	 * @covers \MediaWiki\TimedMediaHandler\ApiQueryVideoInfo
 	 */
 	public function testTranscodeJobs( $file ) {
 		// Upload the file to the mediaWiki system
@@ -136,7 +137,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
 	/**
 	 * @dataProvider transcodeSetProvider
-	 * @covers WebVideoTranscode
+	 * @covers \MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode
 	 */
 	public function testEnabledTranscodeSetConfiguration( $set, $audioSet, $exception ) {
 		$this->setMWGlobals( [

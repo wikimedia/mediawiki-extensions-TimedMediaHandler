@@ -7,6 +7,13 @@
  *
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
+use ApiBase;
+use ApiQueryImageInfo;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use TextHandler;
+
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	public function __construct( $query, $moduleName, $prefix = 'vi' ) {

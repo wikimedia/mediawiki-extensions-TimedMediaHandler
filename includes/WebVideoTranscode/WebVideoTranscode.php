@@ -8,7 +8,18 @@
  *  extends video tag output to provide all the available sources
  */
 
+namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
+
+use CdnCacheUpdate;
+use DeferredUpdates;
+use Exception;
+use File;
+use ForeignDBViaLBRepo;
+use IForeignRepoWithMWApi;
 use MediaWiki\MediaWikiServices;
+use MWException;
+use TempFSFile;
+use Title;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -558,7 +569,7 @@ class WebVideoTranscode {
 		// Else just return the size of the source video
 		// ( we have no idea how large the actual derivative size will be )
 		$handler = $file->getHandler();
-		'@phan-var ID3Handler $handler';
+		'@phan-var \ID3Handler $handler';
 		return $file->getLength() * $handler->getBitrate( $file ) * 8;
 	}
 
@@ -680,7 +691,7 @@ class WebVideoTranscode {
 		}
 
 		$handler = $file->getHandler();
-		'@phan-var ID3Handler $handler';
+		'@phan-var \ID3Handler $handler';
 		// Now Check for derivatives
 		if ( $handler->isAudio( $file ) ) {
 			$transcodeSet = self::enabledAudioTranscodes();
@@ -904,7 +915,7 @@ class WebVideoTranscode {
 		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
 		$handler = $file->getHandler();
-		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
+		'@phan-var \FLACHandler|\MidiHandler|\Mp3Handler|\Mp4Handler|\OggHandler|\WAVHandler $handler';
 		$bitrate = $handler->getBitrate( $file );
 		$metadataType = $handler->getMetadataType( $file );
 
@@ -963,7 +974,7 @@ class WebVideoTranscode {
 		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
 
 		$handler = $file->getHandler();
-		'@phan-var ID3Handler $handler';
+		'@phan-var \ID3Handler $handler';
 		if ( $handler->isAudio( $file ) ) {
 			$width = $height = 0;
 		} else {
@@ -1071,7 +1082,7 @@ class WebVideoTranscode {
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
 		$handler = $file->getHandler();
-		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
+		'@phan-var \FLACHandler|\MidiHandler|\Mp3Handler|\Mp4Handler|\OggHandler|\WAVHandler $handler';
 		$audio = $handler->isAudio( $file );
 		if ( $audio ) {
 			$keys = self::enabledAudioTranscodes();

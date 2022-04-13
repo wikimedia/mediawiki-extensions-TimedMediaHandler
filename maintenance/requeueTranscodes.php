@@ -9,6 +9,8 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 class RequeueTranscodes extends Maintenance {
 

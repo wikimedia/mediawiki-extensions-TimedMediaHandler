@@ -19,7 +19,7 @@
 	},
 	"APIModules": {
 		"timedtext": {
-			"class": "ApiTimedText",
+			"class": "MediaWiki\\TimedMediaHandler\\ApiTimedText",
 			"services": [
 				"LanguageNameUtils",
 				"RepoGroup",
@@ -27,18 +27,18 @@
 				"WikiPageFactory"
 			]
 		},
-		"transcodereset": "ApiTranscodeReset"
+		"transcodereset": "MediaWiki\\TimedMediaHandler\\ApiTranscodeReset"
 	},
 	"APIPropModules": {
-		"videoinfo": "ApiQueryVideoInfo",
-		"transcodestatus": "ApiTranscodeStatus"
+		"videoinfo": "MediaWiki\\TimedMediaHandler\\ApiQueryVideoInfo",
+		"transcodestatus": "MediaWiki\\TimedMediaHandler\\ApiTranscodeStatus"
 	},
 	"AvailableRights": [
 		"transcode-reset",
 		"transcode-status"
 	],
 	"ExtensionFunctions": [
-		"TimedMediaHandlerHooks::register"
+		"MediaWiki\\TimedMediaHandler\\Hooks::register"
 	],
 	"GroupPermissions": {
 		"sysop": {
@@ -62,8 +62,8 @@
 		"timedmediahandler"
 	],
 	"SpecialPages": {
-		"OrphanedTimedText": "SpecialOrphanedTimedText",
-		"TranscodeStatistics": "SpecialTranscodeStatistics"
+		"OrphanedTimedText": "MediaWiki\\TimedMediaHandler\\SpecialOrphanedTimedText",
+		"TranscodeStatistics": "MediaWiki\\TimedMediaHandler\\SpecialTranscodeStatistics"
 	},
 	"MessagesDirs": {
 		"TimedMediaHandler": [
@@ -88,13 +88,6 @@
 		"TimedMediaHandlerAliases": "i18n/TimedMediaHandler.i18n.alias.php"
 	},
 	"AutoloadClasses": {
-		"WebVideoTranscode": "includes/WebVideoTranscode/WebVideoTranscode.php",
-		"TimedMediaHandler": "includes/TimedMediaHandler.php",
-		"TimedMediaHandlerHooks": "includes/TimedMediaHandlerHooks.php",
-		"TimedMediaTransformOutput": "includes/TimedMediaTransformOutput.php",
-		"TimedMediaIframeOutput": "includes/TimedMediaIframeOutput.php",
-		"TimedMediaThumbnail": "includes/TimedMediaThumbnail.php",
-		"TranscodeStatusTable": "includes/TranscodeStatusTable.php",
 		"OggHandler": "includes/handlers/OggHandler/OggHandler.php",
 		"OggException": "includes/handlers/OggHandler/OggException.php",
 		"File_Ogg": "includes/handlers/OggHandler/File_Ogg/File/Ogg.php",
@@ -113,46 +106,38 @@
 		"Mp3Handler": "includes/handlers/Mp3Handler/Mp3Handler.php",
 		"MidiHandler": "includes/handlers/MidiHandler/MidiHandler.php",
 		"MPEGHandler": "includes/handlers/MPEGHandler/MPEGHandler.php",
-		"TextHandler": "includes/handlers/TextHandler/TextHandler.php",
-		"TimedTextPage": "includes/TimedTextPage.php",
-		"WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php",
-		"ApiQueryVideoInfo": "includes/ApiQueryVideoInfo.php",
-		"ApiTimedText": "includes/ApiTimedText.php",
-		"ApiTranscodeStatus": "includes/ApiTranscodeStatus.php",
-		"ApiTranscodeReset": "includes/ApiTranscodeReset.php",
-		"SpecialTranscodeStatistics": "includes/SpecialTranscodeStatistics.php",
-		"SpecialOrphanedTimedText": "includes/SpecialOrphanedTimedText.php"
+		"TextHandler": "includes/handlers/TextHandler/TextHandler.php"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\TimedMediaHandler\\TimedText\\": "includes/TimedText/"
+		"MediaWiki\\TimedMediaHandler\\": "includes/"
 	},
 	"TestAutoloadClasses": {
 		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
 		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php"
 	},
 	"Hooks": {
-		"ArticleContentOnDiff": "TimedMediaHandlerHooks::checkForTimedTextDiff",
-		"ArticleFromTitle": "TimedMediaHandlerHooks::checkForTimedTextPage",
-		"ArticlePurge": "TimedMediaHandlerHooks::onArticlePurge",
-		"BeforePageDisplay": "TimedMediaHandlerHooks::pageOutputHook",
-		"CanonicalNamespaces": "TimedMediaHandlerHooks::onCanonicalNamespaces",
-		"FileDeleteComplete": "TimedMediaHandlerHooks::onFileDeleteComplete",
-		"FileUpload": "TimedMediaHandlerHooks::onFileUpload",
-		"GetBetaFeaturePreferences": "TimedMediaHandlerHooks::onGetBetaFeaturePreferences",
-		"UserGetDefaultOptions": "TimedMediaHandlerHooks::onUserGetDefaultOptions",
-		"ImageOpenShowImageInlineBefore": "TimedMediaHandlerHooks::onImageOpenShowImageInlineBefore",
-		"ImagePageAfterImageLinks": "TimedMediaHandlerHooks::checkForTranscodeStatus",
-		"ImagePageFileHistoryLine": "TimedMediaHandlerHooks::onImagePageFileHistoryLine",
-		"LoadExtensionSchemaUpdates": "TimedMediaHandlerHooks::checkSchemaUpdates",
-		"MediaWikiPerformAction": "TimedMediaIframeOutput::iframeHook",
-		"RevisionFromEditComplete": "TimedMediaHandlerHooks::onRevisionFromEditComplete",
-		"PageRenderingHash": "TimedMediaHandlerHooks::onPageRenderingHash",
-		"ParserTestGlobals": "TimedMediaHandlerHooks::onParserTestGlobals",
-		"RejectParserCacheValue": "TimedMediaHandlerHooks::onRejectParserCacheValue",
-		"ResourceLoaderGetConfigVars": "TimedMediaHandlerHooks::onResourceLoaderGetConfigVars",
-		"SkinTemplateNavigation::Universal": "TimedMediaHandlerHooks::onSkinTemplateNavigation",
-		"TitleMove": "TimedMediaHandlerHooks::checkTitleMove",
-		"wgQueryPages": "TimedMediaHandlerHooks::onwgQueryPages"
+		"ArticleContentOnDiff": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTimedTextDiff",
+		"ArticleFromTitle": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTimedTextPage",
+		"ArticlePurge": "MediaWiki\\TimedMediaHandler\\Hooks::onArticlePurge",
+		"BeforePageDisplay": "MediaWiki\\TimedMediaHandler\\Hooks::pageOutputHook",
+		"CanonicalNamespaces": "MediaWiki\\TimedMediaHandler\\Hooks::onCanonicalNamespaces",
+		"FileDeleteComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onFileDeleteComplete",
+		"FileUpload": "MediaWiki\\TimedMediaHandler\\Hooks::onFileUpload",
+		"GetBetaFeaturePreferences": "MediaWiki\\TimedMediaHandler\\Hooks::onGetBetaFeaturePreferences",
+		"UserGetDefaultOptions": "MediaWiki\\TimedMediaHandler\\Hooks::onUserGetDefaultOptions",
+		"ImageOpenShowImageInlineBefore": "MediaWiki\\TimedMediaHandler\\Hooks::onImageOpenShowImageInlineBefore",
+		"ImagePageAfterImageLinks": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTranscodeStatus",
+		"ImagePageFileHistoryLine": "MediaWiki\\TimedMediaHandler\\Hooks::onImagePageFileHistoryLine",
+		"LoadExtensionSchemaUpdates": "MediaWiki\\TimedMediaHandler\\Hooks::checkSchemaUpdates",
+		"MediaWikiPerformAction": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput::iframeHook",
+		"RevisionFromEditComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onRevisionFromEditComplete",
+		"PageRenderingHash": "MediaWiki\\TimedMediaHandler\\Hooks::onPageRenderingHash",
+		"ParserTestGlobals": "MediaWiki\\TimedMediaHandler\\Hooks::onParserTestGlobals",
+		"RejectParserCacheValue": "MediaWiki\\TimedMediaHandler\\Hooks::onRejectParserCacheValue",
+		"ResourceLoaderGetConfigVars": "MediaWiki\\TimedMediaHandler\\Hooks::onResourceLoaderGetConfigVars",
+		"SkinTemplateNavigation::Universal": "MediaWiki\\TimedMediaHandler\\Hooks::onSkinTemplateNavigation",
+		"TitleMove": "MediaWiki\\TimedMediaHandler\\Hooks::checkTitleMove",
+		"wgQueryPages": "MediaWiki\\TimedMediaHandler\\Hooks::onwgQueryPages"
 	},
 	"config": {
 		"TmhUseBetaFeatures": {

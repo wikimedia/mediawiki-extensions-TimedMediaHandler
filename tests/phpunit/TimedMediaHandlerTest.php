@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+
 class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 
 	/** @var TimedMediaHandler */
@@ -14,7 +16,7 @@ class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider providerParseParamString
 	 * @param string $str a thumbnail parameter string
 	 * @param array $expected Expected thumbnailing parameters
-	 * @covers TimedMediaHandler::parseParamString
+	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::parseParamString
 	 */
 	public function testParseParamString( $str, $expected ) {
 		$result = $this->handler->parseParamString( $str );

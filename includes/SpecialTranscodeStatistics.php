@@ -8,7 +8,13 @@
  * @ingroup SpecialPage
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use OutputPage;
+use SpecialPage;
+use Title;
 use Wikimedia\Rdbms\Database;
 
 class SpecialTranscodeStatistics extends SpecialPage {

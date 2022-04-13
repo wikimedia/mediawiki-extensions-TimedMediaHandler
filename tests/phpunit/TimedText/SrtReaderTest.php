@@ -9,7 +9,7 @@ use MediaWiki\TimedMediaHandler\TimedText\DOM;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 
 /**
- * @covers SrtReader::read
+ * @covers \MediaWiki\TimedMediaHandler\TimedText\SrtReader::read
  */
 class SrtReaderTest extends PHPUnit\Framework\TestCase {
 	public function setUp(): void {

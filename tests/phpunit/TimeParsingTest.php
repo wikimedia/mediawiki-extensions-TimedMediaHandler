@@ -7,10 +7,12 @@
  * @author Michael Dale
  */
 
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+
 class TimeParsingTest extends PHPUnit\Framework\TestCase {
 	/**
 	 * Test time string to np2
-	 * @covers TimedMediaHandler::seconds2npt
+	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::seconds2npt
 	 */
 	public function testSeconds2NptFormat() {
 		// Some time conversions:
@@ -27,7 +29,7 @@ class TimeParsingTest extends PHPUnit\Framework\TestCase {
 
 	/**
 	 * Test time parsing to seconds
-	 * @covers TimedMediaHandler::parseTimeString
+	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::parseTimeString
 	 */
 	public function testParseTimeString() {
 		// Some time conversions:

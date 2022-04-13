@@ -7,7 +7,12 @@
  * on the image page.
  */
 
+namespace MediaWiki\TimedMediaHandler;
+
+use ApiQueryBase;
+use File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 class ApiTranscodeStatus extends ApiQueryBase {
 	public function execute() {
@@ -25,7 +30,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 			 */
 			foreach ( $images as $img ) {
 				// if its a "transcode" add the transcode status table output
-				if ( TimedMediaHandlerHooks::isTranscodableTitle( $img->getTitle() ) ) {
+				if ( Hooks::isTranscodableTitle( $img->getTitle() ) ) {
 					$transcodeStatus = WebVideoTranscode::getTranscodeState( $img );
 					// remove useless properties
 					foreach ( $transcodeStatus as &$val ) {

@@ -6,8 +6,16 @@
  * @ingroup JobQueue
  */
 
+namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
+
+use CdnCacheUpdate;
+use File;
+use FSFile;
+use Job;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+use TempFSFile;
 use Wikimedia\AtEase\AtEase;
 
 /**
@@ -192,7 +200,7 @@ class WebVideoTranscodeJob extends Job {
 			__METHOD__
 		);
 
-		$lbFactory = MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		// Avoid contention and "server has gone away" errors as
 		// the transcode will take a very long time in some cases
 		$lbFactory->commitAll( __METHOD__ );
