@@ -30,15 +30,7 @@
 			 */
 			canPlayNatively: function () {
 				var el = document.createElement( 'video' );
-				if ( el && el.canPlayType && (
-					el.canPlayType( 'video/webm; codecs="opus,vp9"' ) || (
-						// Safari 12 workaround, where safari incorrectly reports not to support opus on webm files
-						typeof MediaSource !== 'undefined' && MediaSource.isTypeSupported( 'video/webm; codecs="vp9, opus"' )
-					) )
-				) {
-					return true;
-				}
-				return false;
+				return Boolean( el && el.canPlayType && el.canPlayType( 'video/webm; codecs="opus,vp9"' ) );
 			},
 
 			/**
@@ -64,17 +56,39 @@
 			 * then loads the OGVPlayer class before resolving.
 			 *
 			 * @param {string?} mod - optional module name override
+			 * @param {MediaElement?} media - optional element to check for native support
 			 * @return {jQuery.Promise}
 			 */
-			loadIfNeeded: function ( mod ) {
+			loadIfNeeded: function ( mod, media ) {
 				mod = mod || 'ext.tmh.OgvJs';
+				if ( media && this.isMediaNativelySupported( media ) ) {
+					return $.when();
+				}
 				if ( this.isNeeded() ) {
 					return this.loadOgvJs( mod );
-				} else {
-					return $.Deferred( function ( deferred ) {
-						deferred.resolve();
-					} ).promise();
 				}
+				return $.when();
+			},
+
+			/**
+			 * Check if native playback is supported for any of the
+			 * sources belonging to this mediaElement
+			 *
+			 * @param {MediaElement} mediaElement
+			 * @return {boolean}
+			 */
+			isMediaNativelySupported: function ( mediaElement ) {
+				var mediaType;
+				var supportedNatively = false;
+				var sourcesList = mediaElement.querySelectorAll( 'source' );
+				// IE11: NodeList.forEach
+				Array.prototype.forEach.call( sourcesList, function ( source ) {
+					mediaType = source.getAttribute( 'type' );
+					if ( mediaElement.canPlayType( mediaType ) ) {
+						supportedNatively = true;
+					}
+				} );
+				return supportedNatively;
 			},
 
 			/**
