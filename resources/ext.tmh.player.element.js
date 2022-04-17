@@ -271,11 +271,10 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 		// Chrome 50+
 		// Firefox 53+
 		// Safari 10+
+		// The reject promise of play is not that reliable when using <source> children
+		// It might not ever trigger
+		// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
 		playPromise.then( function () {
-			setTimeout( function () {
-				mediaElement.element.pause();
-			}, 0 );
-		}, function () {
 			setTimeout( function () {
 				mediaElement.element.pause();
 			}, 0 );
