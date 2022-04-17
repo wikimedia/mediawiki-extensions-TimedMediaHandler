@@ -41,11 +41,11 @@ $( function () {
 	}
 	// The iframe mode
 	mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-		$iframeElements.transformVideoPlayer( { fill: true } ).then( function ( $videojs ) {
-			var player = $videojs[ 0 ];
-			player.ready( function () {
-				// Add further customizations here
-			} );
+		var InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+		$iframeElements.each( function ( index, mediaElement ) {
+			var inlinePlayer = new InlinePlayer( mediaElement, { fill: true } );
+			inlinePlayer.infuse();
+			// .then add further customization here
 		} );
 	} );
 } );
