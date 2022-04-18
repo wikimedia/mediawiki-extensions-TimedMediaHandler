@@ -45,6 +45,10 @@
       var selection = this.player_.currentResolution();
       this.selected(this.options_.label === selection.label);
     };
+    ResolutionMenuItem.prototype.dispose = function(){
+      this.player_.off('resolutionchange', videojs.bind(this, this.update));
+      return MenuButton.prototype.dispose.call(this);
+    }
     MenuItem.registerComponent('ResolutionMenuItem', ResolutionMenuItem);
 
     /*
@@ -215,6 +219,19 @@
         if(typeof customSourcePicker === 'function'){
           return customSourcePicker(player, sources, label);
         }
+        // If the source fails, try any of the other sources
+        player.one( 'error', videojs.bind(player, function ( errorEvent ) {
+          var error = player.error()
+          if ( error.code >= 3 ) {
+            // MEDIA_ERR_DECODE OR MEDIA_ERR_SRC_NOT_SUPPORTED
+            errorEvent.stopImmediatePropagation();
+            player.errorDisplay.close();
+            var sources = player.currentSources.filter( function( asource ) {
+              return asource.src !== player.currentSrc();
+            });
+            player.updateSrc( sources ).play();
+          }
+        } ) );
         player.src(sources.map(function(src) {
           return {src: src.src, type: src.type, res: src.res};
         }));
