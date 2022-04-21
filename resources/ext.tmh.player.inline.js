@@ -95,6 +95,12 @@ InlinePlayer.videoConfig = {
 		xlarge: 1000,
 		huge: 2000
 	},
+	controlBar: {
+		currentTimeDisplay: true,
+		timeDivider: true,
+		durationDisplay: true,
+		remainingTimeDisplay: false
+	},
 	plugins: {
 		videoJsResolutionSwitcher: {
 			sourceOrder: true
@@ -284,6 +290,10 @@ InlinePlayer.prototype.infuse = function () {
 		}
 		if ( !this.isAudio && defaultRes ) {
 			this.playerConfig.plugins.videoJsResolutionSwitcher.default = defaultRes;
+		}
+		if ( playerHeight >= 120 ) { // 5em === 65px
+			// We place the progressbar on top of the other controls
+			this.$videoplayer.addClass( 'vjs-high-controls' );
 		}
 	}
 	// We remove SRT subtitles tracks as we can't handle them

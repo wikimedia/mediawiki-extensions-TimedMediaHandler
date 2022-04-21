@@ -50,6 +50,41 @@ div.thumbinner.mw-overflow {
 	vertical-align: initial;
 }
 
+.video-js.vjs-high-controls:not( .vjs-audio ) {
+	/* Position the progress control above the other controls */
+	.vjs-control-bar {
+		flex-wrap: wrap;
+		height: 5em;
+	}
+
+	.vjs-control {
+		height: 3em;
+	}
+
+	.vjs-progress-control {
+		flex: 1 0 100%;
+		height: 2em;
+		order: -1;
+		padding-top: 0.5em;
+	}
+	/* push other controls to be right aligned */
+	.vjs-custom-control-spacer {
+		display: block;
+		flex: 1 1 auto;
+	}
+	/* Show time position and duration */
+	.vjs-time-control {
+		display: block;
+		min-width: unset;
+		padding-left: 0.3em;
+		padding-right: 0.3em;
+	}
+
+	&.vjs-user-active.vjs-playing .vjs-text-track-display {
+		bottom: 5em;
+	}
+}
+
 /* TODO this button needs to be reworked */
 .video-js:not( .vjs-fullscreen ).vjs-layout-small,
 .video-js:not( .vjs-fullscreen ).vjs-layout-x-small,
@@ -85,6 +120,7 @@ div.thumbinner.mw-overflow {
 		height: 3em;
 	}
 
+	/* stylelint-disable-next-line no-descending-specificity */
 	.vjs-control-bar {
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -109,6 +145,7 @@ div.thumbinner.mw-overflow {
 		}
 	}
 
+	/* stylelint-disable-next-line no-descending-specificity */
 	&.vjs-user-inactive.vjs-playing .vjs-text-track-display { //.vjs-text-track-cue {
 		// Compensate for the fact that cue offset calculation is off,
 		// because it doesn't account for us force displaying the controlbar when user is inactive
