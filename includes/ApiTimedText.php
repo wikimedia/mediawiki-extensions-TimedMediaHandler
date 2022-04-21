@@ -179,6 +179,8 @@ class ApiTimedText extends ApiBase {
 		} elseif ( $params['trackformat'] === 'vtt' ) {
 			$mimeType = 'text/vtt';
 		} else {
+			// Unreachable due to parameter validation,
+			// unless someone adds a new format and forgets. :D
 			throw new MWException( 'Unsupported timedtext trackformat' );
 		}
 
@@ -276,6 +278,7 @@ class ApiTimedText extends ApiBase {
 			],
 			'trackformat' => [
 				ParamValidator::PARAM_TYPE => [ 'srt', 'vtt' ],
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			// Note this is the target language of the track to load,
 			// and does not control things like the language of
