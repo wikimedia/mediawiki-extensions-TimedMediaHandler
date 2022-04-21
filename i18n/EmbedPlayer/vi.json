@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Minh Nguyen",
+			"NguoiDungKhongDinhDanh",
 			"Thienhau2003",
 			"Vinhtantran"
 		]
@@ -9,7 +10,7 @@
 	"mwe-embedplayer-credit-title": "Tiêu đề: $1",
 	"mwe-embedplayer-credit-date": "Ngày: $1",
 	"mwe-embedplayer-credit-author": "Tác giả: $1",
-	"mwe-embedplayer-nocredits": "Không có sẵn lời ghi công",
+	"mwe-embedplayer-nocredits": "Không có lời ghi công",
 	"mwe-embedplayer-loading_plugin": "đang tải phần bổ trợ …",
 	"mwe-embedplayer-select_playback": "Cấu hình phát lại",
 	"mwe-embedplayer-missing_video_stream": "Tập tin video của luồng này bị mất",
