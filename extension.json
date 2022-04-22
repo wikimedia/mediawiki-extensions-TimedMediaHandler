@@ -106,7 +106,9 @@
 		"Mp3Handler": "includes/handlers/Mp3Handler/Mp3Handler.php",
 		"MidiHandler": "includes/handlers/MidiHandler/MidiHandler.php",
 		"MPEGHandler": "includes/handlers/MPEGHandler/MPEGHandler.php",
-		"TextHandler": "includes/handlers/TextHandler/TextHandler.php"
+		"TextHandler": "includes/handlers/TextHandler/TextHandler.php",
+		"WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php",
+		"MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\TimedMediaHandler\\": "includes/"
@@ -886,8 +888,8 @@
 		"video/webm": "WebMHandler"
 	},
 	"JobClasses": {
-		"webVideoTranscode": "WebVideoTranscodeJob",
-		"webVideoTranscodePrioritized": "WebVideoTranscodeJob"
+		"webVideoTranscode": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
+		"webVideoTranscodePrioritized": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
