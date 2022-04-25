@@ -21,10 +21,14 @@ $.fn.loadVideoPlayer = loadVideoPlayer;
 
 /**
  * Main loader for content
+ *
+ * @param {jQuery} $content areas to which to apply the hook loaders
  */
-mw.hook( 'wikipage.content' ).add( function ( $content ) {
+function loadVideoPlayers( $content ) {
 	$content.find( 'video, audio' ).loadVideoPlayer();
-} );
+}
+mw.hook( 'wikipage.content' ).add( loadVideoPlayers );
+mw.hook( 'wikipage.indicators' ).add( loadVideoPlayers );
 
 /**
  * Loader for iframe mode
