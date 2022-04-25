@@ -17,6 +17,8 @@ audio,
 	height: 30px;
 	// Apple enforces a 31px height.. go away Apple.
 	--inline-controls-bar-height: 30px;
+	// Fallback width for Score and other widthless <audio> elements
+	width: 300px;
 }
 // NOTE: this likely breaks when we switch from ParserEnableLegacyMediaDOM
 // to Parsoid DOM, because they moved the border
