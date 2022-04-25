@@ -21,7 +21,7 @@
 	"mwe-timedtext-textcat-lrc": "Dalszöveg",
 	"mwe-timedtext-textcat-lin": "Nyelvi jelölés",
 	"mwe-timedtext-no-subs": "Nem érhetők el szövegsávok",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 feliratok a(z) $2 kliphez",
+	"mwe-timedtext-language-subtitles-for-clip": "{{ucfirst:$1}} feliratok a(z) $2 kliphez",
 	"mwe-timedtext-language-no-subtitles-for-clip": "Nem találhatók $1 feliratok a(z) $2 kliphez",
 	"mwe-timedtext-upload-timed-text": "Felirat hozzáadása"
 }
