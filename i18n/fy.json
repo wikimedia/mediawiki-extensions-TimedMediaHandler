@@ -89,7 +89,7 @@
 	"timedmedia-subtitle-new-desc": "Kies de taal en druk op 'e knop '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Los!",
 	"timedmedia-subtitle-no-video": "Der is noch gjin fideo oan dizze ûndertitelside ferbûn.",
-	"timedmedia-subtitle-no-subtitles": "Der binne noch gjin ûndertitels yn it $1 foar dizze fideo. Jo kinne [{{fullurl:{{FULLPAGENAME}}|action=edit}} dizze side bewurkje] en foegje dy ta.",
+	"timedmedia-subtitle-no-subtitles": "Der binne noch gjin ûndertitels yn it $1 foar dizze fideo. Jo kinne [{{fullurl:{{FULLPAGENAME}}|action=edit}} dizze side bewurkje] om dy ta te foegjen.",
 	"timedmedia-subtitle-remote": "De ûndertitels foar dit bestân steane op $1",
 	"timedmedia-subtitle-remote-link": "Jo kinne foar dit bestân [$1 de beskriuwingsside besjen] op $2",
 	"timedmedia-subtitles-available": "Undertitels beskikber.",
