@@ -49,6 +49,9 @@ class TimedTextPage extends Article {
 		$out = $this->getContext()->getOutput();
 		$diff = $request->getVal( 'diff' );
 
+		// Article flag is required for some editors, and other features (T307218).
+		$out->setArticleFlag( true );
+
 		if ( isset( $diff ) || $this->getTitle()->getNamespace() !== NS_TIMEDTEXT ) {
 			parent::view();
 			return;
