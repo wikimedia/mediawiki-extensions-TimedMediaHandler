@@ -194,6 +194,13 @@ html[ dir='rtl' ] {
 			right: 0;
 		}
 	}
+
+	// T307363
+	// https://github.com/videojs/video.js/issues/7743
+	.video-js .vjs-volume-panel .vjs-volume-control.vjs-volume-vertical {
+		/* @noflip */
+		left: -3.5em;
+	}
 }
 
 @keyframes vjs-slider-indeterminate {
