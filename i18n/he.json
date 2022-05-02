@@ -17,7 +17,7 @@
 	"timedmedia-ogg-long-video": "קובץ וידאו $1 של Ogg, באורך $2, $4 × $5 פיקסלים, $3",
 	"timedmedia-ogg-long-multiplexed": "קובץ Ogg מרובב של שמע ווידאו, $1, באורך $2, $4 × $5 פיקסלים, $3 בסך הכול",
 	"timedmedia-ogg-long-general": "קובץ מדיה של Ogg, באורך $2, $3",
-	"timedmedia-ogg-long-error": "קובץ ogg בלתי תקין: $1",
+	"timedmedia-ogg-long-error": "קובץ ogg בלתי־תקין: $1",
 	"timedmedia-ogg-long-no-streams": "קובץ מדיה Ogg. אזהרה: אף אחד מהקודקים בקובץ הזה אינו מוּכּר.",
 	"timedmedia-webm-short-video": "קובץ וידאו WebM $1‏, $2",
 	"timedmedia-webm-long-video": "קובץ שמע ווידאו WebM‏, $1, באורך $2‏, $4 × $5 פיקסלים, $3 סך הכול",
