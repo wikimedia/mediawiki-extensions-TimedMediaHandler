@@ -294,6 +294,8 @@ InlinePlayer.prototype.infuse = function () {
 		if ( playerHeight >= 120 ) { // 5em === 65px
 			// We place the progressbar on top of the other controls
 			this.$videoplayer.addClass( 'vjs-high-controls' );
+			this.playerConfig.controlBar.volumePanel.inline = true;
+			this.playerConfig.controlBar.volumePanel.vertical = false;
 		}
 	}
 	// We remove SRT subtitles tracks as we can't handle them
