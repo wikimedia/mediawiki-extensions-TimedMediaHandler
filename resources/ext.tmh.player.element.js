@@ -138,7 +138,7 @@ MediaElement.prototype.load = function () {
 
 	if ( ( this.isAudio && this.$element.attr( 'width' ) >= 150 ) || ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) ) {
 		// Add duration label
-		var duration = this.$element.data( 'durationhint' );
+		var duration = this.$element.data( 'durationhint' ) || 0;
 		var $duration = $( '<span>' )
 			.addClass( 'mw-tmh-duration mw-tmh-label' )
 			.attr( 'aria-label', secondsToDurationLongString( duration ) )
