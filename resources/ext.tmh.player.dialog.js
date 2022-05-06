@@ -25,6 +25,15 @@ MediaDialog.prototype.initialize = function () {
 	MediaDialog.super.prototype.initialize.call( this );
 
 	this.$element.addClass( 'mw-tmh-media-dialog' );
+	this.$element.on( 'click', function ( e ) {
+		if (
+			!this.$body.get( 0 ).contains( e.target ) &&
+			!this.$head.get( 0 ).contains( e.target )
+		) {
+			// Close the dialog when user clicks outside of it
+			this.close();
+		}
+	}.bind( this ) );
 
 	this.content = new OO.ui.PanelLayout( {
 		padded: false,
