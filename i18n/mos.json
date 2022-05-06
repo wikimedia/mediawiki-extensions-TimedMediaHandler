@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abdul Fatawu 352",
 			"Hasslaebetch"
 		]
 	},
-	"timedmedia-source-file": "$1 suurs"
+	"timedmedia-source-file": "$1 suurs",
+	"timedmedia-source-audio-file-desc": "Menga $1 fisiye ($2)"
 }
