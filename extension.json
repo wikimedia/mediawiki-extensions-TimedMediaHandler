@@ -95,27 +95,30 @@
 		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php"
 	},
 	"Hooks": {
-		"ArticleContentOnDiff": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTimedTextDiff",
-		"ArticleFromTitle": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTimedTextPage",
+		"ArticleContentOnDiff": "main",
+		"ArticleFromTitle": "main",
 		"ArticlePurge": "main",
-		"BeforePageDisplay": "MediaWiki\\TimedMediaHandler\\Hooks::pageOutputHook",
+		"BeforePageDisplay": "main",
 		"CanonicalNamespaces": "main",
 		"FileDeleteComplete": "main",
 		"FileUpload": "main",
 		"ImageOpenShowImageInlineBefore": "main",
-		"ImagePageAfterImageLinks": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTranscodeStatus",
+		"ImagePageAfterImageLinks": "main",
 		"ImagePageFileHistoryLine": "main",
-		"LoadExtensionSchemaUpdates": "MediaWiki\\TimedMediaHandler\\Hooks::checkSchemaUpdates",
-		"MediaWikiPerformAction": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput::iframeHook",
+		"LoadExtensionSchemaUpdates": "main",
+		"MediaWikiPerformAction": "iframe",
 		"RevisionFromEditComplete": "main",
 		"ParserTestGlobals": "main",
-		"SkinTemplateNavigation::Universal": "MediaWiki\\TimedMediaHandler\\Hooks::onSkinTemplateNavigation",
-		"TitleMove": "MediaWiki\\TimedMediaHandler\\Hooks::checkTitleMove",
+		"SkinTemplateNavigation::Universal": "main",
+		"TitleMove": "main",
 		"wgQueryPages": "main"
 	},
 	"HookHandlers": {
 		"main": {
 			"class": "MediaWiki\\TimedMediaHandler\\Hooks"
+		},
+		"iframe": {
+			"class": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput"
 		}
 	},
 	"config": {

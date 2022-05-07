@@ -14,6 +14,7 @@ namespace MediaWiki\TimedMediaHandler;
 use Exception;
 use Html;
 use MediaWiki;
+use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use Page;
@@ -21,7 +22,7 @@ use Title;
 use User;
 use WebRequest;
 
-class TimedMediaIframeOutput {
+class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 	/**
 	 * The iframe hook check file pages embedplayer=yes
 	 * @param OutputPage $output
@@ -33,7 +34,7 @@ class TimedMediaIframeOutput {
 	 * @return bool
 	 * @throws Exception
 	 */
-	public static function iframeHook( $output, $page, $title, $user, $request, $mediawiki ) {
+	public function onMediaWikiPerformAction( $output, $page, $title, $user, $request, $mediawiki ) {
 		global $wgEnableIframeEmbed;
 		if ( !$wgEnableIframeEmbed ) {
 			// continue normal output iframes are "off" (maybe throw a warning in the future)
@@ -43,7 +44,7 @@ class TimedMediaIframeOutput {
 		// Make sure we are in the right namespace and iframe=true was called:
 		if ( is_object( $title ) && $title->getNamespace() === NS_FILE &&
 			$request->getVal( 'embedplayer' ) &&
-			self::outputIframe( $title, $output )
+			$this->outputIframe( $title, $output )
 		) {
 			// Turn off output of anything other than the iframe
 			$output->disable();
@@ -60,7 +61,7 @@ class TimedMediaIframeOutput {
 	 * @return bool
 	 * @throws Exception
 	 */
-	private static function outputIframe( $title, $out ) {
+	private function outputIframe( $title, $out ) {
 		global $wgEnableIframeEmbed, $wgBreakFrames;
 
 		if ( !$wgEnableIframeEmbed ) {
