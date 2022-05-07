@@ -268,6 +268,11 @@ class ApiTimedText extends ApiBase {
 		);
 	}
 
+	/**
+	 * @param int $flags
+	 *
+	 * @return array
+	 */
 	public function getAllowedParams( $flags = 0 ) {
 		$ret = [
 			'title' => [
@@ -304,6 +309,7 @@ class ApiTimedText extends ApiBase {
 		];
 	}
 
+	/** @inheritDoc */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:TimedMediaHandler';
 	}

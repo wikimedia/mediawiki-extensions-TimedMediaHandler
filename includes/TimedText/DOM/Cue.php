@@ -15,10 +15,16 @@ class Cue {
 	/** @var Node[] */
 	public $nodes = [];
 
+	/**
+	 * @param Node $node
+	 */
 	public function appendNode( Node $node ) {
 		$this->nodes[] = $node;
 	}
 
+	/**
+	 * @param string $str
+	 */
 	public function appendText( $str ) {
 		$this->appendNode( new TextNode( strval( $str ) ) );
 	}

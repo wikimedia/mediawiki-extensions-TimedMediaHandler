@@ -9,6 +9,9 @@ class TimestampNode extends LeafNode {
 	/** @var float timestamp in seconds */
 	public $timestamp = 0.0;
 
+	/**
+	 * @param float $timestamp
+	 */
 	public function __construct( $timestamp = 0.0 ) {
 		$this->timestamp = floatval( $timestamp );
 	}

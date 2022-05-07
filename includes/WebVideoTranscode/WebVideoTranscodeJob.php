@@ -16,6 +16,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use TempFSFile;
+use Title;
 use Wikimedia\AtEase\AtEase;
 
 /**
@@ -30,15 +31,24 @@ use Wikimedia\AtEase\AtEase;
  */
 
 class WebVideoTranscodeJob extends Job {
+
 	/** @var TempFSFile|null */
 	public $targetEncodeFile;
+
 	/** @var string|null|false */
 	public $sourceFilePath;
+
 	/** @var File */
 	public $file;
+
 	/** @var FSFile|null */
 	public $source;
 
+	/**
+	 * @param Title $title
+	 * @param array $params
+	 * @param int $id
+	 */
 	public function __construct( $title, $params, $id = 0 ) {
 		if ( isset( $params['prioritized'] ) && $params['prioritized'] ) {
 			$command = 'webVideoTranscodePrioritized';
@@ -504,6 +514,11 @@ class WebVideoTranscodeJob extends Job {
 		return $cmd;
 	}
 
+	/**
+	 * @param array $options
+	 *
+	 * @return string
+	 */
 	private function ffmpegAddVideoSizeOptions( $options ) {
 		$cmd = '';
 		// Get a local pointer to the file object

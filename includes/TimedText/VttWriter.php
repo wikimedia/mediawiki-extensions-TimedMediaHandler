@@ -43,6 +43,12 @@ class VttWriter extends Writer {
 			$this->fixNewlines( $this->formatNodes( $cue->nodes ) );
 	}
 
+	/**
+	 * @param string $id
+	 * @param array &$usedMap
+	 *
+	 * @return string
+	 */
 	public function normalizeCueId( $id, &$usedMap ) {
 		// https://www.w3.org/TR/webvtt1/#webvtt-cue-identifier
 		$id = str_replace( "\n", "", $id );
@@ -63,8 +69,12 @@ class VttWriter extends Writer {
 		return $id;
 	}
 
+	/**
+	 * @param float $time
+	 *
+	 * @return string
+	 */
 	public function formatTimestamp( $time ) {
-		//
 		$s = floor( $time );
 		$frac = $time - $s;
 		$millis = round( $frac * 1000.0 );
@@ -93,6 +103,11 @@ class VttWriter extends Writer {
 		);
 	}
 
+	/**
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	public function fixNewlines( $text ) {
 		// Cues must not contain blank lines, but may
 		// contain newlines as character references.
@@ -102,12 +117,22 @@ class VttWriter extends Writer {
 		return str_replace( "\n\n", "\n \n", $text );
 	}
 
+	/**
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	public function formatText( $text ) {
 		// < and > and & and friends are special, kinda like HTML
 		// but not exactly
 		return htmlspecialchars( $text, ENT_NOQUOTES | ENT_HTML5, 'utf-8' );
 	}
 
+	/**
+	 * @param array $nodes
+	 *
+	 * @return string
+	 */
 	public function formatNodes( $nodes ) {
 		$s = '';
 		foreach ( $nodes as $node ) {
@@ -116,6 +141,11 @@ class VttWriter extends Writer {
 		return $s;
 	}
 
+	/**
+	 * @param DOM\Node $node
+	 *
+	 * @return string
+	 */
 	public function formatNode( DOM\Node $node ) {
 		if ( $node instanceof DOM\InternalNode ) {
 			if ( $node instanceof DOM\ClassNode ) {

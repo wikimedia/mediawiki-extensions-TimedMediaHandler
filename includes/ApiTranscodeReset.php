@@ -152,6 +152,7 @@ class ApiTranscodeReset extends ApiBase {
 		return true;
 	}
 
+	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return [
 			'title' => [

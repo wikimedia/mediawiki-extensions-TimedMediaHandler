@@ -27,6 +27,7 @@ class MidiHandler extends ID3Handler {
 		return 'audio/midi';
 	}
 
+	/** @inheritDoc */
 	public function verifyUpload( $filename ) {
 		$metadata = $this->getID3( $filename );
 

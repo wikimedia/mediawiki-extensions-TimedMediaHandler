@@ -2,6 +2,7 @@
 
 namespace MediaWiki\TimedMediaHandler\TimedText;
 
+use Exception;
 use ReflectionClass;
 
 /**
@@ -57,10 +58,12 @@ class SrtReader extends Reader {
 		$this->parse( $input );
 	}
 
+	/** @inheritDoc */
 	public function getCues() {
 		return $this->cues;
 	}
 
+	/** @inheritDoc */
 	public function getErrors() {
 		return $this->errors;
 	}
@@ -75,7 +78,7 @@ class SrtReader extends Reader {
 
 	protected function restoreState() {
 		if ( !$this->states ) {
-			throw new \Exception( 'No saved state to discard' );
+			throw new Exception( 'No saved state to discard' );
 		}
 		$state = array_pop( $this->states );
 		$this->pos = $state['pos'];
@@ -85,7 +88,7 @@ class SrtReader extends Reader {
 
 	protected function discardState() {
 		if ( !count( $this->states ) ) {
-			throw new \Exception( 'No saved state to discard' );
+			throw new Exception( 'No saved state to discard' );
 		}
 		array_pop( $this->states );
 	}
@@ -113,6 +116,11 @@ class SrtReader extends Reader {
 		return '';
 	}
 
+	/**
+	 * @param callable $callback
+	 *
+	 * @return string
+	 */
 	protected function consumeWhile( $callback ) {
 		$str = '';
 		while ( $this->pos < $this->len ) {
@@ -296,6 +304,9 @@ class SrtReader extends Reader {
 		} while ( true );
 	}
 
+	/**
+	 * @param string $msg
+	 */
 	protected function recordError( $msg ) {
 		$newlinePos = strpos( $this->input, "\n", $this->lineStart );
 		if ( $newlinePos === false ) {
@@ -310,6 +321,9 @@ class SrtReader extends Reader {
 		);
 	}
 
+	/**
+	 * @param DOM\Node $node
+	 */
 	protected function pushStack( DOM\Node $node ) {
 		$this->current->appendNode( $node );
 		if ( $node instanceof DOM\InternalNode ) {
@@ -323,6 +337,11 @@ class SrtReader extends Reader {
 		$this->current = $this->stack[count( $this->stack ) - 1];
 	}
 
+	/**
+	 * @param string $text
+	 *
+	 * @throws Exception
+	 */
 	protected function parse( $text ) {
 		$this->len = strlen( $text );
 		$this->input = $text;
@@ -348,7 +367,7 @@ class SrtReader extends Reader {
 			if ( isset( $map[$state] ) ) {
 				$state = $map[$state]();
 			} else {
-				throw new \Exception( 'Invalid internal state ' . $state );
+				throw new Exception( 'Invalid internal state ' . $state );
 			}
 		} while ( $state !== 'End' );
 	}

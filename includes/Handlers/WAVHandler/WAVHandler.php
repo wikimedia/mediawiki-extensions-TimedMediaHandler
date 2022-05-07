@@ -27,6 +27,7 @@ class WAVHandler extends ID3Handler {
 		return 'audio/wav';
 	}
 
+	/** @inheritDoc */
 	public function verifyUpload( $filename ) {
 		$metadata = $this->getID3( $filename );
 

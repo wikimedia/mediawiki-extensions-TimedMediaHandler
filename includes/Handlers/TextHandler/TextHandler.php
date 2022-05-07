@@ -42,6 +42,10 @@ class TextHandler {
 	 */
 	protected $formats;
 
+	/**
+	 * @param File $file
+	 * @param array $formats
+	 */
 	public function __construct( $file, $formats = [ 'vtt', 'srt' ] ) {
 		$this->file = $file;
 		$this->formats = $formats;
@@ -312,6 +316,11 @@ class TextHandler {
 		return $textTracks;
 	}
 
+	/**
+	 * @param string $timedTextExtension
+	 *
+	 * @return string
+	 */
 	public function getContentType( $timedTextExtension ) {
 		if ( $timedTextExtension === 'srt' ) {
 			return 'text/x-srt';
@@ -322,6 +331,9 @@ class TextHandler {
 		return '';
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getForeignNamespaceName() {
 		if ( $this->remoteNs !== null ) {
 			return $this->remoteNsName;

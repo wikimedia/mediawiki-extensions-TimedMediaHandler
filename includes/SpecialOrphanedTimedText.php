@@ -30,6 +30,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	/** @var array with keys being names of valid files */
 	private $existingFiles;
 
+	/** @inheritDoc */
 	public function __construct( $name = 'OrphanedTimedText' ) {
 		parent::__construct( $name );
 	}
@@ -166,6 +167,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		];
 	}
 
+	/** @inheritDoc */
 	public function getOrderFields() {
 		return [ 'namespace', 'title' ];
 	}
