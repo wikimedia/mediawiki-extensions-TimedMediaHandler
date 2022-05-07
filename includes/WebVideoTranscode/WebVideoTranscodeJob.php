@@ -720,7 +720,8 @@ class WebVideoTranscodeJob extends Job {
 		$cmdArgs = [
 			wfEscapeShellArg( $wgTmhFluidsynthLocation ),
 			'-T',
-			$options['audioCodec'] === 'vorbis' ? 'oga' : 'wav', // wav for mp3
+			// wav for mp3
+			$options['audioCodec'] === 'vorbis' ? 'oga' : 'wav',
 			wfEscapeShellArg( $wgTmhSoundfontLocation ),
 			wfEscapeShellArg( $this->getSourceFilePath() ),
 			'-F',

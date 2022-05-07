@@ -160,9 +160,9 @@ class TextHandler {
 		$canonicalTitle = Title::makeName(
 			$this->file->getTitle()->getNamespace(),
 			$this->file->getTitle()->getDbKey(),
-			'', // fragment
-			'', // interwiki
-			true // canonical namespace
+			'',
+			'',
+			true
 		);
 		return [
 			'action' => 'query',
@@ -362,9 +362,9 @@ class TextHandler {
 		$canonicalTitle = Title::makeName(
 			$title->getNamespace(),
 			$title->getDbKey(),
-			'', // fragment
-			'', // interwiki
-			true // canonical namespace
+			'',
+			'',
+			true
 		);
 		$params = [
 			'action' => 'timedtext',

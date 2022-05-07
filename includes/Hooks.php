@@ -425,13 +425,13 @@ class Hooks {
 		}
 
 		if ( $title->isSpecialPage() ) {
-			[ $name, /* subpage */ ] = MediaWikiServices::getInstance()
+			[ $name, ] = MediaWikiServices::getInstance()
 				->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
 			if (
 				$name === 'Search' || $name === 'GlobalUsage' || $name === 'Upload' ||
 				stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
 			) {
-					$addModules = true;
+				$addModules = true;
 			}
 		}
 

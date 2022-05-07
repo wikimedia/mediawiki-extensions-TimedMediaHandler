@@ -60,11 +60,11 @@ class MPEGHandler extends ID3Handler {
 		if ( isset( $metadata['error'] ) ) {
 			return false;
 		}
-		if ( isset(
-			$metadata['video']['resolution_x'],
-			$metadata['video']['resolution_y'],
-			$metadata['video']['pixel_aspect_ratio']
-		) ) {
+		if (
+			isset( $metadata['video']['resolution_x'] ) &&
+			isset( $metadata['video']['resolution_y'] ) &&
+			isset( $metadata['video']['pixel_aspect_ratio'] )
+		) {
 			$width = $metadata['video']['resolution_x'];
 			$height = $metadata['video']['resolution_y'];
 			$aspect = $metadata['video']['pixel_aspect_ratio'];

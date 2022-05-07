@@ -127,7 +127,8 @@ class TimedMediaHandler extends MediaHandler {
 			if ( $thumbtime !== null ) {
 				$params['thumbtime'] = (float)$thumbtime;
 			}
-			return $params; // valid thumbnail URL
+			// valid thumbnail URL
+			return $params;
 		}
 		// invalid parameter string
 		return false;
@@ -187,13 +188,12 @@ class TimedMediaHandler extends MediaHandler {
 
 		// Make sure start time is not > than end time
 		if (
-			isset( $params['start'], $params['end'] ) &&
+			isset( $params['start'] ) && isset( $params['end'] ) &&
 			$params['start'] !== false &&
-			$params['end'] !== false
+			$params['end'] !== false &&
+			( self::parseTimeString( $params['start'] ) > self::parseTimeString( $params['end'] ) )
 		) {
-			if ( self::parseTimeString( $params['start'] ) > self::parseTimeString( $params['end'] ) ) {
-				return false;
-			}
+			return false;
 		}
 
 		return true;

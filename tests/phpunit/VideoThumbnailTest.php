@@ -29,7 +29,7 @@ class VideoThumbnailTest extends ApiVideoUploadTestCase {
 		];
 
 		// Do a request for a small ( 200px ) thumbnail
-		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest(
+		[ $result, , ] = $this->doApiRequest(
 			array_merge( $params, [
 					'iiurlwidth' => '200'
 				]
@@ -63,12 +63,11 @@ class VideoThumbnailTest extends ApiVideoUploadTestCase {
 		 */
 
 		// Test a larger thumbnail with 1 second time offset
-		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest(
+		[ $result, , ] = $this->doApiRequest(
 			array_merge( $params, [
-					'iiurlwidth' => '600',
-					'iiurlparam' => '1'
-				]
-			)
+				'iiurlwidth' => '600',
+				'iiurlparam' => '1'
+			] )
 		);
 		$page = current( $result['query']['pages'] );
 		$imageInfo = current( $page['imageinfo'] );

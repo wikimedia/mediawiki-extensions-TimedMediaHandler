@@ -34,7 +34,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			'prop' => 'videoinfo',
 			'viprop' => "derivatives",
 		];
-		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest( $params );
+		[ $result, , ] = $this->doApiRequest( $params );
 
 		// Get the $derivatives:
 		$derivatives = $this->getDerivativesFromResult( $result );
@@ -72,12 +72,12 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		// Now run the transcode job queue
 		$this->runTranscodeJobs();
 
-		$res = $db->select( 'transcode', '*', [
+		$db->select( 'transcode', '*', [
 			'transcode_image_name' => ucfirst( $fileName )
 		] );
 
 		// Now check if the derivatives were created:
-		[ $result, /*request*/, /*session*/ ] = $this->doApiRequest( $params );
+		[ $result, , ] = $this->doApiRequest( $params );
 		$derivatives = $this->getDerivativesFromResult( $result );
 
 		// Check that every requested encode was encoded:

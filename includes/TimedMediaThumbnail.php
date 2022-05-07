@@ -21,7 +21,7 @@ class TimedMediaThumbnail {
 
 		wfDebug( "Creating video thumbnail at " . $options['dstPath'] . "\n" );
 		if (
-			isset( $options['width'], $options['height'] ) &&
+			isset( $options['width'] ) && isset( $options['height'] ) &&
 			$options['width'] != $options['file']->getWidth() &&
 			$options['height'] != $options['file']->getHeight()
 		) {
@@ -63,7 +63,7 @@ class TimedMediaThumbnail {
 		$cmd = wfEscapeShellArg( $wgOggThumbLocation )
 			. ' -t ' . (float)$time;
 		// Set the output size if set in options:
-		if ( isset( $options['width'], $options['height'] ) ) {
+		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
 			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
 		}
 		$cmd .= ' -n ' . wfEscapeShellArg( $dstPath ) .
@@ -140,7 +140,7 @@ class TimedMediaThumbnail {
 		$cmd .= ' -ss ' . $offset . ' ';
 
 		// Set the output size if set in options:
-		if ( isset( $options['width'], $options['height'] ) ) {
+		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
 			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
 		}
 

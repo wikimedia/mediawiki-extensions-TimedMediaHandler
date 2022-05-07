@@ -25,7 +25,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	public $hashTime;
 
 	/** @var TextHandler|null */
-	public $textHandler; // lazy init in getTextHandler
+	public $textHandler;
 
 	/** @var string|false|null */
 	public $disablecontrols;
@@ -341,7 +341,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 		// Both are big enough, or both equally too small. Go with the one
 		// that has a lower bit-rate (as it will be faster to download).
-		if ( isset( $a['bandwidth'], $b['bandwidth'] ) ) {
+		if ( isset( $a['bandwidth'] ) && isset( $b['bandwidth'] ) ) {
 			return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
 		}
 
@@ -362,7 +362,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	private function getHtmlMediaTagOutput( array $mediaAttr ) {
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
-		reset( $mediaSources ); // do not rely on auto-resetting of arrays under HHVM
+		// do not rely on auto-resetting of arrays under HHVM
+		reset( $mediaSources );
 		$firstSource = current( $mediaSources );
 
 		if ( !$firstSource['src'] ) {
