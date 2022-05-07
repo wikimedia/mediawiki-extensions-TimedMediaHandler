@@ -109,21 +109,26 @@
 	"Hooks": {
 		"ArticleContentOnDiff": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTimedTextDiff",
 		"ArticleFromTitle": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTimedTextPage",
-		"ArticlePurge": "MediaWiki\\TimedMediaHandler\\Hooks::onArticlePurge",
+		"ArticlePurge": "main",
 		"BeforePageDisplay": "MediaWiki\\TimedMediaHandler\\Hooks::pageOutputHook",
-		"CanonicalNamespaces": "MediaWiki\\TimedMediaHandler\\Hooks::onCanonicalNamespaces",
-		"FileDeleteComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onFileDeleteComplete",
-		"FileUpload": "MediaWiki\\TimedMediaHandler\\Hooks::onFileUpload",
-		"ImageOpenShowImageInlineBefore": "MediaWiki\\TimedMediaHandler\\Hooks::onImageOpenShowImageInlineBefore",
+		"CanonicalNamespaces": "main",
+		"FileDeleteComplete": "main",
+		"FileUpload": "main",
+		"ImageOpenShowImageInlineBefore": "main",
 		"ImagePageAfterImageLinks": "MediaWiki\\TimedMediaHandler\\Hooks::checkForTranscodeStatus",
-		"ImagePageFileHistoryLine": "MediaWiki\\TimedMediaHandler\\Hooks::onImagePageFileHistoryLine",
+		"ImagePageFileHistoryLine": "main",
 		"LoadExtensionSchemaUpdates": "MediaWiki\\TimedMediaHandler\\Hooks::checkSchemaUpdates",
 		"MediaWikiPerformAction": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput::iframeHook",
-		"RevisionFromEditComplete": "MediaWiki\\TimedMediaHandler\\Hooks::onRevisionFromEditComplete",
-		"ParserTestGlobals": "MediaWiki\\TimedMediaHandler\\Hooks::onParserTestGlobals",
+		"RevisionFromEditComplete": "main",
+		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "MediaWiki\\TimedMediaHandler\\Hooks::onSkinTemplateNavigation",
 		"TitleMove": "MediaWiki\\TimedMediaHandler\\Hooks::checkTitleMove",
-		"wgQueryPages": "MediaWiki\\TimedMediaHandler\\Hooks::onwgQueryPages"
+		"wgQueryPages": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\TimedMediaHandler\\Hooks"
+		}
 	},
 	"config": {
 		"WaitTimeForTranscodeReset": {

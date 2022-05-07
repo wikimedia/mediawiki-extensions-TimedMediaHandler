@@ -6,9 +6,20 @@ use Article;
 use DatabaseUpdater;
 use DifferenceEngine;
 use File;
+use ImageHistoryList;
 use ImagePage;
+use LocalFile;
+use MediaWiki\Hook\CanonicalNamespacesHook;
+use MediaWiki\Hook\FileDeleteCompleteHook;
+use MediaWiki\Hook\FileUploadHook;
+use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\ArticlePurgeHook;
+use MediaWiki\Page\Hook\ImageOpenShowImageInlineBeforeHook;
+use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;
+use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
@@ -16,6 +27,7 @@ use Skin;
 use SkinTemplate;
 use Title;
 use User;
+use WikiFilePage;
 use WikiPage;
 
 /**
@@ -24,7 +36,17 @@ use WikiPage;
  * @file
  * @ingroup Extensions
  */
-class Hooks {
+class Hooks implements
+	ArticlePurgeHook,
+	CanonicalNamespacesHook,
+	FileDeleteCompleteHook,
+	FileUploadHook,
+	ImageOpenShowImageInlineBeforeHook,
+	ImagePageFileHistoryLineHook,
+	ParserTestGlobalsHook,
+	RevisionFromEditCompleteHook,
+	WgQueryPagesHook
+{
 
 	/**
 	 * Register TimedMediaHandler namespace IDs
@@ -37,7 +59,7 @@ class Hooks {
 	 *
 	 * @param array &$list
 	 */
-	public static function onCanonicalNamespaces( array &$list ) {
+	public function onCanonicalNamespaces( &$list ) {
 		global $wgTimedTextNS;
 		if ( !defined( 'NS_TIMEDTEXT' ) ) {
 			define( 'NS_TIMEDTEXT', $wgTimedTextNS );
@@ -93,19 +115,19 @@ class Hooks {
 	 * @param OutputPage $out the output for this imagepage
 	 * @return bool
 	 */
-	public static function onImageOpenShowImageInlineBefore( ImagePage $imagePage, OutputPage $out ) {
+	public function onImageOpenShowImageInlineBefore( $imagePage, $out ) {
 		$file = $imagePage->getDisplayedFile();
 		return self::onImagePageHooks( $file, $out );
 	}
 
 	/**
-	 * @param ImagePage $imagePage that is being rendered
+	 * @param ImageHistoryList $imagePage that is being rendered
 	 * @param File $file the (old) file added in this history entry
 	 * @param string &$line the HTML of the history line
 	 * @param string &$css the CSS class of the history line
 	 * @return bool
 	 */
-	public static function onImagePageFileHistoryLine( $imagePage, $file, &$line, &$css ) {
+	public function onImagePageFileHistoryLine( $imagePage, $file, &$line, &$css ) {
 		$out = $imagePage->getContext()->getOutput();
 		return self::onImagePageHooks( $file, $out );
 	}
@@ -261,7 +283,7 @@ class Hooks {
 	 * @param bool $hasNewPageContent
 	 * @return bool
 	 */
-	public static function onFileUpload( $file, $reupload, $hasNewPageContent ) {
+	public function onFileUpload( $file, $reupload, $hasNewPageContent ) {
 		// Check that the file is a transcodable asset:
 		if ( $file && self::isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
@@ -293,16 +315,15 @@ class Hooks {
 	}
 
 	/**
-	 * Hook to FileDeleteComplete
-	 * remove transcodes on delete
-	 * @param File $file
-	 * @param File|false $oldimage
-	 * @param Article $article
+	 * Hook to FileDeleteComplete. Removes transcodes on delete.
+	 * @param LocalFile $file
+	 * @param string|null $oldimage
+	 * @param WikiFilePage|null $article
 	 * @param User $user
 	 * @param string $reason
 	 * @return bool
 	 */
-	public static function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
+	public function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
 		if ( !$oldimage && self::isTranscodableFile( $file ) ) {
 			WebVideoTranscode::removeTranscodes( $file );
 		}
@@ -316,11 +337,12 @@ class Hooks {
 	 * @param RevisionRecord $rev
 	 * @param int $baseID
 	 * @param UserIdentity $user
+	 * @param string[] &$tags
 	 *
 	 * @return bool
 	 */
-	public static function onRevisionFromEditComplete(
-		WikiPage $wikiPage, RevisionRecord $rev, $baseID, UserIdentity $user
+	public function onRevisionFromEditComplete(
+		$wikiPage, $rev, $baseID, $user, &$tags
 	) {
 		// Check if the article is a file and remove transcode files:
 		if ( ( $baseID !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
@@ -341,7 +363,7 @@ class Hooks {
 	 * @param WikiPage $article
 	 * @return bool
 	 */
-	public static function onArticlePurge( WikiPage $article ) {
+	public function onArticlePurge( $article ) {
 		if ( $article->getTitle()->getNamespace() === NS_FILE ) {
 			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
@@ -354,7 +376,7 @@ class Hooks {
 	/**
 	 * @param array &$globals
 	 */
-	public static function onParserTestGlobals( &$globals ) {
+	public function onParserTestGlobals( &$globals ) {
 		// reset player serial so that parser tests are not order-dependent
 		TimedMediaTransformOutput::resetSerialForTest();
 
@@ -437,7 +459,7 @@ class Hooks {
 	/**
 	 * @param array &$qp
 	 */
-	public static function onwgQueryPages( &$qp ) {
+	public function onwgQueryPages( &$qp ) {
 		$qp[] = [ SpecialOrphanedTimedText::class, 'OrphanedTimedText' ];
 	}
 }
