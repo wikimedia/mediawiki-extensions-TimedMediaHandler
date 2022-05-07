@@ -21,6 +21,7 @@
  * @ingroup Media
  */
 
+use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
 
 class MockOggHandler extends OggHandler {

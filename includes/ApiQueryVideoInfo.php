@@ -11,8 +11,8 @@ namespace MediaWiki\TimedMediaHandler;
 
 use ApiBase;
 use ApiQueryImageInfo;
+use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use TextHandler;
 
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 

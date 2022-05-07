@@ -5,8 +5,8 @@ namespace MediaWiki\TimedMediaHandler;
 use Exception;
 use Html;
 use MediaTransformOutput;
+use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use TextHandler;
 use Xml;
 
 class TimedMediaTransformOutput extends MediaTransformOutput {
