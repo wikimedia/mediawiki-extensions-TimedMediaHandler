@@ -22,6 +22,7 @@
 			"Stjn",
 			"Tanzun",
 			"Vlad5250",
+			"Wolterhon",
 			"Александр Сигачёв"
 		]
 	},
@@ -143,7 +144,7 @@
 	"timedmedia-file": "Файл",
 	"timedmedia-dialog-close": "Закрыть медиа-плеер",
 	"beta-feature-timedmediahandler-message-videojs": "Новый проигрыватель видеофайлов",
-	"beta-feature-timedmediahandler-description-videojs": "Просматривать видеофайлы в современном плеере с более чистым дизайном и поддержкой мобильных.",
+	"beta-feature-timedmediahandler-description-videojs": "Просматривать видеофайлы в современном плеере с более чистым дизайном и поддержкой мобильных устройств.",
 	"right-transcode-reset": "Сброс неудавшихся или транскодированных видео, чтобы они встали в очередь заданий снова",
 	"right-transcode-status": "Просмотр [[Special:TimedMediaHandler|информации о текущей активности перекодирования]]",
 	"action-transcode-reset": "сбросить транскоды",
