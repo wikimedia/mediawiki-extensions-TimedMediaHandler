@@ -3,14 +3,23 @@
 		"authors": [
 			"Facenapalm",
 			"Mailman",
-			"Okras"
+			"Okras",
+			"Pacha Tchernof"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Получить статус транскодированния для данного файла.",
+	"apihelp-query+transcodestatus-summary": "Получить статус перекодирования для данной страницы файла",
 	"apihelp-query+transcodestatus-example-1": "Получить статус транскодированния для файла [[:File:Clip.webm|Clip.webm]].",
 	"apihelp-transcodereset-description": "Участники с правом 'transcode-reset' могут сбрасывать и запускать заново задачи по перекодированию.",
 	"apihelp-transcodereset-param-title": "Заголовок медиафайла.",
 	"apihelp-transcodereset-param-transcodekey": "Ключ перекодирования, который вы хотите сбросить. Запрашивается из [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Сбросить все задачи по транскодированнию для файла [[:File:Clip.webm|Clip.webm]].",
-	"apihelp-transcodereset-example-2": "Сбросить ключ перекодирования '360_560kbs.webm' для [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "Сбросить ключ перекодирования '360_560kbs.webm' для [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Перекодирование отключено в этой вики.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 недоступно для перекодирования.",
+	"apierror-timedmedia-badtranscodekey": "Недействительный или недопустимый ключ транскодирования: $1",
+	"apierror-timedmedia-notenoughtimereset": "Прошло недостаточно времени с момента последнего сброса этого транскодирования. До возможности его сброса: $1.",
+	"apierror-timedmedia-lang-notfound": "Запрошенный язык не найден",
+	"apierror-timedmedia-no-timedtext-support": "Синхротекст не поддерживается",
+	"apierror-timedmedia-notlocal": "Файл не локальный"
 }
