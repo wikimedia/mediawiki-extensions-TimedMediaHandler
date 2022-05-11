@@ -146,5 +146,6 @@
 	"videojs-more-information": "Mer informasjon",
 	"videojs-quality": "Videokvalitet",
 	"videojs-subtitles-create": "Opprett undertekster",
+	"videojs-captions-create": "Opprett undertekster",
 	"transcodestatistics": "Omkodingsstatistikk"
 }
