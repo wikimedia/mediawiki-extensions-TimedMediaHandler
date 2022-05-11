@@ -33,8 +33,6 @@
 	"timedmedia-download": "Download file",
 	"timedmedia-play-media": "Play media",
 	"timedmedia-desc-link": "About this file",
-	"timedmedia-oggThumb-version": "OggHandler requires oggThumb version $1 or later.",
-	"timedmedia-oggThumb-failed": "oggThumb failed to create the thumbnail.",
 	"timedmedia-status-header": "Transcode status",
 	"timedmedia-update-status": "Update transcode status",
 	"timedmedia-status": "Status",

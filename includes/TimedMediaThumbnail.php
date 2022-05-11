@@ -27,67 +27,7 @@ class TimedMediaThumbnail {
 		) {
 			return self::resizeThumb( $options );
 		}
-		// try OggThumb, and fallback to ffmpeg
-		$result = self::tryOggThumb( $options );
-		if ( $result === false ) {
-			return self::tryFfmpegThumb( $options );
-		}
-		return $result;
-	}
-
-	/**
-	 * Run oggThumb to generate a still image from a video file, using a frame
-	 * close to the given number of seconds from the start.
-	 *
-	 * @param array $options
-	 * @return bool|MediaTransformError
-	 *
-	 */
-	private static function tryOggThumb( $options ) {
-		global $wgOggThumbLocation;
-
-		// Check that the file is 'ogg' format
-		if ( $options['file']->getHandler()->getMetadataType( $options['file'] ) !== 'ogg' ) {
-			return false;
-		}
-
-		// Check for $wgOggThumbLocation
-		if ( !$wgOggThumbLocation || !is_file( $wgOggThumbLocation ) ) {
-			return false;
-		}
-
-		$time = self::getThumbTime( $options );
-		$dstPath = $options['dstPath'];
-		$videoPath = $options['file']->getLocalRefPath();
-
-		$cmd = wfEscapeShellArg( $wgOggThumbLocation )
-			. ' -t ' . (float)$time;
-		// Set the output size if set in options:
-		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
-			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
-		}
-		$cmd .= ' -n ' . wfEscapeShellArg( $dstPath ) .
-			' ' . wfEscapeShellArg( $videoPath ) . ' 2>&1';
-		$retval = 0;
-		$returnText = wfShellExec( $cmd, $retval );
-
-		if ( $options['file']->getHandler()->removeBadFile( $dstPath, $retval ) || $retval ) {
-			// oggThumb spams both stderr and stdout with useless progress
-			// messages, and then often forgets to output anything when
-			// something actually does go wrong. So interpreting its output is
-			// a challenge.
-			$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
-			if ( count( $lines ) > 0
-				&& preg_match( '/invalid option -- \'n\'$/', $lines[0] )
-			) {
-				$returnText = wfMessage( 'timedmedia-oggThumb-version', '0.9' )->inContentLanguage()->text();
-			} else {
-				$returnText = wfMessage( 'timedmedia-oggThumb-failed' )->inContentLanguage()->text();
-			}
-			return new MediaTransformError( 'thumbnail_error',
-				$options['width'], $options['height'], $returnText );
-		}
-		return true;
+		return self::tryFfmpegThumb( $options );
 	}
 
 	/**

@@ -52,8 +52,6 @@
 	"timedmedia-download": "Used as tooltip for the Download button.\n{{Identical|Download}}",
 	"timedmedia-play-media": "Used as tooltip for the link.",
 	"timedmedia-desc-link": "Unused at this time.\n{{Identical|About this file}}",
-	"timedmedia-oggThumb-version": "Used as error message when the specified option is invalid. Parameters:\n* $1 - version number \"0.9\" (hard-coded)",
-	"timedmedia-oggThumb-failed": "{{doc-important|Do not translate <code>oggThumb</code>.}}\nUsed as error message when executing oggThumb.",
 	"timedmedia-status-header": "Used as section heading.",
 	"timedmedia-update-status": "Used as text for the link which is used to purge.",
 	"timedmedia-status": "Used as column header.\n{{Identical|Status}}",

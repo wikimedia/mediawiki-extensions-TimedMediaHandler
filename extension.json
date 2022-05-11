@@ -284,11 +284,6 @@
 			"public": true,
 			"value": false
 		},
-		"OggThumbLocation": {
-			"description": "Location of oggThumb binary (used instead of ffmpeg)",
-			"public": false,
-			"value": "/usr/bin/oggThumb"
-		},
 		"FFmpegLocation": {
 			"description": "Location of the ffmpeg binary (used to encode WebM and for thumbnails)",
 			"public": false,

@@ -106,18 +106,6 @@ will have to specify the FFmpeg binary location with:
 
 Default being `/usr/bin/ffmpeg`.
 
-
-== oggThumb ==
-
-We use oggvideotools for creating still images of videos, you will need a copy on your
-server.
-
-Set the oggThumb binary location with:
-
-    $wgOggThumbLocation = '/path/to/oggThumb';
-
-Download oggThumb from: http://dev.streamnik.de/oggvideotools.html
-
 == PEAR File_Ogg ==
 
 Tim Starling, a Wikimedia developer, forked the PEAR File_Ogg package and
