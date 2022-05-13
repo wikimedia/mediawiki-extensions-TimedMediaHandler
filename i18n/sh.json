@@ -31,8 +31,6 @@
 	"timedmedia-download": "Preuzmi datoteku",
 	"timedmedia-play-media": "Reproduciraj snimak",
 	"timedmedia-desc-link": "Informacije o datoteci",
-	"timedmedia-oggThumb-version": "OggHandler zahtijeva oggThumb verziju $1 ili kasniju.",
-	"timedmedia-oggThumb-failed": "oggThumb nije uspio napraviti smanjeni pregled.",
 	"timedmedia-status-header": "Status prekodiranja",
 	"timedmedia-update-status": "Osvježi status prekodiranja",
 	"timedmedia-status": "Status",

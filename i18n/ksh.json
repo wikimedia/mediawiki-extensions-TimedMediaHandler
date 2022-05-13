@@ -20,8 +20,6 @@
 	"timedmedia-download": "Dattei eronger lahde",
 	"timedmedia-play-media": "Afshpelle",
 	"timedmedia-desc-link": "Övver di Dattei",
-	"timedmedia-oggThumb-version": "Dä <code lang=\"en\">OggHandler</code> bruch <code lang=\"en\">oggThumb</code> in dä Version $1 udder hüüter.",
-	"timedmedia-oggThumb-failed": "<code lang=\"en\">oggThumb</code> kunnt kei MiniBelldsche maache.",
 	"timedmedia-status": "Zohschtand",
 	"timedmedia-status-unknown": "Onbikannte Zohschtand",
 	"timedmedia-direct-link": "Afflähjer eronger lahde",

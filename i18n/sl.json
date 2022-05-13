@@ -30,8 +30,6 @@
 	"timedmedia-download": "Prenesi",
 	"timedmedia-play-media": "Predvajaj",
 	"timedmedia-desc-link": "O datoteki",
-	"timedmedia-oggThumb-version": "OggHandler potrebuje oggThumb različice $1 ali več.",
-	"timedmedia-oggThumb-failed": "OggThumbu ni uspelo ustvariti predogledne sličice.",
 	"timedmedia-status-header": "Stanje prekodiranja",
 	"timedmedia-update-status": "Posodobi stanje prekodiranja",
 	"timedmedia-status": "Stanje",

@@ -33,8 +33,6 @@
 	"timedmedia-download": "Descargar archivu",
 	"timedmedia-play-media": "Reproducir el mediu",
 	"timedmedia-desc-link": "Tocante a esti archivu",
-	"timedmedia-oggThumb-version": "OggHandler requier oggThumb version $1 o mayor.",
-	"timedmedia-oggThumb-failed": "oggThumb nun pudo crear la miniatura.",
 	"timedmedia-status-header": "Estáu de trescodificación",
 	"timedmedia-update-status": "Anovar l'estáu de trescodificación",
 	"timedmedia-status": "Estáu",

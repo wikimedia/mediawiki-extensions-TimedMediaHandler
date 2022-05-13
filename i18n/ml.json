@@ -36,8 +36,6 @@
 	"timedmedia-download": "പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക",
 	"timedmedia-play-media": "മീഡിയ പ്രവർത്തിപ്പിക്കുക",
 	"timedmedia-desc-link": "ഈ പ്രമാണത്തെക്കുറിച്ച്",
-	"timedmedia-oggThumb-version": "ഓഗ്-തമ്പ് പതിപ്പ് $1 അല്ലെങ്കിൽ പുതിയത് ഓഗ്-ഹാൻഡ്ലറിനാവശ്യമാണ്.",
-	"timedmedia-oggThumb-failed": "ലഘുചിത്രം സൃഷ്ടിക്കുന്നതിൽ ഓഗ്-തമ്പ് പരാജയപ്പെട്ടു.",
 	"timedmedia-status-header": "ട്രാൻസ്‌കോഡ് സ്ഥിതി",
 	"timedmedia-update-status": "ട്രാൻസ്‌കോഡ് സ്ഥിതി പുതുക്കുക",
 	"timedmedia-status": "സ്ഥിതി",

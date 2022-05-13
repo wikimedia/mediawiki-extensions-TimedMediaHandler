@@ -25,8 +25,6 @@
 	"timedmedia-download": "Sækja skrá",
 	"timedmedia-play-media": "Spila margmiðlunarskrá",
 	"timedmedia-desc-link": "Um þessa skrá",
-	"timedmedia-oggThumb-version": "OggHandler þarfnast oggThumb útgáfu $1 eða nýrri.",
-	"timedmedia-oggThumb-failed": "oggThumb mistókst að búa til smámynd.",
 	"timedmedia-status-header": "Staða kóðabreytingar",
 	"timedmedia-update-status": "Uppfæra stöðu kóðabreytingar",
 	"timedmedia-status": "Staða",

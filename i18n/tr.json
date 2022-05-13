@@ -50,8 +50,6 @@
 	"timedmedia-download": "Dosyayı indir",
 	"timedmedia-play-media": "Medyayı oynat",
 	"timedmedia-desc-link": "Bu dosya hakkında",
-	"timedmedia-oggThumb-version": "OggHandler $1 veya daha yeni sürüm oggThumb gerektirir.",
-	"timedmedia-oggThumb-failed": "oggThumb küçük resim oluşturamadı.",
 	"timedmedia-status-header": "Transkodu durumu",
 	"timedmedia-update-status": "Transkodu durumunu güncelle",
 	"timedmedia-status": "Durum",

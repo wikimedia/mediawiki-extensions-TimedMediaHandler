@@ -39,8 +39,6 @@
 	"timedmedia-download": "הורדת הקובץ",
 	"timedmedia-play-media": "לנגן את המדיה",
 	"timedmedia-desc-link": "אודות הקובץ",
-	"timedmedia-oggThumb-version": "OggHandler דורש oggThumb מגרסה $1 או גרסה חדשה יותר.",
-	"timedmedia-oggThumb-failed": "oggThumb לא הצליח ליצור תמונה מוקטנת.",
 	"timedmedia-status-header": "מצב המרה משנית",
 	"timedmedia-update-status": "עדכון מצב המרה משנית",
 	"timedmedia-status": "מצב",

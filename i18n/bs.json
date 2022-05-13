@@ -23,8 +23,6 @@
 	"timedmedia-dismiss": "Zatvori",
 	"timedmedia-download": "Učitaj datoteku",
 	"timedmedia-desc-link": "O ovoj datoteci",
-	"timedmedia-oggThumb-version": "OggHandler zahtijeva oggThumb verziju $1 ili kasniju.",
-	"timedmedia-oggThumb-failed": "oggThumb nije uspio napraviti smanjeni pregled.",
 	"timedmedia-status-header": "Status prekodiranja",
 	"timedmedia-update-status": "Osvježi status prekodiranja",
 	"timedmedia-status": "Status",

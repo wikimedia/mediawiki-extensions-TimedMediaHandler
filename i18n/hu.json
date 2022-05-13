@@ -42,8 +42,6 @@
 	"timedmedia-download": "Fájl letöltése",
 	"timedmedia-play-media": "Média lejátszása",
 	"timedmedia-desc-link": "Fájlinformációk",
-	"timedmedia-oggThumb-version": "Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.",
-	"timedmedia-oggThumb-failed": "Az oggThumb nem tudta elkészíteni a bélyegképet.",
 	"timedmedia-status-header": "Átkódolási állapot",
 	"timedmedia-update-status": "Átkódolási állapot frissítése",
 	"timedmedia-status": "Állapot",

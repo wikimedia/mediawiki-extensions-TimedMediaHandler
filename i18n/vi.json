@@ -42,8 +42,6 @@
 	"timedmedia-download": "Tải tập tin xuống",
 	"timedmedia-play-media": "Phát phương tiện",
 	"timedmedia-desc-link": "Chi tiết tập tin này",
-	"timedmedia-oggThumb-version": "OggHandler cần oggThumb, phiên bản $1 hoặc cao hơn.",
-	"timedmedia-oggThumb-failed": "oggThumb thất bại trong việc tạo hình thu nhỏ.",
 	"timedmedia-status-header": "Trạng thái chuyển mã",
 	"timedmedia-update-status": "Cập nhật trạng thái chuyển mã",
 	"timedmedia-status": "Trạng thái",

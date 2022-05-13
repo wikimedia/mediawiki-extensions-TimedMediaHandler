@@ -28,8 +28,6 @@
 	"timedmedia-dismiss": "Zoumaachen",
 	"timedmedia-download": "Fichier eroflueden",
 	"timedmedia-desc-link": "Iwwer dëse Fichier",
-	"timedmedia-oggThumb-version": "Den OggHandler brauch d'Versioun $1 (oder méi eng nei Versioun) vun OggThumb.",
-	"timedmedia-oggThumb-failed": "oggThumb konnt d'Miniaturbild (thumbnail) net uleeën.",
 	"timedmedia-status": "Status",
 	"timedmedia-status-unknown": "Onbekannte Status",
 	"timedmedia-transcodeinfo": "Format",

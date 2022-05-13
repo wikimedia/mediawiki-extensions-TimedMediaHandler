@@ -33,8 +33,6 @@
 	"timedmedia-download": "Lataa",
 	"timedmedia-play-media": "Toista mediaa",
 	"timedmedia-desc-link": "Tiedoston tiedot",
-	"timedmedia-oggThumb-version": "OggHandler vaatii oggThumbin version $1 tai uudemman.",
-	"timedmedia-oggThumb-failed": "oggThumb epäonnistui pikkukuvan luomisessa.",
 	"timedmedia-status": "Tila",
 	"timedmedia-status-unknown": "Tuntematon tila",
 	"timedmedia-transcodeinfo": "Muoto",

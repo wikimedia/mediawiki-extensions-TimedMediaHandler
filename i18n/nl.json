@@ -39,8 +39,6 @@
 	"timedmedia-download": "Bestand downloaden",
 	"timedmedia-play-media": "Media afspelen",
 	"timedmedia-desc-link": "Over dit bestand",
-	"timedmedia-oggThumb-version": "OggHandler vereist oggThumb versie $1 of hoger.",
-	"timedmedia-oggThumb-failed": "oggThumb kon geen miniatuur aanmaken.",
 	"timedmedia-status-header": "Conversiestatus",
 	"timedmedia-update-status": "Conversiestatus bijwerken",
 	"timedmedia-status": "Status",

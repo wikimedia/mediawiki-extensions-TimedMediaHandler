@@ -30,8 +30,6 @@
 	"timedmedia-download": "Dëscarié l'archivi",
 	"timedmedia-play-media": "Lese ël mojen",
 	"timedmedia-desc-link": "Rësgoard a st'archivi",
-	"timedmedia-oggThumb-version": "OggHandler a ciama la version $1 d'oggThumb o pi agiornà.",
-	"timedmedia-oggThumb-failed": "oggThumb a l'ha falì a creé la figurin-a.",
 	"timedmedia-status-header": "Statù ëd trascodìfica",
 	"timedmedia-update-status": "Agiorné lë statù ëd trascodìfica",
 	"timedmedia-status": "Stat",

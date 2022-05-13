@@ -29,8 +29,6 @@
 	"timedmedia-download": "دریافت پرونده",
 	"timedmedia-play-media": "پخش رسانه",
 	"timedmedia-desc-link": "دەربارە ئێ پەروەنده",
-	"timedmedia-oggThumb-version": "نگهدارندهٔ Ogg به بند‌انگشتی Ogg نسخهٔ  $1 یا بالاتر نیاز دارد.",
-	"timedmedia-oggThumb-failed": "بندانگشتی Ogg در ساخت بندانگشتی با خطا مواجه شد.",
 	"timedmedia-status-header": "وضعیت فراکد",
 	"timedmedia-update-status": "وضعیت به‌روزرسانی فراکد",
 	"timedmedia-status": "وضعیت",

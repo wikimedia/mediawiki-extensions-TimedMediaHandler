@@ -36,8 +36,6 @@
 	"timedmedia-download": "Laadi fail alla",
 	"timedmedia-play-media": "Esita meediumifail",
 	"timedmedia-desc-link": "Info faili kohta",
-	"timedmedia-oggThumb-version": "OggHandleri jaoks on vaja oggThumbi versiooni $1 või hilisemat.",
-	"timedmedia-oggThumb-failed": "oggThumb ei saanud pisipildi loomisega hakkama.",
 	"timedmedia-status-header": "Ümberkodeeringu olek",
 	"timedmedia-update-status": "Värskenda ümberkodeeringu olekut",
 	"timedmedia-status": "Olek",

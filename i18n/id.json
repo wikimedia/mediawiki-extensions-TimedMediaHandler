@@ -42,8 +42,6 @@
 	"timedmedia-download": "Unduh berkas",
 	"timedmedia-play-media": "Putar media",
 	"timedmedia-desc-link": "Mengenai berkas ini",
-	"timedmedia-oggThumb-version": "OggHandler membutuhkan oggThumb versi $1 atau terbaru.",
-	"timedmedia-oggThumb-failed": "oggThumb gagal membuat miniatur gambar.",
 	"timedmedia-status-header": "Status transkoder",
 	"timedmedia-update-status": "Memperbarui status transkoder",
 	"timedmedia-status": "Status",

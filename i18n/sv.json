@@ -46,8 +46,6 @@
 	"timedmedia-download": "Ladda ner filen",
 	"timedmedia-play-media": "Spela upp media",
 	"timedmedia-desc-link": "Om filen",
-	"timedmedia-oggThumb-version": "OggHandler kräver oggThumb version $1 eller senare.",
-	"timedmedia-oggThumb-failed": "oggThumb misslyckades med att skapa miniatyrbilden.",
 	"timedmedia-status-header": "Transkodningsstatus",
 	"timedmedia-update-status": "Uppdatera transkodningsstatus",
 	"timedmedia-status": "Status",

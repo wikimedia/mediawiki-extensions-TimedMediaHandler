@@ -37,8 +37,6 @@
 	"timedmedia-download": "Descargar o ficheiro",
 	"timedmedia-play-media": "Reproducir o contido",
 	"timedmedia-desc-link": "Acerca deste ficheiro",
-	"timedmedia-oggThumb-version": "O OggHandler necesita a versión $1 ou unha posterior do oggThumb.",
-	"timedmedia-oggThumb-failed": "Houbo un erro por parte do oggThumb ao crear a miniatura.",
 	"timedmedia-status-header": "Estado da transcodificación",
 	"timedmedia-update-status": "Actualizar o estado de transcodificación",
 	"timedmedia-status": "Estado",

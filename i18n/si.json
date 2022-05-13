@@ -26,8 +26,6 @@
 	"timedmedia-download": "ගොනුව බා ගන්න",
 	"timedmedia-play-media": "මාධ්‍ය වයන්න",
 	"timedmedia-desc-link": "මෙම ගොනුව පිළිබඳ",
-	"timedmedia-oggThumb-version": "OggHandler සඳහා oggThumb $1 සංස්කරණය හෝ අලුත් එකක් අවැසිය.",
-	"timedmedia-oggThumb-failed": "සංක්ෂිප්තය තැනුමට oggThumb අසමත්විය.",
 	"timedmedia-status-header": "Transcode තත්වය",
 	"timedmedia-update-status": "transcode තත්වය යාවත්කාලීන කරන්න",
 	"timedmedia-status": "තත්වය",

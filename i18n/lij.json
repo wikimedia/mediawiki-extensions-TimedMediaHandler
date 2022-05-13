@@ -35,8 +35,6 @@
 	"timedmedia-download": "Scarrega o file",
 	"timedmedia-play-media": "Reproduxi o file murtimediâ",
 	"timedmedia-desc-link": "Informassioin insce sto file",
-	"timedmedia-oggThumb-version": "Pe-o OggHandler ghe voeu a verscion $1 ò ciu noeuva de oggThumb.",
-	"timedmedia-oggThumb-failed": "oggThumb o no l'è ariescîo a creâ a miniatua.",
 	"timedmedia-status-header": "Stato de transcodiffica",
 	"timedmedia-update-status": "Agiorna o stato de transcodiffica",
 	"timedmedia-status": "Stato",

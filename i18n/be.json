@@ -37,8 +37,6 @@
 	"timedmedia-download": "Спампаваць файлу",
 	"timedmedia-play-media": "Прайграць медыя",
 	"timedmedia-desc-link": "Пра гэты файл",
-	"timedmedia-oggThumb-version": "OggHandler патрабуе oggThumb версіі $1 ці больш позняй.",
-	"timedmedia-oggThumb-failed": "oggThumb не атрымалася стварыць драбніцу.",
 	"timedmedia-status-header": "Статус транскадзіравання",
 	"timedmedia-update-status": "Абнавіць статус транскадзіравання",
 	"timedmedia-status": "Статус",

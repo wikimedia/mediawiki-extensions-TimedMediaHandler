@@ -36,8 +36,6 @@
 	"timedmedia-download": "Bestân ynlade",
 	"timedmedia-play-media": "Media ôfspylje",
 	"timedmedia-desc-link": "Oer dit bestân",
-	"timedmedia-oggThumb-version": "OggHandler freget oggThumb-ferzje $1 of heger.",
-	"timedmedia-oggThumb-failed": "oggThumb koe gjin miniatuer oanmeitsje.",
 	"timedmedia-status-header": "Transkodearringsstatus",
 	"timedmedia-update-status": "Transkodearringsstatus bywurkje",
 	"timedmedia-status": "Status",

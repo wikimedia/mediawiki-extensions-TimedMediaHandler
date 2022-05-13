@@ -37,8 +37,6 @@
 	"timedmedia-download": "Last ned fil",
 	"timedmedia-play-media": "Spill av media",
 	"timedmedia-desc-link": "Om denne filen",
-	"timedmedia-oggThumb-version": "OggHandler krever oggThumb versjon $1 eller senere.",
-	"timedmedia-oggThumb-failed": "oggThumb klarte ikke å opprette miniatyrbildet.",
 	"timedmedia-status-header": "Omkodingsstatus",
 	"timedmedia-update-status": "Oppdater omkodingsstatus",
 	"timedmedia-status": "Status",

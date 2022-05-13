@@ -22,8 +22,6 @@
 	"timedmedia-download": "Datei spychere",
 	"timedmedia-play-media": "Mediedatei abspiile",
 	"timedmedia-desc-link": "Iber die Datei",
-	"timedmedia-oggThumb-version": "OggHandler brucht oggThumb in dr Version $1 oder hecher.",
-	"timedmedia-oggThumb-failed": "oggThumb het kei Miniaturbild chenne aalege.",
 	"timedmedia-status-header": "Umschlüsseligsstatus",
 	"timedmedia-update-status": "Umschlüsseligsstatus aktualisiere",
 	"timedmedia-status": "Status",

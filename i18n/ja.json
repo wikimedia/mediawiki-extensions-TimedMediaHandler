@@ -50,8 +50,6 @@
 	"timedmedia-download": "ファイルをダウンロードする",
 	"timedmedia-play-media": "メディアを再生する",
 	"timedmedia-desc-link": "ファイルの詳細",
-	"timedmedia-oggThumb-version": "OggHandler には oggThumb バージョン $1 またはそれ以降が必要です。",
-	"timedmedia-oggThumb-failed": "oggThumb によるサムネイル作成に失敗しました。",
 	"timedmedia-status-header": "トランスコードのステータス",
 	"timedmedia-update-status": "トランスコードのステータスを更新",
 	"timedmedia-status": "状態",

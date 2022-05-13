@@ -32,8 +32,6 @@
 	"timedmedia-download": "Descarcă fișierul",
 	"timedmedia-play-media": "Redă fișierul media",
 	"timedmedia-desc-link": "Despre acest fișier",
-	"timedmedia-oggThumb-version": "OggHandler necesită oggThumb, versiunea $1 sau mai recentă.",
-	"timedmedia-oggThumb-failed": "oggThumb nu a reușit să creeze miniatura.",
 	"timedmedia-status-header": "Starea codificării",
 	"timedmedia-update-status": "Actualizează starea codificării",
 	"timedmedia-status": "Stare",

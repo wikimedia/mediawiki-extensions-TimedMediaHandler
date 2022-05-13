@@ -56,8 +56,6 @@
 	"timedmedia-download": "Скачать файл",
 	"timedmedia-play-media": "Воспроизвести медиафайл",
 	"timedmedia-desc-link": "Сведения об этом файле",
-	"timedmedia-oggThumb-version": "OggHandler требует oggThumb в версии $1 или более позднюю.",
-	"timedmedia-oggThumb-failed": "oggThumb не удалось создать миниатюру.",
 	"timedmedia-status-header": "Статус декодирования",
 	"timedmedia-update-status": "Обновить статус декодирования",
 	"timedmedia-status": "Статус",

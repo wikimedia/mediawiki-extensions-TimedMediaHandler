@@ -44,8 +44,6 @@
 	"timedmedia-download": "Pobierz plik",
 	"timedmedia-play-media": "Odtwórz plik multimedialny",
 	"timedmedia-desc-link": "Właściwości pliku",
-	"timedmedia-oggThumb-version": "OggHandler wymaga oggThumb w wersji $1 lub późniejszej.",
-	"timedmedia-oggThumb-failed": "oggThumb nie udało się utworzyć miniaturki.",
 	"timedmedia-status-header": "Status konwersji",
 	"timedmedia-update-status": "Zaktualizuj status konwersji",
 	"timedmedia-status": "Status",

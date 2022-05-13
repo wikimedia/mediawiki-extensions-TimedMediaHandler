@@ -29,8 +29,6 @@
 	"timedmedia-download": "Загрузіць файл",
 	"timedmedia-play-media": "Прайграць",
 	"timedmedia-desc-link": "Інфармацыя пра гэты файл",
-	"timedmedia-oggThumb-version": "OggHandler патрабуе oggThumb вэрсіі $1 ці больш позьняй.",
-	"timedmedia-oggThumb-failed": "oggThumb не атрымалася стварыць мініятуру.",
 	"timedmedia-status-header": "Статус транскадаваньня",
 	"timedmedia-update-status": "Абнавіць статус транскадаваньня",
 	"timedmedia-status": "Статус",

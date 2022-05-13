@@ -37,8 +37,6 @@
 	"timedmedia-download": "Descarga el file",
 	"timedmedia-play-media": "Riproduxi el file multimediałe",
 	"timedmedia-desc-link": "Informazion su sto file",
-	"timedmedia-oggThumb-version": "Par OggHandler ghe vole oggThumb version $1 o sucessiva.",
-	"timedmedia-oggThumb-failed": "oggThumb no'l xe stà bon de crear la miniadura.",
 	"timedmedia-status-header": "Stato transcodifega",
 	"timedmedia-update-status": "Axorna stato transcodifega",
 	"timedmedia-status": "Stato",

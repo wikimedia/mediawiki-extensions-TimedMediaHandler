@@ -43,8 +43,6 @@
 	"timedmedia-download": "Stáhnout soubor",
 	"timedmedia-play-media": "Přehrát média",
 	"timedmedia-desc-link": "O tomto souboru",
-	"timedmedia-oggThumb-version": "OggHandler vyžaduje oggThumb verze $1 nebo novější.",
-	"timedmedia-oggThumb-failed": "oggThumb nedokázal vytvořit náhled.",
 	"timedmedia-status-header": "Stav transkódování",
 	"timedmedia-update-status": "Aktualizovat stav transkódování",
 	"timedmedia-status": "Stav",

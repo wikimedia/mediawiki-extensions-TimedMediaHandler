@@ -25,8 +25,6 @@
 	"timedmedia-download": "I-download ang file",
 	"timedmedia-play-media": "Paandarin ang midya",
 	"timedmedia-desc-link": "Tungkol sa talaksang ito",
-	"timedmedia-oggThumb-version": "Nangangailangan ang OggHandler ng bersyong $1 o mas luma ng oggThumb.",
-	"timedmedia-oggThumb-failed": "Nabigong lumikha ang oggThumb ng munting larawan.",
 	"timedmedia-status-header": "Katayuan ng transkodigo",
 	"timedmedia-update-status": "Isapanahon ang katayuan ng transkodigo",
 	"timedmedia-status": "Katayuan",

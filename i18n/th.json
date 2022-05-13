@@ -28,8 +28,6 @@
 	"timedmedia-download": "ดาวน์โหลดไฟล์",
 	"timedmedia-play-media": "เล่นมีเดีย",
 	"timedmedia-desc-link": "เกี่ยวกับไฟล์นี้",
-	"timedmedia-oggThumb-version": "OggHandler จำเป็นต้องใช้ oggThumb เวอร์ชัน $1 หรือใหม่กว่า",
-	"timedmedia-oggThumb-failed": "ข้อผิดพลาดกับ oggThumb ขณะสร้างภาพขนาดย่อ",
 	"timedmedia-status-header": "สถานะการแปลงรหัส",
 	"timedmedia-update-status": "ปรับปรุงสถานะการแปลงรหัส",
 	"timedmedia-status": "สถานะ",

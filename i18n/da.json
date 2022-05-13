@@ -39,8 +39,6 @@
 	"timedmedia-download": "Download fil",
 	"timedmedia-play-media": "Afspil medier",
 	"timedmedia-desc-link": "Om denne fil",
-	"timedmedia-oggThumb-version": "OggHandler kræver oggThumb version  $1  eller nyere.",
-	"timedmedia-oggThumb-failed": "oggThumb kunne ikke oprette et miniaturebillede.",
 	"timedmedia-status-header": "Transcode status",
 	"timedmedia-update-status": "Opdater transcode status",
 	"timedmedia-status": "Status",

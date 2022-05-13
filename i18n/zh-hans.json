@@ -54,8 +54,6 @@
 	"timedmedia-download": "下载文件",
 	"timedmedia-play-media": "播放媒体",
 	"timedmedia-desc-link": "关于该文件",
-	"timedmedia-oggThumb-version": "OggHandler需要oggThumb $1或者之后的版本。",
-	"timedmedia-oggThumb-failed": "oggThumb未能创建缩略图。",
 	"timedmedia-status-header": "转码状态",
 	"timedmedia-update-status": "更新转码状态",
 	"timedmedia-status": "状态",

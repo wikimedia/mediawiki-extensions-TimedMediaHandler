@@ -35,8 +35,6 @@
 	"timedmedia-download": "Descarega el fail",
 	"timedmedia-play-media": "Riproduss el fail audiovisiv",
 	"timedmedia-desc-link": "Informazzion sora quell fail chì",
-	"timedmedia-oggThumb-version": "OggHandler el domanda la version $1 o pussee sgionrada di oggThumb.",
-	"timedmedia-oggThumb-failed": "oggThumb l'è riessid minga a creà la miniatura.",
 	"timedmedia-status-header": "Stat de la transcodifica",
 	"timedmedia-update-status": "Sgiorna el stat de la trascodifica",
 	"timedmedia-status": "Stat",

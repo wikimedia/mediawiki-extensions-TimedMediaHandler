@@ -28,8 +28,6 @@
 	"timedmedia-download": "Muat turun fail",
 	"timedmedia-play-media": "Mainkan media",
 	"timedmedia-desc-link": "Perihal fail ini",
-	"timedmedia-oggThumb-version": "OggHandler memerlukan oggThumb versi $1 ke atas.",
-	"timedmedia-oggThumb-failed": "oggThumb gagal mencipta gambar kenit.",
 	"timedmedia-status-header": "Status transkod",
 	"timedmedia-update-status": "Kemaskinikan status transkod",
 	"timedmedia-status": "Status",

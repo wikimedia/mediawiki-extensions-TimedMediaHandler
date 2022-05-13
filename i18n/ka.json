@@ -29,8 +29,6 @@
 	"timedmedia-download": "ფაილის ჩამოტვირთვა",
 	"timedmedia-play-media": "მედია-ფაილის დაკვრა",
 	"timedmedia-desc-link": "ამ ფაილის შესახებ",
-	"timedmedia-oggThumb-version": "OggHandler-ს სჭირდება oggThumb-ის ვერსია $1 ან უფრო გვიანდელი.",
-	"timedmedia-oggThumb-failed": "oggThumb-მა ვერ მოახერხა მინიატიურის შექმნა.",
 	"timedmedia-status-header": "დეკოდირების სტატუსი",
 	"timedmedia-update-status": "დეკოდირების სტატუსის განახლება",
 	"timedmedia-status": "სტატუსი",
