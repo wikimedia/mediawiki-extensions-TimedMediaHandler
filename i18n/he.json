@@ -108,7 +108,7 @@
 	"timedmedia-subtitle-new-go": "מעבר",
 	"timedmedia-subtitle-no-video": "אין וידאו שמשויך לדף הכתוביות הנוכחי.",
 	"timedmedia-subtitle-no-subtitles": "אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן.",
-	"timedmedia-subtitle-remote": "טקסט מתוזמן עבור קובץ זה מאוחסן ב{{GRAMMAR:תחילית|$1}}",
+	"timedmedia-subtitle-remote": "טקסט מתוזמן עבור הקובץ הזה מאוחסן ב{{GRAMMAR:תחילית|$1}}",
 	"timedmedia-subtitle-remote-link": "אפשר [$1 להציג את דף התיאור] של הקובץ הזה בדף $2",
 	"timedmedia-subtitles-available": "זמינות כתוביות.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|המרה משנית אחת|$1 המרות משניות}}",

@@ -132,7 +132,7 @@
 	"timedmedia-subtitle-new-desc": "Выберите язык и нажмите кнопку '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Перейти",
 	"timedmedia-subtitle-no-video": "Не существует видео, связанного с этой страницей субтитров.",
-	"timedmedia-subtitle-no-subtitles": "В настоящее время нет субтитров на {{GENDER:prepositional|$1}} для этого файла. Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} отредактировать эту страницу], чтобы добавить их.",
+	"timedmedia-subtitle-no-subtitles": "В настоящее время нет субтитров на {{GRAMMAR:prepositional|$1}} для этого файла. Вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} отредактировать эту страницу], чтобы добавить их.",
 	"timedmedia-subtitle-remote": "Синхротекст для этого файла размещён на $1",
 	"timedmedia-subtitle-remote-link": "Вы можете [$1 посмотреть страницу описания] этого файла на $2",
 	"timedmedia-subtitles-available": "Субтитры доступны.",

@@ -24,7 +24,7 @@
 	"mwe-timedtext-textcat-lin": "Лингвистическая разметка",
 	"mwe-timedtext-textcat-cue": "Знаковые точки",
 	"mwe-timedtext-no-subs": "Нет текстовых дорожек",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 — субтитры для файла: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "$1 — нет субтитров для файла: $2",
+	"mwe-timedtext-language-subtitles-for-clip": "Субтитры на {{GRAMMAR:prepositional|$1}} для $2",
+	"mwe-timedtext-language-no-subtitles-for-clip": "Пока что нет субтитров на {{GRAMMAR:prepositional|$1}} для $2",
 	"mwe-timedtext-upload-timed-text": "Добавить субтитры"
 }
