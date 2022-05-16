@@ -44,6 +44,8 @@ class TimedMediaHandler extends MediaHandler {
 			'timedmedia_starttime' => 'start',
 			'timedmedia_endtime' => 'end',
 			'timedmedia_disablecontrols' => 'disablecontrols',
+			'timedmedia_loop' => 'loop',
+			'timedmedia_muted' => 'muted',
 		];
 	}
 
@@ -196,6 +198,9 @@ class TimedMediaHandler extends MediaHandler {
 			return false;
 		}
 
+		foreach ( [ 'loop', 'muted' ] as $flag ) {
+			$params[ $flag ] = isset( $params[ $flag ] );
+		}
 		return true;
 	}
 
@@ -397,6 +402,8 @@ class TimedMediaHandler extends MediaHandler {
 			'end' => $params['end'] ?? false,
 			'fillwindow' => $params['fillwindow'] ?? false,
 			'disablecontrols' => $params['disablecontrols'] ?? false,
+			'loop' => $params['loop'] ?? false,
+			'muted' => $params['muted'] ?? false,
 			'inline' => $params['inline'] ?? false,
 		];
 

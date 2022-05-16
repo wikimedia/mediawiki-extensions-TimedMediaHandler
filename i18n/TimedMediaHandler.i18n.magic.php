@@ -15,6 +15,8 @@ $magicWords['en'] = [
 	'timedmedia_starttime' => [ 0, 'start=$1' ],
 	'timedmedia_endtime' => [ 0, 'end=$1' ],
 	'timedmedia_disablecontrols' => [ 0, 'disablecontrols=$1' ],
+	'timedmedia_loop' => [ 0, 'loop' ],
+	'timedmedia_muted' => [ 0, 'muted' ],
 ];
 
 $magicWords['af'] = [

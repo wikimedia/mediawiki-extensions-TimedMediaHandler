@@ -26,6 +26,7 @@ function Ogvjs(options, ready) {
   _this.el_.src = options.source.src;
   Ogvjs.setIfAvailable(_this.el_, 'autoplay', options.autoplay);
   Ogvjs.setIfAvailable(_this.el_, 'loop', options.loop);
+  Ogvjs.setIfAvailable(_this.el_, 'muted', options.muted);
   Ogvjs.setIfAvailable(_this.el_, 'poster', options.poster);
   Ogvjs.setIfAvailable(_this.el_, 'preload', options.preload);
 

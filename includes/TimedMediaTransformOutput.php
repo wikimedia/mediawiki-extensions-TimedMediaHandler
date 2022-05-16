@@ -60,6 +60,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/** @var bool */
 	protected $inline;
 
+	/** @var bool */
+	protected $muted;
+
+	/** @var bool */
+	protected $loop;
+
 	// The prefix for player ids
 	private const PLAYER_ID_PREFIX = 'mwe_player_';
 
@@ -81,6 +87,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->disablecontrols = $conf['disablecontrols'] ?? false;
 		$this->playerClass = $conf['playerClass'] ?? false;
 		$this->inline = $conf['inline'] ?? false;
+		$this->muted = $conf['muted'] ?? false;
+		$this->loop = $conf['loop'] ?? false;
 	}
 
 	/**
@@ -497,6 +505,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( !$this->isVideo ) {
 			// audio element doesn't have poster attribute
 			unset( $mediaAttr[ 'poster' ] );
+		}
+
+		if ( $this->muted ) {
+			$mediaAttr['muted'] = 'true';
+		}
+
+		if ( $this->loop ) {
+			$mediaAttr['loop'] = 'true';
 		}
 
 		if ( Hooks::activePlayerMode() === 'videojs' ) {
