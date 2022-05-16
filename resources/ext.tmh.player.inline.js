@@ -171,38 +171,10 @@ InlinePlayer.lazyInit = function () {
 	if ( InlinePlayer.initialized ) {
 		return;
 	}
-	// Preload the ogv.js module if we're going to need it...
-	mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' );
 	require( './mw-info-button/mw-info-button.js' );
 	require( './videojs-resolution-switcher/videojs-resolution-switcher.js' );
 	require( './mw-subtitles-button/mw-subtitles-create.js' );
 	require( './mw-subtitles-button/mw-subtitles-button.js' );
-
-	if ( videojs.browser.IS_SAFARI ) {
-		// Html5 on Safari has a broken canPlayType
-		var Html5 = videojs.getTech( 'Html5' );
-		var originalCanPlayType = Html5.nativeSourceHandler.canPlayType;
-		Html5.nativeSourceHandler.canPlayType = function ( mediaType ) {
-			switch ( mediaType ) {
-				case 'video/webm; codecs="vp9, opus"':
-					return ( typeof MediaSource !== 'undefined' && MediaSource.isTypeSupported( 'video/webm; codecs="vp9, opus"' ) ) ? 'probably' : '';
-				case 'video/webm; codecs="vp8, vorbis"':
-					return ( typeof MediaSource !== 'undefined' && MediaSource.isTypeSupported( 'video/webm; codecs="vp8, vorbis"' ) ) ? 'probably' : '';
-			}
-
-			return originalCanPlayType( mediaType );
-		};
-	}
-
-	if ( mw.OgvJsSupport.isNeeded() ) {
-		InlinePlayer.globalConfig.ogvjs = {
-			base: mw.OgvJsSupport.basePath(),
-			audioContext: mw.OgvJsSupport.initAudioContext()
-		};
-		InlinePlayer.globalConfig.techOrder.push( 'ogvjs' );
-		// ogvjs tech does not support picture in picture
-		InlinePlayer.globalConfig.controlBar.pictureInPictureToggle = false;
-	}
 
 	// Add translations for the plugins
 	// video.js translations don't have region postfixes (yet)
@@ -219,6 +191,7 @@ InlinePlayer.lazyInit = function () {
 /**
  * Takes the HTMLMediaElement of the InlinePlayer
  * and infuses it with JS (videoJS) to enrich the element.
+ * @return {jQuery.Promise}
  */
 InlinePlayer.prototype.infuse = function () {
 	var inlinePlayer = this;
@@ -236,6 +209,16 @@ InlinePlayer.prototype.infuse = function () {
 		this.isAudio ? InlinePlayer.audioConfig : InlinePlayer.videoConfig,
 		this.playerConfig
 	);
+
+	if ( !mw.OgvJsSupport.isMediaNativelySupported( this.videoplayer ) ) {
+		this.playerConfig.ogvjs = {
+			base: mw.OgvJsSupport.basePath(),
+			audioContext: mw.OgvJsSupport.initAudioContext()
+		};
+		this.playerConfig.techOrder.push( 'ogvjs' );
+		// ogvjs tech does not support picture in picture
+		this.playerConfig.controlBar.pictureInPictureToggle = false;
+	}
 
 	// Future interactions go faster if we've preloaded a little
 	this.$videoplayer.attr( {
@@ -312,13 +295,18 @@ InlinePlayer.prototype.infuse = function () {
 	}
 
 	// Launch the player
-	this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );
-	this.videojsPlayer.ready( function () {
-		var videojsPlayer = this;
-		InlinePlayer.activePlayers.push( videojsPlayer );
-		inlinePlayer.selectDefaultTrack();
-		/* More custom stuff goes here */
-	} );
+	return mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
+		.then( function () {
+			var d = $.Deferred();
+			this.videojsPlayer = videojs( this.videoplayer, this.playerConfig, function () {
+				var videojsPlayer = this;
+				InlinePlayer.activePlayers.push( videojsPlayer );
+				inlinePlayer.selectDefaultTrack();
+				/* More custom stuff goes here */
+				d.resolve( videojsPlayer );
+			} );
+			return d.promise();
+		}.bind( this ) );
 };
 
 /**
@@ -413,28 +401,6 @@ InlinePlayer.prototype.extractResolutions = function () {
 };
 
 /**
- * @private
- * @param {Object} videoJsOptions Override videoJS defaults of the InlinePlayer
- * @return {jQuery.Promise}
- */
-function transformVideoPlayer( videoJsOptions ) {
-	var $collection = this;
-
-	return $.Deferred( function ( deferred ) {
-		mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' ).then( function () {
-			deferred.resolve( $collection.map( function () {
-				var inlinePlayer = new InlinePlayer( this, videoJsOptions );
-				inlinePlayer.infuse();
-				return inlinePlayer;
-			} ) );
-		} ).catch( function ( e ) {
-			mw.log.error( 'Exception occurred: ' + e.message );
-			deferred.reject();
-		} );
-	} ).promise();
-}
-
-/**
  * Remove any detached players from previous live previews etc
  *
  * @private
@@ -451,13 +417,6 @@ function disposeDetachedPlayers() {
 	} );
 	return this;
 }
-
-/**
- * jQuery plugin to load our video player
- *
- * @return {jQuery.Promise}
- */
-$.fn.transformVideoPlayer = transformVideoPlayer;
 
 /**
  * jQuery plugin to cleanup all resources of

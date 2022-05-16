@@ -284,13 +284,13 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 	if ( this.isInline() ) {
 		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
 			mediaElement.$placeholder.find( 'a, .mw-tmh-label' ).detach();
-			mediaElement.$placeholder.find( 'video,audio' ).replaceWith( mediaElement.$element );
-			$.when(
-				mediaElement.$element.transformVideoPlayer(),
-				mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' )
-			).then( function ( $inlinePlayers ) {
-				var player = $inlinePlayers[ 0 ].videojsPlayer;
-				player.ready( function () {
+			mediaElement.$placeholder.find( 'video,audio' )
+				.replaceWith( mediaElement.element );
+
+			var InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+			var inlinePlayer = new InlinePlayer( mediaElement.element, { bigPlayButton: false } );
+			inlinePlayer.infuse().then( function ( videojsPlayer ) {
+				videojsPlayer.ready( function () {
 					// Use a setTimeout to ensure all ready callbacks have run before
 					// we start playback. This is important for the source selector
 					// plugin, which may change sources before playback begins.
@@ -300,20 +300,21 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 					// Support: Edge 18
 					setTimeout( function () {
 						MediaElement.$interstitial.detach();
-						player.play();
+						videojsPlayer.play();
 					}, 0 );
 				} );
 			} );
 		} );
 	} else {
 		MediaElement.currentlyPlaying = true;
-		$.when(
-			mw.loader.using( 'ext.tmh.player.dialog' ),
-			mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs' )
-		).then( function () {
+		mw.loader.using( 'ext.tmh.player.dialog' ).then( function () {
 			MediaElement.$interstitial.detach();
-			return mediaElement.$element.showVideoPlayerDialog();
-		} ).always( function () {
+			return mediaElement.$element.showVideoPlayerDialog().always( function () {
+				// when showing of video player dialog ends
+				MediaElement.currentlyPlaying = false;
+			} );
+		} ).catch( function () {
+			MediaElement.$interstitial.detach();
 			MediaElement.currentlyPlaying = false;
 		} );
 	}

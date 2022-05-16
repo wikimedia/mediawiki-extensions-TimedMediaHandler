@@ -74,13 +74,15 @@ MediaDialog.prototype.play = function () {
 
 	// We don't need a play button (autoplay) nor a poster
 	var options = { poster: false, bigPlayButton: false, fill: true };
+
+	var InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+	this.inlinePlayer = new InlinePlayer( this.$video.get( 0 ), options );
 	// We might cause a delayed load of videojs here.
-	this.videojsPromise = this.$video.transformVideoPlayer( options );
+	this.loadedPromise = this.inlinePlayer.infuse();
 
 	// Start playback when ready...
-	this.videojsPromise.then( function ( $inlinePlayers ) {
-		var player = $inlinePlayers[ 0 ].videojsPlayer;
-		player.ready( function () {
+	this.loadedPromise.then( function ( videojsPlayer ) {
+		videojsPlayer.ready( function () {
 			// Use a setTimeout to ensure all ready callbacks have run before
 			// we start playback. This is important for the source selector
 			// plugin, which may change sources before playback begins.
@@ -90,9 +92,9 @@ MediaDialog.prototype.play = function () {
 			// Support: Edge 18
 			setTimeout( function () {
 				$( indicator.$element ).detach();
-				player.play();
+				videojsPlayer.play();
 				// Focus the player so that keyboard events work
-				player.el().focus();
+				videojsPlayer.el().focus();
 			}, 0 );
 		} );
 	} );
@@ -103,10 +105,8 @@ MediaDialog.prototype.play = function () {
  * the player after closing the dialog
  */
 MediaDialog.prototype.stop = function () {
-	this.videojsPromise.then( function ( $inlinePlayers ) {
-		$inlinePlayers.each( function () {
-			this.videojsPlayer.pause();
-		} );
+	this.loadedPromise.then( function ( videojsPlayer ) {
+		videojsPlayer.pause();
 		$.disposeDetachedPlayers();
 	} );
 };
