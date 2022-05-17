@@ -3,6 +3,7 @@
 		"authors": [
 			"Artsiom91",
 			"Chadyka",
+			"No Sleep till Krupki",
 			"Tomato Cream",
 			"Чаховіч Уладзіслаў"
 		]
@@ -34,7 +35,7 @@
 	"timedmedia-mpeg-long-video": "аўдыё/відэа-файл MPEG, $1, даўжыня $2, $4 × $5 пікселяў, усяго $3",
 	"timedmedia-more": "Болей…",
 	"timedmedia-dismiss": "Закрыць",
-	"timedmedia-download": "Спампаваць файлу",
+	"timedmedia-download": "Спампаваць файл",
 	"timedmedia-play-media": "Прайграць медыя",
 	"timedmedia-desc-link": "Пра гэты файл",
 	"timedmedia-status-header": "Статус транскадзіравання",
