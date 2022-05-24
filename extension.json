@@ -318,6 +318,7 @@
 	},
 	"ResourceModules": {
 		"ext.tmh.video-js": {
+			"es6": true,
 			"scripts": "resources/videojs/alt/video.core.min.js",
 			"styles": "resources/videojs/video-js.css",
 			"noflip": true,
@@ -375,6 +376,7 @@
 			}
 		},
 		"ext.tmh.videojs-ogvjs": {
+			"es6": true,
 			"scripts": "resources/videojs-ogvjs/videojs-ogvjs.js",
 			"targets": [
 				"mobile",
@@ -386,6 +388,7 @@
 			]
 		},
 		"ext.tmh.player": {
+			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.js",
 				"resources/ext.tmh.player.element.js",
@@ -412,6 +415,7 @@
 			]
 		},
 		"ext.tmh.player.dialog": {
+			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.dialog.loader.js",
 				"resources/ext.tmh.player.dialog.js"
@@ -431,6 +435,7 @@
 			"messages": [ "timedmedia-dialog-close" ]
 		},
 		"ext.tmh.player.inline": {
+			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.inline.js",
 				"resources/mw-info-button/mw-info-button.js",
@@ -484,8 +489,8 @@
 			]
 		},
 		"ext.tmh.transcodetable": {
-			"scripts": "resources/ext.tmh.transcodetable.js",
-			"styles": "resources/transcodeTable.css",
+			"scripts": "resources/transcode-table/transcode-table.js",
+			"styles": "resources/transcode-table/transcode-table.css",
 			"dependencies": [
 				"mediawiki.api",
 				"oojs-ui"
@@ -504,6 +509,7 @@
 			"styles": "resources/ext.tmh.timedtextpage.styles.less"
 		},
 		"ext.tmh.OgvJsSupport": {
+			"es6": true,
 			"scripts": [
 				"resources/ogv.js/ogv-support.js",
 				"resources/ext.tmh.OgvJsSupport.js"
@@ -514,6 +520,7 @@
 			]
 		},
 		"ext.tmh.OgvJs": {
+			"es6": true,
 			"scripts": [
 				"resources/ogv.js/ogv.js"
 			],
