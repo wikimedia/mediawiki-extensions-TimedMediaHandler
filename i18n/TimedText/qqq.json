@@ -6,7 +6,5 @@
 			"Siebrand",
 			"Umherirrender"
 		]
-	},
-	"mwe-timedtext-language-subtitles-for-clip": "$1 is language name for subtitles (e.g. \"English\"), $2 is title of file that timed text is for.\nShown as the page title on a TimedText namespace page when the page exists. See also mwe-timedtext-language-no-subtitles-for-clip.",
-	"mwe-timedtext-language-no-subtitles-for-clip": "$1 is language name, $2 is title of file that timed text is for.\nShown as the page title on a TimedText namespace page when the page does not exist. See also mwe-timedtext-language-subtitles-for-clip"
+	}
 }

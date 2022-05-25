@@ -68,8 +68,7 @@
 	"MessagesDirs": {
 		"TimedMediaHandler": [
 			"i18n",
-			"i18n/api",
-			"i18n/TimedText"
+			"i18n/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
