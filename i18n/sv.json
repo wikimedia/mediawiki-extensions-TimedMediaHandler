@@ -136,8 +136,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 oinitialiserad transkodning|$1 oinitialiserade transkodningar}}",
 	"timedmedia-no-derivatives": "Ingen transkodning krävs.",
 	"timedmedia-file": "Fil",
-	"beta-feature-timedmediahandler-message-videojs": "Ny videospelare",
-	"beta-feature-timedmediahandler-description-videojs": "Titta på videofiler i en modern mediaspelare med en renare utseende och mobilkompatibilitet.",
 	"right-transcode-reset": "Återställ misslyckade eller transkodade videor så att de åter infogas i jobbkön.",
 	"right-transcode-status": "Visa [[Special:TimedMediaHandler|information om den aktuella transkodningsaktivitetet]]",
 	"action-transcode-reset": "nollställa transkodningar",
@@ -148,7 +146,6 @@
 	"orphanedtimedtext": "Föräldralösa TimedText-sidor",
 	"orphanedtimedtext-summary": "Lista över [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] sidor som inte har en motsvarande fil.",
 	"orphanedtimedtext-unsupported": "Denna special-sida har bara stöd på MySQL-databaser.",
-	"orphanedtimedtext-notimedtext": "TimedText är inte aktiverat på denna wiki.",
 	"videojs-more-information": "Mer information",
 	"videojs-quality": "Videokvalitet",
 	"transcodestatistics": "Transkodningsstatistik"

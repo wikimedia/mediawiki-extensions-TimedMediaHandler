@@ -4,23 +4,6 @@
 			"AnakngAraw"
 		]
 	},
-	"mwe-timedtext-back-btn": "Bumalik",
-	"mwe-timedtext-layout-off": "Itago ang kabahaging mga pamagat",
-	"mwe-timedtext-loading-text": "Ikinakarga ang teksto ...",
-	"mwe-timedtext-textcat-cc": "Mga paliwanag",
-	"mwe-timedtext-textcat-sub": "Kabahaging mga pamagat",
-	"mwe-timedtext-textcat-tad": "Paglalarawan ng naririnig",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Teksto ng pampulso",
-	"mwe-timedtext-textcat-ar": "Masisiglang mga rehiyon",
-	"mwe-timedtext-textcat-nb": "Paliwanag",
-	"mwe-timedtext-textcat-meta": "Inorasang metadato",
-	"mwe-timedtext-textcat-trx": "Sipi ng salin",
-	"mwe-timedtext-textcat-lrc": "Titik ng awit",
-	"mwe-timedtext-textcat-lin": "Markang-pantaas ng lingguwistika",
-	"mwe-timedtext-textcat-cue": "Mga tuldok ng pahiwatig",
-	"mwe-timedtext-no-subs": "Walang makukuhang mga bakas ng teksto",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 kabahaging mga pamagat para sa putol na: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Walang natagpuang $1 kabahaging mga pamagat para sa putol na: $2",
-	"mwe-timedtext-upload-timed-text": "Magdagdag ng kabahaging mga pamagat"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Walang natagpuang $1 kabahaging mga pamagat para sa putol na: $2"
 }

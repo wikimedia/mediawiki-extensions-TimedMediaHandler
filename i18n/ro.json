@@ -82,8 +82,6 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 codificare în așteptare|$1 codificări în așteptare|$1 de codificări în așteptare}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 codificare eșuată|$1 codificări eșuate|$1 de codificări eșuate}}",
 	"timedmedia-file": "Fișier",
-	"beta-feature-timedmediahandler-message-videojs": "Video player nou",
-	"beta-feature-timedmediahandler-description-videojs": "Vizualizați fișiere video într-un player modern cu o interfață mai curată și compatibilitate mobilă.",
 	"right-transcode-reset": "Reinițializează videoclipuri nereușit codificate pentru ca acestea să fie readăugate la șirul de sarcini.",
 	"right-transcode-status": "Vizualizează [[Special:TimedMediaHandler|informații despre activitatea curentă de codificare]]",
 	"action-transcode-status": "vizualizați statutul actual al codificării",

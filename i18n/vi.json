@@ -175,8 +175,6 @@
 	"timedmedia-derivative-state-missing": "$1 chuyển mã chưa được gán giá trị",
 	"timedmedia-no-derivatives": "Không cần chuyển mã.",
 	"timedmedia-file": "Tập tin",
-	"beta-feature-timedmediahandler-message-videojs": "Trình phát video mới",
-	"beta-feature-timedmediahandler-description-videojs": "Xem tập tin video trong trình phát hiện đại có giao diện gọn và tương thích với thiết bị di động.",
 	"right-transcode-reset": "Đặt lại các video hỏng hoặc đã chuyển mã để chèn chúng lại vào hàng đợi việc.",
 	"right-transcode-status": "Xem [[Special:TimedMediaHandler|thông tin về hoạt động chuyển mã đang xảy ra]]",
 	"action-transcode-reset": "đặt lại chuyển mã",
@@ -187,7 +185,6 @@
 	"orphanedtimedtext": "Các trang phụ đề mồ côi",
 	"orphanedtimedtext-summary": "Danh sách trang [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] không có tập tin tương ứng.",
 	"orphanedtimedtext-unsupported": "Trang đặc biệt này chỉ được hỗ trợ trên cơ sở dữ liệu MySQL.",
-	"orphanedtimedtext-notimedtext": "Phụ đề không được kích hoạt trên wiki này.",
 	"videojs-more-information": "Thêm thông tin",
 	"videojs-quality": "Chất lượng video",
 	"transcodestatistics": "Thống kê chuyển mã"

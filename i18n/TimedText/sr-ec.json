@@ -9,23 +9,6 @@
 			"Михајло Анђелковић"
 		]
 	},
-	"mwe-timedtext-back-btn": "Назад",
-	"mwe-timedtext-layout-off": "Сакриј субтитлове",
-	"mwe-timedtext-loading-text": "Учитава се текст ...",
-	"mwe-timedtext-textcat-cc": "Ознаке",
-	"mwe-timedtext-textcat-sub": "Поднаслови",
-	"mwe-timedtext-textcat-tad": "Опис аудио снимка",
-	"mwe-timedtext-textcat-ktv": "Караоке",
-	"mwe-timedtext-textcat-tik": "Текст налепнице",
-	"mwe-timedtext-textcat-ar": "Активни региони",
-	"mwe-timedtext-textcat-nb": "Анотација",
-	"mwe-timedtext-textcat-meta": "Временски метаподаци",
-	"mwe-timedtext-textcat-trx": "Транскрипт",
-	"mwe-timedtext-textcat-lrc": "Текст",
-	"mwe-timedtext-textcat-lin": "Лингвистичко означавање",
-	"mwe-timedtext-textcat-cue": "Тачке редоследа",
-	"mwe-timedtext-no-subs": "Нису доступне текстуалне нумере",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 титлови за клип: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Нису пронађени $1 титлови за клип: $2",
-	"mwe-timedtext-upload-timed-text": "Додај титлове"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Нису пронађени $1 титлови за клип: $2"
 }

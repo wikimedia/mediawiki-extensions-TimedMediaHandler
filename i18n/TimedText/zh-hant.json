@@ -8,23 +8,6 @@
 			"Simon Shek"
 		]
 	},
-	"mwe-timedtext-back-btn": "返回",
-	"mwe-timedtext-layout-off": "隱藏字幕",
-	"mwe-timedtext-loading-text": "正在讀取文字……",
-	"mwe-timedtext-textcat-cc": "標題",
-	"mwe-timedtext-textcat-sub": "副標題",
-	"mwe-timedtext-textcat-tad": "音訊說明",
-	"mwe-timedtext-textcat-ktv": "卡拉OK",
-	"mwe-timedtext-textcat-tik": "滾動文本",
-	"mwe-timedtext-textcat-ar": "有效區城",
-	"mwe-timedtext-textcat-nb": "註解",
-	"mwe-timedtext-textcat-meta": "字幕詮釋資料",
-	"mwe-timedtext-textcat-trx": "字幕",
-	"mwe-timedtext-textcat-lrc": "歌詞",
-	"mwe-timedtext-textcat-lin": "語言標記",
-	"mwe-timedtext-textcat-cue": "暗點",
-	"mwe-timedtext-no-subs": "無可用字幕",
 	"mwe-timedtext-language-subtitles-for-clip": "片段的$1字幕文件：$2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "沒有找到片段的$1字幕文件：$2",
-	"mwe-timedtext-upload-timed-text": "添加字幕"
+	"mwe-timedtext-language-no-subtitles-for-clip": "沒有找到片段的$1字幕文件：$2"
 }

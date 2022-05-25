@@ -119,7 +119,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 trescodificador non aniciáu|$1 trescodificadores non aniciaos}}",
 	"timedmedia-no-derivatives": "Nun rique trescodificación.",
 	"timedmedia-file": "Ficheru",
-	"beta-feature-timedmediahandler-description-videojs": "Ver ficheros de videu nun reproductor con aspeutu llimpiu y compatibilidá col móvil.",
 	"right-transcode-reset": "Reaniciar los videos fallíos o trescodificaos pa que vuelvan a ponese na cola de trabayos.",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre l'actividá de trescodificación actual]]",
 	"action-transcode-reset": "reaniciar les trescodificaciones",
@@ -130,7 +129,6 @@
 	"orphanedtimedtext": "Páxines güérfanes de TimedText",
 	"orphanedtimedtext-summary": "Llista de páxines de [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que nun tienen el correspondiente ficheru.",
 	"orphanedtimedtext-unsupported": "Esta páxina especial sólo tien sofitu con bases de datos MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText nun ta activáu nesta wiki.",
 	"videojs-more-information": "Más información",
 	"videojs-quality": "Calidá de videu"
 }

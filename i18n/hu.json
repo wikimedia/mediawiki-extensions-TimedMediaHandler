@@ -100,7 +100,6 @@
 	"timedmedia-derivative-state-missing": "$1 elkezdetlen átkódolás",
 	"timedmedia-no-derivatives": "Nincs szükség átkódolásra.",
 	"timedmedia-file": "Fájl",
-	"beta-feature-timedmediahandler-description-videojs": "Videófájlok megtekintése egy modern, letisztultabb, mobilon is működő lejátszóban.",
 	"right-transcode-reset": "sikertelen vagy átkódolt videók visszaállítása, hogy újra bekerüljenek a feladatsorba",
 	"right-transcode-status": "[[Special:TimedMediaHandler|a legutóbbi átkódolási események információinak]] megtekintése",
 	"action-transcode-reset": "átkódolások visszaállítása",
@@ -110,7 +109,6 @@
 	"orphanedtimedtext": "Árva TimedText lapok",
 	"orphanedtimedtext-summary": "Olyan [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-lapok listája, amikhez nem tartozik fájl.",
 	"orphanedtimedtext-unsupported": "Ez a speciális lap csak MySQL adatbázisokon támogatott.",
-	"orphanedtimedtext-notimedtext": "A TimedText nincs engedélyezve ezen a wikin.",
 	"videojs-more-information": "További információk",
 	"videojs-quality": "Videóminőség",
 	"transcodestatistics": "Átkódolási statisztika"

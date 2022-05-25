@@ -117,7 +117,6 @@
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|transcodiffica non inissializâ|transcodiffiche non inissializæ}}",
 	"timedmedia-no-derivatives": "Nisciun-a transcodiffica necessaia.",
 	"timedmedia-file": "File",
-	"beta-feature-timedmediahandler-description-videojs": "Amia i file viddio co-in letô moderno da l'aspetto ciù polito e compatibbile co-i apægi mobbili.",
 	"right-transcode-reset": "Remposta i viddeo difettoxi ò transcodificæ de moddo da poeili insei torna inta coa de travaggio.",
 	"right-transcode-status": "Vixoalizza [[Special:TimedMediaHandler|e informassioin insce l'attivitæ de transcodiffica in corso]]",
 	"action-transcode-reset": "remposta e transcodiffiche",
@@ -128,7 +127,6 @@
 	"orphanedtimedtext": "Paggine TimedText  orfane",
 	"orphanedtimedtext-summary": "Lista de paggine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] che no g'han un file corispondente.",
 	"orphanedtimedtext-unsupported": "Questa paggina speciâ a l'è suportâ solo insce di database MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText o no l'è abilitou insce questa wikki.",
 	"videojs-more-information": "Ciu informaçioin",
 	"videojs-quality": "Qualitæ viddeo",
 	"transcodestatistics": "Statisteghe de transcodiffica"

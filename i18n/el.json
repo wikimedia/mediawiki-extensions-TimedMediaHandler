@@ -32,7 +32,6 @@
 	"timedmedia-source-audio-file-desc": "Πρωτότυπο αρχείο $1 ($2)",
 	"timedmedia-derivative-desc-180p.vp9.webm": "Χαμηλό εύρος VP9 (180P)",
 	"timedmedia-file": "Αρχείο",
-	"beta-feature-timedmediahandler-description-videojs": "Παρακολουθήστε αρχεία βίντεο σε ένα σύγχρονο αναπαραγωγό με πιο καθαρή εμφάνιση και συμβατότητα με κινητά.",
 	"videojs-more-information": "Περισσότερες πληροφορίες",
 	"videojs-quality": "Ποιότητα βίντεο",
 	"transcodestatistics": "Στατιστικά διακωδικοποίησης"

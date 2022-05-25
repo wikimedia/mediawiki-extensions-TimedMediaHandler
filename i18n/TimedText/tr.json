@@ -6,23 +6,6 @@
 			"Hedda"
 		]
 	},
-	"mwe-timedtext-back-btn": "Geri",
-	"mwe-timedtext-layout-off": "Alt yazıları gizle",
-	"mwe-timedtext-loading-text": "Metin yükleniyor ...",
-	"mwe-timedtext-textcat-cc": "Altyazılar",
-	"mwe-timedtext-textcat-sub": "Alt yazılar",
-	"mwe-timedtext-textcat-tad": "Sesli açıklama",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Kayan yazı metni",
-	"mwe-timedtext-textcat-ar": "Aktif bölgeler",
-	"mwe-timedtext-textcat-nb": "Ek açıklama",
-	"mwe-timedtext-textcat-meta": "Zamanlanmış meta veriler",
-	"mwe-timedtext-textcat-trx": "Transkript",
-	"mwe-timedtext-textcat-lrc": "Şarkı sözleri",
-	"mwe-timedtext-textcat-lin": "Dilsel işaretleme",
-	"mwe-timedtext-textcat-cue": "İşaret noktaları",
-	"mwe-timedtext-no-subs": "Parça metni yok",
 	"mwe-timedtext-language-subtitles-for-clip": "Klip için $1 altyazı: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Klip için $1 altyazı bulunamadı: $2",
-	"mwe-timedtext-upload-timed-text": "Alt yazı ekle"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Klip için $1 altyazı bulunamadı: $2"
 }

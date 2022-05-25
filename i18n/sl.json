@@ -88,8 +88,6 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|eno neuspelo prekodiranje|dve neuspeli prekodiranji|$1 neuspela prekodiranja|$1 neuspelih prekodiranj}}",
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 neinicializirano transkodiranje|$1 neinicializirani transkodiranji|$1 neinicializirana transkodiranja}}",
 	"timedmedia-file": "Datoteka:",
-	"beta-feature-timedmediahandler-message-videojs": "Novi videopredvajalnik",
-	"beta-feature-timedmediahandler-description-videojs": "Predvajajte videoposnetke s sodobnim predvajalnikom čistejšega videza in združljivostjo z mobilnimi napravami.",
 	"right-transcode-reset": "Ponastavitev neuspelih ali pretvorjenih videov, da so ponovno vstavljeni v čakalno vrsto opravil",
 	"right-transcode-status": "Ogled [[Special:TimedMediaHandler|informacij o trenutni dejavnosti pretvarjanja]]",
 	"action-transcode-status": "ogled trenutnega stanja pretvorbe",

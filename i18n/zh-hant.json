@@ -134,8 +134,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 個未初始化轉碼|$1 個未初始化轉碼}}",
 	"timedmedia-no-derivatives": "不需轉碼。",
 	"timedmedia-file": "檔案",
-	"beta-feature-timedmediahandler-message-videojs": "新影片播放器",
-	"beta-feature-timedmediahandler-description-videojs": "以具有清晰外觀及相容手機的現代化播放器來觀賞影片。",
 	"right-transcode-reset": "重設已失敗或已轉碼的影片，將其重新排入任務序列中。",
 	"right-transcode-status": "檢視[[Special:TimedMediaHandler|目前轉碼活動的資訊]]",
 	"action-transcode-reset": "重設轉碼",
@@ -146,7 +144,6 @@
 	"orphanedtimedtext": "孤立的 TimedText 頁面",
 	"orphanedtimedtext-summary": "未關聯任何檔案的 [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] 頁面清單。",
 	"orphanedtimedtext-unsupported": "此特殊頁面僅支援使用 MySQL 資料庫。",
-	"orphanedtimedtext-notimedtext": "此 Wiki 未開啟 TimedText 功能。",
 	"videojs-more-information": "更多資訊",
 	"videojs-quality": "影片品質",
 	"transcodestatistics": "轉碼統計"

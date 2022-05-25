@@ -6,23 +6,6 @@
 			"IvanLanin"
 		]
 	},
-	"mwe-timedtext-back-btn": "Kembali",
-	"mwe-timedtext-layout-off": "Sembunyikan subjudul",
-	"mwe-timedtext-loading-text": "Memuat teks ...",
-	"mwe-timedtext-textcat-cc": "Keterangan",
-	"mwe-timedtext-textcat-sub": "Subjudul",
-	"mwe-timedtext-textcat-tad": "Deskripsi audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Teks tik",
-	"mwe-timedtext-textcat-ar": "Wilayah aktif",
-	"mwe-timedtext-textcat-nb": "Anotasi",
-	"mwe-timedtext-textcat-meta": "Data meta berjangka waktu",
-	"mwe-timedtext-textcat-trx": "Transkrip",
-	"mwe-timedtext-textcat-lrc": "Lirik",
-	"mwe-timedtext-textcat-lin": "Ubahan linguistik",
-	"mwe-timedtext-textcat-cue": "Titik acuan",
-	"mwe-timedtext-no-subs": "Jalur teks tidak tersedia",
 	"mwe-timedtext-language-subtitles-for-clip": "Subjudul $1 untuk klip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Tidak ada subjudul $1 yang ditemukan untuk klip: $2",
-	"mwe-timedtext-upload-timed-text": "Tambahkan teks film"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Tidak ada subjudul $1 yang ditemukan untuk klip: $2"
 }

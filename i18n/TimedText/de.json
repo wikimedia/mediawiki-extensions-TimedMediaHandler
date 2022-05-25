@@ -6,23 +6,6 @@
 			"Purodha"
 		]
 	},
-	"mwe-timedtext-back-btn": "Zurück",
-	"mwe-timedtext-layout-off": "Untertitel ausblenden",
-	"mwe-timedtext-loading-text": "Text wird geladen …",
-	"mwe-timedtext-textcat-cc": "Legenden",
-	"mwe-timedtext-textcat-sub": "Untertitel",
-	"mwe-timedtext-textcat-tad": "Beschreibung (Audio)",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Text-Ticker",
-	"mwe-timedtext-textcat-ar": "Aktive Regionen",
-	"mwe-timedtext-textcat-nb": "Annotation",
-	"mwe-timedtext-textcat-meta": "„Timed Text“-Metadaten",
-	"mwe-timedtext-textcat-trx": "Abschrift",
-	"mwe-timedtext-textcat-lrc": "Liedtext",
-	"mwe-timedtext-textcat-lin": "Sprachliche Beschreibung",
-	"mwe-timedtext-textcat-cue": "Cue-Punkte",
-	"mwe-timedtext-no-subs": "Es sind keine Untertitel verfügbar",
 	"mwe-timedtext-language-subtitles-for-clip": "Untertitel auf $1 für den Videoclip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Keine Untertitel auf $1 für den Videoclip gefunden: $2",
-	"mwe-timedtext-upload-timed-text": "Untertitel hinzufügen"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Keine Untertitel auf $1 für den Videoclip gefunden: $2"
 }

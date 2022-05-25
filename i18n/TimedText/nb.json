@@ -6,23 +6,6 @@
 			"Nghtwlkr"
 		]
 	},
-	"mwe-timedtext-back-btn": "Tilbake",
-	"mwe-timedtext-layout-off": "Gjem undertekster",
-	"mwe-timedtext-loading-text": "Laster tekst ...",
-	"mwe-timedtext-textcat-cc": "Undertektster",
-	"mwe-timedtext-textcat-sub": "Undertekster",
-	"mwe-timedtext-textcat-tad": "Lydbeskrivelse",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Tekst-ticker",
-	"mwe-timedtext-textcat-ar": "Aktive regioner",
-	"mwe-timedtext-textcat-nb": "Merknad",
-	"mwe-timedtext-textcat-meta": "Tidsbestemt metadata",
-	"mwe-timedtext-textcat-trx": "Transkripsjon",
-	"mwe-timedtext-textcat-lrc": "Tekster",
-	"mwe-timedtext-textcat-lin": "Språklig markering",
-	"mwe-timedtext-textcat-cue": "Referansepunkter",
-	"mwe-timedtext-no-subs": "Ingen tekstspor finnes",
 	"mwe-timedtext-language-subtitles-for-clip": "Undertekster på $1 for klippet: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Ingen undertekster på $1 ble funnet for klippet: $2",
-	"mwe-timedtext-upload-timed-text": "Legg til undertekster"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Ingen undertekster på $1 ble funnet for klippet: $2"
 }

@@ -17,7 +17,5 @@
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "$1 mənbəyi",
-	"timedmedia-source-audio-file-desc": "Orijinal $1 faylı ($2)",
-	"beta-feature-timedmediahandler-message-videojs": "Yeni video pleyer",
-	"beta-feature-timedmediahandler-description-videojs": "Videofayllara daha təmiz və mobil telefonları dəstəkləyən müasir pleyerdən baxın."
+	"timedmedia-source-audio-file-desc": "Orijinal $1 faylı ($2)"
 }

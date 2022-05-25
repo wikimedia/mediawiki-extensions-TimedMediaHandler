@@ -80,8 +80,6 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|რიგშია $1 დეკოდირება|რიგშია $1 დეკოდირება}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 დეკოდირება ჩაიშალა|$1 დეკოდირება ჩაიშალა}}",
 	"timedmedia-file": "ფაილი",
-	"beta-feature-timedmediahandler-message-videojs": "ახალი ვიდეო-პლეიერი",
-	"beta-feature-timedmediahandler-description-videojs": "ვიდეოფაილების თვალიერება თანამედროვე პლეიერში უფრო სუფთა დიზაინითა და მობილურის თავსებადობით.",
 	"right-transcode-status": "იხილეთ [[Special:TimedMediaHandler|ინფორმაცია მიმდინარე დეკოდირების შესახებ]]",
 	"action-transcode-status": "იხილეთ მიმდინარე დეკოდირების სტატუსი"
 }

@@ -107,13 +107,10 @@
 	"timedmedia-subtitle-remote-link": "Можете [$1 погледати страницу са описом] за ову датотеку на $2",
 	"timedmedia-no-derivatives": "Нема других формата.",
 	"timedmedia-file": "Датотека",
-	"beta-feature-timedmediahandler-message-videojs": "Нови видео-плејер",
-	"beta-feature-timedmediahandler-description-videojs": "Гледајте видео-датотеке у модерном плејеру преуређеног изгледа и уз компатибилност с мобилним уређајима.",
 	"right-transcode-status": "прегледање [[Special:TimedMediaHandler|информација о тренутном активношћу транскодирања]]",
 	"action-transcode-reset": "поново поставите транскодирање",
 	"action-transcode-status": "прегледате актуелни статус транскодирања",
 	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а",
 	"orphanedtimedtext-unsupported": "Ова посебна странице је подржана само на MySQL базама података.",
-	"orphanedtimedtext-notimedtext": "TimedText није омогућен на овом викију.",
 	"videojs-more-information": "Више информација"
 }

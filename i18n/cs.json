@@ -125,8 +125,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 neinicializované|$1 neinicializovaná|$1 neinicializovaných}} transkódování",
 	"timedmedia-no-derivatives": "Transkódování není potřeba.",
 	"timedmedia-file": "Soubor",
-	"beta-feature-timedmediahandler-message-videojs": "Nový přehrávač videa",
-	"beta-feature-timedmediahandler-description-videojs": "Sledujte videa v moderním přehrávači s čistším vzhledem, který je kompatibilní s mobily.",
 	"right-transcode-reset": "Restartovat zpracování videí, pokud skončilo chybou",
 	"right-transcode-status": "Zobrazení [[Special:TimedMediaHandler|informací o probíhajícím transkódování]]",
 	"action-transcode-reset": "obnovovat transkódování",
@@ -137,7 +135,6 @@
 	"orphanedtimedtext": "Osiřelé stránky TimedText",
 	"orphanedtimedtext-summary": "Seznam stránek [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], které nemají odpovídající soubor.",
 	"orphanedtimedtext-unsupported": "Tato speciální stránka je podporována jen na databázi MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText není na této wiki zapnut.",
 	"videojs-more-information": "Více informací",
 	"videojs-quality": "Kvalita videa"
 }

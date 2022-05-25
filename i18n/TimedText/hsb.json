@@ -4,23 +4,6 @@
 			"Michawiki"
 		]
 	},
-	"mwe-timedtext-back-btn": "Wróćo",
-	"mwe-timedtext-layout-off": "Podtitule schować",
-	"mwe-timedtext-loading-text": "Tekst so začituje...",
-	"mwe-timedtext-textcat-cc": "Nadpisma",
-	"mwe-timedtext-textcat-sub": "Podtitule",
-	"mwe-timedtext-textcat-tad": "Awdiowopisanje",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Tekstowy běžacy pask",
-	"mwe-timedtext-textcat-ar": "Aktiwne regiony",
-	"mwe-timedtext-textcat-nb": "Anotacija",
-	"mwe-timedtext-textcat-meta": "Synchronizowane metadaty",
-	"mwe-timedtext-textcat-trx": "Přepis",
-	"mwe-timedtext-textcat-lrc": "Spěwowy tekst",
-	"mwe-timedtext-textcat-lin": "Rěčespytne wopisanje",
-	"mwe-timedtext-textcat-cue": "Zastupne dypki",
-	"mwe-timedtext-no-subs": "Žane podtitule k dispoziciji",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Žane podtitule $1 za klip namakane: $2",
-	"mwe-timedtext-upload-timed-text": "Podtitule přidać"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Žane podtitule $1 za klip namakane: $2"
 }

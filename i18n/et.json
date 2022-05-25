@@ -115,8 +115,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|Üks|$1}} algatamata {{PLURAL:$1|ümberkodeering|ümberkodeeringut}}",
 	"timedmedia-no-derivatives": "Ümberkodeerimine pole vajalik.",
 	"timedmedia-file": "Fail",
-	"beta-feature-timedmediahandler-message-videojs": "Uus videoesitaja",
-	"beta-feature-timedmediahandler-description-videojs": "Vaata videoid tänapäevase esitajaga, millel on korralikum väljanägemine ja mis ühildub mobiiliga.",
 	"right-transcode-reset": "Lähtestada ebaõnnestunud või ümberkodeeritud videoid, nii et need lisatakse uuesti tööjärge",
 	"right-transcode-status": "Vaadata [[Special:TimedMediaHandler|teavet praegu aktiivsete ümberkodeeringute kohta]]",
 	"action-transcode-reset": "ümberkodeeringuid lähtestada",
@@ -127,7 +125,6 @@
 	"orphanedtimedtext": "Ajastatud teksti orbleheküljed",
 	"orphanedtimedtext-summary": "Loend nimeruumi [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] lehekülgedest, millele vastav fail puudub.",
 	"orphanedtimedtext-unsupported": "Seda erilehekülge toetatakse ainult MySQL-andmebaasides.",
-	"orphanedtimedtext-notimedtext": "Ajastatud tekst pole selles vikis lubatud.",
 	"videojs-more-information": "Lisateave",
 	"videojs-quality": "Video kvaliteet",
 	"transcodestatistics": "Ümberkodeerimise arvandmestik"

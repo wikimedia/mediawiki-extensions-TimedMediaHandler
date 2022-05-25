@@ -4,23 +4,6 @@
 			"Praveenp"
 		]
 	},
-	"mwe-timedtext-back-btn": "പുറകോട്ട്",
-	"mwe-timedtext-layout-off": "സംഭാഷണരേഖ മറയ്ക്കുക",
-	"mwe-timedtext-loading-text": "എഴുത്ത് ശേഖരിക്കുന്നു...",
-	"mwe-timedtext-textcat-cc": "തലവാക്യം",
-	"mwe-timedtext-textcat-sub": "സംഭാഷണരേഖകൾ",
-	"mwe-timedtext-textcat-tad": "ശബ്ദത്തിന്റെ വിവരണം",
-	"mwe-timedtext-textcat-ktv": "കരോക്കേ",
-	"mwe-timedtext-textcat-tik": "മിന്നിവരുന്ന എഴുത്ത്",
-	"mwe-timedtext-textcat-ar": "സജീവമായ പ്രദേശങ്ങൾ",
-	"mwe-timedtext-textcat-nb": "ടിപ്പണി",
-	"mwe-timedtext-textcat-meta": "സമയമനുസരിച്ചുള്ള മെറ്റാഡേറ്റ",
-	"mwe-timedtext-textcat-trx": "പകർത്തിയെഴുത്ത്",
-	"mwe-timedtext-textcat-lrc": "വരികൾ",
-	"mwe-timedtext-textcat-lin": "ഭാഷാസംബന്ധിയായ അടയാളഭാഷ",
-	"mwe-timedtext-textcat-cue": "സൂചക ബിന്ദുക്കൾ",
-	"mwe-timedtext-no-subs": "എഴുത്തുകളുടെ വരി ലഭ്യമല്ല",
 	"mwe-timedtext-language-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖ: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2",
-	"mwe-timedtext-upload-timed-text": "സംഭാഷണരേഖ കൂട്ടിച്ചേർക്കുക"
+	"mwe-timedtext-language-no-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2"
 }

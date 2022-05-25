@@ -8,23 +8,6 @@
 			"Yfdyh000"
 		]
 	},
-	"mwe-timedtext-back-btn": "返回",
-	"mwe-timedtext-layout-off": "隐藏字幕",
-	"mwe-timedtext-loading-text": "正在载入文本...",
-	"mwe-timedtext-textcat-cc": "说明",
-	"mwe-timedtext-textcat-sub": "副标题",
-	"mwe-timedtext-textcat-tad": "声音说明",
-	"mwe-timedtext-textcat-ktv": "卡拉OK",
-	"mwe-timedtext-textcat-tik": "滚动文本",
-	"mwe-timedtext-textcat-ar": "作用区域",
-	"mwe-timedtext-textcat-nb": "注释",
-	"mwe-timedtext-textcat-meta": "字幕元数据",
-	"mwe-timedtext-textcat-trx": "字幕",
-	"mwe-timedtext-textcat-lrc": "歌词",
-	"mwe-timedtext-textcat-lin": "语言标记",
-	"mwe-timedtext-textcat-cue": "提示点",
-	"mwe-timedtext-no-subs": "没有可用的字幕",
 	"mwe-timedtext-language-subtitles-for-clip": "片段$2的$1字幕",
-	"mwe-timedtext-language-no-subtitles-for-clip": "没有找到片段$2的$1字幕",
-	"mwe-timedtext-upload-timed-text": "添加字幕"
+	"mwe-timedtext-language-no-subtitles-for-clip": "没有找到片段$2的$1字幕"
 }

@@ -5,23 +5,6 @@
 			"Dafer45"
 		]
 	},
-	"mwe-timedtext-back-btn": "Tillbaka",
-	"mwe-timedtext-layout-off": "Dölj undertexter",
-	"mwe-timedtext-loading-text": "Laddar text ...",
-	"mwe-timedtext-textcat-cc": "Undertexter",
-	"mwe-timedtext-textcat-sub": "Undertexter",
-	"mwe-timedtext-textcat-tad": "Ljudbeskrivning",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Rullande text",
-	"mwe-timedtext-textcat-ar": "Aktiva regioner",
-	"mwe-timedtext-textcat-nb": "Anmärkning",
-	"mwe-timedtext-textcat-meta": "Tidsbestämd metadata",
-	"mwe-timedtext-textcat-trx": "Transkription",
-	"mwe-timedtext-textcat-lrc": "Texter",
-	"mwe-timedtext-textcat-lin": "Språkliga markeringar",
-	"mwe-timedtext-textcat-cue": "Referenspunkter",
-	"mwe-timedtext-no-subs": "Inga textspår finns",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 undertexter för klipp: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Inga $1 undertexter hittades för klipp: $2",
-	"mwe-timedtext-upload-timed-text": "Lägga till undertexter"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Inga $1 undertexter hittades för klipp: $2"
 }

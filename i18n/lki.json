@@ -84,6 +84,5 @@
 	"action-transcode-status": "نمایش وضعیت فراکدگذاری کنونی",
 	"orphanedtimedtext": "صفحه‌های TimedText یتیم",
 	"orphanedtimedtext-summary": "فهرست صفحه‌های [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] که دارای پروندهٔ متناظر نیستند.",
-	"orphanedtimedtext-unsupported": "این صفحهٔ خاص فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده‌است.",
-	"orphanedtimedtext-notimedtext": "TimedText در این ویکی فعال نشده است."
+	"orphanedtimedtext-unsupported": "این صفحهٔ خاص فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده‌است."
 }

@@ -6,23 +6,6 @@
 			"YaronSh"
 		]
 	},
-	"mwe-timedtext-back-btn": "חזרה",
-	"mwe-timedtext-layout-off": "הסתרת כתוביות",
-	"mwe-timedtext-loading-text": "טעינת טקסט...",
-	"mwe-timedtext-textcat-cc": "כותרות",
-	"mwe-timedtext-textcat-sub": "כתוביות",
-	"mwe-timedtext-textcat-tad": "תיאור השמע",
-	"mwe-timedtext-textcat-ktv": "קראוקה",
-	"mwe-timedtext-textcat-tik": "שפת השורה הרצה",
-	"mwe-timedtext-textcat-ar": "אזורים פעילים",
-	"mwe-timedtext-textcat-nb": "פרשנות",
-	"mwe-timedtext-textcat-meta": "מטא־מתונים מתוזמנים",
-	"mwe-timedtext-textcat-trx": "תמליל",
-	"mwe-timedtext-textcat-lrc": "מילות השיר",
-	"mwe-timedtext-textcat-lin": "סימון בלשני",
-	"mwe-timedtext-textcat-cue": "נקודות סימנית",
-	"mwe-timedtext-no-subs": "אין רצועת תמליל זמינה",
 	"mwe-timedtext-language-subtitles-for-clip": "כתוביות ב{{GRAMMAR:תחילית|$1}} עבור הסרטון $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "לא נמצאו כתוביות ב{{GRAMMAR:תחילית|$1}} עבור $2",
-	"mwe-timedtext-upload-timed-text": "הוספת כתוביות"
+	"mwe-timedtext-language-no-subtitles-for-clip": "לא נמצאו כתוביות ב{{GRAMMAR:תחילית|$1}} עבור $2"
 }

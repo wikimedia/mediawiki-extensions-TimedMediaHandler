@@ -132,8 +132,6 @@
 	"timedmedia-no-derivatives": "Geen transcodering nodig.",
 	"timedmedia-file": "Bestand",
 	"timedmedia-dialog-close": "Sluit mediaspeler",
-	"beta-feature-timedmediahandler-message-videojs": "Nieuwe videospeler",
-	"beta-feature-timedmediahandler-description-videojs": "Bekijk videobestanden in een moderne speler met een strakker uiterlijk en mobiele compatibiliteit.",
 	"right-transcode-reset": "Video's waarvoor transcoderen mislukt is of die al getranscodeerd zijn opnieuw in de jobqueue plaatsen.",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken",
 	"action-transcode-reset": "Transcodes opnieuw instellen",
@@ -144,7 +142,6 @@
 	"orphanedtimedtext": "Ongebruikte TimedTextpagina's",
 	"orphanedtimedtext-summary": "Lijst van [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] pagina's die geen bijbehorend bestand hebben.",
 	"orphanedtimedtext-unsupported": "Deze speciale pagina wordt alleen ondersteund op MySQL databases.",
-	"orphanedtimedtext-notimedtext": "TimedText is niet ingeschakeld op deze wiki.",
 	"videojs-more-information": "Meer informatie",
 	"videojs-quality": "Videokwaliteit",
 	"transcodestatistics": "Statistieken transcode"

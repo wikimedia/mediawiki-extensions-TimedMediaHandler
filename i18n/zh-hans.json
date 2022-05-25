@@ -149,8 +149,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1个未初始化转码}}",
 	"timedmedia-no-derivatives": "不需要转码。",
 	"timedmedia-file": "文件",
-	"beta-feature-timedmediahandler-message-videojs": "新视频播放器",
-	"beta-feature-timedmediahandler-description-videojs": "使用具有清晰的外观和移动兼容性的现代化播放器来观看视频文件。",
 	"right-transcode-reset": "重置已失败或已转码的视频将其再次加入到作业队列中",
 	"right-transcode-status": "查看[[Special:TimedMediaHandler|当前转码活动的信息]]",
 	"action-transcode-reset": "重置转码",
@@ -161,7 +159,6 @@
 	"orphanedtimedtext": "孤立的TimedText页面",
 	"orphanedtimedtext-summary": "没有对应文件的[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]页面的列表。",
 	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
-	"orphanedtimedtext-notimedtext": "TimedText在此wiki未启用。",
 	"videojs-more-information": "更多信息",
 	"videojs-quality": "视频品质",
 	"transcodestatistics": "转码统计"

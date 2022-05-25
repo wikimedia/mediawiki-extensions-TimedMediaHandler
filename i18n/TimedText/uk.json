@@ -8,24 +8,6 @@
 			"Тест"
 		]
 	},
-	"mwe-timedtext-back-btn": "Назад",
-	"mwe-timedtext-layout-off": "Приховати субтитри",
-	"mwe-timedtext-loading-text": "Завантаження тексту…",
-	"mwe-timedtext-key-language": "$1, $2",
-	"mwe-timedtext-textcat-cc": "Субтитри-підписи",
-	"mwe-timedtext-textcat-sub": "Субтитри",
-	"mwe-timedtext-textcat-tad": "Аудіо-опис",
-	"mwe-timedtext-textcat-ktv": "Караоке",
-	"mwe-timedtext-textcat-tik": "Текстові картки",
-	"mwe-timedtext-textcat-ar": "Активні області",
-	"mwe-timedtext-textcat-nb": "Анотація",
-	"mwe-timedtext-textcat-meta": "Синхронізовані метадані",
-	"mwe-timedtext-textcat-trx": "Стенограма",
-	"mwe-timedtext-textcat-lrc": "Слова пісні",
-	"mwe-timedtext-textcat-lin": "Лінгвістична розмітка",
-	"mwe-timedtext-textcat-cue": "Знакові точки",
-	"mwe-timedtext-no-subs": "Немає текстових доріжок",
 	"mwe-timedtext-language-subtitles-for-clip": "Субтитри мовою «$1» для кліпу: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Не знайдено субтитрів $1 для кліпу: $2",
-	"mwe-timedtext-upload-timed-text": "Додати субтитри"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Не знайдено субтитрів $1 для кліпу: $2"
 }

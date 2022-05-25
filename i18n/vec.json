@@ -170,8 +170,6 @@
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|transcodìfega mija scumisià|transcodìfega mija scumisiae}}",
 	"timedmedia-no-derivatives": "Nisuna transcodìfega dimandada",
 	"timedmedia-file": "File",
-	"beta-feature-timedmediahandler-message-videojs": "Novo letore vìdeo",
-	"beta-feature-timedmediahandler-description-videojs": "Varda file video co on letor moderno, che el ga na siera pì neta e conpatìbiłe co i dispoxidivi mòbiłi",
 	"right-transcode-reset": "Reinposta i video difetoxi o transcodifegai cusì che i posa esar includesti de novo in coa de laoro.",
 	"right-transcode-status": "Vixuałixa [[Special:TimedMediaHandler|informasion so l'atuałe atività de transcodifega]]",
 	"action-transcode-reset": "Rexeta transcodifega",

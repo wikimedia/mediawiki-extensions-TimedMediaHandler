@@ -8,23 +8,6 @@
 			"Sp5uhe"
 		]
 	},
-	"mwe-timedtext-back-btn": "Wstecz",
-	"mwe-timedtext-layout-off": "Ukryj napisy",
-	"mwe-timedtext-loading-text": "Ładowanie tekstu...",
-	"mwe-timedtext-textcat-cc": "Podpisy",
-	"mwe-timedtext-textcat-sub": "Napisy do filmu",
-	"mwe-timedtext-textcat-tad": "Opis ścieżki dźwiękowej",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Notatka",
-	"mwe-timedtext-textcat-ar": "Aktywne regiony",
-	"mwe-timedtext-textcat-nb": "Adnotacja",
-	"mwe-timedtext-textcat-meta": "Metadane ze znacznikami czasu",
-	"mwe-timedtext-textcat-trx": "Rozpisz",
-	"mwe-timedtext-textcat-lrc": "Teksty piosenek",
-	"mwe-timedtext-textcat-lin": "Znaczniki językowe",
-	"mwe-timedtext-textcat-cue": "Punkty kontrolne",
-	"mwe-timedtext-no-subs": "Nie ma dostępnych ścieżek tekstowych",
 	"mwe-timedtext-language-subtitles-for-clip": "Napisy w języku „$1” do filmu $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Nie odnaleziono $1 napisów do filmu: $2",
-	"mwe-timedtext-upload-timed-text": "Dodaj napisy"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Nie odnaleziono $1 napisów do filmu: $2"
 }

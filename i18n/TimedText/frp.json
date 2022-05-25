@@ -4,23 +4,6 @@
 			"ChrisPtDe"
 		]
 	},
-	"mwe-timedtext-back-btn": "Tornar",
-	"mwe-timedtext-layout-off": "Cachiér los sot-titros",
-	"mwe-timedtext-loading-text": "Chargement du tèxto ...",
-	"mwe-timedtext-textcat-cc": "Lègendes",
-	"mwe-timedtext-textcat-sub": "Sot-titros",
-	"mwe-timedtext-textcat-tad": "Dèscripcion ôdiô",
-	"mwe-timedtext-textcat-ktv": "Caraoquè",
-	"mwe-timedtext-textcat-tik": "Bârra d’enformacions",
-	"mwe-timedtext-textcat-ar": "Règ·ions actives",
-	"mwe-timedtext-textcat-nb": "Nota",
-	"mwe-timedtext-textcat-meta": "Mètabalyês sincronisâs",
-	"mwe-timedtext-textcat-trx": "Transcripcion",
-	"mwe-timedtext-textcat-lrc": "Paroles",
-	"mwe-timedtext-textcat-lin": "Balisâjo lengouistico",
-	"mwe-timedtext-textcat-cue": "Pouents de repèro",
-	"mwe-timedtext-no-subs": "Gins de pista de tèxto disponibla",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 sot-titros por clipe : $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Nion sot-titro $1 at étâ trovâ por lo clipe : $2",
-	"mwe-timedtext-upload-timed-text": "Apondre des sot-titros"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Nion sot-titro $1 at étâ trovâ por lo clipe : $2"
 }

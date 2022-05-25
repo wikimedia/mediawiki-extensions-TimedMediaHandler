@@ -124,7 +124,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 parámetro de transcodificación non inicializado|$1 parámetros de transcodificación non inicializados}}",
 	"timedmedia-no-derivatives": "Non é precisa transcodificación.",
 	"timedmedia-file": "Ficheiro",
-	"beta-feature-timedmediahandler-description-videojs": "Visualizar ficheiros de vídeo nun lector moderno cun aspecto actualizado e compatibilidade móbil.",
 	"right-transcode-reset": "Restablecer os vídeos transcodificados erroneamente para incluílos de novo na cola de traballo.",
 	"right-transcode-status": "Ollar a [[Special:TimedMediaHandler|información sobre a actividade de transcodificación actual]]",
 	"action-transcode-reset": "reinicializar a transcodificación",
@@ -135,7 +134,6 @@
 	"orphanedtimedtext": "Páxinas orfas de TimedText",
 	"orphanedtimedtext-summary": "Lista de páxinas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que non teñen un ficheiro correspondente.",
 	"orphanedtimedtext-unsupported": "Esta páxina especial só está soportada en bases de datos MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText non se activou neste wiki.",
 	"videojs-more-information": "Máis información",
 	"videojs-quality": "Calidade de vídeo",
 	"transcodestatistics": "Estatísticas de transcodificación"

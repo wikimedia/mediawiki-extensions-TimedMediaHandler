@@ -6,23 +6,6 @@
 			"Wizardist"
 		]
 	},
-	"mwe-timedtext-back-btn": "Вярнуцца",
-	"mwe-timedtext-layout-off": "Схаваць субтытры",
-	"mwe-timedtext-loading-text": "Загрузка тэксту…",
-	"mwe-timedtext-textcat-cc": "Субтытры",
-	"mwe-timedtext-textcat-sub": "Субтытры:",
-	"mwe-timedtext-textcat-tad": "Аўдыя-апісаньне",
-	"mwe-timedtext-textcat-ktv": "Караоке",
-	"mwe-timedtext-textcat-tik": "Тэкставыя карткі",
-	"mwe-timedtext-textcat-ar": "Актыўныя рэгіёны",
-	"mwe-timedtext-textcat-nb": "Анатацыя",
-	"mwe-timedtext-textcat-meta": "Сынхранізаваныя мета-зьвесткі",
-	"mwe-timedtext-textcat-trx": "Стэнаграма",
-	"mwe-timedtext-textcat-lrc": "Словы",
-	"mwe-timedtext-textcat-lin": "Лінгвістычная разьметка",
-	"mwe-timedtext-textcat-cue": "Сыгнальныя кропкі",
-	"mwe-timedtext-no-subs": "Субтытраў няма",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 субтытры для кліпу: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Субтытры $1 для кліпу ня знойдзеныя: $2",
-	"mwe-timedtext-upload-timed-text": "Дадаць субтытры"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Субтытры $1 для кліпу ня знойдзеныя: $2"
 }

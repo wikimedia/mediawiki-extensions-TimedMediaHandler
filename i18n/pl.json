@@ -125,8 +125,6 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nieudane transkodowanie|$1 nieudane transkodowania|$1 nieudanych transkodowań}}",
 	"timedmedia-no-derivatives": "Transkodowanie nie jest wymagane.",
 	"timedmedia-file": "Plik",
-	"beta-feature-timedmediahandler-message-videojs": "Nowy odtwarzacz filmów",
-	"beta-feature-timedmediahandler-description-videojs": "Oglądaj pliki video w odtwarzaczu z bardziej przejrzystym wyglądem i wsparciem dla urządzeń mobilnych.",
 	"right-transcode-reset": "Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań",
 	"right-transcode-status": "Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]",
 	"action-transcode-reset": "resetowania transkodowania",
@@ -136,7 +134,6 @@
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|zresetował|zresetowała}} transkodowanie $3 do formatu „$4”",
 	"orphanedtimedtext": "Osierocone strony TimedText",
 	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText nie jest włączony w tej wiki.",
 	"videojs-more-information": "Więcej informacji",
 	"videojs-quality": "Jakość obrazu",
 	"transcodestatistics": "Statystyki transkodowania"

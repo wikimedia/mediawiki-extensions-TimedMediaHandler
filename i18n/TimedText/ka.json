@@ -4,21 +4,5 @@
 			"David1010"
 		]
 	},
-	"mwe-timedtext-back-btn": "უკან",
-	"mwe-timedtext-layout-off": "სუბტიტრების დამალვა",
-	"mwe-timedtext-loading-text": "იტვირთება ტექსტი ...",
-	"mwe-timedtext-textcat-cc": "წარწერები",
-	"mwe-timedtext-textcat-sub": "სუბტიტრები",
-	"mwe-timedtext-textcat-tad": "აუდიო აღწერა",
-	"mwe-timedtext-textcat-ktv": "კარაოკე",
-	"mwe-timedtext-textcat-tik": "ტექსტური ბარათები",
-	"mwe-timedtext-textcat-ar": "აქტიური რეგიონები",
-	"mwe-timedtext-textcat-nb": "ანოტაცია",
-	"mwe-timedtext-textcat-meta": "სინქრონიზირებული მეტამონაცემები",
-	"mwe-timedtext-textcat-trx": "სტენოგრამა",
-	"mwe-timedtext-textcat-lrc": "სიმღერის ტექსტები",
-	"mwe-timedtext-textcat-lin": "ლინგვისტური დანამატი",
-	"mwe-timedtext-textcat-cue": "ნიშნული წერტილები",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 სუბტიტრები კლიპისათვის: $2",
-	"mwe-timedtext-upload-timed-text": "სუბტიტრების დამატება"
+	"mwe-timedtext-language-subtitles-for-clip": "$1 სუბტიტრები კლიპისათვის: $2"
 }

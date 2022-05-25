@@ -7,23 +7,6 @@
 			"Gianfranco"
 		]
 	},
-	"mwe-timedtext-back-btn": "Indietro",
-	"mwe-timedtext-layout-off": "Nascondi sottotitoli",
-	"mwe-timedtext-loading-text": "Caricamento testo...",
-	"mwe-timedtext-textcat-cc": "Didascalie",
-	"mwe-timedtext-textcat-sub": "Sottotitoli",
-	"mwe-timedtext-textcat-tad": "Descrizione audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Testo in movimento",
-	"mwe-timedtext-textcat-ar": "Regioni attive",
-	"mwe-timedtext-textcat-nb": "Annotazione",
-	"mwe-timedtext-textcat-meta": "Metadati temporizzati",
-	"mwe-timedtext-textcat-trx": "Trascrizione",
-	"mwe-timedtext-textcat-lrc": "Testi",
-	"mwe-timedtext-textcat-lin": "Markup linguistico",
-	"mwe-timedtext-textcat-cue": "Punti d'entrata",
-	"mwe-timedtext-no-subs": "Nessuna traccia di testo disponibile",
 	"mwe-timedtext-language-subtitles-for-clip": "sottotitoli in $1 per il filmato: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Sottotitoli in $1 non trovati per il filmato: $2",
-	"mwe-timedtext-upload-timed-text": "Aggiungi sottotitoli"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Sottotitoli in $1 non trovati per il filmato: $2"
 }

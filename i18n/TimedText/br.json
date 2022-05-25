@@ -6,22 +6,6 @@
 			"Y-M D"
 		]
 	},
-	"mwe-timedtext-back-btn": "Distreiñ",
-	"mwe-timedtext-layout-off": "Kuzhat an istitloù",
-	"mwe-timedtext-loading-text": "O kargañ an destenn...",
-	"mwe-timedtext-textcat-cc": "Alc'hwezioù",
-	"mwe-timedtext-textcat-sub": "Istitloù",
-	"mwe-timedtext-textcat-tad": "Deskrivadur son",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Barenn titouroù",
-	"mwe-timedtext-textcat-ar": "Rannvroioù oberiant",
-	"mwe-timedtext-textcat-nb": "Notennadur",
-	"mwe-timedtext-textcat-meta": "Metaroadennoù sinkronelaet",
-	"mwe-timedtext-textcat-trx": "Treuzskrivañ",
-	"mwe-timedtext-textcat-lrc": "Komzoù",
-	"mwe-timedtext-textcat-lin": "Balizennoù yezhel",
-	"mwe-timedtext-textcat-cue": "Poent lec'hiañ",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 istitl evit ar c'hlip : $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
-	"mwe-timedtext-upload-timed-text": "Ouzhpennañ istitloù"
+	"mwe-timedtext-language-no-subtitles-for-clip": "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2"
 }

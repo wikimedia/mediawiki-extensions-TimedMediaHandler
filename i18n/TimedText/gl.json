@@ -4,23 +4,6 @@
 			"Toliño"
 		]
 	},
-	"mwe-timedtext-back-btn": "Volver",
-	"mwe-timedtext-layout-off": "Agochar os subtítulos",
-	"mwe-timedtext-loading-text": "Cargando o texto...",
-	"mwe-timedtext-textcat-cc": "Pés de foto",
-	"mwe-timedtext-textcat-sub": "Subtítulos",
-	"mwe-timedtext-textcat-tad": "Descrición do son",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Barra de información",
-	"mwe-timedtext-textcat-ar": "Rexións activas",
-	"mwe-timedtext-textcat-nb": "Anotación",
-	"mwe-timedtext-textcat-meta": "Metadatos sincronizados",
-	"mwe-timedtext-textcat-trx": "Transcrición",
-	"mwe-timedtext-textcat-lrc": "Letra",
-	"mwe-timedtext-textcat-lin": "Formato lingüístico",
-	"mwe-timedtext-textcat-cue": "Puntos de sinal",
-	"mwe-timedtext-no-subs": "Non hai pistas de texto dispoñibles",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtítulos en $1 para o vídeo: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Non se atoparon os subtítulos en $1 para o vídeo: $2",
-	"mwe-timedtext-upload-timed-text": "Engadir subtítulos"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Non se atoparon os subtítulos en $1 para o vídeo: $2"
 }

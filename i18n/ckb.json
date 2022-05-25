@@ -21,8 +21,6 @@
 	"timedmedia-source-audio-file-desc": "پەڕگەی $1 بنەڕەتی ($2)",
 	"timedmedia-subtitle-new-go": "بڕۆ",
 	"timedmedia-file": "پەڕگە",
-	"beta-feature-timedmediahandler-message-videojs": "ڤیدیۆلێدەری نوێ",
-	"beta-feature-timedmediahandler-description-videojs": "بە گونجان لەگەڵ مۆبایل و سەیرکردنێکی پاکتر سەیری پەڕگە ڤیدیۆیییەکان لە لێدەرێکی ھاوچەرخدا بکە.",
 	"right-transcode-reset": "ڕێکخستنەوەی ڤیدیۆ سەرنەکوتووەکان یان ترانسکۆدکراوەکان ھەتا دیسان بچنەوە ناو ڕیزی کارەوە.",
 	"right-transcode-status": "دیتنی [[تایبەت:TimedMediaHandler|زانیاری لەمەڕ چالاکیی ترانسکۆدی ھەنووکەیی]]"
 }

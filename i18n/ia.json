@@ -117,8 +117,6 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 transcodification|$1 transcodificationes}} non initialisate",
 	"timedmedia-no-derivatives": "Nulle transcodification requirite.",
 	"timedmedia-file": "File",
-	"beta-feature-timedmediahandler-message-videojs": "Nove reproductor de video",
-	"beta-feature-timedmediahandler-description-videojs": "Reguarda videos in un reproductor moderne, nette e compatibile con apparatos mobile.",
 	"right-transcode-reset": "Reinitialisar le videos fallite o transcodificate de sorta que illos es re-inserite in le cauda de actiones",
 	"right-transcode-status": "View [[Special:TimedMediaHandler|information sur le activitate currente de transcodification]]",
 	"action-transcode-reset": "reinitialisar transcodificationes",
@@ -129,7 +127,6 @@
 	"orphanedtimedtext": "Paginas TimedText orphane",
 	"orphanedtimedtext-summary": "Lista de paginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que non ha un file correspondente.",
 	"orphanedtimedtext-unsupported": "Iste pagina special es supportate solmente sur bases de datos MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText non es activate sur iste wiki.",
 	"videojs-more-information": "Plus information",
 	"videojs-quality": "Qualitate de video",
 	"transcodestatistics": "Statisticas de transcodification"

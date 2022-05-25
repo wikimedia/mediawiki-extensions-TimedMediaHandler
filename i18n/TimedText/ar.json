@@ -6,23 +6,6 @@
 			"روخو"
 		]
 	},
-	"mwe-timedtext-back-btn": "رجوع",
-	"mwe-timedtext-layout-off": "إخفاء الترجمات",
-	"mwe-timedtext-loading-text": "جاري تحميل النص...",
-	"mwe-timedtext-textcat-cc": "نصوص توضيحية",
-	"mwe-timedtext-textcat-sub": "عناوين فرعية",
-	"mwe-timedtext-textcat-tad": "وصف الصوت",
-	"mwe-timedtext-textcat-ktv": "كاراوكي",
-	"mwe-timedtext-textcat-tik": "شريط النص",
-	"mwe-timedtext-textcat-ar": "المناطق النشطة",
-	"mwe-timedtext-textcat-nb": "هامش",
-	"mwe-timedtext-textcat-meta": "البيانات الوصفية الموقوتة",
-	"mwe-timedtext-textcat-trx": "نسخة طبق الأصل",
-	"mwe-timedtext-textcat-lrc": "الكلمات",
-	"mwe-timedtext-textcat-lin": "الترميز اللغوي",
-	"mwe-timedtext-textcat-cue": "نقاط تلميح",
-	"mwe-timedtext-no-subs": "لا توجد مسارات نصية متاحة",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 ترجمات للمقطع: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "لم يتم العثور على ترجمة $1 لمقطع: $2",
-	"mwe-timedtext-upload-timed-text": "إضافة الترجمات"
+	"mwe-timedtext-language-no-subtitles-for-clip": "لم يتم العثور على ترجمة $1 لمقطع: $2"
 }

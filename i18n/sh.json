@@ -82,7 +82,6 @@
 	"timedmedia-subtitle-remote-link": "Možete [$1 vidjeti stranicu s opisom] datoteke na $2",
 	"timedmedia-no-derivatives": "Nije potrebno prekodiranje.",
 	"timedmedia-file": "Datoteka",
-	"beta-feature-timedmediahandler-description-videojs": "Gledajte videozapise u savremenom reproduktoru preuređenog izgleda uz bolju kompatibilnost s mobilnim uređajima.",
 	"right-transcode-reset": "Resetiranje neuspješno postavljenih ili već transkodiranih videozapisa tako da ih se ponovo ubaci u red poslova",
 	"right-transcode-status": "Pregledanje [[Special:TimedMediaHandler|informacija o trenutnom aktivnošću transkodiranja]]",
 	"action-transcode-reset": "poništivanje prekodiranja",
@@ -90,6 +89,5 @@
 	"log-name-timedmediahandler": "Evidencija TimedMediaHandlera",
 	"logentry-timedmediahandler-resettranscode": "$1 je {{GENDER:$2|povratio|povratila}} transkod $3 na izvorni format \"$4\"",
 	"orphanedtimedtext": "Stranice siročad s titlovima",
-	"orphanedtimedtext-unsupported": "Ova je posebna stranica podržana samo na MySQL bazama podataka.",
-	"orphanedtimedtext-notimedtext": "Titlovi nisu omogućeni na ovom wikiju."
+	"orphanedtimedtext-unsupported": "Ova je posebna stranica podržana samo na MySQL bazama podataka."
 }

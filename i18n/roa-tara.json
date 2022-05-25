@@ -119,7 +119,6 @@
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|transcodifeche none inizializzate}}",
 	"timedmedia-no-derivatives": "Nisciuna transcodifeche cercate.",
 	"timedmedia-file": "File",
-	"beta-feature-timedmediahandler-description-videojs": "'Ndruche le file video cu 'nu esecutore moderne cu 'na viste pulite e combatibbilità cu 'u mobbile.",
 	"right-transcode-reset": "Azzeramende fallite o le video transcodificate onne state sckaffate cchiù de 'na vote jndr'à code d'a fatìe.",
 	"right-transcode-status": "'Ndruche [[Special:TimedMediaHandler|le 'mbormaziune sus a l'attività de transcodifiche de mò]]",
 	"action-transcode-reset": "azzere le transcodifeche",
@@ -130,7 +129,6 @@
 	"orphanedtimedtext": "Pàggene de sottotitole orfane",
 	"orphanedtimedtext-summary": "Elenghe de le pàggene [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] ca non ge tènene 'nu file corrispondende.",
 	"orphanedtimedtext-unsupported": "Sta pàgena speciale jè supportate sulamende sus a le database MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText non g'è abbiltiate sus a sta uicchi.",
 	"videojs-more-information": "Cchiù 'mbormaziune",
 	"videojs-quality": "Qualitate d'u video",
 	"transcodestatistics": "StatISTECHE d'a codifeche"

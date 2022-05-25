@@ -91,6 +91,5 @@
 	"action-transcode-status": "Ағымдағы код үҙгәртеү дәрәжәһен ҡарау.",
 	"orphanedtimedtext": "TimedText юғалған биттәр.",
 	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] Ярышлы файлы булмаған биттәр исемлеге.",
-	"orphanedtimedtext-unsupported": "Был махсус бит MySQL база күрһәткестәре өсөн генә ҡулланыла.",
-	"orphanedtimedtext-notimedtext": "TimedText был викила тоҡанмаған."
+	"orphanedtimedtext-unsupported": "Был махсус бит MySQL база күрһәткестәре өсөн генә ҡулланыла."
 }

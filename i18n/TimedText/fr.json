@@ -8,24 +8,6 @@
 			"Verdy p"
 		]
 	},
-	"mwe-timedtext-back-btn": "Arrière",
-	"mwe-timedtext-layout-off": "Masquer les sous-titres",
-	"mwe-timedtext-loading-text": "Chargement du texte ...",
-	"mwe-timedtext-key-language": "&#91;$1&#93; $2",
-	"mwe-timedtext-textcat-cc": "Légendes",
-	"mwe-timedtext-textcat-sub": "Sous-titres",
-	"mwe-timedtext-textcat-tad": "Description audio",
-	"mwe-timedtext-textcat-ktv": "Karaoké",
-	"mwe-timedtext-textcat-tik": "Barre d'informations",
-	"mwe-timedtext-textcat-ar": "Régions actives",
-	"mwe-timedtext-textcat-nb": "Annotation",
-	"mwe-timedtext-textcat-meta": "métadonnées synchronisées",
-	"mwe-timedtext-textcat-trx": "Transcription",
-	"mwe-timedtext-textcat-lrc": "Paroles",
-	"mwe-timedtext-textcat-lin": "Balisage linguistique",
-	"mwe-timedtext-textcat-cue": "Points de repère",
-	"mwe-timedtext-no-subs": "Aucun texte de piste disponible",
 	"mwe-timedtext-language-subtitles-for-clip": "Sous-titres en $1 pour la vidéo « $2 »",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Aucun sous-titre $1 n'a été trouvé pour le clip : $2",
-	"mwe-timedtext-upload-timed-text": "Ajouter des sous-titres"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Aucun sous-titre $1 n'a été trouvé pour le clip : $2"
 }

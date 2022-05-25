@@ -141,8 +141,6 @@
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 hora|$1 horas}}, {{PLURAL:$2|$2 minuto|$2 minutos}} y {{PLURAL:$3|$3 segundo|$3 segundos}}",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minuto|$1 minutos}} y {{PLURAL:$2|$2 segundo|$2 segundos}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 segundo|$1 segundos}}",
-	"beta-feature-timedmediahandler-message-videojs": "Reproductor de vídeos nuevo",
-	"beta-feature-timedmediahandler-description-videojs": "Mira vídeos en un reproductor más moderno, despejado y compatible con dispositivos móviles.",
 	"right-transcode-reset": "Reiniciar los vídeos erróneos o transcodificados por lo que se vuelven a colocar en la cola de trabajo",
 	"right-transcode-status": "Ver [[Special:TimedMediaHandler|información sobre la actividad de transcodificación actual]]",
 	"action-transcode-reset": "reiniciar transcodificación",
@@ -153,7 +151,6 @@
 	"orphanedtimedtext": "Páginas TimedText huérfanas",
 	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que no tienen un archivo correspondiente.",
 	"orphanedtimedtext-unsupported": "Esta página especial sólo se admite en base de datos MySQL.",
-	"orphanedtimedtext-notimedtext": "TimedText no se activó en esta wiki.",
 	"videojs-more-information": "Más información",
 	"videojs-quality": "Calidad de vídeo"
 }

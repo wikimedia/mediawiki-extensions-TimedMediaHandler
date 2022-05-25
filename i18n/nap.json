@@ -101,6 +101,5 @@
 	"action-transcode-status": "vide 'o stato 'e transcodifeca 'e mo",
 	"orphanedtimedtext": "Paggene TimedText (sottotitule) urfanielle",
 	"orphanedtimedtext-summary": "Elenco 'e ppaggene [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] ca nun teneno 'o file currispunnente.",
-	"orphanedtimedtext-unsupported": "Sta paggena speciale è surtanto suppurtata dint' 'e database MySQL.",
-	"orphanedtimedtext-notimedtext": "'O TimedText (sottotitule) nun songo abbiàte dint'a stu wiki."
+	"orphanedtimedtext-unsupported": "Sta paggena speciale è surtanto suppurtata dint' 'e database MySQL."
 }

@@ -8,23 +8,6 @@
 			"Vitorvicentevalente"
 		]
 	},
-	"mwe-timedtext-back-btn": "Voltar",
-	"mwe-timedtext-layout-off": "Ocultar legendas",
-	"mwe-timedtext-loading-text": "A carregar o texto ...",
-	"mwe-timedtext-textcat-cc": "Títulos",
-	"mwe-timedtext-textcat-sub": "Legendas",
-	"mwe-timedtext-textcat-tad": "Descrição de áudio",
-	"mwe-timedtext-textcat-ktv": "Caraoque",
-	"mwe-timedtext-textcat-tik": "Cotações",
-	"mwe-timedtext-textcat-ar": "Regiões activas",
-	"mwe-timedtext-textcat-nb": "Anotação",
-	"mwe-timedtext-textcat-meta": "Metadados de sincronização",
-	"mwe-timedtext-textcat-trx": "Transcrição",
-	"mwe-timedtext-textcat-lrc": "Letra",
-	"mwe-timedtext-textcat-lin": "Marcação linguística",
-	"mwe-timedtext-textcat-cue": "Pontos de entrada",
-	"mwe-timedtext-no-subs": "Não há nenhuma faixa de texto disponível",
 	"mwe-timedtext-language-subtitles-for-clip": "Legendas em $1 para o clipe: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Não foram encontradas legendas em $1 para o clipe: $2",
-	"mwe-timedtext-upload-timed-text": "Adicionar legendas"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Não foram encontradas legendas em $1 para o clipe: $2"
 }

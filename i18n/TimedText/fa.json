@@ -8,23 +8,6 @@
 			"پاناروما"
 		]
 	},
-	"mwe-timedtext-back-btn": "بازگشت",
-	"mwe-timedtext-layout-off": "پنهان کردن زیرنویس",
-	"mwe-timedtext-loading-text": "در حال بارگیری متن ...",
-	"mwe-timedtext-textcat-cc": "عناوین:",
-	"mwe-timedtext-textcat-sub": "زیرنویس",
-	"mwe-timedtext-textcat-tad": "توضیح صوتی",
-	"mwe-timedtext-textcat-ktv": "کارائوکه",
-	"mwe-timedtext-textcat-tik": "متن تیکر",
-	"mwe-timedtext-textcat-ar": "مناطق فعال",
-	"mwe-timedtext-textcat-nb": "یادداشت",
-	"mwe-timedtext-textcat-meta": "فرادادهٔ به هنگام",
-	"mwe-timedtext-textcat-trx": "رونوشت",
-	"mwe-timedtext-textcat-lrc": "متن ترانه‌ها",
-	"mwe-timedtext-textcat-lin": "زبان نشانه‌گذاری",
-	"mwe-timedtext-textcat-cue": "نقاط نشانه",
-	"mwe-timedtext-no-subs": "هیچ آهنگ متنی دردسترس نیست",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 زیرنویس برای کلیپ: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "هیچ $1 زیرنویسی برای کلیپ پیدا نشد: $2",
-	"mwe-timedtext-upload-timed-text": "اضافه کردن زیرنویس"
+	"mwe-timedtext-language-no-subtitles-for-clip": "هیچ $1 زیرنویسی برای کلیپ پیدا نشد: $2"
 }

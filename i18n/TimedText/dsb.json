@@ -5,23 +5,6 @@
 			"Michawiki"
 		]
 	},
-	"mwe-timedtext-back-btn": "Slědk",
-	"mwe-timedtext-layout-off": "Pódtitele schowaś",
-	"mwe-timedtext-loading-text": "Tekst se zacytujo...",
-	"mwe-timedtext-textcat-cc": "Wopisanja",
-	"mwe-timedtext-textcat-sub": "Pódtitele",
-	"mwe-timedtext-textcat-tad": "Awdiowopisanje",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Běžecy tekst",
-	"mwe-timedtext-textcat-ar": "Aktiwne regiony",
-	"mwe-timedtext-textcat-nb": "Anotacija",
-	"mwe-timedtext-textcat-meta": "Synchronizěrowane metadaty",
-	"mwe-timedtext-textcat-trx": "Pśepisaś",
-	"mwe-timedtext-textcat-lrc": "Spiwny tekst",
-	"mwe-timedtext-textcat-lin": "Rěcywědne wopisanje",
-	"mwe-timedtext-textcat-cue": "Zastupne dypki",
-	"mwe-timedtext-no-subs": "Žedne pódtitele k dispoziciji",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Žedne pódtitele $1 su se za klip namakali: $2",
-	"mwe-timedtext-upload-timed-text": "Pódtitele pśidaś"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Žedne pódtitele $1 su se za klip namakali: $2"
 }

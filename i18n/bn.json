@@ -100,8 +100,6 @@
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 ঘণ্টা}}, {{PLURAL:$2|$2 মিনিট}} ও {{PLURAL:$3|$3 সেকেন্ড}}",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 মিনিট}} ও {{PLURAL:$2|$2 সেকেন্ড}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 সেকেন্ড}}",
-	"beta-feature-timedmediahandler-message-videojs": "নতুন ভিডিও প্লেয়ার",
-	"beta-feature-timedmediahandler-description-videojs": "একটি পরিচ্ছন্ন দৃশ্য এবং মোবাইল সামঞ্জস্যসহ একটি আধুনিক প্লেয়ারে ভিডিও ফাইলগুলি দেখুন।",
 	"action-transcode-status": "বর্তমান ট্রান্সকোডিংয়ের অবস্থা দেখুন",
 	"log-name-timedmediahandler": "টাইমডমিডিয়াহ্যান্ডেলার লগ",
 	"log-description-timedmediahandler": "এটি সময়ানুযায়ী মিডিয়া ট্রান্সকোডের সাথে সম্পর্কিত কর্মের একটি লগ।",

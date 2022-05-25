@@ -117,6 +117,5 @@
 	"orphanedtimedtext": "Pamesto teksto su laiku puslapiai",
 	"orphanedtimedtext-summary": "Sąrašas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] puslapių, kurie neturi atitinkamų failų.",
 	"orphanedtimedtext-unsupported": "Šis specialus puslapis palaiko tik MySQL duomenų bazes.",
-	"orphanedtimedtext-notimedtext": "Tekstas su laiku nėra aktyvuotas šiame vikyje.",
 	"videojs-more-information": "Daugiau informacijos"
 }

@@ -4,23 +4,6 @@
 			"Anakmalaysia"
 		]
 	},
-	"mwe-timedtext-back-btn": "Kembali",
-	"mwe-timedtext-layout-off": "Sorokkan sari kata",
-	"mwe-timedtext-loading-text": "Teks sedang dimuatkan...",
-	"mwe-timedtext-textcat-cc": "Kapsyen",
-	"mwe-timedtext-textcat-sub": "Sari kata",
-	"mwe-timedtext-textcat-tad": "Keterangan audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Teks ticker",
-	"mwe-timedtext-textcat-ar": "Kawasan aktif",
-	"mwe-timedtext-textcat-nb": "Anotasi",
-	"mwe-timedtext-textcat-meta": "Metadata bermasa",
-	"mwe-timedtext-textcat-trx": "Transkrip",
-	"mwe-timedtext-textcat-lrc": "Lirik",
-	"mwe-timedtext-textcat-lin": "Penanda linguistik",
-	"mwe-timedtext-textcat-cue": "Titik kiu",
-	"mwe-timedtext-no-subs": "Tidak terdapat runut teks",
 	"mwe-timedtext-language-subtitles-for-clip": "Sari kata $1 untuk klip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Tidak terdapat sari kata $1 untuk klip: $2",
-	"mwe-timedtext-upload-timed-text": "Letak sari kata"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Tidak terdapat sari kata $1 untuk klip: $2"
 }

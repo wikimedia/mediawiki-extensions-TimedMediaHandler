@@ -70,8 +70,6 @@
 	"timedmedia-subtitle-no-subtitles": "Trenutno nema $1 titlova za ovaj video-snimak. Možete da ih dodate tako što ćete [{{fullurl:{{FULLPAGENAME}}|action=edit}} urediti stranicu]",
 	"timedmedia-no-derivatives": "Nema drugih formata.",
 	"timedmedia-file": "Datoteka",
-	"beta-feature-timedmediahandler-message-videojs": "Novi video plejer",
-	"beta-feature-timedmediahandler-description-videojs": "Gledajte video datoteke u modernom plejeru sa čistijim izgledom i kompatibilnošću za mobilne uređaje.",
 	"right-transcode-status": "pregledanje [[Special:TimedMediaHandler|informacija o trenutnom aktivnošću transkodiranja]]",
 	"action-transcode-reset": "ponovo postavite transkodiranje",
 	"action-transcode-status": "pregledate aktuelni status transkodiranja",

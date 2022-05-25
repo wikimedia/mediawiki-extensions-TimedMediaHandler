@@ -6,19 +6,6 @@
 			"Soued031"
 		]
 	},
-	"mwe-timedtext-back-btn": "Zréck",
-	"mwe-timedtext-layout-off": "Ënnertitele verstoppen",
-	"mwe-timedtext-loading-text": "Text gëtt gelueden ...",
-	"mwe-timedtext-textcat-sub": "Ënnertitelen",
-	"mwe-timedtext-textcat-tad": "Audio-Beschreiwung",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Text-Ticker",
-	"mwe-timedtext-textcat-ar": "Aktiv Regiounen",
-	"mwe-timedtext-textcat-nb": "Notiz",
-	"mwe-timedtext-textcat-lrc": "Liddertext",
-	"mwe-timedtext-textcat-lin": "Linguistesch Markéierung",
-	"mwe-timedtext-textcat-cue": "Referenz-Punkten",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 Ënnertitele fir de Clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Keng $1 Ënnertitele goufe fonnt fir de Clip: $2",
-	"mwe-timedtext-upload-timed-text": "Ënnertitelen derbäisetzen"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Keng $1 Ënnertitele goufe fonnt fir de Clip: $2"
 }

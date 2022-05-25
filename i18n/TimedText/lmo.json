@@ -4,23 +4,6 @@
 			"Salvemm el lombard"
 		]
 	},
-	"mwe-timedtext-back-btn": "Indree",
-	"mwe-timedtext-layout-off": "Scond i sottitoi",
-	"mwe-timedtext-loading-text": "Aree a caregà el test...",
-	"mwe-timedtext-textcat-cc": "Insegna",
-	"mwe-timedtext-textcat-sub": "Sottitoi",
-	"mwe-timedtext-textcat-tad": "Descrizzion de l'audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Test in moviment",
-	"mwe-timedtext-textcat-ar": "Region ative",
-	"mwe-timedtext-textcat-nb": "Riferiment",
-	"mwe-timedtext-textcat-meta": "Metadati sincronizzad",
-	"mwe-timedtext-textcat-trx": "Trascrizzion",
-	"mwe-timedtext-textcat-lrc": "Test",
-	"mwe-timedtext-textcat-lin": "Marcador linguistegh",
-	"mwe-timedtext-textcat-cue": "Pont d'entrada",
-	"mwe-timedtext-no-subs": "Nissun segn del test disponibil",
 	"mwe-timedtext-language-subtitles-for-clip": "sottitoi in $1 per il curtmetragg: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Sottitoi $1 minga trovad per il curtmetragg: $2",
-	"mwe-timedtext-upload-timed-text": "Sgionta i sottitoi"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Sottitoi $1 minga trovad per il curtmetragg: $2"
 }

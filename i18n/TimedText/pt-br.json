@@ -8,23 +8,6 @@
 			555
 		]
 	},
-	"mwe-timedtext-back-btn": "Voltar",
-	"mwe-timedtext-layout-off": "Ocultar legendas",
-	"mwe-timedtext-loading-text": "Carregando o texto ...",
-	"mwe-timedtext-textcat-cc": "Títulos",
-	"mwe-timedtext-textcat-sub": "Legendas",
-	"mwe-timedtext-textcat-tad": "Descrição do áudio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Texto deslizante",
-	"mwe-timedtext-textcat-ar": "Regiões ativas",
-	"mwe-timedtext-textcat-nb": "Anotação",
-	"mwe-timedtext-textcat-meta": "Metadados sincronizados",
-	"mwe-timedtext-textcat-trx": "Transcrição",
-	"mwe-timedtext-textcat-lrc": "Letra",
-	"mwe-timedtext-textcat-lin": "Marcação linguística",
-	"mwe-timedtext-textcat-cue": "Pontos de entrada",
-	"mwe-timedtext-no-subs": "Não há nenhum texto disponível",
 	"mwe-timedtext-language-subtitles-for-clip": "Legendas em $1 para o clipe: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Não foram encontradas legendas em $1 para o clipe: $2",
-	"mwe-timedtext-upload-timed-text": "Adicionar legendas"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Não foram encontradas legendas em $1 para o clipe: $2"
 }

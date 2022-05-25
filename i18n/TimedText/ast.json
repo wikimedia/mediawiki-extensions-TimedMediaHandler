@@ -5,23 +5,6 @@
 			"Xuacu"
 		]
 	},
-	"mwe-timedtext-back-btn": "Anterior",
-	"mwe-timedtext-layout-off": "Anubrir los sotítulos",
-	"mwe-timedtext-loading-text": "Cargando'l testu...",
-	"mwe-timedtext-textcat-cc": "Lleendes",
-	"mwe-timedtext-textcat-sub": "Subtítulos",
-	"mwe-timedtext-textcat-tad": "Descripción del soníu",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Testu en movimientu",
-	"mwe-timedtext-textcat-ar": "Rexones actives",
-	"mwe-timedtext-textcat-nb": "Anotación",
-	"mwe-timedtext-textcat-meta": "Metadatos cronometraos",
-	"mwe-timedtext-textcat-trx": "Trescripción",
-	"mwe-timedtext-textcat-lrc": "Lletra",
-	"mwe-timedtext-textcat-lin": "Formatu llingüísticu",
-	"mwe-timedtext-textcat-cue": "Puntos de referencia",
-	"mwe-timedtext-no-subs": "Nun hai pistes de testu disponibles",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtítulos en $1 pal videu: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Nun s'alcontraron los subtítulos en $1 pal videu: $2",
-	"mwe-timedtext-upload-timed-text": "Añadir subtítulos"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Nun s'alcontraron los subtítulos en $1 pal videu: $2"
 }

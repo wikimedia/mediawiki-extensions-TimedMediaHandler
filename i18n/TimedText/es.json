@@ -9,23 +9,6 @@
 			"Translationista"
 		]
 	},
-	"mwe-timedtext-back-btn": "Atrás",
-	"mwe-timedtext-layout-off": "Ocultar subtítulos",
-	"mwe-timedtext-loading-text": "Cargando texto ...",
-	"mwe-timedtext-textcat-cc": "Leyendas",
-	"mwe-timedtext-textcat-sub": "Subtítulos",
-	"mwe-timedtext-textcat-tad": "Descripción de audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Texto desplazable",
-	"mwe-timedtext-textcat-ar": "Regiones activas",
-	"mwe-timedtext-textcat-nb": "Anotación",
-	"mwe-timedtext-textcat-meta": "Metadatos sincronizados",
-	"mwe-timedtext-textcat-trx": "Transcribir",
-	"mwe-timedtext-textcat-lrc": "Letra",
-	"mwe-timedtext-textcat-lin": "Marcador lingüístico",
-	"mwe-timedtext-textcat-cue": "Puntos de referencia",
-	"mwe-timedtext-no-subs": "No hay pistas de texto disponibles",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 subtítulos para el clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "No se ha encontrado subtítulos $1 para el clip: $2",
-	"mwe-timedtext-upload-timed-text": "Añadir subtítulos"
+	"mwe-timedtext-language-no-subtitles-for-clip": "No se ha encontrado subtítulos $1 para el clip: $2"
 }

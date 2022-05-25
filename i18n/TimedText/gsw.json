@@ -5,23 +5,6 @@
 			"Als-Holder"
 		]
 	},
-	"mwe-timedtext-back-btn": "Zruck",
-	"mwe-timedtext-layout-off": "Untertitel uusblände",
-	"mwe-timedtext-loading-text": "Am Lade vum Text ...",
-	"mwe-timedtext-textcat-cc": "Bschryybige",
-	"mwe-timedtext-textcat-sub": "Untertitel",
-	"mwe-timedtext-textcat-tad": "Audio-Bschryybig",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Text-Ticker",
-	"mwe-timedtext-textcat-ar": "Aktivi Regione",
-	"mwe-timedtext-textcat-nb": "Aamerkig",
-	"mwe-timedtext-textcat-meta": "Ächtzyt-Metadate",
-	"mwe-timedtext-textcat-trx": "Abschrift",
-	"mwe-timedtext-textcat-lrc": "Liedtext",
-	"mwe-timedtext-textcat-lin": "Sprochwisseschaftligi Bschryybig",
-	"mwe-timedtext-textcat-cue": "Cue-Pinkt",
-	"mwe-timedtext-no-subs": "Untertitel sin nit verfiegbar",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 Untertitel gfunde fir dr Videoclip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Kei $1 Untertitel gfunde fir dr Videoclip: $2",
-	"mwe-timedtext-upload-timed-text": "Untertitel uffelade"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Kei $1 Untertitel gfunde fir dr Videoclip: $2"
 }

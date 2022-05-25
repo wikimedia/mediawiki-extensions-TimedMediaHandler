@@ -4,23 +4,6 @@
 			"McDutchie"
 		]
 	},
-	"mwe-timedtext-back-btn": "Retornar",
-	"mwe-timedtext-layout-off": "Celar subtitulos",
-	"mwe-timedtext-loading-text": "Carga texto…",
-	"mwe-timedtext-textcat-cc": "Subtitulos",
-	"mwe-timedtext-textcat-sub": "Subtitulos",
-	"mwe-timedtext-textcat-tad": "Description audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Barra de information",
-	"mwe-timedtext-textcat-ar": "Regiones active",
-	"mwe-timedtext-textcat-nb": "Annotation",
-	"mwe-timedtext-textcat-meta": "Metadatos de synchronisation",
-	"mwe-timedtext-textcat-trx": "Transcription",
-	"mwe-timedtext-textcat-lrc": "Lyricos",
-	"mwe-timedtext-textcat-lin": "Marcation lingusitic",
-	"mwe-timedtext-textcat-cue": "Punctos de entrata",
-	"mwe-timedtext-no-subs": "Subtitulos non disponibile",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtitulos in $1 pro le clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Nulle subtitulos in $1 ha essite trovate pro le clip: $2",
-	"mwe-timedtext-upload-timed-text": "Adder subtitulos"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Nulle subtitulos in $1 ha essite trovate pro le clip: $2"
 }

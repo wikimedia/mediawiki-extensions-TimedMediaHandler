@@ -5,23 +5,6 @@
 			"Stelistcristi"
 		]
 	},
-	"mwe-timedtext-back-btn": "Înapoi",
-	"mwe-timedtext-layout-off": "Ascunde subtitrările",
-	"mwe-timedtext-loading-text": "Se încarcă textul...",
-	"mwe-timedtext-textcat-cc": "Legende",
-	"mwe-timedtext-textcat-sub": "Subtitrări",
-	"mwe-timedtext-textcat-tad": "Descriere audio",
-	"mwe-timedtext-textcat-ktv": "Karaoke",
-	"mwe-timedtext-textcat-tik": "Text mai gros",
-	"mwe-timedtext-textcat-ar": "Regiuni active",
-	"mwe-timedtext-textcat-nb": "Adnotare",
-	"mwe-timedtext-textcat-meta": "Metadate sincronizate",
-	"mwe-timedtext-textcat-trx": "Transcripție",
-	"mwe-timedtext-textcat-lrc": "Versuri",
-	"mwe-timedtext-textcat-lin": "Etichete lingvistice",
-	"mwe-timedtext-textcat-cue": "Puncte de tac",
-	"mwe-timedtext-no-subs": "Niciun text de piesă disponibil",
 	"mwe-timedtext-language-subtitles-for-clip": "Subtitrare în limba $1 pentru clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Nu s-a găsit nicio subtitrare în limba $1 pentru clip: $2",
-	"mwe-timedtext-upload-timed-text": "Adaugă subtitrări"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Nu s-a găsit nicio subtitrare în limba $1 pentru clip: $2"
 }

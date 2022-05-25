@@ -6,23 +6,6 @@
 			"Nikosgranturismogt"
 		]
 	},
-	"mwe-timedtext-back-btn": "Επιστροφή",
-	"mwe-timedtext-layout-off": "Απόκρυψη υπότιτλων",
-	"mwe-timedtext-loading-text": "Φόρτωση κείμενου...",
-	"mwe-timedtext-textcat-cc": "Λεζάντες",
-	"mwe-timedtext-textcat-sub": "Υπότιτλοι",
-	"mwe-timedtext-textcat-tad": "Ακουστική περιγραφή",
-	"mwe-timedtext-textcat-ktv": "Καραόκε",
-	"mwe-timedtext-textcat-tik": "Κυλιόμενο κείμενο",
-	"mwe-timedtext-textcat-ar": "Ενεργές περιοχές",
-	"mwe-timedtext-textcat-nb": "Σχόλιο",
-	"mwe-timedtext-textcat-meta": "Χρονισμένα μεταδεδομένα",
-	"mwe-timedtext-textcat-trx": "Μεταγραφή",
-	"mwe-timedtext-textcat-lrc": "Στίχοι",
-	"mwe-timedtext-textcat-lin": "Γλωσσολογική σύνταξη",
-	"mwe-timedtext-textcat-cue": "Cue points",
-	"mwe-timedtext-no-subs": "Δεν υπάρχουν διαθέσιμα κομμάτια κειμένου",
 	"mwe-timedtext-language-subtitles-for-clip": "$1 υπότιτλοι για το βίντεο: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2",
-	"mwe-timedtext-upload-timed-text": "Προσθήκη υποτίτλων"
+	"mwe-timedtext-language-no-subtitles-for-clip": "Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2"
 }
