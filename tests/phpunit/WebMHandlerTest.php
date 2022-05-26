@@ -1,7 +1,10 @@
 <?php
 
+use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
+use MediaWiki\TimedMediaHandler\Handlers\WebMHandler\WebMHandler;
+
 /**
- * @covers WebMHandler
+ * @covers \MediaWiki\TimedMediaHandler\Handlers\WebMHandler\WebMHandler
  */
 class WebMHandlerTest extends MediaWikiMediaTestCase {
 

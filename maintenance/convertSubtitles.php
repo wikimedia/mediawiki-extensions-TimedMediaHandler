@@ -9,6 +9,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\TimedText;
 
 class ConvertSubtitles extends Maintenance {

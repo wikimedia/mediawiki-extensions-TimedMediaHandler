@@ -1,7 +1,9 @@
 <?php
 
+use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
+
 /**
- * @covers OggHandler
+ * @covers MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler
  */
 class OggHandlerTest extends MediaWikiMediaTestCase {
 

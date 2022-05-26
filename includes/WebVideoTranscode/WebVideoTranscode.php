@@ -17,6 +17,13 @@ use File;
 use ForeignDBViaLBRepo;
 use IForeignRepoWithMWApi;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\Handlers\FLACHandler\FLACHandler;
+use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
+use MediaWiki\TimedMediaHandler\Handlers\MidiHandler\MidiHandler;
+use MediaWiki\TimedMediaHandler\Handlers\Mp3Handler\Mp3Handler;
+use MediaWiki\TimedMediaHandler\Handlers\Mp4Handler\Mp4Handler;
+use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
+use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MWException;
 use TempFSFile;
 use Title;
@@ -547,8 +554,10 @@ class WebVideoTranscode {
 		}
 		// Else just return the size of the source video
 		// ( we have no idea how large the actual derivative size will be )
+
+		/** @var ID3Handler $handler */
 		$handler = $file->getHandler();
-		'@phan-var \ID3Handler $handler';
+		'@phan-var ID3Handler $handler';
 		return $file->getLength() * $handler->getBitrate( $file ) * 8;
 	}
 
@@ -669,8 +678,9 @@ class WebVideoTranscode {
 			return $sources;
 		}
 
+		/** @var ID3Handler $handler */
 		$handler = $file->getHandler();
-		'@phan-var \ID3Handler $handler';
+		'@phan-var ID3Handler $handler';
 		// Now Check for derivatives
 		if ( $handler->isAudio( $file ) ) {
 			$transcodeSet = self::enabledAudioTranscodes();
@@ -894,8 +904,9 @@ class WebVideoTranscode {
 		global $wgLang;
 		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
+		/** @var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var \FLACHandler|\MidiHandler|\Mp3Handler|\Mp4Handler|\OggHandler|\WAVHandler $handler';
+		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
 		$bitrate = $handler->getBitrate( $file );
 		$metadataType = $handler->getMetadataType( $file );
 
@@ -953,8 +964,9 @@ class WebVideoTranscode {
 
 		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
 
+		/** @var ID3Handler $handler */
 		$handler = $file->getHandler();
-		'@phan-var \ID3Handler $handler';
+		'@phan-var ID3Handler $handler';
 		if ( $handler->isAudio( $file ) ) {
 			$width = $height = 0;
 		} else {
@@ -1061,8 +1073,9 @@ class WebVideoTranscode {
 	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
+		/** @var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var \FLACHandler|\MidiHandler|\Mp3Handler|\Mp4Handler|\OggHandler|\WAVHandler $handler';
+		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
 		$audio = $handler->isAudio( $file );
 		if ( $audio ) {
 			$keys = self::enabledAudioTranscodes();
