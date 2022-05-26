@@ -25,6 +25,7 @@ use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
 
 class MockOggHandler extends OggHandler {
+	/** @inheritDoc */
 	public function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		# Important or height handling is wrong.
 		if ( !$this->normaliseParams( $file, $params ) ) {
@@ -78,6 +79,7 @@ class MockOggHandler extends OggHandler {
 		return new TimedMediaTransformOutput( $options );
 	}
 
+	/** @inheritDoc */
 	public function getLength( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return 0.99875;
@@ -85,6 +87,7 @@ class MockOggHandler extends OggHandler {
 		return 4.3666666666667;
 	}
 
+	/** @inheritDoc */
 	public function getBitRate( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return 41107;
@@ -92,6 +95,7 @@ class MockOggHandler extends OggHandler {
 		return 590013;
 	}
 
+	/** @inheritDoc */
 	public function getWebType( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return "audio/ogg; codecs=\"vorbis\"";
@@ -99,6 +103,7 @@ class MockOggHandler extends OggHandler {
 		return "video/ogg; codecs=\"theora\"";
 	}
 
+	/** @inheritDoc */
 	public function getFramerate( $file ) {
 		if ( $this->isAudio( $file ) ) {
 			return 0;

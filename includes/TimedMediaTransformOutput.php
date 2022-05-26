@@ -69,8 +69,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	// The prefix for player ids
 	private const PLAYER_ID_PREFIX = 'mwe_player_';
 
+	/**
+	 * @param array $conf
+	 */
 	public function __construct( $conf ) {
-		/** @phan-suppress-next-line PhanTypeMismatchProperty */
 		$this->file = $conf['file'] ?? false;
 		$this->dstPath = $conf['dstPath'] ?? false;
 		$this->sources = $conf['sources'] ?? false;
@@ -569,6 +571,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->sources;
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getTemporalUrlHash() {
 		if ( $this->hashTime ) {
 			return $this->hashTime;

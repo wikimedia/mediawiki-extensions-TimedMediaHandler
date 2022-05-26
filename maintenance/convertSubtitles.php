@@ -106,6 +106,11 @@ class ConvertSubtitles extends Maintenance {
 		}
 	}
 
+	/**
+	 * @param TimedText\ParseError $error
+	 *
+	 * @return string
+	 */
 	public function formatError( TimedText\ParseError $error ) {
 		return $error->getError() .
 			" at line " .

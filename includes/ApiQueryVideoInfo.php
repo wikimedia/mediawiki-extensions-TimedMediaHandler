@@ -16,6 +16,7 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
+	/** @inheritDoc */
 	public function __construct( $query, $moduleName, $prefix = 'vi' ) {
 		// We allow a subclass to override the prefix, to create a related API module.
 		// Some other parts of MediaWiki construct this with a null $prefix,
@@ -26,6 +27,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		parent::__construct( $query, $moduleName, $prefix );
 	}
 
+	/** @inheritDoc */
 	public static function getInfo( $file, $prop, $result, $thumbParams = null, $version = 'latest' ) {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams );
 		if ( isset( $prop['derivatives'] ) ) {
@@ -58,6 +60,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		return $vals;
 	}
 
+	/** @inheritDoc */
 	public static function getPropertyMessages( $filter = [] ) {
 		$pm = parent::getPropertyMessages( $filter );
 		$pm['derivatives'] = 'apihelp-query+videoinfo-paramvalue-prop-derivatives';
@@ -76,10 +79,12 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		];
 	}
 
+	/** @inheritDoc */
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/API:Videoinfo';
 	}
 
+	/** @inheritDoc */
 	public function getAllowedParams() {
 		$params = parent::getAllowedParams();
 		foreach ( $params as $k => $v ) {

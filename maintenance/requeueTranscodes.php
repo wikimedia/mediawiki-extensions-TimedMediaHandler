@@ -84,6 +84,9 @@ class RequeueTranscodes extends Maintenance {
 		$this->output( "Finished!\n" );
 	}
 
+	/**
+	 * @param File $file
+	 */
 	public function processFile( File $file ) {
 		$transcodeSet = WebVideoTranscode::enabledTranscodes();
 		$dbw = wfGetDB( DB_PRIMARY );

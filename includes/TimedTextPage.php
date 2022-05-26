@@ -38,6 +38,7 @@ class TimedTextPage extends Article {
 	 */
 	private $languageNameUtils;
 
+	/** @inheritDoc */
 	public function __construct( Title $title, $oldId = null ) {
 		parent::__construct( $title, $oldId );
 		$services = MediaWikiServices::getInstance();
@@ -197,6 +198,7 @@ class TimedTextPage extends Article {
 			->show();
 	}
 
+	/** @inheritDoc */
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
 			$output = $this->getContext()->getOutput();

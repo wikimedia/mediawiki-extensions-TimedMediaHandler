@@ -143,6 +143,9 @@ class TranscodeReport extends Maintenance {
 		}
 	}
 
+	/**
+	 * @param File $file
+	 */
 	private function processFile( File $file ) {
 		$dbw = wfGetDB( DB_PRIMARY );
 
@@ -195,6 +198,12 @@ class TranscodeReport extends Maintenance {
 		}
 	}
 
+	/**
+	 * @param string|int $key
+	 * @param int $bitrate
+	 *
+	 * @return int
+	 */
 	private function bucket( $key, $bitrate ) {
 		$res = (int)$key;
 		$target = ( $bitrate / $this->max[$res] ) * $this->buckets;
@@ -207,6 +216,11 @@ class TranscodeReport extends Maintenance {
 		return (int)floor( $target );
 	}
 
+	/**
+	 * @param string|int $key
+	 * @param float $duration
+	 * @param int $bitrate
+	 */
 	private function recordForHistogram( $key, $duration, $bitrate ) {
 		if ( !isset( $this->histo[$key] ) ) {
 			$this->histo[$key] = [];

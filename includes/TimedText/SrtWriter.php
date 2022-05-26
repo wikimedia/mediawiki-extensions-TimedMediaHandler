@@ -29,8 +29,12 @@ class SrtWriter extends Writer {
 			$this->formatText( $this->formatNodes( $cue->nodes ) );
 	}
 
+	/**
+	 * @param float $time
+	 *
+	 * @return string
+	 */
 	public function formatTimestamp( $time ) {
-		//
 		$s = floor( $time );
 		$frac = $time - $s;
 		$millis = round( $frac * 1000.0 );
@@ -51,12 +55,22 @@ class SrtWriter extends Writer {
 		);
 	}
 
+	/**
+	 * @param string $text
+	 *
+	 * @return string
+	 */
 	public function formatText( $text ) {
 		// Ensure there can be no blank lines in the cue.
 		// But cues may span multiple lines.
 		return str_replace( "\n\n", "\n \n", $text );
 	}
 
+	/**
+	 * @param array $nodes
+	 *
+	 * @return string
+	 */
 	public function formatNodes( $nodes ) {
 		$s = '';
 		foreach ( $nodes as $node ) {
@@ -65,6 +79,11 @@ class SrtWriter extends Writer {
 		return $s;
 	}
 
+	/**
+	 * @param DOM\Node $node
+	 *
+	 * @return string
+	 */
 	public function formatNode( DOM\Node $node ) {
 		if ( $node instanceof DOM\InternalNode ) {
 			if ( $node instanceof DOM\BoldNode ) {

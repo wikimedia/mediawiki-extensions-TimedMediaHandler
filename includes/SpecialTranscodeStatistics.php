@@ -27,10 +27,12 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		'missing' => 'transcode_time_addjob IS NULL',
 	];
 
+	/** @inheritDoc */
 	public function __construct( $request = null, $par = null ) {
 		parent::__construct( 'TranscodeStatistics', 'transcode-status' );
 	}
 
+	/** @inheritDoc */
 	public function execute( $par ) {
 		$this->setHeaders();
 		$this->checkPermissions();
@@ -81,6 +83,12 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param string $state
+	 * @param int $limit
+	 *
+	 * @return false|array
+	 */
 	private function getTranscodes( $state, $limit = 50 ) {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$fname = __METHOD__;
@@ -113,6 +121,12 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		);
 	}
 
+	/**
+	 * @param string $state
+	 * @param int $limit
+	 *
+	 * @return string
+	 */
 	private function getTranscodesTable( $state, $limit = 50 ) {
 		$linkRenderer = $this->getLinkRenderer();
 		$table = '<table class="wikitable">' . "\n"
@@ -136,6 +150,9 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		return $table;
 	}
 
+	/**
+	 * @return array
+	 */
 	private function getStates() {
 		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$fname = __METHOD__;
@@ -196,6 +213,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		);
 	}
 
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'media';
 	}

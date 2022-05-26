@@ -1316,6 +1316,11 @@ class WebVideoTranscode {
 		return $maxSize;
 	}
 
+	/**
+	 * @param array $set
+	 *
+	 * @return array
+	 */
 	private static function filterAndSort( array $set ) {
 		$keys = array_keys( array_filter( $set ) );
 		natsort( $keys );
