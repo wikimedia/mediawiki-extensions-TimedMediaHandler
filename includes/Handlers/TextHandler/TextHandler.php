@@ -14,7 +14,6 @@ use Exception;
 use File;
 use ForeignDBFile;
 use ForeignDBViaLBRepo;
-use ForeignTitle;
 use IForeignRepoWithMWApi;
 use Language;
 use LocalRepo;
@@ -263,20 +262,9 @@ class TextHandler {
 		$langNames = Language::fetchLanguageNames( null, 'mw' );
 
 		foreach ( $data as $row ) {
-			// Note, the namespace ID of this title might be 'unknown'
-			// to our configuration if this is called in ForeignDb situations
-			if ( $this->file->isLocal() ) {
-				$subTitle = Title::newFromRow( $row );
-			} else {
-				// @phan-suppress-next-next-line PhanTypeMismatchArgumentNullable $namespaceName is set
-				// @phan-suppress-next-line PhanPossiblyUndeclaredVariable $namespaceName is set
-				$subTitle = new ForeignTitle( $row->page_namespace, $namespaceName, $row->page_title );
-			}
 			$titleParts = explode( '.', $row->page_title );
 			if ( count( $titleParts ) >= 3 ) {
-				$timedTextExtension = array_pop( $titleParts );
 				$languageKey = array_pop( $titleParts );
-				$contentType = $this->getContentType( $timedTextExtension );
 			} else {
 				continue;
 			}
