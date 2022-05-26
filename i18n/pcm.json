@@ -4,6 +4,6 @@
 			"Samatics"
 		]
 	},
-	"timedmedia-source-file": "$1 source",
-	"timedmedia-source-audio-file-desc": "Original $1 file ($2)"
+	"timedmedia-source-file": "$1 orijin",
+	"timedmedia-source-audio-file-desc": "Orijina $1 file ($2)"
 }
