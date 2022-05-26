@@ -187,6 +187,6 @@
 	"videojs-subtitles-create": "Create subtitles",
 	"videojs-captions-create": "Create captions",
 	"transcodestatistics": "Transcode statistics",
-	"mwe-timedtext-language-subtitles-for-clip": "$1 subtitles for clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "No $1 subtitles were found for clip: $2"
+	"timedmedia-timedtext-title-edit-subtitles": "$1 subtitles for clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "No $1 subtitles were found for clip: $2"
 }

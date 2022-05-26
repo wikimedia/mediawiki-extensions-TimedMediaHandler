@@ -122,8 +122,8 @@ class TimedTextPage extends Article {
 
 		// Set title
 		$message = $this->getPage()->exists() ?
-			'mwe-timedtext-language-subtitles-for-clip' :
-			'mwe-timedtext-language-no-subtitles-for-clip';
+			'timedmedia-timedtext-title-edit-subtitles' :
+			'timedmedia-timedtext-title-create-subtitles';
 		$out->setPageTitle( wfMessage( $message, $languageName, $videoTitle ) );
 
 		$out->addHtml(
