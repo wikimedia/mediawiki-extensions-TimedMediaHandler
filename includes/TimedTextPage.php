@@ -30,8 +30,17 @@ class TimedTextPage extends Article {
 	/** @var int The width of the video plane. Must much the CSS */
 	private static $videoWidth = 400;
 
+	// WebVTT
+	public const VTT_SUBTITLE_FORMAT = 'vtt';
+
+	// SubRIP (SRT)
+	public const SRT_SUBTITLE_FORMAT = 'srt';
+
 	/** @var string[] */
-	private static $knownTimedTextExtensions = [ 'srt', 'vtt' ];
+	private static $knownTimedTextExtensions = [
+		self::SRT_SUBTITLE_FORMAT,
+		self::VTT_SUBTITLE_FORMAT,
+	];
 
 	/**
 	 * @var LanguageNameUtils
@@ -202,8 +211,8 @@ class TimedTextPage extends Article {
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
 			$output = $this->getContext()->getOutput();
-			$target = $output->getTitle() . '.' . $data['lang'] . '.srt';
-			$targetFullUrl = $output->getTitle()->getFullUrl() . '.' . $data['lang'] . '.srt';
+			$target = $output->getTitle() . '.' . $data['lang'] . '.' . self::SRT_SUBTITLE_FORMAT;
+			$targetFullUrl = $output->getTitle()->getFullUrl() . '.' . $data['lang'] . '.' . self::SRT_SUBTITLE_FORMAT;
 			if ( Title::newFromText( $target )->exists() ) {
 				$output->redirect( $targetFullUrl );
 			} else {

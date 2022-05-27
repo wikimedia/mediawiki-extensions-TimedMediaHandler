@@ -22,6 +22,7 @@ use MediaWiki\TimedMediaHandler\TimedText\ParseError;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
+use MediaWiki\TimedMediaHandler\TimedTextPage;
 use MWException;
 use Title;
 use Wikimedia\Rdbms\IResultWrapper;
@@ -46,7 +47,10 @@ class TextHandler {
 	 * @param File $file
 	 * @param array $formats
 	 */
-	public function __construct( $file, $formats = [ 'vtt', 'srt' ] ) {
+	public function __construct(
+		$file,
+		$formats = [ TimedTextPage::VTT_SUBTITLE_FORMAT, TimedTextPage::SRT_SUBTITLE_FORMAT ]
+	) {
 		$this->file = $file;
 		$this->formats = $formats;
 	}
@@ -322,10 +326,10 @@ class TextHandler {
 	 * @return string
 	 */
 	public function getContentType( $timedTextExtension ) {
-		if ( $timedTextExtension === 'srt' ) {
+		if ( $timedTextExtension === TimedTextPage::SRT_SUBTITLE_FORMAT ) {
 			return 'text/x-srt';
 		}
-		if ( $timedTextExtension === 'vtt' ) {
+		if ( $timedTextExtension === TimedTextPage::VTT_SUBTITLE_FORMAT ) {
 			return 'text/vtt';
 		}
 		return '';
@@ -381,8 +385,10 @@ class TextHandler {
 	/**
 	 * Convert subtitles between SubRIP (SRT) and WebVTT, laxly.
 	 *
-	 * @param string $from source format, one of 'srt' or 'vtt'
-	 * @param string $to destination format, one of 'srt' or 'vtt'
+	 * @param string $from source format, one of TimedTextPage::SRT_SUBTITLE_FORMAT
+	 *  or TimedTextPage::VTT_SUBTITLE_FORMAT
+	 * @param string $to destination format, one of TimedTextPage::SRT_SUBTITLE_FORMAT
+	 *  or TimedTextPage::VTT_SUBTITLE_FORMAT
 	 * @param string $data source-formatted subtitles
 	 * @param ParseError[] &$errors optional outparam to capture errors
 	 * @return string destination-formatted subtitles
@@ -393,10 +399,10 @@ class TextHandler {
 		//
 		// @todo cache the conversion in memcached
 		switch ( $from ) {
-			case 'srt':
+			case TimedTextPage::SRT_SUBTITLE_FORMAT:
 				$reader = new SrtReader();
 				break;
-			case 'vtt':
+			case TimedTextPage::VTT_SUBTITLE_FORMAT:
 				// @todo once VttReader is implemented, use it.
 				// For now throw an exception rather than a fatal error.
 				throw new MWException( 'vtt source pages are not yet supported' );
@@ -404,10 +410,10 @@ class TextHandler {
 				throw new MWException( 'Unsupported timedtext filetype' );
 		}
 		switch ( $to ) {
-			case 'srt':
+			case TimedTextPage::SRT_SUBTITLE_FORMAT:
 				$writer = new SrtWriter();
 				break;
-			case 'vtt':
+			case TimedTextPage::VTT_SUBTITLE_FORMAT:
 				$writer = new VttWriter();
 				break;
 			default:

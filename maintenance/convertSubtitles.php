@@ -11,6 +11,7 @@ require_once "$IP/maintenance/Maintenance.php";
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\TimedText;
+use MediaWiki\TimedMediaHandler\TimedTextPage;
 
 class ConvertSubtitles extends Maintenance {
 
@@ -87,8 +88,8 @@ class ConvertSubtitles extends Maintenance {
 
 		$errors = [];
 		$out = TextHandler::convertSubtitles(
-			'srt',
-			$this->getOption( 'format', 'vtt' ),
+			TimedTextPage::SRT_SUBTITLE_FORMAT,
+			$this->getOption( 'format', TimedTextPage::VTT_SUBTITLE_FORMAT ),
 			$raw,
 			$errors
 		);

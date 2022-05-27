@@ -174,9 +174,9 @@ class ApiTimedText extends ApiBase {
 			$this->getMain()->setCacheMaxAge( 15 );
 		}
 
-		if ( $params['trackformat'] === 'srt' ) {
+		if ( $params['trackformat'] === TimedTextPage::SRT_SUBTITLE_FORMAT ) {
 			$mimeType = 'text/srt';
-		} elseif ( $params['trackformat'] === 'vtt' ) {
+		} elseif ( $params['trackformat'] === TimedTextPage::VTT_SUBTITLE_FORMAT ) {
 			$mimeType = 'text/vtt';
 		} else {
 			// Unreachable due to parameter validation,
@@ -198,8 +198,8 @@ class ApiTimedText extends ApiBase {
 	 * @throws ApiUsageException
 	 */
 	protected function findTimedText( File $file, $langCode, $preferredFormat ) {
-		// In future, add 'vtt' as a supported input format as well.
-		$sourceFormats = [ 'srt' ];
+		// In future, add TimedTextPage::VTT_SUBTITLE_FORMAT as a supported input format as well.
+		$sourceFormats = [ TimedTextPage::SRT_SUBTITLE_FORMAT ];
 
 		$textHandler = new TextHandler( $file, $sourceFormats );
 		$ns = $textHandler->getTimedTextNamespace();
@@ -237,8 +237,8 @@ class ApiTimedText extends ApiBase {
 	 * Cache items are auto-expired if the CACHE_VERSION constant
 	 * changes or the page has been edited since last update.
 	 *
-	 * @param string $from one of 'srt' or 'vtt'
-	 * @param string $to one of 'vtt' or 'srt'
+	 * @param string $from one of TimedTextPage::SRT_SUBTITLE_FORMAT or TimedTextPage::VTT_SUBTITLE_FORMAT
+	 * @param string $to one of TimedTextPage::VTT_SUBTITLE_FORMAT or TimedTextPage::SRT_SUBTITLE_FORMAT
 	 * @param WikiPage $page the TimedText page being loaded
 	 * @return string text of the output in desired format
 	 */
@@ -282,7 +282,10 @@ class ApiTimedText extends ApiBase {
 				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'trackformat' => [
-				ParamValidator::PARAM_TYPE => [ 'srt', 'vtt' ],
+				ParamValidator::PARAM_TYPE => [
+					TimedTextPage::SRT_SUBTITLE_FORMAT,
+					TimedTextPage::VTT_SUBTITLE_FORMAT,
+				],
 				ParamValidator::PARAM_REQUIRED => true,
 			],
 			// Note this is the target language of the track to load,
