@@ -1,21 +1,31 @@
 <?php
 
+// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
+
 namespace MediaWiki\TimedMediaHandler;
 
 use Article;
 use DatabaseUpdater;
 use DifferenceEngine;
 use File;
+use IContextSource;
 use ImageHistoryList;
 use ImagePage;
 use LocalFile;
+use MediaWiki\Diff\Hook\ArticleContentOnDiffHook;
+use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\CanonicalNamespacesHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
 use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
+use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
+use MediaWiki\Hook\TitleMoveHook;
+use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\Hook\ArticleFromTitleHook;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
 use MediaWiki\Page\Hook\ImageOpenShowImageInlineBeforeHook;
+use MediaWiki\Page\Hook\ImagePageAfterImageLinksHook;
 use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\Revision\RevisionRecord;
@@ -25,6 +35,7 @@ use MediaWiki\User\UserIdentity;
 use OutputPage;
 use Skin;
 use SkinTemplate;
+use Status;
 use Title;
 use User;
 use WikiFilePage;
@@ -37,14 +48,21 @@ use WikiPage;
  * @ingroup Extensions
  */
 class Hooks implements
+	ArticleContentOnDiffHook,
+	ArticleFromTitleHook,
 	ArticlePurgeHook,
+	BeforePageDisplayHook,
 	CanonicalNamespacesHook,
 	FileDeleteCompleteHook,
 	FileUploadHook,
 	ImageOpenShowImageInlineBeforeHook,
+	ImagePageAfterImageLinksHook,
 	ImagePageFileHistoryLineHook,
+	LoadExtensionSchemaUpdatesHook,
 	ParserTestGlobalsHook,
 	RevisionFromEditCompleteHook,
+	SkinTemplateNavigation__UniversalHook,
+	TitleMoveHook,
 	WgQueryPagesHook
 {
 
@@ -149,9 +167,10 @@ class Hooks implements
 	/**
 	 * @param Title $title
 	 * @param Article|null &$article
+	 * @param IContextSource $context
 	 * @return bool
 	 */
-	public static function checkForTimedTextPage( Title $title, ?Article &$article ) {
+	public function onArticleFromTitle( $title, &$article, $context ) {
 		global $wgTimedTextNS;
 		if ( $title->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $title );
@@ -164,7 +183,7 @@ class Hooks implements
 	 * @param OutputPage $output
 	 * @return bool
 	 */
-	public static function checkForTimedTextDiff( $diffEngine, $output ) {
+	public function onArticleContentOnDiff( $diffEngine, $output ) {
 		global $wgTimedTextNS;
 		if ( $output->getTitle()->getNamespace() === $wgTimedTextNS ) {
 			$article = new TimedTextPage( $output->getTitle() );
@@ -175,10 +194,10 @@ class Hooks implements
 	}
 
 	/**
-	 * @param SkinTemplate &$sktemplate
+	 * @param SkinTemplate $sktemplate
 	 * @param array &$links
 	 */
-	public static function onSkinTemplateNavigation( SkinTemplate &$sktemplate, array &$links ) {
+	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
 		if ( self::isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
 			$ttTitle = Title::makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
 			if ( !$ttTitle ) {
@@ -268,7 +287,7 @@ class Hooks implements
 	 * @param string &$html
 	 * @return bool
 	 */
-	public static function checkForTranscodeStatus( $article, &$html ) {
+	public function onImagePageAfterImageLinks( $article, &$html ) {
 		// load the file:
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
 		if ( self::isTranscodableFile( $file ) ) {
@@ -302,9 +321,11 @@ class Hooks implements
 	 * @param Title $title
 	 * @param Title $newTitle
 	 * @param User $user
+	 * @param string $reason
+	 * @param Status &$status
 	 * @return bool
 	 */
-	public static function checkTitleMove( $title, $newTitle, $user ) {
+	public function onTitleMove( Title $title, Title $newTitle, User $user, $reason, Status &$status ) {
 		if ( self::isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
@@ -393,9 +414,8 @@ class Hooks implements
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $sk
-	 * @return bool
 	 */
-	public static function pageOutputHook( OutputPage $out, Skin $sk ) {
+	public function onBeforePageDisplay( $out, $sk ): void {
 		global $wgTimedTextNS;
 
 		$title = $out->getTitle();
@@ -421,15 +441,13 @@ class Hooks implements
 			$out->addModuleStyles( 'ext.tmh.player.styles' );
 			$out->addModules( 'ext.tmh.player' );
 		}
-
-		return true;
 	}
 
 	/**
 	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 */
-	public static function checkSchemaUpdates( DatabaseUpdater $updater ) {
+	public function onLoadExtensionSchemaUpdates( $updater ) {
 		$dir = dirname( __DIR__ ) . '/sql/';
 		$dbType = $updater->getDB()->getType();
 		if ( $dbType === 'mysql' ) {
