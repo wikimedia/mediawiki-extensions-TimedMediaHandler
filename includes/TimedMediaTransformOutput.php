@@ -424,9 +424,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// Get the correct size:
 			'poster' => $this->getUrl( $sizeOverride ),
 
-			// Note we set controls to true ( for no-js players ) when mwEmbed rewrites the interface
-			// it updates the controls attribute of the embed video
+			// Note we set controls to true ( for no-js players )
+			// When ext.tmh.player.element.js runs it replaces the native player controls
 			'controls' => 'true',
+
 			// Since we will reload the item with javascript,
 			// tell browser to not load the video before
 			'preload' => 'none',
