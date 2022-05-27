@@ -157,5 +157,7 @@
 	"videojs-quality": "Videoqualität",
 	"videojs-subtitles-create": "Untertitel erstellen",
 	"videojs-captions-create": "Bildunterschriften erstellen",
-	"transcodestatistics": "Transkodierungs-Statistiken"
+	"transcodestatistics": "Transkodierungs-Statistiken",
+	"timedmedia-timedtext-title-edit-subtitles": "Untertitel auf $1 für den Videoclip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Keine Untertitel auf $1 für den Videoclip gefunden: $2"
 }

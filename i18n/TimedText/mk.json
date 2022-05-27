@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Bjankuloski06"
-		]
-	},
-	"mwe-timedtext-language-subtitles-for-clip": "$1 — титлови за снимката: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Не пронајдов титлови на $1 за снимката: $2"
-}

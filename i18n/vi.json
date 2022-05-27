@@ -187,5 +187,7 @@
 	"orphanedtimedtext-unsupported": "Trang đặc biệt này chỉ được hỗ trợ trên cơ sở dữ liệu MySQL.",
 	"videojs-more-information": "Thêm thông tin",
 	"videojs-quality": "Chất lượng video",
-	"transcodestatistics": "Thống kê chuyển mã"
+	"transcodestatistics": "Thống kê chuyển mã",
+	"timedmedia-timedtext-title-edit-subtitles": "Phụ đề $1 cho clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Không tìm thấy phụ đề $1 cho clip: $2"
 }

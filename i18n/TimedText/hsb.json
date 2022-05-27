@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Michawiki"
-		]
-	},
-	"mwe-timedtext-language-subtitles-for-clip": "$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Žane podtitule $1 za klip namakane: $2"
-}

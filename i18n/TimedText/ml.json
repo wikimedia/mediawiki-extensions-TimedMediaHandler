@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Praveenp"
-		]
-	},
-	"mwe-timedtext-language-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖ: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2"
-}

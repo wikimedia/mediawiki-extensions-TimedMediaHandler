@@ -115,5 +115,7 @@
 	"videojs-quality": "画質",
 	"videojs-subtitles-create": "字幕を作成する",
 	"videojs-captions-create": "キャプションを作成する",
-	"transcodestatistics": "トランスコードの統計"
+	"transcodestatistics": "トランスコードの統計",
+	"timedmedia-timedtext-title-edit-subtitles": "クリップ $2 の$1字幕",
+	"timedmedia-timedtext-title-create-subtitles": "クリップ $2 には$1字幕がありません"
 }

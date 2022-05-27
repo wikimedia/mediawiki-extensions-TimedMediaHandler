@@ -142,5 +142,7 @@
 	"videojs-quality": "Videokvalitet",
 	"videojs-subtitles-create": "Opprett undertekster",
 	"videojs-captions-create": "Opprett undertekster",
-	"transcodestatistics": "Omkodingsstatistikk"
+	"transcodestatistics": "Omkodingsstatistikk",
+	"timedmedia-timedtext-title-edit-subtitles": "Undertekster på $1 for klippet: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Ingen undertekster på $1 ble funnet for klippet: $2"
 }

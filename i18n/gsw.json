@@ -54,5 +54,7 @@
 	"timedmedia-derivative-desc-480p.webm": "Webstreamingfähigi WebM-Videodatei (480p)",
 	"timedmedia-derivative-desc-720p.webm": "Qualitativ hochwertigi WebM-Videodatei (720p)",
 	"timedmedia-subtitle-no-video": "Dere Untertitel-Syte isch kei Video zuegordnet.",
-	"timedmedia-subtitle-no-subtitles": "Es git uff $1 zurzit kei Untertitel für des Video. Bim dezuefiege vo Untertitel cha [{{fullurl:{{FULLPAGENAME}}|action=edit}} die Syte] bearbeitet werde."
+	"timedmedia-subtitle-no-subtitles": "Es git uff $1 zurzit kei Untertitel für des Video. Bim dezuefiege vo Untertitel cha [{{fullurl:{{FULLPAGENAME}}|action=edit}} die Syte] bearbeitet werde.",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 Untertitel gfunde fir dr Videoclip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Kei $1 Untertitel gfunde fir dr Videoclip: $2"
 }

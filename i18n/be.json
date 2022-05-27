@@ -114,5 +114,7 @@
 	"videojs-quality": "Якасць відэа",
 	"videojs-subtitles-create": "Стварыць субцітры (subtitles)",
 	"videojs-captions-create": "Стварыць субцітры (captions)",
-	"transcodestatistics": "Статыстыка транскодаў"
+	"transcodestatistics": "Статыстыка транскодаў",
+	"timedmedia-timedtext-title-edit-subtitles": "Субцітры ($1) для кліпу: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Субцітры ($1) для кліпу не знойдзеныя: $2"
 }

@@ -151,5 +151,7 @@
 	"videojs-quality": "Video kalitesi",
 	"videojs-subtitles-create": "Altyazıları oluştur",
 	"videojs-captions-create": "Altyazıları oluştur",
-	"transcodestatistics": "Kod dönüştürme istatistikleri"
+	"transcodestatistics": "Kod dönüştürme istatistikleri",
+	"timedmedia-timedtext-title-edit-subtitles": "Klip için $1 altyazı: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Klip için $1 altyazı bulunamadı: $2"
 }

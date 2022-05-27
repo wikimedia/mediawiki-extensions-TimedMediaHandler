@@ -129,5 +129,7 @@
 	"orphanedtimedtext-unsupported": "Questa paggina speciâ a l'è suportâ solo insce di database MySQL.",
 	"videojs-more-information": "Ciu informaçioin",
 	"videojs-quality": "Qualitæ viddeo",
-	"transcodestatistics": "Statisteghe de transcodiffica"
+	"transcodestatistics": "Statisteghe de transcodiffica",
+	"timedmedia-timedtext-title-edit-subtitles": "sottotittoli in $1 pe-o filmou: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Sottotittoli in $1 non trovæ pe-o filmou: $2"
 }

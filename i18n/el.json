@@ -34,5 +34,7 @@
 	"timedmedia-file": "Αρχείο",
 	"videojs-more-information": "Περισσότερες πληροφορίες",
 	"videojs-quality": "Ποιότητα βίντεο",
-	"transcodestatistics": "Στατιστικά διακωδικοποίησης"
+	"transcodestatistics": "Στατιστικά διακωδικοποίησης",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 υπότιτλοι για το βίντεο: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Δεν βρέθηκαν υπότιτλοι $1 για το βίντεο: $2"
 }

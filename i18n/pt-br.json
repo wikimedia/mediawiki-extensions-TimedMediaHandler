@@ -187,5 +187,7 @@
 	"videojs-quality": "Qualidade de vídeo",
 	"videojs-subtitles-create": "Criar legendas",
 	"videojs-captions-create": "Criar legendas ocultas",
-	"transcodestatistics": "Estatísticas de transcodificação"
+	"transcodestatistics": "Estatísticas de transcodificação",
+	"timedmedia-timedtext-title-edit-subtitles": "Legendas em $1 para o clipe: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Não foram encontradas legendas em $1 para o clipe: $2"
 }

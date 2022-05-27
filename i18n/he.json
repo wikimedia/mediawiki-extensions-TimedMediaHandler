@@ -136,5 +136,7 @@
 	"videojs-quality": "איכות הווידאו",
 	"videojs-subtitles-create": "יצירת כתוביות",
 	"videojs-captions-create": "יצירת כתוביות",
-	"transcodestatistics": "סטטיסטיקת המרה משנית"
+	"transcodestatistics": "סטטיסטיקת המרה משנית",
+	"timedmedia-timedtext-title-edit-subtitles": "כתוביות ב{{GRAMMAR:תחילית|$1}} עבור הסרטון $2",
+	"timedmedia-timedtext-title-create-subtitles": "לא נמצאו כתוביות ב{{GRAMMAR:תחילית|$1}} עבור $2"
 }

@@ -127,5 +127,7 @@
 	"orphanedtimedtext-unsupported": "Seda erilehekülge toetatakse ainult MySQL-andmebaasides.",
 	"videojs-more-information": "Lisateave",
 	"videojs-quality": "Video kvaliteet",
-	"transcodestatistics": "Ümberkodeerimise arvandmestik"
+	"transcodestatistics": "Ümberkodeerimise arvandmestik",
+	"timedmedia-timedtext-title-edit-subtitles": "Lõigu $2 $1 alltiitrid",
+	"timedmedia-timedtext-title-create-subtitles": "Lõigu $2 jaoks ei leitud $1 alltiitreid"
 }

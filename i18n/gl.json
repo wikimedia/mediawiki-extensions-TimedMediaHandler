@@ -136,5 +136,7 @@
 	"orphanedtimedtext-unsupported": "Esta páxina especial só está soportada en bases de datos MySQL.",
 	"videojs-more-information": "Máis información",
 	"videojs-quality": "Calidade de vídeo",
-	"transcodestatistics": "Estatísticas de transcodificación"
+	"transcodestatistics": "Estatísticas de transcodificación",
+	"timedmedia-timedtext-title-edit-subtitles": "Subtítulos en $1 para o vídeo: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Non se atoparon os subtítulos en $1 para o vídeo: $2"
 }

@@ -80,5 +80,7 @@
 	"timedmedia-file": "Archivi",
 	"right-transcode-reset": "Amposté torna ij filmà falì o trascodificà për ch'a sio torna anserì ant la coa dij travaj.",
 	"right-transcode-status": "Smon-e [[Special:TimedMediaHandler|l'anformassion a propòsit ëd l'atività corenta ëd trascodìfica]]",
-	"action-transcode-status": "varda lë stat ëd trascodìfica corent"
+	"action-transcode-status": "varda lë stat ëd trascodìfica corent",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 sot-tìtoj për ël tòch: $2",
+	"timedmedia-timedtext-title-create-subtitles": "A l'é trovasse gnun sot-tìtoj $1 per ël tòch: $2"
 }

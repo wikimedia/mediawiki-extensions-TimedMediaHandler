@@ -155,5 +155,7 @@
 	"orphanedtimedtext-unsupported": "هذه الصفحة الخاصة لا تدعمها إلا قواعد بيانات MySQL",
 	"videojs-more-information": "مزيد من المعلومات",
 	"videojs-quality": "جودة الفيديو",
-	"transcodestatistics": "إحصاءات الترميز"
+	"transcodestatistics": "إحصاءات الترميز",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 ترجمات للمقطع: $2",
+	"timedmedia-timedtext-title-create-subtitles": "لم يتم العثور على ترجمة $1 لمقطع: $2"
 }

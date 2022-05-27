@@ -130,5 +130,7 @@
 	"orphanedtimedtext-summary": "Llista de páxines de [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que nun tienen el correspondiente ficheru.",
 	"orphanedtimedtext-unsupported": "Esta páxina especial sólo tien sofitu con bases de datos MySQL.",
 	"videojs-more-information": "Más información",
-	"videojs-quality": "Calidá de videu"
+	"videojs-quality": "Calidá de videu",
+	"timedmedia-timedtext-title-edit-subtitles": "Subtítulos en $1 pal videu: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Nun s'alcontraron los subtítulos en $1 pal videu: $2"
 }

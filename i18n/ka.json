@@ -81,5 +81,6 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 დეკოდირება ჩაიშალა|$1 დეკოდირება ჩაიშალა}}",
 	"timedmedia-file": "ფაილი",
 	"right-transcode-status": "იხილეთ [[Special:TimedMediaHandler|ინფორმაცია მიმდინარე დეკოდირების შესახებ]]",
-	"action-transcode-status": "იხილეთ მიმდინარე დეკოდირების სტატუსი"
+	"action-transcode-status": "იხილეთ მიმდინარე დეკოდირების სტატუსი",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 სუბტიტრები კლიპისათვის: $2"
 }

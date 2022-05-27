@@ -136,5 +136,7 @@
 	"orphanedtimedtext-summary": "Seznam stránek [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], které nemají odpovídající soubor.",
 	"orphanedtimedtext-unsupported": "Tato speciální stránka je podporována jen na databázi MySQL.",
 	"videojs-more-information": "Více informací",
-	"videojs-quality": "Kvalita videa"
+	"videojs-quality": "Kvalita videa",
+	"timedmedia-timedtext-title-edit-subtitles": "Titulky ke klipu $2 v jazyce $1",
+	"timedmedia-timedtext-title-create-subtitles": "Ke klipu $2 nebyly nalezeny titulky v jazyce $1"
 }

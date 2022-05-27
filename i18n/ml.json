@@ -165,5 +165,7 @@
 	"orphanedtimedtext-summary": "ബന്ധപ്പെട്ട പ്രമാണങ്ങൾ ഇല്ലാത്ത [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] താളുകളുടെ പട്ടിക.",
 	"orphanedtimedtext-unsupported": "മൈഎസ്ക്യുഎൽ ഡേറ്റാബേസുകളെ മാത്രമേ ഈ പ്രത്യേകതാൾ പിന്തുണയ്ക്കുന്നുള്ളു.",
 	"videojs-more-information": "കൂടുതൽ വിവരങ്ങൾ",
-	"videojs-quality": "ചലച്ചിത്ര ഗുണമേന്മ"
+	"videojs-quality": "ചലച്ചിത്ര ഗുണമേന്മ",
+	"timedmedia-timedtext-title-edit-subtitles": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖ: $2",
+	"timedmedia-timedtext-title-create-subtitles": "ഈ മീഡിയശകലത്തിന് $1 ഭാഷയിലുള്ള സംഭാഷണരേഖയൊന്നും കണ്ടെത്താനായില്ല: $2"
 }

@@ -177,5 +177,7 @@
 	"videojs-quality": "Квалитет на снимката",
 	"videojs-subtitles-create": "Создај титлови",
 	"videojs-captions-create": "Создај толкување",
-	"transcodestatistics": "Статистика за прекодирања"
+	"transcodestatistics": "Статистика за прекодирања",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 — титлови за снимката: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Не пронајдов титлови на $1 за снимката: $2"
 }

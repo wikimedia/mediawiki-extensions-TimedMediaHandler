@@ -131,5 +131,7 @@
 	"orphanedtimedtext-unsupported": "Sta pàgena speciale jè supportate sulamende sus a le database MySQL.",
 	"videojs-more-information": "Cchiù 'mbormaziune",
 	"videojs-quality": "Qualitate d'u video",
-	"transcodestatistics": "StatISTECHE d'a codifeche"
+	"transcodestatistics": "StatISTECHE d'a codifeche",
+	"timedmedia-timedtext-title-edit-subtitles": "sottotitole jndr'à $1 pu filmate: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Sottotitole jndr'à $1 non acchiate pu filmate: $2"
 }

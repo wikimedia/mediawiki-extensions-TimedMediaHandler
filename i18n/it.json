@@ -142,5 +142,7 @@
 	"orphanedtimedtext-summary": "Elenco di pagine [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] che non hanno un file corrispondente.",
 	"orphanedtimedtext-unsupported": "Questa pagina speciale è supportata solo su database MySQL.",
 	"videojs-more-information": "Ulteriori informazioni",
-	"transcodestatistics": "Statistiche di transcodifica"
+	"transcodestatistics": "Statistiche di transcodifica",
+	"timedmedia-timedtext-title-edit-subtitles": "sottotitoli in $1 per il filmato: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Sottotitoli in $1 non trovati per il filmato: $2"
 }

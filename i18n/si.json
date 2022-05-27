@@ -74,5 +74,6 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|පෙළගස්වා ඇති transcode}} $1",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|අසමත් වූ transcode}} $1",
 	"timedmedia-file": "ගොනුව",
-	"action-transcode-status": "වත්මන් අනු ලැකීම් තත්වය නරඹන්න"
+	"action-transcode-status": "වත්මන් අනු ලැකීම් තත්වය නරඹන්න",
+	"timedmedia-timedtext-title-edit-subtitles": "ක්ලිපය සඳහා $1 උපසිරුස: $2"
 }

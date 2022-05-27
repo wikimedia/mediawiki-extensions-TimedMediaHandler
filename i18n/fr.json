@@ -213,5 +213,7 @@
 	"videojs-quality": "Qualité de la vidéo",
 	"videojs-subtitles-create": "Créer des sous-titres",
 	"videojs-captions-create": "Créer des légendes",
-	"transcodestatistics": "Statistiques de transcodage"
+	"transcodestatistics": "Statistiques de transcodage",
+	"timedmedia-timedtext-title-edit-subtitles": "Sous-titres en $1 pour la vidéo « $2 »",
+	"timedmedia-timedtext-title-create-subtitles": "Aucun sous-titre $1 n'a été trouvé pour le clip : $2"
 }

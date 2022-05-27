@@ -152,5 +152,7 @@
 	"orphanedtimedtext-summary": "Lista de páginas [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] que no tienen un archivo correspondiente.",
 	"orphanedtimedtext-unsupported": "Esta página especial sólo se admite en base de datos MySQL.",
 	"videojs-more-information": "Más información",
-	"videojs-quality": "Calidad de vídeo"
+	"videojs-quality": "Calidad de vídeo",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 subtítulos para el clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "No se ha encontrado subtítulos $1 para el clip: $2"
 }

@@ -36,5 +36,7 @@
 	"timedmedia-derivative-desc-720p.ogv": "Ogg-video av høg kvalitet som kan lastast ned (720P)",
 	"timedmedia-subtitle-new": "Lag ny omsetjing eller endra eksisterande",
 	"timedmedia-subtitle-new-desc": "Byt ut '''$1'''-delen med [[:en:ISO 639|språkkoden]] din og trykk på '''{{int:Timedmedia-subtitle-new-go}}'''-knappen",
-	"timedmedia-subtitle-new-go": "Gå"
+	"timedmedia-subtitle-new-go": "Gå",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 undertekstar for klippet: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Ingen undertekster på $1 vart funne for klippet: $2"
 }

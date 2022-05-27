@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Siebrand"
-		]
-	},
-	"mwe-timedtext-language-subtitles-for-clip": "Ondertitels in het $1 voor clip: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "Er zijn geen ondertitels in de taal $1 gevonden voor clip: $2"
-}

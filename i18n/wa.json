@@ -6,5 +6,7 @@
 	},
 	"timedmedia-dismiss": "Clôre",
 	"timedmedia-source-file": "Sourdant $1",
-	"timedmedia-source-audio-file-desc": "Fitchî d’&nbsp;oridjinne $1 ($2)"
+	"timedmedia-source-audio-file-desc": "Fitchî d’&nbsp;oridjinne $1 ($2)",
+	"timedmedia-timedtext-title-edit-subtitles": "Dizo-tites e $1 pol clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Nou dzo-tite $1 di trové pol clip: $2"
 }

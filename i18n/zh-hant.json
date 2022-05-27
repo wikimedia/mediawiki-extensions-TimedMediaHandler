@@ -146,5 +146,7 @@
 	"orphanedtimedtext-unsupported": "此特殊頁面僅支援使用 MySQL 資料庫。",
 	"videojs-more-information": "更多資訊",
 	"videojs-quality": "影片品質",
-	"transcodestatistics": "轉碼統計"
+	"transcodestatistics": "轉碼統計",
+	"timedmedia-timedtext-title-edit-subtitles": "片段的$1字幕文件：$2",
+	"timedmedia-timedtext-title-create-subtitles": "沒有找到片段的$1字幕文件：$2"
 }

@@ -153,5 +153,7 @@
 	"videojs-quality": "Kualitas video",
 	"videojs-subtitles-create": "Membuat takarir",
 	"videojs-captions-create": "Membuat keterangan",
-	"transcodestatistics": "Statistik transkode"
+	"transcodestatistics": "Statistik transkode",
+	"timedmedia-timedtext-title-edit-subtitles": "Subjudul $1 untuk klip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Tidak ada subjudul $1 yang ditemukan untuk klip: $2"
 }

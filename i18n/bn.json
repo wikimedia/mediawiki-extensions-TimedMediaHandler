@@ -107,5 +107,6 @@
 	"videojs-quality": "ভিডিওর মান",
 	"videojs-subtitles-create": "সাবটাইটেল তৈরি করুন",
 	"videojs-captions-create": "ক্যাপশন তৈরি করুন",
-	"transcodestatistics": "ট্রান্সকোড পরিসংখ্যান"
+	"transcodestatistics": "ট্রান্সকোড পরিসংখ্যান",
+	"timedmedia-timedtext-title-edit-subtitles": "$2 ক্লিপের জন্য $1 সাবটাইটেল"
 }

@@ -111,5 +111,7 @@
 	"videojs-quality": "Qualità del video",
 	"videojs-subtitles-create": "Crea sottitoi",
 	"videojs-captions-create": "Crea insegne",
-	"transcodestatistics": "Statistiche de transcodifica"
+	"transcodestatistics": "Statistiche de transcodifica",
+	"timedmedia-timedtext-title-edit-subtitles": "sottitoi in $1 per il curtmetragg: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Sottitoi $1 minga trovad per il curtmetragg: $2"
 }

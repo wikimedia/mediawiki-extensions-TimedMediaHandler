@@ -149,5 +149,7 @@
 	"orphanedtimedtext-unsupported": "Esta página especial só é suportada nas bases de dados MySQL.",
 	"videojs-more-information": "Mais informação",
 	"videojs-quality": "Qualidade de vídeo",
-	"transcodestatistics": "Estatísticas de transcodificação"
+	"transcodestatistics": "Estatísticas de transcodificação",
+	"timedmedia-timedtext-title-edit-subtitles": "Legendas em $1 para o clipe: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Não foram encontradas legendas em $1 para o clipe: $2"
 }

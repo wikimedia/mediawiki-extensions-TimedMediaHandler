@@ -116,5 +116,7 @@
 	"videojs-quality": "Fideokwaliteit",
 	"videojs-subtitles-create": "Undertitels meitsje",
 	"videojs-captions-create": "Byskriften meitsje",
-	"transcodestatistics": "Transkodearringsstatistiken"
+	"transcodestatistics": "Transkodearringsstatistiken",
+	"timedmedia-timedtext-title-edit-subtitles": "Undertiteling $1 foar fragmint: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Gjin ûndertiteling $1 fûn foar fragmint: $2"
 }

@@ -161,5 +161,7 @@
 	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
 	"videojs-more-information": "更多信息",
 	"videojs-quality": "视频品质",
-	"transcodestatistics": "转码统计"
+	"transcodestatistics": "转码统计",
+	"timedmedia-timedtext-title-edit-subtitles": "片段$2的$1字幕",
+	"timedmedia-timedtext-title-create-subtitles": "没有找到片段$2的$1字幕"
 }

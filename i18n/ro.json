@@ -85,5 +85,7 @@
 	"right-transcode-reset": "Reinițializează videoclipuri nereușit codificate pentru ca acestea să fie readăugate la șirul de sarcini.",
 	"right-transcode-status": "Vizualizează [[Special:TimedMediaHandler|informații despre activitatea curentă de codificare]]",
 	"action-transcode-status": "vizualizați statutul actual al codificării",
-	"log-name-timedmediahandler": "Jurnal TimedMediaHandler"
+	"log-name-timedmediahandler": "Jurnal TimedMediaHandler",
+	"timedmedia-timedtext-title-edit-subtitles": "Subtitrare în limba $1 pentru clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Nu s-a găsit nicio subtitrare în limba $1 pentru clip: $2"
 }

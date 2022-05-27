@@ -84,5 +84,7 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 tumatakbong transkodigo|$1 tumatakbong mga transkodigo}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 nakapilang transkodigo|$1 nakapilang mga transkodigo}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 nabigong transkodigo|$1 nabigong mga transkodigo}}",
-	"timedmedia-file": "File"
+	"timedmedia-file": "File",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 kabahaging mga pamagat para sa putol na: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Walang natagpuang $1 kabahaging mga pamagat para sa putol na: $2"
 }

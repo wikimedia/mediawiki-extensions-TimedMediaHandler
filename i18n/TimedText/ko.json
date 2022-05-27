@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"아라"
-		]
-	},
-	"mwe-timedtext-language-subtitles-for-clip": "클립에 대한 $1 자막: $2",
-	"mwe-timedtext-language-no-subtitles-for-clip": "클립에 대한 $1 자막을 찾을 수 없습니다: $2"
-}

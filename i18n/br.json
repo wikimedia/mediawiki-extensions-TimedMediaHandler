@@ -45,5 +45,7 @@
 	"timedmedia-derivative-desc-480p.webm": "WebM lennus war-eeun eus ar Gwiad (480p)",
 	"timedmedia-derivative-desc-720p.webm": "Video WebM da bellgargañ gant ur c'halite a-feson (720p)",
 	"timedmedia-subtitle-new-go": "Mont",
-	"timedmedia-file": "Restr"
+	"timedmedia-file": "Restr",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 istitl evit ar c'hlip : $2",
+	"timedmedia-timedtext-title-create-subtitles": "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2"
 }

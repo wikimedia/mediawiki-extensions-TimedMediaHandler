@@ -111,5 +111,7 @@
 	"orphanedtimedtext-unsupported": "Ez a speciális lap csak MySQL adatbázisokon támogatott.",
 	"videojs-more-information": "További információk",
 	"videojs-quality": "Videóminőség",
-	"transcodestatistics": "Átkódolási statisztika"
+	"transcodestatistics": "Átkódolási statisztika",
+	"timedmedia-timedtext-title-edit-subtitles": "{{ucfirst:$1}} feliratok a(z) $2 kliphez",
+	"timedmedia-timedtext-title-create-subtitles": "Nem találhatók $1 feliratok a(z) $2 kliphez"
 }

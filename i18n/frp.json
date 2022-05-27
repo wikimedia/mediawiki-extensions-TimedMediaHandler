@@ -32,5 +32,7 @@
 	"timedmedia-source-file": "Sôrsa $1",
 	"timedmedia-source-file-desc": "Originâl $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Fichiér originâl $1 ($2)",
-	"timedmedia-file": "Fichiér"
+	"timedmedia-file": "Fichiér",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 sot-titros por clipe : $2",
+	"timedmedia-timedtext-title-create-subtitles": "Nion sot-titro $1 at étâ trovâ por lo clipe : $2"
 }

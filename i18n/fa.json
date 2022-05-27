@@ -157,5 +157,7 @@
 	"videojs-quality": "کیفیت ویدئو",
 	"videojs-subtitles-create": "ایجاد زیرنویس",
 	"videojs-captions-create": "ایجاد توضیحات",
-	"transcodestatistics": "آمار فراکدها"
+	"transcodestatistics": "آمار فراکدها",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 زیرنویس برای کلیپ: $2",
+	"timedmedia-timedtext-title-create-subtitles": "هیچ $1 زیرنویسی برای کلیپ پیدا نشد: $2"
 }

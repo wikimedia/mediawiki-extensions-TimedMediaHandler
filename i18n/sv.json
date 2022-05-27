@@ -148,5 +148,7 @@
 	"orphanedtimedtext-unsupported": "Denna special-sida har bara stöd på MySQL-databaser.",
 	"videojs-more-information": "Mer information",
 	"videojs-quality": "Videokvalitet",
-	"transcodestatistics": "Transkodningsstatistik"
+	"transcodestatistics": "Transkodningsstatistik",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 undertexter för klipp: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Inga $1 undertexter hittades för klipp: $2"
 }

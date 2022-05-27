@@ -144,5 +144,7 @@
 	"orphanedtimedtext-unsupported": "Deze speciale pagina wordt alleen ondersteund op MySQL databases.",
 	"videojs-more-information": "Meer informatie",
 	"videojs-quality": "Videokwaliteit",
-	"transcodestatistics": "Statistieken transcode"
+	"transcodestatistics": "Statistieken transcode",
+	"timedmedia-timedtext-title-edit-subtitles": "Ondertitels in het $1 voor clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Er zijn geen ondertitels in de taal $1 gevonden voor clip: $2"
 }

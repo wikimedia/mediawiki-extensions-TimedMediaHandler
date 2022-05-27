@@ -112,5 +112,7 @@
 	"action-transcode-status": "прегледате актуелни статус транскодирања",
 	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а",
 	"orphanedtimedtext-unsupported": "Ова посебна странице је подржана само на MySQL базама података.",
-	"videojs-more-information": "Више информација"
+	"videojs-more-information": "Више информација",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 титлови за клип: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Нису пронађени $1 титлови за клип: $2"
 }

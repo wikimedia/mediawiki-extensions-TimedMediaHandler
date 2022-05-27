@@ -42,5 +42,7 @@
 	"timedmedia-subtitle-new-go": "Gwneler",
 	"timedmedia-subtitle-remote-link": "Gallwch [$1 weld tudalen ddisgrifio'r] ffeil hon ar $2",
 	"timedmedia-file": "Ffeil",
-	"action-transcode-status": "gweld statws presennol y trawsgodio"
+	"action-transcode-status": "gweld statws presennol y trawsgodio",
+	"timedmedia-timedtext-title-edit-subtitles": "$1 isdeitl ar gael ar gyfer clip: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Dim $1 isdeitl ar gael ar gyfer: $2"
 }
