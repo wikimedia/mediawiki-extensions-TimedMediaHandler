@@ -477,13 +477,6 @@
 				"desktop"
 			]
 		},
-		"ext.tmh.thumbnail.styles": {
-			"styles": "resources/ext.tmh.thumbnail.css",
-			"targets": [
-				"mobile",
-				"desktop"
-			]
-		},
 		"ext.tmh.transcodetable": {
 			"scripts": "resources/transcode-table/transcode-table.js",
 			"styles": "resources/transcode-table/transcode-table.css",
