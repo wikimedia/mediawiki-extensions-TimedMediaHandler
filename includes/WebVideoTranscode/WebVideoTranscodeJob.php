@@ -220,6 +220,7 @@ class WebVideoTranscodeJob extends Job {
 		$lbFactory->closeAll();
 
 		// Check the codec see which encode method to call;
+		$videoCodec = $options['videoCodec'] ?? '';
 		if ( isset( $options[ 'novideo' ] ) ) {
 			if ( $file->getMimeType() === 'audio/midi' ) {
 				$status = $this->midiToAudioEncode( $options );
@@ -227,11 +228,8 @@ class WebVideoTranscodeJob extends Job {
 				$status = $this->ffmpegEncode( $options );
 			}
 		} elseif (
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-			$options['videoCodec'] == 'vp8' || $options['videoCodec'] == 'vp9' ||
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-			$options['videoCodec'] == 'h264'
-			// these comparisons could be strict if someone figures out how to shut up phan
+			$videoCodec === 'vp8' || $videoCodec === 'vp9' ||
+			$videoCodec === 'h264'
 		) {
 			// Check for twopass:
 			if ( isset( $options['twopass'] ) ) {
@@ -244,10 +242,8 @@ class WebVideoTranscodeJob extends Job {
 				$status = $this->ffmpegEncode( $options );
 			}
 		} else {
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-			wfDebug( 'Error unknown codec:' . $options['videoCodec'] );
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-			$status = 'Error unknown target encode codec:' . $options['videoCodec'];
+			wfDebug( 'Error unknown codec:' . $videoCodec );
+			$status = 'Error unknown target encode codec:' . $videoCodec;
 		}
 
 		// Remove any log files,

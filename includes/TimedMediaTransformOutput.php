@@ -17,9 +17,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/** @var array[]|false|null */
 	public $sources;
 
-	/** @var null */
-	public $textTracks;
-
 	/** @var string|false|null */
 	public $hashTime;
 
@@ -364,8 +361,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			}
 		}
 		unset( $track );
-
-		$width = $mediaAttr['width'];
 
 		// Build the video tag output:
 		$s = Html::rawElement( $this->getTagName(), $mediaAttr,

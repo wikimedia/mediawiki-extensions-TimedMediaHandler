@@ -130,23 +130,23 @@ class Hooks implements
 
 	/**
 	 * @param ImagePage $imagePage the imagepage that is being rendered
-	 * @param OutputPage $out the output for this imagepage
+	 * @param OutputPage $output the output for this imagepage
 	 * @return bool
 	 */
-	public function onImageOpenShowImageInlineBefore( $imagePage, $out ) {
+	public function onImageOpenShowImageInlineBefore( $imagePage, $output ) {
 		$file = $imagePage->getDisplayedFile();
-		return self::onImagePageHooks( $file, $out );
+		return self::onImagePageHooks( $file, $output );
 	}
 
 	/**
-	 * @param ImageHistoryList $imagePage that is being rendered
+	 * @param ImageHistoryList $imageHistoryList that is being rendered
 	 * @param File $file the (old) file added in this history entry
 	 * @param string &$line the HTML of the history line
 	 * @param string &$css the CSS class of the history line
 	 * @return bool
 	 */
-	public function onImagePageFileHistoryLine( $imagePage, $file, &$line, &$css ) {
-		$out = $imagePage->getContext()->getOutput();
+	public function onImagePageFileHistoryLine( $imageHistoryList, $file, &$line, &$css ) {
+		$out = $imageHistoryList->getContext()->getOutput();
 		return self::onImagePageHooks( $file, $out );
 	}
 
@@ -283,15 +283,15 @@ class Hooks implements
 	}
 
 	/**
-	 * @param Article $article
+	 * @param Article $imagePage
 	 * @param string &$html
 	 * @return bool
 	 */
-	public function onImagePageAfterImageLinks( $article, &$html ) {
+	public function onImagePageAfterImageLinks( $imagePage, &$html ) {
 		// load the file:
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $imagePage->getTitle() );
 		if ( self::isTranscodableFile( $file ) ) {
-			$html .= TranscodeStatusTable::getHTML( $file, $article->getContext() );
+			$html .= TranscodeStatusTable::getHTML( $file, $imagePage->getContext() );
 		}
 		return true;
 	}
@@ -299,10 +299,10 @@ class Hooks implements
 	/**
 	 * @param File $file LocalFile object
 	 * @param bool $reupload
-	 * @param bool $hasNewPageContent
+	 * @param bool $hasDescription
 	 * @return bool
 	 */
-	public function onFileUpload( $file, $reupload, $hasNewPageContent ) {
+	public function onFileUpload( $file, $reupload, $hasDescription ) {
 		// Check that the file is a transcodable asset:
 		if ( $file && self::isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
@@ -356,17 +356,17 @@ class Hooks implements
 	 *
 	 * @param WikiPage $wikiPage
 	 * @param RevisionRecord $rev
-	 * @param int $baseID
+	 * @param int $originalRevId
 	 * @param UserIdentity $user
 	 * @param string[] &$tags
 	 *
 	 * @return bool
 	 */
 	public function onRevisionFromEditComplete(
-		$wikiPage, $rev, $baseID, $user, &$tags
+		$wikiPage, $rev, $originalRevId, $user, &$tags
 	) {
 		// Check if the article is a file and remove transcode files:
-		if ( ( $baseID !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
+		if ( ( $originalRevId !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
 			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::removeTranscodes( $file );
@@ -381,12 +381,12 @@ class Hooks implements
 	 * link, make sure we've got the updated set of transcodes. This'll allow a user or
 	 * automated process to see their status and reset them.
 	 *
-	 * @param WikiPage $article
+	 * @param WikiPage $wikiPage
 	 * @return bool
 	 */
-	public function onArticlePurge( $article ) {
-		if ( $article->getTitle()->getNamespace() === NS_FILE ) {
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $article->getTitle() );
+	public function onArticlePurge( $wikiPage ) {
+		if ( $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
@@ -413,9 +413,9 @@ class Hooks implements
 	 * page is liable to contain timed media.
 	 *
 	 * @param OutputPage $out
-	 * @param Skin $sk
+	 * @param Skin $skin
 	 */
-	public function onBeforePageDisplay( $out, $sk ): void {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		global $wgTimedTextNS;
 
 		$title = $out->getTitle();

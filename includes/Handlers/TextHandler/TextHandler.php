@@ -80,15 +80,14 @@ class TextHandler {
 
 		if ( $this->file->isLocal() ) {
 			return NS_TIMEDTEXT;
-		} elseif ( $repo instanceof ForeignDBViaLBRepo ) {
+		}
+		if ( $repo instanceof ForeignDBViaLBRepo ) {
 			global $wgTimedTextForeignNamespaces;
 			$wikiID = $repo->getReplicaDB()->getDomainID();
-			if ( isset( $wgTimedTextForeignNamespaces[ $wikiID ] ) ) {
-				return $wgTimedTextForeignNamespaces[ $wikiID ];
-			}
-			// failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
-			return NS_TIMEDTEXT;
-		} elseif ( $repo instanceof IForeignRepoWithMWApi ) {
+			// if failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
+			return $wgTimedTextForeignNamespaces[$wikiID] ?? NS_TIMEDTEXT;
+		}
+		if ( $repo instanceof IForeignRepoWithMWApi ) {
 			if ( $this->remoteNs !== null ) {
 				return $this->remoteNs;
 			}
@@ -264,9 +263,6 @@ class TextHandler {
 	public function getTextTracksFromRows( IResultWrapper $data ) {
 		$textTracks = [];
 
-		if ( !$this->file->isLocal() ) {
-			$namespaceName = $this->getForeignNamespaceName();
-		}
 		$langNames = Language::fetchLanguageNames( null, 'mw' );
 
 		foreach ( $data as $row ) {
@@ -333,18 +329,6 @@ class TextHandler {
 			return 'text/vtt';
 		}
 		return '';
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getForeignNamespaceName() {
-		if ( $this->remoteNs !== null ) {
-			return $this->remoteNsName;
-		}
-		/* Else, we use the canonical namespace, since we can't look up the actual one */
-		$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
-		return str_replace( ' ', '_', $namespaceInfo->getCanonicalName( NS_TIMEDTEXT ) );
 	}
 
 	/**

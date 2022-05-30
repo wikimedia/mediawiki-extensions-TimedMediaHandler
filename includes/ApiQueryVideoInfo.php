@@ -28,7 +28,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	/** @inheritDoc */
-	public static function getInfo( $file, $prop, $result, $thumbParams = null, $version = 'latest' ) {
+	public static function getInfo( $file, $prop, $result, $thumbParams = null, $opts = false ) {
 		$vals = parent::getInfo( $file, $prop, $result, $thumbParams );
 		if ( isset( $prop['derivatives'] ) ) {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {

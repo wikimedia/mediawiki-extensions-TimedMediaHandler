@@ -53,7 +53,7 @@ class ApiTranscodeReset extends ApiBase {
 			);
 		}
 		$transcodeKey = false;
-		// Make sure its a enabled transcode key we are trying to remove:
+		// Make sure it's an enabled transcode key we are trying to remove:
 		// ( if you update your transcode keys the api is not how you purge the database of expired keys )
 		if ( isset( $params['transcodekey'] ) ) {
 			$transcodeSet = WebVideoTranscode::enabledTranscodes();

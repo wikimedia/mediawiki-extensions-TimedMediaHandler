@@ -14,13 +14,6 @@ use Wikimedia\AtEase\AtEase;
 class TimedMediaHandler extends MediaHandler {
 
 	/**
-	 * @return bool
-	 */
-	public function isEnabled() {
-		return true;
-	}
-
-	/**
 	 * Get an image size array like that returned by getimagesize(), or false if it
 	 * can't be determined.
 	 * @param File $file
@@ -448,14 +441,6 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		return new TimedMediaTransformOutput( $options );
-	}
-
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
-	public function canRender( $file ) {
-		return true;
 	}
 
 	/**

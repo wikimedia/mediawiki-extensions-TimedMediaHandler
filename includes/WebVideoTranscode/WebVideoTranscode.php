@@ -16,6 +16,7 @@ use Exception;
 use File;
 use ForeignDBViaLBRepo;
 use IForeignRepoWithMWApi;
+use MediaWiki\FileBackend\FSFile\TempFSFileFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\FLACHandler\FLACHandler;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
@@ -460,7 +461,7 @@ class WebVideoTranscode {
 	 * @return string
 	 */
 	public static function getDerivativeFilePath( $file, $transcodeKey ) {
-		return $file->getTranscodedPath( self::getTranscodeFileBaseName( $file, $transcodeKey ) );
+		return $file->getTranscodedPath( static::getTranscodeFileBaseName( $file, $transcodeKey ) );
 	}
 
 	/**
@@ -481,9 +482,8 @@ class WebVideoTranscode {
 		$length = strlen( urlencode( '0/00/' . $name . '/' . $name . '.' . $suffix ) );
 		if ( $length > 1024 ) {
 			return 'transcode' . '.' . $suffix;
-		} else {
-			return $name . '.' . $suffix;
 		}
+		return $name . '.' . $suffix;
 	}
 
 	/**
@@ -494,23 +494,24 @@ class WebVideoTranscode {
 	 * @return string
 	 */
 	public static function getTranscodedUrlForFile( $file, $suffix = '' ) {
-		return $file->getTranscodedUrl( self::getTranscodeFileBaseName( $file, $suffix ) );
+		return $file->getTranscodedUrl( static::getTranscodeFileBaseName( $file, $suffix ) );
 	}
 
 	/**
 	 * Get temp file at target path for video encode
 	 *
-	 * @param File &$file
+	 * @param File $file
 	 * @param string $transcodeKey
 	 *
 	 * @return TempFSFile|false at target encode path
 	 */
-	public static function getTargetEncodeFile( &$file, $transcodeKey ) {
-		$filePath = self::getDerivativeFilePath( $file, $transcodeKey );
-		$ext = strtolower( pathinfo( "$filePath", PATHINFO_EXTENSION ) );
+	public static function getTargetEncodeFile( $file, $transcodeKey ) {
+		$filePath = static::getDerivativeFilePath( $file, $transcodeKey );
+		$ext = strtolower( pathinfo( $filePath, PATHINFO_EXTENSION ) );
 
 		// Create a temp FS file with the same extension
-		$tmpFile = TempFSFile::factory( 'transcode_' . $transcodeKey, $ext );
+		$tmpFileFactory = new TempFSFileFactory();
+		$tmpFile = $tmpFileFactory->newTempFSFile( 'transcode_' . $transcodeKey, $ext );
 		if ( !$tmpFile ) {
 			return false;
 		}
@@ -523,10 +524,10 @@ class WebVideoTranscode {
 	 */
 	public static function getMaxSizeWebStream() {
 		$maxSize = 0;
-		foreach ( self::enabledVideoTranscodes() as $transcodeKey ) {
-			if ( isset( self::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ) {
+		foreach ( static::enabledVideoTranscodes() as $transcodeKey ) {
+			if ( isset( static::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ) {
 				// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-				$currentSize = self::$derivativeSettings[$transcodeKey]['maxSize'];
+				$currentSize = static::$derivativeSettings[$transcodeKey]['maxSize'];
 				if ( $currentSize > $maxSize ) {
 					$maxSize = $currentSize;
 				}
@@ -544,12 +545,13 @@ class WebVideoTranscode {
 	 * @return int
 	 */
 	public static function getProjectedFileSize( $file, $transcodeKey ) {
-		$settings = self::$derivativeSettings[$transcodeKey];
+		$settings = static::$derivativeSettings[$transcodeKey];
+		// FIXME broken, as bitrate settings can contain units (64k)
 		if ( $settings[ 'videoBitrate' ] && $settings['audioBitrate'] ) {
 			return $file->getLength() * 8 * (
-				self::$derivativeSettings[$transcodeKey]['videoBitrate']
+				(int)$settings['videoBitrate']
 				+
-				self::$derivativeSettings[$transcodeKey]['audioBitrate']
+				(int)$settings['audioBitrate']
 			);
 		}
 		// Else just return the size of the source video
@@ -570,9 +572,11 @@ class WebVideoTranscode {
 	 */
 	public static function getSources( &$file, $options = [] ) {
 		if ( $file->isLocal() || $file->repo instanceof ForeignDBViaLBRepo ) {
-			return self::getLocalSources( $file, $options );
-		} elseif ( $file->getRepo() instanceof IForeignRepoWithMWApi ) {
-			return self::getRemoteSources( $file, $options );
+			return static::getLocalSources( $file, $options );
+		}
+
+		if ( $file->getRepo() instanceof IForeignRepoWithMWApi ) {
+			return static::getRemoteSources( $file, $options );
 		}
 
 		return [];
@@ -585,14 +589,14 @@ class WebVideoTranscode {
 	 * 	 <https://gerrit.wikimedia.org/r/#/c/117916/>
 	 *
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
-	 * @param File &$file The File must belong to a repo that is an instance of IForeignRepoWithMWApi
+	 * @param File $file The File must belong to a repo that is an instance of IForeignRepoWithMWApi
 	 * @param array $options
 	 * @return array|mixed
 	 */
-	public static function getRemoteSources( &$file, $options = [] ) {
-		$regenerator = function () use ( $file, $options ) {
+	public static function getRemoteSources( $file, $options = [] ) {
+		$regenerator = static function () use ( $file, $options ) {
 			// Setup source attribute options
-			$dataPrefix = in_array( 'nodata', $options ) ? '' : 'data-';
+			$dataPrefix = in_array( 'nodata', $options, true ) ? '' : 'data-';
 
 			wfDebug( "Get Video sources from remote api for " . $file->getName() . "\n" );
 			$namespaceInfo = MediaWikiServices::getInstance()->getNamespaceInfo();
@@ -608,17 +612,17 @@ class WebVideoTranscode {
 			'@phan-var IForeignRepoWithMWApi $repo';
 			$data = $repo->fetchImageQuery( $query );
 
-			if ( isset( $data['warnings'] ) && isset( $data['warnings']['query'] )
-				&& $data['warnings']['query']['*'] == "Unrecognized value for parameter 'prop': videoinfo"
+			if ( isset( $data['warnings']['query'] ) &&
+				$data['warnings']['query']['*'] === "Unrecognized value for parameter 'prop': videoinfo"
 			) {
 				// The target wiki doesn't have TimedMediaHandler.
 				// Use the normal file repo system single source:
-				return [ self::getPrimarySourceAttributes( $file, [ $dataPrefix ] ) ];
+				return [ static::getPrimarySourceAttributes( $file, [ $dataPrefix ] ) ];
 			}
 
 			$sources = [];
 			// Generate the source list from the data response:
-			if ( isset( $data['query'] ) && $data['query']['pages'] ) {
+			if ( isset( $data['query']['pages'] ) ) {
 				$vidResult = array_shift( $data['query']['pages'] );
 				if ( isset( $vidResult['videoinfo'] ) ) {
 					$derResult = array_shift( $vidResult['videoinfo'] );
@@ -665,7 +669,7 @@ class WebVideoTranscode {
 		$sources = [];
 
 		// Add the original file:
-		$sources[] = self::getPrimarySourceAttributes( $file, $options );
+		$sources[] = static::getPrimarySourceAttributes( $file, $options );
 
 		// If $wgEnableTranscode is false don't look for or add other local sources:
 		if ( $wgEnableTranscode === false &&
@@ -683,14 +687,14 @@ class WebVideoTranscode {
 		'@phan-var ID3Handler $handler';
 		// Now Check for derivatives
 		if ( $handler->isAudio( $file ) ) {
-			$transcodeSet = self::enabledAudioTranscodes();
+			$transcodeSet = static::enabledAudioTranscodes();
 		} else {
-			$transcodeSet = self::enabledVideoTranscodes();
+			$transcodeSet = static::enabledVideoTranscodes();
 		}
 		foreach ( $transcodeSet as $transcodeKey ) {
-			if ( self::isTranscodeEnabled( $file, $transcodeKey ) ) {
+			if ( static::isTranscodeEnabled( $file, $transcodeKey ) ) {
 				// Try and add the source
-				self::addSourceIfReady( $file, $sources, $transcodeKey, $options );
+				static::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 			}
 		}
 
@@ -706,7 +710,7 @@ class WebVideoTranscode {
 	 */
 	public static function isTranscodeReady( $file, $transcodeKey ) {
 		// Check if we need to populate the transcodeState cache:
-		$transcodeState = self::getTranscodeState( $file );
+		$transcodeState = static::getTranscodeState( $file );
 
 		// If no state is found the cache for this file is false:
 		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
@@ -722,9 +726,9 @@ class WebVideoTranscode {
 	 */
 	public static function clearTranscodeCache( $fileName = null ) {
 		if ( $fileName ) {
-			unset( self::$transcodeState[ $fileName ] );
+			unset( static::$transcodeState[ $fileName ] );
 		} else {
-			self::$transcodeState = [];
+			static::$transcodeState = [];
 		}
 	}
 
@@ -739,12 +743,12 @@ class WebVideoTranscode {
 	public static function getTranscodeState( $file, $db = false ) {
 		global $wgTranscodeBackgroundTimeLimit;
 		$fileName = $file->getName();
-		if ( !isset( self::$transcodeState[$fileName] ) ) {
+		if ( !isset( static::$transcodeState[$fileName] ) ) {
 			if ( $db === false ) {
 				$db = $file->repo->getReplicaDB();
 			}
 			// initialize the transcode state array
-			self::$transcodeState[ $fileName ] = [];
+			static::$transcodeState[ $fileName ] = [];
 			$res = $db->select( 'transcode',
 				'*',
 				[ 'transcode_image_name' => $fileName ],
@@ -760,11 +764,11 @@ class WebVideoTranscode {
 				foreach ( $row as $k => $v ) {
 					$transcodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
 				}
-				self::$transcodeState[ $fileName ][ $row->transcode_key ] = $transcodeState;
-				if ( $row->transcode_time_startwork != null
+				static::$transcodeState[ $fileName ][ $row->transcode_key ] = $transcodeState;
+				if ( $row->transcode_time_startwork !== null
 					&& wfTimestamp( TS_UNIX, $row->transcode_time_startwork ) < $over
-					&& $row->transcode_time_success == null
-					&& $row->transcode_time_error == null
+					&& $row->transcode_time_success === null
+					&& $row->transcode_time_error === null
 				) {
 					$overTimeout[] = $row->transcode_key;
 				}
@@ -786,7 +790,7 @@ class WebVideoTranscode {
 				);
 			}
 		}
-		$sorted = self::$transcodeState[ $fileName ];
+		$sorted = static::$transcodeState[ $fileName ];
 		uksort( $sorted, 'strnatcmp' );
 		return $sorted;
 	}
@@ -797,10 +801,10 @@ class WebVideoTranscode {
 	 * startJobQueue() or updateJobQueue().
 	 *
 	 * also remove the transcode files:
-	 * @param File &$file File Object
+	 * @param File $file File Object
 	 * @param string|false $transcodeKey Optional transcode key to remove only this key
 	 */
-	public static function removeTranscodes( &$file, $transcodeKey = false ) {
+	public static function removeTranscodes( $file, $transcodeKey = false ) {
 		// if transcode key is non-false, non-null:
 		if ( $transcodeKey ) {
 			// only remove the requested $transcodeKey
@@ -821,8 +825,8 @@ class WebVideoTranscode {
 		// Remove files by key:
 		$urlsToPurge = [];
 		foreach ( $removeKeys as $tKey ) {
-			$urlsToPurge[] = self::getTranscodedUrlForFile( $file, $tKey );
-			$filePath = self::getDerivativeFilePath( $file, $tKey );
+			$urlsToPurge[] = static::getTranscodedUrlForFile( $file, $tKey );
+			$filePath = static::getDerivativeFilePath( $file, $tKey );
 			if ( $file->repo->fileExists( $filePath ) ) {
 				$res = $file->repo->quickPurge( $filePath );
 				if ( !$res ) {
@@ -846,16 +850,16 @@ class WebVideoTranscode {
 
 		// Purge the cache for pages that include this video:
 		$titleObj = $file->getTitle();
-		self::invalidatePagesWithFile( $titleObj );
+		static::invalidatePagesWithFile( $titleObj );
 
 		// Remove from local WebVideoTranscode cache:
-		self::clearTranscodeCache( $titleObj->getDBkey() );
+		static::clearTranscodeCache( $titleObj->getDBkey() );
 	}
 
 	/**
-	 * @param Title &$titleObj
+	 * @param Title $titleObj
 	 */
-	public static function invalidatePagesWithFile( &$titleObj ) {
+	public static function invalidatePagesWithFile( $titleObj ) {
 		wfDebug( "WebVideoTranscode:: Invalidate pages that include: " . $titleObj->getDBkey() . "\n" );
 		// Purge the main image page:
 		$titleObj->invalidateCache();
@@ -882,15 +886,15 @@ class WebVideoTranscode {
 	 *
 	 * If the source is not found, it will not be used yet...
 	 * Missing transcodes should be added by write tasks, not read tasks!
-	 * @param File &$file
+	 * @param File $file
 	 * @param array &$sources
 	 * @param string $transcodeKey
 	 * @param array $dataPrefix
 	 */
-	public static function addSourceIfReady( &$file, &$sources, $transcodeKey, $dataPrefix ) {
+	public static function addSourceIfReady( $file, &$sources, $transcodeKey, $dataPrefix ) {
 		// Check if the transcode is ready:
-		if ( self::isTranscodeReady( $file, $transcodeKey ) ) {
-			$sources[] = self::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
+		if ( static::isTranscodeReady( $file, $transcodeKey ) ) {
+			$sources[] = static::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
 		}
 	}
 
@@ -902,7 +906,7 @@ class WebVideoTranscode {
 	 */
 	public static function getPrimarySourceAttributes( $file, $options = [] ) {
 		global $wgLang;
-		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
+		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
 		/** @var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
@@ -933,8 +937,8 @@ class WebVideoTranscode {
 				'timedmedia-source-file',
 				wfMessage( 'timedmedia-' . $metadataType )->text()
 			)->text(),
-			"width" => intval( $file->getWidth() ),
-			"height" => intval( $file->getHeight() ),
+			"width" => (int)$file->getWidth(),
+			"height" => (int)$file->getHeight(),
 		];
 
 		if ( $bitrate ) {
@@ -945,7 +949,7 @@ class WebVideoTranscode {
 		if ( !$handler->isAudio( $file ) ) {
 			$framerate = $handler->getFramerate( $file );
 			if ( $framerate ) {
-				$source[ "framerate" ] = floatval( $framerate );
+				$source[ "framerate" ] = (float)$framerate;
 			}
 		}
 		return $source;
@@ -962,7 +966,7 @@ class WebVideoTranscode {
 	public static function getDerivativeSourceAttributes( $file, $transcodeKey, $options = [] ) {
 		$fileName = $file->getTitle()->getDBkey();
 
-		$src = self::getTranscodedUrlForFile( $file, $transcodeKey );
+		$src = static::getTranscodedUrlForFile( $file, $transcodeKey );
 
 		/** @var ID3Handler $handler */
 		$handler = $file->getHandler();
@@ -970,38 +974,36 @@ class WebVideoTranscode {
 		if ( $handler->isAudio( $file ) ) {
 			$width = $height = 0;
 		} else {
-			list( $width, $height ) = self::getMaxSizeTransform(
+			[ $width, $height ] = static::getMaxSizeTransform(
 				$file,
-				self::$derivativeSettings[$transcodeKey]['maxSize']
+				static::$derivativeSettings[$transcodeKey]['maxSize']
 			);
 		}
 
-		$framerate = self::$derivativeSettings[$transcodeKey]['framerate']
+		$framerate = static::$derivativeSettings[$transcodeKey]['framerate']
 			?? $handler->getFramerate( $file );
 		// Setup the url src:
-		$src = in_array( 'fullurl', $options ) ? wfExpandUrl( $src ) : $src;
+		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $src ) : $src;
 		$fields = [
 			'src' => $src,
 			'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
-			'type' => self::$derivativeSettings[ $transcodeKey ][ 'type' ],
+			'type' => static::$derivativeSettings[ $transcodeKey ][ 'type' ],
 			"shorttitle" => wfMessage( 'timedmedia-derivative-' . $transcodeKey )->text(),
 			"transcodekey" => $transcodeKey,
 
 			// Add data attributes per emerging DASH / webTV adaptive streaming attributes
 			// eventually we will define a manifest xml entry point.
-			"width" => intval( $width ),
-			"height" => intval( $height ),
+			"width" => (int)$width,
+			"height" => (int)$height,
 		];
 
 		// a "ready" transcode should have a bitrate:
-		if ( isset( self::$transcodeState[$fileName] ) ) {
-			$fields["bandwidth"] = intval(
-				self::$transcodeState[$fileName][ $transcodeKey ]['final_bitrate']
-			);
+		if ( isset( static::$transcodeState[$fileName] ) ) {
+			$fields["bandwidth"] = (int)static::$transcodeState[$fileName][$transcodeKey]['final_bitrate'];
 		}
 
 		if ( !$handler->isAudio( $file ) ) {
-			$fields += [ "framerate" => floatval( $framerate ) ];
+			$fields += [ "framerate" => (float)$framerate ];
 		}
 		return $fields;
 	}
@@ -1011,7 +1013,7 @@ class WebVideoTranscode {
 	 * @param File $file File object
 	 */
 	public static function startJobQueue( File $file ) {
-		$keys = self::enabledTranscodes();
+		$keys = static::enabledTranscodes();
 
 		// 'Natural sort' puts the transcodes in ascending order by resolution,
 		// which roughly gives us fastest-to-slowest order.
@@ -1020,7 +1022,7 @@ class WebVideoTranscode {
 		foreach ( $keys as $tKey ) {
 			// Note the job queue will de-duplicate and handle various errors, so we
 			// can just blast out the full list here.
-			self::updateJobQueue( $file, $tKey );
+			static::updateJobQueue( $file, $tKey );
 		}
 	}
 
@@ -1034,11 +1036,11 @@ class WebVideoTranscode {
 		$fileName = $file->getTitle()->getDBkey();
 		$db = $file->repo->getPrimaryDB();
 
-		$transcodeState = self::getTranscodeState( $file, $db );
+		$transcodeState = static::getTranscodeState( $file, $db );
 
-		$keys = self::enabledTranscodes();
+		$keys = static::enabledTranscodes();
 		foreach ( $keys as $transcodeKey ) {
-			if ( !self::isTranscodeEnabled( $file, $transcodeKey ) ) {
+			if ( !static::isTranscodeEnabled( $file, $transcodeKey ) ) {
 				// This transcode is no longer enabled or erroneously included...
 				// Leave it in place, allowing it to be removed manually;
 				// it won't be used in playback and should be doing no harm.
@@ -1061,7 +1063,7 @@ class WebVideoTranscode {
 		}
 
 		// Remove from local WebVideoTranscode cache:
-		self::clearTranscodeCache( $fileName );
+		static::clearTranscodeCache( $fileName );
 	}
 
 	/**
@@ -1078,28 +1080,27 @@ class WebVideoTranscode {
 		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
 		$audio = $handler->isAudio( $file );
 		if ( $audio ) {
-			$keys = self::enabledAudioTranscodes();
+			$keys = static::enabledAudioTranscodes();
 		} else {
-			$keys = self::enabledVideoTranscodes();
+			$keys = static::enabledVideoTranscodes();
 		}
 
-		if ( in_array( $transcodeKey, $keys ) ) {
-			$settings = self::$derivativeSettings[$transcodeKey];
+		if ( in_array( $transcodeKey, $keys, true ) ) {
+			$settings = static::$derivativeSettings[$transcodeKey];
 			if ( $audio ) {
 				$sourceCodecs = $handler->getStreamTypes( $file );
 				$sourceCodec = $sourceCodecs ? strtolower( $sourceCodecs[0] ) : '';
 				return ( $sourceCodec !== $settings['audioCodec'] );
-			} elseif ( self::isTargetLargerThanFile( $file, $settings['maxSize'] ) ) {
+			}
+			if ( static::isTargetLargerThanFile( $file, $settings['maxSize'] ) ) {
 				// Are we the smallest enabled transcode for this type?
 				// Then go ahead and make a wee little transcode for compat.
-				return self::isSmallestTranscodeForCodec( $transcodeKey );
-			} else {
-				return true;
+				return static::isSmallestTranscodeForCodec( $transcodeKey );
 			}
-		} else {
-			// Transcode key is invalid or has been disabled.
-			return false;
+			return true;
 		}
+		// Transcode key is invalid or has been disabled.
+		return false;
 	}
 
 	/**
@@ -1111,9 +1112,9 @@ class WebVideoTranscode {
 		$fileName = $file->getTitle()->getDBkey();
 		$db = $file->repo->getPrimaryDB();
 
-		$transcodeState = self::getTranscodeState( $file, $db );
+		$transcodeState = static::getTranscodeState( $file, $db );
 
-		if ( !self::isTranscodeEnabled( $file, $transcodeKey ) ) {
+		if ( !static::isTranscodeEnabled( $file, $transcodeKey ) ) {
 			return;
 		}
 
@@ -1138,7 +1139,7 @@ class WebVideoTranscode {
 			}
 
 			// Set the priority
-			$prioritized = self::isTranscodePrioritized( $file, $transcodeKey );
+			$prioritized = static::isTranscodePrioritized( $file, $transcodeKey );
 
 			$job = new WebVideoTranscodeJob( $file->getTitle(), [
 				'transcodeMode' => 'derivative',
@@ -1149,7 +1150,7 @@ class WebVideoTranscode {
 			try {
 				MediaWikiServices::getInstance()->getJobQueueGroupFactory()->makeJobQueueGroup()->push( $job );
 				// Clear the state cache ( now that we have updated the page )
-				self::clearTranscodeCache( $fileName );
+				static::clearTranscodeCache( $fileName );
 			} catch ( Exception $ex ) {
 				// Adding job failed, update transcode row
 				$db->update(
@@ -1181,7 +1182,7 @@ class WebVideoTranscode {
 		$transcodeHeight = 0;
 		$matches = [];
 		if ( preg_match( '/^(\d+)p/', $transcodeKey, $matches ) ) {
-			$transcodeHeight = intval( $matches[0] );
+			$transcodeHeight = (int)$matches[0];
 		}
 		return ( $transcodeHeight <= $wgTmhPriorityResolutionThreshold )
 			&& ( $file->getLength() <= $wgTmhPriorityLengthThreshold );
@@ -1206,20 +1207,20 @@ class WebVideoTranscode {
 			],
 			__METHOD__
 		);
-		return intval( $count );
+		return (int)$count;
 	}
 
 	/**
 	 * Transforms the size per a given "maxSize"
 	 *  if maxSize is > file, file size is used
-	 * @param File &$file
+	 * @param File $file
 	 * @param string $targetMaxSize
 	 * @return int[]
 	 */
-	public static function getMaxSizeTransform( &$file, $targetMaxSize ) {
-		$maxSize = self::getMaxSize( $targetMaxSize );
-		$sourceWidth = intval( $file->getWidth() );
-		$sourceHeight = intval( $file->getHeight() );
+	public static function getMaxSizeTransform( $file, $targetMaxSize ) {
+		$maxSize = static::getMaxSize( $targetMaxSize );
+		$sourceWidth = (int)$file->getWidth();
+		$sourceHeight = (int)$file->getHeight();
 		if ( $sourceHeight === 0 ) {
 			// Audio file
 			return [ 0, 0 ];
@@ -1230,12 +1231,12 @@ class WebVideoTranscode {
 		if ( $sourceAspect <= $maxSize['aspect'] ) {
 			if ( $sourceHeight > $maxSize['height'] ) {
 				$targetHeight = $maxSize['height'];
-				$targetWidth = intval( $targetHeight * $sourceAspect );
+				$targetWidth = (int)( $targetHeight * $sourceAspect );
 			}
 		} else {
 			if ( $sourceWidth > $maxSize['width'] ) {
 				$targetWidth = $maxSize['width'];
-				$targetHeight = intval( $targetWidth / $sourceAspect );
+				$targetHeight = (int)( $targetWidth / $sourceAspect );
 				// some players do not like uneven frame sizes
 			}
 		}
@@ -1253,15 +1254,14 @@ class WebVideoTranscode {
 	 * @return bool
 	 */
 	public static function isTargetLargerThanFile( &$file, $targetMaxSize ) {
-		$maxSize = self::getMaxSize( $targetMaxSize );
+		$maxSize = static::getMaxSize( $targetMaxSize );
 		$sourceWidth = $file->getWidth();
 		$sourceHeight = $file->getHeight();
-		$sourceAspect = intval( $sourceWidth ) / intval( $sourceHeight );
+		$sourceAspect = (int)$sourceWidth / (int)$sourceHeight;
 		if ( $sourceAspect <= $maxSize['aspect'] ) {
 			return ( $maxSize['height'] > $sourceHeight );
-		} else {
-			return ( $maxSize['width'] > $sourceWidth );
 		}
+		return ( $maxSize['width'] > $sourceWidth );
 	}
 
 	/**
@@ -1272,14 +1272,14 @@ class WebVideoTranscode {
 	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 */
 	public static function isSmallestTranscodeForCodec( $transcodeKey ) {
-		$settings = self::$derivativeSettings[$transcodeKey];
+		$settings = static::$derivativeSettings[$transcodeKey];
 		$vcodec = $settings['videoCodec'];
-		$maxSize = self::getMaxSize( $settings['maxSize'] );
+		$maxSize = static::getMaxSize( $settings['maxSize'] );
 
-		foreach ( self::enabledVideoTranscodes() as $tKey ) {
-			$tsettings = self::$derivativeSettings[$tKey];
+		foreach ( static::enabledVideoTranscodes() as $tKey ) {
+			$tsettings = static::$derivativeSettings[$tKey];
 			if ( $tsettings['videoCodec'] === $vcodec ) {
-				$tmaxSize = self::getMaxSize( $tsettings['maxSize'] );
+				$tmaxSize = static::getMaxSize( $tsettings['maxSize'] );
 				if ( $tmaxSize['width'] < $maxSize['width'] ) {
 					return false;
 				}
@@ -1300,15 +1300,15 @@ class WebVideoTranscode {
 	 */
 	public static function getMaxSize( $targetMaxSize ) {
 		$maxSize = [];
-		$targetMaxSize = explode( 'x', $targetMaxSize );
-		$maxSize['width'] = intval( $targetMaxSize[0] );
-		if ( count( $targetMaxSize ) == 1 ) {
-			$maxSize['height'] = intval( $targetMaxSize[0] );
+		$targetMaxSize = explode( 'x', $targetMaxSize, 2 );
+		$maxSize['width'] = (int)$targetMaxSize[0];
+		if ( count( $targetMaxSize ) === 1 ) {
+			$maxSize['height'] = (int)$targetMaxSize[0];
 		} else {
-			$maxSize['height'] = intval( $targetMaxSize[1] );
+			$maxSize['height'] = (int)$targetMaxSize[1];
 		}
 		// check for zero size ( audio )
-		if ( $maxSize['width'] === 0 || $maxSize['height'] == 0 ) {
+		if ( $maxSize['width'] === 0 || $maxSize['height'] === 0 ) {
 			$maxSize['aspect'] = 0;
 		} else {
 			$maxSize['aspect'] = $maxSize['width'] / $maxSize['height'];
@@ -1330,22 +1330,22 @@ class WebVideoTranscode {
 	public static function enabledTranscodes() {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
 		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable These globals are arrays
-		return self::filterAndSort( array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet ) );
+		return static::filterAndSort( array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet ) );
 	}
 
 	public static function enabledVideoTranscodes() {
 		global $wgEnabledTranscodeSet;
-		return self::filterAndSort( $wgEnabledTranscodeSet );
+		return static::filterAndSort( $wgEnabledTranscodeSet );
 	}
 
 	public static function enabledAudioTranscodes() {
 		global $wgEnabledAudioTranscodeSet;
-		return self::filterAndSort( $wgEnabledAudioTranscodeSet );
+		return static::filterAndSort( $wgEnabledAudioTranscodeSet );
 	}
 
 	public static function validateTranscodeConfiguration() {
-		foreach ( self::enabledTranscodes() as $transcodeKey ) {
-			if ( !isset( self::$derivativeSettings[ $transcodeKey ] ) ) {
+		foreach ( static::enabledTranscodes() as $transcodeKey ) {
+			if ( !isset( static::$derivativeSettings[ $transcodeKey ] ) ) {
 				throw new MWException(
 					__METHOD__ . ": Invalid key '$transcodeKey' specified in"
 						. " wgEnabledTranscodeSet or wgEnabledAudioTranscodeSet."

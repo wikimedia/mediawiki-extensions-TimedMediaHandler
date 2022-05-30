@@ -80,7 +80,7 @@ class TimedTextPage extends Article {
 		$languageKey = array_pop( $titleParts );
 
 		$oldid = $this->getOldID();
-		# Are we looking at an old revision
+		// Are we looking at an old revision
 		if ( $oldid && $this->fetchRevisionRecord() ) {
 			$out->setRevisionId( $this->getRevIdFetched() );
 			$this->setOldSubtitle( $oldid );
