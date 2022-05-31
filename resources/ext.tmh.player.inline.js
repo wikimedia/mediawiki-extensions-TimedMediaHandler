@@ -298,7 +298,10 @@ InlinePlayer.prototype.infuse = function () {
 	return mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
 		.then( function () {
 			var d = $.Deferred();
-			this.videojsPlayer = videojs( this.videoplayer, this.playerConfig, function () {
+			this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );
+			// Do not use the ready callback of the videojs function
+			// The texttracks are not done initializing in that ready callback (T309414)
+			this.videojsPlayer.ready( function () {
 				var videojsPlayer = this;
 				InlinePlayer.activePlayers.push( videojsPlayer );
 				inlinePlayer.selectDefaultTrack();
