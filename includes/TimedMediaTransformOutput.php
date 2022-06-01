@@ -404,8 +404,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	private function getMediaAttr(
 		$sizeOverride = false, $autoPlay = false, string $classes = ''
 	): array {
-		global $wgVideoPlayerSkin;
-
 		// Make sure we have pure floats values and round them up to whole seconds
 		$length = ceil( (float)$this->length );
 
@@ -446,7 +444,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 
 		// Note: do not add 'video-js' class before the runtime transform!
-		$mediaAttr['class'] = $wgVideoPlayerSkin;
+		$mediaAttr['class'] = '';
 		$mediaAttr['width'] = (int)$width;
 		if ( $this->isVideo ) {
 			$mediaAttr['height'] = (int)$height;
