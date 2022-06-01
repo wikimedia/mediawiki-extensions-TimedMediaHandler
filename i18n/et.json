@@ -115,6 +115,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|Üks|$1}} algatamata {{PLURAL:$1|ümberkodeering|ümberkodeeringut}}",
 	"timedmedia-no-derivatives": "Ümberkodeerimine pole vajalik.",
 	"timedmedia-file": "Fail",
+	"timedmedia-dialog-close": "Sule meediumiesitaja",
 	"right-transcode-reset": "Lähtestada ebaõnnestunud või ümberkodeeritud videoid, nii et need lisatakse uuesti tööjärge",
 	"right-transcode-status": "Vaadata [[Special:TimedMediaHandler|teavet praegu aktiivsete ümberkodeeringute kohta]]",
 	"action-transcode-reset": "ümberkodeeringuid lähtestada",
@@ -127,6 +128,8 @@
 	"orphanedtimedtext-unsupported": "Seda erilehekülge toetatakse ainult MySQL-andmebaasides.",
 	"videojs-more-information": "Lisateave",
 	"videojs-quality": "Video kvaliteet",
+	"videojs-subtitles-create": "Koosta subtiitrid",
+	"videojs-captions-create": "Koosta pealdised",
 	"transcodestatistics": "Ümberkodeerimise arvandmestik",
 	"timedmedia-timedtext-title-edit-subtitles": "Lõigu $2 $1 alltiitrid",
 	"timedmedia-timedtext-title-create-subtitles": "Lõigu $2 jaoks ei leitud $1 alltiitreid"
