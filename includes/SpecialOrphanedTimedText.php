@@ -109,7 +109,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return bool
 	 */
 	private function canExecute(): bool {
-		return $this->canExecuteQuery() && $this->getConfig()->get( 'EnableLocalTimedText' );
+		return $this->canExecuteQuery();
 	}
 
 	/**
