@@ -70,5 +70,6 @@
 	"timedmedia-file": "Файл",
 	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
 	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|йуха код хийцаран хааме]]",
-	"orphanedtimedtext": "Йайна агӀонаш TimedText"
+	"orphanedtimedtext": "Йайна агӀонаш TimedText",
+	"transcodestatistics": "Кодхийцаран статистика"
 }
