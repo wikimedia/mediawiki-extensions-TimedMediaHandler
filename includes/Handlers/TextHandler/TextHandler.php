@@ -268,6 +268,7 @@ class TextHandler {
 		foreach ( $data as $row ) {
 			$titleParts = explode( '.', $row->page_title );
 			if ( count( $titleParts ) >= 3 ) {
+				$timedTextExtension = array_pop( $titleParts );
 				$languageKey = array_pop( $titleParts );
 			} else {
 				continue;
