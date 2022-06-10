@@ -3,6 +3,7 @@
 		"authors": [
 			"Kaustubh",
 			"NehalDaveND",
+			"Saurmandal",
 			"Sfic",
 			"Shyam",
 			"Siddhartha Ghai",
@@ -38,7 +39,7 @@
 	"timedmedia-started-transcode": "$1 पहले शुरू। $2",
 	"timedmedia-percent-done": "$1% पूर्ण हुआ",
 	"timedmedia-source-file": "$1 स्रोत",
-	"timedmedia-source-audio-file-desc": "मूल $1 फ़ाइल ($2)",
+	"timedmedia-source-audio-file-desc": "मूल $1 चित्र ($2)",
 	"timedmedia-derivative-desc-240p.ogv": "छोटा Ogg वीडियो (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg वीडियो (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "SD Ogg वीडियो (480P)",
