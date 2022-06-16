@@ -78,13 +78,20 @@
 			 * @return {boolean}
 			 */
 			isMediaNativelySupported: function ( mediaElement ) {
-				var mediaType;
+				var mediaType, canPlay;
 				var supportedNatively = false;
 				var sourcesList = mediaElement.querySelectorAll( 'source' );
 				// IE11: NodeList.forEach
 				Array.prototype.forEach.call( sourcesList, function ( source ) {
 					mediaType = source.getAttribute( 'type' );
-					if ( mediaElement.canPlayType( mediaType ) ) {
+					canPlay = mediaElement.canPlayType( mediaType );
+					if ( canPlay === true || canPlay === 'probably' ) {
+						// Safari reports "maybe" for "video/mpeg", then doesn't
+						// actually support it based on the found video codecs.
+						// This produces false positives on old iOS/macOS devices
+						// that don't support VP9 in hw. Exclude these, so only
+						// those returning 'probably' or another sensible code.
+						// Very very old browsers may return boolean `true`.
 						supportedNatively = true;
 					}
 				} );
