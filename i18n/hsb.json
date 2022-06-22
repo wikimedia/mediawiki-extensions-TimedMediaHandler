@@ -72,6 +72,6 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 překodowanje|$1 překodowani|$1 překodowanja|$1 překodowanjow}} w čakanskim rynku",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 zwrěsćene překodowanje|$1 zwrěsćenej překodowani|$1 zwrěsćene překodowanja|$1 zwrěsćenych překodowanjow}}",
 	"timedmedia-file": "Dataja",
-	"timedmedia-timedtext-title-edit-subtitles": "$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2",
+	"timedmedia-timedtext-title-edit-subtitles": "Podtitule w rěči $1 za klip: $2",
 	"timedmedia-timedtext-title-create-subtitles": "Žane podtitule $1 za klip namakane: $2"
 }
