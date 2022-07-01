@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gildo Máquina"
+			"Gildo Máquina",
+			"Tomas Armando Moz"
 		]
 	},
-	"timedmedia-source-file": "Mukhumelo $1"
+	"timedmedia-source-file": "Mukhumelo $1",
+	"timedmedia-source-audio-file-desc": "Eneniyaaya $1 murupa ($2)"
 }

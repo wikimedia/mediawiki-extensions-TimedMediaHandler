@@ -3,6 +3,7 @@
 		"authors": [
 			"Boniface",
 			"Brunoperel",
+			"Cigaryno",
 			"Crochet.david",
 			"Derugon",
 			"Dgstranz",
@@ -183,6 +184,7 @@
 	"timedmedia-subtitle-new": "Créer une nouvelle traduction ou modifier une traduction existante",
 	"timedmedia-subtitle-new-desc": "Sélectionnez la langue et appuyez sur le bouton '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Aller",
+	"timedmedia-subtitle-language": "$1 {{BIDI:($2)}}",
 	"timedmedia-subtitle-no-video": "Il n’y a aucune vidéo associée à la page actuelle de sous-titre.",
 	"timedmedia-subtitle-no-subtitles": "Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter",
 	"timedmedia-subtitle-remote": "Le texte prévu pour ce fichier est hébergé sur $1",
