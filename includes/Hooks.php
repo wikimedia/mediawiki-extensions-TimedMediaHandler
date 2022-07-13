@@ -454,9 +454,6 @@ class Hooks implements
 			$updater->addExtensionTable( 'transcode',
 				$dir . 'tables-generated.sql'
 			);
-			$updater->addExtensionIndex( 'transcode', 'transcode_name_key',
-				$dir . 'transcode_name_key.sql'
-			);
 		} elseif ( $dbType === 'sqlite' ) {
 			$updater->addExtensionTable( 'transcode',
 				$dir . 'sqlite/tables-generated.sql'
@@ -467,6 +464,8 @@ class Hooks implements
 			);
 		}
 		$dirPatch = $dbType === 'mysql' ? $dir : $dir . $dbType . '/';
+
+		// 1.38
 		$updater->modifyExtensionField(
 			'transcode', 'transcode_time_error', $dirPatch . 'patch-transcode-transcode_timestamp.sql'
 		);
