@@ -92,9 +92,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		$params = parent::getAllowedParams();
 		foreach ( $params as $k => $v ) {
 			if ( !isset( $v[ApiBase::PARAM_HELP_MSG] ) ) {
-				$params[$k] = [
-					ApiBase::PARAM_HELP_MSG => "apihelp-query+imageinfo-param-$k"
-				];
+				$params[$k][ApiBase::PARAM_HELP_MSG] = "apihelp-query+imageinfo-param-$k";
 			}
 		}
 
