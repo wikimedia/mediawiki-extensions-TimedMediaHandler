@@ -91,6 +91,9 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	public function getAllowedParams() {
 		$params = parent::getAllowedParams();
 		foreach ( $params as $k => $v ) {
+			// If PARAM_HELP_MSG is not manually set for this parameter, force fallback
+			// to the query+imageinfo-param message (ie the parent module) rather than the
+			// query+videoinfo-param that MediaWiki would default to.
 			if ( !isset( $v[ApiBase::PARAM_HELP_MSG] ) ) {
 				$params[$k][ApiBase::PARAM_HELP_MSG] = "apihelp-query+imageinfo-param-$k";
 			}
