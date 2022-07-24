@@ -389,7 +389,7 @@ InlinePlayer.prototype.extractResolutions = function () {
 				// * timedmedia-resolution-1080
 				// * timedmedia-resolution-1440
 				// * timedmedia-resolution-2160
-				label = mw.message( 'timedmedia-resolution-' + res ).text();
+				label = mw.msg( 'timedmedia-resolution-' + res );
 			}
 		} else {
 			// Original source; sort to top and never auto-select.
