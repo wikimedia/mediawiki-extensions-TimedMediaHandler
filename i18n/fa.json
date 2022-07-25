@@ -21,7 +21,7 @@
 			"پاناروما"
 		]
 	},
-	"timedmediahandler-extensionname": "هدایت‌کننده رسانهٔ زمان‌دار",
+	"timedmediahandler-extensionname": "TimedMediaHandler",
 	"timedmediahandler-desc": "به دست گیرندهٔ پرونده‌های صوتی، تصویری و متن‌های زمان‌بندی شده با پشتیبانی از Ogg Theora ،Vorbis و srt",
 	"timedmedia-ogg-short-audio": "پرونده صوتی Ogg $1، $2",
 	"timedmedia-ogg-short-video": "پرونده تصویری Ogg $1، $2",

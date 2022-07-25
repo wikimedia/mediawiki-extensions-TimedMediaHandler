@@ -12,6 +12,7 @@
 			"Patriccck",
 			"Patrik L.",
 			"Paxt",
+			"Saurmandal",
 			"Urbanecm"
 		]
 	},
@@ -21,7 +22,7 @@
 	"timedmedia-ogg-short-general": "Multimediální soubor Ogg $1, $2",
 	"timedmedia-ogg-long-audio": "Zvukový soubor Ogg $1, délka $2, $3",
 	"timedmedia-ogg-long-video": "Videosoubor Ogg $1, délka $2, $4×$5 pixelů, $3",
-	"timedmedia-ogg-long-multiplexed": "Multiplexovaný audio/video soubor Ogg, $1, délka $2, $4×$5 pixelů, celkem $3",
+	"timedmedia-ogg-long-multiplexed": "multiplexovaný audio/video soubor Ogg, $1, délka $2, $4×$5 pixelů, celkem $3",
 	"timedmedia-ogg-long-general": "Multimediální soubor Ogg, délka $2, $3",
 	"timedmedia-ogg-long-error": "Chybný soubor Ogg: $1",
 	"timedmedia-ogg-long-no-streams": "Multimediální soubor Ogg. Upozornění: Žádný z kodeků použitých v tomto souboru nebyl rozpoznán.",

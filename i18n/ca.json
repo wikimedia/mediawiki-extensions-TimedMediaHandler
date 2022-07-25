@@ -11,6 +11,7 @@
 			"Paucabot",
 			"Pitort",
 			"SMP",
+			"Saurmandal",
 			"Toniher",
 			"Vriullop"
 		]
@@ -21,7 +22,7 @@
 	"timedmedia-ogg-short-general": "Fitxer multimèdia OGG $1, $2",
 	"timedmedia-ogg-long-audio": "Fitxer de so Ogg $1; durada: $2; $3",
 	"timedmedia-ogg-long-video": "Fitxer OGG de vídeo $1, llargada $2, $4×$5 píxels, $3",
-	"timedmedia-ogg-long-multiplexed": "Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana",
+	"timedmedia-ogg-long-multiplexed": "arxiu àudio/vídeo multiplex, $1, llargada $2, $4 × $5 píxels, $3 de mitjana",
 	"timedmedia-ogg-long-general": "Fitxer multimèdia Ogg; durada: $2; $3",
 	"timedmedia-ogg-long-error": "Fitxer OGG no vàlid: $1",
 	"timedmedia-webm-long-video": "Fitxer d'àudio/vídeo WebM, $1, durada $2, $4 × $5 píxels, $3 total",

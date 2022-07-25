@@ -3,6 +3,7 @@
 		"authors": [
 			"Fohanno",
 			"Fulup",
+			"Saurmandal",
 			"Y-M D"
 		]
 	},
@@ -12,7 +13,7 @@
 	"timedmedia-ogg-short-general": "Restr media Ogg $1, $2",
 	"timedmedia-ogg-long-audio": "Restr son Ogg $1, pad $2, $3",
 	"timedmedia-ogg-long-video": "Restr video Ogg $1, pad $2, $4×$5 piksel, $3",
-	"timedmedia-ogg-long-multiplexed": "Restr Ogg klevet/video liesplezhet $1, pad $2, $4×$5 piksel, $3 hollad",
+	"timedmedia-ogg-long-multiplexed": "restr Ogg klevet/video liesplezhet $1, pad $2, $4 × $5 piksel, $3 hollad",
 	"timedmedia-ogg-long-general": "Restr media Ogg, pad $2, $3",
 	"timedmedia-ogg-long-error": "Restr ogg direizh : $1",
 	"timedmedia-webm-short-video": "Restr video WebM $1, $2",
