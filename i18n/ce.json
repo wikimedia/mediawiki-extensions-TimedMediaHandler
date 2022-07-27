@@ -71,5 +71,6 @@
 	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
 	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|йуха код хийцаран хааме]]",
 	"orphanedtimedtext": "Йайна агӀонаш TimedText",
+	"orphanedtimedtext-summary": "ЙогӀуш йолу файл йоцу [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] агӀонийн могӀам.",
 	"transcodestatistics": "Кодхийцаран статистика"
 }
