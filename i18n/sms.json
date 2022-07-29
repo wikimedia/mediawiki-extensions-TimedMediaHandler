@@ -22,9 +22,16 @@
 	"timedmedia-direct-link": "Laadd",
 	"timedmedia-error-on": "Vââʹǩǩ $1",
 	"timedmedia-days": "{{PLURAL:$1|1 peiʹvv|$1 peeiʹv|$1 peiʹvved}}",
+	"timedmedia-hours": "{{PLURAL:$1|1 čiâss|$1 čiâss|$1 čiâssâd}}",
+	"timedmedia-minutes": "{{PLURAL:$1|1 minutt|$1 minuutt|$1 minuttâd}}",
+	"timedmedia-seconds": "{{PLURAL:$1|1 sekuntt|$1 sekuunt|$1 sekunttâd}}",
 	"timedmedia-source-file-desc": "Alggveärlaž $1-teâttõs, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Alggveärlaž $1-teâttõs ($2)",
+	"timedmedia-subtitle-new": "Raaj ođđ jåårǥlõõzz leʹbe muuʹtt juʹn rajjum jåårǥlõõzz",
 	"timedmedia-file": "Teâttõs",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1 čiâss|$1 čiâss|$1 čiâssâd}}, {{PLURAL:$2|$2 minutt|$2 minuutt|$2 minuttâd}} da {{PLURAL:$3|$3 sekuntt|$3 sekuunt|$3 sekunttâd}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minutt|$1 minuutt|$1 minuttâd}} da {{PLURAL:$2|$2 sekuntt|$2 sekuunt|$2 sekunttâd}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 sekuntt|$1 sekuunt|$1 sekunttâd}}",
 	"videojs-more-information": "Lââʹssteâđ",
 	"videojs-quality": "Videokvaliteʹtt"
 }
