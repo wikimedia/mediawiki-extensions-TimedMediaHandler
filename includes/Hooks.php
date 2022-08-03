@@ -424,14 +424,16 @@ class Hooks implements
 
 		if ( $namespace === NS_CATEGORY || $namespace === $wgTimedTextNS ) {
 			$addModules = true;
-		}
-
-		if ( $title->isSpecialPage() ) {
+		} elseif ( $title->isSpecialPage() ) {
 			[ $name, ] = MediaWikiServices::getInstance()
 				->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
-			if (
-				$name === 'Search' || $name === 'GlobalUsage' || $name === 'Upload' ||
-				stripos( $name, 'file' ) !== false || stripos( $name, 'image' ) !== false
+			if ( $name !== null && (
+					$name === 'Search' ||
+					$name === 'GlobalUsage' ||
+					$name === 'Upload' ||
+					stripos( $name, 'file' ) !== false ||
+					stripos( $name, 'image' ) !== false
+				)
 			) {
 				$addModules = true;
 			}
