@@ -155,14 +155,7 @@ MediaElement.prototype.load = function () {
 		}
 	}
 
-	// Config exported via package files, T60082
-	var enableLegacyMediaDOM = require( './config.json' ).ParserEnableLegacyMediaDOM;
-	if ( enableLegacyMediaDOM ) {
-		this.$element.replaceWith( this.$placeholder );
-	} else {
-		// Replace the span linkWrap gave us
-		this.$element.parent().replaceWith( this.$placeholder );
-	}
+	this.$element.replaceWith( this.$placeholder );
 
 	if ( playing ) {
 		this.playInlineOrOpenDialog();

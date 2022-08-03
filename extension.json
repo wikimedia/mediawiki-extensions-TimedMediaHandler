@@ -387,11 +387,7 @@
 			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.js",
-				"resources/ext.tmh.player.element.js",
-				{
-					"name": "resources/config.json",
-					"config": [ "ParserEnableLegacyMediaDOM" ]
-				}
+				"resources/ext.tmh.player.element.js"
 			],
 			"targets": [
 				"mobile",
