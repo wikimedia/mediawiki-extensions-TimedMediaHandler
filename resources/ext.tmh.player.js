@@ -52,7 +52,5 @@ $( function () {
 
 // exported object
 module.exports = {
-	configuration: require( './config.json' ),
-
 	MediaElement: require( './ext.tmh.player.element.js' )
 };
