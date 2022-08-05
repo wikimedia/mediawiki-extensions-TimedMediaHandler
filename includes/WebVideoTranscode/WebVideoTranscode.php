@@ -785,8 +785,7 @@ class WebVideoTranscode {
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $overTimeout
 					],
-					__METHOD__,
-					[ 'LIMIT' => count( $overTimeout ) ]
+					__METHOD__
 				);
 			}
 		}
@@ -1163,8 +1162,7 @@ class WebVideoTranscode {
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
 					],
-					__METHOD__,
-					[ 'LIMIT' => 1 ]
+					__METHOD__
 				);
 			}
 		}
