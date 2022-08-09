@@ -4,5 +4,6 @@
 			"Iflaq"
 		]
 	},
-	"timedmedia-source-file": "$1 آگُر"
+	"timedmedia-source-file": "$1 آگُر",
+	"timedmedia-source-audio-file-desc": "اَصٕل $1 فَیِل ($2)"
 }

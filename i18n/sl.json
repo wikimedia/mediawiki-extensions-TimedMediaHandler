@@ -91,6 +91,8 @@
 	"right-transcode-reset": "Ponastavitev neuspelih ali pretvorjenih videov, da so ponovno vstavljeni v čakalno vrsto opravil",
 	"right-transcode-status": "Ogled [[Special:TimedMediaHandler|informacij o trenutni dejavnosti pretvarjanja]]",
 	"action-transcode-status": "ogled trenutnega stanja pretvorbe",
+	"orphanedtimedtext": "Osirotele TimedText strani",
+	"orphanedtimedtext-summary": "Seznam [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] strani, ki nimajo ustrezajoče datoteke.",
 	"videojs-more-information": "Več informacij",
 	"videojs-quality": "Kvaliteta videa",
 	"transcodestatistics": "Statistika prekodiranja"
