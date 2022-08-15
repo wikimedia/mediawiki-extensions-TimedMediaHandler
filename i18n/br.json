@@ -3,6 +3,7 @@
 		"authors": [
 			"Fohanno",
 			"Fulup",
+			"Huñvreüs",
 			"Saurmandal",
 			"Y-M D"
 		]
@@ -31,12 +32,12 @@
 	"timedmedia-days": "{{PLURAL:$1|1 devezh|$1 devezh}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 eurvezh|$1 eurvezh}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 vunutenn|$1 munutenn}}",
-	"timedmedia-seconds": "$1 {{PLURAL:$1|eilenn|eilenn}}",
+	"timedmedia-seconds": "$1 {{PLURAL:$1|eilenn}}",
 	"timedmedia-reset-button-dismiss": "Disteurel",
 	"timedmedia-reset-button-reset": "Adderaouekaat",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Mammenn $1",
-	"timedmedia-source-file-desc": "Orin $1, $2 × $3 ($4)",
+	"timedmedia-source-file-desc": "Restr $1 orin, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Restr orin $1 ($2)",
 	"timedmedia-derivative-desc-160p.ogv": "Video Ogg izelgas (160P)",
 	"timedmedia-derivative-desc-360p.ogv": "Video Ogg lennus war-eeun war ar Gwiad (360p)",
