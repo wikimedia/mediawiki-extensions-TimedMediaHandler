@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"L2212"
+		]
+	},
+	"timedmedia-source-file": "$1 fonte",
+	"timedmedia-source-audio-file-desc": "Documentu originale $1 ($2)"
+}
