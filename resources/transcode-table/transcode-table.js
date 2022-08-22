@@ -62,4 +62,38 @@ $( function () {
 
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '.mw-filepage-transcodereset a' ).on( 'click', errorPopup );
+
+	function displayErrorDetails( error ) {
+		var messageDialog = new OO.ui.MessageDialog();
+		var windowManager = OO.ui.getWindowManager();
+		windowManager.addWindows( [ messageDialog ] );
+		windowManager.openWindow( messageDialog, {
+			title: mw.msg( 'timedmedia-error-details' ),
+			message: error,
+			actions: [
+				{
+					action: 'accept',
+					label: mw.msg( 'timedmedia-error-dismiss' ),
+					flags: 'primary'
+				}
+			]
+		} );
+	}
+
+	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+		$content.find( '.mw-tmh-pseudo-error-link' ).each( function ( _index, el ) {
+			var $el = $( el );
+			var error = String( $el.data( 'error' ) );
+			var text = $el.text();
+			var $link = $( document.createElement( 'a' ) )
+				.text( text )
+				.attr( 'href', '' )
+				.on( 'click', function ( event ) {
+					event.preventDefault();
+					displayErrorDetails( error );
+				} );
+			$el.replaceWith( $link );
+		} );
+	} );
+
 } );

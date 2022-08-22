@@ -185,6 +185,11 @@
 			"public": true,
 			"value": 3145728
 		},
+		"TranscodeSoftSizeLimit": {
+			"description": "Maximum estimated file size for transcodes without admin approval, in KiB. Larger files must be manually re-enqueued by an admin via web or CLI interfaces. 2GiB.",
+			"public": true,
+			"value": 2097152
+		},
 		"FFmpegThreads": {
 			"description": "Number of threads to use in ffmpeg for transcoding",
 			"public": true,
@@ -219,15 +224,15 @@
 			"public": true,
 			"value": {
 				"160p.webm": false,
-				"240p.webm": false,
-				"360p.webm": false,
-				"480p.webm": false,
+				"240p.webm": true,
+				"360p.webm": true,
+				"480p.webm": true,
 				"720p.webm": false,
 				"1080p.webm": false,
 				"1440p.webm": false,
 				"2160p.webm": false,
-				"120p.vp9.webm": true,
-				"180p.vp9.webm": true,
+				"120p.vp9.webm": false,
+				"180p.vp9.webm": false,
 				"240p.vp9.webm": true,
 				"360p.vp9.webm": true,
 				"480p.vp9.webm": true,
@@ -454,6 +459,7 @@
 				"timedmedia-resolution-160",
 				"timedmedia-resolution-180",
 				"timedmedia-resolution-240",
+				"timedmedia-resolution-288",
 				"timedmedia-resolution-360",
 				"timedmedia-resolution-480",
 				"timedmedia-resolution-720",
@@ -487,7 +493,9 @@
 				"timedmedia-reset-error",
 				"timedmedia-reset",
 				"timedmedia-reset-areyousure",
-				"timedmedia-reset-explanation"
+				"timedmedia-reset-explanation",
+				"timedmedia-error-details",
+				"timedmedia-error-dismiss"
 			]
 		},
 		"ext.tmh.timedtextpage.styles": {

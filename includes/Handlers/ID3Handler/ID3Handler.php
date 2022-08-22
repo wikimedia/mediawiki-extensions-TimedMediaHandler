@@ -100,7 +100,7 @@ class ID3Handler extends TimedMediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return false|int
+	 * @return float framerate as floating point; 0 indicates no valid rate data
 	 */
 	public function getFramerate( $file ) {
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
@@ -108,7 +108,7 @@ class ID3Handler extends TimedMediaHandler {
 			return 0;
 		}
 		// return the frame rate of the first found video stream:
-		return $metadata['video']['frame_rate'] ?? false;
+		return (float)( $metadata['video']['frame_rate'] ?? 0 );
 	}
 
 	/**

@@ -1,0 +1,9 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/node"
+	],
+	"rules": {
+		"no-restricted-properties": "warn"
+	}
+}

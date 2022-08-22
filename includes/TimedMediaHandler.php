@@ -485,6 +485,23 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
+	 * Return frame rate, if applicable, or 0 if no valid data.
+	 * Subclasses will implement relevant metadata extraction.
+	 *
+	 * Note that values returned as floating point are not exact for
+	 * NTSC/ATSC video with 30000/1001, 60000/1001, or 24000/1001
+	 * frame rates!
+	 *
+	 * Note interlacing should be checked separately if relevant.
+	 *
+	 * @param File $file
+	 * @return float
+	 */
+	public function getFramerate( $file ) {
+		return 0;
+	}
+
+	/**
 	 * Returns true if the file contains an interlaced video track.
 	 * @param File $file
 	 * @return bool

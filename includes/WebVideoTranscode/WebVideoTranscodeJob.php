@@ -175,7 +175,6 @@ class WebVideoTranscodeJob extends Job {
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 
 		if ( isset( $options[ 'novideo' ] ) ) {
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
 			$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
 		} else {
 			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
@@ -221,16 +220,14 @@ class WebVideoTranscodeJob extends Job {
 
 		// Check the codec see which encode method to call;
 		$videoCodec = $options['videoCodec'] ?? '';
+		$codecs = [ 'vp8', 'vp9', 'h264' ];
 		if ( isset( $options[ 'novideo' ] ) ) {
 			if ( $file->getMimeType() === 'audio/midi' ) {
 				$status = $this->midiToAudioEncode( $options );
 			} else {
 				$status = $this->ffmpegEncode( $options );
 			}
-		} elseif (
-			$videoCodec === 'vp8' || $videoCodec === 'vp9' ||
-			$videoCodec === 'h264'
-		) {
+		} elseif ( in_array( $videoCodec, $codecs ) ) {
 			// Check for twopass:
 			if ( isset( $options['twopass'] ) ) {
 				// ffmpeg requires manual two pass
@@ -397,6 +394,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function ffmpegEncode( $options, $pass = 0 ) {
 		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
+		global $wgTranscodeBackgroundSizeLimit, $wgTranscodeSoftSizeLimit;
 
 		if ( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
@@ -411,13 +409,73 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= ' -vpre ' . wfEscapeShellArg( $options['vpre'] );
 		}
 
+		if ( isset( $options['framerate'] ) ) {
+			$cmd .= " -r " . wfEscapeShellArg( $options['framerate'] );
+		} elseif ( isset( $options['fpsmax'] ) ) {
+			$cmd .= " -fpsmax " . wfEscapeShellArg( $options['fpsmax'] );
+		} else {
+			$cmd .= " -fpsmax " . self::MAX_FPS;
+		}
+		$fps = $this->effectiveFrameRate( $options );
+
 		if ( isset( $options['novideo'] ) ) {
 			$cmd .= " -vn ";
 		} elseif ( $options['videoCodec'] === 'vp8' || $options['videoCodec'] === 'vp9' ) {
 			$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
 		} elseif ( $options['videoCodec'] === 'h264' ) {
 			$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
+		} elseif ( $options['videoCodec'] ) {
+			$cmd .= ' -vcodec ' . wfEscapeShellArg( $options['videoCodec'] );
 		}
+
+		// Check for keyframeInterval
+		$keyframeInterval = $options['keyframeInterval'] ?? '240';
+		$cmd .= ' -g ' . wfEscapeShellArg( $keyframeInterval );
+		if ( isset( $options['keyframeIntervalMin'] ) ) {
+			$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeIntervalMin'] );
+		}
+
+		if ( isset( $options['videoBitrate'] ) ) {
+			$base = $this->expandRate( $options['videoBitrate'] );
+			$bitrate = $this->scaleRate( $options, $base );
+			$cmd .= " -b:v $bitrate";
+
+			// Estimate the output file size in KiB and bail out early
+			// if it's potentially very large. Could be a denial of
+			// service, or just a large file that probably is poorly
+			// compressed.
+			$duration = (float)$this->file->getLength();
+			$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
+			if ( $wgTranscodeBackgroundSizeLimit > 0 && $estimatedSize > $wgTranscodeBackgroundSizeLimit ) {
+				// This hard limit cannot be overridden by admins, except by raising the limit in config.
+				// @todo return an error code that can be localized later
+				return "estimated file size $estimatedSize KiB over hard limit $wgTranscodeBackgroundSizeLimit KiB";
+			}
+
+			if ( $wgTranscodeSoftSizeLimit > 0 && $estimatedSize > $wgTranscodeSoftSizeLimit ) {
+				// This soft limit can be overridden when a transcode is reset by hand via the web UI
+				// or API, or requeueTranscodes.php with --manual-override option.
+				$manualOverride = $this->params['manualOverride'] ?? false;
+				if ( !$manualOverride ) {
+					// @todo return an error code that can be localized later
+					return "estimated file size $estimatedSize KiB over soft limit $wgTranscodeSoftSizeLimit KiB";
+				}
+			}
+
+			if ( isset( $options['minrate'] ) ) {
+				$minrate = $this->scaleRate( $options, $options['minrate'] );
+				$cmd .= " -minrate $minrate";
+			}
+			if ( isset( $options['maxrate'] ) ) {
+				$maxrate = $this->scaleRate( $options, $options['maxrate'] );
+				$cmd .= " -maxrate $maxrate";
+			}
+			if ( isset( $options['bufsize'] ) ) {
+				$bufsize = $this->scaleRate( $options, $options['bufsize'] );
+				$cmd .= " -bufsize $bufsize";
+			}
+		}
+
 		// If necessary, add deinterlacing options
 		$cmd .= $this->ffmpegAddDeinterlaceOptions( $options );
 		// Add size options:
@@ -472,6 +530,132 @@ class WebVideoTranscodeJob extends Job {
 		return true;
 	}
 
+	// Bitrates and keyframe distances are specified for this
+	// common frame rate (30), and scaled accordingly to accomodate
+	// higher frame rates.
+	private const DEFAULT_FPS = 30;
+	private const MAX_FPS = 60;
+	private const MIN_FPS = 24;
+
+	/**
+	 * Scale a bitrate or frame count according to the frame rate
+	 * of the file versus the default frame rate. This is not a
+	 * straight linear multiplication; it's biased to reduce impact
+	 * beyond 30 fps, to 1.5x base at 60 fps.
+	 *
+	 * @param array $options
+	 * @param string|int $rate
+	 * @return int
+	 */
+	private function scaleRate( $options, $rate ) {
+		$fps = $this->effectiveFrameRate( $options );
+		$base = $this->expandRate( $rate );
+
+		$lofps = min( $fps, self::DEFAULT_FPS );
+		$hifps = $fps - $lofps;
+		$scaled = $base * $lofps / self::DEFAULT_FPS +
+			0.5 * $base * $hifps / self::DEFAULT_FPS;
+		return (int)$scaled;
+	}
+
+	/**
+	 * Expand a bitrate that may have a k/m/g suffix
+	 *
+	 * @param string|int $rate
+	 * @return int
+	 */
+	private function expandRate( $rate ) {
+		if ( is_int( $rate ) ) {
+			return $rate;
+		}
+		$matches = [];
+		if ( preg_match( '/^(\d+)([kmg])$/', strtolower( $rate ), $matches ) ) {
+			$n = (int)$matches[1];
+			switch ( $matches[2] ) {
+			case 'g':
+				$n *= 1000;
+				// fall through
+			case 'm':
+				$n *= 1000;
+				// fall through
+			case 'k':
+				$n *= 1000;
+				// fall through
+			}
+			return $n;
+		} else {
+			return (int)$rate;
+		}
+	}
+
+	/**
+	 * Grab the frame rate from the file, bounded by
+	 * format-specific or generic limitations.
+	 * Suitable for scaling linear parameters like the
+	 * target bit rate.
+	 *
+	 * @param array $options
+	 * @return float
+	 */
+	private function effectiveFrameRate( $options ) {
+		if ( isset( $options['framerate'] ) ) {
+			// fixed framerate
+			$fps = $this->fractionToFloat( $options['framerate'] );
+		} else {
+			// @todo getid3 gets this wrong on some WebM input files
+			// consider reading from ffmpeg or ffprobe...
+			// We cap it, but this can cause a 29.97fps file to use
+			// the 60fps bitrate. Worst case it's a bloated file.
+			$fps = $this->frameRate();
+		}
+		if ( $this->shouldFrameDouble( $options ) ) {
+			$fps *= 2;
+		}
+
+		if ( $fps < self::MIN_FPS ) {
+			return self::MIN_FPS;
+		}
+		if ( isset( $options['fpsmax'] ) ) {
+			$max = $this->fractionToFloat( $options['fpsmax'] );
+		} else {
+			$max = self::MAX_FPS;
+		}
+		if ( $fps > $max ) {
+			return $max;
+		}
+		return $fps;
+	}
+
+	/**
+	 * @param string $str
+	 * @return float
+	 */
+	private function fractionToFloat( $str ) {
+		$fraction = explode( '/', $str, 2 );
+		if ( count( $fraction ) > 1 ) {
+			return (float)$fraction[0] / (float)$fraction[1];
+		}
+		return (float)$str;
+	}
+
+	/**
+	 * Return the actual frame rate of the file, or the default
+	 * if can't retrieve it.
+	 *
+	 * @return float
+	 */
+	private function frameRate() {
+		$file = $this->getFile();
+		$handler = $file->getHandler();
+		if ( $handler instanceof TimedMediaHandler ) {
+			$fps = $handler->getFrameRate( $file );
+			if ( $fps ) {
+				return $fps;
+			}
+		}
+		return self::DEFAULT_FPS;
+	}
+
 	/**
 	 * Adds ffmpeg shell options for h264
 	 *
@@ -502,9 +686,11 @@ class WebVideoTranscodeJob extends Job {
 					break;
 			}
 		}
-		if ( isset( $options['videoBitrate'] ) ) {
-			$cmd .= " -b " . wfEscapeShellArg( $options['videoBitrate'] );
-		}
+
+		$cmd .= ' -pix_fmt yuv420p';
+		$cmd .= ' -rc-lookahead 16';
+		$cmd .= ' -movflags +faststart';
+
 		// Output mp4
 		$cmd .= " -f mp4";
 		return $cmd;
@@ -520,19 +706,19 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		// Check for aspect ratio ( we don't do anything with this right now)
+		// Check for aspect ratio
 		$aspectRatio = $options['aspect'] ?? $file->getWidth() . ':' . $file->getHeight();
-		if ( isset( $options['maxSize'] ) ) {
-			// Get size transform ( if maxSize is > file, file size is used:
-
-			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
-			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
-		} elseif (
-			( isset( $options['width'] ) && $options['width'] > 0 )
+		if ( ( isset( $options['width'] ) && $options['width'] > 0 )
 			&&
 			( isset( $options['height'] ) && $options['height'] > 0 )
 		) {
 			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
+			$cmd .= ' -aspect ' . wfEscapeShellArg( $aspectRatio );
+		} elseif ( isset( $options['maxSize'] ) ) {
+			// Get size transform ( if maxSize is > file, file size is used:
+
+			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
+			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
 		}
 
 		// Handle crop:
@@ -575,17 +761,6 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= ' -row-mt 1';
 		}
 
-		// check for presets:
-		if ( isset( $options['preset'] ) ) {
-			if ( $options['preset'] === "360p" ) {
-				$cmd .= " -vpre libvpx-360p";
-			} elseif ( $options['preset'] === "720p" ) {
-				$cmd .= " -vpre libvpx-720p";
-			} elseif ( $options['preset'] === "1080p" ) {
-				$cmd .= " -vpre libvpx-1080p";
-			}
-		}
-
 		// Force to 4:2:0 chroma subsampling. Others are supported in Theora
 		// and in VP9 profile 1, but Chrome and Edge don't grok them.
 		$cmd .= ' -pix_fmt yuv420p';
@@ -594,8 +769,14 @@ class WebVideoTranscodeJob extends Job {
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
 			// Map 0-10 to 63-0, higher values worse quality
 			$quality = 63 - (int)( (int)$options['videoQuality'] / 10 * 63 );
-			$cmd .= " -qmin " . wfEscapeShellArg( (string)$quality );
-			$cmd .= " -qmax " . wfEscapeShellArg( (string)$quality );
+			$options['qmax'] = (string)$quality;
+			$options['qmin'] = (string)$quality;
+		}
+		if ( isset( $options['qmin'] ) ) {
+			$cmd .= " -qmin " . wfEscapeShellArg( $options['qmin'] );
+		}
+		if ( isset( $options['qmax'] ) ) {
+			$cmd .= " -qmax " . wfEscapeShellArg( $options['qmax'] );
 		}
 		// libvpx-specific constant quality or constrained quality
 		// note the range is different between VP8 and VP9
@@ -603,26 +784,14 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -crf " . wfEscapeShellArg( $options['crf'] );
 		}
 
-		// Check for video bitrate:
-		if ( isset( $options['videoBitrate'] ) ) {
-			$qmin = $options['qmin'] ?? 1;
-			$qmax = $options['qmax'] ?? 51;
-			$cmd .= " -qmin " . wfEscapeShellArg( (string)$qmin );
-			$cmd .= " -qmax " . wfEscapeShellArg( (string)$qmax );
-
-			$cmd .= " -vb " . wfEscapeShellArg( (string)( $options['videoBitrate'] * 1000 ) );
-			if ( isset( $options['minrate'] ) ) {
-				$cmd .= " -minrate " . wfEscapeShellArg( (string)( $options['minrate'] * 1000 ) );
-			}
-			if ( isset( $options['maxrate'] ) ) {
-				$cmd .= " -maxrate " . wfEscapeShellArg( (string)( $options['maxrate'] * 1000 ) );
-			}
-		}
 		// Set the codec:
 		if ( $options['videoCodec'] === 'vp9' ) {
 			$cmd .= " -vcodec libvpx-vp9";
 			if ( isset( $options['tileColumns'] ) ) {
 				$cmd .= ' -tile-columns ' . wfEscapeShellArg( $options['tileColumns'] );
+			}
+			if ( isset( $options['tileRows'] ) ) {
+				$cmd .= ' -tile-rows ' . wfEscapeShellArg( $options['tileRows'] );
 			}
 		} else {
 			$cmd .= " -vcodec libvpx";
@@ -631,20 +800,22 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 		if ( isset( $options['altref'] ) ) {
-			$cmd .= ' -auto-alt-ref 1';
-			$cmd .= ' -lag-in-frames 25';
+			if ( $options['altref'] === '0' ) {
+				$cmd .= ' -auto-alt-ref 0';
+			} else {
+				$cmd .= ' -auto-alt-ref 1';
+			}
+		}
+		if ( isset( $options['lagInFrames'] ) ) {
+			$cmd .= ' -lag-in-frames ' . wfEscapeShellArg( $options['lagInFrames'] );
 		}
 
-		// Check for keyframeInterval
-		if ( isset( $options['keyframeInterval'] ) ) {
-			$cmd .= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
+		if ( isset( $options['quality'] ) ) {
+			$cmd .= ' -quality ' . wfEscapeShellArg( $options['quality'] );
+		} else {
+			$cmd .= ' -quality good';
 		}
-		if ( isset( $options['keyframeIntervalMin'] ) ) {
-			$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeIntervalMin'] );
-		}
-		if ( isset( $options['deinterlace'] ) ) {
-			$cmd .= ' -deinterlace';
-		}
+
 		if ( $pass === 1 ) {
 			// Make first pass faster...
 			$cmd .= ' -speed 4';
@@ -659,18 +830,48 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
+	 * @return bool
+	 */
+	private function isInterlaced() {
+		$handler = $this->file->getHandler();
+		return ( $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file ) );
+	}
+
+	/**
+	 * Whether to produce one frame per field when deinterlacing.
+	 * This will double the output frame rate.
+	 *
+	 * @param array $options
+	 * @return bool
+	 */
+	private function shouldFrameDouble( $options ) {
+		if ( $this->isInterlaced() ) {
+			if ( isset( $options['framerate'] ) ) {
+				// Fixed framerate, don't mess with it.
+				return false;
+			}
+			if ( isset( $options['fpsmax'] ) && $this->fractionToFloat( $options['fpsmax'] ) < 60 ) {
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * @param array $options
 	 * @return string
 	 */
 	private function ffmpegAddDeinterlaceOptions( $options ) {
-		$cmd = '';
-
-		$handler = $this->file->getHandler();
-		if ( $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file ) ) {
-			$cmd .= ' -vf yadif=0';
+		if ( $this->isInterlaced() ) {
+			if ( $this->shouldFrameDouble( $options ) ) {
+				// Send one frame per field for full motion smoothness.
+				return ' -vf yadif=1';
+			}
+			// Send one frame per field
+			return ' -vf yadif=0';
 		}
-
-		return $cmd;
+		return '';
 	}
 
 	/**
@@ -684,7 +885,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
 		}
 		if ( isset( $options['audioBitrate'] ) ) {
-			$cmd .= ' -ab ' . (int)$options['audioBitrate'] * 1000;
+			$cmd .= " -ab " . $this->expandRate( $options['audioBitrate'] );
 		}
 		if ( isset( $options['samplerate'] ) ) {
 			$cmd .= " -ar " . wfEscapeShellArg( $options['samplerate'] );
@@ -769,7 +970,7 @@ class WebVideoTranscodeJob extends Job {
 			array_push( $lameCmdArgs, "-aq", wfEscapeShellArg( $options['audioQuality'] ) );
 		}
 		if ( isset( $options['audioBitrate'] ) ) {
-			array_push( $lameCmdArgs, "-ab", (int)$options['audioBitrate'] * 1000 );
+			array_push( $lameCmdArgs, "-ab", $this->expandRate( $options['audioBitrate'] ) );
 		}
 		if ( isset( $options['samplerate'] ) ) {
 			array_push( $lameCmdArgs, "-ar", wfEscapeShellArg( $options['samplerate'] ) );
