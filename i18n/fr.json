@@ -89,6 +89,8 @@
 	"timedmedia-reset-button-reset": "Réinitialiser",
 	"timedmedia-reset-error": "Erreur en réinitialisant la tâche de transcodage.",
 	"timedmedia-reset-explanation": "Remettre à zéro ce transcodage supprimera tout fichier existant (s’il y en a) et ajoutera de nouveau le transcodage à la file des tâches. Il faudra un certain temps pour le transcoder à nouveau.",
+	"timedmedia-error-details": "Détails de l’erreur de transcodage",
+	"timedmedia-error-dismiss": "Fermer",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
 	"timedmedia-mp4": "MP4",
@@ -175,6 +177,7 @@
 	"timedmedia-resolution-160": "Basse 160p",
 	"timedmedia-resolution-180": "Basse 180p",
 	"timedmedia-resolution-240": "Basse 240p",
+	"timedmedia-resolution-288": "Basse 288p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
 	"timedmedia-resolution-720": "HD 720p",
@@ -216,6 +219,6 @@
 	"videojs-subtitles-create": "Créer des sous-titres",
 	"videojs-captions-create": "Créer des légendes",
 	"transcodestatistics": "Statistiques de transcodage",
-	"timedmedia-timedtext-title-edit-subtitles": "Sous-titres en $1 pour la vidéo « $2 »",
-	"timedmedia-timedtext-title-create-subtitles": "Aucun sous-titre $1 n'a été trouvé pour le clip : $2"
+	"timedmedia-timedtext-title-edit-subtitles": "Sous-titres en $1 pour la vidéo : $2",
+	"timedmedia-timedtext-title-create-subtitles": "Aucun sous-titre en $1 n’a été trouvé pour la vidéo : $2"
 }
