@@ -4,5 +4,6 @@
 			"Olve Utne"
 		]
 	},
-	"timedmedia-source-file": "$1-gálldo"
+	"timedmedia-source-file": "$1-gálldo",
+	"timedmedia-source-audio-file-desc": "Originálla $1-fijjla ($2)"
 }
