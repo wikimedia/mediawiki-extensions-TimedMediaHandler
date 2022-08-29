@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Inabat Allanova"
+		]
+	},
+	"timedmedia-source-file": "$1 derek",
+	"timedmedia-source-audio-file-desc": "Original $1 fayl ($2)"
+}
