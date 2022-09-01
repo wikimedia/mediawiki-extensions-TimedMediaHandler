@@ -214,7 +214,7 @@
 	"orphanedtimedtext": "Pages orphelines de TimedText",
 	"orphanedtimedtext-summary": "Liste des pages [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] qui n’ont aucun fichier correspondant.",
 	"orphanedtimedtext-unsupported": "Cette page spéciale n’est prise en charge que sur les bases de données MySQL.",
-	"videojs-more-information": "Plus d’informations",
+	"videojs-more-information": "Davantage d’informations",
 	"videojs-quality": "Qualité de la vidéo",
 	"videojs-subtitles-create": "Créer des sous-titres",
 	"videojs-captions-create": "Créer des légendes",
