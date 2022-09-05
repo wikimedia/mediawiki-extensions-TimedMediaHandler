@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agloforto",
 			"Amikeco",
 			"ArnoLagrange",
 			"KuboF",
@@ -18,6 +19,7 @@
 	"timedmedia-ogg-long-multiplexed": "Kunigita aŭdio/video Ogg-dosiero, $1, longeco $2, $4×$5 pikseloj, $3 entute",
 	"timedmedia-ogg-long-general": "Ogg-mediodosiero, longeco $2, $3",
 	"timedmedia-ogg-long-error": "Nevalida Ogg-dosiero: $1",
+	"timedmedia-ogg-long-no-streams": "Ogg amaskomunikila dosiero. Averto: Neniu el la kodekoj uzataj en ĉi tiu dosiero estas rekonita.",
 	"timedmedia-webm-short-video": "WebM-$1-videodosiero, $2",
 	"timedmedia-flac-short-audio": "FLAC-sondosiero, $1",
 	"timedmedia-wav-short-audio": "WAV-sondosiero, $1",
@@ -89,5 +91,6 @@
 	"timedmedia-subtitle-new-go": "Ek",
 	"timedmedia-file": "Dosiero",
 	"videojs-more-information": "Pli da informo",
-	"videojs-quality": "Videa kvalito"
+	"videojs-quality": "Videa kvalito",
+	"transcodestatistics": "Kodŝanĝa statistiko"
 }
