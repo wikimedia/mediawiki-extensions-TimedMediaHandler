@@ -15,7 +15,6 @@ use File;
 use ForeignDBFile;
 use ForeignDBViaLBRepo;
 use IForeignRepoWithMWApi;
-use Language;
 use LocalRepo;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedText\ParseError;
@@ -263,7 +262,9 @@ class TextHandler {
 	public function getTextTracksFromRows( IResultWrapper $data ) {
 		$textTracks = [];
 
-		$langNames = Language::fetchLanguageNames( null, 'mw' );
+		$services = MediaWikiServices::getInstance();
+		$langNames = $services->getLanguageNameUtils()->getLanguageNames();
+		$languageFactory = $services->getLanguageFactory();
 
 		foreach ( $data as $row ) {
 			$titleParts = explode( '.', $row->page_title );
@@ -278,7 +279,7 @@ class TextHandler {
 				continue;
 			}
 
-			$language = Language::factory( $languageKey );
+			$language = $languageFactory->getLanguage( $languageKey );
 			foreach ( $this->formats as $format ) {
 				$textTracks[] = [
 					'src' => $this->getFullURL( $languageKey, $format ),
