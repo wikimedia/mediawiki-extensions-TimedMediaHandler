@@ -115,7 +115,7 @@
 		"ImageOpenShowImageInlineBefore": "main",
 		"ImagePageAfterImageLinks": "main",
 		"ImagePageFileHistoryLine": "main",
-		"LoadExtensionSchemaUpdates": "main",
+		"LoadExtensionSchemaUpdates": "installer",
 		"MediaWikiPerformAction": "iframe",
 		"RevisionFromEditComplete": "main",
 		"ParserTestGlobals": "main",
@@ -125,10 +125,17 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\TimedMediaHandler\\Hooks"
+			"class": "MediaWiki\\TimedMediaHandler\\Hooks",
+			"services": [
+				"RepoGroup",
+				"SpecialPageFactory"
+			]
 		},
 		"iframe": {
 			"class": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput"
+		},
+		"installer": {
+			"class": "MediaWiki\\TimedMediaHandler\\InstallerHooks"
 		}
 	},
 	"config": {
