@@ -9,12 +9,30 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
+use ApiQuery;
 use ApiQueryBase;
 use File;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use RepoGroup;
 
 class ApiTranscodeStatus extends ApiQueryBase {
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/**
+	 * @param ApiQuery $queryModule
+	 * @param string $moduleName
+	 * @param RepoGroup $repoGroup
+	 */
+	public function __construct(
+		ApiQuery $queryModule,
+		$moduleName,
+		RepoGroup $repoGroup
+	) {
+		parent::__construct( $queryModule, $moduleName );
+		$this->repoGroup = $repoGroup;
+	}
+
 	public function execute() {
 		$pageIds = $this->getPageSet()->getAllTitlesByNamespace();
 		// Make sure we have files in the title set:
@@ -24,7 +42,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 			asort( $titles );
 
 			$result = $this->getResult();
-			$images = MediaWikiServices::getInstance()->getRepoGroup()->findFiles( $titles );
+			$images = $this->repoGroup->findFiles( $titles );
 			/**
 			 * @var $img File
 			 */
