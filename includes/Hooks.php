@@ -5,6 +5,7 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use Article;
+use Config;
 use DifferenceEngine;
 use File;
 use IContextSource;
@@ -65,6 +66,9 @@ class Hooks implements
 	WgQueryPagesHook
 {
 
+	/** @var Config */
+	private $config;
+
 	/** @var RepoGroup */
 	private $repoGroup;
 
@@ -72,13 +76,16 @@ class Hooks implements
 	private $specialPageFactory;
 
 	/**
+	 * @param Config $config
 	 * @param RepoGroup $repoGroup
 	 * @param SpecialPageFactory $specialPageFactory
 	 */
 	public function __construct(
+		Config $config,
 		RepoGroup $repoGroup,
 		SpecialPageFactory $specialPageFactory
 	) {
+		$this->config = $config;
 		$this->repoGroup = $repoGroup;
 		$this->specialPageFactory = $specialPageFactory;
 	}
@@ -95,10 +102,10 @@ class Hooks implements
 	 * @param array &$list
 	 */
 	public function onCanonicalNamespaces( &$list ) {
-		global $wgTimedTextNS;
 		if ( !defined( 'NS_TIMEDTEXT' ) ) {
-			define( 'NS_TIMEDTEXT', $wgTimedTextNS );
-			define( 'NS_TIMEDTEXT_TALK', $wgTimedTextNS + 1 );
+			$timedTextNS = $this->config->get( 'TimedTextNS' );
+			define( 'NS_TIMEDTEXT', $timedTextNS );
+			define( 'NS_TIMEDTEXT_TALK', $timedTextNS + 1 );
 		}
 
 		$list[NS_TIMEDTEXT] = 'TimedText';
@@ -188,8 +195,7 @@ class Hooks implements
 	 * @return bool
 	 */
 	public function onArticleFromTitle( $title, &$article, $context ) {
-		global $wgTimedTextNS;
-		if ( $title->getNamespace() === $wgTimedTextNS ) {
+		if ( $title->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
 			$article = new TimedTextPage( $title );
 		}
 		return true;
@@ -201,8 +207,7 @@ class Hooks implements
 	 * @return bool
 	 */
 	public function onArticleContentOnDiff( $diffEngine, $output ) {
-		global $wgTimedTextNS;
-		if ( $output->getTitle()->getNamespace() === $wgTimedTextNS ) {
+		if ( $output->getTitle()->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
 			$article = new TimedTextPage( $output->getTitle() );
 			$article->renderOutput( $output );
 			return false;
@@ -433,13 +438,11 @@ class Hooks implements
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		global $wgTimedTextNS;
-
 		$title = $out->getTitle();
 		$namespace = $title->getNamespace();
 		$addModules = false;
 
-		if ( $namespace === NS_CATEGORY || $namespace === $wgTimedTextNS ) {
+		if ( $namespace === NS_CATEGORY || $namespace === $this->config->get( 'TimedTextNS' ) ) {
 			$addModules = true;
 		} elseif ( $title->isSpecialPage() ) {
 			[ $name, ] = $this->specialPageFactory->resolveAlias( $title->getDBkey() );
