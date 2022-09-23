@@ -51,97 +51,123 @@ class WebVideoTranscode {
 		// WebM transcode:
 		'160p.webm' => [
 			'maxSize' => '288x160',
-			'videoBitrate' => '192k',
-			'speed' => '1',
+			'videoBitrate' => '128',
+			'crf' => '10',
+			'audioQuality' => '-1',
 			'twopass' => 'true',
+			'keyframeInterval' => '240',
+			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '2',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'240p.webm' => [
 			'maxSize' => '426x240',
-			'videoBitrate' => '394k',
-			'speed' => '1',
+			'videoBitrate' => '256',
+			'crf' => '10',
+			'audioQuality' => '1',
 			'twopass' => 'true',
+			'keyframeInterval' => '240',
+			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '2',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'360p.webm' => [
 			'maxSize' => '640x360',
-			'videoBitrate' => '785k',
-			'speed' => '1',
+			'videoBitrate' => '512',
+			'crf' => '10',
+			'audioQuality' => '1',
 			'twopass' => 'true',
-			'slices' => '2',
+			'keyframeInterval' => '240',
+			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '2',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'480p.webm' => [
 			'maxSize' => '854x480',
-			'videoBitrate' => '1280k',
-			'speed' => '1',
+			'videoBitrate' => '1024',
+			'crf' => '10',
+			'audioQuality' => '2',
 			'twopass' => 'true',
-			'slices' => '2',
+			'keyframeInterval' => '240',
+			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '4',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'720p.webm' => [
 			'maxSize' => '1280x720',
-			'videoBitrate' => '2551k',
-			'speed' => '2',
+			'videoBitrate' => '2048',
+			'crf' => '10',
+			'audioQuality' => '3',
 			'twopass' => 'true',
-			'slices' => '4',
+			'keyframeInterval' => '240',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '4',
+			'speed' => '1',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'1080p.webm' => [
 			'maxSize' => '1920x1080',
-			'videoBitrate' => '5082k',
-			'speed' => '2',
+			'videoBitrate' => '4096',
+			'crf' => '10',
+			'audioQuality' => '3',
 			'twopass' => 'true',
-			'slices' => '4',
+			'keyframeInterval' => '240',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '4',
+			'speed' => '1',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'1440p.webm' => [
 			'maxSize' => '2560x1440',
-			'videoBitrate' => '8288k',
-			'speed' => '2',
+			'videoBitrate' => '8192',
+			'crf' => '10',
+			'audioQuality' => '3',
 			'twopass' => 'true',
-			'slices' => '8',
+			'keyframeInterval' => '240',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '8',
+			'speed' => '2',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'2160p.webm' => [
 			'maxSize' => '3840x2160',
-			'videoBitrate' => '16513k',
-			'speed' => '2',
+			'videoBitrate' => '16384',
+			'crf' => '10',
+			'audioQuality' => '3',
 			'twopass' => 'true',
-			'slices' => '8',
+			'keyframeInterval' => '240',
 			'videoCodec' => 'vp8',
-			'audioCodec' => 'vorbis',
-			'audioBitrate' => '112k',
+			'slices' => '8',
+			'speed' => '2',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 
 		// WebM VP9 transcode:
 		//
+		// These configurations are meant to balance
+		// * quality (try to maintain quality until size gets too large)
+		// * size (aim for smaller files when possible)
+		// * speed (use modest "speed" setting to gain speed at a little bandwidth/quality cost)
+		//
+		// A large bitrate target is used to allow preserving good quality for highly
+		// detailed sources and those with high frame rates and motion, which were not
+		// served well under the previous VP8 settings. The qmin is set close to the
+		// crf constrained quality target to keep from adding any extra bits when not
+		// needed; we're always transcoding something with its own compression artifacts
+		// and there's no need to reproduce every last bit.
+		//
+		// This usually results in files at or significantly below target when there's
+		// relatively little detail/motion, and files bigger towards the inflated target
+		// (set around 4x what we'd really want as a target) are allowed to better handle
+		// those high-frame-rate or high-motion/high-detail files.
+		//
 		// Use of two-pass encoding increases runtime by 2/3 but significantly increases
-		// quality and rate control. The encoding -speed parameter is used aggressively
-		// to speed up higher resolutions; alt-ref is dropped for speed at a modest cost
-		// in bitrate.
+		// quality through enabling auto alt reference frames. Use of 'speed' param at 2
+		// instead of 0 or 2 makes things a little faster at very slight cost of bandwidth.
 		//
 		// Encoding speed is greatly affected by threading settings; HD videos can use up to
 		// 8 threads with a suitable ffmpeg/libvpx and $wgFFmpegVP9RowMT enabled ("row-mt").
@@ -150,116 +176,152 @@ class WebVideoTranscode {
 		//
 		'120p.vp9.webm' => [
 			'maxSize' => '213x120',
-			'videoBitrate' => '95k',
-			'speed' => '1',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 60 x 2
+			'videoBitrate' => '120',
+			'crf' => '35',
+			'qmin' => '8',
 			'twopass' => 'true',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'180p.vp9.webm' => [
 			'maxSize' => '320x180',
-			'videoBitrate' => '189k',
-			'speed' => '1',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 100 x 2
+			'videoBitrate' => '200',
+			'crf' => '35',
+			'qmin' => '9',
 			'twopass' => 'true',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'240p.vp9.webm' => [
 			'maxSize' => '426x240',
-			'videoBitrate' => '308k',
-			'speed' => '1',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 160 x 2
+			'videoBitrate' => '320',
+			'crf' => '35',
+			'qmin' => '11',
 			'twopass' => 'true',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'samplerate' => '48000',
+			'audioBitrate' => '96',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'360p.vp9.webm' => [
 			'maxSize' => '640x360',
-			'videoBitrate' => '613k',
-			'speed' => '1',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 320 x 2
+			'videoBitrate' => '640',
+			'crf' => '35',
+			'qmin' => '12',
 			'twopass' => 'true',
-			'tileColumns' => '1',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
+			'tileColumns' => '1',
 			'type' => 'video/webm; codecs="vp9, opus"',
-		],
+			],
 		'480p.vp9.webm' => [
 			'maxSize' => '854x480',
-			'videoBitrate' => '1000k',
-			'speed' => '2',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 640 x 2
+			'videoBitrate' => '1280',
+			'crf' => '33',
+			'qmin' => '10',
 			'twopass' => 'true',
-			'tileColumns' => '1',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
+			'tileColumns' => '1',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'720p.vp9.webm' => [
 			'maxSize' => '1280x720',
-			'videoBitrate' => '1993k',
-			'speed' => '3',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 1280 x 2
+			'videoBitrate' => '2560',
+			'crf' => '32',
+			'qmin' => '10',
 			'twopass' => 'true',
-			'tileColumns' => '2',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
+			'tileColumns' => '2',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'1080p.vp9.webm' => [
 			'maxSize' => '1920x1080',
-			'videoBitrate' => '3971k',
-			'speed' => '3',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 2560 x 2
+			'videoBitrate' => '5120',
+			'crf' => '31',
+			'qmin' => '9',
 			'twopass' => 'true',
-			'tileColumns' => '2',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
+			'tileColumns' => '4',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'1440p.vp9.webm' => [
 			'maxSize' => '2560x1440',
-			'videoBitrate' => '6475k',
-			'speed' => '4',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 5120 x 2
+			'videoBitrate' => '10240',
+			'crf' => '24',
+			'qmin' => '8',
 			'twopass' => 'true',
-			'tileColumns' => '3',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
+			'tileColumns' => '4',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'2160p.vp9.webm' => [
 			'maxSize' => '3840x2160',
-			'videoBitrate' => '12900k',
-			'speed' => '4',
-			'altref' => '0',
-			'lagInFrames' => '0',
+			// target 10240 x 2
+			'videoBitrate' => '20480',
+			'crf' => '24',
+			'qmin' => '8',
 			'twopass' => 'true',
-			'tileColumns' => '3',
+			'altref' => 'true',
+			'keyframeInterval' => '240',
+			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96k',
+			'audioBitrate' => '96',
+			'samplerate' => '48000',
+			'tileColumns' => '4',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 
@@ -268,93 +330,90 @@ class WebVideoTranscode {
 		// and apple HLS profile guide:
 		// https://developer.apple.com/library/ios/#documentation/networkinginternet/conceptual/streamingmediaguide/UsingHTTPLiveStreaming/UsingHTTPLiveStreaming.html#//apple_ref/doc/uid/TP40008332-CH102-DontLinkElementID_24
 
-		// high profile
-		// level 2 needed for 160p60
-		// level 2.1 needed for 240p60
-		// level 3 needed for 360p60, 480p60
-		// level 4 needed for 720p60, 1080p30
-		// level 4.1 needed for 1080p60
-		// level 5 needed for 1440p60, 2160p30
-		// level 5.1 needed for 2160p60
-
-		// deprecated
 		'160p.mp4' => [
 			'maxSize' => '288x160',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '192k',
+			'videoBitrate' => '160k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
-			'type' => 'video/mp4; codecs="avc1.640014, mp4a.40.2"',
+			'channels' => '2',
+			'audioBitrate' => '40k',
+			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 
 		'240p.mp4' => [
 			'maxSize' => '426x240',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '394k',
+			'videoBitrate' => '256k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
-			'type' => 'video/mp4; codecs="avc1.42E015, mp4a.40.2"',
+			'channels' => '2',
+			'audioBitrate' => '40k',
+			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 
-		// deprecated
 		'320p.mp4' => [
 			'maxSize' => '480x320',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '512k',
+			'videoBitrate' => '400k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
+			'channels' => '2',
+			'audioBitrate' => '40k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 
 		'360p.mp4' => [
 			'maxSize' => '640x360',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '785k',
+			'videoBitrate' => '512k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
+			'channels' => '2',
+			'audioBitrate' => '64k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
+
 		'480p.mp4' => [
 			'maxSize' => '854x480',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '1280k',
+			'videoBitrate' => '1200k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
+			'channels' => '2',
+			'audioBitrate' => '64k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 		'720p.mp4' => [
 			'maxSize' => '1280x720',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '2551k',
+			'videoBitrate' => '2500k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
-			'type' => 'video/mp4; codecs="avc1.42E028, mp4a.40.2"',
+			'channels' => '2',
+			'audioBitrate' => '128k',
+			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 		'1080p.mp4' => [
 			'maxSize' => '1920x1080',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '5082k',
+			'videoBitrate' => '5000k',
 			'audioCodec' => 'aac',
+			'channels' => '2',
 			'audioBitrate' => '128k',
-			'type' => 'video/mp4; codecs="avc1.640029, mp4a.40.2"',
+			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
-		// Recommend against due to size
 		'1440p.mp4' => [
 			'maxSize' => '2560x1440',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '8288k',
+			'videoBitrate' => '16384k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
-			'type' => 'video/mp4; codecs="avc1.42E032, mp4a.40.2"',
+			'channels' => '2',
+			'audioBitrate' => '128k',
+			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
-		// Recommend against due to size
 		'2160p.mp4' => [
 			'maxSize' => '4096x2160',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '16513k',
+			'videoBitrate' => '16384k',
 			'audioCodec' => 'aac',
-			'audioBitrate' => '112k',
-			'type' => 'video/mp4; codecs="avc1.42E033, mp4a.40.2"',
+			'channels' => '2',
+			'audioBitrate' => '128k',
+			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 
 		// Audio profiles
@@ -362,6 +421,7 @@ class WebVideoTranscode {
 			'audioCodec' => 'vorbis',
 			'audioQuality' => '3',
 			'samplerate' => '44100',
+			'channels' => '2',
 			'noUpscaling' => 'true',
 			'novideo' => 'true',
 			'type' => 'audio/ogg; codecs="vorbis"',
@@ -369,7 +429,8 @@ class WebVideoTranscode {
 		'opus' => [
 			'audioCodec' => 'opus',
 			'audioQuality' => '1',
-			'samplerate' => '48000',
+			'samplerate' => '44100',
+			'channels' => '2',
 			'noUpscaling' => 'true',
 			'novideo' => 'true',
 			'type' => 'audio/ogg; codecs="opus"',
@@ -387,6 +448,7 @@ class WebVideoTranscode {
 			'audioCodec' => 'aac',
 			'audioQuality' => '1',
 			'samplerate' => '44100',
+			'channels' => '2',
 			'noUpscaling' => 'true',
 			'novideo' => 'true',
 			'type' => 'audio/mp4; codecs="mp4a.40.5"',
@@ -1044,9 +1106,8 @@ class WebVideoTranscode {
 	 * Update the job queue if the file is not already in the job queue:
 	 * @param File &$file File object
 	 * @param string $transcodeKey transcode key
-	 * @param bool $manualOverride permission to override soft limits on output size
 	 */
-	public static function updateJobQueue( &$file, $transcodeKey, $manualOverride = false ) {
+	public static function updateJobQueue( &$file, $transcodeKey ) {
 		$fileName = $file->getTitle()->getDBkey();
 		$db = $file->repo->getPrimaryDB();
 
@@ -1082,8 +1143,7 @@ class WebVideoTranscode {
 			$job = new WebVideoTranscodeJob( $file->getTitle(), [
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
-				'prioritized' => $prioritized,
-				'manualOverride' => $manualOverride,
+				'prioritized' => $prioritized
 			] );
 
 			try {

@@ -43,9 +43,6 @@ class TimedMediaThumbnail {
 
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -nostdin -threads 1 ';
 
-		$file = $options['file'];
-		$handler = $file->getHandler();
-
 		$offset = (int)self::getThumbTime( $options );
 		/*
 		This is a workaround until ffmpegs ogg demuxer properly seeks to keyframes.
@@ -57,7 +54,7 @@ class TimedMediaThumbnail {
 		 to 64 for most encoders, seeking a bit before that
 		 */
 
-		$framerate = $handler->getFramerate( $file );
+		$framerate = $options['file']->getHandler()->getFramerate( $options['file'] );
 		if ( $framerate > 0 ) {
 			$seekoffset = 1 + (int)( 64 / $framerate );
 		} else {
@@ -70,23 +67,17 @@ class TimedMediaThumbnail {
 		}
 
 		// try to get temporary local url to file
-		$backend = $file->getRepo()->getBackend();
+		$backend = $options['file']->getRepo()->getBackend();
 
 		$src = $backend->getFileHttpUrl( [
-			'src' => $file->getPath()
+			'src' => $options['file']->getPath()
 		] );
 		if ( $src === null ) {
-			$src = $file->getLocalRefPath();
+			$src = $options['file']->getLocalRefPath();
 		}
 
 		$cmd .= ' -y -i ' . wfEscapeShellArg( $src );
 		$cmd .= ' -ss ' . $offset . ' ';
-
-		// Deinterlace MPEG-2 if necessary
-		if ( $handler->isInterlaced( $file ) ) {
-			// Send one frame only
-			$cmd .= ' -vf yadif=mode=0';
-		}
 
 		// Set the output size if set in options:
 		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
