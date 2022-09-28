@@ -27,7 +27,6 @@ class RequeueTranscodes extends Maintenance {
 		$this->addOption( "video", "process video files (defaults to all media types)" );
 		$this->addOption( "mime", "mime type to filter on (e.g. audio/midi)", false, true );
 		$this->addOption( "throttle", "throttle on the queue" );
-		$this->addOption( "manual-override", "override soft limits on output file size" );
 		$this->addDescription( "re-queue existing and missing media transcodes." );
 		$this->requireExtension( 'TimedMediaHandler' );
 	}
@@ -142,12 +141,11 @@ class RequeueTranscodes extends Maintenance {
 				if ( !array_key_exists( $key, $state ) || !$state[$key]['time_addjob'] ) {
 					$this->output( ".. queueing $key\n" );
 
-					$manualOverride = $this->hasOption( 'manual-override' );
 					if ( !$this->hasOption( 'throttle' ) ) {
-						WebVideoTranscode::updateJobQueue( $file, $key, $manualOverride );
+						WebVideoTranscode::updateJobQueue( $file, $key );
 					} else {
 						$startSize = WebVideoTranscode::getQueueSize( $file, $key );
-						WebVideoTranscode::updateJobQueue( $file, $key, $manualOverride );
+						WebVideoTranscode::updateJobQueue( $file, $key );
 						while ( true ) {
 							$size = WebVideoTranscode::getQueueSize( $file, $key );
 							if ( $size > $startSize ) {
