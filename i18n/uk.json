@@ -80,7 +80,6 @@
 	"timedmedia-reset-button-reset": "Скинути",
 	"timedmedia-reset-error": "Помилка при перезапуску декодування.",
 	"timedmedia-reset-explanation": "Перезапуск декодування видалить наявний файл (якщо він існує), і декодування знов буде додано в чергу завдань. Повторне декодування займе якийсь час.",
-	"timedmedia-error-details": "Деталі помилки перекодування",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
 	"timedmedia-mp4": "MP4",
