@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Vickylin77s"
 		]
 	},
 	"timedmedia-more": "matongal ko adihay",
-	"timedmedia-source-file": "$1  kasadakan/lalengatan no tang’an",
-	"timedmedia-source-audio-file-desc": " satapangan $1  tang’an ($2)",
-	"timedmedia-file": " tang’an"
+	"timedmedia-source-file": "$1 kasadakan/lalengatan no tang’an",
+	"timedmedia-source-audio-file-desc": "satapangan $1  tang’an ($2)",
+	"timedmedia-file": "tang’an"
 }
