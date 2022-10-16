@@ -5,7 +5,6 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use Article;
-use DatabaseUpdater;
 use DifferenceEngine;
 use File;
 use IContextSource;
@@ -20,7 +19,6 @@ use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
-use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleFromTitleHook;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
@@ -30,9 +28,11 @@ use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;
 use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\User\UserIdentity;
 use OutputPage;
+use RepoGroup;
 use Skin;
 use SkinTemplate;
 use Status;
@@ -58,13 +58,30 @@ class Hooks implements
 	ImageOpenShowImageInlineBeforeHook,
 	ImagePageAfterImageLinksHook,
 	ImagePageFileHistoryLineHook,
-	LoadExtensionSchemaUpdatesHook,
 	ParserTestGlobalsHook,
 	RevisionFromEditCompleteHook,
 	SkinTemplateNavigation__UniversalHook,
 	TitleMoveHook,
 	WgQueryPagesHook
 {
+
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
+
+	/**
+	 * @param RepoGroup $repoGroup
+	 * @param SpecialPageFactory $specialPageFactory
+	 */
+	public function __construct(
+		RepoGroup $repoGroup,
+		SpecialPageFactory $specialPageFactory
+	) {
+		$this->repoGroup = $repoGroup;
+		$this->specialPageFactory = $specialPageFactory;
+	}
 
 	/**
 	 * Register TimedMediaHandler namespace IDs
@@ -289,7 +306,7 @@ class Hooks implements
 	 */
 	public function onImagePageAfterImageLinks( $imagePage, &$html ) {
 		// load the file:
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $imagePage->getTitle() );
+		$file = $this->repoGroup->findFile( $imagePage->getTitle() );
 		if ( self::isTranscodableFile( $file ) ) {
 			$html .= TranscodeStatusTable::getHTML( $file, $imagePage->getContext() );
 		}
@@ -329,7 +346,7 @@ class Hooks implements
 		if ( self::isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+			$file = $this->repoGroup->findFile( $title );
 			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
@@ -367,7 +384,7 @@ class Hooks implements
 	) {
 		// Check if the article is a file and remove transcode files:
 		if ( ( $originalRevId !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
+			$file = $this->repoGroup->findFile( $wikiPage->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::removeTranscodes( $file );
 				WebVideoTranscode::startJobQueue( $file );
@@ -386,7 +403,7 @@ class Hooks implements
 	 */
 	public function onArticlePurge( $wikiPage ) {
 		if ( $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $wikiPage->getTitle() );
+			$file = $this->repoGroup->findFile( $wikiPage->getTitle() );
 			if ( self::isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
@@ -425,8 +442,7 @@ class Hooks implements
 		if ( $namespace === NS_CATEGORY || $namespace === $wgTimedTextNS ) {
 			$addModules = true;
 		} elseif ( $title->isSpecialPage() ) {
-			[ $name, ] = MediaWikiServices::getInstance()
-				->getSpecialPageFactory()->resolveAlias( $title->getDBkey() );
+			[ $name, ] = $this->specialPageFactory->resolveAlias( $title->getDBkey() );
 			if ( $name !== null && (
 					$name === 'Search' ||
 					$name === 'GlobalUsage' ||
@@ -443,36 +459,6 @@ class Hooks implements
 			$out->addModuleStyles( 'ext.tmh.player.styles' );
 			$out->addModules( 'ext.tmh.player' );
 		}
-	}
-
-	/**
-	 * @param DatabaseUpdater $updater
-	 * @return bool
-	 */
-	public function onLoadExtensionSchemaUpdates( $updater ) {
-		$dir = dirname( __DIR__ ) . '/sql/';
-		$dbType = $updater->getDB()->getType();
-		if ( $dbType === 'mysql' ) {
-			$updater->addExtensionTable( 'transcode',
-				$dir . 'tables-generated.sql'
-			);
-		} elseif ( $dbType === 'sqlite' ) {
-			$updater->addExtensionTable( 'transcode',
-				$dir . 'sqlite/tables-generated.sql'
-			);
-		} elseif ( $dbType === 'postgres' ) {
-			$updater->addExtensionTable( 'transcode',
-				$dir . 'postgres/tables-generated.sql'
-			);
-		}
-		$dirPatch = $dbType === 'mysql' ? $dir : $dir . $dbType . '/';
-
-		// 1.38
-		$updater->modifyExtensionField(
-			'transcode', 'transcode_time_error', $dirPatch . 'patch-transcode-transcode_timestamp.sql'
-		);
-
-		return true;
 	}
 
 	/**
