@@ -27,11 +27,21 @@
 				"WikiPageFactory"
 			]
 		},
-		"transcodereset": "MediaWiki\\TimedMediaHandler\\ApiTranscodeReset"
+		"transcodereset": {
+			"class": "MediaWiki\\TimedMediaHandler\\ApiTranscodeReset",
+			"services": [
+				"RepoGroup"
+			]
+		}
 	},
 	"APIPropModules": {
 		"videoinfo": "MediaWiki\\TimedMediaHandler\\ApiQueryVideoInfo",
-		"transcodestatus": "MediaWiki\\TimedMediaHandler\\ApiTranscodeStatus"
+		"transcodestatus": {
+			"class": "MediaWiki\\TimedMediaHandler\\ApiTranscodeStatus",
+			"services": [
+				"RepoGroup"
+			]
+		}
 	},
 	"AvailableRights": [
 		"transcode-reset",

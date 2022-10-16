@@ -3,12 +3,13 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use ApiBase;
+use ApiMain;
 use ApiUsageException;
 use File;
 use ManualLogEntry;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MWException;
+use RepoGroup;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -20,6 +21,23 @@ use Wikimedia\ParamValidator\ParamValidator;
  * @ingroup API
  */
 class ApiTranscodeReset extends ApiBase {
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param RepoGroup $repoGroup
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		RepoGroup $repoGroup
+	) {
+		parent::__construct( $main, $action );
+		$this->repoGroup = $repoGroup;
+	}
+
 	/**
 	 * @return void
 	 * @throws ApiUsageException
@@ -68,7 +86,7 @@ class ApiTranscodeReset extends ApiBase {
 		}
 
 		// Don't reset if less than 1 hour has passed and we have no error )
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $titleObj );
+		$file = $this->repoGroup->findFile( $titleObj );
 		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
 		$waitTimeForTranscodeReset = $this->getConfig()->get( 'WaitTimeForTranscodeReset' );
 		if ( $timeSinceLastReset < $waitTimeForTranscodeReset ) {
