@@ -68,6 +68,7 @@
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 йуха кодйаран рогӀехь йу}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 кхочуш ца хилла йуха кодйар}}",
 	"timedmedia-file": "Файл",
+	"timedmedia-dialog-close": "ДӀачӀагӀа медиа-плеер",
 	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
 	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|йуха код хийцаран хааме]]",
 	"orphanedtimedtext": "Йайна агӀонаш TimedText",
