@@ -127,6 +127,7 @@
 		"main": {
 			"class": "MediaWiki\\TimedMediaHandler\\Hooks",
 			"services": [
+				"MainConfig",
 				"RepoGroup",
 				"SpecialPageFactory"
 			]
