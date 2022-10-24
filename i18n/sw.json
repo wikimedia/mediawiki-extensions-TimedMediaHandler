@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Stephenwanjau",
+			"Wangombe",
 			"Yasen igra"
 		]
 	},
@@ -11,6 +12,8 @@
 	"timedmedia-actions": "Vitendo",
 	"timedmedia-not-ready": "Haiko tayari",
 	"timedmedia-days": "{{PLURAL:$1|Siku 1|Siku $1}}",
+	"timedmedia-source-file": "$1 chanzo",
+	"timedmedia-source-audio-file-desc": "Faili asili $1 ( $2 )",
 	"timedmedia-subtitle-new-go": "Nenda",
 	"timedmedia-file": "Faili"
 }
