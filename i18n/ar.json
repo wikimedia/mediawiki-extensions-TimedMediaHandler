@@ -141,6 +141,7 @@
 	"timedmedia-no-derivatives": "لا تكويد مطلوب.",
 	"timedmedia-file": "ملف",
 	"timedmedia-dialog-close": "أغلق مشغل الوسائط",
+	"timedmedia-duration-hms": "{{PLURAL:$1| $1 | $1 ساعة}} ، {{PLURAL:$2| $2 دقيقة | $2 دقيقة}} و {{PLURAL:$3| $3 ثانية | $3 ثوانٍ}}",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1دقيقة |دقائق}} و {{PLURAL:$2|$2 ثانية | $2 ثواني}}",
 	"timedmedia-duration-s": "{{PLURAL:$1||ثانية واحدة|ثانيتين|$1 ثوانٍ|$1 ثانية}}",
 	"right-transcode-reset": "إعادة ضبط الفيديوات الفاشلة أو المكودة ليتم إدخالها إلى طابور المهام مجدداً",
@@ -155,6 +156,8 @@
 	"orphanedtimedtext-unsupported": "هذه الصفحة الخاصة لا تدعمها إلا قواعد بيانات MySQL",
 	"videojs-more-information": "مزيد من المعلومات",
 	"videojs-quality": "جودة الفيديو",
+	"videojs-subtitles-create": "إنشاء ترجمات",
+	"videojs-captions-create": "إنشاء تعليق",
 	"transcodestatistics": "إحصاءات الترميز",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 ترجمات للمقطع: $2",
 	"timedmedia-timedtext-title-create-subtitles": "لم يتم العثور على ترجمة $1 لمقطع: $2"
