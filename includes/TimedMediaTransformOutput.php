@@ -449,7 +449,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		if ( $this->isVideo ) {
 			$mediaAttr['height'] = (int)$height;
 		} else {
-			$mediaAttr['style'] = "width:${width}px;";
+			$mediaAttr['style'] = "width:{$width}px;";
 			unset( $mediaAttr['height'] );
 		}
 		if ( $this->fillwindow ) {
