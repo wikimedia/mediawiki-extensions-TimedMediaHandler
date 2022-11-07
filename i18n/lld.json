@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"S4b1nuz E.656",
 			"Starladin"
 		]
 	},
 	"timedmedia-source-file": "funtana $1",
-	"timedmedia-source-audio-file-desc": "File original $1 ($2)"
+	"timedmedia-source-audio-file-desc": "File original $1 ($2)",
+	"transcodestatistics": "Statistiches de transcodifica"
 }
