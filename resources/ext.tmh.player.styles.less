@@ -167,7 +167,6 @@ audio.thumbimage,
 .mw-tmh-player-progress {
 	// Duplicated from OOUI's ProgressBar widget
 	// Needed since we have to use it before loading OOUI
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	background-color: #fff;
 	border: 1px solid #a2a9b1;
@@ -177,41 +176,23 @@ audio.thumbimage,
 
 .mw-tmh-player-progress-bar {
 	height: 1em;
-	-webkit-transition: width 100ms;
 	transition: width 100ms;
 
 	// Indeterminate mode animation
-	-webkit-animation: mw-tmh-player-progress-bar-slide 2s infinite linear;
 	animation: mw-tmh-player-progress-bar-slide 2s infinite linear;
 	width: 40%;
-	-webkit-transform: translate( -25% );
-	-ms-transform: translate( -25% );
 	transform: translate( -25% );
 
 	// Enabled.
 	background-color: #36c;
 }
 
-@-webkit-keyframes mw-tmh-player-progress-bar-slide {
-	from {
-		-webkit-transform: translate( -100% );
-	}
-
-	to {
-		-webkit-transform: translate( 350% );
-	}
-}
-
 @keyframes mw-tmh-player-progress-bar-slide {
 	from {
-		-webkit-transform: translate( -100% );
-		-ms-transform: translate( -100% );
 		transform: translate( -100% );
 	}
 
 	to {
-		-webkit-transform: translate( 350% );
-		-ms-transform: translate( 350% );
 		transform: translate( 350% );
 	}
 }
