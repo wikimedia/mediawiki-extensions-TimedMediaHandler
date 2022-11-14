@@ -10,7 +10,7 @@ body {
 	padding: 0;
 }
 
-/* stylelint-disableselector-max-id */
+/* stylelint-disable selector-max-id */
 
 #videoContainer .videoHolder {
 	position: static;
