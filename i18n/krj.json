@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jose77"
+			"Jose77",
+			"Pare Mo"
 		]
 	},
-	"timedmedia-more": "Raku pa..."
+	"timedmedia-more": "Raku pa...",
+	"timedmedia-source-file": "kodigo ''source'' kang $1"
 }
