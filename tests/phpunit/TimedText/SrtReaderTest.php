@@ -29,7 +29,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 
@@ -65,7 +65,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 4, $cues );
 
@@ -85,7 +85,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 
@@ -104,7 +104,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 
@@ -123,7 +123,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 
@@ -142,7 +142,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 		$this->assertSame( '1', $cues[0]->id );
@@ -157,7 +157,7 @@ END;
 		$this->reader->read( $input );
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 		$this->assertSame( '1', $cues[0]->id );
@@ -180,7 +180,7 @@ END;
 //
 //		$cues = $this->reader->getCues();
 //		$errors = $this->reader->getErrors();
-//		$this->assertEmpty( $errors );
+//		$this->assertSame( [], $errors );
 //
 //		$this->assertEquals( 1, count( $cues ) );
 //		$this->assertEquals( 13, $cues[0]->id );
@@ -207,7 +207,7 @@ END;
 
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 		$this->assertEquals( 32, $cues[0]->id );
@@ -233,7 +233,7 @@ END;
 
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 2, $cues );
 
@@ -290,7 +290,7 @@ END;
 
 		$cues = $this->reader->getCues();
 		$errors = $this->reader->getErrors();
-		$this->assertEmpty( $errors );
+		$this->assertSame( [], $errors );
 
 		$this->assertCount( 1, $cues );
 
