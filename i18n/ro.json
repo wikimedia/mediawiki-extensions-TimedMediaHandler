@@ -77,6 +77,7 @@
 	"timedmedia-subtitle-no-subtitles": "Nu există în acest moment subtitrări în limba $1 pentru acest videoclip. Puteți [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifica această pagină] pentru a le adăuga.",
 	"timedmedia-subtitle-remote": "Subtitrarea sincronizată a acestui fișier este găzduită la $1",
 	"timedmedia-subtitle-remote-link": "Puteți [$1 vizualiza pagina descriptivă] a acestui fișier la $2",
+	"timedmedia-subtitles-available": "Subtitrări disponibile.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 codificare|$1 codificări|$1 de codificări}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 codificare în curs|$1 codificări în curs|$1 de codificări în curs}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 codificare în așteptare|$1 codificări în așteptare|$1 de codificări în așteptare}}",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"ToprakM"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "Belirli bir dosya sayfası için kod dönüştürme durumunu alın.",
@@ -31,6 +32,6 @@
 	"apierror-timedmedia-badtranscodekey": "Geçersiz veya devre dışı transkodu: $1",
 	"apierror-timedmedia-notenoughtimereset": "Bu kod dönüştürmesinin son sıfırlanmasından bu yana yeterli zaman geçmedi. Bu kod dönüşümü $1 tarihinde sıfırlanana kadar.",
 	"apierror-timedmedia-lang-notfound": "İstenen dil bulunamadı",
-	"apierror-timedmedia-no-timedtext-support": "TimedText desteği yok",
+	"apierror-timedmedia-no-timedtext-support": "ZamanlıMetin desteği yok",
 	"apierror-timedmedia-notlocal": "Dosya yerel değil"
 }
