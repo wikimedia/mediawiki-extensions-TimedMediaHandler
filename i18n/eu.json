@@ -6,6 +6,7 @@
 			"Sator",
 			"Subi",
 			"Theklan",
+			"Xabier Armendaritz",
 			"පසිඳු කාවින්ද"
 		]
 	},
@@ -17,11 +18,11 @@
 	"timedmedia-ogg-long-error": "ogg fitxategi okerra: $1",
 	"timedmedia-more": "Gehiago...",
 	"timedmedia-dismiss": "Itxi",
-	"timedmedia-download": "Fitxategia jaitsi",
+	"timedmedia-download": "Deskargatu fitxategia",
 	"timedmedia-desc-link": "Fitxategi honen inguruan",
 	"timedmedia-status": "Egoera",
 	"timedmedia-transcodeinfo": "Formatua",
-	"timedmedia-direct-link": "Jaitsi",
+	"timedmedia-direct-link": "Deskargatu",
 	"timedmedia-days": "{{PLURAL:$1|egun bat|$1 egun}}",
 	"timedmedia-hours": "{{PLURAL:$1|ordu bat|$1 ordu}}",
 	"timedmedia-minutes": "{{PLURAL:$1|minutu bat|$1 minutu}}",
