@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kai theos en ho logos",
 			"Pare Mo"
 		]
 	},
-	"timedmedia-source-file": "gin·gikanan sg $1"
+	"timedmedia-source-file": "gin·gikanan sg $1",
+	"timedmedia-source-audio-file-desc": "Orihinál nga $1 file ($2)"
 }

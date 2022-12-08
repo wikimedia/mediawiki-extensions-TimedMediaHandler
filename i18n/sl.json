@@ -183,7 +183,7 @@
 	"action-transcode-status": "ogled trenutnega stanja prekodiranja",
 	"log-name-timedmediahandler": "Dnevnik TimedMediaHandler",
 	"log-description-timedmediahandler": "To je dnevnik dejanj, povezanih s časovno določenimi prekodiranji predstavnosti.",
-	"logentry-timedmediahandler-resettranscode": "$1 je {{GENDER:$2|ponastavil|ponastavila|ponastavil/a}} prekodiranje $3 v format »$4«",
+	"logentry-timedmediahandler-resettranscode": "$1 je {{GENDER:$2|ponastavil|ponastavila|ponastavil_a}} prekodiranje $3 v format »$4«",
 	"orphanedtimedtext": "Osirotele strani TimedText",
 	"orphanedtimedtext-summary": "Seznam [[{{#special:AllPages/TimedText:}}|strani {{ns:TimedText}}]], ki nimajo ustrezajoče datoteke.",
 	"orphanedtimedtext-unsupported": "Ta posebna stran je podprta samo v podatkovnih zbirkah MySQL.",
