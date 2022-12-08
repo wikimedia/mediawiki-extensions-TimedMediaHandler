@@ -12,7 +12,8 @@
 			"Pxos",
 			"Pyscowicz",
 			"Str4nd",
-			"VezonThunder"
+			"VezonThunder",
+			"Jack Phoenix"
 		]
 	},
 	"timedmediahandler-desc": "Käsittelijä äänelle, videolle ja tekstitykselle. Tukee muotoja WebM, Ogg Theora, Vorbis ja srt.",
@@ -66,7 +67,6 @@
 	"timedmedia-derivative-desc-320p.mp4": "MP4 H.264 (320p)",
 	"timedmedia-derivative-desc-480p.mp4": "SD MP4 H.264 (480p)",
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720p)",
-	"timedmedia-resolution-288": "Matala 288p",
 	"timedmedia-subtitle-new": "Luo uusi käännös tai muokkaa aiempaa",
 	"timedmedia-subtitle-new-desc": "Valitse kieli ja napsauta '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Siirry",
@@ -74,5 +74,7 @@
 	"timedmedia-subtitle-no-subtitles": "Tälle videolle ei tällä hetkellä ole tekstityksiä kielellä $1. Voit [{{fullurl:{{FULLPAGENAME}}|action=edit}} muokata tätä sivua] lisätäksesi ne.",
 	"timedmedia-file": "Tiedosto",
 	"timedmedia-dialog-close": "Sulje mediasoitin",
-	"log-name-timedmediahandler": "TimedMediaHandler-toimintoloki"
+	"log-name-timedmediahandler": "TimedMediaHandler-toimintoloki",
+	"orphanedtimedtext": "Hylätyt TimedText-sivut",
+	"orphanedtimedtext-summary": "Luettelo [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]-sivuista, joita vastaavia tiedostoja ei ole."
 }
