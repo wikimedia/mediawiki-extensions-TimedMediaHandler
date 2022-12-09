@@ -506,6 +506,10 @@
 				"timedmedia-reset",
 				"timedmedia-reset-areyousure",
 				"timedmedia-reset-explanation"
+			],
+			"targets": [
+				"mobile",
+				"desktop"
 			]
 		},
 		"ext.tmh.timedtextpage.styles": {
