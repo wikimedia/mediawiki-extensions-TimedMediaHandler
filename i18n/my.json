@@ -20,5 +20,10 @@
 	"timedmedia-source-audio-file-desc": "မူရင်း $1 ဖိုင် ($2)",
 	"timedmedia-subtitle-new-desc": "ဘာသာစကားရွေးပြီး '''{{int:Timedmedia-subtitle-new-go}}''' ခလုတ်ကိုနှိပ်ပါ",
 	"timedmedia-subtitle-new-go": "သွားပါ",
-	"timedmedia-file": "ဖိုင်"
+	"timedmedia-subtitles-available": "စာတန်းထိုးများ ရနိုင်သည်။",
+	"timedmedia-file": "ဖိုင်",
+	"videojs-more-information": "သတင်းအချက်အလက် ပို၍",
+	"videojs-quality": "ဗီဒီယိုအရည်အသွေး",
+	"videojs-subtitles-create": "စာတန်းထိုးများ ဖန်တီးပါ",
+	"videojs-captions-create": "စာတန်းများ ဖန်တီးပါ"
 }
