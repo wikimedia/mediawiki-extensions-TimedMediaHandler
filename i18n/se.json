@@ -4,5 +4,7 @@
 			"Yupik"
 		]
 	},
+	"timedmedia-ogg-short-audio": "Ogg $1 -jietnafiila, $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 -jietnafiila, bistu $2, $3",
 	"videojs-more-information": "Lassedieđut"
 }
