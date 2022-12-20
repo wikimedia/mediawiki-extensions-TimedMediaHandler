@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Anakmalaysia",
-			"Aviator"
+			"Aviator",
+			"Tofeiku"
 		]
 	},
 	"timedmediahandler-desc": "Pemproses audio, video dan teks bermasa, dengan sokongan format untuk WebM, Ogg Theora, Vorbis, srt",
@@ -32,9 +33,9 @@
 	"timedmedia-update-status": "Kemaskinikan status transkod",
 	"timedmedia-status": "Status",
 	"timedmedia-status-unknown": "Status tidak diketahui",
-	"timedmedia-transcodeinfo": "Keterangan hasil terbitan transkod",
+	"timedmedia-transcodeinfo": "Format",
 	"timedmedia-actions": "Tindakan",
-	"timedmedia-direct-link": "Muat turun terbitan",
+	"timedmedia-direct-link": "Muat turun",
 	"timedmedia-not-ready": "Belum sedia",
 	"timedmedia-completed-on": "Pentranskodan selesai pada $1",
 	"timedmedia-error-on": "Ralat dalam transkod pada $1",

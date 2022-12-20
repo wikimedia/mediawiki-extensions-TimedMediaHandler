@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yupik"
+			"Yupik",
+			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
+	"timedmedia-ogg-short-audio": "Ogg $1 -jietnafiila, $2",
+	"timedmedia-ogg-long-audio": "Ogg $1 -jietnafiila, bistu $2, $3",
+	"timedmedia-source-audio-file-desc": "Álgovuolggalaš $1-fiila ($2)",
 	"videojs-more-information": "Lassedieđut"
 }
