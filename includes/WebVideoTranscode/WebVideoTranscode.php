@@ -15,7 +15,7 @@ use ConfigException;
 use DeferredUpdates;
 use Exception;
 use File;
-use ForeignDBViaLBRepo;
+use IForeignRepoWithDB;
 use IForeignRepoWithMWApi;
 use MediaWiki\FileBackend\FSFile\TempFSFileFactory;
 use MediaWiki\MediaWikiServices;
@@ -571,7 +571,7 @@ class WebVideoTranscode {
 	 * @return array|mixed
 	 */
 	public static function getSources( &$file, $options = [] ) {
-		if ( $file->isLocal() || $file->repo instanceof ForeignDBViaLBRepo ) {
+		if ( $file->isLocal() || $file->repo instanceof IForeignRepoWithDB ) {
 			return static::getLocalSources( $file, $options );
 		}
 
@@ -673,7 +673,7 @@ class WebVideoTranscode {
 
 		// If $wgEnableTranscode is false don't look for or add other local sources:
 		if ( $wgEnableTranscode === false &&
-			!( $file->repo instanceof ForeignDBViaLBRepo ) ) {
+			!( $file->repo instanceof IForeignRepoWithDB ) ) {
 			return $sources;
 		}
 
