@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jokomarel"
+		]
+	},
+	"timedmedia-source-file": "$1 hnar",
+	"timedmedia-source-audio-file-desc": "Dik tak $1 file ($2)"
+}
