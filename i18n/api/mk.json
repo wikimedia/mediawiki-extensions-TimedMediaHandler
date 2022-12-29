@@ -11,7 +11,7 @@
 	"apihelp-query+videoinfo-summary": "Ги дополнува информациите со податок за изворот на видеото (изведени)",
 	"apihelp-query+videoinfo-example-1": "Дај информации за [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Додава низа достапни верзии на вашата аудио или видео податотека со различен формат и квалитет.",
-	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Додава низа достапни титлови, текст и описи на аудио и видео податотека.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Става низа од толкување, текст и описи што се достапни за аудио или видео податотека.",
 	"apihelp-timedtext-description": "Дава времеводена текстуална содржина за употреба од елементи &lt;track&gt;",
 	"apihelp-timedtext-summary": "Дава времеводена текстуална содржина за употреба од елементи $lt;track&gt;",
 	"apihelp-timedtext-param-title": "Наслов на податотеката за која се бара времеводен текст",
