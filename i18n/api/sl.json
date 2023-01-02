@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apierror-timedmedia-invalidtranscodetitle": "$1 ni mogoče prekodirati.",
+	"apierror-timedmedia-no-timedtext-support": "Ni podpore za TimedText"
+}
