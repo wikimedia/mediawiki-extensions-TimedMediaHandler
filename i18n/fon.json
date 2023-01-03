@@ -4,5 +4,6 @@
 			"Mahuton"
 		]
 	},
-	"timedmedia-source-file": "$1 ɖoɖonu"
+	"timedmedia-source-file": "$1 ɖoɖonu",
+	"timedmedia-source-audio-file-desc": "Wema dodo $1 ($2)"
 }
