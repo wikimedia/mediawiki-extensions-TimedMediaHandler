@@ -5,7 +5,8 @@
 			"Chadyka",
 			"No Sleep till Krupki",
 			"Tomato Cream",
-			"Чаховіч Уладзіслаў"
+			"Чаховіч Уладзіслаў",
+			"Plaga med"
 		]
 	},
 	"timedmediahandler-desc": "Апрацоўшчык аўдыё, відэа і субцітраў у фарматах WebM, Ogg Theora, Vorbis, SRT",
@@ -96,7 +97,7 @@
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|неініцыялізаваная транскадзіроўка|неініцыялізаваных транскадыроўкі|неініцыялізаваных транскадзіровак}}",
 	"timedmedia-no-derivatives": "Транскадзіроўка не патрабуецца.",
 	"timedmedia-file": "Файл",
-	"timedmedia-dialog-close": "Зачыніць прайгравальнік медыя",
+	"timedmedia-dialog-close": "Закрыць медыяпрайгравальнік",
 	"timedmedia-duration-hms": "$1 {{PLURAL:$1|гадзіна|гадзіны|гадзінаў}}, $2 {{PLURAL:$1|хвіліна|хвіліны|хвілінаў}}, і $3 {{PLURAL:$1|секунда|секунды|секундаў}}",
 	"timedmedia-duration-ms": "$1 {{PLURAL:$1|хвіліна|хвіліны|хвілінаў}} і $2 {{PLURAL:$1|секунда|секунды|секундаў}}",
 	"timedmedia-duration-s": "$1 {{PLURAL:$1|секунда|секунды|секундаў}}",
