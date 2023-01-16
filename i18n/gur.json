@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Akakiiri",
 			"Amire80",
 			"Ayire Adongo"
 		]
 	},
 	"timedmedia-source-file": "$1 sɔa",
-	"timedmedia-source-audio-file-desc": "Mɛŋa $1 pɔkɔ ($2)"
+	"timedmedia-source-audio-file-desc": "Mɛŋerɛ $1 faali ($2)"
 }
