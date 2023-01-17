@@ -8,7 +8,7 @@
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
-	"timedmediahandler-desc": "Upravljalnik zvoka, videa in časovnega besedila za podprte formate WebM, Ogg Theora, Vorbis in SubRip",
+	"timedmediahandler-desc": "Obravnavalnik zvoka, videa in časovnega besedila za podprte formate WebM, Ogg Theora, Vorbis in SubRip",
 	"timedmedia-ogg-short-audio": "Avdiodatoteka Ogg $1, $2",
 	"timedmedia-ogg-short-video": "Videodatoteka Ogg $1, $2",
 	"timedmedia-ogg-short-general": "Predstavnostna datoteka Ogg $1, $2",

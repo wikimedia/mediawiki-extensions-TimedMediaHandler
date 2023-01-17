@@ -20,7 +20,8 @@
 			"予弦",
 			"佛壁灯",
 			"神樂坂秀吉",
-			"铁桶"
+			"铁桶",
+			"Diskdance"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -142,6 +143,7 @@
 	"timedmedia-subtitle-no-subtitles": "当前没有这个视频的$1字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑这个页面]以添加",
 	"timedmedia-subtitle-remote": "本文件的字幕文件位于$1",
 	"timedmedia-subtitle-remote-link": "您可以在$2查看该文件的[$1 说明页面]",
+	"timedmedia-subtitles-available": "有字幕可用。",
 	"timedmedia-derivative-state-transcodes": "$1次转码",
 	"timedmedia-derivative-state-active": "$1个正在运行的转码任务",
 	"timedmedia-derivative-state-queued": "$1个队列中的转码任务",
@@ -149,6 +151,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1个未初始化转码}}",
 	"timedmedia-no-derivatives": "不需要转码。",
 	"timedmedia-file": "文件",
+	"timedmedia-dialog-close": "关闭媒体播放器",
 	"right-transcode-reset": "重置已失败或已转码的视频将其再次加入到作业队列中",
 	"right-transcode-status": "查看[[Special:TimedMediaHandler|当前转码活动的信息]]",
 	"action-transcode-reset": "重置转码",
@@ -161,6 +164,7 @@
 	"orphanedtimedtext-unsupported": "此特殊页面只支持MySQL数据库。",
 	"videojs-more-information": "更多信息",
 	"videojs-quality": "视频品质",
+	"videojs-subtitles-create": "创建字幕",
 	"transcodestatistics": "转码统计",
 	"timedmedia-timedtext-title-edit-subtitles": "片段$2的$1字幕",
 	"timedmedia-timedtext-title-create-subtitles": "没有找到片段$2的$1字幕"
