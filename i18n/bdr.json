@@ -4,5 +4,6 @@
 			"Tofeiku"
 		]
 	},
-	"timedmedia-source-file": "$1 Poon"
+	"timedmedia-source-file": "$1 Poon",
+	"timedmedia-source-audio-file-desc": "Pail $1 bo’-bo’ ($2)"
 }
