@@ -186,7 +186,7 @@ class Hooks implements
 	public function onArticleContentOnDiff( $diffEngine, $output ) {
 		global $wgTimedTextNS;
 		if ( $output->getTitle()->getNamespace() === $wgTimedTextNS ) {
-			$article = new TimedTextPage( $output->getTitle() );
+			$article = new TimedTextPage( $output->getTitle(), $output->getRevisionId() );
 			$article->renderOutput( $output );
 			return false;
 		}
