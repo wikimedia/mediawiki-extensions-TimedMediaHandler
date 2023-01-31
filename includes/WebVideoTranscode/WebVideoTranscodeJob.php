@@ -213,7 +213,9 @@ class WebVideoTranscodeJob extends Job {
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		// Avoid contention and "server has gone away" errors as
 		// the transcode will take a very long time in some cases
-		$lbFactory->commitAll( __METHOD__ );
+		$lbFactory->commitPrimaryChanges( __METHOD__ );
+		$lbFactory->flushPrimarySessions( __METHOD__ );
+		$lbFactory->flushReplicaSnapshots( __METHOD__ );
 		// We can't just leave the connection open either or it will
 		// eat up resources and block new connections, so make sure
 		// everything is dead and gone.
@@ -298,7 +300,9 @@ class WebVideoTranscodeJob extends Job {
 			}
 
 			// Avoid "server has gone away" errors as copying can be slow
-			$lbFactory->commitAll( __METHOD__ );
+			$lbFactory->commitPrimaryChanges( __METHOD__ );
+			$lbFactory->flushPrimarySessions( __METHOD__ );
+			$lbFactory->flushReplicaSnapshots( __METHOD__ );
 			$lbFactory->closeAll();
 
 			// Copy derivative from the FS into storage at $finalDerivativeFilePath
