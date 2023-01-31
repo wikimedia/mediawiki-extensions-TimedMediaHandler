@@ -88,7 +88,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 		$out->disallowUserJs();
 
 		$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
-		$out->addModuleStyles( [ 'ext.tmh.player.inline.styles', 'embedPlayerIframeStyle' ] );
+		$out->addModuleStyles( [ 'embedPlayerIframeStyle' ] );
 
 		$out->sendCacheControl();
 		$rlClient = $out->getRlClient();
