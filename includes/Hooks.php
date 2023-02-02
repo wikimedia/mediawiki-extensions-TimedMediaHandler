@@ -208,7 +208,7 @@ class Hooks implements
 	 */
 	public function onArticleContentOnDiff( $diffEngine, $output ) {
 		if ( $output->getTitle()->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
-			$article = new TimedTextPage( $output->getTitle(), $output->getRevisionId() );
+			$article = new TimedTextPage( $output->getTitle(), $diffEngine->getNewId() );
 			$article->renderOutput( $output );
 			return false;
 		}
