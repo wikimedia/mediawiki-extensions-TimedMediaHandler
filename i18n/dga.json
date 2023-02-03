@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Kuukye",
-			"Yirkang"
+			"Yirkang",
+			"Zakaria Tunsung"
 		]
 	},
-	"timedmedia-source-file": "Yi zie",
+	"timedmedia-source-file": "$1 Yizie",
 	"timedmedia-source-audio-file-desc": "Bompapa\n $1 game ($2)"
 }
