@@ -4,5 +4,6 @@
 			"Bugirbiig"
 		]
 	},
-	"timedmedia-source-file": "$1 din yi zin'isia na"
+	"timedmedia-source-file": "$1 din yi zin'isia na",
+	"timedmedia-source-audio-file-desc": "Mɛŋir$1 faal ($2)"
 }

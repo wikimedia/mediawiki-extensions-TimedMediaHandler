@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Inabat Allanova",
-			"Nurlan"
+			"Nurlan",
+			"Ajiniyaz Nurniyazov"
 		]
 	},
 	"timedmedia-source-file": "$1 derek",
 	"timedmedia-source-audio-file-desc": "Original $1 fayl ($2)",
-	"timedmedia-subtitle-new": "Jańa awdarma baslaw yamasa redaktorlaw"
+	"timedmedia-subtitle-new": "Jańa awdarma baslaw yamasa redaktorlaw",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minut|$1 minut}} hám {{PLURAL:$2|$2 sekund|$1 sekund}}"
 }
