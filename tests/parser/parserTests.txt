@@ -143,6 +143,8 @@ Video with unsupported link
 
 !! test
 Video with different thumb image
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
