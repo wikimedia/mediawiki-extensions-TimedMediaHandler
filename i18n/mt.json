@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Leli Forte"
+			"Leli Forte",
+			"ToniSant"
 		]
 	},
 	"timedmedia-more": "Aktar",
+	"timedmedia-actions": "Azzjonijiet",
 	"timedmedia-source-file": "Sors $1",
 	"timedmedia-source-audio-file-desc": "Fajl oriġinali $1 ($2)"
 }
