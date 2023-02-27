@@ -139,19 +139,17 @@ class TextHandler {
 		if ( $repo instanceof LocalRepo ) {
 			$dbr = $repo->getReplicaDB();
 			$prefix = $this->file->getTitle()->getDBkey();
-			return $dbr->select(
-				'page',
-				[ 'page_namespace', 'page_title' ],
-				[
+			return $dbr->newSelectQueryBuilder()
+				->select( [ 'page_namespace', 'page_title' ] )
+				->from( 'page' )
+				->where( [
 					'page_namespace' => $ns,
 					'page_title ' . $dbr->buildLike( $prefix, $dbr->anyString() )
-				],
-				__METHOD__,
-				[
-					'LIMIT' => 300,
-					'ORDER BY' => 'page_title'
-				]
-			);
+				] )
+				->limit( 300 )
+				->orderBy( 'page_title' )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 		}
 
 		return false;

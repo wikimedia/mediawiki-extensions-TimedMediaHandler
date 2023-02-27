@@ -16,6 +16,7 @@ use OutputPage;
 use SpecialPage;
 use Title;
 use Wikimedia\Rdbms\Database;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class SpecialTranscodeStatistics extends SpecialPage {
 	/** @var string[] */
@@ -97,17 +98,20 @@ class SpecialTranscodeStatistics extends SpecialPage {
 			$cache->makeKey( 'TimedMediaHandler-files', $state ),
 			$cache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $state, $limit, $fname ) {
-				$dbr = wfGetDB( DB_REPLICA );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+				$dbr = $lbFactory->getReplicaDatabase();
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
 				$files = [];
-				$res = $dbr->select(
-					'transcode',
-					[ 'transcode_image_name', 'transcode_key' ],
-					$this->transcodeStates[ $state ],
-					$fname,
-					[ 'LIMIT' => $limit, 'ORDER BY' => 'transcode_time_error DESC' ]
-				);
+				$res = $dbr->newSelectQueryBuilder()
+					->select( [ 'transcode_image_name', 'transcode_key' ] )
+					->from( 'transcode' )
+					->where( $this->transcodeStates[ $state ] )
+					->limit( $limit )
+					->orderBy( 'transcode_time_error', SelectQueryBuilder::SORT_DESC )
+					->caller( $fname )
+					->fetchResultSet();
+
 				foreach ( $res as $row ) {
 					$transcode = [];
 					foreach ( $row as $k => $v ) {
@@ -161,7 +165,8 @@ class SpecialTranscodeStatistics extends SpecialPage {
 			$cache->makeKey( 'TimedMediaHandler-states' ),
 			$cache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $fname ) {
-				$dbr = wfGetDB( DB_REPLICA );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+				$dbr = $lbFactory->getReplicaDatabase();
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
 				$allTranscodes = WebVideoTranscode::enabledTranscodes();
@@ -179,24 +184,26 @@ class SpecialTranscodeStatistics extends SpecialPage {
 				foreach ( $this->transcodeStates as $state => $condition ) {
 					$cond = [ 'transcode_key' => $allTranscodes ];
 					$cond[] = $condition;
-					$res = $dbr->select( 'transcode',
-						[ 'COUNT(*) as count', 'transcode_key' ],
-						$cond,
-						$fname,
-						[ 'GROUP BY' => 'transcode_key' ]
-					);
+					$res = $dbr->newSelectQueryBuilder()
+						->select( [ 'COUNT(*) as count', 'transcode_key' ] )
+						->from( 'transcode' )
+						->where( $cond )
+						->groupBy( 'transcode_key' )
+						->caller( $fname )
+						->fetchResultSet();
 					foreach ( $res as $row ) {
 						$key = $row->transcode_key;
 						$states[ $state ][ $key ] = $row->count;
 						$states[ $state ][ 'total' ] += $states[ $state ][ $key ];
 					}
 				}
-				$res = $dbr->select( 'transcode',
-					[ 'COUNT(*) as count', 'transcode_key' ],
-					[ 'transcode_key' => $allTranscodes ],
-					$fname,
-					[ 'GROUP BY' => 'transcode_key' ]
-				);
+				$res = $dbr->newSelectQueryBuilder()
+					->select( [ 'COUNT(*) as count', 'transcode_key' ] )
+					->from( 'transcode' )
+					->where( [ 'transcode_key' => $allTranscodes ] )
+					->groupBy( 'transcode_key' )
+					->caller( $fname )
+					->fetchResultSet();
 				foreach ( $res as $row ) {
 					$key = $row->transcode_key;
 					$states[ 'transcodes' ][ $key ] = $row->count;
