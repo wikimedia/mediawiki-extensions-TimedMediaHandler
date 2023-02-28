@@ -11,13 +11,14 @@
 			"Metalhead64",
 			"MichaelFrey",
 			"Raimond Spekking",
+			"Schniggendiller",
 			"The Evil IP address",
 			"Umherirrender",
 			"XenonX3"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
-	"timedmediahandler-desc": "Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) bereit, welches die Formate WebM, Ogg Theora, Ogg Vorbis und SubRip unterstützt",
+	"timedmediahandler-desc": "Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) bereit, das die Formate WebM, Ogg Theora, Ogg Vorbis und SubRip unterstützt",
 	"timedmedia-ogg-short-audio": "Ogg-$1-Audiodatei, $2",
 	"timedmedia-ogg-short-video": "Ogg-$1-Videodatei, $2",
 	"timedmedia-ogg-short-general": "Ogg-$1-Mediadatei, $2",
