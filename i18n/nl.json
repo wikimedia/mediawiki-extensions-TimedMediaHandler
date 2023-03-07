@@ -137,7 +137,7 @@
 	"action-transcode-reset": "Transcodes opnieuw instellen",
 	"action-transcode-status": "huidige transcoderingsstatus te bekijken",
 	"log-name-timedmediahandler": "TimedMediaHandler logboek",
-	"log-description-timedmediahandler": "Dit is een logboek van acties met betrekking tot getimede mediatranscodes.",
+	"log-description-timedmediahandler": "Dit is een logboek van handelingen met betrekking tot het omzetten van tijdgebonden media.",
 	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|reset}} een transcode van $3 naar het formaat \"$4\"",
 	"orphanedtimedtext": "Ongebruikte TimedTextpagina's",
 	"orphanedtimedtext-summary": "Lijst van [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] pagina's die geen bijbehorend bestand hebben.",

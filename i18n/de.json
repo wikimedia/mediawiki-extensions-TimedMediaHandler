@@ -13,11 +13,12 @@
 			"Raimond Spekking",
 			"The Evil IP address",
 			"Umherirrender",
-			"XenonX3"
+			"XenonX3",
+			"Schniggendiller"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
-	"timedmediahandler-desc": "Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) bereit, welches die Formate WebM, Ogg Theora, Ogg Vorbis und SubRip unterstützt",
+	"timedmediahandler-desc": "Stellt ein Steuerungsprogramm für zeitgesteuerte Medien (Video, Audio, timedText) bereit, das die Formate WebM, Ogg Theora, Ogg Vorbis und SubRip unterstützt",
 	"timedmedia-ogg-short-audio": "Ogg-$1-Audiodatei, $2",
 	"timedmedia-ogg-short-video": "Ogg-$1-Videodatei, $2",
 	"timedmedia-ogg-short-general": "Ogg-$1-Mediadatei, $2",
@@ -74,8 +75,6 @@
 	"timedmedia-reset-button-reset": "Zurücksetzen",
 	"timedmedia-reset-error": "Fehler beim Zurücksetzen der Umschlüsselung",
 	"timedmedia-reset-explanation": "Das Zurücksetzen dieser Umschlüsselung wird, sofern vorhanden, die bestehende Datei entfernen und die Umschlüsselung erneut der Auftragswarteschlange hinzufügen. Die erneute Umschlüsselung wird einige Zeit dauern.",
-	"timedmedia-error-details": "Fehlerdetails Transkodieren",
-	"timedmedia-error-dismiss": "Ausblenden",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Quelle ($1)",
 	"timedmedia-source-file-desc": "Original $1-Datei, $2 x $3 ($4)",
@@ -120,7 +119,6 @@
 	"timedmedia-resolution-160": "Niedrig 160p",
 	"timedmedia-resolution-180": "Niedrig 180p",
 	"timedmedia-resolution-240": "Niedrig 240p",
-	"timedmedia-resolution-288": "Niedrig 288p",
 	"timedmedia-resolution-360": "SD 360p",
 	"timedmedia-resolution-480": "SD 480p",
 	"timedmedia-resolution-720": "HD 720p",
