@@ -108,6 +108,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 			Html::closeElement( 'head' ),
 		];
 
+		// @phan-suppress-next-line SecurityCheck-XSS Possible false-positive?
 		echo implode( "\n", $pieces );
 	?>
 <body>
