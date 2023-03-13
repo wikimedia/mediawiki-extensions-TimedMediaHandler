@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Htawmonzel"
+			"Htawmonzel",
+			"咽頭べさ"
 		]
 	},
+	"timedmedia-desc-link": "မဆေၚ်စပ်ကဵုဝှာၚ်ဏအ်",
 	"timedmedia-source-file": "$1 တမ်ရိုဟ်",
 	"timedmedia-source-audio-file-desc": "တမ်မူလ $1 ဝှာင် ($2)"
 }

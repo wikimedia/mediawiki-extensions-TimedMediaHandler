@@ -21,5 +21,11 @@
 	"timedmedia-percent-done": "ߘߝߊߣߍ߲ $1 ߖߊ߬ߕߋ",
 	"timedmedia-source-file": "$1 ߛߎ߲",
 	"timedmedia-source-audio-file-desc": "ߞߐߕߐ߮ ߓߐߛߎ߲ߡߊ $1 ($2)",
-	"timedmedia-file": "ߞߐߕߐ߮"
+	"timedmedia-subtitle-new-go": "ߕߊ߯",
+	"timedmedia-subtitle-no-video": "ߖߌ߬ߦߊ߬ߖߟߎ߬ ߛߌ߫ ߞߏߟߏ߲ߛߏߣߍ߲߫ ߕߍ߫ ߕߋ߲߭ߕߋ߲߭ ߞߎ߲߬ߕߐ߰ߟߋ߲߬ ߞߐߜߍ ߟߊ߫.",
+	"timedmedia-file": "ߞߐߕߐ߮",
+	"videojs-more-information": "ߞߎ߲߬ߠߊ߬ߝߏ߬ߣߌ߲߬ ߜߘߍ ߟߎ߬",
+	"videojs-quality": "ߖߌ߬ߦߊ߬ߖߟߎ ߛߎ߯ߦߊ",
+	"videojs-subtitles-create": "ߞߎ߲߬ߕߐ߰ߟߋ߲ ߠߎ߬ ߛߌ߲ߘߌ߫",
+	"videojs-captions-create": "ߝߍ߬ߛߓߍߟߌ ߟߎ߫ ߛߌ߲ߘߌ߫"
 }
