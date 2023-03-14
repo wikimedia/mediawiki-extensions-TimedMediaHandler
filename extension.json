@@ -15,7 +15,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "media",
 	"requires": {
-		"MediaWiki": ">= 1.38.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"APIModules": {
 		"timedtext": {
@@ -424,7 +424,9 @@
 				"oojs-ui-windows",
 				"ext.tmh.player.inline"
 			],
-			"messages": [ "timedmedia-dialog-close" ]
+			"messages": [
+				"timedmedia-dialog-close"
+			]
 		},
 		"ext.tmh.player.inline": {
 			"es6": true,
