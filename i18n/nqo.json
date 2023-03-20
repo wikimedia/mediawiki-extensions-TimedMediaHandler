@@ -8,6 +8,9 @@
 			"ߒߓߋ߫ ߝߏߝߣߊ߫"
 		]
 	},
+	"timedmedia-ogg-short-audio": "ߏ.ߜ߭.ߜ߭ (Ogg) $1 ߡߍ߲ߞߊ߲ ߞߐߕߐ߮߸ ߖߊ߲߰ߧߊ $2",
+	"timedmedia-ogg-short-video": "ߏ߬.ߜ߭.ߜ߭ (Ogg) $1 ߖߌ߬ߦߊ߬ߖߟߎ ߞߐߕߐ߮ ߖߊ߲߰ߧߊ߸ $2",
+	"timedmedia-ogg-short-general": "ߏ.ߜ߭.ߜ߭ (Ogg) $1 ߞߟߋߞߟߋ ߞߐߕߐ߮ ߖߊ߲߰ߧߊ߸ $2",
 	"timedmedia-more": "ߡߊߞߊ߬ߝߏ߬ ߜߘߍ ߟߎ߬...",
 	"timedmedia-dismiss": "ߊ߬ ߘߊߕߎ߲߯",
 	"timedmedia-download": "ߞߐߕߐ߮ ߟߊߖߌ߰ ߌ ߞߎ߲߬",
