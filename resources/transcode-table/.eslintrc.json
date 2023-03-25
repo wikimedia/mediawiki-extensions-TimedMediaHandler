@@ -1,5 +1,5 @@
 {
-    "extends": [
-        "wikimedia/client-es5"
-    ]
+	"extends": [
+		"wikimedia/client-es5"
+	]
 }
