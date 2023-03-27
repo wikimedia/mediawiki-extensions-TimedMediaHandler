@@ -191,6 +191,7 @@ InlinePlayer.lazyInit = function () {
 /**
  * Takes the HTMLMediaElement of the InlinePlayer
  * and infuses it with JS (videoJS) to enrich the element.
+ *
  * @return {jQuery.Promise}
  */
 InlinePlayer.prototype.infuse = function () {

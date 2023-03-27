@@ -10,6 +10,7 @@
 	},
 	"rules": {
 		"no-restricted-properties": "warn",
-		"compat/compat": "warn"
+		"compat/compat": "warn",
+		"es-x/no-array-prototype-fill": "warn"
 	}
 }
