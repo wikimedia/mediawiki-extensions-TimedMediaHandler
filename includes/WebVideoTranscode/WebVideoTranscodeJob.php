@@ -124,19 +124,20 @@ class WebVideoTranscodeJob extends Job {
 	 *
 	 */
 	private function setTranscodeError( $transcodeKey, $error ) {
-		$dbw = wfGetDB( DB_PRIMARY );
-		$dbw->update(
-			'transcode',
-			[
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$dbw = $lbFactory->getPrimaryDatabase();
+		$dbw->newUpdateQueryBuilder()
+			->update( 'transcode' )
+			->set( [
 				'transcode_time_error' => $dbw->timestamp(),
 				'transcode_error' => $error
-			],
-			[
+			] )
+			->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
 					'transcode_key' => $transcodeKey
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 		$this->setLastError( $error );
 	}
 
@@ -181,17 +182,19 @@ class WebVideoTranscodeJob extends Job {
 			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
 			$this->output( "Encoding to codec: " . $options['videoCodec'] );
 		}
-
-		$dbw = wfGetDB( DB_PRIMARY );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$dbw = $lbFactory->getPrimaryDatabase();
 
 		// Check if we have "already started" the transcode ( possible error )
-		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
-			[
+		$dbStartTime = $dbw->newSelectQueryBuilder()
+			->select( 'transcode_time_startwork' )
+			->from( 'transcode' )
+			->where( [
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->fetchField();
 		if ( $dbStartTime !== null ) {
 			$error = 'Error, running transcode job, for job that has already started';
 			$this->output( $error );
@@ -200,17 +203,16 @@ class WebVideoTranscodeJob extends Job {
 
 		// Update the transcode table letting it know we have "started work":
 		$jobStartTimeCache = wfTimestamp( TS_UNIX );
-		$dbw->update(
-			'transcode',
-			[ 'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ) ],
-			[
+		$dbw->newUpdateQueryBuilder()
+			->update( 'transcode' )
+			->set( [ 'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ) ] )
+			->where( [
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->execute();
 
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		// Avoid contention and "server has gone away" errors as
 		// the transcode will take a very long time in some cases
 		$lbFactory->commitPrimaryChanges( __METHOD__ );
@@ -253,17 +255,19 @@ class WebVideoTranscodeJob extends Job {
 		$this->removeFfmpegLogFiles();
 
 		// Reconnect to the database...
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = $lbFactory->getPrimaryDatabase();
 
 		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 		// Confirm that the in memory $jobStartTimeCache matches db start time
-		$dbStartTime = $dbw->selectField( 'transcode', 'transcode_time_startwork',
-			[
+		$dbStartTime = $dbw->newSelectQueryBuilder()
+			->select( 'transcode_time_startwork' )
+			->from( 'transcode' )
+			->where( [
 				'transcode_image_name' => $this->getFile()->getName(),
 				'transcode_key' => $transcodeKey
-			],
-			__METHOD__
-		);
+			] )
+			->caller( __METHOD__ )
+			->fetchField();
 
 		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
 		if ( $dbStartTime === null || $jobStartTimeCache !== wfTimestamp( TS_UNIX, $dbStartTime ) ) {
@@ -327,22 +331,22 @@ class WebVideoTranscodeJob extends Job {
 				);
 				// Wikimedia\restoreWarnings();
 				// Reconnect to the database...
-				$dbw = wfGetDB( DB_PRIMARY );
+				$dbw = $lbFactory->getPrimaryDatabase();
 				// Update the transcode table with success time:
-				$dbw->update(
-					'transcode',
-					[
+				$dbw->newUpdateQueryBuilder()
+					->update( 'transcode' )
+					->set( [
 						'transcode_error' => '',
 						'transcode_time_error' => null,
 						'transcode_time_success' => $dbw->timestamp(),
 						'transcode_final_bitrate' => $bitrate
-					],
-					[
+					] )
+					->where( [
 						'transcode_image_name' => $this->getFile()->getName(),
 						'transcode_key' => $transcodeKey,
-					],
-					__METHOD__
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 				// Commit to reduce contention
 				$dbw->commit( __METHOD__, 'flush' );
 				WebVideoTranscode::invalidatePagesWithFile( $this->title );

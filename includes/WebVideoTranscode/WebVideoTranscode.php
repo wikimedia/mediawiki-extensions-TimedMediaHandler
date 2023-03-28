@@ -749,12 +749,14 @@ class WebVideoTranscode {
 			}
 			// initialize the transcode state array
 			static::$transcodeState[ $fileName ] = [];
-			$res = $db->select( 'transcode',
-				'*',
-				[ 'transcode_image_name' => $fileName ],
-				__METHOD__,
-				[ 'LIMIT' => 100 ]
-			);
+			$res = $db->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'transcode' )
+				->where( [ 'transcode_image_name' => $fileName ] )
+				->limit( 100 )
+				->caller( __METHOD__ )
+				->fetchResultSet();
+
 			$overTimeout = [];
 			$over = time() - ( 2 * $wgTranscodeBackgroundTimeLimit );
 			// Populate the per transcode state cache
@@ -774,19 +776,19 @@ class WebVideoTranscode {
 				}
 			}
 			if ( $overTimeout ) {
-				$dbw = wfGetDB( DB_PRIMARY );
-				$dbw->update(
-					'transcode',
-					[
+				$dbw = $file->repo->getPrimaryDB();
+				$dbw->newUpdateQueryBuilder()
+					->update( 'transcode' )
+					->set( [
 						'transcode_time_error' => $dbw->timestamp(),
 						'transcode_error' => 'timeout'
-					],
-					[
+					] )
+					->where( [
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $overTimeout
-					],
-					__METHOD__
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 			}
 		}
 		$sorted = static::$transcodeState[ $fileName ];
@@ -810,11 +812,13 @@ class WebVideoTranscode {
 			$removeKeys = [ $transcodeKey ];
 		} else {
 			// Remove any existing files ( regardless of their state )
-			$res = $file->repo->getPrimaryDB()->select( 'transcode',
-				[ 'transcode_key' ],
-				[ 'transcode_image_name' => $file->getName() ],
-				__METHOD__
-			);
+			$res = $file->repo->getPrimaryDB()->newSelectQueryBuilder()
+				->select( 'transcode_key' )
+				->from( 'transcode' )
+				->where( [ 'transcode_image_name' => $file->getName() ] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
+
 			$removeKeys = [];
 			foreach ( $res as $transcodeRow ) {
 				$removeKeys[] = $transcodeRow->transcode_key;
@@ -838,7 +842,7 @@ class WebVideoTranscode {
 		DeferredUpdates::addUpdate( $update );
 
 		// Build the sql query:
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = $file->repo->getPrimaryDB();
 		$deleteWhere = [ 'transcode_image_name' => $file->getName() ];
 		// Check if we are removing a specific transcode key
 		if ( $transcodeKey !== false ) {
@@ -866,14 +870,17 @@ class WebVideoTranscode {
 		// TODO if the video is used in over 500 pages add to 'job queue'
 		// TODO interwiki invalidation ?
 		$limit = 500;
-		$dbr = wfGetDB( DB_REPLICA );
-		$res = $dbr->select(
-			[ 'imagelinks', 'page' ],
-			[ 'page_namespace', 'page_title' ],
-			[ 'il_to' => $titleObj->getDBkey(), 'il_from = page_id' ],
-			__METHOD__,
-			[ 'LIMIT' => $limit + 1 ]
-		);
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$dbr = $lbFactory->getReplicaDatabase();
+		$res = $dbr->newSelectQueryBuilder()
+			->fields( [ 'page_namespace', 'page_title' ] )
+			->from( 'imagelinks' )
+			->join( 'page', null, [ 'il_from = page_id' ] )
+			->where( [ 'il_to' => $titleObj->getDBkey() ] )
+			->limit( $limit + 1 )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+
 		foreach ( $res as $page ) {
 			$title = Title::makeTitle( $page->page_namespace, $page->page_title );
 			$title->invalidateCache();
@@ -1033,9 +1040,9 @@ class WebVideoTranscode {
 	 */
 	public static function cleanupTranscodes( File $file ) {
 		$fileName = $file->getTitle()->getDBkey();
-		$db = $file->repo->getPrimaryDB();
+		$dbw = $file->repo->getPrimaryDB();
 
-		$transcodeState = static::getTranscodeState( $file, $db );
+		$transcodeState = static::getTranscodeState( $file, $dbw );
 
 		$keys = static::enabledTranscodes();
 		foreach ( $keys as $transcodeKey ) {
@@ -1046,7 +1053,7 @@ class WebVideoTranscode {
 				continue;
 			}
 			if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
-				$db->insert(
+				$dbw->insert(
 					'transcode',
 					[
 						'transcode_image_name' => $fileName,
@@ -1109,9 +1116,9 @@ class WebVideoTranscode {
 	 */
 	public static function updateJobQueue( &$file, $transcodeKey ) {
 		$fileName = $file->getTitle()->getDBkey();
-		$db = $file->repo->getPrimaryDB();
+		$dbw = $file->repo->getPrimaryDB();
 
-		$transcodeState = static::getTranscodeState( $file, $db );
+		$transcodeState = static::getTranscodeState( $file, $dbw );
 
 		if ( !static::isTranscodeEnabled( $file, $transcodeKey ) ) {
 			return;
@@ -1119,12 +1126,12 @@ class WebVideoTranscode {
 
 		// If the job hasn't been added yet, attempt to do so
 		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
-			$db->insert(
+			$dbw->insert(
 				'transcode',
 				[
 					'transcode_image_name' => $fileName,
 					'transcode_key' => $transcodeKey,
-					'transcode_time_addjob' => $db->timestamp(),
+					'transcode_time_addjob' => $dbw->timestamp(),
 					'transcode_error' => "",
 					'transcode_final_bitrate' => 0
 				],
@@ -1132,7 +1139,7 @@ class WebVideoTranscode {
 				[ 'IGNORE' ]
 			);
 
-			if ( !$db->affectedRows() ) {
+			if ( !$dbw->affectedRows() ) {
 				// There is already a row for that job added by another request, no need to continue
 				return;
 			}
@@ -1152,10 +1159,10 @@ class WebVideoTranscode {
 				static::clearTranscodeCache( $fileName );
 			} catch ( Exception $ex ) {
 				// Adding job failed, update transcode row
-				$db->update(
+				$dbw->update(
 					'transcode',
 					[
-						'transcode_time_error' => $db->timestamp(),
+						'transcode_time_error' => $dbw->timestamp(),
 						'transcode_error' => "Failed to insert Job."
 					],
 					[
@@ -1195,17 +1202,16 @@ class WebVideoTranscode {
 	public static function getQueueSize( File $file, $transcodeKey ) {
 		// Warning: this won't treat the prioritized queue separately.
 		$db = $file->repo->getPrimaryDB();
-		$count = $db->selectField( 'transcode',
-			'COUNT(*)',
-			[
+		return $db->newSelectQueryBuilder()
+			->from( 'transcode' )
+			->where( [
 				'transcode_time_addjob IS NOT NULL',
 				'transcode_time_startwork IS NULL',
 				'transcode_time_success IS NULL',
 				'transcode_time_error IS NULL',
-			],
-			__METHOD__
-		);
-		return (int)$count;
+			] )
+			->caller( __METHOD__ )
+			->fetchRowCount();
 	}
 
 	/**
