@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"MRidhaAJ"
+		]
+	},
+	"timedmedia-source-file": "$1 مصدر",
+	"timedmedia-source-audio-file-desc": "الملف $1 الأصلي ($2)"
+}
