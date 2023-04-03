@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ayour2002",
 			"Lhoussine AIT TAYFST"
 		]
 	},
 	"timedmedia-source-file": "$1 aɣbalu",
-	"timedmedia-source-audio-file-desc": "Anṣli $1 afaylu ($2)"
+	"timedmedia-source-audio-file-desc": "Afaylu anṣli $1 ($2)"
 }
