@@ -136,7 +136,7 @@
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",
 	"action-transcode-status": "현재 코드 변환 상태 보기",
 	"log-name-timedmediahandler": "TimedMediaHandler 기록",
-	"orphanedtimedtext": "고립된 자막 문서",
+	"orphanedtimedtext": "외톨이 자막 문서",
 	"orphanedtimedtext-summary": "대응되는 파일이 없는 [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] 문서의 목록입니다.",
 	"orphanedtimedtext-unsupported": "이 특수 문서는 MySQL 데이터베이스에서만 지원합니다.",
 	"videojs-more-information": "추가 정보",
