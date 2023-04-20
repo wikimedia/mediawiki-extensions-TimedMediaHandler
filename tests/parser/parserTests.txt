@@ -7,6 +7,8 @@ extension:TimedMediaHandler
 
 !! test
 Simple video element
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -33,6 +35,8 @@ wgParserEnableLegacyMediaDOM=true
 
 !! test
 Simple thumbed video
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -57,6 +61,8 @@ wgParserEnableLegacyMediaDOM=true
 
 !! test
 Simple video with border
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -70,6 +76,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video in a <gallery>
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -92,6 +100,8 @@ File:Video.ogv
 
 !! test
 Video with thumbtime=1:25
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -105,6 +115,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video with starttime offset
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -118,6 +130,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video with starttime and endtime offsets
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -131,6 +145,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video with unsupported alt
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -146,6 +162,8 @@ wgParserEnableLegacyMediaDOM=false
 Video with unsupported link
 !! config
 wgParserEnableLegacyMediaDOM=false
+!! options
+disabled
 !! wikitext
 [[File:Video.ogv|link=Example]]
 !! html/php
@@ -157,6 +175,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video with different thumb image
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -181,6 +201,8 @@ wgParserEnableLegacyMediaDOM=true
 
 !! test
 Image with video thumb
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -193,6 +215,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Simple audio element
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -217,6 +241,8 @@ parsoid=html2wt
 
 !! test
 Flag disablecontrols as bogus options in Parsoid
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
@@ -230,6 +256,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video with flag muted and loop
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
