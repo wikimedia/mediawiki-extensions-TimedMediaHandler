@@ -198,9 +198,8 @@ class TranscodeStatusTable {
 	public static function getStatusMsg( $file, $state ) {
 		// Check for success:
 		if ( $state['time_success'] !== null ) {
-			$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-			return wfMessage( 'timedmedia-completed-on',
-				$contLang->timeAndDate( $state[ 'time_success' ] ) )->escaped();
+			return wfMessage( 'timedmedia-completed-on' )
+				->dateTimeParams( $state[ 'time_success' ] )->escaped();
 		}
 		// Check for error:
 		if ( $state['time_error'] !== null ) {
@@ -211,11 +210,10 @@ class TranscodeStatusTable {
 					'data-error' => $state['error'],
 				];
 			}
-			$contLang = MediaWikiServices::getInstance()->getContentLanguage();
 
 			return Html::rawElement( 'span', $attribs,
-				wfMessage( 'timedmedia-error-on',
-					$contLang->timeAndDate( $state['time_error'] ) )->escaped()
+				wfMessage( 'timedmedia-error-on' )
+					->dateTimeParams( $state['time_error'] )->escaped()
 			);
 		}
 
