@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Slomox"
+			"Slomox",
+			"Wikiundeplattsnacker"
 		]
 	},
 	"timedmediahandler-desc": "Stüürprogramm för Ogg-Theora- un Vorbis Datein, mitsamt en Afspeler in JavaScript",
@@ -16,5 +17,7 @@
 	"timedmedia-more": "Mehr...",
 	"timedmedia-dismiss": "Dichtmaken",
 	"timedmedia-download": "Datei dalladen",
-	"timedmedia-desc-link": "Över disse Datei"
+	"timedmedia-desc-link": "Över disse Datei",
+	"timedmedia-source-file": "$1 Born",
+	"timedmedia-source-audio-file-desc": "Original $1 Datei ($2)"
 }
