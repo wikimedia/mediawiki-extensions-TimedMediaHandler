@@ -11,6 +11,7 @@
 	"timedmedia-download": "فائل ڈاؤن لوڈ کریں",
 	"timedmedia-play-media": "شروع کریں",
 	"timedmedia-desc-link": "اس فائل کے بارے میں",
+	"timedmedia-status-header": "رمزبندی کی کیفیت",
 	"timedmedia-status": "حالت",
 	"timedmedia-status-unknown": "نامعلوم حالت",
 	"timedmedia-actions": "اقدامات",
@@ -21,10 +22,14 @@
 	"timedmedia-source-file": "$1 مسودہ",
 	"timedmedia-source-audio-file-desc": "اصلی $1 فائل ($2)",
 	"timedmedia-subtitle-new-go": "چلیں",
+	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 رمزبندی|$1 رمزبندیاں}}",
 	"timedmedia-file": "فائل",
 	"right-transcode-reset": "ناکام یا ٹرانس کوڈ شدہ ویڈیو کی ترتیب نو (اس کے بعد ان ویڈیو کو کاموں کی صف میں دوبارہ شامل کر دیا جاتا ہے)۔",
 	"right-transcode-status": "[[Special:TimedMediaHandler|ٹرانس کوڈ کی حالیہ سرگرمی کی معلومات]] کا مشاہدہ",
 	"action-transcode-status": "ٹرانس کوڈ کی موجودہ صورت حال دیکھنے",
+	"orphanedtimedtext": "یتیم وقتی متن کے صفحات",
+	"orphanedtimedtext-summary": "[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] کے ان صفحات کی فہرست جن میں کوئی مماثل فائل نہیں ہے۔",
 	"videojs-more-information": "مزید معلومات",
-	"videojs-quality": "ویڈیو کوالٹی"
+	"videojs-quality": "ویڈیو کوالٹی",
+	"transcodestatistics": "رمزبندی کی شماریات"
 }
