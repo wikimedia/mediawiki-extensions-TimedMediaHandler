@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Delim"
+		]
+	},
+	"timedmedia-source-file": "$1 원본",
+	"timedmedia-source-audio-file-desc": "원본 $1 서류 ($2)"
+}
