@@ -1,55 +1,42 @@
-( function () {
-	/* global require */
-	var videojs = null;
-	if ( typeof window.videojs === 'undefined' && typeof require === 'function' ) {
-		videojs = require( 'video.js' );
-	} else {
-		videojs = window.videojs;
+const Button = videojs.getComponent( 'Button' );
+
+/**
+ * @extends Button
+ */
+class InfoButton extends Button {
+	constructor( player, options ) {
+		super( player, options );
+		this.link = options.link;
+		this.controlText( 'More information' );
+		this.addClass( 'mw-info-button' );
 	}
+	handleClick() {
+		window.navigator.url = window.open( this.link, '_blank' );
+	}
+}
 
-	( function () {
-		var infoButton,
-			// defaults = {},
-			Button = videojs.getComponent( 'Button' ),
-			InfoButton = videojs.extend( Button, {
-				constructor: function ( player, options ) {
-					this.link = options.link;
-					Button.call( this, player, {} );
-				},
-				handleClick: function () {
-					window.navigator.url = window.open( this.link, '_blank' );
-				},
-				buildCSSClass: function () {
-					return Button.prototype.buildCSSClass.call( this ) + ' mw-info-button';
-				}
-			} );
+// Register the component with Video.js, so it can be used in players.
+videojs.registerComponent( 'InfoButton', InfoButton );
 
-		// Register the component with Video.js, so it can be used in players.
-		// eslint-disable-next-line no-underscore-dangle
-		InfoButton.prototype.controlText_ = 'More information';
-		videojs.registerComponent( 'InfoButton', InfoButton );
+/**
+ * Initialize the plugin.
+ *
+ * @param {Object} [options] configuration for the plugin
+ */
+const infoButtonPlugin = function ( /* options */ ) {
+	const player = this;
 
-		/**
-		 * Initialize the plugin.
-		 * @param {Object} [options] configuration for the plugin
-		 */
-		infoButton = function ( /* options*/ ) {
-			// var settings = videojs.mergeOptions(defaults, options),
-			var player = this;
+	player.ready( () => {
+		const title = mw.Title.makeTitle(
+			mw.config.get( 'wgNamespaceIds' ).file,
+			player.el().getAttribute( 'data-mwtitle' )
+		);
 
-			player.ready( function () {
-				var title = mw.Title.makeTitle(
-					mw.config.get( 'wgNamespaceIds' ).file,
-					player.el().getAttribute( 'data-mwtitle' )
-				);
+		if ( mw.config.get( 'wgTitle' ) !== player.el().getAttribute( 'data-mwtitle' ) ) {
+			player.controlBar.infoButton = player.controlBar.addChild( 'InfoButton', { link: title.getUrl() } );
+		}
+	} );
+};
 
-				if ( mw.config.get( 'wgTitle' ) !== player.el().getAttribute( 'data-mwtitle' ) ) {
-					player.controlBar.infoButton = player.controlBar.addChild( 'InfoButton', { link: title.getUrl() } );
-				}
-			} );
-		};
-
-		// register the plugin
-		videojs.registerPlugin( 'infoButton', infoButton );
-	}() );
-}() );
+// register the plugin
+videojs.registerPlugin( 'infoButton', infoButtonPlugin );

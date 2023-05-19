@@ -1,4 +1,4 @@
-resources/mw-info-button/
-resources/videojs*
+resources/videojs/*
+resources/videojs-ogvjs/*
 resources/ogv.js/
 vendor/

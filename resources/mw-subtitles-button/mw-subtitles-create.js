@@ -1,8 +1,7 @@
-/* eslint-disable no-implicit-globals */
-var TextTrackMenuItem = videojs.getComponent( 'TextTrackMenuItem' );
+const TextTrackMenuItem = videojs.getComponent( 'TextTrackMenuItem' );
 
-var MwCreateSubtitlesMenuItem = videojs.extend( TextTrackMenuItem, {
-	constructor: function ( player, options ) {
+class MwCreateSubtitlesMenuItem extends TextTrackMenuItem {
+	constructor( player, options ) {
 		options.track = {
 			player: player,
 			kind: options.kind,
@@ -13,17 +12,17 @@ var MwCreateSubtitlesMenuItem = videojs.extend( TextTrackMenuItem, {
 		};
 		options.selectable = false;
 		options.name = 'MwCreateSubtitlesMenuItem';
+		super( player, options );
 
-		TextTrackMenuItem.call( this, player, options );
 		this.addClass( 'vjs-texttrack-create' );
 		this.controlText( 'test' );
-	},
-	handleClick: function () {
+	}
+	handleClick() {
 		// eslint-disable-next-line no-underscore-dangle
-		var videoEl = this.player_.el();
-		var provider = videoEl.getAttribute( 'data-mwprovider' );
-		var articlePath = encodeURI( 'TimedText:' + videoEl.getAttribute( 'data-mwtitle' ) );
-		var link;
+		const videoEl = this.player_.el();
+		const provider = videoEl.getAttribute( 'data-mwprovider' );
+		const articlePath = encodeURI( 'TimedText:' + videoEl.getAttribute( 'data-mwtitle' ) );
+		let link;
 
 		if ( provider === 'wikimediacommons' ) {
 			// Move into the config
@@ -33,7 +32,7 @@ var MwCreateSubtitlesMenuItem = videojs.extend( TextTrackMenuItem, {
 		}
 		window.open( link, '_blank' );
 	}
-} );
+}
 videojs.registerComponent( 'MwCreateSubtitlesMenuItem', MwCreateSubtitlesMenuItem );
 
 module.exports = MwCreateSubtitlesMenuItem;

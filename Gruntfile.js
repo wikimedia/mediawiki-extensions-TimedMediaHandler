@@ -54,6 +54,7 @@ module.exports = function ( grunt ) {
 					'!alt/*.novtt.min.js',
 					'!examples/**',
 					'!font/**',
+					'!types/**',
 					'!*.zip',
 					'!*.swf',
 					'!lang/*.json',

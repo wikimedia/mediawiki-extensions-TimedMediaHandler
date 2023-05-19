@@ -1,5 +1,5 @@
 .vjs-resolution-button .vjs-icon-placeholder:before {
-  content: '\f110';
+  content: '\f114';
   font-family: VideoJS;
   font-weight: normal;
   font-style: normal;
@@ -15,12 +15,6 @@
   height: 100%;
   text-align: center;
   box-sizing: inherit;
-}
-
-.vjs-resolution-button .vjs-menu .vjs-menu-content {
-  width: 4em;
-  left: 50%; /* Center the menu, in it's parent */
-  margin-left: -2em; /* half of width, to center */
 }
 
 .vjs-resolution-button .vjs-menu li {

@@ -298,6 +298,7 @@ InlinePlayer.globalConfig = {
 			inline: false
 		}
 	},
+	enableDocumentPictureInPicture: true,
 	userActions: {
 		// https://docs.videojs.com/tutorial-options.html#useractions.hotkeys
 		hotkeys: true
