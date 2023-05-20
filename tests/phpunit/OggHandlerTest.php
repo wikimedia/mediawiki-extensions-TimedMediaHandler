@@ -29,7 +29,7 @@ class OggHandlerTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $expected, $this->handler->getCommonMetaArray( $testFile ) );
 	}
 
-	public function providerGetCommonMetaArray() {
+	public static function providerGetCommonMetaArray() {
 		return [
 			[ 'test5seconds.electricsheep.300x400.ogv',
 				[
@@ -60,7 +60,7 @@ class OggHandlerTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $expected, $this->handler->getWebType( $testFile ) );
 	}
 
-	public function providerGetWebType() {
+	public static function providerGetWebType() {
 		return [
 			[ 'test5seconds.electricsheep.300x400.ogv', 'video/ogg; codecs="theora"' ],
 			[ 'doubleTag.oga', 'audio/ogg; codecs="vorbis"' ],

@@ -30,7 +30,7 @@ class WebMHandlerTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $expected, $this->handler->getStreamTypes( $testFile ) );
 	}
 
-	public function providerGetStreamTypes() {
+	public static function providerGetStreamTypes() {
 		return [
 			[ 'shuttle10seconds.1080x608.webm', [ 'VP8' ] ],
 			[ 'VP9-tractor.webm', [ 'VP9' ] ],
@@ -48,7 +48,7 @@ class WebMHandlerTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $expected, $this->handler->getWebType( $testFile ) );
 	}
 
-	public function providerGetWebType() {
+	public static function providerGetWebType() {
 		return [
 			[ 'shuttle10seconds.1080x608.webm', 'video/webm; codecs="vp8"' ],
 			[ 'VP9-tractor.webm', 'video/webm; codecs="vp9"' ],

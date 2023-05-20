@@ -127,7 +127,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		return $videoInfo['derivatives'];
 	}
 
-	public function transcodeSetProvider() {
+	public static function transcodeSetProvider() {
 		return [
 			[ [ '360p.webm' => true ], [], false ],
 			[ [ 'foobar' => true ], [], true ],

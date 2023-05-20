@@ -43,7 +43,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $thumbnail->useImagePopUp(), $expectPopup );
 	}
 
-	public function providerIsPopUp() {
+	public static function providerIsPopUp() {
 		return [
 			[ 400, 800, false ],
 			[ 300, 800, true ],
@@ -72,7 +72,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $sortedSources, $sources );
 	}
 
-	public function providerSortMediaByBandwidth() {
+	public static function providerSortMediaByBandwidth() {
 		return [
 			[
 				600,
