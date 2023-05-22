@@ -107,7 +107,7 @@
 	"timedmedia-file": "ファイル",
 	"timedmedia-dialog-close": "メディアプレイヤーを閉じる",
 	"right-transcode-reset": "失敗あるいはトランスコードされた動画をリセットして、再びジョブキューに追加することができる",
-	"right-transcode-status": "[[Special:TimedMediaHandler|現在のトランスコードアクティビティに関する情報]]を閲覧する",
+	"right-transcode-status": "[[Special:TimedMediaHandler|現在のトランスコードアクティビティに関する情報]]を閲覧",
 	"action-transcode-reset": "トランスコードのリセット",
 	"action-transcode-status": "現在のトランスコード状態の閲覧",
 	"log-name-timedmediahandler": "TimedMediaHandler記録",
