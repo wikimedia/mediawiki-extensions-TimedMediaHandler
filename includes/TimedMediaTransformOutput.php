@@ -5,6 +5,8 @@ namespace MediaWiki\TimedMediaHandler;
 use Exception;
 use Html;
 use MediaTransformOutput;
+use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
@@ -192,6 +194,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		}
 
 		$mediaAttr = $this->getMediaAttr( false, false, $classes );
+
+		// XXX: This might be redundant with data-mwtitle
+		$services = MediaWikiServices::getInstance();
+		$enableLegacyMediaDOM = $services->getMainConfig()->get( MainConfigNames::ParserEnableLegacyMediaDOM );
+		if ( !$enableLegacyMediaDOM && isset( $options['magnify-resource'] ) ) {
+			$mediaAttr['resource'] = $options['magnify-resource'];
+		}
+
 		$res = $this->getHtmlMediaTagOutput( $mediaAttr );
 		$this->width = $oldWidth;
 		$this->height = $oldHeight;
