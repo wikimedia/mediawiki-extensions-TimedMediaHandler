@@ -6,12 +6,13 @@
  * for each of the html elements in the collection
  */
 /* eslint-disable no-implicit-globals */
+'use strict';
+
 function loadVideoPlayer() {
-	var mediaElement,
-		MediaElement = require( './ext.tmh.player.element.js' );
+	const MediaElement = require( './ext.tmh.player.element.js' );
 
 	return this.map( function () {
-		mediaElement = new MediaElement( this );
+		const mediaElement = new MediaElement( this );
 		mediaElement.load();
 		return mediaElement;
 	} );
@@ -35,15 +36,15 @@ mw.hook( 'wikipage.indicators' ).add( loadVideoPlayers );
  */
 $( function () {
 	// eslint-disable-next-line no-jquery/no-global-selector
-	var $iframeElements = $( '#videoContainer video, #videoContainer audio' );
+	const $iframeElements = $( '#videoContainer video, #videoContainer audio' );
 	if ( !$iframeElements.length ) {
 		return;
 	}
 	// The iframe mode
 	mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-		var InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+		const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
 		$iframeElements.each( function ( index, mediaElement ) {
-			var inlinePlayer = new InlinePlayer( mediaElement, { fill: true } );
+			const inlinePlayer = new InlinePlayer( mediaElement, { fill: true } );
 			inlinePlayer.infuse();
 			// .then add further customization here
 		} );

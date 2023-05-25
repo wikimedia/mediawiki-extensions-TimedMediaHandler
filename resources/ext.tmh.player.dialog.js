@@ -50,7 +50,7 @@ MediaDialog.prototype.getBodyHeight = function () {
 };
 
 MediaDialog.prototype.getActionProcess = function ( action ) {
-	var dialog = this;
+	const dialog = this;
 	if ( action ) {
 		return new OO.ui.Process( function () {
 			dialog.close( { action: action } );
@@ -67,15 +67,15 @@ MediaDialog.prototype.getActionProcess = function ( action ) {
  * after a click, for audio to work.
  */
 MediaDialog.prototype.play = function () {
-	var indicator = new OO.ui.ProgressBarWidget( {
+	const indicator = new OO.ui.ProgressBarWidget( {
 		progress: false
 	} );
 	this.content.$element.append( indicator.$element );
 
 	// We don't need a play button (autoplay) nor a poster
-	var options = { poster: false, bigPlayButton: false, fill: true };
+	const options = { poster: false, bigPlayButton: false, fill: true };
 
-	var InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+	const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
 	this.inlinePlayer = new InlinePlayer( this.$video.get( 0 ), options );
 	// We might cause a delayed load of videojs here.
 	this.loadedPromise = this.inlinePlayer.infuse();

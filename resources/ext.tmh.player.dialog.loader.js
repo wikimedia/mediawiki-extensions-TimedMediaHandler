@@ -11,7 +11,7 @@
  * @return {jQuery.Promise} promise which resolves after the dialog closes
  */
 function initMediaPlayerDialog( element ) {
-	var MediaDialog = require( './ext.tmh.player.dialog.js' ),
+	const MediaDialog = require( './ext.tmh.player.dialog.js' ),
 		$video = $( element ).clone(),
 		isAudio = element.nodeName.toLowerCase() === 'audio';
 
@@ -24,21 +24,20 @@ function initMediaPlayerDialog( element ) {
 		$video.removeAttr( 'poster' );
 	}
 	return $.Deferred( function ( deferred ) {
-		var NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
-			windowManager = OO.ui.getWindowManager(),
-			dialog = new MediaDialog( {
-				size: isAudio ? 'medium' : 'larger',
-				$video: $video
-			} ),
-			title,
-			win;
+		const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file;
+		const windowManager = OO.ui.getWindowManager();
+		const dialog = new MediaDialog( {
+			size: isAudio ? 'medium' : 'larger',
+			$video: $video
+		} );
+		let title;
 
 		$( document.body ).append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
 		if ( $video.data( 'mwtitle' ) ) {
 			title = mw.Title.newFromText( $video.data( 'mwtitle' ), NS_FILE ).getMainText();
 		}
-		win = windowManager.openWindow( dialog, {
+		const win = windowManager.openWindow( dialog, {
 			title: title
 		} );
 

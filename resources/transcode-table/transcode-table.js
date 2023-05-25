@@ -3,13 +3,13 @@
 */
 $( function () {
 	function errorPopup( event ) {
-		var tKey = $( event.target ).attr( 'data-transcodekey' ),
-			$message = $( [
-				document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
-				document.createElement( 'br' ),
-				document.createElement( 'br' ),
-				document.createTextNode( mw.msg( 'timedmedia-reset-areyousure' ) )
-			] );
+		const tKey = $( event.target ).attr( 'data-transcodekey' );
+		const $message = $( [
+			document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
+			document.createElement( 'br' ),
+			document.createElement( 'br' ),
+			document.createTextNode( mw.msg( 'timedmedia-reset-areyousure' ) )
+		] );
 
 		event.preventDefault();
 
@@ -28,35 +28,35 @@ $( function () {
 				}
 			]
 		} ).done( function ( confirmed ) {
-			var api;
-			if ( confirmed ) {
-				api = new mw.Api();
-				api.postWithEditToken( {
-					action: 'transcodereset',
-					transcodekey: tKey,
-					title: mw.config.get( 'wgPageName' ),
-					errorformat: 'html'
-				} ).done( function () {
-					// Refresh the page
-					location.reload();
-				} ).fail( function ( code, data ) {
-					var errorText;
-					if ( data.errors ) {
-						errorText = data.errors[ 0 ][ '*' ];
-					} else {
-						errorText = mw.msg( 'timedmedia-reset-error' );
-					}
-					OO.ui.alert( errorText, {
-						actions: [
-							{
-								action: 'ok',
-								label: mw.msg( 'timedmedia-reset-button-dismiss' ),
-								flags: 'safe'
-							}
-						]
-					} );
-				} );
+			if ( !confirmed ) {
+				return;
 			}
+			const api = new mw.Api();
+			api.postWithEditToken( {
+				action: 'transcodereset',
+				transcodekey: tKey,
+				title: mw.config.get( 'wgPageName' ),
+				errorformat: 'html'
+			} ).done( function () {
+				// Refresh the page
+				location.reload();
+			} ).fail( function ( code, data ) {
+				let errorText;
+				if ( data.errors ) {
+					errorText = data.errors[ 0 ][ '*' ];
+				} else {
+					errorText = mw.msg( 'timedmedia-reset-error' );
+				}
+				OO.ui.alert( errorText, {
+					actions: [
+						{
+							action: 'ok',
+							label: mw.msg( 'timedmedia-reset-button-dismiss' ),
+							flags: 'safe'
+						}
+					]
+				} );
+			} );
 		} );
 	}
 
