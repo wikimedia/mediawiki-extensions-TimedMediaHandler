@@ -35,9 +35,9 @@ MediaElement.$interstitial = null;
 
 function secondsToComponents( totalSeconds ) {
 	totalSeconds = parseInt( totalSeconds, 10 );
-	var hours = Math.floor( totalSeconds / 3600 );
-	var minutes = Math.floor( ( totalSeconds % 3600 ) / 60 );
-	var seconds = totalSeconds % 60;
+	const hours = Math.floor( totalSeconds / 3600 );
+	const minutes = Math.floor( ( totalSeconds % 3600 ) / 60 );
+	const seconds = totalSeconds % 60;
 	return {
 		hours: hours,
 		minutes: minutes,
@@ -46,11 +46,11 @@ function secondsToComponents( totalSeconds ) {
 }
 
 function secondsToDurationString( totalSeconds ) {
-	var timeString;
-	var components = secondsToComponents( totalSeconds );
-	var hours = components.hours;
-	var minutes = components.minutes;
-	var seconds = components.seconds;
+	let timeString;
+	const components = secondsToComponents( totalSeconds );
+	const hours = components.hours;
+	const minutes = components.minutes;
+	const seconds = components.seconds;
 
 	timeString = String( seconds );
 	if ( seconds < 10 ) {
@@ -72,10 +72,10 @@ function secondsToDurationString( totalSeconds ) {
 }
 
 function secondsToDurationLongString( totalSeconds ) {
-	var components = secondsToComponents( totalSeconds );
-	var hours = components.hours;
-	var minutes = components.minutes;
-	var seconds = components.seconds;
+	const components = secondsToComponents( totalSeconds );
+	const hours = components.hours;
+	const minutes = components.minutes;
+	const seconds = components.seconds;
 
 	if ( hours ) {
 		return mw.msg( 'timedmedia-duration-hms', hours, minutes, seconds );
@@ -96,14 +96,14 @@ MediaElement.prototype.load = function () {
 		return;
 	}
 	// Get this state before modifying
-	var playing = this.originalIsPlaying();
+	const playing = this.originalIsPlaying();
 
 	// Hide native controls, we will restore them later once videojs player loads.
 	this.$element.removeAttr( 'controls' );
 
 	// Make a shallow clone, because we don't need <source> and <track> children
 	// for the placeholder and remove unneeded attributes and interactions
-	var $clonedVid = $( this.element.cloneNode() );
+	const $clonedVid = $( this.element.cloneNode() );
 	$clonedVid.attr( {
 		id: $clonedVid.attr( 'id' ) + '_placeholder',
 		disabled: '',
@@ -111,7 +111,7 @@ MediaElement.prototype.load = function () {
 	} ).removeAttr( 'src' );
 
 	if ( !this.isAudio ) {
-		var aspectRatio = this.$element.attr( 'width' ) + ' / ' + this.$element.attr( 'height' );
+		const aspectRatio = this.$element.attr( 'width' ) + ' / ' + this.$element.attr( 'height' );
 		// Chrome has a bug?? where it uses aspect-ration: auto width/height..
 		// They somehow fall back to an incorrect A/R when inserting the video
 		// if responsive height:auto is used (see our stylesheet)
@@ -138,8 +138,8 @@ MediaElement.prototype.load = function () {
 
 	if ( ( this.isAudio && this.$element.attr( 'width' ) >= 150 ) || ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) ) {
 		// Add duration label
-		var duration = this.$element.data( 'durationhint' ) || 0;
-		var $duration = $( '<span>' )
+		const duration = this.$element.data( 'durationhint' ) || 0;
+		const $duration = $( '<span>' )
 			.addClass( 'mw-tmh-duration mw-tmh-label' )
 			.attr( 'aria-label', secondsToDurationLongString( duration ) )
 			.text( secondsToDurationString( duration ) );
@@ -147,7 +147,7 @@ MediaElement.prototype.load = function () {
 
 		// Add CC label; currently skip for audio due to positioning limitations
 		if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
-			var $ccLabel = $( '<span>' )
+			const $ccLabel = $( '<span>' )
 				.addClass( 'mw-tmh-cc mw-tmh-label' )
 				.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
 				.text( 'CC' ); // This is used as an icon
@@ -239,7 +239,7 @@ MediaElement.prototype.clickHandler = function ( event ) {
  * play the element in the dialog.
  */
 MediaElement.prototype.playInlineOrOpenDialog = function () {
-	var mediaElement = this;
+	const mediaElement = this;
 
 	MediaElement.$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
 		.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
@@ -255,7 +255,7 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 	// Autoplay busting hack for native audio playback
 	// Must force a play during the user gesture on the element we will use.
 	// Our later, async loading of the modules can break the path
-	var playPromise = this.element.play();
+	const playPromise = this.element.play();
 	if ( !playPromise ) {
 		// On older browsers, play() didn't return a promise yet.
 		this.element.pause();
@@ -280,8 +280,8 @@ MediaElement.prototype.playInlineOrOpenDialog = function () {
 			mediaElement.$placeholder.find( 'video,audio' )
 				.replaceWith( mediaElement.element );
 
-			var InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
-			var inlinePlayer = new InlinePlayer( mediaElement.element, { bigPlayButton: false } );
+			const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+			const inlinePlayer = new InlinePlayer( mediaElement.element, { bigPlayButton: false } );
 			inlinePlayer.infuse().then( function ( videojsPlayer ) {
 				videojsPlayer.ready( function () {
 					// Use a setTimeout to ensure all ready callbacks have run before
