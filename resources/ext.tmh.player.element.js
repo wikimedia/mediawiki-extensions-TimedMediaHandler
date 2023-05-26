@@ -5,6 +5,8 @@
  * @class MediaElement
  */
 
+const OgvJsSupport = mw.loader.require( 'ext.tmh.OgvJsSupport' );
+
 function secondsToComponents( totalSeconds ) {
 	totalSeconds = parseInt( totalSeconds, 10 );
 	const hours = Math.floor( totalSeconds / 3600 );
@@ -231,8 +233,8 @@ class MediaElement {
 
 		// If we're using ogv.js, we have to initialize the audio context
 		// during a click event to work on Safari, especially for iOS.
-		if ( !mw.OgvJsSupport.canPlayNatively() ) {
-			mw.OgvJsSupport.initAudioContext();
+		if ( !OgvJsSupport.canPlayNatively() ) {
+			OgvJsSupport.initAudioContext();
 		}
 
 		// Autoplay busting hack for native audio playback

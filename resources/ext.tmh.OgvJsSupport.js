@@ -1,58 +1,58 @@
 /* global OGVLoader */
 let context = null;
 
-const OgvJsSupport = {
+class OgvJsSupport {
 	/**
 	 * Ensure that the OGVPlayer class is loaded before continuing.
 	 *
 	 * @param {string?} mod - optional module name override
 	 * @return {jQuery.Promise}
 	 */
-	loadOgvJs: function ( mod = 'ext.tmh.OgvJs' ) {
+	static loadOgvJs( mod = 'ext.tmh.OgvJs' ) {
 		return $.Deferred( ( deferred ) => {
 			if ( typeof OGVPlayer === 'undefined' ) {
 				mw.loader.using( mod, () => {
-					OGVLoader.base = this.basePath();
+					OGVLoader.base = OgvJsSupport.basePath();
 					deferred.resolve();
 				} );
 			} else {
 				deferred.resolve();
 			}
 		} ).promise();
-	},
+	}
 
 	/**
 	 * Check if native WebM VP9 playback is available.
 	 *
 	 * @return {boolean}
 	 */
-	canPlayNatively: function () {
+	static canPlayNatively() {
 		const el = document.createElement( 'video' );
 		return Boolean( el &&
 			el.canPlayType &&
 			el.canPlayType( 'video/webm; codecs="opus,vp9"' )
 		);
-	},
+	}
 
 	/**
 	 * Check if ogv.js would be supported.
 	 *
 	 * @return {boolean}
 	 */
-	isSupported: function () {
+	static isSupported() {
 		return !!( window.WebAssembly && (
 			window.AudioContext || window.webkitAudioContext
 		) );
-	},
+	}
 
 	/**
 	 * Check if loading ogv.js would be needed, and would be supported.
 	 *
 	 * @return {boolean}
 	 */
-	isNeeded: function () {
-		return this.isSupported() && !this.canPlayNatively();
-	},
+	static isNeeded() {
+		return OgvJsSupport.isSupported() && !OgvJsSupport.canPlayNatively();
+	}
 
 	/**
 	 * Check if native WebM VP9 playback is available, and if not
@@ -62,15 +62,15 @@ const OgvJsSupport = {
 	 * @param {HTMLMediaElement?} media - optional element to check for native support
 	 * @return {jQuery.Promise}
 	 */
-	loadIfNeeded: function ( mod = 'ext.tmh.OgvJs', media = undefined ) {
-		if ( media && this.isMediaNativelySupported( media ) ) {
+	static loadIfNeeded( mod = 'ext.tmh.OgvJs', media = undefined ) {
+		if ( media && OgvJsSupport.isMediaNativelySupported( media ) ) {
 			return $.when();
 		}
-		if ( this.isNeeded() ) {
-			return this.loadOgvJs( mod );
+		if ( OgvJsSupport.isNeeded() ) {
+			return OgvJsSupport.loadOgvJs( mod );
 		}
 		return $.when();
-	},
+	}
 
 	/**
 	 * Check if native playback is supported for any of the
@@ -79,7 +79,7 @@ const OgvJsSupport = {
 	 * @param {HTMLMediaElement} mediaElement
 	 * @return {boolean}
 	 */
-	isMediaNativelySupported: function ( mediaElement ) {
+	static isMediaNativelySupported( mediaElement ) {
 		const sourcesList = mediaElement.querySelectorAll( 'source' );
 		for ( const source of sourcesList ) {
 			const mediaType = source.getAttribute( 'type' );
@@ -95,7 +95,7 @@ const OgvJsSupport = {
 			}
 		}
 		return false;
-	},
+	}
 
 	/**
 	 * Get a path under the resources/ subdir,
@@ -103,19 +103,19 @@ const OgvJsSupport = {
 	 * @param {string} subpath
 	 * @return {string}
 	 */
-	resourcePath: function ( subpath ) {
+	static resourcePath( subpath ) {
 		return mw.config.get( 'wgExtensionAssetsPath' ) +
 			'/TimedMediaHandler/resources/' + subpath;
-	},
+	}
 
 	/**
 	 * Get the base path of ogv.js and friends.
 	 *
 	 * @return {string}
 	 */
-	basePath: function () {
-		return this.resourcePath( 'ogv.js' );
-	},
+	static basePath() {
+		return OgvJsSupport.resourcePath( 'ogv.js' );
+	}
 
 	/**
 	 * Return a stub audio context
@@ -127,7 +127,7 @@ const OgvJsSupport = {
 	 *
 	 * @return {AudioContext|null}
 	 */
-	initAudioContext: function () {
+	static initAudioContext() {
 		if ( context ) {
 			return context;
 		}
@@ -137,7 +137,7 @@ const OgvJsSupport = {
 			// If there's no <audio> or <video> Safari puts Web Audio onto
 			// the ringer channel instead of the media channel!
 			const el = document.createElement( 'audio' );
-			el.src = this.resourcePath( 'silence.mp3' );
+			el.src = OgvJsSupport.resourcePath( 'silence.mp3' );
 			el.play();
 
 			context = new AudioContext();
@@ -157,7 +157,6 @@ const OgvJsSupport = {
 		}
 		return context;
 	}
-};
-mw.OgvJsSupport = OgvJsSupport;
+}
 
 module.exports = OgvJsSupport;

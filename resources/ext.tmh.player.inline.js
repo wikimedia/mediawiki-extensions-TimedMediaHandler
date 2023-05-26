@@ -1,4 +1,5 @@
 'use strict';
+const OgvJsSupport = mw.loader.require( 'ext.tmh.OgvJsSupport' );
 
 /**
  * All JS for loading an actual videoJS player for MediaWiki
@@ -77,10 +78,10 @@ class InlinePlayer {
 			this.playerConfig
 		);
 
-		if ( !mw.OgvJsSupport.isMediaNativelySupported( this.videoplayer ) ) {
+		if ( !OgvJsSupport.isMediaNativelySupported( this.videoplayer ) ) {
 			this.playerConfig.ogvjs = {
-				base: mw.OgvJsSupport.basePath(),
-				audioContext: mw.OgvJsSupport.initAudioContext()
+				base: OgvJsSupport.basePath(),
+				audioContext: OgvJsSupport.initAudioContext()
 			};
 			this.playerConfig.techOrder.push( 'ogvjs' );
 			// ogvjs tech does not support picture in picture
@@ -123,7 +124,7 @@ class InlinePlayer {
 				// Account for screen density
 				this.$videoplayer.height() * window.devicePixelRatio
 			);
-			if ( !mw.OgvJsSupport.canPlayNatively() ) {
+			if ( !OgvJsSupport.canPlayNatively() ) {
 				// Don't pick high-res versions on ogv.js which may be slow.
 				playerHeight = Math.min( playerHeight, 480 );
 			}
@@ -161,7 +162,7 @@ class InlinePlayer {
 		}
 
 		// Launch the player
-		return mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
+		return OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
 			.then( () => {
 				const d = $.Deferred();
 				this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );

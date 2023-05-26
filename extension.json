@@ -465,6 +465,7 @@
 			],
 			"dependencies": [
 				"ext.tmh.video-js",
+				"ext.tmh.OgvJsSupport",
 				"mediawiki.Title"
 			],
 			"messages": [
@@ -517,9 +518,9 @@
 		},
 		"ext.tmh.OgvJsSupport": {
 			"es6": true,
-			"scripts": [
-				"resources/ogv.js/ogv-support.js",
-				"resources/ext.tmh.OgvJsSupport.js"
+			"packageFiles": [
+				"resources/ext.tmh.OgvJsSupport.js",
+				"resources/ogv.js/ogv-support.js"
 			],
 			"targets": [
 				"mobile",
