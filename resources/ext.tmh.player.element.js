@@ -2,36 +2,9 @@
  * Main entry class for elements enhanced with videojs
  * Provides page player loading, either with click-to-load dialog or inline mode
  *
- * @class TimedMediaHandler.MediaElement
+ * @class MediaElement
  */
 /* eslint-disable no-implicit-globals */
-
-/**
- * @param {HTMLMediaElement} element
- * @constructor
- * @type {TimedMediaHandler.MediaElement}
- */
-function MediaElement( element ) {
-	this.element = element;
-	this.$element = $( element );
-	this.isAudio = element.tagName.toLowerCase() === 'audio';
-	this.$placeholder = null;
-}
-
-/**
- * Global state to de-duplicate clicks and to make sure
- * only 1 dialog is presented at a time.
- *
- * @static
- */
-MediaElement.currentlyPlaying = false;
-
-/**
- * There should be only 1 interstitial to indicate the dialog is loading.
- *
- * @static
- */
-MediaElement.$interstitial = null;
 
 function secondsToComponents( totalSeconds ) {
 	totalSeconds = parseInt( totalSeconds, 10 );
@@ -86,231 +59,262 @@ function secondsToDurationLongString( totalSeconds ) {
 	return mw.msg( 'timedmedia-duration-s', seconds );
 }
 
-/**
- * Load our customizations for the media element,
- * loading videojs inline or upon click inside a MediaDialog
- */
-MediaElement.prototype.load = function () {
-	if ( this.$element.closest( '.mw-tmh-player' ).length ) {
-		// This player has already been transformed.
-		return;
-	}
-	// Get this state before modifying
-	const playing = this.originalIsPlaying();
-
-	// Hide native controls, we will restore them later once videojs player loads.
-	this.$element.removeAttr( 'controls' );
-
-	// Make a shallow clone, because we don't need <source> and <track> children
-	// for the placeholder and remove unneeded attributes and interactions
-	const $clonedVid = $( this.element.cloneNode() );
-	$clonedVid.attr( {
-		id: $clonedVid.attr( 'id' ) + '_placeholder',
-		disabled: '',
-		tabindex: -1
-	} ).removeAttr( 'src' );
-
-	if ( !this.isAudio ) {
-		const aspectRatio = this.$element.attr( 'width' ) + ' / ' + this.$element.attr( 'height' );
-		// Chrome has a bug?? where it uses aspect-ration: auto width/height..
-		// They somehow fall back to an incorrect A/R when inserting the video
-		// if responsive height:auto is used (see our stylesheet)
-		// Possibly their AR only kicks in when the poster finished loading
-		$clonedVid.css( 'aspect-ratio', aspectRatio );
+class MediaElement {
+	/**
+	 * @param {HTMLMediaElement} element
+	 * @type {MediaElement}
+	 */
+	constructor( element ) {
+		this.element = element;
+		this.$element = $( element );
+		this.isAudio = element.tagName.toLowerCase() === 'audio';
+		this.$placeholder = null;
 	}
 
-	this.$placeholder = $( '<span>' )
-		.addClass( 'mw-tmh-player' )
-		.addClass( this.isAudio ? 'audio' : 'video' )
-		.attr( 'style', this.$element.attr( 'style' ) )
-		.append( $clonedVid )
-		.append( $( '<a>' )
-			.addClass( 'mw-tmh-play' )
-			.attr( {
-				href: this.getUrl(),
-				title: mw.msg( 'timedmedia-play-media' ),
-				role: 'button'
-			} )
-			.on( 'click', this.clickHandler.bind( this ) )
-			.on( 'keypress', this.keyPressHandler.bind( this ) )
-			.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
-		);
+	/**
+	 * Load our customizations for the media element,
+	 * loading videojs inline or upon click inside a MediaDialog
+	 */
+	load() {
+		if ( this.$element.closest( '.mw-tmh-player' ).length ) {
+			// This player has already been transformed.
+			return;
+		}
+		// Get this state before modifying
+		const playing = this.originalIsPlaying();
 
-	if ( ( this.isAudio && this.$element.attr( 'width' ) >= 150 ) || ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) ) {
-		// Add duration label
-		const duration = this.$element.data( 'durationhint' ) || 0;
-		const $duration = $( '<span>' )
-			.addClass( 'mw-tmh-duration mw-tmh-label' )
-			.attr( 'aria-label', secondsToDurationLongString( duration ) )
-			.text( secondsToDurationString( duration ) );
-		this.$placeholder.append( $duration );
+		// Hide native controls, we will restore them later once videojs player loads.
+		this.$element.removeAttr( 'controls' );
 
-		// Add CC label; currently skip for audio due to positioning limitations
-		if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
-			const $ccLabel = $( '<span>' )
-				.addClass( 'mw-tmh-cc mw-tmh-label' )
-				.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
-				.text( 'CC' ); // This is used as an icon
-			this.$placeholder.append( $ccLabel );
+		// Make a shallow clone, because we don't need <source> and <track> children
+		// for the placeholder and remove unneeded attributes and interactions
+		const $clonedVid = $( this.element.cloneNode() );
+		$clonedVid.attr( {
+			id: $clonedVid.attr( 'id' ) + '_placeholder',
+			disabled: '',
+			tabindex: -1
+		} ).removeAttr( 'src' );
+
+		if ( !this.isAudio ) {
+			const aspectRatio = this.$element.attr( 'width' ) + ' / ' + this.$element.attr( 'height' );
+			// Chrome has a bug?? where it uses aspect-ration: auto width/height..
+			// They somehow fall back to an incorrect A/R when inserting the video
+			// if responsive height:auto is used (see our stylesheet)
+			// Possibly their AR only kicks in when the poster finished loading
+			$clonedVid.css( 'aspect-ratio', aspectRatio );
+		}
+
+		this.$placeholder = $( '<span>' )
+			.addClass( 'mw-tmh-player' )
+			.addClass( this.isAudio ? 'audio' : 'video' )
+			.attr( 'style', this.$element.attr( 'style' ) )
+			.append( $clonedVid )
+			.append( $( '<a>' )
+				.addClass( 'mw-tmh-play' )
+				.attr( {
+					href: this.getUrl(),
+					title: mw.msg( 'timedmedia-play-media' ),
+					role: 'button'
+				} )
+				.on( 'click', this.clickHandler.bind( this ) )
+				.on( 'keypress', this.keyPressHandler.bind( this ) )
+				.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
+			);
+
+		if ( ( this.isAudio && this.$element.attr( 'width' ) >= 150 ) || ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) ) {
+			// Add duration label
+			const duration = this.$element.data( 'durationhint' ) || 0;
+			const $duration = $( '<span>' )
+				.addClass( 'mw-tmh-duration mw-tmh-label' )
+				.attr( 'aria-label', secondsToDurationLongString( duration ) )
+				.text( secondsToDurationString( duration ) );
+			this.$placeholder.append( $duration );
+
+			// Add CC label; currently skip for audio due to positioning limitations
+			if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
+				const $ccLabel = $( '<span>' )
+					.addClass( 'mw-tmh-cc mw-tmh-label' )
+					.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
+					.text( 'CC' ); // This is used as an icon
+				this.$placeholder.append( $ccLabel );
+			}
+		}
+
+		this.$element.replaceWith( this.$placeholder );
+
+		if ( playing ) {
+			this.playInlineOrOpenDialog();
 		}
 	}
 
-	this.$element.replaceWith( this.$placeholder );
+	/**
+	 * Check if the original element is playing
+	 *
+	 * @return {boolean}
+	 */
+	originalIsPlaying() {
+		return this.element.readyState > 2 &&
+			this.element.currentTime > 0 &&
+			!this.element.paused &&
+			!this.element.ended;
+	}
 
-	if ( playing ) {
+	/**
+	 * Construct URL to the file description page
+	 *
+	 * @return {string}
+	 */
+	getUrl() {
+		// Construct a file target link for middle-click / ctrl-click / right-click
+		return ( mw.Title.makeTitle(
+			mw.config.get( 'wgNamespaceIds' ).file,
+			this.$element.data( 'mwtitle' )
+		) ).getUrl();
+	}
+
+	isInline() {
+		if ( this.element.classList.contains( 'mw-tmh-inline' ) ) {
+			return true;
+		}
+		if ( this.isAudio && this.$element.find( 'track' ).length === 0 ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Key press handler for `<a role="button">` element to open a
+	 * dialog and play a {MediaElement}.
+	 *
+	 * @param {MouseEvent} event
+	 */
+	keyPressHandler( event ) {
+		if (
+			MediaElement.currentlyPlaying ||
+			( event.key !== ' ' && event.key !== 'Enter' )
+		) {
+			return;
+		}
 		this.playInlineOrOpenDialog();
-	}
-};
-
-/**
- * Check if the original element is playing
- *
- * @return {boolean}
- */
-MediaElement.prototype.originalIsPlaying = function () {
-	return this.element.readyState > 2 &&
-		this.element.currentTime > 0 &&
-		!this.element.paused &&
-		!this.element.ended;
-};
-
-/**
- * Construct URL to the file description page
- *
- * @return {string}
- */
-MediaElement.prototype.getUrl = function () {
-	// Construct a file target link for middle-click / ctrl-click / right-click
-	return ( mw.Title.makeTitle(
-		mw.config.get( 'wgNamespaceIds' ).file,
-		this.$element.data( 'mwtitle' )
-	) ).getUrl();
-};
-
-MediaElement.prototype.isInline = function () {
-	if ( this.element.classList.contains( 'mw-tmh-inline' ) ) {
-		return true;
-	}
-	if ( this.isAudio && this.$element.find( 'track' ).length === 0 ) {
-		return true;
-	}
-	return false;
-};
-
-/**
- * Key press handler for `<a role="button">` element to open a
- * dialog and play a {MediaElement}.
- *
- * @param {MouseEvent} event
- */
-MediaElement.prototype.keyPressHandler = function ( event ) {
-	if (
-		MediaElement.currentlyPlaying ||
-		( event.key !== ' ' && event.key !== 'Enter' )
-	) {
-		return;
-	}
-	this.playInlineOrOpenDialog();
-	event.preventDefault();
-};
-
-/**
- * Click handler to open dialog and play a {MediaElement}
- *
- * @param {MouseEvent} event
- */
-MediaElement.prototype.clickHandler = function ( event ) {
-	if (
-		MediaElement.currentlyPlaying ||
-		// not left click
-		event.button !== 0 ||
-		// or modifier pressed at the same time
-		event.ctrlKey || event.altKey ||
-		event.metaKey || event.shiftKey
-	) {
-		return;
-	}
-	this.playInlineOrOpenDialog();
-	event.preventDefault();
-};
-
-/**
- * Method to load the player inline or open a dialog and
- * play the element in the dialog.
- */
-MediaElement.prototype.playInlineOrOpenDialog = function () {
-	const mediaElement = this;
-
-	MediaElement.$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
-		.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
-			.append( $( '<div>' ).addClass( 'mw-tmh-player-progress-bar' ) ) )
-		.appendTo( document.body );
-
-	// If we're using ogv.js, we have to initialize the audio context
-	// during a click event to work on Safari, especially for iOS.
-	if ( !mw.OgvJsSupport.canPlayNatively() ) {
-		mw.OgvJsSupport.initAudioContext();
+		event.preventDefault();
 	}
 
-	// Autoplay busting hack for native audio playback
-	// Must force a play during the user gesture on the element we will use.
-	// Our later, async loading of the modules can break the path
-	const playPromise = this.element.play();
-	if ( !playPromise ) {
-		// On older browsers, play() didn't return a promise yet.
-		this.element.pause();
-	} else {
-		// Edge 17+
-		// Chrome 50+
-		// Firefox 53+
-		// Safari 10+
-		// The reject promise of play is not that reliable when using <source> children
-		// It might not ever trigger
-		// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
-		playPromise.then( function () {
-			setTimeout( function () {
-				mediaElement.element.pause();
-			}, 0 );
-		} );
+	/**
+	 * Click handler to open dialog and play a {MediaElement}
+	 *
+	 * @param {MouseEvent} event
+	 */
+	clickHandler( event ) {
+		if (
+			MediaElement.currentlyPlaying ||
+			// not left click
+			event.button !== 0 ||
+			// or modifier pressed at the same time
+			event.ctrlKey || event.altKey ||
+			event.metaKey || event.shiftKey
+		) {
+			return;
+		}
+		this.playInlineOrOpenDialog();
+		event.preventDefault();
 	}
 
-	if ( this.isInline() ) {
-		mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-			mediaElement.$placeholder.find( 'a, .mw-tmh-label' ).detach();
-			mediaElement.$placeholder.find( 'video,audio' )
-				.replaceWith( mediaElement.element );
+	/**
+	 * Method to load the player inline or open a dialog and
+	 * play the element in the dialog.
+	 */
+	playInlineOrOpenDialog() {
+		const mediaElement = this;
 
-			const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
-			const inlinePlayer = new InlinePlayer( mediaElement.element, { bigPlayButton: false } );
-			inlinePlayer.infuse().then( function ( videojsPlayer ) {
-				videojsPlayer.ready( function () {
-					// Use a setTimeout to ensure all ready callbacks have run before
-					// we start playback. This is important for the source selector
-					// plugin, which may change sources before playback begins.
-					//
-					// This is used instead of an event like `canplay` or `loadeddata`
-					// because some versions of EdgeHTML don't fire these events.
-					// Support: Edge 18
-					setTimeout( function () {
-						MediaElement.$interstitial.detach();
-						videojsPlayer.play();
-					}, 0 );
+		MediaElement.$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
+			.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
+				.append( $( '<div>' ).addClass( 'mw-tmh-player-progress-bar' ) ) )
+			.appendTo( document.body );
+
+		// If we're using ogv.js, we have to initialize the audio context
+		// during a click event to work on Safari, especially for iOS.
+		if ( !mw.OgvJsSupport.canPlayNatively() ) {
+			mw.OgvJsSupport.initAudioContext();
+		}
+
+		// Autoplay busting hack for native audio playback
+		// Must force a play during the user gesture on the element we will use.
+		// Our later, async loading of the modules can break the path
+		const playPromise = this.element.play();
+		if ( !playPromise ) {
+			// On older browsers, play() didn't return a promise yet.
+			this.element.pause();
+		} else {
+			// Edge 17+
+			// Chrome 50+
+			// Firefox 53+
+			// Safari 10+
+			// The reject promise of play is not that reliable when using <source> children
+			// It might not ever trigger
+			// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
+			playPromise.then( function () {
+				setTimeout( function () {
+					mediaElement.element.pause();
+				}, 0 );
+			} );
+		}
+
+		if ( this.isInline() ) {
+			mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
+				mediaElement.$placeholder.find( 'a, .mw-tmh-label' ).detach();
+				mediaElement.$placeholder.find( 'video,audio' )
+					.replaceWith( mediaElement.element );
+
+				const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+				const inlinePlayer = new InlinePlayer(
+					mediaElement.element,
+					{ bigPlayButton: false }
+				);
+				inlinePlayer.infuse().then( function ( videojsPlayer ) {
+					videojsPlayer.ready( function () {
+						// Use a setTimeout to ensure all ready callbacks have run before
+						// we start playback. This is important for the source selector
+						// plugin, which may change sources before playback begins.
+						//
+						// This is used instead of an event like `canplay` or `loadeddata`
+						// because some versions of EdgeHTML don't fire these events.
+						// Support: Edge 18
+						setTimeout( function () {
+							MediaElement.$interstitial.detach();
+							videojsPlayer.play();
+						}, 0 );
+					} );
 				} );
 			} );
-		} );
-	} else {
-		MediaElement.currentlyPlaying = true;
-		mw.loader.using( 'ext.tmh.player.dialog' ).then( function () {
-			MediaElement.$interstitial.detach();
-			return mediaElement.$element.showVideoPlayerDialog().always( function () {
-				// when showing of video player dialog ends
+		} else {
+			MediaElement.currentlyPlaying = true;
+			mw.loader.using( 'ext.tmh.player.dialog' ).then( function () {
+				MediaElement.$interstitial.detach();
+				return mediaElement.$element.showVideoPlayerDialog().always( function () {
+					// when showing of video player dialog ends
+					MediaElement.currentlyPlaying = false;
+				} );
+			} ).catch( function () {
+				MediaElement.$interstitial.detach();
 				MediaElement.currentlyPlaying = false;
 			} );
-		} ).catch( function () {
-			MediaElement.$interstitial.detach();
-			MediaElement.currentlyPlaying = false;
-		} );
+		}
 	}
-};
+}
+
+/**
+ * Global state to de-duplicate clicks and to make sure
+ * only 1 dialog is presented at a time.
+ *
+ * @static
+ */
+MediaElement.currentlyPlaying = false;
+
+/**
+ * There should be only 1 interstitial to indicate the dialog is loading.
+ *
+ * @static
+ */
+MediaElement.$interstitial = null;
 
 module.exports = MediaElement;
