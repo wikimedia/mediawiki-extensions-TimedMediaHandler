@@ -1,4 +1,3 @@
-/* eslint-disable no-implicit-globals */
 'use strict';
 
 /**

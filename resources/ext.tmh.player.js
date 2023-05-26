@@ -5,7 +5,6 @@
  * @return {jQuery} The media element classes
  * for each of the html elements in the collection
  */
-/* eslint-disable no-implicit-globals */
 'use strict';
 
 function loadVideoPlayer() {

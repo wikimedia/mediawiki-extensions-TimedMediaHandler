@@ -1,12 +1,23 @@
 {
 	"root": true,
+	"plugins": [
+		"no-jquery"
+	],
 	"extends": [
+		"plugin:no-jquery/deprecated",
+		"plugin:no-jquery/slim",
 		"wikimedia/client-es6",
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
+	"env": {
+		"browser": true
+	},
 	"globals": {
 		"videojs": true
+	},
+	"parserOptions": {
+		"sourceType": "module"
 	},
 	"rules": {
 		"no-restricted-properties": "warn",

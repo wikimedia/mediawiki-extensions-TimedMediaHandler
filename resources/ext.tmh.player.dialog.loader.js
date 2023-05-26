@@ -1,4 +1,3 @@
-/* eslint-disable no-implicit-globals */
 /**
  * Use the function to initialise a MediaDialog and videoJS player
  * Depends on jQuery and OOUI

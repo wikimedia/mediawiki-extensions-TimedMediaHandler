@@ -58,7 +58,7 @@
 		 * then loads the OGVPlayer class before resolving.
 		 *
 		 * @param {string?} mod - optional module name override
-		 * @param {MediaElement?} media - optional element to check for native support
+		 * @param {HTMLMediaElement?} media - optional element to check for native support
 		 * @return {jQuery.Promise}
 		 */
 		loadIfNeeded: function ( mod, media ) {
@@ -76,7 +76,7 @@
 		 * Check if native playback is supported for any of the
 		 * sources belonging to this mediaElement
 		 *
-		 * @param {MediaElement} mediaElement
+		 * @param {HTMLMediaElement} mediaElement
 		 * @return {boolean}
 		 */
 		isMediaNativelySupported: function ( mediaElement ) {

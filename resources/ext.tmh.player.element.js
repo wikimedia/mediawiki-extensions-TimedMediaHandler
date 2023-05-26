@@ -4,7 +4,6 @@
  *
  * @class MediaElement
  */
-/* eslint-disable no-implicit-globals */
 
 function secondsToComponents( totalSeconds ) {
 	totalSeconds = parseInt( totalSeconds, 10 );
