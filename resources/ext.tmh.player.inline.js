@@ -63,8 +63,6 @@ class InlinePlayer {
 	 * @return {jQuery.Promise}
 	 */
 	infuse() {
-		const inlinePlayer = this;
-
 		if ( this.$videoplayer.closest( '.video-js' ).length ) {
 			// This player has already been transformed.
 			return;
@@ -101,14 +99,14 @@ class InlinePlayer {
 			// Audio: manipulate source elements to preferred order.
 			// This means preferring native-playback over ogv.js-playback
 			// so we don't go loading it when we don't need it.
-			this.$videoplayer.find( 'source' ).each( function () {
-				if ( !inlinePlayer.videoplayer.canPlayType( this.type ) ) {
-					nonNativeSources.push( this );
+			this.$videoplayer.find( 'source' ).each( ( _index, source ) => {
+				if ( !this.videoplayer.canPlayType( source.type ) ) {
+					nonNativeSources.push( source );
 				}
 			} );
 
-			nonNativeSources.forEach( function ( source ) {
-				$( source ).detach().appendTo( inlinePlayer.$videoplayer );
+			nonNativeSources.forEach( ( source ) => {
+				$( source ).detach().appendTo( this.$videoplayer );
 			} );
 		} else {
 			resolutions = this.extractResolutions();
@@ -129,9 +127,7 @@ class InlinePlayer {
 				// Don't pick high-res versions on ogv.js which may be slow.
 				playerHeight = Math.min( playerHeight, 480 );
 			}
-			resolutions.sort( function ( a, b ) {
-				return a - b;
-			} );
+			resolutions.sort( ( a, b ) => a - b );
 			for ( let i = 0, l = resolutions.length; i < l; i++ ) {
 				if ( resolutions[ i ] <= maxRes ) {
 					defaultRes = resolutions[ i ];
@@ -166,20 +162,19 @@ class InlinePlayer {
 
 		// Launch the player
 		return mw.OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
-			.then( function () {
+			.then( () => {
 				const d = $.Deferred();
 				this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );
 				// Do not use the ready callback of the videojs function
 				// The texttracks are not done initializing in that ready callback (T309414)
-				this.videojsPlayer.ready( function () {
-					const videojsPlayer = this;
-					InlinePlayer.activePlayers.push( videojsPlayer );
-					inlinePlayer.selectDefaultTrack();
+				this.videojsPlayer.ready( () => {
+					InlinePlayer.activePlayers.push( this.videojsPlayer );
+					this.selectDefaultTrack();
 					/* More custom stuff goes here */
-					d.resolve( videojsPlayer );
+					d.resolve( this.videojsPlayer );
 				} );
 				return d.promise();
-			}.bind( this ) );
+			} );
 	}
 
 	/**
@@ -191,9 +186,8 @@ class InlinePlayer {
 		let contentLanguageTrack;
 		const tracks = this.videojsPlayer.textTracks();
 
-		// tracks is not an iterable (yet)
-		for ( let i = 0; i < tracks.length; i++ ) {
-			const track = tracks[ i ];
+		// video.js's TrackList is array-like, but not iterable
+		for ( const track of Array.from( tracks ) ) {
 			// For now we only support subtitles
 			// Also does not deal with language fallbacks
 			if ( track.kind === 'subtitles' ) {
@@ -233,10 +227,10 @@ class InlinePlayer {
 		// and pass them into the videoJsResolutionSwitcher plugin in
 		// our preferred order and labeling.
 		const resolutions = [];
-		this.$videoplayer.find( 'source' ).each( function () {
+		this.$videoplayer.find( 'source' ).each( ( _index, source ) => {
 			// FIXME would be better if we can configure the plugin
 			// to make use of our preferred attributes
-			const $source = $( this );
+			const $source = $( source );
 			const transcodeKey = $source.data( 'transcodekey' );
 			let res = parseInt( $source.data( 'height' ), 10 );
 			let label = $source.data( 'shorttitle' );

@@ -22,7 +22,7 @@ function initMediaPlayerDialog( element ) {
 		// This just causes yet another UI change
 		$video.removeAttr( 'poster' );
 	}
-	return $.Deferred( function ( deferred ) {
+	return $.Deferred( ( deferred ) => {
 		const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file;
 		const windowManager = OO.ui.getWindowManager();
 		const dialog = new MediaDialog( {
@@ -40,11 +40,11 @@ function initMediaPlayerDialog( element ) {
 			title: title
 		} );
 
-		win.opened.then( function () {
+		win.opened.then( () => {
 			dialog.play();
 		} );
 
-		win.closed.then( function () {
+		win.closed.then( () => {
 			dialog.stop();
 			deferred.resolve();
 		} );

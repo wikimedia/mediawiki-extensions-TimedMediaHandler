@@ -11,20 +11,20 @@ function secondsToComponents( totalSeconds ) {
 	const minutes = Math.floor( ( totalSeconds % 3600 ) / 60 );
 	const seconds = totalSeconds % 60;
 	return {
-		hours: hours,
-		minutes: minutes,
-		seconds: seconds
+		hours,
+		minutes,
+		seconds
 	};
 }
 
 function secondsToDurationString( totalSeconds ) {
-	let timeString;
-	const components = secondsToComponents( totalSeconds );
-	const hours = components.hours;
-	const minutes = components.minutes;
-	const seconds = components.seconds;
+	const {
+		hours,
+		minutes,
+		seconds
+	} = secondsToComponents( totalSeconds );
 
-	timeString = String( seconds );
+	let timeString = String( seconds );
 	if ( seconds < 10 ) {
 		timeString = '0' + timeString;
 	}
@@ -44,10 +44,11 @@ function secondsToDurationString( totalSeconds ) {
 }
 
 function secondsToDurationLongString( totalSeconds ) {
-	const components = secondsToComponents( totalSeconds );
-	const hours = components.hours;
-	const minutes = components.minutes;
-	const seconds = components.seconds;
+	const {
+		hours,
+		minutes,
+		seconds
+	} = secondsToComponents( totalSeconds );
 
 	if ( hours ) {
 		return mw.msg( 'timedmedia-duration-hms', hours, minutes, seconds );
@@ -223,8 +224,6 @@ class MediaElement {
 	 * play the element in the dialog.
 	 */
 	playInlineOrOpenDialog() {
-		const mediaElement = this;
-
 		MediaElement.$interstitial = $( '<div>' ).addClass( 'mw-tmh-player-interstitial' )
 			.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
 				.append( $( '<div>' ).addClass( 'mw-tmh-player-progress-bar' ) ) )
@@ -251,26 +250,26 @@ class MediaElement {
 			// The reject promise of play is not that reliable when using <source> children
 			// It might not ever trigger
 			// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
-			playPromise.then( function () {
-				setTimeout( function () {
-					mediaElement.element.pause();
+			playPromise.then( () => {
+				setTimeout( () => {
+					this.element.pause();
 				}, 0 );
 			} );
 		}
 
 		if ( this.isInline() ) {
-			mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-				mediaElement.$placeholder.find( 'a, .mw-tmh-label' ).detach();
-				mediaElement.$placeholder.find( 'video,audio' )
-					.replaceWith( mediaElement.element );
+			mw.loader.using( 'ext.tmh.player.inline' ).then( () => {
+				this.$placeholder.find( 'a, .mw-tmh-label' ).detach();
+				this.$placeholder.find( 'video,audio' )
+					.replaceWith( this.element );
 
 				const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
 				const inlinePlayer = new InlinePlayer(
-					mediaElement.element,
+					this.element,
 					{ bigPlayButton: false }
 				);
-				inlinePlayer.infuse().then( function ( videojsPlayer ) {
-					videojsPlayer.ready( function () {
+				inlinePlayer.infuse().then( ( videojsPlayer ) => {
+					videojsPlayer.ready( () => {
 						// Use a setTimeout to ensure all ready callbacks have run before
 						// we start playback. This is important for the source selector
 						// plugin, which may change sources before playback begins.
@@ -278,7 +277,7 @@ class MediaElement {
 						// This is used instead of an event like `canplay` or `loadeddata`
 						// because some versions of EdgeHTML don't fire these events.
 						// Support: Edge 18
-						setTimeout( function () {
+						setTimeout( () => {
 							MediaElement.$interstitial.detach();
 							videojsPlayer.play();
 						}, 0 );
@@ -287,13 +286,13 @@ class MediaElement {
 			} );
 		} else {
 			MediaElement.currentlyPlaying = true;
-			mw.loader.using( 'ext.tmh.player.dialog' ).then( function () {
+			mw.loader.using( 'ext.tmh.player.dialog' ).then( () => {
 				MediaElement.$interstitial.detach();
-				return mediaElement.$element.showVideoPlayerDialog().always( function () {
+				return this.$element.showVideoPlayerDialog().always( () => {
 					// when showing of video player dialog ends
 					MediaElement.currentlyPlaying = false;
 				} );
-			} ).catch( function () {
+			} ).catch( () => {
 				MediaElement.$interstitial.detach();
 				MediaElement.currentlyPlaying = false;
 			} );
