@@ -8,14 +8,14 @@
 	"devDependencies": {
 		"eslint-config-wikimedia": "0.25.0",
 		"grunt": "1.6.1",
-		"grunt-banana-checker": "0.10.0",
+		"grunt-banana-checker": "0.11.0",
 		"grunt-contrib-copy": "1.0.0",
 		"grunt-eslint": "24.0.1",
 		"grunt-exec": "3.0.0",
 		"grunt-patcher": "1.0.0",
 		"grunt-stylelint": "0.18.0",
 		"ogv": "1.8.9",
-		"stylelint-config-wikimedia": "0.14.0",
+		"stylelint-config-wikimedia": "0.15.0",
 		"svgo": "2.8.0",
 		"video.js": "8.3.0"
 	}
