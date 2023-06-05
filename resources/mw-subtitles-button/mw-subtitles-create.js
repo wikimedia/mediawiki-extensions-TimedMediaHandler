@@ -21,7 +21,7 @@ class MwCreateSubtitlesMenuItem extends TextTrackMenuItem {
 		// eslint-disable-next-line no-underscore-dangle
 		const videoEl = this.player_.el();
 		const provider = videoEl.getAttribute( 'data-mwprovider' );
-		const articlePath = encodeURI( 'TimedText:' + videoEl.getAttribute( 'data-mwtitle' ) );
+		const articlePath = 'TimedText:' + encodeURIComponent( videoEl.getAttribute( 'data-mwtitle' ) );
 		let link;
 
 		if ( provider === 'wikimediacommons' ) {
