@@ -125,10 +125,20 @@ class TranscodeStatusTable {
 			$o .= '<td>' . self::getTranscodeBitrate( $file, $state ) . '</td>';
 
 			// Download file
+			//
+			// Note the <a download> attribute only is applied on same-origin URLs.
+			// The "?download" query string append will work on servers configured
+			// the way the Wikimedia production servers are, but other sites that
+			// store files offsite may not have the same setup.
+			//
+			// On failure, these should devolve to either downloading or loading a
+			// media file inline, depending on the format and browser and server
+			// config.
+			$downloadUrl = wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' );
 			$o .= '<td>';
 			$o .= ( $state['time_success'] !== null ) ?
-				'<a href="' . self::getSourceUrl( $file, $transcodeKey ) . '" title="' . wfMessage
-				( 'timedmedia-download' )->escaped() . '"><div class="download-btn"><span>' .
+				'<a href="' . htmlspecialchars( $downloadUrl ) . '" download title="' .
+				wfMessage( 'timedmedia-download' )->escaped() . '"><div class="download-btn"><span>' .
 				wfMessage( 'timedmedia-download' )->escaped() . '</span></div></a></td>' :
 				wfMessage( 'timedmedia-not-ready' )->escaped();
 			$o .= '</td>';
