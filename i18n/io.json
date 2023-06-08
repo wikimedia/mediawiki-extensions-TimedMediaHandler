@@ -18,6 +18,7 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 horo|$1 hori}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuto|$1 minuti}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekundo|$1 sekundi}}",
+	"timedmedia-reset-button-dismiss": "Eskartar",
 	"timedmedia-reset-button-reset": "Restaurez",
 	"timedmedia-source-file": "Arkivo-fonto $1",
 	"timedmedia-source-audio-file-desc": "Originala $1 arkivo ($2)",
