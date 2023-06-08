@@ -22,7 +22,7 @@ use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
-use MWException;
+use RuntimeException;
 use Title;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -389,9 +389,9 @@ class TextHandler {
 			case TimedTextPage::VTT_SUBTITLE_FORMAT:
 				// @todo once VttReader is implemented, use it.
 				// For now throw an exception rather than a fatal error.
-				throw new MWException( 'vtt source pages are not yet supported' );
+				throw new RuntimeException( 'vtt source pages are not yet supported' );
 			default:
-				throw new MWException( 'Unsupported timedtext filetype' );
+				throw new RuntimeException( 'Unsupported timedtext filetype' );
 		}
 		switch ( $to ) {
 			case TimedTextPage::SRT_SUBTITLE_FORMAT:
@@ -401,7 +401,7 @@ class TextHandler {
 				$writer = new VttWriter();
 				break;
 			default:
-				throw new MWException( 'Unsupported timedtext filetype' );
+				throw new RuntimeException( 'Unsupported timedtext filetype' );
 		}
 		try {
 			$reader->read( $data );
@@ -410,7 +410,7 @@ class TextHandler {
 
 			return $writer->write( $cues );
 		} catch ( Exception $e ) {
-			throw new MWException( 'Timed text track conversion failed: ' .
+			throw new RuntimeException( 'Timed text track conversion failed: ' .
 				$e->getMessage() );
 		}
 	}

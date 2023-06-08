@@ -145,7 +145,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			'wgEnabledAudioTranscodeSet' => $audioSet
 		] );
 		if ( $exception ) {
-			$this->expectException( \MWException::class );
+			$this->expectException( ConfigException::class );
 		}
 		WebVideoTranscode::validateTranscodeConfiguration();
 		// Silence testcase when everything is ok

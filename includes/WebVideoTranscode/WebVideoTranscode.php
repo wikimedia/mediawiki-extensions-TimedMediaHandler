@@ -11,6 +11,7 @@
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use CdnCacheUpdate;
+use ConfigException;
 use DeferredUpdates;
 use Exception;
 use File;
@@ -25,7 +26,6 @@ use MediaWiki\TimedMediaHandler\Handlers\Mp3Handler\Mp3Handler;
 use MediaWiki\TimedMediaHandler\Handlers\Mp4Handler\Mp4Handler;
 use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
-use MWException;
 use TempFSFile;
 use Title;
 use Wikimedia\Rdbms\IDatabase;
@@ -1350,7 +1350,7 @@ class WebVideoTranscode {
 	public static function validateTranscodeConfiguration() {
 		foreach ( static::enabledTranscodes() as $transcodeKey ) {
 			if ( !isset( static::$derivativeSettings[ $transcodeKey ] ) ) {
-				throw new MWException(
+				throw new ConfigException(
 					__METHOD__ . ": Invalid key '$transcodeKey' specified in"
 						. " wgEnabledTranscodeSet or wgEnabledAudioTranscodeSet."
 				);

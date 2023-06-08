@@ -4,11 +4,9 @@ namespace MediaWiki\TimedMediaHandler;
 
 use ApiBase;
 use ApiMain;
-use ApiUsageException;
 use File;
 use ManualLogEntry;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use MWException;
 use RepoGroup;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -38,11 +36,6 @@ class ApiTranscodeReset extends ApiBase {
 		$this->repoGroup = $repoGroup;
 	}
 
-	/**
-	 * @return void
-	 * @throws ApiUsageException
-	 * @throws MWException
-	 */
 	public function execute() {
 		// Check if transcoding is enabled on this wiki at all:
 		if ( !$this->getConfig()->get( 'EnableTranscode' ) ) {

@@ -30,10 +30,10 @@ use ApiMain;
 use ApiResult;
 use ApiUsageException;
 use File;
+use LogicException;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
-use MWException;
 use RepoGroup;
 use TextContent;
 use Title;
@@ -111,11 +111,6 @@ class ApiTimedText extends ApiBase {
 		return $printer;
 	}
 
-	/**
-	 * @return void
-	 * @throws ApiUsageException
-	 * @throws MWException
-	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
 
@@ -181,7 +176,7 @@ class ApiTimedText extends ApiBase {
 		} else {
 			// Unreachable due to parameter validation,
 			// unless someone adds a new format and forgets. :D
-			throw new MWException( 'Unsupported timedtext trackformat' );
+			throw new LogicException( 'Unsupported timedtext trackformat' );
 		}
 
 		$result = $this->getResult();
