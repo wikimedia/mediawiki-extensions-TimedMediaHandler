@@ -8,13 +8,20 @@
  *
  * Rewritten to ES6 in 2023 by Derk-Jan Hartman
  */
+/** @type {videojs.MenuItem} */
 const MenuItem = videojs.getComponent( 'MenuItem' );
 
 /**
- * @class ResolutionMenuItem
- * @extends MenuItem
+ *
+ * Single menu item entry in the MenuButton.
+ * When selected will switch to the player to that resolution
  */
 class ResolutionMenuItem extends MenuItem {
+	/**
+	 *
+	 * @param {videojs.Plugin} plugin The plugin responsible for adding this menuitem
+	 * @param {Object} options
+	 */
 	constructor( plugin, options ) {
 		options.selectable = true;
 		super( plugin.player, options );

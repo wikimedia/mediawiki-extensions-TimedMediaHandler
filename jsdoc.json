@@ -1,0 +1,52 @@
+{
+	"opts": {
+		"destination": "docs/js",
+		"package": "package.json",
+		"pedantic": true,
+		"readme": "README.md",
+		"recurse": true,
+		"template": "node_modules/jsdoc-wmf-theme"
+	},
+	"plugins": [
+		"plugins/markdown"
+	],
+	"source": {
+		"include": [
+			"resources"
+		],
+		"exclude": [ "resources/videojs.js", "resources/videojs-ogvjs" ]
+	},
+	"sourceType": "module",
+	"templates": {
+		"cleverLinks": true,
+		"default": {
+			"useLongnameInNav": false
+		},
+		"wmf": {
+			"linkMap": {
+				"AudioContext": "https://developer.mozilla.org/en-US/docs/Web/API/AudioContext",
+				"HTMLElement": "https://developer.mozilla.org/docs/Web/API/HTMLElement",
+				"HTMLMediaElement": "https://developer.mozilla.org/docs/Web/API/HTMLMediaElement",
+				"HTMLSourceElement": "https://developer.mozilla.org/docs/Web/API/HTMLSourceElement",
+				"Window": "https://developer.mozilla.org/docs/Web/API/Window",
+				"MouseEvent": "https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent",
+				"KeyBoardEvent": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent",
+				"MW": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw",
+				"OO.ui.ProcessDialog": "https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ProcessDialog",
+				"JQuery": "https://api.jquery.com/Types/#jQuery",
+				"JQueryStatic": "https://api.jquery.com",
+				"JQueryPromise": "https://api.jquery.com/Types/#Promise",
+				"JQueryPromise.<void>": "https://api.jquery.com/Types/#Promise",
+				"void": "#",
+				"videojs.Player": "https://docs.videojs.com/player",
+				"videojs.Plugin": "https://docs.videojs.com/plugin",
+				"videojs.Button": "https://docs.videojs.com/button",
+				"videojs.MenuButton": "https://docs.videojs.com/menubutton",
+				"videojs.MenuItem": "https://docs.videojs.com/menuitem",
+				"videojs.TextTrackMenuItem": "https://docs.videojs.com/texttrackmenuitem",
+				"videojs.SubsCapsButton": "https://docs.videojs.com/subscapsbutton",
+				"videojs.Options": "https://videojs.com/guides/options/"
+			}
+		}
+	}
+}

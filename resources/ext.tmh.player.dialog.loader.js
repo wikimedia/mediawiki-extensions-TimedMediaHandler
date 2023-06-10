@@ -7,7 +7,7 @@
  * Currently expects to be run on jQuery element
  *
  * @param {HTMLMediaElement} element
- * @return {jQuery.Promise} promise which resolves after the dialog closes
+ * @return {JQueryPromise<void>} promise which resolves after the dialog closes
  */
 function initMediaPlayerDialog( element ) {
 	const MediaDialog = require( './ext.tmh.player.dialog.js' ),
@@ -54,7 +54,7 @@ function initMediaPlayerDialog( element ) {
 /**
  * jQuery version of initMediaPlayerDialog
  *
- * @return {jQuery.Promise}
+ * @return {JQueryPromise<void>}
  */
 $.fn.showVideoPlayerDialog = function showVideoPlayerDialog() {
 	return initMediaPlayerDialog( this.get( 0 ) );

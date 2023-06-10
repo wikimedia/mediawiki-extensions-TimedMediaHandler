@@ -1,7 +1,22 @@
+/**
+ * @type {videojs.SubsCapsButton}
+ */
 const SubsCapsButton = videojs.getComponent( 'SubsCapsButton' );
-const MwCreateSubtitlesMenuItem = videojs.getComponent( 'MwCreateSubtitlesMenuItem' );
+const MwCreateSubtitlesMenuItem = require( './mw-subtitles-create.js' );
 
+/**
+ * Replaces the standard subtitles and captions button with a variant
+ * that in addition, shows the {@link MwCreateSubtitlesMenuItem} in it's menu
+ *
+ * @extends videojs.SubsCapsButton
+ */
 class MwSubtitlesButton extends SubsCapsButton {
+	/**
+	 *
+	 * @param items
+	 * @param menuitem
+	 * @return {Array<MwCreateSubtitlesMenuItem>}
+	 */
 	createItems( items, menuitem ) {
 		/* eslint-disable no-underscore-dangle */
 		items = super.createItems( this, items, menuitem );

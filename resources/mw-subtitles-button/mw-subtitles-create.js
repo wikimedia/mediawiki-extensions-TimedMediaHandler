@@ -1,6 +1,17 @@
+/**
+ * @type {videojs.TextTrackMenuItem}
+ */
 const TextTrackMenuItem = videojs.getComponent( 'TextTrackMenuItem' );
 
+/**
+ * @extends videojs.TextTrackMenuItem
+ */
 class MwCreateSubtitlesMenuItem extends TextTrackMenuItem {
+	/**
+	 *
+	 * @param {videojs.Player} player
+	 * @param {Object} options
+	 */
 	constructor( player, options ) {
 		options.track = {
 			player: player,
@@ -17,6 +28,7 @@ class MwCreateSubtitlesMenuItem extends TextTrackMenuItem {
 		this.addClass( 'vjs-texttrack-create' );
 		this.controlText( 'test' );
 	}
+
 	handleClick() {
 		// eslint-disable-next-line no-underscore-dangle
 		const videoEl = this.player_.el();

@@ -1,4 +1,5 @@
-/* global OGVLoader */
+/* global OGVLoader, OGVPlayer */
+/** @type {AudioContext?} */
 let context = null;
 
 class OgvJsSupport {
@@ -6,7 +7,7 @@ class OgvJsSupport {
 	 * Ensure that the OGVPlayer class is loaded before continuing.
 	 *
 	 * @param {string?} mod - optional module name override
-	 * @return {jQuery.Promise}
+	 * @return {JQueryPromise<void>}
 	 */
 	static loadOgvJs( mod = 'ext.tmh.OgvJs' ) {
 		return $.Deferred( ( deferred ) => {
@@ -60,7 +61,7 @@ class OgvJsSupport {
 	 *
 	 * @param {string?} mod - optional module name override
 	 * @param {HTMLMediaElement?} media - optional element to check for native support
-	 * @return {jQuery.Promise}
+	 * @return {JQueryPromise<void>}
 	 */
 	static loadIfNeeded( mod = 'ext.tmh.OgvJs', media = undefined ) {
 		if ( media && OgvJsSupport.isMediaNativelySupported( media ) ) {

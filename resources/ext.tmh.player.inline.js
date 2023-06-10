@@ -2,30 +2,53 @@
 const OgvJsSupport = mw.loader.require( 'ext.tmh.OgvJsSupport' );
 
 /**
- * All JS for loading an actual videoJS player for MediaWiki
+ * All JS for loading an actual video.js player for MediaWiki
  *
  * No matter how the player is loaded, it should eventually go through this class
  * to make sure our customizations are properly applied.
  * This should not have any loaders/hooks itself.
- *
- * @class InlinePlayer
  */
 class InlinePlayer {
 
 	/**
 	 * @param {HTMLMediaElement} element
-	 * @param {Object} options for the videoJS player
+	 * @param {videojs.Options} options for the video.js player
 	 */
 	constructor( element, options ) {
+		/**
+		 * The eventual videojs configuration used when loading the videojs player
+		 *
+		 * @type {videojs.Options}
+		 * @private
+		 */
 		this.playerConfig = $.extend( {}, options );
+		/**
+		 * The original audio/video element
+		 *
+		 * @type {HTMLMediaElement}
+		 * @private
+		 */
 		this.videoplayer = element;
+		/**
+		 * The original audio/video element as a jquery collection
+		 *
+		 * @type {JQuery}
+		 * @private
+		 */
 		this.$videoplayer = $( element );
+		/**
+		 * Whether his player is audio only
+		 *
+		 * @type {boolean}
+		 * @private
+		 */
 		this.isAudio = element.tagName.toLowerCase() === 'audio';
 		/**
-		 * The videojs instance associated with this inline player.
+		 * The video.js instance associated with this inline player.
 		 * NOTE: Only available after infusion
 		 *
-		 * @member {videojs.Player} [videojsPlayer]
+		 * @type {videojs.Player}
+		 * @private
 		 */
 		this.videojsPlayer = null;
 	}
@@ -35,12 +58,14 @@ class InlinePlayer {
 	 *
 	 * Should do this as early as you know for sure you will load a player
 	 * External users may call this early to prefetch resources
+	 *
+	 * @private
 	 */
 	static lazyInit() {
 		if ( InlinePlayer.initialized ) {
 			return;
 		}
-		require( './mw-info-button/mw-info-button.js' );
+		require( './mw-info-button/mw-info-button-plugin.js' );
 		require( './videojs-resolution-switcher/videojs-resolution-switcher.js' );
 		require( './mw-subtitles-button/mw-subtitles-create.js' );
 		require( './mw-subtitles-button/mw-subtitles-button.js' );
@@ -61,7 +86,7 @@ class InlinePlayer {
 	 * Takes the HTMLMediaElement of the InlinePlayer
 	 * and infuses it with JS (videoJS) to enrich the element.
 	 *
-	 * @return {jQuery.Promise}
+	 * @return {JQueryPromise<videojs.Player>}
 	 */
 	infuse() {
 		if ( this.$videoplayer.closest( '.video-js' ).length ) {
@@ -93,6 +118,7 @@ class InlinePlayer {
 			preload: 'metadata'
 		} );
 
+		/** @type {HTMLSourceElement[]} */
 		const nonNativeSources = [];
 		let resolutions = [];
 		let defaultRes;
@@ -220,7 +246,6 @@ class InlinePlayer {
 	 * as attributes 'label' and 'res' on the HTMLSourceElements,
 	 * for use by the resolution switcher plugin
 	 *
-	 * @private
 	 * @return {number[]}
 	 */
 	extractResolutions() {
@@ -272,7 +297,7 @@ class InlinePlayer {
  * These options are merged into the final config for the player during initialize()
  *
  * @static
- * @type {Object} with videoJS options for {videojs.Html5} Tech component
+ * @type {Object}
  */
 InlinePlayer.html5techOpt = {
 	preloadTextTracks: false,
@@ -284,7 +309,7 @@ InlinePlayer.html5techOpt = {
  * These options are merged into the final config for the player during initialize()
  *
  * @static
- * @type {Object} with videoJS options to initiate a videoJS player with
+ * @type {videojs.Options}
  */
 InlinePlayer.globalConfig = {
 	// controls are initially hidden inside the dialog
@@ -307,7 +332,7 @@ InlinePlayer.globalConfig = {
 	},
 	techOrder: [ 'html5' ],
 	plugins: {
-		infoButton: {}
+		infoButtonPlugin: {}
 	},
 	html5: InlinePlayer.html5techOpt
 };
@@ -317,7 +342,7 @@ InlinePlayer.globalConfig = {
  * These options are merged into the final config for the player during initialize()
  *
  * @static
- * @type  {Object} with videoJS options to initiate a videoJS player with
+ * @type {videojs.Options}
  */
 InlinePlayer.audioConfig = {
 	bigPlayButton: false,
@@ -349,7 +374,7 @@ InlinePlayer.audioConfig = {
  * These options are merged into the final config for the player during initialize()
  *
  * @static
- * @type {Object} with videoJS options to initiate a videoJS player with
+ * @type {videojs.Options}
  */
 InlinePlayer.videoConfig = {
 	// Video interace breakpoints
@@ -391,6 +416,7 @@ InlinePlayer.videoConfig = {
  *
  * @static
  * @type {boolean}
+ * @private
  */
 InlinePlayer.initialized = false;
 
@@ -402,6 +428,7 @@ InlinePlayer.initialized = false;
  *
  * @static
  * @type {Array<videojs.Player>}
+ * @private
  */
 InlinePlayer.activePlayers = [];
 
@@ -409,7 +436,7 @@ InlinePlayer.activePlayers = [];
  * Remove any detached players from previous live previews etc
  *
  * @private
- * @return {jQuery}
+ * @return {JQuery}
  * @chainable
  */
 function disposeDetachedPlayers() {
@@ -427,7 +454,7 @@ function disposeDetachedPlayers() {
  * jQuery plugin to cleanup all resources of
  * a player which is no longer in the document
  *
- * @return {jQuery}
+ * @return {JQuery}
  * @chainable
  */
 $.disposeDetachedPlayers = disposeDetachedPlayers;
