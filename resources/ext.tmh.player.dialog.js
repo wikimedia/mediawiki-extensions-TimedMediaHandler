@@ -1,4 +1,17 @@
 /**
+ * If the device does not support fullscreen,
+ * it is likely to be an iPhone. In that case use a fullscreen sized dialog.
+ * @returns {boolean}
+ */
+function useFillscreen() {
+	return !document.fullscreenEnabled &&
+		!document.webkitFullscreenEnabled &&
+		matchMedia( '(pointer:coarse)' ).matches;
+}
+
+const INACTIVITY_THRESHOLD = 2500;
+
+/**
  * A media OOUI dialog to open and play a media element in.
  *
  * A modal interaction, only one dialog should be opened at a time
@@ -12,6 +25,9 @@ class MediaDialog extends OO.ui.ProcessDialog {
 	 * @cfg {jQuery} $video element to present
 	 */
 	constructor( config ) {
+		if ( useFillscreen() ) {
+			Object.assign( config, { size: 'full' } );
+		}
 		super( config );
 		this.$video = config.$video;
 	}
@@ -34,9 +50,26 @@ class MediaDialog extends OO.ui.ProcessDialog {
 			padded: false,
 			expanded: true
 		} );
-
 		this.content.$element.append( this.$video );
 		this.$body.append( this.content.$element );
+
+		// Detect user interactivity
+		this.activityTimer = setTimeout( () => this.makeInactive(), INACTIVITY_THRESHOLD );
+		const handler = OO.ui.debounce( () => {
+			this.resetActivityTimer();
+		}, 100, true ).bind( this );
+
+		const element = this.$content.get( 0 );
+		element.addEventListener( 'click', handler, true );
+		element.addEventListener( 'mousemove', handler, true );
+		element.addEventListener( 'mousedown', handler, true );
+		element.addEventListener( 'touchstart', handler, true );
+		element.addEventListener( 'keypress', handler, true );
+
+		// Check if this uses a desktop viewport on a mobile device
+		if ( useFillscreen() && window.innerWidth > screen.availWidth ) {
+			this.$element.addClass( 'mw-tmh-desktop-on-mobile' );
+		}
 	}
 
 	getBodyHeight() {
@@ -103,6 +136,16 @@ class MediaDialog extends OO.ui.ProcessDialog {
 			videojsPlayer.pause();
 			$.disposeDetachedPlayers();
 		} );
+	}
+
+	makeInactive() {
+		this.$content.addClass( 'mw-tmh-inactive' );
+	}
+
+	resetActivityTimer() {
+		this.$content.removeClass( 'mw-tmh-inactive' );
+		clearTimeout( this.activityTimer );
+		this.activityTimer = setTimeout( () => this.makeInactive(), INACTIVITY_THRESHOLD );
 	}
 }
 

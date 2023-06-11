@@ -37,7 +37,8 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				const menuButton = new ResolutionMenuButton( this, this.settings );
 				controlBar.resolutionSwitcher = controlBar.el().insertBefore(
 					menuButton.el(),
-					controlBar.getChild( 'fullscreenToggle' ).el()
+					controlBar.getChild( 'fullscreenToggle' ) ?
+						controlBar.getChild( 'fullscreenToggle' ).el() : null
 				);
 				controlBar.resolutionSwitcher.dispose = function () {
 					this.parentNode.removeChild( this );

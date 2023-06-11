@@ -293,6 +293,8 @@ InlinePlayer.globalConfig = {
 	responsive: true,
 	language: mw.config.get( 'wgUserLanguage' ),
 	controlBar: {
+		// iOS does not allow using the fullscreen, so no point in adding that control
+		fullscreenToggle: !!document.fullscreenEnabled || !!document.webkitFullscreenEnabled,
 		volumePanel: {
 			vertical: true,
 			inline: false

@@ -26,7 +26,7 @@ function initMediaPlayerDialog( element ) {
 		const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file;
 		const windowManager = OO.ui.getWindowManager();
 		const dialog = new MediaDialog( {
-			size: isAudio ? 'medium' : 'larger',
+			size: !isAudio ? 'larger' : 'medium',
 			$video: $video
 		} );
 		let title;

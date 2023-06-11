@@ -22,3 +22,35 @@
 		object-fit: contain;
 	}
 }
+
+.oo-ui-windowManager-size-full .mw-tmh-media-dialog {
+	.oo-ui-window-head {
+		opacity: 1;
+		transition: all 0.1s ease-in;
+	}
+
+	.oo-ui-window-body {
+		transition: top 0.1s ease-in;
+	}
+
+	/* Hide dialog ui when idling */
+	.mw-tmh-inactive {
+		> .oo-ui-window-head {
+			min-height: 0;
+			max-height: 0;
+			opacity: 0;
+			transition: all 1s ease-out;
+		}
+
+		> .oo-ui-window-body {
+			top: 0;
+			transition: top 1s ease-out;
+		}
+	}
+
+	&.mw-tmh-desktop-on-mobile,
+	&.mw-tmh-desktop-on-mobile .video-js.vjs-fill {
+		// The .video-js element has a fixed font-size, so it won't inherit from the dialog
+		font-size: 3vmin;
+	}
+}
