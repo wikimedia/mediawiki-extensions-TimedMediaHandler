@@ -23,5 +23,13 @@
 		"no-restricted-properties": "warn",
 		"compat/compat": "warn",
 		"es-x/no-array-prototype-fill": "warn"
-	}
+	},
+	"overrides": [
+		{
+			"files": [
+				"i18n/*"
+			],
+			"rules": { "security/detect-bidi-characters": "off" }
+		}
+	]
 }
