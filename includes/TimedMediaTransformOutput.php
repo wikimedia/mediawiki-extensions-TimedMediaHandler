@@ -342,15 +342,20 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			'height',
 			'title',
 			'shorttitle',
+			'transcodekey',
+		];
+		$removeSourceAttr = [
 			'bandwidth',
 			'framerate',
 			'disablecontrols',
-			'transcodekey',
 			'label',
 			'res',
 		];
 		foreach ( $mediaSources as &$source ) {
 			foreach ( $source as $attr => $val ) {
+				if ( in_array( $attr, $removeSourceAttr, true ) ) {
+					unset( $source[ $attr ] );
+				}
 				if ( in_array( $attr, $prefixedSourceAttr, true ) ) {
 					$source[ 'data-' . $attr ] = $val;
 					unset( $source[ $attr ] );
