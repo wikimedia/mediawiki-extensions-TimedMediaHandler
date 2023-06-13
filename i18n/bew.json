@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"timedmedia-source-file": "Sumber $1",
+	"timedmedia-source-audio-file-desc": "Berekas ($2) asli $1"
+}
