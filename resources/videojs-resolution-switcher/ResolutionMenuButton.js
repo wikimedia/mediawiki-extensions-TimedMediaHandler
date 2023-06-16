@@ -8,15 +8,19 @@
  *
  * Rewritten to ES6 in 2023 by Derk-Jan Hartman
  */
+/** @type {videojs.MenuButton} */
 const MenuButton = videojs.getComponent( 'MenuButton' );
 const ResolutionMenuItem = require( './ResolutionMenuItem.js' );
 
 /**
  * Resolution menu button
- *
- * @extends MenuButton
  */
 class ResolutionMenuButton extends MenuButton {
+	/**
+	 *
+	 * @param {videojs.Plugin} plugin The plugin responsible for adding this button
+	 * @param {Object} options
+	 */
 	constructor( plugin, options ) {
 		options.label = 'Quality';
 		// Sets this.player_, this.options_ and initializes the component
@@ -41,6 +45,9 @@ class ResolutionMenuButton extends MenuButton {
 		this.player.on( 'updateSources', () => this.update() );
 	}
 
+	/**
+	 * @return {ResolutionMenuItem[]}
+	 */
 	createItems() {
 		const menuItems = [];
 		const labels = ( this.sources && this.sources.label ) || {};

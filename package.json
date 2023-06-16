@@ -2,6 +2,7 @@
 	"name": "TimedMediaHandler",
 	"private": true,
 	"scripts": {
+		"doc": "jsdoc -c jsdoc.json",
 		"minify:svg": "svgo --config=.svgo.config.js --quiet --folder resources/",
 		"test": "grunt test"
 	},
@@ -14,6 +15,8 @@
 		"grunt-exec": "3.0.0",
 		"grunt-patcher": "1.0.0",
 		"grunt-stylelint": "0.18.0",
+		"jsdoc": "3.6.10",
+		"jsdoc-wmf-theme": "0.0.5",
 		"ogv": "1.8.9",
 		"stylelint-config-wikimedia": "0.15.0",
 		"svgo": "3.0.2",

@@ -1,7 +1,8 @@
 /**
  * If the device does not support fullscreen,
  * it is likely to be an iPhone. In that case use a fullscreen sized dialog.
- * @returns {boolean}
+ *
+ * @return {boolean}
  */
 function useFillscreen() {
 	return !document.fullscreenEnabled &&
@@ -16,13 +17,12 @@ const INACTIVITY_THRESHOLD = 2500;
  *
  * A modal interaction, only one dialog should be opened at a time
  *
- * @class MediaDialog
  * @extends OO.ui.ProcessDialog
  */
 class MediaDialog extends OO.ui.ProcessDialog {
 	/**
 	 * @param {Object} config
-	 * @cfg {jQuery} $video element to present
+	 * @param {JQuery} config.$video element to present
 	 */
 	constructor( config ) {
 		if ( useFillscreen() ) {
@@ -33,7 +33,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 	}
 
 	initialize() {
-		super.initialize();
+		const window = super.initialize();
 
 		this.$element.addClass( 'mw-tmh-media-dialog' );
 		this.$element.on( 'click', ( e ) => {
@@ -70,6 +70,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		if ( useFillscreen() && window.innerWidth > screen.availWidth ) {
 			this.$element.addClass( 'mw-tmh-desktop-on-mobile' );
 		}
+		return window;
 	}
 
 	getBodyHeight() {

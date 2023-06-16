@@ -9,7 +9,8 @@
  * Rewritten to ES6 in 2023 by Derk-Jan Hartman
  */
 'use strict';
-// eslint-disable-next-line no-redeclare
+
+/** @type {videojs.Plugin} */
 const Plugin = videojs.getPlugin( 'plugin' );
 const ResolutionMenuButton = require( './ResolutionMenuButton.js' );
 const resolutionSwitchterDefaults = {
@@ -17,18 +18,56 @@ const resolutionSwitchterDefaults = {
 };
 
 /**
- * Initialize the plugin.
+ * Represents a source and the properties of that source
+ * This is a videojs structure that we added label and res fields to
  *
- * @param {Object} [options] configuration for the plugin
+ * @typedef SourceObject object
+ * @property {string} src url the source
+ * @property {string} type Type of the source. Like video/webm
+ * @property {(string|number)} res Resolution specification
+ * @property {string} label Display label for this Source element
+ */
+
+/**
+ * @typedef Resolution object
+ * @property {(string|number)} [res] The resolution
+ * @property {string} [label] Label identifying this resolution
+ * @property {SourceObject[]} sources set of sources for
+ * this specific resolution
+ */
+
+/**
+ * Bucketized sources by label, res and type
+ *
+ * @typedef BucketObject object
+ * @property {Object.<string, SourceObject[]>} label Dictionary of labels to sources with that label
+ * @property {Object.<string, SourceObject[]>} res Dictionary of res to sources with that res
+ * @property {Object.<string, SourceObject[]>} type Dictionary of type to sources with that type
+ */
+
+/**
+ * Plugin to add a resolution selector button to the interface
+ *
+ * The selector is populated with the sources used to initialize
+ * the player. These are sorted by resolution and we hide that
+ * some resolutions technically have multiple source options (ogg vs webm)
  */
 class VideoJsResolutionSwitcherPlugin extends Plugin {
 
+	/**
+	 *
+	 * @param {videojs.Player} player
+	 * @param {Object} [options]
+	 */
 	constructor( player, options ) {
 		super( player );
 
 		this.settings = videojs.obj.merge( resolutionSwitchterDefaults, options );
+		/** @type {BucketObject} */
 		this.groupedSrc = {};
+		/** @type {SourceObject[]} */
 		this.currentSources = {};
+		/** @type {Resolution} */
 		this.currentResolutionState = {};
 
 		this.player.ready( () => {
@@ -57,17 +96,11 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	/**
 	 * Updates player sources or returns current source URL
 	 *
-	 * @param {Array}  [src] array of sources
+	 * @param {SourceObject[]} src array of sources
 	 * [{src: '', type: '', label: '', res: ''}]
-	 * @return {Object | string | Array} videojs player object
-	 * if used as setter or current source URL, object, or array of sources
 	 */
 	updateSrc( src ) {
 		const player = this.player;
-		// Return current src if src is not given
-		if ( !src ) {
-			return player.src();
-		}
 
 		// Only add those sources which we can (maybe) play
 		src = src.filter( function ( source ) {
@@ -78,10 +111,6 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				return true;
 			}
 		} );
-		if ( src.length === 0 ) {
-			// Return current src if no playable sources.
-			return player.src();
-		}
 
 		// Sort sources
 		this.currentSources = src.sort( this.compareResolutions );
@@ -102,13 +131,11 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	 * Returns current resolution or sets one when label is specified
 	 *
 	 * @param {string}   [label]         label name
-	 * @param {Function} [customSourcePicker] custom function to choose source.
-	 * Takes 2 arguments: sources, label. Must return player object.
-	 * @return {Object}   current resolution object
+	 * @return {(videojs.Player|Resolution)} Current resolution object
 	 * {label: '', sources: []} if used as getter or
 	 * player object if used as setter
 	 */
-	currentResolution( label, customSourcePicker ) {
+	currentResolution( label ) {
 		const player = this.player;
 		if ( label === undefined ) {
 			return this.currentResolutionState;
@@ -141,8 +168,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 		}
 		this.setSourcesSanitized(
 			sources,
-			label,
-			customSourcePicker || this.settings.customSourcePicker
+			label
 		);
 		player.one( handleSeekEvent, function () {
 			player.currentTime( currentTime );
@@ -162,20 +188,26 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	/**
 	 * Returns grouped sources by label, resolution and type
 	 *
-	 * @return {Object} grouped sources: { label: { key: [] }, res: { key: [] }, type: { key: [] } }
+	 * @return {BucketObject} grouped sources
+	 * { label: { key: [] }, res: { key: [] }, type: { key: [] } }
 	 */
 	getGroupedSrc() {
 		return this.groupedSrc;
 	}
 
-	setSourcesSanitized( sources, label, customSourcePicker ) {
+	/**
+	 * Do the actual setting of the Source object on the video.js player
+	 * but only pass the src, type and res properties of the sources
+	 *
+	 * @private
+	 * @param {SourceObject[]} sources
+	 * @param {string} label
+	 */
+	setSourcesSanitized( sources, label ) {
 		this.currentResolutionState = {
 			label: label,
 			sources: sources
 		};
-		if ( typeof customSourcePicker === 'function' ) {
-			return customSourcePicker( this, sources, label );
-		}
 		// If the source fails, try any of the other sources
 		this.player.one( 'error', ( errorEvent ) => {
 			const error = this.player.error();
@@ -198,8 +230,9 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	/**
 	 * Method used for sorting list of sources
 	 *
-	 * @param   {Object} a - source object with res property
-	 * @param   {Object} b - source object with res property
+	 * @private
+	 * @param   {SourceObject} a - source object with res property
+	 * @param   {SourceObject} b - source object with res property
 	 * @return {number} result of comparison
 	 */
 	compareResolutions( a, b ) {
@@ -210,10 +243,12 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	}
 
 	/**
-	 * Group sources by label, resolution and type
+	 * Group sources by their label, resolution and type
 	 *
-	 * @param   {Array}  src Array of sources
-	 * @return {Object} grouped sources: { label: { key: [] }, res: { key: [] }, type: { key: [] } }
+	 * @private
+	 * @param  {SourceObject[]} src Array of sources
+	 * @return {BucketObject} grouped sources
+	 * { label: { key: [] }, res: { key: [] }, type: { key: [] } }
 	 */
 	bucketSources( src ) {
 		const resolutions = {
@@ -233,12 +268,24 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 		return resolutions;
 	}
 
+	/**
+	 * @private
+	 * @param {BucketObject} resolutions
+	 * @param {string} key
+	 * @param {SourceObject} source
+	 */
 	initResolutionKey( resolutions, key, source ) {
 		if ( resolutions[ key ][ source[ key ] ] === undefined ) {
 			resolutions[ key ][ source[ key ] ] = [];
 		}
 	}
 
+	/**
+	 * @private
+	 * @param {BucketObject} resolutions
+	 * @param {string} key
+	 * @param {SourceObject} source
+	 */
 	appendSourceToKey( resolutions, key, source ) {
 		resolutions[ key ][ source[ key ] ].push( source );
 	}
@@ -246,9 +293,10 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	/**
 	 * Choose src if option.default is specified
 	 *
-	 * @param   {Object} groupedSrc {res: { key: [] }}
-	 * @param   {Array}  src Array of sources sorted by resolution used to find high and low res
-	 * @return {Object} {res: string, sources: []}
+	 * @param  {BucketObject} groupedSrc {res: { key: [] }}
+	 * @param  {SourceObject[]} src Array of sources
+	 *          sorted by resolution used to find high and low res
+	 * @return {Resolution} {res: string, sources: []}
 	 */
 	chooseSrc( groupedSrc, src ) {
 		let selectedRes = this.settings.default;

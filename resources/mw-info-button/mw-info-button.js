@@ -1,11 +1,23 @@
 const Button = videojs.getComponent( 'Button' );
 
 /**
- * @extends Button
+ * VideoJS Button component to link a Url
+ *
+ * @extends videojs.Button
  */
 class InfoButton extends Button {
+	/**
+	 *
+	 * @param {videojs.Player} player a videojs Player object
+	 * @param {Object} options - Options object
+	 * @param {string} options.link - URL that the button should navigate to
+	 */
 	constructor( player, options ) {
 		super( player, options );
+		/**
+		 * @property {string}
+		 * @private
+		 */
 		this.link = options.link;
 		this.controlText( 'More information' );
 		this.addClass( 'mw-info-button' );
@@ -18,25 +30,4 @@ class InfoButton extends Button {
 // Register the component with Video.js, so it can be used in players.
 videojs.registerComponent( 'InfoButton', InfoButton );
 
-/**
- * Initialize the plugin.
- *
- * @param {Object} [options] configuration for the plugin
- */
-const infoButtonPlugin = function ( /* options */ ) {
-	const player = this;
-
-	player.ready( () => {
-		const title = mw.Title.makeTitle(
-			mw.config.get( 'wgNamespaceIds' ).file,
-			player.el().getAttribute( 'data-mwtitle' )
-		);
-
-		if ( mw.config.get( 'wgTitle' ) !== player.el().getAttribute( 'data-mwtitle' ) ) {
-			player.controlBar.infoButton = player.controlBar.addChild( 'InfoButton', { link: title.getUrl() } );
-		}
-	} );
-};
-
-// register the plugin
-videojs.registerPlugin( 'infoButton', infoButtonPlugin );
+module.exports = InfoButton;

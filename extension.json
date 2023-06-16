@@ -452,6 +452,7 @@
 			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.inline.js",
+				"resources/mw-info-button/mw-info-button-plugin.js",
 				"resources/mw-info-button/mw-info-button.js",
 				"resources/videojs-resolution-switcher/videojs-resolution-switcher.js",
 				"resources/videojs-resolution-switcher/ResolutionMenuItem.js",

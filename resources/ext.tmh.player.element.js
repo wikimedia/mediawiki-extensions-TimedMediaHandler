@@ -1,10 +1,3 @@
-/**
- * Main entry class for elements enhanced with videojs
- * Provides page player loading, either with click-to-load dialog or inline mode
- *
- * @class MediaElement
- */
-
 const OgvJsSupport = mw.loader.require( 'ext.tmh.OgvJsSupport' );
 
 function secondsToComponents( totalSeconds ) {
@@ -61,10 +54,13 @@ function secondsToDurationLongString( totalSeconds ) {
 	return mw.msg( 'timedmedia-duration-s', seconds );
 }
 
+/**
+ * Main entry class for elements enhanced with videojs
+ * Provides page player loading, either with click-to-load dialog or inline mode
+ */
 class MediaElement {
 	/**
 	 * @param {HTMLMediaElement} element
-	 * @type {MediaElement}
 	 */
 	constructor( element ) {
 		this.element = element;
@@ -188,7 +184,7 @@ class MediaElement {
 	 * Key press handler for `<a role="button">` element to open a
 	 * dialog and play a {MediaElement}.
 	 *
-	 * @param {MouseEvent} event
+	 * @param {KeyBoardEvent} event
 	 */
 	keyPressHandler( event ) {
 		if (
@@ -314,6 +310,7 @@ MediaElement.currentlyPlaying = false;
  * There should be only 1 interstitial to indicate the dialog is loading.
  *
  * @static
+ * @type {JQuery?}
  */
 MediaElement.$interstitial = null;
 
