@@ -1615,4 +1615,34 @@ class WebVideoTranscode {
 		}
 	}
 
+	/**
+	 * Remove stray transcode table entries that no longer refer to a living
+	 * file. Note this does not remove the backing files, if any.
+	 *
+	 * @param int $batchSize max number of rows to clean in this batch
+	 * @return int number of rows deleted
+	 */
+	public static function cleanupOrphanedTranscodes( int $batchSize ): int {
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$dbw = $lbFactory->getPrimaryDatabase();
+		$ticket = $lbFactory->getEmptyTransactionTicket( __METHOD__ );
+		$ids = $dbw->newSelectQueryBuilder()
+			->select( 'transcode_id' )
+			->from( 'transcode' )
+			->leftJoin( 'image', null, [ 'img_name = transcode_image_name' ] )
+			->where( [ 'img_name' => null ] )
+			->limit( $batchSize )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
+
+		if ( count( $ids ) > 0 ) {
+			$dbw->newDeleteQueryBuilder()
+				->delete( 'transcode' )
+				->where( [ 'transcode_id' => $ids ] )
+				->caller( __METHOD__ )
+				->execute();
+		}
+		$lbFactory->commitAndWaitForReplication( __METHOD__, $ticket );
+		return count( $ids );
+	}
 }
