@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"27christian11",
 			"Herryz"
 		]
 	},
 	"timedmedia-source-file": "Sumber $1",
-	"timedmedia-source-audio-file-desc": "\nOriginal $1 alualu ($2)"
+	"timedmedia-source-audio-file-desc": "Ugasan $1 na tingkos ($2)"
 }
