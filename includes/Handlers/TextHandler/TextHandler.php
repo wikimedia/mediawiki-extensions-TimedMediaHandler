@@ -13,7 +13,7 @@ namespace MediaWiki\TimedMediaHandler\Handlers\TextHandler;
 use Exception;
 use File;
 use ForeignDBFile;
-use ForeignDBViaLBRepo;
+use IForeignRepoWithDB;
 use IForeignRepoWithMWApi;
 use LocalRepo;
 use MediaWiki\MediaWikiServices;
@@ -80,10 +80,10 @@ class TextHandler {
 		if ( $this->file->isLocal() ) {
 			return NS_TIMEDTEXT;
 		}
-		if ( $repo instanceof ForeignDBViaLBRepo ) {
+		if ( $repo instanceof IForeignRepoWithDB ) {
 			global $wgTimedTextForeignNamespaces;
 			$wikiID = $repo->getReplicaDB()->getDomainID();
-			// if failed to get namespace via ForeignDBViaLBRepo, return NS_TIMEDTEXT
+			// if failed to get namespace via IForeignRepoWithDB, return NS_TIMEDTEXT
 			return $wgTimedTextForeignNamespaces[$wikiID] ?? NS_TIMEDTEXT;
 		}
 		if ( $repo instanceof IForeignRepoWithMWApi ) {
