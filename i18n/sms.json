@@ -9,7 +9,7 @@
 	"timedmedia-ogg-short-general": "Ogg $1 -mediateâttõs , $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 -jiõnnteâttõs, pešttmõš $2, $3",
 	"timedmedia-ogg-long-video": "Ogg $1 -videoteattõs, pešttmõš $2, $4×$5 pikseleeʹled, $3",
-	"timedmedia-ogg-long-general": "Ogg -mediateâttõs, pešttmõš $2, $3",
+	"timedmedia-ogg-long-general": "Ogg-mediateâttõs, pešttmõš $2, $3",
 	"timedmedia-ogg-long-error": "Vââǥǥlaž Ogg-teâttõs: $1",
 	"timedmedia-webm-short-video": "WebM $1 -videoteâttõs, $2",
 	"timedmedia-flac-short-audio": "FLAC-jiõnnteâttõs, $1",
