@@ -332,7 +332,7 @@ InlinePlayer.globalConfig = {
 	},
 	techOrder: [ 'html5' ],
 	plugins: {
-		infoButtonPlugin: {}
+		infoButton: {}
 	},
 	html5: InlinePlayer.html5techOpt
 };
