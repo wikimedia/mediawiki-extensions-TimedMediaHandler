@@ -40,9 +40,9 @@ const resolutionSwitchterDefaults = {
  * Bucketized sources by label, res and type
  *
  * @typedef BucketObject object
- * @property {Object.<string, SourceObject[]>} label Dictionary of labels to sources with that label
- * @property {Object.<string, SourceObject[]>} res Dictionary of res to sources with that res
- * @property {Object.<string, SourceObject[]>} type Dictionary of type to sources with that type
+ * @property {{string, SourceObject[]}} label Dictionary of labels to sources with that label
+ * @property {{string, SourceObject[]}} res Dictionary of res to sources with that res
+ * @property {{string, SourceObject[]}} type Dictionary of type to sources with that type
  */
 
 /**
