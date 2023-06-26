@@ -340,14 +340,14 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$prefixedSourceAttr = [
 			'width',
 			'height',
-			'title',
-			'shorttitle',
 			'transcodekey',
 		];
 		$removeSourceAttr = [
 			'bandwidth',
 			'framerate',
 			'disablecontrols',
+			'title',
+			'shorttitle',
 			'label',
 			'res',
 		];

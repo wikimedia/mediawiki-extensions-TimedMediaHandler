@@ -259,7 +259,7 @@ class InlinePlayer {
 			const $source = $( source );
 			const transcodeKey = $source.data( 'transcodekey' );
 			let res = parseInt( $source.data( 'height' ), 10 );
-			let label = $source.data( 'shorttitle' );
+			let label = mw.msg( 'timedmedia-source-original' );
 
 			if ( transcodeKey ) {
 				const matches = transcodeKey.match( /^(\d+)p\./ );
@@ -282,7 +282,6 @@ class InlinePlayer {
 			} else {
 				// Original source; sort to top and never auto-select.
 				res = 99999;
-				label = $source.data( 'shorttitle' );
 			}
 			$source.attr( 'res', res );
 			$source.attr( 'label', label );
