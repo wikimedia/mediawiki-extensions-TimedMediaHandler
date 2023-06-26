@@ -138,6 +138,16 @@ class MediaElement {
 			}
 		}
 
+		// Config exported via package files, T60082
+		const parserEnableLegacyMediaDOM = require( './config.json' ).ParserEnableLegacyMediaDOM;
+		if ( this.isAudio && !parserEnableLegacyMediaDOM ) {
+			// Transfer the mw-file-element class to the placeholder since a
+			// width is added to the placeholder above, either explicitly or
+			// with the audio class
+			$clonedVid.removeClass( 'mw-file-element' );
+			this.$placeholder.addClass( 'mw-file-element' );
+		}
+
 		this.$element.replaceWith( this.$placeholder );
 
 		if ( playing ) {
