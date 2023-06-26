@@ -5,15 +5,12 @@
 			"Iváns"
 		]
 	},
-	"apihelp-query+transcodestatus-description": "Obter o estado de transcode para unha páxina de ficheiro dado.",
 	"apihelp-query+transcodestatus-summary": "Obter o estado de transcode para unha páxina de ficheiro dado.",
 	"apihelp-query+transcodestatus-example-1": "Obter o estado transcode para [[:File:Clip.webm]]",
-	"apihelp-query+videoinfo-description": "Estende a información da imaxe para incluír a información da fonte de vídeo (derivado)",
 	"apihelp-query+videoinfo-summary": "Estende a información da imaxe para incluír a información da fonte de vídeo (derivado)",
 	"apihelp-query+videoinfo-example-1": "Procurar información sobre [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Engade unha táboa das versións dispoñibles cos diferentes formatos e calidades dun ficheiro de son ou vídeo.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Engade unha lista dos subtítulos, lendas e descricións dispoñibles dun ficheiro de son ou vídeo.",
-	"apihelp-transcodereset-description": "Usuarios co permiso 'transcode-reset' poden reiniciar e reexecutar un traballo transcode.",
 	"apihelp-transcodereset-summary": "Usuarios co permiso 'transcode-reset' poden reiniciar e reexecutar un traballo transcode.",
 	"apihelp-transcodereset-param-title": "Título do ficheiro multimedia.",
 	"apihelp-transcodereset-param-transcodekey": "A chave transcode que quere resetear. Collida de [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",

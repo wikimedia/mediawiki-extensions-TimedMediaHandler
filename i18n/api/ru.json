@@ -7,10 +7,8 @@
 			"Pacha Tchernof"
 		]
 	},
-	"apihelp-query+transcodestatus-description": "Получить статус транскодированния для данного файла.",
 	"apihelp-query+transcodestatus-summary": "Получить статус перекодирования для данной страницы файла",
 	"apihelp-query+transcodestatus-example-1": "Получить статус транскодированния для файла [[:File:Clip.webm|Clip.webm]].",
-	"apihelp-transcodereset-description": "Участники с правом 'transcode-reset' могут сбрасывать и запускать заново задачи по перекодированию.",
 	"apihelp-transcodereset-param-title": "Заголовок медиафайла.",
 	"apihelp-transcodereset-param-transcodekey": "Ключ перекодирования, который вы хотите сбросить. Запрашивается из [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Сбросить все задачи по транскодированнию для файла [[:File:Clip.webm|Clip.webm]].",

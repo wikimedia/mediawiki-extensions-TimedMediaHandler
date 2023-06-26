@@ -4,15 +4,12 @@
 			"Xuacu"
 		]
 	},
-	"apihelp-query+transcodestatus-description": "Recibir l'estáu de transcode pa una páxina de ficheru determinada.",
 	"apihelp-query+transcodestatus-summary": "Recibir l'estáu de transcode pa una páxina de ficheru determinada.",
 	"apihelp-query+transcodestatus-example-1": "Recibir l'estáu de transcode pa [[:File:Clip.webm]]",
-	"apihelp-query+videoinfo-description": "Estende imageinfo pa incluir la información de fonte de videu (derivaos)",
 	"apihelp-query+videoinfo-summary": "Estende imageinfo pa incluir la información de fonte de videu (derivaos)",
 	"apihelp-query+videoinfo-example-1": "Buscar información tocante a [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Amiesta una tabla de les versiones disponibles nos distintos formatos y calidaes d'un ficheru de soníu o videu.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Amiesta una tabla colos subtítulos, lleendes y descripciones disponibles d'un ficheru de soníu o videu.",
-	"apihelp-transcodereset-description": "Los usuarios col permisu 'transcode-reset' pueden reaniciar y volver a executar un trabayu transcode.",
 	"apihelp-transcodereset-summary": "Los usuarios col permisu 'transcode-reset' pueden reaniciar y volver a executar un trabayu transcode.",
 	"apihelp-transcodereset-param-title": "Títulu del ficheru de multimedia.",
 	"apihelp-transcodereset-param-transcodekey": "La clave del transcode que quies reaniciar. Cuéyela de [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",

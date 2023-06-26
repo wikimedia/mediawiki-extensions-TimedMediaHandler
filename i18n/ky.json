@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bosogo",
 			"Janatkg"
 		]
 	},
-	"timedmedia-source-file": "$1 булактан"
+	"timedmedia-reset-button-dismiss": "Баш тартуу",
+	"timedmedia-source-file": "$1 булактан",
+	"timedmedia-source-audio-file-desc": "Түп нуска $1 файл ($2)"
 }

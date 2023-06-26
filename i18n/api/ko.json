@@ -6,7 +6,6 @@
 	},
 	"apihelp-query+videoinfo-example-1": "[[:File:Folgers.ogv]]에 관한 정보를 가져옵니다",
 	"apihelp-timedtext-summary": "&lt;track&gt; 요소들의 사용에 대한 타임드 텍스트 내용을 제공합니다",
-	"apihelp-transcodereset-description": "'transcode-reset' 권한이 있는 사용자는 트랜스코드 잡을 재설정하고 다시 실행할 수 있습니다.",
 	"apihelp-transcodereset-summary": "'transcode-reset' 권한이 있는 사용자는 트랜스코드 작업을 초기화하고 다시 실행할 수 있습니다.",
 	"apihelp-transcodereset-param-title": "미디어 파일 제목입니다.",
 	"apihelp-transcodereset-param-transcodekey": "재설정할 트랜스코드 키입니다.  [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]에서 가져옵니다.",

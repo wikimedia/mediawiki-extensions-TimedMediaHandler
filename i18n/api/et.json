@@ -4,11 +4,8 @@
 			"Pikne"
 		]
 	},
-	"apihelp-query+transcodestatus-description": "Antud faili ümberkodeerimise oleku hankimine.",
 	"apihelp-query+transcodestatus-example-1": "Hangi faili [[:File:Clip.webm|Clip.webm]] ümberkodeerimise olek",
-	"apihelp-query+videoinfo-description": "Laiendab moodulit \"imageinfo\", kaasa arvatakse teave video allika (tuletiste) kohta.",
 	"apihelp-query+videoinfo-example-1": "Faili [[:File:Folgers.ogv|Folgers.ogv]] teabe väljavõtt",
-	"apihelp-transcodereset-description": "Kasutajad, kellel on õigus \"transcode-reset\", saavad ümberkodeerimistööd lähtestada ja uuesti käitada.",
 	"apihelp-transcodereset-param-title": "Meediumifaili pealkiri.",
 	"apihelp-transcodereset-param-transcodekey": "Lähtestatava ümberkodeerimise võti. Leitav päringuga [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "Lähtesta kõik faili [[:File:Clip.webm|Clip.webm]] ümberkodeeringud",

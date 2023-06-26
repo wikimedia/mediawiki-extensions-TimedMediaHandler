@@ -5,7 +5,6 @@
 			"Matteocng"
 		]
 	},
-	"apihelp-query+transcodestatus-description": "Ottieni lo stato della transcodifica per un determinato file.",
 	"apihelp-query+transcodestatus-example-1": "Ottieni lo stato della transcodifica per [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-example-1": "Ottieni informazioni su [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Aggiunge un array di diversi formati e versioni di qualità di un file audio o video che sono disponibili.",
