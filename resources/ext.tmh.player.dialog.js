@@ -33,7 +33,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 	}
 
 	initialize() {
-		const window = super.initialize();
+		const oouiWindow = super.initialize();
 
 		this.$element.addClass( 'mw-tmh-media-dialog' );
 		this.$element.on( 'click', ( e ) => {
@@ -70,7 +70,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		if ( useFillscreen() && window.innerWidth > screen.availWidth ) {
 			this.$element.addClass( 'mw-tmh-desktop-on-mobile' );
 		}
-		return window;
+		return oouiWindow;
 	}
 
 	getBodyHeight() {
