@@ -7,13 +7,21 @@
 	"timedmedia-more": "ٻئے۔۔۔",
 	"timedmedia-dismiss": "بند کرو",
 	"timedmedia-download": "فائل ڈاؤن لوڈ کرو",
+	"timedmedia-desc-link": "ایں فائل بارے",
 	"timedmedia-status": "حالت",
 	"timedmedia-status-unknown": "نامعلوم حالت",
 	"timedmedia-transcodeinfo": "فارمیٹ",
 	"timedmedia-actions": "کم",
 	"timedmedia-direct-link": "ڈاؤن لوڈ",
+	"timedmedia-reset-button-dismiss": "مکاؤ",
+	"timedmedia-reset-button-reset": "ولدا ٹھیک کرو",
 	"timedmedia-source-file": "$1 مسودہ",
 	"timedmedia-source-audio-file-desc": "اصلی$1 فائل ($2)",
+	"timedmedia-resolution-120": "گھٹ ١٢٠پکس",
+	"timedmedia-resolution-160": "گھٹ ١٦٠پکس",
+	"timedmedia-resolution-180": "گھٹ ١٨٠پکس",
+	"timedmedia-resolution-240": "گھٹ ٢٤٠پکس",
 	"timedmedia-subtitle-new-go": "ڄلو",
-	"timedmedia-file": "فائل"
+	"timedmedia-file": "فائل",
+	"videojs-more-information": "ٻیاں معلومات"
 }
