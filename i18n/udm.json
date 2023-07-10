@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wadorgurt"
+			"Wadorgurt",
+			"Света Поторочина"
 		]
 	},
-	"timedmedia-source-file": "$1 источник",
+	"timedmedia-source-file": "$1 кылдэмез сярысь",
 	"timedmedia-source-audio-file-desc": "Оригинальной $1 файл ($2)"
 }
