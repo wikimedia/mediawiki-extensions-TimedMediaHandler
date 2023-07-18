@@ -14,7 +14,8 @@
 			"Simon Shek",
 			"Sunny00217",
 			"Xiplus",
-			"蘭斯特"
+			"蘭斯特",
+			"Winston Sung"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM、Ogg Theora、Vorbis、srt",
@@ -54,7 +55,7 @@
 	"timedmedia-transcodebitrate": "位元率",
 	"timedmedia-transcodeduration": "編碼時間",
 	"timedmedia-transcodeinfo": "格式",
-	"timedmedia-actions": "動作",
+	"timedmedia-actions": "操作",
 	"timedmedia-direct-link": "下載",
 	"timedmedia-not-ready": "尚未就緒",
 	"timedmedia-completed-on": "已完成於$1",
@@ -74,8 +75,6 @@
 	"timedmedia-reset-button-reset": "重設",
 	"timedmedia-reset-error": "重設轉碼任務時發生錯誤。",
 	"timedmedia-reset-explanation": "重設轉碼會移除所有已存在的檔案，並重新將檔案加入轉碼工作序列。這需要花費一些時間來重新轉碼。",
-	"timedmedia-error-details": "轉碼錯誤詳細內容",
-	"timedmedia-error-dismiss": "關閉",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 來源檔案",
 	"timedmedia-source-file-desc": "$1 原始檔案，$2 × $3（$4）",
@@ -115,7 +114,6 @@
 	"timedmedia-resolution-160": "低畫質 160p",
 	"timedmedia-resolution-180": "低畫質 180p",
 	"timedmedia-resolution-240": "低畫質 240p",
-	"timedmedia-resolution-288": "低畫質 288p",
 	"timedmedia-resolution-360": "標準畫質 360p",
 	"timedmedia-resolution-480": "標準畫質 480p",
 	"timedmedia-resolution-720": "高畫質 720p",
