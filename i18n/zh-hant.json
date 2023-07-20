@@ -14,7 +14,8 @@
 			"Simon Shek",
 			"Sunny00217",
 			"Xiplus",
-			"蘭斯特"
+			"蘭斯特",
+			"Winston Sung"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM、Ogg Theora、Vorbis、srt",
@@ -54,7 +55,7 @@
 	"timedmedia-transcodebitrate": "位元率",
 	"timedmedia-transcodeduration": "編碼時間",
 	"timedmedia-transcodeinfo": "格式",
-	"timedmedia-actions": "動作",
+	"timedmedia-actions": "操作",
 	"timedmedia-direct-link": "下載",
 	"timedmedia-not-ready": "尚未就緒",
 	"timedmedia-completed-on": "已完成於$1",
