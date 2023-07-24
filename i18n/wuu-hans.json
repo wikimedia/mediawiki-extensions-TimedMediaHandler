@@ -1,8 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Poiuyt",
-			"飞舞回堂前"
+			"Winston Sung"
 		]
 	},
 	"timedmedia-hours": "{{PLURAL:$1|$1个钟头}}",

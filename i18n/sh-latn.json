@@ -1,9 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog",
-			"OC Ripper",
-			"Vlad5250"
+			"Winston Sung"
 		]
 	},
 	"timedmediahandler-desc": "Upravljač za zvuk, video i vremenski tekst, sa podrškom formata za WebM, Ogg Theora, Vorbis, srt",
