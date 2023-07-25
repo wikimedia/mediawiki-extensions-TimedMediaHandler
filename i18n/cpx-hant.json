@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"timedmedia-source-file": "$1來源文件",
+	"timedmedia-source-audio-file-desc": "原始$1文件（$2）"
+}

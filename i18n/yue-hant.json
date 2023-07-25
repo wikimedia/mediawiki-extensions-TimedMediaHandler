@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"timedmediahandler-desc": "Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器",
+	"timedmedia-ogg-short-audio": "Ogg $1 聲檔，$2",
+	"timedmedia-ogg-short-video": "Ogg $1 畫檔，$2",
+	"timedmedia-ogg-short-general": "Ogg $1 媒檔，$2",
+	"timedmedia-ogg-long-audio": "Ogg $1 聲檔，長度$2，$3",
+	"timedmedia-ogg-long-video": "Ogg $1 畫檔，長度$2，$4×$5像素，$3",
+	"timedmedia-ogg-long-multiplexed": "Ogg 多工聲／畫檔，$1，長度$2，$4×$5像素，總共$3",
+	"timedmedia-ogg-long-general": "Ogg 媒檔，長度$2，$3",
+	"timedmedia-ogg-long-error": "無效嘅ogg檔: $1",
+	"timedmedia-more": "多啲...",
+	"timedmedia-dismiss": "閂",
+	"timedmedia-download": "下載檔案",
+	"timedmedia-desc-link": "關於呢個檔案",
+	"timedmedia-source-file": "$1 來源檔",
+	"timedmedia-source-audio-file-desc": "原本 $1 檔案 （$2）"
+}
