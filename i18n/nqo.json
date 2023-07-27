@@ -25,6 +25,8 @@
 	"timedmedia-error-on": "ߝߌ߬ߟߌ߸ $1 ߡߊ߬",
 	"timedmedia-started-transcode": "ߘߊߡߌ߬ߣߊ $1 ߟߋ߬ ߣߌ߲߬. $2",
 	"timedmedia-percent-done": "ߘߝߊߣߍ߲ $1 ߖߊ߬ߕߋ",
+	"timedmedia-reset-button-dismiss": "ߓߙߐߕߐ߫",
+	"timedmedia-reset-button-reset": "ߊ߬ ߡߊߛߊ߬ߦߌ߬",
 	"timedmedia-source-file": "$1 ߛߎ߲",
 	"timedmedia-source-audio-file-desc": "ߞߐߕߐ߮ ߓߐߛߎ߲ߡߊ $1 ($2)",
 	"timedmedia-subtitle-new-go": "ߕߊ߯",
