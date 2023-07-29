@@ -72,6 +72,8 @@ class MP3Handler extends ID3Handler {
 				intval( $this->getLength( $file ) )
 			)->bitrateParams(
 				$this->getBitRate( $file )
+			)->sizeParams(
+				$file->getSize()
 			)->text();
 	}
 

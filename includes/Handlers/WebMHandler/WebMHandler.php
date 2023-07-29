@@ -175,19 +175,22 @@ class WebMHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getLongDesc( $file ) {
-		global $wgLang;
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
 		return wfMessage(
 			'timedmedia-webm-long-video',
-			implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ),
-			$wgLang->formatBitrate( $this->getBitRate( $file ) )
+			implode( '/', $streamTypes )
+			)->timeperiodParams(
+				$this->getLength( $file )
+			)->bitrateParams(
+				$this->getBitRate( $file )
 			)->numParams(
 				$file->getWidth(),
 				$file->getHeight()
+			)->sizeParams(
+				$file->getSize()
 			)->text();
 	}
 

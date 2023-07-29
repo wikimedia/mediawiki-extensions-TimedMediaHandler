@@ -117,6 +117,8 @@ class MPEGHandler extends ID3Handler {
 			)->numParams(
 				$file->getWidth(),
 				$file->getHeight()
+			)->sizeParams(
+				$file->getSize()
 			)->text();
 	}
 

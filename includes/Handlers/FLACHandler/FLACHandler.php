@@ -65,15 +65,19 @@ class FLACHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getLongDesc( $file ) {
-		global $wgLang;
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-		return wfMessage( 'timedmedia-flac-long-audio',
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ),
-			$wgLang->formatBitrate( $this->getBitRate( $file ) )
-		)->text();
+		return wfMessage(
+			'timedmedia-flac-long-audio'
+			)->timeperiodParams(
+				$this->getLength( $file )
+			)->bitrateParams(
+				$this->getBitRate( $file )
+			)->sizeParams(
+				$file->getSize()
+			)->text();
 	}
 
 }
