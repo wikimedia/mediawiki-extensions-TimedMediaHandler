@@ -7,6 +7,7 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
  * @ingroup timedmedia
  * @author michael dale
  * @group medium
+ * @group Database
  * @covers \MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode
  */
 class VideoTranscodeTest extends ApiVideoUploadTestCase {

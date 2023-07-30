@@ -3,6 +3,7 @@
  * @ingroup timedmedia
  * @author dale
  * @group medium
+ * @group Database
  */
 class VideoThumbnailTest extends ApiVideoUploadTestCase {
 
