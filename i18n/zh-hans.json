@@ -85,7 +85,7 @@
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1原始文件",
 	"timedmedia-source-file-desc": "原始$1文件，$2 × $3（$4）",
-	"timedmedia-source-audio-file-desc": "原始$1文件 ($2)",
+	"timedmedia-source-audio-file-desc": "原始$1文件（$2）",
 	"timedmedia-derivative-desc-160p.ogv": "低带宽Ogg视频（160P）",
 	"timedmedia-derivative-desc-240p.ogv": "小型Ogg视频（240P）",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg视频（360P）",
