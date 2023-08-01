@@ -105,6 +105,7 @@
 	"timedmedia-subtitle-no-subtitles": "Тренутно нема $1 титлова за овај видео-снимак. Можете да их додате тако што ћете [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредити страницу]",
 	"timedmedia-subtitle-remote": "Временски текст за ову датотеку хостује се на $1",
 	"timedmedia-subtitle-remote-link": "Можете [$1 погледати страницу са описом] за ову датотеку на $2",
+	"timedmedia-subtitles-available": "Доступан титл.",
 	"timedmedia-no-derivatives": "Нема других формата.",
 	"timedmedia-file": "Датотека",
 	"right-transcode-status": "прегледање [[Special:TimedMediaHandler|информација о тренутном активношћу транскодирања]]",
@@ -113,6 +114,8 @@
 	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а",
 	"orphanedtimedtext-unsupported": "Ова посебна странице је подржана само на MySQL базама података.",
 	"videojs-more-information": "Више информација",
+	"videojs-quality": "Видео квалитет",
+	"videojs-subtitles-create": "Направи титл",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 титлови за клип: $2",
 	"timedmedia-timedtext-title-create-subtitles": "Нису пронађени $1 титлови за клип: $2"
 }
