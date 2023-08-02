@@ -81,7 +81,6 @@
 	"timedmedia-reset-button-reset": "Restablecer",
 	"timedmedia-reset-error": "Error al restablecer el trabajo de transcodificación.",
 	"timedmedia-reset-explanation": "Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Fuente $1",
 	"timedmedia-source-file-desc": "Archivo $1 original, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Archivo $1 original ($2)",

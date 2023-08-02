@@ -71,7 +71,6 @@
 	"timedmedia-reset-explanation": "Mengatur kembali transkode ini akan menghapus berkas yang ada (apabila ada), dan menambahkan kembali transkode ke antrean pekerjaan. Akan memerlukan beberapa waktu untuk mentranskode ulang.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Sumber $1",
 	"timedmedia-source-file-desc": "Berkas $1 asli, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Berkas ($2) asli $1",

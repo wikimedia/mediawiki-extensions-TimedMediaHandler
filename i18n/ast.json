@@ -60,7 +60,6 @@
 	"timedmedia-reset-button-reset": "Reaniciar",
 	"timedmedia-reset-error": "Error al reaniciar el trabayu de trescodificación.",
 	"timedmedia-reset-explanation": "Al reaniciar esta trescodificación desaniciará tolos ficheros esistentes (si los hai), y volverá a amestar la trescodificación a la cola de trabayos. Llevará un tiempu volver a trescodificar.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Fonte $1",
 	"timedmedia-source-file-desc": "Ficheru $1 orixinal, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Ficheru $1 orixinal ($2)",

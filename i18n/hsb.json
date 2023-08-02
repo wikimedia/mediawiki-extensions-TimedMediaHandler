@@ -45,7 +45,6 @@
 	"timedmedia-reset": "Překodowanje wróćo stajić",
 	"timedmedia-reset-error": "Zmylk při wróćostajenju překodowanja.",
 	"timedmedia-reset-explanation": "Wróćostajenje tutoho překodowanja wotstroni eksistowacu dataju (jeli tajka eksistuje), a budźe překodowanje znowa čakanskemu rynčkej přidawać. Nowe překodowanje budźe někotry čas trać.<br /><br />\nChceš woprawdźe pokročować?",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Žórło ($1)",
 	"timedmedia-source-file-desc": "Originalna dataja $1, $2 x $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Originalna $1-dataja ($2)",

@@ -39,7 +39,6 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 saniya|$1 saniyey}}",
 	"timedmedia-reset-button-dismiss": "Red ke",
 	"timedmedia-reset-button-reset": "Raçarne",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 çıme",
 	"timedmedia-source-audio-file-desc": "Dosyaya oricinale $1 ($2)",
 	"timedmedia-derivative-desc-240p.ogv": "Werdı Ogg video (240P)",

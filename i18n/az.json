@@ -14,7 +14,6 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 saniyə|$1 saniyə}}",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "$1 mənbəyi",

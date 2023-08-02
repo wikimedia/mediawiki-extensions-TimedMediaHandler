@@ -74,7 +74,6 @@
 	"timedmedia-reset-button-reset": "Zresetuj",
 	"timedmedia-reset-error": "Błąd w resecie konwersji.",
 	"timedmedia-reset-explanation": "Reset konwersji spowoduje usunięcie obecnego pliku (jeżeli takowy istnieje) i doda ją ponownie do kolejki. Zabierze to trochę czasu.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Źródło $1",
 	"timedmedia-source-file-desc": "Oryginalny plik $1, $2 x $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Oryginalny plik $1 ($2)",

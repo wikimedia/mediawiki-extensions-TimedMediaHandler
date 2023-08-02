@@ -84,7 +84,6 @@
 	"timedmedia-reset-button-reset": "Сбросить",
 	"timedmedia-reset-error": "Ошибка при перезапуске декодирования.",
 	"timedmedia-reset-explanation": "Перезапуск декодирования удалит существующий файл (если он существует), и  декодирование вновь будет добавлено в очередь заданий. Повторное декодирование займет некоторое время.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Источник $1",
 	"timedmedia-source-file-desc": "Оригинальный $1-файл, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Оригинальный $1-файл ($2)",

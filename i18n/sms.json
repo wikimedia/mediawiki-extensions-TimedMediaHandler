@@ -30,7 +30,6 @@
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekuntt|$1 sekuunt|$1 sekunttâd}}",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "Käivvteâttõs $1",

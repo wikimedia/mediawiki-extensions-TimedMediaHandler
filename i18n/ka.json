@@ -56,7 +56,6 @@
 	"timedmedia-reset-button-reset": "საწყის პარამეტრებზე დაყენება",
 	"timedmedia-reset-error": "შეცდომა დეკოდირების თავიდან დაყენებისას.",
 	"timedmedia-reset-explanation": "დეკოდირების თავიდან დაყენება წაშლის არსებულ ფაილს (თუკი ის არსებობს) და დეკოდირება კვლავ დაემატება დავალებების რიგში. განმეორებით დეკოდირებას დაჭირდება გარკვეული დრო.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "წყარო $1",
 	"timedmedia-source-file-desc": "ორიგინალი $1 ფაილი, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "ორიგინალი $1 ფაილი ($2)",

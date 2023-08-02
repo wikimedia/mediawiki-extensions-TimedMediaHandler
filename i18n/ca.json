@@ -42,7 +42,6 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 hora|$1 hores}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minut|$1 minuts}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 segon|$1 segons}}",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Font $1",
 	"timedmedia-source-file-desc": "Fitxer original $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Fitxer original $1 ($2)",

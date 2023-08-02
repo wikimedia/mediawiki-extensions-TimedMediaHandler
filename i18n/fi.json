@@ -49,7 +49,6 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 tunti|$1 tuntia}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 minuutti|$1 minuuttia}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 sekunti|$1 sekuntia}}",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Lähde $1",
 	"timedmedia-source-file-desc": "Alkuperäinen $1-tiedosto, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Alkuperäinen $1-tiedosto ($2)",

@@ -48,7 +48,6 @@
 	"timedmedia-minutes": "$1 {{PLURAL:$1|хвіліну|хвіліны|хвілінаў}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|сэкунду|сэкунды|сэкундаў}}",
 	"timedmedia-reset": "Перазапусьціць транскадаваньне",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Крыніца $1",
 	"timedmedia-source-file-desc": "Арыгінал у $1, $2×$3 ($4)",
 	"timedmedia-source-audio-file-desc": "Арыгінальны $1-файл ($2)",

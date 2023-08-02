@@ -73,7 +73,6 @@
 	"timedmedia-reset-explanation": "A redefinição da transcode irá remover qualquer arquivo existente (se houver), e ele vai voltar a adicionar o transcode para a fila de trabalho. Vai levar algum tempo para re-transcodificação.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "Fonte $1",

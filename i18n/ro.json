@@ -54,7 +54,6 @@
 	"timedmedia-reset": "Reinițializează codificarea",
 	"timedmedia-reset-error": "Eroare la reinițializarea codificării.",
 	"timedmedia-reset-explanation": "Reinițializarea acestei codificări va elimina orice fișier existent (dacă există) și va readăuga codificarea la șirul de sarcini. Va dura ceva timp pentru a recodifica.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Sursă $1",
 	"timedmedia-source-file-desc": "Fișier $1 original, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Fișier $1 original ($2)",

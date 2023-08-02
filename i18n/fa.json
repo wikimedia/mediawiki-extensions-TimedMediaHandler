@@ -80,7 +80,6 @@
 	"timedmedia-reset-error": "خطا در بازنشانی کار فراکد.",
 	"timedmedia-reset-explanation": "تنظیم مجدد فراکد پرونده‌های موجود را حذف خواهد کرد و فراکد را در صف کار خواهد افزود. این کار مقداری زمان لازم دارد.",
 	"timedmedia-ogg": "Ogg",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "مبدأ $1",
 	"timedmedia-source-file-desc": "اصلی $1 پرونده، $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "پروندهٔ $1 اصلی ($2)",

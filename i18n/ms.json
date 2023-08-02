@@ -50,7 +50,6 @@
 	"timedmedia-reset": "Set semula transkod",
 	"timedmedia-reset-error": "Ralat ketika mengeset semula tugas pentranskodan.",
 	"timedmedia-reset-explanation": "Mengeset semula transkod ini akan membuang sebarang fail yang sedia ada (jika ada), lalu menambahkan semula transkod ke dalam baris gilir tugas. Pentranskodan semula akan memakan masa.<br /><br />Adakah anda tetap ingin melakukannya?",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Sumber $1",
 	"timedmedia-source-file-desc": "Fail $1 asli, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Fail $1 asli ($2)",

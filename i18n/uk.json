@@ -82,7 +82,6 @@
 	"timedmedia-reset-explanation": "Перезапуск декодування видалить наявний файл (якщо він існує), і декодування знов буде додано в чергу завдань. Повторне декодування займе якийсь час.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-mp3": "MP3",

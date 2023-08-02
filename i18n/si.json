@@ -46,7 +46,6 @@
 	"timedmedia-seconds": "{{PLURAL:$1|තත්පරය|$1 තත්පර}}",
 	"timedmedia-reset": "transcode යළි සකසන්න",
 	"timedmedia-reset-error": "transcode කෘත්‍ය යළි සැකසීමේ දෝෂය.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 මූලාශ්‍රය",
 	"timedmedia-source-file-desc": "නියම $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "නියම $1 ගොනුව ($2)",

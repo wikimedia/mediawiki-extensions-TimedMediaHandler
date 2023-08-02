@@ -51,7 +51,6 @@
 	"timedmedia-reset": "Pakibaguha an panggantaw na kodigo",
 	"timedmedia-reset-error": "Kasalaan sa pagbabago kan trabaho nin panggantaw na kodigo.",
 	"timedmedia-reset-explanation": "Sa pagbabago kaining panggantaw na kodigo magtatangkas nin arinman na eksistidong sagunson (kun yaon), asin magdudugang otro kan panggantaw na kodigo sa haralatan nin trabaho. Ini minakaipo nin nagkapirang oras tangani na otrong ipaggantaw an kodigo.  <br /><br /> Segurado ka na muya mong magpadagos?",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 na source",
 	"timedmedia-source-file-desc": "Orihinal $1 na sagunson, $2 x $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Orihinal na $1 na file ($2)",

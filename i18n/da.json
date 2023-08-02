@@ -64,7 +64,6 @@
 	"timedmedia-reset-button-reset": "Nulstil",
 	"timedmedia-reset-error": "Fejl ved nulstilling af kode job.",
 	"timedmedia-reset-explanation": "Nulstilling af denne omkodning vil fjerne alle eksisterende filer (hvis der er nogen), og vil genindsætte omkodningen i jobkøen. Det vil tage nogen tid at omkode forfra.<br /><br />\nEr du sikker på, du vil fortsætte?",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 kilde",
 	"timedmedia-source-file-desc": "Original $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Original $1-fil ($2)",

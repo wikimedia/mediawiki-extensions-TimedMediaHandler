@@ -48,7 +48,6 @@
 	"timedmedia-reset": "Iyasentar manen ti transkodigo",
 	"timedmedia-reset-error": "Biddut ti panangiyasentar manen ti transkodigo a maaramid.",
 	"timedmedia-reset-explanation": "Ti panangisaad manen iti daytoy a transkodigo ket mangikkat iti ania man nga adda a papeles (no adda), ken manginayonto manen iti transkodigo iti pagurayan ti maaramid. Mabalin a mabayag daytoy iti mangitranskodigo manen.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 taudan",
 	"timedmedia-source-file-desc": "Kasisigud a $1 a papeles, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Kasisigud a $1 a papeles ($2)",

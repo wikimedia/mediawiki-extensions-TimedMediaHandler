@@ -51,7 +51,6 @@
 	"timedmedia-reset": "Amposté torna la trascodìfica",
 	"timedmedia-reset-error": "Eror an ampostand torna ël travaj ëd trascodìfica.",
 	"timedmedia-reset-explanation": "Amposté torna sa trascodìfica a tramuderà tut archivi esistent (s'a-i na j'é) e a gionterà torna la trascodìfica a la coa dij travaj. A-i andrà dël temp a trascodifiché torna. <br /><br />\nÉ-lo sigur ëd vorèj continué?",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 sorziss",
 	"timedmedia-source-file-desc": "Archivi original $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Archivi original $1 ($2)",

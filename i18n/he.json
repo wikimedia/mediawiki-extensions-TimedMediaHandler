@@ -66,7 +66,6 @@
 	"timedmedia-reset-button-reset": "אתחול",
 	"timedmedia-reset-error": "שגיאה באתחול משימת המרה משנית",
 	"timedmedia-reset-explanation": "אתחול ההמרה המשנית הזאת ימחק כל קובץ קיים (אם יש כזה) ויוסיף שוב את ההמרה המשנית לתור המשימות. ייקח זמן כדי לבצע את ההמרה המשנית שוב.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "ממקור $1",
 	"timedmedia-source-file-desc": "קובץ $1 מקורי, $2 × $3‏ ($4)",
 	"timedmedia-source-audio-file-desc": "קובץ $1 מקורי ($2)",

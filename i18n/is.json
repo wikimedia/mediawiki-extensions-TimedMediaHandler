@@ -54,7 +54,6 @@
 	"timedmedia-reset-explanation": "Núllstilling kóðabreytingarinnar mun fjarlægja allar fyrri skrár (ef þær eru til) og mun bæta kóðabreytingunni aftur á verkefnalistann. Það mun taka nokkurn tíma að endur kóðabreyta.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "$1 uppruni",

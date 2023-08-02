@@ -35,7 +35,6 @@
 	"timedmedia-seconds": "$1 {{PLURAL:$1|eilenn}}",
 	"timedmedia-reset-button-dismiss": "Disteurel",
 	"timedmedia-reset-button-reset": "Adderaouekaat",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "Mammenn $1",
 	"timedmedia-source-file-desc": "Restr $1 orin, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Restr orin $1 ($2)",

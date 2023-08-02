@@ -73,7 +73,6 @@
 	"timedmedia-reset-button-reset": "Återställ",
 	"timedmedia-reset-error": "Fel i nollställningen av transkod-jobbet.",
 	"timedmedia-reset-explanation": "Nollställning av denna transkodning tar bort alla befintliga filer (om den finns), och lägger åter till transkodningen till jobbkön. Det kommer att ta tid att om-transkoda.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 källa",
 	"timedmedia-source-file-desc": "Ursprunglig $1-fil, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Ursprunglig $1-fil ($2)",

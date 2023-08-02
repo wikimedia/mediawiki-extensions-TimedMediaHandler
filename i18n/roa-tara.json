@@ -61,7 +61,6 @@
 	"timedmedia-reset-button-reset": "Azzere",
 	"timedmedia-reset-error": "Errore mendre ste azzerave 'a fatìe de transcodifiche.",
 	"timedmedia-reset-explanation": "Stoche azzere sta transcodifiche ca adda luà ogne file esistende (ce presende), e pò aggiunge 'a transcodifiche jndr'à code d'a fatìe. Cchiù vote accumenze 'a transcodifiche.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 sorgende",
 	"timedmedia-source-file-desc": "File origgenale $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "File origgenale $1 ($2)",

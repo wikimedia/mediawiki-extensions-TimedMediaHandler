@@ -71,7 +71,6 @@
 	"timedmedia-reset-explanation": "Việc đặt lại chuyển mã sẽ xóa tập tin nào hiện có, nếu có, và sẽ lại thêm việc chuyển mã vào hàng đợi việc. Việc chuyển mã lại sẽ mất một chút thì giờ.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-mp3": "MP3",

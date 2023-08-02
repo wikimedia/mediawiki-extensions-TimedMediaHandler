@@ -61,7 +61,6 @@
 	"timedmedia-reset-button-reset": "Atstatyti",
 	"timedmedia-reset-error": "Klaida perkodavimo atstatymo užduotyje.",
 	"timedmedia-reset-explanation": "Šio perkodavimo atstatymas pašalins visus egzistuojančius failus (jeigu jų yra) ir vėl pridės perkodavimą į darbų eilę. Perkodavimas užtruks kažkiek laiko.",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 šaltinis",
 	"timedmedia-source-file-desc": "Originalus $1 failas, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Pirminė $1 rinkmena ($2)",

@@ -44,7 +44,6 @@
 	"timedmedia-reset": "ଟ୍ରାନ୍ସକୋଡ ପୁନଃସ୍ଥାପନ କରିବେ",
 	"timedmedia-reset-error": "ଟ୍ରାନ୍ସକୋଡ ପୁନଃସ୍ଥାପନ କରିବାରେ ଅସୁବଧା ଉପୁଜିଲା",
 	"timedmedia-reset-explanation": "ଟ୍ରାନ୍ସକୋଡ ପୁନଃସ୍ଥାପନା କରିବାଦ୍ଵାରା ଅଗରୁଥିବା ଫାଇଲ ହଟିଯିବ, ଏବଂ ଏହା ପ୍ରକ୍ରିୟାରେ ଟ୍ରାନ୍ସକୋଡକୁ ଆଉଥରେ ଯୋଡିଦେବ । ଏହା ପୁନଃ ଟ୍ରାନ୍ସକୋଡ ପାଇଁ କିଛି ସମୟ ନେବ ।\nଆପଣ ପ୍ରକ୍ରିୟାକୁ ଚାଲୁରଖିବା ପାଇଁ ନିଶ୍ଚିତ ?",
-	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 ଉତ୍ସ",
 	"timedmedia-source-file-desc": "ମୂଳ $1 ଫାଇଲ, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "ମୂଳ $1 ଫାଇଲ ($2)",
