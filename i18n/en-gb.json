@@ -5,8 +5,10 @@
 			"Bjh21",
 			"Captaindogfish",
 			"Macofe",
+			"Reedy",
 			"Shirayuki"
 		]
 	},
-	"timedmedia-ogg-long-no-streams": "Ogg media file. Warning: None of the codecs used in this file are recognised."
+	"timedmedia-ogg-long-no-streams": "Ogg media file. Warning: None of the codecs used in this file are recognised.",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 uninitialised transcode|$1 uninitialised transcodes}}"
 }
