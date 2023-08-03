@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Baloch Afghanistan",
-			"Mostafadaneshvar"
+			"Mostafadaneshvar",
+			"Moshtank"
 		]
 	},
 	"timedmediahandler-desc": "دسگیره په فایلان Ogg Theora و Vorbis, گون پخش کنوک جاوا اسکرسیپت",
-	"timedmedia-ogg-short-audio": "فایل صوتی Ogg $1، $2",
+	"timedmedia-ogg-short-audio": "تواری پایل Ogg $1، $2",
 	"timedmedia-ogg-short-video": "فایل تصویری Ogg $1، $2",
 	"timedmedia-ogg-short-general": "فایل مدیا Ogg $1، $2",
-	"timedmedia-ogg-long-audio": "اوجی جی  $1 فایل صوتی, طول $2, $3",
+	"timedmedia-ogg-long-audio": "ogg  $1 تواری پایل, پھنات $2, $3",
 	"timedmedia-ogg-long-video": "اوجی جی $1 فایل ویدیو, طول $2, $4×$5 پیکسل, $3",
 	"timedmedia-ogg-long-multiplexed": "اوجی جی چند دابی فایل صوت/تصویر, $1, طول $2, $4×$5 پیکسل, $3 کل",
 	"timedmedia-ogg-long-general": "اوجی جی فایل مدیا, طول $2, $3",
