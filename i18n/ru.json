@@ -13,6 +13,7 @@
 			"Kareyac",
 			"Kv75",
 			"Mailman",
+			"MaxBioHazard",
 			"MaxSem",
 			"NBS",
 			"Okras",
@@ -162,6 +163,6 @@
 	"videojs-subtitles-create": "Создать субтитры",
 	"videojs-captions-create": "Создать субтитры",
 	"transcodestatistics": "Статистика перекодирования",
-	"timedmedia-timedtext-title-edit-subtitles": "Субтитры на {{GRAMMAR:prepositional|$1}} для $2",
+	"timedmedia-timedtext-title-edit-subtitles": "Субтитры на {{#ifeq: $1 | русский | русском | {{GRAMMAR:prepositional|$1}} }} для $2",
 	"timedmedia-timedtext-title-create-subtitles": "Пока что нет субтитров на {{GRAMMAR:prepositional|$1}} для $2"
 }
