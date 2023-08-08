@@ -8,6 +8,7 @@
 	"timedmedia-more": "Көбүрөөк...",
 	"timedmedia-dismiss": "Жабуу",
 	"timedmedia-direct-link": "Жүктөп алуу",
+	"timedmedia-days": "{{PLURAL:$1|1 күн|$1 күн}}",
 	"timedmedia-reset-button-dismiss": "Баш тартуу",
 	"timedmedia-source-file": "$1 булактан",
 	"timedmedia-source-audio-file-desc": "Түп нуска $1 файл ($2)",
