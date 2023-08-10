@@ -24,7 +24,8 @@
 			"Tanzun",
 			"Vlad5250",
 			"Wolterhon",
-			"Александр Сигачёв"
+			"Александр Сигачёв",
+			"MaxBioHazard"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -163,6 +164,6 @@
 	"videojs-subtitles-create": "Создать субтитры",
 	"videojs-captions-create": "Создать субтитры",
 	"transcodestatistics": "Статистика перекодирования",
-	"timedmedia-timedtext-title-edit-subtitles": "Субтитры на {{GRAMMAR:prepositional|$1}} для $2",
-	"timedmedia-timedtext-title-create-subtitles": "Пока что нет субтитров на {{GRAMMAR:prepositional|$1}} для $2"
+	"timedmedia-timedtext-title-edit-subtitles": "Субтитры для «$2» ($1)",
+	"timedmedia-timedtext-title-create-subtitles": "Для «$2» нет субтитров на языке «$1»"
 }
