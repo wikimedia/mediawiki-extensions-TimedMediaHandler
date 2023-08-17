@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Athram Rajkumar"
+		]
+	},
+	"timedmedia-source-file": "$1 మూలం",
+	"timedmedia-source-audio-file-desc": "అసల్ $1 ఫైల్ ($2)"
+}
