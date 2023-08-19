@@ -15,8 +15,8 @@ use Job;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+use MediaWiki\Title\Title;
 use TempFSFile;
-use Title;
 use Wikimedia\AtEase\AtEase;
 
 /**

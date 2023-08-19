@@ -20,10 +20,10 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\Title;
 use Message;
 use OutputPage;
 use TextContent;
-use Title;
 
 class TimedTextPage extends Article {
 

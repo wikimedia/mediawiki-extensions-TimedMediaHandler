@@ -26,8 +26,8 @@ use MediaWiki\TimedMediaHandler\Handlers\Mp3Handler\Mp3Handler;
 use MediaWiki\TimedMediaHandler\Handlers\Mp4Handler\Mp4Handler;
 use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
+use MediaWiki\Title\Title;
 use TempFSFile;
-use Title;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
