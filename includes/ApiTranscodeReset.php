@@ -7,8 +7,8 @@ use ApiMain;
 use File;
 use ManualLogEntry;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\Title\Title;
 use RepoGroup;
-use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**

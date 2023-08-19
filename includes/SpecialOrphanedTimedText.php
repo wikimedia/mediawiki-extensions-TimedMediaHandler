@@ -13,10 +13,10 @@ use Html;
 use HtmlArmor;
 use Linker;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use PageQueryPage;
 use Skin;
 use stdClass;
-use Title;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 

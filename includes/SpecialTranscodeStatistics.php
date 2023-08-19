@@ -12,9 +12,9 @@ namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\Title\Title;
 use OutputPage;
 use SpecialPage;
-use Title;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 

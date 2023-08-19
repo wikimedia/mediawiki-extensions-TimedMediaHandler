@@ -17,8 +17,8 @@ use Html;
 use MediaWiki;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use OutputPage;
-use Title;
 use User;
 use WebRequest;
 

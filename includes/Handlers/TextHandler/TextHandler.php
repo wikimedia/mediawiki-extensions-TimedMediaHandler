@@ -22,8 +22,8 @@ use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
+use MediaWiki\Title\Title;
 use RuntimeException;
-use Title;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class TextHandler {
