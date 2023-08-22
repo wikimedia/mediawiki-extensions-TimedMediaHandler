@@ -56,14 +56,12 @@ class WebMHandler extends ID3Handler {
 		$size = [ false, false ];
 		// display_x/display_y is only set if DisplayUnit
 		// is pixels, otherwise display_aspect_ratio is set
-		if ( isset( $metadata['video']['display_x'] ) && isset( $metadata['video']['display_y'] )
-		) {
+		if ( isset( $metadata['video']['display_x'] ) && isset( $metadata['video']['display_y'] ) ) {
 			$size = [
 				$metadata['video']['display_x'],
 				$metadata['video']['display_y']
 			];
-		} elseif ( isset( $metadata['video']['resolution_x'] ) && isset( $metadata['video']['resolution_y'] )
-		) {
+		} elseif ( isset( $metadata['video']['resolution_x'] ) && isset( $metadata['video']['resolution_y'] ) ) {
 			$size = [
 				$metadata['video']['resolution_x'],
 				$metadata['video']['resolution_y']

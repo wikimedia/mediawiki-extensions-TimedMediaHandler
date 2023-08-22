@@ -69,8 +69,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 				. "</h2>"
 			);
 			foreach ( $allTranscodes as $key ) {
-				if ( isset( $states[$state][$key] ) && $states[$state][$key]
-				) {
+				if ( isset( $states[$state][$key] ) && $states[$state][$key] ) {
 					$out->addHTML(
 						htmlspecialchars( $this->getLanguage()->formatNum( $states[ $state ][ $key ] ) )
 						. ' '
