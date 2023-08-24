@@ -8,13 +8,14 @@
 		"template": "node_modules/jsdoc-wmf-theme"
 	},
 	"plugins": [
-		"plugins/markdown"
+		"plugins/markdown",
+		"jsdoc-plugins/summarize"
 	],
 	"source": {
 		"include": [
 			"resources"
 		],
-		"exclude": [ "resources/videojs.js", "resources/videojs-ogvjs" ]
+		"exclude": [ "resources/videojs", "resources/videojs-ogvjs" ]
 	},
 	"sourceType": "module",
 	"templates": {
@@ -28,6 +29,7 @@
 				"HTMLElement": "https://developer.mozilla.org/docs/Web/API/HTMLElement",
 				"HTMLMediaElement": "https://developer.mozilla.org/docs/Web/API/HTMLMediaElement",
 				"HTMLSourceElement": "https://developer.mozilla.org/docs/Web/API/HTMLSourceElement",
+				"HTMLTextAreaElement": "https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement",
 				"Window": "https://developer.mozilla.org/docs/Web/API/Window",
 				"MouseEvent": "https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent",
 				"KeyBoardEvent": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent",

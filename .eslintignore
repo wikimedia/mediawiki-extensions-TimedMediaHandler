@@ -1,4 +1,5 @@
 docs
+jsdoc-plugins/*
 resources/videojs/*
 resources/videojs-ogvjs/*
 resources/ogv.js/
