@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chuvash2014"
+			"Chuvash2014",
+			"Astahar"
 		]
 	},
 	"timedmedia-more": "Нумайрах…",
+	"timedmedia-source-file": "Ҫӑлкуҫ: $1",
+	"timedmedia-source-audio-file-desc": "Оригиналлӑ $1 файл ($2)",
 	"timedmedia-subtitle-new-go": "Ту"
 }
