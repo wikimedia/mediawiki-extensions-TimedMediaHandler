@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martindimaggio"
+		]
+	},
+	"timedmedia-source-file": "krua $1",
+	"timedmedia-source-audio-file-desc": "File $1 originali ($2)"
+}
