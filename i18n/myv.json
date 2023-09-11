@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Botuzhaleny-sodamo",
-			"Rueter"
+			"Rueter",
+			"Сантяй"
 		]
 	},
 	"timedmedia-more": "Седе ламо...",
@@ -11,5 +12,5 @@
 	"timedmedia-play-media": "Седямо медия",
 	"timedmedia-desc-link": "Те файладонть",
 	"timedmedia-source-file": "$1 лисьмапря",
-	"timedmedia-source-audio-file-desc": "$1 файланть оригиналозо ($2)"
+	"timedmedia-source-audio-file-desc": "Оригиналонь $1 файла ($2)"
 }
