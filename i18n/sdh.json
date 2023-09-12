@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kurdbuddha"
+			"Kurdbuddha",
+			"TerranBoy"
 		]
 	},
+	"timedmedia-source-file": "سەرچاوە $1",
 	"timedmedia-file": "پەڕگە"
 }
