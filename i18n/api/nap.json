@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"C.R.",
 			"Ruthven"
 		]
 	},
-	"apihelp-query+transcodestatus-example-1": "Piglia 'o stato transcode pe'  [[:File:Clip.webm]]",
+	"apihelp-query+transcodestatus-example-1": "Piglia 'o stato transcode pe' [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-example-1": "Arrepiglia mò 'e nfurmaziune ncopp' 'o [[:File:Folgers.ogv]]",
 	"apihelp-transcodereset-param-title": "'O titolo d' 'o file media.",
 	"apihelp-transcodereset-param-transcodekey": "'A chiave 'e transcodifeca ca vulite re-appiccià. Ascìatavella 'e [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",

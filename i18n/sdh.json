@@ -6,5 +6,6 @@
 		]
 	},
 	"timedmedia-source-file": "سەرچاوە $1",
+	"timedmedia-source-audio-file-desc": "پەڕگەێ $1 بنەڕەتی ($2)",
 	"timedmedia-file": "پەڕگە"
 }
