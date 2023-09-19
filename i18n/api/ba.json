@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"З. ӘЙЛЕ",
 			"Янмурза Баки"
 		]
 	},
-	"apihelp-transcodereset-param-title": "Медиафайлдың исеме."
+	"apihelp-transcodereset-param-title": "Медиафайлдың атамаһы."
 }
