@@ -232,7 +232,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	private static function htmlTagSet( $tagName, $tagSet ) {
-		if ( empty( $tagSet ) ) {
+		if ( !$tagSet ) {
 			return '';
 		}
 		$s = '';

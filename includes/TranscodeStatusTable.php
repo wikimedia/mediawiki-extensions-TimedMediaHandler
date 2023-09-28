@@ -75,7 +75,7 @@ class TranscodeStatusTable {
 	public static function getTranscodesTable( $file, User $user ) {
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
-		if ( empty( $transcodeRows ) ) {
+		if ( !$transcodeRows ) {
 			return '<p>' . wfMessage( 'timedmedia-no-derivatives' )->escaped() . '</p>';
 		}
 
