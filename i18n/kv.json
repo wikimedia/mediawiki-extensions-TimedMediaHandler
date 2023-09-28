@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Enye Lav"
+			"Enye Lav",
+			"СерМар"
 		]
 	},
-	"timedmedia-source-file": "$1 ӧшмӧс"
+	"timedmedia-source-file": "$1 ӧшмӧс",
+	"timedmedia-source-audio-file-desc": "Подув $1 файл ($2)"
 }
