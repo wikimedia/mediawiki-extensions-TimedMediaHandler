@@ -911,40 +911,18 @@ class WebVideoTranscode {
 	 * @return array
 	 */
 	public static function getPrimarySourceAttributes( $file, $options = [] ) {
-		global $wgLang;
 		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
 		/** @var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
 		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
 		$bitrate = $handler->getBitrate( $file );
-		$metadataType = $handler->getMetadataType( $file );
 
-		// Give grep a chance to find the usages: timedmedia-ogg, timedmedia-webm,
-		// timedmedia-mp4, timedmedia-flac, timedmedia-wav
-		if ( $handler->isAudio( $file ) ) {
-			$title = wfMessage( 'timedmedia-source-audio-file-desc',
-				wfMessage( 'timedmedia-' . $metadataType )->text() )
-				->params( $wgLang->formatBitrate( $bitrate ) )->text();
-		} else {
-			$title = wfMessage( 'timedmedia-source-file-desc',
-				wfMessage( 'timedmedia-' . $metadataType )->text() )
-				->numParams( $file->getWidth(), $file->getHeight() )
-				->params( $wgLang->formatBitrate( $bitrate ) )->text();
-		}
-
-		// Give grep a chance to find the usages: timedmedia-ogg, timedmedia-webm,
-		// timedmedia-mp4, timedmedia-flac, timedmedia-wav
 		$source = [
 			'src' => $src,
 			'type' => $handler->getWebType( $file ),
-			'title' => $title,
-			"shorttitle" => wfMessage(
-				'timedmedia-source-file',
-				wfMessage( 'timedmedia-' . $metadataType )->text()
-			)->text(),
-			"width" => (int)$file->getWidth(),
-			"height" => (int)$file->getHeight(),
+			'width' => (int)$file->getWidth(),
+			'height' => (int)$file->getHeight(),
 		];
 
 		if ( $bitrate ) {
@@ -992,10 +970,8 @@ class WebVideoTranscode {
 		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $src ) : $src;
 		$fields = [
 			'src' => $src,
-			'title' => wfMessage( 'timedmedia-derivative-desc-' . $transcodeKey )->text(),
 			'type' => static::$derivativeSettings[ $transcodeKey ][ 'type' ],
-			"shorttitle" => wfMessage( 'timedmedia-derivative-' . $transcodeKey )->text(),
-			"transcodekey" => $transcodeKey,
+			'transcodekey' => $transcodeKey,
 
 			// Add data attributes per emerging DASH / webTV adaptive streaming attributes
 			// eventually we will define a manifest xml entry point.

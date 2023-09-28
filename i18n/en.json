@@ -70,6 +70,7 @@
 	"timedmedia-source-file": "$1 source",
 	"timedmedia-source-file-desc": "Original $1 file, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Original $1 file ($2)",
+	"timedmedia-source-original": "Source",
 	"timedmedia-derivative-160p.ogv": "Ogg 160P",
 	"timedmedia-derivative-desc-160p.ogv": "Low bandwidth Ogg video (160P)",
 	"timedmedia-derivative-240p.ogv": "Ogg 240P",
