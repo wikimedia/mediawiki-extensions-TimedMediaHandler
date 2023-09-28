@@ -40,9 +40,9 @@ const resolutionSwitchterDefaults = {
  * Bucketized sources by label, res and type
  *
  * @typedef BucketObject object
- * @property {{string, SourceObject[]}} label Dictionary of labels to sources with that label
- * @property {{string, SourceObject[]}} res Dictionary of res to sources with that res
- * @property {{string, SourceObject[]}} type Dictionary of type to sources with that type
+ * @property {{string, SourceObject}} label Dictionary of labels to sources with that label
+ * @property {{string, SourceObject}} res Dictionary of res to sources with that res
+ * @property {{string, SourceObject}} type Dictionary of type to sources with that type
  */
 
 /**
@@ -215,8 +215,8 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				// MEDIA_ERR_DECODE OR MEDIA_ERR_SRC_NOT_SUPPORTED
 				errorEvent.stopImmediatePropagation();
 				this.player.errorDisplay.close();
-				const newSources = this.currentSources.filter( function ( asource ) {
-					return asource.src !== this.currentSrc();
+				const newSources = this.currentSources.filter( ( asource ) => {
+					return asource.src !== this.player.currentSrc();
 				} );
 				this.updateSrc( newSources );
 				this.player.play();

@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\TimedMediaHandler\Handlers\Mp4Handler;
+namespace MediaWiki\TimedMediaHandler\Handlers\MP4Handler;
 
 use File;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
@@ -8,7 +8,7 @@ use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 /**
  * MP4 handler
  */
-class Mp4Handler extends ID3Handler {
+class MP4Handler extends ID3Handler {
 
 	/**
 	 * @param string $path
@@ -118,7 +118,7 @@ class Mp4Handler extends ID3Handler {
 		}
 		return wfMessage( 'timedmedia-mp4-short-video', implode( '/', $streamTypes )
 		)->timeperiodParams(
-			$this->getLength( $file )
+			intval( $this->getLength( $file ) )
 		)->text();
 	}
 
@@ -135,7 +135,7 @@ class Mp4Handler extends ID3Handler {
 			'timedmedia-mp4-long-video',
 			implode( '/', $streamTypes )
 			)->timeperiodParams(
-				$this->getLength( $file )
+				intval( $this->getLength( $file ) )
 			)->bitrateParams(
 				$this->getBitRate( $file )
 			)->numParams(

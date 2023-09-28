@@ -95,14 +95,16 @@
 		"File_Ogg_Theora": "includes/Handlers/OggHandler/File_Ogg/File/Ogg/Theora.php",
 		"File_Ogg_Vorbis": "includes/Handlers/OggHandler/File_Ogg/File/Ogg/Vorbis.php",
 		"WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php",
-		"MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php"
+		"MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob": "includes/WebVideoTranscode/WebVideoTranscodeJob.php",
+		"TimedMediaMaintenance": "maintenance/TimedMediaMaintenance.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\TimedMediaHandler\\": "includes/"
 	},
 	"TestAutoloadClasses": {
 		"ApiVideoUploadTestCase": "tests/phpunit/ApiVideoUploadTestCase.php",
-		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php"
+		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
+		"TimedMediaHandlerTestCase": "tests/phpunit/TimedMediaHandlerTestCase.php"
 	},
 	"Hooks": {
 		"ArticleContentOnDiff": "main",
@@ -203,6 +205,11 @@
 			"public": true,
 			"value": 3145728
 		},
+		"TranscodeSoftSizeLimit": {
+			"description": "Maximum estimated file size for transcodes without admin approval, in KiB. Larger files must be manually re-enqueued by an admin via web or CLI interfaces. 2GiB.",
+			"public": true,
+			"value": 2097152
+		},
 		"FFmpegThreads": {
 			"description": "Number of threads to use in ffmpeg for transcoding",
 			"public": true,
@@ -233,7 +240,7 @@
 			"value": []
 		},
 		"EnabledTranscodeSet": {
-			"description": "Default enabled video transcodes\n\n- If set to empty array, no derivatives will be created\n- These transcodes are *in addition to* the source file.\n- Only derivatives with smaller width than the source asset size will be created\n- Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet\n- Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed\n- Derivative should be listed min to max\n\nAllowed values:\n* Values for WebM VP8/Vorbis, our primary free/open video format supported by Chrome/Firefox/Opera natively, and plays back in Safari/IE/Edge via ogv.js:\n** 160p.webm – Very low-bitrate web streamable WebM video\n** 240p.webm – Low-bitrate web streamable WebM video\n** 360p.webm – Medium-bitrate web streamable WebM video\n** 480p.webm – Moderate-bitrate web streamable WebM video\n** 720p.webm – A high quality WebM stream\n** 1080p.webm – A full-HD high quality WebM stream\n** 1440p.webm – A 2K full high quality WebM stream\n** 2160p.webm – A 4K full high quality WebM stream\n* Values for WebM VP9, our future free/open video format:\n** 160p.vp9.webm – Very low\n** 240p.vp9.webm – Low\n** 360p.vp9.webm – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.vp9.webm – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.vp9.webm – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.vp9.webm – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.vp9.webm – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.vp9.webm – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Values for MP4 H.264/AAC, the primary format for the Apple/Microsoft world. Check patent licensing issues in your country before use! Similar to WebM in quality/bitrate:\n** 160p.mp4 – Very low\n** 240p.mp4 – Low\n** 320p.mp4 – Pretty low\n** 360p.mp4 – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.mp4 – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.mp4 – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.mp4 – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.mp4 – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.mp4 – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Note: Ogg video profiles have been removed as of January 2018. Use WebM output for royalty-free codec output.",
+			"description": "Default enabled video transcodes\n\n- If set to empty array, no derivatives will be created\n- These transcodes are *in addition to* the source file.\n- Only derivatives with smaller width than the source asset size will be created\n- Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet\n- Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed\n- Derivative should be listed min to max\n\nAllowed values:\n* Values for WebM VP8/Vorbis, our primary free/open video format supported by Chrome/Firefox/Opera natively, and plays back in Safari/IE/Edge via ogv.js:\n** 160p.webm – Very low-bitrate web streamable WebM video\n** 240p.webm – Low-bitrate web streamable WebM video\n** 360p.webm – Medium-bitrate web streamable WebM video\n** 480p.webm – Moderate-bitrate web streamable WebM video\n** 720p.webm – A high quality WebM stream\n** 1080p.webm – A full-HD high quality WebM stream\n** 1440p.webm – A 2K full high quality WebM stream\n** 2160p.webm – A 4K full high quality WebM stream\n* Values for WebM VP9, our future free/open video format:\n** 160p.vp9.webm – Very low\n** 240p.vp9.webm – Low\n** 360p.vp9.webm – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.vp9.webm – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.vp9.webm – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.vp9.webm – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.vp9.webm – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.vp9.webm – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Values for MP4 H.264/AAC, the primary format for the Apple/Microsoft world. Check patent licensing issues in your country before use! Similar to WebM in quality/bitrate:\n** 160p.mp4 – Very low\n** 240p.mp4 – Low\n** 320p.mp4 – Pretty low\n** 360p.mp4 – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.mp4 – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.mp4 – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.mp4 – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.mp4 – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.mp4 – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Note: Ogg video profiles have been removed as of January 2018. Use WebM or HLS output for royalty-free codec output.",
 			"public": true,
 			"value": {
 				"160p.webm": false,
@@ -244,8 +251,8 @@
 				"1080p.webm": false,
 				"1440p.webm": false,
 				"2160p.webm": false,
-				"120p.vp9.webm": true,
-				"180p.vp9.webm": true,
+				"120p.vp9.webm": false,
+				"180p.vp9.webm": false,
 				"240p.vp9.webm": true,
 				"360p.vp9.webm": true,
 				"480p.vp9.webm": true,
@@ -261,7 +268,17 @@
 				"720p.mp4": false,
 				"1080p.mp4": false,
 				"1440p.mp4": false,
-				"2160p.mp4": false
+				"2160p.mp4": false,
+				"stereo.audio.mp3": false,
+				"stereo.audio.opus.mp4": false,
+				"144p.video.mjpeg.mov": false,
+				"240p.video.vp9.mp4": false,
+				"360p.video.vp9.mp4": false,
+				"480p.video.vp9.mp4": false,
+				"720p.video.vp9.mp4": false,
+				"1080p.video.vp9.mp4": false,
+				"1440p.video.vp9.mp4": false,
+				"2160p.video.vp9.mp4": false
 			}
 		},
 		"EnabledAudioTranscodeSet": {
@@ -485,6 +502,7 @@
 			],
 			"messages": [
 				"timedmedia-resolution-120",
+				"timedmedia-resolution-144",
 				"timedmedia-resolution-160",
 				"timedmedia-resolution-180",
 				"timedmedia-resolution-240",
@@ -509,6 +527,7 @@
 			]
 		},
 		"ext.tmh.transcodetable": {
+			"es6": true,
 			"scripts": "resources/transcode-table/transcode-table.js",
 			"styles": "resources/transcode-table/transcode-table.css",
 			"dependencies": [
@@ -522,7 +541,9 @@
 				"timedmedia-reset-error",
 				"timedmedia-reset",
 				"timedmedia-reset-areyousure",
-				"timedmedia-reset-explanation"
+				"timedmedia-reset-explanation",
+				"timedmedia-error-details",
+				"timedmedia-error-dismiss"
 			],
 			"targets": [
 				"mobile",
@@ -565,12 +586,13 @@
 	"MediaHandlers": {
 		"application/ogg": "MediaWiki\\TimedMediaHandler\\Handlers\\OggHandler\\OggHandler",
 		"audio/flac": "MediaWiki\\TimedMediaHandler\\Handlers\\FLACHandler\\FLACHandler",
-		"audio/midi": "MediaWiki\\TimedMediaHandler\\Handlers\\MidiHandler\\MidiHandler",
-		"audio/mpeg": "MediaWiki\\TimedMediaHandler\\Handlers\\Mp3Handler\\Mp3Handler",
+		"audio/midi": "MediaWiki\\TimedMediaHandler\\Handlers\\MIDIHandler\\MIDIHandler",
+		"audio/mp4": "MediaWiki\\TimedMediaHandler\\Handlers\\MP4Handler\\MP4Handler",
+		"audio/mpeg": "MediaWiki\\TimedMediaHandler\\Handlers\\MP3Handler\\MP3Handler",
 		"audio/wav": "MediaWiki\\TimedMediaHandler\\Handlers\\WAVHandler\\WAVHandler",
 		"audio/webm": "MediaWiki\\TimedMediaHandler\\Handlers\\WebMHandler\\WebMHandler",
 		"audio/x-flac": "MediaWiki\\TimedMediaHandler\\Handlers\\FLACHandler\\FLACHandler",
-		"video/mp4": "MediaWiki\\TimedMediaHandler\\Handlers\\Mp4Handler\\Mp4Handler",
+		"video/mp4": "MediaWiki\\TimedMediaHandler\\Handlers\\MP4Handler\\MP4Handler",
 		"video/mpeg": "MediaWiki\\TimedMediaHandler\\Handlers\\MPEGHandler\\MPEGHandler",
 		"video/webm": "MediaWiki\\TimedMediaHandler\\Handlers\\WebMHandler\\WebMHandler"
 	},

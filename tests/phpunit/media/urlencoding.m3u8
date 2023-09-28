@@ -1,0 +1,4 @@
+#EXTM3U
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="stereo.audio.opus.mp4",NAME="Stereo (Opus)",AUTOSELECT=YES,DEFAULT=YES,CHANNELS="2",URI="stream(%22AT%26T_bar_%3F%22).stereo.audio.opus.mp4.m3u8"
+#EXT-X-STREAM-INF:BANDWIDTH=613000,RESOLUTION=640x360,CODECS="vp09.00.51.08,Opus",AUDIO="stereo.audio.opus.mp4"
+stream(%22AT%26T_bar_%3F%22).360p.video.vp9.mp4.m3u8

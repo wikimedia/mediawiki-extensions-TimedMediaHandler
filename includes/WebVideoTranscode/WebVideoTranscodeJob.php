@@ -9,11 +9,13 @@
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use CdnCacheUpdate;
+use Exception;
 use File;
 use FSFile;
 use Job;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use TempFSFile;
@@ -34,6 +36,9 @@ class WebVideoTranscodeJob extends Job {
 
 	/** @var TempFSFile|null */
 	public $targetEncodeFile;
+
+	/** @var TempFSFile|null */
+	public $targetPlaylistFile;
 
 	/** @var string|null|false */
 	public $sourceFilePath;
@@ -83,12 +88,34 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function getTargetEncodePath() {
 		if ( !$this->targetEncodeFile ) {
-			$file = $this->getFile();
-			$transcodeKey = $this->params[ 'transcodeKey' ];
-			$this->targetEncodeFile = WebVideoTranscode::getTargetEncodeFile( $file, $transcodeKey );
-			$this->targetEncodeFile->bind( $this );
+			$this->targetEncodeFile = $this->fileTarget();
 		}
 		return $this->targetEncodeFile->getPath();
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getTargetPlaylistPath() {
+		if ( !$this->targetPlaylistFile ) {
+			$this->targetPlaylistFile = $this->fileTarget( '.m3u8' );
+		}
+		return $this->targetPlaylistFile->getPath();
+	}
+
+	/**
+	 * @param string $suffix
+	 * @return TempFSFile
+	 */
+	private function fileTarget( $suffix = '' ) {
+		$base = $this->getFile();
+		$transcodeKey = $this->params[ 'transcodeKey' ];
+		$file = WebVideoTranscode::getTargetEncodeFile( $base, $transcodeKey, $suffix );
+		if ( !$file ) {
+			throw new Exception( 'Internal state error' );
+		}
+		$file->bind( $this );
+		return $file;
 	}
 
 	/**
@@ -98,6 +125,10 @@ class WebVideoTranscodeJob extends Job {
 		if ( $this->targetEncodeFile ) {
 			$this->targetEncodeFile->purge();
 			$this->targetEncodeFile = null;
+		}
+		if ( $this->targetPlaylistFile ) {
+			$this->targetPlaylistFile->purge();
+			$this->targetPlaylistFile = null;
 		}
 	}
 
@@ -176,10 +207,14 @@ class WebVideoTranscodeJob extends Job {
 		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
 
 		if ( isset( $options[ 'novideo' ] ) ) {
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
+			if ( !isset( $options['audioCodec'] ) ) {
+				throw new Exception( 'Invalid audio track options' );
+			}
 			$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
 		} else {
-			// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
+			if ( !isset( $options['videoCodec'] ) ) {
+				throw new Exception( 'Invalid video track options' );
+			}
 			$this->output( "Encoding to codec: " . $options['videoCodec'] );
 		}
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
@@ -224,17 +259,16 @@ class WebVideoTranscodeJob extends Job {
 		$lbFactory->closeAll();
 
 		// Check the codec see which encode method to call;
+		$streaming = $options['streaming'] ?? false;
 		$videoCodec = $options['videoCodec'] ?? '';
+		$codecs = [ 'vp8', 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
 		if ( isset( $options[ 'novideo' ] ) ) {
 			if ( $file->getMimeType() === 'audio/midi' ) {
 				$status = $this->midiToAudioEncode( $options );
 			} else {
 				$status = $this->ffmpegEncode( $options );
 			}
-		} elseif (
-			$videoCodec === 'vp8' || $videoCodec === 'vp9' ||
-			$videoCodec === 'h264'
-		) {
+		} elseif ( in_array( $videoCodec, $codecs ) ) {
 			// Check for twopass:
 			if ( isset( $options['twopass'] ) ) {
 				// ffmpeg requires manual two pass
@@ -286,13 +320,36 @@ class WebVideoTranscodeJob extends Job {
 			// that the job has already been started.
 		}
 
-		// If status is oky and target does not exist, reset status
+		// If status is ok and target does not exist, reset status
 		if ( $status === true && !is_file( $this->getTargetEncodePath() ) ) {
 			$status = 'Target does not exist: ' . $this->getTargetEncodePath();
 		}
+
 		// If status is ok and target is larger than 0 bytes
 		if ( $status === true && filesize( $this->getTargetEncodePath() ) > 0 ) {
+
 			$file = $this->getFile();
+			$mediaFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $transcodeKey );
+			$mediaPath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey );
+
+			if ( $streaming === 'hls' ) {
+				$playlistKey = $transcodeKey . '.m3u8';
+				$playlistFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $playlistKey );
+				$playlistPath = WebVideoTranscode::getDerivativeFilePath( $file, $playlistKey );
+				$playlistTemp = $this->getTargetPlaylistPath();
+
+				$segmenter = Segmenter::segment( $this->getTargetEncodePath() );
+				// @fixme put the 10-second segment target in a constant somewhere
+				$segmenter->consolidate( 10 );
+				$segmenter->rewrite();
+				$playlist = $segmenter->playlist( 10, $mediaFilename );
+
+				file_put_contents( $playlistTemp, $playlist );
+			} else {
+				$playlistTemp = null;
+				$playlistPath = null;
+			}
+
 			$storeOptions = null;
 			if (
 				strpos( $options['type'], '/ogg' ) !== false &&
@@ -314,9 +371,20 @@ class WebVideoTranscodeJob extends Job {
 				// temp file
 				$this->getTargetEncodePath(),
 				// storage
-				WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey ),
+				$mediaPath,
 				$storeOptions
 			);
+			if ( $result->isOK() && $streaming === 'hls' && $playlistTemp && $playlistPath ) {
+				$result = $file->getRepo()->quickImport(
+					// temp file
+					$playlistTemp,
+					// storage
+					$playlistPath
+				);
+				if ( $result->isOK() ) {
+					WebVideoTranscode::updateStreamingManifests( $file );
+				}
+			}
 
 			if ( !$result->isOK() ) {
 				// no need to invalidate all pages with video.
@@ -366,7 +434,11 @@ class WebVideoTranscodeJob extends Job {
 		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
 
 		$url = WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
-		$update = new CdnCacheUpdate( [ $url ] );
+		$urls = [ $url ];
+		if ( $streaming === 'hls' ) {
+			$urls[] = "$url.m3u8";
+		}
+		$update = new CdnCacheUpdate( $urls );
 		$update->doUpdate();
 
 		if ( $status !== true ) {
@@ -405,6 +477,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function ffmpegEncode( $options, $pass = 0 ) {
 		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
+		global $wgTranscodeBackgroundSizeLimit, $wgTranscodeSoftSizeLimit;
 
 		if ( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
@@ -418,18 +491,101 @@ class WebVideoTranscodeJob extends Job {
 		if ( isset( $options['vpre'] ) ) {
 			$cmd .= ' -vpre ' . wfEscapeShellArg( $options['vpre'] );
 		}
-
+		$interval = 10;
+		$fps = 0;
 		if ( isset( $options['novideo'] ) ) {
 			$cmd .= " -vn ";
-		} elseif ( $options['videoCodec'] === 'vp8' || $options['videoCodec'] === 'vp9' ) {
-			$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
-		} elseif ( $options['videoCodec'] === 'h264' ) {
-			$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
+		} else {
+			$fps = $this->effectiveFrameRate( $options );
+			if ( isset( $options['framerate'] ) ) {
+				$cmd .= " -r " . wfEscapeShellArg( $options['framerate'] );
+			} else {
+				// Note -fpsmax is not available on Wikimedia's Debian as of 2023-02-02
+				//
+				//   $cmd .= " -fpsmax " . wfEscapeShellArg( $options['fpsmax'] );
+				//   $cmd .= " -fpsmax " . self::MAX_FPS;
+				//
+				// Instead, manually check the detected framerate.
+				// Note some files report incorrectly via GetID3, and may
+				// end up actually increasing in frame rate because of this!
+				$orig = $this->frameRate();
+				if ( $this->isInterlaced() ) {
+					$orig *= 2;
+				}
+				if ( $orig > $fps ) {
+					$cmd .= " -r " . wfEscapeShellArg( strval( $fps ) );
+				}
+			}
+
+			switch ( $options['videoCodec'] ) {
+			case 'vp8':
+			case 'vp9':
+				$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
+				break;
+			case 'h264':
+				$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
+				break;
+			case 'mpeg4':
+				$cmd .= $this->ffmpegAddMPEG4VideoOptions( $options, $pass );
+				break;
+			default:
+				$cmd .= $this->ffmpegAddGenericVideoOptions( $options );
+			}
+
+			// Check for keyframeInterval
+			$defaultKeyframeInterval = round( $fps * $interval );
+			$keyframeInterval = $options['keyframeInterval'] ?? $defaultKeyframeInterval;
+			$cmd .= ' -g ' . wfEscapeShellArg( $keyframeInterval );
+			if ( isset( $options['keyframeIntervalMin'] ) ) {
+				$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeIntervalMin'] );
+			}
+
+			if ( isset( $options['videoBitrate'] ) ) {
+				$base = $this->expandRate( $options['videoBitrate'] );
+				$bitrate = $this->scaleRate( $options, $base );
+				$cmd .= " -b:v $bitrate";
+
+				// Estimate the output file size in KiB and bail out early
+				// if it's potentially very large. Could be a denial of
+				// service, or just a large file that probably is poorly
+				// compressed.
+				$duration = (float)$this->file->getLength();
+				$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
+				if ( $wgTranscodeBackgroundSizeLimit > 0 && $estimatedSize > $wgTranscodeBackgroundSizeLimit ) {
+					// This hard limit cannot be overridden by admins, except by raising the limit in config.
+					// @todo return an error code that can be localized later
+					return "estimated file size $estimatedSize KiB over hard limit $wgTranscodeBackgroundSizeLimit KiB";
+				}
+
+				if ( $wgTranscodeSoftSizeLimit > 0 && $estimatedSize > $wgTranscodeSoftSizeLimit ) {
+					// This soft limit can be overridden when a transcode is reset by hand via the web UI
+					// or API, or requeueTranscodes.php with --manual-override option.
+					$manualOverride = $this->params['manualOverride'] ?? false;
+					if ( !$manualOverride ) {
+						// @todo return an error code that can be localized later
+						return "estimated file size $estimatedSize KiB over soft limit $wgTranscodeSoftSizeLimit KiB";
+					}
+				}
+
+				if ( isset( $options['minrate'] ) ) {
+					$minrate = $this->scaleRate( $options, $options['minrate'] );
+					$cmd .= " -minrate $minrate";
+				}
+				if ( isset( $options['maxrate'] ) ) {
+					$maxrate = $this->scaleRate( $options, $options['maxrate'] );
+					$cmd .= " -maxrate $maxrate";
+				}
+				if ( isset( $options['bufsize'] ) ) {
+					$bufsize = $this->scaleRate( $options, $options['bufsize'] );
+					$cmd .= " -bufsize $bufsize";
+				}
+			}
+
+			// If necessary, add deinterlacing options
+			$cmd .= $this->ffmpegAddDeinterlaceOptions( $options );
+			// Add size options:
+			$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
 		}
-		// If necessary, add deinterlacing options
-		$cmd .= $this->ffmpegAddDeinterlaceOptions( $options );
-		// Add size options:
-		$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
 
 		if ( !MediaWikiServices::getInstance()->getMainConfig()->get( 'UseFFmpeg2' ) ) {
 			// Work around https://trac.ffmpeg.org/ticket/6375 in ffmpeg 3.4/4.0
@@ -460,11 +616,52 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -pass " . wfEscapeShellArg( (string)$pass );
 			$cmd .= " -passlogfile " . wfEscapeShellArg( $this->getTargetEncodePath() . '.log' );
 		}
+
+		$streaming = $options['streaming'] ?? false;
+		$target = $this->getTargetEncodePath();
+		$playlist = false;
+
+		$transcodeKey = $this->params[ 'transcodeKey' ];
+		$extension = substr( $transcodeKey, strrpos( $transcodeKey, '.' ) + 1 );
+
+		if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
+			$cmd .= " -movflags +faststart";
+		}
+
+		if ( $streaming === 'hls' ) {
+			$playlist = $target . ".m3u8";
+
+			if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
+				// Don't use the HLS muxer, as it'll want to manage
+				// filenames and we have to rewrite everything anyway.
+				// We'll generate an .m3u8 from the file structure after.
+
+				if ( isset( $options['novideo'] ) || isset( $options['intraframe'] ) ) {
+					// Audio-only tracks should be fragmented around the standard interval.
+					// Intraframe-only codecs like Motion-JPEG should also be treated this way.
+					$cmd .= " -movflags +empty_moov+default_base_moof";
+					$cmd .= " -frag_duration ${interval}000000";
+				} else {
+					// Video keyframe interval is set to approximate the desired interval, but
+					// they may occur whenever the encoder thinks they would be desirable such
+					// as a visible scene change.
+					$cmd .= " -movflags +frag_keyframe+empty_moov+default_base_moof";
+				}
+
+				// This is needed for opus on debian bullseye
+				$cmd .= " -strict experimental";
+			} elseif ( $extension === 'mp3' ) {
+				// No additional options needed at present.
+			} else {
+				return "Invalid HLS track media type, expected .mp4, .m4v, .m4a, .mov, .3gp, or .mp3";
+			}
+		}
+
 		// And the output target:
 		if ( $pass === 1 ) {
 			$cmd .= ' /dev/null';
 		} else {
-			$cmd .= " " . wfEscapeShellArg( $this->getTargetEncodePath() );
+			$cmd .= " " . wfEscapeShellArg( $target );
 		}
 
 		$this->output( "Running cmd: \n\n" . $cmd . "\n" );
@@ -477,7 +674,114 @@ class WebVideoTranscodeJob extends Job {
 				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
 				$shellOutput;
 		}
+
 		return true;
+	}
+
+	// Bitrates and keyframe distances are specified for this
+	// common frame rate (30), and scaled accordingly to accomodate
+	// higher frame rates.
+	private const DEFAULT_FPS = 30;
+	private const MAX_FPS = 60;
+	private const MIN_FPS = 24;
+
+	/**
+	 * Scale a bitrate or frame count according to the frame rate
+	 * of the file versus the default frame rate. This is not a
+	 * straight linear multiplication; it's biased to reduce impact
+	 * beyond 30 fps, to 1.5x base at 60 fps.
+	 *
+	 * @param array $options
+	 * @param string|int $rate
+	 * @return int
+	 */
+	private function scaleRate( $options, $rate ) {
+		$fps = $this->effectiveFrameRate( $options );
+		$base = $this->expandRate( $rate );
+
+		$lofps = min( $fps, self::DEFAULT_FPS );
+		$hifps = $fps - $lofps;
+		$scaled = $base * $lofps / self::DEFAULT_FPS +
+			0.5 * $base * $hifps / self::DEFAULT_FPS;
+		return (int)$scaled;
+	}
+
+	/**
+	 * Expand a bitrate that may have a k/m/g suffix
+	 *
+	 * @param string|int $rate
+	 * @return int
+	 */
+	private function expandRate( $rate ) {
+		return WebVideoTranscode::expandRate( $rate );
+	}
+
+	/**
+	 * Grab the frame rate from the file, bounded by
+	 * format-specific or generic limitations.
+	 * Suitable for scaling linear parameters like the
+	 * target bit rate.
+	 *
+	 * @param array $options
+	 * @return float
+	 */
+	private function effectiveFrameRate( $options ) {
+		if ( isset( $options['framerate'] ) ) {
+			// fixed framerate
+			$fps = $this->fractionToFloat( $options['framerate'] );
+		} else {
+			// @todo getid3 gets this wrong on some WebM input files
+			// consider reading from ffmpeg or ffprobe...
+			// We cap it, but this can cause a 29.97fps file to use
+			// the 60fps bitrate. Worst case it's a bloated file.
+			$fps = $this->frameRate();
+		}
+		if ( $this->shouldFrameDouble( $options ) ) {
+			$fps *= 2;
+		}
+
+		if ( $fps < self::MIN_FPS ) {
+			return self::MIN_FPS;
+		}
+		if ( isset( $options['fpsmax'] ) ) {
+			$max = $this->fractionToFloat( $options['fpsmax'] );
+		} else {
+			$max = self::MAX_FPS;
+		}
+		if ( $fps > $max ) {
+			return $max;
+		}
+		return $fps;
+	}
+
+	/**
+	 * @param string $str
+	 * @return float
+	 */
+	private function fractionToFloat( $str ) {
+		$fraction = explode( '/', $str, 2 );
+		if ( count( $fraction ) > 1 ) {
+			return (float)$fraction[0] / (float)$fraction[1];
+		}
+		return (float)$str;
+	}
+
+	/**
+	 * Return the actual frame rate of the file, or the default
+	 * if can't retrieve it.
+	 *
+	 * @return float
+	 */
+	private function frameRate() {
+		$file = $this->getFile();
+		$handler = $file->getHandler();
+		if ( $handler instanceof TimedMediaHandler ) {
+			$fps = $handler->getFrameRate( $file );
+			if ( $fps ) {
+				return $fps;
+			}
+		}
+		return self::DEFAULT_FPS;
 	}
 
 	/**
@@ -510,11 +814,44 @@ class WebVideoTranscodeJob extends Job {
 					break;
 			}
 		}
-		if ( isset( $options['videoBitrate'] ) ) {
-			$cmd .= " -b " . wfEscapeShellArg( $options['videoBitrate'] );
-		}
+
+		$cmd .= ' -pix_fmt yuv420p';
+		$cmd .= ' -rc-lookahead 16';
+
 		// Output mp4
 		$cmd .= " -f mp4";
+		return $cmd;
+	}
+
+	/**
+	 * Adds ffmpeg shell options for h264
+	 *
+	 * @param array $options
+	 * @param int $pass
+	 * @return string
+	 */
+	public function ffmpegAddMPEG4VideoOptions( $options, $pass ) {
+		$cmd = " -vcodec mpeg4";
+
+		// Force to 4:2:0 chroma subsampling.
+		$cmd .= ' -pix_fmt yuv420p';
+
+		// needed for 2-pass to override file type detection
+		$cmd .= " -f mp4";
+
+		return $cmd;
+	}
+
+	/**
+	 * @param array $options
+	 * @return string
+	 */
+	private function ffmpegAddGenericVideoOptions( $options ) {
+		$cmd = ' -vcodec ' . wfEscapeShellArg( $options['videoCodec'] );
+
+		// Force to 4:2:0 chroma subsampling.
+		$cmd .= ' -pix_fmt yuv420p';
+
 		return $cmd;
 	}
 
@@ -528,19 +865,19 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		// Check for aspect ratio ( we don't do anything with this right now)
+		// Check for aspect ratio
 		$aspectRatio = $options['aspect'] ?? $file->getWidth() . ':' . $file->getHeight();
-		if ( isset( $options['maxSize'] ) ) {
-			// Get size transform ( if maxSize is > file, file size is used:
-
-			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
-			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
-		} elseif (
-			( isset( $options['width'] ) && $options['width'] > 0 )
+		if ( ( isset( $options['width'] ) && $options['width'] > 0 )
 			&&
 			( isset( $options['height'] ) && $options['height'] > 0 )
 		) {
 			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
+			$cmd .= ' -aspect ' . wfEscapeShellArg( $aspectRatio );
+		} elseif ( isset( $options['maxSize'] ) ) {
+			// Get size transform ( if maxSize is > file, file size is used:
+
+			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
+			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
 		}
 
 		// Handle crop:
@@ -583,17 +920,6 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= ' -row-mt 1';
 		}
 
-		// check for presets:
-		if ( isset( $options['preset'] ) ) {
-			if ( $options['preset'] === "360p" ) {
-				$cmd .= " -vpre libvpx-360p";
-			} elseif ( $options['preset'] === "720p" ) {
-				$cmd .= " -vpre libvpx-720p";
-			} elseif ( $options['preset'] === "1080p" ) {
-				$cmd .= " -vpre libvpx-1080p";
-			}
-		}
-
 		// Force to 4:2:0 chroma subsampling. Others are supported in Theora
 		// and in VP9 profile 1, but Chrome and Edge don't grok them.
 		$cmd .= ' -pix_fmt yuv420p';
@@ -602,8 +928,14 @@ class WebVideoTranscodeJob extends Job {
 		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
 			// Map 0-10 to 63-0, higher values worse quality
 			$quality = 63 - (int)( (int)$options['videoQuality'] / 10 * 63 );
-			$cmd .= " -qmin " . wfEscapeShellArg( (string)$quality );
-			$cmd .= " -qmax " . wfEscapeShellArg( (string)$quality );
+			$options['qmax'] = (string)$quality;
+			$options['qmin'] = (string)$quality;
+		}
+		if ( isset( $options['qmin'] ) ) {
+			$cmd .= " -qmin " . wfEscapeShellArg( $options['qmin'] );
+		}
+		if ( isset( $options['qmax'] ) ) {
+			$cmd .= " -qmax " . wfEscapeShellArg( $options['qmax'] );
 		}
 		// libvpx-specific constant quality or constrained quality
 		// note the range is different between VP8 and VP9
@@ -611,26 +943,14 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -crf " . wfEscapeShellArg( $options['crf'] );
 		}
 
-		// Check for video bitrate:
-		if ( isset( $options['videoBitrate'] ) ) {
-			$qmin = $options['qmin'] ?? 1;
-			$qmax = $options['qmax'] ?? 51;
-			$cmd .= " -qmin " . wfEscapeShellArg( (string)$qmin );
-			$cmd .= " -qmax " . wfEscapeShellArg( (string)$qmax );
-
-			$cmd .= " -vb " . wfEscapeShellArg( (string)( $options['videoBitrate'] * 1000 ) );
-			if ( isset( $options['minrate'] ) ) {
-				$cmd .= " -minrate " . wfEscapeShellArg( (string)( $options['minrate'] * 1000 ) );
-			}
-			if ( isset( $options['maxrate'] ) ) {
-				$cmd .= " -maxrate " . wfEscapeShellArg( (string)( $options['maxrate'] * 1000 ) );
-			}
-		}
 		// Set the codec:
 		if ( $options['videoCodec'] === 'vp9' ) {
 			$cmd .= " -vcodec libvpx-vp9";
 			if ( isset( $options['tileColumns'] ) ) {
 				$cmd .= ' -tile-columns ' . wfEscapeShellArg( $options['tileColumns'] );
+			}
+			if ( isset( $options['tileRows'] ) ) {
+				$cmd .= ' -tile-rows ' . wfEscapeShellArg( $options['tileRows'] );
 			}
 		} else {
 			$cmd .= " -vcodec libvpx";
@@ -639,20 +959,22 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 		if ( isset( $options['altref'] ) ) {
-			$cmd .= ' -auto-alt-ref 1';
-			$cmd .= ' -lag-in-frames 25';
+			if ( $options['altref'] === '0' ) {
+				$cmd .= ' -auto-alt-ref 0';
+			} else {
+				$cmd .= ' -auto-alt-ref 1';
+			}
+		}
+		if ( isset( $options['lagInFrames'] ) ) {
+			$cmd .= ' -lag-in-frames ' . wfEscapeShellArg( $options['lagInFrames'] );
 		}
 
-		// Check for keyframeInterval
-		if ( isset( $options['keyframeInterval'] ) ) {
-			$cmd .= ' -g ' . wfEscapeShellArg( $options['keyframeInterval'] );
+		if ( isset( $options['quality'] ) ) {
+			$cmd .= ' -quality ' . wfEscapeShellArg( $options['quality'] );
+		} else {
+			$cmd .= ' -quality good';
 		}
-		if ( isset( $options['keyframeIntervalMin'] ) ) {
-			$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeIntervalMin'] );
-		}
-		if ( isset( $options['deinterlace'] ) ) {
-			$cmd .= ' -deinterlace';
-		}
+
 		if ( $pass === 1 ) {
 			// Make first pass faster...
 			$cmd .= ' -speed 4';
@@ -661,9 +983,43 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Output WebM
-		$cmd .= " -f webm";
+		$streaming = $options['streaming'] ?? false;
+		if ( $streaming === 'hls' ) {
+			$cmd .= " -f mp4";
+		} else {
+			$cmd .= " -f webm";
+		}
 
 		return $cmd;
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isInterlaced() {
+		$handler = $this->file->getHandler();
+		return ( $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file ) );
+	}
+
+	/**
+	 * Whether to produce one frame per field when deinterlacing.
+	 * This will double the output frame rate.
+	 *
+	 * @param array $options
+	 * @return bool
+	 */
+	private function shouldFrameDouble( $options ) {
+		if ( $this->isInterlaced() ) {
+			if ( isset( $options['framerate'] ) ) {
+				// Fixed framerate, don't mess with it.
+				return false;
+			}
+			if ( isset( $options['fpsmax'] ) && $this->fractionToFloat( $options['fpsmax'] ) < 60 ) {
+				return false;
+			}
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -671,14 +1027,15 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	private function ffmpegAddDeinterlaceOptions( $options ) {
-		$cmd = '';
-
-		$handler = $this->file->getHandler();
-		if ( $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file ) ) {
-			$cmd .= ' -vf yadif=0';
+		if ( $this->isInterlaced() ) {
+			if ( $this->shouldFrameDouble( $options ) ) {
+				// Send one frame per field for full motion smoothness.
+				return ' -vf yadif=1';
+			}
+			// Send one frame per field
+			return ' -vf yadif=0';
 		}
-
-		return $cmd;
+		return '';
 	}
 
 	/**
@@ -692,7 +1049,7 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= " -aq " . wfEscapeShellArg( $options['audioQuality'] );
 		}
 		if ( isset( $options['audioBitrate'] ) ) {
-			$cmd .= ' -ab ' . (int)$options['audioBitrate'] * 1000;
+			$cmd .= " -ab " . $this->expandRate( $options['audioBitrate'] );
 		}
 		if ( isset( $options['samplerate'] ) ) {
 			$cmd .= " -ar " . wfEscapeShellArg( $options['samplerate'] );
@@ -777,7 +1134,7 @@ class WebVideoTranscodeJob extends Job {
 			array_push( $lameCmdArgs, "-aq", wfEscapeShellArg( $options['audioQuality'] ) );
 		}
 		if ( isset( $options['audioBitrate'] ) ) {
-			array_push( $lameCmdArgs, "-ab", (int)$options['audioBitrate'] * 1000 );
+			array_push( $lameCmdArgs, "-ab", $this->expandRate( $options['audioBitrate'] ) );
 		}
 		if ( isset( $options['samplerate'] ) ) {
 			array_push( $lameCmdArgs, "-ar", wfEscapeShellArg( $options['samplerate'] ) );

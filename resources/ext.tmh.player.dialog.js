@@ -5,6 +5,7 @@
  * @return {boolean}
  */
 function useFillscreen() {
+	// eslint-disable-next-line compat/compat
 	return !document.fullscreenEnabled &&
 		!document.webkitFullscreenEnabled &&
 		matchMedia( '(pointer:coarse)' ).matches;
@@ -70,6 +71,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		if ( useFillscreen() && window.innerWidth > screen.availWidth ) {
 			this.$element.addClass( 'mw-tmh-desktop-on-mobile' );
 		}
+
 		return oouiWindow;
 	}
 

@@ -63,6 +63,7 @@ class ID3Handler extends TimedMediaHandler {
 	/**
 	 * @param string $metadata
 	 * @return false|mixed
+	 * @deprecated 1.41 use File::getMetadataArray
 	 */
 	public function unpackMetadata( $metadata ) {
 		AtEase::suppressWarnings();
@@ -76,39 +77,29 @@ class ID3Handler extends TimedMediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return mixed
-	 */
-	public function getBitrate( $file ) {
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['bitrate'] ) ) {
-			return 0;
-		}
-		return $metadata['bitrate'];
-	}
-
-	/**
-	 * @param File $file
 	 * @return int
 	 */
-	public function getLength( $file ) {
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['playtime_seconds'] ) ) {
-			return 0;
-		}
-		return $metadata['playtime_seconds'];
+	public function getBitrate( $file ) {
+		$metadata = $file->getMetadataArray();
+		return (int)( $metadata['bitrate'] ?? 0 );
 	}
 
 	/**
 	 * @param File $file
-	 * @return false|int
+	 * @return float
+	 */
+	public function getLength( $file ) {
+		$metadata = $file->getMetadataArray();
+		return (float)( $metadata['playtime_seconds'] ?? 0.0 );
+	}
+
+	/**
+	 * @param File $file
+	 * @return float framerate as floating point; 0 indicates no valid rate data
 	 */
 	public function getFramerate( $file ) {
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) ) {
-			return 0;
-		}
-		// return the frame rate of the first found video stream:
-		return $metadata['video']['frame_rate'] ?? false;
+		$metadata = $file->getMetadataArray();
+		return (float)( $metadata['video']['frame_rate'] ?? 0.0 );
 	}
 
 	/**
@@ -117,10 +108,35 @@ class ID3Handler extends TimedMediaHandler {
 	 * @return bool
 	 */
 	public function isInterlaced( $file ) {
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) ) {
-			return false;
-		}
+		$metadata = $file->getMetadataArray();
 		return (bool)( $metadata['video']['interlaced'] ?? false );
 	}
+
+	/**
+	 * @param File $file
+	 * @return bool
+	 */
+	public function hasVideo( $file ) {
+		$metadata = $file->getMetadataArray();
+		return ( $metadata['video'] ?? null ) !== null;
+	}
+
+	/**
+	 * @param File $file
+	 * @return bool
+	 */
+	public function hasAudio( $file ) {
+		$metadata = $file->getMetadataArray();
+		return ( $metadata['audio'] ?? null ) !== null;
+	}
+
+	/**
+	 * @param File $file
+	 * @return int
+	 */
+	public function getAudioChannels( $file ) {
+		$metadata = $file->getMetadataArray();
+		return (int)( $metadata['audio']['channels'] ?? 0 );
+	}
+
 }

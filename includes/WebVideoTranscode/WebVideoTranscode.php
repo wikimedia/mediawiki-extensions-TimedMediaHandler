@@ -21,11 +21,12 @@ use MediaWiki\FileBackend\FSFile\TempFSFileFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\FLACHandler\FLACHandler;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
-use MediaWiki\TimedMediaHandler\Handlers\MidiHandler\MidiHandler;
-use MediaWiki\TimedMediaHandler\Handlers\Mp3Handler\Mp3Handler;
-use MediaWiki\TimedMediaHandler\Handlers\Mp4Handler\Mp4Handler;
+use MediaWiki\TimedMediaHandler\Handlers\MIDIHandler\MIDIHandler;
+use MediaWiki\TimedMediaHandler\Handlers\MP3Handler\MP3Handler;
+use MediaWiki\TimedMediaHandler\Handlers\MP4Handler\MP4Handler;
 use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
+use MediaWiki\TimedMediaHandler\HLS\Multivariant;
 use MediaWiki\Title\Title;
 use TempFSFile;
 use Wikimedia\Rdbms\IDatabase;
@@ -48,126 +49,128 @@ class WebVideoTranscode {
 	 */
 	public static $derivativeSettings = [
 
-		// WebM transcode:
+		// WebM VP8/Vorbis transcodes
+		//
+		// Two-pass encoding is a bit slower, but *massively* improves bitrate control.
+		// Trading off speed using the '-speed 3' parameter on the second pass.
+		//
+		// The current defaults will produce VP8 only up to 480p, as most
+		// clients that can groke WebM will play the VP9.
 		'160p.webm' => [
 			'maxSize' => '288x160',
-			'videoBitrate' => '128',
-			'crf' => '10',
-			'audioQuality' => '-1',
+			'videoBitrate' => '193k',
+			'minrate' => '96k',
+			'maxrate' => '280k',
+			'crf' => '37',
+			'speed' => '3',
 			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'slices' => '2',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'240p.webm' => [
 			'maxSize' => '426x240',
-			'videoBitrate' => '256',
-			'crf' => '10',
-			'audioQuality' => '1',
+			'videoBitrate' => '385k',
+			'minrate' => '193k',
+			'maxrate' => '558k',
+			'crf' => '37',
+			'speed' => '3',
 			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'slices' => '2',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'360p.webm' => [
 			'maxSize' => '640x360',
-			'videoBitrate' => '512',
-			'crf' => '10',
-			'audioQuality' => '1',
-			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'bufDelay' => '256',
-			'videoCodec' => 'vp8',
+			'videoBitrate' => '767k',
+			'minrate' => '383k',
+			'maxrate' => '1112k',
+			'crf' => '36',
+			'speed' => '3',
 			'slices' => '2',
+			'twopass' => 'true',
+			'videoCodec' => 'vp8',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'480p.webm' => [
 			'maxSize' => '854x480',
-			'videoBitrate' => '1024',
-			'crf' => '10',
-			'audioQuality' => '2',
+			'videoBitrate' => '1250k',
+			'minrate' => '625k',
+			'maxrate' => '1813k',
+			'crf' => '33',
+			'speed' => '3',
+			'slices' => '2',
 			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'bufDelay' => '256',
 			'videoCodec' => 'vp8',
-			'slices' => '4',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'720p.webm' => [
 			'maxSize' => '1280x720',
-			'videoBitrate' => '2048',
-			'crf' => '10',
-			'audioQuality' => '3',
-			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'videoCodec' => 'vp8',
+			'videoBitrate' => '2491k',
+			'minrate' => '1246k',
+			'maxrate' => '3612k',
+			'crf' => '32',
+			'speed' => '3',
 			'slices' => '4',
-			'speed' => '1',
+			'twopass' => 'true',
+			'videoCodec' => 'vp8',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'1080p.webm' => [
 			'maxSize' => '1920x1080',
-			'videoBitrate' => '4096',
-			'crf' => '10',
-			'audioQuality' => '3',
-			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'videoCodec' => 'vp8',
+			'videoBitrate' => '4963k',
+			'minrate' => '2482k',
+			'maxrate' => '7197k',
+			'crf' => '31',
+			'speed' => '3',
 			'slices' => '4',
-			'speed' => '1',
+			'twopass' => 'true',
+			'videoCodec' => 'vp8',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'1440p.webm' => [
 			'maxSize' => '2560x1440',
-			'videoBitrate' => '8192',
-			'crf' => '10',
-			'audioQuality' => '3',
-			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'videoCodec' => 'vp8',
-			'slices' => '8',
+			'videoBitrate' => '8094k',
+			'minrate' => '4047k',
+			'maxrate' => '11736k',
+			'crf' => '24',
 			'speed' => '2',
+			'slices' => '8',
+			'twopass' => 'true',
+			'videoCodec' => 'vp8',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 		'2160p.webm' => [
 			'maxSize' => '3840x2160',
-			'videoBitrate' => '16384',
-			'crf' => '10',
-			'audioQuality' => '3',
-			'twopass' => 'true',
-			'keyframeInterval' => '240',
-			'videoCodec' => 'vp8',
-			'slices' => '8',
+			'videoBitrate' => '16126k',
+			'minrate' => '8063k',
+			'maxrate' => '23382k',
+			'crf' => '15',
 			'speed' => '2',
+			'slices' => '8',
+			'twopass' => 'true',
+			'videoCodec' => 'vp8',
+			'audioCodec' => 'vorbis',
+			'audioBitrate' => '112k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 
 		// WebM VP9 transcode:
 		//
-		// These configurations are meant to balance
-		// * quality (try to maintain quality until size gets too large)
-		// * size (aim for smaller files when possible)
-		// * speed (use modest "speed" setting to gain speed at a little bandwidth/quality cost)
-		//
-		// A large bitrate target is used to allow preserving good quality for highly
-		// detailed sources and those with high frame rates and motion, which were not
-		// served well under the previous VP8 settings. The qmin is set close to the
-		// crf constrained quality target to keep from adding any extra bits when not
-		// needed; we're always transcoding something with its own compression artifacts
-		// and there's no need to reproduce every last bit.
-		//
-		// This usually results in files at or significantly below target when there's
-		// relatively little detail/motion, and files bigger towards the inflated target
-		// (set around 4x what we'd really want as a target) are allowed to better handle
-		// those high-frame-rate or high-motion/high-detail files.
-		//
-		// Use of two-pass encoding increases runtime by 2/3 but significantly increases
-		// quality through enabling auto alt reference frames. Use of 'speed' param at 2
-		// instead of 0 or 2 makes things a little faster at very slight cost of bandwidth.
+		// Two-pass encoding is a bit slower, but *massively* improves bitrate control.
+		// Trading off speed using the '-speed 3' parameter on the second pass.
 		//
 		// Encoding speed is greatly affected by threading settings; HD videos can use up to
 		// 8 threads with a suitable ffmpeg/libvpx and $wgFFmpegVP9RowMT enabled ("row-mt").
@@ -176,153 +179,270 @@ class WebVideoTranscode {
 		//
 		'120p.vp9.webm' => [
 			'maxSize' => '213x120',
-			// target 60 x 2
-			'videoBitrate' => '120',
-			'crf' => '35',
-			'qmin' => '8',
-			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
+			'videoBitrate' => '95k',
+			'minrate' => '47k',
+			'maxrate' => '137k',
+			'crf' => '37',
+			'speed' => '3',
 			'videoCodec' => 'vp9',
+			'twopass' => 'true',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'180p.vp9.webm' => [
 			'maxSize' => '320x180',
-			// target 100 x 2
-			'videoBitrate' => '200',
-			'crf' => '35',
-			'qmin' => '9',
+			'videoBitrate' => '189k',
+			'minrate' => '94k',
+			'maxrate' => '274k',
+			'crf' => '37',
+			'speed' => '3',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'240p.vp9.webm' => [
 			'maxSize' => '426x240',
-			// target 160 x 2
-			'videoBitrate' => '320',
-			'crf' => '35',
-			'qmin' => '11',
+			'videoBitrate' => '308k',
+			'minrate' => '154k',
+			'maxrate' => '447k',
+			'crf' => '37',
+			'speed' => '3',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'samplerate' => '48000',
-			'audioBitrate' => '96',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'360p.vp9.webm' => [
 			'maxSize' => '640x360',
-			// target 320 x 2
-			'videoBitrate' => '640',
-			'crf' => '35',
-			'qmin' => '12',
+			'videoBitrate' => '613k',
+			'minrate' => '307k',
+			'maxrate' => '889k',
+			'crf' => '36',
+			'speed' => '3',
+			'tileColumns' => '1',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
-			'tileColumns' => '1',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
-			],
+		],
 		'480p.vp9.webm' => [
 			'maxSize' => '854x480',
-			// target 640 x 2
-			'videoBitrate' => '1280',
+			'videoBitrate' => '1000k',
+			'minrate' => '500k',
+			'maxrate' => '1450k',
 			'crf' => '33',
-			'qmin' => '10',
+			'speed' => '3',
+			'tileColumns' => '1',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
-			'tileColumns' => '1',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'720p.vp9.webm' => [
 			'maxSize' => '1280x720',
-			// target 1280 x 2
-			'videoBitrate' => '2560',
+			'videoBitrate' => '1993k',
+			'minrate' => '996k',
+			'maxrate' => '2890k',
 			'crf' => '32',
-			'qmin' => '10',
+			'speed' => '3',
+			'tileColumns' => '2',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
-			'tileColumns' => '2',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'1080p.vp9.webm' => [
 			'maxSize' => '1920x1080',
-			// target 2560 x 2
-			'videoBitrate' => '5120',
+			'videoBitrate' => '3971k',
+			'minrate' => '1985k',
+			'maxrate' => '5757k',
 			'crf' => '31',
-			'qmin' => '9',
+			'speed' => '3',
+			'tileColumns' => '2',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
-			'tileColumns' => '4',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'1440p.vp9.webm' => [
 			'maxSize' => '2560x1440',
-			// target 5120 x 2
-			'videoBitrate' => '10240',
+			'videoBitrate' => '6475k',
+			'minrate' => '3238k',
+			'maxrate' => '9389k',
 			'crf' => '24',
-			'qmin' => '8',
+			'speed' => '3',
+			'tileColumns' => '3',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
-			'tileColumns' => '4',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
 		'2160p.vp9.webm' => [
 			'maxSize' => '3840x2160',
-			// target 10240 x 2
-			'videoBitrate' => '20480',
-			'crf' => '24',
-			'qmin' => '8',
+			'videoBitrate' => '12900k',
+			'minrate' => '6450k',
+			'maxrate' => '18706k',
+			'crf' => '15',
+			'speed' => '3',
+			'tileColumns' => '3',
 			'twopass' => 'true',
-			'altref' => 'true',
-			'keyframeInterval' => '240',
-			'speed' => '2',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
-			'audioBitrate' => '96',
-			'samplerate' => '48000',
-			'tileColumns' => '4',
+			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
+		],
+
+		// Adaptive streaming transcodes:
+		// * stereo.audio.mp3 audio (for Safari)
+		// * stereo.audio.opus.mp4 audio (for Chromium, Firefox, etc)
+		// * surround.audio.opus.mp4 audio (if >2 channels; not yet supported)
+		// * 144p.video.mjpeg.mov fallback video for old iOS
+		// * 288p.video.h263.3gp fallback video for old iOS (experimental)
+		// * 480p.video.mp4v.mp4 fallback video for old iOS (experimental)
+		// * 2160p.video.vp9.mp4 video
+		// * .m3u8 playlists
+		//
+		'stereo.audio.mp3' => [
+			'novideo' => 'true',
+			'audioCodec' => 'mp3',
+			'samplerate' => '48000',
+			'channels' => '2',
+			'audioBitrate' => '128k',
+			'type' => 'audio/mpeg',
+			'streaming' => 'hls',
+		],
+		'stereo.audio.opus.mp4' => [
+			'novideo' => 'true',
+			'audioCodec' => 'opus',
+			'samplerate' => '48000',
+			'channels' => '2',
+			'audioBitrate' => '96k',
+			'type' => 'audio/mp4; codecs="opus"',
+			'streaming' => 'hls',
+			'hlsCodec' => 'opus',
+		],
+		/*
+		// @todo implement surround support for input
+		// with >2 channels. note safari doesn't grok
+		// opus surround.
+		'surround.audio.opus.mp4' => [
+			'novideo' => true,
+			'audioCodec' => 'opus',
+			'samplerate' => '48000',
+			'minChannels' => 3,
+			'audioBitrate' => '192k',
+			'type' => 'audio/mp4; codecs="opus"',
+			'streaming' => 'hls',
+			'hlsCodec' => 'opus',
+		],
+		*/
+
+		// Optional back-compat
+		// Streaming Motion-JPEG track
+		'144p.video.mjpeg.mov' => [
+			'width' => '176',
+			'height' => '144',
+			'fpsmax' => '30',
+			'videoBitrate' => '1000k',
+			'videoCodec' => 'mjpeg',
+			'noaudio' => 'true',
+			'type' => 'video/quicktime; codecs="jpeg"',
+			'streaming' => 'hls',
+			'intraframe' => true,
+		],
+
+		// VP9 streaming tracks
+		'240p.video.vp9.mp4' => [
+			'maxSize' => '426x240',
+			'videoBitrate' => '308k',
+			'crf' => '37',
+			'speed' => '3',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
+		],
+		'360p.video.vp9.mp4' => [
+			'maxSize' => '640x360',
+			'videoBitrate' => '613k',
+			'crf' => '36',
+			'speed' => '3',
+			'tileColumns' => '1',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
+		],
+		'480p.video.vp9.mp4' => [
+			'maxSize' => '854x480',
+			'videoBitrate' => '1000k',
+			'crf' => '33',
+			'speed' => '3',
+			'tileColumns' => '1',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
+		],
+		'720p.video.vp9.mp4' => [
+			'maxSize' => '1280x720',
+			'videoBitrate' => '1993k',
+			'crf' => '32',
+			'speed' => '3',
+			'tileColumns' => '2',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
+		],
+		'1080p.video.vp9.mp4' => [
+			'maxSize' => '1920x1080',
+			'videoBitrate' => '3971k',
+			'crf' => '31',
+			'speed' => '3',
+			'tileColumns' => '2',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
+		],
+		'1440p.video.vp9.mp4' => [
+			'maxSize' => '2560x1440',
+			'videoBitrate' => '6475k',
+			'crf' => '24',
+			'speed' => '3',
+			'tileColumns' => '3',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
+		],
+		'2160p.video.vp9.mp4' => [
+			'maxSize' => '3840x2160',
+			'videoBitrate' => '12900k',
+			'crf' => '15',
+			'speed' => '3',
+			'tileColumns' => '3',
+			'twopass' => 'true',
+			'videoCodec' => 'vp9',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="vp09.00.51.08"',
+			'streaming' => 'hls',
 		],
 
 		// Loosely defined per PCF guide to mp4 profiles:
@@ -330,90 +450,93 @@ class WebVideoTranscode {
 		// and apple HLS profile guide:
 		// https://developer.apple.com/library/ios/#documentation/networkinginternet/conceptual/streamingmediaguide/UsingHTTPLiveStreaming/UsingHTTPLiveStreaming.html#//apple_ref/doc/uid/TP40008332-CH102-DontLinkElementID_24
 
+		// high profile
+		// level 2 needed for 160p60
+		// level 2.1 needed for 240p60
+		// level 3 needed for 360p60, 480p60
+		// level 4 needed for 720p60, 1080p30
+		// level 4.1 needed for 1080p60
+		// level 5 needed for 1440p60, 2160p30
+		// level 5.1 needed for 2160p60
+
+		// deprecated
 		'160p.mp4' => [
 			'maxSize' => '288x160',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '160k',
+			'videoBitrate' => '154k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '40k',
-			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'audioBitrate' => '112k',
+			'type' => 'video/mp4; codecs="avc1.640014, mp4a.40.2"',
 		],
 
 		'240p.mp4' => [
 			'maxSize' => '426x240',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '256k',
+			'videoBitrate' => '308k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '40k',
-			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'audioBitrate' => '112k',
+			'type' => 'video/mp4; codecs="avc1.42E015, mp4a.40.2"',
 		],
 
+		// deprecated
 		'320p.mp4' => [
 			'maxSize' => '480x320',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '400k',
+			'videoBitrate' => '460k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '40k',
+			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 
 		'360p.mp4' => [
 			'maxSize' => '640x360',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '512k',
+			'videoBitrate' => '613k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '64k',
+			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
-
 		'480p.mp4' => [
 			'maxSize' => '854x480',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '1200k',
+			'videoBitrate' => '1000k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '64k',
+			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
 		'720p.mp4' => [
 			'maxSize' => '1280x720',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '2500k',
+			'videoBitrate' => '1993k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '128k',
-			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'audioBitrate' => '112k',
+			'type' => 'video/mp4; codecs="avc1.42E028, mp4a.40.2"',
 		],
 		'1080p.mp4' => [
 			'maxSize' => '1920x1080',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '5000k',
+			'videoBitrate' => '3971k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
 			'audioBitrate' => '128k',
-			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'type' => 'video/mp4; codecs="avc1.640029, mp4a.40.2"',
 		],
+		// Recommend against due to size
 		'1440p.mp4' => [
 			'maxSize' => '2560x1440',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '16384k',
+			'videoBitrate' => '6475k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '128k',
-			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'audioBitrate' => '112k',
+			'type' => 'video/mp4; codecs="avc1.42E032, mp4a.40.2"',
 		],
+		// Recommend against due to size
 		'2160p.mp4' => [
 			'maxSize' => '4096x2160',
 			'videoCodec' => 'h264',
-			'videoBitrate' => '16384k',
+			'videoBitrate' => '12900k',
 			'audioCodec' => 'aac',
-			'channels' => '2',
-			'audioBitrate' => '128k',
-			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+			'audioBitrate' => '112k',
+			'type' => 'video/mp4; codecs="avc1.42E033, mp4a.40.2"',
 		],
 
 		// Audio profiles
@@ -421,7 +544,6 @@ class WebVideoTranscode {
 			'audioCodec' => 'vorbis',
 			'audioQuality' => '3',
 			'samplerate' => '44100',
-			'channels' => '2',
 			'noUpscaling' => 'true',
 			'novideo' => 'true',
 			'type' => 'audio/ogg; codecs="vorbis"',
@@ -429,8 +551,7 @@ class WebVideoTranscode {
 		'opus' => [
 			'audioCodec' => 'opus',
 			'audioQuality' => '1',
-			'samplerate' => '44100',
-			'channels' => '2',
+			'samplerate' => '48000',
 			'noUpscaling' => 'true',
 			'novideo' => 'true',
 			'type' => 'audio/ogg; codecs="opus"',
@@ -448,7 +569,6 @@ class WebVideoTranscode {
 			'audioCodec' => 'aac',
 			'audioQuality' => '1',
 			'samplerate' => '44100',
-			'channels' => '2',
 			'noUpscaling' => 'true',
 			'novideo' => 'true',
 			'type' => 'audio/mp4; codecs="mp4a.40.5"',
@@ -502,11 +622,12 @@ class WebVideoTranscode {
 	 *
 	 * @param File $file
 	 * @param string $transcodeKey
+	 * @param string $suffix
 	 *
 	 * @return TempFSFile|false at target encode path
 	 */
-	public static function getTargetEncodeFile( $file, $transcodeKey ) {
-		$filePath = static::getDerivativeFilePath( $file, $transcodeKey );
+	public static function getTargetEncodeFile( $file, $transcodeKey, $suffix = '' ) {
+		$filePath = static::getDerivativeFilePath( $file, $transcodeKey ) . $suffix;
 		$ext = strtolower( pathinfo( $filePath, PATHINFO_EXTENSION ) );
 
 		// Create a temp FS file with the same extension
@@ -526,8 +647,7 @@ class WebVideoTranscode {
 		$maxSize = 0;
 		foreach ( static::enabledVideoTranscodes() as $transcodeKey ) {
 			if ( isset( static::$derivativeSettings[$transcodeKey]['videoBitrate'] ) ) {
-				// @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset
-				$currentSize = static::$derivativeSettings[$transcodeKey]['maxSize'];
+				$currentSize = static::$derivativeSettings[$transcodeKey]['maxSize'] ?? null;
 				if ( $currentSize > $maxSize ) {
 					$maxSize = $currentSize;
 				}
@@ -691,14 +811,61 @@ class WebVideoTranscode {
 		} else {
 			$transcodeSet = static::enabledVideoTranscodes();
 		}
+
+		$lastHLS = null;
 		foreach ( $transcodeSet as $transcodeKey ) {
-			if ( static::isTranscodeEnabled( $file, $transcodeKey ) ) {
+			if ( static::isTranscodeKeyPlayable( $transcodeKey ) &&
+				 static::isTranscodeEnabled( $file, $transcodeKey )
+			) {
 				// Try and add the source
 				static::addSourceIfReady( $file, $sources, $transcodeKey, $options );
 			}
+			$streaming = static::$derivativeSettings[$transcodeKey]['streaming'] ?? '';
+			if ( $streaming === 'hls' && static::isTranscodeReady( $file, $transcodeKey ) ) {
+				$lastHLS = $transcodeKey;
+			}
+		}
+		if ( $lastHLS ) {
+			$src = static::getTranscodedUrlForFile( $file, 'm3u8' );
+			$settings =& static::$derivativeSettings[$lastHLS];
+			[ $width, $height ] = static::getMaxSizeTransform(
+				$file,
+				$settings['maxSize'] ?? (
+					implode( 'x', [
+						$settings['width'] ?? '0',
+						$settings['height'] ?? '0',
+					] )
+				)
+			);
+			$sources[] = [
+				'src' => $src,
+				'title' => wfMessage( 'timedmedia-derivative-desc-m3u8' )->text(),
+				'type' => 'application/vnd.apple.mpegurl',
+				'shorttitle' => wfMessage( 'timedmedia-derivative-desc-m3u8' )->text(),
+				'transcodekey' => 'm3u8',
+				'width' => $width,
+				'height' => $height,
+			];
 		}
 
 		return $sources;
+	}
+
+	/**
+	 * Does this transcode key represent a directly-playable type?
+	 * If not it's a backing track for adaptive streaming, and should
+	 * not be exposed directly as a downloadable/playable derivative.
+	 *
+	 * @param string $transcodeKey
+	 * @return bool
+	 */
+	public static function isTranscodeKeyPlayable( $transcodeKey ) {
+		$settings = static::$derivativeSettings[$transcodeKey] ?? null;
+		if ( !$settings ) {
+			return false;
+		}
+		$streaming = $settings['streaming'] ?? false;
+		return !$streaming;
 	}
 
 	/**
@@ -827,9 +994,21 @@ class WebVideoTranscode {
 
 		// Remove files by key:
 		$urlsToPurge = [];
+		$filesToPurge = [];
 		foreach ( $removeKeys as $tKey ) {
-			$urlsToPurge[] = static::getTranscodedUrlForFile( $file, $tKey );
+			$urlPath = static::getTranscodedUrlForFile( $file, $tKey );
 			$filePath = static::getDerivativeFilePath( $file, $tKey );
+			$urlsToPurge[] = $urlPath;
+			$filesToPurge[] = $filePath;
+
+			$options = static::$derivativeSettings[$tKey] ?? [];
+			$streaming = $options['streaming'] ?? null;
+			if ( $streaming === 'hls' ) {
+				$urlsToPurge[] = $urlPath . '.m3u8';
+				$filesToPurge[] = $filePath . '.m3u8';
+			}
+		}
+		foreach ( $filesToPurge as $filePath ) {
 			if ( $file->repo->fileExists( $filePath ) ) {
 				$res = $file->repo->quickPurge( $filePath );
 				if ( !$res ) {
@@ -857,6 +1036,10 @@ class WebVideoTranscode {
 
 		// Remove from local WebVideoTranscode cache:
 		static::clearTranscodeCache( $titleObj->getDBkey() );
+
+		$dbw->commit( __METHOD__, 'flush' );
+
+		static::updateStreamingManifests( $file );
 	}
 
 	/**
@@ -913,9 +1096,9 @@ class WebVideoTranscode {
 	public static function getPrimarySourceAttributes( $file, $options = [] ) {
 		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
 
-		/** @var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler */
+		/** @var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
+		'@phan-var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler';
 		$bitrate = $handler->getBitrate( $file );
 
 		$source = [
@@ -1009,6 +1192,69 @@ class WebVideoTranscode {
 	}
 
 	/**
+	 * Regenerate the streaming manifests, currently the HLS multivariant playlist,
+	 * to refer to available completed transcodes. If there are no available
+	 * compatible transcodes the playlist will be written out empty.
+	 *
+	 * Will lock to prevent simultaneous overwrites. This will throw if uncommitted
+	 * changes are open in the transaction; commit/flush beforehand if necessary.
+	 *
+	 * @param File $file base file to check for transcodes on
+	 */
+	public static function updateStreamingManifests( File $file ): void {
+		$fileName = $file->getTitle()->getDBkey();
+		$repo = $file->getRepo();
+		if ( !is_a( $repo, 'LocalRepo' ) ) {
+			return;
+		}
+		$dbw = $repo->getPrimaryDB();
+		$lockKey = implode( ':', [
+			'TimedMediaHandler',
+			'WebVideoTranscode',
+			'updateStreamingManifests',
+			$fileName,
+		] );
+		$timeout = 60;
+
+		$lock = $dbw->getScopedLockAndFlush( $lockKey, __METHOD__, $timeout );
+		if ( !$lock ) {
+			throw new Exception( "Failed to acquire lock for updateStreamingManifests on $fileName" );
+		}
+		static::clearTranscodeCache( $fileName );
+
+		// Currently only HLS streaming is output.
+		$m3u8 = "$fileName.m3u8";
+		$keys = [];
+		foreach ( static::$derivativeSettings as $key => $settings ) {
+			$streaming = $settings['streaming'] ?? '';
+			if ( $streaming === 'hls' && static::isTranscodeEnabled( $file, $key ) ) {
+				$keys[] = $key;
+			}
+		}
+		// @todo look up the frame rate and final bitrates and use those
+		$multivariant = new Multivariant( $fileName, $keys );
+		$playlist = $multivariant->playlist();
+
+		$tmpFileFactory = new TempFSFileFactory();
+		$tmpFile = $tmpFileFactory->newTempFSFile( $m3u8, 'm3u8' );
+		if ( !$tmpFile ) {
+			throw new Exception( "Failed to create temp file for $m3u8" );
+		}
+		$result = file_put_contents( $tmpFile->getPath(), $playlist );
+		if ( $result === false ) {
+			throw new Exception( "Failed to write temp file for $m3u8" );
+		}
+
+		$result = $repo->quickImport(
+			$tmpFile,
+			$file->getTranscodedPath( $m3u8 )
+		);
+		if ( !$result->isGood() ) {
+			throw new Exception( "Errors saving HLS playlist $m3u8" );
+		}
+	}
+
+	/**
 	 * Make sure all relevant transcodes for the given file are tracked in the
 	 * transcodes table; add entries for any missing ones.
 	 *
@@ -1057,9 +1303,9 @@ class WebVideoTranscode {
 	 * @suppress PhanTypePossiblyInvalidDimOffset
 	 */
 	public static function isTranscodeEnabled( File $file, $transcodeKey ) {
-		/** @var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler */
+		/** @var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var FLACHandler|MidiHandler|Mp3Handler|Mp4Handler|OggHandler|WAVHandler $handler';
+		'@phan-var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler';
 		$audio = $handler->isAudio( $file );
 		if ( $audio ) {
 			$keys = static::enabledAudioTranscodes();
@@ -1074,7 +1320,14 @@ class WebVideoTranscode {
 				$sourceCodec = $sourceCodecs ? strtolower( $sourceCodecs[0] ) : '';
 				return ( $sourceCodec !== $settings['audioCodec'] );
 			}
-			if ( static::isTargetLargerThanFile( $file, $settings['maxSize'] ) ) {
+			$streaming = $settings['streaming'] ?? false;
+			$novideo = $settings['novideo'] ?? false;
+			if ( $streaming && $novideo ) {
+				// Streaming audio should be generated for all formats
+				// if audio is present on the file, and for none if not.
+				return $handler->hasAudio( $file );
+			}
+			if ( static::isTargetLargerThanFile( $file, $settings['maxSize'] ?? '' ) ) {
 				// Are we the smallest enabled transcode for this type?
 				// Then go ahead and make a wee little transcode for compat.
 				return static::isSmallestTranscodeForCodec( $transcodeKey );
@@ -1089,8 +1342,9 @@ class WebVideoTranscode {
 	 * Update the job queue if the file is not already in the job queue:
 	 * @param File &$file File object
 	 * @param string $transcodeKey transcode key
+	 * @param bool $manualOverride permission to override soft limits on output size
 	 */
-	public static function updateJobQueue( &$file, $transcodeKey ) {
+	public static function updateJobQueue( &$file, $transcodeKey, $manualOverride = false ) {
 		$fileName = $file->getTitle()->getDBkey();
 		$dbw = $file->repo->getPrimaryDB();
 
@@ -1126,7 +1380,8 @@ class WebVideoTranscode {
 			$job = new WebVideoTranscodeJob( $file->getTitle(), [
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
-				'prioritized' => $prioritized
+				'prioritized' => $prioritized,
+				'manualOverride' => $manualOverride,
 			] );
 
 			try {
@@ -1258,6 +1513,11 @@ class WebVideoTranscode {
 
 		foreach ( static::enabledVideoTranscodes() as $tKey ) {
 			$tsettings = static::$derivativeSettings[$tKey];
+			if ( isset( $tsettings['novideo'] ) ) {
+				// This is an audio track for a video streaming set.
+				// Always generate it.
+				return true;
+			}
 			if ( $tsettings['videoCodec'] === $vcodec ) {
 				$tmaxSize = static::getMaxSize( $tsettings['maxSize'] );
 				if ( $tmaxSize['width'] < $maxSize['width'] ) {
@@ -1333,4 +1593,42 @@ class WebVideoTranscode {
 			}
 		}
 	}
+
+	public static function isBaseMediaFormat( string $extension ): bool {
+		$isos = [ 'mp4', 'm4v', 'm4a', 'mov', '3gp' ];
+		return in_array( $extension, $isos );
+	}
+
+	/**
+	 * Expand a bitrate that may have a k/m/g suffix
+	 *
+	 * @param string|int $rate
+	 * @return int
+	 */
+	public static function expandRate( $rate ) {
+		if ( is_int( $rate ) ) {
+			return $rate;
+		}
+		$matches = [];
+		if ( preg_match( '/^(\d+)([kmg])$/', strtolower( $rate ), $matches ) ) {
+			$n = (int)$matches[1];
+			switch ( $matches[2] ) {
+			case 'g':
+				$n *= 1000;
+				// fall through
+			case 'm':
+				$n *= 1000;
+				// fall through
+			case 'k':
+				$n *= 1000;
+				break;
+			default:
+				throw new Exception( "Unexpected size suffix: " . $matches[2] );
+			}
+			return $n;
+		} else {
+			return (int)$rate;
+		}
+	}
+
 }
