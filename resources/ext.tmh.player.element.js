@@ -83,6 +83,7 @@ class MediaElement {
 
 		// Hide native controls, we will restore them later once videojs player loads.
 		this.$element.removeAttr( 'controls' );
+		this.$element.attr( 'playsinline', '' );
 
 		// Make a shallow clone, because we don't need <source> and <track> children
 		// for the placeholder and remove unneeded attributes and interactions

@@ -94,7 +94,7 @@ class MPEGHandler extends ID3Handler {
 		}
 		return wfMessage( 'timedmedia-mpeg-short-video', implode( '/', $streamTypes )
 		)->timeperiodParams(
-			$this->getLength( $file )
+			intval( $this->getLength( $file ) )
 		)->text();
 	}
 
@@ -111,7 +111,7 @@ class MPEGHandler extends ID3Handler {
 			'timedmedia-mpeg-long-video',
 			implode( '/', $streamTypes )
 			)->timeperiodParams(
-				$this->getLength( $file )
+				intval( $this->getLength( $file ) )
 			)->bitrateParams(
 				$this->getBitRate( $file )
 			)->numParams(

@@ -36,6 +36,7 @@ class InlinePlayer {
 		 * @private
 		 */
 		this.$videoplayer = $( element );
+		this.$videoplayer.attr( 'playsinline', '' );
 		/**
 		 * Whether his player is audio only
 		 *
@@ -296,12 +297,22 @@ class InlinePlayer {
  * videoJS options for the videojs Html5 Tech plugin.
  * These options are merged into the final config for the player during initialize()
  *
+ * Text tracks are not preloaded because we may have a large number of subtitles
+ * which never get used, and it's expensive to load them all.
+ *
+ * More consistent subtitle rendering is available due to disabling native text tracks.
+ *
+ * Disabling native audio tracks avoids accidentally exposing the Opus audio tracks
+ * in HTTP Live Streaming playlists on Safari, which can't actually play them and
+ * breaks things if you switch to them
+ *
  * @static
  * @type {Object}
  */
 InlinePlayer.html5techOpt = {
 	preloadTextTracks: false,
-	nativeTextTracks: false
+	nativeTextTracks: false,
+	nativeAudioTracks: false
 };
 
 /**
@@ -319,6 +330,7 @@ InlinePlayer.globalConfig = {
 	language: mw.config.get( 'wgUserLanguage' ),
 	controlBar: {
 		// iOS does not allow using the fullscreen, so no point in adding that control
+		// eslint-disable-next-line compat/compat
 		fullscreenToggle: !!document.fullscreenEnabled || !!document.webkitFullscreenEnabled,
 		volumePanel: {
 			vertical: true,

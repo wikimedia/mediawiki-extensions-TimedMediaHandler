@@ -13,9 +13,9 @@ const MwCreateSubtitlesMenuItem = require( './mw-subtitles-create.js' );
 class MwSubtitlesButton extends SubsCapsButton {
 	/**
 	 *
-	 * @param items
-	 * @param menuitem
-	 * @return {Array<MwCreateSubtitlesMenuItem>}
+	 * @param {videojs.TextTrackMenuItem[]} items
+	 * @param {videojs.TextTrackMenuItem} menuitem
+	 * @return {MwCreateSubtitlesMenuItem[]}
 	 */
 	createItems( items, menuitem ) {
 		/* eslint-disable no-underscore-dangle */

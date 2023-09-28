@@ -359,6 +359,34 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * @param File $file
+	 * @return bool
+	 */
+	public function hasVideo( $file ) {
+		return false;
+	}
+
+	/**
+	 * @param File $file
+	 * @return bool
+	 */
+	public function hasAudio( $file ) {
+		return false;
+	}
+
+	/**
+	 * Audio channel count, or 0 if no audio.
+	 * Fractional subwoofer channels are counted as a whole, so
+	 * eg "5.1 surround" is 6 channels.
+	 *
+	 * @param File $file
+	 * @return int
+	 */
+	public function getAudioChannels( $file ) {
+		return 0;
+	}
+
+	/**
+	 * @param File $file
 	 * @param string $dstPath
 	 * @param string $dstUrl
 	 * @param array $params
@@ -454,16 +482,16 @@ class TimedMediaHandler extends MediaHandler {
 	/**
 	 * Get a stream offset time
 	 * @param File $file
-	 * @return int
+	 * @return float
 	 */
 	public function getOffset( $file ) {
-		return 0;
+		return 0.0;
 	}
 
 	/**
 	 * Get length of a file
 	 * @param File $file
-	 * @return int
+	 * @return float
 	 */
 	public function getLength( $file ) {
 		return $file->getLength();
@@ -482,6 +510,23 @@ class TimedMediaHandler extends MediaHandler {
 		}
 
 		return $wgLang->formatTimePeriod( $this->getLength( $file ) );
+	}
+
+	/**
+	 * Return frame rate, if applicable, or 0 if no valid data.
+	 * Subclasses will implement relevant metadata extraction.
+	 *
+	 * Note that values returned as floating point are not exact for
+	 * NTSC/ATSC video with 30000/1001, 60000/1001, or 24000/1001
+	 * frame rates!
+	 *
+	 * Note interlacing should be checked separately if relevant.
+	 *
+	 * @param File $file
+	 * @return float
+	 */
+	public function getFramerate( $file ) {
+		return 0.0;
 	}
 
 	/**

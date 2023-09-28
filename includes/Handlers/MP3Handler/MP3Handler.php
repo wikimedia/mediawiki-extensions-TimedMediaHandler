@@ -1,22 +1,21 @@
 <?php
 
-namespace MediaWiki\TimedMediaHandler\Handlers\MidiHandler;
+namespace MediaWiki\TimedMediaHandler\Handlers\MP3Handler;
 
 use File;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
-use Status;
 
 /**
- * MIDI handler
+ * MP3 handler
  */
-class MidiHandler extends ID3Handler {
+class MP3Handler extends ID3Handler {
 
 	/**
-	 * @param File $file
+	 * @param File $image
 	 * @return string
 	 */
-	public function getMetadataType( $file ) {
-		return 'midi';
+	public function getMetadataType( $image ) {
+		return 'mp3';
 	}
 
 	/**
@@ -24,19 +23,7 @@ class MidiHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getWebType( $file ) {
-		return 'audio/midi';
-	}
-
-	/** @inheritDoc */
-	public function verifyUpload( $fileName ) {
-		$metadata = $this->getID3( $fileName );
-
-		if (
-			isset( $metadata['audio'] )
-			&& $metadata['audio']['dataformat'] === 'midi'
-		) {
-			return Status::newGood();
-		}
+		return 'audio/mpeg';
 	}
 
 	/**
@@ -46,15 +33,12 @@ class MidiHandler extends ID3Handler {
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
 		$metadata = $this->unpackMetadata( $file->getMetadata() );
-
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'midi' ) {
-			$streamTypes[] = 'MIDI';
+		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'mp3' ) {
+			$streamTypes[] = 'MP3';
 		}
-
 		return $streamTypes;
 	}
 
@@ -63,15 +47,14 @@ class MidiHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getShortDesc( $file ) {
-		global $wgLang;
-
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-
-		return wfMessage( 'timedmedia-midi-short-audio',
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
+		return wfMessage( 'timedmedia-mp3-short-audio'
+		)->timeperiodParams(
+			intval( $this->getLength( $file ) )
+		)->text();
 	}
 
 	/**
@@ -79,16 +62,17 @@ class MidiHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getLongDesc( $file ) {
-		global $wgLang;
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-
-		return wfMessage( 'timedmedia-midi-long-audio',
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ),
-			$wgLang->formatBitrate( $this->getBitRate( $file ) )
-		)->text();
+		return wfMessage(
+			'timedmedia-mp3-long-audio'
+			)->timeperiodParams(
+				intval( $this->getLength( $file ) )
+			)->bitrateParams(
+				$this->getBitRate( $file )
+			)->text();
 	}
 
 }

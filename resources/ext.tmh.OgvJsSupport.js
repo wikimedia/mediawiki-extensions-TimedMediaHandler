@@ -1,6 +1,10 @@
 /* global OGVLoader, OGVPlayer */
 /** @type {AudioContext?} */
+/* global webkitAudioContext */
 let context = null;
+
+const AudioContextClass = ( typeof AudioContext === 'function' && AudioContext ) ||
+	( typeof webkitAudioContext === 'function' && webkitAudioContext );
 
 class OgvJsSupport {
 	/**
@@ -24,14 +28,17 @@ class OgvJsSupport {
 
 	/**
 	 * Check if native WebM VP9 playback is available.
+	 * It's preferred to use isMediaNativelySupported instead
+	 * to check for specific compatibility.
 	 *
+	 * @param {string} type media MIME type to check for
 	 * @return {boolean}
 	 */
-	static canPlayNatively() {
+	static canPlayNatively( type = 'video/webm; codecs="opus,vp9"' ) {
 		const el = document.createElement( 'video' );
 		return Boolean( el &&
 			el.canPlayType &&
-			el.canPlayType( 'video/webm; codecs="opus,vp9"' )
+			el.canPlayType( type )
 		);
 	}
 
@@ -41,9 +48,10 @@ class OgvJsSupport {
 	 * @return {boolean}
 	 */
 	static isSupported() {
-		return !!( window.WebAssembly && (
-			window.AudioContext || window.webkitAudioContext
-		) );
+		return !!(
+			( typeof WebAssembly === 'object' && WebAssembly ) &&
+			AudioContextClass
+		);
 	}
 
 	/**
@@ -85,13 +93,17 @@ class OgvJsSupport {
 		for ( const source of sourcesList ) {
 			const mediaType = source.getAttribute( 'type' );
 			const canPlay = mediaElement.canPlayType( mediaType );
-			if ( canPlay === true || canPlay === 'probably' ) {
-				// Safari reports "maybe" for "video/mpeg", then doesn't
-				// actually support it based on the found video codecs.
-				// This produces false positives on old iOS/macOS devices
-				// that don't support VP9 in hw. Exclude these, so only
-				// those returning 'probably' or another sensible code.
-				// Very very old browsers may return boolean `true`.
+			if ( canPlay ) {
+				if ( mediaType === 'video/mpeg' && canPlay === 'maybe' ) {
+					// Safari reports "maybe" for "video/mpeg", then doesn't
+					// actually support it based on the found video codecs.
+					// This produces false positives on old iOS/macOS devices
+					// that don't support VP9 in hw. Exclude these, so only
+					// those returning 'probably' or another sensible code.
+					// But do allow 'maybe' through on other types, namely we
+					// need to handle it for application/vnd.apple.mpegurl!
+					continue;
+				}
 				return true;
 			}
 		}
@@ -132,8 +144,8 @@ class OgvJsSupport {
 		if ( context ) {
 			return context;
 		}
-		const AudioContext = window.AudioContext || window.webkitAudioContext;
-		if ( AudioContext ) {
+
+		if ( AudioContextClass ) {
 			// Workaround for iOS audio output channel issue
 			// If there's no <audio> or <video> Safari puts Web Audio onto
 			// the ringer channel instead of the media channel!
@@ -141,7 +153,7 @@ class OgvJsSupport {
 			el.src = OgvJsSupport.resourcePath( 'silence.mp3' );
 			el.play();
 
-			context = new AudioContext();
+			context = new AudioContextClass();
 
 			let node;
 			if ( context.createScriptProcessor ) {

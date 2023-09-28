@@ -1,58 +1,104 @@
 <?php
 
-use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WebMHandler\WebMHandler;
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\Handlers\WebMHandler\WebMHandler
  */
-class WebMHandlerTest extends MediaWikiMediaTestCase {
+class WebMHandlerTest extends TimedMediaHandlerTestCase {
 
-	/** @var OggHandler */
-	private $handler;
-
-	public function getFilePath() {
-		return __DIR__ . '/media';
+	protected function getHandler(): TimedMediaHandler {
+		return new WebMHandler;
 	}
 
-	protected function setUp(): void {
-		parent::setUp();
-		$this->handler = new WebMHandler;
-	}
-
-	/**
-	 * @dataProvider providerGetStreamTypes
-	 * @param string $filename name of file
-	 * @param array $expected List of codecs in file
-	 */
-	public function testGetStreamTypes( $filename, $expected ) {
-		$testFile = $this->dataFile( $filename, 'video/webm' );
-		$this->assertEquals( $expected, $this->handler->getStreamTypes( $testFile ) );
-	}
-
-	public static function providerGetStreamTypes() {
+	public static function providerSamples(): array {
 		return [
-			[ 'shuttle10seconds.1080x608.webm', [ 'VP8' ] ],
-			[ 'VP9-tractor.webm', [ 'VP9' ] ],
-			[ 'bear-vp9-opus.webm', [ 'VP9', 'Opus' ] ]
+			[
+				'VP9-tractor.webm',
+				'video/webm',
+				[
+					'webType' => 'video/webm; codecs="vp9"',
+					'streamTypes' => [ 'VP9' ],
+					'hasVideo' => true,
+					'hasAudio' => false,
+					'audioChannels' => 0,
+					'commonMeta' => false,
+				],
+			],
+			[
+				'bear-vp9-opus.webm',
+				'video/webm',
+				[
+					'webType' => 'video/webm; codecs="vp9, opus"',
+					'streamTypes' => [ 'VP9', 'Opus' ],
+					'hasVideo' => true,
+					'hasAudio' => true,
+					'audioChannels' => 2,
+					'commonMeta' => false,
+				],
+			],
+			[
+				'bunny.stereo.audio.opus.webm',
+				'audio/webm',
+				[
+					'webType' => 'audio/webm; codecs="opus"',
+					'streamTypes' => [ 'Opus' ],
+					'hasVideo' => false,
+					'hasAudio' => true,
+					'audioChannels' => 2,
+					'commonMeta' => false,
+				],
+			],
+			[
+				'bunny.stereo.audio.vorbis.webm',
+				'audio/webm',
+				[
+					'webType' => 'audio/webm; codecs="vorbis"',
+					'streamTypes' => [ 'Vorbis' ],
+					'hasVideo' => false,
+					'hasAudio' => true,
+					'audioChannels' => 2,
+					'commonMeta' => false,
+				],
+			],
+			[
+				'bunny.surround.audio.opus.webm',
+				'audio/webm',
+				[
+					'webType' => 'audio/webm; codecs="opus"',
+					'streamTypes' => [ 'Opus' ],
+					'hasVideo' => false,
+					'hasAudio' => true,
+					'audioChannels' => 6,
+					'commonMeta' => false,
+				],
+			],
+			[
+				'bunny.surround.audio.vorbis.webm',
+				'audio/webm',
+				[
+					'webType' => 'audio/webm; codecs="vorbis"',
+					'streamTypes' => [ 'Vorbis' ],
+					'hasVideo' => false,
+					'hasAudio' => true,
+					'audioChannels' => 6,
+					'commonMeta' => false,
+				],
+			],
+			[
+				'shuttle10seconds.1080x608.webm',
+				'video/webm',
+				[
+					'webType' => 'video/webm; codecs="vp8"',
+					'streamTypes' => [ 'VP8' ],
+					'hasVideo' => true,
+					'hasAudio' => false,
+					'audioChannels' => 0,
+					'commonMeta' => false,
+				],
+			],
 		];
 	}
 
-	/**
-	 * @dataProvider providerGetWebType
-	 * @param string $filename name of file
-	 * @param string $expected Mime type
-	 */
-	public function testGetWebType( $filename, $expected ) {
-		$testFile = $this->dataFile( $filename, 'video/webm' );
-		$this->assertEquals( $expected, $this->handler->getWebType( $testFile ) );
-	}
-
-	public static function providerGetWebType() {
-		return [
-			[ 'shuttle10seconds.1080x608.webm', 'video/webm; codecs="vp8"' ],
-			[ 'VP9-tractor.webm', 'video/webm; codecs="vp9"' ],
-			[ 'bear-vp9-opus.webm', 'video/webm; codecs="vp9, opus"' ]
-		];
-	}
 }
