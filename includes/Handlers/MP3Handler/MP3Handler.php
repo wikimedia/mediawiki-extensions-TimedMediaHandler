@@ -53,7 +53,7 @@ class MP3Handler extends ID3Handler {
 		}
 		return wfMessage( 'timedmedia-mp3-short-audio'
 		)->timeperiodParams(
-			intval( $this->getLength( $file ) )
+			$this->getLength( $file )
 		)->text();
 	}
 
@@ -69,7 +69,7 @@ class MP3Handler extends ID3Handler {
 		return wfMessage(
 			'timedmedia-mp3-long-audio'
 			)->timeperiodParams(
-				intval( $this->getLength( $file ) )
+				$this->getLength( $file )
 			)->bitrateParams(
 				$this->getBitRate( $file )
 			)->sizeParams(
