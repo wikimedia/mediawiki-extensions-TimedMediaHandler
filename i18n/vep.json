@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Игорь Бродский"
+			"Игорь Бродский",
+			"Лариса Чиркова"
 		]
 	},
 	"timedmedia-more": "Enamba...",
 	"timedmedia-dismiss": "Peitta",
 	"timedmedia-download": "Jügutoitta fail",
-	"timedmedia-desc-link": "Informacii neciš failas"
+	"timedmedia-desc-link": "Informacii neciš failas",
+	"timedmedia-source-file": "$1 lähte",
+	"timedmedia-source-audio-file-desc": "Originaline $1 fail ($2)"
 }

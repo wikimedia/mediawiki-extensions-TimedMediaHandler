@@ -7,6 +7,8 @@
 			"Ukabia"
 		]
 	},
+	"timedmedia-error-details": "Transcode error details",
+	"timedmedia-error-dismiss": "Dismiss",
 	"timedmedia-source-file": "Ebe e si nweta $1",
 	"timedmedia-source-audio-file-desc": "Faịlụ mbụ $1 $2",
 	"timedmedia-file": "Àfabà"

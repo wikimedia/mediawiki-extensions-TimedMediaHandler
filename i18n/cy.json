@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Afalau",
 			"Ham II",
 			"Lloffiwr",
 			"Robin Owain",
@@ -36,7 +37,9 @@
 	"timedmedia-source-file": "ffynhonnell $1",
 	"timedmedia-source-file-desc": "Y ffeil $1 gwreiddiol, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Y ffeil $1 gwreiddiol ($2)",
+	"timedmedia-source-original": "Ffynhonnell",
 	"timedmedia-derivative-desc-160p.ogv": "Fideo Ogg (160P) o led band isel",
+	"timedmedia-derivative-1440p.video.vp9.mp4": "Ffrydio 1440p (VP9)",
 	"timedmedia-subtitle-new-desc": "Dewiswch iaith a gwasgu'r botwm '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Gwneler",
 	"timedmedia-subtitle-remote-link": "Gallwch [$1 weld tudalen ddisgrifio'r] ffeil hon ar $2",

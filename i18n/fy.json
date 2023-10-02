@@ -63,6 +63,8 @@
 	"timedmedia-reset-button-reset": "Oerdwaan",
 	"timedmedia-reset-error": "Flater yn oerdwaan transkodearringstaak.",
 	"timedmedia-reset-explanation": "Mei it oerdwaan fan dizze transkodearring, wurde al besteande bestannen fuortsmiten, en komt it wer yn 'e takewachtrige. Op 'e nij transkodearjen duoret in skoftke.",
+	"timedmedia-error-details": "Bysûnderheden transkodearringsflater",
+	"timedmedia-error-dismiss": "Slute",
 	"timedmedia-source-file": "$1-boarne",
 	"timedmedia-source-file-desc": "Orizjineel $1-bestân, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Orizjineel $1-bestân ($2)",
