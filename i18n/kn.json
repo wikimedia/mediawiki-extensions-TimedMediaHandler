@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ashay vb",
 			"Omshivaprakash",
 			"VASANTH S.N."
 		]
@@ -12,6 +13,29 @@
 	"timedmedia-actions": "ಕ್ರಿಯೆಗಳು",
 	"timedmedia-source-file": "$1 ಮೂಲ",
 	"timedmedia-source-audio-file-desc": "ಅಸಲು $1 ಕಡತ ($2)",
+	"timedmedia-source-original": "ಮೂಲ",
+	"timedmedia-derivative-desc-m3u8": "HTTP ಲೈವ್ ಸ್ಟ್ರೀಮಿಂಗ್",
+	"timedmedia-derivative-stereo.audio.opus.mp4": "ಸ್ಟೀರಿಯೋ (ಓಪಸ್)",
+	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ಆಡಿಯೋ (ಓಪಸ್ ಸ್ಟಿರಿಯೊ)",
+	"timedmedia-derivative-stereo.audio.mp3": "ಸ್ಟೀರಿಯೋ (MP3)",
+	"timedmedia-derivative-desc-stereo.audio.mp3": "ಸ್ಟ್ರೀಮಿಂಗ್ ಆಡಿಯೋ (MP3 ಸ್ಟಿರಿಯೊ)",
+	"timedmedia-derivative-144p.video.mjpeg.mov": "ಸ್ಟ್ರೀಮಿಂಗ್ 144p (MJPEG)",
+	"timedmedia-derivative-desc-144p.video.mjpeg.mov": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (144p MJPEG)",
+	"timedmedia-derivative-240p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 240p (VP9)",
+	"timedmedia-derivative-desc-240p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (240p VP9)",
+	"timedmedia-derivative-360p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 360p (VP9)",
+	"timedmedia-derivative-desc-360p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (360p VP9)",
+	"timedmedia-derivative-480p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 480p (VP9)",
+	"timedmedia-derivative-desc-480p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (480p VP9)",
+	"timedmedia-derivative-720p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 720p (VP9)",
+	"timedmedia-derivative-desc-720p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (720p VP9)",
+	"timedmedia-derivative-1080p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 1080p (VP9)",
+	"timedmedia-derivative-desc-1080p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (1080p VP9)",
+	"timedmedia-derivative-1440p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 1440p (VP9)",
+	"timedmedia-derivative-desc-1440p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (1440p VP9)",
+	"timedmedia-derivative-2160p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ 2160p (VP9)",
+	"timedmedia-derivative-desc-2160p.video.vp9.mp4": "ಸ್ಟ್ರೀಮಿಂಗ್ ವೀಡಿಯೊ (2160p VP9)",
+	"timedmedia-resolution-144": "ಕಡಿಮೆ 144p",
 	"timedmedia-subtitle-new-go": "ಹೋಗು",
 	"timedmedia-file": "ಕಡತ"
 }
