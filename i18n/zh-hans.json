@@ -21,7 +21,8 @@
 			"予弦",
 			"佛壁灯",
 			"神樂坂秀吉",
-			"铁桶"
+			"铁桶",
+			"沈澄心"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -152,6 +153,9 @@
 	"timedmedia-no-derivatives": "不需要转码。",
 	"timedmedia-file": "文件",
 	"timedmedia-dialog-close": "关闭媒体播放器",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1}}小时{{PLURAL:$2|$2}}分{{PLURAL:$3|$3}}秒",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1}}分{{PLURAL:$2|$2}}秒",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1秒}}",
 	"right-transcode-reset": "重置已失败或已转码的视频将其再次加入到作业队列中",
 	"right-transcode-status": "查看[[Special:TimedMediaHandler|当前转码活动的信息]]",
 	"action-transcode-reset": "重置转码",
