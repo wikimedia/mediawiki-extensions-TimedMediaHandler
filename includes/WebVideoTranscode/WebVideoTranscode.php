@@ -1021,14 +1021,15 @@ class WebVideoTranscode {
 		DeferredUpdates::addUpdate( $update );
 
 		// Build the sql query:
-		$dbw = $file->repo->getPrimaryDB();
-		$deleteWhere = [ 'transcode_image_name' => $file->getName() ];
+		$queryBuilder = $file->repo->getPrimaryDB()->newDeleteQueryBuilder()
+			->deleteFrom( 'transcode' )
+			->where( [ 'transcode_image_name' => $file->getName() ] );
 		// Check if we are removing a specific transcode key
 		if ( $transcodeKey !== false ) {
-			$deleteWhere['transcode_key'] = $transcodeKey;
+			$queryBuilder->andWhere( [ 'transcode_key' => $transcodeKey ] );
 		}
 		// Remove the db entries
-		$dbw->delete( 'transcode', $deleteWhere, __METHOD__ );
+		$queryBuilder->caller( __METHOD__ )->execute();
 
 		// Purge the cache for pages that include this video:
 		$titleObj = $file->getTitle();
@@ -1036,9 +1037,6 @@ class WebVideoTranscode {
 
 		// Remove from local WebVideoTranscode cache:
 		static::clearTranscodeCache( $titleObj->getDBkey() );
-
-		$dbw->commit( __METHOD__, 'flush' );
-
 		static::updateStreamingManifests( $file );
 	}
 
