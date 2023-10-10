@@ -74,6 +74,7 @@
 	"timedmedia-resolution-180": "Лахара 180p",
 	"timedmedia-resolution-240": "Лахара 240p",
 	"timedmedia-subtitle-new-go": "Кхочушдé",
+	"timedmedia-subtitles-available": "Субтитраш тӀекхочуш дац.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 йуха кодйар}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 йуха кодйар доладалийтар}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 йуха кодйаран рогӀехь йу}}",
@@ -85,5 +86,11 @@
 	"log-name-timedmediahandler": "TimedMediaHandler тептар",
 	"orphanedtimedtext": "Йайна агӀонаш TimedText",
 	"orphanedtimedtext-summary": "ЙогӀуш йолу файл йоцу [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] агӀонийн могӀам.",
-	"transcodestatistics": "Кодхийцаран статистика"
+	"videojs-more-information": "Ма-дарра",
+	"videojs-quality": "Видео дикалла",
+	"videojs-subtitles-create": "Кхолла субтитраш",
+	"videojs-captions-create": "Кхолла субтитраш",
+	"transcodestatistics": "Кодхийцаран статистика",
+	"timedmedia-timedtext-title-edit-subtitles": "Субтитраш «$2» ($1)",
+	"timedmedia-timedtext-title-create-subtitles": "«$2» субтитраш дац «$1» маттахь"
 }
