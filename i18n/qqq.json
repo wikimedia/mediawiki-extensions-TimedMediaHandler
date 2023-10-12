@@ -235,5 +235,8 @@
 	"videojs-captions-create": "Menu entry in the captions menu of the video player, to navigate to the create captions interface. In some languages captions are known as subtitles.",
 	"transcodestatistics": "{{doc-special|TranscodeStatistics}}",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 is language name for subtitles (e.g. \"English\"), $2 is title of file that timed text is for.\nShown as the page title on a TimedText namespace page when the page exists. See also {{msg-mw|timedmedia-timedtext-title-create-subtitles}}.",
-	"timedmedia-timedtext-title-create-subtitles": "$1 is language name, $2 is title of file that timed text is for.\nShown as the page title on a TimedText namespace page when the page does not exist. See also {{msg-mw|timedmedia-timedtext-title-edit-subtitles}}."
+	"timedmedia-timedtext-title-create-subtitles": "$1 is language name, $2 is title of file that timed text is for.\nShown as the page title on a TimedText namespace page when the page does not exist. See also {{msg-mw|timedmedia-timedtext-title-edit-subtitles}}.",
+	"m3u8-error-create-temp": "Low-level file conversion error, may appear only in debugging.",
+	"m3u8-error-write-temp": "Low-level file conversion error, may appear only in debugging.",
+	"m3u8-error-save-playlist": "Low-level file conversion error, may appear only in debugging."
 }

@@ -28,6 +28,7 @@ use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
 use MediaWiki\Title\Title;
+use Status;
 use TempFSFile;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -1194,30 +1195,31 @@ class WebVideoTranscode {
 	 * to refer to available completed transcodes. If there are no available
 	 * compatible transcodes the playlist will be written out empty.
 	 *
-	 * Will lock to prevent simultaneous overwrites. This will throw if uncommitted
-	 * changes are open in the transaction; commit/flush beforehand if necessary.
+	 * Simultaneous attempts to overwrite will result in whichever commits to
+	 * the filesystem or other backend last "winning". Locks in the database
+	 * have been known to cause production problems, and a more thorough queueing
+	 * system might be wise to look into later.
 	 *
 	 * @param File $file base file to check for transcodes on
 	 */
-	public static function updateStreamingManifests( File $file ): void {
+	public static function updateStreamingManifests( File $file ): Status {
 		$fileName = $file->getTitle()->getDBkey();
 		$repo = $file->getRepo();
 		if ( !is_a( $repo, 'LocalRepo' ) ) {
-			return;
+			return Status::newGood();
 		}
 		$dbw = $repo->getPrimaryDB();
-		$lockKey = implode( ':', [
-			'TimedMediaHandler',
-			'WebVideoTranscode',
-			'updateStreamingManifests',
-			$fileName,
-		] );
-		$timeout = 60;
 
-		$lock = $dbw->getScopedLockAndFlush( $lockKey, __METHOD__, $timeout );
-		if ( !$lock ) {
-			throw new Exception( "Failed to acquire lock for updateStreamingManifests on $fileName" );
-		}
+		// Note that trying to use a database lock here plays hell with many
+		// many scenarios in production, it seems, especially when deleting
+		// files.
+		//
+		// See [T348689](https://phabricator.wikimedia.org/T348689) etc.
+		//
+		// To in future: serialize these updates through the job queue
+		// or something else *clever* and non-destructive in terms of wait
+		// states.
+
 		static::clearTranscodeCache( $fileName );
 
 		// Currently only HLS streaming is output.
@@ -1236,20 +1238,18 @@ class WebVideoTranscode {
 		$tmpFileFactory = new TempFSFileFactory();
 		$tmpFile = $tmpFileFactory->newTempFSFile( $m3u8, 'm3u8' );
 		if ( !$tmpFile ) {
-			throw new Exception( "Failed to create temp file for $m3u8" );
+			return Status::newFatal( 'm3u8-error-create-temp', $m3u8 );
 		}
 		$result = file_put_contents( $tmpFile->getPath(), $playlist );
 		if ( $result === false ) {
-			throw new Exception( "Failed to write temp file for $m3u8" );
+			return Status::newFatal( 'm3u8-error-write-temp', $m3u8 );
 		}
 
 		$result = $repo->quickImport(
 			$tmpFile,
 			$file->getTranscodedPath( $m3u8 )
 		);
-		if ( !$result->isGood() ) {
-			throw new Exception( "Errors saving HLS playlist $m3u8" );
-		}
+		return $result;
 	}
 
 	/**

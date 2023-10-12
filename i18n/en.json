@@ -214,5 +214,8 @@
 	"videojs-captions-create": "Create captions",
 	"transcodestatistics": "Transcode statistics",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 subtitles for clip: $2",
-	"timedmedia-timedtext-title-create-subtitles": "No $1 subtitles were found for clip: $2"
+	"timedmedia-timedtext-title-create-subtitles": "No $1 subtitles were found for clip: $2",
+	"m3u8-error-create-temp": "Failed to create temp file for $1",
+	"m3u8-error-write-temp": "Failed to write temp file for $1",
+	"m3u8-error-save-playlist": "Errors saving HLS playlist $1"
 }
