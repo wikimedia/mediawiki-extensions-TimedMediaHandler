@@ -55,8 +55,8 @@ class WebVideoTranscode {
 		// Two-pass encoding is a bit slower, but *massively* improves bitrate control.
 		// Trading off speed using the '-speed 3' parameter on the second pass.
 		//
-		// The current defaults will produce VP8 only up to 480p, as most
-		// clients that can groke WebM will play the VP9.
+		// The current defaults do not include VP8 output, but it may be helpful
+		// at a limited resolution range for certain back-compatibility scenarios.
 		'160p.webm' => [
 			'maxSize' => '288x160',
 			'videoBitrate' => '193k',
@@ -303,13 +303,11 @@ class WebVideoTranscode {
 		],
 
 		// Adaptive streaming transcodes:
-		// * stereo.audio.mp3 audio (for Safari)
-		// * stereo.audio.opus.mp4 audio (for Chromium, Firefox, etc)
-		// * surround.audio.opus.mp4 audio (if >2 channels; not yet supported)
+		// * stereo.audio.mp3 audio (for Safari 16 and below)
+		// * stereo.audio.opus.mp4 audio (for Chromium, Firefox, Safari 17)
+		// * surround.audio.opus.mp4 audio (reserved for future expansion)
 		// * 144p.video.mjpeg.mov fallback video for old iOS
-		// * 288p.video.h263.3gp fallback video for old iOS (experimental)
-		// * 480p.video.mp4v.mp4 fallback video for old iOS (experimental)
-		// * 2160p.video.vp9.mp4 video
+		// * 240p .. 2160p.video.vp9.mp4 video
 		// * .m3u8 playlists
 		//
 		'stereo.audio.mp3' => [
@@ -329,7 +327,6 @@ class WebVideoTranscode {
 			'audioBitrate' => '96k',
 			'type' => 'audio/mp4; codecs="opus"',
 			'streaming' => 'hls',
-			'hlsCodec' => 'opus',
 		],
 		/*
 		// @todo implement surround support for input
@@ -340,10 +337,9 @@ class WebVideoTranscode {
 			'audioCodec' => 'opus',
 			'samplerate' => '48000',
 			'minChannels' => 3,
-			'audioBitrate' => '192k',
+			'audioBitrate' => '256k',
 			'type' => 'audio/mp4; codecs="opus"',
 			'streaming' => 'hls',
-			'hlsCodec' => 'opus',
 		],
 		*/
 
