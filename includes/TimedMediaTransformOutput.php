@@ -571,7 +571,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return array
 	 */
 	public function getAPIData( ?array $options = null ) {
-		$options = $options ?? [ 'fullurl' ];
+		$options ??= [ 'fullurl' ];
 
 		$timedtext = $this->getTextHandler()->getTracks();
 		if ( in_array( 'fullurl', $options, true ) ) {

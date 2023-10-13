@@ -439,7 +439,7 @@ class TimedMediaHandler extends MediaHandler {
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
 
-		$params['width'] = $params['width'] ?? $srcWidth;
+		$params['width'] ??= $srcWidth;
 
 		// if height overtakes width use height as max:
 		$targetWidth = $params['width'];
