@@ -20,7 +20,6 @@ use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\Hook\ArticleFromTitleHook;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
 use MediaWiki\Page\Hook\ImageOpenShowImageInlineBeforeHook;
@@ -220,7 +219,7 @@ class Hooks implements
 	 * @param array &$links
 	 */
 	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
-		if ( self::isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
+		if ( $this->isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
 			$ttTitle = Title::makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
 			if ( !$ttTitle ) {
 				return;
@@ -233,13 +232,14 @@ class Hooks implements
 	/**
 	 * Wraps the isTranscodableFile function
 	 * @param Title $title
+	 * @param RepoGroup $repoGroup
 	 * @return bool
 	 */
-	public static function isTranscodableTitle( $title ) {
+	public static function isTranscodableTitle( $title, RepoGroup $repoGroup ) {
 		if ( $title->getNamespace() !== NS_FILE ) {
 			return false;
 		}
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+		$file = $repoGroup->findFile( $title );
 		return self::isTranscodableFile( $file );
 	}
 
@@ -288,11 +288,11 @@ class Hooks implements
 	 * @param Title $title
 	 * @return bool
 	 */
-	public static function isTimedMediaHandlerTitle( $title ) {
+	public function isTimedMediaHandlerTitle( $title ) {
 		if ( !$title->inNamespace( NS_FILE ) ) {
 			return false;
 		}
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+		$file = $this->repoGroup->findFile( $title );
 		// Can't find file
 		if ( !$file ) {
 			return false;
@@ -348,7 +348,7 @@ class Hooks implements
 	 * @return bool
 	 */
 	public function onTitleMove( Title $title, Title $newTitle, User $user, $reason, Status &$status ) {
-		if ( self::isTranscodableTitle( $title ) ) {
+		if ( self::isTranscodableTitle( $title, $this->repoGroup ) ) {
 			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
 			$file = $this->repoGroup->findFile( $title );
