@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 /**
@@ -101,7 +100,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		// Set the condition to only run the webVideoTranscode
 		$conds = [ "job_cmd" => $type ];
 
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 			for ( ; ; ) {

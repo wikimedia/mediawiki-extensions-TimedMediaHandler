@@ -8,7 +8,6 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\TimedText;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
@@ -77,7 +76,7 @@ class ConvertSubtitles extends Maintenance {
 	 */
 	public function processWork( $data ) {
 		$title = Title::makeTitle( $data['page_namespace'], $data['page_title'] );
-		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
+		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
 		$page = $wikiPageFactory->newFromTitle( $title );
 		if ( $page->isRedirect() ) {
 			$title = $page->getRedirectTarget();

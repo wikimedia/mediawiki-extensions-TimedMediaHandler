@@ -8,7 +8,6 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
@@ -93,7 +92,7 @@ class TranscodeReport extends Maintenance {
 		$where = [ 'img_media_type' => $types ];
 		$opts = [ 'ORDER BY' => 'img_media_type,img_name' ];
 		$res = $dbr->select( 'image', [ 'img_name' ], $where, __METHOD__, $opts );
-		$localRepo = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo();
+		$localRepo = $this->getServiceContainer()->getRepoGroup()->getLocalRepo();
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );
 			$file = $localRepo->newFile( $title );

@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
@@ -60,7 +59,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 			->orderBy( 'img_media_type,img_name', SelectQueryBuilder::SORT_ASC )
 			->caller( __METHOD__ )->fetchResultSet();
 
-		$localRepo = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo();
+		$localRepo = $this->getServiceContainer()->getRepoGroup()->getLocalRepo();
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );
 			$file = $localRepo->newFile( $title );
