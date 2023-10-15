@@ -444,8 +444,10 @@
 				"mediawiki.Title"
 			],
 			"messages": [
-				"timedmedia-play-media",
+				"timedmedia-play-audio",
+				"timedmedia-play-video",
 				"timedmedia-subtitles-available",
+				"timedmedia-duration",
 				"timedmedia-duration-hms",
 				"timedmedia-duration-ms",
 				"timedmedia-duration-s"

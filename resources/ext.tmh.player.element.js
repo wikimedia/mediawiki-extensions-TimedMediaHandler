@@ -112,7 +112,7 @@ class MediaElement {
 				.addClass( 'mw-tmh-play' )
 				.attr( {
 					href: this.getUrl(),
-					title: mw.msg( 'timedmedia-play-media' ),
+					title: this.isAudio ? mw.msg( 'timedmedia-play-audio' ) : mw.msg( 'timedmedia-play-video' ),
 					role: 'button'
 				} )
 				.on( 'click', this.clickHandler.bind( this ) )
@@ -125,16 +125,19 @@ class MediaElement {
 			const duration = this.$element.data( 'durationhint' ) || 0;
 			const $duration = $( '<span>' )
 				.addClass( 'mw-tmh-duration mw-tmh-label' )
-				.attr( 'aria-label', secondsToDurationLongString( duration ) )
-				.text( secondsToDurationString( duration ) );
+				.append( $( '<span>' ).addClass( 'sr-only' ).text( mw.msg(
+					'timedmedia-duration',
+					secondsToDurationLongString( duration )
+				) ) )
+				.append( $( '<span>' ).attr( 'aria-hidden', true ).text( secondsToDurationString( duration ) ) );
 			this.$placeholder.append( $duration );
 
 			// Add CC label; currently skip for audio due to positioning limitations
 			if ( !this.isAudio && this.$element.find( 'track' ).length > 0 ) {
 				const $ccLabel = $( '<span>' )
 					.addClass( 'mw-tmh-cc mw-tmh-label' )
-					.attr( 'aria-label', mw.msg( 'timedmedia-subtitles-available' ) )
-					.text( 'CC' ); // This is used as an icon
+					.append( $( '<span>' ).addClass( 'sr-only' ).text( mw.msg( 'timedmedia-subtitles-available' ) ) )
+					.append( $( '<span>' ).attr( 'aria-hidden', true ).text( 'CC' ) ); // This is used as an icon
 				this.$placeholder.append( $ccLabel );
 			}
 		}
