@@ -15,7 +15,7 @@
 		"grunt-exec": "3.0.0",
 		"grunt-patcher": "1.0.0",
 		"grunt-stylelint": "0.18.0",
-		"jsdoc": "3.6.10",
+		"jsdoc": "4.0.2",
 		"jsdoc-wmf-theme": "0.0.8",
 		"ogv": "1.8.9",
 		"stylelint-config-wikimedia": "0.15.0",
