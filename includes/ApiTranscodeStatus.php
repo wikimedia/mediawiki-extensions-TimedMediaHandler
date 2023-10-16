@@ -48,7 +48,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 			 */
 			foreach ( $images as $img ) {
 				// if its a "transcode" add the transcode status table output
-				if ( Hooks::isTranscodableTitle( $img->getTitle() ) ) {
+				if ( Hooks::isTranscodableTitle( $img->getTitle(), $this->repoGroup ) ) {
 					$transcodeStatus = WebVideoTranscode::getTranscodeState( $img );
 					// remove useless properties
 					foreach ( $transcodeStatus as &$val ) {

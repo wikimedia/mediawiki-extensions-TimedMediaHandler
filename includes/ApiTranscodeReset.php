@@ -54,7 +54,7 @@ class ApiTranscodeReset extends ApiBase {
 		$this->checkTitleUserPermissions( $titleObj, 'transcode-reset' );
 
 		// Make sure the title can be transcoded
-		if ( !Hooks::isTranscodableTitle( $titleObj ) ) {
+		if ( !Hooks::isTranscodableTitle( $titleObj, $this->repoGroup ) ) {
 			$this->dieWithError(
 				[
 					'apierror-timedmedia-invalidtranscodetitle',
