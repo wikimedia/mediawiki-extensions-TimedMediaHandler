@@ -40,5 +40,8 @@
 	"timedmedia-derivative-desc-1440p.video.vp9.mp4": "Урсхл видео (1440p VP9)",
 	"timedmedia-derivative-2160p.video.vp9.mp4": "Урсхл 2160p (VP9)",
 	"timedmedia-derivative-desc-2160p.video.vp9.mp4": "Урсхл видео (2160p VP9)",
-	"timedmedia-resolution-144": "Баһ 144p"
+	"timedmedia-resolution-144": "Баһ 144p",
+	"m3u8-error-create-temp": "$1-ин түр-зуурын файлыг үүскҗ чадсн уга",
+	"m3u8-error-write-temp": "$1-ын түр-зуурын файл бичҗ чадсн уга",
+	"m3u8-error-save-playlist": "HLS тогльх җигсәлтиг $1 хадһлхд алда һарв"
 }

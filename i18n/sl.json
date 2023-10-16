@@ -215,5 +215,8 @@
 	"videojs-captions-create": "Ustvari napise",
 	"transcodestatistics": "Statistika prekodiranja",
 	"timedmedia-timedtext-title-edit-subtitles": "Podnapisi v jeziku $1 za posnetek: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Ni najdenih podnapisov v jeziku $1 za posnetek: $2"
+	"timedmedia-timedtext-title-create-subtitles": "Ni najdenih podnapisov v jeziku $1 za posnetek: $2",
+	"m3u8-error-create-temp": "Začasne datoteke za $1 ni bilo mogoče ustvariti",
+	"m3u8-error-write-temp": "Začasne datoteke za $1 ni bilo mogoče ustvariti",
+	"m3u8-error-save-playlist": "Napake pri shranjevanju seznama predvajanja HLS $1"
 }
