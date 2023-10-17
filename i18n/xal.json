@@ -17,7 +17,6 @@
 	"timedmedia-midi-long-audio": "MIDI аудио файл, утнь $1, нийт $2, файлын кемҗә: $3",
 	"timedmedia-mp4-long-video": "MP4 аудио/видео файл, $1, утнь $2, $4 × $5 пиксельтә, нийт $3, файлын кемҗә: $6",
 	"timedmedia-mpeg-long-video": "MPEG аудио/видео файл, $1, утнь $2, $4 × $5 пиксельтә, нийт $3, файлын кемҗә: $6",
-	"timedmedia-source-file": "$1 эк-үүсвр",
 	"timedmedia-source-original": "Экн-үүсвр",
 	"timedmedia-derivative-desc-m3u8": "HTTP Шуд дамҗуллт",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "Стерео (Опус)",

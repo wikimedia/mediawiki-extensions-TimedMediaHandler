@@ -17,7 +17,5 @@
 	"timedmedia-days": "{{PLURAL:$1|1 هاري|$1 هاري}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 جم|$1 جم}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 مينيت|$1 مينيت}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1 ساعت|$1 ساعت}}",
-	"timedmedia-source-file": "$1 سومبر",
-	"timedmedia-source-audio-file-desc": "فاءيل $1 اصلي ($2)"
+	"timedmedia-seconds": "{{PLURAL:$1|1 ساعت|$1 ساعت}}"
 }

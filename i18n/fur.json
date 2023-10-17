@@ -20,7 +20,5 @@
 	"timedmedia-download": "Discjame il file",
 	"timedmedia-desc-link": "Informazions su chest file",
 	"timedmedia-status": "Stât",
-	"timedmedia-actions": "Azions",
-	"timedmedia-source-file": "Risultive $1",
-	"timedmedia-source-audio-file-desc": "Originâl $1 file ($2)"
+	"timedmedia-actions": "Azions"
 }

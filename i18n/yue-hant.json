@@ -16,7 +16,5 @@
 	"timedmedia-more": "多啲...",
 	"timedmedia-dismiss": "閂",
 	"timedmedia-download": "下載檔案",
-	"timedmedia-desc-link": "關於呢個檔案",
-	"timedmedia-source-file": "$1 來源檔",
-	"timedmedia-source-audio-file-desc": "原本 $1 檔案 （$2）"
+	"timedmedia-desc-link": "關於呢個檔案"
 }

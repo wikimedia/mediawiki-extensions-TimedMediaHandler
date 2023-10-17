@@ -14,8 +14,6 @@
 	"timedmedia-hours": "{{PLURAL:$1|1 שעה|$1 שעהן}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 מינוט|$1 מינוטן}}",
 	"timedmedia-seconds": "{{PLURAL:$1|1 סעקונדע|$1 סעקונדעס}}",
-	"timedmedia-source-file": "$1 מקור",
-	"timedmedia-source-audio-file-desc": "אריגינעלע $1 טעקע ($2)",
 	"timedmedia-subtitle-new-go": "גיין",
 	"timedmedia-file": "טעקע"
 }

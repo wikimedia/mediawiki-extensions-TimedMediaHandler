@@ -7,7 +7,5 @@
 		]
 	},
 	"timedmedia-reset-button-cancel": "পূৰ্ৱবত নকৰিব",
-	"timedmedia-reset-button-reset": "পূৰ্ৱবত কৰক",
-	"timedmedia-source-file": "$1 উৎস",
-	"timedmedia-source-audio-file-desc": "প্ৰকৃত $1 ফাইল ($2)"
+	"timedmedia-reset-button-reset": "পূৰ্ৱবত কৰক"
 }

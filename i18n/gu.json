@@ -16,8 +16,6 @@
 	"timedmedia-status-unknown": "અજ્ઞાત સ્થિતિ",
 	"timedmedia-actions": "ક્રિયાઓ",
 	"timedmedia-not-ready": "તૈયાર નથી",
-	"timedmedia-source-file": "$1 સ્રોત",
-	"timedmedia-source-audio-file-desc": "મુળ આવૃત્તિ $1 ફાઇલ ($2)",
 	"timedmedia-subtitle-new-go": "જાઓ",
 	"timedmedia-file": "ફાઇલ",
 	"action-transcode-reset": "રીસેટ ટ્રાંસ્કોડ કરો"

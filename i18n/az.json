@@ -11,11 +11,5 @@
 	"timedmedia-play-media": "Medianı oxut",
 	"timedmedia-status": "Status",
 	"timedmedia-direct-link": "Yüklə",
-	"timedmedia-seconds": "{{PLURAL:$1|1 saniyə|$1 saniyə}}",
-	"timedmedia-ogg": "Ogg",
-	"timedmedia-webm": "WebM",
-	"timedmedia-wav": "WAV",
-	"timedmedia-flac": "FLAC",
-	"timedmedia-source-file": "$1 mənbəyi",
-	"timedmedia-source-audio-file-desc": "Orijinal $1 faylı ($2)"
+	"timedmedia-seconds": "{{PLURAL:$1|1 saniyə|$1 saniyə}}"
 }

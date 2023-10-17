@@ -9,8 +9,6 @@
 	"timedmedia-reset": "Jumu transkode",
 	"timedmedia-reset-button-cancel": "Sampunang nyumu",
 	"timedmedia-reset-button-reset": "Jumu",
-	"timedmedia-source-file": "Wit $1",
-	"timedmedia-source-audio-file-desc": "Berkas $1 asli ($2)",
 	"action-transcode-reset": "jumu transkode",
 	"videojs-more-information": "Pidarta lianan"
 }

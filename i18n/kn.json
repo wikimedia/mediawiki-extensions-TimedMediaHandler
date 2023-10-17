@@ -11,8 +11,6 @@
 	"timedmedia-desc-link": "ಈ ಆಟದ ಬಗ್ಗೆ",
 	"timedmedia-status": "ಸ್ಥಾನಮಾನ",
 	"timedmedia-actions": "ಕ್ರಿಯೆಗಳು",
-	"timedmedia-source-file": "$1 ಮೂಲ",
-	"timedmedia-source-audio-file-desc": "ಅಸಲು $1 ಕಡತ ($2)",
 	"timedmedia-source-original": "ಮೂಲ",
 	"timedmedia-derivative-desc-m3u8": "HTTP ಲೈವ್ ಸ್ಟ್ರೀಮಿಂಗ್",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "ಸ್ಟೀರಿಯೋ (ಓಪಸ್)",

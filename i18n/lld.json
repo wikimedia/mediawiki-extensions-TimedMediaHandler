@@ -5,7 +5,5 @@
 			"Starladin"
 		]
 	},
-	"timedmedia-source-file": "funtana $1",
-	"timedmedia-source-audio-file-desc": "File original $1 ($2)",
 	"transcodestatistics": "Statistiches de transcodifica"
 }

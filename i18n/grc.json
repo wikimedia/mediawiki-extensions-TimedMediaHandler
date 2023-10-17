@@ -9,7 +9,5 @@
 	},
 	"timedmedia-ogg-long-error": "Ἄκυρα ἀρχεῖα ogg: $1",
 	"timedmedia-more": "πλέον...",
-	"timedmedia-dismiss": "Κλῄειν",
-	"timedmedia-source-file": "$1 Πηγή",
-	"timedmedia-source-audio-file-desc": "Ἔξ ἀρχῆς $1 ἀρχείον ($2)"
+	"timedmedia-dismiss": "Κλῄειν"
 }

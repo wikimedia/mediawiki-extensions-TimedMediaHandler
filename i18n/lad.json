@@ -6,8 +6,6 @@
 			"WikiiiTranslator"
 		]
 	},
-	"timedmedia-source-file": "Fuente $1",
-	"timedmedia-source-audio-file-desc": "Dosya $1 orijinal ($2)",
 	"timedmedia-subtitle-new-go": "Ir",
 	"timedmedia-file": "Dosya"
 }

@@ -10,7 +10,5 @@
 	"timedmedia-status": "حالت",
 	"timedmedia-days": "{{PLURAL:$1|1 دن|$1 دناں}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|سکنٹ}}",
-	"timedmedia-source-file": "$1 سروت",
-	"timedmedia-source-audio-file-desc": "اصلی$1 فائل ($2)",
 	"transcodestatistics": "ٹرانس کوڈ دے اعدادوشمار"
 }

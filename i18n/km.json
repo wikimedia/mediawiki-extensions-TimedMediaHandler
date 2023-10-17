@@ -22,7 +22,5 @@
 	"timedmedia-download": "ទាញយកឯកសារ",
 	"timedmedia-play-media": "ចាក់មើល",
 	"timedmedia-desc-link": "អំពីឯកសារនេះ",
-	"timedmedia-source-file": "ប្រភព $1",
-	"timedmedia-source-audio-file-desc": "ឯកសារ $1 ដើម ($2)",
 	"timedmedia-subtitle-new-desc": "ជ្រើសរើសភាសារួចចុចប៊ូតុង'''{{int:Timedmedia-subtitle-new-go}}'''"
 }

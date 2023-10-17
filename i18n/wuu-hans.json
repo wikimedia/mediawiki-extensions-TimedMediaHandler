@@ -4,7 +4,5 @@
 			"Winston Sung"
 		]
 	},
-	"timedmedia-hours": "{{PLURAL:$1|$1个钟头}}",
-	"timedmedia-source-file": "$1原始文件",
-	"timedmedia-source-audio-file-desc": "原始$1文件 ($2)"
+	"timedmedia-hours": "{{PLURAL:$1|$1个钟头}}"
 }

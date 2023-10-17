@@ -19,8 +19,6 @@
 	"timedmedia-dismiss": "بندگ",
 	"timedmedia-download": "ئیر کورتین پایلی",
 	"timedmedia-desc-link": "ای فایل باره",
-	"timedmedia-source-file": "$1 ءِ بُندر",
-	"timedmedia-source-audio-file-desc": "رݔدگݔن $1 پایل ($2)",
 	"timedmedia-subtitle-new-go": "برا",
 	"orphanedtimedtext": "یتیم TimedText دیمان",
 	"orphanedtimedtext-summary": "ها دیمانی لیست که [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] متناظرین پایل ندارنت ."

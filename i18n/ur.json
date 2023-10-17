@@ -19,8 +19,6 @@
 	"timedmedia-not-ready": "تیار نہیں",
 	"timedmedia-reset-button-dismiss": "ہٹائیں",
 	"timedmedia-reset-button-reset": "دوبارہ مرتب کریں",
-	"timedmedia-source-file": "$1 مسودہ",
-	"timedmedia-source-audio-file-desc": "اصلی $1 فائل ($2)",
 	"timedmedia-subtitle-new-go": "چلیں",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 رمزبندی|$1 رمزبندیاں}}",
 	"timedmedia-file": "فائل",

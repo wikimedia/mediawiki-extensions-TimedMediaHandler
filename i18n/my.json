@@ -16,8 +16,6 @@
 	"timedmedia-direct-link": "ဒေါင်းလုဒ်",
 	"timedmedia-not-ready": "အဆင်သင့်မဖြစ်",
 	"timedmedia-completed-on": "ပြီးဆုံးသည် $1",
-	"timedmedia-source-file": "$1 ရင်းမြစ်",
-	"timedmedia-source-audio-file-desc": "မူရင်း $1 ဖိုင် ($2)",
 	"timedmedia-subtitle-new-desc": "ဘာသာစကားရွေးပြီး '''{{int:Timedmedia-subtitle-new-go}}''' ခလုတ်ကိုနှိပ်ပါ",
 	"timedmedia-subtitle-new-go": "သွားပါ",
 	"timedmedia-subtitles-available": "စာတန်းထိုးများ ရနိုင်သည်။",

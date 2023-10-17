@@ -8,7 +8,5 @@
 	"timedmedia-dismiss": "Wichq'ay",
 	"timedmedia-download": "Willañiqita chaqnamuy",
 	"timedmedia-desc-link": "Kay willañiqimanta",
-	"timedmedia-days": "{{PLURAL:$1|1 p'unchaw|$1 p'unchawkuna}}",
-	"timedmedia-source-file": "$1 pukyu",
-	"timedmedia-source-audio-file-desc": "Qallariy $1 willañiqi ($2)"
+	"timedmedia-days": "{{PLURAL:$1|1 p'unchaw|$1 p'unchawkuna}}"
 }

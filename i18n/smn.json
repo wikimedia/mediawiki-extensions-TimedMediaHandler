@@ -12,9 +12,6 @@
 	"timedmedia-status-unknown": "Tubdâmettum tile",
 	"timedmedia-direct-link": "Luođii",
 	"timedmedia-days": "{{PLURAL:$1|1 peivi|$1 peeivi|$1 peeivi|$1 peivid}}",
-	"timedmedia-source-file": "Käldee $1",
-	"timedmedia-source-file-desc": "Algâalgâlâš $1-tiätuvuárkká, $2 × $3 ($4)",
-	"timedmedia-source-audio-file-desc": "Algâalgâlâš $1-tiätuvuárkká ($2)",
 	"timedmedia-file": "Tiätuvuárkká",
 	"videojs-more-information": "Lasetiäđuh"
 }

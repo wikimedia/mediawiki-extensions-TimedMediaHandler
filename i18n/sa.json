@@ -12,8 +12,6 @@
 	"timedmedia-status": "स्थितिः",
 	"timedmedia-status-unknown": "अज्ञातस्थितिः",
 	"timedmedia-actions": "क्रियाः",
-	"timedmedia-source-file": "$1 स्रोतः",
-	"timedmedia-source-audio-file-desc": "मूलम् $1 सञ्चिका ($2)",
 	"timedmedia-subtitle-new-go": "गम्यताम्",
 	"timedmedia-file": "सञ्चिका"
 }
