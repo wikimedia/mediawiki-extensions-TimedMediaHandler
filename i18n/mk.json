@@ -203,5 +203,8 @@
 	"videojs-captions-create": "Создај толкување",
 	"transcodestatistics": "Статистика за прекодирања",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 — толкување на снимката: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Не пронајдов толкување на $1 за снимката: $2"
+	"timedmedia-timedtext-title-create-subtitles": "Не пронајдов толкување на $1 за снимката: $2",
+	"m3u8-error-create-temp": "Не успеав да создадат привремена податотека за $1",
+	"m3u8-error-write-temp": "Не успеав да запишам во привремена податотека за $1",
+	"m3u8-error-save-playlist": "Грешка при зачувување на HLS-снимкоредот $1"
 }
