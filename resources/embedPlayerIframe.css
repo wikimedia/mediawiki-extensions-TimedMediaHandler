@@ -12,11 +12,8 @@ body {
 
 /* stylelint-disable selector-max-id */
 
-#videoContainer .videoHolder {
-	position: static;
-}
-
-#videoContainer {
+#videoContainer,
+#videoContainer > span {
 	width: 100%;
 	height: 100%;
 	background-color: #000;
@@ -26,7 +23,7 @@ body {
 }
 
 /* poster and preload before JS is loaded */
-#videoContainer > video[ data-player='fillwindow' ] {
+#videoContainer > span > video[ data-player='fillwindow' ] {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
