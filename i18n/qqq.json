@@ -19,7 +19,8 @@
 			"Siebrand",
 			"Tmv",
 			"Umherirrender",
-			"아라"
+			"아라",
+			"McDutchie"
 		]
 	},
 	"timedmediahandler-extensionname": "{{name}}\nThe name of the extension",
@@ -180,7 +181,7 @@
 	"timedmedia-subtitle-no-subtitles": "Parameters:\n* $1 is a language name.",
 	"timedmedia-subtitle-remote": "Used as page title. Parameters:\n* $1 - the display name of the repository\nThe page body for this page title is:\n* {{msg-mw|timedmedia-subtitle-remote-link}}",
 	"timedmedia-subtitle-remote-link": "Used as page body. Parameters:\n* $1 - the description URL of the file\n* $2 - the display name of the repository\nThe page title for this message is:\n* {{msg-mw|timedmedia-subtitle-remote}}",
-	"timedmedia-subtitles-available": "Accessibility label to indicate if a media file has subtitles available. Represented with a CC-icon overlayed on top of the placeholder to begin media playback.",
+	"timedmedia-subtitles-available": "Accessibility label to indicate if a media file has subtitles available. Represented with a CC-icon overlayed on top of the placeholder to begin media playback. The full stop is important to ensure that the screenreader registers the end of the sentence.",
 	"timedmedia-derivative-state-transcodes": "Number of transcodes. Parameters:\n* $1 - number of transcodes",
 	"timedmedia-derivative-state-active": "currently active transcodes\nParameters are:\n* $1 number of transcodes",
 	"timedmedia-derivative-state-queued": "queued transcode jobs\nParameters are:\n* $1 number of transcodes",
