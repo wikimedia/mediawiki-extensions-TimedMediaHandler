@@ -6,7 +6,6 @@
 	},
 	"timedmedia-dismiss": "ዕጸው",
 	"timedmedia-download": "ፋይል ኣውርድ",
-	"timedmedia-play-media": "ትሕዝቶ ሜድያ ተጻወት",
 	"timedmedia-direct-link": "ምውራድ",
 	"timedmedia-days": "{{PLURAL:$1|1 መዓልቲ|$1 መዓልታት}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 ሰዓት|$1 ሰዓታት}}",

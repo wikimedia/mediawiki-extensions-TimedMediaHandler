@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Marwan Mohamad"
-		]
-	},
-	"timedmedia-source-file": "Bungo $1",
-	"timedmedia-source-audio-file-desc": "Berkas ($2) asli $1"
-}

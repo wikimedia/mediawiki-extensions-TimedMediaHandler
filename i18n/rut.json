@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Rut"
-		]
-	},
-	"timedmedia-source-file": "$1 источник",
-	"timedmedia-source-audio-file-desc": "Халисды $1 файл ($2)"
-}

@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"ChoiChong"
-		]
-	},
-	"timedmedia-source-file": "$1 ソース",
-	"timedmedia-source-audio-file-desc": "オリジナル $1 ファイル ($2)"
-}
