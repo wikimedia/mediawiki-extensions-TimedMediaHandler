@@ -6,7 +6,7 @@
 		}
 	],
 	"require": {
-		"wikimedia/getid3": "v1.9.22.2"
+		"james-heinrich/getid3": "v1.9.23"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "41.0.0",
