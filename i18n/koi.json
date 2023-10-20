@@ -4,6 +4,9 @@
 			"Римма"
 		]
 	},
+	"timedmedia-duration": "Кыссьӧм :$1",
+	"timedmedia-play-audio": "Мӧдпӧв лӧсьӧтны аудио",
+	"timedmedia-play-video": "Мӧдпӧв лӧсьӧтны видео",
 	"m3u8-error-create-temp": "Эз артмы лӧсьӧтны $1 недырся файл",
 	"m3u8-error-write-temp": "Эз артмы лӧсьӧтны $1 недырся файл",
 	"m3u8-error-save-playlist": "$1 Плейлист видзӧм дырни сорсьӧммез"
