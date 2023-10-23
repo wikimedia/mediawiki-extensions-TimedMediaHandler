@@ -40,6 +40,8 @@
 	"timedmedia-dismiss": "Затвори",
 	"timedmedia-download": "Преузми датотеку",
 	"timedmedia-duration": "Трајање: $1",
+	"timedmedia-play-audio": "Репродукуј аудио",
+	"timedmedia-play-video": "Репродукуј видео",
 	"timedmedia-desc-link": "Подаци о овој датотеци",
 	"timedmedia-status-header": "Други формати",
 	"timedmedia-update-status": "Освежи статус",
