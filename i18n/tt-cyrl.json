@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Derslek",
+			"Mansur",
 			"Marat-avgust",
 			"Ерней",
 			"Ильнар"
@@ -10,5 +11,8 @@
 	"timedmedia-more": "Тулырак...",
 	"timedmedia-dismiss": "Ябу",
 	"timedmedia-download": "Файлны күчереп алу",
+	"timedmedia-duration": "Дәвамлыгы: $1",
+	"timedmedia-play-audio": "Аудионы уйнатырга",
+	"timedmedia-play-video": "Видеоны уйнатырга",
 	"timedmedia-desc-link": "Файл турында мәгълүмат"
 }
