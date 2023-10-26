@@ -10,6 +10,7 @@
 			"আফতাবুজ্জামান"
 		]
 	},
+	"timedmediahandler-extensionname": "টাইমডমিডিয়াহ্যান্ডেলার",
 	"timedmedia-ogg-short-audio": "অগ $1 শব্দ ফাইল, $2",
 	"timedmedia-ogg-short-video": "অগ $1 ভিডিও ফাইল, $2",
 	"timedmedia-ogg-short-general": "অগ $1 মিডিয়া ফাইল, $2",
@@ -66,6 +67,7 @@
 	"timedmedia-reset-button-cancel": "পুনঃস্থাপন করবেন না",
 	"timedmedia-reset-button-dismiss": "খারিজ",
 	"timedmedia-reset-button-reset": "পুনঃস্থাপন",
+	"timedmedia-error-dismiss": "খারিজ করুন",
 	"timedmedia-source-original": "উৎস",
 	"timedmedia-derivative-desc-160p.ogv": "স্বল্প ব্যান্ডউইথ অগ ভিডিও (১৬০P)",
 	"timedmedia-derivative-desc-240p.ogv": "ছোট অগ ভিডিও (২৪০P)",
