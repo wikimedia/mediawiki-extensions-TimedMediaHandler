@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ukhant Erdemt"
+			"Ukhant Erdemt",
+			"Алия"
 		]
 	},
 	"timedmedia-ogg-long-audio": "Ogg $1 дууна файл, утнь $2, $3, файлын кемҗә: $6",
@@ -43,5 +44,5 @@
 	"timedmedia-resolution-144": "Баһ 144p",
 	"m3u8-error-create-temp": "$1-ин түр-зуурын файлыг үүскҗ чадсн уга",
 	"m3u8-error-write-temp": "$1-ын түр-зуурын файл бичҗ чадсн уга",
-	"m3u8-error-save-playlist": "HLS тогльх җигсәлтиг $1 хадһлхд алда һарв"
+	"m3u8-error-save-playlist": "HLS тоглюлх җигсәлтиг $1 хадһлхд эндү һарв"
 }
