@@ -17,6 +17,7 @@
 			"Xiaomingyan",
 			"Xiplus",
 			"Xyb",
+			"Xzonn",
 			"Yfdyh000",
 			"乌拉跨氪",
 			"予弦",
@@ -55,6 +56,9 @@
 	"timedmedia-more": "更多…",
 	"timedmedia-dismiss": "关闭",
 	"timedmedia-download": "下载文件",
+	"timedmedia-duration": "时长：$1。",
+	"timedmedia-play-audio": "播放音频",
+	"timedmedia-play-video": "播放视频",
 	"timedmedia-desc-link": "关于该文件",
 	"timedmedia-status-header": "转码状态",
 	"timedmedia-update-status": "更新转码状态",
@@ -123,6 +127,7 @@
 	"timedmedia-derivative-desc-1440p.mp4": "超高清MP4 H.264（1440P）",
 	"timedmedia-derivative-desc-2160p.mp4": "4K超高清MP4 H.264（2160P）",
 	"timedmedia-derivative-desc-m3u8": "HTTP 直播",
+	"timedmedia-derivative-stereo.audio.opus.mp4": "立体声（Opus）",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "流媒体音频（Opus 立体声）",
 	"timedmedia-derivative-stereo.audio.mp3": "立体声（MP3）",
 	"timedmedia-derivative-desc-stereo.audio.mp3": "流音频（MP3 立体声）",
@@ -189,7 +194,11 @@
 	"videojs-more-information": "更多信息",
 	"videojs-quality": "视频品质",
 	"videojs-subtitles-create": "创建字幕",
+	"videojs-captions-create": "创建字幕",
 	"transcodestatistics": "转码统计",
 	"timedmedia-timedtext-title-edit-subtitles": "片段$2的$1字幕",
-	"timedmedia-timedtext-title-create-subtitles": "没有找到片段$2的$1字幕"
+	"timedmedia-timedtext-title-create-subtitles": "没有找到片段$2的$1字幕",
+	"m3u8-error-create-temp": "无法创建$1的临时文件",
+	"m3u8-error-write-temp": "无法写入$1的临时文件",
+	"m3u8-error-save-playlist": "保存HLS播放列表$1时出错"
 }
