@@ -22,7 +22,9 @@
 			"佛壁灯",
 			"神樂坂秀吉",
 			"铁桶",
-			"沈澄心"
+			"沈澄心",
+			"Xyb",
+			"Xzonn"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -169,6 +171,7 @@
 	"videojs-more-information": "更多信息",
 	"videojs-quality": "视频品质",
 	"videojs-subtitles-create": "创建字幕",
+	"videojs-captions-create": "创建字幕",
 	"transcodestatistics": "转码统计",
 	"timedmedia-timedtext-title-edit-subtitles": "片段$2的$1字幕",
 	"timedmedia-timedtext-title-create-subtitles": "没有找到片段$2的$1字幕"
