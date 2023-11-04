@@ -80,7 +80,7 @@ class ApiTranscodeReset extends ApiBase {
 
 		// Don't reset if less than 1 hour has passed and we have no error )
 		$file = $this->repoGroup->findFile( $titleObj );
-		$timeSinceLastReset = self::checkTimeSinceLastRest( $file, $transcodeKey );
+		$timeSinceLastReset = $this->checkTimeSinceLastRest( $file, $transcodeKey );
 		$waitTimeForTranscodeReset = $this->getConfig()->get( 'WaitTimeForTranscodeReset' );
 		if ( $timeSinceLastReset < $waitTimeForTranscodeReset ) {
 			$msg = $this->msg(
@@ -113,21 +113,20 @@ class ApiTranscodeReset extends ApiBase {
 	 * @param string|false $transcodeKey
 	 * @return int|string
 	 */
-	public static function checkTimeSinceLastRest( $file, $transcodeKey ) {
-		global $wgWaitTimeForTranscodeReset;
+	public function checkTimeSinceLastRest( $file, $transcodeKey ) {
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $file );
 		if ( $transcodeKey ) {
 			if ( !$transcodeStates[$transcodeKey] ) {
 				// transcode key not found
-				return $wgWaitTimeForTranscodeReset + 1;
+				return $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;
 			}
-			return self::getStateResetTime( $transcodeStates[$transcodeKey] );
+			return $this->getStateResetTime( $transcodeStates[$transcodeKey] );
 		}
 		// least wait is set to reset time:
-		$leastWait = $wgWaitTimeForTranscodeReset + 1;
+		$leastWait = $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;
 		// else check for lowest reset time
 		foreach ( $transcodeStates as $state ) {
-			$ctime = self::getStateResetTime( $state );
+			$ctime = $this->getStateResetTime( $state );
 			if ( $ctime < $leastWait ) {
 				$leastWait = $ctime;
 			}
@@ -139,12 +138,11 @@ class ApiTranscodeReset extends ApiBase {
 	 * @param array $state
 	 * @return int|string
 	 */
-	public static function getStateResetTime( $state ) {
-		global $wgWaitTimeForTranscodeReset;
+	public function getStateResetTime( $state ) {
 		$db = wfGetDB( DB_REPLICA );
 		// if an error return waitTime +1
 		if ( $state['time_error'] !== null ) {
-			return $wgWaitTimeForTranscodeReset + 1;
+			return $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;
 		}
 		// return wait time from most recent event
 		foreach ( [ 'time_success', 'time_startwork', 'time_addjob' ] as $timeField ) {
@@ -153,7 +151,7 @@ class ApiTranscodeReset extends ApiBase {
 			}
 		}
 		// No time info, return resetWaitTime
-		return $wgWaitTimeForTranscodeReset + 1;
+		return $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;
 	}
 
 	public function mustBePosted() {
