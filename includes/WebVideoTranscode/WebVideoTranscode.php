@@ -1579,7 +1579,6 @@ class WebVideoTranscode {
 
 	public static function enabledTranscodes() {
 		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable These globals are arrays
 		return static::filterAndSort( array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet ) );
 	}
 

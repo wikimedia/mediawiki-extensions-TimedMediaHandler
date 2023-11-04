@@ -22,6 +22,9 @@ class ApiTranscodeReset extends ApiBase {
 	/** @var RepoGroup */
 	private $repoGroup;
 
+	/** @var TranscodableChecker */
+	private $transcodableChecker;
+
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
@@ -34,6 +37,10 @@ class ApiTranscodeReset extends ApiBase {
 	) {
 		parent::__construct( $main, $action );
 		$this->repoGroup = $repoGroup;
+		$this->transcodableChecker = new TranscodableChecker(
+			$this->getConfig(),
+			$repoGroup
+		);
 	}
 
 	public function execute() {
@@ -54,7 +61,7 @@ class ApiTranscodeReset extends ApiBase {
 		$this->checkTitleUserPermissions( $titleObj, 'transcode-reset' );
 
 		// Make sure the title can be transcoded
-		if ( !Hooks::isTranscodableTitle( $titleObj, $this->repoGroup ) ) {
+		if ( !$this->transcodableChecker->isTranscodableTitle( $titleObj ) ) {
 			$this->dieWithError(
 				[
 					'apierror-timedmedia-invalidtranscodetitle',
