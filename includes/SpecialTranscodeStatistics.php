@@ -10,12 +10,13 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use OutputPage;
 use SpecialPage;
+use WANObjectCache;
 use Wikimedia\Rdbms\Database;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class SpecialTranscodeStatistics extends SpecialPage {
@@ -28,9 +29,23 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		'missing' => 'transcode_time_addjob IS NULL',
 	];
 
-	/** @inheritDoc */
-	public function __construct( $request = null, $par = null ) {
+	/** @var IConnectionProvider */
+	private $dbProvider;
+
+	/** @var WANObjectCache */
+	private $cache;
+
+	/**
+	 * @param IConnectionProvider $dbProvider
+	 * @param WANObjectCache $cache
+	 */
+	public function __construct(
+		IConnectionProvider $dbProvider,
+		WANObjectCache $cache
+	) {
 		parent::__construct( 'TranscodeStatistics', 'transcode-status' );
+		$this->dbProvider = $dbProvider;
+		$this->cache = $cache;
 	}
 
 	/** @inheritDoc */
@@ -90,15 +105,13 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	 * @return false|array
 	 */
 	private function getTranscodes( $state, $limit = 50 ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$fname = __METHOD__;
 
-		return $cache->getWithSetCallback(
-			$cache->makeKey( 'TimedMediaHandler-files', $state ),
-			$cache::TTL_MINUTE,
+		return $this->cache->getWithSetCallback(
+			$this->cache->makeKey( 'TimedMediaHandler-files', $state ),
+			$this->cache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $state, $limit, $fname ) {
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-				$dbr = $lbFactory->getReplicaDatabase();
+				$dbr = $this->dbProvider->getReplicaDatabase();
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
 				$files = [];
@@ -157,15 +170,13 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	 * @return array
 	 */
 	private function getStates() {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
 		$fname = __METHOD__;
 
-		return $cache->getWithSetCallback(
-			$cache->makeKey( 'TimedMediaHandler-states' ),
-			$cache::TTL_MINUTE,
+		return $this->cache->getWithSetCallback(
+			$this->cache->makeKey( 'TimedMediaHandler-states' ),
+			$this->cache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $fname ) {
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-				$dbr = $lbFactory->getReplicaDatabase();
+				$dbr = $this->dbProvider->getReplicaDatabase();
 				$setOpts += Database::getCacheSetOptions( $dbr );
 
 				$allTranscodes = WebVideoTranscode::enabledTranscodes();
