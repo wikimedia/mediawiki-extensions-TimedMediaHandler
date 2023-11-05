@@ -820,14 +820,13 @@ class WebVideoTranscode {
 	 * @return array an associative array of sources suitable for <source> tag output
 	 */
 	public static function getLocalSources( &$file, $options = [] ) {
-		global $wgEnableTranscode;
 		$sources = [];
 
 		// Add the original file:
 		$sources[] = static::getPrimarySourceAttributes( $file, $options );
 
 		// If $wgEnableTranscode is false don't look for or add other local sources:
-		if ( $wgEnableTranscode === false &&
+		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'EnableTranscode' ) === false &&
 			!( $file->repo instanceof IForeignRepoWithDB ) ) {
 			return $sources;
 		}
@@ -1421,15 +1420,14 @@ class WebVideoTranscode {
 	 * @return bool
 	 */
 	public static function isTranscodePrioritized( File $file, $transcodeKey ) {
-		global $wgTmhPriorityResolutionThreshold, $wgTmhPriorityLengthThreshold;
-
 		$transcodeHeight = 0;
 		$matches = [];
 		if ( preg_match( '/^(\d+)p/', $transcodeKey, $matches ) ) {
 			$transcodeHeight = (int)$matches[0];
 		}
-		return ( $transcodeHeight <= $wgTmhPriorityResolutionThreshold )
-			&& ( $file->getLength() <= $wgTmhPriorityLengthThreshold );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		return ( $transcodeHeight <= $config->get( 'TmhPriorityResolutionThreshold' ) )
+			&& ( $file->getLength() <= $config->get( 'TmhPriorityLengthThreshold' ) );
 	}
 
 	/**
@@ -1576,18 +1574,21 @@ class WebVideoTranscode {
 	}
 
 	public static function enabledTranscodes() {
-		global $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet;
-		return static::filterAndSort( array_merge( $wgEnabledTranscodeSet, $wgEnabledAudioTranscodeSet ) );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		return static::filterAndSort( array_merge(
+			$config->get( 'EnabledTranscodeSet' ),
+			$config->get( 'EnabledAudioTranscodeSet' )
+		) );
 	}
 
 	public static function enabledVideoTranscodes() {
-		global $wgEnabledTranscodeSet;
-		return static::filterAndSort( $wgEnabledTranscodeSet );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		return static::filterAndSort( $config->get( 'EnabledTranscodeSet' ) );
 	}
 
 	public static function enabledAudioTranscodes() {
-		global $wgEnabledAudioTranscodeSet;
-		return static::filterAndSort( $wgEnabledAudioTranscodeSet );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		return static::filterAndSort( $config->get( 'EnabledAudioTranscodeSet' ) );
 	}
 
 	public static function validateTranscodeConfiguration() {

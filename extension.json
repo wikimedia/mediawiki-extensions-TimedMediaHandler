@@ -150,7 +150,10 @@
 			]
 		},
 		"iframe": {
-			"class": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput"
+			"class": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput",
+			"services": [
+				"MainConfig"
+			]
 		},
 		"installer": {
 			"class": "MediaWiki\\TimedMediaHandler\\InstallerHooks"

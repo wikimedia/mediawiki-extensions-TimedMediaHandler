@@ -108,8 +108,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	public function getUrl( $sizeOverride = false ) {
-		global $wgResourceBasePath;
-		$url = "$wgResourceBasePath/resources/assets/file-type-icons/fileicon-ogg.png";
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$resourceBasePath = $config->get( MainConfigNames::ResourceBasePath );
+		$url = "$resourceBasePath/resources/assets/file-type-icons/fileicon-ogg.png";
 
 		if ( $this->isVideo ) {
 			if ( $this->thumbUrl ) {
@@ -214,13 +215,13 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return bool
 	 */
 	private function useImagePopUp() {
-		global $wgMinimumVideoPlayerSize;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		// Check if the video is too small to play inline ( instead do a pop-up dialog )
 		// If we're filling the window (e.g. during an iframe embed) one probably doesn't want the pop-up.
 		// Also, the pop-up is broken in that case.
 		return $this->isVideo
 			&& !$this->fillwindow
-			&& $this->getPlayerWidth() < $wgMinimumVideoPlayerSize
+			&& $this->getPlayerWidth() < $config->get( 'MinimumVideoPlayerSize' )
 			// Do not do pop-up if it's going to be the same size as inline player anyways
 			&& $this->getPlayerWidth() < $this->getPopupPlayerWidth();
 	}

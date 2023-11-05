@@ -4,6 +4,7 @@ namespace MediaWiki\TimedMediaHandler;
 
 use File;
 use MediaTransformError;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
 use UnregisteredLocalFile;
@@ -35,13 +36,15 @@ class TimedMediaThumbnail {
 	 * @return bool|MediaTransformError
 	 */
 	private static function tryFfmpegThumb( $options ) {
-		global $wgFFmpegLocation, $wgMaxShellMemory;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$fFmpegLocation = $config->get( 'FFmpegLocation' );
+		$maxShellMemory = $config->get( MainConfigNames::MaxShellMemory );
 
-		if ( !$wgFFmpegLocation || !is_file( $wgFFmpegLocation ) ) {
+		if ( !$fFmpegLocation || !is_file( $fFmpegLocation ) ) {
 			return false;
 		}
 
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . ' -nostdin -threads 1 ';
+		$cmd = wfEscapeShellArg( $fFmpegLocation ) . ' -nostdin -threads 1 ';
 
 		$file = $options['file'];
 		$handler = $file->getHandler();
@@ -104,7 +107,7 @@ class TimedMediaThumbnail {
 		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;
 		}
-		$returnText = $cmd . "\nwgMaxShellMemory: $wgMaxShellMemory\n" . $returnText;
+		$returnText = $cmd . "\nwgMaxShellMemory: $maxShellMemory\n" . $returnText;
 		// Return error box
 		return new MediaTransformError(
 			'thumbnail_error', $options['width'], $options['height'], $returnText

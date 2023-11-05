@@ -81,10 +81,11 @@ class TextHandler {
 			return NS_TIMEDTEXT;
 		}
 		if ( $repo instanceof IForeignRepoWithDB ) {
-			global $wgTimedTextForeignNamespaces;
+			$config = MediaWikiServices::getInstance()->getMainConfig();
+			$timedTextForeignNamespaces = $config->get( 'TimedTextForeignNamespaces' );
 			$wikiID = $repo->getReplicaDB()->getDomainID();
 			// if failed to get namespace via IForeignRepoWithDB, return NS_TIMEDTEXT
-			return $wgTimedTextForeignNamespaces[$wikiID] ?? NS_TIMEDTEXT;
+			return $timedTextForeignNamespaces[$wikiID] ?? NS_TIMEDTEXT;
 		}
 		if ( $repo instanceof IForeignRepoWithMWApi ) {
 			if ( $this->remoteNs !== null ) {
