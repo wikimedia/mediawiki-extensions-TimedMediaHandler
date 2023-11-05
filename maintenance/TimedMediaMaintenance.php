@@ -16,7 +16,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
 		$types = [];
 		if ( $this->hasOption( 'audio' ) ) {
 			$types[] = 'AUDIO';

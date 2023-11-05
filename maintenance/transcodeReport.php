@@ -65,7 +65,7 @@ class TranscodeReport extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
 		$types = [];
 		if ( $this->hasOption( 'audio' ) ) {
 			$types[] = 'AUDIO';
@@ -146,7 +146,7 @@ class TranscodeReport extends Maintenance {
 	 * @param File $file
 	 */
 	private function processFile( File $file ) {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
 
 		// Transcode table doesn't carry the file size, but does carry the final bitrate.
 		$handler = $file->getHandler();

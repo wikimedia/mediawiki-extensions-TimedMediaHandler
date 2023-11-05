@@ -31,7 +31,7 @@ class ConvertSubtitles extends Maintenance {
 	public function execute() {
 		global $wgTimedTextNS;
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
 		$where = [ 'page_namespace' => $wgTimedTextNS ];
 		if ( $this->hasOption( 'file' ) ) {
 			$file = Title::newFromText( $this->getOption( 'file' ), NS_FILE );

@@ -38,7 +38,7 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 		$this->output( $file->getName() . "\n" );
 
 		$transcodeSet = WebVideoTranscode::enabledTranscodes();
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
 
 		WebVideoTranscode::cleanupTranscodes( $file );
 
