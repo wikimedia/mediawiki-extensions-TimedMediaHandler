@@ -245,7 +245,7 @@ class Hooks implements
 
 	/**
 	 * Utility function to check if a given file can be "transcoded"
-	 * @param File $file File object
+	 * @param File|false $file File object
 	 * @return bool
 	 */
 	public static function isTranscodableFile( $file ) {
@@ -326,7 +326,7 @@ class Hooks implements
 	 */
 	public function onFileUpload( $file, $reupload, $hasDescription ) {
 		// Check that the file is a transcodable asset:
-		if ( $file && self::isTranscodableFile( $file ) ) {
+		if ( self::isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
 			WebVideoTranscode::removeTranscodes( $file );
 			WebVideoTranscode::startJobQueue( $file );
