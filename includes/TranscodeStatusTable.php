@@ -5,9 +5,8 @@ namespace MediaWiki\TimedMediaHandler;
 use File;
 use Html;
 use IContextSource;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use User;
 use Xml;
 
 /**
@@ -18,25 +17,42 @@ use Xml;
  *
  */
 class TranscodeStatusTable {
+	/** @var IContextSource */
+	private $context;
+
+	/** @var LinkRenderer */
+	private $linkRenderer;
+
+	/**
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 */
+	public function __construct(
+		IContextSource $context,
+		LinkRenderer $linkRenderer
+	) {
+		$this->context = $context;
+		$this->linkRenderer = $linkRenderer;
+	}
+
 	/**
 	 * @param File $file
-	 * @param IContextSource $context
 	 * @return string
 	 */
-	public static function getHTML( $file, IContextSource $context ) {
+	public function getHTML( $file ) {
 		// Add transcode table css and javascript:
-		$context->getOutput()->addModules( [ 'ext.tmh.transcodetable' ] );
+		$this->context->getOutput()->addModules( [ 'ext.tmh.transcodetable' ] );
 
 		$o = '<h2 id="transcodestatus">' . wfMessage( 'timedmedia-status-header' )->escaped() . '</h2>';
 		// Give the user a purge page link
-		$o .= MediaWikiServices::getInstance()->getLinkRenderer()->makeLink(
+		$o .= $this->linkRenderer->makeLink(
 			$file->getTitle(),
-			$context->msg( 'timedmedia-update-status' )->text(),
+			$this->context->msg( 'timedmedia-update-status' )->text(),
 			[],
 			[ 'action' => 'purge' ]
 		);
 
-		$o .= self::getTranscodesTable( $file, $context->getUser() );
+		$o .= $this->getTranscodesTable( $file );
 
 		return $o;
 	}
@@ -69,10 +85,9 @@ class TranscodeStatusTable {
 
 	/**
 	 * @param File $file
-	 * @param User $user
 	 * @return string
 	 */
-	public static function getTranscodesTable( $file, User $user ) {
+	public function getTranscodesTable( $file ) {
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
 		if ( !$transcodeRows ) {
@@ -110,7 +125,7 @@ class TranscodeStatusTable {
 			. '<th>' . wfMessage( 'timedmedia-transcodebitrate' )->escaped() . '</th>'
 			. '<th>' . wfMessage( 'timedmedia-direct-link' )->escaped() . '</th>';
 
-		if ( $user->isAllowed( 'transcode-reset' ) ) {
+		if ( $this->context->getUser()->isAllowed( 'transcode-reset' ) ) {
 			$o .= '<th>' . wfMessage( 'timedmedia-actions' )->escaped() . '</th>';
 		}
 
@@ -122,7 +137,7 @@ class TranscodeStatusTable {
 			$o .= '<tr>';
 			// Encode info:
 			$o .= '<td>' . wfMessage( 'timedmedia-derivative-' . $transcodeKey )->escaped() . '</td>';
-			$o .= '<td>' . self::getTranscodeBitrate( $file, $state ) . '</td>';
+			$o .= '<td>' . $this->getTranscodeBitrate( $file, $state ) . '</td>';
 
 			// Download file
 			//
@@ -144,7 +159,7 @@ class TranscodeStatusTable {
 			$o .= '</td>';
 
 			// Check if we should include actions:
-			if ( $user->isAllowed( 'transcode-reset' ) ) {
+			if ( $this->context->getUser()->isAllowed( 'transcode-reset' ) ) {
 				// include reset transcode action buttons
 				$o .= '<td class="mw-filepage-transcodereset"><a href="#" data-transcodekey="' .
 					htmlspecialchars( $transcodeKey ) . '">' . wfMessage( 'timedmedia-reset' )->escaped() .
@@ -153,7 +168,7 @@ class TranscodeStatusTable {
 
 			// Status:
 			$o .= '<td>' . self::getStatusMsg( $file, $state ) . '</td>';
-			$o .= '<td>' . self::getTranscodeDuration( $file, $state ) . '</td>';
+			$o .= '<td>' . $this->getTranscodeDuration( $file, $state ) . '</td>';
 
 			$o .= '</tr>';
 		}
@@ -176,13 +191,12 @@ class TranscodeStatusTable {
 	 * @param array $state
 	 * @return string
 	 */
-	public static function getTranscodeDuration( File $file, array $state ) {
-		global $wgLang;
+	public function getTranscodeDuration( File $file, array $state ) {
 		if ( $state['time_success'] !== null ) {
 			$startTime = (int)wfTimestamp( TS_UNIX, $state['time_startwork'] );
 			$endTime = (int)wfTimestamp( TS_UNIX, $state['time_success'] );
 			$delta = $endTime - $startTime;
-			return $wgLang->formatTimePeriod( $delta );
+			return $this->context->getLanguage()->formatTimePeriod( $delta );
 		}
 		return '';
 	}
@@ -192,10 +206,9 @@ class TranscodeStatusTable {
 	 * @param array $state
 	 * @return string
 	 */
-	public static function getTranscodeBitrate( File $file, array $state ) {
-		global $wgLang;
+	public function getTranscodeBitrate( File $file, array $state ) {
 		if ( $state['time_success'] !== null ) {
-			return $wgLang->formatBitrate( $state['final_bitrate'] );
+			return $this->context->getLanguage()->formatBitrate( $state['final_bitrate'] );
 		}
 		return '';
 	}

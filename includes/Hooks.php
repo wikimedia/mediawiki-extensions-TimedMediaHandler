@@ -20,6 +20,7 @@ use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Page\Hook\ArticleFromTitleHook;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
 use MediaWiki\Page\Hook\ImageOpenShowImageInlineBeforeHook;
@@ -68,6 +69,9 @@ class Hooks implements
 	/** @var Config */
 	private $config;
 
+	/** @var LinkRenderer */
+	private $linkRenderer;
+
 	/** @var RepoGroup */
 	private $repoGroup;
 
@@ -79,15 +83,18 @@ class Hooks implements
 
 	/**
 	 * @param Config $config
+	 * @param LinkRenderer $linkRenderer
 	 * @param RepoGroup $repoGroup
 	 * @param SpecialPageFactory $specialPageFactory
 	 */
 	public function __construct(
 		Config $config,
+		LinkRenderer $linkRenderer,
 		RepoGroup $repoGroup,
 		SpecialPageFactory $specialPageFactory
 	) {
 		$this->config = $config;
+		$this->linkRenderer = $linkRenderer;
 		$this->repoGroup = $repoGroup;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->transcodableChecker = new TranscodableChecker(
@@ -265,7 +272,11 @@ class Hooks implements
 		// load the file:
 		$file = $this->repoGroup->findFile( $imagePage->getTitle() );
 		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
-			$html .= TranscodeStatusTable::getHTML( $file, $imagePage->getContext() );
+			$transcodeStatusTable = new TranscodeStatusTable(
+				$imagePage->getContext(),
+				$this->linkRenderer
+			);
+			$html .= $transcodeStatusTable->getHTML( $file );
 		}
 		return true;
 	}
