@@ -7,7 +7,8 @@
 			"Elias Ahmmad",
 			"MdsShakil",
 			"Zaheen",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Borhan"
 		]
 	},
 	"timedmediahandler-extensionname": "টাইমডমিডিয়াহ্যান্ডেলার",
@@ -114,5 +115,6 @@
 	"videojs-subtitles-create": "সাবটাইটেল তৈরি করুন",
 	"videojs-captions-create": "ক্যাপশন তৈরি করুন",
 	"transcodestatistics": "ট্রান্সকোড পরিসংখ্যান",
-	"timedmedia-timedtext-title-edit-subtitles": "$2 ক্লিপের জন্য $1 সাবটাইটেল"
+	"timedmedia-timedtext-title-edit-subtitles": "$2 ক্লিপের জন্য $1 সাবটাইটেল",
+	"m3u8-error-create-temp": "$1 এর জন্য অস্থায়ী ফাইল তৈরি করা ব্যর্থ হয়েছে"
 }
