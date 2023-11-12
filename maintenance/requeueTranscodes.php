@@ -15,11 +15,11 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->addOption( "key", "re-queue for given format key", false, true );
+		$this->addOption( "key", "process only the given format key or comma-delimited list", false, true );
 		$this->addOption( "error", "re-queue formats that previously failed" );
 		$this->addOption( "stalled", "re-queue formats that were started but not finished" );
 		$this->addOption( "missing", "queue formats that were never started" );
-		$this->addOption( "all", "re-queue all output formats" );
+		$this->addOption( "force", "force re-queueing of all matching transcodes" );
 		$this->addOption( "throttle", "throttle on the queue" );
 		$this->addOption( "manual-override", "override soft limits on output file size" );
 		$this->addDescription( "re-queue existing and missing media transcodes." );
@@ -42,29 +42,37 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 
 		WebVideoTranscode::cleanupTranscodes( $file );
 
-		if ( $this->hasOption( "all" ) ) {
-			$toAdd = $toRemove = $transcodeSet;
-		} elseif ( $this->hasOption( "key" ) ) {
-			$toAdd = $toRemove = [ $this->getOption( 'key' ) ];
+		$keys = [];
+		if ( $this->hasOption( 'key' ) ) {
+			$keys = preg_split( '/\s*,\s*/', $this->getOption( 'key' ) );
+			$toAdd = $keys;
 		} else {
 			$toAdd = $transcodeSet;
-			$toRemove = [];
-			$state = WebVideoTranscode::getTranscodeState( $file, $dbw );
-			foreach ( $state as $key => $item ) {
-				if ( $this->hasOption( 'error' ) && $item['time_error'] ) {
-					$toRemove[] = $key;
-					continue;
-				}
-				if ( $this->hasOption( 'stalled' ) &&
-					( $item['time_addjob'] && !$item['time_success'] && !$item['time_error'] ) ) {
-					$toRemove[] = $key;
-					continue;
-				}
-				if ( $this->hasOption( 'missing' ) &&
-					( !$item['time_addjob'] ) ) {
-					$toRemove[] = $key;
-					continue;
-				}
+		}
+
+		$toRemove = [];
+		$state = WebVideoTranscode::getTranscodeState( $file, $dbw );
+		foreach ( $state as $key => $item ) {
+			if ( $keys && !in_array( $key, $keys ) ) {
+				continue;
+			}
+			if ( $this->hasOption( 'force' ) ) {
+				$toRemove[] = $key;
+				continue;
+			}
+			if ( $this->hasOption( 'error' ) && $item['time_error'] ) {
+				$toRemove[] = $key;
+				continue;
+			}
+			if ( $this->hasOption( 'stalled' ) &&
+				( $item['time_addjob'] && !$item['time_success'] && !$item['time_error'] ) ) {
+				$toRemove[] = $key;
+				continue;
+			}
+			if ( $this->hasOption( 'missing' ) &&
+				( !$item['time_addjob'] ) ) {
+				$toRemove[] = $key;
+				continue;
 			}
 		}
 
