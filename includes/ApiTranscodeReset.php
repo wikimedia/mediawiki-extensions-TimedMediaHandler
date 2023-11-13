@@ -10,6 +10,7 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use RepoGroup;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * Allows users with the 'transcode-reset' right to reset / re-run a transcode job.
@@ -19,6 +20,9 @@ use Wikimedia\ParamValidator\ParamValidator;
  * @ingroup API
  */
 class ApiTranscodeReset extends ApiBase {
+	/** @var IConnectionProvider */
+	private $dbProvider;
+
 	/** @var RepoGroup */
 	private $repoGroup;
 
@@ -28,14 +32,17 @@ class ApiTranscodeReset extends ApiBase {
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
+	 * @param IConnectionProvider $dbProvider
 	 * @param RepoGroup $repoGroup
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
+		IConnectionProvider $dbProvider,
 		RepoGroup $repoGroup
 	) {
 		parent::__construct( $main, $action );
+		$this->dbProvider = $dbProvider;
 		$this->repoGroup = $repoGroup;
 		$this->transcodableChecker = new TranscodableChecker(
 			$this->getConfig(),
@@ -146,7 +153,7 @@ class ApiTranscodeReset extends ApiBase {
 	 * @return int|string
 	 */
 	public function getStateResetTime( $state ) {
-		$db = wfGetDB( DB_REPLICA );
+		$db = $this->dbProvider->getReplicaDatabase();
 		// if an error return waitTime +1
 		if ( $state['time_error'] !== null ) {
 			return $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;

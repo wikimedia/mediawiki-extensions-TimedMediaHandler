@@ -30,6 +30,7 @@
 		"transcodereset": {
 			"class": "MediaWiki\\TimedMediaHandler\\ApiTranscodeReset",
 			"services": [
+				"DBLoadBalancerFactory",
 				"RepoGroup"
 			]
 		}
