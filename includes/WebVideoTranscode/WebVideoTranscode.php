@@ -921,7 +921,6 @@ class WebVideoTranscode {
 	 * @return array[]
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
-		global $wgTranscodeBackgroundTimeLimit;
 		$fileName = $file->getName();
 		if ( !isset( static::$transcodeState[$fileName] ) ) {
 			if ( $db === false ) {
@@ -937,8 +936,6 @@ class WebVideoTranscode {
 				->caller( __METHOD__ )
 				->fetchResultSet();
 
-			$overTimeout = [];
-			$over = time() - ( 2 * $wgTranscodeBackgroundTimeLimit );
 			// Populate the per transcode state cache
 			foreach ( $res as $row ) {
 				// strip the out the "transcode_" from keys
@@ -947,28 +944,6 @@ class WebVideoTranscode {
 					$transcodeState[ str_replace( 'transcode_', '', $k ) ] = $v;
 				}
 				static::$transcodeState[ $fileName ][ $row->transcode_key ] = $transcodeState;
-				if ( $row->transcode_time_startwork !== null
-					&& wfTimestamp( TS_UNIX, $row->transcode_time_startwork ) < $over
-					&& $row->transcode_time_success === null
-					&& $row->transcode_time_error === null
-				) {
-					$overTimeout[] = $row->transcode_key;
-				}
-			}
-			if ( $overTimeout ) {
-				$dbw = $file->repo->getPrimaryDB();
-				$dbw->newUpdateQueryBuilder()
-					->update( 'transcode' )
-					->set( [
-						'transcode_time_error' => $dbw->timestamp(),
-						'transcode_error' => 'timeout'
-					] )
-					->where( [
-						'transcode_image_name' => $fileName,
-						'transcode_key' => $overTimeout
-					] )
-					->caller( __METHOD__ )
-					->execute();
 			}
 		}
 		$sorted = static::$transcodeState[ $fileName ];
