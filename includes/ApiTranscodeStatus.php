@@ -19,6 +19,9 @@ class ApiTranscodeStatus extends ApiQueryBase {
 	/** @var RepoGroup */
 	private $repoGroup;
 
+	/** @var TranscodableChecker */
+	private $transcodableChecker;
+
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
@@ -31,6 +34,10 @@ class ApiTranscodeStatus extends ApiQueryBase {
 	) {
 		parent::__construct( $queryModule, $moduleName );
 		$this->repoGroup = $repoGroup;
+		$this->transcodableChecker = new TranscodableChecker(
+			$this->getConfig(),
+			$repoGroup
+		);
 	}
 
 	public function execute() {
@@ -48,7 +55,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 			 */
 			foreach ( $images as $img ) {
 				// if its a "transcode" add the transcode status table output
-				if ( Hooks::isTranscodableTitle( $img->getTitle(), $this->repoGroup ) ) {
+				if ( $this->transcodableChecker->isTranscodableTitle( $img->getTitle() ) ) {
 					$transcodeStatus = WebVideoTranscode::getTranscodeState( $img );
 					// remove useless properties
 					foreach ( $transcodeStatus as &$val ) {

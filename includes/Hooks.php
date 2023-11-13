@@ -74,6 +74,9 @@ class Hooks implements
 	/** @var SpecialPageFactory */
 	private $specialPageFactory;
 
+	/** @var TranscodableChecker */
+	private $transcodableChecker;
+
 	/**
 	 * @param Config $config
 	 * @param RepoGroup $repoGroup
@@ -87,6 +90,10 @@ class Hooks implements
 		$this->config = $config;
 		$this->repoGroup = $repoGroup;
 		$this->specialPageFactory = $specialPageFactory;
+		$this->transcodableChecker = new TranscodableChecker(
+			$config,
+			$repoGroup
+		);
 	}
 
 	/**
@@ -230,61 +237,6 @@ class Hooks implements
 	}
 
 	/**
-	 * Wraps the isTranscodableFile function
-	 * @param Title $title
-	 * @param RepoGroup $repoGroup
-	 * @return bool
-	 */
-	public static function isTranscodableTitle( $title, RepoGroup $repoGroup ) {
-		if ( $title->getNamespace() !== NS_FILE ) {
-			return false;
-		}
-		$file = $repoGroup->findFile( $title );
-		return self::isTranscodableFile( $file );
-	}
-
-	/**
-	 * Utility function to check if a given file can be "transcoded"
-	 * @param File|false $file File object
-	 * @return bool
-	 */
-	public static function isTranscodableFile( $file ) {
-		global $wgEnableTranscode, $wgEnabledAudioTranscodeSet;
-
-		// don't show the transcode table if transcode is disabled
-		if ( !$wgEnableTranscode && !$wgEnabledAudioTranscodeSet ) {
-			return false;
-		}
-		// Can't find file
-		if ( !$file ) {
-			return false;
-		}
-		// We can only transcode local files
-		if ( !$file->isLocal() ) {
-			return false;
-		}
-
-		$handler = $file->getHandler();
-		// Not able to transcode files without handler
-		if ( !$handler ) {
-			return false;
-		}
-		$mediaType = $handler->getMetadataType( $file );
-		// If ogg or webm format and not audio we can "transcode" this file
-		$isAudio = $handler instanceof TimedMediaHandler && $handler->isAudio( $file );
-		if ( ( $mediaType === 'webm' || $mediaType === 'ogg'
-				|| $mediaType === 'mp4' || $mediaType === 'mpeg' )
-			&& !$isAudio
-		) {
-			return true;
-		}
-		if ( $isAudio && count( $wgEnabledAudioTranscodeSet ) ) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * @param Title $title
 	 * @return bool
 	 */
@@ -312,7 +264,7 @@ class Hooks implements
 	public function onImagePageAfterImageLinks( $imagePage, &$html ) {
 		// load the file:
 		$file = $this->repoGroup->findFile( $imagePage->getTitle() );
-		if ( self::isTranscodableFile( $file ) ) {
+		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			$html .= TranscodeStatusTable::getHTML( $file, $imagePage->getContext() );
 		}
 		return true;
@@ -326,7 +278,7 @@ class Hooks implements
 	 */
 	public function onFileUpload( $file, $reupload, $hasDescription ) {
 		// Check that the file is a transcodable asset:
-		if ( self::isTranscodableFile( $file ) ) {
+		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
 			WebVideoTranscode::removeTranscodes( $file );
 			WebVideoTranscode::startJobQueue( $file );
@@ -348,7 +300,7 @@ class Hooks implements
 	 * @return bool
 	 */
 	public function onTitleMove( Title $title, Title $newTitle, User $user, $reason, Status &$status ) {
-		if ( self::isTranscodableTitle( $title, $this->repoGroup ) ) {
+		if ( $this->transcodableChecker->isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
 			// ( will be re-added the first time the asset is displayed with its new title )
 			$file = $this->repoGroup->findFile( $title );
@@ -367,7 +319,7 @@ class Hooks implements
 	 * @return bool
 	 */
 	public function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
-		if ( !$oldimage && self::isTranscodableFile( $file ) ) {
+		if ( !$oldimage && $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
@@ -390,7 +342,7 @@ class Hooks implements
 		// Check if the article is a file and remove transcode files:
 		if ( ( $originalRevId !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
 			$file = $this->repoGroup->findFile( $wikiPage->getTitle() );
-			if ( self::isTranscodableFile( $file ) ) {
+			if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 				WebVideoTranscode::removeTranscodes( $file );
 				WebVideoTranscode::startJobQueue( $file );
 			}
@@ -409,7 +361,7 @@ class Hooks implements
 	public function onArticlePurge( $wikiPage ) {
 		if ( $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
 			$file = $this->repoGroup->findFile( $wikiPage->getTitle() );
-			if ( self::isTranscodableFile( $file ) ) {
+			if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
 		}
