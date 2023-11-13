@@ -72,8 +72,21 @@
 		"timedmediahandler"
 	],
 	"SpecialPages": {
-		"OrphanedTimedText": "MediaWiki\\TimedMediaHandler\\SpecialOrphanedTimedText",
-		"TranscodeStatistics": "MediaWiki\\TimedMediaHandler\\SpecialTranscodeStatistics"
+		"OrphanedTimedText": {
+			"class": "MediaWiki\\TimedMediaHandler\\SpecialOrphanedTimedText",
+			"services": [
+				"DBLoadBalancerFactory",
+				"LanguageConverterFactory",
+				"RepoGroup"
+			]
+		},
+		"TranscodeStatistics": {
+			"class": "MediaWiki\\TimedMediaHandler\\SpecialTranscodeStatistics",
+			"services": [
+				"DBLoadBalancerFactory",
+				"MainWANObjectCache"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"TimedMediaHandler": [

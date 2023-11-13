@@ -12,11 +12,13 @@ namespace MediaWiki\TimedMediaHandler;
 use Html;
 use HtmlArmor;
 use Linker;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Title\Title;
 use PageQueryPage;
+use RepoGroup;
 use Skin;
 use stdClass;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -30,9 +32,29 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	/** @var array with keys being names of valid files */
 	private $existingFiles;
 
-	/** @inheritDoc */
-	public function __construct( $name = 'OrphanedTimedText' ) {
-		parent::__construct( $name );
+	/** @var IConnectionProvider */
+	private $dbProvider;
+
+	/** @var LanguageConverterFactory */
+	private $languageConverterFactory;
+
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/**
+	 * @param IConnectionProvider $dbProvider
+	 * @param LanguageConverterFactory $languageConverterFactory
+	 * @param RepoGroup $repoGroup
+	 */
+	public function __construct(
+		IConnectionProvider $dbProvider,
+		LanguageConverterFactory $languageConverterFactory,
+		RepoGroup $repoGroup
+	) {
+		parent::__construct( 'OrphanedTimedText' );
+		$this->dbProvider = $dbProvider;
+		$this->languageConverterFactory = $languageConverterFactory;
+		$this->repoGroup = $repoGroup;
 	}
 
 	/**
@@ -98,7 +120,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return bool
 	 */
 	private function canExecuteQuery() {
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->dbProvider->getReplicaDatabase();
 		return $dbr->getType() === 'mysql';
 	}
 
@@ -233,7 +255,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 			}
 			$filesToLookFor[] = [ 'title' => $fileTitle, 'ignoreRedirect' => true ];
 		}
-		$this->existingFiles = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+		$this->existingFiles = $this->repoGroup->getLocalRepo()
 			->findFiles( $filesToLookFor );
 		$res->seek( 0 );
 	}
@@ -251,8 +273,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		$title = Title::makeTitleSafe( $row->namespace, $row->title );
 
 		if ( $title instanceof Title ) {
-			$contLangConv = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-				->getLanguageConverter();
+			$contLangConv = $this->languageConverterFactory->getLanguageConverter();
 			$text = $contLangConv->convert(
 				htmlspecialchars( $title->getPrefixedText() )
 			);
