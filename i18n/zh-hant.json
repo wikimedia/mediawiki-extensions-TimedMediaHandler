@@ -59,7 +59,7 @@
 	"timedmedia-not-ready": "尚未就緒",
 	"timedmedia-completed-on": "已完成於$1",
 	"timedmedia-error-on": "於 $1 發生錯誤。",
-	"timedmedia-started-transcode": "已於 $1 前開始。$2",
+	"timedmedia-started-transcode": "已於$1前開始。$2",
 	"timedmedia-percent-done": "大約已完成 $1%",
 	"timedmedia-in-job-queue": "已於 $1 前新增至任務序列",
 	"timedmedia-unknown-target-size": "不明目標大小，已編碼 $1",
