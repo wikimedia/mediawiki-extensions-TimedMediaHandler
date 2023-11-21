@@ -331,6 +331,7 @@ class WebVideoTranscodeJob extends Job {
 			$file = $this->getFile();
 			$mediaFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $transcodeKey );
 			$mediaPath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey );
+			$storeOptions = null;
 
 			if ( $streaming === 'hls' ) {
 				$playlistKey = $transcodeKey . '.m3u8';
@@ -345,12 +346,13 @@ class WebVideoTranscodeJob extends Job {
 				$playlist = $segmenter->playlist( 10, $mediaFilename );
 
 				file_put_contents( $playlistTemp, $playlist );
+				$storeOptions = [];
+				$storeOptions['headers']['Content-Type'] = 'application/vnd.apple.mpegurl; charset=utf-8';
 			} else {
 				$playlistTemp = null;
 				$playlistPath = null;
 			}
 
-			$storeOptions = null;
 			if (
 				strpos( $options['type'], '/ogg' ) !== false &&
 				$file->getLength()
@@ -379,7 +381,8 @@ class WebVideoTranscodeJob extends Job {
 					// temp file
 					$playlistTemp,
 					// storage
-					$playlistPath
+					$playlistPath,
+					$storeOptions
 				);
 				if ( $result->isOK() ) {
 					WebVideoTranscode::updateStreamingManifests( $file );
