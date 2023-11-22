@@ -24,7 +24,8 @@
 			"沈澄心",
 			"神樂坂秀吉",
 			"铁桶",
-			"Xzonn"
+			"Xzonn",
+			"Winston Sung"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -70,7 +71,7 @@
 	"timedmedia-not-ready": "未就绪",
 	"timedmedia-completed-on": "已完成于$1",
 	"timedmedia-error-on": "于$1错误",
-	"timedmedia-started-transcode": "于$1前开始。$2",
+	"timedmedia-started-transcode": "已于$1前开始。$2",
 	"timedmedia-percent-done": "大约$1%已完成",
 	"timedmedia-in-job-queue": "添加到工作队列在$1前",
 	"timedmedia-unknown-target-size": "未知目标大小，$1已编码",
