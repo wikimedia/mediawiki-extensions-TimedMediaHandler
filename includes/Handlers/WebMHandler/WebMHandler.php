@@ -197,14 +197,30 @@ class WebMHandler extends ID3Handler {
 	/**
 	 * Display metadata box on file description page.
 	 *
-	 * Very basic, cribbed from OggHandler fow now.
-	 * Only shows the top-level writing/demuxing app comment.
-	 *
 	 * @param File $file
 	 * @param false|IContextSource $context Context to use (optional)
 	 * @return array|false
 	 */
 	public function formatMetadata( $file, $context = false ) {
+		$meta = $this->getCommonMetaArray( $file );
+		if ( !$meta ) {
+			return false;
+		}
+
+		return $this->formatMetadataHelper( $meta, $context );
+	}
+
+	/**
+	 * Get file metadata as an array
+	 *
+	 * Reuse MediaWiki's support for image metadata so
+	 * translate WebM metadata keywords to equivalent exif values
+	 * @see http://wiki.webmproject.org/webm-metadata/global-metadata
+	 *
+	 * @param File $file
+	 * @return array|false
+	 */
+	public function getCommonMetaArray( File $file ) {
 		$metadata = $file->getMetadata();
 
 		if ( is_string( $metadata ) ) {
@@ -225,21 +241,67 @@ class WebMHandler extends ID3Handler {
 			$comments = $metadata['matroska']['comments'];
 			// Map comments from getid3's matroska handler to output format
 			// Localization of labels by FormatMetadata...
+			// Based on http://wiki.webmproject.org/webm-metadata/global-metadata
+			// and https://matroska.org/technical/tagging.html
+			// matched against descriptions in language/i18n/exif/qqq.json
 			$map = [
 				'muxingapp' => 'Software',
 				'writingapp' => 'Software',
+				'title' => 'ObjectName',
+				'summary' => 'ImageDescription',
+				'synopsis' => 'ImageDescription',
+				'artist' => 'Artist',
+				'publisher' => 'dc-publisher',
+				'genre' => 'dc-type',
+				'content_type' => 'dc-type',
+				'keywords' => 'Keywords',
+				'law_rating' => 'ContentWarning',
+				'date_released' => 'DateTimeReleased',
+				'date_recorded' => 'DateTimeOriginal',
+				'date_encoded' => 'DateTimeDigitized',
+				'date_digitized' => 'DateTimeDigitized',
+				'date_tagged' => 'DateTimeMetadata',
+				'date_purchased' => 'dc-date',
+				'date_written' => 'dc-date',
+				'comment' => 'UserComment',
+				'rating' => 'Rating',
+				'encoder' => 'Software',
+				'copyright' => 'Copyright',
+				'production_copyright' => 'Copyright',
+				'license' => 'UsageTerms',
+				'terms_of_use' => 'UsageTerms',
+				'catalog_number' => 'Identifier',
+				'url' => 'Identifier',
+				'isrc' => 'Identifier',
+				'isbn' => 'Identifier',
+				'barcode' => 'Identifier',
+				'lccn' => 'Identifier',
+				'imdb' => 'Identifier',
+				'tmdb' => 'Identifier',
+				'tvdb' => 'Identifier',
+				'tvdb2' => 'Identifier',
+				// Not official but seen in files
+				'language' => 'LanguageCode',
+				'webstatement' => 'WebStatement',
+				'licenseurl' => 'LicenseUrl'
 			];
 			foreach ( $map as $commentTag => $propTag ) {
 				if ( isset( $comments[$commentTag] ) ) {
 					if ( !isset( $props[$propTag] ) ) {
 						$props[$propTag] = [];
 					}
-					$props[$propTag][] = $comments[$commentTag];
+					$props[$propTag] = array_merge( (array)$comments[$commentTag], $props[$propTag] );
 				}
+			}
+			foreach ( $props as &$tag ) {
+				// We put multiple similar tags
+				// under same name, which sometimes
+				// results in duplication.
+				$tag = array_unique( $tag );
 			}
 		}
 
-		return $this->formatMetadataHelper( $props, $context );
+		return $props;
 	}
 
 }

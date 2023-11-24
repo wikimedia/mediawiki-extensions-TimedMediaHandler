@@ -23,7 +23,12 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => true,
 					'hasAudio' => false,
 					'audioChannels' => 0,
-					'commonMeta' => false,
+					'commonMeta' => [
+						'Software' => [ 'Lavf58.45.100' ],
+						'Keywords' => [ 'Tractor' ],
+						'DateTimeDigitized' => [ 'July 26 2013' ],
+						'Copyright' => [ 'Public domain' ]
+					],
 				],
 			],
 			[
@@ -35,7 +40,7 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => true,
 					'hasAudio' => true,
 					'audioChannels' => 2,
-					'commonMeta' => false,
+					'commonMeta' => [ 'Software' => [ 'Lavf55.33.101' ] ],
 				],
 			],
 			[
@@ -47,7 +52,13 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => false,
 					'hasAudio' => true,
 					'audioChannels' => 2,
-					'commonMeta' => false,
+					'commonMeta' => [
+						'Software' => [
+							'Lavf59.27.100',
+							'Lavc59.37.100 libopus'
+						],
+						'ObjectName' => [ 'Big Buck Bunny, Sunflower version' ]
+					],
 				],
 			],
 			[
@@ -59,7 +70,13 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => false,
 					'hasAudio' => true,
 					'audioChannels' => 2,
-					'commonMeta' => false,
+					'commonMeta' => [
+						'Software' => [
+							'Lavf59.27.100',
+							'Lavc59.37.100 libvorbis'
+						],
+						'ObjectName' => [ 'Big Buck Bunny, Sunflower version' ]
+					],
 				],
 			],
 			[
@@ -71,7 +88,13 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => false,
 					'hasAudio' => true,
 					'audioChannels' => 6,
-					'commonMeta' => false,
+					'commonMeta' => [
+						'Software' => [
+							'Lavf59.27.100',
+							'Lavc59.37.100 libopus'
+						],
+						'ObjectName' => [ 'Big Buck Bunny, Sunflower version' ]
+					],
 				],
 			],
 			[
@@ -83,7 +106,13 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => false,
 					'hasAudio' => true,
 					'audioChannels' => 6,
-					'commonMeta' => false,
+					'commonMeta' => [
+						'Software' => [
+							'Lavf59.27.100',
+							'Lavc59.37.100 libvorbis'
+						],
+						'ObjectName' => [ 'Big Buck Bunny, Sunflower version' ]
+					],
 				],
 			],
 			[
@@ -95,7 +124,7 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'hasVideo' => true,
 					'hasAudio' => false,
 					'audioChannels' => 0,
-					'commonMeta' => false,
+					'commonMeta' => [ 'Software' => [ 'Lavf52.71.0' ] ],
 				],
 			],
 		];
