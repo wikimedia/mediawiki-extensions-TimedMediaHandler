@@ -67,6 +67,12 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		element.addEventListener( 'touchstart', handler, true );
 		element.addEventListener( 'keypress', handler, true );
 
+		const metaElement = document.querySelector( 'meta[name="theme-color"]' );
+		if ( metaElement && useFillscreen() ) {
+			this.originalThemeColor = metaElement.getAttribute( 'content' );
+			metaElement.setAttribute( 'content', '#000000' );
+		}
+
 		// Check if this uses a desktop viewport on a mobile device
 		if ( useFillscreen() && window.innerWidth > screen.availWidth ) {
 			this.$element.addClass( 'mw-tmh-desktop-on-mobile' );
@@ -135,7 +141,11 @@ class MediaDialog extends OO.ui.ProcessDialog {
 	 * the player after closing the dialog
 	 */
 	stop() {
-		this.loadedPromise.then( ( videojsPlayer ) => {
+		const metaElement = document.querySelector( 'meta[name="theme-color"]' );
+		if ( metaElement && this.originalThemeColor ) {
+			metaElement.setAttribute( 'content', this.originalThemeColor );
+		}
+		return this.loadedPromise.then( ( videojsPlayer ) => {
 			videojsPlayer.pause();
 			$.disposeDetachedPlayers();
 		} );
