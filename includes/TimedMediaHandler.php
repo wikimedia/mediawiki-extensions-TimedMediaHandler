@@ -6,7 +6,6 @@ use File;
 use MediaHandler;
 use MediaTransformError;
 use MediaTransformOutput;
-use Message;
 use Parser;
 use TransformParameterError;
 use Wikimedia\AtEase\AtEase;
@@ -251,41 +250,6 @@ class TimedMediaHandler extends MediaHandler {
 			$time = $length - 1;
 		}
 		return $time;
-	}
-
-	/**
-	 * @param int $timePassed
-	 * @return string|array As from Message::listParam if available, otherwise
-	 *  a corresponding string in the language from $wgLang.
-	 */
-	public static function getTimePassedMsg( $timePassed ) {
-		$t = [];
-		$t['days'] = floor( $timePassed / 60 / 60 / 24 );
-		$t['hours'] = floor( $timePassed / 60 / 60 ) % 24;
-		$t['minutes'] = floor( $timePassed / 60 ) % 60;
-		$t['seconds'] = $timePassed % 60;
-
-		foreach ( $t as $k => $v ) {
-			if ( !$v ) {
-				unset( $t[$k] );
-			} else {
-				// Give grep a chance to find the usages:
-				// timedmedia-days, timedmedia-hours, timedmedia-minutes,timedmedia-seconds
-				$t[$k] = wfMessage( 'timedmedia-' . $k, $v );
-			}
-		}
-		if ( count( $t ) === 0 ) {
-			$t = [ wfMessage( 'timedmedia-seconds', 0 ) ];
-		}
-
-		if ( is_callable( [ 'Message', 'listParam' ] ) ) {
-			return Message::listParam( array_values( $t ), 'comma' );
-		}
-
-		global $wgLang;
-		return $wgLang->commaList( array_map( static function ( $m ) {
-			return $m->text();
-		}, $t ) );
 	}
 
 	/**
