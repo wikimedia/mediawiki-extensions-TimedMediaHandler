@@ -27,7 +27,9 @@ class InfoButtonPlugin extends Plugin {
 				player.el().getAttribute( 'data-mwtitle' )
 			);
 
-			if ( mw.config.get( 'wgTitle' ) !== player.el().getAttribute( 'data-mwtitle' ) ) {
+			// We do not need the info button on a File page, unless it's the embedding mode
+			// we are already at the destination of the button
+			if ( player.options().iframe || mw.config.get( 'wgTitle' ) !== title.getMainText() ) {
 				player.controlBar.infoButton = player.controlBar.addChild(
 					'InfoButton',
 					{ link: title.getUrl() }

@@ -326,6 +326,8 @@ InlinePlayer.globalConfig = {
 	// to avoid a flash of the native controls
 	controls: true,
 	responsive: true,
+	fill: false,
+	iframe: false,
 	language: mw.config.get( 'wgUserLanguage' ),
 	controlBar: {
 		// iOS does not allow using the fullscreen, so no point in adding that control
