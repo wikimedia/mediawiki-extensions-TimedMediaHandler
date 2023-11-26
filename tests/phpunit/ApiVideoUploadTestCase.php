@@ -74,7 +74,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 	 * @return array
 	 */
 	private function login() {
-		$user = self::$users['uploader'];
+		$user = $this->getTestUser();
 
 		$params = [
 			'action' => 'login',
@@ -128,7 +128,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 			list( $result, , ) = $this->doApiRequestWithToken(
 				$params,
 				$session,
-				self::$users['uploader']->getUser()
+				$this->getTestUser()->getUser()
 			);
 		} catch ( Exception $e ) {
 			// Could not upload mark test that called uploadFile as incomplete
