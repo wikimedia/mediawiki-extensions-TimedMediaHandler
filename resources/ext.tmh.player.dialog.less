@@ -33,6 +33,11 @@
 		transition: top 0.1s ease-in;
 	}
 
+	// OO.ui windows have an outline on the foot, even if the foot is empty
+	.oo-ui-window-foot {
+		display: none;
+	}
+
 	/* Hide dialog ui when idling */
 	.mw-tmh-inactive {
 		> .oo-ui-window-head {
@@ -53,4 +58,9 @@
 		// The .video-js element has a fixed font-size, so it won't inherit from the dialog
 		font-size: 3vmin;
 	}
+}
+
+// This is to ensure the background area for the safe areas (notch) is black in fullscreen mode
+body:has( .oo-ui-windowManager-fullscreen .mw-tmh-media-dialog ) {
+	background-color: #000;
 }
