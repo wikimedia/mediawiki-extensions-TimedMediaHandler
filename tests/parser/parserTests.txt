@@ -70,6 +70,8 @@ wgParserEnableLegacyMediaDOM=false
 
 !! test
 Video in a <gallery>
+!! options
+disabled
 !! config
 wgParserEnableLegacyMediaDOM=false
 !! wikitext
