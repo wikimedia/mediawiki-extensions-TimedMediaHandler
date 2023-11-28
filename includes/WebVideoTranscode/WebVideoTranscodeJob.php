@@ -49,6 +49,9 @@ class WebVideoTranscodeJob extends Job {
 	/** @var FSFile|null */
 	public $source;
 
+	/** @var FSFile|null */
+	public $remuxSource;
+
 	/**
 	 * @param Title $title
 	 * @param array $params
@@ -262,6 +265,26 @@ class WebVideoTranscodeJob extends Job {
 		$streaming = $options['streaming'] ?? false;
 		$videoCodec = $options['videoCodec'] ?? '';
 		$codecs = [ 'vp8', 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
+		$twopass = isset( $options['twopass'] );
+
+		// Was the _job_ enqueued with the remux option variant?
+		$remux = $this->params['remux'] ?? false;
+		// Does the _transcode config_ have a list of remux sources?
+		$remuxFrom = $options['remuxFrom'] ?? false;
+		if ( $remux && $remuxFrom ) {
+			foreach ( $remuxFrom as $altKey ) {
+				$altSource = WebVideoTranscode::getDerivativeFilePath( $file, $altKey );
+				$repo = $this->file->repo;
+				if ( $repo->fileExists( $altSource ) ) {
+					$remuxSource = $repo->getLocalReference( $altSource );
+					if ( $remuxSource ) {
+						$this->remuxSource = $remuxSource;
+						$twopass = false;
+						break;
+					}
+				}
+			}
+		}
 		if ( isset( $options[ 'novideo' ] ) ) {
 			if ( $file->getMimeType() === 'audio/midi' ) {
 				$status = $this->midiToAudioEncode( $options );
@@ -270,7 +293,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		} elseif ( in_array( $videoCodec, $codecs ) ) {
 			// Check for twopass:
-			if ( isset( $options['twopass'] ) ) {
+			if ( $twopass ) {
 				// ffmpeg requires manual two pass
 				$status = $this->ffmpegEncode( $options, 1 );
 				if ( $status && !is_string( $status ) ) {
@@ -486,10 +509,16 @@ class WebVideoTranscodeJob extends Job {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
 		}
 
+		if ( $this->remuxSource ) {
+			$sourcePath = $this->remuxSource->getPath();
+		} else {
+			$sourcePath = $this->getSourceFilePath();
+		}
+
 		// Set up the base command
 		$cmd = wfEscapeShellArg(
 			$wgFFmpegLocation
-		) . ' -nostdin -y -i ' . wfEscapeShellArg( $this->getSourceFilePath() );
+		) . ' -nostdin -y -i ' . wfEscapeShellArg( $sourcePath );
 
 		if ( isset( $options['vpre'] ) ) {
 			$cmd .= ' -vpre ' . wfEscapeShellArg( $options['vpre'] );
@@ -520,19 +549,33 @@ class WebVideoTranscodeJob extends Job {
 				}
 			}
 
-			switch ( $options['videoCodec'] ) {
-			case 'vp8':
-			case 'vp9':
-				$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
-				break;
-			case 'h264':
-				$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
-				break;
-			case 'mpeg4':
-				$cmd .= $this->ffmpegAddMPEG4VideoOptions( $options, $pass );
-				break;
-			default:
-				$cmd .= $this->ffmpegAddGenericVideoOptions( $options );
+			if ( $this->remuxSource ) {
+				$cmd .= ' -vcodec copy';
+			} else {
+				switch ( $options['videoCodec'] ) {
+					case 'vp8':
+					case 'vp9':
+						$cmd .= $this->ffmpegAddWebmVideoOptions( $options, $pass );
+						break;
+					case 'h264':
+						$cmd .= $this->ffmpegAddH264VideoOptions( $options, $pass );
+						break;
+					case 'mpeg4':
+						$cmd .= $this->ffmpegAddMPEG4VideoOptions( $options, $pass );
+						break;
+					default:
+						$cmd .= $this->ffmpegAddGenericVideoOptions( $options );
+				}
+			}
+
+			// needed for 2-pass & streaming to override file type detection
+			if ( $options['videoCodec'] === 'h264' ||
+				$options['videoCodec'] === 'mpeg4' ||
+				isset( $options['streaming'] ) ) {
+				$cmd .= ' -f mp4';
+			} elseif ( $options['videoCodec'] === 'vp8' ||
+				$options['videoCodec'] === 'vp9' ) {
+				$cmd .= ' -f webm';
 			}
 
 			// Check for keyframeInterval
@@ -584,10 +627,12 @@ class WebVideoTranscodeJob extends Job {
 				}
 			}
 
-			// If necessary, add deinterlacing options
-			$cmd .= $this->ffmpegAddDeinterlaceOptions( $options );
-			// Add size options:
-			$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
+			if ( !$this->remuxSource ) {
+				// If necessary, add deinterlacing options
+				$cmd .= $this->ffmpegAddDeinterlaceOptions( $options );
+				// Add size options:
+				$cmd .= $this->ffmpegAddVideoSizeOptions( $options );
+			}
 		}
 
 		if ( !MediaWikiServices::getInstance()->getMainConfig()->get( 'UseFFmpeg2' ) ) {
@@ -821,8 +866,6 @@ class WebVideoTranscodeJob extends Job {
 		$cmd .= ' -pix_fmt yuv420p';
 		$cmd .= ' -rc-lookahead 16';
 
-		// Output mp4
-		$cmd .= " -f mp4";
 		return $cmd;
 	}
 
@@ -838,9 +881,6 @@ class WebVideoTranscodeJob extends Job {
 
 		// Force to 4:2:0 chroma subsampling.
 		$cmd .= ' -pix_fmt yuv420p';
-
-		// needed for 2-pass to override file type detection
-		$cmd .= " -f mp4";
 
 		return $cmd;
 	}
@@ -908,10 +948,8 @@ class WebVideoTranscodeJob extends Job {
 	private function ffmpegAddWebmVideoOptions( $options, $pass ) {
 		global $wgFFmpegThreads, $wgFFmpegVP9RowMT;
 
-		// Get a local pointer to the file object
-		$file = $this->getFile();
-
 		$cmd = ' -threads ' . (int)$wgFFmpegThreads;
+
 		if ( $wgFFmpegVP9RowMT && $options['videoCodec'] === 'vp9' ) {
 			// Macroblock row multithreading allows using more CPU cores
 			// for VP9 encoding. This is not yet the default, and the option
@@ -983,14 +1021,6 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= ' -speed 4';
 		} elseif ( isset( $options['speed'] ) ) {
 			$cmd .= ' -speed ' . wfEscapeShellArg( $options['speed'] );
-		}
-
-		// Output WebM
-		$streaming = $options['streaming'] ?? false;
-		if ( $streaming === 'hls' ) {
-			$cmd .= " -f mp4";
-		} else {
-			$cmd .= " -f webm";
 		}
 
 		return $cmd;
