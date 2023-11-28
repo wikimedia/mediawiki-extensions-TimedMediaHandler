@@ -94,7 +94,7 @@ class ApiTranscodeReset extends ApiBase {
 
 		// Don't reset if less than 1 hour has passed and we have no error )
 		$file = $this->repoGroup->findFile( $titleObj );
-		$timeSinceLastReset = $this->checkTimeSinceLastRest( $file, $transcodeKey );
+		$timeSinceLastReset = $this->checkTimeSinceLastReset( $file, $transcodeKey );
 		$waitTimeForTranscodeReset = $this->getConfig()->get( 'WaitTimeForTranscodeReset' );
 		if ( $timeSinceLastReset < $waitTimeForTranscodeReset ) {
 			$msg = $this->msg(
@@ -127,8 +127,9 @@ class ApiTranscodeReset extends ApiBase {
 	 * @param string|false $transcodeKey
 	 * @return int|string
 	 */
-	public function checkTimeSinceLastRest( $file, $transcodeKey ) {
-		$transcodeStates = WebVideoTranscode::getTranscodeState( $file );
+	public function checkTimeSinceLastReset( $file, $transcodeKey ) {
+		$dbw = $file->repo->getPrimaryDB();
+		$transcodeStates = WebVideoTranscode::getTranscodeState( $file, $dbw );
 		if ( $transcodeKey ) {
 			if ( !$transcodeStates[$transcodeKey] ) {
 				// transcode key not found

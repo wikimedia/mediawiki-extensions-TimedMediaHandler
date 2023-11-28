@@ -922,7 +922,7 @@ class WebVideoTranscode {
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
 		$fileName = $file->getName();
-		if ( !isset( static::$transcodeState[$fileName] ) ) {
+		if ( $db || !isset( static::$transcodeState[$fileName] ) ) {
 			if ( $db === false ) {
 				$db = $file->repo->getReplicaDB();
 			}

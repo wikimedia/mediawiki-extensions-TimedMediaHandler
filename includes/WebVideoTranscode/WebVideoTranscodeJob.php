@@ -78,7 +78,7 @@ class WebVideoTranscodeJob extends Job {
 	private function getFile() {
 		if ( !$this->file ) {
 			$this->file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
-				->newFile( $this->title );
+				->findFile( $this->title, [ 'latest' => true ] );
 		}
 		return $this->file;
 	}
