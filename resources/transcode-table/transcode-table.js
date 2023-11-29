@@ -2,7 +2,7 @@
 * Javascript to support transcode table on image page
 */
 $( function () {
-	function errorPopup( event ) {
+	function resetPopup( event ) {
 		const tKey = $( event.target ).attr( 'data-transcodekey' );
 		const $message = $( [
 			document.createTextNode( mw.msg( 'timedmedia-reset-explanation' ) ),
@@ -61,5 +61,32 @@ $( function () {
 	}
 
 	// eslint-disable-next-line no-jquery/no-global-selector
-	$( '.mw-filepage-transcodereset a' ).on( 'click', errorPopup );
+	$( '.mw-filepage-transcodereset a' ).on( 'click', resetPopup );
+
+	function errorPopup( event ) {
+		event.preventDefault();
+		const error = $( event.target ).data( 'error' );
+		const $pre = $( '<pre>' ).text( error );
+		OO.ui.alert( $pre, {
+			actions: [
+				{
+					action: 'ok',
+					label: mw.msg( 'timedmedia-reset-button-dismiss' ),
+					flags: 'safe'
+				}
+			],
+			size: 'large'
+		} );
+	}
+
+	// eslint-disable-next-line no-jquery/no-global-selector
+	const $errorLink = $( '.mw-filepage-transcodestatus .mw-tmh-pseudo-error-link' );
+	$errorLink.wrapInner( function () {
+		const $this = $( this );
+		return $( '<a>' ).attr( {
+			href: '',
+			title: $this.text(),
+			'data-error': $this.attr( 'data-error' )
+		} ).on( 'click', errorPopup );
+	} );
 } );
