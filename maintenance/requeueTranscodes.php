@@ -22,6 +22,9 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 		$this->addOption( "force", "force re-queueing of all matching transcodes" );
 		$this->addOption( "throttle", "throttle on the queue" );
 		$this->addOption( "manual-override", "override soft limits on output file size" );
+		$this->addOption( "remux", "use remuxing from another transcode where possible" );
+		$this->addOption( "remove", "remove but don't re-queue" );
+		$this->addOption( "dry-run", "don't actually remove/enqueue transcodes; for testing params" );
 		$this->addDescription( "re-queue existing and missing media transcodes." );
 	}
 
@@ -39,82 +42,90 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 
 		$transcodeSet = WebVideoTranscode::enabledTranscodes();
 		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
+		$repo = $file->repo;
+		$dryRun = $this->hasOption( 'dry-run' );
 
 		WebVideoTranscode::cleanupTranscodes( $file );
 
 		$keys = [];
 		if ( $this->hasOption( 'key' ) ) {
 			$keys = preg_split( '/\s*,\s*/', $this->getOption( 'key' ) );
-			$toAdd = $keys;
-		} else {
-			$toAdd = $transcodeSet;
 		}
 
-		$toRemove = [];
 		$state = WebVideoTranscode::getTranscodeState( $file, $dbw );
+		$toRemove = [];
+		$toAdd = [];
 		foreach ( $state as $key => $item ) {
+			$path = WebVideoTranscode::getDerivativeFilePath( $file, $key );
+
 			if ( $keys && !in_array( $key, $keys ) ) {
-				continue;
-			}
-			if ( $this->hasOption( 'force' ) ) {
-				$toRemove[] = $key;
-				continue;
-			}
-			if ( $this->hasOption( 'error' ) && $item['time_error'] ) {
-				$toRemove[] = $key;
-				continue;
-			}
-			if ( $this->hasOption( 'stalled' ) &&
+				$run = false;
+			} elseif ( $this->hasOption( 'force' ) || $this->hasOption( 'remove' ) ) {
+				$run = true;
+			} elseif ( $this->hasOption( 'error' ) && $item['time_error'] ) {
+				$run = true;
+			} elseif ( $this->hasOption( 'stalled' ) &&
 				( $item['time_addjob'] && !$item['time_success'] && !$item['time_error'] ) ) {
-				$toRemove[] = $key;
-				continue;
+				$run = true;
+			} elseif ( $this->hasOption( 'missing' ) && $path && !$repo->fileExists( $path ) ) {
+				$run = true;
+			} elseif ( !$item['time_addjob'] ) {
+				$run = true;
+			} else {
+				$run = false;
 			}
-			if ( $this->hasOption( 'missing' ) &&
-				( !$item['time_addjob'] ) ) {
+
+			if ( $run ) {
 				$toRemove[] = $key;
-				continue;
+				if ( !$this->hasOption( 'remove' ) ) {
+					$toAdd[] = $key;
+				}
 			}
 		}
 
-		if ( $toRemove ) {
-			$state = WebVideoTranscode::getTranscodeState( $file, $dbw );
-			$keys = array_intersect( $toRemove, array_keys( $state ) );
-			natsort( $keys );
-			foreach ( $keys as $key ) {
+		natsort( $toRemove );
+		foreach ( $toRemove as $key ) {
+			if ( $dryRun ) {
+				$this->output( ".. would remove $key\n" );
+			} else {
 				$this->output( ".. removing $key\n" );
 				WebVideoTranscode::removeTranscodes( $file, $key );
 			}
 		}
 
-		if ( $toAdd ) {
-			$keys = $toAdd;
-			$state = WebVideoTranscode::getTranscodeState( $file, $dbw );
-			natsort( $keys );
-			foreach ( $keys as $key ) {
-				if ( !WebVideoTranscode::isTranscodeEnabled( $file, $key ) ) {
-					// don't enqueue too-big files
-					continue;
-				}
-				if ( !array_key_exists( $key, $state ) || !$state[$key]['time_addjob'] ) {
-					$this->output( ".. queueing $key\n" );
+		$throttle = $this->hasOption( 'throttle' );
+		natsort( $toAdd );
+		foreach ( $toAdd as $key ) {
+			if ( !WebVideoTranscode::isTranscodeEnabled( $file, $key ) ) {
+				// don't enqueue too-big files
+				$this->output( ".. skipping disabled transcode $key\n" );
+				continue;
+			}
 
-					$manualOverride = $this->hasOption( 'manual-override' );
-					if ( !$this->hasOption( 'throttle' ) ) {
-						WebVideoTranscode::updateJobQueue( $file, $key, $manualOverride );
-					} else {
-						$startSize = WebVideoTranscode::getQueueSize( $file, $key );
-						WebVideoTranscode::updateJobQueue( $file, $key, $manualOverride );
-						while ( true ) {
-							$size = WebVideoTranscode::getQueueSize( $file, $key );
-							if ( $size > $startSize ) {
-								$this->output( ".. (queue $size) " );
-								sleep( 1 );
-							} else {
-								$this->output( "\n" );
-								break;
-							}
-						}
-					}
+			$startSize = 0;
+			if ( $throttle ) {
+				$startSize = WebVideoTranscode::getQueueSize( $file, $key );
+			}
+
+			$options = [
+				'manualOverride' => $this->hasOption( 'manual-override' ),
+				'remux' => $this->hasOption( 'remux' ),
+			];
+			if ( $dryRun ) {
+				$this->output( ".. would queue $key\n" );
+			} else {
+				$this->output( ".. queueing $key\n" );
+				WebVideoTranscode::updateJobQueue( $file, $key, $options );
+			}
+
+			while ( $throttle ) {
+				$size = WebVideoTranscode::getQueueSize( $file, $key );
+				if ( $size > $startSize ) {
+					$this->output( ".. (queue $size)\n" );
+					sleep( 1 );
+				} else {
+					$this->output( "\n" );
+					break;
 				}
 			}
 		}

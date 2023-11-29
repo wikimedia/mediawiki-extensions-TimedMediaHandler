@@ -361,6 +361,11 @@ class WebVideoTranscode {
 
 		// Optional back-compat
 		// Streaming Motion-JPEG track
+		//
+		// These are video-only, in fragmented .mov that allows adaptive streaming
+		// with chunks split at fragment boundaries listed in an associated .m3u8
+		// streaming playlist. MJPEG works with iOS on hardware that doesn't support
+		// the VP9 codec, but is poorly compressed for the low resolution.
 		'144p.video.mjpeg.mov' => [
 			'width' => '176',
 			'height' => '144',
@@ -374,6 +379,15 @@ class WebVideoTranscode {
 		],
 
 		// VP9 streaming tracks
+		//
+		// These are video-only, in fragmented .mp4 that allows adaptive streaming
+		// with chunks split at fragment boundaries listed in an associated .m3u8
+		// streaming playlist.
+		//
+		// The 'remuxFrom' key specifies that if a WebM tracks was previously made,
+		// it can be used as a data source via remuxing packets instead of doing
+		// a fresh encoding when doing bulk conversions with requeueTranscodes.php
+		// with the '--remux' option.
 		'240p.video.vp9.mp4' => [
 			'maxSize' => '426x240',
 			'videoBitrate' => '308k',
@@ -384,6 +398,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '240p.vp9.webm' ],
 		],
 		'360p.video.vp9.mp4' => [
 			'maxSize' => '640x360',
@@ -396,6 +411,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '360p.vp9.webm' ],
 		],
 		'480p.video.vp9.mp4' => [
 			'maxSize' => '854x480',
@@ -408,6 +424,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '480p.vp9.webm' ],
 		],
 		'720p.video.vp9.mp4' => [
 			'maxSize' => '1280x720',
@@ -420,6 +437,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '720p.vp9.webm' ],
 		],
 		'1080p.video.vp9.mp4' => [
 			'maxSize' => '1920x1080',
@@ -432,6 +450,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '1080p.vp9.webm' ],
 		],
 		'1440p.video.vp9.mp4' => [
 			'maxSize' => '2560x1440',
@@ -444,6 +463,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '1440p.vp9.webm' ],
 		],
 		'2160p.video.vp9.mp4' => [
 			'maxSize' => '3840x2160',
@@ -456,6 +476,7 @@ class WebVideoTranscode {
 			'noaudio' => 'true',
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
+			'remuxFrom' => [ '2160p.vp9.webm' ],
 		],
 
 		// Loosely defined per PCF guide to mp4 profiles:
@@ -1327,9 +1348,9 @@ class WebVideoTranscode {
 	 * Update the job queue if the file is not already in the job queue:
 	 * @param File &$file File object
 	 * @param string $transcodeKey transcode key
-	 * @param bool $manualOverride permission to override soft limits on output size
+	 * @param array $options array with 'manualOverride' or 'remux' boolean options
 	 */
-	public static function updateJobQueue( &$file, $transcodeKey, $manualOverride = false ) {
+	public static function updateJobQueue( &$file, $transcodeKey, $options = [] ) {
 		$fileName = $file->getTitle()->getDBkey();
 		$dbw = $file->repo->getPrimaryDB();
 
@@ -1366,7 +1387,8 @@ class WebVideoTranscode {
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
 				'prioritized' => $prioritized,
-				'manualOverride' => $manualOverride,
+				'manualOverride' => $options['manualOverride'] ?? false,
+				'remux' => $options['remux'] ?? false,
 			] );
 
 			try {
