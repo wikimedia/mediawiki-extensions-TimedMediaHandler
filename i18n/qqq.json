@@ -79,7 +79,7 @@
 	"timedmedia-reset-button-cancel": "Button in reset dialog to cancel reset request to transcode.",
 	"timedmedia-reset-button-dismiss": "Dismiss button in error dialog presented when transcode request fails.\n{{identical|Dismiss}}",
 	"timedmedia-reset-button-reset": "Button in reset dialog to approve new transcode.\n{{Identical|Reset}}",
-	"timedmedia-reset-error": "Used as generic error message.\n要翻訳",
+	"timedmedia-reset-error": "Used as generic error message.",
 	"timedmedia-reset-explanation": "Explains the consequence of resetting in the dialog which has the title {{msg-mw|Timedmedia-reset}}.",
 	"timedmedia-ogg": "{{optional}}\nUsed as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-source-audio-file-desc}}\n* {{msg-mw|Timedmedia-source-file-desc}}\n* {{msg-mw|Timedmedia-source-file}}",
 	"timedmedia-webm": "{{optional}}\nUsed as <code>$1</code> in the following messages:\n* {{msg-mw|Timedmedia-source-audio-file-desc}}\n* {{msg-mw|Timedmedia-source-file-desc}}\n* {{msg-mw|Timedmedia-source-file}}",

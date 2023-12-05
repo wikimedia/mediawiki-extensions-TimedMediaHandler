@@ -2,9 +2,32 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"Romaine"
+			"Romaine",
+			"McDutchie"
 		]
 	},
+	"apihelp-query+transcodestatus-summary": "De transcoderingsstatus voor een bepaalde bestandspagina opvragen.",
+	"apihelp-query+transcodestatus-example-1": "De transcoderingsstatus voor [[:File:Clip.webm]] opvragen.",
+	"apihelp-query+videoinfo-summary": "Breidt imageinfo uit met informatie over de videobron (afgeleide werken).",
+	"apihelp-query+videoinfo-example-1": "Informatie ophalen over [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Voegt een array toe van de verschillende beschikbare formaten en kwaliteitsversies van een audio- of videobestand.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Voegt een array toe van de beschikbare ondertitels, bijschriften en beschrijvingen van een audio- of videobestand.",
+	"apihelp-timedtext-summary": "Voorziet in geklokte tekstinhoud voor gebruik met &lt;track&gt;-elementen",
+	"apihelp-timedtext-param-title": "De titel van het mediabestand waarvoor geklokte tekst moet worden opgehaald",
+	"apihelp-timedtext-param-pageid": "De pagina-ID van het mediabestand waarvoor geklokte tekst moet worden opgehaald",
+	"apihelp-timedtext-param-trackformat": "De bestandsindeling waarin de geklokte tekst moet worden teruggestuurd",
+	"apihelp-timedtext-param-lang": "De taal van de op te vragen geklokte tekst",
+	"apihelp-timedtext-example-1": "Haal een SRT-ondertitelbestand in het Duits op voor het bestand Voorbeeld.ogv",
+	"apihelp-transcodereset-summary": "Gebruikers met het recht ‘transcode-reset’ kunnen een transcodeertaak afbreken en opnieuw uitvoeren.",
 	"apihelp-transcodereset-param-title": "De titel van het mediabestand.",
+	"apihelp-transcodereset-param-transcodekey": "De sleutel van de te herstarten transcodeertaak. Op te vragen vanuit [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Alle transcoderingen voor [[:File:Clip.webm]] herstarten",
+	"apihelp-transcodereset-example-2": "De transcodering met sleutel ‘360_560kbs.webm’ herstarten voor [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Het transcoderen is uitgeschakeld op deze wiki.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 is niet transcodeerbaar.",
+	"apierror-timedmedia-badtranscodekey": "Ongeldige of uitgeschakelde transcoderingssleutel: $1",
+	"apierror-timedmedia-notenoughtimereset": "Er is niet genoeg tijd verstreken sinds de laatste herstart van deze transcodering. Pas over $1 kan deze transcodering worden herstart.",
+	"apierror-timedmedia-lang-notfound": "Gevraagde taal niet gevonden",
+	"apierror-timedmedia-no-timedtext-support": "Geen ondersteuning voor TimedText",
 	"apierror-timedmedia-notlocal": "Bestand niet lokaal"
 }
