@@ -65,6 +65,8 @@
 	"timedmedia-reset-button-reset": "Ponastavi",
 	"timedmedia-reset-error": "Napaka pri ponastavljanju prekodiranja.",
 	"timedmedia-reset-explanation": "Ob ponastavitvi tega prekodiranja bodo izbrisane vse obstoječe datoteke (če obstajajo), prekodiranje pa se bo znova dodalo v čakalno vrsto. Ponovno prekodiranje bo trajalo nekaj časa.",
+	"timedmedia-error-details": "Podrobnosti o napaki pri prekodiranju",
+	"timedmedia-error-dismiss": "Opusti",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
 	"timedmedia-wav": "WAV",
