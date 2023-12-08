@@ -7,6 +7,7 @@ use Html;
 use IContextSource;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\Utils\MWTimestamp;
 use Xml;
 
 /**
@@ -242,7 +243,6 @@ class TranscodeStatusTable {
 
 		// Check for started encoding
 		if ( $state['time_startwork'] !== null ) {
-			$timePassed = time() - (int)wfTimestamp( TS_UNIX, $state['time_startwork'] );
 			// Get the rough estimate of time done: ( this is not very costly considering everything else
 			// that happens in an action=purge video page request )
 			/*$filePath = WebVideoTranscode::getTargetEncodePath( $file, $state['key'] );
@@ -260,15 +260,14 @@ class TranscodeStatusTable {
 			$doneMsg = '';
 			return wfMessage(
 				'timedmedia-started-transcode',
-				TimedMediaHandler::getTimePassedMsg( $timePassed ), $doneMsg
+				( new MWTimestamp( $state['time_startwork'] ) )->getRelativeTimestamp(), $doneMsg
 			)->escaped();
 		}
 		// Check for job added ( but not started encoding )
 		if ( $state['time_addjob'] !== null ) {
-			$timePassed = time() - (int)wfTimestamp( TS_UNIX, $state['time_addjob'] );
 			return wfMessage(
 				'timedmedia-in-job-queue',
-				TimedMediaHandler::getTimePassedMsg( $timePassed )
+				( new MWTimestamp( $state['time_addjob'] ) )->getRelativeTimestamp()
 			)->escaped();
 		}
 		// Return unknown status error:
