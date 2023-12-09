@@ -58,14 +58,19 @@ class TimedTextPage extends Article {
 		$request = $this->getContext()->getRequest();
 		$out = $this->getContext()->getOutput();
 		$diff = $request->getVal( 'diff' );
+		// getOldID has side effects
+		$oldid = $this->getOldID();
 
-		// Article flag is required for some editors, and other features (T307218).
-		$out->setArticleFlag( true );
-
-		if ( isset( $diff ) || $this->getTitle()->getNamespace() !== NS_TIMEDTEXT ) {
+		if ( $this->mRedirectUrl || isset( $diff ) || $this->getTitle()->getNamespace() !== NS_TIMEDTEXT ) {
 			parent::view();
 			return;
 		}
+		// Article flag is required for some editors, and other features (T307218).
+		$out->setArticleFlag( true );
+
+		$this->showRedirectedFromHeader();
+		$this->showNamespaceHeader();
+
 		$this->renderOutput( $out );
 	}
 
