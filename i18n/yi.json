@@ -10,10 +10,6 @@
 	"timedmedia-dismiss": "שליסן",
 	"timedmedia-download": "אראָפלאָדן טעקע",
 	"timedmedia-status": "סטאַטוס",
-	"timedmedia-days": "{{PLURAL:$1|1 טאָג|$1 טעג}}",
-	"timedmedia-hours": "{{PLURAL:$1|1 שעה|$1 שעהן}}",
-	"timedmedia-minutes": "{{PLURAL:$1|1 מינוט|$1 מינוטן}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1 סעקונדע|$1 סעקונדעס}}",
 	"timedmedia-subtitle-new-go": "גיין",
 	"timedmedia-file": "טעקע"
 }

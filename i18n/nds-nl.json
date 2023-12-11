@@ -16,6 +16,5 @@
 	"timedmedia-more": "Meyr...",
 	"timedmedia-dismiss": "Sluten",
 	"timedmedia-download": "Bestaand neerlaojen",
-	"timedmedia-desc-link": "Over dit bestaand",
-	"timedmedia-days": "{{PLURAL:$1|1 dag|$1 dagen}}"
+	"timedmedia-desc-link": "Over dit bestaand"
 }

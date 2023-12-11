@@ -6,9 +6,6 @@
 			"Nurlan"
 		]
 	},
-	"timedmedia-days": "{{PLURAL:$1|bir kún|$1 kún}}",
-	"timedmedia-hours": "{{PLURAL:$1|1 saat|$1 saat}}",
-	"timedmedia-seconds": "{{PLURAL:$1|1 sekund|$1 sekund}}",
 	"timedmedia-subtitle-new": "Jańa awdarma baslaw yamasa redaktorlaw",
 	"timedmedia-subtitle-new-go": "Ótiw",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minut|$1 minut}} hám {{PLURAL:$2|$2 sekund|$1 sekund}}"

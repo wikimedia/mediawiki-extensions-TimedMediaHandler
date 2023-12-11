@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Winston Sung"
-		]
-	},
-	"timedmedia-hours": "{{PLURAL:$1|$1个钟头}}"
-}

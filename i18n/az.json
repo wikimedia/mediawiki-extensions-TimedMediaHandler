@@ -9,6 +9,5 @@
 		]
 	},
 	"timedmedia-status": "Status",
-	"timedmedia-direct-link": "Yüklə",
-	"timedmedia-seconds": "{{PLURAL:$1|1 saniyə|$1 saniyə}}"
+	"timedmedia-direct-link": "Yüklə"
 }

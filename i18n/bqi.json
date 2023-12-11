@@ -23,7 +23,6 @@
 	"timedmedia-error-on": "خٱتا میٛن $1",
 	"timedmedia-started-transcode": "ز$1 دیندا $2 شورۊ ڤابیڌاْ",
 	"timedmedia-percent-done": "نزیک $1% ٱنجوم ڤابی",
-	"timedmedia-days": "{{PLURAL:$1|1 رۊز|$1 رۊزٱل}}",
 	"timedmedia-derivative-desc-240p.ogv": "Small Ogg video (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg video (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "SD Ogg video (480P)",
