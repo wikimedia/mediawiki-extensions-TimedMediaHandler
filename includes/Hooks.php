@@ -30,6 +30,7 @@ use MediaWiki\Page\Hook\RevisionFromEditCompleteHook;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
@@ -238,8 +239,16 @@ class Hooks implements
 			if ( !$ttTitle ) {
 				return;
 			}
-			$links[ 'namespaces' ][ 'timedtext' ] =
-				$sktemplate->tabAction( $ttTitle, 'timedtext', false, '', false );
+			$tab = $sktemplate->tabAction( $ttTitle, 'timedtext', false, '', false );
+
+			// Lookup if we have any corresponding timed text available already
+			$file = $this->repoGroup->findFile( $sktemplate->getTitle(), [ 'ignore_redirect' => true ] );
+			$textHandler = new TextHandler( $file, [ TimedTextPage::VTT_SUBTITLE_FORMAT ] );
+			$ttExists = count( $textHandler->getTracks() ) > 0;
+			$tab[ 'exists' ] = $ttExists;
+			$tab[ 'class' ] .= !$ttExists ? ' new' : '';
+			$links[ 'namespaces' ][ 'timedtext' ] = $tab;
+			return;
 		}
 	}
 
