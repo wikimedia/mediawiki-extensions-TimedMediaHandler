@@ -12,6 +12,8 @@ use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
  * @covers \MediaWiki\TimedMediaHandler\TimedText\SrtReader::read
  */
 class SrtReaderTest extends PHPUnit\Framework\TestCase {
+	private SrtReader $reader;
+
 	public function setUp(): void {
 		parent::setUp();
 		$this->reader = new SrtReader;
