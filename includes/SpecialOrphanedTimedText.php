@@ -166,6 +166,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		$conds = [
 			'img_name' => null,
 			'page_namespace' => $this->getConfig()->get( 'TimedTextNS' ),
+			'page_is_redirect' => 0,
 		];
 
 		// Now for the complicated bit
