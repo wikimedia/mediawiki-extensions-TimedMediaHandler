@@ -12,6 +12,8 @@ use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
  * @covers \MediaWiki\TimedMediaHandler\TimedText\SrtWriter::write
  */
 class VttWriterTest extends PHPUnit\Framework\TestCase {
+	private VttWriter $writer;
+
 	public function setUp(): void {
 		parent::setUp();
 		$this->writer = new VttWriter;
