@@ -96,7 +96,7 @@ class TranscodeStatusTable {
 		}
 
 		uksort( $transcodeRows, static function ( $a, $b ) {
-			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'opus', 'vorbis', 'aac' ];
+			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
 
 			$aFormat = self::codecFromTranscodeKey( $a );
 			$bFormat = self::codecFromTranscodeKey( $b );
