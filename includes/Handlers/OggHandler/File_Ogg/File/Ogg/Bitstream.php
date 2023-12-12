@@ -57,11 +57,25 @@ class File_Ogg_Bitstream
     var $_streamSize;
 
     /**
+     * The first granule position in the stream
+     * @var     int
+     * @access  private
+     */
+    var $_firstGranulePos;
+
+    /**
      * The last granule position in the stream
      * @var     int
      * @access  private
      */
     var $_lastGranulePos;
+
+    /**
+     * The multiplexed group ID.
+     * @var     int
+     * @access  private
+     */
+    var $_group;
 
     /**
      * Constructor for a generic logical stream.

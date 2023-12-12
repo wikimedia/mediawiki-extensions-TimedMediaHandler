@@ -59,6 +59,14 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
     var $_startOffset = 0;
 
     /**
+     * Average bitrate for the stream.
+     *
+     * @access  private
+     * @var     float
+     */
+    var $_avgBitrate;
+
+    /**
      * Get a short string describing the type of the stream
      * @return string
      */
