@@ -37,6 +37,23 @@ define( 'OGG_OPUS_COMMENTS_PAGE_OFFSET', 1 );
 class File_Ogg_Opus extends File_Ogg_Media
 {
     /**
+     * The Opus audio header
+     * https://www.opus-codec.org/docs/opusfile_api-0.7/structOpusHead.html
+     *
+     * @var     array
+     * @access  private
+     */
+    var $_header;
+
+    /**
+     * Number of audio channels in the stream
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_channels;
+
+   /**
      * @access  private
      */
     function __construct($streamSerial, $streamData, $filePointer)
