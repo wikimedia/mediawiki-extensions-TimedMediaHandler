@@ -7,13 +7,14 @@
 			"MinecraftAustralia",
 			"Shanmugamp7",
 			"Siddhan",
-			"மதனாஹரன்"
+			"மதனாஹரன்",
+			"Fahimrazick"
 		]
 	},
 	"timedmedia-ogg-long-general": "Ogg  ஊடக கோப்பு,  நீளம்   $2 , $3",
 	"timedmedia-ogg-long-error": "செல்லாத ogg கோப்பு: $1",
 	"timedmedia-more": "மேலும்...",
-	"timedmedia-dismiss": "மூடுக",
+	"timedmedia-dismiss": "மூடு",
 	"timedmedia-download": "கோப்பை பதிவிறக்கம் செய்",
 	"timedmedia-play-media": "ஊடகத்தை ஓடவிடு",
 	"timedmedia-desc-link": "இந்தக் கோப்பைப் பற்றி",
