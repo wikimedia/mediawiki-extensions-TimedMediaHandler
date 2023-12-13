@@ -108,8 +108,13 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		} );
 		this.content.$element.append( indicator.$element );
 
-		// We don't need a play button (autoplay) nor a poster
-		const options = { poster: false, bigPlayButton: false, fill: true };
+		const options = {
+			fill: true,
+			// We don't need a play button (autoplay) nor a poster
+			poster: false, bigPlayButton: false,
+			// We know we committed to playing here, so preload the entire file if UA wants to
+			preload: 'auto'
+		};
 
 		const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
 		this.inlinePlayer = new InlinePlayer( this.$video.get( 0 ), options );
