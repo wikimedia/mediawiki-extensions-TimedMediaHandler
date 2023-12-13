@@ -640,7 +640,7 @@ class WebVideoTranscodeJob extends Job {
 					// Audio-only tracks should be fragmented around the standard interval.
 					// Intraframe-only codecs like Motion-JPEG should also be treated this way.
 					$cmd .= " -movflags +empty_moov+default_base_moof";
-					$cmd .= " -frag_duration ${interval}000000";
+					$cmd .= " -frag_duration {$interval}000000";
 				} else {
 					// Video keyframe interval is set to approximate the desired interval, but
 					// they may occur whenever the encoder thinks they would be desirable such
