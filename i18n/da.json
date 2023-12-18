@@ -13,7 +13,8 @@
 			"Saurmandal",
 			"Simeondahl",
 			"SimmeD",
-			"Steenth"
+			"Steenth",
+			"Zakawer2"
 		]
 	},
 	"timedmediahandler-desc": "Understøttelse for lyd, video og tidsbestemt txt med formaterne WebM, Ogg Theora, Vorbis, srt",
@@ -49,9 +50,9 @@
 	"timedmedia-not-ready": "Ikke klar",
 	"timedmedia-completed-on": "Gennemført $1",
 	"timedmedia-error-on": "Fejl ved $1",
-	"timedmedia-started-transcode": "Startet $1 siden. $2",
+	"timedmedia-started-transcode": "Startet $1. $2",
 	"timedmedia-percent-done": "Cirka $1 % udført",
-	"timedmedia-in-job-queue": "Føjet til jobkøen $1 siden",
+	"timedmedia-in-job-queue": "Tilføjet til jobkøen $1",
 	"timedmedia-unknown-target-size": "Ukendt mål størrelse, $1 kodet",
 	"timedmedia-reset": "Nulstil transkode",
 	"timedmedia-reset-areyousure": "Er du sikker på du ønsker at fortsætte?",
