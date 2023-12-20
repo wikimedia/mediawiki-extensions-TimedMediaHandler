@@ -46,7 +46,7 @@
 	"timedmedia-completed-on": "Завършено на $1",
 	"timedmedia-error-on": "Грешка на $1",
 	"timedmedia-percent-done": "Около $1% завършени",
-	"timedmedia-in-job-queue": "Добавено в опашката преди $1",
+	"timedmedia-in-job-queue": "Добавено в опашката на $1",
 	"timedmedia-reset": "Анулиране на прекодиране",
 	"timedmedia-reset-areyousure": "Сигурни ли сте, че искате да продължите?",
 	"timedmedia-reset-button-dismiss": "Затваряне",
