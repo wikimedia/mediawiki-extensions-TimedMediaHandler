@@ -3,6 +3,7 @@
 		"authors": [
 			"Aftab1995",
 			"Aftabuzzaman",
+			"Aishik Rehman",
 			"Bellayet",
 			"Borhan",
 			"Elias Ahmmad",
@@ -96,7 +97,7 @@
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1টি ট্রান্সকোড}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1টি চলিত ট্রান্সকোড}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1টি ব্যর্থ ট্রান্সকোড}}",
-	"timedmedia-no-derivatives": "কোন ট্রান্সকোডের প্রয়োজন নেই।",
+	"timedmedia-no-derivatives": "কোনো ট্রান্সকোডের প্রয়োজন নেই।",
 	"timedmedia-file": "ফাইল",
 	"timedmedia-dialog-close": "মিডিয়া প্লেয়ার বন্ধ করুন",
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 ঘণ্টা}}, {{PLURAL:$2|$2 মিনিট}} ও {{PLURAL:$3|$3 সেকেন্ড}}",

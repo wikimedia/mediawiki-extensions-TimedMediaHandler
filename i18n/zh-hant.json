@@ -63,7 +63,7 @@
 	"timedmedia-not-ready": "尚未就緒",
 	"timedmedia-completed-on": "已完成於$1",
 	"timedmedia-error-on": "於 $1 發生錯誤。",
-	"timedmedia-started-transcode": "已於$1前開始。$2",
+	"timedmedia-started-transcode": "起始於$1。$2",
 	"timedmedia-percent-done": "大約已完成 $1%",
 	"timedmedia-in-job-queue": "添加到工作佇列在$1前",
 	"timedmedia-unknown-target-size": "不明目標大小，已編碼 $1",
@@ -145,7 +145,7 @@
 	"timedmedia-subtitle-new-go": "執行",
 	"timedmedia-subtitle-language": "$1{{BIDI:（$2）}}",
 	"timedmedia-subtitle-no-video": "目前沒有與字幕頁面相關的影片。",
-	"timedmedia-subtitle-no-subtitles": "此影片目前沒有 $1 的字幕，您可 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁面] 來增加字幕。",
+	"timedmedia-subtitle-no-subtitles": "此影片目前沒有$1的字幕，您可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯此頁面]來增加字幕。",
 	"timedmedia-subtitle-remote": "此檔案的字幕位於 $1",
 	"timedmedia-subtitle-remote-link": "您可於$2檢視此檔案的[$1 描述頁面]",
 	"timedmedia-subtitles-available": "字幕可用。",
@@ -176,5 +176,8 @@
 	"videojs-captions-create": "建立字幕選單",
 	"transcodestatistics": "轉碼統計",
 	"timedmedia-timedtext-title-edit-subtitles": "片段的$1字幕文件：$2",
-	"timedmedia-timedtext-title-create-subtitles": "沒有找到片段的$1字幕文件：$2"
+	"timedmedia-timedtext-title-create-subtitles": "沒有找到片段的$1字幕文件：$2",
+	"m3u8-error-create-temp": "無法建立$1的臨時檔案",
+	"m3u8-error-write-temp": "無法寫入$1的臨時檔案",
+	"m3u8-error-save-playlist": "儲存 HLS 播放清單$1時發生錯誤"
 }
