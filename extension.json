@@ -368,10 +368,6 @@
 			"scripts": "resources/videojs/alt/video.core.min.js",
 			"styles": "resources/videojs/video-js.css",
 			"noflip": true,
-			"targets": [
-				"mobile",
-				"desktop"
-			],
 			"languageScripts": {
 				"ar": "resources/videojs/lang/ar.js",
 				"ba": "resources/videojs/lang/ba.js",
@@ -428,10 +424,6 @@
 		"ext.tmh.videojs-ogvjs": {
 			"es6": true,
 			"scripts": "resources/videojs-ogvjs/videojs-ogvjs.js",
-			"targets": [
-				"mobile",
-				"desktop"
-			],
 			"dependencies": [
 				"ext.tmh.video-js",
 				"ext.tmh.OgvJs"
@@ -448,10 +440,6 @@
 						"ParserEnableLegacyMediaDOM"
 					]
 				}
-			],
-			"targets": [
-				"mobile",
-				"desktop"
 			],
 			"dependencies": [
 				"ext.tmh.player.styles",
@@ -476,10 +464,6 @@
 			],
 			"styles": [
 				"resources/ext.tmh.player.dialog.less"
-			],
-			"targets": [
-				"mobile",
-				"desktop"
 			],
 			"dependencies": [
 				"oojs-ui-core",
@@ -508,10 +492,6 @@
 				"resources/videojs-resolution-switcher/videojs-resolution-switcher.css",
 				"resources/ext.tmh.player.inline.styles.less"
 			],
-			"targets": [
-				"mobile",
-				"desktop"
-			],
 			"dependencies": [
 				"ext.tmh.video-js",
 				"ext.tmh.OgvJsSupport",
@@ -537,11 +517,7 @@
 			]
 		},
 		"ext.tmh.player.styles": {
-			"styles": "resources/ext.tmh.player.styles.less",
-			"targets": [
-				"mobile",
-				"desktop"
-			]
+			"styles": "resources/ext.tmh.player.styles.less"
 		},
 		"ext.tmh.transcodetable": {
 			"es6": true,
@@ -561,10 +537,6 @@
 				"timedmedia-reset-explanation",
 				"timedmedia-error-details",
 				"timedmedia-error-dismiss"
-			],
-			"targets": [
-				"mobile",
-				"desktop"
 			]
 		},
 		"ext.tmh.timedtextpage.styles": {
@@ -575,10 +547,6 @@
 			"packageFiles": [
 				"resources/ext.tmh.OgvJsSupport.js",
 				"resources/ogv.js/ogv-support.js"
-			],
-			"targets": [
-				"mobile",
-				"desktop"
 			]
 		},
 		"ext.tmh.OgvJs": {
@@ -586,18 +554,10 @@
 			"scripts": [
 				"resources/ogv.js/ogv.js"
 			],
-			"dependencies": "ext.tmh.OgvJsSupport",
-			"targets": [
-				"mobile",
-				"desktop"
-			]
+			"dependencies": "ext.tmh.OgvJsSupport"
 		},
 		"embedPlayerIframeStyle": {
-			"styles": "resources/embedPlayerIframe.css",
-			"targets": [
-				"mobile",
-				"desktop"
-			]
+			"styles": "resources/embedPlayerIframe.css"
 		}
 	},
 	"MediaHandlers": {
