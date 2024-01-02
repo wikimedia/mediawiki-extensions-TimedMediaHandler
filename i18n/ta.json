@@ -27,7 +27,7 @@
 	"timedmedia-source-file": "$1 மூலம்",
 	"timedmedia-source-file-desc": "மூல $1, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "அசல் $1 கோப்பு ($2)",
-	"timedmedia-subtitle-new": "புதிய மொழிபெயர்ப்பை உருவாக்கவும் அல்லது உள்ளதைத் தொகுக்கவும்",
+	"timedmedia-subtitle-new": "புதிய மொழிபெயர்ப்பை ஆக்கு அல்லது உள்ளதைத் தொகு",
 	"timedmedia-subtitle-new-go": "செல்",
 	"timedmedia-file": "கோப்பு"
 }
