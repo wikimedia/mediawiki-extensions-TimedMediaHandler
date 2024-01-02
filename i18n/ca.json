@@ -40,5 +40,7 @@
 	"timedmedia-subtitle-new": "Creació de nova traducció o modificació de l'existent",
 	"timedmedia-subtitle-new-desc": "Seleccioneu la llengua i premeu el botó '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Vés-hi",
-	"timedmedia-file": "Fitxer"
+	"timedmedia-file": "Fitxer",
+	"right-transcode-reset": "Reinicialitzar vídeos fallits o transcodificats perquè tornin a entrar a la cua de treballs",
+	"right-transcode-status": "Veure [[Special:TimedMediaHandler|informació sobre l'activitat actual de transcodificació]]"
 }
