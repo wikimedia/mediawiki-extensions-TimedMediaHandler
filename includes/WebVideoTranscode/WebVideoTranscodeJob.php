@@ -8,11 +8,11 @@
 
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
-use CdnCacheUpdate;
 use Exception;
 use File;
 use FSFile;
 use Job;
+use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\HLS\Segmenter;

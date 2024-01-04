@@ -11,6 +11,7 @@ require_once "$IP/maintenance/Maintenance.php";
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\TimedText;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
+use MediaWiki\Title\Title;
 
 class ConvertSubtitles extends Maintenance {
 

@@ -3,8 +3,8 @@
 namespace MediaWiki\TimedMediaHandler\Handlers\MIDIHandler;
 
 use File;
+use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
-use Status;
 
 /**
  * MIDI handler

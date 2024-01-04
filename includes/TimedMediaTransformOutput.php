@@ -3,8 +3,8 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use Exception;
-use Html;
 use MediaTransformOutput;
+use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;

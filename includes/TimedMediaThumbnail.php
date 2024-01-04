@@ -5,7 +5,7 @@ namespace MediaWiki\TimedMediaHandler;
 use File;
 use MediaTransformError;
 use MediaWiki\MediaWikiServices;
-use PoolCounterWorkViaCallback;
+use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
 use UnregisteredLocalFile;
 
 class TimedMediaThumbnail {

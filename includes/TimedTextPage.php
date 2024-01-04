@@ -12,17 +12,17 @@ namespace MediaWiki\TimedMediaHandler;
 
 use Article;
 use File;
-use Html;
 use HTMLForm;
 use LanguageCode;
+use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use Message;
-use OutputPage;
 use TextContent;
 
 class TimedTextPage extends Article {

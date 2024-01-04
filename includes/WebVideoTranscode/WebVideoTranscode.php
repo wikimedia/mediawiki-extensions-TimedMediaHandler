@@ -10,15 +10,16 @@
 
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
-use CdnCacheUpdate;
-use ConfigException;
-use DeferredUpdates;
 use Exception;
 use File;
 use IForeignRepoWithDB;
 use IForeignRepoWithMWApi;
+use MediaWiki\Config\ConfigException;
+use MediaWiki\Deferred\CdnCacheUpdate;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\FileBackend\FSFile\TempFSFileFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\FLACHandler\FLACHandler;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 use MediaWiki\TimedMediaHandler\Handlers\MIDIHandler\MIDIHandler;
@@ -28,7 +29,6 @@ use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
 use MediaWiki\Title\Title;
-use Status;
 use TempFSFile;
 use Wikimedia\Rdbms\IDatabase;
 

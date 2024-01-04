@@ -2,8 +2,8 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use Config;
 use File;
+use MediaWiki\Config\Config;
 use MediaWiki\Title\Title;
 use RepoGroup;
 

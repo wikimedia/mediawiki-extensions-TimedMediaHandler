@@ -3,8 +3,8 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use File;
-use Html;
 use IContextSource;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Utils\MWTimestamp;

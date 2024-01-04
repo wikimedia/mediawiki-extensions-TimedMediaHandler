@@ -10,6 +10,7 @@ require_once "$IP/maintenance/Maintenance.php";
 
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\Title\Title;
 
 class TranscodeReport extends Maintenance {
 

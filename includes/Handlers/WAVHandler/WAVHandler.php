@@ -3,8 +3,8 @@
 namespace MediaWiki\TimedMediaHandler\Handlers\WAVHandler;
 
 use File;
+use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
-use Status;
 
 /**
  * WAV handler

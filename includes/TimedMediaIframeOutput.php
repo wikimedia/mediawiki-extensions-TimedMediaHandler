@@ -13,14 +13,14 @@ namespace MediaWiki\TimedMediaHandler;
 
 use Article;
 use Exception;
-use Html;
 use MediaWiki\Actions\ActionEntryPoint;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
-use OutputPage;
-use User;
-use WebRequest;
+use MediaWiki\User\User;
 
 class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 	/**

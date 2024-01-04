@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 abstract class TimedMediaMaintenance extends Maintenance {
