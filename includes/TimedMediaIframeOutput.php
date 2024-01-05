@@ -14,7 +14,7 @@ namespace MediaWiki\TimedMediaHandler;
 use Article;
 use Exception;
 use Html;
-use MediaWiki;
+use MediaWiki\Actions\ActionEntryPoint;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
@@ -30,7 +30,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 	 * @param Title $title
 	 * @param User $user
 	 * @param WebRequest $request
-	 * @param MediaWiki $mediaWiki
+	 * @param ActionEntryPoint $mediaWiki
 	 * @return bool
 	 * @throws Exception
 	 */
