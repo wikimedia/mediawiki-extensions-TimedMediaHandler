@@ -162,10 +162,9 @@ class File_Ogg_Vorbis extends File_Ogg_Media
      * This method is the constructor for the native-PHP interface to a Vorbis logical
      * stream, embedded within an Ogg physical stream.
      *
-     * @param   int     $streamSerial   Serial number of the logical stream.
-     * @param   array   $streamData     Data for the requested logical stream.
-     * @param   string  $filePath       Location of a file on the filesystem.
-     * @param   pointer $filePointer    File pointer for the current physical stream.
+     * @param   int      $streamSerial   Serial number of the logical stream.
+     * @param   array    $streamData     Data for the requested logical stream.
+     * @param   resource $filePointer    File pointer for the current physical stream.
      * @access  private
      */
     function __construct($streamSerial, $streamData, $filePointer)

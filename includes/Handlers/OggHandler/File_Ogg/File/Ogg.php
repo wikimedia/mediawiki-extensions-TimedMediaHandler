@@ -141,7 +141,7 @@ class File_Ogg
      * This is the file pointer used for extracting data from the Ogg stream.  It is
      * the result of a standard fopen call.
      *
-     * @var     pointer
+     * @var     resource
      * @access  private
      */
     var $_filePointer;
@@ -524,7 +524,7 @@ class File_Ogg
      * This function returns the percentage of the total stream size
      * used for Ogg headers.
      *
-     * @return float
+     * @return string
      */
     function getOverhead() {
         $header_size    = 0;
@@ -626,7 +626,7 @@ class File_Ogg
     /**
      * getStartOffset
      *
-     * @return unknown
+     * @return int
      */
 	function getStartOffset(){
 		if( $this->_startOffset === false)

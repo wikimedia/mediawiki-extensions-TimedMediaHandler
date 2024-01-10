@@ -80,8 +80,6 @@ class File_Ogg_Flac extends File_Ogg_Media
 
     /**
      * @access  private
-     * @param   int     $packetType
-     * @param   int     $pageOffset
      */
     function _decodeHeader()
     {

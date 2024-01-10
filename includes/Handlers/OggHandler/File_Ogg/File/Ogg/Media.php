@@ -75,8 +75,8 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
 
     /**
      * @access  private
-     * @param   int     $packetType
-     * @param   int     $pageOffset
+     * @param   int|false $packetType
+     * @param   int       $pageOffset
      */
     function _decodeCommonHeader($packetType, $pageOffset)
     {

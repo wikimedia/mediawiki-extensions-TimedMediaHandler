@@ -66,10 +66,9 @@ class File_Ogg_Bitstream
     /**
      * Constructor for a generic logical stream.
      *
-     * @param   int     $streamSerial   Serial number of the logical stream.
-     * @param   array   $streamData     Data for the requested logical stream.
-     * @param   string  $filePath       Location of a file on the filesystem.
-     * @param   pointer $filePointer    File pointer for the current physical stream.
+     * @param   int      $streamSerial   Serial number of the logical stream.
+     * @param   array    $streamData     Data for the requested logical stream.
+     * @param   resource $filePointer    File pointer for the current physical stream.
      * @access  private
      */
     function __construct($streamSerial, $streamData, $filePointer)
