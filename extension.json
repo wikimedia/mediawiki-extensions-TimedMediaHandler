@@ -364,7 +364,6 @@
 	},
 	"ResourceModules": {
 		"ext.tmh.video-js": {
-			"es6": true,
 			"scripts": "resources/videojs/alt/video.core.min.js",
 			"styles": "resources/videojs/video-js.css",
 			"noflip": true,
@@ -422,7 +421,6 @@
 			}
 		},
 		"ext.tmh.videojs-ogvjs": {
-			"es6": true,
 			"scripts": "resources/videojs-ogvjs/videojs-ogvjs.js",
 			"dependencies": [
 				"ext.tmh.video-js",
@@ -430,7 +428,6 @@
 			]
 		},
 		"ext.tmh.player": {
-			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.js",
 				"resources/ext.tmh.player.element.js",
@@ -457,7 +454,6 @@
 			]
 		},
 		"ext.tmh.player.dialog": {
-			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.dialog.loader.js",
 				"resources/ext.tmh.player.dialog.js"
@@ -475,7 +471,6 @@
 			]
 		},
 		"ext.tmh.player.inline": {
-			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.player.inline.js",
 				"resources/mw-info-button/mw-info-button-plugin.js",
@@ -520,7 +515,6 @@
 			"styles": "resources/ext.tmh.player.styles.less"
 		},
 		"ext.tmh.transcodetable": {
-			"es6": true,
 			"scripts": "resources/transcode-table/transcode-table.js",
 			"styles": "resources/transcode-table/transcode-table.css",
 			"dependencies": [
@@ -543,14 +537,12 @@
 			"styles": "resources/ext.tmh.timedtextpage.styles.less"
 		},
 		"ext.tmh.OgvJsSupport": {
-			"es6": true,
 			"packageFiles": [
 				"resources/ext.tmh.OgvJsSupport.js",
 				"resources/ogv.js/ogv-support.js"
 			]
 		},
 		"ext.tmh.OgvJs": {
-			"es6": true,
 			"scripts": [
 				"resources/ogv.js/ogv.js"
 			],
