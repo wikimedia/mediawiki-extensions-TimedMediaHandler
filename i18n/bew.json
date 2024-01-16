@@ -81,7 +81,7 @@
 	"timedmedia-subtitle-no-video": "Kaga' ada dedelengan nyang bekaètan ama ni halaman anakjudul.",
 	"timedmedia-subtitle-remote": "Tèks wayahan bakal ni berekas ditampung di $1",
 	"timedmedia-subtitle-remote-link": "Lu bisa [$1 deleng halaman jabaran] ni berekas di $2",
-	"timedmedia-subtitles-available": "Tulisan bawah kesedia.",
+	"timedmedia-subtitles-available": "Tulisan bawah derak.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 tukerkode}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 tukerkode jalan}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 tukerkode antrian}}",
