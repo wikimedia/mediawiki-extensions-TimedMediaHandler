@@ -41,6 +41,128 @@ define( 'OGG_THEORA_COMMENTS_PAGE_OFFSET', 1 );
  */
 class File_Ogg_Theora extends File_Ogg_Media
 {
+
+    /**
+     * Version of Theora as retrieved from Theora identifcation header
+     *
+     * @var     string
+     * @access  private
+     */
+    var $_theoraVersion;
+
+    /**
+     * Theora identifcation header
+     *
+     * @var     array
+     * @access  private
+     */
+    var $_idHeader;
+
+    /**
+     * Width of the encoded frame
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_frameWidth;
+
+    /**
+     * Height of the encoded frame
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_frameHeight;
+
+    /**
+     * Width of the displayed picture
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_pictureWidth;
+
+    /**
+     * Height of the displayed picture
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_pictureHeight;
+
+    /**
+     * The X offset of the displayed picture.
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_offsetX;
+
+    /**
+     * The Y offset of the displayed picture.
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_offsetY;
+
+    /**
+     * Frame rate for the encoded video
+     *
+     * @var     double
+     * @access  private
+     */
+    var $_frameRate;
+
+    /**
+     * Pixel Aspect Ratio
+     *
+     * @var     double
+     * @access  private
+     */
+    var $_physicalAspectRatio;
+
+    /**
+     * Color space
+     *
+     * @var     string
+     * @access  private
+     */
+    var $_colorSpace;
+
+    /**
+     * Nominal birate of the steram in bits per second
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_nomBitrate;
+
+    /**
+     * Quality Hint
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_quality;
+
+    /**
+     * Key frame number granule position shift
+     *
+     * @var     int
+     * @access  private
+     */
+    var $_kfgShift;
+
+    /**
+     * Pixel format
+     * One of 4:2:0, 4:2:2, 4:4:4 or Unknown
+     *
+     * @var     string
+     * @access  private
+     */
+    var $_pixelFormat;
+
     /**
      * @access  private
      */

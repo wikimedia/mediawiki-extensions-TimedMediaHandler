@@ -105,6 +105,15 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     var $_channels;
 
     /**
+     * Vorbis Identification Header
+     * https://xiph.org/vorbis/doc/Vorbis_I_spec.html#x1-610004.2
+     *
+     * @access  private
+     * @var     array
+     */
+    var $_idHeader;
+
+    /**
      * Number of samples per second in the vorbis stream.
      *
      * @access  private
@@ -135,14 +144,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
      * @var     int
      */
     var $_nomBitrate;
-
-    /**
-     * Average bitrate for the vorbis stream.
-     *
-     * @access  private
-     * @var     float
-     */
-    var $_avgBitrate;
 
     /**
      * The length of this stream in seconds.
