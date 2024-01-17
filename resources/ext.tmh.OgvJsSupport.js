@@ -171,5 +171,6 @@ class OgvJsSupport {
 		return context;
 	}
 }
+mw.OgvJsSupport = OgvJsSupport;
 
 module.exports = OgvJsSupport;
