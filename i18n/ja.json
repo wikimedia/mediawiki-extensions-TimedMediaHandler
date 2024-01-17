@@ -111,6 +111,7 @@
 	"action-transcode-reset": "トランスコードのリセット",
 	"action-transcode-status": "現在のトランスコード状態の閲覧",
 	"log-name-timedmediahandler": "TimedMediaHandler記録",
+	"logentry-timedmediahandler-resettranscode": "$1 が $3 のトランスコードを \"$4\" 形式に{{GENDER:$2|リセットしました}}",
 	"orphanedtimedtext": "孤立しているTimedTextページ",
 	"orphanedtimedtext-summary": "以下のページは、対応するファイルが存在しない[[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]]の一覧です。",
 	"orphanedtimedtext-unsupported": "この特別ページは MySQL データベースのみでサポートされます。",
