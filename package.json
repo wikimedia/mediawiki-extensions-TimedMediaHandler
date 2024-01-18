@@ -19,7 +19,7 @@
 		"jsdoc-wmf-theme": "0.0.8",
 		"ogv": "1.8.9",
 		"stylelint-config-wikimedia": "0.15.0",
-		"svgo": "3.0.2",
+		"svgo": "3.2.0",
 		"video.js": "8.6.1"
 	}
 }
