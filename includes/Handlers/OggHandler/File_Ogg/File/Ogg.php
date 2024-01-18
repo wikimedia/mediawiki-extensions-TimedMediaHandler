@@ -515,7 +515,7 @@ class File_Ogg
         }
         $this->_groupLengths = $groupLengths;
         $this->_totalLength = array_sum( $groupLengths );
-        unset($this->_streamList);
+        $this->_streamList = [];
     }
 
     /**
