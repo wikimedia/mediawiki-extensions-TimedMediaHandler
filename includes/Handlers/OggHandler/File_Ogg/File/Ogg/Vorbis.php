@@ -254,13 +254,13 @@ class File_Ogg_Vorbis extends File_Ogg_Media
 
         // blocksize_0 MUST be a valid blocksize.
         $blocksize_0 = pow(2, $h['blocksize_0']);
-        if (FALSE == in_array($blocksize_0, $valid_block_sizes))
+        if (!in_array($blocksize_0, $valid_block_sizes))
             throw new OggException("Stream is undecodable because blocksize_0 is $blocksize_0, which is not a valid size.", OGG_VORBIS_ERROR_UNDECODABLE);
 
         // Extract bits 5 to 8 from the character data.
         // blocksize_1 MUST be a valid blocksize.
         $blocksize_1 = pow(2, $h['blocksize_1']);
-        if (FALSE == in_array($blocksize_1, $valid_block_sizes))
+        if (!in_array($blocksize_1, $valid_block_sizes))
             throw new OggException("Stream is undecodable because blocksize_1 is not a valid size.", OGG_VORBIS_ERROR_UNDECODABLE);
 
         // blocksize 0 MUST be less than or equal to blocksize 1.
