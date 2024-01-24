@@ -530,9 +530,6 @@ class WebVideoTranscodeJob extends Job {
 			$this->config->get( 'FFmpegLocation' )
 		) . ' -nostdin -y -i ' . wfEscapeShellArg( $sourcePath );
 
-		if ( isset( $options['vpre'] ) ) {
-			$cmd .= ' -vpre ' . wfEscapeShellArg( $options['vpre'] );
-		}
 		$interval = 10;
 		$fps = 0;
 		if ( isset( $options['novideo'] ) ) {
@@ -589,12 +586,8 @@ class WebVideoTranscodeJob extends Job {
 			}
 
 			// Check for keyframeInterval
-			$defaultKeyframeInterval = round( $fps * $interval );
-			$keyframeInterval = $options['keyframeInterval'] ?? $defaultKeyframeInterval;
-			$cmd .= ' -g ' . wfEscapeShellArg( $keyframeInterval );
-			if ( isset( $options['keyframeIntervalMin'] ) ) {
-				$cmd .= ' -keyint_min ' . wfEscapeShellArg( $options['keyframeIntervalMin'] );
-			}
+			$keyframeInterval = strval( round( $fps * $interval ) );
+			$cmd .= ' -g ' . $keyframeInterval;
 
 			if ( isset( $options['videoBitrate'] ) ) {
 				$base = $this->expandRate( $options['videoBitrate'] );
@@ -633,10 +626,6 @@ class WebVideoTranscodeJob extends Job {
 					$maxrate = $this->scaleRate( $options, $options['maxrate'] );
 					$cmd .= " -maxrate $maxrate";
 				}
-				if ( isset( $options['bufsize'] ) ) {
-					$bufsize = $this->scaleRate( $options, $options['bufsize'] );
-					$cmd .= " -bufsize $bufsize";
-				}
 			}
 
 			if ( !$this->remuxSource ) {
@@ -654,18 +643,6 @@ class WebVideoTranscodeJob extends Job {
 			$cmd .= ' -max_muxing_queue_size 1024';
 		}
 
-		// Check for start time
-		if ( isset( $options['starttime'] ) ) {
-			$cmd .= ' -ss ' . wfEscapeShellArg( $options['starttime'] );
-		} else {
-			$options['starttime'] = 0;
-		}
-		// Check for end time:
-		if ( isset( $options['endtime'] ) ) {
-			$duration = (int)$options['endtime'] - (int)$options['starttime'];
-			$cmd .= ' -t ' . $duration;
-		}
-
 		if ( $pass === 1 || isset( $options['noaudio'] ) ) {
 			$cmd .= ' -an';
 		} else {
@@ -679,7 +656,6 @@ class WebVideoTranscodeJob extends Job {
 
 		$streaming = $options['streaming'] ?? false;
 		$target = $this->getTargetEncodePath();
-		$playlist = false;
 
 		$transcodeKey = $this->params[ 'transcodeKey' ];
 		$extension = substr( $transcodeKey, strrpos( $transcodeKey, '.' ) + 1 );
@@ -689,7 +665,6 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		if ( $streaming === 'hls' ) {
-			$playlist = $target . ".m3u8";
 
 			if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
 				// Don't use the HLS muxer, as it'll want to manage
@@ -855,26 +830,6 @@ class WebVideoTranscodeJob extends Job {
 	public function ffmpegAddH264VideoOptions( $options, $pass ) {
 		// Set the codec:
 		$cmd = " -threads " . (int)$this->config->get( 'FFmpegThreads' ) . " -vcodec libx264";
-		// Check for presets:
-		if ( isset( $options['preset'] ) ) {
-			// Add the two vpre types:
-			switch ( $options['preset'] ) {
-				case 'ipod320':
-					// phpcs:ignore Generic.Files.LineLength.TooLong
-					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -weightb 1 -level 13 -maxrate 768k -bufsize 3M";
-					break;
-				case '720p':
-				case 'ipod640':
-					// phpcs:ignore Generic.Files.LineLength.TooLong
-					$cmd .= " -profile:v baseline -preset slow -coder 0 -bf 0 -refs 1 -weightb 1 -level 31 -maxrate 10M -bufsize 10M";
-					break;
-				default:
-					// in the default case just pass along the preset to ffmpeg
-					$cmd .= " -vpre " . wfEscapeShellArg( $options['preset'] );
-					break;
-			}
-		}
-
 		$cmd .= ' -pix_fmt yuv420p';
 		$cmd .= ' -rc-lookahead 16';
 
@@ -934,19 +889,6 @@ class WebVideoTranscodeJob extends Job {
 			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options['maxSize'] );
 			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
 		}
-
-		// Handle crop:
-		$optionMap = [
-			'cropTop' => '-croptop',
-			'cropBottom' => '-cropbottom',
-			'cropLeft' => '-cropleft',
-			'cropRight' => '-cropright'
-		];
-		foreach ( $optionMap as $name => $cmdArg ) {
-			if ( isset( $options[$name] ) ) {
-				$cmd .= " $cmdArg " . wfEscapeShellArg( $options[$name] );
-			}
-		}
 		return $cmd;
 	}
 
@@ -974,19 +916,6 @@ class WebVideoTranscodeJob extends Job {
 		// and in VP9 profile 1, but Chrome and Edge don't grok them.
 		$cmd .= ' -pix_fmt yuv420p';
 
-		// Check for video quality:
-		if ( isset( $options['videoQuality'] ) && $options['videoQuality'] >= 0 ) {
-			// Map 0-10 to 63-0, higher values worse quality
-			$quality = 63 - (int)( (int)$options['videoQuality'] / 10 * 63 );
-			$options['qmax'] = (string)$quality;
-			$options['qmin'] = (string)$quality;
-		}
-		if ( isset( $options['qmin'] ) ) {
-			$cmd .= " -qmin " . wfEscapeShellArg( $options['qmin'] );
-		}
-		if ( isset( $options['qmax'] ) ) {
-			$cmd .= " -qmax " . wfEscapeShellArg( $options['qmax'] );
-		}
 		// libvpx-specific constant quality or constrained quality
 		// note the range is different between VP8 and VP9
 		if ( isset( $options['crf'] ) ) {
@@ -999,31 +928,14 @@ class WebVideoTranscodeJob extends Job {
 			if ( isset( $options['tileColumns'] ) ) {
 				$cmd .= ' -tile-columns ' . wfEscapeShellArg( $options['tileColumns'] );
 			}
-			if ( isset( $options['tileRows'] ) ) {
-				$cmd .= ' -tile-rows ' . wfEscapeShellArg( $options['tileRows'] );
-			}
 		} else {
 			$cmd .= " -vcodec libvpx";
 			if ( isset( $options['slices'] ) ) {
 				$cmd .= ' -slices ' . wfEscapeShellArg( $options['slices'] );
 			}
 		}
-		if ( isset( $options['altref'] ) ) {
-			if ( $options['altref'] === '0' ) {
-				$cmd .= ' -auto-alt-ref 0';
-			} else {
-				$cmd .= ' -auto-alt-ref 1';
-			}
-		}
-		if ( isset( $options['lagInFrames'] ) ) {
-			$cmd .= ' -lag-in-frames ' . wfEscapeShellArg( $options['lagInFrames'] );
-		}
 
-		if ( isset( $options['quality'] ) ) {
-			$cmd .= ' -quality ' . wfEscapeShellArg( $options['quality'] );
-		} else {
-			$cmd .= ' -quality good';
-		}
+		$cmd .= ' -quality good';
 
 		if ( $pass === 1 ) {
 			// Make first pass faster...
@@ -1167,7 +1079,7 @@ class WebVideoTranscodeJob extends Job {
 			'-i',
 			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt ),
 			'-ss',
-			wfEscapeShellArg( $options['starttime'] ?? '0' ),
+			0,
 		];
 
 		if ( isset( $options['audioQuality'] ) ) {
