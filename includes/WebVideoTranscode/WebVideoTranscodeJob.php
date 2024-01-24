@@ -11,14 +11,17 @@ namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 use Exception;
 use File;
 use FSFile;
+use InvalidArgumentException;
 use Job;
 use MediaWiki\Config\Config;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Shell\Shell;
 use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
+use Shellbox\Command\BoxedCommand;
 use TempFSFile;
 use Wikimedia\AtEase\AtEase;
 
@@ -506,6 +509,36 @@ class WebVideoTranscodeJob extends Job {
 				closedir( $dh );
 			}
 		}
+	}
+
+	/**
+	 * Gets a boxedCommand executor
+	 * @param string $name The route name for the BoxedCommand
+	 * @return BoxedCommand
+	 */
+	private static function getCommand( string $name ) {
+		$fullName = 'tmh-' . strtolower( $name );
+		return MediaWikiServices::getInstance()->getShellCommandFactory()
+			->createBoxed( 'timedmediahandler' )
+			->disableNetwork()
+			->firejailDefaultSeccomp()
+			->routeName( $fullName );
+	}
+
+	/**
+	 * Adds an input file from the scripts directory, sets the command to execute it
+	 * @param BoxedCommand $command
+	 * @param string $script
+	 *
+	 */
+	private static function useScript( BoxedCommand $command, string $script ) {
+		global $wgShellboxShell;
+		$file = __DIR__ . "/../scripts/$script";
+		if ( !is_file( $file ) ) {
+			throw new InvalidArgumentException( "File '$file' not found" );
+		}
+		$command->inputFileFromFile( "scripts/$script", $file )
+			->params( $wgShellboxShell, 'scripts/' . $script );
 	}
 
 	/**
@@ -1040,78 +1073,38 @@ class WebVideoTranscodeJob extends Job {
 		if ( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
 		}
-
-		$outputFileExt = $options['audioCodec'] === 'vorbis' ? '' : '.wav';
-
-		// Set up the base command
-		$cmdArgs = [
-			wfEscapeShellArg( $this->config->get( 'TmhFluidsynthLocation' ) ),
-			'-T',
-			// wav for mp3
-			$options['audioCodec'] === 'vorbis' ? 'oga' : 'wav',
-			wfEscapeShellArg( $this->config->get( 'TmhSoundfontLocation' ) ),
-			wfEscapeShellArg( $this->getSourceFilePath() ),
-			'-F',
-			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt )
+		$cmd = self::getCommand( 'miditoaudio' );
+		self::useScript( $cmd, 'midi-encode.sh' );
+		// set up options
+		$optsEnv = [];
+		$optToEnv = [
+			'audioQuality' => 'QUALITY',
+			'audioBitrate' => 'BITRATE',
+			'samplerate' => 'SAMPLERATE',
+			'channels' => 'CHANNELS'
 		];
-
-		$cmdString = implode( " ", $cmdArgs );
-
-		$shellOutput = $this->runShellExec( $cmdString, $retval );
-		'@phan-var int $retval';
-
-		// Fluidsynth doesn't give error codes - $retval always stays 0
-		if ( strpos( $shellOutput, "fluidsynth: error:" ) !== false ) {
-			$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
-			return $cmdString .
-				"\n\nExitcode: " . $retval . "\nMemory: $backgroundMemoryLimit\n\n" .
-				$shellOutput;
+		foreach ( $optToEnv as $opt => $label ) {
+			if ( isset( $options[$opt] ) ) {
+				$optsEnv['TMH_OPT_' . $label] = Shell::escape( $options[$opt] );
+			}
 		}
+		// Execute the conversion
+		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
+		$cmd->outputFileToFile( 'output_audio', $this->getTargetEncodePath() )
+			->inputFileFromFile( 'input.mid', $this->getSourceFilePath() )
+			->includeStderr()
+			->environment( [
+				'TMH_FLUIDSYNTH_PATH' => $this->config->get( 'TmhFluidsynthLocation' ),
+				'TMH_FFMPEG_PATH'     => $this->config->get( 'FFmpegLocation' ),
+				'TMH_SOUNDFONT_PATH'  => $this->config->get( 'TmhSoundfontLocation' ),
+				'TMH_AUDIO_CODEC'     => Shell::escape( $options['audioCodec'] ),
+			] + $optToEnv );
+		$result = $cmd->memoryLimit( $backgroundMemoryLimit )->execute();
 
-		if ( $options['audioCodec'] === 'vorbis' ) {
-			return true;
-		}
-
-		// For mp3, convert wav (previous command) to mp3 with ffmpeg
-		$lameCmdArgs = [
-			wfEscapeShellArg( $this->config->get( 'FFmpegLocation' ) ),
-			'-y',
-			'-i',
-			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt ),
-			'-ss',
-			0,
-		];
-
-		if ( isset( $options['audioQuality'] ) ) {
-			array_push( $lameCmdArgs, "-aq", wfEscapeShellArg( $options['audioQuality'] ) );
-		}
-		if ( isset( $options['audioBitrate'] ) ) {
-			array_push( $lameCmdArgs, "-ab", $this->expandRate( $options['audioBitrate'] ) );
-		}
-		if ( isset( $options['samplerate'] ) ) {
-			array_push( $lameCmdArgs, "-ar", wfEscapeShellArg( $options['samplerate'] ) );
-		}
-		if ( isset( $options['channels'] ) ) {
-			array_push( $lameCmdArgs, "-ac", wfEscapeShellArg( $options['channels'] ) );
-		}
-
-		array_push(
-			$lameCmdArgs,
-			"-acodec",
-			"libmp3lame",
-			wfEscapeShellArg( $this->getTargetEncodePath() )
-		);
-
-		$lameCmdString = implode( " ", $lameCmdArgs );
-
-		$shellOutput = $this->runShellExec( $lameCmdString, $retval );
-
-		// Retval from fluidsynth command
-		if ( $retval !== 0 ) {
-			$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
-			return $lameCmdString .
-				"\n\nExitcode: $retval\nMemory: $backgroundMemoryLimit\n\n" .
-				$shellOutput;
+		if ( $result->getExitCode() != 0 ) {
+			return 'midi-encode.sh' .
+				"\n\nExitcode: " . $result->getExitCode() . "\nMemory: $backgroundMemoryLimit\n\n"
+				. $result->getStdout();
 		}
 		return true;
 	}
