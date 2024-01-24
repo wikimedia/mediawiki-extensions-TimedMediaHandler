@@ -1,5 +1,5 @@
 'use strict';
-const OgvJsSupport = mw.loader.require( 'ext.tmh.OgvJsSupport' );
+const OgvJsSupport = require( 'ext.tmh.OgvJsSupport' );
 
 /**
  * All JS for loading an actual video.js player for MediaWiki

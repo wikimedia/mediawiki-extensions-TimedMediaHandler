@@ -116,7 +116,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 			preload: 'auto'
 		};
 
-		const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+		const InlinePlayer = require( 'ext.tmh.player.inline' );
 		this.inlinePlayer = new InlinePlayer( this.$video.get( 0 ), options );
 		// We might cause a delayed load of videojs here.
 		this.loadedPromise = this.inlinePlayer.infuse();

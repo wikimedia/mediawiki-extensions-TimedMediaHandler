@@ -1,4 +1,4 @@
-const OgvJsSupport = mw.loader.require( 'ext.tmh.OgvJsSupport' );
+const OgvJsSupport = require( 'ext.tmh.OgvJsSupport' );
 
 function secondsToComponents( totalSeconds ) {
 	totalSeconds = parseInt( totalSeconds, 10 );
@@ -275,7 +275,7 @@ class MediaElement {
 				this.$placeholder.find( 'video,audio' )
 					.replaceWith( this.element );
 
-				const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+				const InlinePlayer = require( 'ext.tmh.player.inline' );
 				const inlinePlayer = new InlinePlayer(
 					this.element,
 					{ bigPlayButton: false }
