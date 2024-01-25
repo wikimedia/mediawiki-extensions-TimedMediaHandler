@@ -14,6 +14,7 @@ use Exception;
 use File;
 use IForeignRepoWithDB;
 use IForeignRepoWithMWApi;
+use JobSpecification;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -1383,13 +1384,13 @@ class WebVideoTranscode {
 			// Set the priority
 			$prioritized = static::isTranscodePrioritized( $file, $transcodeKey );
 
-			$job = new WebVideoTranscodeJob( $file->getTitle(), [
+			$job = new JobSpecification( $prioritized ? 'webVideoTranscodePrioritized' : 'webVideoTranscode', [
 				'transcodeMode' => 'derivative',
 				'transcodeKey' => $transcodeKey,
 				'prioritized' => $prioritized,
 				'manualOverride' => $options['manualOverride'] ?? false,
 				'remux' => $options['remux'] ?? false,
-			] );
+			], [], $file->getTitle() );
 
 			try {
 				MediaWikiServices::getInstance()->getJobQueueGroupFactory()->makeJobQueueGroup()->push( $job );

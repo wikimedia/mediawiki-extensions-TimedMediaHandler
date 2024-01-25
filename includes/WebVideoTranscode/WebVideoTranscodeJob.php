@@ -12,6 +12,7 @@ use Exception;
 use File;
 use FSFile;
 use Job;
+use MediaWiki\Config\Config;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -52,19 +53,31 @@ class WebVideoTranscodeJob extends Job {
 	/** @var FSFile|null */
 	public $remuxSource;
 
+	/** @var Config */
+	private $config;
+
 	/**
 	 * @param Title $title
 	 * @param array $params
-	 * @param int $id
+	 * @param Config $config
 	 */
-	public function __construct( $title, $params, $id = 0 ) {
+	public function __construct( $title, $params, Config $config ) {
 		if ( isset( $params['prioritized'] ) && $params['prioritized'] ) {
 			$command = 'webVideoTranscodePrioritized';
 		} else {
 			$command = 'webVideoTranscode';
 		}
-		parent::__construct( $command, $title, $params, $id );
+		parent::__construct( $command, $title, $params );
 		$this->removeDuplicates = true;
+		$this->config = $config;
+	}
+
+	/**
+	 * Accessor for MainConfig
+	 * @return Config
+	 */
+	protected function getConfig(): Config {
+		return $this->config;
 	}
 
 	/**

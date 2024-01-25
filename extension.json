@@ -566,8 +566,14 @@
 		"video/webm": "MediaWiki\\TimedMediaHandler\\Handlers\\WebMHandler\\WebMHandler"
 	},
 	"JobClasses": {
-		"webVideoTranscode": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
-		"webVideoTranscodePrioritized": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob"
+		"webVideoTranscode": {
+			"class": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
+			"services": [ "MainConfig" ]
+		},
+		"webVideoTranscodePrioritized": {
+			"class": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
+			"services": [ "MainConfig" ]
+		}
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
