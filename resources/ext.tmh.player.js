@@ -41,7 +41,7 @@ $( function () {
 	}
 	// The iframe mode
 	mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
-		const InlinePlayer = mw.loader.require( 'ext.tmh.player.inline' );
+		const InlinePlayer = require( 'ext.tmh.player.inline' );
 		$iframeElements.each( function ( index, mediaElement ) {
 			const inlinePlayer = new InlinePlayer( mediaElement, { fill: true } );
 			inlinePlayer.infuse();
