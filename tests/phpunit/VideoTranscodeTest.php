@@ -96,12 +96,11 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 	}
 
 	public function runTranscodeJobs() {
-		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
+		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
+		$dbw = $lbFactory->getPrimaryDatabase();
 		$type = 'webVideoTranscode';
 		// Set the condition to only run the webVideoTranscode
 		$conds = [ "job_cmd" => $type ];
-
-		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
 
 		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
 			for ( ; ; ) {
