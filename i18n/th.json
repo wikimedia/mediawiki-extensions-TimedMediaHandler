@@ -4,7 +4,9 @@
 			"Aefgh39622",
 			"Geonuch",
 			"Patsagorn Y.",
-			"Pon44695"
+			"Pon44695",
+			"Ekminarin",
+			"RidJasper"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -21,8 +23,13 @@
 	"timedmedia-webm-long-video": "ไฟล์เสียง/วิดีโอ WebM, $1, ความยาว $2, $4 × $5 พิกเซล, $3 โดยรวม",
 	"timedmedia-flac-short-audio": "ไฟล์เสียง FLAC, $1",
 	"timedmedia-flac-long-audio": "ไฟล์เสียง FLAC, ความยาว $1, $2 โดยรวม",
+	"timedmedia-wav-short-audio": "ไฟล์เสียง WAV $1",
+	"timedmedia-wav-pcm-required": "คุณสามารถอัปโหลดได้เฉพาะ PCM (Pulse Code Modulation) WAV เท่านั้น",
+	"timedmedia-mp3-short-audio": "ไฟล์เสียง MP3 $1",
+	"timedmedia-midi-short-audio": "ไฟล์เสียง MIDI $1",
 	"timedmedia-mp4-short-video": "ไฟล์วีดีโอ MP4 $1 $2",
 	"timedmedia-mp4-long-video": "ไฟล์เสียง/วิดีโอ MP4, $1, ความยาว $2, $4 × $5 พิกเซล, $3 โดยรวม",
+	"timedmedia-mpeg-short-video": "ไฟล์วิดีโอ MPEG $1 $2",
 	"timedmedia-more": "เพิ่มเติม...",
 	"timedmedia-dismiss": "ปิด",
 	"timedmedia-download": "ดาวน์โหลดไฟล์",
@@ -33,6 +40,7 @@
 	"timedmedia-status": "สถานะ",
 	"timedmedia-status-unknown": "ไม่ทราบสถานะ",
 	"timedmedia-transcodebitrate": "บินเรต",
+	"timedmedia-transcodeduration": "เวลาถอดรหัส",
 	"timedmedia-transcodeinfo": "รูปแบบ",
 	"timedmedia-actions": "การกระทำ",
 	"timedmedia-direct-link": "ดาวน์โหลด",
@@ -42,6 +50,7 @@
 	"timedmedia-started-transcode": "เริ่มเมื่อ $1ที่ผ่านมา $2",
 	"timedmedia-percent-done": "ประมาณ $1% เสร็จสมบูรณ์",
 	"timedmedia-in-job-queue": "เพิ่มไปยังคิวงานเมื่อ $1ที่ผ่านมา",
+	"timedmedia-unknown-target-size": "ไม่ทราบขนาดเป้าหมาย เข้ารหัส $1",
 	"timedmedia-days": "{{PLURAL:$1|1 วัน|$1 วัน}}",
 	"timedmedia-hours": "{{PLURAL:$1|1 ชั่วโมง|$1 ชั่วโมง}}",
 	"timedmedia-minutes": "{{PLURAL:$1|1 นาที|$1 นาที}}",
@@ -68,8 +77,15 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 การแปลงรหัสที่กำลังทำงานอยู่}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 การแปลงรหัสที่อยู่ในคิว}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 การแปลงรหัสที่ล้มเหลว}}",
+	"timedmedia-no-derivatives": "ไม่จำเป็นต้องแปลงรหัส",
 	"timedmedia-file": "ไฟล์",
+	"timedmedia-dialog-close": "ปิดเครื่องเล่นสื่อ",
 	"right-transcode-status": "ดู[[Special:TimedMediaHandler|สารสนเทศเกี่ยวกับกิจกรรมทรานส์โคดปัจจุบัน]]",
 	"action-transcode-status": "ดูสถานะการแปลงรหัสปัจจุบัน",
-	"log-name-timedmediahandler": "ปูมไทม์ดมีเดียแฮนด์เลอร์"
+	"log-name-timedmediahandler": "ปูมไทม์ดมีเดียแฮนด์เลอร์",
+	"videojs-more-information": "ข้อมูลเพิ่มเติม",
+	"videojs-quality": "คุณภาพวีดีโอ",
+	"videojs-subtitles-create": "สร้างบทบรรยาย",
+	"videojs-captions-create": "สร้างคำบรรยาย",
+	"transcodestatistics": "สถิติการแปลงรหัส"
 }
