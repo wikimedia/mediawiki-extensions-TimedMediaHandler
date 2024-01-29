@@ -515,9 +515,6 @@ class WebVideoTranscodeJob extends Job {
 	 * @return true|string
 	 */
 	private function ffmpegEncode( $options, $pass = 0 ) {
-		global $wgFFmpegLocation, $wgTranscodeBackgroundMemoryLimit;
-		global $wgTranscodeBackgroundSizeLimit, $wgTranscodeSoftSizeLimit;
-
 		if ( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
 		}
@@ -530,7 +527,7 @@ class WebVideoTranscodeJob extends Job {
 
 		// Set up the base command
 		$cmd = wfEscapeShellArg(
-			$wgFFmpegLocation
+			$this->config->get( 'FFmpegLocation' )
 		) . ' -nostdin -y -i ' . wfEscapeShellArg( $sourcePath );
 
 		if ( isset( $options['vpre'] ) ) {
@@ -610,19 +607,21 @@ class WebVideoTranscodeJob extends Job {
 				// compressed.
 				$duration = (float)$this->file->getLength();
 				$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
-				if ( $wgTranscodeBackgroundSizeLimit > 0 && $estimatedSize > $wgTranscodeBackgroundSizeLimit ) {
+				$backgroundSizeLimit = $this->config->get( 'TranscodeBackgroundSizeLimit' );
+				if ( $backgroundSizeLimit > 0 && $estimatedSize > $backgroundSizeLimit ) {
 					// This hard limit cannot be overridden by admins, except by raising the limit in config.
 					// @todo return an error code that can be localized later
-					return "estimated file size $estimatedSize KiB over hard limit $wgTranscodeBackgroundSizeLimit KiB";
+					return "estimated file size $estimatedSize KiB over hard limit $backgroundSizeLimit KiB";
 				}
 
-				if ( $wgTranscodeSoftSizeLimit > 0 && $estimatedSize > $wgTranscodeSoftSizeLimit ) {
+				$transcodeSoftSizeLimit = $this->config->get( 'TranscodeSoftSizeLimit' );
+				if ( $transcodeSoftSizeLimit > 0 && $estimatedSize > $transcodeSoftSizeLimit ) {
 					// This soft limit can be overridden when a transcode is reset by hand via the web UI
 					// or API, or requeueTranscodes.php with --manual-override option.
 					$manualOverride = $this->params['manualOverride'] ?? false;
 					if ( !$manualOverride ) {
 						// @todo return an error code that can be localized later
-						return "estimated file size $estimatedSize KiB over soft limit $wgTranscodeSoftSizeLimit KiB";
+						return "estimated file size $estimatedSize KiB over soft limit $transcodeSoftSizeLimit KiB";
 					}
 				}
 
@@ -731,8 +730,9 @@ class WebVideoTranscodeJob extends Job {
 		$shellOutput = $this->runShellExec( $cmd, $retval );
 
 		if ( $retval !== 0 ) {
+			$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
 			return $cmd .
-				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				"\n\nExitcode: $retval\nMemory: $backgroundMemoryLimit\n\n" .
 				$shellOutput;
 		}
 
@@ -853,9 +853,8 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	public function ffmpegAddH264VideoOptions( $options, $pass ) {
-		global $wgFFmpegThreads;
 		// Set the codec:
-		$cmd = " -threads " . (int)$wgFFmpegThreads . " -vcodec libx264";
+		$cmd = " -threads " . (int)$this->config->get( 'FFmpegThreads' ) . " -vcodec libx264";
 		// Check for presets:
 		if ( isset( $options['preset'] ) ) {
 			// Add the two vpre types:
@@ -959,11 +958,8 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	private function ffmpegAddWebmVideoOptions( $options, $pass ) {
-		global $wgFFmpegThreads, $wgFFmpegVP9RowMT;
-
-		$cmd = ' -threads ' . (int)$wgFFmpegThreads;
-
-		if ( $wgFFmpegVP9RowMT && $options['videoCodec'] === 'vp9' ) {
+		$cmd = ' -threads ' . (int)$this->config->get( 'FFmpegThreads' );
+		if ( $this->config->get( 'FFmpegVP9RowMT' ) && $options['videoCodec'] === 'vp9' ) {
 			// Macroblock row multithreading allows using more CPU cores
 			// for VP9 encoding. This is not yet the default, and the option
 			// will fail on a version of ffmpeg that is too old or is built
@@ -1129,9 +1125,6 @@ class WebVideoTranscodeJob extends Job {
 	 * @return true|string
 	 */
 	private function midiToAudioEncode( $options ) {
-		global $wgTmhFluidsynthLocation, $wgFFmpegLocation, $wgTmhSoundfontLocation,
-			$wgTranscodeBackgroundMemoryLimit;
-
 		if ( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
 		}
@@ -1140,11 +1133,11 @@ class WebVideoTranscodeJob extends Job {
 
 		// Set up the base command
 		$cmdArgs = [
-			wfEscapeShellArg( $wgTmhFluidsynthLocation ),
+			wfEscapeShellArg( $this->config->get( 'TmhFluidsynthLocation' ) ),
 			'-T',
 			// wav for mp3
 			$options['audioCodec'] === 'vorbis' ? 'oga' : 'wav',
-			wfEscapeShellArg( $wgTmhSoundfontLocation ),
+			wfEscapeShellArg( $this->config->get( 'TmhSoundfontLocation' ) ),
 			wfEscapeShellArg( $this->getSourceFilePath() ),
 			'-F',
 			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt )
@@ -1157,8 +1150,9 @@ class WebVideoTranscodeJob extends Job {
 
 		// Fluidsynth doesn't give error codes - $retval always stays 0
 		if ( strpos( $shellOutput, "fluidsynth: error:" ) !== false ) {
+			$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
 			return $cmdString .
-				"\n\nExitcode: " . $retval . "\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				"\n\nExitcode: " . $retval . "\nMemory: $backgroundMemoryLimit\n\n" .
 				$shellOutput;
 		}
 
@@ -1168,7 +1162,7 @@ class WebVideoTranscodeJob extends Job {
 
 		// For mp3, convert wav (previous command) to mp3 with ffmpeg
 		$lameCmdArgs = [
-			wfEscapeShellArg( $wgFFmpegLocation ),
+			wfEscapeShellArg( $this->config->get( 'FFmpegLocation' ) ),
 			'-y',
 			'-i',
 			wfEscapeShellArg( $this->getTargetEncodePath() . $outputFileExt ),
@@ -1202,8 +1196,9 @@ class WebVideoTranscodeJob extends Job {
 
 		// Retval from fluidsynth command
 		if ( $retval !== 0 ) {
+			$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
 			return $lameCmdString .
-				"\n\nExitcode: $retval\nMemory: $wgTranscodeBackgroundMemoryLimit\n\n" .
+				"\n\nExitcode: $retval\nMemory: $backgroundMemoryLimit\n\n" .
 				$shellOutput;
 		}
 		return true;
@@ -1219,21 +1214,16 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	public function runShellExec( $cmd, &$retval ) {
-		global $wgTranscodeBackgroundTimeLimit,
-			$wgTranscodeBackgroundMemoryLimit,
-			$wgTranscodeBackgroundSizeLimit,
-			$wgEnableNiceBackgroundTranscodeJobs;
-
 		// For profiling
 		$caller = wfGetCaller();
 
 		// Check if background tasks are enabled
-		if ( $wgEnableNiceBackgroundTranscodeJobs === false ) {
+		if ( $this->config->get( 'EnableNiceBackgroundTranscodeJobs' ) === false ) {
 			// Directly execute the shell command:
 			$limits = [
-				"filesize" => $wgTranscodeBackgroundSizeLimit,
-				"memory" => $wgTranscodeBackgroundMemoryLimit,
-				"time" => $wgTranscodeBackgroundTimeLimit
+				'filesize' => $this->config->get( 'TranscodeBackgroundSizeLimit' ),
+				'memory' => $this->config->get( 'TranscodeBackgroundMemoryLimit' ),
+				'time' => $this->config->get( 'TranscodeBackgroundTimeLimit' )
 			];
 			return wfShellExec( $cmd . ' 2>&1', $retval, [], $limits,
 				[ 'profileMethod' => $caller ] );
@@ -1285,9 +1275,6 @@ class WebVideoTranscodeJob extends Job {
 	 * @param string $caller The calling method
 	 */
 	public function runChildCmd( $cmd, &$retval, $encodingLog, $retvalLog, $caller ) {
-		global $wgTranscodeBackgroundTimeLimit, $wgTranscodeBackgroundMemoryLimit,
-		$wgTranscodeBackgroundSizeLimit;
-
 		// In theory we should use pcntl_exec but not sure how to get the stdout, ensure
 		// we don't max php memory with the same protections provided by wfShellExec.
 
@@ -1302,9 +1289,9 @@ class WebVideoTranscodeJob extends Job {
 		// $status =
 		// wfShellExec( 'nice -n ' . $wgTranscodeBackgroundPriority . ' '. $cmd . ' 2>&1', $retval );
 		$limits = [
-			"filesize" => $wgTranscodeBackgroundSizeLimit,
-			"memory" => $wgTranscodeBackgroundMemoryLimit,
-			"time" => $wgTranscodeBackgroundTimeLimit
+			'filesize' => $this->config->get( 'TranscodeBackgroundSizeLimit' ),
+			'memory' => $this->config->get( 'TranscodeBackgroundMemoryLimit' ),
+			'time' => $this->config->get( 'TranscodeBackgroundTimeLimit' )
 		];
 		$status = wfShellExec( $cmd . ' 2>&1', $retval, [], $limits,
 			[ 'profileMethod' => $caller ] );
@@ -1325,7 +1312,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	public function monitorTranscode( $pid, &$retval, $encodingLog, $retvalLog ) {
-		global $wgTranscodeBackgroundTimeLimit, $wgLang;
+		global $wgLang;
 		$errorMsg = '';
 		$loopCount = 0;
 		$oldFileSize = 0;
@@ -1378,11 +1365,12 @@ class WebVideoTranscodeJob extends Job {
 			}
 
 			// Check if we have global job run-time has been exceeded:
+			$backgroundTimeLimit = $this->config->get( 'TranscodeBackgroundTimeLimit' );
 			if (
-				$wgTranscodeBackgroundTimeLimit && time() - $startTime > $wgTranscodeBackgroundTimeLimit
+				$backgroundTimeLimit && time() - $startTime > $backgroundTimeLimit
 			) {
 				$errorMsg = "Encoding exceeded max job run time ( "
-					. TimedMediaHandler::seconds2npt( $wgTranscodeBackgroundTimeLimit ) . " ), kill process.";
+					. TimedMediaHandler::seconds2npt( $backgroundTimeLimit ) . " ), kill process.";
 				$this->output( $errorMsg );
 				// File is not growing in size, kill proccess
 				$retval = 1;

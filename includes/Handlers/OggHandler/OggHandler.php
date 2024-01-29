@@ -5,6 +5,7 @@ namespace MediaWiki\TimedMediaHandler\Handlers\OggHandler;
 use File;
 use File_Ogg;
 use IContextSource;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use Wikimedia\AtEase\AtEase;
 
@@ -158,7 +159,6 @@ class OggHandler extends TimedMediaHandler {
 	 * @return array|false
 	 */
 	public function getImageSize( $file, $path, $metadata = false ) {
-		global $wgMediaVideoTypes;
 		// Just return the size of the first video stream
 		if ( $metadata === false ) {
 			$metadata = $file->getMetadata();
@@ -171,8 +171,10 @@ class OggHandler extends TimedMediaHandler {
 		if ( isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
 			return false;
 		}
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
 		foreach ( $metadata['streams'] as $stream ) {
-			if ( in_array( $stream['type'], $wgMediaVideoTypes, true ) ) {
+			if ( in_array( $stream['type'], $mediaVideoTypes, true ) ) {
 				$pictureWidth = $stream['header']['PICW'];
 				$parNumerator = $stream['header']['PARN'];
 				$parDenominator = $stream['header']['PARD'];
@@ -287,13 +289,15 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	private function findVideoStream( File $file ): ?array {
-		global $wgMediaVideoTypes;
-		return $this->findStream( $file, $wgMediaVideoTypes );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
+		return $this->findStream( $file, $mediaVideoTypes );
 	}
 
 	private function findAudioStream( File $file ): ?array {
-		global $wgMediaAudioTypes;
-		return $this->findStream( $file, $wgMediaAudioTypes );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$mediaAudioTypes = $config->get( 'MediaAudioTypes' );
+		return $this->findStream( $file, $mediaAudioTypes );
 	}
 
 	/**
@@ -347,16 +351,19 @@ class OggHandler extends TimedMediaHandler {
 	 * @return string
 	 */
 	public function getShortDesc( $file ) {
-		global $wgLang, $wgMediaAudioTypes, $wgMediaVideoTypes;
+		global $wgLang;
 
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-		if ( array_intersect( $streamTypes, $wgMediaVideoTypes ) ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
+		$mediaAudioTypes = $config->get( 'MediaAudioTypes' );
+		if ( array_intersect( $streamTypes, $mediaVideoTypes ) ) {
 			// Count multiplexed audio/video as video for short descriptions
 			$msg = 'timedmedia-ogg-short-video';
-		} elseif ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
+		} elseif ( array_intersect( $streamTypes, $mediaAudioTypes ) ) {
 			$msg = 'timedmedia-ogg-short-audio';
 		} else {
 			$msg = 'timedmedia-ogg-short-general';
@@ -370,8 +377,6 @@ class OggHandler extends TimedMediaHandler {
 	 * @return string
 	 */
 	public function getLongDesc( $file ) {
-		global $wgMediaVideoTypes, $wgMediaAudioTypes;
-
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
@@ -384,13 +389,16 @@ class OggHandler extends TimedMediaHandler {
 				->sizeParams( $file->getSize() )
 				->text();
 		}
-		if ( array_intersect( $streamTypes, $wgMediaVideoTypes ) ) {
-			if ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
+		$mediaAudioTypes = $config->get( 'MediaAudioTypes' );
+		if ( array_intersect( $streamTypes, $mediaVideoTypes ) ) {
+			if ( array_intersect( $streamTypes, $mediaAudioTypes ) ) {
 				$msg = 'timedmedia-ogg-long-multiplexed';
 			} else {
 				$msg = 'timedmedia-ogg-long-video';
 			}
-		} elseif ( array_intersect( $streamTypes, $wgMediaAudioTypes ) ) {
+		} elseif ( array_intersect( $streamTypes, $mediaAudioTypes ) ) {
 			$msg = 'timedmedia-ogg-long-audio';
 		} else {
 			$msg = 'timedmedia-ogg-long-general';
