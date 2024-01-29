@@ -72,10 +72,6 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 	private function outputIframe( Title $title, OutputPage $out ): bool {
 		global $wgBreakFrames;
 
-		if ( !$this->config->get( 'EnableIframeEmbed' ) ) {
-			return false;
-		}
-
 		// Setup the render param
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		if ( !$file ) {
