@@ -166,7 +166,7 @@ class MP3Segmenter extends Segmenter {
 
 		$sr = self::field( 'sampleRate', $header );
 		$sampleRate = self::$sampleRates[$mpeg][$sr];
-		if ( $sampleRate == 1 ) {
+		if ( $sampleRate === 1 ) {
 			return null;
 		}
 
@@ -178,10 +178,10 @@ class MP3Segmenter extends Segmenter {
 		$nbytes = $nbits / 8;
 		$size = intval( $nbytes );
 
-		if ( $protection == 0 ) {
+		if ( $protection === 0 ) {
 			$size += 2;
 		}
-		if ( $padding == 1 ) {
+		if ( $padding === 1 ) {
 			$size++;
 		}
 
@@ -412,7 +412,7 @@ class MP3Segmenter extends Segmenter {
 		if ( $tag_length > 127 ) {
 			throw new Exception( "Should never happen: too large ID3 tag" );
 		}
-		$tag = pack(
+		return pack(
 			'a3nCNa*',
 			$tag_type,
 			$tag_version,
@@ -420,7 +420,5 @@ class MP3Segmenter extends Segmenter {
 			$tag_length,
 			$frame
 		);
-
-		return $tag;
 	}
 }

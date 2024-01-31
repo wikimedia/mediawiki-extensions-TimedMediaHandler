@@ -47,14 +47,14 @@ class Multivariant {
 	 * MPEG-4 style codec name mappings.
 	 * @var array
 	 */
-	private static $hlsCodecMap = [
+	private static array $hlsCodecMap = [
 		'opus' => self::CODEC_OPUS,
 	];
 
 	public static function hlsCodec( array $options ): string {
 		$type = $options['type'] ?? '';
 		$matches = [];
-		if ( preg_match( '/^\w+\/\w+;(?:\s*)codecs="(.*?)"/', $type, $matches ) ) {
+		if ( preg_match( '/^\w+\/\w+;\s*codecs="(.*?)"/', $type, $matches ) ) {
 			// Warning: assumes a single track, single codec for streaming!
 			$codec = $matches[1];
 			return self::$hlsCodecMap[ $codec ] ?? $codec;
@@ -112,82 +112,82 @@ class Multivariant {
 	 * @return string m3u8 output
 	 */
 	public function playlist(): string {
-		$out = [];
-		$out[] = '#EXTM3U';
+		$out = [ '#EXTM3U' ];
 
 		$audio = [];
 		foreach ( $this->tracks as $key ) {
 			$options = WebVideoTranscode::$derivativeSettings[$key] ?? [];
-			if ( self::isStreamingAudio( $options ) ) {
-				$codec = self::hlsCodec( $options );
-				$audio[$key] = $codec;
-				// max ?
-				$channels = strval( $options['channels'] ?? 2 );
-				$audioFile = wfUrlencode( "{$this->filename}.{$key}.m3u8" );
-
-				$name = wfMessage( 'timedmedia-derivative-' . $key )->text();
-
-				$out[] = $this->m3uLine( 'EXT-X-MEDIA', [
-					'TYPE' => 'AUDIO',
-					'GROUP-ID' => self::quote( $key ),
-					'NAME' => self::quote( $name ),
-					'AUTOSELECT' => 'YES',
-					'DEFAULT' => 'YES',
-					'CHANNELS' => self::quote( $channels ),
-					'URI' => self::quote( $audioFile ),
-				] );
+			if ( !self::isStreamingAudio( $options ) ) {
+				continue;
 			}
+			$codec = self::hlsCodec( $options );
+			$audio[$key] = $codec;
+			// max ?
+			$channels = (string)( $options['channels'] ?? 2 );
+			$audioFile = wfUrlencode( "$this->filename.$key.m3u8" );
+
+			$name = wfMessage( 'timedmedia-derivative-' . $key )->text();
+
+			$out[] = self::m3uLine( 'EXT-X-MEDIA', [
+				'TYPE' => 'AUDIO',
+				'GROUP-ID' => self::quote( $key ),
+				'NAME' => self::quote( $name ),
+				'AUTOSELECT' => 'YES',
+				'DEFAULT' => 'YES',
+				'CHANNELS' => self::quote( $channels ),
+				'URI' => self::quote( $audioFile ),
+			] );
 		}
 
 		foreach ( $this->tracks as $key ) {
 			$options = WebVideoTranscode::$derivativeSettings[$key] ?? [];
-			if ( self::isStreamingVideo( $options ) ) {
-				$codec = self::hlsCodec( $options );
-				$bandwidth = WebVideoTranscode::expandRate( $options['videoBitrate'] ?? '0' );
-				$resolution = $options['maxSize'] ?? (
-					( $options['width'] ?? '0' ) .
-					'x' .
-					( $options['height'] ?? '0' )
-				);
-				// max
-				$videoFile = wfUrlencode( "{$this->filename}.{$key}.m3u8" );
+			if ( !self::isStreamingVideo( $options ) ) {
+				continue;
+			}
+			$codec = self::hlsCodec( $options );
+			$bandwidth = WebVideoTranscode::expandRate( $options['videoBitrate'] ?? '0' );
+			$resolution = $options['maxSize'] ?? (
+				( $options['width'] ?? '0' ) .
+				'x' .
+				( $options['height'] ?? '0' )
+			);
+			// max
+			$videoFile = wfUrlencode( "$this->filename.$key.m3u8" );
 
-				$base = [
-					'BANDWIDTH' => $bandwidth,
-					'RESOLUTION' => $resolution,
-				];
-				if ( count( $audio ) ) {
-					foreach ( $audio as $audioKey => $audioCodec ) {
-						$line = $base;
-						if ( $codec != self::CODEC_JPEG || $audioCodec != self::CODEC_MP3 ) {
-							// Backwards-compatibility hack for iOS 10-15
-							// Until iOS 16, the system HLS player was very picky
-							// about what codecs you passed in for filtering even
-							// if it would play several like jpeg, h263, and mp4v
-							// that it didn't allow listing.
-							// iOS 16 and later allow these and vp09 if they're
-							// supported by the system.
-							// Our higher-resolution better-bandwidth VP9 tracks
-							// will always take precedence on newer, supporting
-							// devices.
-							$line['CODECS'] = self::quote( "$codec,$audioCodec" );
-						}
-						$line['AUDIO'] = self::quote( $audioKey );
-						$out[] = self::m3uLine( 'EXT-X-STREAM-INF', $line );
-						$out[] = $videoFile;
-					}
-				} else {
+			$base = [
+				'BANDWIDTH' => $bandwidth,
+				'RESOLUTION' => $resolution,
+			];
+			if ( count( $audio ) ) {
+				foreach ( $audio as $audioKey => $audioCodec ) {
 					$line = $base;
-					if ( $codec != self::CODEC_JPEG ) {
-						// Backwards-compatibility hack for iOS 10-15, see above.
-						$line['CODECS'] = self::quote( $codec );
+					if ( $codec !== self::CODEC_JPEG || $audioCodec !== self::CODEC_MP3 ) {
+						// Backwards-compatibility hack for iOS 10-15
+						// Until iOS 16, the system HLS player was very picky
+						// about what codecs you passed in for filtering even
+						// if it would play several like jpeg, h263, and mp4v
+						// that it didn't allow listing.
+						// iOS 16 and later allow these and vp09 if they're
+						// supported by the system.
+						// Our higher-resolution better-bandwidth VP9 tracks
+						// will always take precedence on newer, supporting
+						// devices.
+						$line['CODECS'] = self::quote( "$codec,$audioCodec" );
 					}
+					$line['AUDIO'] = self::quote( $audioKey );
 					$out[] = self::m3uLine( 'EXT-X-STREAM-INF', $line );
 					$out[] = $videoFile;
 				}
+			} else {
+				$line = $base;
+				if ( $codec !== self::CODEC_JPEG ) {
+					// Backwards-compatibility hack for iOS 10-15, see above.
+					$line['CODECS'] = self::quote( $codec );
+				}
+				$out[] = self::m3uLine( 'EXT-X-STREAM-INF', $line );
+				$out[] = $videoFile;
 			}
 		}
-
 		return implode( "\n", $out );
 	}
 }

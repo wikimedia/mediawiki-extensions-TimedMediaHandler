@@ -63,8 +63,8 @@ class MP4Segmenter extends Segmenter {
 		- find the duration of each moof fragment
 		*/
 		$ftyp = $mp4->readBox();
-		if ( $ftyp->type != 'ftyp' ) {
-			throw new Exception( "Invalid MP4/ISO BMFF input file '{$ftyp->type}'" );
+		if ( $ftyp->type !== 'ftyp' ) {
+			throw new Exception( "Invalid MP4/ISO BMFF input file '$ftyp->type'" );
 		}
 
 		$moov = $mp4->expectBox( 'moov' );
@@ -151,12 +151,12 @@ class MP4Segmenter extends Segmenter {
 				$dts += $sample_duration;
 			}
 			$mdat = $mp4->expectBox( 'mdat' );
-			array_push( $this->segments, [
+			$this->segments[] = [
 				'start' => $start,
 				'size' => $mdat->end() - $start,
 				'timestamp' => $first_pts / $timescale,
 				'duration' => ( $max_pts - $first_pts ) / $timescale,
-			] );
+			];
 		}
 	}
 }

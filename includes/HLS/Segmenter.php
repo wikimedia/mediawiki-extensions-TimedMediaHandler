@@ -125,7 +125,7 @@ abstract class Segmenter {
 
 		$init = $this->segments['init'] ?? false;
 		if ( $init ) {
-			$lines[] = "#EXT-X-MAP:URI=\"{$url}\",BYTERANGE=\"{$init['size']}@{$init['start']}\"";
+			$lines[] = "#EXT-X-MAP:URI=\"$url\",BYTERANGE=\"{$init['size']}@{$init['start']}\"";
 		}
 
 		$n = count( $this->segments ) - 1;
@@ -133,7 +133,7 @@ abstract class Segmenter {
 			$segment = $this->segments[$i];
 			$lines[] = "#EXTINF:{$segment['duration']},";
 			$lines[] = "#EXT-X-BYTERANGE:{$segment['size']}@{$segment['start']}";
-			$lines[] = "{$url}";
+			$lines[] = $url;
 		}
 
 		$lines[] = "#EXT-X-ENDLIST";
