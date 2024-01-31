@@ -11,5 +11,5 @@ stream.240p.video.vp9.mp4.m3u8
 stream.240p.video.vp9.mp4.m3u8
 #EXT-X-STREAM-INF:BANDWIDTH=1000000,RESOLUTION=176x144,CODECS="jpeg,Opus",AUDIO="stereo.audio.opus.mp4"
 stream.144p.video.mjpeg.mov.m3u8
-#EXT-X-STREAM-INF:BANDWIDTH=1000000,RESOLUTION=176x144,CODECS="jpeg,mp4a.6b",AUDIO="stereo.audio.mp3"
+#EXT-X-STREAM-INF:BANDWIDTH=1000000,RESOLUTION=176x144,AUDIO="stereo.audio.mp3"
 stream.144p.video.mjpeg.mov.m3u8

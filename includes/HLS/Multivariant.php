@@ -25,6 +25,11 @@ class Multivariant {
 	private string $filename;
 	private array $tracks;
 
+	private const CODEC_JPEG = 'jpeg';
+	private const CODEC_MP3  = 'mp4a.6b';
+	private const CODEC_OPUS = 'Opus';
+	private const MIME_MP3 = 'audio/mpeg';
+
 	public static function isStreamingAudio( array $options ): bool {
 		$streaming = $options['streaming'] ?? '';
 		$novideo = $options['novideo'] ?? null;
@@ -43,7 +48,7 @@ class Multivariant {
 	 * @var array
 	 */
 	private static $hlsCodecMap = [
-		'opus' => 'Opus',
+		'opus' => self::CODEC_OPUS,
 	];
 
 	public static function hlsCodec( array $options ): string {
@@ -54,9 +59,9 @@ class Multivariant {
 			$codec = $matches[1];
 			return self::$hlsCodecMap[ $codec ] ?? $codec;
 		}
-		if ( $type === 'audio/mpeg' ) {
+		if ( $type === self::MIME_MP3 ) {
 			// MPEG-1 layer 3
-			return 'mp4a.6b';
+			return self::CODEC_MP3;
 		}
 		throw new Exception( "Invalid streaming codec definition for type: $type" );
 	}
@@ -147,19 +152,36 @@ class Multivariant {
 				// max
 				$videoFile = wfUrlencode( "{$this->filename}.{$key}.m3u8" );
 
-				$line = [
+				$base = [
 					'BANDWIDTH' => $bandwidth,
 					'RESOLUTION' => $resolution,
 				];
 				if ( count( $audio ) ) {
 					foreach ( $audio as $audioKey => $audioCodec ) {
-						$line['CODECS'] = self::quote( "$codec,$audioCodec" );
+						$line = $base;
+						if ( $codec != self::CODEC_JPEG || $audioCodec != self::CODEC_MP3 ) {
+							// Backwards-compatibility hack for iOS 10-15
+							// Until iOS 16, the system HLS player was very picky
+							// about what codecs you passed in for filtering even
+							// if it would play several like jpeg, h263, and mp4v
+							// that it didn't allow listing.
+							// iOS 16 and later allow these and vp09 if they're
+							// supported by the system.
+							// Our higher-resolution better-bandwidth VP9 tracks
+							// will always take precedence on newer, supporting
+							// devices.
+							$line['CODECS'] = self::quote( "$codec,$audioCodec" );
+						}
 						$line['AUDIO'] = self::quote( $audioKey );
 						$out[] = self::m3uLine( 'EXT-X-STREAM-INF', $line );
 						$out[] = $videoFile;
 					}
 				} else {
-					$line['CODECS'] = self::quote( $codec );
+					$line = $base;
+					if ( $codec != self::CODEC_JPEG ) {
+						// Backwards-compatibility hack for iOS 10-15, see above.
+						$line['CODECS'] = self::quote( $codec );
+					}
 					$out[] = self::m3uLine( 'EXT-X-STREAM-INF', $line );
 					$out[] = $videoFile;
 				}
