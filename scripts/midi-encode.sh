@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 export TMH_FLUIDSYNTH_PATH="${TMH_FLUIDSYNTH_PATH:-fluidsynth}"
 export TMH_SOUNDFONT_PATH="${TMH_SOUNDFONT_PATH:-/usr/share/sounds/sf2/FluidR3_GM.sf2}"
 export TMH_AUDIO_CODEC="${TMH_AUDIO_CODEC:-vorbis}"
@@ -8,6 +8,7 @@ export TMH_OPT_QUALITY="${TMH_OPT_QUALITY:-}"
 export TMH_OPT_BITRATE="${TMH_OPT_BITRATE:-}"
 export TMH_OPT_SAMPLERATE="${TMH_OPT_SAMPLERATE:-}"
 export TMH_OPT_CHANNELS="${TMH_OPT_CHANNELS:-}"
+export TMH_OUTPUT_FILE
 
 if [ "$TMH_AUDIO_CODEC" = 'vorbis' ]; then
 	codec='oga'
@@ -25,10 +26,9 @@ cleanUp() {
 trap cleanUp EXIT
 
 runFluidSynth() {
-	outputfile="$1"
-	codec="$2"
+	codec="$1"
 	# Check we can execute fluidsynth
-	if [ ! -x "$TMH_FLUIDSYNTH_PATH" ]; then
+	if [ ! -x "$(command -v "$TMH_FLUIDSYNTH_PATH")" ]; then
 		echo "error: executable '$TMH_FLUIDSYNTH_PATH not found";
 		exit 1
 	fi
@@ -37,7 +37,7 @@ runFluidSynth() {
 		echo "error: cannot access sound font '$TMH_SOUNDFONT_PATH'";
 		exit 1
 	fi
-	"$TMH_FLUIDSYNTH_PATH" -T "$codec" "$TMH_SOUNDFONT_PATH" input.mid -F "$outputfile"
+	"$TMH_FLUIDSYNTH_PATH" -T "$codec" "$TMH_SOUNDFONT_PATH" input.mid -F "$fluidsynth_output"
 }
 
 
@@ -49,7 +49,7 @@ runLame() {
 	# clean the arglist, then add optional args to it.
 	# This is the only safe way to pass variable arguments in
 	# posix shell AFAICT.
-	set -- ""
+	set --
 	if [ "$TMH_OPT_QUALITY" != "" ]; then
 		set -- -aq "$TMH_OPT_QUALITY"
 	fi
@@ -62,13 +62,14 @@ runLame() {
 	if [ "$TMH_OPT_CHANNELS" != "" ]; then
 		set -- "$@" -ac "$TMH_OPT_CHANNELS"
 	fi
+	set -- "$@" -acodec libmp3lame "$TMH_OUTPUT_FILE"
 	# We willingly let TMH_LAME_ARGS expand as it has been escaped via Shell::escape
-	"$TMH_FFMPEG_PATH" -y -i "$fluidsynth_output" "$@" -acodec libmp3lame  output_audio
+	"$TMH_FFMPEG_PATH" -y -i "$fluidsynth_output" "$@"
 }
 
 
 # Fluidsynth returns a 0 exit code even upon error, so we need to check the output.
-runFluidSynth > fluidsynth.log 2 >&1
+runFluidSynth "$codec" > fluidsynth.log 2 >&1
 if grep -q "fluidsynth: error" fluidsynth.log; then
 	# Make the output available to the caller
 	cat fluidsynth.log
@@ -76,4 +77,6 @@ if grep -q "fluidsynth: error" fluidsynth.log; then
 fi
 if [ "$TMH_AUDIO_CODEC" != 'vorbis' ]; then
 	runLame
+else
+	mv "$fluidsynth_output" "$TMH_OUTPUT_FILE"
 fi

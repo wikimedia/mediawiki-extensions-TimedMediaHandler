@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 # Script used to encode ffmpeg.
 export TMH_FFMPEG_PATH="${TMH_FFMPEG_PATH:-ffmpeg}"
 export TMH_FFMPEG_PASSES="${TMH_FFMPEG_PASSES:-1}"
@@ -6,11 +7,10 @@ export TMH_FFMPEG_THREADS="${TMH_FFMPEG_THREADS:-2}"
 # Safe options with no user input or validated user input
 # These can be used unquoted.
 # Video related
-export TMH_FFMPEG2_OPTS TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_REMUX TMH_OPT_SPEED
+export TMH_FFMPEG2_OPTS TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
 # Audio-related
 export TMH_OPTS_AUDIO TMH_OPT_NOAUDIO
-
-
+export TMH_OUTPUT_FILE
 
 
 doFfmpegEncode() {
@@ -42,15 +42,21 @@ doFfmpegEncode() {
 		TMH_OPTS_AUDIO="-an"
 	fi
 
+	# clean the arglist, then add optional args to it.
+	# This is the only safe way to pass variable arguments in
+	# posix shell AFAICT.
+	set --
 	# end audio options
 	PASS_OPTS=""
-	OUTPUT="transcoded.video"
 	if [ "$current_pass" -ne 0 ]; then
-		PASS_OPTS="-pass $current_pass -passlogfile ${OUTPUT}.log"
+		set -- "$@" -pass "$current_pass" -passlogfile "${TMH_OUTPUT_FILE}.log"
 	fi
+
 	# Do not output a file on first pass of a multi-pass encoding
 	if [ "$current_pass" -eq 1 ]; then
-		OUTPUT="/dev/null"
+		set -- "$@" /dev/null
+	else
+		set -- "$@" "$TMH_OUTPUT_FILE"
 	fi
 
 
@@ -61,13 +67,16 @@ doFfmpegEncode() {
 		$TMH_OPTS_AUDIO \
 		$PASS_OPTS \
 		$TMH_MOVFLAGS \
-		$OUTPUT
+		"$@"
 }
 
-if [ "$TMH_PASSES" -lt 2 ]; then
+if [ "$TMH_FFMPEG_PASSES" -lt 2 ]; then
 	doFfmpegEncode
 else
 	# two passes encoding
-	doFfmpegEncode 1
+	if ! doFfmpegEncode 1; then
+		echo "error running first-pass of ffmpeg encoding"
+		exit 1
+	fi
 	doFfmpegEncode 2
 fi

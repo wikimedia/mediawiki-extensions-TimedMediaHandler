@@ -503,7 +503,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private static function useScript( BoxedCommand $command, string $script ) {
 		global $wgShellboxShell;
-		$file = __DIR__ . "/../scripts/$script";
+		$file = __DIR__ . "/../../scripts/$script";
 		if ( !is_file( $file ) ) {
 			throw new InvalidArgumentException( "File '$file' not found" );
 		}
@@ -563,13 +563,13 @@ class WebVideoTranscodeJob extends Job {
 				$optsEnv['TMH_REMUX'] = "yes";
 			} else {
 				$optsEnv['TMH_REMUX'] = "no";
-				$optsEnv['TMH_OPT_VIDEOCODEC'] = Shell::escape( $options['videoCodec'] );
+				$optsEnv['TMH_OPT_VIDEOCODEC'] = $this->ensureShellSafe( $options['videoCodec'] );
 				switch ( $options['videoCodec'] ) {
 					case 'vp8':
 					case 'vp9':
 						$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddWebmVideoOptions( $options );
 						if ( isset( $options['speed'] ) ) {
-							$optsEnv['TMH_OPTS_SPEED'] = (string)intval( $options['speed'] );
+							$optsEnv['TMH_OPT_SPEED'] = (string)intval( $options['speed'] );
 						}
 						break;
 					case 'h264':
@@ -701,17 +701,20 @@ class WebVideoTranscodeJob extends Job {
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
 		// cast to string to make phan happy
 		$ffmpegLocation = (string)$this->config->get( 'FFmpegLocation' );
+		// Create an output file name with the correct extension
+		$target = $this->getTargetEncodePath();
+		$outputFile = 'transcoded.' . pathinfo( $target, PATHINFO_EXTENSION );
 		// Execute the conversion
-		$cmd->outputFileToFile( 'output.video', $this->getTargetEncodePath() )
-			->inputFileFromFile( 'input.video', $sourcePath )
+		$cmd->outputFileToFile( $outputFile, $this->getTargetEncodePath() )
+			->inputFileFromFile( 'original.video', $sourcePath )
 			->includeStderr()
 			->environment( [
+				'TMH_OUTPUT_FILE'      => $outputFile,
 				'TMH_FFMPEG_PASSES'    => strval( $passes ),
 				'TMH_FFMPEG_PATH'      => $ffmpegLocation,
-				'TMH_OPT_SPEED'        => $options['speed'] ? (string)intval( $options['speed'] ) : '',
 			] + $optsEnv );
 		$result = $cmd->memoryLimit( $backgroundMemoryLimit )->execute();
-		// TODO: get the full cmdline args for ffmpeg ran by ffmpeg-encode.sh
+
 		// and pass it to this->output()
 		if ( $result->getExitCode() != 0 ) {
 			return 'ffmpeg-encode.sh' .
@@ -863,7 +866,7 @@ class WebVideoTranscodeJob extends Job {
 	 * @return string
 	 */
 	private function ffmpegAddGenericVideoOptions( $options ) {
-		$cmd = ' -vcodec ' . wfEscapeShellArg( $options['videoCodec'] );
+		$cmd = ' -vcodec ' . $options['videoCodec'];
 
 		// Force to 4:2:0 chroma subsampling.
 		$cmd .= ' -pix_fmt yuv420p';
@@ -1016,7 +1019,7 @@ class WebVideoTranscodeJob extends Job {
 				'mp3'		=> 'libmp3lame',
 			];
 			$codec = $encoders[$options['audioCodec']] ?? $options['audioCodec'];
-			$cmd .= " -acodec " . wfEscapeShellArg( $codec );
+			$cmd .= " -acodec " . $codec;
 			if ( $codec === 'aac' ) {
 				// the aac encoder is currently "experimental" in libav 9? :P
 				$cmd .= ' -strict experimental';
@@ -1048,20 +1051,23 @@ class WebVideoTranscodeJob extends Job {
 			'channels' => 'CHANNELS'
 		];
 		foreach ( $optToEnv as $opt => $label ) {
+			# Here we're passing the argument directly to the shell, so we want it escaped
 			if ( isset( $options[$opt] ) ) {
 				$optsEnv['TMH_OPT_' . $label] = Shell::escape( $options[$opt] );
 			}
 		}
+		$outputFile = 'output_audio.' . pathinfo( $this->getTargetEncodePath(), PATHINFO_EXTENSION );
 		// Execute the conversion
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
-		$cmd->outputFileToFile( 'output_audio', $this->getTargetEncodePath() )
+		$cmd->outputFileToFile( $outputFile, $this->getTargetEncodePath() )
 			->inputFileFromFile( 'input.mid', $this->getSourceFilePath() )
 			->includeStderr()
 			->environment( [
 				'TMH_FLUIDSYNTH_PATH' => $this->config->get( 'TmhFluidsynthLocation' ),
 				'TMH_FFMPEG_PATH'     => $this->config->get( 'FFmpegLocation' ),
 				'TMH_SOUNDFONT_PATH'  => $this->config->get( 'TmhSoundfontLocation' ),
-				'TMH_AUDIO_CODEC'     => Shell::escape( $options['audioCodec'] ),
+				'TMH_AUDIO_CODEC'     => $options['audioCodec'],
+				'TMH_OUTPUT_FILE'     => $outputFile,
 			] + $optToEnv );
 		$result = $cmd->memoryLimit( $backgroundMemoryLimit )->execute();
 
@@ -1071,6 +1077,24 @@ class WebVideoTranscodeJob extends Job {
 				. $result->getStdout();
 		}
 		return true;
+	}
+
+	/**
+	 * Given all options are provided by our code, just ensure every option is shell safe
+	 * with the strictest checks possible - basically we allow only [a-zA-Z] and "_-" in variables,
+	 * else we pass then through Shell::escape. The reason why we're not using shell::escape directly
+	 * is we're passing these values to a shell script where they'll be expanded unquoted from environment
+	 * variables.
+	 *
+	 * @param string $value
+	 * @return string
+	 */
+	private function ensureShellSafe( $value ) {
+		if ( preg_match( '/^[a-zA-z\-_]+$/', $value ) === 1 ) {
+			return $value;
+		} else {
+			return Shell::escape( $value );
+		}
 	}
 }
 
