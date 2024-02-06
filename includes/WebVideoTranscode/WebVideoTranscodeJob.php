@@ -1070,7 +1070,7 @@ class WebVideoTranscodeJob extends Job {
 				'TMH_AUDIO_CODEC'     => $options['audioCodec'],
 				'TMH_OUTPUT_FILE'     => $outputFile,
 			] + $optToEnv );
-		$result = $cmd->memoryLimit( $backgroundMemoryLimit )->execute();
+		$result = $cmd->memoryLimit( $backgroundMemoryLimit * 1024 )->execute();
 
 		if ( $result->getExitCode() != 0 ) {
 			return 'midi-encode.sh' .
