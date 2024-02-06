@@ -563,7 +563,7 @@ class WebVideoTranscodeJob extends Job {
 				$optsEnv['TMH_REMUX'] = "yes";
 			} else {
 				$optsEnv['TMH_REMUX'] = "no";
-				$optsEnv['TMH_OPT_VIDEOCODEC'] = $this->ensureShellSafe( $options['videoCodec'] );
+				$optsEnv['TMH_OPT_VIDEOCODEC'] = $options['videoCodec'];
 				switch ( $options['videoCodec'] ) {
 					case 'vp8':
 					case 'vp9':
@@ -663,12 +663,13 @@ class WebVideoTranscodeJob extends Job {
 
 		if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
 			$optsEnv['TMH_MOVFLAGS'] = '-movflags +faststart';
-		} else {
-			$optsEnv['TMH_MOVFLAGS'] = '';
 		}
 
 		if ( $streaming === 'hls' ) {
 			if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
+				if ( !isset( $optsEnv['TMH_MOVFLAGS'] ) ) {
+					$optsEnv['TMH_MOVFLAGS'] = '';
+				}
 				// Don't use the HLS muxer, as it'll want to manage
 				// filenames and we have to rewrite everything anyway.
 				// We'll generate an .m3u8 from the file structure after.
