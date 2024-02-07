@@ -699,7 +699,9 @@ class WebVideoTranscodeJob extends Job {
 		self::useScript( $cmd, 'ffmpeg-encode.sh' );
 		// set up options that don't need mangling
 
-		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
+		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
+		$wallTimeLimit = (int)$this->config->get( 'TranscodeBackgroundTimeLimit' );
+		$cpuTimeLimit = (int)$this->config->get( 'FFmpegThreads' ) * $wallTimeLimit;
 		// cast to string to make phan happy
 		$ffmpegLocation = (string)$this->config->get( 'FFmpegLocation' );
 		// Create an output file name with the correct extension
@@ -714,7 +716,10 @@ class WebVideoTranscodeJob extends Job {
 				'TMH_FFMPEG_PASSES'    => strval( $passes ),
 				'TMH_FFMPEG_PATH'      => $ffmpegLocation,
 			] + $optsEnv );
-		$result = $cmd->memoryLimit( $backgroundMemoryLimit )->execute();
+		$result = $cmd->memoryLimit( $backgroundMemoryLimit )
+			->wallTimeLimit( $wallTimeLimit )
+			->cpuTimeLimit( $cpuTimeLimit )
+			->execute();
 
 		// and pass it to this->output()
 		if ( $result->getExitCode() != 0 ) {
@@ -1059,7 +1064,9 @@ class WebVideoTranscodeJob extends Job {
 		}
 		$outputFile = 'output_audio.' . pathinfo( $this->getTargetEncodePath(), PATHINFO_EXTENSION );
 		// Execute the conversion
-		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' );
+		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
+		$wallTimeLimit = (int)$this->config->get( 'TranscodeBackgroundTimeLimit' );
+		$cpuTimeLimit = (int)$this->config->get( 'FFmpegThreads' ) * $wallTimeLimit;
 		$cmd->outputFileToFile( $outputFile, $this->getTargetEncodePath() )
 			->inputFileFromFile( 'input.mid', $this->getSourceFilePath() )
 			->includeStderr()
@@ -1070,7 +1077,10 @@ class WebVideoTranscodeJob extends Job {
 				'TMH_AUDIO_CODEC'     => $options['audioCodec'],
 				'TMH_OUTPUT_FILE'     => $outputFile,
 			] + $optToEnv );
-		$result = $cmd->memoryLimit( $backgroundMemoryLimit * 1024 )->execute();
+		$result = $cmd->memoryLimit( $backgroundMemoryLimit )
+					->wallTimeLimit( $wallTimeLimit )
+					->cpuTimeLimit( $cpuTimeLimit )
+					->execute();
 
 		if ( $result->getExitCode() != 0 ) {
 			return 'midi-encode.sh' .
