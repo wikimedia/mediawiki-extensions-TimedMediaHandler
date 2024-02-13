@@ -8,7 +8,6 @@ const TextTrackMenuItem = videojs.getComponent( 'TextTrackMenuItem' );
  */
 class MwCreateSubtitlesMenuItem extends TextTrackMenuItem {
 	/**
-	 *
 	 * @param {videojs.Player} player
 	 * @param {Object} options
 	 */

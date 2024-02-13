@@ -18,7 +18,6 @@ const MenuItem = videojs.getComponent( 'MenuItem' );
  */
 class ResolutionMenuItem extends MenuItem {
 	/**
-	 *
 	 * @param {videojs.Plugin} plugin The plugin responsible for adding this menuitem
 	 * @param {Object} options
 	 */

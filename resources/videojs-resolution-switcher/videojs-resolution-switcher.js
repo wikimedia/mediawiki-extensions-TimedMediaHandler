@@ -55,7 +55,6 @@ const resolutionSwitchterDefaults = {
 class VideoJsResolutionSwitcherPlugin extends Plugin {
 
 	/**
-	 *
 	 * @param {videojs.Player} player
 	 * @param {Object} [options]
 	 */

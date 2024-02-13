@@ -44,7 +44,7 @@ const codecs = [
 for ( const [ codec, bitrate ] of codecs ) {
 	console.log( codec );
 	for ( const h of heights ) {
-		console.log( `${h}: ${rate( h, bitrate )} ${rate( h, bitrate * 0.5 )} ${rate( h, bitrate * 1.45 )}` );
+		console.log( `${ h }: ${ rate( h, bitrate ) } ${ rate( h, bitrate * 0.5 ) } ${ rate( h, bitrate * 1.45 ) }` );
 	}
 	console.log( '' );
 }

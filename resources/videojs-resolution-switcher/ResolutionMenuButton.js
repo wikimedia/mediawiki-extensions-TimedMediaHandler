@@ -17,7 +17,6 @@ const ResolutionMenuItem = require( './ResolutionMenuItem.js' );
  */
 class ResolutionMenuButton extends MenuButton {
 	/**
-	 *
 	 * @param {videojs.Plugin} plugin The plugin responsible for adding this button
 	 * @param {Object} options
 	 */
