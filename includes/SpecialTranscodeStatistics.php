@@ -22,12 +22,17 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
 class SpecialTranscodeStatistics extends SpecialPage {
 	/** @var string[] */
 	private $transcodeStates = [
+		// Note: these queries should check prefixes of the index transcode_time_inx
 		// phpcs:ignore Generic.Files.LineLength.TooLong
-		'active' => 'transcode_time_startwork IS NOT NULL AND transcode_time_success IS NULL AND transcode_time_error IS NULL',
-		'failed' => 'transcode_time_startwork IS NOT NULL AND transcode_time_error IS NOT NULL',
-		'queued' => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NULL',
-		'missing' => 'transcode_time_addjob IS NULL',
+		'active'  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NOT NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
+		// phpcs:ignore Generic.Files.LineLength.TooLong
+		'failed'  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NOT NULL AND transcode_time_success IS     NULL AND transcode_time_error IS NOT NULL',
+		// phpcs:ignore Generic.Files.LineLength.TooLong
+		'queued'  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS     NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
+		// phpcs:ignore Generic.Files.LineLength.TooLong
+		'missing' => 'transcode_time_addjob IS     NULL AND transcode_time_startwork IS     NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
 	];
+	// index on transcode_time_addjob,transcode_time_startwork,transcode_time_error,transcode_key,transcode_image_name
 
 	/** @var IConnectionProvider */
 	private $dbProvider;
@@ -120,7 +125,12 @@ class SpecialTranscodeStatistics extends SpecialPage {
 					->from( 'transcode' )
 					->where( $this->transcodeStates[ $state ] )
 					->limit( $limit )
-					->orderBy( 'transcode_time_error', SelectQueryBuilder::SORT_DESC )
+					->orderBy( [
+						'transcode_time_addjob',
+						'transcode_time_startwork',
+						'transcode_time_success',
+						'transcode_time_error',
+					], SelectQueryBuilder::SORT_DESC )
 					->caller( $fname )
 					->fetchResultSet();
 
