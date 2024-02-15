@@ -102,6 +102,7 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 				continue;
 			}
 
+			$startTime = microtime( true );
 			$startSize = 0;
 			if ( $throttle ) {
 				$startSize = WebVideoTranscode::getQueueSize( $file, $key );
@@ -120,7 +121,8 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 
 			while ( $throttle ) {
 				$size = WebVideoTranscode::getQueueSize( $file, $key );
-				if ( $size > $startSize ) {
+				$delta = microtime( true ) - $startTime;
+				if ( $size > $startSize && $delta < self::TIMEOUT_SEC ) {
 					$this->output( ".. (queue $size)\n" );
 					sleep( 1 );
 				} else {
@@ -130,6 +132,12 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 			}
 		}
 	}
+
+	/**
+	 * If the queue counts get fouled up, go ahead and time out throttle checks
+	 * after one hour.
+	 */
+	private const TIMEOUT_SEC = 3600;
 }
 
 // Tells it to run the class
