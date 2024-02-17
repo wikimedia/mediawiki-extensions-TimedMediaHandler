@@ -139,7 +139,7 @@ class TimedTextPage extends Article {
 		$message = $this->getPage()->exists() ?
 			'timedmedia-timedtext-title-edit-subtitles' :
 			'timedmedia-timedtext-title-create-subtitles';
-		$out->setPageTitle( wfMessage( $message, $languageName, $videoTitle ) );
+		$out->setPageTitleMsg( wfMessage( $message, $languageName, $videoTitle ) );
 
 		$out->addHtml(
 			Html::rawElement( 'div', [ 'class' => 'mw-timedtextpage-layout' ],
@@ -167,7 +167,7 @@ class TimedTextPage extends Article {
 	 */
 	private function doLinkToRemote( File $file ): void {
 		$output = $this->getContext()->getOutput();
-		$output->setPageTitle( wfMessage( 'timedmedia-subtitle-remote',
+		$output->setPageTitleMsg( wfMessage( 'timedmedia-subtitle-remote',
 			$file->getRepo()->getDisplayName() ) );
 		$output->addHTML( wfMessage( 'timedmedia-subtitle-remote-link',
 			$file->getDescriptionUrl(), $file->getRepo()->getDisplayName() )->parse() );
@@ -179,7 +179,7 @@ class TimedTextPage extends Article {
 		$out = $context->getOutput();
 
 		// Set the page title:
-		$out->setPageTitle( wfMessage( 'timedmedia-subtitle-new' ) );
+		$out->setPageTitleMsg( wfMessage( 'timedmedia-subtitle-new' ) );
 
 		$out->enableOOUI();
 
