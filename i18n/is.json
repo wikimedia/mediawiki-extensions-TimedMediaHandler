@@ -4,6 +4,7 @@
 			"S.Örvarr.S",
 			"Snævar",
 			"Spacebirdy",
+			"Stefán Örvar Sigmundsson",
 			"Sveinn í Felli"
 		]
 	},
@@ -46,7 +47,7 @@
 	"timedmedia-reset-button-dismiss": "Afgreiða",
 	"timedmedia-reset-button-reset": "Endurstilla",
 	"timedmedia-reset-error": "Villa í núllstillingu kóðabreytingr",
-	"timedmedia-reset-explanation": "Núllstilling kóðabreytingarinnar mun fjarlægja allar fyrri skrár (ef þær eru til) og mun bæta kóðabreytingunni aftur á verkefnalistann. Það mun taka nokkurn tíma að endur kóðabreyta.",
+	"timedmedia-reset-explanation": "Endurstilling á þessari umskráningu mun fjarlægja allar fyrirliggjandi skrár (ef þær eru til staðar) og hún bætir umskráningu aftur við vinnuröðina. Það mun taka nokkurn tíma að endurumkóða.",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg myndband fyrir litla bandbreidd (160P)",
 	"timedmedia-derivative-desc-360p.ogv": "Ogg myndband (360P)",
 	"timedmedia-derivative-desc-480p.ogv": "SD Ogg myndband (480P)",
