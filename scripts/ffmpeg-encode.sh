@@ -37,8 +37,8 @@ doFfmpegEncode() {
 		esac
 	fi
 
-	## Set up audio opts if noaudio is selected and we're on pass number 1
-	if [ "$current_pass" -eq 1 ] && [ "$TMH_OPT_NOAUDIO" = "yes" ]; then
+	## Set up audio opts if noaudio is selected or we're on pass number 1
+	if [ "$current_pass" -eq 1 ] || [ "$TMH_OPT_NOAUDIO" = "yes" ]; then
 		TMH_OPTS_AUDIO="-an"
 	fi
 
