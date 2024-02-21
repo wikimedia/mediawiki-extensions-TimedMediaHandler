@@ -4,7 +4,8 @@
 			"S.Örvarr.S",
 			"Snævar",
 			"Spacebirdy",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"timedmediahandler-desc": "Rekill fyrir hljóð, myndbönd og texta myndbanda með stuðningi við skráarsniðin WebM, Ogg Theora, Vorbis, srt",
@@ -51,7 +52,7 @@
 	"timedmedia-reset-button-dismiss": "Afgreiða",
 	"timedmedia-reset-button-reset": "Endurstilla",
 	"timedmedia-reset-error": "Villa í núllstillingu kóðabreytingr",
-	"timedmedia-reset-explanation": "Núllstilling kóðabreytingarinnar mun fjarlægja allar fyrri skrár (ef þær eru til) og mun bæta kóðabreytingunni aftur á verkefnalistann. Það mun taka nokkurn tíma að endur kóðabreyta.",
+	"timedmedia-reset-explanation": "Endurstilling á þessari umskráningu mun fjarlægja allar fyrirliggjandi skrár (ef þær eru til staðar) og hún bætir umskráningu aftur við vinnuröðina. Það mun taka nokkurn tíma að endurumkóða.",
 	"timedmedia-ogg": "Ogg",
 	"timedmedia-webm": "WebM",
 	"timedmedia-wav": "WAV",
