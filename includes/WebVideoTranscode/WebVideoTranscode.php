@@ -325,7 +325,8 @@ class WebVideoTranscode {
 		// * stereo.audio.mp3 audio (for Safari 16 and below)
 		// * stereo.audio.opus.mp4 audio (for Chromium, Firefox, Safari 17)
 		// * surround.audio.opus.mp4 audio (reserved for future expansion)
-		// * 144p.video.mjpeg.mov fallback video for old iOS
+		// * 144p.video.mjpeg.mov fallback video for old iOS (optional)
+		// * 180p .. 480p.video.mpeg4.mp4 fallback video for old iOS (optional)
 		// * 240p .. 2160p.video.vp9.mp4 video
 		// * .m3u8 playlists
 		//
@@ -379,6 +380,42 @@ class WebVideoTranscode {
 			'type' => 'video/quicktime; codecs="jpeg"',
 			'streaming' => 'hls',
 			'intraframe' => true,
+		],
+		'180p.video.mpeg4.mp4' => [
+			'maxSize' => '320x180',
+			'videoBitrate' => '380k',
+			'twopass' => 'true',
+			'videoCodec' => 'mpeg4',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="mp4v.20.5"',
+			'streaming' => 'hls',
+		],
+		'240p.video.mpeg4.mp4' => [
+			'maxSize' => '426x240',
+			'videoBitrate' => '720k',
+			'twopass' => 'true',
+			'videoCodec' => 'mpeg4',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="mp4v.20.5"',
+			'streaming' => 'hls',
+		],
+		'360p.video.mpeg4.mp4' => [
+			'maxSize' => '640x360',
+			'videoBitrate' => '1280k',
+			'twopass' => 'true',
+			'videoCodec' => 'mpeg4',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="mp4v.20.5"',
+			'streaming' => 'hls',
+		],
+		'480p.video.mpeg4.mp4' => [
+			'maxSize' => '854x480',
+			'videoBitrate' => '2500k',
+			'twopass' => 'true',
+			'videoCodec' => 'mpeg4',
+			'noaudio' => 'true',
+			'type' => 'video/mp4; codecs="mp4v.20.5"',
+			'streaming' => 'hls',
 		],
 
 		// VP9 streaming tracks

@@ -26,6 +26,7 @@ class Multivariant {
 	private array $tracks;
 
 	private const CODEC_JPEG = 'jpeg';
+	private const CODEC_MPEG4 = 'mp4v.20.5';
 	private const CODEC_MP3  = 'mp4a.6b';
 	private const CODEC_OPUS = 'Opus';
 	private const MIME_MP3 = 'audio/mpeg';
@@ -161,7 +162,9 @@ class Multivariant {
 			if ( count( $audio ) ) {
 				foreach ( $audio as $audioKey => $audioCodec ) {
 					$line = $base;
-					if ( $codec !== self::CODEC_JPEG || $audioCodec !== self::CODEC_MP3 ) {
+					if ( !( $codec === self::CODEC_JPEG || $codec === self::CODEC_MPEG4 )
+						|| ( $audioCodec !== self::CODEC_MP3 )
+					) {
 						// Backwards-compatibility hack for iOS 10-15
 						// Until iOS 16, the system HLS player was very picky
 						// about what codecs you passed in for filtering even
@@ -180,7 +183,7 @@ class Multivariant {
 				}
 			} else {
 				$line = $base;
-				if ( $codec !== self::CODEC_JPEG ) {
+				if ( !( $codec === self::CODEC_JPEG || $codec === self::CODEC_MPEG4 ) ) {
 					// Backwards-compatibility hack for iOS 10-15, see above.
 					$line['CODECS'] = self::quote( $codec );
 				}
