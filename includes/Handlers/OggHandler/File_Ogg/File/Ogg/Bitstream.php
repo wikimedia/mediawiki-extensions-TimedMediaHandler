@@ -58,14 +58,14 @@ class File_Ogg_Bitstream
 
     /**
      * The first granule position in the stream
-     * @var     int
+     * @var     string
      * @access  private
      */
     var $_firstGranulePos;
 
     /**
      * The last granule position in the stream
-     * @var     int
+     * @var     string
      * @access  private
      */
     var $_lastGranulePos;

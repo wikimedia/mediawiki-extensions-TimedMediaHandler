@@ -426,18 +426,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the title of this track.
-     *
-     * @access  public
-     * @param   string  $title
-     * @param   boolean $replace
-     */
-    function setTitle($title, $replace = true)
-    {
-        $this->setField("TITLE", $title, $replace);
-    }
-
-    /**
      * The version of the track, such as a remix.
      *
      * @access  public
@@ -446,18 +434,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     function getVersion()
     {
         return $this->getField("VERSION");
-    }
-
-    /**
-     * Set the version of this track.
-     *
-     * @access  public
-     * @param   string  $version
-     * @param   boolean $replace
-     */
-    function setVersion($version, $replace = true)
-    {
-        $this->setField("VERSION", $version, $replace);
     }
 
     /**
@@ -472,18 +448,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the album or collection for this track.
-     *
-     * @access  public
-     * @param   string  $album
-     * @param   boolean $replace
-     */
-    function setAlbum($album, $replace = true)
-    {
-        $this->setField("ALBUM", $album, $replace);
-    }
-
-    /**
      * The number of this track if it is part of a larger collection.
      *
      * @access  public
@@ -492,18 +456,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     function getTrackNumber()
     {
         return ($this->getField("TRACKNUMBER"));
-    }
-
-    /**
-     * Set the number of this relative to the collection.
-     *
-     * @access  public
-     * @param   int     $number
-     * @param   boolean $replace
-     */
-    function setTrackNumber($number, $replace = true)
-    {
-        $this->setField("TRACKNUMBER", $number, $replace);
     }
 
     /**
@@ -521,18 +473,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the artist of this track.
-     *
-     * @access  public
-     * @param   string  $artist
-     * @param   boolean $replace
-     */
-    function setArtist($artist, $replace = true)
-    {
-        $this->setField("ARTIST", $artist, $replace = true);
-    }
-
-    /**
      * The performer of this track, such as an orchestra
      *
      * @access  public
@@ -544,18 +484,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the performer of this track.
-     *
-     * @access  public
-     * @param   string  $performer
-     * @param   boolean $replace
-     */
-    function setPerformer($performer, $replace = true)
-    {
-        $this->setField("PERFORMER", $performer, $replace);
-    }
-
-    /**
      * The copyright attribution for this track.
      *
      * @access  public
@@ -564,18 +492,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     function getCopyright()
     {
         return ($this->getField("COPYRIGHT"));
-    }
-
-    /**
-     * Set the copyright attribution for this track.
-     *
-     * @access  public
-     * @param   string  $copyright
-     * @param   boolean $replace
-     */
-    function setCopyright($copyright, $replace = true)
-    {
-        $this->setField("COPYRIGHT", $copyright, $replace);
     }
 
     /**
@@ -593,18 +509,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the distribution rights for this track.
-     *
-     * @access  public
-     * @param   string  $license
-     * @param   boolean $replace
-     */
-    function setLicense($license, $replace = true)
-    {
-        $this->setField("LICENSE", $license, $replace);
-    }
-
-    /**
      * The organisation responsible for this track.
      *
      * This function returns the name of the organisation responsible for
@@ -616,18 +520,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     function getOrganization()
     {
         return ($this->getField("ORGANIZATION"));
-    }
-
-    /**
-     * Set the organisation responsible for this track.
-     *
-     * @access  public
-     * @param   string  $organization
-     * @param   boolean $replace
-     */
-    function setOrganziation($organization, $replace = true)
-    {
-        $this->setField("ORGANIZATION", $organization, $replace);
     }
 
     /**
@@ -645,18 +537,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the description of this track.
-     *
-     * @access  public
-     * @param   string  $description
-     * @param   boolean $replace
-     */
-    function setDescription($description, $replace = true)
-    {
-        $this->setField("DESCRIPTION", $replace);
-    }
-
-    /**
      * The genre of this recording (e.g. Rock)
      *
      * This function returns the genre of this recording.  There are no pre-
@@ -668,18 +548,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     function getGenre()
     {
         return ($this->getField("GENRE"));
-    }
-
-    /**
-     * Set the genre of this track.
-     *
-     * @access  public
-     * @param   string  $genre
-     * @param   boolean $replace
-     */
-    function setGenre($genre, $replace = true)
-    {
-        $this->setField("GENRE", $genre, $replace);
     }
 
     /**
@@ -697,18 +565,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the date of recording for this track.
-     *
-     * @access  public
-     * @param   string  $date
-     * @param   boolean $replace
-     */
-    function setDate($date, $replace = true)
-    {
-        $this->setField("DATE", $date, $replace);
-    }
-
-    /**
      * Where this recording was made.
      *
      * This function returns where this recording was made, such as a recording
@@ -723,36 +579,12 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     }
 
     /**
-     * Set the location of the recording of this track.
-     *
-     * @access  public
-     * @param   string  $location
-     * @param   boolean $replace
-     */
-    function setLocation($location, $replace = true)
-    {
-        $this->setField("LOCATION", $location, $replace);
-    }
-
-    /**
      * @access  public
      * @return  string
      */
     function getContact()
     {
         return ($this->getField("CONTACT"));
-    }
-
-    /**
-     * Set the contact information for this track.
-     *
-     * @access  public
-     * @param   string  $contact
-     * @param   boolean $replace
-     */
-    function setContact($contact, $replace = true)
-    {
-        $this->setField("CONTACT", $contact, $replace);
     }
 
     /**
@@ -767,18 +599,6 @@ class File_Ogg_Vorbis extends File_Ogg_Media
     function getIsrc()
     {
         return ($this->getField("ISRC"));
-    }
-
-    /**
-     *  Set the ISRC for this track.
-     *
-     * @access  public
-     * @param   string  $isrc
-     * @param   boolean $replace
-     */
-    function setIsrc($isrc, $replace = true)
-    {
-        $this->setField("ISRC", $isrc, $replace);
     }
 
     /**
