@@ -2,7 +2,8 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use Exception;
+use InvalidArgumentException;
+use LogicException;
 use MediaTransformOutput;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
@@ -176,11 +177,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @param array $options
 	 * @return string
-	 * @throws Exception
 	 */
 	public function toHtml( $options = [] ) {
 		if ( count( func_get_args() ) === 2 ) {
-			throw new Exception( __METHOD__ . ' called in the old style' );
+			throw new InvalidArgumentException( __METHOD__ . ' called in the old style' );
 		}
 
 		$classes = $options['img-class'] ?? '';
@@ -392,12 +392,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get poster.
 	 * @param int $width width of poster. Should not equal $this->width.
 	 * @return string|false url for poster or false
-	 * @throws Exception If $width is same as $this->width.
 	 */
 	private function getPoster( $width ) {
 		if ( (int)$width === (int)$this->width ) {
 			// Prevent potential loop
-			throw new Exception( "Asked for poster in current size. Potential loop." );
+			throw new LogicException( "Asked for poster in current size. Potential loop." );
 		}
 		$params = [ "width" => (int)$width ];
 		$mto = $this->file->transform( $params );

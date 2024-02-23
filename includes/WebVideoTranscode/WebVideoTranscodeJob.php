@@ -13,6 +13,7 @@ use File;
 use FSFile;
 use InvalidArgumentException;
 use Job;
+use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Logger\LoggerFactory;
@@ -130,7 +131,7 @@ class WebVideoTranscodeJob extends Job {
 		$transcodeKey = $this->params[ 'transcodeKey' ];
 		$file = WebVideoTranscode::getTargetEncodeFile( $base, $transcodeKey, $suffix );
 		if ( !$file ) {
-			throw new Exception( 'Internal state error' );
+			throw new LogicException( 'Internal state error' );
 		}
 		$file->bind( $this );
 		return $file;
@@ -229,12 +230,12 @@ class WebVideoTranscodeJob extends Job {
 
 			if ( isset( $options[ 'novideo' ] ) ) {
 				if ( !isset( $options['audioCodec'] ) ) {
-					throw new Exception( 'Invalid audio track options' );
+					throw new LogicException( 'Invalid audio track options' );
 				}
 				$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
 			} else {
 				if ( !isset( $options['videoCodec'] ) ) {
-					throw new Exception( 'Invalid video track options' );
+					throw new LogicException( 'Invalid video track options' );
 				}
 				$this->output( "Encoding to codec: " . $options['videoCodec'] );
 			}

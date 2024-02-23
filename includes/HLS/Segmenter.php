@@ -8,7 +8,7 @@
 
 namespace MediaWiki\TimedMediaHandler\HLS;
 
-use Exception;
+use LogicException;
 
 /**
  * Base class for reading a media file, segmenting it, and writing
@@ -153,7 +153,7 @@ abstract class Segmenter {
 			case '.3gp':
 				return new MP4Segmenter( $filename );
 			default:
-				throw new Exception( "Unexpected streaming file extension $ext" );
+				throw new LogicException( "Unexpected streaming file extension $ext" );
 		}
 	}
 }

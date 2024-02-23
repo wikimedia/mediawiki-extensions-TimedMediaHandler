@@ -8,8 +8,8 @@
 
 namespace MediaWiki\TimedMediaHandler\HLS;
 
-use Exception;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use RuntimeException;
 
 /**
  * Generator for HLS multivariant playlists, which refer to
@@ -63,7 +63,7 @@ class Multivariant {
 			// MPEG-1 layer 3
 			return self::CODEC_MP3;
 		}
-		throw new Exception( "Invalid streaming codec definition for type: $type" );
+		throw new RuntimeException( "Invalid streaming codec definition for type: $type" );
 	}
 
 	/**

@@ -8,7 +8,7 @@
 
 namespace MediaWiki\TimedMediaHandler\HLS;
 
-use Exception;
+use RuntimeException;
 
 /**
  * Read a fragmented MP4/ISO BMFF/QuickTime media file and
@@ -64,7 +64,7 @@ class MP4Segmenter extends Segmenter {
 		*/
 		$ftyp = $mp4->readBox();
 		if ( $ftyp->type !== 'ftyp' ) {
-			throw new Exception( "Invalid MP4/ISO BMFF input file '$ftyp->type'" );
+			throw new RuntimeException( "Invalid MP4/ISO BMFF input file '$ftyp->type'" );
 		}
 
 		$moov = $mp4->expectBox( 'moov' );

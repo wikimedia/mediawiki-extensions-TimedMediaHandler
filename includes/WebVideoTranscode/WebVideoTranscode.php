@@ -15,6 +15,7 @@ use File;
 use IForeignRepoWithDB;
 use IForeignRepoWithMWApi;
 use JobSpecification;
+use LogicException;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -1631,7 +1632,7 @@ class WebVideoTranscode {
 				$n *= 1000;
 				break;
 			default:
-				throw new Exception( "Unexpected size suffix: " . $matches[2] );
+				throw new LogicException( "Unexpected size suffix: " . $matches[2] );
 			}
 			return $n;
 		} else {

@@ -8,7 +8,7 @@
 
 namespace MediaWiki\TimedMediaHandler\HLS;
 
-use Exception;
+use RuntimeException;
 
 /**
  * Reads an MP3 file calculating the byte and time boundaries
@@ -264,7 +264,7 @@ class MP3Segmenter extends Segmenter {
 				continue;
 			}
 
-			throw new Exception( "Not a valid MP3 or ID3 frame at $start" );
+			throw new RuntimeException( "Not a valid MP3 or ID3 frame at $start" );
 		}
 	}
 
@@ -375,7 +375,7 @@ class MP3Segmenter extends Segmenter {
 		if ( $pts >= $thirtyThreeBits ) {
 			// make sure they won't get too big for 33 bits
 			// this allows about a 24 hour media length
-			throw new Exception( "Timestamp overflow in MP3 output stream: $pts >= $thirtyThreeBits" );
+			throw new RuntimeException( "Timestamp overflow in MP3 output stream: $pts >= $thirtyThreeBits" );
 		}
 		$pts_high = intval( floor( $pts / $thirtyOneBits ) );
 		$pts_low = intval( $pts - ( $pts_high * $thirtyOneBits ) );
@@ -393,7 +393,7 @@ class MP3Segmenter extends Segmenter {
 		$frame_flags = 0;
 		$frame_length = strlen( $frame_data );
 		if ( $frame_length > 127 ) {
-			throw new Exception( "Should never happen: too large ID3 frame data" );
+			throw new RuntimeException( "Should never happen: too large ID3 frame data" );
 		}
 		$frame = pack(
 			'a4Nna*',
@@ -410,7 +410,7 @@ class MP3Segmenter extends Segmenter {
 		// if >127 bytes may need to adjust
 		$tag_length = strlen( $frame );
 		if ( $tag_length > 127 ) {
-			throw new Exception( "Should never happen: too large ID3 tag" );
+			throw new RuntimeException( "Should never happen: too large ID3 tag" );
 		}
 		return pack(
 			'a3nCNa*',

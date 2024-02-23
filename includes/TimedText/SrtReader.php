@@ -2,7 +2,7 @@
 
 namespace MediaWiki\TimedMediaHandler\TimedText;
 
-use Exception;
+use LogicException;
 use ReflectionClass;
 
 /**
@@ -78,7 +78,7 @@ class SrtReader extends Reader {
 
 	protected function restoreState() {
 		if ( !$this->states ) {
-			throw new Exception( 'No saved state to discard' );
+			throw new LogicException( 'No saved state to discard' );
 		}
 		$state = array_pop( $this->states );
 		$this->pos = $state['pos'];
@@ -88,7 +88,7 @@ class SrtReader extends Reader {
 
 	protected function discardState() {
 		if ( !count( $this->states ) ) {
-			throw new Exception( 'No saved state to discard' );
+			throw new LogicException( 'No saved state to discard' );
 		}
 		array_pop( $this->states );
 	}
@@ -339,8 +339,6 @@ class SrtReader extends Reader {
 
 	/**
 	 * @param string $text
-	 *
-	 * @throws Exception
 	 */
 	protected function parse( $text ) {
 		$this->len = strlen( $text );
@@ -367,7 +365,7 @@ class SrtReader extends Reader {
 			if ( isset( $map[$state] ) ) {
 				$state = $map[$state]();
 			} else {
-				throw new Exception( 'Invalid internal state ' . $state );
+				throw new LogicException( 'Invalid internal state ' . $state );
 			}
 		} while ( $state !== 'End' );
 	}
