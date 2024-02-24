@@ -39,7 +39,9 @@ doFfmpegEncode() {
 
 	## Set up audio opts if noaudio is selected or we're on pass number 1
 	if [ "$current_pass" -eq 1 ] || [ "$TMH_OPT_NOAUDIO" = "yes" ]; then
-		TMH_OPTS_AUDIO="-an"
+		AUDIO_OPTS="-an"
+	else
+		AUDIO_OPTS="$TMH_OPTS_AUDIO"
 	fi
 
 	# clean the arglist, then add optional args to it.
@@ -64,7 +66,7 @@ doFfmpegEncode() {
 	"$TMH_FFMPEG_PATH" -nostdin -y -i original.video \
 		$TMH_OPTS_VIDEO \
 		$FFMPEG2_OPTS \
-		$TMH_OPTS_AUDIO \
+		$AUDIO_OPTS \
 		$PASS_OPTS \
 		$TMH_MOVFLAGS \
 		"$@"
