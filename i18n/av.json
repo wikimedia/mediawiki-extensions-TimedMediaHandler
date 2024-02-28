@@ -3,10 +3,11 @@
 		"authors": [
 			"Gazimagomedov",
 			"Omarov M.",
-			"Аль-Гимравий"
+			"Аль-Гимравий",
+			"Augustus A C"
 		]
 	},
 	"timedmedia-source-file": "$1 ицц",
 	"timedmedia-source-audio-file-desc": "Оригиналияб $1-файл ($2)",
-	"timedmedia-subtitle-new-go": "ТІубазе"
+	"timedmedia-subtitle-new-go": "ТІобазе"
 }
