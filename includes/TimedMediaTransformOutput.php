@@ -2,7 +2,6 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use InvalidArgumentException;
 use LogicException;
 use MediaTransformOutput;
 use MediaWiki\Html\Html;
@@ -179,10 +178,6 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return string
 	 */
 	public function toHtml( $options = [] ) {
-		if ( count( func_get_args() ) === 2 ) {
-			throw new InvalidArgumentException( __METHOD__ . ' called in the old style' );
-		}
-
 		$classes = $options['img-class'] ?? '';
 
 		$oldHeight = $this->height;
