@@ -124,6 +124,7 @@
 	"action-transcode-reset": "поново поставите транскодирање",
 	"action-transcode-status": "прегледате актуелни статус транскодирања",
 	"log-name-timedmediahandler": "Дневник TimedMediaHandler-а",
+	"logentry-timedmediahandler-resettranscode": "$1 је {{GENDER:$2|ресетовао|ресетовала}} прекодирање $3 у формат „$4”",
 	"orphanedtimedtext-unsupported": "Ова посебна странице је подржана само на MySQL базама података.",
 	"videojs-more-information": "Више информација",
 	"videojs-quality": "Видео квалитет",
