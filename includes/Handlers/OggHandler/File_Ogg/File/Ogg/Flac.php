@@ -36,6 +36,18 @@ class File_Ogg_Flac extends File_Ogg_Media
 {
     /**
      * @access  private
+     * @var     string
+     */
+    var $_version;
+
+    /**
+     * @access  private
+     * @var     array
+     */
+    var $_streamInfo;
+
+    /**
+     * @access  private
      */
 	function __construct($streamSerial, $streamData, $filePointer)
     {

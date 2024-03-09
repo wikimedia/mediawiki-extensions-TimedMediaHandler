@@ -476,6 +476,7 @@ class File_Ogg
         // Loop through the streams, and find out what type of stream is available.
         $groupLengths = array();
         foreach ($this->_streamList as $stream_serial => $streamData) {
+            // @phan-suppress-next-line PhanTypeArraySuspiciousNullable False positive
             fseek($this->_filePointer, $streamData['pages'][0]['body_offset'], SEEK_SET);
             $pattern = fread($this->_filePointer, 8);
             if (preg_match("/" . OGG_STREAM_CAPTURE_VORBIS . "/", $pattern)) {
@@ -500,6 +501,7 @@ class File_Ogg
 
             if ($stream) {
                 $this->_streams[$stream_serial] = $stream;
+                // @phan-suppress-next-line PhanTypeArraySuspiciousNullable False positive
                 $group = $streamData['pages'][0]['group'];
                 if (isset($groupLengths[$group])) {
                     $groupLengths[$group] = max($groupLengths[$group], $stream->getLength());
@@ -519,26 +521,6 @@ class File_Ogg
     }
 
     /**
-     * Returns the overead percentage used by the Ogg headers.
-     *
-     * This function returns the percentage of the total stream size
-     * used for Ogg headers.
-     *
-     * @return string
-     */
-    function getOverhead() {
-        $header_size    = 0;
-        $stream_size    = 0;
-        foreach ($this->_streams as $serial => $stream) {
-            foreach ($stream->_streamList as $offset => $stream_data) {
-                $header_size += $stream_data['body_offset'] - $stream_data['head_offset'];
-                $stream_size  = $stream_data['body_finish'];
-            }
-        }
-        return sprintf("%0.2f", ($header_size / $stream_size) * 100);
-    }
-
-    /**
      * Returns the appropriate logical bitstream that corresponds to the provided serial.
      *
      * This function returns a logical bitstream contained within the Ogg physical
@@ -554,25 +536,6 @@ class File_Ogg
                 throw new OggException("The stream number is invalid.", OGG_ERROR_BAD_SERIAL);
 
         return $this->_streams[$streamSerial];
-    }
-
-    /**
-     * This function returns true if a logical bitstream of the requested type can be found.
-     *
-     * This function checks the contents of this ogg physical bitstream for of logical
-     * bitstream corresponding to the supplied type.  If one is found, the function returns
-     * true, otherwise it return false.
-     *
-     * @param   int     $streamType
-     * @return  boolean
-     */
-    function hasStream($streamType)
-    {
-        foreach ($this->_streams as $stream) {
-            if ($stream['stream_type'] == $streamType)
-                return (true);
-        }
-        return (false);
     }
 
     /**

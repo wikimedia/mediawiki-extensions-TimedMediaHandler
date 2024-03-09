@@ -35,6 +35,18 @@ use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggException;
 class File_Ogg_Speex extends File_Ogg_Media
 {
     /**
+     * @var     array
+     * @access  private
+     */
+    var $_header;
+
+    /**
+     * @access  private
+     * @var     string
+     */
+    var $_version;
+
+    /**
      * @access  private
      */
     function __construct($streamSerial, $streamData, $filePointer)
