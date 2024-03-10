@@ -1622,17 +1622,17 @@ class WebVideoTranscode {
 		if ( preg_match( '/^(\d+)([kmg])$/', strtolower( $rate ), $matches ) ) {
 			$n = (int)$matches[1];
 			switch ( $matches[2] ) {
-			case 'g':
-				$n *= 1000;
-				// fall through
-			case 'm':
-				$n *= 1000;
-				// fall through
-			case 'k':
-				$n *= 1000;
-				break;
-			default:
-				throw new LogicException( "Unexpected size suffix: " . $matches[2] );
+				case 'g':
+					$n *= 1000;
+					// fall through
+				case 'm':
+					$n *= 1000;
+					// fall through
+				case 'k':
+					$n *= 1000;
+					break;
+				default:
+					throw new LogicException( "Unexpected size suffix: " . $matches[2] );
 			}
 			return $n;
 		} else {

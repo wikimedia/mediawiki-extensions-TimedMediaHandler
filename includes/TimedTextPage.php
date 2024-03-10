@@ -256,7 +256,7 @@ class TimedTextPage extends Article {
 	 */
 	private function getTimedTextHTML( string $languageName ) {
 		if ( !$this->getPage()->exists() ) {
-			return wfMessage( 'timedmedia-subtitle-no-subtitles',  $languageName );
+			return wfMessage( 'timedmedia-subtitle-no-subtitles', $languageName );
 		}
 
 		$revision = $this->fetchRevisionRecord();

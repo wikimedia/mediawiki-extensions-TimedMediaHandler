@@ -90,5 +90,5 @@ $magicWords['ur'] = [
 	'timedmedia_thumbtime' => [ '0', 'وقت_تصغیر=$1', 'thumbtime=$1' ],
 	'timedmedia_starttime' => [ '0', 'آغاز=$1', 'start=$1' ],
 	'timedmedia_endtime' => [ '0', 'اختتام=$1', 'end=$1' ],
-	'timedmedia_disablecontrols' => [ 0, 'کنٹرول_غیرفعال=$1',  'disablecontrols=$1' ],
+	'timedmedia_disablecontrols' => [ 0, 'کنٹرول_غیرفعال=$1', 'disablecontrols=$1' ],
 ];

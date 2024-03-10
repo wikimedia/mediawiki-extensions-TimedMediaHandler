@@ -245,6 +245,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		return 'media';
 	}
 
+	/** @inheritDoc */
 	public function isListed() {
 		return true;
 	}

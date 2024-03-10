@@ -543,11 +543,11 @@ class SrtReader extends Reader {
 		$this->tagSource .= $c;
 		if ( $c === '>' ) {
 			switch ( strtolower( $this->tag ) ) {
-			case 'br':
-				$node = new DOM\TextNode( "\n" );
-				break;
-			default:
-				$node = new DOM\TextNode( $this->tagSource );
+				case 'br':
+					$node = new DOM\TextNode( "\n" );
+					break;
+				default:
+					$node = new DOM\TextNode( $this->tagSource );
 			}
 			$this->current->appendNode( $node );
 			return 'Text';
@@ -571,19 +571,19 @@ class SrtReader extends Reader {
 		$this->tagSource .= $c;
 		if ( $c === '>' ) {
 			switch ( strtolower( $this->tag ) ) {
-			case 'b':
-				$match = $this->current instanceof DOM\BoldNode;
-				break;
-			case 'i':
-				$match = $this->current instanceof DOM\ItalicNode;
-				break;
-			case 'u':
-				$match = $this->current instanceof DOM\UnderlineNode;
-				break;
-			// case 'big':
-			// case 'font':
-			default:
-				$match = false;
+				case 'b':
+					$match = $this->current instanceof DOM\BoldNode;
+					break;
+				case 'i':
+					$match = $this->current instanceof DOM\ItalicNode;
+					break;
+				case 'u':
+					$match = $this->current instanceof DOM\UnderlineNode;
+					break;
+				// case 'big':
+				// case 'font':
+				default:
+					$match = false;
 			}
 			if ( $match ) {
 				$this->popStack();
@@ -627,23 +627,23 @@ class SrtReader extends Reader {
 
 	public function stateTagEnd() {
 		switch ( strtolower( $this->tag ) ) {
-		case 'b':
-			$node = new DOM\BoldNode;
-			break;
-		case 'i':
-			$node = new DOM\ItalicNode;
-			break;
-		case 'u':
-			$node = new DOM\UnderlineNode;
-			break;
-		case 'br':
-			$node = new DOM\TextNode( "\n" );
-			break;
-		// case 'big':
-		// case 'font':
-		default:
-			// Anything else don't recognize it...?
-			$node = new DOM\TextNode( $this->tagSource );
+			case 'b':
+				$node = new DOM\BoldNode;
+				break;
+			case 'i':
+				$node = new DOM\ItalicNode;
+				break;
+			case 'u':
+				$node = new DOM\UnderlineNode;
+				break;
+			case 'br':
+				$node = new DOM\TextNode( "\n" );
+				break;
+			// case 'big':
+			// case 'font':
+			default:
+				// Anything else don't recognize it...?
+				$node = new DOM\TextNode( $this->tagSource );
 		}
 		$this->pushStack( $node );
 		return 'Text';

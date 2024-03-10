@@ -80,7 +80,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 			'lgname' => $user->getUser()->getName(),
 			'lgpassword' => $user->getPassword()
 		];
-		list( $result, , $session ) = $this->doApiRequest( $params );
+		[ $result, , $session ] = $this->doApiRequest( $params );
 		$token = $result['login']['token'];
 
 		$params = [
@@ -89,7 +89,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 			'lgname' => $user->getUser()->getName(),
 			'lgpassword' => $user->getPassword()
 		];
-		list( , , $session ) = $this->doApiRequest( $params, $session );
+		[ , , $session ] = $this->doApiRequest( $params, $session );
 		return $session;
 	}
 
@@ -124,7 +124,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		];
 
 		try {
-			list( $result, , ) = $this->doApiRequestWithToken(
+			[ $result, , ] = $this->doApiRequestWithToken(
 				$params,
 				$session,
 				$this->getTestUser()->getUser()

@@ -32,7 +32,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 		$where = [ 'img_media_type' => $types ];
 
 		if ( $this->hasOption( 'mime' ) ) {
-			list( $major, $minor ) = File::splitMime( $this->getOption( 'mime' ) );
+			[ $major, $minor ] = File::splitMime( $this->getOption( 'mime' ) );
 			$where['img_major_mime'] = $major;
 			$where['img_minor_mime'] = $minor;
 		}

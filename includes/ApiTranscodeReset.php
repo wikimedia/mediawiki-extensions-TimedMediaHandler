@@ -170,10 +170,12 @@ class ApiTranscodeReset extends ApiBase {
 		return $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;
 	}
 
+	/** @inheritDoc */
 	public function mustBePosted() {
 		return true;
 	}
 
+	/** @inheritDoc */
 	public function isWriteMode() {
 		return true;
 	}
@@ -190,6 +192,7 @@ class ApiTranscodeReset extends ApiBase {
 		];
 	}
 
+	/** @inheritDoc */
 	public function needsToken() {
 		return 'csrf';
 	}
