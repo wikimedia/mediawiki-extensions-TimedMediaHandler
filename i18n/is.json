@@ -80,7 +80,7 @@
 	"timedmedia-resolution-240": "Lág 240p",
 	"timedmedia-resolution-720": "HD 720p",
 	"timedmedia-resolution-1080": "HD 1080p",
-	"timedmedia-subtitle-new-desc": "Veldu tungumálið og smelltu á '''{{int:Timedmedia-subtitle-new-go}}''' takkann",
+	"timedmedia-subtitle-new-desc": "Veldu tungumálið og smelltu á '''{{int:Timedmedia-subtitle-new-go}}'''-hnappinn",
 	"timedmedia-subtitle-new-go": "Áfram",
 	"timedmedia-subtitle-no-video": "Ekkert myndband tengist þessum myndbanda texta",
 	"timedmedia-file": "Skrá",
