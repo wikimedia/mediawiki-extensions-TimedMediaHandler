@@ -32,7 +32,7 @@ use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
 use MediaWiki\Title\Title;
 use TempFSFile;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * Main WebVideoTranscode Class hold some constants and config values
@@ -939,7 +939,7 @@ class WebVideoTranscode {
 	 * if transcodes are not found in the database their state is set to "false"
 	 *
 	 * @param File $file File object
-	 * @param IDatabase|false $db
+	 * @param IReadableDatabase|false $db
 	 * @return array[]
 	 */
 	public static function getTranscodeState( $file, $db = false ) {
