@@ -15,7 +15,7 @@ export TMH_OUTPUT_FILE
 
 doFfmpegEncode() {
 	current_pass="${1:-0}"
-	if [ ! -x "$TMH_FFMPEG_PATH" ]; then
+	if [ ! -x "$(command -v $TMH_FFMPEG_PATH)" ]; then
 		echo "error: executable '$TMH_FFMPEG_PATH not found";
 		exit 1
 	fi
