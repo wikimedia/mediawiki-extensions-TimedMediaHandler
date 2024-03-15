@@ -244,9 +244,4 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	protected function getGroupName() {
 		return 'media';
 	}
-
-	/** @inheritDoc */
-	public function isListed() {
-		return true;
-	}
 }
