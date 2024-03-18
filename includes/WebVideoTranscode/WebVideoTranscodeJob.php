@@ -1120,5 +1120,3 @@ class WebVideoTranscodeJob extends Job {
 		}
 	}
 }
-
-class_alias( WebVideoTranscodeJob::class, 'WebVideoTranscodeJob' );
