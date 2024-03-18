@@ -153,10 +153,16 @@ class TranscodeStatusTable {
 			$downloadUrl = wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' );
 			$o .= '<td>';
 			$o .= ( $state['time_success'] !== null ) ?
-				'<a href="' . htmlspecialchars( $downloadUrl ) . '" download title="' .
-				wfMessage( 'timedmedia-download' )->escaped() . '"><div class="download-btn"><span>' .
-				wfMessage( 'timedmedia-download' )->escaped() . '</span></div></a></td>' :
-				wfMessage( 'timedmedia-not-ready' )->escaped();
+				// We want link behavior with button styling, so we wrap the button with the link
+				// It is hidden from accessibility layer.
+				// Event bubbling still makes the button respond.
+				'<a href="' . htmlspecialchars( $downloadUrl ) . '" download ' .
+					'title="' .	wfMessage( 'timedmedia-download' )->escaped() . '" ' .
+					'aria-label="' . wfMessage( 'timedmedia-download' )->escaped() . '">' .
+					'<button aria-hidden="true" tabindex="-1" class="cdx-button cdx-button--icon-only">' .
+						'<span class="cdx-button__icon cdx-downloadfile--download"></span>' .
+					'</button>' .
+				'</a>' : wfMessage( 'timedmedia-not-ready' )->escaped();
 			$o .= '</td>';
 
 			// Check if we should include actions:

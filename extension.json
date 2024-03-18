@@ -509,7 +509,7 @@
 		},
 		"ext.tmh.transcodetable": {
 			"scripts": "resources/transcode-table/transcode-table.js",
-			"styles": "resources/transcode-table/transcode-table.css",
+			"styles": "resources/transcode-table/transcode-table.less",
 			"dependencies": [
 				"mediawiki.api",
 				"oojs-ui"
