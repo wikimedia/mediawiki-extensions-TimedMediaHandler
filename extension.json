@@ -561,11 +561,21 @@
 	"JobClasses": {
 		"webVideoTranscode": {
 			"class": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
-			"services": [ "MainConfig" ]
+			"services": [
+				"ShellCommandFactory",
+				"MainConfig",
+				"DBLoadBalancerFactory",
+				"RepoGroup"
+			]
 		},
 		"webVideoTranscodePrioritized": {
 			"class": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
-			"services": [ "MainConfig" ]
+			"services": [
+				"ShellCommandFactory",
+				"MainConfig",
+				"DBLoadBalancerFactory",
+				"RepoGroup"
+			]
 		}
 	},
 	"load_composer_autoloader": true,

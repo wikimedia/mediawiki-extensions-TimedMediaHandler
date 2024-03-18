@@ -17,13 +17,16 @@ use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\MainConfigNames;
+use MediaWiki\Shell\CommandFactory;
 use MediaWiki\Shell\Shell;
 use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
+use RepoGroup;
 use Shellbox\Command\BoxedCommand;
 use TempFSFile;
+use Wikimedia\Rdbms\ILBFactory;
 
 /**
  * Job for web video transcode
@@ -56,15 +59,32 @@ class WebVideoTranscodeJob extends Job {
 	/** @var FSFile|null */
 	public $remuxSource;
 
+	/** @var CommandFactory */
+	private $commandFactory;
+
 	/** @var Config */
 	private $config;
+
+	/** @var ILBFactory */
+	private $lbFactory;
+
+	/** @var RepoGroup */
+	private $repoGroup;
 
 	/**
 	 * @param Title $title
 	 * @param array $params
+	 * @param CommandFactory $commandFactory
 	 * @param Config $config
+	 * @param ILBFactory $lbFactory
+	 * @param RepoGroup $repoGroup
 	 */
-	public function __construct( $title, $params, Config $config ) {
+	public function __construct( $title, $params,
+		CommandFactory $commandFactory,
+		Config $config,
+		ILBFactory $lbFactory,
+		RepoGroup $repoGroup
+	) {
 		if ( isset( $params['prioritized'] ) && $params['prioritized'] ) {
 			$command = 'webVideoTranscodePrioritized';
 		} else {
@@ -72,7 +92,10 @@ class WebVideoTranscodeJob extends Job {
 		}
 		parent::__construct( $command, $title, $params );
 		$this->removeDuplicates = true;
+		$this->commandFactory = $commandFactory;
 		$this->config = $config;
+		$this->lbFactory = $lbFactory;
+		$this->repoGroup = $repoGroup;
 	}
 
 	/**
@@ -96,7 +119,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function getFile() {
 		if ( !$this->file ) {
-			$this->file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()
+			$this->file = $this->repoGroup->getLocalRepo()
 				->findFile( $this->title, [ 'latest' => true ] );
 		}
 		return $this->file;
@@ -174,8 +197,7 @@ class WebVideoTranscodeJob extends Job {
 	 *
 	 */
 	private function setTranscodeError( $transcodeKey, $error ) {
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$dbw = $lbFactory->getPrimaryDatabase();
+		$dbw = $this->lbFactory->getPrimaryDatabase();
 		$dbw->newUpdateQueryBuilder()
 			->update( 'transcode' )
 			->set( [
@@ -239,8 +261,7 @@ class WebVideoTranscodeJob extends Job {
 				}
 				$this->output( "Encoding to codec: " . $options['videoCodec'] );
 			}
-			$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-			$dbw = $lbFactory->getPrimaryDatabase();
+			$dbw = $this->lbFactory->getPrimaryDatabase();
 
 			// Check if we have "already started" the transcode ( possible error )
 			$dbStartTime = $dbw->newSelectQueryBuilder()
@@ -272,13 +293,13 @@ class WebVideoTranscodeJob extends Job {
 
 			// Avoid contention and "server has gone away" errors as
 			// the transcode will take a very long time in some cases
-			$lbFactory->commitPrimaryChanges( __METHOD__ );
-			$lbFactory->flushPrimarySessions( __METHOD__ );
-			$lbFactory->flushReplicaSnapshots( __METHOD__ );
+			$this->lbFactory->commitPrimaryChanges( __METHOD__ );
+			$this->lbFactory->flushPrimarySessions( __METHOD__ );
+			$this->lbFactory->flushReplicaSnapshots( __METHOD__ );
 			// We can't just leave the connection open either or it will
 			// eat up resources and block new connections, so make sure
 			// everything is dead and gone.
-			$lbFactory->closeAll();
+			$this->lbFactory->closeAll();
 
 			// Check the codec see which encode method to call;
 			$streaming = $options['streaming'] ?? false;
@@ -324,7 +345,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 
 			// Reconnect to the database...
-			$dbw = $lbFactory->getPrimaryDatabase();
+			$dbw = $this->lbFactory->getPrimaryDatabase();
 
 			// Do a quick check to confirm the job was not restarted or removed while we were transcoding
 			// Confirm that the in memory $jobStartTimeCache matches db start time
@@ -399,10 +420,10 @@ class WebVideoTranscodeJob extends Job {
 				}
 
 				// Avoid "server has gone away" errors as copying can be slow
-				$lbFactory->commitPrimaryChanges( __METHOD__ );
-				$lbFactory->flushPrimarySessions( __METHOD__ );
-				$lbFactory->flushReplicaSnapshots( __METHOD__ );
-				$lbFactory->closeAll();
+				$this->lbFactory->commitPrimaryChanges( __METHOD__ );
+				$this->lbFactory->flushPrimarySessions( __METHOD__ );
+				$this->lbFactory->flushReplicaSnapshots( __METHOD__ );
+				$this->lbFactory->closeAll();
 
 				// Copy derivative from the FS into storage at $finalDerivativeFilePath
 				$result = $file->getRepo()->quickImport(
@@ -438,7 +459,7 @@ class WebVideoTranscodeJob extends Job {
 					);
 					// Wikimedia\restoreWarnings();
 					// Reconnect to the database...
-					$dbw = $lbFactory->getPrimaryDatabase();
+					$dbw = $this->lbFactory->getPrimaryDatabase();
 					// Update the transcode table with success time:
 					$dbw->newUpdateQueryBuilder()
 						->update( 'transcode' )
@@ -498,9 +519,9 @@ class WebVideoTranscodeJob extends Job {
 	 * @param string $name The route name for the BoxedCommand
 	 * @return BoxedCommand
 	 */
-	private static function getCommand( string $name ) {
+	private function getCommand( string $name ) {
 		$fullName = 'tmh-' . strtolower( $name );
-		return MediaWikiServices::getInstance()->getShellCommandFactory()
+		return $this->commandFactory
 			->createBoxed( 'timedmediahandler' )
 			->disableNetwork()
 			->firejailDefaultSeccomp()
@@ -513,14 +534,13 @@ class WebVideoTranscodeJob extends Job {
 	 * @param string $script
 	 *
 	 */
-	private static function useScript( BoxedCommand $command, string $script ) {
-		global $wgShellboxShell;
+	private function useScript( BoxedCommand $command, string $script ) {
 		$file = __DIR__ . "/../../scripts/$script";
 		if ( !is_file( $file ) ) {
 			throw new InvalidArgumentException( "File '$file' not found" );
 		}
 		$command->inputFileFromFile( "scripts/$script", $file )
-			->params( $wgShellboxShell, 'scripts/' . $script );
+			->params( $this->config->get( MainConfigNames::ShellboxShell ), 'scripts/' . $script );
 	}
 
 	/**
@@ -656,7 +676,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 
-		if ( !MediaWikiServices::getInstance()->getMainConfig()->get( 'UseFFmpeg2' ) ) {
+		if ( !$this->config->get( 'UseFFmpeg2' ) ) {
 			// Work around https://trac.ffmpeg.org/ticket/6375 in ffmpeg 3.4/4.0
 			// Sometimes caused transcode failures saying things like:
 			// "1 frames left in the queue on closing"
@@ -707,8 +727,8 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 
-		$cmd = self::getCommand( 'ffmpegencode' );
-		self::useScript( $cmd, 'ffmpeg-encode.sh' );
+		$cmd = $this->getCommand( 'ffmpegencode' );
+		$this->useScript( $cmd, 'ffmpeg-encode.sh' );
 		// set up options that don't need mangling
 
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
@@ -1058,8 +1078,8 @@ class WebVideoTranscodeJob extends Job {
 		if ( !is_file( $this->getSourceFilePath() ) ) {
 			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
 		}
-		$cmd = self::getCommand( 'miditoaudio' );
-		self::useScript( $cmd, 'midi-encode.sh' );
+		$cmd = $this->getCommand( 'miditoaudio' );
+		$this->useScript( $cmd, 'midi-encode.sh' );
 		// set up options
 		$optsEnv = [];
 		$optToEnv = [
