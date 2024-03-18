@@ -152,7 +152,8 @@
 		"iframe": {
 			"class": "MediaWiki\\TimedMediaHandler\\TimedMediaIframeOutput",
 			"services": [
-				"MainConfig"
+				"MainConfig",
+				"RepoGroup"
 			]
 		},
 		"installer": {
