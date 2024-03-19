@@ -1,0 +1,48 @@
+<table class="wikitable mw-filepage-transcodestatus">
+	<thead>
+		<tr>
+			<th>{{msg-timedmedia-transcodeinfo}}</th>
+			<th>{{msg-timedmedia-transcodebitrate}}</th>
+			<th>{{msg-timedmedia-direct-link}}</th>
+		{{#has-reset}}
+			<th>{{msg-timedmedia-actions}}</th>
+		{{/has-reset}}
+			<th>{{msg-timedmedia-status}}</th>
+			<th>{{msg-timedmedia-transcodeduration}}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{{#transcodeRows}}
+		<tr>
+			<td>{{msg-derivative-key}}</td>
+			<td>{{bitrate}}</td>
+		{{^transcode-success}}
+			<td>{{msg-timedmedia-not-ready}}</td>
+		{{/transcode-success}}
+		{{#transcode-success}}
+			<td>
+				{{!
+				We want link behavior, with button styling, so we wrap the button with the link
+				The button is hidden from accessibility layer.
+				Event bubbling still makes the button visually respond in the standard DOM
+				}}
+				<a href="{{downloadUrl}}" download
+					title="{{msg-timedmedia-download}}"
+					aria-label="{{msg-timedmedia-download}}">
+					<button aria-hidden="true" tabindex="-1" class="cdx-button cdx-button--icon-only">
+						<span class="cdx-button__icon cdx-downloadfile--download"></span>
+					</button>
+				</a>
+			</td>
+		{{/transcode-success}}
+		{{#has-reset}}
+			<td class="mw-filepage-transcodereset">
+				<a href data-transcodekey="{{transcodeKey}}">{{msg-timedmedia-reset}}</a>
+			</td>
+		{{/has-reset}}
+			<td>{{{html-transcode-status}}}</td>
+			<td>{{transcode-duration}}</td>
+		</tr>
+	{{/transcodeRows}}
+	</tbody>
+</table>
