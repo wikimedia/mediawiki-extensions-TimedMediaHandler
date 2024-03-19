@@ -17,19 +17,26 @@ use MediaWiki\Actions\ActionEntryPoint;
 use MediaWiki\Config\Config;
 use MediaWiki\Hook\MediaWikiPerformActionHook;
 use MediaWiki\Html\Html;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use RepoGroup;
 
 class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 
 	/** @var Config */
 	private $config;
 
-	public function __construct( Config $config ) {
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	public function __construct(
+		Config $config,
+		RepoGroup $repoGroup
+	) {
 		$this->config = $config;
+		$this->repoGroup = $repoGroup;
 	}
 
 	/**
@@ -73,7 +80,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 		global $wgBreakFrames;
 
 		// Setup the render param
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
+		$file = $this->repoGroup->findFile( $title );
 		if ( !$file ) {
 			// file was removed, show wiki page with warning
 			return false;
