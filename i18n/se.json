@@ -29,7 +29,9 @@
 	"timedmedia-source-file": "Gáldu $1",
 	"timedmedia-source-file-desc": "Álgovuolggalaš $1-fiila, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Álgovuolggalaš $1-fiila ($2)",
+	"timedmedia-subtitle-new-desc": "Vállje giela ja de deaddil '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Mana",
 	"timedmedia-file": "Fiila",
-	"videojs-more-information": "Lassedieđut"
+	"videojs-more-information": "Lassedieđut",
+	"videojs-quality": "Videokvalitehta"
 }
