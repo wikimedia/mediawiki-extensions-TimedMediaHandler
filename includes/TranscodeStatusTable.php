@@ -5,10 +5,10 @@ namespace MediaWiki\TimedMediaHandler;
 use File;
 use IContextSource;
 use MediaWiki\Html\Html;
+use MediaWiki\Html\TemplateParser;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Utils\MWTimestamp;
-use Xml;
 
 /**
  * TranscodeStatusTable outputs a "transcode" status table to the ImagePage
@@ -24,6 +24,9 @@ class TranscodeStatusTable {
 	/** @var LinkRenderer */
 	private $linkRenderer;
 
+	/** @var TemplateParser */
+	private $templateParser;
+
 	/**
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
@@ -34,6 +37,7 @@ class TranscodeStatusTable {
 	) {
 		$this->context = $context;
 		$this->linkRenderer = $linkRenderer;
+		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 	}
 
 	/**
@@ -118,70 +122,55 @@ class TranscodeStatusTable {
 			return ( $aIndex - $bIndex );
 		} );
 
-		$o = Xml::openElement( 'table',
-			[ 'class' => 'wikitable mw-filepage-transcodestatus' ]
-		) . "\n"
-			. '<tr>'
-			. '<th>' . wfMessage( 'timedmedia-transcodeinfo' )->escaped() . '</th>'
-			. '<th>' . wfMessage( 'timedmedia-transcodebitrate' )->escaped() . '</th>'
-			. '<th>' . wfMessage( 'timedmedia-direct-link' )->escaped() . '</th>';
+		return $this->templateParser->processTemplate(
+			'TranscodeStatusTable',
+			$this->transcodeRowsToTemplateParams( $transcodeRows, $file )
+		);
+	}
 
-		if ( $this->context->getUser()->isAllowed( 'transcode-reset' ) ) {
-			$o .= '<th>' . wfMessage( 'timedmedia-actions' )->escaped() . '</th>';
-		}
-
-		$o .= '<th>' . wfMessage( 'timedmedia-status' )->escaped() . '</th>';
-		$o .= '<th>' . wfMessage( 'timedmedia-transcodeduration' )->escaped() . '</th>';
-		$o .= "</tr>\n";
-
+	/**
+	 * @param array $transcodeRows
+	 * @param File $file
+	 * @return array
+	 */
+	private function transcodeRowsToTemplateParams( $transcodeRows, $file ) {
+		$transcodeRowsForTemplate = [];
 		foreach ( $transcodeRows as $transcodeKey => $state ) {
-			$o .= '<tr>';
-			// Encode info:
-			$o .= '<td>' . wfMessage( 'timedmedia-derivative-' . $transcodeKey )->escaped() . '</td>';
-			$o .= '<td>' . $this->getTranscodeBitrate( $file, $state ) . '</td>';
-
-			// Download file
-			//
-			// Note the <a download> attribute only is applied on same-origin URLs.
-			// The "?download" query string append will work on servers configured
-			// the way the Wikimedia production servers are, but other sites that
-			// store files offsite may not have the same setup.
-			//
-			// On failure, these should devolve to either downloading or loading a
-			// media file inline, depending on the format and browser and server
-			// config.
-			$downloadUrl = wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' );
-			$o .= '<td>';
-			$o .= ( $state['time_success'] !== null ) ?
-				// We want link behavior with button styling, so we wrap the button with the link
-				// It is hidden from accessibility layer.
-				// Event bubbling still makes the button respond.
-				'<a href="' . htmlspecialchars( $downloadUrl ) . '" download ' .
-					'title="' .	wfMessage( 'timedmedia-download' )->escaped() . '" ' .
-					'aria-label="' . wfMessage( 'timedmedia-download' )->escaped() . '">' .
-					'<button aria-hidden="true" tabindex="-1" class="cdx-button cdx-button--icon-only">' .
-						'<span class="cdx-button__icon cdx-downloadfile--download"></span>' .
-					'</button>' .
-				'</a>' : wfMessage( 'timedmedia-not-ready' )->escaped();
-			$o .= '</td>';
-
-			// Check if we should include actions:
-			if ( $this->context->getUser()->isAllowed( 'transcode-reset' ) ) {
-				// include reset transcode action buttons
-				$o .= '<td class="mw-filepage-transcodereset"><a href="#" data-transcodekey="' .
-					htmlspecialchars( $transcodeKey ) . '">' . wfMessage( 'timedmedia-reset' )->escaped() .
-					'</a></td>';
-			}
-
-			// Status:
-			$o .= '<td>' . self::getStatusMsg( $file, $state ) . '</td>';
-			$o .= '<td>' . $this->getTranscodeDuration( $file, $state ) . '</td>';
-
-			$o .= '</tr>';
+			$transcodeRowsForTemplate[] = [
+				'transcodeKey' => $transcodeKey,
+				'msg-derivative-key' => wfMessage( 'timedmedia-derivative-' . $transcodeKey ),
+				'bitrate' => $this->getTranscodeBitrate( $file, $state ),
+				'transcode-success' => $state['time_success'] !== null,
+				'msg-timedmedia-download' => wfMessage( 'timedmedia-download' ),
+				// Download file
+				//
+				// Note the <a download> attribute only is applied on same-origin URLs.
+				// The "?download" query string append will work on servers configured
+				// the way the Wikimedia production servers are, but other sites that
+				// store files offsite may not have the same setup.
+				//
+				// On failure, these should devolve to either downloading or loading a
+				// media file inline, depending on the format and browser and server
+				// config.
+				'downloadUrl' => wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' ),
+				'msg-timedmedia-reset' => wfMessage( 'timedmedia-reset' ),
+				'html-transcode-status' => self::getStatusMsg( $file, $state ),
+				'transcode-duration' => $this->getTranscodeDuration( $file, $state ),
+			];
 		}
-		$o .= Xml::closeElement( 'table' );
 
-		return $o;
+		$templateParams = [
+			'msg-timedmedia-transcodeinfo' => wfMessage( 'timedmedia-transcodeinfo' ),
+			'msg-timedmedia-transcodebitrate' => wfMessage( 'timedmedia-transcodebitrate' ),
+			'msg-timedmedia-not-ready' => wfMessage( 'timedmedia-not-ready' ),
+			'msg-timedmedia-direct-link' => wfMessage( 'timedmedia-direct-link' ),
+			'msg-timedmedia-actions' => wfMessage( 'timedmedia-actions' ),
+			'msg-timedmedia-status' => wfMessage( 'timedmedia-status' ),
+			'msg-timedmedia-transcodeduration' => wfMessage( 'timedmedia-transcodeduration' ),
+			'has-reset' => $this->context->getUser()->isAllowed( 'transcode-reset' ),
+			'transcodeRows' => $transcodeRowsForTemplate,
+		];
+		return $templateParams;
 	}
 
 	/**
