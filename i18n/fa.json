@@ -145,7 +145,7 @@
 	"logentry-timedmediahandler-resettranscode": "$1 یک رمزگذاری از $3 را به فرمت «$4» {{GENDER:$2|تغییر داد}}",
 	"orphanedtimedtext": "صفحه‌های TimedText یتیم",
 	"orphanedtimedtext-summary": "فهرست صفحه‌های [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] که دارای پروندهٔ متناظر نیستند.",
-	"orphanedtimedtext-unsupported": "این صفحهٔ ویژه فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده‌است.",
+	"orphanedtimedtext-unsupported": "این صفحهٔ ویژه فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده است.",
 	"videojs-more-information": "اطلاعات بیشتر",
 	"videojs-quality": "کیفیت ویدئو",
 	"videojs-subtitles-create": "ایجاد زیرنویس",
