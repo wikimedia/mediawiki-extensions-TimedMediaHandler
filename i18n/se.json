@@ -9,6 +9,7 @@
 	"timedmedia-ogg-short-video": "Ogg $1 -videofiila, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 -mediafiila, $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 -jietnafiila, bistu $2, $3, fiilasturrodat: $6",
+	"timedmedia-ogg-long-video": "Ogg $1 -videofiila, bistu $2, $4 × $5 piksela (govvačuoggá), $3, fiilasturrodat: $6",
 	"timedmedia-ogg-long-general": "Ogg-mediafiila, bistu $2, $3, fiilasturrodat: $6",
 	"timedmedia-webm-short-video": "WebM $1 -videofiila, $2",
 	"timedmedia-flac-short-audio": "FLAC-jietnafiila, $1",
