@@ -132,6 +132,7 @@
 		"LoadExtensionSchemaUpdates": "installer",
 		"MediaWikiPerformAction": "iframe",
 		"RevisionFromEditComplete": "main",
+		"PageMoveComplete": "main",
 		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "main",
 		"TitleMove": "main",

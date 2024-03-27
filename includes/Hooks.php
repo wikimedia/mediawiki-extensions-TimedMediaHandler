@@ -16,10 +16,12 @@ use MediaWiki\Diff\Hook\ArticleContentOnDiffHook;
 use MediaWiki\Hook\CanonicalNamespacesHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
 use MediaWiki\Hook\FileUploadHook;
+use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Hook\ArticleFromTitleHook;
@@ -60,6 +62,7 @@ class Hooks implements
 	ImageOpenShowImageInlineBeforeHook,
 	ImagePageAfterImageLinksHook,
 	ImagePageFileHistoryLineHook,
+	PageMoveCompleteHook,
 	ParserTestGlobalsHook,
 	RevisionFromEditCompleteHook,
 	SkinTemplateNavigation__UniversalHook,
@@ -322,11 +325,30 @@ class Hooks implements
 	public function onTitleMove( Title $title, Title $newTitle, User $user, $reason, Status &$status ) {
 		if ( $this->transcodableChecker->isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
-			// ( will be re-added the first time the asset is displayed with its new title )
+			// Will be re-added after the file has moved
 			$file = $this->repoGroup->findFile( $title );
 			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
+	}
+
+	/**
+	 * Hook to PageMoveComplete. Add transcode jobs for new file name
+	 * @param LinkTarget $old Old title
+	 * @param LinkTarget $new New title
+	 * @param UserIdentity $user User who did the move
+	 * @param int $pageid Database ID of the page that's been moved
+	 * @param int $redirid Database ID of the created redirect
+	 * @param string $reason Reason for the move
+	 * @param RevisionRecord $revision RevisionRecord created by the move
+	 * @return bool|void True or no return value to continue or false stop other hook handlers,
+	 *     doesn't abort the move itself
+	 */
+	public function onPageMoveComplete( $old, $new, $user, $pageid, $redirid, $reason, $revision ) {
+		if ( $this->transcodableChecker->isTranscodableTitle( $new ) ) {
+			$newFile = $this->repoGroup->findFile( $new );
+			WebVideoTranscode::startJobQueue( $newFile );
+		}
 	}
 
 	/**
