@@ -51,7 +51,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 				$this->error( "Invalid --start option provided" );
 				return;
 			}
-			$where[] = 'img_name >= ' . $dbr->addQuotes( $title->getDBkey() );
+			$where[] = $dbr->expr( 'img_name', '>=', $title->getDBkey() );
 		}
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'img_name' ] )
