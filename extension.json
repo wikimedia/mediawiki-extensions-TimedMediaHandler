@@ -125,6 +125,7 @@
 		"BeforePageDisplay": "main",
 		"CanonicalNamespaces": "main",
 		"FileDeleteComplete": "main",
+		"FileUndeleteComplete": "main",
 		"FileUpload": "main",
 		"ImageOpenShowImageInlineBefore": "main",
 		"ImagePageAfterImageLinks": "main",
