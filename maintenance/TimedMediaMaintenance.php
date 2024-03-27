@@ -57,7 +57,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 			->select( [ 'img_name' ] )
 			->from( 'image' )
 			->where( $where )
-			->orderBy( 'img_media_type,img_name', SelectQueryBuilder::SORT_ASC )
+			->orderBy( [ 'img_media_type', 'img_name' ], SelectQueryBuilder::SORT_ASC )
 			->caller( __METHOD__ )->fetchResultSet();
 
 		$localRepo = $this->getServiceContainer()->getRepoGroup()->getLocalRepo();
