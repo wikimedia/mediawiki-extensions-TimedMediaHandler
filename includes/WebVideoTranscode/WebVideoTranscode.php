@@ -12,6 +12,7 @@ namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use Exception;
 use File;
+use HTMLCacheUpdateJob;
 use IForeignRepoWithDB;
 use IForeignRepoWithMWApi;
 use JobSpecification;
@@ -1058,24 +1059,17 @@ class WebVideoTranscode {
 		// Purge the main image page:
 		$titleObj->invalidateCache();
 
-		// TODO if the video is used in over 500 pages add to 'job queue'
-		// TODO interwiki invalidation ?
-		$limit = 500;
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$dbr = $lbFactory->getReplicaDatabase();
-		$res = $dbr->newSelectQueryBuilder()
-			->fields( [ 'page_namespace', 'page_title' ] )
-			->from( 'imagelinks' )
-			->join( 'page', null, [ 'il_from = page_id' ] )
-			->where( [ 'il_to' => $titleObj->getDBkey() ] )
-			->limit( $limit + 1 )
-			->caller( __METHOD__ )
-			->fetchResultSet();
+		// Invalidate cache for all pages using this file
+		$cacheUpdateJob = HTMLCacheUpdateJob::newForBacklinks(
+			$titleObj,
+			'imagelinks',
+			// TODO add 'causeAgent' => $user->getName()
+			// and more accurate action
+			[ 'causeAction' => 'tmh-transcode-update' ]
+		);
+		MediaWikiServices::getInstance()->getJobQueueGroup()->lazyPush( $cacheUpdateJob );
 
-		foreach ( $res as $page ) {
-			$title = Title::makeTitle( $page->page_namespace, $page->page_title );
-			$title->invalidateCache();
-		}
+		// TODO GlobalUsage
 	}
 
 	/**
