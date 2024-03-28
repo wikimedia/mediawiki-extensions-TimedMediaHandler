@@ -1282,18 +1282,17 @@ class WebVideoTranscode {
 				continue;
 			}
 			if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
-				$dbw->insert(
-					'transcode',
-					[
+				$dbw->newInsertQueryBuilder()
+					->insertInto( 'transcode' )
+					->ignore()
+					->row( [
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
 						'transcode_time_addjob' => null,
-						'transcode_error' => "",
-						'transcode_final_bitrate' => 0
-					],
-					__METHOD__,
-					[ 'IGNORE' ]
-				);
+						'transcode_error' => '',
+						'transcode_final_bitrate' => 0,
+					] )
+					->caller( __METHOD__ )->execute();
 			}
 		}
 
@@ -1363,18 +1362,17 @@ class WebVideoTranscode {
 
 		// If the job hasn't been added yet, attempt to do so
 		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
-			$dbw->insert(
-				'transcode',
-				[
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'transcode' )
+				->ignore()
+				->row( [
 					'transcode_image_name' => $fileName,
 					'transcode_key' => $transcodeKey,
 					'transcode_time_addjob' => $dbw->timestamp(),
-					'transcode_error' => "",
-					'transcode_final_bitrate' => 0
-				],
-				__METHOD__,
-				[ 'IGNORE' ]
-			);
+					'transcode_error' => '',
+					'transcode_final_bitrate' => 0,
+				] )
+				->caller( __METHOD__ )->execute();
 
 			if ( !$dbw->affectedRows() ) {
 				// There is already a row for that job added by another request, no need to continue
