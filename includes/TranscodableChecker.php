@@ -4,7 +4,7 @@ namespace MediaWiki\TimedMediaHandler;
 
 use File;
 use MediaWiki\Config\Config;
-use MediaWiki\Title\Title;
+use MediaWiki\Linker\LinkTarget;
 use RepoGroup;
 
 /**
@@ -32,7 +32,7 @@ class TranscodableChecker {
 
 	/**
 	 * Wraps the isTranscodableFile function
-	 * @param Title $title
+	 * @param LinkTarget $title
 	 * @return bool
 	 */
 	public function isTranscodableTitle( $title ) {

@@ -1282,6 +1282,7 @@ class WebVideoTranscode {
 					->row( [
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
+						// Do not start transcode jobs automatically, as purging is too common.
 						'transcode_time_addjob' => null,
 						'transcode_error' => '',
 						'transcode_final_bitrate' => 0,
