@@ -15,6 +15,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\Diff\Hook\ArticleContentOnDiffHook;
 use MediaWiki\Hook\CanonicalNamespacesHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
+use MediaWiki\Hook\FileUndeleteCompleteHook;
 use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
@@ -56,6 +57,7 @@ class Hooks implements
 	BeforePageDisplayHook,
 	CanonicalNamespacesHook,
 	FileDeleteCompleteHook,
+	FileUndeleteCompleteHook,
 	FileUploadHook,
 	ImageOpenShowImageInlineBeforeHook,
 	ImagePageAfterImageLinksHook,
@@ -347,6 +349,18 @@ class Hooks implements
 	public function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
 		if ( !$oldimage && $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			WebVideoTranscode::removeTranscodes( $file );
+		}
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
+		$file = $this->repoGroup->findFile( $title );
+		if ( $file && $this->transcodableChecker->isTranscodableFile( $file ) ) {
+			WebVideoTranscode::removeTranscodes( $file );
+			WebVideoTranscode::startJobQueue( $file );
 		}
 		return true;
 	}
