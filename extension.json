@@ -135,7 +135,10 @@
 		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "main",
 		"TitleMove": "main",
-		"wgQueryPages": "main"
+		"wgQueryPages": "main",
+		"PageSaveCompleted": "timedtext",
+		"PageMoveCompleted": "timedtext",
+		"PageDeletedCompleted": "timedtext"
 	},
 	"HookHandlers": {
 		"main": {
@@ -145,6 +148,12 @@
 				"LinkRenderer",
 				"RepoGroup",
 				"SpecialPageFactory"
+			]
+		},
+		"timedtext": {
+			"class": "MediaWiki\\TimedMediaHandler\\TimedTextHooks",
+			"services": [
+				"JobQueueGroup"
 			]
 		},
 		"iframe": {
