@@ -1113,14 +1113,6 @@ class WebVideoTranscode {
 		if ( $bitrate ) {
 			$source["bandwidth"] = round( $bitrate );
 		}
-
-		// For video include framerate:
-		if ( !$handler->isAudio( $file ) ) {
-			$framerate = $handler->getFramerate( $file );
-			if ( $framerate ) {
-				$source[ "framerate" ] = (float)$framerate;
-			}
-		}
 		return $source;
 	}
 
@@ -1149,8 +1141,6 @@ class WebVideoTranscode {
 			);
 		}
 
-		$framerate = static::$derivativeSettings[$transcodeKey]['framerate']
-			?? $handler->getFramerate( $file );
 		// Setup the url src:
 		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $src ) : $src;
 		$fields = [
@@ -1167,10 +1157,6 @@ class WebVideoTranscode {
 		// a "ready" transcode should have a bitrate:
 		if ( isset( static::$transcodeState[$fileName] ) ) {
 			$fields["bandwidth"] = (int)static::$transcodeState[$fileName][$transcodeKey]['final_bitrate'];
-		}
-
-		if ( !$handler->isAudio( $file ) ) {
-			$fields += [ "framerate" => (float)$framerate ];
 		}
 		return $fields;
 	}
