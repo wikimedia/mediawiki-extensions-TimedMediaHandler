@@ -1,16 +1,14 @@
 .mw-timedtextpage-layout {
 	display: flex;
 	flex-wrap: wrap;
-	margin-left: -1em;
-	margin-top: -1em;
-
-	> * {
-		margin-left: 1em;
-		margin-top: 1em;
-	}
+	gap: 1em;
 
 	.mw-timedtextpage-video {
 		flex: 0 0 auto;
+	}
+
+	.mw-timedtextpage-video:empty {
+		display: none;
 	}
 
 	.mw-timedtextpage-tt {

@@ -250,6 +250,12 @@ class Hooks implements
 			$links[ 'namespaces' ][ 'timedtext' ] = $tab;
 			return;
 		}
+		if ( $sktemplate->getTitle()->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
+			$page = new TimedTextPage( $sktemplate->getTitle() );
+			$links['namespaces']['file'] =
+				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+				$sktemplate->tabAction( $page->getCorrespondingFileTitle(), 'file', false, '', true );
+		}
 	}
 
 	/**
