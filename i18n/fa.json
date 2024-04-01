@@ -18,7 +18,8 @@
 			"Mjbmr",
 			"Reza1615",
 			"جواد",
-			"پاناروما"
+			"پاناروما",
+			"Rulebased"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -38,8 +39,8 @@
 	"timedmedia-flac-long-audio": "پروندهٔ صوتی اف‌ال‌ای‌سی، مدت $1، $2 کلی",
 	"timedmedia-wav-short-audio": "پروندهٔ صوتی WAV، $1",
 	"timedmedia-wav-long-audio": "پروندهٔ صوتی WAV، مدت $1، $2 کلی",
-	"timedmedia-wav-pcm-required": "شما فقط می توانید PCM و WAV را بار کنید.",
-	"timedmedia-mp3-short-audio": "فایل صوتی ام‌پی‌تری ، $1",
+	"timedmedia-wav-pcm-required": "شما فقط می‌توانید PCM و WAV را بار کنید.",
+	"timedmedia-mp3-short-audio": "فایل صوتی ام‌پی‌تری، $1",
 	"timedmedia-mp3-long-audio": "پروندهٔ صوتی ام‌پی۳، مدت $1، $2 کلی",
 	"timedmedia-midi-short-audio": "پروندهٔ صوتی MIDI، $1",
 	"timedmedia-midi-long-audio": "پروندهٔ صوتی MIDI، مدت $1، $2 کلی",
@@ -130,7 +131,7 @@
 	"timedmedia-subtitle-no-video": "هیچ ویدئویی مرتبط با زیرعنوان این صفحه موجود نیست",
 	"timedmedia-subtitle-no-subtitles": "در حال حاضر زیرنویسی برای $1 در این ویدئو وجود ندارد، می‌توانید این صفحه را برای افزودن آن‌ها [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش کنید].",
 	"timedmedia-subtitle-remote": "متن زمان‌دار برای پرونده ذخیره شده در $1",
-	"timedmedia-subtitle-remote-link": "شما می توانید [$1 توضیحات صفحه مشاهده کنید] برای این پرونده در $2",
+	"timedmedia-subtitle-remote-link": "شما می‌توانید [$1 توضیحات صفحه مشاهده کنید] برای این پرونده در $2",
 	"timedmedia-subtitles-available": "زیرنویس‌ دردسترس.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 فراکدها|$1 فراکدها}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 در حال اجرای فراکدها|$1 در حال اجرای فراکدها}}",
@@ -152,7 +153,7 @@
 	"logentry-timedmediahandler-resettranscode": "$1 یک رمزگذاری از $3 را به فرمت «$4» {{GENDER:$2|تغییر داد}}",
 	"orphanedtimedtext": "صفحه‌های TimedText یتیم",
 	"orphanedtimedtext-summary": "فهرست صفحه‌های [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] که دارای پروندهٔ متناظر نیستند.",
-	"orphanedtimedtext-unsupported": "این صفحهٔ ویژه فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده‌است.",
+	"orphanedtimedtext-unsupported": "این صفحهٔ ویژه فقط در پایگاه داده‌های مای‌اس‌کیوال حمایت شده است.",
 	"videojs-more-information": "اطلاعات بیشتر",
 	"videojs-quality": "کیفیت ویدئو",
 	"videojs-subtitles-create": "ایجاد زیرنویس",
