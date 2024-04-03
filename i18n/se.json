@@ -31,6 +31,8 @@
 	"timedmedia-source-file-desc": "Álgovuolggalaš $1-fiila, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Álgovuolggalaš $1-fiila ($2)",
 	"timedmedia-source-original": "Gáldu",
+	"timedmedia-derivative-stereo.audio.opus.mp4": "Stereo (Opus)",
+	"timedmedia-derivative-stereo.audio.mp3": "Stereo (MP3)",
 	"timedmedia-subtitle-new-desc": "Vállje giela ja de deaddil '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Mana",
 	"timedmedia-file": "Fiila",
