@@ -34,7 +34,7 @@
 	"timedmedia-direct-link": "لاهيو",
 	"timedmedia-not-ready": "تيار ناھي",
 	"timedmedia-completed-on": "$1 مڪمل ٿيل",
-	"timedmedia-started-transcode": "$1 اڳ شروع ٿيو. $2",
+	"timedmedia-started-transcode": "$1 شروع ٿيو. $2",
 	"timedmedia-percent-done": "تقريبن $1٪ ٿي ويو",
 	"timedmedia-reset-areyousure": "ڇا توهان کي پڪ آهي تہ توهان اڳتي وڌڻ ٿا چاهيو؟",
 	"timedmedia-reset-button-cancel": "نئين سِر مقرر نہ ڪريو",
@@ -52,6 +52,7 @@
 	"timedmedia-resolution-2160": "يوايڇڊي 2160p",
 	"timedmedia-subtitle-new-go": "هلو",
 	"timedmedia-file": "فائيل",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 منٽ}} ۽ {{PLURAL:$2|$2 سيڪنڊ}}",
 	"videojs-more-information": "وڌيڪ معلومات",
 	"videojs-quality": "وڊيو معيار"
 }
