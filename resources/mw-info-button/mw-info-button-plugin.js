@@ -22,10 +22,7 @@ class InfoButtonPlugin extends Plugin {
 		super( player, options );
 
 		player.ready( () => {
-			const title = mw.Title.makeTitle(
-				mw.config.get( 'wgNamespaceIds' ).file,
-				player.el().getAttribute( 'data-mwtitle' )
-			);
+			const title = player.options().mwTitle;
 
 			// We do not need the info button on a File page, unless it's the embedding mode
 			// we are already at the destination of the button
