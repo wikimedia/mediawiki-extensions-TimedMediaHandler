@@ -39,7 +39,7 @@ class TranscodableChecker {
 		if ( $title->getNamespace() !== NS_FILE ) {
 			return false;
 		}
-		$file = $this->repoGroup->findFile( $title );
+		$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true ] );
 		return $this->isTranscodableFile( $file );
 	}
 

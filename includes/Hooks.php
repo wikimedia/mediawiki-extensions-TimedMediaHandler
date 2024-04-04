@@ -247,7 +247,7 @@ class Hooks implements
 			$tab = $sktemplate->tabAction( $ttTitle, 'timedtext', false, '', false );
 
 			// Lookup if we have any corresponding timed text available already
-			$file = $this->repoGroup->findFile( $sktemplate->getTitle(), [ 'ignore_redirect' => true ] );
+			$file = $this->repoGroup->findFile( $sktemplate->getTitle(), [ 'ignoreRedirect' => true ] );
 			$textHandler = new TextHandler( $file, [ TimedTextPage::VTT_SUBTITLE_FORMAT ] );
 			$ttExists = count( $textHandler->getTracks() ) > 0;
 			$tab[ 'exists' ] = $ttExists;
@@ -271,7 +271,7 @@ class Hooks implements
 		if ( !$title->inNamespace( NS_FILE ) ) {
 			return false;
 		}
-		$file = $this->repoGroup->findFile( $title );
+		$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true ] );
 		// Can't find file
 		if ( !$file ) {
 			return false;
@@ -290,7 +290,7 @@ class Hooks implements
 	 */
 	public function onImagePageAfterImageLinks( $imagePage, &$html ) {
 		// load the file:
-		$file = $this->repoGroup->findFile( $imagePage->getTitle() );
+		$file = $this->repoGroup->findFile( $imagePage->getTitle(), [ 'ignoreRedirect' => true ] );
 		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			$transcodeStatusTable = new TranscodeStatusTable(
 				$imagePage->getContext(),
@@ -334,7 +334,7 @@ class Hooks implements
 		if ( $this->transcodableChecker->isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
 			// Will be re-added after the file has moved
-			$file = $this->repoGroup->findFile( $title );
+			$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true ] );
 			WebVideoTranscode::removeTranscodes( $file );
 		}
 		return true;
@@ -354,7 +354,7 @@ class Hooks implements
 	 */
 	public function onPageMoveComplete( $old, $new, $user, $pageid, $redirid, $reason, $revision ) {
 		if ( $this->transcodableChecker->isTranscodableTitle( $new ) ) {
-			$newFile = $this->repoGroup->findFile( $new );
+			$newFile = $this->repoGroup->findFile( $new, [ 'ignoreRedirect' => true, 'latest' => true ] );
 			WebVideoTranscode::startJobQueue( $newFile );
 		}
 	}
@@ -379,7 +379,7 @@ class Hooks implements
 	 * @inheritDoc
 	 */
 	public function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
-		$file = $this->repoGroup->findFile( $title );
+		$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true, 'latest' => true ] );
 		if ( $file && $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			WebVideoTranscode::removeTranscodes( $file );
 			WebVideoTranscode::startJobQueue( $file );
@@ -422,7 +422,7 @@ class Hooks implements
 	 */
 	public function onArticlePurge( $wikiPage ) {
 		if ( $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
-			$file = $this->repoGroup->findFile( $wikiPage->getTitle() );
+			$file = $this->repoGroup->findFile( $wikiPage->getTitle(), [ 'ignoreRedirect' => true ] );
 			if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}

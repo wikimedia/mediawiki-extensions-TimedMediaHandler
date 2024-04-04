@@ -388,7 +388,7 @@ class TimedTextPage extends Article {
 		if ( !$fileTitle ) {
 			return null;
 		}
-		$file = $repoGroup->findFile( $fileTitle, [ 'ignoreRedirects' => true ] );
+		$file = $repoGroup->findFile( $fileTitle, [ 'ignoreRedirect' => true ] );
 
 		if ( $file && $file->exists() && $file->getHandler() instanceof TimedMediaHandler ) {
 			$this->correspondingFile = $file;
