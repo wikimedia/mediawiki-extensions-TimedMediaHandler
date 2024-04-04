@@ -140,12 +140,10 @@ class TimedTextPage extends Article {
 
 		// Check for the new/edit page title format
 		// i.e TimedText:myfile.ogg
-		$file = $this->getCorrespondingFile();
-		if ( $file && !$this->isActualTimedTextTitle() ) {
+		if ( !$this->isActualTimedTextTitle() ) {
 			$this->doRedirectToPageForm( $out );
 			return;
 		}
-
 		// We want to render the contents of the page
 
 		// Look up the language name for the language that these subtitles use:
@@ -220,6 +218,10 @@ class TimedTextPage extends Article {
 			return;
 		}
 
+		if ( !$file ) {
+			$this->renderStatus->warning( 'timedmedia-subtitle-no-video' );
+		}
+
 		$languages = $this->languageNameUtils->getLanguageNames(
 			LanguageNameUtils::AUTONYMS,
 			LanguageNameUtils::SUPPORTED
@@ -231,6 +233,11 @@ class TimedTextPage extends Article {
 		}
 
 		$formDescriptor = [
+			'errorsandwarnings' => [
+				'type' => 'info',
+				'raw' => true,
+				'default' => $this->getErrorsAndWarnings( $this->renderStatus )
+			],
 			'lang' => [
 				'label-message' => 'timedmedia-subtitle-new-desc',
 				'required' => true,
