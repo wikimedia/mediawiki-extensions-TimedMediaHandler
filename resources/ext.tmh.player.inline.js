@@ -188,6 +188,13 @@ class InlinePlayer {
 			this.videoplayer.style.removeProperty( 'height' );
 		}
 
+		const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file;
+		const resource = this.videoplayer.getAttribute( 'resource' );
+		const resourceTitle = resource ? resource.slice( resource.lastIndexOf( '/' ) + 1 ) : this.$videoplayer.data( 'mwtitle' );
+		this.playerConfig.mwTitle = mw.Title.newFromText(
+			resourceTitle, NS_FILE
+		);
+
 		// Launch the player
 		return OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
 			.then( () => {
