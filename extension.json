@@ -133,14 +133,13 @@
 		"LoadExtensionSchemaUpdates": "installer",
 		"MediaWikiPerformAction": "iframe",
 		"RevisionFromEditComplete": "main",
-		"PageMoveComplete": "main",
+		"PageMoveComplete": [ "main", "timedtext" ],
 		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "main",
 		"TitleMove": "main",
 		"wgQueryPages": "main",
-		"PageSaveCompleted": "timedtext",
-		"PageMoveCompleted": "timedtext",
-		"PageDeletedCompleted": "timedtext"
+		"PageSaveComplete": "timedtext",
+		"PageDeletedComplete": "timedtext"
 	},
 	"HookHandlers": {
 		"main": {
