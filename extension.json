@@ -139,7 +139,7 @@
 		"TitleMove": "main",
 		"wgQueryPages": "main",
 		"PageSaveComplete": "timedtext",
-		"PageDeletedComplete": "timedtext"
+		"PageDeleteComplete": "timedtext"
 	},
 	"HookHandlers": {
 		"main": {
