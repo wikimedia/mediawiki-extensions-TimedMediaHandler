@@ -60,6 +60,9 @@
 	"timedmedia-resolution-2160": "يوايڇڊي 2160p",
 	"timedmedia-subtitle-new-go": "هلو",
 	"timedmedia-file": "فائيل",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 منٽ}} ۽ {{PLURAL:$2|$2 سيڪنڊ}}",
+	"right-transcode-reset": "ريسيٽ ناڪام ٿيو يا وڊيوس کي ٽرانسڪوڊ سيٽ ڪيو ويو تہ جيئن اهي ٻيھر نوڪري جي قطار ۾ داخل ڪيا وڃن",
+	"right-transcode-status": "[[Special:TimedMediaHandler|موجوده ٽرانسڪوڊ سرگرمي بابت معلومات]] ڏسو",
 	"videojs-more-information": "وڌيڪ معلومات",
 	"videojs-quality": "وڊيو معيار"
 }
