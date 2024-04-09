@@ -1043,6 +1043,7 @@ class WebVideoTranscode {
 		// Remove files by key:
 		$urlsToPurge = [];
 		$filesToPurge = [];
+		$hasHLS = false;
 		foreach ( $removeKeys as $tKey ) {
 			$urlPath = static::getTranscodedUrlForFile( $file, $tKey );
 			$filePath = static::getDerivativeFilePath( $file, $tKey );
@@ -1054,7 +1055,13 @@ class WebVideoTranscode {
 			if ( $streaming === 'hls' ) {
 				$urlsToPurge[] = $urlPath . '.m3u8';
 				$filesToPurge[] = $filePath . '.m3u8';
+				$hasHLS = true;
 			}
+		}
+		if ( $hasHLS && $transcodeKey === false ) {
+			// Delete all derivatives including the main hls manifest
+			$urlsToPurge[] = static::getTranscodedUrlForFile( $file, 'm3u8' );
+			$filesToPurge[] = static::getDerivativeFilePath( $file, 'm3u8' );
 		}
 		foreach ( $filesToPurge as $filePath ) {
 			if ( $file->repo->fileExists( $filePath ) ) {
@@ -1085,7 +1092,10 @@ class WebVideoTranscode {
 
 		// Remove from local WebVideoTranscode cache:
 		static::clearTranscodeCache( $titleObj->getDBkey() );
-		static::updateStreamingManifests( $file );
+		if ( $transcodeKey !== false ) {
+			// We only removed a single transcode, so we need to update the manifests
+			static::updateStreamingManifests( $file );
+		}
 	}
 
 	/**
