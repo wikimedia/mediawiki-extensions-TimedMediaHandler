@@ -1424,18 +1424,18 @@ class WebVideoTranscode {
 				static::clearTranscodeCache( $fileName );
 			} catch ( Exception $ex ) {
 				// Adding job failed, update transcode row
-				$dbw->update(
-					'transcode',
-					[
+				$dbw->newUpdateQueryBuilder()
+					->update( 'transcode' )
+					->set( [
 						'transcode_time_error' => $dbw->timestamp(),
 						'transcode_error' => "Failed to insert Job."
-					],
-					[
+					] )
+					->where( [
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
-					],
-					__METHOD__
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 			}
 		}
 	}
