@@ -24,7 +24,7 @@
 	"timedmedia-ogg-long-video": "Ogg $1 -videotiedosto, $2, $4×$5, $3",
 	"timedmedia-ogg-long-multiplexed": "Ogg-tiedosto limitetty kuva ja ääni, $1, $2, $4×$5, $3",
 	"timedmedia-ogg-long-general": "Ogg-tiedosto, $2, $3",
-	"timedmedia-ogg-long-error": "Kelvoton Ogg-tiedosto: $1",
+	"timedmedia-ogg-long-error": "Kelvoton Ogg-tiedosto: $1, tiedostokoko: $2",
 	"timedmedia-webm-short-video": "WebM $1 -videotiedosto, $2",
 	"timedmedia-webm-long-video": "WebM-ääni-/videotiedosto, $1, pituus $2, $4×$5 pikseliä, yhteensä $3",
 	"timedmedia-mp3-short-audio": "MP3-äänitiedosto, $1",
