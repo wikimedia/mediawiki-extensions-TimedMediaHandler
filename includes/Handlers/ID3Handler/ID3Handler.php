@@ -5,7 +5,6 @@ namespace MediaWiki\TimedMediaHandler\Handlers\ID3Handler;
 use File;
 use getID3;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
-use Wikimedia\AtEase\AtEase;
 
 /**
  * getID3 Metadata handler
@@ -66,9 +65,8 @@ class ID3Handler extends TimedMediaHandler {
 	 * @deprecated 1.41 use File::getMetadataArray
 	 */
 	public function unpackMetadata( $metadata ) {
-		AtEase::suppressWarnings();
-		$unser = unserialize( $metadata );
-		AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$unser = @unserialize( $metadata );
 		if ( isset( $unser['version'] ) && $unser['version'] === self::METADATA_VERSION ) {
 			return $unser;
 		}
