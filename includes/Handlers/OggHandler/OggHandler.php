@@ -7,7 +7,6 @@ use File_Ogg;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
-use Wikimedia\AtEase\AtEase;
 
 /**
  * ogg handler
@@ -198,7 +197,8 @@ class OggHandler extends TimedMediaHandler {
 	 */
 	public function unpackMetadata( $metadata, $unserialize = true ) {
 		if ( $unserialize ) {
-			$metadata = AtEase::quietCall( 'unserialize', $metadata );
+			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$metadata = @unserialize( $metadata );
 		}
 
 		if ( isset( $metadata['version'] ) && $metadata['version'] === self::METADATA_VERSION ) {

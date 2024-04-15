@@ -8,7 +8,6 @@ use MediaTransformError;
 use MediaTransformOutput;
 use Parser;
 use TransformParameterError;
-use Wikimedia\AtEase\AtEase;
 
 class TimedMediaHandler extends MediaHandler {
 
@@ -283,9 +282,8 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return false|mixed
 	 */
 	public function unpackMetadata( $metadata ) {
-		AtEase::suppressWarnings();
-		$unser = unserialize( $metadata );
-		AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$unser = @unserialize( $metadata );
 		if ( isset( $unser['version'] ) ) {
 			return $unser;
 		}
