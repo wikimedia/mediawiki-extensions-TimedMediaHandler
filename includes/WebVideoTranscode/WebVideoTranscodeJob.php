@@ -1124,22 +1124,4 @@ class WebVideoTranscodeJob extends Job {
 		}
 		return true;
 	}
-
-	/**
-	 * Given all options are provided by our code, just ensure every option is shell safe
-	 * with the strictest checks possible - basically we allow only [a-zA-Z] and "_-" in variables,
-	 * else we pass then through Shell::escape. The reason why we're not using shell::escape directly
-	 * is we're passing these values to a shell script where they'll be expanded unquoted from environment
-	 * variables.
-	 *
-	 * @param string $value
-	 * @return string
-	 */
-	private function ensureShellSafe( $value ) {
-		if ( preg_match( '/^[a-zA-z\-_]+$/', $value ) === 1 ) {
-			return $value;
-		} else {
-			return Shell::escape( $value );
-		}
-	}
 }
