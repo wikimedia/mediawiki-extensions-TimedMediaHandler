@@ -33,8 +33,11 @@ function initMediaPlayerDialog( element ) {
 
 		$( document.body ).append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
-		if ( $video.data( 'mwtitle' ) ) {
-			title = mw.Title.newFromText( $video.data( 'mwtitle' ), NS_FILE ).getMainText();
+
+		const resource = element.getAttribute( 'resource' );
+		const resourceTitle = resource ? resource.slice( resource.lastIndexOf( '/' ) + 1 ) : $video.data( 'mwtitle' );
+		if ( resourceTitle ) {
+			title = mw.Title.newFromText( resourceTitle, NS_FILE ).getMainText();
 		}
 		const win = windowManager.openWindow( dialog, {
 			title: title

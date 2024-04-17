@@ -178,7 +178,8 @@ class MediaElement {
 	 */
 	getUrl() {
 		// Construct a file target link for middle-click / ctrl-click / right-click
-		return ( mw.Title.makeTitle(
+		const parsoidLink = this.element.getAttribute( 'resource' );
+		return parsoidLink || ( mw.Title.makeTitle(
 			mw.config.get( 'wgNamespaceIds' ).file,
 			this.$element.data( 'mwtitle' )
 		) ).getUrl();
