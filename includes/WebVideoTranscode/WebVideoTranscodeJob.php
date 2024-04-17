@@ -755,8 +755,11 @@ class WebVideoTranscodeJob extends Job {
 
 		// and pass it to this->output()
 		if ( $result->getExitCode() != 0 ) {
+			$host = wfHostname();
 			return 'ffmpeg-encode.sh' .
-				"\n\nExitcode: " . $result->getExitCode() . "\nMemory: $backgroundMemoryLimit\n\n"
+				"\n\nExitcode: " . $result->getExitCode() .
+				"\nMemory: $backgroundMemoryLimit" .
+				"\nHost: $host\n\n"
 				. $result->getStdout();
 		}
 
