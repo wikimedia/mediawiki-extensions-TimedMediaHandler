@@ -3,7 +3,7 @@
 		"authors": [
 			"Brad Jorsch",
 			"TheDJ",
-			"Brion Vibber"
+			"Brooke Vibber"
 		]
 	},
 	"apihelp-query+transcodestatus-summary": "Get transcode status for a given file page.",

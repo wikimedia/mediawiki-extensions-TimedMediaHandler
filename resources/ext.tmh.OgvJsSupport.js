@@ -127,7 +127,7 @@ class OgvJsSupport {
 	 * @return {string}
 	 */
 	static basePath() {
-		return OgvJsSupport.resourcePath( 'ogv.js' );
+		return OgvJsSupport.resourcePath( 'lib/ogv.js' );
 	}
 
 	/**

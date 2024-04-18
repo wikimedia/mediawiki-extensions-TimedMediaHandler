@@ -96,14 +96,14 @@ Video.js code is released under the Apache 2.0 License:
 http://www.apache.org/licenses/LICENSE-2.0
 
 ### Ogv.js decoder
-Brion Vibber, a Wikimedia developer, created the JavaScript
+Brooke Vibber, a Wikimedia developer, created the JavaScript
 compatibility shim Ogv.js. It is a software decoding
 library for the file formats Ogg and WebM and the Vorbis,
 Theora, VP8 and VP9 codecs. It allows web browser without native
 HTML5 video support like iOS to support these formats.
 
 For more information about ogv.js visit:
-https://github.com/brion/ogv.js/
+https://github.com/bvibber/ogv.js/
 
 Ogv.js code is released under the MIT license:
 https://opensource.org/licenses/MIT

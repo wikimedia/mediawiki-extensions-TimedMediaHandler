@@ -33,6 +33,14 @@
 			"rules": {
 				"security/detect-bidi-characters": "off"
 			}
+		},
+		{
+			"files": [
+				"resources/lib/foreign-resources.yaml"
+			],
+			"rules": {
+				"yml/no-empty-mapping-value": "off"
+			}
 		}
 	]
 }
