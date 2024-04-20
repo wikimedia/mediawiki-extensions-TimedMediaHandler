@@ -3,6 +3,7 @@
  * it is likely to be an iPhone. In that case use a fullscreen sized dialog.
  *
  * @return {boolean}
+ * @private
  */
 function useFillscreen() {
 	// eslint-disable-next-line compat/compat

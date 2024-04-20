@@ -1,4 +1,7 @@
-/** @type {videojs.Plugin} */
+/**
+ * @type {videojs.Plugin}
+ * @private
+ */
 const Plugin = videojs.getPlugin( 'plugin' );
 /** Ensure the button is registered and loaded */
 require( './mw-info-button.js' );

@@ -8,6 +8,7 @@
  *
  * @param {HTMLMediaElement} element
  * @return {JQueryPromise<void>} promise which resolves after the dialog closes
+ * @private
  */
 function initMediaPlayerDialog( element ) {
 	const MediaDialog = require( './ext.tmh.player.dialog.js' ),

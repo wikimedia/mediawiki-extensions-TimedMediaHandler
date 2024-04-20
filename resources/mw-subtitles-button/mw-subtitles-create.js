@@ -1,5 +1,6 @@
 /**
  * @type {videojs.TextTrackMenuItem}
+ * @private
  */
 const TextTrackMenuItem = videojs.getComponent( 'TextTrackMenuItem' );
 
