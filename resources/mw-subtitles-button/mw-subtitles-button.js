@@ -1,5 +1,6 @@
 /**
  * @type {videojs.SubsCapsButton}
+ * @private
  */
 const SubsCapsButton = videojs.getComponent( 'SubsCapsButton' );
 const MwCreateSubtitlesMenuItem = require( './mw-subtitles-create.js' );

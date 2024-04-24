@@ -5,6 +5,7 @@
  *
  * @return {JQuery} The media element classes
  * for each of the html elements in the collection
+ * @private
  */
 function loadVideoPlayer() {
 	const MediaElement = require( './ext.tmh.player.element.js' );
@@ -22,6 +23,7 @@ $.fn.loadVideoPlayer = loadVideoPlayer;
  * Main loader for content
  *
  * @param {JQuery} $content areas to which to apply the hook loaders
+ * @private
  */
 function loadVideoPlayers( $content ) {
 	$content.find( 'video, audio' ).loadVideoPlayer();
