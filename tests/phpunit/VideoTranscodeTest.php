@@ -71,7 +71,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		$this->assertTrue( $hasOgg && $hasWebM );
 
 		// Now run the transcode job queue
-		$this->runTranscodeJobs();
+		$this->runJobs( [], [ 'type' => 'webVideoTranscode' ] );
 
 		$db->select( 'transcode', '*', [
 			'transcode_image_name' => ucfirst( $fileName )
@@ -92,27 +92,6 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			}
 			// Test that target encode was found:
 			$this->assertTrue( $targetEncodeFound );
-		}
-	}
-
-	public function runTranscodeJobs() {
-		$lbFactory = $this->getServiceContainer()->getDBLoadBalancerFactory();
-		$dbw = $lbFactory->getPrimaryDatabase();
-		$type = 'webVideoTranscode';
-		// Set the condition to only run the webVideoTranscode
-		$conds = [ "job_cmd" => $type ];
-
-		while ( $dbw->selectField( 'job', 'job_id', $conds, 'runJobs.php' ) ) {
-			for ( ; ; ) {
-				$job = Job::pop_type( $type );
-				if ( !$job ) {
-					break;
-				}
-
-				$lbFactory->waitForReplication( [ 'ifWritesSince' => 5 ] );
-				$offset = $job->id;
-				$status = $job->run();
-			}
 		}
 	}
 
