@@ -190,7 +190,9 @@ class InlinePlayer {
 
 		const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file;
 		const resource = this.videoplayer.getAttribute( 'resource' );
-		const resourceTitle = resource ? resource.slice( resource.lastIndexOf( '/' ) + 1 ) : this.$videoplayer.data( 'mwtitle' );
+		const resourceTitle = resource ?
+			decodeURIComponent( resource.slice( resource.lastIndexOf( '/' ) + 1 ) ) :
+			this.$videoplayer.data( 'mwtitle' );
 		this.playerConfig.mwTitle = mw.Title.newFromText(
 			resourceTitle, NS_FILE
 		);
