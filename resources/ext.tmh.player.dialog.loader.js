@@ -35,7 +35,9 @@ function initMediaPlayerDialog( element ) {
 		windowManager.addWindows( [ dialog ] );
 
 		const resource = element.getAttribute( 'resource' );
-		const resourceTitle = resource ? resource.slice( resource.lastIndexOf( '/' ) + 1 ) : $video.data( 'mwtitle' );
+		const resourceTitle = resource ?
+			decodeURIComponent( resource.slice( resource.lastIndexOf( '/' ) + 1 ) ) :
+			$video.data( 'mwtitle' );
 		if ( resourceTitle ) {
 			title = mw.Title.newFromText( resourceTitle, NS_FILE ).getMainText();
 		}
