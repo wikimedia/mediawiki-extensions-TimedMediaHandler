@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright © 2015 Derk-Jan Hartman "hartman.wiki@gmail.com"
- * Updated 2017-2019 Brion Vibber <bvibber@wikimedia.org>
+ * Updated 2017-2019 Brooke Vibber <bvibber@wikimedia.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

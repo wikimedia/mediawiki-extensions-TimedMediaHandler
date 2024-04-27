@@ -1,6 +1,6 @@
 docs
 jsdoc-plugins/*
-resources/videojs/*
+resources/lib/video.js/*
 resources/videojs-ogvjs/*
-resources/ogv.js/
+resources/lib/ogv.js/
 vendor/
