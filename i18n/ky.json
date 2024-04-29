@@ -14,5 +14,6 @@
 	"timedmedia-reset-button-dismiss": "Баш тартуу",
 	"timedmedia-source-file": "$1 булагы",
 	"timedmedia-source-audio-file-desc": "Түп нуска $1 файл ($2)",
-	"timedmedia-file": "Файл"
+	"timedmedia-file": "Файл",
+	"videojs-more-information": "Толук маалымат"
 }
