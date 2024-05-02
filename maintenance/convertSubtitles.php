@@ -12,6 +12,8 @@ use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\TimedText;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
 use MediaWiki\Title\Title;
+use Wikimedia\Rdbms\IExpression;
+use Wikimedia\Rdbms\LikeValue;
 
 class ConvertSubtitles extends Maintenance {
 
@@ -36,16 +38,19 @@ class ConvertSubtitles extends Maintenance {
 		if ( $this->hasOption( 'file' ) ) {
 			$file = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
 			if ( $file ) {
-				$where[] = 'page_title ' . $dbr->buildLike( $file->getDbKey() . '.', $dbr->anyString() );
+				$where[] = $dbr->expr( 'page_title', IExpression::LIKE,
+					new LikeValue( $file->getDbKey() . '.', $dbr->anyString() ) );
 			} else {
 				$this->fatalError( "Invalid file title\n" );
 			}
 		}
-		$result = $dbr->select( 'page',
-			[ 'page_namespace', 'page_title' ],
-			$where,
-			__METHOD__,
-			[ 'ORDER BY' => 'page_namespace,page_title' ] );
+		$result = $dbr->newSelectQueryBuilder()
+			->select( [ 'page_namespace', 'page_title' ] )
+			->from( 'page' )
+			->where( $where )
+			->orderBy( [ 'page_namespace', 'page_title' ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		foreach ( $result as $row ) {
 			$data = $this->processWork( [
 				'page_namespace' => $row->page_namespace,

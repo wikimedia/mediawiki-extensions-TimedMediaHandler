@@ -1469,10 +1469,10 @@ class WebVideoTranscode {
 		return $db->newSelectQueryBuilder()
 			->from( 'transcode' )
 			->where( [
-				'transcode_time_addjob IS NOT NULL',
-				'transcode_time_startwork IS NULL',
-				'transcode_time_success IS NULL',
-				'transcode_time_error IS NULL',
+				$db->expr( 'transcode_time_addjob', '!=', null ),
+				'transcode_time_startwork' => null,
+				'transcode_time_success' => null,
+				'transcode_time_error' => null,
 			] )
 			->caller( __METHOD__ )
 			->fetchRowCount();

@@ -205,7 +205,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 					$cond = [ 'transcode_key' => $allTranscodes ];
 					$cond[] = $condition;
 					$res = $dbr->newSelectQueryBuilder()
-						->select( [ 'COUNT(*) as count', 'transcode_key' ] )
+						->select( [ 'count' => 'COUNT(*)', 'transcode_key' ] )
 						->from( 'transcode' )
 						->where( $cond )
 						->groupBy( 'transcode_key' )
@@ -218,7 +218,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 					}
 				}
 				$res = $dbr->newSelectQueryBuilder()
-					->select( [ 'COUNT(*) as count', 'transcode_key' ] )
+					->select( [ 'count' => 'COUNT(*)', 'transcode_key' ] )
 					->from( 'transcode' )
 					->where( [ 'transcode_key' => $allTranscodes ] )
 					->groupBy( 'transcode_key' )

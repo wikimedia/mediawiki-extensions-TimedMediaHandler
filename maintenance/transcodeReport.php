@@ -90,9 +90,13 @@ class TranscodeReport extends Maintenance {
 			// Default to all if none specified
 			$types = [ 'AUDIO', 'VIDEO' ];
 		}
-		$where = [ 'img_media_type' => $types ];
-		$opts = [ 'ORDER BY' => 'img_media_type,img_name' ];
-		$res = $dbr->select( 'image', [ 'img_name' ], $where, __METHOD__, $opts );
+		$res = $dbr->newSelectQueryBuilder()
+			->select( 'img_name' )
+			->from( 'image' )
+			->where( [ 'img_media_type' => $types ] )
+			->orderBy( [ 'img_media_type', 'img_name' ] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		$localRepo = $this->getServiceContainer()->getRepoGroup()->getLocalRepo();
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );

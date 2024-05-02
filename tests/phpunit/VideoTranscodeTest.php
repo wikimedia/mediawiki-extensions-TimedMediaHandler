@@ -48,9 +48,14 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		// Check if the transcode jobs were added:
 		// get results: query jobs table
 		$db = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
-		$res = $db->select( 'transcode', '*', [
-			'transcode_image_name' => ucfirst( $fileName )
-		] );
+		$res = $db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'transcode' )
+			->where( [
+				'transcode_image_name' => ucfirst( $fileName )
+			] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 		// Make sure we target at least one ogg and one webm:
 		$hasOgg = $hasWebM = false;
 		$targetEncodes = [];
@@ -73,9 +78,14 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		// Now run the transcode job queue
 		$this->runJobs( [], [ 'type' => 'webVideoTranscode' ] );
 
-		$db->select( 'transcode', '*', [
-			'transcode_image_name' => ucfirst( $fileName )
-		] );
+		$db->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'transcode' )
+			->where( [
+				'transcode_image_name' => ucfirst( $fileName )
+			] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		// Now check if the derivatives were created:
 		[ $result, , ] = $this->doApiRequest( $params );

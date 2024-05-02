@@ -24,7 +24,9 @@ use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
 use MediaWiki\Title\Title;
 use RuntimeException;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IResultWrapper;
+use Wikimedia\Rdbms\LikeValue;
 
 class TextHandler {
 	/** @var int|null lazy init remote Namespace number */
@@ -145,7 +147,7 @@ class TextHandler {
 				->from( 'page' )
 				->where( [
 					'page_namespace' => $ns,
-					'page_title ' . $dbr->buildLike( $prefix, $dbr->anyString() )
+					$dbr->expr( 'page_title', IExpression::LIKE, new LikeValue( $prefix, $dbr->anyString() ) ),
 				] )
 				->limit( 300 )
 				->orderBy( 'page_title' )
