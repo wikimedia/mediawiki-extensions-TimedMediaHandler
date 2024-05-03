@@ -205,7 +205,9 @@ class WebVideoTranscodeJob extends Job {
 				'transcode_error' => $error
 			] )
 			->where( [
-					'transcode_image_name' => $this->getFile()->getName(),
+					// (T362830) Fall-back if there's no file, rather than create a PHP error
+					'transcode_image_name' => $this->getFile()->getName() ??
+						"<no file yet>: {$this->title->getPrefixedText()}",
 					'transcode_key' => $transcodeKey
 			] )
 			->caller( __METHOD__ )
