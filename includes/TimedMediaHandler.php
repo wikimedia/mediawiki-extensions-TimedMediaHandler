@@ -6,6 +6,7 @@ use File;
 use MediaHandler;
 use MediaTransformError;
 use MediaTransformOutput;
+use MediaWiki\Context\RequestContext;
 use Parser;
 use TransformParameterError;
 
@@ -464,14 +465,19 @@ class TimedMediaHandler extends MediaHandler {
 	 * @return string
 	 */
 	public function getDimensionsString( $file ) {
-		global $wgLang;
-
 		if ( $file->getWidth() ) {
-			return wfMessage( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ) )
-				->numParams( $file->getWidth(), $file->getHeight() )->text();
+			return wfMessage(
+				'video-dims'
+				)->timeperiodParams(
+					$this->getLength( $file )
+				)->numParams(
+					$file->getWidth(),
+					$file->getHeight()
+				)->text();
 		}
 
-		return $wgLang->formatTimePeriod( $this->getLength( $file ) );
+		$lang = RequestContext::getMain()->getLanguage();
+		return $lang->formatTimePeriod( $this->getLength( $file ) );
 	}
 
 	/**

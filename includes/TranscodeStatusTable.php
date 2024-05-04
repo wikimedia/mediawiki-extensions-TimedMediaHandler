@@ -244,11 +244,16 @@ class TranscodeStatusTable {
 			if ( is_file( $filePath ) ) {
 				$targetSize = WebVideoTranscode::getProjectedFileSize( $file, $state['key'] );
 				if ( $targetSize === false ) {
-					$doneMsg = wfMessage( 'timedmedia-unknown-target-size',
-						$wgLang->formatSize( filesize( $filePath ) ) )->escaped();
+					$doneMsg = wfMessage(
+						'timedmedia-unknown-target-size'
+						)->sizeParams(
+							filesize( $filePath )
+						)->escaped();
 				} else {
-					$doneMsg = wfMessage('timedmedia-percent-done',
-						round( filesize( $filePath ) / $targetSize, 2 ) )->escaped();
+					$doneMsg = wfMessage(
+						'timedmedia-percent-done',
+						round( filesize( $filePath ) / $targetSize, 2 )
+						)->escaped();
 				}
 			}	*/
 			// Predicting percent done is not working well right now ( disabled for now )

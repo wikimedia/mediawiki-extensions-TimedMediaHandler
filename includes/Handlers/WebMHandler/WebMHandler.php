@@ -160,14 +160,16 @@ class WebMHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getShortDesc( $file ) {
-		global $wgLang;
-
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-		return wfMessage( 'timedmedia-webm-short-video', implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
+		return wfMessage(
+			'timedmedia-webm-short-video',
+			implode( '/', $streamTypes )
+			)->timeperiodParams(
+				$this->getLength( $file )
+			)->text();
 	}
 
 	/**

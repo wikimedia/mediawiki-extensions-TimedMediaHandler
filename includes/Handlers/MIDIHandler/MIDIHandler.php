@@ -63,15 +63,16 @@ class MIDIHandler extends ID3Handler {
 	 * @return string
 	 */
 	public function getShortDesc( $file ) {
-		global $wgLang;
-
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
 
-		return wfMessage( 'timedmedia-midi-short-audio',
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
+		return wfMessage(
+			'timedmedia-midi-short-audio'
+			)->timeperiodParams(
+				$this->getLength( $file )
+			)->text();
 	}
 
 	/**
