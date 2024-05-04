@@ -4,7 +4,7 @@
  * Used to replace audio and video elements in page with our
  * click to controls for the video.js player
  *
- * @module ext-tmh-player
+ * @module ext.tmh.player
  * @example require( 'ext.tmh.player' )
  */
 
@@ -14,7 +14,7 @@
  * Used to convert an audio or video element into a video.js player.
  * This module does all the setup for our player
  *
- * @module ext-tmh-player-inline
+ * @module ext.tmh-player.inline
  * @example require( 'ext.tmh.player.inline' )
  */
 
@@ -24,7 +24,7 @@
  * Presents an OO.ui.Dialog on top of the page and
  * wraps the ext.tmh.player.inline player
  *
- * @module ext-tmh-player-dialog
+ * @module ext.tmh-player.dialog
  * @example require( 'ext.tmh.player.dialog' )
  */
 
@@ -33,6 +33,6 @@
  *
  * Utility functions to determine if OGV.js will be required for playback
  *
- * @module ext-tmh-OgvJsSupport
+ * @module ext.tmh.OgvJsSupport
  * @example require( 'ext.tmh.player.dialog' )
  */

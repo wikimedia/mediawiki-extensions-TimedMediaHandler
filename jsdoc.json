@@ -9,7 +9,9 @@
 	},
 	"plugins": [
 		"plugins/markdown",
-		"jsdoc-plugins/summarize"
+		"node_modules/jsdoc-wmf-theme/plugins/summarize",
+		"node_modules/jsdoc-wmf-theme/plugins/allow-dots-in-modules",
+		"node_modules/jsdoc-wmf-theme/plugins/betterlinks"
 	],
 	"source": {
 		"include": [
