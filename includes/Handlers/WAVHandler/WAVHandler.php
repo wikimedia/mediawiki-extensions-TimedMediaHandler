@@ -50,11 +50,7 @@ class WAVHandler extends ID3Handler {
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-
-		if ( !$metadata || isset( $metadata['error'] ) ) {
-			return false;
-		}
+		$metadata = $file->getMetadataArray();
 
 		$audioFormat = $metadata[ 'audio' ][ 'dataformat' ] ?? false;
 		if ( $audioFormat === 'wav' ) {

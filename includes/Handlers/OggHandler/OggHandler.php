@@ -15,11 +15,9 @@ class OggHandler extends TimedMediaHandler {
 	private const METADATA_VERSION = 2;
 
 	/**
-	 * @param File $image
-	 * @param string $path
-	 * @return string
+	 * @inheritDoc
 	 */
-	public function getMetadata( $image, $path ) {
+	public function getSizeAndMetadata( $state, $path ) {
 		$metadata = [ 'version' => self::METADATA_VERSION ];
 
 		try {
@@ -52,7 +50,35 @@ class OggHandler extends TimedMediaHandler {
 				'code' => $e->getCode()
 			];
 		}
-		return serialize( $metadata );
+
+		[ $pictureWidth, $pictureHeight ] = $this->getSizeFromMetadata( $metadata );
+
+		return [
+			'width' => (int)$pictureWidth,
+			'height' => (int)$pictureHeight,
+			'metadata' => $metadata
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isFileMetadataValid( $image ) {
+		$metadata = $image->getMetadataArray();
+
+		if ( !$metadata || isset( $metadata['error'] ) ) {
+			wfDebug( __METHOD__ . " invalid Ogg metadata" );
+			return self::METADATA_BAD;
+		}
+
+		if ( !isset( $metadata['version'] )
+			|| $metadata['version'] !== self::METADATA_VERSION
+		) {
+			wfDebug( __METHOD__ . " old but compatible Ogg metadata" );
+			return self::METADATA_COMPATIBLE;
+		}
+
+		return self::METADATA_GOOD;
 	}
 
 	/**
@@ -82,7 +108,7 @@ class OggHandler extends TimedMediaHandler {
 	 */
 	public function getCommonMetaArray( File $file ) {
 		$metadata = $file->getMetadataArray();
-		if ( !$metadata || isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
+		if ( !isset( $metadata['streams'] ) ) {
 			return [];
 		}
 
@@ -150,62 +176,32 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	/**
-	 * Get the "media size"
+	 * Get the "media size" from the metadata array
 	 *
-	 * @param File $file
-	 * @param string $path
-	 * @param false|string|array $metadata
+	 * @param array $metadata
 	 * @return array|false
 	 */
-	public function getImageSize( $file, $path, $metadata = false ) {
-		// Just return the size of the first video stream
-		if ( $metadata === false ) {
-			$metadata = $file->getMetadata();
-		}
-
-		if ( is_string( $metadata ) ) {
-			$metadata = $this->unpackMetadata( $metadata );
-		}
-
-		if ( isset( $metadata['error'] ) || !isset( $metadata['streams'] ) ) {
-			return false;
-		}
+	protected function getSizeFromMetadata( $metadata ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
-		foreach ( $metadata['streams'] as $stream ) {
-			if ( in_array( $stream['type'], $mediaVideoTypes, true ) ) {
-				$pictureWidth = $stream['header']['PICW'];
-				$parNumerator = $stream['header']['PARN'];
-				$parDenominator = $stream['header']['PARD'];
-				if ( $parNumerator && $parDenominator ) {
-					// Compensate for non-square pixel aspect ratios
-					$pictureWidth = $pictureWidth * $parNumerator / $parDenominator;
+		if ( isset( $metadata['streams'] ) ) {
+			foreach ( $metadata['streams'] as $stream ) {
+				if ( in_array( $stream['type'], $mediaVideoTypes, true ) ) {
+					$pictureWidth = $stream['header']['PICW'];
+					$parNumerator = $stream['header']['PARN'];
+					$parDenominator = $stream['header']['PARD'];
+					if ( $parNumerator && $parDenominator ) {
+						// Compensate for non-square pixel aspect ratios
+						$pictureWidth = $pictureWidth * $parNumerator / $parDenominator;
+					}
+					return [
+						(int)$pictureWidth,
+						(int)$stream['header']['PICH']
+					];
 				}
-				return [
-					(int)$pictureWidth,
-					(int)$stream['header']['PICH']
-				];
 			}
 		}
 		return [ false, false ];
-	}
-
-	/**
-	 * @param string|array $metadata
-	 * @param bool $unserialize
-	 * @return false|mixed
-	 */
-	public function unpackMetadata( $metadata, $unserialize = true ) {
-		if ( $unserialize ) {
-			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-			$metadata = @unserialize( $metadata );
-		}
-
-		if ( isset( $metadata['version'] ) && $metadata['version'] === self::METADATA_VERSION ) {
-			return $metadata;
-		}
-
-		return false;
 	}
 
 	/**
@@ -379,10 +375,10 @@ class OggHandler extends TimedMediaHandler {
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
-			$unpacked = $this->unpackMetadata( $file->getMetadata() );
-			if ( isset( $unpacked['error']['message'] ) ) {
+			$metadata = $file->getMetadataArray();
+			if ( isset( $metadata['error']['message'] ) ) {
 				return wfMessage( 'timedmedia-ogg-long-error' )
-					->params( $unpacked['error']['message'] )
+					->params( $metadata['error']['message'] )
 					->sizeParams( $file->getSize() )
 					->escaped();
 			}
@@ -404,21 +400,9 @@ class OggHandler extends TimedMediaHandler {
 		} else {
 			$msg = 'timedmedia-ogg-long-general';
 		}
-		$size = 0;
-		$unpacked = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$unpacked || isset( $unpacked['error'] ) ) {
-			$length = 0;
-		} else {
-			$length = $this->getLength( $file );
-			foreach ( $unpacked['streams'] as $stream ) {
-				if ( isset( $stream['size'] ) ) {
-					$size += $stream['size'];
-				}
-			}
-		}
 		return wfMessage( $msg )
 			->params( implode( '/', $streamTypes ) )
-			->timeperiodParams( $length )
+			->timeperiodParams( $this->getLength( $file ) )
 			->bitrateParams( $this->getBitRate( $file ) )
 			->numParams( $file->getWidth(), $file->getHeight() )
 			->sizeParams( $file->getSize() )
@@ -431,16 +415,12 @@ class OggHandler extends TimedMediaHandler {
 	 */
 	public function getBitRate( $file ) {
 		$size = 0;
-		$unpacked = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$unpacked || isset( $unpacked['error'] ) ) {
-			$length = 0;
-		} else {
-			$length = $this->getLength( $file );
-			if ( isset( $unpacked['streams'] ) ) {
-				foreach ( $unpacked['streams'] as $stream ) {
-					if ( isset( $stream['size'] ) ) {
-						$size += $stream['size'];
-					}
+		$metadata = $file->getMetadataArray();
+		$length = $this->getLength( $file );
+		if ( isset( $metadata['streams'] ) ) {
+			foreach ( $metadata['streams'] as $stream ) {
+				if ( isset( $stream['size'] ) ) {
+					$size += $stream['size'];
 				}
 			}
 		}

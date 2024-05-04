@@ -12,20 +12,6 @@ use MediaWiki\Parser\Parser;
 use TransformParameterError;
 
 class TimedMediaHandler extends MediaHandler {
-
-	/**
-	 * Get an image size array like that returned by getimagesize(), or false if it
-	 * can't be determined.
-	 * @param File $file
-	 * @param string $path
-	 * @param string|false $metadata
-	 * @return array|false
-	 */
-	public function getImageSize( $file, $path, $metadata = false ) {
-		/* override by handler */
-		return false;
-	}
-
 	/**
 	 * Get the list of supported wikitext embed params
 	 * @return array
@@ -280,29 +266,6 @@ class TimedMediaHandler extends MediaHandler {
 		$ms = ( $ms != 0 ) ? sprintf( '.%03d', $ms ) : '';
 
 		return sprintf( '%02d:%02d:%02d%s', $hours, $min, $sec, $ms );
-	}
-
-	/**
-	 * @param string $metadata
-	 * @return false|mixed
-	 */
-	public function unpackMetadata( $metadata ) {
-		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-		$unser = @unserialize( $metadata );
-		if ( isset( $unser['version'] ) ) {
-			return $unser;
-		}
-
-		return false;
-	}
-
-	/**
-	 * @param File $image
-	 * @param string $metadata
-	 * @return bool
-	 */
-	public function isMetadataValid( $image, $metadata ) {
-		return $this->unpackMetadata( $metadata ) !== false;
 	}
 
 	/**

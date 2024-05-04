@@ -50,27 +50,50 @@ class ID3Handler extends TimedMediaHandler {
 	}
 
 	/**
-	 * @param File $file
-	 * @param string $path
-	 * @return string
+	 * @inheritDoc
 	 */
-	public function getMetadata( $file, $path ) {
-		$id3 = $this->getID3( $path );
-		return serialize( $id3 );
+	public function getSizeAndMetadata( $state, $path ) {
+		$metadata = $this->getID3( $path );
+		$results = [
+			'metadata' => $metadata
+		];
+		$size = $this->getSizeFromMetadata( $metadata );
+
+		if ( $size[0] && $size[1] ) {
+			$results['width'] = $size[0];
+			$results['height'] = $size[1];
+		}
+		return $results;
 	}
 
 	/**
-	 * @param string $metadata
-	 * @return false|mixed
-	 * @deprecated 1.41 use File::getMetadataArray
+	 * Retrieve width x height from metadata fetched in getSizeAndMetadata()
+	 * @param array $metadata
+	 * @return array
 	 */
-	public function unpackMetadata( $metadata ) {
-		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-		$unser = @unserialize( $metadata );
-		if ( isset( $unser['version'] ) && $unser['version'] === self::METADATA_VERSION ) {
-			return $unser;
+	protected function getSizeFromMetadata( $metadata ) {
+		return [ false, false ];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isFileMetadataValid( $image ) {
+		$metadata = $image->getMetadataArray();
+
+		if ( !$metadata || isset( $metadata['error'] ) ) {
+			wfDebug( __METHOD__ . " invalid id3 metadata" );
+			return self::METADATA_BAD;
 		}
-		return false;
+
+		if ( !isset( $metadata['version'] )
+			|| $metadata['version'] !== self::METADATA_VERSION
+		) {
+			wfDebug( __METHOD__ . " old but compatible id3 metadata" );
+			return self::METADATA_COMPATIBLE;
+		}
+
+		return self::METADATA_GOOD;
 	}
 
 	/**

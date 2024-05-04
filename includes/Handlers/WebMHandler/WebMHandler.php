@@ -33,26 +33,10 @@ class WebMHandler extends ID3Handler {
 	}
 
 	/**
-	 * Get the "media size"
-	 * @param File $file
-	 * @param string $path
-	 * @param false|string|array $metadata
-	 * @return array|false
+	 * @inheritDoc
 	 */
-	public function getImageSize( $file, $path, $metadata = false ) {
+	protected function getSizeFromMetadata( $metadata ) {
 		// Just return the size of the first video stream
-		if ( $metadata === false ) {
-			$metadata = $file->getMetadata();
-		}
-
-		if ( is_string( $metadata ) ) {
-			$metadata = $this->unpackMetadata( $metadata );
-		}
-
-		if ( isset( $metadata['error'] ) ) {
-			return false;
-		}
-
 		$size = [ false, false ];
 		// display_x/display_y is only set if DisplayUnit
 		// is pixels, otherwise display_aspect_ratio is set
@@ -153,7 +137,7 @@ class WebMHandler extends ID3Handler {
 	 * @return string|false The generated AV1 codec string in the format "av01.P.LT.BB".
 	 */
 	private function getAV1CodecString( File $file ) {
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
+		$metadata = $file->getMetadataArray();
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
@@ -330,10 +314,8 @@ class WebMHandler extends ID3Handler {
 	 */
 	public function getStreamTypes( $file ) {
 		$streamTypes = [];
-		$metadata = $this->unpackMetadata( $file->getMetadata() );
-		if ( !$metadata || isset( $metadata['error'] ) ) {
-			return false;
-		}
+		$metadata = $file->getMetadataArray();
+
 		$videoFormat = $metadata[ 'video' ][ 'dataformat' ] ?? false;
 		if ( $videoFormat === 'vp8' ) {
 			// id3 gives 'V_VP8' for what we call VP8
@@ -420,20 +402,7 @@ class WebMHandler extends ID3Handler {
 	 * @return array|false
 	 */
 	public function getCommonMetaArray( File $file ) {
-		$metadata = $file->getMetadata();
-
-		if ( is_string( $metadata ) ) {
-			$metadata = $this->unpackMetadata( $metadata );
-		}
-
-		if ( isset( $metadata['error'] ) ) {
-			return false;
-		}
-
-		if ( !$metadata ) {
-			return false;
-		}
-
+		$metadata = $file->getMetadataArray();
 		$props = [];
 
 		if ( isset( $metadata['matroska']['comments'] ) ) {
