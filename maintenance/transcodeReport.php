@@ -124,9 +124,9 @@ class TranscodeReport extends Maintenance {
 						$a = floor( $bucket * $this->max[$res] / $this->buckets );
 						$b = floor( ( $bucket + 1 ) * $this->max[$res] / $this->buckets ) - 1;
 
-						global $wgLang;
-						$aa = str_pad( $wgLang->formatBitrate( (int)$a ), 10, " ", STR_PAD_LEFT );
-						$bb = str_pad( $wgLang->formatBitrate( (int)$b ), 10, " ", STR_PAD_LEFT );
+						$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' );
+						$aa = str_pad( $lang->formatBitrate( (int)$a ), 10, " ", STR_PAD_LEFT );
+						$bb = str_pad( $lang->formatBitrate( (int)$b ), 10, " ", STR_PAD_LEFT );
 						$legend = "$aa - $bb";
 
 						$val = $this->histo[$key][$bucket] ?? 0;

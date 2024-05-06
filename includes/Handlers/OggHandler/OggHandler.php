@@ -351,8 +351,6 @@ class OggHandler extends TimedMediaHandler {
 	 * @return string
 	 */
 	public function getShortDesc( $file ) {
-		global $wgLang;
-
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
@@ -368,8 +366,12 @@ class OggHandler extends TimedMediaHandler {
 		} else {
 			$msg = 'timedmedia-ogg-short-general';
 		}
-		return wfMessage( $msg, implode( '/', $streamTypes ),
-			$wgLang->formatTimePeriod( $this->getLength( $file ) ) )->text();
+		return wfMessage(
+			$msg,
+			implode( '/', $streamTypes )
+			)->timeperiodParams(
+				$this->getLength( $file )
+			)->text();
 	}
 
 	/**
