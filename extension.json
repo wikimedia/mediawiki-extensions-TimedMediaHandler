@@ -468,6 +468,8 @@
 			"dependencies": [
 				"oojs-ui-core",
 				"oojs-ui-windows",
+				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-editing-advanced",
 				"ext.tmh.player.inline"
 			],
 			"messages": [
@@ -483,18 +485,24 @@
 				"videojs-resolution-switcher/ResolutionMenuItem.js",
 				"videojs-resolution-switcher/ResolutionMenuButton.js",
 				"mw-subtitles-button/mw-subtitles-create.js",
-				"mw-subtitles-button/mw-subtitles-button.js"
+				"mw-subtitles-button/mw-subtitles-button.js",
+				"mw-endcard/mw-endcard.js"
 			],
 			"styles": [
 				"ext.tmh.player.inline.styles.less",
 				"mw-info-button/mw-info-button.css",
 				"videojs-resolution-switcher/videojs-resolution-switcher.css",
+				"mw-endcard/mw-endcard.less",
 				"ext.tmh.player.inline.styles.less"
 			],
 			"dependencies": [
 				"ext.tmh.video-js",
 				"ext.tmh.OgvJsSupport",
-				"mediawiki.Title"
+				"mediawiki.api",
+				"mediawiki.Title",
+				"oojs-ui-core",
+				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-editing-advanced"
 			],
 			"messages": [
 				"timedmedia-resolution-120",
@@ -512,7 +520,14 @@
 				"videojs-more-information",
 				"videojs-quality",
 				"videojs-subtitles-create",
-				"videojs-captions-create"
+				"videojs-captions-create",
+				"videojs-endcard-share-title",
+				"videojs-endcard-copy-link",
+				"videojs-endcard-share",
+				"videojs-endcard-share-not-possible",
+				"videojs-endcard-embed-title",
+				"videojs-endcard-embed-copy",
+				"videojs-endcard-copied"
 			]
 		},
 		"ext.tmh.player.styles": {

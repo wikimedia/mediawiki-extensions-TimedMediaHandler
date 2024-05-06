@@ -209,5 +209,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "No $1 subtitles were found for clip: $2",
 	"m3u8-error-create-temp": "Failed to create temp file for $1",
 	"m3u8-error-write-temp": "Failed to write temp file for $1",
-	"m3u8-error-save-playlist": "Errors saving HLS playlist $1"
+	"m3u8-error-save-playlist": "Errors saving HLS playlist $1",
+	"videojs-endcard-share-title": "Link to this media",
+	"videojs-endcard-copy-link": "Copy link",
+	"videojs-endcard-share": "Share",
+	"videojs-endcard-share-not-possible": "Not possible to use sharing",
+	"videojs-endcard-embed-title": "Embed this media in your website",
+	"videojs-endcard-embed-copy": "Copy",
+	"videojs-endcard-copied": "Copied to clipboard!",
+	"videojs-endcard-copy-failed": "Unable to copy to clipboard"
 }

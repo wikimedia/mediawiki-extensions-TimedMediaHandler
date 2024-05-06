@@ -25,25 +25,27 @@ function initMediaPlayerDialog( element ) {
 	}
 	return $.Deferred( ( deferred ) => {
 		const NS_FILE = mw.config.get( 'wgNamespaceIds' ).file;
-		const windowManager = OO.ui.getWindowManager();
-		const dialog = new MediaDialog( {
-			size: !isAudio ? 'larger' : 'medium',
-			$video: $video
-		} );
-		let title;
-
-		$( document.body ).append( windowManager.$element );
-		windowManager.addWindows( [ dialog ] );
-
 		const resource = element.getAttribute( 'resource' );
 		const resourceTitle = resource ?
 			decodeURIComponent( resource.slice( resource.lastIndexOf( '/' ) + 1 ) ) :
 			$video.data( 'mwtitle' );
+		let title;
 		if ( resourceTitle ) {
-			title = mw.Title.newFromText( resourceTitle, NS_FILE ).getMainText();
+			title = mw.Title.newFromText( resourceTitle, NS_FILE );
 		}
-		const win = windowManager.openWindow( dialog, {
+
+		const windowManager = OO.ui.getWindowManager();
+		const dialog = new MediaDialog( {
+			size: !isAudio ? 'larger' : 'medium',
+			$video: $video,
 			title: title
+		} );
+
+		$( document.body ).append( windowManager.$element );
+		windowManager.addWindows( [ dialog ] );
+
+		const win = windowManager.openWindow( dialog, {
+			title: title.getMainText()
 		} );
 
 		win.opened.then( () => {

@@ -70,6 +70,7 @@ class InlinePlayer {
 		require( './videojs-resolution-switcher/videojs-resolution-switcher.js' );
 		require( './mw-subtitles-button/mw-subtitles-create.js' );
 		require( './mw-subtitles-button/mw-subtitles-button.js' );
+		require( './mw-endcard/mw-endcard.js' );
 
 		// Add translations for the plugins
 		// video.js translations don't have region postfixes (yet)
@@ -356,7 +357,8 @@ InlinePlayer.globalConfig = {
 	},
 	techOrder: [ 'html5' ],
 	plugins: {
-		infoButton: {}
+		infoButton: {},
+		endCard: {}
 	},
 	html5: InlinePlayer.html5techOpt
 };

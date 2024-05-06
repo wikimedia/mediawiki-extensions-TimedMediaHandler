@@ -231,5 +231,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "$1 is language name, $2 is title of file that timed text is for.\nShown as the page title on a TimedText namespace page when the page does not exist. See also {{msg-mw|timedmedia-timedtext-title-edit-subtitles}}.",
 	"m3u8-error-create-temp": "Low-level file conversion error, may appear only in debugging.",
 	"m3u8-error-write-temp": "Low-level file conversion error, may appear only in debugging.",
-	"m3u8-error-save-playlist": "Low-level file conversion error, may appear only in debugging."
+	"m3u8-error-save-playlist": "Low-level file conversion error, may appear only in debugging.",
+	"videojs-endcard-share-title": "Title of section that contains actions to link and share the media item",
+	"videojs-endcard-copy-link": "Label for button to copy a link to the file description page to your clipboard.",
+	"videojs-endcard-share": "Label for a button to share the file description page via the browser's Share functionality.",
+	"videojs-endcard-share-not-possible": "Warning shown when your browser does not support the native sharing functionality.",
+	"videojs-endcard-embed-title": "Title of section that allows you to embed this media in your website",
+	"videojs-endcard-embed-copy": "Label for button to copy a fragment of HTML to embed into other websites.",
+	"videojs-endcard-copied": "Message shown as notification after having clicked the button to indicate that the text has been copied to your clipboard.",
+	"videojs-endcard-copy-failed": "Message shown as notification when unable to copy text to clipboard."
 }
