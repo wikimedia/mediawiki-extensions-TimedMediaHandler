@@ -26,6 +26,7 @@
 			"useLongnameInNav": false
 		},
 		"wmf": {
+			"repository": "https://gerrit.wikimedia.org/g/mediawiki/extensions/TimedMediaHandler/",
 			"linkMap": {
 				"AudioContext": "https://developer.mozilla.org/en-US/docs/Web/API/AudioContext",
 				"HTMLElement": "https://developer.mozilla.org/docs/Web/API/HTMLElement",
