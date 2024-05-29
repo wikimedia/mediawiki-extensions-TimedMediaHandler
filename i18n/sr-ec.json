@@ -80,6 +80,7 @@
 	"timedmedia-derivative-desc-720p.ogv": "HD Ogg видео (720п)",
 	"timedmedia-derivative-desc-1080p.ogv": "Full HD Ogg видео (1080P)",
 	"timedmedia-derivative-desc-240p.mp4": "Мали MP4 H.264 (240P)",
+	"timedmedia-derivative-stereo.audio.opus.mp4": "Стерео (Opus)",
 	"timedmedia-derivative-stereo.audio.mp3": "Стерео (MP3)",
 	"timedmedia-subtitle-new": "Направи нови превод или уреди постојећи",
 	"timedmedia-subtitle-new-desc": "Изаберите језик па кликните на дугме '''{{int:Timedmedia-subtitle-new-go}}'''",
