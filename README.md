@@ -72,12 +72,20 @@ sometimes hours, which prevents that processing to be handled as a web service.
 Instead, the extension implements an asynchronous job, named webVideoTranscode,
 which you must be running regularly as your web server user.
 
-The job can be run using the MediaWiki `maintenance/runJobs.php` utility (do not
+The job can be run using the MediaWiki `maintenance/run.php` utility (do not
 forget to su as a webserver user):
 
 ```
-  php runJobs.php --type webVideoTranscode --maxjobs 1
-  php runJobs.php --type webVideoTranscodePrioritized --maxjobs 1
+  php run.php runJobs --type webVideoTranscode --maxjobs 1
+  php run.php runJobs --type webVideoTranscodePrioritized --maxjobs 1
+```
+
+Exclude these jobs from the default tasks your webserver executes
+by setting the following options in your `LocalSettings.php`.
+
+```
+$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
+$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscodePrioritized';
 ```
 
 ## Included software or dependencies
