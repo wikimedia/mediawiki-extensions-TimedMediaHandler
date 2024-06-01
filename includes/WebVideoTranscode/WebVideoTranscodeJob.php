@@ -268,17 +268,27 @@ class WebVideoTranscodeJob extends Job {
 			$dbw = $this->lbFactory->getPrimaryDatabase();
 
 			// Check if we have "already started" the transcode ( possible error )
-			$dbStartTime = $dbw->newSelectQueryBuilder()
-				->select( 'transcode_time_startwork' )
+			$transcodeRow = $dbw->newSelectQueryBuilder()
+				->select( [ 'transcode_time_addjob', 'transcode_time_startwork' ] )
 				->from( 'transcode' )
 				->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
 					'transcode_key' => $transcodeKey
 				] )
 				->caller( __METHOD__ )
-				->fetchField();
-			if ( $dbStartTime !== null ) {
-				$error = 'Error, running transcode job, for job that has already started';
+				->fetchRow();
+
+			if ( $transcodeRow === false ) {
+				$error = $this->title . ': Possible Error, transcode task removed before job began';
+				$this->output( $error );
+				return true;
+			}
+
+			if ( $transcodeRow->transcode_time_startwork && (
+				wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_startwork ) >
+				wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_addjob ) )
+			) {
+				$error = $this->title . ': Error, running transcode job, for job that has already started';
 				$this->output( $error );
 				return true;
 			}
