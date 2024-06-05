@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			555,
 			"Fúlvio",
 			"Giro720",
 			"Hamilton Abreu",
@@ -12,8 +13,7 @@
 			"Tooguether",
 			"Vitorvicentevalente",
 			"Waldir",
-			"Waldyrious",
-			555
+			"Waldyrious"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",

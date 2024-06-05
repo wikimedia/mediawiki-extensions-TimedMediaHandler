@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			1100100,
 			"Susith Chandira Gts",
 			"නන්දිමිතුරු",
 			"පසිඳු කාවින්ද",
-			"හරිත",
-			1100100
+			"හරිත"
 		]
 	},
 	"timedmediahandler-desc": "Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ",
