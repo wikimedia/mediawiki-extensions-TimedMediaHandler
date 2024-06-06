@@ -4,9 +4,11 @@
 			"Babanwalia",
 			"Gman124",
 			"Hemantbrar",
-			"Satdeep gill"
+			"Satdeep gill",
+			"Cabal"
 		]
 	},
 	"timedmedia-more": "ਹੋਰ...",
-	"timedmedia-started-transcode": "ਸ਼ੁਰੂ ਕੀਤਾ $1. $2"
+	"timedmedia-started-transcode": "ਸ਼ੁਰੂ ਕੀਤਾ $1. $2",
+	"timedmedia-subtitle-new": "ਨਵਾਂ ਤਰਜਮਾ ਬਣਾਓ ਜਾਂ ਮੌਜੂਦਾ ਸੋਧੋ"
 }
