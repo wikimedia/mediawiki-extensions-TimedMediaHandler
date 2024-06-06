@@ -26,7 +26,7 @@ $.fn.loadMediaPlayer = loadMediaPlayer;
  * @private
  */
 function loadMediaPlayers( $content ) {
-	$content.find( 'video, audio' ).loadMediaPlayer();
+	$content.find( '[data-mw-tmh]' ).loadMediaPlayer();
 }
 
 mw.hook( 'wikipage.content' ).add( loadMediaPlayers );
@@ -37,7 +37,7 @@ mw.hook( 'wikipage.indicators' ).add( loadMediaPlayers );
  */
 $( () => {
 	// eslint-disable-next-line no-jquery/no-global-selector
-	const $iframeElements = $( '#videoContainer video, #videoContainer audio' );
+	const $iframeElements = $( '#videoContainer [data-mw-tmh]' );
 	if ( !$iframeElements.length ) {
 		return;
 	}
