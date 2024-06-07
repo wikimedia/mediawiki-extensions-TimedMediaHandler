@@ -1,13 +1,13 @@
 'use strict';
 /**
- * Load video players for a jQuery collection
+ * Load media players for a jQuery collection
  * Not chainable
  *
  * @return {JQuery} The media element classes
  * for each of the html elements in the collection
  * @private
  */
-function loadVideoPlayer() {
+function loadMediaPlayer() {
 	const MediaElement = require( './ext.tmh.player.element.js' );
 
 	return this.map( function () {
@@ -17,7 +17,7 @@ function loadVideoPlayer() {
 	} );
 }
 
-$.fn.loadVideoPlayer = loadVideoPlayer;
+$.fn.loadMediaPlayer = loadMediaPlayer;
 
 /**
  * Main loader for content
@@ -25,12 +25,12 @@ $.fn.loadVideoPlayer = loadVideoPlayer;
  * @param {JQuery} $content areas to which to apply the hook loaders
  * @private
  */
-function loadVideoPlayers( $content ) {
-	$content.find( 'video, audio' ).loadVideoPlayer();
+function loadMediaPlayers( $content ) {
+	$content.find( 'video, audio' ).loadMediaPlayer();
 }
 
-mw.hook( 'wikipage.content' ).add( loadVideoPlayers );
-mw.hook( 'wikipage.indicators' ).add( loadVideoPlayers );
+mw.hook( 'wikipage.content' ).add( loadMediaPlayers );
+mw.hook( 'wikipage.indicators' ).add( loadMediaPlayers );
 
 /**
  * Loader for iframe mode
