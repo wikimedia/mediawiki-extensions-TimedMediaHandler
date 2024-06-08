@@ -63,7 +63,7 @@ doFfmpegEncode() {
 
 
 	# Please note, the unquoted entries are unquoted on purpose here.
-	"$TMH_FFMPEG_PATH" -nostdin -y -i original.video \
+	"$TMH_FFMPEG_PATH" -nostdin -nostats -y -i original.video \
 		$TMH_OPTS_VIDEO \
 		$FFMPEG2_OPTS \
 		$AUDIO_OPTS \
