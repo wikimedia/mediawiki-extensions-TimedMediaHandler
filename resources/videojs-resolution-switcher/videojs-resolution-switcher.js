@@ -102,7 +102,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 		const player = this.player;
 
 		// Only add those sources which we can (maybe) play
-		src = src.filter( function ( source ) {
+		src = src.filter( ( source ) => {
 			try {
 				return ( player.canPlayType( source.type ) !== '' );
 			} catch ( e ) {
@@ -169,7 +169,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 			sources,
 			label
 		);
-		player.one( handleSeekEvent, function () {
+		player.one( handleSeekEvent, () => {
 			player.currentTime( currentTime );
 			// eslint-disable-next-line no-underscore-dangle
 			player.handleTechSeeked_();
@@ -214,16 +214,12 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				// MEDIA_ERR_DECODE OR MEDIA_ERR_SRC_NOT_SUPPORTED
 				errorEvent.stopImmediatePropagation();
 				this.player.errorDisplay.close();
-				const newSources = this.currentSources.filter( ( asource ) => {
-					return asource.src !== this.player.currentSrc();
-				} );
+				const newSources = this.currentSources.filter( ( asource ) => asource.src !== this.player.currentSrc() );
 				this.updateSrc( newSources );
 				this.player.play();
 			}
 		} );
-		this.player.src( sources.map( function ( src ) {
-			return { src: src.src, type: src.type, res: src.res };
-		} ) );
+		this.player.src( sources.map( ( src ) => ( { src: src.src, type: src.type, res: src.res } ) ) );
 	}
 
 	/**

@@ -132,7 +132,7 @@ class MediaDialog extends OO.ui.ProcessDialog {
 				// This is used instead of an event like `canplay` or `loadeddata`
 				// because some versions of EdgeHTML don't fire these events.
 				// Support: Edge 18
-				setTimeout( function () {
+				setTimeout( () => {
 					$( indicator.$element ).detach();
 					videojsPlayer.play();
 					// Focus the player so that keyboard events work

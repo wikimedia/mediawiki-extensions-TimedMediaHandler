@@ -35,16 +35,16 @@ mw.hook( 'wikipage.indicators' ).add( loadMediaPlayers );
 /**
  * Loader for iframe mode
  */
-$( function () {
+$( () => {
 	// eslint-disable-next-line no-jquery/no-global-selector
 	const $iframeElements = $( '#videoContainer video, #videoContainer audio' );
 	if ( !$iframeElements.length ) {
 		return;
 	}
 	// The iframe mode
-	mw.loader.using( 'ext.tmh.player.inline' ).then( function () {
+	mw.loader.using( 'ext.tmh.player.inline' ).then( () => {
 		const InlinePlayer = require( 'ext.tmh.player.inline' );
-		$iframeElements.each( function ( index, mediaElement ) {
+		$iframeElements.each( ( index, mediaElement ) => {
 			const inlinePlayer = new InlinePlayer( mediaElement, { fill: true, iframe: true } );
 			inlinePlayer.infuse();
 			// .then add further customization here

@@ -462,7 +462,7 @@ InlinePlayer.activePlayers = [];
  * @chainable
  */
 function disposeDetachedPlayers() {
-	InlinePlayer.activePlayers = InlinePlayer.activePlayers.filter( function ( player ) {
+	InlinePlayer.activePlayers = InlinePlayer.activePlayers.filter( ( player ) => {
 		if ( !player.el().ownerDocument.body.contains( player.el() ) ) {
 			player.dispose();
 			return false;

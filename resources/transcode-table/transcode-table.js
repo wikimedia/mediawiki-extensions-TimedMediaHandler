@@ -1,7 +1,7 @@
 /*!
 * Javascript to support transcode table on image page
 */
-$( function () {
+$( () => {
 	function resetPopup( event ) {
 		const tKey = $( event.target ).attr( 'data-transcodekey' );
 		const $message = $( [
@@ -27,7 +27,7 @@ $( function () {
 					flags: 'safe'
 				}
 			]
-		} ).done( function ( confirmed ) {
+		} ).done( ( confirmed ) => {
 			if ( !confirmed ) {
 				return;
 			}
@@ -37,10 +37,10 @@ $( function () {
 				transcodekey: tKey,
 				title: mw.config.get( 'wgPageName' ),
 				errorformat: 'html'
-			} ).done( function () {
+			} ).done( () => {
 				// Refresh the page
 				location.reload();
-			} ).fail( function ( code, data ) {
+			} ).fail( ( code, data ) => {
 				let errorText;
 				if ( data.errors ) {
 					errorText = data.errors[ 0 ][ '*' ];
