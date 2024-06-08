@@ -20,8 +20,11 @@ class MwSubtitlesButton extends SubsCapsButton {
 	createItems( items, menuitem ) {
 		/* eslint-disable no-underscore-dangle */
 		items = super.createItems( this, items, menuitem );
-		const item = new MwCreateSubtitlesMenuItem( this.player_, { kind: this.label_ } );
+		if ( !this.player().options().mwTitle ) {
+			return items;
+		}
 
+		const item = new MwCreateSubtitlesMenuItem( this.player_, { kind: this.label_ } );
 		if ( items.length <= this.hideThreshold_ ) {
 			// For now always show the CC menu, so we can present this entry
 			// If the only other items are the hideable ones, then reset the menu.
