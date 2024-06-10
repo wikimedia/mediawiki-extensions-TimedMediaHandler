@@ -199,7 +199,7 @@ class MediaElement {
 	 * Key press handler for `<a role="button">` element to open a
 	 * dialog and play a {MediaElement}.
 	 *
-	 * @param {KeyBoardEvent} event
+	 * @param {KeyboardEvent} event
 	 */
 	keyPressHandler( event ) {
 		if (
@@ -325,7 +325,7 @@ MediaElement.currentlyPlaying = false;
  * There should be only 1 interstitial to indicate the dialog is loading.
  *
  * @static
- * @type {JQuery?}
+ * @type {jQuery?}
  */
 MediaElement.$interstitial = null;
 
