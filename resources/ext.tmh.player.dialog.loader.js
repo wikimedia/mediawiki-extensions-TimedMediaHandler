@@ -7,7 +7,7 @@
  * Currently expects to be run on jQuery element
  *
  * @param {HTMLMediaElement} element
- * @return {JQueryPromise<void>} promise which resolves after the dialog closes
+ * @return {jQuery.Promise<void>} promise which resolves after the dialog closes
  * @private
  */
 function initMediaPlayerDialog( element ) {
@@ -60,7 +60,7 @@ function initMediaPlayerDialog( element ) {
 /**
  * jQuery version of initMediaPlayerDialog
  *
- * @return {JQueryPromise<void>}
+ * @return {jQuery.Promise<void>}
  */
 $.fn.showVideoPlayerDialog = function showVideoPlayerDialog() {
 	return initMediaPlayerDialog( this.get( 0 ) );

@@ -11,7 +11,7 @@ class OgvJsSupport {
 	 * Ensure that the OGVPlayer class is loaded before continuing.
 	 *
 	 * @param {string?} mod - optional module name override
-	 * @return {JQueryPromise<void>}
+	 * @return {jQuery.Promise<void>}
 	 */
 	static loadOgvJs( mod = 'ext.tmh.OgvJs' ) {
 		return $.Deferred( ( deferred ) => {
@@ -69,7 +69,7 @@ class OgvJsSupport {
 	 *
 	 * @param {string?} mod - optional module name override
 	 * @param {HTMLMediaElement?} media - optional element to check for native support
-	 * @return {JQueryPromise<void>}
+	 * @return {jQuery.Promise<void>}
 	 */
 	static loadIfNeeded( mod = 'ext.tmh.OgvJs', media = undefined ) {
 		if ( media && OgvJsSupport.isMediaNativelySupported( media ) ) {

@@ -24,7 +24,7 @@ const INACTIVITY_THRESHOLD = 2500;
 class MediaDialog extends OO.ui.ProcessDialog {
 	/**
 	 * @param {Object} config
-	 * @param {JQuery} config.$video element to present
+	 * @param {jQuery} config.$video element to present
 	 */
 	constructor( config ) {
 		if ( useFillscreen() ) {
@@ -145,6 +145,8 @@ class MediaDialog extends OO.ui.ProcessDialog {
 	/**
 	 * Call this method to stop playback and to cleanup
 	 * the player after closing the dialog
+	 *
+	 * @return {jQuery.Promise}
 	 */
 	stop() {
 		const metaElement = document.querySelector( 'meta[name="theme-color"]' );

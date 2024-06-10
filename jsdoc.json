@@ -8,9 +8,10 @@
 		"template": "node_modules/jsdoc-wmf-theme"
 	},
 	"plugins": [
-		"plugins/markdown",
-		"node_modules/jsdoc-wmf-theme/plugins/summarize",
 		"node_modules/jsdoc-wmf-theme/plugins/allow-dots-in-modules",
+		"plugins/markdown",
+		"node_modules/jsdoc-wmf-theme/plugins/externals",
+		"node_modules/jsdoc-wmf-theme/plugins/summarize",
 		"node_modules/jsdoc-wmf-theme/plugins/betterlinks"
 	],
 	"source": {
@@ -27,6 +28,10 @@
 		},
 		"wmf": {
 			"repository": "https://gerrit.wikimedia.org/g/mediawiki/extensions/TimedMediaHandler/",
+			"prefixMap": {
+				"OO.ui.": "https://doc.wikimedia.org/oojs-ui/master/js/{type}.html",
+				"OO.": "https://doc.wikimedia.org/oojs/master/{type}.html"
+			},
 			"linkMap": {
 				"AudioContext": "https://developer.mozilla.org/en-US/docs/Web/API/AudioContext",
 				"HTMLElement": "https://developer.mozilla.org/docs/Web/API/HTMLElement",
@@ -35,14 +40,9 @@
 				"HTMLTextAreaElement": "https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement",
 				"Window": "https://developer.mozilla.org/docs/Web/API/Window",
 				"MouseEvent": "https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent",
-				"KeyBoardEvent": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent",
-				"MW": "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw",
-				"OO.ui.ProcessDialog": "https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ProcessDialog",
-				"JQuery": "https://api.jquery.com/Types/#jQuery",
-				"JQueryStatic": "https://api.jquery.com",
-				"JQueryPromise": "https://api.jquery.com/Types/#Promise",
-				"JQueryPromise.<void>": "https://api.jquery.com/Types/#Promise",
-				"void": "#",
+				"KeyboardEvent": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent",
+				"jQuery": "https://api.jquery.com/Types/#jQuery",
+				"jQuery.Promise": "https://api.jquery.com/Types/#Promise",
 				"videojs.Player": "https://docs.videojs.com/player",
 				"videojs.Plugin": "https://docs.videojs.com/plugin",
 				"videojs.Button": "https://docs.videojs.com/button",

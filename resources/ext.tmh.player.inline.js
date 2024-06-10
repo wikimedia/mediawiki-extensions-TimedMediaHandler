@@ -32,7 +32,7 @@ class InlinePlayer {
 		/**
 		 * The original audio/video element as a jquery collection
 		 *
-		 * @type {JQuery}
+		 * @type {jQuery}
 		 * @private
 		 */
 		this.$videoplayer = $( element );
@@ -87,7 +87,7 @@ class InlinePlayer {
 	 * Takes the HTMLMediaElement of the InlinePlayer
 	 * and infuses it with JS (videoJS) to enrich the element.
 	 *
-	 * @return {JQueryPromise<videojs.Player>}
+	 * @return {jQuery.Promise<videojs.Player>|undefined}
 	 */
 	infuse() {
 		if ( this.$videoplayer.closest( '.video-js' ).length ) {
@@ -462,7 +462,7 @@ InlinePlayer.activePlayers = [];
  * Remove any detached players from previous live previews etc
  *
  * @private
- * @return {JQuery}
+ * @return {jQuery}
  * @chainable
  */
 function disposeDetachedPlayers() {
@@ -480,7 +480,7 @@ function disposeDetachedPlayers() {
  * jQuery plugin to cleanup all resources of
  * a player which is no longer in the document
  *
- * @return {JQuery}
+ * @return {jQuery}
  * @chainable
  */
 $.disposeDetachedPlayers = disposeDetachedPlayers;
