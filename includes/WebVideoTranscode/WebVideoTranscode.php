@@ -1382,31 +1382,35 @@ class WebVideoTranscode {
 		$fileName = $file->getTitle()->getDBkey();
 		$dbw = $file->repo->getPrimaryDB();
 
-		$transcodeState = static::getTranscodeState( $file, $dbw );
-
 		if ( !static::isTranscodeEnabled( $file, $transcodeKey ) ) {
 			return;
 		}
 
-		// If the job hasn't been added yet, attempt to do so
-		if ( !isset( $transcodeState[ $transcodeKey ] ) ) {
-			$dbw->newInsertQueryBuilder()
-				->insertInto( 'transcode' )
-				->ignore()
-				->row( [
-					'transcode_image_name' => $fileName,
-					'transcode_key' => $transcodeKey,
-					'transcode_time_addjob' => $dbw->timestamp(),
-					'transcode_error' => '',
-					'transcode_final_bitrate' => 0,
-				] )
-				->caller( __METHOD__ )->execute();
+		// If the transcode entry hasn't been added yet, attempt to do so
+		// Reset the addjob time when already added (in case it is now null)
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'transcode' )
+			->ignore()
+			->row( [
+				'transcode_image_name' => $fileName,
+				'transcode_key' => $transcodeKey,
+				'transcode_time_addjob' => $dbw->timestamp(),
+				'transcode_error' => '',
+				'transcode_final_bitrate' => 0,
+			] )
+			->onDuplicateKeyUpdate()
+			->uniqueIndexFields( [
+				'transcode_image_name',
+				'transcode_key',
+			] )
+			->set( [
+				'transcode_time_addjob' => $dbw->timestamp(),
+				'transcode_error' => '',
+				'transcode_final_bitrate' => 0,
+			] )
+			->caller( __METHOD__ )->execute();
 
-			if ( !$dbw->affectedRows() ) {
-				// There is already a row for that job added by another request, no need to continue
-				return;
-			}
-
+		if ( $dbw->affectedRows() ) {
 			// Set the priority
 			$prioritized = static::isTranscodePrioritized( $file, $transcodeKey );
 
