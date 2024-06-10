@@ -4,7 +4,7 @@ namespace MediaWiki\TimedMediaHandler\Handlers\OggHandler;
 
 use File;
 use File_Ogg;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 

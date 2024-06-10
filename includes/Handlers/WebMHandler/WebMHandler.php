@@ -3,7 +3,7 @@
 namespace MediaWiki\TimedMediaHandler\Handlers\WebMHandler;
 
 use File;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 
 /**

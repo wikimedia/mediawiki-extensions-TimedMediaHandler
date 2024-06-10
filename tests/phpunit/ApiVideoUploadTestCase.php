@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\Tests\Api\ApiUploadTestCase;
+
 /**
  * Abstract test class to support Video Tests with video uploads
  * @author dale

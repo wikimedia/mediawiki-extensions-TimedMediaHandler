@@ -12,9 +12,9 @@ namespace MediaWiki\TimedMediaHandler;
 
 use Article;
 use File;
-use HTMLForm;
 use LanguageCode;
 use MediaWiki\Html\Html;
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;

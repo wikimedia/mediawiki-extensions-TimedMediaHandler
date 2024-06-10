@@ -3,7 +3,7 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use File;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
 use MediaWiki\Linker\LinkRenderer;

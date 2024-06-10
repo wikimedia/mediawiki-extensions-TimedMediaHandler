@@ -7,7 +7,7 @@ use MediaHandler;
 use MediaTransformError;
 use MediaTransformOutput;
 use MediaWiki\Context\RequestContext;
-use Parser;
+use MediaWiki\Parser\Parser;
 use TransformParameterError;
 
 class TimedMediaHandler extends MediaHandler {
