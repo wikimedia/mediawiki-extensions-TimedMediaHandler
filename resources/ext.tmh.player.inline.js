@@ -193,9 +193,13 @@ class InlinePlayer {
 		const resourceTitle = resource ?
 			decodeURIComponent( resource.slice( resource.lastIndexOf( '/' ) + 1 ) ) :
 			this.$videoplayer.data( 'mwtitle' );
-		this.playerConfig.mwTitle = mw.Title.newFromText(
-			resourceTitle, NS_FILE
-		);
+		if ( resourceTitle ) {
+			this.playerConfig.mwTitle = mw.Title.newFromText(
+				resourceTitle, NS_FILE
+			);
+		} else {
+			mw.log.warn( 'Unable to detect resource Title for this media element' );
+		}
 
 		// Launch the player
 		return OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )

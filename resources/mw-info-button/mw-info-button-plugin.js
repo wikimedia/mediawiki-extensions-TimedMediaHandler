@@ -27,6 +27,10 @@ class InfoButtonPlugin extends Plugin {
 		player.ready( () => {
 			const title = player.options().mwTitle;
 
+			if ( !title ) {
+				return;
+			}
+
 			// We do not need the info button on a File page, unless it's the embedding mode
 			// we are already at the destination of the button
 			if ( player.options().iframe || mw.config.get( 'wgTitle' ) !== title.getMainText() ) {

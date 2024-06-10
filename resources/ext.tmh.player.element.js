@@ -174,15 +174,22 @@ class MediaElement {
 	/**
 	 * Construct URL to the file description page
 	 *
-	 * @return {string}
+	 * @return {string|null}
 	 */
 	getUrl() {
 		// Construct a file target link for middle-click / ctrl-click / right-click
 		const parsoidLink = this.element.getAttribute( 'resource' );
-		return parsoidLink || ( mw.Title.makeTitle(
-			mw.config.get( 'wgNamespaceIds' ).file,
-			this.$element.data( 'mwtitle' )
-		) ).getUrl();
+		if ( parsoidLink ) {
+			return parsoidLink;
+		}
+
+		const title = this.$element.data( 'mwtitle' );
+		if ( title ) {
+			return mw.Title.makeTitle(
+				mw.config.get( 'wgNamespaceIds' ).file, title
+			).getUrl();
+		}
+		return null;
 	}
 
 	isInline() {
