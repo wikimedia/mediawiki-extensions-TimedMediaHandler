@@ -451,6 +451,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			$mediaAttr['loop'] = 'true';
 		}
 
+		// Secure selector for JavaScript
+		$mediaAttr['data-mw-tmh'] = '';
+
 		// Note: do not add 'video-js' class before the runtime transform!
 		$mediaAttr['class'] = '';
 		$mediaAttr['width'] = (int)$width;
