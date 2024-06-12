@@ -83,7 +83,7 @@
 	"timedmedia-dialog-close": "ДӀачӀагӀа медиа-плеер",
 	"right-transcode-reset": "Кхосса дика йоцу видеош уьш рогӀехь хилийта.",
 	"right-transcode-status": "Хьажа [[Special:TimedMediaHandler|йуха код хийцаран хааме]]",
-	"log-name-timedmediahandler": "TimedMediaHandler тептар",
+	"log-name-timedmediahandler": "TimedMediaHandler журнал",
 	"orphanedtimedtext": "Йайна агӀонаш TimedText",
 	"orphanedtimedtext-summary": "ЙогӀуш йолу файл йоцу [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] агӀонийн могӀам.",
 	"videojs-more-information": "Ма-дарра",
