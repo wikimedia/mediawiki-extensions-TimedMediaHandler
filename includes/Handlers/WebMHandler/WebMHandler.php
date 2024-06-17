@@ -126,30 +126,29 @@ class WebMHandler extends ID3Handler {
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
 		}
-		// id3 gives 'V_VP8' for what we call VP8
-		if ( isset( $metadata['video'] ) ) {
-			if ( $metadata['video']['dataformat'] === 'vp8' ) {
-				$streamTypes[] = 'VP8';
-			} elseif ( $metadata['video']['dataformat'] === 'vp9'
-				|| $metadata['video']['dataformat'] === 'V_VP9'
-			) {
-				// Currently getID3 calls it V_VP9. That will probably change to vp9
-				// once getID3 actually gets support for the codec.
-				$streamTypes[] = 'VP9';
-			} elseif ( $metadata['video']['dataformat'] === 'V_AV1' ) {
-				$streamTypes[] = 'AV1';
-			}
+		$videoFormat = $metadata[ 'video' ][ 'dataformat' ] ?? false;
+		if ( $videoFormat === 'vp8' ) {
+			// id3 gives 'V_VP8' for what we call VP8
+			$streamTypes[] = 'VP8';
+		} elseif ( $videoFormat === 'vp9'
+			|| $videoFormat === 'V_VP9'
+		) {
+			// Currently getID3 calls it V_VP9. That will probably change to vp9
+			// once getID3 actually gets support for the codec.
+			$streamTypes[] = 'VP9';
+		} elseif ( $videoFormat === 'V_AV1' ) {
+			$streamTypes[] = 'AV1';
 		}
-		if ( isset( $metadata['audio'] ) ) {
-			if ( $metadata['audio']['dataformat'] === 'vorbis' ) {
-				$streamTypes[] = 'Vorbis';
-			} elseif ( $metadata['audio']['dataformat'] === 'opus'
-				|| $metadata['audio']['dataformat'] === 'A_OPUS'
-			) {
-				// Currently getID3 calls it A_OPUS. That will probably change to 'opus'
-				// once getID3 actually gets support for the codec.
-				$streamTypes[] = 'Opus';
-			}
+
+		$audioFormat = $metadata[ 'audio' ][ 'dataformat' ] ?? false;
+		if ( $audioFormat === 'vorbis' ) {
+			$streamTypes[] = 'Vorbis';
+		} elseif ( $audioFormat === 'opus'
+			|| $audioFormat === 'A_OPUS'
+		) {
+			// Currently getID3 calls it A_OPUS. That will probably change to 'opus'
+			// once getID3 actually gets support for the codec.
+			$streamTypes[] = 'Opus';
 		}
 
 		return $streamTypes;

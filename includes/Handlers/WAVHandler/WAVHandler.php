@@ -31,11 +31,12 @@ class WAVHandler extends ID3Handler {
 	public function verifyUpload( $fileName ) {
 		$metadata = $this->getID3( $fileName );
 
+		$audioFormat = $metadata[ 'audio' ][ 'dataformat' ] ?? false;
+		$audioCodec = $metadata[ 'audio' ][ 'codec' ] ?? false;
 		if (
-			isset( $metadata['audio'] )
-			&& $metadata['audio']['dataformat'] === 'wav'
-			&& ( $metadata['audio']['codec'] === 'Pulse Code Modulation (PCM)' ||
-				$metadata['audio']['codec'] === 'IEEE Float' )
+			$audioFormat === 'wav'
+			&& ( $audioCodec === 'Pulse Code Modulation (PCM)' ||
+				$audioCodec === 'IEEE Float' )
 		) {
 			return Status::newGood();
 		}
@@ -55,7 +56,8 @@ class WAVHandler extends ID3Handler {
 			return false;
 		}
 
-		if ( isset( $metadata['audio'] ) && $metadata['audio']['dataformat'] === 'wav' ) {
+		$audioFormat = $metadata[ 'audio' ][ 'dataformat' ] ?? false;
+		if ( $audioFormat === 'wav' ) {
 			$streamTypes[] = 'WAV';
 		}
 
