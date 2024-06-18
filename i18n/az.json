@@ -5,9 +5,14 @@
 			"Dağlı95",
 			"NMW03",
 			"Toghrul Rahimli",
-			"Wertuose"
+			"Wertuose",
+			"Nemoralis"
 		]
 	},
+	"timedmediahandler-desc": "WebM, Ogg Theora, Vorbis, srt üçün format dəstəyi ilə audio, video və vaxt təyin edilmiş mətn üçün işləyici",
+	"timedmedia-ogg-short-audio": "Ogg $1 səs faylı, $2",
+	"timedmedia-ogg-short-video": "Ogg $1 video faylı, $2",
+	"timedmedia-ogg-short-general": "Ogg $1 media faylı, $2",
 	"timedmedia-play-media": "Medianı oxut",
 	"timedmedia-status": "Status",
 	"timedmedia-direct-link": "Yüklə",
