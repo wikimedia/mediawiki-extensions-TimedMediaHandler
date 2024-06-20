@@ -117,7 +117,7 @@ class MediaElement {
 				} )
 				.on( 'click', this.clickHandler.bind( this ) )
 				.on( 'keypress', this.keyPressHandler.bind( this ) )
-				.append( $( '<span>' ).addClass( 'mw-tmh-play-icon' ) )
+				.append( $( '<span>' ).addClass( 'mw-tmh-play-icon notheme' ) )
 			);
 
 		if ( ( this.isAudio && this.$element.attr( 'width' ) >= 150 ) || ( !this.isAudio && this.$element.attr( 'height' ) >= 150 ) ) {
