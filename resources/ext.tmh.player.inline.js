@@ -21,7 +21,7 @@ class InlinePlayer {
 		 * @type {videojs.Options}
 		 * @private
 		 */
-		this.playerConfig = $.extend( {}, options );
+		this.playerConfig = Object.assign( {}, options );
 		/**
 		 * The original audio/video element
 		 *
