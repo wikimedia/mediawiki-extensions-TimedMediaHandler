@@ -8,11 +8,7 @@
 		"template": "node_modules/jsdoc-wmf-theme"
 	},
 	"plugins": [
-		"node_modules/jsdoc-wmf-theme/plugins/allow-dots-in-modules",
-		"plugins/markdown",
-		"node_modules/jsdoc-wmf-theme/plugins/externals",
-		"node_modules/jsdoc-wmf-theme/plugins/summarize",
-		"node_modules/jsdoc-wmf-theme/plugins/betterlinks"
+		"node_modules/jsdoc-wmf-theme/plugins/default"
 	],
 	"source": {
 		"include": [
@@ -28,21 +24,7 @@
 		},
 		"wmf": {
 			"repository": "https://gerrit.wikimedia.org/g/mediawiki/extensions/TimedMediaHandler/",
-			"prefixMap": {
-				"OO.ui.": "https://doc.wikimedia.org/oojs-ui/master/js/{type}.html",
-				"OO.": "https://doc.wikimedia.org/oojs/master/{type}.html"
-			},
 			"linkMap": {
-				"AudioContext": "https://developer.mozilla.org/en-US/docs/Web/API/AudioContext",
-				"HTMLElement": "https://developer.mozilla.org/docs/Web/API/HTMLElement",
-				"HTMLMediaElement": "https://developer.mozilla.org/docs/Web/API/HTMLMediaElement",
-				"HTMLSourceElement": "https://developer.mozilla.org/docs/Web/API/HTMLSourceElement",
-				"HTMLTextAreaElement": "https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement",
-				"Window": "https://developer.mozilla.org/docs/Web/API/Window",
-				"MouseEvent": "https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent",
-				"KeyboardEvent": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent",
-				"jQuery": "https://api.jquery.com/Types/#jQuery",
-				"jQuery.Promise": "https://api.jquery.com/Types/#Promise",
 				"videojs.Player": "https://docs.videojs.com/player",
 				"videojs.Plugin": "https://docs.videojs.com/plugin",
 				"videojs.Button": "https://docs.videojs.com/button",
