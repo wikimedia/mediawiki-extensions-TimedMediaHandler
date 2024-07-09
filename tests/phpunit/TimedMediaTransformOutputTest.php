@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MainConfigNames;
 use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
 use Wikimedia\TestingAccessWrapper;
 
@@ -19,10 +20,10 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 		$repo = TestingAccessWrapper::newFromObject( $this->repo );
 		$repo->transformVia404 = true;
 
-		$this->setMWGlobals( [
-			'wgMinimumVideoPlayerSize' => 400,
-			'wgUseInstantCommons' => false,
-			'wgForeignFileRepos' => []
+		$this->overrideConfigValues( [
+			'MinimumVideoPlayerSize' => 400,
+			MainConfigNames::UseInstantCommons => false,
+			MainConfigNames::ForeignFileRepos => []
 		] );
 	}
 
@@ -34,7 +35,7 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 	 * @dataProvider providerIsPopUp
 	 */
 	public function testIsPopUp( $width, $minVideoSize, $expectPopup ) {
-		$this->setMwGlobals( 'wgMinimumVideoPlayerSize', $minVideoSize );
+		$this->overrideConfigValue( 'MinimumVideoPlayerSize', $minVideoSize );
 
 		// Note this file has a width of 400px and a height of 300px
 		$file = $this->dataFile( 'test5seconds.electricsheep.300x400.ogv', 'application/ogg' );

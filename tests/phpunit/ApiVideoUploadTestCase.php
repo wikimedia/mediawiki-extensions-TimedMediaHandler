@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiUploadTestCase;
 
 /**
@@ -50,9 +51,9 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->setMwGlobals( [
-			'wgUseInstantCommons' => false,
-			'wgForeignFileRepos' => []
+		$this->overrideConfigValues( [
+			MainConfigNames::UseInstantCommons => false,
+			MainConfigNames::ForeignFileRepos => []
 		] );
 	}
 
