@@ -4,15 +4,9 @@
 			"Liangent"
 		]
 	},
-	"timedmediahandler-desc": "Ba dastgirandae baroi parvandahoi  Ogg Theora va Vorbis, bo paxşkunandai JavaScript",
 	"timedmedia-ogg-short-audio": "Ogg $1 parvandai savtī, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 parvandai navorī, $2",
 	"timedmedia-ogg-short-general": "Ogg $1 parvandai rasona, $2",
-	"timedmedia-ogg-long-audio": "Ogg $1 parvandai savtī, tūl $2, $3",
-	"timedmedia-ogg-long-video": "Ogg $1 parvandai navorī, tūl $2, $4×$5 pikselho, $3",
-	"timedmedia-ogg-long-multiplexed": "Parvandai Ogg savtī/navorī pecida, $1, tūl $2, $4×$5 pikselho, dar maçmū' $3",
-	"timedmedia-ogg-long-general": "Parvandai rasonai Ogg, tūl $2, $3",
-	"timedmedia-ogg-long-error": "Parvandai ƣajrimiçozi ogg: $1",
 	"timedmedia-more": "Beştar...",
 	"timedmedia-dismiss": "Bastan",
 	"timedmedia-download": "Borgiriji parvanda",
