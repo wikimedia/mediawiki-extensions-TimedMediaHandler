@@ -366,7 +366,11 @@ class TextHandler {
 		$query = wfArrayToCgi( $params );
 
 		// Note: This will return false if scriptDirUrl is not set for repo.
-		return $this->file->getRepo()->makeUrl( $query, 'api' );
+		$url = $this->file->getRepo()->makeUrl( $query, 'api' );
+		if ( $url === false ) {
+			throw new RuntimeException( 'TimedText subtitles requires scriptDirUrl to be set in $wgForeignFileRepos' );
+		}
+		return $url;
 	}
 
 	/**
