@@ -38,7 +38,7 @@
 	"timedmedia-direct-link": "Muat turun",
 	"timedmedia-not-ready": "Belum sedia",
 	"timedmedia-completed-on": "Pentranskodan selesai pada $1",
-	"timedmedia-error-on": "Ralat dalam transkod pada $1",
+	"timedmedia-error-on": "Ralat pada $1",
 	"timedmedia-started-transcode": "Pentranskodan bermula $1 lalu. $2",
 	"timedmedia-percent-done": "Kira-kira $1% selesai",
 	"timedmedia-in-job-queue": "Ditambahkan ke dalam baris gilir kerja $1 lalu",
