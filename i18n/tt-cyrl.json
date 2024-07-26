@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Derslek",
+			"Don Alessandro",
 			"Mansur",
 			"Marat-avgust",
 			"Ерней",
@@ -12,7 +13,7 @@
 	"timedmedia-dismiss": "Ябу",
 	"timedmedia-download": "Файлны күчереп алу",
 	"timedmedia-duration": "Дәвамлыгы: $1",
-	"timedmedia-play-audio": "Аудионы уйнатырга",
-	"timedmedia-play-video": "Видеоны уйнатырга",
+	"timedmedia-play-audio": "Аудионы уйнату",
+	"timedmedia-play-video": "Видеоны уйнату",
 	"timedmedia-desc-link": "Файл турында мәгълүмат"
 }
