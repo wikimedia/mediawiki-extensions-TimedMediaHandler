@@ -34,7 +34,6 @@ class InstallerHooks implements LoadExtensionSchemaUpdatesHook {
 		}
 		$dirPatch = $dbType === 'mysql' ? $dir : $dir . $dbType . '/';
 
-		// 1.38
 		$updater->modifyExtensionField(
 			'transcode', 'transcode_time_error', $dirPatch . 'patch-transcode-transcode_timestamp.sql'
 		);
