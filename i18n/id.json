@@ -3,6 +3,7 @@
 		"authors": [
 			"Bennylin",
 			"Daud I.F. Argana",
+			"Ezagren",
 			"Farras",
 			"Irwangatot",
 			"IvanLanin",
@@ -53,7 +54,7 @@
 	"timedmedia-not-ready": "Belum siap",
 	"timedmedia-completed-on": "Selesai $1",
 	"timedmedia-error-on": "Galat pada $1",
-	"timedmedia-started-transcode": "Mulai $1 yang lalu. $2",
+	"timedmedia-started-transcode": "Dimulai $1. $2",
 	"timedmedia-percent-done": "Sekitar $1% selesai",
 	"timedmedia-in-job-queue": "Ditambahkan ke dalam antrian Job sejak $1 yang lalu.",
 	"timedmedia-unknown-target-size": "Ukuran target tidak diketahui, telah mengenkode $1",
