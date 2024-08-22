@@ -18,5 +18,6 @@
 	"timedmedia-ogg-long-multiplexed": "Ogg multipleksləşdirilmiş audio/video faylı, $1, uzunluğu: $2 , $4 × $5 piksel, ümumi $3, fayl ölçüsü: $6",
 	"timedmedia-mp3-long-audio": "MP3 audio faylı, uzunluğu $1, ümumilikdə $2, faylın ölçüsü: $3",
 	"timedmedia-status": "Status",
-	"timedmedia-direct-link": "Yüklə"
+	"timedmedia-direct-link": "Yüklə",
+	"right-transcode-status": "[[Special:TimedMediaHandler|Cari transkod fəaliyyəti haqqında məlumata]] baxmaq"
 }
