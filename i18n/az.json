@@ -23,5 +23,6 @@
 	"timedmedia-wav": "WAV",
 	"timedmedia-flac": "FLAC",
 	"timedmedia-source-file": "$1 mənbəyi",
-	"timedmedia-source-audio-file-desc": "Orijinal $1 faylı ($2)"
+	"timedmedia-source-audio-file-desc": "Orijinal $1 faylı ($2)",
+	"right-transcode-status": "[[Special:TimedMediaHandler|Cari transkod fəaliyyəti haqqında məlumata]] baxmaq"
 }
