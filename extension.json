@@ -15,7 +15,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "media",
 	"requires": {
-		"MediaWiki": ">= 1.42"
+		"MediaWiki": ">= 1.43"
 	},
 	"APIModules": {
 		"timedtext": {
@@ -133,7 +133,10 @@
 		"LoadExtensionSchemaUpdates": "installer",
 		"MediaWikiPerformAction": "iframe",
 		"RevisionFromEditComplete": "main",
-		"PageMoveComplete": [ "main", "timedtext" ],
+		"PageMoveComplete": [
+			"main",
+			"timedtext"
+		],
 		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "main",
 		"TitleMove": "main",
