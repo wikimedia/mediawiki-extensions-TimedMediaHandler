@@ -14,7 +14,8 @@
 			"Sonic N800",
 			"ديفيد",
 			"روخو",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Mohammed Qays"
 		]
 	},
 	"timedmediahandler-extensionname": "معالج الوسائط الزمنية",
@@ -83,6 +84,7 @@
 	"timedmedia-source-file": "$1 مصدر",
 	"timedmedia-source-file-desc": "الأصل ملف $1، $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "الملف $1 الأصلي ($2)",
+	"timedmedia-source-original": "المصدر",
 	"timedmedia-derivative-desc-160p.ogv": "انخفاض عرض النطاق الترددي أوج فيديو (160P)",
 	"timedmedia-derivative-desc-240p.ogv": "فيديو صغير امتداد Ogg (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "فيديو امتداد Ogg (360P)",
