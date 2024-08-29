@@ -536,7 +536,10 @@ class WebVideoTranscodeJob extends Job {
 	private function getCommand( string $name ) {
 		$fullName = 'tmh-' . strtolower( $name );
 		return $this->commandFactory
-			->createBoxed( 'timedmediahandler' )
+			->createBoxed(
+				'timedmediahandler',
+				(int)$this->config->get( 'TranscodeBackgroundTimeLimit' )
+			)
 			->disableNetwork()
 			->firejailDefaultSeccomp()
 			->routeName( $fullName );
