@@ -14,7 +14,8 @@
 			"Sonic N800",
 			"ديفيد",
 			"روخو",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"Mohammed Qays"
 		]
 	},
 	"timedmediahandler-extensionname": "معالج الوسائط الزمنية",
@@ -70,6 +71,7 @@
 	"timedmedia-reset-button-reset": "إعادة ضبط",
 	"timedmedia-reset-error": "خطأ في إعادة ضبط شغل التكويد.",
 	"timedmedia-reset-explanation": "إعادة ضبط هذا التكويد سيزيل أي ملف موجود (لو موجود)، وسيعيد إضافة التكويد لطابور الشغل. سيستغرق بعض الوقت لإعادة التكويد.",
+	"timedmedia-source-original": "المصدر",
 	"timedmedia-derivative-desc-160p.ogv": "انخفاض عرض النطاق الترددي أوج فيديو (160P)",
 	"timedmedia-derivative-desc-240p.ogv": "فيديو صغير امتداد Ogg (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "فيديو امتداد Ogg (360P)",
