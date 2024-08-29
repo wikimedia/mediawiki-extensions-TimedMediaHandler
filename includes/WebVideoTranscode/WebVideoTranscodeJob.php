@@ -47,17 +47,14 @@ class WebVideoTranscodeJob extends Job {
 	/** @var TempFSFile|null */
 	public $targetPlaylistFile;
 
-	/** @var string|null|false */
-	public $sourceFilePath;
-
 	/** @var File */
 	public $file;
 
 	/** @var FSFile|null */
 	public $source;
 
-	/** @var FSFile|null */
-	public $remuxSource;
+	/** @var string|null */
+	private $remuxVirtualUrl;
 
 	/** @var CommandFactory */
 	private $commandFactory;
@@ -175,22 +172,6 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * @return string|false
-	 */
-	private function getSourceFilePath() {
-		if ( !$this->sourceFilePath ) {
-			$file = $this->getFile();
-			$this->source = $file->repo->getLocalReference( $file->getPath() );
-			if ( !$this->source ) {
-				$this->sourceFilePath = false;
-			} else {
-				$this->sourceFilePath = $this->source->getPath();
-			}
-		}
-		return $this->sourceFilePath;
-	}
-
-	/**
 	 * Update the transcode table with failure time and error
 	 * @param string $transcodeKey
 	 * @param string $error
@@ -241,14 +222,6 @@ class WebVideoTranscodeJob extends Job {
 				$error = "Transcode key $transcodeKey not found, skipping";
 				$this->output( $error );
 				$this->setTranscodeError( $transcodeKey, $error );
-				return false;
-			}
-
-			// Validate the source exists:
-			if ( !$this->getSourceFilePath() || !is_file( $this->getSourceFilePath() ) ) {
-				$status = $this->title . ': Source not found ' . $this->getSourceFilePath();
-				$this->output( $status );
-				$this->setTranscodeError( $transcodeKey, $status );
 				return false;
 			}
 
@@ -327,15 +300,12 @@ class WebVideoTranscodeJob extends Job {
 			$remuxFrom = $options['remuxFrom'] ?? false;
 			if ( $remux && $remuxFrom ) {
 				foreach ( $remuxFrom as $altKey ) {
-					$altSource = WebVideoTranscode::getDerivativeFilePath( $file, $altKey );
+					$altVirtualUrl = WebVideoTranscode::getDerivativeFilePath( $file, $altKey );
 					$repo = $this->file->repo;
-					if ( $repo->fileExists( $altSource ) ) {
-						$remuxSource = $repo->getLocalReference( $altSource );
-						if ( $remuxSource ) {
-							$this->remuxSource = $remuxSource;
-							$twopass = false;
-							break;
-						}
+					if ( $repo->fileExists( $altVirtualUrl ) ) {
+						$this->remuxVirtualUrl = $altVirtualUrl;
+						$twopass = false;
+						break;
 					}
 				}
 			}
@@ -567,16 +537,9 @@ class WebVideoTranscodeJob extends Job {
 	 * @return true|string
 	 */
 	private function ffmpegEncode( $options, $passes = 0 ) {
-		if ( !is_file( $this->getSourceFilePath() ) ) {
-			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
-		}
 		// Environment variables for shellbox
 		$optsEnv = [];
-		if ( $this->remuxSource ) {
-			$sourcePath = $this->remuxSource->getPath();
-		} else {
-			$sourcePath = $this->getSourceFilePath();
-		}
+		$sourceFile = $this->getFile();
 
 		$interval = 10;
 		$fps = 0;
@@ -611,7 +574,7 @@ class WebVideoTranscodeJob extends Job {
 				}
 			}
 
-			if ( $this->remuxSource ) {
+			if ( $this->remuxVirtualUrl ) {
 				$optsEnv['TMH_OPTS_VIDEO'] .= ' -vcodec copy';
 				$optsEnv['TMH_REMUX'] = "yes";
 			} else {
@@ -696,7 +659,7 @@ class WebVideoTranscodeJob extends Job {
 				}
 			}
 
-			if ( !$this->remuxSource ) {
+			if ( !$this->remuxVirtualUrl ) {
 				// If necessary, add deinterlacing options
 				$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddDeinterlaceOptions( $options );
 				// Add size options:
@@ -755,6 +718,15 @@ class WebVideoTranscodeJob extends Job {
 		$this->useScript( $cmd, 'ffmpeg-encode.sh' );
 		// set up options that don't need mangling
 
+		if ( $this->remuxVirtualUrl ) {
+			$addStatus = $sourceFile->getRepo()->addShellboxInputFile(
+				$cmd, 'original.video', $this->remuxVirtualUrl );
+		} else {
+			$addStatus = $sourceFile->addToShellboxCommand( $cmd, 'original.video' );
+		}
+		if ( !$addStatus->isOK() ) {
+			return 'source file is missing. Encoding failed.';
+		}
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
 		$wallTimeLimit = (int)$this->config->get( 'TranscodeBackgroundTimeLimit' );
 		$cpuTimeLimit = (int)$this->config->get( 'FFmpegThreads' ) * $wallTimeLimit;
@@ -765,7 +737,6 @@ class WebVideoTranscodeJob extends Job {
 		$outputFile = 'transcoded.' . pathinfo( $target, PATHINFO_EXTENSION );
 		// Execute the conversion
 		$cmd->outputFileToFile( $outputFile, $this->getTargetEncodePath() )
-			->inputFileFromFile( 'original.video', $sourcePath )
 			->includeStderr()
 			->environment( [
 				'TMH_OUTPUT_FILE'      => $outputFile,
@@ -1102,9 +1073,6 @@ class WebVideoTranscodeJob extends Job {
 	 * @return true|string
 	 */
 	private function midiToAudioEncode( $options ) {
-		if ( !is_file( $this->getSourceFilePath() ) ) {
-			return "source file is missing, " . $this->getSourceFilePath() . ". Encoding failed.";
-		}
 		$cmd = $this->getCommand( 'miditoaudio' );
 		$this->useScript( $cmd, 'midi-encode.sh' );
 		// set up options
@@ -1121,13 +1089,15 @@ class WebVideoTranscodeJob extends Job {
 				$optsEnv['TMH_OPT_' . $label] = Shell::escape( $options[$opt] );
 			}
 		}
+		if ( !$this->getFile()->addToShellboxCommand( $cmd, 'input.mid' )->isOK() ) {
+			return 'source file is missing. Encoding failed.';
+		}
 		$outputFile = 'output_audio.' . pathinfo( $this->getTargetEncodePath(), PATHINFO_EXTENSION );
 		// Execute the conversion
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
 		$wallTimeLimit = (int)$this->config->get( 'TranscodeBackgroundTimeLimit' );
 		$cpuTimeLimit = (int)$this->config->get( 'FFmpegThreads' ) * $wallTimeLimit;
 		$cmd->outputFileToFile( $outputFile, $this->getTargetEncodePath() )
-			->inputFileFromFile( 'input.mid', $this->getSourceFilePath() )
 			->includeStderr()
 			->environment( [
 				'TMH_FLUIDSYNTH_PATH' => $this->config->get( 'TmhFluidsynthLocation' ),
