@@ -276,10 +276,10 @@ class TimedTextPage extends Article {
 	private function getErrorsAndWarnings( StatusValue $status ): string {
 		$results = [];
 		foreach ( $status->getErrorsByType( 'error' ) as $error ) {
-			$results[] = Html::errorBox( wfMessage( $error[ 'message' ], $error[ 'params' ] ) );
+			$results[] = Html::errorBox( wfMessage( $error[ 'message' ], $error[ 'params' ] )->parse() );
 		}
 		foreach ( $status->getErrorsByType( 'warning' ) as $error ) {
-			$results[] = Html::warningBox( wfMessage( $error[ 'message' ], $error[ 'params' ] ) );
+			$results[] = Html::warningBox( wfMessage( $error[ 'message' ], $error[ 'params' ] )->parse() );
 		}
 		return implode( "\n", $results );
 	}
