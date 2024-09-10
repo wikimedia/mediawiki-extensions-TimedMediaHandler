@@ -50,10 +50,7 @@ class TranscodableChecker {
 	 */
 	public function isTranscodableFile( $file ) {
 		// don't show the transcode table if transcode is disabled
-		if (
-			!$this->config->get( 'EnableTranscode' ) &&
-			!$this->config->get( 'EnabledAudioTranscodeSet' )
-		) {
+		if ( !$this->config->get( 'EnableTranscode' ) ) {
 			return false;
 		}
 		// Can't find file
