@@ -31,7 +31,9 @@
 			"Wladek92",
 			"BlueCamille",
 			"MacOS Weed",
-			"Saimawnkham"
+			"Saimawnkham",
+			"FoeNyx",
+			"Goombiis"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -72,7 +74,7 @@
 	"timedmedia-transcodebitrate": "Débit",
 	"timedmedia-transcodeduration": "Durée d’encodage",
 	"timedmedia-transcodeinfo": "Format",
-	"timedmedia-actions": "လွင်ႈႁဵတ်းသၢင်ႈ",
+	"timedmedia-actions": "Actions",
 	"timedmedia-direct-link": "Télécharger",
 	"timedmedia-not-ready": "Pas prêt",
 	"timedmedia-completed-on": "Terminé à $1",
@@ -103,6 +105,7 @@
 	"timedmedia-source-file": "Source $1",
 	"timedmedia-source-file-desc": "Fichier $1 original, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Fichier original $1 ($2)",
+	"timedmedia-source-original": "Source",
 	"timedmedia-derivative-160p.ogv": "Ogg 160p",
 	"timedmedia-derivative-desc-160p.ogv": "Vidéo Ogg bas débit (160p)",
 	"timedmedia-derivative-240p.ogv": "Ogg 240p",
@@ -167,6 +170,10 @@
 	"timedmedia-derivative-desc-1440p.mp4": "MP4 H.264 UHD (1440p)",
 	"timedmedia-derivative-2160p.mp4": "H264 2160p",
 	"timedmedia-derivative-desc-2160p.mp4": "MP4 H.264 UHD 4K (2160p)",
+	"timedmedia-derivative-stereo.audio.opus.mp4": "Stéréo (Opus)",
+	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Audio en streaming (stéréo Opus)",
+	"timedmedia-derivative-stereo.audio.mp3": "Stéréo (MP3)",
+	"timedmedia-derivative-desc-stereo.audio.mp3": "Streaming audio (MP3 stéréo)",
 	"timedmedia-derivative-ogg": "Ogg Vorbis",
 	"timedmedia-derivative-desc-ogg": "Ogg Vorbis",
 	"timedmedia-derivative-opus": "Opus",
