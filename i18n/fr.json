@@ -31,7 +31,9 @@
 			"Wladek92",
 			"BlueCamille",
 			"MacOS Weed",
-			"Saimawnkham"
+			"Saimawnkham",
+			"FoeNyx",
+			"Goombiis"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -72,7 +74,7 @@
 	"timedmedia-transcodebitrate": "Débit",
 	"timedmedia-transcodeduration": "Durée d’encodage",
 	"timedmedia-transcodeinfo": "Format",
-	"timedmedia-actions": "လွင်ႈႁဵတ်းသၢင်ႈ",
+	"timedmedia-actions": "Actions",
 	"timedmedia-direct-link": "Télécharger",
 	"timedmedia-not-ready": "Pas prêt",
 	"timedmedia-completed-on": "Terminé à $1",
