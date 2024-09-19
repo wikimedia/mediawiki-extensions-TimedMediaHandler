@@ -313,7 +313,7 @@ class WebVideoTranscodeJob extends Job {
 			// We can't just leave the connection open either or it will
 			// eat up resources and block new connections, so make sure
 			// everything is dead and gone.
-			$this->lbFactory->closeAll();
+			$this->lbFactory->closeAll( __METHOD__ );
 
 			// Check the codec see which encode method to call;
 			$streaming = $options['streaming'] ?? false;
@@ -437,7 +437,7 @@ class WebVideoTranscodeJob extends Job {
 				$this->lbFactory->commitPrimaryChanges( __METHOD__ );
 				$this->lbFactory->flushPrimarySessions( __METHOD__ );
 				$this->lbFactory->flushReplicaSnapshots( __METHOD__ );
-				$this->lbFactory->closeAll();
+				$this->lbFactory->closeAll( __METHOD__ );
 
 				// Copy derivative from the FS into storage at $finalDerivativeFilePath
 				$result = $file->getRepo()->quickImport(
