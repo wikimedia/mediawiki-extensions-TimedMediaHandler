@@ -363,7 +363,36 @@ class WebVideoTranscode {
 		],
 		*/
 
-		// Optional back-compat
+		// Optional back-compat for iOS before 17.4 (which adds consistent WebM)
+		// Flat files because HLS support varies based on iOS version
+		//
+		// Motion-JPEG compresses very poorly, but works consistently.
+		// AAC-LC for the audio track:
+		'144p.mjpeg.mov' => [
+			'maxSize' => '256x144',
+			'fpsmax' => '30',
+			'videoBitrate' => '1000k',
+			'videoCodec' => 'mjpeg',
+			'audioCodec' => 'mp3',
+			'audioBitrate' => '128k',
+			'samplerate' => '48000',
+			'channels' => '2',
+			'type' => 'video/quicktime'
+		],
+		// MPEG-4 Visual compresses a lot better, and allows a more
+		// suitable resolution for online viewing.
+		// AAC-LC for the audio track:
+		'360p.mpeg4.mov' => [
+			'maxSize' => '640x360',
+			'videoBitrate' => '1000k',
+			'twopass' => 'true',
+			'videoCodec' => 'mpeg4',
+			'audioCodec' => 'mp3',
+			'audioBitrate' => '128k',
+			'samplerate' => '48000',
+			'channels' => '2',
+			'type' => 'video/quicktime',
+		],
 		// Streaming Motion-JPEG track
 		//
 		// These are video-only, in fragmented .mov that allows adaptive streaming
@@ -380,42 +409,6 @@ class WebVideoTranscode {
 			'type' => 'video/quicktime; codecs="jpeg"',
 			'streaming' => 'hls',
 			'intraframe' => true,
-		],
-		'180p.video.mpeg4.mp4' => [
-			'maxSize' => '320x180',
-			'videoBitrate' => '380k',
-			'twopass' => 'true',
-			'videoCodec' => 'mpeg4',
-			'noaudio' => 'true',
-			'type' => 'video/mp4; codecs="mp4v.20.5"',
-			'streaming' => 'hls',
-		],
-		'240p.video.mpeg4.mp4' => [
-			'maxSize' => '426x240',
-			'videoBitrate' => '720k',
-			'twopass' => 'true',
-			'videoCodec' => 'mpeg4',
-			'noaudio' => 'true',
-			'type' => 'video/mp4; codecs="mp4v.20.5"',
-			'streaming' => 'hls',
-		],
-		'360p.video.mpeg4.mp4' => [
-			'maxSize' => '640x360',
-			'videoBitrate' => '1280k',
-			'twopass' => 'true',
-			'videoCodec' => 'mpeg4',
-			'noaudio' => 'true',
-			'type' => 'video/mp4; codecs="mp4v.20.5"',
-			'streaming' => 'hls',
-		],
-		'480p.video.mpeg4.mp4' => [
-			'maxSize' => '854x480',
-			'videoBitrate' => '2500k',
-			'twopass' => 'true',
-			'videoCodec' => 'mpeg4',
-			'noaudio' => 'true',
-			'type' => 'video/mp4; codecs="mp4v.20.5"',
-			'streaming' => 'hls',
 		],
 
 		// VP9 streaming tracks

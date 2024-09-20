@@ -94,15 +94,16 @@ class OgvJsSupport {
 			const mediaType = source.getAttribute( 'type' );
 			const canPlay = mediaElement.canPlayType( mediaType );
 			if ( canPlay ) {
-				if ( mediaType === 'video/mpeg' && canPlay === 'maybe' ) {
-					// Safari reports "maybe" for "video/mpeg", then doesn't
-					// actually support it based on the found video codecs.
-					// This produces false positives on old iOS/macOS devices
-					// that don't support VP9 in hw. Exclude these, so only
-					// those returning 'probably' or another sensible code.
-					// But do allow 'maybe' through on other types, namely we
-					// need to handle it for application/vnd.apple.mpegurl!
-					continue;
+				if ( canPlay === 'maybe' ) {
+					if ( mediaType === 'video/mpeg' ) {
+						// Safari reports "maybe" for "video/mpeg", then doesn't
+						// actually support it based on the found video codecs.
+						// This produces false positives on old iOS/macOS devices
+						// that don't support VP9 in hw. Exclude these, so only
+						// those returning 'probably' or another sensible code.
+						continue;
+					}
+					// Allow others such as video/quicktime through...
 				}
 				return true;
 			}
