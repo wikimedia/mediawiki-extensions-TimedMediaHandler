@@ -575,6 +575,9 @@
 		"video/mpeg": "MediaWiki\\TimedMediaHandler\\Handlers\\MPEGHandler\\MPEGHandler",
 		"video/webm": "MediaWiki\\TimedMediaHandler\\Handlers\\WebMHandler\\WebMHandler"
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"JobClasses": {
 		"webVideoTranscode": {
 			"class": "MediaWiki\\TimedMediaHandler\\WebVideoTranscode\\WebVideoTranscodeJob",
