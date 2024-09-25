@@ -580,6 +580,10 @@ class WebVideoTranscodeJob extends Job {
 
 		$interval = 10;
 		$fps = 0;
+		$streaming = $options['streaming'] ?? false;
+		$transcodeKey = $this->params[ 'transcodeKey' ];
+		$extension = substr( $transcodeKey, strrpos( $transcodeKey, '.' ) + 1 );
+
 		// Set up all the video-related options
 		if ( isset( $options['novideo'] ) ) {
 			$optsEnv['TMH_OPTS_VIDEO'] = '-vn';
@@ -633,13 +637,20 @@ class WebVideoTranscodeJob extends Job {
 			}
 
 			// needed for 2-pass & streaming to override file type detection
-			if ( $options['videoCodec'] === 'h264' ||
-				$options['videoCodec'] === 'mpeg4' ||
-				isset( $options['streaming'] ) ) {
-				$optsEnv['TMH_OPTS_VIDEO'] .= ' -f mp4';
-			} elseif ( $options['videoCodec'] === 'vp8' ||
-				$options['videoCodec'] === 'vp9' ) {
-				$optsEnv['TMH_OPTS_VIDEO'] .= ' -f webm';
+			switch ( $extension ) {
+				case 'webm':
+				case 'mp3':
+				case 'mp4':
+				case 'mov':
+					$optsEnv['TMH_OPTS_VIDEO'] .= ' -f ' . $extension;
+					break;
+				case 'ogg':
+				case 'ogv':
+				case 'oga':
+					$optsEnv['TMH_OPTS_VIDEO'] .= ' -f ogg';
+					break;
+				default:
+					// assume defaults work
 			}
 
 			// Check for keyframeInterval
@@ -705,10 +716,6 @@ class WebVideoTranscodeJob extends Job {
 		// Audio options
 		$optsEnv['TMH_OPT_NOAUDIO'] = isset( $options['noaudio'] ) ? "yes" : "no";
 		$optsEnv['TMH_OPTS_AUDIO'] = $this->ffmpegAddAudioOptions( $options );
-
-		$streaming = $options['streaming'] ?? false;
-		$transcodeKey = $this->params[ 'transcodeKey' ];
-		$extension = substr( $transcodeKey, strrpos( $transcodeKey, '.' ) + 1 );
 
 		if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
 			$optsEnv['TMH_MOVFLAGS'] = '-movflags +faststart';

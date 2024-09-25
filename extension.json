@@ -289,6 +289,8 @@
 				"1080p.mp4": false,
 				"1440p.mp4": false,
 				"2160p.mp4": false,
+				"144p.mjpeg.mov": false,
+				"360p.mpeg4.mov": false,
 				"stereo.audio.mp3": false,
 				"stereo.audio.opus.mp4": false,
 				"144p.video.mjpeg.mov": false,
