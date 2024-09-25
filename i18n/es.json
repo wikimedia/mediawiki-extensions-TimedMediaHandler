@@ -24,7 +24,8 @@
 			"Sanbec",
 			"Spacebirdy",
 			"Translationista",
-			"Wizardeck"
+			"Wizardeck",
+			"Eulalio"
 		]
 	},
 	"timedmediahandler-desc": "Controlador de sonido, vídeo y texto sincronizado, compatible con los formatos WebM, Ogg Theora, Vorbis y srt",
@@ -81,9 +82,12 @@
 	"timedmedia-reset-button-reset": "Restablecer",
 	"timedmedia-reset-error": "Error al restablecer el trabajo de transcodificación.",
 	"timedmedia-reset-explanation": "Restablecer esta transcodificación eliminará cualquier archivo existente (si existe), y volverá a añadir la transcodificación a la cola de trabajos. Llevará algún tiempo repetir la transcodificación.",
+	"timedmedia-error-details": "Detalles del error de transcodificación",
+	"timedmedia-error-dismiss": "Descartar",
 	"timedmedia-source-file": "Fuente $1",
 	"timedmedia-source-file-desc": "Archivo $1 original, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Archivo $1 original ($2)",
+	"timedmedia-source-original": "Fuente",
 	"timedmedia-derivative-desc-160p.ogv": "Video en formato Ogg de bajo ancho de banda (160 P)",
 	"timedmedia-derivative-desc-240p.ogv": "Vídeo Ogg pequeño (240P)",
 	"timedmedia-derivative-desc-360p.ogv": "Vídeo Ogg (360P)",
@@ -92,7 +96,7 @@
 	"timedmedia-derivative-desc-1080p.ogv": "Vídeo Ogg Full HD (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "Bajo ancho de banda, WebM (160P)",
 	"timedmedia-derivative-desc-240p.webm": "WebM pequeño (240P)",
-	"timedmedia-derivative-desc-360p.webm": "WebM para la web (360P)",
+	"timedmedia-derivative-desc-360p.webm": "WebM (360P)",
 	"timedmedia-derivative-desc-480p.webm": "WebM SD (480P)",
 	"timedmedia-derivative-desc-720p.webm": "WebM HD (720P)",
 	"timedmedia-derivative-desc-1080p.webm": "WebM Full HD (1080P)",
@@ -152,6 +156,10 @@
 	"orphanedtimedtext-unsupported": "Esta página especial sólo se admite en base de datos MySQL.",
 	"videojs-more-information": "Más información",
 	"videojs-quality": "Calidad de vídeo",
+	"transcodestatistics": "Estadísticas de transcodificación",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 subtítulos para el clip: $2",
-	"timedmedia-timedtext-title-create-subtitles": "No se ha encontrado subtítulos $1 para el clip: $2"
+	"timedmedia-timedtext-title-create-subtitles": "No se ha encontrado subtítulos $1 para el clip: $2",
+	"m3u8-error-create-temp": "No se pudo crear el archivo temporal para $1",
+	"m3u8-error-write-temp": "No se pudo escribir el archivo temporal para $1",
+	"m3u8-error-save-playlist": "Errores al guardar la lista de reproducción HLS $1"
 }
