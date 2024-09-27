@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Bharathesha Alasandemajalu",
+			"Pragathi. BH",
 			"VASANTH S.N.",
 			"Vishwanatha Badikana"
 		]
 	},
 	"timedmedia-reset-button-cancel": "ಪಿರಸರಿ ಮಾನ್ಪೊಂಡ್ಚಿ",
 	"timedmedia-reset-button-dismiss": "ದೆತ್ತ್ ಪಾಡ್ಲೆ",
-	"timedmedia-reset-button-reset": "ಪಿರ ಸರಿಮಾನ್ಪಿ"
+	"timedmedia-reset-button-reset": "ಪಿರ ಸರಿಮಾನ್ಪಿ",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "ಕ್ವಿಕ್ ಟೈಮ್ ವಿಡಿಯೋ (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "ಕ್ವಿಕ್ ಟೈಮ್ ವಿಡಿಯೋ (360p MPEG-4 Visual)"
 }

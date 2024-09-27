@@ -101,6 +101,8 @@
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "Video QuickTime (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "Video QuickTime (360p MPEG-4 Visual)",
 	"timedmedia-resolution-120": "Bassa 120p",
 	"timedmedia-resolution-160": "Bassa 160p",
 	"timedmedia-resolution-180": "Bassa 180p",

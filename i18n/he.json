@@ -96,6 +96,8 @@
 	"timedmedia-derivative-desc-1080p.mp4": "MP4 H.264 באיכות HD מלאה (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264&rlm; (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264&rlm; (2160P)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "וידאו QuickTime‏ (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "וידאו QuickTime‏ (360p MPEG-4 חזותי)",
 	"timedmedia-derivative-desc-m3u8": "הזרמת בשידור חי ב־HTTP",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "סטראו (אופוס)",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "הזרמת אודיו (אופוס סטראו)",

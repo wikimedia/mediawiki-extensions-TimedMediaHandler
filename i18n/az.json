@@ -75,6 +75,8 @@
 	"timedmedia-derivative-desc-240p.vp9.webm": "Kiçik VP9 (240P)",
 	"timedmedia-derivative-desc-160p.mp4": "Aşağı bant genişliyi olan MP4 H.264 (160P)",
 	"timedmedia-derivative-desc-240p.mp4": "Kiçik MP4 H.264 (240P)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "QuickTime videosu (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "QuickTime videosu (360p MPEG-4 vizual)",
 	"timedmedia-derivative-desc-m3u8": "HTTP Canlı Yayım",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Səs axını (Opus stereo)",
 	"timedmedia-derivative-desc-stereo.audio.mp3": "Səs axını (MP3 stereo)",
