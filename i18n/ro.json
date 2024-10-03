@@ -9,7 +9,8 @@
 			"Minisarm",
 			"NGC 54",
 			"Stelistcristi",
-			"Strainu"
+			"Strainu",
+			"Paloi Sciurala"
 		]
 	},
 	"timedmediahandler-desc": "Gestionar pentru fișiere audio, video și subtitrări sincronizate, cu suport pentru formatele WebM, Ogg Theora, Vorbis, srt",
@@ -30,6 +31,7 @@
 	"timedmedia-more": "Mai mult…",
 	"timedmedia-dismiss": "Închide",
 	"timedmedia-download": "Descarcă fișierul",
+	"timedmedia-play-video": "Redă video",
 	"timedmedia-desc-link": "Despre acest fișier",
 	"timedmedia-status-header": "Starea codificării",
 	"timedmedia-update-status": "Actualizează starea codificării",
