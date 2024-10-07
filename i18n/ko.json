@@ -99,6 +99,8 @@
 	"timedmedia-derivative-desc-1080p.mp4": "풀 HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "퀵타임 비디오 (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "퀵타임 비디오 (360p MPEG-4 비주얼)",
 	"timedmedia-resolution-120": "낮은 120p",
 	"timedmedia-resolution-160": "낮은 160p",
 	"timedmedia-resolution-180": "낮은 180p",
