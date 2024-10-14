@@ -8,6 +8,7 @@
 			"Borhan",
 			"Elias Ahmmad",
 			"MdsShakil",
+			"San1joy23",
 			"Zaheen",
 			"আফতাবুজ্জামান"
 		]
@@ -74,6 +75,8 @@
 	"timedmedia-derivative-desc-1080p.webm": "পূর্ণ HD WebM (১০৮০P)",
 	"timedmedia-derivative-desc-240p.vp9.webm": "ছোট VP৯ (২৪০P)",
 	"timedmedia-derivative-desc-240p.mp4": "ছোট MP4 H.২৬৪ (২৪০P)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "কুইকটাইম ভিডিও (144পি এমজেপিইজি)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "কুইকটাইম ভিডিও (360পি এমপিইজি-4 ভিজ্যুয়াল)",
 	"timedmedia-derivative-desc-m3u8": "এইচটিটিপি লাইভ স্ট্রিমিং",
 	"timedmedia-derivative-desc-480p.video.vp9.mp4": "স্ট্রিমিং ভিডিও (৪৮০পি ভিপি৯)",
 	"timedmedia-resolution-120": "নিম্ন ১২০p",
