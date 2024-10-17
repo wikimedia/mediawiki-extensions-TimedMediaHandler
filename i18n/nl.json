@@ -102,6 +102,8 @@
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "Full HD MP4 H.264 (1080P)",
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "QuickTime-video (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "QuickTime-video (360p MPEG-4 visueel)",
 	"timedmedia-derivative-desc-m3u8": "HTTP-livestreaming",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "Stereo (Opus)",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Audiostreaming (Opus stereo)",
