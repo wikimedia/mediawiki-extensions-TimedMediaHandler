@@ -32,7 +32,7 @@ use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
 use MediaWiki\Title\Title;
-use TempFSFile;
+use Wikimedia\FileBackend\FSFile\TempFSFile;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 /**

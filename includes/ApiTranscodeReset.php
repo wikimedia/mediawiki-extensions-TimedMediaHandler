@@ -2,10 +2,10 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use ApiBase;
-use ApiMain;
 use File;
 use ManualLogEntry;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiMain;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use RepoGroup;

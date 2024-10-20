@@ -8,6 +8,8 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\Content\TextContent;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\TimedText;
 use MediaWiki\TimedMediaHandler\TimedTextPage;

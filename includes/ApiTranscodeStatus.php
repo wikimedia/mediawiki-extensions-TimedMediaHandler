@@ -9,9 +9,9 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use ApiQuery;
-use ApiQueryBase;
 use File;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use RepoGroup;
 

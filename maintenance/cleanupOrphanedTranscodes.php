@@ -8,6 +8,7 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 class CleanupOrphanedTranscodes extends Maintenance {

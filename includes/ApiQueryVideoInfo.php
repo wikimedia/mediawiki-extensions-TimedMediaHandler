@@ -9,8 +9,8 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use ApiBase;
-use ApiQueryImageInfo;
+use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiQueryImageInfo;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 

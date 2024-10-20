@@ -12,9 +12,10 @@ namespace MediaWiki\TimedMediaHandler;
 
 use Article;
 use File;
-use LanguageCode;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Language\LanguageCode;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
@@ -23,7 +24,6 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use StatusValue;
-use TextContent;
 
 class TimedTextPage extends Article {
 

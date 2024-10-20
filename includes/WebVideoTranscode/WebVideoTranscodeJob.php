@@ -10,7 +10,6 @@ namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use Exception;
 use File;
-use FSFile;
 use InvalidArgumentException;
 use Job;
 use LogicException;
@@ -25,7 +24,8 @@ use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use RepoGroup;
 use Shellbox\Command\BoxedCommand;
-use TempFSFile;
+use Wikimedia\FileBackend\FSFile\FSFile;
+use Wikimedia\FileBackend\FSFile\TempFSFile;
 use Wikimedia\Rdbms\ILBFactory;
 
 /**
