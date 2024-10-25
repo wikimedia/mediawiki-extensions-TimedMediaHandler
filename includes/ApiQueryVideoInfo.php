@@ -10,6 +10,7 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\Api\ApiBase;
+use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryImageInfo;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
@@ -17,7 +18,7 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	/** @inheritDoc */
-	public function __construct( $query, $moduleName, $prefix = 'vi' ) {
+	public function __construct( ApiQuery $query, string $moduleName, ?string $prefix = 'vi' ) {
 		// We allow a subclass to override the prefix, to create a related API module.
 		// Some other parts of MediaWiki construct this with a null $prefix,
 		// which used to be ignored when this only took two arguments

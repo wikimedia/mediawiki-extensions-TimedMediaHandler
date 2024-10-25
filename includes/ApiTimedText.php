@@ -49,17 +49,10 @@ use WikiPage;
  * @emits error.code timedtext-notfound, invalidlang, invalid-title
  */
 class ApiTimedText extends ApiBase {
-	/** @var LanguageNameUtils */
-	private $languageNameUtils;
-
-	/** @var RepoGroup */
-	private $repoGroup;
-
-	/** @var WANObjectCache */
-	private $cache;
-
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
+	private LanguageNameUtils $languageNameUtils;
+	private RepoGroup $repoGroup;
+	private WANObjectCache $cache;
+	private WikiPageFactory $wikiPageFactory;
 
 	/** @var int version of the cache format */
 	private const CACHE_VERSION = 1;
@@ -67,17 +60,9 @@ class ApiTimedText extends ApiBase {
 	/** @var int default 24 hours */
 	private const CACHE_TTL = 86400;
 
-	/**
-	 * @param ApiMain $main
-	 * @param string $action
-	 * @param LanguageNameUtils $languageNameUtils
-	 * @param RepoGroup $repoGroup
-	 * @param WANObjectCache $cache
-	 * @param WikiPageFactory $wikiPageFactory
-	 */
 	public function __construct(
 		ApiMain $main,
-		$action,
+		string $action,
 		LanguageNameUtils $languageNameUtils,
 		RepoGroup $repoGroup,
 		WANObjectCache $cache,

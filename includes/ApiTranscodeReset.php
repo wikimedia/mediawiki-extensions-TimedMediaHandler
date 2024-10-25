@@ -20,14 +20,9 @@ use Wikimedia\Rdbms\IConnectionProvider;
  * @ingroup API
  */
 class ApiTranscodeReset extends ApiBase {
-	/** @var IConnectionProvider */
-	private $dbProvider;
-
-	/** @var RepoGroup */
-	private $repoGroup;
-
-	/** @var TranscodableChecker */
-	private $transcodableChecker;
+	private IConnectionProvider $dbProvider;
+	private RepoGroup $repoGroup;
+	private TranscodableChecker $transcodableChecker;
 
 	/**
 	 * @param ApiMain $main
@@ -37,7 +32,7 @@ class ApiTranscodeReset extends ApiBase {
 	 */
 	public function __construct(
 		ApiMain $main,
-		$action,
+		string $action,
 		IConnectionProvider $dbProvider,
 		RepoGroup $repoGroup
 	) {
