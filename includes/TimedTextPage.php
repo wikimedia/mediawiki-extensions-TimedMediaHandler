@@ -326,7 +326,7 @@ class TimedTextPage extends Article {
 		$file = $this->getCorrespondingFile();
 		if ( !$this->getPage()->exists() ) {
 			if ( $file && $file->isLocal() ) {
-				$this->renderStatus->warning( 'timedmedia-subtitle-no-subtitles' );
+				$this->renderStatus->warning( 'timedmedia-subtitle-no-subtitles', $languageName );
 			}
 			return '';
 		}
