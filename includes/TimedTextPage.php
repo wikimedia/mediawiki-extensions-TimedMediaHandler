@@ -112,7 +112,7 @@ class TimedTextPage extends Article {
 		// getOldID has side effects
 		$oldid = $this->getOldID();
 
-		if ( $this->mRedirectUrl || isset( $diff ) || $this->getTitle()->getNamespace() !== NS_TIMEDTEXT ) {
+		if ( $this->mRedirectUrl || $diff !== null || $this->getTitle()->getNamespace() !== NS_TIMEDTEXT ) {
 			parent::view();
 			return;
 		}
