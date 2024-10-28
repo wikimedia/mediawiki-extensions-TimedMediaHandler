@@ -152,6 +152,8 @@
 	"timedmedia-derivative-desc-1440p.mp4": "超高清MP4 H.264（1440P）",
 	"timedmedia-derivative-2160p.mp4": "H264 2160P",
 	"timedmedia-derivative-desc-2160p.mp4": "4K超高清MP4 H.264（2160P）",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "QuickTime视频（144p MJPEG）",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "QuickTime视频（360p MPEG-4视觉）",
 	"timedmedia-derivative-m3u8": "HLS",
 	"timedmedia-derivative-desc-m3u8": "HTTP 直播",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "立体声（Opus）",
