@@ -70,7 +70,6 @@
 	"timedmedia-reset-button-reset": "Visszaállítás",
 	"timedmedia-reset-error": "Hiba történt az átkódolás visszaállítása közben.",
 	"timedmedia-reset-explanation": "Az átkódolás visszaállítása eltávolítja a létező fájlt (ha van ilyen), és újra hozzáadja az átkódolást a feladatsorhoz. Némi időt igénybe fog venni az újabb átkódolás.",
-	"timedmedia-error-dismiss": "Elvetés",
 	"timedmedia-source-file": "Forrás ($1)",
 	"timedmedia-source-file-desc": "Eredeti $1 fájl, $2 × $3 ($4)",
 	"timedmedia-source-audio-file-desc": "Eredeti $1 fájl ($2)",

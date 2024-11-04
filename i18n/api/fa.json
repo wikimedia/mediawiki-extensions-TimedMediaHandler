@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ebraminio",
-			"Mehran"
+			"Mehran",
+			"Ebrahim"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "گرفتن وضعیت کذگذاری برای یک صفحه مشخص شده.",

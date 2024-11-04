@@ -1,8 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong",
-			"Amire80"
+			"Ykhwong"
 		]
 	},
 	"apihelp-query+videoinfo-example-1": "[[:File:Folgers.ogv]]에 관한 정보를 가져옵니다",
