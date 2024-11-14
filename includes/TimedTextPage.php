@@ -156,7 +156,7 @@ class TimedTextPage extends Article {
 		$message = $this->getPage()->exists() ?
 			'timedmedia-timedtext-title-edit-subtitles' :
 			'timedmedia-timedtext-title-create-subtitles';
-		$out->setPageTitleMsg( wfMessage( $message, $languageName, $this->getCorrespondingFileTitle() ) );
+		$out->setPageTitleMsg( wfMessage( $message, $languageName, $this->getCorrespondingFileTitle() ?? '' ) );
 
 		// Attempt to render the content
 		$fileHtml = $this->getFileHTML();
