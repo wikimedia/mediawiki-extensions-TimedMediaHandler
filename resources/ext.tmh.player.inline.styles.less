@@ -14,6 +14,13 @@
 			/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
 			font-size: 13px;
 		}
+
+		.vjs-custom-control-spacer {
+			flex: 1 1 auto;
+			min-width: 0;
+			/* nbsp takes up space on Safari and this would not size to 0 */
+			font-size: 0;
+		}
 	}
 	/* We force the size of player to avoid reflows after loading the JS */
 	audio.video-js {
@@ -48,8 +55,7 @@
 	}
 	/* push other controls to be right aligned */
 	.vjs-custom-control-spacer {
-		display: block;
-		flex: 1 1 auto;
+		display: flex;
 	}
 	/* Show time position and duration */
 	.vjs-time-control {
