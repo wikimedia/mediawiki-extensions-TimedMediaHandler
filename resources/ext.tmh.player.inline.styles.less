@@ -21,10 +21,21 @@
 			/* nbsp takes up space on Safari and this would not size to 0 */
 			font-size: 0;
 		}
+
+		/* Allow controlbar to overflow to 2 rows of controls */
+		.vjs-control-bar {
+			flex-wrap: wrap;
+			height: auto;
+			min-height: 3em;
+		}
+
+		.vjs-control {
+			height: 3em;
+		}
 	}
 	/* We force the size of player to avoid reflows after loading the JS */
 	audio.video-js {
-		height: 3em;
+		min-height: 3em;
 		/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
 		font-size: 10px;
 	}
@@ -39,12 +50,7 @@
 .video-js.vjs-high-controls:not( .vjs-audio ) {
 	/* Position the progress control above the other controls */
 	.vjs-control-bar {
-		flex-wrap: wrap;
-		height: 5em;
-	}
-
-	.vjs-control {
-		height: 3em;
+		min-height: 5em;
 	}
 
 	.vjs-progress-control {
@@ -102,7 +108,8 @@
 /* Audio player skin */
 .video-js.vjs-audio {
 	&:not( .vjs-fill ) {
-		height: 3em;
+		display: flex;
+		height: 3em; /* videojs sets this to 32px */
 	}
 
 	/* stylelint-disable-next-line no-descending-specificity */
