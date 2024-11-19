@@ -4,7 +4,7 @@ use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
 /**
- * @covers MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler
+ * @covers \MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler
  */
 class OggHandlerTest extends TimedMediaHandlerTestCase {
 
