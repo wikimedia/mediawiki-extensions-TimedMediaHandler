@@ -163,7 +163,13 @@ class TimedTextPage extends Article {
 		$timedTextHtml = $this->getTimedTextHTML( $out, $languageName );
 
 		// Generate the page
-		$out->addHTML( $this->getErrorsAndWarnings( $this->renderStatus ) );
+		$warningsAndErrors = $this->getErrorsAndWarnings( $this->renderStatus );
+		$out->addHTML( $warningsAndErrors );
+		if ( $warningsAndErrors ) {
+			$out->addModuleStyles( [
+				'mediawiki.codex.messagebox.styles'
+			] );
+		}
 		$out->addModuleStyles( [ 'ext.tmh.timedtextpage.styles' ] );
 
 		if ( !$this->renderStatus->isOK() ) {
@@ -201,6 +207,10 @@ class TimedTextPage extends Article {
 		$out->setPageTitleMsg( wfMessage( 'timedmedia-subtitle-new' ) );
 
 		if ( $file && !$file->isLocal() ) {
+			// Add styles for warning messages
+			$out->addModuleStyles( [
+				'mediawiki.codex.messagebox.styles'
+			] );
 			// Corresponding file is hosted on remote repo.
 			// People aren't really supposed to be here, so link to foreign repo
 			// TODO these two messages should be combined into a single one
