@@ -4,11 +4,11 @@ use MediaWiki\Config\ConfigException;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 /**
- * @ingroup timedmedia
  * @author michael dale
  * @group medium
  * @group Database
  * @covers \MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode
+ * @covers \MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscodeJob
  */
 class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
@@ -56,11 +56,14 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			] )
 			->caller( __METHOD__ )
 			->fetchResultSet();
-		// Make sure we target at least one ogg and one webm:
-		$hasOgg = $hasWebM = false;
+		// Make sure we target at least one ogg and one webm or an mp3:
+		$hasOgg = $hasWebM = $hasMP3 = false;
+		$novideo = false;
 		$targetEncodes = [];
 		foreach ( $res as $row ) {
-			$codec = WebVideoTranscode::$derivativeSettings[ $row->transcode_key ]['videoCodec'];
+			$transcodeSettings = WebVideoTranscode::$derivativeSettings[ $row->transcode_key ];
+			$codec = $transcodeSettings[ 'videoCodec' ] ?? $transcodeSettings[ 'audioCodec' ];
+			$novideo = $transcodeSettings[ 'novideo' ] ?? false;
 			if ( $codec === 'theora' ) {
 				$hasOgg = true;
 			}
@@ -70,10 +73,19 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			if ( $codec === 'vp9' ) {
 				$hasWebM = true;
 			}
+			if ( $codec === 'mp3' ) {
+				$hasMP3 = true;
+			}
 			$targetEncodes[ $row->transcode_key ] = $row;
 		}
-		// Make sure we have ogg and webm:
-		$this->assertTrue( $hasOgg && $hasWebM );
+
+		if ( $novideo ) {
+			$this->assertTrue( $hasMP3, 'audio has mp3' );
+		} else {
+			// Make sure we have ogg and webm for video:
+			$this->assertTrue( $hasOgg, 'video has ogg' );
+			$this->assertTrue( $hasWebM, 'video has webm' );
+		}
 
 		// Now run the transcode job queue
 		$this->runJobs( [], [ 'type' => 'webVideoTranscode' ] );
@@ -126,7 +138,6 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
 	/**
 	 * @dataProvider transcodeSetProvider
-	 * @covers \MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode
 	 */
 	public function testEnabledTranscodeSetConfiguration( $set, $audioSet, $exception ) {
 		$this->setMWGlobals( [

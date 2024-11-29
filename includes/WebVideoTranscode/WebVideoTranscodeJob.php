@@ -1,10 +1,4 @@
 <?php
-/**
- * Job for transcode jobs
- *
- * @file
- * @ingroup JobQueue
- */
 
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
@@ -37,7 +31,6 @@ use Wikimedia\Rdbms\ILBFactory;
  *
  * @ingroup JobQueue
  */
-
 class WebVideoTranscodeJob extends Job {
 
 	public ?TempFSFile $targetEncodeFile = null;
