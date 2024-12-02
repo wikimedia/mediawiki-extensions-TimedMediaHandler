@@ -5,14 +5,14 @@
  */
 
 /* Shrink videos to fit rather than overflowing containers */
-video {
+video[ data-mw-tmh ] {
 	// This breaks Chrome when we late load the video
 	// See comments in ext.tmh.player.element.js
 	height: auto;
 	max-width: 100%;
 }
 /* Force a fixed size for audio to reduce FOUC */
-audio,
+audio[ data-mw-tmh ],
 .mw-tmh-player.audio {
 	height: 30px;
 	// Apple enforces a 31px height.. go away Apple.
@@ -20,17 +20,23 @@ audio,
 	// Fallback width for Score and other widthless <audio> elements
 	width: 300px;
 }
-// NOTE: this likely breaks when we switch from ParserEnableLegacyMediaDOM
-// to Parsoid DOM, because they moved the border
-// Borders are a mess
-video.thumbimage,
-audio.thumbimage,
-.thumb .mw-tmh-player.audio {
-	// Borders just look ugly on audio and video players
-	border: 0;
-	// to compensate for border being removed add a margin
-	// and make sure the audio player placeholder uses the same
-	margin: 1px auto;
+
+figure {
+	// needs a lot of specificity to overcome figure selectors
+	[ data-mw-tmh ][ data-mw-tmh ][ data-mw-tmh ],
+	.mw-tmh-player.mw-file-element.mw-file-element {
+		// Borders just look ugly on audio and video players
+		border: 0;
+	}
+}
+
+/* inline with text */
+span[ typeof~='mw:File' ] .video-js {
+	vertical-align: initial;
+}
+
+.fullImageLink .mw-file-element.mw-tmh-player {
+	vertical-align: top;
 }
 
 /* Galleryboxes are usually smaller than 220px, but can be different sizes. (T258622) */
@@ -52,17 +58,6 @@ audio.thumbimage,
 		right: 0;
 		top: 0;
 		bottom: 0;
-	}
-}
-
-.thumb {
-	audio,
-	video,
-	.mw-tmh-player {
-		display: block;
-		// Margins required for centering inside gallery blocks
-		margin-left: auto;
-		margin-right: auto;
 	}
 }
 

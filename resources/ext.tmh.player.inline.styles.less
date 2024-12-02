@@ -14,10 +14,6 @@
 			/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
 			font-size: 13px;
 		}
-
-		&.thumbimage {
-			border: 0;
-		}
 	}
 	/* We force the size of player to avoid reflows after loading the JS */
 	audio.video-js {
@@ -31,23 +27,6 @@
 	video.video-js::-webkit-media-controls-panel {
 		display: none;
 	}
-}
-
-div.thumbinner.mw-overflow {
-	/* We want to overflow, but we need to make sure we still
-	 * create a new block formatting context */
-	overflow: visible;
-	display: table-cell;
-}
-
-/*
- * Make video-js behave like standard <video><audio> elements
- * The thumbinner check works around a width interaction for
- * thumbnail style adjustments in Minerva mobile skin.
- */
-*:not( .thumbinner ) > .video-js.video-js:not( .vjs-fullscreen ) {
-	display: inline-block;
-	vertical-align: initial;
 }
 
 .video-js.vjs-high-controls:not( .vjs-audio ) {

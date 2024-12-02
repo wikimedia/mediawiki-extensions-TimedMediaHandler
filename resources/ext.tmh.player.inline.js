@@ -176,9 +176,7 @@ class InlinePlayer {
 		}
 		// We remove SRT subtitles tracks as we can't handle them
 		this.$videoplayer.find( 'track[type="text/x-srt"]' ).remove();
-		// Make sure the menu's can overflow thumbnail frames
-		this.$videoplayer.closest( '.thumbinner' ).addClass( 'mw-overflow' );
-		this.$videoplayer.addClass( 'video-js' );
+		this.$videoplayer.addClass( 'video-js' ).removeClass( 'mw-file-element' );
 
 		// eslint-disable-next-line es-x/no-array-prototype-fill
 		if ( this.playerConfig.fill ) {
