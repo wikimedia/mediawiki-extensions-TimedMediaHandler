@@ -45,7 +45,7 @@ class ApiTranscodeReset extends ApiBase {
 		);
 	}
 
-	public function execute() {
+	public function execute(): void {
 		// Check if transcoding is enabled on this wiki at all:
 		if ( !$this->getConfig()->get( 'EnableTranscode' ) ) {
 			$this->dieWithError( 'apierror-timedmedia-disabledtranscode', 'disabledtranscode' );
@@ -123,7 +123,7 @@ class ApiTranscodeReset extends ApiBase {
 	 * @param string|false $transcodeKey
 	 * @return int|string
 	 */
-	public function checkTimeSinceLastReset( $file, $transcodeKey ) {
+	public function checkTimeSinceLastReset( File $file, $transcodeKey ) {
 		$dbw = $file->repo->getPrimaryDB();
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $file, $dbw );
 		if ( $transcodeKey ) {
@@ -146,10 +146,9 @@ class ApiTranscodeReset extends ApiBase {
 	}
 
 	/**
-	 * @param array $state
 	 * @return int|string
 	 */
-	public function getStateResetTime( $state ) {
+	public function getStateResetTime( array $state ) {
 		$db = $this->dbProvider->getReplicaDatabase();
 		// if an error return waitTime +1
 		if ( $state['time_error'] !== null ) {
@@ -166,17 +165,17 @@ class ApiTranscodeReset extends ApiBase {
 	}
 
 	/** @inheritDoc */
-	public function mustBePosted() {
+	public function mustBePosted(): bool {
 		return true;
 	}
 
 	/** @inheritDoc */
-	public function isWriteMode() {
+	public function isWriteMode(): bool {
 		return true;
 	}
 
 	/** @inheritDoc */
-	protected function getAllowedParams() {
+	protected function getAllowedParams(): array {
 		return [
 			'title' => [
 				ParamValidator::PARAM_TYPE => 'string',
@@ -188,15 +187,14 @@ class ApiTranscodeReset extends ApiBase {
 	}
 
 	/** @inheritDoc */
-	public function needsToken() {
+	public function needsToken(): string {
 		return 'csrf';
 	}
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
-	 * @return array
 	 */
-	protected function getExamplesMessages() {
+	protected function getExamplesMessages(): array {
 		return [
 			'action=transcodereset&title=File:Clip.webm&token=123ABC'
 				=> 'apihelp-transcodereset-example-1',

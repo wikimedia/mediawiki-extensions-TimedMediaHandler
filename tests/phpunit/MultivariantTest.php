@@ -7,23 +7,15 @@ use MediaWiki\TimedMediaHandler\HLS\Multivariant;
  */
 class MultivariantTest extends MediaWikiMediaTestCase {
 
-	protected function getFilePath() {
+	protected function getFilePath(): string {
 		return __DIR__ . '/media';
 	}
 
-	/**
-	 * @param string $filename
-	 * @return string
-	 */
-	protected function filePath( $filename ) {
+	protected function filePath( string $filename ): string {
 		return $this->getFilePath() . DIRECTORY_SEPARATOR . $filename;
 	}
 
-	/**
-	 * @param string $filename
-	 * @return string
-	 */
-	protected function readFile( $filename ) {
+	protected function readFile( string $filename ): string {
 		$path = $this->filePath( $filename );
 		$data = file_get_contents( $path );
 		if ( $data === false ) {
@@ -37,7 +29,7 @@ class MultivariantTest extends MediaWikiMediaTestCase {
 	 * @param string $raw input string
 	 * @param string $expected quoted output string
 	 */
-	public function testQuote( $raw, $expected ) {
+	public function testQuote( string $raw, string $expected ): void {
 		$quoted = Multivariant::quote( $raw );
 		$this->assertEquals( $expected, $quoted, "Multivarant::quote" );
 	}
@@ -62,7 +54,7 @@ class MultivariantTest extends MediaWikiMediaTestCase {
 	 * @param array $tracks
 	 * @param string $expected
 	 */
-	public function testTracks( $filename, $tracks, $expected ) {
+	public function testTracks( string $filename, array $tracks, string $expected ): void {
 		$interval = 10;
 		$path = $this->filePath( $filename );
 		$multivariant = new Multivariant( $filename, $tracks );

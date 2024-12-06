@@ -4,8 +4,7 @@ use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
 abstract class TimedMediaHandlerTestCase extends MediaWikiMediaTestCase {
 
-	/** @var TimedMediaHandler */
-	protected $handler;
+	protected TimedMediaHandler $handler;
 
 	public function getFilePath() {
 		return __DIR__ . '/media';

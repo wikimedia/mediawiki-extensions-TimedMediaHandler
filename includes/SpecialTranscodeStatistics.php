@@ -20,7 +20,11 @@ use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class SpecialTranscodeStatistics extends SpecialPage {
-	/** @var string[] */
+	/**
+	 * index on transcode_time_addjob,transcode_time_startwork,transcode_time_error,transcode_key,transcode_image_name
+	 *
+	 * @var string[]
+	 */
 	private $transcodeStates = [
 		// Note: these queries should check prefixes of the index transcode_time_inx
 		// phpcs:ignore Generic.Files.LineLength.TooLong
@@ -32,18 +36,10 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		'missing' => 'transcode_time_addjob IS     NULL AND transcode_time_startwork IS     NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
 	];
-	// index on transcode_time_addjob,transcode_time_startwork,transcode_time_error,transcode_key,transcode_image_name
 
-	/** @var IConnectionProvider */
-	private $dbProvider;
+	private IConnectionProvider $dbProvider;
+	private WANObjectCache $cache;
 
-	/** @var WANObjectCache */
-	private $cache;
-
-	/**
-	 * @param IConnectionProvider $dbProvider
-	 * @param WANObjectCache $cache
-	 */
 	public function __construct(
 		IConnectionProvider $dbProvider,
 		WANObjectCache $cache
@@ -74,7 +70,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	 * @param array $states
 	 * @param bool $showTable
 	 */
-	private function renderState( $out, $state, $states, $showTable = true ) {
+	private function renderState( $out, string $state, array $states, bool $showTable = true ): void {
 		$allTranscodes = WebVideoTranscode::enabledTranscodes();
 		if ( $states[ $state ][ 'total' ] ) {
 			// Give grep a chance to find the usages:
@@ -104,12 +100,9 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	}
 
 	/**
-	 * @param string $state
-	 * @param int $limit
-	 *
 	 * @return false|array
 	 */
-	private function getTranscodes( $state, $limit = 50 ) {
+	private function getTranscodes( string $state, int $limit = 50 ) {
 		$fname = __METHOD__;
 
 		return $this->cache->getWithSetCallback(
@@ -147,13 +140,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		);
 	}
 
-	/**
-	 * @param string $state
-	 * @param int $limit
-	 *
-	 * @return string
-	 */
-	private function getTranscodesTable( $state, $limit = 50 ) {
+	private function getTranscodesTable( string $state, int $limit = 50 ): string {
 		$linkRenderer = $this->getLinkRenderer();
 		$table = '<table class="wikitable">' . "\n"
 			. '<tr>'
@@ -176,10 +163,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		return $table;
 	}
 
-	/**
-	 * @return array
-	 */
-	private function getStates() {
+	private function getStates(): array {
 		$fname = __METHOD__;
 
 		return $this->cache->getWithSetCallback(

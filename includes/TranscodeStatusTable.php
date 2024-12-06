@@ -18,19 +18,10 @@ use MediaWiki\Utils\MWTimestamp;
  *
  */
 class TranscodeStatusTable {
-	/** @var IContextSource */
-	private $context;
+	private IContextSource $context;
+	private LinkRenderer $linkRenderer;
+	private TemplateParser $templateParser;
 
-	/** @var LinkRenderer */
-	private $linkRenderer;
-
-	/** @var TemplateParser */
-	private $templateParser;
-
-	/**
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 */
 	public function __construct(
 		IContextSource $context,
 		LinkRenderer $linkRenderer
@@ -40,11 +31,7 @@ class TranscodeStatusTable {
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getHTML( $file ) {
+	public function getHTML( File $file ): string {
 		// Add transcode table css and javascript:
 		$this->context->getOutput()->addModules( [ 'ext.tmh.transcodetable' ] );
 
@@ -65,10 +52,8 @@ class TranscodeStatusTable {
 	/**
 	 * Get the video or audio codec for the defined transcode,
 	 * for grouping/sorting purposes.
-	 * @param string $key
-	 * @return string
 	 */
-	public static function codecFromTranscodeKey( $key ) {
+	public static function codecFromTranscodeKey( string $key ): string {
 		if ( isset( WebVideoTranscode::$derivativeSettings[$key] ) ) {
 			$settings = WebVideoTranscode::$derivativeSettings[$key];
 			if ( isset( $settings['videoCodec'] ) ) {
@@ -88,11 +73,7 @@ class TranscodeStatusTable {
 		return $key;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getTranscodesTable( $file ) {
+	public function getTranscodesTable( File $file ): string {
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
 		if ( !$transcodeRows ) {
@@ -128,12 +109,7 @@ class TranscodeStatusTable {
 		);
 	}
 
-	/**
-	 * @param array $transcodeRows
-	 * @param File $file
-	 * @return array
-	 */
-	private function transcodeRowsToTemplateParams( $transcodeRows, $file ) {
+	private function transcodeRowsToTemplateParams( array $transcodeRows, File $file ): array {
 		$transcodeRowsForTemplate = [];
 		foreach ( $transcodeRows as $transcodeKey => $state ) {
 			$transcodeRowsForTemplate[] = [
@@ -173,21 +149,11 @@ class TranscodeStatusTable {
 		return $templateParams;
 	}
 
-	/**
-	 * @param File $file
-	 * @param string $transcodeKey
-	 * @return string
-	 */
-	public static function getSourceUrl( $file, $transcodeKey ) {
+	public static function getSourceUrl( File $file, string $transcodeKey ): string {
 		return WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
 	}
 
-	/**
-	 * @param File $file
-	 * @param array $state
-	 * @return string
-	 */
-	public function getTranscodeDuration( File $file, array $state ) {
+	public function getTranscodeDuration( File $file, array $state ): string {
 		if ( $state['time_success'] !== null ) {
 			$startTime = (int)wfTimestamp( TS_UNIX, $state['time_startwork'] );
 			$endTime = (int)wfTimestamp( TS_UNIX, $state['time_success'] );
@@ -197,24 +163,14 @@ class TranscodeStatusTable {
 		return '';
 	}
 
-	/**
-	 * @param File $file
-	 * @param array $state
-	 * @return string
-	 */
-	public function getTranscodeBitrate( File $file, array $state ) {
+	public function getTranscodeBitrate( File $file, array $state ): string {
 		if ( $state['time_success'] !== null ) {
 			return $this->context->getLanguage()->formatBitrate( $state['final_bitrate'] );
 		}
 		return '';
 	}
 
-	/**
-	 * @param File $file
-	 * @param array $state
-	 * @return string
-	 */
-	public static function getStatusMsg( $file, $state ) {
+	public static function getStatusMsg( File $file, array $state ): string {
 		// Check for success:
 		if ( $state['time_success'] !== null ) {
 			return wfMessage( 'timedmedia-completed-on' )
