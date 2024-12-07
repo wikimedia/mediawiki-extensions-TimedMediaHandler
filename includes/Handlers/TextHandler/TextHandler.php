@@ -60,10 +60,7 @@ class TextHandler {
 		return [];
 	}
 
-	/**
-	 * @return false|int
-	 */
-	public function getTimedTextNamespace() {
+	public function getTimedTextNamespace(): ?int {
 		$repo = $this->file->getRepo();
 
 		if ( $this->file->isLocal() ) {
@@ -106,7 +103,7 @@ class TextHandler {
 			}
 		}
 
-		return false;
+		return null;
 	}
 
 	/**
@@ -114,15 +111,13 @@ class TextHandler {
 	 * the name of the file associated with this handler.
 	 *
 	 * If the file is on a foreign repo, will query the ForeignDb
-	 *
-	 * @return IResultWrapper|false
 	 */
-	private function getTextPagesFromDb() {
+	private function getTextPagesFromDb(): ?IResultWrapper {
 		$ns = $this->getTimedTextNamespace();
-		if ( $ns === false ) {
+		if ( $ns === null ) {
 			wfDebug( 'Repo: ' . $this->file->getRepoName() . " does not have a TimedText namespace \n" );
 			// No timed text namespace, don't try to look up timed text tracks
-			return false;
+			return null;
 		}
 
 		$repo = $this->file->getRepo();
@@ -142,19 +137,18 @@ class TextHandler {
 				->fetchResultSet();
 		}
 
-		return false;
+		return null;
 	}
 
 	/**
 	 * Build the api query to find TimedText pages belonging to a remote file
-	 * @return array|false
 	 */
-	public function getRemoteTextPagesQuery() {
+	private function getRemoteTextPagesQuery(): ?array {
 		$ns = $this->getTimedTextNamespace();
-		if ( $ns === false ) {
+		if ( $ns === null ) {
 			wfDebug( 'Repo: ' . $this->file->getRepoName() . " does not have a TimedText namespace \n" );
 			// No timed text namespace, don't try to look up timed text tracks
-			return false;
+			return null;
 		}
 		$canonicalTitle = Title::makeName(
 			$this->file->getTitle()->getNamespace(),
@@ -185,7 +179,7 @@ class TextHandler {
 			wfDebug( "Get text tracks from remote api \n" );
 			$query = $this->getRemoteTextPagesQuery();
 			// Error in getting timed text namespace return empty array;
-			if ( $query === false || !( $repo instanceof IForeignRepoWithMWApi ) ) {
+			if ( $query === null || !( $repo instanceof IForeignRepoWithMWApi ) ) {
 				return [];
 			}
 
@@ -220,7 +214,7 @@ class TextHandler {
 	 */
 	public function getForeignDbTextSources(): array {
 		$data = $this->getTextPagesFromDb();
-		if ( $data !== false ) {
+		if ( $data ) {
 			return $this->getTextTracksFromRows( $data );
 		}
 		return [];
@@ -231,7 +225,7 @@ class TextHandler {
 	 */
 	public function getLocalDbTextSources(): array {
 		$data = $this->getTextPagesFromDb();
-		if ( $data !== false ) {
+		if ( $data ) {
 			return $this->getTextTracksFromRows( $data );
 		}
 		return [];

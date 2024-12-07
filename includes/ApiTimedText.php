@@ -166,12 +166,13 @@ class ApiTimedText extends ApiBase {
 
 		$textHandler = new TextHandler( $file, $sourceFormats );
 		$ns = $textHandler->getTimedTextNamespace();
-		if ( !$ns ) {
+		if ( $ns === null ) {
 			$this->dieWithError( 'apierror-timedmedia-no-timedtext-support', 'invalidconfig' );
 		}
 
 		foreach ( $sourceFormats as $format ) {
 			$dbkey = "{$file->getTitle()->getDbKey()}.$langCode.$format";
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$page = $this->wikiPageFactory->newFromTitle( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {

@@ -68,7 +68,7 @@ class ApiTranscodeReset extends ApiBase {
 				'invalidtranscodetitle'
 			);
 		}
-		$transcodeKey = false;
+		$transcodeKey = null;
 		// Make sure it's an enabled transcode key we are trying to remove:
 		// ( if you update your transcode keys the api is not how you purge the database of expired keys )
 		if ( isset( $params['transcodekey'] ) ) {
@@ -116,10 +116,10 @@ class ApiTranscodeReset extends ApiBase {
 
 	/**
 	 * @param File $file
-	 * @param string|false $transcodeKey
+	 * @param string|null $transcodeKey
 	 * @return int|string
 	 */
-	public function checkTimeSinceLastReset( File $file, $transcodeKey ) {
+	private function checkTimeSinceLastReset( File $file, ?string $transcodeKey ) {
 		$dbw = $file->repo->getPrimaryDB();
 		$transcodeStates = WebVideoTranscode::getTranscodeState( $file, $dbw );
 		if ( $transcodeKey ) {
