@@ -151,17 +151,23 @@
 	width: initial;
 	min-width: 10em;
 	max-width: 20em;
-	left: -0.5em;
+	/* @noflip */
+	left: unset;
+	/* @noflip */
+	right: 0;
 
 	.vjs-menu-content {
 		overflow-x: hidden;
 		width: initial;
+		/* @noflip */
+		right: 0;
 	}
 
 	li {
 		padding: 0.2em 0.5em;
 		text-align: left;
 		white-space: nowrap;
+		justify-content: left;
 	}
 }
 
@@ -176,20 +182,6 @@ html[ dir='rtl' ] {
 	.vjs-modal-dialog {
 		/* @noflip */
 		direction: rtl;
-	}
-
-	// align popup menus to flow to the left
-	.vjs-menu-button-popup .vjs-menu {
-		// noflip because the player UI layout is ltr even in rtl layouts
-		/* @noflip */
-		left: initial;
-		/* @noflip */
-		right: -0.5em;
-
-		.vjs-menu-content {
-			/* @noflip */
-			right: 0;
-		}
 	}
 
 	// T307363
