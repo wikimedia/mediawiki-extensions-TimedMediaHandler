@@ -127,6 +127,47 @@ class WebMHandlerTest extends TimedMediaHandlerTestCase {
 					'commonMeta' => [ 'Software' => [ 'Lavf52.71.0' ] ],
 				],
 			],
+			[
+				'av1-sdr.webm',
+				'video/webm',
+				[
+					// AV1 low-res 4:2:0 8-bit BT.709 studio range
+					'webType' => 'video/webm; codecs="av01.0.00M.08"',
+					'streamTypes' => [ 'AV1' ],
+					'hasVideo' => true,
+					'hasAudio' => false,
+					'audioChannels' => 0,
+					'commonMeta' => [
+						'Software' => [
+							'Lavf61.7.100',
+							'Lavc61.19.100 libsvtav1'
+						],
+					],
+				]
+			],
+			/*
+			// Correctly handling high bit depth, high dynamic range, or wide color gamut
+			// requires additions to upstream GetID3 to process the codec private data.
+			// Currently only 8-bit SDR rec.709 files will be correctly labeled.
+			[
+				'av1-hdr.webm',
+				'video/webm',
+				[
+					// AV1 low-res 4:2:0 10-bit BT.2100/PQ studio range
+					'webType' => 'video/webm; codecs="av01.0.00M.10.0.110.09.16.09.0"',
+					'streamTypes' => [ 'AV1' ],
+					'hasVideo' => true,
+					'hasAudio' => false,
+					'audioChannels' => 0,
+					'commonMeta' => [
+						'Software' => [
+							'Lavf61.7.100',
+							'Lavc61.19.100 libsvtav1'
+						],
+					],
+				]
+			]
+			*/
 		];
 	}
 
