@@ -4,7 +4,8 @@ use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
 class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 
-	private TimedMediaHandler $handler;
+	/** @var TimedMediaHandler */
+	private $handler;
 
 	protected function setUp(): void {
 		$this->handler = new TimedMediaHandler;
@@ -17,7 +18,7 @@ class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 	 * @param array $expected Expected thumbnailing parameters
 	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::parseParamString
 	 */
-	public function testParseParamString( string $str, array $expected ): void {
+	public function testParseParamString( $str, $expected ) {
 		$result = $this->handler->parseParamString( $str );
 		$this->assertEquals( $expected, $result );
 	}

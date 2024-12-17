@@ -25,8 +25,11 @@ use RepoGroup;
 
 class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 
-	private Config $config;
-	private RepoGroup $repoGroup;
+	/** @var Config */
+	private $config;
+
+	/** @var RepoGroup */
+	private $repoGroup;
 
 	public function __construct(
 		Config $config,
@@ -68,6 +71,9 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 
 	/**
 	 * Output an iframe
+	 * @param Title $title
+	 * @param OutputPage $out
+	 * @return bool
 	 * @throws Exception
 	 */
 	private function outputIframe( Title $title, OutputPage $out ): bool {
