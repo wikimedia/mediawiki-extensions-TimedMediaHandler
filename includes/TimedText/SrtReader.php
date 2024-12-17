@@ -118,8 +118,10 @@ class SrtReader extends Reader {
 
 	/**
 	 * @param callable $callback
+	 *
+	 * @return string
 	 */
-	protected function consumeWhile( $callback ): string {
+	protected function consumeWhile( $callback ) {
 		$str = '';
 		while ( $this->pos < $this->len ) {
 			$c = $this->input[$this->pos];

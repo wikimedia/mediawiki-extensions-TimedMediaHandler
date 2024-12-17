@@ -72,12 +72,27 @@ class Hooks implements
 	WgQueryPagesHook
 {
 
-	private Config $config;
-	private LinkRenderer $linkRenderer;
-	private RepoGroup $repoGroup;
-	private SpecialPageFactory $specialPageFactory;
-	private TranscodableChecker $transcodableChecker;
+	/** @var Config */
+	private $config;
 
+	/** @var LinkRenderer */
+	private $linkRenderer;
+
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/** @var SpecialPageFactory */
+	private $specialPageFactory;
+
+	/** @var TranscodableChecker */
+	private $transcodableChecker;
+
+	/**
+	 * @param Config $config
+	 * @param LinkRenderer $linkRenderer
+	 * @param RepoGroup $repoGroup
+	 * @param SpecialPageFactory $specialPageFactory
+	 */
 	public function __construct(
 		Config $config,
 		LinkRenderer $linkRenderer,
@@ -159,10 +174,11 @@ class Hooks implements
 	/**
 	 * @param ImagePage $imagePage the imagepage that is being rendered
 	 * @param OutputPage $output the output for this imagepage
+	 * @return bool
 	 */
-	public function onImageOpenShowImageInlineBefore( $imagePage, $output ): void {
+	public function onImageOpenShowImageInlineBefore( $imagePage, $output ) {
 		$file = $imagePage->getDisplayedFile();
-		self::onImagePageHooks( $file, $output );
+		return self::onImagePageHooks( $file, $output );
 	}
 
 	/**
@@ -170,39 +186,44 @@ class Hooks implements
 	 * @param File $file the (old) file added in this history entry
 	 * @param string &$line the HTML of the history line
 	 * @param string &$css the CSS class of the history line
+	 * @return bool
 	 */
-	public function onImagePageFileHistoryLine( $imageHistoryList, $file, &$line, &$css ): void {
+	public function onImagePageFileHistoryLine( $imageHistoryList, $file, &$line, &$css ) {
 		$out = $imageHistoryList->getContext()->getOutput();
-		self::onImagePageHooks( $file, $out );
+		return self::onImagePageHooks( $file, $out );
 	}
 
 	/**
 	 * @param File $file the file that is being rendered
 	 * @param OutputPage $out the output to which this file is being rendered
+	 * @return bool
 	 */
-	private static function onImagePageHooks( File $file, $out ) {
+	private static function onImagePageHooks( $file, $out ) {
 		$handler = $file->getHandler();
 		if ( $handler instanceof TimedMediaHandler ) {
 			$out->addModuleStyles( 'ext.tmh.player.styles' );
 			$out->addModules( 'ext.tmh.player' );
 		}
+		return true;
 	}
 
 	/**
 	 * @param Title $title
 	 * @param Article|null &$article
 	 * @param IContextSource $context
+	 * @return bool
 	 */
-	public function onArticleFromTitle( $title, &$article, $context ): void {
+	public function onArticleFromTitle( $title, &$article, $context ) {
 		if ( $title->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
 			$article = new TimedTextPage( $title );
 		}
+		return true;
 	}
 
 	/**
 	 * @param DifferenceEngine $diffEngine
 	 * @param OutputPage $output
-	 * @return bool|void True or no return value to continue or false to abort
+	 * @return bool
 	 */
 	public function onArticleContentOnDiff( $diffEngine, $output ) {
 		if ( $output->getTitle()->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
@@ -210,6 +231,7 @@ class Hooks implements
 			$article->renderOutput( $output );
 			return false;
 		}
+		return true;
 	}
 
 	/**
@@ -243,8 +265,9 @@ class Hooks implements
 
 	/**
 	 * @param Title $title
+	 * @return bool
 	 */
-	private function isTimedMediaHandlerTitle( $title ): bool {
+	public function isTimedMediaHandlerTitle( $title ) {
 		if ( !$title->inNamespace( NS_FILE ) ) {
 			return false;
 		}
@@ -263,8 +286,9 @@ class Hooks implements
 	/**
 	 * @param Article $imagePage
 	 * @param string &$html
+	 * @return bool
 	 */
-	public function onImagePageAfterImageLinks( $imagePage, &$html ): void {
+	public function onImagePageAfterImageLinks( $imagePage, &$html ) {
 		// load the file:
 		$file = $this->repoGroup->findFile( $imagePage->getTitle(), [ 'ignoreRedirect' => true ] );
 		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
@@ -274,20 +298,23 @@ class Hooks implements
 			);
 			$html .= $transcodeStatusTable->getHTML( $file );
 		}
+		return true;
 	}
 
 	/**
 	 * @param File $file LocalFile object
 	 * @param bool $reupload
 	 * @param bool $hasDescription
+	 * @return bool
 	 */
-	public function onFileUpload( $file, $reupload, $hasDescription ): void {
+	public function onFileUpload( $file, $reupload, $hasDescription ) {
 		// Check that the file is a transcodable asset:
 		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
 			WebVideoTranscode::removeTranscodes( $file );
 			WebVideoTranscode::startJobQueue( $file );
 		}
+		return true;
 	}
 
 	/**
@@ -301,14 +328,16 @@ class Hooks implements
 	 * @param User $user
 	 * @param string $reason
 	 * @param Status &$status
+	 * @return bool
 	 */
-	public function onTitleMove( Title $title, Title $newTitle, User $user, $reason, Status &$status ): void {
+	public function onTitleMove( Title $title, Title $newTitle, User $user, $reason, Status &$status ) {
 		if ( $this->transcodableChecker->isTranscodableTitle( $title ) ) {
 			// Remove all the transcode files and db states for this asset
 			// Will be re-added after the file has moved
 			$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true ] );
 			WebVideoTranscode::removeTranscodes( $file );
 		}
+		return true;
 	}
 
 	/**
@@ -320,8 +349,10 @@ class Hooks implements
 	 * @param int $redirid Database ID of the created redirect
 	 * @param string $reason Reason for the move
 	 * @param RevisionRecord $revision RevisionRecord created by the move
+	 * @return bool|void True or no return value to continue or false stop other hook handlers,
+	 *     doesn't abort the move itself
 	 */
-	public function onPageMoveComplete( $old, $new, $user, $pageid, $redirid, $reason, $revision ): void {
+	public function onPageMoveComplete( $old, $new, $user, $pageid, $redirid, $reason, $revision ) {
 		if ( $this->transcodableChecker->isTranscodableTitle( $new ) ) {
 			$newFile = $this->repoGroup->findFile( $new, [ 'ignoreRedirect' => true, 'latest' => true ] );
 			WebVideoTranscode::startJobQueue( $newFile );
@@ -335,11 +366,13 @@ class Hooks implements
 	 * @param WikiFilePage|null $article
 	 * @param User $user
 	 * @param string $reason
+	 * @return bool
 	 */
-	public function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ): void {
+	public function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ) {
 		if ( !$oldimage && $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			WebVideoTranscode::removeTranscodes( $file );
 		}
+		return true;
 	}
 
 	/**
@@ -351,6 +384,7 @@ class Hooks implements
 			WebVideoTranscode::removeTranscodes( $file );
 			WebVideoTranscode::startJobQueue( $file );
 		}
+		return true;
 	}
 
 	/**
@@ -361,10 +395,12 @@ class Hooks implements
 	 * @param int $originalRevId
 	 * @param UserIdentity $user
 	 * @param string[] &$tags
+	 *
+	 * @return bool
 	 */
 	public function onRevisionFromEditComplete(
 		$wikiPage, $rev, $originalRevId, $user, &$tags
-	): void {
+	) {
 		// Check if the article is a file and remove transcode files:
 		if ( ( $originalRevId !== false ) && $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
 			$file = $this->repoGroup->findFile( $wikiPage->getTitle() );
@@ -373,6 +409,7 @@ class Hooks implements
 				WebVideoTranscode::startJobQueue( $file );
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -381,14 +418,16 @@ class Hooks implements
 	 * automated process to see their status and reset them.
 	 *
 	 * @param WikiPage $wikiPage
+	 * @return bool
 	 */
-	public function onArticlePurge( $wikiPage ): void {
+	public function onArticlePurge( $wikiPage ) {
 		if ( $wikiPage->getTitle()->getNamespace() === NS_FILE ) {
 			$file = $this->repoGroup->findFile( $wikiPage->getTitle(), [ 'ignoreRedirect' => true ] );
 			if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 				WebVideoTranscode::cleanupTranscodes( $file );
 			}
 		}
+		return true;
 	}
 
 	/**

@@ -12,9 +12,16 @@ use RepoGroup;
  * @ingroup Extensions
  */
 class TranscodableChecker {
-	private Config $config;
-	private RepoGroup $repoGroup;
+	/** @var Config */
+	private $config;
 
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/**
+	 * @param Config $config
+	 * @param RepoGroup $repoGroup
+	 */
 	public function __construct(
 		Config $config,
 		RepoGroup $repoGroup
@@ -25,8 +32,10 @@ class TranscodableChecker {
 
 	/**
 	 * Wraps the isTranscodableFile function
+	 * @param LinkTarget $title
+	 * @return bool
 	 */
-	public function isTranscodableTitle( LinkTarget $title ): bool {
+	public function isTranscodableTitle( $title ) {
 		if ( $title->getNamespace() !== NS_FILE ) {
 			return false;
 		}
@@ -37,8 +46,9 @@ class TranscodableChecker {
 	/**
 	 * Utility function to check if a given file can be "transcoded"
 	 * @param File|false $file File object
+	 * @return bool
 	 */
-	public function isTranscodableFile( $file ): bool {
+	public function isTranscodableFile( $file ) {
 		// don't show the transcode table if transcode is disabled
 		if ( !$this->config->get( 'EnableTranscode' ) ) {
 			return false;

@@ -22,7 +22,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/** @var string|false|null */
 	public $hashTime;
 
-	public ?TextHandler $textHandler = null;
+	/** @var TextHandler|null */
+	public $textHandler;
 
 	/** @var string|false|null */
 	public $disablecontrols;
@@ -90,7 +91,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$this->loop = $conf['loop'] ?? false;
 	}
 
-	private function getTextHandler(): TextHandler {
+	/**
+	 * @return TextHandler
+	 */
+	private function getTextHandler() {
 		if ( !$this->textHandler ) {
 			// Init an associated textHandler
 			$this->textHandler = new TextHandler( $this->file, [ TimedTextPage::VTT_SUBTITLE_FORMAT ] );
@@ -101,8 +105,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * Get the media transform thumbnail
 	 * @param false|array $sizeOverride
+	 * @return string
 	 */
-	public function getUrl( $sizeOverride = false ): string {
+	public function getUrl( $sizeOverride = false ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$resourceBasePath = $config->get( MainConfigNames::ResourceBasePath );
 		$url = "$resourceBasePath/resources/assets/file-type-icons/fileicon-ogg.png";
@@ -132,7 +137,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->dstPath;
 	}
 
-	public function getPlayerHeight(): int {
+	/**
+	 * @return int
+	 */
+	public function getPlayerHeight() {
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
 			return (int)$this->height;
@@ -141,7 +149,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return 23;
 	}
 
-	public function getPlayerWidth(): int {
+	/**
+	 * @return int
+	 */
+	public function getPlayerWidth() {
 		// Check if "video" tag output:
 		if ( $this->isVideo ) {
 			return (int)$this->width;
@@ -155,14 +166,18 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return max( 35, (int)$this->width );
 	}
 
-	public function getTagName(): string {
+	/**
+	 * @return string
+	 */
+	public function getTagName() {
 		return ( $this->isVideo ) ? 'video' : 'audio';
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param array $options
+	 * @return string
 	 */
-	public function toHtml( $options = [] ): string {
+	public function toHtml( $options = [] ) {
 		$classes = $options['img-class'] ?? '';
 
 		$oldHeight = $this->height;
@@ -191,8 +206,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Helper to determine if to use pop up dialog for videos
+	 *
+	 * @return bool
 	 */
-	private function useImagePopUp(): bool {
+	private function useImagePopUp() {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		// Check if the video is too small to play inline ( instead do a pop-up dialog )
 		// If we're filling the window (e.g. during an iframe embed) one probably doesn't want the pop-up.
@@ -206,8 +223,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * XXX migrate this to the mediawiki Html class as 'tagSet' helper function
+	 * @param string $tagName
+	 * @param array $tagSet
+	 * @return string
 	 */
-	private static function htmlTagSet( string $tagName, array $tagSet ): string {
+	private static function htmlTagSet( $tagName, $tagSet ) {
 		if ( !$tagSet ) {
 			return '';
 		}
@@ -222,7 +242,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * Get target popup player size
 	 * @return int[]
 	 */
-	private function getPopupPlayerSize(): array {
+	private function getPopupPlayerSize() {
 		// Get the max width from the enabled transcode settings:
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
 		return WebVideoTranscode::getMaxSizeTransform( $this->file, (string)$maxImageSize );
@@ -233,8 +253,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 *
 	 * Silly function because array index operations aren't allowed
 	 * on function calls before php 5.4
+	 * @return int
 	 */
-	private function getPopupPlayerWidth(): int {
+	private function getPopupPlayerWidth() {
 		[ $popUpWidth ] = $this->getPopupPlayerSize();
 		return $popUpWidth;
 	}
@@ -245,8 +266,11 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * The list should be in preferred source order, so we want the file
 	 * with the lowest bitrate (to save bandwidth) first, but we also want
 	 * appropriate resolution files before the 160p transcodes.
+	 * @param array $a
+	 * @param array $b
+	 * @return int
 	 */
-	private function sortMediaByBandwidth( array $a, array $b ): int {
+	private function sortMediaByBandwidth( $a, $b ) {
 		$width = $this->getPlayerWidth();
 		$maxWidth = $this->getPopupPlayerWidth();
 		if ( $this->useImagePopUp() || $width > $maxWidth ) {
@@ -292,7 +316,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param array $mediaAttr The result of calling getMediaAttr()
 	 * @return string HTML
 	 */
-	private function getHtmlMediaTagOutput( array $mediaAttr ): string {
+	private function getHtmlMediaTagOutput( array $mediaAttr ) {
 		// Try to get the first source src attribute ( usually this should be the source file )
 		$mediaSources = $this->getMediaSources();
 		// do not rely on auto-resetting of arrays under HHVM
@@ -364,12 +388,12 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @param int $width width of poster. Should not equal $this->width.
 	 * @return string|false url for poster or false
 	 */
-	private function getPoster( int $width ) {
-		if ( $width === (int)$this->width ) {
+	private function getPoster( $width ) {
+		if ( (int)$width === (int)$this->width ) {
 			// Prevent potential loop
 			throw new LogicException( "Asked for poster in current size. Potential loop." );
 		}
-		$params = [ "width" => $width ];
+		$params = [ "width" => (int)$width ];
 		$mto = $this->file->transform( $params );
 		if ( $mto ) {
 			return $mto->getUrl();
@@ -386,7 +410,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * @return array
 	 */
 	private function getMediaAttr(
-		$sizeOverride = false, bool $autoPlay = false, string $classes = ''
+		$sizeOverride = false, $autoPlay = false, string $classes = ''
 	): array {
 		// Make sure we have pure floats values and round them up to whole seconds
 		$length = ceil( (float)$this->length );
@@ -410,7 +434,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			'preload' => 'none',
 		];
 
-		if ( $autoPlay ) {
+		if ( $autoPlay === true ) {
 			$mediaAttr['autoplay'] = 'true';
 		}
 
@@ -489,7 +513,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $mediaAttr;
 	}
 
-	private function getMediaSources(): array {
+	/**
+	 * @return array
+	 */
+	private function getMediaSources() {
 		if ( !$this->sources ) {
 			// Generate transcode jobs ( and get sources that are already transcoded)
 			// At a minimum this should return the source video file.
@@ -502,7 +529,10 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->sources;
 	}
 
-	private function getTemporalUrlHash(): string {
+	/**
+	 * @return string
+	 */
+	private function getTemporalUrlHash() {
 		if ( $this->hashTime ) {
 			return $this->hashTime;
 		}
@@ -526,7 +556,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return $this->hashTime;
 	}
 
-	public static function resetSerialForTest(): void {
+	public static function resetSerialForTest() {
 		self::$serial = 1;
 	}
 
@@ -536,8 +566,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 *   calls `wfExpandUrl(..., PROTO_CURRENT)` on all URLs returned, and
 	 *   `"withhash"`, which ensures that returned URLs have the temporal
 	 *   url hash appended (as `getMediaSources()` does).
+	 * @return array
 	 */
-	public function getAPIData( ?array $options = null ): array {
+	public function getAPIData( ?array $options = null ) {
 		$options ??= [ 'fullurl' ];
 
 		$timedtext = $this->getTextHandler()->getTracks();
