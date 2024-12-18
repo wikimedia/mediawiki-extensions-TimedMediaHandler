@@ -42,26 +42,38 @@ class TimedTextPage extends Article {
 		self::VTT_SUBTITLE_FORMAT,
 	];
 
-	private LanguageNameUtils $languageNameUtils;
+	/**
+	 * @var LanguageNameUtils
+	 */
+	private $languageNameUtils;
 
 	/**
 	 * The file associated with this subtitle page
+	 * @var File|null
 	 */
-	private ?File $correspondingFile = null;
-	private ?Title $correspondingFileTitle;
+	private $correspondingFile;
+
+	/**
+	 * @var Title|null
+	 */
+	private $correspondingFileTitle;
 
 	/**
 	 * The TimedText format extracted from this page's title
+	 * @var null|string
 	 */
-	private ?string $timedTextFormat;
+	private $timedTextFormat;
 
 	/**
 	 * The language key extracted from this page's title
+	 * @var null|string
 	 */
-	private ?string $languageKey;
+	private $languageKey;
 
 	/**
 	 * Status result of the view rendering
+	 *
+	 * @var StatusValue
 	 */
 	private StatusValue $renderStatus;
 
@@ -120,6 +132,8 @@ class TimedTextPage extends Article {
 	 * This function is used for views and diff views
 	 * It is somewhat special as it renders two separate units of content,
 	 * the timedtext and the corresponding file for that timedtext
+	 *
+	 * @param OutputPage $out
 	 */
 	public function renderOutput( OutputPage $out ): void {
 		$this->renderStatus = Status::newGood();
@@ -181,6 +195,7 @@ class TimedTextPage extends Article {
 	 * We show this form if a valid local file exists for this title.
 	 * i.e TimedText:myfile.ogg
 	 *
+	 * @return void
 	 * @throws \MWException
 	 */
 	private function doRedirectToPageForm( OutputPage $out ): void {
@@ -281,6 +296,8 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Gets the video HTML ( with the current language set as default )
+	 *
+	 * @return string
 	 */
 	private function getFileHTML(): string {
 		// Get the video embed:
@@ -310,8 +327,12 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Gets an HTML representation of the Timed Text
+	 *
+	 * @param OutputPage $out
+	 * @param string $languageName
+	 * @return string
 	 */
-	private function getTimedTextHTML( OutputPage $out, string $languageName ): string {
+	private function getTimedTextHTML( OutputPage $out, string $languageName ) {
 		$file = $this->getCorrespondingFile();
 		if ( !$this->getPage()->exists() ) {
 			if ( $file && $file->isLocal() ) {
@@ -364,6 +385,8 @@ class TimedTextPage extends Article {
 	 * Retrieve the file associated with this TimedText page
 	 * Returns null if no file is associated or no file exists,
 	 * either locally or on a remote server or if it is not a TimedMediaHandler file
+	 *
+	 * @return File|null
 	 */
 	public function getCorrespondingFile(): ?File {
 		if ( $this->correspondingFile ) {
@@ -388,6 +411,7 @@ class TimedTextPage extends Article {
 	 * The media file title that should belong to this TimedText page
 	 *
 	 * The title doesn't necessarily have to exist
+	 * @return Title|null
 	 */
 	public function getCorrespondingFileTitle(): ?Title {
 		return $this->correspondingFileTitle;
@@ -395,6 +419,7 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Returns the extension/timedtext type, based on the page title
+	 * @return string|null
 	 */
 	public function getTimedTextFormat(): ?string {
 		return $this->timedTextFormat;
@@ -403,6 +428,8 @@ class TimedTextPage extends Article {
 	/**
 	 * Only pages that end with .languageKey.srt
 	 * are known allowed names for TimedText pages.
+	 *
+	 * @return bool
 	 */
 	public function isActualTimedTextTitle(): bool {
 		return (bool)$this->getTimedTextFormat();
@@ -410,6 +437,7 @@ class TimedTextPage extends Article {
 
 	/**
 	 * Returns the language key code from the page title, if present
+	 * @return string|null
 	 */
 	public function getLanguageKey(): ?string {
 		return $this->languageKey;

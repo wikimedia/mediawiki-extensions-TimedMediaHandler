@@ -3,25 +3,42 @@
 namespace MediaWiki\TimedMediaHandler\TimedText;
 
 class ParseError {
-	protected int $line;
-	protected string $input;
-	protected string $error;
+	/** @var int */
+	protected $line;
+	/** @var string */
+	protected $input;
+	/** @var string */
+	protected $error;
 
-	public function __construct( int $line, string $input, string $error ) {
-		$this->line = $line;
-		$this->input = $input;
-		$this->error = $error;
+	/**
+	 * @param int $line
+	 * @param string $input
+	 * @param string $error
+	 */
+	public function __construct( $line, $input, $error ) {
+		$this->line = (int)$line;
+		$this->input = (string)$input;
+		$this->error = (string)$error;
 	}
 
-	public function getLine(): int {
+	/**
+	 * @return int
+	 */
+	public function getLine() {
 		return $this->line;
 	}
 
-	public function getInput(): string {
+	/**
+	 * @return string
+	 */
+	public function getInput() {
 		return $this->input;
 	}
 
-	public function getError(): string {
+	/**
+	 * @return string
+	 */
+	public function getError() {
 		return $this->error;
 	}
 }
