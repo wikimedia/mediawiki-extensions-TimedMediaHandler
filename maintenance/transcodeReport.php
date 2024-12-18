@@ -15,19 +15,16 @@ use MediaWiki\Title\Title;
 
 class TranscodeReport extends Maintenance {
 
-	/** @var bool */
-	private $detail = false;
-	/** @var bool */
-	private $histogram = false;
-	/** @var bool */
-	private $outliers = false;
+	private bool $detail = false;
+	private bool $histogram = false;
+	private bool $outliers = false;
 
 	/** @var int[] */
-	private $count = [];
+	private array $count = [];
 	/** @var float[] */
-	private $duration = [];
+	private array $duration = [];
 	/** @var int[] */
-	private $size = [];
+	private array $size = [];
 
 	/**
 	 * @var int Don't count files claiming longer than 12hr duration
@@ -49,10 +46,8 @@ class TranscodeReport extends Maintenance {
 		1440 => 10 * 1000 * 1000,
 		2160 => 20 * 1000 * 1000,
 	];
-	/** @var int */
-	private $buckets = 25;
-	/** @var array */
-	private $histo = [];
+	private int $buckets = 25;
+	private array $histo = [];
 
 	public function __construct() {
 		parent::__construct();
@@ -148,10 +143,7 @@ class TranscodeReport extends Maintenance {
 		}
 	}
 
-	/**
-	 * @param File $file
-	 */
-	private function processFile( File $file ) {
+	private function processFile( File $file ): void {
 		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
 
 		// Transcode table doesn't carry the file size, but does carry the final bitrate.
@@ -206,10 +198,8 @@ class TranscodeReport extends Maintenance {
 	/**
 	 * @param string|int $key
 	 * @param int $bitrate
-	 *
-	 * @return int
 	 */
-	private function bucket( $key, $bitrate ) {
+	private function bucket( $key, int $bitrate ): int {
 		$res = (int)$key;
 		$target = ( $bitrate / $this->max[$res] ) * $this->buckets;
 		if ( $target < 0 ) {
@@ -226,7 +216,7 @@ class TranscodeReport extends Maintenance {
 	 * @param float $duration
 	 * @param int $bitrate
 	 */
-	private function recordForHistogram( $key, $duration, $bitrate ) {
+	private function recordForHistogram( $key, float $duration, int $bitrate ): void {
 		if ( !isset( $this->histo[$key] ) ) {
 			$this->histo[$key] = [];
 		}

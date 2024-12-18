@@ -65,7 +65,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	/** @inheritDoc */
-	public static function getPropertyMessages( $filter = [] ) {
+	public static function getPropertyMessages( $filter = [] ): array {
 		$pm = parent::getPropertyMessages( $filter );
 		$pm['derivatives'] = 'apihelp-query+videoinfo-paramvalue-prop-derivatives';
 		$pm['timedtext'] = 'apihelp-query+videoinfo-paramvalue-prop-timedtext';
@@ -74,9 +74,8 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	/**
 	 * @see ApiBase::getExamplesMessages()
-	 * @return array
 	 */
-	protected function getExamplesMessages() {
+	protected function getExamplesMessages(): array {
 		return [
 			'action=query&titles=File:Folgers.ogv&prop=videoinfo&viprop=derivatives'
 				=> 'apihelp-query+videoinfo-example-1',
@@ -84,12 +83,12 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 	}
 
 	/** @inheritDoc */
-	public function getHelpUrls() {
+	public function getHelpUrls(): string {
 		return 'https://www.mediawiki.org/wiki/Special:MyLanguage/API:Videoinfo';
 	}
 
 	/** @inheritDoc */
-	public function getAllowedParams() {
+	public function getAllowedParams(): array {
 		$params = parent::getAllowedParams();
 		foreach ( $params as $k => $v ) {
 			// If PARAM_HELP_MSG is not manually set for this parameter, force fallback

@@ -29,28 +29,19 @@ use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\LikeValue;
 
 class TextHandler {
-	/** @var int|null lazy init remote Namespace number */
-	public $remoteNs;
-	/** @var string|null lazy init remote Namespace name */
-	public $remoteNsName;
+	/** Lazy init remote Namespace number */
+	public ?int $remoteNs = null;
+	/** Lazy init remote Namespace name */
+	public ?string $remoteNsName = null;
 
-	/**
-	 * @var File
-	 */
-	protected $file;
+	protected File $file;
 
-	/**
-	 * @var array of string keys for subtitle formats
-	 */
-	protected $formats;
+	/** Array of string keys for subtitle formats */
+	protected array $formats;
 
-	/**
-	 * @param File $file
-	 * @param array $formats
-	 */
 	public function __construct(
-		$file,
-		$formats = [ TimedTextPage::VTT_SUBTITLE_FORMAT, TimedTextPage::SRT_SUBTITLE_FORMAT ]
+		File $file,
+		array $formats = [ TimedTextPage::VTT_SUBTITLE_FORMAT, TimedTextPage::SRT_SUBTITLE_FORMAT ]
 	) {
 		$this->file = $file;
 		$this->formats = $formats;
@@ -58,9 +49,8 @@ class TextHandler {
 
 	/**
 	 * Get the timed text tracks elements as an associative array
-	 * @return array[]
 	 */
-	public function getTracks() {
+	public function getTracks(): array {
 		if ( $this->file->isLocal() ) {
 			return $this->getLocalDbTextSources();
 		}
@@ -189,9 +179,8 @@ class TextHandler {
 	/**
 	 * Retrieve the text sources belonging to a remote file
 	 * @param File $file The File's repo must implement IForeignRepoWithMWApi
-	 * @return array[]
 	 */
-	private function getRemoteTextSources( File $file ) {
+	private function getRemoteTextSources( File $file ): array {
 		$regenerator = function () use ( $file ) {
 			/** @var IForeignRepoWithMWApi $repo */
 			$repo = $file->getRepo();
@@ -231,9 +220,8 @@ class TextHandler {
 
 	/**
 	 * Retrieve the text sources belonging to a foreign db accessible file
-	 * @return array[]
 	 */
-	public function getForeignDbTextSources() {
+	public function getForeignDbTextSources(): array {
 		$data = $this->getTextPagesFromDb();
 		if ( $data !== false ) {
 			return $this->getTextTracksFromRows( $data );
@@ -243,9 +231,8 @@ class TextHandler {
 
 	/**
 	 * Retrieve the text sources belonging to a local file
-	 * @return array[]
 	 */
-	public function getLocalDbTextSources() {
+	public function getLocalDbTextSources(): array {
 		$data = $this->getTextPagesFromDb();
 		if ( $data !== false ) {
 			return $this->getTextTracksFromRows( $data );
@@ -258,9 +245,8 @@ class TextHandler {
 	 * Handles both local and foreign Db results
 	 *
 	 * @param IResultWrapper $data Database result with page titles
-	 * @return array[]
 	 */
-	public function getTextTracksFromRows( IResultWrapper $data ) {
+	public function getTextTracksFromRows( IResultWrapper $data ): array {
 		$textTracks = [];
 
 		$services = MediaWikiServices::getInstance();
@@ -300,9 +286,8 @@ class TextHandler {
 	/**
 	 * Build an array of track information using an API result
 	 * @param mixed $data JSON decoded result from a query API request
-	 * @return array[]
 	 */
-	public function getTextTracksFromData( $data ) {
+	public function getTextTracksFromData( $data ): array {
 		$textTracks = [];
 		foreach ( $data['query']['pages'] ?? [] as $page ) {
 			foreach ( $page['videoinfo'] ?? [] as $info ) {
@@ -319,12 +304,7 @@ class TextHandler {
 		return $textTracks;
 	}
 
-	/**
-	 * @param string $timedTextExtension
-	 *
-	 * @return string
-	 */
-	public function getContentType( $timedTextExtension ) {
+	public function getContentType( string $timedTextExtension ): string {
 		if ( $timedTextExtension === TimedTextPage::SRT_SUBTITLE_FORMAT ) {
 			return 'text/x-srt';
 		}
@@ -337,12 +317,8 @@ class TextHandler {
 	/**
 	 * Retrieve a url to the raw subtitle file
 	 * Only use for local and foreignDb requests
-	 *
-	 * @param string $lang
-	 * @param string $format
-	 * @return string
 	 */
-	public function getFullURL( $lang, $format ) {
+	public function getFullURL( string $lang, string $format ): string {
 		$title = $this->file->getTitle();
 		// Note we need to use the canonical namespace in case this is a
 		// foreign DB repo (Wikimedia Commons style) in a different language
@@ -384,7 +360,7 @@ class TextHandler {
 	 * @param ParseError[] &$errors optional outparam to capture errors
 	 * @return string destination-formatted subtitles
 	 */
-	public static function convertSubtitles( $from, $to, $data, &$errors = [] ) {
+	public static function convertSubtitles( string $from, string $to, string $data, array &$errors = [] ): string {
 		// Note that we convert even if the format is the same, to ensure
 		// data format integrity.
 		//

@@ -74,9 +74,8 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 
 	/**
 	 * Do login
-	 * @return array
 	 */
-	private function login() {
+	private function login(): array {
 		$user = $this->getTestUser();
 
 		$params = [
@@ -97,12 +96,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		return $session;
 	}
 
-	/**
-	 * uploads a file
-	 * @param array $file
-	 * @return array
-	 */
-	public function uploadFile( $file ) {
+	public function uploadFile( array $file ): array {
 		// get a session object
 		$session = $this->login();
 
