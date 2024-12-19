@@ -24,7 +24,6 @@ use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use RepoGroup;
 use Shellbox\Command\BoxedCommand;
-use Wikimedia\FileBackend\FSFile\FSFile;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
 use Wikimedia\Rdbms\ILBFactory;
 
@@ -49,9 +48,6 @@ class WebVideoTranscodeJob extends Job {
 
 	/** @var File */
 	public $file;
-
-	/** @var FSFile|null */
-	public $source;
 
 	/** @var string|null */
 	private $remuxVirtualUrl;
