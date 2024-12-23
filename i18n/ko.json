@@ -71,7 +71,7 @@
 	"timedmedia-reset-button-cancel": "초기화하지 않음",
 	"timedmedia-reset-button-dismiss": "숨기기",
 	"timedmedia-reset-button-reset": "초기화",
-	"timedmedia-reset-error": "코드 변환 작업을 초기화하는 데 오류가 났습니다.",
+	"timedmedia-reset-error": "코드 변환 작업을 초기화하는 데 오류가 발생했습니다.",
 	"timedmedia-reset-explanation": "코드 변환을 초기화하면 기존 파일이 (있는 경우) 제거되며, 작업 대기열로 코드 변환을 다시 추가합니다. 다시 변환하는 데 다소 시간이 걸릴 것입니다.",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 원본",
