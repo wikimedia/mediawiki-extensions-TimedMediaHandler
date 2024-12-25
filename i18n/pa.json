@@ -12,5 +12,6 @@
 	"timedmedia-source-file": "$1 ਸਰੋਤ",
 	"timedmedia-source-audio-file-desc": "ਮੂਲ $1 ਫ਼ਾਈਲ ($2)",
 	"timedmedia-subtitle-new": "ਨਵਾਂ ਤਰਜਮਾ ਬਣਾਓ ਜਾਂ ਮੌਜੂਦਾ ਸੋਧੋ",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 ਸਕਿੰਟ |$1 ਸਕਿੰਟਾਂ}}",
 	"videojs-more-information": "ਹੋਰ ਜਾਣਕਾਰੀ"
 }
