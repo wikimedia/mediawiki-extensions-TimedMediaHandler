@@ -89,7 +89,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 
 		// Definitely do not want to break frames
 		$wgBreakFrames = false;
-		$out->setPreventClickjacking( false );
+		$out->getMetadata()->setPreventClickjacking( false );
 		$out->disallowUserJs();
 
 		$out->addModules( [ 'ext.tmh.player', 'ext.tmh.player.inline' ] );
@@ -107,7 +107,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 
 			Html::element( 'meta', [ 'charset' => 'UTF-8' ] ),
 			Html::element( 'title', [], $title->getText() ),
-			$out->getRlClient()->getHeadHtml(),
+			$rlClient->getHeadHtml(),
 			implode( "\n", $out->getHeadLinksArray() ),
 
 			Html::closeElement( 'head' ),
