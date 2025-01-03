@@ -1,4 +1,5 @@
-/* eslint-env node, es6 */
+'use strict';
+
 module.exports = function ( grunt ) {
 	const conf = grunt.file.readJSON( 'extension.json' );
 
