@@ -4,18 +4,30 @@ namespace MediaWiki\TimedMediaHandler;
 
 use File;
 use MediaTransformError;
+use MediaWiki\Config\Config;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
+use RepoGroup;
 use UnregisteredLocalFile;
 
 class TimedMediaThumbnail {
+
+	private Config $config;
+	private RepoGroup $repoGroup;
+
+	public function __construct(
+		Config $config,
+		RepoGroup $repoGroup
+	) {
+		$this->config = $config;
+		$this->repoGroup = $repoGroup;
+	}
 
 	/**
 	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
-	public static function get( $options ) {
+	public function get( $options ) {
 		if ( !is_dir( dirname( $options['dstPath'] ) ) ) {
 			wfMkdirParents( dirname( $options['dstPath'] ), null, __METHOD__ );
 		}
@@ -26,19 +38,18 @@ class TimedMediaThumbnail {
 			$options['width'] != $options['file']->getWidth() &&
 			$options['height'] != $options['file']->getHeight()
 		) {
-			return self::resizeThumb( $options );
+			return $this->resizeThumb( $options );
 		}
-		return self::tryFfmpegThumb( $options );
+		return $this->tryFfmpegThumb( $options );
 	}
 
 	/**
 	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
-	private static function tryFfmpegThumb( $options ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$fFmpegLocation = $config->get( 'FFmpegLocation' );
-		$maxShellMemory = $config->get( MainConfigNames::MaxShellMemory );
+	private function tryFfmpegThumb( $options ) {
+		$fFmpegLocation = $this->config->get( 'FFmpegLocation' );
+		$maxShellMemory = $this->config->get( MainConfigNames::MaxShellMemory );
 
 		if ( !$fFmpegLocation || !is_file( $fFmpegLocation ) ) {
 			return false;
@@ -118,7 +129,7 @@ class TimedMediaThumbnail {
 	 * @param array $options
 	 * @return bool|MediaTransformError
 	 */
-	private static function resizeThumb( $options ) {
+	private function resizeThumb( $options ) {
 		$file = $options['file'];
 		$params = [];
 		foreach ( [ 'start', 'thumbtime' ] as $key ) {
@@ -147,7 +158,7 @@ class TimedMediaThumbnail {
 		if ( !$src ) {
 			return false;
 		}
-		$localRepo = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo();
+		$localRepo = $this->repoGroup->getLocalRepo();
 		$thumbFile = new UnregisteredLocalFile( $file->getTitle(),
 			$localRepo, $src, false );
 		$thumbParams = [
