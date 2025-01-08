@@ -217,10 +217,7 @@ class TimedTextPage extends Article {
 			$this->renderStatus->warning( 'timedmedia-subtitle-no-video' );
 		}
 
-		$languages = $this->languageNameUtils->getLanguageNames(
-			LanguageNameUtils::AUTONYMS,
-			LanguageNameUtils::SUPPORTED
-		);
+		$languages = $this->languageNameUtils->getLanguageNames();
 		$options = [];
 		foreach ( $languages as $code => $name ) {
 			$display = LanguageCode::bcp47( $code ) . ' - ' . $name;
