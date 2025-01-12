@@ -132,7 +132,6 @@
 		"ImagePageFileHistoryLine": "main",
 		"LoadExtensionSchemaUpdates": "installer",
 		"MediaWikiPerformAction": "iframe",
-		"RevisionFromEditComplete": "main",
 		"PageMoveComplete": [
 			"main",
 			"timedtext"
