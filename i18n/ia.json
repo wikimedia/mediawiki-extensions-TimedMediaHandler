@@ -120,7 +120,7 @@
 	"timedmedia-dialog-close": "Clauder lector multimedial",
 	"timedmedia-duration-hms": "$1 hora{{PLURAL:$1||s}}, $2 minuta{{PLURAL:$2||s}} e $3 secunda{{PLURAL:$3||s}}",
 	"timedmedia-duration-ms": "$1 minuta{{PLURAL:$1||s}} e $2 secunda{{PLURAL:$2||s}}",
-	"timedmedia-duration-s": "$1 secunda{{PLURAL:$1||s}}",
+	"timedmedia-duration-s": "$1 {{PLURAL:$1|secunda|secundas}}",
 	"right-transcode-reset": "Reinitialisar le videos fallite o transcodificate de sorta que illos es re-inserite in le cauda de actiones",
 	"right-transcode-status": "View [[Special:TimedMediaHandler|information sur le activitate currente de transcodification]]",
 	"action-transcode-reset": "reinitialisar transcodificationes",

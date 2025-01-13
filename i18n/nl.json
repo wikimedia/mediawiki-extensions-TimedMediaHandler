@@ -134,7 +134,7 @@
 	"timedmedia-dialog-close": "Mediaspeler sluiten",
 	"timedmedia-duration-hms": "$1 {{PLURAL:$1|uur|uren}}, $2 {{PLURAL:$2|minuut|minuten}} en $3 seconde{{PLURAL:$3||n}}",
 	"timedmedia-duration-ms": "$1 {{PLURAL:$1|minuut|minuten}} en $2 seconde{{PLURAL:$2||n}}",
-	"timedmedia-duration-s": "$1 seconde{{PLURAL:$1||n}}",
+	"timedmedia-duration-s": "$1 {{PLURAL:$1|seconde|seconden}}",
 	"right-transcode-reset": "Mislukte of al getranscodeerde video’s opnieuw in de taakwachtrij zetten",
 	"right-transcode-status": "[[Special:TimedMediaHandler|Gegevens over de huidige transcoderingsactiviteit]] bekijken",
 	"action-transcode-reset": "transcoderingen te herstarten",
