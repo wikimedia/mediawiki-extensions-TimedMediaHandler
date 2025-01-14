@@ -7,7 +7,7 @@
 			"Rsaawah"
 		]
 	},
-	"timedmedia-duration-s": "{{PLURAL:$1|Anitɛtɛ}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 anibuo}}",
 	"videojs-subtitles-create": "Yɛ atifi asɛm bio ma atifi asɛm a adi kan no.",
 	"videojs-captions-create": "Yɛ atifi asɛm"
 }
