@@ -9,7 +9,7 @@
 	},
 	"timedmedia-source-file": "$1 Beaɛ",
 	"timedmedia-source-audio-file-desc": " $1 file no ankasa  ($2)",
-	"timedmedia-duration-s": "{{PLURAL:$1|Anitɛtɛ}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 anibuo}}",
 	"videojs-subtitles-create": "Yɛ atifi asɛm bio ma atifi asɛm a adi kan no.",
 	"videojs-captions-create": "Yɛ atifi asɛm"
 }

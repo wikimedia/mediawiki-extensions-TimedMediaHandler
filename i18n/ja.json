@@ -62,6 +62,7 @@
 	"timedmedia-actions": "操作",
 	"timedmedia-direct-link": "ダウンロード",
 	"timedmedia-not-ready": "準備ができていません",
+	"timedmedia-completed-on": "$1 に完了",
 	"timedmedia-error-on": "$1 でのエラー",
 	"timedmedia-started-transcode": "$1 前に開始。 $2",
 	"timedmedia-percent-done": "約 $1% 完了",
