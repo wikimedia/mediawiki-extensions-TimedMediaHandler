@@ -2,10 +2,10 @@ video.js:
   license: Apache-2.0
   homepage: https://videojs.com
   authors: Brightcove, Inc. <https://www.brightcove.com/>
-  version: 8.6.2
+  version: 8.20.0
   type: tar
-  src: https://registry.npmjs.org/video.js/-/video.js-8.6.1.tgz
-  integrity: sha512-CNYVJ5WWIZ7bOhbkkfcKqLGoc6WsE3Ft2RfS1lXdQTWk8UiSsPW2Ssk2JzPCA8qnIlUG9os/faCFsYWjyu4JcA==
+  src: https://registry.npmjs.org/video.js/-/video.js-8.20.0.tgz
+  integrity: sha512-VyXY/DbtfaI22gpWJdo8bmTcpPRfKg0SeQJBusRdIJF1RMI+er1BHpRreg67s5Qfd9ZeSbfKShUOwaxRft/tBw==
   dest:
     package/LICENSE:
     package/README.md:
