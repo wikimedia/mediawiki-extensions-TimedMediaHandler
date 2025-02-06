@@ -225,11 +225,6 @@ class TimedTextPage extends Article {
 		}
 
 		$formDescriptor = [
-			'errorsandwarnings' => [
-				'type' => 'info',
-				'raw' => true,
-				'default' => $this->getErrorsAndWarnings( $this->renderStatus )
-			],
 			'lang' => [
 				'label-message' => 'timedmedia-subtitle-new-desc',
 				'required' => true,
@@ -246,6 +241,7 @@ class TimedTextPage extends Article {
 			->setSubmitTextMsg( 'timedmedia-subtitle-new-go' )
 			->prepareForm()
 			->setSubmitCallback( [ $this, 'onSubmit' ] )
+			->addPreHtml( $this->getErrorsAndWarnings( $this->renderStatus ) )
 			->show();
 	}
 
