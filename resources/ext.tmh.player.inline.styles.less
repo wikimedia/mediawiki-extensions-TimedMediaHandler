@@ -11,8 +11,10 @@
 		// (first is media dialog and embedplayer)
 		&.vjs-fill,
 		&:not( .vjs-audio ) {
-			/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
-			font-size: 13px;
+			// TODO: Re-evaluate we can use Codex design token like `@font-size-small`,
+			// which would mean to bump the size up by equal to 14px in Vector 2022 and MinervaNeue.
+			// `0.8125rem` equals `13px` at `16px` base font size.
+			font-size: 0.8125rem;
 		}
 
 		.vjs-custom-control-spacer {
@@ -36,8 +38,10 @@
 	/* We force the size of player to avoid reflows after loading the JS */
 	audio.video-js {
 		min-height: 3em;
-		/* stylelint-disable-next-line declaration-property-unit-disallowed-list */
-		font-size: 10px;
+		// TODO: Re-evaluate we can use Codex design token like `@font-size-x-small`,
+		// which would mean to bump the size up by equal to 12px in Vector 2022 and MinervaNeue.
+		// `0.625rem` equals `10px` at `16px` base font size.
+		font-size: 0.625rem;
 	}
 
 	/* We hide the native controls, before we load the custom controls  */
