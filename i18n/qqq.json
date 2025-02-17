@@ -20,7 +20,8 @@
 			"Tmv",
 			"Umherirrender",
 			"아라",
-			"McDutchie"
+			"McDutchie",
+			"Matma Rex"
 		]
 	},
 	"timedmediahandler-extensionname": "{{name}}\nThe name of the extension",
@@ -199,7 +200,7 @@
 	"action-transcode-status": "{{doc-action|transcode-status}}",
 	"log-name-timedmediahandler": "{{doc-logpage}}\n\nAs well as log page title and page header for [[Special:Log/timedmediahandler]].",
 	"log-description-timedmediahandler": "Log description on [[Special:Log/timedmediahandler]].",
-	"logentry-timedmediahandler-resettranscode": "{{logentry|[[Special:Log/timedmediahandler]]}}\nParameters:\n* $4 - format to transcode to, e.g. '480p.ogv'",
+	"logentry-timedmediahandler-resettranscode": "{{logentry|[[Special:Log/timedmediahandler]]}}\nAdditional parameters:\n* $4 - format to transcode to, e.g. '480p.ogv'",
 	"orphanedtimedtext": "{{doc-special|OrphanedTimedText}}",
 	"orphanedtimedtext-summary": "Summary of Special:OrphanedTimedText.",
 	"orphanedtimedtext-unsupported": "Shown if Special:OrphanedTimedText isn't supported for the current database back-end.",
