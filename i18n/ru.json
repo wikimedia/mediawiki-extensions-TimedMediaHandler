@@ -27,7 +27,8 @@
 			"Vlad5250",
 			"Wolterhon",
 			"Александр Сигачёв",
-			"Умар"
+			"Умар",
+			"Yurina Tatiana"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -58,6 +59,9 @@
 	"timedmedia-more": "Больше…",
 	"timedmedia-dismiss": "Закрыть",
 	"timedmedia-download": "Скачать файл",
+	"timedmedia-duration": "Продолжительность: $1.",
+	"timedmedia-play-audio": "Воспроизвести аудио",
+	"timedmedia-play-video": "Воспроизвести видео",
 	"timedmedia-desc-link": "Сведения об этом файле",
 	"timedmedia-status-header": "Статус декодирования",
 	"timedmedia-update-status": "Обновить статус декодирования",
@@ -114,6 +118,8 @@
 	"timedmedia-derivative-desc-1080p.mp4": "MP4 H.264 в Full HD (1080P)",
 	"timedmedia-derivative-desc-1440p.mp4": "UHD MP4 H.264 (1440P)",
 	"timedmedia-derivative-desc-2160p.mp4": "MP4 H.264-видео в 4K UHD (2160p)",
+	"timedmedia-derivative-desc-144p.mjpeg.mov": "Видео QuickTime (144p MJPEG)",
+	"timedmedia-derivative-desc-360p.mpeg4.mov": "Видео QuickTime (360p MPEG-4 Visual)",
 	"timedmedia-derivative-desc-m3u8": "Потоковое вещание HTTP",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "Стерео (Опус)",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Потоковое аудио (Опус, стерео)",
