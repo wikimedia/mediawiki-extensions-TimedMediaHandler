@@ -27,7 +27,8 @@
 			"Vlad5250",
 			"Wolterhon",
 			"Александр Сигачёв",
-			"Умар"
+			"Умар",
+			"Yurina Tatiana"
 		]
 	},
 	"timedmediahandler-desc": "Обработчик для аудио, видео и субтитров, с поддержкой форматов: WebM, Ogg Theora, Vorbis, srt",
@@ -58,6 +59,9 @@
 	"timedmedia-more": "Больше…",
 	"timedmedia-dismiss": "Закрыть",
 	"timedmedia-download": "Скачать файл",
+	"timedmedia-duration": "Продолжительность: $1.",
+	"timedmedia-play-audio": "Воспроизвести аудио",
+	"timedmedia-play-video": "Воспроизвести видео",
 	"timedmedia-desc-link": "Сведения об этом файле",
 	"timedmedia-status-header": "Статус декодирования",
 	"timedmedia-update-status": "Обновить статус декодирования",
