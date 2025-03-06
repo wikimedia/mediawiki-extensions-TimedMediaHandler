@@ -38,14 +38,25 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		const oouiWindow = super.initialize();
 
 		this.$element.addClass( 'mw-tmh-media-dialog' );
+		let mousedownStartedInside = false;
+
+		this.$element.get( 0 ).addEventListener( 'mousedown', ( e ) => {
+			mousedownStartedInside =
+				this.$body.get( 0 ).contains( e.target ) ||
+				this.$head.get( 0 ).contains( e.target );
+		}, true );
+
 		this.$element.on( 'click', ( e ) => {
+			// Only close if the click started outside and the click target isn’t
+			// contained within the head or body
 			if (
+				!mousedownStartedInside &&
 				!this.$body.get( 0 ).contains( e.target ) &&
 				!this.$head.get( 0 ).contains( e.target )
 			) {
-				// Close the dialog when user clicks outside of it
 				this.close();
 			}
+			mousedownStartedInside = false;
 		} );
 
 		this.content = new OO.ui.PanelLayout( {
