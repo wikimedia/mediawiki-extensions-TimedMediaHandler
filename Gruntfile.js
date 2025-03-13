@@ -26,7 +26,8 @@ module.exports = function ( grunt ) {
 		},
 		stylelint: {
 			options: {
-				syntax: 'less'
+				syntax: 'less',
+				cache: true
 			},
 			all: [
 				'**/*.{css,less}',
