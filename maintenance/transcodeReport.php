@@ -8,6 +8,7 @@ if ( $IP === false ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use MediaWiki\MainConfigNames;
 use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
@@ -86,13 +87,23 @@ class TranscodeReport extends Maintenance {
 			// Default to all if none specified
 			$types = [ 'AUDIO', 'VIDEO' ];
 		}
-		$res = $dbr->newSelectQueryBuilder()
-			->select( 'img_name' )
-			->from( 'image' )
-			->where( [ 'img_media_type' => $types ] )
-			->orderBy( [ 'img_media_type', 'img_name' ] )
-			->caller( __METHOD__ )
-			->fetchResultSet();
+		$migrationStage = $this->getConfig()->get( MainConfigNames::FileSchemaMigrationStage );
+		if ( $migrationStage & SCHEMA_COMPAT_READ_OLD ) {
+			$queryBuilder = $dbr->newSelectQueryBuilder()
+				->select( 'img_name' )
+				->from( 'image' )
+				->where( [ 'img_media_type' => $types ] )
+				->orderBy( [ 'img_media_type', 'img_name' ] );
+		} else {
+			$queryBuilder = $dbr->newSelectQueryBuilder()
+				->field( 'file_name', 'img_name' )
+				->from( 'file' )
+				->join( 'filetypes', null, 'file_type = ft_id' )
+				->where( [ 'ft_media_type' => $types ] )
+				->orderBy( [ 'file_type', 'file_name' ] );
+		}
+		$res = $queryBuilder->caller( __METHOD__ )->fetchResultSet();
+
 		$localRepo = $this->getServiceContainer()->getRepoGroup()->getLocalRepo();
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );
