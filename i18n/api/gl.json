@@ -2,22 +2,32 @@
 	"@metadata": {
 		"authors": [
 			"Elisardojm",
-			"Iváns"
+			"Iváns",
+			"Toliño"
 		]
 	},
-	"apihelp-query+transcodestatus-summary": "Obter o estado de transcode para unha páxina de ficheiro dado.",
-	"apihelp-query+transcodestatus-example-1": "Obter o estado transcode para [[:File:Clip.webm]]",
-	"apihelp-query+videoinfo-summary": "Estende a información da imaxe para incluír a información da fonte de vídeo (derivado)",
-	"apihelp-query+videoinfo-example-1": "Procurar información sobre [[:File:Folgers.ogv]]",
+	"apihelp-query+transcodestatus-summary": "Obter o estado de transcodificación para unha páxina de ficheiro indicada.",
+	"apihelp-query+transcodestatus-example-1": "Obter o estado de transcodificación para [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-summary": "Estende a información da imaxe para incluír a información (derivada) da fonte do vídeo",
+	"apihelp-query+videoinfo-example-1": "Recuperar a información sobre [[:File:Folgers.ogv]]",
 	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Engade unha táboa das versións dispoñibles cos diferentes formatos e calidades dun ficheiro de son ou vídeo.",
 	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Engade unha lista dos subtítulos, lendas e descricións dispoñibles dun ficheiro de son ou vídeo.",
-	"apihelp-transcodereset-summary": "Usuarios co permiso 'transcode-reset' poden reiniciar e reexecutar un traballo transcode.",
-	"apihelp-transcodereset-param-title": "Título do ficheiro multimedia.",
-	"apihelp-transcodereset-param-transcodekey": "A chave transcode que quere resetear. Collida de [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
-	"apihelp-transcodereset-example-1": "Resetear todos os transcodes para [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "Resetear a clave transcode '360_560kbs.webm' de [[:File:Clip.webm]]",
+	"apihelp-timedtext-summary": "Proporciona contido de texto cronometrado para o seu uso polos elementos &lt;track&gt;",
+	"apihelp-timedtext-param-title": "O título do ficheiro multimedia para o cal recuperar o texto cronometrado",
+	"apihelp-timedtext-param-pageid": "O identificador de páxina do ficheiro multimedia para o cal para recuperar o texto cronometrado",
+	"apihelp-timedtext-param-trackformat": "O formato de ficheiro no cal recuperar o texto cronometrado",
+	"apihelp-timedtext-param-lang": "A lingua do texto cronometrado a recuperar",
+	"apihelp-timedtext-example-1": "Recuperar un ficheiro de subtítulos SRT en alemán para o ficheiro Example.ogv",
+	"apihelp-transcodereset-summary": "Os usuarios co permiso \"transcode-reset\" poden reiniciar e volver executar un traballo de transcodificación.",
+	"apihelp-transcodereset-param-title": "O título do ficheiro multimedia.",
+	"apihelp-transcodereset-param-transcodekey": "A clave de transcodificación que queres reiniciar. Recupérase desde [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-example-1": "Reiniciar todas as transcodificacións para [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Reiniciar a clave de transcodificación \"360_560kbs.webm\" de [[:File:Clip.webm]]",
 	"apierror-timedmedia-disabledtranscode": "A transcodificación está desactivada neste wiki.",
 	"apierror-timedmedia-invalidtranscodetitle": "$1 non é transcodificable.",
-	"apierror-timedmedia-badtranscodekey": "Clave de transcodificación incorrecta ou inactivaː $1",
-	"apierror-timedmedia-notenoughtimereset": "Non pasou tempo abondo dende a última reinicialización desta transcodificación. Falta $1 ata que a transcodificación poida ser reinicializada."
+	"apierror-timedmedia-badtranscodekey": "Clave de transcodificación incorrecta ou desactivada: $1",
+	"apierror-timedmedia-notenoughtimereset": "Non pasou tempo abondo dende o último reinicio desta transcodificación. $1 ata que se poida reiniciar a transcodificación.",
+	"apierror-timedmedia-lang-notfound": "Non se atopou a lingua solicitada",
+	"apierror-timedmedia-no-timedtext-support": "Non se admite TimedText",
+	"apierror-timedmedia-notlocal": "O ficheiro non é local"
 }
