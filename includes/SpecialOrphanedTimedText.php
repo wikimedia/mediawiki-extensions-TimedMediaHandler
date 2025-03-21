@@ -13,6 +13,8 @@ use HtmlArmor;
 use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Linker\Linker;
+use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\PageQueryPage;
 use MediaWiki\Title\Title;
 use RepoGroup;
@@ -34,6 +36,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	private IConnectionProvider $dbProvider;
 	private LanguageConverterFactory $languageConverterFactory;
 	private RepoGroup $repoGroup;
+	private int $migrationStage;
 
 	public function __construct(
 		IConnectionProvider $dbProvider,
@@ -44,6 +47,9 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		$this->dbProvider = $dbProvider;
 		$this->languageConverterFactory = $languageConverterFactory;
 		$this->repoGroup = $repoGroup;
+		$this->migrationStage = MediaWikiServices::getInstance()->getMainConfig()->get(
+			MainConfigNames::FileSchemaMigrationStage
+		);
 	}
 
 	/**
@@ -138,14 +144,13 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	 * @return array Standard query info values.
 	 */
 	public function getQueryInfo(): array {
-		$tables = [ 'page', 'image' ];
+		$tables = [ 'page' ];
 		$fields = [
 			'namespace' => 'page_namespace',
 			'title' => 'page_title',
 			'value' => 0,
 		];
 		$conds = [
-			'img_name' => null,
 			'page_namespace' => $this->getConfig()->get( 'TimedTextNS' ),
 			'page_is_redirect' => 0,
 		];
@@ -157,12 +162,26 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		// this in standard sql, or in sqlite.
 		$baseCond = 'substr( page_title, 1, length( page_title ) - '
 			. "length( substring_index( page_title, '.' ,-2 ) ) - 1 )";
-		$joinConds = [
-			'image' => [
-				'LEFT OUTER JOIN',
-				$baseCond . ' = img_name'
-			]
-		];
+
+		if ( $this->migrationStage & SCHEMA_COMPAT_READ_OLD ) {
+			$tables[] = 'image';
+			$conds['img_name'] = null;
+			$joinConds = [
+				'image' => [
+					'LEFT OUTER JOIN',
+					$baseCond . ' = img_name'
+				]
+			];
+		} else {
+			$tables[] = 'file';
+			$conds['file_name'] = null;
+			$joinConds = [
+				'file' => [
+					'LEFT OUTER JOIN',
+					$baseCond . ' = file_name'
+				]
+			];
+		}
 		return [
 			'tables' => $tables,
 			'fields' => $fields,

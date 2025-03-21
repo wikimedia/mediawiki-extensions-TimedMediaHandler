@@ -21,6 +21,7 @@ use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\FileBackend\FSFile\TempFSFileFactory;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\FLACHandler\FLACHandler;
@@ -1672,17 +1673,28 @@ class WebVideoTranscode {
 	 */
 	public static function cleanupOrphanedTranscodes( int $batchSize ): int {
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$migrationStage = MediaWikiServices::getInstance()->getMainConfig()->get(
+			MainConfigNames::FileSchemaMigrationStage
+		);
 		$dbw = $lbFactory->getPrimaryDatabase();
 		$ticket = $lbFactory->getEmptyTransactionTicket( __METHOD__ );
-		$ids = $dbw->newSelectQueryBuilder()
+		$queryBuilder = $dbw->newSelectQueryBuilder()
 			->select( 'transcode_id' )
 			->from( 'transcode' )
-			->leftJoin( 'image', null, [ 'img_name = transcode_image_name' ] )
-			->where( [ 'img_name' => null ] )
-			->limit( $batchSize )
-			->caller( __METHOD__ )
-			->fetchFieldValues();
+			->limit( $batchSize );
 
+		if ( $migrationStage & SCHEMA_COMPAT_READ_OLD ) {
+			$queryBuilder->leftJoin( 'image', null, [ 'img_name = transcode_image_name' ] )
+				->where( [ 'img_name' => null ] );
+		} else {
+			$queryBuilder->leftJoin( 'file', null, [ 'file_name = transcode_image_name' ] )
+				->where(
+					$dbw->expr( 'file_name', '=', null )
+						->or( 'file_deleted', '!=', 0 )
+				);
+		}
+
+		$ids = $queryBuilder->caller( __METHOD__ )->fetchFieldValues();
 		if ( count( $ids ) > 0 ) {
 			$dbw->newDeleteQueryBuilder()
 				->delete( 'transcode' )
