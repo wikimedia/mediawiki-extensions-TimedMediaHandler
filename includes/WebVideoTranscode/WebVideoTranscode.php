@@ -1137,7 +1137,9 @@ class WebVideoTranscode {
 	 * @return array
 	 */
 	public static function getPrimarySourceAttributes( $file, $options = [] ) {
-		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $file->getUrl() ) : $file->getUrl();
+		$src = in_array( 'fullurl', $options, true ) ?
+			MediaWikiServices::getInstance()->getUrlUtils()->expand( $file->getUrl() ) :
+			$file->getUrl();
 
 		/** @var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler */
 		$handler = $file->getHandler();
@@ -1183,7 +1185,9 @@ class WebVideoTranscode {
 		}
 
 		// Setup the url src:
-		$src = in_array( 'fullurl', $options, true ) ? wfExpandUrl( $src ) : $src;
+		$src = in_array( 'fullurl', $options, true ) ?
+			MediaWikiServices::getInstance()->getUrlUtils()->expand( $src ) :
+			$src;
 		$fields = [
 			'src' => $src,
 			'type' => static::$derivativeSettings[ $transcodeKey ][ 'type' ],

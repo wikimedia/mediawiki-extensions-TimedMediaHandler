@@ -533,7 +533,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	/**
 	 * @param array|null $options An optional array of strings to tweak
 	 *   the values returned.  Currently valid keys are `"fullurl"`, which
-	 *   calls `wfExpandUrl(..., PROTO_CURRENT)` on all URLs returned, and
+	 *   calls `UrlUtils::expand(..., PROTO_CURRENT)` on all URLs returned, and
 	 *   `"withhash"`, which ensures that returned URLs have the temporal
 	 *   url hash appended (as `getMediaSources()` does).
 	 */
@@ -543,7 +543,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$timedtext = $this->getTextHandler()->getTracks();
 		if ( in_array( 'fullurl', $options, true ) ) {
 			foreach ( $timedtext as &$track ) {
-				$track['src'] = wfExpandUrl( $track['src'], PROTO_CURRENT );
+				$track['src'] = MediaWikiServices::getInstance()->getUrlUtils()->expand( $track['src'], PROTO_CURRENT );
 			}
 			unset( $track );
 		}
