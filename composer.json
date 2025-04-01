@@ -1,10 +1,4 @@
 {
-	"repositories": [
-		{
-			"url": "https://github.com/wikimedia/getID3.git",
-			"type": "git"
-		}
-	],
 	"require": {
 		"james-heinrich/getid3": "v1.9.23"
 	},
