@@ -44,7 +44,7 @@ class CleanupOrphanedTranscodes extends Maintenance {
 		$this->output( "Removed $affectedRows transcode table entries for files which do not exist.\n" );
 	}
 
-	private function doWork() {
+	private function doWork(): int {
 		return WebVideoTranscode::cleanupOrphanedTranscodes( $this->getBatchSize() );
 	}
 }

@@ -1598,7 +1598,7 @@ class WebVideoTranscode {
 		return $keys;
 	}
 
-	public static function enabledTranscodes() {
+	public static function enabledTranscodes(): array {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		return static::filterAndSort( array_merge(
 			$config->get( 'EnabledTranscodeSet' ),
@@ -1606,12 +1606,12 @@ class WebVideoTranscode {
 		) );
 	}
 
-	public static function enabledVideoTranscodes() {
+	public static function enabledVideoTranscodes(): array {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		return static::filterAndSort( $config->get( 'EnabledTranscodeSet' ) );
 	}
 
-	public static function enabledAudioTranscodes() {
+	public static function enabledAudioTranscodes(): array {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		return static::filterAndSort( $config->get( 'EnabledAudioTranscodeSet' ) );
 	}

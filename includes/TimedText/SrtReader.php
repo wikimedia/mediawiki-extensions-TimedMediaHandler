@@ -93,18 +93,18 @@ class SrtReader extends Reader {
 		array_pop( $this->states );
 	}
 
-	protected function eof() {
+	protected function eof(): bool {
 		return ( $this->pos >= $this->len );
 	}
 
-	protected function peek() {
+	protected function peek(): string {
 		if ( $this->pos < $this->len ) {
 			return $this->input[$this->pos];
 		}
 		return '';
 	}
 
-	protected function consume() {
+	protected function consume(): string {
 		if ( $this->pos < $this->len ) {
 			$c = $this->input[$this->pos++];
 			if ( $c === "\n" ) {
@@ -136,35 +136,35 @@ class SrtReader extends Reader {
 		return $str;
 	}
 
-	protected function consumeLine() {
+	protected function consumeLine(): string {
 		return $this->consumeWhile( static function ( $c ) {
 			return $c !== "\n" && $c !== '';
 		} );
 	}
 
-	protected function consumeAlphanum() {
+	protected function consumeAlphanum(): string {
 		return $this->consumeWhile( 'ctype_alnum' );
 	}
 
-	protected function consumeHexDigits() {
+	protected function consumeHexDigits(): string {
 		return $this->consumeWhile( 'ctype_xdigit' );
 	}
 
-	protected function consumeDigits() {
+	protected function consumeDigits(): string {
 		return $this->consumeWhile( 'ctype_digit' );
 	}
 
-	protected function consumeSpace() {
+	protected function consumeSpace(): string {
 		return $this->consumeWhile( static function ( $c ) {
 			return $c === ' ' || $c === "\x09";
 		} );
 	}
 
-	protected function consumeWhitespace() {
+	protected function consumeWhitespace(): string {
 		return $this->consumeWhile( 'ctype_space' );
 	}
 
-	protected function consumePlaintext() {
+	protected function consumePlaintext(): string {
 		// Most lines contain no markup.
 		//
 		// To micro-optimize, grab the whole line
@@ -193,7 +193,7 @@ class SrtReader extends Reader {
 		return substr( $line, 0, $length );
 	}
 
-	protected function consumeEntity() {
+	protected function consumeEntity(): string {
 		$this->saveState();
 		$entity = '';
 
@@ -285,6 +285,7 @@ class SrtReader extends Reader {
 		} while ( true );
 	}
 
+	/** @return string|false */
 	protected function consumeArrow() {
 		$this->saveState();
 		do {
@@ -368,7 +369,7 @@ class SrtReader extends Reader {
 		} while ( $state !== 'End' );
 	}
 
-	public function stateStart() {
+	public function stateStart(): string {
 		$c = $this->peek();
 		if ( $c === '' ) {
 			return 'End';
@@ -406,7 +407,7 @@ class SrtReader extends Reader {
 		return 'Start';
 	}
 
-	public function stateTimestamp() {
+	public function stateTimestamp(): string {
 		$ts = $this->consumeTimestamp();
 		if ( $ts === false ) {
 			$this->recordError( 'Expected start timestamp' );
@@ -440,7 +441,7 @@ class SrtReader extends Reader {
 		return 'TextStart';
 	}
 
-	public function stateTextStart() {
+	public function stateTextStart(): string {
 		$base = new DOM\InternalNode;
 		$this->stack = [ $base ];
 		$this->current = $base;
@@ -450,7 +451,7 @@ class SrtReader extends Reader {
 		return 'Text';
 	}
 
-	public function stateText() {
+	public function stateText(): string {
 		$c = $this->peek();
 		if ( $c === '<' ) {
 			$this->consume();
@@ -490,7 +491,7 @@ class SrtReader extends Reader {
 		return 'Text';
 	}
 
-	public function stateTextNewline() {
+	public function stateTextNewline(): string {
 		$c = $this->peek();
 		if ( $c === "\n" ) {
 			// Second newline terminates the cue text.
@@ -501,7 +502,7 @@ class SrtReader extends Reader {
 		return 'Text';
 	}
 
-	public function stateTagStart() {
+	public function stateTagStart(): string {
 		$c = $this->peek();
 		if ( $c === '/' ) {
 			$this->consume();
@@ -512,7 +513,7 @@ class SrtReader extends Reader {
 		return 'TagMain';
 	}
 
-	public function stateTagMain() {
+	public function stateTagMain(): string {
 		$c = $this->consume();
 		$this->tagSource .= $c;
 		if ( $c === ' ' || $c === "\x09" ) {
@@ -536,7 +537,7 @@ class SrtReader extends Reader {
 		return 'TagMain';
 	}
 
-	public function stateTagSelfClose() {
+	public function stateTagSelfClose(): string {
 		$c = $this->consume();
 		$this->tagSource .= $c;
 		if ( $c === '>' ) {
@@ -564,7 +565,7 @@ class SrtReader extends Reader {
 		return 'TagSelfClose';
 	}
 
-	public function stateTagCloseMain() {
+	public function stateTagCloseMain(): string {
 		$c = $this->consume();
 		$this->tagSource .= $c;
 		if ( $c === '>' ) {
@@ -607,7 +608,7 @@ class SrtReader extends Reader {
 		return 'TagCloseMain';
 	}
 
-	public function stateTagSpace() {
+	public function stateTagSpace(): string {
 		$c = $this->consume();
 		$this->tagSource .= $c;
 		// @todo accept some attributes
@@ -623,7 +624,7 @@ class SrtReader extends Reader {
 		return 'TagSpace';
 	}
 
-	public function stateTagEnd() {
+	public function stateTagEnd(): string {
 		switch ( strtolower( $this->tag ) ) {
 			case 'b':
 				$node = new DOM\BoldNode;
@@ -647,14 +648,14 @@ class SrtReader extends Reader {
 		return 'Text';
 	}
 
-	public function stateTextEnd() {
+	public function stateTextEnd(): string {
 		if ( $this->text !== '' ) {
 			$this->current->appendNode( new DOM\TextNode( $this->text ) );
 		}
 		return 'CueDone';
 	}
 
-	public function stateCueDone() {
+	public function stateCueDone(): string {
 		$this->cue->nodes = $this->stack[0]->nodes;
 		$this->cues[] = $this->cue;
 
@@ -667,7 +668,7 @@ class SrtReader extends Reader {
 		return 'Start';
 	}
 
-	public function stateUnexpectedEnd() {
+	public function stateUnexpectedEnd(): string {
 		$this->recordError( 'Unexpected end of file' );
 		return 'End';
 	}
