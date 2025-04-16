@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"TayfunEt.",
-			"Zolgoyo"
+			"Zolgoyo",
+			"Don Alessandro"
 		]
 	},
 	"timedmedia-source-file": "$1 menba",
-	"timedmedia-source-audio-file-desc": "Kerçek $1 fayl ($2)"
+	"timedmedia-source-audio-file-desc": "Kerçek $1 fayl ($2)",
+	"timedmedia-subtitle-new": "Yañı tercime yaratıñız ya da bar olğannı deñiştiriñiz"
 }
