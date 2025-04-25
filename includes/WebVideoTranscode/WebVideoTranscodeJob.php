@@ -3,12 +3,13 @@
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use Exception;
-use File;
 use InvalidArgumentException;
-use Job;
 use LogicException;
 use MediaWiki\Config\Config;
 use MediaWiki\Deferred\CdnCacheUpdate;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
+use MediaWiki\JobQueue\Job;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Shell\CommandFactory;
@@ -16,7 +17,6 @@ use MediaWiki\Shell\Shell;
 use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
-use RepoGroup;
 use Shellbox\Command\BoxedCommand;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
 use Wikimedia\Rdbms\ILBFactory;

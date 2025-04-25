@@ -10,15 +10,16 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use Article;
-use File;
 use MediaWiki\Content\TextContent;
+use MediaWiki\Exception\MWException;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Language\LanguageCode;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Page\Article;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
@@ -181,7 +182,7 @@ class TimedTextPage extends Article {
 	 * We show this form if a valid local file exists for this title.
 	 * i.e TimedText:myfile.ogg
 	 *
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	private function doRedirectToPageForm( OutputPage $out ): void {
 		$context = $out->getContext();

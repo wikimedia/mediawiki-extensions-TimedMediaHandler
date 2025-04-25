@@ -2,11 +2,11 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use HTMLCacheUpdateJob;
-use JobQueueGroup;
-use ManualLogEntry;
 use MediaWiki\Hook\PageMoveCompleteHook;
+use MediaWiki\JobQueue\JobQueueGroup;
+use MediaWiki\JobQueue\Jobs\HTMLCacheUpdateJob;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Page\Hook\PageDeleteCompleteHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Permissions\Authority;

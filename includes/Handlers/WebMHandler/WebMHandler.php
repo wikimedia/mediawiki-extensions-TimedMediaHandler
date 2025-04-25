@@ -2,8 +2,8 @@
 
 namespace MediaWiki\TimedMediaHandler\Handlers\WebMHandler;
 
-use File;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 
 /**

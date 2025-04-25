@@ -2,11 +2,11 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use File;
 use MediaHandler;
 use MediaTransformError;
 use MediaTransformOutput;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use TransformParameterError;

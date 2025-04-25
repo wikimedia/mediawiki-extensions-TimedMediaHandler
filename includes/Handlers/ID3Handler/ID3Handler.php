@@ -2,8 +2,8 @@
 
 namespace MediaWiki\TimedMediaHandler\Handlers\ID3Handler;
 
-use File;
 use getID3;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
 /**

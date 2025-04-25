@@ -4,15 +4,13 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use Article;
 use DifferenceEngine;
-use File;
-use ImageHistoryList;
-use ImagePage;
-use LocalFile;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Diff\Hook\ArticleContentOnDiffHook;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\File\LocalFile;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Hook\CanonicalNamespacesHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
 use MediaWiki\Hook\FileUndeleteCompleteHook;
@@ -25,12 +23,19 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
+use MediaWiki\Page\Article;
 use MediaWiki\Page\Hook\ArticleFromTitleHook;
 use MediaWiki\Page\Hook\ArticlePurgeHook;
 use MediaWiki\Page\Hook\ImageOpenShowImageInlineBeforeHook;
 use MediaWiki\Page\Hook\ImagePageAfterImageLinksHook;
 use MediaWiki\Page\Hook\ImagePageFileHistoryLineHook;
+use MediaWiki\Page\ImageHistoryList;
+use MediaWiki\Page\ImagePage;
+use MediaWiki\Page\WikiFilePage;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Skin\Skin;
+use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\Status\Status;
@@ -39,11 +44,6 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
-use RepoGroup;
-use Skin;
-use SkinTemplate;
-use WikiFilePage;
-use WikiPage;
 
 /**
  * Hooks for TimedMediaHandler extension

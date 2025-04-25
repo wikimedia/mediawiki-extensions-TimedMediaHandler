@@ -2,7 +2,7 @@
 
 namespace MediaWiki\TimedMediaHandler\Handlers\MPEGHandler;
 
-use File;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 
 /**

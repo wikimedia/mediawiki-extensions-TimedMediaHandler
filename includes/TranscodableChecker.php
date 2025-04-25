@@ -2,10 +2,10 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use File;
 use MediaWiki\Config\Config;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Linker\LinkTarget;
-use RepoGroup;
 
 /**
  * @file

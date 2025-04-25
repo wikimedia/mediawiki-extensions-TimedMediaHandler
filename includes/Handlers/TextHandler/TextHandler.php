@@ -11,11 +11,11 @@
 namespace MediaWiki\TimedMediaHandler\Handlers\TextHandler;
 
 use Exception;
-use File;
-use ForeignDBFile;
-use IForeignRepoWithDB;
-use IForeignRepoWithMWApi;
-use LocalRepo;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\File\ForeignDBFile;
+use MediaWiki\FileRepo\IForeignRepoWithDB;
+use MediaWiki\FileRepo\IForeignRepoWithMWApi;
+use MediaWiki\FileRepo\LocalRepo;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedText\ParseError;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;

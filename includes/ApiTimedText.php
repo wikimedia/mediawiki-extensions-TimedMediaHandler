@@ -24,7 +24,6 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use File;
 use LogicException;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiFormatRaw;
@@ -32,14 +31,15 @@ use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Content\TextContent;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\Title\Title;
-use RepoGroup;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\ParamValidator\ParamValidator;
-use WikiPage;
 
 /**
  * Implements the timedtext module that outputs subtitle files

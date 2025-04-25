@@ -9,6 +9,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 require_once __DIR__ . "/TimedMediaMaintenance.php";
 
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 class RequeueTranscodes extends TimedMediaMaintenance {

@@ -9,11 +9,11 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use File;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use RepoGroup;
 
 class ApiTranscodeStatus extends ApiQueryBase {
 	private RepoGroup $repoGroup;

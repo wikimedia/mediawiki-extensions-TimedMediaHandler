@@ -11,16 +11,15 @@
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use Exception;
-use File;
-use HTMLCacheUpdateJob;
-use IForeignRepoWithDB;
-use IForeignRepoWithMWApi;
-use JobSpecification;
 use LogicException;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\FileBackend\FSFile\TempFSFileFactory;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\IForeignRepoWithDB;
+use MediaWiki\FileRepo\IForeignRepoWithMWApi;
+use MediaWiki\JobQueue\Jobs\HTMLCacheUpdateJob;
+use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
@@ -34,6 +33,7 @@ use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
 use MediaWiki\Title\Title;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
+use Wikimedia\FileBackend\FSFile\TempFSFileFactory;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 /**

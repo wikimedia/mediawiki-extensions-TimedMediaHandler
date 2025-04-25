@@ -2,9 +2,9 @@
 
 namespace MediaWiki\TimedMediaHandler\Handlers\OggHandler;
 
-use File;
 use File_Ogg;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
