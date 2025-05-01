@@ -36,7 +36,7 @@ class SegmenterTest extends MediaWikiMediaTestCase {
 		$this->assertEquals( $expected, $playlist, ".m3u8 playlist generation from media track" );
 	}
 
-	public function providerTracks() {
+	public static function providerTracks() {
 		return [
 			[ 'stream.360p.video.vp9.mp4' ],
 			[ 'stream.240p.video.vp9.mp4' ],
