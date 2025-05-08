@@ -19,6 +19,7 @@ use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
@@ -217,7 +218,9 @@ class Hooks implements
 			$textHandler = new TextHandler( $file, [ TimedTextPage::VTT_SUBTITLE_FORMAT ] );
 			$ttExists = count( $textHandler->getTracks() ) > 0;
 			$tab[ 'exists' ] = $ttExists;
-			$tab[ 'class' ] .= !$ttExists ? ' new' : '';
+			if ( !$ttExists ) {
+				Html::addClass( $tab[ 'class' ], 'new' );
+			}
 			$links[ 'namespaces' ][ 'timedtext' ] = $tab;
 			return;
 		}
