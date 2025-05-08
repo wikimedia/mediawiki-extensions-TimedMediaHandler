@@ -55,8 +55,8 @@
 	"timedmedia-subtitle-new-go": "Пачаць",
 	"timedmedia-file": "Файл",
 	"timedmedia-dialog-close": "Закрыць мэдыяпрайгравальнік",
-	"right-transcode-reset": "скіданьне няўдалых або транскадаваных відэа, каб яны ізноў трапілі ў чаргу заданьняў",
-	"right-transcode-status": "прагляд [[Special:TimedMediaHandler|зьвестак пра актуальны стан перакадаваньня]]",
+	"right-transcode-reset": "Скіданьне няўдалых або транскадаваных відэа, каб яны ізноў трапілі ў чаргу заданьняў",
+	"right-transcode-status": "Прагляд [[Special:TimedMediaHandler|зьвестак пра актуальны стан перакадаваньня]]",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 субтытры для кліпу: $2",
 	"timedmedia-timedtext-title-create-subtitles": "Субтытры $1 для кліпу ня знойдзеныя: $2"
 }
