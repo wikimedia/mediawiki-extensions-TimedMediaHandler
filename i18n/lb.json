@@ -15,7 +15,7 @@
 	"timedmedia-ogg-long-video": "Ogg-$1-Videofichier, Dauer: $2, $4×$5 Pixel, $3",
 	"timedmedia-ogg-long-multiplexed": "Ogg-Toun-/Video-Fichier, $1, Dauer: $2, $4×$5 Pixel, $3",
 	"timedmedia-ogg-long-general": "Ogg Media-Fichier, Dauer $2, $3",
-	"timedmedia-ogg-long-error": "Ongëltegen Ogg-Fichier: $1",
+	"timedmedia-ogg-long-error": "Ongültegen Ogg-Fichier: $1, Gréisst vum Fichier: $2",
 	"timedmedia-webm-short-video": "WebM $1 Video Fichier, $2",
 	"timedmedia-webm-long-video": "WebM-Audio/Video-Fichier, $1, Dauer $2, $4×$5 Pixel, $3 am Ganzen",
 	"timedmedia-flac-short-audio": "FLAC-Audiofichier, $1",
