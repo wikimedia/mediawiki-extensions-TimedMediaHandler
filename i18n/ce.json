@@ -60,6 +60,7 @@
 	"timedmedia-reset-button-reset": "Кхосса",
 	"timedmedia-reset-error": "Йуха кодйеш гӀалат.",
 	"timedmedia-reset-explanation": "Декодировани йуха дӀайолоро дӀайоккхур йу йолуш йолу файл (нагахь санна иза йелахь), ткъа декодировани йуха а тӀетоьхна хир йу белхан рогӀе. Йуха а декодировани йан цхьа хан оьшур йу.",
+	"timedmedia-error-details": "Транскодан гӀалат",
 	"timedmedia-error-dismiss": "ДӀачӀагӀа",
 	"timedmedia-source-original": "Хьост",
 	"timedmedia-derivative-desc-160p.ogv": "Ogg-видео дика йоцу (160p)",
