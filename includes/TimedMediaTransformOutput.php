@@ -177,9 +177,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		$mediaAttr = $this->getMediaAttr( false, false, $classes );
 
 		// XXX: This might be redundant with data-mwtitle
-		$services = MediaWikiServices::getInstance();
-		$enableLegacyMediaDOM = $services->getMainConfig()->get( MainConfigNames::ParserEnableLegacyMediaDOM );
-		if ( !$enableLegacyMediaDOM && isset( $options['magnify-resource'] ) ) {
+		if ( isset( $options['magnify-resource'] ) ) {
 			$mediaAttr['resource'] = $options['magnify-resource'];
 		}
 

@@ -442,13 +442,7 @@
 		"ext.tmh.player": {
 			"packageFiles": [
 				"ext.tmh.player.js",
-				"ext.tmh.player.element.js",
-				{
-					"name": "config.json",
-					"config": [
-						"ParserEnableLegacyMediaDOM"
-					]
-				}
+				"ext.tmh.player.element.js"
 			],
 			"dependencies": [
 				"ext.tmh.player.styles",
