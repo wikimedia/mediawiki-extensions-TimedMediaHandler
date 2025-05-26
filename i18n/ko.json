@@ -13,7 +13,8 @@
 			"ToePeu",
 			"Yearning",
 			"Ykhwong",
-			"아라"
+			"아라",
+			"YeBoy371"
 		]
 	},
 	"timedmediahandler-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",
@@ -130,6 +131,7 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|실패한 코드 변환 $1개}}",
 	"timedmedia-no-derivatives": "트랜스코딩이 필요하지 않습니다.",
 	"timedmedia-file": "파일",
+	"timedmedia-dialog-close": "미디어 플레이어 닫기",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1초}}",
 	"right-transcode-reset": "변환됐거나 실패한 비디오를 작업 대기열에 다시 추가되도록 초기화",
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",

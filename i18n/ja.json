@@ -19,7 +19,8 @@
 			"ひまり",
 			"ネイ",
 			"青子守歌",
-			"Ant176"
+			"Ant176",
+			"YeBoy371"
 		]
 	},
 	"timedmediahandler-desc": "WebM、Ogg Theora、Vorbis、srt 形式に対応した、動画、音声、字幕のハンドラー",
@@ -86,11 +87,11 @@
 	"timedmedia-derivative-desc-720p.ogv": "HD Ogg 動画 (720P)",
 	"timedmedia-derivative-desc-1080p.ogv": "フル HD Ogg 動画 (1080P)",
 	"timedmedia-derivative-desc-160p.webm": "低帯域幅 WebM (160P)",
-	"timedmedia-derivative-desc-360p.webm": "ウェブ ストリーミング可能 WebM (360P)",
+	"timedmedia-derivative-desc-360p.webm": "WebM (360P)",
 	"timedmedia-derivative-desc-480p.webm": "SD WebM (480P)",
 	"timedmedia-derivative-desc-720p.webm": "HD WebM (720P)",
 	"timedmedia-derivative-desc-1080p.webm": "フル HD WebM (1080P)",
-	"timedmedia-derivative-desc-320p.mp4": "デバイスフレンドリー MP4 (320P)",
+	"timedmedia-derivative-desc-320p.mp4": "MP4 H.264 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "SD MP4 H.264 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "フル HD MP4 H.264 (1080P)",

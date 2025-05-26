@@ -16,7 +16,8 @@
 			"Xiplus",
 			"蘭斯特",
 			"Winston Sung",
-			"SunAfterRain"
+			"SunAfterRain",
+			"YeBoy371"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM、Ogg Theora、Vorbis、srt",
@@ -88,7 +89,7 @@
 	"timedmedia-derivative-desc-1080p.ogv": "全高畫質 Ogg 影片（1080P）",
 	"timedmedia-derivative-desc-160p.webm": "低頻寬 WebM（160P）",
 	"timedmedia-derivative-desc-240p.webm": "小型 WebM（240P）",
-	"timedmedia-derivative-desc-360p.webm": "網站可串流 WebM (360P)",
+	"timedmedia-derivative-desc-360p.webm": "WebM (360P)",
 	"timedmedia-derivative-desc-480p.webm": "標準畫質 WebM（480P）",
 	"timedmedia-derivative-desc-720p.webm": "高畫質 WebM（720P）",
 	"timedmedia-derivative-desc-1080p.webm": "全高畫質 WebM（1080P）",
@@ -97,7 +98,7 @@
 	"timedmedia-derivative-desc-120p.vp9.webm": "低頻寬 VP9（120P）",
 	"timedmedia-derivative-desc-180p.vp9.webm": "低頻寬 VP9（180P）",
 	"timedmedia-derivative-desc-240p.vp9.webm": "小型 VP9（240P）",
-	"timedmedia-derivative-desc-360p.vp9.webm": "網站可串流 WebM VP9 (360P)",
+	"timedmedia-derivative-desc-360p.vp9.webm": "VP9 (360P)",
 	"timedmedia-derivative-desc-480p.vp9.webm": "標準畫質 VP9（480P）",
 	"timedmedia-derivative-desc-720p.vp9.webm": "高畫質 VP9（720P）",
 	"timedmedia-derivative-desc-1080p.vp9.webm": "全高畫質 VP9（1080P）",
@@ -105,7 +106,7 @@
 	"timedmedia-derivative-desc-2160p.vp9.webm": "4K 超高畫質 VP9（2160P）",
 	"timedmedia-derivative-desc-160p.mp4": "低頻寬 MP4 H.264（160P）",
 	"timedmedia-derivative-desc-240p.mp4": "小型 MP4 H.264（240P）",
-	"timedmedia-derivative-desc-320p.mp4": "行動裝置易用 MP4 (320P)",
+	"timedmedia-derivative-desc-320p.mp4": "MP4 H.264 (320P)",
 	"timedmedia-derivative-desc-480p.mp4": "標準畫質 MP4 H.264（480P）",
 	"timedmedia-derivative-desc-720p.mp4": "高畫質 MP4 H.264（720P）",
 	"timedmedia-derivative-desc-1080p.mp4": "全高畫質 MP4 H.264（1080P）",
