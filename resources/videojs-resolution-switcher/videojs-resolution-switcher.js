@@ -291,7 +291,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	 * @param  {BucketObject} groupedSrc {res: { key: [] }}
 	 * @param  {SourceObject[]} src Array of sources
 	 *          sorted by resolution used to find high and low res
-	 * @return {Resolution} {res: string, sources: []}
+	 * @return {Resolution} {res: string, label: string, sources: SourceObject[]}
 	 */
 	chooseSrc( groupedSrc, src ) {
 		let selectedRes = this.settings.default;
@@ -308,7 +308,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 			selectedLabel = groupedSrc.res[ selectedRes ][ 0 ].label;
 		}
 
-		return { res: selectedRes, label: selectedLabel, sources: groupedSrc.res[ selectedRes ] };
+		return { res: selectedRes, label: selectedLabel, sources: groupedSrc.res[ selectedRes ] || [] };
 	}
 }
 VideoJsResolutionSwitcherPlugin.VERSION = '2.0.0';
