@@ -17,6 +17,7 @@
 			"아라"
 		]
 	},
+	"timedmediahandler-extensionname": "TimedMediaHandler",
 	"timedmediahandler-desc": "WebM, OGG Theora, Vorbis, srt를 위한 포맷 지원과 소리, 동영상과 자막을 위한 핸들러",
 	"timedmedia-ogg-short-audio": "Ogg $1 소리 파일, $2",
 	"timedmedia-ogg-short-video": "Ogg $1 동영상 파일, $2",
@@ -45,6 +46,7 @@
 	"timedmedia-more": "더 보기…",
 	"timedmedia-dismiss": "닫기",
 	"timedmedia-download": "파일 다운로드",
+	"timedmedia-duration": "길이: $1.",
 	"timedmedia-play-audio": "오디오 재생",
 	"timedmedia-play-video": "비디오 재생",
 	"timedmedia-desc-link": "이 파일에 대한 정보",
@@ -71,6 +73,7 @@
 	"timedmedia-reset-button-reset": "초기화",
 	"timedmedia-reset-error": "코드 변환 작업을 초기화하는 데 오류가 발생했습니다.",
 	"timedmedia-reset-explanation": "코드 변환을 초기화하면 기존 파일이 (있는 경우) 제거되며, 작업 대기열로 코드 변환을 다시 추가합니다. 다시 변환하는 데 다소 시간이 걸릴 것입니다.",
+	"timedmedia-error-details": "코드 변환 오류 세부 사항",
 	"timedmedia-error-dismiss": "숨기기",
 	"timedmedia-source-original": "출처",
 	"timedmedia-derivative-desc-160p.ogv": "낮은 대역폭 Ogg 비디오 (160P)",
@@ -148,12 +151,16 @@
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|실행 중인 코드 변환 $1개}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|대기 중인 코드 변환 $1개}}",
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|실패한 코드 변환 $1개}}",
+	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 초기화되지 않은 코드 변환}}",
 	"timedmedia-no-derivatives": "트랜스코딩이 필요하지 않습니다.",
 	"timedmedia-file": "파일",
 	"timedmedia-dialog-close": "미디어 플레이어 닫기",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1시}}, {{PLURAL:$2|$2분}}, {{PLURAL:$3|$3초}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1분}}, {{PLURAL:$2|$2초}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1초}}",
 	"right-transcode-reset": "변환됐거나 실패한 비디오를 작업 대기열에 다시 추가되도록 초기화",
 	"right-transcode-status": "[[Special:TimedMediaHandler|현재 코드 변환 활동에 대한 정보]] 보기",
+	"action-transcode-reset": "코드 변환 초기화",
 	"action-transcode-status": "현재 코드 변환 상태 보기",
 	"log-name-timedmediahandler": "TimedMediaHandler 기록",
 	"log-description-timedmediahandler": "타임드 미디어 트랜스코드 관련 동작 기록입니다.",
@@ -167,5 +174,7 @@
 	"videojs-captions-create": "캡션 만들기",
 	"transcodestatistics": "트랜스코드 통계",
 	"timedmedia-timedtext-title-edit-subtitles": "클립에 대한 $1 자막: $2",
-	"timedmedia-timedtext-title-create-subtitles": "클립에 대한 $1 자막을 찾을 수 없습니다: $2"
+	"timedmedia-timedtext-title-create-subtitles": "클립에 대한 $1 자막을 찾을 수 없습니다: $2",
+	"m3u8-error-create-temp": "$1의 임시 파일을 만들 수 없음",
+	"m3u8-error-write-temp": "$1의 임시 파일을 쓸 수 없음"
 }
