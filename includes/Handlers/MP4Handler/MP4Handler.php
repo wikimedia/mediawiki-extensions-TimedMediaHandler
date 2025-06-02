@@ -109,41 +109,35 @@ class MP4Handler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return string
+	 * @return string HTML
 	 */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-		return wfMessage( 'timedmedia-mp4-short-video', implode( '/', $streamTypes )
-		)->timeperiodParams(
-			$this->getLength( $file )
-		)->text();
+		return wfMessage( 'timedmedia-mp4-short-video' )
+			->params( implode( '/', $streamTypes ) )
+			->timeperiodParams( $this->getLength( $file ) )
+			->escaped();
 	}
 
 	/**
 	 * @param File $file
-	 * @return string
+	 * @return string HTML
 	 */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-		return wfMessage(
-			'timedmedia-mp4-long-video',
-			implode( '/', $streamTypes )
-			)->timeperiodParams(
-				$this->getLength( $file )
-			)->bitrateParams(
-				$this->getBitRate( $file )
-			)->numParams(
-				$file->getWidth(),
-				$file->getHeight()
-			)->sizeParams(
-				$file->getSize()
-			)->text();
+		return wfMessage( 'timedmedia-mp4-long-video' )
+			->params( implode( '/', $streamTypes ) )
+			->timeperiodParams( $this->getLength( $file ) )
+			->bitrateParams( $this->getBitRate( $file ) )
+			->numParams( $file->getWidth(), $file->getHeight() )
+			->sizeParams( $file->getSize() )
+			->escaped();
 	}
 
 }

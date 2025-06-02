@@ -348,7 +348,7 @@ class OggHandler extends TimedMediaHandler {
 
 	/**
 	 * @param File $file
-	 * @return string
+	 * @return string HTML
 	 */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
@@ -366,30 +366,29 @@ class OggHandler extends TimedMediaHandler {
 		} else {
 			$msg = 'timedmedia-ogg-short-general';
 		}
-		return wfMessage(
-			$msg,
-			implode( '/', $streamTypes )
-			)->timeperiodParams(
-				$this->getLength( $file )
-			)->text();
+		return wfMessage( $msg )
+			->params( implode( '/', $streamTypes ) )
+			->timeperiodParams( $this->getLength( $file ) )
+			->escaped();
 	}
 
 	/**
 	 * @param File $file
-	 * @return string
+	 * @return string HTML
 	 */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
 			if ( isset( $unpacked['error']['message'] ) ) {
-				return wfMessage( 'timedmedia-ogg-long-error', $unpacked['error']['message'] )
+				return wfMessage( 'timedmedia-ogg-long-error' )
+					->params( $unpacked['error']['message'] )
 					->sizeParams( $file->getSize() )
-					->text();
+					->escaped();
 			}
 			return wfMessage( 'timedmedia-ogg-long-no-streams' )
 				->sizeParams( $file->getSize() )
-				->text();
+				->escaped();
 		}
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
@@ -417,19 +416,13 @@ class OggHandler extends TimedMediaHandler {
 				}
 			}
 		}
-		return wfMessage(
-			$msg,
-			implode( '/', $streamTypes )
-			)->timeperiodParams(
-				$length
-			)->bitrateParams(
-				$this->getBitRate( $file )
-			)->numParams(
-				$file->getWidth(),
-				$file->getHeight()
-			)->sizeParams(
-				$file->getSize()
-			)->text();
+		return wfMessage( $msg )
+			->params( implode( '/', $streamTypes ) )
+			->timeperiodParams( $length )
+			->bitrateParams( $this->getBitRate( $file ) )
+			->numParams( $file->getWidth(), $file->getHeight() )
+			->sizeParams( $file->getSize() )
+			->escaped();
 	}
 
 	/**

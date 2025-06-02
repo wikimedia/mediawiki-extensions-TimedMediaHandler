@@ -45,37 +45,32 @@ class MP3Handler extends ID3Handler {
 
 	/**
 	 * @param File $file
-	 * @return string
+	 * @return string HTML
 	 */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
 		}
-		return wfMessage( 'timedmedia-mp3-short-audio'
-		)->timeperiodParams(
-			$this->getLength( $file )
-		)->text();
+		return wfMessage( 'timedmedia-mp3-short-audio' )
+			->timeperiodParams( $this->getLength( $file ) )
+			->escaped();
 	}
 
 	/**
 	 * @param File $file
-	 * @return string
+	 * @return string HTML
 	 */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getLongDesc( $file );
 		}
-		return wfMessage(
-			'timedmedia-mp3-long-audio'
-			)->timeperiodParams(
-				$this->getLength( $file )
-			)->bitrateParams(
-				$this->getBitRate( $file )
-			)->sizeParams(
-				$file->getSize()
-			)->text();
+		return wfMessage( 'timedmedia-mp3-long-audio' )
+			->timeperiodParams( $this->getLength( $file ) )
+			->bitrateParams( $this->getBitRate( $file ) )
+			->sizeParams( $file->getSize() )
+			->escaped();
 	}
 
 }
