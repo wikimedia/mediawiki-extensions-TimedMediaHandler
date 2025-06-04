@@ -135,16 +135,10 @@
 		"ImagePageFileHistoryLine": "main",
 		"LoadExtensionSchemaUpdates": "installer",
 		"MediaWikiPerformAction": "iframe",
-		"PageMoveComplete": [
-			"main",
-			"timedtext"
-		],
 		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "main",
 		"TitleMove": "main",
-		"wgQueryPages": "main",
-		"PageSaveComplete": "timedtext",
-		"PageDeleteComplete": "timedtext"
+		"wgQueryPages": "main"
 	},
 	"HookHandlers": {
 		"main": {
@@ -154,12 +148,6 @@
 				"LinkRenderer",
 				"RepoGroup",
 				"SpecialPageFactory"
-			]
-		},
-		"timedtext": {
-			"class": "MediaWiki\\TimedMediaHandler\\TimedTextHooks",
-			"services": [
-				"JobQueueGroup"
 			]
 		},
 		"iframe": {
@@ -173,6 +161,18 @@
 			"class": "MediaWiki\\TimedMediaHandler\\InstallerHooks"
 		}
 	},
+	"DomainEventIngresses": [
+		{
+			"events": [ "PageDeleted", "PageMoved", "PageLatestRevisionChanged" ],
+			"class": "MediaWiki\\TimedMediaHandler\\MediaWikiEventIngress\\PageEventIngress",
+			"services": [
+				"MainConfig",
+				"JobQueueGroup",
+				"RepoGroup",
+				"TimedMediaHandler.TranscodableChecker"
+			]
+		}
+	],
 	"config": {
 		"WaitTimeForTranscodeReset": {
 			"description": "How long you have to wait between transcode resets for non-error transcodes",

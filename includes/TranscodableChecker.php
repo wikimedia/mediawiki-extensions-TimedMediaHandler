@@ -6,6 +6,7 @@ use MediaWiki\Config\Config;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\PageIdentity;
 
 /**
  * @ingroup Extensions
@@ -20,7 +21,7 @@ class TranscodableChecker {
 	/**
 	 * Wraps the isTranscodableFile function
 	 */
-	public function isTranscodableTitle( LinkTarget $title ): bool {
+	public function isTranscodableTitle( PageIdentity|LinkTarget $title ): bool {
 		if ( $title->getNamespace() !== NS_FILE ) {
 			return false;
 		}

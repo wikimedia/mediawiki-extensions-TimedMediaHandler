@@ -15,6 +15,14 @@ return [
 			$services->getRepoGroup()
 		);
 	},
+	'TimedMediaHandler.TranscodableChecker' => static function (
+		MediaWikiServices $services
+	): TranscodableChecker {
+		return new TranscodableChecker(
+			$services->getMainConfig(),
+			$services->getRepoGroup()
+		);
+	},
 	'TimedMediaHandler.TranscodePresets' => static function (
 		MediaWikiServices $services
 	): TranscodePresets {

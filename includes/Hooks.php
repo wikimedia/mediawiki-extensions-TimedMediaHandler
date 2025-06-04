@@ -13,13 +13,11 @@ use MediaWiki\Hook\CanonicalNamespacesHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
 use MediaWiki\Hook\FileUndeleteCompleteHook;
 use MediaWiki\Hook\FileUploadHook;
-use MediaWiki\Hook\PageMoveCompleteHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Article;
@@ -32,7 +30,6 @@ use MediaWiki\Page\ImageHistoryList;
 use MediaWiki\Page\ImagePage;
 use MediaWiki\Page\WikiFilePage;
 use MediaWiki\Page\WikiPage;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
@@ -42,7 +39,6 @@ use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
-use MediaWiki\User\UserIdentity;
 
 /**
  * Hooks for TimedMediaHandler extension
@@ -61,7 +57,6 @@ class Hooks implements
 	ImageOpenShowImageInlineBeforeHook,
 	ImagePageAfterImageLinksHook,
 	ImagePageFileHistoryLineHook,
-	PageMoveCompleteHook,
 	ParserTestGlobalsHook,
 	SkinTemplateNavigation__UniversalHook,
 	TitleMoveHook,
@@ -261,23 +256,6 @@ class Hooks implements
 			// Will be re-added after the file has moved
 			$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true ] );
 			WebVideoTranscode::removeTranscodes( $file );
-		}
-	}
-
-	/**
-	 * Hook to PageMoveComplete. Add transcode jobs for new file name
-	 * @param LinkTarget $old Old title
-	 * @param LinkTarget $new New title
-	 * @param UserIdentity $user User who did the move
-	 * @param int $pageid Database ID of the page that's been moved
-	 * @param int $redirid Database ID of the created redirect
-	 * @param string $reason Reason for the move
-	 * @param RevisionRecord $revision RevisionRecord created by the move
-	 */
-	public function onPageMoveComplete( $old, $new, $user, $pageid, $redirid, $reason, $revision ): void {
-		if ( $this->transcodableChecker->isTranscodableTitle( $new ) ) {
-			$newFile = $this->repoGroup->findFile( $new, [ 'ignoreRedirect' => true, 'latest' => true ] );
-			WebVideoTranscode::startJobQueue( $newFile );
 		}
 	}
 
