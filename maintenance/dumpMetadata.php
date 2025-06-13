@@ -24,9 +24,7 @@ class DumpMetadata extends TimedMediaMaintenance {
 		parent::execute();
 	}
 
-	/**
-	 * @param File $file
-	 */
+	/** @inheritDoc */
 	public function processFile( File $file ) {
 		$name = $file->getName();
 		$handler = $file->getHandler();

@@ -15,9 +15,6 @@ class Cue {
 	/** @var Node[] */
 	public $nodes = [];
 
-	/**
-	 * @param Node $node
-	 */
 	public function appendNode( Node $node ) {
 		$this->nodes[] = $node;
 	}

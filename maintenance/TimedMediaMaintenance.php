@@ -104,6 +104,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 
 	/**
 	 * @param File $file
+	 * @return void
 	 */
 	abstract public function processFile( File $file );
 }

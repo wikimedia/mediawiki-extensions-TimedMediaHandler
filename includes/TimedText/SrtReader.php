@@ -320,9 +320,6 @@ class SrtReader extends Reader {
 		);
 	}
 
-	/**
-	 * @param DOM\Node $node
-	 */
 	protected function pushStack( DOM\Node $node ) {
 		$this->current->appendNode( $node );
 		if ( $node instanceof DOM\InternalNode ) {

@@ -28,9 +28,7 @@ class RebuildPlaylists extends TimedMediaMaintenance {
 		$this->output( "Finished!\n" );
 	}
 
-	/**
-	 * @param File $file
-	 */
+	/** @inheritDoc */
 	public function processFile( File $file ) {
 		$this->output( $file->getName() . "\n" );
 		if ( !$this->hasOption( 'dry-run' ) ) {

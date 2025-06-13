@@ -12,7 +12,6 @@
 const MenuItem = videojs.getComponent( 'MenuItem' );
 
 /**
- *
  * Single menu item entry in the MenuButton.
  * When selected will switch to the player to that resolution
  */

@@ -17,9 +17,6 @@ class InternalNode extends Node {
 	/** @var Node[] list of contained nodes */
 	public $nodes = [];
 
-	/**
-	 * @param Node $node
-	 */
 	public function appendNode( Node $node ) {
 		$this->nodes[] = $node;
 	}
