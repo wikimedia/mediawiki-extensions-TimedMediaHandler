@@ -140,9 +140,9 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 	 * @dataProvider transcodeSetProvider
 	 */
 	public function testEnabledTranscodeSetConfiguration( $set, $audioSet, $exception ) {
-		$this->setMWGlobals( [
-			'wgEnabledTranscodeSet' => $set,
-			'wgEnabledAudioTranscodeSet' => $audioSet
+		$this->overrideConfigValues( [
+			'EnabledTranscodeSet' => $set,
+			'EnabledAudioTranscodeSet' => $audioSet,
 		] );
 		if ( $exception ) {
 			$this->expectException( ConfigException::class );
