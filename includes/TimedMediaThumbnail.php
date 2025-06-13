@@ -86,12 +86,8 @@ class TimedMediaThumbnail {
 		// try to get temporary local url to file
 		$backend = $file->getRepo()->getBackend();
 
-		$src = $backend->getFileHttpUrl( [
-			'src' => $file->getPath()
-		] );
-		if ( $src === null ) {
-			$src = $file->getLocalRefPath();
-		}
+		$src = $backend->getFileHttpUrl( [ 'src' => $file->getPath() ] ) ??
+			$file->getLocalRefPath();
 
 		$cmd .= ' -y -i ' . wfEscapeShellArg( $src );
 		$cmd .= ' -ss ' . $offset . ' ';
