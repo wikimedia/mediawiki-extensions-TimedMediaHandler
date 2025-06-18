@@ -119,7 +119,7 @@
 	"timedmedia-subtitle-remote-link": "$2 でこのファイルの[$1 解説ページを閲覧]できます",
 	"timedmedia-file": "ファイル",
 	"timedmedia-dialog-close": "メディアプレイヤーを閉じる",
-	"right-transcode-reset": "失敗あるいはトランスコードされた動画をリセットして、再びジョブキューに追加することができる",
+	"right-transcode-reset": "失敗またはトランスコードされた動画をリセットし、再びジョブキューに追加",
 	"right-transcode-status": "[[Special:TimedMediaHandler|現在のトランスコードアクティビティに関する情報]]を閲覧",
 	"action-transcode-reset": "トランスコードのリセット",
 	"action-transcode-status": "現在のトランスコード状態の閲覧",
