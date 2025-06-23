@@ -782,10 +782,7 @@ class WebVideoTranscodeJob extends Job {
 		} else {
 			$max = self::MAX_FPS;
 		}
-		if ( $fps > $max ) {
-			return $max;
-		}
-		return $fps;
+		return min( $fps, $max );
 	}
 
 	private function fractionToFloat( string $str ): float {

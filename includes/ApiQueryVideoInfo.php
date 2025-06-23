@@ -19,14 +19,11 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 class ApiQueryVideoInfo extends ApiQueryImageInfo {
 
 	/** @inheritDoc */
-	public function __construct( ApiQuery $query, string $moduleName, ?string $prefix = 'vi' ) {
+	public function __construct( ApiQuery $query, string $moduleName, ?string $prefix = null ) {
 		// We allow a subclass to override the prefix, to create a related API module.
 		// Some other parts of MediaWiki construct this with a null $prefix,
 		// which used to be ignored when this only took two arguments
-		if ( $prefix === null ) {
-			$prefix = 'vi';
-		}
-		parent::__construct( $query, $moduleName, $prefix );
+		parent::__construct( $query, $moduleName, $prefix ?? 'vi' );
 	}
 
 	/** @inheritDoc */

@@ -43,12 +43,8 @@ class TranscodableChecker {
 		if ( !$this->config->get( 'EnableTranscode' ) ) {
 			return false;
 		}
-		// Can't find file
-		if ( !$file ) {
-			return false;
-		}
 		// We can only transcode local files
-		if ( !$file->isLocal() ) {
+		if ( !$file || !$file->isLocal() ) {
 			return false;
 		}
 

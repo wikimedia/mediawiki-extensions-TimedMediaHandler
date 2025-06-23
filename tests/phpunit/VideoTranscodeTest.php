@@ -108,7 +108,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 			$targetEncodeFound = false;
 			foreach ( $derivatives as $derv ) {
 				// The transcode key is always the last part of the file name:
-				if ( substr( $derv['src'], -1 * strlen( $transcodeKey ) ) === $transcodeKey ) {
+				if ( str_ends_with( $derv['src'], $transcodeKey ) ) {
 					$targetEncodeFound = true;
 				}
 			}
