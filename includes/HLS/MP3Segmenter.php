@@ -36,7 +36,7 @@ class MP3Segmenter extends Segmenter {
 
 	/**
 	 * Internal layout of MP3 frame header bitfield
-	 * @var array
+	 * @var array<string,int[]>
 	 */
 	private static $bits = [
 		'sync'        => [ 21, 11 ],
@@ -64,7 +64,7 @@ class MP3Segmenter extends Segmenter {
 	/**
 	 * Map of sample count per frame based on version/mode
 	 * This is just in case we need to measure non-default sample rates!
-	 * @var array
+	 * @var int[][]
 	 */
 	private static $samplesPerFrame = [
 		// invalid / layer 3 / 2 / 1
