@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-transcodereset-param-title": "Медиафайлан цӀе.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 тӀекхочуш йац йухарекодировка йан.",
+	"apierror-timedmedia-no-timedtext-support": "Синхротекст ловш йац",
+	"apierror-timedmedia-notlocal": "Файл локалан йац"
+}
