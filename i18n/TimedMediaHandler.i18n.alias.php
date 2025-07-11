@@ -74,7 +74,13 @@ $specialPageAliases['vi'] = [
 	'TranscodeStatistics' => [ 'Bộ_xử_lý_phương_tiện_đồng_bộ', 'Bộ_xử_lí_phương_tiện_đồng_bộ' ],
 ];
 
-/** Simplified Chinese (中文（简体）‎) */
+/** Chinese (中文) */
+$specialPageAliases['zh'] = [
+	'TranscodeStatistics' => [ 'Transcode statistics' ],
+	'OrphanedTimedText' => [ 'OrphanedTimedText' ],
+];
+
+/** Simplified Chinese (中文（简体）) */
 $specialPageAliases['zh-hans'] = [
 	'TranscodeStatistics' => [ '定时媒体处理器' ],
 	'OrphanedTimedText' => [ '孤立定时文本' ],
