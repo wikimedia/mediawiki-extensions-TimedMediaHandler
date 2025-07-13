@@ -109,7 +109,7 @@ class MP4Reader extends StreamReader {
 	public function findBox( string $type ): ?MP4Box {
 		try {
 			return $this->expectBox( $type );
-		} catch ( ShortReadException $e ) {
+		} catch ( ShortReadException ) {
 			return null;
 		}
 	}

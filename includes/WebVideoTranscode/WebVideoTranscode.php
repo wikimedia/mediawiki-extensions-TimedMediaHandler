@@ -1424,7 +1424,7 @@ class WebVideoTranscode {
 				MediaWikiServices::getInstance()->getJobQueueGroupFactory()->makeJobQueueGroup()->push( $job );
 				// Clear the state cache ( now that we have updated the page )
 				static::clearTranscodeCache( $fileName );
-			} catch ( Exception $ex ) {
+			} catch ( Exception ) {
 				// Adding job failed, update transcode row
 				$dbw->newUpdateQueryBuilder()
 					->update( 'transcode' )

@@ -230,7 +230,7 @@ class MP3Segmenter extends Segmenter {
 			$lookahead = 10;
 			try {
 				$bytes = $stream->read( $lookahead );
-			} catch ( ShortReadException $e ) {
+			} catch ( ShortReadException ) {
 				// end of file
 				break;
 			}
