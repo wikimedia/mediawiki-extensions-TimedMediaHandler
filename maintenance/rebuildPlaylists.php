@@ -2,12 +2,14 @@
 /**
  * Rebuild HLS .m3u8 video playlists
  */
+// @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 		$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
 require_once __DIR__ . "/TimedMediaMaintenance.php";
+// @codeCoverageIgnoreEnd
 
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
@@ -38,5 +40,7 @@ class RebuildPlaylists extends TimedMediaMaintenance {
 }
 
 // Tells it to run the class
+// @codeCoverageIgnoreStart
 $maintClass = RebuildPlaylists::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
+// @codeCoverageIgnoreEnd
