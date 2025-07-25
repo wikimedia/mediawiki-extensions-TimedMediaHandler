@@ -21,7 +21,7 @@ use MediaWiki\SpecialPage\PageQueryPage;
 use MediaWiki\Title\Title;
 use stdClass;
 use Wikimedia\Rdbms\IConnectionProvider;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 
 /**
@@ -236,7 +236,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 	/**
 	 * Preprocess result to do existence checks all at once.
 	 *
-	 * @param IDatabase $db
+	 * @param IReadableDatabase $db
 	 * @param IResultWrapper $res
 	 */
 	public function preprocessResults( $db, $res ): void {
