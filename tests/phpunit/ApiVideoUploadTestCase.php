@@ -73,34 +73,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		}
 	}
 
-	/**
-	 * Do login
-	 */
-	private function login(): array {
-		$user = $this->getTestUser();
-
-		$params = [
-			'action' => 'login',
-			'lgname' => $user->getUser()->getName(),
-			'lgpassword' => $user->getPassword()
-		];
-		[ $result, , $session ] = $this->doApiRequest( $params );
-		$token = $result['login']['token'];
-
-		$params = [
-			'action' => 'login',
-			'lgtoken' => $token,
-			'lgname' => $user->getUser()->getName(),
-			'lgpassword' => $user->getPassword()
-		];
-		[ , , $session ] = $this->doApiRequest( $params, $session );
-		return $session;
-	}
-
 	public function uploadFile( array $file ): array {
-		// get a session object
-		$session = $this->login();
-
 		// Upload the media file:
 		$fileName = basename( $file['filePath'] );
 
@@ -125,7 +98,7 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		try {
 			[ $result, , ] = $this->doApiRequestWithToken(
 				$params,
-				$session,
+				null,
 				$this->getTestUser()->getUser()
 			);
 		} catch ( Exception $e ) {
