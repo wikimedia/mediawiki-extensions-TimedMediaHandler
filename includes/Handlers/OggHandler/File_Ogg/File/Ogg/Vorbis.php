@@ -209,6 +209,7 @@ class File_Ogg_Vorbis extends File_Ogg_Media
      * specification to ensure the stream is pure.
      *
      * @access  private
+     * @throws OggException
      */
     function _decodeIdentificationHeader()
     {
@@ -282,6 +283,7 @@ class File_Ogg_Vorbis extends File_Ogg_Media
      * @access  private
      * @param   int     $packetType
      * @param   int     $pageOffset
+     * @throws OggException
      */
     function _decodeCommentsHeader($packetType, $pageOffset)
     {

@@ -85,6 +85,7 @@ class File_Ogg_Speex extends File_Ogg_Media
     /**
      * Decode the stream header
      * @access  private
+     * @throws OggException
      */
     function _decodeHeader()
     {

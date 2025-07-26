@@ -215,6 +215,7 @@ class File_Ogg_Theora extends File_Ogg_Media
     /**
      * Parse the identification header in a Theora stream.
      * @access  private
+     * @throws OggException
      */
     function _decodeIdentificationHeader()
     {

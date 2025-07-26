@@ -187,6 +187,7 @@ class File_Ogg
      *
      * @access  public
      * @param   string  $fileLocation   The path of the file to be examined.
+     * @throws OggException
      */
     function __construct($fileLocation)
     {
@@ -238,6 +239,7 @@ class File_Ogg
      *
      * @param   resource    $file
      * @param   array       $fields Associative array mapping name to length in bits
+     * @throws OggException
      */
     static function _readBigEndian($file, $fields)
     {
@@ -301,6 +303,7 @@ class File_Ogg
      *
      * @param   resource    $file
      * @param   array       $fields Associative array mapping name to length in bits
+     * @throws OggException
      */
     static function _readLittleEndian( $file, $fields ) {
         $bufferLength = ceil(array_sum($fields) / 8);
@@ -439,6 +442,7 @@ class File_Ogg
 
     /**
      *  @access         private
+     * @throws OggException
      */
     function _splitStreams()
     {
@@ -529,6 +533,7 @@ class File_Ogg
      * usable bitstream is Vorbis.
      *
      * @return File_Ogg_Bitstream
+     * @throws OggException
      */
     function &getStream($streamSerial)
     {

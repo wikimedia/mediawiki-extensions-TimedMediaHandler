@@ -93,6 +93,7 @@ class File_Ogg_Opus extends File_Ogg_Media
     /**
      * Decode the stream header
      * @access  private
+     * @throws OggException
      */
     function _decodeHeader()
     {
@@ -131,6 +132,7 @@ class File_Ogg_Opus extends File_Ogg_Media
     /**
      * Decode the comments header
      * @access private
+     * @throws OggException
      */
     function _decodeCommentsHeader()
     {

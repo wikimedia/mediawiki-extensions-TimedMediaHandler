@@ -92,6 +92,7 @@ class File_Ogg_Flac extends File_Ogg_Media
 
     /**
      * @access  private
+     * @throws OggException
      */
     function _decodeHeader()
     {
@@ -147,6 +148,9 @@ class File_Ogg_Flac extends File_Ogg_Media
         return $this->_streamInfo;
     }
 
+	/**
+	 * @throws OggException
+	 */
     function _decodeCommentsHeader()
     {
         fseek($this->_filePointer, $this->_streamData['pages'][1]['body_offset'], SEEK_SET);
