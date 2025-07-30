@@ -56,7 +56,7 @@
 	"timedmedia-percent-done": "Končanih približno $1 %",
 	"timedmedia-in-job-queue": "Dodano v čakalno vrsto $1",
 	"timedmedia-unknown-target-size": "Neznana ciljna velikost, prekodirano $1",
-	"timedmedia-reset": "Ponastavi prekodiranje",
+	"timedmedia-reset": "Ponastavitev prekodiranja",
 	"timedmedia-reset-areyousure": "Ali res želite nadaljevati?",
 	"timedmedia-reset-button-cancel": "Ne ponastavi",
 	"timedmedia-reset-button-dismiss": "Opusti",
