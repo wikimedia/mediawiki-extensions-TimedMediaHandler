@@ -49,11 +49,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * @emits error.code timedtext-notfound, invalidlang, invalid-title
  */
 class ApiTimedText extends ApiBase {
-	private LanguageNameUtils $languageNameUtils;
-	private RepoGroup $repoGroup;
-	private WANObjectCache $cache;
-	private WikiPageFactory $wikiPageFactory;
-
 	/** @var int version of the cache format */
 	private const CACHE_VERSION = 1;
 
@@ -63,16 +58,12 @@ class ApiTimedText extends ApiBase {
 	public function __construct(
 		ApiMain $main,
 		string $action,
-		LanguageNameUtils $languageNameUtils,
-		RepoGroup $repoGroup,
-		WANObjectCache $cache,
-		WikiPageFactory $wikiPageFactory
+		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly RepoGroup $repoGroup,
+		private readonly WANObjectCache $cache,
+		private readonly WikiPageFactory $wikiPageFactory,
 	) {
 		parent::__construct( $main, $action );
-		$this->languageNameUtils = $languageNameUtils;
-		$this->repoGroup = $repoGroup;
-		$this->cache = $cache;
-		$this->wikiPageFactory = $wikiPageFactory;
 	}
 
 	/**

@@ -22,9 +22,6 @@ use RuntimeException;
  * informative RFC 8216.
  */
 class Multivariant {
-	private string $filename;
-	private array $tracks;
-
 	private const CODEC_JPEG = 'jpeg';
 	private const CODEC_MPEG4 = 'mp4v.20.5';
 	private const CODEC_MP3  = 'mp4a.6b';
@@ -104,9 +101,10 @@ class Multivariant {
 		return "#$type:" . implode( ",", $items );
 	}
 
-	public function __construct( string $filename, array $tracks ) {
-		$this->filename = $filename;
-		$this->tracks = $tracks;
+	public function __construct(
+		private readonly string $filename,
+		private readonly array $tracks,
+	) {
 	}
 
 	/**

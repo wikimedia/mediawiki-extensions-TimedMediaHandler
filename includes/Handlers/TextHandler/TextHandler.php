@@ -34,17 +34,14 @@ class TextHandler {
 	/** Lazy init remote Namespace name */
 	public ?string $remoteNsName = null;
 
-	protected File $file;
-
-	/** Array of string keys for subtitle formats */
-	protected array $formats;
-
+	/**
+	 * @param File $file
+	 * @param array $formats Array of string keys for subtitle formats
+	 */
 	public function __construct(
-		File $file,
-		array $formats = [ TimedTextPage::VTT_SUBTITLE_FORMAT, TimedTextPage::SRT_SUBTITLE_FORMAT ]
+		protected readonly File $file,
+		protected readonly array $formats = [ TimedTextPage::VTT_SUBTITLE_FORMAT, TimedTextPage::SRT_SUBTITLE_FORMAT ],
 	) {
-		$this->file = $file;
-		$this->formats = $formats;
 	}
 
 	/**

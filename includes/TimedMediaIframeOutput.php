@@ -25,15 +25,10 @@ use MediaWiki\User\User;
 
 class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 
-	private Config $config;
-	private RepoGroup $repoGroup;
-
 	public function __construct(
-		Config $config,
-		RepoGroup $repoGroup
+		private readonly Config $config,
+		private readonly RepoGroup $repoGroup,
 	) {
-		$this->config = $config;
-		$this->repoGroup = $repoGroup;
 	}
 
 	/**

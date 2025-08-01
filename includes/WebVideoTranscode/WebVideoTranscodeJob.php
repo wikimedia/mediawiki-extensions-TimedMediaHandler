@@ -38,10 +38,6 @@ class WebVideoTranscodeJob extends Job {
 	/** @var File|false */
 	public $file;
 	private ?string $remuxVirtualUrl = null;
-	private CommandFactory $commandFactory;
-	private Config $config;
-	private ILBFactory $lbFactory;
-	private RepoGroup $repoGroup;
 
 	/**
 	 * @param Title $title
@@ -52,10 +48,10 @@ class WebVideoTranscodeJob extends Job {
 	 * @param RepoGroup $repoGroup
 	 */
 	public function __construct( $title, $params,
-		CommandFactory $commandFactory,
-		Config $config,
-		ILBFactory $lbFactory,
-		RepoGroup $repoGroup
+		private readonly CommandFactory $commandFactory,
+		private readonly Config $config,
+		private readonly ILBFactory $lbFactory,
+		private readonly RepoGroup $repoGroup,
 	) {
 		if ( isset( $params['prioritized'] ) && $params['prioritized'] ) {
 			$command = 'webVideoTranscodePrioritized';
@@ -64,10 +60,6 @@ class WebVideoTranscodeJob extends Job {
 		}
 		parent::__construct( $command, $title, $params );
 		$this->removeDuplicates = true;
-		$this->commandFactory = $commandFactory;
-		$this->config = $config;
-		$this->lbFactory = $lbFactory;
-		$this->repoGroup = $repoGroup;
 	}
 
 	/**

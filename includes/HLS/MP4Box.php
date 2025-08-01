@@ -14,21 +14,19 @@ namespace MediaWiki\TimedMediaHandler\HLS;
  * Warning: could get confused if you close the underlying reader.
  */
 class MP4Box extends MP4Reader {
-	public int $start;
-	public int $size;
-	public string $type;
-
 	/**
 	 * @param resource $file
 	 * @param int $start
 	 * @param int $size
 	 * @param string $type
 	 */
-	public function __construct( $file, int $start, int $size, string $type ) {
+	public function __construct(
+		$file,
+		public readonly int $start,
+		public readonly int $size,
+		public readonly string $type,
+	) {
 		parent::__construct( $file );
-		$this->start = $start;
-		$this->size = $size;
-		$this->type = $type;
 	}
 
 	public function end(): int {

@@ -16,16 +16,14 @@ use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 class ApiTranscodeStatus extends ApiQueryBase {
-	private RepoGroup $repoGroup;
-	private TranscodableChecker $transcodableChecker;
+	private readonly TranscodableChecker $transcodableChecker;
 
 	public function __construct(
 		ApiQuery $queryModule,
 		string $moduleName,
-		RepoGroup $repoGroup
+		private readonly RepoGroup $repoGroup
 	) {
 		parent::__construct( $queryModule, $moduleName );
-		$this->repoGroup = $repoGroup;
 		$this->transcodableChecker = new TranscodableChecker(
 			$this->getConfig(),
 			$repoGroup

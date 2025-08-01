@@ -21,10 +21,9 @@ class TimedTextHooks implements
 	PageSaveCompleteHook
 {
 
-	private JobQueueGroup $jobQueueGroup;
-
-	public function __construct( JobQueueGroup $jobQueueGroup ) {
-		$this->jobQueueGroup = $jobQueueGroup;
+	public function __construct(
+		private readonly JobQueueGroup $jobQueueGroup,
+	) {
 	}
 
 	/**

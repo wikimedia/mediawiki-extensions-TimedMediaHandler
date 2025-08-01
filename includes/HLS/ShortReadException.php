@@ -15,15 +15,9 @@ use Exception;
  */
 class ShortReadException extends Exception {
 	/**
-	 * The read short bytes, if any. May be empty.
+	 * @param string $bytes The read short bytes, if any. May be empty
 	 */
-	public string $bytes;
-
-	/**
-	 * @param string $bytes
-	 */
-	public function __construct( $bytes ) {
-		$this->bytes = $bytes;
+	public function __construct( public readonly string $bytes ) {
 		parent::__construct( 'Short file read' );
 	}
 }

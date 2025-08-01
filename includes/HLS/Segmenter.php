@@ -19,11 +19,12 @@ use LogicException;
  */
 abstract class Segmenter {
 
-	protected string $filename;
 	protected array $segments;
 
-	public function __construct( string $filename, ?array $segments = null ) {
-		$this->filename = $filename;
+	public function __construct(
+		protected readonly string $filename,
+		?array $segments = null,
+	) {
 		if ( $segments ) {
 			$this->segments = $segments;
 		} else {

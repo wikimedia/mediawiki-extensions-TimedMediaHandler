@@ -18,16 +18,12 @@ use MediaWiki\Utils\MWTimestamp;
  *
  */
 class TranscodeStatusTable {
-	private IContextSource $context;
-	private LinkRenderer $linkRenderer;
-	private TemplateParser $templateParser;
+	private readonly TemplateParser $templateParser;
 
 	public function __construct(
-		IContextSource $context,
-		LinkRenderer $linkRenderer
+		private readonly IContextSource $context,
+		private readonly LinkRenderer $linkRenderer,
 	) {
-		$this->context = $context;
-		$this->linkRenderer = $linkRenderer;
 		$this->templateParser = new TemplateParser( __DIR__ . '/../templates' );
 	}
 

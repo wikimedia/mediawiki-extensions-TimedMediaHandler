@@ -37,16 +37,11 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		'missing' => 'transcode_time_addjob IS     NULL AND transcode_time_startwork IS     NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
 	];
 
-	private IConnectionProvider $dbProvider;
-	private WANObjectCache $cache;
-
 	public function __construct(
-		IConnectionProvider $dbProvider,
-		WANObjectCache $cache
+		private readonly IConnectionProvider $dbProvider,
+		private readonly WANObjectCache $cache,
 	) {
 		parent::__construct( 'TranscodeStatistics', 'transcode-status' );
-		$this->dbProvider = $dbProvider;
-		$this->cache = $cache;
 	}
 
 	/** @inheritDoc */

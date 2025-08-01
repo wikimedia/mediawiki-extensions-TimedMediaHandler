@@ -33,20 +33,14 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 
 	/** Array with keys being names of valid files */
 	private array $existingFiles;
-	private IConnectionProvider $dbProvider;
-	private LanguageConverterFactory $languageConverterFactory;
-	private RepoGroup $repoGroup;
-	private int $migrationStage;
+	private readonly int $migrationStage;
 
 	public function __construct(
-		IConnectionProvider $dbProvider,
-		LanguageConverterFactory $languageConverterFactory,
-		RepoGroup $repoGroup
+		private readonly IConnectionProvider $dbProvider,
+		private readonly LanguageConverterFactory $languageConverterFactory,
+		private readonly RepoGroup $repoGroup,
 	) {
 		parent::__construct( 'OrphanedTimedText' );
-		$this->dbProvider = $dbProvider;
-		$this->languageConverterFactory = $languageConverterFactory;
-		$this->repoGroup = $repoGroup;
 		$this->migrationStage = MediaWikiServices::getInstance()->getMainConfig()->get(
 			MainConfigNames::FileSchemaMigrationStage
 		);

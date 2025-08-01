@@ -71,22 +71,14 @@ class Hooks implements
 	WgQueryPagesHook
 {
 
-	private Config $config;
-	private LinkRenderer $linkRenderer;
-	private RepoGroup $repoGroup;
-	private SpecialPageFactory $specialPageFactory;
-	private TranscodableChecker $transcodableChecker;
+	private readonly TranscodableChecker $transcodableChecker;
 
 	public function __construct(
-		Config $config,
-		LinkRenderer $linkRenderer,
-		RepoGroup $repoGroup,
-		SpecialPageFactory $specialPageFactory
+		private readonly Config $config,
+		private readonly LinkRenderer $linkRenderer,
+		private readonly RepoGroup $repoGroup,
+		private readonly SpecialPageFactory $specialPageFactory,
 	) {
-		$this->config = $config;
-		$this->linkRenderer = $linkRenderer;
-		$this->repoGroup = $repoGroup;
-		$this->specialPageFactory = $specialPageFactory;
 		$this->transcodableChecker = new TranscodableChecker(
 			$config,
 			$repoGroup

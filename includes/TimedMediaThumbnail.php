@@ -12,15 +12,10 @@ use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
 
 class TimedMediaThumbnail {
 
-	private Config $config;
-	private RepoGroup $repoGroup;
-
 	public function __construct(
-		Config $config,
-		RepoGroup $repoGroup
+		private readonly Config $config,
+		private readonly RepoGroup $repoGroup,
 	) {
-		$this->config = $config;
-		$this->repoGroup = $repoGroup;
 	}
 
 	/**
