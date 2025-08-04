@@ -58,7 +58,7 @@
 	"timedmedia-hours": "$1 {{PLURAL:$1|ura|uri|ure|ur}}",
 	"timedmedia-minutes": "$1 {{PLURAL:$1|minuta|minuti|minute|minut}}",
 	"timedmedia-seconds": "$1 {{PLURAL:$1|sekunda|sekundi|sekunde|sekund}}",
-	"timedmedia-reset": "Ponastavi prekodiranje",
+	"timedmedia-reset": "Ponastavitev prekodiranja",
 	"timedmedia-reset-areyousure": "Ali res želite nadaljevati?",
 	"timedmedia-reset-button-cancel": "Ne ponastavi",
 	"timedmedia-reset-button-dismiss": "Opusti",
