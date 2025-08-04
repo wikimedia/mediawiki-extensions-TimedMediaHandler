@@ -203,7 +203,7 @@ class Hooks implements
 			if ( !$ttTitle ) {
 				return;
 			}
-			$tab = $sktemplate->tabAction( $ttTitle, 'timedtext', false, '', false );
+			$tab = $sktemplate->tabAction( $ttTitle, 'nstab-timedtext', false, '', false );
 
 			// Lookup if we have any corresponding timed text available already
 			$file = $this->repoGroup->findFile( $sktemplate->getTitle(), [ 'ignoreRedirect' => true ] );
@@ -220,7 +220,7 @@ class Hooks implements
 			$page = new TimedTextPage( $sktemplate->getTitle() );
 			$links['namespaces']['file'] =
 				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-				$sktemplate->tabAction( $page->getCorrespondingFileTitle(), 'file', false, '', true );
+				$sktemplate->tabAction( $page->getCorrespondingFileTitle(), 'nstab-image', false, '', true );
 		}
 	}
 
