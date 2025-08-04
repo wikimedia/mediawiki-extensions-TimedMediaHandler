@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Config\ConfigException;
+use MediaWiki\Config\HashConfig;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 
 /**
@@ -140,14 +141,14 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 	 * @dataProvider transcodeSetProvider
 	 */
 	public function testEnabledTranscodeSetConfiguration( $set, $audioSet, $exception ) {
-		$this->overrideConfigValues( [
+		$config = new HashConfig( [
 			'EnabledTranscodeSet' => $set,
 			'EnabledAudioTranscodeSet' => $audioSet,
 		] );
 		if ( $exception ) {
 			$this->expectException( ConfigException::class );
 		}
-		WebVideoTranscode::validateTranscodeConfiguration();
+		WebVideoTranscode::validateTranscodeConfiguration( $config );
 		// Silence testcase when everything is ok
 		$this->assertTrue( true );
 	}

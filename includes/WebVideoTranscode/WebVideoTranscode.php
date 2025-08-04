@@ -12,6 +12,7 @@ namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
 use Exception;
 use LogicException;
+use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Deferred\CdnCacheUpdate;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -1620,8 +1621,12 @@ class WebVideoTranscode {
 		return static::filterAndSort( $config->get( 'EnabledAudioTranscodeSet' ) );
 	}
 
-	public static function validateTranscodeConfiguration() {
-		foreach ( static::enabledTranscodes() as $transcodeKey ) {
+	public static function validateTranscodeConfiguration( Config $config ) {
+		$transcodeConfig = static::filterAndSort( array_merge(
+			$config->get( 'EnabledTranscodeSet' ),
+			$config->get( 'EnabledAudioTranscodeSet' )
+		) );
+		foreach ( $transcodeConfig as $transcodeKey ) {
 			if ( !isset( static::$derivativeSettings[ $transcodeKey ] ) ) {
 				throw new ConfigException(
 					__METHOD__ . ": Invalid key '$transcodeKey' specified in"

@@ -108,36 +108,6 @@ class Hooks implements
 	}
 
 	/**
-	 * Register remaining TimedMediaHandler hooks right after initial setup
-	 *
-	 * TODO: This function shouldn't need to exist.
-	 *
-	 * @return bool
-	 */
-	public static function register() {
-		global $wgJobTypesExcludedFromDefaultQueue,
-		$wgFileExtensions, $wgTmhEnableMp4Uploads,
-		$wgTmhFileExtensions;
-
-		$wgFileExtensions = array_merge( $wgFileExtensions, $wgTmhFileExtensions );
-
-		// Remove mp4 if not enabled:
-		if ( $wgTmhEnableMp4Uploads === false ) {
-			$index = array_search( 'mp4', $wgFileExtensions, true );
-			if ( $index !== false ) {
-				array_splice( $wgFileExtensions, $index, 1 );
-			}
-		}
-
-		// Transcode jobs must be explicitly requested from the job queue:
-		$wgJobTypesExcludedFromDefaultQueue[] = 'webVideoTranscode';
-
-		// validate enabled transcodeset values
-		WebVideoTranscode::validateTranscodeConfiguration();
-		return true;
-	}
-
-	/**
 	 * @param ImagePage $imagePage the imagepage that is being rendered
 	 * @param OutputPage $output the output for this imagepage
 	 */
