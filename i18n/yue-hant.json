@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ktchankt",
 			"Winston Sung"
 		]
 	},
@@ -16,5 +17,6 @@
 	"timedmedia-more": "多啲...",
 	"timedmedia-dismiss": "閂",
 	"timedmedia-download": "下載檔案",
-	"timedmedia-desc-link": "關於呢個檔案"
+	"timedmedia-desc-link": "關於呢個檔案",
+	"orphanedtimedtext": "孤立咗嘅TimedText頁面"
 }
