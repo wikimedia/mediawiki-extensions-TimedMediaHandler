@@ -211,6 +211,7 @@ class InlinePlayer {
 					this.selectDefaultTrack();
 					/* More custom stuff goes here */
 					d.resolve( this.videojsPlayer );
+					mw.hook( 'tmh.player.loaded' ).fire( this.videojsPlayer );
 				} );
 				return d.promise();
 			} );
