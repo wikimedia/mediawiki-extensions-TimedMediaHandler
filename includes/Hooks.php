@@ -187,10 +187,13 @@ class Hooks implements
 			return;
 		}
 		if ( $sktemplate->getTitle()->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
-			$page = new TimedTextPage( $sktemplate->getTitle() );
+			$fileTitle = ( new TimedTextPage( $sktemplate->getTitle() ) )->getCorrespondingFileTitle();
+			if ( !$fileTitle ) {
+				return;
+			}
+
 			$links['namespaces']['file'] =
-				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-				$sktemplate->tabAction( $page->getCorrespondingFileTitle(), 'nstab-image', false, '', true );
+				$sktemplate->tabAction( $fileTitle, 'nstab-image', false, '', true );
 		}
 	}
 
