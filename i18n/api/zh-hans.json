@@ -6,7 +6,8 @@
 			"Yfdyh000",
 			"佛壁灯",
 			"科劳",
-			"LittlePaw365"
+			"LittlePaw365",
+			"Lakejason0"
 		]
 	},
 	"apihelp-query+transcodestatus-description": "获取指定文件页面的转码状态。",
@@ -25,7 +26,7 @@
 	"apihelp-timedtext-param-lang": "要添加字幕的语言",
 	"apihelp-timedtext-example-1": "为文件 Example.ogv 获取 SRT 德语字幕文件",
 	"apihelp-transcodereset-description": "具有“transcode-reset”权限的用户可以重置和重新运行转码任务。",
-	"apihelp-transcodereset-summary": "持有“transcode-reset”权限的用户可以重置并重启转码任务。",
+	"apihelp-transcodereset-summary": "持有“transcode-reset”权限的用户可以重置并重启转码作业。",
 	"apihelp-transcodereset-param-title": "媒体文件标题。",
 	"apihelp-transcodereset-param-transcodekey": "您想要重置的转码密钥。从[[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]获取。",
 	"apihelp-transcodereset-example-1": "重置[[:File:Clip.webm]]的所有译码",

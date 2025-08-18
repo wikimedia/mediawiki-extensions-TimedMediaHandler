@@ -17,7 +17,8 @@
 			"蘭斯特",
 			"Winston Sung",
 			"SunAfterRain",
-			"YeBoy371"
+			"YeBoy371",
+			"Lakejason0"
 		]
 	},
 	"timedmediahandler-desc": "音訊、影片與字幕處理程式，支援的格式包含 WebM、Ogg Theora、Vorbis、srt",
@@ -75,7 +76,7 @@
 	"timedmedia-reset-button-cancel": "不要重設",
 	"timedmedia-reset-button-dismiss": "關閉",
 	"timedmedia-reset-button-reset": "重設",
-	"timedmedia-reset-error": "重設轉碼任務時發生錯誤。",
+	"timedmedia-reset-error": "重設轉碼作業時發生錯誤。",
 	"timedmedia-reset-explanation": "重設轉碼會移除所有已存在的檔案，並重新將檔案加入轉碼工作序列。這需要花費一些時間來重新轉碼。",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1 來源檔案",

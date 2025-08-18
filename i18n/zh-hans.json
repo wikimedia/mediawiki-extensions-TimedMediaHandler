@@ -26,7 +26,8 @@
 			"Xyb",
 			"Xzonn",
 			"Winston Sung",
-			"Hehua"
+			"Hehua",
+			"Lakejason0"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -85,8 +86,8 @@
 	"timedmedia-reset-button-cancel": "不要重置",
 	"timedmedia-reset-button-dismiss": "关闭",
 	"timedmedia-reset-button-reset": "重置",
-	"timedmedia-reset-error": "重置转码工作时发生错误。",
-	"timedmedia-reset-explanation": "重置转码将会尽可能移除所有现有文件，并将其重新加入到转码工作队列。这将需要一些时间来重新转码。",
+	"timedmedia-reset-error": "重置转码作业时发生错误。",
+	"timedmedia-reset-explanation": "重置转码将会尽可能移除所有现有文件，并将其重新加入到转码作业队列。重新转码需要一些时间。",
 	"timedmedia-mp4": "MP4",
 	"timedmedia-source-file": "$1原始文件",
 	"timedmedia-source-file-desc": "原始$1文件，$2 × $3（$4）",

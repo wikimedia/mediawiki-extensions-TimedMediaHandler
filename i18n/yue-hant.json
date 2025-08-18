@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Winston Sung",
-			"Ktchankt"
+			"Ktchankt",
+			"Yueman"
 		]
 	},
 	"timedmediahandler-desc": "Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器",
@@ -18,7 +19,13 @@
 	"timedmedia-dismiss": "閂",
 	"timedmedia-download": "下載檔案",
 	"timedmedia-desc-link": "關於呢個檔案",
+	"timedmedia-actions": "動作",
+	"timedmedia-not-ready": "未準備好",
 	"timedmedia-source-file": "$1 來源檔",
 	"timedmedia-source-audio-file-desc": "原本 $1 檔案 （$2）",
+	"timedmedia-file": "檔案",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1個鐘頭}}{{PLURAL:$2|$2分}}{{PLURAL:$3|$3秒}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1分}}{{PLURAL:$2|$2秒}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1秒}}",
 	"orphanedtimedtext": "孤立咗嘅TimedText頁面"
 }
