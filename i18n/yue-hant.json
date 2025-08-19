@@ -20,6 +20,10 @@
 	"timedmedia-download": "下載檔案",
 	"timedmedia-desc-link": "關於呢個檔案",
 	"timedmedia-actions": "動作",
+	"timedmedia-not-ready": "未準備好",
 	"timedmedia-file": "檔案",
+	"timedmedia-duration-hms": "{{PLURAL:$1|$1個鐘頭}}{{PLURAL:$2|$2分}}{{PLURAL:$3|$3秒}}",
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1分}}{{PLURAL:$2|$2秒}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1秒}}",
 	"orphanedtimedtext": "孤立咗嘅TimedText頁面"
 }
