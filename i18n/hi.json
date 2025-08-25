@@ -80,5 +80,9 @@
 	"timedmedia-subtitle-no-video": "वर्तमान उपशीर्षक पृष्ठ से कोई भी वीडियो जुड़ा नहीं है।",
 	"timedmedia-subtitle-no-subtitles": "इस वीडियो के लिए $1 में कोई उपशीर्षक नहीं है। आप [{{fullurl:{{FULLPAGENAME}}|action=edit}} इसे संपादित कर के] जोड़ सकते हैं।",
 	"timedmedia-subtitle-remote-link": "आप $2 में इस फ़ाइल का [$1 विवरण पृष्ठ देख सकते हो]",
-	"timedmedia-file": "फ़ाइल"
+	"timedmedia-file": "फ़ाइल",
+	"right-transcode-reset": "असफल या ट्रांसकोड किए गए वीडियो रीसेट करना ताकि वे दोबारा कार्य कतार में जोड़ दिए जाएँ",
+	"right-transcode-status": "[[Special:TimedMediaHandler|वर्तमान ट्रांसकोड गतिविधियों के बारे में जानकारी]] देखना",
+	"action-transcode-reset": "ट्रांसकोड्स रीसेट करने",
+	"action-transcode-status": "ट्रांसकोडिंग की वर्तमान स्थिति देखने"
 }
