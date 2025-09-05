@@ -27,7 +27,7 @@ $( () => {
 					flags: 'safe'
 				}
 			]
-		} ).done( ( confirmed ) => {
+		} ).then( ( confirmed ) => {
 			if ( !confirmed ) {
 				return;
 			}
@@ -37,26 +37,29 @@ $( () => {
 				transcodekey: tKey,
 				title: mw.config.get( 'wgPageName' ),
 				errorformat: 'html'
-			} ).done( () => {
-				// Refresh the page
-				location.reload();
-			} ).fail( ( code, data ) => {
-				let errorText;
-				if ( data.errors ) {
-					errorText = data.errors[ 0 ][ '*' ];
-				} else {
-					errorText = mw.msg( 'timedmedia-reset-error' );
+			} ).then(
+				() => {
+					// Refresh the page
+					location.reload();
+				},
+				( code, data ) => {
+					let errorText;
+					if ( data.errors ) {
+						errorText = data.errors[ 0 ][ '*' ];
+					} else {
+						errorText = mw.msg( 'timedmedia-reset-error' );
+					}
+					OO.ui.alert( errorText, {
+						actions: [
+							{
+								action: 'ok',
+								label: mw.msg( 'timedmedia-reset-button-dismiss' ),
+								flags: 'safe'
+							}
+						]
+					} );
 				}
-				OO.ui.alert( errorText, {
-					actions: [
-						{
-							action: 'ok',
-							label: mw.msg( 'timedmedia-reset-button-dismiss' ),
-							flags: 'safe'
-						}
-					]
-				} );
-			} );
+			);
 		} );
 	}
 

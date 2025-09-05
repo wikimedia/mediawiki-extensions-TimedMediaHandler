@@ -24,8 +24,7 @@
 		"no-restricted-properties": "warn",
 		"compat/compat": "warn",
 		"es-x/no-array-prototype-fill": "warn",
-		"no-jquery/no-extend": "warn",
-		"no-jquery/no-done-fail": "warn"
+		"no-jquery/no-extend": "warn"
 	},
 	"overrides": [
 		{
