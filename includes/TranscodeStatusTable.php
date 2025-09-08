@@ -15,7 +15,6 @@ use MediaWiki\Utils\MWTimestamp;
  *
  * If logged in as autoconfirmed users can reset transcode states
  * via the transcode api entry point
- *
  */
 class TranscodeStatusTable {
 	private readonly TemplateParser $templateParser;
