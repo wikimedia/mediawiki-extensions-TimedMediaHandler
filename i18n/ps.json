@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"شاه زمان پټان"
 		]
 	},
 	"timedmedia-ogg-short-audio": "Ogg $1 غږيزه دوتنه، $2",
@@ -24,5 +25,7 @@
 	"timedmedia-source-file": "$1 سرچينه",
 	"timedmedia-source-audio-file-desc": "اصلي $1 دوتنه ($2)",
 	"timedmedia-subtitle-new-go": "ورځه",
-	"timedmedia-file": "دوتنه"
+	"timedmedia-file": "دوتنه",
+	"orphanedtimedtext": "يتيم مهال‌ليک مخونه",
+	"transcodestatistics": "ټرانسکود شمارنې"
 }
