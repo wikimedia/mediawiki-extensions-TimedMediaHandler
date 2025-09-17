@@ -8,7 +8,6 @@ use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Linker\LinkTarget;
 
 /**
- * @file
  * @ingroup Extensions
  */
 class TranscodableChecker {

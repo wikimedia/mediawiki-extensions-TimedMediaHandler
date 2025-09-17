@@ -8,7 +8,6 @@ use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 /**
  * Hooks for installer
  *
- * @file
  * @ingroup Extensions
  */
 class InstallerHooks implements LoadExtensionSchemaUpdatesHook {

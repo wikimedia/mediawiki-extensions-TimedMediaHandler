@@ -1,7 +1,5 @@
 <?php
 
-// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
-
 namespace MediaWiki\TimedMediaHandler;
 
 use DifferenceEngine;
@@ -49,7 +47,6 @@ use MediaWiki\User\UserIdentity;
 /**
  * Hooks for TimedMediaHandler extension
  *
- * @file
  * @ingroup Extensions
  */
 class Hooks implements

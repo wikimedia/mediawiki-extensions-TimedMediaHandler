@@ -46,7 +46,6 @@ use Wikimedia\ParamValidator\ParamValidator;
  * for consumption by <track> elements
  *
  * @ingroup API
- * @emits error.code timedtext-notfound, invalidlang, invalid-title
  */
 class ApiTimedText extends ApiBase {
 	/** @var int version of the cache format */
