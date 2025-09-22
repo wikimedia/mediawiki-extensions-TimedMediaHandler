@@ -3,6 +3,7 @@ jsdoc-plugins/*
 resources/lib/video.js/*
 resources/videojs-ogvjs/*
 resources/lib/ogv.js/
+resources/lib/foreign-resources.cdx.json
 vendor/
 
 # Language files written automatically by TranslateWiki
