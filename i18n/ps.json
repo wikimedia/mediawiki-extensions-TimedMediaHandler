@@ -20,6 +20,8 @@
 	"timedmedia-reset-button-reset": "بياايښودل",
 	"timedmedia-subtitle-new-go": "ورځه",
 	"timedmedia-file": "دوتنه",
+	"right-transcode-reset": "نابرياله يا ټرانسکوډشوې ويډيوگانې بيا واوڼئ؛ ترڅو دوی بيا د دندې په کتار کې وروټومبل شي",
+	"right-transcode-status": "د [[Special:TimedMediaHandler|وروستيو ټرانسکوډ شوو چارو په اړه مالومات]]",
 	"orphanedtimedtext": "يتيم مهال‌ليک مخونه",
 	"transcodestatistics": "ټرانسکود شمارنې"
 }
