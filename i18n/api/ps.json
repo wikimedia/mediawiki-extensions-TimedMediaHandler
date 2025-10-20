@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-query+transcodestatus-summary": "د ورکړل‌شوې دوتنې مخ لباره د ټرانس کوډ دريځ ترلاسه‌کول",
+	"apihelp-query+transcodestatus-example-1": "[[:File:Clip.webm]] ته ټرانس کوډ دريځ ترلاسه کول",
+	"apihelp-transcodereset-param-title": "د رسنيزې دوتنې سرليک",
+	"apierror-timedmedia-lang-notfound": "غوښتل شوې ژبه ونه موندل شوه",
+	"apierror-timedmedia-no-timedtext-support": "مهال‌ليک ملاتړ نشته",
+	"apierror-timedmedia-notlocal": "دوتنه ځايي نه ده"
+}
