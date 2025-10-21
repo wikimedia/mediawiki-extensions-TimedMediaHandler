@@ -42,6 +42,7 @@
 	"action-transcode-reset": "کوډېنگ بيااوڼل",
 	"log-name-timedmediahandler": "مهال‌رسنۍ‌سمبالگر يادښت",
 	"orphanedtimedtext": "يتيم مهال‌ليک مخونه",
+	"orphanedtimedtext-summary": "د of [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] مخونو لړليک چې ورته دوتنه نه لري.",
 	"videojs-more-information": "نور مالومات",
 	"videojs-quality": "ويډيو څرنگوالی",
 	"videojs-subtitles-create": "څنگ‌سرليکونه جوړول",
