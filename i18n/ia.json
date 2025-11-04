@@ -158,8 +158,8 @@
 	"videojs-subtitles-create": "Crear subtitulos",
 	"videojs-captions-create": "Crear legendas",
 	"transcodestatistics": "Statisticas de transcodification",
-	"timedmedia-timedtext-title-edit-subtitles": "Subtitulos in $1 pro le clip: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Nulle subtitulos in $1 ha essite trovate pro le clip: $2",
+	"timedmedia-timedtext-title-edit-subtitles": "Subtitulos in $1 pro le video: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Nulle subtitulos in $1 ha essite trovate pro le video: $2",
 	"m3u8-error-create-temp": "Non poteva crear file temporari pro $1",
 	"m3u8-error-write-temp": "Non poteva scriber al file temporari pro $1",
 	"m3u8-error-save-playlist": "Errores salveguardante lista de reproduction HLS $1"

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"apihelp-transcodereset-param-title": "Den Titel vum Mediefichier.",
+	"apierror-timedmedia-no-timedtext-support": "Keng TimedText-Ënnerstëtzung",
 	"apierror-timedmedia-notlocal": "Fichier net lokal"
 }
