@@ -33,5 +33,7 @@
 	"timedmedia-derivative-desc-240p.vp9.webm": "Malé VP9 (240P)",
 	"log-name-timedmediahandler": "Záznam časovaného spracovania médií",
 	"log-description-timedmediahandler": "Toto je záznam akcií, vzťahujúcich sa k časovanej konverzii médií.",
+	"orphanedtimedtext": "Osirotené stránky TimedText",
+	"orphanedtimedtext-summary": "Zoznam stránok [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], ktoré nemajú priradený súbor.",
 	"videojs-more-information": "Viac informácií"
 }

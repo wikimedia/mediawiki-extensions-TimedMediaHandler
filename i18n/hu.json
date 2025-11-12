@@ -11,7 +11,8 @@
 			"Samat",
 			"Tacsipacsi",
 			"Tgr",
-			"Urbalazs"
+			"Urbalazs",
+			"Boro"
 		]
 	},
 	"timedmediahandler-desc": "Audió-, videó- és feliratkezelő, WebM-, Ogg Theora-, Ogg Vorbis- és srt-támogatással",
@@ -87,6 +88,10 @@
 	"timedmedia-derivative-desc-240p.vp9.webm": "Kis VP9 (240P)",
 	"timedmedia-derivative-desc-160p.mp4": "Kis sávszélességű MP4 H.264 (160P)",
 	"timedmedia-derivative-desc-240p.mp4": "Kis MP4 H.264 (240P)",
+	"timedmedia-resolution-120": "Alacsony 120p",
+	"timedmedia-resolution-160": "Alacsony 160p",
+	"timedmedia-resolution-180": "Alacsony 180p",
+	"timedmedia-resolution-240": "Alacsony 240p",
 	"timedmedia-subtitle-new": "Új fordítás készítése vagy meglévő szerkesztése",
 	"timedmedia-subtitle-new-desc": "Válaszd ki a nyelvet, és kattints a '''{{int:Timedmedia-subtitle-new-go}}''' gombra",
 	"timedmedia-subtitle-new-go": "Mehet",
@@ -94,6 +99,7 @@
 	"timedmedia-subtitle-no-subtitles": "Jelenleg nincs $1 nyelvű felirat ehhez a videóhoz; [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted ezt a lapot] a hozzáadásához.",
 	"timedmedia-subtitle-remote": "Ennek a fájlnak az időzített szövege a(z) $1 wikin van tárolva",
 	"timedmedia-subtitle-remote-link": "[$1 Megtekintheted a fájl leírólapját] itt: $2",
+	"timedmedia-subtitles-available": "Felirat elérhető.",
 	"timedmedia-derivative-state-transcodes": "$1 átkódolás",
 	"timedmedia-derivative-state-active": "$1 folyamatban lévő átkódolás",
 	"timedmedia-derivative-state-queued": "$1 átkódolás a sorban",
@@ -101,6 +107,7 @@
 	"timedmedia-derivative-state-missing": "$1 elkezdetlen átkódolás",
 	"timedmedia-no-derivatives": "Nincs szükség átkódolásra.",
 	"timedmedia-file": "Fájl",
+	"timedmedia-dialog-close": "Médialejátszó bezárása",
 	"right-transcode-reset": "sikertelen vagy átkódolt videók visszaállítása, hogy újra bekerüljenek a feladatsorba",
 	"right-transcode-status": "[[Special:TimedMediaHandler|a legutóbbi átkódolási események információinak]] megtekintése",
 	"action-transcode-reset": "átkódolások visszaállítása",
@@ -112,6 +119,8 @@
 	"orphanedtimedtext-unsupported": "Ez a speciális lap csak MySQL adatbázisokon támogatott.",
 	"videojs-more-information": "További információk",
 	"videojs-quality": "Videóminőség",
+	"videojs-subtitles-create": "Felirat létrehozása",
+	"videojs-captions-create": "Képfeliratok létrehozása",
 	"transcodestatistics": "Átkódolási statisztika",
 	"timedmedia-timedtext-title-edit-subtitles": "{{ucfirst:$1}} feliratok a(z) $2 kliphez",
 	"timedmedia-timedtext-title-create-subtitles": "Nem találhatók $1 feliratok a(z) $2 kliphez"
