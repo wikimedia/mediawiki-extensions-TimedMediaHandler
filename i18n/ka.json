@@ -7,7 +7,8 @@
 			"Otogi",
 			"Tokoko",
 			"გიორგიმელა",
-			"Გიო ოქრო"
+			"Გიო ოქრო",
+			"Mehman97"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -91,5 +92,6 @@
 	"videojs-more-information": "მეტი ინფორმაცია",
 	"videojs-quality": "ვიდეოს ხარისხი",
 	"videojs-subtitles-create": "სუბტიტრების შექმნა",
+	"transcodestatistics": "Transcode-ს სტატისტიკა",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 სუბტიტრები კლიპისათვის: $2"
 }
