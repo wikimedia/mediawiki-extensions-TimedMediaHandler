@@ -93,6 +93,7 @@
 	"timedmedia-subtitle-new-go": "যাও",
 	"timedmedia-subtitle-no-video": "বর্তমান সাবটাইটেল পৃষ্ঠার সাথে কোনও ভিডিও যুক্ত নেই।",
 	"timedmedia-subtitle-no-subtitles": "এই ভিডিওটির জন্য বর্তমানে $1 ভাষায় কোনও সাবটাইটেল নেই, এটি যুক্ত করতে আপনি [{{fullurl:{{FULLPAGENAME}}|action=edit}} এই পৃষ্ঠাটি সম্পাদনা] করতে পারেন।",
+	"timedmedia-subtitle-remote": "এই ফাইলটির জন্য টাইমড টেক্সট $1-এ হোস্ট করা হয়েছে।",
 	"timedmedia-subtitle-remote-link": "আপনি $2-এ এই ফাইলের [$1 বিবরণের পৃষ্ঠাটি দেখতে পারেন]",
 	"timedmedia-subtitles-available": "সাবটাইটেল উপলব্ধ।",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1টি ট্রান্সকোড}}",
