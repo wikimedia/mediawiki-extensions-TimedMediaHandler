@@ -12,6 +12,7 @@
 	"timedmedia-ogg-short-general": "Ogg $1 رسنيزه دوتنه، $2",
 	"timedmedia-ogg-long-audio": "Ogg $1 غږيزه دوتنه، اوږدوالی $2، $3، دوتنې کچه: $6",
 	"timedmedia-ogg-long-video": "اوگ $1 ويډيويي دوتنه، اوږدوالی $2، $4 × $5 پېکسله، $3، دوتنې کچه: $6",
+	"timedmedia-ogg-long-general": "اوگ رسنيزه دوتنه، اوږوالی $2، $3، دوتنې کچه: $6",
 	"timedmedia-ogg-long-error": "ناسمه اوگ دوتنه: $1، دوتنې کچه: $2",
 	"timedmedia-ogg-long-no-streams": "اوگ رسنۍ دوتنه، دوتنې کچه: $1؟. گواښنه: دې دوتنې کې کارېدلي کودېکونه يوه هم نه دي پېژندل شوي.",
 	"timedmedia-flac-short-audio": "FLAC غږيزه دوتنه، $1",
