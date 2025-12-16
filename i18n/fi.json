@@ -62,6 +62,7 @@
 	"timedmedia-started-transcode": "Alkoi $1. $2",
 	"timedmedia-percent-done": "Noin $1 % valmiina",
 	"timedmedia-in-job-queue": "Lisättiin työjonoon $1",
+	"timedmedia-unknown-target-size": "Tuntematon tavoitekoko, $1 koodattu",
 	"timedmedia-reset": "Nollaa transkoodaus",
 	"timedmedia-reset-areyousure": "Haluatko varmasti jatkaa?",
 	"timedmedia-reset-button-cancel": "Älä nollaa",
@@ -181,5 +182,7 @@
 	"videojs-quality": "Videon laatu",
 	"videojs-subtitles-create": "Luo tekstitykset",
 	"videojs-captions-create": "Luo tekstitykset",
-	"transcodestatistics": "Transkoodaustilastot"
+	"transcodestatistics": "Transkoodaustilastot",
+	"timedmedia-timedtext-title-edit-subtitles": "Tekstitykset kielellä $1 klipille: $2",
+	"timedmedia-timedtext-title-create-subtitles": "Tekstityksiä kielellä $1 ei löytynyt klipille: $2"
 }
