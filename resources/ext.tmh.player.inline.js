@@ -178,7 +178,6 @@ class InlinePlayer {
 		this.$videoplayer.find( 'track[type="text/x-srt"]' ).remove();
 		this.$videoplayer.addClass( 'video-js' ).removeClass( 'mw-file-element' );
 
-		// eslint-disable-next-line es-x/no-array-prototype-fill
 		if ( this.playerConfig.fill ) {
 			// In fill mode, remove any inline width/height
 			// from the inline player

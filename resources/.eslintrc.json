@@ -19,13 +19,6 @@
 	"parserOptions": {
 		"sourceType": "module"
 	},
-	"rules": {
-		"jsdoc/no-undefined-types": "off",
-		"no-restricted-properties": "warn",
-		"compat/compat": "warn",
-		"es-x/no-array-prototype-fill": "warn",
-		"no-jquery/no-extend": "warn"
-	},
 	"overrides": [
 		{
 			"files": [

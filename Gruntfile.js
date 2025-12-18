@@ -23,6 +23,7 @@ module.exports = function ( grunt ) {
 			},
 			all: [
 				'**/*.{css,less}',
+				'!docs/**',
 				'!resources/mw-info-button/**',
 				// Third party resources
 				'!resources/lib/**',
