@@ -64,7 +64,7 @@
 	"timedmedia-error-on": "Fehler um $1",
 	"timedmedia-started-transcode": "Gestartet $1. $2",
 	"timedmedia-percent-done": "Ungefähr $1 % sind erledigt",
-	"timedmedia-in-job-queue": "Vor $1 der Auftragswarteschlange hinzugefügt",
+	"timedmedia-in-job-queue": "$1 der Auftragswarteschlange hinzugefügt",
 	"timedmedia-unknown-target-size": "Unbekannte Zielgröße, $1 codiert",
 	"timedmedia-reset": "Umschlüsselung zurücksetzen",
 	"timedmedia-reset-areyousure": "Möchtest du wirklich fortfahren?",
