@@ -112,7 +112,7 @@
 	"log-description-timedmediahandler": "دا د مهال رسنيو د ټرانسکوډونو سره تړلو کړنو يو يادښت دی.",
 	"logentry-timedmediahandler-resettranscode": "$1 د $3 ټرانسکوډ بڼه \"$4\" ته {{GENDER:$2|واوڼله}}",
 	"orphanedtimedtext": "يتيم مهال‌ليک مخونه",
-	"orphanedtimedtext-summary": "د of [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] مخونو لړليک چې ورته دوتنه نه لري.",
+	"orphanedtimedtext-summary": "د [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]] مخونو لړليک چې ورته دوتنه نه لري.",
 	"orphanedtimedtext-unsupported": "دا ځانگړی مخ يوازې په مای‌اېس‌کيو‌اېل اومتوک‌اډانو کې ملاتړ کېږي.",
 	"videojs-more-information": "نور مالومات",
 	"videojs-quality": "ويډيو څرنگوالی",
