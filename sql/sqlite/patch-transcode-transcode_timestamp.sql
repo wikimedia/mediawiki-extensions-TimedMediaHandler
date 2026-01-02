@@ -2,18 +2,63 @@
 -- Source: sql/abstractSchemaChanges/patch-transcode-transcode_timestamp.json
 -- Do not modify this file directly.
 -- See https://www.mediawiki.org/wiki/Manual:Schema_changes
-DROP  INDEX transcode_time_inx;
-DROP  INDEX transcode_key_idx;
-DROP  INDEX transcode_name_key;
 CREATE TEMPORARY TABLE /*_*/__temp__transcode AS
-SELECT  transcode_id,  transcode_image_name,  transcode_key,  transcode_error,  transcode_time_addjob,  transcode_time_startwork,  transcode_time_success,  transcode_time_error,  transcode_final_bitrate
-FROM  /*_*/transcode;
-DROP  TABLE  /*_*/transcode;
-CREATE TABLE  /*_*/transcode (    transcode_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,    transcode_image_name VARCHAR(255) NOT NULL,    transcode_key VARCHAR(48) NOT NULL,    transcode_error CLOB NOT NULL,    transcode_time_addjob BLOB DEFAULT NULL,    transcode_time_startwork BLOB DEFAULT NULL,    transcode_time_success BLOB DEFAULT NULL,    transcode_time_error BLOB DEFAULT NULL,    transcode_final_bitrate INTEGER NOT NULL  );
-INSERT INTO  /*_*/transcode (    transcode_id, transcode_image_name,    transcode_key, transcode_error,    transcode_time_addjob, transcode_time_startwork,    transcode_time_success, transcode_time_error,    transcode_final_bitrate  )
-SELECT  transcode_id,  transcode_image_name,  transcode_key,  transcode_error,  transcode_time_addjob,  transcode_time_startwork,  transcode_time_success,  transcode_time_error,  transcode_final_bitrate
-FROM  /*_*/__temp__transcode;
-DROP  TABLE /*_*/__temp__transcode;
-CREATE INDEX transcode_time_inx ON  /*_*/transcode (    transcode_time_addjob, transcode_time_startwork,    transcode_time_success, transcode_time_error  );
-CREATE INDEX transcode_key_idx ON  /*_*/transcode (transcode_key);
-CREATE UNIQUE INDEX transcode_name_key ON  /*_*/transcode (    transcode_image_name, transcode_key  );
+SELECT
+  transcode_id,
+  transcode_image_name,
+  transcode_key,
+  transcode_error,
+  transcode_time_addjob,
+  transcode_time_startwork,
+  transcode_time_success,
+  transcode_time_error,
+  transcode_final_bitrate
+FROM /*_*/transcode;
+
+DROP TABLE /*_*/transcode;
+
+
+CREATE TABLE /*_*/transcode (
+  transcode_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  transcode_image_name VARCHAR(255) NOT NULL,
+  transcode_key VARCHAR(48) NOT NULL,
+  transcode_error CLOB NOT NULL,
+  transcode_time_addjob BLOB DEFAULT NULL,
+  transcode_time_startwork BLOB DEFAULT NULL,
+  transcode_time_success BLOB DEFAULT NULL,
+  transcode_time_error BLOB DEFAULT NULL,
+  transcode_final_bitrate INTEGER NOT NULL
+);
+
+INSERT INTO /*_*/transcode (
+  transcode_id, transcode_image_name,
+  transcode_key, transcode_error,
+  transcode_time_addjob, transcode_time_startwork,
+  transcode_time_success, transcode_time_error,
+  transcode_final_bitrate
+)
+SELECT
+  transcode_id,
+  transcode_image_name,
+  transcode_key,
+  transcode_error,
+  transcode_time_addjob,
+  transcode_time_startwork,
+  transcode_time_success,
+  transcode_time_error,
+  transcode_final_bitrate
+FROM
+  /*_*/__temp__transcode;
+
+DROP TABLE /*_*/__temp__transcode;
+
+CREATE INDEX transcode_time_inx ON /*_*/transcode (
+  transcode_time_addjob, transcode_time_startwork,
+  transcode_time_success, transcode_time_error
+);
+
+CREATE INDEX transcode_key_idx ON /*_*/transcode (transcode_key);
+
+CREATE UNIQUE INDEX transcode_name_key ON /*_*/transcode (
+  transcode_image_name, transcode_key
+);

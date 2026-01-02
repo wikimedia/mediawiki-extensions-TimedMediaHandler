@@ -2,19 +2,26 @@
 -- Source: sql/abstractSchemaChanges/patch-transcode-transcode_timestamp.json
 -- Do not modify this file directly.
 -- See https://www.mediawiki.org/wiki/Manual:Schema_changes
-ALTER TABLE  transcode ALTER transcode_time_addjob TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_addjob
-DROP  DEFAULT;
-ALTER TABLE  transcode ALTER transcode_time_addjob TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_startwork TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_startwork
-DROP  DEFAULT;
-ALTER TABLE  transcode ALTER transcode_time_startwork TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_success TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_success
-DROP  DEFAULT;
-ALTER TABLE  transcode ALTER transcode_time_success TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_error TYPE TIMESTAMPTZ;
-ALTER TABLE  transcode ALTER transcode_time_error
-DROP  DEFAULT;
-ALTER TABLE  transcode ALTER transcode_time_error TYPE TIMESTAMPTZ;
+ALTER TABLE transcode
+  ALTER transcode_time_addjob TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_addjob TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_startwork TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_startwork TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_success TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_success TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_error TYPE TIMESTAMPTZ;
+
+ALTER TABLE transcode
+  ALTER transcode_time_error TYPE TIMESTAMPTZ;
