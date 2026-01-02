@@ -12,6 +12,9 @@ CREATE TABLE transcode (
   transcode_time_success TIMESTAMPTZ DEFAULT NULL,
   transcode_time_error TIMESTAMPTZ DEFAULT NULL,
   transcode_final_bitrate INT NOT NULL,
+  transcode_state SMALLINT DEFAULT NULL,
+  transcode_touched TIMESTAMPTZ DEFAULT NULL,
+  transcode_size BIGINT DEFAULT NULL,
   PRIMARY KEY(transcode_id)
 );
 
@@ -24,4 +27,12 @@ CREATE INDEX transcode_key_idx ON transcode (transcode_key);
 
 CREATE UNIQUE INDEX transcode_name_key ON transcode (
   transcode_image_name, transcode_key
+);
+
+CREATE INDEX transcode_state_touched ON transcode (
+  transcode_state, transcode_touched
+);
+
+CREATE INDEX transcode_state_key_touched ON transcode (
+  transcode_state, transcode_key, transcode_touched
 );

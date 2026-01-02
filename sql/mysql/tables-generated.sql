@@ -12,6 +12,9 @@ CREATE TABLE /*_*/transcode (
   transcode_time_success BINARY(14) DEFAULT NULL,
   transcode_time_error BINARY(14) DEFAULT NULL,
   transcode_final_bitrate INT NOT NULL,
+  transcode_state SMALLINT DEFAULT NULL,
+  transcode_touched BINARY(14) DEFAULT NULL,
+  transcode_size BIGINT DEFAULT NULL,
   INDEX transcode_time_inx (
     transcode_time_addjob, transcode_time_startwork,
     transcode_time_success, transcode_time_error
@@ -19,6 +22,12 @@ CREATE TABLE /*_*/transcode (
   INDEX transcode_key_idx (transcode_key),
   UNIQUE INDEX transcode_name_key (
     transcode_image_name, transcode_key
+  ),
+  INDEX transcode_state_touched (
+    transcode_state, transcode_touched
+  ),
+  INDEX transcode_state_key_touched (
+    transcode_state, transcode_key, transcode_touched
   ),
   PRIMARY KEY(transcode_id)
 ) /*$wgDBTableOptions*/;

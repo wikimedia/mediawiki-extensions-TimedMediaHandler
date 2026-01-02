@@ -1,5 +1,73 @@
-[
-	{
+{
+	"before": {
+		"name": "transcode",
+		"columns": [
+			{
+				"name": "transcode_id",
+				"type": "integer",
+				"options": { "notnull": true, "autoincrement": true }
+			},
+			{
+				"name": "transcode_image_name",
+				"type": "string",
+				"options": { "notnull": true, "length": 255 }
+			},
+			{
+				"name": "transcode_key",
+				"type": "string",
+				"options": { "notnull": true, "length": 48 }
+			},
+			{
+				"name": "transcode_error",
+				"type": "string",
+				"options": { "notnull": true, "length": 4294967295 }
+			},
+			{
+				"name": "transcode_time_addjob",
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_time_startwork",
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_time_success",
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_time_error",
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_final_bitrate",
+				"type": "integer",
+				"options": { "notnull": true }
+			}
+		],
+		"indexes": [
+			{
+				"name": "transcode_time_inx",
+				"columns": [ "transcode_time_addjob", "transcode_time_startwork", "transcode_time_success", "transcode_time_error" ],
+				"unique": false
+			},
+			{
+				"name": "transcode_key_idx",
+				"columns": [ "transcode_key" ],
+				"unique": false
+			},
+			{
+				"name": "transcode_name_key",
+				"columns": [ "transcode_image_name", "transcode_key" ],
+				"unique": true
+			}
+		],
+		"pk": [ "transcode_id" ]
+	},
+	"after": {
 		"name": "transcode",
 		"columns": [
 			{
@@ -97,4 +165,4 @@
 		],
 		"pk": [ "transcode_id" ]
 	}
-]
+}
