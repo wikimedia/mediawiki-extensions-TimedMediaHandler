@@ -146,11 +146,15 @@ class TimedTextPage extends Article {
 		}
 		// We want to render the contents of the page
 
+		$languageKey = $this->getLanguageKey();
 		// Look up the language name for the language that these subtitles use:
-		$language = $out->getLanguage()->getCode();
-		$languages = $this->languageNameUtils->getLanguageNames( $language, LanguageNameUtils::ALL );
-		// @phan-suppress-next-line PhanTypeMismatchDimFetchNullable
-		$languageName = $languages[ $this->getLanguageKey() ] ?? $this->getLanguageKey();
+		if ( $languageKey !== null ) {
+			$language = $out->getLanguage()->getCode();
+			$languages = $this->languageNameUtils->getLanguageNames( $language, LanguageNameUtils::ALL );
+			$languageName = $languages[ $languageKey ] ?? $languageKey;
+		} else {
+			$languageName = '';
+		}
 
 		// Set title of the page
 		$message = $this->getPage()->exists() ?
