@@ -11,7 +11,8 @@
 			"Luckas",
 			"Opraco",
 			"TheEduGobi",
-			"EGobi"
+			"EGobi",
+			"Fúlvio"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -166,6 +167,7 @@
 	"timedmedia-subtitle-no-subtitles": "Atualmente não há legendas em $1 para este vídeo, você pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta página] para adicioná-las.",
 	"timedmedia-subtitle-remote": "O texto temporizado para este arquivo está hospedado em $1",
 	"timedmedia-subtitle-remote-link": "Você pode [$1 visualizar a página de descrição] para este arquivo em $2",
+	"timedmedia-subtitles-available": "Legendas disponíveis.",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodificação|$1 transcodificações}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 executando a transcodificação|$1 executando as transcodificações}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificação |$1 transcodificações}} na fila",
@@ -173,6 +175,7 @@
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|1$ transcodificação não inicializada|1$ transcodificações não inicializadas}}",
 	"timedmedia-no-derivatives": "Transcodificação não necessária.",
 	"timedmedia-file": "Arquivo",
+	"timedmedia-dialog-close": "Fechar o reprodutor de mídia",
 	"right-transcode-reset": "Redefinir vídeos com falha ou transcodificados para que eles sejam inseridos novamente na fila de trabalho",
 	"right-transcode-status": "Exibir [[Special:TimedMediaHandler|informações sobre a atividade de transcodificação atual]]",
 	"action-transcode-reset": "redefinir transcodificações",
