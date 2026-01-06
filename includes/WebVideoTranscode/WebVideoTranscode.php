@@ -41,6 +41,43 @@ use Wikimedia\Rdbms\IReadableDatabase;
  * Main WebVideoTranscode Class hold some constants and config values
  */
 class WebVideoTranscode {
+	/**
+	 * File has a row in the transcode table but no known queue or transcoding activity.
+	 *
+	 * The file will not be automatically processed unless explicitly enqueued.
+	 */
+	public const STATE_MISSING = 0;
+
+	/**
+	 * File has been scheduled for transcoding but hasn't started processing.
+	 *
+	 * The transcode job is in the job queue waiting to be picked up by a job runner.
+	 */
+	public const STATE_QUEUED = 1;
+
+	/**
+	 * File is currently being processed by a job runner.
+	 *
+	 * Note: In some failure cases, this state might become stuck if the job runner
+	 * fails to properly update the status.
+	 */
+	public const STATE_ACTIVE = 2;
+
+	/**
+	 * Transcoding failed due to an error.
+	 *
+	 * The error details are recorded in the transcode_error field.
+	 * Requires manual intervention or explicit re-queue to retry.
+	 */
+	public const STATE_FAILED = 3;
+
+	/**
+	 * Transcoding completed successfully.
+	 *
+	 * The output file is available and published for use.
+	 */
+	public const STATE_SUCCESS = 4;
+
 	/** @var array[] Static cache of transcode state per instantiation */
 	public static $transcodeState = [];
 
@@ -1318,6 +1355,9 @@ class WebVideoTranscode {
 						'transcode_time_addjob' => null,
 						'transcode_error' => '',
 						'transcode_final_bitrate' => 0,
+						'transcode_state' => self::STATE_MISSING,
+						'transcode_touched' => $dbw->timestamp(),
+						'transcode_size' => null,
 					] )
 					->caller( __METHOD__ )->execute();
 			}
@@ -1396,6 +1436,8 @@ class WebVideoTranscode {
 				'transcode_time_addjob' => $dbw->timestamp(),
 				'transcode_error' => '',
 				'transcode_final_bitrate' => 0,
+				'transcode_state' => self::STATE_QUEUED,
+				'transcode_touched' => $dbw->timestamp(),
 			] )
 			->onDuplicateKeyUpdate()
 			->uniqueIndexFields( [
@@ -1406,6 +1448,8 @@ class WebVideoTranscode {
 				'transcode_time_addjob' => $dbw->timestamp(),
 				'transcode_error' => '',
 				'transcode_final_bitrate' => 0,
+				'transcode_state' => self::STATE_QUEUED,
+				'transcode_touched' => $dbw->timestamp(),
 			] )
 			->caller( __METHOD__ )->execute();
 
@@ -1431,7 +1475,9 @@ class WebVideoTranscode {
 					->update( 'transcode' )
 					->set( [
 						'transcode_time_error' => $dbw->timestamp(),
-						'transcode_error' => "Failed to insert Job."
+						'transcode_error' => "Failed to insert Job.",
+						'transcode_state' => self::STATE_FAILED,
+						'transcode_touched' => $dbw->timestamp(),
 					] )
 					->where( [
 						'transcode_image_name' => $fileName,

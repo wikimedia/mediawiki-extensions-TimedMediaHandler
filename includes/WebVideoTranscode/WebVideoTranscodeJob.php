@@ -135,7 +135,9 @@ class WebVideoTranscodeJob extends Job {
 			->update( 'transcode' )
 			->set( [
 				'transcode_time_error' => $dbw->timestamp(),
-				'transcode_error' => $error
+				'transcode_error' => $error,
+				'transcode_state' => WebVideoTranscode::STATE_FAILED,
+				'transcode_touched' => $dbw->timestamp(),
 			] )
 			->where( [
 				// (T362830) Fall-back if there's no file, rather than create a PHP error
@@ -222,7 +224,11 @@ class WebVideoTranscodeJob extends Job {
 			$jobStartTimeCache = wfTimestamp( TS_UNIX );
 			$dbw->newUpdateQueryBuilder()
 				->update( 'transcode' )
-				->set( [ 'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ) ] )
+				->set( [
+					'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ),
+					'transcode_state' => WebVideoTranscode::STATE_ACTIVE,
+					'transcode_touched' => $dbw->timestamp(),
+				] )
 				->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
 					'transcode_key' => $transcodeKey
@@ -317,8 +323,9 @@ class WebVideoTranscodeJob extends Job {
 				$status = 'Target does not exist: ' . $this->getTargetEncodePath();
 			}
 
+			$filesize = filesize( $this->getTargetEncodePath() );
 			// If status is ok and target is larger than 0 bytes
-			if ( $status === true && filesize( $this->getTargetEncodePath() ) > 0 ) {
+			if ( $status === true && $filesize > 0 ) {
 
 				$file = $this->getFile();
 				$mediaFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $transcodeKey );
@@ -391,7 +398,7 @@ class WebVideoTranscodeJob extends Job {
 					$status = false;
 				} else {
 					$bitrate = round(
-						(int)( filesize( $this->getTargetEncodePath() ) / $file->getLength() ) * 8
+						(int)( $filesize / $file->getLength() ) * 8
 					);
 					// Wikimedia\restoreWarnings();
 					// Reconnect to the database...
@@ -403,7 +410,10 @@ class WebVideoTranscodeJob extends Job {
 							'transcode_error' => '',
 							'transcode_time_error' => null,
 							'transcode_time_success' => $dbw->timestamp(),
-							'transcode_final_bitrate' => $bitrate
+							'transcode_final_bitrate' => $bitrate,
+							'transcode_state' => WebVideoTranscode::STATE_SUCCESS,
+							'transcode_touched' => $dbw->timestamp(),
+							'transcode_size' => $filesize,
 						] )
 						->where( [
 							'transcode_image_name' => $this->getFile()->getName(),
