@@ -180,7 +180,7 @@ class Hooks implements
 			if ( !$ttExists ) {
 				Html::addClass( $tab[ 'class' ], 'new' );
 			}
-			$links[ 'namespaces' ][ 'timedtext' ] = $tab;
+			$links[ 'associated-pages' ][ 'timedtext' ] = $tab;
 			return;
 		}
 		if ( $sktemplate->getTitle()->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
@@ -189,7 +189,7 @@ class Hooks implements
 				return;
 			}
 
-			$links['namespaces']['file'] =
+			$links['associated-pages']['file'] =
 				$sktemplate->tabAction( $fileTitle, 'nstab-image', false, '', true );
 		}
 	}
