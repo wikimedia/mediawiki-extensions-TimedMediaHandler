@@ -2,7 +2,6 @@
 
 namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
 
-use Exception;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Config\Config;
@@ -18,6 +17,7 @@ use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use Shellbox\Command\BoxedCommand;
+use Throwable;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
 use Wikimedia\Rdbms\ILBFactory;
 
@@ -157,307 +157,319 @@ class WebVideoTranscodeJob extends Job {
 	 * @return bool success
 	 */
 	public function run() {
-		$transcodeKey = $this->params['transcodeKey'];
-
 		try {
-			// get a local pointer to the file
-			$file = $this->getFile();
+			return $this->actuallyRun();
+		} catch ( Throwable $e ) {
+			$error = "Exception: " . $e->getMessage();
+			$trace = $e->getTraceAsString();
+			$this->output( "$error\n$trace\n" );
+			$this->setTranscodeError( $this->params['transcodeKey'], $error );
+			return false;
+		}
+	}
 
-			// Validate the file exists:
-			if ( !$file ) {
-				$error = $this->title . ': File not found';
-				$this->output( $error );
-				$this->setTranscodeError( $transcodeKey, $error );
-				return false;
+	/**
+	 * Does the actual work for the job; updating the transcode table,
+	 * triggering the transcode command, storing the files and triggering cache invalidation
+	 * @return bool
+	 */
+	private function actuallyRun(): bool {
+		$transcodeKey = $this->params['transcodeKey'];
+		$file = $this->getFile();
+
+		// Validate the file exists:
+		if ( !$file ) {
+			$error = $this->title . ': File not found';
+			$this->output( $error );
+			$this->setTranscodeError( $transcodeKey, $error );
+			return false;
+		}
+
+		// Validate the transcode key param:
+		if ( !isset( WebVideoTranscode::$derivativeSettings[ $transcodeKey ] ) ) {
+			$error = "Transcode key $transcodeKey not found, skipping";
+			$this->output( $error );
+			$this->setTranscodeError( $transcodeKey, $error );
+			return false;
+		}
+
+		$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
+
+		if ( isset( $options[ 'novideo' ] ) ) {
+			if ( !isset( $options['audioCodec'] ) ) {
+				throw new LogicException( 'Invalid audio track options' );
 			}
-
-			// Validate the transcode key param:
-			if ( !isset( WebVideoTranscode::$derivativeSettings[ $transcodeKey ] ) ) {
-				$error = "Transcode key $transcodeKey not found, skipping";
-				$this->output( $error );
-				$this->setTranscodeError( $transcodeKey, $error );
-				return false;
+			$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
+		} else {
+			if ( !isset( $options['videoCodec'] ) ) {
+				throw new LogicException( 'Invalid video track options' );
 			}
+			$this->output( "Encoding to codec: " . $options['videoCodec'] );
+		}
+		$dbw = $this->lbFactory->getPrimaryDatabase();
 
-			$options = WebVideoTranscode::$derivativeSettings[ $transcodeKey ];
+		// Check if we have "already started" the transcode ( possible error )
+		$transcodeRow = $dbw->newSelectQueryBuilder()
+			->select( [ 'transcode_time_addjob', 'transcode_time_startwork' ] )
+			->from( 'transcode' )
+			->where( [
+				'transcode_image_name' => $this->getFile()->getName(),
+				'transcode_key' => $transcodeKey
+			] )
+			->caller( __METHOD__ )
+			->fetchRow();
 
-			if ( isset( $options[ 'novideo' ] ) ) {
-				if ( !isset( $options['audioCodec'] ) ) {
-					throw new LogicException( 'Invalid audio track options' );
-				}
-				$this->output( "Encoding to audio codec: " . $options['audioCodec'] );
-			} else {
-				if ( !isset( $options['videoCodec'] ) ) {
-					throw new LogicException( 'Invalid video track options' );
-				}
-				$this->output( "Encoding to codec: " . $options['videoCodec'] );
-			}
-			$dbw = $this->lbFactory->getPrimaryDatabase();
+		if ( $transcodeRow === false ) {
+			$error = $this->title . ': Possible Error, transcode task removed before job began';
+			$this->output( $error );
+			return true;
+		}
 
-			// Check if we have "already started" the transcode ( possible error )
-			$transcodeRow = $dbw->newSelectQueryBuilder()
-				->select( [ 'transcode_time_addjob', 'transcode_time_startwork' ] )
-				->from( 'transcode' )
-				->where( [
-					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey
-				] )
-				->caller( __METHOD__ )
-				->fetchRow();
+		if ( $transcodeRow->transcode_time_startwork && (
+			wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_startwork ) >
+			wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_addjob ) )
+		) {
+			$error = $this->title . ': Error, running transcode job, for job that has already started';
+			$this->output( $error );
+			return true;
+		}
 
-			if ( $transcodeRow === false ) {
-				$error = $this->title . ': Possible Error, transcode task removed before job began';
-				$this->output( $error );
-				return true;
-			}
-
-			if ( $transcodeRow->transcode_time_startwork && (
-				wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_startwork ) >
-				wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_addjob ) )
-			) {
-				$error = $this->title . ': Error, running transcode job, for job that has already started';
-				$this->output( $error );
-				return true;
-			}
-
-			// Update the transcode table letting it know we have "started work":
-			$jobStartTimeCache = wfTimestamp( TS_UNIX );
-			$dbw->newUpdateQueryBuilder()
-				->update( 'transcode' )
+		// Update the transcode table letting it know we have "started work":
+		$jobStartTimeCache = wfTimestamp( TS_UNIX );
+		$dbw->newUpdateQueryBuilder()
+			->update( 'transcode' )
 				->set( [
 					'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ),
 					'transcode_state' => WebVideoTranscode::STATE_ACTIVE,
 					'transcode_touched' => $dbw->timestamp(),
 				] )
-				->where( [
-					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey
-				] )
-				->caller( __METHOD__ )
-				->execute();
+			->where( [
+				'transcode_image_name' => $this->getFile()->getName(),
+				'transcode_key' => $transcodeKey
+			] )
+			->caller( __METHOD__ )
+			->execute();
 
-			// Avoid contention and "server has gone away" errors as
-			// the transcode will take a very long time in some cases
+		// Avoid contention and "server has gone away" errors as
+		// the transcode will take a very long time in some cases
+		$this->lbFactory->commitPrimaryChanges( __METHOD__ );
+		$this->lbFactory->flushPrimarySessions( __METHOD__ );
+		$this->lbFactory->flushReplicaSnapshots( __METHOD__ );
+		// We can't just leave the connection open either or it will
+		// eat up resources and block new connections, so make sure
+		// everything is dead and gone.
+		$this->lbFactory->closeAll( __METHOD__ );
+
+		// Check the codec see which encode method to call;
+		$streaming = $options['streaming'] ?? false;
+		$videoCodec = $options['videoCodec'] ?? '';
+		$codecs = [ 'vp8', 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
+		$twopass = isset( $options['twopass'] );
+
+		// Was the _job_ enqueued with the remux option variant?
+		$remux = $this->params['remux'] ?? false;
+		// Does the _transcode config_ have a list of remux sources?
+		$remuxFrom = $options['remuxFrom'] ?? false;
+		if ( $remux && $remuxFrom ) {
+			foreach ( $remuxFrom as $altKey ) {
+				$altVirtualUrl = WebVideoTranscode::getDerivativeFilePath( $file, $altKey );
+				$repo = $this->file->repo;
+				if ( $repo->fileExists( $altVirtualUrl ) ) {
+					$this->remuxVirtualUrl = $altVirtualUrl;
+					$twopass = false;
+					break;
+				}
+			}
+		}
+		if ( isset( $options[ 'novideo' ] ) ) {
+			if ( $file->getMimeType() === 'audio/midi' ) {
+				$status = $this->midiToAudioEncode( $options );
+			} else {
+				$status = $this->ffmpegEncode( $options );
+			}
+		} elseif ( in_array( $videoCodec, $codecs ) ) {
+			// Check for twopass:
+			if ( $twopass ) {
+				// ffmpeg requires manual two pass
+				$status = $this->ffmpegEncode( $options, 2 );
+			} else {
+				$status = $this->ffmpegEncode( $options );
+			}
+		} else {
+			$this->output( 'Error unknown codec:' . $videoCodec );
+			$status = 'Error unknown target encode codec:' . $videoCodec;
+		}
+
+		// Reconnect to the database...
+		$dbw = $this->lbFactory->getPrimaryDatabase();
+
+		// Do a quick check to confirm the job was not restarted or removed while we were transcoding
+		// Confirm that the in memory $jobStartTimeCache matches db start time
+		$dbStartTime = $dbw->newSelectQueryBuilder()
+			->select( 'transcode_time_startwork' )
+			->from( 'transcode' )
+			->where( [
+				'transcode_image_name' => $this->getFile()->getName(),
+				'transcode_key' => $transcodeKey
+			] )
+			->caller( __METHOD__ )
+			->fetchField();
+
+		// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
+		if ( $dbStartTime === null || $jobStartTimeCache !== wfTimestamp( TS_UNIX, $dbStartTime ) ) {
+			$this->output(
+				'Possible Error,
+					transcode task restarted, removed, or completed while transcode was in progress'
+			);
+			// if an error; just error out,
+			// we can't remove temp files or update states, because the new job may be doing stuff.
+			if ( $status !== true ) {
+				$this->setTranscodeError( $transcodeKey, $status );
+				return false;
+			}
+			// else just continue with db updates,
+			// and when the new job comes around it won't start because it will see
+			// that the job has already been started.
+		}
+
+		// If status is ok and target does not exist, reset status
+		if ( $status === true && !is_file( $this->getTargetEncodePath() ) ) {
+			$status = 'Target does not exist: ' . $this->getTargetEncodePath();
+		}
+
+		$filesize = filesize( $this->getTargetEncodePath() );
+		// If status is ok and target is larger than 0 bytes
+		if ( $status === true && $filesize > 0 ) {
+			$file = $this->getFile();
+			$mediaFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $transcodeKey );
+			$mediaPath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey );
+			$storeOptions = null;
+			$playlistStoreOptions = null;
+
+			if ( $streaming === 'hls' ) {
+				$playlistKey = $transcodeKey . '.m3u8';
+				$playlistFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $playlistKey );
+				$playlistPath = WebVideoTranscode::getDerivativeFilePath( $file, $playlistKey );
+				$playlistTemp = $this->getTargetPlaylistPath();
+
+				$segmenter = Segmenter::segment( $this->getTargetEncodePath() );
+				// @fixme put the 10-second segment target in a constant somewhere
+				$segmenter->consolidate( 10 );
+				$segmenter->rewrite();
+				$playlist = $segmenter->playlist( 10, $mediaFilename );
+
+				file_put_contents( $playlistTemp, $playlist );
+				$playlistStoreOptions = [];
+				$playlistStoreOptions['headers']['Content-Type'] = 'application/vnd.apple.mpegurl; charset=utf-8';
+			} else {
+				$playlistTemp = null;
+				$playlistPath = null;
+			}
+
+			if (
+				strpos( $options['type'], '/ogg' ) !== false &&
+				$file->getLength()
+			) {
+				$storeOptions = [];
+				// Ogg files need a duration header for firefox
+				$storeOptions['headers']['X-Content-Duration'] = (float)$file->getLength();
+			}
+
+			// Avoid "server has gone away" errors as copying can be slow
 			$this->lbFactory->commitPrimaryChanges( __METHOD__ );
 			$this->lbFactory->flushPrimarySessions( __METHOD__ );
 			$this->lbFactory->flushReplicaSnapshots( __METHOD__ );
-			// We can't just leave the connection open either or it will
-			// eat up resources and block new connections, so make sure
-			// everything is dead and gone.
 			$this->lbFactory->closeAll( __METHOD__ );
 
-			// Check the codec see which encode method to call;
-			$streaming = $options['streaming'] ?? false;
-			$videoCodec = $options['videoCodec'] ?? '';
-			$codecs = [ 'vp8', 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
-			$twopass = isset( $options['twopass'] );
-
-			// Was the _job_ enqueued with the remux option variant?
-			$remux = $this->params['remux'] ?? false;
-			// Does the _transcode config_ have a list of remux sources?
-			$remuxFrom = $options['remuxFrom'] ?? false;
-			if ( $remux && $remuxFrom ) {
-				foreach ( $remuxFrom as $altKey ) {
-					$altVirtualUrl = WebVideoTranscode::getDerivativeFilePath( $file, $altKey );
-					$repo = $this->file->repo;
-					if ( $repo->fileExists( $altVirtualUrl ) ) {
-						$this->remuxVirtualUrl = $altVirtualUrl;
-						$twopass = false;
-						break;
-					}
-				}
-			}
-			if ( isset( $options[ 'novideo' ] ) ) {
-				if ( $file->getMimeType() === 'audio/midi' ) {
-					$status = $this->midiToAudioEncode( $options );
-				} else {
-					$status = $this->ffmpegEncode( $options );
-				}
-			} elseif ( in_array( $videoCodec, $codecs ) ) {
-				// Check for twopass:
-				if ( $twopass ) {
-					// ffmpeg requires manual two pass
-					$status = $this->ffmpegEncode( $options, 2 );
-				} else {
-					$status = $this->ffmpegEncode( $options );
-				}
-			} else {
-				wfDebug( 'Error unknown codec:' . $videoCodec );
-				$status = 'Error unknown target encode codec:' . $videoCodec;
-			}
-
-			// Reconnect to the database...
-			$dbw = $this->lbFactory->getPrimaryDatabase();
-
-			// Do a quick check to confirm the job was not restarted or removed while we were transcoding
-			// Confirm that the in memory $jobStartTimeCache matches db start time
-			$dbStartTime = $dbw->newSelectQueryBuilder()
-				->select( 'transcode_time_startwork' )
-				->from( 'transcode' )
-				->where( [
-					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey
-				] )
-				->caller( __METHOD__ )
-				->fetchField();
-
-			// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
-			if ( $dbStartTime === null || $jobStartTimeCache !== wfTimestamp( TS_UNIX, $dbStartTime ) ) {
-				$this->output(
-					'Possible Error,
-						transcode task restarted, removed, or completed while transcode was in progress'
-				);
-				// if an error; just error out,
-				// we can't remove temp files or update states, because the new job may be doing stuff.
-				if ( $status !== true ) {
-					$this->setTranscodeError( $transcodeKey, $status );
-					return false;
-				}
-				// else just continue with db updates,
-				// and when the new job comes around it won't start because it will see
-				// that the job has already been started.
-			}
-
-			// If status is ok and target does not exist, reset status
-			if ( $status === true && !is_file( $this->getTargetEncodePath() ) ) {
-				$status = 'Target does not exist: ' . $this->getTargetEncodePath();
-			}
-
-			$filesize = filesize( $this->getTargetEncodePath() );
-			// If status is ok and target is larger than 0 bytes
-			if ( $status === true && $filesize > 0 ) {
-
-				$file = $this->getFile();
-				$mediaFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $transcodeKey );
-				$mediaPath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey );
-				$storeOptions = null;
-				$playlistStoreOptions = null;
-
-				if ( $streaming === 'hls' ) {
-					$playlistKey = $transcodeKey . '.m3u8';
-					$playlistFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $playlistKey );
-					$playlistPath = WebVideoTranscode::getDerivativeFilePath( $file, $playlistKey );
-					$playlistTemp = $this->getTargetPlaylistPath();
-
-					$segmenter = Segmenter::segment( $this->getTargetEncodePath() );
-					// @fixme put the 10-second segment target in a constant somewhere
-					$segmenter->consolidate( 10 );
-					$segmenter->rewrite();
-					$playlist = $segmenter->playlist( 10, $mediaFilename );
-
-					file_put_contents( $playlistTemp, $playlist );
-					$playlistStoreOptions = [];
-					$playlistStoreOptions['headers']['Content-Type'] = 'application/vnd.apple.mpegurl; charset=utf-8';
-				} else {
-					$playlistTemp = null;
-					$playlistPath = null;
-				}
-
-				if (
-					strpos( $options['type'], '/ogg' ) !== false &&
-					$file->getLength()
-				) {
-					$storeOptions = [];
-					// Ogg files need a duration header for firefox
-					$storeOptions['headers']['X-Content-Duration'] = (float)$file->getLength();
-				}
-
-				// Avoid "server has gone away" errors as copying can be slow
-				$this->lbFactory->commitPrimaryChanges( __METHOD__ );
-				$this->lbFactory->flushPrimarySessions( __METHOD__ );
-				$this->lbFactory->flushReplicaSnapshots( __METHOD__ );
-				$this->lbFactory->closeAll( __METHOD__ );
-
-				// Copy derivative from the FS into storage at $finalDerivativeFilePath
+			// Copy derivative from the FS into storage at $finalDerivativeFilePath
+			$result = $file->getRepo()->quickImport(
+				// temp file
+				$this->getTargetEncodePath(),
+				// storage
+				$mediaPath,
+				$storeOptions
+			);
+			if ( $result->isOK() && $streaming === 'hls' && $playlistTemp && $playlistPath ) {
 				$result = $file->getRepo()->quickImport(
 					// temp file
-					$this->getTargetEncodePath(),
+					$playlistTemp,
 					// storage
-					$mediaPath,
-					$storeOptions
+					$playlistPath,
+					$playlistStoreOptions
 				);
-				if ( $result->isOK() && $streaming === 'hls' && $playlistTemp && $playlistPath ) {
-					$result = $file->getRepo()->quickImport(
-						// temp file
-						$playlistTemp,
-						// storage
-						$playlistPath,
-						$playlistStoreOptions
-					);
-					if ( $result->isOK() ) {
-						WebVideoTranscode::updateStreamingManifests( $file );
-					}
+				if ( $result->isOK() ) {
+					WebVideoTranscode::updateStreamingManifests( $file );
 				}
+			}
 
-				if ( !$result->isOK() ) {
-					// no need to invalidate all pages with video.
-					// Because all pages remain valid ( no $transcodeKey derivative )
-					// just clear the file page ( so that the transcode table shows the error )
-					$this->title->invalidateCache();
-					$this->setTranscodeError( $transcodeKey, $result->getWikiText() );
-					$status = false;
-				} else {
-					$bitrate = round(
-						(int)( $filesize / $file->getLength() ) * 8
-					);
-					// Wikimedia\restoreWarnings();
-					// Reconnect to the database...
-					$dbw = $this->lbFactory->getPrimaryDatabase();
-					// Update the transcode table with success time:
-					$dbw->newUpdateQueryBuilder()
-						->update( 'transcode' )
-						->set( [
-							'transcode_error' => '',
-							'transcode_time_error' => null,
-							'transcode_time_success' => $dbw->timestamp(),
-							'transcode_final_bitrate' => $bitrate,
-							'transcode_state' => WebVideoTranscode::STATE_SUCCESS,
-							'transcode_touched' => $dbw->timestamp(),
-							'transcode_size' => $filesize,
-						] )
-						->where( [
-							'transcode_image_name' => $this->getFile()->getName(),
-							'transcode_key' => $transcodeKey,
-						] )
-						->caller( __METHOD__ )
-						->execute();
-					// Commit to reduce contention
-					$dbw->commit( __METHOD__, 'flush' );
-					WebVideoTranscode::invalidatePagesWithFile( $this->title );
-				}
-			} else {
-				// Update the transcode table with failure time and error
-				$this->setTranscodeError( $transcodeKey, $status );
+			if ( !$result->isOK() ) {
 				// no need to invalidate all pages with video.
 				// Because all pages remain valid ( no $transcodeKey derivative )
 				// just clear the file page ( so that the transcode table shows the error )
 				$this->title->invalidateCache();
+				$this->setTranscodeError( $transcodeKey, $result->getWikiText() );
+				$status = false;
+			} else {
+				if ( $file->getLength() > 0 ) {
+					$bitrate = round(
+						(int)( $filesize / $file->getLength() ) * 8
+					);
+				} else {
+					$bitrate = 0;
+					$this->output(
+						"Warning: unknown duration of file: {$this->getFile()->getName()}"
+					);
+				}
+				// Reconnect to the database...
+				$dbw = $this->lbFactory->getPrimaryDatabase();
+				// Update the transcode table with success time:
+				$dbw->newUpdateQueryBuilder()
+					->update( 'transcode' )
+					->set( [
+						'transcode_error' => '',
+						'transcode_time_error' => null,
+						'transcode_time_success' => $dbw->timestamp(),
+							'transcode_final_bitrate' => $bitrate,
+							'transcode_state' => WebVideoTranscode::STATE_SUCCESS,
+							'transcode_touched' => $dbw->timestamp(),
+							'transcode_size' => $filesize,
+					] )
+					->where( [
+						'transcode_image_name' => $this->getFile()->getName(),
+						'transcode_key' => $transcodeKey,
+					] )
+					->caller( __METHOD__ )
+					->execute();
+				// Commit to reduce contention
+				$dbw->commit( __METHOD__, 'flush' );
+				WebVideoTranscode::invalidatePagesWithFile( $this->title );
 			}
-			// done with encoding target, clean up
-			$this->purgeTargetEncodeFile();
-
-			// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
-			WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
-
-			$url = WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
-			$urls = [ $url ];
-			if ( $streaming === 'hls' ) {
-				$urls[] = "$url.m3u8";
-			}
-			$update = new CdnCacheUpdate( $urls );
-			$update->doUpdate();
-
-			if ( $status !== true ) {
-				$this->setLastError( $status );
-			}
-			return $status === true;
-		} catch ( Exception $e ) {
-			$error = "Exception: " . $e->getMessage();
-			$trace = $e->getTraceAsString();
-			$this->output( "$error\n$trace\n" );
-			$this->setTranscodeError( $transcodeKey, $error );
-			return false;
+		} else {
+			// Update the transcode table with failure time and error
+			$this->setTranscodeError( $transcodeKey, $status );
+			// no need to invalidate all pages with video.
+			// Because all pages remain valid ( no $transcodeKey derivative )
+			// just clear the file page ( so that the transcode table shows the error )
+			$this->title->invalidateCache();
 		}
+		// done with encoding target, clean up
+		$this->purgeTargetEncodeFile();
+
+		// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
+		WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
+
+		$url = WebVideoTranscode::getTranscodedUrlForFile( $file, $transcodeKey );
+		$urls = [ $url ];
+		if ( $streaming === 'hls' ) {
+			$urls[] = "$url.m3u8";
+		}
+		$update = new CdnCacheUpdate( $urls );
+		$update->doUpdate();
+
+		if ( $status !== true ) {
+			$this->setLastError( $status );
+		}
+		return $status === true;
 	}
 
 	/**
