@@ -290,9 +290,12 @@ class File_Ogg_Vorbis extends File_Ogg_Media
         $this->_decodeCommonHeader($packetType, $pageOffset);
         $this->_decodeBareCommentsHeader();
         // The framing bit MUST be set to mark the end of the comments header.
+        // As in _decodeIdentificationHeader, some are broken — phab:T414348
+        /*
         $framing_bit = unpack("Cdata", fread($this->_filePointer, 1));
         if ($framing_bit['data'] != 1)
             throw new OggException("Stream Undecodable", OGG_VORBIS_ERROR_UNDECODABLE);
+         */
     }
 
     /**
