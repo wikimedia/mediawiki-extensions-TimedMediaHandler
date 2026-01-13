@@ -13,6 +13,8 @@ abstract class TimedMediaMaintenance extends Maintenance {
 		parent::__construct();
 		$this->addOption( "file", "process only the given file", false, true );
 		$this->addOption( "start", "(re)start batch at the given file", false, true );
+		$this->addOption( "uploader", "process only last version of files uploaded by this user", false, true );
+		$this->addOption( "category", "process only files in the given category", false, true );
 		$this->addOption( "audio", "process audio files (defaults to all media types)" );
 		$this->addOption( "video", "process video files (defaults to all media types)" );
 		$this->addOption( "mime", "mime type to filter on (e.g. audio/midi)", false, true );
@@ -89,8 +91,53 @@ abstract class TimedMediaMaintenance extends Maintenance {
 				$queryBuilder->andWhere( $dbr->expr( 'file_name', '>=', $title->getDBkey() ) );
 			}
 		}
-		$res = $queryBuilder->caller( __METHOD__ )->fetchResultSet();
 
+		if ( $this->hasOption( 'uploader' ) ) {
+			$user = $this->getServiceContainer()->getUserFactory()->newFromName( $this->getOption( 'uploader' ) );
+			if ( !$user || !$user->isRegistered() ) {
+				$this->error( "Invalid --uploader option provided" );
+				return;
+			}
+			if ( $migrationStage & SCHEMA_COMPAT_READ_OLD ) {
+				$queryBuilder->andWhere( [ 'img_actor' => $user->getActorId() ] );
+			} else {
+				$queryBuilder->join( 'filerevision', null, 'file_latest = fr_id' )
+					->andWhere( [ 'fr_actor' => $user->getActorId() ] );
+			}
+		}
+
+		if ( $this->hasOption( 'category' ) ) {
+			$category = Title::newFromText( $this->getOption( 'category' ), NS_CATEGORY );
+			if ( !$category ) {
+				$this->error( "Invalid --category option provided" );
+				return;
+			}
+			if ( $migrationStage & SCHEMA_COMPAT_READ_OLD ) {
+				$queryBuilder->join( 'page', null, [
+					'page_title = img_name',
+					'page_namespace' => NS_FILE
+				] )
+					->join( 'categorylinks', null, 'page_id = cl_from' )
+					->join( 'linktarget', null, 'lt_id = cl_target_id' )
+					->andWhere( [
+						'lt_title' => $category->getDBkey(),
+						'lt_namespace' => NS_CATEGORY
+					] );
+			} else {
+				$queryBuilder->join( 'page', null, [
+					'page_title = file_name',
+					'page_namespace' => NS_FILE
+				] )
+					->join( 'categorylinks', null, 'page_id = cl_from' )
+					->join( 'linktarget', null, 'lt_id = cl_target_id' )
+					->andWhere( [
+						'lt_title' => $category->getDBkey(),
+						'lt_namespace' => NS_CATEGORY
+					] );
+			}
+		}
+
+		$res = $queryBuilder->caller( __METHOD__ )->fetchResultSet();
 		$localRepo = $this->getServiceContainer()->getRepoGroup()->getLocalRepo();
 		foreach ( $res as $row ) {
 			$title = Title::newFromText( $row->img_name, NS_FILE );
