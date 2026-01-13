@@ -55,7 +55,7 @@ class ApiTranscodeReset extends ApiBase {
 			$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $params['title'] ) ] );
 		}
 
-		// Check that the user has permmission to reset transcodes on the file
+		// Check that the user has permission to reset transcodes on the file
 		$this->checkTitleUserPermissions( $titleObj, 'transcode-reset' );
 
 		// Make sure the title can be transcoded
@@ -68,18 +68,17 @@ class ApiTranscodeReset extends ApiBase {
 				'invalidtranscodetitle'
 			);
 		}
-		$transcodeKey = null;
-		// Make sure it's an enabled transcode key we are trying to remove:
-		// ( if you update your transcode keys the api is not how you purge the database of expired keys )
-		if ( isset( $params['transcodekey'] ) ) {
-			$transcodeSet = WebVideoTranscode::enabledTranscodes();
-			if ( !in_array( $params['transcodekey'], $transcodeSet, true ) ) {
+		$transcodeKey = $params['transcodekey'] ?? null;
+
+		// Check if a specified key can exist
+		if ( $transcodeKey !== null ) {
+			$keyExists = isset( WebVideoTranscode::$derivativeSettings[ $transcodeKey ] );
+
+			if ( !$keyExists ) {
 				$this->dieWithError(
-					[ 'apierror-timedmedia-badtranscodekey', wfEscapeWikiText( $params['transcodekey'] ) ],
+					[ 'apierror-timedmedia-badtranscodekey', wfEscapeWikiText( $transcodeKey ) ],
 					'badtranscodekey'
 				);
-			} else {
-				$transcodeKey = $params['transcodekey'];
 			}
 		}
 
@@ -94,14 +93,16 @@ class ApiTranscodeReset extends ApiBase {
 			$this->dieWithError( $msg, 'notenoughtimereset' );
 		}
 
-		// All good do the transcode removal:
+		// All good, do the transcode removal:
 		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
 
-		// Oh and we wanted to reset it, right? Trigger again.
-		$options = [
-			'manualOverride' => true,
-		];
-		WebVideoTranscode::updateJobQueue( $file, $transcodeKey, $options );
+		// Only schedule a new transcode if the key is currently enabled or if resetting all
+		$keyEnabled = in_array( $transcodeKey, WebVideoTranscode::enabledTranscodes(), true );
+		if ( $transcodeKey === null || $keyEnabled ) {
+			WebVideoTranscode::updateJobQueue( $file, $transcodeKey, [
+				'manualOverride' => true,
+			] );
+		}
 
 		$logEntry = new ManualLogEntry( 'timedmediahandler', 'resettranscode' );
 		$logEntry->setPerformer( $this->getUser() );
