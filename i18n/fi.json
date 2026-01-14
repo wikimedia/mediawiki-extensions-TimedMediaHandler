@@ -184,5 +184,13 @@
 	"videojs-captions-create": "Luo tekstitykset",
 	"transcodestatistics": "Transkoodaustilastot",
 	"timedmedia-timedtext-title-edit-subtitles": "Tekstitykset kielellä $1 klipille: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Tekstityksiä kielellä $1 ei löytynyt klipille: $2"
+	"timedmedia-timedtext-title-create-subtitles": "Tekstityksiä kielellä $1 ei löytynyt klipille: $2",
+	"videojs-endcard-share-title": "Linkki tähän mediaan",
+	"videojs-endcard-copy-link": "Kopioi linkki",
+	"videojs-endcard-share": "Jaa",
+	"videojs-endcard-share-not-possible": "Jakamista ei voi käyttää",
+	"videojs-endcard-embed-title": "Upota tämä media verkkosivustollesi",
+	"videojs-endcard-embed-copy": "Kopioi",
+	"videojs-endcard-copied": "Kopioitu leikepöydälle!",
+	"videojs-endcard-copy-failed": "Leikepöydälle kopioiminen epäonnistui"
 }

@@ -184,5 +184,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "Keine Untertitel auf $1 für den Videoclip gefunden: $2",
 	"m3u8-error-create-temp": "Die temporäre Datei für $1 konnte nicht erstellt werden",
 	"m3u8-error-write-temp": "Die temporäre Datei für $1 konnte nicht geschrieben werden",
-	"m3u8-error-save-playlist": "Fehler beim Speichern der HLS-Playlist $1"
+	"m3u8-error-save-playlist": "Fehler beim Speichern der HLS-Playlist $1",
+	"videojs-endcard-share-title": "Link zu diesem Medium",
+	"videojs-endcard-copy-link": "Link kopieren",
+	"videojs-endcard-share": "Teilen",
+	"videojs-endcard-share-not-possible": "Teilen nicht möglich",
+	"videojs-endcard-embed-title": "{{#FORMAL:Binde|Binden Sie}} diese Medien in {{#FORMAL:deine|Ihre}} Website ein.",
+	"videojs-endcard-embed-copy": "Kopieren",
+	"videojs-endcard-copied": "In die Zwischenablage kopiert!",
+	"videojs-endcard-copy-failed": "Kopieren in die Zwischenablage nicht möglich"
 }

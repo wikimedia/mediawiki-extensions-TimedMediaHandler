@@ -113,5 +113,10 @@
 	"transcodestatistics": "Transcode-Statistiken",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 Ënnertitele fir de Clip: $2",
 	"timedmedia-timedtext-title-create-subtitles": "Keng $1 Ënnertitele goufe fonnt fir de Clip: $2",
-	"m3u8-error-save-playlist": "Feeler beim Späichere vun der HLS-Playlist $1"
+	"m3u8-error-save-playlist": "Feeler beim Späichere vun der HLS-Playlist $1",
+	"videojs-endcard-copy-link": "Link kopéieren",
+	"videojs-endcard-share": "Deelen",
+	"videojs-endcard-embed-copy": "Kopéieren",
+	"videojs-endcard-copied": "An den Tëschespäicher kopéiert!",
+	"videojs-endcard-copy-failed": "Kann net an den Tëschespäicher kopéiert ginn"
 }

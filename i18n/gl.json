@@ -166,5 +166,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "Non se atoparon os subtítulos en $1 para o vídeo: $2",
 	"m3u8-error-create-temp": "Erro ao crear o ficheiro temporal para $1",
 	"m3u8-error-write-temp": "Erro ao escribir o ficheiro temporal para $1",
-	"m3u8-error-save-playlist": "Erros ao gardar a lista de reprodución HLS $1"
+	"m3u8-error-save-playlist": "Erros ao gardar a lista de reprodución HLS $1",
+	"videojs-endcard-share-title": "Ligazón a este contido multimedia",
+	"videojs-endcard-copy-link": "Copiar a ligazón",
+	"videojs-endcard-share": "Compartir",
+	"videojs-endcard-share-not-possible": "Non é posible usar a función de compartir",
+	"videojs-endcard-embed-title": "Incrustar este contido multimedia no teu sitio web",
+	"videojs-endcard-embed-copy": "Copiar",
+	"videojs-endcard-copied": "Copiouse no portapapeis!",
+	"videojs-endcard-copy-failed": "Non se puido copiar no portapapeis"
 }
