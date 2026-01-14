@@ -37,7 +37,7 @@ runFluidSynth() {
 		echo "error: cannot access sound font '$TMH_SOUNDFONT_PATH'";
 		exit 1
 	fi
-	"$TMH_FLUIDSYNTH_PATH" -T "$codec" "$TMH_SOUNDFONT_PATH" input.mid -F "$fluidsynth_output"
+	"$TMH_FLUIDSYNTH_PATH" -T "$codec" -F "$fluidsynth_output" "$TMH_SOUNDFONT_PATH" input.mid
 }
 
 
