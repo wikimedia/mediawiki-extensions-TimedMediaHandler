@@ -179,5 +179,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "Klip için $1 altyazı bulunamadı: $2",
 	"m3u8-error-create-temp": "$1 için geçici dosya oluşturulamadı",
 	"m3u8-error-write-temp": "$1 için geçici dosya yazılamadı",
-	"m3u8-error-save-playlist": "$1 HLS oynatma listesi saklanırken hata oluştu"
+	"m3u8-error-save-playlist": "$1 HLS oynatma listesi saklanırken hata oluştu",
+	"videojs-endcard-share-title": "Bu ortama bağlantı",
+	"videojs-endcard-copy-link": "Bağlantıyı kopyala",
+	"videojs-endcard-share": "Paylaş",
+	"videojs-endcard-share-not-possible": "Paylaşımı kullanmak olası değil",
+	"videojs-endcard-embed-title": "Bu ortamı web sitenize yerleştirin",
+	"videojs-endcard-embed-copy": "Kopyala",
+	"videojs-endcard-copied": "Panoya kopyalandı!",
+	"videojs-endcard-copy-failed": "Panoya kopyalanamadı"
 }

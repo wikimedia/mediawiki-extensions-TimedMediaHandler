@@ -99,5 +99,8 @@
 	"videojs-quality": "Видео квалитет",
 	"videojs-subtitles-create": "Направи титл",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 титлови за клип: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Нису пронађени $1 титлови за клип: $2"
+	"timedmedia-timedtext-title-create-subtitles": "Нису пронађени $1 титлови за клип: $2",
+	"videojs-endcard-copy-link": "Копирај везу",
+	"videojs-endcard-share": "Дели",
+	"videojs-endcard-embed-copy": "Копирај"
 }

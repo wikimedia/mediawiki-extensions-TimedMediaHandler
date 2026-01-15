@@ -143,5 +143,13 @@
 	"videojs-subtitles-create": "Crea sottotitoli",
 	"transcodestatistics": "Statistiche di transcodifica",
 	"timedmedia-timedtext-title-edit-subtitles": "sottotitoli in $1 per il filmato: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Sottotitoli in $1 non trovati per il filmato: $2"
+	"timedmedia-timedtext-title-create-subtitles": "Sottotitoli in $1 non trovati per il filmato: $2",
+	"videojs-endcard-share-title": "Collegamento a questo file multimediale",
+	"videojs-endcard-copy-link": "Copia collegamento",
+	"videojs-endcard-share": "Condividi",
+	"videojs-endcard-share-not-possible": "Non è possibile utilizzare la condivisione",
+	"videojs-endcard-embed-title": "Incorpora questo contenuto multimediale nel tuo sito web",
+	"videojs-endcard-embed-copy": "Copia",
+	"videojs-endcard-copied": "Copiato negli appunti!",
+	"videojs-endcard-copy-failed": "Copia negli appunti non riuscita"
 }

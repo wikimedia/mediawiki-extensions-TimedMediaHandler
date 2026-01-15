@@ -47,6 +47,7 @@
 	"timedmedia-status-unknown": "Naməlum status",
 	"timedmedia-transcodebitrate": "Bit sürəti",
 	"timedmedia-transcodeduration": "Kodlama vaxtı",
+	"timedmedia-transcodeinfo": "Format",
 	"timedmedia-actions": "Fəaliyyətlər",
 	"timedmedia-direct-link": "Yüklə",
 	"timedmedia-not-ready": "Hazır deyil",
@@ -78,7 +79,9 @@
 	"timedmedia-derivative-desc-144p.mjpeg.mov": "QuickTime videosu (144p MJPEG)",
 	"timedmedia-derivative-desc-360p.mpeg4.mov": "QuickTime videosu (360p MPEG-4 vizual)",
 	"timedmedia-derivative-desc-m3u8": "HTTP Canlı Yayım",
+	"timedmedia-derivative-stereo.audio.opus.mp4": "Stereo (Opus)",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Səs axını (Opus stereo)",
+	"timedmedia-derivative-stereo.audio.mp3": "Stereo (MP3)",
 	"timedmedia-derivative-desc-stereo.audio.mp3": "Səs axını (MP3 stereo)",
 	"timedmedia-derivative-144p.video.mjpeg.mov": "Yayım 144p (MJPEG)",
 	"timedmedia-derivative-desc-144p.video.mjpeg.mov": "Video axını (144p MJPEG)",
@@ -139,5 +142,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "Bu klip üçün $1 dilində subtitr tapılmadı: $2",
 	"m3u8-error-create-temp": "$1 üçün müvəqqəti fayl yaratmaq alınmadı",
 	"m3u8-error-write-temp": "$1 üçün müvəqqəti fayl yazmaq alınmadı",
-	"m3u8-error-save-playlist": "$1 HLS pleylistini saxlayarkən xəta"
+	"m3u8-error-save-playlist": "$1 HLS pleylistini saxlayarkən xəta",
+	"videojs-endcard-share-title": "Bu mediaya keçid",
+	"videojs-endcard-copy-link": "Keçidi kopiyala",
+	"videojs-endcard-share": "Paylaş",
+	"videojs-endcard-share-not-possible": "Paylaşma funksiyasından istifadə etmək mümkün deyil",
+	"videojs-endcard-embed-title": "Bu medianı veb saytınıza yerləşdirin",
+	"videojs-endcard-embed-copy": "Kopiyala",
+	"videojs-endcard-copied": "Kopiyalandı!",
+	"videojs-endcard-copy-failed": "Kopiyalamaq alınmadı."
 }

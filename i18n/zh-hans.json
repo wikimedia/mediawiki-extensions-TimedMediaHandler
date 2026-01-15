@@ -235,5 +235,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "没有找到片段$2的$1字幕",
 	"m3u8-error-create-temp": "无法创建$1的临时文件",
 	"m3u8-error-write-temp": "无法写入$1的临时文件",
-	"m3u8-error-save-playlist": "保存HLS播放列表$1时出错"
+	"m3u8-error-save-playlist": "保存HLS播放列表$1时出错",
+	"videojs-endcard-share-title": "链接到此媒体",
+	"videojs-endcard-copy-link": "复制链接",
+	"videojs-endcard-share": "分享",
+	"videojs-endcard-share-not-possible": "无法使用分享功能",
+	"videojs-endcard-embed-title": "将此媒体嵌入到您的网站",
+	"videojs-endcard-embed-copy": "复制",
+	"videojs-endcard-copied": "已复制到剪贴板！",
+	"videojs-endcard-copy-failed": "无法复制到剪贴板"
 }
