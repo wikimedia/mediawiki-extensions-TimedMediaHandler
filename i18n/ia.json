@@ -162,5 +162,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "Nulle subtitulos in $1 ha essite trovate pro le video: $2",
 	"m3u8-error-create-temp": "Non poteva crear file temporari pro $1",
 	"m3u8-error-write-temp": "Non poteva scriber al file temporari pro $1",
-	"m3u8-error-save-playlist": "Errores salveguardante lista de reproduction HLS $1"
+	"m3u8-error-save-playlist": "Errores salveguardante lista de reproduction HLS $1",
+	"videojs-endcard-share-title": "Ligamine a iste file multimedial",
+	"videojs-endcard-copy-link": "Copiar ligamine",
+	"videojs-endcard-share": "Condivider",
+	"videojs-endcard-share-not-possible": "Non possibile condivider",
+	"videojs-endcard-embed-title": "Incorporar iste file multimedial in tu sito web",
+	"videojs-endcard-embed-copy": "Copiar",
+	"videojs-endcard-copied": "Copiate al area de transferentia!",
+	"videojs-endcard-copy-failed": "Fallimento de copiar al area de transferentia"
 }

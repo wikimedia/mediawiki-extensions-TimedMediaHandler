@@ -201,5 +201,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "Не пронајдов толкување на $1 за снимката: $2",
 	"m3u8-error-create-temp": "Не успеав да создадат привремена податотека за $1",
 	"m3u8-error-write-temp": "Не успеав да запишам во привремена податотека за $1",
-	"m3u8-error-save-playlist": "Грешка при зачувување на HLS-снимкоредот $1"
+	"m3u8-error-save-playlist": "Грешка при зачувување на HLS-снимкоредот $1",
+	"videojs-endcard-share-title": "Врска до податотекава",
+	"videojs-endcard-copy-link": "Копирај врска",
+	"videojs-endcard-share": "Сподели",
+	"videojs-endcard-share-not-possible": "Споделувањето е неможно",
+	"videojs-endcard-embed-title": "Вметнете ја податотекава во вашето мрежно место",
+	"videojs-endcard-embed-copy": "Копирај",
+	"videojs-endcard-copied": "Ископирано во меѓускладот!",
+	"videojs-endcard-copy-failed": "Не успав да ископирам во меѓускладот"
 }
