@@ -74,7 +74,8 @@ class TimedMediaHandler extends MediaHandler {
 	 */
 	public function makeParamString( $params ) {
 		// Add the width param string ( same as images {width}px )
-		$paramString = ( isset( $params['width'] ) ) ? $params['width'] . 'px' : '';
+		$width = $params['physicalWidth'] ?? $params['width'] ?? null;
+		$paramString = ( $width ) ? $width . 'px' : '';
 		$paramString .= ( $paramString !== '' ) ? '-' : '';
 
 		// Get the raw thumbTime from thumbtime or start param
@@ -176,9 +177,11 @@ class TimedMediaHandler extends MediaHandler {
 			if ( $params['width'] * $size['height'] > $params['height'] * $size['width'] ) {
 				$params['width'] = self::fitBoxWidth( $size['width'], $size['height'], $params['height'] );
 			}
+			$params['physicalHeight'] = $params['height'];
 		}
 		if ( isset( $params['width'] ) ) {
 			$params['height'] = File::scaleHeight( $size['width'], $size['height'], $params['width'] );
+			$params['physicalWidth'] = $params['width'];
 		}
 
 		// Make sure start time is not > than end time
