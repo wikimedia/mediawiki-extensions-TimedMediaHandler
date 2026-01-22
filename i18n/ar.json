@@ -181,5 +181,13 @@
 	"timedmedia-timedtext-title-create-subtitles": "لم يتم العثور على ترجمة $1 لمقطع: $2",
 	"m3u8-error-create-temp": "فشل إنشاء ملف مؤقت بقيمة $1",
 	"m3u8-error-write-temp": "فشل في كتابة ملف مؤقت بقيمة $1",
-	"m3u8-error-save-playlist": "أخطاء في حفظ قائمة تشغيل HLS $1"
+	"m3u8-error-save-playlist": "أخطاء في حفظ قائمة تشغيل HLS $1",
+	"videojs-endcard-share-title": "رابط إلى هذا الوسائط",
+	"videojs-endcard-copy-link": "نسخ الوصلة",
+	"videojs-endcard-share": "يشارك",
+	"videojs-endcard-share-not-possible": "لا يمكن استخدام خاصية المشاركة",
+	"videojs-endcard-embed-title": "قم بتضمين هذه الوسائط في موقعك الإلكتروني",
+	"videojs-endcard-embed-copy": "نسخ",
+	"videojs-endcard-copied": "تم نسخها إلى الحافظة!",
+	"videojs-endcard-copy-failed": "تعذر النسخ إلى الحافظة"
 }
