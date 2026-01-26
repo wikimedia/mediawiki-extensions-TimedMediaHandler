@@ -9,8 +9,22 @@
 		]
 	},
 	"timedmedia-more": "ਹੋਰ...",
+	"timedmedia-dismiss": "ਬੰਦ",
+	"timedmedia-direct-link": "ਲਾਹੋ",
+	"timedmedia-not-ready": "ਤਿਆਰ ਨਹੀਂ",
+	"timedmedia-completed-on": "$1 ਪੂਰਾ ਹੋਇਆ",
+	"timedmedia-error-on": "$1 ਉੱਤੇ ਗਲਤੀ",
 	"timedmedia-started-transcode": "ਸ਼ੁਰੂ ਕੀਤਾ $1. $2",
+	"timedmedia-percent-done": "ਤਕਰੀਬਨ $1 % ਪੂਰਾ ਹੋ ਗਿਆ",
+	"timedmedia-reset-button-dismiss": "ਖ਼ਾਰਜ ਕਰੋ",
+	"timedmedia-reset-button-reset": "ਮੁੜ-ਬਣਾਓ",
+	"timedmedia-error-dismiss": "ਖ਼ਾਰਜ ਕਰੋ",
+	"timedmedia-source-original": "ਸਰੋਤ",
 	"timedmedia-subtitle-new": "ਨਵਾਂ ਤਰਜਮਾ ਬਣਾਓ ਜਾਂ ਮੌਜੂਦਾ ਸੋਧੋ",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 ਸਕਿੰਟ |$1 ਸਕਿੰਟਾਂ}}",
-	"videojs-more-information": "ਹੋਰ ਜਾਣਕਾਰੀ"
+	"videojs-more-information": "ਹੋਰ ਜਾਣਕਾਰੀ",
+	"videojs-endcard-copy-link": "ਕੜੀ ਦੀ ਨਕਲ ਕਰੋ",
+	"videojs-endcard-share": "ਸਾਂਝਾ ਕਰੋ",
+	"videojs-endcard-embed-copy": "ਨਕਲ ਕਰੋ",
+	"videojs-endcard-copied": "ਚੂੰਢੀ-ਤਖਤੀ 'ਤੇ ਉਤਾਰਾ ਕੀਤਾ ਗਿਆ!"
 }
