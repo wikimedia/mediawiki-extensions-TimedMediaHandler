@@ -462,7 +462,7 @@ class WebVideoTranscodeJob extends Job {
 			$trace = $e->getTraceAsString();
 			$this->output( "$error\n$trace\n" );
 			$this->setTranscodeError( $transcodeKey, $error );
-			return false;
+			throw $e;
 		}
 	}
 
