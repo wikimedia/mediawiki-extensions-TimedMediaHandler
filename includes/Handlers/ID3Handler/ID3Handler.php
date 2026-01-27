@@ -9,7 +9,7 @@ use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 /**
  * getID3 Metadata handler
  */
-class ID3Handler extends TimedMediaHandler {
+abstract class ID3Handler extends TimedMediaHandler {
 	// XXX match GETID3_VERSION ( too bad version is not a getter )
 	private const METADATA_VERSION = 2;
 
@@ -92,47 +92,44 @@ class ID3Handler extends TimedMediaHandler {
 		return self::METADATA_GOOD;
 	}
 
-	/**
-	 * @param File $file
-	 * @return int
-	 */
-	public function getBitrate( $file ) {
+	/** @inheritDoc */
+	public function getBitRate( $file ): int {
 		$metadata = $file->getMetadataArray();
 		return (int)( $metadata['bitrate'] ?? 0 );
 	}
 
 	/** @inheritDoc */
-	public function getLength( $file ) {
+	public function getLength( $file ): float {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['playtime_seconds'] ?? 0.0 );
 	}
 
 	/** @inheritDoc */
-	public function getFramerate( $file ) {
+	public function getFramerate( File $file ): float {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['video']['frame_rate'] ?? 0.0 );
 	}
 
 	/** @inheritDoc */
-	public function isInterlaced( $file ) {
+	public function isInterlaced( File $file ): bool {
 		$metadata = $file->getMetadataArray();
 		return (bool)( $metadata['video']['interlaced'] ?? false );
 	}
 
 	/** @inheritDoc */
-	public function hasVideo( $file ) {
+	public function hasVideo( File $file ): bool {
 		$metadata = $file->getMetadataArray();
 		return ( $metadata['video'] ?? null ) !== null;
 	}
 
 	/** @inheritDoc */
-	public function hasAudio( $file ) {
+	public function hasAudio( File $file ): bool {
 		$metadata = $file->getMetadataArray();
 		return ( $metadata['audio'] ?? null ) !== null;
 	}
 
 	/** @inheritDoc */
-	public function getAudioChannels( $file ) {
+	public function getAudioChannels( File $file ): int {
 		$metadata = $file->getMetadataArray();
 		return (int)( $metadata['audio']['channels'] ?? 0 );
 	}

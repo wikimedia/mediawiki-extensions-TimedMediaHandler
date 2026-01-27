@@ -11,7 +11,7 @@ use MediaWiki\Media\TransformParameterError;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 
-class TimedMediaHandler extends MediaHandler {
+abstract class TimedMediaHandler extends MediaHandler {
 
 	/** @inheritDoc */
 	public function getParamMap() {
@@ -84,12 +84,7 @@ class TimedMediaHandler extends MediaHandler {
 		return $paramString;
 	}
 
-	/**
-	 * Used by thumb.php to find url parameters
-	 *
-	 * @param string $str
-	 * @return array|false Array of thumbnail parameters, or false if string cannot be parsed
-	 */
+	/** @inheritDoc */
 	public function parseParamString( $str ) {
 		$params = [];
 		if ( preg_match( '/^(mid|(\d*)px-)*(seek=([\d.]+))*$/', $str, $matches ) ) {
@@ -242,11 +237,11 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * Utility functions
-	 * @param string $timeString
-	 * @param false|int $length
-	 * @return false|int
 	 */
-	public static function parseTimeString( $timeString, $length = false ) {
+	public static function parseTimeString(
+		string|int|float $timeString,
+		float|int|false $length = false
+	): false|float {
 		$parts = explode( ':', $timeString );
 		$time = 0;
 		$partsCount = count( $parts );
@@ -263,7 +258,7 @@ class TimedMediaHandler extends MediaHandler {
 
 		if ( $time < 0 ) {
 			wfDebug( __METHOD__ . ": specified negative time, using zero\n" );
-			return 0;
+			return 0.0;
 		}
 		// We don't need more than millisecond precisions
 		// And for duration (length) seconds precision is ok
@@ -273,19 +268,16 @@ class TimedMediaHandler extends MediaHandler {
 				": specified near-end or past-the-end time {$time}s, using end minus 1s\n" );
 			$time = $length - 1;
 		}
-		return $time;
+		return (float)$time;
 	}
 
 	/**
 	 * Converts seconds to Normal play time (NPT) time format:
 	 * consist of hh:mm:ss.ms
 	 * also see: http://www.ietf.org/rfc/rfc2326.txt section 3.6
-	 *
-	 * @param int $time Seconds to be converted to npt time format
-	 * @return false|string
 	 */
-	public static function seconds2npt( $time ) {
-		if ( !is_numeric( $time ) ) {
+	public static function seconds2npt( int|float $time ): false|string {
+		if ( is_nan( $time ) ) {
 			wfDebug( __METHOD__ . ": trying to get npt time on NaN: " . $time );
 			return false;
 		}
@@ -308,41 +300,30 @@ class TimedMediaHandler extends MediaHandler {
 	}
 
 	/**
-	 * checks if a given file is an audio file
-	 * @param File $file
-	 * @return bool
+	 * Checks if a given file is an audio file
+	 *
+	 * This is generally determined by checking if the media file has no width and height
 	 */
-	public function isAudio( $file ) {
+	public function isAudio( File $file ): bool {
 		return ( !$file->getWidth() && !$file->getHeight() );
 	}
 
 	/**
-	 * @param File $file
-	 * @return bool
+	 * If the media file has one or more video tracks
 	 */
-	public function hasVideo( $file ) {
-		return false;
-	}
+	abstract public function hasVideo( File $file ): bool;
 
 	/**
-	 * @param File $file
-	 * @return bool
+	 * If the media file has one or more audio tracks
 	 */
-	public function hasAudio( $file ) {
-		return false;
-	}
+	abstract public function hasAudio( File $file ): bool;
 
 	/**
 	 * Audio channel count, or 0 if no audio.
 	 * Fractional subwoofer channels are counted as a whole, so
 	 * eg "5.1 surround" is 6 channels.
-	 *
-	 * @param File $file
-	 * @return int
 	 */
-	public function getAudioChannels( $file ) {
-		return 0;
-	}
+	abstract public function getAudioChannels( File $file ): int;
 
 	/**
 	 * @param File $file
@@ -439,10 +420,8 @@ class TimedMediaHandler extends MediaHandler {
 
 	/**
 	 * Get a stream offset time
-	 * @param File $file
-	 * @return float
 	 */
-	public function getOffset( $file ) {
+	public function getOffset( File $file ): float {
 		return 0.0;
 	}
 
@@ -478,20 +457,43 @@ class TimedMediaHandler extends MediaHandler {
 	 * frame rates!
 	 *
 	 * Note interlacing should be checked separately if relevant.
-	 *
-	 * @param File $file
-	 * @return float
 	 */
-	public function getFramerate( $file ) {
+	public function getFramerate( File $file ): float {
 		return 0.0;
 	}
 
 	/**
 	 * Returns true if the file contains an interlaced video track.
-	 * @param File $file
-	 * @return bool
 	 */
-	public function isInterlaced( $file ) {
+	public function isInterlaced( File $file ): bool {
 		return false;
 	}
+
+	/**
+	 * Returns the bitrate of the file in bits per second,
+	 * or 0 if no valid data.
+	 */
+	public function getBitRate( File $file ): int {
+		return 0;
+	}
+
+	/**
+	 * Returns the MIME type for the file, suited for the type attribute of the HTML5 video/audio tags
+	 * This includes any required codecs extension information.
+	 *
+	 * @param File $file The file object.
+	 * @return string The MIME type including the codecs.
+	 */
+	abstract public function getWebType( File $file ): string;
+
+	/**
+	 * Returns an array of the primary audio and video codec contained by the file.
+	 * By convention, the audio codec precedes the video codec.
+	 * These strings are sometimes shown in the UI, for instance in the short or long descriptions of a file.
+	 * For exact information, code should check the metadata of the handler directly.
+	 *
+	 * @param File $file The file object.
+	 * @return string[] An array of stream types (e.g., ['FLAC', 'Theora']).
+	 */
+	abstract public function getStreamTypes( File $file ): array;
 }

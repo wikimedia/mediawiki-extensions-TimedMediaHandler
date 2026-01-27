@@ -10,6 +10,7 @@
 namespace MediaWiki\TimedMediaHandler\Test\Unit;
 
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+use TypeError;
 
 class TimeParsingTest extends \PHPUnit\Framework\TestCase {
 	/**
@@ -25,8 +26,10 @@ class TimeParsingTest extends \PHPUnit\Framework\TestCase {
 		$this->assertSame( '01:00:01.050', TimedMediaHandler::seconds2npt( 3601.05 ) );
 
 		// Test failures:
-		$this->assertFalse( TimedMediaHandler::seconds2npt( 'foo' ) );
 		$this->assertFalse( TimedMediaHandler::seconds2npt( -1 ) );
+
+		$this->expectException( TypeError::class );
+		TimedMediaHandler::seconds2npt( 'foo' );
 	}
 
 	/**
@@ -41,9 +44,9 @@ class TimeParsingTest extends \PHPUnit\Framework\TestCase {
 		$this->assertSame( 3600.0, TimedMediaHandler::parseTimeString( '1:0:0' ) );
 		$this->assertSame( 3600.0, TimedMediaHandler::parseTimeString( '01:00:00' ) );
 		$this->assertSame( 3600.032, TimedMediaHandler::parseTimeString( '01:00:00.032' ) );
-		$this->assertSame( 0, TimedMediaHandler::parseTimeString( -1 ) );
+		$this->assertSame( 0.0, TimedMediaHandler::parseTimeString( -1 ) );
 		// Test longer than duration check ( should return time -1 )
-		$this->assertSame( 8, TimedMediaHandler::parseTimeString( 10, 9 ) );
+		$this->assertSame( 8.0, TimedMediaHandler::parseTimeString( 10, 9 ) );
 
 		// Test failures:
 		$this->assertFalse( TimedMediaHandler::parseTimeString( '1:1:1:1' ) );

@@ -16,11 +16,8 @@ class WAVHandler extends ID3Handler {
 		return 'wav';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		return 'audio/wav';
 	}
 
@@ -41,11 +38,8 @@ class WAVHandler extends ID3Handler {
 		return Status::newFatal( 'timedmedia-wav-pcm-required' );
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 

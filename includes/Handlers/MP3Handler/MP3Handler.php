@@ -15,19 +15,13 @@ class MP3Handler extends ID3Handler {
 		return 'mp3';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		return 'audio/mpeg';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 		$audioFormat = $metadata['audio']['dataformat'] ?? false;

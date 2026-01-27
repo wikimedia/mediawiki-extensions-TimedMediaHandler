@@ -9,7 +9,36 @@ class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 	private TimedMediaHandler $handler;
 
 	protected function setUp(): void {
-		$this->handler = new TimedMediaHandler;
+		// Use an anonymous class for the abstract TimedMediaHandler
+		$this->handler = new class extends TimedMediaHandler {
+			public function hasVideo( $file ): bool {
+				return false;
+			}
+
+			public function hasAudio( $file ): bool {
+				return false;
+			}
+
+			public function getWebType( $file ): string {
+				return '';
+			}
+
+			public function getAudioChannels( $file ): int {
+				return 0;
+			}
+
+			public function getFramerate( $file ): float {
+				return 0.0;
+			}
+
+			public function isInterlaced( $file ): bool {
+				return false;
+			}
+
+			public function getStreamTypes( $file ): array {
+				return [];
+			}
+		};
 		parent::setUp();
 	}
 

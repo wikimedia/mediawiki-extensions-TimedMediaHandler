@@ -15,19 +15,13 @@ class FLACHandler extends ID3Handler {
 		return 'flac';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		return 'audio/flac';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 

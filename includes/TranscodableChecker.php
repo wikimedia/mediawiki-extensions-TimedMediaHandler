@@ -7,6 +7,10 @@ use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\TimedMediaHandler\Handlers\MP4Handler\MP4Handler;
+use MediaWiki\TimedMediaHandler\Handlers\MPEGHandler\MPEGHandler;
+use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
+use MediaWiki\TimedMediaHandler\Handlers\WebMHandler\WebMHandler;
 
 /**
  * @ingroup Extensions
@@ -48,12 +52,14 @@ class TranscodableChecker {
 		if ( !$handler ) {
 			return false;
 		}
-		$mediaType = $handler->getMetadataType( $file );
-		// If ogg or webm format and not audio we can "transcode" this file
+
 		$isAudio = $handler instanceof TimedMediaHandler && $handler->isAudio( $file );
-		if ( ( $mediaType === 'webm' || $mediaType === 'ogg'
-				|| $mediaType === 'mp4' || $mediaType === 'mpeg' )
-			&& !$isAudio
+		// If webm, ogg, mp4 or mpeg handler and not audio we can "transcode" this file
+		if ( ( $handler instanceof WebMHandler
+			|| $handler instanceof OggHandler
+			|| $handler instanceof MP4Handler
+			|| $handler instanceof MPEGHandler
+		) && !$isAudio
 		) {
 			return true;
 		}

@@ -16,11 +16,8 @@ class MIDIHandler extends ID3Handler {
 		return 'midi';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		return 'audio/midi';
 	}
 
@@ -53,11 +50,8 @@ class MIDIHandler extends ID3Handler {
 		return $id3;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 
@@ -94,13 +88,13 @@ class MIDIHandler extends ID3Handler {
 	}
 
 	/** @inheritDoc */
-	public function hasAudio( $file ) {
+	public function hasAudio( File $file ): bool {
 		$metadata = $file->getMetadataArray();
 		return ( $metadata['audio'] ?? null ) !== null || ( $metadata['midi'] ?? null ) !== null;
 	}
 
 	/** @inheritDoc */
-	public function getAudioChannels( $file ) {
+	public function getAudioChannels( File $file ): int {
 		$metadata = $file->getMetadataArray();
 		if ( isset( $metadata['midi']['raw']['tracks'] ) ) {
 			return (int)$metadata['midi']['raw']['tracks'];

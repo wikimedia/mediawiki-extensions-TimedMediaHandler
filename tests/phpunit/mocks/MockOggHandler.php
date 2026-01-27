@@ -21,6 +21,7 @@
  * @ingroup Media
  */
 
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\Media\TransformParameterError;
 use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
@@ -81,7 +82,7 @@ class MockOggHandler extends OggHandler {
 	}
 
 	/** @inheritDoc */
-	public function getLength( $file ) {
+	public function getLength( $file ): float {
 		if ( $this->isAudio( $file ) ) {
 			return 0.99875;
 		}
@@ -89,7 +90,7 @@ class MockOggHandler extends OggHandler {
 	}
 
 	/** @inheritDoc */
-	public function getBitRate( $file ) {
+	public function getBitRate( $file ): int {
 		if ( $this->isAudio( $file ) ) {
 			return 41107;
 		}
@@ -97,7 +98,7 @@ class MockOggHandler extends OggHandler {
 	}
 
 	/** @inheritDoc */
-	public function getWebType( $file ) {
+	public function getWebType( File $file ): string {
 		if ( $this->isAudio( $file ) ) {
 			return "audio/ogg; codecs=\"vorbis\"";
 		}
@@ -105,7 +106,7 @@ class MockOggHandler extends OggHandler {
 	}
 
 	/** @inheritDoc */
-	public function getFramerate( $file ) {
+	public function getFramerate( File $file ): float {
 		if ( $this->isAudio( $file ) ) {
 			return 0;
 		}

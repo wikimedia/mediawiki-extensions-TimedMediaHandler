@@ -166,12 +166,7 @@ class OggHandler extends TimedMediaHandler {
 		return $props;
 	}
 
-	/**
-	 * Get the "media size" from the metadata array
-	 *
-	 * @param array $metadata
-	 * @return array|false
-	 */
+	/** @inheritDoc */
 	protected function getSizeFromMetadata( $metadata ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
@@ -200,11 +195,8 @@ class OggHandler extends TimedMediaHandler {
 		return 'ogg';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		$baseType = $this->isAudio( $file ) ? 'audio' : 'video';
 		$baseType .= '/ogg';
 		$streamTypes = $this->getStreamTypes( $file );
@@ -215,11 +207,8 @@ class OggHandler extends TimedMediaHandler {
 		return $baseType . '; codecs="' . $codecs . '"';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 		foreach ( $metadata['streams'] ?? [] as $stream ) {
@@ -229,13 +218,13 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	/** @inheritDoc */
-	public function getOffset( $file ) {
+	public function getOffset( File $file ): float {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['offset'] ?? 0.0 );
 	}
 
 	/** @inheritDoc */
-	public function getLength( $file ) {
+	public function getLength( $file ): float {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['length'] ?? 0.0 );
 	}
@@ -274,7 +263,7 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	/** @inheritDoc */
-	public function getFramerate( $file ) {
+	public function getFramerate( File $file ): float {
 		$stream = $this->findVideoStream( $file );
 		if ( $stream ) {
 			return $stream['header']['FRN'] / $stream['header']['FRD'];
@@ -283,19 +272,19 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	/** @inheritDoc */
-	public function hasVideo( $file ) {
+	public function hasVideo( File $file ): bool {
 		$stream = $this->findVideoStream( $file );
 		return $stream !== null;
 	}
 
 	/** @inheritDoc */
-	public function hasAudio( $file ) {
+	public function hasAudio( File $file ): bool {
 		$stream = $this->findAudioStream( $file );
 		return $stream !== null;
 	}
 
 	/** @inheritDoc */
-	public function getAudioChannels( $file ) {
+	public function getAudioChannels( File $file ): int {
 		$stream = $this->findAudioStream( $file );
 		$header = $stream['header'] ?? null;
 		if ( isset( $header['vorbis_version'] ) ) {
@@ -368,11 +357,8 @@ class OggHandler extends TimedMediaHandler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return float|int
-	 */
-	public function getBitRate( $file ) {
+	/** @inheritDoc */
+	public function getBitRate( $file ): int {
 		$size = 0;
 		$metadata = $file->getMetadataArray();
 		$length = $this->getLength( $file );
@@ -383,6 +369,6 @@ class OggHandler extends TimedMediaHandler {
 				}
 			}
 		}
-		return $length ? $size / $length * 8 : 0;
+		return (int)( $length ? $size / $length * 8 : 0 );
 	}
 }

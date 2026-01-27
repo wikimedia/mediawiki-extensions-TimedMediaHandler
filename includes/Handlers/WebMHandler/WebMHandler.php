@@ -74,13 +74,8 @@ class WebMHandler extends ID3Handler {
 		return 'webm';
 	}
 
-	/**
-	 * Returns the MIME type for the file, including codecs information.
-	 *
-	 * @param File $file The file object.
-	 * @return string The MIME type including the codecs.
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		// Determine the base type (audio or video) based on file dimensions
 		$baseType = ( !$file->getWidth() && !$file->getHeight() ) ? 'audio' : 'video';
 
@@ -125,7 +120,7 @@ class WebMHandler extends ID3Handler {
 	 * @param File $file The file for which we want the codecstring
 	 * @return string|false The generated AV1 codec string in the format "av01.P.LT.BB".
 	 */
-	private function getAV1CodecString( File $file ) {
+	private function getAV1CodecString( File $file ): false|string {
 		$metadata = $file->getMetadataArray();
 		if ( !$metadata || isset( $metadata['error'] ) ) {
 			return false;
@@ -297,11 +292,8 @@ class WebMHandler extends ID3Handler {
 		return $codecString;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 

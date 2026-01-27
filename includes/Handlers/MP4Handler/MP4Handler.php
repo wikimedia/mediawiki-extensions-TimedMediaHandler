@@ -35,11 +35,8 @@ class MP4Handler extends ID3Handler {
 		return 'mp4';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
-	public function getWebType( $file ) {
+	/** @inheritDoc */
+	public function getWebType( File $file ): string {
 		// phpcs:disable Generic.Files.LineLength
 		/**
 		 * h.264 profile types:
@@ -60,11 +57,8 @@ class MP4Handler extends ID3Handler {
 		return 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
 	}
 
-	/**
-	 * @param File $file
-	 * @return string[]|false
-	 */
-	public function getStreamTypes( $file ) {
+	/** @inheritDoc */
+	public function getStreamTypes( File $file ): array {
 		$streamTypes = [];
 		$metadata = $file->getMetadataArray();
 

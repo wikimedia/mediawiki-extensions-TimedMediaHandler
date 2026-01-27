@@ -17,19 +17,20 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\IForeignRepoWithDB;
 use MediaWiki\FileRepo\IForeignRepoWithMWApi;
+use MediaWiki\FileRepo\LocalRepo;
 use MediaWiki\JobQueue\Jobs\HTMLCacheUpdateJob;
 use MediaWiki\JobQueue\JobSpecification;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\FLACHandler\FLACHandler;
-use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 use MediaWiki\TimedMediaHandler\Handlers\MIDIHandler\MIDIHandler;
 use MediaWiki\TimedMediaHandler\Handlers\MP3Handler\MP3Handler;
 use MediaWiki\TimedMediaHandler\Handlers\MP4Handler\MP4Handler;
 use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\Handlers\WAVHandler\WAVHandler;
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
+use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
 use Wikimedia\FileBackend\FSFile\TempFSFileFactory;
@@ -185,10 +186,10 @@ class WebVideoTranscode {
 		// Else just return the size of the source video
 		// ( we have no idea how large the actual derivative size will be )
 
-		/** @var ID3Handler $handler */
+		/** @var TimedMediaHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var ID3Handler $handler';
-		return $file->getLength() * $handler->getBitrate( $file ) * 8;
+		'@phan-var TimedMediaHandler $handler';
+		return $file->getLength() * $handler->getBitRate( $file ) * 8;
 	}
 
 	/**
@@ -309,9 +310,9 @@ class WebVideoTranscode {
 			return $sources;
 		}
 
-		/** @var ID3Handler $handler */
+		/** @var TimedMediaHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var ID3Handler $handler';
+		'@phan-var TimedMediaHandler $handler';
 		// Now Check for derivatives
 		if ( $handler->isAudio( $file ) ) {
 			$transcodeSet = self::transcodePresets()->enabledAudioTranscodes();
@@ -579,10 +580,10 @@ class WebVideoTranscode {
 			MediaWikiServices::getInstance()->getUrlUtils()->expand( $file->getUrl() ) :
 			$file->getUrl();
 
-		/** @var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler */
+		/** @var TimedMediaHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var FLACHandler|MIDIHandler|MP3Handler|MP4Handler|OggHandler|WAVHandler $handler';
-		$bitrate = $handler->getBitrate( $file );
+		'@phan-var TimedMediaHandler $handler';
+		$bitrate = $handler->getBitRate( $file );
 
 		$source = [
 			'src' => $src,
@@ -609,9 +610,9 @@ class WebVideoTranscode {
 
 		$src = static::getTranscodedUrlForFile( $file, $transcodeKey );
 
-		/** @var ID3Handler $handler */
+		/** @var TimedMediaHandler $handler */
 		$handler = $file->getHandler();
-		'@phan-var ID3Handler $handler';
+		'@phan-var TimedMediaHandler $handler';
 		if ( $handler->isAudio( $file ) ) {
 			$width = $height = 0;
 		} else {
@@ -676,7 +677,7 @@ class WebVideoTranscode {
 	public static function updateStreamingManifests( File $file ): Status {
 		$fileName = $file->getTitle()->getDBkey();
 		$repo = $file->getRepo();
-		if ( !is_a( $repo, 'LocalRepo' ) ) {
+		if ( !$repo instanceof LocalRepo ) {
 			return Status::newGood();
 		}
 		$dbw = $repo->getPrimaryDB();
@@ -785,6 +786,7 @@ class WebVideoTranscode {
 		if ( in_array( $transcodeKey, $keys, true ) ) {
 			$settings = self::transcodePresets()->findByKey( $transcodeKey );
 			if ( $audio ) {
+				// FIXME: this is sus, as streamtypes provides display strings as well
 				$sourceCodecs = $handler->getStreamTypes( $file );
 				$sourceCodec = $sourceCodecs ? strtolower( $sourceCodecs[0] ) : '';
 				return ( $sourceCodec !== $settings->audioCodec );
