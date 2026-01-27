@@ -242,10 +242,6 @@
 			"public": false,
 			"value": "/usr/bin/ffmpeg"
 		},
-		"UseFFmpeg2": {
-			"description": "Compatible with ffmpeg 2",
-			"value": false
-		},
 		"TimedTextNS": {
 			"description": "The NS for TimedText (registered on MediaWiki.org) https://www.mediawiki.org/wiki/Extension_namespace_registration Note that Wikimedia Commons pre-dates TimedMediaHandler, and sets this to 102.",
 			"public": true,
