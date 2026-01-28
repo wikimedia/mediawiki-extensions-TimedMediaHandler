@@ -167,5 +167,12 @@
 	"timedmedia-timedtext-title-create-subtitles": "Ingen undertekster på $1 ble funnet for klippet: $2",
 	"m3u8-error-create-temp": "Kunne ikke opprette midlertidig fil for $1",
 	"m3u8-error-write-temp": "Kunne ikke skrive midlertidig fil for $1",
-	"m3u8-error-save-playlist": "Feil under lagring av HLS-spilleliste $1"
+	"m3u8-error-save-playlist": "Feil under lagring av HLS-spilleliste $1",
+	"videojs-endcard-share-title": "Lenk til dette mediet",
+	"videojs-endcard-copy-link": "Kopier lenke",
+	"videojs-endcard-share": "Del",
+	"videojs-endcard-embed-title": "Bygg inn dette mediet på nettstedet ditt",
+	"videojs-endcard-embed-copy": "Kopier",
+	"videojs-endcard-copied": "Kopiert til utklippstavlen!",
+	"videojs-endcard-copy-failed": "Kunne ikke kopiere til utklippstavlen"
 }
