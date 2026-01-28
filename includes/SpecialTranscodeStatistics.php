@@ -12,7 +12,7 @@ namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\Output\OutputPage;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 use MediaWiki\Title\Title;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\Database;
@@ -20,6 +20,7 @@ use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class SpecialTranscodeStatistics extends SpecialPage {
+
 	/**
 	 * index on transcode_time_addjob,transcode_time_startwork,transcode_time_error,transcode_key,transcode_image_name
 	 *
@@ -40,6 +41,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	public function __construct(
 		private readonly IConnectionProvider $dbProvider,
 		private readonly WANObjectCache $cache,
+		private readonly TranscodePresets $transcodePresets,
 	) {
 		parent::__construct( 'TranscodeStatistics', 'transcode-status' );
 	}
@@ -66,7 +68,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	 * @param bool $showTable
 	 */
 	private function renderState( $out, string $state, array $states, bool $showTable = true ): void {
-		$allTranscodes = WebVideoTranscode::enabledTranscodes();
+		$allTranscodes = $this->transcodePresets->enabledTranscodes();
 		if ( $states[ $state ][ 'total' ] ) {
 			// Give grep a chance to find the usages:
 			// timedmedia-derivative-state-transcodes, timedmedia-derivative-state-active,
@@ -161,14 +163,13 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	private function getStates(): array {
 		$fname = __METHOD__;
 
+		$allTranscodes = $this->transcodePresets->enabledTranscodes();
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'TimedMediaHandler-states' ),
 			$this->cache::TTL_MINUTE,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $fname ) {
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $fname, $allTranscodes ) {
 				$dbr = $this->dbProvider->getReplicaDatabase();
 				$setOpts += Database::getCacheSetOptions( $dbr );
-
-				$allTranscodes = WebVideoTranscode::enabledTranscodes();
 
 				$states = [];
 				$states[ 'transcodes' ] = [ 'total' => 0 ];

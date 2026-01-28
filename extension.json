@@ -31,7 +31,8 @@
 			"class": "MediaWiki\\TimedMediaHandler\\ApiTranscodeReset",
 			"services": [
 				"DBLoadBalancerFactory",
-				"RepoGroup"
+				"RepoGroup",
+				"TimedMediaHandler.TranscodePresets"
 			]
 		}
 	},
@@ -83,7 +84,8 @@
 			"class": "MediaWiki\\TimedMediaHandler\\SpecialTranscodeStatistics",
 			"services": [
 				"DBLoadBalancerFactory",
-				"MainWANObjectCache"
+				"MainWANObjectCache",
+				"TimedMediaHandler.TranscodePresets"
 			]
 		}
 	},
@@ -592,7 +594,8 @@
 				"ShellCommandFactory",
 				"MainConfig",
 				"DBLoadBalancerFactory",
-				"RepoGroup"
+				"RepoGroup",
+				"TimedMediaHandler.TranscodePresets"
 			]
 		},
 		"webVideoTranscodePrioritized": {
@@ -601,7 +604,8 @@
 				"ShellCommandFactory",
 				"MainConfig",
 				"DBLoadBalancerFactory",
-				"RepoGroup"
+				"RepoGroup",
+				"TimedMediaHandler.TranscodePresets"
 			]
 		}
 	},

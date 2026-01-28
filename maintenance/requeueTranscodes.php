@@ -41,7 +41,6 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 	public function processFile( File $file ) {
 		$this->output( $file->getName() . "\n" );
 
-		$transcodeSet = WebVideoTranscode::enabledTranscodes();
 		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
 		$repo = $file->repo;
 		$dryRun = $this->hasOption( 'dry-run' );

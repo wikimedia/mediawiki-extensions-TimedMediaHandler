@@ -3,7 +3,7 @@ namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @author michael dale
@@ -62,10 +62,11 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		$hasOgg = $hasWebM = $hasMP3 = false;
 		$novideo = false;
 		$targetEncodes = [];
+		$transcodePresets = MediaWikiServices::getInstance()->getService( 'TimedMediaHandler.TranscodePresets' );
 		foreach ( $res as $row ) {
-			$transcodeSettings = WebVideoTranscode::$derivativeSettings[ $row->transcode_key ];
-			$codec = $transcodeSettings[ 'videoCodec' ] ?? $transcodeSettings[ 'audioCodec' ];
-			$novideo = $transcodeSettings[ 'novideo' ] ?? false;
+			$transcodeSettings = $transcodePresets->key( $row->transcode_key );
+			$codec = $transcodeSettings->videoCodec ?? $transcodeSettings->audioCodec;
+			$novideo = $transcodeSettings->novideo ?? false;
 			if ( $codec === 'theora' ) {
 				$hasOgg = true;
 			}
@@ -149,7 +150,9 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		if ( $exception ) {
 			$this->expectException( ConfigException::class );
 		}
-		WebVideoTranscode::validateTranscodeConfiguration( $config );
+		MediaWikiServices::getInstance()
+			->getService( 'TimedMediaHandler.TranscodePresets' )
+			->validateTranscodeConfiguration( $config );
 		// Silence testcase when everything is ok
 		$this->assertTrue( true );
 	}

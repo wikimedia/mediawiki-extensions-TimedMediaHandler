@@ -4,7 +4,7 @@ namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\MainConfigNames;
 use MediaWiki\Settings\SettingsBuilder;
-use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 
 class RegistrationCallback {
 	/**
@@ -26,6 +26,6 @@ class RegistrationCallback {
 		$settingsBuilder->putConfigValue( MainConfigNames::JobTypesExcludedFromDefaultQueue, [ 'webVideoTranscode' ] );
 
 		// validate enabled transcodeset values
-		WebVideoTranscode::validateTranscodeConfiguration( $settingsBuilder->getConfig() );
+		TranscodePresets::validateTranscodeConfiguration( $settingsBuilder->getConfig() );
 	}
 }

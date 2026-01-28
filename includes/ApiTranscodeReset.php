@@ -7,6 +7,7 @@ use MediaWiki\Api\ApiMain;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -33,6 +34,7 @@ class ApiTranscodeReset extends ApiBase {
 		string $action,
 		private readonly IConnectionProvider $dbProvider,
 		private readonly RepoGroup $repoGroup,
+		private readonly TranscodePresets $transcodePresets
 	) {
 		parent::__construct( $main, $action );
 		$this->transcodableChecker = new TranscodableChecker(
@@ -72,7 +74,7 @@ class ApiTranscodeReset extends ApiBase {
 
 		// Check if a specified key can exist
 		if ( $transcodeKey !== null ) {
-			$keyExists = isset( WebVideoTranscode::$derivativeSettings[ $transcodeKey ] );
+			$keyExists = $this->transcodePresets->findByKey( $transcodeKey );
 
 			if ( !$keyExists ) {
 				$this->dieWithError(
@@ -97,7 +99,7 @@ class ApiTranscodeReset extends ApiBase {
 		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
 
 		// Only schedule a new transcode if the key is currently enabled or if resetting all
-		$keyEnabled = in_array( $transcodeKey, WebVideoTranscode::enabledTranscodes(), true );
+		$keyEnabled = in_array( $transcodeKey, $this->transcodePresets->enabledTranscodes(), true );
 		if ( $transcodeKey === null || $keyEnabled ) {
 			WebVideoTranscode::updateJobQueue( $file, $transcodeKey, [
 				'manualOverride' => true,

@@ -3,6 +3,7 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 
 /** @phpcs-require-sorted-array */
 return [
@@ -13,5 +14,10 @@ return [
 			$services->getMainConfig(),
 			$services->getRepoGroup()
 		);
+	},
+	'TimedMediaHandler.TranscodePresets' => static function (
+		MediaWikiServices $services
+	): TranscodePresets {
+		return new TranscodePresets( $services->getMainConfig() );
 	},
 ];

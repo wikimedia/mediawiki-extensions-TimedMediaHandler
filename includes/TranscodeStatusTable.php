@@ -7,6 +7,7 @@ use MediaWiki\FileRepo\File\File;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Utils\MWTimestamp;
 
@@ -49,17 +50,18 @@ class TranscodeStatusTable {
 	 * for grouping/sorting purposes.
 	 */
 	public static function codecFromTranscodeKey( string $key ): string {
-		if ( isset( WebVideoTranscode::$derivativeSettings[$key] ) ) {
-			$settings = WebVideoTranscode::$derivativeSettings[$key];
-			if ( isset( $settings['videoCodec'] ) ) {
-				return $settings['videoCodec'];
+		$transcodePresets = MediaWikiServices::getInstance()->getService( 'TimedMediaHandler.TranscodePresets' );
+		$settings = $transcodePresets->findByKey( $key );
+		if ( $settings ) {
+			if ( $settings->videoCodec ) {
+				return $settings->videoCodec;
 			}
 
-			if ( isset( $settings['audioCodec'] ) ) {
-				return $settings['audioCodec'];
+			if ( $settings->audioCodec ) {
+				return $settings->audioCodec;
 			}
 			// else
-			// this this shouldn't happen...
+			// this shouldn't happen...
 			// fall through
 		}
 		// else
