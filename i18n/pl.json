@@ -178,5 +178,10 @@
 	"timedmedia-timedtext-title-create-subtitles": "Nie odnaleziono $1 napisów do filmu: $2",
 	"m3u8-error-create-temp": "Nie udało się utworzyć pliku tymczasowego dla $1",
 	"m3u8-error-write-temp": "Nie udało się zapisać do pliku tymczasowego dla $1",
-	"m3u8-error-save-playlist": "Błędy podczas zapisywania listy odtwarzania HLS $1"
+	"m3u8-error-save-playlist": "Błędy podczas zapisywania listy odtwarzania HLS $1",
+	"videojs-endcard-copy-link": "Skopiuj link",
+	"videojs-endcard-embed-title": "Osadź te multimedia na swojej stronie internetowej",
+	"videojs-endcard-embed-copy": "Skopiuj",
+	"videojs-endcard-copied": "Skopiowano do schowka!",
+	"videojs-endcard-copy-failed": "Nie udało się skopiować do schowka"
 }
