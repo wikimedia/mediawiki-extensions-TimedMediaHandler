@@ -159,7 +159,7 @@
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 godzina|$1 godziny|$1 godzin}}, {{PLURAL:$2| $2 minut|$2 minuty|$2 minut}} i {{PLURAL:$3|$3 sekunda|$3 sekundy|$3 sekund}}",
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minuta|$1 minuty|$1 minut}} i {{PLURAL:$2|$2 sekunda|$2 sekundy|$2 sekund}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 sekunda|$1 sekundy|$1 sekund}}",
-	"right-transcode-reset": "Resetowanie błędnych lub transkodowanych filmów, które zostały ponownie umieszczone w kolejce zadań",
+	"right-transcode-reset": "Resetowanie błędnych lub transkodowanych filmów, co spowoduje ponowne umieszczenie w kolejce zadań",
 	"right-transcode-status": "Podgląd [[Special:TimedMediaHandler|informacji o aktualnym statusie transkodowania]]",
 	"action-transcode-reset": "resetowania transkodowania",
 	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania",

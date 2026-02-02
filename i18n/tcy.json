@@ -2,14 +2,22 @@
 	"@metadata": {
 		"authors": [
 			"Bharathesha Alasandemajalu",
+			"ChiK",
 			"Pragathi. BH",
 			"VASANTH S.N.",
 			"Vishwanatha Badikana"
 		]
 	},
+	"timedmedia-more": "ನನಾತ್...",
+	"timedmedia-dismiss": "ಮುಚ್ಚಿಲೆ",
+	"timedmedia-download": "ಡೌನ್ಲೋಡ್ ಫೈಲ್",
+	"timedmedia-desc-link": "ಈ ಫೈಲ್‌ದ ಬಗ್ಗೆ",
+	"timedmedia-status": "ಸ್ಥಿತಿ",
 	"timedmedia-reset-button-cancel": "ಪಿರಸರಿ ಮಾನ್ಪೊಂಡ್ಚಿ",
-	"timedmedia-reset-button-dismiss": "ದೆತ್ತ್ ಪಾಡ್ಲೆ",
+	"timedmedia-reset-button-dismiss": "ದೆತ್ತ್‌ಪಾಡ್ಲೆ",
 	"timedmedia-reset-button-reset": "ಪಿರ ಸರಿಮಾನ್ಪಿ",
+	"timedmedia-error-dismiss": "ದೆತ್ತ್‌ಪಾಡ್ಲೆ",
+	"timedmedia-source-original": "ಮೂಲೊ",
 	"timedmedia-derivative-desc-144p.mjpeg.mov": "ಕ್ವಿಕ್ ಟೈಮ್ ವಿಡಿಯೋ (144p MJPEG)",
 	"timedmedia-derivative-desc-360p.mpeg4.mov": "ಕ್ವಿಕ್ ಟೈಮ್ ವಿಡಿಯೋ (360p MPEG-4 Visual)"
 }

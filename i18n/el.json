@@ -10,6 +10,7 @@
 			"Omnipaedista",
 			"Protnet",
 			"UnchartedViolator",
+			"Warudo",
 			"ZaDiak"
 		]
 	},
@@ -47,7 +48,7 @@
 	"timedmedia-status": "Κατάσταση",
 	"timedmedia-status-unknown": "Άγνωστη κατάσταση",
 	"timedmedia-transcodebitrate": "Ρυθμός bit",
-	"timedmedia-transcodeduration": "Κωδικοποίησε την ώρα",
+	"timedmedia-transcodeduration": "Χρόνος κωδικοποίησης",
 	"timedmedia-transcodeinfo": "Μορφή",
 	"timedmedia-actions": "Ενέργειες",
 	"timedmedia-direct-link": "Λήψη",
