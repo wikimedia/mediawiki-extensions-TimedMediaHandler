@@ -634,7 +634,7 @@ class WebVideoTranscodeJob extends Job {
 		// Work around https://trac.ffmpeg.org/ticket/6375 in ffmpeg 3.4/4.0
 		// Sometimes caused transcode failures saying things like:
 		// "1 frames left in the queue on closing"
-		$optsEnv['TMH_OPTS_VIDEO'] .= '-max_muxing_queue_size 1024';
+		$optsEnv['TMH_OPTS_VIDEO'] .= ' -max_muxing_queue_size 1024';
 
 		// Audio options
 		$optsEnv['TMH_OPT_NOAUDIO'] = isset( $options['noaudio'] ) ? "yes" : "no";
