@@ -10,6 +10,8 @@
  * @author Michael Dale
  */
 
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
+
 /**
  * @group Database
  * @group medium

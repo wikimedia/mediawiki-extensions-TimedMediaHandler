@@ -1,6 +1,8 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\TimedMediaHandler\HLS\Segmenter;
+use MediaWikiMediaTestCase;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\HLS\Segmenter

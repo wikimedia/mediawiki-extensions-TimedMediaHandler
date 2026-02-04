@@ -5,13 +5,15 @@
  * @ingroup timedmedia
  */
 
+namespace MediaWiki\TimedMediaHandler\Test\Unit;
+
 use MediaWiki\TimedMediaHandler\TimedText\DOM;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\TimedText\SrtWriter::write
  */
-class VttWriterTest extends PHPUnit\Framework\TestCase {
+class VttWriterTest extends \PHPUnit\Framework\TestCase {
 	private VttWriter $writer;
 
 	public function setUp(): void {

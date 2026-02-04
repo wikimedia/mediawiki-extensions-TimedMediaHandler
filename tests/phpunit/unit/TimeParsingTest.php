@@ -7,9 +7,11 @@
  * @author Michael Dale
  */
 
+namespace MediaWiki\TimedMediaHandler\Test\Unit;
+
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 
-class TimeParsingTest extends PHPUnit\Framework\TestCase {
+class TimeParsingTest extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Test time string to np2
 	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::seconds2npt

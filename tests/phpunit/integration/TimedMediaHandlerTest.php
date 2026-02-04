@@ -1,6 +1,8 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
+use MediaWikiIntegrationTestCase;
 
 class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 

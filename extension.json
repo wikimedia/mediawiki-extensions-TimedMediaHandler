@@ -112,9 +112,11 @@
 		"MediaWiki\\TimedMediaHandler\\": "includes/"
 	},
 	"TestAutoloadClasses": {
-		"ApiVideoUploadTestCase": "tests/phpunit/integration/ApiVideoUploadTestCase.php",
-		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php",
-		"TimedMediaHandlerTestCase": "tests/phpunit/integration/TimedMediaHandlerTestCase.php"
+		"MockOggHandler": "tests/phpunit/mocks/MockOggHandler.php"
+	},
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\TimedMediaHandler\\Test\\Integration\\": "tests/phpunit/integration/",
+		"MediaWiki\\TimedMediaHandler\\Test\\Unit\\": "tests/phpunit/unit/"
 	},
 	"Hooks": {
 		"ArticleContentOnDiff": "main",

@@ -1,4 +1,5 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\HashConfig;

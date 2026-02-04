@@ -1,4 +1,5 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiUploadTestCase;

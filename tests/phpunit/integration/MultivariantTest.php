@@ -1,6 +1,8 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\TimedMediaHandler\HLS\Multivariant;
+use MediaWikiMediaTestCase;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\HLS\Multivariant

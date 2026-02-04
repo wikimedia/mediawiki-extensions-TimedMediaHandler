@@ -1,4 +1,5 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\TimedMediaHandler\Handlers\MIDIHandler\MIDIHandler;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;

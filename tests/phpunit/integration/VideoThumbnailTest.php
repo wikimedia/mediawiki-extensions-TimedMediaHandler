@@ -1,4 +1,6 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
+
 /**
  * @ingroup timedmedia
  * @author dale

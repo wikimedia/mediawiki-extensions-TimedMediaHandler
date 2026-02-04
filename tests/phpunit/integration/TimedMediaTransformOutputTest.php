@@ -1,7 +1,10 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
+use FakeDimensionFile;
 use MediaWiki\MainConfigNames;
 use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
+use MediaWikiMediaTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**

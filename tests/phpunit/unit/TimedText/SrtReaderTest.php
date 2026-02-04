@@ -5,13 +5,15 @@
  * @ingroup timedmedia
  */
 
+namespace MediaWiki\TimedMediaHandler\Test\Unit;
+
 use MediaWiki\TimedMediaHandler\TimedText\DOM;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\TimedText\SrtReader::read
  */
-class SrtReaderTest extends PHPUnit\Framework\TestCase {
+class SrtReaderTest extends \PHPUnit\Framework\TestCase {
 	private SrtReader $reader;
 
 	public function setUp(): void {

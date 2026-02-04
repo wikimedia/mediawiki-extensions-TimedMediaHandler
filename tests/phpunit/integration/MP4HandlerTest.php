@@ -1,4 +1,5 @@
 <?php
+namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\TimedMediaHandler\Handlers\MP4Handler\MP4Handler;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
