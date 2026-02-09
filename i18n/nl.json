@@ -174,7 +174,7 @@
 	"m3u8-error-create-temp": "Het is niet gelukt een tijdelijk bestand voor $1 te maken",
 	"m3u8-error-write-temp": "Het is niet gelukt naar het tijdelijke bestand voor $1 te schrijven",
 	"m3u8-error-save-playlist": "Fouten bij het opslaan van HLS-afspeellijst $1",
-	"videojs-endcard-share-title": "Link naar dit bestand",
+	"videojs-endcard-share-title": "Koppeling naar dit bestand",
 	"videojs-endcard-copy-link": "Koppeling kopiëren",
 	"videojs-endcard-share": "Delen",
 	"videojs-endcard-share-not-possible": "Delen is niet mogelijk",
