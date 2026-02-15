@@ -15,7 +15,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\PageQueryPage;
 use MediaWiki\Title\Title;
@@ -41,7 +40,7 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 		private readonly RepoGroup $repoGroup,
 	) {
 		parent::__construct( 'OrphanedTimedText' );
-		$this->migrationStage = MediaWikiServices::getInstance()->getMainConfig()->get(
+		$this->migrationStage = $this->getConfig()->get(
 			MainConfigNames::FileSchemaMigrationStage
 		);
 	}
