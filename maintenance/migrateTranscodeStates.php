@@ -69,17 +69,20 @@ class MigrateTranscodeStates extends LoggedUpdateMaintenance {
 		}
 
 		$updated = 0;
-		$last = 0;
+		$current = 0;
 
-		while ( $last < $maxId ) {
+		while ( $current < $maxId ) {
 			foreach ( $this->transcodeStates as $state => $condition ) {
 				$res = $dbw->newSelectQueryBuilder()
 					->select( 'transcode_id' )
 					->from( 'transcode' )
-					->where( [ $dbw->expr( 'transcode_id', '>', $last ), 'transcode_state' => null ] )
+					->where( [
+						$dbw->expr( 'transcode_id', '>', $current ),
+						$dbw->expr( 'transcode_id', '<=', $current + $batchSize ),
+						'transcode_state' => null,
+					] )
 					->andWhere( new RawSQLExpression( $condition ) )
 					->orderBy( 'transcode_id' )
-					->limit( $batchSize )
 					->caller( __METHOD__ )
 					->fetchFieldValues();
 
@@ -97,10 +100,11 @@ class MigrateTranscodeStates extends LoggedUpdateMaintenance {
 					->caller( __METHOD__ )->execute();
 
 				$updated += $dbw->affectedRows();
-				$last = max( $last, ...$res );
 			}
 
-			$this->output( "... transcode_id=$last, updated $updated\n" );
+			$current += $batchSize;
+
+			$this->output( "... transcode_id=$current, updated $updated\n" );
 			$this->waitForReplication();
 		}
 
