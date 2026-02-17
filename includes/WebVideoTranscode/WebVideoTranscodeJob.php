@@ -512,15 +512,17 @@ class WebVideoTranscodeJob extends Job {
 		$transcodeKey = $this->params[ 'transcodeKey' ];
 		$extension = substr( $transcodeKey, strrpos( $transcodeKey, '.' ) + 1 );
 
+		// Build video options as an array
+		$videoOpts = [];
+
 		// Set up all the video-related options
 		if ( $options->novideo ) {
-			$optsEnv['TMH_OPTS_VIDEO'] = '-vn';
+			$videoOpts[] = '-vn';
 		} else {
-			$optsEnv['TMH_OPTS_VIDEO'] = "";
 			$fps = $this->effectiveFrameRate( $options );
 			if ( $options->framerate ) {
 				// $options->framerate is a float
-				$optsEnv['TMH_OPTS_VIDEO'] .= '-r ' . strval( $options->framerate );
+				$videoOpts[] = "-r {$options->framerate}";
 			} else {
 				// Note -fpsmax is not available on Wikimedia's Debian as of 2023-02-02
 				//
@@ -535,32 +537,32 @@ class WebVideoTranscodeJob extends Job {
 					$orig *= 2;
 				}
 				if ( $orig > $fps ) {
-					$optsEnv['TMH_OPTS_VIDEO'] .= '-r ' . strval( $fps );
+					$videoOpts[] = "-r {$fps}";
 				}
 			}
 
 			if ( $this->remuxVirtualUrl !== null ) {
-				$optsEnv['TMH_OPTS_VIDEO'] .= ' -vcodec copy';
-				$optsEnv['TMH_REMUX'] = "yes";
+				$videoOpts[] = '-vcodec copy';
+				$optsEnv['TMH_REMUX'] = 'yes';
 			} else {
-				$optsEnv['TMH_REMUX'] = "no";
+				$optsEnv['TMH_REMUX'] = 'no';
 				$optsEnv['TMH_OPT_VIDEOCODEC'] = $options->videoCodec;
 				switch ( $options->videoCodec ) {
 					case 'vp8':
 					case 'vp9':
-						$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddWebmVideoOptions( $options );
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddWebmVideoOptions( $options ) );
 						if ( $options->speed ) {
-							$optsEnv['TMH_OPT_SPEED'] = (string)intval( $options->speed );
+							$optsEnv['TMH_OPT_SPEED'] = (int)$options->speed;
 						}
 						break;
 					case 'h264':
-						$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddH264VideoOptions( $options );
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddH264VideoOptions( $options ) );
 						break;
 					case 'mpeg4':
-						$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddMPEG4VideoOptions( $options );
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEG4VideoOptions( $options ) );
 						break;
 					default:
-						$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddGenericVideoOptions( $options );
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddGenericVideoOptions( $options ) );
 				}
 			}
 
@@ -570,12 +572,12 @@ class WebVideoTranscodeJob extends Job {
 				case 'mp3':
 				case 'mp4':
 				case 'mov':
-					$optsEnv['TMH_OPTS_VIDEO'] .= ' -f ' . $extension;
+					$videoOpts[] = "-f $extension";
 					break;
 				case 'ogg':
 				case 'ogv':
 				case 'oga':
-					$optsEnv['TMH_OPTS_VIDEO'] .= ' -f ogg';
+					$videoOpts[] = '-f ogg';
 					break;
 				default:
 					// assume defaults work
@@ -583,12 +585,12 @@ class WebVideoTranscodeJob extends Job {
 
 			// Check for keyframeInterval
 			$keyframeInterval = round( $fps * $interval );
-			$optsEnv['TMH_OPTS_VIDEO'] .= ' -g ' . strval( $keyframeInterval );
+			$videoOpts[] = '-g ' . $keyframeInterval;
 
 			if ( $options->videoBitrate ) {
 				$base = $this->expandRate( $options->videoBitrate );
 				$bitrate = $this->scaleRate( $options, $base );
-				$optsEnv['TMH_OPTS_VIDEO'] .= " -b:v $bitrate";
+				$videoOpts[] = "-b:v $bitrate";
 
 				// Estimate the output file size in KiB and bail out early
 				// if it's potentially very large. Could be a denial of
@@ -616,40 +618,34 @@ class WebVideoTranscodeJob extends Job {
 
 				if ( $options->minrate ) {
 					$minrate = $this->scaleRate( $options, $options->minrate );
-					$optsEnv['TMH_OPTS_VIDEO'] .= " -minrate $minrate";
+					$videoOpts[] = "-minrate $minrate";
 				}
 				if ( $options->maxrate ) {
 					$maxrate = $this->scaleRate( $options, $options->maxrate );
-					$optsEnv['TMH_OPTS_VIDEO'] .= " -maxrate $maxrate";
+					$videoOpts[] = "-maxrate $maxrate";
 				}
 			}
 
 			if ( $this->remuxVirtualUrl === null ) {
 				// If necessary, add deinterlacing options
-				$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddDeinterlaceOptions( $options );
+				$videoOpts = array_merge( $videoOpts, $this->ffmpegAddDeinterlaceOptions( $options ) );
 				// Add size options:
-				$optsEnv['TMH_OPTS_VIDEO'] .= $this->ffmpegAddVideoSizeOptions( $options );
+				$videoOpts = array_merge( $videoOpts, $this->ffmpegAddVideoSizeOptions( $options ) );
 			}
 		}
 
 		// Work around https://trac.ffmpeg.org/ticket/6375 in ffmpeg 3.4/4.0
 		// Sometimes caused transcode failures saying things like:
 		// "1 frames left in the queue on closing"
-		$optsEnv['TMH_OPTS_VIDEO'] .= ' -max_muxing_queue_size 1024';
+		$videoOpts[] = '-max_muxing_queue_size 1024';
 
-		// Audio options
-		$optsEnv['TMH_OPT_NOAUDIO'] = $options->noaudio !== null ? "yes" : "no";
-		$optsEnv['TMH_OPTS_AUDIO'] = $this->ffmpegAddAudioOptions( $options );
-
+		$movflagsOpts = [];
 		if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
-			$optsEnv['TMH_MOVFLAGS'] = '-movflags +faststart';
+			$movflagsOpts[] = '-movflags +faststart';
 		}
 
 		if ( $streaming === 'hls' ) {
 			if ( WebVideoTranscode::isBaseMediaFormat( $extension ) ) {
-				if ( !isset( $optsEnv['TMH_MOVFLAGS'] ) ) {
-					$optsEnv['TMH_MOVFLAGS'] = '';
-				}
 				// Don't use the HLS muxer, as it'll want to manage
 				// filenames and we have to rewrite everything anyway.
 				// We'll generate an .m3u8 from the file structure after.
@@ -657,23 +653,31 @@ class WebVideoTranscodeJob extends Job {
 				if ( $options->novideo !== null || $options->intraframe !== null ) {
 					// Audio-only tracks should be fragmented around the standard interval.
 					// Intraframe-only codecs like Motion-JPEG should also be treated this way.
-					$optsEnv['TMH_MOVFLAGS'] .= " -movflags +empty_moov+default_base_moof";
-					$optsEnv['TMH_MOVFLAGS'] .= " -frag_duration {$interval}000000";
+					$movflagsOpts[] = '-movflags +empty_moov+default_base_moof';
+					$movflagsOpts[] = "-frag_duration {$interval}000000";
 				} else {
 					// Video keyframe interval is set to approximate the desired interval, but
 					// they may occur whenever the encoder thinks they would be desirable such
 					// as a visible scene change.
-					$optsEnv['TMH_MOVFLAGS'] .= " -movflags +frag_keyframe+empty_moov+default_base_moof";
+					$movflagsOpts[] = '-movflags +frag_keyframe+empty_moov+default_base_moof';
 				}
 
 				// This is needed for opus on debian bullseye
-				$optsEnv['TMH_MOVFLAGS'] .= " -strict experimental";
+				$movflagsOpts[] = '-strict experimental';
 			} elseif ( $extension === 'mp3' ) {
 				// No additional options needed at present.
 			} else {
 				return "Invalid HLS track media type, expected .mp4, .m4v, .m4a, .mov, .3gp, or .mp3";
 			}
 		}
+
+		// implode all the options arrays in preparation for passing to the command
+		$optsEnv['TMH_MOVFLAGS'] = implode( ' ', $movflagsOpts );
+		$optsEnv['TMH_OPTS_VIDEO'] = implode( ' ', $videoOpts );
+
+		// Audio options
+		$optsEnv['TMH_OPT_NOAUDIO'] = $options->noaudio !== null ? "yes" : "no";
+		$optsEnv['TMH_OPTS_AUDIO'] = implode( ' ', $this->ffmpegAddAudioOptions( $options ) );
 
 		$cmd = $this->getCommand( 'ffmpegencode' );
 		$this->useScript( $cmd, 'ffmpeg-encode.sh' );
@@ -701,7 +705,7 @@ class WebVideoTranscodeJob extends Job {
 			->includeStderr()
 			->environment( [
 				'TMH_OUTPUT_FILE'      => $outputFile,
-				'TMH_FFMPEG_PASSES'    => strval( $passes ),
+				'TMH_FFMPEG_PASSES'    => (string)$passes,
 				'TMH_FFMPEG_PATH'      => $ffmpegLocation,
 			] + $optsEnv );
 		$result = $cmd->memoryLimit( $backgroundMemoryLimit )
@@ -710,7 +714,7 @@ class WebVideoTranscodeJob extends Job {
 			->execute();
 
 		// and pass it to this->output()
-		if ( $result->getExitCode() != 0 ) {
+		if ( $result->getExitCode() !== 0 ) {
 			$host = wfHostname();
 			return 'ffmpeg-encode.sh' .
 				"\n\nExitcode: " . $result->getExitCode() .
@@ -764,9 +768,7 @@ class WebVideoTranscodeJob extends Job {
 	 * format-specific or generic limitations.
 	 * Suitable for scaling linear parameters like the
 	 * target bit rate.
-	 */
-
-	/**
+	 *
 	 * @param TranscodePreset $options
 	 * @return float
 	 */
@@ -823,77 +825,79 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Adds ffmpeg shell options for h264
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array
 	 */
-	public function ffmpegAddH264VideoOptions( TranscodePreset $options ): string {
+	public function ffmpegAddH264VideoOptions( TranscodePreset $options ): array {
 		// Set the codec:
-		$cmd = " -threads " . (int)$this->config->get( 'FFmpegThreads' ) . " -vcodec libx264";
-		$cmd .= ' -pix_fmt yuv420p';
-		$cmd .= ' -rc-lookahead 16';
-
-		return $cmd;
+		return [
+			'-threads ' . (int)$this->config->get( 'FFmpegThreads' ),
+			'-vcodec libx264',
+			'-pix_fmt yuv420p',
+			'-rc-lookahead 16',
+		];
 	}
 
 	/**
 	 * Adds ffmpeg shell options for mpeg4
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array
 	 */
-	public function ffmpegAddMPEG4VideoOptions( TranscodePreset $options ): string {
-		$cmd = " -vcodec mpeg4";
-
-		// Force to 4:2:0 chroma subsampling.
-		$cmd .= ' -pix_fmt yuv420p';
-
-		return $cmd;
+	public function ffmpegAddMPEG4VideoOptions( TranscodePreset $options ): array {
+		return [
+			'-vcodec mpeg4',
+			// Force to 4:2:0 chroma subsampling.
+			'-pix_fmt yuv420p',
+		];
 	}
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array
 	 */
-	private function ffmpegAddGenericVideoOptions( TranscodePreset $options ): string {
-		$cmd = ' -vcodec ' . $options->videoCodec;
-
-		// Force to 4:2:0 chroma subsampling.
-		$cmd .= ' -pix_fmt yuv420p';
-
-		return $cmd;
+	private function ffmpegAddGenericVideoOptions( TranscodePreset $options ): array {
+		return [
+			'-vcodec ' . $options->videoCodec,
+			// Force to 4:2:0 chroma subsampling.
+			'-pix_fmt yuv420p',
+		];
 	}
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array
 	 */
-	private function ffmpegAddVideoSizeOptions( TranscodePreset $options ): string {
-		$cmd = '';
+	private function ffmpegAddVideoSizeOptions( TranscodePreset $options ): array {
+		$opts = [];
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		// Check for aspect ratio
-		$aspectRatio = $options->aspect ?? $file->getWidth() . ':' . $file->getHeight();
 		if ( ( $options->width && $options->width > 0 )
 			&&
 			( $options->height && $options->height > 0 )
 		) {
-			$cmd .= ' -s ' . (int)$options->width . 'x' . (int)$options->height;
-			$cmd .= ' -aspect ' . $aspectRatio;
+			// Check for aspect ratio
+			$aspectRatio = $options->aspect ?? $file->getWidth() . ':' . $file->getHeight();
+
+			$opts[] = '-s ' . (int)$options->width . 'x' . (int)$options->height;
+			$opts[] = '-aspect ' . $aspectRatio;
 		} elseif ( $options->maxSize ) {
 			// Get size transform ( if maxSize is > file, file size is used:
 
 			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options->maxSize );
-			$cmd .= ' -s ' . (int)$width . 'x' . (int)$height;
+			$opts[] = "-s {$width}x{$height}";
 		}
-		return $cmd;
+		return $opts;
 	}
 
 	/**
 	 * Adds ffmpeg shell options for webm
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array
 	 */
-	private function ffmpegAddWebmVideoOptions( TranscodePreset $options ): string {
-		$cmd = ' -threads ' . (int)$this->config->get( 'FFmpegThreads' );
+	private function ffmpegAddWebmVideoOptions( TranscodePreset $options ): array {
+		$opts = [
+			'-threads ' . (int)$this->config->get( 'FFmpegThreads' ),
+		];
 		if ( $this->config->get( 'FFmpegVP9RowMT' ) && $options->videoCodec === 'vp9' ) {
 			// Macroblock row multithreading allows using more CPU cores
 			// for VP9 encoding. This is not yet the default, and the option
@@ -902,40 +906,40 @@ class WebVideoTranscodeJob extends Job {
 			// conditionally for now.
 			//
 			// Requires libvpx 1.7 and ffmpeg 3.3.
-			$cmd .= ' -row-mt 1';
+			$opts[] = '-row-mt 1';
 		}
 
 		// Force to 4:2:0 chroma subsampling. Others are supported in Theora
 		// and in VP9 profile 1, but Chrome and Edge don't grok them.
-		$cmd .= ' -pix_fmt yuv420p';
+		$opts[] = '-pix_fmt yuv420p';
 
 		// libvpx-specific constant quality or constrained quality
 		// note the range is different between VP8 and VP9
 		// Also an integer.
 		if ( $options->crf ) {
-			$cmd .= " -crf " . (string)intval( $options->crf );
+			$opts[] = "-crf " . (int)$options->crf;
 		}
 
 		// Set the codec:
 		if ( $options->videoCodec === 'vp9' ) {
-			$cmd .= " -vcodec libvpx-vp9";
+			$opts[] = '-vcodec libvpx-vp9';
 			if ( $options->tileColumns ) {
-				$cmd .= ' -tile-columns ' . (string)intval( $options->tileColumns );
+				$opts[] = '-tile-columns ' . (int)$options->tileColumns;
 			}
 		} else {
-			$cmd .= " -vcodec libvpx";
+			$opts[] = '-vcodec libvpx';
 			if ( $options->slices ) {
-				$cmd .= ' -slices ' . (string)intval( $options->slices );
+				$opts[] = '-slices ' . (int)$options->slices;
 			}
 		}
 
-		$cmd .= ' -quality good';
-		return $cmd;
+		$opts[] = '-quality good';
+		return $opts;
 	}
 
 	private function isInterlaced(): bool {
 		$handler = $this->file->getHandler();
-		return ( $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file ) );
+		return $handler instanceof TimedMediaHandler && $handler->isInterlaced( $this->file );
 	}
 
 	/**
@@ -963,37 +967,37 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array<string>
 	 */
-	private function ffmpegAddDeinterlaceOptions( TranscodePreset $options ): string {
+	private function ffmpegAddDeinterlaceOptions( TranscodePreset $options ): array {
 		if ( $this->isInterlaced() ) {
 			if ( $this->shouldFrameDouble( $options ) ) {
 				// Send one frame per field for full motion smoothness.
-				return ' -vf yadif=1';
+				return [ '-vf yadif=1' ];
 			}
 			// Send one frame per field
-			return ' -vf yadif=0';
+			return [ '-vf yadif=0' ];
 		}
-		return '';
+		return [];
 	}
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return string
+	 * @return array<string>
 	 */
-	private function ffmpegAddAudioOptions( TranscodePreset $options ): string {
-		$cmd = '';
+	private function ffmpegAddAudioOptions( TranscodePreset $options ): array {
+		$opts = [];
 		if ( $options->audioQuality ) {
-			$cmd .= " -aq " . (string)intval( $options->audioQuality );
+			$opts[] = '-aq ' . (int)$options->audioQuality;
 		}
 		if ( $options->audioBitrate ) {
-			$cmd .= " -ab " . $this->expandRate( $options->audioBitrate );
+			$opts[] = '-ab ' . $this->expandRate( $options->audioBitrate );
 		}
 		if ( $options->samplerate ) {
-			$cmd .= " -ar " . (string)intval( $options->samplerate );
+			$opts[] = '-ar ' . (int)$options->samplerate;
 		}
 		if ( $options->channels ) {
-			$cmd .= " -ac " . (string)intval( $options->channels );
+			$opts[] = '-ac ' . (int)$options->channels;
 		}
 
 		if ( $options->audioCodec ) {
@@ -1003,16 +1007,16 @@ class WebVideoTranscodeJob extends Job {
 				'mp3'		=> 'libmp3lame',
 			];
 			$codec = $encoders[$options->audioCodec] ?? $options->audioCodec;
-			$cmd .= " -acodec " . $codec;
+			$opts[] = "-acodec $codec";
 			if ( $codec === 'aac' ) {
 				// the aac encoder is currently "experimental" in libav 9? :P
-				$cmd .= ' -strict experimental';
+				$opts[] = '-strict experimental';
 			}
 		} else {
 			// if no audio codec set use vorbis :
-			$cmd .= " -acodec libvorbis ";
+			$opts[] = '-acodec libvorbis';
 		}
-		return $cmd;
+		return $opts;
 	}
 
 	/**
@@ -1058,7 +1062,7 @@ class WebVideoTranscodeJob extends Job {
 					->cpuTimeLimit( $cpuTimeLimit )
 					->execute();
 
-		if ( $result->getExitCode() != 0 ) {
+		if ( $result->getExitCode() !== 0 ) {
 			return 'midi-encode.sh' .
 				"\n\nExitcode: " . $result->getExitCode() . "\nMemory: $backgroundMemoryLimit\n\n"
 				. $result->getStdout();
