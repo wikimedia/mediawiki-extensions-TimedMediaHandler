@@ -48,13 +48,10 @@ class TextHandler {
 	 * Get the timed text tracks elements as an associative array
 	 */
 	public function getTracks(): array {
-		if ( $this->file->isLocal() ) {
-			return $this->getLocalDbTextSources();
-		}
-		if ( $this->file instanceof ForeignDBFile ) {
-			return $this->getForeignDbTextSources();
-		}
-		if ( $this->file->getRepo() instanceof IForeignRepoWithMWApi ) {
+		if ( $this->file->isLocal() || $this->file instanceof ForeignDBFile ) {
+			$data = $this->getTextPagesFromDb();
+			return $data ? $this->getTextTracksFromRows( $data ) : [];
+		} elseif ( $this->file->getRepo() instanceof IForeignRepoWithMWApi ) {
 			return $this->getRemoteTextSources( $this->file );
 		}
 		return [];
@@ -207,28 +204,6 @@ class TextHandler {
 		}
 
 		return $textTracks;
-	}
-
-	/**
-	 * Retrieve the text sources belonging to a foreign db accessible file
-	 */
-	public function getForeignDbTextSources(): array {
-		$data = $this->getTextPagesFromDb();
-		if ( $data ) {
-			return $this->getTextTracksFromRows( $data );
-		}
-		return [];
-	}
-
-	/**
-	 * Retrieve the text sources belonging to a local file
-	 */
-	public function getLocalDbTextSources(): array {
-		$data = $this->getTextPagesFromDb();
-		if ( $data ) {
-			return $this->getTextTracksFromRows( $data );
-		}
-		return [];
 	}
 
 	/**
