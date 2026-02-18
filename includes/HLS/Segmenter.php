@@ -19,16 +19,15 @@ use LogicException;
  */
 abstract class Segmenter {
 
+	/** @var array<int|string,array> */
 	protected array $segments;
 
 	public function __construct(
 		protected readonly string $filename,
 		?array $segments = null,
 	) {
-		if ( $segments ) {
-			$this->segments = $segments;
-		} else {
-			$this->segments = [];
+		$this->segments = $segments ?? [];
+		if ( !$this->segments ) {
 			$this->parse();
 		}
 	}
@@ -44,25 +43,25 @@ abstract class Segmenter {
 	public function consolidate( float $target ): void {
 		$out = [];
 		$n = count( $this->segments );
-		$init = $this->segments['init'] ?? false;
+		$init = $this->segments['init'] ?? null;
 		if ( $init ) {
 			$n--;
 			$out['init'] = $init;
 		}
-		if ( $n < 2 ) {
+		if ( $n <= 1 ) {
 			return;
 		}
 
-		$first = $this->segments[0];
-		$start = $first['start'];
-		$size = $first['size'];
-		$timestamp = $first['timestamp'];
-		$duration = $first['duration'];
-
-		$i = 1;
+		$i = 0;
 		while ( $i < $n ) {
+			$segment = $this->segments[$i++];
+			$start = $segment['start'];
+			$size = $segment['size'];
+			$timestamp = $segment['timestamp'];
+			$duration = $segment['duration'];
+
 			// Append segments until we get close
-			while ( $i < $n - 1 && $duration < $target ) {
+			while ( $i < $n && $duration < $target ) {
 				$segment = $this->segments[$i];
 				$total = $duration + $segment['duration'];
 				if ( $total >= $target ) {
@@ -85,22 +84,7 @@ abstract class Segmenter {
 				'timestamp' => $timestamp,
 				'duration' => $duration,
 			];
-
-			if ( $i < $n ) {
-				$segment = $this->segments[$i];
-				$start = $segment['start'];
-				$size = $segment['size'];
-				$timestamp = $segment['timestamp'];
-				$duration = $segment['duration'];
-				$i++;
-			}
 		}
-		$out[] = [
-			'start' => $start,
-			'size' => $size,
-			'timestamp' => $timestamp,
-			'duration' => $duration,
-		];
 		$this->segments = $out;
 	}
 
@@ -115,31 +99,32 @@ abstract class Segmenter {
 	}
 
 	public function playlist( float $target, string $filename ): string {
-		$lines = [];
-		$lines[] = "#EXTM3U";
-		$lines[] = "#EXT-X-VERSION:7";
-		$lines[] = "#EXT-X-TARGETDURATION:$target";
-		$lines[] = "#EXT-MEDIA-SEQUENCE:0";
-		$lines[] = "#EXT-PLAYLIST-TYPE:VOD";
-
 		$url = wfUrlencode( $filename );
 
-		$init = $this->segments['init'] ?? false;
-		if ( $init ) {
-			$lines[] = "#EXT-X-MAP:URI=\"$url\",BYTERANGE=\"{$init['size']}@{$init['start']}\"";
+		$segments = [];
+		foreach ( $this->segments as $i => $segment ) {
+			if ( $i === 'init' ) {
+				array_unshift( $segments,
+					"#EXT-X-MAP:URI=\"$url\",BYTERANGE=\"{$segment['size']}@{$segment['start']}\""
+				);
+			} else {
+				array_push( $segments,
+					"#EXTINF:{$segment['duration']},",
+					"#EXT-X-BYTERANGE:{$segment['size']}@{$segment['start']}",
+					$url
+				);
+			}
 		}
 
-		$n = count( $this->segments ) - 1;
-		for ( $i = 0; $i < $n; $i++ ) {
-			$segment = $this->segments[$i];
-			$lines[] = "#EXTINF:{$segment['duration']},";
-			$lines[] = "#EXT-X-BYTERANGE:{$segment['size']}@{$segment['start']}";
-			$lines[] = $url;
-		}
-
-		$lines[] = "#EXT-X-ENDLIST";
-
-		return implode( "\n", $lines );
+		return implode( "\n", [
+			'#EXTM3U',
+			'#EXT-X-VERSION:7',
+			"#EXT-X-TARGETDURATION:$target",
+			'#EXT-MEDIA-SEQUENCE:0',
+			'#EXT-PLAYLIST-TYPE:VOD',
+			...$segments,
+			'#EXT-X-ENDLIST',
+		] );
 	}
 
 	public static function segment( string $filename ): Segmenter {

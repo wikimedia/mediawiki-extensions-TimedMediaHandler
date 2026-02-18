@@ -461,17 +461,12 @@ class WebVideoTranscode {
 			$removeKeys = [ $transcodeKey ];
 		} else {
 			// Remove any existing files ( regardless of their state )
-			$res = $file->repo->getPrimaryDB()->newSelectQueryBuilder()
+			$removeKeys = $file->repo->getPrimaryDB()->newSelectQueryBuilder()
 				->select( 'transcode_key' )
 				->from( 'transcode' )
 				->where( [ 'transcode_image_name' => $file->getName() ] )
 				->caller( __METHOD__ )
-				->fetchResultSet();
-
-			$removeKeys = [];
-			foreach ( $res as $transcodeRow ) {
-				$removeKeys[] = $transcodeRow->transcode_key;
-			}
+				->fetchFieldValues();
 		}
 
 		// Remove files by key:

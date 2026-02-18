@@ -208,13 +208,10 @@ class OggHandler extends TimedMediaHandler {
 	}
 
 	/** @inheritDoc */
-	public function getStreamTypes( $file ): array {
-		$streamTypes = [];
-		$metadata = $file->getMetadataArray();
-		foreach ( $metadata['streams'] ?? [] as $stream ) {
-			$streamTypes[] = $stream['type'];
-		}
-		return array_unique( $streamTypes );
+	public function getStreamTypes( File $file ): array {
+		return array_unique(
+			array_column( $file->getMetadataArray()['streams'] ?? [], 'type' )
+		);
 	}
 
 	/** @inheritDoc */

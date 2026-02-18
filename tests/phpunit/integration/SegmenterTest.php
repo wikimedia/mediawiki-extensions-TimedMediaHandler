@@ -16,26 +16,18 @@ class SegmenterTest extends MediaWikiMediaTestCase {
 	}
 
 	/**
-	 * @param string $filename
-	 * @return string
-	 */
-	protected function filePath( $filename ) {
-		return $this->getFilePath() . DIRECTORY_SEPARATOR . $filename;
-	}
-
-	/**
 	 * @dataProvider providerTracks
 	 * @param string $filename name of media track file
 	 */
-	public function testTracks( $filename ) {
+	public function testTracks( string $filename ) {
 		$interval = 10;
-		$path = $this->filePath( $filename );
-		$expected = file_get_contents( "$path.m3u8" );
+		$path = $this->getFilePath() . '/' . $filename;
+		$expected = rtrim( file_get_contents( "$path.m3u8" ), "\n" );
 		$segmenter = Segmenter::segment( $path );
 		$segmenter->consolidate( $interval );
 		// @fixme test this $segmenter->rewrite();
 		$playlist = $segmenter->playlist( $interval, $filename );
-		$this->assertEquals( $expected, $playlist, ".m3u8 playlist generation from media track" );
+		$this->assertSame( $expected, $playlist, ".m3u8 playlist generation from media track" );
 	}
 
 	public static function providerTracks() {
