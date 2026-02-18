@@ -143,18 +143,15 @@ abstract class Segmenter {
 	}
 
 	public static function segment( string $filename ): Segmenter {
-		$ext = strtolower( substr( $filename, strrpos( $filename, '.' ) ) );
-		switch ( $ext ) {
-			case '.mp3':
-				return new MP3Segmenter( $filename );
-			case '.mp4':
-			case '.m4v':
-			case '.m4a':
-			case '.mov':
-			case '.3gp':
-				return new MP4Segmenter( $filename );
-			default:
-				throw new LogicException( "Unexpected streaming file extension $ext" );
-		}
+		$ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
+		return match ( $ext ) {
+			'mp3' => new MP3Segmenter( $filename ),
+			'mp4',
+			'm4v',
+			'm4a',
+			'mov',
+			'3gp' => new MP4Segmenter( $filename ),
+			default => throw new LogicException( "Unexpected streaming file extension $ext" )
+		};
 	}
 }

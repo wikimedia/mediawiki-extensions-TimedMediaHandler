@@ -510,7 +510,7 @@ class WebVideoTranscodeJob extends Job {
 		$fps = 0;
 		$streaming = $options->streaming;
 		$transcodeKey = $this->params[ 'transcodeKey' ];
-		$extension = substr( $transcodeKey, strrpos( $transcodeKey, '.' ) + 1 );
+		$extension = pathinfo( $transcodeKey, PATHINFO_EXTENSION );
 
 		// Build video options as an array
 		$videoOpts = [];
