@@ -175,17 +175,14 @@
 	"config": {
 		"WaitTimeForTranscodeReset": {
 			"description": "How long you have to wait between transcode resets for non-error transcodes",
-			"public": true,
 			"value": 3600
 		},
 		"MinimumVideoPlayerSize": {
 			"description": "The minimum size for an embed video player (smaller than this size, it uses a pop-up player)",
-			"public": true,
 			"value": 200
 		},
 		"MediaVideoTypes": {
 			"description": "Set the supported ogg codecs for video",
-			"public": true,
 			"value": [
 				"Theora",
 				"VP8"
@@ -193,7 +190,6 @@
 		},
 		"MediaAudioTypes": {
 			"description": "Set the supported ogg codecs for audio",
-			"public": true,
 			"value": [
 				"Vorbis",
 				"Speex",
@@ -203,62 +199,50 @@
 		},
 		"EnableIframeEmbed": {
 			"description": "Support iframe for remote embedding",
-			"public": true,
 			"value": true
 		},
 		"EnableTranscode": {
 			"description": "If transcoding is enabled for this wiki (if disabled, no transcode jobs are added and no transcode status is displayed). Note if remote embedding an asset we will still check if the remote repo has transcoding enabled and associated flavors for that media embed.",
-			"public": true,
 			"value": true
 		},
 		"TranscodeBackgroundTimeLimit": {
 			"description": "The total amount of time a transcoding shell command can take",
-			"public": true,
 			"value": 28800
 		},
 		"TranscodeBackgroundMemoryLimit": {
 			"description": "Maximum amount of virtual memory available to transcoding processes in KiB. 2GiB. ffmpeg mmap resources, so virtual memory needs to be high enough",
-			"public": true,
 			"value": 2097152
 		},
 		"TranscodeBackgroundSizeLimit": {
 			"description": "Maximum file size transcoding processes can create, in KiB. 3GiB.",
-			"public": true,
 			"value": 3145728
 		},
 		"TranscodeSoftSizeLimit": {
 			"description": "Maximum estimated file size for transcodes without admin approval, in KiB. Larger files must be manually re-enqueued by an admin via web or CLI interfaces. 2GiB.",
-			"public": true,
 			"value": 2097152
 		},
 		"FFmpegThreads": {
 			"description": "Number of threads to use in ffmpeg for transcoding",
-			"public": true,
 			"value": 1
 		},
 		"FFmpegVP9RowMT": {
 			"description": "Whether to enable macroblock row multithreading for VP9 (-row-mt 1)\n\nThis allows increasing $wgFFmpegThreads to a larger number for VP9  transcodes; without it encoding will be limited to 4 threads for HD, or less for low resolution.\n\nThis requires libvpx 1.7 and a matching build of ffmpeg 3.3 or higher or it will fail with an unrecognized option error.",
-			"public": true,
 			"value": false
 		},
 		"FFmpegLocation": {
 			"description": "Location of the ffmpeg binary (used to encode WebM and for thumbnails)",
-			"public": false,
 			"value": "/usr/bin/ffmpeg"
 		},
 		"TimedTextNS": {
 			"description": "The NS for TimedText (registered on MediaWiki.org) https://www.mediawiki.org/wiki/Extension_namespace_registration Note that Wikimedia Commons pre-dates TimedMediaHandler, and sets this to 102.",
-			"public": true,
 			"value": 710
 		},
 		"TimedTextForeignNamespaces": {
 			"description": "Set TimedText namespace for ForeignDBViaLBRepo on a per wikiID basis like `$wgTimedTextForeignNamespaces = [ 'commonswiki' => 102 ];`.",
-			"public": true,
 			"value": []
 		},
 		"EnabledTranscodeSet": {
 			"description": "Default enabled video transcodes\n\n- If set to empty array, no derivatives will be created\n- These transcodes are *in addition to* the source file.\n- Only derivatives with smaller width than the source asset size will be created\n- Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet\n- Derivative jobs are added to the MediaWiki JobQueue the first time the asset is displayed\n- Derivative should be listed min to max\n\nAllowed values:\n* Values for WebM VP8/Vorbis, our primary free/open video format supported by Chrome/Firefox/Opera natively, and plays back in Safari/IE/Edge via ogv.js:\n** 160p.webm – Very low-bitrate web streamable WebM video\n** 240p.webm – Low-bitrate web streamable WebM video\n** 360p.webm – Medium-bitrate web streamable WebM video\n** 480p.webm – Moderate-bitrate web streamable WebM video\n** 720p.webm – A high quality WebM stream\n** 1080p.webm – A full-HD high quality WebM stream\n** 1440p.webm – A 2K full high quality WebM stream\n** 2160p.webm – A 4K full high quality WebM stream\n* Values for WebM VP9, our future free/open video format:\n** 160p.vp9.webm – Very low\n** 240p.vp9.webm – Low\n** 360p.vp9.webm – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.vp9.webm – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.vp9.webm – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.vp9.webm – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.vp9.webm – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.vp9.webm – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Values for MP4 H.264/AAC, the primary format for the Apple/Microsoft world. Check patent licensing issues in your country before use! Similar to WebM in quality/bitrate:\n** 160p.mp4 – Very low\n** 240p.mp4 – Low\n** 320p.mp4 – Pretty low\n** 360p.mp4 – A least common denominator h.264 stream; first gen iPhone, iPods, early Android etc.\n** 480p.mp4 – A mid range h.264 stream; mid range phones and low end tablets\n** 720p.mp4 – An high quality HD stream; higher end phones, tablets, smart tvs\n** 1080p.mp4 – A full-HD high quality stream; higher end phones, tablets, smart tvs\n** 1440p.mp4 – A 2K high quality stream; higher end phones, tablets, smart tvs\n** 2160p.mp4 – A 4K high quality stream; higher end phones, tablets, smart tvs\n* Note: Ogg video profiles have been removed as of January 2018. Use WebM or HLS output for royalty-free codec output.",
-			"public": true,
 			"value": {
 				"160p.webm": false,
 				"240p.webm": false,
@@ -302,7 +286,6 @@
 		},
 		"EnabledAudioTranscodeSet": {
 			"description": "Default enabled audio transcodes\n\n If set to empty array, no derivatives will be created\n- These transcodes are *in addition to* the source file.\n- Derivative should be listed min to max\n\nllowed values:\n* ogg – Ogg Vorbis\n* opus – Note that Opus support must be available in ffmpeg\n* mp3 – Note that fmpeg needs libmp3lame support\n* m4a – Note that ffmpeg needs libvo_aacenc support",
-			"public": true,
 			"value": {
 				"ogg": true,
 				"opus": false,
@@ -312,12 +295,10 @@
 		},
 		"TmhEnableMp4Uploads": {
 			"description": "If MP4 source assets can be ingested",
-			"public": true,
 			"value": false
 		},
 		"TmhFileExtensions": {
 			"description": "List of extensions handled by Timed Media Handler since its referenced in a few places. You should not modify this variable.",
-			"public": true,
 			"value": [
 				"ogg",
 				"ogv",
@@ -336,29 +317,24 @@
 		},
 		"TmhPriorityResolutionThreshold": {
 			"description": "Transcode resolutions higher than this will run in the low-priority queue. This'll give us SD transcodes as fast as possible, then do HD later.",
-			"public": true,
 			"value": 480
 		},
 		"TmhPriorityLengthThreshold": {
 			"description": "Transcodes of files longer than this (seconds) will run in the low-priority queue; defaults to 15 minutes. This'll mean long videos won't flood the high-priority queue.",
-			"public": true,
 			"value": 900
 		},
 		"ParserTestMediaHandlers": {
 			"description": "MockOggHandler::class",
-			"public": true,
 			"value": {
 				"application/ogg": "MockOggHandler"
 			}
 		},
 		"TmhFluidsynthLocation": {
 			"description": "Path of a Fluidsynth executable for MIDI conversion to audio formats",
-			"public": true,
 			"value": null
 		},
 		"TmhSoundfontLocation": {
 			"description": "Path of a soundfont to use for MIDI-converted audio",
-			"public": true,
 			"value": null
 		}
 	},
