@@ -132,23 +132,19 @@ class WebVideoTranscode {
 	/**
 	 * Get temp file at target path for video encode
 	 *
-	 * @param File $file
-	 * @param string $transcodeKey
-	 * @param string $suffix
-	 *
-	 * @return TempFSFile|false at target encode path
+	 * @return TempFSFile|null at target encode path
 	 */
-	public static function getTargetEncodeFile( $file, $transcodeKey, $suffix = '' ) {
+	public static function getTargetEncodeFile(
+		File $file,
+		string $transcodeKey,
+		string $suffix = ''
+	): ?TempFSFile {
 		$filePath = static::getDerivativeFilePath( $file, $transcodeKey ) . $suffix;
 		$ext = strtolower( pathinfo( $filePath, PATHINFO_EXTENSION ) );
 
 		// Create a temp FS file with the same extension
 		$tmpFileFactory = new TempFSFileFactory();
-		$tmpFile = $tmpFileFactory->newTempFSFile( 'transcode_' . $transcodeKey, $ext );
-		if ( !$tmpFile ) {
-			return false;
-		}
-		return $tmpFile;
+		return $tmpFileFactory->newTempFSFile( 'transcode_' . $transcodeKey, $ext );
 	}
 
 	/**
