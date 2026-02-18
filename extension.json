@@ -108,6 +108,7 @@
 		"File_Ogg_Speex": "includes/Handlers/OggHandler/File_Ogg/File/Ogg/Speex.php",
 		"File_Ogg_Theora": "includes/Handlers/OggHandler/File_Ogg/File/Ogg/Theora.php",
 		"File_Ogg_Vorbis": "includes/Handlers/OggHandler/File_Ogg/File/Ogg/Vorbis.php",
+		"MigrateTranscodeStates": "maintenance/migrateTranscodeStates.php",
 		"TimedMediaMaintenance": "maintenance/TimedMediaMaintenance.php"
 	},
 	"AutoloadNamespaces": {

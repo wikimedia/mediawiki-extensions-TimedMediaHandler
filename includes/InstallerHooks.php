@@ -4,6 +4,7 @@ namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
+use MigrateTranscodeStates;
 
 /**
  * Hooks for installer
@@ -30,6 +31,10 @@ class InstallerHooks implements LoadExtensionSchemaUpdatesHook {
 		$updater->addExtensionField(
 			'transcode', 'transcode_state', $dir . $dbType . '/patch-transcode-state-size.sql'
 		);
+		$updater->addExtensionUpdate( [
+			'runMaintenance',
+			MigrateTranscodeStates::class,
+		] );
 
 		return true;
 	}
