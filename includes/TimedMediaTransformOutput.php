@@ -159,9 +159,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 		return ( $this->isVideo ) ? 'video' : 'audio';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function toHtml( $options = [] ): string {
 		$classes = $options['img-class'] ?? '';
 

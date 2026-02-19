@@ -11,10 +11,7 @@ use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
  */
 class MIDIHandler extends ID3Handler {
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getMetadataType( $file ) {
 		return 'midi';
 	}
@@ -37,9 +34,7 @@ class MIDIHandler extends ID3Handler {
 		}
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getID3( $path ) {
 		$id3 = parent::getID3( $path );
 
@@ -74,10 +69,7 @@ class MIDIHandler extends ID3Handler {
 		return $streamTypes;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -88,10 +80,7 @@ class MIDIHandler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -104,19 +93,13 @@ class MIDIHandler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function hasAudio( $file ) {
 		$metadata = $file->getMetadataArray();
 		return ( $metadata['audio'] ?? null ) !== null || ( $metadata['midi'] ?? null ) !== null;
 	}
 
-	/**
-	 * @param File $file
-	 * @return int
-	 */
+	/** @inheritDoc */
 	public function getAudioChannels( $file ) {
 		$metadata = $file->getMetadataArray();
 		if ( isset( $metadata['midi']['raw']['tracks'] ) ) {

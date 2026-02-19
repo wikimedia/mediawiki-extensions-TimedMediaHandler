@@ -2,7 +2,6 @@
 
 namespace MediaWiki\TimedMediaHandler\Handlers\WebMHandler;
 
-use MediaWiki\Context\IContextSource;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
 
@@ -11,10 +10,7 @@ use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
  */
 class WebMHandler extends ID3Handler {
 
-	/**
-	 * @param string $path
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getID3( $path ) {
 		$id3 = parent::getID3( $path );
 		// Unset some parts of id3 that are too detailed and matroska specific:
@@ -32,9 +28,7 @@ class WebMHandler extends ID3Handler {
 		return $id3;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getSizeFromMetadata( $metadata ) {
 		// Just return the size of the first video stream
 		$size = [ false, false ];
@@ -75,12 +69,7 @@ class WebMHandler extends ID3Handler {
 		return $size;
 	}
 
-	/**
-	 * Returns the metadata type for the given file.
-	 *
-	 * @param File $file The file object.
-	 * @return string 'webm' (indicating the file type is WebM).
-	 */
+	/** @inheritDoc */
 	public function getMetadataType( $file ) {
 		return 'webm';
 	}
@@ -342,10 +331,7 @@ class WebMHandler extends ID3Handler {
 		return $streamTypes;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -357,10 +343,7 @@ class WebMHandler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -375,13 +358,7 @@ class WebMHandler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * Display metadata box on file description page.
-	 *
-	 * @param File $file
-	 * @param false|IContextSource $context Context to use (optional)
-	 * @return array|false
-	 */
+	/** @inheritDoc */
 	public function formatMetadata( $file, $context = false ) {
 		$meta = $this->getCommonMetaArray( $file );
 		if ( !$meta ) {

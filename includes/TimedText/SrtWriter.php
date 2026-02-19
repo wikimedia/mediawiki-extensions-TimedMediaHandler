@@ -3,9 +3,8 @@
 namespace MediaWiki\TimedMediaHandler\TimedText;
 
 class SrtWriter extends Writer {
-	/**
-	 * @inheritDoc
-	 */
+
+	/** @inheritDoc */
 	public function write( $cues ) {
 		return implode( "\n\n",
 			array_map(

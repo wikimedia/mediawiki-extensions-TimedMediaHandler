@@ -26,9 +26,7 @@ class TimedTextHooks implements
 	) {
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onPageDeleteComplete(
 		ProperPageIdentity $page,
 		Authority $deleter,
@@ -42,17 +40,13 @@ class TimedTextHooks implements
 		$this->purgeDependingPages( $title, $deleter->getUser() );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onPageMoveComplete( $old, $new, $user, $pageid, $redirid, $reason, $revision ) {
 		$this->purgeDependingPages( $old, $user );
 		$this->purgeDependingPages( $new, $user );
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
 		if ( $flags & EDIT_NEW ) {
 			$this->purgeDependingPages( $wikiPage->getTitle(), $user );

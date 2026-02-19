@@ -14,9 +14,7 @@ use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 class OggHandler extends TimedMediaHandler {
 	private const METADATA_VERSION = 2;
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getSizeAndMetadata( $state, $path ) {
 		$metadata = [ 'version' => self::METADATA_VERSION ];
 
@@ -60,9 +58,7 @@ class OggHandler extends TimedMediaHandler {
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function isFileMetadataValid( $image ) {
 		$metadata = $image->getMetadataArray();
 
@@ -100,12 +96,7 @@ class OggHandler extends TimedMediaHandler {
 		return $this->formatMetadataHelper( $meta, $context );
 	}
 
-	/**
-	 * Get some basic metadata properties that are common across file types.
-	 *
-	 * @param File $file
-	 * @return array Array of metadata. See MW's FormatMetadata class for format.
-	 */
+	/** @inheritDoc */
 	public function getCommonMetaArray( File $file ) {
 		$metadata = $file->getMetadataArray();
 		if ( !isset( $metadata['streams'] ) ) {
@@ -204,10 +195,7 @@ class OggHandler extends TimedMediaHandler {
 		return [ false, false ];
 	}
 
-	/**
-	 * @param File $image
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getMetadataType( $image ) {
 		return 'ogg';
 	}
@@ -240,30 +228,19 @@ class OggHandler extends TimedMediaHandler {
 		return array_unique( $streamTypes );
 	}
 
-	/**
-	 * @param File $file
-	 * @return float
-	 */
+	/** @inheritDoc */
 	public function getOffset( $file ) {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['offset'] ?? 0.0 );
 	}
 
-	/**
-	 * @param File $file
-	 * @return float
-	 */
+	/** @inheritDoc */
 	public function getLength( $file ) {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['length'] ?? 0.0 );
 	}
 
-	/**
-	 * Get useful response headers for GET/HEAD requests for a file with the given metadata
-	 * @param array $metadata Contains this handler's unserialized getMetadata() for a file
-	 * @return array
-	 * @since 1.30
-	 */
+	/** @inheritDoc */
 	public function getContentHeaders( $metadata ) {
 		$result = [];
 
@@ -296,10 +273,7 @@ class OggHandler extends TimedMediaHandler {
 		return $this->findStream( $file, $mediaAudioTypes );
 	}
 
-	/**
-	 * @param File $file
-	 * @return float
-	 */
+	/** @inheritDoc */
 	public function getFramerate( $file ) {
 		$stream = $this->findVideoStream( $file );
 		if ( $stream ) {
@@ -308,28 +282,19 @@ class OggHandler extends TimedMediaHandler {
 		return 0.0;
 	}
 
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function hasVideo( $file ) {
 		$stream = $this->findVideoStream( $file );
 		return $stream !== null;
 	}
 
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function hasAudio( $file ) {
 		$stream = $this->findAudioStream( $file );
 		return $stream !== null;
 	}
 
-	/**
-	 * @param File $file
-	 * @return int
-	 */
+	/** @inheritDoc */
 	public function getAudioChannels( $file ) {
 		$stream = $this->findAudioStream( $file );
 		$header = $stream['header'] ?? null;
@@ -342,10 +307,7 @@ class OggHandler extends TimedMediaHandler {
 		}
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -368,10 +330,7 @@ class OggHandler extends TimedMediaHandler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

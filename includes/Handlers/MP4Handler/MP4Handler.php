@@ -10,10 +10,7 @@ use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
  */
 class MP4Handler extends ID3Handler {
 
-	/**
-	 * @param string $path
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getID3( $path ) {
 		$id3 = parent::getID3( $path );
 		// Unset some parts of id3 that are too detailed and matroska specific:
@@ -21,9 +18,7 @@ class MP4Handler extends ID3Handler {
 		return $id3;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getSizeFromMetadata( $metadata ) {
 		// Just return the size of the first video stream
 		if ( isset( $metadata['video']['resolution_x'] ) && isset( $metadata['video']['resolution_y'] ) ) {
@@ -35,10 +30,7 @@ class MP4Handler extends ID3Handler {
 		return [ false, false ];
 	}
 
-	/**
-	 * @param File $image
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getMetadataType( $image ) {
 		return 'mp4';
 	}
@@ -94,10 +86,7 @@ class MP4Handler extends ID3Handler {
 		return $streamTypes;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -109,10 +98,7 @@ class MP4Handler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

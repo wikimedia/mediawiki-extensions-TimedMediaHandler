@@ -45,9 +45,7 @@ class SrtReader extends Reader {
 	/** @var DOM\InternalNode|null */
 	protected $current;
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function read( $input ) {
 		// Trim BOM if present.
 		$bom = "\xEF\xBB\xBF";

@@ -17,9 +17,7 @@ class VttWriter extends Writer {
 	/** @var true[] */
 	protected $usedIdentifiers = [];
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function write( $cues ) {
 		return "WEBVTT\n\n" . implode( "\n\n",
 			array_map(

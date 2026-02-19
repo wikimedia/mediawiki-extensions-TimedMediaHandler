@@ -10,10 +10,7 @@ use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
  */
 class MPEGHandler extends ID3Handler {
 
-	/**
-	 * @param File $image
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getMetadataType( $image ) {
 		return 'mpeg';
 	}
@@ -48,9 +45,7 @@ class MPEGHandler extends ID3Handler {
 		return $streamTypes;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getSizeFromMetadata( $metadata ) {
 		// Just return the size of the first video stream
 		if ( isset( $metadata['error'] ) ) {
@@ -73,10 +68,7 @@ class MPEGHandler extends ID3Handler {
 		return [ false, false ];
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -88,10 +80,7 @@ class MPEGHandler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

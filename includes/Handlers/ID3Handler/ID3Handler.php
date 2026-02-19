@@ -49,9 +49,7 @@ class ID3Handler extends TimedMediaHandler {
 		return $id3;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function getSizeAndMetadata( $state, $path ) {
 		$metadata = $this->getID3( $path );
 		$results = [
@@ -75,9 +73,7 @@ class ID3Handler extends TimedMediaHandler {
 		return [ false, false ];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function isFileMetadataValid( $image ) {
 		$metadata = $image->getMetadataArray();
 
@@ -105,56 +101,37 @@ class ID3Handler extends TimedMediaHandler {
 		return (int)( $metadata['bitrate'] ?? 0 );
 	}
 
-	/**
-	 * @param File $file
-	 * @return float
-	 */
+	/** @inheritDoc */
 	public function getLength( $file ) {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['playtime_seconds'] ?? 0.0 );
 	}
 
-	/**
-	 * @param File $file
-	 * @return float framerate as floating point; 0 indicates no valid rate data
-	 */
+	/** @inheritDoc */
 	public function getFramerate( $file ) {
 		$metadata = $file->getMetadataArray();
 		return (float)( $metadata['video']['frame_rate'] ?? 0.0 );
 	}
 
-	/**
-	 * Returns true if the file contains an interlaced video track.
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function isInterlaced( $file ) {
 		$metadata = $file->getMetadataArray();
 		return (bool)( $metadata['video']['interlaced'] ?? false );
 	}
 
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function hasVideo( $file ) {
 		$metadata = $file->getMetadataArray();
 		return ( $metadata['video'] ?? null ) !== null;
 	}
 
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function hasAudio( $file ) {
 		$metadata = $file->getMetadataArray();
 		return ( $metadata['audio'] ?? null ) !== null;
 	}
 
-	/**
-	 * @param File $file
-	 * @return int
-	 */
+	/** @inheritDoc */
 	public function getAudioChannels( $file ) {
 		$metadata = $file->getMetadataArray();
 		return (int)( $metadata['audio']['channels'] ?? 0 );

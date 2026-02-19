@@ -11,10 +11,7 @@ use MediaWiki\TimedMediaHandler\Handlers\ID3Handler\ID3Handler;
  */
 class WAVHandler extends ID3Handler {
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getMetadataType( $file ) {
 		return 'wav';
 	}
@@ -60,10 +57,7 @@ class WAVHandler extends ID3Handler {
 		return $streamTypes;
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getShortDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
@@ -74,10 +68,7 @@ class WAVHandler extends ID3Handler {
 			->escaped();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string HTML
-	 */
+	/** @inheritDoc */
 	public function getLongDesc( $file ) {
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {

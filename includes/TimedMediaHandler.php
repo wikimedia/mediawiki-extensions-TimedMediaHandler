@@ -12,10 +12,8 @@ use MediaWiki\Parser\Parser;
 use TransformParameterError;
 
 class TimedMediaHandler extends MediaHandler {
-	/**
-	 * Get the list of supported wikitext embed params
-	 * @return array
-	 */
+
+	/** @inheritDoc */
 	public function getParamMap() {
 		return [
 			'img_width' => 'width',
@@ -28,13 +26,7 @@ class TimedMediaHandler extends MediaHandler {
 		];
 	}
 
-	/**
-	 * Validate a embed file parameters
-	 *
-	 * @param string $name Name of the param
-	 * @param mixed $value Value to validated
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function validateParam( $name, $value ) {
 		if ( $name === 'thumbtime' || $name === 'start' || $name === 'end' ) {
 			if ( self::parseTimeString( $value ) === false ) {
@@ -116,11 +108,7 @@ class TimedMediaHandler extends MediaHandler {
 		return false;
 	}
 
-	/**
-	 * @param File $image
-	 * @param array &$params
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function normaliseParams( $image, &$params ) {
 		$timeParam = [ 'thumbtime', 'start', 'end' ];
 		// Parse time values if endtime or thumbtime can't be more than length -1
@@ -268,12 +256,7 @@ class TimedMediaHandler extends MediaHandler {
 		return sprintf( '%02d:%02d:%02d%s', $hours, $min, $sec, $ms );
 	}
 
-	/**
-	 * @param string $ext
-	 * @param string $mime
-	 * @param null $params
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getThumbType( $ext, $mime, $params = null ) {
 		return [ 'jpg', 'image/jpeg' ];
 	}
@@ -403,10 +386,7 @@ class TimedMediaHandler extends MediaHandler {
 		return new TimedMediaTransformOutput( $options );
 	}
 
-	/**
-	 * @param File $file
-	 * @return bool
-	 */
+	/** @inheritDoc */
 	public function mustRender( $file ) {
 		return true;
 	}
@@ -420,19 +400,12 @@ class TimedMediaHandler extends MediaHandler {
 		return 0.0;
 	}
 
-	/**
-	 * Get length of a file
-	 * @param File $file
-	 * @return float
-	 */
+	/** @inheritDoc */
 	public function getLength( $file ) {
 		return $file->getLength();
 	}
 
-	/**
-	 * @param File $file
-	 * @return string
-	 */
+	/** @inheritDoc */
 	public function getDimensionsString( $file ) {
 		if ( $file->getWidth() ) {
 			return wfMessage(

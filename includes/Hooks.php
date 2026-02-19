@@ -295,9 +295,7 @@ class Hooks implements
 		}
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
 		$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true, 'latest' => true ] );
 		if ( $file && $this->transcodableChecker->isTranscodableFile( $file ) ) {
