@@ -18,6 +18,7 @@
 	"timedmedia-midi-short-audio": "MIDI-jiõnnteâttõs, $1",
 	"timedmedia-mp4-short-video": "MP4 $1 -videoteâttõs, $2",
 	"timedmedia-mpeg-short-video": "MPEG $1 -videoteâttõs, $2",
+	"timedmedia-dismiss": "Piij ǩidd",
 	"timedmedia-download": "Laadd teâttõõzz",
 	"timedmedia-desc-link": "Lââʹssteâđ tän teâttõõzz pirr",
 	"timedmedia-status": "Status",
@@ -42,5 +43,7 @@
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 minutt|$1 minuutt|$1 minuttâd}} da {{PLURAL:$2|$2 sekuntt|$2 sekuunt|$2 sekunttâd}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 sekuntt|$1 sekuunt|$1 sekunttâd}}",
 	"videojs-more-information": "Lââʹssteâđ",
-	"videojs-quality": "Videokvaliteʹtt"
+	"videojs-quality": "Videokvaliteʹtt",
+	"videojs-endcard-copy-link": "Kopiââʹst liiŋk",
+	"videojs-endcard-embed-copy": "Kopiââʹst"
 }
