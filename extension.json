@@ -66,7 +66,7 @@
 		}
 	},
 	"LogActionsHandlers": {
-		"timedmediahandler/resettranscode": "LogFormatter"
+		"timedmediahandler/resettranscode": "MediaWiki\\Logging\\LogFormatter"
 	},
 	"LogTypes": [
 		"timedmediahandler"
