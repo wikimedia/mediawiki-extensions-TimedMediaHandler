@@ -28,14 +28,13 @@ class MigrateTranscodeStates extends LoggedUpdateMaintenance {
 		// Note: these queries should check prefixes of the index transcode_time_inx
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		WebVideoTranscode::STATE_ACTIVE  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NOT NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
-		// phpcs:ignore Generic.Files.LineLength.TooLong
-		WebVideoTranscode::STATE_FAILED  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NOT NULL AND transcode_time_success IS     NULL AND transcode_time_error IS NOT NULL',
+		WebVideoTranscode::STATE_FAILED  => 'transcode_time_error IS NOT NULL',
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		WebVideoTranscode::STATE_QUEUED  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS     NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		WebVideoTranscode::STATE_MISSING => 'transcode_time_addjob IS     NULL AND transcode_time_startwork IS     NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
 		// phpcs:ignore Generic.Files.LineLength.TooLong
-		WebVideoTranscode::STATE_SUCCESS => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NOT NULL AND transcode_time_success IS NOT NULL AND transcode_time_error IS     NULL',
+		WebVideoTranscode::STATE_SUCCESS => 'transcode_time_success IS NOT NULL AND transcode_time_error IS     NULL',
 	];
 
 	/** @inheritDoc */
