@@ -34,17 +34,14 @@ class SrtWriter extends Writer {
 	 * @return string
 	 */
 	public function formatTimestamp( $time ) {
-		$s = floor( $time );
-		$frac = $time - $s;
-		$millis = round( $frac * 1000.0 );
+		$s = (int)floor( $time );
+		$millis = round( ( $time - $s ) * 1000.0 );
 
 		$seconds = $s % 60;
-		$s = ( $s - $seconds ) / 60;
+		$s = intdiv( $s, 60 );
 
 		$minutes = $s % 60;
-		$s = ( $s - $minutes ) / 60;
-
-		$hours = $s;
+		$hours = intdiv( $s, 60 );
 
 		return sprintf( "%02d:%02d:%02d,%03d",
 			$hours,

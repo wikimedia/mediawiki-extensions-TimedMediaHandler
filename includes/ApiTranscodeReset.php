@@ -97,7 +97,6 @@ class ApiTranscodeReset extends ApiBase {
 
 		// All good, do the transcode removal:
 		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
-
 		// Only schedule a new transcode if the key is currently enabled or if resetting all
 		$keyEnabled = in_array( $transcodeKey, $this->transcodePresets->enabledTranscodes(), true );
 		if ( $transcodeKey === null || $keyEnabled ) {

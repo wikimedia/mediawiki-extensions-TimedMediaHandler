@@ -808,13 +808,21 @@ class WebVideoTranscode {
 
 	/**
 	 * Update the job queue if the file is not already in the job queue:
-	 * @param File &$file File object
-	 * @param string $transcodeKey transcode key
+	 * @param File $file File object
+	 * @param ?string $transcodeKey transcode key
 	 * @param array $options array with 'manualOverride' or 'remux' boolean options
 	 */
-	public static function updateJobQueue( &$file, $transcodeKey, $options = [] ) {
+	public static function updateJobQueue( $file, ?string $transcodeKey, array $options = [] ) {
 		$fileName = $file->getTitle()->getDBkey();
 		$dbw = $file->repo->getPrimaryDB();
+
+		if ( $transcodeKey === null ) {
+			$enabledTranscodes = static::transcodePresets()->enabledVideoTranscodes();
+			foreach ( $enabledTranscodes as $key ) {
+				static::updateJobQueue( $file, $key, $options );
+			}
+			return;
+		}
 
 		if ( !static::isTranscodeEnabled( $file, $transcodeKey ) ) {
 			return;
