@@ -139,7 +139,7 @@
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodificación|$1 transcodificacións}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodificación activa|$1 transcodificacións activas}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodificación|$1 transcodificacións}} na cola",
-	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodificación fallida|$1 transcodificacións fallidas}}",
+	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodificación errónea|$1 transcodificacións erróneas}}",
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 parámetro de transcodificación non iniciado|$1 parámetros de transcodificación non iniciados}}",
 	"timedmedia-no-derivatives": "Non é precisa a transcodificación.",
 	"timedmedia-file": "Ficheiro",
