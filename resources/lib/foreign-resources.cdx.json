@@ -2,7 +2,7 @@
 	"$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
 	"bomFormat": "CycloneDX",
 	"specVersion": "1.6",
-	"serialNumber": "urn:uuid:df072d28-dbbb-4064-83f6-bbc2f4c93945",
+	"serialNumber": "urn:uuid:04d1cc92-c966-4ab7-9376-3ebf8d0b9bfb",
 	"version": 1,
 	"components": [
 		{
@@ -21,7 +21,7 @@
 					"name": "Brightcove"
 				},
 				{
-					"name": "Inc. <https://www.brightcove.com/>"
+					"name": "Inc. \u003Chttps://www.brightcove.com/\u003E"
 				}
 			],
 			"externalReferences": [
@@ -50,6 +50,47 @@
 			"externalReferences": [
 				{
 					"url": "https://github.com/bvibber/ogv.js#readme",
+					"type": "website"
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "dash.js",
+			"version": "5.1.1",
+			"licenses": [
+				{
+					"license": {
+						"id": "BSD-3-Clause"
+					}
+				}
+			],
+			"authors": [
+				{
+					"name": "Dash Industry Forum <https://dashif.org/>"
+				}
+			],
+			"externalReferences": [
+				{
+					"url": "https://dashjs.org/",
+					"type": "website"
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "videojs-contrib-dash",
+			"version": "5.1.1",
+			"licenses": [
+				{
+					"license": {
+						"id": "Apache-2.0"
+					}
+				}
+			],
+			"externalReferences": [
+				{
+					"url": "https://github.com/videojs/videojs-contrib-dash/",
 					"type": "website"
 				}
 			]

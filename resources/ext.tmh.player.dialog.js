@@ -136,19 +136,11 @@ class MediaDialog extends OO.ui.ProcessDialog {
 		// Start playback when ready...
 		this.loadedPromise.then( ( videojsPlayer ) => {
 			videojsPlayer.ready( () => {
-				// Use a setTimeout to ensure all ready callbacks have run before
-				// we start playback. This is important for the source selector
-				// plugin, which may change sources before playback begins.
-				//
-				// This is used instead of an event like `canplay` or `loadeddata`
-				// because some versions of EdgeHTML don't fire these events.
-				// Support: Edge 18
-				setTimeout( () => {
+				videojsPlayer.one( 'canplay', () => {
 					$( indicator.$element ).detach();
 					videojsPlayer.play();
-					// Focus the player so that keyboard events work
 					videojsPlayer.el().focus();
-				}, 0 );
+				} );
 			} );
 		} );
 	}

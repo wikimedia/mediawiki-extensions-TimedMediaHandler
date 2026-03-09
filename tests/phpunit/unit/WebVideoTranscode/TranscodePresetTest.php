@@ -52,12 +52,52 @@ class TranscodePresetTest extends TestCase {
 			'noUpscaling' => 'nu',
 			'aspect' => 'as',
 			'framerate' => 'fr',
+			'segmentDuration' => 'sd',
+			'videoRenditions' => [
+				[
+					'maxSize' => 'vrms',
+					'videoBitrate' => 'vrvb',
+					'maxrate' => 'vrmr',
+					'crf' => 'vrc',
+					'speed' => 'vrs',
+				],
+			]
 		];
 
 		$preset = new TranscodePreset( $settings );
 
 		foreach ( $settings as $key => $value ) {
-			$this->assertSame( $value, $preset->$key );
+			if ( $key == 'videoRenditions' ) {
+				foreach ( $value as $videoRendition ) {
+					$vrOptions = new TranscodePreset( $videoRendition );
+					foreach ( $vrOptions as $vrKey => $vrValue ) {
+						$this->assertSame( $vrValue, $vrOptions->$vrKey );
+					}
+				}
+			} else {
+				$this->assertSame( $value, $preset->$key );
+			}
 		}
+	}
+
+	public function testGetMaxSizeNoRenditions() {
+		$settings = [
+			'maxSize' => '200x100',
+		];
+
+		$preset = new TranscodePreset( $settings );
+		$this->assertEquals( '200x100', $preset->getMaxSize() );
+	}
+
+	public function testGetMaxSizeWithRenditions() {
+		$settings = [
+			'videoRenditions' => [
+				[ 'maxSize' => '200x100' ],
+				[ 'maxSize' => '400x200' ],
+			]
+		];
+
+		$preset = new TranscodePreset( $settings );
+		$this->assertEquals( '400x200', $preset->getMaxSize() );
 	}
 }

@@ -90,11 +90,44 @@ class TranscodePreset {
 	/** @var string|null The frame rate of the video (e.g., "24", "29.97"). Corresponds to ffmpeg option: -r */
 	public ?string $framerate = null;
 
+	/** @var self[] An array of options for different video renditions, used when transcoding to mpeg-dash */
+	public array $videoRenditions = [];
+
+	/** @var string|null Duration of individual video segments used when transcoding to mpeg-dash */
+	public ?string $segmentDuration = null;
+
 	public function __construct( array $settings ) {
 		foreach ( $settings as $key => $value ) {
 			if ( property_exists( $this, $key ) ) {
-				$this->$key = $value;
+				if ( $key === 'videoRenditions' ) {
+					$videoRenditionObjects = [];
+					foreach ( $value as $videoRendition ) {
+						$videoRenditionObjects[] = new self( $videoRendition );
+					}
+					$this->videoRenditions = $videoRenditionObjects;
+				} else {
+					$this->$key = $value;
+				}
 			}
+		}
+	}
+
+	public function getMaxSize(): ?string {
+		if ( count( $this->videoRenditions ) > 0 ) {
+			$maxSize = $this->maxSize;
+			$maxWidth = 0;
+			foreach ( $this->videoRenditions as $videoRendition ) {
+				if ( $videoRendition->maxSize ) {
+					[ $width, ] = explode( 'x', $videoRendition->maxSize, 2 );
+					if ( $width > $maxWidth ) {
+						$maxWidth = $width;
+						$maxSize = $videoRendition->maxSize;
+					}
+				}
+			}
+			return $maxSize;
+		} else {
+			return $this->maxSize;
 		}
 	}
 }

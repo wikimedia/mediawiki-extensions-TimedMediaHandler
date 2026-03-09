@@ -16,11 +16,11 @@
 		<tr>
 			<td>{{msg-derivative-key}}</td>
 			<td>{{bitrate}}</td>
-		{{^transcode-success}}
-			<td>{{msg-timedmedia-not-ready}}</td>
-		{{/transcode-success}}
-		{{#transcode-success}}
 			<td>
+		{{^transcode-success}}
+			{{msg-timedmedia-not-ready}}
+		{{/transcode-success}}
+		{{#transcode-downloadable}}
 				{{!
 				We want link behavior, with button styling, so we wrap the button with the link
 				The button is hidden from accessibility layer.
@@ -33,8 +33,8 @@
 						<span class="cdx-button__icon cdx-downloadfile--download"></span>
 					</button>
 				</a>
+		{{/transcode-downloadable}}
 			</td>
-		{{/transcode-success}}
 		{{#has-reset}}
 			<td class="mw-filepage-transcodereset">
 				<a href data-transcodekey="{{transcodeKey}}">{{msg-timedmedia-reset}}</a>
