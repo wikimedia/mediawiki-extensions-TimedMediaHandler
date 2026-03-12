@@ -14,7 +14,8 @@
 			"Schniggendiller",
 			"The Evil IP address",
 			"Umherirrender",
-			"XenonX3"
+			"XenonX3",
+			"Wikifan"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -166,7 +167,7 @@
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 Minute|$1 Minuten}} und {{PLURAL:$2|$2 Sekunde|$2 Sekunden}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 Sekunde|$1 Sekunden}}",
 	"right-transcode-reset": "Fehlgeschlagene oder erfolgreiche Umschlüsselungen von Video-Dateien zurücksetzen, um sie erneut in die Auftragswarteschlange einzureihen",
-	"right-transcode-status": "[[Special:TimedMediaHandler|Informationen über aktuelle Umschlüsselungen]] betrachten",
+	"right-transcode-status": "[[Special:TimedMediaHandler|Informationen über aktuelle Medienumwandlungen]] betrachten",
 	"action-transcode-reset": "Transkodierungen zurückzusetzen",
 	"action-transcode-status": "den aktuellen Transkodierungstatus anzusehen",
 	"log-name-timedmediahandler": "Zeitgesteuerte-Medien-Logbuch",
