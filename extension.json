@@ -332,7 +332,9 @@
 		"ParserTestMediaHandlers": {
 			"description": "MockOggHandler::class",
 			"value": {
-				"application/ogg": "MockOggHandler"
+				"application/ogg": "MockOggHandler",
+				"audio/ogg": "MockOggHandler",
+				"video/ogg": "MockOggHandler"
 			}
 		},
 		"TmhFluidsynthLocation": {
@@ -550,6 +552,8 @@
 	},
 	"MediaHandlers": {
 		"application/ogg": "MediaWiki\\TimedMediaHandler\\Handlers\\OggHandler\\OggHandler",
+		"audio/ogg": "MediaWiki\\TimedMediaHandler\\Handlers\\OggHandler\\OggHandler",
+		"video/ogg": "MediaWiki\\TimedMediaHandler\\Handlers\\OggHandler\\OggHandler",
 		"audio/flac": "MediaWiki\\TimedMediaHandler\\Handlers\\FLACHandler\\FLACHandler",
 		"audio/midi": "MediaWiki\\TimedMediaHandler\\Handlers\\MIDIHandler\\MIDIHandler",
 		"audio/mp4": "MediaWiki\\TimedMediaHandler\\Handlers\\MP4Handler\\MP4Handler",

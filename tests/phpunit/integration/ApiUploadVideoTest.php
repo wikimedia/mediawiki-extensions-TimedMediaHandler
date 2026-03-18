@@ -32,7 +32,8 @@ class ApiUploadVideoTest extends ApiVideoUploadTestCase {
 		$this->assertEquals( 'Success', $result['upload']['result'] );
 		$this->assertEquals( filesize( $file['filePath'] ),
 			(int)$result['upload']['imageinfo']['size'] );
-		$this->assertEquals( $file['mime'], $result['upload']['imageinfo']['mime'] );
+		$expectedMime = (array)$file['mime'];
+		$this->assertContains( $result['upload']['imageinfo']['mime'], $expectedMime );
 	}
 
 }

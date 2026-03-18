@@ -17,7 +17,9 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 			[
 				// Double wrap the file array to match phpunit data provider conventions
 				[
-					'mime' => 'application/ogg',
+					// video/ogg per RFC 5334; application/ogg for older
+				// MediaWiki core without OGG stream inspection
+				'mime' => [ 'video/ogg', 'application/ogg' ],
 					'filePath' => __DIR__ . '/media/test5seconds.electricsheep.300x400.ogv',
 					'size' => 301477,
 					'width' => 400,
@@ -82,7 +84,8 @@ abstract class ApiVideoUploadTestCase extends ApiUploadTestCase {
 		$this->deleteFileByFileName( $fileName );
 		$this->deleteFileByContent( $file['filePath'] );
 
-		if ( !$this->fakeUploadFile( 'file', $fileName, $file['mime'], $file['filePath'] ) ) {
+		$mime = is_array( $file['mime'] ) ? $file['mime'][0] : $file['mime'];
+		if ( !$this->fakeUploadFile( 'file', $fileName, $mime, $file['filePath'] ) ) {
 			$this->markTestIncomplete( "Couldn't upload file!\n" );
 		}
 
