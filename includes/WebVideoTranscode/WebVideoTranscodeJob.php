@@ -25,9 +25,9 @@ use Wikimedia\Rdbms\ILBFactory;
  * Job for web video transcode
  *
  * Support two modes
- * 1) non-free media transcode ( delays the media file being inserted,
+ * 1) non-free media transcode (delays the media file being inserted,
  *    adds note to talk page once ready)
- * 2) derivatives for video ( makes new sources for the asset )
+ * 2) derivatives for video (makes new sources for the asset)
  *
  * @ingroup JobQueue
  */
@@ -136,7 +136,6 @@ class WebVideoTranscodeJob extends Job {
 		$dbw->newUpdateQueryBuilder()
 			->update( 'transcode' )
 			->set( [
-				'transcode_time_error' => $dbw->timestamp(),
 				'transcode_error' => $error,
 				'transcode_state' => WebVideoTranscode::STATE_FAILED,
 				'transcode_touched' => $dbw->timestamp(),
@@ -195,40 +194,31 @@ class WebVideoTranscodeJob extends Job {
 			}
 			$dbw = $this->lbFactory->getPrimaryDatabase();
 
-			// Check if we have "already started" the transcode ( possible error )
-			$transcodeRow = $dbw->newSelectQueryBuilder()
-				->select( [ 'transcode_time_addjob', 'transcode_time_startwork' ] )
+			// Check if the transcode job is in the expected state (STATE_QUEUED)
+			$transcodeQueued = $dbw->newSelectQueryBuilder()
 				->from( 'transcode' )
 				->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey
+					'transcode_key' => $transcodeKey,
+					'transcode_state' => WebVideoTranscode::STATE_QUEUED
 				] )
 				->caller( __METHOD__ )
-				->fetchRow();
+				->fetchRowCount();
 
-			if ( $transcodeRow === false ) {
-				$error = $this->title . ': Possible Error, transcode task removed before job began';
-				$this->output( $error );
-				return true;
-			}
-
-			if ( $transcodeRow->transcode_time_startwork && (
-				wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_startwork ) >
-				wfTimestamp( TS_UNIX, $transcodeRow->transcode_time_addjob ) )
-			) {
-				$error = $this->title . ': Error, running transcode job, for job that has already started';
+			if ( !$transcodeQueued ) {
+				$error = $this->title . ': Possible Error, transcode task removed or already started';
 				$this->output( $error );
 				return true;
 			}
 
 			// Update the transcode table letting it know we have "started work":
-			$jobStartTimeCache = wfTimestamp( TS_UNIX );
+			$jobTouchedCache = $dbw->timestamp();
 			$dbw->newUpdateQueryBuilder()
 				->update( 'transcode' )
 				->set( [
-					'transcode_time_startwork' => $dbw->timestamp( $jobStartTimeCache ),
+					'transcode_time_startwork' => $jobTouchedCache,
 					'transcode_state' => WebVideoTranscode::STATE_ACTIVE,
-					'transcode_touched' => $dbw->timestamp(),
+					'transcode_touched' => $jobTouchedCache,
 				] )
 				->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
@@ -291,32 +281,27 @@ class WebVideoTranscodeJob extends Job {
 			$dbw = $this->lbFactory->getPrimaryDatabase();
 
 			// Do a quick check to confirm the job was not restarted or removed while we were transcoding
-			// Confirm that the in memory $jobStartTimeCache matches db start time
-			$dbStartTime = $dbw->newSelectQueryBuilder()
-				->select( 'transcode_time_startwork' )
+			// Confirm that we are still the active job and state is STATE_ACTIVE
+			$dbActive = $dbw->newSelectQueryBuilder()
 				->from( 'transcode' )
 				->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey
+					'transcode_key' => $transcodeKey,
+					'transcode_touched' => $jobTouchedCache,
+					'transcode_state' => WebVideoTranscode::STATE_ACTIVE,
 				] )
 				->caller( __METHOD__ )
-				->fetchField();
+				->fetchRowCount();
 
-			// Check for ( hopefully rare ) issue of or job restarted while transcode in progress
-			if ( $dbStartTime === null || $jobStartTimeCache !== wfTimestamp( TS_UNIX, $dbStartTime ) ) {
+			// Check for (hopefully rare) issue of job restarted while transcode in progress
+			if ( !$dbActive ) {
 				$this->output(
 					'Possible Error,
 						transcode task restarted, removed, or completed while transcode was in progress'
 				);
-				// if an error; just error out,
-				// we can't remove temp files or update states, because the new job may be doing stuff.
-				if ( $status !== true ) {
-					$this->setTranscodeError( $transcodeKey, $status );
-					return false;
-				}
-				// else just continue with db updates,
-				// and when the new job comes around it won't start because it will see
-				// that the job has already been started.
+				// if it was restarted, we should just stop and not update anything
+				// because the new job may be doing stuff.
+				return false;
 			}
 
 			// If status is ok and target does not exist, reset status
@@ -415,7 +400,6 @@ class WebVideoTranscodeJob extends Job {
 						->update( 'transcode' )
 						->set( [
 							'transcode_error' => '',
-							'transcode_time_error' => null,
 							'transcode_time_success' => $dbw->timestamp(),
 							'transcode_final_bitrate' => $bitrate,
 							'transcode_state' => WebVideoTranscode::STATE_SUCCESS,

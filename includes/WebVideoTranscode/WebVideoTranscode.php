@@ -749,10 +749,9 @@ class WebVideoTranscode {
 					->row( [
 						'transcode_image_name' => $fileName,
 						'transcode_key' => $transcodeKey,
-						// Do not start transcode jobs automatically, as purging is too common.
-						'transcode_time_addjob' => null,
 						'transcode_error' => '',
 						'transcode_final_bitrate' => 0,
+						// Do not start transcode jobs automatically, as purging is too common.
 						'transcode_state' => self::STATE_MISSING,
 						'transcode_touched' => $dbw->timestamp(),
 						'transcode_size' => null,
@@ -829,14 +828,12 @@ class WebVideoTranscode {
 		}
 
 		// If the transcode entry hasn't been added yet, attempt to do so
-		// Reset the addjob time when already added (in case it is now null)
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'transcode' )
 			->ignore()
 			->row( [
 				'transcode_image_name' => $fileName,
 				'transcode_key' => $transcodeKey,
-				'transcode_time_addjob' => $dbw->timestamp(),
 				'transcode_error' => '',
 				'transcode_final_bitrate' => 0,
 				'transcode_state' => self::STATE_QUEUED,
@@ -848,7 +845,6 @@ class WebVideoTranscode {
 				'transcode_key',
 			] )
 			->set( [
-				'transcode_time_addjob' => $dbw->timestamp(),
 				'transcode_error' => '',
 				'transcode_final_bitrate' => 0,
 				'transcode_state' => self::STATE_QUEUED,
@@ -877,7 +873,6 @@ class WebVideoTranscode {
 				$dbw->newUpdateQueryBuilder()
 					->update( 'transcode' )
 					->set( [
-						'transcode_time_error' => $dbw->timestamp(),
 						'transcode_error' => "Failed to insert Job.",
 						'transcode_state' => self::STATE_FAILED,
 						'transcode_touched' => $dbw->timestamp(),
@@ -921,10 +916,7 @@ class WebVideoTranscode {
 		return $db->newSelectQueryBuilder()
 			->from( 'transcode' )
 			->where( [
-				$db->expr( 'transcode_time_addjob', '!=', null ),
-				'transcode_time_startwork' => null,
-				'transcode_time_success' => null,
-				'transcode_time_error' => null,
+				'transcode_state' => self::STATE_QUEUED,
 			] )
 			->caller( __METHOD__ )
 			->fetchRowCount();
