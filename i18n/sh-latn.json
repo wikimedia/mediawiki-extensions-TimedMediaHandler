@@ -14,7 +14,7 @@
 	"timedmedia-ogg-long-video": "Ogg $1 videodatoteka, trajanje $2, $4 × $5 piksela, $3, veličina: $6",
 	"timedmedia-ogg-long-multiplexed": "Ogg multipleksna zvučna/video datoteka, $1, trajanje $2, $4 × $5 piksela, $3 sveukupno",
 	"timedmedia-ogg-long-general": "Ogg medijska datoteka, trajanje $2, $3, veličina: $6",
-	"timedmedia-ogg-long-error": "Nevažeća Ogg datoteka: $1, veličina: $2",
+	"timedmedia-ogg-long-error": "Neispravna Ogg datoteka: $1, veličina: $2",
 	"timedmedia-ogg-long-no-streams": "Ogg-datoteka. Upozorenje: Nisam prepoznao nijedan od korištenih kodeka.",
 	"timedmedia-webm-short-video": "WebM $1 video-snimak, $2",
 	"timedmedia-webm-long-video": "WebM zvučna/video snimak, $1, trajanje $2, $4 × $5 piksela, $3 sveukupno",
