@@ -29,10 +29,13 @@ class TimedMediaHandler extends MediaHandler {
 	/** @inheritDoc */
 	public function validateParam( $name, $value ) {
 		if ( $name === 'thumbtime' || $name === 'start' || $name === 'end' ) {
-			if ( self::parseTimeString( $value ) === false ) {
+			if ( !is_string( $value ) || self::parseTimeString( $value ) === false ) {
 				return false;
 			}
 		} elseif ( $name === 'disablecontrols' ) {
+			if ( !is_string( $value ) ) {
+				return false;
+			}
 			$values = explode( ',', $value );
 			foreach ( $values as $v ) {
 				if ( !in_array( $v, [ 'options', 'timedText', 'fullscreen' ] ) ) {
@@ -40,7 +43,7 @@ class TimedMediaHandler extends MediaHandler {
 				}
 			}
 		} elseif ( $name === 'width' || $name === 'height' ) {
-			return $value > 0;
+			return (int)$value > 0;
 		}
 		return true;
 	}
