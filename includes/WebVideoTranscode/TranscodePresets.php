@@ -28,11 +28,16 @@ class TranscodePresets {
 
 		// WebM VP8/Vorbis transcodes
 		//
+		// These are the original free/open formats what we launched with,
+		// supported natively by Firefox/Chrome/Opera, and in Safari/IE/Edge via ogv.js.
+		//
 		// Two-pass encoding is a bit slower, but *massively* improves bitrate control.
 		// Trading off speed using the '-speed 3' parameter on the second pass.
 		//
 		// The current defaults do not include VP8 output, but it may be helpful
 		// at a limited resolution range for certain back-compatibility scenarios.
+
+		// Very low-bitrate web streamable WebM video
 		'160p.webm' => [
 			'maxSize' => '288x160',
 			'videoBitrate' => '193k',
@@ -48,6 +53,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// Low-bitrate web streamable WebM video
 		'240p.webm' => [
 			'maxSize' => '426x240',
 			'videoBitrate' => '385k',
@@ -63,6 +69,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// Medium-bitrate web streamable WebM video
 		'360p.webm' => [
 			'maxSize' => '640x360',
 			'videoBitrate' => '767k',
@@ -79,6 +86,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// Moderate-bitrate web streamable WebM video
 		'480p.webm' => [
 			'maxSize' => '854x480',
 			'videoBitrate' => '1250k',
@@ -95,6 +103,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// A high quality WebM stream
 		'720p.webm' => [
 			'maxSize' => '1280x720',
 			'videoBitrate' => '2491k',
@@ -111,6 +120,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// A full-HD high quality WebM stream
 		'1080p.webm' => [
 			'maxSize' => '1920x1080',
 			'videoBitrate' => '4963k',
@@ -127,6 +137,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// A 2K full high quality WebM stream
 		'1440p.webm' => [
 			'maxSize' => '2560x1440',
 			'videoBitrate' => '8094k',
@@ -143,6 +154,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
+		// A 4K full high quality WebM stream
 		'2160p.webm' => [
 			'maxSize' => '3840x2160',
 			'videoBitrate' => '16126k',
@@ -160,7 +172,10 @@ class TranscodePresets {
 			'type' => 'video/webm; codecs="vp8, vorbis"',
 		],
 
-		// WebM VP9 transcode:
+		// WebM VP9 transcodes
+		//
+		// These are our future free/open video formats supported since Firefox 28, Chrome 25
+		// (incl Opera 16, and Edge 79), Safari 14.1 (macOS 12), and Mobile Safari (iOS 17.4).
 		//
 		// Two-pass encoding is a bit slower, but *massively* improves bitrate control.
 		// Trading off speed using the '-speed 3' parameter on the second pass.
@@ -170,6 +185,11 @@ class TranscodePresets {
 		// Ultra-HD can use up to 16 threads. Be sure to set $wgFFmpegThreads to a suitable
 		// maximum values!
 		//
+		// As of Jun 2024, 2K and 4K are disabled due to performance issues (T368433).
+		//
+		// As of Jan 2026 only 240p, 480p and 1080p are enabled by default (T413031).
+
+		// Very low-bitrate
 		'120p.vp9.webm' => [
 			'maxSize' => '213x120',
 			'videoBitrate' => '95k',
@@ -183,6 +203,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// Very low-bitrate
 		'180p.vp9.webm' => [
 			'maxSize' => '320x180',
 			'videoBitrate' => '189k',
@@ -196,6 +217,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// Low-bitrate
 		'240p.vp9.webm' => [
 			'maxSize' => '426x240',
 			'videoBitrate' => '308k',
@@ -209,6 +231,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// A "least common denominator" h.264 stream; first gen iPhone, iPods, early Android etc.
 		'360p.vp9.webm' => [
 			'maxSize' => '640x360',
 			'videoBitrate' => '613k',
@@ -223,6 +246,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// Mid range h.264 stream; mid range phones and low end tablets
 		'480p.vp9.webm' => [
 			'maxSize' => '854x480',
 			'videoBitrate' => '1000k',
@@ -237,6 +261,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// High quality HD stream; higher end phones, tablets, smart tvs
 		'720p.vp9.webm' => [
 			'maxSize' => '1280x720',
 			'videoBitrate' => '1993k',
@@ -251,6 +276,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// Full-HD high quality stream; higher end phones, tablets, smart tvs
 		'1080p.vp9.webm' => [
 			'maxSize' => '1920x1080',
 			'videoBitrate' => '3971k',
@@ -265,6 +291,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// 2K high quality stream; higher end phones, tablets, smart tvs
 		'1440p.vp9.webm' => [
 			'maxSize' => '2560x1440',
 			'videoBitrate' => '6475k',
@@ -279,6 +306,7 @@ class TranscodePresets {
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
 		],
+		// 4K high quality stream; higher end phones, tablets, smart tvs
 		'2160p.vp9.webm' => [
 			'maxSize' => '3840x2160',
 			'videoBitrate' => '12900k',
@@ -499,7 +527,16 @@ class TranscodePresets {
 		// level 5 needed for 1440p60, 2160p30
 		// level 5.1 needed for 2160p60
 
-		// deprecated
+		// MP4 H.264/AAC transcodes
+		//
+		// This is the primary format for the Apple/Microsoft world.
+		// Check patent licensing issues in your country before use!
+		//
+		// Disabled by default.
+		//
+		// Similar to WebM in quality/bitrate.
+
+		// Very low-bitrate (deprecated)
 		'160p.mp4' => [
 			'maxSize' => '288x160',
 			'videoCodec' => 'h264',
@@ -508,7 +545,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.640014, mp4a.40.2"',
 		],
-
+		// Low-bitrate
 		'240p.mp4' => [
 			'maxSize' => '426x240',
 			'videoCodec' => 'h264',
@@ -517,8 +554,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E015, mp4a.40.2"',
 		],
-
-		// deprecated
+		// Pretty low-bitrate (deprecated)
 		'320p.mp4' => [
 			'maxSize' => '480x320',
 			'videoCodec' => 'h264',
@@ -527,7 +563,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
-
+		// A "least common denominator" h.264 stream; first gen iPhone, iPods, early Android etc.
 		'360p.mp4' => [
 			'maxSize' => '640x360',
 			'videoCodec' => 'h264',
@@ -536,6 +572,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
+		// Mid range h.264 stream; mid range phones and low end tablets
 		'480p.mp4' => [
 			'maxSize' => '854x480',
 			'videoCodec' => 'h264',
@@ -544,6 +581,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
 		],
+		// High quality HD stream; higher end phones, tablets, smart tvs
 		'720p.mp4' => [
 			'maxSize' => '1280x720',
 			'videoCodec' => 'h264',
@@ -552,6 +590,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E028, mp4a.40.2"',
 		],
+		// Full-HD high quality stream; higher end phones, tablets, smart tvs
 		'1080p.mp4' => [
 			'maxSize' => '1920x1080',
 			'videoCodec' => 'h264',
@@ -560,7 +599,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'type' => 'video/mp4; codecs="avc1.640029, mp4a.40.2"',
 		],
-		// Recommend against due to size
+		// 2K high quality stream (not recommended, due to file size)
 		'1440p.mp4' => [
 			'maxSize' => '2560x1440',
 			'videoCodec' => 'h264',
@@ -569,7 +608,7 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E032, mp4a.40.2"',
 		],
-		// Recommend against due to size
+		// 4K high quality stream (not recommended, due to file size)
 		'2160p.mp4' => [
 			'maxSize' => '4096x2160',
 			'videoCodec' => 'h264',
@@ -578,6 +617,11 @@ class TranscodePresets {
 			'audioBitrate' => '112k',
 			'type' => 'video/mp4; codecs="avc1.42E033, mp4a.40.2"',
 		],
+
+		// Ogg video profiles
+		//
+		// Removed as of January 2018 per T181591.
+		// Use WebM or HLS output for royalty-free codec output.
 
 		// Audio profiles
 		'ogg' => [
