@@ -7,6 +7,7 @@ use MediaTransformError;
 use MediaTransformOutput;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\FileRepo\File\File;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use TransformParameterError;
@@ -161,6 +162,13 @@ class TimedMediaHandler extends MediaHandler {
 			$params['physicalWidth'] = $params['width'];
 		}
 
+		$srcWidth = $image->getWidth();
+		$srcHeight = $image->getHeight();
+		$params['physicalWidth'] = $this->getSteppedThumbWidth(
+			$image, $params['physicalWidth'], $srcWidth, $srcHeight
+		);
+		$params['physicalHeight'] = File::scaleHeight( $srcWidth, $srcHeight, $params['physicalWidth'] );
+
 		// Make sure start time is not > than end time
 		if (
 			isset( $params['start'] ) && isset( $params['end'] ) &&
@@ -175,6 +183,39 @@ class TimedMediaHandler extends MediaHandler {
 			$params[ $flag ] = isset( $params[ $flag ] );
 		}
 		return true;
+	}
+
+	/**
+	 * Copy of ImageHandler::getSteppedThumbWidth()
+	 * @todo move ImageHandler::getSteppedThumbWidth() to MediaHandler
+	 *  and reuse it here
+	 */
+	protected function getSteppedThumbWidth(
+		File $image, int $requestWidth, int $srcWidth, int $srcHeight
+	): int {
+		$mainConfig = MediaWikiServices::getInstance()->getMainConfig();
+		$thumbnailSteps = $mainConfig->get( MainConfigNames::ThumbnailSteps );
+		$thumbnailStepsRatio = $mainConfig->get( MainConfigNames::ThumbnailStepsRatio );
+
+		if ( !$thumbnailSteps || !$thumbnailStepsRatio ) {
+			return $requestWidth;
+		}
+
+		$prevStep = $thumbnailSteps[0];
+		foreach ( $thumbnailSteps as $widthStep ) {
+			if ( ( $widthStep > $srcWidth ) ) {
+				return $prevStep;
+			}
+			if ( $widthStep == $requestWidth ) {
+				return $requestWidth;
+			}
+			if ( $widthStep > $requestWidth ) {
+				return $widthStep;
+			}
+			$prevStep = $widthStep;
+		}
+
+		return $requestWidth;
 	}
 
 	/**
