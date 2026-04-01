@@ -160,14 +160,15 @@ class TimedMediaHandler extends MediaHandler {
 		if ( isset( $params['width'] ) ) {
 			$params['height'] = File::scaleHeight( $size['width'], $size['height'], $params['width'] );
 			$params['physicalWidth'] = $params['width'];
-		}
 
-		$srcWidth = $image->getWidth();
-		$srcHeight = $image->getHeight();
-		$params['physicalWidth'] = $this->getSteppedThumbWidth(
-			$image, $params['physicalWidth'], $srcWidth, $srcHeight
-		);
-		$params['physicalHeight'] = File::scaleHeight( $srcWidth, $srcHeight, $params['physicalWidth'] );
+			// Follow thumb steps
+			$srcWidth = $image->getWidth();
+			$srcHeight = $image->getHeight();
+			$params['physicalWidth'] = $this->getSteppedThumbWidth(
+				$image, $params['physicalWidth'], $srcWidth, $srcHeight
+			);
+			$params['physicalHeight'] = File::scaleHeight( $srcWidth, $srcHeight, $params['physicalWidth'] );
+		}
 
 		// Make sure start time is not > than end time
 		if (
