@@ -510,7 +510,7 @@ class WebVideoTranscodeJob extends Job {
 			} else {
 				// Note -fpsmax is not available on Wikimedia's Debian as of 2023-02-02
 				//
-				//   $cmd .= " -fpsmax " . wfEscapeShellArg( $options['fpsmax'] );
+				//   $cmd .= " -fpsmax " . Shell::escape( $options['fpsmax'] );
 				//   $cmd .= " -fpsmax " . self::MAX_FPS;
 				//
 				// Instead, manually check the detected framerate.

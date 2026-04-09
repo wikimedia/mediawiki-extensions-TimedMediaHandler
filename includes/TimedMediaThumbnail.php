@@ -8,6 +8,7 @@ use MediaWiki\FileRepo\File\UnregisteredLocalFile;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Media\MediaTransformError;
 use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
+use MediaWiki\Shell\Shell;
 
 class TimedMediaThumbnail {
 
@@ -48,8 +49,6 @@ class TimedMediaThumbnail {
 			return false;
 		}
 
-		$cmd = wfEscapeShellArg( $fFmpegLocation ) . ' -nostdin -threads 1 ';
-
 		$file = $options['file'];
 		$handler = $file->getHandler();
 
@@ -71,8 +70,11 @@ class TimedMediaThumbnail {
 			$seekoffset = 3;
 		}
 
+		$cmd = Shell::command( $fFmpegLocation )
+			->params( '-nostdin', '-threads', '1' );
+
 		if ( $offset > $seekoffset ) {
-			$cmd .= ' -ss ' . (float)( $offset - $seekoffset );
+			$cmd = $cmd->params( '-ss', (string)(float)( $offset - $seekoffset ) );
 			$offset = $seekoffset;
 		}
 
@@ -82,27 +84,26 @@ class TimedMediaThumbnail {
 		$src = $backend->getFileHttpUrl( [ 'src' => $file->getPath() ] ) ??
 			$file->getLocalRefPath();
 
-		$cmd .= ' -y -i ' . wfEscapeShellArg( $src );
-		$cmd .= ' -ss ' . $offset . ' ';
+		$cmd = $cmd->params( '-y', '-i', $src, '-ss', (string)$offset );
 
 		// Deinterlace MPEG-2 if necessary
 		if ( $handler->isInterlaced( $file ) ) {
 			// Send one frame only
-			$cmd .= ' -vf yadif=mode=0';
+			$cmd = $cmd->params( '-vf', 'yadif=mode=0' );
 		}
 
 		// Set the output size if set in options:
 		if ( isset( $options['width'] ) && isset( $options['height'] ) ) {
-			$cmd .= ' -s ' . (int)$options['width'] . 'x' . (int)$options['height'];
+			$cmd = $cmd->params( '-s', (int)$options['width'] . 'x' . (int)$options['height'] );
 		}
 
 		// MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 		// No audio, one frame
-		$cmd .= ' -f mjpeg -an -vframes 1 ' .
-			wfEscapeShellArg( $options['dstPath'] ) . ' 2>&1';
+		$cmd = $cmd->params( '-f', 'mjpeg', '-an', '-vframes', '1', $options['dstPath'] );
 
-		$retval = 0;
-		$returnText = wfShellExec( $cmd, $retval );
+		$result = $cmd->includeStderr()->execute();
+		$retval = $result->getExitCode();
+
 		// Check if it was successful
 		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;
@@ -110,7 +111,7 @@ class TimedMediaThumbnail {
 
 		// Mirrors MediaHandler::logErrorForExternalProcess()
 		wfDebugLog( 'thumbnail', sprintf( 'thumbnail failed on %s: error %d "%s" from "%s"',
-			wfHostname(), $retval, trim( substr( $returnText, 0, 65535 ) ), $cmd ) );
+			wfHostname(), $retval, trim( substr( $result->getStdout(), 0, 65535 ) ), $cmd->getCommandString() ) );
 		return new MediaTransformError(
 			'thumbnail_error', $options['width'], $options['height'],
 			wfMessage( $this->ffmpegExitCodeMessage( $retval ) )
