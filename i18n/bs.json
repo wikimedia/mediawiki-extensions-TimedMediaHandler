@@ -80,6 +80,7 @@
 	"timedmedia-resolution-1080": "HD (1080p)",
 	"timedmedia-resolution-1440": "UHD (1440p)",
 	"timedmedia-resolution-2160": "UHD (2160p)",
+	"timedmedia-subtitle-new-go": "Pokreni",
 	"right-transcode-reset": "Resetiranje neuspješno postavljenih ili već transkodiranih videozapisa tako da ih se ponovo ubaci u red poslova",
 	"right-transcode-status": "Pregledanje [[Special:TimedMediaHandler|podataka o trenutnom stanju transkodiranja]]",
 	"action-transcode-reset": "resetirate transkodiranje",
