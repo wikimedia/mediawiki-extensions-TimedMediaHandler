@@ -10,6 +10,7 @@
 			"Kwj2772",
 			"Priviet",
 			"Revi",
+			"Tensama0415",
 			"ToePeu",
 			"YeBoy371",
 			"Yearning",
@@ -179,5 +180,8 @@
 	"timedmedia-timedtext-title-create-subtitles": "클립에 대한 $1 자막을 찾을 수 없습니다: $2",
 	"m3u8-error-create-temp": "$1의 임시 파일을 만들 수 없음",
 	"m3u8-error-write-temp": "$1의 임시 파일을 쓸 수 없음",
-	"m3u8-error-save-playlist": "HLS 재생 목록 $1 저장하는 중 오류가 발생"
+	"m3u8-error-save-playlist": "HLS 재생 목록 $1 저장하는 중 오류가 발생",
+	"videojs-endcard-copy-link": "링크 복사",
+	"videojs-endcard-share": "공유",
+	"videojs-endcard-embed-copy": "복사"
 }
