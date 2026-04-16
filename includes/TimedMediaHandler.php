@@ -2,7 +2,6 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use MediaWiki\Context\RequestContext;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Media\MediaHandler;
@@ -460,11 +459,12 @@ class TimedMediaHandler extends MediaHandler {
 				)->numParams(
 					$file->getWidth(),
 					$file->getHeight()
+				)->inLanguage(
+					$this->getLanguage()
 				)->text();
 		}
 
-		$lang = RequestContext::getMain()->getLanguage();
-		return $lang->formatTimePeriod( $this->getLength( $file ) );
+		return $this->getLanguage()->formatTimePeriod( $this->getLength( $file ) );
 	}
 
 	/**
