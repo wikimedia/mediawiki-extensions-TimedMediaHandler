@@ -33,7 +33,7 @@ use MediaWiki\Api\ApiUsageException;
 use MediaWiki\Content\TextContent;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
-use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Language\LanguageNameUtils;
 use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;

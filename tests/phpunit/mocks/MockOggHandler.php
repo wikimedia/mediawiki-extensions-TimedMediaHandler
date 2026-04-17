@@ -21,6 +21,7 @@
  * @ingroup Media
  */
 
+use MediaWiki\Media\TransformParameterError;
 use MediaWiki\TimedMediaHandler\Handlers\OggHandler\OggHandler;
 use MediaWiki\TimedMediaHandler\TimedMediaTransformOutput;
 

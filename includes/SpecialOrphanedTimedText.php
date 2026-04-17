@@ -9,16 +9,16 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use HtmlArmor;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Html\Html;
-use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\Language\LanguageConverterFactory;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Skin\Skin;
 use MediaWiki\SpecialPage\PageQueryPage;
 use MediaWiki\Title\Title;
 use stdClass;
+use Wikimedia\HtmlArmor\HtmlArmor;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;

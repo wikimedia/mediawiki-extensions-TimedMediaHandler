@@ -3,9 +3,9 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use LogicException;
-use MediaTransformOutput;
 use MediaWiki\Html\Html;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Media\MediaTransformOutput;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;

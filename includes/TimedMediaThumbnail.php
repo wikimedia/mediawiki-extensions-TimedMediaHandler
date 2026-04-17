@@ -2,12 +2,12 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use MediaTransformError;
 use MediaWiki\Config\Config;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\File\UnregisteredLocalFile;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Media\MediaTransformError;
 use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
 
 class TimedMediaThumbnail {

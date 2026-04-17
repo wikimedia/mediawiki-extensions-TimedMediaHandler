@@ -2,19 +2,16 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use DifferenceEngine;
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
+use MediaWiki\Diff\DifferenceEngine;
 use MediaWiki\Diff\Hook\ArticleContentOnDiffHook;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\File\LocalFile;
+use MediaWiki\FileRepo\Hook\FileUploadHook;
 use MediaWiki\FileRepo\RepoGroup;
-use MediaWiki\Hook\CanonicalNamespacesHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
-use MediaWiki\Hook\FileUndeleteCompleteHook;
-use MediaWiki\Hook\FileUploadHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
-use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Hook\TitleMoveHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
@@ -30,13 +27,16 @@ use MediaWiki\Page\ImageHistoryList;
 use MediaWiki\Page\ImagePage;
 use MediaWiki\Page\WikiFilePage;
 use MediaWiki\Page\WikiPage;
+use MediaWiki\Skin\Hook\SkinTemplateNavigation__UniversalHook;
 use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Specials\Hook\FileUndeleteCompleteHook;
 use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
+use MediaWiki\Title\Hook\CanonicalNamespacesHook;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 

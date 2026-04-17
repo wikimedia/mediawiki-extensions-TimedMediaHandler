@@ -2,15 +2,15 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
-use MediaHandler;
-use MediaTransformError;
-use MediaTransformOutput;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Media\MediaHandler;
+use MediaWiki\Media\MediaTransformError;
+use MediaWiki\Media\MediaTransformOutput;
+use MediaWiki\Media\TransformParameterError;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
-use TransformParameterError;
 
 class TimedMediaHandler extends MediaHandler {
 
