@@ -38,6 +38,7 @@ use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Hook\CanonicalNamespacesHook;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
 
 /**
@@ -70,6 +71,7 @@ class Hooks implements
 		private readonly LinkRenderer $linkRenderer,
 		private readonly RepoGroup $repoGroup,
 		private readonly SpecialPageFactory $specialPageFactory,
+		private readonly TitleFactory $titleFactory
 	) {
 		$this->transcodableChecker = new TranscodableChecker(
 			$config,
@@ -161,7 +163,7 @@ class Hooks implements
 	 */
 	public function onSkinTemplateNavigation__Universal( $sktemplate, &$links ): void {
 		if ( $this->isTimedMediaHandlerTitle( $sktemplate->getTitle() ) ) {
-			$ttTitle = Title::makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
+			$ttTitle = $this->titleFactory->makeTitleSafe( NS_TIMEDTEXT, $sktemplate->getTitle()->getDBkey() );
 			if ( !$ttTitle ) {
 				return;
 			}

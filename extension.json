@@ -147,7 +147,8 @@
 				"MainConfig",
 				"LinkRenderer",
 				"RepoGroup",
-				"SpecialPageFactory"
+				"SpecialPageFactory",
+				"TitleFactory"
 			]
 		},
 		"iframe": {
