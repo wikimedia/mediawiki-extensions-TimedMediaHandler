@@ -29,7 +29,10 @@ class TimedMediaHandler extends MediaHandler {
 	/** @inheritDoc */
 	public function validateParam( $name, $value ) {
 		if ( $name === 'thumbtime' || $name === 'start' || $name === 'end' ) {
-			if ( !is_string( $value ) || self::parseTimeString( $value ) === false ) {
+			if (
+				!( is_string( $value ) || is_numeric( $value ) ) ||
+				self::parseTimeString( (string)$value ) === false
+			) {
 				return false;
 			}
 		} elseif ( $name === 'disablecontrols' ) {
