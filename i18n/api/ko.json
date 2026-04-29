@@ -1,16 +1,32 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Tensama0415"
 		]
 	},
+	"apihelp-query+transcodestatus-summary": "주어진 파일 문서에 대한 코드 변환 상태를 가져옵니다.",
+	"apihelp-query+transcodestatus-example-1": "[[:File:Clip.webm]]에 대한 코드 변환 상태를 가져옵니다",
+	"apihelp-query+videoinfo-summary": "비디오 소스 (파생 콘텐츠) 정보를 포함하기 위해 imageinfo를 확장합니다",
 	"apihelp-query+videoinfo-example-1": "[[:File:Folgers.ogv]]에 관한 정보를 가져옵니다",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "사용 가능한 음성 또는 동영상 파일의 다양한 형식 및 품질 버전을 배열 형태로 추가합니다.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "사용 가능한 음성 또는 동영상 파일의 자막, 캡션 및 설명을 배열로 추가합니다.",
 	"apihelp-timedtext-summary": "&lt;track&gt; 요소들의 사용에 대한 타임드 텍스트 내용을 제공합니다",
-	"apihelp-transcodereset-summary": "'transcode-reset' 권한이 있는 사용자는 트랜스코드 작업을 초기화하고 다시 실행할 수 있습니다.",
+	"apihelp-timedtext-param-title": "타임드 텍스트를 검색할 미디어 파일의 제목",
+	"apihelp-timedtext-param-pageid": "타임드 텍스트를 검색할 미디어 파일의 pageid",
+	"apihelp-timedtext-param-trackformat": "타임드 텍스트가 반환될 파일 형식",
+	"apihelp-timedtext-param-lang": "타임드 텍스트를 검색할 언어",
+	"apihelp-timedtext-example-1": "Example.ogv 파일에 대한 독일어 SRT 자막 파일을 가져옵니다",
+	"apihelp-transcodereset-summary": "'transcode-reset' 권한이 있는 사용자는 코드 변환 작업을 초기화하고 다시 실행할 수 있습니다.",
 	"apihelp-transcodereset-param-title": "미디어 파일 제목입니다.",
-	"apihelp-transcodereset-param-transcodekey": "재설정할 트랜스코드 키입니다. [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]에서 가져옵니다.",
+	"apihelp-transcodereset-param-transcodekey": "재설정할 코드 변환 키입니다. [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]에서 가져옵니다.",
 	"apihelp-transcodereset-example-1": "[[:File:Clip.webm]]의 모든 트랜스코드를 재설정합니다",
-	"apihelp-transcodereset-example-2": "[[:File:Clip.webm]]의 '360_560kbs.webm' 트랜스코드 키를 재설정합니다",
-	"apierror-timedmedia-badtranscodekey": "트랜스코드 키가 유효하지 않거나 비활성화되어 있습니다: $1",
-	"apierror-timedmedia-lang-notfound": "요청된 언어를 찾을 수 없습니다"
+	"apihelp-transcodereset-example-2": "[[:File:Clip.webm]]의 '360_560kbs.webm' 코드 변환 키를 재설정합니다",
+	"apierror-timedmedia-disabledtranscode": "이 위키에서는 트랜스코딩이 비활성화되어 있습니다.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1은(는) 코드 변환 할 수 없습니다.",
+	"apierror-timedmedia-badtranscodekey": "코드 변환 키가 유효하지 않거나 비활성화되어 있습니다: $1",
+	"apierror-timedmedia-notenoughtimereset": "이 코드 변환이 마지막으로 초기화된 이후 충분한 시간이 지나지 않았습니다. 이 코드 변환을 초기화할 수 있게 되기까지 $1 남았습니다.",
+	"apierror-timedmedia-lang-notfound": "요청된 언어를 찾을 수 없습니다",
+	"apierror-timedmedia-no-timedtext-support": "TimedText가 지원되지 않습니다",
+	"apierror-timedmedia-notlocal": "파일이 로컬이 아닙니다"
 }
