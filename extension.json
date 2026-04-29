@@ -15,7 +15,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "media",
 	"requires": {
-		"MediaWiki": ">= 1.46"
+		"MediaWiki": ">= 1.47.0"
 	},
 	"APIModules": {
 		"timedtext": {
@@ -164,7 +164,11 @@
 	},
 	"DomainEventIngresses": [
 		{
-			"events": [ "PageDeleted", "PageMoved", "PageLatestRevisionChanged" ],
+			"events": [
+				"PageDeleted",
+				"PageMoved",
+				"PageLatestRevisionChanged"
+			],
 			"class": "MediaWiki\\TimedMediaHandler\\MediaWikiEventIngress\\PageEventIngress",
 			"services": [
 				"MainConfig",
