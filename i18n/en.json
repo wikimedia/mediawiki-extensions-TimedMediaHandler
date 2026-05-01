@@ -217,5 +217,18 @@
 	"videojs-endcard-embed-title": "Embed this media in your website",
 	"videojs-endcard-embed-copy": "Copy",
 	"videojs-endcard-copied": "Copied to clipboard!",
-	"videojs-endcard-copy-failed": "Unable to copy to clipboard"
+	"videojs-endcard-copy-failed": "Unable to copy to clipboard",
+	"videojs-rate-change": "$1 ×",
+	"videojs-a11y-rate-change": "Playback speed $1",
+	"videojs-seek-forward": "+ $1s",
+	"videojs-a11y-seek-forward": "Forward $1 seconds",
+	"videojs-seek-backward": "− $1s",
+	"videojs-a11y-seek-backward": "Backwards $1 seconds",
+	"videojs-step-forward": "+ 1",
+	"videojs-a11y-step-forward": "Frame forward",
+	"videojs-step-backward": "− 1",
+	"videojs-a11y-step-backward": "Frame back",
+	"videojs-a11y-pause": "Paused",
+	"videojs-a11y-ended": "Media playback ended",
+	"videojs-a11y-muted": "Muted"
 }

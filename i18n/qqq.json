@@ -239,5 +239,18 @@
 	"videojs-endcard-embed-title": "Title of section that allows you to embed this media in your website",
 	"videojs-endcard-embed-copy": "Label for button to copy a fragment of HTML to embed into other websites.",
 	"videojs-endcard-copied": "Message shown as notification after having clicked the button to indicate that the text has been copied to your clipboard.",
-	"videojs-endcard-copy-failed": "Message shown as notification when unable to copy text to clipboard."
+	"videojs-endcard-copy-failed": "Message shown as notification when unable to copy text to clipboard.",
+	"videojs-rate-change": "On-screen display (OSD) text shown briefly when the playback rate changes.\nParameters:\n* $1 - playback rate multiplier, e.g. 1.5\nSee also: {{msg-mw|videojs-a11y-rate-change}}",
+	"videojs-a11y-rate-change": "Announced to screen readers when the playback rate changes.\nParameters:\n* $1 - playback rate multiplier, e.g. 1.5\nSee also: {{msg-mw|videojs-rate-change}}",
+	"videojs-seek-forward": "On-screen display (OSD) text shown briefly when the player seeks forward.\nParameters:\n* $1 - number of seconds skipped\nSee also: {{msg-mw|videojs-a11y-seek-forward}}, {{msg-mw|videojs-seek-backward}}",
+	"videojs-a11y-seek-forward": "Announced to screen readers when the player seeks forward.\nParameters:\n* $1 - number of seconds skipped\nSee also: {{msg-mw|videojs-seek-forward}}, {{msg-mw|videojs-a11y-seek-backward}}",
+	"videojs-seek-backward": "On-screen display (OSD) text shown briefly when the player seeks backward.\nParameters:\n* $1 - number of seconds skipped\nSee also: {{msg-mw|videojs-a11y-seek-backward}}, {{msg-mw|videojs-seek-forward}}",
+	"videojs-a11y-seek-backward": "Announced to screen readers when the player seeks backward.\nParameters:\n* $1 - number of seconds skipped\nSee also: {{msg-mw|videojs-seek-backward}}, {{msg-mw|videojs-a11y-seek-forward}}",
+	"videojs-step-forward": "On-screen display (OSD) text shown briefly when the player steps one frame forward while paused.\nSee also: {{msg-mw|videojs-a11y-step-forward}}, {{msg-mw|videojs-step-backward}}",
+	"videojs-a11y-step-forward": "Announced to screen readers when the player steps one frame forward while paused.\nSee also: {{msg-mw|videojs-step-forward}}, {{msg-mw|videojs-a11y-step-backward}}",
+	"videojs-step-backward": "On-screen display (OSD) text shown briefly when the player steps one frame backward while paused.\nSee also: {{msg-mw|videojs-a11y-step-backward}}, {{msg-mw|videojs-step-forward}}",
+	"videojs-a11y-step-backward": "Announced to screen readers when the player steps one frame backward while paused.\nSee also: {{msg-mw|videojs-step-backward}}, {{msg-mw|videojs-a11y-step-forward}}",
+	"videojs-a11y-pause": "Announced to screen readers when the media player is paused.",
+	"videojs-a11y-ended": "Announced to screen readers when the media player reaches end of media.",
+	"videojs-a11y-muted": "Announced to screen readers when the media player is muted."
 }

@@ -71,6 +71,8 @@ class InlinePlayer {
 		require( './mw-subtitles-button/mw-subtitles-create.js' );
 		require( './mw-subtitles-button/mw-subtitles-button.js' );
 		require( './mw-endcard/mw-endcard.js' );
+		require( './mw-notifications/mw-notifications.js' );
+		require( './mw-hotkeys/mw-hotkeys.js' );
 
 		// Add translations for the plugins
 		// video.js translations don't have region postfixes (yet)
@@ -358,7 +360,9 @@ InlinePlayer.globalConfig = {
 	techOrder: [ 'html5' ],
 	plugins: {
 		infoButton: {},
-		endCard: {}
+		endCard: {},
+		mwPlayerNotifications: {},
+		mwHotkeys: {}
 	},
 	html5: InlinePlayer.html5techOpt
 };

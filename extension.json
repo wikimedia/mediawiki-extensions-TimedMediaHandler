@@ -468,13 +468,16 @@
 				"videojs-resolution-switcher/ResolutionMenuButton.js",
 				"mw-subtitles-button/mw-subtitles-create.js",
 				"mw-subtitles-button/mw-subtitles-button.js",
-				"mw-endcard/mw-endcard.js"
+				"mw-endcard/mw-endcard.js",
+				"mw-notifications/mw-notifications.js",
+				"mw-hotkeys/mw-hotkeys.js"
 			],
 			"styles": [
 				"ext.tmh.player.inline.styles.less",
 				"mw-info-button/mw-info-button.css",
 				"videojs-resolution-switcher/videojs-resolution-switcher.css",
 				"mw-endcard/mw-endcard.less",
+				"mw-notifications/mw-notifications.less",
 				"ext.tmh.player.inline.styles.less"
 			],
 			"dependencies": [
@@ -509,7 +512,20 @@
 				"videojs-endcard-share-not-possible",
 				"videojs-endcard-embed-title",
 				"videojs-endcard-embed-copy",
-				"videojs-endcard-copied"
+				"videojs-endcard-copied",
+				"videojs-rate-change",
+				"videojs-a11y-rate-change",
+				"videojs-seek-forward",
+				"videojs-a11y-seek-forward",
+				"videojs-seek-backward",
+				"videojs-a11y-seek-backward",
+				"videojs-step-forward",
+				"videojs-a11y-step-forward",
+				"videojs-step-backward",
+				"videojs-a11y-step-backward",
+				"videojs-a11y-pause",
+				"videojs-a11y-ended",
+				"videojs-a11y-muted"
 			]
 		},
 		"ext.tmh.player.styles": {
