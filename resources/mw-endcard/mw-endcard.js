@@ -12,6 +12,7 @@ class EndCard extends Plugin {
 		this.overlay.appendChild( this.container );
 		this.api = new mw.Api();
 		this.imageDetails = {};
+		this.userDismissed = false;
 
 		if ( options.customClass ) {
 			// eslint-disable-next-line mediawiki/class-doc
@@ -57,16 +58,18 @@ class EndCard extends Plugin {
 		} );
 
 		player.on( 'ended', () => {
+			this.userDismissed = false;
 			this.overlay.classList.add( 'vjs-mw-endcard-visible' );
 		} );
 
 		player.on( 'userinactive', () => {
-			if ( this.player.paused() ) {
+			if ( this.player.paused() && !this.player.ended() && !this.userDismissed ) {
 				this.overlay.classList.add( 'vjs-mw-endcard-visible' );
 			}
 		} );
 
 		player.on( [ 'play', 'seeked' ], () => {
+			this.userDismissed = false;
 			this.overlay.classList.remove( 'vjs-mw-endcard-visible' );
 		} );
 
@@ -75,6 +78,31 @@ class EndCard extends Plugin {
 				this.overlay.classList.remove( 'vjs-mw-endcard-visible' );
 			}
 		} );
+
+		this.overlay.addEventListener( 'click', ( e ) => {
+			if (
+				this.player.paused() &&
+				( e.target === this.overlay || e.target === this.container )
+			) {
+				this.userDismissed = true;
+				this.overlay.classList.remove( 'vjs-mw-endcard-visible' );
+			}
+		} );
+
+		// Esc is captured by the dialog, so intercept at document level for this specific case
+		this.onKeyDown = ( e ) => {
+			if ( e.key === 'Escape' && this.overlay.classList.contains( 'vjs-mw-endcard-visible' ) ) {
+				e.stopPropagation();
+				this.userDismissed = true;
+				this.overlay.classList.remove( 'vjs-mw-endcard-visible' );
+			}
+		};
+		document.addEventListener( 'keydown', this.onKeyDown, true );
+	}
+
+	dispose() {
+		document.removeEventListener( 'keydown', this.onKeyDown, true );
+		super.dispose();
 	}
 
 	buildContent() {
