@@ -97,7 +97,8 @@
 	},
 	"ExtensionMessagesFiles": {
 		"TimedMediaHandlerMagic": "i18n/TimedMediaHandler.i18n.magic.php",
-		"TimedMediaHandlerAliases": "i18n/TimedMediaHandler.i18n.alias.php"
+		"TimedMediaHandlerAliases": "i18n/TimedMediaHandler.i18n.alias.php",
+		"TimedMediaHandlerNamespaces": "i18n/TimedMediaHandler.i18n.namespaces.php"
 	},
 	"AutoloadClasses": {
 		"File_Ogg": "includes/Handlers/OggHandler/File_Ogg/File/Ogg.php",
@@ -134,6 +135,7 @@
 		"ImagePageAfterImageLinks": "main",
 		"ImagePageFileHistoryLine": "main",
 		"LoadExtensionSchemaUpdates": "installer",
+		"MediaWikiServices": "init",
 		"MediaWikiPerformAction": "iframe",
 		"ParserTestGlobals": "main",
 		"SkinTemplateNavigation::Universal": "main",
@@ -157,6 +159,9 @@
 				"MainConfig",
 				"RepoGroup"
 			]
+		},
+		"init": {
+			"class": "MediaWiki\\TimedMediaHandler\\TimedMediaHandlerInit"
 		},
 		"installer": {
 			"class": "MediaWiki\\TimedMediaHandler\\InstallerHooks"

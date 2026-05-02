@@ -11,6 +11,7 @@ class RegistrationCallback {
 	 * Modify config via registration callback
 	 */
 	public static function register( array $extInfo, SettingsBuilder $settingsBuilder ): void {
+		include_once __DIR__ . '/../i18n/TimedMediaHandler.i18n.namespaces.php';
 		$tmhFileExtensions = $settingsBuilder->getConfig()->get( 'TmhFileExtensions' );
 
 		// Remove mp4 if not enabled:
