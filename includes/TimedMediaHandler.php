@@ -198,9 +198,8 @@ class TimedMediaHandler extends MediaHandler {
 	): int {
 		$mainConfig = MediaWikiServices::getInstance()->getMainConfig();
 		$thumbnailSteps = $mainConfig->get( MainConfigNames::ThumbnailSteps );
-		$thumbnailStepsRatio = $mainConfig->get( MainConfigNames::ThumbnailStepsRatio );
 
-		if ( !$thumbnailSteps || !$thumbnailStepsRatio ) {
+		if ( !$thumbnailSteps ) {
 			return $requestWidth;
 		}
 
