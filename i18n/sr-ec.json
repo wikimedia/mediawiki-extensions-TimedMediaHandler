@@ -103,5 +103,6 @@
 	"videojs-endcard-share-title": "Веза до ове датотеке",
 	"videojs-endcard-copy-link": "Копирај везу",
 	"videojs-endcard-share": "Дели",
-	"videojs-endcard-embed-copy": "Копирај"
+	"videojs-endcard-embed-copy": "Копирај",
+	"videojs-a11y-muted": "Пригушено"
 }

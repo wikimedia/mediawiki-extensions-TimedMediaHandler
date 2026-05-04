@@ -181,5 +181,18 @@
 	"videojs-endcard-embed-title": "Dit bestand op uw website invoegen",
 	"videojs-endcard-embed-copy": "Kopiëren",
 	"videojs-endcard-copied": "Naar klembord gekopieerd!",
-	"videojs-endcard-copy-failed": "Kon niet naar het klembord kopiëren"
+	"videojs-endcard-copy-failed": "Kon niet naar het klembord kopiëren",
+	"videojs-rate-change": "$1 ×",
+	"videojs-a11y-rate-change": "Afspeelsnelheid $1",
+	"videojs-seek-forward": "+ $1s",
+	"videojs-a11y-seek-forward": "$1 seconden vooruit",
+	"videojs-seek-backward": "− $1s",
+	"videojs-a11y-seek-backward": "$1 seconden achteruit",
+	"videojs-step-forward": "+ 1",
+	"videojs-a11y-step-forward": "Frame vooruit",
+	"videojs-step-backward": "− 1",
+	"videojs-a11y-step-backward": "Frame achteruit",
+	"videojs-a11y-pause": "Gepauzeerd",
+	"videojs-a11y-ended": "Het afspelen van de media is beëindigd.",
+	"videojs-a11y-muted": "Gedempt"
 }

@@ -170,5 +170,13 @@
 	"videojs-endcard-embed-title": "הטמעת המדיה הזאת באתר שלך",
 	"videojs-endcard-embed-copy": "העתקה",
 	"videojs-endcard-copied": "הועתק ללוח!",
-	"videojs-endcard-copy-failed": "ההעתקה ללוח לא עבדה"
+	"videojs-endcard-copy-failed": "ההעתקה ללוח לא עבדה",
+	"videojs-a11y-rate-change": "מהירות נגינה $1",
+	"videojs-a11y-seek-forward": "{{PLURAL:$1|שנייה אחת|$1 שניות}} קדימה",
+	"videojs-a11y-seek-backward": "{{PLURAL:$1|שנייה אחת|$1 שניות}} אחורה",
+	"videojs-a11y-step-forward": "תמונית קדימה",
+	"videojs-a11y-step-backward": "תמונית אחורה",
+	"videojs-a11y-pause": "מושהית",
+	"videojs-a11y-ended": "הפעלת המדיה הסתיימה",
+	"videojs-a11y-muted": "מושתקת"
 }

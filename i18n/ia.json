@@ -170,5 +170,18 @@
 	"videojs-endcard-embed-title": "Incorporar iste file multimedial in tu sito web",
 	"videojs-endcard-embed-copy": "Copiar",
 	"videojs-endcard-copied": "Copiate al area de transferentia!",
-	"videojs-endcard-copy-failed": "Fallimento de copiar al area de transferentia"
+	"videojs-endcard-copy-failed": "Fallimento de copiar al area de transferentia",
+	"videojs-rate-change": "$1 ×",
+	"videojs-a11y-rate-change": "Velocitate de reproduction $1",
+	"videojs-seek-forward": "+ $1s",
+	"videojs-a11y-seek-forward": "$1 secundas in avante",
+	"videojs-seek-backward": "− $1s",
+	"videojs-a11y-seek-backward": "$1 secundas a retro",
+	"videojs-step-forward": "+ 1",
+	"videojs-a11y-step-forward": "Un quadro in avante",
+	"videojs-step-backward": "− 1",
+	"videojs-a11y-step-backward": "Un quadro a retro",
+	"videojs-a11y-pause": "Pausate",
+	"videojs-a11y-ended": "Reproduction multimedial finite",
+	"videojs-a11y-muted": "Silentiate"
 }

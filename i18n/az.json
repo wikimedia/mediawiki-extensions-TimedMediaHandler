@@ -150,5 +150,13 @@
 	"videojs-endcard-embed-title": "Bu medianı veb saytınıza yerləşdirin",
 	"videojs-endcard-embed-copy": "Kopiyala",
 	"videojs-endcard-copied": "Kopiyalandı!",
-	"videojs-endcard-copy-failed": "Kopiyalamaq alınmadı."
+	"videojs-endcard-copy-failed": "Kopiyalamaq alınmadı.",
+	"videojs-a11y-rate-change": "Oxutma sürəti $1",
+	"videojs-a11y-seek-forward": "$1 saniyə irəli",
+	"videojs-a11y-seek-backward": "$1 saniyə əvvələ",
+	"videojs-a11y-step-forward": "İrəliyə",
+	"videojs-a11y-step-backward": "Geriyə",
+	"videojs-a11y-pause": "Dayandırıldı",
+	"videojs-a11y-ended": "Media oxutma başa çatdı",
+	"videojs-a11y-muted": "Səssizləşdirilib"
 }
