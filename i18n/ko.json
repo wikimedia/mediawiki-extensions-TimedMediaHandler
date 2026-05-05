@@ -188,5 +188,13 @@
 	"videojs-endcard-embed-title": "이 미디어를 웹사이트에 삽입하세요",
 	"videojs-endcard-embed-copy": "복사",
 	"videojs-endcard-copied": "클립보드에 복사했습니다!",
-	"videojs-endcard-copy-failed": "클립보드에 복사할 수 없습니다"
+	"videojs-endcard-copy-failed": "클립보드에 복사할 수 없습니다",
+	"videojs-a11y-rate-change": "재생 속도 $1",
+	"videojs-a11y-seek-forward": "$1초 앞으로",
+	"videojs-a11y-seek-backward": "$1초 뒤로",
+	"videojs-a11y-step-forward": "프레임 앞으로",
+	"videojs-a11y-step-backward": "프레임 뒤로",
+	"videojs-a11y-pause": "일시 정지됨",
+	"videojs-a11y-ended": "미디어 재생 종료됨",
+	"videojs-a11y-muted": "음소거됨"
 }

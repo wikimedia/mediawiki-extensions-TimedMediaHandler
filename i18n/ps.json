@@ -220,5 +220,14 @@
 	"videojs-endcard-embed-title": "دا رسنۍ خپله وېبپاڼه کې ځای پرځای کړئ",
 	"videojs-endcard-embed-copy": "لمېسل",
 	"videojs-endcard-copied": "ټينگدړې ته ولمېسل شو!",
-	"videojs-endcard-copy-failed": "ټينگدړې ته نه لمېسل کېږي"
+	"videojs-endcard-copy-failed": "ټينگدړې ته نه لمېسل کېږي",
+	"videojs-rate-change": "$1 ×",
+	"videojs-a11y-seek-forward": "$1 ثانيې مخ‌ته وړل",
+	"videojs-a11y-seek-backward": "$1 ثانيې شاته‌وړل",
+	"videojs-step-forward": "+۱",
+	"videojs-a11y-step-forward": "چوکاټ مخ‌ته‌وړل",
+	"videojs-step-backward": "-۱",
+	"videojs-a11y-pause": "درول‌شوی",
+	"videojs-a11y-ended": "رسنۍ غږول پای ته ورسېدل",
+	"videojs-a11y-muted": "چوپ‌شوی"
 }
