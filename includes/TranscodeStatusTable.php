@@ -142,6 +142,7 @@ class TranscodeStatusTable {
 			'msg-timedmedia-status' => wfMessage( 'timedmedia-status' ),
 			'msg-timedmedia-transcodeduration' => wfMessage( 'timedmedia-transcodeduration' ),
 			'has-reset' => $this->context->getUser()->isAllowed( 'transcode-reset' ),
+			'has-download' => $this->context->getUser()->isNamed(),
 			'transcodeRows' => $transcodeRowsForTemplate,
 		];
 	}
