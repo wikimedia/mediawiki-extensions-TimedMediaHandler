@@ -127,6 +127,7 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transcodifica fallita|$1 transcodifiche fallite}}",
 	"timedmedia-derivative-state-missing": "$1 {{PLURAL:$1|transcodifica non inizializzata|transcodifiche non inizializzate}}",
 	"timedmedia-no-derivatives": "Nessuna transcodifica richiesta.",
+	"timedmedia-variable-bitrate": "Variabile",
 	"timedmedia-file": "File",
 	"timedmedia-dialog-close": "Chiudi riproduttore multimediale",
 	"timedmedia-duration-hms": "{{PLURAL:$1|un'ora|$1 ore}}, {{PLURAL:$2|un minuto|$2 minuti}} e {{PLURAL:$3|un secondo|$3 secondi}}",

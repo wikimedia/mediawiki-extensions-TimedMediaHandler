@@ -174,5 +174,13 @@
 	"videojs-endcard-embed-title": "Incrustar este contido multimedia no teu sitio web",
 	"videojs-endcard-embed-copy": "Copiar",
 	"videojs-endcard-copied": "Copiouse no portapapeis!",
-	"videojs-endcard-copy-failed": "Non se puido copiar no portapapeis"
+	"videojs-endcard-copy-failed": "Non se puido copiar no portapapeis",
+	"videojs-a11y-rate-change": "Velocidade de reprodución $1",
+	"videojs-a11y-seek-forward": "Adiantar $1 segundos",
+	"videojs-a11y-seek-backward": "Retroceder $1 segundos",
+	"videojs-a11y-step-forward": "Fotograma seguinte",
+	"videojs-a11y-step-backward": "Fotograma anterior",
+	"videojs-a11y-pause": "En pausa",
+	"videojs-a11y-ended": "Rematou a reprodución multimedia",
+	"videojs-a11y-muted": "Silenciado"
 }

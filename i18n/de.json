@@ -147,6 +147,7 @@
 	"timedmedia-resolution-1080": "HD 1080p",
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
+	"timedmedia-resolution-auto": "Automatisch",
 	"timedmedia-subtitle-new": "Neue Übersetzung erstellen oder vorhandene bearbeiten",
 	"timedmedia-subtitle-new-desc": "Wähle eine Sprache aus und klicke auf '''{{int:Timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Los",
@@ -161,6 +162,7 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|Eine fehlgeschlagene Umschlüsselung|$1 fehlgeschlagene Umschlüsselungen}}",
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|Eine nicht gestartete Umschlüsselung|$1 nicht gestartete Umschlüsselungen}}",
 	"timedmedia-no-derivatives": "Keine Umschlüsselung erforderlich.",
+	"timedmedia-variable-bitrate": "Variabel",
 	"timedmedia-file": "Datei",
 	"timedmedia-dialog-close": "Mediaplayer schließen",
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 Stunde|$1 Stunden}}, {{PLURAL:$2|$2 Minute|$2 Minuten}} und {{PLURAL:$3|$3 Sekunde|$3 Sekunden}}",
@@ -193,5 +195,13 @@
 	"videojs-endcard-embed-title": "{{#FORMAL:Binde|Binden Sie}} diese Medien in {{#FORMAL:deine|Ihre}} Website ein.",
 	"videojs-endcard-embed-copy": "Kopieren",
 	"videojs-endcard-copied": "In die Zwischenablage kopiert!",
-	"videojs-endcard-copy-failed": "Kopieren in die Zwischenablage nicht möglich"
+	"videojs-endcard-copy-failed": "Kopieren in die Zwischenablage nicht möglich",
+	"videojs-a11y-rate-change": "Wiedergabegeschwindigkeit $1",
+	"videojs-a11y-seek-forward": "$1 Sekunden vorwärts",
+	"videojs-a11y-seek-backward": "$1 Sekunden rückwärts",
+	"videojs-a11y-step-forward": "Ein Frame vorwärts",
+	"videojs-a11y-step-backward": "Ein Frame zurück",
+	"videojs-a11y-pause": "Pausiert",
+	"videojs-a11y-ended": "Medienwiedergabe beendet",
+	"videojs-a11y-muted": "Stumm"
 }
