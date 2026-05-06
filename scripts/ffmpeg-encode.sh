@@ -7,7 +7,7 @@ export TMH_FFMPEG_THREADS="${TMH_FFMPEG_THREADS:-2}"
 # Safe options with no user input or validated user input
 # These can be used unquoted.
 # Video related
-export TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_OPTS_VIDEO_USE_ADAPTATION_SETS TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
+export TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
 # Audio-related
 export TMH_OPTS_AUDIO TMH_OPT_NOAUDIO
 export TMH_OUTPUT_FILE
@@ -48,9 +48,6 @@ doFfmpegEncode() {
 	# This is the only safe way to pass variable arguments in
 	# posix shell AFAICT.
 	set --
-	if [ "$TMH_OPTS_VIDEO_USE_ADAPTATION_SETS" = "yes" ]; then
-		set -- "$@" -adaptation_sets "id=0,streams=a id=1,streams=v"
-	fi
 	# end audio options
 	PASS_OPTS=""
 	if [ "$current_pass" -ne 0 ]; then

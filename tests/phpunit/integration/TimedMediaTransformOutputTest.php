@@ -81,70 +81,54 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 			[
 				600,
 				[
-					[ 'width' => 1000, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 7000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 1000, 'type' => 'some_type' ],
+					[ 'width' => 1000, 'bandwidth' => 2000 ],
+					[ 'width' => 1000, 'bandwidth' => 7000 ],
+					[ 'width' => 1000, 'bandwidth' => 1000 ],
 				],
 				[
-					[ 'width' => 1000, 'bandwidth' => 1000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 7000, 'type' => 'some_type' ],
+					[ 'width' => 1000, 'bandwidth' => 1000 ],
+					[ 'width' => 1000, 'bandwidth' => 2000 ],
+					[ 'width' => 1000, 'bandwidth' => 7000 ],
 				],
 			],
 			[
 				600,
 				[
-					[ 'width' => 200, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 7000, 'type' => 'some_type' ],
-					[ 'width' => 200, 'bandwidth' => 1000, 'type' => 'some_type' ],
+					[ 'width' => 200, 'bandwidth' => 2000 ],
+					[ 'width' => 1000, 'bandwidth' => 7000 ],
+					[ 'width' => 200, 'bandwidth' => 1000 ],
 				],
 				[
-					[ 'width' => 1000, 'bandwidth' => 7000, 'type' => 'some_type' ],
-					[ 'width' => 200, 'bandwidth' => 1000, 'type' => 'some_type' ],
-					[ 'width' => 200, 'bandwidth' => 2000, 'type' => 'some_type' ],
+					[ 'width' => 1000, 'bandwidth' => 7000 ],
+					[ 'width' => 200, 'bandwidth' => 1000 ],
+					[ 'width' => 200, 'bandwidth' => 2000 ],
 				],
 			],
 			[
 				/* Pop up viewer in this case */
 				100,
 				[
-					[ 'width' => 700, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 7000, 'type' => 'some_type' ],
-					[ 'width' => 700, 'bandwidth' => 1000, 'type' => 'some_type' ],
+					[ 'width' => 700, 'bandwidth' => 2000 ],
+					[ 'width' => 1000, 'bandwidth' => 7000 ],
+					[ 'width' => 700, 'bandwidth' => 1000 ],
 				],
-				// All widths are big enough to fill the frame, so sort by bandwidth ascending
 				[
-					[ 'width' => 700, 'bandwidth' => 1000, 'type' => 'some_type' ],
-					[ 'width' => 700, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 7000, 'type' => 'some_type' ],
+					[ 'width' => 1000, 'bandwidth' => 7000 ],
+					[ 'width' => 700, 'bandwidth' => 1000 ],
+					[ 'width' => 700, 'bandwidth' => 2000 ],
 				],
 			],
 			[
 				600,
 				[
-					[ 'width' => 700, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 800, 'bandwidth' => 7000, 'type' => 'some_type' ],
-					[ 'width' => 1000, 'bandwidth' => 1000, 'type' => 'some_type' ],
+					[ 'width' => 700, 'bandwidth' => 2000 ],
+					[ 'width' => 800, 'bandwidth' => 7000 ],
+					[ 'width' => 1000, 'bandwidth' => 1000 ],
 				],
 				[
-					[ 'width' => 1000, 'bandwidth' => 1000, 'type' => 'some_type' ],
-					[ 'width' => 700, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 800, 'bandwidth' => 7000, 'type' => 'some_type' ],
-				],
-			],
-			[
-				400,
-				[
-					[ 'width' => 700, 'bandwidth' => 2000, 'type' => 'some_type' ],
-					[ 'width' => 700, 'bandwidth' => 10000, 'type' => 'application/dash+xml' ],
-					[ 'width' => 1000, 'bandwidth' => 1000, 'type' => 'some_type' ],
-				],
-				// All widths are big enough to fill the frame, so put variable bandwidth first, then sort by
-				// bandwidth ascending
-				[
-					[ 'width' => 700, 'bandwidth' => 10000, 'type' => 'application/dash+xml' ],
-					[ 'width' => 1000, 'bandwidth' => 1000, 'type' => 'some_type' ],
-					[ 'width' => 700, 'bandwidth' => 2000, 'type' => 'some_type' ],
+					[ 'width' => 1000, 'bandwidth' => 1000 ],
+					[ 'width' => 700, 'bandwidth' => 2000 ],
+					[ 'width' => 800, 'bandwidth' => 7000 ],
 				],
 			],
 		];

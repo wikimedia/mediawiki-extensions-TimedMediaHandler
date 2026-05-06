@@ -79,7 +79,7 @@ class TranscodeStatusTable {
 		}
 
 		uksort( $transcodeRows, static function ( $a, $b ) {
-			$formatOrder = [ 'mpd', 'vp9', 'vp8', 'h264', 'theora', 'mpeg4', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
+			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'mpeg4', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
 
 			$aFormat = self::codecFromTranscodeKey( $a );
 			$bFormat = self::codecFromTranscodeKey( $b );
@@ -115,8 +115,6 @@ class TranscodeStatusTable {
 				'msg-derivative-key' => wfMessage( 'timedmedia-derivative-' . $transcodeKey ),
 				'bitrate' => $this->getTranscodeBitrate( $file, $state ),
 				'transcode-success' => (int)( $state['state'] ?? -1 ) === WebVideoTranscode::STATE_SUCCESS,
-				'transcode-downloadable' => (int)( $state['state'] ?? -1 ) === WebVideoTranscode::STATE_SUCCESS &&
-					$transcodeKey !== 'mpd',
 				'msg-timedmedia-download' => wfMessage( 'timedmedia-download' ),
 				// Download file
 				//
@@ -164,9 +162,6 @@ class TranscodeStatusTable {
 
 	public function getTranscodeBitrate( File $file, array $state ): string {
 		if ( (int)( $state['state'] ?? -1 ) === WebVideoTranscode::STATE_SUCCESS ) {
-			if ( $state['final_bitrate'] == WebVideoTranscode::VARIABLE_BITRATE ) {
-				return wfMessage( 'timedmedia-variable-bitrate' )->escaped();
-			}
 			return $this->context->getLanguage()->formatBitrate( $state['final_bitrate'] );
 		}
 		return '';

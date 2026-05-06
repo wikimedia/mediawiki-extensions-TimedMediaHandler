@@ -287,8 +287,7 @@
 				"720p.video.vp9.mp4": false,
 				"1080p.video.vp9.mp4": false,
 				"1440p.video.vp9.mp4": false,
-				"2160p.video.vp9.mp4": false,
-				"mpd": false
+				"2160p.video.vp9.mp4": false
 			}
 		},
 		"EnabledAudioTranscodeSet": {
@@ -420,17 +419,6 @@
 				"ext.tmh.OgvJs"
 			]
 		},
-		"ext.tmh.dash": {
-			"localBasePath": "resources/lib",
-			"remoteExtPath": "TimedMediaHandler/resources/lib",
-			"scripts": [
-				"dash.js/dash.all.min.js",
-				"videojs-contrib-dash/videojs-dash.js"
-			],
-			"dependencies": [
-				"ext.tmh.videojs-ogvjs"
-			]
-		},
 		"ext.tmh.player": {
 			"packageFiles": [
 				"ext.tmh.player.js",
@@ -495,7 +483,6 @@
 			"dependencies": [
 				"ext.tmh.video-js",
 				"ext.tmh.OgvJsSupport",
-				"ext.tmh.dash",
 				"mediawiki.api",
 				"mediawiki.Title",
 				"oojs-ui-core",
@@ -514,7 +501,6 @@
 				"timedmedia-resolution-1080",
 				"timedmedia-resolution-1440",
 				"timedmedia-resolution-2160",
-				"timedmedia-resolution-auto",
 				"timedmedia-source-original",
 				"videojs-more-information",
 				"videojs-quality",

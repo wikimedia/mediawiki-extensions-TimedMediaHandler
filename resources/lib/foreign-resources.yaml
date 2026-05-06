@@ -22,18 +22,3 @@ ogv.js:
   integrity: sha512-Spjbi8spzaY5PCn7JDQm6HAP8XDRuOCMG/oCQy59IPFe4A0oXR0dDNPRpc6oj8gIjPgs5pL7hpE9prf27qztFw==
   dest:
     package/dist/*:
-dash.js:
-  license: BSD-3-Clause
-  homepage: https://dashjs.org/
-  authors: Dash Industry Forum <https://dashif.org/>
-  version: 5.1.1
-  type: file
-  src: https://cdn.dashjs.org/latest/modern/umd/dash.all.min.js
-  integrity: sha512-Vwg9visLR2Yn/Ej5vZfg22RKmCmXmlp0CeM3nBeVNPweu/zDgZKAL036M3YlYAoM/p4LwvPHd+J6pXKpXEfGMg==
-videojs-contrib-dash:
-  license: Apache-2.0
-  homepage: https://github.com/videojs/videojs-contrib-dash/
-  version: 5.1.1
-  type: file
-  src: https://cdn.jsdelivr.net/npm/videojs-contrib-dash/dist/videojs-dash.js
-  integrity: sha512-LuoCJvUjM2KymaiyL4P4sqZAPj/FlLiltZ4v8O8jJmTYGONL2taeVrXqSFdtlVNmn2EaC8NV7MfMq99GU/0QnQ==

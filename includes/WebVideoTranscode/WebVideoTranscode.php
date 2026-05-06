@@ -40,11 +40,6 @@ use Wikimedia\Rdbms\IReadableDatabase;
  */
 class WebVideoTranscode {
 	/**
-	 * If a transcode has a variable bitrate then `transcode.transcode_final_bitrate` gets set to this value
-	 */
-	public const VARIABLE_BITRATE = -1;
-
-	/**
 	 * File has a row in the transcode table but no known queue or transcoding activity.
 	 *
 	 * The file will not be automatically processed unless explicitly enqueued.
@@ -153,20 +148,17 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * Get the max size of the web stream
-	 * @return string
+	 * Get the max size of the web stream ( constant bitrate )
+	 * @return int
 	 */
-	public static function getMaxSizeWebStream(): string {
-		$maxSize = '';
-		$maxWidth = 0;
+	public static function getMaxSizeWebStream() {
+		$maxSize = 0;
 		foreach ( self::transcodePresets()->enabledVideoTranscodes() as $transcodeKey ) {
 			$settings = self::transcodePresets()->findByKey( $transcodeKey );
-			$transcodeMaxSize = $settings->getMaxSize();
-			if ( $transcodeMaxSize !== null ) {
-				[ $currentWidth, ] = explode( 'x', $transcodeMaxSize, 2 );
-				if ( (int)$currentWidth > $maxWidth ) {
-					$maxWidth  = (int)$currentWidth;
-					$maxSize = $transcodeMaxSize;
+			if ( $settings->videoBitrate ) {
+				$currentSize = $settings->maxSize;
+				if ( $currentSize > $maxSize ) {
+					$maxSize = $currentSize;
 				}
 			}
 		}
@@ -303,17 +295,18 @@ class WebVideoTranscode {
 	public static function getLocalSources( &$file, $options = [] ) {
 		$sources = [];
 
-		$original = static::getPrimarySourceAttributes( $file, $options );
+		// Add the original file:
+		$sources[] = static::getPrimarySourceAttributes( $file, $options );
 
 		// If $wgEnableTranscode is false don't look for or add other local sources:
 		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'EnableTranscode' ) === false &&
 			!( $file->repo instanceof IForeignRepoWithDB ) ) {
-			return [ $original ];
+			return $sources;
 		}
 
 		// If an "oldFile" don't look for other sources:
 		if ( $file->isOld() ) {
-			return [ $original ];
+			return $sources;
 		}
 
 		/** @var ID3Handler $handler */
@@ -344,7 +337,7 @@ class WebVideoTranscode {
 			$settings = self::transcodePresets()->findByKey( $lastHLS );
 			[ $width, $height ] = static::getMaxSizeTransform(
 				$file,
-				$settings->getMaxSize() ?? (
+				$settings->maxSize ?? (
 					implode( 'x', [
 						$settings->width ?? '0',
 						$settings->height ?? '0',
@@ -360,9 +353,6 @@ class WebVideoTranscode {
 				'width' => $width,
 				'height' => $height,
 			];
-		}
-		if ( count( $sources ) == 0 ) {
-			$sources[] = $original;
 		}
 
 		return $sources;
@@ -627,7 +617,7 @@ class WebVideoTranscode {
 		} else {
 			[ $width, $height ] = static::getMaxSizeTransform(
 				$file,
-				self::transcodePresets()->findByKey( $transcodeKey )->getMaxSize() ?? '100x100'
+				self::transcodePresets()->findByKey( $transcodeKey )->maxSize
 			);
 		}
 
@@ -804,10 +794,7 @@ class WebVideoTranscode {
 				// if audio is present on the file, and for none if not.
 				return $handler->hasAudio( $file );
 			}
-			if (
-				$settings->type !== 'application/dash+xml' &&
-				static::isTargetLargerThanFile( $file, $settings->getMaxSize() ?? '' )
-			) {
+			if ( static::isTargetLargerThanFile( $file, $settings->maxSize ?? '' ) ) {
 				// Are we the smallest enabled transcode for this type?
 				// Then go ahead and make a wee little transcode for compat.
 				return static::isSmallestTranscodeForCodec( $transcodeKey );
@@ -998,7 +985,7 @@ class WebVideoTranscode {
 	public static function isSmallestTranscodeForCodec( $transcodeKey ) {
 		$settings = self::transcodePresets()->findByKey( $transcodeKey );
 		$vcodec = $settings->videoCodec;
-		$maxSize = static::getMaxSize( $settings->getMaxSize() ?? '' );
+		$maxSize = static::getMaxSize( $settings->maxSize );
 
 		foreach ( self::transcodePresets()->enabledVideoTranscodes() as $tKey ) {
 			$tsettings = self::transcodePresets()->findByKey( $tKey );
@@ -1008,7 +995,7 @@ class WebVideoTranscode {
 				return true;
 			}
 			if ( $tsettings->videoCodec === $vcodec ) {
-				$tmaxSize = static::getMaxSize( $tsettings->getMaxSize() ?? '' );
+				$tmaxSize = static::getMaxSize( $tsettings->maxSize );
 				if ( $tmaxSize['width'] < $maxSize['width'] ) {
 					return false;
 				}

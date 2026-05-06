@@ -18,9 +18,7 @@ use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use Shellbox\Command\BoxedCommand;
-use Shellbox\Command\BoxedResult;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
-use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\ILBFactory;
 
 /**
@@ -36,7 +34,6 @@ use Wikimedia\Rdbms\ILBFactory;
 class WebVideoTranscodeJob extends Job {
 
 	public ?TempFSFile $targetEncodeFile = null;
-	private ?string $targetEncodeChunksDir = null;
 	public ?TempFSFile $targetPlaylistFile = null;
 	/** @var File|false */
 	public $file;
@@ -53,7 +50,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	public function __construct( $title, $params,
 		private readonly CommandFactory $commandFactory,
-		protected readonly Config $config,
+		private readonly Config $config,
 		private readonly ILBFactory $lbFactory,
 		private readonly RepoGroup $repoGroup,
 		private readonly TranscodePresets $transcodePresets,
@@ -70,7 +67,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Accessor for MainConfig
 	 */
-	private function getConfig(): Config {
+	protected function getConfig(): Config {
 		return $this->config;
 	}
 
@@ -99,14 +96,6 @@ class WebVideoTranscodeJob extends Job {
 		return $this->targetEncodeFile->getPath();
 	}
 
-	private function getTargetEncodeChunksDir(): string {
-		if ( !$this->targetEncodeChunksDir ) {
-			$this->targetEncodeChunksDir = TempFSFile::getUsableTempDirectory() . '/' .
-				bin2hex( random_bytes( 5 ) ) . '/';
-		}
-		return $this->targetEncodeChunksDir;
-	}
-
 	private function getTargetPlaylistPath(): string {
 		if ( !$this->targetPlaylistFile ) {
 			$this->targetPlaylistFile = $this->fileTarget( '.m3u8' );
@@ -127,23 +116,9 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * purge temporary encode target
-	 *
-	 * @param BoxedResult|null $cmdResult
 	 */
-	private function purgeTargetEncodeFiles( ?BoxedResult $cmdResult ) {
+	private function purgeTargetEncodeFile() {
 		if ( $this->targetEncodeFile ) {
-			// clear any chunked files for MPEG-DASH first before we purge the targetEncodeFile
-			if ( $cmdResult ) {
-				$chunksPath = $this->getTargetEncodeChunksDir();
-				foreach ( $cmdResult->getFileNames() as $fileName ) {
-					if ( preg_match( '/^(init|chunk)-/', $fileName ) ) {
-						// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-						@unlink( $chunksPath . $fileName );
-					}
-				}
-				// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-				@rmdir( $chunksPath );
-			}
 			$this->targetEncodeFile->purge();
 			$this->targetEncodeFile = null;
 		}
@@ -283,36 +258,19 @@ class WebVideoTranscodeJob extends Job {
 					}
 				}
 			}
-			$cmdResult = null;
-			if ( $options->novideo && $file->getMimeType() === 'audio/midi' ) {
-				$cmdResult = $this->midiToAudioEncode( $options );
-				if ( $cmdResult->getExitCode() !== 0 ) {
-					$status = 'midi-encode.sh' .
-						"\n\nExitcode: " . $cmdResult->getExitCode() . "\nMemory: " .
-						$this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024 .
-						"\n\n" . $cmdResult->getStdout();
+			if ( $options->novideo ) {
+				if ( $file->getMimeType() === 'audio/midi' ) {
+					$status = $this->midiToAudioEncode( $options );
 				} else {
-					$status = true;
+					$status = $this->ffmpegEncode( $options );
 				}
-			} elseif ( $options->novideo || in_array( $videoCodec, $codecs ) ) {
-				try {
-					$cmdResult = $this->ffmpegEncode(
-						$options,
-						$twopass ? 2 : 1
-					);
-					if ( $cmdResult->getExitCode() !== 0 ) {
-						$host = wfHostname();
-						$status = 'ffmpeg-encode.sh' .
-							"\n\nExitcode: " . $cmdResult->getExitCode() .
-							"\nMemory: " .
-							$this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024 .
-							"\nHost: $host\n\n"
-							. $cmdResult->getStdout();
-					} else {
-						$status = true;
-					}
-				} catch ( TranscodeError $e ) {
-					$status = $e->getMessage();
+			} elseif ( in_array( $videoCodec, $codecs ) ) {
+				// Check for twopass:
+				if ( $twopass ) {
+					// ffmpeg requires manual two pass
+					$status = $this->ffmpegEncode( $options, 2 );
+				} else {
+					$status = $this->ffmpegEncode( $options );
 				}
 			} else {
 				$this->output( 'Error unknown codec:' . $videoCodec );
@@ -404,18 +362,6 @@ class WebVideoTranscodeJob extends Job {
 					$mediaPath,
 					$storeOptions
 				);
-				if ( $result->isOK() && $options->type == 'application/dash+xml' && $cmdResult ) {
-					// Copy chunked video renditions for mpeg-dash from the FS into storage too
-					$tempPath = $this->getTargetEncodeChunksDir();
-					$destPath = $file->getTranscodedPath() . '/';
-					$batch = [];
-					foreach ( $cmdResult->getFileNames() as $fileName ) {
-						if ( preg_match( '/^(init|chunk)-/', $fileName ) ) {
-							$batch[] = [ $tempPath . $fileName, $destPath . $fileName ];
-						}
-					}
-					$result->merge( $file->getRepo()->quickImportBatch( $batch ) );
-				}
 				if ( $result->isOK() && $streaming === 'hls' && $playlistTemp && $playlistPath ) {
 					$result = $file->getRepo()->quickImport(
 						// temp file
@@ -437,9 +383,7 @@ class WebVideoTranscodeJob extends Job {
 					$this->setTranscodeError( $transcodeKey, $result->getWikiText() );
 					$status = false;
 				} else {
-					if ( $options->type == 'application/dash+xml' ) {
-						$bitrate = WebVideoTranscode::VARIABLE_BITRATE;
-					} elseif ( $file->getLength() > 0 ) {
+					if ( $file->getLength() > 0 ) {
 						$bitrate = round(
 							(int)( $filesize / $file->getLength() ) * 8
 						);
@@ -481,7 +425,7 @@ class WebVideoTranscodeJob extends Job {
 				$this->title->invalidateCache();
 			}
 			// done with encoding target, clean up
-			$this->purgeTargetEncodeFiles( $cmdResult );
+			$this->purgeTargetEncodeFile();
 
 			// Clear the webVideoTranscode cache ( so we don't keep out dated table cache around )
 			WebVideoTranscode::clearTranscodeCache( $this->title->getDBkey() );
@@ -498,8 +442,6 @@ class WebVideoTranscodeJob extends Job {
 				$this->setLastError( $status );
 			}
 			return $status === true;
-		} catch ( DBError $e ) {
-			throw $e;
 		} catch ( Exception $e ) {
 			$error = "Exception: " . $e->getMessage();
 			$trace = $e->getTraceAsString();
@@ -541,19 +483,18 @@ class WebVideoTranscodeJob extends Job {
 	 * Utility helper for ffmpeg mapping
 	 * @param TranscodePreset $options
 	 * @param int $passes the number of encoding passes to perform
-	 * @throws TranscodeError
-	 * @return BoxedResult
+	 * @return true|string
 	 */
-	private function ffmpegEncode( TranscodePreset $options, int $passes = 0 ): BoxedResult {
+	private function ffmpegEncode( TranscodePreset $options, int $passes = 0 ) {
 		// Environment variables for shellbox
 		$optsEnv = [];
 		$sourceFile = $this->getFile();
 
-		$interval = $options->segmentDuration ?? 10;
+		$interval = 10;
 		$fps = 0;
 		$streaming = $options->streaming;
 		$transcodeKey = $this->params[ 'transcodeKey' ];
-		$extension = pathinfo( $transcodeKey, PATHINFO_EXTENSION ) ?: $transcodeKey;
+		$extension = pathinfo( $transcodeKey, PATHINFO_EXTENSION );
 
 		// Build video options as an array
 		$videoOpts = [];
@@ -590,26 +531,22 @@ class WebVideoTranscodeJob extends Job {
 			} else {
 				$optsEnv['TMH_REMUX'] = 'no';
 				$optsEnv['TMH_OPT_VIDEOCODEC'] = $options->videoCodec;
-				if ( count( $options->videoRenditions ) > 0 ) {
-					$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEGDASHOptions( $options ) );
-				} else {
-					switch ( $options->videoCodec ) {
-						case 'vp8':
-						case 'vp9':
-							$videoOpts = array_merge( $videoOpts, $this->ffmpegAddWebmVideoOptions( $options ) );
-							if ( $options->speed ) {
-								$optsEnv['TMH_OPT_SPEED'] = (int)$options->speed;
-							}
-							break;
-						case 'h264':
-							$videoOpts = array_merge( $videoOpts, $this->ffmpegAddH264VideoOptions( $options ) );
-							break;
-						case 'mpeg4':
-							$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEG4VideoOptions( $options ) );
-							break;
-						default:
-							$videoOpts = array_merge( $videoOpts, $this->ffmpegAddGenericVideoOptions( $options ) );
-					}
+				switch ( $options->videoCodec ) {
+					case 'vp8':
+					case 'vp9':
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddWebmVideoOptions( $options ) );
+						if ( $options->speed ) {
+							$optsEnv['TMH_OPT_SPEED'] = (int)$options->speed;
+						}
+						break;
+					case 'h264':
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddH264VideoOptions( $options ) );
+						break;
+					case 'mpeg4':
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEG4VideoOptions( $options ) );
+						break;
+					default:
+						$videoOpts = array_merge( $videoOpts, $this->ffmpegAddGenericVideoOptions( $options ) );
 				}
 			}
 
@@ -626,28 +563,58 @@ class WebVideoTranscodeJob extends Job {
 				case 'oga':
 					$videoOpts[] = '-f ogg';
 					break;
-				case 'mpd':
-					$videoOpts[] = '-f dash';
-					break;
 				default:
 					// assume defaults work
 			}
 
-			// Check for Interval
+			// Check for keyframeInterval
 			$keyframeInterval = round( $fps * $interval );
 			$videoOpts[] = '-g ' . $keyframeInterval;
 
-			$videoOpts = array_merge( $videoOpts, $this->ffmpegAddVideoBitrateOptions( $options ) );
+			if ( $options->videoBitrate ) {
+				$base = $this->expandRate( $options->videoBitrate );
+				$bitrate = $this->scaleRate( $options, $base );
+				$videoOpts[] = "-b:v $bitrate";
+
+				// Estimate the output file size in KiB and bail out early
+				// if it's potentially very large. Could be a denial of
+				// service, or just a large file that probably is poorly
+				// compressed.
+				$duration = (float)$this->file->getLength();
+				$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
+				$backgroundSizeLimit = $this->config->get( 'TranscodeBackgroundSizeLimit' );
+				if ( $backgroundSizeLimit > 0 && $estimatedSize > $backgroundSizeLimit ) {
+					// This hard limit cannot be overridden by admins, except by raising the limit in config.
+					// @todo return an error code that can be localized later
+					return "estimated file size $estimatedSize KiB over hard limit $backgroundSizeLimit KiB";
+				}
+
+				$transcodeSoftSizeLimit = $this->config->get( 'TranscodeSoftSizeLimit' );
+				if ( $transcodeSoftSizeLimit > 0 && $estimatedSize > $transcodeSoftSizeLimit ) {
+					// This soft limit can be overridden when a transcode is reset by hand via the web UI
+					// or API, or requeueTranscodes.php with --manual-override option.
+					$manualOverride = $this->params['manualOverride'] ?? false;
+					if ( !$manualOverride ) {
+						// @todo return an error code that can be localized later
+						return "estimated file size $estimatedSize KiB over soft limit $transcodeSoftSizeLimit KiB";
+					}
+				}
+
+				if ( $options->minrate ) {
+					$minrate = $this->scaleRate( $options, $options->minrate );
+					$videoOpts[] = "-minrate $minrate";
+				}
+				if ( $options->maxrate ) {
+					$maxrate = $this->scaleRate( $options, $options->maxrate );
+					$videoOpts[] = "-maxrate $maxrate";
+				}
+			}
+
 			if ( $this->remuxVirtualUrl === null ) {
 				// If necessary, add deinterlacing options
 				$videoOpts = array_merge( $videoOpts, $this->ffmpegAddDeinterlaceOptions( $options ) );
 				// Add size options:
-				if ( count( $options->videoRenditions ) == 0 ) {
-					$videoOpts = array_merge(
-						$videoOpts,
-						$this->ffmpegAddVideoSizeOptions( $options )
-					);
-				}
+				$videoOpts = array_merge( $videoOpts, $this->ffmpegAddVideoSizeOptions( $options ) );
 			}
 		}
 
@@ -684,22 +651,13 @@ class WebVideoTranscodeJob extends Job {
 			} elseif ( $extension === 'mp3' ) {
 				// No additional options needed at present.
 			} else {
-				throw new TranscodeError(
-					"Invalid HLS track media type, expected .mp4, .m4v, .m4a, .mov, .3gp, or .mp3"
-				);
+				return "Invalid HLS track media type, expected .mp4, .m4v, .m4a, .mov, .3gp, or .mp3";
 			}
 		}
 
 		// implode all the options arrays in preparation for passing to the command
 		$optsEnv['TMH_MOVFLAGS'] = implode( ' ', $movflagsOpts );
 		$optsEnv['TMH_OPTS_VIDEO'] = implode( ' ', $videoOpts );
-
-		// For MPEG-DASH we need to tell ffmpeg that the video renditions are an "adaptation set"
-		// i.e. a group of different renditions of the same video
-		$optsEnv['TMH_OPTS_VIDEO_USE_ADAPTATION_SETS'] = "no";
-		if ( $options->type === "application/dash+xml" && count( $options->videoRenditions ) > 0 ) {
-			$optsEnv['TMH_OPTS_VIDEO_USE_ADAPTATION_SETS'] = "yes";
-		}
 
 		// Audio options
 		$optsEnv['TMH_OPT_NOAUDIO'] = $options->noaudio !== null ? "yes" : "no";
@@ -716,7 +674,7 @@ class WebVideoTranscodeJob extends Job {
 			$addStatus = $sourceFile->addToShellboxCommand( $cmd, 'original.video' );
 		}
 		if ( !$addStatus->isOK() ) {
-			throw new TranscodeError( 'source file is missing. Encoding failed.' );
+			return 'source file is missing. Encoding failed.';
 		}
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
 		$wallTimeLimit = (int)$this->config->get( 'TranscodeBackgroundTimeLimit' );
@@ -727,25 +685,29 @@ class WebVideoTranscodeJob extends Job {
 		$target = $this->getTargetEncodePath();
 		$outputFile = 'transcoded.' . pathinfo( $target, PATHINFO_EXTENSION );
 		// Execute the conversion
-		$cmd = $cmd->outputFileToFile( $outputFile, $target )
+		$cmd->outputFileToFile( $outputFile, $this->getTargetEncodePath() )
 			->includeStderr()
 			->environment( [
 				'TMH_OUTPUT_FILE'      => $outputFile,
 				'TMH_FFMPEG_PASSES'    => (string)$passes,
 				'TMH_FFMPEG_PATH'      => $ffmpegLocation,
 			] + $optsEnv );
-		if ( $options->type == 'application/dash+xml' ) {
-			$chunksDir = $this->getTargetEncodeChunksDir();
-			if ( !mkdir( $chunksDir ) ) {
-				throw new TranscodeError( 'Failed to create FS dir for chunked transcode output' );
-			}
-			$cmd = $cmd->outputGlobToFile( 'init', 'webm', $chunksDir );
-			$cmd = $cmd->outputGlobToFile( 'chunk', 'webm', $chunksDir );
-		}
-		return $cmd->memoryLimit( $backgroundMemoryLimit )
+		$result = $cmd->memoryLimit( $backgroundMemoryLimit )
 			->wallTimeLimit( $wallTimeLimit )
 			->cpuTimeLimit( $cpuTimeLimit )
 			->execute();
+
+		// and pass it to this->output()
+		if ( $result->getExitCode() !== 0 ) {
+			$host = wfHostname();
+			return 'ffmpeg-encode.sh' .
+				"\n\nExitcode: " . $result->getExitCode() .
+				"\nMemory: $backgroundMemoryLimit" .
+				"\nHost: $host\n\n"
+				. $result->getStdout();
+		}
+
+		return true;
 	}
 
 	// Bitrates and keyframe distances are specified for this
@@ -886,11 +848,9 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * @param TranscodePreset $options
-	 * @param ?int $renditionNumber Used if we're adding multiple video renditions
 	 * @return array
 	 */
-	private function ffmpegAddVideoSizeOptions( TranscodePreset $options, ?int $renditionNumber = null ): array {
-		$renditionIdentifier = $renditionNumber !== null ? ':v:' . $renditionNumber : '';
+	private function ffmpegAddVideoSizeOptions( TranscodePreset $options ): array {
 		$opts = [];
 		// Get a local pointer to the file object
 		$file = $this->getFile();
@@ -901,123 +861,16 @@ class WebVideoTranscodeJob extends Job {
 		) {
 			// Check for aspect ratio
 			$aspectRatio = $options->aspect ?? $file->getWidth() . ':' . $file->getHeight();
-			$opts[] = '-aspect' . $renditionIdentifier . ' ' . $aspectRatio;
-		}
-		$sizeString = $this->getAdjustedSizeString( $options );
-		if ( $sizeString ) {
-			$opts[] = "-s" . $renditionIdentifier . " " . $sizeString;
+
+			$opts[] = '-s ' . (int)$options->width . 'x' . (int)$options->height;
+			$opts[] = '-aspect ' . $aspectRatio;
+		} elseif ( $options->maxSize ) {
+			// Get size transform ( if maxSize is > file, file size is used:
+
+			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options->maxSize );
+			$opts[] = "-s {$width}x{$height}";
 		}
 		return $opts;
-	}
-
-	private function getSizeStringFromOptions( TranscodePreset $options ): ?string {
-		if ( $options->maxSize ) {
-			return $options->maxSize;
-		} elseif ( ( $options->width && $options->width > 0 )
-			&&
-			( $options->height && $options->height > 0 )
-		) {
-			return (int)$options->width . 'x' . (int)$options->height;
-		}
-		return null;
-	}
-
-	/**
-	 * Get the requested size string, but if it's greater than the size of the existing video return the existing size
-	 *
-	 * @param TranscodePreset $options
-	 * @return string
-	 */
-	private function getAdjustedSizeString( TranscodePreset $options ): string {
-		$file = $this->getFile();
-		$requestedMaxSize = $this->getSizeStringFromOptions( $options );
-		if ( $requestedMaxSize ) {
-			// Get size transform (if maxSize is > file, file size is used):
-			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $requestedMaxSize );
-			return "{$width}x{$height}";
-		} else {
-			return $file->getWidth() . 'x' . $file->getHeight();
-		}
-	}
-
-	/**
-	 * @param TranscodePreset $options
-	 * @param int|null $renditionNumber
-	 * @param int|null $segmentDuration
-	 * @return array
-	 * @throws TranscodeError
-	 */
-	private function ffmpegAddVideoBitrateOptions(
-		TranscodePreset $options,
-		?int $renditionNumber = null,
-		?int $segmentDuration = null
-	): array {
-		$renditionIdentifier = $renditionNumber !== null ? ':' . $renditionNumber : '';
-		if ( $options->videoBitrate === null ) {
-			return [];
-		}
-		$videoOpts = [];
-		$base = $this->expandRate( $options->videoBitrate );
-		$bitrate = $this->scaleRate( $options, $base );
-		$videoOpts[] = "-b:v" . $renditionIdentifier . " $bitrate";
-
-		// Estimate the output file size in KiB and bail out early
-		// if it's potentially very large. Could be a denial of
-		// service, or just a large file that probably is poorly
-		// compressed.
-		$duration = (float)$this->file->getLength();
-		$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
-		$backgroundSizeLimit = $this->config->get( 'TranscodeBackgroundSizeLimit' );
-		if ( $backgroundSizeLimit > 0 && $estimatedSize > $backgroundSizeLimit ) {
-			// This hard limit cannot be overridden by admins, except by raising the limit in config.
-			throw new TranscodeError(
-				"estimated file size $estimatedSize KiB over hard limit $backgroundSizeLimit KiB"
-			);
-		}
-
-		$transcodeSoftSizeLimit = $this->config->get( 'TranscodeSoftSizeLimit' );
-		if ( $transcodeSoftSizeLimit > 0 && $estimatedSize > $transcodeSoftSizeLimit ) {
-			// This soft limit can be overridden when a transcode is reset by hand via the web UI
-			// or API, or requeueTranscodes.php with --manual-override option.
-			$manualOverride = $this->params['manualOverride'] ?? false;
-			if ( !$manualOverride ) {
-				throw new TranscodeError(
-					"estimated file size $estimatedSize KiB over soft limit $transcodeSoftSizeLimit KiB"
-				);
-			}
-		}
-
-		if ( $options->minrate ) {
-			$minrate = $this->scaleRate( $options, $options->minrate );
-			$videoOpts[] = "-minrate:v" . $renditionIdentifier . " $minrate";
-		}
-		if ( $options->maxrate ) {
-			$maxrate = $this->scaleRate( $options, $options->maxrate );
-			$videoOpts[] = "-maxrate:v" . $renditionIdentifier . " $maxrate";
-			$bufsize = $this->getBufsize( $options, $segmentDuration ?? $options->segmentDuration );
-			if ( $bufsize ) {
-				$videoOpts[] = "-bufsize:v" . $renditionIdentifier . " $bufsize";
-			}
-		}
-		return $videoOpts;
-	}
-
-	/**
-	 * Get value for 'bufsize' ffmpeg param
-	 *
-	 * @param TranscodePreset $options
-	 * @param int|null $segmentDuration
-	 * @return int
-	 */
-	private function getBufsize( TranscodePreset $options, ?int $segmentDuration = null ): int {
-		$bufsize = 0;
-		if ( $options->maxrate ) {
-			$maxrate = $this->scaleRate( $options, $options->maxrate );
-			if ( $segmentDuration ) {
-				$bufsize = $maxrate * $segmentDuration;
-			}
-		}
-		return $bufsize;
 	}
 
 	/**
@@ -1066,87 +919,6 @@ class WebVideoTranscodeJob extends Job {
 
 		$opts[] = '-quality good';
 		return $opts;
-	}
-
-	/**
-	 * Adds ffmpeg shell options for mpeg-dash
-	 *
-	 * NOTE: chunks are all in webm format
-	 *
-	 * @param TranscodePreset $options
-	 * @return array
-	 */
-	private function ffmpegAddMPEGDASHOptions( TranscodePreset $options ): array {
-		$file = $this->getFile();
-		$opts = $this->ffmpegAddWebmVideoOptions( $options );
-		$opts[] = '-use_template 1';
-		$opts[] = '-use_timeline 1';
-		// make sure the first frame is at time zero
-		$opts[] = '-ss 0';
-		$opts[] = '-avoid_negative_ts make_zero';
-		$opts[] = '-map_metadata -1';
-
-		$opts[] = '-init_seg_name init-$RepresentationID$.webm';
-		$opts[] = '-media_seg_name chunk-$RepresentationID$-$Number%05d$.webm';
-
-		if ( $options->segmentDuration ) {
-			$opts[] = '-seg_duration ' . (int)$options->segmentDuration;
-		}
-		if ( $options->noaudio === null ) {
-			$opts[] = '-map 0:a?';
-		}
-
-		$renditionNumber = 0;
-		// create a separate array for the renditions opts, because they should come after all the '-map' opts
-		$renditionsOpts = [];
-		$fileWidth = $file->getWidth();
-		foreach ( $options->videoRenditions as $videoRendition ) {
-			$requestedSize = $this->getSizeStringFromOptions( $videoRendition );
-			if ( $requestedSize ) {
-				[ $renditionWidth, ] = explode( 'x', $requestedSize, 2 );
-				if ( (int)$renditionWidth <= (int)$fileWidth ) {
-					$opts[] = '-map 0:v';
-					$renditionsOpts = array_merge(
-						$renditionsOpts,
-						$this->ffmpegAddVideoSizeOptions( $videoRendition, $renditionNumber )
-					);
-					$renditionsOpts = array_merge(
-						$renditionsOpts,
-						$this->ffmpegAddVideoBitrateOptions(
-							$videoRendition, $renditionNumber, $options->segmentDuration
-						)
-					);
-					if ( $videoRendition->speed ) {
-						$renditionsOpts[] = "-speed:v:" . $renditionNumber . " " . (int)$videoRendition->speed;
-					}
-					if ( $videoRendition->crf ) {
-						$renditionsOpts[] = "-crf:v:" . $renditionNumber . " " . (int)$videoRendition->crf;
-					}
-					if ( $options->videoCodec === 'vp9' ) {
-						if ( $videoRendition->tileColumns ) {
-							$renditionsOpts[] = "-tile-columns:v:" . $renditionNumber . " " .
-								(int)$videoRendition->tileColumns;
-						}
-					} else {
-						if ( $videoRendition->slices ) {
-							$renditionsOpts[] = "-slices:v:" . $renditionNumber . " " . (int)$videoRendition->slices;
-						}
-					}
-					$renditionNumber++;
-				}
-			}
-		}
-
-		// Deal with the case where the original video is smaller than all the specific renditions
-		if ( count( $renditionsOpts ) == 0 ) {
-			$opts[] = '-map 0:v';
-			$renditionsOpts = $this->ffmpegAddVideoSizeOptions(
-				new TranscodePreset( [ 'maxSize' => $fileWidth . 'x' . $file->getHeight() ] ),
-				0
-			);
-		}
-
-		return array_merge( $opts, $renditionsOpts );
 	}
 
 	private function isInterlaced(): bool {
@@ -1233,11 +1005,9 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * Utility helper for midi to an audio format conversion
-	 * @param TranscodePreset $options
-	 * @throws TranscodeError
-	 * @return BoxedResult
+	 * @return true|string true on success, error message on failure
 	 */
-	private function midiToAudioEncode( TranscodePreset $options ): BoxedResult {
+	private function midiToAudioEncode( TranscodePreset $options ) {
 		$cmd = $this->getCommand( 'miditoaudio' );
 		$this->useScript( $cmd, 'midi-encode.sh' );
 		// set up options
@@ -1255,8 +1025,7 @@ class WebVideoTranscodeJob extends Job {
 			}
 		}
 		if ( !$this->getFile()->addToShellboxCommand( $cmd, 'input.mid' )->isOK() ) {
-			throw new TranscodeError( __METHOD__ .
-				' source file is missing. Encoding failed.' );
+			return 'source file is missing. Encoding failed.';
 		}
 		$outputFile = 'output_audio.' . pathinfo( $this->getTargetEncodePath(), PATHINFO_EXTENSION );
 		// Execute the conversion
@@ -1272,9 +1041,16 @@ class WebVideoTranscodeJob extends Job {
 				'TMH_AUDIO_CODEC'     => $options->audioCodec,
 				'TMH_OUTPUT_FILE'     => $outputFile,
 			] + $optToEnv );
-		return $cmd->memoryLimit( $backgroundMemoryLimit )
-			->wallTimeLimit( $wallTimeLimit )
-			->cpuTimeLimit( $cpuTimeLimit )
-			->execute();
+		$result = $cmd->memoryLimit( $backgroundMemoryLimit )
+					->wallTimeLimit( $wallTimeLimit )
+					->cpuTimeLimit( $cpuTimeLimit )
+					->execute();
+
+		if ( $result->getExitCode() !== 0 ) {
+			return 'midi-encode.sh' .
+				"\n\nExitcode: " . $result->getExitCode() . "\nMemory: $backgroundMemoryLimit\n\n"
+				. $result->getStdout();
+		}
+		return true;
 	}
 }

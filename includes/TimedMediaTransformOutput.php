@@ -221,7 +221,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	private function getPopupPlayerSize(): array {
 		// Get the max width from the enabled transcode settings:
 		$maxImageSize = WebVideoTranscode::getMaxSizeWebStream();
-		return WebVideoTranscode::getMaxSizeTransform( $this->file, $maxImageSize );
+		return WebVideoTranscode::getMaxSizeTransform( $this->file, (string)$maxImageSize );
 	}
 
 	/**
@@ -268,14 +268,8 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 			// both are too small. Go with the one closer to the target width
 			return ( $a['width'] < $b['width'] ) ? -1 : 1;
 		}
-		// Both are big enough, or both equally too small. Put variable bandwidth first (e.g. MPEG-DASH)
-		// and then order by bit-rate ascending (as lower bit-rate files will be faster to download)
-		if ( $a['type'] == 'application/dash+xml' ) {
-			return -1;
-		}
-		if ( $b['type'] == 'application/dash+xml' ) {
-			return 1;
-		}
+		// Both are big enough, or both equally too small. Go with the one
+		// that has a lower bit-rate (as it will be faster to download).
 		if ( isset( $a['bandwidth'] ) && isset( $b['bandwidth'] ) ) {
 			return ( $a['bandwidth'] < $b['bandwidth'] ) ? -1 : 1;
 		}
