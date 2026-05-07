@@ -192,5 +192,7 @@
 	"videojs-endcard-embed-title": "Upota tämä media verkkosivustollesi",
 	"videojs-endcard-embed-copy": "Kopioi",
 	"videojs-endcard-copied": "Kopioitu leikepöydälle!",
-	"videojs-endcard-copy-failed": "Leikepöydälle kopioiminen epäonnistui"
+	"videojs-endcard-copy-failed": "Leikepöydälle kopioiminen epäonnistui",
+	"videojs-a11y-pause": "Pysäytetty",
+	"videojs-a11y-muted": "Hiljennetty"
 }
