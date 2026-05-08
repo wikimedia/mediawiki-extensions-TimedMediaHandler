@@ -129,7 +129,9 @@
 	"timedmedia-derivative-desc-1440p.mp4": "Ултрависокоразделен MP4 H.264 (1440 п)",
 	"timedmedia-derivative-2160p.mp4": "H264 2160 п",
 	"timedmedia-derivative-desc-2160p.mp4": "Полн ултрависокоразделен MP4 H.264 (2160 п)",
+	"timedmedia-derivative-144p.mjpeg.mov": "QuickTime 144 п (MJPEG)",
 	"timedmedia-derivative-desc-144p.mjpeg.mov": "QuickTime-видеоснимка (144 п MJPEG)",
+	"timedmedia-derivative-360p.mpeg4.mov": "QuickTime 360 п (MPEG-4)",
 	"timedmedia-derivative-desc-360p.mpeg4.mov": "QuickTime-видеоснимка (360 п MPEG-4 Visual)",
 	"timedmedia-derivative-desc-m3u8": "HTTP-пренос во живо",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "Стерео (Opus)",
@@ -209,5 +211,15 @@
 	"videojs-endcard-embed-title": "Вметнете ја податотекава во вашето мрежно место",
 	"videojs-endcard-embed-copy": "Копирај",
 	"videojs-endcard-copied": "Ископирано во меѓускладот!",
-	"videojs-endcard-copy-failed": "Не успав да ископирам во меѓускладот"
+	"videojs-endcard-copy-failed": "Не успав да ископирам во меѓускладот",
+	"videojs-a11y-rate-change": "Брзина на изведба $1",
+	"videojs-seek-forward": "+ $1 сек",
+	"videojs-a11y-seek-forward": "$1 секунди напред",
+	"videojs-seek-backward": "− $1 сек",
+	"videojs-a11y-seek-backward": "$1 секунди назад",
+	"videojs-a11y-step-forward": "Кадар напред",
+	"videojs-a11y-step-backward": "Кадар назад",
+	"videojs-a11y-pause": "Запрено",
+	"videojs-a11y-ended": "Изведбата заврши",
+	"videojs-a11y-muted": "Исклучен звук"
 }
