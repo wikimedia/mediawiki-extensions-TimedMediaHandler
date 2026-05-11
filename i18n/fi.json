@@ -14,7 +14,8 @@
 			"Pyscowicz",
 			"Samoasambia",
 			"Str4nd",
-			"VezonThunder"
+			"VezonThunder",
+			"Wikipeedikko"
 		]
 	},
 	"timedmediahandler-desc": "Käsittelijä äänelle, videolle ja tekstitykselle. Tukee muotoja WebM, Ogg Theora, Vorbis ja srt.",
@@ -193,6 +194,11 @@
 	"videojs-endcard-embed-copy": "Kopioi",
 	"videojs-endcard-copied": "Kopioitu leikepöydälle!",
 	"videojs-endcard-copy-failed": "Leikepöydälle kopioiminen epäonnistui",
+	"videojs-a11y-rate-change": "Toistonopeus $1",
+	"videojs-a11y-seek-forward": "$1 sekuntia eteenpäin",
+	"videojs-a11y-seek-backward": "$1 sekuntia taaksepäin",
+	"videojs-a11y-step-forward": "Kehys eteenpäin",
 	"videojs-a11y-pause": "Pysäytetty",
+	"videojs-a11y-ended": "Median toisto päättyi",
 	"videojs-a11y-muted": "Hiljennetty"
 }
