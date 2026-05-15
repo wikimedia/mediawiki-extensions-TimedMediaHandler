@@ -117,5 +117,13 @@
 	"videojs-captions-create": "Stvori naslove",
 	"transcodestatistics": "Statistika transkodiranja",
 	"timedmedia-timedtext-title-edit-subtitles": "$1 titlovi za isječak: $2",
-	"timedmedia-timedtext-title-create-subtitles": "Nije pronađen nijedan $1 titl za isječak: $2"
+	"timedmedia-timedtext-title-create-subtitles": "Nije pronađen nijedan $1 titl za isječak: $2",
+	"videojs-endcard-share-title": "Poveznica na ovu datoteku",
+	"videojs-endcard-copy-link": "Kopiraj poveznicu",
+	"videojs-endcard-share": "Podijeli",
+	"videojs-endcard-share-not-possible": "Dijeljenje nije moguće",
+	"videojs-endcard-embed-title": "Ugradite ovu datoteku na svoje mrežno mjesto",
+	"videojs-endcard-embed-copy": "Kopiraj",
+	"videojs-endcard-copied": "Kopirano u međuspremnik!",
+	"videojs-endcard-copy-failed": "Neuspješno kopiranje u međuspremnik"
 }
