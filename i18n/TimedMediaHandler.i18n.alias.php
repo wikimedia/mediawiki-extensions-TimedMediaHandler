@@ -63,6 +63,12 @@ $specialPageAliases['ml'] = [
 	'TranscodeStatistics' => [ 'സമയാധിഷ്ഠിതമീഡിയകൈകാര്യോപകരണം' ],
 ];
 
+/** Ukrainian (Українська) */
+$specialPageAliases['uk'] = [
+	'TranscodeStatistics' => [ 'Статистика_транскодування' ],
+	'OrphanedTimedText' => [ 'Сторінки-сироти_Субтитрів' ],
+];
+
 /** Urdu (اردو) */
 $specialPageAliases['ur'] = [
 	'TranscodeStatistics' => [ 'وقتی_میڈیا_ہدایت_کار' ],
