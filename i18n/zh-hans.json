@@ -5,6 +5,7 @@
 			"Byfserag",
 			"Diskdance",
 			"Gaoxuewei",
+			"GuoPC",
 			"Hanyanbo98",
 			"Hehua",
 			"Hzy980512",
@@ -243,5 +244,13 @@
 	"videojs-endcard-embed-title": "将此媒体嵌入到您的网站",
 	"videojs-endcard-embed-copy": "复制",
 	"videojs-endcard-copied": "已复制到剪贴板！",
-	"videojs-endcard-copy-failed": "无法复制到剪贴板"
+	"videojs-endcard-copy-failed": "无法复制到剪贴板",
+	"videojs-a11y-rate-change": "播放速度$1",
+	"videojs-a11y-seek-forward": "快进$1秒",
+	"videojs-a11y-seek-backward": "快退$1秒",
+	"videojs-a11y-step-forward": "快进帧",
+	"videojs-a11y-step-backward": "快退帧",
+	"videojs-a11y-pause": "已暂停",
+	"videojs-a11y-ended": "媒体播放结束",
+	"videojs-a11y-muted": "已静音"
 }
