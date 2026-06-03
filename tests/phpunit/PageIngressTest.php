@@ -64,12 +64,17 @@ class PageIngressTest extends MediaWikiIntegrationTestCase {
 		);
 		$pageRecordBefore->method( 'exists' )->willReturn( true );
 		$pageEventIngress = $this->getPageEventIngress( [ 'purgeDependingPages' ] );
-		$pageEventIngress->expects( $this->exactly( 2 ) )
+		$expectedPurgePages = [
+			[ $pageRecordBefore, $user ],
+			[ $pageRecordAfter, $user ],
+		];
+		$pageEventIngress->expects( $this->exactly( count( $expectedPurgePages ) ) )
 			->method( 'purgeDependingPages' )
-			->withConsecutive(
-				[ $pageRecordBefore, $user ],
-				[ $pageRecordAfter, $user ],
-			);
+			->willReturnCallback( function ( $timedTextTitle, $user ) use ( &$expectedPurgePages ) {
+				[ $expectedTitle, $expectedUser ] = array_shift( $expectedPurgePages );
+				$this->assertEquals( $expectedTitle, $timedTextTitle );
+				$this->assertEquals( $expectedUser, $user );
+			} );
 		$pageEventIngress->handlePageMovedEvent( $event );
 	}
 
