@@ -14,7 +14,7 @@
 		"include": [
 			"resources"
 		],
-		"exclude": [ "resources/videojs", "resources/videojs-ogvjs" ]
+		"exclude": [ "resources/videojs" ]
 	},
 	"sourceType": "module",
 	"templates": {

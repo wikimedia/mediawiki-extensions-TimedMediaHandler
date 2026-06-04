@@ -27,12 +27,3 @@
  * @module ext.tmh-player.dialog
  * @example require( 'ext.tmh.player.dialog' )
  */
-
-/**
- * Resource loader module ext.tmh.player.dialog
- *
- * Utility functions to determine if OGV.js will be required for playback
- *
- * @module ext.tmh.OgvJsSupport
- * @example require( 'ext.tmh.player.dialog' )
- */

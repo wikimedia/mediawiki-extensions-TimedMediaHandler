@@ -30,29 +30,6 @@
 					"type": "website"
 				}
 			]
-		},
-		{
-			"type": "library",
-			"name": "ogv.js",
-			"version": "1.9.0",
-			"licenses": [
-				{
-					"license": {
-						"id": "MIT"
-					}
-				}
-			],
-			"authors": [
-				{
-					"name": "Brooke Vibber <bvibber@pobox.com>"
-				}
-			],
-			"externalReferences": [
-				{
-					"url": "https://github.com/bvibber/ogv.js#readme",
-					"type": "website"
-				}
-			]
 		}
 	]
 }

@@ -1,8 +1,6 @@
 docs
 jsdoc-plugins/*
 resources/lib/video.js/*
-resources/videojs-ogvjs/*
-resources/lib/ogv.js/
 vendor/
 
 # Language files written automatically by TranslateWiki

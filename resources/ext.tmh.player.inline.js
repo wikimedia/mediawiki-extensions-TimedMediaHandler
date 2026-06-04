@@ -1,5 +1,4 @@
 'use strict';
-const OgvJsSupport = require( 'ext.tmh.OgvJsSupport' );
 
 /**
  * All JS for loading an actual video.js player for MediaWiki
@@ -107,39 +106,15 @@ class InlinePlayer {
 			this.playerConfig
 		);
 
-		if ( !OgvJsSupport.isMediaNativelySupported( this.videoplayer ) ) {
-			this.playerConfig.ogvjs = {
-				base: OgvJsSupport.basePath(),
-				audioContext: OgvJsSupport.initAudioContext()
-			};
-			this.playerConfig.techOrder.push( 'ogvjs' );
-			// ogvjs tech does not support picture in picture
-			this.playerConfig.controlBar.pictureInPictureToggle = false;
-		}
-
 		// Future interactions go faster if we've preloaded a little
 		this.$videoplayer.attr( {
 			preload: 'metadata'
 		} );
 
 		/** @type {HTMLSourceElement[]} */
-		const nonNativeSources = [];
 		let resolutions = [];
 		let defaultRes;
-		if ( this.isAudio ) {
-			// Audio: manipulate source elements to preferred order.
-			// This means preferring native-playback over ogv.js-playback
-			// so we don't go loading it when we don't need it.
-			this.$videoplayer.find( 'source' ).each( ( _index, source ) => {
-				if ( !this.videoplayer.canPlayType( source.type ) ) {
-					nonNativeSources.push( source );
-				}
-			} );
-
-			nonNativeSources.forEach( ( source ) => {
-				$( source ).detach().appendTo( this.$videoplayer );
-			} );
-		} else {
+		if ( !this.isAudio ) {
 			resolutions = this.extractResolutions();
 
 			// Do not autoselect above 1080p due to bandwidth requirements.
@@ -149,15 +124,11 @@ class InlinePlayer {
 
 			// Pick the first resolution at least the size of the player,
 			// unless they're all too small.
-			let playerHeight = Math.min(
+			const playerHeight = Math.min(
 				maxRes,
 				// Account for screen density
 				this.$videoplayer.height() * window.devicePixelRatio
 			);
-			if ( !OgvJsSupport.canPlayNatively() ) {
-				// Don't pick high-res versions on ogv.js which may be slow.
-				playerHeight = Math.min( playerHeight, 480 );
-			}
 			resolutions.sort( ( a, b ) => a - b );
 			for ( let i = 0, l = resolutions.length; i < l; i++ ) {
 				if ( resolutions[ i ] <= maxRes ) {
@@ -202,21 +173,18 @@ class InlinePlayer {
 		}
 
 		// Launch the player
-		return OgvJsSupport.loadIfNeeded( 'ext.tmh.videojs-ogvjs', this.videoplayer )
-			.then( () => {
-				const d = $.Deferred();
-				this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );
-				// Do not use the ready callback of the videojs function
-				// The texttracks are not done initializing in that ready callback (T309414)
-				this.videojsPlayer.ready( () => {
-					InlinePlayer.activePlayers.push( this.videojsPlayer );
-					this.selectDefaultTrack();
-					/* More custom stuff goes here */
-					d.resolve( this.videojsPlayer );
-					mw.hook( 'tmh.player.loaded' ).fire( this.videojsPlayer );
-				} );
-				return d.promise();
-			} );
+		const d = $.Deferred();
+		this.videojsPlayer = videojs( this.videoplayer, this.playerConfig );
+		// Do not use the ready callback of the videojs function
+		// The texttracks are not done initializing in that ready callback (T309414)
+		this.videojsPlayer.ready( () => {
+			InlinePlayer.activePlayers.push( this.videojsPlayer );
+			this.selectDefaultTrack();
+			/* More custom stuff goes here */
+			d.resolve( this.videojsPlayer );
+			mw.hook( 'tmh.player.loaded' ).fire( this.videojsPlayer );
+		} );
+		return d.promise();
 	}
 
 	/**

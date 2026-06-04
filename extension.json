@@ -412,13 +412,6 @@
 				"zh-tw": "lang/zh-TW.js"
 			}
 		},
-		"ext.tmh.videojs-ogvjs": {
-			"scripts": "videojs-ogvjs/videojs-ogvjs.js",
-			"dependencies": [
-				"ext.tmh.video-js",
-				"ext.tmh.OgvJs"
-			]
-		},
 		"ext.tmh.player": {
 			"packageFiles": [
 				"ext.tmh.player.js",
@@ -426,7 +419,6 @@
 			],
 			"dependencies": [
 				"ext.tmh.player.styles",
-				"ext.tmh.OgvJsSupport",
 				"mediawiki.Title"
 			],
 			"messages": [
@@ -482,7 +474,6 @@
 			],
 			"dependencies": [
 				"ext.tmh.video-js",
-				"ext.tmh.OgvJsSupport",
 				"mediawiki.api",
 				"mediawiki.Title",
 				"oojs-ui-core",
@@ -552,18 +543,6 @@
 		},
 		"ext.tmh.timedtextpage.styles": {
 			"styles": "ext.tmh.timedtextpage.styles.less"
-		},
-		"ext.tmh.OgvJsSupport": {
-			"packageFiles": [
-				"ext.tmh.OgvJsSupport.js",
-				"lib/ogv.js/ogv-support.js"
-			]
-		},
-		"ext.tmh.OgvJs": {
-			"scripts": [
-				"lib/ogv.js/ogv.js"
-			],
-			"dependencies": "ext.tmh.OgvJsSupport"
 		},
 		"embedPlayerIframeStyle": {
 			"styles": "embedPlayerIframe.css"

@@ -1,5 +1,3 @@
-const OgvJsSupport = require( 'ext.tmh.OgvJsSupport' );
-
 function secondsToComponents( totalSeconds ) {
 	totalSeconds = parseInt( totalSeconds, 10 );
 	const hours = Math.floor( totalSeconds / 3600 );
@@ -246,12 +244,6 @@ class MediaElement {
 			.append( $( '<div>' ).addClass( 'mw-tmh-player-progress' )
 				.append( $( '<div>' ).addClass( 'mw-tmh-player-progress-bar' ) ) )
 			.appendTo( document.body );
-
-		// If we're using ogv.js, we have to initialize the audio context
-		// during a click event to work on Safari, especially for iOS.
-		if ( !OgvJsSupport.canPlayNatively() ) {
-			OgvJsSupport.initAudioContext();
-		}
 
 		// Autoplay busting hack for native audio playback
 		// Must force a play during the user gesture on the element we will use.

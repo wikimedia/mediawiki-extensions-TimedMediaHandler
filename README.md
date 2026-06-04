@@ -20,6 +20,15 @@ After you installed this extension, add the following to the end of your
 Configuration documentation is canonically provided at:
 https://www.mediawiki.org/wiki/Extension:TimedMediaHandler
 
+## Updates in 2026
+
+The `ogv.js` WebAssembly codec shim has been removed as Safari and Edge now
+support WebM VP8/VP9/Vorbis/Opus playback natively.
+
+For iPhones and iPads prior to iOS 17.4, consider enabling the 144p MJPEG
+fallback transcode used on Wikimedia sites or MP4/H.264 transcodes if your
+licensing situation allows it.
+
 ## Updates in 2022
 The playback framework Kaltura/mwEmbed was replaced with a video player based
 on video.js
@@ -102,19 +111,6 @@ https://videojs.com
 
 Video.js code is released under the Apache 2.0 License:
 http://www.apache.org/licenses/LICENSE-2.0
-
-### Ogv.js decoder
-Brooke Vibber, a Wikimedia developer, created the JavaScript
-compatibility shim Ogv.js. It is a software decoding
-library for the file formats Ogg and WebM and the Vorbis,
-Theora, VP8 and VP9 codecs. It allows web browser without native
-HTML5 video support like iOS to support these formats.
-
-For more information about ogv.js visit:
-https://github.com/bvibber/ogv.js/
-
-Ogv.js code is released under the MIT license:
-https://opensource.org/licenses/MIT
 
 ### FFmpeg
 FFmpeg is a set of libraries and programs for reading, writing and
