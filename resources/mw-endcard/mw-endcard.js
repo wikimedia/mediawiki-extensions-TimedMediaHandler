@@ -15,7 +15,7 @@ class EndCard extends Plugin {
 		this.userDismissed = false;
 
 		if ( options.customClass ) {
-			// eslint-disable-next-line mediawiki/class-doc
+
 			player.addClass( options.customClass );
 		}
 
@@ -122,7 +122,7 @@ class EndCard extends Plugin {
 		const widget = document.createElement( 'div' );
 		const body = document.createElement( 'div' );
 		const title = document.createElement( 'h6' );
-		// eslint-disable-next-line mediawiki/msg-doc
+
 		title.textContent = mw.msg( titleMsgKey );
 		widget.appendChild( title );
 		widget.appendChild( body );
@@ -130,7 +130,7 @@ class EndCard extends Plugin {
 		widget.classList.add( 'tmh-widget' );
 
 		if ( widgetClass ) {
-			// eslint-disable-next-line mediawiki/class-doc
+
 			widget.classList.add( widgetClass );
 		}
 		return { widget, body };

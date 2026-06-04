@@ -32,12 +32,12 @@ class ResolutionMenuButton extends MenuButton {
 		this.addClass( 'vjs-resolution-button' );
 
 		if ( options.dynamicLabel ) {
-			// eslint-disable-next-line mediawiki/class-doc
+
 			videojs.dom.addClass( this.label, 'vjs-resolution-button-label' );
 			this.el().appendChild( this.label );
 		} else {
 			const staticLabel = document.createElement( 'span' );
-			// eslint-disable-next-line mediawiki/class-doc
+
 			videojs.dom.addClass( staticLabel, 'vjs-menu-icon' );
 			this.el().appendChild( staticLabel );
 		}
