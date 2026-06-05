@@ -181,5 +181,8 @@
 	"timedmedia-timedtext-title-create-subtitles": "Inga $1 undertexter hittades för klipp: $2",
 	"m3u8-error-create-temp": "Misslyckades med att skapa temporär fil för $1",
 	"m3u8-error-write-temp": "Misslyckades med att skriva temporär fil för $1",
-	"m3u8-error-save-playlist": "Fel vid sparande av HLS-spellista $1"
+	"m3u8-error-save-playlist": "Fel vid sparande av HLS-spellista $1",
+	"videojs-endcard-copy-link": "Kopiera länk",
+	"videojs-endcard-share": "Dela",
+	"videojs-endcard-embed-copy": "Kopiera"
 }
