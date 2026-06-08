@@ -197,7 +197,7 @@ class WebVideoTranscode {
 	 * Checks if the file is local or remote and grabs respective sources
 	 * @param File &$file
 	 * @param array $options
-	 * @return array|mixed
+	 * @return array[]
 	 */
 	public static function getSources( &$file, $options = [] ) {
 		if ( $file->isLocal() || $file->repo instanceof IForeignRepoWithDB ) {
@@ -220,7 +220,7 @@ class WebVideoTranscode {
 	 * Because this works with commons regardless of whether TimedMediaHandler is installed or not
 	 * @param File $file The File must belong to a repo that is an instance of IForeignRepoWithMWApi
 	 * @param array $options
-	 * @return array|mixed
+	 * @return array[]
 	 */
 	public static function getRemoteSources( $file, $options = [] ) {
 		$regenerator = static function () use ( $file, $options ) {
@@ -291,7 +291,7 @@ class WebVideoTranscode {
 	 * @param File &$file File object
 	 * @param array $options Options, a set of options:
 	 * 		'nodata' Strips the data- attribute, useful when your output is not html
-	 * @return array an associative array of sources suitable for <source> tag output
+	 * @return array[] an associative array of sources suitable for <source> tag output
 	 */
 	public static function getLocalSources( &$file, $options = [] ) {
 		$sources = [];

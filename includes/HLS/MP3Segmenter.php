@@ -81,7 +81,7 @@ class MP3Segmenter extends Segmenter {
 
 	/**
 	 * Map of sample rates based on version/mode
-	 * @var array
+	 * @var int[][]
 	 */
 	private static $sampleRates = [
 		// MPEG-2.5
@@ -96,7 +96,7 @@ class MP3Segmenter extends Segmenter {
 
 	/**
 	 * Map of bit rates based on version/mode/code
-	 * @var array
+	 * @var int[][][]
 	 */
 	private static $bitrates = [
 		// MPEG-2

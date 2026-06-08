@@ -86,7 +86,7 @@ class OggHandler extends TimedMediaHandler {
 	 *
 	 * @param File $file
 	 * @param false|IContextSource $context Context to use (optional)
-	 * @return array|false
+	 * @return array<string,array[]>|false
 	 */
 	public function formatMetadata( $file, $context = false ) {
 		$meta = $this->getCommonMetaArray( $file );

@@ -58,11 +58,11 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 
 	/**
 	 * @param int $thumbWidth Requested width
-	 * @param array $sources
-	 * @param array $sortedSources
+	 * @param array[] $sources
+	 * @param array[] $sortedSources
 	 * @dataProvider providerSortMediaByBandwidth
 	 */
-	public function testSortMediaByBandwidth( $thumbWidth, $sources, $sortedSources ) {
+	public function testSortMediaByBandwidth( int $thumbWidth, array $sources, array $sortedSources ) {
 		$params = [
 			'width' => $thumbWidth,
 			'height' => $thumbWidth * 9 / 16,
@@ -70,9 +70,10 @@ class TimedMediaTransformOutputTest extends MediaWikiMediaTestCase {
 			'fillwindow' => false,
 			'file' => new FakeDimensionFile( [ 1820, 1024 ] )
 		];
+		/** @var TimedMediaTransformOutput $thumbObj */
 		$thumbObj = TestingAccessWrapper::newFromObject( new TimedMediaTransformOutput( $params ) );
 
-		usort( $sources, [ $thumbObj, 'sortMediaByBandwidth' ] );
+		usort( $sources, $thumbObj->sortMediaByBandwidth( ... ) );
 		$this->assertEquals( $sortedSources, $sources );
 	}
 

@@ -88,17 +88,17 @@ class Hooks implements
 	 * These are configurable due to Commons history: T123823
 	 * These need to be before registerhooks due to: T123695
 	 *
-	 * @param array &$list
+	 * @param array<int,string> &$namespaces
 	 */
-	public function onCanonicalNamespaces( &$list ) {
+	public function onCanonicalNamespaces( &$namespaces ) {
 		if ( !defined( 'NS_TIMEDTEXT' ) ) {
 			$timedTextNS = $this->config->get( 'TimedTextNS' );
 			define( 'NS_TIMEDTEXT', $timedTextNS );
 			define( 'NS_TIMEDTEXT_TALK', $timedTextNS + 1 );
 		}
 
-		$list[NS_TIMEDTEXT] = 'TimedText';
-		$list[NS_TIMEDTEXT_TALK] = 'TimedText_talk';
+		$namespaces[NS_TIMEDTEXT] = 'TimedText';
+		$namespaces[NS_TIMEDTEXT_TALK] = 'TimedText_talk';
 	}
 
 	/**

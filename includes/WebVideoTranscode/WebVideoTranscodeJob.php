@@ -809,7 +809,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Adds ffmpeg shell options for h264
 	 * @param TranscodePreset $options
-	 * @return array
+	 * @return string[]
 	 */
 	public function ffmpegAddH264VideoOptions( TranscodePreset $options ): array {
 		// Set the codec:
@@ -824,7 +824,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Adds ffmpeg shell options for mpeg4
 	 * @param TranscodePreset $options
-	 * @return array
+	 * @return string[]
 	 */
 	public function ffmpegAddMPEG4VideoOptions( TranscodePreset $options ): array {
 		return [
@@ -836,7 +836,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return array
+	 * @return string[]
 	 */
 	private function ffmpegAddGenericVideoOptions( TranscodePreset $options ): array {
 		return [
@@ -848,7 +848,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return array
+	 * @return string[]
 	 */
 	private function ffmpegAddVideoSizeOptions( TranscodePreset $options ): array {
 		$opts = [];
@@ -876,7 +876,7 @@ class WebVideoTranscodeJob extends Job {
 	/**
 	 * Adds ffmpeg shell options for webm
 	 * @param TranscodePreset $options
-	 * @return array
+	 * @return string[]
 	 */
 	private function ffmpegAddWebmVideoOptions( TranscodePreset $options ): array {
 		$opts = [
@@ -951,7 +951,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return array<string>
+	 * @return string[]
 	 */
 	private function ffmpegAddDeinterlaceOptions( TranscodePreset $options ): array {
 		if ( $this->isInterlaced() ) {
@@ -967,7 +967,7 @@ class WebVideoTranscodeJob extends Job {
 
 	/**
 	 * @param TranscodePreset $options
-	 * @return array<string>
+	 * @return string[]
 	 */
 	private function ffmpegAddAudioOptions( TranscodePreset $options ): array {
 		$opts = [];

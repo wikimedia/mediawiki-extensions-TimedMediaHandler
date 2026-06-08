@@ -63,7 +63,7 @@ class SrtWriter extends Writer {
 	}
 
 	/**
-	 * @param array $nodes
+	 * @param DOM\Node[] $nodes
 	 *
 	 * @return string
 	 */

@@ -70,10 +70,7 @@ class ApiTranscodeStatus extends ApiQueryBase {
 		return [];
 	}
 
-	/**
-	 * @see ApiBase::getExamplesMessages()
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=query&prop=transcodestatus&titles=File:Clip.webm'

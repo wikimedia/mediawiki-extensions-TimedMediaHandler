@@ -67,7 +67,7 @@ abstract class ID3Handler extends TimedMediaHandler {
 	/**
 	 * Retrieve width x height from metadata fetched in getSizeAndMetadata()
 	 * @param array $metadata
-	 * @return array
+	 * @return array{0: int|false, 1: int|false}
 	 */
 	protected function getSizeFromMetadata( $metadata ) {
 		return [ false, false ];

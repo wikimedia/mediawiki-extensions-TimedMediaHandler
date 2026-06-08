@@ -43,7 +43,7 @@ class VttWriter extends Writer {
 
 	/**
 	 * @param string $id
-	 * @param array &$usedMap
+	 * @param array<string,true> &$usedMap
 	 *
 	 * @return string
 	 */
@@ -124,7 +124,7 @@ class VttWriter extends Writer {
 	}
 
 	/**
-	 * @param array $nodes
+	 * @param DOM\Node[] $nodes
 	 *
 	 * @return string
 	 */

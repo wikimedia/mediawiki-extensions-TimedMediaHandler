@@ -100,7 +100,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media transform thumbnail
-	 * @param false|array $sizeOverride
+	 * @param int[]|false $sizeOverride
 	 */
 	public function getUrl( $sizeOverride = false ): string {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
@@ -241,6 +241,9 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	 * The list should be in preferred source order, so we want the file
 	 * with the lowest bitrate (to save bandwidth) first, but we also want
 	 * appropriate resolution files before the 160p transcodes.
+	 *
+	 * @param array{width: int, bandwidth?: int} $a
+	 * @param array{width: int, bandwidth?: int} $b
 	 */
 	private function sortMediaByBandwidth( array $a, array $b ): int {
 		$width = $this->getPlayerWidth();
@@ -376,7 +379,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 	/**
 	 * Get the media attributes
-	 * @param array|false $sizeOverride Array of width and height
+	 * @param int[]|false $sizeOverride Array of width and height
 	 * @param bool $autoPlay
 	 * @param string $classes
 	 * @return array

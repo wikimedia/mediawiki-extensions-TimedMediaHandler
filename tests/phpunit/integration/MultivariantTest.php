@@ -53,7 +53,7 @@ class MultivariantTest extends MediaWikiMediaTestCase {
 	/**
 	 * @dataProvider providerTracks
 	 * @param string $filename name of media track file
-	 * @param array $tracks
+	 * @param string[] $tracks
 	 * @param string $fileNameExpectedData
 	 */
 	public function testTracks( string $filename, array $tracks, string $fileNameExpectedData ): void {

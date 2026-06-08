@@ -10,6 +10,7 @@ namespace MediaWiki\TimedMediaHandler\HLS;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePreset;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use RuntimeException;
 
@@ -41,7 +42,7 @@ class Multivariant {
 	/**
 	 * Internal map of codec string types we use to HLS-friendly
 	 * MPEG-4 style codec name mappings.
-	 * @var array
+	 * @var array<string,string>
 	 */
 	private static array $hlsCodecMap = [
 		'opus' => self::CODEC_OPUS,
@@ -99,6 +100,10 @@ class Multivariant {
 		return "#$type:" . implode( ",", $items );
 	}
 
+	/**
+	 * @param string $filename
+	 * @param string[] $tracks
+	 */
 	public function __construct(
 		private readonly string $filename,
 		private readonly array $tracks,
@@ -112,6 +117,7 @@ class Multivariant {
 		$out = [ '#EXTM3U' ];
 
 		$audio = [];
+		/** @var TranscodePresets $transcodePresets */
 		$transcodePresets = MediaWikiServices::getInstance()->getService( 'TimedMediaHandler.TranscodePresets' );
 		foreach ( $this->tracks as $key ) {
 			$options = $transcodePresets->findByKey( $key );

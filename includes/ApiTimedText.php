@@ -258,10 +258,7 @@ class ApiTimedText extends ApiBase {
 		return $ret;
 	}
 
-	/**
-	 * @see ApiBase::getExamplesMessages()
-	 * @return array of examples
-	 */
+	/** @inheritDoc */
 	protected function getExamplesMessages(): array {
 		return [
 			'action=timedtext&title=File:Example.ogv&lang=de&trackformat=vtt'

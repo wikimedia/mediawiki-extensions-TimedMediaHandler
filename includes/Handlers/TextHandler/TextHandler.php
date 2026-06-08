@@ -36,7 +36,7 @@ class TextHandler {
 
 	/**
 	 * @param File $file
-	 * @param array $formats Array of string keys for subtitle formats
+	 * @param string[] $formats Array of string keys for subtitle formats
 	 */
 	public function __construct(
 		protected readonly File $file,
