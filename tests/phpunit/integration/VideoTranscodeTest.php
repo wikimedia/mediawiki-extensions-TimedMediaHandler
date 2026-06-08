@@ -49,7 +49,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 
 		// Check if the transcode jobs were added:
 		// get results: query jobs table
-		$db = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
+		$db = $this->getServiceContainer()->getConnectionProvider()->getPrimaryDatabase();
 		$res = $db->newSelectQueryBuilder()
 			->select( '*' )
 			->from( 'transcode' )

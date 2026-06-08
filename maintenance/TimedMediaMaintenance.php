@@ -22,7 +22,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
+		$dbr = $this->getServiceContainer()->getConnectionProvider()->getReplicaDatabase();
 		$types = [];
 		if ( $this->hasOption( 'audio' ) ) {
 			$types[] = 'AUDIO';

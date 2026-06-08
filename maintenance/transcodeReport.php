@@ -64,7 +64,7 @@ class TranscodeReport extends Maintenance {
 	}
 
 	public function execute() {
-		$dbr = $this->getServiceContainer()->getDBLoadBalancerFactory()->getReplicaDatabase();
+		$dbr = $this->getServiceContainer()->getConnectionProvider()->getReplicaDatabase();
 		$types = [];
 		if ( $this->hasOption( 'audio' ) ) {
 			$types[] = 'AUDIO';
@@ -156,7 +156,7 @@ class TranscodeReport extends Maintenance {
 	}
 
 	private function processFile( File $file ): void {
-		$dbw = $this->getServiceContainer()->getDBLoadBalancerFactory()->getPrimaryDatabase();
+		$dbw = $this->getServiceContainer()->getConnectionProvider()->getPrimaryDatabase();
 
 		// Transcode table doesn't carry the file size, but does carry the final bitrate.
 		$handler = $file->getHandler();

@@ -35,7 +35,7 @@ class ConvertSubtitles extends Maintenance {
 
 	public function execute() {
 		$services = $this->getServiceContainer();
-		$dbr = $services->getDBLoadBalancerFactory()->getReplicaDatabase();
+		$dbr = $services->getConnectionProvider()->getReplicaDatabase();
 		$where = [ 'page_namespace' => $services->getMainConfig()->get( 'TimedTextNS' ) ];
 		if ( $this->hasOption( 'file' ) ) {
 			$file = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
