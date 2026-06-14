@@ -160,6 +160,13 @@ class TimedMediaThumbnail {
 		$thumb = $work->execute();
 
 		if ( !$thumb || $thumb->isError() ) {
+			if ( $thumb instanceof MediaTransformError ) {
+				// The intermediate transform (a thumbnail at source size) is requested at source dimensions,
+				// so its error box would be source-sized. Re-wrap with the actual target dimensions.
+				return new MediaTransformError(
+					$thumb->getMsg(), $options['width'], $options['height']
+				);
+			}
 			return $thumb;
 		}
 		$src = $thumb->getStoragePath();
