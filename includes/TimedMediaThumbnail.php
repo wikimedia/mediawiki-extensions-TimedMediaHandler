@@ -6,7 +6,6 @@ use MediaWiki\Config\Config;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\File\UnregisteredLocalFile;
 use MediaWiki\FileRepo\RepoGroup;
-use MediaWiki\MainConfigNames;
 use MediaWiki\Media\MediaTransformError;
 use MediaWiki\PoolCounter\PoolCounterWorkViaCallback;
 
@@ -44,7 +43,6 @@ class TimedMediaThumbnail {
 	 */
 	private function tryFfmpegThumb( $options ) {
 		$fFmpegLocation = $this->config->get( 'FFmpegLocation' );
-		$maxShellMemory = $this->config->get( MainConfigNames::MaxShellMemory );
 
 		if ( !$fFmpegLocation || !is_file( $fFmpegLocation ) ) {
 			return false;
@@ -109,11 +107,30 @@ class TimedMediaThumbnail {
 		if ( !$options['file']->getHandler()->removeBadFile( $options['dstPath'], $retval ) ) {
 			return true;
 		}
-		$returnText = $cmd . "\nwgMaxShellMemory: $maxShellMemory\n" . $returnText;
-		// Return error box
+
+		// Mirrors MediaHandler::logErrorForExternalProcess()
+		wfDebugLog( 'thumbnail', sprintf( 'thumbnail failed on %s: error %d "%s" from "%s"',
+			wfHostname(), $retval, trim( substr( $returnText, 0, 65535 ) ), $cmd ) );
 		return new MediaTransformError(
-			'thumbnail_error', $options['width'], $options['height'], $returnText
+			'thumbnail_error', $options['width'], $options['height'],
+			wfMessage( $this->ffmpegExitCodeMessage( $retval ) )
 		);
+	}
+
+	private function ffmpegExitCodeMessage( int $retval ): string {
+		// 124 is set by /usr/bin/timeout (used by limit.sh) when the wall clock limit is exceeded
+		if ( $retval === 124 ) {
+			return 'timedmedia-thumbnail-error-timeout';
+		}
+		// 137 = SIGKILL (128+9), OOM or cgroup memory limit from limit.sh
+		if ( $retval === 137 ) {
+			return 'timedmedia-thumbnail-error-killed';
+		}
+		// 126 = not executable, 127 = not found
+		if ( $retval === 126 || $retval === 127 ) {
+			return 'timedmedia-thumbnail-error-exec';
+		}
+		return 'timedmedia-thumbnail-error-generic';
 	}
 
 	/**
