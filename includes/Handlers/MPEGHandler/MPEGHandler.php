@@ -47,13 +47,17 @@ class MPEGHandler extends ID3Handler {
 		}
 		if (
 			isset( $metadata['video']['resolution_x'] ) &&
-			isset( $metadata['video']['resolution_y'] ) &&
-			isset( $metadata['video']['pixel_aspect_ratio'] )
+			isset( $metadata['video']['resolution_y'] )
 		) {
 			$width = $metadata['video']['resolution_x'];
 			$height = $metadata['video']['resolution_y'];
-			$aspect = $metadata['video']['pixel_aspect_ratio'];
-			$width = (int)( $width * $aspect );
+			$aspect = $metadata['video']['pixel_aspect_ratio'] ?? 0;
+			// pixel_aspect_ratio is 0 for forbidden/reserved values in the MPEG spec;
+			// fall back to square pixels (1:1) rather than producing a zero-width result.
+			// this mirrors what vlc and ffmpeg do
+			if ( $aspect > 0 ) {
+				$width = (int)( $width * $aspect );
+			}
 			return [
 				$width,
 				$height
