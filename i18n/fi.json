@@ -140,6 +140,7 @@
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160p)",
 	"timedmedia-derivative-desc-144p.mjpeg.mov": "QuickTime-video (144p MJPEG)",
 	"timedmedia-derivative-desc-360p.mpeg4.mov": "QuickTime-video (360p MPEG-4 Visual)",
+	"timedmedia-derivative-desc-m3u8": "HTTP-suoratoisto",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "Stereo (Opus)",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Suoratoistoääni (Opus stereo)",
 	"timedmedia-derivative-stereo.audio.mp3": "Stereo (MP3)",
