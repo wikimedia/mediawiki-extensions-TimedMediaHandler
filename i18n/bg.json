@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ArcaneIE",
 			"Borislav",
 			"DCLXVI",
 			"ShockD",
@@ -92,6 +93,10 @@
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Създаване на нов превод или промяна на съществуващ",
 	"timedmedia-file": "Файл",
+	"timedmedia-thumbnail-error-generic": "ffmpeg не успя.",
+	"timedmedia-thumbnail-error-timeout": "Времето за изчакване на ffmpeg изтече.",
+	"timedmedia-thumbnail-error-killed": "ffmpeg беше прекратен, вероятно поради превишаване на лимита на паметта.",
+	"timedmedia-thumbnail-error-exec": "ffmpeg не можа да бъде изпълнен.",
 	"right-transcode-reset": "Зануляване на неработещи или прекодирани видеа, така че отново да бъдат добавени към работната опашка",
 	"right-transcode-status": "Преглеждане на [[Special:TimedMediaHandler|информация за текущите активности по прекодирането]]",
 	"action-transcode-reset": "зануляване на прекодиранията",
