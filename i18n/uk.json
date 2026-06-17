@@ -20,7 +20,8 @@
 			"Ата",
 			"Пан Хаунд",
 			"Тест",
-			"Repakr"
+			"Repakr",
+			"Movses"
 		]
 	},
 	"timedmediahandler-extensionname": "Обробник медіа часу",
@@ -147,6 +148,7 @@
 	"timedmedia-derivative-desc-2160p.mp4": "4K UHD MP4 H.264 (2160P)",
 	"timedmedia-derivative-desc-144p.mjpeg.mov": "Відео QuickTime (144p MJPEG)",
 	"timedmedia-derivative-desc-360p.mpeg4.mov": "Відео QuickTime (360p MPEG-4 Visual)",
+	"timedmedia-derivative-desc-m3u8": "Потокове передавання через HTTP",
 	"timedmedia-derivative-stereo.audio.opus.mp4": "Стерео (Opus)",
 	"timedmedia-derivative-desc-stereo.audio.opus.mp4": "Потокове аудіо (стерео Opus)",
 	"timedmedia-derivative-stereo.audio.mp3": "Стерео (MP3)",
