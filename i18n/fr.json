@@ -34,7 +34,8 @@
 			"Thibaut120094",
 			"Urhixidur",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"SleaY"
 		]
 	},
 	"timedmediahandler-extensionname": "TimedMediaHandler",
@@ -241,5 +242,8 @@
 	"timedmedia-timedtext-title-create-subtitles": "Aucun sous-titre en $1 n’a été trouvé pour la vidéo : $2",
 	"m3u8-error-create-temp": "Échec de la création du fichier temporaire pour $1",
 	"m3u8-error-write-temp": "Échec de l'écriture du fichier temporaire pour $1",
-	"m3u8-error-save-playlist": "Erreurs lors de l'enregistrement de la liste de lecture HLS $1"
+	"m3u8-error-save-playlist": "Erreurs lors de l'enregistrement de la liste de lecture HLS $1",
+	"videojs-endcard-copy-link": "Copier le lien",
+	"videojs-endcard-share": "Partager",
+	"videojs-endcard-share-not-possible": "Le partage n'est pas possible."
 }
