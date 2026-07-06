@@ -22,10 +22,20 @@ $wgTimedMediaHandlerNamespaceNames['en'] = [
 //
 // Add entries for all languages that need to use the fallbacks
 
+$wgTimedMediaHandlerNamespaceNames['ar'] = [
+	'timedtext'      => 'نص_زمني',
+	'timedtext_talk' => 'نقاش_النص_الزمني',
+];
+
 // T373239
 $wgTimedMediaHandlerNamespaceNames['ary'] = [
 	'timedtext'      => 'سوتيتر',
 	'timedtext_talk' => 'لمداكرة_د_سوتيتر',
+];
+
+$wgTimedMediaHandlerNamespaceNames['arz'] = [
+	'timedtext'      => 'نص_زمنى',
+	'timedtext_talk' => 'نقاش_النص_الزمنى',
 ];
 
 // T122127
