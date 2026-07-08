@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"apihelp-query+transcodestatus-summary": "Hel xaaladda beddelidda ee bogga faylka la siiyay.",
+	"apihelp-query+transcodestatus-example-1": "Hel xaaladda beddelidda ee [[:File:Clip.webm]]",
+	"apihelp-query+videoinfo-summary": "Waxay ballaarisaa macluumaadka sawirka si loogu daro macluumaadka ilaha  muuqaalka",
+	"apihelp-query+videoinfo-example-1": "Soo hel macluumaadka [[:File:Folgers.ogv]]",
+	"apihelp-query+videoinfo-paramvalue-prop-derivatives": "Waxay ku dartaa liis ka kooban qaabab iyo tayado kala duwan oo la heli karo ee faylka codka ama muuqaalka.",
+	"apihelp-query+videoinfo-paramvalue-prop-timedtext": "Waxay ku dartaa liis ka kooban qoraallo hoosaad, qoraallo sharaxaad, iyo sharaxaadyo kale oo la heli karo ee faylka codka ama muuqaalka",
+	"apihelp-timedtext-summary": "Waxay bixisaa qoraal waqtiyeysan oo loo isticmaalo curiyeyaasha &lt;track&gt; walxaha",
+	"apihelp-timedtext-param-title": "Cinwaanka faylka warbaahinta ee laga soo helayo qoraalka waqtiyeysan",
+	"apihelp-timedtext-param-pageid": "Aqoonsiga bogga ee faylka warbaahinta ee laga soo helayo qoraalka waqtiyeysan",
+	"apihelp-timedtext-param-trackformat": "Qaabka faylka ee lagu soo celinayo qoraalka waqtiyeysan",
+	"apihelp-timedtext-param-lang": "Luqadda qoraalka waqtiyeysan  ee la soo helayo",
+	"apihelp-timedtext-example-1": "Soo hel fayl subtitles SRT ah oo Jarmal ah oo ku saabsan faylka Example.ogv",
+	"apihelp-transcodereset-summary": "Isticmaalayaasha leh rukhsadda 'transcode-reset' waxay dib u dejin karaan oo ay mar kale u bilaabi karaan shaqada beddelidda.",
+	"apihelp-transcodereset-param-title": "Cinwaanka faylka warbaahinta.",
+	"apihelp-transcodereset-param-transcodekey": "Furaha beddelidda ee aad rabto inaad dib u dejiso. Ka soo qaado [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]]",
+	"apihelp-transcodereset-example-1": "Dib u deji dhammaan beddelidda ee [[:File:Clip.webm]]",
+	"apihelp-transcodereset-example-2": "Dib u deji furaha beddelidda '360_560kbs.webm' ee [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "Beddelidda waa laga joojiyay wiki-gan.",
+	"apierror-timedmedia-invalidtranscodetitle": "$1 lama beddeli karo.",
+	"apierror-timedmedia-badtranscodekey": "Furaha beddelidda: $1 waa khalad ama waa la damiyay",
+	"apierror-timedmedia-notenoughtimereset": "Ma jiro waqti ku filan oo ka soo wareegay dib u dejintii ugu dambeysay ee beddelidda. $1 ilaa beddeliddan mar kale dib loo dejin karo.",
+	"apierror-timedmedia-lang-notfound": "Luuqadda la codsaday lama helin",
+	"apierror-timedmedia-no-timedtext-support": "Ma jiro taageero qoraal waqtiyeysan",
+	"apierror-timedmedia-notlocal": "Faylku ma aha mid maxalli ah"
+}
