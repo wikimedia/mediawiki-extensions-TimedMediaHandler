@@ -6,20 +6,21 @@ class SrtWriter extends Writer {
 
 	/** @inheritDoc */
 	public function write( $cues ) {
-		return implode( "\n\n",
-			array_map(
-				[ $this, 'formatCue' ],
-				$cues
-			)
-		);
+		$out = [];
+		$number = 0;
+		foreach ( $cues as $cue ) {
+			$out[] = $this->formatCue( $cue, ++$number );
+		}
+		return implode( "\n\n", $out );
 	}
 
 	/**
 	 * @param DOM\Cue $cue cue to output
+	 * @param int $number sequential cue number
 	 * @return string
 	 */
-	public function formatCue( DOM\Cue $cue ) {
-		return (int)$cue->id .
+	public function formatCue( DOM\Cue $cue, $number ) {
+		return $number .
 			"\n" .
 			$this->formatTimestamp( $cue->start ) .
 			" --> " .

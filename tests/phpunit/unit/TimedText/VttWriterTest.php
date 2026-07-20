@@ -27,9 +27,10 @@ class VttWriterTest extends \PHPUnit\Framework\TestCase {
 WEBVTT
 
 168
-20:41.150 --> 20:45.109
+00:20:41.150 --> 00:20:45.109
 - How did he do that?
 - Made him an offer he couldn't refuse.
+
 END;
 
 		$cue = new DOM\Cue();
@@ -52,18 +53,19 @@ END;
 00:00:12,002 --> 00:00:17
 Harold, skaka inte bara på huvudet, <br>
 du måste berätta vad som är fel med kaffet.
+
 END;
 
-		// @todo use &#10; instead of adding a space here;
-		// but that's not supported yet by VideoJS or Firefox.
+		// A blank line would end the cue, so vtt-vivid collapses the double
+		// line break to a single one.
 		$expected = <<<END
 WEBVTT
 
 6
-00:12.002 --> 00:17.000
+00:00:12.002 --> 00:00:17.000
 Harold, skaka inte bara på huvudet,\x20
-\x20
 du måste berätta vad som är fel med kaffet.
+
 END;
 
 		$cue = new DOM\Cue();
@@ -88,18 +90,19 @@ END;
 00:00:12,002 --> 00:00:17
 Harold, skaka inte bara på huvudet, <br>
 du måste berätta vad som är fel med kaffet.
+
 END;
 
-		// @todo use &#10; instead of adding a space here;
-		// but that's not supported yet by VideoJS or Firefox.
+		// A blank line would end the cue, so vtt-vivid collapses the double
+		// line break to a single one.
 		$expected = <<<END
 WEBVTT
 
 6
-00:12.002 --> 00:17.000
+00:00:12.002 --> 00:00:17.000
 Harold, skaka inte bara på huvudet,\x20
-\x20
 du måste berätta vad som är fel med kaffet.
+
 END;
 
 		$cue = new DOM\Cue();

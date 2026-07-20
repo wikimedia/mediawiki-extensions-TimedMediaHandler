@@ -1,6 +1,7 @@
 {
 	"require": {
-		"james-heinrich/getid3": "~1.9.25"
+		"james-heinrich/getid3": "~1.9.25",
+		"hartman/vtt-vivid": "^1.0.0"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "51.0.0",

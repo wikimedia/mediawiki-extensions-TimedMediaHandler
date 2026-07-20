@@ -24,7 +24,7 @@ class SrtWriterTest extends \PHPUnit\Framework\TestCase {
 	public function testSingleCue() {
 		// from https://en.wikipedia.org/wiki/SubRip
 		$expected = <<<END
-168
+1
 00:20:41,150 --> 00:20:45,109
 - How did he do that?
 - Made him an offer he couldn't refuse.
@@ -46,7 +46,7 @@ END;
 	public function testCueWithLineBreak() {
 		// From File:Folgers.ogv.sv.srt
 		$expected = <<<END
-6
+1
 00:00:12,002 --> 00:00:17,000
 Harold, skaka inte bara på huvudet,\x20
 \x20
@@ -70,7 +70,7 @@ END;
 
 	public function testCueWithLineBreakTwoNodes() {
 		$expected = <<<END
-6
+1
 00:00:12,002 --> 00:00:17,000
 Harold, skaka inte bara på huvudet,\x20
 \x20
@@ -91,5 +91,32 @@ END;
 		$output = $this->writer->write( $cues );
 
 		$this->assertEquals( $expected, $output );
+	}
+
+	public function testSequentialNumbering() {
+		// Cue identifiers are optional and non-numeric in WebVTT, so SRT output
+		// is numbered by position rather than from the cue id.
+		$expected = <<<END
+1
+00:00:01,000 --> 00:00:02,000
+first
+
+2
+00:00:03,000 --> 00:00:04,000
+second
+END;
+
+		$a = new DOM\Cue();
+		$a->id = 'intro';
+		$a->start = 1;
+		$a->end = 2;
+		$a->appendText( 'first' );
+
+		$b = new DOM\Cue();
+		$b->start = 3;
+		$b->end = 4;
+		$b->appendText( 'second' );
+
+		$this->assertEquals( $expected, $this->writer->write( [ $a, $b ] ) );
 	}
 }

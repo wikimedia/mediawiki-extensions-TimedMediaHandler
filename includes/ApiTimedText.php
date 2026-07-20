@@ -160,8 +160,12 @@ class ApiTimedText extends ApiBase {
 	 * @throws ApiUsageException
 	 */
 	protected function findTimedText( File $file, string $langCode, string $preferredFormat ): ?WikiPage {
-		// In future, add TimedTextPage::VTT_SUBTITLE_FORMAT as a supported input format as well.
-		$sourceFormats = [ TimedTextPage::SRT_SUBTITLE_FORMAT ];
+		// Prefer a WebVTT source when one exists for this language, as it can
+		// express regions, styles, notes and cue settings that SRT cannot.
+		$sourceFormats = [
+			TimedTextPage::VTT_SUBTITLE_FORMAT,
+			TimedTextPage::SRT_SUBTITLE_FORMAT,
+		];
 
 		$textHandler = new TextHandler( $file, $sourceFormats );
 		$ns = $textHandler->getTimedTextNamespace();
@@ -214,6 +218,7 @@ class ApiTimedText extends ApiBase {
 			$from,
 			$to
 		);
+
 		return $this->cache->getWithSetCallback(
 			$key,
 			self::CACHE_TTL,

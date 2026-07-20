@@ -20,6 +20,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedText\ParseError;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
+use MediaWiki\TimedMediaHandler\TimedText\VttReader;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
 use MediaWiki\Title\Title;
@@ -47,10 +48,10 @@ class TextHandler {
 	/**
 	 * Get the timed text tracks elements as an associative array
 	 */
-	public function getTracks(): array {
+	public function getTracks( bool $allSources = false ): array {
 		if ( $this->file->isLocal() || $this->file instanceof ForeignDBFile ) {
 			$data = $this->getTextPagesFromDb();
-			return $data ? $this->getTextTracksFromRows( $data ) : [];
+			return $data ? $this->getTextTracksFromRows( $data, $allSources ) : [];
 		} elseif ( $this->file->getRepo() instanceof IForeignRepoWithMWApi ) {
 			return $this->getRemoteTextSources( $this->file );
 		}
@@ -267,8 +268,13 @@ class TextHandler {
 	 * Handles both local and foreign Db results
 	 *
 	 * @param IResultWrapper $data Database result with page titles
+	 * @param bool $allSources When false (default) return a single playable
+	 *  WebVTT track per language, preferring a WebVTT source. When true return
+	 *  one track for every existing source page in its own format, e.g. for a
+	 *  management or authoring UI that needs the full inventory.
+	 * @return array
 	 */
-	public function getTextTracksFromRows( IResultWrapper $data ): array {
+	public function getTextTracksFromRows( IResultWrapper $data, bool $allSources = false ): array {
 		$services = MediaWikiServices::getInstance();
 		$langNames = $services->getLanguageNameUtils()->getLanguageNames();
 		$languageFactory = $services->getLanguageFactory();
@@ -278,7 +284,14 @@ class TextHandler {
 		$textTracks = [];
 		foreach ( $sourceFormatsByLang as $languageKey => $sourceFormats ) {
 			$language = $languageFactory->getLanguage( $languageKey );
-			foreach ( array_keys( $sourceFormats ) as $format ) {
+			// The player only consumes WebVTT tracks (SRT tracks are stripped
+			// client-side), so a single WebVTT track per language is served;
+			// srt-only sources are converted on the fly. The full per-format
+			// inventory is available via $allSources.
+			$formats = $allSources
+				? array_keys( $sourceFormats )
+				: [ TimedTextPage::VTT_SUBTITLE_FORMAT ];
+			foreach ( $formats as $format ) {
 				$textTracks[] = [
 					'src' => $this->getFullURL( $languageKey, $format ),
 					'kind' => 'subtitles',
@@ -381,9 +394,8 @@ class TextHandler {
 				$reader = new SrtReader();
 				break;
 			case TimedTextPage::VTT_SUBTITLE_FORMAT:
-				// @todo once VttReader is implemented, use it.
-				// For now throw an exception rather than a fatal error.
-				throw new RuntimeException( 'vtt source pages are not yet supported' );
+				$reader = new VttReader();
+				break;
 			default:
 				throw new RuntimeException( 'Unsupported timedtext filetype' );
 		}
@@ -399,10 +411,16 @@ class TextHandler {
 		}
 		try {
 			$reader->read( $data );
-			$cues = $reader->getCues();
 			$errors = $reader->getErrors();
 
-			return $writer->write( $cues );
+			// WebVTT to WebVTT round-trips through vtt-vivid directly, which
+			// preserves regions, style blocks, notes and cue settings that the
+			// TimedText DOM and VttWriter do not model.
+			if ( $reader instanceof VttReader && $writer instanceof VttWriter ) {
+				return $reader->toVtt();
+			}
+
+			return $writer->write( $reader->getCues() );
 		} catch ( Exception $e ) {
 			throw new RuntimeException( 'Timed text track conversion failed: ' .
 				$e->getMessage() );
