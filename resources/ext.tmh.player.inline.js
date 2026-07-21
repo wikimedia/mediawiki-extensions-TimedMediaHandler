@@ -180,6 +180,7 @@ class InlinePlayer {
 		this.videojsPlayer.ready( () => {
 			InlinePlayer.activePlayers.push( this.videojsPlayer );
 			this.selectDefaultTrack();
+			this.setupTouchEvents( this.videojsPlayer );
 			/* More custom stuff goes here */
 			d.resolve( this.videojsPlayer );
 			mw.hook( 'tmh.player.loaded' ).fire( this.videojsPlayer );
@@ -219,6 +220,43 @@ class InlinePlayer {
 		} else if ( contentLanguageTrack ) {
 			contentLanguageTrack.mode = 'showing';
 		}
+	}
+
+	setupTouchEvents( player ) {
+		const doubleTapDelayMs = 200;
+		const skipTimeSec = 10;
+		let timeout = null;
+		player.el().addEventListener( 'touchstart', () => {
+			if ( timeout ) {
+				const touch = event.touches.item( 0 );
+				if ( !touch ) {
+					timeout = null;
+					return;
+				}
+				const x = touch.clientX - player.el().clientLeft;
+				const leftThreshold = player.el().clientWidth / 3;
+				const rightThreshold = player.el().clientWidth * 2 / 3;
+				if ( x <= leftThreshold ) {
+					player.currentTime(
+						Math.max( 0, player.currentTime() - skipTimeSec )
+					);
+					timeout = null;
+					event.preventDefault();
+					return;
+				} else if ( x >= rightThreshold ) {
+					player.currentTime(
+						Math.min( player.currentTime() + skipTimeSec ),
+						player.duration()
+					);
+					timeout = null;
+					event.preventDefault();
+					return;
+				}
+			}
+			timeout = setTimeout( () => {
+				timeout = null;
+			}, doubleTapDelayMs );
+		} );
 	}
 
 	/**
