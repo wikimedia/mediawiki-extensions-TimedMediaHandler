@@ -105,10 +105,8 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'TimedMediaHandler-files', $stateName, $limit ),
 			$this->cache::TTL_MINUTE,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $state, $limit, $fname ) {
+			function () use ( $state, $limit, $fname ) {
 				$dbr = $this->dbProvider->getReplicaDatabase();
-				$setOpts += Database::getCacheSetOptions( $dbr );
-
 				$files = [];
 				$res = $dbr->newSelectQueryBuilder()
 					->select( [ 'transcode_image_name', 'transcode_key' ] )
