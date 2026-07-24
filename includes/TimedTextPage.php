@@ -23,6 +23,7 @@ use MediaWiki\Page\Article;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
+use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
 use MediaWiki\Title\Title;
 use StatusValue;
 
@@ -223,39 +224,148 @@ class TimedTextPage extends Article {
 		}
 
 		$languages = $this->languageNameUtils->getLanguageNames();
-		$options = [];
-		foreach ( $languages as $code => $name ) {
-			$display = LanguageCode::bcp47( $code ) . ' - ' . $name;
-			$options[$display] = $code;
-		}
 
-		$formDescriptor = [
-			'lang' => [
-				'label-message' => 'timedmedia-subtitle-new-desc',
-				'required' => true,
-				'type' => 'select',
-				'options' => $options,
-				'default' => $lang->getCode(),
-			],
-		];
+		// Languages that already have one or more subtitle pages for this file.
+		$existingSources = $file && $file->isLocal()
+			? ( new TextHandler( $file ) )->getExistingSources()
+			: [];
 
 		$out->enableOOUI();
-		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $context );
-		$htmlForm
+
+		// First form: jump to an existing subtitle page to view or edit it.
+		if ( $existingSources ) {
+			$editDescriptor = [
+				'existing' => [
+					'label-message' => 'timedmedia-subtitle-edit-desc',
+					'type' => 'select',
+					'options' => $this->getExistingSourceOptions( $existingSources, $languages ),
+				],
+			];
+			$editForm = HTMLForm::factory( 'ooui', $editDescriptor, $context );
+			$editForm
+				->setMethod( 'post' )
+				->setFormIdentifier( 'edit-subtitle' )
+				->setSubmitTextMsg( 'timedmedia-subtitle-edit-go' )
+				->setWrapperLegendMsg( 'timedmedia-subtitle-edit-legend' )
+				->prepareForm()
+				->setSubmitCallback( [ $this, 'onSubmitEdit' ] )
+				->addPreHtml( $this->getErrorsAndWarnings( $this->renderStatus ) )
+				->show();
+			if ( $out->getRedirect() !== '' ) {
+				return;
+			}
+		}
+
+		// Second form: create a new translation in a language that does not
+		// yet have a subtitle page for this file.
+		$newOptions = [];
+		foreach ( $languages as $code => $name ) {
+			if ( isset( $existingSources[$code] ) ) {
+				continue;
+			}
+			$display = LanguageCode::bcp47( $code ) . ' - ' . $name;
+			$newOptions[$display] = $code;
+		}
+
+		$langField = [
+			'label-message' => 'timedmedia-subtitle-new-desc',
+			'required' => true,
+			'type' => 'select',
+			'options' => $newOptions,
+		];
+		// Preselect the user's language, unless it already has a subtitle (in
+		// which case it isn't among the options and OOUI picks the first one).
+		if ( !isset( $existingSources[$lang->getCode()] ) ) {
+			$langField['default'] = $lang->getCode();
+		}
+
+		$createDescriptor = [
+			'lang' => $langField,
+			// TODO: re-enable format selection once VTT is supported
+			// 'format' => [
+			// 	'label-message' => 'timedmedia-subtitle-new-format',
+			// 	'required' => true,
+			// 	'type' => 'select',
+			// 	'options' => [
+			// 		$context->msg( 'timedmedia-subtitle-format-vtt' )->text() => self::VTT_SUBTITLE_FORMAT,
+			// 		$context->msg( 'timedmedia-subtitle-format-srt' )->text() => self::SRT_SUBTITLE_FORMAT,
+			// 	],
+			// 	'default' => self::VTT_SUBTITLE_FORMAT,
+			// ],
+		];
+
+		$createForm = HTMLForm::factory( 'ooui', $createDescriptor, $context );
+		$createForm
 			->setMethod( 'post' )
+			->setFormIdentifier( 'create-subtitle' )
 			->setSubmitTextMsg( 'timedmedia-subtitle-new-go' )
+			->setWrapperLegendMsg( 'timedmedia-subtitle-new-legend' )
 			->prepareForm()
-			->setSubmitCallback( [ $this, 'onSubmit' ] )
-			->addPreHtml( $this->getErrorsAndWarnings( $this->renderStatus ) )
-			->show();
+			->setSubmitCallback( [ $this, 'onSubmit' ] );
+		if ( !$existingSources ) {
+			$createForm->addPreHtml( $this->getErrorsAndWarnings( $this->renderStatus ) );
+		}
+		$createForm->show();
+	}
+
+	/**
+	 * Build the option list for a select of existing subtitle sources.
+	 *
+	 * Keys are human readable labels ("en - English (SRT)"), values are the
+	 * "<lang>.<format>" suffix that identifies the subtitle page.
+	 *
+	 * @param array<string,string[]> $existingSources Map of language code to
+	 *  the list of formats that exist for it, as returned by
+	 *  TextHandler::getExistingSources()
+	 * @param array<string,string> $languages Map of language code to display name
+	 */
+	private function getExistingSourceOptions( array $existingSources, array $languages ): array {
+		$options = [];
+		foreach ( $existingSources as $code => $formats ) {
+			$name = $languages[$code] ?? $code;
+			sort( $formats );
+			foreach ( $formats as $format ) {
+				$display = LanguageCode::bcp47( $code ) . ' - ' . $name .
+					' (' . strtoupper( $format ) . ')';
+				$options[$display] = $code . '.' . $format;
+			}
+		}
+		return $options;
+	}
+
+	/**
+	 * Handle the "edit existing subtitles" form: redirect
+	 * to the selected subtitle page. The submitted value is the
+	 * "<lang>.<format>" suffix relative to the corresponding file.
+	 */
+	public function onSubmitEdit( array $data ): bool {
+		$fileTitle = $this->getCorrespondingFileTitle();
+		if ( empty( $data['existing'] ) || !$fileTitle ) {
+			return false;
+		}
+		$target = Title::makeTitleSafe(
+			NS_TIMEDTEXT,
+			$fileTitle->getDBkey() . '.' . $data['existing']
+		);
+		if ( !$target ) {
+			return false;
+		}
+		$this->getContext()->getOutput()->redirect( $target->getFullURL() );
+		return true;
 	}
 
 	/** @inheritDoc */
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
+			// TODO: default to VTT once format selection (above) is re-enabled.
+			$format = $data['format'] ?? self::SRT_SUBTITLE_FORMAT;
+			if ( !in_array( $format, static::$knownTimedTextExtensions, true ) ) {
+				$format = self::SRT_SUBTITLE_FORMAT;
+			}
 			$output = $this->getContext()->getOutput();
-			$target = $output->getTitle() . '.' . $data['lang'] . '.' . self::SRT_SUBTITLE_FORMAT;
-			$targetFullUrl = $output->getTitle()->getFullUrl() . '.' . $data['lang'] . '.' . self::SRT_SUBTITLE_FORMAT;
+			$suffix = '.' . $data['lang'] . '.' . $format;
+			$target = $output->getTitle() . $suffix;
+			$targetFullUrl = $output->getTitle()->getFullUrl() . $suffix;
 			if ( Title::newFromText( $target )->exists() ) {
 				$output->redirect( $targetFullUrl );
 			} else {

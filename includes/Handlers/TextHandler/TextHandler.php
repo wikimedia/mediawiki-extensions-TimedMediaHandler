@@ -207,33 +207,78 @@ class TextHandler {
 	}
 
 	/**
+	 * List the existing TimedText source pages for this file, grouped by
+	 * language code.
+	 *
+	 * Only consults local and foreign-DB repos; remote (MWApi) repos are
+	 * not queried.
+	 *
+	 * @return array<string,string[]> Map of language code to the list of
+	 *  subtitle formats (e.g. 'srt', 'vtt') that currently exist for that
+	 *  language.
+	 */
+	public function getExistingSources(): array {
+		if ( !$this->file->isLocal() && !( $this->file instanceof ForeignDBFile ) ) {
+			return [];
+		}
+		$data = $this->getTextPagesFromDb();
+		if ( !$data ) {
+			return [];
+		}
+		return array_map( 'array_keys', $this->getSourceFormatsByRows( $data ) );
+	}
+
+	/**
+	 * Parse a page-table result of TimedText pages into the set of subtitle
+	 * formats that exist per language.
+	 *
+	 * Rows whose title does not parse into "<name>.<lang>.<format>", whose
+	 * language is unknown, or whose format is not in {@see self::$formats} are
+	 * skipped.
+	 *
+	 * @param IResultWrapper $data Database result with page titles
+	 * @return array<string,array<string,true>> Map of language code to a set of
+	 *  the formats (keyed by format name) that exist for that language.
+	 */
+	private function getSourceFormatsByRows( IResultWrapper $data ): array {
+		$langNames = MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageNames();
+		$sourceFormatsByLang = [];
+		foreach ( $data as $row ) {
+			$titleParts = explode( '.', $row->page_title );
+			if ( count( $titleParts ) < 3 ) {
+				continue;
+			}
+			$format = array_pop( $titleParts );
+			$languageKey = array_pop( $titleParts );
+			// Skip pages with an unknown language or unrecognized format.
+			if ( !isset( $langNames[ $languageKey ] ) ) {
+				continue;
+			}
+			if ( !in_array( $format, $this->formats, true ) ) {
+				continue;
+			}
+			$sourceFormatsByLang[ $languageKey ][ $format ] = true;
+		}
+		return $sourceFormatsByLang;
+	}
+
+	/**
 	 * Build an array of track information using a Database result
 	 * Handles both local and foreign Db results
 	 *
 	 * @param IResultWrapper $data Database result with page titles
 	 */
 	public function getTextTracksFromRows( IResultWrapper $data ): array {
-		$textTracks = [];
-
 		$services = MediaWikiServices::getInstance();
 		$langNames = $services->getLanguageNameUtils()->getLanguageNames();
 		$languageFactory = $services->getLanguageFactory();
 
-		foreach ( $data as $row ) {
-			$titleParts = explode( '.', $row->page_title );
-			if ( count( $titleParts ) >= 3 ) {
-				$timedTextExtension = array_pop( $titleParts );
-				$languageKey = array_pop( $titleParts );
-			} else {
-				continue;
-			}
-			// If there is no valid language continue:
-			if ( !isset( $langNames[ $languageKey ] ) ) {
-				continue;
-			}
+		$sourceFormatsByLang = $this->getSourceFormatsByRows( $data );
 
+		$textTracks = [];
+		foreach ( $sourceFormatsByLang as $languageKey => $sourceFormats ) {
 			$language = $languageFactory->getLanguage( $languageKey );
-			foreach ( $this->formats as $format ) {
+			foreach ( array_keys( $sourceFormats ) as $format ) {
 				$textTracks[] = [
 					'src' => $this->getFullURL( $languageKey, $format ),
 					'kind' => 'subtitles',
