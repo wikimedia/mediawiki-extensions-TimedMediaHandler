@@ -196,6 +196,72 @@ html[ dir='rtl' ] {
 	}
 }
 
+// T378783
+// Override overrides from Vector-2022's WikimediaMessages dark mode styles
+// These can affect inline players in the content area in info boxes, side boxes
+// etc but don't affect the pop-out player dialog.
+.video-js-darkmode-fixes {
+	/* stylelint-disable declaration-no-important */
+	.video-js {
+		// We use the dark-style theme for the player in both modes.
+		color: #fff !important;
+		background-color: #000 !important;
+
+		.vjs-volume-vertical {
+			background-color: rgba( 43, 51, 63, 0.7 ) !important;
+
+			::before {
+				color: #fff !important;
+			}
+		}
+
+		.vjs-volume-level {
+			color: #000 !important;
+			background-color: #fff !important;
+		}
+
+		.vjs-load-progress {
+			color: #fff !important;
+			background-color: rgba( 115, 133, 159, 0.5 ) !important;
+		}
+
+		.vjs-play-progress {
+			color: #fff !important;
+			background-color: #fff !important;
+
+			.vjs-time-tooltip {
+				color: #fff !important;
+				background-color: #000 !important;
+			}
+		}
+	}
+	/* stylelint-enable declaration-no-important */
+}
+
+@media screen {
+	html.skin-theme-clientpref-night {
+		.video-js-darkmode-fixes();
+
+		.page-Main_Page {
+			.mw-parser-output :not( .notheme ):not( a ) {
+				.video-js-darkmode-fixes();
+			}
+		}
+	}
+}
+
+@media screen and ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os {
+		.video-js-darkmode-fixes();
+
+		.page-Main_Page {
+			.mw-parser-output :not( .notheme ):not( a ) {
+				.video-js-darkmode-fixes();
+			}
+		}
+	}
+}
+
 @keyframes vjs-slider-indeterminate {
 	0% {
 		background-position: 0 0;

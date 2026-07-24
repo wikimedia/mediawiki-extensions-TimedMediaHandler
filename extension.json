@@ -474,7 +474,7 @@
 			],
 			"styles": [
 				"ext.tmh.player.inline.styles.less",
-				"mw-info-button/mw-info-button.css",
+				"mw-info-button/mw-info-button.less",
 				"videojs-resolution-switcher/videojs-resolution-switcher.css",
 				"mw-endcard/mw-endcard.less",
 				"mw-notifications/mw-notifications.less",
