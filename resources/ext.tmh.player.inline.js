@@ -319,7 +319,8 @@ class InlinePlayer {
  * Text tracks are not preloaded because we may have a large number of subtitles
  * which never get used, and it's expensive to load them all.
  *
- * More consistent subtitle rendering is available due to disabling native text tracks.
+ * Native text tracks are used so subtitle rendering is handled by the
+ * browser's own VTT cue renderer instead of video.js's TextTrackDisplay.
  *
  * Disabling native audio tracks avoids accidentally exposing the Opus audio tracks
  * in HTTP Live Streaming playlists on Safari, which can't actually play them and
@@ -330,7 +331,7 @@ class InlinePlayer {
  */
 InlinePlayer.html5techOpt = {
 	preloadTextTracks: false,
-	nativeTextTracks: false,
+	nativeTextTracks: true,
 	nativeAudioTracks: false
 };
 
