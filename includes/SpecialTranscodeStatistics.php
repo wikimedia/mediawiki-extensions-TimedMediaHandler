@@ -16,7 +16,6 @@ use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Title\Title;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
@@ -163,10 +162,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'TimedMediaHandler-states' ),
 			$this->cache::TTL_MINUTE,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $fname, $allTranscodes ) {
-				$dbr = $this->dbProvider->getReplicaDatabase();
-				$setOpts += Database::getCacheSetOptions( $dbr );
-
+			function () use ( $fname, $allTranscodes ) {
 				$states = [];
 				foreach ( $this->transcodeStates as $state => $condition ) {
 					$states[ $state ] = [ 'total' => 0 ];
