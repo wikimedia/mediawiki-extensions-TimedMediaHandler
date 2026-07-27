@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brettchenweber",
 			"Debenben",
 			"Filzstift",
 			"G.Hagedorn",
@@ -149,7 +150,14 @@
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Neue Übersetzung erstellen oder vorhandene bearbeiten",
 	"timedmedia-subtitle-new-desc": "Wähle eine Sprache aus und klicke auf '''{{int:Timedmedia-subtitle-new-go}}'''",
-	"timedmedia-subtitle-new-go": "Los",
+	"timedmedia-subtitle-new-go": "Erstellen",
+	"timedmedia-subtitle-new-legend": "Eine neue Übersetzung erstellen",
+	"timedmedia-subtitle-new-format": "Untertitelformat",
+	"timedmedia-subtitle-format-vtt": "WebVTT (VTT)",
+	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
+	"timedmedia-subtitle-edit-legend": "Vorhandene Untertitel bearbeiten",
+	"timedmedia-subtitle-edit-desc": "Wähle vorhandene Untertitel aus und drücke die Schaltfläche '''{{int:Timedmedia-subtitle-edit-go}}'''",
+	"timedmedia-subtitle-edit-go": "Bearbeiten",
 	"timedmedia-subtitle-no-video": "Der aktuellen Seite mit Untertiteln ist kein Video zugeordnet.",
 	"timedmedia-subtitle-no-subtitles": "Derzeit gibt es keine Untertitel auf $1 für dieses Video. Zum Hinzufügen von Untertiteln kann [{{fullurl:{{FULLPAGENAME}}|action=edit}} diese Seite] bearbeitet werden.",
 	"timedmedia-subtitle-remote": "timedText für diese Datei befindet sich auf $1",
