@@ -18,29 +18,31 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 
 	public function __construct() {
 		parent::__construct();
-		$this->addOption( "key", "process only the given format key or comma-delimited list", false, true );
-		$this->addOption( "error", "re-queue formats that previously failed" );
-		$this->addOption( "stalled", "re-queue formats that were started but not finished" );
-		$this->addOption( "missing", "queue formats that were never started" );
-		$this->addOption( "force", "force re-queueing of all matching transcodes" );
+		$this->addDescription( "Remove and re-queue all successful media transcodes for files that currently exist." );
+
+		$this->addOption( "key", "only process transcodes for the given format key or comma-delimited list",
+			false, true );
+		$this->addOption( "error", "also process transcodes that previously failed" );
+		$this->addOption( "stalled", "also process active transcodes that were started but not yet finished" );
+		$this->addOption( "missing", "also process transcodes for files that don't exist (and remove them)" );
+		$this->addOption( "force", "force processing regardless of state (success, failed, active, and missing)" );
+		$this->addOption( "remove", "only remove transcodes without re-queuing" );
+
 		$this->addOption( "throttle", "throttle on the queue" );
 		$this->addOption( "manual-override", "override soft limits on output file size" );
 		$this->addOption( "remux", "use remuxing from another transcode where possible" );
-		$this->addOption( "remove", "remove but don't re-queue" );
-		$this->addOption( "dry-run", "don't actually remove/enqueue transcodes; for testing params" );
-		$this->addDescription( "re-queue existing and missing media transcodes." );
+
+		$this->addOption( "dry-run", "print remove/enqueue actions that would be taken" );
 	}
 
 	public function execute() {
-		$this->output( "Cleanup transcodes:\n" );
+		$this->output( "Iterating through all matching files...\n" );
 		parent::execute();
 		$this->output( "Finished!\n" );
 	}
 
 	/** @inheritDoc */
 	public function processFile( File $file ) {
-		$this->output( $file->getName() . "\n" );
-
 		$dbw = $this->getServiceContainer()->getConnectionProvider()->getReplicaDatabase();
 		$repo = $file->repo;
 		$dryRun = $this->hasOption( 'dry-run' );
@@ -76,6 +78,7 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 			}
 
 			if ( $run ) {
+				$this->output( $file->getName() . "\n" );
 				$toRemove[] = $key;
 				if ( !$this->hasOption( 'remove' ) ) {
 					$toAdd[] = $key;
