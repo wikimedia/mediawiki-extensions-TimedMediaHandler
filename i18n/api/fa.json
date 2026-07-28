@@ -3,13 +3,19 @@
 		"authors": [
 			"Ebrahim",
 			"Ebraminio",
-			"Mehran"
+			"Mehran",
+			"Mohammad ebz"
 		]
 	},
-	"apihelp-query+transcodestatus-example-1": "گرفتن وضعیت کدگذاری [[:File:Clip.webm]]",
+	"apihelp-query+transcodestatus-summary": "دریافت وضعیت فرارمزگردانی برای صفحهٔ پرونده دریافتی.",
+	"apihelp-query+transcodestatus-example-1": "دریافت وضعیت فرارمزگردانی برای [[:File:Clip.webm]]",
 	"apihelp-query+videoinfo-example-1": "واکشی اطلاعاتی درباره [[:File:Folgers.ogv]]",
+	"apihelp-transcodereset-summary": "کاربران با دسترسی 'فرارمزگردانی-بازنشانی' می‌توانند یک فرارمزگردانی را بازنشانی و مجدد اجرا کنند.",
 	"apihelp-transcodereset-param-title": "عنوان پرونده.",
-	"apihelp-transcodereset-param-transcodekey": "کلید کدگذاری که می‌خواهید از نو شود. گرفتن از [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
+	"apihelp-transcodereset-param-transcodekey": "کلید فرارمزگردانی که می‌خواهید بازنشانی شود. دریافت از [[Special:ApiHelp/query+transcodestatus|action=query&prop=transcodestatus]].",
 	"apihelp-transcodereset-example-1": "از نو کردن کدگذاری‌ها برای [[:File:Clip.webm]]",
-	"apihelp-transcodereset-example-2": "از نو کردن کلید کدگذاری '360_560kbs.webm' برای [[:File:Clip.webm]]"
+	"apihelp-transcodereset-example-2": "بازنشانی کلید فرارمزگردانی '360_560kbs.webm' برای [[:File:Clip.webm]]",
+	"apierror-timedmedia-disabledtranscode": "فرارمزگردانی در این ویکی غیرفعال شده است.",
+	"apierror-timedmedia-badtranscodekey": "کلید فرارمزگردانی نامعتبر یا غیرفعال: $1",
+	"apierror-timedmedia-notenoughtimereset": "از آخرین بازنشانی این فرارمزگردانی، زمان کافی نگذشته است. $1 تا امکان بازنشانی این فرارمزگردانی"
 }
