@@ -281,17 +281,16 @@ class TimedTextPage extends Article {
 
 		$createDescriptor = [
 			'lang' => $langField,
-			// TODO: re-enable format selection once VTT is supported
-			// 'format' => [
-			// 	'label-message' => 'timedmedia-subtitle-new-format',
-			// 	'required' => true,
-			// 	'type' => 'select',
-			// 	'options' => [
-			// 		$context->msg( 'timedmedia-subtitle-format-vtt' )->text() => self::VTT_SUBTITLE_FORMAT,
-			// 		$context->msg( 'timedmedia-subtitle-format-srt' )->text() => self::SRT_SUBTITLE_FORMAT,
-			// 	],
-			// 	'default' => self::VTT_SUBTITLE_FORMAT,
-			// ],
+			'format' => [
+				'label-message' => 'timedmedia-subtitle-new-format',
+				'required' => true,
+				'type' => 'select',
+				'options' => [
+					$context->msg( 'timedmedia-subtitle-format-vtt' )->text() => self::VTT_SUBTITLE_FORMAT,
+					$context->msg( 'timedmedia-subtitle-format-srt' )->text() => self::SRT_SUBTITLE_FORMAT,
+				],
+				'default' => self::VTT_SUBTITLE_FORMAT,
+			],
 		];
 
 		$createForm = HTMLForm::factory( 'ooui', $createDescriptor, $context );
@@ -357,8 +356,7 @@ class TimedTextPage extends Article {
 	/** @inheritDoc */
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
-			// TODO: default to VTT once format selection (above) is re-enabled.
-			$format = $data['format'] ?? self::SRT_SUBTITLE_FORMAT;
+			$format = $data['format'] ?? self::VTT_SUBTITLE_FORMAT;
 			if ( !in_array( $format, static::$knownTimedTextExtensions, true ) ) {
 				$format = self::SRT_SUBTITLE_FORMAT;
 			}
