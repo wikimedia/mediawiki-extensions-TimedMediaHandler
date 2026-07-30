@@ -5,7 +5,8 @@
 			"Cabal",
 			"Gman124",
 			"Hemantbrar",
-			"Satdeep gill"
+			"Satdeep gill",
+			"Bgo eiu"
 		]
 	},
 	"timedmedia-more": "ਹੋਰ...",
@@ -21,6 +22,6 @@
 	"timedmedia-error-dismiss": "ਖ਼ਾਰਜ ਕਰੋ",
 	"timedmedia-source-original": "ਸਰੋਤ",
 	"timedmedia-subtitle-new": "ਨਵਾਂ ਤਰਜਮਾ ਬਣਾਓ ਜਾਂ ਮੌਜੂਦਾ ਸੋਧੋ",
-	"timedmedia-duration-s": "{{PLURAL:$1|$1 ਸਕਿੰਟ |$1 ਸਕਿੰਟਾਂ}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 ਸਕਿੰਟ}}",
 	"videojs-more-information": "ਹੋਰ ਜਾਣਕਾਰੀ"
 }
