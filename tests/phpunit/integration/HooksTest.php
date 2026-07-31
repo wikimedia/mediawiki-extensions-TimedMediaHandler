@@ -79,6 +79,9 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		$file->method( 'getMimeType' )->willReturn( $mimeType );
 		$file->method( 'exists' )->willReturn( true );
 		$file->method( 'getName' )->willReturn( $filename );
+		$file->method( 'isLocal' )->willReturn( true );
+		$file->method( 'getRepo' )->willReturn(
+			$this->getServiceContainer()->getRepoGroup()->getLocalRepo() );
 
 		// Override RepoGroup to return our stub for this file title.
 		$realRepoGroup = $this->getServiceContainer()->getRepoGroup();
@@ -126,6 +129,23 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 
 		$tab = $this->findTab( $links, self::TAB_TIMEDTEXT );
 		$this->assertNotNull( $tab, 'TimedText tab must be injected for a WebM TMH file' );
+	}
+
+	public function testTimedTextTabMarkedExistingForSrtOnlyLanguage(): void {
+		// Regression test for T433666: a language with only an .srt source
+		// page (no .vtt page) must still be picked up, since TextHandler
+		// converts it to WebVTT on the fly when served.
+		$filename = 'SrtOnlyTT.webm';
+		$title = $this->registerFakeFile( $filename, 'video/webm', true );
+		$this->insertPage( "$filename.en.srt", 'dummy subtitle content', 710 );
+		$hooks = $this->newHooksFromServices();
+
+		$links = $this->runHook( $hooks, $title );
+		$tab = $this->findTab( $links, self::TAB_TIMEDTEXT );
+
+		$this->assertNotNull( $tab );
+		$this->assertTrue( $tab['exists'],
+			'TimedText tab must report as existing when only an SRT source is present' );
 	}
 
 	public function testTimedTextTabAddedForOggVideoWithRealServices(): void {

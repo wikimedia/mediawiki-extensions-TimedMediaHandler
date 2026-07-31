@@ -171,7 +171,7 @@ class Hooks implements
 
 			// Lookup if we have any corresponding timed text available already
 			$file = $this->repoGroup->findFile( $sktemplate->getTitle(), [ 'ignoreRedirect' => true ] );
-			$textHandler = new TextHandler( $file, [ TimedTextPage::VTT_SUBTITLE_FORMAT ] );
+			$textHandler = new TextHandler( $file );
 			$ttExists = count( $textHandler->getTracks() ) > 0;
 			$tab[ 'exists' ] = $ttExists;
 			if ( !$ttExists ) {

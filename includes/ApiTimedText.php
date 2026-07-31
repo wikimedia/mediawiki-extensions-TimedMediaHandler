@@ -160,19 +160,18 @@ class ApiTimedText extends ApiBase {
 	 * @throws ApiUsageException
 	 */
 	protected function findTimedText( File $file, string $langCode, string $preferredFormat ): ?WikiPage {
+		$textHandler = new TextHandler( $file );
+		$ns = $textHandler->getTimedTextNamespace();
+		if ( $ns === null ) {
+			$this->dieWithError( 'apierror-timedmedia-no-timedtext-support', 'invalidconfig' );
+		}
+
 		// Prefer a WebVTT source when one exists for this language, as it can
 		// express regions, styles, notes and cue settings that SRT cannot.
 		$sourceFormats = [
 			TimedTextPage::VTT_SUBTITLE_FORMAT,
 			TimedTextPage::SRT_SUBTITLE_FORMAT,
 		];
-
-		$textHandler = new TextHandler( $file, $sourceFormats );
-		$ns = $textHandler->getTimedTextNamespace();
-		if ( $ns === null ) {
-			$this->dieWithError( 'apierror-timedmedia-no-timedtext-support', 'invalidconfig' );
-		}
-
 		foreach ( $sourceFormats as $format ) {
 			$dbkey = "{$file->getTitle()->getDbKey()}.$langCode.$format";
 			$page = $this->wikiPageFactory->newFromTitle( Title::makeTitle( $ns, $dbkey ) );

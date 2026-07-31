@@ -40,10 +40,7 @@ class ApiQueryVideoInfo extends ApiQueryImageInfo {
 		}
 		if ( isset( $prop['timedtext'] ) ) {
 			if ( $file->getHandler() && $file->getHandler() instanceof TimedMediaHandler ) {
-				$handler = new TextHandler(
-					$file,
-					[ TimedTextPage::SRT_SUBTITLE_FORMAT, TimedTextPage::VTT_SUBTITLE_FORMAT ]
-				);
+				$handler = new TextHandler( $file );
 				$timedtext = $handler->getTracks();
 				foreach ( $timedtext as &$track ) {
 					$track['src'] = MediaWikiServices::getInstance()->getUrlUtils()
