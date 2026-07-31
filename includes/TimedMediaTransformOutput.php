@@ -93,7 +93,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 	private function getTextHandler(): TextHandler {
 		if ( !$this->textHandler ) {
 			// Init an associated textHandler
-			$this->textHandler = new TextHandler( $this->file, [ TimedTextPage::VTT_SUBTITLE_FORMAT ] );
+			$this->textHandler = new TextHandler( $this->file );
 		}
 		return $this->textHandler;
 	}
