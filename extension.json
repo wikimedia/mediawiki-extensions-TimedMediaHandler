@@ -129,6 +129,7 @@
 		"ArticlePurge": "main",
 		"BeforePageDisplay": "main",
 		"CanonicalNamespaces": "main",
+		"EditFilterMergedContent": "main",
 		"FileDeleteComplete": "main",
 		"FileUndeleteComplete": "main",
 		"FileUpload": "main",

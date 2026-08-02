@@ -3,19 +3,26 @@ declare( strict_types=1 );
 
 namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
+use MediaWiki\Content\Content;
+use MediaWiki\Content\WikitextContent;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\EditPage\EditPage;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Media\BitmapHandler;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Skin\SkinTemplate;
+use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Hooks;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiIntegrationTestCase;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\Hooks::onSkinTemplateNavigation__Universal
+ * @covers \MediaWiki\TimedMediaHandler\Hooks::onEditFilterMergedContent
  *
  * @group Database
  * @group TimedMediaHandler
@@ -33,7 +40,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		// the deploying wiki's LocalSettings overrides.
 		$this->overrideConfigValues( [
 			'EnableTranscode'  => true,
-			'TimedTextNS'      => 710,
+			'TimedTextNS'      => NS_TIMEDTEXT,
 			'FFmpegLocation'   => '/usr/bin/ffmpeg',
 		] );
 	}
@@ -349,5 +356,123 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		// The tab should still appear; the href may differ (custom NS prefix)
 		$this->assertNotNull( $tab,
 			'TimedText tab must still be present when using a custom TimedTextNS' );
+	}
+
+	/**
+	 * @param Title $title
+	 * @param string $text
+	 * @return Status The status the hook populated, also matching its return value
+	 */
+	private function runEditFilter( Title $title, string $text ): Status {
+		$context = new RequestContext();
+		$context->setTitle( $title );
+		$context->setRequest( new FauxRequest() );
+
+		$status = Status::newGood();
+		$result = $this->newHooksFromServices()->onEditFilterMergedContent(
+			$context, new WikitextContent( $text ), $status, '',
+			$this->createMock( User::class ), false );
+
+		$this->assertSame( $status->isOK(), $result,
+			'Hook return value must agree with the status it set' );
+		return $status;
+	}
+
+	public function testEditFilterBlocksInvalidVtt(): void {
+		$title = Title::makeTitle( NS_TIMEDTEXT, 'EditFilterInvalid.webm.en.vtt' );
+
+		$status = $this->runEditFilter( $title, 'this is not a WebVTT file' );
+
+		$this->assertStatusError( 'timedmedia-subtitle-validation-fatal', $status );
+		// This is what makes EditPage show the validation list instead of a
+		// generic "an extension aborted your edit" message.
+		$this->assertStatusValue( EditPage::AS_HOOK_ERROR_EXPECTED, $status );
+	}
+
+	public function testEditFilterBlocksInvalidSrt(): void {
+		$title = Title::makeTitle( NS_TIMEDTEXT, 'EditFilterInvalid.webm.en.srt' );
+
+		$status = $this->runEditFilter( $title, "garbage\nnot a timestamp\ntext\n" );
+
+		// Same message key as the VTT case: both formats go through the same
+		// fatal, so a wrong-reader-selected regression wouldn't show up here
+		// as a different error, only as a missed block.
+		$this->assertStatusError( 'timedmedia-subtitle-validation-fatal', $status );
+	}
+
+	public function testEditFilterAllowsValidVtt(): void {
+		$title = Title::makeTitle( NS_TIMEDTEXT, 'EditFilterValid.webm.en.vtt' );
+
+		$status = $this->runEditFilter( $title,
+			"WEBVTT\n\n00:00:01.000 --> 00:00:02.000\nHello\n" );
+
+		$this->assertStatusGood( $status, 'Save must be allowed for valid WebVTT' );
+	}
+
+	public static function provideSkippedValidation(): array {
+		// [ validate in NS_TIMEDTEXT?, page name, text, why validation is skipped ]
+		return [
+			'redirect' => [
+				true, 'EditFilterSkip.webm.en.vtt',
+				'#REDIRECT [[TimedText:EditFilterSkipTarget.webm.en.vtt]]',
+				'Redirects must not be validated as subtitle content',
+			],
+			'blank' => [
+				true, 'EditFilterSkip.webm.en.vtt', '',
+				'Blanking a subtitle page must be allowed',
+			],
+			'whitespace only' => [
+				true, 'EditFilterSkip.webm.en.vtt', "\n\n  \n",
+				'Whitespace-only blanking must be allowed',
+			],
+			'outside TimedText namespace' => [
+				false, 'SomeArticle', 'this is not a WebVTT file',
+				'Pages outside the TimedText namespace must be untouched',
+			],
+			'no recognized format suffix' => [
+				true, 'EditFilterSkip.webm', 'this is not a WebVTT file',
+				'A TimedText page without a format suffix must be untouched',
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider provideSkippedValidation
+	 */
+	public function testEditFilterSkipsValidation(
+		bool $inTimedTextNs, string $pageName, string $text, string $why
+	): void {
+		$title = Title::makeTitle( $inTimedTextNs ? NS_TIMEDTEXT : NS_MAIN, $pageName );
+
+		$this->assertStatusGood( $this->runEditFilter( $title, $text ), $why );
+	}
+
+	public function testEditFilterIgnoresMissingTitle(): void {
+		// RequestContext::getTitle() falls back to $wgTitle when unset, so a
+		// null title can only be exercised with a mocked context.
+		$context = $this->createMock( IContextSource::class );
+		$context->method( 'getTitle' )->willReturn( null );
+		$status = Status::newGood();
+
+		$result = $this->newHooksFromServices()->onEditFilterMergedContent(
+			$context, new WikitextContent( 'this is not a WebVTT file' ), $status, '',
+			$this->createMock( User::class ), false );
+
+		$this->assertTrue( $result );
+		$this->assertStatusGood( $status );
+	}
+
+	public function testEditFilterIgnoresNonTextContent(): void {
+		$context = new RequestContext();
+		$context->setTitle( Title::makeTitle( NS_TIMEDTEXT, 'EditFilterNonText.webm.en.vtt' ) );
+		$context->setRequest( new FauxRequest() );
+		$status = Status::newGood();
+
+		$result = $this->newHooksFromServices()->onEditFilterMergedContent(
+			$context, $this->createMock( Content::class ), $status, '',
+			$this->createMock( User::class ), false );
+
+		$this->assertTrue( $result );
+		$this->assertStatusGood( $status );
 	}
 }

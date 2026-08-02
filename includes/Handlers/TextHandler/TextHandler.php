@@ -18,10 +18,12 @@ use MediaWiki\FileRepo\IForeignRepoWithMWApi;
 use MediaWiki\FileRepo\LocalRepo;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\TimedMediaHandler\TimedText\ParseError;
+use MediaWiki\TimedMediaHandler\TimedText\Reader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtReader;
 use MediaWiki\TimedMediaHandler\TimedText\SrtWriter;
 use MediaWiki\TimedMediaHandler\TimedText\VttReader;
 use MediaWiki\TimedMediaHandler\TimedText\VttWriter;
+use MediaWiki\TimedMediaHandler\TimedText\Writer;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
 use MediaWiki\Title\Title;
 use RuntimeException;
@@ -374,6 +376,34 @@ class TextHandler {
 	}
 
 	/**
+	 * Get a Reader for the given subtitle format
+	 */
+	public static function getReaderForFormat( ?string $format ): ?Reader {
+		switch ( $format ) {
+			case TimedTextPage::VTT_SUBTITLE_FORMAT:
+				return new VttReader();
+			case TimedTextPage::SRT_SUBTITLE_FORMAT:
+				return new SrtReader();
+			default:
+				return null;
+		}
+	}
+
+	/**
+	 * Get a Writer for the given subtitle format
+	 */
+	public static function getWriterForFormat( ?string $format ): ?Writer {
+		switch ( $format ) {
+			case TimedTextPage::VTT_SUBTITLE_FORMAT:
+				return new VttWriter();
+			case TimedTextPage::SRT_SUBTITLE_FORMAT:
+				return new SrtWriter();
+			default:
+				return null;
+		}
+	}
+
+	/**
 	 * Convert subtitles between SubRIP (SRT) and WebVTT, laxly.
 	 *
 	 * @param string $from source format, one of TimedTextPage::SRT_SUBTITLE_FORMAT
@@ -389,25 +419,13 @@ class TextHandler {
 		// data format integrity.
 		//
 		// @todo cache the conversion in memcached
-		switch ( $from ) {
-			case TimedTextPage::SRT_SUBTITLE_FORMAT:
-				$reader = new SrtReader();
-				break;
-			case TimedTextPage::VTT_SUBTITLE_FORMAT:
-				$reader = new VttReader();
-				break;
-			default:
-				throw new RuntimeException( 'Unsupported timedtext filetype' );
+		$reader = self::getReaderForFormat( $from );
+		if ( !$reader ) {
+			throw new RuntimeException( 'Unsupported timedtext filetype' );
 		}
-		switch ( $to ) {
-			case TimedTextPage::SRT_SUBTITLE_FORMAT:
-				$writer = new SrtWriter();
-				break;
-			case TimedTextPage::VTT_SUBTITLE_FORMAT:
-				$writer = new VttWriter();
-				break;
-			default:
-				throw new RuntimeException( 'Unsupported timedtext filetype' );
+		$writer = self::getWriterForFormat( $to );
+		if ( !$writer ) {
+			throw new RuntimeException( 'Unsupported timedtext filetype' );
 		}
 		try {
 			$reader->read( $data );

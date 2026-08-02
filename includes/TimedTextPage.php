@@ -10,6 +10,7 @@
 
 namespace MediaWiki\TimedMediaHandler;
 
+use Exception;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Exception\MWException;
 use MediaWiki\FileRepo\File\File;
@@ -17,6 +18,8 @@ use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Language\LanguageCode;
 use MediaWiki\Language\LanguageNameUtils;
+use MediaWiki\Language\MessageLocalizer;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Article;
@@ -24,6 +27,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
+use MediaWiki\TimedMediaHandler\TimedText\ParseError;
 use MediaWiki\Title\Title;
 use StatusValue;
 
@@ -459,11 +463,71 @@ class TimedTextPage extends Article {
 			// Set wgRevision at the end from what we actually fetched.
 			$out->setRevisionId( $this->getRevIdFetched() );
 		}
+
 		return Html::element(
 			'pre',
 			[],
 			( $content instanceof TextContent ) ? $content->getText() : ''
 		);
+	}
+
+	/**
+	 * Run subtitle text through the reader for the given format and
+	 * return any parse/validation errors found.
+	 *
+	 * @param MessageLocalizer $context Used only if the reader itself breaks
+	 * @return ParseError[]
+	 */
+	public static function validateSubtitleText(
+		MessageLocalizer $context, ?string $format, string $text
+	): array {
+		$reader = TextHandler::getReaderForFormat( $format );
+		if ( !$reader ) {
+			return [];
+		}
+		try {
+			$reader->read( $text );
+			return $reader->getErrors();
+		} catch ( Exception $e ) {
+			// A thrown exception here means a bug in the reader, not a bad
+			// subtitle. Log it and don't repeat it back to the user.
+			LoggerFactory::getInstance( 'TimedTextPage' )->warning(
+				'Subtitle validation threw an exception: {exception}',
+				[ 'exception' => $e ]
+			);
+			return [ new ParseError( 0, '',
+				$context->msg( 'timedmedia-subtitle-validation-internal-error' )->text() ) ];
+		}
+	}
+
+	/**
+	 * Build an escaped HTML list of subtitle validation errors.
+	 *
+	 * @param MessageLocalizer $context
+	 * @param ParseError[] $errors
+	 */
+	public static function buildValidationErrorList( MessageLocalizer $context, array $errors ): string {
+		if ( !$errors ) {
+			return '';
+		}
+		// Avoid a very long list when subtitle file has many errors
+		$max = 10;
+		// If only one would be left out, just show it instead of a "1 more"
+		$shown = count( $errors ) - $max === 1 ? $max + 1 : $max;
+		$items = [];
+		foreach ( array_slice( $errors, 0, $shown ) as $error ) {
+			$items[] = Html::rawElement( 'li', [],
+				$context->msg( 'timedmedia-subtitle-validation-item' )
+					->rawParams( (string)$error->getLine(), htmlspecialchars( $error->getError() ) )
+					->parse()
+			);
+		}
+		$remaining = count( $errors ) - $shown;
+		if ( $remaining > 0 ) {
+			$items[] = Html::element( 'li', [],
+				$context->msg( 'timedmedia-subtitle-validation-more' )->numParams( $remaining )->text() );
+		}
+		return Html::rawElement( 'ul', [], implode( '', $items ) );
 	}
 
 	/**

@@ -3,18 +3,23 @@
 namespace MediaWiki\TimedMediaHandler;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Content\Content;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Diff\DifferenceEngine;
 use MediaWiki\Diff\Hook\ArticleContentOnDiffHook;
+use MediaWiki\EditPage\EditPage;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\File\LocalFile;
 use MediaWiki\FileRepo\Hook\FileUploadHook;
 use MediaWiki\FileRepo\RepoGroup;
+use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\FileDeleteCompleteHook;
 use MediaWiki\Hook\ParserTestGlobalsHook;
 use MediaWiki\Hook\TitleMoveHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Message\Message;
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Page\Article;
@@ -52,6 +57,7 @@ class Hooks implements
 	ArticlePurgeHook,
 	BeforePageDisplayHook,
 	CanonicalNamespacesHook,
+	EditFilterMergedContentHook,
 	FileDeleteCompleteHook,
 	FileUndeleteCompleteHook,
 	FileUploadHook,
@@ -142,6 +148,43 @@ class Hooks implements
 		if ( $title->getNamespace() === $this->config->get( 'TimedTextNS' ) ) {
 			$article = new TimedTextPage( $title );
 		}
+	}
+
+	/**
+	 * Block saving a TimedText page whose content fails WebVTT/SRT parsing.
+	 *
+	 * @param IContextSource $context
+	 * @param Content $content
+	 * @param Status $status
+	 * @param string $summary
+	 * @param User $user
+	 * @param bool $minoredit
+	 * @return bool|void
+	 */
+	public function onEditFilterMergedContent( $context, $content, $status, $summary, $user, $minoredit ) {
+		$title = $context->getTitle();
+		if ( !$title || $title->getNamespace() !== $this->config->get( 'TimedTextNS' )
+			|| !$content instanceof TextContent
+		) {
+			return true;
+		}
+		// Redirects and blanking aren't subtitle content to validate.
+		if ( $content->isRedirect() || trim( $content->getText() ) === '' ) {
+			return true;
+		}
+		$page = new TimedTextPage( $title );
+		if ( !$page->isActualTimedTextTitle() ) {
+			return true;
+		}
+		$errors = TimedTextPage::validateSubtitleText(
+			$context, $page->getTimedTextFormat(), $content->getText() );
+		if ( $errors ) {
+			$status->fatal( 'timedmedia-subtitle-validation-fatal',
+				Message::rawParam( TimedTextPage::buildValidationErrorList( $context, $errors ) ) );
+			$status->value = EditPage::AS_HOOK_ERROR_EXPECTED;
+			return false;
+		}
+		return true;
 	}
 
 	/**
