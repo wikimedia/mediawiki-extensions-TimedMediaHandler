@@ -319,7 +319,7 @@ class InlinePlayer {
  * Text tracks are not preloaded because we may have a large number of subtitles
  * which never get used, and it's expensive to load them all.
  *
- * Native text tracks are used so subtitle rendering is handled by the
+ * Native text tracks are used for video so subtitle rendering is handled by the
  * browser's own VTT cue renderer instead of video.js's TextTrackDisplay.
  *
  * Disabling native audio tracks avoids accidentally exposing the Opus audio tracks
@@ -386,6 +386,11 @@ InlinePlayer.audioConfig = {
 	controlBar: {
 		fullscreenToggle: false,
 		pictureInPictureToggle: false
+	},
+	// Audio elements have no native cue rendering surface, so fall back to
+	// video.js's TextTrackDisplay for subtitle rendering (T434172)
+	html5: {
+		nativeTextTracks: false
 	},
 	// Audio interface breakpoints
 	// play, volume, info and CC are most important here
