@@ -17,5 +17,6 @@
 	"apihelp-transcodereset-example-2": "بازنشانی کلید فرارمزگردانی '360_560kbs.webm' برای [[:File:Clip.webm]]",
 	"apierror-timedmedia-disabledtranscode": "فرارمزگردانی در این ویکی غیرفعال شده است.",
 	"apierror-timedmedia-badtranscodekey": "کلید فرارمزگردانی نامعتبر یا غیرفعال: $1",
-	"apierror-timedmedia-notenoughtimereset": "از آخرین بازنشانی این فرارمزگردانی، زمان کافی نگذشته است. $1 تا امکان بازنشانی این فرارمزگردانی"
+	"apierror-timedmedia-notenoughtimereset": "از آخرین بازنشانی این فرارمزگردانی، زمان کافی نگذشته است. $1 تا امکان بازنشانی این فرارمزگردانی",
+	"apierror-timedmedia-no-timedtext-support": "متن زمان‌دار پشتیبانی نمی‌شود"
 }
