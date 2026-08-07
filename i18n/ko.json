@@ -149,6 +149,8 @@
 	"timedmedia-subtitle-new-format": "자막 형식",
 	"timedmedia-subtitle-format-vtt": "WebVTT (VTT)",
 	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
+	"timedmedia-subtitle-edit-legend": "기존의 자막을 편집",
+	"timedmedia-subtitle-edit-desc": "기존의 자막을 선택하고 '''{{int:Timedmedia-subtitle-edit-go}}''' 버튼을 누르세요",
 	"timedmedia-subtitle-edit-go": "편집",
 	"timedmedia-subtitle-no-video": "현재 자막 페이지와 관련된 동영상이 없습니다",
 	"timedmedia-subtitle-no-subtitles": "현재 이 동영상에 대한 $1에 자막이 없습니다, 추가하려면 [{{fullurl:{{FULLPAGENAME}}|action=edit}} 이 문서를 편집할] 수 있습니다.",
