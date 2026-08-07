@@ -7,20 +7,13 @@ CREATE TABLE transcode (
   transcode_image_name VARCHAR(255) NOT NULL,
   transcode_key VARCHAR(48) NOT NULL,
   transcode_error TEXT NOT NULL,
-  transcode_time_addjob TIMESTAMPTZ DEFAULT NULL,
   transcode_time_startwork TIMESTAMPTZ DEFAULT NULL,
   transcode_time_success TIMESTAMPTZ DEFAULT NULL,
-  transcode_time_error TIMESTAMPTZ DEFAULT NULL,
   transcode_final_bitrate INT NOT NULL,
   transcode_state SMALLINT DEFAULT NULL,
   transcode_touched TIMESTAMPTZ DEFAULT NULL,
   transcode_size BIGINT DEFAULT NULL,
   PRIMARY KEY(transcode_id)
-);
-
-CREATE INDEX transcode_time_inx ON transcode (
-  transcode_time_addjob, transcode_time_startwork,
-  transcode_time_success, transcode_time_error
 );
 
 CREATE INDEX transcode_key_idx ON transcode (transcode_key);

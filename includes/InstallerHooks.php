@@ -22,11 +22,6 @@ class InstallerHooks implements LoadExtensionSchemaUpdatesHook {
 
 		$updater->addExtensionTable( 'transcode', $dir . $dbType . '/tables-generated.sql' );
 
-		// 1.38
-		$updater->modifyExtensionField(
-			'transcode', 'transcode_time_error', $dir . $dbType . '/patch-transcode-transcode_timestamp.sql'
-		);
-
 		// 1.46
 		$updater->addExtensionField(
 			'transcode', 'transcode_state', $dir . $dbType . '/patch-transcode-state-size.sql'
@@ -35,6 +30,11 @@ class InstallerHooks implements LoadExtensionSchemaUpdatesHook {
 			'runMaintenance',
 			MigrateTranscodeStates::class,
 		] );
+
+		// 1.47
+		$updater->dropExtensionField(
+			'transcode', 'transcode_time_addjob', $dir . $dbType . '/patch-transcode-drop-time_addjob.sql'
+		);
 
 		return true;
 	}

@@ -149,11 +149,11 @@ class ApiTranscodeReset extends ApiBase {
 	public function getStateResetTime( array $state ) {
 		$db = $this->dbProvider->getReplicaDatabase();
 		// if an error return waitTime +1
-		if ( $state['time_error'] !== null ) {
+		if ( (int)( $state['state'] ?? -1 ) === WebVideoTranscode::STATE_FAILED ) {
 			return $this->getConfig()->get( 'WaitTimeForTranscodeReset' ) + 1;
 		}
 		// return wait time from most recent event
-		foreach ( [ 'time_success', 'time_startwork', 'time_addjob' ] as $timeField ) {
+		foreach ( [ 'time_success', 'time_startwork' ] as $timeField ) {
 			if ( ( $state[ $timeField ] ) !== null ) {
 				return (int)$db->timestamp() - (int)$db->timestamp( $state[ $timeField ] );
 			}

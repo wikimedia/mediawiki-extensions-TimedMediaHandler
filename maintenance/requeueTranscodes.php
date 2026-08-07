@@ -64,14 +64,15 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 				$run = false;
 			} elseif ( $this->hasOption( 'force' ) || $this->hasOption( 'remove' ) ) {
 				$run = true;
-			} elseif ( $this->hasOption( 'error' ) && $item['time_error'] ) {
+			} elseif ( $this->hasOption( 'error' ) &&
+				( (int)( $item['state'] ?? -1 ) === WebVideoTranscode::STATE_FAILED ) ) {
 				$run = true;
 			} elseif ( $this->hasOption( 'stalled' ) &&
-				( $item['time_addjob'] && !$item['time_success'] && !$item['time_error'] ) ) {
+				( (int)( $item['state'] ?? -1 ) === WebVideoTranscode::STATE_QUEUED ) ) {
 				$run = true;
 			} elseif ( $this->hasOption( 'missing' ) && $path && !$repo->fileExists( $path ) ) {
 				$run = true;
-			} elseif ( !$item['time_addjob'] ) {
+			} elseif ( (int)( $item['state'] ?? -1 ) === WebVideoTranscode::STATE_MISSING ) {
 				$run = true;
 			} else {
 				$run = false;

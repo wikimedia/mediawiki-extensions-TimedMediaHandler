@@ -23,22 +23,12 @@
 				"options": { "notnull": true, "length": 4294967295 }
 			},
 			{
-				"name": "transcode_time_addjob",
-				"type": "mwtimestamp",
-				"options": { "notnull": false }
-			},
-			{
 				"name": "transcode_time_startwork",
 				"type": "mwtimestamp",
 				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_success",
-				"type": "mwtimestamp",
-				"options": { "notnull": false }
-			},
-			{
-				"name": "transcode_time_error",
 				"type": "mwtimestamp",
 				"options": { "notnull": false }
 			},
@@ -67,11 +57,6 @@
 			}
 		],
 		"indexes": [
-			{
-				"name": "transcode_time_inx",
-				"columns": [ "transcode_time_addjob", "transcode_time_startwork", "transcode_time_success", "transcode_time_error" ],
-				"unique": false
-			},
 			{
 				"name": "transcode_key_idx",
 				"columns": [ "transcode_key" ],

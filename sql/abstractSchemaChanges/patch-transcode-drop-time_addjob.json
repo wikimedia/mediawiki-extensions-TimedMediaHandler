@@ -1,5 +1,4 @@
 {
-	"comment": "Use fixed binary for timestamp and use mediawiki timestamp type",
 	"before": {
 		"name": "transcode",
 		"columns": [
@@ -25,28 +24,46 @@
 			},
 			{
 				"name": "transcode_time_addjob",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_startwork",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_success",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_time_error",
-				"type": "string",
-				"options": { "notnull": false, "length": 14 }
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
 			},
 			{
 				"name": "transcode_final_bitrate",
 				"type": "integer",
 				"options": { "notnull": true }
+			},
+			{
+				"name": "transcode_state",
+				"comment": "Enumerated state of the transcode.",
+				"type": "smallint",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_touched",
+				"comment": "Time the transcode was last touched, even if it did not yet succeed.",
+				"type": "mwtimestamp",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_size",
+				"comment": "Size in bytes of transcoded output file. Note some long high-resolution video files could exceed 4 GiB.",
+				"type": "bigint",
+				"options": { "notnull": false }
 			}
 		],
 		"indexes": [
@@ -64,6 +81,18 @@
 				"name": "transcode_name_key",
 				"columns": [ "transcode_image_name", "transcode_key" ],
 				"unique": true
+			},
+			{
+				"name": "transcode_state_touched",
+				"comment": "Used for pulling recently changed items in each state category.",
+				"columns": [ "transcode_state", "transcode_touched" ],
+				"unique": false
+			},
+			{
+				"name": "transcode_state_key_touched",
+				"comment": "Used for computing breakdowns by state and transcode format.",
+				"columns": [ "transcode_state", "transcode_key", "transcode_touched" ],
+				"unique": false
 			}
 		],
 		"pk": [ "transcode_id" ]
@@ -92,11 +121,6 @@
 				"options": { "notnull": true, "length": 4294967295 }
 			},
 			{
-				"name": "transcode_time_addjob",
-				"type": "mwtimestamp",
-				"options": { "notnull": false }
-			},
-			{
 				"name": "transcode_time_startwork",
 				"type": "mwtimestamp",
 				"options": { "notnull": false }
@@ -107,22 +131,30 @@
 				"options": { "notnull": false }
 			},
 			{
-				"name": "transcode_time_error",
+				"name": "transcode_final_bitrate",
+				"type": "integer",
+				"options": { "notnull": true }
+			},
+			{
+				"name": "transcode_state",
+				"comment": "Enumerated state of the transcode.",
+				"type": "smallint",
+				"options": { "notnull": false }
+			},
+			{
+				"name": "transcode_touched",
+				"comment": "Time the transcode was last touched, even if it did not yet succeed.",
 				"type": "mwtimestamp",
 				"options": { "notnull": false }
 			},
 			{
-				"name": "transcode_final_bitrate",
-				"type": "integer",
-				"options": { "notnull": true }
+				"name": "transcode_size",
+				"comment": "Size in bytes of transcoded output file. Note some long high-resolution video files could exceed 4 GiB.",
+				"type": "bigint",
+				"options": { "notnull": false }
 			}
 		],
 		"indexes": [
-			{
-				"name": "transcode_time_inx",
-				"columns": [ "transcode_time_addjob", "transcode_time_startwork", "transcode_time_success", "transcode_time_error" ],
-				"unique": false
-			},
 			{
 				"name": "transcode_key_idx",
 				"columns": [ "transcode_key" ],
@@ -132,6 +164,18 @@
 				"name": "transcode_name_key",
 				"columns": [ "transcode_image_name", "transcode_key" ],
 				"unique": true
+			},
+			{
+				"name": "transcode_state_touched",
+				"comment": "Used for pulling recently changed items in each state category.",
+				"columns": [ "transcode_state", "transcode_touched" ],
+				"unique": false
+			},
+			{
+				"name": "transcode_state_key_touched",
+				"comment": "Used for computing breakdowns by state and transcode format.",
+				"columns": [ "transcode_state", "transcode_key", "transcode_touched" ],
+				"unique": false
 			}
 		],
 		"pk": [ "transcode_id" ]
