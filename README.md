@@ -120,7 +120,9 @@ We use ffmpeg for two purposes:
  - creating still images of videos (aka thumbnails)
  - transcoding between WebM, Ogg and/or H.264 videos
 
-Wikimedia currently uses ffmpeg as shipped in Debian 10.
+Minimum version required for ffmpeg is 5.1 (T318419).
+
+Wikimedia currently uses ffmpeg as shipped in Debian 12.
 For best experience use that or any later release from https://ffmpeg.org
 
 On Ubuntu/Debian:

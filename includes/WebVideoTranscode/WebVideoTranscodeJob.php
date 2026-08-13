@@ -503,26 +503,12 @@ class WebVideoTranscodeJob extends Job {
 		if ( $options->novideo ) {
 			$videoOpts[] = '-vn';
 		} else {
-			$fps = $this->effectiveFrameRate( $options );
 			if ( $options->framerate ) {
 				// $options->framerate is a float
 				$videoOpts[] = "-r {$options->framerate}";
 			} else {
-				// Note -fpsmax is not available on Wikimedia's Debian as of 2023-02-02
-				//
-				//   $cmd .= " -fpsmax " . Shell::escape( $options['fpsmax'] );
-				//   $cmd .= " -fpsmax " . self::MAX_FPS;
-				//
-				// Instead, manually check the detected framerate.
-				// Note some files report incorrectly via GetID3, and may
-				// end up actually increasing in frame rate because of this!
-				$orig = $this->frameRate();
-				if ( $this->isInterlaced() ) {
-					$orig *= 2;
-				}
-				if ( $orig > $fps ) {
-					$videoOpts[] = "-r {$fps}";
-				}
+				$maxFps = min( $this->frameRate(), self::MAX_FPS );
+				$videoOpts[] = " -fpsmax " . Shell::escape( (string)$maxFps );
 			}
 
 			if ( $this->remuxVirtualUrl !== null ) {
