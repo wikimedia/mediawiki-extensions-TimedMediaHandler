@@ -111,7 +111,7 @@
 	"timedmedia-resolution-240": "Лахара 240p",
 	"timedmedia-subtitle-new": "Керла гочдар кхолла йа долуш дерш хийца",
 	"timedmedia-subtitle-new-desc": "Мотт а харже '''{{int:Timedmedia-subtitle-new-go}}'' нуьйдаин тӀетаӀайе",
-	"timedmedia-subtitle-new-go": "Кхочушдé",
+	"timedmedia-subtitle-new-go": "Кхолла",
 	"timedmedia-subtitle-no-video": "Цхьа а видео йац оцу субтитрийн агӀонца йоьзна.",
 	"timedmedia-subtitle-no-subtitles": "Карарчу хенахь хӀокху файлан {{GRAMMAR:prepositional|$1}} субтитраш ​​йац. Хьан йиш йу [{{fullurl:{{FULLPAGENAME}}|action=edit}} хӀара агӀо хийца] уьш тӀетохархьама.",
 	"timedmedia-subtitle-remote": "ХӀокху файлан синхротекст дӀахӀоттийна йу $1 чохь.",
