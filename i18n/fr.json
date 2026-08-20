@@ -206,6 +206,9 @@
 	"timedmedia-subtitle-new": "Créer une nouvelle traduction ou modifier une traduction existante",
 	"timedmedia-subtitle-new-desc": "Sélectionnez la langue et appuyez sur le bouton '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Créer",
+	"timedmedia-subtitle-new-format": "Format du sous-titre",
+	"timedmedia-subtitle-edit-legend": "Modifier les sous-titres existants",
+	"timedmedia-subtitle-edit-go": "Modifier",
 	"timedmedia-subtitle-language": "$1 {{BIDI:($2)}}",
 	"timedmedia-subtitle-no-video": "Il n’y a aucune vidéo associée à la page actuelle de sous-titre.",
 	"timedmedia-subtitle-no-subtitles": "Il n’y a actuellement aucun sous-titres en $1 pour cette vidéo, vous pouvez [{{fullurl: {{FULLPAGENAME}} | action=edit}} modifier cette page] pour les ajouter",
@@ -246,6 +249,8 @@
 	"videojs-endcard-copy-link": "Copier le lien",
 	"videojs-endcard-share": "Partager",
 	"videojs-endcard-share-not-possible": "Le partage n'est pas possible.",
+	"videojs-endcard-embed-copy": "Copier",
+	"videojs-endcard-copy-failed": "Impossible de copier dans le presse-papiers",
 	"videojs-a11y-pause": "En pause",
 	"videojs-a11y-muted": "En sourdine"
 }
