@@ -506,9 +506,11 @@ class WebVideoTranscodeJob extends Job {
 			if ( $options->framerate ) {
 				// $options->framerate is a float
 				$videoOpts[] = "-r {$options->framerate}";
+				$fps = $options->framerate;
 			} else {
 				$maxFps = (int)min( $this->frameRate(), self::MAX_FPS );
 				$videoOpts[] = " -fpsmax " . (string)$maxFps;
+				$fps = $maxFps;
 			}
 
 			if ( $this->remuxVirtualUrl !== null ) {
