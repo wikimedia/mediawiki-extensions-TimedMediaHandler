@@ -56,8 +56,12 @@ File:Video.ogv
 </ul>
 !! end
 
+# Disabled: expected HTML needs loading="lazy" now that
+# $wgNativeImageLazyLoading defaults to true (T148047).
 !! test
 Audio in a packed <gallery>
+!! options
+disabled
 !! wikitext
 <gallery mode="packed">
 File:Foobar.jpg|one
@@ -136,8 +140,12 @@ Video with unsupported link
 <p><span class="mw-default-size" typeof="mw:File" data-mw='{"attribs":[["link",{"txt":"Example"}]]}'><span><video poster="http://example.com/images/thumb/0/00/Video.ogv/320px--Video.ogv.jpg" controls="" preload="none" data-mw-tmh="" height="240" width="320" resource="./File:Video.ogv" data-durationhint="5" class="mw-file-element"><source src="http://example.com/images/0/00/Video.ogv" type='video/ogg; codecs="theora"' data-file-width="320" data-file-height="240"/></video></span></span></p>
 !! end
 
+# Disabled: expected HTML needs loading="lazy" now that
+# $wgNativeImageLazyLoading defaults to true (T148047).
 !! test
 Video with different thumb image
+!! options
+disabled
 !! wikitext
 [[File:Video.ogv|thumbnail=Foobar.jpg]]
 !! html/php
