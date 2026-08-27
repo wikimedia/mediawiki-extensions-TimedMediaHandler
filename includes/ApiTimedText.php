@@ -173,7 +173,7 @@ class ApiTimedText extends ApiBase {
 			TimedTextPage::SRT_SUBTITLE_FORMAT,
 		];
 		foreach ( $sourceFormats as $format ) {
-			$dbkey = "{$file->getTitle()->getDbKey()}.$langCode.$format";
+			$dbkey = "{$file->getTitle()->getDBkey()}.$langCode.$format";
 			$page = $this->wikiPageFactory->newFromTitle( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
 				if ( $page->isRedirect() ) {
@@ -212,7 +212,7 @@ class ApiTimedText extends ApiBase {
 		$key = $this->cache->makeKey(
 			'apitimedtext',
 			self::CACHE_VERSION,
-			$page->getTitle()->getDbKey(),
+			$page->getTitle()->getDBkey(),
 			$revId,
 			$from,
 			$to

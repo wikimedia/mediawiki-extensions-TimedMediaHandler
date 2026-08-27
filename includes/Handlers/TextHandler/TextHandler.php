@@ -150,7 +150,7 @@ class TextHandler {
 		}
 		$canonicalTitle = Title::makeName(
 			$this->file->getTitle()->getNamespace(),
-			$this->file->getTitle()->getDbKey(),
+			$this->file->getTitle()->getDBkey(),
 			'',
 			'',
 			true
@@ -349,7 +349,7 @@ class TextHandler {
 		// than the current site.
 		$canonicalTitle = Title::makeName(
 			$title->getNamespace(),
-			$title->getDbKey(),
+			$title->getDBkey(),
 			'',
 			'',
 			true

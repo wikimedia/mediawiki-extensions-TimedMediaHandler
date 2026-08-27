@@ -41,7 +41,7 @@ class ConvertSubtitles extends Maintenance {
 			$file = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
 			if ( $file ) {
 				$where[] = $dbr->expr( 'page_title', IExpression::LIKE,
-					new LikeValue( $file->getDbKey() . '.', $dbr->anyString() ) );
+					new LikeValue( $file->getDBkey() . '.', $dbr->anyString() ) );
 			} else {
 				$this->fatalError( "Invalid file title\n" );
 			}

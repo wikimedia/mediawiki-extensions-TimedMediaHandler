@@ -202,9 +202,9 @@ class SpecialOrphanedTimedText extends PageQueryPage {
 			return !$title->isKnown();
 		}
 		return !$title->isKnown() ||
-			( isset( $this->existingFiles[ $fileTitle->getDBKey() ] )
-			&& $this->existingFiles[$fileTitle->getDBKey()]->getHandler()
-			&& $this->existingFiles[$fileTitle->getDBKey()]->getHandler() instanceof TimedMediaHandler );
+			( isset( $this->existingFiles[ $fileTitle->getDBkey() ] )
+			&& $this->existingFiles[$fileTitle->getDBkey()]->getHandler()
+			&& $this->existingFiles[$fileTitle->getDBkey()]->getHandler() instanceof TimedMediaHandler );
 	}
 
 	/**
