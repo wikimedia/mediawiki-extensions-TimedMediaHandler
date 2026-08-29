@@ -34,6 +34,7 @@ use MediaWiki\Content\TextContent;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Language\LanguageNameUtils;
+use MediaWiki\Page\RedirectLookup;
 use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\TimedMediaHandler\Handlers\TextHandler\TextHandler;
@@ -58,6 +59,7 @@ class ApiTimedText extends ApiBase {
 		ApiMain $main,
 		string $action,
 		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly RedirectLookup $redirectLookup,
 		private readonly RepoGroup $repoGroup,
 		private readonly WANObjectCache $cache,
 		private readonly WikiPageFactory $wikiPageFactory,
@@ -176,13 +178,9 @@ class ApiTimedText extends ApiBase {
 			$dbkey = "{$file->getTitle()->getDBkey()}.$langCode.$format";
 			$page = $this->wikiPageFactory->newFromTitle( Title::makeTitle( $ns, $dbkey ) );
 			if ( $page->exists() ) {
-				if ( $page->isRedirect() ) {
-					$title = $page->getRedirectTarget();
-					if ( $title ) {
-						$page = $this->wikiPageFactory->newFromTitle( $title );
-					} else {
-						return null;
-					}
+				$redirectTarget = $this->redirectLookup->getRedirectTarget( $page );
+				if ( $redirectTarget ) {
+					$page = $this->wikiPageFactory->newFromLinkTarget( $redirectTarget );
 				}
 				if ( $page->exists() ) {
 					return $page;

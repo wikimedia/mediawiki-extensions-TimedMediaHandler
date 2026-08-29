@@ -85,9 +85,10 @@ class ConvertSubtitles extends Maintenance {
 		$title = Title::makeTitle( $data['page_namespace'], $data['page_title'] );
 		$wikiPageFactory = $this->getServiceContainer()->getWikiPageFactory();
 		$page = $wikiPageFactory->newFromTitle( $title );
-		if ( $page->isRedirect() ) {
-			$title = $page->getRedirectTarget();
-			$page = $wikiPageFactory->newFromTitle( $title );
+		$redirectTarget = $this->getServiceContainer()->getRedirectLookup()
+			->getRedirectTarget( $title->toPageIdentity() );
+		if ( $redirectTarget !== null ) {
+			$page = $wikiPageFactory->newFromLinkTarget( $redirectTarget );
 		}
 		$content = $page->getContent();
 		$raw = $content instanceof TextContent ? $content->getText() : '';
