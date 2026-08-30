@@ -150,6 +150,16 @@ class InlinePlayer {
 		}
 		// We remove SRT subtitles tracks as we can't handle them
 		this.$videoplayer.find( 'track[type="text/x-srt"]' ).remove();
+		// A <track> fetch inherits its CORS mode from the parent media element, not from
+		// its own URL, so origin=* on the track URL alone is not enough (T434172).
+		const pageOrigin = window.location.origin;
+		const tracks = this.videoplayer.querySelectorAll( 'track' );
+		const isCrossOrigin = Array.from( tracks ).some(
+			( track ) => new URL( track.src, window.location.href ).origin !== pageOrigin
+		);
+		if ( isCrossOrigin ) {
+			this.videoplayer.crossOrigin = 'anonymous';
+		}
 		this.$videoplayer.addClass( 'video-js' ).removeClass( 'mw-file-element' );
 
 		if ( this.playerConfig.fill ) {
