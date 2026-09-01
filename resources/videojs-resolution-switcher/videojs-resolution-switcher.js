@@ -17,6 +17,10 @@ const resolutionSwitchterDefaults = {
 	ui: true
 };
 
+// Fake resolution that ext.tmh.player.inline.js gives the original, so that it
+// sorts above every transcode. It is never auto-selected.
+const ORIGINAL_RES = 99999;
+
 /**
  * Represents a source and the properties of that source
  * This is a videojs structure that we added label and res fields to
@@ -101,15 +105,21 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	updateSrc( src ) {
 		const player = this.player;
 
-		// Only add those sources which we can (maybe) play
+		// Only add those sources which we can (maybe) play, keeping how
+		// confident the browser is ('probably' vs 'maybe') for the prune below
 		src = src.filter( ( source ) => {
 			try {
-				return ( player.canPlayType( source.type ) !== '' );
+				source.confidence = player.canPlayType( source.type );
 			} catch ( e ) {
 				// If a Tech doesn't yet have canPlayType just add it
-				return true;
+				source.confidence = 'maybe';
 			}
+			return source.confidence !== '';
 		} );
+
+		// Don't offer a source the browser is less confident about than one
+		// it could play instead at the same or a lower resolution
+		src = this.pruneWeakerSources( src );
 
 		// Sort sources
 		this.currentSources = src.sort( this.compareResolutions );
@@ -220,6 +230,32 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 			}
 		} );
 		this.player.src( sources.map( ( src ) => ( { src: src.src, type: src.type, res: src.res } ) ) );
+	}
+
+	/**
+	 * Drop any source for which the browser has less confidedence for playback than
+	 * sources available at the same resolution or below. A 360p reporting only 'maybe'
+	 * is worse than a 240p reporting 'probably', because it may turn out to be
+	 * undecodable. Sources without a resolution of their own (audio-only,
+	 * streaming manifest, the original) are left alone.
+	 *
+	 * @private
+	 * @param {SourceObject[]} src Sources already filtered to be not unsupported
+	 * @return {SourceObject[]} Sources with no better-playing equal or lower resolution
+	 */
+	pruneWeakerSources( src ) {
+		// The original is a special case and never auto-selected,
+		// so it does not count as a resolution and is never pruned
+		const hasResolution = ( source ) => !!source.res &&
+			Number( source.res ) !== ORIGINAL_RES;
+		// Unplayable sources are already gone, so canPlayType() only left us
+		// with 'probably' and 'maybe'
+		const confident = ( source ) => source.confidence === 'probably';
+		const alternatives = src.filter( hasResolution );
+
+		return src.filter( ( source ) => confident( source ) || !hasResolution( source ) ||
+			!alternatives.some( ( other ) => +other.res <= +source.res && confident( other ) )
+		);
 	}
 
 	/**
