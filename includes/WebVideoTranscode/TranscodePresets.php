@@ -392,7 +392,7 @@ class TranscodePresets {
 			'audioBitrate' => '128k',
 			'samplerate' => '48000',
 			'channels' => '2',
-			'type' => 'video/quicktime',
+			'type' => 'video/quicktime; codecs="mp4v"',
 		],
 		// Streaming Motion-JPEG track
 		//
