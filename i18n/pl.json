@@ -165,7 +165,7 @@
 	"action-transcode-status": "zobaczenia aktualnego statusu transkodowania",
 	"log-name-timedmediahandler": "Rejestr TimedMediaHandlera",
 	"log-description-timedmediahandler": "Poniżej znajduje się rejestr operacji związanych z transkodowaniem TimedMediaHandlera.",
-	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|zresetował|zresetowała}} transkodowanie $3 do formatu „$4”",
+	"logentry-timedmediahandler-resettranscode": "$1 {{GENDER:$2|zresetował|zresetowała|zresetował(a)}} transkodowanie $3 do formatu „$4”",
 	"orphanedtimedtext": "Osierocone strony TimedText",
 	"orphanedtimedtext-summary": "Lista stron w przestrzeni [[{{#special:AllPages/TimedText:}}|{{ns:TimedText}}]], które nie mają odpowiedniego pliku.",
 	"orphanedtimedtext-unsupported": "To strona specjalna jest obsługiwana tylko przez bazy danych MySQL.",
