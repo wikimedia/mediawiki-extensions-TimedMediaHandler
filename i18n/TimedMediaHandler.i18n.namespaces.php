@@ -83,3 +83,19 @@ $wgTimedMediaHandlerNamespaceNames['uk'] = [
 	'timedtext'      => 'Субтитри',
 	'timedtext_talk' => 'Обговорення_субтитрів',
 ];
+
+// T437055
+$wgTimedMediaHandlerNamespaceNames['zh'] = [
+	'timedtext'      => 'TimedText',
+	'timedtext_talk' => 'TimedText_talk',
+];
+
+$wgTimedMediaHandlerNamespaceNames['zh-hans'] = [
+	'timedtext'      => '字幕', '定时文本', '定时文字',
+	'timedtext_talk' => '定时文本讨论', '定时文字讨论',
+];
+
+$wgTimedMediaHandlerNamespaceNames['zh-hant'] = [
+	'timedtext'      => '字幕', '定時文字',
+	'timedtext_talk' => '定時文字討論',
+];

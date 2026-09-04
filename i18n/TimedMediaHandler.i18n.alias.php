@@ -91,3 +91,9 @@ $specialPageAliases['zh-hans'] = [
 	'TranscodeStatistics' => [ '定时媒体处理器' ],
 	'OrphanedTimedText' => [ '孤立定时文本' ],
 ];
+
+/** Traditional Chinese (中文（繁體）) */
+$specialPageAliases['zh-hant'] = [
+	'TranscodeStatistics' => [ '定時媒體處理器' ],
+	'OrphanedTimedText' => [ '孤立定時文字' ],
+];

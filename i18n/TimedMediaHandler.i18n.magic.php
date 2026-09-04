@@ -92,3 +92,29 @@ $magicWords['ur'] = [
 	'timedmedia_endtime' => [ '0', 'اختتام=$1', 'end=$1' ],
 	'timedmedia_disablecontrols' => [ 0, 'کنٹرول_غیرفعال=$1', 'disablecontrols=$1' ],
 ];
+
+$magicWords['zh'] = [
+	'timedmedia_thumbtime' => [ 0, 'thumbtime=$1' ],
+	'timedmedia_starttime' => [ 0, 'start=$1' ],
+	'timedmedia_endtime' => [ 0, 'end=$1' ],
+	'timedmedia_disablecontrols' => [ 0, 'disablecontrols=$1' ],
+	'timedmedia_loop' => [ 0, 'loop' ],
+	'timedmedia_muted' => [ 0, 'muted' ],
+];
+
+$magicWords['zh-hans'] = [
+	'timedmedia_thumbtime' => [ '0', '缩略图时间=$1', 'thumbtime=$1' ],
+	'timedmedia_starttime' => [ '0', '开始=$1', 'start=$1' ],
+	'timedmedia_endtime' => [ '0', '结束=$1', 'end=$1' ],
+	'timedmedia_disablecontrols' => [ '0', '禁用控件=$1', 'disablecontrols=$1' ],
+	'timedmedia_loop' => [ '0', '循环', 'loop' ],
+	'timedmedia_muted' => [ '0', '静音', 'muted' ],
+];
+$magicWords['zh-hant'] = [
+	'timedmedia_thumbtime' => [ '0', '縮圖時間=$1', 'thumbtime=$1' ],
+	'timedmedia_starttime' => [ '0', '開始=$1', 'start=$1' ],
+	'timedmedia_endtime' => [ '0', '結束=$1', 'end=$1' ],
+	'timedmedia_disablecontrols' => [ '0', '停用控件=$1', 'disablecontrols=$1' ],
+	'timedmedia_loop' => [ '0', '循環', 'loop' ],
+	'timedmedia_muted' => [ '0', '靜音', 'muted' ],
+];
