@@ -94,7 +94,7 @@ class TimedMediaIframeOutput implements MediaWikiPerformActionHook {
 		$rlClient = $out->getRlClient();
 
 		// Stripped-down version of OutputPage::headElement()
-		// No skin modules are enqueued because we never call $wgOut->output()
+		// No skin modules are enqueued because we never call OutputPage::output()
 		$pieces = [
 			Html::htmlHeader( $rlClient->getDocumentAttributes() ),
 
