@@ -3,7 +3,6 @@ namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
 use MediaWiki\Config\ConfigException;
 use MediaWiki\Config\HashConfig;
-use MediaWiki\MediaWikiServices;
 
 /**
  * @author michael dale
@@ -62,7 +61,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		$hasOgg = $hasWebM = $hasMP3 = false;
 		$novideo = false;
 		$targetEncodes = [];
-		$transcodePresets = MediaWikiServices::getInstance()->getService( 'TimedMediaHandler.TranscodePresets' );
+		$transcodePresets = $this->getServiceContainer()->getService( 'TimedMediaHandler.TranscodePresets' );
 		foreach ( $res as $row ) {
 			$transcodeSettings = $transcodePresets->key( $row->transcode_key );
 			$codec = $transcodeSettings->videoCodec ?? $transcodeSettings->audioCodec;
@@ -150,7 +149,7 @@ class VideoTranscodeTest extends ApiVideoUploadTestCase {
 		if ( $exception ) {
 			$this->expectException( ConfigException::class );
 		}
-		MediaWikiServices::getInstance()
+		$this->getServiceContainer()
 			->getService( 'TimedMediaHandler.TranscodePresets' )
 			->validateTranscodeConfiguration( $config );
 		// Silence testcase when everything is ok
