@@ -206,6 +206,7 @@
 	"timedmedia-subtitle-new": "Créer une nouvelle traduction ou modifier une traduction existante",
 	"timedmedia-subtitle-new-desc": "Sélectionnez la langue et appuyez sur le bouton '''{{int:Timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Créer",
+	"timedmedia-subtitle-new-legend": "Créer une nouvelle traduction",
 	"timedmedia-subtitle-new-format": "Format du sous-titre",
 	"timedmedia-subtitle-edit-legend": "Modifier les sous-titres existants",
 	"timedmedia-subtitle-edit-go": "Modifier",
