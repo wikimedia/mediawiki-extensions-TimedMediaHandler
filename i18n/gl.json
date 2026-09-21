@@ -136,7 +136,7 @@
 	"timedmedia-subtitle-format-vtt": "WebVTT (VTT)",
 	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
 	"timedmedia-subtitle-edit-legend": "Editar os subtítulos existentes",
-	"timedmedia-subtitle-edit-desc": "Selecciona os subtítulos existentes e preme no botón «'''{{int:Timedmedia-subtitle-edit-go}}'''»",
+	"timedmedia-subtitle-edit-desc": "Selecciona os subtítulos existentes e preme no botón «'''{{int:timedmedia-subtitle-edit-go}}'''»",
 	"timedmedia-subtitle-edit-go": "Editar",
 	"timedmedia-subtitle-no-video": "Non hai ningún vídeo asociado coa páxina de subtítulos actual.",
 	"timedmedia-subtitle-no-subtitles": "Actualmente non hai subtítulos en $1 para este vídeo; podes [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] para engadilos.",

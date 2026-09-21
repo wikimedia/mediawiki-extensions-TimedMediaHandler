@@ -196,7 +196,7 @@
 	"timedmedia-subtitle-format-vtt": "WebVTT (VTT)",
 	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
 	"timedmedia-subtitle-edit-legend": "Редагувати наявні субтитри",
-	"timedmedia-subtitle-edit-desc": "Виберіть наявні субтитри та натисніть кнопку '''{{int:Timedmedia-subtitle-edit-go}}'''",
+	"timedmedia-subtitle-edit-desc": "Виберіть наявні субтитри та натисніть кнопку '''{{int:timedmedia-subtitle-edit-go}}'''",
 	"timedmedia-subtitle-edit-go": "Редагувати",
 	"timedmedia-subtitle-no-video": "Немає відео, пов'язаного з поточною сторінкою субтитрів",
 	"timedmedia-subtitle-no-subtitles": "Наразі немає субтитрів на $1 для цього відео, Ви можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} змінити цю сторінку] для їхнього додавання",

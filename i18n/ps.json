@@ -181,7 +181,7 @@
 	"timedmedia-subtitle-format-vtt": "وېب‌وي‌ټي‌ټي (وي‌ټي‌ټي)",
 	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
 	"timedmedia-subtitle-edit-legend": "شته څېرمه‌سرليکونه سمول",
-	"timedmedia-subtitle-edit-desc": "شته څېرمه‌سرليکونه غوره کړئ او په '''{{int:Timedmedia-subtitle-edit-go}}''' تڼۍ کېکاږئ",
+	"timedmedia-subtitle-edit-desc": "شته څېرمه‌سرليکونه غوره کړئ او په '''{{int:timedmedia-subtitle-edit-go}}''' تڼۍ کېکاږئ",
 	"timedmedia-subtitle-edit-go": "سمول",
 	"timedmedia-subtitle-language": "$1 {{BIDI:($2)}}",
 	"timedmedia-subtitle-no-video": "اوسني څېرمه‌سرليک مخ سره اړوند هېڅ ويډيو نشته.",

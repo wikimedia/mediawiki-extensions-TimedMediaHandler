@@ -201,7 +201,7 @@
 	"timedmedia-subtitle-format-vtt": "Option in the subtitle format dropdown ({{msg-mw|Timedmedia-subtitle-new-format}}) for the WebVTT format. WebVTT is a proper name and should typically not be translated, see https://www.w3.org/TR/webvtt1/",
 	"timedmedia-subtitle-format-srt": "Option in the subtitle format dropdown ({{msg-mw|Timedmedia-subtitle-new-format}}) for the SubRip (SRT) format. SubRip is a proper name and should typically not be translated.",
 	"timedmedia-subtitle-edit-legend": "Legend (fieldset title) for the form that opens an existing subtitle page for editing.",
-	"timedmedia-subtitle-edit-desc": "Refers to {{msg-mw|Timedmedia-subtitle-edit-go}}.",
+	"timedmedia-subtitle-edit-desc": "Refers to {{msg-mw|timedmedia-subtitle-edit-go}}.",
 	"timedmedia-subtitle-edit-go": "Used as label for the Submit button of the form that opens an existing subtitle page.\n\nPreceded by (and used in) the description {{msg-mw|Timedmedia-subtitle-edit-desc}}.\n{{Identical|Edit}}",
 	"timedmedia-subtitle-language": "{{optional}}\nSubtitle names. Parameters are:\n* $1 - subtitle language\n* $2 - subtitle key",
 	"timedmedia-subtitle-no-video": "Message for a TimedText page without an associated video file",

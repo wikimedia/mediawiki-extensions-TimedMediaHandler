@@ -178,7 +178,7 @@
 	"timedmedia-subtitle-format-vtt": "WebVTT (VTT)",
 	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
 	"timedmedia-subtitle-edit-legend": "Edit existing subtitles",
-	"timedmedia-subtitle-edit-desc": "Select existing subtitles and press the '''{{int:Timedmedia-subtitle-edit-go}}''' button",
+	"timedmedia-subtitle-edit-desc": "Select existing subtitles and press the '''{{int:timedmedia-subtitle-edit-go}}''' button",
 	"timedmedia-subtitle-edit-go": "Edit",
 	"timedmedia-subtitle-language": "$1 {{BIDI:($2)}}",
 	"timedmedia-subtitle-no-video": "There is no video associated with the current subtitle page.",

@@ -151,7 +151,7 @@
 	"timedmedia-subtitle-format-vtt": "ويب فيت (VTT)",
 	"timedmedia-subtitle-format-srt": "SubRip (SRT)",
 	"timedmedia-subtitle-edit-legend": "تعديل الترجمات الموجودة",
-	"timedmedia-subtitle-edit-desc": "حدد الترجمة الموجودة واضغط على زر \"{{int:Timedmedia-subtitle-edit-go}}\".",
+	"timedmedia-subtitle-edit-desc": "حدد الترجمة الموجودة واضغط على زر \"{{int:timedmedia-subtitle-edit-go}}\".",
 	"timedmedia-subtitle-edit-go": "عدل",
 	"timedmedia-subtitle-no-video": "لا يوجد فيديو مقترن بصفحة ترجمة أو نصوص الفيديو الحالية.",
 	"timedmedia-subtitle-no-subtitles": "لا توجد نصوص أو ترجمات في  $1 لهذا الفيديو، يمكنك [{{fullurl:{{FULLPAGENAME}}|action=edit}} تعديل هذه الصفحة] وإضافتهم.",

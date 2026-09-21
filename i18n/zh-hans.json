@@ -205,7 +205,7 @@
 	"timedmedia-subtitle-format-vtt": "WebVTT（VTT）",
 	"timedmedia-subtitle-format-srt": "SubRip（SRT）",
 	"timedmedia-subtitle-edit-legend": "编辑现有的字幕",
-	"timedmedia-subtitle-edit-desc": "选择现有的字幕然后按'''{{int:Timedmedia-subtitle-edit-go}}'''按钮",
+	"timedmedia-subtitle-edit-desc": "选择现有的字幕然后按'''{{int:timedmedia-subtitle-edit-go}}'''按钮",
 	"timedmedia-subtitle-edit-go": "编辑",
 	"timedmedia-subtitle-language": "$1{{BIDI:（$2）}}",
 	"timedmedia-subtitle-no-video": "当前字幕页面没有关联的视频。",
