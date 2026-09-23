@@ -116,7 +116,7 @@
 	"timedmedia-resolution-180": "Madal 180p",
 	"timedmedia-resolution-240": "Madal 240p",
 	"timedmedia-subtitle-new": "Uue tõlkega alustamine või olemasoleva muutmine",
-	"timedmedia-subtitle-new-desc": "Vali keel ja klõpsa nuppu '''{{int:Timedmedia-subtitle-new-go}}'''.",
+	"timedmedia-subtitle-new-desc": "Vali keel ja klõpsa nuppu '''{{int:timedmedia-subtitle-new-go}}'''.",
 	"timedmedia-subtitle-new-go": "Mine",
 	"timedmedia-subtitle-no-video": "Puudub selle alltiitrite leheküljega seotud video.",
 	"timedmedia-subtitle-no-subtitles": "Selle video alltiitrid puuduvad praegu selles keeles ($1). Saad seda lehekülge [{{fullurl:{{FULLPAGENAME}}|action=edit}} redigeerida], et need lisada.",

@@ -124,7 +124,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "ترجمه جدیدی را ایجاد کنید یا در صورت وجود آن را ویرایش کنید.",
-	"timedmedia-subtitle-new-desc": " زبان را انتخاب کنید و دکمهٔ '''{{int:Timedmedia-subtitle-new-go}}''' را بفشارید",
+	"timedmedia-subtitle-new-desc": " زبان را انتخاب کنید و دکمهٔ '''{{int:timedmedia-subtitle-new-go}}''' را بفشارید",
 	"timedmedia-subtitle-new-go": "ایجاد",
 	"timedmedia-subtitle-new-legend": "ایجاد ترجمه جدید",
 	"timedmedia-subtitle-new-format": "قالب زیرنویس",

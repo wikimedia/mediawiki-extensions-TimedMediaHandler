@@ -72,7 +72,7 @@
 	"timedmedia-derivative-desc-320p.mp4": "HD MP4 H.264 (720P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720P)",
 	"timedmedia-derivative-desc-2160p.mp4": "MP4-видео Full 4K (2160p) сифатында",
-	"timedmedia-subtitle-new-desc": "Телде һайлағыҙ һәм  '''{{int:Timedmedia-subtitle-new-go}}'''төймәһенә баҫығыҙ",
+	"timedmedia-subtitle-new-desc": "Телде һайлағыҙ һәм  '''{{int:timedmedia-subtitle-new-go}}'''төймәһенә баҫығыҙ",
 	"timedmedia-subtitle-no-video": "Субтитрҙарҙың ағымдағы битенә бәйле видео юҡ.",
 	"timedmedia-subtitle-remote": "Был файл өсөн синхрон текст $1 урынлашҡан",
 	"timedmedia-subtitle-remote-link": "$2 һаҡлағысында файлдың [$1 тасуирлау битен ҡарай] алаһығыҙ.",

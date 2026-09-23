@@ -97,7 +97,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Crear una traducción nueva o editar la esistente",
-	"timedmedia-subtitle-new-desc": "Seleicione la llingua y calque nel botón '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Seleicione la llingua y calque nel botón '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Dir",
 	"timedmedia-subtitle-no-video": "Nun hai nengún videu asociáu cola páxina de subtítulos actual",
 	"timedmedia-subtitle-no-subtitles": "Anguaño nun hai subtítulos en $1 pa esti videu, pue [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar esta páxina] p'amestalos",

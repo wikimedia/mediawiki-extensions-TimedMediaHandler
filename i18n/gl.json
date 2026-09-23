@@ -129,7 +129,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Crear unha nova tradución ou editar a actual",
-	"timedmedia-subtitle-new-desc": "Selecciona a lingua e preme no botón «'''{{int:Timedmedia-subtitle-new-go}}'''»",
+	"timedmedia-subtitle-new-desc": "Selecciona a lingua e preme no botón «'''{{int:timedmedia-subtitle-new-go}}'''»",
 	"timedmedia-subtitle-new-go": "Crear",
 	"timedmedia-subtitle-new-legend": "Crear unha nova tradución",
 	"timedmedia-subtitle-new-format": "Formato dos subtítulos",

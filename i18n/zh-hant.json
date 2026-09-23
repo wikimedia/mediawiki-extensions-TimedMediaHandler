@@ -146,7 +146,7 @@
 	"timedmedia-resolution-1440": "超高清1440p",
 	"timedmedia-resolution-2160": "超高畫質 2160p",
 	"timedmedia-subtitle-new": "建立新翻譯或編輯現有翻譯",
-	"timedmedia-subtitle-new-desc": "請選擇語言後點選 '''{{int:Timedmedia-subtitle-new-go}}''' 按鈕",
+	"timedmedia-subtitle-new-desc": "請選擇語言後點選 '''{{int:timedmedia-subtitle-new-go}}''' 按鈕",
 	"timedmedia-subtitle-new-go": "建立",
 	"timedmedia-subtitle-language": "$1{{BIDI:（$2）}}",
 	"timedmedia-subtitle-no-video": "目前沒有與字幕頁面相關的影片。",

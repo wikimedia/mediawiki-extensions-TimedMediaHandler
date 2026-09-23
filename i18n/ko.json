@@ -143,7 +143,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "새 번역 만들기 또는 기존 번역 편집",
-	"timedmedia-subtitle-new-desc": "언어를 선택하고 '''{{int:Timedmedia-subtitle-new-go}}''' 버튼을 누르세요",
+	"timedmedia-subtitle-new-desc": "언어를 선택하고 '''{{int:timedmedia-subtitle-new-go}}''' 버튼을 누르세요",
 	"timedmedia-subtitle-new-go": "만들기",
 	"timedmedia-subtitle-new-legend": "새 번역 만들기",
 	"timedmedia-subtitle-new-format": "자막 형식",

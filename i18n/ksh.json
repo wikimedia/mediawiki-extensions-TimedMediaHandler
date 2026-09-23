@@ -57,7 +57,7 @@
 	"timedmedia-derivative-mp3": "<i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Moving Picture Experts Group - „Expäätejropp för bewääschte Belder“ - Väsjohn 3\">MP3</i>",
 	"timedmedia-derivative-desc-mp3": "<i lang=\"en\" xml:lang=\"en\" dir=\"ltr\" title=\"Moving Picture Experts Group - „Expäätejropp för bewääschte Belder“ - Väsjohn 3\">MP3</i>",
 	"timedmedia-subtitle-new": "Maach en neue Övversäzong udder änder ein, di et alld jitt",
-	"timedmedia-subtitle-new-desc": "Söhg en Schprohch uß un klegg op „{{int:Timedmedia-subtitle-new-go}}“",
+	"timedmedia-subtitle-new-desc": "Söhg en Schprohch uß un klegg op „{{int:timedmedia-subtitle-new-go}}“",
 	"timedmedia-subtitle-new-go": "Lohß Jonn!",
 	"timedmedia-file": "Dattei",
 	"timedmedia-timedtext-title-create-subtitles": "Mer han kei $1 Ongertittelle jefonge för dat Schtök: $2"

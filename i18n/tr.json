@@ -142,7 +142,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Yeni çeviri oluşturun veya mevcut olanı düzenleyin",
-	"timedmedia-subtitle-new-desc": "Dili seçin ve '''{{int:Timedmedia-subtitle-new-go}}''' düğmesine basın",
+	"timedmedia-subtitle-new-desc": "Dili seçin ve '''{{int:timedmedia-subtitle-new-go}}''' düğmesine basın",
 	"timedmedia-subtitle-new-go": "Git",
 	"timedmedia-subtitle-no-video": "Geçerli altyazı sayfasıyla ilişkilendirilmiş video yok.",
 	"timedmedia-subtitle-no-subtitles": "Şu anda bu video için $1 dilinde altyazı yok, eklemek için [{{fullurl:{{FULLPAGENAME}}|action=edit}} bu sayfayı düzenleyebilirsiniz].",

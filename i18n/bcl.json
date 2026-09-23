@@ -58,7 +58,7 @@
 	"timedmedia-derivative-desc-480p.mp4": "SD MP4 H.264 (480P)",
 	"timedmedia-derivative-desc-720p.mp4": "HD MP4 H.264 (720P)",
 	"timedmedia-subtitle-new": "Magmukna nin baguhong dakit-taramon o liwaton an eksistido na",
-	"timedmedia-subtitle-new-desc": "Magpili nin lengguwahe asin pinduton an '''{{int:Timedmedia-subtitle-new-go}}''' na dutdutan",
+	"timedmedia-subtitle-new-desc": "Magpili nin lengguwahe asin pinduton an '''{{int:timedmedia-subtitle-new-go}}''' na dutdutan",
 	"timedmedia-subtitle-new-go": "Magduman",
 	"timedmedia-subtitle-no-video": "Mayo tabing bidyo na asosyado na igwa nin sa ngunyan na subtitulo kan pahina",
 	"timedmedia-subtitle-no-subtitles": "Mayo tabi nin sa ngunyan na mga subtitulo sa $1 para kaining bidyo, ika tabi [{{fullurl:{{FULLPAGENAME}}|action=edit}} makapagliwat kaining pahina] tanganing maidugang sinda",

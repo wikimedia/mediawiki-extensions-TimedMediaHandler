@@ -82,7 +82,7 @@
 	"timedmedia-resolution-180": "Χαμηλό 180p",
 	"timedmedia-resolution-240": "Χαμηλό 240p",
 	"timedmedia-subtitle-new": "Δημιουργήστε νέα μετάφραση ή επεξεργαστείτε την υπάρχουσα",
-	"timedmedia-subtitle-new-desc": "Επιλέξτε γλώσσα και πατήστε το κουμπί '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Επιλέξτε γλώσσα και πατήστε το κουμπί '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Μετάβαση",
 	"timedmedia-subtitle-no-video": "Δεν υπάρχει βίντεο που να σχετίζεται με την τρέχουσα σελίδα υπότιτλων.",
 	"timedmedia-subtitle-no-subtitles": "Δεν υπάρχουν υπότιτλοι σε $1 για αυτό το βίντεο, μπορείτε να [{{fullurl:{{FULLPAGENAME}}|action=edit}} επεξεργαστείτε αυτή τη σελίδα] για να τους προσθέσετε.",

@@ -174,7 +174,7 @@
 	"timedmedia-resolution-1440": "له لوړپېژندون پورته ۱۴۴۰پ",
 	"timedmedia-resolution-2160": "له لوړپېژندون پورته ۲۱۶۰پ",
 	"timedmedia-subtitle-new": "نوې ژباړه جوړول يا شته ژباړه سمول",
-	"timedmedia-subtitle-new-desc": "ژبه غوره کړئ او په ''{{int:Timedmedia-subtitle-new-go}}''' تڼۍ کېکاږئ",
+	"timedmedia-subtitle-new-desc": "ژبه غوره کړئ او په ''{{int:timedmedia-subtitle-new-go}}''' تڼۍ کېکاږئ",
 	"timedmedia-subtitle-new-go": "جوړول",
 	"timedmedia-subtitle-new-legend": "نوې ژباړه جوړول",
 	"timedmedia-subtitle-new-format": "څېرمه‌سرليک بڼه",

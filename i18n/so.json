@@ -100,7 +100,7 @@
 	"timedmedia-resolution-180": "Hooseeya 180p",
 	"timedmedia-resolution-240": "Hooseeya 240p",
 	"timedmedia-subtitle-new": "Samee turjumaad cusub ama wax ka beddel turjumaad hore u jirtay",
-	"timedmedia-subtitle-new-desc": "Dooro luqadda kadibna riix badhanka '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Dooro luqadda kadibna riix badhanka '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Abuur",
 	"timedmedia-subtitle-new-legend": "Abuur turjumaad cusub",
 	"timedmedia-subtitle-new-format": "Qaabka cinwaan hoosaadka",

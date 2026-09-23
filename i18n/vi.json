@@ -147,7 +147,7 @@
 	"timedmedia-resolution-1440": "Cực cao 1440p",
 	"timedmedia-resolution-2160": "Cực cao 2160p",
 	"timedmedia-subtitle-new": "Tạo bản dịch mới hoặc sửa đổi bản dịch đã tồn tại",
-	"timedmedia-subtitle-new-desc": "Chọn ngôn ngữ và bấm nút '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Chọn ngôn ngữ và bấm nút '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Tạo",
 	"timedmedia-subtitle-no-video": "Không có video nào tương ứng với trang phụ đề này.",
 	"timedmedia-subtitle-no-subtitles": "Hiện không có phụ đề nào bằng $1 cho video này. Bạn có thể [{{fullurl:{{FULLPAGENAME}}|action=edit}} sửa đổi trang này] để thêm phụ đề.",

@@ -141,7 +141,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Utwórz nowe tłumaczenie lub edytuj istniejące",
-	"timedmedia-subtitle-new-desc": "Wybierz język i kliknij przycisk '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Wybierz język i kliknij przycisk '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Przejdź",
 	"timedmedia-subtitle-edit-desc": "Wybierz istniejące napisy i kliknij przycisk „'''{{int:timedmedia-subtitle-edit-go}}'''”",
 	"timedmedia-subtitle-no-video": "Z bieżącą stroną napisów nie jest skojarzony żaden film.",

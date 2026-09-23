@@ -114,7 +114,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Creare una nuova traduzione o modificare esistenti",
-	"timedmedia-subtitle-new-desc": "Seleziona la lingua e premi il pulsante '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Seleziona la lingua e premi il pulsante '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Crea",
 	"timedmedia-subtitle-no-video": "Non c'è nessun video associato all'attuale pagina dei sottotitoli.",
 	"timedmedia-subtitle-no-subtitles": "Non ci sono al momento sottotitoli in $1 per questo video, è possibile [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificare questa pagina] per aggiungerli",

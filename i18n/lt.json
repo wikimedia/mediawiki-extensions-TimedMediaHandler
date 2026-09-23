@@ -90,7 +90,7 @@
 	"timedmedia-resolution-240": "Žema 240p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Sukurti naują vertimą arba redaguoti egzistuojantį",
-	"timedmedia-subtitle-new-desc": "Pasirinkite kalbą ir paspauskite '''{{int:Timedmedia-subtitle-new-go}}''' mygtuką",
+	"timedmedia-subtitle-new-desc": "Pasirinkite kalbą ir paspauskite '''{{int:timedmedia-subtitle-new-go}}''' mygtuką",
 	"timedmedia-subtitle-new-go": "Vykdyti",
 	"timedmedia-subtitle-no-video": "Nėra video, susieto su dabartiniu subtitrų puslapiu.",
 	"timedmedia-subtitle-no-subtitles": "Kol kas šiam video nėra subtitrų $1, bet jūs galite [{{fullurl:{{FULLPAGENAME}}|action=edit}} redaguoti šį puslapį], norėdami juos pridėti.",

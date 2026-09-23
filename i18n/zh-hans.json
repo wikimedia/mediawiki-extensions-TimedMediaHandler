@@ -198,7 +198,7 @@
 	"timedmedia-resolution-1440": "超高清1440p",
 	"timedmedia-resolution-2160": "超高清2160p",
 	"timedmedia-subtitle-new": "创建新翻译或编辑现有翻译",
-	"timedmedia-subtitle-new-desc": "选择语言然后按'''{{int:Timedmedia-subtitle-new-go}}'''按钮",
+	"timedmedia-subtitle-new-desc": "选择语言然后按'''{{int:timedmedia-subtitle-new-go}}'''按钮",
 	"timedmedia-subtitle-new-go": "创建",
 	"timedmedia-subtitle-new-legend": "创建新翻译",
 	"timedmedia-subtitle-new-format": "字幕格式",

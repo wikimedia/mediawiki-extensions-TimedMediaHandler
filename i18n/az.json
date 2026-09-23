@@ -105,7 +105,7 @@
 	"timedmedia-resolution-180": "Aşağı 180p",
 	"timedmedia-resolution-240": "Aşağı 240p",
 	"timedmedia-subtitle-new": "Yeni tərcümə yarat və ya mövcud olanı redaktə et",
-	"timedmedia-subtitle-new-desc": "Dili seçin və '''{{int:Timedmedia-subtitle-new-go}}''' düyməsinə basın",
+	"timedmedia-subtitle-new-desc": "Dili seçin və '''{{int:timedmedia-subtitle-new-go}}''' düyməsinə basın",
 	"timedmedia-subtitle-new-go": "Yarat",
 	"timedmedia-subtitle-new-legend": "Yeni tərcüməyə başla",
 	"timedmedia-subtitle-new-format": "Subtitr formatı",

@@ -75,7 +75,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "შექმენით ახალი თარგმანი ან დაარედაქტირეთ არსებული",
-	"timedmedia-subtitle-new-desc": "აირჩიეთ ენა და დააჭირეთ ღილაკს '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "აირჩიეთ ენა და დააჭირეთ ღილაკს '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "მიდი",
 	"timedmedia-subtitle-no-video": "აქ არ არის ვიდეო, რომელიც დაკავშირებულია სუბტიტრების მიმდინარე გვერდთან",
 	"timedmedia-subtitle-no-subtitles": "ამჟამად $1 სუბტიტრები ამ ვიდეოსათვის არ არის, თქვენ შეგიძლიათ [{{fullurl:{{FULLPAGENAME}}|action=edit}} შეცვალოთ ეს გვერდი] მათ დასამატებლად",

@@ -171,7 +171,7 @@
 	"timedmedia-resolution-1440": "UHD 1440p",
 	"timedmedia-resolution-2160": "UHD 2160p",
 	"timedmedia-subtitle-new": "Create new translation or edit existing",
-	"timedmedia-subtitle-new-desc": "Select language and press the '''{{int:Timedmedia-subtitle-new-go}}''' button",
+	"timedmedia-subtitle-new-desc": "Select language and press the '''{{int:timedmedia-subtitle-new-go}}''' button",
 	"timedmedia-subtitle-new-go": "Create",
 	"timedmedia-subtitle-new-legend": "Create new translation",
 	"timedmedia-subtitle-new-format": "Subtitle format",

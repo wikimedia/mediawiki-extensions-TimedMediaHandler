@@ -77,7 +77,7 @@
 	"timedmedia-resolution-180": "Нізкае 180p",
 	"timedmedia-resolution-240": "Нізкае 240p",
 	"timedmedia-subtitle-new": "Стварыць новы пераклад ці правіць існуючы",
-	"timedmedia-subtitle-new-desc": "Выберыце мову і націсніце кнопку '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "Выберыце мову і націсніце кнопку '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "Пачаць",
 	"timedmedia-subtitle-no-video": "Няма відэа, звязанага з бягучай старонкай субцітраў.",
 	"timedmedia-subtitle-no-subtitles": "Зараз для гэтага відэа няма субцітраў на мове «$1», вы можаце [{{fullurl:{{FULLPAGENAME}}|action=edit}} правіць гэтую старонку], каб дадаць іх.",

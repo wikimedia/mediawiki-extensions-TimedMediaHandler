@@ -111,7 +111,7 @@
 	"timedmedia-resolution-180": "Alacsony 180p",
 	"timedmedia-resolution-240": "Alacsony 240p",
 	"timedmedia-subtitle-new": "Új fordítás készítése vagy meglévő szerkesztése",
-	"timedmedia-subtitle-new-desc": "Válaszd ki a nyelvet, és kattints a '''{{int:Timedmedia-subtitle-new-go}}''' gombra",
+	"timedmedia-subtitle-new-desc": "Válaszd ki a nyelvet, és kattints a '''{{int:timedmedia-subtitle-new-go}}''' gombra",
 	"timedmedia-subtitle-new-go": "Mehet",
 	"timedmedia-subtitle-no-video": "Nem tartozik a jelenlegi feliratlaphoz videó.",
 	"timedmedia-subtitle-no-subtitles": "Jelenleg nincs $1 nyelvű felirat ehhez a videóhoz; [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted ezt a lapot] a hozzáadásához.",

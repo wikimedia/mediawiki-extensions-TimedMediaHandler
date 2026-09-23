@@ -60,7 +60,7 @@
 	"timedmedia-derivative-desc-720p.mp4": "کیفیت بالا  MP4  (720P)",
 	"timedmedia-derivative-desc-1080p.mp4": "ویدیوی ام‌پی۴ کاملاً اچ‌دی (۱۰۸۰ پیکسل)",
 	"timedmedia-subtitle-new": "ترجمه جدیدی را ایجاد کنید یا در صورت وجود آن را ویرایش کنید.",
-	"timedmedia-subtitle-new-desc": " زبان را انتخاب کنید و دکمهٔ '''{{int:Timedmedia-subtitle-new-go}}''' را بفشارید",
+	"timedmedia-subtitle-new-desc": " زبان را انتخاب کنید و دکمهٔ '''{{int:timedmedia-subtitle-new-go}}''' را بفشارید",
 	"timedmedia-subtitle-new-go": "بِچۆ",
 	"timedmedia-subtitle-no-video": "هیچ ویدئویی مرتبط با زیرعنوان این صفحه موجود نیست",
 	"timedmedia-subtitle-no-subtitles": "در حال حاضر زیرنویسی برای $1 در این ویدیو وجود ندارد، می‌توانید این صفحه را برای افزودن آن‌ها [{{fullurl:{{FULLPAGENAME}}|action=edit}} ویرایش کنید].",

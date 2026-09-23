@@ -121,7 +121,7 @@
 	"timedmedia-resolution-180": "Lav 180p",
 	"timedmedia-resolution-240": "Lav 240p",
 	"timedmedia-subtitle-new": "Opret nye oversættelse eller rediger eksisterende",
-	"timedmedia-subtitle-new-desc": "Vælg sprog og tryk på '''{{int:Timedmedia-undertitlen-ny-gå}}'' ' knappen",
+	"timedmedia-subtitle-new-desc": "Vælg sprog og tryk på '''{{int:timedmedia-undertitlen-ny-gå}}'' ' knappen",
 	"timedmedia-subtitle-new-go": "Opret",
 	"timedmedia-subtitle-new-legend": "Opret ny oversættelse",
 	"timedmedia-subtitle-new-format": "Undertekstformat",

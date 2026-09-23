@@ -66,7 +66,7 @@
 	"timedmedia-derivative-desc-160p.ogv": "วิดีโอ Ogg แบนด์วิดท์ต่ำ (160P)",
 	"timedmedia-derivative-desc-160p.webm": "WebM แบนด์วิดท์ต่ำ (160P)",
 	"timedmedia-subtitle-new": "สร้างการแปลใหม่หรือแก้ไขที่มีอยู่",
-	"timedmedia-subtitle-new-desc": "เลือกภาษาแล้วกดปุ่ม '''{{int:Timedmedia-subtitle-new-go}}'''",
+	"timedmedia-subtitle-new-desc": "เลือกภาษาแล้วกดปุ่ม '''{{int:timedmedia-subtitle-new-go}}'''",
 	"timedmedia-subtitle-new-go": "ไป",
 	"timedmedia-subtitle-no-video": "ไม่มีวิดีโอที่สัมพันธ์กับหน้าคำบรรยายปัจจุบัน",
 	"timedmedia-subtitle-no-subtitles": "ไม่มีคำบรรยายในภาษา$1สำหรับวิดีโอนี้ในขณะนี้ คุณสามารถ[{{fullurl:{{FULLPAGENAME}}|action=edit}} แก้ไขหน้านี้]เพื่อเพิ่มคำบรรยายได้",
