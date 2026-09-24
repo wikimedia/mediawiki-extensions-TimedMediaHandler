@@ -144,6 +144,7 @@
 	"videojs-quality": "Kvalita videa",
 	"videojs-subtitles-create": "Vytvořit titulky",
 	"videojs-captions-create": "Vytvořit titulky",
+	"transcodestatistics": "Statistika transkódování",
 	"timedmedia-timedtext-title-edit-subtitles": "Titulky ke klipu $2 v jazyce $1",
 	"timedmedia-timedtext-title-create-subtitles": "Ke klipu $2 nebyly nalezeny titulky v jazyce $1"
 }
