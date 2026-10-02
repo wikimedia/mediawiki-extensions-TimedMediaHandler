@@ -310,7 +310,7 @@ END;
 	}
 
 	protected function flattenNodes( $nodes ) {
-		return implode( "", array_map( [ $this, 'flattenNode' ], $nodes ) );
+		return implode( "", array_map( $this->flattenNode( ... ), $nodes ) );
 	}
 
 	protected function flattenNode( DOM\Node $node ) {

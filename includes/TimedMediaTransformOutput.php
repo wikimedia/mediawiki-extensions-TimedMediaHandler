@@ -305,7 +305,7 @@ class TimedMediaTransformOutput extends MediaTransformOutput {
 
 		// Sort sources by bandwidth least to greatest (so that the default selection on resource
 		// constrained browsers (without js?) go with minimal source.)
-		usort( $mediaSources, [ $this, 'sortMediaByBandwidth' ] );
+		usort( $mediaSources, $this->sortMediaByBandwidth( ... ) );
 
 		// We prefix some source attributes with data- to pass along to the javascript player
 		$prefixedSourceAttr = [

@@ -103,7 +103,7 @@ class ConvertSubtitles extends Maintenance {
 		if ( count( $errors ) ) {
 			return $data + [
 				'result' => 1,
-				'errors' => array_map( [ $this, 'formatError' ], $errors ),
+				'errors' => array_map( $this->formatError( ... ), $errors ),
 				'output' => $out,
 			];
 		} else {
@@ -119,7 +119,7 @@ class ConvertSubtitles extends Maintenance {
 	 *
 	 * @return string
 	 */
-	public function formatError( TimedText\ParseError $error ) {
+	private function formatError( TimedText\ParseError $error ) {
 		return $error->getError() .
 			" at line " .
 			$error->getLine() .

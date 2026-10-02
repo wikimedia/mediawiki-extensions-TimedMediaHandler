@@ -248,7 +248,7 @@ class TimedTextPage extends Article {
 				->setSubmitTextMsg( 'timedmedia-subtitle-edit-go' )
 				->setWrapperLegendMsg( 'timedmedia-subtitle-edit-legend' )
 				->prepareForm()
-				->setSubmitCallback( [ $this, 'onSubmitEdit' ] )
+				->setSubmitCallback( $this->onSubmitEdit( ... ) )
 				->addPreHtml( $this->getErrorsAndWarnings( $this->renderStatus ) )
 				->show();
 			if ( $out->getRedirect() !== '' ) {
@@ -300,7 +300,7 @@ class TimedTextPage extends Article {
 			->setSubmitTextMsg( 'timedmedia-subtitle-new-go' )
 			->setWrapperLegendMsg( 'timedmedia-subtitle-new-legend' )
 			->prepareForm()
-			->setSubmitCallback( [ $this, 'onSubmit' ] );
+			->setSubmitCallback( $this->onSubmit( ... ) );
 		if ( !$existingSources ) {
 			$createForm->addPreHtml( $this->getErrorsAndWarnings( $this->renderStatus ) );
 		}
@@ -337,7 +337,7 @@ class TimedTextPage extends Article {
 	 * to the selected subtitle page. The submitted value is the
 	 * "<lang>.<format>" suffix relative to the corresponding file.
 	 */
-	public function onSubmitEdit( array $data ): bool {
+	private function onSubmitEdit( array $data ): bool {
 		$fileTitle = $this->getCorrespondingFileTitle();
 		if ( empty( $data['existing'] ) || !$fileTitle ) {
 			return false;
