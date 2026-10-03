@@ -3,15 +3,16 @@ declare( strict_types=1 );
 
 namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
-use File;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
+use MediaWiki\Media\BitmapHandler;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\TimedMediaHandler\Hooks;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use RepoGroup;
-use SkinTemplate;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\Hooks::onSkinTemplateNavigation__Universal
@@ -70,7 +71,7 @@ class HooksTest extends MediaWikiIntegrationTestCase {
 		$title = Title::makeTitle( NS_FILE, $filename );
 
 		// Build a File stub that reports the correct handler type.
-		$handlerClass = $isTmhHandler ? TimedMediaHandler::class : \BitmapHandler::class;
+		$handlerClass = $isTmhHandler ? TimedMediaHandler::class : BitmapHandler::class;
 		$handler      = $this->createMock( $handlerClass );
 
 		$file = $this->createMock( File::class );

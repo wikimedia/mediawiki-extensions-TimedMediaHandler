@@ -4,18 +4,18 @@ declare( strict_types=1 );
 
 namespace MediaWiki\TimedMediaHandler\Test\Unit;
 
-use File;
-use MediaHandler;
 use MediaWiki\Config\HashConfig;
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\FileRepo\RepoGroup;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Media\MediaHandler;
+use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use MediaWiki\TimedMediaHandler\Hooks;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWikiUnitTestCase;
-use RepoGroup;
-use SkinTemplate;
 
 /**
  * @covers \MediaWiki\TimedMediaHandler\Hooks::onSkinTemplateNavigation__Universal
