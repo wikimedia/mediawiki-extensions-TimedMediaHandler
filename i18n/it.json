@@ -121,6 +121,7 @@
 	"timedmedia-subtitle-remote": "I sottotitoli per questo file sono ospitati su $1",
 	"timedmedia-subtitle-remote-link": "Puoi vedere la [$1 pagina di descrizione] per questo file su $2",
 	"timedmedia-subtitles-available": "Sottotitoli disponibili.",
+	"timedmedia-subtitle-validation-more": "…e {{PLURAL:$1|un altro problema|altri $1 problemi}}",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in esecuzione",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 transcodifica|$1 transcodifiche}} in coda",

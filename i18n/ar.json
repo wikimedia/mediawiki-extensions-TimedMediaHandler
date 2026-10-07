@@ -158,6 +158,7 @@
 	"timedmedia-subtitle-remote": "النص المتزامن لهذا الملف مستضاف على $1",
 	"timedmedia-subtitle-remote-link": "يمكنك [$1 مطالعة صفحة الوصف] لهذا الملف على $2",
 	"timedmedia-subtitles-available": "ترجمات متوفرة",
+	"timedmedia-subtitle-validation-fatal": "تعذر حفظ ملف الترجمة هذا لوجود مشاكل في التحقق من صحته:\n $1",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 تكويد|$1 تكويدات}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|$1 تكويد يعمل|$1 تكويدات تعمل}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|$1 تكويد قيد الانتظار|$1 تكويدات قيد الانتظار}}",

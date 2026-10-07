@@ -157,6 +157,7 @@
 	"timedmedia-subtitle-remote": "이 파일에 대한 자막은 $1에 호스트했습니다",
 	"timedmedia-subtitle-remote-link": "$2에 이 파일에 대한 [$1 설명 문서를 볼] 수 있습니다",
 	"timedmedia-subtitles-available": "자막을 이용할 수 있습니다.",
+	"timedmedia-subtitle-validation-item": "줄 $1: $2",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|코드 변환 $1개}}",
 	"timedmedia-derivative-state-active": "{{PLURAL:$1|실행 중인 코드 변환 $1개}}",
 	"timedmedia-derivative-state-queued": "{{PLURAL:$1|대기 중인 코드 변환 $1개}}",
