@@ -254,12 +254,10 @@ class Hooks implements
 	}
 
 	/**
-	 * @param Article $imagePage
-	 * @param string &$html
+	 * @inheritDoc
 	 */
 	public function onImagePageAfterImageLinks( $imagePage, &$html ): void {
-		// load the file:
-		$file = $this->repoGroup->findFile( $imagePage->getTitle(), [ 'ignoreRedirect' => true ] );
+		$file = $imagePage->getFile();
 		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			$transcodeStatusTable = new TranscodeStatusTable(
 				$imagePage->getContext(),
