@@ -107,6 +107,7 @@
 	"timedmedia-subtitle-no-subtitles": "Et sinn elo keng Ënnertitelen op $1 fir dëse Video, Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} dës Säit änneren] fir se derbäizesetzen.",
 	"timedmedia-subtitle-remote-link": "Dir kënnt [$1 d'Beschreiwungssäit] fir dëse Fichier op $2 gesinn",
 	"timedmedia-subtitles-available": "Ënnertitelen disponibel",
+	"timedmedia-subtitle-validation-more": "… an {{PLURAL:$1|ee weidere Problem|$1 weider Problemer}}",
 	"timedmedia-file": "Fichier",
 	"timedmedia-dialog-close": "Mediaplayer zoumaachen",
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 Stonn|$1 Stonnen}}, {{PLURAL:$2|$2 Minutt|$2 Minutten}} a(n) {{PLURAL:$3|$3 Sekonn|$3 Sekonnen}}",

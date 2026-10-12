@@ -159,6 +159,7 @@
 	"timedmedia-subtitle-remote-link": "يمكنك [$1 مطالعة صفحة الوصف] لهذا الملف على $2",
 	"timedmedia-subtitles-available": "ترجمات متوفرة",
 	"timedmedia-subtitle-validation-item": "السطر $1 : $2",
+	"timedmedia-subtitle-validation-more": "...و {{PLURAL:$1| مشكلة أخرى| $1 مشاكل أخرى}}",
 	"timedmedia-subtitle-validation-internal-error": "تعذر فحص ملف الترجمة بسبب خطأ غير متوقع.",
 	"timedmedia-subtitle-validation-fatal": "تعذر حفظ ملف الترجمة هذا لوجود مشاكل في التحقق من صحته:\n $1",
 	"timedmedia-derivative-state-transcodes": "{{PLURAL:$1|$1 تكويد|$1 تكويدات}}",
