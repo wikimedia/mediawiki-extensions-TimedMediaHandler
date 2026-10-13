@@ -14,7 +14,11 @@
 		"include": [
 			"resources"
 		],
-		"exclude": [ "resources/videojs" ]
+		"exclude": [
+			"resources/videojs",
+			"resources/lib/videojs-contrib-dash",
+			"resources/lib/dash.js"
+		]
 	},
 	"sourceType": "module",
 	"templates": {

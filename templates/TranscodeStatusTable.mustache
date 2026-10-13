@@ -24,6 +24,7 @@
 			{{/transcode-success}}
 			{{#transcode-success}}
 				<td>
+				{{#downloadUrl}}
 					{{!
 					We want link behavior, with button styling, so we wrap the button with the link
 					The button is hidden from accessibility layer.
@@ -36,6 +37,7 @@
 							<span class="cdx-button__icon cdx-downloadfile--download"></span>
 						</button>
 					</a>
+				{{/downloadUrl}}
 				</td>
 			{{/transcode-success}}
 		{{/has-download}}

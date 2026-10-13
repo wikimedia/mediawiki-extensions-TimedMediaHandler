@@ -1,6 +1,8 @@
 docs
 jsdoc-plugins/*
 resources/lib/video.js/*
+resources/lib/dash.js/
+resources/lib/videojs-contrib-dash/
 vendor/
 
 # Language files written automatically by TranslateWiki

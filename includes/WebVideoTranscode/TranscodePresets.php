@@ -330,6 +330,7 @@ class TranscodePresets {
 		// * 180p .. 480p.video.mpeg4.mp4 fallback video for old iOS (optional)
 		// * 240p .. 2160p.video.vp9.mp4 video
 		// * .m3u8 playlists
+		// * .mpd
 		//
 		'stereo.audio.mp3' => [
 			'novideo' => 'true',
@@ -511,6 +512,83 @@ class TranscodePresets {
 			'type' => 'video/mp4; codecs="vp09.00.51.08"',
 			'streaming' => 'hls',
 			'remuxFrom' => [ '2160p.vp9.webm' ],
+		],
+
+		// MPEG-DASH
+		// Settings here are copied from the various size/bitrate settings for vp9.webm, with some adjustments
+		// * maxSize 426x240 and 854x480 adjusted to the nearest possible exact 16:9 aspect ratio, because ffmpeg
+		//		errors if all videos in an adaptation set do not have the EXACT same aspect ratio
+		// * maxrate for 3840x2160 adjusted down to 14000k so that 4 second video chunks will be under 8MB (the limit
+		//		for caching at the edge)
+		// * twopass is false, because using -crf with -maxrate and -bufsize gives a bitrate ceiling for each rendition
+		//		and the client will switch between bitrates depending on capacity, so we don't need the
+		// 		processing/complexity cost of optimising for a particular bitrate (also the code as written right now
+		// 		(2026-04-20) can't do twopass for mpeg-dash)
+		'mpd' => [
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'twopass' => false,
+			'audioCodec' => 'opus',
+			'audioBitrate' => '96k',
+			// segment duration set to 4 - a compromise between number of files and chunk length
+			'segmentDuration' => '4',
+			'videoRenditions' => [
+				[
+					'maxSize' => '416x234',
+					'videoBitrate' => '308k',
+					'maxrate' => '447k',
+					'crf' => '37',
+					'speed' => '3',
+				],
+				[
+					'maxSize' => '640x360',
+					'videoBitrate' => '613k',
+					'maxrate' => '889k',
+					'crf' => '36',
+					'speed' => '3',
+					'tileColumns' => '1',
+				],
+				[
+					'maxSize' => '864x486',
+					'videoBitrate' => '1000k',
+					'maxrate' => '1450k',
+					'crf' => '33',
+					'speed' => '3',
+					'tileColumns' => '1',
+				],
+				[
+					'maxSize' => '1280x720',
+					'videoBitrate' => '1993k',
+					'maxrate' => '2890k',
+					'crf' => '32',
+					'speed' => '3',
+					'tileColumns' => '2',
+				],
+				[
+					'maxSize' => '1920x1080',
+					'videoBitrate' => '3971k',
+					'maxrate' => '5757k',
+					'crf' => '31',
+					'speed' => '3',
+					'tileColumns' => '2',
+				],
+				[
+					'maxSize' => '2560x1440',
+					'videoBitrate' => '6475k',
+					'maxrate' => '9389k',
+					'crf' => '24',
+					'speed' => '3',
+					'tileColumns' => '3',
+				],
+				[
+					'maxSize' => '3840x2160',
+					'videoBitrate' => '12900k',
+					'maxrate' => '14000k',
+					'crf' => '15',
+					'speed' => '3',
+					'tileColumns' => '3',
+				]
+			]
 		],
 
 		// Loosely defined per PCF guide to mp4 profiles:

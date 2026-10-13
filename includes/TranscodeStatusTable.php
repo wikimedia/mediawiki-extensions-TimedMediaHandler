@@ -79,7 +79,7 @@ class TranscodeStatusTable {
 		}
 
 		uksort( $transcodeRows, static function ( $a, $b ) {
-			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'mpeg4', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
+			$formatOrder = [ 'mpd', 'vp9', 'vp8', 'h264', 'theora', 'mpeg4', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
 
 			$aFormat = self::codecFromTranscodeKey( $a );
 			$bFormat = self::codecFromTranscodeKey( $b );
@@ -115,7 +115,6 @@ class TranscodeStatusTable {
 				'msg-derivative-key' => wfMessage( 'timedmedia-derivative-' . $transcodeKey ),
 				'bitrate' => $this->getTranscodeBitrate( $file, $state ),
 				'transcode-success' => (int)( $state['state'] ?? -1 ) === WebVideoTranscode::STATE_SUCCESS,
-				'msg-timedmedia-download' => wfMessage( 'timedmedia-download' ),
 				// Download file
 				//
 				// Note the <a download> attribute only is applied on same-origin URLs.
@@ -126,8 +125,8 @@ class TranscodeStatusTable {
 				// On failure, these should devolve to either downloading or loading a
 				// media file inline, depending on the format and browser and server
 				// config.
-				'downloadUrl' => wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' ),
-				'msg-timedmedia-reset' => wfMessage( 'timedmedia-reset' ),
+				'downloadUrl' => $transcodeKey === 'mpd'
+					? [] : wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' ),
 				'html-transcode-status' => self::getStatusMsg( $file, $state ),
 				'transcode-duration' => $this->getTranscodeDuration( $file, $state ),
 			];
@@ -141,8 +140,10 @@ class TranscodeStatusTable {
 			'msg-timedmedia-actions' => wfMessage( 'timedmedia-actions' ),
 			'msg-timedmedia-status' => wfMessage( 'timedmedia-status' ),
 			'msg-timedmedia-transcodeduration' => wfMessage( 'timedmedia-transcodeduration' ),
-			'has-reset' => $this->context->getUser()->isAllowed( 'transcode-reset' ),
+			'msg-timedmedia-download' => wfMessage( 'timedmedia-download' ),
+			'msg-timedmedia-reset' => wfMessage( 'timedmedia-reset' ),
 			'has-download' => $this->context->getUser()->isNamed(),
+			'has-reset' => $this->context->getUser()->isAllowed( 'transcode-reset' ),
 			'transcodeRows' => $transcodeRowsForTemplate,
 		];
 	}
@@ -163,6 +164,9 @@ class TranscodeStatusTable {
 
 	public function getTranscodeBitrate( File $file, array $state ): string {
 		if ( (int)( $state['state'] ?? -1 ) === WebVideoTranscode::STATE_SUCCESS ) {
+			if ( $state['final_bitrate'] == WebVideoTranscode::VARIABLE_BITRATE ) {
+				return wfMessage( 'timedmedia-variable-bitrate' )->escaped();
+			}
 			return $this->context->getLanguage()->formatBitrate( $state['final_bitrate'] );
 		}
 		return '';
