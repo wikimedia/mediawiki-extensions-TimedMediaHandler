@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"ऐक्टिवेटेड्"
+		]
+	},
+	"timedmedia-duration-ms": "{{PLURAL:$1|$1 मिनट}} ও {{PLURAL:$2|$2 सेकेण्ड}}",
+	"timedmedia-duration-s": "{{PLURAL:$1|$1 सेकेण्ड}}"
+}
