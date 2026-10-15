@@ -17,7 +17,7 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\TimedMediaHandler\TimedTextPage;
 use MediaWiki\TimedMediaHandler\TranscodableChecker;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
-use Mediawiki\Title\Title;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 
 class PageEventIngress extends DomainEventIngress implements
