@@ -126,6 +126,22 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
+	 * Write the environment for ffmpeg-encode.sh to the debug log
+	 *
+	 * @param array<string,string> $env
+	 */
+	private function logEnvironment( array $env ) {
+		$envString = '';
+		foreach ( $env as $name => $value ) {
+			if ( $envString !== '' ) {
+				$envString .= ' ';
+			}
+			$envString .= $name . '=' . Shell::escape( $value );
+		}
+		$this->output( $envString );
+	}
+
+	/**
 	 * purge temporary encode target
 	 *
 	 * @param BoxedResult|null $cmdResult
@@ -714,14 +730,18 @@ class WebVideoTranscodeJob extends Job {
 		// Create an output file name with the correct extension
 		$target = $this->getTargetEncodePath();
 		$outputFile = 'transcoded.' . pathinfo( $target, PATHINFO_EXTENSION );
-		// Execute the conversion
-		$cmd = $cmd->outputFileToFile( $outputFile, $target )
-			->includeStderr()
-			->environment( [
+
+		$env = [
 				'TMH_OUTPUT_FILE'      => $outputFile,
 				'TMH_FFMPEG_PASSES'    => (string)$passes,
 				'TMH_FFMPEG_PATH'      => $ffmpegLocation,
-			] + $optsEnv );
+			] + $optsEnv;
+		$this->logEnvironment( $env );
+
+		// Execute the conversion
+		$cmd = $cmd->outputFileToFile( $outputFile, $target )
+			->includeStderr()
+			->environment( $env );
 		if ( $options->type == 'application/dash+xml' ) {
 			$chunksDir = $this->getTargetEncodeChunksDir();
 			if ( !mkdir( $chunksDir ) ) {
