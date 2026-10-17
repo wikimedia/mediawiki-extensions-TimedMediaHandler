@@ -357,7 +357,6 @@ class TimedTextPage extends Article {
 		return true;
 	}
 
-	/** @inheritDoc */
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
 			$format = $data['format'] ?? self::VTT_SUBTITLE_FORMAT;
