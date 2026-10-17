@@ -166,7 +166,10 @@ class OggHandler extends TimedMediaHandler {
 		return $props;
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @param array $metadata
+	 * @return array
+	 */
 	protected function getSizeFromMetadata( $metadata ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mediaVideoTypes = $config->get( 'MediaVideoTypes' );
