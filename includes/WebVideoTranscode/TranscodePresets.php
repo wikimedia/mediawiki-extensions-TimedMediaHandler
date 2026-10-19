@@ -514,7 +514,7 @@ class TranscodePresets {
 			'remuxFrom' => [ '2160p.vp9.webm' ],
 		],
 
-		// MPEG-DASH
+		// VP9 in MPEG-DASH
 		// Settings here are copied from the various size/bitrate settings for vp9.webm, with some adjustments
 		// * maxSize 426x240 and 854x480 adjusted to the nearest possible exact 16:9 aspect ratio, because ffmpeg
 		//		errors if all videos in an adaptation set do not have the EXACT same aspect ratio
@@ -524,7 +524,7 @@ class TranscodePresets {
 		//		and the client will switch between bitrates depending on capacity, so we don't need the
 		// 		processing/complexity cost of optimising for a particular bitrate (also the code as written right now
 		// 		(2026-04-20) can't do twopass for mpeg-dash)
-		'mpd' => [
+		'vp9.mpd' => [
 			'type' => 'application/dash+xml',
 			'videoCodec' => 'vp9',
 			'twopass' => false,

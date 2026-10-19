@@ -8,6 +8,7 @@ use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\TimedMediaHandler\WebVideoTranscode\TranscodePresets;
 use MediaWiki\TimedMediaHandler\WebVideoTranscode\WebVideoTranscode;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Timestamp\TimestampFormat;
@@ -51,8 +52,7 @@ class TranscodeStatusTable {
 	 * for grouping/sorting purposes.
 	 */
 	public static function codecFromTranscodeKey( string $key ): string {
-		$transcodePresets = MediaWikiServices::getInstance()->getService( 'TimedMediaHandler.TranscodePresets' );
-		$settings = $transcodePresets->findByKey( $key );
+		$settings = self::getTranscodePresets()->findByKey( $key );
 		if ( $settings ) {
 			if ( $settings->videoCodec ) {
 				return $settings->videoCodec;
@@ -71,6 +71,10 @@ class TranscodeStatusTable {
 		return $key;
 	}
 
+	private static function getTranscodePresets(): TranscodePresets {
+		return MediaWikiServices::getInstance()->getService( 'TimedMediaHandler.TranscodePresets' );
+	}
+
 	public function getTranscodesTable( File $file ): string {
 		$transcodeRows = WebVideoTranscode::getTranscodeState( $file );
 
@@ -79,7 +83,7 @@ class TranscodeStatusTable {
 		}
 
 		uksort( $transcodeRows, static function ( $a, $b ) {
-			$formatOrder = [ 'mpd', 'vp9', 'vp8', 'h264', 'theora', 'mpeg4', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
+			$formatOrder = [ 'vp9', 'vp8', 'h264', 'theora', 'mpeg4', 'mjpeg', 'opus', 'mp3', 'vorbis', 'aac' ];
 
 			$aFormat = self::codecFromTranscodeKey( $a );
 			$bFormat = self::codecFromTranscodeKey( $b );
@@ -110,6 +114,7 @@ class TranscodeStatusTable {
 	private function transcodeRowsToTemplateParams( array $transcodeRows, File $file ): array {
 		$transcodeRowsForTemplate = [];
 		foreach ( $transcodeRows as $transcodeKey => $state ) {
+			$preset = self::getTranscodePresets()->findByKey( $transcodeKey );
 			$transcodeRowsForTemplate[] = [
 				'transcodeKey' => $transcodeKey,
 				'msg-derivative-key' => wfMessage( 'timedmedia-derivative-' . $transcodeKey ),
@@ -125,7 +130,7 @@ class TranscodeStatusTable {
 				// On failure, these should devolve to either downloading or loading a
 				// media file inline, depending on the format and browser and server
 				// config.
-				'downloadUrl' => $transcodeKey === 'mpd'
+				'downloadUrl' => $preset?->type === 'application/dash+xml'
 					? [] : wfAppendQuery( self::getSourceUrl( $file, $transcodeKey ), 'download' ),
 				'html-transcode-status' => self::getStatusMsg( $file, $state ),
 				'transcode-duration' => $this->getTranscodeDuration( $file, $state ),

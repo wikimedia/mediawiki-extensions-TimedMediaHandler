@@ -293,7 +293,7 @@ class InlinePlayer {
 			let label = mw.msg( 'timedmedia-source-original' );
 
 			if ( transcodeKey ) {
-				if ( transcodeKey === 'mpd' ) {
+				if ( transcodeKey.endsWith( '.mpd' ) ) {
 					label = mw.msg( 'timedmedia-resolution-auto' );
 				} else {
 					const matches = transcodeKey.match( /^(\d+)p\./ );

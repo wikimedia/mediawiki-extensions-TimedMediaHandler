@@ -579,7 +579,7 @@ class WebVideoTranscodeJob extends Job {
 				$optsEnv['TMH_REMUX'] = 'no';
 				$optsEnv['TMH_OPT_VIDEOCODEC'] = $options->videoCodec;
 				if ( count( $options->videoRenditions ) > 0 ) {
-					$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEGDASHOptions( $options ) );
+					$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEGDASHOptions( $transcodeKey, $options ) );
 				} else {
 					switch ( $options->videoCodec ) {
 						case 'vp8':
@@ -1061,10 +1061,11 @@ class WebVideoTranscodeJob extends Job {
 	 *
 	 * NOTE: chunks are all in webm format
 	 *
+	 * @param string $transcodeKey
 	 * @param TranscodePreset $options
 	 * @return array
 	 */
-	private function ffmpegAddMPEGDASHOptions( TranscodePreset $options ): array {
+	private function ffmpegAddMPEGDASHOptions( string $transcodeKey, TranscodePreset $options ): array {
 		$file = $this->getFile();
 		$opts = $this->ffmpegAddWebmVideoOptions( $options );
 		$opts[] = '-use_template 1';
@@ -1074,8 +1075,9 @@ class WebVideoTranscodeJob extends Job {
 		$opts[] = '-avoid_negative_ts make_zero';
 		$opts[] = '-map_metadata -1';
 
-		$opts[] = '-init_seg_name init-$RepresentationID$.webm';
-		$opts[] = '-media_seg_name chunk-$RepresentationID$-$Number%05d$.webm';
+		$key = preg_replace( '/\.mpd$/', '', $transcodeKey );
+		$opts[] = "-init_seg_name init-\$RepresentationID\$.$key.webm";
+		$opts[] = "-media_seg_name chunk-\$RepresentationID\$-\$Number%05d\$.$key.webm";
 
 		if ( $options->segmentDuration ) {
 			$opts[] = '-seg_duration ' . (int)$options->segmentDuration;

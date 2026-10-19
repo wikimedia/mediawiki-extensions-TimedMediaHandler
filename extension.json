@@ -295,7 +295,7 @@
 				"1080p.video.vp9.mp4": false,
 				"1440p.video.vp9.mp4": false,
 				"2160p.video.vp9.mp4": false,
-				"mpd": false
+				"vp9.mpd": false
 			}
 		},
 		"EnabledAudioTranscodeSet": {
