@@ -514,17 +514,15 @@ class TranscodePresets {
 			'remuxFrom' => [ '2160p.vp9.webm' ],
 		],
 
-		// VP9 in MPEG-DASH
+		// VP9 in MPEG-DASH with 7 resolutions up to 2160p
 		// Settings here are copied from the various size/bitrate settings for vp9.webm, with some adjustments
-		// * maxSize 426x240 and 854x480 adjusted to the nearest possible exact 16:9 aspect ratio, because ffmpeg
-		//		errors if all videos in an adaptation set do not have the EXACT same aspect ratio
 		// * maxrate for 3840x2160 adjusted down to 14000k so that 4 second video chunks will be under 8MB (the limit
 		//		for caching at the edge)
 		// * twopass is false, because using -crf with -maxrate and -bufsize gives a bitrate ceiling for each rendition
 		//		and the client will switch between bitrates depending on capacity, so we don't need the
 		// 		processing/complexity cost of optimising for a particular bitrate (also the code as written right now
 		// 		(2026-04-20) can't do twopass for mpeg-dash)
-		'vp9.mpd' => [
+		'7x2160p.vp9.mpd' => [
 			'type' => 'application/dash+xml',
 			'videoCodec' => 'vp9',
 			'twopass' => false,
@@ -534,7 +532,7 @@ class TranscodePresets {
 			'segmentDuration' => '4',
 			'videoRenditions' => [
 				[
-					'maxSize' => '416x234',
+					'maxSize' => '426x240',
 					'videoBitrate' => '308k',
 					'maxrate' => '447k',
 					'crf' => '37',
@@ -549,7 +547,7 @@ class TranscodePresets {
 					'tileColumns' => '1',
 				],
 				[
-					'maxSize' => '864x486',
+					'maxSize' => '854x480',
 					'videoBitrate' => '1000k',
 					'maxrate' => '1450k',
 					'crf' => '33',
@@ -588,6 +586,41 @@ class TranscodePresets {
 					'speed' => '3',
 					'tileColumns' => '3',
 				]
+			]
+		],
+
+		// VP9 in MPEG-DASH with reduced resolution set per T413031
+		'3x1080p.vp9.mpd' => [
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'twopass' => false,
+			'audioCodec' => 'opus',
+			'audioBitrate' => '96k',
+			'segmentDuration' => '4',
+			'videoRenditions' => [
+				[
+					'maxSize' => '426x240',
+					'videoBitrate' => '308k',
+					'maxrate' => '447k',
+					'crf' => '37',
+					'speed' => '3',
+				],
+				[
+					'maxSize' => '854x480',
+					'videoBitrate' => '1000k',
+					'maxrate' => '1450k',
+					'crf' => '33',
+					'speed' => '3',
+					'tileColumns' => '1',
+				],
+				[
+					'maxSize' => '1920x1080',
+					'videoBitrate' => '3971k',
+					'maxrate' => '5757k',
+					'crf' => '31',
+					'speed' => '3',
+					'tileColumns' => '2',
+				],
 			]
 		],
 

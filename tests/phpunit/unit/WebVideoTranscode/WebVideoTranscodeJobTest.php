@@ -55,8 +55,8 @@ class WebVideoTranscodeJobTest extends TestCase {
 			$transcodePreset->videoCodec == 'vp9' ? '-vcodec libvpx-vp9' : '-vcodec libvpx',
 			'-quality good', '-use_template 1', '-use_timeline 1',
 			'-ss 0', '-avoid_negative_ts make_zero', '-map_metadata -1',
-			'-init_seg_name init-$RepresentationID$.vp9.webm',
-			'-media_seg_name chunk-$RepresentationID$-$Number%05d$.vp9.webm'
+			'-init_seg_name init-$RepresentationID$.7x2160p.vp9.webm',
+			'-media_seg_name chunk-$RepresentationID$-$Number%05d$.7x2160p.vp9.webm'
 		];
 		if ( $transcodePreset->segmentDuration ) {
 			$basic[] = '-seg_duration ' . (int)$transcodePreset->segmentDuration;
@@ -97,7 +97,7 @@ class WebVideoTranscodeJobTest extends TestCase {
 				// if all sizes are larger than the original just do a rendition at the original size
 				'-s:v:0 100x100'
 			] ),
-			$job->ffmpegAddMPEGDASHOptions( 'vp9.mpd', $transcodePreset )
+			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset )
 		);
 	}
 
@@ -158,7 +158,7 @@ class WebVideoTranscodeJobTest extends TestCase {
 				'-crf:v:2 37',
 				'-tile-columns:v:2 2',
 			] ),
-			$job->ffmpegAddMPEGDASHOptions( 'vp9.mpd', $transcodePreset )
+			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset )
 		);
 	}
 
@@ -199,7 +199,7 @@ class WebVideoTranscodeJobTest extends TestCase {
 				'-speed:v:0 3',
 				'-crf:v:0 37',
 			] ),
-			$job->ffmpegAddMPEGDASHOptions( 'vp9.mpd', $transcodePreset )
+			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset )
 		);
 	}
 
@@ -231,7 +231,7 @@ class WebVideoTranscodeJobTest extends TestCase {
 				'-speed:v:0 3',
 				'-crf:v:0 37',
 			] ),
-			$job->ffmpegAddMPEGDASHOptions( 'vp9.mpd', $transcodePreset )
+			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset )
 		);
 	}
 }
