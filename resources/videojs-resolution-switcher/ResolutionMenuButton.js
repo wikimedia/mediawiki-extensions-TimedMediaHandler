@@ -32,7 +32,6 @@ class ResolutionMenuButton extends MenuButton {
 		this.addClass( 'vjs-resolution-button' );
 
 		if ( options.dynamicLabel ) {
-
 			videojs.dom.addClass( this.label, 'vjs-resolution-button-label' );
 			this.el().appendChild( this.label );
 		} else {

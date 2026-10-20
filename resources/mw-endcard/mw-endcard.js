@@ -15,11 +15,10 @@ class EndCard extends Plugin {
 		this.userDismissed = false;
 
 		if ( options.customClass ) {
-
 			player.addClass( options.customClass );
 		}
 
-		// Add our ui element
+		// Add our UI element
 		player.ready( () => {
 			const title = player.options().mwTitle;
 
@@ -130,7 +129,6 @@ class EndCard extends Plugin {
 		widget.classList.add( 'tmh-widget' );
 
 		if ( widgetClass ) {
-
 			widget.classList.add( widgetClass );
 		}
 		return { widget, body };
@@ -189,7 +187,8 @@ class EndCard extends Plugin {
 			shareLinkButton.on( 'click', () => this.triggerShareAction() );
 		}
 
-		const { widget: linkWidget, body: linkWidgetBody } = this.createWidget( 'videojs-endcard-share-title', 'link-widget' );
+		const { widget: linkWidget, body: linkWidgetBody } =
+			this.createWidget( 'videojs-endcard-share-title', 'link-widget' );
 		linkWidgetBody.appendChild( copyLinkButton.$element[ 0 ] );
 		linkWidgetBody.appendChild( shareLinkButton.$element[ 0 ] );
 		return linkWidget;
@@ -206,11 +205,19 @@ class EndCard extends Plugin {
 		const embedUrl = url.toString();
 
 		const embed = document.createElement( 'textarea' );
-		// only values that are safe can be used directly here
-		embed.value = `<iframe width="${ mediaWidth }" height="${ mediaHeight }" frameborder="0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; web-share" allowfullscreen src="${ embedUrl }" />`;
+		embed.value = mw.html.element( 'iframe', {
+			width: mediaWidth,
+			height: mediaHeight,
+			frameborder: '0',
+			loading: 'lazy',
+			allow: 'autoplay; fullscreen; picture-in-picture; clipboard-write; web-share',
+			allowfullscreen: '',
+			src: embedUrl
+		} );
 		embed.addEventListener( 'click', () => this.copyToClipboard( embed.value ) );
 
-		const { widget: embedWidget, body: embedWidgetBody } = this.createWidget( 'videojs-endcard-embed-title', 'embed-widget' );
+		const { widget: embedWidget, body: embedWidgetBody } =
+			this.createWidget( 'videojs-endcard-embed-title', 'embed-widget' );
 
 		const copyButton = new OO.ui.ButtonWidget();
 		copyButton.setIcon( 'copy' )

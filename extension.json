@@ -522,6 +522,7 @@
 				"videojs-captions-create",
 				"videojs-endcard-share-title",
 				"videojs-endcard-copy-link",
+				"videojs-endcard-copy-failed",
 				"videojs-endcard-share",
 				"videojs-endcard-share-not-possible",
 				"videojs-endcard-embed-title",

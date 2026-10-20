@@ -13,7 +13,7 @@
 /** @type {videojs.Plugin} */
 const Plugin = videojs.getPlugin( 'plugin' );
 const ResolutionMenuButton = require( './ResolutionMenuButton.js' );
-const resolutionSwitchterDefaults = {
+const resolutionSwitcherDefaults = {
 	ui: true
 };
 
@@ -65,7 +65,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	constructor( player, options ) {
 		super( player );
 
-		this.settings = videojs.obj.merge( resolutionSwitchterDefaults, options );
+		this.settings = videojs.obj.merge( resolutionSwitcherDefaults, options );
 		/** @type {BucketObject} */
 		this.groupedSrc = {};
 		/** @type {SourceObject[]} */
@@ -88,8 +88,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 			}
 			// eslint-disable-next-line no-underscore-dangle
 			if ( this.player.options_.sources.length > 1 ) {
-				// tech: Html5 and Flash
-				// Create resolution switcher for videos form <source> tag inside <video>
+				// Create resolution switcher for videos from <source> tag inside <video>
 				// eslint-disable-next-line no-underscore-dangle
 				this.updateSrc( this.player.options_.sources );
 			}
