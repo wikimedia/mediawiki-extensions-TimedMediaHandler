@@ -145,6 +145,7 @@
 	"timedmedia-derivative-state-failed": "{{PLURAL:$1|$1 transkode mislykket|$1 transkoder mislykkedes}}",
 	"timedmedia-derivative-state-missing": "{{PLURAL:$1|$1 uinitialiseret transkode}}",
 	"timedmedia-no-derivatives": "Ingen transkodning kræves.",
+	"timedmedia-variable-bitrate": "Variabel",
 	"timedmedia-file": "Fil",
 	"timedmedia-dialog-close": "Luk medieafspilleren",
 	"timedmedia-duration-hms": "{{PLURAL:$1|$1 time|$1 timer}}, {{PLURAL:$2|$2 minut|$2 minutter}} og {{PLURAL:$3|$3 sekund|$3 sekunder}}",
