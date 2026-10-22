@@ -396,7 +396,6 @@ class TimedTextPage extends Article {
 		// Get the video embed:
 		$file = $this->getCorrespondingFile();
 		if ( !$file ) {
-			// TODO fix this message to be video AND audio
 			$this->renderStatus->error( 'timedmedia-subtitle-no-video' );
 			return '';
 		}
