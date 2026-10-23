@@ -188,6 +188,9 @@ class TranscodePresets {
 		// As of Jun 2024, 2K and 4K are disabled due to performance issues (T368433).
 		//
 		// As of Jan 2026 only 240p, 480p and 1080p are enabled by default (T413031).
+		//
+		// Oct 2026: segmentDuration added to force regular keyframes for potential later
+		// conversion to DASH. (T441595)
 
 		// Very low-bitrate
 		'120p.vp9.webm' => [
@@ -199,6 +202,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'videoCodec' => 'vp9',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
 			'type' => 'video/webm; codecs="vp9, opus"',
@@ -212,6 +216,7 @@ class TranscodePresets {
 			'crf' => '37',
 			'speed' => '3',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -226,6 +231,7 @@ class TranscodePresets {
 			'crf' => '37',
 			'speed' => '3',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -241,6 +247,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'tileColumns' => '1',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -256,6 +263,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'tileColumns' => '1',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -271,6 +279,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'tileColumns' => '2',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -286,6 +295,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'tileColumns' => '2',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -301,6 +311,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'tileColumns' => '3',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -316,6 +327,7 @@ class TranscodePresets {
 			'speed' => '3',
 			'tileColumns' => '3',
 			'twopass' => 'true',
+			'segmentDuration' => '4',
 			'videoCodec' => 'vp9',
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
@@ -522,6 +534,10 @@ class TranscodePresets {
 		//		and the client will switch between bitrates depending on capacity, so we don't need the
 		// 		processing/complexity cost of optimising for a particular bitrate (also the code as written right now
 		// 		(2026-04-20) can't do twopass for mpeg-dash)
+		//
+		// Remuxing from VP9 is possible only if the source transcodes were generated with forced
+		// keyframes at segment boundaries, which will be the case for transcodes generated after
+		// November 2026.
 		'7x2160p.vp9.mpd' => [
 			'type' => 'application/dash+xml',
 			'videoCodec' => 'vp9',
@@ -537,6 +553,7 @@ class TranscodePresets {
 					'maxrate' => '447k',
 					'crf' => '37',
 					'speed' => '3',
+					'remuxFrom' => [ '240p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '640x360',
@@ -545,6 +562,7 @@ class TranscodePresets {
 					'crf' => '36',
 					'speed' => '3',
 					'tileColumns' => '1',
+					'remuxFrom' => [ '360p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '854x480',
@@ -553,6 +571,7 @@ class TranscodePresets {
 					'crf' => '33',
 					'speed' => '3',
 					'tileColumns' => '1',
+					'remuxFrom' => [ '480p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '1280x720',
@@ -561,6 +580,7 @@ class TranscodePresets {
 					'crf' => '32',
 					'speed' => '3',
 					'tileColumns' => '2',
+					'remuxFrom' => [ '720p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '1920x1080',
@@ -569,6 +589,7 @@ class TranscodePresets {
 					'crf' => '31',
 					'speed' => '3',
 					'tileColumns' => '2',
+					'remuxFrom' => [ '1080p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '2560x1440',
@@ -577,6 +598,7 @@ class TranscodePresets {
 					'crf' => '24',
 					'speed' => '3',
 					'tileColumns' => '3',
+					'remuxFrom' => [ '1440p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '3840x2160',
@@ -585,6 +607,7 @@ class TranscodePresets {
 					'crf' => '15',
 					'speed' => '3',
 					'tileColumns' => '3',
+					'remuxFrom' => [ '2160p.vp9.webm' ],
 				]
 			]
 		],
@@ -604,6 +627,7 @@ class TranscodePresets {
 					'maxrate' => '447k',
 					'crf' => '37',
 					'speed' => '3',
+					'remuxFrom' => [ '240p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '854x480',
@@ -612,6 +636,7 @@ class TranscodePresets {
 					'crf' => '33',
 					'speed' => '3',
 					'tileColumns' => '1',
+					'remuxFrom' => [ '480p.vp9.webm' ],
 				],
 				[
 					'maxSize' => '1920x1080',
@@ -620,6 +645,7 @@ class TranscodePresets {
 					'crf' => '31',
 					'speed' => '3',
 					'tileColumns' => '2',
+					'remuxFrom' => [ '1080p.vp9.webm' ],
 				],
 			]
 		],

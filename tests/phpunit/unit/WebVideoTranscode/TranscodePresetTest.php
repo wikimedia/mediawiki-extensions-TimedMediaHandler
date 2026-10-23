@@ -50,7 +50,6 @@ class TranscodePresetTest extends TestCase {
 			'remuxFrom' => [ 'f1', 'f2' ],
 			'audioQuality' => 'aq',
 			'noUpscaling' => 'nu',
-			'aspect' => 'as',
 			'framerate' => 'fr',
 			'segmentDuration' => 'sd',
 			'videoRenditions' => [

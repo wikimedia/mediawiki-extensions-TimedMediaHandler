@@ -6,6 +6,7 @@ export TMH_FFMPEG_PASSES="${TMH_FFMPEG_PASSES:-1}"
 export TMH_FFMPEG_THREADS="${TMH_FFMPEG_THREADS:-2}"
 # Safe options with no user input or validated user input
 # These can be used unquoted.
+export TMH_OPTS_SOURCE
 # Video related
 export TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_OPTS_VIDEO_USE_ADAPTATION_SETS TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
 # Audio-related
@@ -66,7 +67,8 @@ doFfmpegEncode() {
 
 
 	# Please note, the unquoted entries are unquoted on purpose here.
-	"$TMH_FFMPEG_PATH" -nostdin -nostats -y -i original.video \
+	"$TMH_FFMPEG_PATH" -nostdin -nostats -y \
+		$TMH_OPTS_SOURCE \
 		$TMH_OPTS_VIDEO \
 		$AUDIO_OPTS \
 		$PASS_OPTS \

@@ -95,7 +95,13 @@ class WebVideoTranscodeJobTest extends TestCase {
 		$this->assertEquals(
 			array_merge( $this->getBasicOpts( $transcodePreset, 1 ), [
 				// if all sizes are larger than the original just do a rendition at the original size
-				'-s:v:0 100x100'
+				'-s:v:0 100x100',
+				// we still need codec parameters
+				'-b:v:0 95000',
+				'-maxrate:v:0 137000',
+				'-bufsize:v:0 548000',
+				'-speed:v:0 3',
+				'-crf:v:0 37',
 			] ),
 			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset )
 		);
@@ -232,6 +238,60 @@ class WebVideoTranscodeJobTest extends TestCase {
 				'-crf:v:0 37',
 			] ),
 			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset )
+		);
+	}
+
+	public function testFfmpegAddMPEGDashOptions_remux() {
+		$job = $this->createJob( 1906, 1046 );
+		$transcodePreset = new TranscodePreset( [
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'twopass' => false,
+			'audioCodec' => 'opus',
+			'audioBitrate' => '96k',
+			'segmentDuration' => '4',
+			'videoRenditions' => [
+				[
+					'maxSize' => '213x120',
+					'videoBitrate' => '95k',
+					'maxrate' => '137k',
+					'crf' => '37',
+					'speed' => '3',
+				],
+				[
+					'maxSize' => '320x180',
+					'videoBitrate' => '189k',
+					'maxrate' => '274k',
+					'crf' => '37',
+					'speed' => '3',
+				],
+				[
+					'maxSize' => '426x240',
+					'videoBitrate' => '308k',
+					'maxrate' => '447k',
+					'crf' => '37',
+					'speed' => '3',
+					'tileColumns' => '2',
+				],
+			]
+		] );
+		$this->assertEquals(
+			[
+				'-use_template 1',
+				'-use_timeline 1',
+				'-ss 0',
+				'-avoid_negative_ts make_zero',
+				'-map_metadata -1',
+				'-init_seg_name init-$RepresentationID$.7x2160p.vp9.webm',
+				'-media_seg_name chunk-$RepresentationID$-$Number%05d$.7x2160p.vp9.webm',
+				'-seg_duration 4',
+				'-map 0:a?',
+				'-aspect 1906:1046',
+				'-map 0:v',
+				'-map 1:v',
+				'-map 2:v',
+			],
+			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset, true )
 		);
 	}
 }

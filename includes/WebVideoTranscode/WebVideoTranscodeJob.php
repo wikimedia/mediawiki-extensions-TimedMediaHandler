@@ -40,7 +40,7 @@ class WebVideoTranscodeJob extends Job {
 	public ?TempFSFile $targetPlaylistFile = null;
 	/** @var File|false */
 	public $file;
-	private ?string $remuxVirtualUrl = null;
+	private array $remuxSources = [];
 
 	/**
 	 * @param Title $title
@@ -277,19 +277,11 @@ class WebVideoTranscodeJob extends Job {
 			$codecs = [ 'vp8', 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
 			$twopass = (bool)$options->twopass;
 
-			// Was the _job_ enqueued with the remux option variant?
-			$remux = $this->params['remux'] ?? false;
-			// Does the _transcode config_ have a list of remux sources?
-			$remuxFrom = $options->remuxFrom;
-			if ( $remux && $remuxFrom ) {
-				foreach ( $remuxFrom as $altKey ) {
-					$altVirtualUrl = WebVideoTranscode::getDerivativeFilePath( $file, $altKey );
-					$repo = $this->file->repo;
-					if ( $repo->fileExists( $altVirtualUrl ) ) {
-						$this->remuxVirtualUrl = $altVirtualUrl;
-						$twopass = false;
-						break;
-					}
+			if ( ( $this->params['remux'] ?? false ) ) {
+				$remuxSources = $this->findRemuxSources( $options );
+				if ( $remuxSources ) {
+					$this->remuxSources = $remuxSources;
+					$twopass = false;
 				}
 			}
 			$cmdResult = null;
@@ -519,6 +511,53 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
+	 * Get virtual URLs for remux sources for a given transcode
+	 *
+	 * @param TranscodePreset $options
+	 * @return string[]
+	 */
+	private function findRemuxSources( TranscodePreset $options ): array {
+		$source = $this->findRemuxSource( $options->remuxFrom );
+		if ( $source ) {
+			return [ $source ];
+		}
+		if ( $options->videoRenditions ) {
+			$sources = [];
+			$renditions = $this->getRenditions( $options );
+			foreach ( $renditions as $rendition ) {
+				$source = $this->findRemuxSource( $rendition->remuxFrom );
+				if ( $source !== null ) {
+					$sources[] = $source;
+				}
+			}
+			// All or nothing
+			if ( count( $sources ) == count( $renditions ) ) {
+				return $sources;
+			}
+		}
+		return [];
+	}
+
+	/**
+	 * Find the first existing virtual URL for a given list of transcode keys
+	 *
+	 * @param string[]|null $keys
+	 * @return string|null
+	 */
+	private function findRemuxSource( ?array $keys ): ?string {
+		$file = $this->file;
+		foreach ( $keys ?? [] as $key ) {
+			$url = WebVideoTranscode::getDerivativeFilePath( $file, $key );
+			if ( $file->getRepo()->fileExists( $url ) ) {
+				return $url;
+			} else {
+				$this->output( "Remux source not found: $url" );
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * Gets a boxedCommand executor
 	 * @param string $name The route name for the BoxedCommand
 	 */
@@ -581,14 +620,19 @@ class WebVideoTranscodeJob extends Job {
 				$fps = $maxFps;
 			}
 
-			if ( $this->remuxVirtualUrl !== null ) {
+			if ( $this->remuxSources ) {
 				$videoOpts[] = '-vcodec copy';
 				$optsEnv['TMH_REMUX'] = 'yes';
+				if ( count( $options->videoRenditions ) > 0 ) {
+					$videoOpts = array_merge( $videoOpts,
+						$this->ffmpegAddMPEGDASHOptions( $transcodeKey, $options, true ) );
+				}
 			} else {
 				$optsEnv['TMH_REMUX'] = 'no';
 				$optsEnv['TMH_OPT_VIDEOCODEC'] = $options->videoCodec;
 				if ( count( $options->videoRenditions ) > 0 ) {
-					$videoOpts = array_merge( $videoOpts, $this->ffmpegAddMPEGDASHOptions( $transcodeKey, $options ) );
+					$videoOpts = array_merge( $videoOpts,
+						$this->ffmpegAddMPEGDASHOptions( $transcodeKey, $options ) );
 				} else {
 					switch ( $options->videoCodec ) {
 						case 'vp8':
@@ -630,12 +674,17 @@ class WebVideoTranscodeJob extends Job {
 					// assume defaults work
 			}
 
-			// Check for Interval
-			$keyframeInterval = round( $fps * $interval );
-			$videoOpts[] = '-g ' . $keyframeInterval;
+			if ( $options->segmentDuration !== null ) {
+				// If an explicit segment duration was given, force keyframes at
+				// those exact locations to allow bitstream switching.
+				$videoOpts[] = "-force_key_frames expr:gte(t,n_forced*$interval)";
+			} else {
+				$keyframeInterval = round( $fps * $interval );
+				$videoOpts[] = '-g ' . $keyframeInterval;
+			}
 
 			$videoOpts = array_merge( $videoOpts, $this->ffmpegAddVideoBitrateOptions( $options ) );
-			if ( $this->remuxVirtualUrl === null ) {
+			if ( !$this->remuxSources ) {
 				// If necessary, add deinterlacing options
 				$videoOpts = array_merge( $videoOpts, $this->ffmpegAddDeinterlaceOptions( $options ) );
 				// Add size options:
@@ -699,22 +748,41 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		// Audio options
-		$optsEnv['TMH_OPT_NOAUDIO'] = $options->noaudio !== null ? "yes" : "no";
-		$optsEnv['TMH_OPTS_AUDIO'] = implode( ' ', $this->ffmpegAddAudioOptions( $options ) );
+		if ( $options->noaudio !== null ) {
+			$optsEnv['TMH_OPT_NOAUDIO'] = 'yes';
+		} else {
+			$optsEnv['TMH_OPT_NOAUDIO'] = 'no';
+			if ( $this->remuxSources ) {
+				$optsEnv['TMH_OPTS_AUDIO'] = '-acodec copy';
+			} else {
+				$optsEnv['TMH_OPTS_AUDIO'] = implode( ' ', $this->ffmpegAddAudioOptions( $options ) );
+			}
+		}
 
 		$cmd = $this->getCommand( 'ffmpegencode' );
 		$this->useScript( $cmd, 'ffmpeg-encode.sh' );
 		// set up options that don't need mangling
 
-		if ( $this->remuxVirtualUrl !== null ) {
-			$addStatus = $sourceFile->getRepo()->addShellboxInputFile(
-				$cmd, 'original.video', $this->remuxVirtualUrl );
+		if ( $this->remuxSources ) {
+			$sourceOpts = [];
+			foreach ( array_values( $this->remuxSources ) as $i => $url ) {
+				$name = "source$i.video";
+				$addStatus = $sourceFile->getRepo()->addShellboxInputFile(
+					$cmd, $name, $url );
+				if ( !$addStatus->isOK() ) {
+					throw new TranscodeError( 'source file is missing. Encoding failed.' );
+				}
+				$sourceOpts[] = "-i $name";
+			}
+			$optsEnv['TMH_OPTS_SOURCE'] = implode( ' ', $sourceOpts );
 		} else {
 			$addStatus = $sourceFile->addToShellboxCommand( $cmd, 'original.video' );
+			if ( !$addStatus->isOK() ) {
+				throw new TranscodeError( 'source file is missing. Encoding failed.' );
+			}
+			$optsEnv['TMH_OPTS_SOURCE'] = '-i original.video';
 		}
-		if ( !$addStatus->isOK() ) {
-			throw new TranscodeError( 'source file is missing. Encoding failed.' );
-		}
+
 		$backgroundMemoryLimit = $this->config->get( 'TranscodeBackgroundMemoryLimit' ) * 1024;
 		$wallTimeLimit = (int)$this->config->get( 'TranscodeBackgroundTimeLimit' );
 		$cpuTimeLimit = (int)$this->config->get( 'FFmpegThreads' ) * $wallTimeLimit;
@@ -896,12 +964,10 @@ class WebVideoTranscodeJob extends Job {
 		// Get a local pointer to the file object
 		$file = $this->getFile();
 
-		if ( ( $options->width && $options->width > 0 )
-			&&
-			( $options->height && $options->height > 0 )
-		) {
-			// Check for aspect ratio
-			$aspectRatio = $options->aspect ?? $file->getWidth() . ':' . $file->getHeight();
+		// If the preset width and height options are set (only relevant for
+		// QuickTime), add -aspect.
+		if ( $options->width > 0 && $options->height > 0 ) {
+			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
 			$opts[] = '-aspect' . $renditionIdentifier . ' ' . $aspectRatio;
 		}
 		$sizeString = $this->getAdjustedSizeString( $options );
@@ -1076,16 +1142,27 @@ class WebVideoTranscodeJob extends Job {
 	 *
 	 * @param string $transcodeKey
 	 * @param TranscodePreset $options
+	 * @param bool $remux Whether we are copying streams from input files
 	 * @return array
 	 */
-	private function ffmpegAddMPEGDASHOptions( string $transcodeKey, TranscodePreset $options ): array {
-		$file = $this->getFile();
-		$opts = $this->ffmpegAddWebmVideoOptions( $options );
+	private function ffmpegAddMPEGDASHOptions(
+		string $transcodeKey,
+		TranscodePreset $options,
+		bool $remux = false
+	): array {
+		if ( $remux ) {
+			// No need for libvpx options when copying
+			$opts = [];
+		} else {
+			$opts = $this->ffmpegAddWebmVideoOptions( $options );
+		}
+
 		$opts[] = '-use_template 1';
 		$opts[] = '-use_timeline 1';
 		// make sure the first frame is at time zero
 		$opts[] = '-ss 0';
 		$opts[] = '-avoid_negative_ts make_zero';
+		// don't copy metadata
 		$opts[] = '-map_metadata -1';
 
 		$key = preg_replace( '/\.mpd$/', '', $transcodeKey );
@@ -1099,57 +1176,84 @@ class WebVideoTranscodeJob extends Job {
 			$opts[] = '-map 0:a?';
 		}
 
+		if ( $remux ) {
+			// Force the aspect ratio to avoid a DAR mismatch error in the muxer
+			$opts[] = "-aspect " . $this->file->getWidth() . ':' . $this->file->getHeight();
+		}
+
 		$renditionNumber = 0;
 		// create a separate array for the renditions opts, because they should come after all the '-map' opts
 		$renditionsOpts = [];
-		$fileWidth = $file->getWidth();
-		foreach ( $options->videoRenditions as $videoRendition ) {
-			$requestedSize = $this->getSizeStringFromOptions( $videoRendition );
-			if ( $requestedSize ) {
-				[ $renditionWidth, ] = explode( 'x', $requestedSize, 2 );
-				if ( (int)$renditionWidth <= (int)$fileWidth ) {
-					$opts[] = '-map 0:v';
-					$renditionsOpts = array_merge(
-						$renditionsOpts,
-						$this->ffmpegAddVideoSizeOptions( $videoRendition, $renditionNumber )
-					);
-					$renditionsOpts = array_merge(
-						$renditionsOpts,
-						$this->ffmpegAddVideoBitrateOptions(
-							$videoRendition, $renditionNumber, $options->segmentDuration
-						)
-					);
-					if ( $videoRendition->speed ) {
-						$renditionsOpts[] = "-speed:v:" . $renditionNumber . " " . (int)$videoRendition->speed;
+		foreach ( $this->getRenditions( $options ) as $videoRendition ) {
+			if ( $remux ) {
+				// Get the nth video rendition from the nth input file
+				$opts[] = "-map $renditionNumber:v";
+			} else {
+				$opts[] = '-map 0:v';
+
+				$renditionsOpts = array_merge(
+					$renditionsOpts,
+					$this->ffmpegAddVideoSizeOptions( $videoRendition, $renditionNumber )
+				);
+				$renditionsOpts = array_merge(
+					$renditionsOpts,
+					$this->ffmpegAddVideoBitrateOptions(
+						$videoRendition, $renditionNumber, $options->segmentDuration
+					)
+				);
+				if ( $videoRendition->speed ) {
+					$renditionsOpts[] = "-speed:v:" . $renditionNumber . " " . (int)$videoRendition->speed;
+				}
+				if ( $videoRendition->crf ) {
+					$renditionsOpts[] = "-crf:v:" . $renditionNumber . " " . (int)$videoRendition->crf;
+				}
+				if ( $options->videoCodec === 'vp9' ) {
+					if ( $videoRendition->tileColumns ) {
+						$renditionsOpts[] = "-tile-columns:v:" . $renditionNumber . " " .
+							(int)$videoRendition->tileColumns;
 					}
-					if ( $videoRendition->crf ) {
-						$renditionsOpts[] = "-crf:v:" . $renditionNumber . " " . (int)$videoRendition->crf;
+				} else {
+					if ( $videoRendition->slices ) {
+						$renditionsOpts[] = "-slices:v:" . $renditionNumber . " " . (int)$videoRendition->slices;
 					}
-					if ( $options->videoCodec === 'vp9' ) {
-						if ( $videoRendition->tileColumns ) {
-							$renditionsOpts[] = "-tile-columns:v:" . $renditionNumber . " " .
-								(int)$videoRendition->tileColumns;
-						}
-					} else {
-						if ( $videoRendition->slices ) {
-							$renditionsOpts[] = "-slices:v:" . $renditionNumber . " " . (int)$videoRendition->slices;
-						}
-					}
-					$renditionNumber++;
 				}
 			}
-		}
-
-		// Deal with the case where the original video is smaller than all the specific renditions
-		if ( count( $renditionsOpts ) == 0 ) {
-			$opts[] = '-map 0:v';
-			$renditionsOpts = $this->ffmpegAddVideoSizeOptions(
-				new TranscodePreset( [ 'maxSize' => $fileWidth . 'x' . $file->getHeight() ] ),
-				0
-			);
+			$renditionNumber++;
 		}
 
 		return array_merge( $opts, $renditionsOpts );
+	}
+
+	/**
+	 * Get the video renditions which need to be rendered for the current file.
+	 * This is all preset renditions smaller than the original, or a single
+	 * small rendition if all are smaller.
+	 *
+	 * This should only be called for presets that have renditions.
+	 *
+	 * @param TranscodePreset $options
+	 * @return TranscodePreset[]
+	 */
+	private function getRenditions( TranscodePreset $options ): array {
+		$fileWidth = $this->file->getWidth();
+		$renditions = [];
+		foreach ( $options->videoRenditions as $rendition ) {
+			$requestedSize = $this->getSizeStringFromOptions( $rendition );
+			if ( $requestedSize ) {
+				[ $renditionWidth, ] = explode( 'x', $requestedSize, 2 );
+				if ( (int)$renditionWidth <= (int)$fileWidth ) {
+					$renditions[] = $rendition;
+				}
+			}
+		}
+		if ( $renditions ) {
+			return $renditions;
+		}
+
+		// If all renditions were smaller than the original, use the smallest preset
+		$renditions = $options->videoRenditions;
+		usort( $renditions, static fn ( $a, $b ) => $a->getMaxWidth() <=> $b->getMaxWidth() );
+		return [ $renditions[0] ];
 	}
 
 	private function isInterlaced(): bool {

@@ -84,9 +84,6 @@ class TranscodePreset {
 	/** @var string|null Whether to disable upscaling of the video (e.g., "true"). */
 	public ?string $noUpscaling = null;
 
-	/** @var string|null The aspect ratio of the video (e.g., "16:9"). Corresponds to ffmpeg option: -aspect */
-	public ?string $aspect = null;
-
 	/** @var string|null The frame rate of the video (e.g., "24", "29.97"). Corresponds to ffmpeg option: -r */
 	public ?string $framerate = null;
 
@@ -129,5 +126,13 @@ class TranscodePreset {
 		} else {
 			return $this->maxSize;
 		}
+	}
+
+	public function getMaxWidth(): ?int {
+		$size = $this->getMaxSize();
+		if ( $size === null ) {
+			return null;
+		}
+		return (int)explode( 'x', $size, 2 )[0];
 	}
 }
