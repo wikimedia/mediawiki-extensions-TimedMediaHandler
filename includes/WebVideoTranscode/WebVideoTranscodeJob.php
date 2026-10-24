@@ -68,13 +68,6 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * Accessor for MainConfig
-	 */
-	private function getConfig(): Config {
-		return $this->config;
-	}
-
-	/**
 	 * Wrapper around debug logger
 	 */
 	private function output( string $msg ) {
