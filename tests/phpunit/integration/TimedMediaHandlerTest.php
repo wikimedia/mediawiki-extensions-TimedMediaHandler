@@ -27,20 +27,16 @@ class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 	public static function providerParseParamString() {
 		return [
 			[
-				'mid',
-				[],
+				'220px',
+				[ 'width' => 220 ],
 			],
 			[
 				'220px-',
 				[ 'width' => 220 ],
 			],
 			[
-				'seek=30',
-				[ 'thumbtime' => 30.0 ],
-			],
-			[
-				'seek=15.72',
-				[ 'thumbtime' => 15.72 ],
+				'220px-seek=15.72',
+				[ 'thumbtime' => 15.72, 'width' => 220 ],
 			],
 			[
 				'180px-seek=15',
