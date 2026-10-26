@@ -60,7 +60,6 @@ abstract class TimedMediaHandler extends MediaHandler {
 		// Add the width param string ( same as images {width}px )
 		$width = $params['physicalWidth'] ?? $params['width'] ?? null;
 		$paramString = ( $width ) ? $width . 'px' : '';
-		$paramString .= ( $paramString !== '' ) ? '-' : '';
 
 		// Get the raw thumbTime from thumbtime or start param
 		if ( isset( $params['thumbtime'] ) ) {
@@ -74,33 +73,24 @@ abstract class TimedMediaHandler extends MediaHandler {
 		if ( $thumbTime !== false ) {
 			$time = self::parseTimeString( $thumbTime );
 			if ( $time !== false ) {
-				return $paramString . 'seek=' . $time;
+				return $paramString . '-seek=' . $time;
 			}
 		}
 
-		if ( !$paramString ) {
-			$paramString = 'mid';
-		}
 		return $paramString;
 	}
 
 	/** @inheritDoc */
 	public function parseParamString( $str ) {
 		$params = [];
-		if ( preg_match( '/^(mid|(\d*)px-)*(seek=([\d.]+))*$/', $str, $matches ) ) {
-			$size = $thumbtime = null;
+		if (
+			preg_match( '/^(\d+)px(?:-seek=([\d.]+))?$/', $str, $matches ) ||
+			// Old double dash format ("320px--File.webm.jpg"), still used by older clients (T442324)
+			preg_match( '/^(\d+)px-$/', $str, $matches )
+		) {
+			$params['width'] = (int)$matches[1];
 			if ( isset( $matches[2] ) ) {
-				$size = $matches[2];
-			}
-			if ( isset( $matches[4] ) ) {
-				$thumbtime = $matches[4];
-			}
-
-			if ( $size !== null && $size !== '' ) {
-				$params['width'] = (int)$size;
-			}
-			if ( $thumbtime !== null ) {
-				$params['thumbtime'] = (float)$thumbtime;
+				$params['thumbtime'] = (float)$matches[2];
 			}
 			// valid thumbnail URL
 			return $params;
