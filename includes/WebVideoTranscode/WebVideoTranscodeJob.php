@@ -523,7 +523,7 @@ class WebVideoTranscodeJob extends Job {
 		}
 		if ( $options->videoRenditions ) {
 			$sources = [];
-			$renditions = $this->getRenditions( $options );
+			$renditions = WebVideoTranscode::getRenditions( $options, $this->file );
 			foreach ( $renditions as $rendition ) {
 				$source = $this->findRemuxSource( $rendition->remuxFrom );
 				if ( $source !== null ) {
@@ -977,18 +977,6 @@ class WebVideoTranscodeJob extends Job {
 		return $opts;
 	}
 
-	private function getSizeStringFromOptions( TranscodePreset $options ): ?string {
-		if ( $options->maxSize ) {
-			return $options->maxSize;
-		} elseif ( ( $options->width && $options->width > 0 )
-			&&
-			( $options->height && $options->height > 0 )
-		) {
-			return (int)$options->width . 'x' . (int)$options->height;
-		}
-		return null;
-	}
-
 	/**
 	 * Get the requested size string, but if it's greater than the size of the existing video return the existing size
 	 *
@@ -997,7 +985,7 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function getAdjustedSizeString( TranscodePreset $options ): string {
 		$file = $this->getFile();
-		$requestedMaxSize = $this->getSizeStringFromOptions( $options );
+		$requestedMaxSize = WebVideoTranscode::getSizeStringFromOptions( $options );
 		if ( $requestedMaxSize ) {
 			// Get size transform (if maxSize is > file, file size is used):
 			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $requestedMaxSize );
@@ -1165,6 +1153,7 @@ class WebVideoTranscodeJob extends Job {
 		// don't copy metadata
 		$opts[] = '-map_metadata -1';
 
+		// Keep in sync with WebVideoTranscode::getDashChunkNames()
 		$key = preg_replace( '/\.mpd$/', '', $transcodeKey );
 		$opts[] = "-init_seg_name init-\$RepresentationID\$.$key.webm";
 		$opts[] = "-media_seg_name chunk-\$RepresentationID\$-\$Number%05d\$.$key.webm";
@@ -1184,7 +1173,8 @@ class WebVideoTranscodeJob extends Job {
 		$renditionNumber = 0;
 		// create a separate array for the renditions opts, because they should come after all the '-map' opts
 		$renditionsOpts = [];
-		foreach ( $this->getRenditions( $options ) as $videoRendition ) {
+		$renditions = WebVideoTranscode::getRenditions( $options, $this->file );
+		foreach ( $renditions as $videoRendition ) {
 			if ( $remux ) {
 				// Get the nth video rendition from the nth input file
 				$opts[] = "-map $renditionNumber:v";
@@ -1222,38 +1212,6 @@ class WebVideoTranscodeJob extends Job {
 		}
 
 		return array_merge( $opts, $renditionsOpts );
-	}
-
-	/**
-	 * Get the video renditions which need to be rendered for the current file.
-	 * This is all preset renditions smaller than the original, or a single
-	 * small rendition if all are smaller.
-	 *
-	 * This should only be called for presets that have renditions.
-	 *
-	 * @param TranscodePreset $options
-	 * @return TranscodePreset[]
-	 */
-	private function getRenditions( TranscodePreset $options ): array {
-		$fileWidth = $this->file->getWidth();
-		$renditions = [];
-		foreach ( $options->videoRenditions as $rendition ) {
-			$requestedSize = $this->getSizeStringFromOptions( $rendition );
-			if ( $requestedSize ) {
-				[ $renditionWidth, ] = explode( 'x', $requestedSize, 2 );
-				if ( (int)$renditionWidth <= (int)$fileWidth ) {
-					$renditions[] = $rendition;
-				}
-			}
-		}
-		if ( $renditions ) {
-			return $renditions;
-		}
-
-		// If all renditions were smaller than the original, use the smallest preset
-		$renditions = $options->videoRenditions;
-		usort( $renditions, static fn ( $a, $b ) => $a->getMaxWidth() <=> $b->getMaxWidth() );
-		return [ $renditions[0] ];
 	}
 
 	private function isInterlaced(): bool {

@@ -490,10 +490,17 @@ class WebVideoTranscode {
 			$filesToPurge[] = $filePath;
 
 			$options = self::transcodePresets()->findByKey( $tKey );
-			if ( $options && $options->streaming === 'hls' ) {
+			if ( $options?->streaming === 'hls' ) {
 				$urlsToPurge[] = $urlPath . '.m3u8';
 				$filesToPurge[] = $filePath . '.m3u8';
 				$hasHLS = true;
+			}
+			if ( $options?->type === 'application/dash+xml' ) {
+				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable -- $options can't be null
+				foreach ( self::getDashChunkNames( $file, $tKey, $options ) as $chunkName ) {
+					$filesToPurge[] = $file->getTranscodedPath( $chunkName );
+					$urlsToPurge[] = $file->getTranscodedUrl( $chunkName );
+				}
 			}
 		}
 		if ( $hasHLS && $transcodeKey === false ) {
@@ -534,6 +541,93 @@ class WebVideoTranscode {
 			// We only removed a single transcode, so we need to update the manifests
 			static::updateStreamingManifests( $file );
 		}
+	}
+
+	/**
+	 * Get the DASH chunk names which may possibly exist for a given transcode
+	 *
+	 * @param File $file
+	 * @param string $transcodeKey
+	 * @param TranscodePreset $options
+	 * @return \Generator|string[]
+	 */
+	public static function getDashChunkNames(
+		File $file,
+		string $transcodeKey,
+		TranscodePreset $options
+	) {
+		// Get the number of video renditions
+		$numRenditions = count( self::getRenditions( $options, $file ) );
+		// Add one for audio, if there is audio
+		$handler = $file->getHandler();
+		if ( $handler instanceof TimedMediaHandler && $handler->hasAudio( $file ) ) {
+			$numRenditions++;
+		}
+		$segmentDuration = (int)$options->segmentDuration;
+		if ( !$segmentDuration ) {
+			return;
+		}
+		$suffix = preg_replace( '/\.mpd$/', '.webm', $transcodeKey );
+		// ffmpeg treats the segment size as a minimum, so the number of segments
+		// calculated this way is the maximum.
+		$numSegments = (int)ceil( $handler->getLength( $file ) / $segmentDuration );
+		for ( $r = 0; $r < $numRenditions; $r++ ) {
+			yield "init-$r.$suffix";
+			for ( $c = 1; $c <= $numSegments; $c++ ) {
+				yield sprintf( 'chunk-%d-%05d.%s', $r, $c, $suffix );
+			}
+		}
+	}
+
+	/**
+	 * Get the video renditions which need to be rendered for a given file.
+	 * This is all preset renditions smaller than the width, or a single small
+	 * rendition if all are smaller.
+	 *
+	 * This should only be called for presets that have renditions.
+	 *
+	 * @param TranscodePreset $options
+	 * @param File $file
+	 * @return TranscodePreset[]
+	 */
+	public static function getRenditions( TranscodePreset $options, File $file ): array {
+		$renditions = [];
+		$fileWidth = (int)$file->getWidth();
+		foreach ( $options->videoRenditions as $rendition ) {
+			$requestedSize = self::getSizeStringFromOptions( $rendition );
+			if ( $requestedSize ) {
+				[ $renditionWidth, ] = explode( 'x', $requestedSize, 2 );
+				if ( (int)$renditionWidth <= $fileWidth ) {
+					$renditions[] = $rendition;
+				}
+			}
+		}
+		if ( $renditions ) {
+			return $renditions;
+		}
+
+		// If all renditions were smaller than the original, use the smallest preset
+		$renditions = $options->videoRenditions;
+		usort( $renditions, static fn ( $a, $b ) => $a->getMaxWidth() <=> $b->getMaxWidth() );
+		return [ $renditions[0] ];
+	}
+
+	/**
+	 * Get a size string like 640x480 from a preset, or null if there is none.
+	 *
+	 * @param TranscodePreset $options
+	 * @return string|null
+	 */
+	public static function getSizeStringFromOptions( TranscodePreset $options ): ?string {
+		if ( $options->maxSize ) {
+			return $options->maxSize;
+		} elseif ( ( $options->width && $options->width > 0 )
+			&&
+			( $options->height && $options->height > 0 )
+		) {
+			return (int)$options->width . 'x' . (int)$options->height;
+		}
+		return null;
 	}
 
 	/**
