@@ -25,9 +25,9 @@ https://www.mediawiki.org/wiki/Extension:TimedMediaHandler
 The `ogv.js` WebAssembly codec shim has been removed as Safari and Edge now
 support WebM VP8/VP9/Vorbis/Opus playback natively.
 
-For iPhones and iPads prior to iOS 17.4, consider enabling the 144p MJPEG
-fallback transcode used on Wikimedia sites or MP4/H.264 transcodes if your
-licensing situation allows it.
+For iPhones and iPads prior to iOS 17.4, consider enabling MP4/H.264
+transcodes if your licensing situation allows it. Alternatively, you can enable
+"MPEG-4 Visual" instead. The last patent for MPEG-4 Visual expired in July 2026.
 
 Support for segmented VP9 files using an MPEG-DASH manifest has been added,
 but please check for patent issues before using this option.

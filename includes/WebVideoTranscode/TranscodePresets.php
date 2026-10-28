@@ -192,7 +192,6 @@ class TranscodePresets {
 		// * stereo.audio.mp3 audio (for Safari 16 and below)
 		// * stereo.audio.opus.mp4 audio (for Chromium, Firefox, Safari 17)
 		// * surround.audio.opus.mp4 audio (reserved for future expansion)
-		// * 144p.video.mjpeg.mov fallback video for old iOS (optional)
 		// * 180p .. 480p.video.mpeg4.mp4 fallback video for old iOS (optional)
 		// * 240p .. 2160p.video.vp9.mp4 video
 		// * .m3u8 playlists
@@ -234,21 +233,7 @@ class TranscodePresets {
 		// Optional back-compat for iOS before 17.4 (which adds consistent WebM)
 		// Flat files because HLS support varies based on iOS version
 		//
-		// Motion-JPEG compresses very poorly, but works consistently.
-		// AAC-LC for the audio track:
-		'144p.mjpeg.mov' => [
-			'maxSize' => '256x144',
-			'fpsmax' => '30',
-			'videoBitrate' => '1000k',
-			'videoCodec' => 'mjpeg',
-			'audioCodec' => 'mp3',
-			'audioBitrate' => '128k',
-			'samplerate' => '48000',
-			'channels' => '2',
-			'type' => 'video/quicktime'
-		],
-		// MPEG-4 Visual compresses a lot better, and allows a more
-		// suitable resolution for online viewing.
+		// MPEG-4 Visual allows a suitable resolution for online viewing.
 		// AAC-LC for the audio track:
 		'360p.mpeg4.mov' => [
 			'maxSize' => '640x360',
@@ -261,24 +246,6 @@ class TranscodePresets {
 			'channels' => '2',
 			'type' => 'video/quicktime; codecs="mp4v"',
 		],
-		// Streaming Motion-JPEG track
-		//
-		// These are video-only, in fragmented .mov that allows adaptive streaming
-		// with chunks split at fragment boundaries listed in an associated .m3u8
-		// streaming playlist. MJPEG works with iOS on hardware that doesn't support
-		// the VP9 codec, but is poorly compressed for the low resolution.
-		'144p.video.mjpeg.mov' => [
-			'width' => '176',
-			'height' => '144',
-			'fpsmax' => '30',
-			'videoBitrate' => '1000k',
-			'videoCodec' => 'mjpeg',
-			'noaudio' => 'true',
-			'type' => 'video/quicktime; codecs="jpeg"',
-			'streaming' => 'hls',
-			'intraframe' => true,
-		],
-
 		// VP9 streaming tracks
 		//
 		// These are video-only, in fragmented .mp4 that allows adaptive streaming

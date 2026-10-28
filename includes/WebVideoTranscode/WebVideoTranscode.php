@@ -345,12 +345,7 @@ class WebVideoTranscode {
 			$settings = self::transcodePresets()->findByKey( $lastHLS );
 			[ $width, $height ] = static::getMaxSizeTransform(
 				$file,
-				$settings->getMaxSize() ?? (
-					implode( 'x', [
-						$settings->width ?? '0',
-						$settings->height ?? '0',
-					] )
-				)
+				$settings->getMaxSize() ?? '0x0'
 			);
 			$sources[] = [
 				'src' => $src,
@@ -594,9 +589,8 @@ class WebVideoTranscode {
 		$renditions = [];
 		$fileWidth = (int)$file->getWidth();
 		foreach ( $options->videoRenditions as $rendition ) {
-			$requestedSize = self::getSizeStringFromOptions( $rendition );
-			if ( $requestedSize ) {
-				[ $renditionWidth, ] = explode( 'x', $requestedSize, 2 );
+			if ( $rendition->maxSize ) {
+				[ $renditionWidth, ] = explode( 'x', $rendition->maxSize, 2 );
 				if ( (int)$renditionWidth <= $fileWidth ) {
 					$renditions[] = $rendition;
 				}
@@ -610,24 +604,6 @@ class WebVideoTranscode {
 		$renditions = $options->videoRenditions;
 		usort( $renditions, static fn ( $a, $b ) => $a->getMaxWidth() <=> $b->getMaxWidth() );
 		return [ $renditions[0] ];
-	}
-
-	/**
-	 * Get a size string like 640x480 from a preset, or null if there is none.
-	 *
-	 * @param TranscodePreset $options
-	 * @return string|null
-	 */
-	public static function getSizeStringFromOptions( TranscodePreset $options ): ?string {
-		if ( $options->maxSize ) {
-			return $options->maxSize;
-		} elseif ( ( $options->width && $options->width > 0 )
-			&&
-			( $options->height && $options->height > 0 )
-		) {
-			return (int)$options->width . 'x' . (int)$options->height;
-		}
-		return null;
 	}
 
 	/**

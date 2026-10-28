@@ -66,15 +66,6 @@ class TranscodePreset {
 	/** @var string|null Whether to disable audio in the transcode (e.g., "true"). Corresponds to ffmpeg option: -an */
 	public ?string $noaudio = null;
 
-	/** @var string|null The width of the video in pixels. Corresponds to ffmpeg option: -vf scale=width. */
-	public ?string $width = null;
-
-	/** @var string|null The height of the video in pixels. Corresponds to ffmpeg option: -vf scale=height. */
-	public ?string $height = null;
-
-	/** @var string|null Whether to enable intra-frame compression (e.g., "true"). Corresponds to ffmpeg option: -intra */
-	public ?string $intraframe = null;
-
 	/** @var string[]|null A list of formats from which the video can be remuxed. */
 	public ?array $remuxFrom = null;
 

@@ -274,7 +274,7 @@ class WebVideoTranscodeJob extends Job {
 			// Check the codec see which encode method to call;
 			$streaming = $options->streaming;
 			$videoCodec = $options->videoCodec ?? '';
-			$codecs = [ 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
+			$codecs = [ 'vp9', 'h264', 'h263', 'mpeg4' ];
 			$twopass = (bool)$options->twopass;
 
 			if ( ( $this->params['remux'] ?? false ) ) {
@@ -712,9 +712,8 @@ class WebVideoTranscodeJob extends Job {
 				// filenames and we have to rewrite everything anyway.
 				// We'll generate an .m3u8 from the file structure after.
 
-				if ( $options->novideo !== null || $options->intraframe !== null ) {
+				if ( $options->novideo !== null ) {
 					// Audio-only tracks should be fragmented around the standard interval.
-					// Intraframe-only codecs like Motion-JPEG should also be treated this way.
 					$movflagsOpts[] = '-movflags +empty_moov+default_base_moof';
 					$movflagsOpts[] = "-frag_duration {$interval}000000";
 				} else {
@@ -966,15 +965,6 @@ class WebVideoTranscodeJob extends Job {
 	private function ffmpegAddVideoSizeOptions( TranscodePreset $options, ?int $renditionNumber = null ): array {
 		$renditionIdentifier = $renditionNumber !== null ? ':v:' . $renditionNumber : '';
 		$opts = [];
-		// Get a local pointer to the file object
-		$file = $this->getFile();
-
-		// If the preset width and height options are set (only relevant for
-		// QuickTime), add -aspect.
-		if ( $options->width > 0 && $options->height > 0 ) {
-			$aspectRatio = $file->getWidth() . ':' . $file->getHeight();
-			$opts[] = '-aspect' . $renditionIdentifier . ' ' . $aspectRatio;
-		}
 		$sizeString = $this->getAdjustedSizeString( $options );
 		if ( $sizeString ) {
 			$opts[] = "-s" . $renditionIdentifier . " " . $sizeString;
@@ -990,10 +980,9 @@ class WebVideoTranscodeJob extends Job {
 	 */
 	private function getAdjustedSizeString( TranscodePreset $options ): string {
 		$file = $this->getFile();
-		$requestedMaxSize = WebVideoTranscode::getSizeStringFromOptions( $options );
-		if ( $requestedMaxSize ) {
+		if ( $options->maxSize ) {
 			// Get size transform (if maxSize is > file, file size is used):
-			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $requestedMaxSize );
+			[ $width, $height ] = WebVideoTranscode::getMaxSizeTransform( $file, $options->maxSize );
 			return "{$width}x{$height}";
 		} else {
 			return $file->getWidth() . 'x' . $file->getHeight();

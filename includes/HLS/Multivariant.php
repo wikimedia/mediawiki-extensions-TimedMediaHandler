@@ -25,7 +25,6 @@ use RuntimeException;
  * informative RFC 8216.
  */
 class Multivariant {
-	private const CODEC_JPEG = 'jpeg';
 	private const CODEC_MPEG4 = 'mp4v.20.5';
 	private const CODEC_MP3  = 'mp4a.6b';
 	private const CODEC_OPUS = 'Opus';
@@ -165,7 +164,7 @@ class Multivariant {
 			if ( count( $audio ) ) {
 				foreach ( $audio as $audioKey => $audioCodec ) {
 					$line = $base;
-					if ( !( $codec === self::CODEC_JPEG || $codec === self::CODEC_MPEG4 )
+					if ( $codec !== self::CODEC_MPEG4
 						|| ( $audioCodec !== self::CODEC_MP3 )
 					) {
 						// Backwards-compatibility hack for iOS 10-15
@@ -186,7 +185,7 @@ class Multivariant {
 				}
 			} else {
 				$line = $base;
-				if ( !( $codec === self::CODEC_JPEG || $codec === self::CODEC_MPEG4 ) ) {
+				if ( $codec !== self::CODEC_MPEG4 ) {
 					// Backwards-compatibility hack for iOS 10-15, see above.
 					$line['CODECS'] = self::quote( $codec );
 				}

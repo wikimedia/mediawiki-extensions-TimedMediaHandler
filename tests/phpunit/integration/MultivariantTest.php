@@ -68,7 +68,6 @@ class MultivariantTest extends MediaWikiMediaTestCase {
 	public static function providerTracks() {
 		$vp9lo = '240p.video.vp9.mp4';
 		$vp9hi = '360p.video.vp9.mp4';
-		$mjpeg = '144p.video.mjpeg.mov';
 		$mp3   = 'stereo.audio.mp3';
 		$opus  = 'stereo.audio.opus.mp4';
 
@@ -80,13 +79,8 @@ class MultivariantTest extends MediaWikiMediaTestCase {
 			],
 			[
 				'stream',
-				[ $vp9hi, $mjpeg ],
-				'variant.vp9hi-mjpeg.m3u8',
-			],
-			[
-				'stream',
-				[ $vp9hi, $vp9lo, $mjpeg ],
-				'variant.vp9hi-vp9lo-mjpeg.m3u8',
+				[ $vp9hi, $vp9lo ],
+				'variant.vp9hi-vp9lo.m3u8',
 			],
 			[
 				'stream',
@@ -100,8 +94,8 @@ class MultivariantTest extends MediaWikiMediaTestCase {
 			],
 			[
 				'stream',
-				[ $vp9hi, $vp9lo, $mjpeg, $opus, $mp3 ],
-				'variant.vp9hi-vp9lo-mjpeg-opus-mp3.m3u8',
+				[ $vp9hi, $vp9lo, $opus, $mp3 ],
+				'variant.vp9hi-vp9lo-opus-mp3.m3u8',
 			],
 			// Test special chars in the filename
 			// This code trusts that you validated your filenames ahead of time;
