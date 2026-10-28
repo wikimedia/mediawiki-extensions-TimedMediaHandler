@@ -12,6 +12,7 @@ abstract class TimedMediaMaintenance extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( "file", "process only the given file", false, true );
+		$this->addOption( "listfile", "process only files listed in this text file, one title per line", false, true );
 		$this->addOption( "start", "(re)start batch at the given file", false, true );
 		$this->addOption( "uploader", "process only last version of files uploaded by this user", false, true );
 		$this->addOption( "category", "process only files in the given category", false, true );
@@ -67,16 +68,42 @@ abstract class TimedMediaMaintenance extends Maintenance {
 			}
 		}
 
+		$names = [];
 		if ( $this->hasOption( 'file' ) ) {
 			$title = Title::newFromText( $this->getOption( 'file' ), NS_FILE );
 			if ( !$title ) {
 				$this->error( "Invalid --file option provided" );
 				return;
 			}
+			$names[] = $title->getDBkey();
+		}
+		if ( $this->hasOption( 'listfile' ) ) {
+			$filename = $this->getOption( 'listfile' );
+			$lines = file( $filename );
+			if ( $lines === false ) {
+				$this->fatalError( "Unable to open file {$filename}" );
+			}
+			foreach ( array_map( 'trim', $lines ) as $line ) {
+				if ( $line === '' ) {
+					continue;
+				}
+				$title = Title::newFromText( $line, NS_FILE );
+				if ( !$title ) {
+					$this->error( "Invalid title in --listfile: $line" );
+					continue;
+				}
+				$names[] = $title->getDBkey();
+			}
+			if ( !$names ) {
+				$this->error( "No valid titles found in --listfile" );
+				return;
+			}
+		}
+		if ( $names ) {
 			if ( $migrationStage & SCHEMA_COMPAT_READ_OLD ) {
-				$queryBuilder->andWhere( [ 'img_name' => $title->getDBkey() ] );
+				$queryBuilder->andWhere( [ 'img_name' => $names ] );
 			} else {
-				$queryBuilder->andWhere( [ 'file_name' => $title->getDBkey() ] );
+				$queryBuilder->andWhere( [ 'file_name' => $names ] );
 			}
 		}
 		if ( $this->hasOption( 'start' ) ) {
