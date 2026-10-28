@@ -31,7 +31,7 @@ doFfmpegEncode() {
 	fi
 	if [ "$TMH_REMUX" = "no" ]; then
 		case "$TMH_OPT_VIDEOCODEC" in
-			vp8|vp9)
+			vp9)
 				if [ "$current_pass" -eq 1 ]; then
 					# Make first pass faster...
 					PASS_OPTS="$PASS_OPTS -speed 4"

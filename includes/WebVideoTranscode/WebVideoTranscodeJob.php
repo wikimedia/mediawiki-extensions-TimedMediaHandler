@@ -274,7 +274,7 @@ class WebVideoTranscodeJob extends Job {
 			// Check the codec see which encode method to call;
 			$streaming = $options->streaming;
 			$videoCodec = $options->videoCodec ?? '';
-			$codecs = [ 'vp8', 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
+			$codecs = [ 'vp9', 'h264', 'h263', 'mpeg4', 'mjpeg' ];
 			$twopass = (bool)$options->twopass;
 
 			if ( ( $this->params['remux'] ?? false ) ) {
@@ -635,7 +635,6 @@ class WebVideoTranscodeJob extends Job {
 						$this->ffmpegAddMPEGDASHOptions( $transcodeKey, $options ) );
 				} else {
 					switch ( $options->videoCodec ) {
-						case 'vp8':
 						case 'vp9':
 							$videoOpts = array_merge( $videoOpts, $this->ffmpegAddWebmVideoOptions( $options ) );
 							if ( $options->speed ) {
@@ -1106,23 +1105,15 @@ class WebVideoTranscodeJob extends Job {
 		$opts[] = '-pix_fmt yuv420p';
 
 		// libvpx-specific constant quality or constrained quality
-		// note the range is different between VP8 and VP9
 		// Also an integer.
 		if ( $options->crf ) {
 			$opts[] = "-crf " . (int)$options->crf;
 		}
 
 		// Set the codec:
-		if ( $options->videoCodec === 'vp9' ) {
-			$opts[] = '-vcodec libvpx-vp9';
-			if ( $options->tileColumns ) {
-				$opts[] = '-tile-columns ' . (int)$options->tileColumns;
-			}
-		} else {
-			$opts[] = '-vcodec libvpx';
-			if ( $options->slices ) {
-				$opts[] = '-slices ' . (int)$options->slices;
-			}
+		$opts[] = '-vcodec libvpx-vp9';
+		if ( $options->tileColumns ) {
+			$opts[] = '-tile-columns ' . (int)$options->tileColumns;
 		}
 
 		$opts[] = '-quality good';

@@ -255,16 +255,8 @@
 			"value": []
 		},
 		"EnabledTranscodeSet": {
-			"description": "Enabled video transcodes.\n\nSee TranscodePresets.php for exact definitions. Broadly speaking: 'webm' refers to V8/Vorbis WebM, and 'v9.webm' refers to VP9/Opus WebM.\n\n- If set to empty array, no derivatives will be created\n- These transcodes are in addition to the source file.\n- Transcodes with higher width than the source are skipped.\n- Regardless of source size at least one WebM and Ogg source will be created from the $wgEnabledTranscodeSet.\n- Transcode jobs are added to the MediaWiki JobQueue the first time the video is displayed.\n- Transcode keys should be ordered from min to max.",
+			"description": "Enabled video transcodes.\n\nSee TranscodePresets.php for exact definitions. The default is to enable three resolutions of VP9/Opus in a WebM container.\n\n- If set to empty array, no derivatives will be created\n- These transcodes are in addition to the source file.\n- Transcodes with higher width than the source are skipped.\n- Regardless of source size at least one WebM file will be created from the $wgEnabledTranscodeSet.\n- Transcode jobs are added to the MediaWiki JobQueue the first time the video is displayed.\n- Transcode keys should be ordered from min to max.",
 			"value": {
-				"160p.webm": false,
-				"240p.webm": false,
-				"360p.webm": false,
-				"480p.webm": false,
-				"720p.webm": false,
-				"1080p.webm": false,
-				"1440p.webm": false,
-				"2160p.webm": false,
 				"120p.vp9.webm": false,
 				"180p.vp9.webm": false,
 				"240p.vp9.webm": true,

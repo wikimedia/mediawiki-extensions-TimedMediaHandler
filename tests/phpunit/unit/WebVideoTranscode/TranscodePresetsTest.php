@@ -17,16 +17,16 @@ class TranscodePresetsTest extends TestCase {
 		$all = TranscodePresets::allPresets();
 		$this->assertIsArray( $all );
 		$this->assertContainsOnlyInstancesOf( TranscodePreset::class, $all );
-		$this->assertArrayHasKey( '360p.webm', $all );
+		$this->assertArrayHasKey( '360p.vp9.webm', $all );
 		$this->assertArrayHasKey( 'ogg', $all );
 	}
 
 	public function testFindByKey() {
 		$config = new HashConfig( [] );
 		$presets = new TranscodePresets( $config );
-		$preset = $presets->findByKey( '360p.webm' );
+		$preset = $presets->findByKey( '360p.vp9.webm' );
 		$this->assertInstanceOf( TranscodePreset::class, $preset );
-		$this->assertSame( 'video/webm; codecs="vp8, vorbis"', $preset->type );
+		$this->assertSame( 'video/webm; codecs="vp9, opus"', $preset->type );
 
 		$this->assertNull( $presets->findByKey( 'nonexistent' ) );
 	}
@@ -47,7 +47,7 @@ class TranscodePresetsTest extends TestCase {
 
 	public function testValidateTranscodeConfiguration() {
 		$config = new HashConfig( [
-			'EnabledTranscodeSet' => [ '360p.webm' => true ],
+			'EnabledTranscodeSet' => [ '360p.vp9.webm' => true ],
 			'EnabledAudioTranscodeSet' => [ 'ogg' => true ],
 		] );
 
@@ -69,9 +69,9 @@ class TranscodePresetsTest extends TestCase {
 			[]
 		];
 		yield 'video only' => [
-			[ '360p.webm' => true, '720p.webm' => true ],
+			[ '360p.vp9.webm' => true, '720p.vp9.webm' => true ],
 			[],
-			[ '360p.webm', '720p.webm' ]
+			[ '360p.vp9.webm', '720p.vp9.webm' ]
 		];
 		yield 'audio only' => [
 			[],
@@ -79,14 +79,14 @@ class TranscodePresetsTest extends TestCase {
 			[ 'mp3', 'ogg' ]
 		];
 		yield 'mixed and sorted' => [
-			[ '720p.webm' => true, '360p.webm' => true ],
+			[ '720p.vp9.webm' => true, '360p.vp9.webm' => true ],
 			[ 'ogg' => true ],
-			[ '360p.webm', '720p.webm', 'ogg' ]
+			[ '360p.vp9.webm', '720p.vp9.webm', 'ogg' ]
 		];
 		yield 'filtered' => [
-			[ '360p.webm' => true, '720p.webm' => false ],
+			[ '360p.vp9.webm' => true, '720p.vp9.webm' => false ],
 			[ 'ogg' => true ],
-			[ '360p.webm', 'ogg' ]
+			[ '360p.vp9.webm', 'ogg' ]
 		];
 	}
 }

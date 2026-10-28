@@ -6,7 +6,7 @@ namespace MediaWiki\TimedMediaHandler\WebVideoTranscode;
  * Transcode configuration preset for a derivative.
  */
 class TranscodePreset {
-	/** @var string|null The MIME type of the transcode (e.g., "video/webm; codecs='vp8, vorbis'"). */
+	/** @var string|null The MIME type of the transcode (e.g., "video/webm; codecs='vp9, opus'"). */
 	public ?string $type = null;
 
 	/** @var string|null The maximum dimensions of the video (e.g., "1920x1080"). */
@@ -30,7 +30,7 @@ class TranscodePreset {
 	/** @var string|null Whether two-pass encoding is enabled (e.g., "true"). Corresponds to ffmpeg option: -pass */
 	public ?string $twopass = null;
 
-	/** @var string|null The codec used for video encoding (e.g., "vp8", "h264"). Corresponds to ffmpeg option: -c:v */
+	/** @var string|null The codec used for video encoding (e.g., "vp9", "h264"). Corresponds to ffmpeg option: -c:v */
 	public ?string $videoCodec = null;
 
 	/** @var string|null The codec used for audio encoding (e.g., "vorbis", "aac"). Corresponds to ffmpeg option: -c:a */

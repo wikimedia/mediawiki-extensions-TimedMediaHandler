@@ -36,7 +36,6 @@ function rate( h, bitrate ) {
 
 const codecs = [
 	[ 'vp9', 1000 ],
-	[ 'vp8', 1250 ],
 	// [ 'h264', 1000 ],
 	[ 'mjpeg', 10570 ] // to get 1000 @ 120p
 ];
