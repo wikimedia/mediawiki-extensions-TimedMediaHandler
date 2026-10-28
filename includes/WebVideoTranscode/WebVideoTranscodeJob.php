@@ -741,10 +741,16 @@ class WebVideoTranscodeJob extends Job {
 		$optsEnv['TMH_OPTS_VIDEO'] = implode( ' ', $videoOpts );
 
 		// For MPEG-DASH we need to tell ffmpeg that the video renditions are an "adaptation set"
-		// i.e. a group of different renditions of the same video
-		$optsEnv['TMH_OPTS_VIDEO_USE_ADAPTATION_SETS'] = "no";
+		// i.e. a group of different renditions of the same video.
+		// This has to be in a separate environment variable because adaptation sets are separated
+		// with spaces.
 		if ( $options->type === "application/dash+xml" && count( $options->videoRenditions ) > 0 ) {
-			$optsEnv['TMH_OPTS_VIDEO_USE_ADAPTATION_SETS'] = "yes";
+			$handler = $sourceFile->getHandler();
+			if ( $handler instanceof TimedMediaHandler && $handler->hasAudio( $sourceFile ) ) {
+				$optsEnv['TMH_ADAPTATION_SETS'] = 'id=0,streams=a id=1,streams=v';
+			} else {
+				$optsEnv['TMH_ADAPTATION_SETS'] = 'id=0,streams=v';
+			}
 		}
 
 		// Audio options

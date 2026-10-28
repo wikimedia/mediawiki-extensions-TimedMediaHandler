@@ -8,10 +8,12 @@ export TMH_FFMPEG_THREADS="${TMH_FFMPEG_THREADS:-2}"
 # These can be used unquoted.
 export TMH_OPTS_SOURCE
 # Video related
-export TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_OPTS_VIDEO_USE_ADAPTATION_SETS TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
+export TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
 # Audio-related
 export TMH_OPTS_AUDIO TMH_OPT_NOAUDIO
 export TMH_OUTPUT_FILE
+# Options containing spaces
+export TMH_ADAPTATION_SETS
 
 
 doFfmpegEncode() {
@@ -23,14 +25,18 @@ doFfmpegEncode() {
 
 
 	# Non-copy video opts that depend on the pass
+	PASS_OPTS=
+	if [ "$current_pass" -ne 0 ]; then
+		PASS_OPTS="-pass $current_pass"
+	fi
 	if [ "$TMH_REMUX" = "no" ]; then
 		case "$TMH_OPT_VIDEOCODEC" in
 			vp8|vp9)
 				if [ "$current_pass" -eq 1 ]; then
 					# Make first pass faster...
-					TMH_OPTS_VIDEO="${TMH_OPTS_VIDEO} -speed 4"
+					PASS_OPTS="$PASS_OPTS -speed 4"
 				elif [ "$TMH_OPT_SPEED" != "" ]; then
-					TMH_OPTS_VIDEO="$TMH_OPTS_VIDEO -speed $TMH_OPT_SPEED"
+					PASS_OPTS="$PASS_OPTS -speed $TMH_OPT_SPEED"
 				fi
 			;;
 			*)
@@ -44,18 +50,20 @@ doFfmpegEncode() {
 	else
 		AUDIO_OPTS="$TMH_OPTS_AUDIO"
 	fi
-
-	# clean the arglist, then add optional args to it.
-	# This is the only safe way to pass variable arguments in
-	# posix shell AFAICT.
-	set --
-	if [ "$TMH_OPTS_VIDEO_USE_ADAPTATION_SETS" = "yes" ]; then
-		set -- "$@" -adaptation_sets "id=0,streams=a id=1,streams=v"
-	fi
 	# end audio options
-	PASS_OPTS=""
-	if [ "$current_pass" -ne 0 ]; then
-		set -- "$@" -pass "$current_pass" -passlogfile "${TMH_OUTPUT_FILE}.log"
+
+	# Assemble options
+	# Please note, the unquoted entries are unquoted on purpose here.
+	set -- -nostdin -nostats -y \
+		$TMH_OPTS_SOURCE \
+		$TMH_OPTS_VIDEO \
+		$AUDIO_OPTS \
+		$PASS_OPTS \
+		$TMH_MOVFLAGS
+
+	# Add adaptation sets (a space-delimited string)
+	if [ -n "$TMH_ADAPTATION_SETS" ]; then
+		set -- "$@" -adaptation_sets "$TMH_ADAPTATION_SETS"
 	fi
 
 	# Do not output a file on first pass of a multi-pass encoding
@@ -65,15 +73,7 @@ doFfmpegEncode() {
 		set -- "$@" "$TMH_OUTPUT_FILE"
 	fi
 
-
-	# Please note, the unquoted entries are unquoted on purpose here.
-	"$TMH_FFMPEG_PATH" -nostdin -nostats -y \
-		$TMH_OPTS_SOURCE \
-		$TMH_OPTS_VIDEO \
-		$AUDIO_OPTS \
-		$PASS_OPTS \
-		$TMH_MOVFLAGS \
-		"$@"
+	"$TMH_FFMPEG_PATH" "$@"
 }
 
 if [ "$TMH_FFMPEG_PASSES" -lt 2 ]; then
