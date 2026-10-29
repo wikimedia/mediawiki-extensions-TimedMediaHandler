@@ -1,8 +1,11 @@
 <?php
 namespace MediaWiki\TimedMediaHandler\Test\Integration;
 
+use MediaWiki\FileRepo\File\File;
+use MediaWiki\MainConfigNames;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\TestingAccessWrapper;
 
 class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 
@@ -140,5 +143,40 @@ class TimedMediaHandlerTest extends MediaWikiIntegrationTestCase {
 				true,
 			],
 		];
+	}
+
+	/**
+	 * @dataProvider providerGetSteppedThumbWidth
+	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::getSteppedThumbWidth
+	 */
+	public function testGetSteppedThumbWidth( int $requestWidth, int $srcWidth, int $expected ): void {
+		// Subset of $wgThumbnailSteps in Wikimedia production
+		$this->overrideConfigValue( MainConfigNames::ThumbnailSteps, [ 250, 330, 960, 1280 ] );
+		$handler = TestingAccessWrapper::newFromObject( $this->handler );
+		$file = $this->createMock( File::class );
+		$this->assertSame(
+			$expected,
+			$handler->getSteppedThumbWidth( $file, $requestWidth, $srcWidth, (int)( $srcWidth * 9 / 16 ) )
+		);
+	}
+
+	public static function providerGetSteppedThumbWidth() {
+		return [
+			'exact step' => [ 250, 1920, 250 ],
+			'round up to next step' => [ 300, 1920, 330 ],
+			'round down when next step exceeds source' => [ 1100, 1200, 960 ],
+			'source larger than largest step' => [ 2000, 2000, 1280 ],
+			'request between largest step and source' => [ 1500, 2000, 1280 ],
+		];
+	}
+
+	/**
+	 * @covers \MediaWiki\TimedMediaHandler\TimedMediaHandler::getSteppedThumbWidth
+	 */
+	public function testGetSteppedThumbWidthWithoutSteps(): void {
+		$this->overrideConfigValue( MainConfigNames::ThumbnailSteps, [] );
+		$handler = TestingAccessWrapper::newFromObject( $this->handler );
+		$file = $this->createMock( File::class );
+		$this->assertSame( 1500, $handler->getSteppedThumbWidth( $file, 1500, 2000, 1125 ) );
 	}
 }

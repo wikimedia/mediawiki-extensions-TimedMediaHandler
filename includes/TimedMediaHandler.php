@@ -200,19 +200,16 @@ abstract class TimedMediaHandler extends MediaHandler {
 
 		$prevStep = $thumbnailSteps[0];
 		foreach ( $thumbnailSteps as $widthStep ) {
-			if ( ( $widthStep > $srcWidth ) ) {
+			if ( $widthStep > $srcWidth ) {
 				return $prevStep;
 			}
-			if ( $widthStep == $requestWidth ) {
-				return $requestWidth;
-			}
-			if ( $widthStep > $requestWidth ) {
+			if ( $widthStep >= $requestWidth ) {
 				return $widthStep;
 			}
 			$prevStep = $widthStep;
 		}
 
-		return $requestWidth;
+		return $prevStep;
 	}
 
 	/**
