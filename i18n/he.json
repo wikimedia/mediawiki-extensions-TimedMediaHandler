@@ -3,6 +3,7 @@
 		"authors": [
 			"Amire80",
 			"Guycn2",
+			"Neriah",
 			"Rotem Liss",
 			"Rotemliss",
 			"TheDJ",
@@ -135,7 +136,7 @@
 	"timedmedia-subtitle-edit-legend": "עריכת כתוביות קיימות",
 	"timedmedia-subtitle-edit-desc": "נא לבחור כתוביות קיימות וללחוץ על כפתור '''{{int:timedmedia-subtitle-edit-go}}'''",
 	"timedmedia-subtitle-edit-go": "עריכה",
-	"timedmedia-subtitle-no-video": "אין וידאו שמשויך לדף הכתוביות הנוכחי.",
+	"timedmedia-subtitle-no-video": "אין קובץ מדיה שמשויך לדף הכתוביות הנוכחי.",
 	"timedmedia-subtitle-no-subtitles": "אין כעת כתוביות עבור השפה הבאה: $1. אפשר [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך את הדף הזה] ולהוסיף אותן.",
 	"timedmedia-subtitle-remote": "טקסט מתוזמן עבור הקובץ הזה מאוחסן ב{{GRAMMAR:תחילית|$1}}",
 	"timedmedia-subtitle-remote-link": "אפשר [$1 להציג את דף התיאור] של הקובץ הזה בדף $2",
