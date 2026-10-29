@@ -29,6 +29,9 @@ For iPhones and iPads prior to iOS 17.4, consider enabling the 144p MJPEG
 fallback transcode used on Wikimedia sites or MP4/H.264 transcodes if your
 licensing situation allows it.
 
+Support for segmented VP9 files using an MPEG-DASH manifest has been added,
+but please check for patent issues before using this option.
+
 ## Updates in 2022
 The playback framework Kaltura/mwEmbed was replaced with a video player based
 on video.js

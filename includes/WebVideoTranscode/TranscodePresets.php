@@ -381,6 +381,9 @@ class TranscodePresets {
 		],
 
 		// VP9 in MPEG-DASH with 7 resolutions up to 2160p
+		//
+		// Check patent licensing issues in your country before use
+		//
 		// Settings here are copied from the various size/bitrate settings for vp9.webm, with some adjustments
 		// * maxrate for 3840x2160 adjusted down to 14000k so that 4 second video chunks will be under 8MB (the limit
 		//		for caching at the edge)
@@ -467,6 +470,7 @@ class TranscodePresets {
 		],
 
 		// VP9 in MPEG-DASH with reduced resolution set per T413031
+		// Check patent licensing issues in your country before use
 		'3x1080p.vp9.mpd' => [
 			'type' => 'application/dash+xml',
 			'videoCodec' => 'vp9',
