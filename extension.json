@@ -419,7 +419,6 @@
 			"localBasePath": "resources/lib",
 			"remoteExtPath": "TimedMediaHandler/resources/lib",
 			"scripts": [
-				"dash.js/dash.all.min.js",
 				"videojs-contrib-dash/videojs-dash.js"
 			],
 			"dependencies": [

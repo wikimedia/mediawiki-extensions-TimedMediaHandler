@@ -12,17 +12,6 @@ video.js:
     package/dist/alt/video.core.min.js: alt
     package/dist/lang/*.js: lang
     package/dist/video-js.css:
-dash.js:
-  license: BSD-3-Clause
-  homepage: https://dashjs.org/
-  authors: Dash Industry Forum <https://dashif.org/>
-  version: 5.1.1
-  type: tar
-  src: https://registry.npmjs.org/dashjs/-/dashjs-5.1.1.tgz
-  dest:
-    package/dist/modern/umd/dash.all.min.js:
-    package/dist/modern/umd/dash.all.min.js.LICENSE.txt:
-  integrity: sha512-BzNXlUgzEjhuZ5M5hlSp1qIyQHZ7NpXAR0loP9DAAFVZj/ntL1DHeZ7qp/L3bvI4rq50X5indkAZQ3zEHWJoCA==
 videojs-contrib-dash:
   license: Apache-2.0
   homepage: https://github.com/videojs/videojs-contrib-dash/

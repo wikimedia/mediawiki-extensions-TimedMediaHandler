@@ -2,7 +2,7 @@
 	"$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
 	"bomFormat": "CycloneDX",
 	"specVersion": "1.6",
-	"serialNumber": "urn:uuid:9f24f858-f357-45f3-b15f-46b79a0252df",
+	"serialNumber": "urn:uuid:b4fd062d-1977-429e-b147-cc92dc6a6ea2",
 	"version": 1,
 	"components": [
 		{
@@ -27,29 +27,6 @@
 			"externalReferences": [
 				{
 					"url": "https://videojs.com",
-					"type": "website"
-				}
-			]
-		},
-		{
-			"type": "library",
-			"name": "dash.js",
-			"version": "5.1.1",
-			"licenses": [
-				{
-					"license": {
-						"id": "BSD-3-Clause"
-					}
-				}
-			],
-			"authors": [
-				{
-					"name": "Dash Industry Forum \u003Chttps://dashif.org/\u003E"
-				}
-			],
-			"externalReferences": [
-				{
-					"url": "https://dashjs.org/",
 					"type": "website"
 				}
 			]
