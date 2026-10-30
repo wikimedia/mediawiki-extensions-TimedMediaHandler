@@ -36,7 +36,7 @@ class TranscodeReport extends Maintenance {
 	private const REALLY_LONG = 12 * 3600;
 
 	/** @var float[] max size for histogram breakdowns by res */
-	private $max = [
+	private const HISTOGRAM_MAX = [
 		120 => 0.125 * 1000 * 1000,
 		160 => 0.2 * 1000 * 1000,
 		180 => 0.25 * 1000 * 1000,
@@ -48,7 +48,7 @@ class TranscodeReport extends Maintenance {
 		1440 => 10 * 1000 * 1000,
 		2160 => 20 * 1000 * 1000,
 	];
-	private int $buckets = 25;
+	private const int BUCKETS = 25;
 	private array $histo = [];
 
 	public function __construct() {
@@ -129,8 +129,8 @@ class TranscodeReport extends Maintenance {
 					$maxBucket = max( array_keys( $this->histo[$key] ) );
 					for ( $bucket = $minBucket; $bucket < $maxBucket; $bucket++ ) {
 						$res = (int)$key;
-						$a = floor( $bucket * $this->max[$res] / $this->buckets );
-						$b = floor( ( $bucket + 1 ) * $this->max[$res] / $this->buckets ) - 1;
+						$a = floor( $bucket * self::HISTOGRAM_MAX[$res] / self::BUCKETS );
+						$b = floor( ( $bucket + 1 ) * self::HISTOGRAM_MAX[$res] / self::BUCKETS ) - 1;
 
 						$lang = $this->getServiceContainer()->getLanguageFactory()->getLanguage( 'en' );
 						$aa = str_pad( $lang->formatBitrate( (int)$a ), 10, " ", STR_PAD_LEFT );
@@ -213,12 +213,12 @@ class TranscodeReport extends Maintenance {
 	 */
 	private function bucket( $key, int $bitrate ): int {
 		$res = (int)$key;
-		$target = ( $bitrate / $this->max[$res] ) * $this->buckets;
+		$target = ( $bitrate / self::HISTOGRAM_MAX[$res] ) * self::BUCKETS;
 		if ( $target < 0 ) {
 			return 0;
 		}
-		if ( $target >= $this->buckets ) {
-			return $this->buckets - 1;
+		if ( $target >= self::BUCKETS ) {
+			return self::BUCKETS - 1;
 		}
 		return (int)floor( $target );
 	}

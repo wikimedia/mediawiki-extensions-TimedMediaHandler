@@ -24,7 +24,7 @@ class MigrateTranscodeStates extends LoggedUpdateMaintenance {
 	 *
 	 * @var array<int, string>
 	 */
-	private array $transcodeStates = [
+	private const array TRANSCODE_STATES = [
 		// Note: these queries should check prefixes of the index transcode_time_inx
 		// phpcs:ignore Generic.Files.LineLength.TooLong
 		WebVideoTranscode::STATE_ACTIVE  => 'transcode_time_addjob IS NOT NULL AND transcode_time_startwork IS NOT NULL AND transcode_time_success IS     NULL AND transcode_time_error IS     NULL',
@@ -71,7 +71,7 @@ class MigrateTranscodeStates extends LoggedUpdateMaintenance {
 		$current = 0;
 
 		while ( $current < $maxId ) {
-			foreach ( $this->transcodeStates as $state => $condition ) {
+			foreach ( self::TRANSCODE_STATES as $state => $condition ) {
 				$res = $dbw->newSelectQueryBuilder()
 					->select( 'transcode_id' )
 					->from( 'transcode' )

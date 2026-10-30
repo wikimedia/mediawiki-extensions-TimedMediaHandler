@@ -24,7 +24,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 	/**
 	 * @var string[]
 	 */
-	private $transcodeStates = [
+	private const TRANSCODE_STATES = [
 		'success' => WebVideoTranscode::STATE_SUCCESS,
 		'active'  => WebVideoTranscode::STATE_ACTIVE,
 		'failed'  => WebVideoTranscode::STATE_FAILED,
@@ -53,7 +53,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 
 		$states = $this->getStateCounts();
 
-		foreach ( $this->transcodeStates as $state => $condition ) {
+		foreach ( self::TRANSCODE_STATES as $state => $condition ) {
 			$this->renderState(
 				$out,
 				$state,
@@ -99,7 +99,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 
 	private function getTranscodes( string $stateName, int $limit = 50 ): false|array {
 		$fname = __METHOD__;
-		$state = $this->transcodeStates[$stateName] ?? null;
+		$state = self::TRANSCODE_STATES[$stateName] ?? null;
 
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'TimedMediaHandler-files', $stateName, $limit ),
@@ -164,7 +164,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 			$this->cache::TTL_MINUTE,
 			function () use ( $fname, $allTranscodes ) {
 				$states = [];
-				foreach ( $this->transcodeStates as $state => $condition ) {
+				foreach ( self::TRANSCODE_STATES as $state => $condition ) {
 					$states[ $state ] = [ 'total' => 0 ];
 					foreach ( $allTranscodes as $type ) {
 						// Important to pre-initialize, as can give
@@ -181,7 +181,7 @@ class SpecialTranscodeStatistics extends SpecialPage {
 					->caller( $fname )
 					->fetchResultSet();
 
-				$stateMap = array_flip( $this->transcodeStates );
+				$stateMap = array_flip( self::TRANSCODE_STATES );
 				foreach ( $res as $row ) {
 					$key = $row->transcode_key;
 					$stateVal = (int)$row->transcode_state;

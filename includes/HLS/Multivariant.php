@@ -44,7 +44,7 @@ class Multivariant {
 	 * MPEG-4 style codec name mappings.
 	 * @var array<string,string>
 	 */
-	private static array $hlsCodecMap = [
+	private const array HLS_CODEC_MAP = [
 		'opus' => self::CODEC_OPUS,
 	];
 
@@ -54,7 +54,7 @@ class Multivariant {
 		if ( preg_match( '/^\w+\/\w+;\s*codecs="(.*?)"/', $type, $matches ) ) {
 			// Warning: assumes a single track, single codec for streaming!
 			$codec = $matches[1];
-			return self::$hlsCodecMap[ $codec ] ?? $codec;
+			return self::HLS_CODEC_MAP[ $codec ] ?? $codec;
 		}
 		if ( $type === self::MIME_MP3 ) {
 			// MPEG-1 layer 3

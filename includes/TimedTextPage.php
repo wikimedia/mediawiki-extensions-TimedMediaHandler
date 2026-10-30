@@ -34,7 +34,7 @@ use StatusValue;
 class TimedTextPage extends Article {
 
 	/** @var int The width of the video plane. Must match the CSS */
-	private static $videoWidth = 400;
+	private const VIDEO_WIDTH = 400;
 
 	// WebVTT
 	public const VTT_SUBTITLE_FORMAT = 'vtt';
@@ -43,7 +43,7 @@ class TimedTextPage extends Article {
 	public const SRT_SUBTITLE_FORMAT = 'srt';
 
 	/** @var string[] */
-	private static $knownTimedTextExtensions = [
+	private const KNOWN_TIMED_TEXT_EXTENSIONS = [
 		self::SRT_SUBTITLE_FORMAT,
 		self::VTT_SUBTITLE_FORMAT,
 	];
@@ -82,7 +82,7 @@ class TimedTextPage extends Article {
 		$titleParts = explode( '.', $title->getDBkey() );
 		$timedTextExtension = array_slice( $titleParts, -1, 1 )[0] ?? null;
 
-		if ( in_array( $timedTextExtension, static::$knownTimedTextExtensions, true ) ) {
+		if ( in_array( $timedTextExtension, self::KNOWN_TIMED_TEXT_EXTENSIONS, true ) ) {
 			// File name with text extension ( from remaining parts of title )
 			// i.e TimedText:myfile.ogg.en.srt
 			$this->timedTextFormat = $timedTextExtension;
@@ -360,7 +360,7 @@ class TimedTextPage extends Article {
 	public function onSubmit( array $data ): bool {
 		if ( !empty( $data['lang'] ) ) {
 			$format = $data['format'] ?? self::VTT_SUBTITLE_FORMAT;
-			if ( !in_array( $format, static::$knownTimedTextExtensions, true ) ) {
+			if ( !in_array( $format, self::KNOWN_TIMED_TEXT_EXTENSIONS, true ) ) {
 				$format = self::SRT_SUBTITLE_FORMAT;
 			}
 			$output = $this->getContext()->getOutput();
@@ -412,7 +412,7 @@ class TimedTextPage extends Article {
 		}
 
 		return $file->transform( [
-			'width' => self::$videoWidth
+			'width' => self::VIDEO_WIDTH
 		] )->toHtml();
 	}
 

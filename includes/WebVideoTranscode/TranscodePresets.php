@@ -24,7 +24,7 @@ class TranscodePresets {
 	 *
 	 * @var array<string, array>
 	 */
-	private static $derivativeSettings = [
+	private const DERIVATIVE_SETTINGS = [
 
 		// WebM VP9 transcodes
 		//
@@ -728,7 +728,7 @@ class TranscodePresets {
 	public static function allPresets(): array {
 		if ( self::$settings === null ) {
 			self::$settings = [];
-			foreach ( self::$derivativeSettings as $key => $settings ) {
+			foreach ( self::DERIVATIVE_SETTINGS as $key => $settings ) {
 				self::$settings[$key] = new TranscodePreset( $settings );
 			}
 		}

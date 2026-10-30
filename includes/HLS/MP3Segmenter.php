@@ -38,7 +38,7 @@ class MP3Segmenter extends Segmenter {
 	 * Internal layout of MP3 frame header bitfield
 	 * @var array<string,int[]>
 	 */
-	private static $bits = [
+	private const BITS = [
 		'sync'        => [ 21, 11 ],
 		'mpeg'        => [ 19, 2 ],
 		'layer'       => [ 17, 2 ],
@@ -66,7 +66,7 @@ class MP3Segmenter extends Segmenter {
 	 * This is just in case we need to measure non-default sample rates!
 	 * @var int[][]
 	 */
-	private static $samplesPerFrame = [
+	private const SAMPLES_PER_FRAME = [
 		// invalid / layer 3 / 2 / 1
 
 		// MPEG-2.5
@@ -83,7 +83,7 @@ class MP3Segmenter extends Segmenter {
 	 * Map of sample rates based on version/mode
 	 * @var int[][]
 	 */
-	private static $sampleRates = [
+	private const SAMPLE_RATES = [
 		// MPEG-2.5
 		[ 11025, 12000, 8000, 1 ],
 		// Reserved
@@ -98,7 +98,7 @@ class MP3Segmenter extends Segmenter {
 	 * Map of bit rates based on version/mode/code
 	 * @var int[][][]
 	 */
-	private static $bitrates = [
+	private const BITRATES = [
 		// MPEG-2
 		[
 			// invalid layer
@@ -132,7 +132,7 @@ class MP3Segmenter extends Segmenter {
 	 * Decode a binary field from the MP3 frame header
 	 */
 	private static function field( string $name, int $header ): int {
-		[ $shift, $bits ] = self::$bits[$name];
+		[ $shift, $bits ] = self::BITS[$name];
 		$mask = ( 1 << $bits ) - 1;
 		return ( $header >> $shift ) & $mask;
 	}
@@ -159,20 +159,20 @@ class MP3Segmenter extends Segmenter {
 		$protection = self::field( 'protection', $header );
 
 		$br = self::field( 'bitrate', $header );
-		$bitrate = 1000 * self::$bitrates[$mpeg & 1][$layer][$br];
+		$bitrate = 1000 * self::BITRATES[$mpeg & 1][$layer][$br];
 		if ( $bitrate === 0 ) {
 			return null;
 		}
 
 		$sr = self::field( 'sampleRate', $header );
-		$sampleRate = self::$sampleRates[$mpeg][$sr];
+		$sampleRate = self::SAMPLE_RATES[$mpeg][$sr];
 		if ( $sampleRate === 1 ) {
 			return null;
 		}
 
 		$padding = self::field( 'padding', $header );
 
-		$samples = self::$samplesPerFrame[$mpeg][$layer];
+		$samples = self::SAMPLES_PER_FRAME[$mpeg][$layer];
 		$duration = $samples / $sampleRate;
 		$nbits = $duration * $bitrate;
 		$nbytes = $nbits / 8;
