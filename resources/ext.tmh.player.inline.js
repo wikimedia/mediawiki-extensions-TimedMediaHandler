@@ -106,10 +106,22 @@ class InlinePlayer {
 			this.playerConfig
 		);
 
-		// Future interactions go faster if we've preloaded a little
-		this.$videoplayer.attr( {
-			preload: 'metadata'
-		} );
+		const $dashSources = this.$videoplayer.children( 'source[type="application/dash+xml"]' );
+		if ( window.MediaSource && $dashSources.length ) {
+			// If DASH is available and supported, avoid loading the non-DASH video
+			this.$videoplayer.children( 'source[type!="application/dash+xml"]' ).remove();
+			this.playerConfig.preload = 'none';
+			this.$videoplayer.attr( { preload: 'none' } );
+			// video.js will set preload=auto later anyway. Chrome will try to
+			// load the non-DASH video as if reading the currentSrc property.
+			// Setting the src attribute here triggers the resource selection
+			// algorithm so that the preload doesn't happen.
+			// eslint-disable-next-line compat/compat
+			this.videoplayer.src = URL.createObjectURL( new MediaSource() );
+		} else {
+			// Future interactions go faster if we've preloaded a little.
+			this.$videoplayer.attr( { preload: 'metadata' } );
+		}
 
 		/** @type {HTMLSourceElement[]} */
 		let resolutions = [];

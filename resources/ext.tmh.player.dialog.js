@@ -124,7 +124,8 @@ class MediaDialog extends OO.ui.ProcessDialog {
 			fill: true,
 			// We don't need a play button (autoplay) nor a poster
 			poster: false, bigPlayButton: false,
-			// We know we committed to playing here, so preload the entire file if UA wants to
+			// We know we committed to playing here, so preload the entire file if UA wants to.
+			// InlinePlayer overrides this in DASH mode.
 			preload: 'auto'
 		};
 
