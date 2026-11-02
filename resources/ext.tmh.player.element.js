@@ -245,27 +245,7 @@ class MediaElement {
 				.append( $( '<div>' ).addClass( 'mw-tmh-player-progress-bar' ) ) )
 			.appendTo( document.body );
 
-		// Autoplay busting hack for native audio playback
-		// Must force a play during the user gesture on the element we will use.
-		// Our later, async loading of the modules can break the path
-		const playPromise = this.element.play();
-		if ( !playPromise ) {
-			// On older browsers, play() didn't return a promise yet.
-			this.element.pause();
-		} else {
-			// Edge 17+
-			// Chrome 50+
-			// Firefox 53+
-			// Safari 10+
-			// The reject promise of play is not that reliable when using <source> children
-			// It might not ever trigger
-			// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
-			playPromise.then( () => {
-				setTimeout( () => {
-					this.element.pause();
-				}, 0 );
-			} );
-		}
+		this.bustAutoplay();
 
 		if ( this.isInline() ) {
 			mw.loader.using( 'ext.tmh.player.inline' ).then( () => {
@@ -307,6 +287,43 @@ class MediaElement {
 				MediaElement.currentlyPlaying = false;
 			} );
 		}
+	}
+
+	/**
+	 * Autoplay busting hack for native audio playback.
+	 * Must force a play during the user gesture on the element we will use.
+	 * Our later, async loading of the modules can break the path.
+	 *
+	 * FIXME: likely obsolete. The behaviour described above is not consistent
+	 *  with Mozilla, Chrome or Safari documentation on autoplay restrictions.
+	 *  A click is required at some point, not necessarily in the current stack.
+	 */
+	bustAutoplay() {
+		if ( window.MediaSource &&
+			this.$element.children( 'source[type="application/dash+xml"]' ).length > 0
+		) {
+			// Don't load non-DASH media
+			return;
+		}
+		const playPromise = this.element.play();
+		if ( !playPromise ) {
+			// On older browsers, play() didn't return a promise yet.
+			this.element.pause();
+		} else {
+			// Edge 17+
+			// Chrome 50+
+			// Firefox 53+
+			// Safari 10+
+			// The reject promise of play is not that reliable when using <source> children
+			// It might not ever trigger
+			// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
+			playPromise.then( () => {
+				setTimeout( () => {
+					this.element.pause();
+				}, 0 );
+			} );
+		}
+
 	}
 }
 
