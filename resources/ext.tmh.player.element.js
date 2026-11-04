@@ -294,36 +294,29 @@ class MediaElement {
 	 * Must force a play during the user gesture on the element we will use.
 	 * Our later, async loading of the modules can break the path.
 	 *
-	 * FIXME: likely obsolete. The behaviour described above is not consistent
-	 *  with Mozilla, Chrome or Safari documentation on autoplay restrictions.
-	 *  A click is required at some point, not necessarily in the current stack.
+	 *   - Needed by Safari 11-15, not needed by Safari 16.
+	 *   - FIXME Insufficient on Safari iPad 9th iOS 15, video doesn't play, no controls either.
+	 *   - Not needed by Safari iPhone 15 Pro Max iOS 17.5, iPad Air 13 2025 iOS 18
+	 *   - Not needed by Chrome 73, Firefox 78, Edge 80.
 	 */
 	bustAutoplay() {
-		if ( window.MediaSource &&
+		if ( 'MediaSource' in window &&
+			window.MediaSource.isTypeSupported( 'video/webm; codecs="vp9,opus"' ) &&
 			this.$element.children( 'source[type="application/dash+xml"]' ).length > 0
 		) {
-			// Don't load non-DASH media
-			return;
+			// Don't load non-DASH media during autoplay hack.
+			// This is needed by Safari 15 which supports DASH but has the old autoplay behaviour
+			this.element.src = URL.createObjectURL( new MediaSource() );
 		}
-		const playPromise = this.element.play();
-		if ( !playPromise ) {
-			// On older browsers, play() didn't return a promise yet.
-			this.element.pause();
-		} else {
-			// Edge 17+
-			// Chrome 50+
-			// Firefox 53+
-			// Safari 10+
-			// The reject promise of play is not that reliable when using <source> children
-			// It might not ever trigger
-			// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
-			playPromise.then( () => {
+		// The reject promise of play is not that reliable when using <source> children
+		// It might not ever trigger
+		// https://developer.chrome.com/blog/play-request-was-interrupted/#danger-zone
+		this.element.play()
+			.then( () => {
 				setTimeout( () => {
 					this.element.pause();
 				}, 0 );
 			} );
-		}
-
 	}
 }
 

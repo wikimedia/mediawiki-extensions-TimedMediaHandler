@@ -29,7 +29,7 @@ class TranscodePresets {
 		// WebM VP9 transcodes
 		//
 		// These are free/open video formats supported since Firefox 28, Chrome 25
-		// (incl Opera 16, and Edge 79), Safari 14.1 (macOS 12), and Mobile Safari (iOS 17.4).
+		// (incl Opera 16, and Edge 79), Safari 15, and Mobile Safari (iOS 17.4).
 		//
 		// Two-pass encoding is a bit slower, but *massively* improves bitrate control.
 		// Trading off speed using the '-speed 3' parameter on the second pass.

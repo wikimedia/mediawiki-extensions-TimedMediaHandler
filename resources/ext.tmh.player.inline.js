@@ -107,7 +107,7 @@ class InlinePlayer {
 		);
 
 		const $dashSources = this.$videoplayer.children( 'source[type="application/dash+xml"]' );
-		if ( window.MediaSource && $dashSources.length ) {
+		if ( InlinePlayer.supportsDash() && $dashSources.length ) {
 			// If DASH is available and supported, avoid loading the non-DASH video
 			this.$videoplayer.children( 'source[type!="application/dash+xml"]' ).remove();
 			this.playerConfig.preload = 'none';
@@ -116,9 +116,9 @@ class InlinePlayer {
 			// load the non-DASH video as if reading the currentSrc property.
 			// Setting the src attribute here triggers the resource selection
 			// algorithm so that the preload doesn't happen.
-			// eslint-disable-next-line compat/compat
 			this.videoplayer.src = URL.createObjectURL( new MediaSource() );
 		} else {
+			$dashSources.remove();
 			// Future interactions go faster if we've preloaded a little.
 			this.$videoplayer.attr( { preload: 'metadata' } );
 		}
@@ -208,6 +208,19 @@ class InlinePlayer {
 			mw.hook( 'tmh.player.loaded' ).fire( this.videojsPlayer );
 		} );
 		return d.promise();
+	}
+
+	/**
+	 * Determine whether we can use the DASH transcode.
+	 * Safari 13 denies support for WebM which breaks DASH if we try to use it.
+	 * Safari 14 denies support for Opus so DASH mode just gives silent video.
+	 *
+	 * @return {boolean}
+	 */
+	static supportsDash() {
+		return 'MediaSource' in window &&
+			// eslint-disable-next-line compat/compat
+			window.MediaSource.isTypeSupported( 'video/webm; codecs="vp9,opus"' );
 	}
 
 	/**
