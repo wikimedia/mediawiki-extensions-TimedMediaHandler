@@ -87,10 +87,10 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				};
 			}
 			// eslint-disable-next-line no-underscore-dangle
-			if ( this.player.options_.sources.length > 1 ) {
+			const sources = this.settings.sources || this.player.options_.sources;
+			if ( sources.length > 1 ) {
 				// Create resolution switcher for videos from <source> tag inside <video>
-				// eslint-disable-next-line no-underscore-dangle
-				this.updateSrc( this.player.options_.sources );
+				this.updateSrc( sources );
 			}
 		} );
 	}
@@ -223,7 +223,7 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				// MEDIA_ERR_DECODE OR MEDIA_ERR_SRC_NOT_SUPPORTED
 				errorEvent.stopImmediatePropagation();
 				this.player.errorDisplay.close();
-				const newSources = this.currentSources.filter( ( asource ) => asource.src !== this.player.currentSrc() );
+				const newSources = this.currentSources.filter( ( asource ) => !sources.includes( asource ) );
 				this.updateSrc( newSources );
 				this.player.play();
 			}

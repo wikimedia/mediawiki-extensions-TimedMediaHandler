@@ -1,5 +1,8 @@
 'use strict';
 
+// Fake resolution of the DASH source, so that it sorts first and has its own menu entry
+const DASH_RES = 100000;
+
 /**
  * All JS for loading an actual video.js player for MediaWiki
  *
@@ -107,9 +110,8 @@ class InlinePlayer {
 		);
 
 		const $dashSources = this.$videoplayer.children( 'source[type="application/dash+xml"]' );
-		if ( InlinePlayer.supportsDash() && $dashSources.length ) {
-			// If DASH is available and supported, avoid loading the non-DASH video
-			this.$videoplayer.children( 'source[type!="application/dash+xml"]' ).remove();
+		const useDash = InlinePlayer.supportsDash() && $dashSources.length > 0;
+		if ( useDash ) {
 			this.playerConfig.preload = 'none';
 			this.$videoplayer.attr( { preload: 'none' } );
 			// video.js will set preload=auto later anyway. Chrome will try to
@@ -123,11 +125,9 @@ class InlinePlayer {
 			this.$videoplayer.attr( { preload: 'metadata' } );
 		}
 
-		/** @type {HTMLSourceElement[]} */
-		let resolutions = [];
-		let defaultRes;
 		if ( !this.isAudio ) {
-			resolutions = this.extractResolutions();
+			const resolutions = this.extractResolutions();
+			let defaultRes;
 
 			// Do not autoselect above 1080p due to bandwidth requirements.
 			// Also, note a fake res of 99999 is used to mark original files.
@@ -150,8 +150,17 @@ class InlinePlayer {
 					}
 				}
 			}
-			if ( !this.isAudio && defaultRes ) {
-				this.playerConfig.plugins.videoJsResolutionSwitcher.default = defaultRes;
+			const switcherConfig = this.playerConfig.plugins.videoJsResolutionSwitcher;
+			if ( useDash || defaultRes ) {
+				switcherConfig.default = useDash ? DASH_RES : defaultRes;
+			}
+			const $sources = this.$videoplayer.children( 'source' );
+			if ( useDash && $sources.length > 1 ) {
+				// Keep the non-DASH sources for the menu only. In the DOM the browser could
+				// load them, and given any source video.js would load DASH before the plugin.
+				switcherConfig.sources = $sources.get().map( videojs.dom.getAttributes );
+				this.playerConfig.sources = [];
+				$sources.remove();
 			}
 			if ( playerHeight >= 120 ) { // 5em === 65px
 				// We place the progressbar on top of the other controls
@@ -320,6 +329,7 @@ class InlinePlayer {
 			if ( transcodeKey ) {
 				if ( transcodeKey.endsWith( '.mpd' ) ) {
 					label = mw.msg( 'timedmedia-resolution-auto' );
+					res = DASH_RES;
 				} else {
 					const matches = transcodeKey.match( /^(\d+)p\./ );
 					if ( matches ) {
