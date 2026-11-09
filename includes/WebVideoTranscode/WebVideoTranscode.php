@@ -968,20 +968,18 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * Check if this transcode belongs to the high-priority queue.
+	 * Check if this transcode belongs to the high-priority queue: audio-only
+	 * transcodes (cheap at any length) and all transcodes of short files.
 	 * @param File $file
 	 * @param string $transcodeKey
 	 * @return bool
 	 */
-	public static function isTranscodePrioritized( File $file, $transcodeKey ) {
-		$transcodeHeight = 0;
-		$matches = [];
-		if ( preg_match( '/^(\d+)p/', $transcodeKey, $matches ) ) {
-			$transcodeHeight = (int)$matches[0];
+	public static function isTranscodePrioritized( File $file, string $transcodeKey ) {
+		if ( self::transcodePresets()->findByKey( $transcodeKey )?->novideo ) {
+			return true;
 		}
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		return ( $transcodeHeight <= $config->get( 'TmhPriorityResolutionThreshold' ) )
-			&& ( $file->getLength() <= $config->get( 'TmhPriorityLengthThreshold' ) );
+		return $file->getLength() <= $config->get( 'TmhPriorityLengthThreshold' );
 	}
 
 	/**

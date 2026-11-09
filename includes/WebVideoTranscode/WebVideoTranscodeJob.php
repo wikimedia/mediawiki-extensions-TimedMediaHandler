@@ -228,24 +228,9 @@ class WebVideoTranscodeJob extends Job {
 			}
 			$dbw = $this->lbFactory->getPrimaryDatabase();
 
-			// Check if the transcode job is in the expected state (STATE_QUEUED)
-			$transcodeQueued = $dbw->newSelectQueryBuilder()
-				->from( 'transcode' )
-				->where( [
-					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey,
-					'transcode_state' => WebVideoTranscode::STATE_QUEUED
-				] )
-				->caller( __METHOD__ )
-				->fetchRowCount();
-
-			if ( !$transcodeQueued ) {
-				$error = $this->title . ': Possible Error, transcode task removed or already started';
-				$this->output( $error );
-				return true;
-			}
-
-			// Update the transcode table letting it know we have "started work":
+			// Claim the transcode atomically: the same job can be delivered to
+			// more than one consumer, only the one that moves it out of
+			// STATE_QUEUED may run it.
 			$jobTouchedCache = $dbw->timestamp();
 			$dbw->newUpdateQueryBuilder()
 				->update( 'transcode' )
@@ -256,10 +241,17 @@ class WebVideoTranscodeJob extends Job {
 				] )
 				->where( [
 					'transcode_image_name' => $this->getFile()->getName(),
-					'transcode_key' => $transcodeKey
+					'transcode_key' => $transcodeKey,
+					'transcode_state' => WebVideoTranscode::STATE_QUEUED,
 				] )
 				->caller( __METHOD__ )
 				->execute();
+
+			if ( !$dbw->affectedRows() ) {
+				$error = $this->title . ': Possible Error, transcode task removed or already started';
+				$this->output( $error );
+				return true;
+			}
 
 			// Avoid contention and "server has gone away" errors as
 			// the transcode will take a very long time in some cases
