@@ -320,10 +320,6 @@
 				"mpeg"
 			]
 		},
-		"TmhPriorityResolutionThreshold": {
-			"description": "Transcode resolutions higher than this will run in the low-priority queue. This'll give us SD transcodes as fast as possible, then do HD later.",
-			"value": 480
-		},
 		"TmhPriorityLengthThreshold": {
 			"description": "Transcodes of files longer than this (seconds) will run in the low-priority queue; defaults to 15 minutes. This'll mean long videos won't flood the high-priority queue.",
 			"value": 900
