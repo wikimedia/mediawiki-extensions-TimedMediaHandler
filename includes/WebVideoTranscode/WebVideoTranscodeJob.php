@@ -595,6 +595,16 @@ class WebVideoTranscodeJob extends Job {
 		$transcodeKey = $this->params[ 'transcodeKey' ];
 		$extension = pathinfo( $transcodeKey, PATHINFO_EXTENSION ) ?: $transcodeKey;
 
+		if ( $options->type === 'application/dash+xml' ) {
+			$duration = (float)$sourceFile->getLength();
+			$durationLimit = $this->config->get( 'TmhMaxDuration' );
+			if ( $durationLimit && $duration > (int)$durationLimit ) {
+				throw new TranscodeError(
+					"duration $duration seconds over limit $durationLimit seconds"
+				);
+			}
+		}
+
 		// Build video options as an array
 		$videoOpts = [];
 
@@ -1002,29 +1012,33 @@ class WebVideoTranscodeJob extends Job {
 		$bitrate = $this->scaleRate( $options, $base );
 		$videoOpts[] = "-b:v" . $renditionIdentifier . " $bitrate";
 
-		// Estimate the output file size in KiB and bail out early
-		// if it's potentially very large. Could be a denial of
-		// service, or just a large file that probably is poorly
-		// compressed.
-		$duration = (float)$this->file->getLength();
-		$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
-		$backgroundSizeLimit = $this->config->get( 'TranscodeBackgroundSizeLimit' );
-		if ( $backgroundSizeLimit > 0 && $estimatedSize > $backgroundSizeLimit ) {
-			// This hard limit cannot be overridden by admins, except by raising the limit in config.
-			throw new TranscodeError(
-				"estimated file size $estimatedSize KiB over hard limit $backgroundSizeLimit KiB"
-			);
-		}
-
-		$transcodeSoftSizeLimit = $this->config->get( 'TranscodeSoftSizeLimit' );
-		if ( $transcodeSoftSizeLimit > 0 && $estimatedSize > $transcodeSoftSizeLimit ) {
-			// This soft limit can be overridden when a transcode is reset by hand via the web UI
-			// or API, or requeueTranscodes.php with --manual-override option.
-			$manualOverride = $this->params['manualOverride'] ?? false;
-			if ( !$manualOverride ) {
+		// DASH renditions are split into chunks, so the per-file size limits do not
+		// apply. Their length is capped by TmhMaxDuration instead.
+		if ( $renditionNumber !== null ) {
+			// Estimate the output file size in KiB and bail out early
+			// if it's potentially very large. Could be a denial of
+			// service, or just a large file that probably is poorly
+			// compressed.
+			$duration = (float)$this->file->getLength();
+			$estimatedSize = round( ( $bitrate / 8 ) * $duration / 1024 );
+			$backgroundSizeLimit = $this->config->get( 'TranscodeBackgroundSizeLimit' );
+			if ( $backgroundSizeLimit > 0 && $estimatedSize > $backgroundSizeLimit ) {
+				// This hard limit cannot be overridden by admins, except by raising the limit in config.
 				throw new TranscodeError(
-					"estimated file size $estimatedSize KiB over soft limit $transcodeSoftSizeLimit KiB"
+				"estimated file size $estimatedSize KiB over hard limit $backgroundSizeLimit KiB"
 				);
+			}
+
+			$transcodeSoftSizeLimit = $this->config->get( 'TranscodeSoftSizeLimit' );
+			if ( $transcodeSoftSizeLimit > 0 && $estimatedSize > $transcodeSoftSizeLimit ) {
+				// This soft limit can be overridden when a transcode is reset by hand via the web UI
+				// or API, or requeueTranscodes.php with --manual-override option.
+				$manualOverride = $this->params['manualOverride'] ?? false;
+				if ( !$manualOverride ) {
+					throw new TranscodeError(
+						"estimated file size $estimatedSize KiB over soft limit $transcodeSoftSizeLimit KiB"
+					);
+				}
 			}
 		}
 

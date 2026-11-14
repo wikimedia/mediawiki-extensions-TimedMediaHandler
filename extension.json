@@ -227,12 +227,16 @@
 			"value": 2097152
 		},
 		"TranscodeBackgroundSizeLimit": {
-			"description": "Maximum file size transcoding processes can create, in KiB. 3GiB.",
+			"description": "Maximum file size transcoding processes can create, in KiB. 3GiB. Not applied to MPEG-DASH transcodes, see TmhMaxDuration.",
 			"value": 3145728
 		},
 		"TranscodeSoftSizeLimit": {
 			"description": "Maximum estimated file size for transcodes without admin approval, in KiB. Larger files must be manually re-enqueued by an admin via web or CLI interfaces. 2GiB.",
 			"value": 2097152
+		},
+		"TmhMaxDuration": {
+			"description": "Maximum source duration for MPEG-DASH transcodes, in seconds. DASH output is split into chunks, so TranscodeBackgroundSizeLimit and TranscodeSoftSizeLimit do not apply to it; this limits the number of generated chunks instead. Falsey values disables the limit.",
+			"value": 91000
 		},
 		"FFmpegThreads": {
 			"description": "Number of threads to use in ffmpeg for transcoding",
