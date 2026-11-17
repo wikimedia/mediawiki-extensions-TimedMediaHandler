@@ -189,6 +189,7 @@
 	"timedmedia-derivative-m4a": "AAC",
 	"timedmedia-derivative-desc-m4a": "AAC",
 	"timedmedia-derivative-3x1080p.vp9.mpd": "分段VP9",
+	"timedmedia-derivative-desc-3x1080p.vp9.mpd": "分段VP9（240-1080p）",
 	"timedmedia-derivative-7x2160p.vp9.mpd": "分段VP9",
 	"timedmedia-derivative-desc-7x2160p.vp9.mpd": "分段VP9（240-2160p）",
 	"timedmedia-resolution-120": "低清120p",
