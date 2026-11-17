@@ -1014,7 +1014,7 @@ class WebVideoTranscodeJob extends Job {
 
 		// DASH renditions are split into chunks, so the per-file size limits do not
 		// apply. Their length is capped by TmhMaxDuration instead.
-		if ( $renditionNumber !== null ) {
+		if ( $renditionNumber === null ) {
 			// Estimate the output file size in KiB and bail out early
 			// if it's potentially very large. Could be a denial of
 			// service, or just a large file that probably is poorly
