@@ -222,14 +222,8 @@ abstract class TimedMediaHandler extends MediaHandler {
 	 */
 	public function parserTransformHook( $parser, $file ) {
 		$parserOutput = $parser->getOutput();
-		if ( $parserOutput->getExtensionData( 'mw_ext_TMH_hasTimedMediaTransform' ) ) {
-			return;
-		}
-
 		$parserOutput->addModuleStyles( [ 'ext.tmh.player.styles' ] );
 		$parserOutput->addModules( [ 'ext.tmh.player' ] );
-
-		$parserOutput->setExtensionData( 'mw_ext_TMH_hasTimedMediaTransform', true );
 	}
 
 	/**
