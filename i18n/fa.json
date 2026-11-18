@@ -149,7 +149,7 @@
 	"timedmedia-duration-ms": "{{PLURAL:$1|$1 دقیقه}} و {{PLURAL:$2|$2 ثانیه}}",
 	"timedmedia-duration-s": "{{PLURAL:$1|$1 ثانیه}}",
 	"right-transcode-reset": "ویدئوهای ناموفق یا ویدئوهایی که کدشان تغییر یافته را بازنشانی کنید تا دوباره در صف کار قرار گیرند.",
-	"right-transcode-status": "مشاهدهٔ [[Special:TimedMediaHandler|اطلاعات دریارهٔ فعالیت فرارمزگردانی فعلی]]",
+	"right-transcode-status": "مشاهدهٔ [[Special:TimedMediaHandler|اطلاعات دربارهٔ فعالیت فرارمزگردانی کنونی]]",
 	"action-transcode-reset": "بازنشانی فراکد",
 	"action-transcode-status": "مشاهدهٔ وضعیت فرارمزگردانی کنونی",
 	"log-name-timedmediahandler": "سیاههّ به دست گیرندهٔ رسانه‌های زماندار",
