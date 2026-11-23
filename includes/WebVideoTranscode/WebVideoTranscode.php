@@ -82,6 +82,13 @@ class WebVideoTranscode {
 	 */
 	public const STATE_SUCCESS = 4;
 
+	/** @see removeTranscodes */
+	public const CLEANUP_NONE = 'none';
+	/** @see removeTranscodes */
+	public const CLEANUP_ASYNC = 'async';
+	/** @see removeTranscodes */
+	public const CLEANUP_SYNC = 'sync';
+
 	/** @var array[] Static cache of transcode state per instantiation */
 	public static $transcodeState = [];
 
@@ -457,9 +464,18 @@ class WebVideoTranscode {
 	 *
 	 * also remove the transcode files:
 	 * @param File $file File Object
-	 * @param string|false $transcodeKey Optional transcode key to remove only this key
+	 * @param string|false $transcodeKey Transcode key to remove, or false to remove all
+	 * @param string $chunkMode What to do about numerous transcoded segment files.
+	 *   - self::CLEANUP_NONE: Don't clean them up. Appropriate when starting a transcode job.
+	 *   - self::CLEANUP_ASYNC: Clean them up later. Appropriate during a request when a new
+	 *     transcode will not be required.
+	 *   - self::CLEANUP_SYNC: Clean them up immediately. Appropriate during a maintenance script.
 	 */
-	public static function removeTranscodes( $file, $transcodeKey = false ) {
+	public static function removeTranscodes(
+		File $file,
+		$transcodeKey,
+		string $chunkMode
+	) {
 		// if transcode key is non-false, non-null:
 		if ( $transcodeKey ) {
 			// only remove the requested $transcodeKey
@@ -490,27 +506,34 @@ class WebVideoTranscode {
 				$filesToPurge[] = $filePath . '.m3u8';
 				$hasHLS = true;
 			}
+
 			if ( $options?->type === 'application/dash+xml' ) {
-				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable -- $options can't be null
-				foreach ( self::getDashChunkNames( $file, $tKey, $options ) as $chunkName ) {
-					$filesToPurge[] = $file->getTranscodedPath( $chunkName );
-					$urlsToPurge[] = $file->getTranscodedUrl( $chunkName );
+				if ( !$file->repo->fileExists( $filePath ) ) {
+					wfDebug( "Skipping chunk deletion for non-existent DASH manifest" );
+				} elseif ( $chunkMode === self::CLEANUP_SYNC ) {
+					// @phan-suppress-next-line PhanTypeMismatchArgumentNullable -- $options can't be null
+					foreach ( self::getDashChunkNames( $file, $tKey, $options ) as $chunkName ) {
+						$filesToPurge[] = $file->getTranscodedPath( $chunkName );
+						$urlsToPurge[] = $file->getTranscodedUrl( $chunkName );
+					}
+				} elseif ( $chunkMode === self::CLEANUP_ASYNC ) {
+					DeferredUpdates::addCallableUpdate( static function () use ( $file, $tKey, $options ) {
+						// @phan-suppress-next-line PhanTypeMismatchArgumentNullable -- $options can't be null
+						self::cleanupDashChunks( $file, $tKey, $options );
+					} );
+				} else {
+					wfDebug( "DASH chunk deletion was not requested" );
 				}
 			}
+
 		}
 		if ( $hasHLS && $transcodeKey === false ) {
 			// Delete all derivatives including the main hls manifest
 			$urlsToPurge[] = static::getTranscodedUrlForFile( $file, 'm3u8' );
 			$filesToPurge[] = static::getDerivativeFilePath( $file, 'm3u8' );
 		}
-		foreach ( $filesToPurge as $filePath ) {
-			if ( $file->repo->fileExists( $filePath ) ) {
-				$res = $file->repo->quickPurge( $filePath );
-				if ( !$res ) {
-					wfDebug( "Could not delete file $filePath\n" );
-				}
-			}
-		}
+		$status = $file->getRepo()->quickPurgeBatch( $filesToPurge );
+		self::logStatus( 'Deletion failed', $status );
 
 		$update = new CdnCacheUpdate( $urlsToPurge );
 		DeferredUpdates::addUpdate( $update );
@@ -535,6 +558,32 @@ class WebVideoTranscode {
 		if ( $transcodeKey !== false ) {
 			// We only removed a single transcode, so we need to update the manifests
 			static::updateStreamingManifests( $file );
+		}
+	}
+
+	/**
+	 * Delete DASH segment files
+	 */
+	private static function cleanupDashChunks(
+		File $file, string $transcodeKey, TranscodePreset $options
+	) {
+		$chunkFiles = [];
+		$urlsToPurge = [];
+		foreach ( self::getDashChunkNames( $file, $transcodeKey, $options ) as $chunkName ) {
+			$chunkFiles[] = $file->getTranscodedPath( $chunkName );
+			$urlsToPurge[] = $file->getTranscodedUrl( $chunkName );
+		}
+		$status = $file->getRepo()->quickPurgeBatch( $chunkFiles );
+		self::logStatus( 'Chunk deletion failed', $status );
+		DeferredUpdates::addUpdate( new CdnCacheUpdate( $urlsToPurge ) );
+	}
+
+	/**
+	 * Log messages from a Status
+	 */
+	private static function logStatus( string $intro, Status $status ) {
+		foreach ( $status->getMessages() as $message ) {
+			wfDebug( "$intro: " . wfMessage( $message )->text() );
 		}
 	}
 

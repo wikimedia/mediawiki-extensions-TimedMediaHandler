@@ -95,11 +95,13 @@ class ApiTranscodeReset extends ApiBase {
 			$this->dieWithError( $msg, 'notenoughtimereset' );
 		}
 
-		// All good, do the transcode removal:
-		WebVideoTranscode::removeTranscodes( $file, $transcodeKey );
 		// Only schedule a new transcode if the key is currently enabled or if resetting all
-		$keyEnabled = in_array( $transcodeKey, $this->transcodePresets->enabledTranscodes(), true );
-		if ( $transcodeKey === null || $keyEnabled ) {
+		$doTranscode = $transcodeKey === null
+			|| in_array( $transcodeKey, $this->transcodePresets->enabledTranscodes(), true );
+		// Remove previous transcode files
+		WebVideoTranscode::removeTranscodes( $file, $transcodeKey,
+			$doTranscode ? WebVideoTranscode::CLEANUP_NONE : WebVideoTranscode::CLEANUP_ASYNC );
+		if ( $doTranscode ) {
 			WebVideoTranscode::updateJobQueue( $file, $transcodeKey, [
 				'manualOverride' => true,
 			] );
