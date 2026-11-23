@@ -184,6 +184,8 @@
 	"timedmedia-derivative-desc-m4a": "{{optional}} Media format.",
 	"timedmedia-derivative-3x1080p.vp9.mpd": "{{optional}} Short form of a media format.",
 	"timedmedia-derivative-desc-3x1080p.vp9.mpd": "{{optional}} Media format.",
+	"timedmedia-derivative-3x1080p.vp9.fmp4.mpd": "{{optional}} Short form of a media format.",
+	"timedmedia-derivative-desc-3x1080p.vp9.fmp4.mpd": "{{optional}} Media format.",
 	"timedmedia-derivative-7x2160p.vp9.mpd": "{{optional}} Short form of a media format.",
 	"timedmedia-derivative-desc-7x2160p.vp9.mpd": "{{optional}} Media format.",
 	"timedmedia-resolution-120": "Label for video player resolution switcher for 120p low resolution.",

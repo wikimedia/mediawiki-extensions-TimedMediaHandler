@@ -6,7 +6,7 @@ export TMH_FFMPEG_PASSES="${TMH_FFMPEG_PASSES:-1}"
 export TMH_FFMPEG_THREADS="${TMH_FFMPEG_THREADS:-2}"
 # Safe options with no user input or validated user input
 # These can be used unquoted.
-export TMH_OPTS_SOURCE
+export TMH_OPTS_SOURCE TMH_JOIN_SOURCES
 # Video related
 export TMH_MOVFLAGS TMH_OPTS_VIDEO TMH_REMUX TMH_OPT_SPEED TMH_OPT_VIDEOCODEC
 # Audio-related
@@ -75,6 +75,16 @@ doFfmpegEncode() {
 
 	"$TMH_FFMPEG_PATH" "$@"
 }
+
+# Join the mpeg-dash chunks of each remux source track into one file.
+# xargs keeps the command lines short, chunks are deleted once joined.
+for source in $TMH_JOIN_SOURCES; do
+	if ! printf '%s\n' "$source.parts"/* | xargs sh -c 'cat "$@" && rm "$@"' sh > "$source"; then
+		echo "error joining the chunks of $source"
+		exit 1
+	fi
+	rmdir "$source.parts"
+done
 
 if [ "$TMH_FFMPEG_PASSES" -lt 2 ]; then
 	doFfmpegEncode

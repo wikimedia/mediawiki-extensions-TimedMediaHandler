@@ -150,9 +150,13 @@ class InlinePlayer {
 					}
 				}
 			}
+			// Without DASH, the "auto" source left is the HLS playlist of the
+			// same chunks. Prefer it when the browser plays HLS natively (Safari).
+			const useHls = !useDash && resolutions.includes( DASH_RES ) &&
+				this.videoplayer.canPlayType( 'application/vnd.apple.mpegurl' ) !== '';
 			const switcherConfig = this.playerConfig.plugins.videoJsResolutionSwitcher;
-			if ( useDash || defaultRes ) {
-				switcherConfig.default = useDash ? DASH_RES : defaultRes;
+			if ( useDash || useHls || defaultRes ) {
+				switcherConfig.default = ( useDash || useHls ) ? DASH_RES : defaultRes;
 			}
 			const $sources = this.$videoplayer.children( 'source' );
 			if ( useDash && $sources.length > 1 ) {

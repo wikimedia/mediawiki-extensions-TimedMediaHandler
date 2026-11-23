@@ -223,7 +223,11 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 				// MEDIA_ERR_DECODE OR MEDIA_ERR_SRC_NOT_SUPPORTED
 				errorEvent.stopImmediatePropagation();
 				this.player.errorDisplay.close();
-				const newSources = this.currentSources.filter( ( asource ) => !sources.includes( asource ) );
+				// video.js plays the first source of the group, so only drop that one
+				// and let the next (e.g. HLS after DASH) have a try
+				const newSources = this.currentSources.filter(
+					( asource ) => asource !== sources[ 0 ]
+				);
 				this.updateSrc( newSources );
 				this.player.play();
 			}
@@ -243,10 +247,10 @@ class VideoJsResolutionSwitcherPlugin extends Plugin {
 	 * @return {SourceObject[]} Sources with no better-playing equal or lower resolution
 	 */
 	pruneWeakerSources( src ) {
-		// The original is a special case and never auto-selected,
-		// so it does not count as a resolution and is never pruned
+		// The original and the adaptive streams (DASH, HLS) sort above all real
+		// resolutions. They do not count as a resolution and are never pruned
 		const hasResolution = ( source ) => !!source.res &&
-			Number( source.res ) !== ORIGINAL_RES;
+			Number( source.res ) < ORIGINAL_RES;
 		// Unplayable sources are already gone, so canPlayType() only left us
 		// with 'probably' and 'maybe'
 		const confident = ( source ) => source.confidence === 'probably';

@@ -14,12 +14,16 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Shell\CommandFactory;
 use MediaWiki\Shell\Shell;
+use MediaWiki\TimedMediaHandler\HLS\DashManifest;
+use MediaWiki\TimedMediaHandler\HLS\DashToHls;
 use MediaWiki\TimedMediaHandler\HLS\Segmenter;
 use MediaWiki\TimedMediaHandler\TimedMediaHandler;
 use MediaWiki\Title\Title;
+use RuntimeException;
 use Shellbox\Command\BoxedCommand;
 use Shellbox\Command\BoxedResult;
 use Wikimedia\FileBackend\FSFile\TempFSFile;
+use Wikimedia\FileBackend\FSFile\TempFSFileFactory;
 use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\ILBFactory;
 
@@ -40,7 +44,13 @@ class WebVideoTranscodeJob extends Job {
 	public ?TempFSFile $targetPlaylistFile = null;
 	/** @var File|false */
 	public $file;
+	/**
+	 * @var array<string|string[]> Virtual URL of a flat file, or storage paths of
+	 *   the mpeg-dash chunks of one track, to join in order
+	 */
 	private array $remuxSources = [];
+	/** Index of the remux source that carries the audio, null if there is no audio */
+	private ?int $remuxAudioInput = 0;
 
 	/**
 	 * @param Title $title
@@ -352,7 +362,8 @@ class WebVideoTranscodeJob extends Job {
 				$mediaFilename = WebVideoTranscode::getTranscodeFileBaseName( $file, $transcodeKey );
 				$mediaPath = WebVideoTranscode::getDerivativeFilePath( $file, $transcodeKey );
 				$storeOptions = null;
-				$playlistStoreOptions = null;
+				$playlistStoreOptions = [ 'headers' => [ 'Content-Type' => WebVideoTranscode::HLS_CONTENT_TYPE ] ];
+				$hlsMediaPlaylists = [];
 
 				if ( $streaming === 'hls' ) {
 					$playlistKey = $transcodeKey . '.m3u8';
@@ -367,8 +378,10 @@ class WebVideoTranscodeJob extends Job {
 					$playlist = $segmenter->playlist( 10, $mediaFilename );
 
 					file_put_contents( $playlistTemp, $playlist );
-					$playlistStoreOptions = [];
-					$playlistStoreOptions['headers']['Content-Type'] = 'application/vnd.apple.mpegurl; charset=utf-8';
+				} elseif ( $options->hlsPlaylist ) {
+					$playlistTemp = $this->getTargetPlaylistPath();
+					$playlistPath = preg_replace( '/\.mpd$/', '.m3u8', $mediaPath );
+					$hlsMediaPlaylists = $this->writeHlsPlaylists( $transcodeKey, $playlistTemp );
 				} else {
 					$playlistTemp = null;
 					$playlistPath = null;
@@ -407,9 +420,12 @@ class WebVideoTranscodeJob extends Job {
 							$batch[] = [ $tempPath . $fileName, $destPath . $fileName ];
 						}
 					}
+					foreach ( $hlsMediaPlaylists as $name => $tempFile ) {
+						$batch[] = [ $tempFile, $destPath . $name, $playlistStoreOptions ];
+					}
 					$result->merge( $file->getRepo()->quickImportBatch( $batch ) );
 				}
-				if ( $result->isOK() && $streaming === 'hls' && $playlistTemp && $playlistPath ) {
+				if ( $result->isOK() && $playlistTemp && $playlistPath ) {
 					$result = $file->getRepo()->quickImport(
 						// temp file
 						$playlistTemp,
@@ -417,7 +433,7 @@ class WebVideoTranscodeJob extends Job {
 						$playlistPath,
 						$playlistStoreOptions
 					);
-					if ( $result->isOK() ) {
+					if ( $result->isOK() && $streaming === 'hls' ) {
 						WebVideoTranscode::updateStreamingManifests( $file );
 					}
 				}
@@ -484,6 +500,9 @@ class WebVideoTranscodeJob extends Job {
 			if ( $streaming === 'hls' ) {
 				$urls[] = "$url.m3u8";
 			}
+			if ( $options->hlsPlaylist ) {
+				$urls[] = preg_replace( '/\.mpd$/', '.m3u8', $url );
+			}
 			$update = new CdnCacheUpdate( $urls );
 			$update->doUpdate();
 
@@ -503,31 +522,150 @@ class WebVideoTranscodeJob extends Job {
 	}
 
 	/**
-	 * Get virtual URLs for remux sources for a given transcode
+	 * Write the HLS playlists for the fragmented MP4 chunks of an mpeg-dash
+	 * transcode, generated from its manifest.
+	 *
+	 * @param string $transcodeKey
+	 * @param string $multivariantPath Local path for the multivariant playlist
+	 * @return array<string,TempFSFile> Media playlists, by file name
+	 * @throws TranscodeError
+	 */
+	private function writeHlsPlaylists( string $transcodeKey, string $multivariantPath ): array {
+		$representations = DashManifest::parse( file_get_contents( $this->getTargetEncodePath() ) );
+		$chunksDir = $this->getTargetEncodeChunksDir();
+		$sizes = [];
+		foreach ( $representations as $rep ) {
+			foreach ( $rep->getFileNames() as $name ) {
+				$size = is_file( $chunksDir . $name ) ? filesize( $chunksDir . $name ) : false;
+				if ( $size === false ) {
+					throw new TranscodeError( "Missing mpeg-dash segment: $name" );
+				}
+				$sizes[$name] = $size;
+			}
+		}
+		$hls = new DashToHls(
+			$representations,
+			static fn ( $rep ) => WebVideoTranscode::getHlsMediaPlaylistName( $transcodeKey, $rep->id ),
+			$sizes
+		);
+		file_put_contents( $multivariantPath, $hls->multivariantPlaylist() );
+
+		$files = [];
+		$tempFactory = new TempFSFileFactory();
+		foreach ( $hls->mediaPlaylists() as $name => $playlist ) {
+			$tempFile = $tempFactory->newTempFSFile( 'transcode_hls_', 'm3u8' );
+			if ( !$tempFile || file_put_contents( $tempFile->getPath(), $playlist ) === false ) {
+				throw new TranscodeError( 'Failed to write HLS media playlist' );
+			}
+			$files[$name] = $tempFile;
+		}
+		return $files;
+	}
+
+	/**
+	 * Get remux sources for a given transcode
 	 *
 	 * @param TranscodePreset $options
-	 * @return string[]
+	 * @return array<string|string[]>
 	 */
 	private function findRemuxSources( TranscodePreset $options ): array {
-		$source = $this->findRemuxSource( $options->remuxFrom );
-		if ( $source ) {
-			return [ $source ];
+		if ( !$options->videoRenditions ) {
+			$source = $this->findRemuxSource( $options->remuxFrom );
+			return $source ? [ $source ] : [];
 		}
-		if ( $options->videoRenditions ) {
-			$sources = [];
-			$renditions = WebVideoTranscode::getRenditions( $options, $this->file );
-			foreach ( $renditions as $rendition ) {
-				$source = $this->findRemuxSource( $rendition->remuxFrom );
-				if ( $source !== null ) {
-					$sources[] = $source;
-				}
-			}
-			// All or nothing
-			if ( count( $sources ) == count( $renditions ) ) {
+		// An mpeg-dash transcode copies all its tracks from another
+		// mpeg-dash transcode, e.g. WebM chunks to fragmented MP4 chunks
+		foreach ( $options->remuxFrom ?? [] as $key ) {
+			$sources = $this->findDashRemuxSources( $key, $options );
+			if ( $sources ) {
 				return $sources;
 			}
 		}
+		$sources = [];
+		$renditions = WebVideoTranscode::getRenditions( $options, $this->file );
+		foreach ( $renditions as $rendition ) {
+			$source = $this->findRemuxSource( $rendition->remuxFrom );
+			if ( $source !== null ) {
+				$sources[] = $source;
+			}
+		}
+		// Flat files of each rendition, all or nothing
+		if ( count( $sources ) == count( $renditions ) ) {
+			return $sources;
+		}
 		return [];
+	}
+
+	/**
+	 * Find the init segment and chunks of each track of an existing mpeg-dash
+	 * transcode. ffmpeg-encode.sh joins them into one file per track, so
+	 * ffmpeg can copy the tracks. Video tracks come first, in rendition order,
+	 * then the audio track.
+	 *
+	 * @param string $sourceKey Transcode key of the existing mpeg-dash transcode
+	 * @param TranscodePreset $options Preset of the transcode to make
+	 * @return string[][] Storage paths of the files of each track, empty if the
+	 *   source is missing or does not match
+	 */
+	private function findDashRemuxSources( string $sourceKey, TranscodePreset $options ): array {
+		$file = $this->file;
+		if ( $this->transcodePresets->findByKey( $sourceKey )?->segmentDuration !== $options->segmentDuration ) {
+			// The keyframes of the source are at the wrong places
+			$this->output( "Remux source has another segment duration: $sourceKey" );
+			return [];
+		}
+		$manifestPath = WebVideoTranscode::getDerivativeFilePath( $file, $sourceKey );
+		$backend = $file->getRepo()->getBackend();
+		$manifest = $backend->getFileContents( [ 'src' => $manifestPath ] );
+		if ( $manifest === false ) {
+			$this->output( "Remux source not found: $manifestPath" );
+			return [];
+		}
+		try {
+			$representations = DashManifest::parse( $manifest );
+		} catch ( RuntimeException $e ) {
+			$this->output( "Remux source $manifestPath: " . $e->getMessage() );
+			return [];
+		}
+		$video = array_values( array_filter( $representations, static fn ( $rep ) => $rep->isVideo() ) );
+		$audio = array_values( array_filter( $representations, static fn ( $rep ) => $rep->isAudio() ) );
+		if ( count( $video ) !== count( WebVideoTranscode::getRenditions( $options, $file ) )
+			|| count( $audio ) > 1
+		) {
+			$this->output( "Remux source tracks don't match the renditions: $manifestPath" );
+			return [];
+		}
+
+		// One listing instead of a stat for each chunk
+		$dir = dirname( $manifestPath );
+		$existing = $backend->getFileList( [ 'dir' => $dir, 'topOnly' => true ] );
+		$existingNames = [];
+		foreach ( $existing ?? [] as $name ) {
+			$existingNames[$name] = true;
+		}
+		$sources = [];
+		foreach ( array_merge( $video, $audio ) as $rep ) {
+			$paths = [];
+			foreach ( $rep->getFileNames() as $name ) {
+				if ( !isset( $existingNames[$name] ) ) {
+					$this->output( "Remux source chunk not found: $dir/$name" );
+					return [];
+				}
+				$paths[] = "$dir/$name";
+			}
+			$sources[] = $paths;
+		}
+		$this->remuxAudioInput = $audio ? count( $video ) : null;
+		return $sources;
+	}
+
+	/**
+	 * @throws TranscodeError
+	 */
+	private function addRemuxInputFile( BoxedCommand $cmd, string $boxedName, string $path ): void {
+		if ( !$this->getFile()->getRepo()->addShellboxInputFile( $cmd, $boxedName, $path )->isOK() ) {
+			throw new TranscodeError( 'source file is missing. Encoding failed.' );
+		}
 	}
 
 	/**
@@ -771,16 +909,23 @@ class WebVideoTranscodeJob extends Job {
 
 		if ( $this->remuxSources ) {
 			$sourceOpts = [];
-			foreach ( array_values( $this->remuxSources ) as $i => $url ) {
+			$joinSources = [];
+			foreach ( array_values( $this->remuxSources ) as $i => $source ) {
 				$name = "source$i.video";
-				$addStatus = $sourceFile->getRepo()->addShellboxInputFile(
-					$cmd, $name, $url );
-				if ( !$addStatus->isOK() ) {
-					throw new TranscodeError( 'source file is missing. Encoding failed.' );
+				if ( is_array( $source ) ) {
+					// By URL, so Shellbox fetches the chunks from storage. The
+					// zero-padded names keep the order for the script's glob.
+					foreach ( $source as $j => $path ) {
+						$this->addRemuxInputFile( $cmd, sprintf( '%s.parts/%06d', $name, $j ), $path );
+					}
+					$joinSources[] = $name;
+				} else {
+					$this->addRemuxInputFile( $cmd, $name, $source );
 				}
 				$sourceOpts[] = "-i $name";
 			}
 			$optsEnv['TMH_OPTS_SOURCE'] = implode( ' ', $sourceOpts );
+			$optsEnv['TMH_JOIN_SOURCES'] = implode( ' ', $joinSources );
 		} else {
 			$addStatus = $sourceFile->addToShellboxCommand( $cmd, 'original.video' );
 			if ( !$addStatus->isOK() ) {
@@ -814,8 +959,9 @@ class WebVideoTranscodeJob extends Job {
 			if ( !mkdir( $chunksDir ) ) {
 				throw new TranscodeError( 'Failed to create FS dir for chunked transcode output' );
 			}
-			$cmd = $cmd->outputGlobToFile( 'init', 'webm', $chunksDir );
-			$cmd = $cmd->outputGlobToFile( 'chunk', 'webm', $chunksDir );
+			$ext = $options->getChunkExtension();
+			$cmd = $cmd->outputGlobToFile( 'init', $ext, $chunksDir );
+			$cmd = $cmd->outputGlobToFile( 'chunk', $ext, $chunksDir );
 		}
 		return $cmd->memoryLimit( $backgroundMemoryLimit )
 			->wallTimeLimit( $wallTimeLimit )
@@ -1147,14 +1293,19 @@ class WebVideoTranscodeJob extends Job {
 
 		// Keep in sync with WebVideoTranscode::getDashChunkNames()
 		$key = preg_replace( '/\.mpd$/', '', $transcodeKey );
-		$opts[] = "-init_seg_name init-\$RepresentationID\$.$key.webm";
-		$opts[] = "-media_seg_name chunk-\$RepresentationID\$-\$Number%05d\$.$key.webm";
+		$ext = $options->getChunkExtension();
+		$opts[] = "-init_seg_name init-\$RepresentationID\$.$key.$ext";
+		$opts[] = "-media_seg_name chunk-\$RepresentationID\$-\$Number%05d\$.$key.$ext";
+		if ( $options->hlsPlaylist ) {
+			// HLS can't carry WebM. The HLS playlists are written by writeHlsPlaylists().
+			$opts[] = '-dash_segment_type mp4';
+		}
 
 		if ( $options->segmentDuration ) {
 			$opts[] = '-seg_duration ' . (int)$options->segmentDuration;
 		}
-		if ( $options->noaudio === null ) {
-			$opts[] = '-map 0:a?';
+		if ( $options->noaudio === null && $this->remuxAudioInput !== null ) {
+			$opts[] = "-map {$this->remuxAudioInput}:a?";
 		}
 
 		if ( $remux ) {

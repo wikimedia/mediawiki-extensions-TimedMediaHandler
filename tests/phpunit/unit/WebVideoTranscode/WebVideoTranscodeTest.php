@@ -66,6 +66,22 @@ class WebVideoTranscodeTest extends \MediaWikiUnitTestCase {
 					'chunk-2-00002.3x1080p.vp9.webm',
 				]
 			],
+			[
+				'3x1080p.vp9.fmp4.mpd',
+				426,
+				5,
+				true,
+				[
+					'init-0.3x1080p.vp9.fmp4.mp4',
+					'chunk-0-00001.3x1080p.vp9.fmp4.mp4',
+					'chunk-0-00002.3x1080p.vp9.fmp4.mp4',
+					'media-0.3x1080p.vp9.fmp4.m3u8',
+					'init-1.3x1080p.vp9.fmp4.mp4',
+					'chunk-1-00001.3x1080p.vp9.fmp4.mp4',
+					'chunk-1-00002.3x1080p.vp9.fmp4.mp4',
+					'media-1.3x1080p.vp9.fmp4.m3u8',
+				]
+			],
 		];
 	}
 

@@ -290,6 +290,7 @@
 				"1440p.video.vp9.mp4": false,
 				"2160p.video.vp9.mp4": false,
 				"3x1080p.vp9.mpd": false,
+				"3x1080p.vp9.fmp4.mpd": false,
 				"7x2160p.vp9.mpd": false
 			}
 		},

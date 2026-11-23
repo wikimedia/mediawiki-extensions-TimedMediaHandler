@@ -45,6 +45,9 @@ class WebVideoTranscode {
 	 */
 	public const VARIABLE_BITRATE = -1;
 
+	/** Content type of HLS playlists */
+	public const HLS_CONTENT_TYPE = 'application/vnd.apple.mpegurl; charset=utf-8';
+
 	/**
 	 * File has a row in the transcode table but no known queue or transcoding activity.
 	 *
@@ -357,7 +360,7 @@ class WebVideoTranscode {
 			$sources[] = [
 				'src' => $src,
 				'title' => wfMessage( 'timedmedia-derivative-desc-m3u8' )->text(),
-				'type' => 'application/vnd.apple.mpegurl',
+				'type' => self::HLS_CONTENT_TYPE,
 				'shorttitle' => wfMessage( 'timedmedia-derivative-desc-m3u8' )->text(),
 				'transcodekey' => 'm3u8',
 				'width' => $width,
@@ -525,7 +528,10 @@ class WebVideoTranscode {
 					wfDebug( "DASH chunk deletion was not requested" );
 				}
 			}
-
+			if ( $options?->hlsPlaylist ) {
+				$urlsToPurge[] = preg_replace( '/\.mpd$/', '.m3u8', $urlPath );
+				$filesToPurge[] = preg_replace( '/\.mpd$/', '.m3u8', $filePath );
+			}
 		}
 		if ( $hasHLS && $transcodeKey === false ) {
 			// Delete all derivatives including the main hls manifest
@@ -588,7 +594,8 @@ class WebVideoTranscode {
 	}
 
 	/**
-	 * Get the DASH chunk names which may possibly exist for a given transcode
+	 * Get the DASH chunk (and HLS media playlist) names which may possibly exist
+	 * for a given transcode
 	 *
 	 * @param File $file
 	 * @param string $transcodeKey
@@ -611,7 +618,8 @@ class WebVideoTranscode {
 		if ( !$segmentDuration ) {
 			return;
 		}
-		$suffix = preg_replace( '/\.mpd$/', '.webm', $transcodeKey );
+		$key = preg_replace( '/\.mpd$/', '', $transcodeKey );
+		$suffix = $key . '.' . $options->getChunkExtension();
 		// ffmpeg treats the segment size as a minimum, so the number of segments
 		// calculated this way is the maximum.
 		$numSegments = (int)ceil( $handler->getLength( $file ) / $segmentDuration );
@@ -620,7 +628,18 @@ class WebVideoTranscode {
 			for ( $c = 1; $c <= $numSegments; $c++ ) {
 				yield sprintf( 'chunk-%d-%05d.%s', $r, $c, $suffix );
 			}
+			if ( $options->hlsPlaylist ) {
+				yield self::getHlsMediaPlaylistName( $transcodeKey, (string)$r );
+			}
 		}
+	}
+
+	/**
+	 * File name of the HLS media playlist of one representation of an mpeg-dash
+	 * transcode, next to its chunks
+	 */
+	public static function getHlsMediaPlaylistName( string $transcodeKey, string $representationId ): string {
+		return "media-$representationId." . preg_replace( '/\.mpd$/', '', $transcodeKey ) . '.m3u8';
 	}
 
 	/**
@@ -689,7 +708,15 @@ class WebVideoTranscode {
 	public static function addSourceIfReady( $file, &$sources, $transcodeKey, $dataPrefix ) {
 		// Check if the transcode is ready:
 		if ( static::isTranscodeReady( $file, $transcodeKey ) ) {
-			$sources[] = static::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
+			$source = static::getDerivativeSourceAttributes( $file, $transcodeKey, $dataPrefix );
+			$sources[] = $source;
+			if ( self::transcodePresets()->findByKey( $transcodeKey )?->hlsPlaylist ) {
+				// The HLS playlist next to the mpeg-dash manifest, for the same chunks
+				$sources[] = [
+					'src' => preg_replace( '/\.mpd$/', '.m3u8', $source['src'] ),
+					'type' => self::HLS_CONTENT_TYPE,
+				] + $source;
+			}
 		}
 	}
 

@@ -161,6 +161,8 @@
 	"timedmedia-derivative-desc-m4a": "AAC",
 	"timedmedia-derivative-3x1080p.vp9.mpd": "Chunked VP9",
 	"timedmedia-derivative-desc-3x1080p.vp9.mpd": "Chunked VP9 (240-1080p)",
+	"timedmedia-derivative-3x1080p.vp9.fmp4.mpd": "Chunked VP9 (MP4)",
+	"timedmedia-derivative-desc-3x1080p.vp9.fmp4.mpd": "Chunked VP9 in MP4, for DASH and HLS (240-1080p)",
 	"timedmedia-derivative-7x2160p.vp9.mpd": "Chunked VP9",
 	"timedmedia-derivative-desc-7x2160p.vp9.mpd": "Chunked VP9 (240-2160p)",
 	"timedmedia-resolution-120": "Low 120p",

@@ -19,6 +19,35 @@ class TranscodePresets {
 
 	private Config $config;
 
+	private const RENDITIONS_3X1080P = [
+		[
+			'maxSize' => '426x240',
+			'videoBitrate' => '308k',
+			'maxrate' => '447k',
+			'crf' => '37',
+			'speed' => '3',
+			'remuxFrom' => [ '240p.vp9.webm' ],
+		],
+		[
+			'maxSize' => '854x480',
+			'videoBitrate' => '1000k',
+			'maxrate' => '1450k',
+			'crf' => '33',
+			'speed' => '3',
+			'tileColumns' => '1',
+			'remuxFrom' => [ '480p.vp9.webm' ],
+		],
+		[
+			'maxSize' => '1920x1080',
+			'videoBitrate' => '3971k',
+			'maxrate' => '5757k',
+			'crf' => '31',
+			'speed' => '3',
+			'tileColumns' => '2',
+			'remuxFrom' => [ '1080p.vp9.webm' ],
+		],
+	];
+
 	/**
 	 * Encoding parameters are interpreted and used for WebVideoTranscodeJob
 	 *
@@ -445,34 +474,22 @@ class TranscodePresets {
 			'audioCodec' => 'opus',
 			'audioBitrate' => '96k',
 			'segmentDuration' => '4',
-			'videoRenditions' => [
-				[
-					'maxSize' => '426x240',
-					'videoBitrate' => '308k',
-					'maxrate' => '447k',
-					'crf' => '37',
-					'speed' => '3',
-					'remuxFrom' => [ '240p.vp9.webm' ],
-				],
-				[
-					'maxSize' => '854x480',
-					'videoBitrate' => '1000k',
-					'maxrate' => '1450k',
-					'crf' => '33',
-					'speed' => '3',
-					'tileColumns' => '1',
-					'remuxFrom' => [ '480p.vp9.webm' ],
-				],
-				[
-					'maxSize' => '1920x1080',
-					'videoBitrate' => '3971k',
-					'maxrate' => '5757k',
-					'crf' => '31',
-					'speed' => '3',
-					'tileColumns' => '2',
-					'remuxFrom' => [ '1080p.vp9.webm' ],
-				],
-			]
+			'videoRenditions' => self::RENDITIONS_3X1080P,
+		],
+
+		// Same as 3x1080p.vp9.mpd, but with fragmented MP4 chunks shared by
+		// the MPEG-DASH manifest and HLS playlists for native HLS players (Safari).
+		// With --remux, the tracks are copied from the WebM chunks of 3x1080p.vp9.mpd.
+		'3x1080p.vp9.fmp4.mpd' => [
+			'remuxFrom' => [ '3x1080p.vp9.mpd' ],
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'twopass' => false,
+			'audioCodec' => 'opus',
+			'audioBitrate' => '96k',
+			'segmentDuration' => '4',
+			'hlsPlaylist' => 'true',
+			'videoRenditions' => self::RENDITIONS_3X1080P,
 		],
 
 		// Loosely defined per PCF guide to mp4 profiles:

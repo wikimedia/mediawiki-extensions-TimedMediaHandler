@@ -31,6 +31,11 @@ transcodes if your licensing situation allows it. Alternatively, you can enable
 
 Support for segmented VP9 files using an MPEG-DASH manifest has been added,
 but please check for patent issues before using this option.
+The `3x1080p.vp9.fmp4.mpd` variant stores the segments as fragmented MP4.
+TimedMediaHandler generates HLS playlists for them from the MPEG-DASH manifest,
+for browsers with native HLS (Safari). With `requeueTranscodes.php --remux`,
+it copies the tracks from an existing `3x1080p.vp9.mpd` transcode instead of
+encoding them again.
 
 ## Updates in 2022
 The playback framework Kaltura/mwEmbed was replaced with a video player based

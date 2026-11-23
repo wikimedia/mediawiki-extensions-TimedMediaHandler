@@ -294,4 +294,86 @@ class WebVideoTranscodeJobTest extends TestCase {
 			$job->ffmpegAddMPEGDASHOptions( '7x2160p.vp9.mpd', $transcodePreset, true )
 		);
 	}
+
+	public function testFfmpegAddMPEGDashOptions_hlsPlaylist() {
+		$job = $this->createJob( 426, 240 );
+		$transcodePreset = new TranscodePreset( [
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'segmentDuration' => '4',
+			'hlsPlaylist' => 'true',
+			'videoRenditions' => [
+				[ 'maxSize' => '426x240' ],
+			]
+		] );
+		$this->assertEquals(
+			[
+				'-use_template 1',
+				'-use_timeline 1',
+				'-ss 0',
+				'-avoid_negative_ts make_zero',
+				'-map_metadata -1',
+				'-init_seg_name init-$RepresentationID$.3x1080p.vp9.fmp4.mp4',
+				'-media_seg_name chunk-$RepresentationID$-$Number%05d$.3x1080p.vp9.fmp4.mp4',
+				'-dash_segment_type mp4',
+				'-seg_duration 4',
+				'-map 0:a?',
+				'-aspect 426:240',
+				'-map 0:v',
+			],
+			$job->ffmpegAddMPEGDASHOptions( '3x1080p.vp9.fmp4.mpd', $transcodePreset, true )
+		);
+	}
+
+	public function testFfmpegAddMPEGDashOptions_remuxFromDash() {
+		$job = $this->createJob( 1280, 720 );
+		// Tracks joined from mpeg-dash chunks: video first, then audio
+		$job->remuxAudioInput = 2;
+		$transcodePreset = new TranscodePreset( [
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'segmentDuration' => '4',
+			'hlsPlaylist' => 'true',
+			'videoRenditions' => [
+				[ 'maxSize' => '426x240' ],
+				[ 'maxSize' => '854x480' ],
+			]
+		] );
+		$this->assertEquals(
+			[
+				'-use_template 1',
+				'-use_timeline 1',
+				'-ss 0',
+				'-avoid_negative_ts make_zero',
+				'-map_metadata -1',
+				'-init_seg_name init-$RepresentationID$.3x1080p.vp9.fmp4.mp4',
+				'-media_seg_name chunk-$RepresentationID$-$Number%05d$.3x1080p.vp9.fmp4.mp4',
+				'-dash_segment_type mp4',
+				'-seg_duration 4',
+				'-map 2:a?',
+				'-aspect 1280:720',
+				'-map 0:v',
+				'-map 1:v',
+			],
+			$job->ffmpegAddMPEGDASHOptions( '3x1080p.vp9.fmp4.mpd', $transcodePreset, true )
+		);
+	}
+
+	public function testFfmpegAddMPEGDashOptions_remuxFromDashWithoutAudio() {
+		$job = $this->createJob( 426, 240 );
+		$job->remuxAudioInput = null;
+		$transcodePreset = new TranscodePreset( [
+			'type' => 'application/dash+xml',
+			'videoCodec' => 'vp9',
+			'segmentDuration' => '4',
+			'hlsPlaylist' => 'true',
+			'videoRenditions' => [
+				[ 'maxSize' => '426x240' ],
+			]
+		] );
+		$this->assertNotContains(
+			'-map 0:a?',
+			$job->ffmpegAddMPEGDASHOptions( '3x1080p.vp9.fmp4.mpd', $transcodePreset, true )
+		);
+	}
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="urn:mpeg:dash:schema:mpd:2011"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011 http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-DASH_schema_files/DASH-MPD.xsd"
+	profiles="urn:mpeg:dash:profile:isoff-live:2011"
+	type="static"
+	mediaPresentationDuration="PT10.0S"
+	maxSegmentDuration="PT4.0S"
+	minBufferTime="PT8.0S">
+	<ProgramInformation>
+	</ProgramInformation>
+	<ServiceDescription id="0">
+	</ServiceDescription>
+	<Period id="0" start="PT0.0S">
+		<AdaptationSet id="0" contentType="audio" startWithSAP="1" segmentAlignment="true" bitstreamSwitching="true">
+			<Representation id="0" mimeType="audio/mp4" codecs="opus" bandwidth="117301" audioSamplingRate="48000">
+				<AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="1" />
+				<SegmentTemplate timescale="48000" initialization="init-$RepresentationID$.3x1080p.vp9.fmp4.mp4" media="chunk-$RepresentationID$-$Number%05d$.3x1080p.vp9.fmp4.mp4" startNumber="1">
+					<SegmentTimeline>
+						<S t="0" d="192048" />
+						<S d="192000" />
+						<S d="96000" />
+					</SegmentTimeline>
+				</SegmentTemplate>
+			</Representation>
+		</AdaptationSet>
+		<AdaptationSet id="1" contentType="video" startWithSAP="1" segmentAlignment="true" bitstreamSwitching="true" frameRate="30/1" maxWidth="854" maxHeight="480" par="16:9">
+			<Representation id="1" mimeType="video/mp4" codecs="vp09.00.20.08" bandwidth="296695" width="426" height="240" sar="640:639">
+				<SegmentTemplate timescale="16000" initialization="init-$RepresentationID$.3x1080p.vp9.fmp4.mp4" media="chunk-$RepresentationID$-$Number%05d$.3x1080p.vp9.fmp4.mp4" startNumber="1">
+					<SegmentTimeline>
+						<S t="0" d="64112" />
+						<S d="64000" />
+						<S d="32000" />
+					</SegmentTimeline>
+				</SegmentTemplate>
+			</Representation>
+			<Representation id="2" mimeType="video/mp4" codecs="vp09.00.30.08" bandwidth="900471" width="854" height="480" sar="1280:1281">
+				<SegmentTemplate timescale="16000" initialization="init-$RepresentationID$.3x1080p.vp9.fmp4.mp4" media="chunk-$RepresentationID$-$Number%05d$.3x1080p.vp9.fmp4.mp4" startNumber="1">
+					<SegmentTimeline>
+						<S t="0" d="64112" />
+						<S d="64000" />
+						<S d="32000" />
+					</SegmentTimeline>
+				</SegmentTemplate>
+			</Representation>
+		</AdaptationSet>
+	</Period>
+</MPD>

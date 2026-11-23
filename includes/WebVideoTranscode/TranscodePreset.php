@@ -84,6 +84,9 @@ class TranscodePreset {
 	/** @var string|null Duration of individual video segments used when transcoding to mpeg-dash */
 	public ?string $segmentDuration = null;
 
+	/** @var string|null Whether to write an HLS playlist next to the mpeg-dash manifest (e.g., "true") */
+	public ?string $hlsPlaylist = null;
+
 	public function __construct( array $settings ) {
 		foreach ( $settings as $key => $value ) {
 			if ( property_exists( $this, $key ) ) {
@@ -117,6 +120,14 @@ class TranscodePreset {
 		} else {
 			return $this->maxSize;
 		}
+	}
+
+	/**
+	 * File extension of mpeg-dash chunks. HLS can't carry WebM, so chunks
+	 * shared with an HLS playlist are fragmented MP4.
+	 */
+	public function getChunkExtension(): string {
+		return $this->hlsPlaylist ? 'mp4' : 'webm';
 	}
 
 	public function getMaxWidth(): ?int {

@@ -43,7 +43,7 @@ class Multivariant {
 	 * MPEG-4 style codec name mappings.
 	 * @var array<string,string>
 	 */
-	private const array HLS_CODEC_MAP = [
+	public const array HLS_CODEC_MAP = [
 		'opus' => self::CODEC_OPUS,
 	];
 
@@ -91,7 +91,7 @@ class Multivariant {
 		return "\"$val\"";
 	}
 
-	private static function m3uLine( string $type, array $opts ): string {
+	public static function m3uLine( string $type, array $opts ): string {
 		$items = [];
 		foreach ( $opts as $key => $val ) {
 			$items[] = "$key=$val";
