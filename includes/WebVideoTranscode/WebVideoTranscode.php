@@ -467,21 +467,20 @@ class WebVideoTranscode {
 	 *
 	 * also remove the transcode files:
 	 * @param File $file File Object
-	 * @param string|false $transcodeKey Transcode key to remove, or false to remove all
 	 * @param string $chunkMode What to do about numerous transcoded segment files.
 	 *   - self::CLEANUP_NONE: Don't clean them up. Appropriate when starting a transcode job.
 	 *   - self::CLEANUP_ASYNC: Clean them up later. Appropriate during a request when a new
 	 *     transcode will not be required.
 	 *   - self::CLEANUP_SYNC: Clean them up immediately. Appropriate during a maintenance script.
+	 * @param string|null $transcodeKey Transcode key to remove, or null to remove all
 	 */
 	public static function removeTranscodes(
 		File $file,
-		$transcodeKey,
-		string $chunkMode
+		string $chunkMode,
+		?string $transcodeKey = null
 	) {
-		// if transcode key is non-false, non-null:
-		if ( $transcodeKey ) {
-			// only remove the requested $transcodeKey
+		if ( $transcodeKey !== null ) {
+			// Only remove the requested $transcodeKey
 			$removeKeys = [ $transcodeKey ];
 		} else {
 			// Remove any existing files ( regardless of their state )
@@ -533,7 +532,7 @@ class WebVideoTranscode {
 				$filesToPurge[] = preg_replace( '/\.mpd$/', '.m3u8', $filePath );
 			}
 		}
-		if ( $hasHLS && $transcodeKey === false ) {
+		if ( $hasHLS && $transcodeKey === null ) {
 			// Delete all derivatives including the main hls manifest
 			$urlsToPurge[] = static::getTranscodedUrlForFile( $file, 'm3u8' );
 			$filesToPurge[] = static::getDerivativeFilePath( $file, 'm3u8' );
@@ -549,7 +548,7 @@ class WebVideoTranscode {
 			->deleteFrom( 'transcode' )
 			->where( [ 'transcode_image_name' => $file->getName() ] );
 		// Check if we are removing a specific transcode key
-		if ( $transcodeKey !== false ) {
+		if ( $transcodeKey !== null ) {
 			$queryBuilder->andWhere( [ 'transcode_key' => $transcodeKey ] );
 		}
 		// Remove the db entries
@@ -561,7 +560,7 @@ class WebVideoTranscode {
 
 		// Remove from local WebVideoTranscode cache:
 		static::clearTranscodeCache( $titleObj->getDBkey() );
-		if ( $transcodeKey !== false ) {
+		if ( $transcodeKey !== null ) {
 			// We only removed a single transcode, so we need to update the manifests
 			static::updateStreamingManifests( $file );
 		}

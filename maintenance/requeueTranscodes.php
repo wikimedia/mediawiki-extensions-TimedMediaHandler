@@ -95,7 +95,7 @@ class RequeueTranscodes extends TimedMediaMaintenance {
 				$this->output( ".. would remove $key\n" );
 			} else {
 				$this->output( ".. removing $key\n" );
-				WebVideoTranscode::removeTranscodes( $file, $key, WebVideoTranscode::CLEANUP_SYNC );
+				WebVideoTranscode::removeTranscodes( $file, WebVideoTranscode::CLEANUP_SYNC, $key );
 			}
 		}
 

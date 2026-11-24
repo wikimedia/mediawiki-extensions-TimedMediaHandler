@@ -99,8 +99,10 @@ class ApiTranscodeReset extends ApiBase {
 		$doTranscode = $transcodeKey === null
 			|| in_array( $transcodeKey, $this->transcodePresets->enabledTranscodes(), true );
 		// Remove previous transcode files
-		WebVideoTranscode::removeTranscodes( $file, $transcodeKey,
-			$doTranscode ? WebVideoTranscode::CLEANUP_NONE : WebVideoTranscode::CLEANUP_ASYNC );
+		WebVideoTranscode::removeTranscodes( $file,
+			$doTranscode ? WebVideoTranscode::CLEANUP_NONE : WebVideoTranscode::CLEANUP_ASYNC,
+			$transcodeKey
+		);
 		if ( $doTranscode ) {
 			WebVideoTranscode::updateJobQueue( $file, $transcodeKey, [
 				'manualOverride' => true,

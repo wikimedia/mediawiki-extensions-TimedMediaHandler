@@ -276,7 +276,7 @@ class Hooks implements
 		// Check that the file is a transcodable asset:
 		if ( $this->transcodableChecker->isTranscodableFile( $file ) ) {
 			// Remove all the transcode files and db states for this asset
-			WebVideoTranscode::removeTranscodes( $file, false, WebVideoTranscode::CLEANUP_NONE );
+			WebVideoTranscode::removeTranscodes( $file, WebVideoTranscode::CLEANUP_NONE );
 			WebVideoTranscode::startJobQueue( $file );
 		}
 	}
@@ -298,7 +298,7 @@ class Hooks implements
 			// Remove all the transcode files and db states for this asset
 			// Will be re-added after the file has moved
 			$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true ] );
-			WebVideoTranscode::removeTranscodes( $file, false, WebVideoTranscode::CLEANUP_ASYNC );
+			WebVideoTranscode::removeTranscodes( $file, WebVideoTranscode::CLEANUP_ASYNC );
 		}
 	}
 
@@ -312,7 +312,7 @@ class Hooks implements
 	 */
 	public function onFileDeleteComplete( $file, $oldimage, $article, $user, $reason ): void {
 		if ( !$oldimage && $this->transcodableChecker->isTranscodableFile( $file ) ) {
-			WebVideoTranscode::removeTranscodes( $file, false, WebVideoTranscode::CLEANUP_ASYNC );
+			WebVideoTranscode::removeTranscodes( $file, WebVideoTranscode::CLEANUP_ASYNC );
 		}
 	}
 
@@ -320,7 +320,7 @@ class Hooks implements
 	public function onFileUndeleteComplete( $title, $fileVersions, $user, $reason ) {
 		$file = $this->repoGroup->findFile( $title, [ 'ignoreRedirect' => true, 'latest' => true ] );
 		if ( $file && $this->transcodableChecker->isTranscodableFile( $file ) ) {
-			WebVideoTranscode::removeTranscodes( $file, false, WebVideoTranscode::CLEANUP_NONE );
+			WebVideoTranscode::removeTranscodes( $file, WebVideoTranscode::CLEANUP_NONE );
 			WebVideoTranscode::startJobQueue( $file );
 		}
 	}
