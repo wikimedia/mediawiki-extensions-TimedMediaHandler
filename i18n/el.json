@@ -60,7 +60,7 @@
 	"timedmedia-in-job-queue": "Προστέθηκε στην ουρά Εργασίες $1 πριν",
 	"timedmedia-unknown-target-size": "Άγνωστο μέγεθος στόχου, $1 κωδικοποιήθηκε",
 	"timedmedia-reset": "Επαναφορά διακωδικοποίησης",
-	"timedmedia-reset-areyousure": "Είστε σίγουροι ότι θέλετε να συνεχίσετε;",
+	"timedmedia-reset-areyousure": "Είστε {{GENDER:|σίγουρος|σίγουρη}} ότι θέλετε να συνεχίσετε;",
 	"timedmedia-reset-button-cancel": "Μην επαναφέρετε",
 	"timedmedia-reset-button-dismiss": "Απόρριψη",
 	"timedmedia-reset-button-reset": "Επαναφορά",
